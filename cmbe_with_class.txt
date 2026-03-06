@@ -1,0 +1,1950 @@
+﻿=== LINE 16235 | CLASS: DPMModel ===
+    def compute_master_buoyant_equation(self, r=None, v=0):
+        """Master Buoyant: F_U_Bi_i = M * (Ug_i - Ub_i + Ui_i)"""
+        import numpy as np
+        G, rho_vac, k_eta, c = 6.674e-11, 7.09e-36, 1e-113, 2.998e8
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None: r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        V = (4/3) * np.pi * r**3
+        Ug = G * M / r**2
+        Ub = (rho_vac * V * Ug) / M
+        Ui = -k_eta * rho_vac * V * (v / c)**2
+        a_net = Ug - Ub + Ui
+        return {'F_U_Bi_i': M * a_net, 'Ug': Ug, 'Ub': Ub, 'Ui': Ui, 'a_net': a_net}
+    
+
+=== LINE 17411 | CLASS: HydrogenEvolutionModel ===
+    def compute_master_buoyant_equation(self, r=None, v=0):
+        """Master Buoyant: F_U_Bi_i = M * (Ug_i - Ub_i + Ui_i)"""
+        import numpy as np
+        G, rho_vac, k_eta, c = 6.674e-11, 7.09e-36, 1e-113, 2.998e8
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None: r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        V = (4/3) * np.pi * r**3
+        Ug = G * M / r**2
+        Ub = (rho_vac * V * Ug) / M
+        Ui = -k_eta * rho_vac * V * (v / c)**2
+        a_net = Ug - Ub + Ui
+        return {'F_U_Bi_i': M * a_net, 'Ug': Ug, 'Ub': Ub, 'Ui': Ui, 'a_net': a_net}
+    
+
+=== LINE 18926 | CLASS: AtomicModelUQFF ===
+    def compute_master_buoyant_equation(self, r=None, v=0):
+        """Master Buoyant: F_U_Bi_i = M * (Ug_i - Ub_i + Ui_i)"""
+        import numpy as np
+        G, rho_vac, k_eta, c = 6.674e-11, 7.09e-36, 1e-113, 2.998e8
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None: r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        V = (4/3) * np.pi * r**3
+        Ug = G * M / r**2
+        Ub = (rho_vac * V * Ug) / M
+        Ui = -k_eta * rho_vac * V * (v / c)**2
+        a_net = Ug - Ub + Ui
+        return {'F_U_Bi_i': M * a_net, 'Ug': Ug, 'Ub': Ub, 'Ui': Ui, 'a_net': a_net}
+    
+
+=== LINE 19636 | CLASS: ProtoNucleusShellModel ===
+    def compute_master_buoyant_equation(self, params=None) -> dict:
+        """UQFF Master Buoyant (F_U_Bi_i): Cosmic-scale buoyancy integral"""
+        buoyant = self.compute_buoyant_equation(params)
+        Omega_g = CONSTANTS.get('Omega_g', 7.3e-16)
+        f_TRZ = CONSTANTS.get('f_TRZ', 0.1)
+        F_U_Bi_i = buoyant['F_Bi'] * (1 + f_TRZ) / (1 - Omega_g)
+        return {'F_U_Bi_i': F_U_Bi_i, 'F_Bi': buoyant['F_Bi'], 'Omega_g': Omega_g, 'f_TRZ': f_TRZ}
+    
+
+=== LINE 20299 | CLASS: UniversalCycleTracker ===
+    def compute_master_buoyant_equation(self, r=None, v=0):
+        """Master Buoyant: F_U_Bi_i = M * (Ug_i - Ub_i + Ui_i)"""
+        import numpy as np
+        G, rho_vac, k_eta, c = 6.674e-11, 7.09e-36, 1e-113, 2.998e8
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None: r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        V = (4/3) * np.pi * r**3
+        Ug = G * M / r**2
+        Ub = (rho_vac * V * Ug) / M
+        Ui = -k_eta * rho_vac * V * (v / c)**2
+        a_net = Ug - Ub + Ui
+        return {'F_U_Bi_i': M * a_net, 'Ug': Ug, 'Ub': Ub, 'Ui': Ui, 'a_net': a_net}
+    
+
+=== LINE 21144 | CLASS: UniversalGravityModel ===
+    def compute_master_buoyant_equation(self, r=None, v=0):
+        """Master Buoyant: F_U_Bi_i = M * (Ug_i - Ub_i + Ui_i)"""
+        import numpy as np
+        G, rho_vac, k_eta, c = 6.674e-11, 7.09e-36, 1e-113, 2.998e8
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None: r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        V = (4/3) * np.pi * r**3
+        Ug = G * M / r**2
+        Ub = (rho_vac * V * Ug) / M
+        Ui = -k_eta * rho_vac * V * (v / c)**2
+        a_net = Ug - Ub + Ui
+        return {'F_U_Bi_i': M * a_net, 'Ug': Ug, 'Ub': Ub, 'Ui': Ui, 'a_net': a_net}
+    
+
+=== LINE 21629 | CLASS: UniversalMagnetismModel ===
+    def compute_master_buoyant_equation(self, r=None, v=0):
+        """Master Buoyant: F_U_Bi_i = M * (Ug_i - Ub_i + Ui_i)"""
+        import numpy as np
+        G, rho_vac, k_eta, c = 6.674e-11, 7.09e-36, 1e-113, 2.998e8
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None: r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        V = (4/3) * np.pi * r**3
+        Ug = G * M / r**2
+        Ub = (rho_vac * V * Ug) / M
+        Ui = -k_eta * rho_vac * V * (v / c)**2
+        a_net = Ug - Ub + Ui
+        return {'F_U_Bi_i': M * a_net, 'Ug': Ug, 'Ub': Ub, 'Ui': Ui, 'a_net': a_net}
+    
+
+=== LINE 22285 | CLASS: MagneticStringModel ===
+    def compute_master_buoyant_equation(self, r=None, v=0):
+        """Master Buoyant: F_U_Bi_i = M * (Ug_i - Ub_i + Ui_i)"""
+        import numpy as np
+        G, rho_vac, k_eta, c = 6.674e-11, 7.09e-36, 1e-113, 2.998e8
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None: r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        V = (4/3) * np.pi * r**3
+        Ug = G * M / r**2
+        Ub = (rho_vac * V * Ug) / M
+        Ui = -k_eta * rho_vac * V * (v / c)**2
+        a_net = Ug - Ub + Ui
+        return {'F_U_Bi_i': M * a_net, 'Ug': Ug, 'Ub': Ub, 'Ui': Ui, 'a_net': a_net}
+    
+
+=== LINE 22724 | CLASS: HeavisideComponentModel ===
+    def compute_master_buoyant_equation(self, r=None, v=0):
+        """Master Buoyant: F_U_Bi_i = M * (Ug_i - Ub_i + Ui_i)"""
+        import numpy as np
+        G, rho_vac, k_eta, c = 6.674e-11, 7.09e-36, 1e-113, 2.998e8
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None: r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        V = (4/3) * np.pi * r**3
+        Ug = G * M / r**2
+        Ub = (rho_vac * V * Ug) / M
+        Ui = -k_eta * rho_vac * V * (v / c)**2
+        a_net = Ug - Ub + Ui
+        return {'F_U_Bi_i': M * a_net, 'Ug': Ug, 'Ub': Ub, 'Ui': Ui, 'a_net': a_net}
+    
+
+=== LINE 23276 | CLASS: HeliosphereThicknessModel ===
+    def compute_master_buoyant_equation(self, r=None, v=0):
+        """Master Buoyant: F_U_Bi_i = M * (Ug_i - Ub_i + Ui_i)"""
+        import numpy as np
+        G, rho_vac, k_eta, c = 6.674e-11, 7.09e-36, 1e-113, 2.998e8
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None: r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        V = (4/3) * np.pi * r**3
+        Ug = G * M / r**2
+        Ub = (rho_vac * V * Ug) / M
+        Ui = -k_eta * rho_vac * V * (v / c)**2
+        a_net = Ug - Ub + Ui
+        return {'F_U_Bi_i': M * a_net, 'Ug': Ug, 'Ub': Ub, 'Ui': Ui, 'a_net': a_net}
+    
+
+=== LINE 23986 | CLASS: UniversalInertiaModel ===
+    def compute_master_buoyant_equation(self, r=None, v=0):
+        """Master Buoyant: F_U_Bi_i = M * (Ug_i - Ub_i + Ui_i)"""
+        import numpy as np
+        G, rho_vac, k_eta, c = 6.674e-11, 7.09e-36, 1e-113, 2.998e8
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None: r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        V = (4/3) * np.pi * r**3
+        Ug = G * M / r**2
+        Ub = (rho_vac * V * Ug) / M
+        Ui = -k_eta * rho_vac * V * (v / c)**2
+        a_net = Ug - Ub + Ui
+        return {'F_U_Bi_i': M * a_net, 'Ug': Ug, 'Ub': Ub, 'Ui': Ui, 'a_net': a_net}
+    
+
+=== LINE 24596 | CLASS: UniversalInertiaVacuumModel ===
+    def compute_master_buoyant_equation(self, r=None, v=0):
+        """Master Buoyant: F_U_Bi_i = M * (Ug_i - Ub_i + Ui_i)"""
+        import numpy as np
+        G, rho_vac, k_eta, c = 6.674e-11, 7.09e-36, 1e-113, 2.998e8
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None: r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        V = (4/3) * np.pi * r**3
+        Ug = G * M / r**2
+        Ub = (rho_vac * V * Ug) / M
+        Ui = -k_eta * rho_vac * V * (v / c)**2
+        a_net = Ug - Ub + Ui
+        return {'F_U_Bi_i': M * a_net, 'Ug': Ug, 'Ub': Ub, 'Ui': Ui, 'a_net': a_net}
+    
+
+=== LINE 26053 | CLASS: SuperconductiveMaterialVacuumModel ===
+    def compute_master_buoyant_equation(self, r=None, v=0):
+        """Master Buoyant: F_U_Bi_i = M * (Ug_i - Ub_i + Ui_i)"""
+        import numpy as np
+        G, rho_vac, k_eta, c = 6.674e-11, 7.09e-36, 1e-113, 2.998e8
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None: r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        V = (4/3) * np.pi * r**3
+        Ug = G * M / r**2
+        Ub = (rho_vac * V * Ug) / M
+        Ui = -k_eta * rho_vac * V * (v / c)**2
+        a_net = Ug - Ub + Ui
+        return {'F_U_Bi_i': M * a_net, 'Ug': Ug, 'Ub': Ub, 'Ui': Ui, 'a_net': a_net}
+    
+
+=== LINE 27445 | CLASS: StandardModelUQFFModel ===
+    def compute_master_buoyant_equation(self, params=None) -> dict:
+        """UQFF Master Buoyant (F_U_Bi_i): Cosmic-scale buoyancy integral"""
+        buoyant = self.compute_buoyant_equation(params)
+        Omega_g = CONSTANTS.get('Omega_g', 7.3e-16)
+        f_TRZ = CONSTANTS.get('f_TRZ', 0.1)
+        F_U_Bi_i = buoyant['F_Bi'] * (1 + f_TRZ) / (1 - Omega_g)
+        return {'F_U_Bi_i': F_U_Bi_i, 'F_Bi': buoyant['F_Bi'], 'Omega_g': Omega_g, 'f_TRZ': f_TRZ}
+    
+
+=== LINE 28068 | CLASS: UnifiedFieldEquation ===
+    def compute_master_buoyant_equation(self, r=None, v=0):
+        """Master Buoyant: F_U_Bi_i = M * (Ug_i - Ub_i + Ui_i)"""
+        import numpy as np
+        G, rho_vac, k_eta, c = 6.674e-11, 7.09e-36, 1e-113, 2.998e8
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None: r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        V = (4/3) * np.pi * r**3
+        Ug = G * M / r**2
+        Ub = (rho_vac * V * Ug) / M
+        Ui = -k_eta * rho_vac * V * (v / c)**2
+        a_net = Ug - Ub + Ui
+        return {'F_U_Bi_i': M * a_net, 'Ug': Ug, 'Ub': Ub, 'Ui': Ui, 'a_net': a_net}
+    
+
+=== LINE 28922 | CLASS: TimeReversalZoneModel ===
+    def compute_master_buoyant_equation(self, r=None, v=0):
+        """Master Buoyant: F_U_Bi_i = M * (Ug_i - Ub_i + Ui_i)"""
+        import numpy as np
+        G, rho_vac, k_eta, c = 6.674e-11, 7.09e-36, 1e-113, 2.998e8
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None: r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        V = (4/3) * np.pi * r**3
+        Ug = G * M / r**2
+        Ub = (rho_vac * V * Ug) / M
+        Ui = -k_eta * rho_vac * V * (v / c)**2
+        a_net = Ug - Ub + Ui
+        return {'F_U_Bi_i': M * a_net, 'Ug': Ug, 'Ub': Ub, 'Ui': Ui, 'a_net': a_net}
+    
+
+=== LINE 29527 | CLASS: MSigmaRelationModel ===
+    def compute_master_buoyant_equation(self, r=None, v=0):
+        """Master Buoyant: F_U_Bi_i = M * (Ug_i - Ub_i + Ui_i)"""
+        import numpy as np
+        G, rho_vac, k_eta, c = 6.674e-11, 7.09e-36, 1e-113, 2.998e8
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None: r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        V = (4/3) * np.pi * r**3
+        Ug = G * M / r**2
+        Ub = (rho_vac * V * Ug) / M
+        Ui = -k_eta * rho_vac * V * (v / c)**2
+        a_net = Ug - Ub + Ui
+        return {'F_U_Bi_i': M * a_net, 'Ug': Ug, 'Ub': Ub, 'Ui': Ui, 'a_net': a_net}
+    
+
+=== LINE 30154 | CLASS: FinalParsecProblemModel ===
+    def compute_master_buoyant_equation(self, r=None, v=0):
+        """Master Buoyant: F_U_Bi_i = M * (Ug_i - Ub_i + Ui_i)"""
+        import numpy as np
+        G, rho_vac, k_eta, c = 6.674e-11, 7.09e-36, 1e-113, 2.998e8
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None: r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        V = (4/3) * np.pi * r**3
+        Ug = G * M / r**2
+        Ub = (rho_vac * V * Ug) / M
+        Ui = -k_eta * rho_vac * V * (v / c)**2
+        a_net = Ug - Ub + Ui
+        return {'F_U_Bi_i': M * a_net, 'Ug': Ug, 'Ub': Ub, 'Ui': Ui, 'a_net': a_net}
+    
+
+=== LINE 30663 | CLASS: CGMMetalRetentionModel ===
+    def compute_master_buoyant_equation(self, r=None, v=0):
+        """Master Buoyant: F_U_Bi_i = M * (Ug_i - Ub_i + Ui_i)"""
+        import numpy as np
+        G, rho_vac, k_eta, c = 6.674e-11, 7.09e-36, 1e-113, 2.998e8
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None: r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        V = (4/3) * np.pi * r**3
+        Ug = G * M / r**2
+        Ub = (rho_vac * V * Ug) / M
+        Ui = -k_eta * rho_vac * V * (v / c)**2
+        a_net = Ug - Ub + Ui
+        return {'F_U_Bi_i': M * a_net, 'Ug': Ug, 'Ub': Ub, 'Ui': Ui, 'a_net': a_net}
+    
+
+=== LINE 31113 | CLASS: CosmicDynamicsIntegrationModel ===
+    def compute_master_buoyant_equation(self, r=None, v=0):
+        """Master Buoyant: F_U_Bi_i = M * (Ug_i - Ub_i + Ui_i)"""
+        import numpy as np
+        G, rho_vac, k_eta, c = 6.674e-11, 7.09e-36, 1e-113, 2.998e8
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None: r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        V = (4/3) * np.pi * r**3
+        Ug = G * M / r**2
+        Ub = (rho_vac * V * Ug) / M
+        Ui = -k_eta * rho_vac * V * (v / c)**2
+        a_net = Ug - Ub + Ui
+        return {'F_U_Bi_i': M * a_net, 'Ug': Ug, 'Ub': Ub, 'Ui': Ui, 'a_net': a_net}
+    
+
+=== LINE 31675 | CLASS: FastRadioBurstModel ===
+    def compute_master_buoyant_equation(self, r=None, v=0):
+        """Master Buoyant: F_U_Bi_i = M * (Ug_i - Ub_i + Ui_i)"""
+        import numpy as np
+        G, rho_vac, k_eta, c = 6.674e-11, 7.09e-36, 1e-113, 2.998e8
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None: r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        V = (4/3) * np.pi * r**3
+        Ug = G * M / r**2
+        Ub = (rho_vac * V * Ug) / M
+        Ui = -k_eta * rho_vac * V * (v / c)**2
+        a_net = Ug - Ub + Ui
+        return {'F_U_Bi_i': M * a_net, 'Ug': Ug, 'Ub': Ub, 'Ui': Ui, 'a_net': a_net}
+    
+
+=== LINE 32183 | CLASS: WhittakerDecompositionModel ===
+    def compute_master_buoyant_equation(self, r=None, v=0):
+        """Master Buoyant: F_U_Bi_i = M * (Ug_i - Ub_i + Ui_i)"""
+        import numpy as np
+        G, rho_vac, k_eta, c = 6.674e-11, 7.09e-36, 1e-113, 2.998e8
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None: r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        V = (4/3) * np.pi * r**3
+        Ug = G * M / r**2
+        Ub = (rho_vac * V * Ug) / M
+        Ui = -k_eta * rho_vac * V * (v / c)**2
+        a_net = Ug - Ub + Ui
+        return {'F_U_Bi_i': M * a_net, 'Ug': Ug, 'Ub': Ub, 'Ui': Ui, 'a_net': a_net}
+    
+
+=== LINE 32652 | CLASS: BigBangOriginModel ===
+    def compute_master_buoyant_equation(self, r=None, v=0):
+        """Master Buoyant: F_U_Bi_i = M * (Ug_i - Ub_i + Ui_i)"""
+        import numpy as np
+        G, rho_vac, k_eta, c = 6.674e-11, 7.09e-36, 1e-113, 2.998e8
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None: r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        V = (4/3) * np.pi * r**3
+        Ug = G * M / r**2
+        Ub = (rho_vac * V * Ug) / M
+        Ui = -k_eta * rho_vac * V * (v / c)**2
+        a_net = Ug - Ub + Ui
+        return {'F_U_Bi_i': M * a_net, 'Ug': Ug, 'Ub': Ub, 'Ui': Ui, 'a_net': a_net}
+    
+
+=== LINE 33407 | CLASS: CosmicEggHypergraphModel ===
+    def compute_master_buoyant_equation(self, r=None, v=0):
+        """Master Buoyant: F_U_Bi_i = M * (Ug_i - Ub_i + Ui_i)"""
+        import numpy as np
+        G, rho_vac, k_eta, c = 6.674e-11, 7.09e-36, 1e-113, 2.998e8
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None: r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        V = (4/3) * np.pi * r**3
+        Ug = G * M / r**2
+        Ub = (rho_vac * V * Ug) / M
+        Ui = -k_eta * rho_vac * V * (v / c)**2
+        a_net = Ug - Ub + Ui
+        return {'F_U_Bi_i': M * a_net, 'Ug': Ug, 'Ub': Ub, 'Ui': Ui, 'a_net': a_net}
+    
+
+=== LINE 33904 | CLASS: PlasmaShieldCaptureModel ===
+    def compute_master_buoyant_equation(self, r=None, v=0):
+        """Master Buoyant: F_U_Bi_i = M * (Ug_i - Ub_i + Ui_i)"""
+        import numpy as np
+        G, rho_vac, k_eta, c = 6.674e-11, 7.09e-36, 1e-113, 2.998e8
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None: r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        V = (4/3) * np.pi * r**3
+        Ug = G * M / r**2
+        Ub = (rho_vac * V * Ug) / M
+        Ui = -k_eta * rho_vac * V * (v / c)**2
+        a_net = Ug - Ub + Ui
+        return {'F_U_Bi_i': M * a_net, 'Ug': Ug, 'Ub': Ub, 'Ui': Ui, 'a_net': a_net}
+    
+
+=== LINE 34936 | CLASS: BlackHolePhasesModel ===
+    def compute_master_buoyant_equation(self, r=None, v=0):
+        """Master Buoyant: F_U_Bi_i = M * (Ug_i - Ub_i + Ui_i)"""
+        import numpy as np
+        G, rho_vac, k_eta, c = 6.674e-11, 7.09e-36, 1e-113, 2.998e8
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None: r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        V = (4/3) * np.pi * r**3
+        Ug = G * M / r**2
+        Ub = (rho_vac * V * Ug) / M
+        Ui = -k_eta * rho_vac * V * (v / c)**2
+        a_net = Ug - Ub + Ui
+        return {'F_U_Bi_i': M * a_net, 'Ug': Ug, 'Ub': Ub, 'Ui': Ui, 'a_net': a_net}
+    
+
+=== LINE 46291 | CLASS: TerahertzHolesModel ===
+    def compute_master_buoyant_equation(self, r=None, v=0):
+        """Master Buoyant: F_U_Bi_i = M * (Ug_i - Ub_i + Ui_i)"""
+        import numpy as np
+        G, rho_vac, k_eta, c = 6.674e-11, 7.09e-36, 1e-113, 2.998e8
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None: r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        V = (4/3) * np.pi * r**3
+        Ug = G * M / r**2
+        Ub = (rho_vac * V * Ug) / M
+        Ui = -k_eta * rho_vac * V * (v / c)**2
+        a_net = Ug - Ub + Ui
+        return {'F_U_Bi_i': M * a_net, 'Ug': Ug, 'Ub': Ub, 'Ui': Ui, 'a_net': a_net}
+    
+
+=== LINE 46846 | CLASS: InertialOperatorModel ===
+    def compute_master_buoyant_equation(self, r=None, v=0):
+        """Master Buoyant: F_U_Bi_i = M * (Ug_i - Ub_i + Ui_i)"""
+        import numpy as np
+        G, rho_vac, k_eta, c = 6.674e-11, 7.09e-36, 1e-113, 2.998e8
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None: r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        V = (4/3) * np.pi * r**3
+        Ug = G * M / r**2
+        Ub = (rho_vac * V * Ug) / M
+        Ui = -k_eta * rho_vac * V * (v / c)**2
+        a_net = Ug - Ub + Ui
+        return {'F_U_Bi_i': M * a_net, 'Ug': Ug, 'Ub': Ub, 'Ui': Ui, 'a_net': a_net}
+    
+
+=== LINE 47363 | CLASS: CaduceusQuantumWaveModel ===
+    def compute_master_buoyant_equation(self, r=None, v=0):
+        """Master Buoyant: F_U_Bi_i = M * (Ug_i - Ub_i + Ui_i)"""
+        import numpy as np
+        G, rho_vac, k_eta, c = 6.674e-11, 7.09e-36, 1e-113, 2.998e8
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None: r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        V = (4/3) * np.pi * r**3
+        Ug = G * M / r**2
+        Ub = (rho_vac * V * Ug) / M
+        Ui = -k_eta * rho_vac * V * (v / c)**2
+        a_net = Ug - Ub + Ui
+        return {'F_U_Bi_i': M * a_net, 'Ug': Ug, 'Ub': Ub, 'Ui': Ui, 'a_net': a_net}
+    
+
+=== LINE 47900 | CLASS: GlobularClusterStructureModel ===
+    def compute_master_buoyant_equation(self, r=None, v=0):
+        """Master Buoyant: F_U_Bi_i = M * (Ug_i - Ub_i + Ui_i)"""
+        import numpy as np
+        G, rho_vac, k_eta, c = 6.674e-11, 7.09e-36, 1e-113, 2.998e8
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None: r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        V = (4/3) * np.pi * r**3
+        Ug = G * M / r**2
+        Ub = (rho_vac * V * Ug) / M
+        Ui = -k_eta * rho_vac * V * (v / c)**2
+        a_net = Ug - Ub + Ui
+        return {'F_U_Bi_i': M * a_net, 'Ug': Ug, 'Ub': Ub, 'Ui': Ui, 'a_net': a_net}
+    
+
+=== LINE 48472 | CLASS: HiggsSCmIntegrationModel ===
+    def compute_master_buoyant_equation(self, r=None, v=0):
+        """Master Buoyant: F_U_Bi_i = M * (Ug_i - Ub_i + Ui_i)"""
+        import numpy as np
+        G, rho_vac, k_eta, c = 6.674e-11, 7.09e-36, 1e-113, 2.998e8
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None: r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        V = (4/3) * np.pi * r**3
+        Ug = G * M / r**2
+        Ub = (rho_vac * V * Ug) / M
+        Ui = -k_eta * rho_vac * V * (v / c)**2
+        a_net = Ug - Ub + Ui
+        return {'F_U_Bi_i': M * a_net, 'Ug': Ug, 'Ub': Ub, 'Ui': Ui, 'a_net': a_net}
+    
+
+=== LINE 49006 | CLASS: DEVacuumPowerModel ===
+    def compute_master_buoyant_equation(self, r=None, v=0):
+        """Master Buoyant: F_U_Bi_i = M * (Ug_i - Ub_i + Ui_i)"""
+        import numpy as np
+        G, rho_vac, k_eta, c = 6.674e-11, 7.09e-36, 1e-113, 2.998e8
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None: r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        V = (4/3) * np.pi * r**3
+        Ug = G * M / r**2
+        Ub = (rho_vac * V * Ug) / M
+        Ui = -k_eta * rho_vac * V * (v / c)**2
+        a_net = Ug - Ub + Ui
+        return {'F_U_Bi_i': M * a_net, 'Ug': Ug, 'Ub': Ub, 'Ui': Ui, 'a_net': a_net}
+    
+
+=== LINE 49530 | CLASS: MaxwellComponentFormModel ===
+    def compute_master_buoyant_equation(self, r=None, v=0):
+        """Master Buoyant: F_U_Bi_i = M * (Ug_i - Ub_i + Ui_i)"""
+        import numpy as np
+        G, rho_vac, k_eta, c = 6.674e-11, 7.09e-36, 1e-113, 2.998e8
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None: r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        V = (4/3) * np.pi * r**3
+        Ug = G * M / r**2
+        Ub = (rho_vac * V * Ug) / M
+        Ui = -k_eta * rho_vac * V * (v / c)**2
+        a_net = Ug - Ub + Ui
+        return {'F_U_Bi_i': M * a_net, 'Ug': Ug, 'Ub': Ub, 'Ui': Ui, 'a_net': a_net}
+    
+
+=== LINE 50057 | CLASS: ProtonSaturationLevelsModel ===
+    def compute_master_buoyant_equation(self, r=None, v=0):
+        """Master Buoyant: F_U_Bi_i = M * (Ug_i - Ub_i + Ui_i)"""
+        import numpy as np
+        G, rho_vac, k_eta, c = 6.674e-11, 7.09e-36, 1e-113, 2.998e8
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None: r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        V = (4/3) * np.pi * r**3
+        Ug = G * M / r**2
+        Ub = (rho_vac * V * Ug) / M
+        Ui = -k_eta * rho_vac * V * (v / c)**2
+        a_net = Ug - Ub + Ui
+        return {'F_U_Bi_i': M * a_net, 'Ug': Ug, 'Ub': Ub, 'Ui': Ui, 'a_net': a_net}
+    
+
+=== LINE 50559 | CLASS: ERBridgeStateTransitionModel ===
+    def compute_master_buoyant_equation(self, r=None, v=0):
+        """Master Buoyant: F_U_Bi_i = M * (Ug_i - Ub_i + Ui_i)"""
+        import numpy as np
+        G, rho_vac, k_eta, c = 6.674e-11, 7.09e-36, 1e-113, 2.998e8
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None: r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        V = (4/3) * np.pi * r**3
+        Ug = G * M / r**2
+        Ub = (rho_vac * V * Ug) / M
+        Ui = -k_eta * rho_vac * V * (v / c)**2
+        a_net = Ug - Ub + Ui
+        return {'F_U_Bi_i': M * a_net, 'Ug': Ug, 'Ub': Ub, 'Ui': Ui, 'a_net': a_net}
+    
+
+=== LINE 51075 | CLASS: MultiScaleGravityModel ===
+    def compute_master_buoyant_equation(self, r=None, v=0):
+        """Master Buoyant: F_U_Bi_i = M * (Ug_i - Ub_i + Ui_i)"""
+        import numpy as np
+        G, rho_vac, k_eta, c = 6.674e-11, 7.09e-36, 1e-113, 2.998e8
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None: r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        V = (4/3) * np.pi * r**3
+        Ug = G * M / r**2
+        Ub = (rho_vac * V * Ug) / M
+        Ui = -k_eta * rho_vac * V * (v / c)**2
+        a_net = Ug - Ub + Ui
+        return {'F_U_Bi_i': M * a_net, 'Ug': Ug, 'Ub': Ub, 'Ui': Ui, 'a_net': a_net}
+    
+
+=== LINE 51648 | CLASS: AetherBlueQualitiesModel ===
+    def compute_master_buoyant_equation(self, r=None, v=0):
+        """Master Buoyant: F_U_Bi_i = M * (Ug_i - Ub_i + Ui_i)"""
+        import numpy as np
+        G, rho_vac, k_eta, c = 6.674e-11, 7.09e-36, 1e-113, 2.998e8
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None: r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        V = (4/3) * np.pi * r**3
+        Ug = G * M / r**2
+        Ub = (rho_vac * V * Ug) / M
+        Ui = -k_eta * rho_vac * V * (v / c)**2
+        a_net = Ug - Ub + Ui
+        return {'F_U_Bi_i': M * a_net, 'Ug': Ug, 'Ub': Ub, 'Ui': Ui, 'a_net': a_net}
+    
+
+=== LINE 52153 | CLASS: AGNFeedbackModel ===
+    def compute_master_buoyant_equation(self, r=None, v=0):
+        """Master Buoyant: F_U_Bi_i = M * (Ug_i - Ub_i + Ui_i)"""
+        import numpy as np
+        G, rho_vac, k_eta, c = 6.674e-11, 7.09e-36, 1e-113, 2.998e8
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None: r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        V = (4/3) * np.pi * r**3
+        Ug = G * M / r**2
+        Ub = (rho_vac * V * Ug) / M
+        Ui = -k_eta * rho_vac * V * (v / c)**2
+        a_net = Ug - Ub + Ui
+        return {'F_U_Bi_i': M * a_net, 'Ug': Ug, 'Ub': Ub, 'Ui': Ui, 'a_net': a_net}
+    
+
+=== LINE 52627 | CLASS: CGMBaryonFractionModel ===
+    def compute_master_buoyant_equation(self, r=None, v=0):
+        """Master Buoyant: F_U_Bi_i = M * (Ug_i - Ub_i + Ui_i)"""
+        import numpy as np
+        G, rho_vac, k_eta, c = 6.674e-11, 7.09e-36, 1e-113, 2.998e8
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None: r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        V = (4/3) * np.pi * r**3
+        Ug = G * M / r**2
+        Ub = (rho_vac * V * Ug) / M
+        Ui = -k_eta * rho_vac * V * (v / c)**2
+        a_net = Ug - Ub + Ui
+        return {'F_U_Bi_i': M * a_net, 'Ug': Ug, 'Ub': Ub, 'Ui': Ui, 'a_net': a_net}
+    
+
+=== LINE 53189 | CLASS: CompleteUnifiedFieldModel ===
+    def compute_master_buoyant_equation(self, r=None, v=0):
+        """Master Buoyant: F_U_Bi_i = M * (Ug_i - Ub_i + Ui_i)"""
+        import numpy as np
+        G, rho_vac, k_eta, c = 6.674e-11, 7.09e-36, 1e-113, 2.998e8
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None: r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        V = (4/3) * np.pi * r**3
+        Ug = G * M / r**2
+        Ub = (rho_vac * V * Ug) / M
+        Ui = -k_eta * rho_vac * V * (v / c)**2
+        a_net = Ug - Ub + Ui
+        return {'F_U_Bi_i': M * a_net, 'Ug': Ug, 'Ub': Ub, 'Ui': Ui, 'a_net': a_net}
+    
+
+=== LINE 53723 | CLASS: VacuumEnergyDensitySummaryModel ===
+    def compute_master_buoyant_equation(self, r=None, v=0):
+        """Master Buoyant: F_U_Bi_i = M * (Ug_i - Ub_i + Ui_i)"""
+        import numpy as np
+        G, rho_vac, k_eta, c = 6.674e-11, 7.09e-36, 1e-113, 2.998e8
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None: r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        V = (4/3) * np.pi * r**3
+        Ug = G * M / r**2
+        Ub = (rho_vac * V * Ug) / M
+        Ui = -k_eta * rho_vac * V * (v / c)**2
+        a_net = Ug - Ub + Ui
+        return {'F_U_Bi_i': M * a_net, 'Ug': Ug, 'Ub': Ub, 'Ui': Ui, 'a_net': a_net}
+    
+
+=== LINE 54241 | CLASS: PseudoMonopoleModel ===
+    def compute_master_buoyant_equation(self, r=None, v=0):
+        """Master Buoyant: F_U_Bi_i = M * (Ug_i - Ub_i + Ui_i)"""
+        import numpy as np
+        G, rho_vac, k_eta, c = 6.674e-11, 7.09e-36, 1e-113, 2.998e8
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None: r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        V = (4/3) * np.pi * r**3
+        Ug = G * M / r**2
+        Ub = (rho_vac * V * Ug) / M
+        Ui = -k_eta * rho_vac * V * (v / c)**2
+        a_net = Ug - Ub + Ui
+        return {'F_U_Bi_i': M * a_net, 'Ug': Ug, 'Ub': Ub, 'Ui': Ui, 'a_net': a_net}
+    
+
+=== LINE 54726 | CLASS: USPRModel ===
+    def compute_master_buoyant_equation(self, r=None, v=0):
+        """Master Buoyant: F_U_Bi_i = M * (Ug_i - Ub_i + Ui_i)"""
+        import numpy as np
+        G, rho_vac, k_eta, c = 6.674e-11, 7.09e-36, 1e-113, 2.998e8
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None: r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        V = (4/3) * np.pi * r**3
+        Ug = G * M / r**2
+        Ub = (rho_vac * V * Ug) / M
+        Ui = -k_eta * rho_vac * V * (v / c)**2
+        a_net = Ug - Ub + Ui
+        return {'F_U_Bi_i': M * a_net, 'Ug': Ug, 'Ub': Ub, 'Ui': Ui, 'a_net': a_net}
+    
+
+=== LINE 55181 | CLASS: UniversalBuoyancyInteractionModel ===
+    def compute_master_buoyant_equation(self, r=None, v=0):
+        """Master Buoyant: F_U_Bi_i = M * (Ug_i - Ub_i + Ui_i)"""
+        import numpy as np
+        G, rho_vac, k_eta, c = 6.674e-11, 7.09e-36, 1e-113, 2.998e8
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None: r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        V = (4/3) * np.pi * r**3
+        Ug = G * M / r**2
+        Ub = (rho_vac * V * Ug) / M
+        Ui = -k_eta * rho_vac * V * (v / c)**2
+        a_net = Ug - Ub + Ui
+        return {'F_U_Bi_i': M * a_net, 'Ug': Ug, 'Ub': Ub, 'Ui': Ui, 'a_net': a_net}
+    
+
+=== LINE 55632 | CLASS: HillSphereModel ===
+    def compute_master_buoyant_equation(self, r=None, v=0):
+        """Master Buoyant: F_U_Bi_i = M * (Ug_i - Ub_i + Ui_i)"""
+        import numpy as np
+        G, rho_vac, k_eta, c = 6.674e-11, 7.09e-36, 1e-113, 2.998e8
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None: r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        V = (4/3) * np.pi * r**3
+        Ug = G * M / r**2
+        Ub = (rho_vac * V * Ug) / M
+        Ui = -k_eta * rho_vac * V * (v / c)**2
+        a_net = Ug - Ub + Ui
+        return {'F_U_Bi_i': M * a_net, 'Ug': Ug, 'Ub': Ub, 'Ui': Ui, 'a_net': a_net}
+    
+
+=== LINE 56091 | CLASS: OortCloudBoundaryModel ===
+    def compute_master_buoyant_equation(self, r=None, v=0):
+        """Master Buoyant: F_U_Bi_i = M * (Ug_i - Ub_i + Ui_i)"""
+        import numpy as np
+        G, rho_vac, k_eta, c = 6.674e-11, 7.09e-36, 1e-113, 2.998e8
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None: r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        V = (4/3) * np.pi * r**3
+        Ug = G * M / r**2
+        Ub = (rho_vac * V * Ug) / M
+        Ui = -k_eta * rho_vac * V * (v / c)**2
+        a_net = Ug - Ub + Ui
+        return {'F_U_Bi_i': M * a_net, 'Ug': Ug, 'Ub': Ub, 'Ui': Ui, 'a_net': a_net}
+    
+
+=== LINE 56609 | CLASS: CrystallineGalaxyModel ===
+    def compute_master_buoyant_equation(self, r=None, v=0):
+        """Master Buoyant: F_U_Bi_i = M * (Ug_i - Ub_i + Ui_i)"""
+        import numpy as np
+        G, rho_vac, k_eta, c = 6.674e-11, 7.09e-36, 1e-113, 2.998e8
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None: r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        V = (4/3) * np.pi * r**3
+        Ug = G * M / r**2
+        Ub = (rho_vac * V * Ug) / M
+        Ui = -k_eta * rho_vac * V * (v / c)**2
+        a_net = Ug - Ub + Ui
+        return {'F_U_Bi_i': M * a_net, 'Ug': Ug, 'Ub': Ub, 'Ui': Ui, 'a_net': a_net}
+    
+
+=== LINE 57091 | CLASS: BlackHoleTriangulationModel ===
+    def compute_master_buoyant_equation(self, r=None, v=0):
+        """Master Buoyant: F_U_Bi_i = M * (Ug_i - Ub_i + Ui_i)"""
+        import numpy as np
+        G, rho_vac, k_eta, c = 6.674e-11, 7.09e-36, 1e-113, 2.998e8
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None: r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        V = (4/3) * np.pi * r**3
+        Ug = G * M / r**2
+        Ub = (rho_vac * V * Ug) / M
+        Ui = -k_eta * rho_vac * V * (v / c)**2
+        a_net = Ug - Ub + Ui
+        return {'F_U_Bi_i': M * a_net, 'Ug': Ug, 'Ub': Ub, 'Ui': Ui, 'a_net': a_net}
+    
+
+=== LINE 57597 | CLASS: StellarEquilibriumModel ===
+    def compute_master_buoyant_equation(self, r=None, v=0):
+        """Master Buoyant: F_U_Bi_i = M * (Ug_i - Ub_i + Ui_i)"""
+        import numpy as np
+        G, rho_vac, k_eta, c = 6.674e-11, 7.09e-36, 1e-113, 2.998e8
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None: r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        V = (4/3) * np.pi * r**3
+        Ug = G * M / r**2
+        Ub = (rho_vac * V * Ug) / M
+        Ui = -k_eta * rho_vac * V * (v / c)**2
+        a_net = Ug - Ub + Ui
+        return {'F_U_Bi_i': M * a_net, 'Ug': Ug, 'Ub': Ub, 'Ui': Ui, 'a_net': a_net}
+    
+
+=== LINE 58112 | CLASS: DensityWaveModel ===
+    def compute_master_buoyant_equation(self, r=None, v=0):
+        """Master Buoyant: F_U_Bi_i = M * (Ug_i - Ub_i + Ui_i)"""
+        import numpy as np
+        G, rho_vac, k_eta, c = 6.674e-11, 7.09e-36, 1e-113, 2.998e8
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None: r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        V = (4/3) * np.pi * r**3
+        Ug = G * M / r**2
+        Ub = (rho_vac * V * Ug) / M
+        Ui = -k_eta * rho_vac * V * (v / c)**2
+        a_net = Ug - Ub + Ui
+        return {'F_U_Bi_i': M * a_net, 'Ug': Ug, 'Ub': Ub, 'Ui': Ui, 'a_net': a_net}
+    
+
+=== LINE 58551 | CLASS: DensityWaveCrystallineCouplingModel ===
+    def compute_master_buoyant_equation(self, r=None, v=0):
+        """Master Buoyant: F_U_Bi_i = M * (Ug_i - Ub_i + Ui_i)"""
+        import numpy as np
+        G, rho_vac, k_eta, c = 6.674e-11, 7.09e-36, 1e-113, 2.998e8
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None: r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        V = (4/3) * np.pi * r**3
+        Ug = G * M / r**2
+        Ub = (rho_vac * V * Ug) / M
+        Ui = -k_eta * rho_vac * V * (v / c)**2
+        a_net = Ug - Ub + Ui
+        return {'F_U_Bi_i': M * a_net, 'Ug': Ug, 'Ub': Ub, 'Ui': Ui, 'a_net': a_net}
+    
+
+=== LINE 59042 | CLASS: USPRStellarConnectionModel ===
+    def compute_master_buoyant_equation(self, r=None, v=0):
+        """Master Buoyant: F_U_Bi_i = M * (Ug_i - Ub_i + Ui_i)"""
+        import numpy as np
+        G, rho_vac, k_eta, c = 6.674e-11, 7.09e-36, 1e-113, 2.998e8
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None: r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        V = (4/3) * np.pi * r**3
+        Ug = G * M / r**2
+        Ub = (rho_vac * V * Ug) / M
+        Ui = -k_eta * rho_vac * V * (v / c)**2
+        a_net = Ug - Ub + Ui
+        return {'F_U_Bi_i': M * a_net, 'Ug': Ug, 'Ub': Ub, 'Ui': Ui, 'a_net': a_net}
+    
+
+=== LINE 59539 | CLASS: SolarDomainModel ===
+    def compute_master_buoyant_equation(self, r=None, v=0):
+        """Master Buoyant: F_U_Bi_i = M * (Ug_i - Ub_i + Ui_i)"""
+        import numpy as np
+        G, rho_vac, k_eta, c = 6.674e-11, 7.09e-36, 1e-113, 2.998e8
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None: r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        V = (4/3) * np.pi * r**3
+        Ug = G * M / r**2
+        Ub = (rho_vac * V * Ug) / M
+        Ui = -k_eta * rho_vac * V * (v / c)**2
+        a_net = Ug - Ub + Ui
+        return {'F_U_Bi_i': M * a_net, 'Ug': Ug, 'Ub': Ub, 'Ui': Ui, 'a_net': a_net}
+    
+
+=== LINE 60064 | CLASS: BlackHolePseudoMonopoleResonanceModel ===
+    def compute_master_buoyant_equation(self, r=None, v=0):
+        """Master Buoyant: F_U_Bi_i = M * (Ug_i - Ub_i + Ui_i)"""
+        import numpy as np
+        G, rho_vac, k_eta, c = 6.674e-11, 7.09e-36, 1e-113, 2.998e8
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None: r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        V = (4/3) * np.pi * r**3
+        Ug = G * M / r**2
+        Ub = (rho_vac * V * Ug) / M
+        Ui = -k_eta * rho_vac * V * (v / c)**2
+        a_net = Ug - Ub + Ui
+        return {'F_U_Bi_i': M * a_net, 'Ug': Ug, 'Ub': Ub, 'Ui': Ui, 'a_net': a_net}
+    
+
+=== LINE 60593 | CLASS: CorotationResonanceModel ===
+    def compute_master_buoyant_equation(self, r=None, v=0):
+        """Master Buoyant: F_U_Bi_i = M * (Ug_i - Ub_i + Ui_i)"""
+        import numpy as np
+        G, rho_vac, k_eta, c = 6.674e-11, 7.09e-36, 1e-113, 2.998e8
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None: r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        V = (4/3) * np.pi * r**3
+        Ug = G * M / r**2
+        Ub = (rho_vac * V * Ug) / M
+        Ui = -k_eta * rho_vac * V * (v / c)**2
+        a_net = Ug - Ub + Ui
+        return {'F_U_Bi_i': M * a_net, 'Ug': Ug, 'Ub': Ub, 'Ui': Ui, 'a_net': a_net}
+    
+
+=== LINE 61045 | CLASS: GinzburgLandauFieldModel ===
+    def compute_master_buoyant_equation(self, r=None, v=0):
+        """Master Buoyant: F_U_Bi_i = M * (Ug_i - Ub_i + Ui_i)"""
+        import numpy as np
+        G, rho_vac, k_eta, c = 6.674e-11, 7.09e-36, 1e-113, 2.998e8
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None: r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        V = (4/3) * np.pi * r**3
+        Ug = G * M / r**2
+        Ub = (rho_vac * V * Ug) / M
+        Ui = -k_eta * rho_vac * V * (v / c)**2
+        a_net = Ug - Ub + Ui
+        return {'F_U_Bi_i': M * a_net, 'Ug': Ug, 'Ub': Ub, 'Ui': Ui, 'a_net': a_net}
+    
+
+=== LINE 61505 | CLASS: BogoliubovDeGennesModel ===
+    def compute_master_buoyant_equation(self, r=None, v=0):
+        """Master Buoyant: F_U_Bi_i = M * (Ug_i - Ub_i + Ui_i)"""
+        import numpy as np
+        G, rho_vac, k_eta, c = 6.674e-11, 7.09e-36, 1e-113, 2.998e8
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None: r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        V = (4/3) * np.pi * r**3
+        Ug = G * M / r**2
+        Ub = (rho_vac * V * Ug) / M
+        Ui = -k_eta * rho_vac * V * (v / c)**2
+        a_net = Ug - Ub + Ui
+        return {'F_U_Bi_i': M * a_net, 'Ug': Ug, 'Ub': Ub, 'Ui': Ui, 'a_net': a_net}
+    
+
+=== LINE 61957 | CLASS: QWaveResonanceModel ===
+    def compute_master_buoyant_equation(self, r=None, v=0):
+        """Master Buoyant: F_U_Bi_i = M * (Ug_i - Ub_i + Ui_i)"""
+        import numpy as np
+        G, rho_vac, k_eta, c = 6.674e-11, 7.09e-36, 1e-113, 2.998e8
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None: r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        V = (4/3) * np.pi * r**3
+        Ug = G * M / r**2
+        Ub = (rho_vac * V * Ug) / M
+        Ui = -k_eta * rho_vac * V * (v / c)**2
+        a_net = Ug - Ub + Ui
+        return {'F_U_Bi_i': M * a_net, 'Ug': Ug, 'Ub': Ub, 'Ui': Ui, 'a_net': a_net}
+    
+
+=== LINE 62396 | CLASS: TemporalDynamicsModel ===
+    def compute_master_buoyant_equation(self, r=None, v=0):
+        """Master Buoyant: F_U_Bi_i = M * (Ug_i - Ub_i + Ui_i)"""
+        import numpy as np
+        G, rho_vac, k_eta, c = 6.674e-11, 7.09e-36, 1e-113, 2.998e8
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None: r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        V = (4/3) * np.pi * r**3
+        Ug = G * M / r**2
+        Ub = (rho_vac * V * Ug) / M
+        Ui = -k_eta * rho_vac * V * (v / c)**2
+        a_net = Ug - Ub + Ui
+        return {'F_U_Bi_i': M * a_net, 'Ug': Ug, 'Ub': Ub, 'Ui': Ui, 'a_net': a_net}
+    
+
+=== LINE 62815 | CLASS: AmplitudeStabilityModel ===
+    def compute_master_buoyant_equation(self, r=None, v=0):
+        """Master Buoyant: F_U_Bi_i = M * (Ug_i - Ub_i + Ui_i)"""
+        import numpy as np
+        G, rho_vac, k_eta, c = 6.674e-11, 7.09e-36, 1e-113, 2.998e8
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None: r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        V = (4/3) * np.pi * r**3
+        Ug = G * M / r**2
+        Ub = (rho_vac * V * Ug) / M
+        Ui = -k_eta * rho_vac * V * (v / c)**2
+        a_net = Ug - Ub + Ui
+        return {'F_U_Bi_i': M * a_net, 'Ug': Ug, 'Ub': Ub, 'Ui': Ui, 'a_net': a_net}
+    
+
+=== LINE 63241 | CLASS: SuperconductingCoherenceModel ===
+    def compute_master_buoyant_equation(self, r=None, v=0):
+        """Master Buoyant: F_U_Bi_i = M * (Ug_i - Ub_i + Ui_i)"""
+        import numpy as np
+        G, rho_vac, k_eta, c = 6.674e-11, 7.09e-36, 1e-113, 2.998e8
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None: r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        V = (4/3) * np.pi * r**3
+        Ug = G * M / r**2
+        Ub = (rho_vac * V * Ug) / M
+        Ui = -k_eta * rho_vac * V * (v / c)**2
+        a_net = Ug - Ub + Ui
+        return {'F_U_Bi_i': M * a_net, 'Ug': Ug, 'Ub': Ub, 'Ui': Ui, 'a_net': a_net}
+    
+
+=== LINE 63675 | CLASS: GravitationalTimeDilationModel ===
+    def compute_master_buoyant_equation(self, r=None, v=0):
+        """Master Buoyant: F_U_Bi_i = M * (Ug_i - Ub_i + Ui_i)"""
+        import numpy as np
+        G, rho_vac, k_eta, c = 6.674e-11, 7.09e-36, 1e-113, 2.998e8
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None: r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        V = (4/3) * np.pi * r**3
+        Ug = G * M / r**2
+        Ub = (rho_vac * V * Ug) / M
+        Ui = -k_eta * rho_vac * V * (v / c)**2
+        a_net = Ug - Ub + Ui
+        return {'F_U_Bi_i': M * a_net, 'Ug': Ug, 'Ub': Ub, 'Ui': Ui, 'a_net': a_net}
+    
+
+=== LINE 64096 | CLASS: GravitationalRedshiftModel ===
+    def compute_master_buoyant_equation(self, r=None, v=0):
+        """Master Buoyant: F_U_Bi_i = M * (Ug_i - Ub_i + Ui_i)"""
+        import numpy as np
+        G, rho_vac, k_eta, c = 6.674e-11, 7.09e-36, 1e-113, 2.998e8
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None: r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        V = (4/3) * np.pi * r**3
+        Ug = G * M / r**2
+        Ub = (rho_vac * V * Ug) / M
+        Ui = -k_eta * rho_vac * V * (v / c)**2
+        a_net = Ug - Ub + Ui
+        return {'F_U_Bi_i': M * a_net, 'Ug': Ug, 'Ub': Ub, 'Ui': Ui, 'a_net': a_net}
+    
+
+=== LINE 64568 | CLASS: TidalForceModel ===
+    def compute_master_buoyant_equation(self, r=None, v=0):
+        """Master Buoyant: F_U_Bi_i = M * (Ug_i - Ub_i + Ui_i)"""
+        import numpy as np
+        G, rho_vac, k_eta, c = 6.674e-11, 7.09e-36, 1e-113, 2.998e8
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None: r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        V = (4/3) * np.pi * r**3
+        Ug = G * M / r**2
+        Ub = (rho_vac * V * Ug) / M
+        Ui = -k_eta * rho_vac * V * (v / c)**2
+        a_net = Ug - Ub + Ui
+        return {'F_U_Bi_i': M * a_net, 'Ug': Ug, 'Ub': Ub, 'Ui': Ui, 'a_net': a_net}
+    
+
+=== LINE 65002 | CLASS: BHMFEvolutionModel ===
+    def compute_master_buoyant_equation(self, r=None, v=0):
+        """Master Buoyant: F_U_Bi_i = M * (Ug_i - Ub_i + Ui_i)"""
+        import numpy as np
+        G, rho_vac, k_eta, c = 6.674e-11, 7.09e-36, 1e-113, 2.998e8
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None: r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        V = (4/3) * np.pi * r**3
+        Ug = G * M / r**2
+        Ub = (rho_vac * V * Ug) / M
+        Ui = -k_eta * rho_vac * V * (v / c)**2
+        a_net = Ug - Ub + Ui
+        return {'F_U_Bi_i': M * a_net, 'Ug': Ug, 'Ub': Ub, 'Ui': Ui, 'a_net': a_net}
+    
+
+=== LINE 65421 | CLASS: BondiAccretionModel ===
+    def compute_master_buoyant_equation(self, r=None, v=0):
+        """Master Buoyant: F_U_Bi_i = M * (Ug_i - Ub_i + Ui_i)"""
+        import numpy as np
+        G, rho_vac, k_eta, c = 6.674e-11, 7.09e-36, 1e-113, 2.998e8
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None: r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        V = (4/3) * np.pi * r**3
+        Ug = G * M / r**2
+        Ub = (rho_vac * V * Ug) / M
+        Ui = -k_eta * rho_vac * V * (v / c)**2
+        a_net = Ug - Ub + Ui
+        return {'F_U_Bi_i': M * a_net, 'Ug': Ug, 'Ub': Ub, 'Ui': Ui, 'a_net': a_net}
+    
+
+=== LINE 65868 | CLASS: EddingtonRatioModel ===
+    def compute_master_buoyant_equation(self, r=None, v=0):
+        """Master Buoyant: F_U_Bi_i = M * (Ug_i - Ub_i + Ui_i)"""
+        import numpy as np
+        G, rho_vac, k_eta, c = 6.674e-11, 7.09e-36, 1e-113, 2.998e8
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None: r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        V = (4/3) * np.pi * r**3
+        Ug = G * M / r**2
+        Ub = (rho_vac * V * Ug) / M
+        Ui = -k_eta * rho_vac * V * (v / c)**2
+        a_net = Ug - Ub + Ui
+        return {'F_U_Bi_i': M * a_net, 'Ug': Ug, 'Ub': Ub, 'Ui': Ui, 'a_net': a_net}
+    
+
+=== LINE 66324 | CLASS: TidalDisruptionEventModel ===
+    def compute_master_buoyant_equation(self, r=None, v=0):
+        """Master Buoyant: F_U_Bi_i = M * (Ug_i - Ub_i + Ui_i)"""
+        import numpy as np
+        G, rho_vac, k_eta, c = 6.674e-11, 7.09e-36, 1e-113, 2.998e8
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None: r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        V = (4/3) * np.pi * r**3
+        Ug = G * M / r**2
+        Ub = (rho_vac * V * Ug) / M
+        Ui = -k_eta * rho_vac * V * (v / c)**2
+        a_net = Ug - Ub + Ui
+        return {'F_U_Bi_i': M * a_net, 'Ug': Ug, 'Ub': Ub, 'Ui': Ui, 'a_net': a_net}
+    
+
+=== LINE 66798 | CLASS: SMBHSpinEvolutionModel ===
+    def compute_master_buoyant_equation(self, r=None, v=0):
+        """Master Buoyant: F_U_Bi_i = M * (Ug_i - Ub_i + Ui_i)"""
+        import numpy as np
+        G, rho_vac, k_eta, c = 6.674e-11, 7.09e-36, 1e-113, 2.998e8
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None: r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        V = (4/3) * np.pi * r**3
+        Ug = G * M / r**2
+        Ub = (rho_vac * V * Ug) / M
+        Ui = -k_eta * rho_vac * V * (v / c)**2
+        a_net = Ug - Ub + Ui
+        return {'F_U_Bi_i': M * a_net, 'Ug': Ug, 'Ub': Ub, 'Ui': Ui, 'a_net': a_net}
+    
+
+=== LINE 67157 | CLASS: SMBHUg1Model ===
+    def compute_master_buoyant_equation(self, r=None, v=0):
+        """Master Buoyant: F_U_Bi_i = M * (Ug_i - Ub_i + Ui_i)"""
+        import numpy as np
+        G, rho_vac, k_eta, c = 6.674e-11, 7.09e-36, 1e-113, 2.998e8
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None: r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        V = (4/3) * np.pi * r**3
+        Ug = G * M / r**2
+        Ub = (rho_vac * V * Ug) / M
+        Ui = -k_eta * rho_vac * V * (v / c)**2
+        a_net = Ug - Ub + Ui
+        return {'F_U_Bi_i': M * a_net, 'Ug': Ug, 'Ub': Ub, 'Ui': Ui, 'a_net': a_net}
+    
+
+=== LINE 67497 | CLASS: SMBHUg2Model ===
+    def compute_master_buoyant_equation(self, r=None, v=0):
+        """Master Buoyant: F_U_Bi_i = M * (Ug_i - Ub_i + Ui_i)"""
+        import numpy as np
+        G, rho_vac, k_eta, c = 6.674e-11, 7.09e-36, 1e-113, 2.998e8
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None: r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        V = (4/3) * np.pi * r**3
+        Ug = G * M / r**2
+        Ub = (rho_vac * V * Ug) / M
+        Ui = -k_eta * rho_vac * V * (v / c)**2
+        a_net = Ug - Ub + Ui
+        return {'F_U_Bi_i': M * a_net, 'Ug': Ug, 'Ub': Ub, 'Ui': Ui, 'a_net': a_net}
+    
+
+=== LINE 67841 | CLASS: SMBHUg3Model ===
+    def compute_master_buoyant_equation(self, r=None, v=0):
+        """Master Buoyant: F_U_Bi_i = M * (Ug_i - Ub_i + Ui_i)"""
+        import numpy as np
+        G, rho_vac, k_eta, c = 6.674e-11, 7.09e-36, 1e-113, 2.998e8
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None: r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        V = (4/3) * np.pi * r**3
+        Ug = G * M / r**2
+        Ub = (rho_vac * V * Ug) / M
+        Ui = -k_eta * rho_vac * V * (v / c)**2
+        a_net = Ug - Ub + Ui
+        return {'F_U_Bi_i': M * a_net, 'Ug': Ug, 'Ub': Ub, 'Ui': Ui, 'a_net': a_net}
+    
+
+=== LINE 68181 | CLASS: SMBHUg4Model ===
+    def compute_master_buoyant_equation(self, r=None, v=0):
+        """Master Buoyant: F_U_Bi_i = M * (Ug_i - Ub_i + Ui_i)"""
+        import numpy as np
+        G, rho_vac, k_eta, c = 6.674e-11, 7.09e-36, 1e-113, 2.998e8
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None: r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        V = (4/3) * np.pi * r**3
+        Ug = G * M / r**2
+        Ub = (rho_vac * V * Ug) / M
+        Ui = -k_eta * rho_vac * V * (v / c)**2
+        a_net = Ug - Ub + Ui
+        return {'F_U_Bi_i': M * a_net, 'Ug': Ug, 'Ub': Ub, 'Ui': Ui, 'a_net': a_net}
+    
+
+=== LINE 68513 | CLASS: SMBHBulgeGravityModel ===
+    def compute_master_buoyant_equation(self, r=None, v=0):
+        """Master Buoyant: F_U_Bi_i = M * (Ug_i - Ub_i + Ui_i)"""
+        import numpy as np
+        G, rho_vac, k_eta, c = 6.674e-11, 7.09e-36, 1e-113, 2.998e8
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None: r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        V = (4/3) * np.pi * r**3
+        Ug = G * M / r**2
+        Ub = (rho_vac * V * Ug) / M
+        Ui = -k_eta * rho_vac * V * (v / c)**2
+        a_net = Ug - Ub + Ui
+        return {'F_U_Bi_i': M * a_net, 'Ug': Ug, 'Ub': Ub, 'Ui': Ui, 'a_net': a_net}
+    
+
+=== LINE 68834 | CLASS: SMBHOmegaSGalacticModel ===
+    def compute_master_buoyant_equation(self, r=None, v=0):
+        """Master Buoyant: F_U_Bi_i = M * (Ug_i - Ub_i + Ui_i)"""
+        import numpy as np
+        G, rho_vac, k_eta, c = 6.674e-11, 7.09e-36, 1e-113, 2.998e8
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None: r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        V = (4/3) * np.pi * r**3
+        Ug = G * M / r**2
+        Ub = (rho_vac * V * Ug) / M
+        Ui = -k_eta * rho_vac * V * (v / c)**2
+        a_net = Ug - Ub + Ui
+        return {'F_U_Bi_i': M * a_net, 'Ug': Ug, 'Ub': Ub, 'Ui': Ui, 'a_net': a_net}
+    
+
+=== LINE 69187 | CLASS: SMBHCosmicTimeModel ===
+    def compute_master_buoyant_equation(self, r=None, v=0):
+        """Master Buoyant: F_U_Bi_i = M * (Ug_i - Ub_i + Ui_i)"""
+        import numpy as np
+        G, rho_vac, k_eta, c = 6.674e-11, 7.09e-36, 1e-113, 2.998e8
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None: r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        V = (4/3) * np.pi * r**3
+        Ug = G * M / r**2
+        Ub = (rho_vac * V * Ug) / M
+        Ui = -k_eta * rho_vac * V * (v / c)**2
+        a_net = Ug - Ub + Ui
+        return {'F_U_Bi_i': M * a_net, 'Ug': Ug, 'Ub': Ub, 'Ui': Ui, 'a_net': a_net}
+    
+
+=== LINE 69516 | CLASS: VirgoClusterMassModel ===
+    def compute_master_buoyant_equation(self, r=None, v=0):
+        """Master Buoyant: F_U_Bi_i = M * (Ug_i - Ub_i + Ui_i)"""
+        import numpy as np
+        G, rho_vac, k_eta, c = 6.674e-11, 7.09e-36, 1e-113, 2.998e8
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None: r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        V = (4/3) * np.pi * r**3
+        Ug = G * M / r**2
+        Ub = (rho_vac * V * Ug) / M
+        Ui = -k_eta * rho_vac * V * (v / c)**2
+        a_net = Ug - Ub + Ui
+        return {'F_U_Bi_i': M * a_net, 'Ug': Ug, 'Ub': Ub, 'Ui': Ui, 'a_net': a_net}
+    
+
+=== LINE 69825 | CLASS: VirgoClusterDarkMatterModel ===
+    def compute_master_buoyant_equation(self, r=None, v=0):
+        """Master Buoyant: F_U_Bi_i = M * (Ug_i - Ub_i + Ui_i)"""
+        import numpy as np
+        G, rho_vac, k_eta, c = 6.674e-11, 7.09e-36, 1e-113, 2.998e8
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None: r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        V = (4/3) * np.pi * r**3
+        Ug = G * M / r**2
+        Ub = (rho_vac * V * Ug) / M
+        Ui = -k_eta * rho_vac * V * (v / c)**2
+        a_net = Ug - Ub + Ui
+        return {'F_U_Bi_i': M * a_net, 'Ug': Ug, 'Ub': Ub, 'Ui': Ui, 'a_net': a_net}
+    
+
+=== LINE 70142 | CLASS: VirgoClusterVirialModel ===
+    def compute_master_buoyant_equation(self, r=None, v=0):
+        """Master Buoyant: F_U_Bi_i = M * (Ug_i - Ub_i + Ui_i)"""
+        import numpy as np
+        G, rho_vac, k_eta, c = 6.674e-11, 7.09e-36, 1e-113, 2.998e8
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None: r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        V = (4/3) * np.pi * r**3
+        Ug = G * M / r**2
+        Ub = (rho_vac * V * Ug) / M
+        Ui = -k_eta * rho_vac * V * (v / c)**2
+        a_net = Ug - Ub + Ui
+        return {'F_U_Bi_i': M * a_net, 'Ug': Ug, 'Ub': Ub, 'Ui': Ui, 'a_net': a_net}
+    
+
+=== LINE 70483 | CLASS: VirgoClusterICMModel ===
+    def compute_master_buoyant_equation(self, r=None, v=0):
+        """Master Buoyant: F_U_Bi_i = M * (Ug_i - Ub_i + Ui_i)"""
+        import numpy as np
+        G, rho_vac, k_eta, c = 6.674e-11, 7.09e-36, 1e-113, 2.998e8
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None: r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        V = (4/3) * np.pi * r**3
+        Ug = G * M / r**2
+        Ub = (rho_vac * V * Ug) / M
+        Ui = -k_eta * rho_vac * V * (v / c)**2
+        a_net = Ug - Ub + Ui
+        return {'F_U_Bi_i': M * a_net, 'Ug': Ug, 'Ub': Ub, 'Ui': Ui, 'a_net': a_net}
+    
+
+=== LINE 70799 | CLASS: VirgoClusterGravPotentialModel ===
+    def compute_master_buoyant_equation(self, r=None, v=0):
+        """Master Buoyant: F_U_Bi_i = M * (Ug_i - Ub_i + Ui_i)"""
+        import numpy as np
+        G, rho_vac, k_eta, c = 6.674e-11, 7.09e-36, 1e-113, 2.998e8
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None: r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        V = (4/3) * np.pi * r**3
+        Ug = G * M / r**2
+        Ub = (rho_vac * V * Ug) / M
+        Ui = -k_eta * rho_vac * V * (v / c)**2
+        a_net = Ug - Ub + Ui
+        return {'F_U_Bi_i': M * a_net, 'Ug': Ug, 'Ub': Ub, 'Ui': Ui, 'a_net': a_net}
+    
+
+=== LINE 71142 | CLASS: VirgoClusterM87JetModel ===
+    def compute_master_buoyant_equation(self, r=None, v=0):
+        """Master Buoyant: F_U_Bi_i = M * (Ug_i - Ub_i + Ui_i)"""
+        import numpy as np
+        G, rho_vac, k_eta, c = 6.674e-11, 7.09e-36, 1e-113, 2.998e8
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None: r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        V = (4/3) * np.pi * r**3
+        Ug = G * M / r**2
+        Ub = (rho_vac * V * Ug) / M
+        Ui = -k_eta * rho_vac * V * (v / c)**2
+        a_net = Ug - Ub + Ui
+        return {'F_U_Bi_i': M * a_net, 'Ug': Ug, 'Ub': Ub, 'Ui': Ui, 'a_net': a_net}
+    
+
+=== LINE 71490 | CLASS: VirgoClusterTidalStrippingModel ===
+    def compute_master_buoyant_equation(self, r=None, v=0):
+        """Master Buoyant: F_U_Bi_i = M * (Ug_i - Ub_i + Ui_i)"""
+        import numpy as np
+        G, rho_vac, k_eta, c = 6.674e-11, 7.09e-36, 1e-113, 2.998e8
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None: r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        V = (4/3) * np.pi * r**3
+        Ug = G * M / r**2
+        Ub = (rho_vac * V * Ug) / M
+        Ui = -k_eta * rho_vac * V * (v / c)**2
+        a_net = Ug - Ub + Ui
+        return {'F_U_Bi_i': M * a_net, 'Ug': Ug, 'Ub': Ub, 'Ui': Ui, 'a_net': a_net}
+    
+
+=== LINE 71849 | CLASS: VirgoClusterXRayModel ===
+    def compute_master_buoyant_equation(self, r=None, v=0):
+        """Master Buoyant: F_U_Bi_i = M * (Ug_i - Ub_i + Ui_i)"""
+        import numpy as np
+        G, rho_vac, k_eta, c = 6.674e-11, 7.09e-36, 1e-113, 2.998e8
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None: r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        V = (4/3) * np.pi * r**3
+        Ug = G * M / r**2
+        Ub = (rho_vac * V * Ug) / M
+        Ui = -k_eta * rho_vac * V * (v / c)**2
+        a_net = Ug - Ub + Ui
+        return {'F_U_Bi_i': M * a_net, 'Ug': Ug, 'Ub': Ub, 'Ui': Ui, 'a_net': a_net}
+    
+
+=== LINE 72192 | CLASS: VirgoClusterVelocityDispersionModel ===
+    def compute_master_buoyant_equation(self, r=None, v=0):
+        """Master Buoyant: F_U_Bi_i = M * (Ug_i - Ub_i + Ui_i)"""
+        import numpy as np
+        G, rho_vac, k_eta, c = 6.674e-11, 7.09e-36, 1e-113, 2.998e8
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None: r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        V = (4/3) * np.pi * r**3
+        Ug = G * M / r**2
+        Ub = (rho_vac * V * Ug) / M
+        Ui = -k_eta * rho_vac * V * (v / c)**2
+        a_net = Ug - Ub + Ui
+        return {'F_U_Bi_i': M * a_net, 'Ug': Ug, 'Ub': Ub, 'Ui': Ui, 'a_net': a_net}
+    
+
+=== LINE 74398 | CLASS: NGC3603StarClusterModel ===
+    def compute_master_buoyant_equation(self, r=None, v=0):
+        """Master Buoyant: F_U_Bi_i = M * (Ug_i - Ub_i + Ui_i)"""
+        import numpy as np
+        G, rho_vac, k_eta, c = 6.674e-11, 7.09e-36, 1e-113, 2.998e8
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None: r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        V = (4/3) * np.pi * r**3
+        Ug = G * M / r**2
+        Ub = (rho_vac * V * Ug) / M
+        Ui = -k_eta * rho_vac * V * (v / c)**2
+        a_net = Ug - Ub + Ui
+        return {'F_U_Bi_i': M * a_net, 'Ug': Ug, 'Ub': Ub, 'Ui': Ui, 'a_net': a_net}
+    
+
+=== LINE 75302 | CLASS: BubbleNebulaModel ===
+    def compute_master_buoyant_equation(self, r=None, v=0):
+        """Master Buoyant: F_U_Bi_i = M * (Ug_i - Ub_i + Ui_i)"""
+        import numpy as np
+        G, rho_vac, k_eta, c = 6.674e-11, 7.09e-36, 1e-113, 2.998e8
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None: r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        V = (4/3) * np.pi * r**3
+        Ug = G * M / r**2
+        Ub = (rho_vac * V * Ug) / M
+        Ui = -k_eta * rho_vac * V * (v / c)**2
+        a_net = Ug - Ub + Ui
+        return {'F_U_Bi_i': M * a_net, 'Ug': Ug, 'Ub': Ub, 'Ui': Ui, 'a_net': a_net}
+    
+
+=== LINE 76424 | CLASS: AntennaeGalaxiesModel ===
+    def compute_master_buoyant_equation(self, r=None, v=0):
+        """Master Buoyant: F_U_Bi_i = M * (Ug_i - Ub_i + Ui_i)"""
+        import numpy as np
+        G, rho_vac, k_eta, c = 6.674e-11, 7.09e-36, 1e-113, 2.998e8
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None: r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        V = (4/3) * np.pi * r**3
+        Ug = G * M / r**2
+        Ub = (rho_vac * V * Ug) / M
+        Ui = -k_eta * rho_vac * V * (v / c)**2
+        a_net = Ug - Ub + Ui
+        return {'F_U_Bi_i': M * a_net, 'Ug': Ug, 'Ub': Ub, 'Ui': Ui, 'a_net': a_net}
+    
+
+=== LINE 77570 | CLASS: HorseheadNebulaModel ===
+    def compute_master_buoyant_equation(self, r=None, v=0):
+        """Master Buoyant: F_U_Bi_i = M * (Ug_i - Ub_i + Ui_i)"""
+        import numpy as np
+        G, rho_vac, k_eta, c = 6.674e-11, 7.09e-36, 1e-113, 2.998e8
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None: r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        V = (4/3) * np.pi * r**3
+        Ug = G * M / r**2
+        Ub = (rho_vac * V * Ug) / M
+        Ui = -k_eta * rho_vac * V * (v / c)**2
+        a_net = Ug - Ub + Ui
+        return {'F_U_Bi_i': M * a_net, 'Ug': Ug, 'Ub': Ub, 'Ui': Ui, 'a_net': a_net}
+    
+
+=== LINE 78766 | CLASS: NGC1275Model ===
+    def compute_master_buoyant_equation(self, r=None, v=0):
+        """Master Buoyant: F_U_Bi_i = M * (Ug_i - Ub_i + Ui_i)"""
+        import numpy as np
+        G, rho_vac, k_eta, c = 6.674e-11, 7.09e-36, 1e-113, 2.998e8
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None: r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        V = (4/3) * np.pi * r**3
+        Ug = G * M / r**2
+        Ub = (rho_vac * V * Ug) / M
+        Ui = -k_eta * rho_vac * V * (v / c)**2
+        a_net = Ug - Ub + Ui
+        return {'F_U_Bi_i': M * a_net, 'Ug': Ug, 'Ub': Ub, 'Ui': Ui, 'a_net': a_net}
+    
+
+=== LINE 79891 | CLASS: HUDFModel ===
+    def compute_master_buoyant_equation(self, r=None, v=0):
+        """Master Buoyant: F_U_Bi_i = M * (Ug_i - Ub_i + Ui_i)"""
+        import numpy as np
+        G, rho_vac, k_eta, c = 6.674e-11, 7.09e-36, 1e-113, 2.998e8
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None: r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        V = (4/3) * np.pi * r**3
+        Ug = G * M / r**2
+        Ub = (rho_vac * V * Ug) / M
+        Ui = -k_eta * rho_vac * V * (v / c)**2
+        a_net = Ug - Ub + Ui
+        return {'F_U_Bi_i': M * a_net, 'Ug': Ug, 'Ub': Ub, 'Ui': Ui, 'a_net': a_net}
+    
+
+=== LINE 81009 | CLASS: NGC1792Model ===
+    def compute_master_buoyant_equation(self, r=None, v=0):
+        """Master Buoyant: F_U_Bi_i = M * (Ug_i - Ub_i + Ui_i)"""
+        import numpy as np
+        G, rho_vac, k_eta, c = 6.674e-11, 7.09e-36, 1e-113, 2.998e8
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None: r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        V = (4/3) * np.pi * r**3
+        Ug = G * M / r**2
+        Ub = (rho_vac * V * Ug) / M
+        Ui = -k_eta * rho_vac * V * (v / c)**2
+        a_net = Ug - Ub + Ui
+        return {'F_U_Bi_i': M * a_net, 'Ug': Ug, 'Ub': Ub, 'Ui': Ui, 'a_net': a_net}
+    
+
+=== LINE 81885 | CLASS: SombreroGalaxyModel ===
+    def compute_master_buoyant_equation(self, r=None, v=0):
+        """Master Buoyant: F_U_Bi_i = M * (Ug_i - Ub_i + Ui_i)"""
+        import numpy as np
+        G, rho_vac, k_eta, c = 6.674e-11, 7.09e-36, 1e-113, 2.998e8
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None: r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        V = (4/3) * np.pi * r**3
+        Ug = G * M / r**2
+        Ub = (rho_vac * V * Ug) / M
+        Ui = -k_eta * rho_vac * V * (v / c)**2
+        a_net = Ug - Ub + Ui
+        return {'F_U_Bi_i': M * a_net, 'Ug': Ug, 'Ub': Ub, 'Ui': Ui, 'a_net': a_net}
+    
+
+=== LINE 82807 | CLASS: SaturnModel ===
+    def compute_master_buoyant_equation(self, r=None, v=0):
+        """Master Buoyant: F_U_Bi_i = M * (Ug_i - Ub_i + Ui_i)"""
+        import numpy as np
+        G, rho_vac, k_eta, c = 6.674e-11, 7.09e-36, 1e-113, 2.998e8
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None: r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        V = (4/3) * np.pi * r**3
+        Ug = G * M / r**2
+        Ub = (rho_vac * V * Ug) / M
+        Ui = -k_eta * rho_vac * V * (v / c)**2
+        a_net = Ug - Ub + Ui
+        return {'F_U_Bi_i': M * a_net, 'Ug': Ug, 'Ub': Ub, 'Ui': Ui, 'a_net': a_net}
+    
+
+=== LINE 83709 | CLASS: M16EagleNebulaModel ===
+    def compute_master_buoyant_equation(self, r=None, v=0):
+        """Master Buoyant: F_U_Bi_i = M * (Ug_i - Ub_i + Ui_i)"""
+        import numpy as np
+        G, rho_vac, k_eta, c = 6.674e-11, 7.09e-36, 1e-113, 2.998e8
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None: r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        V = (4/3) * np.pi * r**3
+        Ug = G * M / r**2
+        Ub = (rho_vac * V * Ug) / M
+        Ui = -k_eta * rho_vac * V * (v / c)**2
+        a_net = Ug - Ub + Ui
+        return {'F_U_Bi_i': M * a_net, 'Ug': Ug, 'Ub': Ub, 'Ui': Ui, 'a_net': a_net}
+    
+
+=== LINE 84606 | CLASS: CrabNebulaModel ===
+    def compute_master_buoyant_equation(self, r=None, v=0):
+        """Master Buoyant: F_U_Bi_i = M * (Ug_i - Ub_i + Ui_i)"""
+        import numpy as np
+        G, rho_vac, k_eta, c = 6.674e-11, 7.09e-36, 1e-113, 2.998e8
+        M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+        if r is None: r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+        V = (4/3) * np.pi * r**3
+        Ug = G * M / r**2
+        Ub = (rho_vac * V * Ug) / M
+        Ui = -k_eta * rho_vac * V * (v / c)**2
+        a_net = Ug - Ub + Ui
+        return {'F_U_Bi_i': M * a_net, 'Ug': Ug, 'Ub': Ub, 'Ui': Ui, 'a_net': a_net}
+    
+
+=== LINE 85245 | CLASS: NGC2264Model ===
+    def compute_master_buoyant_equation(self, t=None):
+        """
+        Compute UQFF Master Buoyant equation (F_U_Bi_i).
+        
+        F_U_Bi_i = Î©_g Ã— (M_bh/d_g) Ã— Î£(Ug_i + Ub_i)
+        
+        Outsideâ†’In cosmic scale buoyancy (supporting from vacuum).
+        
+        Returns:
+            dict with master buoyant field values
+        """
+        import math
+        if t is None:
+            t = self.t_age
+        
+        # Galactic parameters (defaults for star-forming regions)
+        M_bh = CONSTANTS.get('M_bh_MW', 4e6 * self.M_sun)      # MW central BH
+        d_g = CONSTANTS.get('d_g_sun', 2.55e20)                 # Distance to galactic center
+        Omega_g = CONSTANTS.get('Omega_g_MW', 2.5e-8)           # Galactic rotation rate
+        
+        # Get base UQFF values
+        base = self.compute_UQFF_base(t)
+        Ug_sum = base['Ug1'] + base['Ug2'] + base['Ug3'] + base['Ug4']
+        Ub = base['Ub']
+        
+        # Master buoyant integral
+        galactic_factor = Omega_g * (M_bh / d_g)
+        F_U_Bi_i = galactic_factor * (Ug_sum + Ub)
+        
+        return {
+            'F_U_Bi_i': F_U_Bi_i,
+            'galactic_factor': galactic_factor,
+            'Omega_g': Omega_g,
+            'M_bh': M_bh,
+            'd_g': d_g,
+            'Ug_sum': Ug_sum,
+            'Ub': Ub,
+            'direction': 'Outside â†’ In',
+            'scale': 'Cosmic'
+        }
+    
+
+=== LINE 86099 | CLASS: UGC10214Model ===
+    def compute_master_buoyant_equation(self, t=None):
+        """
+        Compute UQFF Master Buoyant equation (F_U_Bi_i).
+        
+        F_U_Bi_i = Î©_g Ã— (M_bh/d_g) Ã— Î£(Ug_i + Ub_i)
+        
+        Outsideâ†’In cosmic scale buoyancy (supporting from vacuum).
+        
+        Returns:
+            dict with master buoyant field values
+        """
+        import math
+        if t is None:
+            t = self.t_age
+        
+        # Galactic parameters (defaults for star-forming regions)
+        M_bh = CONSTANTS.get('M_bh_MW', 4e6 * self.M_sun)      # MW central BH
+        d_g = CONSTANTS.get('d_g_sun', 2.55e20)                 # Distance to galactic center
+        Omega_g = CONSTANTS.get('Omega_g_MW', 2.5e-8)           # Galactic rotation rate
+        
+        # Get base UQFF values
+        base = self.compute_UQFF_base(t)
+        Ug_sum = base['Ug1'] + base['Ug2'] + base['Ug3'] + base['Ug4']
+        Ub = base['Ub']
+        
+        # Master buoyant integral
+        galactic_factor = Omega_g * (M_bh / d_g)
+        F_U_Bi_i = galactic_factor * (Ug_sum + Ub)
+        
+        return {
+            'F_U_Bi_i': F_U_Bi_i,
+            'galactic_factor': galactic_factor,
+            'Omega_g': Omega_g,
+            'M_bh': M_bh,
+            'd_g': d_g,
+            'Ug_sum': Ug_sum,
+            'Ub': Ub,
+            'direction': 'Outside â†’ In',
+            'scale': 'Cosmic'
+        }
+    
+
+=== LINE 86862 | CLASS: NGC4676Model ===
+    def compute_master_buoyant_equation(self, t=None):
+        """
+        Compute UQFF Master Buoyant equation (F_U_Bi_i).
+        
+        F_U_Bi_i = Î©_g Ã— (M_bh/d_g) Ã— Î£(Ug_i + Ub_i)
+        
+        Outsideâ†’In cosmic scale buoyancy (supporting from vacuum).
+        
+        Returns:
+            dict with master buoyant field values
+        """
+        import math
+        if t is None:
+            t = self.t_age
+        
+        # Galactic parameters (defaults for star-forming regions)
+        M_bh = CONSTANTS.get('M_bh_MW', 4e6 * self.M_sun)      # MW central BH
+        d_g = CONSTANTS.get('d_g_sun', 2.55e20)                 # Distance to galactic center
+        Omega_g = CONSTANTS.get('Omega_g_MW', 2.5e-8)           # Galactic rotation rate
+        
+        # Get base UQFF values
+        base = self.compute_UQFF_base(t)
+        Ug_sum = base['Ug1'] + base['Ug2'] + base['Ug3'] + base['Ug4']
+        Ub = base['Ub']
+        
+        # Master buoyant integral
+        galactic_factor = Omega_g * (M_bh / d_g)
+        F_U_Bi_i = galactic_factor * (Ug_sum + Ub)
+        
+        return {
+            'F_U_Bi_i': F_U_Bi_i,
+            'galactic_factor': galactic_factor,
+            'Omega_g': Omega_g,
+            'M_bh': M_bh,
+            'd_g': d_g,
+            'Ug_sum': Ug_sum,
+            'Ub': Ub,
+            'direction': 'Outside â†’ In',
+            'scale': 'Cosmic'
+        }
+    
+
+=== LINE 87625 | CLASS: RedSpiderNebulaModel ===
+    def compute_master_buoyant_equation(self, t=None):
+        """
+        Compute UQFF Master Buoyant equation (F_U_Bi_i).
+        
+        F_U_Bi_i = Î©_g Ã— (M_bh/d_g) Ã— Î£(Ug_i + Ub_i)
+        
+        Outsideâ†’In cosmic scale buoyancy (supporting from vacuum).
+        
+        Returns:
+            dict with master buoyant field values
+        """
+        import math
+        if t is None:
+            t = self.t_age
+        
+        # Galactic parameters (defaults for star-forming regions)
+        M_bh = CONSTANTS.get('M_bh_MW', 4e6 * self.M_sun)      # MW central BH
+        d_g = CONSTANTS.get('d_g_sun', 2.55e20)                 # Distance to galactic center
+        Omega_g = CONSTANTS.get('Omega_g_MW', 2.5e-8)           # Galactic rotation rate
+        
+        # Get base UQFF values
+        base = self.compute_UQFF_base(t)
+        Ug_sum = base['Ug1'] + base['Ug2'] + base['Ug3'] + base['Ug4']
+        Ub = base['Ub']
+        
+        # Master buoyant integral
+        galactic_factor = Omega_g * (M_bh / d_g)
+        F_U_Bi_i = galactic_factor * (Ug_sum + Ub)
+        
+        return {
+            'F_U_Bi_i': F_U_Bi_i,
+            'galactic_factor': galactic_factor,
+            'Omega_g': Omega_g,
+            'M_bh': M_bh,
+            'd_g': d_g,
+            'Ug_sum': Ug_sum,
+            'Ub': Ub,
+            'direction': 'Outside â†’ In',
+            'scale': 'Cosmic'
+        }
+    
+
+=== LINE 88388 | CLASS: NGC3372Model ===
+    def compute_master_buoyant_equation(self, t=None):
+        """
+        Compute UQFF Master Buoyant equation (F_U_Bi_i).
+        
+        F_U_Bi_i = Î©_g Ã— (M_bh/d_g) Ã— Î£(Ug_i + Ub_i)
+        
+        Outsideâ†’In cosmic scale buoyancy (supporting from vacuum).
+        
+        Returns:
+            dict with master buoyant field values
+        """
+        import math
+        if t is None:
+            t = self.t_age
+        
+        # Galactic parameters (defaults for star-forming regions)
+        M_bh = CONSTANTS.get('M_bh_MW', 4e6 * self.M_sun)      # MW central BH
+        d_g = CONSTANTS.get('d_g_sun', 2.55e20)                 # Distance to galactic center
+        Omega_g = CONSTANTS.get('Omega_g_MW', 2.5e-8)           # Galactic rotation rate
+        
+        # Get base UQFF values
+        base = self.compute_UQFF_base(t)
+        Ug_sum = base['Ug1'] + base['Ug2'] + base['Ug3'] + base['Ug4']
+        Ub = base['Ub']
+        
+        # Master buoyant integral
+        galactic_factor = Omega_g * (M_bh / d_g)
+        F_U_Bi_i = galactic_factor * (Ug_sum + Ub)
+        
+        return {
+            'F_U_Bi_i': F_U_Bi_i,
+            'galactic_factor': galactic_factor,
+            'Omega_g': Omega_g,
+            'M_bh': M_bh,
+            'd_g': d_g,
+            'Ug_sum': Ug_sum,
+            'Ub': Ub,
+            'direction': 'Outside â†’ In',
+            'scale': 'Cosmic'
+        }
+    
+
+=== LINE 89151 | CLASS: AGCarinaeModel ===
+    def compute_master_buoyant_equation(self, t=None):
+        """
+        Compute UQFF Master Buoyant equation (F_U_Bi_i).
+        
+        F_U_Bi_i = Î©_g Ã— (M_bh/d_g) Ã— Î£(Ug_i + Ub_i)
+        
+        Outsideâ†’In cosmic scale buoyancy (supporting from vacuum).
+        
+        Returns:
+            dict with master buoyant field values
+        """
+        import math
+        if t is None:
+            t = self.t_age
+        
+        # Galactic parameters (defaults for star-forming regions)
+        M_bh = CONSTANTS.get('M_bh_MW', 4e6 * self.M_sun)      # MW central BH
+        d_g = CONSTANTS.get('d_g_sun', 2.55e20)                 # Distance to galactic center
+        Omega_g = CONSTANTS.get('Omega_g_MW', 2.5e-8)           # Galactic rotation rate
+        
+        # Get base UQFF values
+        base = self.compute_UQFF_base(t)
+        Ug_sum = base['Ug1'] + base['Ug2'] + base['Ug3'] + base['Ug4']
+        Ub = base['Ub']
+        
+        # Master buoyant integral
+        galactic_factor = Omega_g * (M_bh / d_g)
+        F_U_Bi_i = galactic_factor * (Ug_sum + Ub)
+        
+        return {
+            'F_U_Bi_i': F_U_Bi_i,
+            'galactic_factor': galactic_factor,
+            'Omega_g': Omega_g,
+            'M_bh': M_bh,
+            'd_g': d_g,
+            'Ug_sum': Ug_sum,
+            'Ub': Ub,
+            'direction': 'Outside â†’ In',
+            'scale': 'Cosmic'
+        }
+    
+
+=== LINE 89914 | CLASS: M42Model ===
+    def compute_master_buoyant_equation(self, t=None):
+        """
+        Compute UQFF Master Buoyant equation (F_U_Bi_i).
+        
+        F_U_Bi_i = Î©_g Ã— (M_bh/d_g) Ã— Î£(Ug_i + Ub_i)
+        
+        Outsideâ†’In cosmic scale buoyancy (supporting from vacuum).
+        
+        Returns:
+            dict with master buoyant field values
+        """
+        import math
+        if t is None:
+            t = self.t_age
+        
+        # Galactic parameters (defaults for star-forming regions)
+        M_bh = CONSTANTS.get('M_bh_MW', 4e6 * self.M_sun)      # MW central BH
+        d_g = CONSTANTS.get('d_g_sun', 2.55e20)                 # Distance to galactic center
+        Omega_g = CONSTANTS.get('Omega_g_MW', 2.5e-8)           # Galactic rotation rate
+        
+        # Get base UQFF values
+        base = self.compute_UQFF_base(t)
+        Ug_sum = base['Ug1'] + base['Ug2'] + base['Ug3'] + base['Ug4']
+        Ub = base['Ub']
+        
+        # Master buoyant integral
+        galactic_factor = Omega_g * (M_bh / d_g)
+        F_U_Bi_i = galactic_factor * (Ug_sum + Ub)
+        
+        return {
+            'F_U_Bi_i': F_U_Bi_i,
+            'galactic_factor': galactic_factor,
+            'Omega_g': Omega_g,
+            'M_bh': M_bh,
+            'd_g': d_g,
+            'Ug_sum': Ug_sum,
+            'Ub': Ub,
+            'direction': 'Outside â†’ In',
+            'scale': 'Cosmic'
+        }
+    
+
+=== LINE 90677 | CLASS: TarantulaNebulaModel ===
+    def compute_master_buoyant_equation(self, t=None):
+        """
+        Compute UQFF Master Buoyant equation (F_U_Bi_i).
+        
+        F_U_Bi_i = Î©_g Ã— (M_bh/d_g) Ã— Î£(Ug_i + Ub_i)
+        
+        Outsideâ†’In cosmic scale buoyancy (supporting from vacuum).
+        
+        Returns:
+            dict with master buoyant field values
+        """
+        import math
+        if t is None:
+            t = self.t_age
+        
+        # Galactic parameters (defaults for star-forming regions)
+        M_bh = CONSTANTS.get('M_bh_MW', 4e6 * self.M_sun)      # MW central BH
+        d_g = CONSTANTS.get('d_g_sun', 2.55e20)                 # Distance to galactic center
+        Omega_g = CONSTANTS.get('Omega_g_MW', 2.5e-8)           # Galactic rotation rate
+        
+        # Get base UQFF values
+        base = self.compute_UQFF_base(t)
+        Ug_sum = base['Ug1'] + base['Ug2'] + base['Ug3'] + base['Ug4']
+        Ub = base['Ub']
+        
+        # Master buoyant integral
+        galactic_factor = Omega_g * (M_bh / d_g)
+        F_U_Bi_i = galactic_factor * (Ug_sum + Ub)
+        
+        return {
+            'F_U_Bi_i': F_U_Bi_i,
+            'galactic_factor': galactic_factor,
+            'Omega_g': Omega_g,
+            'M_bh': M_bh,
+            'd_g': d_g,
+            'Ug_sum': Ug_sum,
+            'Ub': Ub,
+            'direction': 'Outside â†’ In',
+            'scale': 'Cosmic'
+        }
+    
+
+=== LINE 91440 | CLASS: NGC2841Model ===
+    def compute_master_buoyant_equation(self, t=None):
+        """
+        Compute UQFF Master Buoyant equation (F_U_Bi_i).
+        
+        F_U_Bi_i = Î©_g Ã— (M_bh/d_g) Ã— Î£(Ug_i + Ub_i)
+        
+        Outsideâ†’In cosmic scale buoyancy (supporting from vacuum).
+        
+        Returns:
+            dict with master buoyant field values
+        """
+        import math
+        if t is None:
+            t = self.t_age
+        
+        # Galactic parameters (defaults for star-forming regions)
+        M_bh = CONSTANTS.get('M_bh_MW', 4e6 * self.M_sun)      # MW central BH
+        d_g = CONSTANTS.get('d_g_sun', 2.55e20)                 # Distance to galactic center
+        Omega_g = CONSTANTS.get('Omega_g_MW', 2.5e-8)           # Galactic rotation rate
+        
+        # Get base UQFF values
+        base = self.compute_UQFF_base(t)
+        Ug_sum = base['Ug1'] + base['Ug2'] + base['Ug3'] + base['Ug4']
+        Ub = base['Ub']
+        
+        # Master buoyant integral
+        galactic_factor = Omega_g * (M_bh / d_g)
+        F_U_Bi_i = galactic_factor * (Ug_sum + Ub)
+        
+        return {
+            'F_U_Bi_i': F_U_Bi_i,
+            'galactic_factor': galactic_factor,
+            'Omega_g': Omega_g,
+            'M_bh': M_bh,
+            'd_g': d_g,
+            'Ug_sum': Ug_sum,
+            'Ub': Ub,
+            'direction': 'Outside â†’ In',
+            'scale': 'Cosmic'
+        }
+    
+
+=== LINE 92203 | CLASS: MysticMountainModel ===
+    def compute_master_buoyant_equation(self, t=None):
+        """
+        Compute UQFF Master Buoyant equation (F_U_Bi_i).
+        
+        F_U_Bi_i = Î©_g Ã— (M_bh/d_g) Ã— Î£(Ug_i + Ub_i)
+        
+        Outsideâ†’In cosmic scale buoyancy (supporting from vacuum).
+        
+        Returns:
+            dict with master buoyant field values
+        """
+        import math
+        if t is None:
+            t = self.t_age
+        
+        # Galactic parameters (defaults for star-forming regions)
+        M_bh = CONSTANTS.get('M_bh_MW', 4e6 * self.M_sun)      # MW central BH
+        d_g = CONSTANTS.get('d_g_sun', 2.55e20)                 # Distance to galactic center
+        Omega_g = CONSTANTS.get('Omega_g_MW', 2.5e-8)           # Galactic rotation rate
+        
+        # Get base UQFF values
+        base = self.compute_UQFF_base(t)
+        Ug_sum = base['Ug1'] + base['Ug2'] + base['Ug3'] + base['Ug4']
+        Ub = base['Ub']
+        
+        # Master buoyant integral
+        galactic_factor = Omega_g * (M_bh / d_g)
+        F_U_Bi_i = galactic_factor * (Ug_sum + Ub)
+        
+        return {
+            'F_U_Bi_i': F_U_Bi_i,
+            'galactic_factor': galactic_factor,
+            'Omega_g': Omega_g,
+            'M_bh': M_bh,
+            'd_g': d_g,
+            'Ug_sum': Ug_sum,
+            'Ub': Ub,
+            'direction': 'Outside â†’ In',
+            'scale': 'Cosmic'
+        }
+    
+
+=== LINE 92656 | CLASS: NegativeTimeModel ===
+    def compute_master_buoyant_equation(self, params=None) -> dict:
+        """UQFF Master Buoyant (F_U_Bi_i): Cosmic-scale buoyancy integral"""
+        buoyant = self.compute_buoyant_equation(params)
+        Omega_g = CONSTANTS.get('Omega_g', 7.3e-16)
+        f_TRZ = CONSTANTS.get('f_TRZ', 0.1)
+        F_U_Bi_i = buoyant['F_Bi'] * (1 + f_TRZ) / (1 - Omega_g)
+        return {'F_U_Bi_i': F_U_Bi_i, 'F_Bi': buoyant['F_Bi'], 'Omega_g': Omega_g, 'f_TRZ': f_TRZ}
+    
+
+=== LINE 92775 | CLASS: AetherVacuumEnergyModel ===
+    def compute_master_buoyant_equation(self, params=None) -> dict:
+        """UQFF Master Buoyant (F_U_Bi_i): Cosmic-scale buoyancy integral"""
+        buoyant = self.compute_buoyant_equation(params)
+        Omega_g = CONSTANTS.get('Omega_g', 7.3e-16)
+        f_TRZ = CONSTANTS.get('f_TRZ', 0.1)
+        F_U_Bi_i = buoyant['F_Bi'] * (1 + f_TRZ) / (1 - Omega_g)
+        return {'F_U_Bi_i': F_U_Bi_i, 'F_Bi': buoyant['F_Bi'], 'Omega_g': Omega_g, 'f_TRZ': f_TRZ}
+    
+
+=== LINE 92912 | CLASS: CosmicEggModel ===
+    def compute_master_buoyant_equation(self, params=None) -> dict:
+        """UQFF Master Buoyant (F_U_Bi_i): Cosmic-scale buoyancy integral"""
+        buoyant = self.compute_buoyant_equation(params)
+        Omega_g = CONSTANTS.get('Omega_g', 7.3e-16)
+        f_TRZ = CONSTANTS.get('f_TRZ', 0.1)
+        F_U_Bi_i = buoyant['F_Bi'] * (1 + f_TRZ) / (1 - Omega_g)
+        return {'F_U_Bi_i': F_U_Bi_i, 'F_Bi': buoyant['F_Bi'], 'Omega_g': Omega_g, 'f_TRZ': f_TRZ}
+    
+
+=== LINE 93039 | CLASS: SgrAStarGravityModel ===
+    def compute_master_buoyant_equation(self, params=None) -> dict:
+        """UQFF Master Buoyant (F_U_Bi_i): Cosmic-scale buoyancy integral"""
+        buoyant = self.compute_buoyant_equation(params)
+        Omega_g = CONSTANTS.get('Omega_g', 7.3e-16)
+        f_TRZ = CONSTANTS.get('f_TRZ', 0.1)
+        F_U_Bi_i = buoyant['F_Bi'] * (1 + f_TRZ) / (1 - Omega_g)
+        return {'F_U_Bi_i': F_U_Bi_i, 'F_Bi': buoyant['F_Bi'], 'Omega_g': Omega_g, 'f_TRZ': f_TRZ}
+    
+
+=== LINE 93162 | CLASS: RetrocausalModel ===
+    def compute_master_buoyant_equation(self, params=None) -> dict:
+        """UQFF Master Buoyant (F_U_Bi_i): Cosmic-scale buoyancy integral"""
+        buoyant = self.compute_buoyant_equation(params)
+        Omega_g = CONSTANTS.get('Omega_g', 7.3e-16)
+        f_TRZ = CONSTANTS.get('f_TRZ', 0.1)
+        F_U_Bi_i = buoyant['F_Bi'] * (1 + f_TRZ) / (1 - Omega_g)
+        return {'F_U_Bi_i': F_U_Bi_i, 'F_Bi': buoyant['F_Bi'], 'Omega_g': Omega_g, 'f_TRZ': f_TRZ}
+    
+
+=== LINE 93281 | CLASS: TRZModel ===
+    def compute_master_buoyant_equation(self, params=None) -> dict:
+        """UQFF Master Buoyant (F_U_Bi_i): Cosmic-scale buoyancy integral"""
+        buoyant = self.compute_buoyant_equation(params)
+        Omega_g = CONSTANTS.get('Omega_g', 7.3e-16)
+        f_TRZ = CONSTANTS.get('f_TRZ', 0.1)
+        F_U_Bi_i = buoyant['F_Bi'] * (1 + f_TRZ) / (1 - Omega_g)
+        return {'F_U_Bi_i': F_U_Bi_i, 'F_Bi': buoyant['F_Bi'], 'Omega_g': Omega_g, 'f_TRZ': f_TRZ}
+    
+
+=== LINE 93400 | CLASS: VoidOscillationModel ===
+    def compute_master_buoyant_equation(self, params=None) -> dict:
+        """UQFF Master Buoyant (F_U_Bi_i): Cosmic-scale buoyancy integral"""
+        buoyant = self.compute_buoyant_equation(params)
+        Omega_g = CONSTANTS.get('Omega_g', 7.3e-16)
+        f_TRZ = CONSTANTS.get('f_TRZ', 0.1)
+        F_U_Bi_i = buoyant['F_Bi'] * (1 + f_TRZ) / (1 - Omega_g)
+        return {'F_U_Bi_i': F_U_Bi_i, 'F_Bi': buoyant['F_Bi'], 'Omega_g': Omega_g, 'f_TRZ': f_TRZ}
+    
+
+=== LINE 93532 | CLASS: TimeVaryingVacuumModel ===
+    def compute_master_buoyant_equation(self, params=None) -> dict:
+        """UQFF Master Buoyant (F_U_Bi_i): Cosmic-scale buoyancy integral"""
+        buoyant = self.compute_buoyant_equation(params)
+        Omega_g = CONSTANTS.get('Omega_g', 7.3e-16)
+        f_TRZ = CONSTANTS.get('f_TRZ', 0.1)
+        F_U_Bi_i = buoyant['F_Bi'] * (1 + f_TRZ) / (1 - Omega_g)
+        return {'F_U_Bi_i': F_U_Bi_i, 'F_Bi': buoyant['F_Bi'], 'Omega_g': Omega_g, 'f_TRZ': f_TRZ}
+    
+
+=== LINE 94141 | CLASS: TimeVaryingVacuumModel ===
+    def compute_master_buoyant_equation(self, params=None) -> dict:
+        """UQFF Master Buoyant (F_U_Bi_i): Cosmic-scale buoyancy integral"""
+        buoyant = self.compute_buoyant_equation(params)
+        Omega_g = CONSTANTS.get('Omega_g', 7.3e-16)
+        f_TRZ = CONSTANTS.get('f_TRZ', 0.1)
+        F_U_Bi_i = buoyant['F_Bi'] * (1 + f_TRZ) / (1 - Omega_g)
+        return {'F_U_Bi_i': F_U_Bi_i, 'F_Bi': buoyant['F_Bi'], 'Omega_g': Omega_g, 'f_TRZ': f_TRZ}
+    
+

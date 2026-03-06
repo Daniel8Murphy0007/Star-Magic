@@ -1,0 +1,71 @@
+﻿Total definitions   : 115
+Unique body variants: 3
+
+========================================================================
+VARIANT 01  hash=87fe7dd6  count=94
+  First line : 16235
+  Classes    : ['DPMModel', 'HydrogenEvolutionModel', 'AtomicModelUQFF', 'UniversalCycleTracker', 'UniversalGravityModel', 'UniversalMagnetismModel']...
+
+  >>>> Key equation fingerprints <<<<
+    [buoyancy_formula]  F_U_Bi_i = M * (Ug_i - Ub_i + Ui_i)"""
+    [Ug_sum]  Ug = G * M / r**2
+    [return_keys]  return {
+
+  >>>> Full body <<<<
+        def compute_master_buoyant_equation(self, r=None, v=0):
+            """Master Buoyant: F_U_Bi_i = M * (Ug_i - Ub_i + Ui_i)"""
+            import numpy as np
+            G, rho_vac, k_eta, c = 6.674e-11, 7.09e-36, 1e-113, 2.998e8
+            M = getattr(self, 'M', getattr(self, 'mass', 1e30))
+            if r is None: r = getattr(self, 'r', getattr(self, 'radius', 1e8))
+            V = (4/3) * np.pi * r**3
+            Ug = G * M / r**2
+            Ub = (rho_vac * V * Ug) / M
+            Ui = -k_eta * rho_vac * V * (v / c)**2
+            a_net = Ug - Ub + Ui
+            return {'F_U_Bi_i': M * a_net, 'Ug': Ug, 'Ub': Ub, 'Ui': Ui, 'a_net': a_net}
+
+========================================================================
+VARIANT 02  hash=928fb736  count=11
+  First line : 19636
+  Classes    : ['ProtoNucleusShellModel', 'StandardModelUQFFModel', 'NegativeTimeModel', 'AetherVacuumEnergyModel', 'CosmicEggModel', 'SgrAStarGravityModel']...
+
+  >>>> Key equation fingerprints <<<<
+    [buoyancy_formula]  F_U_Bi_i = buoyant['F_Bi'] * (1 + f_TRZ) / (1 - Omega_g)
+    [Omega_g_source]  Omega_g = CONSTANTS.get('Omega_g', 7.3e-16)
+    [f_TRZ]  f_TRZ = CONSTANTS.get('f_TRZ', 0.1)
+    [return_keys]  return {
+    [calls_UQFF_base]  compute_buoyant
+
+  >>>> Full body <<<<
+        def compute_master_buoyant_equation(self, params=None) -> dict:
+            """UQFF Master Buoyant (F_U_Bi_i): Cosmic-scale buoyancy integral"""
+            buoyant = self.compute_buoyant_equation(params)
+            Omega_g = CONSTANTS.get('Omega_g', 7.3e-16)
+            f_TRZ = CONSTANTS.get('f_TRZ', 0.1)
+            F_U_Bi_i = buoyant['F_Bi'] * (1 + f_TRZ) / (1 - Omega_g)
+            return {'F_U_Bi_i': F_U_Bi_i, 'F_Bi': buoyant['F_Bi'], 'Omega_g': Omega_g, 'f_TRZ': f_TRZ}
+
+========================================================================
+VARIANT 03  hash=27402435  count=10
+  First line : 85245
+  Classes    : ['NGC2264Model', 'UGC10214Model', 'NGC4676Model', 'RedSpiderNebulaModel', 'NGC3372Model', 'AGCarinaeModel']...
+
+  >>>> Key equation fingerprints <<<<
+python : Traceback (most recent call last):
+At line:1 char:1
++ python cmbe_dedup_analysis.py 2>&1 | Out-File -Encoding utf8 cmbe_ana ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Traceback (most recent call last) 
+   ::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+  File "C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\cmbe_dedup_ana
+lysis.py", line 80, in <module>
+    print(f'    [{label}]  {m.group(0).strip()}')
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u03a9' in 
+position 35: character maps to <undefined>
