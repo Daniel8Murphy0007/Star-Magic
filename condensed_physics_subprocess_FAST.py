@@ -37,6 +37,15 @@ def process_calculation(input_data):
             "equations": [],
             "compute_time_ms": 0
         }
+
+    # Import CondensedPhysics2 calculators via Aggregator (CP2 wiring, Problem 4)
+    # CP2_AVAILABLE flags availability of all 529 CP2 calculators for routing.
+    # process_calculation() may extend result with CP2 data when CP2_AVAILABLE is True.
+    try:
+        from CondensedPhysicsAggregator import CondensedPhysicsAggregator
+        CP2_AVAILABLE = True
+    except ImportError:
+        CP2_AVAILABLE = False
     
     start_time = time.time()
     

@@ -558,6 +558,26 @@ Q_WAVE_47_STATISTICS = {
     'leptokurtosis': 0.037,
 }
 
+# ───────────────────────────────────────────────────────────────────────────────
+# Q_WAVE 52-SYSTEM STATISTICS (0904 Grok thread update)
+# Adds 5 new systems to the n=47 baseline → n=52
+# See GrokThread_UQFF_0904_Validation.py::Q_WAVE_52_STATISTICS for full detail
+# ───────────────────────────────────────────────────────────────────────────────
+Q_WAVE_52_STATISTICS = {
+    'mean_Jm3': 3.98e4,
+    'std_Jm3': 51200.0,
+    'n_systems': 52,
+    'jarque_bera': 9.12,
+    'jarque_bera_p': 0.010,
+    'leptokurtosis': 0.039,
+    'B_ref_T': 1e-5,
+    'Q_wave_at_B_ref_Jm3': 3.98e-5,
+    'B_crab_T': 1e-4,
+    'Q_wave_at_B_crab_Jm3': 3.98e-3,
+    'prev_ref': 'Q_WAVE_47_STATISTICS',
+    'source': 'grok_share_0904a12a5c2b4a639389ae084391b94f',
+}
+
 SOLVABILITY_TIERS = {
     'thread_development': 99.9997,
     'realistic_upper': 20,
@@ -580,6 +600,8 @@ SYSTEM_COUNTS = {
     'previous': 34,
     'new': 47,
     'total': 81,
+    'new_0904': 5,
+    'total_with_0904': 86,
 }
 
 PSZ2_G181_PARAMS = {
@@ -604,6 +626,69 @@ G359_PARAMS = {
     'delta_tau': 0.05,
     'type': 'Galactic Center source',
     'D_E_calibration': 'JWST shear δ_τ ~0.05'
+}
+
+# ───────────────────────────────────────────────────────────────────────────────
+# NEW SYSTEM PARAMS — From Grok 0904 thread (systems 44-48 of 52-system catalogue)
+# See GrokThread_UQFF_0904_Validation.py::UQFF_52_SYSTEM_CATALOGUE for
+# the full 52-system list and all parameter details.
+# ───────────────────────────────────────────────────────────────────────────────
+
+GRO_J1655_PARAMS = {
+    'name': 'GRO J1655-40',
+    'M_bh_M_sun': 6.3,
+    'beta_jet': 0.92,
+    'distance_kpc': 3.2,
+    'inclination_deg': 70,
+    'type': 'Micro-quasar X-ray Binary',
+    'uqff_terms': ['Ug3 relativistic jets', 'Ub_i superluminal blob', 'E_react'],
+    'source': 'grok_share_0904a12a5c2b4a639389ae084391b94f',
+}
+
+CYGNUS_LOOP_PARAMS = {
+    'name': 'Cygnus Loop (Veil Nebula SNR)',
+    'age_yr': 10000,
+    'distance_kpc': 0.54,
+    'shock_velocity_km_s': 170,
+    'angular_size_deg': 2.7,
+    'type': 'Middle-age SNR',
+    'uqff_terms': ['Ub_i blast deceleration', 'CRP shock', 'Q_wave thermal'],
+    'source': 'grok_share_0904a12a5c2b4a639389ae084391b94f',
+}
+
+G292_PARAMS = {
+    'name': 'G292.0+1.8 (Oxygen-rich PWN/SNR)',
+    'age_yr': 1600,
+    'distance_kpc': 6.0,
+    'E_SN_J': 2e44,
+    'M_O_ejecta_M_sun': 0.5,
+    'type': 'Pulsar Wind Nebula / SNR',
+    'uqff_terms': ['Ug3 pulsar wind', 'Q_wave O-rich ejecta', 'Triadic PWN'],
+    'source': 'grok_share_0904a12a5c2b4a639389ae084391b94f',
+}
+
+NGC_7293_PARAMS = {
+    'name': 'NGC 7293 (Helix Nebula)',
+    'distance_pc': 216,
+    'age_yr': 10657,
+    'M_wd_M_sun': 0.66,
+    'T_wd_K': 1.07e5,
+    'R_outer_pc': 0.8,
+    'type': 'Planetary Nebula',
+    'uqff_terms': ['Ug2 mass-loss shell', 'Ub_i ionised winds', 'ASKAP transient analog'],
+    'source': 'grok_share_0904a12a5c2b4a639389ae084391b94f',
+}
+
+PERSEUS_CLUSTER_PARAMS = {
+    'name': 'Perseus Galaxy Cluster (Abell 426)',
+    'M_500_M_sun': 6.7e14,
+    'T_ICM_keV': 7.0,
+    'z': 0.0179,
+    'AGN_cavity_power_W': 1e38,
+    'r_cool_kpc': 100,
+    'type': 'Galaxy Cluster',
+    'uqff_terms': ['Um ICM turbulence', 'Triadic cluster mass', 'Ub_i AGN bubbles'],
+    'source': 'grok_share_0904a12a5c2b4a639389ae084391b94f',
 }
 
 GRAVITATIONAL_CORE_EQUATIONS = [

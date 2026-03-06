@@ -1397,3 +1397,57 @@ to GitHub between Sessions 19-20 were never tracked). This integration corrects 
 ### CP2 Class Count After Integration
 
 543 (ground truth prior) + 5 (this thread) = **548 total classes** | ~42,800 lines
+
+---
+
+## ✅ Grok Thread 0904a12a — 52-System MCMC Calibration (March 6, 2026)
+
+**Source URL**: `grok_share_0904a12a5c2b4a639389ae084391b94f_content.txt` (7,121 lines)  
+**Integration Date**: March 6, 2026  
+**Status**: ✅ **COMPLETE** — All unique physics extracted and implemented  
+**Commits**: `8ec4edc` (fix) → `e8f0f0a` (feat) → `5b7d335` (docs)
+
+### Summary
+
+Extracted content NOT previously in codebase from the 0904 Grok thread:
+
+| Item | Description |
+|------|-------------|
+| **New file** | `GrokThread_UQFF_0904_Validation.py` (~560 lines) |
+| **Catalogue** | 52-system UQFF catalogue (systems 25-52 fully defined) |
+| **MCMC** | `kappa_mcmc=0.00052` day⁻¹ (canonical 0.0005 unchanged) |
+| **SSq_linear** | 0.507 in e^(-SSq×n/26) form (distinct from SSq=0.57) |
+| **Q_WAVE_52** | n=52, mean=3.98e4 J/m³, std=51,200 |
+| **Z-scaling** | p_Z, SSq_Z, x_2_Z formulas; Z mean=−3.56e116 m |
+| **CERN DELPHI** | Records 93719–93726, Higgs mean=85 GeV |
+| **DPM Yin-Yang** | Yin=UA 57% / Yang=SCm 43%, 5 cosmological phases |
+| **Normality tests** | SW p=0.00055, KS p=0.741, AD=1.35, JB p=0.012 |
+
+### Files Updated
+
+| File | Change |
+|------|--------|
+| `GrokThread_UQFF_0904_Validation.py` | **NEW** — all 0904 unique content |
+| `CondensedPhysics_OutputData.py` | Q_WAVE_52_STATISTICS + 5 new PARAMS + SYSTEM_COUNTS |
+| `CondensedPhysics_Validation.py` | 5 new systems (25–29), KAPPA_MCMC sub-dict, cross-refs |
+| `GrokThread_StarMagic_UnifiedFramework.py` | Import HBAR from DPMCosmologyModule; syntax fix |
+| `add_uqff_methods.py` | Renamed: `compute_F_U_Bi_simple`, `compute_F_U_Bi_cosmic` |
+| `add_uqff_to_8_models.py` | Renamed: `compute_F_U_Bi_simple`, `compute_F_U_Bi_resonant` |
+| `shared_constants.h` | GrokThread0904 namespace (kappa_mcmc, SSq_linear, Q_wave_52) |
+| `shared_constants.py` | GROK_THREAD_0904_MCMC reference dict |
+| `observational_systems_config.h` | 5 new systems (GRO J1655-40, Cygnus Loop, G292, NGC 7293, Perseus Cluster) |
+
+### F_U_Bi_i Three Forms — Clarified (see GROK_UQFF_EQUATIONS_REFERENCE.md)
+- **Form A**: Relativistic LEP-scaling (original)
+- **Form B** → `compute_F_U_Bi_simple`: Atomic/stellar (Σβ_i(Ug_i − ρ_vac×G))
+- **Form C-1** → `compute_F_U_Bi_cosmic`: Galactic (Ω_g×M_bh/d_g×ΣUg)
+- **Form C-2** → `compute_F_U_Bi_resonant`: TRZ resonant (F_Bi×(1+f_TRZ)/(1−Ω_g))
+
+### Duplicate Method Analysis
+
+`compute_master_buoyant_equation` in `CondensedPhysics.py`:
+- 115 total definitions — **3 unique body variants** (not duplicates)
+- Variant 1 (94 classes): `F_U_Bi_i = M×(Ug−Ub+Ui)` — per-object relativistic
+- Variant 2 (11 classes): TRZ resonant form (Form C-2)
+- Variant 3 (10 classes): Galactic integral form (Form C-1)
+- 1 true dead duplicate (`TimeVaryingVacuumModel`, identical body) — harmless, deferred

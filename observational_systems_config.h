@@ -358,7 +358,67 @@ static const std::map<std::string, ObservationalSystem> OBSERVATIONAL_SYSTEMS = 
                          1e7,   // T_gas (K)
                          1e-13, // omega0 (rad/s)
                          1e11,  // t_age (s, representative ~3000 yrs)
-                         "multi_system", "Chandra/HST/Swift"}}};
+                         "multi_system", "Chandra/HST/Swift"}},
+
+    // =========================================================================
+    // GROK THREAD 0904a12a — 5 NEW SYSTEMS (March 6, 2026)
+    // Source: GrokThread_UQFF_0904_Validation.py (systems 25-29)
+    // =========================================================================
+
+    {"GRO_J1655-40", {"GRO J1655-40 Micro-quasar", "Black hole X-ray binary with superluminal jets; UQFF micro-quasar test case",
+                      1.28e31,  // M (kg, ~6.4 M_sun BH)
+                      1.5e9,    // r (m, ~2.2 R_sun companion)
+                      1e30,     // L_X (W, near-Eddington outburst)
+                      1e-5,     // B0 (T, jet field estimate)
+                      1e-19,    // rho_gas (kg/m³, accretion disc)
+                      1e7,      // T_gas (K, disc corona)
+                      4.4e-5,   // omega0 (rad/s, 2.62-day orbital period)
+                      3.15e14,  // t_age (s, ~10 Myr)
+                      "micro_quasar", "RXTE/ASCA/HST"}},
+
+    {"CygnusLoop", {"Cygnus Loop (Veil Nebula)", "Middle-aged SNR ~20,000 yr; shock-heated ISM; UQFF SNR test case",
+                    2.78e30,  // M (kg, ~1.4 M_sun ejecta + swept ISM)
+                    1.9e19,   // r (m, ~2 Mpc shock radius)
+                    1e30,     // L_X (W, X-ray luminosity)
+                    1e-8,     // B0 (T, post-shock field)
+                    5e-24,    // rho_gas (kg/m³, ISM density)
+                    3e6,      // T_gas (K, shock temperature)
+                    0.0,      // omega0 (rad/s, no rotation)
+                    6.3e11,   // t_age (s, ~20,000 yr)
+                    "snr", "ROSAT/XMM/Chandra"}},
+
+    {"G292.0+1.8", {"G292.0+1.8 SNR/PWN", "Young oxygen-rich SNR with central pulsar; UQFF PWN/SNR test case",
+                    2.78e30,  // M (kg, ~1.4 M_sun NS + ejecta)
+                    1.5e17,   // r (m, ~5 pc radius)
+                    3e30,     // L_X (W, X-ray luminosity)
+                    1e-9,     // B0 (T, pulsar wind nebula field)
+                    1e-22,    // rho_gas (kg/m³, ejecta density)
+                    1e7,      // T_gas (K, shock temperature)
+                    2.9e1,    // omega0 (rad/s, ~135 ms pulsar)
+                    4.7e10,   // t_age (s, ~1,500 yr)
+                    "snr_pwn", "Chandra/XMM"}},
+
+    {"NGC7293", {"NGC 7293 Helix Nebula", "Nearest planetary nebula; UQFF PN vacuum density test",
+                 1.19e30,  // M (kg, ~0.6 M_sun white dwarf)
+                 1.54e15,  // r (m, ~0.5 pc inner shell)
+                 1e26,     // L_X (W, UV/X-ray from hot WD)
+                 1e-7,     // B0 (T, WD surface field estimate)
+                 1e-21,    // rho_gas (kg/m³, nebular density)
+                 1e4,      // T_gas (K, nebular temperature)
+                 0.0,      // omega0 (rad/s)
+                 6.3e12,   // t_age (s, ~200 kyr)
+                 "planetary_nebula", "Chandra/HST/Spitzer"}},
+
+    {"PerseusCluster", {"Perseus Galaxy Cluster (Abell 426)", "Brightest X-ray cluster; giant cavities from AGN jets; UQFF ICM test",
+                        6.65e44,  // M (kg, ~3.3e14 M_sun total)
+                        2.31e22,  // r (m, ~750 kpc virial radius)
+                        7e37,     // L_X (W, X-ray luminosity)
+                        1e-9,     // B0 (T, ICM magnetic field)
+                        1e-25,    // rho_gas (kg/m³, ICM core density)
+                        7e7,      // T_gas (K, ICM temperature ~6 keV)
+                        0.0,      // omega0 (rad/s)
+                        4.1e17,   // t_age (s, ~13 Gyr)
+                        "galaxy_cluster", "Chandra/XMM/Hitomi"}}};
 
 // ============================================================================
 // HELPER FUNCTIONS

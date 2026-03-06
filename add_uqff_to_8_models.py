@@ -53,8 +53,8 @@ UQFF_METHODS = '''
         SCm_t = SCm_0 * np.exp(-kappa * t) * (1 - np.cos(omega * t))
         return {'SCm_t': SCm_t, 'SCm_0': SCm_0, 'decay': np.exp(-kappa * t)}
     
-    def compute_buoyant_equation(self, params=None) -> dict:
-        """UQFF Buoyant (F_U_Bi): F_Bi = β  (Ug - ρ_vac  G)"""
+    def compute_F_U_Bi_simple(self, params=None) -> dict:
+        """UQFF Buoyant (F_U_Bi) — Form B: stellar scale. F_Bi = β × (Ug - ρ_vac × G)"""
         G = CONSTANTS.get('G', 6.6743e-11)
         M = getattr(self, 'M', getattr(params, 'M', 1.989e30)) if params else getattr(self, 'M', 1.989e30)
         r = getattr(self, 'r', getattr(params, 'r', 1e10)) if params else getattr(self, 'r', 1e10)
@@ -64,9 +64,9 @@ UQFF_METHODS = '''
         F_Bi = beta * (g_base - rho_vac * G)
         return {'F_Bi': F_Bi, 'g_base': g_base, 'beta': beta, 'rho_vac': rho_vac}
     
-    def compute_master_buoyant_equation(self, params=None) -> dict:
-        """UQFF Master Buoyant (F_U_Bi_i): Cosmic-scale buoyancy integral"""
-        buoyant = self.compute_buoyant_equation(params)
+    def compute_F_U_Bi_resonant(self, params=None) -> dict:
+        """UQFF Master Buoyant (F_U_Bi_i) — Form C-2: resonant/TRZ. F_U_Bi_i = F_Bi × (1+f_TRZ) / (1-Omega_g)"""
+        buoyant = self.compute_F_U_Bi_simple(params)
         Omega_g = CONSTANTS.get('Omega_g', 7.3e-16)
         f_TRZ = CONSTANTS.get('f_TRZ', 0.1)
         F_U_Bi_i = buoyant['F_Bi'] * (1 + f_TRZ) / (1 - Omega_g)
