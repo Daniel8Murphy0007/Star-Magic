@@ -430,7 +430,7 @@ def run_validation() -> List[ValidationResult]:
         observed=13.8,
         tolerance=10.0,
         unit="Gyr",
-        passed=tau_Gyr > 1.0,
+        passed=tau_Gyr >= 13.8,
         note="Must exceed Hubble time (~13.8 Gyr) for viable DM ✅"
     ))
 
