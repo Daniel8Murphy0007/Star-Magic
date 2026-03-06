@@ -15,7 +15,7 @@
 
 | Metric | Count |
 |--------|-------|
-| ✅ Papers Completed | 0 / 100+ |
+| ✅ Papers Completed | 18 / 100+ |
 | 🔄 In Progress | 0 |
 | 📋 Domains Mapped | 13 |
 | 📂 Validation Files Catalogued | 33 |
