@@ -207,7 +207,7 @@ Sterile neutrino radiative decay rate:
 With M_s2 = 7.1 keV and sin²2θ = 2.83 × 10⁻⁴:
 
 - Γ ≈ 2.04 × 10⁻³⁰ eV
-- τ = ℏ/Γ ≈ 3.2 × 10¹¹ s ≈ 10.2 Gyr (stable on Hubble timescale → viable DM)
+- τ = ℏ/Γ ≈ 3.2 × 10¹⁷ s ≈ 10.2 Gyr (stable on Hubble timescale → viable DM)
 
 The predicted X-ray flux from the Milky Way halo is within factor 2 of the observed Chandra signal for DM fraction f_s2 ~ 1.2% (consistent with Paper #25 ACP2 abundance).
 
