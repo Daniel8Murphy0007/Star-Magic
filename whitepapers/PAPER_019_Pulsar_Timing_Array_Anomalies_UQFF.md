@@ -231,16 +231,16 @@ Since D_TRZ(f) has non-trivial frequency dependence in the nHz band, the effecti
 
 where Δα represents the contribution of ∂ ln D_TRZ / ∂ ln f. Numerically, between 10 nHz and 100 nHz:
 
-**Δα ≈ +0.09** (D_TRZ decreasing with f → steeper slope at low f)
+**Δα ≈ −0.09** (D_TRZ larger at lower f → h_c boosted more at low f → steeper negative slope)
 
 | Model | Spectral index α | α_eff at PTA band |
 |-------|-----------------|-------------------|
 | GR (circular, GW-driven) | −2/3 = −0.667 | −0.667 |
 | GR (with eccentricity corrections) | −0.5 to −0.7 | −0.5 to −0.7 |
-| UQFF | −0.667 (intrinsic) | −0.577 (measured, with TRZ tilt) |
+| UQFF | −0.667 (intrinsic) | −0.757 (measured, with TRZ tilt) |
 | PTA observations (NANOGrav 15yr) | −0.5 to −0.7 | −0.6 ± 0.1 |
 
-**UQFF prediction:** α_eff ≈ −0.58, within 1σ of all four PTA measurements.
+**UQFF prediction:** α_eff ≈ −0.76, steeper than GR, within the broad PTA measurement uncertainties.
 
 ### 3.4 Hellings-Downs Correlation Preservation
 
