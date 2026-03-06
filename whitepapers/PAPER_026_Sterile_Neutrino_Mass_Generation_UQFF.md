@@ -6,7 +6,7 @@
 **Status:** Draft  
 **Repository:** Daniel8Murphy0007/Star-Magic  
 **Calibration Constants:** κ = 0.0005/day, [SSq] = 0.57  
-**Primary Validation File:** `validate_sterile_neutrino_uqff.py`  
+**Primary Validation File:** `validation/validate_sterile_neutrino_uqff.py`  
 **C++ Sources:** `source27.cpp`, `source28.cpp`, `MAIN_1_CoAnQi.cpp` (SOURCE4 namespace)
 
 ---
