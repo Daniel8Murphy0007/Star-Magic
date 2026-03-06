@@ -9,18 +9,22 @@ PHASE 6: QCalc automatically includes Phase 6 galaxy physics (M51, NGC1316, SMBH
 binaries) when appropriate parameters are detected.
 
 Python Ecosystem Status (March 5, 2026):
-- CondensedPhysics2.py: 512 classes (~40,320 lines)
+- CondensedPhysics2.py: 519 classes (~39,426 lines)
   - Thread 10220801: 10 solar UQFF calibration calculators (Ug1-4 full forms,
     11-year B_s(t) cycle, 2025 EHT M_bh=8.55e36 kg Sgr A*)
   - Thread 9c366646: GrokThreadUQFFExtensions imported (14 classes)
+  - Thread 3a469fcc: 8 canonical UQFF calculators (Star Magic 14Apr2025 derivation)
+    ReactorEfficiencyUQFFCanonical, FUPiNegativeTimeCanonical, QuasarJetNavierStokes,
+    PlanetaryCoreHamiltonian, StellarAgeHelioCorrelation, DifferentialRotationDisk,
+    SCmDipoleAmplified, YangMillsMassGap
 - GrokThreadUQFFExtensions.py: 2,229 lines, 14 classes, GROK_THREAD_UQFF_CALCULATORS
   registry (13-term g_res, AsymCap, FractalTime, Monte Carlo, 17 buoyancy proofs)
 - CondensedPhysicsAggregator.py: v1.2.0, 9 modules, ALL_CALCULATORS unified dict
-- Whitepapers: 15 GW physics papers (Papers 4-15, BNS mergers, SGWB, magnetars,
-  primordial BH, cosmological GW propagation)
+- Whitepapers: 19 papers (PAPER_001-018 + PAPER_UQFF_VacuumEnergy; GW physics,
+  quantum entanglement, LISA noise spectrum, vacuum/dark energy connection)
 
-Routing note: Queries matching Solar Cycle / 11-year / GW BNS / SGWB / Magnetar
-keywords are routed to CP2 (trigger-based, qcalc_cp2_hybrid.py).
+Routing note: Queries matching Solar Cycle / 11-year / GW BNS / SGWB / Magnetar /
+ReactorEfficiency / QuasarJet / YangMills keywords are routed to CP2 (trigger-based, qcalc_cp2_hybrid.py).
 
 Author: Daniel T. Murphy (daniel.murphy00@gmail.com)
 Copyright: © 2025-2026 Daniel T. Murphy - All Rights Reserved
@@ -156,9 +160,10 @@ class ProductionPipeline:
                 'unit_filter': unit_filter,
                 'solver_version': 'QCalc v1.0',
                 'pipeline_version': 'Production v1.1',
-                'cp2_classes': 512,
+                'cp2_classes': 519,
                 'grok_thread_classes': 14,
-                'aggregator_version': '1.2.0'
+                'aggregator_version': '1.2.0',
+                'git_head': '40876d2'
             }
         }
         

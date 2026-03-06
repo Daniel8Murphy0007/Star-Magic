@@ -1,7 +1,7 @@
 {
     "last_updated": "2026-03-05T00:00:00",
     "build_status": "DUAL_PLATFORM_EXPANSION_PHASE5",
-    "project_phase": "Phase 5: Python Ecosystem Integration (Feb 13 - March 5, 2026) — CP2 512 classes, GrokThreadUQFF registry, Aggregator v1.2.0, GW Whitepapers 4-15",
+    "project_phase": "Phase 5: Python Ecosystem Integration (Feb 13 - March 5, 2026) — CP2 519 classes, GrokThreadUQFF registry, Aggregator v1.2.0, GW Whitepapers 001-018 + PAPER_UQFF_VacuumEnergy (19 total)",
     "python_extraction": {
         "status": "PHASE_1_COMPLETE",
         "completion_date": "2026-02-13",
@@ -461,12 +461,19 @@
         ]
     },
     "git_status": {
-        "last_commit": "a5ab24d",
+        "last_commit": "40876d2",
         "commit_date": "2026-03-05",
-        "commit_message": "Complete thread 9c366646 integration: registry, aggregator wiring, tracker update",
+        "commit_message": "Update master index: mark #17/#18 complete and add Session 18 log entry",
         "commit_time": "00:00:00",
         "branch": "master",
         "prior_commits_last_20": [
+            "40876d2 - Update master index: mark #17/#18 complete, Session 18 log entry",
+            "2201be5 - Complete PAPER_018 (LISA aether noise spectrum) and update master index",
+            "243e34a - Add PAPER_017 redshift z=1 results from LISA extended validator",
+            "fa9caf7 - Rename PAPER_017 to PAPER_UQFF_Vacuum_Energy_Dark_Energy_Connection.md",
+            "83d7ebe - Thread 3a469fcc: 8 canonical UQFF calculators from Star Magic 14Apr2025",
+            "b18a74f - Add PAPER_017: UQFF Vacuum Energy and Dark Energy Connection",
+            "f705451 - Add PAPER_016: Quantum Entanglement and UQFF Nonlocal Correlations",
             "a5ab24d - Complete thread 9c366646: GrokThreadUQFF registry + aggregator v1.2.0",
             "f384693 - Thread 10220801: 10 solar UQFF calibration calculators in CP2.py (512 classes)",
             "db805a4 - v4.3.0 Epoch Framework Integration (Grok Thread 4e0ecf23)",
@@ -478,10 +485,12 @@
         "last_updated": "2026-03-05",
         "condensed_physics_2": {
             "file": "CondensedPhysics2.py",
-            "total_classes": 512,
-            "approximate_lines": 40320,
+            "total_classes": 519,
+            "approximate_lines": 39426,
             "thread_10220801_classes": 10,
-            "thread_10220801_description": "Solar UQFF calibration: Ug1SolarDipoleCycle, Ug2StellarBubble, Ug3MagneticDiskFull, Ug4SMBHVacuumInteraction, SolarFUAssembly, InflationForceCore, SCmEpochState, SolarWindVacuumDensity, KiNormalizedSolar, SolarAetherStressTensor"
+            "thread_10220801_description": "Solar UQFF calibration: Ug1SolarDipoleCycle, Ug2StellarBubble, Ug3MagneticDiskFull, Ug4SMBHVacuumInteraction, SolarFUAssembly, InflationForceCore, SCmEpochState, SolarWindVacuumDensity, KiNormalizedSolar, SolarAetherStressTensor",
+            "thread_3a469fcc_classes": 8,
+            "thread_3a469fcc_description": "Canonical UQFF Star Magic 14Apr2025: ReactorEfficiencyUQFFCanonical, FUPiNegativeTimeCanonical, QuasarJetNavierStokes, PlanetaryCoreHamiltonian, StellarAgeHelioCorrelation, DifferentialRotationDisk, SCmDipoleAmplified, YangMillsMassGap"
         },
         "grok_thread_extensions": {
             "file": "GrokThreadUQFFExtensions.py",
@@ -506,9 +515,10 @@
         },
         "whitepapers": {
             "directory": "whitepapers/",
-            "total": 15,
-            "range": "PAPER_001 through PAPER_015",
-            "recent_papers_4_15_topics": "GW physics: BNS chirp phase, tidal deformability, BH mergers, post-merger oscillations, SGWB spectrum, eccentric binaries, magnetar spin-down, primordial BH formation, cosmological GW propagation"
+            "total": 19,
+            "range": "PAPER_001 through PAPER_018 + PAPER_UQFF_Vacuum_Energy_Dark_Energy_Connection",
+            "recent_papers_4_15_topics": "GW physics: BNS chirp phase, tidal deformability, BH mergers, post-merger oscillations, SGWB spectrum, eccentric binaries, magnetar spin-down, primordial BH formation, cosmological GW propagation",
+            "papers_016_018_topics": "PAPER_016: quantum entanglement/UQFF nonlocal correlations; PAPER_017: redshift z=1 corrections in UQFF GW propagation (LISA validator); PAPER_018: aether noise spectrum characterization for LISA; PAPER_UQFF_VacuumEnergy: vacuum energy and dark energy connection"
         }
     },
     "cmake_fix_dec3": {
