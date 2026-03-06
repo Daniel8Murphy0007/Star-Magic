@@ -1,7 +1,7 @@
 {
     "last_updated": "2026-03-05T00:00:00",
     "build_status": "DUAL_PLATFORM_EXPANSION_PHASE5",
-    "project_phase": "Phase 5: Python Ecosystem Integration (Feb 13 - March 5, 2026) — CP2 519 classes, GrokThreadUQFF registry, Aggregator v1.2.0, GW Whitepapers 001-018 + PAPER_UQFF_VacuumEnergy (19 total)",
+    "project_phase": "Phase 5: Python Ecosystem Integration (Feb 13 - March 5, 2026) — CP2 524 classes, GrokThreadUQFF registry, Aggregator v1.2.0, GW Whitepapers 001-018 + PAPER_UQFF_VacuumEnergy (19 total)",
     "python_extraction": {
         "status": "PHASE_1_COMPLETE",
         "completion_date": "2026-02-13",
@@ -485,12 +485,14 @@
         "last_updated": "2026-03-05",
         "condensed_physics_2": {
             "file": "CondensedPhysics2.py",
-            "total_classes": 519,
-            "approximate_lines": 39426,
+            "total_classes": 524,
+            "approximate_lines": 39842,
             "thread_10220801_classes": 10,
             "thread_10220801_description": "Solar UQFF calibration: Ug1SolarDipoleCycle, Ug2StellarBubble, Ug3MagneticDiskFull, Ug4SMBHVacuumInteraction, SolarFUAssembly, InflationForceCore, SCmEpochState, SolarWindVacuumDensity, KiNormalizedSolar, SolarAetherStressTensor",
             "thread_3a469fcc_classes": 8,
-            "thread_3a469fcc_description": "Canonical UQFF Star Magic 14Apr2025: ReactorEfficiencyUQFFCanonical, FUPiNegativeTimeCanonical, QuasarJetNavierStokes, PlanetaryCoreHamiltonian, StellarAgeHelioCorrelation, DifferentialRotationDisk, SCmDipoleAmplified, YangMillsMassGap"
+            "thread_3a469fcc_description": "Canonical UQFF Star Magic 14Apr2025: ReactorEfficiencyUQFFCanonical, FUPiNegativeTimeCanonical, QuasarJetNavierStokes, PlanetaryCoreHamiltonian, StellarAgeHelioCorrelation, DifferentialRotationDisk, SCmDipoleAmplified, YangMillsMassGap",
+            "thread_ff01cb3a_classes": 5,
+            "thread_ff01cb3a_description": "Full reconstruction UQFF Star Magic 14Apr2025: SCmDerivativeHierarchy (4 SCm states + 5 UA states), Ug2SolarWindTransmutation (QUA=1e-11 C trapped Aether), Ug4GalacticNonInteractive (Pgal=1.0), SolarCycleCoupledFU (Bs(t) cross-coupled all 4 Ug), FrozenPlanetSolarWind (outer planet solar wind power)"
         },
         "grok_thread_extensions": {
             "file": "GrokThreadUQFFExtensions.py",

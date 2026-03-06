@@ -1,8 +1,8 @@
 # Star-Magic UQFF Architecture Flow Diagram
 
-> **Version:** 4.3.5 (CANONICAL - DO NOT DEVIATE)
+> **Version:** 4.3.6 (CANONICAL - DO NOT DEVIATE)
 > **Generated:** 2026-02-21
-> **Updated:** 2026-03-05 (v4.3.5 + Thread 3a469fcc 8 canonical UQFF + GW PAPER_016/017/018 + PAPER_UQFF_VacuumEnergy)
+> **Updated:** 2026-03-05 (v4.3.6 + Thread ff01cb3a 5 full-reconstruction UQFF + Thread 3a469fcc 8 canonical UQFF + GW PAPER_016/017/018 + PAPER_UQFF_VacuumEnergy)
 > **Author:** Daniel T. Murphy
 > **CRITICAL:** This is the MASTER architecture document. All other docs must match.
 
@@ -38,6 +38,7 @@
 | **v4.3.3** | **GW Whitepapers 4-15: BNS/SGWB/Magnetar/PrimordialBH/Cosmological GW** | ✅ **Complete** | 995c9c3 |
 | **v4.3.4** | **Thread 3a469fcc: 8 canonical UQFF calculators → CP2.py (519 classes)** | ✅ **Complete** | 83d7ebe |
 | **v4.3.5** | **GW PAPER_016/017/018 + PAPER_UQFF_VacuumEnergy (19 whitepapers total)** | ✅ **Complete** | 40876d2 |
+| **v4.3.6** | **Thread ff01cb3a: 5 full-reconstruction UQFF calculators → CP2.py (524 classes)** | ✅ **Complete** | pending |
 
 ---
 
@@ -509,7 +510,7 @@
 | C++ Physics | 173 | source1.cpp - source173.cpp (116 integrated into MAIN_1_CoAnQi.cpp) |
 | C++ Headers | 32 | *.h files (shared_constants, IPC, VR, widgets, etc.) |
 | Python Calculators | 16 | QCalc*.py ecosystem |
-| Python Support | 30+ | CondensedPhysics*.py (CP1: 81K lines, CP2: ~39,426 lines / 519 classes), Phase*_Consolidated.py, IP/OPData.py, APIFetch.py |
+| Python Support | 30+ | CondensedPhysics*.py (CP1: 81K lines, CP2: ~39,842 lines / 524 classes), Phase*_Consolidated.py, IP/OPData.py, APIFetch.py |
 | Python Extensions | 2 | GrokThreadUQFFExtensions.py (2,229 lines, 14 classes) + CondensedPhysicsAggregator.py (v1.2.0, 9 modules) |
 | JavaScript | 3 | index.js (LIBRARY), uqff_server.js, automated_legacy_converter.js |
 | IPC Layer | 3 | ipc/uqff_ipc.h (v3.1), python_bridge.h, physics_service.h |
@@ -548,5 +549,5 @@ CondensedPhysics_OutputData.py
 
 ---
 
-*CANONICAL DOCUMENT - Version 4.3.5 - DO NOT DEVIATE*
-*Updated: 2026-03-05 (v4.3.5 Thread 3a469fcc + GW PAPER_016/017/018 + PAPER_UQFF_VacuumEnergy; CP2=519 classes; 19 whitepapers) by Daniel T. Murphy*
+*CANONICAL DOCUMENT - Version 4.3.6 - DO NOT DEVIATE*
+*Updated: 2026-03-05 (v4.3.6 Thread ff01cb3a + Thread 3a469fcc + GW PAPER_016/017/018 + PAPER_UQFF_VacuumEnergy; CP2=524 classes; 19 whitepapers) by Daniel T. Murphy*

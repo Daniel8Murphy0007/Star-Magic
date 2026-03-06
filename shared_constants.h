@@ -602,6 +602,41 @@ namespace StarMagicCanonical {
     constexpr double MU_QUASAR_JET_VISCOSITY = 1.0e-35;
 } // namespace StarMagicCanonical
 
+// ---------------------------------------------------------------------------
+// Thread ff01cb3a — Star Magic 14Apr2025 Full Reconstruction (unique content)
+// 5 new calculators: SCm/UA hierarchy, Ug2 QUA transmutation, Ug4 Pgal,
+//   solar-cycle cross-coupled FU, frozen-planet solar-wind energy model
+// (C)2025 Daniel T. Murphy, daniel.murphy00@gmail.com — All Rights Reserved
+// ---------------------------------------------------------------------------
+namespace StarMagicFF01 {
+    /// Q_UA: trapped Aether charge in Ug2 outer heliosphere shell (C)
+    /// Distinct from Q_A (background Aether charge); trapped specifically by Ug2
+    /// From full-form: Ug2 = k2*(QA+QUA)*Ms/r^2 * S(r-Rb) * (1+dsw*vsw) * HSCm * Ereact
+    constexpr double Q_UA_TRAPPED = 1.0e-11;
+
+    /// H_SCm heliosphere thickness factor multiplier (dimensionless)
+    /// HSCm = 1 + H_SCM_FACTOR*(SCm_vol/Ms); encodes history of SCm donation
+    constexpr double H_SCM_THICKNESS_FACTOR = 0.1;
+
+    /// P_gal: galactic non-interactive penetration factor for Ug4 (dimensionless)
+    /// Pgal=1.0 means the star fully participates in galactic Ug4 gravity;
+    /// analogous to Pcore=1e-3 for planetary Ug3 — Ug4 is non-interactive with
+    /// extra-galactic fields (explains galactic rotation curve flatness)
+    constexpr double P_GAL_NON_INTERACTIVE = 1.0;
+
+    /// k_pen: frozen planet solar-wind penetration attenuation coefficient
+    /// f_pen(d) = 1 - exp(-k_pen * R_bubble / d); -> 0 inner; -> 1 outer
+    constexpr double K_PEN_FROZEN_PLANET = 0.5;
+
+    /// zeta_scm: SCm hierarchy state ratio (dimensionless)
+    /// SCm_n = rho_SCm * zeta^n; n=0(base) to n=3(SCm''', most reactive/quasar-prone)
+    constexpr double ZETA_SCM_HIERARCHY = 0.1;
+
+    /// xi_ua: UA hierarchy state ratio (dimensionless)
+    /// UA_n = Q_A * xi^n; n=0(base) to n=4(UA'''', most excited/attenuated)
+    constexpr double XI_UA_HIERARCHY = 0.1;
+} // namespace StarMagicFF01
+
 
 } // namespace Constants
 } // namespace UQFF

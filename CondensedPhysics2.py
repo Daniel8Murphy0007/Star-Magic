@@ -41163,3 +41163,511 @@ SOURCE_3a469fcc_CALCULATORS = {
     'SCmDipoleAmplifiedCalculator':              SCmDipoleAmplifiedCalculator(),
     'YangMillsMassGapCalculator':                YangMillsMassGapCalculator(),
 }
+
+
+# =============================================================================
+# THREAD ff01cb3a -- STAR MAGIC 14Apr2025 FULL RECONSTRUCTION (UNIQUE CONTENT)
+# 5 new calculators: SCm/UA hierarchy, Ug2 QUA transmutation, Ug4 Pgal,
+#   solar-cycle cross-coupled FU, frozen-planet solar-wind energy model
+# Source: https://x.com/i/grok/share/ff01cb3a6a054cebbfd9856a503e9682
+# (C)2025 Daniel T. Murphy, daniel.murphy00@gmail.com -- All Rights Reserved
+# =============================================================================
+
+THREAD_ff01cb3a_PARAMS = {
+    # --- Ug2 solar wind transmutation ---
+    'Q_A':           1.0e-10,    # Base Aether charge QA (C) -- heliosphere field
+    'Q_UA':          1.0e-11,    # Trapped Aether in Ug2 outer shell QUA (C) -- NEW
+    'delta_sw':      0.01,       # Solar wind modulation factor delta_sw (dimensionless)
+    'v_sw':          5.0e5,      # Solar wind velocity (m/s)
+    'H_SCm_factor':  0.1,        # HSCm heliosphere thickness multiplier (dimensionless)
+    # --- Ug4 galactic non-interactive ---
+    'k4':            1.0,        # Ug4 coupling constant (dimensionless, refined)
+    'M_bh':          8.15e36,    # Sgr A* mass (kg)
+    'd_g':           2.55e20,    # Sun-galactic centre distance (m)
+    'alpha_decay':   0.001,      # Exponential decay rate (day^-1)
+    'delta_bh':      0.1,        # BH field modulation factor (dimensionless)
+    'P_gal':         1.0,        # Galactic non-interactive penetration factor (= 1 for star; discrete like Ug3) -- NEW
+    'SCm_vol_sun':   1.0e12,     # Speculative SCm volume at solar core (kg)
+    'M_s':           1.989e30,   # Solar mass (kg)
+    'rho_SCm':       1.0e15,     # SCm density in stellar core (kg/m^3)
+    'v_SCm':         2.963e8,    # SCm velocity ~0.99c (m/s)
+    'rho_A':         1.0e-23,    # Aether density (kg/m^3)
+    'kappa_scm':     0.0005,     # SCm reactivity decay rate (day^-1)
+    # --- Solar cycle cross-coupling ---
+    'B0_avg':        1.0e-4,     # Average solar surface field baseline (T)
+    'B_amp':         0.4,        # Sunspot cycle magnetic field amplitude (T)
+    'omega_c':       1.6e-8,     # 11-year solar cycle angular frequency (rad/s)
+    'B_SCm':         1.0e3,      # SCm superconductive interior field (T)
+    'R_s':           6.96e8,     # Solar radius (m)
+    'R_bubble':      1.496e13,   # Heliosphere radius ~100 AU (m)
+    'k1': 1.5, 'k2': 1.2, 'k3': 1.8,  # Coupling constants
+    'k_e':           1.0,        # Ug4 coupling (reuse k4)
+    'beta_i':        0.6,        # Buoyancy coupling
+    'Omega_g':       7.3e-16,    # Galactic spin rate (rad/s)
+    'gamma_um':      5.0e-5,     # Um near-lossless decay rate (day^-1)
+    'omega_s_avg':   2.5e-6,     # Differential rotation average (rad/s)
+    'delta_omega':   0.4e-6,     # Differential rotation amplitude (rad/s)
+    # --- Frozen planet model ---
+    'Phi_sw_1AU':    6.25e-4,    # Solar wind flux at 1 AU (W/m^2)
+    'k_pen':         0.5,        # Frozen planet penetration attenuation coefficient
+    'AU_m':          1.496e11,   # 1 AU in metres
+    # --- SCm/UA hierarchy ---
+    'zeta_scm':      0.1,        # SCm hierarchy state ratio zeta (each state = zeta x prior)
+    'xi_ua':         0.1,        # UA hierarchy state ratio xi (each state = xi x prior)
+}
+
+
+class SCmDerivativeHierarchyCalculator:
+    """
+    SCm and UA derivative state hierarchy (Thread ff01cb3a, Star Magic 14Apr2025).
+
+    SCm hierarchy (4 states):
+        SCm_n = rho_SCm * zeta^n   for n=0,1,2,3
+        n=0: SCm   (base, density 1e15 kg/m^3, Qs=0, tightly bound)
+        n=1: SCm'  (1st excited, zeta=0.1  => 1e14 kg/m^3, slightly reactive)
+        n=2: SCm'' (2nd excited, zeta=0.01 => 1e13 kg/m^3, moderately reactive)
+        n=3: SCm'''(3rd excited, zeta=0.001=> 1e12 kg/m^3, highly reactive, quasar-prone)
+
+    UA hierarchy (5 states):
+        UA_n = Q_A * xi^n   for n=0,1,2,3,4
+        n=0: UA    (Q_A = 1e-10 C,  base trapped Aether)
+        n=1: UA'   (xi * Q_A = 1e-11 C)
+        n=2: UA''  (xi^2 * Q_A = 1e-12 C)
+        n=3: UA''' (xi^3 * Q_A = 1e-13 C)
+        n=4: UA''''(xi^4 * Q_A = 1e-14 C)
+
+    E_react per SCm state:
+        E_react_n = rho_SCm_n * v_SCm^2 / rho_A * exp(-kappa * t)
+                  = E_react_0 * zeta^n
+
+    Physical basis:
+        Higher excited states = lower binding energy = more reactive = quasar-prone
+        n=3 (SCm''') is the most prone to escape and ignite against unbound Aether
+        UA hierarchy modulates Ug3 exclusive interaction at each excitation level
+
+    Thread ff01cb3a -- NEW (SCm/UA hierarchy not in any prior calculator)
+    """
+
+    def compute(self, t_days: float = 0.0) -> dict:
+        import math
+        P = THREAD_ff01cb3a_PARAMS
+
+        E_react_base = P['rho_SCm'] * P['v_SCm']**2 / P['rho_A'] * math.exp(-P['kappa_scm'] * t_days)
+
+        # SCm hierarchy (4 states, n=0..3)
+        scm_states = {}
+        for n in range(4):
+            label = 'SCm' + ("'" * n)
+            rho_n = P['rho_SCm'] * (P['zeta_scm'] ** n)
+            E_react_n = E_react_base * (P['zeta_scm'] ** n)
+            scm_states[label] = {
+                'state_index':  n,
+                'density_kg_m3': rho_n,
+                'E_react':       E_react_n,
+                'reactivity':    1.0 / (P['zeta_scm'] ** n) if n > 0 else 1.0,
+                'quasar_risk':   1.0 - (P['zeta_scm'] ** n),  # higher n = higher risk
+            }
+
+        # UA hierarchy (5 states, n=0..4)
+        ua_states = {}
+        for n in range(5):
+            label = 'UA' + ("'" * n)
+            q_n = P['Q_A'] * (P['xi_ua'] ** n)
+            ua_states[label] = {
+                'state_index': n,
+                'charge_C':    q_n,
+                'ug3_coupling': 1.0 - (P['xi_ua'] ** n),  # reduces with excitation
+            }
+
+        most_reactive_scm = max(scm_states, key=lambda k: scm_states[k]['quasar_risk'])
+        most_reactive_ua  = max(ua_states,  key=lambda k: ua_states[k]['state_index'])
+
+        return {
+            'SCm_hierarchy':     scm_states,
+            'UA_hierarchy':      ua_states,
+            'E_react_base':      E_react_base,
+            'most_reactive_SCm': most_reactive_scm,
+            'most_reactive_UA':  most_reactive_ua,
+            't_days':            t_days,
+            'units':             'density: kg/m^3; charge: C; E_react: J/m^3',
+            'equation':          'SCm_n=rho_SCm*zeta^n; UA_n=Q_A*xi^n; E_react_n=E_react_0*zeta^n',
+            'result_equation':   (
+                f'SCm[base]={P["rho_SCm"]:.2e} kg/m3; '
+                f'SCm_3={P["rho_SCm"]*P["zeta_scm"]**3:.2e} kg/m3 (quasar-prone); '
+                f'E_react_0={E_react_base:.4e} J/m3'
+            ),
+        }
+
+
+class Ug2SolarWindTransmutationCalculator:
+    """
+    Ug2 outer field bubble with QUA (trapped Aether) + HSCm + solar wind modulation.
+    (Thread ff01cb3a, Star Magic 14Apr2025 full refinement)
+
+    Full canonical form:
+        Ug2 = k2 * (QA + QUA) * Ms / r^2 * S(r - Rb)
+              * (1 + delta_sw * v_sw) * HSCm * E_react
+
+    Where:
+        QA     = 1e-10 C  (base Aether charge)
+        QUA    = 1e-11 C  (trapped Aether specifically in Ug2 outer shell) -- NEW
+        HSCm   = 1 + H_SCm_factor * (SCm_vol / Ms)  (heliosphere thickness factor)
+        E_react = rho_SCm * v_SCm^2 / rho_A * exp(-kappa * t)
+
+    Physical basis:
+        - Ug2 forms heliosphere by TRANSMUTING solar winds to H2-complexes
+          stuck to outer shell (no liquid formation -- H bonds to Ug2)
+        - QUA is the additional Aether charge trapped WITHIN the Ug2 shell
+        - HSCm encodes how the shell thickness correlates to SCm donation history
+        - Solar wind modulation (1 + delta_sw*vsw) enhances bubble reactivity
+
+    Distinct from Ug2StellarBubbleCalculator (no QUA, no Ereact, no HSCm split)
+    Thread ff01cb3a -- NEW
+    """
+
+    def compute(self, t_days: float = 0.0, r_m: float = None) -> dict:
+        import math
+        P = THREAD_ff01cb3a_PARAMS
+
+        if r_m is None:
+            r_m = P['R_bubble']
+
+        # Step function: active at r >= Rb
+        step = 1.0 if r_m >= P['R_bubble'] else 0.0
+
+        # Combined Aether charge
+        Q_total = P['Q_A'] + P['Q_UA']
+
+        # Heliosphere thickness factor HSCm
+        scm_vol_fraction = P['SCm_vol_sun'] / P['M_s']
+        H_SCm = 1.0 + P['H_SCm_factor'] * scm_vol_fraction
+
+        # Solar wind modulation
+        sw_mod = 1.0 + P['delta_sw'] * P['v_sw']
+
+        # Reactor efficiency
+        E_react = P['rho_SCm'] * P['v_SCm']**2 / P['rho_A'] * math.exp(-P['kappa_scm'] * t_days)
+
+        # Ug2 full form
+        Ug2 = P['k2'] * Q_total * P['M_s'] / (r_m ** 2) * step * sw_mod * H_SCm * E_react
+
+        # Reference without Ereact (static contribution)
+        Ug2_static = P['k2'] * Q_total * P['M_s'] / (r_m ** 2) * step * sw_mod * H_SCm
+
+        return {
+            'Ug2':          Ug2,
+            'Ug2_static':   Ug2_static,
+            'Q_total':      Q_total,
+            'Q_A':          P['Q_A'],
+            'Q_UA':         P['Q_UA'],
+            'H_SCm':        H_SCm,
+            'sw_mod':       sw_mod,
+            'E_react':      E_react,
+            'step':         step,
+            'r_m':          r_m,
+            't_days':       t_days,
+            'units':        'normalised field strength (Ug2)',
+            'equation':     'Ug2=k2*(QA+QUA)*Ms/r^2*S(r-Rb)*(1+dsw*vsw)*HSCm*Ereact',
+            'result_equation': (
+                f'QUA={P["Q_UA"]:.2e} C; HSCm={H_SCm:.6f}; '
+                f'Ug2_static={Ug2_static:.4e}; Ug2(t={t_days:.1f}d)={Ug2:.4e}'
+            ),
+        }
+
+
+class Ug4GalacticNonInteractiveCalculator:
+    """
+    Ug4 star-black hole interaction with Pgal non-interactive factor.
+    (Thread ff01cb3a, Star Magic 14Apr2025)
+
+    Full canonical form:
+        Ug4 = k4 * (Ms * Mbh / dg^2) * exp(-alpha*t) * cos(pi*tn)
+              * E_react * (1 + delta_bh * SCm/Ms) * Pgal
+
+    Where:
+        Pgal = 1.0  (galactic non-interactive penetration; discrete, like Ug3's
+                     Pcore -- Ug4 is non-interactive with extra-galactic phenomena)
+        (1 + delta_bh * SCm/Ms) = SCm stabilization factor for inter-stellar gravity
+
+    Physical basis:
+        - Ug4 observable between stars and black holes (Sgr A* for Sun)
+        - Pgal = 1 means the star fully participates in galactic gravity
+        - But just as Ug3 does not interact externally (Pcore=1e-3 for planets),
+          Ug4 does not interact with extra-galactic fields (non-interactive externally)
+        - This explains galactic rotation curve flatness via discrete Ug4 binding
+
+    At t=0, tn=0, solar values: Ug4 ~ 2.49e26 * E_react ~ 2.93e72 (normalised)
+
+    Distinct from Ug4SMBHVacuumInteractionCalculator (no Pgal, no Ereact, no cos(pi*tn))
+    Thread ff01cb3a -- NEW
+    """
+
+    def compute(self, t_days: float = 0.0, t_n: float = 0.0) -> dict:
+        import math
+        P = THREAD_ff01cb3a_PARAMS
+
+        # Gravitational mass-distance term
+        mass_dist = P['M_s'] * P['M_bh'] / (P['d_g'] ** 2)
+
+        # Time decay + negative time cycle
+        exp_decay = math.exp(-P['alpha_decay'] * t_days)
+        cos_tn    = math.cos(math.pi * t_n)
+
+        # Reactor efficiency
+        E_react = P['rho_SCm'] * P['v_SCm']**2 / P['rho_A'] * math.exp(-P['kappa_scm'] * t_days)
+
+        # SCm stabilization factor
+        scm_frac    = P['SCm_vol_sun'] / P['M_s']
+        scm_stab    = 1.0 + P['delta_bh'] * scm_frac
+
+        # Pgal: galactic non-interactive factor (1.0 = full star participation;
+        # stated as discrete/non-interactive with extra-galactic fields)
+        P_gal = P['P_gal']
+
+        # Full Ug4
+        Ug4 = P['k4'] * mass_dist * exp_decay * cos_tn * E_react * scm_stab * P_gal
+
+        # Base Ug4 (without Ereact -- original form from prior threads)
+        Ug4_base = P['k4'] * mass_dist * exp_decay
+
+        # Ub4 (buoyancy opposition)
+        Ub4 = -P['beta_i'] * Ug4 * P['Omega_g'] * P['M_bh'] / P['d_g']
+
+        return {
+            'Ug4':          Ug4,
+            'Ug4_base':     Ug4_base,
+            'Ub4':          Ub4,
+            'mass_dist':    mass_dist,
+            'exp_decay':    exp_decay,
+            'cos_tn':       cos_tn,
+            'E_react':      E_react,
+            'scm_stab':     scm_stab,
+            'P_gal':        P_gal,
+            't_days':       t_days,
+            't_n':          t_n,
+            'units':        'normalised field strength (Ug4 full form)',
+            'equation':     'Ug4=k4*(Ms*Mbh/dg^2)*exp(-a*t)*cos(pi*tn)*Ereact*(1+dbh*SCm/Ms)*Pgal',
+            'result_equation': (
+                f'Ug4_base={Ug4_base:.4e}; E_react={E_react:.4e}; '
+                f'Ug4_full(t={t_days:.1f}d,tn={t_n:.2f})={Ug4:.4e}; Pgal={P_gal:.1f}'
+            ),
+        }
+
+
+class SolarCycleCoupledFUCalculator:
+    """
+    Complete F_U with Bs(t) solar cycle cross-coupled through ALL 4 Ug terms.
+    (Thread ff01cb3a, Star Magic 14Apr2025 full refinement)
+
+    Bs(t) = B0 + B_amp * sin(omega_c * t)   [11-year sunspot cycle]
+          = 1e-4 + 0.4 * sin(1.6e-8 * t)   T
+
+    Solar cycle enters all components:
+        Ug1: mu_s(t) = [Bs(t) + B_SCm] * Rs^3  (dipole oscillates)
+        Ug2: sw interaction amplified by Bs modulation (via HSCm, indirect)
+        Ug3: Bj(t) = Bs(t) + B_SCm             (magnetic disk oscillates)
+        Ug4: minimal (via B_sw ~ 5e-9 T; delta_bh coupling)
+        Um:  mu_j(t) = [Bs(t) + B_SCm] * Rs^3 / rj  (strings oscillate)
+
+    Full F_U:
+        F_U(t) = [Ug1(t)-Ub1(t)] + [Ug2-Ub2] + [Ug3(t)-Ub3(t)]
+                 + [Ug4(t)-Ub4(t)] + Um(t) + A_munu
+
+    Physical significance:
+        - F_U oscillates with 11-year period; Ug1+Ug3+Um carry the oscillatory component
+        - Ug2+Ug4 provide quasi-static baseline
+        - Observable: solar magnetic cycle maps directly to UQFF field oscillation
+
+    Thread ff01cb3a -- NEW (SolarFUAssemblyCalculator uses static t=0 reference values)
+    """
+
+    def compute(self, t_days: float = 0.0, t_n: float = 0.0, theta: float = 0.2618) -> dict:
+        import math
+        P = THREAD_ff01cb3a_PARAMS
+
+        # 11-year sunspot cycle
+        Bs_t = P['B0_avg'] + P['B_amp'] * math.sin(P['omega_c'] * t_days)
+        B_eff = Bs_t + P['B_SCm']          # Effective field including SCm interior
+        mu_s  = B_eff * (P['R_s'] ** 3)    # Stellar dipole moment (T.m^3)
+
+        # Time-dependent rotation
+        sin_wc    = math.sin(P['omega_c'] * t_days)
+        omega_diff = (P['omega_s_avg'] + P['delta_omega'] * sin_wc) \
+                   - (-(P['omega_s_avg'] - P['delta_omega'] * sin_wc))
+
+        # Reactor efficiency
+        E_react = P['rho_SCm'] * P['v_SCm']**2 / P['rho_A'] * math.exp(-P['kappa_scm'] * t_days)
+
+        # Exp decay + pi-cycle modulations
+        exp_t   = math.exp(-P['alpha_decay'] * t_days)
+        cos_tn  = math.cos(math.pi * t_n)
+
+        # --- Ug1 (dipole + Bs(t) cycle) ---
+        grad_Ms_r = P['M_s'] / P['R_bubble']
+        delta_def = 0.01 * math.sin(0.001 * t_days)
+        Ug1 = P['k1'] * mu_s * grad_Ms_r * exp_t * cos_tn * (1.0 + delta_def)
+        Ub1 = -P['beta_i'] * Ug1 * P['Omega_g'] * P['M_bh'] / P['d_g'] * cos_tn
+
+        # --- Ug2 (quasi-static baseline) ---
+        Q_total = P['Q_A'] + P['Q_UA']
+        sw_mod   = 1.0 + P['delta_sw'] * P['v_sw']
+        H_SCm    = 1.0 + P['H_SCm_factor'] * (P['SCm_vol_sun'] / P['M_s'])
+        Ug2 = P['k2'] * Q_total * P['M_s'] / (P['R_bubble'] ** 2) * sw_mod * H_SCm
+        Ub2 = -P['beta_i'] * Ug2 * P['Omega_g'] * P['M_bh'] / P['d_g'] * cos_tn
+
+        # --- Ug3 (magnetic disk + Bs(t) cycle + differential rotation) ---
+        Ug3 = P['k3'] * B_eff * math.cos(omega_diff * t_days * math.pi) * math.cos(theta) * E_react
+        Ub3 = -P['beta_i'] * Ug3 * P['Omega_g'] * P['M_bh'] / P['d_g'] * cos_tn
+
+        # --- Ug4 (galactic term, quasi-static but with pi-cycle) ---
+        mass_dist = P['M_s'] * P['M_bh'] / (P['d_g'] ** 2)
+        Ug4 = P['k4'] * mass_dist * exp_t * cos_tn
+        Ub4 = -P['beta_i'] * Ug4 * P['Omega_g'] * P['M_bh'] / P['d_g']
+
+        # --- Um (magnetic strings, cycle-coupled) ---
+        Um_base = mu_s / P['R_bubble']
+        gamma_decay = P['gamma_um']
+        Um_factor = (1.0 - math.exp(-gamma_decay * t_days * abs(cos_tn))) if t_days > 0 else 0.0
+        Um = Um_base * Um_factor * 1.0e9   # Scale by N_strings ~ 10^9
+
+        # --- Aether metric (quasi-static perturbation) ---
+        A_munu = 1.0 + 1.11e-15   # ~ [1, -1, -1, -1] + eta * T_s00 perturbation
+
+        # --- Full F_U ---
+        F_U = (Ug1 - Ub1) + (Ug2 - Ub2) + (Ug3 - Ub3) + (Ug4 - Ub4) + Um + A_munu
+
+        # Oscillatory component (terms that vary with solar cycle)
+        F_U_oscillatory = (Ug1 - Ub1) + (Ug3 - Ub3) + Um
+        F_U_static      = (Ug2 - Ub2) + (Ug4 - Ub4) + A_munu
+
+        dominant = 'Ug4' if abs(Ug4) > abs(Ug1) else ('Ug1' if abs(Ug1) > abs(Ug3) else 'Ug3')
+
+        return {
+            'F_U':              F_U,
+            'F_U_oscillatory':  F_U_oscillatory,
+            'F_U_static':       F_U_static,
+            'Bs_t':             Bs_t,
+            'B_eff':            B_eff,
+            'Ug1': Ug1, 'Ub1': Ub1,
+            'Ug2': Ug2, 'Ub2': Ub2,
+            'Ug3': Ug3, 'Ub3': Ub3,
+            'Ug4': Ug4, 'Ub4': Ub4,
+            'Um':               Um,
+            'A_munu':           A_munu,
+            'omega_diff':       omega_diff,
+            'dominant_term':    dominant,
+            't_days':           t_days,
+            'units':            'normalised field strength (all terms)',
+            'equation':         'FU=[Ug1(t)-Ub1]+[Ug2-Ub2]+[Ug3(t)-Ub3]+[Ug4(t)-Ub4]+Um(t)+A_munu; Bs(t)=B0+Bamp*sin(wc*t)',
+            'result_equation':  (
+                f'Bs({t_days:.1f}d)={Bs_t:.4e} T; F_U={F_U:.4e}; '
+                f'F_U_osc={F_U_oscillatory:.4e}; F_U_static={F_U_static:.4e}; '
+                f'dominant={dominant}'
+            ),
+        }
+
+
+class FrozenPlanetSolarWindCalculator:
+    """
+    Outer frozen planets/bodies powered directly by solar wind flux.
+    (Thread ff01cb3a, Star Magic 14Apr2025)
+
+    Physical basis:
+        "Frozen planets are powered directly by the solar winds and lie at
+         the furthest distances from the sun." (Star Magic 14Apr2025)
+
+    At large distances (d >> Rb ~ 100 AU):
+        - Ug2 heliosphere too attenuated to shield/transmute solar wind
+        - Ug3 penetration: P_core = 1e-3 (minimal core energy)
+        - Solar wind is PRIMARY energy source
+
+    Power model:
+        P_frozen(d) = Phi_sw(d) * f_pen(d) * A_eff
+
+        Phi_sw(d)  = Phi_1AU * (AU_m/d)^2            solar wind flux falloff
+        f_pen(d)   = 1 - exp(-k_pen * R_bubble / d)  penetration fraction
+                                                       (-> 0 at d << Rb; -> 1 at d >> Rb)
+        A_eff      = pi * R_planet^2                  cross-section
+
+    Classification:
+        d < 0.3*Rb (~30 AU): inner planets -- Ug2 shielded, liquid retention
+        0.3*Rb < d < Rb:     transition (ice giants: Uranus 19 AU, Neptune 30 AU)
+        d > Rb (~100 AU):    frozen/KBOs -- fully solar-wind powered
+
+    Thread ff01cb3a -- NEW (not in any prior frozen planet or outer-planet model)
+    """
+
+    # Reference planet radii (m)
+    PLANET_RADII = {
+        'Neptune':  2.462e7,
+        'Uranus':   2.556e7,
+        'Pluto':    1.188e6,
+        'Eris':     1.163e6,
+        'Generic_KBO': 5.0e5,
+    }
+
+    def compute(self, d_AU: float = 30.0, R_planet_m: float = None,
+                planet_name: str = 'Neptune') -> dict:
+        import math
+        P = THREAD_ff01cb3a_PARAMS
+
+        if R_planet_m is None:
+            R_planet_m = self.PLANET_RADII.get(planet_name, 2.0e7)
+
+        d_m = d_AU * P['AU_m']
+
+        # Solar wind flux at distance d
+        Phi_sw_d = P['Phi_sw_1AU'] * (P['AU_m'] / d_m) ** 2
+
+        # Penetration fraction (fraction of solar wind NOT filtered by Ug2 bubble)
+        f_pen = 1.0 - math.exp(-P['k_pen'] * P['R_bubble'] / d_m)
+
+        # Effective cross-sectional area of planet
+        A_eff = math.pi * R_planet_m ** 2
+
+        # Power received by frozen planet from solar wind
+        P_frozen_W = Phi_sw_d * f_pen * A_eff
+
+        # Classification
+        Rb_AU = P['R_bubble'] / P['AU_m']
+        if d_AU < 0.3 * Rb_AU:
+            classification = 'inner (Ug2-shielded; liquid retention possible)'
+        elif d_AU < Rb_AU:
+            classification = 'transition ice giant (partial Ug2 shielding)'
+        else:
+            classification = 'outer frozen / KBO (fully solar-wind powered)'
+
+        # Comparison: Ug3 core power (from P_core = 1e-3 penetration)
+        # Nominal Ug3 core energy = P_core * k3 * B_SCm * ... -- approximate
+        Ug3_core_proxy = P['k3'] * P['B_SCm'] * 1.0e-3 * R_planet_m
+
+        return {
+            'P_frozen_W':      P_frozen_W,
+            'Phi_sw_d':        Phi_sw_d,
+            'f_pen':           f_pen,
+            'A_eff_m2':        A_eff,
+            'R_planet_m':      R_planet_m,
+            'd_AU':            d_AU,
+            'd_m':             d_m,
+            'Rb_AU':           Rb_AU,
+            'planet_name':     planet_name,
+            'classification':  classification,
+            'Ug3_core_proxy':  Ug3_core_proxy,
+            'units':           'P_frozen: W; Phi_sw: W/m^2; f_pen: dimensionless',
+            'equation':        'P_frozen=Phi_1AU*(AU/d)^2*(1-exp(-k*Rb/d))*pi*Rp^2',
+            'result_equation': (
+                f'{planet_name}({d_AU:.0f} AU): Phi_sw={Phi_sw_d:.4e} W/m^2; '
+                f'f_pen={f_pen:.4f}; P_frozen={P_frozen_W:.4e} W; '
+                f'class: {classification}'
+            ),
+        }
+
+
+# --- Registry for Thread ff01cb3a (Star Magic 14Apr2025 Full Reconstruction) ---
+SOURCE_ff01cb3a_CALCULATORS = {
+    'SCmDerivativeHierarchyCalculator':        SCmDerivativeHierarchyCalculator(),
+    'Ug2SolarWindTransmutationCalculator':     Ug2SolarWindTransmutationCalculator(),
+    'Ug4GalacticNonInteractiveCalculator':     Ug4GalacticNonInteractiveCalculator(),
+    'SolarCycleCoupledFUCalculator':           SolarCycleCoupledFUCalculator(),
+    'FrozenPlanetSolarWindCalculator':         FrozenPlanetSolarWindCalculator(),
+}

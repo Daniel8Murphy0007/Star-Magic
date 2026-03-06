@@ -154,6 +154,14 @@ enum class MessageType : uint32_t {
     DIFFERENTIAL_ROTATION_UG3   = 0x0706,  // omega_s(t) = omega_avg - delta_omega*sin(omega_c*t)
     YANG_MILLS_MASS_GAP         = 0x0707,  // DeltaE_gap = k3*Bj^2/(2*mu0)*cos(omega_s*t*pi) per string
 
+    // Thread ff01cb3a — Star Magic 14Apr2025 Full Reconstruction (0x0800–0x0804)
+    // (C)2025 Daniel T. Murphy, daniel.murphy00@gmail.com — All Rights Reserved
+    SCM_HIERARCHY_STATE         = 0x0800,  // SCm/UA derivative state hierarchy: SCm_n=rho*zeta^n; UA_n=Q_A*xi^n
+    UG2_SOLAR_TRANSMUTATION     = 0x0801,  // Ug2 with QUA+HSCm+Ereact: k2*(QA+QUA)*Ms/r^2*S*(1+dsw*vsw)*HSCm*Ereact
+    UG4_GALACTIC_PGAL           = 0x0802,  // Ug4 with Pgal: k4*(Ms*Mbh/dg^2)*exp(-a*t)*cos(pi*tn)*Ereact*(1+dbh*SCm/Ms)*Pgal
+    SOLAR_CYCLE_FU_ALL_TERMS    = 0x0803,  // FU cross-coupled Bs(t)=B0+Bamp*sin(wc*t) through all 4 Ug terms
+    FROZEN_PLANET_SOLAR_WIND    = 0x0804,  // Outer-planet/KBO solar wind power: Phi_1AU*(AU/d)^2*(1-exp(-k*Rb/d))*pi*Rp^2
+
     // Responses
     RESPONSE_SUCCESS        = 0x1000,  // Operation completed
     RESPONSE_ERROR          = 0x1001,  // Operation failed
