@@ -5,7 +5,9 @@
 **Domain:** 1.3 — Gravitational Waves: Extended Waveform & Multi-Band  
 **Status:** Draft  
 **Repository:** Daniel8Murphy0007/Star-Magic  
-**Calibration constants:** κ = 0.0005/day, [SSq] = 0.57
+**Calibration Constants:** κ = 0.0005/day, [SSq] = 0.57  
+**Primary Validation File:** MAIN_1_CoAnQi.cpp  
+**C++ Sources:** MAIN_1_CoAnQi.cpp, source2.cpp  
 
 ---
 
