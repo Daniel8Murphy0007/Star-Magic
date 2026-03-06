@@ -210,7 +210,6 @@ def compute_decay_lifetime(M_s2_eV: float, sin2_2theta: float) -> float:
     Returns:
         τ in Gyr
     """
-    M_s_GeV = M_s2_eV / 1e9
     # Convert G_F from GeV⁻² to eV⁻² for consistent units
     G_F_eV2 = G_F_GeV2 / (1e9 ** 2)
     M_s5_eV5 = M_s2_eV ** 5
