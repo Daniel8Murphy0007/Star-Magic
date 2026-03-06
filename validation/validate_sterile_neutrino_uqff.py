@@ -28,8 +28,8 @@ C++ Sources: source27.cpp, source28.cpp, MAIN_1_CoAnQi.cpp (SOURCE4 namespace)
 """
 
 import math
-from dataclasses import dataclass, field
-from typing import Dict, List, Tuple
+from dataclasses import dataclass
+from typing import Dict, List
 
 # =============================================================================
 # PHYSICAL CONSTANTS
