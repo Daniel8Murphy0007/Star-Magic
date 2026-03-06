@@ -39,6 +39,8 @@ def process_calculation(input_data):
         }
 
     # Import CondensedPhysics2 calculators via Aggregator (CP2 wiring, Problem 4)
+    # CP2_AVAILABLE flags availability of all 529 CP2 calculators for routing.
+    # process_calculation() may extend result with CP2 data when CP2_AVAILABLE is True.
     try:
         from CondensedPhysicsAggregator import CondensedPhysicsAggregator
         CP2_AVAILABLE = True
