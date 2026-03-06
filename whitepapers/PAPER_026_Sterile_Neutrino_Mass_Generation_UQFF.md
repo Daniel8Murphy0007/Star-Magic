@@ -173,7 +173,7 @@ The active–sterile mixing angle for M_s2 = 7.1 keV:
 **= 0.1056 × 2.68 × 10⁻³**
 **= 2.83 × 10⁻⁴**
 
-This is consistent with X-ray flux constraints: θ² < few × 10⁻¹¹ (the UQFF value is compatible since sin²2θ ≠ sin²θ directly).
+Numerically, this implies θ_as² ≈ sin²(2θ_as)/4 ≈ 7.1 × 10⁻⁵, which lies many orders of magnitude above current X-ray limits θ² ≲ few × 10⁻¹¹ for a 7 keV sterile neutrino; thus this naive UQFF mixing prediction is excluded and requires either additional suppression mechanisms or a revised [SSq]-based mixing ansatz.
 
 ### 4.2 PMNS Mixing Angles from [SSq]
 
