@@ -101,11 +101,11 @@ SMBH systems do not possess neutron star superconducting cores. The gravitationa
 
 **String Sector:**
 
-**D_String(f) = 1 − [SSq] × (f / 1 kHz)^α**
+**D_String(f) = 1 − [SSq] × (f / 1 kHz)^{p_String}**
 
-where [SSq] = 0.57 and α ~ 2. At nHz frequencies, (f / 1 kHz) ~ 3 × 10⁻¹⁴, making D_String indistinguishable from unity:
+where [SSq] = 0.57 and p_String ~ 2. At nHz frequencies, (f / 1 kHz) ~ 3 × 10⁻¹⁴, making D_String indistinguishable from unity:
 
-**D_String(31.7 nHz) ≈ 1.000000** (string coupling negligible at f ≪ Hz)
+**D_String(31.7 nHz) ≈ 1.000000** (string coupling negligible at f ≪ Hz). The later BNS damping table value **D_String ≈ 0.37 at 100 Hz** is instead taken from the calibrated, matter-enhanced String damping model developed in PAPER_009 and should not be interpreted as following from the simple vacuum scaling above.
 
 **TRZ (Topological Resonance Zone):**
 
