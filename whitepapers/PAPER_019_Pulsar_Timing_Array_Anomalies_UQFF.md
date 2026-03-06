@@ -111,7 +111,7 @@ where [SSq] = 0.57 and p_String ~ 2. At nHz frequencies, (f / 1 kHz) ~ 3 × 10�
 
 This is the dominant frequency-dependent effect in the nHz band. See Section 2.2.
 
-### 2.2 TRZ Resonance Inversion below 100 nHz
+### 2.2 TRZ Resonance Inversion below ~1 µHz
 
 In the LIGO band (10–300 Hz), the TRZ mechanism acts as a damper. The quantum vacuum topological defects (domain walls, cosmic string networks at Planck scale) dissipate GW energy when the GW wavelength matches the TRZ coherence length λ_TRZ ~ c/f_res with f_res ~ 100 Hz.
 
@@ -413,7 +413,7 @@ A 63% amplitude excess in the PTA band relative to the LISA band (corrected for 
 
 Standard GR treats gravitational waves as propagating freely through vacuum. Any modification of the observed amplitude must come from the *source* population. To explain A_obs = 2.4 × 10⁻¹⁵ in GR:
 
-- **Option 1 (More mass):** SMBH masses must be 36% higher than optical estimates → inconsistent with M-σ relation measurements
+- **Option 1 (More mass):** SMBH masses must be ~32% higher than optical estimates → inconsistent with M-σ relation measurements
 - **Option 2 (More binaries):** Galaxy merger rates must be higher → inconsistent with direct merger counts from HST/JWST
 - **Option 3 (Eccentricity):** High eccentricity redistributes GW power toward higher frequencies → actually *reduces* amplitude at f_yr
 - **Option 4 (No stalling):** All SMBH binaries coalesce → f_coal = 1, inconsistent with observed dual AGN populations at sub-parsec separations
