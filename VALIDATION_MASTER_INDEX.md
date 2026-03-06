@@ -891,7 +891,7 @@ For papers #101–#105 (Millennium Prize level):
 | 31 | `validate_uqff_calculators.py` | UQFF Master | 🟡 Ready | #89 |
 | 32 | `validate_uqff_muge.py` | MUGE | 🟡 Ready | #90–#94 |
 | 33 | `validate_drawings_models.py` | Multi-Physics | 🟡 Ready | #96–#100 |
-| 34 | `validation/validate_sterile_neutrino_uqff.py` | BSM Sterile ν | ✅ Done | #26 |
+| 34 | `validate_sterile_neutrino_uqff.py` | BSM Sterile ν | ✅ Done | #26 |
 
 ---
 
