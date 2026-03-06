@@ -170,6 +170,14 @@ enum class MessageType : uint32_t {
     DI_PSEUDO_MONOPOLE_ORIGIN   = 0x0903,  // Pre-Big Bang DPM: 26-sphere sum[(x-h_n)^2+(y-k_n)^2+(z-l_n)^2]=r_n^2; FSC UA
     VACUUM_ENERGY_COMPONENT_DENSITY = 0x0904,  // rho_vac=sum(fi*Ei/V); rho_SCm/rho_UA/rho_sw split; Ug4 level 20-26 threshold
 
+    // Thread 1a2726a4 — UQFF Full Document Assimilation & Q_wave 47-81 Stats (14Sept2025) (0x0A00–0x0A04)
+    // (C)2025 Daniel T. Murphy, daniel.murphy00@gmail.com — All Rights Reserved
+    SHAPIRO_WILK_QWAVE          = 0x0A00,  // W=0.644 p=1.21e-9; non-Gaussian 47-81 system Q_wave; JB=8.78; [SSq]=0.507 tails
+    ROTOR_MOLECULAR_CS          = 0x0A01,  // H2O-H2 CS 5D PES; sigma(E)=a*(1-exp(-b*E)); a=15.28 Ang2 b=0.00387; Dj=2 dominant
+    DPM_THZ_FREQ_MUGE           = 0x0A02,  // DPM-THz freq-domain MUGE; f_aether=1.576e-35 Hz replaces Lambda; 7-component sum
+    BEC_ALPHA_CLUSTERING        = 0x0A03,  // N_B=1/(exp(DE/kT)-1); T=14.52 MeV; delta_pair=0.1; kappa_Higgs=47.34
+    SUPERCONDUCTIVE_UI_COMPLEX  = 0x0A04,  // U_i complex; rho_A=1e-30+i*1e-31 kg/m3; beta_i=0.6; omega_s=2.5e-6 rad/s
+
     // Responses
     RESPONSE_SUCCESS        = 0x1000,  // Operation completed
     RESPONSE_ERROR          = 0x1001,  // Operation failed

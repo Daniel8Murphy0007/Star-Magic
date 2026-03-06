@@ -166,10 +166,11 @@ class ProductionPipeline:
                 'unit_filter': unit_filter,
                 'solver_version': 'QCalc v1.0',
                 'pipeline_version': 'Production v1.1',
-                'cp2_classes': 529,
+                'cp2_classes': 548,
                 'grok_thread_classes': 14,
                 'aggregator_version': '1.2.0',
-                'git_head': 'bc5ca8f'
+                'git_head': 'TBD',
+                'thread_1a2726a4': 'UQFF Full Document Assimilation: Q_wave_47-81 Stats, H2O-H2 Rotor CS, DPM-THz MUGE, BEC Alpha-Clustering, Superconductive Complex Ui (5 classes; IPC 0x0A00-0x0A04)'
             }
         }
         

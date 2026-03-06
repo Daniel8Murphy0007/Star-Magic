@@ -461,12 +461,13 @@
         ]
     },
     "git_status": {
-        "last_commit": "bc5ca8f",
+        "last_commit": "TBD",
         "commit_date": "2026-03-06",
-        "commit_message": "Thread f3c55f52: 5 new UQFF calculators (Ug4 vacuum-mediated, AGN feedback, inflation epoch, DPM origin, vacuum component density) \u2014 CP2=529 classes, arch v4.3.7, IPC 0x0900-0x0904",
+        "commit_message": "Thread 1a2726a4: 5 new UQFF calculators (Shapiro-Wilk Q_wave normality, H2O-H2 rotor CS, DPM-THz MUGE, BEC alpha-clustering, superconductive complex Ui) \u2014 CP2=548 classes, arch v4.3.8, IPC 0x0A00-0x0A04",
         "commit_time": "00:00:00",
         "branch": "master",
         "prior_commits_last_20": [
+            "TBD - Thread 1a2726a4: 5 new UQFF calculators \u2014 CP2=548 classes, arch v4.3.8, IPC 0x0A00-0x0A04",
             "bc5ca8f - Thread f3c55f52: 5 new UQFF calculators \u2014 CP2=529 classes, arch v4.3.7, IPC 0x0900-0x0904",
             "058fdb3 - Thread ff01cb3a: 5 new UQFF calculators — CP2=524 classes, arch v4.3.6, IPC 0x0800-0x0804",
             "b4ddf5c - GW PAPER_016/017/018 + PAPER_UQFF_VacuumEnergy (19 whitepapers total)",
@@ -486,10 +487,11 @@
     },
     "python_ecosystem": {
         "last_updated": "2026-03-06",
+        "metadata_discrepancy_note": "Sessions 19-20 gap: 14 classes committed directly to GitHub (SolarAetherStressTensor through FrozenPlanetSolarWind) were never tracked in JSON metadata. JSON said 529 but CP2 actually had 543 before thread 1a2726a4. This integration corrects to 548 (543 ground truth + 5 new). Do not derive class counts from this file's history prior to v4.3.8.",
         "condensed_physics_2": {
             "file": "CondensedPhysics2.py",
-            "total_classes": 529,
-            "approximate_lines": 42000,
+            "total_classes": 548,
+            "approximate_lines": 42800,
             "thread_10220801_classes": 10,
             "thread_10220801_description": "Solar UQFF calibration: Ug1SolarDipoleCycle, Ug2StellarBubble, Ug3MagneticDiskFull, Ug4SMBHVacuumInteraction, SolarFUAssembly, InflationForceCore, SCmEpochState, SolarWindVacuumDensity, KiNormalizedSolar, SolarAetherStressTensor",
             "thread_3a469fcc_classes": 8,
@@ -498,6 +500,8 @@
             "thread_ff01cb3a_description": "Full reconstruction UQFF Star Magic 14Apr2025: SCmDerivativeHierarchy (4 SCm states + 5 UA states), Ug2SolarWindTransmutation (QUA=1e-11 C trapped Aether), Ug4GalacticNonInteractive (Pgal=1.0), SolarCycleCoupledFU (Bs(t) cross-coupled all 4 Ug), FrozenPlanetSolarWind (outer planet solar wind power)",
             "thread_f3c55f52_classes": 5,
             "thread_f3c55f52_description": "Superconductivity Unifies Quantum & Gravity 09Sept2025: Ug4VacuumMediated (rho_vac*M_bh/d_g linear; replaces Ms/dg^2), AGNFeedbackFactor (f_fb=0.1/dex), InflationEpochStructure (F_core=hbar*omega_LENR/(sigma_n*rho_ua); 5 SCm epochs; Ui 5th force), DiPseudoMonopoleOrigin (26-sphere pre-Big Bang; FSC UA), VacuumEnergyComponentDensity (rho_vac=sum(fi*Ei/V); SCm/UA/sw split; Ug4 level 20-26 threshold)",
+            "thread_1a2726a4_classes": 5,
+            "thread_1a2726a4_description": "UQFF Full Document Assimilation & Q_wave 47-81 Stats 14Sept2025: ShapiroWilkQWaveNormality (W=0.644 p=1.21e-9; non-Gaussian Q_wave; JB=8.78; [SSq]=0.507), RotorMolecularCrossSection (H2O-H2 CS 5D PES; sigma=15.28*(1-exp(-0.00387*E)); Dj=2; Um level 10 LENR), DPMTHzFrequencyMUGE (7-component freq-domain MUGE; f_aether=1.576e-35 Hz replaces Lambda; SGR1745 spin-down proof), BoseEinsteinAlphaClustering (N_B=1/(exp(DE/kT)-1); T=14.52 MeV; delta_pair=0.1; kappa_Higgs=47.34), SuperconductiveComplexUiDensity (U_i complex; rho_vac,A=1e-30+i*1e-31 kg/m3; beta_i=0.6; omega_s=2.5e-6 rad/s)",
             "M_bh_used": "8.55e36 kg (EHT 2024-2025, namespace StarMagicF3C5::M_BH_EHT2025)"
         },
         "grok_thread_extensions": {

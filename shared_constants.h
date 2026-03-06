@@ -673,6 +673,41 @@ namespace StarMagicF3C5 {
 
 } // namespace StarMagicF3C5
 
+/// Thread 1a2726a4 — UQFF Full Document Assimilation & Q_wave 47-81 Stats (Sept 14, 2025)
+/// Source: Grok thread 1a2726a4; 5 new UQFF physics constants for:
+///   Shapiro-Wilk Q_wave normality, H2O-H2 rotor CS, DPM-THz MUGE, BEC alpha-clustering,
+///   superconductive complex U_i density.
+/// Author: Daniel T. Murphy (C)2025 — All Rights Reserved
+namespace StarMagicThread1a27 {
+
+    /// F_AETHER_HZ: DPM aether resonance frequency — replaces cosmological Lambda (Λ)
+    /// in the 11 May 2025 DPM-THz frequency-domain MUGE formulation.
+    /// g_MUGE(aether) = G * F_AETHER_HZ / c²; 51% causal via rho_vac * f_res.
+    /// From: Grok thread 1a2726a4, DPM-THz 11May MUGE section
+    constexpr double F_AETHER_HZ = 1.576e-35;      // Hz — aether resonance frequency
+
+    /// T_BEC_MEV: BEC alpha-clustering fit temperature from N_B = 1/(exp(ΔE/kT)-1)
+    /// curve_fit to AMD/NIMROD BEC analog data; N=10 alpha clusters, ΔE~0.48 MeV.
+    /// From: Grok thread 1a2726a4, BEC alpha-clustering section
+    constexpr double T_BEC_MEV = 14.52;             // MeV — BEC alpha-clustering fit temperature
+
+    /// DELTA_PAIR_NUCL: nuclear pairing correction δ_pair validated by BEC alpha-clustering.
+    /// Grounds UQFF provisional pairing correction; empirically validated via AMD/NIMROD.
+    /// From: Grok thread 1a2726a4, BEC alpha-clustering section
+    constexpr double DELTA_PAIR_NUCL = 0.1;         // (dimensionless) nuclear pairing correction
+
+    /// BETA_I_COMPLEX: imaginary buoyancy factor β_i for complex U_i vacuum density.
+    /// U_i_imag = U_i_real * BETA_I_COMPLEX; grounded by BEC alpha-clustering result.
+    /// From: Grok thread 1a2726a4, superconductive complex U_i density section
+    constexpr double BETA_I_COMPLEX = 0.6;          // (dimensionless) complex buoyancy β_i
+
+    /// OMEGA_S_RAD_S: default superconductive angular frequency ω_s(t) for U_i computation.
+    /// Used in: U_i = λ_i * (ρ_SCm/ρ_UA) * ω_s * cos(π*t_n) * (1 + f_TRZ)
+    /// From: Grok thread 1a2726a4, superconductive complex U_i density section
+    constexpr double OMEGA_S_RAD_S = 2.5e-6;        // rad/s — superconductive omega_s default
+
+} // namespace StarMagicThread1a27
+
 
 } // namespace Constants
 } // namespace UQFF
