@@ -484,17 +484,20 @@
         ]
     },
     "python_ecosystem": {
-        "last_updated": "2026-03-05",
+        "last_updated": "2026-03-06",
         "condensed_physics_2": {
             "file": "CondensedPhysics2.py",
-            "total_classes": 524,
-            "approximate_lines": 39842,
+            "total_classes": 529,
+            "approximate_lines": 42000,
             "thread_10220801_classes": 10,
             "thread_10220801_description": "Solar UQFF calibration: Ug1SolarDipoleCycle, Ug2StellarBubble, Ug3MagneticDiskFull, Ug4SMBHVacuumInteraction, SolarFUAssembly, InflationForceCore, SCmEpochState, SolarWindVacuumDensity, KiNormalizedSolar, SolarAetherStressTensor",
             "thread_3a469fcc_classes": 8,
             "thread_3a469fcc_description": "Canonical UQFF Star Magic 14Apr2025: ReactorEfficiencyUQFFCanonical, FUPiNegativeTimeCanonical, QuasarJetNavierStokes, PlanetaryCoreHamiltonian, StellarAgeHelioCorrelation, DifferentialRotationDisk, SCmDipoleAmplified, YangMillsMassGap",
             "thread_ff01cb3a_classes": 5,
-            "thread_ff01cb3a_description": "Full reconstruction UQFF Star Magic 14Apr2025: SCmDerivativeHierarchy (4 SCm states + 5 UA states), Ug2SolarWindTransmutation (QUA=1e-11 C trapped Aether), Ug4GalacticNonInteractive (Pgal=1.0), SolarCycleCoupledFU (Bs(t) cross-coupled all 4 Ug), FrozenPlanetSolarWind (outer planet solar wind power)"
+            "thread_ff01cb3a_description": "Full reconstruction UQFF Star Magic 14Apr2025: SCmDerivativeHierarchy (4 SCm states + 5 UA states), Ug2SolarWindTransmutation (QUA=1e-11 C trapped Aether), Ug4GalacticNonInteractive (Pgal=1.0), SolarCycleCoupledFU (Bs(t) cross-coupled all 4 Ug), FrozenPlanetSolarWind (outer planet solar wind power)",
+            "thread_f3c55f52_classes": 5,
+            "thread_f3c55f52_description": "Superconductivity Unifies Quantum & Gravity 09Sept2025: Ug4VacuumMediated (rho_vac*M_bh/d_g linear; replaces Ms/dg^2), AGNFeedbackFactor (f_fb=0.1/dex), InflationEpochStructure (F_core=hbar*omega_LENR/(sigma_n*rho_ua); 5 SCm epochs; Ui 5th force), DiPseudoMonopoleOrigin (26-sphere pre-Big Bang; FSC UA), VacuumEnergyComponentDensity (rho_vac=sum(fi*Ei/V); SCm/UA/sw split; Ug4 level 20-26 threshold)",
+            "M_bh_used": "8.55e36 kg (EHT 2024-2025, namespace StarMagicF3C5::M_BH_EHT2025)"
         },
         "grok_thread_extensions": {
             "file": "GrokThreadUQFFExtensions.py",

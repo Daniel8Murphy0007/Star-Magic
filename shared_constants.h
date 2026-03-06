@@ -638,6 +638,42 @@ namespace StarMagicFF01 {
 } // namespace StarMagicFF01
 
 
+/// Thread f3c55f52 — Superconductivity Unifies Quantum and Gravity (09Sept2025)
+/// Source: Star Magic 14Apr2025.docx + 10 supplementary files (Feedback Factor
+///         Framework, Ug4 Vacuum Mediated form, DPM Origin, Inflation Epoch,
+///         Universal Inertia, AGN Feedback, Vacuum Energy Component Density)
+/// (C)2025 Daniel T. Murphy, daniel.murphy00@gmail.com — All Rights Reserved
+namespace StarMagicF3C5 {
+
+    /// rho_vac: vacuum energy density (J/m^3) — dominant driver in new Ug4 form
+    /// Replaces Ms in Ug4 numerator; d_g is now linear (not squared)
+    /// From: Feedback Factor Framework.docx + FU.docx (f3c55f52)
+    constexpr double RHO_VAC = 1.0e-9;
+
+    /// F_FEEDBACK_DEX: AGN feedback factor per dex of BH mass growth (dimensionless)
+    /// f_feedback = F_FEEDBACK_DEX * delta_M_BH_dex;  0.1 per dex
+    /// From: Feedback Factor Framework.docx (f3c55f52)
+    constexpr double F_FEEDBACK_DEX = 0.1;
+
+    /// F_CORE_APPROX: approximate core force (N) at t=0 inflation epoch
+    /// F_core = hbar * omega_LENR / (sigma_n * rho_vac,[UA])  ~= 1e10 N
+    /// From: Birth of DPM.docx + FU.docx (f3c55f52)
+    constexpr double F_CORE_APPROX = 1.0e10;
+
+    /// M_BH_EHT2025: updated SgrA* black hole mass from EHT 2024-2025 (kg)
+    /// Replaces prior M_bh=8.0e36 kg; EHT collaboration 2025 result
+    /// From: Star Magic 14Apr2025.docx (f3c55f52)
+    constexpr double M_BH_EHT2025 = 8.55e36;
+
+    /// UG4_QUANTUM_LEVEL_MIN: minimum quantum level for vacuum-mediated Ug4 regime
+    /// At levels 20-26: rho_vac controls Ug4 (DPM-dominated)
+    /// Below level 20: stellar/galactic Ms controls Ug4 (prior form)
+    /// From: Coupling Constant of Ugi.docx + FU.docx (f3c55f52)
+    constexpr double UG4_QUANTUM_LEVEL_MIN = 20.0;
+
+} // namespace StarMagicF3C5
+
+
 } // namespace Constants
 } // namespace UQFF
 

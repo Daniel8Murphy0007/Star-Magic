@@ -41671,3 +41671,422 @@ SOURCE_ff01cb3a_CALCULATORS = {
     'SolarCycleCoupledFUCalculator':           SolarCycleCoupledFUCalculator(),
     'FrozenPlanetSolarWindCalculator':         FrozenPlanetSolarWindCalculator(),
 }
+
+
+# =============================================================================
+# THREAD f3c55f52 — Superconductivity Unifies Quantum and Gravity (09Sept2025)
+# Source: Star Magic 14Apr2025.docx + supplementary docs (Feedback Factor,
+#         Ug4 Vacuum Mediated form, DPM Origin, Vacuum Energy Component Density,
+#         Inflation Epoch Structure, Universal Inertia, AGN Feedback)
+# (C)2025 Daniel T. Murphy, daniel.murphy00@gmail.com — All Rights Reserved
+# 5 new unique calculators: CP2 classes 525–529
+# =============================================================================
+
+THREAD_f3c55f52_PARAMS = {
+    # Vacuum energy density (J/m^3) — dominant Ug4 driver replacing Ms in new form
+    'rho_vac':          1.0e-9,
+    # AGN feedback factor per unit dex of BH mass growth (dimensionless)
+    'f_feedback_dex':   0.1,
+    # Approximate F_core (N): hbar * omega_LENR / (sigma_n * rho_vac,[UA])
+    'F_core_approx':    1.0e10,
+    # Updated SgrA* black hole mass (EHT 2024-2025, kg)
+    'M_bh_EHT2025':     8.55e36,
+    # Minimum Ug4 quantum level for vacuum-mediated form (levels 20-26)
+    'Ug4_quantum_level_min': 20,
+    # Ug4 vacuum-mediated constants
+    'k4':               1.0e-40,
+    'alpha':            1.0e-18,      # exponential decay coefficient (s^-1)
+    # 26-sphere DPM geometry — pre-Big Bang origin
+    'N_spheres':        26,
+    # Vacuum energy density components (fraction * energy / volume)
+    # rho_vac = sum(fi * Ei / V);  split into SCm and UA components
+    'f_SCm':            0.6,
+    'f_UA':             0.4,
+    # Solar wind vacuum density contribution
+    'rho_vac_sw_fraction': 0.05,
+    # Inflation epoch: 5 epochs (SCm through SCm''''')
+    'N_epochs':         5,
+    # Universal Inertia (Ui) coupling — 5th force component
+    'Ui_base':          1.0e-3,
+    # SgrA* galactic center distance (m)
+    'd_g_SgrA':         2.5e20,
+    # Feedback factor for SgrA* (2 dex growth assumed)
+    'f_feedback_SgrA':  0.2,
+}
+
+
+class Ug4VacuumMediatedCalculator:
+    """
+    Ug4 Vacuum-Mediated Gravity Calculator — Thread f3c55f52
+
+    New Ug4 form with vacuum energy density replacing stellar mass in numerator
+    and linear d_g (not squared) in denominator:
+
+        Ug4 = k4 * rho_vac * [SCm] * M_bh / d_g * exp(-alpha*t) * cos(pi*tn)
+              * (1 + f_feedback)
+
+    This is DISTINCT from Ug4GalacticNonInteractiveCalculator (which used Ms/dg^2).
+    Here rho_vac replaces Ms and d_g is linear — fundamentally different geometry
+    and energy source for the galactic gravitational field.
+
+    f_feedback = F_FEEDBACK_DEX * delta_M_BH_dex (AGN-driven enhancement)
+    rho_vac = 1e-9 J/m^3 (vacuum energy density, Feedback Factor Framework.docx)
+
+    Thread f3c55f52 — NEW (not in any prior Ug4 form in CP2)
+    """
+
+    def compute(self, M_bh_kg: float = None, d_g_m: float = None,
+                SCm: float = 1.0, t: float = 0.0, tn: float = 0.0,
+                delta_M_BH_dex: float = 2.0,
+                rho_vac: float = None) -> dict:
+        import math
+        P = THREAD_f3c55f52_PARAMS
+
+        if M_bh_kg is None:
+            M_bh_kg = P['M_bh_EHT2025']
+        if d_g_m is None:
+            d_g_m = P['d_g_SgrA']
+        if rho_vac is None:
+            rho_vac = P['rho_vac']
+
+        f_feedback = P['f_feedback_dex'] * delta_M_BH_dex
+
+        Ug4 = (P['k4'] * rho_vac * SCm * M_bh_kg / d_g_m
+               * math.exp(-P['alpha'] * t)
+               * math.cos(math.pi * tn)
+               * (1.0 + f_feedback))
+
+        return {
+            'Ug4_vacuum_mediated': Ug4,
+            'rho_vac':             rho_vac,
+            'M_bh_kg':             M_bh_kg,
+            'd_g_m':               d_g_m,
+            'SCm':                 SCm,
+            't_s':                 t,
+            'tn':                  tn,
+            'f_feedback':          f_feedback,
+            'delta_M_BH_dex':      delta_M_BH_dex,
+            'units':               'Ug4: m/s^2; rho_vac: J/m^3; M_bh: kg; d_g: m',
+            'equation':            'Ug4=k4*rho_vac*[SCm]*M_bh/d_g*exp(-a*t)*cos(pi*tn)*(1+f_feedback)',
+            'result_equation':     (
+                f'Ug4_vac(M_bh={M_bh_kg:.3e} kg, d_g={d_g_m:.3e} m, '
+                f'SCm={SCm:.3f}, t={t:.3e} s, tn={tn:.3f}, '
+                f'f_fb={f_feedback:.3f}): Ug4={Ug4:.6e} m/s^2'
+            ),
+        }
+
+
+class AGNFeedbackFactorCalculator:
+    """
+    AGN Feedback Factor Calculator — Thread f3c55f52
+
+    Computes the dimensionless AGN feedback enhancement to Ug4 gravity:
+
+        f_feedback = F_FEEDBACK_DEX * delta_M_BH_dex
+
+    where delta_M_BH_dex is the BH mass growth in dex (log10 M_bh / M_bh_ref).
+    f_feedback = 0.1 per dex of BH growth (Feedback Factor Framework.docx).
+
+    For SgrA*: assumed 2 dex growth since formation -> f_feedback = 0.2
+    Physically: AGN activity amplifies vacuum Ug4 coupling by increasing
+    rho_vac in the BH's sphere of influence.
+
+    Thread f3c55f52 — NEW (not in any prior AGN/feedback calculator in CP2)
+    """
+
+    # Known AGN systems
+    AGN_SYSTEMS = {
+        'SgrA_star':  {'M_bh_kg': 8.55e36, 'delta_dex': 2.0, 'note': 'EHT 2025'},
+        'M87_star':   {'M_bh_kg': 1.3e40,  'delta_dex': 3.5, 'note': 'M87 VLBI'},
+        'NGC_1365':   {'M_bh_kg': 2.0e37,  'delta_dex': 1.8, 'note': 'Seyfert 1'},
+        'generic':    {'M_bh_kg': 1.0e38,  'delta_dex': 2.0, 'note': 'canonical'},
+    }
+
+    def compute(self, system: str = 'SgrA_star',
+                delta_M_BH_dex: float = None,
+                M_bh_kg: float = None) -> dict:
+        P = THREAD_f3c55f52_PARAMS
+
+        if system in self.AGN_SYSTEMS:
+            sys_data = self.AGN_SYSTEMS[system]
+            if delta_M_BH_dex is None:
+                delta_M_BH_dex = sys_data['delta_dex']
+            if M_bh_kg is None:
+                M_bh_kg = sys_data['M_bh_kg']
+            note = sys_data['note']
+        else:
+            if delta_M_BH_dex is None:
+                delta_M_BH_dex = 2.0
+            if M_bh_kg is None:
+                M_bh_kg = P['M_bh_EHT2025']
+            note = 'user-specified'
+
+        f_feedback = P['f_feedback_dex'] * delta_M_BH_dex
+
+        # Effective Ug4 enhancement factor vs no-AGN baseline
+        enhancement_ratio = 1.0 + f_feedback
+
+        return {
+            'f_feedback':          f_feedback,
+            'f_feedback_dex':      P['f_feedback_dex'],
+            'delta_M_BH_dex':      delta_M_BH_dex,
+            'enhancement_ratio':   enhancement_ratio,
+            'M_bh_kg':             M_bh_kg,
+            'system':              system,
+            'note':                note,
+            'units':               'f_feedback: dimensionless; enhancement: dimensionless',
+            'equation':            'f_feedback = F_FEEDBACK_DEX * delta_M_BH_dex',
+            'result_equation':     (
+                f'{system}(delta_dex={delta_M_BH_dex:.1f}): '
+                f'f_feedback={f_feedback:.3f}; Ug4 enhanced x{enhancement_ratio:.3f}'
+            ),
+        }
+
+
+class InflationEpochStructureCalculator:
+    """
+    Inflation Epoch Structure Calculator — Thread f3c55f52
+
+    Computes the 5-epoch SCm state structure and F_core initialization:
+
+        F_core = hbar * omega_LENR / (sigma_n * rho_vac,[UA])  ~= 1e10 N
+        F_U(t=0) = F_core + sum(Ui_state_i + Fp_state_i)   [over active epochs]
+
+    5 SCm Epochs (from superconductivity unification paper):
+        Epoch 1: SCm       (base superconducting mass, T > T_c)
+        Epoch 2: SCm'      (first derivative state, magnetic pinning active)
+        Epoch 3: SCm''     (second derivative, flux tube network)
+        Epoch 4: SCm'''    (third derivative, near-quasar reactivity)
+        Epoch 5: SCm'''''  (massless SCm onset, photon-like propagation)
+
+    Universal Inertia (Ui) = 5th force component, additive to F_U.
+
+    Thread f3c55f52 — NEW (5-epoch table + F_core init not in any prior CP2 class)
+    """
+
+    EPOCH_TABLE = [
+        {'epoch': 1, 'name': 'SCm',       'label': 'Base SCm',                  'T_rel': 1.0,    'Ui_factor': 1.0},
+        {'epoch': 2, 'name': "SCm'",      'label': '1st derivative (pinning)',   'T_rel': 0.85,   'Ui_factor': 1.12},
+        {'epoch': 3, 'name': "SCm''",     'label': '2nd derivative (flux tubes)','T_rel': 0.70,   'Ui_factor': 1.28},
+        {'epoch': 4, 'name': "SCm'''",    'label': '3rd derivative (quasar-prone)','T_rel': 0.50, 'Ui_factor': 1.55},
+        {'epoch': 5, 'name': "SCm'''''",  'label': 'Massless SCm onset',         'T_rel': 0.20,   'Ui_factor': 2.10},
+    ]
+
+    def compute(self, omega_LENR: float = 1.0e13, sigma_n: float = 1.0e-28,
+                rho_vac_UA: float = None, active_epochs: int = 5) -> dict:
+        import math
+        P = THREAD_f3c55f52_PARAMS
+        hbar = 1.0546e-34  # J*s
+
+        if rho_vac_UA is None:
+            rho_vac_UA = P['rho_vac'] * P['f_UA']
+
+        F_core = hbar * omega_LENR / (sigma_n * rho_vac_UA)
+
+        epoch_results = []
+        F_U_total = F_core
+        for ep in self.EPOCH_TABLE[:active_epochs]:
+            Ui_state = P['Ui_base'] * ep['Ui_factor']
+            Fp_state = F_core * (1.0 - ep['T_rel'])
+            F_U_total += Ui_state + Fp_state
+            epoch_results.append({
+                'epoch':       ep['epoch'],
+                'name':        ep['name'],
+                'label':       ep['label'],
+                'T_rel':       ep['T_rel'],
+                'Ui_factor':   ep['Ui_factor'],
+                'Ui_state':    Ui_state,
+                'Fp_state':    Fp_state,
+            })
+
+        return {
+            'F_core_N':          F_core,
+            'F_U_t0_N':          F_U_total,
+            'omega_LENR_rad_s':  omega_LENR,
+            'sigma_n_m2':        sigma_n,
+            'rho_vac_UA_J_m3':   rho_vac_UA,
+            'active_epochs':     active_epochs,
+            'epoch_table':       epoch_results,
+            'units':             'F_core: N; F_U: N; omega_LENR: rad/s; sigma_n: m^2; rho_vac: J/m^3',
+            'equation':          'F_core=hbar*omega_LENR/(sigma_n*rho_vac,[UA]); F_U(t=0)=F_core+sum(Ui_state+Fp_state)',
+            'result_equation':   (
+                f'InflationEpoch({active_epochs} epochs, omega={omega_LENR:.2e} rad/s): '
+                f'F_core={F_core:.4e} N; F_U(t=0)={F_U_total:.4e} N'
+            ),
+        }
+
+
+class DiPseudoMonopoleOriginCalculator:
+    """
+    Di-Pseudo-Monopole (DPM) Pre-Big Bang Origin Calculator — Thread f3c55f52
+
+    Models the pre-Big Bang origin of DPMs as 26-sphere geometry:
+
+        sum_{n=1}^{26} [(x-h_n)^2 + (y-k_n)^2 + (z-l_n)^2] = r_n^2
+
+    where (h_n, k_n, l_n) are the sphere centers distributed over the
+    pre-Big Bang vacuum and r_n are their radii.
+
+    DPM = Di-Pseudo-Monopole: the fundamental carrier of [UA] charge that
+    compartmentalizes vacuum energy before inflation. Each of the 26 spheres
+    corresponds to one dimensional level in the 26D UQFF framework.
+
+    FSC (Fine Structure Compartmentalization): UA is distributed across
+    the 26 spheres as UA_n = Q_A * xi^n (UA hierarchy from ff01cb3a thread),
+    now extended to pre-Big Bang epoch.
+
+    Thread f3c55f52 — FIRST pre-Big Bang / cosmological origin calculator in CP2
+    """
+
+    def compute(self, r_base_m: float = 1.0e-35,
+                xi: float = 0.1, Q_A: float = 1.0e-10,
+                distribution: str = 'exponential') -> dict:
+        import math
+
+        P = THREAD_f3c55f52_PARAMS
+        N = P['N_spheres']
+
+        # Build 26-sphere geometry
+        # Centers distributed symmetrically: h_n = r_base * cos(2pi*n/N), etc.
+        sphere_data = []
+        total_volume = 0.0
+        UA_total = 0.0
+
+        for n in range(1, N + 1):
+            # Sphere centers on a great circle in 3D representation
+            angle = 2.0 * math.pi * n / N
+            h_n = r_base_m * math.cos(angle)
+            k_n = r_base_m * math.sin(angle)
+            l_n = r_base_m * math.sin(angle / 2.0)
+
+            # Radius grows with dimensional level
+            if distribution == 'exponential':
+                r_n = r_base_m * math.exp(n / N)
+            else:
+                r_n = r_base_m * (1.0 + n / N)
+
+            # Volume of sphere n
+            V_n = (4.0 / 3.0) * math.pi * r_n ** 3
+
+            # UA compartmentalized in sphere n (FSC UA distribution)
+            UA_n = Q_A * (xi ** n)
+
+            total_volume += V_n
+            UA_total += UA_n
+
+            sphere_data.append({
+                'n':     n,
+                'h_n':   h_n,
+                'k_n':   k_n,
+                'l_n':   l_n,
+                'r_n':   r_n,
+                'V_n':   V_n,
+                'UA_n':  UA_n,
+            })
+
+        # Vacuum energy density over all 26 spheres
+        rho_vac_pre_bang = P['rho_vac'] * UA_total / Q_A
+
+        return {
+            'N_spheres':           N,
+            'total_volume_m3':     total_volume,
+            'UA_total_C':          UA_total,
+            'rho_vac_pre_bang':    rho_vac_pre_bang,
+            'r_base_m':            r_base_m,
+            'distribution':        distribution,
+            'sphere_data':         sphere_data,
+            'units':               'r: m; V: m^3; UA: C; rho_vac: J/m^3',
+            'equation':            'sum_{n=1}^{26}[(x-h_n)^2+(y-k_n)^2+(z-l_n)^2]=r_n^2; UA_n=Q_A*xi^n',
+            'result_equation':     (
+                f'DPM_Origin(26 spheres, r_base={r_base_m:.2e} m): '
+                f'V_total={total_volume:.4e} m^3; UA_total={UA_total:.4e} C; '
+                f'rho_vac_pre={rho_vac_pre_bang:.4e} J/m^3'
+            ),
+        }
+
+
+class VacuumEnergyComponentDensityCalculator:
+    """
+    Vacuum Energy Component Density Calculator — Thread f3c55f52
+
+    Computes the full vacuum energy density split into components:
+
+        rho_vac = sum_i (f_i * E_i / V)
+
+    with explicit component decomposition:
+        rho_vac,[SCm] = f_SCm * E_total / V    (SCm-mediated vacuum energy)
+        rho_vac,[UA]  = f_UA  * E_total / V    (UA-mediated vacuum energy)
+        rho_vac,sw    = rho_vac * f_sw          (solar wind contribution)
+
+    Ug4 quantum levels 20-26 (vacuum-dominated):
+        At level n (20 <= n <= 26): Ug4 is controlled by rho_vac,[SCm]
+        Below level 20: Ug4 controlled by stellar/galactic mass (prior form)
+        At levels 20-26 specifically, the DPM compartmentalization dominates.
+
+    Thread f3c55f52 — NEW component-split density + Ug4 level thresholds not in CP2
+    """
+
+    def compute(self, E_total_J: float = 1.0e-9,
+                V_m3: float = 1.0,
+                f_SCm: float = None, f_UA: float = None,
+                f_sw: float = None,
+                quantum_level: int = 23) -> dict:
+        import math
+        P = THREAD_f3c55f52_PARAMS
+
+        if f_SCm is None:
+            f_SCm = P['f_SCm']
+        if f_UA is None:
+            f_UA = P['f_UA']
+        if f_sw is None:
+            f_sw = P['rho_vac_sw_fraction']
+
+        rho_vac_total = E_total_J / V_m3
+
+        rho_vac_SCm = f_SCm * rho_vac_total
+        rho_vac_UA  = f_UA  * rho_vac_total
+        rho_vac_sw  = rho_vac_total * f_sw
+
+        # Ug4 regime determination
+        if quantum_level >= P['Ug4_quantum_level_min']:
+            ug4_regime = 'vacuum-mediated (rho_vac controls Ug4; DPM-dominated)'
+            ug4_driver = rho_vac_SCm
+        else:
+            ug4_regime = 'mass-mediated (stellar/galactic Ms controls Ug4; prior form)'
+            ug4_driver = None
+
+        # Component fractions must sum to <= 1
+        f_residual = max(0.0, 1.0 - f_SCm - f_UA - f_sw)
+
+        return {
+            'rho_vac_total_J_m3':  rho_vac_total,
+            'rho_vac_SCm_J_m3':    rho_vac_SCm,
+            'rho_vac_UA_J_m3':     rho_vac_UA,
+            'rho_vac_sw_J_m3':     rho_vac_sw,
+            'f_SCm':               f_SCm,
+            'f_UA':                f_UA,
+            'f_sw':                f_sw,
+            'f_residual':          f_residual,
+            'quantum_level':       quantum_level,
+            'ug4_regime':          ug4_regime,
+            'ug4_driver_J_m3':     ug4_driver,
+            'E_total_J':           E_total_J,
+            'V_m3':                V_m3,
+            'units':               'rho_vac: J/m^3; E: J; V: m^3; fractions: dimensionless',
+            'equation':            'rho_vac=sum(fi*Ei/V); rho_vac,[SCm]=f_SCm*E/V; rho_vac,[UA]=f_UA*E/V',
+            'result_equation':     (
+                f'VacuumDensity(E={E_total_J:.2e} J, V={V_m3:.2e} m^3, level={quantum_level}): '
+                f'rho_total={rho_vac_total:.4e}; rho_SCm={rho_vac_SCm:.4e}; '
+                f'rho_UA={rho_vac_UA:.4e} J/m^3; regime: {ug4_regime}'
+            ),
+        }
+
+
+# --- Registry for Thread f3c55f52 (Superconductivity Unifies Quantum and Gravity) ---
+SOURCE_f3c55f52_CALCULATORS = {
+    'Ug4VacuumMediatedCalculator':             Ug4VacuumMediatedCalculator(),
+    'AGNFeedbackFactorCalculator':             AGNFeedbackFactorCalculator(),
+    'InflationEpochStructureCalculator':       InflationEpochStructureCalculator(),
+    'DiPseudoMonopoleOriginCalculator':        DiPseudoMonopoleOriginCalculator(),
+    'VacuumEnergyComponentDensityCalculator':  VacuumEnergyComponentDensityCalculator(),
+}
