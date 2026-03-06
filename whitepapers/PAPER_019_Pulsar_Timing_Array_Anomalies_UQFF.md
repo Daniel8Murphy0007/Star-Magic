@@ -85,14 +85,15 @@ Each component has distinct frequency dependence:
 
 **Aether Damping:**
 
-**D_Aether = exp(−κ r / c)**
+**D_Aether(f, r) = exp[−κ_Aether(f) (r / c)]**
 
-where κ = 0.0005 day⁻¹ and r is propagation distance. For cosmological SMBH sources (r ~ 1–10 Gpc):
+where r is the propagation distance and (r / c) is the corresponding light-travel time expressed in days. κ_Aether(f) is an **effective Aether coupling coefficient** for gravitational waves (distinct from the global TRZ calibration κ = 0.0005 day⁻¹ quoted above) and is strongly frequency-suppressed in the PTA band.
 
-**D_Aether ≈ 1.0** over these distances
+For cosmological SMBH sources in the PTA band (f ~ 1/yr, r ~ 1–10 Gpc), we have κ_Aether(f_PTA) ≪ 10⁻¹⁵ day⁻¹, so:
 
-Aether damping is therefore negligible at all frequencies for cosmological sources.
+**κ_Aether(f_PTA) (r / c) ≪ 1 ⇒ D_Aether(f_PTA, r) ≈ 1.0** over these distances
 
+Aether damping is therefore negligible for nHz gravitational waves from cosmological sources.
 **Superconducting Manifold (SCm):**
 
 **D_SCm(B) = 1 − exp[−(B_crit / B)²]**
