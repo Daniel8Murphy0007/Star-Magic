@@ -87,9 +87,9 @@ Each component has distinct frequency dependence:
 
 where κ = 0.0005 day⁻¹ and r is propagation distance. For cosmological SMBH sources (r ~ 1–10 Gpc):
 
-**D_Aether ≈ 1.0000** (deviation < 10⁻⁹ even at 10 Gpc)
+**D_Aether ≈ 1.0** over these distances
 
-Aether damping is negligible at all frequencies for cosmological sources.
+Aether damping is therefore negligible at all frequencies for cosmological sources.
 
 **Superconducting Manifold (SCm):**
 
