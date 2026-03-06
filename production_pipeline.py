@@ -169,7 +169,7 @@ class ProductionPipeline:
                 'cp2_classes': 529,
                 'grok_thread_classes': 14,
                 'aggregator_version': '1.2.0',
-                'git_head': '058fdb3'
+                'git_head': 'bc5ca8f'
             }
         }
         
