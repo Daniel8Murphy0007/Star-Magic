@@ -162,6 +162,22 @@ enum class MessageType : uint32_t {
     SOLAR_CYCLE_FU_ALL_TERMS    = 0x0803,  // FU cross-coupled Bs(t)=B0+Bamp*sin(wc*t) through all 4 Ug terms
     FROZEN_PLANET_SOLAR_WIND    = 0x0804,  // Outer-planet/KBO solar wind power: Phi_1AU*(AU/d)^2*(1-exp(-k*Rb/d))*pi*Rp^2
 
+    // Thread f3c55f52 — Superconductivity Unifies Quantum and Gravity (09Sept2025) (0x0900–0x0904)
+    // (C)2025 Daniel T. Murphy, daniel.murphy00@gmail.com — All Rights Reserved
+    UG4_VACUUM_MEDIATED         = 0x0900,  // Ug4=k4*rho_vac*[SCm]*M_bh/d_g*exp(-a*t)*cos(pi*tn)*(1+f_fb); rho_vac replaces Ms, d_g linear
+    AGN_FEEDBACK_FACTOR         = 0x0901,  // f_feedback=F_FEEDBACK_DEX*delta_M_BH_dex; AGN-driven Ug4 enhancement (0.1 per dex)
+    INFLATION_EPOCH_STRUCTURE   = 0x0902,  // F_core=hbar*omega_LENR/(sigma_n*rho_vac,[UA]); 5-epoch SCm table; Ui 5th force
+    DI_PSEUDO_MONOPOLE_ORIGIN   = 0x0903,  // Pre-Big Bang DPM: 26-sphere sum[(x-h_n)^2+(y-k_n)^2+(z-l_n)^2]=r_n^2; FSC UA
+    VACUUM_ENERGY_COMPONENT_DENSITY = 0x0904,  // rho_vac=sum(fi*Ei/V); rho_SCm/rho_UA/rho_sw split; Ug4 level 20-26 threshold
+
+    // Thread 1a2726a4 — UQFF Full Document Assimilation & Q_wave 47-81 Stats (14Sept2025) (0x0A00–0x0A04)
+    // (C)2025 Daniel T. Murphy, daniel.murphy00@gmail.com — All Rights Reserved
+    SHAPIRO_WILK_QWAVE          = 0x0A00,  // W=0.644 p=1.21e-9; non-Gaussian 47-81 system Q_wave; JB=8.78; [SSq]=0.507 tails
+    ROTOR_MOLECULAR_CS          = 0x0A01,  // H2O-H2 CS 5D PES; sigma(E)=a*(1-exp(-b*E)); a=15.28 Ang2 b=0.00387; Dj=2 dominant
+    DPM_THZ_FREQ_MUGE           = 0x0A02,  // DPM-THz freq-domain MUGE; f_aether=1.576e-35 Hz replaces Lambda; 7-component sum
+    BEC_ALPHA_CLUSTERING        = 0x0A03,  // N_B=1/(exp(DE/kT)-1); T=14.52 MeV; delta_pair=0.1; kappa_Higgs=47.34
+    SUPERCONDUCTIVE_UI_COMPLEX  = 0x0A04,  // U_i complex; rho_A=1e-30+i*1e-31 kg/m3; beta_i=0.6; omega_s=2.5e-6 rad/s
+
     // Responses
     RESPONSE_SUCCESS        = 0x1000,  // Operation completed
     RESPONSE_ERROR          = 0x1001,  // Operation failed

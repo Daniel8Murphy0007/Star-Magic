@@ -1,8 +1,9 @@
 # Star-Magic UQFF Architecture Flow Diagram
 
-> **Version:** 4.3.6 (CANONICAL - DO NOT DEVIATE)
+> **Version:** 4.3.8 (CANONICAL - DO NOT DEVIATE)
 > **Generated:** 2026-02-21
-> **Updated:** 2026-03-05 (v4.3.6 + Thread ff01cb3a 5 full-reconstruction UQFF + Thread 3a469fcc 8 canonical UQFF + GW PAPER_016/017/018 + PAPER_UQFF_VacuumEnergy)
+> **Updated:** 2026-03-06 (v4.3.7 + Thread f3c55f52 5 vacuum-mediated UQFF + Thread ff01cb3a 5 full-reconstruction UQFF + Thread 3a469fcc 8 canonical UQFF + GW PAPER_016/017/018 + PAPER_UQFF_VacuumEnergy)
+> **Updated:** 2026-03-06 (v4.3.8 + Thread 1a2726a4: 5 Q_wave/rotor/MUGE/BEC/complex-Ui UQFF; CP2=548 classes; IPC 0x0A00-0x0A04; commit e7f31e6)
 > **Author:** Daniel T. Murphy
 > **CRITICAL:** This is the MASTER architecture document. All other docs must match.
 
@@ -38,7 +39,9 @@
 | **v4.3.3** | **GW Whitepapers 4-15: BNS/SGWB/Magnetar/PrimordialBH/Cosmological GW** | ✅ **Complete** | 995c9c3 |
 | **v4.3.4** | **Thread 3a469fcc: 8 canonical UQFF calculators → CP2.py (519 classes)** | ✅ **Complete** | 83d7ebe |
 | **v4.3.5** | **GW PAPER_016/017/018 + PAPER_UQFF_VacuumEnergy (19 whitepapers total)** | ✅ **Complete** | 40876d2 |
-| **v4.3.6** | **Thread ff01cb3a: 5 full-reconstruction UQFF calculators → CP2.py (524 classes)** | ✅ **Complete** | 058fdb3 |
+| **v4.3.6** | **Thread ff01cb3a: 5 full-reconstruction UQFF calculators -> CP2.py (524 classes)** | ✅ **Complete** | 058fdb3 |
+| **v4.3.7** | **Thread f3c55f52: 5 vacuum-mediated UQFF calculators -> CP2.py (529 classes)** | ✅ **Complete** | bc5ca8f |
+| **v4.3.8** | **Thread 1a2726a4: 5 Q_wave/rotor/MUGE/BEC/complex-Ui UQFF calculators -> CP2.py (548 classes)** | ✅ **Complete** | e7f31e6 |
 
 ---
 
@@ -549,5 +552,6 @@ CondensedPhysics_OutputData.py
 
 ---
 
-*CANONICAL DOCUMENT - Version 4.3.6 - DO NOT DEVIATE*
-*Updated: 2026-03-05 (v4.3.6 Thread ff01cb3a + Thread 3a469fcc + GW PAPER_016/017/018 + PAPER_UQFF_VacuumEnergy; CP2=524 classes; 19 whitepapers) by Daniel T. Murphy*
+*CANONICAL DOCUMENT - Version 4.3.8 - DO NOT DEVIATE*
+*Updated: 2026-03-06 (v4.3.7 Thread f3c55f52 + Thread ff01cb3a + Thread 3a469fcc + GW PAPER_016/017/018 + PAPER_UQFF_VacuumEnergy; CP2=529 classes; 19 whitepapers) by Daniel T. Murphy*
+*Updated: 2026-03-06 (v4.3.8 Thread 1a2726a4: Shapiro-Wilk Q_wave normality + H2O-H2 Rotor CS + DPM-THz MUGE + BEC Alpha-Clustering + Superconductive Complex Ui; CP2=548 classes; IPC 0x0A00-0x0A04; commit e7f31e6) by Daniel T. Murphy*

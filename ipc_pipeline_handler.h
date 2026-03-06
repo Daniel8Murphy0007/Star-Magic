@@ -25,24 +25,34 @@
  *   "Ug2Transmutation", "QUA", "helioThickness", "Ug4Pgal",
  *   "galacticPenetration", "SolarCycleFU", "BsModulation",
  *   "sunspotFU", "FrozenPlanet", "outerPlanetWind", "IceGiantPower" (thread ff01cb3a)
+ *   "Ug4Vacuum", "vacuumMediated", "AGNfeedback", "feedbackDex",
+ *   "epochStructure", "FcoreInit", "DPMorigin", "pseudoMonopole",
+ *   "vacuumComponent", "rhoVac", "InflationEpoch", "universalInertia",
+ *   "vacuumDensity", "SCmMassless", "preBigBang" (thread f3c55f52)
+ *   "ShapiroWilk", "qwaveNormal", "rotorCS", "H2OH2PES", "DeltaJ2",
+ *   "DPMfreqMUGE", "aetherFreq", "f_aether", "BECalpha", "deltaPair",
+ *   "T_BEC", "complexUi", "betaComplex", "rhoVacComplex", "SuperCondUI" (thread 1a2726a4)
  * 
  * Performance comparison:
  * - QCalc: 9,149 lines, imports in 1.09s, subprocess ~920ms
  * - CondensedPhysics: 168,494 lines, imports in 30s+ (not used)
- * - CondensedPhysics2: ~39,842 lines (524 classes), imports in ~2.5s
+ * - CondensedPhysics2: ~42,800 lines (548 classes), imports in ~2.5s
  *   - Includes MonteCarloStochasticWrapper for ensemble simulations
  *   - Includes RelativisticUQFFCalculators (630 lines, 5 calcs for v >= 0.1c)
  *   - Includes Thread 10220801: 10 solar Ug1-4 calibration calculators
  *   - Includes GrokThreadUQFFExtensions (14 classes via direct import)
  *   - Includes Thread 3a469fcc: 8 canonical UQFF calculators (Star Magic 14Apr2025)
  *   - Includes Thread ff01cb3a: 5 full-reconstruction calculators (SCm hierarchy, Ug2 QUA, Ug4 Pgal, solar cycle FU, frozen planet)
+ *   - Includes Thread f3c55f52: 5 vacuum-mediated calculators (Ug4 vacuum, AGN feedback, inflation epoch, DPM origin, vacuum component density)
+ *   - Includes Thread 1a2726a4: 5 Q_wave/rotor/MUGE/BEC/complex-Ui calculators (Shapiro-Wilk Q_wave normality, H2O-H2 CS PES, DPM-THz MUGE, BEC alpha-clustering, superconductive complex U_i)
  * - GrokThreadUQFFExtensions: 2,229 lines, 14 classes
  *   (routed via CP2 when triggers match: ResonanceGravity, AsymCap, etc.)
  * - CondensedPhysicsAggregator: v1.2.0, 9 modules, unified ALL_CALCULATORS dict
  * 
  * Author: Daniel T. Murphy
  * Date: March 3, 2026 (Phase 2: CP2 Integration)
- * Updated: March 5, 2026 (Thread ff01cb3a: 5 full-reconstruction UQFF + Thread 3a469fcc: 8 canonical UQFF + GW PAPER_016/017/018)
+ * Updated: March 6, 2026 (Thread f3c55f52: 5 vacuum-mediated UQFF + Thread ff01cb3a: 5 full-reconstruction UQFF + Thread 3a469fcc: 8 canonical UQFF + GW PAPER_016/017/018)
+ * Updated: 2026-03-06 (Thread 1a2726a4: 5 Q_wave/rotor/MUGE/BEC/complex-Ui UQFF; CP2=548 classes; IPC 0x0A00-0x0A04; commit e7f31e6)
  * Phase: 0 - Unification (IPC Wiring), Phase 2 - Extensions (CP2)
  */
 
