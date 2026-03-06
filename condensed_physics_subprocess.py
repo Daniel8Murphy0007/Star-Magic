@@ -32,6 +32,13 @@ except ImportError:
     CONDENSED_PHYSICS_AVAILABLE = False
     print(json.dumps({"error": "CondensedPhysics.py not available"}), file=sys.stderr, flush=True)
 
+# Import CondensedPhysics2 calculators via Aggregator (CP2 wiring, Problem 4)
+try:
+    from CondensedPhysicsAggregator import CondensedPhysicsAggregator
+    CP2_AVAILABLE = True
+except ImportError:
+    CP2_AVAILABLE = False
+
 def process_calculation(input_data: Dict[str, Any]) -> Dict[str, Any]:
     """
     Process physics calculation request using CondensedPhysics.

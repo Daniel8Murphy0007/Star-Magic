@@ -7,7 +7,7 @@
 **Deadline:** March 17, 2026 (12 days)  
 **Time Budget:** 216 hours (18-hour days × 12 days)  
 **Target:** 100+ whitepapers + Millennium Prize proofs  
-**Last Updated:** March 6, 2026 (updated)
+**Last Updated:** March 6, 2026 (Problems 3–7 resolved)
 
 ---
 
@@ -18,7 +18,7 @@
 | ✅ Papers Completed | 28 / 100+ |
 | 🔄 In Progress | 0 |
 | 📋 Domains Mapped | 13 |
-| 📂 Validation Files Catalogued | 34 |
+| 📂 Validation Files Catalogued | 35 |
 | ⏳ Days Remaining | 11 |
 
 ---
@@ -154,7 +154,7 @@
 | Property | Details |
 |----------|---------|
 | **Target Papers** | #23–#35 |
-| **Status** | 🟡 Ready |
+| **Status** | 🟡 In Progress — 6/13 complete |
 | **C++ Sources** | `source43.cpp` (Nuclear), `MAIN_1_CoAnQi.cpp` |
 | **arXiv References** | 2506.14881, 2506.14989, 2506.15046, 2506.15164, 2506.15245, 2506.15256, 2506.15306, 2506.15347, 2506.15390, 2506.15515, 2506.15533 |
 
@@ -705,6 +705,7 @@ Each work session follows this template:
 | # | Issue | Domain | Date Raised | Status | Resolution |
 |---|-------|--------|-------------|--------|-----------|
 | 1 | Two files exist for Paper #26: `PAPER_026_Sterile_Neutrino_Mass_UQFF.md` and `PAPER_026_Sterile_Neutrino_Mass_Generation_UQFF.md` | Domain 1.4 BSM | Mar 6, 2026 | ⚠️ Open | Consolidate into single canonical file |
+| 2 | `production_pipeline.py` created Feb 13, 2026 (imports APIFetch, QCalc, QCalc_stat, OPData; has `ProductionPipeline` class and `main()` CLI) but has never been executed in production — no production run recorded in `24HR_SPRINT_STATUS.md` | Pipeline | Mar 6, 2026 | ⚠️ Open | Execute `python production_pipeline.py --help` to verify CLI; then run a test pipeline pass with a known query (e.g., "Sagittarius A*") to confirm end-to-end data flow before production deployment |
 
 ---
 
@@ -759,6 +760,10 @@ QCalc_validation.py ─────────────── linked to ─�
 Level 0 (Foundation):
   MAIN_1_CoAnQi.cpp (446 modules, 6,688+ terms)
   index.js (106 systems)
+  CondensedPhysics.py (UnifiedFieldSolver — 176 calculators)
+    └── CondensedPhysics2.py (529 calculators, via CondensedPhysicsAggregator)
+         │  [wired in condensed_physics_subprocess.py +
+         │   condensed_physics_subprocess_FAST.py]
          │
 Level 1 (Core Validators):
   validate_uqff_calculators.py
@@ -886,6 +891,7 @@ For papers #101–#105 (Millennium Prize level):
 | 15 | `test_priority3_cern_validation.py` | BSM | 🟡 Ready | #34, #35 |
 | 16 | `BuoyancyProofVariants.py` | Buoyancy | 🟡 Ready | #36–#41 |
 | 17 | `test_grok_thread_e3cc481989964390_validation.py` | Buoyancy | 🟡 Ready | #42 |
+| 18 | `validate_sterile_neutrino_uqff.py` | BSM | 🟡 Ready | #26 |
 | 19 | `test_phase2_validation.py` | 26D Energy | 🟡 Ready | #44, #45, #46 |
 | 20 | `arxiv_validation_framework.py` | arXiv Cross-Val | 🟡 Ready | #51, #52 |
 | 21 | `validate_all_models.py` | arXiv Models | 🟡 Ready | #53–#58 |
