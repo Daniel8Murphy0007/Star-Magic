@@ -1370,8 +1370,16 @@ FERMI_LAT_4LAC_VALIDATION = {
         'kappa': {
             'value': 0.0005,
             'unit': 'day⁻¹',
-            'description': 'Decay rate constant',
+            'description': 'Decay rate constant (canonical)',
             'source': 'Blazar variability timescales',
+            'mcmc_refinement': {
+                'value': 0.00052,
+                'std': 1.23e-5,
+                'ci_95': (0.00048, 0.00056),
+                'source': 'grok_share_0904a12a5c2b4a639389ae084391b94f',
+                'full_detail': 'GrokThread_UQFF_0904_Validation.py::KAPPA_MCMC_CALIBRATION',
+                'note': '4% from canonical; canonical remains authoritative',
+            },
         },
         'tau': {
             'value': 2000,
@@ -1767,21 +1775,97 @@ UQFF_ASTRONOMICAL_SYSTEMS_VALIDATION = {
     },
     
     # ===========================================================================
+    # CATEGORY 10: NEW SYSTEMS FROM 0904 GROK THREAD (5 systems)
+    # Full system parameters: GrokThread_UQFF_0904_Validation.py (systems 44-48)
+    # Compact PARAMS dicts: CondensedPhysics_OutputData.py
+    # ===========================================================================
+    'system_25_gro_j1655': {
+        'name': 'GRO J1655-40 (Micro-quasar XRB)',
+        'category': 'Micro-quasar',
+        'uqff_terms': ['Ug3 relativistic jets', 'Ub_i superluminal blob', 'E_react'],
+        'parameters': {
+            'M_bh_M_sun': 6.3,
+            'beta_jet': 0.92,
+            'distance_kpc': 3.2,
+        },
+        'verification': ['Hjellming & Rupen 1995', 'RXTE 2025'],
+        'source': 'grok_share_0904a12a5c2b4a639389ae084391b94f',
+    },
+
+    'system_26_cygnus_loop': {
+        'name': 'Cygnus Loop (Veil Nebula SNR)',
+        'category': 'SNR',
+        'uqff_terms': ['Ub_i blast deceleration', 'CRP shock', 'Q_wave thermal'],
+        'parameters': {
+            'age_yr': 10000,
+            'distance_kpc': 0.54,
+            'shock_velocity_km_s': 170,
+        },
+        'verification': ['Chandra 2025', 'XMM-Newton diffuse'],
+        'source': 'grok_share_0904a12a5c2b4a639389ae084391b94f',
+    },
+
+    'system_27_g292': {
+        'name': 'G292.0+1.8 (Oxygen-rich PWN/SNR)',
+        'category': 'Pulsar Wind Nebula',
+        'uqff_terms': ['Ug3 pulsar wind', 'Q_wave O-rich ejecta', 'Triadic PWN'],
+        'parameters': {
+            'age_yr': 1600,
+            'distance_kpc': 6.0,
+            'E_SN_J': 2e44,
+        },
+        'verification': ['Chandra PWN morphology 2025'],
+        'source': 'grok_share_0904a12a5c2b4a639389ae084391b94f',
+    },
+
+    'system_28_ngc_7293': {
+        'name': 'NGC 7293 (Helix Nebula)',
+        'category': 'Planetary Nebula',
+        'uqff_terms': ['Ug2 mass-loss shell', 'Ub_i ionised winds', 'ASKAP transient analog'],
+        'parameters': {
+            'distance_pc': 216,
+            'age_yr': 10657,
+            'M_wd_M_sun': 0.66,
+            'T_wd_K': 1.07e5,
+        },
+        'verification': ['ASKAP J1832 template 2025', 'Hubble 2025'],
+        'source': 'grok_share_0904a12a5c2b4a639389ae084391b94f',
+    },
+
+    'system_29_perseus_cluster': {
+        'name': 'Perseus Galaxy Cluster (Abell 426)',
+        'category': 'Galaxy Cluster',
+        'uqff_terms': ['Um ICM turbulence', 'Triadic cluster mass', 'Ub_i AGN bubbles'],
+        'parameters': {
+            'M_500_M_sun': 6.7e14,
+            'T_ICM_keV': 7.0,
+            'z': 0.0179,
+            'AGN_cavity_power_W': 1e38,
+        },
+        'verification': ['Chandra Perseus 2025', 'Hitomi 2016 turbulence'],
+        'source': 'grok_share_0904a12a5c2b4a639389ae084391b94f',
+    },
+
+    # ===========================================================================
     # SUMMARY STATISTICS
     # ===========================================================================
     'summary': {
-        'total_systems': 24,
+        'total_systems': 29,
+        'total_systems_0904_catalogue': 52,     # Full catalogue in GrokThread_UQFF_0904_Validation.py
         'categories': {
             'Stellar/Solar': 2,
             'Black Hole': 2,
             'Quasar/Blazar': 3,
-            'Galaxy Cluster/Radio': 3,
+            'Galaxy Cluster/Radio': 4,          # +1 (Perseus Cluster)
             'Transient/Merger': 2,
             'Exoplanet': 1,
-            'Nebula': 2,
+            'Nebula': 3,                        # +1 (Helix Nebula)
             'Nuclear': 2,
-            'Other': 7,
+            'SNR/PWN': 3,                       # +2 (Cygnus Loop, G292.0+1.8)
+            'Micro-quasar': 1,                  # +1 (GRO J1655-40)
+            'Other': 6,
         },
+        'new_from_0904': ['GRO J1655-40', 'Cygnus Loop', 'G292.0+1.8', 'NGC 7293 (Helix)', 'Perseus Cluster'],
         'key_uqff_terms': [
             'Ug1, Ug2, Ug3, Ug4 (4-layer gravity)',
             'Ub_i (buoyancy opposition)',
@@ -1790,6 +1874,11 @@ UQFF_ASTRONOMICAL_SYSTEMS_VALIDATION = {
             'Q_wave (quantum wave stats)',
             'Triadic (geometric mean verification)',
         ],
+        'cross_refs': {
+            '52_system_catalogue': 'GrokThread_UQFF_0904_Validation.py::UQFF_52_SYSTEM_CATALOGUE',
+            'kappa_mcmc': 'GrokThread_UQFF_0904_Validation.py::KAPPA_MCMC_CALIBRATION',
+            'q_wave_52': 'GrokThread_UQFF_0904_Validation.py::Q_WAVE_52_STATISTICS',
+        },
     },
 }
 
