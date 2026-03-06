@@ -22,7 +22,6 @@ import math
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from CondensedPhysics import (
-    PulsarTimingArrayUQFFCalculator,
     PTA_NANOGRAV,
 )
 
