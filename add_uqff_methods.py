@@ -5,8 +5,8 @@ Add 6 missing UQFF Master Equation methods to all 10 May 2025 models.
 Missing equations:
 1. compute_UQFF_base() - F_U = Σ(Ug_i + Ub_i) + Um
 2. compute_superconductive_equation() - [SCm](t) = [SCm]₀ × e^(-κt) × (1 - cos(ωt))
-3. compute_buoyant_equation() - F_U_Bi = Σ β_i × (Ug_i - ρ_vac,i)
-4. compute_master_buoyant_equation() - F_U_Bi_i = Ω_g × (M_bh/d_g) × Σ(Ug_i + Ub_i)
+3. compute_F_U_Bi_simple() - F_U_Bi = Σ β_i × (Ug_i - ρ_vac,i × G)  [Form B: atomic/stellar scale]
+4. compute_F_U_Bi_cosmic() - F_U_Bi_i = Ω_g × (M_bh/d_g) × Σ(Ug_i + Ub_i)  [Form C-1: galactic/cosmic scale]
 5. compute_triadic_equation() - g(r,t) = Σ(i=1..26) [Ug1_i + Ug2_i + Ug3_i + Ug4_i]
 6. compute_quadratic_equation() - Root solutions for g² + bg + c = 0
 """
@@ -124,9 +124,9 @@ METHODS_TEMPLATE = '''
             'SSq': SSq
         }
     
-    def compute_buoyant_equation(self, t=None, r=None):
+    def compute_F_U_Bi_simple(self, t=None, r=None):
         """
-        Compute UQFF Buoyant equation (F_U_Bi).
+        Compute UQFF Buoyant equation — Form B: atomic/stellar scale.
         
         F_U_Bi = Σ β_i × (Ug_i - ρ_vac,i × G)
         
@@ -180,9 +180,9 @@ METHODS_TEMPLATE = '''
             'scale': 'Atomic'
         }
     
-    def compute_master_buoyant_equation(self, t=None):
+    def compute_F_U_Bi_cosmic(self, t=None):
         """
-        Compute UQFF Master Buoyant equation (F_U_Bi_i).
+        Compute UQFF Master Buoyant equation — Form C-1: galactic/cosmic scale.
         
         F_U_Bi_i = Ω_g × (M_bh/d_g) × Σ(Ug_i + Ub_i)
         

@@ -15,6 +15,18 @@ STATUS: Documentation Enhancement + New Inflation/Force Chart Framework
 INTEGRATION TARGET: CondensedPhysics_Validation.py (validation references)
 SUPPORT FILES: CondensedPhysics_InputData.py (parameter documentation)
 
+CROSS-REFERENCE:
+  Companion validation file: GrokThread_UQFF_0904_Validation.py
+    (52-system catalogue, kappa MCMC, normality tests, Z-scaling, CERN DELPHI,
+     DPM Yin-Yang cosmology, Q_WAVE_52 statistics, master equations)
+  DPMCosmologyModule.py L230 — canonical F_core formula (authoritative)
+  CondensedPhysics_Validation.py L1505 — UQFF_ASTRONOMICAL_SYSTEMS_VALIDATION
+
+NOTE ON F_core FORMULA:
+  The formula F_core = ħω_LENR / (σ_n ρ_vac,[UA]) appears in this file in
+  compute_F_U_at_epoch(). The canonical source is DPMCosmologyModule.py::HBAR,
+  OMEGA_LENR, SIGMA_NEUTRON, RHO_VAC_UA. Constants are imported below.
+
 Watermark: ©2025 Daniel T. Murphy, daniel.murphy00@gmail.com – All Rights Reserved
 """
 
@@ -22,6 +34,16 @@ import numpy as np
 import math
 from typing import Dict, List, Tuple, Optional
 from dataclasses import dataclass, field
+
+# Import canonical DPM constants — F_core formula resides authoritatively in DPMCosmologyModule
+try:
+    from DPMCosmologyModule import HBAR, OMEGA_LENR, SIGMA_NEUTRON, RHO_VAC_UA
+except ImportError:
+    # Fallback values if DPMCosmologyModule is not available
+    HBAR = 1.054571817e-34          # J·s  (same as h_bar in this file)
+    OMEGA_LENR = 7.85e12            # rad/s
+    SIGMA_NEUTRON = 1e-28           # m²
+    RHO_VAC_UA = 7.09e-36           # J/m³
 
 # ============================================================================
 # UNIQUE CONTENT 1: INFLATION/FORCE CHART - EPOCH-BASED EVOLUTION
@@ -249,7 +271,7 @@ UQFF_VARIABLE_DOCUMENTATION = {
         ],
         'scaling': 'M_bh/d_g represents gravitational influence decreasing with distance',
         'example_for_sun': 'M_bh/d_g ≈ 3.20 × 10^{16} kg/m',
-        'ug4_contribution': 'U_g4 ≈ 2.50 × 10^{-20} J/m³ at Sun's location',
+        'ug4_contribution': "U_g4 \u2248 2.50 \u00d7 10^{-20} J/m\u00b3 at Sun's location",
         'reference': 'Star Magic The Quest for Unity, Chapter 3'
     },
     
@@ -402,7 +424,8 @@ class InflationForceChartCalculator:
     def __init__(self):
         self.epochs = INFLATION_FORCE_EPOCHS
         self.F_core_N = 1e10  # Universal k_η core force (Newtons)
-        self.h_bar = 1.054571817e-34  # J·s
+        # h_bar imported from DPMCosmologyModule as HBAR (canonical source)
+        self.h_bar = HBAR
         
     def get_epoch(self, epoch_number: int) -> Optional[InflationForceEpoch]:
         """Get epoch by number (1-5)."""
@@ -448,7 +471,9 @@ class InflationForceChartCalculator:
         if not epoch:
             return {'error': f'Epoch {epoch_number} not found'}
         
-        # Core force
+        # Core force — formula canonical in DPMCosmologyModule.py L230
+        # F_core = ħ ω_LENR / (σ_n ρ_vac,[UA])
+        # Parameters here are passed in for flexibility; use DPMCosmologyModule constants as defaults.
         F_core = (self.h_bar * omega_LENR) / (sigma_n * rho_vac_UA)
         
         # Sum over 26 quantum states (simplified)
