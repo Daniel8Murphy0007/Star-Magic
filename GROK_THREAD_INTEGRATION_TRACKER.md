@@ -1382,7 +1382,7 @@ SUPERCONDUCTIVE_UI_COMPLEX=0x0A04
 - IPC: ipc/uqff_ipc.h (5 message types 0x0A00-0x0A04)
 - Python: CondensedPhysics2.py (5 classes + THREAD_1a2726a4_PARAMS + SOURCE_1a2726a4_CALCULATORS registry; 548 total classes)
 - Pipeline: ipc_pipeline_handler.h (15 new trigger keywords; CP2=548), production_pipeline.py (cp2_classes=548)
-- Architecture: ARCHITECTURE_FLOW_DIAGRAM.md v4.3.8
+- Architecture: ARCHITECTURE_FLOW_DIAGRAM.md v4.3.8 (commit e7f31e6)
 - Status: MAIN_1_CoAnQi_integration_status.json (548 classes, thread_1a2726a4, metadata discrepancy note)
 - Validation: arxiv_validation_data.csv (5 new rows), VALIDATION_MASTER_INDEX.md (entry #34)
 

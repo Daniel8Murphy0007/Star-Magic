@@ -461,13 +461,13 @@
         ]
     },
     "git_status": {
-        "last_commit": "TBD",
+        "last_commit": "e7f31e6",
         "commit_date": "2026-03-06",
-        "commit_message": "Thread 1a2726a4: 5 new UQFF calculators (Shapiro-Wilk Q_wave normality, H2O-H2 rotor CS, DPM-THz MUGE, BEC alpha-clustering, superconductive complex Ui) \u2014 CP2=548 classes, arch v4.3.8, IPC 0x0A00-0x0A04",
+        "commit_message": "Thread 1a2726a4: 5 new UQFF calculators (Shapiro-Wilk Q_wave normality, H2O-H2 rotor CS, DPM-THz MUGE, BEC alpha-clustering, superconductive complex Ui) \u2014 CP2=548 classes (corrects 529 metadata to 543 ground truth +5 new), arch v4.3.8, IPC 0x0A00-0x0A04",
         "commit_time": "00:00:00",
         "branch": "master",
         "prior_commits_last_20": [
-            "TBD - Thread 1a2726a4: 5 new UQFF calculators \u2014 CP2=548 classes, arch v4.3.8, IPC 0x0A00-0x0A04",
+            "e7f31e6 - Thread 1a2726a4: 5 new UQFF calculators \u2014 CP2=548 classes, arch v4.3.8, IPC 0x0A00-0x0A04",
             "bc5ca8f - Thread f3c55f52: 5 new UQFF calculators \u2014 CP2=529 classes, arch v4.3.7, IPC 0x0900-0x0904",
             "058fdb3 - Thread ff01cb3a: 5 new UQFF calculators — CP2=524 classes, arch v4.3.6, IPC 0x0800-0x0804",
             "b4ddf5c - GW PAPER_016/017/018 + PAPER_UQFF_VacuumEnergy (19 whitepapers total)",

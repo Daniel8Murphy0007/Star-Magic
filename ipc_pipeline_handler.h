@@ -52,7 +52,7 @@
  * Author: Daniel T. Murphy
  * Date: March 3, 2026 (Phase 2: CP2 Integration)
  * Updated: March 6, 2026 (Thread f3c55f52: 5 vacuum-mediated UQFF + Thread ff01cb3a: 5 full-reconstruction UQFF + Thread 3a469fcc: 8 canonical UQFF + GW PAPER_016/017/018)
- * Updated: TBD (Thread 1a2726a4: 5 Q_wave/rotor/MUGE/BEC/complex-Ui UQFF; CP2=548 classes; IPC 0x0A00-0x0A04)
+ * Updated: 2026-03-06 (Thread 1a2726a4: 5 Q_wave/rotor/MUGE/BEC/complex-Ui UQFF; CP2=548 classes; IPC 0x0A00-0x0A04; commit e7f31e6)
  * Phase: 0 - Unification (IPC Wiring), Phase 2 - Extensions (CP2)
  */
 
