@@ -6,8 +6,8 @@
 **Status:** Draft  
 **Repository:** Daniel8Murphy0007/Star-Magic  
 **Calibration Constants:** κ = 0.0005/day, [SSq] = 0.57  
-**Primary Validation File:** MAIN_1_CoAnQi.cpp  
-**C++ Sources:** MAIN_1_CoAnQi.cpp, source2.cpp  
+**Primary Validation File:** validate_pta_uqff.py  
+**C++ Sources:** source27.cpp, source28.cpp, MAIN_1_CoAnQi.cpp  
 
 ---
 
