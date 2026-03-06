@@ -38,7 +38,7 @@
 | **v4.3.3** | **GW Whitepapers 4-15: BNS/SGWB/Magnetar/PrimordialBH/Cosmological GW** | ✅ **Complete** | 995c9c3 |
 | **v4.3.4** | **Thread 3a469fcc: 8 canonical UQFF calculators → CP2.py (519 classes)** | ✅ **Complete** | 83d7ebe |
 | **v4.3.5** | **GW PAPER_016/017/018 + PAPER_UQFF_VacuumEnergy (19 whitepapers total)** | ✅ **Complete** | 40876d2 |
-| **v4.3.6** | **Thread ff01cb3a: 5 full-reconstruction UQFF calculators → CP2.py (524 classes)** | ✅ **Complete** | pending |
+| **v4.3.6** | **Thread ff01cb3a: 5 full-reconstruction UQFF calculators → CP2.py (524 classes)** | ✅ **Complete** | 058fdb3 |
 
 ---
 
