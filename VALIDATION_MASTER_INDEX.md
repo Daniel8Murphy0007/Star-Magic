@@ -118,8 +118,8 @@
 - [ ] #14 — EMRI Signal Modification by Aether Damping
 - [ ] #15 — Multi-Band GW Astronomy: LISA + LIGO Synergy
 - [ ] #16 — White Dwarf Binary Foreground Subtraction via UQFF
-- [ ] #17 — Redshift Corrections (z=1) in UQFF GW Propagation
-- [ ] #18 — Aether Noise Spectrum Characterization for LISA
+- [x] #17 — Redshift Corrections (z=1) in UQFF GW Propagation
+- [x] #18 — Aether Noise Spectrum Characterization for LISA
 
 ---
 
@@ -561,8 +561,8 @@ Each work session follows this template:
 - [ ] #14 — EMRI Signal Modification
 - [ ] #15 — Multi-Band GW Astronomy
 - [ ] #16 — White Dwarf Binary Foreground
-- [ ] #17 — Redshift Corrections (z=1)
-- [ ] #18 — Aether Noise Spectrum
+- [x] #17 — Redshift Corrections (z=1)
+- [x] #18 — Aether Noise Spectrum
 
 **Domain 1.3 — Extended Waveform** (4 papers)
 - [ ] #19 — Pulsar Timing Array Anomalies
@@ -859,7 +859,6 @@ For papers #101–#105 (Millennium Prize level):
 | 15 | `test_priority3_cern_validation.py` | BSM | 🟡 Ready | #34, #35 |
 | 16 | `BuoyancyProofVariants.py` | Buoyancy | 🟡 Ready | #36–#41 |
 | 17 | `test_grok_thread_e3cc481989964390_validation.py` | Buoyancy | 🟡 Ready | #42 |
-| 18 | `QCalc_Phase1_Validation.py` | 26D Energy | 🟡 Ready | #43–#49 |
 | 19 | `test_phase2_validation.py` | 26D Energy | 🟡 Ready | #44, #45, #46 |
 | 20 | `arxiv_validation_framework.py` | arXiv Cross-Val | 🟡 Ready | #51, #52 |
 | 21 | `validate_all_models.py` | arXiv Models | 🟡 Ready | #53–#58 |
