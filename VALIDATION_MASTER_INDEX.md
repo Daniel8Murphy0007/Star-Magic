@@ -7,7 +7,7 @@
 **Deadline:** March 17, 2026 (12 days)  
 **Time Budget:** 216 hours (18-hour days × 12 days)  
 **Target:** 100+ whitepapers + Millennium Prize proofs  
-**Last Updated:** March 6, 2026 (original plan names restored; 17 match; 11 bonus-track files in §1.14)
+**Last Updated:** March 7, 2026 (full 31-file inventory; §1.2 plan names restored in domain body; completeness review begun)
 
 ---
 
@@ -16,7 +16,7 @@
 | Metric | Count |
 |--------|-------|
 | ✅ Papers Completed (original plan titles) | 17 / 100+ |
-| 📄 Whitepaper Files on Disk | 30 ([whitepapers/](whitepapers/)) |
+| 📄 Whitepaper Files on Disk | 31 ([whitepapers/](whitepapers/)) |
 | 📋 Bonus Track Papers on Disk (§1.14) | 11 (A1–A11) |
 | �🔄 In Progress | 0 |
 | 📋 Domains Mapped | 13 |
@@ -104,7 +104,7 @@
 | Property | Details |
 |----------|---------|
 | **Target Papers** | #13–#18 |
-| **Status** | 🟡 Ready |
+| **Status** | 🟡 In Progress — 2/6 complete |
 | **C++ Sources** | `source27.cpp`, `MAIN_1_CoAnQi.cpp` (SOURCE4) |
 
 **Validation Files:**
@@ -116,10 +116,10 @@
 | `validate_multiband.py` | [`validate_multiband.py`](validate_multiband.py) | Multi-band GW astronomy, WD binary foreground |
 
 **Target Whitepapers:**
-- [x] #13 — [Magnetar Spin-Down UQFF Framework](whitepapers/PAPER_013_Magnetar_Spin_Down_UQFF_Framework.md)
-- [x] #14 — [Primordial Black Holes: UQFF Formation Analysis](whitepapers/PAPER_014_Primordial_Black_Holes_UQFF_Formation.md)
-- [x] #15 — [Cosmological Implications of UQFF Modified GW Propagation](whitepapers/PAPER_015_Cosmological_Implications_UQFF_Modified_GW_Propagation.md)
-- [x] #16 — [Quantum Entanglement & UQFF Nonlocal Correlations](whitepapers/PAPER_016_Quantum_Entanglement_UQFF_Nonlocal_Correlations.md)
+- [ ] #13 — LISA SMBH Merger Rate Predictions from UQFF *(to write — see §1.14 Bonus A6)*
+- [ ] #14 — EMRI Signal Modification by Aether Damping *(to write — see §1.14 Bonus A7)*
+- [ ] #15 — Multi-Band GW Astronomy: LISA + LIGO Synergy *(to write — see §1.14 Bonus A8)*
+- [ ] #16 — White Dwarf Binary Foreground Subtraction via UQFF *(to write — see §1.14 Bonus A9)*
 - [x] #17 — [Redshift Corrections (z=1) in UQFF GW Propagation](whitepapers/PAPER_017_Redshift_Corrections_z1_in_UQFF_GW_Propagation.md)
 - [x] #18 — [Aether Noise Spectrum Characterization for LISA](whitepapers/PAPER_018_Aether_Noise_Spectrum_Characterization_for_LISA.md)
 
@@ -590,6 +590,7 @@ Each work session follows this template:
 | 28 | Mar 6, 2026 | #27 — Lepton Flavor Violation Processes in UQFF (arXiv:2506.15245) | `bsm_physics_validation.py`, `source4.cpp` | Completed |
 | 29 | Mar 6, 2026 | #28 — BSM Coupling Constants from UQFF Framework (arXiv:2506.15256) | `bsm_physics_validation.py`, `source4.cpp` | Completed |
 | 30 | Mar 6, 2026 | Whitepaper file reconciliation: linked #1–#28 to whitepapers/ files; corrected titles for #8–16 and #25–26 (actual file content differed from planned names); added PAPER_UQFF as #106; 30 files on disk confirmed | `VALIDATION_MASTER_INDEX.md`, `whitepapers/` | Completed |
+| 31 | Mar 7, 2026 | Full 31-file inventory (added PAPER_026_Sterile_Neutrino_Mass_UQFF.md stub to count); §1.2 domain body plan names restored; completeness audit: 5 stub papers (PAPER_004,005,006,017,018), 3 thin papers (PAPER_002,003,013), 23 solid papers | `VALIDATION_MASTER_INDEX.md`, `whitepapers/` | In Progress |
 
 ### Completion Checkboxes by Domain
 
