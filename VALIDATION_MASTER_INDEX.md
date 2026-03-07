@@ -175,12 +175,12 @@
 - [x] #27 — [Lepton Flavor Violation Processes in UQFF](whitepapers/paper_27_lepton_flavor_violation_uqff.md) (arXiv:2506.15245)
 - [x] #28 — [BSM Coupling Constants from UQFF Framework](whitepapers/paper_28_bsm_coupling_constants_uqff.md) (arXiv:2506.15256)
 - [ ] #29 — [New Physics at TeV Scale: UQFF Predictions](whitepapers/paper_29_new_physics_tev_scale_uqff.md) *(file on disk)* (arXiv:2506.15306)
-- [x] #30 — [Dark Sector Mediators in UQFF](whitepapers/PAPER_030b_Dark_Sector_Mediators_UQFF.md) (arXiv:2506.15347, t_n=3.833, M_dark≈2.2 TeV, bsm_physics_validation.py PASS)
-- [x] #31 — [Flavor Anomalies Resolution via UQFF](whitepapers/PAPER_031b_Flavor_Anomalies_Resolution_UQFF.md) (arXiv:2506.15390, R(D)1.9→0.9σ, R(D*)3.3→1.2σ, bsm_physics_validation.py PASS)
-- [x] #32 — [BSM Scalar Sectors in UQFF](whitepapers/PAPER_032b_BSM_Scalar_Sectors_UQFF.md) (arXiv:2506.15515, M_S⁰≈845 GeV, k_η=0.1369, bsm_physics_validation.py PASS)
-- [x] #33 — [Electroweak Precision Observables: UQFF Corrections](whitepapers/PAPER_033b_Electroweak_Precision_UQFF.md) (arXiv:2506.15533, δT=+0.222, Δm_W=+93 MeV, bsm_physics_validation.py PASS)
-- [x] #34 — [Higgs κ_t Coupling: UQFF vs CERN HL-LHC Data](whitepapers/PAPER_034b_Higgs_Kappa_t_Coupling_UQFF.md) (ATL-PHYS-PROC-2025-051, 95.83% alignment, test_priority3_cern_validation.py 7/7 PASS)
-- [x] #35 — [Higgs CP Violation: UQFF Phase Predictions](whitepapers/PAPER_035b_Higgs_CP_Violation_UQFF.md) (CMS-HIG-24-009, A_CP=0.507, cos(πt_n)=0.4456, test_priority3_cern_validation.py 7/7 PASS)
+- [x] #30 — [Dark Sector Mediators in UQFF](whitepapers/PAPER_030_Dark_Sector_Mediators_UQFF.md) (arXiv:2506.15347, t_n=3.833, M_dark≈2.2 TeV, bsm_physics_validation.py PASS)
+- [x] #31 — [Flavor Anomalies Resolution via UQFF](whitepapers/PAPER_031_Flavor_Anomalies_Resolution_UQFF.md) (arXiv:2506.15390, R(D)1.9→0.9σ, R(D*)3.3→1.2σ, bsm_physics_validation.py PASS)
+- [x] #32 — [BSM Scalar Sectors in UQFF](whitepapers/PAPER_032_BSM_Scalar_Sectors_UQFF.md) (arXiv:2506.15515, M_S⁰≈845 GeV, k_η=0.1369, bsm_physics_validation.py PASS)
+- [x] #33 — [Electroweak Precision Observables: UQFF Corrections](whitepapers/PAPER_033_Electroweak_Precision_UQFF.md) (arXiv:2506.15533, δT=+0.222, Δm_W=+93 MeV, bsm_physics_validation.py PASS)
+- [x] #34 — [Higgs κ_t Coupling: UQFF vs CERN HL-LHC Data](whitepapers/PAPER_034_Higgs_Kappa_t_Coupling_UQFF.md) (ATL-PHYS-PROC-2025-051, 95.83% alignment, test_priority3_cern_validation.py 7/7 PASS)
+- [x] #35 — [Higgs CP Violation: UQFF Phase Predictions](whitepapers/PAPER_035_Higgs_CP_Violation_UQFF.md) (CMS-HIG-24-009, A_CP=0.507, cos(πt_n)=0.4456, test_priority3_cern_validation.py 7/7 PASS)
 
 ---
 
@@ -630,12 +630,12 @@ Each work session follows this template:
 - [x] #27 — [Lepton Flavor Violation](whitepapers/paper_27_lepton_flavor_violation_uqff.md) (arXiv:2506.15245)
 - [x] #28 — [BSM Coupling Constants](whitepapers/paper_28_bsm_coupling_constants_uqff.md) (arXiv:2506.15256)
 - [ ] #29 — [New Physics at TeV](whitepapers/paper_29_new_physics_tev_scale_uqff.md) *(file on disk)* (arXiv:2506.15306)
-- [x] #30 — [Dark Sector Mediators](whitepapers/PAPER_030b_Dark_Sector_Mediators_UQFF.md) (arXiv:2506.15347)
-- [x] #31 — [Flavor Anomalies](whitepapers/PAPER_031b_Flavor_Anomalies_Resolution_UQFF.md) (arXiv:2506.15390)
-- [x] #32 — [BSM Scalar Sectors](whitepapers/PAPER_032b_BSM_Scalar_Sectors_UQFF.md) (arXiv:2506.15515)
-- [x] #33 — [Electroweak Precision](whitepapers/PAPER_033b_Electroweak_Precision_UQFF.md) (arXiv:2506.15533)
-- [x] #34 — [Higgs κ_t Coupling](whitepapers/PAPER_034b_Higgs_Kappa_t_Coupling_UQFF.md)
-- [x] #35 — [Higgs CP Violation](whitepapers/PAPER_035b_Higgs_CP_Violation_UQFF.md)
+- [x] #30 — [Dark Sector Mediators](whitepapers/PAPER_030_Dark_Sector_Mediators_UQFF.md) (arXiv:2506.15347)
+- [x] #31 — [Flavor Anomalies](whitepapers/PAPER_031_Flavor_Anomalies_Resolution_UQFF.md) (arXiv:2506.15390)
+- [x] #32 — [BSM Scalar Sectors](whitepapers/PAPER_032_BSM_Scalar_Sectors_UQFF.md) (arXiv:2506.15515)
+- [x] #33 — [Electroweak Precision](whitepapers/PAPER_033_Electroweak_Precision_UQFF.md) (arXiv:2506.15533)
+- [x] #34 — [Higgs κ_t Coupling](whitepapers/PAPER_034_Higgs_Kappa_t_Coupling_UQFF.md)
+- [x] #35 — [Higgs CP Violation](whitepapers/PAPER_035_Higgs_CP_Violation_UQFF.md)
 
 **Domain 1.5 — Buoyancy Proofs** (7 papers)
 - [ ] #36 — F_UBii Variant 1
