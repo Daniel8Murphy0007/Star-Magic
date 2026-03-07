@@ -113,6 +113,33 @@ At e = 0.003:
 - **A₂ (2nd harmonic):** 0.003
 - **A₃ (3rd harmonic):** 9 × 10⁻⁶
 
+### 5.2 Detection Strategy
+
+The ±12 mHz spectral lines from n=2 harmonics are detectable using:
+1. **Hilbert-Huang transform** of the strain to extract instantaneous eccentricity
+2. **Bayesian eccentric template bank** (TaylorF2Ecc waveforms modified for UQFF damping)
+3. **Residual power spectrum** after circular GR template subtraction
+
+Einstein Telescope / Cosmic Explorer:
+- Detects e > 10⁻³ at 5σ for SNR > 50
+- UQFF predicts 3× more such events than GR
+
+---
+
+## 6. Observational Predictions
+
+1. **Pop-III BNS remnants:** First-generation NS binaries at z ~ 2–5 may retain e ~ 0.01 at merger, detectable by ET with UQFF enhancement factor
+2. **Globular cluster captures:** e₀ ~ 0.9 ECOs circularize 9× slower under UQFF — a non-trivial fraction remain eccentric at LISA frequencies
+3. **Eccentricity-distance correlation:** For a fixed chirp mass, apparent distance inferred from GR template will be biased high (same 3× factor as Paper #3) for eccentric UQFF events
+
+---
+
+## 7. Conclusion
+
+UQFF reduces GW energy loss by factor D²_total = 0.111 for BNS (0.333²), extending circularization timescales by 9× over standard GR. This retains residual eccentricity e ~ 0.003 at LIGO frequency band entry (vs e < 10⁻⁴ in GR), producing observable harmonic structure in matched-filter searches. The resulting 3× increase in the eccentric merger detection rate is a direct, falsifiable prediction of UQFF vacuum damping accessible with third-generation detectors.
+
+**Validator:** `validate_eccentric_binary.py` (see `source27.cpp` Eccentric BNS module)
+
 ### 5.2 Matched Filtering
 
 Circular templates on eccentric signals:

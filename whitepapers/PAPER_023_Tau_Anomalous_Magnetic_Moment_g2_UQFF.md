@@ -128,6 +128,31 @@ Current precision: O(10^-2) — UQFF correction (3.42e-6) requires O(10^-6) prec
 
 ---
 
+## 5. Connection to Paper #24 (Tau EDM)
+
+The Schiff-Engel relation connects tau g-2 and EDM:
+
+**d_tau = Δa_tau^UQFF × tan(φ_CP) × (e ℏ / 2 m_tau c)**
+
+- Δa_tau^UQFF = 3.42e-6 (this paper)
+- tan(φ_CP) = tan([SSq] × π) = tan(1.795) = −4.637
+- Tau magneton = 9.377e-21 e·cm
+
+Result: **|d_tau^SE| ~ 1.5e-25 e·cm** (Schiff-Engel approximation)
+
+Full UQFF aether-resonance enhancement gives **d_tau^UQFF = 1.84e-20 e·cm** (Paper #24) — four orders of magnitude larger due to aether-loop enhancement that does not appear in the perturbative SE relation.
+
+---
+
+## 6. Conclusion
+
+UQFF predicts an anomalous magnetic moment correction Δa_tau = +3.42e-6, arising primarily from vacuum aether loop coupling (3.38e-6) with percent-level string and KK graviton contributions. This correction corresponds to a new physics scale M_UQFF = 14.3 TeV, consistent with the KK mass scale M_KK = 11.6 TeV from Paper #22. While current LEP/ATLAS bounds (precision ~10⁻²) are three orders of magnitude too loose to detect this, a dedicated tau factory achieving ~10⁻⁶ precision would see a 3.4σ signal. This remains the most numerically accessible UQFF BSM prediction per unit experimental investment.
+
+**Validator:** `validate_tau_g2_uqff.py`
+| Dedicated tau factory | ~1e-6 | Yes (3.4σ) | 2040+ |
+
+---
+
 ## 5. Connection to Muon g-2
 
 ### 5.1 Ratio Prediction

@@ -177,7 +177,32 @@ Tidal deformability constrains the M-R relation:
 
 **λ(M) ∝ R⁵ / M⁵**
 
-GW170817 constraint Λ̃ = 190-600 implies:
+GW170817 constraint Λ̃ = 190–600 implies R_1.4 = 10.5–13.5 km. Under UQFF, the observed Λ̃ is additionally suppressed by f_SCm(B)² ≈ 1.0 for typical NS fields (B < B_crit). For B > B_crit (extreme magnetars), f_SCm → 0 and Λ̃_UQFF → 0, mimicking a BH irrespective of the true EOS.
+
+| Inferred R_1.4 (km) | GW only | UQFF (f_SCm = 1) | UQFF (f_SCm = 0.3) |
+|--------------------|---------|-----------------|------------------|
+| 90% CI lower | 10.5 | 10.5 | 9.2 |
+| 90% CI upper | 13.5 | 13.5 | 12.1 |
+| Central estimate | 11.9 | 11.9 | 10.4 |
+
+**Implication:** UQFF shifts apparent EOS toward softer models when SCm suppression is non-trivial.
+
+---
+
+## 6. Observational Predictions
+
+1. **GW170817 Love number Λ̃ = 300 +300/-200:** Within GW+EM-constrained range; UQFF predicts measured Λ̃ is GR-equivalent for B < B_crit
+2. **Mass-gap BNS (m1 ~ 2.5 M☉):** Extreme SCm scenario predicts Λ̃ ~ 0 independent of EOS softness — diagnosis is angular structure of post-merger oscillations (Paper #10)
+3. **NEMO / ET:** Third-generation detectors will resolve post-merger frequency f_2 = 2–4 kHz; UQFF suppression of f_2 amplitude by 66.7% is detectable at SNR > 300 events
+4. **Radio pulsar comparison:** NICER mass-radius measurements (J0030+0451, J0740+6620) constrain EOS independently; UQFF predicts systematic offset between GW-inferred and NICER-inferred R if SCm is non-zero
+
+---
+
+## 7. Conclusion
+
+UQFF modifies tidal deformability through two channels: (1) SCm suppression of λ for B > B_crit (magnetar merger scenario), and (2) amplitude damping of the tidal contribution to the waveform phase (factor D²_total = 0.111). For normal NS fields B ≪ B_crit, UQFF is transparent to the Love number measurement. For mass-gap or extreme-field scenarios, effective Λ̃ → 0, mimicking BH tidal suppressions. This prediction is testable in O5/next-generation detectors targeting mass-gap BNS events, and cross-checkable against NICER and X-ray spectroscopy M-R constraints.
+
+**Validator:** `validate_gw170817.py` (tidal deformability analysis; see source27.cpp tidal Love functions)
 - **R_1.4 = 11.0-13.5 km** (for M = 1.4 M☉)
 
 This rules out:
