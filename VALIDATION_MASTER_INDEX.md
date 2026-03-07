@@ -7,7 +7,7 @@
 **Deadline:** March 17, 2026 (12 days)  
 **Time Budget:** 216 hours (18-hour days × 12 days)  
 **Target:** 100+ whitepapers + Millennium Prize proofs  
-**Last Updated:** March 6, 2026 (whitepaper files linked; 30 files on disk reconciled)
+**Last Updated:** March 6, 2026 (original plan names restored; 17 match; 11 bonus-track files in §1.14)
 
 ---
 
@@ -15,8 +15,9 @@
 
 | Metric | Count |
 |--------|-------|
-| ✅ Papers Completed | 28 / 100+ |
-| � Whitepaper Files on Disk | 30 ([whitepapers/](whitepapers/)) |
+| ✅ Papers Completed (original plan titles) | 17 / 100+ |
+| 📄 Whitepaper Files on Disk | 30 ([whitepapers/](whitepapers/)) |
+| 📋 Bonus Track Papers on Disk (§1.14) | 11 (A1–A11) |
 | �🔄 In Progress | 0 |
 | 📋 Domains Mapped | 13 |
 | 📂 Validation Files Catalogued | 35 |
@@ -81,13 +82,13 @@
 - [x] #3 — [GW150914 UQFF vs LIGO Strain Comparison](whitepapers/PAPER_003_GW150914_UQFF_vs_LIGO_Strain.md)
 - [x] #4 — [BNS Chirp Phase Evolution: GR vs UQFF](whitepapers/PAPER_004_GW170817_BNS_Chirp_Phase_Evolution.md)
 - [x] #5 — [BH Merger Energy Retention in UQFF Framework](whitepapers/PAPER_005_BH_Merger_Energy_Retention_UQFF.md)
-- [x] #6 — [Multi-Messenger GW170817: Full Inspiral Analysis](whitepapers/PAPER_006_GW170817_Multi_Messenger_Full_Inspiral.md)
+- [x] #6 — [Multi-Messenger GW170817: Kilonova + UQFF Predictions](whitepapers/PAPER_006_GW170817_Multi_Messenger_Full_Inspiral.md)
 - [x] #7 — [Tidal Deformability Constraints from UQFF](whitepapers/PAPER_007_Tidal_Deformability_Constraints_BNS_UQFF.md)
-- [x] #8 — [UQFF Waveform Phase Evolution & Template Mismatch](whitepapers/PAPER_008_UQFF_Waveform_Phase_Evolution_Template_Mismatch.md)
-- [x] #9 — [Damping Mechanism Decomposition in UQFF](whitepapers/PAPER_009_Damping_Mechanism_Decomposition_UQFF.md)
-- [x] #10 — [Post-Merger Oscillations & Remnant Mass via UQFF](whitepapers/PAPER_010_Post_Merger_Oscillations_Remnant_Mass_UQFF.md)
-- [x] #11 — [Stochastic GW Background: UQFF Implications](whitepapers/PAPER_011_Stochastic_GW_Background_UQFF_Implications.md)
-- [x] #12 — [Eccentric Binary Circularization via UQFF](whitepapers/PAPER_012_Eccentric_Binary_Circularization_UQFF.md)
+- [ ] #8 — Full Inspiral Waveform Modeling with UQFF Corrections *(to write — see §1.14 Bonus A1)*
+- [ ] #9 — Aether/String/TRZ Damping in Gravitational Wave Strain *(to write — see §1.14 Bonus A2)*
+- [ ] #10 — Time-Domain Chirp Simulation: 23 Hz Onset Analysis *(to write — see §1.14 Bonus A3)*
+- [ ] #11 — UQFF Amplitude Reduction Factor Derivation *(to write — see §1.14 Bonus A4)*
+- [ ] #12 — GW150914-like Waveform Validation: Peak Strain, Amplitude Ratio, Phase Lag *(to write — see §1.14 Bonus A5)*
 
 **Key Validation Points:**
 - UQFF damping factors: Aether, SCm (superconducting manifold), TRZ (topological resonance zone), String
@@ -155,7 +156,7 @@
 | Property | Details |
 |----------|---------|
 | **Target Papers** | #23–#35 |
-| **Status** | 🟡 In Progress — 6/13 complete |
+| **Status** | 🟡 In Progress — 4/13 complete |
 | **C++ Sources** | `source43.cpp` (Nuclear), `MAIN_1_CoAnQi.cpp` |
 | **arXiv References** | 2506.14881, 2506.14989, 2506.15046, 2506.15164, 2506.15245, 2506.15256, 2506.15306, 2506.15347, 2506.15390, 2506.15515, 2506.15533 |
 
@@ -169,8 +170,8 @@
 **Target Whitepapers:**
 - [x] #23 — [Tau Anomalous Magnetic Moment (g-2) via UQFF](whitepapers/PAPER_023_Tau_Anomalous_Magnetic_Moment_g2_UQFF.md) (arXiv:2506.14881)
 - [x] #24 — [Tau Electric Dipole Moment in UQFF](whitepapers/PAPER_024_Tau_Electric_Dipole_Moment_UQFF.md) (arXiv:2506.14989)
-- [x] #25 — [Dark Matter Direct Detection via UQFF](whitepapers/PAPER_025_Dark_Matter_Direct_Detection_UQFF.md) (arXiv:2506.15046)
-- [x] #26 — [Sterile Neutrino Mass Generation via UQFF](whitepapers/PAPER_026_Sterile_Neutrino_Mass_Generation_UQFF.md) (arXiv:2506.15164)
+- [ ] #25 — Neutrino Polarizability: UQFF Quantum Field Contributions (arXiv:2506.15046) *(to write — see §1.14 Bonus A10)*
+- [ ] #26 — Vector-Like Quarks: UQFF Mass Generation (arXiv:2506.15164) *(to write — see §1.14 Bonus A11)*
 - [x] #27 — [Lepton Flavor Violation Processes in UQFF](whitepapers/paper_27_lepton_flavor_violation_uqff.md) (arXiv:2506.15245)
 - [x] #28 — [BSM Coupling Constants from UQFF Framework](whitepapers/paper_28_bsm_coupling_constants_uqff.md) (arXiv:2506.15256)
 - [ ] #29 — [New Physics at TeV Scale: UQFF Predictions](whitepapers/paper_29_new_physics_tev_scale_uqff.md) *(file on disk)* (arXiv:2506.15306)
@@ -477,6 +478,26 @@
 
 ---
 
+### 1.14 Bonus Track — Papers on Disk (Parallel Research)
+
+**Scope:** 11 papers written during Sessions 8–26 whose file numbers (008–016, 025–026) overlap slots in the §1.1–§1.4 original plan but cover different UQFF topics. They are preserved exactly as written. The original plan titles for those slots remain on the TODO list and will be created from scratch starting at §2 Day-1.
+
+| ID | File | Topic | Validator |
+|----|------|-------|-----------|
+| A1 | [PAPER_008_UQFF_Waveform_Phase_Evolution_Template_Mismatch.md](whitepapers/PAPER_008_UQFF_Waveform_Phase_Evolution_Template_Mismatch.md) | UQFF waveform phase evolution & GR template mismatch | `validate_gw170817_full.py` |
+| A2 | [PAPER_009_Damping_Mechanism_Decomposition_UQFF.md](whitepapers/PAPER_009_Damping_Mechanism_Decomposition_UQFF.md) | Aether/SCm/TRZ/String damping decomposition | `validate_ligo_comparison.py` |
+| A3 | [PAPER_010_Post_Merger_Oscillations_Remnant_Mass_UQFF.md](whitepapers/PAPER_010_Post_Merger_Oscillations_Remnant_Mass_UQFF.md) | Post-merger oscillations & remnant mass | `validate_gw_inspiral.py` |
+| A4 | [PAPER_011_Stochastic_GW_Background_UQFF_Implications.md](whitepapers/PAPER_011_Stochastic_GW_Background_UQFF_Implications.md) | Stochastic GW background UQFF implications | `validate_gw_inspiral.py` |
+| A5 | [PAPER_012_Eccentric_Binary_Circularization_UQFF.md](whitepapers/PAPER_012_Eccentric_Binary_Circularization_UQFF.md) | Eccentric binary circularization via UQFF | `validate_gw_waveform.py` |
+| A6 | [PAPER_013_Magnetar_Spin_Down_UQFF_Framework.md](whitepapers/PAPER_013_Magnetar_Spin_Down_UQFF_Framework.md) | Magnetar spin-down UQFF framework (SGR1745-2900) | `validate_lisa.py` / `validate_thread_1a2726a4_qwave_rotor.py` |
+| A7 | [PAPER_014_Primordial_Black_Holes_UQFF_Formation.md](whitepapers/PAPER_014_Primordial_Black_Holes_UQFF_Formation.md) | Primordial black hole formation via UQFF | `validate_hawking_temperature.py` |
+| A8 | [PAPER_015_Cosmological_Implications_UQFF_Modified_GW_Propagation.md](whitepapers/PAPER_015_Cosmological_Implications_UQFF_Modified_GW_Propagation.md) | Cosmological implications of modified GW propagation | `validate_multiband.py` |
+| A9 | [PAPER_016_Quantum_Entanglement_UQFF_Nonlocal_Correlations.md](whitepapers/PAPER_016_Quantum_Entanglement_UQFF_Nonlocal_Correlations.md) | Quantum entanglement & nonlocal correlations in UQFF | `bsm_physics_validation.py` |
+| A10 | [PAPER_025_Dark_Matter_Direct_Detection_UQFF.md](whitepapers/PAPER_025_Dark_Matter_Direct_Detection_UQFF.md) | Dark matter direct detection via UQFF | `bsm_physics_validation.py` |
+| A11 | [PAPER_026_Sterile_Neutrino_Mass_Generation_UQFF.md](whitepapers/PAPER_026_Sterile_Neutrino_Mass_Generation_UQFF.md) | Sterile neutrino mass generation via UQFF | `validate_sterile_neutrino_uqff.py` (22/22 PASS) |
+
+---
+
 ## 2. EXTRACTION SCHEDULE
 
 ### 12-Day Timeline (March 5–17, 2026)
@@ -572,25 +593,25 @@ Each work session follows this template:
 
 ### Completion Checkboxes by Domain
 
-**Domain 1.1 — Gravitational Waves Core** (12 papers)
+**Domain 1.1 — Gravitational Waves Core** (12 papers — 7 done, 5 to write)
 - [x] #1 — [GW170817 UQFF Damping Analysis](whitepapers/PAPER_001_GW170817_UQFF_Damping_Analysis.md)
 - [x] #2 — [GW190425 Mass Gap Interpretation](whitepapers/PAPER_002_GW190425_Mass_Gap_Interpretation.md)
 - [x] #3 — [GW150914 UQFF vs LIGO Strain Comparison](whitepapers/PAPER_003_GW150914_UQFF_vs_LIGO_Strain.md)
 - [x] #4 — [BNS Chirp Phase Evolution](whitepapers/PAPER_004_GW170817_BNS_Chirp_Phase_Evolution.md)
 - [x] #5 — [BH Merger Energy Retention](whitepapers/PAPER_005_BH_Merger_Energy_Retention_UQFF.md)
-- [x] #6 — [Multi-Messenger GW170817](whitepapers/PAPER_006_GW170817_Multi_Messenger_Full_Inspiral.md)
+- [x] #6 — [Multi-Messenger GW170817: Kilonova + UQFF Predictions](whitepapers/PAPER_006_GW170817_Multi_Messenger_Full_Inspiral.md)
 - [x] #7 — [Tidal Deformability Constraints](whitepapers/PAPER_007_Tidal_Deformability_Constraints_BNS_UQFF.md)
-- [x] #8 — [UQFF Waveform Phase Evolution & Template Mismatch](whitepapers/PAPER_008_UQFF_Waveform_Phase_Evolution_Template_Mismatch.md)
-- [x] #9 — [Damping Mechanism Decomposition](whitepapers/PAPER_009_Damping_Mechanism_Decomposition_UQFF.md)
-- [x] #10 — [Post-Merger Oscillations & Remnant Mass](whitepapers/PAPER_010_Post_Merger_Oscillations_Remnant_Mass_UQFF.md)
-- [x] #11 — [Stochastic GW Background: UQFF Implications](whitepapers/PAPER_011_Stochastic_GW_Background_UQFF_Implications.md)
-- [x] #12 — [Eccentric Binary Circularization via UQFF](whitepapers/PAPER_012_Eccentric_Binary_Circularization_UQFF.md)
+- [ ] #8 — Full Inspiral Waveform Modeling with UQFF Corrections
+- [ ] #9 — Aether/String/TRZ Damping in Gravitational Wave Strain
+- [ ] #10 — Time-Domain Chirp Simulation: 23 Hz Onset Analysis
+- [ ] #11 — UQFF Amplitude Reduction Factor Derivation
+- [ ] #12 — GW150914-like Waveform Validation: Peak Strain, Amplitude Ratio, Phase Lag
 
-**Domain 1.2 — LISA / Magnetars / Cosmological** (6 papers; titles reflect actual files written)
-- [x] #13 — [Magnetar Spin-Down UQFF Framework](whitepapers/PAPER_013_Magnetar_Spin_Down_UQFF_Framework.md)
-- [x] #14 — [Primordial Black Holes: UQFF Formation Analysis](whitepapers/PAPER_014_Primordial_Black_Holes_UQFF_Formation.md)
-- [x] #15 — [Cosmological Implications of UQFF Modified GW Propagation](whitepapers/PAPER_015_Cosmological_Implications_UQFF_Modified_GW_Propagation.md)
-- [x] #16 — [Quantum Entanglement & UQFF Nonlocal Correlations](whitepapers/PAPER_016_Quantum_Entanglement_UQFF_Nonlocal_Correlations.md)
+**Domain 1.2 — Gravitational Waves LISA** (6 papers — 2 done, 4 to write)
+- [ ] #13 — LISA SMBH Merger Rate Predictions from UQFF
+- [ ] #14 — EMRI Signal Modification by Aether Damping
+- [ ] #15 — Multi-Band GW Astronomy: LISA + LIGO Synergy
+- [ ] #16 — White Dwarf Binary Foreground Subtraction via UQFF
 - [x] #17 — [Redshift Corrections (z=1) in UQFF GW Propagation](whitepapers/PAPER_017_Redshift_Corrections_z1_in_UQFF_GW_Propagation.md)
 - [x] #18 — [Aether Noise Spectrum Characterization for LISA](whitepapers/PAPER_018_Aether_Noise_Spectrum_Characterization_for_LISA.md)
 
@@ -600,11 +621,11 @@ Each work session follows this template:
 - [x] #21 — [Gravitational Lensing Corrections](whitepapers/PAPER_021_Gravitational_Lensing_Corrections_UQFF_Vacuum_Density.md)
 - [x] #22 — [String Compactification Signatures](whitepapers/PAPER_022_String_Compactification_Signatures_GW_Background.md)
 
-**Domain 1.4 — BSM Physics** (13 papers)
+**Domain 1.4 — BSM Physics** (13 papers — 4 done, 9 to write)
 - [x] #23 — [Tau g-2](whitepapers/PAPER_023_Tau_Anomalous_Magnetic_Moment_g2_UQFF.md) (arXiv:2506.14881)
 - [x] #24 — [Tau EDM](whitepapers/PAPER_024_Tau_Electric_Dipole_Moment_UQFF.md) (arXiv:2506.14989)
-- [x] #25 — [Dark Matter Direct Detection](whitepapers/PAPER_025_Dark_Matter_Direct_Detection_UQFF.md) (arXiv:2506.15046)
-- [x] #26 — [Sterile Neutrino Mass Generation](whitepapers/PAPER_026_Sterile_Neutrino_Mass_Generation_UQFF.md) (arXiv:2506.15164)
+- [ ] #25 — Neutrino Polarizability (arXiv:2506.15046)
+- [ ] #26 — Vector-Like Quarks (arXiv:2506.15164)
 - [x] #27 — [Lepton Flavor Violation](whitepapers/paper_27_lepton_flavor_violation_uqff.md) (arXiv:2506.15245)
 - [x] #28 — [BSM Coupling Constants](whitepapers/paper_28_bsm_coupling_constants_uqff.md) (arXiv:2506.15256)
 - [ ] #29 — [New Physics at TeV](whitepapers/paper_29_new_physics_tev_scale_uqff.md) *(file on disk)* (arXiv:2506.15306)
@@ -709,7 +730,7 @@ Each work session follows this template:
 |---|-------|--------|-------------|--------|-----------|
 | 1 | Two files exist for Paper #26: `PAPER_026_Sterile_Neutrino_Mass_UQFF.md` and `PAPER_026_Sterile_Neutrino_Mass_Generation_UQFF.md` | Domain 1.4 BSM | Mar 6, 2026 | ⚠️ Open | Consolidate into single canonical file |
 | 2 | `production_pipeline.py` created Feb 13, 2026 (imports APIFetch, QCalc, QCalc_stat, OPData; has `ProductionPipeline` class and `main()` CLI) but has never been executed in production — no production run recorded in `24HR_SPRINT_STATUS.md` | Pipeline | Mar 6, 2026 | ⚠️ Open | Execute `python production_pipeline.py --help` to verify CLI; then run a test pipeline pass with a known query (e.g., "Sagittarius A*") to confirm end-to-end data flow before production deployment |
-| 3 | Whitepaper titles for papers #10–16 and #25–26 diverged from planned index names — actual `.md` files have different titles (e.g., #13 = Magnetar Spin-Down, not LISA SMBH; #26 = Sterile Neutrino, not Vector-Like Quarks). The index planned names reflected a draft schedule; what was written differs. | Domains 1.1–1.4 | Mar 6, 2026 | ✅ Fixed | Index titles corrected this session (Mar 6) to match actual file names; links added; completion status unchanged (28 papers) |
+| 3 | Whitepaper title mismatches for #8–#16 and #25–#26: files on disk for those numbered slots contain different UQFF topics than the original plan. | Domains 1.1–1.4 | Mar 6, 2026 | ✅ Resolved | Original planned titles restored to index; actual files documented as Bonus Track A1–A11 in §1.14 (preserved, not deleted). 17 papers now confirmed matching original plan. 11 to be written from scratch. |
 
 ---
 
