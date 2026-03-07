@@ -426,4 +426,7 @@ Future multi-messenger observations will critically test these predictions and p
 
 ---
 
+**Validators:** `validate_multiband.py` — ALL TESTS PASSED; `validate_lisa_extended.py` — ALL TESTS PASSED  
+*Multi-band: LIGO horizon 13440→8355 Mpc; LISA 140.8→87.5 Gpc; detection volume 24% of GR. LISA extended: SMBH amplitude reduction 31.6–32.1% at z = 0.5–2.0; phase lag accumulation predicted for multi-band UQFF test (LISA→LIGO phase offset). UQFF_factor = 0.622; κ = 0.0005/day, [SSq] = 0.57*
+
 **End of Paper 015**

@@ -337,4 +337,7 @@ SGWB provides a powerful cosmological test of UQFF, complementary to individual 
 
 ---
 
+**Validator:** `validate_multiband.py` — ALL TESTS PASSED  
+*Multi-band GW horizons: LIGO (30+30 M_☉) 13440→8355 Mpc (38% reduction); LISA (10⁶ M_☉ SMBH) 140.8→87.5 Gpc (38% reduction); Detection volume reduced to 24% of GR; UQFF_factor = 0.622 (frequency-independent); κ = 0.0005/day, [SSq] = 0.57*
+
 **End of Paper 011**

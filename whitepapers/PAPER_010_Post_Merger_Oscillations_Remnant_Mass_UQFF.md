@@ -352,4 +352,7 @@ The post-merger phase offers one of the most promising avenues for testing UQFF 
 
 ---
 
+**Validator:** `validate_gw_inspiral.py` — PASSED  
+*GW inspiral simulation (1000 steps, 1.0 ms, 30→250 Hz chirp): TRZ damping = 0.90, string binding = 0.37, combined UQFF factor = 0.333; peak strain standard 2.7905×10⁻²¹ → UQFF 9.3616×10⁻²² (66.7% amplitude reduction); κ = 0.0005/day, [SSq] = 0.57*
+
 **End of Paper 010**

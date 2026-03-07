@@ -215,6 +215,28 @@ UQFF: Enhanced formation at `z > 10^10`, no conflict with CMB.
 - **Pulsar Timing Arrays**: Constrain massive PBH mergers
 - **Gamma-ray Observations**: Hawking radiation from light PBHs
 
+### 9.3 UQFF Hawking Temperature Predictions
+
+The UQFF framework modifies Hawking radiation via the TRZ (Time-Reversal-Zeroth) damping factor:
+
+```
+T_UQFF = T_H × (1 - f_TRZ) = T_H × 0.990
+```
+
+Codebase validation (`validate_hawking_temperature.py`, 7/7 PASSED):
+
+| System | Mass | T_H (GR) | T_UQFF | T_UQFF/T_H |
+|--------|------|----------|--------|-----------|
+| SgrA* | 4.0×10⁶ M_☉ | 1.542×10⁻¹⁴ K | 1.527×10⁻¹⁴ K | 0.990 |
+| M87* | 6.5×10⁹ M_☉ | 9.490×10⁻¹⁸ K | 9.395×10⁻¹⁸ K | 0.990 |
+| Cygnus X-1 | 21.2 M_☉ | 2.910×10⁻⁹ K | 2.881×10⁻⁹ K | 0.990 |
+| PBH (10¹⁰ kg) | 5.0×10⁻²³ M_☉ | 1.227×10¹³ K | 1.215×10¹³ K | 0.990 |
+| PBH (lunar mass) | 3.7×10⁻⁸ M_☉ | 1.667 K | 1.650 K | 0.990 |
+
+PBH evaporation lifetime (10¹⁰ kg): `t_evap = 8.411×10¹³ s = 2.665×10⁶ yr`
+
+The universal 1% temperature suppression is detectable as a ~1% spectral shift in gamma-ray emission from Hawking-evaporating PBHs with Fermi-LAT and CTA. Mass-loss simulations confirm 0.382% mass reduction over 10¹² s for a 10¹⁰ kg PBH, providing a distinct observational signature for UQFF model discrimination.
+
 ---
 
 ## 10. Conclusions
@@ -238,5 +260,8 @@ Future gravitational wave observations will critically test these predictions.
 4. Murphy, D. et al. (2026). "UQFF Framework for Early Universe Physics"
 
 ---
+
+**Validator:** `validate_hawking_temperature.py` — PASSED (7/7)  
+*Hawking temperature ratio T_UQFF/T_H = 0.990 (universal TRZ suppression); PBH (10¹⁰ kg) t_evap = 2.665×10⁶ yr; κ = 0.0005/day, [SSq] = 0.57*
 
 **End of Paper 014**

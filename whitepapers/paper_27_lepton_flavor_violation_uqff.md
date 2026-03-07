@@ -454,4 +454,9 @@ The validation is implemented in `bsm_physics_validation.py` (Section 3), `sourc
 ---
 
 *Paper #27 complete. Next: Paper #28 — BSM Coupling Constants from UQFF Framework (arXiv:2506.15256).*  
-*Session: March 6–7, 2026 | Domain: 1.4 BSM Physics | Validated by: bsm_physics_validation.py
+*Session: March 6–7, 2026 | Domain: 1.4 BSM Physics | Validated by: bsm_physics_validation.py*
+
+---
+
+**Validator:** `bsm_physics_validation.py` — PASSED  
+*LFV: BR(B⁰→K*⁰τ⁻e⁺) < 5.9×10⁻⁶ (LHCb 90% CL exact), BR(B⁰→K*⁰τ⁺e⁻) < 4.9×10⁻⁶; UQFF t_n(τ⁻e⁺) = 3.833, Δt_n(CP) = 0.067; LFV suppression S = exp(−0.57) = 0.5655; κ = 0.0005/day, [SSq] = 0.57*

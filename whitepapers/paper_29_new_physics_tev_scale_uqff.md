@@ -389,3 +389,8 @@ Zero free parameters. κ = 0.0005/day and [SSq] = 0.57 are fixed from magnetar s
 
 *Paper #29 complete. Next: Paper #30 — Dark Sector Mediators in UQFF (arXiv:2506.15347).*  
 *Session: March 6, 2026 | Domain: 1.4 BSM Physics | Validated by: bsm_physics_validation.py §6*
+
+---
+
+**Validators:** `bsm_physics_validation.py` — PASSED; `validate_new_physics.py` — PASSED (6/6)  
+*TeV physics: VLQ singlet κ ∈ [0.22,0.52], (T,B,Y) triplet κ ∈ [0.14,0.46], mass limit 2600 GeV; SM universe fraction f_SM = 5%; KK spectrum E_1 = 1.97×10³ GeV (R=10⁻¹⁹ m); GZK horizon 31.8 Mpc; Einstein radius SgrA* 1.454 arcsec; UQFF 26D projection 16% extended + 84% compact; DPM: μ_s = 4.877, k_η = 0.130, [SCm]_flavor = 1.537×10⁻³; κ = 0.0005/day, [SSq] = 0.57*

@@ -473,3 +473,8 @@ The validation is implemented in `bsm_physics_validation.py` (Section 2), `sourc
 
 *Paper #28 complete. Next: Paper #29 — New Physics at TeV Scale: UQFF Predictions (arXiv:2506.15306).*  
 *Session: March 6–7, 2026 | Domain: 1.4 BSM Physics | Validated by: bsm_physics_validation.py*
+
+---
+
+**Validator:** `bsm_physics_validation.py` — PASSED  
+*CKM: |V_cb| = (39.2 ± 0.9)×10⁻³ (Belle II exact); [SCm]_flavor = |V_cb|² = 1.537×10⁻³; BR(B⁰→D⁻ℓ⁺ν) = 2.06%, BR(B⁺→D̄⁰ℓ⁺ν) = 2.31%; LFU R = 1.000 (SM limit, within 1σ of 1.020±0.030); F_U(B→Dℓν) = 75.81 (positive signal); κ = 0.0005/day, [SSq] = 0.57*

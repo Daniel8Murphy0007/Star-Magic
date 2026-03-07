@@ -415,4 +415,7 @@ These predictions offer concrete experimental tests to validate or refute the UQ
 
 ---
 
+**Validator:** `validate_uqff_calculators.py` — PASSED (8/8)  
+*All 8 UQFF master equation calculators validated: Base (F_U = Ug − Ub + Um), Compressed (Newtonian + 9 corrections), Superconductive (H_SCm modulation), Triadic (26-layer gravitational scaling), Buoyant (F_U_Bi atomic scale), MasterBuoyant (F_U_Bi_i cosmic scale), Resonant (aDPM + 13 frequency modes), Quadratic (dual-solution roots); κ = 0.0005/day, [SSq] = 0.57*
+
 **End of Paper 016**
