@@ -27,6 +27,10 @@ Validation checks (13 physical observables):
 
 Author: Daniel T. Murphy, daniel.murphy00@gmail.com
 Date: March 6, 2026
+Updated: March 6, 2026
+Git HEAD: 2be7468
+CP2 classes: 548 (543 prior + 5 from Thread 1a2726a4)
+Cross-ref: GrokThread_UQFF_0904_Validation.py (Grok Thread 0904a12a, MCMC κ=0.00052)
 Framework: UQFF Star-Magic
 References:
   [1] Bulbul et al. 2014, ApJ 789, 13         [3.55 keV XMM line]
@@ -40,7 +44,6 @@ References:
 
 import sys
 import math
-import cmath
 from typing import List, Tuple
 
 # =============================================================================
@@ -171,9 +174,9 @@ def check(label: str, computed: float, expected: float,
 def check_upper(label: str, value: float, limit: float, unit: str = "") -> bool:
     """PASS if value < limit."""
     passed = value < limit
-    pct_below = (limit - value) / limit * 100.0 if limit else 0.0
+    abs_dev = abs(abs(value) - abs(limit))
     _results.append((label, passed, value, limit,
-                     unit + " [upper lim]", pct_below))
+                     unit + " [upper lim]", abs_dev))
     return passed
 
 
@@ -388,7 +391,6 @@ def run_all() -> bool:
 
     for i, (label, passed, comp, exp, unit, dev) in enumerate(_results, 1):
         status = "PASS ✓" if passed else "FAIL ✗"
-        limit_mark = "≤" if "[upper lim]" in unit else "≈"
         print(f"{i:<3} {label:<52} {comp:>11.4e} {exp:>11.3e}  {dev:>4.1f}%  {status}")
 
     print(sep)

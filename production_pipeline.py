@@ -9,7 +9,7 @@ PHASE 6: QCalc automatically includes Phase 6 galaxy physics (M51, NGC1316, SMBH
 binaries) when appropriate parameters are detected.
 
 Python Ecosystem Status (March 6, 2026):
-- CondensedPhysics2.py: 529 classes (~42,000 lines)
+- CondensedPhysics2.py: 548 classes (~42,800 lines)
   - Thread 10220801: 10 solar UQFF calibration calculators (Ug1-4 full forms,
     11-year B_s(t) cycle, 2025 EHT M_bh=8.55e36 kg Sgr A*)
   - Thread 9c366646: GrokThreadUQFFExtensions imported (14 classes)
@@ -169,7 +169,8 @@ class ProductionPipeline:
                 'cp2_classes': 548,
                 'grok_thread_classes': 14,
                 'aggregator_version': '1.2.0',
-                'git_head': 'e7f31e6',
+                'git_head': '2be7468',
+                'thread_0904a12a': 'MCMC calibration: kappa=0.00052, SSq_linear=0.507, 52-system Q_wave stats, 5 new observational systems (GrokThread_UQFF_0904_Validation.py)',
                 'thread_1a2726a4': 'UQFF Full Document Assimilation: Q_wave_47-81 Stats, H2O-H2 Rotor CS, DPM-THz MUGE, BEC Alpha-Clustering, Superconductive Complex Ui (5 classes; IPC 0x0A00-0x0A04)'
             }
         }
