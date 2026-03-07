@@ -15,13 +15,3 @@ ArXiv ID,Title,Year,Category,UQFF Component,Predicted Value,Observed Value,Align
 2409.xxxxx,Dark Matter Halo Profiles and [SCm] (2024),2024,Dark Matter/Energy,"ρ_vac,[SCm] + ρ_vac,[UA]",7.09e-36,6.2e-36,85.65,[SCm]+[UA] opposition explains dark matter observations
 2407.xxxxx,26-Dimensional Compactification in String Theory (2024),2024,Quantum Gravity,26-layer compressed_g(),26,26,100.00,UQFF 26-layer structure matches string theory
 2408.xxxxx,LENR and Neutron Production (2024),2024,Nuclear Physics,THz hole (1.2×10^12 Hz),1200000000000.0,1180000000000.0,98.31,THz oscillations trigger nuclear reactions
-ATL-PHYS-PROC-2025-051,ATLAS Higgs tH Production Searches (2025),2025,Higgs Measurements,UH (Level 18) tH coupling,0.0012,0.00115,95.83,"Top-Higgs associated production, κ_t coupling verification"
-CMS-HIG-24-009,CMS CP Violation in Higgs Sector (2025),2025,Higgs CP Properties,cos(πt_n) reversal coefficient,0.507,0.507,100.00,"A_CP = 0.507 ± 0.064 maps to UQFF temporal oscillation reversal"
-arXiv:2508.08370,CERN Theoretical Predictions for Higgs Width (2025),2025,Higgs Measurements,Γ_H (total width),3.2,3.1,96.88,"Γ_H < 3.6 GeV at 95% CL, UQFF predicts 3.2 GeV via [SCm] decay channels"
-CERN-PH-EP-2025-082,Charm Quark Yukawa Coupling Limit (2025),2025,Higgs Measurements,κ_c (charm coupling),42.0,44.5,94.38,"κ_c < 47 at 95% CL, UQFF charm mass generation via UH"
-JINST-20-C07049,ATLAS/CMS Detector Performance for Higgs (2025),2025,Detector Physics,b-jet tagging efficiency,0.85,0.83,97.65,"Detector systematics for H→bb̄, validates UQFF Higgs decay predictions"
-arXiv:2506.09257,H2O-H2 CS Collision Cross-Section PES (Phillips/2025 CIA),2025,Molecular LENR,RotorMolecularCS sigma(E),10.50,10.50,99.97,"CS sigma Dj=2 at 300 cm-1; a=15.28 Ang2 b=0.00387 cm; Phillips Fig.4 <10% error; Um level 10 LENR grounding"
-arXiv:2506.19460,LOFAR Crab Nebula B-field Sub-arcsec 2025,2025,PWN Synchrotron,term_mag B-field scale,0.0,0.0,100.0,"B adj scale=0 validates pure log-synchrotron; equipartition B_eq~200 uG at 145 MHz"
-arXiv:Q_wave47_SW,Shapiro-Wilk Q_wave_47-81 Non-Normality Proof,2025,Q_wave Stats,[SSq] non-Gaussian tails,0.644,0.644,100.0,"W=0.644 p=1.21e-9; Jarque-Bera 8.78 p=0.012; kurtosis +0.037; confirms non-Gaussian Q_wave distribution"
-arXiv:Vela_1a27,Vela Pulsar Phase Separation Chandra/Fermi 2025,2025,Pulsar Phase,cos(pi*t_n) phase sep,0.30,0.30,100.0,"phase sep=0.30 fitted; cos(pi*t_n/0.3)~0.4 amp; glitch recovery tau~P/nu_dot~1e11 s"
-arXiv:JWST_ring_2025,JWST Einstein Ring GAL-CLUS-022058s March 2025,2025,Gravitational Lensing,theta_E Einstein radius,1.51,1.51,99.87,"theta_E=1.51 arcsec computed; [SSq]-adj scales to observed 1.5 arcsec; JWST Mar 2025"
