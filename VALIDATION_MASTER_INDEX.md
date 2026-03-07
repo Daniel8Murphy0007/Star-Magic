@@ -174,7 +174,7 @@
 - [x] #26 — [Vector-Like Quarks: UQFF Mass Generation](whitepapers/PAPER_026b_Vector_Like_Quarks_UQFF.md) (arXiv:2506.15515, κ∈[0.22,0.52], 1150–2600 GeV, k_eta=0.1369, bsm_physics_validation.py PASS)
 - [x] #27 — [Lepton Flavor Violation Processes in UQFF](whitepapers/paper_27_lepton_flavor_violation_uqff.md) (arXiv:2506.15245)
 - [x] #28 — [BSM Coupling Constants from UQFF Framework](whitepapers/paper_28_bsm_coupling_constants_uqff.md) (arXiv:2506.15256)
-- [ ] #29 — [New Physics at TeV Scale: UQFF Predictions](whitepapers/paper_29_new_physics_tev_scale_uqff.md) *(file on disk)* (arXiv:2506.15306)
+- [x] #29 — [New Physics at TeV Scale: UQFF Predictions](whitepapers/paper_29_new_physics_tev_scale_uqff.md) (arXiv:2506.15306)
 - [x] #30 — [Dark Sector Mediators in UQFF](whitepapers/PAPER_030_Dark_Sector_Mediators_UQFF.md) (arXiv:2506.15347, t_n=3.833, M_dark≈2.2 TeV, bsm_physics_validation.py PASS)
 - [x] #31 — [Flavor Anomalies Resolution via UQFF](whitepapers/PAPER_031_Flavor_Anomalies_Resolution_UQFF.md) (arXiv:2506.15390, R(D)1.9→0.9σ, R(D*)3.3→1.2σ, bsm_physics_validation.py PASS)
 - [x] #32 — [BSM Scalar Sectors in UQFF](whitepapers/PAPER_032_BSM_Scalar_Sectors_UQFF.md) (arXiv:2506.15515, M_S⁰≈845 GeV, k_η=0.1369, bsm_physics_validation.py PASS)
@@ -191,7 +191,7 @@
 | Property | Details |
 |----------|---------|
 | **Target Papers** | #36–#42 |
-| **Status** | 🟡 Ready |
+| **Status** | ✅ Complete — 7/7 |
 | **C++ Sources** | `source4.cpp` → `SOURCE4` namespace in `MAIN_1_CoAnQi.cpp` |
 | **Thread Reference** | Thread 98b2e77d |
 
@@ -210,13 +210,13 @@
 - β_i ≈ 0.603
 
 **Target Whitepapers:**
-- [ ] #36 — F_UBii Buoyancy Force: Proof Variant 1 (Archimedes-UQFF)
-- [ ] #37 — F_UBii Buoyancy Force: Proof Variants 2–6 (Thermodynamic Series)
-- [ ] #38 — F_UBii Buoyancy Force: Proof Variants 7–11 (Quantum Corrections)
-- [ ] #39 — F_UBii Buoyancy Force: Proof Variants 12–17 (ICM Applications)
-- [ ] #40 — X-Ray Cluster Buoyancy: Perseus, Coma, Virgo
-- [ ] #41 — Intracluster Medium Physics via UQFF Buoyancy
-- [ ] #42 — Monte Carlo Stochastic Validation of 26-Layer Compressed Gravity
+- [x] #36 — [F_UBii Buoyancy Force: Proof Variant 1 (Archimedes-UQFF)](whitepapers/PAPER_036_FUBii_Buoyancy_Variant1_Archimedes_UQFF.md) — Perseus F = −2.024×10⁶⁰ N ✓
+- [x] #37 — [F_UBii Buoyancy Force: Proof Variants 2–6 (Thermodynamic Series)](whitepapers/PAPER_037_FUBii_Buoyancy_Variants2to6_Thermodynamic.md) — AT2017gfo F_kn = 1.305×10⁵⁴ N ✓
+- [x] #38 — [F_UBii Buoyancy Force: Proof Variants 7–11 (Quantum Corrections)](whitepapers/PAPER_038_FUBii_Buoyancy_Variants7to11_Quantum.md) — CR knee / WHIM / PS / SFE
+- [x] #39 — [F_UBii Buoyancy Force: Proof Variants 12–17 (ICM Applications)](whitepapers/PAPER_039_FUBii_Buoyancy_Variants12to17_ICM.md) — hawk = −2.452 N, roche = 1.964×10⁵⁵ N ✓
+- [x] #40 — [X-Ray Cluster Buoyancy: Perseus, Coma, Virgo](whitepapers/PAPER_040_XRay_Cluster_Buoyancy_Perseus_Coma_Virgo.md) — virx σ_X³·r_h scaling
+- [x] #41 — [Intracluster Medium Physics via UQFF Buoyancy](whitepapers/PAPER_041_Intracluster_Medium_Physics_UQFF.md) — cooling flows / AGN / entropy / SFR / WHIM
+- [x] #42 — [Monte Carlo Stochastic Validation of 26-Layer Compressed Gravity](whitepapers/PAPER_042_Monte_Carlo_26Layer_Compressed_Gravity.md) — 22/24 PASS, 10¹² layer scale ✓
 
 ---
 
@@ -629,7 +629,7 @@ Each work session follows this template:
 - [ ] #26 — Vector-Like Quarks (arXiv:2506.15164)
 - [x] #27 — [Lepton Flavor Violation](whitepapers/paper_27_lepton_flavor_violation_uqff.md) (arXiv:2506.15245)
 - [x] #28 — [BSM Coupling Constants](whitepapers/paper_28_bsm_coupling_constants_uqff.md) (arXiv:2506.15256)
-- [ ] #29 — [New Physics at TeV](whitepapers/paper_29_new_physics_tev_scale_uqff.md) *(file on disk)* (arXiv:2506.15306)
+- [x] #29 — [New Physics at TeV](whitepapers/paper_29_new_physics_tev_scale_uqff.md) (arXiv:2506.15306)
 - [x] #30 — [Dark Sector Mediators](whitepapers/PAPER_030_Dark_Sector_Mediators_UQFF.md) (arXiv:2506.15347)
 - [x] #31 — [Flavor Anomalies](whitepapers/PAPER_031_Flavor_Anomalies_Resolution_UQFF.md) (arXiv:2506.15390)
 - [x] #32 — [BSM Scalar Sectors](whitepapers/PAPER_032_BSM_Scalar_Sectors_UQFF.md) (arXiv:2506.15515)
@@ -638,13 +638,13 @@ Each work session follows this template:
 - [x] #35 — [Higgs CP Violation](whitepapers/PAPER_035_Higgs_CP_Violation_UQFF.md)
 
 **Domain 1.5 — Buoyancy Proofs** (7 papers)
-- [ ] #36 — F_UBii Variant 1
-- [ ] #37 — F_UBii Variants 2–6
-- [ ] #38 — F_UBii Variants 7–11
-- [ ] #39 — F_UBii Variants 12–17
-- [ ] #40 — X-Ray Cluster Buoyancy
-- [ ] #41 — Intracluster Medium Physics
-- [ ] #42 — Monte Carlo Stochastic Validation
+- [x] #36 — [F_UBii Variant 1](whitepapers/PAPER_036_FUBii_Buoyancy_Variant1_Archimedes_UQFF.md)
+- [x] #37 — [F_UBii Variants 2–6](whitepapers/PAPER_037_FUBii_Buoyancy_Variants2to6_Thermodynamic.md)
+- [x] #38 — [F_UBii Variants 7–11](whitepapers/PAPER_038_FUBii_Buoyancy_Variants7to11_Quantum.md)
+- [x] #39 — [F_UBii Variants 12–17](whitepapers/PAPER_039_FUBii_Buoyancy_Variants12to17_ICM.md)
+- [x] #40 — [X-Ray Cluster Buoyancy](whitepapers/PAPER_040_XRay_Cluster_Buoyancy_Perseus_Coma_Virgo.md)
+- [x] #41 — [Intracluster Medium Physics](whitepapers/PAPER_041_Intracluster_Medium_Physics_UQFF.md)
+- [x] #42 — [Monte Carlo Stochastic Validation](whitepapers/PAPER_042_Monte_Carlo_26Layer_Compressed_Gravity.md)
 
 **Domain 1.6 — 26D Energy** (8 papers)
 - [ ] #43 — 26D Energy Structure Foundation
