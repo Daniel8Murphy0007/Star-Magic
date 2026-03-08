@@ -818,4 +818,123 @@ Added after `SupernovaSurvey` and before `// HELPER FUNCTIONS`:
 4. **Build and test**: Compile C++ with new headers, verify no regressions
 
 ---
+
+## Complete Header File Inventory (March 8, 2026 — v4.4.0 Architecture Update)
+
+> Reference: ARCHITECTURE_FLOW_DIAGRAM.md v4.4.0 — 63 total .h files across all subsystems
+
+### Primary IPC/Pipeline Headers
+
+| File | Location | Size | Purpose |
+|------|----------|------|---------|
+| `uqff_ipc.h` | `ipc/uqff_ipc.h` | 515 lines, v3.1 | IPC message protocol (45 msg types, Named Pipes/SharedMem/gRPC) |
+| `python_bridge.h` | root | — | Python embedding bridge (pybind11, embeds CP.py/QCalc.py/Phase5-7.py) |
+| `physics_service.h` | root | 470 lines, v3.1 | Self-expanding physics service (onRegisterTerm, onUpdateParameter, startSimulation) |
+| `ipc_pipeline_handler.h` | root | — | Root-level IPC pipeline handler (C++) |
+
+### Core Constants & Configuration Headers
+
+| File | Location | Size | Purpose |
+|------|----------|------|---------|
+| `shared_constants.h` | root | 351 lines | Unified UQFF constants (κ=0.0005, [SSq]=0.57, synced with .py/.js) |
+| `observational_systems_config.h` | root | — | 35+ astrophysical systems parameters (ESO137, NGC1365, Vela, etc.) |
+| `uqff_cross_platform.h` | root | — | Cross-platform harmonization layer |
+
+### Key Usage (include references)
+
+```cpp
+// source2.cpp:188
+#include "ipc/uqff_ipc.h"          // IPC layer
+// source2.cpp:148
+#include "shared_constants.h"      // unified UQFF constants
+// source2(HEAD PROGRAM).cpp:123
+#include "ipc/uqff_ipc.h"          // pipeline communication
+// vr_runtime.cpp:17 / vr_runtime.h:35
+#include "../ipc/uqff_ipc.h"       // VR subsystem IPC
+```
+
+### Calculator Advanced Subsystem (calculator_advanced/include/)
+
+| File | Purpose |
+|------|---------|
+| `uqff_equations.h` | UQFF equation definitions for advanced calculator |
+| `equation_solver.h` | Equation solving engine |
+| `dimensional_analysis.h` | Unit/dimension checking |
+| `calculator_widget.h` | Qt widget interface for advanced calculator |
+| `symengine_wrapper.h` | SymEngine symbolic math wrapper |
+| `plotter_widget.h` | Physics plotter Qt widget |
+| `antlr4_parser.h` | ANTLR4 expression parser |
+| `polynomial_solver.h` | Polynomial root finding |
+
+### Core Physics Headers
+
+| File | Location | Purpose |
+|------|----------|---------|
+| `UQFFCore.hpp` | `Core/` | Core UQFF framework (includes PhysicsTerms.hpp) |
+| `UQFFModule4.hpp` | `Core/` | Module 4 unified field extensions |
+| `PhysicsTerms.hpp` | `Core/` | PhysicsTerm base class + InflationForceEpochTerm |
+| `SystemCatalogue.hpp` | `Core/` | Astrophysical system catalogue |
+| `FluidSolver.hpp` | `Core/` | Fluid solver (Navier-Stokes integration) |
+
+### Rendering & Data Reader Headers
+
+| File | Purpose |
+|------|---------|
+| `equation_renderer.h` | Equation rendering widget |
+| `csv_body_reader.h` | bodies_*.csv reader |
+| `CelestialBody.h` | Celestial body data structures |
+| `Camera.h` | 3D camera control |
+| `FluidSolver.h` | Fluid solver interface |
+| `ModelLoader.h` | 3D model loader |
+| `MUGE.h` | Modified Unified Gravity Equations (MUGE) interface |
+
+### VR Headers (vr/ directory)
+
+| File | Purpose |
+|------|---------|
+| `vr_runtime.h` | Merged VR runtime content (OpenXR + Vulkan base) |
+| `openxr_session.h` | OpenXR session management |
+| `vulkan_compositor.h` | Vulkan GPU compositor |
+| `task_bot.h` | Voice/gesture bot interface |
+| `poseidon_task_bot.h` | Poseidon general maintenance bot (v4.2.1) |
+| `CoAnQi_bot.h` | CoAnQi specialist bot for MAIN_1_CoAnQi.cpp (v4.2.2) |
+| `astro_graphics.h` | Astro Graphics Program (GPU tasking) |
+
+### Pipeline Files
+
+| Type | File | Notes |
+|------|------|-------|
+| C++ Header | `ipc/uqff_ipc.h` | 515 lines, v3.1, 45 message types |
+| C++ Impl | `uqff_ipc.cpp` | IPC implementation |
+| Python | `uqff_ipc.py` | Python IPC implementation (mirrors C++) |
+| C++ Handler | `ipc_pipeline_handler.h` | Root-level pipeline handler |
+| Python Orch | `production_pipeline.py` | Production pipeline orchestration |
+| Python Test | `test_ipc_pipeline.py` | Pipeline testing suite |
+
+### IPC Message Types (45 total, v3.1)
+
+```cpp
+// Core compute
+CALCULATE_FIELD, CALCULATE_GRAVITY
+// VR
+VR_FRAME_UPDATE
+// Physics service
+REGISTER_TERM, UPDATE_PARAMETER
+// Simulation
+SIM_START, SIM_FRAME, SIM_COMPLETE
+// Epoch Framework (v4.3.0+)
+EPOCH_GET_CURRENT, EPOCH_SET, EPOCH_CALCULATE_F_U, EPOCH_GET_UG_ACTIVE, EPOCH_VALIDATION_DATA
+// Thread-specific (v4.3.8+, 0x0A00-0x0A04)
+```
+
+### Channels Supported
+
+| Channel | Platform | Use Case |
+|---------|----------|----------|
+| `NamedPipeChannel` | Windows (`CreateNamedPipe`) | Primary IPC (VR ↔ Physics) |
+| `SharedMemoryChannel` | Windows/Linux | Low-latency field data (real-time frames) |
+| `GrpcChannel` | Cross-platform | Structured commands (optional deployment) |
+| Unix Domain Sockets | Linux/macOS | NamedPipe equivalent on non-Windows |
+
+---
 **Watermark**: ©2025-2026 Daniel T. Murphy, daniel.murphy00@gmail.com – All Rights Reserved

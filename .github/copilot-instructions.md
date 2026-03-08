@@ -2,14 +2,15 @@
 
 ## CANONICAL ARCHITECTURE RULES (DO NOT DEVIATE)
 
-> **CRITICAL:** Read ARCHITECTURE_FLOW_DIAGRAM.md v4.0 CANONICAL for complete architecture.
+> **CRITICAL:** Read ARCHITECTURE_FLOW_DIAGRAM.md v4.4.0 CANONICAL for complete architecture.
 
 1. **USER INPUT goes FIRST** → enters through `source2.cpp` (Principal GUI)
-2. **source2.cpp** = Principal GUI application (user-facing, 21 tabs, Qt6) - **USER STARTS HERE**
-3. **vr_runtime.cpp** = VR/VM developer backend (GPU-heavy simulations in virtual space)
-4. **physics_backend.cpp** = CPU-bound physics server (headless)
+2. **source2.cpp** = Principal GUI application (15,753 lines, user-facing, 21 tabs, Qt6) - **USER STARTS HERE**
+3. **source2(HEAD PROGRAM).cpp** = VR/VM developer backend (2,625 lines, GPU-heavy simulations in virtual space) - **NOT A GUI**
+4. **physics_backend.cpp** = CPU-bound physics server (headless, ~12,000 lines)
 5. **index.js** = LIBRARY INDEX (NOT a calculator) - exports 106 systems for require()
 6. **uqff_server.js** = REST API server that imports index.js library (Port 3141)
+7. **CondensedPhysics2.py** = UQFF Extensions calculator (37,420+ lines, 548+ classes) - **5th parallel calculator**
 
 ### Port Assignments (CANONICAL)
 | Port | Service | Description |
@@ -22,15 +23,15 @@
 
 ### Data Flow (CANONICAL)
 ```
-USER QUERY → source2.cpp (PRINCIPAL GUI) → APIFetch.py → bodies_*.csv → IPData.py
+USER QUERY → source2.cpp (PRINCIPAL GUI, 15,753L) → APIFetch.py (55 APIs) → bodies_*.csv → IPData.py
                     ↓
-         SIMULTANEOUS JOINT OPERATION
-   ┌───────────┬────────────┬────────────┐
-   ▼           ▼            ▼            ▼
-MAIN_1     QCalc.py   CondensedPhys  uqff_server.js
-CoAnQi.cpp  (9K)      ics.py (81K)    (index.js LIB)
-   │           │            │            │
-   └───────────┴────────────┴────────────┘
+         SIMULTANEOUS JOINT OPERATION (5 Calculators in Parallel)
+   ┌───────────┬────────────┬─────────────────┬──────────────────┬────────────┐
+   ▼           ▼            ▼                 ▼                  ▼            
+MAIN_1     QCalc.py   CondensedPhys   CondensedPhysics2.py  uqff_server.js
+CoAnQi.cpp  (9K)      ics.py (81K)    (37K, 548+ classes)   (index.js LIB)
+   │           │            │                 │                  │
+   └───────────┴────────────┴─────────────────┴──────────────────┘
                     ↓
         OPData.py → uqff_results.json
                     ↓
@@ -42,9 +43,15 @@ CoAnQi.cpp  (9K)      ics.py (81K)    (index.js LIB)
 ---
 
 ## Big Picture Architecture
-- **Dual-Platform System:**
-  - **C++ Core:** `MAIN_1_CoAnQi.cpp` (108,000+ lines, 446 integrated modules SOURCE1-116 + **SOURCE4**, **6,688+ physics terms registered**, **121+ astronomical systems**) - Production calculator with 16-option interactive menu (includes SOURCE4 validation + Wolfram WSTP + Cosmic Egg + Grok AI + Exit)
-  - **JavaScript Engine:** `index.js` (23,790 lines) - UQFF computational orchestration layer with 106 astrophysical systems
+- **6-Tier Cross-Platform System:**
+  - **Tier 1 GUI:** `source2.cpp` (15,753 lines, Qt6, 21 tabs) — where ALL user workflows begin
+  - **Tier 2 Compute (5 parallel calculators):** `MAIN_1_CoAnQi.cpp` (107,019 lines) + `QCalc.py` (9,100+L) + `CondensedPhysics.py` (81,626L, 176 classes) + `CondensedPhysics2.py` (37,420+L, 548+ classes) + `uqff_server.js` (imports index.js)
+  - **Tier 3 VR/VM Backend:** `source2(HEAD PROGRAM).cpp` (2,625L GPU) + `physics_backend.cpp` (~12,000L CPU)
+  - **Tier 4 IPC:** `uqff_ipc.h` (515L v3.1, 45 message types), `python_bridge.h`, `physics_service.h` (470L v3.1)
+  - **Tier 5 Storage:** `bodies_*.csv`, `uqff_results.json`, `CondensedPhysics_OutputData.py` (RECALL)
+  - **Tier 6 Bots:** Poseidon (v4.2.1, all codebase) + CoAnQi_bot (v4.2.2, MAIN_1 exclusive)
+- **C++ Core:** `MAIN_1_CoAnQi.cpp` (107,019 lines, 446 integrated modules SOURCE1-116 + **SOURCE4**, **6,688+ physics terms registered**) - Production calculator with 16-option interactive menu
+  - **JavaScript Engine:** `index.js` (23,790 lines) - UQFF LIBRARY (NOT a calculator) — 106 astrophysical systems
 - **Module Integration:** Physics from source1.cpp through source173.cpp (173 files total) consolidated:
   - 116 files integrated into SOURCE1-116 blocks in MAIN_1_CoAnQi.cpp (446 unique modules)
   - **SOURCE4 integrated** (commit 3e66d94 Dec 5, 2025): 37 physics functions (8 UQFF + 10 MUGE Compressed + 14 MUGE Resonance + 6 Helpers)
@@ -52,8 +59,10 @@ CoAnQi.cpp  (9K)      ics.py (81K)    (index.js LIB)
   - **Batch 21** (Jan 28, 2026): 15 PhysicsTerm classes from Information Paradox UQFF Module (Hawking radiation, Page curves, 26D channels)
   - **Batch 22** (Jan 28, 2026): 5 PhysicsTerm classes from Astrophysical Transients Module (ASKAP J1832-0911, Helix Nebula, R Aquarii, PN Template, Super Flares)
   - **Batch 23** (Jan 28, 2026): **13 PhysicsTerm classes** from Complete UQFF Validation (κ calibration, [SSq], Gaia DR4, LIGO GWTC-4.0, Neutrino SED, AT2019qiz, Widom-Larsen LENR, BEC Integration, F_U_Bi_i Integral, 4 UQFF Operational Modes: Compressed/Resonant/Buoyant/Superconductive)
+  - **Grok Thread Integrations** (Feb–Mar 2026): 8 thread batches — 28+ new CP2 calculator classes (v4.3.1 → v4.3.8, CP2 512→548 classes)
   - 6,688+ physics terms registered (Wolfram KB + extracted modules + validation batches)
   - 57 files skipped (GUI infrastructure, duplicate wrappers)
+- **Whitepaper Suite:** 105+ whitepapers complete (§1.1–§1.13, commit 4aec717, March 8, 2026) — includes §1.13 Millennium Prize papers (Navier-Stokes, Yang-Mills, Riemann, P≠NP)
 - **UQFF Solvability:** 99.9% (Grok 4 analysis Sept 14-21, 2025), calibrated constants: κ=0.0005/day, [SSq]=0.57, H_SCm≈0.99, U_UA≈0.0001, k_η=10⁻¹¹³, β_i≈0.603
 - **Self-Expanding Framework 2.0:** Dynamic term registration, runtime parameters, state export/import, auto-optimization, metadata tracking
 - **Build System:** CMake + Visual Studio 2022 (MSVC 14.44.35219), C++20 standard, Windows threading compatibility, UPX 5.0.2 compression (1.43 MB, 15.51% ratio)
@@ -177,9 +186,15 @@ SOURCE4::student_guide_SOURCE4    // Student Guide Universe (cosmological)
 
 ## Key Files & Directories
 ### Core Executables
-- `MAIN_1_CoAnQi.cpp` - Primary C++ platform (18,466 lines, 446 modules, SOURCE1-116)
+- `MAIN_1_CoAnQi.cpp` - Primary C++ platform (107,019 lines, 446 modules, SOURCE1-116 + SOURCE4)
+- `source2.cpp` - Principal GUI application (15,753 lines, Qt6, 21 tabs) — **USER STARTS HERE**
+- `source2(HEAD PROGRAM).cpp` - VR/VM backend (2,625 lines, GPU heavy) — **NOT A GUI**
+- `physics_backend.cpp` - CPU-bound headless physics server (~12,000 lines)
+- `QCalc.py` - Python unified field solver (9,100+ lines, 8 master equations)
+- `CondensedPhysics.py` - Primary integration target (81,626 lines, 176 calculator classes) — **ADD NEW CALCULATORS HERE**
+- `CondensedPhysics2.py` - UQFF extensions (37,420+ lines, 548+ calculator classes)
+- `index.js` - JavaScript LIBRARY (23,790 lines, 106 systems) — `uqff_server.js` is the REST server
 - `MAIN_1.cpp` - Original mathematical framework (referenced by index.js)
-- `index.js` - JavaScript computational engine (23,790 lines, 106 systems)
 
 ### Physics Modules
 - `source1.cpp`–`source173.cpp` - Original modules (173 files)

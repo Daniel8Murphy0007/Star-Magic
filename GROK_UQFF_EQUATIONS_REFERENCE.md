@@ -811,3 +811,37 @@ F_U_Bi_i = F_Bi × (1 + f_TRZ) / (1 − Ω_g)
 | SSq_linear | 0.507 (e^⁻ˢˢᵧₙ form, ≠ SSq=0.57) |
 | x_2 cosmic | −3.40×10¹⁷² m |
 | Z-scaling mean | −3.56×10¹¹⁶ m |
+
+---
+
+## Architecture & Codebase Reference (March 8, 2026 — v4.4.0)
+
+> This reference document covers equations extracted from Grok conversation b4469997f5324be48bc0697cdeaf21f9.
+> For the complete codebase architecture, see ARCHITECTURE_FLOW_DIAGRAM.md v4.4.0.
+
+### Codebase Implementation Status
+
+| Equation Category | Primary Calculator | File | Classes |
+|------------------|--------------------|------|---------|
+| UQFF Core (F_U, Um, F_U_Bi_i) | CondensedPhysics.py | `CondensedPhysics.py` (81,626L) | 176 calc + 111 model |
+| MUGE Compressed/Resonance | CondensedPhysics.py + CP2 | `CondensedPhysics2.py` (37,420+L) | 548+ classes |
+| Protostellar Jets, Galaxy Mergers | CondensedPhysics.py | Phase5_Consolidated.py (838L) | Source16-25 |
+| Black Hole Growth, AGN Feedback | CondensedPhysics.py | Phase6_Consolidated.py (2,100+L) | Source26-36 |
+| Cosmology, GW, Neutron Stars | CondensedPhysics.py | Phase7_Consolidated.py (3,645L) | 14 cosmological systems |
+| C++ native UQFF | MAIN_1_CoAnQi.cpp | `MAIN_1_CoAnQi.cpp` (107,019L) | 6,688+ physics terms |
+| JavaScript API | index.js library | `index.js` (23,790L) | 106 astrophysical systems |
+
+### Calibrated UQFF Constants (Canonical Values)
+
+| Constant | Value | Source |
+|----------|-------|--------|
+| κ | 0.0005 day⁻¹ | SGR1745 burst rate calibration (PAPER_094) |
+| [SSq] | 0.57 | Ug1 spin-down calibration (PAPER_094) |
+| H_SCm | ≈ 0.99 | Superconductive vacuum coupling |
+| U_UA | ≈ 0.0001 | Aether vacuum baseline |
+| k_η | 10⁻¹¹³ | Widom-Larsen LENR calibration |
+| β_i | ≈ 0.603 | Buoyancy factor (uniform across Ug1-4) |
+| f_TRZ | 0.01 | Time-reversal zone factor |
+
+*Reference: shared_constants.h (351L), shared_constants.py (250L), index.js CONSTANTS — synchronized by Poseidon Bot*
+*© 2025-2026 Daniel T. Murphy — Star-Magic UQFF Framework*
