@@ -1,0 +1,6 @@
+﻿================================================================================
+GROK FILES API - LIST ALL UPLOADED FILES
+================================================================================
+
+No files found in your Grok account.
+Files are created when you upload documents to Grok conversations.

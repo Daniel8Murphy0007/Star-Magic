@@ -1,0 +1,382 @@
+[
+  {
+    "method": "Network.requestWillBeSent",
+    "url": "https://x.com/i/grok/share/ab2d0965e3a74a0da32749a7a2591dc7",
+    "status": ""
+  },
+  {
+    "method": "Network.responseReceived",
+    "url": "https://x.com/i/grok/share/ab2d0965e3a74a0da32749a7a2591dc7",
+    "status": 200
+  },
+  {
+    "method": "Network.requestWillBeSent",
+    "url": "https://abs.twimg.com/responsive-web/client-web/main.4438e12a.js",
+    "status": ""
+  },
+  {
+    "method": "Network.responseReceived",
+    "url": "https://abs.twimg.com/responsive-web/client-web/main.4438e12a.js",
+    "status": 200
+  },
+  {
+    "method": "Network.requestWillBeSent",
+    "url": "data:image/png;base64,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",
+    "status": ""
+  },
+  {
+    "method": "Network.responseReceived",
+    "url": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAYAAACtWK6eAAAQAElEQVR4AexdCZhU1ZX+XzU7sjouGEUlKiLREGFQgzMCNho33HCi4/c5+ok66miMmrgFuxo1JswkfjGCOuoY1CgEhi9GjSOLtIwCOjAYSFRQk1GJ4NqgyN795v+r62HRVlVXFe91veU87+m7n3vOf+//7r3VXZiCPYaAIVAQASNIQWiswhAAjCC2CgyBIggYQYqAY1WGgBHE1oAhUASBAAlSZFSrMgQigoARJCITZWZWBwEjSHVwt1EjgoARJCITZWZWBwEjSHVwt1EjgkDJBHEBNzSyC7aUPC8u4vFf6Q7HYXrpQ8kOl9SwZIKUpM0aGQIxQ8AIErMJNXf8RcAI4i+epi1mCBhBYjah5o6/CBhBWuFpWUMgFwEjSC4aljYEWiFgBGkFiGUNgVwEjCC5aFjaEGiFgBGkFSCWNQRyETCC5KIRbNq0RxABI0gEJ81Mbj8EjCDth7WNFEEEjCARnDQzuf0QMIK0H9Y2UgQRMIJEcNK+arKVBIWAESQoZE1vLBAwgsRiGs2JoBAwggSFrOmNBQJGkFhMozkRFAJGkKCQjYvehPthBEn4AjD3iyNgBCmOj9UmHAEjSMIXgLlfHAEjSHF8rDbhCBhBEr4Aqul+FMY2gkRhlszGqiFgBKka9DZwFBAwgkRhlszGqiFgBKka9DZwFBAwgkRhlszGchHwrb0RxDcoTVEcETCCxHFWzSffEDCC+AalKYojAkaQOM6q+eQbAkYQ36A0RXFE4KsEiaOX5pMhUCECRpAKgbNuyUDACJKMeTYvK0TACFIhcNYtGQgYQZIxz+ZlhQi0K0EqtNG6GQJVQ8AIUjXobeAoIGAEicIsmY1VQ8AIUjXobeAoIGAEicIsmY1VQyAuBKkagDZwvBEwgsR7fs27XUTACLKLAFr3eCNgBIn3/Jp3u4hAyQRxACcOglIfB/H4r1R/EYvpdUp2t8SGJROkRH0xbGYuJRkBI0iSZ998bxMBI0ibEFmDJCNgBEny7JvvbSJgBGkTImuQZASMINWcfRs79AgYQUI/RWZgNREwglQTfRs79AgYQUI/RWZgNREIPUFcF24cpNRJjom7bqn+hr1d6AkSdgDDap/Z5Q8CRhB/cDQtMUXACBLTiTW3/EHACOIPjqYlpggYQWI6seaWPwgYQfzBMUlaEuWrESRR023OlouAEaRcxKx9ohAwgiRqus3ZchEwgpSLmLVPFAJGkERNd9idDZ99RpDwzYlZFCIEjCAhmgwzJXwIGEHCNydmUYgQMIKEaDLMlPAhYAQJ35yYRUEgUKFOI0iFwFm3ZCBgBEnGPJuXFSJgBKkQOOuWDASMIMmYZ/OyQgSMIBUCZ92SgUApBEkGEualIZAHASNIHlCsyBDwEDCCeEhYbAjkQcAIkgcUKzIEPASMIB4SFhsCeRCoMkHyWGRFhkCIEDCChGgyzJTwIWAECd+cmEUhQsAIEqLJMFPCh4ARJHxzYhaFCIH4EiREIJsp0UXACBLduTPL2wEBI0g7gGxDRBcBI0h0584sbwcEjCDtALINEV0EjCAVzJ11SQ4CRpDkzLV5WgECRpAKQLMuyUHACJKcuTZPK0DACFIBaNYlOQgYQcI112ZNyBAwgoRsQsyccCFgBAnXfJg1IUPACBKyCTFzwoWAESRc82HWhAwBI0jIJiQ4c0xzJQgYQSpBzfokBoHYEqTJBf74IfDUKuDflwKTXgImvtAiSqtMdWqjtomZcXO0LARCTxDHgeOUIpehk1OP052J+AXjJR0mwj18Cl4f+zieuexpPHDDXEyqa0C9RGmVqU5t1FZ9sn1Pd6SrlDHLaFPqrJSh0glz21L9DXu70BOkTQDrcDLq8Bj2wWdsexVcvM/4e4y7oB6HUU5FGpdSbqCks6L0pZk6tXHRBYD6qO9VkC7plG5WWEguAtElSD0uRxor4GACUliETujP/BjKJMpC1GMrSn3UNo2FSEN9x0C6pFO6NYbGgj0FEYhxRfQIUo9LkMbbcHEC9NZP4xjUYTJuxkfM+xOkSzqlW2NoLI2psf0ZwbREBIHoEGQiRpAIC+DiH4jtxUjjTMrzCPpJ43loLODizNh1WADZAnuSgEA0CJLmkmzG7+DgV0hDx6gGtPeTRgM0tmyQLbIJ9sQdgXATpA66V8zmJByGjvgG0vgPVPuRDbIFOAxpzIZshD1xRSC8BEljNHeMRXChN/c43II1CMsjW9IYl7HNwSLIVtgTBALV1hlOgqRxLhffbBLkGtTjx9UGqeD4ss3BNRlbZTPsiRsC4SNIPS4iyPfA4Q5ShxlMhzvIRtkK3IMW28Ntr1lXFgLhIkg9/onW3wkX30EaCxCVR7bKZuBOkkQ+RMVys7MNBMJDkHqcSWLcTRmLeixpw+7wVctmF2Np/920/8zwGWgWVYJAOAhSh6O5sKbBwTik8Qqi+sh2+eBiGuRTVP1Iht0leVl9gtyEPZDCIyTHpVxUc0qyOsyN6jAn44t8km9httVsaxOB6hOkMx6Ei+mow9Q2rY1KA/kin+RbVGw2O/MiUF2C1OFWWuUgjQmI29Pik0Piy8e4eZcYf6pHkDRGwsHVcHEF4vrIN/koXyPm48iRI/c+/vjjX62trf3tMccc0zVi5vtmbvUIAvyMXugXgasZxzPUQ75dQ+fkK6O2w5gxY8ZyUTZR3BIkPsfStqGpSovKCNK2qZo4/UHhbnmaDsUobEUjNiCNx1DacxqbvUPpR5FO6b6BaT+CdEq3S2We+KUbaPFxFepRhxIe13U7sNmvt2/f3mPu3LnOpk2bejL/IuWd5ubmfVXWp0+fzmx3JaWZ5bsctENwt7g0V1FDQ8PaefPmDeF4ZyxatGhTbl2S0kERpDCGx6I//h4dMRuPFm7UbjUigr5F+C8c0cnKPox17BMJRUZmdzFsx83UMAFpHII2HpJgbU1NzUQu0A2Fms6YMWPrxo0bH2a9iMNo10K3bt2Opoa/pVhohUD7E+QoXIIGbMPr+ADVfYZyeF2gxzJ+iuKFNUycRdGCuZLxrofb8Re4SANo88OI559/fuFzzz33FtsWDXqr8w3/UNFGJVSecMIJBzqOcz+lewnNE9ekfQlSh2PRDd/CCyTIzlC3PuaU+/Zu3V9HJpXtPMrOuauZ/R/KfErrsJIFp1B+SvGCCPUFM94xTLGOfizKBO1Gsvt25lQnUXv101HrD1iP83EaLmZ9bpCOXHuVV9+MLF68eC2PW7k7mdIaJ1NPRe7gwYMn8b7yFkX3lo8Z33jOOed0Yl0m8F5zPMveoKh+DeM5LBtGGcIdS7oOZsPzWK76/+Zxa3emz6LMZ/pR1kH62P5kls1RGWV35mcwv53xeyTaUWrnCct7USZTNlCkN1c+Zp8hXtswx+1LEAfX433ofpKLiRbyYhZoorxjjhbMn1imOkZFgxbgW2yR219p6SzUX4tsf/Z5lpLvKKMy6WB1JmgM/W3Yucx5Nt7I9DSK6hhlwnH8uR9FbXowFgF/xljjLcFiNGJfXMt8bhjHjMbSziVyTGN+GEU6nFQq9eQXX3wxiPeNmk8++URv+adZ9w5F9alhw4Y9xiPZtcuWLbuM7bqx/AHKbY2NjZlxRo8e/XXmf0E9P+B9ItXU1DSS+S6MU3PmzHmVd5xvMK+j2hOsdyh/x91kO8f7iOWDmK5hjNWrV9eQTI1MH05dAyjXse4nlOPYtol1v+QnX71ZD91pGMuPMaw7Uncm5uspujNN4Rh7aGzmQx+CJIgWy+dEoOVN1x8uGnE6HoLetJpIVmXCBZmfgBYcWqW9umxx3sjbCXKPQ56uQv21eA/Mqy1/YS2LtdjnM/bC3GxCd5ZsEu8y4Y0tkokcOqoNZPkaLMLT3EEH4HsYw7yCyCWCzFSG4qWXMp0JHTp0+C0XWUdmakgAEUR2v8Y8uPgH9O7de2C/fv0OJXnm6dhFstzNOtlxAd/qezK9u/pv27ZtFdPu/PnzV3Jx30LZxnzewAW8nnq0i37qNZDuzZs3/5H5N6mvkeOmZ8+evZQL/SWWvUDZkzplH3r06HEY22hHeZzHwFW6M7FuCttI5xEjRozQC4PZ8IcgCSLQtBAdwuDwYPEEeuP7APR23MhYQUCdxEQDZQ3FC0qr7DCvoECs/toJ9EbVgvSaef2lW2288kpjHbX05tUYIrhIrz+ozCW6dP+FP/RSYJQ3zMRCpNAR16HlEfE+ZlK6GEF/CSxRWjutu3Xr1unKSPr37/8hY+HyE8U8eolgQ7kbvFlbW5s5wjCtDx0GcIHuzTb7bdmy5XW+5d/hgn+Gx6JxPCrVcGEvIAmWsb5gIBn1ydUnBRp8pkWfU/dmTlrJLRxzOxN7UTIhR19T9+7dtZNkysP+I0iCfOn7bTgYLk7CPpj8ZeFOKb3ptehyRWU7NSqSybxRi9S3rtIi1mJuXV4or4Wo+4Ts0+LUxT6X6IX6tS5fglfwAbrgOFyCIQBEYC14EZpZnMYfGkOi3WRYp06dvsuy3CACaZc67o033pjOt3pq4cKFM7ngdTzaIXxz9yURlr700kufb9iw4XQS5l+5aO/h0euvJNMFIkquUj/THFfH459Tp+4xIzUWSTGSNgxm2VTWC0smwx/ahyBN0MX0QVyGQtv6I4SqZacBcmMtBpTwFNppWu8snirtBKrTAi20w+gNrsWreu8Y14MKZN9TjCsJa9CE+ViBj1CDH1KBjl/e8UrjaGd5hOUaQ8eVHUctluUG7WjOEUcccTYJtK1Lly4ik3a2HW14/Dpp1KhROtpBxyMS5n7eBfqTJGkuVBHlLjbWOIx8Dy53t/uodRHHepik1J1GR6yrSORfsTwyoX0IAlzIBZHvH1zwFqqOSVogyD5Ka3HuNOnZutyoUH9dznUkei23cau0zupaoKNalSurHUOLTpd45WWf0hpPeUktf7Q+YrGozXA3FqMjekEfJecer0Q+3S88wmQUcaGdoQQXWor3kZTSnvBcv4qybtCgQZ/y3K8zf6aKR6m9eKSq5e7yLj8tGsa8fIGORbwz3EeS3M+G3yp2F+jZs6fIU8N2ZYehQ4d25PNv7Kg7yIEkhcNx9yNJf80y7Y6MohF2AjwQk9PQv2O1HBPwegH9Oi5oYeQev3ThVpnepgW67Sj2Fnpufx2D1CC3v/K5orfzRBb8jqKjDaNMELlmMaVLuXSKFNpt9MtD1bEKIpB+h6J0od1LdflkJT7ASryPzjgG/wfAO155x77rWKYXBCOcxh3ivK5du6a4qHuvW7dOZJYtmRcHjyp/4vFpBneQvsOHDz+VZPg9j0+Ps+2L/FRppnYO3knU98esG8ujTieSRZf24WyzlgTarEGychTbjGD/G/VpFPv1Z/kAykD22YsxOI78V9lgttEdx/vESi+a3UlKHaHQq1evPUlovUDup74G9n84Kw8wPjf7KZdUhl6CJwhwLlw8XgQJLZCjWa83vt4uEi1GlamOVUWDFvpBbJHbX298TVZb/XVU0V1CH0lqNSoApQAACGRJREFUXIkuuToOSJ/IQdUQYXVnUZ3aeB/56tOicgkinc9iBdUOx47fVTCn8vMY68Ugsrg8Qk3jYkLnzp3BBd2Zb/WpXGApLtSr2E52NL/88stXvPfee7/hTvIBF+VJLD+Sbf+Zb+tFTIOLVhfiZtZN5VFHl+e/sv415scvXbp0m+4obPdLyl4se4h65nCnGk2CyUIRQ/pe5kI/hf1eYbt9KEewjX6vchbvFnrx6U62G/s/x3Zn8Zed77PtvWwnAn6T6QuzMp7xE+wzi35F4g8ggyKI7g4jcRM6E6TT0AvTGXtBC7o7M7nneC1kLWpt6xKlVcZmmaC2XpkWkhavFnemkj/UVvXqK1G92rGqzeDZo36e5OqWAumSTq/es19jyle1UR+1UVvlJbJbbTWG8p78FBegG/pgGG7C7l4h4538WL58eXcdT3KFC38/vvn3ZduMLVyUzqpVq76rI0y23aFMz2N9JjC9hOWHUvpQdInvwvhyyvpMA/5g+jeU3SiHcldayngWRW09OYD5Zyi9KV6Z0mqnOq9M8SzuLr1oVx8eDwexvTeu6lIsH8ghN3JX7Ms49CEVqIVdoPPzLFwLfWQIe3IQaMFkFlowyqmIdjLn/rG5oaFhXStvXB7dPmTZcv6CcsfvWJgPbQiWIC3/iMGTofW+2oa5eBLCqNp2+Dg+70wduEvofnI9j1v3nnjiid/kJ2pfk/B4eCov7w/wGPefuh/5OGxgqoIjSJrvRhencO/QMSMwB8KhuEIrNuEpEuQUCCvE48ku/PPpzZ0kyne4Y/wvCfEu7x4vUkawbDyPcfqNPJuEPwRHkGacBAfzMAmfhx+GKlk4idgII2FVJROCGJb3jvWUO3hf0ke8NUzXZNM3Mb3j7hPE2H7rDI4gKdSSILP9Njh2+hzMhrCKnWPxcCg4ggCj0cwdJB44BedFC0ajgxvANO8KAsEQ5HboT777oh6vwp7iCLRg1BctmBVva7XtjkAwBGnCt+nJQoqF0hBYiBbMvtraSqqKQDAEcTEcDhZX1bMoDS6shFmUbE6IrUERRH+rtCQhGPrh5hJ+3CvM/NBlOnxEIBiCpDCEE170Czmw50sEXCyDMPuyxFIhQcB/gvwIX4eL9UgjEn9KgDA8wkqYCbsw2GM27EDAf4J0wCBqL/Y9DFZbyIPAa2jBLk9VMEWmtW0E/CcIcAiH1ZfzGVkoAwFhJuzK6OJP0+8DXW8B9k8DR1JqbwXOrgMuZPqKeuA6yk2UCZS6rCitsuvURm3Vh+laypHSJZ3+WFddLUEQRN/N0D/DU13Poje6MBN2gVh+GzCIi/hMLvAfcBHfy0X9e8YrGH/aC2jsCOg7Lg+6wI1cFP/oACMBDGa+H6UHpSPFyYrSKuunNmqrPqzTl98elC7q/FS6s2NorHs1tmyQLewXiUC/fLbTxQG8g/wZ9pSHgIs/E7cDyuuUv/VE4HAuxku4OO9n/ArjLc3Ak5zsi7iI9Ze2KxhPZl5EOIj1XSiZHYTttQuczbx2kCsZX0+5mXIrJZ0G0mlAaZWpTm3U9uxsX+1C0tWVxDlIY2gsWqox92b+ItlCHVvYXrbJxktkM9uELtBen21KoT8c6Jt2PiuOuTphJuwqcPN2YD8uuPGUaZS1XIAzuShHMF5OuXo90Jtv80NYN5aiY9EULshnbgVWMB/YhynSrTE0FtNTKBp7rGyRTbKNsjxr60zWr6XIh/HyqQIofO/iP0GaoW+7rfbd0vgrXI0W7ErylOd8keJavoUXNAF/YKdRfGM/y8U2nItsIOVCLszJrF98F7CJ9e0Z2hxLNsk22ShbKQNlu3xg51HyifULWH7tLXwBsKwqwV+C1GE3OOiINNbBnvIQEGbCThgW6clFM4aLZnonYCUXk74PfwffyH1Zdj7jqayP7O4t2+VD1pe+hOEO+ShfWTad9WNY1q7BX4J0wB60Xl+pZGShAgQ+5Ee9wvArXblATuDimcu37M9Z+QIvEr2YH095jvlYBvlGGS9f6eAL8p35ucKC+XYJ/hLExd/Q6o8pFipD4GNe1IXhjt43A/24IKayQJfqR5k+nDLlMqDQP8LHpvEK8lU+Uw7ngn2U3k1meqqwYTrQwPF81N+MPtTWSLFQGQKNvIcIw0xvLoIzeLzQn+ysZvpgvj1FlExdUn8IA2FB/1cLG6bPYDqw4DdB+PE3+AFFYPbGXfF6EkQYggvhGp6/76PD+giV91SmLABoAYHEECYXCiNh1VLq/09/CVLDSzrwuf9mJkbj5yCGvIxezom/nGfuY7kQ/isx3pfpqLARRsJKmJXZvaTm/hIE6AYXG0sa2Rp9FQFiN2QZDmXFXfyYcxwXgH67zqyFQggII2HF+rv4kbHvXxnwlyAuusLBZhproRIEiN23F+Jk/vLsh7fxl3iVqEhiH2ElzCg/8tt/vwnCexO2+G1kUvR97T107dOIATwu6B/kTorbvviZxexYMuRAXxRmlfhLEKAD9er/LMTIQrkIDFqJfT7cE2+X28/atyDA+8icjsCxLbkKfubpkspTVnmRgxSPWM2wpyIEeq9Hz896wj4mrwg9cOnhbZJkf/j4pHzUBaT5Xx2428GeChCYuQLHT38dx1XQ1boQAV7YJ1BuZ9K34C9BfDPLFBkC4UDACBKOeTArQoqAESSkE2NmhQMBvwgSDm/MCkPAZwSMID4DaurihYARJF7zad74jIARxGdATV28EDCCxGs+zRufEYgAQXz22NQZAmUgYAQpAyxrmjwEjCDJm3PzuAwEjCBlgGVNk4eAESR5c24el4FAsglSBlDWNJkIGEGSOe/mdYkIGEFKBMqaJRMBI0gy5928LhEBI0iJQFmzZCJgBAlo3k1tPBD4fwAAAP//wJNNLwAAAAZJREFUAwB3qMkJ9AUrMAAAAABJRU5ErkJggg==",
+    "status": 200
+  },
+  {
+    "method": "Network.requestWillBeSent",
+    "url": "https://x.com/i/api/1.1/graphql/user_flow.json",
+    "status": ""
+  },
+  {
+    "method": "Network.requestWillBeSent",
+    "url": "https://x.com/i/api/graphql/xF6sXnKJfS2AOylzxRjf6A/DataSaverMode?variables=%7B%22device_id%22%3A%22Windows%2FEdge%22%7D",
+    "status": ""
+  },
+  {
+    "method": "Network.responseReceived",
+    "url": "https://x.com/i/api/1.1/graphql/user_flow.json",
+    "status": 200
+  },
+  {
+    "method": "Network.responseReceived",
+    "url": "https://x.com/i/api/graphql/xF6sXnKJfS2AOylzxRjf6A/DataSaverMode?variables=%7B%22device_id%22%3A%22Windows%2FEdge%22%7D",
+    "status": 200
+  },
+  {
+    "method": "Network.requestWillBeSent",
+    "url": "https://x.com/i/api/1.1/graphql/user_flow.json",
+    "status": ""
+  },
+  {
+    "method": "Network.responseReceived",
+    "url": "https://x.com/i/api/1.1/graphql/user_flow.json",
+    "status": 200
+  },
+  {
+    "method": "Network.requestWillBeSent",
+    "url": "https://abs.twimg.com/responsive-web/client-web/shared~loader.AudioDock~loader.DashMenu~loader.DMDrawer~bundle.GrokDrawer~ondemand.HoverCard~ondemand.Command.fcca9fca.js",
+    "status": ""
+  },
+  {
+    "method": "Network.requestWillBeSent",
+    "url": "https://abs.twimg.com/responsive-web/client-web/shared~loader.AudioDock~loader.DashMenu~loader.Typeahead~loader.DMDrawer~bundle.GrokDrawer~ondemand.CommandCe.f90ea7ca.js",
+    "status": ""
+  },
+  {
+    "method": "Network.requestWillBeSent",
+    "url": "https://abs.twimg.com/responsive-web/client-web/shared~loader.AudioDock~loader.DashMenu~bundle.GrokDrawer~ondemand.CommandCenter~bundle.Account~bundle.Reader.3791c50a.js",
+    "status": ""
+  },
+  {
+    "method": "Network.requestWillBeSent",
+    "url": "https://abs.twimg.com/responsive-web/client-web/shared~loader.Typeahead~loader.DMDrawer~bundle.GrokDrawer~ondemand.HoverCard~bundle.ReaderMode~bundle.AudioSp.3848f3fa.js",
+    "status": ""
+  },
+  {
+    "method": "Network.requestWillBeSent",
+    "url": "https://abs.twimg.com/responsive-web/client-web/shared~bundle.GrokDrawer~bundle.ReaderMode~bundle.Birdwatch~bundle.TwitterArticles~bundle.Compose~bundle.Sett.b465da4a.js",
+    "status": ""
+  },
+  {
+    "method": "Network.requestWillBeSent",
+    "url": "https://abs.twimg.com/responsive-web/client-web/shared~loader.DMDrawer~bundle.GrokDrawer~bundle.Birdwatch~bundle.Compose~bundle.DirectMessages~bundle.DMRichT.e221981a.js",
+    "status": ""
+  },
+  {
+    "method": "Network.requestWillBeSent",
+    "url": "https://abs.twimg.com/responsive-web/client-web/shared~bundle.GrokDrawer~bundle.Birdwatch~bundle.News~bundle.Grok~ondemand.News~loader.inlineTombstoneHandler.2905ab0a.js",
+    "status": ""
+  },
+  {
+    "method": "Network.requestWillBeSent",
+    "url": "https://abs.twimg.com/responsive-web/client-web/shared~bundle.GrokDrawer~bundle.AccountAnalytics~bundle.News~bundle.Grok~ondemand.News~bundle.Ocf~ondemand.In.d1f0d96a.js",
+    "status": ""
+  },
+  {
+    "method": "Network.requestWillBeSent",
+    "url": "https://abs.twimg.com/responsive-web/client-web/shared~bundle.GrokDrawer~bundle.AccountAnalytics~bundle.News~bundle.Grok~ondemand.News~ondemand.Insights~onde.1384250a.js",
+    "status": ""
+  },
+  {
+    "method": "Network.requestWillBeSent",
+    "url": "https://abs.twimg.com/responsive-web/client-web/shared~bundle.GrokDrawer~bundle.TwitterArticles~bundle.Grok~loader.Markdown~loader.TexBlock.6d11127a.js",
+    "status": ""
+  },
+  {
+    "method": "Network.requestWillBeSent",
+    "url": "https://abs.twimg.com/responsive-web/client-web/shared~bundle.GrokDrawer~bundle.TwitterArticles~bundle.Grok~loader.Markdown.fc14849a.js",
+    "status": ""
+  },
+  {
+    "method": "Network.requestWillBeSent",
+    "url": "https://abs.twimg.com/responsive-web/client-web/shared~bundle.GrokDrawer~bundle.Grok~loader.Markdown.36c306ea.js",
+    "status": ""
+  },
+  {
+    "method": "Network.requestWillBeSent",
+    "url": "https://abs.twimg.com/responsive-web/client-web/shared~bundle.GrokDrawer~bundle.DirectMessages~bundle.Grok.a50d278a.js",
+    "status": ""
+  },
+  {
+    "method": "Network.requestWillBeSent",
+    "url": "https://abs.twimg.com/responsive-web/client-web/shared~bundle.GrokDrawer~bundle.Grok.5d7644ea.js",
+    "status": ""
+  },
+  {
+    "method": "Network.requestWillBeSent",
+    "url": "https://abs.twimg.com/responsive-web/client-web/bundle.Grok.8fa1e46a.js",
+    "status": ""
+  },
+  {
+    "method": "Network.requestWillBeSent",
+    "url": "https://abs.twimg.com/responsive-web/client-web/shared~loader.Dock~bundle.Articles~bundle.AudioSpaceDetail~bundle.AudioSpaceDiscovery~bundle.AudioSpacebarScr.1962e82a.js",
+    "status": ""
+  },
+  {
+    "method": "Network.requestWillBeSent",
+    "url": "https://x.com/i/api/1.1/graphql/user_flow.json",
+    "status": ""
+  },
+  {
+    "method": "Network.requestWillBeSent",
+    "url": "https://abs.twimg.com/responsive-web/client-web/bundle.GrokDrawer.652a4b5a.js",
+    "status": ""
+  },
+  {
+    "method": "Network.responseReceived",
+    "url": "https://x.com/i/api/1.1/graphql/user_flow.json",
+    "status": 200
+  },
+  {
+    "method": "Network.responseReceived",
+    "url": "https://abs.twimg.com/responsive-web/client-web/shared~loader.Typeahead~loader.DMDrawer~bundle.GrokDrawer~ondemand.HoverCard~bundle.ReaderMode~bundle.AudioSp.3848f3fa.js",
+    "status": 200
+  },
+  {
+    "method": "Network.responseReceived",
+    "url": "https://abs.twimg.com/responsive-web/client-web/shared~loader.AudioDock~loader.DashMenu~loader.Typeahead~loader.DMDrawer~bundle.GrokDrawer~ondemand.CommandCe.f90ea7ca.js",
+    "status": 200
+  },
+  {
+    "method": "Network.responseReceived",
+    "url": "https://abs.twimg.com/responsive-web/client-web/shared~bundle.GrokDrawer~bundle.AccountAnalytics~bundle.News~bundle.Grok~ondemand.News~bundle.Ocf~ondemand.In.d1f0d96a.js",
+    "status": 200
+  },
+  {
+    "method": "Network.responseReceived",
+    "url": "https://abs.twimg.com/responsive-web/client-web/shared~bundle.GrokDrawer~bundle.Birdwatch~bundle.News~bundle.Grok~ondemand.News~loader.inlineTombstoneHandler.2905ab0a.js",
+    "status": 200
+  },
+  {
+    "method": "Network.responseReceived",
+    "url": "https://abs.twimg.com/responsive-web/client-web/shared~bundle.GrokDrawer~bundle.TwitterArticles~bundle.Grok~loader.Markdown.fc14849a.js",
+    "status": 200
+  },
+  {
+    "method": "Network.responseReceived",
+    "url": "https://abs.twimg.com/responsive-web/client-web/shared~loader.DMDrawer~bundle.GrokDrawer~bundle.Birdwatch~bundle.Compose~bundle.DirectMessages~bundle.DMRichT.e221981a.js",
+    "status": 200
+  },
+  {
+    "method": "Network.responseReceived",
+    "url": "https://abs.twimg.com/responsive-web/client-web/shared~bundle.GrokDrawer~bundle.Grok.5d7644ea.js",
+    "status": 200
+  },
+  {
+    "method": "Network.responseReceived",
+    "url": "https://abs.twimg.com/responsive-web/client-web/shared~loader.AudioDock~loader.DashMenu~loader.DMDrawer~bundle.GrokDrawer~ondemand.HoverCard~ondemand.Command.fcca9fca.js",
+    "status": 200
+  },
+  {
+    "method": "Network.responseReceived",
+    "url": "https://abs.twimg.com/responsive-web/client-web/shared~loader.AudioDock~loader.DashMenu~bundle.GrokDrawer~ondemand.CommandCenter~bundle.Account~bundle.Reader.3791c50a.js",
+    "status": 200
+  },
+  {
+    "method": "Network.responseReceived",
+    "url": "https://abs.twimg.com/responsive-web/client-web/bundle.Grok.8fa1e46a.js",
+    "status": 200
+  },
+  {
+    "method": "Network.responseReceived",
+    "url": "https://abs.twimg.com/responsive-web/client-web/shared~bundle.GrokDrawer~bundle.TwitterArticles~bundle.Grok~loader.Markdown~loader.TexBlock.6d11127a.js",
+    "status": 200
+  },
+  {
+    "method": "Network.responseReceived",
+    "url": "https://abs.twimg.com/responsive-web/client-web/shared~bundle.GrokDrawer~bundle.DirectMessages~bundle.Grok.a50d278a.js",
+    "status": 200
+  },
+  {
+    "method": "Network.responseReceived",
+    "url": "https://abs.twimg.com/responsive-web/client-web/shared~loader.Dock~bundle.Articles~bundle.AudioSpaceDetail~bundle.AudioSpaceDiscovery~bundle.AudioSpacebarScr.1962e82a.js",
+    "status": 200
+  },
+  {
+    "method": "Network.responseReceived",
+    "url": "https://abs.twimg.com/responsive-web/client-web/shared~bundle.GrokDrawer~bundle.AccountAnalytics~bundle.News~bundle.Grok~ondemand.News~ondemand.Insights~onde.1384250a.js",
+    "status": 200
+  },
+  {
+    "method": "Network.requestWillBeSent",
+    "url": "https://abs.twimg.com/responsive-web/client-web/shared~bundle.AudioSpaceDetail~bundle.AudioSpaceDiscovery~bundle.AudioSpacebarScreen~bundle.Birdwatch~bundle..3c861e6a.js",
+    "status": ""
+  },
+  {
+    "method": "Network.responseReceived",
+    "url": "https://abs.twimg.com/responsive-web/client-web/bundle.GrokDrawer.652a4b5a.js",
+    "status": 200
+  },
+  {
+    "method": "Network.responseReceived",
+    "url": "https://abs.twimg.com/responsive-web/client-web/shared~bundle.GrokDrawer~bundle.ReaderMode~bundle.Birdwatch~bundle.TwitterArticles~bundle.Compose~bundle.Sett.b465da4a.js",
+    "status": 200
+  },
+  {
+    "method": "Network.responseReceived",
+    "url": "https://abs.twimg.com/responsive-web/client-web/shared~bundle.AudioSpaceDetail~bundle.AudioSpaceDiscovery~bundle.AudioSpacebarScreen~bundle.Birdwatch~bundle..3c861e6a.js",
+    "status": 200
+  },
+  {
+    "method": "Network.responseReceived",
+    "url": "https://abs.twimg.com/responsive-web/client-web/shared~bundle.GrokDrawer~bundle.Grok~loader.Markdown.36c306ea.js",
+    "status": 200
+  },
+  {
+    "method": "Network.requestWillBeSent",
+    "url": "https://x.com/i/api/1.1/graphql/user_flow.json",
+    "status": ""
+  },
+  {
+    "method": "Network.responseReceived",
+    "url": "https://x.com/i/api/1.1/graphql/user_flow.json",
+    "status": 200
+  },
+  {
+    "method": "Network.requestWillBeSent",
+    "url": "https://x.com/i/api/graphql/3aCm_HRrYXX8T7sas50Zlw/GrokShare?variables=%7B%22grok_share_id%22%3A%22ab2d0965e3a74a0da32749a7a2591dc7%22%7D&features=%7B%22creator_subscriptions_tweet_preview_api_enabled%22%3Atrue%2C%22premium_content_api_read_enabled%22%3Afalse%2C%22communities_web_enable_tweet_community_results_fetch%22%3Atrue%2C%22c9s_tweet_anatomy_moderator_badge_enabled%22%3Atrue%2C%22responsive_web_grok_analyze_button_fetch_trends_enabled%22%3Afalse%2C%22responsive_web_grok_analyze_post_followups_enabled%22%3Atrue%2C%22responsive_web_jetfuel_frame%22%3Atrue%2C%22responsive_web_grok_share_attachment_enabled%22%3Atrue%2C%22responsive_web_grok_annotations_enabled%22%3Atrue%2C%22articles_preview_enabled%22%3Atrue%2C%22responsive_web_edit_tweet_api_enabled%22%3Atrue%2C%22graphql_is_translatable_rweb_tweet_is_translatable_enabled%22%3Atrue%2C%22view_counts_everywhere_api_enabled%22%3Atrue%2C%22longform_notetweets_consumption_enabled%22%3Atrue%2C%22responsive_web_twitter_article_tweet_consumption_enabled%22%3Atrue%2C%22tweet_awards_web_tipping_enabled%22%3Afalse%2C%22content_disclosure_indicator_enabled%22%3Atrue%2C%22content_disclosure_ai_generated_indicator_enabled%22%3Atrue%2C%22responsive_web_grok_show_grok_translated_post%22%3Atrue%2C%22responsive_web_grok_analysis_button_from_backend%22%3Atrue%2C%22post_ctas_fetch_enabled%22%3Atrue%2C%22freedom_of_speech_not_reach_fetch_enabled%22%3Atrue%2C%22standardized_nudges_misinfo%22%3Atrue%2C%22tweet_with_visibility_results_prefer_gql_limited_actions_policy_enabled%22%3Atrue%2C%22longform_notetweets_rich_text_read_enabled%22%3Atrue%2C%22longform_notetweets_inline_media_enabled%22%3Afalse%2C%22profile_label_improvements_pcf_label_in_post_enabled%22%3Atrue%2C%22responsive_web_profile_redirect_enabled%22%3Afalse%2C%22rweb_tipjar_consumption_enabled%22%3Afalse%2C%22verified_phone_label_enabled%22%3Afalse%2C%22responsive_web_grok_image_annotation_enabled%22%3Atrue%2C%22responsive_web_grok_imagine_annotation_enabled%22%3Atrue%2C%22responsive_web_grok_community_note_auto_translation_is_enabled%22%3Afalse%2C%22responsive_web_graphql_skip_user_profile_image_extensions_enabled%22%3Afalse%2C%22responsive_web_graphql_timeline_navigation_enabled%22%3Atrue%2C%22responsive_web_enhance_cards_enabled%22%3Afalse%7D",
+    "status": ""
+  },
+  {
+    "method": "Network.requestWillBeSent",
+    "url": "https://x.com/i/api/graphql/zzeLdGlB0ZN6hiOYUIpDcQ/XChatDmSettingsQuery?variables=%7B%7D",
+    "status": ""
+  },
+  {
+    "method": "Network.requestWillBeSent",
+    "url": "https://x.com/i/api/graphql/zCYojd6h_gVXYjFlaAk4bA/useDirectCallSetupQuery?variables=%7B%7D",
+    "status": ""
+  },
+  {
+    "method": "Network.responseReceived",
+    "url": "https://x.com/i/api/graphql/zzeLdGlB0ZN6hiOYUIpDcQ/XChatDmSettingsQuery?variables=%7B%7D",
+    "status": 200
+  },
+  {
+    "method": "Network.responseReceived",
+    "url": "https://x.com/i/api/graphql/zCYojd6h_gVXYjFlaAk4bA/useDirectCallSetupQuery?variables=%7B%7D",
+    "status": 200
+  },
+  {
+    "method": "Network.responseReceived",
+    "url": "https://x.com/i/api/graphql/3aCm_HRrYXX8T7sas50Zlw/GrokShare?variables=%7B%22grok_share_id%22%3A%22ab2d0965e3a74a0da32749a7a2591dc7%22%7D&features=%7B%22creator_subscriptions_tweet_preview_api_enabled%22%3Atrue%2C%22premium_content_api_read_enabled%22%3Afalse%2C%22communities_web_enable_tweet_community_results_fetch%22%3Atrue%2C%22c9s_tweet_anatomy_moderator_badge_enabled%22%3Atrue%2C%22responsive_web_grok_analyze_button_fetch_trends_enabled%22%3Afalse%2C%22responsive_web_grok_analyze_post_followups_enabled%22%3Atrue%2C%22responsive_web_jetfuel_frame%22%3Atrue%2C%22responsive_web_grok_share_attachment_enabled%22%3Atrue%2C%22responsive_web_grok_annotations_enabled%22%3Atrue%2C%22articles_preview_enabled%22%3Atrue%2C%22responsive_web_edit_tweet_api_enabled%22%3Atrue%2C%22graphql_is_translatable_rweb_tweet_is_translatable_enabled%22%3Atrue%2C%22view_counts_everywhere_api_enabled%22%3Atrue%2C%22longform_notetweets_consumption_enabled%22%3Atrue%2C%22responsive_web_twitter_article_tweet_consumption_enabled%22%3Atrue%2C%22tweet_awards_web_tipping_enabled%22%3Afalse%2C%22content_disclosure_indicator_enabled%22%3Atrue%2C%22content_disclosure_ai_generated_indicator_enabled%22%3Atrue%2C%22responsive_web_grok_show_grok_translated_post%22%3Atrue%2C%22responsive_web_grok_analysis_button_from_backend%22%3Atrue%2C%22post_ctas_fetch_enabled%22%3Atrue%2C%22freedom_of_speech_not_reach_fetch_enabled%22%3Atrue%2C%22standardized_nudges_misinfo%22%3Atrue%2C%22tweet_with_visibility_results_prefer_gql_limited_actions_policy_enabled%22%3Atrue%2C%22longform_notetweets_rich_text_read_enabled%22%3Atrue%2C%22longform_notetweets_inline_media_enabled%22%3Afalse%2C%22profile_label_improvements_pcf_label_in_post_enabled%22%3Atrue%2C%22responsive_web_profile_redirect_enabled%22%3Afalse%2C%22rweb_tipjar_consumption_enabled%22%3Afalse%2C%22verified_phone_label_enabled%22%3Afalse%2C%22responsive_web_grok_image_annotation_enabled%22%3Atrue%2C%22responsive_web_grok_imagine_annotation_enabled%22%3Atrue%2C%22responsive_web_grok_community_note_auto_translation_is_enabled%22%3Afalse%2C%22responsive_web_graphql_skip_user_profile_image_extensions_enabled%22%3Afalse%2C%22responsive_web_graphql_timeline_navigation_enabled%22%3Atrue%2C%22responsive_web_enhance_cards_enabled%22%3Afalse%7D",
+    "status": 200
+  },
+  {
+    "method": "Network.requestWillBeSent",
+    "url": "https://x.com/i/api/1.1/graphql/error_log.json",
+    "status": ""
+  },
+  {
+    "method": "Network.responseReceived",
+    "url": "https://x.com/i/api/1.1/graphql/error_log.json",
+    "status": 200
+  },
+  {
+    "method": "Network.requestWillBeSent",
+    "url": "https://x.com/i/api/1.1/graphql/user_flow.json",
+    "status": ""
+  },
+  {
+    "method": "Network.responseReceived",
+    "url": "https://x.com/i/api/1.1/graphql/user_flow.json",
+    "status": 200
+  },
+  {
+    "method": "Network.requestWillBeSent",
+    "url": "https://x.com/i/api/1.1/graphql/user_flow.json",
+    "status": ""
+  },
+  {
+    "method": "Network.responseReceived",
+    "url": "https://x.com/i/api/1.1/graphql/user_flow.json",
+    "status": 200
+  },
+  {
+    "method": "Network.requestWillBeSent",
+    "url": "https://x.com/i/api/1.1/graphql/user_flow.json",
+    "status": ""
+  },
+  {
+    "method": "Network.responseReceived",
+    "url": "https://x.com/i/api/1.1/graphql/user_flow.json",
+    "status": 200
+  },
+  {
+    "method": "Network.requestWillBeSent",
+    "url": "https://x.com/i/api/1.1/graphql/user_flow.json",
+    "status": ""
+  },
+  {
+    "method": "Network.responseReceived",
+    "url": "https://x.com/i/api/1.1/graphql/user_flow.json",
+    "status": 200
+  },
+  {
+    "method": "Network.requestWillBeSent",
+    "url": "https://x.com/i/api/1.1/graphql/ces/p2",
+    "status": ""
+  },
+  {
+    "method": "Network.responseReceived",
+    "url": "https://x.com/i/api/1.1/graphql/ces/p2",
+    "status": 200
+  },
+  {
+    "method": "Network.requestWillBeSent",
+    "url": "https://x.com/i/api/1.1/graphql/user_flow.json",
+    "status": ""
+  },
+  {
+    "method": "Network.responseReceived",
+    "url": "https://x.com/i/api/1.1/graphql/user_flow.json",
+    "status": 200
+  },
+  {
+    "method": "Network.requestWillBeSent",
+    "url": "https://x.com/i/api/1.1/graphql/user_flow.json",
+    "status": ""
+  },
+  {
+    "method": "Network.responseReceived",
+    "url": "https://x.com/i/api/1.1/graphql/user_flow.json",
+    "status": 200
+  },
+  {
+    "method": "Network.requestWillBeSent",
+    "url": "https://x.com/i/api/1.1/graphql/user_flow.json",
+    "status": ""
+  },
+  {
+    "method": "Network.responseReceived",
+    "url": "https://x.com/i/api/1.1/graphql/user_flow.json",
+    "status": 200
+  }
+]
