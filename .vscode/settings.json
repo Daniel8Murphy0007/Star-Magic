@@ -129,7 +129,16 @@
         "**/*.exe": true,
         "**/*.dll": true,
         "**/*.lib": true,
-        "**/coAnQi_log_*.txt": true
+        "**/coAnQi_log_*.txt": true,
+        // Exclude massive source files from file watcher
+        "**/MAIN_1_CoAnQi.cpp": true,
+        "**/CondensedPhysics.py": true,
+        "**/CondensedPhysics2.py": true,
+        "**/CondensedPhysics_OutputData.py": true,
+        "**/index.js": true,
+        "**/source2.cpp": true,
+        "**/physics_backend.cpp": true,
+        "**/QCalc.py": true
     },
     // Exclude build + venv + cache dirs from VS Code search — stops search worker
     // from opening files that then get scanned by Defender
@@ -150,12 +159,21 @@
         "**/coAnQi_log_*.txt": true,
         "**/SuperGrok4_Export_*.html": true,
         "**/grok_share_*.html": true,
-        "**/grok_share_*.txt": true
+        "**/grok_share_*.txt": true,
+        // Exclude massive source files from search
+        "**/MAIN_1_CoAnQi.cpp": true,
+        "**/CondensedPhysics.py": true,
+        "**/CondensedPhysics2.py": true,
+        "**/CondensedPhysics_OutputData.py": true,
+        "**/index.js": true,
+        "**/source2.cpp": true,
+        "**/physics_backend.cpp": true,
+        "**/QCalc.py": true
     },
     // Windows Defender mitigation: limit how many files VS Code opens simultaneously.
     // Large burst reads (e.g. Pylance loading all imports at startup) trigger cascading
     // Defender scans. These settings spread the I/O over time to avoid the CPU spike.
-    "files.maxMemoryForLargeFilesMB": 256,
+    "files.maxMemoryForLargeFilesMB": 4096,
     "editor.largeFileOptimizations": true,
     // Disable C++ IntelliSense on huge files (107K lines)
     "C_Cpp.intelliSenseEngine": "disabled",
@@ -170,5 +188,9 @@
     "editor.occurrencesHighlight": "off",
     "editor.selectionHighlight": false,
     "workbench.tips.enabled": false,
-    "github.copilot.nextEditSuggestions.enabled": true
+    "github.copilot.nextEditSuggestions.enabled": true,
+    // Prevent Copilot from auto-analyzing on every keystroke in huge files
+    "github.copilot.inlineSuggest.enableAutoCompletions": false,
+    // Disable timeline that reads file history repeatedly
+    "timeline.excludeSources": ["*"]
 }
