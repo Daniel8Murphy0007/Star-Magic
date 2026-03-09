@@ -69,12 +69,20 @@
     "markdownlint.config": {
         "default": false
     },
-    // Exclude export/generated HTML files from linting and IntelliSense to reduce problems + speed up VS Code
+    // Exclude build dirs + venvs + generated files from Explorer — prevents Explorer
+    // from enumerating them on expand, which triggers Defender scans
     "files.exclude": {
         "**/__pycache__": true,
         "**/*.pyc": true,
         "**/SuperGrok4_Export_*.html": true,
-        "**/coAnQi_log_*.txt": true
+        "**/coAnQi_log_*.txt": true,
+        "**/.venv": true,
+        "**/.venv_py314_backup": true,
+        "**/ALL_BUILD.dir": true,
+        "**/build_backup_20251116_072753": true,
+        "**/build_py314": true,
+        "**/build_test_no_wolfram": true,
+        "**/build_wolfram": true
     },
     "html.validate.scripts": false,
     "html.validate.styles": false,
@@ -97,27 +105,46 @@
         "**/.git/objects/**": true,
         "**/.git/subtree-cache/**": true,
         "**/.git/refs/**": true,
+        // ALL build directories
         "**/build_msvc/**": true,
         "**/build_msvc/.vs/**": true,
         "**/build/**": true,
+        "**/build_wolfram/**": true,
+        "**/build_py314/**": true,
+        "**/build_test_no_wolfram/**": true,
+        "**/build_backup_20251116_072753/**": true,
+        "**/ALL_BUILD.dir/**": true,
+        // Python venvs (BOTH — was missing .venv entirely)
+        "**/.venv/**": true,
+        "**/.venv_py314_backup/**": true,
+        // node_modules
+        "**/node_modules/**": true,
+        // Compiled artifacts
         "**/__pycache__/**": true,
         "**/*.obj": true,
         "**/*.pdb": true,
         "**/*.ilk": true,
         "**/*.tlog": true,
         "**/*.pyc": true,
-        "**/coAnQi_log_*.txt": true,
-        "**/.venv_py314_backup/Lib/**": true,
-        "**/.venv_py314_backup/Scripts/**": true
+        "**/*.exe": true,
+        "**/*.dll": true,
+        "**/*.lib": true,
+        "**/coAnQi_log_*.txt": true
     },
     // Exclude build + venv + cache dirs from VS Code search — stops search worker
     // from opening files that then get scanned by Defender
     "search.exclude": {
         "**/build_msvc/**": true,
         "**/build/**": true,
+        "**/build_wolfram/**": true,
+        "**/build_py314/**": true,
+        "**/build_test_no_wolfram/**": true,
+        "**/build_backup_20251116_072753/**": true,
+        "**/ALL_BUILD.dir/**": true,
         "**/__pycache__/**": true,
         "**/*.obj": true,
         "**/*.pdb": true,
+        "**/.venv/**": true,
         "**/.venv_py314_backup/**": true,
         "**/node_modules/**": true,
         "**/coAnQi_log_*.txt": true,
@@ -132,5 +159,16 @@
     "editor.largeFileOptimizations": true,
     // Disable C++ IntelliSense on huge files (107K lines)
     "C_Cpp.intelliSenseEngine": "disabled",
+    // Disable remaining C++ extension background work since IntelliSense is off
+    "C_Cpp.errorSquiggles": "disabled",
+    "C_Cpp.autocomplete": "disabled",
+    "C_Cpp.formatting": "disabled",
+    // Kill editor features that read entire huge files
+    "editor.formatOnSave": false,
+    "editor.formatOnType": false,
+    "editor.wordBasedSuggestions": "off",
+    "editor.occurrencesHighlight": "off",
+    "editor.selectionHighlight": false,
+    "workbench.tips.enabled": false,
     "github.copilot.nextEditSuggestions.enabled": true
 }
