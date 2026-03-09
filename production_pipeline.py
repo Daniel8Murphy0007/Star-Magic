@@ -171,7 +171,8 @@ class ProductionPipeline:
                 'aggregator_version': '1.2.0',
                 'git_head': '2be7468',
                 'thread_0904a12a': 'MCMC calibration: kappa=0.00052, SSq_linear=0.507, 52-system Q_wave stats, 5 new observational systems (GrokThread_UQFF_0904_Validation.py)',
-                'thread_1a2726a4': 'UQFF Full Document Assimilation: Q_wave_47-81 Stats, H2O-H2 Rotor CS, DPM-THz MUGE, BEC Alpha-Clustering, Superconductive Complex Ui (5 classes; IPC 0x0A00-0x0A04)'
+                'thread_1a2726a4': 'UQFF Full Document Assimilation: Q_wave_47-81 Stats, H2O-H2 Rotor CS, DPM-THz MUGE, BEC Alpha-Clustering, Superconductive Complex Ui (5 classes; IPC 0x0A00-0x0A04)',
+                'thread_7b0e961f': 'Sept 11-21 2025 calibration: F_rel=4.31e33 (2024 LEP reanalysis), P_pol=0.95 (IXPE), U_UA=0.0001 (Gaia DR4 i~90 f_Ub=0.001), [SSq]=0.57 confirmed, N_B=1.46 (AMD 2025 BEC), RBC/UKQCD HVP=707.5e-10, tau g-2 BSM~5e-8 (Belle II), Z-dep DPM framework, heliosheath Ug2 testbed; created bose_nuclear_calculator.py, neutrino_sed_calculator.py, atomic_uqff_framework.py'
             }
         }
         

@@ -4937,8 +4937,8 @@ CONSTANTS = {
     'F0': 1.83e71,             # Base force constant (N)
     'kappa': 0.0005,           # κ: [SCm] reactivity decay rate (day⁻¹) - see documentation below
     'SSq': 0.57,               # [SSq] quantum state factor
-    'U_UA': 1.0,               # Aether buoyancy factor (≈1 for negligible impact in buoyancy)
-                               # Note: U_UA = 1 gives U_b1 ≈ -1.94×10²⁷ J/m³ for Sun
+    'U_UA': 0.0001,            # Aether buoyancy factor (calibrated: Gaia DR4 i~90° f_Ub=0.001)
+                               # Note: U_UA = 0.0001 from Q_UA/Q_A × f_Ub = 0.1 × 0.001 (Sept 2025)
     'k_eta': 1e-113,           # Neutron rate coefficient
     'gamma': 5e-5,             # γ: Reciprocation decay rate (day⁻¹) - see documentation below
     'alpha': 1e-10,            # α: Time decay rate for Ug components (s⁻¹)

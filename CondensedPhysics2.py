@@ -29578,7 +29578,7 @@ class FUBiiIntegralCalculator:
         Ug_i = dataset.get('Ug_i', 6.746e-5)     # m/s² (gravity component)
         epsilon_sw = dataset.get('epsilon_sw', 0.001)
         rho_sw = dataset.get('rho_sw', 8.0e-21)   # kg/m³
-        U_UA = dataset.get('U_UA', 1.0)
+        U_UA = dataset.get('U_UA', 0.0001)  # calibrated: Gaia DR4 i~90° f_Ub=0.001 (was 1.0)
         t_n = dataset.get('t_n', -2512)           # negative time (s)
         
         import math
@@ -38532,7 +38532,7 @@ class SystemParamsDeed728bCalculator:
         'k_neutron': 1e10,
         'sigma_n': 1e-4,
         'k_rel': 1e-10,
-        'F_rel': 4.30e33,
+        'F_rel': 4.31e33,  # 2024 LEP reanalysis (was 4.30e33)
         'k_vac': 1e-30,
         'k_thz': 1e-10,
         'omega_thz': 2 * math.pi * 1e12,  # 1.2-1.3 THz LENR resonance

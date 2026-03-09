@@ -746,6 +746,51 @@ namespace GrokThread0904 {
 
 } // namespace GrokThread0904
 
+/// GrokThread7b0e961f: Sept 11–21 2025 (4462-line session) — calibrated values and new frameworks
+namespace GrokThread7b0e {
+
+    // F_rel: 2024 LEP reanalysis
+    constexpr double F_REL_2024        = 4.31e33;   // N
+
+    // IXPE X-ray polarisation (Cygnus X-1, 2024)
+    constexpr double P_POL_IXPE        = 0.95;      // fraction
+
+    // UV / mm-radio luminosity coupling coefficients
+    constexpr double K_UV              = 1.0e-10;   // m/W
+    constexpr double K_MM              = 5.0e-12;   // m/(W·Hz)
+
+    // Parker refinement of δ_SCm=10^6 m
+    constexpr double H_SCM_REFINED     = 0.9933;
+
+    // Z-dependent DPM atomic framework (Z = 1..118)
+    constexpr double SSQ_Z_BASE        = 0.507;     // SSq_Z = SSQ_Z_BASE + (Z/118)*SSQ_Z_RANGE
+    constexpr double SSQ_Z_RANGE       = 0.1;
+    constexpr double DELTA_RHO_MEAN    = 5.04e-5;   // dimensionless Z-dep delta-rho/rho mean
+    constexpr double DELTA_RHO_STD     = 2.89e-5;
+    constexpr double Q_WAVE_47_MEAN    = 3.97e4;    // J/m³ — 47-system bootstrap mean
+    constexpr double Q_WAVE_47_STD     = 6.33e4;    // J/m³
+    constexpr double F_U_BI_I_47_MEAN  = -6.06e217; // N   — 47-system bootstrap mean
+    constexpr double F_U_BI_I_LOG_STD  = 0.030;     // log std (3%)
+    constexpr double RHO_VAC_UA_CMB    = 2.69e-10;  // J/m³ — CMB-matched rho_vac_UA_Z
+
+    // Bose-Einstein nuclear calibration (AMD 2025)
+    constexpr double N_B_CALIBRATED    = 1.46;      // at T = T_NUCLEAR_MEV
+    constexpr double T_NUCLEAR_MEV     = 5.0;       // MeV
+    constexpr double DELTA_E_ALPHA     = 0.48;      // MeV — alpha-pair level spacing
+
+    // RBC/UKQCD HVP 2025 (PRL 134,201901; arXiv:2508.21685)
+    constexpr double A_HVP_MUON_2025   = 707.5e-10; // dimensionless
+    constexpr double A_HVP_MUON_ERR    = 5.5e-10;
+    constexpr double A_HVP_TAU_SCALED  = 7.5e-4;    // (m_τ/m_μ)² scaling
+    constexpr double A_HLBL_TAU        = 2.3e-5;
+    constexpr double BSM_DEV_TAU       = 5.0e-8;    // Belle II testable deviation
+
+    // Voyager 2 heliosheath Ug2 testbed geometry
+    constexpr double HELIOSHEATH_AU    = 35.0;      // AU thickness
+    constexpr double HELIOPAUSE_AU     = 119.0;     // AU
+
+} // namespace GrokThread7b0e
+
 
 } // namespace Constants
 } // namespace UQFF

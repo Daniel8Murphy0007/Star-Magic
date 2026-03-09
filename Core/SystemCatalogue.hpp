@@ -96,7 +96,7 @@ struct SystemParams {
     double k_neutron;                // Neutron drop coupling (default 1e10)
     double sigma_n;                  // Neutron cross-section (default 1e-4)
     double k_rel;                    // Relativistic coupling (default 1e-10)
-    double F_rel;                    // Relativistic force from LEP (N, default 4.30e33)
+    double F_rel;                    // Relativistic force from LEP (N, default 4.31e33 — 2024 reanalysis)
     
     // Vacuum repulsion and THz shock
     double k_vac;                    // Vacuum repulsion coupling (default 1e-30)
@@ -143,7 +143,7 @@ struct SystemParams {
         rho_vac_UA(7.09e-36), rho_vac_SCm(7.09e-37),
         DPM_stability(0.01), DPM_momentum(0.93), DPM_gravity(1.0),
         k_LENR(1e-10), k_act(1e-6), k_DE(1e-30), k_neutron(1e10), sigma_n(1e-4),
-        k_rel(1e-10), F_rel(4.30e33),
+        k_rel(1e-10), F_rel(4.31e33),  // 2024 LEP reanalysis (was 4.30e33)
         k_vac(1e-30), k_thz(1e-10), omega_thz(2.0 * PI * 1e12),
         neutron_factor(1.0), conduit_scale(10.0),
         k_conduit(1e-22), water_state(1.0), H_abundance(10.0),

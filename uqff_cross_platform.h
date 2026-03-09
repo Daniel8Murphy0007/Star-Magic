@@ -141,7 +141,7 @@ inline F_U_Bi_i_Result compute_F_U_Bi_i_unified(
     result.terms[3] = k_neutron * n_neutron * sigma_n;
     
     // 5. Relativistic term (LEP reference)
-    double F_rel = 4.30e33;
+    double F_rel = 4.31e33;  // Updated: 2024 LEP reanalysis (was 4.30e33)
     result.terms[4] = k_rel * F_rel;
     
     // 6. Vacuum repulsion term
