@@ -33,12 +33,12 @@ def check_duplicates():
     
     try:
         # Extract class names from CP1
-        with open(cp1_path, 'r', encoding='utf-8') as f:
+        with open(cp1_path, 'r', encoding='utf-8', errors='replace') as f:
             cp1 = f.read()
         cp1_classes = set(re.findall(r'^class\s+(\w+Calculator)', cp1, re.MULTILINE))
         
         # Extract class names from CP2
-        with open(cp2_path, 'r', encoding='utf-8') as f:
+        with open(cp2_path, 'r', encoding='utf-8', errors='replace') as f:
             cp2 = f.read()
         cp2_classes = set(re.findall(r'^class\s+(\w+Calculator)', cp2, re.MULTILINE))
         
