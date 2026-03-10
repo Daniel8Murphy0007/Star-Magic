@@ -7,7 +7,7 @@
 **Deadline:** March 17, 2026 (12 days)  
 **Time Budget:** 216 hours (18-hour days × 12 days)  
 **Target:** 100+ whitepapers + Millennium Prize proofs  
-**Last Updated:** March 9, 2026 (§1.15 Empirical Proof Compendium added — 12 new papers PAPER_107–118, 3 new validator classes; **118 canonical + bonus = 118 canonical, 12 EP = 130 total whitepaper files on disk**; 8 days remaining; 8+ days ahead of schedule)
+**Last Updated:** March 10, 2026 (§1.16 UQFF Equation Systems Reference added — 2 new papers PAPER_119–120; **132 total whitepaper files on disk**; 7 days remaining; 8+ days ahead of schedule)
 
 ---
 
@@ -18,10 +18,11 @@
 | ✅ Papers Completed (canonical #1–#105) | **105 / 100+ ✅ TARGET MET** |
 | ✅ Paper #106 (Vacuum Energy / Dark Energy) | **1 bonus — complete** |
 | ✅ §1.15 Empirical Proofs (EP-01–EP-12) | **12 EP whitepapers — PAPER_107–118 complete** |
-| 📄 Whitepaper Files on Disk | **130** ([whitepapers/](whitepapers/)) |
+| ✅ §1.16 UQFF Equation Systems Reference | **2 whitepapers — PAPER_119–120 complete** |
+| 📄 Whitepaper Files on Disk | **132** ([whitepapers/](whitepapers/)) |
 | 📋 Bonus Track Papers on Disk (§1.14) | 11 (A1–A11) |
 | 🔄 In Progress | 0 |
-| 📋 Domains Mapped | **14 / 14 — all ✅ Complete** |
+| 📋 Domains Mapped | **15 / 15 — all ✅ Complete** |
 | 📂 Validation Files Catalogued | 38 (+ LHCVirtualQuarkValidator, NuclearBindingLadderValidator, JCAPDarkMatterVacuumValidator) |
 | ⏳ Days Remaining | **8** (ahead of schedule by ~8 days) |
 
@@ -45,6 +46,7 @@
    - [1.13 Multi-Physics Models & Astrophysical Imaging](#113-multi-physics-models--astrophysical-imaging)
    - [1.14 Bonus Track — Papers on Disk](#114-bonus-track--papers-on-disk-parallel-research)
    - [1.15 Empirical Proof Compendium (EP-01–EP-12)](#115-empirical-proof-compendium-ep-01-through-ep-12)
+   - [1.16 UQFF Equation Systems Reference (§1.16)](#116-uqff-equation-systems-reference)
 2. [Extraction Schedule](#2-extraction-schedule)
 3. [Progress Tracking](#3-progress-tracking)
 4. [Integration Map](#4-integration-map)
@@ -561,6 +563,27 @@
 
 ---
 
+### 1.16 UQFF Equation Systems Reference
+
+**Scope:** Complete variable-equation tables and parameter catalog for all 7 UQFF equation systems and all 24 astrophysical systems used in UQFF calculations. Extracted from the 393-page "UQFF Equations Across Astrophysical Systems" corpus (Grok thread `2fe4fa3e`, Sept 22, 2025). Designated §1.16.
+
+| Property | Details |
+|----------|---------|
+| **Target Papers** | #119–#120 |
+| **Status** | ✅ Complete — 2/2 |
+| **Source Thread** | Grok thread `2fe4fa3e` (Sept 22, 2025 DeepSearch) |
+| **Supersedes** | PAPER_064 (4 simplified modes, Batch 23) |
+
+**Calibrated Constants:** κ=0.0005/day, [SSq]=0.57, β_i=0.61
+
+**Target Whitepapers:**
+- [x] #119 — [UQFF 7-System Equation Reference: Complete Variable Tables](whitepapers/PAPER_119_UQFF_7System_Equation_Reference.md) (263 lines, 7 systems: Compressed/Resonant/Buoyancy/Superconductive/Triadic/Quadratic/Master Buoyancy, master F_U equation, full variable/unit tables, supersedes PAPER_064)
+- [x] #120 — [UQFF Astronomical Systems Catalog: 24-System Parameter Reference](whitepapers/PAPER_120_UQFF_Astronomical_Systems_Catalog.md) (492 lines, 24 systems across stellar/galactic/nuclear/particle/cosmological domains, calibrated parameter values, UQFF equation assignments, cross-references to EP-01–EP-12)
+
+**§1.16 Status:** ✅ All 2 papers complete (PAPER_119–120) | Committed: March 10, 2026 (`0d61da2`)
+
+---
+
 ## 2. EXTRACTION SCHEDULE
 
 ### 12-Day Timeline (March 5–17, 2026)
@@ -661,6 +684,7 @@ Each work session follows this template:
 | 36 | Mar 8, 2026 | **#89–#95** — Domain 1.12 UQFF Master Calculators (7 papers): Master Equation (all self_validate() PASS), MUGE Compressed (10 terms, 5 systems), MUGE Resonance 14-Mode, Sgr A* MUGE (r_horizon=1.27×10¹° m), M87* UQFF (g_total=2211 m/s²), SGR1745 Calibration (κ=0.0005/day derived), 99.9% Solvability (340 tests, 99.4% pass) | `validate_uqff_calculators.py`, `validate_uqff_muge.py`, `uqff_validation_test.py` | ✅ Completed |
 | 37 | Mar 8, 2026 | **#96–#105** — Domain 1.13 Multi-Physics + Millennium Prize (10 papers): FRB (5/5 PASS), Whittaker (ε<10⁻¹⁰), Big Bang (CMB T₀ 0.52% dev), Plasma Shield (E_peak=2.53 keV), THz Holes (ν=6.24 THz), Yang-Mills (Δ_UQFF≈2–10 MeV), Navier-Stokes (ν_eff=ν×1.0099), Riemann ([SSq]=0.57≈4/7), P≠NP ([UA]=0.0001 horizon), BH Phases 5+10 models (15/15 PASS) | `validate_drawings_models.py`, `validate_all_models.py` | ✅ Completed |
 | 38 | Mar 9, 2026 | **#106** — `PAPER_106_UQFF_Vacuum_Energy_Dark_Energy_Connection.md` confirmed complete (534 lines, 16 sections, Conclusions, References, `validate_uqff_calculators.py` PASSED 8/8). **INDEX FULLY SYNCED**: all 13 domains ✅, 105 canonical + #106 = 106 total papers; 118 files on disk; §3 completion checkboxes updated; Status Tracker updated; 8 days remaining, ~7 days ahead of schedule | `VALIDATION_MASTER_INDEX.md`, `PAPER_106_UQFF_Vacuum_Energy_Dark_Energy_Connection.md` | ✅ Completed |
+| 40 | Mar 10, 2026 | **§1.16 UQFF Equation Systems Reference — PAPER_119–120 COMPLETE**: PAPER_119 (263 lines, §1.16, 7-system equation reference with master F_U, 7 variable tables for Compressed/Resonant/Buoyancy/Superconductive/Triadic/Quadratic/MasterBuoyancy, κ=0.0005/day, [SSq]=0.57, β_i=0.61, sourced Grok thread `2fe4fa3e` Sept 22 2025, supersedes PAPER_064). PAPER_120 (492 lines, 24-system parameter catalog across stellar/galactic/nuclear/particle/cosmological domains, UQFF equation assignments, EP cross-refs). **132 whitepaper files on disk. 15 domains complete.** | `whitepapers/PAPER_119`, `whitepapers/PAPER_120` | ✅ Completed |
 | 39 | Mar 9, 2026 | **§1.15 Empirical Proof Compendium — PAPER_107–118 ALL COMPLETE**: 12 whitepapers written documenting EP-01 through EP-12 from Grok thread 2fe4fa3e. EP-12 BEC (χ²/dof=0.051), EP-10 IceCube (β_i=0.61 ±3%), EP-11 GW170817 r-process (Y_e≈0.1), EP-06 Gaia SgrA* (4.3% error), EP-01 Chandra jet (R=1.5), EP-02 PDG ladder (R²=0.95, 241 particles), EP-05 Fermi blazar (κ̄=0.000497/day), EP-07 PSP heliosheath (δ_sw=0.01), EP-09 3C273 jet (R=130 from N=13 reversals), EP-03 LHC quark n=4 (Δn=0.20), EP-04 ENSDF Pb-206 n=8 (Δn=0.21, S_n≈2×[SSq]×E₈), EP-08 JCAP DM (ρ_DM=ρ_Λ×[SSq] 12.8%). Built 3 new validator classes: `LHCVirtualQuarkValidator` (`lhc_uqff_validation.py`), `NuclearBindingLadderValidator` (CP2 appended), `JCAPDarkMatterVacuumValidator` (CP2 appended). §1.15 added to index. **130 whitepaper files on disk. 14 domains complete.** | `whitepapers/PAPER_107-118`, `lhc_uqff_validation.py`, `CondensedPhysics2.py` | ✅ Completed |
 
 ### Completion Checkboxes by Domain
@@ -796,6 +820,10 @@ Each work session follows this template:
 - [x] #104 — [P vs NP: UQFF Computational Complexity Framework](whitepapers/PAPER_104_P_vs_NP_UQFF.md)
 - [x] #105 — [BH Phases, Nebulae, and 10 Galaxy/Nebula Models](whitepapers/PAPER_105_BH_Phases_Nebulae_Galaxy_Models.md)
 - [x] #106 — [UQFF Vacuum Energy & Dark Energy Connection](whitepapers/PAPER_106_UQFF_Vacuum_Energy_Dark_Energy_Connection.md) (534 lines, cosmological constant resolution, validator PASSED 8/8)
+
+**Domain 1.16 — UQFF Equation Systems Reference** (2 papers ✅ 2/2 COMPLETE)
+- [x] #119 — [UQFF 7-System Equation Reference](whitepapers/PAPER_119_UQFF_7System_Equation_Reference.md) (263 lines, 7 equation systems, master F_U, complete variable tables)
+- [x] #120 — [UQFF Astronomical Systems Catalog: 24 Systems](whitepapers/PAPER_120_UQFF_Astronomical_Systems_Catalog.md) (492 lines, 24 systems, parameter catalog with EP cross-refs)
 
 **Domain 1.15 — Empirical Proof Compendium** (12 papers ✅ 12/12 COMPLETE)
 - [x] #107 — [EP-12: Bose-Einstein Nuclear BEC Proof](whitepapers/PAPER_107_EP12_BoseEinstein_Nuclear_BEC_Proof.md) (N_B=1.46, χ²/dof=0.051, [SSq]=0.57)
