@@ -907,12 +907,12 @@ All proofs use calibrated constants: κ=0.0005/day, γ=5×10⁻⁵/day, β_i=0.6
 |---|------------------|--------------------|----------------|------------|-----------|--------|
 | EP-01 | Chandra RACS J0320-35 | Chandra L_X, jet morphology | Navier-Stokes Ub_i asymmetry | Ratio ~1.5 from cos(ωt_n1)/cos(ωt_n2) | `NavierStokesFluidJetCalculator` | ✅ Integrated |
 | EP-02 | PDG 2025 particle masses | PDG 2025 mass table | E_n = E_0 × 10^n energy ladder | R²~0.95; n=8 nuclear, n=12 Higgs | `EnergyLadderParticleCalculator` | ✅ Integrated |
-| EP-03 | ATLAS-CONF-2025-007 LHC | LHC virtual quark energies | Quantum energy level n=4 | ~10⁻¹⁶ J → n=4 (quarks) | `LHCVirtualQuarkCalculator` | ⚠️ Needs validation class |
-| EP-04 | ENSDF/NNDC 2025 Pb-206 | Nuclear level ~10 MeV | n=8 binding in E_n ladder | 1.6×10⁻¹² J → n=8 confirmed | `NuclearBindingLadderCalculator` | ⚠️ Needs validation class |
+| EP-03 | ATLAS-CONF-2025-007 LHC | LHC virtual quark energies | Quantum energy level n=4 | ~10⁻¹⁶ J → n=4 (quarks) | `LHCVirtualQuarkValidator` | ✅ Integrated (`lhc_uqff_validation.py`) |
+| EP-04 | ENSDF/NNDC 2025 Pb-206 | Nuclear level ~10 MeV | n=8 binding in E_n ladder | 1.6×10⁻¹² J → n=8 confirmed | `NuclearBindingLadderValidator` | ✅ Integrated (CP2 appended) |
 | EP-05 | Fermi LAT 4LAC blazars | L ~10³⁹–10⁴⁷ W (4LAC catalog) | E_react = 10⁴⁶ e^(-κt) blazar decay | κ=0.0005 confirmed; 4LAC coverage | `FermiLATBlazarEreactCalculator` | ✅ Integrated |
 | EP-06 | Gaia DR3/DR4 SgrA* | d_g=2.44×10²⁰ m, M_bh=4.3×10⁶ M_☉ | UQFF g_SgrA*(r,t) model | 5% d_g error, 2% M_bh error | `GaiaDR4SgrACalculator` | ✅ Integrated |
 | EP-07 | Parker Solar Probe CDAWeb | ρ_sw~8×10⁻²¹ kg/m³, v_sw~500 km/s | δ_sw=0.01 heliosphere term | Ug2 heliosheath testbed confirmed | `SolarWindHeliosheathCalculator` | ✅ Integrated (`atomic_uqff_framework.py`) |
-| EP-08 | JCAP DM density | ρ_DM~10⁻⁹ J/m³ (galactic halo) | λ_vac alignment, ρ_vac~10⁻³⁸ | [SSq] ratio chain validated | `JCAPDarkMatterVacuumCalculator` | ⚠️ Needs dedicated class |
+| EP-08 | JCAP DM density | ρ_DM~10⁻⁹ J/m³ (galactic halo) | λ_vac alignment, ρ_vac~10⁻³⁸ | [SSq] ratio chain validated | `JCAPDarkMatterVacuumValidator` | ✅ Integrated (CP2 appended) |
 | EP-09 | MNRAS 3C 273 quasar jet | Jet brightness ratio >100:1 | t_n reversals, Ub_i asymmetry | Asymmetric jet via t_n sign flip | `QuasarJetAsymmetryCalculator` | ✅ Integrated |
 | EP-10 | IceCube neutrino background | <0.1 PeV SED, pp/pγ flux | UQFF SED F_ν = E_ν·n(p)·(β-β₀)² | β_i=0.61 confirmed vs IceCube | `NeutrinoSEDCalculator` | ✅ Integrated (`neutrino_sed_calculator.py`) |
 | EP-11 | GW170817 BNS merger | M_ej 40% at 0.1c, r-process 95% | Ye~0.1 threshold, Ub_i outflow feeding | r-process A>140 threshold met | `BNSMergerRProcessCalculator` | ✅ Integrated |
@@ -926,16 +926,16 @@ The 12 empirical proofs represent the **observational foundation** of the 106-pa
 |----------------|-------------|
 | **Validation backbone** | Each proof independently validates a UQFF constant (κ, [SSq], β_i, U_UA) against real data — these are the refereed "proof points" that underpin the whitepapers |
 | **Cross-domain linking** | EP-01→§1.3 GW Extended; EP-02/03/04→§1.4 BSM; EP-05→§1.11 BH; EP-06→§1.10 DB; EP-07→MUGE heliosheath; EP-08→§1.12 MUGE; EP-09→§1.3; EP-10→§1.8 BEC; EP-11→§1.1 GW Core; EP-12→§1.8 BEC/Alpha |
-| **Future whitepaper seeds** | EP-03 (LHC virtual quark), EP-04 (Pb-206 ladder), EP-08 (JCAP DM) are not yet standalone papers — potential #107–#109 as new §1.15 domain |
+| **Standalone whitepapers** | EP-03 → [PAPER_116](whitepapers/PAPER_116_EP03_LHC_VirtualQuark_Proof.md); EP-04 → [PAPER_117](whitepapers/PAPER_117_EP04_ENSDF_Pb206_BindingLadder_Proof.md); EP-08 → [PAPER_118](whitepapers/PAPER_118_EP08_JCAP_DarkMatter_Vacuum_Proof.md) — all complete under §1.15 |
 | **Constant audit trail** | All 12 proofs feed back to `shared_constants.h::GrokThread7b0e` namespace and `production_pipeline.py`changelog for reproducibility |
 
-### Still Needed (3 validation classes)
+### Completed Validator Classes (Session 39 — March 9, 2026)
 
-| Missing Class | System | Target File |
-|--------------|--------|-------------|
-| `LHCVirtualQuarkValidator` | ATLAS-CONF-2025-007, n=4 level | `CondensedPhysics2.py` or new `lhc_uqff_validation.py` |
-| `NuclearBindingLadderValidator` | ENSDF Pb-206, n=8 | `CondensedPhysics2.py` |
-| `JCAPDarkMatterVacuumValidator` | JCAP ρ_DM~10⁻⁹ J/m³ | `CondensedPhysics2.py` |
+| Class | System | File | Status |
+|-------|--------|------|--------|
+| `LHCVirtualQuarkValidator` | ATLAS-CONF-2025-007, n=4 level | `lhc_uqff_validation.py` | ✅ Built |
+| `NuclearBindingLadderValidator` | ENSDF Pb-206, n=8 | `CondensedPhysics2.py` (appended) | ✅ Built |
+| `JCAPDarkMatterVacuumValidator` | JCAP ρ_DM~10⁻⁹ J/m³ | `CondensedPhysics2.py` (appended) | ✅ Built |
 
 ---
 
@@ -1006,7 +1006,7 @@ Level 0 (Foundation):
   MAIN_1_CoAnQi.cpp (446 modules, 6,688+ terms)
   index.js (106 systems)
   CondensedPhysics.py (UnifiedFieldSolver — 176 calculators)
-    └── CondensedPhysics2.py (529 calculators, via CondensedPhysicsAggregator)
+    └── CondensedPhysics2.py (546 unique classes, via CondensedPhysicsAggregator)
          │  [wired in condensed_physics_subprocess.py +
          │   condensed_physics_subprocess_FAST.py]
          │
