@@ -35,12 +35,12 @@ def check_duplicates():
         # Extract class names from CP1
         with open(cp1_path, 'r', encoding='utf-8', errors='replace') as f:
             cp1 = f.read()
-        cp1_classes = set(re.findall(r'^class\s+(\w+Calculator)', cp1, re.MULTILINE))
+        cp1_classes = set(re.findall(r'^class\s+(\w+)', cp1, re.MULTILINE))
         
         # Extract class names from CP2
         with open(cp2_path, 'r', encoding='utf-8', errors='replace') as f:
             cp2 = f.read()
-        cp2_classes = set(re.findall(r'^class\s+(\w+Calculator)', cp2, re.MULTILINE))
+        cp2_classes = set(re.findall(r'^class\s+(\w+)', cp2, re.MULTILINE))
         
     except Exception as e:
         print(f"Warning: Error reading files: {e}")
@@ -53,8 +53,8 @@ def check_duplicates():
     print("=" * 60)
     print("CP1/CP2 DUPLICATE CHECK")
     print("=" * 60)
-    print(f"CP1 Calculator classes: {len(cp1_classes)}")
-    print(f"CP2 Calculator classes: {len(cp2_classes)}")
+    print(f"CP1 classes (unique): {len(cp1_classes)}")
+    print(f"CP2 classes (unique): {len(cp2_classes)}")
     print(f"Duplicate class names: {len(duplicates)}")
     print()
     

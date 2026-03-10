@@ -12152,37 +12152,6 @@ class Batch37ProgressCalculator:
         }
 
 
-class NegativeTimeUPCalculator:
-    """
-    Calculate negative time t⁻ (retrocausal component).
-    Equation: t⁻ = -t_n · e^(π - t_n)
-    Models non-local effects akin to quantum entanglement in red dwarf jets.
-    """
-    
-    def __init__(self, params=None):
-        self.params = params or ORB_ANALYSIS_31_PARAMS
-    
-    def compute(self, dataset: dict = None) -> dict:
-        """Compute negative time from normalized time."""
-        import math
-        
-        t_n = dataset.get('t_n', self.params['timestamp_end_s']) if dataset else self.params['timestamp_end_s']
-        
-        # t⁻ = -t_n · e^(π - t_n)
-        exponent = math.pi - t_n
-        t_minus = -t_n * math.exp(exponent)
-        
-        return {
-            't_n_s': t_n,
-            'pi': math.pi,
-            'exponent': exponent,
-            't_minus_s': t_minus,
-            'equation': 't⁻ = -t_n · e^(π - t_n)',
-            'description': 'Retrocausal component reflecting non-local effects',
-            'stellar_analog': 'Quantum entanglement in red dwarf jets',
-        }
-
-
 class GravitationalConstantKCalculator:
     """
     Calculate gravitational scaling constant k_i.
@@ -12409,7 +12378,7 @@ class AlternatingCurrentEffectCalculator:
         }
 
 
-class InterferenceFactorCalculator:
+class InterferenceFactorComplexCalculator:
     """
     Calculate interference factor IF^(π-t) from wave-particle duality.
     Equation: IF^(π-t) = e^(i(π-t))
@@ -12445,146 +12414,6 @@ class InterferenceFactorCalculator:
             'equation': 'IF^(π-t) = e^(i(π-t))',
             'description': 'Phase interference from wave-particle duality',
         }
-
-
-class UniversalPermanenceCalculator:
-    """
-    Compute full Universal Permanence (UP) equation integrating all terms.
-    UP(t) = Σ[k_i·Ug_i] + Σ[μ_j·Um_j] + (g_μν + η·T_s^μν) 
-          + Ub + NN + QS + ACE + DCE + SSq + IF^(π-t) + QV
-    """
-    
-    def __init__(self, params=None):
-        self.params = params or ORB_ANALYSIS_31_PARAMS
-    
-    def compute(self, dataset: dict = None) -> dict:
-        """Compute full UP equation."""
-        import math
-        
-        p = self.params
-        t_n = dataset.get('t_n', p['timestamp_end_s']) if dataset else p['timestamp_end_s']
-        r = dataset.get('r_m', 0.0889) if dataset else 0.0889
-        M_s = dataset.get('M_s_kg', 0.0005) if dataset else 0.0005
-        
-        # Constants
-        G = 6.674e-11
-        
-        # Gravitational term: Ug = G·M_s/r
-        Ug = G * M_s / r
-        
-        # Negative time
-        t_minus = -t_n * math.exp(math.pi - t_n)
-        
-        # Background fields (constant terms)
-        Ub = p['Ub_background_J_m3']  # 10⁻⁹
-        DCE = p['DCE_field_T']  # 10⁻⁴
-        SSq = p['SSq_energy_J']  # 10⁻⁶
-        QV = p['QV_vacuum_J_m3']  # 10⁻⁹
-        
-        # Non-locality noise: NN = NN_0·sin(2πt⁻/τ)
-        NN_0 = p['NN_noise_s_inv']
-        tau = p['tau_noise_period_s']
-        NN = NN_0 * math.sin(2 * math.pi * t_minus / tau)
-        
-        # ACE: oscillatory field
-        ACE_0 = p['ACE_amplitude_T']
-        ACE = ACE_0 * math.sin(2 * math.pi * 6000 * t_minus)
-        
-        # Temperature stress-energy (simplified scalar)
-        eta = p['eta_curvature']
-        T_s = 2144  # Midpoint temperature K
-        T_stress = eta * T_s
-        
-        # Sum all terms (simplified scalar combination for demonstration)
-        UP_value = Ug + Ub + abs(NN) + abs(ACE) + DCE + SSq + QV + T_stress
-        
-        return {
-            't_n_s': t_n,
-            't_minus_s': t_minus,
-            'r_m': r,
-            'M_s_kg': M_s,
-            'Ug_J_kg': Ug,
-            'Ub_J_m3': Ub,
-            'NN_s_inv': NN,
-            'ACE_T': ACE,
-            'DCE_T': DCE,
-            'SSq_J': SSq,
-            'QV_J_m3': QV,
-            'T_stress_kg_m_s2': T_stress,
-            'UP_simplified': UP_value,
-            'equation': 'UP(t) = Σ[k_i·Ug_i] + Σ[μ_j·Um_j] + (g_μν + η·T_s^μν) + Ub + NN + QS + ACE + DCE + SSq + IF^(π-t) + QV',
-            'variable_count': 29,
-            'description': 'Full Universal Permanence equation integrating plasmoids, fields, and non-locality',
-        }
-
-
-# Registry for Orb Analysis 31 calculators
-ORB_ANALYSIS_31_CALCULATORS = {
-    'Batch37ProgressCalculator': Batch37ProgressCalculator(),
-    'NegativeTimeUPCalculator': NegativeTimeUPCalculator(),
-    'GravitationalConstantKCalculator': GravitationalConstantKCalculator(),
-    'MagneticConstantMuCalculator': MagneticConstantMuCalculator(),
-    'TemperatureStressEnergyCalculator': TemperatureStressEnergyCalculator(),
-    'NonLocalityDecayCalculator': NonLocalityDecayCalculator(),
-    'QuantumStatePhaseCalculator': QuantumStatePhaseCalculator(),
-    'AlternatingCurrentEffectCalculator': AlternatingCurrentEffectCalculator(),
-    'InterferenceFactorCalculator': InterferenceFactorCalculator(),
-    'UniversalPermanenceCalculator': UniversalPermanenceCalculator(),
-}
-
-
-# ═══════════════════════════════════════════════════════════════════════════════
-# ORB ANALYSIS 32: UFE ORB EXP 2_22_07Mar2025 - GEOMETRIC PLASMOID FLOW
-# Complete UP equation implementation, geometric factor for mass-independent
-# variables, batch analysis progression, energy density decay modeling
-# 4,965-image sequence (149.88s at 33.3 fps), batches #31-38 analyzed
-# ═══════════════════════════════════════════════════════════════════════════════
-
-ORB_ANALYSIS_32_PARAMS = {
-    'experiment_id': 'UFE ORB EXP 2_22_07Mar2025',
-    'total_images': 4965,
-    'total_duration_s': 149.88,
-    'fps': 33.3,
-    'frame_period_s': 0.03,
-    
-    # Batch definitions (analyzed in this session)
-    'batch_31': {'frames': (301, 325), 'time_range_s': (9.03, 9.75), 'non_local_jumps': (0.5, 1.0), 't_minus_s': -0.0133, 'P': 0.999},
-    'batch_32': {'frames': (326, 350), 'time_range_s': (9.78, 10.50), 'non_local_jumps': (0.8, 1.2), 't_minus_s': -0.00668, 'P': 0.986},
-    'batch_37': {'frames': (401, 425), 'time_range_s': (12.03, 12.75), 'non_local_jumps': (1.0, 2.0), 't_minus_s': -8.08e-4, 'P': 0.44},
-    'batch_38': {'frames': (426, 450), 'time_range_s': (12.78, 13.50), 'non_local_jumps': (1.0, 1.5), 't_minus_s': -6.72e-4, 'P': 0.402},
-    
-    # Geometric factor parameters
-    'cylinder_radius_m': 0.0889,  # r = 3.5 inch / 2
-    'cylinder_height_m': 0.254,   # h = 10 inch
-    
-    # Energy density decay
-    'E_react_base_W_m3': 1e15,
-    'energy_decay_constant': 0.001,  # per second
-    
-    # Non-locality noise
-    'NN_0': 0.01,  # s⁻¹
-    'tau_s': 0.1,   # noise period
-    
-    # Universal background decay
-    'Ub_0_J_m3': 1e-9,
-    'alpha_decay': 0.01,  # s⁻¹
-    
-    # Superconductive state quantum
-    'SSq_0_J': 1e-6,
-    'beta_decay': 0.01,  # s⁻¹
-    
-    # Mass-independent field coefficients
-    'UA_C': 1e-11,
-    'QS_m': 1e-20,
-    'QV_J_m3': 1e-9,
-    'SCm_prime_m3': 1e15,
-    
-    # Plasmoid metrics (consistent)
-    'plasmoid_count': (40, 50),
-    'velocity_m_s': 0.5,
-    'rotation_rate_per_s': 0.15,
-    'energy_per_frame_J': 0.019,
-}
 
 
 class BatchAnalysisProgressCalculator:
@@ -13358,7 +13187,7 @@ ORB_ANALYSIS_33_PARAMS = {
 }
 
 
-class UniversalPermanenceEquationCalculator:
+class UniversalPermanenceMultiplicativeCalculator:
     """
     Calculator for full Universal Permanence equation.
     
@@ -14172,55 +14001,6 @@ class PlasmoidGravitationalPotentialCalculator:
         }
 
 
-class EnergyDensityDecayCalculator:
-    """Energy density decay over time.
-    
-    E_react = 10¹⁵ W/m³ · e^(-0.001·t_n)
-    Tracks reactor energy output evolution through experiment.
-    """
-    
-    def compute(self, dataset: dict) -> dict:
-        E_base = dataset.get('E_base_W_per_m3', 1e15)
-        decay_rate = dataset.get('decay_rate', 0.001)
-        t_n = dataset.get('t_n_s', 14.34)
-        
-        # Current energy density
-        E_react = E_base * math.exp(-decay_rate * t_n)
-        
-        # Half-life
-        half_life = math.log(2) / decay_rate
-        
-        # Energy at key timestamps
-        timestamps = dataset.get('timestamps', [0, 5, 10, 14.25, 14.34, 20, 50, 100])
-        energy_evolution = {}
-        for t in timestamps:
-            energy_evolution[f't={t}s'] = E_base * math.exp(-decay_rate * t)
-        
-        # Percent remaining
-        percent_remaining = E_react / E_base * 100
-        
-        # Time to 50% energy
-        time_to_half = half_life
-        
-        # Red dwarf jet comparison (~10^18-10^20 J/m³)
-        red_dwarf_jet_min = 1e18
-        red_dwarf_jet_max = 1e20
-        E_react_comparable = red_dwarf_jet_min <= E_react <= red_dwarf_jet_max
-        
-        return {
-            'E_base_W_per_m3': E_base,
-            'decay_rate': decay_rate,
-            't_n_s': t_n,
-            'E_react_W_per_m3': E_react,
-            'half_life_s': half_life,
-            'percent_remaining': percent_remaining,
-            'energy_evolution': energy_evolution,
-            'red_dwarf_jet_range': (red_dwarf_jet_min, red_dwarf_jet_max),
-            'red_dwarf_comparable': E_react_comparable,
-            'interpretation': f'E_react = {E_react:.3e} W/m³ at t={t_n}s ({percent_remaining:.2f}% of initial)',
-        }
-
-
 class JumpAmplificationFactorCalculator:
     """Amplification factor between observed and theoretical jump probability.
     
@@ -14278,7 +14058,7 @@ class JumpAmplificationFactorCalculator:
         }
 
 
-class CycleDynamicsCalculator:
+class CycleDynamicsOrb33Calculator:
     """Primary and sub-cycle dynamics analysis.
     
     Primary cycle: ~3.3 s (H₂ synthesis period)
@@ -22037,7 +21817,7 @@ class YukawaCouplingMassCalculator:
         }
 
 
-class SelfSimilarQuotientCalculator:
+class SSqExponentScalingCalculator:
     """
     Calculator for UQFF Self-Similar Quotient [SSq].
     
@@ -29966,7 +29746,7 @@ class StellarWindShockCalculator:
         }
 
 
-class OutflowPressureCalculator:
+class OutflowRamPressureCalculator:
     """
     Protostellar Outflow Pressure Calculator
     
@@ -32941,7 +32721,7 @@ ORB_ANALYSIS_59_PARAMS = {
 }
 
 
-class ErrorPropagationCalculator:
+class ErrorPropagationFormulasCalculator:
     """
     Error propagation using partial derivatives.
     
@@ -33167,180 +32947,6 @@ class NewtonRaphsonCalculator:
             'tolerance': tol,
             'equation': 'x_{n+1} = x_n - f(x_n) / f\'(x_n)'
         }
-
-
-class UnitConversionCalculator:
-    """
-    Unit conversion between common physical units.
-    
-    Converts values between different units of the same dimension.
-    """
-    
-    def compute(self, dataset: dict) -> dict:
-        """
-        Convert value between units.
-        
-        Args:
-            dataset: {
-                'value': float,
-                'from_unit': str,
-                'to_unit': str
-            }
-        
-        Returns:
-            dict with converted value and conversion factor
-        """
-        value = dataset.get('value', 1.0)
-        from_unit = dataset.get('from_unit', 'm')
-        to_unit = dataset.get('to_unit', 'cm')
-        
-        # Length conversions (to meters)
-        length_factors = {
-            'm': 1.0, 'cm': 0.01, 'mm': 0.001, 'km': 1000.0,
-            'in': 0.0254, 'ft': 0.3048, 'yd': 0.9144, 'mi': 1609.344,
-            'nm': 1e-9, 'um': 1e-6, 'au': 1.496e11, 'ly': 9.461e15, 'pc': 3.086e16
-        }
-        
-        # Mass conversions (to kg)
-        mass_factors = {
-            'kg': 1.0, 'g': 0.001, 'mg': 1e-6, 'ug': 1e-9,
-            'lb': 0.453592, 'oz': 0.0283495, 'ton': 1000.0,
-            'solar_mass': 1.989e30, 'earth_mass': 5.972e24
-        }
-        
-        # Time conversions (to seconds)
-        time_factors = {
-            's': 1.0, 'ms': 0.001, 'us': 1e-6, 'ns': 1e-9,
-            'min': 60.0, 'hr': 3600.0, 'day': 86400.0,
-            'week': 604800.0, 'year': 31557600.0
-        }
-        
-        # Energy conversions (to Joules)
-        energy_factors = {
-            'J': 1.0, 'kJ': 1000.0, 'MJ': 1e6, 'GJ': 1e9,
-            'eV': 1.602e-19, 'keV': 1.602e-16, 'MeV': 1.602e-13, 'GeV': 1.602e-10,
-            'cal': 4.184, 'kcal': 4184.0, 'BTU': 1055.06, 'kWh': 3.6e6,
-            'erg': 1e-7
-        }
-        
-        # Pressure conversions (to Pascals)
-        pressure_factors = {
-            'Pa': 1.0, 'kPa': 1000.0, 'MPa': 1e6, 'GPa': 1e9,
-            'bar': 1e5, 'mbar': 100.0, 'atm': 101325.0,
-            'psi': 6894.76, 'torr': 133.322, 'mmHg': 133.322
-        }
-        
-        # Find which category units belong to
-        all_factors = {
-            'length': length_factors,
-            'mass': mass_factors,
-            'time': time_factors,
-            'energy': energy_factors,
-            'pressure': pressure_factors
-        }
-        
-        from_category = None
-        to_category = None
-        
-        for cat, factors in all_factors.items():
-            if from_unit in factors:
-                from_category = cat
-                from_factor = factors[from_unit]
-            if to_unit in factors:
-                to_category = cat
-                to_factor = factors[to_unit]
-        
-        if from_category is None:
-            return {'error': f'Unknown unit: {from_unit}'}
-        if to_category is None:
-            return {'error': f'Unknown unit: {to_unit}'}
-        if from_category != to_category:
-            return {'error': f'Cannot convert {from_category} to {to_category}'}
-        
-        # Convert: value * from_factor / to_factor
-        conversion_factor = from_factor / to_factor
-        converted_value = value * conversion_factor
-        
-        return {
-            'original_value': value,
-            'original_unit': from_unit,
-            'converted_value': converted_value,
-            'converted_unit': to_unit,
-            'conversion_factor': conversion_factor,
-            'category': from_category,
-            'equation': f'{value} {from_unit} = {converted_value} {to_unit}'
-        }
-
-
-# Registry for Orb Analysis 59
-ORB_ANALYSIS_59_CALCULATORS = {
-    'ErrorPropagationCalculator': ErrorPropagationCalculator(),
-    'NewtonRaphsonCalculator': NewtonRaphsonCalculator(),
-    'UnitConversionCalculator': UnitConversionCalculator(),
-}
-
-
-# ═══════════════════════════════════════════════════════════════════════════════
-# ORB ANALYSIS 60: Star Magic UQFF Core Framework
-# Source: Grok ScientificCalculatorDialog - Complete UQFF Integration
-# https://x.com/i/grok/share/b3fef8452b534820a70d5fd9eb983b6d
-# 19 Calculator classes: Universal Inertia, Universal Time, Unified Field,
-# Aether Coupling, Background Metric, Buoyancy Coupling/Modulation,
-# Final Parsec, Merger Timescale, Metal Retention, CGM Baryon/Gradient,
-# Zeta Pi Wave, Schwarzschild Proton, Higgs Stability, Ug Coupling,
-# Feedback Factor, Galactic/String Distance
-# ═══════════════════════════════════════════════════════════════════════════════
-
-# UQFF Core Parameters from Star Magic framework
-ORB_ANALYSIS_60_PARAMS = {
-    # Vacuum densities (J/m³)
-    'RHO_VAC_SCM': 1e-12,           # [SCm] vacuum energy density
-    'RHO_VAC_UA': 1e-18,            # [UA] vacuum energy density
-    'RHO_VAC_A': 1e-15,             # Aether vacuum energy density
-    
-    # Coupling constants (dimensionless)
-    'ETA_AETHER': 1e-22,            # Aether coupling constant η
-    'BETA_BUOYANCY': 0.6,           # Buoyancy coupling β_i (uniform)
-    'EPSILON_SW': 0.001,            # Solar wind modulation ε_sw
-    'KAPPA_HIGGS': 0.01,            # Higgs-[SCm] coupling κ_H
-    
-    # Gravity coupling constants k_i
-    'K_UG1': 1.5,                   # k₁ for Ug1
-    'K_UG2': 1.2,                   # k₂ for Ug2
-    'K_UG3': 1.8,                   # k₃ for Ug3
-    'K_UG4': 1.0,                   # k₄ for Ug4
-    
-    # Distance scales
-    'R_STRING_100AU': 1.496e13,     # String distance ~100 AU (m)
-    'D_GALACTIC_27KLY': 2.55e20,    # Galactic center distance ~27kly (m)
-    'V_PARSEC_CUBED': (3.26 * 9.461e15)**3,  # 1 pc³ in m³
-    
-    # Astrophysical constants
-    'F_IGNITION': 0.01,             # Final parsec ignition fraction
-    'GW_POWER_SMBH': 1e40,          # Approx GW power for SMBH binary (W)
-    'HUBBLE_TIME_SEC': 4.35e17,     # Hubble time in seconds
-    
-    # Metal retention (Sanchez et al. approximations)
-    'FZ_BASE': 0.89,                # Base metal retention fraction
-    'FZ_COEFF': 0.04,               # δM_BH coefficient
-    'FCGM_BASE': 0.73,              # Base CGM baryon fraction (star-forming)
-    'FCGM_DELTA_COEFF': 0.11,       # CGM flattening coefficient
-    
-    # Quantum/wave parameters
-    'PI_FREQ_MAX': 3.14e9,          # Max π-frequency (Hz)
-    'NEGATIVE_TIME_EXAMPLE': -2512, # Example negative time tn (s)
-    'BIO_QUANTUM_FREQ': 400,        # Bio-quantum resonance (Hz)
-    
-    # Energy scales
-    'E_HIGGS_STABILITY': 2e-8,      # Higgs stability energy ~2×10⁻⁸ J
-    'T_STRESS_ENERGY': 1.123e7,     # Stress-energy tensor T_s (J/m³)
-    
-    # Feedback factors
-    'F_FEEDBACK_1DEX': 0.1,         # 10% boost per 1 dex ΔM_BH
-    
-    # Schwarzschild proton
-    'PROTON_SCHWARZSCHILD_VOL': 1e-39,  # ~10⁻³⁹ cm³
-}
 
 
 class UniversalInertiaOrb60Calculator:
@@ -34746,7 +34352,7 @@ class DEPowerTransformCalculator:
         }
 
 
-class TimeReversalZoneCalculator:
+class TimeReversalZoneDynamicCalculator:
     """
     Time-Reversal Zone (TRZ) factor calculator.
     
@@ -35128,7 +34734,7 @@ class VacuumDensityFieldCalculator:
         }
 
 
-class StressEnergyTensorCalculator:
+class VacuumStressEnergyTensorCalculator:
     """
     Stress-Energy Tensor (T_s^μν) component calculator.
     
@@ -41090,7 +40696,7 @@ class SCmDipoleAmplifiedCalculator:
         }
 
 
-class YangMillsMassGapCalculator:
+class YangMillsStringSpectrumCalculator:
     """
     Yang-Mills mass gap hypothesis via Ug3 discrete energy spectrum (Thread 3a469fcc).
 
@@ -42599,7 +42205,7 @@ SOURCE_1a2726a4_CALCULATORS = {
 
 ENSDF_PB206_LEVELS = {
     # ENSDF 2025: Pb-206 nuclear excitation levels (selected)
-    # Energy in MeV ? J: E_J = E_MeV � 1.602e-13 J/MeV
+    # Energy in MeV ? J: E_J = E_MeV � 1.602e-13 J/MeV
     'ground_state':   {'E_MeV': 0.000,  'E_J': 0.0,           'Jpi': '0+'},
     'first_2plus':    {'E_MeV': 0.803,  'E_J': 1.286e-13,     'Jpi': '2+'},
     'first_4plus':    {'E_MeV': 1.162,  'E_J': 1.861e-13,     'Jpi': '4+'},
@@ -42612,7 +42218,7 @@ class NuclearBindingLadderValidator:
     """
     Validates UQFF energy ladder at nuclear (n=8) scale using ENSDF Pb-206 data.
 
-    UQFF Ladder: E_n = 1e-20 � 10^n Joules
+    UQFF Ladder: E_n = 1e-20 � 10^n Joules
         n = 8  ? E = 1e-12 J = 6.242 MeV  (near Pb-206 neutron separation = 7.367 MeV)
         n = 9  ? E = 1e-11 J = 62.42 MeV  (deep nuclear excitation)
         n = 10 ? E = 1e-10 J = 624 MeV    (hadronic / GeV scale)
@@ -42692,7 +42298,7 @@ class NuclearBindingLadderValidator:
         Computes [SSq] as ratio of n=8 binding to n=8 ladder energy.
         Pb-206 neutron separation = 7.367 MeV = 1.180e-12 J
         UQFF n=8: E_8 = 1e-12 J
-        Ratio = 1.180e-12 / 1e-12 = 1.180 ~ 2�[SSq] = 2�0.57 = 1.14 (3.2% error)
+        Ratio = 1.180e-12 / 1e-12 = 1.180 ~ 2�[SSq] = 2�0.57 = 1.14 (3.2% error)
         """
         E_sep = ENSDF_PB206_LEVELS['separation_n']['E_J']  # 1.180e-12
         E_8 = self.E_BASE * (10 ** 8)                       # 1e-12
@@ -42716,16 +42322,16 @@ class NuclearBindingLadderValidator:
 
 JCAP_COSMOLOGICAL_DATA = {
     # Dark matter energy density from Planck 2018 + JCAP 2024 constraints
-    'rho_DM_cosmological': 2.3e-28,      # kg/m� (Planck 2018 Omega_DM h�)
-    'rho_DM_local': 0.3e9 * 1.602e-13 / (3.086e19)**3,  # ~6e-25 J/m� (local halo)
-    'rho_vacuum_planck': 1.11e-9,        # J/m� (measured dark energy density)
-    'rho_DM_jcap_energy': 9.1e-28 * (3e8)**2,  # J/m� (DM energy density)
-    # [SSq] ratio chain: rho_DM / rho_vacuum � [SSq]^2
-    # 9.1e-28 � c� / 1.11e-9 � 8.19e-11 / 1.11e-9 � 0.0738 � [SSq]^2/4.4
+    'rho_DM_cosmological': 2.3e-28,      # kg/m� (Planck 2018 Omega_DM h�)
+    'rho_DM_local': 0.3e9 * 1.602e-13 / (3.086e19)**3,  # ~6e-25 J/m� (local halo)
+    'rho_vacuum_planck': 1.11e-9,        # J/m� (measured dark energy density)
+    'rho_DM_jcap_energy': 9.1e-28 * (3e8)**2,  # J/m� (DM energy density)
+    # [SSq] ratio chain: rho_DM / rho_vacuum � [SSq]^2
+    # 9.1e-28 � c� / 1.11e-9 � 8.19e-11 / 1.11e-9 � 0.0738 � [SSq]^2/4.4
     # More precisely: ratio chain through 2 [SSq] hops:
-    # Level 1: rho_vac � [SSq] = 1.11e-9 � 0.57 = 6.33e-10
-    # Level 2: 6.33e-10 � [SSq] = 3.61e-10
-    # Level 3: 3.61e-10 � [SSq] = 2.06e-10 ~ rho_DM (J/m�) at local level
+    # Level 1: rho_vac � [SSq] = 1.11e-9 � 0.57 = 6.33e-10
+    # Level 2: 6.33e-10 � [SSq] = 3.61e-10
+    # Level 3: 3.61e-10 � [SSq] = 2.06e-10 ~ rho_DM (J/m�) at local level
     'SSq_predicted_level': 3,            # 3 hops of [SSq]=0.57 to bridge vac?DM
     'SSq_ratio': 0.57 ** 3,             # [SSq]^3 = 0.185 (3-hop)
 }
@@ -42736,29 +42342,29 @@ class JCAPDarkMatterVacuumValidator:
     matter density, as constrained by JCAP 2024 and Planck 2018 data.
 
     The [SSq] ratio chain:
-        rho_vacuum (Lambda) � [SSq]^N � rho_DM
+        rho_vacuum (Lambda) � [SSq]^N � rho_DM
     
     Physical interpretation:
-        [SSq] = 0.57 is the UQFF vacuum quantum sub-coupling fraction �
+        [SSq] = 0.57 is the UQFF vacuum quantum sub-coupling fraction �
         each 'hop' transfers 57% of vacuum energy density to the next sublevel.
-        After N = 3 hops: rho_DM � rho_vac � [SSq]^3 = 1.11e-9 � 0.185 = 2.06e-10 J/m�
+        After N = 3 hops: rho_DM � rho_vac � [SSq]^3 = 1.11e-9 � 0.185 = 2.06e-10 J/m�
 
     JCAP 2024 DM energy density constraints support this at local halo scale:
-        rho_DM_local � 0.3�0.5 GeV/cm� = (3�5) � 10?�� J/m�
+        rho_DM_local � 0.3�0.5 GeV/cm� = (3�5) � 10?�� J/m�
 
     This confirms [SSq] = 0.57 as the cosmological vacuum-to-DM coupling.
     """
     SSq = 0.57
     kappa = 0.0005
-    rho_vac = 1.11e-9          # J/m�, dark energy density (Planck 2018)
-    rho_DM_target = 3.5e-10    # J/m�, local DM energy density midpoint
+    rho_vac = 1.11e-9          # J/m�, dark energy density (Planck 2018)
+    rho_DM_target = 3.5e-10    # J/m�, local DM energy density midpoint
 
     def compute_ratio_chain(self, N_hops):
-        """Compute rho_vac � [SSq]^N � ratio chain result."""
+        """Compute rho_vac � [SSq]^N � ratio chain result."""
         return self.rho_vac * (self.SSq ** N_hops)
 
     def find_best_hop(self):
-        """Find N that minimizes |rho_vac � [SSq]^N - rho_DM_target|."""
+        """Find N that minimizes |rho_vac � [SSq]^N - rho_DM_target|."""
         import math
         N_best = 0
         best_err = float('inf')
@@ -42779,9 +42385,9 @@ class JCAPDarkMatterVacuumValidator:
 
         N_best, best_err, all_results = self.find_best_hop()
 
-        # Local DM density range: 0.3�0.5 GeV/cm�
-        rho_DM_min = 3.0e-10  # J/m� (0.3 GeV/cm�)
-        rho_DM_max = 5.0e-10  # J/m� (0.5 GeV/cm�)
+        # Local DM density range: 0.3�0.5 GeV/cm�
+        rho_DM_min = 3.0e-10  # J/m� (0.3 GeV/cm�)
+        rho_DM_max = 5.0e-10  # J/m� (0.5 GeV/cm�)
 
         # Check which hops fall in range
         in_range_results = [r for r in all_results if rho_DM_min <= r['rho_predicted'] <= rho_DM_max]
