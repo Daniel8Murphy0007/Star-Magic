@@ -1005,7 +1005,7 @@ These are cross-reference values from thread code_execution blocks:
 Level 0 (Foundation):
   MAIN_1_CoAnQi.cpp (446 modules, 6,688+ terms)
   index.js (106 systems)
-  CondensedPhysics.py (UnifiedFieldSolver — 176 calculators)
+  CondensedPhysics.py (1,199 unique classes, UnifiedFieldSolver)
     └── CondensedPhysics2.py (546 unique classes, via CondensedPhysicsAggregator)
          │  [wired in condensed_physics_subprocess.py +
          │   condensed_physics_subprocess_FAST.py]
