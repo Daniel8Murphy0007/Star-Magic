@@ -238,3 +238,6 @@ grok_api_config.json
 
 
 grok_api_config.json
+
+# production_pipeline run-artifact JSONs (timestamped per-run)
+production_output/*.json

@@ -453,7 +453,7 @@ def main():
         if result.get('statistical_analysis'):
             print("\nStatistical Summary:")
             print_analysis_summary(
-                TriplePointAnalysis(**result['statistical_analysis'])
+                TriplePointAnalysis.from_dict(result['statistical_analysis'])
             )
     else:
         # Batch processing

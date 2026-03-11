@@ -150,6 +150,19 @@ class TriplePointAnalysis:
             result['correlation_matrix'] = self.correlation_matrix
         return result
     
+    @classmethod
+    def from_dict(cls, d: Dict) -> 'TriplePointAnalysis':
+        """Reconstruct a TriplePointAnalysis from a to_dict() result."""
+        obj = cls.__new__(cls)
+        obj.query_name = d['query_name']
+        obj.num_equations = d['num_equations']
+        obj.range = RangeAnalysis(**d['range'])
+        obj.scale = ScaleAnalysis(**d['scale'])
+        obj.probability = ProbabilityAnalysis(**d['probability'])
+        obj.fine_fit = FineFitRatio(**d['fine_fit']) if d.get('fine_fit') else None
+        obj.correlation_matrix = d.get('correlation_matrix')
+        return obj
+
     def to_json(self, indent: int = 2) -> str:
         """Convert to JSON string."""
         return json.dumps(self.to_dict(), indent=indent)

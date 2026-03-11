@@ -241614,5 +241614,2133 @@
         "unit": "days"
       }
     }
+  },
+  "--help_20260310T195830396782": {
+    "timestamp": "2026-03-10T19:58:30.396782",
+    "input_params": {
+      "query_name": "--help",
+      "scale": "UQFFScale.STELLAR",
+      "M": 1e+30,
+      "r": 1000000.0,
+      "z": 0.0,
+      "B": 1e-05,
+      "t": 100000000.0,
+      "t_n": 0.0,
+      "k_coupling": 1.0,
+      "beta_coupling": 0.6
+    },
+    "long_form_equations": [
+      {
+        "name": "Ug1",
+        "latex": "U_{g1} = k_1 \\times \\frac{G \\times M}{r^2}",
+        "substituted": "Ug1 = 1.5 \u00d7 (6.6743e-11 \u00d7 1.0000e+30) / (1.0000e+06)\u00b2",
+        "result": 100114500.0,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "k_1": 1.5,
+          "G": 6.6743e-11,
+          "M": 1e+30,
+          "r": 1000000.0
+        }
+      },
+      {
+        "name": "Ug2",
+        "latex": "U_{g2} = k_2 \\times \\frac{G \\times M}{r^2} \\times H_{SCm}",
+        "substituted": "Ug2 = 1.2 \u00d7 (6.6743e-11 \u00d7 1.0000e+30) / (1.0000e+06)\u00b2 \u00d7 0.99",
+        "result": 79290683.99999999,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "k_2": 1.2,
+          "G": 6.6743e-11,
+          "M": 1e+30,
+          "r": 1000000.0,
+          "H_SCm": 0.99
+        }
+      },
+      {
+        "name": "Ug3",
+        "latex": "U_{g3} = k_3 \\times \\frac{G \\times M}{r^2}",
+        "substituted": "Ug3 = 1.8 \u00d7 (6.6743e-11 \u00d7 1.0000e+30) / (1.0000e+06)\u00b2",
+        "result": 120137399.99999999,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "k_3": 1.8,
+          "G": 6.6743e-11,
+          "M": 1e+30,
+          "r": 1000000.0
+        }
+      },
+      {
+        "name": "Ug4",
+        "latex": "U_{g4} = k_4 \\times \\frac{G \\times M}{r^2}",
+        "substituted": "Ug4 = 1.0 \u00d7 (6.6743e-11 \u00d7 1.0000e+30) / (1.0000e+06)\u00b2",
+        "result": 66742999.99999999,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "k_4": 1.0,
+          "G": 6.6743e-11,
+          "M": 1e+30,
+          "r": 1000000.0
+        }
+      },
+      {
+        "name": "Ug",
+        "latex": "U_g = U_{g1} + U_{g2} + U_{g3} + U_{g4}",
+        "substituted": "Ug = 1.0011e+08 + 7.9291e+07 + 1.2014e+08 + 6.6743e+07",
+        "result": 366285584.0,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "Ug1": 100114500.0,
+          "Ug2": 79290683.99999999,
+          "Ug3": 120137399.99999999,
+          "Ug4": 66742999.99999999
+        }
+      },
+      {
+        "name": "Ug1_enhanced",
+        "latex": "U_{g1}^* = k_1 \\times \\frac{GM}{r^2} \\times e^{-\\alpha t} \\times \\cos(\\omega t_n) \\times (1 + \\beta_{\\text{def}})",
+        "substituted": "Ug1* = 1.5 \u00d7 (6.674e-11\u00d71.000e+30/1.000e+06\u00b2) \u00d7 e^(-1e-10\u00d71.000e+08) \u00d7 cos(7.272e-05\u00d70.0) \u00d7 (1+0.1)",
+        "result": 109030178.48896919,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "k_1": 1.5,
+          "G": 6.6743e-11,
+          "M": 1e+30,
+          "r": 1000000.0,
+          "alpha": 1e-10,
+          "beta_def": 0.1,
+          "t": 100000000.0,
+          "t_n": 0.0,
+          "omega": 7.27220521664304e-05,
+          "time_decay": 0.9900498337491681,
+          "oscillation": 1.0
+        }
+      },
+      {
+        "name": "Ug2_enhanced",
+        "latex": "U_{g2}^* = k_2 \\times \\frac{GM}{r^2} \\times S(r-R_b) \\times (1 + \\delta_{sw} v_{sw}) \\times H_{SCm} \\times E_{\\text{react}}",
+        "substituted": "Ug2* = 1.2 \u00d7 (6.674e-11\u00d71.000e+30/1.000e+06\u00b2) \u00d7 S(1.000e+06-1.795e+13) \u00d7 (1+0.01\u00d75.000e+05) \u00d7 0.99 \u00d7 1.176e+47",
+        "result": 0.0,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "k_2": 1.2,
+          "G": 6.6743e-11,
+          "M": 1e+30,
+          "r": 1000000.0,
+          "R_b": 17952000000000.0,
+          "step_func": 0.0,
+          "delta_sw": 0.01,
+          "v_sw": 500000.0,
+          "H_SCm": 0.99,
+          "E_react": 1.176066466304271e+47
+        }
+      },
+      {
+        "name": "Ug3_enhanced",
+        "latex": "U_{g3}^* = k_3 \\times \\frac{GM}{r^2} \\times B \\cos(\\omega_s t) \\times P_{\\text{core}} \\times E_{\\text{react}}",
+        "substituted": "Ug3* = 1.8 \u00d7 (6.674e-11\u00d71.000e+30/1.000e+06\u00b2) \u00d7 1.000e-05\u00d7cos(2.865e-06\u00d71.000e+08) \u00d7 1.0 \u00d7 1.176e+47",
+        "result": -11539.59808783778,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "k_3": 1.8,
+          "G": 6.6743e-11,
+          "M": 1e+30,
+          "r": 1000000.0,
+          "B": 1e-05,
+          "omega": 2.865e-06,
+          "t": 100000000.0,
+          "P_core": 1.0,
+          "rotation_factor": -0.8167339098647604,
+          "E_react": 1.176066466304271e+47
+        }
+      },
+      {
+        "name": "Ug_enhanced_total",
+        "latex": "U_g^* = U_{g1}^* + U_{g2}^* + U_{g3}^* + U_{g4}^*",
+        "substituted": "Ug* = Sum of enhanced components",
+        "result": 109018638.89088136,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "component_count": 4
+        }
+      },
+      {
+        "name": "Um",
+        "latex": "U_m = \\frac{\\mu}{r} \\times (1 - e^{-\\gamma t \\cos(\\pi t_n)})",
+        "substituted": "Um = (1.0000e+23 / 1.0000e+06) \u00d7 (1 - exp(-5e-05 \u00d7 100000000.0 \u00d7 cos(\u03c0 \u00d7 0.0)))",
+        "result": 9.999999999999998e+16,
+        "unit": "J/m\u00b3",
+        "parameters_used": {
+          "mu": 1e+23,
+          "r": 1000000.0,
+          "gamma": 5e-05,
+          "t": 100000000.0,
+          "t_n": 0.0,
+          "time_factor": 1.0
+        }
+      }
+    ],
+    "solutions": {
+      "Ug1": 100114500.0,
+      "Ug2": 79290683.99999999,
+      "Ug3": 120137399.99999999,
+      "Ug4": 66742999.99999999,
+      "Ug": 366285584.0,
+      "Ug1_enhanced": 109030178.48896919,
+      "Ug2_enhanced": 0.0,
+      "Ug3_enhanced": -11539.59808783778,
+      "Ug_enhanced_total": 109018638.89088136,
+      "Um": 9.999999999999998e+16,
+      "_errors": "Unexpected error: 'ComputeParams' object has no attribute 'Delta_t'"
+    },
+    "available_equations": [
+      "compute_Ug1",
+      "compute_Ug2",
+      "compute_Ug3",
+      "compute_Ug4",
+      "compute_Ug_total",
+      "compute_Ub",
+      "compute_F_U",
+      "compute_schwarzschild_radius",
+      "compute_escape_velocity",
+      "compute_UQFF_Compressed",
+      "compute_UQFF_Triadic",
+      "compute_UQFF_Superconductive",
+      "compute_UQFF_Quadratic",
+      "compute_F_U_Bi",
+      "compute_F_U_Bi_i",
+      "compute_26_level_structure",
+      "compute_reactor_efficiency",
+      "compute_vacuum_energy",
+      "compute_Ug1_enhanced",
+      "compute_Ug2_enhanced",
+      "compute_Ug3_enhanced",
+      "compute_Ug4_enhanced",
+      "compute_Ug_enhanced_total",
+      "compute_magnetic_moment",
+      "compute_Um_total",
+      "compute_Ub1",
+      "compute_Ub2",
+      "compute_Ub3",
+      "compute_Ub4",
+      "compute_Ub_total",
+      "compute_stress_energy_tensor",
+      "compute_metric_perturbation",
+      "compute_aether_metric",
+      "compute_metric_determinant",
+      "compute_ricci_scalar",
+      "compute_magnetic_pressure",
+      "compute_cyclotron_frequency",
+      "compute_alfven_velocity",
+      "compute_magnetic_energy_density",
+      "compute_luminosity_distance",
+      "compute_angular_diameter_distance",
+      "compute_comoving_distance",
+      "compute_lookback_time"
+    ],
+    "simulation_set": {
+      "coupled_equations": [
+        {
+          "name": "Ug-Ub coupling",
+          "description": "Gravity-Buoyancy balance"
+        },
+        {
+          "name": "F_U evolution",
+          "description": "Unified field time evolution"
+        }
+      ],
+      "initial_conditions": {
+        "query_name": "--help",
+        "scale": "UQFFScale.STELLAR",
+        "M": 1e+30,
+        "r": 1000000.0,
+        "z": 0.0,
+        "B": 1e-05,
+        "t": 100000000.0,
+        "t_n": 0.0,
+        "k_coupling": 1.0,
+        "beta_coupling": 0.6
+      },
+      "solutions_at_t0": {
+        "Ug1": 100114500.0,
+        "Ug2": 79290683.99999999,
+        "Ug3": 120137399.99999999,
+        "Ug4": 66742999.99999999,
+        "Ug": 366285584.0,
+        "Ug1_enhanced": 109030178.48896919,
+        "Ug2_enhanced": 0.0,
+        "Ug3_enhanced": -11539.59808783778,
+        "Ug_enhanced_total": 109018638.89088136,
+        "Um": 9.999999999999998e+16,
+        "_errors": "Unexpected error: 'ComputeParams' object has no attribute 'Delta_t'"
+      },
+      "time_range": {
+        "t_min": 0,
+        "t_max": 100000000.0,
+        "unit": "days"
+      }
+    }
+  },
+  "Sagittarius A*_20260310T200141980016": {
+    "timestamp": "2026-03-10T20:01:41.980016",
+    "input_params": {
+      "query_name": "Sagittarius A*",
+      "scale": "UQFFScale.STELLAR",
+      "M": 1e+30,
+      "r": 1000000.0,
+      "z": 0.0,
+      "B": 1e-05,
+      "t": 100000000.0,
+      "t_n": 0.0,
+      "k_coupling": 1.0,
+      "beta_coupling": 0.6
+    },
+    "long_form_equations": [
+      {
+        "name": "Ug1",
+        "latex": "U_{g1} = k_1 \\times \\frac{G \\times M}{r^2}",
+        "substituted": "Ug1 = 1.5 \u00d7 (6.6743e-11 \u00d7 1.0000e+30) / (1.0000e+06)\u00b2",
+        "result": 100114500.0,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "k_1": 1.5,
+          "G": 6.6743e-11,
+          "M": 1e+30,
+          "r": 1000000.0
+        }
+      },
+      {
+        "name": "Ug2",
+        "latex": "U_{g2} = k_2 \\times \\frac{G \\times M}{r^2} \\times H_{SCm}",
+        "substituted": "Ug2 = 1.2 \u00d7 (6.6743e-11 \u00d7 1.0000e+30) / (1.0000e+06)\u00b2 \u00d7 0.99",
+        "result": 79290683.99999999,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "k_2": 1.2,
+          "G": 6.6743e-11,
+          "M": 1e+30,
+          "r": 1000000.0,
+          "H_SCm": 0.99
+        }
+      },
+      {
+        "name": "Ug3",
+        "latex": "U_{g3} = k_3 \\times \\frac{G \\times M}{r^2}",
+        "substituted": "Ug3 = 1.8 \u00d7 (6.6743e-11 \u00d7 1.0000e+30) / (1.0000e+06)\u00b2",
+        "result": 120137399.99999999,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "k_3": 1.8,
+          "G": 6.6743e-11,
+          "M": 1e+30,
+          "r": 1000000.0
+        }
+      },
+      {
+        "name": "Ug4",
+        "latex": "U_{g4} = k_4 \\times \\frac{G \\times M}{r^2}",
+        "substituted": "Ug4 = 1.0 \u00d7 (6.6743e-11 \u00d7 1.0000e+30) / (1.0000e+06)\u00b2",
+        "result": 66742999.99999999,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "k_4": 1.0,
+          "G": 6.6743e-11,
+          "M": 1e+30,
+          "r": 1000000.0
+        }
+      },
+      {
+        "name": "Ug",
+        "latex": "U_g = U_{g1} + U_{g2} + U_{g3} + U_{g4}",
+        "substituted": "Ug = 1.0011e+08 + 7.9291e+07 + 1.2014e+08 + 6.6743e+07",
+        "result": 366285584.0,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "Ug1": 100114500.0,
+          "Ug2": 79290683.99999999,
+          "Ug3": 120137399.99999999,
+          "Ug4": 66742999.99999999
+        }
+      },
+      {
+        "name": "Ug1_enhanced",
+        "latex": "U_{g1}^* = k_1 \\times \\frac{GM}{r^2} \\times e^{-\\alpha t} \\times \\cos(\\omega t_n) \\times (1 + \\beta_{\\text{def}})",
+        "substituted": "Ug1* = 1.5 \u00d7 (6.674e-11\u00d71.000e+30/1.000e+06\u00b2) \u00d7 e^(-1e-10\u00d71.000e+08) \u00d7 cos(7.272e-05\u00d70.0) \u00d7 (1+0.1)",
+        "result": 109030178.48896919,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "k_1": 1.5,
+          "G": 6.6743e-11,
+          "M": 1e+30,
+          "r": 1000000.0,
+          "alpha": 1e-10,
+          "beta_def": 0.1,
+          "t": 100000000.0,
+          "t_n": 0.0,
+          "omega": 7.27220521664304e-05,
+          "time_decay": 0.9900498337491681,
+          "oscillation": 1.0
+        }
+      },
+      {
+        "name": "Ug2_enhanced",
+        "latex": "U_{g2}^* = k_2 \\times \\frac{GM}{r^2} \\times S(r-R_b) \\times (1 + \\delta_{sw} v_{sw}) \\times H_{SCm} \\times E_{\\text{react}}",
+        "substituted": "Ug2* = 1.2 \u00d7 (6.674e-11\u00d71.000e+30/1.000e+06\u00b2) \u00d7 S(1.000e+06-1.795e+13) \u00d7 (1+0.01\u00d75.000e+05) \u00d7 0.99 \u00d7 1.176e+47",
+        "result": 0.0,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "k_2": 1.2,
+          "G": 6.6743e-11,
+          "M": 1e+30,
+          "r": 1000000.0,
+          "R_b": 17952000000000.0,
+          "step_func": 0.0,
+          "delta_sw": 0.01,
+          "v_sw": 500000.0,
+          "H_SCm": 0.99,
+          "E_react": 1.176066466304271e+47
+        }
+      },
+      {
+        "name": "Ug3_enhanced",
+        "latex": "U_{g3}^* = k_3 \\times \\frac{GM}{r^2} \\times B \\cos(\\omega_s t) \\times P_{\\text{core}} \\times E_{\\text{react}}",
+        "substituted": "Ug3* = 1.8 \u00d7 (6.674e-11\u00d71.000e+30/1.000e+06\u00b2) \u00d7 1.000e-05\u00d7cos(2.865e-06\u00d71.000e+08) \u00d7 1.0 \u00d7 1.176e+47",
+        "result": -11539.59808783778,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "k_3": 1.8,
+          "G": 6.6743e-11,
+          "M": 1e+30,
+          "r": 1000000.0,
+          "B": 1e-05,
+          "omega": 2.865e-06,
+          "t": 100000000.0,
+          "P_core": 1.0,
+          "rotation_factor": -0.8167339098647604,
+          "E_react": 1.176066466304271e+47
+        }
+      },
+      {
+        "name": "Ug_enhanced_total",
+        "latex": "U_g^* = U_{g1}^* + U_{g2}^* + U_{g3}^* + U_{g4}^*",
+        "substituted": "Ug* = Sum of enhanced components",
+        "result": 109018638.89088136,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "component_count": 4
+        }
+      },
+      {
+        "name": "Um",
+        "latex": "U_m = \\frac{\\mu}{r} \\times (1 - e^{-\\gamma t \\cos(\\pi t_n)})",
+        "substituted": "Um = (1.0000e+23 / 1.0000e+06) \u00d7 (1 - exp(-5e-05 \u00d7 100000000.0 \u00d7 cos(\u03c0 \u00d7 0.0)))",
+        "result": 9.999999999999998e+16,
+        "unit": "J/m\u00b3",
+        "parameters_used": {
+          "mu": 1e+23,
+          "r": 1000000.0,
+          "gamma": 5e-05,
+          "t": 100000000.0,
+          "t_n": 0.0,
+          "time_factor": 1.0
+        }
+      }
+    ],
+    "solutions": {
+      "Ug1": 100114500.0,
+      "Ug2": 79290683.99999999,
+      "Ug3": 120137399.99999999,
+      "Ug4": 66742999.99999999,
+      "Ug": 366285584.0,
+      "Ug1_enhanced": 109030178.48896919,
+      "Ug2_enhanced": 0.0,
+      "Ug3_enhanced": -11539.59808783778,
+      "Ug_enhanced_total": 109018638.89088136,
+      "Um": 9.999999999999998e+16,
+      "_errors": "Unexpected error: 'ComputeParams' object has no attribute 'Delta_t'"
+    },
+    "available_equations": [
+      "compute_Ug1",
+      "compute_Ug2",
+      "compute_Ug3",
+      "compute_Ug4",
+      "compute_Ug_total",
+      "compute_Ub",
+      "compute_F_U",
+      "compute_schwarzschild_radius",
+      "compute_escape_velocity",
+      "compute_UQFF_Compressed",
+      "compute_UQFF_Triadic",
+      "compute_UQFF_Superconductive",
+      "compute_UQFF_Quadratic",
+      "compute_F_U_Bi",
+      "compute_F_U_Bi_i",
+      "compute_26_level_structure",
+      "compute_reactor_efficiency",
+      "compute_vacuum_energy",
+      "compute_Ug1_enhanced",
+      "compute_Ug2_enhanced",
+      "compute_Ug3_enhanced",
+      "compute_Ug4_enhanced",
+      "compute_Ug_enhanced_total",
+      "compute_magnetic_moment",
+      "compute_Um_total",
+      "compute_Ub1",
+      "compute_Ub2",
+      "compute_Ub3",
+      "compute_Ub4",
+      "compute_Ub_total",
+      "compute_stress_energy_tensor",
+      "compute_metric_perturbation",
+      "compute_aether_metric",
+      "compute_metric_determinant",
+      "compute_ricci_scalar",
+      "compute_magnetic_pressure",
+      "compute_cyclotron_frequency",
+      "compute_alfven_velocity",
+      "compute_magnetic_energy_density",
+      "compute_luminosity_distance",
+      "compute_angular_diameter_distance",
+      "compute_comoving_distance",
+      "compute_lookback_time"
+    ],
+    "simulation_set": {
+      "coupled_equations": [
+        {
+          "name": "Ug-Ub coupling",
+          "description": "Gravity-Buoyancy balance"
+        },
+        {
+          "name": "F_U evolution",
+          "description": "Unified field time evolution"
+        }
+      ],
+      "initial_conditions": {
+        "query_name": "Sagittarius A*",
+        "scale": "UQFFScale.STELLAR",
+        "M": 1e+30,
+        "r": 1000000.0,
+        "z": 0.0,
+        "B": 1e-05,
+        "t": 100000000.0,
+        "t_n": 0.0,
+        "k_coupling": 1.0,
+        "beta_coupling": 0.6
+      },
+      "solutions_at_t0": {
+        "Ug1": 100114500.0,
+        "Ug2": 79290683.99999999,
+        "Ug3": 120137399.99999999,
+        "Ug4": 66742999.99999999,
+        "Ug": 366285584.0,
+        "Ug1_enhanced": 109030178.48896919,
+        "Ug2_enhanced": 0.0,
+        "Ug3_enhanced": -11539.59808783778,
+        "Ug_enhanced_total": 109018638.89088136,
+        "Um": 9.999999999999998e+16,
+        "_errors": "Unexpected error: 'ComputeParams' object has no attribute 'Delta_t'"
+      },
+      "time_range": {
+        "t_min": 0,
+        "t_max": 100000000.0,
+        "unit": "days"
+      }
+    }
+  },
+  "Sagittarius A*_20260310T200200455612": {
+    "timestamp": "2026-03-10T20:02:00.455612",
+    "input_params": {
+      "query_name": "Sagittarius A*",
+      "scale": "UQFFScale.STELLAR",
+      "M": 1e+30,
+      "r": 1000000.0,
+      "z": 0.0,
+      "B": 1e-05,
+      "t": 100000000.0,
+      "t_n": 0.0,
+      "k_coupling": 1.0,
+      "beta_coupling": 0.6
+    },
+    "long_form_equations": [
+      {
+        "name": "Ug1",
+        "latex": "U_{g1} = k_1 \\times \\frac{G \\times M}{r^2}",
+        "substituted": "Ug1 = 1.5 \u00d7 (6.6743e-11 \u00d7 1.0000e+30) / (1.0000e+06)\u00b2",
+        "result": 100114500.0,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "k_1": 1.5,
+          "G": 6.6743e-11,
+          "M": 1e+30,
+          "r": 1000000.0
+        }
+      },
+      {
+        "name": "Ug2",
+        "latex": "U_{g2} = k_2 \\times \\frac{G \\times M}{r^2} \\times H_{SCm}",
+        "substituted": "Ug2 = 1.2 \u00d7 (6.6743e-11 \u00d7 1.0000e+30) / (1.0000e+06)\u00b2 \u00d7 0.99",
+        "result": 79290683.99999999,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "k_2": 1.2,
+          "G": 6.6743e-11,
+          "M": 1e+30,
+          "r": 1000000.0,
+          "H_SCm": 0.99
+        }
+      },
+      {
+        "name": "Ug3",
+        "latex": "U_{g3} = k_3 \\times \\frac{G \\times M}{r^2}",
+        "substituted": "Ug3 = 1.8 \u00d7 (6.6743e-11 \u00d7 1.0000e+30) / (1.0000e+06)\u00b2",
+        "result": 120137399.99999999,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "k_3": 1.8,
+          "G": 6.6743e-11,
+          "M": 1e+30,
+          "r": 1000000.0
+        }
+      },
+      {
+        "name": "Ug4",
+        "latex": "U_{g4} = k_4 \\times \\frac{G \\times M}{r^2}",
+        "substituted": "Ug4 = 1.0 \u00d7 (6.6743e-11 \u00d7 1.0000e+30) / (1.0000e+06)\u00b2",
+        "result": 66742999.99999999,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "k_4": 1.0,
+          "G": 6.6743e-11,
+          "M": 1e+30,
+          "r": 1000000.0
+        }
+      },
+      {
+        "name": "Ug",
+        "latex": "U_g = U_{g1} + U_{g2} + U_{g3} + U_{g4}",
+        "substituted": "Ug = 1.0011e+08 + 7.9291e+07 + 1.2014e+08 + 6.6743e+07",
+        "result": 366285584.0,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "Ug1": 100114500.0,
+          "Ug2": 79290683.99999999,
+          "Ug3": 120137399.99999999,
+          "Ug4": 66742999.99999999
+        }
+      },
+      {
+        "name": "Ug1_enhanced",
+        "latex": "U_{g1}^* = k_1 \\times \\frac{GM}{r^2} \\times e^{-\\alpha t} \\times \\cos(\\omega t_n) \\times (1 + \\beta_{\\text{def}})",
+        "substituted": "Ug1* = 1.5 \u00d7 (6.674e-11\u00d71.000e+30/1.000e+06\u00b2) \u00d7 e^(-1e-10\u00d71.000e+08) \u00d7 cos(7.272e-05\u00d70.0) \u00d7 (1+0.1)",
+        "result": 109030178.48896919,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "k_1": 1.5,
+          "G": 6.6743e-11,
+          "M": 1e+30,
+          "r": 1000000.0,
+          "alpha": 1e-10,
+          "beta_def": 0.1,
+          "t": 100000000.0,
+          "t_n": 0.0,
+          "omega": 7.27220521664304e-05,
+          "time_decay": 0.9900498337491681,
+          "oscillation": 1.0
+        }
+      },
+      {
+        "name": "Ug2_enhanced",
+        "latex": "U_{g2}^* = k_2 \\times \\frac{GM}{r^2} \\times S(r-R_b) \\times (1 + \\delta_{sw} v_{sw}) \\times H_{SCm} \\times E_{\\text{react}}",
+        "substituted": "Ug2* = 1.2 \u00d7 (6.674e-11\u00d71.000e+30/1.000e+06\u00b2) \u00d7 S(1.000e+06-1.795e+13) \u00d7 (1+0.01\u00d75.000e+05) \u00d7 0.99 \u00d7 1.176e+47",
+        "result": 0.0,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "k_2": 1.2,
+          "G": 6.6743e-11,
+          "M": 1e+30,
+          "r": 1000000.0,
+          "R_b": 17952000000000.0,
+          "step_func": 0.0,
+          "delta_sw": 0.01,
+          "v_sw": 500000.0,
+          "H_SCm": 0.99,
+          "E_react": 1.176066466304271e+47
+        }
+      },
+      {
+        "name": "Ug3_enhanced",
+        "latex": "U_{g3}^* = k_3 \\times \\frac{GM}{r^2} \\times B \\cos(\\omega_s t) \\times P_{\\text{core}} \\times E_{\\text{react}}",
+        "substituted": "Ug3* = 1.8 \u00d7 (6.674e-11\u00d71.000e+30/1.000e+06\u00b2) \u00d7 1.000e-05\u00d7cos(2.865e-06\u00d71.000e+08) \u00d7 1.0 \u00d7 1.176e+47",
+        "result": -11539.59808783778,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "k_3": 1.8,
+          "G": 6.6743e-11,
+          "M": 1e+30,
+          "r": 1000000.0,
+          "B": 1e-05,
+          "omega": 2.865e-06,
+          "t": 100000000.0,
+          "P_core": 1.0,
+          "rotation_factor": -0.8167339098647604,
+          "E_react": 1.176066466304271e+47
+        }
+      },
+      {
+        "name": "Ug_enhanced_total",
+        "latex": "U_g^* = U_{g1}^* + U_{g2}^* + U_{g3}^* + U_{g4}^*",
+        "substituted": "Ug* = Sum of enhanced components",
+        "result": 109018638.89088136,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "component_count": 4
+        }
+      },
+      {
+        "name": "Um",
+        "latex": "U_m = \\frac{\\mu}{r} \\times (1 - e^{-\\gamma t \\cos(\\pi t_n)})",
+        "substituted": "Um = (1.0000e+23 / 1.0000e+06) \u00d7 (1 - exp(-5e-05 \u00d7 100000000.0 \u00d7 cos(\u03c0 \u00d7 0.0)))",
+        "result": 9.999999999999998e+16,
+        "unit": "J/m\u00b3",
+        "parameters_used": {
+          "mu": 1e+23,
+          "r": 1000000.0,
+          "gamma": 5e-05,
+          "t": 100000000.0,
+          "t_n": 0.0,
+          "time_factor": 1.0
+        }
+      }
+    ],
+    "solutions": {
+      "Ug1": 100114500.0,
+      "Ug2": 79290683.99999999,
+      "Ug3": 120137399.99999999,
+      "Ug4": 66742999.99999999,
+      "Ug": 366285584.0,
+      "Ug1_enhanced": 109030178.48896919,
+      "Ug2_enhanced": 0.0,
+      "Ug3_enhanced": -11539.59808783778,
+      "Ug_enhanced_total": 109018638.89088136,
+      "Um": 9.999999999999998e+16,
+      "_errors": "Unexpected error: 'ComputeParams' object has no attribute 'Delta_t'"
+    },
+    "available_equations": [
+      "compute_Ug1",
+      "compute_Ug2",
+      "compute_Ug3",
+      "compute_Ug4",
+      "compute_Ug_total",
+      "compute_Ub",
+      "compute_F_U",
+      "compute_schwarzschild_radius",
+      "compute_escape_velocity",
+      "compute_UQFF_Compressed",
+      "compute_UQFF_Triadic",
+      "compute_UQFF_Superconductive",
+      "compute_UQFF_Quadratic",
+      "compute_F_U_Bi",
+      "compute_F_U_Bi_i",
+      "compute_26_level_structure",
+      "compute_reactor_efficiency",
+      "compute_vacuum_energy",
+      "compute_Ug1_enhanced",
+      "compute_Ug2_enhanced",
+      "compute_Ug3_enhanced",
+      "compute_Ug4_enhanced",
+      "compute_Ug_enhanced_total",
+      "compute_magnetic_moment",
+      "compute_Um_total",
+      "compute_Ub1",
+      "compute_Ub2",
+      "compute_Ub3",
+      "compute_Ub4",
+      "compute_Ub_total",
+      "compute_stress_energy_tensor",
+      "compute_metric_perturbation",
+      "compute_aether_metric",
+      "compute_metric_determinant",
+      "compute_ricci_scalar",
+      "compute_magnetic_pressure",
+      "compute_cyclotron_frequency",
+      "compute_alfven_velocity",
+      "compute_magnetic_energy_density",
+      "compute_luminosity_distance",
+      "compute_angular_diameter_distance",
+      "compute_comoving_distance",
+      "compute_lookback_time"
+    ],
+    "simulation_set": {
+      "coupled_equations": [
+        {
+          "name": "Ug-Ub coupling",
+          "description": "Gravity-Buoyancy balance"
+        },
+        {
+          "name": "F_U evolution",
+          "description": "Unified field time evolution"
+        }
+      ],
+      "initial_conditions": {
+        "query_name": "Sagittarius A*",
+        "scale": "UQFFScale.STELLAR",
+        "M": 1e+30,
+        "r": 1000000.0,
+        "z": 0.0,
+        "B": 1e-05,
+        "t": 100000000.0,
+        "t_n": 0.0,
+        "k_coupling": 1.0,
+        "beta_coupling": 0.6
+      },
+      "solutions_at_t0": {
+        "Ug1": 100114500.0,
+        "Ug2": 79290683.99999999,
+        "Ug3": 120137399.99999999,
+        "Ug4": 66742999.99999999,
+        "Ug": 366285584.0,
+        "Ug1_enhanced": 109030178.48896919,
+        "Ug2_enhanced": 0.0,
+        "Ug3_enhanced": -11539.59808783778,
+        "Ug_enhanced_total": 109018638.89088136,
+        "Um": 9.999999999999998e+16,
+        "_errors": "Unexpected error: 'ComputeParams' object has no attribute 'Delta_t'"
+      },
+      "time_range": {
+        "t_min": 0,
+        "t_max": 100000000.0,
+        "unit": "days"
+      }
+    }
+  },
+  "run_20260310T200521940691": {
+    "timestamp": "2026-03-10T20:05:21.940691",
+    "input_params": {
+      "query_name": "run",
+      "scale": "UQFFScale.STELLAR",
+      "M": 1e+30,
+      "r": 1000000.0,
+      "z": 0.0,
+      "B": 1e-05,
+      "t": 100000000.0,
+      "t_n": 0.0,
+      "k_coupling": 1.0,
+      "beta_coupling": 0.6
+    },
+    "long_form_equations": [
+      {
+        "name": "Ug1",
+        "latex": "U_{g1} = k_1 \\times \\frac{G \\times M}{r^2}",
+        "substituted": "Ug1 = 1.5 \u00d7 (6.6743e-11 \u00d7 1.0000e+30) / (1.0000e+06)\u00b2",
+        "result": 100114500.0,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "k_1": 1.5,
+          "G": 6.6743e-11,
+          "M": 1e+30,
+          "r": 1000000.0
+        }
+      },
+      {
+        "name": "Ug2",
+        "latex": "U_{g2} = k_2 \\times \\frac{G \\times M}{r^2} \\times H_{SCm}",
+        "substituted": "Ug2 = 1.2 \u00d7 (6.6743e-11 \u00d7 1.0000e+30) / (1.0000e+06)\u00b2 \u00d7 0.99",
+        "result": 79290683.99999999,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "k_2": 1.2,
+          "G": 6.6743e-11,
+          "M": 1e+30,
+          "r": 1000000.0,
+          "H_SCm": 0.99
+        }
+      },
+      {
+        "name": "Ug3",
+        "latex": "U_{g3} = k_3 \\times \\frac{G \\times M}{r^2}",
+        "substituted": "Ug3 = 1.8 \u00d7 (6.6743e-11 \u00d7 1.0000e+30) / (1.0000e+06)\u00b2",
+        "result": 120137399.99999999,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "k_3": 1.8,
+          "G": 6.6743e-11,
+          "M": 1e+30,
+          "r": 1000000.0
+        }
+      },
+      {
+        "name": "Ug4",
+        "latex": "U_{g4} = k_4 \\times \\frac{G \\times M}{r^2}",
+        "substituted": "Ug4 = 1.0 \u00d7 (6.6743e-11 \u00d7 1.0000e+30) / (1.0000e+06)\u00b2",
+        "result": 66742999.99999999,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "k_4": 1.0,
+          "G": 6.6743e-11,
+          "M": 1e+30,
+          "r": 1000000.0
+        }
+      },
+      {
+        "name": "Ug",
+        "latex": "U_g = U_{g1} + U_{g2} + U_{g3} + U_{g4}",
+        "substituted": "Ug = 1.0011e+08 + 7.9291e+07 + 1.2014e+08 + 6.6743e+07",
+        "result": 366285584.0,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "Ug1": 100114500.0,
+          "Ug2": 79290683.99999999,
+          "Ug3": 120137399.99999999,
+          "Ug4": 66742999.99999999
+        }
+      },
+      {
+        "name": "Ug1_enhanced",
+        "latex": "U_{g1}^* = k_1 \\times \\frac{GM}{r^2} \\times e^{-\\alpha t} \\times \\cos(\\omega t_n) \\times (1 + \\beta_{\\text{def}})",
+        "substituted": "Ug1* = 1.5 \u00d7 (6.674e-11\u00d71.000e+30/1.000e+06\u00b2) \u00d7 e^(-1e-10\u00d71.000e+08) \u00d7 cos(7.272e-05\u00d70.0) \u00d7 (1+0.1)",
+        "result": 109030178.48896919,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "k_1": 1.5,
+          "G": 6.6743e-11,
+          "M": 1e+30,
+          "r": 1000000.0,
+          "alpha": 1e-10,
+          "beta_def": 0.1,
+          "t": 100000000.0,
+          "t_n": 0.0,
+          "omega": 7.27220521664304e-05,
+          "time_decay": 0.9900498337491681,
+          "oscillation": 1.0
+        }
+      },
+      {
+        "name": "Ug2_enhanced",
+        "latex": "U_{g2}^* = k_2 \\times \\frac{GM}{r^2} \\times S(r-R_b) \\times (1 + \\delta_{sw} v_{sw}) \\times H_{SCm} \\times E_{\\text{react}}",
+        "substituted": "Ug2* = 1.2 \u00d7 (6.674e-11\u00d71.000e+30/1.000e+06\u00b2) \u00d7 S(1.000e+06-1.795e+13) \u00d7 (1+0.01\u00d75.000e+05) \u00d7 0.99 \u00d7 1.176e+47",
+        "result": 0.0,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "k_2": 1.2,
+          "G": 6.6743e-11,
+          "M": 1e+30,
+          "r": 1000000.0,
+          "R_b": 17952000000000.0,
+          "step_func": 0.0,
+          "delta_sw": 0.01,
+          "v_sw": 500000.0,
+          "H_SCm": 0.99,
+          "E_react": 1.176066466304271e+47
+        }
+      },
+      {
+        "name": "Ug3_enhanced",
+        "latex": "U_{g3}^* = k_3 \\times \\frac{GM}{r^2} \\times B \\cos(\\omega_s t) \\times P_{\\text{core}} \\times E_{\\text{react}}",
+        "substituted": "Ug3* = 1.8 \u00d7 (6.674e-11\u00d71.000e+30/1.000e+06\u00b2) \u00d7 1.000e-05\u00d7cos(2.865e-06\u00d71.000e+08) \u00d7 1.0 \u00d7 1.176e+47",
+        "result": -11539.59808783778,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "k_3": 1.8,
+          "G": 6.6743e-11,
+          "M": 1e+30,
+          "r": 1000000.0,
+          "B": 1e-05,
+          "omega": 2.865e-06,
+          "t": 100000000.0,
+          "P_core": 1.0,
+          "rotation_factor": -0.8167339098647604,
+          "E_react": 1.176066466304271e+47
+        }
+      },
+      {
+        "name": "Ug_enhanced_total",
+        "latex": "U_g^* = U_{g1}^* + U_{g2}^* + U_{g3}^* + U_{g4}^*",
+        "substituted": "Ug* = Sum of enhanced components",
+        "result": 109018638.89088136,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "component_count": 4
+        }
+      },
+      {
+        "name": "Um",
+        "latex": "U_m = \\frac{\\mu}{r} \\times (1 - e^{-\\gamma t \\cos(\\pi t_n)})",
+        "substituted": "Um = (1.0000e+23 / 1.0000e+06) \u00d7 (1 - exp(-5e-05 \u00d7 100000000.0 \u00d7 cos(\u03c0 \u00d7 0.0)))",
+        "result": 9.999999999999998e+16,
+        "unit": "J/m\u00b3",
+        "parameters_used": {
+          "mu": 1e+23,
+          "r": 1000000.0,
+          "gamma": 5e-05,
+          "t": 100000000.0,
+          "t_n": 0.0,
+          "time_factor": 1.0
+        }
+      }
+    ],
+    "solutions": {
+      "Ug1": 100114500.0,
+      "Ug2": 79290683.99999999,
+      "Ug3": 120137399.99999999,
+      "Ug4": 66742999.99999999,
+      "Ug": 366285584.0,
+      "Ug1_enhanced": 109030178.48896919,
+      "Ug2_enhanced": 0.0,
+      "Ug3_enhanced": -11539.59808783778,
+      "Ug_enhanced_total": 109018638.89088136,
+      "Um": 9.999999999999998e+16,
+      "_errors": "Unexpected error: 'ComputeParams' object has no attribute 'Delta_t'"
+    },
+    "available_equations": [
+      "compute_Ug1",
+      "compute_Ug2",
+      "compute_Ug3",
+      "compute_Ug4",
+      "compute_Ug_total",
+      "compute_Ub",
+      "compute_F_U",
+      "compute_schwarzschild_radius",
+      "compute_escape_velocity",
+      "compute_UQFF_Compressed",
+      "compute_UQFF_Triadic",
+      "compute_UQFF_Superconductive",
+      "compute_UQFF_Quadratic",
+      "compute_F_U_Bi",
+      "compute_F_U_Bi_i",
+      "compute_26_level_structure",
+      "compute_reactor_efficiency",
+      "compute_vacuum_energy",
+      "compute_Ug1_enhanced",
+      "compute_Ug2_enhanced",
+      "compute_Ug3_enhanced",
+      "compute_Ug4_enhanced",
+      "compute_Ug_enhanced_total",
+      "compute_magnetic_moment",
+      "compute_Um_total",
+      "compute_Ub1",
+      "compute_Ub2",
+      "compute_Ub3",
+      "compute_Ub4",
+      "compute_Ub_total",
+      "compute_stress_energy_tensor",
+      "compute_metric_perturbation",
+      "compute_aether_metric",
+      "compute_metric_determinant",
+      "compute_ricci_scalar",
+      "compute_magnetic_pressure",
+      "compute_cyclotron_frequency",
+      "compute_alfven_velocity",
+      "compute_magnetic_energy_density",
+      "compute_luminosity_distance",
+      "compute_angular_diameter_distance",
+      "compute_comoving_distance",
+      "compute_lookback_time"
+    ],
+    "simulation_set": {
+      "coupled_equations": [
+        {
+          "name": "Ug-Ub coupling",
+          "description": "Gravity-Buoyancy balance"
+        },
+        {
+          "name": "F_U evolution",
+          "description": "Unified field time evolution"
+        }
+      ],
+      "initial_conditions": {
+        "query_name": "run",
+        "scale": "UQFFScale.STELLAR",
+        "M": 1e+30,
+        "r": 1000000.0,
+        "z": 0.0,
+        "B": 1e-05,
+        "t": 100000000.0,
+        "t_n": 0.0,
+        "k_coupling": 1.0,
+        "beta_coupling": 0.6
+      },
+      "solutions_at_t0": {
+        "Ug1": 100114500.0,
+        "Ug2": 79290683.99999999,
+        "Ug3": 120137399.99999999,
+        "Ug4": 66742999.99999999,
+        "Ug": 366285584.0,
+        "Ug1_enhanced": 109030178.48896919,
+        "Ug2_enhanced": 0.0,
+        "Ug3_enhanced": -11539.59808783778,
+        "Ug_enhanced_total": 109018638.89088136,
+        "Um": 9.999999999999998e+16,
+        "_errors": "Unexpected error: 'ComputeParams' object has no attribute 'Delta_t'"
+      },
+      "time_range": {
+        "t_min": 0,
+        "t_max": 100000000.0,
+        "unit": "days"
+      }
+    }
+  },
+  "--query_20260310T200524529983": {
+    "timestamp": "2026-03-10T20:05:24.529983",
+    "input_params": {
+      "query_name": "--query",
+      "scale": "UQFFScale.STELLAR",
+      "M": 1e+30,
+      "r": 1000000.0,
+      "z": 0.0,
+      "B": 1e-05,
+      "t": 100000000.0,
+      "t_n": 0.0,
+      "k_coupling": 1.0,
+      "beta_coupling": 0.6
+    },
+    "long_form_equations": [
+      {
+        "name": "Ug1",
+        "latex": "U_{g1} = k_1 \\times \\frac{G \\times M}{r^2}",
+        "substituted": "Ug1 = 1.5 \u00d7 (6.6743e-11 \u00d7 1.0000e+30) / (1.0000e+06)\u00b2",
+        "result": 100114500.0,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "k_1": 1.5,
+          "G": 6.6743e-11,
+          "M": 1e+30,
+          "r": 1000000.0
+        }
+      },
+      {
+        "name": "Ug2",
+        "latex": "U_{g2} = k_2 \\times \\frac{G \\times M}{r^2} \\times H_{SCm}",
+        "substituted": "Ug2 = 1.2 \u00d7 (6.6743e-11 \u00d7 1.0000e+30) / (1.0000e+06)\u00b2 \u00d7 0.99",
+        "result": 79290683.99999999,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "k_2": 1.2,
+          "G": 6.6743e-11,
+          "M": 1e+30,
+          "r": 1000000.0,
+          "H_SCm": 0.99
+        }
+      },
+      {
+        "name": "Ug3",
+        "latex": "U_{g3} = k_3 \\times \\frac{G \\times M}{r^2}",
+        "substituted": "Ug3 = 1.8 \u00d7 (6.6743e-11 \u00d7 1.0000e+30) / (1.0000e+06)\u00b2",
+        "result": 120137399.99999999,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "k_3": 1.8,
+          "G": 6.6743e-11,
+          "M": 1e+30,
+          "r": 1000000.0
+        }
+      },
+      {
+        "name": "Ug4",
+        "latex": "U_{g4} = k_4 \\times \\frac{G \\times M}{r^2}",
+        "substituted": "Ug4 = 1.0 \u00d7 (6.6743e-11 \u00d7 1.0000e+30) / (1.0000e+06)\u00b2",
+        "result": 66742999.99999999,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "k_4": 1.0,
+          "G": 6.6743e-11,
+          "M": 1e+30,
+          "r": 1000000.0
+        }
+      },
+      {
+        "name": "Ug",
+        "latex": "U_g = U_{g1} + U_{g2} + U_{g3} + U_{g4}",
+        "substituted": "Ug = 1.0011e+08 + 7.9291e+07 + 1.2014e+08 + 6.6743e+07",
+        "result": 366285584.0,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "Ug1": 100114500.0,
+          "Ug2": 79290683.99999999,
+          "Ug3": 120137399.99999999,
+          "Ug4": 66742999.99999999
+        }
+      },
+      {
+        "name": "Ug1_enhanced",
+        "latex": "U_{g1}^* = k_1 \\times \\frac{GM}{r^2} \\times e^{-\\alpha t} \\times \\cos(\\omega t_n) \\times (1 + \\beta_{\\text{def}})",
+        "substituted": "Ug1* = 1.5 \u00d7 (6.674e-11\u00d71.000e+30/1.000e+06\u00b2) \u00d7 e^(-1e-10\u00d71.000e+08) \u00d7 cos(7.272e-05\u00d70.0) \u00d7 (1+0.1)",
+        "result": 109030178.48896919,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "k_1": 1.5,
+          "G": 6.6743e-11,
+          "M": 1e+30,
+          "r": 1000000.0,
+          "alpha": 1e-10,
+          "beta_def": 0.1,
+          "t": 100000000.0,
+          "t_n": 0.0,
+          "omega": 7.27220521664304e-05,
+          "time_decay": 0.9900498337491681,
+          "oscillation": 1.0
+        }
+      },
+      {
+        "name": "Ug2_enhanced",
+        "latex": "U_{g2}^* = k_2 \\times \\frac{GM}{r^2} \\times S(r-R_b) \\times (1 + \\delta_{sw} v_{sw}) \\times H_{SCm} \\times E_{\\text{react}}",
+        "substituted": "Ug2* = 1.2 \u00d7 (6.674e-11\u00d71.000e+30/1.000e+06\u00b2) \u00d7 S(1.000e+06-1.795e+13) \u00d7 (1+0.01\u00d75.000e+05) \u00d7 0.99 \u00d7 1.176e+47",
+        "result": 0.0,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "k_2": 1.2,
+          "G": 6.6743e-11,
+          "M": 1e+30,
+          "r": 1000000.0,
+          "R_b": 17952000000000.0,
+          "step_func": 0.0,
+          "delta_sw": 0.01,
+          "v_sw": 500000.0,
+          "H_SCm": 0.99,
+          "E_react": 1.176066466304271e+47
+        }
+      },
+      {
+        "name": "Ug3_enhanced",
+        "latex": "U_{g3}^* = k_3 \\times \\frac{GM}{r^2} \\times B \\cos(\\omega_s t) \\times P_{\\text{core}} \\times E_{\\text{react}}",
+        "substituted": "Ug3* = 1.8 \u00d7 (6.674e-11\u00d71.000e+30/1.000e+06\u00b2) \u00d7 1.000e-05\u00d7cos(2.865e-06\u00d71.000e+08) \u00d7 1.0 \u00d7 1.176e+47",
+        "result": -11539.59808783778,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "k_3": 1.8,
+          "G": 6.6743e-11,
+          "M": 1e+30,
+          "r": 1000000.0,
+          "B": 1e-05,
+          "omega": 2.865e-06,
+          "t": 100000000.0,
+          "P_core": 1.0,
+          "rotation_factor": -0.8167339098647604,
+          "E_react": 1.176066466304271e+47
+        }
+      },
+      {
+        "name": "Ug_enhanced_total",
+        "latex": "U_g^* = U_{g1}^* + U_{g2}^* + U_{g3}^* + U_{g4}^*",
+        "substituted": "Ug* = Sum of enhanced components",
+        "result": 109018638.89088136,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "component_count": 4
+        }
+      },
+      {
+        "name": "Um",
+        "latex": "U_m = \\frac{\\mu}{r} \\times (1 - e^{-\\gamma t \\cos(\\pi t_n)})",
+        "substituted": "Um = (1.0000e+23 / 1.0000e+06) \u00d7 (1 - exp(-5e-05 \u00d7 100000000.0 \u00d7 cos(\u03c0 \u00d7 0.0)))",
+        "result": 9.999999999999998e+16,
+        "unit": "J/m\u00b3",
+        "parameters_used": {
+          "mu": 1e+23,
+          "r": 1000000.0,
+          "gamma": 5e-05,
+          "t": 100000000.0,
+          "t_n": 0.0,
+          "time_factor": 1.0
+        }
+      }
+    ],
+    "solutions": {
+      "Ug1": 100114500.0,
+      "Ug2": 79290683.99999999,
+      "Ug3": 120137399.99999999,
+      "Ug4": 66742999.99999999,
+      "Ug": 366285584.0,
+      "Ug1_enhanced": 109030178.48896919,
+      "Ug2_enhanced": 0.0,
+      "Ug3_enhanced": -11539.59808783778,
+      "Ug_enhanced_total": 109018638.89088136,
+      "Um": 9.999999999999998e+16,
+      "_errors": "Unexpected error: 'ComputeParams' object has no attribute 'Delta_t'"
+    },
+    "available_equations": [
+      "compute_Ug1",
+      "compute_Ug2",
+      "compute_Ug3",
+      "compute_Ug4",
+      "compute_Ug_total",
+      "compute_Ub",
+      "compute_F_U",
+      "compute_schwarzschild_radius",
+      "compute_escape_velocity",
+      "compute_UQFF_Compressed",
+      "compute_UQFF_Triadic",
+      "compute_UQFF_Superconductive",
+      "compute_UQFF_Quadratic",
+      "compute_F_U_Bi",
+      "compute_F_U_Bi_i",
+      "compute_26_level_structure",
+      "compute_reactor_efficiency",
+      "compute_vacuum_energy",
+      "compute_Ug1_enhanced",
+      "compute_Ug2_enhanced",
+      "compute_Ug3_enhanced",
+      "compute_Ug4_enhanced",
+      "compute_Ug_enhanced_total",
+      "compute_magnetic_moment",
+      "compute_Um_total",
+      "compute_Ub1",
+      "compute_Ub2",
+      "compute_Ub3",
+      "compute_Ub4",
+      "compute_Ub_total",
+      "compute_stress_energy_tensor",
+      "compute_metric_perturbation",
+      "compute_aether_metric",
+      "compute_metric_determinant",
+      "compute_ricci_scalar",
+      "compute_magnetic_pressure",
+      "compute_cyclotron_frequency",
+      "compute_alfven_velocity",
+      "compute_magnetic_energy_density",
+      "compute_luminosity_distance",
+      "compute_angular_diameter_distance",
+      "compute_comoving_distance",
+      "compute_lookback_time"
+    ],
+    "simulation_set": {
+      "coupled_equations": [
+        {
+          "name": "Ug-Ub coupling",
+          "description": "Gravity-Buoyancy balance"
+        },
+        {
+          "name": "F_U evolution",
+          "description": "Unified field time evolution"
+        }
+      ],
+      "initial_conditions": {
+        "query_name": "--query",
+        "scale": "UQFFScale.STELLAR",
+        "M": 1e+30,
+        "r": 1000000.0,
+        "z": 0.0,
+        "B": 1e-05,
+        "t": 100000000.0,
+        "t_n": 0.0,
+        "k_coupling": 1.0,
+        "beta_coupling": 0.6
+      },
+      "solutions_at_t0": {
+        "Ug1": 100114500.0,
+        "Ug2": 79290683.99999999,
+        "Ug3": 120137399.99999999,
+        "Ug4": 66742999.99999999,
+        "Ug": 366285584.0,
+        "Ug1_enhanced": 109030178.48896919,
+        "Ug2_enhanced": 0.0,
+        "Ug3_enhanced": -11539.59808783778,
+        "Ug_enhanced_total": 109018638.89088136,
+        "Um": 9.999999999999998e+16,
+        "_errors": "Unexpected error: 'ComputeParams' object has no attribute 'Delta_t'"
+      },
+      "time_range": {
+        "t_min": 0,
+        "t_max": 100000000.0,
+        "unit": "days"
+      }
+    }
+  },
+  "Sagittarius A*_20260310T200527264723": {
+    "timestamp": "2026-03-10T20:05:27.264723",
+    "input_params": {
+      "query_name": "Sagittarius A*",
+      "scale": "UQFFScale.STELLAR",
+      "M": 1e+30,
+      "r": 1000000.0,
+      "z": 0.0,
+      "B": 1e-05,
+      "t": 100000000.0,
+      "t_n": 0.0,
+      "k_coupling": 1.0,
+      "beta_coupling": 0.6
+    },
+    "long_form_equations": [
+      {
+        "name": "Ug1",
+        "latex": "U_{g1} = k_1 \\times \\frac{G \\times M}{r^2}",
+        "substituted": "Ug1 = 1.5 \u00d7 (6.6743e-11 \u00d7 1.0000e+30) / (1.0000e+06)\u00b2",
+        "result": 100114500.0,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "k_1": 1.5,
+          "G": 6.6743e-11,
+          "M": 1e+30,
+          "r": 1000000.0
+        }
+      },
+      {
+        "name": "Ug2",
+        "latex": "U_{g2} = k_2 \\times \\frac{G \\times M}{r^2} \\times H_{SCm}",
+        "substituted": "Ug2 = 1.2 \u00d7 (6.6743e-11 \u00d7 1.0000e+30) / (1.0000e+06)\u00b2 \u00d7 0.99",
+        "result": 79290683.99999999,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "k_2": 1.2,
+          "G": 6.6743e-11,
+          "M": 1e+30,
+          "r": 1000000.0,
+          "H_SCm": 0.99
+        }
+      },
+      {
+        "name": "Ug3",
+        "latex": "U_{g3} = k_3 \\times \\frac{G \\times M}{r^2}",
+        "substituted": "Ug3 = 1.8 \u00d7 (6.6743e-11 \u00d7 1.0000e+30) / (1.0000e+06)\u00b2",
+        "result": 120137399.99999999,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "k_3": 1.8,
+          "G": 6.6743e-11,
+          "M": 1e+30,
+          "r": 1000000.0
+        }
+      },
+      {
+        "name": "Ug4",
+        "latex": "U_{g4} = k_4 \\times \\frac{G \\times M}{r^2}",
+        "substituted": "Ug4 = 1.0 \u00d7 (6.6743e-11 \u00d7 1.0000e+30) / (1.0000e+06)\u00b2",
+        "result": 66742999.99999999,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "k_4": 1.0,
+          "G": 6.6743e-11,
+          "M": 1e+30,
+          "r": 1000000.0
+        }
+      },
+      {
+        "name": "Ug",
+        "latex": "U_g = U_{g1} + U_{g2} + U_{g3} + U_{g4}",
+        "substituted": "Ug = 1.0011e+08 + 7.9291e+07 + 1.2014e+08 + 6.6743e+07",
+        "result": 366285584.0,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "Ug1": 100114500.0,
+          "Ug2": 79290683.99999999,
+          "Ug3": 120137399.99999999,
+          "Ug4": 66742999.99999999
+        }
+      },
+      {
+        "name": "Ug1_enhanced",
+        "latex": "U_{g1}^* = k_1 \\times \\frac{GM}{r^2} \\times e^{-\\alpha t} \\times \\cos(\\omega t_n) \\times (1 + \\beta_{\\text{def}})",
+        "substituted": "Ug1* = 1.5 \u00d7 (6.674e-11\u00d71.000e+30/1.000e+06\u00b2) \u00d7 e^(-1e-10\u00d71.000e+08) \u00d7 cos(7.272e-05\u00d70.0) \u00d7 (1+0.1)",
+        "result": 109030178.48896919,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "k_1": 1.5,
+          "G": 6.6743e-11,
+          "M": 1e+30,
+          "r": 1000000.0,
+          "alpha": 1e-10,
+          "beta_def": 0.1,
+          "t": 100000000.0,
+          "t_n": 0.0,
+          "omega": 7.27220521664304e-05,
+          "time_decay": 0.9900498337491681,
+          "oscillation": 1.0
+        }
+      },
+      {
+        "name": "Ug2_enhanced",
+        "latex": "U_{g2}^* = k_2 \\times \\frac{GM}{r^2} \\times S(r-R_b) \\times (1 + \\delta_{sw} v_{sw}) \\times H_{SCm} \\times E_{\\text{react}}",
+        "substituted": "Ug2* = 1.2 \u00d7 (6.674e-11\u00d71.000e+30/1.000e+06\u00b2) \u00d7 S(1.000e+06-1.795e+13) \u00d7 (1+0.01\u00d75.000e+05) \u00d7 0.99 \u00d7 1.176e+47",
+        "result": 0.0,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "k_2": 1.2,
+          "G": 6.6743e-11,
+          "M": 1e+30,
+          "r": 1000000.0,
+          "R_b": 17952000000000.0,
+          "step_func": 0.0,
+          "delta_sw": 0.01,
+          "v_sw": 500000.0,
+          "H_SCm": 0.99,
+          "E_react": 1.176066466304271e+47
+        }
+      },
+      {
+        "name": "Ug3_enhanced",
+        "latex": "U_{g3}^* = k_3 \\times \\frac{GM}{r^2} \\times B \\cos(\\omega_s t) \\times P_{\\text{core}} \\times E_{\\text{react}}",
+        "substituted": "Ug3* = 1.8 \u00d7 (6.674e-11\u00d71.000e+30/1.000e+06\u00b2) \u00d7 1.000e-05\u00d7cos(2.865e-06\u00d71.000e+08) \u00d7 1.0 \u00d7 1.176e+47",
+        "result": -11539.59808783778,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "k_3": 1.8,
+          "G": 6.6743e-11,
+          "M": 1e+30,
+          "r": 1000000.0,
+          "B": 1e-05,
+          "omega": 2.865e-06,
+          "t": 100000000.0,
+          "P_core": 1.0,
+          "rotation_factor": -0.8167339098647604,
+          "E_react": 1.176066466304271e+47
+        }
+      },
+      {
+        "name": "Ug_enhanced_total",
+        "latex": "U_g^* = U_{g1}^* + U_{g2}^* + U_{g3}^* + U_{g4}^*",
+        "substituted": "Ug* = Sum of enhanced components",
+        "result": 109018638.89088136,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "component_count": 4
+        }
+      },
+      {
+        "name": "Um",
+        "latex": "U_m = \\frac{\\mu}{r} \\times (1 - e^{-\\gamma t \\cos(\\pi t_n)})",
+        "substituted": "Um = (1.0000e+23 / 1.0000e+06) \u00d7 (1 - exp(-5e-05 \u00d7 100000000.0 \u00d7 cos(\u03c0 \u00d7 0.0)))",
+        "result": 9.999999999999998e+16,
+        "unit": "J/m\u00b3",
+        "parameters_used": {
+          "mu": 1e+23,
+          "r": 1000000.0,
+          "gamma": 5e-05,
+          "t": 100000000.0,
+          "t_n": 0.0,
+          "time_factor": 1.0
+        }
+      }
+    ],
+    "solutions": {
+      "Ug1": 100114500.0,
+      "Ug2": 79290683.99999999,
+      "Ug3": 120137399.99999999,
+      "Ug4": 66742999.99999999,
+      "Ug": 366285584.0,
+      "Ug1_enhanced": 109030178.48896919,
+      "Ug2_enhanced": 0.0,
+      "Ug3_enhanced": -11539.59808783778,
+      "Ug_enhanced_total": 109018638.89088136,
+      "Um": 9.999999999999998e+16,
+      "_errors": "Unexpected error: 'ComputeParams' object has no attribute 'Delta_t'"
+    },
+    "available_equations": [
+      "compute_Ug1",
+      "compute_Ug2",
+      "compute_Ug3",
+      "compute_Ug4",
+      "compute_Ug_total",
+      "compute_Ub",
+      "compute_F_U",
+      "compute_schwarzschild_radius",
+      "compute_escape_velocity",
+      "compute_UQFF_Compressed",
+      "compute_UQFF_Triadic",
+      "compute_UQFF_Superconductive",
+      "compute_UQFF_Quadratic",
+      "compute_F_U_Bi",
+      "compute_F_U_Bi_i",
+      "compute_26_level_structure",
+      "compute_reactor_efficiency",
+      "compute_vacuum_energy",
+      "compute_Ug1_enhanced",
+      "compute_Ug2_enhanced",
+      "compute_Ug3_enhanced",
+      "compute_Ug4_enhanced",
+      "compute_Ug_enhanced_total",
+      "compute_magnetic_moment",
+      "compute_Um_total",
+      "compute_Ub1",
+      "compute_Ub2",
+      "compute_Ub3",
+      "compute_Ub4",
+      "compute_Ub_total",
+      "compute_stress_energy_tensor",
+      "compute_metric_perturbation",
+      "compute_aether_metric",
+      "compute_metric_determinant",
+      "compute_ricci_scalar",
+      "compute_magnetic_pressure",
+      "compute_cyclotron_frequency",
+      "compute_alfven_velocity",
+      "compute_magnetic_energy_density",
+      "compute_luminosity_distance",
+      "compute_angular_diameter_distance",
+      "compute_comoving_distance",
+      "compute_lookback_time"
+    ],
+    "simulation_set": {
+      "coupled_equations": [
+        {
+          "name": "Ug-Ub coupling",
+          "description": "Gravity-Buoyancy balance"
+        },
+        {
+          "name": "F_U evolution",
+          "description": "Unified field time evolution"
+        }
+      ],
+      "initial_conditions": {
+        "query_name": "Sagittarius A*",
+        "scale": "UQFFScale.STELLAR",
+        "M": 1e+30,
+        "r": 1000000.0,
+        "z": 0.0,
+        "B": 1e-05,
+        "t": 100000000.0,
+        "t_n": 0.0,
+        "k_coupling": 1.0,
+        "beta_coupling": 0.6
+      },
+      "solutions_at_t0": {
+        "Ug1": 100114500.0,
+        "Ug2": 79290683.99999999,
+        "Ug3": 120137399.99999999,
+        "Ug4": 66742999.99999999,
+        "Ug": 366285584.0,
+        "Ug1_enhanced": 109030178.48896919,
+        "Ug2_enhanced": 0.0,
+        "Ug3_enhanced": -11539.59808783778,
+        "Ug_enhanced_total": 109018638.89088136,
+        "Um": 9.999999999999998e+16,
+        "_errors": "Unexpected error: 'ComputeParams' object has no attribute 'Delta_t'"
+      },
+      "time_range": {
+        "t_min": 0,
+        "t_max": 100000000.0,
+        "unit": "days"
+      }
+    }
+  },
+  "Sagittarius A*_20260310T201040194972": {
+    "timestamp": "2026-03-10T20:10:40.194972",
+    "input_params": {
+      "query_name": "Sagittarius A*",
+      "scale": "UQFFScale.STELLAR",
+      "M": 1e+30,
+      "r": 1000000.0,
+      "z": 0.0,
+      "B": 1e-05,
+      "t": 100000000.0,
+      "t_n": 0.0,
+      "k_coupling": 1.0,
+      "beta_coupling": 0.6
+    },
+    "long_form_equations": [
+      {
+        "name": "Ug1",
+        "latex": "U_{g1} = k_1 \\times \\frac{G \\times M}{r^2}",
+        "substituted": "Ug1 = 1.5 \u00d7 (6.6743e-11 \u00d7 1.0000e+30) / (1.0000e+06)\u00b2",
+        "result": 100114500.0,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "k_1": 1.5,
+          "G": 6.6743e-11,
+          "M": 1e+30,
+          "r": 1000000.0
+        }
+      },
+      {
+        "name": "Ug2",
+        "latex": "U_{g2} = k_2 \\times \\frac{G \\times M}{r^2} \\times H_{SCm}",
+        "substituted": "Ug2 = 1.2 \u00d7 (6.6743e-11 \u00d7 1.0000e+30) / (1.0000e+06)\u00b2 \u00d7 0.99",
+        "result": 79290683.99999999,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "k_2": 1.2,
+          "G": 6.6743e-11,
+          "M": 1e+30,
+          "r": 1000000.0,
+          "H_SCm": 0.99
+        }
+      },
+      {
+        "name": "Ug3",
+        "latex": "U_{g3} = k_3 \\times \\frac{G \\times M}{r^2}",
+        "substituted": "Ug3 = 1.8 \u00d7 (6.6743e-11 \u00d7 1.0000e+30) / (1.0000e+06)\u00b2",
+        "result": 120137399.99999999,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "k_3": 1.8,
+          "G": 6.6743e-11,
+          "M": 1e+30,
+          "r": 1000000.0
+        }
+      },
+      {
+        "name": "Ug4",
+        "latex": "U_{g4} = k_4 \\times \\frac{G \\times M}{r^2}",
+        "substituted": "Ug4 = 1.0 \u00d7 (6.6743e-11 \u00d7 1.0000e+30) / (1.0000e+06)\u00b2",
+        "result": 66742999.99999999,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "k_4": 1.0,
+          "G": 6.6743e-11,
+          "M": 1e+30,
+          "r": 1000000.0
+        }
+      },
+      {
+        "name": "Ug",
+        "latex": "U_g = U_{g1} + U_{g2} + U_{g3} + U_{g4}",
+        "substituted": "Ug = 1.0011e+08 + 7.9291e+07 + 1.2014e+08 + 6.6743e+07",
+        "result": 366285584.0,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "Ug1": 100114500.0,
+          "Ug2": 79290683.99999999,
+          "Ug3": 120137399.99999999,
+          "Ug4": 66742999.99999999
+        }
+      },
+      {
+        "name": "Ug1_enhanced",
+        "latex": "U_{g1}^* = k_1 \\times \\frac{GM}{r^2} \\times e^{-\\alpha t} \\times \\cos(\\omega t_n) \\times (1 + \\beta_{\\text{def}})",
+        "substituted": "Ug1* = 1.5 \u00d7 (6.674e-11\u00d71.000e+30/1.000e+06\u00b2) \u00d7 e^(-1e-10\u00d71.000e+08) \u00d7 cos(7.272e-05\u00d70.0) \u00d7 (1+0.1)",
+        "result": 109030178.48896919,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "k_1": 1.5,
+          "G": 6.6743e-11,
+          "M": 1e+30,
+          "r": 1000000.0,
+          "alpha": 1e-10,
+          "beta_def": 0.1,
+          "t": 100000000.0,
+          "t_n": 0.0,
+          "omega": 7.27220521664304e-05,
+          "time_decay": 0.9900498337491681,
+          "oscillation": 1.0
+        }
+      },
+      {
+        "name": "Ug2_enhanced",
+        "latex": "U_{g2}^* = k_2 \\times \\frac{GM}{r^2} \\times S(r-R_b) \\times (1 + \\delta_{sw} v_{sw}) \\times H_{SCm} \\times E_{\\text{react}}",
+        "substituted": "Ug2* = 1.2 \u00d7 (6.674e-11\u00d71.000e+30/1.000e+06\u00b2) \u00d7 S(1.000e+06-1.795e+13) \u00d7 (1+0.01\u00d75.000e+05) \u00d7 0.99 \u00d7 1.176e+47",
+        "result": 0.0,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "k_2": 1.2,
+          "G": 6.6743e-11,
+          "M": 1e+30,
+          "r": 1000000.0,
+          "R_b": 17952000000000.0,
+          "step_func": 0.0,
+          "delta_sw": 0.01,
+          "v_sw": 500000.0,
+          "H_SCm": 0.99,
+          "E_react": 1.176066466304271e+47
+        }
+      },
+      {
+        "name": "Ug3_enhanced",
+        "latex": "U_{g3}^* = k_3 \\times \\frac{GM}{r^2} \\times B \\cos(\\omega_s t) \\times P_{\\text{core}} \\times E_{\\text{react}}",
+        "substituted": "Ug3* = 1.8 \u00d7 (6.674e-11\u00d71.000e+30/1.000e+06\u00b2) \u00d7 1.000e-05\u00d7cos(2.865e-06\u00d71.000e+08) \u00d7 1.0 \u00d7 1.176e+47",
+        "result": -11539.59808783778,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "k_3": 1.8,
+          "G": 6.6743e-11,
+          "M": 1e+30,
+          "r": 1000000.0,
+          "B": 1e-05,
+          "omega": 2.865e-06,
+          "t": 100000000.0,
+          "P_core": 1.0,
+          "rotation_factor": -0.8167339098647604,
+          "E_react": 1.176066466304271e+47
+        }
+      },
+      {
+        "name": "Ug_enhanced_total",
+        "latex": "U_g^* = U_{g1}^* + U_{g2}^* + U_{g3}^* + U_{g4}^*",
+        "substituted": "Ug* = Sum of enhanced components",
+        "result": 109018638.89088136,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "component_count": 4
+        }
+      },
+      {
+        "name": "Um",
+        "latex": "U_m = \\frac{\\mu}{r} \\times (1 - e^{-\\gamma t \\cos(\\pi t_n)})",
+        "substituted": "Um = (1.0000e+23 / 1.0000e+06) \u00d7 (1 - exp(-5e-05 \u00d7 100000000.0 \u00d7 cos(\u03c0 \u00d7 0.0)))",
+        "result": 9.999999999999998e+16,
+        "unit": "J/m\u00b3",
+        "parameters_used": {
+          "mu": 1e+23,
+          "r": 1000000.0,
+          "gamma": 5e-05,
+          "t": 100000000.0,
+          "t_n": 0.0,
+          "time_factor": 1.0
+        }
+      }
+    ],
+    "solutions": {
+      "Ug1": 100114500.0,
+      "Ug2": 79290683.99999999,
+      "Ug3": 120137399.99999999,
+      "Ug4": 66742999.99999999,
+      "Ug": 366285584.0,
+      "Ug1_enhanced": 109030178.48896919,
+      "Ug2_enhanced": 0.0,
+      "Ug3_enhanced": -11539.59808783778,
+      "Ug_enhanced_total": 109018638.89088136,
+      "Um": 9.999999999999998e+16,
+      "_errors": "Unexpected error: 'ComputeParams' object has no attribute 'Delta_t'"
+    },
+    "available_equations": [
+      "compute_Ug1",
+      "compute_Ug2",
+      "compute_Ug3",
+      "compute_Ug4",
+      "compute_Ug_total",
+      "compute_Ub",
+      "compute_F_U",
+      "compute_schwarzschild_radius",
+      "compute_escape_velocity",
+      "compute_UQFF_Compressed",
+      "compute_UQFF_Triadic",
+      "compute_UQFF_Superconductive",
+      "compute_UQFF_Quadratic",
+      "compute_F_U_Bi",
+      "compute_F_U_Bi_i",
+      "compute_26_level_structure",
+      "compute_reactor_efficiency",
+      "compute_vacuum_energy",
+      "compute_Ug1_enhanced",
+      "compute_Ug2_enhanced",
+      "compute_Ug3_enhanced",
+      "compute_Ug4_enhanced",
+      "compute_Ug_enhanced_total",
+      "compute_magnetic_moment",
+      "compute_Um_total",
+      "compute_Ub1",
+      "compute_Ub2",
+      "compute_Ub3",
+      "compute_Ub4",
+      "compute_Ub_total",
+      "compute_stress_energy_tensor",
+      "compute_metric_perturbation",
+      "compute_aether_metric",
+      "compute_metric_determinant",
+      "compute_ricci_scalar",
+      "compute_magnetic_pressure",
+      "compute_cyclotron_frequency",
+      "compute_alfven_velocity",
+      "compute_magnetic_energy_density",
+      "compute_luminosity_distance",
+      "compute_angular_diameter_distance",
+      "compute_comoving_distance",
+      "compute_lookback_time"
+    ],
+    "simulation_set": {
+      "coupled_equations": [
+        {
+          "name": "Ug-Ub coupling",
+          "description": "Gravity-Buoyancy balance"
+        },
+        {
+          "name": "F_U evolution",
+          "description": "Unified field time evolution"
+        }
+      ],
+      "initial_conditions": {
+        "query_name": "Sagittarius A*",
+        "scale": "UQFFScale.STELLAR",
+        "M": 1e+30,
+        "r": 1000000.0,
+        "z": 0.0,
+        "B": 1e-05,
+        "t": 100000000.0,
+        "t_n": 0.0,
+        "k_coupling": 1.0,
+        "beta_coupling": 0.6
+      },
+      "solutions_at_t0": {
+        "Ug1": 100114500.0,
+        "Ug2": 79290683.99999999,
+        "Ug3": 120137399.99999999,
+        "Ug4": 66742999.99999999,
+        "Ug": 366285584.0,
+        "Ug1_enhanced": 109030178.48896919,
+        "Ug2_enhanced": 0.0,
+        "Ug3_enhanced": -11539.59808783778,
+        "Ug_enhanced_total": 109018638.89088136,
+        "Um": 9.999999999999998e+16,
+        "_errors": "Unexpected error: 'ComputeParams' object has no attribute 'Delta_t'"
+      },
+      "time_range": {
+        "t_min": 0,
+        "t_max": 100000000.0,
+        "unit": "days"
+      }
+    }
+  },
+  "Sagittarius A*_20260310T201305885413": {
+    "timestamp": "2026-03-10T20:13:05.885413",
+    "input_params": {
+      "query_name": "Sagittarius A*",
+      "scale": "UQFFScale.STELLAR",
+      "M": 1e+30,
+      "r": 1000000.0,
+      "z": 0.0,
+      "B": 1e-05,
+      "t": 100000000.0,
+      "t_n": 0.0,
+      "k_coupling": 1.0,
+      "beta_coupling": 0.6
+    },
+    "long_form_equations": [
+      {
+        "name": "Ug1",
+        "latex": "U_{g1} = k_1 \\times \\frac{G \\times M}{r^2}",
+        "substituted": "Ug1 = 1.5 \u00d7 (6.6743e-11 \u00d7 1.0000e+30) / (1.0000e+06)\u00b2",
+        "result": 100114500.0,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "k_1": 1.5,
+          "G": 6.6743e-11,
+          "M": 1e+30,
+          "r": 1000000.0
+        }
+      },
+      {
+        "name": "Ug2",
+        "latex": "U_{g2} = k_2 \\times \\frac{G \\times M}{r^2} \\times H_{SCm}",
+        "substituted": "Ug2 = 1.2 \u00d7 (6.6743e-11 \u00d7 1.0000e+30) / (1.0000e+06)\u00b2 \u00d7 0.99",
+        "result": 79290683.99999999,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "k_2": 1.2,
+          "G": 6.6743e-11,
+          "M": 1e+30,
+          "r": 1000000.0,
+          "H_SCm": 0.99
+        }
+      },
+      {
+        "name": "Ug3",
+        "latex": "U_{g3} = k_3 \\times \\frac{G \\times M}{r^2}",
+        "substituted": "Ug3 = 1.8 \u00d7 (6.6743e-11 \u00d7 1.0000e+30) / (1.0000e+06)\u00b2",
+        "result": 120137399.99999999,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "k_3": 1.8,
+          "G": 6.6743e-11,
+          "M": 1e+30,
+          "r": 1000000.0
+        }
+      },
+      {
+        "name": "Ug4",
+        "latex": "U_{g4} = k_4 \\times \\frac{G \\times M}{r^2}",
+        "substituted": "Ug4 = 1.0 \u00d7 (6.6743e-11 \u00d7 1.0000e+30) / (1.0000e+06)\u00b2",
+        "result": 66742999.99999999,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "k_4": 1.0,
+          "G": 6.6743e-11,
+          "M": 1e+30,
+          "r": 1000000.0
+        }
+      },
+      {
+        "name": "Ug",
+        "latex": "U_g = U_{g1} + U_{g2} + U_{g3} + U_{g4}",
+        "substituted": "Ug = 1.0011e+08 + 7.9291e+07 + 1.2014e+08 + 6.6743e+07",
+        "result": 366285584.0,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "Ug1": 100114500.0,
+          "Ug2": 79290683.99999999,
+          "Ug3": 120137399.99999999,
+          "Ug4": 66742999.99999999
+        }
+      },
+      {
+        "name": "Ug1_enhanced",
+        "latex": "U_{g1}^* = k_1 \\times \\frac{GM}{r^2} \\times e^{-\\alpha t} \\times \\cos(\\omega t_n) \\times (1 + \\beta_{\\text{def}})",
+        "substituted": "Ug1* = 1.5 \u00d7 (6.674e-11\u00d71.000e+30/1.000e+06\u00b2) \u00d7 e^(-1e-10\u00d71.000e+08) \u00d7 cos(7.272e-05\u00d70.0) \u00d7 (1+0.1)",
+        "result": 109030178.48896919,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "k_1": 1.5,
+          "G": 6.6743e-11,
+          "M": 1e+30,
+          "r": 1000000.0,
+          "alpha": 1e-10,
+          "beta_def": 0.1,
+          "t": 100000000.0,
+          "t_n": 0.0,
+          "omega": 7.27220521664304e-05,
+          "time_decay": 0.9900498337491681,
+          "oscillation": 1.0
+        }
+      },
+      {
+        "name": "Ug2_enhanced",
+        "latex": "U_{g2}^* = k_2 \\times \\frac{GM}{r^2} \\times S(r-R_b) \\times (1 + \\delta_{sw} v_{sw}) \\times H_{SCm} \\times E_{\\text{react}}",
+        "substituted": "Ug2* = 1.2 \u00d7 (6.674e-11\u00d71.000e+30/1.000e+06\u00b2) \u00d7 S(1.000e+06-1.795e+13) \u00d7 (1+0.01\u00d75.000e+05) \u00d7 0.99 \u00d7 1.176e+47",
+        "result": 0.0,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "k_2": 1.2,
+          "G": 6.6743e-11,
+          "M": 1e+30,
+          "r": 1000000.0,
+          "R_b": 17952000000000.0,
+          "step_func": 0.0,
+          "delta_sw": 0.01,
+          "v_sw": 500000.0,
+          "H_SCm": 0.99,
+          "E_react": 1.176066466304271e+47
+        }
+      },
+      {
+        "name": "Ug3_enhanced",
+        "latex": "U_{g3}^* = k_3 \\times \\frac{GM}{r^2} \\times B \\cos(\\omega_s t) \\times P_{\\text{core}} \\times E_{\\text{react}}",
+        "substituted": "Ug3* = 1.8 \u00d7 (6.674e-11\u00d71.000e+30/1.000e+06\u00b2) \u00d7 1.000e-05\u00d7cos(2.865e-06\u00d71.000e+08) \u00d7 1.0 \u00d7 1.176e+47",
+        "result": -11539.59808783778,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "k_3": 1.8,
+          "G": 6.6743e-11,
+          "M": 1e+30,
+          "r": 1000000.0,
+          "B": 1e-05,
+          "omega": 2.865e-06,
+          "t": 100000000.0,
+          "P_core": 1.0,
+          "rotation_factor": -0.8167339098647604,
+          "E_react": 1.176066466304271e+47
+        }
+      },
+      {
+        "name": "Ug_enhanced_total",
+        "latex": "U_g^* = U_{g1}^* + U_{g2}^* + U_{g3}^* + U_{g4}^*",
+        "substituted": "Ug* = Sum of enhanced components",
+        "result": 109018638.89088136,
+        "unit": "m/s\u00b2",
+        "parameters_used": {
+          "component_count": 4
+        }
+      },
+      {
+        "name": "Um",
+        "latex": "U_m = \\frac{\\mu}{r} \\times (1 - e^{-\\gamma t \\cos(\\pi t_n)})",
+        "substituted": "Um = (1.0000e+23 / 1.0000e+06) \u00d7 (1 - exp(-5e-05 \u00d7 100000000.0 \u00d7 cos(\u03c0 \u00d7 0.0)))",
+        "result": 9.999999999999998e+16,
+        "unit": "J/m\u00b3",
+        "parameters_used": {
+          "mu": 1e+23,
+          "r": 1000000.0,
+          "gamma": 5e-05,
+          "t": 100000000.0,
+          "t_n": 0.0,
+          "time_factor": 1.0
+        }
+      }
+    ],
+    "solutions": {
+      "Ug1": 100114500.0,
+      "Ug2": 79290683.99999999,
+      "Ug3": 120137399.99999999,
+      "Ug4": 66742999.99999999,
+      "Ug": 366285584.0,
+      "Ug1_enhanced": 109030178.48896919,
+      "Ug2_enhanced": 0.0,
+      "Ug3_enhanced": -11539.59808783778,
+      "Ug_enhanced_total": 109018638.89088136,
+      "Um": 9.999999999999998e+16,
+      "_errors": "Unexpected error: 'ComputeParams' object has no attribute 'Delta_t'"
+    },
+    "available_equations": [
+      "compute_Ug1",
+      "compute_Ug2",
+      "compute_Ug3",
+      "compute_Ug4",
+      "compute_Ug_total",
+      "compute_Ub",
+      "compute_F_U",
+      "compute_schwarzschild_radius",
+      "compute_escape_velocity",
+      "compute_UQFF_Compressed",
+      "compute_UQFF_Triadic",
+      "compute_UQFF_Superconductive",
+      "compute_UQFF_Quadratic",
+      "compute_F_U_Bi",
+      "compute_F_U_Bi_i",
+      "compute_26_level_structure",
+      "compute_reactor_efficiency",
+      "compute_vacuum_energy",
+      "compute_Ug1_enhanced",
+      "compute_Ug2_enhanced",
+      "compute_Ug3_enhanced",
+      "compute_Ug4_enhanced",
+      "compute_Ug_enhanced_total",
+      "compute_magnetic_moment",
+      "compute_Um_total",
+      "compute_Ub1",
+      "compute_Ub2",
+      "compute_Ub3",
+      "compute_Ub4",
+      "compute_Ub_total",
+      "compute_stress_energy_tensor",
+      "compute_metric_perturbation",
+      "compute_aether_metric",
+      "compute_metric_determinant",
+      "compute_ricci_scalar",
+      "compute_magnetic_pressure",
+      "compute_cyclotron_frequency",
+      "compute_alfven_velocity",
+      "compute_magnetic_energy_density",
+      "compute_luminosity_distance",
+      "compute_angular_diameter_distance",
+      "compute_comoving_distance",
+      "compute_lookback_time"
+    ],
+    "simulation_set": {
+      "coupled_equations": [
+        {
+          "name": "Ug-Ub coupling",
+          "description": "Gravity-Buoyancy balance"
+        },
+        {
+          "name": "F_U evolution",
+          "description": "Unified field time evolution"
+        }
+      ],
+      "initial_conditions": {
+        "query_name": "Sagittarius A*",
+        "scale": "UQFFScale.STELLAR",
+        "M": 1e+30,
+        "r": 1000000.0,
+        "z": 0.0,
+        "B": 1e-05,
+        "t": 100000000.0,
+        "t_n": 0.0,
+        "k_coupling": 1.0,
+        "beta_coupling": 0.6
+      },
+      "solutions_at_t0": {
+        "Ug1": 100114500.0,
+        "Ug2": 79290683.99999999,
+        "Ug3": 120137399.99999999,
+        "Ug4": 66742999.99999999,
+        "Ug": 366285584.0,
+        "Ug1_enhanced": 109030178.48896919,
+        "Ug2_enhanced": 0.0,
+        "Ug3_enhanced": -11539.59808783778,
+        "Ug_enhanced_total": 109018638.89088136,
+        "Um": 9.999999999999998e+16,
+        "_errors": "Unexpected error: 'ComputeParams' object has no attribute 'Delta_t'"
+      },
+      "time_range": {
+        "t_min": 0,
+        "t_max": 100000000.0,
+        "unit": "days"
+      }
+    }
   }
 }
