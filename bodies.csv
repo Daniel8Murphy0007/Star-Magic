@@ -212,3 +212,16 @@ VLQ_T_1500GeV,1500,1e-17,1e4,1e12,1e16,1e-3,1e22,1e-18,0.99,0.33,1e18
 DCS_Dplus_BESIII,1.87,1e-15,1e3,1e10,1e14,1e-4,1e16,1e-113,0.99,0.0001,1e16
 # H₂O-H₂ rotor collision: CC/CS, Phillips et al. 1995, τ_rot=r×F_V at level 10
 H2O_H2_Rotor,18,1e-10,1e-9,300,1e12,1e-8,1e-10,1e-20,0.99,0.0001,6.28e13
+# ---- CP3 Phase 3 Systems (added 2026-03-11 from Grok thread ba4c0789) ----
+# Heliospheric Boundary: Voyager termination shock ~122 AU, PSP-validated delta_sw=0.01
+Heliospheric_Boundary,1.989e30,1.83e13,1.83e13,3000.0,2.5e-6,5e-10,1e13,1e-12,1.0,0.5,1.811e-8
+# Parker Solar Probe perihelion: 0.046 AU survey point, v_sw=5e5 m/s CDAWeb 2025
+PSP_Perihelion_Survey,1.989e30,6.96e8,6.88e9,5778.0,2.5e-6,1e-4,1e15,1e-11,1.0,1.0,1.811e-8
+# PSZ2 G168.02+15.18: Planck SZ galaxy cluster, M~1e14 Msun, z~0.2, ICM T~5e7 K
+PSZ2_G168_Cluster,1.99e44,1e22,3e22,5e7,1e-19,1e-6,1e20,1e-20,0.99,1e-4,1e-18
+# PLCK G287.0+32.9: Double radio relic cluster, z=0.39, M~1.1e15 Msun, ICM T~8e7 K
+PLCK_G287_DoubleRelic,2.19e45,1.5e22,4e22,8e7,1e-19,5e-7,1e20,1e-20,0.99,1e-4,1e-18
+# JWST Deep Field z~8: High-z galaxy candidate, M~5e9 Msun, SFR~50 Msun/yr, NISP shear validated
+JWST_DeepField_z8,9.95e39,3e20,1e21,3e4,1e-16,1e-8,1e18,1e-22,0.99,1e-4,1e-15
+# G359 Galactic Center Region: 10pc vicinity of SgrA*, B~100 �G, warm ionized medium
+G359_GalacticCenter,1.99e40,3.086e16,3.086e17,1e4,3e-13,1e-4,1e25,1e-15,0.99,0.01,7.3e-16
