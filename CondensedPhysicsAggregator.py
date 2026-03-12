@@ -10,7 +10,7 @@ while maintaining a single-import API.
 ARCHITECTURE:
     CondensedPhysics.py      → Foundation (1011 base classes)
     CondensedPhysics2.py     → Extension 1 (17+ classes: Orb Analysis 10/11+)
-    CondensedPhysics3.py     → Extension 2 (future)
+    CondensedPhysics3.py     → Extension 2 (34 classes: 15 categories, Session 41, 2026-03-11)
     CondensedPhysicsAggregator.py → This file (unified API)
 
 USAGE:
@@ -77,6 +77,100 @@ from CondensedPhysics2 import (
     # Aggregated CP2 registry
     CP2_CALCULATORS,
 )
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# IMPORT FROM CONDENSEDPHYSICS3.PY (EXTENSION 2 — 34 classes, 15 categories)
+# Source: Grok thread ba4c0789d5c94bf2a26bb027293d7634 (March 11, 2026)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+from CondensedPhysics3 import (
+    # Solar System
+    SolarWindBubbleVerificationCalculator,
+    HeliopausalBoundaryStepFunctionCalculator,
+    # Stars
+    StellarClusterUg3DiskTurbulenceCalculator,
+    StellarUg1DipoleDefectCalculator,
+    # Exoplanets
+    ExoplanetAtmosphericMassLossUbCalculator,
+    PlanetaryCoreUg3PenetrationScalingCalculator,
+    # White Dwarf
+    WhiteDwarfUQFFGravitationalDecayCalculator,
+    WhiteDwarfDegenerateElectronUiCalculator,
+    # Supernova
+    KilonovaTransientQWaveParameterCalculator,
+    SupernovaProgenitorNegativeTimeZoneCalculator,
+    # Neutron Star
+    NeutronStarCRPIceCubeFluxVerificationCalculator,
+    NeutronStarMergerUbOutflowF_UCalculator,
+    # Black Hole
+    BlackHoleJetFluidAsymmetryRatioCalculator,
+    BlackHoleUg4GalacticFeedbackCalculator,
+    # Super Massive BH
+    GaiaSgrADistanceErrorAnalysisCalculator,
+    QuasarBlazerLuminosityEreactVerificationCalculator,
+    # Milky Way Galaxy
+    GalacticCenterUg4KappaDecayCalibrationCalculator,
+    MilkyWayGalacticSpinUb_iCouplingCalculator,
+    # Galaxy
+    GalaxyIMFNucleosynthesisIndexCalculator,
+    GalaxyEquationOfStateUCFCalculator,
+    # Quasar
+    QuasarJetAsymmetryCosRatioCalculator,
+    QuasarEddingtonExcessJetVelocityCalculator,
+    # Galaxy Cluster
+    GalaxyClusterPSZ2UmTurbulenceCalculator,
+    GalaxyClusterPLCKDoubleRelicShearCalculator,
+    # Cosmological
+    TwentySixLevelPolynomialHierarchyFullCalculator,
+    CosmologicalLineFluximeSFRIntegralCalculator,
+    PDGNuclearPolynomialFitVerificationCalculator,
+    # Deep Field
+    DeepFieldShearDeltaTauConstraintCalculator,
+    HighRedshiftJWSTQWaveDeepFieldCalculator,
+    DeepFieldG359ShearNISPConstraintCalculator,
+    # Miscellaneous
+    QScopeFrequencyResonanceUQFFCalculator,
+    ATLASLHCQuarkEnergyLowNLevelCalculator,
+    VacuumEnergyComponentRatioCalculator,
+    UQFFIPCChainStatusCalculator,
+)
+
+CP3_CALCULATORS = {
+    'SolarWindBubbleVerificationCalculator': SolarWindBubbleVerificationCalculator,
+    'HeliopausalBoundaryStepFunctionCalculator': HeliopausalBoundaryStepFunctionCalculator,
+    'StellarClusterUg3DiskTurbulenceCalculator': StellarClusterUg3DiskTurbulenceCalculator,
+    'StellarUg1DipoleDefectCalculator': StellarUg1DipoleDefectCalculator,
+    'ExoplanetAtmosphericMassLossUbCalculator': ExoplanetAtmosphericMassLossUbCalculator,
+    'PlanetaryCoreUg3PenetrationScalingCalculator': PlanetaryCoreUg3PenetrationScalingCalculator,
+    'WhiteDwarfUQFFGravitationalDecayCalculator': WhiteDwarfUQFFGravitationalDecayCalculator,
+    'WhiteDwarfDegenerateElectronUiCalculator': WhiteDwarfDegenerateElectronUiCalculator,
+    'KilonovaTransientQWaveParameterCalculator': KilonovaTransientQWaveParameterCalculator,
+    'SupernovaProgenitorNegativeTimeZoneCalculator': SupernovaProgenitorNegativeTimeZoneCalculator,
+    'NeutronStarCRPIceCubeFluxVerificationCalculator': NeutronStarCRPIceCubeFluxVerificationCalculator,
+    'NeutronStarMergerUbOutflowF_UCalculator': NeutronStarMergerUbOutflowF_UCalculator,
+    'BlackHoleJetFluidAsymmetryRatioCalculator': BlackHoleJetFluidAsymmetryRatioCalculator,
+    'BlackHoleUg4GalacticFeedbackCalculator': BlackHoleUg4GalacticFeedbackCalculator,
+    'GaiaSgrADistanceErrorAnalysisCalculator': GaiaSgrADistanceErrorAnalysisCalculator,
+    'QuasarBlazerLuminosityEreactVerificationCalculator': QuasarBlazerLuminosityEreactVerificationCalculator,
+    'GalacticCenterUg4KappaDecayCalibrationCalculator': GalacticCenterUg4KappaDecayCalibrationCalculator,
+    'MilkyWayGalacticSpinUb_iCouplingCalculator': MilkyWayGalacticSpinUb_iCouplingCalculator,
+    'GalaxyIMFNucleosynthesisIndexCalculator': GalaxyIMFNucleosynthesisIndexCalculator,
+    'GalaxyEquationOfStateUCFCalculator': GalaxyEquationOfStateUCFCalculator,
+    'QuasarJetAsymmetryCosRatioCalculator': QuasarJetAsymmetryCosRatioCalculator,
+    'QuasarEddingtonExcessJetVelocityCalculator': QuasarEddingtonExcessJetVelocityCalculator,
+    'GalaxyClusterPSZ2UmTurbulenceCalculator': GalaxyClusterPSZ2UmTurbulenceCalculator,
+    'GalaxyClusterPLCKDoubleRelicShearCalculator': GalaxyClusterPLCKDoubleRelicShearCalculator,
+    'TwentySixLevelPolynomialHierarchyFullCalculator': TwentySixLevelPolynomialHierarchyFullCalculator,
+    'CosmologicalLineFluximeSFRIntegralCalculator': CosmologicalLineFluximeSFRIntegralCalculator,
+    'PDGNuclearPolynomialFitVerificationCalculator': PDGNuclearPolynomialFitVerificationCalculator,
+    'DeepFieldShearDeltaTauConstraintCalculator': DeepFieldShearDeltaTauConstraintCalculator,
+    'HighRedshiftJWSTQWaveDeepFieldCalculator': HighRedshiftJWSTQWaveDeepFieldCalculator,
+    'DeepFieldG359ShearNISPConstraintCalculator': DeepFieldG359ShearNISPConstraintCalculator,
+    'QScopeFrequencyResonanceUQFFCalculator': QScopeFrequencyResonanceUQFFCalculator,
+    'ATLASLHCQuarkEnergyLowNLevelCalculator': ATLASLHCQuarkEnergyLowNLevelCalculator,
+    'VacuumEnergyComponentRatioCalculator': VacuumEnergyComponentRatioCalculator,
+    'UQFFIPCChainStatusCalculator': UQFFIPCChainStatusCalculator,
+}
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # IMPORT FROM GROK DEEP ANALYSIS MODULES (Equations 12-99)
@@ -199,6 +293,8 @@ from GrokThreadUQFFExtensions import (
 # Aggregate all calculators from all CP modules
 ALL_CALCULATORS = {
     **CP2_CALCULATORS,
+    # CP3 Extension 2 (34 classes, 15 categories, Session 41 — 2026-03-11)
+    **CP3_CALCULATORS,
     # Grok Thread UQFF Extensions (Thread 9c3666463ac14753b4f3bea869caaf01)
     **GROK_THREAD_UQFF_CALCULATORS,
     # Grok Deep Analysis Modules (Equations 12-99)
@@ -213,8 +309,8 @@ ALL_CALCULATORS = {
 }
 
 # Module metadata
-AGGREGATOR_VERSION = "1.2.0"
-TOTAL_MODULES = 9  # CP1, CP2, GrokThreadUQFF, + 6 Grok Deep Analysis modules
+AGGREGATOR_VERSION = "1.3.0"
+TOTAL_MODULES = 10  # CP1, CP2, CP3, GrokThreadUQFF, + 6 Grok Deep Analysis modules
 
 
 def get_calculator(name: str):
@@ -250,6 +346,8 @@ def list_all_calculators():
     return {
         'CP2_ORB_ANALYSIS_10': list(ORB_ANALYSIS_10_CALCULATORS.keys()),
         'CP2_ORB_ANALYSIS_11': list(ORB_ANALYSIS_11_CALCULATORS.keys()),
+        # CP3 Extension 2 (34 classes, 15 categories)
+        'CP3_ALL': list(CP3_CALCULATORS.keys()),
         # Grok Deep Analysis modules
         'AGN_FEEDBACK': list(AGN_FEEDBACK_CALCULATORS.keys()),
         'GRB_EQUATIONS': list(GRB_CALCULATORS.keys()),
@@ -271,7 +369,44 @@ __all__ = [
     'TOTAL_MODULES',
     'get_calculator',
     'list_all_calculators',
-    
+
+    # CP3 exports (Extension 2 — 34 classes)
+    'CP3_CALCULATORS',
+    'SolarWindBubbleVerificationCalculator',
+    'HeliopausalBoundaryStepFunctionCalculator',
+    'StellarClusterUg3DiskTurbulenceCalculator',
+    'StellarUg1DipoleDefectCalculator',
+    'ExoplanetAtmosphericMassLossUbCalculator',
+    'PlanetaryCoreUg3PenetrationScalingCalculator',
+    'WhiteDwarfUQFFGravitationalDecayCalculator',
+    'WhiteDwarfDegenerateElectronUiCalculator',
+    'KilonovaTransientQWaveParameterCalculator',
+    'SupernovaProgenitorNegativeTimeZoneCalculator',
+    'NeutronStarCRPIceCubeFluxVerificationCalculator',
+    'NeutronStarMergerUbOutflowF_UCalculator',
+    'BlackHoleJetFluidAsymmetryRatioCalculator',
+    'BlackHoleUg4GalacticFeedbackCalculator',
+    'GaiaSgrADistanceErrorAnalysisCalculator',
+    'QuasarBlazerLuminosityEreactVerificationCalculator',
+    'GalacticCenterUg4KappaDecayCalibrationCalculator',
+    'MilkyWayGalacticSpinUb_iCouplingCalculator',
+    'GalaxyIMFNucleosynthesisIndexCalculator',
+    'GalaxyEquationOfStateUCFCalculator',
+    'QuasarJetAsymmetryCosRatioCalculator',
+    'QuasarEddingtonExcessJetVelocityCalculator',
+    'GalaxyClusterPSZ2UmTurbulenceCalculator',
+    'GalaxyClusterPLCKDoubleRelicShearCalculator',
+    'TwentySixLevelPolynomialHierarchyFullCalculator',
+    'CosmologicalLineFluximeSFRIntegralCalculator',
+    'PDGNuclearPolynomialFitVerificationCalculator',
+    'DeepFieldShearDeltaTauConstraintCalculator',
+    'HighRedshiftJWSTQWaveDeepFieldCalculator',
+    'DeepFieldG359ShearNISPConstraintCalculator',
+    'QScopeFrequencyResonanceUQFFCalculator',
+    'ATLASLHCQuarkEnergyLowNLevelCalculator',
+    'VacuumEnergyComponentRatioCalculator',
+    'UQFFIPCChainStatusCalculator',
+
     # CP2 exports (explicit)
     'CP2_VERSION',
     'CP2_CLASS_COUNT',

@@ -32,28 +32,48 @@
  *   "ShapiroWilk", "qwaveNormal", "rotorCS", "H2OH2PES", "DeltaJ2",
  *   "DPMfreqMUGE", "aetherFreq", "f_aether", "BECalpha", "deltaPair",
  *   "T_BEC", "complexUi", "betaComplex", "rhoVacComplex", "SuperCondUI" (thread 1a2726a4)
+ *   "SolarWindBubble", "HeliopausalBoundary", "StellarClusterUg3", "Ug1DipoleDefect",
+ *   "ExoplanetMassLoss", "PlanetaryCoreUg3", "WhiteDwarfUQFF", "WDDegenerateElectron",
+ *   "KilonovaQWave", "ProgNegTimeZone", "CRPIceCubeFlux", "NSMergerUb",
+ *   "JetFluidAsymmetry", "Ug4GalacticFeedback", "GaiaSgrAError", "BlazerEreact",
+ *   "GCUg4KappaDecay", "GalacticSpinUb", "IMFNucleosynthesis", "GalaxyEOS",
+ *   "JetAsymmetryCos", "EddingtonExcess", "PSZ2UmTurbulence", "PLCKDoubleRelic",
+ *   "26LevelPolyFull", "LineFluxSFR", "PDGNuclearFit", "DeepFieldShear",
+ *   "JWSTDeepField", "G359NISP", "QScopeResonance", "LHCQuarkLowN",
+ *   "VacuumComponentRatio", "IPCChainStatus" (CP3 — Session 41, 34 classes, 15 categories)
+ *   "SolarWindBubble", "HeliopausalBoundary", "StellarClusterUg3", "Ug1DipoleDefect",
+ *   "ExoplanetMassLoss", "PlanetaryCoreUg3", "WhiteDwarfUQFF", "WDDegenerateElectron",
+ *   "KilonovaQWave", "ProgNegTimeZone", "CRPIceCubeFlux", "NSMergerUb",
+ *   "JetFluidAsymmetry", "Ug4GalacticFeedback", "GaiaSgrAError", "BlazerEreact",
+ *   "GCUg4KappaDecay", "GalacticSpinUb", "IMFNucleosynthesis", "GalaxyEOS",
+ *   "JetAsymmetryCos", "EddingtonExcess", "PSZ2UmTurbulence", "PLCKDoubleRelic",
+ *   "26LevelPolyFull", "LineFluxSFR", "PDGNuclearFit", "DeepFieldShear",
+ *   "JWSTDeepField", "G359NISP", "QScopeResonance", "LHCQuarkLowN",
+ *   "VacuumComponentRatio", "IPCChainStatus" (CP3 — Session 41, 34 classes, 15 categories)
  * 
  * Performance comparison:
  * - QCalc: 9,149 lines, imports in 1.09s, subprocess ~920ms
  * - CondensedPhysics: 168,494 lines, imports in 30s+ (not used)
- * - CondensedPhysics2: ~42,800 lines (548 classes), imports in ~2.5s
- *   - Includes MonteCarloStochasticWrapper for ensemble simulations
- *   - Includes RelativisticUQFFCalculators (630 lines, 5 calcs for v >= 0.1c)
+ * - CondensedPhysics3: 1,549 lines, 34 classes, 15 categories (IPC chain Position 3)
+ *   (routed via CP3 when triggers match: SolarWindBubble, HeliopausalBoundary, etc.)
+ * - CondensedPhysicsAggregator: v1.3.0, 10s (630 lines, 5 calcs for v >= 0.1c)
  *   - Includes Thread 10220801: 10 solar Ug1-4 calibration calculators
  *   - Includes GrokThreadUQFFExtensions (14 classes via direct import)
  *   - Includes Thread 3a469fcc: 8 canonical UQFF calculators (Star Magic 14Apr2025)
  *   - Includes Thread ff01cb3a: 5 full-reconstruction calculators (SCm hierarchy, Ug2 QUA, Ug4 Pgal, solar cycle FU, frozen planet)
  *   - Includes Thread f3c55f52: 5 vacuum-mediated calculators (Ug4 vacuum, AGN feedback, inflation epoch, DPM origin, vacuum component density)
- *   - Includes Thread 1a2726a4: 5 Q_wave/rotor/MUGE/BEC/complex-Ui calculators (Shapiro-Wilk Q_wave normality, H2O-H2 CS PES, DPM-THz MUGE, BEC alpha-clustering, superconductive complex U_i)
- * - GrokThreadUQFFExtensions: 2,229 lines, 14 classes
- *   (routed via CP2 when triggers match: ResonanceGravity, AsymCap, etc.)
- * - CondensedPhysicsAggregator: v1.2.0, 9 modules, unified ALL_CALCULATORS dict
+ * Updated: 2026-03-12 (CP3 integrated into CondensedPhysicsAggregator v1.3.0; 34 CP3 trigger keywords added; Session 42)
+ * Phase: 0 - Unification (IPC Wiring), Phase 2 - Extensions (CP2), Phase 3 - Extensions (CP3Ui calculators (Shapiro-Wilk Q_wave normality, H2O-H2 CS PES, DPM-THz MUGE, BEC alpha-clustering, superconductive complex U_i)
+ * - CondensedPhysics3: 1,549 lines, 34 classes, 15 categories (IPC chain Position 3)
+ *   (routed via CP3 when triggers match: SolarWindBubble, HeliopausalBoundary, etc.)
+ * - CondensedPhysicsAggregator: v1.3.0, 10 modules, unified ALL_CALCULATORS dict
  * 
  * Author: Daniel T. Murphy
  * Date: March 3, 2026 (Phase 2: CP2 Integration)
  * Updated: March 6, 2026 (Thread f3c55f52: 5 vacuum-mediated UQFF + Thread ff01cb3a: 5 full-reconstruction UQFF + Thread 3a469fcc: 8 canonical UQFF + GW PAPER_016/017/018)
  * Updated: 2026-03-06 (Thread 1a2726a4: 5 Q_wave/rotor/MUGE/BEC/complex-Ui UQFF; CP2=548 classes; IPC 0x0A00-0x0A04; commit e7f31e6)
- * Phase: 0 - Unification (IPC Wiring), Phase 2 - Extensions (CP2)
+ * Updated: 2026-03-12 (CP3 integrated into CondensedPhysicsAggregator v1.3.0; 34 CP3 trigger keywords added; Session 42)
+ * Phase: 0 - Unification (IPC Wiring), Phase 2 - Extensions (CP2), Phase 3 - Extensions (CP3)
  */
 
 #ifndef IPC_PIPELINE_HANDLER_H
