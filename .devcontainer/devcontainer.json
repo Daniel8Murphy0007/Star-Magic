@@ -2,9 +2,8 @@
 	"name": "Star-Magic UQFF",
 	"build": {
 		"dockerfile": "Dockerfile",
-		"context": ".."
+		"context": "."
 	},
-	"image": "mcr.microsoft.com/devcontainers/cpp:2-ubuntu22.04",
 	"features": {
 		"ghcr.io/devcontainers/features/git-lfs:1": {
 			"autoPull": true,
