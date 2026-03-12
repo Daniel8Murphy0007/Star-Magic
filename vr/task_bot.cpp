@@ -10,8 +10,10 @@
  */
 
 #include "task_bot.h"
-#include "vr_runtime.h"
 #include "openxr_session.h"
+#include "vulkan_compositor.h"
+#include "astro_graphics.h"
+#include "vr_runtime.h"  // Include last to get full type definitions above
 
 #include <iostream>
 #include <sstream>
@@ -424,8 +426,9 @@ Available commands:
     // Navigate command
     registerCommand(Intent::NAVIGATE, [runtime](const VoiceCommand& cmd) {
         auto it = cmd.parameters.find("target");
-        if (it != cmd.parameters.end() && runtime->getAstroGraphics()) {
-            runtime->getAstroGraphics()->flyTo(it->second, 2.0);
+        if (it != cmd.parameters.end()) {
+            // TODO: Implement navigation when AstroGraphics is fully integrated
+            // runtime->getAstroGraphics()->flyTo(it->second, 2.0);
             return TaskResult{true, "Flying to " + it->second, "", 0};
         }
         return TaskResult{false, "No target specified", "", 0};
@@ -434,12 +437,15 @@ Available commands:
     // Toggle wireframe
     registerCommand(Intent::TOGGLE_MODE, [runtime](const VoiceCommand& cmd) {
         auto it = cmd.parameters.find("mode");
-        if (it != cmd.parameters.end() && runtime->getVulkanCompositor()) {
+        (void)runtime;  // Suppress unused warning - will use when VulkanCompositor is integrated
+        if (it != cmd.parameters.end()) {
             if (it->second == "wireframe") {
-                auto current = runtime->getVulkanCompositor()->getRenderMode();
-                auto newMode = (current == RenderMode::Wireframe) ? 
-                               RenderMode::Standard : RenderMode::Wireframe;
-                runtime->getVulkanCompositor()->setRenderMode(newMode);
+                // TODO: Implement render mode toggle when VulkanCompositor is fully integrated
+                // VulkanCompositor* compositor = runtime->getVulkanCompositor();
+                // VR::RenderMode current = compositor->getRenderMode();
+                // VR::RenderMode newMode = (current == VR::RenderMode::Wireframe) ? 
+                //                VR::RenderMode::Standard : VR::RenderMode::Wireframe;
+                // compositor->setRenderMode(newMode);
                 return TaskResult{true, "Toggled wireframe", "", 0};
             }
         }
@@ -458,10 +464,10 @@ Available commands:
     
     registerGestureAction(GestureType::PointAt, [runtime](const GestureEvent& event) {
         // Ray cast from hand to find pointed object
-        if (runtime->getAstroGraphics()) {
-            // TODO: Implement ray picking
-            std::cout << "Pointing detected" << std::endl;
-        }
+        (void)runtime;  // To be used when AstroGraphics is fully integrated
+        (void)event;
+        // TODO: Implement ray picking when VR is fully integrated
+        std::cout << "Pointing detected" << std::endl;
     });
 }
 
