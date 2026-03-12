@@ -309,8 +309,8 @@ ALL_CALCULATORS = {
 }
 
 # Module metadata
-AGGREGATOR_VERSION = "1.3.0"
-TOTAL_MODULES = 10  # CP1, CP2, CP3, GrokThreadUQFF, + 6 Grok Deep Analysis modules
+AGGREGATOR_VERSION = "1.4.0"
+TOTAL_MODULES = 20  # CP1, CP2 v2.1.0, CP3, + 10 thread registries (Session 43)
 
 
 def get_calculator(name: str):

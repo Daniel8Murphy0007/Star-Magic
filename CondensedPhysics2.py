@@ -140,7 +140,7 @@ if not hasattr(np, 'trapz'):
 # CONDENSEDPHYSICS2 REGISTRY TRACKING
 # ═══════════════════════════════════════════════════════════════════════════════
 
-CP2_VERSION = "2.0.0"
+CP2_VERSION = "2.1.0"  # Session 43: merged 10 thread registries into CP2_CALCULATORS
 CP2_CLASS_COUNT = 0  # Updated dynamically
 
 
@@ -36559,6 +36559,17 @@ CP2_CALCULATORS = {
     **ORB_ANALYSIS_61_CALCULATORS,
     **ORB_ANALYSIS_62_CALCULATORS,
     **ORB_ANALYSIS_63_CALCULATORS,
+    # ── Thread / Session registry dicts (Sessions 38-43) ────────────────────
+    **SOURCE_b9a29ced_CALCULATORS,     # Thread b9a29ced: Millennium Prize Phase 3
+    **SOURCE_deed728b_CALCULATORS,     # Thread deed728b: SystemParams DB + Field Sim
+    **SOURCE6_BA400FD1_CALCULATORS,    # Thread BA400FD1: Source6 Reactor modules
+    **SOURCE8_BA400FD1_CALCULATORS,    # Thread BA400FD1: Source8 Computational modules
+    **SOURCE_10220801_CALCULATORS,     # Thread 10220801: Grok batch analysis
+    **SOURCE_3a469fcc_CALCULATORS,     # Thread 3a469fcc: Canonical UQFF 14Apr2025
+    **SOURCE_ff01cb3a_CALCULATORS,     # Thread ff01cb3a: Full Reconstruction 14Apr2025
+    **SOURCE_f3c55f52_CALCULATORS,     # Thread f3c55f52: Superconductivity+Gravity
+    **SOURCE_1a2726a4_CALCULATORS,     # Thread 1a2726a4: Q_wave 47-81 + BEC
+    **SOURCE_EP_VALIDATORS,            # EP-03/04/08: Nuclear + JCAP validators
 }
 
 # Update class count
@@ -37412,6 +37423,83 @@ __all__ = [
     'SolarAetherStressTensorCalculator',         # T_s^{00} = M_s·c²/V+L_s/(c²V)+ρ_sw·v_sw²+ρ_SCm·v_SCm²+ρ_A·v_A²
     'SOURCE_10220801_CALCULATORS',               # Registry dict for thread 10220801 calculators
 
+    # ── Phase 3: Millennium Prize Problems (Thread b9a29ced, March 4 2026) ──────
+    'NavierStokesUQFFRegularizationCalculator',  # Modified NS + Ug4 vacuum regularization
+    'YangMillsMassGapCalculator',                # Yang-Mills mass gap via SCm condensate
+    'RiemannHypothesisCosmicCorrelationCalculator', # Riemann zeros ↔ 26-level Ug4 spacing
+    'SOURCE_b9a29ced_CALCULATORS',               # Registry dict for thread b9a29ced
+
+    # ── Thread deed728b (SystemParams DB + Unified Field Simulator) ──────────────
+    'SystemParamsDeed728bCalculator',            # 27-system 46-param database from deed728b
+    'UnifiedFieldSimulatorCalculator',           # Unified field theory simulator
+    'QuantumAtomSimulatorCalculator',            # Quantum atom orbital simulator
+    'PiSolfeggioHarmonicsCalculator',            # π-Solfeggio harmonic resonance
+    'PlasmoidDynamicsCalculator',                # Plasmoid dynamics model
+    'StarSystemTableCalculator',                 # Multi-star system table generator
+    'RedDwarfPlasmaAccumulatorCalculator',       # Red dwarf plasma accumulation
+    'UnifiedFieldTimeSeriesCalculator',          # Unified field time-series evolution
+    'SOURCE_deed728b_CALCULATORS',               # Registry dict for thread deed728b
+
+    # ── Thread BA400FD1 (Source6/Source8 Computational Infrastructure, Mar 2026) ─
+    'ReactorEnergyS6Calculator',                 # E_react = rho_SCm·v_SCm²/rho_A·exp(-κt)
+    'SOURCE6_BA400FD1_CALCULATORS',              # Registry dict for Source6 calculators
+    'DimensionalAnalysisS8Calculator',           # Dimensional analysis framework S8
+    'QAOAOptimizationS8Calculator',              # QAOA quantum optimization S8
+    'CategoryFunctorS8Calculator',               # Category theory functor S8
+    'LLVMJITCompilerS8Calculator',               # LLVM JIT compiler model S8
+    'FederatedLearningS8Calculator',             # Federated learning efficiency S8
+    'NeuralSymbolicEvalS8Calculator',            # Neural-symbolic evaluation S8
+    'NeuromorphicAcceleratorS8Calculator',       # Neuromorphic accelerator model S8
+    'BlockchainECDSAS8Calculator',               # Blockchain ECDSA model S8
+    'OperationalTransformS8Calculator',          # Operational transform concurrency S8
+    'MPIDistributedS8Calculator',                # MPI distributed computing efficiency S8
+    'SOURCE8_BA400FD1_CALCULATORS',              # Registry dict for Source8 calculators
+
+    # ── Thread 3a469fcc (Star Magic 14Apr2025 Canonical UQFF, 8 classes) ─────────
+    'THREAD_3a469fcc_PARAMS',                    # Canonical UQFF params (γ_um, κ_scm, N_strings...)
+    'ReactorEfficiencyUQFFCanonicalCalculator',  # E_react from SCm/UA decay
+    'FUPiNegativeTimeCanonicalCalculator',       # CANONICAL: cos(πt_n) on all Ub; tn<0 support
+    'QuasarJetNavierStokesCalculator',           # NS for quasar jet fluid dynamics
+    'PlanetaryCoreHamiltonianCalculator',        # Hamiltonian for planetary core UQFF
+    'StellarAgeHelioCorrelationCalculator',      # Stellar age via helio correlation
+    'DifferentialRotationDiskCalculator',        # Differential rotation disk model
+    'SCmDipoleAmplifiedCalculator',              # SCm dipole amplified field
+    'SOURCE_3a469fcc_CALCULATORS',               # Registry dict for thread 3a469fcc
+
+    # ── Thread ff01cb3a (Star Magic 14Apr2025 Full Reconstruction, 5 classes) ────
+    'THREAD_ff01cb3a_PARAMS',                    # Ug2 QUA transmutation + Ug4 Pgal params
+    'SCmDerivativeHierarchyCalculator',          # SCm/UA derivative hierarchy
+    'Ug2SolarWindTransmutationCalculator',       # Ug2 with solar wind QUA transmutation
+    'Ug4GalacticNonInteractiveCalculator',       # Ug4 galactic non-interactive penetration
+    'SolarCycleCoupledFUCalculator',             # F_U solar-cycle cross-coupled
+    'FrozenPlanetSolarWindCalculator',           # Planet frozen/KBO solar wind model
+    'SOURCE_ff01cb3a_CALCULATORS',               # Registry dict for thread ff01cb3a
+
+    # ── Thread f3c55f52 (Superconductivity Unifies Quantum and Gravity, 5 classes) ─
+    'THREAD_f3c55f52_PARAMS',                    # Ug4 vacuum-mediated + AGN feedback params
+    'Ug4VacuumMediatedCalculator',               # Ug4 = k4·ρ_vac/d_g·e^{-αt}·cos(πt_n) new form
+    'AGNFeedbackFactorCalculator',               # AGN feedback factor f_feedback per dex
+    'InflationEpochStructureCalculator',         # 5 inflation epoch states
+    'DiPseudoMonopoleOriginCalculator',          # Di-pseudo-monopole origin model
+    'VacuumEnergyComponentDensityCalculator',    # Vacuum energy component density
+    'SOURCE_f3c55f52_CALCULATORS',               # Registry dict for thread f3c55f52
+
+    # ── Thread 1a2726a4 (UQFF Full Document Assimilation & Q_wave 47-81, 5 classes)
+    'THREAD_1a2726a4_PARAMS',                    # Q_wave stats, SW, BEC, DPM-THz params
+    'ShapiroWilkQWaveNormalityCalculator',       # Q_wave non-normality via Shapiro-Wilk
+    'RotorMolecularCrossSectionCalculator',      # H2O-H2 rotor CS on Tao-Klemperer 5D PES
+    'DPMTHzFrequencyMUGECalculator',             # DPM-THz 11May MUGE (f_aether replaces Λ)
+    'BoseEinsteinAlphaClusteringCalculator',     # BEC alpha-clustering N_B occupation
+    'SuperconductiveComplexUiDensityCalculator', # Superconductive complex U_i density
+    'SOURCE_1a2726a4_CALCULATORS',               # Registry dict for thread 1a2726a4
+
+    # ── EP-03/04/08 Validators (ENSDF, JCAP, Nuclear Binding) ───────────────────
+    'ENSDF_PB206_LEVELS',                        # ENSDF 2025 Pb-206 nuclear level data
+    'JCAP_COSMOLOGICAL_DATA',                    # Planck 2018 DM/vacuum density data
+    'NuclearBindingLadderValidator',             # EP-04: UQFF energy ladder n=8 validation
+    'JCAPDarkMatterVacuumValidator',             # EP-08: [SSq]=0.57 vacuum→DM ratio chain
+    'SOURCE_EP_VALIDATORS',                      # Registry dict for EP validators
+
 ]
 
 
@@ -38080,6 +38168,14 @@ class RiemannHypothesisCosmicCorrelationCalculator:
             'warning': prediction['warning'],
             'status': 'HIGHLY SPECULATIVE - Requires rigorous mathematical proof'
         }
+
+
+# --- Registry for Thread b9a29ced (Phase 3: Millennium Prize UQFF Connections) ---
+SOURCE_b9a29ced_CALCULATORS = {
+    'NavierStokesUQFFRegularizationCalculator':     NavierStokesUQFFRegularizationCalculator(),
+    'YangMillsMassGapCalculator':                   YangMillsMassGapCalculator(),
+    'RiemannHypothesisCosmicCorrelationCalculator': RiemannHypothesisCosmicCorrelationCalculator(),
+}
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -39039,6 +39135,19 @@ class UnifiedFieldTimeSeriesCalculator:
             'frames':            frames,
             'status':            'TIER 2 simulation - unified field time-series evolution',
         }
+
+
+# --- Registry for Thread deed728b (SystemParams DB + Unified Field Simulator) ---
+SOURCE_deed728b_CALCULATORS = {
+    'SystemParamsDeed728bCalculator':     SystemParamsDeed728bCalculator(),
+    'UnifiedFieldSimulatorCalculator':    UnifiedFieldSimulatorCalculator(),
+    'QuantumAtomSimulatorCalculator':     QuantumAtomSimulatorCalculator(),
+    'PiSolfeggioHarmonicsCalculator':     PiSolfeggioHarmonicsCalculator(),
+    'PlasmoidDynamicsCalculator':         PlasmoidDynamicsCalculator(),
+    'StarSystemTableCalculator':          StarSystemTableCalculator(),
+    'RedDwarfPlasmaAccumulatorCalculator': RedDwarfPlasmaAccumulatorCalculator(),
+    'UnifiedFieldTimeSeriesCalculator':   UnifiedFieldTimeSeriesCalculator(),
+}
 
 
 # ╔═══════════════════════════════════════════════════════════════════════════════╗
