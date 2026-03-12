@@ -76,6 +76,9 @@
 // TEMPORARILY DISABLED: #include "UQFF_CalculatorDialog.h"  // UQFF Scientific Calculator (Grok Thread Integration)
 // MOC compilation issues - Tab 7 will use fallback C++ implementation, Python API key manager is primary
 
+// Calculator Advanced - Scientific calculator with UQFF equations (Grok Thread Iterations #30-32)
+#include "calculator_advanced/include/calculator_widget.h"  // Tab 22 - Advanced Calculator with ANTLR4/SymEngine/UQFF
+
 // VTK (Visualization Toolkit) - For scientific data visualization (3D plots, charts, graphs)
 #ifndef NO_VTK
 #include <vtkSmartPointer.h>      // Smart pointer for VTK objects - automatic memory management
@@ -204,7 +207,7 @@ void RenderScatterPlot(QWidget *parent, const std::vector<double> &x, const std:
 
 // Application Constants
 #define MAX_QUERY_LENGTH 6000 // Maximum characters allowed in search query (prevents buffer overflow)
-#define MAX_WINDOWS 21        // Increased for ALMA Cycle 12 - 21 parallel browser windows
+#define MAX_WINDOWS 22        // Increased for calculator_advanced Tab 22 - 22 parallel browser windows
                               // Allows simultaneous searches across multiple scientific sources
 
 // NASA API Keys - Used to access NASA's public data services
@@ -4956,11 +4959,15 @@ private:
 
 
 // ============================================================================
-// SESSION LOGGER WIDGET - Query History & Recall (Tab 9)
+// QUERY HISTORY WIDGET - UQFF Query Recall (Tab 9)
 // ============================================================================
 
 /**
- * @brief Session Logger - UQFF Query History and Recall System
+ * @brief QueryHistoryWidget - UQFF Query History and Recall System
+ * 
+ * NOTE: Different from SessionLogWidget in source2_widgets_enhanced.h
+ *       - SessionLogWidget = real-time logging from all components
+ *       - QueryHistoryWidget = query history recall from CondensedPhysics_OutputData.py
  * 
  * Displays calculation history from CondensedPhysics_OutputData.py.
  * Users can recall previous UQFF queries and view full equation solutions.
@@ -4968,7 +4975,7 @@ private:
  * Data Flow:
  *   source2.cpp → QCalc.py → OUTPUT_STORE (CondensedPhysics_OutputData.py)
  *                               ↓
- *   SessionLogWidget.refresh() → Read JSON → Display in UI
+ *   QueryHistoryWidget.refresh() → Read JSON → Display in UI
  * 
  * Features:
  * - Recent queries list (last 50 queries)
@@ -4977,13 +4984,13 @@ private:
  * - Recall functionality for re-running queries
  * - Export query history to file
  * 
- * Reserved for Tab 9 (index 8) exclusively at Source2 startup.
+ * Allocated for Tab 9 as alternative to SessionLogWidget (user-configurable).
  */
-class SessionLogWidget : public QWidget {
+class QueryHistoryWidget : public QWidget {
     Q_OBJECT
     
 public:
-    SessionLogWidget(QWidget* parent = nullptr) : QWidget(parent) {
+    QueryHistoryWidget(QWidget* parent = nullptr) : QWidget(parent) {
         setupUI();
         refreshQueryHistory();
     }
@@ -5222,19 +5229,19 @@ private:  // Regular private methods (not slots)
         QPushButton* refreshBtn = new QPushButton("🔄 Refresh", this);
         refreshBtn->setStyleSheet("background-color: #4CAF50; color: white; font-weight: bold; padding: 8px 16px; border-radius: 5px;");
         refreshBtn->setToolTip("Reload query history from CondensedPhysics_OutputData.py");
-        connect(refreshBtn, &QPushButton::clicked, this, &SessionLogWidget::refreshQueryHistory);
+        connect(refreshBtn, &QPushButton::clicked, this, &QueryHistoryWidget::refreshQueryHistory);
         toolbarLayout->addWidget(refreshBtn);
         
         filterInput = new QLineEdit(this);
         filterInput->setPlaceholderText("Filter by object name (e.g., Sagittarius, NGC, M87)...");
         filterInput->setStyleSheet("background-color: #2E2E3E; color: #FFFFFF; border: 1px solid #555; padding: 8px; border-radius: 5px;");
-        connect(filterInput, &QLineEdit::textChanged, this, &SessionLogWidget::filterByObject);
+        connect(filterInput, &QLineEdit::textChanged, this, &QueryHistoryWidget::filterByObject);
         toolbarLayout->addWidget(filterInput, 1);  // Stretch factor 1
         
         QPushButton* exportBtn = new QPushButton("💾 Export", this);
         exportBtn->setStyleSheet("background-color: #2196F3; color: white; font-weight: bold; padding: 8px 16px; border-radius: 5px;");
         exportBtn->setToolTip("Export query history to text file");
-        connect(exportBtn, &QPushButton::clicked, this, &SessionLogWidget::exportHistory);
+        connect(exportBtn, &QPushButton::clicked, this, &QueryHistoryWidget::exportHistory);
         toolbarLayout->addWidget(exportBtn);
         
         mainLayout->addLayout(toolbarLayout);
@@ -5261,7 +5268,7 @@ private:  // Regular private methods (not slots)
             "QListWidget::item:selected { background-color: #4CAF50; color: #FFFFFF; }"
             "QListWidget::item:hover { background-color: #333; }"
         );
-        connect(queryList, &QListWidget::itemClicked, this, &SessionLogWidget::onQuerySelected);
+        connect(queryList, &QListWidget::itemClicked, this, &QueryHistoryWidget::onQuerySelected);
         listLayout->addWidget(queryList);
         
         splitter->addWidget(listGroup);
@@ -15412,11 +15419,11 @@ MainWindow::MainWindow()
                 tabs->addTab(uqffSim, "🌌 UQFF Simulator");
                 browserWindows[7] = nullptr;  // No browser window for Tab 8
             }
-            // Special case: Tab 9 (index 8) reserved for Session Logger
+            // Special case: Tab 9 (index 8) reserved for Query History (UQFF Recall)
             else if (i == 8) {
-                // Tab 9: Session Logger - Real-time cross-component logging
-                SessionLogWidget* sessionLog = new SessionLogWidget(this);
-                tabs->addTab(sessionLog, "📋 Session Logger");
+                // Tab 9: Query History - UQFF calculation recall from CondensedPhysics_OutputData.py
+                QueryHistoryWidget* queryHistory = new QueryHistoryWidget(this);
+                tabs->addTab(queryHistory, "📋 Query History");
                 browserWindows[8] = nullptr;  // No browser window for Tab 9
             }
             // Special case: Tab 10 (index 9) reserved for Comparison Dashboard
@@ -15439,6 +15446,16 @@ MainWindow::MainWindow()
                 UQFFJavaScriptWidget* jsWidget = new UQFFJavaScriptWidget(this);
                 tabs->addTab(jsWidget, "🌐 JS Engine");
                 browserWindows[11] = nullptr;  // No browser window for Tab 12
+            }
+            // Special case: Tab 22 (index 21) reserved for Advanced Calculator (Grok Thread Extraction)
+            else if (i == 21) {
+                // Tab 22: Advanced Calculator - ANTLR4 parser, SymEngine backend, 11 UQFF equations
+                // Extracted from Grok thread Iterations #30-32 (https://x.com/i/grok/share/533da64c6ded4ada90fc83b522d90fe6)
+                // Features: derivatives (∂/∂), integrals (∫), series (∑, ∏), parametric, ODE, polynomial (degree ≤26)
+                // UQFF: F_U_Bi_i, Um, g_MUGE_H, g_Magnetar, g_SgrA, P_alpha, R_EU, tau_gyro, g_compressed, eta_LENR
+                CalculatorWidget* advCalc = new CalculatorWidget(this);
+                tabs->addTab(advCalc, "🧮 Advanced Calculator");
+                browserWindows[21] = nullptr;  // No browser window for Tab 22
             }
             // Tabs 13-21 (indices 12-20): Query fetch results display
             else {
