@@ -42543,3 +42543,178 @@ SOURCE_EP_VALIDATORS = {
     'NuclearBindingLadderValidator': NuclearBindingLadderValidator(),
     'JCAPDarkMatterVacuumValidator': JCAPDarkMatterVacuumValidator(),
 }
+
+# =============================================================================
+# SESSION 47 — PAPER_157–168 Integration (Thread: grok_share_7f9068)
+# =============================================================================
+
+
+class UQFFUg4AGNFeedbackCalculator:
+    """PAPER_160: Ug4 Extended with rho_v, C_concentration, f_feedback.
+
+    Ug4_ext = k4 * rho_v * C_conc * (M_bh/d_g) * exp(-alpha*t) * cos(pi*tn) * (1 + f_fb)
+    New calibrated constants: rho_v=6e-27 kg/m³, C_conc=1.0, f_fb=0.1
+    """
+    category = "Black Hole"
+
+    def compute(self, dataset: dict) -> dict:
+        import math
+        k4      = dataset.get('k4', 1.0e-30)
+        rho_v   = dataset.get('rho_v', 6.0e-27)
+        C_conc  = dataset.get('C_concentration', 1.0)
+        f_fb    = dataset.get('f_feedback', 0.1)
+        M_bh    = dataset.get('M_bh', 4.0e6 * 1.989e30)
+        d_g     = dataset.get('d_g', 2.4e20)
+        alpha   = dataset.get('alpha', 5.0e-4 / 86400)
+        t       = dataset.get('t', 0.0)
+        tn      = dataset.get('tn', 0.0)
+        Ug4_ext = (k4 * rho_v * C_conc * (M_bh / d_g)
+                   * math.exp(-alpha * t) * math.cos(math.pi * tn)
+                   * (1.0 + f_fb))
+        Ug4_base = (k4 * rho_v * (M_bh / d_g)
+                    * math.exp(-alpha * t) * math.cos(math.pi * tn))
+        return {
+            'primary_equations': {
+                'Ug4_ext': Ug4_ext,
+                'Ug4_base': Ug4_base,
+                'enhancement_factor': (1.0 + f_fb) * C_conc,
+                'rho_v_kg_m3': rho_v,
+                'C_concentration': C_conc,
+                'f_feedback': f_fb,
+            },
+            'available_equations': [
+                'Ug4_ext = k4*rho_v*C_conc*(M_bh/d_g)*exp(-alpha*t)*cos(pi*tn)*(1+f_feedback)',
+                'Calibrated: rho_v=6e-27, C_conc=1.0, f_feedback=0.1',
+                'Extension of base Ug4 = k4*rho_v*(M_bh/d_g)',
+            ],
+            'simulation_set': {
+                'SGR_A_STAR': {'M_bh': 4e6 * 1.989e30, 'd_g': 2.4e20},
+                'M87':        {'M_bh': 6.5e9 * 1.989e30, 'd_g': 5.0e23},
+            },
+        }
+
+
+class UQFFSolarCycleOmegaCalculator:
+    """PAPER_162: Solar cycle omega_c time-varying B(t) field.
+
+    B(t) = B_s + 0.4*sin(omega_c*t), omega_c = 2pi/(T_cycle)
+    Per-body cycles: Sun=11yr, Earth=1yr, Jupiter=11.86yr, Neptune=164.8yr
+    delta_def=0.01 defect factor for magnetic flux coherence.
+    """
+    category = "Solar System"
+    OMEGA_C = {
+        'Sun':     2.0 * 3.141592653589793 / (11.0   * 365.25 * 86400),
+        'Earth':   2.0 * 3.141592653589793 / (1.0    * 365.25 * 86400),
+        'Jupiter': 2.0 * 3.141592653589793 / (11.86  * 365.25 * 86400),
+        'Neptune': 2.0 * 3.141592653589793 / (164.8  * 365.25 * 86400),
+    }
+
+    def compute(self, dataset: dict) -> dict:
+        import math
+        body      = dataset.get('body', 'Sun')
+        B_s       = dataset.get('B_s', 1.0)
+        t         = dataset.get('t', 0.0)
+        delta_def = dataset.get('delta_def', 0.01)
+        omega_c   = self.OMEGA_C.get(body, self.OMEGA_C['Sun'])
+        B_t       = B_s + 0.4 * math.sin(omega_c * t)
+        Ug1_mod   = B_t ** 2 * (1.0 - delta_def)
+        return {
+            'primary_equations': {
+                'B_t': B_t,
+                'omega_c_rad_s': omega_c,
+                'Ug1_modulated': Ug1_mod,
+                'delta_def': delta_def,
+                'body': body,
+            },
+            'available_equations': [
+                'B(t) = B_s + 0.4*sin(omega_c*t)',
+                'omega_c(Sun)=2pi/11yr, omega_c(Earth)=2pi/1yr',
+                'Ug1_mod = B(t)^2 * (1 - delta_def)',
+            ],
+            'simulation_set': {k: {'body': k, 'B_s': 1.0, 't': 0} for k in self.OMEGA_C},
+        }
+
+
+class UQFFRelativisticSCmJetCalculator:
+    """PAPER_161: Relativistic SCm jet dynamics, v_SCm=0.99c.
+
+    E_react = (rho_SCm * v_SCm^2 / rho_A) * exp(-kappa*t)
+    J1610+1811 quasar z=3.122, Lorentz gamma≈7.09
+    """
+    category = "Quasar"
+
+    def compute(self, dataset: dict) -> dict:
+        import math
+        c       = 2.998e8
+        v_SCm   = dataset.get('v_SCm', 0.99 * c)
+        rho_SCm = dataset.get('rho_SCm', 1.0e-10)
+        rho_A   = dataset.get('rho_A', 1.0e-15)
+        kappa   = dataset.get('kappa', 5.0e-4 / 86400)
+        t       = dataset.get('t', 0.0)
+        gamma   = 1.0 / math.sqrt(1.0 - (v_SCm / c) ** 2)
+        E_react = (rho_SCm * v_SCm ** 2 / rho_A) * math.exp(-kappa * t)
+        return {
+            'primary_equations': {
+                'E_react': E_react,
+                'E_react_relativistic': gamma * E_react,
+                'Lorentz_gamma': gamma,
+                'v_SCm_over_c': v_SCm / c,
+                'J1610_z': 3.122,
+            },
+            'available_equations': [
+                'E_react = (rho_SCm * v_SCm^2 / rho_A) * exp(-kappa*t)',
+                'gamma = 1/sqrt(1-(v/c)^2); v_SCm=0.99c → gamma≈7.09',
+                'J1610+1811 z=3.122: highest-z relativistic SCm validation',
+            ],
+            'simulation_set': {
+                'J1610_quasar': {'v_SCm': 0.99 * c, 'rho_SCm': 1e-10, 'rho_A': 1e-15},
+                'M87':          {'v_SCm': 0.98 * c, 'rho_SCm': 5e-10, 'rho_A': 1e-15},
+            },
+        }
+
+
+class SolarWindUbiModulatorCalculator:
+    """PAPER_166: Solar wind modulation via epsilon_sw in Ubi buoyancy term.
+
+    wind_mod = 1 + epsilon_sw * rho_sw(r)
+    Ubi_mod  = Ubi_base * wind_mod
+    epsilon_sw=0.001 calibrated (EP-07 Parker Probe)
+    """
+    category = "Solar System"
+
+    def compute(self, dataset: dict) -> dict:
+        epsilon_sw = dataset.get('epsilon_sw', 0.001)
+        rho_sw     = dataset.get('rho_sw', 1.67e-20)
+        Ubi_base   = dataset.get('Ubi_base', 1.0)
+        r_AU       = dataset.get('r_AU', 1.0)
+        rho_sw_r   = rho_sw / (r_AU ** 2)
+        wind_mod   = 1.0 + epsilon_sw * rho_sw_r
+        Ubi_mod    = Ubi_base * wind_mod
+        return {
+            'primary_equations': {
+                'wind_mod': wind_mod,
+                'Ubi_mod': Ubi_mod,
+                'rho_sw_r': rho_sw_r,
+                'epsilon_sw': epsilon_sw,
+            },
+            'available_equations': [
+                'wind_mod = 1 + epsilon_sw * rho_sw(r)',
+                'Ubi_mod = Ubi_base * wind_mod',
+                'rho_sw(r) = rho_sw_1AU / r_AU^2',
+                'epsilon_sw=0.001 (EP-07 Parker Probe calibrated)',
+            ],
+            'simulation_set': {
+                '1AU':                  {'r_AU': 1.0,   'rho_sw': 1.67e-20},
+                '5AU_Jupiter':          {'r_AU': 5.0,   'rho_sw': 1.67e-20},
+                'heliosphere_boundary': {'r_AU': 100.0, 'rho_sw': 1.67e-20},
+            },
+        }
+
+
+# --- SESSION 47 CP2 Registry (PAPER_157–168, thread 7f9068) ------------------
+SOURCE_SESSION47_CP2 = {
+    'UQFFUg4AGNFeedbackCalculator':     UQFFUg4AGNFeedbackCalculator(),
+    'UQFFSolarCycleOmegaCalculator':    UQFFSolarCycleOmegaCalculator(),
+    'UQFFRelativisticSCmJetCalculator': UQFFRelativisticSCmJetCalculator(),
+    'SolarWindUbiModulatorCalculator':  SolarWindUbiModulatorCalculator(),
+}

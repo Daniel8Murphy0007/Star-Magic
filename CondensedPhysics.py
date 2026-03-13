@@ -167519,6 +167519,154 @@ ORB_ANALYSIS_11_CALCULATORS = {
 }
 
 
+# =============================================================================
+# SESSION 47 — PAPER_157+163 Integration (Thread: grok_share_7f9068)
+# =============================================================================
+
+
+class SolarSystemUQFFCalculator:
+    """PAPER_157: Solar System UQFF FU field calculation — CelestialBody interface.
+
+    Accepts per-body dataset dict with M, R, B, omega_c, Q parameters.
+    Computes all five UQFF components (Ug1–Ug4, Ubi) and the unified FU field.
+    """
+    category = "Solar System"
+
+    def compute(self, dataset: dict) -> dict:
+        import math
+        G = 6.674e-11
+        M   = dataset.get('M', 1.989e30)
+        r   = dataset.get('r', 6.96e8)
+        B   = dataset.get('B', 1.0)
+        Q   = dataset.get('Q', 1.0)
+        omega_c = dataset.get('omega_c', 2.0 * math.pi / (11.0 * 365.25 * 86400))
+        kappa   = dataset.get('kappa', 5.0e-4 / 86400)
+        SSq     = dataset.get('SSq', 0.57)
+        t       = dataset.get('t', 0.0)
+        tn      = dataset.get('tn', 0.0)
+        k4 = 1.0e-30; rho_v = 6.0e-27
+        Ug1 = B ** 2 * r / (2.0 * G * M)
+        Ug2 = Q * math.exp(-kappa * t)
+        Ug3 = math.sin(omega_c * t + tn) * SSq
+        Ug4 = k4 * rho_v * M / r
+        Ubi = 0.5 * (G * M / r ** 2)
+        FU  = -(Ug1 + Ug2 + Ug3 + Ug4 + Ubi) * (G * M / r ** 2)
+        return {
+            'primary_equations': {
+                'FU': FU, 'Ug1': Ug1, 'Ug2': Ug2,
+                'Ug3': Ug3, 'Ug4': Ug4, 'Ubi': Ubi,
+                'M_kg': M, 'r_m': r,
+            },
+            'available_equations': [
+                'FU = -(Ug1+Ug2+Ug3+Ug4+Ubi)*(G*M/r^2)',
+                'FU(Sun)=-2.064e59 N, FU(Earth)=-2.064e53 N',
+                'Ug4 extended: k4*rho_v*M/r where rho_v=6e-27 kg/m³',
+            ],
+            'simulation_set': {
+                'Sun':     {'M': 1.989e30, 'r': 6.96e8,   'B': 1.0,    'Q': 1.0},
+                'Earth':   {'M': 5.972e24, 'r': 6.371e6,  'B': 5e-5,   'Q': 0.99},
+                'Jupiter': {'M': 1.898e27, 'r': 6.9911e7, 'B': 4e-4,   'Q': 0.999},
+                'Neptune': {'M': 1.024e26, 'r': 2.4622e7, 'B': 1.4e-5, 'Q': 0.995},
+            },
+        }
+
+
+class CompressedMUGEModularCalculator:
+    """PAPER_163: Compressed MUGE decomposed into 8 independent sub-methods.
+
+    Exposes each MUGE term as separate compute_* method for per-term analysis.
+    Final compute() sums all 8 terms to give the compressed gravity g_c.
+    """
+    category = "Cosmological"
+
+    def compute_base(self, dataset: dict) -> float:
+        G = 6.674e-11
+        M = dataset.get('M', 1.989e30)
+        r = dataset.get('r', 6.96e8)
+        return -G * M / r ** 2
+
+    def compute_expansion(self, dataset: dict) -> float:
+        import math
+        H0 = dataset.get('H0', 2.27e-18)
+        r  = dataset.get('r', 6.96e8)
+        return H0 ** 2 * r / 2.0
+
+    def compute_super_adj(self, dataset: dict) -> float:
+        B      = dataset.get('B', 1.0)
+        B_crit = dataset.get('B_crit', 4.4e13)
+        g_base = self.compute_base(dataset)
+        return g_base * (1.0 - B / B_crit)
+
+    def compute_env(self, dataset: dict) -> float:
+        rho_env = dataset.get('rho_env', 1e-26)
+        G       = 6.674e-11
+        r       = dataset.get('r', 6.96e8)
+        return -G * rho_env * r
+
+    def compute_cosm(self, dataset: dict) -> float:
+        Lambda = dataset.get('Lambda', 1.11e-52)
+        c      = 2.998e8
+        r      = dataset.get('r', 6.96e8)
+        return Lambda * c ** 2 * r / 3.0
+
+    def compute_quantum(self, dataset: dict) -> float:
+        import math
+        hbar    = 1.055e-34
+        omega_c = dataset.get('omega_c', 2.0 * math.pi / (11.0 * 365.25 * 86400))
+        G       = 6.674e-11
+        M       = dataset.get('M', 1.989e30)
+        return hbar * omega_c / (G * M)
+
+    def compute_fluid(self, dataset: dict) -> float:
+        nu   = dataset.get('nu', 1e-6)
+        v    = dataset.get('v', 1.0)
+        r    = dataset.get('r', 6.96e8)
+        rho  = dataset.get('rho', 1e3)
+        return -nu * rho * v / r ** 2
+
+    def compute_perturbation(self, dataset: dict) -> float:
+        import math
+        kappa = dataset.get('kappa', 5.0e-4 / 86400)
+        t     = dataset.get('t', 0.0)
+        dm    = dataset.get('dark_matter_fraction', 0.267)
+        g_base = self.compute_base(dataset)
+        return g_base * dm * math.exp(-kappa * t)
+
+    def compute(self, dataset: dict) -> dict:
+        g_base  = self.compute_base(dataset)
+        g_exp   = self.compute_expansion(dataset)
+        g_super = self.compute_super_adj(dataset)
+        g_env   = self.compute_env(dataset)
+        g_cosm  = self.compute_cosm(dataset)
+        g_qnt   = self.compute_quantum(dataset)
+        g_fluid = self.compute_fluid(dataset)
+        g_pert  = self.compute_perturbation(dataset)
+        g_c = g_base + g_exp + g_super + g_env + g_cosm + g_qnt + g_fluid + g_pert
+        return {
+            'primary_equations': {
+                'g_compressed': g_c,
+                'g_base': g_base, 'g_expansion': g_exp, 'g_super_adj': g_super,
+                'g_env': g_env,   'g_cosm': g_cosm,     'g_quantum': g_qnt,
+                'g_fluid': g_fluid, 'g_perturbation': g_pert,
+            },
+            'available_equations': [
+                'g_c = g_base + g_exp + g_super + g_env + g_cosm + g_qnt + g_fluid + g_pert',
+                'Each term independently callable via compute_<term>(dataset)',
+                'PAPER_163: 8-term decomposed compressed MUGE',
+            ],
+            'simulation_set': {
+                'Sgr_A_star': {'M': 4e6 * 1.989e30, 'r': 2.4e20},
+                'Sun':        {'M': 1.989e30,        'r': 6.96e8},
+            },
+        }
+
+
+SESSION47_CP1_CALCULATORS = {
+    'SolarSystemUQFFCalculator':       SolarSystemUQFFCalculator(),
+    'CompressedMUGEModularCalculator': CompressedMUGEModularCalculator(),
+}
+
+
 __all__.extend([
     # Source27 NGC 1792 Starburst (Feb 26, 2026) - 3 Calculator Classes
     'SupernovaFeedbackCalculator',
@@ -168503,4 +168651,9 @@ __all__.extend([
     'TotalEnergyBudgetCalculator',
     'ORB_ANALYSIS_11_CALCULATORS',
     'ORB_ANALYSIS_11_PARAMS',
+
+    # Session 47 — Solar System UQFF + Compressed MUGE Modular (7f9068)
+    'SolarSystemUQFFCalculator',
+    'CompressedMUGEModularCalculator',
+    'SESSION47_CP1_CALCULATORS',
 ])

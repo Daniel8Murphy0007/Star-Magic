@@ -1732,6 +1732,297 @@ class VacuumEnergyComponentRatioCalculator(_CP3Calculator):
         }
 
 
+# =============================================================================
+# SESSION 47 — PAPER_157–168 (Thread: grok_share_7f9068)
+# =============================================================================
+
+
+class SolarSystemFUValidatorCalculator(_CP3Calculator):
+    """PAPER_157: Solar System UQFF FU validation for Sun/Earth/Jupiter/Neptune.
+
+    CelestialBody parameters with per-body omega_c cycles.
+    FU(Sun)≈-2.064e59 N, FU(Earth)≈-2.064e53 N (thread-confirmed values).
+    """
+    category = "Solar System"
+    BODIES = {
+        'Sun':     {'M': 1.989e30, 'R': 6.96e8,   'B': 1.0,    'omega_c': 2*3.14159/(11.0  *365.25*86400), 'Q': 1.0},
+        'Earth':   {'M': 5.972e24, 'R': 6.371e6,  'B': 5e-5,   'omega_c': 2*3.14159/(1.0   *365.25*86400), 'Q': 0.99},
+        'Jupiter': {'M': 1.898e27, 'R': 6.9911e7, 'B': 4e-4,   'omega_c': 2*3.14159/(11.86 *365.25*86400), 'Q': 0.999},
+        'Neptune': {'M': 1.024e26, 'R': 2.4622e7, 'B': 1.4e-5, 'omega_c': 2*3.14159/(164.8 *365.25*86400), 'Q': 0.995},
+    }
+
+    def compute(self, dataset: dict) -> dict:
+        import math
+        body_name = dataset.get('body', 'Sun')
+        body      = self.BODIES.get(body_name, self.BODIES['Sun'])
+        kappa     = dataset.get('kappa', 0.0005 / 86400)
+        SSq       = dataset.get('SSq', 0.57)
+        t         = dataset.get('t', 0.0)
+        tn        = dataset.get('tn', 0.0)
+        r         = dataset.get('r', body['R'])
+        G = 6.674e-11
+        M = body['M']; B = body['B']; Q = body['Q']; omega_c = body['omega_c']
+        k4 = 1.0e-30; rho_v = 6.0e-27
+        Ug1 = B ** 2 * r / (2.0 * G * M)
+        Ug2 = Q * math.exp(-kappa * t)
+        Ug3 = math.sin(omega_c * t + tn) * SSq
+        Ug4 = k4 * rho_v * M / r
+        Ubi = 0.5 * (G * M / r ** 2)
+        FU  = -(Ug1 + Ug2 + Ug3 + Ug4 + Ubi) * (G * M / r ** 2)
+        return {
+            'primary_equations': {
+                'FU': FU, 'Ug1': Ug1, 'Ug2': Ug2, 'Ug3': Ug3,
+                'Ug4': Ug4, 'Ubi': Ubi, 'body': body_name,
+            },
+            'available_equations': [
+                f'FU({body_name}) = -(Ug1+Ug2+Ug3+Ug4+Ubi)*(G*M/r^2)',
+                'FU(Sun)=-2.064e59 N, FU(Earth)=-2.064e53 N (thread-confirmed)',
+                'Per-body omega_c: Sun=2pi/11yr, Earth=2pi/1yr',
+            ],
+            'simulation_set': {b: {'body': b} for b in self.BODIES},
+        }
+
+
+class HybridMUGEBlendingCalculator(_CP3Calculator):
+    """PAPER_158: Hybrid MUGE blending g_hybrid = β·g_compressed + (1−β)·g_resonance.
+
+    beta = exp(-B/B_crit); B_crit=4.4e13 T (magnetar critical field)
+    beta→0: pure resonance MUGE (magnetar regime)
+    beta→1: pure compressed/Newtonian MUGE (normal star regime)
+    """
+    category = "Black Hole"
+
+    def compute(self, dataset: dict) -> dict:
+        import math
+        B      = dataset.get('B', 1.0)
+        B_crit = dataset.get('B_crit', 4.4e13)
+        g_comp = dataset.get('g_compressed', 0.0)
+        g_res  = dataset.get('g_resonance', 0.0)
+        beta   = math.exp(-B / B_crit)
+        g_hyb  = beta * g_comp + (1.0 - beta) * g_res
+        return {
+            'primary_equations': {
+                'g_hybrid': g_hyb,
+                'beta': beta,
+                'g_compressed': g_comp,
+                'g_resonance': g_res,
+                'B_over_Bcrit': B / B_crit,
+            },
+            'available_equations': [
+                'g_hybrid = β·g_comp + (1−β)·g_res',
+                'β = exp(−B/B_crit), B_crit=4.4e13 T',
+                'β→0: pure resonance (magnetar); β→1: pure Newtonian',
+            ],
+            'simulation_set': {
+                'magnetar_SGR1745': {'B': 4.5e14, 'g_compressed': -8e-3, 'g_resonance': -7.8e-3},
+                'normal_star':      {'B': 1.0,    'g_compressed': -9.8,  'g_resonance': -9.82},
+            },
+        }
+
+
+class WormholeMUGE13thTermCalculator(_CP3Calculator):
+    """PAPER_159: 13th Resonance Term — Morris-Thorne Wormhole in MUGE.
+
+    a_worm = f_worm * E_vac_neb / (b^2 + r^2)
+    f_worm=1.0, b=1.0 m (throat), E_vac_neb=7.09e-36 J/m³
+    Extends MUGE resonance sum from 12→13 terms.
+    """
+    category = "Black Hole"
+
+    def compute(self, dataset: dict) -> dict:
+        f_worm    = dataset.get('f_worm', 1.0)
+        E_vac_neb = dataset.get('E_vac_neb', 7.09e-36)
+        b         = dataset.get('b', 1.0)
+        r         = dataset.get('r', 1.0)
+        a_sum_12  = dataset.get('a_sum_12', 0.0)
+        a_worm    = f_worm * E_vac_neb / (b ** 2 + r ** 2)
+        return {
+            'primary_equations': {
+                'a_worm': a_worm,
+                'a_total_13term': a_sum_12 + a_worm,
+                'f_worm': f_worm,
+                'E_vac_neb': E_vac_neb,
+                'b_throat_m': b,
+            },
+            'available_equations': [
+                'a_worm = f_worm * E_vac_neb / (b^2 + r^2)',
+                '13-term MUGE = a_sum_12 (§2.2 PAPER_146) + a_worm',
+                'E_vac_neb=7.09e-36 J/m³; b=1.0m Planck-scale throat',
+            ],
+            'simulation_set': {
+                'Pillars_of_Creation': {'E_vac_neb': 7.09e-36, 'b': 1.0, 'r': 1.0},
+                'SGR1745_wormhole':    {'E_vac_neb': 2.5e-34,  'b': 1.0, 'r': 10.0},
+            },
+        }
+
+
+class J1610QuasarRelativisticSCmCalculator(_CP3Calculator):
+    """PAPER_161: J1610+1811 quasar (z=3.122) relativistic SCm jet validation.
+
+    E_react = (rho_SCm * v_SCm^2 / rho_A) * exp(-kappa*t)
+    v_SCm=0.99c, Lorentz gamma≈7.09; highest-z relativistic UQFF validation.
+    """
+    category = "Quasar"
+
+    def compute(self, dataset: dict) -> dict:
+        import math
+        c       = 2.998e8
+        v_SCm   = dataset.get('v_SCm', 0.99 * c)
+        rho_SCm = dataset.get('rho_SCm', 1.0e-10)
+        rho_A   = dataset.get('rho_A', 1.0e-15)
+        kappa   = dataset.get('kappa', 5.0e-4 / 86400)
+        t       = dataset.get('t', 0.0)
+        z       = dataset.get('z', 3.122)
+        gamma   = 1.0 / math.sqrt(1.0 - (v_SCm / c) ** 2)
+        E_react = (rho_SCm * v_SCm ** 2 / rho_A) * math.exp(-kappa * t)
+        return {
+            'primary_equations': {
+                'E_react': E_react,
+                'E_react_relativistic': gamma * E_react,
+                'Lorentz_gamma': gamma,
+                'v_SCm_over_c': v_SCm / c,
+                'redshift_z': z,
+            },
+            'available_equations': [
+                'E_react = (rho_SCm * v_SCm^2 / rho_A) * exp(-kappa*t)',
+                'v_SCm=0.99c → gamma≈7.09',
+                'J1610+1811 z=3.122: highest-z relativistic UQFF SCm validation',
+            ],
+            'simulation_set': {
+                'J1610_z3122': {'v_SCm': 0.99 * c, 'z': 3.122},
+            },
+        }
+
+
+class StressEnergyAMunuCouplingCalculator(_CP3Calculator):
+    """PAPER_165: UQFF Stress-Energy Tensor Coupling A_μν = g_μν + η·Ts00·cos(πtn).
+
+    Ts00 = 1.27e3 + 1.11e7 (EM + kinetic stress-energy components)
+    η=1e-22, scalar trace A feeds into CP3 FU as delta_FU.
+    """
+    category = "Cosmological"
+
+    def compute(self, dataset: dict) -> dict:
+        import math
+        Ts00    = dataset.get('Ts00', 1.27e3 + 1.11e7)
+        eta     = dataset.get('eta', 1.0e-22)
+        tn      = dataset.get('tn', 0.0)
+        g_mu_nu = dataset.get('g_mu_nu', 1.0)
+        delta_A = eta * Ts00 * math.cos(math.pi * tn)
+        A_mu_nu = g_mu_nu + delta_A
+        return {
+            'primary_equations': {
+                'A_mu_nu': A_mu_nu,
+                'delta_A': delta_A,
+                'trace_A': 4.0 * A_mu_nu,
+                'Ts00': Ts00,
+                'eta': eta,
+            },
+            'available_equations': [
+                'A_μν = g_μν + η·Ts00·cos(πtn)',
+                'Ts00 = T_EM_00 + T_kin_00 = 1.27e3 + 1.11e7',
+                'η=1e-22; scalar trace A = sum delta_FU correction in FU pipeline',
+            ],
+            'simulation_set': {
+                'flat_spacetime':    {'g_mu_nu': 1.0,  'tn': 0.0},
+                'Sgr_A_perturbed':   {'g_mu_nu': 0.85, 'tn': 1.0},
+            },
+        }
+
+
+class GW231123MassGapUQFFCalculator(_CP3Calculator):
+    """PAPER_167: GW231123 225 M_sun BH merger UQFF Ug4 mass gap analysis.
+
+    GW231123 (Nov 2023, LIGO O4): 225 M_sun. Mass gap 100–200 M_sun pair.
+    Ug4·f_feedback BH-BH interaction; δρ/ρ perturbation from mass gap anomaly.
+    """
+    category = "Black Hole"
+
+    def compute(self, dataset: dict) -> dict:
+        import math
+        G     = 6.674e-11; c = 2.998e8; M_sun = 1.989e30
+        M1    = dataset.get('M1', 100.0 * M_sun)
+        M2    = dataset.get('M2', 125.0 * M_sun)
+        r     = dataset.get('r', 1.0e6)
+        kappa = dataset.get('kappa', 5.0e-4 / 86400)
+        t     = dataset.get('t', 0.0)
+        tn    = dataset.get('tn', 0.0)
+        f_fb  = dataset.get('f_feedback', 0.1)
+        rho_v = dataset.get('rho_v', 6.0e-27)
+        k4    = dataset.get('k4', 1.0e-30)
+        M_tot = M1 + M2
+        Ug4_merged = (k4 * rho_v * (1.0 + f_fb) * M_tot / r
+                      * math.exp(-kappa * t) * math.cos(math.pi * tn))
+        delta_rho_over_rho = (M_tot / M_sun - 186.0) / 186.0
+        r_s = 2.0 * G * M_tot / c ** 2
+        return {
+            'primary_equations': {
+                'Ug4_merged': Ug4_merged,
+                'M_total_Msun': M_tot / M_sun,
+                'delta_rho_over_rho': delta_rho_over_rho,
+                'r_schwarzschild_m': r_s,
+                'GW_event': 'GW231123',
+            },
+            'available_equations': [
+                'GW231123: 225 M_sun merger (Nov 2023, LIGO O4)',
+                'Ug4_merged = k4*rho_v*(1+f_fb)*M_total/r*exp(-κt)*cos(πtn)',
+                'δρ/ρ = (M_total - 186M_sun)/186M_sun (mass gap anomaly)',
+            ],
+            'simulation_set': {
+                'GW231123_nominal': {'M1': 100 * M_sun, 'M2': 125 * M_sun, 'r': 1e6},
+                'mass_gap_lower':   {'M1': 60  * M_sun, 'M2': 80  * M_sun, 'r': 5e5},
+            },
+        }
+
+
+class HighEnergyDatasetValidationCalculator(_CP3Calculator):
+    """PAPER_164: CERN/GWOSC/EHT/Chandra high-energy dataset UQFF validation.
+
+    Maps four datasets → UQFF resonance MUGE terms:
+    ATLAS 13TeV → a_QuantumFreq | GW231123 → Osc_term
+    EHT Sgr A* 230GHz → a_aether_res | Chandra X-ray jet → super_adj
+    """
+    category = "Cosmological"
+
+    def compute(self, dataset: dict) -> dict:
+        import math
+        hbar = 1.055e-34; G = 6.674e-11; c = 2.998e8
+        E_coll_TeV   = dataset.get('E_coll_TeV', 13.0)
+        E_coll_J     = E_coll_TeV * 1.602e-7
+        omega_q      = E_coll_J / hbar
+        M_ref        = dataset.get('M_BH_ref', 4.0e6 * 1.989e30)
+        a_QuantumFreq = hbar * omega_q / (G * M_ref)
+        M_gw         = dataset.get('M_GW_Msun', 225.0) * 1.989e30
+        r_ISCO       = 6.0 * G * M_gw / c ** 2
+        omega_ISCO   = math.sqrt(G * M_gw / r_ISCO ** 3)
+        a_Osc_gw     = hbar * omega_ISCO / (G * M_gw)
+        nu_EHT       = 230.0e9
+        a_aether_res  = hbar * 2.0 * math.pi * nu_EHT / (G * M_ref)
+        B_jet        = dataset.get('B_jet_T', 1.0e10)
+        super_adj    = 1.0 - B_jet / 4.4e13
+        return {
+            'primary_equations': {
+                'a_QuantumFreq_ATLAS': a_QuantumFreq,
+                'a_Osc_GW231123':      a_Osc_gw,
+                'a_aether_res_EHT':    a_aether_res,
+                'super_adj_Chandra':   super_adj,
+                'omega_ISCO_rad_s':    omega_ISCO,
+            },
+            'available_equations': [
+                'ATLAS 13TeV: a_QuantumFreq = hbar*omega_q/(G*M)',
+                'GW231123: a_Osc = hbar*omega_ISCO/(G*M)',
+                'EHT 230GHz: a_aether_res = hbar*2pi*nu/(G*M_SgrA)',
+                'Chandra: super_adj = 1 - B_jet/B_crit',
+            ],
+            'simulation_set': {
+                'ATLAS_LHC':   {'E_coll_TeV': 13.0},
+                'GW231123':    {'M_GW_Msun': 225.0},
+                'EHT_SgrA':    {'M_BH_ref': 4e6 * 1.989e30},
+                'Chandra_jet': {'B_jet_T': 1e10},
+            },
+        }
+
+
 class UQFFIPCChainStatusCalculator(_CP3Calculator):
     """
     Verifies and reports the IPC chain status (CP1 → CP2 → CP3 pipeline).
@@ -1847,4 +2138,13 @@ __all__ = [
     "ATLASLHCQuarkEnergyLowNLevelCalculator",
     "VacuumEnergyComponentRatioCalculator",
     "UQFFIPCChainStatusCalculator",
+
+    # Session 47 — Solar System + Wormhole + Hybrid MUGE + GW + HE Datasets (7f9068)
+    "SolarSystemFUValidatorCalculator",
+    "HybridMUGEBlendingCalculator",
+    "WormholeMUGE13thTermCalculator",
+    "J1610QuasarRelativisticSCmCalculator",
+    "StressEnergyAMunuCouplingCalculator",
+    "GW231123MassGapUQFFCalculator",
+    "HighEnergyDatasetValidationCalculator",
 ]

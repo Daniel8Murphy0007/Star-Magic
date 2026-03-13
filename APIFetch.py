@@ -505,7 +505,7 @@ class GrokFetcher:
                     'Content-Type': 'application/json'
                 },
                 json={
-                    'model': 'grok-beta',
+                    'model': 'grok-4',
                     'messages': [
                         {'role': 'system', 'content': 'You are an astrophysics expert. Provide only JSON responses.'},
                         {'role': 'user', 'content': prompt}
