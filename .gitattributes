@@ -1,2 +1,10 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+MAIN_1_CoAnQi.cpp filter=lfs diff=lfs merge=lfs -text
+CondensedPhysics.py filter=lfs diff=lfs merge=lfs -text
+CondensedPhysics2.py filter=lfs diff=lfs merge=lfs -text
+CondensedPhysics_OutputData.py filter=lfs diff=lfs merge=lfs -text
+source2.cpp filter=lfs diff=lfs merge=lfs -text
+physics_backend.cpp filter=lfs diff=lfs merge=lfs -text
+QCalc.py filter=lfs diff=lfs merge=lfs -text
+index.js filter=lfs diff=lfs merge=lfs -text
