@@ -168772,4 +168772,13 @@ SESSION48_CP1_CALCULATORS = {
     'CoAnQiArchitectureCalculator',
     'DiPseudoMonopoleDPMTheoryCalculator',
     'SESSION48_CP1_CALCULATORS',
+
+    # Session 49 — Grok Thread 381a8fe7 Extended Audit (PAPER_181-195)
+    'GraphTheoryHMagicLabelingCalculator',
+    'CoAnQiBuildDistributionCalculator',
+    'CoAnQiScientificCalculatorArchitectureCalculator',
+    'CoAnQiScientificCalculatorMultiModalCalculator',
+    'CoAnQiModularCppArchitectureCalculator',
+    'CoAnQiAssimpVtkPipelineCalculator',
+    'SESSION49_CP1_CALCULATORS',
 ])
