@@ -12,7 +12,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-SHARE_ID    = '7b78ffcb915f48bb90d55034c9c50b18'
+SHARE_ID    = '07b7f7a635c04b6e90170b8a481ab1b0'
 TARGET_URL  = f'https://x.com/i/grok/share/{SHARE_ID}'
 OUTPUT_FILE = f'grok_share_{SHARE_ID}_content.txt'
 DRIVER_PATH = r'C:\edgedriver_win64\msedgedriver.exe'
