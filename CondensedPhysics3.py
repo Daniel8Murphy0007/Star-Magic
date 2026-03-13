@@ -2147,4 +2147,13 @@ __all__ = [
     "StressEnergyAMunuCouplingCalculator",
     "GW231123MassGapUQFFCalculator",
     "HighEnergyDatasetValidationCalculator",
+
+    # Session 48 — CoAnQi UQFF+3D+Plugin Integration (381a8fe7)
+    "CoAnQiCelestialBodyFUCalculator",
+    "CoAnQiModularCompressedMUGECalculator",
+    "CoAnQiModularResonanceMUGECalculator",
+    "CoAnQi26LevelEnergyDensityCalculator",
+    "CoAnQiQuasarJetFluidCalculator",
+    "CoAnQiArchitectureCalculator",
+    "DiPseudoMonopoleDPMTheoryCalculator",
 ]

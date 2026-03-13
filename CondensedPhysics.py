@@ -167667,7 +167667,118 @@ SESSION47_CP1_CALCULATORS = {
 }
 
 
-__all__.extend([
+# =============================================================================
+# SESSION 48 — CoAnQi UQFF+3D+Plugin Integration (PAPER_169–180, thread 381a8fe7)
+# =============================================================================
+
+class CoAnQiArchitectureCalculator:
+    """PAPER_169: 6-tier CoAnQi system architecture overview and data flow.
+
+    Maps the full processing pipeline: source2.cpp GUI → APIFetch → CP calculators
+    → OPData → session recall. Documents standard inter-tier API shapes and
+    the 5-calculator parallel simulation loop.
+    """
+    category = "Architecture"
+
+    def compute(self, dataset: dict) -> dict:
+        query = dataset.get('query', 'generic')
+        tier  = dataset.get('tier', 'all')
+        tiers = {
+            1: 'source2.cpp (Qt6 GUI, 21 tabs, 15,753L) — user input',
+            2: '5 parallel calculators: MAIN_1+QCalc+CP+CP2+uqff_server',
+            3: 'VR/VM backend: source2(HEAD)+physics_backend (GPU+CPU)',
+            4: 'IPC: uqff_ipc.h v3.1 (45 msg types), python_bridge.h',
+            5: 'Storage: bodies_*.csv, uqff_results.json, CP_OutputData.py',
+            6: 'Bots: Poseidon v4.2.1 + CoAnQi_bot v4.2.2',
+        }
+        return {
+            'primary_equations': {
+                'tier_description': tiers,
+                'data_flow': (
+                    'USER → source2.cpp → APIFetch.py (55 APIs) → '
+                    'bodies_*.csv → [MAIN_1 | QCalc | CP | CP2 | uqff_server] '
+                    '→ OPData.py → uqff_results.json → source2 Session Logger'
+                ),
+                'active_query': query,
+                'active_tier': tier,
+            },
+            'available_equations': [
+                'Tier 1→2: dataset = APIFetch.fetch(query)',
+                'Tier 2 output: results = calculator.compute(dataset)',
+                'Tier 4 IPC: write_pipe(uqff_ipc::MSG_RESULT, results)',
+                'Tier 5 output file: uqff_results.json',
+            ],
+            'simulation_set': {
+                'Sgr A*': {'query': 'Sagittarius A*', 'tier': 2},
+                'M87':    {'query': 'M87',            'tier': 2},
+            },
+        }
+
+
+class DiPseudoMonopoleDPMTheoryCalculator:
+    """PAPER_179: Di-Pseudo-Monopole (DPM) theory — Ug1 origin and UA taxonomy.
+
+    DPM = [(UA') / SCm] — the internal dipole of a stellar/atomic system.
+    Ug1 is its field strength; it drives all other Ug terms hierarchically.
+    Includes pi-cycle gate, negative time interpretation, and star chart.
+    """
+    category = "DPM Theory"
+
+    def compute(self, dataset: dict) -> dict:
+        import math
+        # DPM parameters
+        UA_prime = dataset.get('UA_prime', 1e-10)   # dUA/dt (Aether dynamics)
+        SCm_den  = dataset.get('SCm_density', 1e15)
+        Ms       = dataset.get('Ms', 1.989e30)
+        Rs       = dataset.get('Rs', 6.96e8)
+        G        = 6.67430e-11
+        t        = dataset.get('t', 0.0)
+        tn       = dataset.get('tn', 0.0)
+        alpha    = dataset.get('alpha', 0.001)
+        k1       = 1.5
+        # DPM pseudo-monopole moment
+        DPM = UA_prime / SCm_den if SCm_den != 0 else 0.0
+        # Ug1 from DPM
+        mu_s_DPM = DPM * Rs**3
+        grad_Mr  = G * Ms / Rs**2
+        cos_tn   = math.cos(math.pi * tn)
+        decay    = math.exp(-alpha * t)
+        Ug1      = k1 * mu_s_DPM * grad_Mr * decay * cos_tn
+        # Pi-cycle interpretation
+        if abs(cos_tn - 1.0) < 1e-6:
+            cycle_phase = 'forward (tN even)'
+        elif abs(cos_tn + 1.0) < 1e-6:
+            cycle_phase = 'reversed (quasar reversal, tN odd)'
+        else:
+            cycle_phase = f'transition (cos={cos_tn:.4f})'
+        return {
+            'primary_equations': {
+                'DPM': DPM, 'Ug1_from_DPM': Ug1,
+                'mu_s_DPM': mu_s_DPM, 'cos_pi_tn': cos_tn,
+                'cycle_phase': cycle_phase,
+            },
+            'available_equations': [
+                'DPM = UA_prime / SCm_density',
+                'mu_s = DPM * Rs^3',
+                'Ug1 = k1 * mu_s * (G*Ms/Rs^2) * exp(-alpha*t) * cos(pi*tn)',
+                'pi-cycle: cos(pi*tn) = +1 (forward), -1 (reversed), 0 (null)',
+                'Ug2,Ug3,Ug4 all cascade from Ug1 through SCm mediation',
+            ],
+            'simulation_set': {
+                'Sun':     {'UA_prime': 1e-10, 'SCm_density': 1e15, 'Ms': 1.989e30},
+                'Neutron': {'UA_prime': 1e-8,  'SCm_density': 1e20, 'Ms': 2.984e30},
+                'SGR1745': {'UA_prime': 1e-7,  'SCm_density': 1e22, 'Ms': 2.984e30},
+            },
+        }
+
+
+SESSION48_CP1_CALCULATORS = {
+    'CoAnQiArchitectureCalculator':       CoAnQiArchitectureCalculator(),
+    'DiPseudoMonopoleDPMTheoryCalculator': DiPseudoMonopoleDPMTheoryCalculator(),
+}
+
+
+
     # Source27 NGC 1792 Starburst (Feb 26, 2026) - 3 Calculator Classes
     'SupernovaFeedbackCalculator',
     'StarFormationGravityCalculator',
@@ -168656,4 +168767,9 @@ __all__.extend([
     'SolarSystemUQFFCalculator',
     'CompressedMUGEModularCalculator',
     'SESSION47_CP1_CALCULATORS',
+
+    # Session 48 — CoAnQi UQFF+3D+Plugin Integration (381a8fe7)
+    'CoAnQiArchitectureCalculator',
+    'DiPseudoMonopoleDPMTheoryCalculator',
+    'SESSION48_CP1_CALCULATORS',
 ])

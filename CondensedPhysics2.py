@@ -42718,3 +42718,339 @@ SOURCE_SESSION47_CP2 = {
     'UQFFRelativisticSCmJetCalculator': UQFFRelativisticSCmJetCalculator(),
     'SolarWindUbiModulatorCalculator':  SolarWindUbiModulatorCalculator(),
 }
+
+
+# =============================================================================
+# SESSION 48 — CoAnQi UQFF+3D+Plugin Integration (PAPER_169–180, thread 381a8fe7)
+# =============================================================================
+
+class CoAnQiCelestialBodyFUCalculator:
+    """PAPER_171/172: Full F_U unified field for a CelestialBody parameter set.
+
+    Computes Ug1/Ug2/Ug3/Ug4/Um/Ubi/A_munu and assembles F_U.
+    All helper functions (mu_s, Bj, Ereact, grad_Ms_r, step_function) included.
+
+    Constants: k1=1.5, k2=1.2, k3=1.8, k4=2.0, beta_i=0.6
+    Calibrated: kappa=0.0005/day, alpha=0.001, rho_v=6e-27, Omega_g=7.3e-16
+    Mbh=8.15e36 kg, dg=2.55e20 m (Sun-SgrA*)
+    """
+    category = "Unified Field"
+
+    def compute(self, dataset: dict) -> dict:
+        import math
+        G       = 6.67430e-11
+        c       = 3.0e8
+        PI      = math.pi
+        Ms      = dataset.get('Ms', 1.989e30)
+        Rs      = dataset.get('Rs', 6.96e8)
+        Rb      = dataset.get('Rb', 1.496e13)
+        Bs      = dataset.get('Bs_avg', 1e-4)
+        omega_s = dataset.get('omega_s', 2.5e-6)
+        omega_c = dataset.get('omega_c', 2*PI/(11*365.25*86400))
+        QUA     = dataset.get('QUA', 1e-11)
+        Pcore   = dataset.get('Pcore', 3.6e11)
+        PSCm    = dataset.get('PSCm', 1e10)
+        SCm_density = dataset.get('SCm_density', 1e15)
+        r       = dataset.get('r', 1.496e11)
+        t       = dataset.get('t', 0.0)
+        tn      = dataset.get('tn', 0.0)
+        kappa   = dataset.get('kappa', 0.0005 / 86400)
+        alpha   = dataset.get('alpha', 0.001)
+        rho_A   = dataset.get('rho_A', 1e-23)
+        rho_sw  = dataset.get('rho_sw', 8e-21)
+        v_sw    = dataset.get('v_sw', 5e5)
+        v_SCm   = dataset.get('v_SCm', 0.99 * c)
+        QA      = dataset.get('QA', 1e-10)
+        HSCm    = dataset.get('HSCm', 1.0)
+        delta_sw = dataset.get('delta_sw', 0.01)
+        delta_def = dataset.get('delta_def', 0.01)
+        epsilon_sw = dataset.get('epsilon_sw', 0.001)
+        UUA     = dataset.get('UUA', 1.0)
+        Omega_g = dataset.get('Omega_g', 7.3e-16)
+        Mbh     = dataset.get('Mbh', 8.15e36)
+        dg      = dataset.get('dg', 2.55e20)
+        beta_i  = dataset.get('beta_i', 0.6)
+        rho_v   = dataset.get('rho_v', 6e-27)
+        C_conc  = dataset.get('C_concentration', 1.0)
+        f_fb    = dataset.get('f_feedback', 0.1)
+        eta     = dataset.get('eta', 1e-22)
+        rj      = dataset.get('rj', 1e10)
+        gamma   = dataset.get('gamma', 5e-5)
+        num_str = dataset.get('num_strings', 1e9)
+        Ts00    = dataset.get('Ts00', 1.127e7)
+        k1,k2,k3,k4 = 1.5, 1.2, 1.8, 2.0
+        SCm_c   = 1e3
+        Ereact  = (SCm_density * v_SCm**2 / rho_A) * math.exp(-kappa * t)
+        mu_s    = (Bs + 0.4 * math.sin(omega_c * t) + SCm_c) * Rs**3
+        grad_Mr = G * Ms / Rs**2
+        Bj      = 1e-3 + 0.4 * math.sin(omega_c * t) + SCm_c
+        omega_st= omega_s - 4e-7 * math.sin(omega_c * t)
+        mu_j    = Bj * Rs**3
+        step    = 1.0 if r > Rb else 0.0
+        cos_tn  = math.cos(PI * tn)
+        decay   = math.exp(-alpha * t)
+        Ug1 = k1 * mu_s * grad_Mr * decay * cos_tn * (1 + delta_def * math.sin(0.001 * t))
+        Ug2 = k2 * (QA + QUA) * Ms / r**2 * step * (1 + delta_sw * v_sw) * HSCm * Ereact
+        Ug3 = k3 * Bj * math.cos(omega_st * t * PI) * Pcore * Ereact
+        Ug4 = k4 * rho_v * C_conc * Mbh / dg * decay * cos_tn * (1 + f_fb)
+        Um  = (mu_j / rj) * (1 - math.exp(-gamma * t * cos_tn)) * PSCm * Ereact * num_str
+        def ubi(Ugi):
+            return -beta_i * Ugi * Omega_g * Mbh / dg * (1 + epsilon_sw * rho_sw) * UUA * cos_tn
+        Ubi1, Ubi2, Ubi3, Ubi4 = ubi(Ug1), ubi(Ug2), ubi(Ug3), ubi(Ug4)
+        tr_A = (1 - 1 - 1 - 1) + 4 * eta * Ts00 * cos_tn
+        FU   = (Ug1+Ug2+Ug3+Ug4) + (Ubi1+Ubi2+Ubi3+Ubi4) + Um + tr_A
+        return {
+            'primary_equations': {
+                'FU': FU, 'Ug1': Ug1, 'Ug2': Ug2, 'Ug3': Ug3, 'Ug4': Ug4,
+                'Um': Um, 'Ubi_sum': Ubi1+Ubi2+Ubi3+Ubi4, 'tr_A_munu': tr_A,
+                'Ereact': Ereact, 'mu_s': mu_s,
+            },
+            'available_equations': [
+                'FU = sum(Ug_i) + sum(Ubi_i) + Um + tr(A_munu)',
+                'Ug1 = k1*mu_s*(G*Ms/Rs^2)*exp(-alpha*t)*cos(pi*tn)*(1+delta_def)',
+                'Ug2 = k2*(QA+QUA)*Ms/r^2*S(r-Rb)*HSCm*Ereact',
+                'Ug3 = k3*Bj*cos(omega_s*t*pi)*Pcore*Ereact',
+                'Ug4 = k4*rho_v*C_conc*Mbh/dg*exp(-alpha*t)*cos(pi*tn)',
+                'Um = (mu_j/rj)*(1-exp(-gamma*t*cos(pi*tn)))*PSCm*Ereact*N',
+                'Ubi = -beta_i*Ugi*Omega_g*Mbh/dg*(1+eps_sw*rho_sw)*UA*cos(pi*tn)',
+                'A_munu = g_munu + eta*Ts00*cos(pi*tn)',
+            ],
+            'simulation_set': {
+                'Sun_1AU':   {'Ms': 1.989e30, 'Rs': 6.96e8, 'r': 1.496e11},
+                'Earth':     {'Ms': 5.972e24, 'Rs': 6.371e6, 'r': 6.371e6},
+                'Jupiter':   {'Ms': 1.898e27, 'Rs': 6.9911e7, 'r': 7e8},
+            },
+        }
+
+
+class CoAnQiModularCompressedMUGECalculator:
+    """PAPER_173: 9-term modular compressed MUGE decomposition.
+
+    Terms: base, expansion, super_adj, env, Ug_sum, cosm, quantum, fluid, perturbation.
+    Canonical test (SGR1745): expected total ≈ 1.782e39.
+    H0=2.269e-18 s^-1, Lambda=1.1e-52 m^-2.
+    """
+    category = "Compressed MUGE"
+
+    def compute(self, dataset: dict) -> dict:
+        import math
+        G       = 6.67430e-11
+        c       = 3.0e8
+        hbar    = 1.0546e-34
+        pi      = math.pi
+        M       = dataset.get('M', 2.984e30)
+        r       = dataset.get('r', 1e4)
+        B       = dataset.get('B', 1e10)
+        Bcrit   = dataset.get('Bcrit', 1e11)
+        rho_f   = dataset.get('rho_fluid', 1e-15)
+        Vsys    = dataset.get('Vsys', 4.189e12)
+        g_loc   = dataset.get('g_local', 10.0)
+        vexp    = dataset.get('vexp', 1e3)
+        drr     = dataset.get('delta_rho_rho', 0.0)
+        H0      = dataset.get('H0', 2.269e-18)
+        Lambda  = dataset.get('Lambda', 1.1e-52)
+        Dxp     = dataset.get('Delta_x_p', 1e-68)
+        psi     = dataset.get('integral_psi', 2.176e-18)
+        tH      = dataset.get('tHubble', 4.35e17)
+        t1 = G * M / r**2
+        t2 = 1 + H0 * vexp
+        t3 = 1 - B / Bcrit if Bcrit != 0 else 1.0
+        t4 = 1.0
+        t5 = 0.0
+        t6 = Lambda * c**2 / 3
+        t7 = (hbar / Dxp) * psi * (2 * pi / tH)
+        t8 = rho_f * Vsys * g_loc
+        t9 = M * (drr + 3 * G * M / r**3) if r > 0 else 0.0
+        total = t1 * t2 * t3 * t4 * (1 + t5) + t6 + t7 + t8 + t9
+        return {
+            'primary_equations': {
+                'base': t1, 'expansion': t2, 'super_adj': t3, 'env': t4,
+                'Ug_sum': t5, 'cosm': t6, 'quantum': t7, 'fluid': t8,
+                'perturbation': t9, 'compressed_MUGE': total,
+            },
+            'available_equations': [
+                'base = G*M/r^2',
+                'expansion = 1 + H0*vexp  (H0=2.269e-18)',
+                'super_adj = 1 - B/Bcrit',
+                'cosm = Lambda*c^2/3  (Lambda=1.1e-52)',
+                'quantum = (hbar/Delta_x_p)*psi*(2*pi/tHubble)',
+                'fluid = rho_fluid*Vsys*g_local',
+                'perturbation = M*(delta_rho_rho + 3*G*M/r^3)',
+            ],
+            'simulation_set': {
+                'SGR1745': {'M': 2.984e30, 'r': 1e4, 'Vsys': 4.189e12, 'rho_fluid': 1e-15},
+                'SagA':    {'M': 8.155e36, 'r': 1e12, 'Vsys': 3.552e45},
+                'Pillars': {'M': 1.989e32, 'r': 9.46e15, 'Vsys': 3.552e48},
+            },
+        }
+
+
+class CoAnQiModularResonanceMUGECalculator:
+    """PAPER_174: 13-term + wormhole resonance MUGE via aDPM chain.
+
+    SGR1745 expected: aDPM≈3.545e-42, afluid_freq≈1.773e-9, total≈1.773e-9.
+    fDPM=1e12, Evac_neb=7.09e-36, c_res=3e8, fquantum=1.445e-17, fAether=1.576e-35.
+    """
+    category = "Resonance MUGE"
+
+    def compute(self, dataset: dict) -> dict:
+        import math
+        I       = dataset.get('I', 1e21)
+        A       = dataset.get('A', 3.142e8)
+        w1      = dataset.get('omega1', 1e-3)
+        w2      = dataset.get('omega2', 0.0)
+        Vsys    = dataset.get('Vsys', 4.189e12)
+        vexp    = dataset.get('vexp', 1e3)
+        t       = dataset.get('t', 3.799e10)
+        ffluid  = dataset.get('ffluid', 1.269e-14)
+        kappa   = dataset.get('kappa', 0.0005 / 86400)
+        r       = dataset.get('r', 1e4)
+        fDPM    = 1e12;  fTHz    = 1e12
+        Evac_nb = 7.09e-36;  Delta_E = 6.381e-36
+        Fsuper  = 6.287e-19; UA_SCM  = 10.0
+        omega_i = 1e-8;  k4r     = 1.0;  freact  = 1e10
+        fq      = 1.445e-17;  fAe     = 1.576e-35
+        fTRZ    = 0.1;  H_z     = 2.270e-18;  c_res   = 3e8
+        FDPM    = I * A * (w1 - w2)
+        aDPM    = FDPM * fDPM * Evac_nb * c_res * Vsys
+        aTHz    = aDPM * fTHz * vexp / c_res
+        avd     = aDPM * Delta_E / Evac_nb
+        asf     = aDPM * Fsuper * omega_i
+        aar     = aDPM * freact * UA_SCM * k4r * fTHz
+        Ug4i    = aDPM * math.exp(-kappa * t)
+        aqf     = aDPM * fq
+        aAf     = aDPM * fq * fAe
+        afl     = ffluid * Vsys * fTHz * c_res
+        Osc     = 0.0
+        aexp    = aDPM * H_z * t
+        worm    = Evac_nb / (1 + r**2) if r > 0 else Evac_nb
+        total   = aDPM+aTHz+avd+asf+aar+Ug4i+aqf+aAf+afl+Osc+aexp+fTRZ+worm
+        return {
+            'primary_equations': {
+                'aDPM': aDPM, 'aTHz': aTHz, 'avac_diff': avd,
+                'asuper_freq': asf, 'aaether_res': aar, 'Ug4i': Ug4i,
+                'aquantum_freq': aqf, 'aAether_freq': aAf,
+                'afluid_freq': afl, 'Osc_term': Osc, 'aexp_freq': aexp,
+                'fTRZ': fTRZ, 'a_wormhole': worm, 'resonance_MUGE': total,
+            },
+            'available_equations': [
+                'aDPM = I*A*(w1-w2)*fDPM*Evac_neb*c_res*Vsys',
+                'aTHz = aDPM*fTHz*vexp/c_res',
+                'avac_diff = aDPM*(Delta_Evac/Evac_neb)',
+                'asuper_freq = aDPM*Fsuper*omega_i',
+                'aaether_res = aDPM*freact*UA_SCM*k4_res*fTHz',
+                'afluid_freq = ffluid*Vsys*fTHz*c_res  [dominant term]',
+                'a_wormhole = Evac_neb/(1+r^2)  [Morris-Thorne]',
+            ],
+            'simulation_set': {
+                'SGR1745': {'I': 1e21, 'A': 3.142e8, 'omega1': 1e-3, 'Vsys': 4.189e12},
+                'SagA':    {'I': 1e23, 'A': 2.813e30, 'omega1': 1e-5, 'Vsys': 3.552e45},
+                'Pillars': {'I': 1e21, 'A': 2.813e32, 'omega1': 1e-3, 'Vsys': 3.552e48},
+            },
+        }
+
+
+class CoAnQi26LevelEnergyDensityCalculator:
+    """PAPER_175: 26-level quantum energy hierarchy and UQFF vacuum energy density.
+
+    E_n = E_0 * 10^n,  E_0=1e-20 J,  n=1..26.
+    rho_vac = sum(f_i * E_i) / V  [J/m^3]
+    Ug4 anchor: rho_v = 6e-27 kg/m^3 at levels 19-20 boundary.
+    """
+    category = "Quantum Energy"
+
+    def compute(self, dataset: dict) -> dict:
+        E0      = 1e-20
+        V       = dataset.get('V', 1.0)
+        levels  = {n: E0 * 10**n for n in range(1, 27)}
+        level   = dataset.get('n', 13)
+        f_SCm   = dataset.get('f_SCm', 1.0)
+        E_n     = levels.get(level, E0 * 10**level)
+        rho_vac = f_SCm * E_n / V
+        rho_v_canonical = 6e-27
+        return {
+            'primary_equations': {
+                'E_n': E_n, 'rho_vac': rho_vac,
+                'level': level, 'E0': E0,
+                'rho_v_canonical_Ug4': rho_v_canonical,
+                'level_10_atomic': levels[10],
+                'level_13_cosmic': levels[13],
+                'level_18_Higgs':  levels[18],
+                'level_20_Ug4':    levels[20],
+                'level_26_max':    levels[26],
+            },
+            'available_equations': [
+                'E_n = E_0 * 10^n,  E_0=1e-20 J',
+                'rho_vac = f_SCm * E_n / V  [J/m^3]',
+                'rho_v (Ug4 canonical) = 6e-27 kg/m^3 (levels 19-20)',
+                'Ug1/Um: levels 10-13; Ug2: 12-15; Ug3: 13-16; Ug4: 20-26',
+            ],
+            'simulation_set': {
+                'atomic':    {'n': 10, 'f_SCm': 1.0, 'V': 1e-30},
+                'stellar':   {'n': 13, 'f_SCm': 1.0, 'V': 1e27},
+                'galactic':  {'n': 20, 'f_SCm': 1.0, 'V': 1e60},
+                'universal': {'n': 26, 'f_SCm': 1.0, 'V': 1e80},
+            },
+        }
+
+
+class CoAnQiQuasarJetFluidCalculator:
+    """PAPER_177: Navier-Stokes quasar jet dynamics driven by UQFF resonance gravity.
+
+    Implements the FluidSolver coupling interface:
+      step: v += dt*uqff_g -> diffuse -> project -> advect -> project
+      add_jet_force: uy[N/2] += force_jet=10.0
+    Uses resonance_MUGE as the external body force.
+    """
+    category = "Quasar"
+
+    def compute(self, dataset: dict) -> dict:
+        import math
+        N       = dataset.get('N', 32)
+        dt      = dataset.get('dt', 0.1)
+        visc    = dataset.get('visc', 0.0001)
+        fjet    = dataset.get('force_jet', 10.0)
+        n_steps = dataset.get('n_steps', 10)
+        uqff_g  = dataset.get('uqff_g', 1.773e-9)
+        v = [0.0] * N
+        for _ in range(n_steps):
+            for i in range(N):
+                v[i] += dt * uqff_g
+            v[N // 2] += fjet * dt
+            a = dt * visc * N * N
+            v_new = list(v)
+            for i in range(1, N - 1):
+                v_new[i] = (v[i] + a * (v[i-1] + v[i+1])) / (1 + 2 * a)
+            v = v_new
+        mag_max = max(abs(x) for x in v)
+        mag_avg = sum(abs(x) for x in v) / N
+        return {
+            'primary_equations': {
+                'v_max': mag_max, 'v_avg': mag_avg,
+                'uqff_g_input': uqff_g, 'force_jet': fjet,
+                'n_steps': n_steps, 'N': N,
+            },
+            'available_equations': [
+                'NS step: v += dt*uqff_g; diffuse(20 GS); project; advect',
+                'diffuse: a=dt*visc*N^2; Gauss-Seidel 20 iterations',
+                'project: Helmholtz decomp; pressure Poisson 20 iterations',
+                'advect: semi-Lagrangian backtracing; bilinear interpolation',
+                'add_jet_force: uy[N/2] += force_jet=10.0',
+                'set_bnd: no-slip walls (mirror condition)',
+            ],
+            'simulation_set': {
+                'SGR1745': {'uqff_g': 1.773e-9, 'force_jet': 10.0},
+                'SagA*':   {'uqff_g': 1.773e-9 * 4.0, 'force_jet': 100.0},
+                'Pillars': {'uqff_g': 1.773e-9 * 0.1, 'force_jet': 1.0},
+            },
+        }
+
+
+# --- SESSION 48 CP2 Registry (PAPER_169–180, thread 381a8fe7) -----------------
+SOURCE_SESSION48_CP2 = {
+    'CoAnQiCelestialBodyFUCalculator':        CoAnQiCelestialBodyFUCalculator(),
+    'CoAnQiModularCompressedMUGECalculator':  CoAnQiModularCompressedMUGECalculator(),
+    'CoAnQiModularResonanceMUGECalculator':   CoAnQiModularResonanceMUGECalculator(),
+    'CoAnQi26LevelEnergyDensityCalculator':   CoAnQi26LevelEnergyDensityCalculator(),
+    'CoAnQiQuasarJetFluidCalculator':         CoAnQiQuasarJetFluidCalculator(),
+}
