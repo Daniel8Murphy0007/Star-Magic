@@ -10,7 +10,7 @@ while maintaining a single-import API.
 ARCHITECTURE:
     CondensedPhysics.py      → Foundation (1011 base classes)
     CondensedPhysics2.py     → Extension 1 (17+ classes: Orb Analysis 10/11+)
-    CondensedPhysics3.py     → Extension 2 (91 classes: 15+ categories, Sessions 41-55, 2026-03-14)
+    CondensedPhysics3.py     → Extension 2 (95 classes: 15+ categories, Sessions 41-56, 2026-03-14)
     CondensedPhysicsAggregator.py → This file (unified API)
 
 USAGE:
@@ -196,6 +196,11 @@ from CondensedPhysics3 import (
     M16EagleNebulaRadiationSFRCalculator,
     CrabPWNUQFFCalculator,
     UQFFSombreroDustIntegratedCalculator,
+    # Session 56 — grok_share_7514fe fifth-pass unique physics
+    BubbleNebulaExpansionEnhancementCalculator,
+    HorseheadNebulaPradBlackbodyCalculator,
+    NGC1275PerseusAGNFilamentCalculator,
+    SaturnDualGravityRingTensionCalculator,
 )
 
 CP3_CALCULATORS = {
@@ -296,6 +301,11 @@ CP3_CALCULATORS = {
     'M16EagleNebulaRadiationSFRCalculator': M16EagleNebulaRadiationSFRCalculator,
     'CrabPWNUQFFCalculator': CrabPWNUQFFCalculator,
     'UQFFSombreroDustIntegratedCalculator': UQFFSombreroDustIntegratedCalculator,
+    # Session 56 — grok_share_7514fe fifth-pass unique physics
+    'BubbleNebulaExpansionEnhancementCalculator': BubbleNebulaExpansionEnhancementCalculator,
+    'HorseheadNebulaPradBlackbodyCalculator': HorseheadNebulaPradBlackbodyCalculator,
+    'NGC1275PerseusAGNFilamentCalculator': NGC1275PerseusAGNFilamentCalculator,
+    'SaturnDualGravityRingTensionCalculator': SaturnDualGravityRingTensionCalculator,
 }
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -436,7 +446,7 @@ ALL_CALCULATORS = {
 
 # Module metadata
 AGGREGATOR_VERSION = "1.6.0"
-TOTAL_MODULES = 21  # CP1, CP2 v2.1.0, CP3 (Sessions 41-55, 91 classes), + 10 thread registries + PAPER_196-220
+TOTAL_MODULES = 21  # CP1, CP2 v2.1.0, CP3 (Sessions 41-56, 95 classes), + 10 thread registries + PAPER_196-224
 
 
 def get_calculator(name: str):

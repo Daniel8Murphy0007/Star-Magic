@@ -4836,6 +4836,306 @@ class UQFFSombreroDustIntegratedCalculator(_CP3Calculator):
 
 
 # ---------------------------------------------------------------------------
+# Session 56 — grok_share_7514fe fifth-pass unique physics
+# Four systems with compressed UQFF forms not yet in CP3:
+#   1. Bubble Nebula    — (1+E(t)) POSITIVE shell expansion enhancement (Doc 12)
+#   2. Horsehead Nebula — P_rad blackbody radiation pressure additive (Doc 15)
+#   3. NGC 1275 Perseus — F_BH AGN jet + M_fil cold filament gas (Doc 16)
+#   4. Saturn           — dual-source gravity (Sun + Saturn) + T_ring (Doc 22)
+# ---------------------------------------------------------------------------
+
+class BubbleNebulaExpansionEnhancementCalculator(_CP3Calculator):
+    """Bubble Nebula UQFF with POSITIVE shell expansion factor (1+E(t)).
+
+    Unique equation (Document 12 — Bubble Nebula / NGC 7635):
+      g_Bubble = (G·M)/r² · (1+H(z)·t) · (1-B/B_crit) · (1+E(t))
+                 + (Ug1+Ug2+Ug3+Ug4) + Λc²/3 + QM + fluid + DM
+                 + ρ·v_wind²
+
+    Why unique: (1+E(t)) POSITIVE vs Pillars/Horsehead (1-E(t)) NEGATIVE.
+    E(t) here is the shell expansion energy fraction that ADDS to effective
+    gravity on the bubble shell (stellar wind inflates a pressure shell —
+    the ram pressure compresses the surrounding ISM, increasing g_eff).
+    This is the inverse of irradiation erosion: wind inflation → compression.
+
+    E(t) = P_wind / P_gravity = (ρ_w · v_w² · r²) / (G · M · ρ_shell)
+    At large t: E(t) ≈ 0.05 (5% wind enhancement in compressed shell)
+    """
+
+    def compute(self, dataset: dict) -> dict:
+        import math
+        G = 6.6743e-11
+        H0 = 2.27e-18
+        c = 2.998e8
+        LAMBDA = 1.1e-52
+
+        M = dataset.get('M', 1.5e31)        # BD+60°2522 star ~43 M_sun (kg)
+        r = dataset.get('r', 2.84e16)       # 3 ly bubble radius (m)
+        B = dataset.get('B', 1e-8)
+        B_crit = dataset.get('B_crit', 4.4e13)
+        z = dataset.get('z', 0.0)           # Local nebula
+        t = dataset.get('t', 4.35e17)
+        E_t = dataset.get('E_t', 0.05)      # Expansion enhancement factor
+        rho_wind = dataset.get('rho_wind', 1e-23)   # Shell density (kg/m³)
+        v_wind = dataset.get('v_wind', 1.5e6)        # BD+60°2522 wind ~1500 km/s
+
+        mag_f = 1.0 - min(B / B_crit, 0.9999)
+        # (1+E(t)) POSITIVE enhancement — key distinction from Pillars (1-E(t))
+        expansion_f = 1.0 + E_t
+        g_base = (G * M) / r**2 * (1.0 + H0 * t) * mag_f * expansion_f
+        g_lambda = (LAMBDA * c**2) / 3.0
+        g_ram = rho_wind * v_wind**2
+        g_total = g_base + g_lambda + g_ram
+
+        sign_contrast = 1.0 - E_t  # What Pillars/Horsehead would give
+        return {
+            'primary_equations': [
+                f"g_base·(1+E(t)) = {g_base:.4e} m/s² [expansion ENHANCES gravity]",
+                f"(1+E(t)) = {expansion_f:.4f}  vs  Pillars (1-E(t)) = {sign_contrast:.4f}",
+                f"ρ·v_wind² = {g_ram:.4e} [stellar wind ram pressure on shell]",
+                f"g_total = {g_total:.4e} m/s²",
+            ],
+            'available_equations': [
+                "Shell compression: g_eff ∝ (1 + P_wind/P_gravity)",
+                "E(t) = ρ_wind·v_wind²·r² / (G·M·ρ_shell) [energy fraction]",
+                "Velocity: v_wind = 1500 km/s for BD+60°2522 (O-type star)",
+                "Expansion age: r(t) = r_0 + v_shell·t, v_shell ≈ 30 km/s",
+                "Contrast: (1+E) bubble compression vs (1-E) Pillars erosion",
+            ],
+            'simulation_set': {
+                'E_t_sweep': 'E(t) from 0 (no wind) to 0.3 (strong wind)',
+                'v_wind_sweep': 'v_wind from 5e5 to 3e6 m/s (stellar wind range)',
+                'sign_comparison': '(1+E) vs (1-E): g-ratio as E increases',
+            },
+        }
+
+
+class HorseheadNebulaPradBlackbodyCalculator(_CP3Calculator):
+    """Horsehead Nebula UQFF with P_rad Stefan-Boltzmann blackbody radiation pressure.
+
+    Unique equation (Document 15 — Horsehead Nebula / Barnard 33):
+      g_Horsehead = (G·M)/r² · (1+H(z)·t) · (1-B/B_crit) · (1-E(t))
+                   + (Ug1+Ug2+Ug3+Ug4) + Λc²/3 + QM + fluid + DM
+                   + P_rad
+
+    Why unique: P_rad = 4σT⁴/(3c) is BLACKBODY THERMAL radiation pressure
+    (Stefan-Boltzmann), different from:
+    - M16's E_rad = L_UV/(4πr²c)  [electromagnetic energy density / photon flux]
+    - ρ·v_wind²                   [ram pressure]
+    P_rad arises from the HII region ion-front temperature T ≈ 10,000 K
+    baking the Horsehead surface. This is classical radiation pressure
+    from a thermalized blackbody source — the strongest thermal pressure
+    term in any of the 29 UQFF documents.
+
+    CP1 benchmarks: P_rad_Horsehead = 4.347e-5 m/s² (from Sigma Orionis)
+    """
+
+    def compute(self, dataset: dict) -> dict:
+        import math
+        G = 6.6743e-11
+        H0 = 2.27e-18
+        c = 2.998e8
+        LAMBDA = 1.1e-52
+        sigma_SB = 5.6704e-8   # Stefan-Boltzmann constant (W/m²/K⁴)
+
+        M = dataset.get('M', 2.387e32)     # 120 M_sun (CP1 benchmark)
+        r = dataset.get('r', 1.182e16)     # 1.25 ly half-diameter (CP1)
+        B = dataset.get('B', 1e-5)         # CP1 benchmark B
+        B_crit = dataset.get('B_crit', 4.4e13)
+        z = dataset.get('z', 0.0003)       # CP1 benchmark z
+        t = dataset.get('t', 4.35e17)
+        E_0 = dataset.get('E_0', 0.2)      # CP1 erosion factor E_0
+        tau = dataset.get('tau_erode', 1.578e14)   # CP1 5 Myr erosion timescale
+        T_ion = dataset.get('T_ion', 1e4)  # HII region ionization temperature (K)
+
+        E_t = E_0 * (1.0 - math.exp(-t / tau))
+        mag_f = 1.0 - min(B / B_crit, 0.9999)
+        g_base = (G * M) / r**2 * (1.0 + H0 * t) * mag_f * (1.0 - E_t)
+        g_lambda = (LAMBDA * c**2) / 3.0
+        # Stefan-Boltzmann blackbody radiation pressure
+        P_rad = (4.0 * sigma_SB * T_ion**4) / (3.0 * c)
+        g_total = g_base + g_lambda + P_rad
+
+        return {
+            'primary_equations': [
+                f"E(t) = E_0·(1−e^{{−t/τ}}) = {E_t:.4f} [irradiation erosion fraction]",
+                f"g_base·(1−E(t)) = {g_base:.4e} m/s²",
+                f"P_rad = 4σT⁴/(3c) = 4·{sigma_SB:.4e}·{T_ion:.1e}⁴/(3·{c:.3e})",
+                f"P_rad = {P_rad:.4e} m/s² [blackbody SB radiation pressure]",
+                f"g_total = {g_total:.4e} m/s²",
+            ],
+            'available_equations': [
+                "P_rad = 4σT⁴/(3c) — Stefan-Boltzmann law in radiation-dominated regime",
+                "P_rad vs g_base: radiation-to-gravity ratio at Horsehead surface",
+                "T_ion photon-dominated region: T ≈ 8000-12000 K (σ-Ori HII)",
+                "Compare: P_rad (SB) vs E_rad=L_UV/(4πr²c) (M16 photon flux)",
+                "Brightness temperature: T_b from P_rad measured by Herschel",
+            ],
+            'simulation_set': {
+                'T_sweep': 'T_ion from 5000 K to 30000 K (PDR to deep HII)',
+                'E_0_sweep': 'E_0 from 0.05 to 0.5 (erosion strength range)',
+                'P_rad_vs_Erad': 'Compare SB P_rad to flux-based E_rad at same location',
+            },
+        }
+
+
+class NGC1275PerseusAGNFilamentCalculator(_CP3Calculator):
+    """NGC 1275 Perseus Cluster BCG UQFF with AGN jet force F_BH and filament mass M_fil.
+
+    Unique equation (Document 16 — NGC 1275 / Perseus Cluster):
+      g_NGC1275 = (G·M)/r² · (1+H(z)·t) · (1-B/B_crit)
+                  + F_BH
+                  + (Ug1+Ug2+Ug3+Ug4) + Λc²/3 + QM + fluid + DM
+                  + M_fil
+
+    Two unique terms:
+    F_BH = E_jet / (r · t_jet)    [AGN jet feedback force — Perseus A central BH]
+    M_fil = ρ_fil · V_fil          [optical filament cold gas mass contribution]
+
+    Physical context: NGC 1275 is the brightest cluster galaxy (BCG) of
+    Perseus Cluster. Its massive AGN produces powerful X-ray cavities (seen
+    by Chandra). The famous Hα optical filaments (~100 filaments, ~10⁸ M_sun
+    total) drape the galaxy — M_fil represents their gravitational contribution.
+    F_BH is the Perseus A black hole jet mechanical power converted to force.
+
+    Reference: Fabian et al. (2000) — Chandra NGC 1275 filaments
+    Perseus A: M_BH ≈ 3×10⁸ M_sun; P_jet ≈ 10³⁵ W
+    """
+
+    def compute(self, dataset: dict) -> dict:
+        import math
+        G = 6.6743e-11
+        H0 = 2.27e-18
+        c = 2.998e8
+        LAMBDA = 1.1e-52
+
+        M = dataset.get('M', 2.0e42)        # Perseus ICM within cooling radius (kg)
+        r = dataset.get('r', 3.086e20)      # 10 kpc cooling radius (m)
+        B = dataset.get('B', 1e-8)
+        B_crit = dataset.get('B_crit', 4.4e13)
+        z = dataset.get('z', 0.0176)        # NGC 1275 redshift
+        t = dataset.get('t', 4.35e17)
+        # AGN jet parameters (Perseus A)
+        P_jet = dataset.get('P_jet', 1e35)  # 10^35 W jet mechanical power (Fabian 2003)
+        r_jet = dataset.get('r_jet', 3.086e20)   # jet scale radius (=r by default)
+        t_jet = dataset.get('t_jet', 1.0e15)     # jet lifetime ~30 Myr (s)
+        # Filament parameters
+        rho_fil = dataset.get('rho_fil', 1e-22)  # filament gas density (kg/m³)
+        V_fil = dataset.get('V_fil', 9.46e48)    # total filament volume (m³) ~10^3 ly³
+        M_fil_override = dataset.get('M_fil', None)
+
+        mag_f = 1.0 - min(B / B_crit, 0.9999)
+        g_base = (G * M) / r**2 * (1.0 + H0 * t) * mag_f
+        g_lambda = (LAMBDA * c**2) / 3.0
+
+        # F_BH: AGN jet feedback force = jet power / (c × area) or = E_jet/(r·t_jet)
+        E_jet = P_jet * t_jet
+        F_BH = E_jet / (r_jet * t_jet)   # = P_jet / r_jet
+        # M_fil: filament cold gas gravitational contribution
+        M_fil = M_fil_override if M_fil_override is not None else rho_fil * V_fil
+        g_fil = (G * M_fil) / r**2
+
+        g_total = g_base + g_lambda + F_BH + g_fil
+
+        return {
+            'primary_equations': [
+                f"g_base = {g_base:.4e} m/s² [Perseus BCG gravity]",
+                f"F_BH = P_jet/r_jet = {P_jet:.2e}/{r_jet:.2e} = {F_BH:.4e} [AGN jet reaction]",
+                f"M_fil = ρ_fil·V_fil = {M_fil:.4e} kg (~{M_fil/1.989e30:.1f} M_sun)",
+                f"g_fil = G·M_fil/r² = {g_fil:.4e} m/s²",
+                f"g_total = {g_total:.4e} m/s²",
+            ],
+            'available_equations': [
+                "F_BH = P_jet / r (jet mechanical power density)",
+                "Cavity work: W_cav = P·V_cavity (Chandra X-ray cavities)",
+                "Filament stability: M_fil threshold for condensation vs AGN disruption",
+                "Cooling time: t_cool = (3nkT)/(2n²Λ(T)) ≈ 200 Myr in Perseus core",
+                "ICM entropy floor set by jet heating rate = cooling rate",
+            ],
+            'simulation_set': {
+                'P_jet_sweep': 'P_jet from 1e33 to 1e36 W (Chandra constraint range)',
+                'M_fil_sweep': 'M_fil from 1e7 to 1e9 M_sun (filament mass range)',
+                'feedback_balance': 'F_BH vs g_base: heating–cooling balance curve',
+            },
+        }
+
+
+class SaturnDualGravityRingTensionCalculator(_CP3Calculator):
+    """Saturn UQFF with dual-source gravity (Sun + Saturn) and ring tidal tension T_ring.
+
+    Unique equation (Document 22 — Saturn):
+      g_Saturn = (G·M_Sun)/r_orbit² · (1+H(z)·t)      [heliocentric gravity]
+               + (G·M_Saturn)/r² · (1-B/B_crit)         [Saturn self-gravity]
+               + T_ring
+               + (Ug1+Ug2+Ug3+Ug4) + Λc²/3 + QM + fluid + DM
+               + F_wind_solar
+
+    This is the ONLY equation in all 29 UQFF documents with:
+    1. TWO explicit gravitational sources summed (not one body)
+    2. H(z)·t expansion ONLY on heliocentric term, NOT Saturn self-gravity
+    3. B/B_crit suppression ONLY on Saturn self-gravity, NOT solar term
+    4. T_ring (ring tidal acceleration ≈ 2.043e-7 m/s², CP1 benchmark)
+    5. F_wind_solar (solar wind at 9.5 AU)
+
+    Physical: at Saturn's surface r = R_Saturn, both terms compete.
+    At ring plane r = ring radius: T_ring dominates UQFF structure.
+    """
+
+    def compute(self, dataset: dict) -> dict:
+        import math
+        G = 6.6743e-11
+        H0 = 2.27e-18
+        c = 2.998e8
+        LAMBDA = 1.1e-52
+
+        # Heliocentric parameters
+        M_Sun = dataset.get('M_Sun', 1.989e30)
+        r_orbit = dataset.get('r_orbit', 1.426e12)  # Saturn orbital radius 9.54 AU (m)
+        z = dataset.get('z', 0.0)               # Local solar system
+        t = dataset.get('t', 4.35e17)           # Age of solar system
+        # Saturn parameters
+        M_Saturn = dataset.get('M_Saturn', 5.683e26)
+        r = dataset.get('r', 6.0268e7)          # Saturn equatorial radius (m)
+        B = dataset.get('B', 2e-5)              # Saturn magnetic field ~20 µT
+        B_crit = dataset.get('B_crit', 4.4e13)
+        # Ring parameters
+        T_ring = dataset.get('T_ring', 2.043e-7)    # CP1 benchmark ring tidal accel (m/s²)
+        # Solar wind
+        rho_sw = dataset.get('rho_sw', 5e-26)       # solar wind density at 9.5 AU (kg/m³)
+        v_sw = dataset.get('v_sw', 4e5)             # solar wind speed ~400 km/s (m/s)
+
+        # Two independent gravity terms with DIFFERENT modifiers
+        g_sun = (G * M_Sun) / r_orbit**2 * (1.0 + H0 * t)   # H(z)·t on solar only
+        mag_f = 1.0 - min(B / B_crit, 0.9999)
+        g_saturn = (G * M_Saturn) / r**2 * mag_f              # B/B_crit on Saturn only
+        g_lambda = (LAMBDA * c**2) / 3.0
+        F_wind = rho_sw * v_sw**2                              # solar wind ram at Saturn
+        g_total = g_sun + g_saturn + T_ring + g_lambda + F_wind
+
+        return {
+            'primary_equations': [
+                f"g_Sun(helio) = G·M_Sun/r_orbit² · (1+H·t) = {g_sun:.4e} m/s² [solar]",
+                f"g_Saturn(self) = G·M_S/r² · (1-B/B_crit) = {g_saturn:.4e} m/s² [planetary]",
+                f"T_ring (ring tidal) = {T_ring:.4e} m/s² [CP1 benchmark]",
+                f"F_wind (solar wind at 9.5 AU) = {F_wind:.4e} m/s²",
+                f"g_total = {g_total:.4e} m/s²",
+            ],
+            'available_equations': [
+                "Dual-source: g_Sun modulated by H(z)·t; g_Saturn by B/B_crit",
+                "Roche limit: r_Roche = R_Saturn·(2·M_Saturn/M_ring)^(1/3)",
+                "Ring gap: Cassini Division at r = 1.18·R_Saturn (Mimas 2:1 resonance)",
+                "T_ring = G·M_ring/r_ring² ≈ 2e-7 m/s² (differential tidal tension)",
+                "F_wind: Parker spiral density ρ_sw(r) ∝ r^-2 from 1 AU baseline",
+            ],
+            'simulation_set': {
+                'r_sweep': 'r from R_Saturn to 5·R_Saturn (surface to outer rings)',
+                'dual_ratio': 'g_Sun/g_Saturn ratio as function of r_orbit',
+                'T_ring_profile': 'T_ring(r) across A-ring, Cassini Division, B-ring',
+            },
+        }
+
+
+# ---------------------------------------------------------------------------
 # __all__ export
 # ---------------------------------------------------------------------------
 
@@ -4969,4 +5269,9 @@ __all__ = [
     "M16EagleNebulaRadiationSFRCalculator",
     "CrabPWNUQFFCalculator",
     "UQFFSombreroDustIntegratedCalculator",
+    # Session 56 — grok_share_7514fe fifth-pass unique physics
+    "BubbleNebulaExpansionEnhancementCalculator",
+    "HorseheadNebulaPradBlackbodyCalculator",
+    "NGC1275PerseusAGNFilamentCalculator",
+    "SaturnDualGravityRingTensionCalculator",
 ]
