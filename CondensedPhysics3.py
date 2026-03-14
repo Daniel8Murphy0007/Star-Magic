@@ -3195,6 +3195,691 @@ class CosmicRaysWHIMFermiCalculator(_CP3Calculator):
 
 
 # ---------------------------------------------------------------------------
+# Session 52 — grok_share_7514fe deep-analysis (10 new calculators)
+# Source: UQFF+Equations+Across+Astrophysical+Systems_22Sept2025.pdf analysis
+# Unique content: Friedmann UQFF, multi-factor g, SSq-enhanced triadic,
+# DPM harmonic series, hydrogen nuclear resonance, universe diameter,
+# prime vortex encoding, relativistic hierarchy integral
+# ---------------------------------------------------------------------------
+
+
+class UQFFCompressedFriedmannCalculator(_CP3Calculator):
+    """Compressed master UQFF with Friedmann H(t,z) and F_env envelope.
+
+    Unique equation (Doc compression Step 2/6):
+      g_UQFF = (G*M(t))/r^2 * (1+H(t,z)) * (1-B(t)/B_crit) * (1+F_env(t))
+               + (Ug1+Ug2+Ug3'+Ug4) + Λc²/3
+               + (ℏ/√(Δx·Δp))·∫ψ_total·H·ψ_total dV·(2π/t_Hubble)
+               + ρ_fluid·V·g + (M_vis+M_DM)·(δρ/ρ + 3GM/r³)
+      H(t,z) = H_0·√(0.3·(1+z)³ + 0.7)   [Friedmann flat ΛCDM]
+      F_env(t) encodes environment: wind (v_wind²), expansion E(t), lensing L(t)
+    """
+
+    def compute(self, dataset: dict) -> dict:
+        import math
+        G = 6.6743e-11
+        hbar = 1.0546e-34
+        c = 2.998e8
+        LAMBDA = 1.1e-52
+        H0 = 2.27e-18  # s^{-1}
+        t_H = 4.35e17  # s
+        kappa = KAPPA
+
+        M = dataset.get('M', 1.989e30)
+        r = dataset.get('r', 1.5e11)
+        B = dataset.get('B', 1e-4)
+        B_crit = dataset.get('B_crit', 4.4e13)
+        z = dataset.get('z', 0.0)
+        t = dataset.get('t', 0.0)
+        F_env = dataset.get('F_env', 0.0)
+        M_vis = dataset.get('M_vis', M)
+        M_DM = dataset.get('M_DM', 0.3 * M)
+        rho_f = dataset.get('rho_fluid', 1e-22)
+        V = dataset.get('V', 1e30)
+        delta_rho = dataset.get('delta_rho', 1e-4)
+        rho = dataset.get('rho', 1e-22)
+
+        H_tz = H0 * math.sqrt(0.3 * (1 + z)**3 + 0.7)
+        g_newton = (G * M) / r**2
+        mag_factor = 1.0 - min(B / B_crit, 0.9999)
+        env_factor = 1.0 + F_env
+        cosm_factor = 1.0 + H_tz * t
+        g_grav = g_newton * cosm_factor * mag_factor * env_factor
+        g_lambda = (LAMBDA * c**2) / 3.0
+        g_qm = (hbar / math.sqrt(1.055e-34 * 1e-27)) * (2 * math.pi / t_H)
+        g_fluid = rho_f * V * 9.81
+        g_dm = (M_vis + M_DM) * (delta_rho / max(rho, 1e-99) + (3 * G * M) / r**3)
+
+        g_total = g_grav + g_lambda + g_qm + g_fluid + g_dm
+        prim_eq = (f"g_UQFF = {g_grav:.4e} (grav·env·Htz) + {g_lambda:.4e} (Λ) "
+                   f"+ {g_qm:.4e} (QM) + {g_fluid:.4e} (fluid) + {g_dm:.4e} (DM) "
+                   f"= {g_total:.4e} m/s²")
+        return {
+            'primary_equations': [
+                prim_eq,
+                f"H(t,z) = H0·√(0.3·(1+{z})³+0.7) = {H_tz:.4e} s⁻¹",
+                f"F_env = {F_env:.4f}  →  envelope factor = {env_factor:.6f}",
+            ],
+            'available_equations': [
+                "g_UQFF extended forms: wind (v_wind²), expansion E(t), lensing L(t)",
+                "H(t,z) → F_env(t) coupling for SFR / AGN feedback regimes",
+                "psi_total envelope via Ug3' modified superposition",
+            ],
+            'simulation_set': {
+                'z_sweep': 'z from 0 to 10, trace H(t,z) and g_total',
+                'F_env_sweep': 'F_env from -0.5 to 2.0 (erosion to expansion)',
+            },
+        }
+
+
+class UQFFMultiFactorEvolutionMergerCalculator(_CP3Calculator):
+    """HUDF-style UQFF gravity with dual product factors M_evo and M_merge.
+
+    Unique equation (Document 18 — HUDF):
+      g = (G·M(t))/r² · (1+H(z)·t) · (1-B/B_crit) · (1+M_evo(t)) · (1-M_merge(t))
+          + (Ug1+Ug2+Ug3+Ug4) + cosmological + QM + fluid + DM terms
+    Cross-term: (1+M_evo)·(1-M_merge) = 1 + M_evo - M_merge - M_evo·M_merge
+    M_evo  = fractional stellar mass growth rate (SFR / M_total)
+    M_merge = fractional mass loss to merging (dM_merge/dt / M)
+    """
+
+    def compute(self, dataset: dict) -> dict:
+        import math
+        G = 6.6743e-11
+        H0 = 2.27e-18
+        c = 2.998e8
+        LAMBDA = 1.1e-52
+        hbar = 1.0546e-34
+        t_H = 4.35e17
+
+        M = dataset.get('M', 5e40)
+        r = dataset.get('r', 3e22)
+        B = dataset.get('B', 1e-9)
+        B_crit = dataset.get('B_crit', 4.4e13)
+        z = dataset.get('z', 2.0)
+        t = dataset.get('t', 2e17)
+        M_evo = dataset.get('M_evo', 0.05)
+        M_merge = dataset.get('M_merge', 0.02)
+        M_DM = dataset.get('M_DM', 0.3 * M)
+
+        mag_f = 1.0 - min(B / B_crit, 0.9999)
+        evo_f = (1.0 + M_evo) * (1.0 - M_merge)
+        g_base = (G * M) / r**2 * (1 + H0 * t) * mag_f * evo_f
+        g_lambda = (LAMBDA * c**2) / 3.0
+        g_qm = (hbar / math.sqrt(1.055e-34 * 1e-27)) * (2 * math.pi / t_H)
+        g_total = g_base + g_lambda + g_qm
+
+        cross = M_evo * M_merge
+        return {
+            'primary_equations': [
+                f"g_HUDF = {g_base:.4e} [(1+M_evo)(1-M_merge) = {evo_f:.4f}]",
+                f"Cross-term suppression: M_evo·M_merge = {cross:.4e}",
+                f"g_total = {g_total:.4e} m/s²",
+            ],
+            'available_equations': [
+                "dM_evo/dt coupling via SFR integral ∫SFR(z)dz",
+                "M_merge redshift scaling: M_merge ∝ (1+z)^2.5",
+                "Multi-epoch: iterate over z=[0,2,5,10]",
+            ],
+            'simulation_set': {
+                'M_evo_sweep': 'M_evo from 0 to 0.3',
+                'M_merge_sweep': 'M_merge from 0 to 0.15',
+                'cross_term_map': '(M_evo, M_merge) 2D grid',
+            },
+        }
+
+
+class UQFFVelocityStarFormationCollisionCalculator(_CP3Calculator):
+    """Merging galaxy UQFF with collision suppression M_coll and star-formation velocity v_sf².
+
+    Unique equations (Document 14 — Antennae Galaxies):
+      g = (G·M(t))/r² · (1+H(z)·t) · (1-B/B_crit) · (1-M_coll(t))
+          + Ug terms + Λ + QM + ρ·V·g + DM + ρ·v_sf²
+    M_coll(t) = fractional mass effectively lost in tidal disruption
+    ρ·v_sf²  = ram pressure of star-forming gas (velocity dispersion)
+    """
+
+    def compute(self, dataset: dict) -> dict:
+        import math
+        G = 6.6743e-11
+        H0 = 2.27e-18
+        c = 2.998e8
+        LAMBDA = 1.1e-52
+        hbar = 1.0546e-34
+        t_H = 4.35e17
+
+        M = dataset.get('M', 8e40)
+        r = dataset.get('r', 2e22)
+        B = dataset.get('B', 1e-8)
+        B_crit = dataset.get('B_crit', 4.4e13)
+        z = dataset.get('z', 0.022)
+        t = dataset.get('t', 4.35e17)
+        M_coll = dataset.get('M_coll', 0.03)
+        rho_sf = dataset.get('rho_sf', 1e-21)
+        v_sf = dataset.get('v_sf', 2e4)
+
+        mag_f = 1.0 - min(B / B_crit, 0.9999)
+        coll_f = 1.0 - M_coll
+        g_base = (G * M) / r**2 * (1 + H0 * t) * mag_f * coll_f
+        g_lambda = (LAMBDA * c**2) / 3.0
+        g_ram = rho_sf * v_sf**2
+        g_qm = (hbar / math.sqrt(1.055e-34 * 1e-27)) * (2 * math.pi / t_H)
+        g_total = g_base + g_lambda + g_ram + g_qm
+
+        return {
+            'primary_equations': [
+                f"g = {g_base:.4e} [(1-M_coll)={coll_f:.4f}] + {g_ram:.4e} [ρ·v_sf²]",
+                f"Ram pressure ρ·v_sf² = {rho_sf:.2e}·{v_sf:.2e}² = {g_ram:.4e}",
+                f"g_total = {g_total:.4e} m/s²",
+            ],
+            'available_equations': [
+                "Tidal torque coupling: M_coll ∝ (r_peri / r_apo)^3",
+                "v_sf ALMA CO velocity dispersion constraint",
+                "Star-formation quenching threshold: ρ·v_sf² > g_grav",
+            ],
+            'simulation_set': {
+                'M_coll_sweep': 'M_coll from 0 to 0.2 (tidal disruption range)',
+                'v_sf_sweep': 'v_sf from 1e4 to 1e5 m/s',
+            },
+        }
+
+
+class UQFFSupernovaFeedbackMassLossCalculator(_CP3Calculator):
+    """UQFF gravity with supernova outflow (-M_SN) and feedback force F_sn.
+
+    Unique equations (Documents 10/19 — NGC 2525 / NGC 1792):
+      g_NGC2525 = g_base + (Ug terms) - M_SN(t)       [mass blown out]
+      g_NGC1792 = g_base · (1+M_sf(t)) + F_sn          [SFR + SNe feedback]
+      Combined: g_eff = g_UQFF · (1+M_sf) - M_SN + F_sn
+      M_SN(t) = κ_SN · SFR(t) · E_SN / c²             [mass equivalent]
+      F_sn    = k_sn · (v_ejecta² / r²) · Ω_SNe        [force from ejecta]
+    """
+
+    def compute(self, dataset: dict) -> dict:
+        import math
+        G = 6.6743e-11
+        H0 = 2.27e-18
+        c = 2.998e8
+        LAMBDA = 1.1e-52
+        hbar = 1.0546e-34
+        t_H = 4.35e17
+
+        M = dataset.get('M', 2e40)
+        r = dataset.get('r', 1.5e21)
+        B = dataset.get('B', 1e-9)
+        B_crit = dataset.get('B_crit', 4.4e13)
+        z = dataset.get('z', 0.01)
+        t = dataset.get('t', 4.35e17)
+        M_sf = dataset.get('M_sf', 0.04)
+        kappa_SN = dataset.get('kappa_SN', 0.1)
+        SFR = dataset.get('SFR', 5.0)       # solar masses/yr
+        E_SN = dataset.get('E_SN', 1e44)    # J per SN
+        k_sn = dataset.get('k_sn', 1e-8)
+        v_ej = dataset.get('v_ejecta', 1e7)  # m/s
+        Omega_SN = dataset.get('Omega_SN', 0.01)
+
+        mag_f = 1.0 - min(B / B_crit, 0.9999)
+        g_base = (G * M) / r**2 * (1 + H0 * t) * mag_f * (1 + M_sf)
+        g_lambda = (LAMBDA * c**2) / 3.0
+        # SN mass equivalent per second: SFR in kg/s * E_SN/c^2 scaling
+        SFR_si = SFR * 1.989e30 / 3.156e7   # kg/s
+        M_SN = kappa_SN * SFR_si * E_SN / c**2
+        F_sn = k_sn * (v_ej**2 / r**2) * Omega_SN
+        g_total = g_base + g_lambda - M_SN + F_sn
+
+        return {
+            'primary_equations': [
+                f"g_base·(1+M_sf) = {g_base:.4e} m/s² [SFR enhancement]",
+                f"−M_SN(t) = −{M_SN:.4e} [SNe mass outflow equivalent]",
+                f"F_sn = {F_sn:.4e} [ejecta feedback]",
+                f"g_eff = {g_total:.4e} m/s²",
+            ],
+            'available_equations': [
+                "Kennicutt-Schmidt: SFR ∝ Σ_gas^1.4",
+                "Snowplow SNR: M_SN(t) time-integrated via SF history",
+                "Feedback threshold: F_sn > g_base → outflow-driven quenching",
+            ],
+            'simulation_set': {
+                'SFR_sweep': 'SFR from 0.1 to 100 M☉/yr',
+                'M_sf_sweep': 'M_sf from 0 to 0.2',
+            },
+        }
+
+
+class HydrogenNuclearShellResonanceCalculator(_CP3Calculator):
+    """Hydrogen nuclear resonance with magic-number shell correction S_shell.
+
+    Unique equations (Document 28 — Hydrogen Resonance):
+      H_res = A_res · sin(2π·f_res·t) + U_dp·SC_m·k_nuc + S_shell
+      A_res  = k_A · Z · (A/A_H) · (1 + δ_pair)
+      f_res  = (E_bind/h) · (A_H/A) · (1 + S_shell)
+      U_dp   = k · (A_1·A_2 / f_dp²) · cos(φ_dp)
+      k_nuc  = k_0 · (N/Z) · (1 + δ_pair)
+      S_shell = 0.1 · (Z_magic + N_magic)          [magic number shell correction]
+      δ_pair  = +0.5 if both N,Z even; −0.5 if both odd; 0 otherwise
+    """
+
+    def compute(self, dataset: dict) -> dict:
+        import math
+        h = 6.626e-34
+        k_A = dataset.get('k_A', 1e-3)
+        k_0 = dataset.get('k_0', 1.0)
+        k_dp = dataset.get('k_dp', 1e-40)
+
+        Z = dataset.get('Z', 1)            # proton number (1=H)
+        A = dataset.get('A', 1)            # mass number
+        N = A - Z
+        A_H = 1                            # hydrogen reference
+        E_bind = dataset.get('E_bind', 13.6 * 1.6e-19)  # J
+        f_dp = dataset.get('f_dp', 1.42e9)   # Hz (21 cm line)
+        phi_dp = dataset.get('phi_dp', 0.0)
+        A_1 = dataset.get('A_1', Z)
+        A_2 = dataset.get('A_2', N if N > 0 else 1)
+        SC_m = dataset.get('SC_m', 1.0)
+        t = dataset.get('t', 0.0)
+
+        # Pairing energy correction
+        if N % 2 == 0 and Z % 2 == 0:
+            delta_pair = 0.5
+        elif N % 2 == 1 and Z % 2 == 1:
+            delta_pair = -0.5
+        else:
+            delta_pair = 0.0
+
+        # Magic numbers: 2, 8, 20, 28, 50, 82, 126
+        magic = {2, 8, 20, 28, 50, 82, 126}
+        Z_magic = 1 if Z in magic else 0
+        N_magic = 1 if N in magic else 0
+        S_shell = 0.1 * (Z_magic + N_magic)
+
+        A_res = k_A * Z * (A / A_H) * (1 + delta_pair)
+        f_res = (E_bind / h) * (A_H / A) * (1 + S_shell)
+        U_dp = k_dp * (A_1 * A_2 / f_dp**2) * math.cos(phi_dp)
+        k_nuc = k_0 * (N / max(Z, 1)) * (1 + delta_pair)
+        H_res = A_res * math.sin(2 * math.pi * f_res * t) + U_dp * SC_m * k_nuc + S_shell
+
+        return {
+            'primary_equations': [
+                f"H_res = {H_res:.4e}",
+                f"A_res = k_A·Z·(A/A_H)·(1+δ_pair) = {A_res:.4e}",
+                f"f_res = (E_bind/h)·(A_H/A)·(1+S_shell) = {f_res:.4e} Hz",
+                f"U_dp = {U_dp:.4e}, k_nuc = {k_nuc:.4f}, S_shell = {S_shell:.2f}",
+                f"δ_pair = {delta_pair:.1f}  (Z={Z}, N={N}, A={A})",
+            ],
+            'available_equations': [
+                "Nuclear binding: E_bind / A vs semi-empirical mass formula",
+                "Magic number proximity: partial shell filling corrections",
+                "U_dp dipole: k·(A_1·A_2/f_dp²)·cos(φ) for any nucleus",
+            ],
+            'simulation_set': {
+                'Z_sweep': 'Z from 1 to 10 (H to Ne), trace S_shell jumps',
+                't_sweep': 't from 0 to 1/f_res (one resonance cycle)',
+            },
+        }
+
+
+class UQFFUniverseDiameterEstimationCalculator(_CP3Calculator):
+    """UQFF estimate of universe diameter with quantum and cosmological corrections.
+
+    Unique equation (Document 29 / Document 26):
+      D_universe = 2·D_p · (1+H(z)·t_0) · (1+Λc²/(3H_0²))
+                   · (1 + (ℏ/√(Δx·Δp))·∫ψ·H·ψdV / (G·M_total))
+                   · (1 + k_curv·r_c²)
+    D_p   = particle horizon (2c/H_0 for flat universe)
+    k_curv = curvature correction (~0 flat, +1 closed, -1 open)
+    r_c    = comoving curvature radius
+    """
+
+    def compute(self, dataset: dict) -> dict:
+        import math
+        G = 6.6743e-11
+        hbar = 1.0546e-34
+        c = 2.998e8
+        LAMBDA = 1.1e-52
+        H0 = 2.27e-18
+        t_0 = 4.35e17   # age of universe s
+
+        z = dataset.get('z', 0.0)
+        M_total = dataset.get('M_total', 1.5e53)    # kg observable universe
+        k_curv = dataset.get('k_curv', 0.0)         # 0=flat
+        r_c = dataset.get('r_c', 1.3e26)            # comoving radius m
+        H_z = H0 * math.sqrt(0.3 * (1 + z)**3 + 0.7)
+
+        D_p = 2 * c / H0      # particle horizon
+        cosm = 1.0 + H_z * t_0
+        lambda_corr = 1.0 + (LAMBDA * c**2) / (3 * H0**2)
+        qm_corr = 1.0 + (hbar / math.sqrt(1.055e-34 * 1e-27)) / (G * M_total)
+        curv_corr = 1.0 + k_curv * r_c**2
+
+        D_universe = 2 * D_p * cosm * lambda_corr * qm_corr * curv_corr
+
+        return {
+            'primary_equations': [
+                f"D_p = 2c/H_0 = {D_p:.4e} m = {D_p/9.461e15:.3e} ly",
+                f"Cosmological factor (1+H·t_0) = {cosm:.6f}",
+                f"Λ correction = {lambda_corr:.8f}",
+                f"QM correction = {qm_corr:.8e}",
+                f"D_universe = {D_universe:.4e} m = {D_universe/9.461e15:.4e} ly",
+            ],
+            'available_equations': [
+                "Comoving distance: χ = c·∫₀^z dz'/H(z')",
+                "Angular diameter distance: d_A = χ/(1+z)",
+                "Particle horizon evolution with UQFF Ug4 vacuum terms",
+            ],
+            'simulation_set': {
+                'k_curv_sweep': 'k_curv from -0.01 to 0.01',
+                'z_sweep': 'z from 0 to 1100 (CMB surface)',
+            },
+        }
+
+
+class TriadicSSqFeedbackEnhancedCalculator(_CP3Calculator):
+    """Triadic UQFF with SSq feedback correction in amplitude and resonance.
+
+    Unique master equations (Long-Form Proofs section):
+      FU_g1 = Σ_{k=1}^N [ k_k · (f_UA'1·f_SCm1·R_EB1)·(f_UA'2·f_SCm2·R_EB2)/r²
+                           · G_k(UA,Ub,ν_THz,geom_k)
+                         + k_4·ρ_vac,[SCm]·M_BH/r · e^{-αt}·cos(πt_n)
+                           · (1+f_feedback) · e^{-[SSq]·n/26} ]
+      R(t) = Σ_{i=1}^{26} R_{U_g1,i}·cos(ω_{U_g1,i}·t)
+             with R_{U_g1,i} = F_{U_g1,i}·(1+M_sf(t))·e^{-[SSq]·i/26}
+             and ω_{U_g1,i} = 2π/(T_sf/i)·(1+[SSq])
+    Both FU_g1 feedback term and R amplitude are SSq-attenuated over 26 levels.
+    """
+
+    def compute(self, dataset: dict) -> dict:
+        import math
+        SSq = SSQ  # 0.57
+        kappa = KAPPA
+
+        r = dataset.get('r', 1.89e16)
+        M_BH = dataset.get('M_BH', M_BH_SGR)
+        f_UA1 = dataset.get('f_UA1', 0.999)
+        f_SCm1 = dataset.get('f_SCm1', 0.001)
+        R_EB1 = dataset.get('R_EB1', 1.0)
+        f_UA2 = dataset.get('f_UA2', 0.999)
+        f_SCm2 = dataset.get('f_SCm2', 0.001)
+        R_EB2 = dataset.get('R_EB2', 1.0)
+        k_k = dataset.get('k_k', 1.0)
+        k_4 = dataset.get('k_4', 0.1)
+        rho_SCm = RHO_VAC_SCM
+        alpha = dataset.get('alpha', kappa)
+        t = dataset.get('t', 0.0)
+        t_n = dataset.get('t_n', 0.0)
+        f_feedback = dataset.get('f_feedback', 0.0)
+        N = dataset.get('N', 26)
+        M_sf = dataset.get('M_sf', 0.0)
+        T_sf = dataset.get('T_sf', 3.156e15)  # 100 Myr in s
+        F_base = dataset.get('F_base', 1e-40)
+
+        # Compressed FU_g1 with SSq feedback
+        g_k_factors = (f_UA1 * f_SCm1 * R_EB1) * (f_UA2 * f_SCm2 * R_EB2)
+        FU_g1_main = k_k * g_k_factors / r**2
+        cos_tn = self._cos_tn(t_n)
+        FU_g1_feedback = (k_4 * rho_SCm * M_BH / r
+                          * math.exp(-alpha * t) * cos_tn
+                          * (1 + f_feedback))
+        # SSq correction over N levels
+        ssq_sum = sum(math.exp(-SSq * n / 26) for n in range(1, N + 1))
+        FU_g1 = (FU_g1_main + FU_g1_feedback) * ssq_sum / N
+
+        # 26-level resonance with SSq amplitude decay
+        R_total = 0.0
+        for i in range(1, 27):
+            omega_i = 2 * math.pi / (T_sf / i) * (1 + SSq)
+            R_amp = F_base * (1 + M_sf) * math.exp(-SSq * i / 26)
+            R_total += R_amp * math.cos(omega_i * t)
+
+        return {
+            'primary_equations': [
+                f"FU_g1 = {FU_g1:.4e} N (SSq={SSq} feedback across {N} levels)",
+                f"R(t) = {R_total:.4e} N (26-level resonance with SSq decay)",
+                f"SSq level sum Σe^{{-SSq·n/26}} = {ssq_sum:.4f}",
+                f"ω_1 = 2π/(T_sf/1)·(1+SSq) = {2*math.pi/T_sf*(1+SSq):.4e} s⁻¹",
+            ],
+            'available_equations': [
+                "Full 26-level R(t) spectrum with Ug2,Ug3,Ug4 resonances",
+                "SSq(n) = e^{-[SSq]·n/26}: shell stability gradient",
+                "f_feedback coupling via AGN cavity / winds",
+            ],
+            'simulation_set': {
+                'SSq_sweep': 'SSq from 0.3 to 0.9',
+                'resonance_spectrum': 'i=1..26, compute R_i amplitude',
+            },
+        }
+
+
+class DPMHarmonicBuoyancySeriesCalculator(_CP3Calculator):
+    """DPM harmonic U_g2 series with buoyancy harmonics H_m and vacuum density series.
+
+    Unique equations (ACP/DPM Creation Scenario, Clarification Answers section):
+      U_g2 = Σ_{m=1}^∞ H_m · (1-e^{-[SSq]·m}) · cos(ω_Ug2·t_n)
+             H_m = Σ_{k=1}^m (1/k) · f_Ub      [buoyancy harmonic: harmonic series]
+      U_i  = k_i · ρ_vac,[SCm] · ρ_vac,[UA] · ω_s(t) · λ_i · k_4  [with harmonic λ_i]
+      Vacuum Density Series: V_DS = Σ_{n=1}^∞ (1/n^26) · [SSq]^n   [convergent]
+      f_Ub = k_Ub · Δk_η · (ρ_vac,[UA]/ρ_vac,[SCm]) · (V_little/V_big)
+      t_n  = (t/t_Hubble) · (1 + H(z)·t_0)    [cosmic-to-quantum time bridge]
+    """
+
+    def compute(self, dataset: dict) -> dict:
+        import math
+        SSq = SSQ
+        t_H = 4.35e17
+        H0 = 2.27e-18
+
+        t = dataset.get('t', 0.0)
+        z = dataset.get('z', 0.0)
+        omega_Ug2 = dataset.get('omega_Ug2', 2 * math.pi * 1.25e12)
+        k_Ub = dataset.get('k_Ub', 0.1)
+        delta_k_eta = dataset.get('delta_k_eta', 7.25e8)
+        rho_UA = RHO_VAC_UA
+        rho_SCm = RHO_VAC_SCM
+        V_ratio = dataset.get('V_ratio', 1.0 / 33.0)   # Boyle V_little/V_big
+        k_i = dataset.get('k_i', 1e-10)
+        omega_s = dataset.get('omega_s', 2.5e-6)
+        k_4 = dataset.get('k_4', 0.1)
+        N_terms = dataset.get('N_terms', 26)
+
+        # t_n: cosmic-to-quantum time bridge
+        H_z = H0 * math.sqrt(0.3 * (1 + z)**3 + 0.7)
+        t_n = (t / t_H) * (1 + H_z * t_H)
+
+        # f_Ub buoyancy factor
+        f_Ub = k_Ub * delta_k_eta * (rho_UA / rho_SCm) * V_ratio
+
+        # Buoyancy harmonics H_m = Σ_{k=1}^m (1/k) · f_Ub (harmonic series)
+        H_m_list = []
+        running = 0.0
+        for m in range(1, N_terms + 1):
+            running += (1.0 / m) * f_Ub
+            H_m_list.append(running)
+
+        # U_g2 = Σ H_m · (1-e^{-SSq·m}) · cos(ω_Ug2·t_n)
+        U_g2 = sum(H_m_list[m - 1] * (1 - math.exp(-SSq * m)) * math.cos(omega_Ug2 * t_n)
+                   for m in range(1, N_terms + 1))
+
+        # Vacuum Density Series: Σ (1/n^26) · [SSq]^n
+        V_DS = sum((1.0 / n**26) * SSq**n for n in range(1, N_terms + 1))
+
+        # U_i with harmonic λ_i (prime-harmonic): λ_i = i-th prime / 26
+        from math import log
+        lambda_series = []
+        primes = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29]
+        for idx in range(min(N_terms, len(primes))):
+            lam = primes[idx] / 26.0
+            U_i = k_i * rho_SCm * rho_UA * omega_s * lam * k_4
+            lambda_series.append(U_i)
+        U_i_total = sum(lambda_series)
+
+        return {
+            'primary_equations': [
+                f"t_n = {t_n:.6e} (cosmic-to-quantum bridge)",
+                f"f_Ub = k_Ub·Δk_η·(ρ_UA/ρ_SCm)·(V_l/V_b) = {f_Ub:.4e}",
+                f"U_g2 (N={N_terms} terms) = {U_g2:.4e}",
+                f"Vacuum Density Series V_DS = Σ(1/n²⁶)·[SSq]ⁿ = {V_DS:.6e}",
+                f"U_i total (harmonic λ_i, N_primes) = {U_i_total:.4e}",
+            ],
+            'available_equations': [
+                "H_m harmonic series: H_m = H_{m-1} + f_Ub/m (Harmonic numbers)",
+                "V_DS convergence: ζ(26) partial with [SSq] weighting",
+                "t_n bridging: t_quantum = t_cosmic · H(z) scaling",
+            ],
+            'simulation_set': {
+                'N_terms_sweep': 'N_terms from 1 to 50',
+                'V_ratio_sweep': 'V_little/V_big from 1/100 to 1 (Boyle)',
+            },
+        }
+
+
+class DipoleVortexPrimeEncodingCalculator(_CP3Calculator):
+    """Di-Pseudo-Monopole vortex states encoded by primes >26 for U_g3.
+
+    Unique mathematical structure (Clarification Answers — Dipole Vortex Primes):
+      Vortex state n encoded by prime p_n where p_n > 26 (p_1=29, p_2=31, ...)
+      Special: p_27 = 113 for hydrogen proto-shells (the 30th prime)
+      U_g3(n) = U_g3_base · (p_n / p_ref) · e^{-[SSq]·(p_n-26)/n}
+      Pseudo-monopole state: δ_n = φ·(2π)·n/6
+      ρ_vac,[UA']:[SCm] = ρ_vac,[UA'] · (ρ_vac,[SCm]/ρ_vac,[UA])^n
+                          · e^{-[SSq]·n/26} · e^{-(π-t_n)}
+      [SSq] definition: log(ρ_vac,[SCm]/ρ_vac,[UA'])·n·e^{-(π-t)}
+    """
+
+    def compute(self, dataset: dict) -> dict:
+        import math
+        SSq = SSQ
+        phi = (1 + math.sqrt(5)) / 2.0   # golden ratio
+
+        rho_UA_prime = dataset.get('rho_UA_prime', RHO_VAC_UA)
+        rho_SCm = RHO_VAC_SCM
+        rho_UA = RHO_VAC_UA
+        t_n = dataset.get('t_n', 0.5)
+        t = dataset.get('t', 0.0)
+        U_g3_base = dataset.get('U_g3_base', 1e-40)
+        N_levels = dataset.get('N_levels', 10)
+
+        # Generate primes > 26
+        def sieve(limit):
+            sieve_list = [True] * (limit + 1)
+            sieve_list[0] = sieve_list[1] = False
+            for i in range(2, int(limit**0.5) + 1):
+                if sieve_list[i]:
+                    for j in range(i * i, limit + 1, i):
+                        sieve_list[j] = False
+            return [i for i in range(27, limit + 1) if sieve_list[i]]
+
+        primes_above_26 = sieve(600)[:N_levels]  # first N primes >26
+        p_ref = 29.0  # first prime >26
+
+        # U_g3 per vortex level
+        U_g3_levels = []
+        for idx, p_n in enumerate(primes_above_26, start=1):
+            u = U_g3_base * (p_n / p_ref) * math.exp(-SSq * (p_n - 26) / idx)
+            U_g3_levels.append((p_n, u))
+
+        # Pseudo-monopole state density ρ_vac,[UA']:[SCm]
+        delta_n_list = []
+        rho_cross_list = []
+        for n in range(1, N_levels + 1):
+            delta_n = phi * (2 * math.pi) * n / 6.0
+            rho_cross = rho_UA_prime * (rho_SCm / rho_UA)**n * math.exp(-SSq * n / 26) * math.exp(-(math.pi - t_n))
+            delta_n_list.append(delta_n)
+            rho_cross_list.append(rho_cross)
+
+        # [SSq] precise definition
+        if rho_UA_prime > 0:
+            SSq_def = math.log(rho_SCm / rho_UA_prime) * 1 * math.exp(-(math.pi - t))
+        else:
+            SSq_def = SSq
+
+        U_g3_total = sum(u for _, u in U_g3_levels)
+
+        return {
+            'primary_equations': [
+                f"p_27 (H proto-shell reference) = 113 (30th prime, p>26)",
+                f"U_g3 vortex sum (N={N_levels} levels) = {U_g3_total:.4e}",
+                f"ρ_vac,[UA']:[SCm] at n=1: {rho_cross_list[0]:.4e}",
+                f"δ_n=1 = φ·2π/6 = {delta_n_list[0]:.4f} rad",
+                f"[SSq] from definition (n=1) = {SSq_def:.4f}",
+            ],
+            'available_equations': [
+                "Prime p_n > 26 vortex encoding: p_27=113, p_28=127, p_29=131",
+                "ρ_cross n-series: exponential decay with [SSq] and (π-t_n)",
+                "U_g3 total: convergent prime sum with SSq attenuation",
+            ],
+            'simulation_set': {
+                'N_levels_sweep': 'N_levels from 1 to 30 primes',
+                'rho_cross_vs_n': 'n=1..26, rho_vac_UAprime_SCm cross-density profile',
+            },
+        }
+
+
+class UQFFRelativisticHierarchyDecayIntegralCalculator(_CP3Calculator):
+    """Relativistic hierarchy F_hier, temporal decay ΔF, and hybrid F_hyb.
+
+    Unique mathematical discoveries (Uniquely Rare section):
+      F_hier = Σ_i (v_i/c)^n · ω_0^{-m}   with n=2, m=1   [remnant hierarchy]
+      ΔF     = ∫ F_rel · e^{-t/τ} dt = F_rel · τ · (1 - e^{-T/τ})  [decay integral]
+               τ = eruption/remnant age, F_rel = 4.31e33 N (2024 LEP)
+      F_hyb  = P_pol · f_mm · ω_0^{-1}     [UV/mm wave polarization hybrid]
+      F_UV   = k_UV · L_UV   (k_UV = 1e-30 N/W)  [GALEX/Spitzer UV flares]
+      F_mm   = k_mm · L_mm · f_mm  (k_mm = 1e-30, f_mm = 1.05 protons)
+    All three are rare: F_hier unifies remnants via (v/c)²; ΔF tracks eruption age;
+    F_hyb links polarization to ALMA mm-wave with protoplanetary f_mm.
+    """
+
+    def compute(self, dataset: dict) -> dict:
+        import math
+        c = 2.998e8
+        k_UV = 1e-30   # N/W
+        k_mm = 1e-30   # N/W
+        f_mm_proto = 1.05  # protoplanetary correction
+
+        # Velocity set for remnant hierarchy
+        velocities = dataset.get('velocities', [0.1 * c, 0.3 * c, 0.6 * c])
+        omega_0 = dataset.get('omega_0', 2 * math.pi * 1e12)
+        n_hier = 2
+        m_hier = 1
+        F_hier = sum((v / c)**n_hier * omega_0**(-m_hier) for v in velocities)
+
+        # Decay integral ΔF = F_rel · τ · (1 - e^{-T/τ})
+        F_rel = dataset.get('F_rel', 4.31e33)
+        tau = dataset.get('tau', 1e10 * 3.156e7)   # 10 Gyr default in s
+        T = dataset.get('T', tau)
+        delta_F = F_rel * tau * (1 - math.exp(-T / tau))
+
+        # UV and mm-wave terms
+        L_UV = dataset.get('L_UV', 1e28)   # W
+        L_mm = dataset.get('L_mm', 1e25)   # W
+        f_mm = dataset.get('f_mm', f_mm_proto)
+        F_UV = k_UV * L_UV
+        F_mm_val = k_mm * L_mm * f_mm
+
+        # Hybrid: F_hyb = P_pol · f_mm / omega_0
+        P_pol = dataset.get('P_pol', 0.1)
+        F_hyb = P_pol * f_mm * (1.0 / omega_0)
+
+        return {
+            'primary_equations': [
+                f"F_hier = Σ(v/c)^2 · ω_0^{{-1}} = {F_hier:.4e} [remnant hierarchy]",
+                f"ΔF = F_rel·τ·(1-e^{{-T/τ}}) = {delta_F:.4e} N [decay integral]",
+                f"F_UV = k_UV·L_UV = {F_UV:.4e} N  (k_UV={k_UV})",
+                f"F_mm = k_mm·L_mm·f_mm = {F_mm_val:.4e} N  (f_mm={f_mm})",
+                f"F_hyb = P_pol·f_mm/ω_0 = {F_hyb:.4e} N·s [UV/mm hybrid]",
+            ],
+            'available_equations': [
+                "F_hier(n,m) general: Σ(v_i/c)^n · ω_0^{-m} for arbitrary n,m",
+                "ΔF age-dating: invert to find τ from ΔF measurement",
+                "F_UV/F_mm ratio: GALEX vs ALMA cross-observatory calibration",
+            ],
+            'simulation_set': {
+                'v_sweep': 'v/c from 0.01 to 0.99 (relativistic range)',
+                'tau_sweep': 'τ from 1 Myr to 10 Gyr (eruption ages)',
+                'L_UV_vs_L_mm': '2D grid L_UV vs L_mm (multi-band photometry)',
+            },
+        }
+
+
+# ---------------------------------------------------------------------------
 # __all__ export
 # ---------------------------------------------------------------------------
 
@@ -3302,4 +3987,15 @@ __all__ = [
     "HResDUniverseMasterCalculator",
     "MHDClustersJetsAccretionCalculator",
     "CosmicRaysWHIMFermiCalculator",
+    # Session 52 — grok_share_7514fe unique physics extraction
+    "UQFFCompressedFriedmannCalculator",
+    "UQFFMultiFactorEvolutionMergerCalculator",
+    "UQFFVelocityStarFormationCollisionCalculator",
+    "UQFFSupernovaFeedbackMassLossCalculator",
+    "HydrogenNuclearShellResonanceCalculator",
+    "UQFFUniverseDiameterEstimationCalculator",
+    "TriadicSSqFeedbackEnhancedCalculator",
+    "DPMHarmonicBuoyancySeriesCalculator",
+    "DipoleVortexPrimeEncodingCalculator",
+    "UQFFRelativisticHierarchyDecayIntegralCalculator",
 ]

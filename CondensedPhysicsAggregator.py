@@ -10,7 +10,7 @@ while maintaining a single-import API.
 ARCHITECTURE:
     CondensedPhysics.py      → Foundation (1011 base classes)
     CondensedPhysics2.py     → Extension 1 (17+ classes: Orb Analysis 10/11+)
-    CondensedPhysics3.py     → Extension 2 (69 classes: 15+ categories, Sessions 41-50, 2026-03-11)
+    CondensedPhysics3.py     → Extension 2 (79 classes: 15+ categories, Sessions 41-52, 2026-03-14)
     CondensedPhysicsAggregator.py → This file (unified API)
 
 USAGE:
@@ -170,6 +170,17 @@ from CondensedPhysics3 import (
     HResDUniverseMasterCalculator,
     MHDClustersJetsAccretionCalculator,
     CosmicRaysWHIMFermiCalculator,
+    # Session 52 — grok_share_7514fe unique physics extraction
+    UQFFCompressedFriedmannCalculator,
+    UQFFMultiFactorEvolutionMergerCalculator,
+    UQFFVelocityStarFormationCollisionCalculator,
+    UQFFSupernovaFeedbackMassLossCalculator,
+    HydrogenNuclearShellResonanceCalculator,
+    UQFFUniverseDiameterEstimationCalculator,
+    TriadicSSqFeedbackEnhancedCalculator,
+    DPMHarmonicBuoyancySeriesCalculator,
+    DipoleVortexPrimeEncodingCalculator,
+    UQFFRelativisticHierarchyDecayIntegralCalculator,
 )
 
 CP3_CALCULATORS = {
@@ -244,6 +255,17 @@ CP3_CALCULATORS = {
     'HResDUniverseMasterCalculator': HResDUniverseMasterCalculator,
     'MHDClustersJetsAccretionCalculator': MHDClustersJetsAccretionCalculator,
     'CosmicRaysWHIMFermiCalculator': CosmicRaysWHIMFermiCalculator,
+    # Session 52 — grok_share_7514fe unique physics extraction
+    'UQFFCompressedFriedmannCalculator': UQFFCompressedFriedmannCalculator,
+    'UQFFMultiFactorEvolutionMergerCalculator': UQFFMultiFactorEvolutionMergerCalculator,
+    'UQFFVelocityStarFormationCollisionCalculator': UQFFVelocityStarFormationCollisionCalculator,
+    'UQFFSupernovaFeedbackMassLossCalculator': UQFFSupernovaFeedbackMassLossCalculator,
+    'HydrogenNuclearShellResonanceCalculator': HydrogenNuclearShellResonanceCalculator,
+    'UQFFUniverseDiameterEstimationCalculator': UQFFUniverseDiameterEstimationCalculator,
+    'TriadicSSqFeedbackEnhancedCalculator': TriadicSSqFeedbackEnhancedCalculator,
+    'DPMHarmonicBuoyancySeriesCalculator': DPMHarmonicBuoyancySeriesCalculator,
+    'DipoleVortexPrimeEncodingCalculator': DipoleVortexPrimeEncodingCalculator,
+    'UQFFRelativisticHierarchyDecayIntegralCalculator': UQFFRelativisticHierarchyDecayIntegralCalculator,
 }
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -383,8 +405,8 @@ ALL_CALCULATORS = {
 }
 
 # Module metadata
-AGGREGATOR_VERSION = "1.5.0"
-TOTAL_MODULES = 21  # CP1, CP2 v2.1.0, CP3 (Sessions 41-50), + 10 thread registries + PAPER_196-215
+AGGREGATOR_VERSION = "1.6.0"
+TOTAL_MODULES = 21  # CP1, CP2 v2.1.0, CP3 (Sessions 41-52, 79 classes), + 10 thread registries + PAPER_196-215
 
 
 def get_calculator(name: str):
