@@ -4550,6 +4550,291 @@ class UQFFCGMSSqMetallicityCalculator(_CP3Calculator):
         }
 
 
+
+# ---------------------------------------------------------------------------
+# Session 55 — grok_share_7514fe fourth-pass: 4 system-specific UQFF equations
+# ---------------------------------------------------------------------------
+
+class NGC3603StellarPressureModulationCalculator(_CP3Calculator):
+    """NGC 3603 UQFF with stellar pressure dispersal multiplier (1-P(t)).
+
+    Unique equation (Document 11 — NGC 3603):
+      g_NGC3603 = (G·M(t))/r² · (1+H_0·t) · (1-B/B_crit) · (1-P(t))
+                  + (Ug1+Ug2+Ug3+Ug4) + Λc²/3 + QM + EM + fluid + DM
+                  + ρ·v_wind²
+
+    P(t) = stellar pressure dispersal rate — the fractional rate at which
+    combined UV/wind pressure from O/B stars disperses the natal molecular
+    cloud. This multiplicative (1-P(t)) factor is UNIQUE: it is NOT the same
+    as (1-E(t)) irradiation (Pillars, Horsehead), NOT (1-M_coll) merger
+    suppression (Antennae), and NOT -M_SN supernova loss.
+
+    Reference value: P(t) ≈ 0.15 for NGC 3603 at age ~1-3 Myr
+    (Harayama et al. 2008; Portegies Zwart et al. 2010; NGC 3603 is the
+    most luminous star cluster in the Milky Way, M ≈ 1.6×10⁴ M☉).
+    """
+
+    def compute(self, dataset: dict) -> dict:
+        import math
+        G = 6.6743e-11
+        B_crit = 4.4e13    # T
+
+        r      = dataset.get('r', 5.0e18)       # m  (~163 pc)
+        M      = dataset.get('M', 3.18e34)       # kg  (1.6×10⁴ M☉)
+        H0     = dataset.get('H0', 2.27e-18)     # s⁻¹
+        t      = dataset.get('t', 9.46e13)       # s  (3 Myr)
+        B      = dataset.get('B', 1e-9)          # T
+        P_t    = dataset.get('P_t', 0.15)        # stellar pressure dispersal fraction
+        rho    = dataset.get('rho', 1.67e-21)    # kg/m³  (molecular cloud edge)
+        v_wind = dataset.get('v_wind', 2.0e6)    # m/s  (stellar wind 2000 km/s)
+
+        mag_f   = 1.0 - B / B_crit
+        hubble_f = 1.0 + H0 * t
+        pressure_f = 1.0 - P_t             # unique suppression by stellar pressure
+
+        g_base = G * M / r**2 * hubble_f * mag_f * pressure_f
+        F_wind_ram = rho * v_wind**2        # ram pressure (Pa = N/m²)
+
+        return {
+            'primary_equations': [
+                f"g_NGC3603 = (G·M/r²)·(1+H_0·t)·(1-B/B_crit)·(1-P(t)) [+wind]",
+                f"g_base·(1-P({P_t})) = {g_base:.4e} m/s²",
+                f"Stellar pressure factor (1-P) = {pressure_f:.4f}",
+                f"ρ·v_wind² ram pressure = {F_wind_ram:.4e} Pa",
+                f"Total g_NGC3603 ≈ {g_base + F_wind_ram/r:.4e} [summed over r]",
+            ],
+            'available_equations': [
+                "(1-P(t)) as function of cluster age t: P(t) ∝ L_UV(t)·σ_gas",
+                "Pressure equilibrium: ρ·v_wind² = G·M·ρ_gas/r² → dispersal condition",
+                "Stellar mass function integration: M(t) with Kroupa IMF",
+                "Cross-check with (1-B/B_crit): magnetic confinement of O-star wind",
+            ],
+            'simulation_set': {
+                'P_t_sweep': 'P(t) from 0 (no dispersal) to 0.5 (50% pressure)',
+                'v_wind_sweep': 'v_wind from 1e6 to 5e6 m/s (cluster age)',
+                't_sweep': 't from 1 Myr to 10 Myr (formation to dispersal)',
+            },
+        }
+
+
+class M16EagleNebulaRadiationSFRCalculator(_CP3Calculator):
+    """M16 Eagle Nebula UQFF with star-forming rate and radiation subtraction.
+
+    Unique equation (Document 23 — M16 Eagle Nebula):
+      g_M16 = (G·M(t))/r² · (1+H(z)·t) · (1-B/B_crit) · (1+M_sf(t))
+              + (Ug1+Ug2+Ug3+Ug4) + Λc²/3 + QM + EM + fluid + DM
+              - E_rad
+
+    Two KEY features distinguish g_M16:
+    1) (1+M_sf(t)) MULTIPLICATIVE on the gravity base — SFR enhancement
+    2) -E_rad ADDITIVE SUBTRACTION — radiation energy per unit volume
+       (stellar UV drives envelope expansion, effectively reducing net gravity)
+
+    E_rad = L_UV / (4π·r²·c) — radiation energy density at radius r.
+    This is DIFFERENT from (1-E(t)) irradiation suppression used in Pillars
+    and Horsehead. M16 uses SUBTRACTION after full UQFF sum, not a multiplier.
+
+    Reference: M16/Eagle Nebula, r ≈ 5.7 ly pillar tips → 5.4×10¹⁶ m,
+    L_UV ≈ 1.5×10³¹ W, M_sf ≈ 0.08 (active star formation region).
+    """
+
+    def compute(self, dataset: dict) -> dict:
+        import math
+        G   = 6.6743e-11
+        c   = 2.998e8
+        B_crit = 4.4e13
+
+        r     = dataset.get('r', 5.4e16)     # m
+        M     = dataset.get('M', 2.19e33)    # kg (~1100 M☉)
+        Hz    = dataset.get('Hz', 2.27e-18)  # H(z) s⁻¹
+        t     = dataset.get('t', 3.16e14)    # s (~10 Myr)
+        B     = dataset.get('B', 5e-10)      # T
+        M_sf  = dataset.get('M_sf', 0.08)    # SFR enhancement fraction
+        L_UV  = dataset.get('L_UV', 1.5e31)  # W  (OB star cluster luminosity)
+
+        mag_f = 1.0 - B / B_crit
+        sf_f  = 1.0 + M_sf
+        g_base = G * M / r**2 * (1.0 + Hz * t) * mag_f * sf_f
+
+        # Radiation energy density (pressure-like subtraction)
+        E_rad = L_UV / (4.0 * math.pi * r**2 * c)   # J/m³  = Pa
+
+        g_net = g_base - E_rad   # net M16 UQFF gravity
+
+        return {
+            'primary_equations': [
+                f"g_M16 = (G·M/r²)·(1+H(z)·t)·(1-B/B_crit)·(1+M_sf) - E_rad",
+                f"g_base·(1+M_sf={M_sf}) = {g_base:.4e} m/s²",
+                f"E_rad = L_UV/(4πr²c) = {E_rad:.4e} J/m³",
+                f"g_net = g_base - E_rad = {g_net:.4e} m/s²",
+                f"SFR enhancement factor (1+M_sf) = {sf_f:.4f}",
+            ],
+            'available_equations': [
+                "E_rad vs g_base ratio: E_rad / g_base → radiation-dominated regime",
+                "M_sf time evolution: M_sf(t) = SFR(t)/M_total (gas depletion)",
+                "Radiation pressure check: E_rad == G·M·ρ_gas/r² → envelope dispersal",
+                "Comparison with g_Pillars (1-E(t)) multiplier vs. -E_rad subtraction",
+            ],
+            'simulation_set': {
+                'M_sf_sweep': 'M_sf from 0 to 0.3 (quiescent to starburst)',
+                'L_UV_sweep': 'L_UV from 1e29 to 1e33 W (single star to OB cluster)',
+                'r_sweep': 'r from 1e15 to 1e17 m (pillar tip to nebula edge)',
+            },
+        }
+
+
+class CrabPWNUQFFCalculator(_CP3Calculator):
+    """Crab Nebula Pulsar Wind Nebula UQFF with F_wind + M_mag correction.
+
+    Unique equation (Document 24 — Crab Nebula):
+      g_Crab = (G·M)/(r(t)²) · (1+H(z)·t) · (1-B/B_crit)
+               + (Ug1+Ug2+Ug3+Ug4) + Λc²/3 + QM + EM + fluid + DM
+               + F_wind + M_mag
+
+    TWO unique additive corrections distinguish Crab from other systems:
+    - F_wind: pulsar wind ram pressure = (Ė_sd / c) / (4π·r²) where Ė_sd
+      is the pulsar spin-down luminosity (rotational energy loss rate)
+    - M_mag: induced magnetization from frozen-in pulsar B-field threading
+      the nebula = μ_0·M_mag_moment / (4π·r³)
+
+    The COMBINATION F_wind + M_mag is unique to pulsar wind nebulae (PWNe).
+    Neither term appears in all other 28 documents in grok_share_7514fe.
+    MagnetarSGR1745DynamicModulationCalculator (Session 53) handles M_mag
+    for a binary-context magnetar — Crab is a PURE ISOLATED PULSAR in a
+    expanding supernova remnant (fundamentally different environment).
+
+    Reference: Crab Pulsar: P=33ms, Ė_sd≈4.6×10³¹ W, B_nebula≈1.6×10⁻⁴ T,
+    r(t)= r_0 + v_exp·t (v_exp ≈ 1500 km/s), age ≈ 972 yr.
+    """
+
+    def compute(self, dataset: dict) -> dict:
+        import math
+        G      = 6.6743e-11
+        c      = 2.998e8
+        mu_0   = 1.2566e-6   # H/m
+        B_crit = 4.4e13
+
+        # Crab system parameters
+        r_0    = dataset.get('r_0', 9.46e15)   # m  (1 ly initial radius)
+        t      = dataset.get('t', 3.07e10)      # s  (972 yr age)
+        v_exp  = dataset.get('v_exp', 1.5e6)    # m/s  (expansion velocity)
+        r      = r_0 + v_exp * t               # r(t) expanding nebula
+        M      = dataset.get('M', 1.0 * 2.0e30) # kg (1 M☉ remnant)
+        Hz     = dataset.get('Hz', 2.27e-18)    # H(z) s⁻¹
+        B_neb  = dataset.get('B_neb', 1.6e-4)   # T nebula frozen-in field
+        B_pulsar = dataset.get('B_pulsar', 3.78e8) # T pulsar surface
+        E_spin = dataset.get('E_sd', 4.6e31)    # W spin-down luminosity Ė_sd
+        M_mag_moment = dataset.get('M_mag_moment', 1e28)  # A·m²
+
+        mag_f = 1.0 - B_neb / B_crit
+
+        # Base UQFF gravity
+        g_base = G * M / r**2 * (1.0 + Hz * t) * mag_f
+
+        # Pulsar wind ram pressure: F_wind = Ė_sd / (c · 4π r²)
+        F_wind = E_spin / (c * 4.0 * math.pi * r**2)
+
+        # Magnetization correction: M_mag ∝ μ_0·m/(4π·r³)
+        M_mag = mu_0 * M_mag_moment / (4.0 * math.pi * r**3)
+
+        g_total = g_base + F_wind + M_mag
+
+        return {
+            'primary_equations': [
+                f"r(t) = r_0 + v_exp·t = {r:.4e} m  (expanding nebula)",
+                f"g_base = G·M/r(t)²·(1+H(z)·t)·(1-B/B_crit) = {g_base:.4e} m/s²",
+                f"F_wind = Ė_sd/(c·4πr²) = {F_wind:.4e} N/m² (pulsar wind)",
+                f"M_mag = μ_0·m/(4πr³) = {M_mag:.4e} T·m (magnetization)",
+                f"g_Crab = g_base + F_wind + M_mag = {g_total:.4e}",
+            ],
+            'available_equations': [
+                "r(t) = r_0 + v_exp·t  →  age determination from size",
+                "F_wind / g_base ratio: wind-dominated vs gravity-dominated regime",
+                "M_mag decay: ∝ r(t)^{-3} → rapid dilution as nebula expands",
+                "Pulsar spindown: Ė_sd ∝ P^{-3}·dP/dt → age-dependent wind",
+                "Compare with MagnetarSGR1745: binary context vs isolated PWN",
+            ],
+            'simulation_set': {
+                'age_sweep': 't from 1 yr to 10000 yr (PWN evolution)',
+                'v_exp_sweep': 'v_exp from 500 to 5000 km/s',
+                'E_sd_sweep': 'Ė_sd from 1e29 to 1e33 W (young→old pulsar)',
+            },
+        }
+
+
+class UQFFSombreroDustIntegratedCalculator(_CP3Calculator):
+    """Sombrero Galaxy UQFF with D_dust dust-lane drag integrated into g.
+
+    Unique equation (Document 20 — Sombrero Galaxy):
+      g_Sombrero = (G·M)/r² · (1+H(z)·t) · (1-B/B_crit)
+                   + (G·M_BH)/r_BH²
+                   + (Ug1+Ug2+Ug3+Ug4) + Λc²/3 + QM + EM + fluid + DM
+                   + D_dust
+
+    D_dust = ρ_dust · v_dust² / r — the dust lane dynamic friction term.
+
+    While CP2 has a standalone D_dust module, this calculator integrates
+    D_dust into the FULL UQFF compressed gravity expression, making
+    g_Sombrero the ONLY document-29 system that has both:
+    (1) An explicit SMBH term (G·M_BH)/r_BH² AND
+    (2) A dust-lane correction D_dust = ρ_dust·v_dust²/r
+
+    The Sombrero's dark dust lane (prominent in optical imaging) is a
+    fundamental gravitational influence not captured by pure gas dynamics.
+    ρ_dust ≈ 2×10⁻²³ kg/m³, v_dust ≈ 200 km/s, D_dust ≈ 10⁻³¹ N.
+
+    Reference: M104 Sombrero Galaxy, D = 9.55 Mpc, M_BH ≈ 10⁹ M☉,
+    R_dust_lane ≈ 2 kpc ring.
+    """
+
+    def compute(self, dataset: dict) -> dict:
+        import math
+        G      = 6.6743e-11
+        B_crit = 4.4e13
+
+        r       = dataset.get('r', 6.17e19)     # m  (~2 kpc dust lane)
+        M       = dataset.get('M', 3.98e41)     # kg  (2×10¹¹ M☉)
+        M_BH    = dataset.get('M_BH', 1.99e39)  # kg  (10⁹ M☉ SMBH)
+        r_BH    = dataset.get('r_BH', 3.09e17)  # m   (~10 pc sphere of influence)
+        Hz      = dataset.get('Hz', 2.27e-18)   # H(z) s⁻¹
+        t       = dataset.get('t', 4.35e17)     # s  (~13.8 Gyr)
+        B       = dataset.get('B', 1e-9)        # T
+        rho_dust = dataset.get('rho_dust', 2e-23) # kg/m³  dust lane density
+        v_dust  = dataset.get('v_dust', 2.0e5)  # m/s  (200 km/s circular)
+
+        mag_f   = 1.0 - B / B_crit
+        g_base  = G * M / r**2 * (1.0 + Hz * t) * mag_f
+        g_BH    = G * M_BH / r_BH**2        # SMBH contribution
+
+        # Dust lane term: D_dust = ρ_dust · v_dust² / r
+        D_dust  = rho_dust * v_dust**2 / r
+
+        g_total = g_base + g_BH + D_dust
+
+        return {
+            'primary_equations': [
+                f"g_Sombrero = G·M/r²·(1+H·t)·(1-B/B_crit) + G·M_BH/r_BH² + D_dust",
+                f"g_base (stellar) = {g_base:.4e} m/s²",
+                f"g_BH (SMBH, M_BH=10⁹M☉) = {g_BH:.4e} m/s²",
+                f"D_dust = ρ_dust·v_dust²/r = {D_dust:.4e} m/s²",
+                f"g_Sombrero (total) = {g_total:.4e} m/s²",
+                f"D_dust / g_base ratio = {D_dust / max(g_base, 1e-99):.4f}",
+            ],
+            'available_equations': [
+                "D_dust(r): dust lane profile ρ_dust(r) ∝ sech²(z/h_dust)",
+                "SMBH sphere of influence: r_BH = G·M_BH/σ² (velocity dispersion)",
+                "Dust mass fraction: M_dust/M_gas ≈ 0.01 (standard dust/gas ratio)",
+                "Optical depth: τ_V ≈ 2 (visible extinction in dust lane)",
+                "Compare: g_BH vs D_dust dominance as function of r",
+            ],
+            'simulation_set': {
+                'r_sweep': 'r from 100 pc to 10 kpc (bulge to outer disk)',
+                'rho_dust_sweep': 'ρ_dust from 1e-24 to 1e-21 kg/m³',
+                'v_dust_sweep': 'v_dust from 100 to 500 km/s (circular velocity)',
+            },
+        }
+
+
 # ---------------------------------------------------------------------------
 # __all__ export
 # ---------------------------------------------------------------------------
@@ -4679,11 +4964,9 @@ __all__ = [
     # Session 54 — grok_share_7514fe third-pass unique physics
     "UQFFBuoyancyMasterIntegralCalculator",
     "UQFFCGMSSqMetallicityCalculator",
-]
-    "SgrAStarSpinDragUQFFCalculator",
-    "UQFFLensingModulationRingsCalculator",
-    "HydrogenAtomUQFFGravityCalculator",
-    "FUBiiFullDPMPolynomialIntegralCalculator",
-    "UQFFNeutrinoDecayRateCouplingCalculator",
-    "MagnetarSGR1745DynamicModulationCalculator",
+    # Session 55 — grok_share_7514fe fourth-pass unique physics
+    "NGC3603StellarPressureModulationCalculator",
+    "M16EagleNebulaRadiationSFRCalculator",
+    "CrabPWNUQFFCalculator",
+    "UQFFSombreroDustIntegratedCalculator",
 ]

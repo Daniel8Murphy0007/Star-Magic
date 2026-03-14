@@ -10,7 +10,7 @@ while maintaining a single-import API.
 ARCHITECTURE:
     CondensedPhysics.py      → Foundation (1011 base classes)
     CondensedPhysics2.py     → Extension 1 (17+ classes: Orb Analysis 10/11+)
-    CondensedPhysics3.py     → Extension 2 (87 classes: 15+ categories, Sessions 41-54, 2026-03-14)
+    CondensedPhysics3.py     → Extension 2 (91 classes: 15+ categories, Sessions 41-55, 2026-03-14)
     CondensedPhysicsAggregator.py → This file (unified API)
 
 USAGE:
@@ -191,6 +191,11 @@ from CondensedPhysics3 import (
     # Session 54 — grok_share_7514fe third-pass unique physics
     UQFFBuoyancyMasterIntegralCalculator,
     UQFFCGMSSqMetallicityCalculator,
+    # Session 55 — grok_share_7514fe fourth-pass unique physics
+    NGC3603StellarPressureModulationCalculator,
+    M16EagleNebulaRadiationSFRCalculator,
+    CrabPWNUQFFCalculator,
+    UQFFSombreroDustIntegratedCalculator,
 )
 
 CP3_CALCULATORS = {
@@ -286,6 +291,11 @@ CP3_CALCULATORS = {
     # Session 54 — grok_share_7514fe third-pass unique physics
     'UQFFBuoyancyMasterIntegralCalculator': UQFFBuoyancyMasterIntegralCalculator,
     'UQFFCGMSSqMetallicityCalculator': UQFFCGMSSqMetallicityCalculator,
+    # Session 55 — grok_share_7514fe fourth-pass unique physics
+    'NGC3603StellarPressureModulationCalculator': NGC3603StellarPressureModulationCalculator,
+    'M16EagleNebulaRadiationSFRCalculator': M16EagleNebulaRadiationSFRCalculator,
+    'CrabPWNUQFFCalculator': CrabPWNUQFFCalculator,
+    'UQFFSombreroDustIntegratedCalculator': UQFFSombreroDustIntegratedCalculator,
 }
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -426,7 +436,7 @@ ALL_CALCULATORS = {
 
 # Module metadata
 AGGREGATOR_VERSION = "1.6.0"
-TOTAL_MODULES = 21  # CP1, CP2 v2.1.0, CP3 (Sessions 41-54, 87 classes), + 10 thread registries + PAPER_196-217
+TOTAL_MODULES = 21  # CP1, CP2 v2.1.0, CP3 (Sessions 41-55, 91 classes), + 10 thread registries + PAPER_196-220
 
 
 def get_calculator(name: str):
