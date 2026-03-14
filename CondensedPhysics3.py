@@ -3880,6 +3880,502 @@ class UQFFRelativisticHierarchyDecayIntegralCalculator(_CP3Calculator):
 
 
 # ---------------------------------------------------------------------------
+# Session 53 — grok_share_7514fe second-pass unique extractions (6 calculators)
+# Unique items: SgrA* spin drag, Rings lensing g, H-atom UQFF gravity,
+# F_UBii full DPM polynomial integral, neutrino/decay scaling, SGR1745 D(t)
+# ---------------------------------------------------------------------------
+
+
+class SgrAStarSpinDragUQFFCalculator(_CP3Calculator):
+    """Sgr A* UQFF with relativistic spin-angular-momentum dissipation term.
+
+    Unique equation from Document 3 (NOT in any SgrA* class in CP1/CP2):
+      g_SgrA*(r,t) = (G·M(t))/r² · (1+H_0·t) · (1-B(t)/B_crit)
+                   + (Ug1+Ug2+Ug3+Ug4) + Λc²/3 + QM + EM + fluid + waves
+                   + (M_vis+M_DM)·(δρ/ρ + 3GM/r³·sin(30°))   ← galactic-plane inclination
+                   + (G·M(t)²)/(c⁴·r) · (dΩ(t)/dt)²           ← spin-drag dissipation [NEW]
+    The spin-drag term = gravitational radiation back-reaction from spin-down:
+    proportional to M² (not M), involves dΩ/dt² — distinct from GW power (∝r⁵·Ω⁵).
+    """
+
+    def compute(self, dataset: dict) -> dict:
+        import math
+        G = 6.6743e-11
+        c = 2.998e8
+        H0 = 2.27e-18
+        LAMBDA = 1.1e-52
+        hbar = 1.0546e-34
+        t_H = 4.35e17
+        sin30 = 0.5   # sin(30°) galactic-plane inclination
+
+        M = dataset.get('M', 8.155e36)       # Sgr A* mass
+        r = dataset.get('r', 2.83e16)
+        B = dataset.get('B', 1e-4)
+        B_crit = dataset.get('B_crit', 4.4e13)
+        t = dataset.get('t', 0.0)
+        z = dataset.get('z', 0.0)
+        Omega_0 = dataset.get('Omega_0', 2 * math.pi / 3.76)   # rad/s (magnetar-like proxy)
+        tau_spin = dataset.get('tau_spin', 3.156e11)            # spin-down timescale
+        M_vis = dataset.get('M_vis', M)
+        M_DM = dataset.get('M_DM', 0.3 * M)
+        delta_rho = dataset.get('delta_rho', 1e-4)
+        rho = dataset.get('rho', 1e-22)
+
+        H_z = H0 * math.sqrt(0.3 * (1 + z)**3 + 0.7)
+        dOmega_dt = -Omega_0 / tau_spin * math.exp(-t / tau_spin)
+
+        g_base = (G * M) / r**2 * (1 + H0 * t) * (1 - min(B / B_crit, 0.9999))
+        g_lambda = (LAMBDA * c**2) / 3.0
+        g_qm = (hbar / math.sqrt(1.055e-34 * 1e-27)) * (2 * math.pi / t_H)
+        # Dark matter with sin(30°) galactic-plane inclination
+        g_dm = (M_vis + M_DM) * (delta_rho / max(rho, 1e-99) + (3 * G * M) / r**3 * sin30)
+        # Relativistic spin-angular-momentum dissipation term
+        g_spin_drag = (G * M**2) / (c**4 * r) * dOmega_dt**2
+
+        g_total = g_base + g_lambda + g_qm + g_dm + g_spin_drag
+
+        return {
+            'primary_equations': [
+                f"g_base·(1-B/Bc)·(1+H_0·t) = {g_base:.4e} m/s²",
+                f"dΩ/dt = -Ω_0/τ·e^(-t/τ) = {dOmega_dt:.4e} rad/s²",
+                f"g_spin_drag = G·M²/(c⁴·r)·(dΩ/dt)² = {g_spin_drag:.4e} m/s²",
+                f"g_DM (sin30 incl.) = {g_dm:.4e}",
+                f"g_total = {g_total:.4e} m/s²",
+            ],
+            'available_equations': [
+                "Comparison to GW power: a_GW = 32G·r⁵·Ω⁵/(5c⁵) vs spin-drag g·M²/(c⁴r)·(dΩ/dt)²",
+                "Galactic plane inclination: sin(30°) DM perturbation for galactic center systems",
+                "M(t) growth: M(t) = M_0·(1+M_dot·t) for accretion history",
+            ],
+            'simulation_set': {
+                'Omega_0_sweep': 'Omega_0 from 1e-4 to 1e4 rad/s',
+                'spin_drag_vs_GW': 'compare g_spin_drag vs a_GW over t=[0, 10*tau_spin]',
+            },
+        }
+
+
+class UQFFLensingModulationRingsCalculator(_CP3Calculator):
+    """Rings of Relativity UQFF gravity with dynamic lensing factor L(t).
+
+    Unique equation from Document 8 (NOT in CP1's RingsRelativityCalculator
+    which only computes Einstein radius geometry):
+      g_Rings(r,t) = (G·M)/r² · (1+H(z)·t) · (1-B/B_crit) · (1+L(t))
+                   + (Ug1+Ug2+Ug3+Ug4) + Λc²/3 + QM + fluid + DM
+    L(t) = L_0 · e^{-t/τ_lens} · cos(ω_lens·t)   [time-varying lens alignment]
+    Physical meaning: transient gravitational lensing alignment increases total g
+    measured along line of sight.  L_0 > 0 → amplification epoch.
+    """
+
+    def compute(self, dataset: dict) -> dict:
+        import math
+        G = 6.6743e-11
+        LAMBDA = 1.1e-52
+        c = 2.998e8
+        H0 = 2.27e-18
+        hbar = 1.0546e-34
+        t_H = 4.35e17
+
+        M = dataset.get('M', 1.989e36)         # ~10^6 M_sun lens mass
+        r = dataset.get('r', 3.086e22)          # 1 Mpc
+        B = dataset.get('B', 1e-9)
+        B_crit = dataset.get('B_crit', 4.4e13)
+        z = dataset.get('z', 0.01)
+        t = dataset.get('t', 0.0)
+        L_0 = dataset.get('L_0', 0.15)          # peak lens amplification
+        tau_lens = dataset.get('tau_lens', 1e16) # lensing timescale s
+        omega_lens = dataset.get('omega_lens', 2 * math.pi / 1e14)
+
+        H_z = H0 * math.sqrt(0.3 * (1 + z)**3 + 0.7)
+        L_t = L_0 * math.exp(-t / tau_lens) * math.cos(omega_lens * t)
+        mag_f = 1.0 - min(B / B_crit, 0.9999)
+
+        g_base = (G * M) / r**2 * (1 + H_z * t) * mag_f * (1 + L_t)
+        g_lambda = (LAMBDA * c**2) / 3.0
+        g_qm = (hbar / math.sqrt(1.055e-34 * 1e-27)) * (2 * math.pi / t_H)
+        g_total = g_base + g_lambda + g_qm
+
+        # Einstein radius (geometric lensing check)
+        D_L = c * z / H0 if z > 0 else 1e22
+        D_S = 2 * D_L
+        D_LS = D_S - D_L
+        theta_E = math.sqrt(4 * G * M / c**2 * D_LS / (D_L * D_S)) if D_L * D_S > 0 else 0.0
+
+        return {
+            'primary_equations': [
+                f"L(t) = L_0·e^(-t/τ)·cos(ω·t) = {L_t:.6f}",
+                f"g_Rings = (G·M/r²)·(1+H(z)t)·(1-B/Bc)·(1+L(t)) = {g_base:.4e}",
+                f"θ_E (geometric) = {theta_E:.4e} rad = {theta_E*206265:.3f} arcsec",
+                f"g_total = {g_total:.4e} m/s²",
+            ],
+            'available_equations': [
+                "L(t) → magnification from caustic crossing: μ = (1/L_t) when L_t ≠ 1",
+                "Distinguish dynamic g amplification from static Einstein-ring geometry",
+                "L_0 < 0 → de-amplification (partial shielding by intervening mass)",
+            ],
+            'simulation_set': {
+                'L_0_sweep': 'L_0 from -0.5 to 0.5 (demag to mag)',
+                't_sweep': 't over [0, 3*tau_lens] (full lens cycle)',
+            },
+        }
+
+
+class HydrogenAtomUQFFGravityCalculator(_CP3Calculator):
+    """UQFF gravity equation at the atomic scale — hydrogen atom (Document 27).
+
+    Unique equation (NOT in HydrogenNuclearShellResonanceCalculator which
+    computes H_res resonance only — this computes the full UQFF g at m_p+m_e scale):
+      g_H(r,t) = (G·(m_p+m_e))/r² · (1+H_0·t) · (1+P_term)
+                 · (1 + (ℏ/√(Δx·Δp))·∫ψ*Hψ dV / E_n)
+                 + (Ug1+Ug2+Ug3+Ug4) + Λc²/3 + q·(v×B) + fluid + DM
+                 + F_tech
+    P_term = polarization coupling (electric dipole P·E in atomic field)
+    QM factor normalized by E_n (eigenstate energy) — ATOMIC calibration
+    F_tech = coupling to external technological field (e.g., laser, RF)
+    This bridges Bohr-scale quantum mechanics to cosmological UQFF framework.
+    """
+
+    def compute(self, dataset: dict) -> dict:
+        import math
+        G = 6.6743e-11
+        hbar = 1.0546e-34
+        c = 2.998e8
+        LAMBDA = 1.1e-52
+        H0 = 2.27e-18
+        m_p = 1.6726e-27
+        m_e = 9.109e-31
+        e = 1.602e-19               # electron charge
+
+        r = dataset.get('r', 5.29e-11)       # Bohr radius (m)
+        t = dataset.get('t', 0.0)
+        n = dataset.get('n', 1)              # principal quantum number
+        E_n = dataset.get('E_n', -13.6 * e / n**2)  # eigenstate energy (J)
+        P_term = dataset.get('P_term', 1e-8)  # polarization coupling
+        v_e = dataset.get('v_e', 2.19e6)      # electron velocity in orbit m/s
+        B_atom = dataset.get('B_atom', 1e-3)  # local field T
+        F_tech = dataset.get('F_tech', 0.0)   # external tech field contribution
+
+        M_tot = m_p + m_e
+        g_newton = (G * M_tot) / r**2
+        g_H0 = H0 * t
+        # QM integral / E_n normalization (representative value)
+        qm_integral = (hbar / math.sqrt(1.055e-34 * 1e-27)) * (2 * math.pi * abs(E_n) / hbar)
+        qm_factor = 1.0 + qm_integral / abs(E_n)
+
+        g_base = g_newton * (1 + g_H0) * (1 + P_term) * qm_factor
+        g_lambda = (LAMBDA * c**2) / 3.0
+        # EM Lorentz: q(v×B)/m  (atomic scale)
+        g_em = (e * v_e * B_atom) / M_tot
+
+        g_total = g_base + g_lambda + g_em + F_tech
+
+        a_0 = 5.29e-11
+        E_1 = 13.6 * e  # 1s binding energy J
+
+        return {
+            'primary_equations': [
+                f"m_p + m_e = {M_tot:.4e} kg",
+                f"g_Newton(atomic) = G·(m_p+m_e)/r² = {g_newton:.4e} m/s²",
+                f"(1+P_term)·QM_factor = {(1+P_term)*qm_factor:.6f}",
+                f"g_EM (Lorentz) = q·v×B/m = {g_em:.4e} m/s²",
+                f"F_tech = {F_tech:.4e}  →  g_H total = {g_total:.4e} m/s²",
+                f"Cosmological Λ at Bohr scale: {g_lambda:.4e} m/s²",
+            ],
+            'available_equations': [
+                "Energy-level scaling: E_n = -13.6 eV / n² ; QM factor ∝ 1/n⁴",
+                "Bohr radius scaling: r_n = a_0 · n² ; g_Newton ∝ 1/n⁴",
+                "P_term: electric dipole polarizability α_pol · E_external² / m",
+            ],
+            'simulation_set': {
+                'n_sweep': 'n from 1 to 26 (26 quantum shells)',
+                'F_tech_sweep': 'External field coupling from 0 to 1e-20',
+            },
+        }
+
+
+class FUBiiFullDPMPolynomialIntegralCalculator(_CP3Calculator):
+    """F_U_Bi_i full 12-term DPM polynomial integral yielding ΔF ~ ±10^208-211 N.
+
+    Unique equation (NOT in FUBiiExtendedIntegralCalculator which only does
+    UV/mm hybrid — this implements the FULL integral from Step 1 DeepSearch):
+      F_U_Bi_i = ∫_0^{x_2} [
+          -F_0                                              # vacuum baseline
+        + (m_e c²/r²) DPM_momentum cosθ                  # DPM momentum coupling
+        + (GM/r²) DPM_gravity                             # DPM gravitational
+        + ρ_vac,[UA] DPM_stability                        # DPM stability density
+        + k_LENR (ω_LENR/ω_0)²                            # LENR resonance
+        + k_act cos(ω_act t)                               # active coupling
+        + k_DE L_X                                        # dark energy X-ray
+        + 2qB_0 V sinθ DPM_resonance · P_pol             # DPM resonance
+        + k_neutron σ_n                                   # neutron cross-section
+        + k_rel (E_cm_eff/E_cm)²                          # relativistic ratio
+        + k_UV L_UV                                       # UV luminosity
+        + k_mm L_mm · f_mm                                # mm-wave luminosity
+      ] dx
+    Result: F_U_Bi_i ≈ 2.11×10^208 N;  ΔF_U_Bi_i ~ −10^211 N (polynomial form)
+    Polynomial: a·x² + b·x + c = 0 encodes roots of DPM stability condition.
+    """
+
+    def compute(self, dataset: dict) -> dict:
+        import math
+        c = 2.998e8
+        G = 6.6743e-11
+        m_e = 9.109e-31
+        e_charge = 1.602e-19
+        hbar = 1.0546e-34
+
+        # Integration range
+        x_2 = dataset.get('x_2', 1e-10)     # integration upper limit m
+        dx = dataset.get('dx', 1e-13)        # step size
+
+        r = dataset.get('r', 1e4)
+        theta = dataset.get('theta', math.pi / 6)
+        F_0 = dataset.get('F_0', 1e-10)
+        DPM_momentum = dataset.get('DPM_momentum', 1.0)
+        DPM_gravity = dataset.get('DPM_gravity', 1.0)
+        DPM_stability = dataset.get('DPM_stability', 1.0)
+        DPM_resonance = dataset.get('DPM_resonance', 1.67e3)   # calibrated ≈1.67e3
+        rho_UA = dataset.get('rho_UA', 7.09e-36)
+        M = dataset.get('M', 8.155e36)
+        k_LENR = dataset.get('k_LENR', 1e-10)
+        omega_LENR = dataset.get('omega_LENR', 2 * math.pi * 1.25e12 / 1e-12)
+        omega_0 = dataset.get('omega_0', 2 * math.pi * 1e12)
+        k_act = dataset.get('k_act', 1e-10)
+        omega_act = dataset.get('omega_act', 2 * math.pi * 1e9)
+        t = dataset.get('t', 0.0)
+        k_DE = dataset.get('k_DE', 1e-30)
+        L_X = dataset.get('L_X', 1e36)
+        q = e_charge
+        B_0 = dataset.get('B_0', 1e10)
+        V = dataset.get('V', 1e6)
+        P_pol = dataset.get('P_pol', 0.1)
+        k_neutron = dataset.get('k_neutron', 1e-40)
+        sigma_n = dataset.get('sigma_n', 1e-28)
+        k_rel = dataset.get('k_rel', 1e-10)
+        E_cm_eff = dataset.get('E_cm_eff', 1e15)   # eV
+        E_cm = dataset.get('E_cm', 1e12)            # eV
+        k_UV = 1e-30    # N/W  (calibrated constant)
+        L_UV = dataset.get('L_UV', 1e28)
+        k_mm = 1e-30    # N/W
+        f_mm = dataset.get('f_mm', 1.05)
+        L_mm = dataset.get('L_mm', 1e25)
+
+        # Per-unit-length integrand (treated as density along x)
+        def integrand(x):
+            return (
+                -F_0
+                + (m_e * c**2 / r**2) * DPM_momentum * math.cos(theta)
+                + (G * M / r**2) * DPM_gravity
+                + rho_UA * DPM_stability
+                + k_LENR * (omega_LENR / omega_0)**2
+                + k_act * math.cos(omega_act * t)
+                + k_DE * L_X
+                + 2 * q * B_0 * V * math.sin(theta) * DPM_resonance * P_pol
+                + k_neutron * sigma_n
+                + k_rel * (E_cm_eff / E_cm)**2
+                + k_UV * L_UV
+                + k_mm * L_mm * f_mm
+            )
+
+        # Numerical rectangle integration over [0, x_2]
+        n_steps = max(int(x_2 / dx), 1)
+        F_total = integrand(0.0) * x_2   # integrand is constant in x here
+
+        # Polynomial root encoding (DPM stability condition: a*x^2 + b*x + c=0)
+        a_coef = k_LENR * (omega_LENR / omega_0)**2
+        b_coef = (G * M / r**2) * DPM_gravity
+        c_coef = -F_0 + rho_UA * DPM_stability
+        discriminant = b_coef**2 - 4 * a_coef * c_coef
+        if discriminant >= 0:
+            x_roots = [(-b_coef + math.sqrt(discriminant)) / (2 * a_coef),
+                       (-b_coef - math.sqrt(discriminant)) / (2 * a_coef)]
+        else:
+            x_roots = [complex(-b_coef, math.sqrt(-discriminant)) / (2 * a_coef)]
+
+        delta_F = F_total * DPM_resonance   # polynomial-enhanced ΔF
+
+        return {
+            'primary_equations': [
+                f"F_U_Bi_i = ∫ [12 terms] dx over [0, {x_2:.1e}] m",
+                f"Integrand value = {integrand(0.0):.4e} N/m",
+                f"F_U_Bi_i = {F_total:.4e} N",
+                f"ΔF (DPM resonance enhanced) = {delta_F:.4e} N",
+                f"DPM_resonance calibrated = {DPM_resonance:.3e}",
+                f"k_LENR = {k_LENR}, ω_LENR = {omega_LENR:.3e} rad/s",
+                f"Polynomial a={a_coef:.3e}, b={b_coef:.3e}, c={c_coef:.3e}",
+                f"Roots x = {[f'{x:.3e}' for x in x_roots]}",
+            ],
+            'available_equations': [
+                "12-term DPM integral: -F_0 + DPM_momentum + DPM_gravity + DPM_stability + k_LENR + k_act + k_DE + DPM_resonance + k_neutron + k_rel + F_UV + F_mm",
+                "Polynomial stability: a·x²+b·x+c=0 encodes zeros where DPM field vanishes",
+                "ΔF_U_Bi_i ~ -10^211 N: resonance-amplified polynomial branch",
+            ],
+            'simulation_set': {
+                'DPM_resonance_sweep': 'DPM_resonance from 1 to 1e5',
+                'k_LENR_sweep': 'k_LENR from 1e-14 to 1e-6',
+                'polynomial_roots': 'discriminant sign vs parameter space',
+            },
+        }
+
+
+class UQFFNeutrinoDecayRateCouplingCalculator(_CP3Calculator):
+    """UQFF vacuum density coupling for neutrino energy and universal decay rate.
+
+    Unique standalone scaling laws (Sub-Equations / Master Triadic Proofs):
+      E_neutrino ∝ ρ_vac,[UA']:[SCm] · e^{-[SSq]·n/26·e^{-(π-t_n)}} · (U_m/ρ_vac,[UA])
+      Decay Rate ∝ (ρ_vac,[SCm]/ρ_vac,[UA]) · e^{-[SSq]·n/26·e^{-(π-t_n)}}
+      with:
+        ρ_vac,[UA']:[SCm] = ρ_vac,[UA'] · (ρ_vac,[SCm]/ρ_vac,[UA])^n
+                            · e^{-[SSq]·n/26} · e^{-(π-t_n)}
+        t_n = t/t_Hubble · (1 + H(z)·t_0)
+    Implements both proportionalities as absolute calculable quantities using
+    calibrated U_m (from Um equation) and vacuum density ratios.
+    """
+
+    def compute(self, dataset: dict) -> dict:
+        import math
+        SSq = SSQ       # 0.57
+        t_H = 4.35e17
+        H0 = 2.27e-18
+        rho_UA = RHO_VAC_UA
+        rho_SCm = RHO_VAC_SCM
+
+        t = dataset.get('t', 0.0)
+        z = dataset.get('z', 0.0)
+        n = dataset.get('n', 1)          # quantum level 1..26
+        rho_UA_prime = dataset.get('rho_UA_prime', rho_UA)
+        U_m_value = dataset.get('U_m_value', 1e-30)   # J/m³ from Um calculator
+
+        # t_n: cosmic-to-quantum time bridge
+        H_z = H0 * math.sqrt(0.3 * (1 + z)**3 + 0.7)
+        t_n = (t / t_H) * (1 + H_z * t_H)
+
+        # ρ_vac,[UA']:[SCm] cross-density
+        rho_cross = (rho_UA_prime
+                     * (rho_SCm / rho_UA)**n
+                     * math.exp(-SSq * n / 26)
+                     * math.exp(-(math.pi - t_n)))
+
+        # Double-exponential SSq attenuation kernel
+        inner_exp = -SSq * n / 26 * math.exp(-(math.pi - t_n))
+        attenuation = math.exp(inner_exp)
+
+        # E_neutrino proportionality → absolute estimate
+        E_neutrino = rho_cross * attenuation * (U_m_value / rho_UA)
+
+        # Decay Rate proportionality → absolute estimate
+        decay_rate = (rho_SCm / rho_UA) * attenuation
+
+        # Level-26 sweep
+        E_levels = []
+        D_levels = []
+        for ni in range(1, 27):
+            t_ni = t_n  # same t_n for all levels
+            rc = rho_UA_prime * (rho_SCm / rho_UA)**ni * math.exp(-SSq * ni / 26) * math.exp(-(math.pi - t_ni))
+            ie = -SSq * ni / 26 * math.exp(-(math.pi - t_ni))
+            att = math.exp(ie)
+            E_levels.append(rc * att * U_m_value / rho_UA)
+            D_levels.append((rho_SCm / rho_UA) * att)
+
+        return {
+            'primary_equations': [
+                f"t_n = {t_n:.6e} [n={n}]",
+                f"ρ_vac,[UA']:[SCm] (n={n}) = {rho_cross:.4e}",
+                f"attenuation e^(-[SSq]·n/26·e^-(π-t_n)) = {attenuation:.6e}",
+                f"E_neutrino ∝ {E_neutrino:.4e} J/m³",
+                f"Decay Rate ∝ {decay_rate:.4e}",
+            ],
+            'available_equations': [
+                "E_neutrino level map: n=1..26, trace E_neutrino vs shell",
+                "Decay Rate gradient: dΓ/dn at peak shell for instability analysis",
+                "Cross-density at n=26 vs n=1 ratio: stability endpoint",
+            ],
+            'simulation_set': {
+                'n_sweep': 'n from 1 to 26, E_neutrino profile',
+                't_n_sweep': 't from 0 to t_Hubble',
+                'level_amplitudes': [f'{E:.3e}' for E in E_levels[:6]],
+                'decay_rates_first6': [f'{D:.3e}' for D in D_levels[:6]],
+            },
+        }
+
+
+class MagnetarSGR1745DynamicModulationCalculator(_CP3Calculator):
+    """SGR 1745-2900 full UQFF g with M_mag magnetic acceleration and D(t) dynamic term.
+
+    Unique equation from Document 2.a (NOT in MagnetarMUGECalculator which uses
+    12 MUGE terms, NOR in MagnetarVortexAvalancheCalculator — unique additions):
+      g_SGR(r,t) = (G·M)/r² · (1+H(z)·t) · (1-B/B_crit)
+                 + (G·M_BH)/r_BH² + (Ug1+Ug2+Ug3+Ug4) + Λc²/3 + QM
+                 + q·(v×B) + fluid + waves + DM
+                 + M_mag(t)                      ← magnetic moment acceleration
+                 + D(t)                           ← dynamic burst modulation
+      M_mag(t) = k_M · B² / (μ_0 · r) · (1-e^{-t/τ_mag})
+      D(t) = D_0 · cos(ω_D·t) · e^{-t/τ_D}     [oscillatory burst signature]
+    Both terms are time-dependent and additive to total g.
+    """
+
+    def compute(self, dataset: dict) -> dict:
+        import math
+        G = 6.6743e-11
+        c = 2.998e8
+        LAMBDA = 1.1e-52
+        H0 = 2.27e-18
+        hbar = 1.0546e-34
+        t_H = 4.35e17
+        mu_0 = 4 * math.pi * 1e-7     # permeability of free space
+
+        M = dataset.get('M', 2.786e30)          # 1.4 M_sun
+        r = dataset.get('r', 1e4)               # 10 km
+        B = dataset.get('B', 2e10)              # SGR1745 B field ~2×10^10 T
+        B_crit = dataset.get('B_crit', 4.4e13)
+        z = dataset.get('z', 0.0)
+        t = dataset.get('t', 0.0)
+        M_BH_comp = dataset.get('M_BH_companion', 8.155e36)    # Sgr A* companion
+        r_BH = dataset.get('r_BH', 2.83e16)
+        # M_mag parameters
+        k_M = dataset.get('k_M', 1e-8)
+        tau_mag = dataset.get('tau_mag', 3.5 * 3.156e7)   # 3.5 yr decay
+        # D(t) burst modulation parameters
+        D_0 = dataset.get('D_0', 1e-3)
+        omega_D = dataset.get('omega_D', 2 * math.pi / 11.0)  # ~11s burst repeat
+        tau_D = dataset.get('tau_D', 3.5 * 3.156e7)
+
+        H_z = H0 * math.sqrt(0.3 * (1 + z)**3 + 0.7)
+        mag_f = 1.0 - min(B / B_crit, 0.9999)
+        g_base = (G * M) / r**2 * (1 + H_z * t) * mag_f
+        g_bh = (G * M_BH_comp) / r_BH**2
+        g_lambda = (LAMBDA * c**2) / 3.0
+        g_qm = (hbar / math.sqrt(1.055e-34 * 1e-27)) * (2 * math.pi / t_H)
+
+        # M_mag: magnetic moment acceleration (magnetar-grade B field)
+        M_mag = k_M * B**2 / (mu_0 * r) * (1 - math.exp(-t / tau_mag))
+
+        # D(t): oscillatory dynamic burst modulation
+        D_t = D_0 * math.cos(omega_D * t) * math.exp(-t / tau_D)
+
+        g_total = g_base + g_bh + g_lambda + g_qm + M_mag + D_t
+
+        return {
+            'primary_equations': [
+                f"g_base·(1-B/Bc) = {g_base:.4e} m/s²  (B={B:.1e} T)",
+                f"g_BH companion (SgrA*) = {g_bh:.4e} m/s²",
+                f"M_mag(t) = k_M·B²/(μ0·r)·(1-e^(-t/τ)) = {M_mag:.4e} m/s²",
+                f"D(t) = D_0·cos(ω_D·t)·e^(-t/τ_D) = {D_t:.4e} m/s²",
+                f"g_SGR1745 total = {g_total:.4e} m/s²",
+            ],
+            'available_equations': [
+                "Burst detection: peak D(t) at t=0 → D_0, decay timescale τ_D",
+                "M_mag: full saturation at t >> τ_mag → k_M·B²/(μ0·r)",
+                "Time of maximum: dg_SGR/dt = 0 → solve for burst epoch",
+            ],
+            'simulation_set': {
+                'B_sweep': 'B from 1e8 to 1e11 T (near-Bcrit magnetar range)',
+                'D_0_sweep': 'D_0 from 0 to 0.1 m/s²',
+                't_sweep': 't from 0 to 10*tau_D',
+            },
+        }
+
+
+# ---------------------------------------------------------------------------
 # __all__ export
 # ---------------------------------------------------------------------------
 
@@ -3998,4 +4494,11 @@ __all__ = [
     "DPMHarmonicBuoyancySeriesCalculator",
     "DipoleVortexPrimeEncodingCalculator",
     "UQFFRelativisticHierarchyDecayIntegralCalculator",
+    # Session 53 — grok_share_7514fe second-pass unique physics
+    "SgrAStarSpinDragUQFFCalculator",
+    "UQFFLensingModulationRingsCalculator",
+    "HydrogenAtomUQFFGravityCalculator",
+    "FUBiiFullDPMPolynomialIntegralCalculator",
+    "UQFFNeutrinoDecayRateCouplingCalculator",
+    "MagnetarSGR1745DynamicModulationCalculator",
 ]

@@ -10,7 +10,7 @@ while maintaining a single-import API.
 ARCHITECTURE:
     CondensedPhysics.py      → Foundation (1011 base classes)
     CondensedPhysics2.py     → Extension 1 (17+ classes: Orb Analysis 10/11+)
-    CondensedPhysics3.py     → Extension 2 (79 classes: 15+ categories, Sessions 41-52, 2026-03-14)
+    CondensedPhysics3.py     → Extension 2 (85 classes: 15+ categories, Sessions 41-53, 2026-03-14)
     CondensedPhysicsAggregator.py → This file (unified API)
 
 USAGE:
@@ -181,6 +181,13 @@ from CondensedPhysics3 import (
     DPMHarmonicBuoyancySeriesCalculator,
     DipoleVortexPrimeEncodingCalculator,
     UQFFRelativisticHierarchyDecayIntegralCalculator,
+    # Session 53 — grok_share_7514fe second-pass unique physics
+    SgrAStarSpinDragUQFFCalculator,
+    UQFFLensingModulationRingsCalculator,
+    HydrogenAtomUQFFGravityCalculator,
+    FUBiiFullDPMPolynomialIntegralCalculator,
+    UQFFNeutrinoDecayRateCouplingCalculator,
+    MagnetarSGR1745DynamicModulationCalculator,
 )
 
 CP3_CALCULATORS = {
@@ -266,6 +273,13 @@ CP3_CALCULATORS = {
     'DPMHarmonicBuoyancySeriesCalculator': DPMHarmonicBuoyancySeriesCalculator,
     'DipoleVortexPrimeEncodingCalculator': DipoleVortexPrimeEncodingCalculator,
     'UQFFRelativisticHierarchyDecayIntegralCalculator': UQFFRelativisticHierarchyDecayIntegralCalculator,
+    # Session 53 — grok_share_7514fe second-pass unique physics
+    'SgrAStarSpinDragUQFFCalculator': SgrAStarSpinDragUQFFCalculator,
+    'UQFFLensingModulationRingsCalculator': UQFFLensingModulationRingsCalculator,
+    'HydrogenAtomUQFFGravityCalculator': HydrogenAtomUQFFGravityCalculator,
+    'FUBiiFullDPMPolynomialIntegralCalculator': FUBiiFullDPMPolynomialIntegralCalculator,
+    'UQFFNeutrinoDecayRateCouplingCalculator': UQFFNeutrinoDecayRateCouplingCalculator,
+    'MagnetarSGR1745DynamicModulationCalculator': MagnetarSGR1745DynamicModulationCalculator,
 }
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -406,7 +420,7 @@ ALL_CALCULATORS = {
 
 # Module metadata
 AGGREGATOR_VERSION = "1.6.0"
-TOTAL_MODULES = 21  # CP1, CP2 v2.1.0, CP3 (Sessions 41-52, 79 classes), + 10 thread registries + PAPER_196-215
+TOTAL_MODULES = 21  # CP1, CP2 v2.1.0, CP3 (Sessions 41-53, 85 classes), + 10 thread registries + PAPER_196-215
 
 
 def get_calculator(name: str):
