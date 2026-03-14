@@ -1018,6 +1018,200 @@ class UQFFSystemsDatabase:
                 'GR_test_precision': 0.0002  # fractional
             }
         )
+
+        # ================================
+        # SESSIONS 58-60 SYSTEMS (grok_share_8d951e12 — March 2026)
+        # ================================
+
+        systems['SGR0501'] = AstrophysicalSystem(
+            name='SGR 0501+4516',
+            category='Magnetar',
+            ra=75.278,
+            dec=45.277,
+            distance=2000,  # pc
+            mass=1.4,  # M☉ (canonical neutron star)
+            L_bol=1e36,  # erg/s (burst luminosity)
+            B=8e13,  # T (surface magnetic field ~8e13 T)
+            sources=[
+                'Swift/BAT Discovery 2008',
+                'Rea et al. 2009, ApJ',
+                'UQFF Session 58 PAPER_226'
+            ],
+            additional_params={
+                'spin_period': 5.76,  # seconds
+                'period_derivative': 1.5e-11,  # s/s
+                'burst_fluence': 1e-7,  # erg/cm²
+                'GW_back_reaction': True,  # 11-term MUGE includes GW back-reaction
+                'n_muge_terms': 11
+            }
+        )
+
+        systems['TapestryLMC'] = AstrophysicalSystem(
+            name='LMC N49 / Tapestry Star Formation',
+            category='Supernova Remnant',
+            ra=81.316,
+            dec=-66.083,
+            distance=50000,  # pc (LMC distance ~50 kpc)
+            mass=20.0,  # M☉ (progenitor estimate)
+            L_bol=2e38,  # erg/s
+            v_wind=2000.0,  # km/s (stellar wind velocity)
+            sources=[
+                'Chandra X-ray Observatory',
+                'Park et al. 2012, ApJ',
+                'UQFF Session 58 PAPER_227'
+            ],
+            additional_params={
+                'remnant_age': 4800,  # years
+                'shock_velocity': 800,  # km/s
+                'X_ray_luminosity': 2e36  # erg/s
+            }
+        )
+
+        systems['Westerlund2'] = AstrophysicalSystem(
+            name='Westerlund 2',
+            category='Star-Forming Region',
+            ra=159.775,
+            dec=-57.764,
+            distance=8000,  # pc (8 kpc)
+            mass=1e4,  # M☉ (cluster mass)
+            L_bol=1e41,  # erg/s (total OB stars)
+            v_wind=2500.0,  # km/s (OB star winds)
+            SFR=0.1,  # M☉/yr
+            sources=[
+                'HST/WFC3 Imaging',
+                'Zeidler et al. 2015, A&A',
+                'UQFF Session 58 PAPER_228'
+            ],
+            additional_params={
+                'n_OB_stars': 300,
+                'cluster_age': 2e6,  # years (~2 Myr)
+                'wind_power': 5e38  # erg/s
+            }
+        )
+
+        systems['PillarsCreation'] = AstrophysicalSystem(
+            name='Pillars of Creation (M16 Eagle Nebula)',
+            category='Star-Forming Region',
+            ra=274.7,
+            dec=-13.807,
+            distance=2000,  # pc (2 kpc)
+            mass=1e3,  # M☉ (pillar gas mass)
+            L_bol=1e38,  # erg/s
+            sources=[
+                'HST/WFPC2 1995 (Hester et al.)',
+                'JWST NIRCam 2022',
+                'UQFF Session 58 PAPER_229'
+            ],
+            additional_params={
+                'pillar_length': 4,  # light-years
+                'photoevaporation_rate': 70,  # M☉/Myr
+                'E_erosion_flag': True  # E(t) erosion model
+            }
+        )
+
+        systems['NGC2525'] = AstrophysicalSystem(
+            name='NGC 2525 + SN2018gv',
+            category='Galaxy',
+            ra=120.625,
+            dec=-11.425,
+            distance=2.2e7,  # pc (22 Mpc)
+            mass=1e10,  # M☉ (galaxy stellar mass)
+            L_bol=2e43,  # erg/s
+            SFR=1.5,  # M☉/yr
+            sources=[
+                'HST Type Ia Cepheid programme',
+                'Yang et al. 2021, ApJ',
+                'UQFF Session 58 PAPER_230'
+            ],
+            additional_params={
+                'SN2018gv_peak_mag': -19.4,  # Ia peak absolute magnitude
+                'SN2018gv_date': '2018-01-15',
+                'negative_g_SN': True  # NGC2525 SN negative-g model
+            }
+        )
+
+        systems['HUDF_highz'] = AstrophysicalSystem(
+            name='Hubble Ultra Deep Field (z=3.5)',
+            category='Cosmological Field',
+            ra=53.163,
+            dec=-27.791,
+            distance=0,  # cosmological — use redshift
+            redshift=3.5,
+            mass=1e11,  # M☉ (typical galaxy at z~3.5)
+            L_bol=1e44,  # erg/s
+            SFR=50.0,  # M☉/yr (high-z starburst)
+            sources=[
+                'HST ACS + WFC3 HUDF Campaign',
+                'Beckwith et al. 2006, AJ',
+                'UQFF Session 58 PAPER_231'
+            ],
+            additional_params={
+                'lookback_time': 1.19e10,  # years (~11.9 Gyr)
+                'n_galaxies_per_arcmin2': 10000,
+                'cosmic_I_model': True  # I(t) double-modulation model
+            }
+        )
+
+        systems['NGC1792'] = AstrophysicalSystem(
+            name='NGC 1792',
+            category='Galaxy',
+            ra=76.311,
+            dec=-37.981,
+            distance=1.3e7,  # pc (13 Mpc)
+            mass=4e10,  # M☉
+            L_bol=1e44,  # erg/s
+            SFR=5.0,  # M☉/yr (starburst)
+            sources=[
+                'Calzetti et al. 2015, ApJ',
+                'GALEX + Spitzer SINGS',
+                'UQFF Session 58 PAPER_232'
+            ],
+            additional_params={
+                'nuclear_starburst': True,
+                'H_alpha_luminosity': 3e40,  # erg/s
+                'stellar_forge_model': True  # NGC1792 Stellar Forge F_SFR model
+            }
+        )
+
+        systems['Antennae'] = AstrophysicalSystem(
+            name='Antennae Galaxies (NGC 4038/4039)',
+            category='Galaxy Merger',
+            ra=180.474,
+            dec=-18.867,
+            distance=2.2e7,  # pc (22 Mpc)
+            mass=2e11,  # M☉ (combined)
+            L_bol=2e44,  # erg/s
+            SFR=20.0,  # M☉/yr (merger-driven)
+            sources=[
+                'Whitmore et al. 1999, AJ',
+                'Chandra X-ray Array',
+                'UQFF Session 58 PAPER_235'
+            ],
+            additional_params={
+                'merger_stage': 'ongoing',
+                'n_super_star_clusters': 1000,
+                'double_intensity_model': True  # double-I(t) merger model
+            }
+        )
+
+        systems['RingsOfRelativity'] = AstrophysicalSystem(
+            name='Rings of Relativity (Einstein Lensing Arc)',
+            category='Gravitational Lens',
+            ra=0.0,  # generic — depends on line of sight
+            dec=0.0,
+            distance=5e8,  # pc (500 Mpc typical lens)
+            mass=1e13,  # M☉ (lens galaxy cluster mass)
+            L_bol=1e45,  # erg/s (background source)
+            sources=[
+                'ESA Hubble Strong Lensing Survey',
+                'UQFF Session 60 PAPER_242'
+            ],
+            additional_params={
+                'einstein_ring_model': True,  # L_t = (GM/c²r)·(D_LS/D_S) static
+                'lensing_correction': 'L_t=(GM/c²r)*(D_LS/D_S)',
+                'two_mode_oscillation': True
+            }
+        )
         
         return systems
     

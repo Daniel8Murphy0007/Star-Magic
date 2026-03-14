@@ -517,9 +517,9 @@ __all__ = [
 # VERSION INFO
 # ═══════════════════════════════════════════════════════════════════════════════
 
-__version__ = "1.0.0"
+__version__ = "1.1.0"
 __author__ = "Daniel T. Murphy"
 __email__ = "daniel.murphy00@gmail.com"
-__date__ = "March 4, 2026"
+__date__ = "March 14, 2026 (Session 60 sync)"
 __framework__ = "UQFF 99.9% Solvability (Star-Magic)"
 __source__ = "Grok Thread e3cc481989964390a3c2102a549d2429"
