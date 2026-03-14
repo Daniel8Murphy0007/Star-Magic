@@ -10,7 +10,7 @@ while maintaining a single-import API.
 ARCHITECTURE:
     CondensedPhysics.py      → Foundation (1011 base classes)
     CondensedPhysics2.py     → Extension 1 (17+ classes: Orb Analysis 10/11+)
-    CondensedPhysics3.py     → Extension 2 (34 classes: 15 categories, Session 41, 2026-03-11)
+    CondensedPhysics3.py     → Extension 2 (69 classes: 15+ categories, Sessions 41-50, 2026-03-11)
     CondensedPhysicsAggregator.py → This file (unified API)
 
 USAGE:
@@ -79,8 +79,8 @@ from CondensedPhysics2 import (
 )
 
 # ═══════════════════════════════════════════════════════════════════════════════
-# IMPORT FROM CONDENSEDPHYSICS3.PY (EXTENSION 2 — 34 classes, 15 categories)
-# Source: Grok thread ba4c0789d5c94bf2a26bb027293d7634 (March 11, 2026)
+# IMPORT FROM CONDENSEDPHYSICS3.PY (EXTENSION 2 — 69 classes, 15+ categories)
+# Source: Grok threads ba4c0789 (Session 41), 7f9068 (Session 47), 381a8fe7 (Session 48), 7514fe (Session 50)
 # ═══════════════════════════════════════════════════════════════════════════════
 
 from CondensedPhysics3 import (
@@ -133,6 +133,43 @@ from CondensedPhysics3 import (
     ATLASLHCQuarkEnergyLowNLevelCalculator,
     VacuumEnergyComponentRatioCalculator,
     UQFFIPCChainStatusCalculator,
+    # Session 47 — Solar System + Hybrid MUGE + GW + HE (grok_share_7f9068)
+    SolarSystemFUValidatorCalculator,
+    HybridMUGEBlendingCalculator,
+    WormholeMUGE13thTermCalculator,
+    J1610QuasarRelativisticSCmCalculator,
+    StressEnergyAMunuCouplingCalculator,
+    GW231123MassGapUQFFCalculator,
+    HighEnergyDatasetValidationCalculator,
+    # Session 48 — CoAnQi UQFF+3D+Plugin Integration (grok_share_381a8fe7)
+    CoAnQiCelestialBodyFUCalculator,
+    CoAnQiModularCompressedMUGECalculator,
+    CoAnQiModularResonanceMUGECalculator,
+    CoAnQi26LevelEnergyDensityCalculator,
+    CoAnQiQuasarJetFluidCalculator,
+    CoAnQiArchitectureCalculator,
+    DiPseudoMonopoleDPMTheoryCalculator,
+    # Session 50 — PAPER_196-215 (grok_share_7514fe)
+    TriadicMasterEquationCalculator,
+    FUBiiExtendedIntegralCalculator,
+    FUBiiTaxonomyCompactObjectCalculator,
+    FUBiiTaxonomyCosmologicalCalculator,
+    UmUniversalMagnetismTaxonomyCalculator,
+    UQFFGravitationalWaveChirpQNMCalculator,
+    UQFFReionizationBBNCalculator,
+    UQFFCMBStructureGrowthCalculator,
+    UQFFDarkMatterNFWSIDMCalculator,
+    RamanujanPolynomialsQ26Calculator,
+    MagnetarVortexAvalancheCalculator,
+    QuTiPQuantumEntanglementCalculator,
+    UQFFVariableCalibrationCalculator,
+    UQFFvsLambdaCDMComparisonCalculator,
+    UQFFvsMONDComparisonCalculator,
+    UQFF99SystemCompressionCalculator,
+    UQFF48ScaleMolecularRotorCIACalculator,
+    HResDUniverseMasterCalculator,
+    MHDClustersJetsAccretionCalculator,
+    CosmicRaysWHIMFermiCalculator,
 )
 
 CP3_CALCULATORS = {
@@ -170,6 +207,43 @@ CP3_CALCULATORS = {
     'ATLASLHCQuarkEnergyLowNLevelCalculator': ATLASLHCQuarkEnergyLowNLevelCalculator,
     'VacuumEnergyComponentRatioCalculator': VacuumEnergyComponentRatioCalculator,
     'UQFFIPCChainStatusCalculator': UQFFIPCChainStatusCalculator,
+    # Session 47 — grok_share_7f9068
+    'SolarSystemFUValidatorCalculator': SolarSystemFUValidatorCalculator,
+    'HybridMUGEBlendingCalculator': HybridMUGEBlendingCalculator,
+    'WormholeMUGE13thTermCalculator': WormholeMUGE13thTermCalculator,
+    'J1610QuasarRelativisticSCmCalculator': J1610QuasarRelativisticSCmCalculator,
+    'StressEnergyAMunuCouplingCalculator': StressEnergyAMunuCouplingCalculator,
+    'GW231123MassGapUQFFCalculator': GW231123MassGapUQFFCalculator,
+    'HighEnergyDatasetValidationCalculator': HighEnergyDatasetValidationCalculator,
+    # Session 48 — grok_share_381a8fe7
+    'CoAnQiCelestialBodyFUCalculator': CoAnQiCelestialBodyFUCalculator,
+    'CoAnQiModularCompressedMUGECalculator': CoAnQiModularCompressedMUGECalculator,
+    'CoAnQiModularResonanceMUGECalculator': CoAnQiModularResonanceMUGECalculator,
+    'CoAnQi26LevelEnergyDensityCalculator': CoAnQi26LevelEnergyDensityCalculator,
+    'CoAnQiQuasarJetFluidCalculator': CoAnQiQuasarJetFluidCalculator,
+    'CoAnQiArchitectureCalculator': CoAnQiArchitectureCalculator,
+    'DiPseudoMonopoleDPMTheoryCalculator': DiPseudoMonopoleDPMTheoryCalculator,
+    # Session 50 — PAPER_196-215 (grok_share_7514fe)
+    'TriadicMasterEquationCalculator': TriadicMasterEquationCalculator,
+    'FUBiiExtendedIntegralCalculator': FUBiiExtendedIntegralCalculator,
+    'FUBiiTaxonomyCompactObjectCalculator': FUBiiTaxonomyCompactObjectCalculator,
+    'FUBiiTaxonomyCosmologicalCalculator': FUBiiTaxonomyCosmologicalCalculator,
+    'UmUniversalMagnetismTaxonomyCalculator': UmUniversalMagnetismTaxonomyCalculator,
+    'UQFFGravitationalWaveChirpQNMCalculator': UQFFGravitationalWaveChirpQNMCalculator,
+    'UQFFReionizationBBNCalculator': UQFFReionizationBBNCalculator,
+    'UQFFCMBStructureGrowthCalculator': UQFFCMBStructureGrowthCalculator,
+    'UQFFDarkMatterNFWSIDMCalculator': UQFFDarkMatterNFWSIDMCalculator,
+    'RamanujanPolynomialsQ26Calculator': RamanujanPolynomialsQ26Calculator,
+    'MagnetarVortexAvalancheCalculator': MagnetarVortexAvalancheCalculator,
+    'QuTiPQuantumEntanglementCalculator': QuTiPQuantumEntanglementCalculator,
+    'UQFFVariableCalibrationCalculator': UQFFVariableCalibrationCalculator,
+    'UQFFvsLambdaCDMComparisonCalculator': UQFFvsLambdaCDMComparisonCalculator,
+    'UQFFvsMONDComparisonCalculator': UQFFvsMONDComparisonCalculator,
+    'UQFF99SystemCompressionCalculator': UQFF99SystemCompressionCalculator,
+    'UQFF48ScaleMolecularRotorCIACalculator': UQFF48ScaleMolecularRotorCIACalculator,
+    'HResDUniverseMasterCalculator': HResDUniverseMasterCalculator,
+    'MHDClustersJetsAccretionCalculator': MHDClustersJetsAccretionCalculator,
+    'CosmicRaysWHIMFermiCalculator': CosmicRaysWHIMFermiCalculator,
 }
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -293,7 +367,7 @@ from GrokThreadUQFFExtensions import (
 # Aggregate all calculators from all CP modules
 ALL_CALCULATORS = {
     **CP2_CALCULATORS,
-    # CP3 Extension 2 (34 classes, 15 categories, Session 41 — 2026-03-11)
+    # CP3 Extension 2 (69 classes, 15+ categories, Sessions 41-50 — 2026-03-11)
     **CP3_CALCULATORS,
     # Grok Thread UQFF Extensions (Thread 9c3666463ac14753b4f3bea869caaf01)
     **GROK_THREAD_UQFF_CALCULATORS,
@@ -309,8 +383,8 @@ ALL_CALCULATORS = {
 }
 
 # Module metadata
-AGGREGATOR_VERSION = "1.4.0"
-TOTAL_MODULES = 20  # CP1, CP2 v2.1.0, CP3, + 10 thread registries (Session 43)
+AGGREGATOR_VERSION = "1.5.0"
+TOTAL_MODULES = 21  # CP1, CP2 v2.1.0, CP3 (Sessions 41-50), + 10 thread registries + PAPER_196-215
 
 
 def get_calculator(name: str):
@@ -346,7 +420,7 @@ def list_all_calculators():
     return {
         'CP2_ORB_ANALYSIS_10': list(ORB_ANALYSIS_10_CALCULATORS.keys()),
         'CP2_ORB_ANALYSIS_11': list(ORB_ANALYSIS_11_CALCULATORS.keys()),
-        # CP3 Extension 2 (34 classes, 15 categories)
+        # CP3 Extension 2 (69 classes, 15+ categories, Sessions 41-50)
         'CP3_ALL': list(CP3_CALCULATORS.keys()),
         # Grok Deep Analysis modules
         'AGN_FEEDBACK': list(AGN_FEEDBACK_CALCULATORS.keys()),
@@ -370,7 +444,7 @@ __all__ = [
     'get_calculator',
     'list_all_calculators',
 
-    # CP3 exports (Extension 2 — 34 classes)
+    # CP3 exports (Extension 2 — 69 classes, Sessions 41-50)
     'CP3_CALCULATORS',
     'SolarWindBubbleVerificationCalculator',
     'HeliopausalBoundaryStepFunctionCalculator',
