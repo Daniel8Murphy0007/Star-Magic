@@ -10,7 +10,7 @@ while maintaining a single-import API.
 ARCHITECTURE:
     CondensedPhysics.py      → Foundation (1011 base classes)
     CondensedPhysics2.py     → Extension 1 (17+ classes: Orb Analysis 10/11+)
-    CondensedPhysics3.py     → Extension 2 (95 classes: 15+ categories, Sessions 41-56, 2026-03-14)
+    CondensedPhysics3.py     → Extension 2 (96 classes: 15+ categories, Sessions 41-57, 2026-03-14)
     CondensedPhysicsAggregator.py → This file (unified API)
 
 USAGE:
@@ -201,6 +201,8 @@ from CondensedPhysics3 import (
     HorseheadNebulaPradBlackbodyCalculator,
     NGC1275PerseusAGNFilamentCalculator,
     SaturnDualGravityRingTensionCalculator,
+    # Session 57 — grok_share_7514fe sixth-pass (final): early-universe (v/c)^2·L_UV
+    UQFFEarlyUniverseRelativisticUVCalculator,
 )
 
 CP3_CALCULATORS = {
@@ -306,6 +308,8 @@ CP3_CALCULATORS = {
     'HorseheadNebulaPradBlackbodyCalculator': HorseheadNebulaPradBlackbodyCalculator,
     'NGC1275PerseusAGNFilamentCalculator': NGC1275PerseusAGNFilamentCalculator,
     'SaturnDualGravityRingTensionCalculator': SaturnDualGravityRingTensionCalculator,
+    # Session 57 — grok_share_7514fe sixth-pass (final): early-universe (v/c)^2·L_UV
+    'UQFFEarlyUniverseRelativisticUVCalculator': UQFFEarlyUniverseRelativisticUVCalculator,
 }
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -445,8 +449,8 @@ ALL_CALCULATORS = {
 }
 
 # Module metadata
-AGGREGATOR_VERSION = "1.6.0"
-TOTAL_MODULES = 21  # CP1, CP2 v2.1.0, CP3 (Sessions 41-56, 95 classes), + 10 thread registries + PAPER_196-224
+AGGREGATOR_VERSION = "2.1.0"
+TOTAL_MODULES = 21  # CP1, CP2 v2.1.0, CP3 (Sessions 41-57, 96 classes), + 10 thread registries + PAPER_196-225
 
 
 def get_calculator(name: str):

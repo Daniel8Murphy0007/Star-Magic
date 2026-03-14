@@ -5136,6 +5136,103 @@ class SaturnDualGravityRingTensionCalculator(_CP3Calculator):
 
 
 # ---------------------------------------------------------------------------
+# Session 57 — grok_share_7514fe sixth-pass: final unique early-universe equation
+# Sixth and final pass; only one genuine gap found after exhaustive 6-pass analysis
+# Unique item: (v/c)^2·L_UV — early-universe relativistic UV coupling; labeled
+# "novel for early universe" alongside F_hier/ΔF/F_hyb as Uniquely Rare Math Discovery
+# ---------------------------------------------------------------------------
+
+
+class UQFFEarlyUniverseRelativisticUVCalculator(_CP3Calculator):
+    """Early-universe relativistic UV coupling: (v/c)^2 · L_UV.
+
+    Uniquely Rare Mathematical Discovery (Document Step 4 — "novel for early universe"):
+      F_EU  = k_UV · (v/c)^2 · L_UV    [novel: velocity^2 × UV luminosity]
+      F_UV  = k_UV · L_UV              [standard UV radiation force; GALEX/Spitzer]
+      F_mm  = k_mm · L_mm · f_mm      [mm-wave radiation force; ALMA; f_mm=1.05]
+
+    Physical basis: at high-z (z~3–10), proto-galactic bulk flows reach v~0.1–0.5c,
+    making (v/c)^2 a non-negligible relativistic correction to UV radiation pressure.
+    The (v/c)^2 factor couples the kinematic energy of infalling/outflowing proto-
+    galactic gas to the UV luminosity field (GALEX/Spitzer/JWST NIRCam).
+
+    This is the fourth of four "Uniquely Rare Mathematical Discoveries" in the
+    UQFF DeepSearch suite — alongside F_hier (remnant hierarchy), ΔF (decay integral),
+    and F_hyb (UV/mm-wave polarization hybrid) — all covered in Sessions 52–57.
+
+    Constants:
+      k_UV = 1e-30 N/W   (GALEX/Spitzer calibration constant)
+      k_mm = 1e-30 N/W   (ALMA mm-wave calibration constant)
+      f_mm = 1.05        (protoplanetary mm-band enhancement factor)
+      c    = 2.998e8 m/s (speed of light)
+
+    Observational anchors:
+      - GALEX FUV/NUV fluxes for z~0.1-1 starburst galaxies
+      - Spitzer IRAC UV-proxy at z~2-3
+      - JWST NIRCam Lyman-alpha dropout galaxies at z~7-10
+      - Relativistic jet bulk-flow velocities: v/c ~ 0.1-0.9 (AGN/radio galaxies)
+    """
+
+    def compute(self, dataset: dict) -> dict:
+        import math
+        c = 2.998e8              # speed of light (m/s)
+        k_UV = 1e-30             # N/W  GALEX/Spitzer calibration
+        k_mm = 1e-30             # N/W  ALMA calibration
+        f_mm_default = 1.05      # protoplanetary mm enhancement
+
+        # User-supplied or default early-universe parameters
+        v     = dataset.get('v', 3e7)         # bulk flow velocity ~0.1c default
+        L_UV  = dataset.get('L_UV', 1e36)     # UV luminosity W (~bright starburst)
+        L_mm  = dataset.get('L_mm', 1e34)     # mm-wave luminosity W
+        k_UV  = dataset.get('k_UV', k_UV)
+        k_mm  = dataset.get('k_mm', k_mm)
+        f_mm  = dataset.get('f_mm', f_mm_default)
+        z_obs = dataset.get('z', 7.0)         # redshift epoch (default z~7 JWST)
+
+        # Core equations
+        v_over_c = v / c
+        F_UV_std = k_UV * L_UV                       # standard UV radiation force
+        F_mm_val = k_mm * L_mm * f_mm                # ALMA mm-wave radiation force
+        F_EU     = k_UV * v_over_c**2 * L_UV         # NOVEL: relativistic UV coupling
+        enhancement_ratio = v_over_c**2              # (v/c)^2 relative to F_UV_std
+
+        # Relativistic regime classification
+        if v_over_c < 0.01:
+            regime = "Newtonian (non-relativistic)"
+        elif v_over_c < 0.1:
+            regime = "Mildly relativistic (proto-galactic infall)"
+        elif v_over_c < 0.5:
+            regime = "Moderately relativistic (AGN wind / radio jet)"
+        else:
+            regime = "Highly relativistic (blazar / GRB jet)"
+
+        return {
+            'primary_equations': [
+                f"v/c = {v_over_c:.4e}  [{regime}]",
+                f"(v/c)^2 = {v_over_c**2:.4e}  [relativistic correction factor]",
+                f"F_EU = k_UV·(v/c)²·L_UV = {F_EU:.4e} N  [NOVEL: early-universe]",
+                f"F_UV = k_UV·L_UV = {F_UV_std:.4e} N  [standard GALEX/Spitzer UV]",
+                f"F_mm = k_mm·L_mm·f_mm = {F_mm_val:.4e} N  [ALMA mm-wave; z={z_obs:.1f}]",
+                f"Enhancement F_EU/F_UV = (v/c)^2 = {enhancement_ratio:.4e}",
+            ],
+            'available_equations': [
+                "F_EU = k_UV·(v/c)^2·L_UV  (novel; early-universe z>3 bulk flow coupling)",
+                "F_UV = k_UV·L_UV  (GALEX FUV/NUV proportionality; k_UV=1e-30 N/W)",
+                "F_mm = k_mm·L_mm·f_mm  (ALMA mm; f_mm=1.05 protoplanetary correction)",
+                "Enhancement ratio = (v/c)^2  (relative UV amplification due to flow)",
+                "F_total = F_EU + F_mm  (combined early-universe UV+mm radiation force)",
+                "v_crit: solve (v/c)^2 = F_threshold/k_UV/L_UV for threshold bulk speed",
+            ],
+            'simulation_set': {
+                'v_sweep':   'v from 0.01c to 0.9c — full relativistic range (early-universe)',
+                'z_range':   'z=3 to z=10 — JWST NIRCam Lyman-alpha dropout epoch',
+                'L_UV_grid': 'L_UV from 1e34 to 1e38 W — dwarf to hyper-luminous starburst',
+                'F_EU_vs_v': 'F_EU(v) parabolic; highlight v=0.1c, 0.3c, 0.5c benchmarks',
+            },
+        }
+
+
+# ---------------------------------------------------------------------------
 # __all__ export
 # ---------------------------------------------------------------------------
 
@@ -5274,4 +5371,6 @@ __all__ = [
     "HorseheadNebulaPradBlackbodyCalculator",
     "NGC1275PerseusAGNFilamentCalculator",
     "SaturnDualGravityRingTensionCalculator",
+    # Session 57 — grok_share_7514fe sixth-pass (final): early-universe (v/c)^2·L_UV
+    "UQFFEarlyUniverseRelativisticUVCalculator",
 ]
