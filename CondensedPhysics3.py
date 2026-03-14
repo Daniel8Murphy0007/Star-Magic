@@ -5233,6 +5233,1082 @@ class UQFFEarlyUniverseRelativisticUVCalculator(_CP3Calculator):
 
 
 # ---------------------------------------------------------------------------
+# Session 58 — PAPER_226–235 (grok_share_8d951e12.txt)
+# 10 new CP3 classes: SGR0501, TapestryLMC, Westerlund2, PillarsCreation,
+# NGC2525, HUDFGalaxies, NGC1792, SGR1745Enhanced, SgrAEnhanced, Antennae
+# ---------------------------------------------------------------------------
+
+class MagnetarSGR0501MUGEFullCalculator(_CP3Calculator):
+    """SGR 0501+4516 — 11-term full MUGE with B(t) decay, spin-down, GW back-reaction,
+    magnetic stored energy, and cumulative burst-decay energy.
+
+    Uniquely Rare Mathematical Discoveries:
+      1. GW spin-down back-reaction: a_GW = (G·M²)/(c⁴·r) · (dΩ/dt)²
+      2. Magnetic stored energy acceleration: a_mag = M_mag / (M·r)
+         where M_mag = B²/(2μ₀) · (4/3·π·r³)
+      3. Cumulative decay energy: a_decay = L₀·τ_decay·(1−e^(−t/τ_decay)) / (M·r)
+      4. EM with vacuum density ratio: q·v·B·(1 + ρ_UA/ρ_SCm)·scale
+
+    Physical basis: SGR 0501+4516 is a soft gamma repeater magnetar at ~2 kpc.
+    B₀=10¹⁰ T, P=5 s, decay on 4–10 kyr timescales.
+    Canonical g≈4.474×10¹² m/s² at t=5000 yr.
+
+    Source: grok_share_8d951e12.txt — Doc 2, C++ class MagnetarSGR0501_4516
+    """
+
+    def compute(self, dataset: dict) -> dict:
+        import math
+        G = 6.6743e-11
+        M_sun = 1.989e30
+        c = 2.998e8
+        hbar = 1.0546e-34
+        mu0 = 1.2566e-6
+        Lambda = 1.114e-52
+        H0 = 2.268e-18
+        q  = 1.602e-19
+        m_p = 1.673e-27
+        pi = math.pi
+
+        M = dataset.get('M', 1.4 * M_sun)
+        r = dataset.get('r', 20e3)
+        B0 = dataset.get('B0', 1e10)
+        tau_B = dataset.get('tau_B_yr', 4000) * 3.15576e7
+        B_crit = dataset.get('B_crit', 1e11)
+        P = dataset.get('P', 5.0)
+        tau_Omega = dataset.get('tau_Omega_yr', 10000) * 3.15576e7
+        f_TRZ = dataset.get('f_TRZ', 0.1)
+        rho_UA = dataset.get('rho_UA', 7.09e-36)
+        rho_SCm = dataset.get('rho_SCm', 7.09e-37)
+        scale_EM = dataset.get('scale_EM', 1e-12)
+        L0_W = dataset.get('L0_W', 1e28)
+        tau_decay = dataset.get('tau_decay_yr', 3.5) * 3.15576e7
+        rho_fluid = dataset.get('rho_fluid', 1e-9)
+        t = dataset.get('t_years', 5000) * 3.15576e7
+
+        # Spinning fields
+        Bt = B0 * math.exp(-t / tau_B)
+        Omega_t = (2 * pi / P) * math.exp(-t / tau_Omega)
+        dOmega_dt = -(2 * pi / P) / tau_Omega * math.exp(-t / tau_Omega)
+        v_surf = Omega_t * r
+
+        # Term1: base gravity + Hubble expansion + spin-down suppression
+        term1 = (G * M / r**2) * (1 + H0 * t) * (1 - Bt / B_crit)
+
+        # Term2: UQFF Ug1 + Ug4 with f_TRZ buoyancy correction
+        Ug1 = G * M / r**2
+        Ug4 = Ug1 * (1 - Bt / B_crit)
+        term2 = (Ug1 + Ug4) * (1 + f_TRZ)
+
+        # Term3: cosmological Lambda
+        term3 = (Lambda * c**2) / 3.0
+
+        # Term4: EM force with UA/SCm vacuum density ratio (UNIQUE)
+        term4 = (q * v_surf * Bt / m_p) * (1 + rho_UA / rho_SCm) * scale_EM
+
+        # Term5: GW spin-down back-reaction (UNIQUE to SGR 0501)
+        term5 = (G * M**2 / (c**4 * r)) * dOmega_dt**2
+
+        # Term6: quantum uncertainty
+        delta_x = 1e-15
+        delta_p = hbar / delta_x
+        psi = 1.0
+        t_Hub = 1.0 / H0
+        term6 = (hbar / math.sqrt(delta_x * delta_p)) * psi * (2 * pi / t_Hub)
+
+        # Term7: fluid buoyancy analogue
+        V = (4.0 / 3.0) * pi * r**3
+        term7 = rho_fluid * V * Ug1 / M
+
+        # Term8: oscillatory standing wave
+        A_osc = 1e10
+        k_osc = 2 * pi / r
+        omega_osc = 2 * pi * (c / r)
+        term8 = 2 * A_osc * math.cos(k_osc * r) * math.cos(omega_osc * t)
+
+        # Term9: dark matter perturbation
+        M_DM = M * 0.1
+        delta_rho_rho = 1e-5
+        term9 = (M + M_DM) * (delta_rho_rho + 3 * G * M / r**3) / M
+
+        # Term10: magnetic stored energy (UNIQUE — B field energy density)
+        M_mag = (Bt**2 / (2 * mu0)) * V
+        term10 = M_mag / (M * r)
+
+        # Term11: cumulative burst decay energy  (UNIQUE)
+        cum_D = L0_W * tau_decay * (1 - math.exp(-t / tau_decay))
+        term11 = cum_D / (M * r)
+
+        g_total = term1 + term2 + term3 + term4 + term5 + term6 + term7 + term8 + term9 + term10 + term11
+
+        return {
+            'primary_equations': [
+                f"B(t) = B0·e^(-t/τ_B) = {Bt:.4e} T  [magnetic field decay; B0={B0:.1e}T, τ={tau_B/3.15576e7:.0f} yr]",
+                f"Ω(t) = (2π/P)·e^(-t/τ_Ω) = {Omega_t:.4e} rad/s  [P={P}s, τ={tau_Omega/3.15576e7:.0f} yr]",
+                f"dΩ/dt = {dOmega_dt:.4e} rad/s²  [spin-down rate]",
+                f"a_GW = (G·M²)/(c⁴·r)·(dΩ/dt)² = {term5:.4e} m/s²  [GW back-reaction; NOVEL]",
+                f"M_mag = B²/(2μ₀)·(4/3·π·r³) = {M_mag:.4e} J  [stored magnetic energy]",
+                f"a_mag = M_mag/(M·r) = {term10:.4e} m/s²  [magnetic energy acceleration; NOVEL]",
+                f"cum_D = L₀·τ_d·(1−e^(−t/τ_d)) = {cum_D:.4e} J  [cumulative decay energy]",
+                f"a_decay = cum_D/(M·r) = {term11:.4e} m/s²  [burst-energy acceleration; NOVEL]",
+                f"a_EM = q·v·B·(1+ρ_UA/ρ_SCm)·scale = {term4:.4e} m/s²  [vacuum-ratio EM]",
+                f"g_Magnetar_total = {g_total:.4e} m/s²  [11-term MUGE; expected ≈4.474e12 at t=5000yr]",
+            ],
+            'available_equations': [
+                "B(t) = B0·exp(-t/τ_B)  (magnetar field decay)",
+                "Ω(t) = (2π/P)·exp(-t/τ_Ω)  (spin-down rotation rate)",
+                "a_GW = (G·M²)/(c⁴·r)·(dΩ/dt)²  (GW back-reaction on magnetar)",
+                "a_mag = [B²/(2μ₀)·(4π/3·r³)] / (M·r)  (stored B-energy acceleration)",
+                "a_decay = L₀·τ_d·(1−exp(−t/τ_d)) / (M·r)  (cumulative burst energy)",
+                "a_EM = q·v·B·(1+ρ_UA/ρ_SCm)·s  (EM with vacuum density ratio)",
+                "a_GR = G·M/r²·(1+H₀·t)·(1−B/B_crit)  (relativistic gravity + Hubble + suppression)",
+                "Ug1+Ug4 = 2·G·M/r²·(1−B/B_crit) corrected by f_TRZ  (UQFF buoyancy)",
+            ],
+            'simulation_set': {
+                't_sweep': 't from 0 to 20000 yr — full spin-down evolution',
+                'B_decay': 'B(t) from B0=1e10T decaying on 4000yr timescale',
+                'GW_spindown': 'a_GW vs t — dominant at early high-Ω phase',
+                'mag_energy': 'a_mag vs B(t) — tracks stored field energy depletion',
+            },
+            'g_Magnetar': g_total,
+        }
+
+
+class StarbirthTapestryLMCUQFFCalculator(_CP3Calculator):
+    """NGC 2014 & NGC 2020 (Tapestry of Blazing Starbirth) in the Large Magellanic Cloud.
+
+    Uniquely Rare Mathematical Discoveries:
+      1. Stellar wind acceleration: a_wind = ρ_wind·v²_wind / ρ_fluid
+      2. Time-varying stellar mass: M(t) = M_init·(1 + M_dot_factor·exp(−t/τ_SF))
+
+    Physical basis: Young massive star formation complex at ~160 kly (LMC).
+    M_init=240 M☉ stellar cluster, embedded in gas 1e4 M☉, B≈1μT.
+    Stellar winds from O/B stars reach v≈2000 km/s.
+
+    Source: grok_share_8d951e12.txt — Doc 4, C++ class StarbirthTapestry
+    """
+
+    def compute(self, dataset: dict) -> dict:
+        import math
+        G = 6.6743e-11
+        M_sun = 1.989e30
+        c = 2.998e8
+        hbar = 1.0546e-34
+        Lambda = 1.114e-52
+        H0 = 2.268e-18
+        q  = 1.602e-19
+        m_p = 1.673e-27
+        pi = math.pi
+
+        M_init = dataset.get('M_init_Msun', 240.0) * M_sun
+        M_gas = dataset.get('M_gas_Msun', 10000.0) * M_sun
+        r = dataset.get('r', 9.461e16)         # 10 ly in metres
+        B = dataset.get('B', 1e-6)
+        B_crit = dataset.get('B_crit', 1e-3)
+        f_TRZ = dataset.get('f_TRZ', 0.1)
+        tau_SF = dataset.get('tau_SF_yr', 5e6) * 3.15576e7
+        rho_fluid = dataset.get('rho_fluid', 1e-20)
+        rho_wind = dataset.get('rho_wind', 1e-21)
+        v_wind = dataset.get('v_wind', 2e6)
+        rho_UA = dataset.get('rho_UA', 7.09e-36)
+        rho_SCm = dataset.get('rho_SCm', 7.09e-37)
+        scale_EM = dataset.get('scale_EM', 1e-12)
+        t = dataset.get('t_years', 1e6) * 3.15576e7
+
+        M_dot_factor = M_gas / M_init
+        Mt = M_init * (1 + M_dot_factor * math.exp(-t / tau_SF))
+
+        Ug1 = G * Mt / r**2
+        Ug4 = Ug1 * (1 - B / B_crit)
+
+        # Term1: base gravity + Hubble + B suppression
+        term1 = Ug1 * (1 + H0 * t) * (1 - B / B_crit)
+        # Term2: UQFF buoyancy
+        term2 = (Ug1 + Ug4) * (1 + f_TRZ)
+        # Term3: Lambda
+        term3 = (Lambda * c**2) / 3.0
+        # Term4: EM scaled
+        v_orb = math.sqrt(G * Mt / r)
+        term4 = (q * v_orb * B / m_p) * (1 + rho_UA / rho_SCm) * scale_EM
+        # Term5: stellar wind (UNIQUE: a_wind = rho_wind·v_wind^2 / rho_fluid)
+        a_wind = rho_wind * v_wind**2 / rho_fluid
+        # Term6: quantum
+        delta_x = 1e-15
+        delta_p = hbar / delta_x
+        psi = 1.0
+        t_Hub = 1.0 / H0
+        term6 = (hbar / math.sqrt(delta_x * delta_p)) * psi * (2 * pi / t_Hub)
+        # Term7: fluid
+        V = (4.0 / 3.0) * pi * r**3
+        term7 = rho_fluid * V * Ug1 / Mt
+        # Term8: oscillatory
+        A_osc = 1e6
+        k_osc = 2 * pi / r
+        omega_osc = 2 * pi * (c / r)
+        term8 = 2 * A_osc * math.cos(k_osc * r) * math.cos(omega_osc * t)
+        # Term9: DM perturbation
+        M_DM = Mt * 0.1
+        delta_rho_rho = 1e-5
+        term9 = (Mt + M_DM) * (delta_rho_rho + 3 * G * Mt / r**3) / Mt
+
+        g_total = term1 + term2 + term3 + term4 + a_wind + term6 + term7 + term8 + term9
+
+        return {
+            'primary_equations': [
+                f"M(t) = M_init·(1 + M_dot_fac·exp(−t/τ_SF)) = {Mt/M_sun:.2f} M☉  [gas accretion growth]",
+                f"a_wind = ρ_wind·v²_wind / ρ_fluid = {a_wind:.4e} m/s²  [stellar wind; NOVEL]",
+                f"M_dot_factor = M_gas/M_init = {M_dot_factor:.2f}  (gas/stellar mass ratio)",
+                f"g_Tapestry = {g_total:.4e} m/s²  [9-term MUGE for LMC NGC 2014/2020]",
+            ],
+            'available_equations': [
+                "M(t) = M_init·(1+M_dot_factor·exp(−t/τ_SF))  (star-forming mass growth)",
+                "a_wind = ρ_wind·v²_wind/ρ_fluid  (stellar wind ram pressure acceleration)",
+                "Ug1 = G·M(t)/r²  (time-varying base gravity)",
+                "term1 = Ug1·(1+H₀t)·(1−B/B_crit)  (full MUGE base with suppression)",
+            ],
+            'simulation_set': {
+                't_sweep': 't from 0 to 10 Myr — active star formation phase',
+                'wind_vs_grav': 'a_wind compared to Ug1 over formation epoch',
+                'M_growth': 'M(t) showing stellar mass build-up vs gas depletion',
+            },
+            'g_Tapestry': g_total,
+            'a_wind': a_wind,
+        }
+
+
+class Westerlund2MUGEStellarWindCalculator(_CP3Calculator):
+    """Westerlund 2 — super star cluster in Carina constellation (~10 kly from Earth).
+
+    Uniquely Rare Mathematical Discoveries:
+      1. Stellar wind acceleration for massive cluster: a_wind = ρ_wind·v²_wind / ρ_fluid
+         with ρ_wind=10⁻²⁰ kg/m³ (10× denser than Tapestry — extreme OB-star winds)
+      2. Time-varying cluster mass: M(t) = M_init·(1 + M_dot_fac·exp(−t/τ_SF))
+         M_init=30,000 M☉, M_gas=100,000 M☉ → M_dot_fac≈3.33
+
+    Physical basis: ~10,000 pc² star cluster, ~30,000 M☉ stellar component, embedded
+    in 100,000 M☉ gas cloud.  O/B supergiants produce dense, fast (2000 km/s) winds.
+
+    Source: grok_share_8d951e12.txt — Doc 6, C++ class Westerlund2
+    """
+
+    def compute(self, dataset: dict) -> dict:
+        import math
+        G = 6.6743e-11
+        M_sun = 1.989e30
+        c = 2.998e8
+        hbar = 1.0546e-34
+        Lambda = 1.114e-52
+        H0 = 2.268e-18
+        q  = 1.602e-19
+        m_p = 1.673e-27
+        pi = math.pi
+
+        M_init = dataset.get('M_init_Msun', 30000.0) * M_sun
+        M_gas = dataset.get('M_gas_Msun', 1e5) * M_sun
+        r = dataset.get('r', 9.461e16)         # 10 ly default
+        B = dataset.get('B', 1e-5)
+        B_crit = dataset.get('B_crit', 1e-3)
+        f_TRZ = dataset.get('f_TRZ', 0.1)
+        tau_SF = dataset.get('tau_SF_yr', 2e6) * 3.15576e7
+        rho_fluid = dataset.get('rho_fluid', 1e-19)
+        rho_wind = dataset.get('rho_wind', 1e-20)
+        v_wind = dataset.get('v_wind', 2e6)
+        rho_UA = dataset.get('rho_UA', 7.09e-36)
+        rho_SCm = dataset.get('rho_SCm', 7.09e-37)
+        scale_EM = dataset.get('scale_EM', 1e-12)
+        t = dataset.get('t_years', 1e6) * 3.15576e7
+
+        M_dot_factor = M_gas / M_init
+        Mt = M_init * (1 + M_dot_factor * math.exp(-t / tau_SF))
+
+        Ug1 = G * Mt / r**2
+        Ug4 = Ug1 * (1 - B / B_crit)
+
+        term1 = Ug1 * (1 + H0 * t) * (1 - B / B_crit)
+        term2 = (Ug1 + Ug4) * (1 + f_TRZ)
+        term3 = (Lambda * c**2) / 3.0
+        v_orb = math.sqrt(G * Mt / r)
+        term4 = (q * v_orb * B / m_p) * (1 + rho_UA / rho_SCm) * scale_EM
+        a_wind = rho_wind * v_wind**2 / rho_fluid  # NOVEL: extreme OB stellar wind
+        delta_x = 1e-15
+        delta_p = hbar / delta_x
+        psi = 1.0
+        t_Hub = 1.0 / H0
+        term6 = (hbar / math.sqrt(delta_x * delta_p)) * psi * (2 * pi / t_Hub)
+        V = (4.0 / 3.0) * pi * r**3
+        term7 = rho_fluid * V * Ug1 / Mt
+        A_osc = 1e7
+        k_osc = 2 * pi / r
+        omega_osc = 2 * pi * (c / r)
+        term8 = 2 * A_osc * math.cos(k_osc * r) * math.cos(omega_osc * t)
+        M_DM = Mt * 0.1
+        delta_rho_rho = 1e-5
+        term9 = (Mt + M_DM) * (delta_rho_rho + 3 * G * Mt / r**3) / Mt
+
+        g_total = term1 + term2 + term3 + term4 + a_wind + term6 + term7 + term8 + term9
+
+        return {
+            'primary_equations': [
+                f"M(t) = {Mt/M_sun:.0f} M☉  [M_init={M_init/M_sun:.0f}·(1+{M_dot_factor:.2f}·exp(−t/τ))]",
+                f"a_wind = ρ_wind·v²_wind/ρ_fluid = {a_wind:.4e} m/s²  [Westerlund2 OB-star wind; NOVEL]",
+                f"ρ_wind={rho_wind:.1e} kg/m³ (10× denser wind cf. Tapestry LMC)",
+                f"g_Westerlund2 = {g_total:.4e} m/s²  [9-term MUGE; super star cluster Carina]",
+            ],
+            'available_equations': [
+                "a_wind = ρ_w·v²_w/ρ_f  (wind ram‐pressure acceleration)",
+                "M(t) = M_init·(1+M_dot_fac·exp(−t/τ_SF))  (cluster mass growth via gas infall)",
+                "term2 = (Ug1+Ug4)·(1+f_TRZ)  (UQFF Ug1+Ug4 buoyancy correction)",
+            ],
+            'simulation_set': {
+                't_sweep': 't from 0 to 5 Myr — starburst formation',
+                'wind_density_comparison': 'ρ_wind=1e-20 vs 1e-21 (Westerlund2 vs Tapestry)',
+            },
+            'g_Westerlund2': g_total,
+            'a_wind': a_wind,
+        }
+
+
+class PillarsOfCreationErosionMUGECalculator(_CP3Calculator):
+    """Pillars of Creation — Eagle Nebula (M16) molecular cloud pillars.
+
+    Uniquely Rare Mathematical Discoveries:
+      1. Decaying erosion factor: E(t) = E₀·exp(−t/τ_erosion) → applied as (1−E(t))
+         Ionising radiation from O-stars erodes the pillars; strongest at t=0.
+         term1 = Ug1·(1+H₀t)·(1−B/B_crit)·(1−E(t))
+      2. Stellar wind feedback with erosion coupling
+      3. Time-varying mass under active star formation + erosion loss
+
+    Physical basis: ~6500 ly distance, pillars 4–5 ly tall.
+    M_init=10100 M☉, M_gas=10000 M☉.
+    Erosion timescale τ_erosion≈1 Myr (EUV photoevaporation).
+
+    Source: grok_share_8d951e12.txt — Doc 7, C++ class PillarsOfCreation
+    """
+
+    def compute(self, dataset: dict) -> dict:
+        import math
+        G = 6.6743e-11
+        M_sun = 1.989e30
+        c = 2.998e8
+        hbar = 1.0546e-34
+        Lambda = 1.114e-52
+        H0 = 2.268e-18
+        q  = 1.602e-19
+        m_p = 1.673e-27
+        pi = math.pi
+
+        M_init = dataset.get('M_init_Msun', 10100.0) * M_sun
+        M_gas = dataset.get('M_gas_Msun', 1e4) * M_sun
+        r = dataset.get('r', 4.731e16)         # 5 ly
+        B = dataset.get('B', 1e-6)
+        B_crit = dataset.get('B_crit', 1e-3)
+        f_TRZ = dataset.get('f_TRZ', 0.1)
+        tau_SF = dataset.get('tau_SF_yr', 1e6) * 3.15576e7
+        E_0 = dataset.get('E_0', 0.1)
+        tau_erosion = dataset.get('tau_erosion_yr', 1e6) * 3.15576e7
+        rho_fluid = dataset.get('rho_fluid', 1e-20)
+        rho_wind = dataset.get('rho_wind', 1e-21)
+        v_wind = dataset.get('v_wind', 2e6)
+        rho_UA = dataset.get('rho_UA', 7.09e-36)
+        rho_SCm = dataset.get('rho_SCm', 7.09e-37)
+        scale_EM = dataset.get('scale_EM', 1e-12)
+        t = dataset.get('t_years', 5e5) * 3.15576e7
+
+        M_dot_factor = M_gas / M_init
+        Mt = M_init * (1 + M_dot_factor * math.exp(-t / tau_SF))
+
+        # Erosion factor (UNIQUE: decaying photoevaporation loss)
+        E_t = E_0 * math.exp(-t / tau_erosion)
+
+        Ug1 = G * Mt / r**2
+        Ug4 = Ug1 * (1 - B / B_crit)
+
+        # Term1: base gravity with erosion suppression applied (UNIQUE)
+        term1 = Ug1 * (1 + H0 * t) * (1 - B / B_crit) * (1 - E_t)
+        term2 = (Ug1 + Ug4) * (1 + f_TRZ)
+        term3 = (Lambda * c**2) / 3.0
+        v_orb = math.sqrt(G * Mt / r)
+        term4 = (q * v_orb * B / m_p) * (1 + rho_UA / rho_SCm) * scale_EM
+        a_wind = rho_wind * v_wind**2 / rho_fluid  # stellar wind erosion feedback
+        delta_x = 1e-15
+        delta_p = hbar / delta_x
+        psi = 1.0
+        t_Hub = 1.0 / H0
+        term6 = (hbar / math.sqrt(delta_x * delta_p)) * psi * (2 * pi / t_Hub)
+        V = (4.0 / 3.0) * pi * r**3
+        term7 = rho_fluid * V * Ug1 / Mt
+        A_osc = 1e6
+        k_osc = 2 * pi / r
+        omega_osc = 2 * pi * (c / r)
+        term8 = 2 * A_osc * math.cos(k_osc * r) * math.cos(omega_osc * t)
+        M_DM = Mt * 0.1
+        delta_rho_rho = 1e-5
+        term9 = (Mt + M_DM) * (delta_rho_rho + 3 * G * Mt / r**3) / Mt
+
+        g_total = term1 + term2 + term3 + term4 + a_wind + term6 + term7 + term8 + term9
+
+        return {
+            'primary_equations': [
+                f"E(t) = E₀·exp(−t/τ_erosion) = {E_t:.4e}  [E₀={E_0}, τ={tau_erosion/3.15576e7:.1e} yr]",
+                f"term1 = Ug1·(1+H₀t)·(1−B/B_crit)·(1−E(t)) = {term1:.4e} m/s²  [erosion-damped base; NOVEL]",
+                f"a_wind = ρ_wind·v²_wind/ρ_fluid = {a_wind:.4e} m/s²  [EUV-driven stellar wind]",
+                f"M(t) = {Mt/M_sun:.1f} M☉  (star formation + erosion balance)",
+                f"g_Pillars = {g_total:.4e} m/s²  [9-term MUGE; Eagle Nebula M16]",
+            ],
+            'available_equations': [
+                "E(t) = E₀·exp(−t/τ_e)  (decaying photoevaporation erosion; NOVEL)",
+                "term1 = Ug1·(1+H₀t)·(1−B/B_crit)·(1−E(t))  (erosion-modified gravity)",
+                "a_wind = ρ_w·v²_w/ρ_f  (stellar wind ram pressure)",
+                "M(t) = M_init·(1+M_gas/M_init·exp(−t/τ_SF))  (star-forming mass)",
+            ],
+            'simulation_set': {
+                't_sweep': 't from 0 to 3 Myr — erosion dominant phase → quenching',
+                'E_decay': 'E(t) from E_0=0.1 → 0 over erosion timescale',
+                'term1_comparison': 'with/without (1−E(t)) factor — erosion impact on g',
+            },
+            'g_Pillars': g_total,
+            'E_erosion': E_t,
+        }
+
+
+class GalaxyNGC2525SNMassLossCalculator(_CP3Calculator):
+    """NGC 2525 — barred spiral galaxy hosting Type Ia supernova SN 2018gv.
+
+    Uniquely Rare Mathematical Discoveries:
+      1. Supernova mass-loss negative acceleration: g_SN = −G·M_SN(t)/r²
+         M_SN(t) = M_SN0·exp(−t/τ_SN) → ejected mass decreases gravitational pull
+         This is the only MUGE term that is NEGATIVE (mass leaving the system).
+      2. Central BH contribution: G·M_BH/r_BH²
+      3. Friedmann cosmological H(z) correction: H(z) = H₀·√(Ω_m·(1+z)³ + Ω_Λ)
+
+    Physical basis: NGC 2525 at z=0.016 (~106 Mpc), M_total≈1.0e10 M☉.
+    SN 2018gv: Type Ia, peak ~Jan 2018. M_SN0=1.4 M☉ (Chandrasekhar mass),
+    τ_SN=1 yr decline timescale.
+
+    Source: grok_share_8d951e12.txt — Doc 10, C++ class GalaxyNGC2525
+    """
+
+    def compute(self, dataset: dict) -> dict:
+        import math
+        G = 6.6743e-11
+        M_sun = 1.989e30
+        c = 2.998e8
+        hbar = 1.0546e-34
+        Lambda = 1.114e-52
+        H0 = 2.268e-18
+        q  = 1.602e-19
+        m_p = 1.673e-27
+        pi = math.pi
+
+        M_galaxy = dataset.get('M_galaxy_Msun', 1.0e10) * M_sun
+        M_BH = dataset.get('M_BH_Msun', 2.25e7) * M_sun
+        r = dataset.get('r', 2.836e20)         # ~30 kly galactic radius
+        r_BH = dataset.get('r_BH', 1.496e11)   # 1 AU in metres
+        z = dataset.get('z', 0.016)
+        B = dataset.get('B', 1e-10)
+        B_crit = dataset.get('B_crit', 1e-3)
+        f_TRZ = dataset.get('f_TRZ', 0.1)
+        M_SN0 = dataset.get('M_SN0_Msun', 1.4) * M_sun
+        tau_SN = dataset.get('tau_SN_yr', 1.0) * 3.15576e7
+        rho_fluid = dataset.get('rho_fluid', 1e-25)
+        rho_UA = dataset.get('rho_UA', 7.09e-36)
+        rho_SCm = dataset.get('rho_SCm', 7.09e-37)
+        scale_EM = dataset.get('scale_EM', 1e-12)
+        t = dataset.get('t_years', 7.0) * 3.15576e7   # 7 yr post-SN default
+
+        # Friedmann H(z) (NOVEL: cosmological correction)
+        Omega_m = 0.3
+        Omega_L = 0.7
+        Hz = H0 * math.sqrt(Omega_m * (1 + z)**3 + Omega_L)
+
+        M_SN_t = M_SN0 * math.exp(-t / tau_SN)   # declining ejecta mass
+
+        Ug1 = G * M_galaxy / r**2
+        Ug4 = Ug1 * (1 - B / B_crit)
+
+        term1 = Ug1 * (1 + Hz * t) * (1 - B / B_crit)
+        term2 = (Ug1 + Ug4) * (1 + f_TRZ)
+        term3 = (Lambda * c**2) / 3.0
+        v_orb = math.sqrt(G * M_galaxy / r)
+        term4 = (q * v_orb * B / m_p) * (1 + rho_UA / rho_SCm) * scale_EM
+        # SN negative mass-loss term (UNIQUE: ONLY negative MUGE term)
+        term_SN = -(G * M_SN_t) / r**2
+        # Central BH contribution
+        term_BH = G * M_BH / r_BH**2
+        delta_x = 1e-15
+        delta_p = hbar / delta_x
+        t_Hub = 1.0 / H0
+        term6 = (hbar / math.sqrt(delta_x * delta_p)) * (2 * pi / t_Hub)
+        V = (4.0 / 3.0) * pi * r**3
+        term7 = rho_fluid * V * Ug1 / M_galaxy
+        M_DM = M_galaxy * 0.1
+        delta_rho_rho = 1e-5
+        term9 = (M_galaxy + M_DM) * (delta_rho_rho + 3 * G * M_galaxy / r**3) / M_galaxy
+
+        g_total = term1 + term2 + term3 + term4 + term_SN + term_BH + term6 + term7 + term9
+
+        return {
+            'primary_equations': [
+                f"H(z={z}) = H₀·√(Ω_m(1+z)³+Ω_Λ) = {Hz:.4e} s⁻¹  [Friedmann cosmological H(z)]",
+                f"M_SN(t) = M_SN0·exp(−t/τ_SN) = {M_SN_t/M_sun:.4f} M☉  [SN 2018gv Type Ia decline]",
+                f"g_SN = −G·M_SN(t)/r² = {term_SN:.4e} m/s²  [NEGATIVE mass-loss term; NOVEL]",
+                f"g_BH = G·M_BH/r_BH² = {term_BH:.4e} m/s²  [central BH contribution]",
+                f"g_NGC2525 = {g_total:.4e} m/s²  [full MUGE with SN mass-loss; z={z}]",
+            ],
+            'available_equations': [
+                "g_SN(t) = −G·M_SN0·exp(−t/τ_SN)/r²  (SN Ia declining negative acceleration; NOVEL)",
+                "H(z) = H₀·√(0.3·(1+z)³+0.7)  (Friedmann expansion correction)",
+                "g_BH = G·M_BH/r_BH²  (central BH local contribution)",
+                "M_SN(t): solve for t when M_SN < 0.1 M☉ → ~99% of ejecta dispersed",
+            ],
+            'simulation_set': {
+                't_sweep': 't from 0 to 10 yr — SN 2018gv mass-loss evolution',
+                'SN_negative_vs_BH': 'track |g_SN| vs g_BH — when does SN become negligible?',
+                'Hz_correction': 'Hz vs H0 — Friedmann vs flat-H0 comparison at z=0.016',
+            },
+            'g_NGC2525': g_total,
+            'g_SN': term_SN,
+            'M_SN_Msun': M_SN_t / M_sun,
+        }
+
+
+class HUDFGalaxiesCosmicFieldCalculator(_CP3Calculator):
+    """Hubble Ultra Deep Field (HUDF) — ~10,000 galaxies in 11 sq. arcmin patch.
+
+    Uniquely Rare Mathematical Discoveries:
+      1. Cosmic-scale Friedmann H(z≈3.5): H(z=3.5)≈510 km/s/Mpc → dominant cosmic term
+      2. Galaxy interaction factor: I(t)=I₀·exp(−t/τ_inter) applied to base + Ug
+         term1·(1+I(t)) AND Ug·(1+f_TRZ)·(1+I(t)) — multiplicative on both terms
+      3. Extreme redshift regime: z_avg=3.5 → lookback ~12 Gyr, early universe epoch
+      4. Ultra-weak inter-galactic B≈10⁻¹⁰ T (essentially non-suppressive)
+
+    Physical basis: HUDF covers 11.5 sq. arcmin of sky, containing ~10,000 galaxies
+    spanning z=0.1 to z>6.  Average mass aggregation M≈10¹² M☉ across FOV.
+    Observation: 2003 ACS campaign, ~1 million second exposure.
+
+    Source: grok_share_8d951e12.txt — Doc 18, C++ class HUDFGalaxies (PREVIOUSLY UNKNOWN)
+    """
+
+    def compute(self, dataset: dict) -> dict:
+        import math
+        G = 6.6743e-11
+        M_sun = 1.989e30
+        c = 2.998e8
+        hbar = 1.0546e-34
+        Lambda = 1.114e-52
+        H0 = 2.268e-18
+        q  = 1.602e-19
+        m_p = 1.673e-27
+        pi = math.pi
+
+        M0 = dataset.get('M0_Msun', 1e12) * M_sun
+        r = dataset.get('r', 1.3e11 * 9.461e15)  # 1.3e11 ly in metres (~1.23e27 m)
+        z_avg = dataset.get('z_avg', 3.5)
+        B = dataset.get('B', 1e-10)
+        B_crit = dataset.get('B_crit', 1e-3)
+        f_TRZ = dataset.get('f_TRZ', 0.1)
+        SFR_factor = dataset.get('SFR_factor', 1.0)
+        tau_SF = dataset.get('tau_SF_yr', 1e9) * 3.15576e7
+        I0 = dataset.get('I0', 0.05)
+        tau_inter = dataset.get('tau_inter_yr', 1e9) * 3.15576e7
+        rho_fluid = dataset.get('rho_fluid', 1e-28)
+        rho_wind = dataset.get('rho_wind', 1e-22)
+        v_wind = dataset.get('v_wind', 1e6)
+        rho_UA = dataset.get('rho_UA', 7.09e-36)
+        rho_SCm = dataset.get('rho_SCm', 7.09e-37)
+        scale_EM = dataset.get('scale_EM', 1e-12)
+        t = dataset.get('t_years', 5e9) * 3.15576e7
+
+        # Friedmann H(z) at cosmic redshift (NOVEL: H dominates at z=3.5)
+        Omega_m = 0.3
+        Omega_L = 0.7
+        Hz = H0 * math.sqrt(Omega_m * (1 + z_avg)**3 + Omega_L)
+
+        Mt = M0 * (1 + SFR_factor * math.exp(-t / tau_SF))
+
+        # Galaxy interaction factor (NOVEL: applied to BOTH term1 and Ug)
+        I_t = I0 * math.exp(-t / tau_inter)
+
+        Ug1 = G * Mt / r**2
+        Ug4 = Ug1 * (1 - B / B_crit)
+
+        # Interaction-modulated base gravity (UNIQUE double application)
+        term1 = Ug1 * (1 + Hz * t) * (1 - B / B_crit) * (1 + I_t)
+        # UQFF also gets interaction factor (UNIQUE)
+        term2 = (Ug1 + Ug4) * (1 + f_TRZ) * (1 + I_t)
+        term3 = (Lambda * c**2) / 3.0
+        v_orb = math.sqrt(max(G * Mt / r, 1e-30))
+        term4 = (q * v_orb * B / m_p) * (1 + rho_UA / rho_SCm) * scale_EM
+        a_wind = rho_wind * v_wind**2 / rho_fluid   # merger-driven outflow
+        delta_x = 1e-15
+        delta_p = hbar / delta_x
+        t_Hub = 1.0 / H0
+        term6 = (hbar / math.sqrt(delta_x * delta_p)) * (2 * pi / t_Hub)
+        V = (4.0 / 3.0) * pi * r**3
+        term7 = rho_fluid * V * Ug1 / Mt
+        M_DM = Mt * 0.1
+        delta_rho_rho = 1e-5
+        term9 = (Mt + M_DM) * (delta_rho_rho + 3 * G * Mt / r**3) / Mt
+
+        g_total = term1 + term2 + term3 + term4 + a_wind + term6 + term7 + term9
+
+        return {
+            'primary_equations': [
+                f"H(z={z_avg}) = {Hz:.4e} s⁻¹  [{Hz*3.086e22/1e3:.0f} km/s/Mpc; early-universe Friedmann]",
+                f"I(t) = I₀·exp(−t/τ_inter) = {I_t:.4e}  [galaxy interaction factor at t={t/3.15576e13:.1f} Gyr]",
+                f"term1·(1+I(t)) = {term1:.4e} m/s²  [base gravity with interaction; NOVEL double-application]",
+                f"Ug·(1+f_TRZ)·(1+I(t)) = {term2:.4e} m/s²  [UQFF also interaction-modulated; NOVEL]",
+                f"g_HUDF = {g_total:.4e} m/s²  [cosmic HUDF z={z_avg}; ~10,000 galaxies aggregate]",
+            ],
+            'available_equations': [
+                "H(z) = H₀·√(0.3·(1+z)³+0.7)  (Friedmann cosmological expansion at z=3.5)",
+                "I(t) = I₀·exp(−t/τ_inter)  (galaxy interaction coupling; decays over Gyr)",
+                "term1 = Ug1·(1+Hz·t)·(1−B/B_crit)·(1+I(t))  (full interaction-modulated base)",
+                "Ug_int = (Ug1+Ug4)·(1+f_TRZ)·(1+I(t))  (UQFF with interaction)",
+                "a_merger = ρ_wind·v²_wind/ρ_fluid  (merger-driven galactic outflow)",
+            ],
+            'simulation_set': {
+                't_sweep': 't from 0 to 13 Gyr — cosmic evolution of HUDF epoch',
+                'z_grid': 'z from 0.1 to 7 — Hz variation over HUDF redshift range',
+                'I_vs_t': 'I(t) interaction factor — peak at t=0, decays over 1 Gyr scale',
+            },
+            'g_HUDF': g_total,
+            'Hz_cosmic': Hz,
+            'I_interaction': I_t,
+        }
+
+
+class GalaxyNGC1792StarburstForgeCalculator(_CP3Calculator):
+    """NGC 1792 'The Stellar Forge' — starburst galaxy at z=0.0095.
+
+    Uniquely Rare Mathematical Discoveries:
+      1. Supernova-driven feedback term: a_SN_wind = ρ_wind·v²_SN/ρ_fluid
+         rho_wind=10⁻²¹ kg/m³, v_SN=2000 km/s → vigorous supernova-driven outflow
+      2. Normalized starburst SFR factor: SFR_factor = SFR / M_total = 10/10¹⁰
+      3. Friedmann H(z=0.0095) applied to time-dependent term
+
+    Physical basis: NGC 1792 is a late-type barred-spiral starburst galaxy in Columba,
+    ~50 Mpc distant, SFR≈10 M☉/yr.  Strong infrared and Hα emission.
+    The 'Stellar Forge' label reflects extreme ongoing star formation.
+
+    Source: grok_share_8d951e12.txt — Doc 19, C++ class GalaxyNGC1792 (PREVIOUSLY UNKNOWN)
+    """
+
+    def compute(self, dataset: dict) -> dict:
+        import math
+        G = 6.6743e-11
+        M_sun = 1.989e30
+        c = 2.998e8
+        hbar = 1.0546e-34
+        Lambda = 1.114e-52
+        H0 = 2.268e-18
+        q  = 1.602e-19
+        m_p = 1.673e-27
+        pi = math.pi
+
+        M0 = dataset.get('M0_Msun', 1e10) * M_sun
+        r = dataset.get('r', 80000 * 9.461e15)  # 80000 ly → 7.569e20 m
+        z = dataset.get('z', 0.0095)
+        B = dataset.get('B', 1e-10)
+        B_crit = dataset.get('B_crit', 1e-3)
+        f_TRZ = dataset.get('f_TRZ', 0.1)
+        SFR_Msun_yr = dataset.get('SFR_Msun_yr', 10.0)
+        tau_SF = dataset.get('tau_SF_yr', 1e8) * 3.15576e7
+        rho_fluid = dataset.get('rho_fluid', 1e-25)
+        rho_wind = dataset.get('rho_wind', 1e-21)
+        v_wind = dataset.get('v_wind', 2e6)
+        rho_UA = dataset.get('rho_UA', 7.09e-36)
+        rho_SCm = dataset.get('rho_SCm', 7.09e-37)
+        scale_EM = dataset.get('scale_EM', 1e-12)
+        t = dataset.get('t_years', 5e7) * 3.15576e7
+
+        # Friedmann H(z)
+        Omega_m = 0.3
+        Omega_L = 0.7
+        Hz = H0 * math.sqrt(Omega_m * (1 + z)**3 + Omega_L)
+
+        SFR_factor = SFR_Msun_yr / (M0 / M_sun)  # normalized SFR rate
+        Mt = M0 * (1 + SFR_factor * math.exp(-t / tau_SF))
+
+        Ug1 = G * Mt / r**2
+        Ug4 = Ug1 * (1 - B / B_crit)
+
+        term1 = Ug1 * (1 + Hz * t) * (1 - B / B_crit)
+        term2 = (Ug1 + Ug4) * (1 + f_TRZ)
+        term3 = (Lambda * c**2) / 3.0
+        v_orb = math.sqrt(G * Mt / r)
+        term4 = (q * v_orb * B / m_p) * (1 + rho_UA / rho_SCm) * scale_EM
+        # Supernova-driven outflow (NOVEL: starburst SN feedback)
+        a_SN_wind = rho_wind * v_wind**2 / rho_fluid
+        delta_x = 1e-15
+        delta_p = hbar / delta_x
+        t_Hub = 1.0 / H0
+        term6 = (hbar / math.sqrt(delta_x * delta_p)) * (2 * pi / t_Hub)
+        V = (4.0 / 3.0) * pi * r**3
+        term7 = rho_fluid * V * Ug1 / Mt
+        M_DM = Mt * 0.1
+        delta_rho_rho = 1e-5
+        term9 = (Mt + M_DM) * (delta_rho_rho + 3 * G * Mt / r**3) / Mt
+
+        g_total = term1 + term2 + term3 + term4 + a_SN_wind + term6 + term7 + term9
+
+        return {
+            'primary_equations': [
+                f"SFR_factor = SFR/M_total = {SFR_factor:.2e}  [NGC1792 normalized starburst rate]",
+                f"M(t={t/3.15576e13:.0f} Gyr) = {Mt/M_sun:.4e} M☉  [starburst mass evolution]",
+                f"H(z={z}) = {Hz:.4e} s⁻¹  [Friedmann correction at z=0.0095]",
+                f"a_SN_wind = ρ_wind·v²_SN/ρ_fluid = {a_SN_wind:.4e} m/s²  [SN feedback; NOVEL starburst forge]",
+                f"g_NGC1792 = {g_total:.4e} m/s²  [The Stellar Forge — 8-term MUGE]",
+            ],
+            'available_equations': [
+                "SFR_factor = SFR [M☉/yr] / M_total [M☉]  (normalized specific star formation rate)",
+                "M(t) = M₀·(1 + SFR_factor·exp(−t/τ_SF))  (starburst mass growth)",
+                "a_SN_wind = ρ_w·v²_w/ρ_f  (supernova-driven feedback acceleration)",
+                "H(z) = H₀·√(0.3·(1+z)³+0.7)  (Friedmann; z=0.0095 range)",
+            ],
+            'simulation_set': {
+                't_sweep': 't from 0 to 500 Myr — starburst lifecycle',
+                'SFR_history': 'mass build-up M(t) for sSFR=1e-9 yr⁻¹ regime',
+                'SN_feedback': 'a_SN_wind vs t — tracks supernova-energy injection rate',
+            },
+            'g_NGC1792': g_total,
+            'SFR_factor': SFR_factor,
+            'a_SN_wind': a_SN_wind,
+        }
+
+
+class SGR1745BHProximityMagEnergyCalculator(_CP3Calculator):
+    """SGR 1745-2900 ENHANCED — BH proximity coupling, magnetic energy, burst-decay acceleration.
+
+    Uniquely Rare Mathematical Discoveries (NEW vs existing MagnetarSGR1745DynamicModulationCalculator):
+      1. BH proximity term: a_BH = G·M_BH/r_BH²  (Sgr A* 4e6 M☉ at 0.92 pc)
+      2. Magnetic stored energy: a_mag = [B²/(2μ₀)·V] / (M·r)  (static field; B=2e10T)
+      3. Cumulative burst-decay: a_decay = L₀·τ_d·(1−exp(−t/τ_d)) / (M·r)  (L₀=5e28W)
+      4. Superconductive suppression: f_sc = 1−B/B_crit  (cf. f_TRZ used elsewhere)
+      5. P_init=3.76 s (REAL observed pulse period from ATNF catalogue)
+      6. Galactic Center H(z≈0.001): Hz=2.269e-18 s⁻¹
+
+    Physical basis: SGR 1745-2900 is a magnetar at 0.3 pc projected from Sgr A*.
+    Its proximity to a 4×10⁶ M☉ SMBH makes BH tidal coupling gravitationally dominant.
+
+    Source: grok_share_8d951e12.txt — Doc 2.a enhanced, C++ class MagnetarSGR1745_2900
+    """
+
+    def compute(self, dataset: dict) -> dict:
+        import math
+        G = 6.6743e-11
+        M_sun = 1.989e30
+        c = 2.998e8
+        hbar = 1.0546e-34
+        mu0 = 1.2566e-6
+        Lambda = 1.114e-52
+        H0 = 2.268e-18
+        q  = 1.602e-19
+        m_p = 1.673e-27
+        pi = math.pi
+
+        M = dataset.get('M', 1.4 * M_sun)
+        r = dataset.get('r', 20e3)              # neutron star radius 20 km
+        B = dataset.get('B', 2e10)              # static 2e10 T
+        B_crit = dataset.get('B_crit', 1e11)
+        P_init = dataset.get('P_init', 3.76)    # real ATNF pulse period
+        M_BH = dataset.get('M_BH_Msun', 4e6) * M_sun  # Sgr A*
+        r_BH = dataset.get('r_BH', 2.83e16)    # 0.92 pc
+        Hz = dataset.get('Hz', 2.269e-18)       # Galactic center H
+        L0_W = dataset.get('L0_W', 5e28)
+        tau_decay = dataset.get('tau_decay_yr', 3.5) * 3.15576e7
+        f_TRZ = dataset.get('f_TRZ', 0.1)
+        rho_UA = dataset.get('rho_UA', 7.09e-36)
+        rho_SCm = dataset.get('rho_SCm', 7.09e-37)
+        scale_EM = dataset.get('scale_EM', 1e-12)
+        rho_fluid = dataset.get('rho_fluid', 1e-9)
+        t = dataset.get('t_years', 5000) * 3.15576e7
+
+        # Superconductive suppression factor (cf. f_TRZ elsewhere)
+        f_sc = 1 - B / B_crit
+
+        Omega_init = 2 * pi / P_init
+        v_surf = Omega_init * r
+
+        Ug1 = G * M / r**2
+        Ug4 = Ug1 * f_sc
+
+        term1 = Ug1 * (1 + Hz * t) * f_sc
+        term2 = (Ug1 + Ug4) * (1 + f_TRZ)
+        term3 = (Lambda * c**2) / 3.0
+        term4 = (q * v_surf * B / m_p) * (1 + rho_UA / rho_SCm) * scale_EM
+
+        # BH proximity term (NOVEL: SMBH tidal coupling at r_BH=0.92 pc)
+        term_BH = G * M_BH / r_BH**2
+
+        # Magnetic stored energy (NOVEL: static field energy density)
+        V = (4.0 / 3.0) * pi * r**3
+        M_mag = (B**2 / (2 * mu0)) * V
+        term_mag = M_mag / (M * r)
+
+        # Cumulative burst decay (NOVEL)
+        cum_D = L0_W * tau_decay * (1 - math.exp(-t / tau_decay))
+        term_decay = cum_D / (M * r)
+
+        delta_x = 1e-15
+        delta_p = hbar / delta_x
+        t_Hub = 1.0 / H0
+        term6 = (hbar / math.sqrt(delta_x * delta_p)) * (2 * pi / t_Hub)
+        term7 = rho_fluid * V * Ug1 / M
+        M_DM = M * 0.1
+        delta_rho_rho = 1e-5
+        term9 = (M + M_DM) * (delta_rho_rho + 3 * G * M / r**3) / M
+
+        g_total = term1 + term2 + term3 + term4 + term_BH + term_mag + term_decay + term6 + term7 + term9
+
+        return {
+            'primary_equations': [
+                f"f_sc = 1−B/B_crit = {f_sc:.4f}  [superconductive suppression; B=2e10T/B_crit=1e11T]",
+                f"P_init = {P_init} s  [ATNF real pulse period for SGR 1745-2900]",
+                f"a_BH = G·M_BH/r_BH² = {term_BH:.4e} m/s²  [Sgr A* tidal coupling at 0.92 pc; NOVEL]",
+                f"M_mag = B²/(2μ₀)·V = {M_mag:.4e} J  → a_mag = {term_mag:.4e} m/s²  [stored field energy; NOVEL]",
+                f"cum_D = L₀·τ_d·(1−e^(−t/τ_d)) = {cum_D:.4e} J  → a_decay = {term_decay:.4e} m/s²  [burst energy; NOVEL]",
+                f"g_SGR1745_enhanced = {g_total:.4e} m/s²  [10-term MUGE with BH proximity]",
+            ],
+            'available_equations': [
+                "a_BH = G·M_BH/r_BH²  (SMBH tidal coupling; dominant at ≤1 pc from Sgr A*)",
+                "a_mag = [B²/(2μ₀)·(4π/3·r³)] / (M·r)  (static magnetic energy term)",
+                "a_decay = L₀·τ_d·(1−exp(−t/τ_d)) / (M·r)  (cumulative burst energy)",
+                "f_sc = 1−B/B_crit  (superconductive factor; cf. f_TRZ=const elsewhere)",
+            ],
+            'simulation_set': {
+                't_sweep': 't from 0 to 20000 yr — burst cycle evolution',
+                'BH_dominance': 'compare term_BH vs term1 — SMBH tidal vs self-gravity',
+                'mag_energy_vs_decay': 'a_mag and a_decay competitive terms at early t',
+            },
+            'g_SGR1745_enhanced': g_total,
+            'a_BH': term_BH,
+            'a_mag': term_mag,
+            'a_decay': term_decay,
+        }
+
+
+class SgrAStarAccretionPrecessionCalculator(_CP3Calculator):
+    """Sagittarius A* ENHANCED — SMBH accretion mass growth M(t), precession DM correction.
+
+    Uniquely Rare Mathematical Discoveries (NEW vs existing SgrAStarSpinDragUQFFCalculator):
+      1. Accretion mass growth: M(t) = M_init·(1 + Ṁ₀·exp(−t/τ_acc))
+         Ṁ₀=0.01, τ_acc=9 Gyr — slow secular SMBH mass evolution
+      2. Gauss→Tesla conversion: B(t) = B₀_G·exp(−t/τ_B)·10⁻⁴ T
+         B₀_G=10⁴ G = 1 T at t=0 → decays on 1 Myr
+      3. Precession DM perturbation: pert2 = 3·G·M(t)/r³ · sin(θ_prec)
+         θ_prec=30° → ×0.5 factor on density correction term (Kerr-like frame drag)
+      4. r = 1.27e10 m = Schwarzschild radius of 4.3e6 M☉ BH
+
+    Physical basis: Sgr A* sits at 8.127 kpc, mass 4.297e6 M☉.
+    Millimetre/IR flares suggest slow accretion growth; B≈10⁴ G in accretion disc.
+
+    Source: grok_share_8d951e12.txt — Doc 3 enhanced, C++ class SMBHSgrAStar
+    """
+
+    def compute(self, dataset: dict) -> dict:
+        import math
+        G = 6.6743e-11
+        M_sun = 1.989e30
+        c = 2.998e8
+        hbar = 1.0546e-34
+        Lambda = 1.114e-52
+        H0 = 2.268e-18
+        q  = 1.602e-19
+        m_p = 1.673e-27
+        pi = math.pi
+
+        M_init = dataset.get('M_init_Msun', 4.3e6) * M_sun
+        r = dataset.get('r', 1.27e10)           # Schwarzschild radius
+        B0_G = dataset.get('B0_Gauss', 1e4)     # Gauss units (accretion disc)
+        tau_B = dataset.get('tau_B_yr', 1e6) * 3.15576e7
+        B_crit_T = dataset.get('B_crit_T', 1e-3)  # T units
+        M_dot_0 = dataset.get('M_dot_0', 0.01)
+        tau_acc = dataset.get('tau_acc_yr', 9e9) * 3.15576e7
+        precession_angle_deg = dataset.get('precession_angle_deg', 30.0)
+        spin_factor = dataset.get('spin_factor', 0.3)
+        f_TRZ = dataset.get('f_TRZ', 0.1)
+        rho_UA = dataset.get('rho_UA', 7.09e-36)
+        rho_SCm = dataset.get('rho_SCm', 7.09e-37)
+        scale_EM = dataset.get('scale_EM', 1e-12)
+        rho_fluid = dataset.get('rho_fluid', 1e-15)
+        t = dataset.get('t_years', 1e9) * 3.15576e7
+
+        # Accretion mass growth (UNIQUE: M(t) not static)
+        Mt = M_init * (1 + M_dot_0 * math.exp(-t / tau_acc))
+
+        # Gauss → Tesla conversion (UNIQUE: distinct from T-only treatment)
+        Bt_G = B0_G * math.exp(-t / tau_B)   # in Gauss
+        Bt_T = Bt_G * 1e-4                    # convert to Tesla
+
+        f_sc = 1 - Bt_T / B_crit_T
+
+        Ug1 = G * Mt / r**2
+        Ug4 = Ug1 * f_sc
+
+        term1 = Ug1 * (1 + H0 * t) * f_sc
+        term2 = (Ug1 + Ug4) * (1 + f_TRZ)
+        term3 = (Lambda * c**2) / 3.0
+
+        # Kerr-like spin orbital velocity
+        Omega_spin = spin_factor * math.sqrt(G * Mt / r**3) if r > 0 else 0
+        v_orb = Omega_spin * r
+        term4 = (q * v_orb * Bt_T / m_p) * (1 + rho_UA / rho_SCm) * scale_EM
+
+        delta_x = 1e-15
+        delta_p = hbar / delta_x
+        t_Hub = 1.0 / H0
+        term6 = (hbar / math.sqrt(delta_x * delta_p)) * (2 * pi / t_Hub)
+        V = (4.0 / 3.0) * pi * r**3
+        term7 = rho_fluid * V * Ug1 / Mt
+
+        # Oscillatory (AGN variability)
+        A_osc = 1e12
+        k_osc = 2 * pi / r
+        omega_osc = 2 * pi * (c / r)
+        term8 = 2 * A_osc * math.cos(k_osc * r) * math.cos(omega_osc * t)
+
+        # Precession DM perturbation (UNIQUE: sin(θ_prec) on density term)
+        prec_rad = math.radians(precession_angle_deg)
+        delta_rho_rho = 1e-5
+        pert2 = (3 * G * Mt / r**3) * math.sin(prec_rad)   # precession correction
+        M_DM = Mt * 0.1
+        term9 = (Mt + M_DM) * (delta_rho_rho + pert2) / Mt
+
+        g_total = term1 + term2 + term3 + term4 + term6 + term7 + term8 + term9
+
+        return {
+            'primary_equations': [
+                f"M(t) = M_init·(1 + Ṁ₀·exp(−t/τ_acc)) = {Mt/M_sun:.4e} M☉  [accretion growth; NOVEL]",
+                f"Ṁ₀={M_dot_0}, τ_acc={tau_acc/3.15576e7/1e9:.0f} Gyr — slow SMBH mass evolution",
+                f"B(t) = B₀_G·exp(−t/τ_B)·10⁻⁴ = {Bt_T:.4e} T  [Gauss→Tesla; B₀={B0_G:.0e}G]",
+                f"pert2 = 3·G·M(t)/r³ · sin(30°) = {pert2:.4e} s⁻²  [precession DM correction; NOVEL]",
+                f"g_SgrA_enhanced = {g_total:.4e} m/s²  [9-term MUGE; Schwarzschild r, precession]",
+            ],
+            'available_equations': [
+                "M(t) = M_init·(1+Ṁ₀·exp(−t/τ_acc))  (SMBH secular accretion growth)",
+                "B_T(t) = B_G(t)×10⁻⁴  (Gauss→Tesla for accretion disc B-field)",
+                "pert2 = 3GM/r³·sin(θ_prec)  (precession on DM density perturbation; θ=30°)",
+                "Ω_Kerr = spin_fac·√(GM/r³)  (Kerr-like effective orbital frequency)",
+            ],
+            'simulation_set': {
+                't_sweep': 't from 0 to 10 Gyr — full accretion evolution',
+                'M_growth': 'M(t) — SMBH mass from 4.3e6 growing at 1% rate (τ=9Gyr)',
+                'B_decay': 'B(t) Gauss→Tesla evolution on 1 Myr timescale',
+                'precession_sensitivity': 'DM term with sin(θ) from 0° to 90°',
+            },
+            'g_SgrA_enhanced': g_total,
+            'M_SgrA_Msun': Mt / M_sun,
+            'B_T': Bt_T,
+        }
+
+
+class AntennaeGalaxiesMergerInteractionCalculator(_CP3Calculator):
+    """NGC 4038/4039 (Antennae Galaxies) ENHANCED — merger I(t) factor applied to BOTH base AND UQFF.
+
+    Uniquely Rare Mathematical Discoveries (NEW vs existing UQFFVelocityStarFormationCollisionCalculator):
+      1. Merger interaction factor: I(t) = I₀·exp(−t/τ_merger)
+         I₀=0.1, τ_merger=400 Myr — decaying tidal interaction over several 100 Myr
+      2. DOUBLY applied: BOTH term1 AND Ug modulated by (1+I(t))
+         term1 = base_gravity  · (1+I(t))   ← base gravity amplified by merger
+         Ug    = (Ug1+Ug4)·(1+f_TRZ) · (1+I(t))  ← UQFF also merger-modulated
+      3. SFR: M(t) = M₀·(1 + SFR_fac·exp(−t/τ_SF)); SFR_fac=20/(2e11)=1e-10
+      4. Example at t=300 Myr (peak active merger phase)
+
+    Physical basis: NGC 4038 + NGC 4039 merging pair at ~22 Mpc, z=0.0105.
+    Total stellar mass ~2×10¹¹ M☉.  Merger began ~600 Myr ago, SFR≈20 M☉/yr.
+
+    Source: grok_share_8d951e12.txt — Doc 14 enhanced, C++ class AntennaeGalaxies
+    """
+
+    def compute(self, dataset: dict) -> dict:
+        import math
+        G = 6.6743e-11
+        M_sun = 1.989e30
+        c = 2.998e8
+        hbar = 1.0546e-34
+        Lambda = 1.114e-52
+        H0 = 2.268e-18
+        q  = 1.602e-19
+        m_p = 1.673e-27
+        pi = math.pi
+
+        M0 = dataset.get('M0_Msun', 2e11) * M_sun
+        SFR_Msun_yr = dataset.get('SFR_Msun_yr', 20.0)
+        r = dataset.get('r', 2.838e20)          # 30,000 ly in metres
+        z = dataset.get('z', 0.0105)
+        B = dataset.get('B', 1e-10)
+        B_crit = dataset.get('B_crit', 1e-3)
+        f_TRZ = dataset.get('f_TRZ', 0.1)
+        tau_SF = dataset.get('tau_SF_yr', 1e8) * 3.15576e7
+        I0 = dataset.get('I0', 0.1)
+        tau_merger = dataset.get('tau_merger_yr', 4e8) * 3.15576e7
+        rho_fluid = dataset.get('rho_fluid', 1e-25)
+        rho_UA = dataset.get('rho_UA', 7.09e-36)
+        rho_SCm = dataset.get('rho_SCm', 7.09e-37)
+        scale_EM = dataset.get('scale_EM', 1e-12)
+        t = dataset.get('t_years', 3e8) * 3.15576e7  # 300 Myr default
+
+        # Friedmann H(z)
+        Omega_m = 0.3
+        Omega_L = 0.7
+        Hz = H0 * math.sqrt(Omega_m * (1 + z)**3 + Omega_L)
+
+        SFR_factor = SFR_Msun_yr / (M0 / M_sun)
+        Mt = M0 * (1 + SFR_factor * math.exp(-t / tau_SF))
+
+        # Merger interaction factor (NOVEL: decaying tidal enhancement)
+        I_t = I0 * math.exp(-t / tau_merger)
+
+        Ug1 = G * Mt / r**2
+        Ug4 = Ug1 * (1 - B / B_crit)
+
+        # NOVEL DOUBLE APPLICATION: merger I(t) on BOTH term1 AND Ug
+        base_grav = Ug1 * (1 + Hz * t) * (1 - B / B_crit)
+        term1 = base_grav * (1 + I_t)                          # base ← merger
+        Ug_uqff = (Ug1 + Ug4) * (1 + f_TRZ)
+        term2 = Ug_uqff * (1 + I_t)                            # Ug ← also merger
+
+        term3 = (Lambda * c**2) / 3.0
+        v_orb = math.sqrt(G * Mt / r)
+        term4 = (q * v_orb * B / m_p) * (1 + rho_UA / rho_SCm) * scale_EM
+        delta_x = 1e-15
+        delta_p = hbar / delta_x
+        t_Hub = 1.0 / H0
+        term6 = (hbar / math.sqrt(delta_x * delta_p)) * (2 * pi / t_Hub)
+        V = (4.0 / 3.0) * pi * r**3
+        term7 = rho_fluid * V * Ug1 / Mt
+        M_DM = Mt * 0.1
+        delta_rho_rho = 1e-5
+        term9 = (Mt + M_DM) * (delta_rho_rho + 3 * G * Mt / r**3) / Mt
+
+        g_total = term1 + term2 + term3 + term4 + term6 + term7 + term9
+
+        return {
+            'primary_equations': [
+                f"I(t) = I₀·exp(−t/τ_merger) = {I_t:.4e}  [I₀={I0}; τ={tau_merger/3.15576e7/1e8:.1f}×10⁸ yr]",
+                f"term1 = base_grav·(1+I(t)) = {term1:.4e} m/s²  [NOVEL: merger amplifies base gravity]",
+                f"Ug_eff = (Ug1+Ug4)·(1+f_TRZ)·(1+I(t)) = {term2:.4e} m/s²  [NOVEL: merger also on UQFF Ug]",
+                f"Double application: both gravitational base AND UQFF Ug modulated by I(t)",
+                f"g_Antennae_enhanced = {g_total:.4e} m/s²  [NGC 4038/4039; t=300 Myr merger phase]",
+            ],
+            'available_equations': [
+                "I(t) = I₀·exp(−t/τ_merger)  (tidal interaction coupling factor)",
+                "term1 = Ug1·(1+Hz·t)·(1−B/B_crit)·(1+I(t))  (interaction-amplified gravity)",
+                "Ug_int = (Ug1+Ug4)·(1+f_TRZ)·(1+I(t))  (UQFF with merger modulation; NOVEL double app)",
+                "SFR_factor = SFR_Myr / M_total  (normalized merger starburst rate)",
+            ],
+            'simulation_set': {
+                't_sweep': 't from 0 to 1 Gyr — full merger timeline',
+                'I_decay': 'I(t) from I₀=0.1 → near-zero over 400 Myr timescale',
+                'double_vs_single': 'compare: double I(t) application vs single (term1 only)',
+                'peak_merger': 'identify t_peak where d/dt(term1+term2) = 0',
+            },
+            'g_Antennae_enhanced': g_total,
+            'I_merger': I_t,
+        }
+
+
+# ---------------------------------------------------------------------------
 # __all__ export
 # ---------------------------------------------------------------------------
 
@@ -5373,4 +6449,15 @@ __all__ = [
     "SaturnDualGravityRingTensionCalculator",
     # Session 57 — grok_share_7514fe sixth-pass (final): early-universe (v/c)^2·L_UV
     "UQFFEarlyUniverseRelativisticUVCalculator",
+    # Session 58 — PAPER_226–235 (grok_share_8d951e12.txt)
+    "MagnetarSGR0501MUGEFullCalculator",
+    "StarbirthTapestryLMCUQFFCalculator",
+    "Westerlund2MUGEStellarWindCalculator",
+    "PillarsOfCreationErosionMUGECalculator",
+    "GalaxyNGC2525SNMassLossCalculator",
+    "HUDFGalaxiesCosmicFieldCalculator",
+    "GalaxyNGC1792StarburstForgeCalculator",
+    "SGR1745BHProximityMagEnergyCalculator",
+    "SgrAStarAccretionPrecessionCalculator",
+    "AntennaeGalaxiesMergerInteractionCalculator",
 ]

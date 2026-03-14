@@ -10,7 +10,7 @@ while maintaining a single-import API.
 ARCHITECTURE:
     CondensedPhysics.py      → Foundation (1011 base classes)
     CondensedPhysics2.py     → Extension 1 (17+ classes: Orb Analysis 10/11+)
-    CondensedPhysics3.py     → Extension 2 (96 classes: 15+ categories, Sessions 41-57, 2026-03-14)
+    CondensedPhysics3.py     → Extension 2 (105 classes: 15+ categories, Sessions 41-58, 2026-03-14)
     CondensedPhysicsAggregator.py → This file (unified API)
 
 USAGE:
@@ -203,6 +203,17 @@ from CondensedPhysics3 import (
     SaturnDualGravityRingTensionCalculator,
     # Session 57 — grok_share_7514fe sixth-pass (final): early-universe (v/c)^2·L_UV
     UQFFEarlyUniverseRelativisticUVCalculator,
+    # Session 58 — grok_share_8d951e12.txt: 10 new classes (PAPER_226–235)
+    MagnetarSGR0501MUGEFullCalculator,
+    StarbirthTapestryLMCUQFFCalculator,
+    Westerlund2MUGEStellarWindCalculator,
+    PillarsOfCreationErosionMUGECalculator,
+    GalaxyNGC2525SNMassLossCalculator,
+    HUDFGalaxiesCosmicFieldCalculator,
+    GalaxyNGC1792StarburstForgeCalculator,
+    SGR1745BHProximityMagEnergyCalculator,
+    SgrAStarAccretionPrecessionCalculator,
+    AntennaeGalaxiesMergerInteractionCalculator,
 )
 
 CP3_CALCULATORS = {
@@ -310,6 +321,17 @@ CP3_CALCULATORS = {
     'SaturnDualGravityRingTensionCalculator': SaturnDualGravityRingTensionCalculator,
     # Session 57 — grok_share_7514fe sixth-pass (final): early-universe (v/c)^2·L_UV
     'UQFFEarlyUniverseRelativisticUVCalculator': UQFFEarlyUniverseRelativisticUVCalculator,
+    # Session 58 — grok_share_8d951e12.txt: 10 new classes (PAPER_226–235)
+    'MagnetarSGR0501MUGEFullCalculator': MagnetarSGR0501MUGEFullCalculator,
+    'StarbirthTapestryLMCUQFFCalculator': StarbirthTapestryLMCUQFFCalculator,
+    'Westerlund2MUGEStellarWindCalculator': Westerlund2MUGEStellarWindCalculator,
+    'PillarsOfCreationErosionMUGECalculator': PillarsOfCreationErosionMUGECalculator,
+    'GalaxyNGC2525SNMassLossCalculator': GalaxyNGC2525SNMassLossCalculator,
+    'HUDFGalaxiesCosmicFieldCalculator': HUDFGalaxiesCosmicFieldCalculator,
+    'GalaxyNGC1792StarburstForgeCalculator': GalaxyNGC1792StarburstForgeCalculator,
+    'SGR1745BHProximityMagEnergyCalculator': SGR1745BHProximityMagEnergyCalculator,
+    'SgrAStarAccretionPrecessionCalculator': SgrAStarAccretionPrecessionCalculator,
+    'AntennaeGalaxiesMergerInteractionCalculator': AntennaeGalaxiesMergerInteractionCalculator,
 }
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -449,8 +471,8 @@ ALL_CALCULATORS = {
 }
 
 # Module metadata
-AGGREGATOR_VERSION = "2.1.0"
-TOTAL_MODULES = 21  # CP1, CP2 v2.1.0, CP3 (Sessions 41-57, 96 classes), + 10 thread registries + PAPER_196-225
+AGGREGATOR_VERSION = "2.2.0"
+TOTAL_MODULES = 21  # CP1, CP2 v2.2.0, CP3 (Sessions 41-58, 105 classes), + 10 thread registries + PAPER_196-235
 
 
 def get_calculator(name: str):
