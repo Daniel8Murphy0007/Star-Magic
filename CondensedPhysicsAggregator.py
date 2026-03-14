@@ -10,7 +10,7 @@ while maintaining a single-import API.
 ARCHITECTURE:
     CondensedPhysics.py      → Foundation (1011 base classes)
     CondensedPhysics2.py     → Extension 1 (17+ classes: Orb Analysis 10/11+)
-    CondensedPhysics3.py     → Extension 2 (105 classes: 15+ categories, Sessions 41-58, 2026-03-14)
+    CondensedPhysics3.py     → Extension 2 (112 classes: 15+ categories, Sessions 41-60, 2026-03-14)
     CondensedPhysicsAggregator.py → This file (unified API)
 
 USAGE:
@@ -79,7 +79,7 @@ from CondensedPhysics2 import (
 )
 
 # ═══════════════════════════════════════════════════════════════════════════════
-# IMPORT FROM CONDENSEDPHYSICS3.PY (EXTENSION 2 — 69 classes, 15+ categories)
+# IMPORT FROM CONDENSEDPHYSICS3.PY (EXTENSION 2 — 112 classes, 15+ categories)
 # Source: Grok threads ba4c0789 (Session 41), 7f9068 (Session 47), 381a8fe7 (Session 48), 7514fe (Session 50)
 # ═══════════════════════════════════════════════════════════════════════════════
 
@@ -473,7 +473,7 @@ from GrokThreadUQFFExtensions import (
 # Aggregate all calculators from all CP modules
 ALL_CALCULATORS = {
     **CP2_CALCULATORS,
-    # CP3 Extension 2 (69 classes, 15+ categories, Sessions 41-50 — 2026-03-11)
+    # CP3 Extension 2 (112 classes, 15+ categories, Sessions 41-60 — 2026-03-14)
     **CP3_CALCULATORS,
     # Grok Thread UQFF Extensions (Thread 9c3666463ac14753b4f3bea869caaf01)
     **GROK_THREAD_UQFF_CALCULATORS,
@@ -526,7 +526,7 @@ def list_all_calculators():
     return {
         'CP2_ORB_ANALYSIS_10': list(ORB_ANALYSIS_10_CALCULATORS.keys()),
         'CP2_ORB_ANALYSIS_11': list(ORB_ANALYSIS_11_CALCULATORS.keys()),
-        # CP3 Extension 2 (69 classes, 15+ categories, Sessions 41-50)
+        # CP3 Extension 2 (112 classes, 15+ categories, Sessions 41-60)
         'CP3_ALL': list(CP3_CALCULATORS.keys()),
         # Grok Deep Analysis modules
         'AGN_FEEDBACK': list(AGN_FEEDBACK_CALCULATORS.keys()),
@@ -550,7 +550,7 @@ __all__ = [
     'get_calculator',
     'list_all_calculators',
 
-    # CP3 exports (Extension 2 — 69 classes, Sessions 41-50)
+    # CP3 exports (Extension 2 — 112 classes, Sessions 41-60)
     'CP3_CALCULATORS',
     'SolarWindBubbleVerificationCalculator',
     'HeliopausalBoundaryStepFunctionCalculator',

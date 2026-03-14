@@ -26,7 +26,7 @@ Usage
   python uqff_ipc.py --json-b64 <base64-encoded-json>
 
 Author: Daniel T. Murphy
-Date  : March 2026 (v3.1 — GrokThread7b0e961f integration)
+Date  : March 2026 (v3.2 — Session 60 sync: CP3 112 classes, Aggregator v2.4.0, 243 papers)
 """
 
 from __future__ import annotations
