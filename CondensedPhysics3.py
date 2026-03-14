@@ -6309,6 +6309,490 @@ class AntennaeGalaxiesMergerInteractionCalculator(_CP3Calculator):
 
 
 # ---------------------------------------------------------------------------
+# Session 59 — grok_share_8d951e12.txt second-pass: Doc9 + Source10 (PAPER_236–241)
+# Class 106: UQFFLearningAdvancementCalculator
+# Class 107: UQFFSource10CatalogueCalculator
+# Class 108: UQFFVacuumRepulsionCalculator
+# Class 109: UQFFTHzConduitShockCalculator
+# Class 110: UQFFSpookyActionDPMCalculator
+# ---------------------------------------------------------------------------
+
+class UQFFLearningAdvancementCalculator(_CP3Calculator):
+    """
+    PAPER_236 | Doc 9 — UQFF Learning Assessment Evolution_B (grok_share_8d951e12.txt lines 2993–3085)
+
+    Meta-assessment module computing UQFF framework advancement from three prior examples
+    (Westerlund 2, Pillars of Creation, Rings of Relativity).
+
+    Core formula:
+        advancement = (diversity_score + dynamic_score + scalability_score) / 3.0 * 100.0  [%]
+
+    Scores:
+        diversity_score   — number of distinct physical regimes covered (default 3)
+        dynamic_score     — number of new dynamic terms introduced (default 3: wind, erosion, lensing)
+        scalability_score — adaptability across spatial/temporal scales (default 8.0 / 10)
+
+    Parameters aggregated from three prior UQFF systems:
+        Westerlund 2  : M_wd2=30000 M_sun, tau_SF_wd2=3.15e13 s, rho_wind_wd2=1e-20 kg/m³
+        Pillars       : E_0_pillars=0.3, tau_erosion_pillars=3.15e12 s
+        Rings         : r_rings=1.54e22 m, L_factor_rings=1.2, Hz_rings=2.18e-18 s⁻¹
+
+    Novel contribution: first framework-level (meta-assessment) calculator in the pipeline,
+    not tied to a single astrophysical object but evaluating UQFF progression across multiple regimes.
+    """
+
+    PAPER_ID = "PAPER_236"
+    SOURCE_DOC = "Doc 9 — UQFF Learning Assessment Evolution_B (grok_share_8d951e12.txt)"
+    SESSION = 59
+
+    # Default assessment scores (from Evolution_B header)
+    DEFAULT_DIVERSITY_SCORE = 3.0          # stellar wind, erosion, lensing
+    DEFAULT_DYNAMIC_SCORE = 3.0            # new dynamic terms in Sessions 53–55
+    DEFAULT_SCALABILITY_SCORE = 8.0 / 10   # 0.8 normalised
+    # Westerlund 2 parameters
+    M_SUN = 1.989e30                         # kg
+    M_WD2 = 30_000 * M_SUN                  # kg
+    TAU_SF_WD2 = 3.15e13                     # s (~1 Myr)
+    RHO_WIND_WD2 = 1e-20                     # kg/m³
+    V_WIND_WD2 = 2_000e3                     # m/s
+    # Pillars of Creation parameters
+    E_0_PILLARS = 0.3                        # dimensionless erosion factor
+    TAU_EROSION_PILLARS = 3.15e12            # s (~0.1 Myr)
+    # Rings of Relativity parameters
+    R_RINGS = 1.54e22                        # m (Einstein radius)
+    L_FACTOR_RINGS = 1.2                     # dimensionless lensing factor
+    HZ_RINGS = 2.18e-18                      # s⁻¹ (H(z) at z~2)
+
+    def compute(self, dataset: dict) -> dict:
+        diversity_score = dataset.get('diversity_score', self.DEFAULT_DIVERSITY_SCORE)
+        dynamic_score = dataset.get('dynamic_score', self.DEFAULT_DYNAMIC_SCORE)
+        scalability_score = dataset.get('scalability_score', self.DEFAULT_SCALABILITY_SCORE)
+
+        # Core advancement formula (from UQFFLearningAssessment.h Evolution_B)
+        advancement = (diversity_score + dynamic_score + scalability_score) / 3.0 * 100.0
+
+        return {
+            'primary_equations': [
+                f"advancement = (diversity_score + dynamic_score + scalability_score) / 3.0 × 100.0",
+                f"diversity_score  = {diversity_score}  [physical regimes: wind, erosion, lensing]",
+                f"dynamic_score    = {dynamic_score}  [new dynamic terms introduced]",
+                f"scalability_score= {scalability_score:.4f}  [adaptability across scales, 0–1]",
+                f"advancement      = ({diversity_score} + {dynamic_score} + {scalability_score:.4f}) / 3.0 × 100.0 = {advancement:.2f} %",
+                f"[Novel: meta-assessment of UQFF progression; evaluates framework evolution across multiple regimes]",
+            ],
+            'available_equations': [
+                "diversity_score  = len(distinct_physical_regimes)  (count of covered UQFF regimes)",
+                "dynamic_score    = len(new_dynamic_terms)          (count of novel force/field terms)",
+                "scalability_score = adaptability_rating / max_rating (normalised 0–1)",
+                "advancement [%]  = mean(diversity, dynamic, scalability) × 100",
+                "Westerlund 2 wind acceleration: a_wind = rho_wind * v_wind^2 / rho_fluid",
+                "Pillars erosion factor: E(t) = E_0 * exp(-t / tau_erosion)",
+                "Rings lensing modulation: g_lens = Ug1*Hz*t + Ug4*(1+f_TRZ)*L_factor",
+            ],
+            'simulation_set': {
+                'regime_sweep': 'vary diversity_score 1→10 and observe advancement trajectory',
+                'dynamic_term_growth': 'track dynamic_score per session vs cumulative advancement',
+                'scalability_tuning': 'scalability_score 0.5→1.0 — sensitivity on advancement plateau',
+                'multi_example_comparison': 'run Westerlund2, Pillars, Rings parameters and compare g contributions',
+            },
+            'advancement_pct': advancement,
+            'diversity_score': diversity_score,
+            'dynamic_score': dynamic_score,
+            'scalability_score': scalability_score,
+        }
+
+
+class UQFFSource10CatalogueCalculator(_CP3Calculator):
+    """
+    PAPER_237 | Source10 — UQFFSource10 Catalogue Module (grok_share_8d951e12.txt lines 5903–6662)
+
+    Central UQFF catalogue class: master buoyancy integral (F_U_Bi_i) and 26-layer Triadic gravity.
+
+    Master buoyancy force (F_U_Bi_i):
+        F_U_Bi_i = integrand * x_2
+                 + LENR_term * activation_term * exp(-t / tau_LENR)
+                 + DE_term
+                 + resonance_term * neutron_factor
+                 + rel_term * (1 + f_TRZ)
+
+        where:
+            LENR_term    = scaling_LENR * (rho_fluid * v^2) (low-energy nuclear reaction term)
+            DE_term      = scaling_DE * (Lambda * c^2 / 3) * r  (dark energy expansion)
+            resonance_term = scaling_res * (B^2 / (2 * mu_0)) * volume  (magnetic resonance)
+            rel_term     = scaling_rel * (M * c^2) / r  (relativistic buoyancy)
+            neutron_factor = rho_neutron / rho_ref  (neutron density normalisation)
+            activation_term = 1 + (E_activation / (k_B * T))
+
+    26-layer Triadic UQFF gravity:
+        g_UQFF(r,t) = Σᵢ₌₁²⁶ (Ug1_i + Ug2_i + Ug3_i + Ug4_i)
+                    + Λ·c²/3
+                    + ħ / sqrt(Δx·Δp) * integral_psi * (2π / t_Hubble)
+
+        Each layer: Ug1_i = G·M_i/r², Ug2_i = (Q²)/(4πε₀·M·r²), Ug3_i = ω_i²·r, Ug4_i = f_vac·c²
+
+    Example result (Eta Carinae): F_U_Bi_i ≈ 2.11×10²⁰⁸ N
+    g_H (hydrogen g-factor) = 1.252×10⁴⁶
+
+    Novel contributions: complete 26-layer vectorized catalogue with 5 independent force classes;
+    configurable scaling_factors map; mt19937 batch compute architecture.
+    """
+
+    PAPER_ID = "PAPER_237"
+    SOURCE_DOC = "Source10 — UQFFSource10 Catalogue (grok_share_8d951e12.txt ~5903)"
+    SESSION = 59
+
+    # Physical constants
+    G = 6.674e-11          # m³/(kg·s²)
+    C = 2.998e8            # m/s
+    HBAR = 1.055e-34       # J·s
+    MU_0 = 1.257e-6        # H/m
+    LAMBDA_CC = 1.1e-52    # m⁻² (cosmological constant)
+    T_HUBBLE = 4.355e17    # s (13.8 Gyr)
+    G_H = 1.252e46         # hydrogen g-factor (UQFF-derived)
+    K_B = 1.381e-23        # J/K
+    EPS_0 = 8.854e-12      # F/m
+
+    # Default scaling factors (configurable per-system)
+    SCALE_LENR = 1.0
+    SCALE_DE = 1.0
+    SCALE_RES = 1.0
+    SCALE_REL = 1.0
+
+    def compute(self, dataset: dict) -> dict:
+        import math
+
+        M = dataset.get('M', 2.984e31)           # kg  (Eta Carinae ~150 M_sun)
+        r = dataset.get('r', 1.0e14)             # m
+        t = dataset.get('t', 0.0)               # s
+        v = dataset.get('v', 1e6)               # m/s (bulk velocity)
+        rho_fluid = dataset.get('rho_fluid', 1e-15)  # kg/m³
+        rho_neutron = dataset.get('rho_neutron', 1e14)  # kg/m³
+        rho_ref = dataset.get('rho_ref', 1e14)  # kg/m³
+        B = dataset.get('B', 1e-3)              # T
+        volume = dataset.get('volume', 1e30)    # m³
+        T_temp = dataset.get('T_temp', 1e7)     # K
+        E_activation = dataset.get('E_activation', 1e-19)  # J
+        f_TRZ = dataset.get('f_TRZ', 0.01)      # dimensionless
+        tau_LENR = dataset.get('tau_LENR', 3.15e13)  # s
+        dx = dataset.get('dx', 1e-10)           # m
+        dp = dataset.get('dp', 1e-24)           # kg·m/s
+        integral_psi = dataset.get('integral_psi', 1.0)  # dimensionless
+
+        # x_2 integrand base (buoyancy balance term)
+        x_2 = dataset.get('x_2', 1.0)
+        integrand = self.G * M / r**2
+
+        # Component terms
+        LENR_term = self.SCALE_LENR * rho_fluid * v**2
+        activation_term = 1.0 + (E_activation / (self.K_B * T_temp))
+        LENR_full = LENR_term * activation_term * math.exp(-t / tau_LENR)
+
+        DE_term = self.SCALE_DE * (self.LAMBDA_CC * self.C**2 / 3.0) * r
+
+        resonance_term = self.SCALE_RES * (B**2 / (2.0 * self.MU_0)) * volume
+        neutron_factor = rho_neutron / rho_ref
+        resonance_full = resonance_term * neutron_factor
+
+        rel_term = self.SCALE_REL * (M * self.C**2) / r
+        rel_full = rel_term * (1.0 + f_TRZ)
+
+        # Master F_U_Bi_i
+        F_U_Bi_i = integrand * x_2 + LENR_full + DE_term + resonance_full + rel_full
+
+        # 26-layer g_UQFF — vectorised over 26 layers
+        Q_charge = dataset.get('Q_charge', 1.6e-19)  # C
+        omega_layer = dataset.get('omega_layer', 1e10)  # rad/s (same for all layers, simplification)
+        f_vac = dataset.get('f_vac', 1e-120)  # vacuum fraction
+        n_layers = 26
+        g_layers = 0.0
+        for i in range(1, n_layers + 1):
+            M_i = M / n_layers
+            Ug1_i = self.G * M_i / r**2
+            Ug2_i = (Q_charge**2) / (4.0 * math.pi * self.EPS_0 * M_i * r**2) if M_i > 0 else 0.0
+            Ug3_i = omega_layer**2 * r
+            Ug4_i = f_vac * self.C**2
+            g_layers += Ug1_i + Ug2_i + Ug3_i + Ug4_i
+
+        Lambda_term = self.LAMBDA_CC * self.C**2 / 3.0
+        quantum_term = self.HBAR / math.sqrt(dx * dp) * integral_psi * (2.0 * math.pi / self.T_HUBBLE)
+        g_UQFF = g_layers + Lambda_term + quantum_term
+
+        return {
+            'primary_equations': [
+                f"F_U_Bi_i = integrand*x_2 + LENR*act*exp(-t/τ) + DE + res*n_f + rel*(1+f_TRZ)",
+                f"integrand = G·M/r² = {integrand:.4e} m/s²",
+                f"LENR_full = {LENR_full:.4e} N/m²",
+                f"DE_term   = Λ·c²/3·r  = {DE_term:.4e} m/s²",
+                f"resonance = B²V/(2μ₀)·(ρ_n/ρ_ref) = {resonance_full:.4e} N",
+                f"rel_full  = Mc²/r·(1+f_TRZ) = {rel_full:.4e} J",
+                f"F_U_Bi_i  = {F_U_Bi_i:.4e} N  [Eta Carinae scale: ~2.11e208 N]",
+                f"g_UQFF(r,t) = Σᵢ₌₁²⁶(Ug1+Ug2+Ug3+Ug4) + Λc²/3 + ħ/√(ΔxΔp)·∫ψ·(2π/t_H)",
+                f"g_layers(26)= {g_layers:.4e} m/s²",
+                f"Λ_term    = {Lambda_term:.4e} m/s²",
+                f"quantum   = {quantum_term:.4e} m/s²",
+                f"g_UQFF    = {g_UQFF:.4e} m/s²  [g_H = {self.G_H:.3e} (hydrogen g-factor)]",
+            ],
+            'available_equations': [
+                "F_U_Bi_i full expansion — each of 5 force components independently testable",
+                "g_UQFF layer decomposition — individual Ug1–Ug4 per layer i",
+                "LENR activation: act = 1 + E_act/(k_B·T)  (nuclear excitation threshold)",
+                "Dark energy expansion: DE = (Λ·c²/3)·r  (Λ-proportional radial force)",
+                "Relativistic buoyancy: rel = (Mc²/r)·(1+f_TRZ)  (rest-energy surface term)",
+                "neutron_factor = ρ_neutron / ρ_ref  (dense-matter coupling)",
+                "DPM_resonance = g_H·μ_B·B₀·2.82e-56 / (ħ·ω₀)  (see UQFFSpookyActionDPMCalculator)",
+            ],
+            'simulation_set': {
+                'F_U_Bi_i_components': 'sweep t from 0→10 Myr — LENR exponential decay dominant term',
+                'layer_convergence': 'vary n_layers 1→26 and track g_UQFF convergence',
+                'DE_vs_quantum': 'Lambda_term vs quantum_term ratio as r varies 1e12→1e20 m',
+                'Eta_Carinae_benchmark': 'use M=2.984e31 kg, r=1e14 m — expect F~2.11e208 N',
+            },
+            'F_U_Bi_i': F_U_Bi_i,
+            'g_UQFF': g_UQFF,
+            'g_layers_26': g_layers,
+        }
+
+
+class UQFFVacuumRepulsionCalculator(_CP3Calculator):
+    """
+    PAPER_238 | Source10 — Vacuum Repulsion Force (grok_share_8d951e12.txt ~5903)
+
+    Surface-tension analogy vacuum repulsion force:
+        F_vac_rep = k_vac × Δρ_vac × M × v
+
+        k_vac    = 6.67×10⁻¹¹  (gravitational constant analogy, m³/(kg·s²))
+        Δρ_vac   = ρ_vac_local − ρ_vac_ref  (local vacuum energy density contrast, J/m³)
+        M        = system mass (kg)
+        v        = bulk velocity (m/s)
+
+    Example result: F_vac_rep = 1.23×10⁴⁵ N  (generic astrophysical scale)
+
+    Novel contribution: vacuum-repulsion force modelled as surface-tension analogy
+    between local and reference vacuum energy densities — distinct from DE_term (which
+    scales with Λ·c²·r); this force scales with instantaneous velocity and mass coupling.
+    """
+
+    PAPER_ID = "PAPER_238"
+    SOURCE_DOC = "Source10 — F_vac_rep (grok_share_8d951e12.txt ~5903)"
+    SESSION = 59
+
+    K_VAC = 6.67e-11       # m³/(kg·s²) — vacuum coupling constant
+    RHO_VAC_REF = 1e-9     # J/m³       — reference quantum vacuum energy density
+
+    def compute(self, dataset: dict) -> dict:
+        M = dataset.get('M', 2.984e31)             # kg
+        v = dataset.get('v', 1e6)                  # m/s
+        rho_vac_local = dataset.get('rho_vac_local', 1e-9 + 1e-12)  # J/m³ (slightly above reference)
+        rho_vac_ref   = dataset.get('rho_vac_ref', self.RHO_VAC_REF)  # J/m³
+
+        delta_rho_vac = rho_vac_local - rho_vac_ref
+
+        # Core vacuum repulsion formula
+        F_vac_rep = self.K_VAC * delta_rho_vac * M * v
+
+        return {
+            'primary_equations': [
+                f"F_vac_rep = k_vac × Δρ_vac × M × v",
+                f"k_vac       = {self.K_VAC:.3e} m³/(kg·s²)  [gravitational analogy coupling]",
+                f"Δρ_vac      = ρ_vac_local − ρ_vac_ref = {delta_rho_vac:.4e} J/m³",
+                f"M           = {M:.4e} kg",
+                f"v           = {v:.4e} m/s",
+                f"F_vac_rep   = {F_vac_rep:.4e} N  [example scale: 1.23×10⁴⁵ N]",
+                f"[Novel: surface-tension vacuum repulsion — velocity-coupled, distinct from Λ·c²·r DE term]",
+            ],
+            'available_equations': [
+                "F_vac_rep = k_vac × Δρ_vac × M × v  (full formula)",
+                "Δρ_vac = ρ_vac_local − ρ_vac_ref  (vacuum density contrast)",
+                "ratio F_vac_rep / F_gravity = k_vac · Δρ_vac · v / (G · M / r²)  (relative strength)",
+                "velocity dependence: F_vac_rep ∝ v  (linear; stronger for fast outflows)",
+            ],
+            'simulation_set': {
+                'velocity_sweep': 'v from 1e3→1e8 m/s — linear F_vac_rep growth',
+                'vacuum_contrast': 'Δρ_vac from 1e-15→1e-6 J/m³ — onset of vacuum repulsion dominance',
+                'mass_scaling': 'M from 1 M_sun→1000 M_sun — catalogue of F_vac comparisons',
+            },
+            'F_vac_rep': F_vac_rep,
+            'delta_rho_vac': delta_rho_vac,
+        }
+
+
+class UQFFTHzConduitShockCalculator(_CP3Calculator):
+    """
+    PAPER_239 | Source10 — THz Shock Force + H₂O Conduit Force (grok_share_8d951e12.txt ~5903)
+
+    Two coupled star-formation force terms:
+
+    1. THz Shock Force (26-layer star-formation frequency forcing):
+        F_thz_shock = k_thz × (ω_thz / ω_0)² × neutron_factor × conduit_scale
+
+        k_thz          = 1.38×10⁻²³ (Boltzmann constant used as THz amplitude, J/K)
+        ω_thz          = 1.2×10¹² rad/s  (~1.2 THz star-formation resonance frequency)
+        ω_0            = 1.0×10¹⁰ rad/s  (reference angular frequency)
+        neutron_factor = ρ_neutron / ρ_ref
+        conduit_scale  = (H_abundance × water_state)  (COx conduit amplification)
+        Example: F_thz_shock = 4.56×10⁷⁸ N
+
+    2. H₂O Conduit Force (COx water production):
+        F_conduit = k_conduit × (H_abundance × water_state) × neutron_factor
+
+        k_conduit   = 8.99×10⁹  (Coulomb's constant used as COx coupling, N·m²/C²)
+        H_abundance = 0.74  (hydrogen mass fraction of universe)
+        water_state = 0 (vapour) or 1 (liquid/ice — conduit active)
+        Example: F_conduit = 3.45×10⁶⁷ N
+
+    Novel contributions: two physically distinct 26-layer star-formation frequency terms
+    — THz shock (frequency-squared scaling) and COx conduit (hydrogen abundance coupling).
+    """
+
+    PAPER_ID = "PAPER_239"
+    SOURCE_DOC = "Source10 — F_thz_shock + F_conduit (grok_share_8d951e12.txt ~5903)"
+    SESSION = 59
+
+    K_THZ = 1.38e-23       # J/K  (Boltzmann — THz amplitude coupling)
+    K_CONDUIT = 8.99e9     # N·m²/C² (Coulomb — COx conduit coupling)
+    OMEGA_THZ = 1.2e12     # rad/s  (THz star-formation resonance)
+    OMEGA_0 = 1.0e10       # rad/s  (reference)
+    H_ABUNDANCE = 0.74     # dimensionless (cosmic hydrogen mass fraction)
+
+    def compute(self, dataset: dict) -> dict:
+        omega_thz = dataset.get('omega_thz', self.OMEGA_THZ)
+        omega_0   = dataset.get('omega_0', self.OMEGA_0)
+        rho_neutron = dataset.get('rho_neutron', 1e14)     # kg/m³
+        rho_ref     = dataset.get('rho_ref', 1e14)         # kg/m³
+        H_abundance = dataset.get('H_abundance', self.H_ABUNDANCE)
+        water_state = dataset.get('water_state', 1)        # 0=vapour, 1=liquid/ice
+
+        neutron_factor = rho_neutron / rho_ref
+        conduit_scale  = H_abundance * water_state
+
+        # THz Shock Force
+        F_thz_shock = self.K_THZ * (omega_thz / omega_0)**2 * neutron_factor * conduit_scale
+
+        # H₂O Conduit Force
+        F_conduit = self.K_CONDUIT * conduit_scale * neutron_factor
+
+        return {
+            'primary_equations': [
+                f"F_thz_shock = k_thz × (ω_thz/ω_0)² × neutron_factor × conduit_scale",
+                f"k_thz          = {self.K_THZ:.3e} J/K",
+                f"(ω_thz/ω_0)²  = ({omega_thz:.3e}/{omega_0:.3e})² = {(omega_thz/omega_0)**2:.4e}",
+                f"neutron_factor = ρ_n/ρ_ref = {neutron_factor:.4e}",
+                f"conduit_scale  = H_abund × water_state = {conduit_scale:.4f}",
+                f"F_thz_shock    = {F_thz_shock:.4e} N  [example scale: 4.56×10⁷⁸ N]",
+                f"",
+                f"F_conduit = k_conduit × (H_abund × water_state) × neutron_factor",
+                f"k_conduit      = {self.K_CONDUIT:.3e} N·m²/C²",
+                f"F_conduit      = {F_conduit:.4e} N  [example scale: 3.45×10⁶⁷ N]",
+                f"[Novel: THz 26-layer frequency-squared coupling + COx H₂O conduit activation]",
+            ],
+            'available_equations': [
+                "F_thz_shock = k_thz × (ω_thz/ω_0)² × n_f × c_s  (full THz shock formula)",
+                "F_conduit   = k_conduit × H_abund × water_state × n_f  (full conduit formula)",
+                "conduit_scale = H_abundance × water_state  (0 when vapour, H_abund when liquid)",
+                "Ratio F_thz / F_conduit = k_thz/k_conduit × (ω_thz/ω_0)²",
+                "Combined: F_SF = F_thz_shock + F_conduit  (total star-formation coupling force)",
+            ],
+            'simulation_set': {
+                'water_phase_switch': 'toggle water_state 0→1 — conduit activation gate',
+                'THz_frequency_sweep': 'omega_thz from 1e11→1e13 rad/s — THz shock resonance peak',
+                'neutron_density_grid': 'rho_neutron from 1e10→1e18 kg/m³ vs F_thz landscape',
+                'combined_SF_force': 'F_SF = F_thz + F_conduit over protostellar lifecycle',
+            },
+            'F_thz_shock': F_thz_shock,
+            'F_conduit': F_conduit,
+            'conduit_scale': conduit_scale,
+            'neutron_factor': neutron_factor,
+        }
+
+
+class UQFFSpookyActionDPMCalculator(_CP3Calculator):
+    """
+    PAPER_240 | Source10 — Spooky Action Force + DPM Resonance Energy (grok_share_8d951e12.txt ~5903)
+
+    Two quantum-scale UQFF force/energy terms:
+
+    1. Quantum Spooky Action Force (string-wave coupling):
+        F_spooky = k_spooky × (string_wave / ω_0)
+
+        k_spooky    = 1.11×10⁻³⁴ J·s  (Planck-scale coupling ≈ ħ)
+        string_wave = 5.0×10¹⁴ Hz     (optical string wave frequency)
+        ω_0         = 1.0×10¹⁰ rad/s  (reference)
+        Example: F_spooky ≈ 2.71×10⁸⁹ N  (cosmological-scale entanglement)
+
+    2. DPM Resonance Energy Density (Di-Pseudo-Monopole magnetic resonance):
+        DPM_resonance = (g_H × μ_B × B₀ × C_DPM) / (ħ × ω₀)
+
+        g_H     = 1.252×10⁴⁶  (hydrogen UQFF g-factor)
+        μ_B     = 9.274×10⁻²⁴ J/T  (Bohr magneton)
+        B₀      = ambient magnetic field (T)
+        C_DPM   = 2.82×10⁻⁵⁶  (DPM coupling constant)
+        ħ       = 1.055×10⁻³⁴ J·s
+        ω₀      = 1.0×10¹⁰ rad/s
+        Example: Q_wave ≈ 3.11×10⁹ J/m³
+
+    Novel contributions: quantum spooky-action force via string-wave/ω₀ linear coupling;
+    DPM magnetic resonance energy using hydrogen UQFF g-factor g_H = 1.252×10⁴⁶
+    (distinct from standard proton g_p = 5.586).
+    """
+
+    PAPER_ID = "PAPER_240"
+    SOURCE_DOC = "Source10 — F_spooky + DPM_resonance (grok_share_8d951e12.txt ~5903)"
+    SESSION = 59
+
+    K_SPOOKY = 1.11e-34      # J·s (Planck-scale coupling ≈ ħ)
+    HBAR = 1.055e-34          # J·s
+    MU_B = 9.274e-24          # J/T (Bohr magneton)
+    G_H = 1.252e46            # hydrogen UQFF g-factor
+    C_DPM = 2.82e-56          # DPM coupling constant
+    OMEGA_0 = 1.0e10          # rad/s (reference)
+    STRING_WAVE_DEFAULT = 5.0e14  # Hz (optical string wave)
+
+    def compute(self, dataset: dict) -> dict:
+        string_wave = dataset.get('string_wave', self.STRING_WAVE_DEFAULT)  # Hz
+        omega_0     = dataset.get('omega_0', self.OMEGA_0)                 # rad/s
+        B_0         = dataset.get('B_0', 1e-6)                             # T
+
+        # Spooky action force
+        F_spooky = self.K_SPOOKY * (string_wave / omega_0)
+
+        # DPM resonance energy density
+        DPM_resonance = (self.G_H * self.MU_B * B_0 * self.C_DPM) / (self.HBAR * omega_0)
+
+        return {
+            'primary_equations': [
+                f"F_spooky = k_spooky × (string_wave / ω₀)",
+                f"k_spooky    = {self.K_SPOOKY:.3e} J·s  [Planck-scale string coupling]",
+                f"string_wave = {string_wave:.3e} Hz  [optical string frequency]",
+                f"ω₀          = {omega_0:.3e} rad/s",
+                f"F_spooky    = {F_spooky:.4e} N  [example scale: 2.71×10⁸⁹ N]",
+                f"",
+                f"DPM_resonance = (g_H × μ_B × B₀ × C_DPM) / (ħ × ω₀)",
+                f"g_H         = {self.G_H:.4e}  [hydrogen UQFF g-factor; NOT standard g_p=5.586]",
+                f"μ_B         = {self.MU_B:.4e} J/T",
+                f"B₀          = {B_0:.4e} T",
+                f"C_DPM       = {self.C_DPM:.3e}  [DPM coupling constant]",
+                f"DPM_res     = {DPM_resonance:.4e} J/m³  [example scale: Q_wave≈3.11×10⁹ J/m³]",
+                f"[Novel: g_H = 1.252e46 — uniquely large UQFF hydrogen g-factor; DPM magnetic resonance]",
+            ],
+            'available_equations': [
+                "F_spooky = k_spooky × string_wave / ω₀  (linear frequency coupling)",
+                "DPM_resonance = g_H × μ_B × B₀ × C_DPM / (ħ × ω₀)  (full DPM formula)",
+                "g_H comparison: standard g_H = 5.585 (proton); UQFF g_H = 1.252e46 (UQFF-derived)",
+                "F_spooky / F_gravity = k_spooky × string_wave / (ω₀ × G × M / r²)  (relative strength)",
+                "Q_wave = DPM_resonance = ħω₀ × n_DPM  (photon-count interpretation)",
+            ],
+            'simulation_set': {
+                'string_frequency_sweep': 'string_wave from 1e10→1e16 Hz — F_spooky linear growth',
+                'B_field_DPM': 'B_0 from 1e-10→1e6 T — DPM_resonance across cosmic B-field range',
+                'g_H_sensitivity': 'vary g_H from g_p=5.586 to g_H=1.252e46 — 47-order-of-magnitude range',
+                'coupled_quantum': 'F_spooky + DPM_resonance as combined quantum coupling to g_UQFF',
+            },
+            'F_spooky': F_spooky,
+            'DPM_resonance': DPM_resonance,
+        }
+
+
+# ---------------------------------------------------------------------------
 # __all__ export
 # ---------------------------------------------------------------------------
 
@@ -6460,4 +6944,10 @@ __all__ = [
     "SGR1745BHProximityMagEnergyCalculator",
     "SgrAStarAccretionPrecessionCalculator",
     "AntennaeGalaxiesMergerInteractionCalculator",
+    # Session 59 — PAPER_236–241 (grok_share_8d951e12.txt second-pass: Doc9 + Source10)
+    "UQFFLearningAdvancementCalculator",
+    "UQFFSource10CatalogueCalculator",
+    "UQFFVacuumRepulsionCalculator",
+    "UQFFTHzConduitShockCalculator",
+    "UQFFSpookyActionDPMCalculator",
 ]

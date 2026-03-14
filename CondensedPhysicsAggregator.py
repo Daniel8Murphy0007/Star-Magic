@@ -214,6 +214,12 @@ from CondensedPhysics3 import (
     SGR1745BHProximityMagEnergyCalculator,
     SgrAStarAccretionPrecessionCalculator,
     AntennaeGalaxiesMergerInteractionCalculator,
+    # Session 59 — grok_share_8d951e12.txt second-pass: 5 new classes (PAPER_236–241)
+    UQFFLearningAdvancementCalculator,
+    UQFFSource10CatalogueCalculator,
+    UQFFVacuumRepulsionCalculator,
+    UQFFTHzConduitShockCalculator,
+    UQFFSpookyActionDPMCalculator,
 )
 
 CP3_CALCULATORS = {
@@ -332,6 +338,12 @@ CP3_CALCULATORS = {
     'SGR1745BHProximityMagEnergyCalculator': SGR1745BHProximityMagEnergyCalculator,
     'SgrAStarAccretionPrecessionCalculator': SgrAStarAccretionPrecessionCalculator,
     'AntennaeGalaxiesMergerInteractionCalculator': AntennaeGalaxiesMergerInteractionCalculator,
+    # Session 59 — grok_share_8d951e12.txt second-pass: 5 new classes (PAPER_236–241)
+    'UQFFLearningAdvancementCalculator': UQFFLearningAdvancementCalculator,
+    'UQFFSource10CatalogueCalculator': UQFFSource10CatalogueCalculator,
+    'UQFFVacuumRepulsionCalculator': UQFFVacuumRepulsionCalculator,
+    'UQFFTHzConduitShockCalculator': UQFFTHzConduitShockCalculator,
+    'UQFFSpookyActionDPMCalculator': UQFFSpookyActionDPMCalculator,
 }
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -471,8 +483,8 @@ ALL_CALCULATORS = {
 }
 
 # Module metadata
-AGGREGATOR_VERSION = "2.2.0"
-TOTAL_MODULES = 21  # CP1, CP2 v2.2.0, CP3 (Sessions 41-58, 105 classes), + 10 thread registries + PAPER_196-235
+AGGREGATOR_VERSION = "2.3.0"
+TOTAL_MODULES = 21  # CP1, CP2 v2.3.0, CP3 (Sessions 41-59, 110 classes), + 10 thread registries + PAPER_196-241
 
 
 def get_calculator(name: str):
