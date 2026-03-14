@@ -223,5 +223,19 @@ PSZ2_G168_Cluster,1.99e44,1e22,3e22,5e7,1e-19,1e-6,1e20,1e-20,0.99,1e-4,1e-18
 PLCK_G287_DoubleRelic,2.19e45,1.5e22,4e22,8e7,1e-19,5e-7,1e20,1e-20,0.99,1e-4,1e-18
 # JWST Deep Field z~8: High-z galaxy candidate, M~5e9 Msun, SFR~50 Msun/yr, NISP shear validated
 JWST_DeepField_z8,9.95e39,3e20,1e21,3e4,1e-16,1e-8,1e18,1e-22,0.99,1e-4,1e-15
-# G359 Galactic Center Region: 10pc vicinity of SgrA*, B~100 �G, warm ionized medium
-G359_GalacticCenter,1.99e40,3.086e16,3.086e17,1e4,3e-13,1e-4,1e25,1e-15,0.99,0.01,7.3e-16
+# G359 Galactic Center Region: 10pc vicinity of SgrA*, B~100 �G, warm ionized medium
+G359_GalacticCenter,1.99e40,3.086e16,3.086e17,1e4,3e-13,1e-4,1e25,1e-15,0.99,0.01,7.3e-16# === PAPER_196-215 Session 51 New Systems (added 2026-03-13) ===
+# Bullet Cluster (1E0657-558): z=0.296, M~1.5e15 Msun, T~12keV, B~0.3µG; PAPER_204/210 DM/MOND calibration
+Bullet_Cluster,2.98e45,1.0e22,3.086e22,1.4e8,1e-18,3e-8,1e20,1e-20,0.99,1e-4,1e-18
+# Coma Cluster (Abell 1656): z=0.023, M~6e14 Msun, T~8keV, B~1µG; PAPER_204 NFW/SIDM rotation curves
+Coma_Cluster,1.19e45,4.6e22,1.5e23,9.3e7,1e-18,1e-7,1e20,1e-20,0.99,1e-4,1e-18
+# Perseus Cluster (Abell 426): z=0.018, M~6e14 Msun, cooling core T~5keV, B~25µG; PAPER_211/214 MHD jets
+Perseus_Cluster,1.19e45,1.9e22,9.3e22,5.8e7,1e-18,2.5e-5,1e20,1e-20,0.99,1e-4,1e-18
+# NGC 4696: Centaurus cluster BCG, M~1e12 Msun, AGN jets, cavities; PAPER_211/212 MHD/CIA framework
+NGC_4696,1.99e42,1.5e21,6.2e21,1e6,1e-15,1e-8,1e18,1e-22,1.0,1.0,1e-18
+# SGR 1833-0832: Magnetar, P=7.565s, B~1.1e14G, glitch rise-time cited in PAPER_206 vortex avalanche
+SGR_1833-0832,2.8e30,1e4,1e5,1e7,0.831,1.1e10,1e21,1e-16,1.0,1.0,5.23
+# PSR J0437-4715: MSP, P=5.757ms, M=1.44Msun, PPTA timing array; PAPER_211 99-system compression
+PSR_J0437-4715,2.86e30,1e4,1e5,1e6,1.09e3,3e4,1e20,1e-15,1.0,1.0,6.86e3
+# Abell 2744 (Pandora's Box): z=0.308, M~3.2e15 Msun, T~10keV, complex merging; PAPER_210 MOND lensing
+Abell_2744,6.36e45,4.6e22,1.2e23,1.16e8,1e-18,1e-8,1e20,1e-20,0.99,1e-4,1e-18
