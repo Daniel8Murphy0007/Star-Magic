@@ -4376,6 +4376,181 @@ class MagnetarSGR1745DynamicModulationCalculator(_CP3Calculator):
 
 
 # ---------------------------------------------------------------------------
+# Session 54 — grok_share_7514fe third-pass unique extractions (2 calculators)
+# Unique items: Full buoyancy FU_Bi with e^{-(π-t_n)} and H_k geometry,
+#               f_z,CGM ≈ 1.46×10^{-73} [SSq]-calibrated CGM metallicity
+# ---------------------------------------------------------------------------
+
+
+class UQFFBuoyancyMasterIntegralCalculator(_CP3Calculator):
+    """Full Triadic Buoyancy UQFF integral with e^{-(π-t_n)} temporal decay.
+
+    Authentic master form (Triadic Master Equations — Westerlund 2 and Pillars sections):
+      FU_Bi = Σ_{k=1}^N [ k_Ub,k · (f_UA'·f_SCm·R_EB / r²)
+                           · H_k(ν_THz, U_b, geom_k) · f_Ub · e^{-(π-t_n)} ]
+      H_k = cos(φ) · f(ν_THz)            [geometry-frequency coupling]
+        - spherical   → G_k = sin(θ), f(ν_THz) = ν_THz / ν_ref
+        - toroidal    → G_k = cos(φ), f(ν_THz) = 1
+        - linear      → G_k = 1,      f(ν_THz) = ν_THz / ν_ref
+      f_Ub = k_Ub · Δk_η · (ρ_vac,[UA]/ρ_vac,[SCm]) · (V_little/V_big)
+             with Δk_η = 7.25×10^8 (hydride-like calibration)
+      t_n  = (t/t_Hubble) · (1 + H(z)·t_0)
+    Distinct from:
+    - FUBiiExtendedIntegralCalculator (linear UV/mm blend, no e^{-(π-t_n)})
+    - DPMHarmonicBuoyancySeriesCalculator (H_m harmonic, no H_k geometry)
+    Reference outputs (doc): Westerlund 2 (r=1.89e16 m): ≈6.14e-32 N;
+                             Pillars of Creation (r=4.73e16 m): ≈9.79e-33 N
+    """
+
+    def compute(self, dataset: dict) -> dict:
+        import math
+        H0 = 2.27e-18
+        t_H = 4.35e17
+        rho_UA = RHO_VAC_UA
+        rho_SCm = RHO_VAC_SCM
+
+        r = dataset.get('r', 1.89e16)        # system scale (Westerlund 2 default)
+        f_UA = dataset.get('f_UA', 0.999)
+        f_SCm = dataset.get('f_SCm', 0.001)
+        R_EB = dataset.get('R_EB', 1.0)
+        k_Ub = dataset.get('k_Ub', 0.1)
+        delta_k_eta = dataset.get('delta_k_eta', 7.25e8)   # hydride calibration
+        V_ratio = dataset.get('V_ratio', 1.0)              # V_little/V_big
+        nu_THz = dataset.get('nu_THz', 1.25e12)            # THz frequency Hz
+        nu_ref = dataset.get('nu_ref', 1.25e12)
+        phi = dataset.get('phi', 0.0)    # geometry angle
+        theta = dataset.get('theta', math.pi / 2)
+        geom = dataset.get('geom', 'spherical')  # spherical|toroidal|linear
+        N = dataset.get('N', 1)
+        t = dataset.get('t', 0.0)
+        z = dataset.get('z', 0.0)
+
+        H_z = H0 * math.sqrt(0.3 * (1 + z)**3 + 0.7)
+        t_n = (t / t_H) * (1 + H_z * t_H)
+
+        # f_Ub full formula with Δk_η calibration
+        f_Ub = k_Ub * delta_k_eta * (rho_UA / rho_SCm) * V_ratio
+
+        # H_k geometry-frequency factor
+        def H_k_geom(geom_type):
+            f_nu = nu_THz / nu_ref
+            if geom_type == 'spherical':
+                return math.sin(theta) * f_nu
+            elif geom_type == 'toroidal':
+                return math.cos(phi)
+            else:  # linear
+                return f_nu
+
+        H_k = H_k_geom(geom) if not isinstance(geom, list) else sum(H_k_geom(g) for g in geom)
+
+        # e^{-(π-t_n)} temporal decay factor
+        pi_decay = math.exp(-(math.pi - t_n))
+
+        # Core buoyancy integral sum
+        inner = (f_UA * f_SCm * R_EB) / r**2
+        FU_Bi_term = k_Ub * inner * H_k * f_Ub * pi_decay
+        FU_Bi = N * FU_Bi_term
+
+        # Alternative: document-referenced computation (Westerlund 2 calibration)
+        r_W2 = 1.89e16
+        r_Pil = 4.73e16
+        inner_W2 = (f_UA * f_SCm * R_EB) / r_W2**2
+        inner_Pil = (f_UA * f_SCm * R_EB) / r_Pil**2
+        f_Ub_doc_W2 = 2.20e8    # document reference f_Ub for Westerlund 2
+        f_Ub_doc_Pil = 2.20e7   # document reference f_Ub for Pillars
+        FU_Bi_W2 = k_Ub * inner_W2 * 1.0 * f_Ub_doc_W2 * pi_decay
+        FU_Bi_Pil = k_Ub * inner_Pil * 1.0 * f_Ub_doc_Pil * pi_decay
+
+        return {
+            'primary_equations': [
+                f"t_n = {t_n:.6e}  →  e^{{-(π-t_n)}} = {pi_decay:.6e}",
+                f"f_Ub = k_Ub·Δk_η·(ρ_UA/ρ_SCm)·(V_l/V_b) = {f_Ub:.4e}",
+                f"H_k ({geom}) = {H_k:.6f}",
+                f"FU_Bi (parametric, r={r:.2e}) = {FU_Bi:.4e} N",
+                f"FU_Bi (Westerlund 2, r=1.89e16, f_Ub=2.20e8) = {FU_Bi_W2:.4e} N [doc≈6.14e-32]",
+                f"FU_Bi (Pillars, r=4.73e16, f_Ub=2.20e7) = {FU_Bi_Pil:.4e} N [doc≈9.79e-33]",
+            ],
+            'available_equations': [
+                "Geometry sweep: compare spherical/toroidal/linear H_k contributions",
+                "t_n sweep: trace e^{-(π-t_n)} attenuation over cosmic epochs",
+                "f_Ub vs V_ratio: Boyle's Law scaling for proto-shell volumes",
+            ],
+            'simulation_set': {
+                'r_sweep': 'r from 1e15 to 1e20 m (SF region to galaxy scale)',
+                'geom_compare': ['spherical', 'toroidal', 'linear'],
+                't_n_decay': 't_n from 0 to π (full attenuation range)',
+            },
+        }
+
+
+class UQFFCGMSSqMetallicityCalculator(_CP3Calculator):
+    """CGM metallicity fraction f_z,CGM updated with [SSq] vacuum coupling to ≈1.46×10^{-73}.
+
+    From the "Clarification Answers / DeepSearch Insights" section:
+      f_z,CGM ≈ 1.46 × 10^{-73}  (updated with [SSq])
+    Physical derivation:
+      f_z,CGM = [SSq]^26 · (ρ_vac,[UA]/ρ_vac,[SCm])^n_CGM · e^{-[SSq]·n_CGM/26}
+                · Σ_{n=1}^{26} [(1/n^26) · [SSq]^n]  ← Vacuum Density Series weight
+    The [SSq] update couples the intergalactic metallicity fraction to the
+    vacuum entanglement strength — linking galaxy chemical evolution to UQFF.
+    This specific value (1.46×10^{-73}) is not in any existing CP1/CP2/CP3 class.
+    """
+
+    def compute(self, dataset: dict) -> dict:
+        import math
+        SSq = SSQ          # 0.57
+        rho_UA = RHO_VAC_UA
+        rho_SCm = RHO_VAC_SCM
+
+        n_CGM = dataset.get('n_CGM', 26)       # 26-level maximum shell
+        z = dataset.get('z', 0.0)
+        H0 = 2.27e-18
+        t_H = 4.35e17
+        t = dataset.get('t', 0.0)
+        H_z = H0 * math.sqrt(0.3 * (1 + z)**3 + 0.7)
+        t_n = (t / t_H) * (1 + H_z * t_H)
+
+        # [SSq] = log(ρ_SCm/ρ_UA') · n · e^{-(π-t)}
+        SSq_dynamic = math.log(rho_SCm / rho_UA) * n_CGM * math.exp(-(math.pi - t_n))
+
+        # Vacuum Density Series (VDS) weight
+        VDS = sum((1.0 / n**26) * SSq**n for n in range(1, 27))
+
+        # ρ cross-density attenuation
+        rho_ratio = (rho_UA / max(rho_SCm, 1e-99))
+        rho_factor = rho_ratio**n_CGM if rho_ratio >= 1 else rho_ratio
+
+        # f_z,CGM with full [SSq] coupling
+        f_z_CGM = (SSq**26
+                   * rho_factor
+                   * math.exp(-SSq * n_CGM / 26)
+                   * VDS)
+
+        # Calibrated reference: document value ≈ 1.46×10^{-73}
+        f_z_CGM_ref = 1.46e-73
+
+        return {
+            'primary_equations': [
+                f"[SSq] (static calibrated) = {SSq:.4f}",
+                f"[SSq] (dynamic t_n) = {SSq_dynamic:.4e}",
+                f"VDS = Σ(1/n²⁶)·[SSq]ⁿ = {VDS:.6e}",
+                f"f_z,CGM (computed) = {f_z_CGM:.4e}",
+                f"f_z,CGM (document reference) ≈ {f_z_CGM_ref:.2e}",
+            ],
+            'available_equations': [
+                "f_z,CGM gradient: delta_f / delta_[SSq] — sensitivity to vacuum entanglement",
+                "Galaxy epoch: f_z,CGM(z=0..10) — CGM enrichment history",
+                "VDS convergence test: partial sums at n=1..26",
+            ],
+            'simulation_set': {
+                'SSq_sweep': 'SSq from 0.1 to 1.0 (calibration range)',
+                'n_CGM_sweep': 'n_CGM from 1 to 26',
+                'z_sweep': 'z from 0 to 10 (cosmic metallicity evolution)',
+            },
+        }
+
+
+# ---------------------------------------------------------------------------
 # __all__ export
 # ---------------------------------------------------------------------------
 
@@ -4495,6 +4670,16 @@ __all__ = [
     "DipoleVortexPrimeEncodingCalculator",
     "UQFFRelativisticHierarchyDecayIntegralCalculator",
     # Session 53 — grok_share_7514fe second-pass unique physics
+    "SgrAStarSpinDragUQFFCalculator",
+    "UQFFLensingModulationRingsCalculator",
+    "HydrogenAtomUQFFGravityCalculator",
+    "FUBiiFullDPMPolynomialIntegralCalculator",
+    "UQFFNeutrinoDecayRateCouplingCalculator",
+    "MagnetarSGR1745DynamicModulationCalculator",
+    # Session 54 — grok_share_7514fe third-pass unique physics
+    "UQFFBuoyancyMasterIntegralCalculator",
+    "UQFFCGMSSqMetallicityCalculator",
+]
     "SgrAStarSpinDragUQFFCalculator",
     "UQFFLensingModulationRingsCalculator",
     "HydrogenAtomUQFFGravityCalculator",
