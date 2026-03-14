@@ -6793,6 +6793,302 @@ class UQFFSpookyActionDPMCalculator(_CP3Calculator):
 
 
 # ---------------------------------------------------------------------------
+# Session 60 — PAPER_242–243 (grok_share_8d951e12.txt third-pass)
+# Two new full-MUGE classes: Einstein-ring static lensing (Rings of Relativity)
+# and cavity-pressure additive term with M(t) mass growth (NGC 3603).
+# ---------------------------------------------------------------------------
+
+class RingsOfRelativityEinsteinLensingMUGECalculator(_CP3Calculator):
+    """Full MUGE for GAL-CLUS-022058s (Rings of Relativity) with static Einstein
+    ring lensing amplification L_t.
+
+    Unique equation (Document 8 — third-pass extension of class 81):
+      L_t  = (G·M / c²·r) · L_factor        [Einstein ring lensing factor]
+      L_factor = D_LS / D_S = 0.67           [angular diameter distance ratio]
+      corr_L = 1 + L_t
+      term1  = (G·M/r²)·(1+H(z)·t)·(1−B/B_crit)·corr_L
+      term_osc = 2·A·cos(k·x)·cos(ω·t) + (2π/t_Gyr)·A·cos(k·x−ω·t)
+      pert2  = 3·G·M / r³
+      term_DM = (M + M_DM)·(δρ/ρ + pert2) / M
+      term_wind = ρ_wind · v_wind² / ρ_fluid
+
+    Key distinction from class 81 (UQFFLensingModulationRingsCalculator):
+      • Class 81 uses  L(t) = L_0·e^{−t/τ}·cos(ω_lens·t)  — dynamic transit
+      • This class uses L_t = (GM/c²r)·(D_LS/D_S)          — static Einstein radius
+
+    Parameters sourced from Doc 8 C++ class RingsOfRelativity (xAI/Grok,
+    October 2025): M=1e14 M_sun, r=10 kpc (Einstein radius), z_lens=0.5,
+    L_factor=0.67, B=1e-5 T, two oscillation modes, wind feedback.
+    """
+
+    def compute(self, dataset: dict) -> dict:
+        import math
+        G      = 6.6743e-11
+        c      = 2.998e8
+        H0     = 2.184e-18          # s⁻¹
+        LAMBDA = 1.1e-52
+        hbar   = 1.0546e-34
+        t_H    = 4.35e17            # Hubble time (s)
+        M_sun  = 1.989e30
+
+        M        = dataset.get('M',        1e14 * M_sun)    # kg  (galaxy cluster)
+        r        = dataset.get('r',        3.086e20)        # m   (~10 kpc Einstein radius)
+        z_lens   = dataset.get('z_lens',   0.5)             # redshift of lens
+        L_factor = dataset.get('L_factor', 0.67)            # D_LS/D_S
+        B        = dataset.get('B',        1e-5)            # T
+        B_crit   = dataset.get('B_crit',   4.4e13)          # T
+        t        = dataset.get('t',        0.0)             # s
+        rho_fluid  = dataset.get('rho_fluid',  1e-26)       # kg/m³
+        rho_wind   = dataset.get('rho_wind',   1e-26)       # kg/m³
+        v_wind     = dataset.get('v_wind',     1e5)         # m/s
+        rho_vac_UA  = dataset.get('rho_vac_UA',  7.09e-36)
+        rho_vac_SCm = dataset.get('rho_vac_SCm', 7.09e-37)
+        q  = dataset.get('q',  1.602e-19)
+        v_gas = dataset.get('v_gas', 1e5)
+        m_p = dataset.get('m_p', 1.673e-27)
+        f_TRZ = dataset.get('f_TRZ', 0.1)
+        scale_EM = dataset.get('scale_EM', 1e-12)
+        delta_x = dataset.get('delta_x', 1e-10)
+        delta_p = hbar / delta_x
+        psi     = dataset.get('psi', 1.0)
+        A_osc   = dataset.get('A_osc', 1e-12)
+        k_osc   = 2 * math.pi / r
+        omega_osc = 2 * math.pi * c / r
+        t_Gyr   = 1e9 * 3.156e7
+        M_DM    = dataset.get('M_DM', 0.1 * M)
+        delta_rho = dataset.get('delta_rho', 1e-5)
+
+        # Friedmann H(z=0.5)
+        Hz = H0 * math.sqrt(0.3 * (1 + z_lens)**3 + 0.7)
+
+        # Static Einstein ring lensing amplification
+        L_t    = (G * M) / (c**2 * r) * L_factor
+        corr_L = 1.0 + L_t
+
+        corr_H = 1.0 + Hz * t
+        corr_B = 1.0 - B / B_crit
+
+        g_base = G * M / r**2
+        ug1 = g_base
+        ug4 = ug1 * corr_B
+
+        # Term 1: base + H(z) + B + Einstein-ring lensing
+        term1 = g_base * corr_H * corr_B * corr_L
+
+        # Term 2: UQFF Ug with f_TRZ
+        term2 = (ug1 + ug4) * (1.0 + f_TRZ)
+
+        # Term 3: cosmological constant
+        term3 = (LAMBDA * c**2) / 3.0
+
+        # Term 4: EM with vacuum density ratio
+        em_base = (q * v_gas * B) / m_p
+        corr_UA = 1.0 + rho_vac_UA / rho_vac_SCm
+        term4 = em_base * corr_UA * scale_EM
+
+        # Quantum uncertainty
+        term_q = (hbar / math.sqrt(delta_x * delta_p)) * psi * (2 * math.pi / t_H)
+
+        # Fluid
+        V = (4.0 / 3.0) * math.pi * r**3
+        term_fluid = (rho_fluid * V * g_base) / M
+
+        # Two-mode oscillation (standing wave + traveling wave with Gyr scaling)
+        arg = k_osc * r - omega_osc * t
+        term_osc1 = 2.0 * A_osc * math.cos(k_osc * r) * math.cos(omega_osc * t)
+        term_osc2 = (2.0 * math.pi / t_Gyr) * A_osc * math.cos(arg)
+        term_osc  = term_osc1 + term_osc2
+
+        # DM with pert2 = 3GM/r³
+        pert1 = delta_rho
+        pert2 = 3.0 * G * M / r**3
+        term_DM = (M + M_DM) * (pert1 + pert2) / M
+
+        # Stellar wind feedback
+        term_wind = rho_wind * v_wind**2 / rho_fluid
+
+        g_total = term1 + term2 + term3 + term4 + term_q + term_fluid + term_osc + term_DM + term_wind
+
+        return {
+            'primary_equations': [
+                f"L_t = (G·M)/(c²·r)·L_factor = (G·{M:.3e})/(c²·{r:.3e})·{L_factor} = {L_t:.4e}",
+                f"corr_L = 1 + L_t = {corr_L:.6f}",
+                f"H(z={z_lens}) = H0·√(0.3·(1+z)³+0.7) = {Hz:.4e} s⁻¹",
+                f"term1  = (G·M/r²)·(1+H(z)·t)·(1−B/Bc)·corr_L = {term1:.4e} m/s²",
+                f"term_osc = 2·A·cos(kx)·cos(ωt) + (2π/t_Gyr)·A·cos(kx−ωt) = {term_osc:.4e}",
+                f"pert2  = 3·G·M/r³ = {pert2:.4e}",
+                f"term_DM = {term_DM:.4e}",
+                f"term_wind = ρ_wind·v_wind²/ρ_fluid = {term_wind:.4e}",
+                f"g_total = {g_total:.4e} m/s²",
+            ],
+            'available_equations': [
+                "Einstein deflection angle: α = 4GM/(c²·b) for impact parameter b",
+                "Magnification: μ = |1/[(u²+2)/(u·√(u²+4))]| for u = θ/θ_E",
+                "L_factor scan: D_LS/D_S sweeping source-plane geometry",
+                "Two-mode beat: Δω between standing (2coscos) and traveling (cos(kx-ωt))",
+                "pert2 = 3GM/r³ vs first-order pert1=δρ/ρ cross-comparison",
+            ],
+            'simulation_set': {
+                'L_factor_sweep':   'L_factor from 0.3 to 0.9 (D_LS/D_S geometry)',
+                'z_lens_sweep':     'z_lens from 0.1 to 1.0 (Friedmann H(z))',
+                'osc_mode_compare': 'A_osc sweep isolating mode1 vs mode2 contribution',
+            },
+            'parameters': {
+                'M_kg': M, 'r_m': r, 'z_lens': z_lens, 'L_factor': L_factor,
+                'L_t': L_t, 'Hz': Hz, 'g_total': g_total,
+            },
+        }
+
+
+class NGC3603FullMUGECavityPressureCalculator(_CP3Calculator):
+    """Full MUGE for NGC 3603 with time-varying mass M(t) and additive cavity
+    pressure term P(t)/ρ_fluid.
+
+    Unique equations (Document 11 — full C++ RingsOfRelativity MUGE, third-pass):
+      M(t) = M0·(1 + M_dot·e^{−t/τ_SF})          [mass growth via star formation]
+      P(t) = P0·e^{−t/τ_exp}                       [cavity pressure decay]
+      term_pressure = P(t) / ρ_fluid               [additive pressure acceleration]
+      term1 = (G·M(t)/r²)·(1+H_0·t)·(1−B/B_crit) [M(t) in Newton, not M0]
+      term_osc = 2·A·cos(k·x)·cos(ω·t) + (2π/t_Gyr)·A·cos(kx−ωt)
+      pert2  = 3·G·M(t) / r³
+
+    Key distinction from class 88 (NGC3603StellarPressureModulationCalculator):
+      • Class 88 uses P as a multiplicative suppressor: *(1−P(t))
+      • This class uses P(t)/ρ_fluid as an additive acceleration term
+      • This class also includes M(t) mass growth (exponential star-formation model)
+
+    Parameters from Doc 11 C++ NGC3603 class (xAI/Grok, October 2025):
+    M0=400,000 M_sun, r=9.5 ly, tau_SF=1 Myr, tau_exp=1 Myr, P0=4e-8 Pa,
+    rho_wind=1e-20 kg/m³, v_wind=2e6 m/s, B=1e-5 T.
+    """
+
+    def compute(self, dataset: dict) -> dict:
+        import math
+        G     = 6.6743e-11
+        c     = 2.998e8
+        H0    = 2.184e-18
+        LAMBDA = 1.1e-52
+        hbar  = 1.0546e-34
+        t_H   = 4.35e17
+        M_sun = 1.989e30
+        ly    = 9.461e15
+
+        M0           = dataset.get('M0',           400000.0 * M_sun)
+        r            = dataset.get('r',            9.5 * ly)
+        B            = dataset.get('B',            1e-5)
+        B_crit       = dataset.get('B_crit',       4.4e13)
+        t            = dataset.get('t',            5e5 * 3.156e7)   # 0.5 Myr
+        M_dot_factor = dataset.get('M_dot_factor', 1.0)
+        tau_SF       = dataset.get('tau_SF',       1e6 * 3.156e7)
+        P0           = dataset.get('P0',           4e-8)
+        tau_exp      = dataset.get('tau_exp',      1e6 * 3.156e7)
+        rho_fluid    = dataset.get('rho_fluid',    1e-20)
+        rho_wind     = dataset.get('rho_wind',     1e-20)
+        v_wind       = dataset.get('v_wind',       2e6)
+        rho_vac_UA   = dataset.get('rho_vac_UA',   7.09e-36)
+        rho_vac_SCm  = dataset.get('rho_vac_SCm',  7.09e-37)
+        q            = dataset.get('q',            1.602e-19)
+        v_gas        = dataset.get('v_gas',        1e5)
+        m_p          = dataset.get('m_p',          1.673e-27)
+        f_TRZ        = dataset.get('f_TRZ',        0.1)
+        scale_EM     = dataset.get('scale_EM',     1e-12)
+        delta_x      = dataset.get('delta_x',      1e-10)
+        delta_p      = hbar / delta_x
+        psi          = dataset.get('psi',          1.0)
+        A_osc        = dataset.get('A_osc',        1e-10)
+        k_osc        = 1.0 / r
+        omega_osc    = 2 * math.pi / (r / c)
+        t_Gyr        = 1e9 * 3.156e7
+        M_DM_factor  = dataset.get('M_DM_factor',  0.1)
+        delta_rho    = dataset.get('delta_rho',    1e-5)
+
+        # Time-varying mass (star formation inflow)
+        M_dot = M_dot_factor * math.exp(-t / tau_SF)
+        Mt    = M0 * (1.0 + M_dot)
+
+        # Cavity pressure decay
+        Pt = P0 * math.exp(-t / tau_exp)
+
+        g_base_t = G * Mt / r**2
+        ug1  = g_base_t
+        corr_B = 1.0 - B / B_crit
+        ug4  = ug1 * corr_B
+
+        # Term 1: base gravity with M(t), Hubble, magnetic
+        corr_H = 1.0 + H0 * t
+        term1  = g_base_t * corr_H * corr_B
+
+        # Term 2: UQFF Ug with f_TRZ
+        term2 = (ug1 + ug4) * (1.0 + f_TRZ)
+
+        # Term 3: cosmological constant
+        term3 = (LAMBDA * c**2) / 3.0
+
+        # Term 4: EM with vacuum density ratio
+        em_base = (q * v_gas * B) / m_p
+        corr_UA = 1.0 + rho_vac_UA / rho_vac_SCm
+        term4   = em_base * corr_UA * scale_EM
+
+        # Quantum uncertainty
+        term_q = (hbar / math.sqrt(delta_x * delta_p)) * psi * (2 * math.pi / t_H)
+
+        # Fluid
+        V         = (4.0 / 3.0) * math.pi * r**3
+        term_fluid = (rho_fluid * V * g_base_t) / Mt
+
+        # Two-mode oscillation
+        arg       = k_osc * r - omega_osc * t
+        term_osc1 = 2.0 * A_osc * math.cos(k_osc * r) * math.cos(omega_osc * t)
+        term_osc2 = (2.0 * math.pi / t_Gyr) * A_osc * math.cos(arg)
+        term_osc  = term_osc1 + term_osc2
+
+        # DM with pert2 = 3GM(t)/r³
+        M_DM  = Mt * M_DM_factor
+        pert1 = delta_rho
+        pert2 = 3.0 * G * Mt / r**3
+        term_DM = (Mt + M_DM) * (pert1 + pert2) / Mt
+
+        # Stellar wind acceleration
+        term_wind = rho_wind * v_wind**2 / rho_fluid
+
+        # Cavity pressure acceleration (ADDITIVE term — distinct from class 88 multiplier)
+        term_pressure = Pt / rho_fluid
+
+        g_total = (term1 + term2 + term3 + term4 + term_q + term_fluid +
+                   term_osc + term_DM + term_wind + term_pressure)
+
+        return {
+            'primary_equations': [
+                f"M(t) = M0·(1+M_dot·e^(-t/τ_SF)) = {Mt:.4e} kg  (M_dot={M_dot:.4f})",
+                f"P(t) = P0·e^(-t/τ_exp) = {Pt:.4e} Pa",
+                f"term_pressure = P(t)/ρ_fluid = {term_pressure:.4e} m/s²  [additive]",
+                f"term1 = (G·M(t)/r²)·(1+H0·t)·(1−B/Bc) = {term1:.4e} m/s²",
+                f"pert2 = 3·G·M(t)/r³ = {pert2:.4e}",
+                f"term_osc = 2A·cos(kx)cos(ωt)+(2π/t_Gyr)A·cos(kx−ωt) = {term_osc:.4e}",
+                f"term_wind = ρ_wind·v_wind²/ρ_fluid = {term_wind:.4e} m/s²",
+                f"g_total (10 terms) = {g_total:.4e} m/s²",
+            ],
+            'available_equations': [
+                "M(t) mass growth: dM/dt = M0·(M_dot_factor/τ_SF)·e^(-t/τ_SF)",
+                "P(t) dispersal time: t_disp = τ_exp·ln(P0·ρ_fluid/g_threshold)",
+                "Cavity pressure crossover: P(t)/ρ_fluid = term1 → cluster dispersal age",
+                "star formation efficiency: ε_SF = (Mt−M0)/M0 = M_dot·e^(-t/τ_SF)",
+                "Compare (1−P) vs P/ρ_fluid: ratio = (1−P)·g_base / (P/ρ_fluid)",
+            ],
+            'simulation_set': {
+                'tau_SF_sweep':    'tau_SF from 0.5 to 5 Myr (rapid vs slow SF)',
+                'P0_sweep':        'P0 from 1e-9 to 1e-6 Pa (cavity pressure strength)',
+                'M_dot_sweep':     'M_dot_factor from 0.1 to 2.0 (mass accretion rate)',
+                'pressure_compare': 'term_pressure vs term_wind over t=[0, 3 Myr]',
+            },
+            'parameters': {
+                'M0_kg': M0, 'Mt_kg': Mt, 'r_m': r, 'Pt_Pa': Pt,
+                'term_pressure': term_pressure, 'g_total': g_total,
+            },
+        }
+
+
+# ---------------------------------------------------------------------------
 # __all__ export
 # ---------------------------------------------------------------------------
 
@@ -6950,4 +7246,7 @@ __all__ = [
     "UQFFVacuumRepulsionCalculator",
     "UQFFTHzConduitShockCalculator",
     "UQFFSpookyActionDPMCalculator",
+    # Session 60 — PAPER_242–243 (grok_share_8d951e12.txt third-pass)
+    "RingsOfRelativityEinsteinLensingMUGECalculator",
+    "NGC3603FullMUGECavityPressureCalculator",
 ]

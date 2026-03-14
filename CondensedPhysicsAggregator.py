@@ -220,6 +220,9 @@ from CondensedPhysics3 import (
     UQFFVacuumRepulsionCalculator,
     UQFFTHzConduitShockCalculator,
     UQFFSpookyActionDPMCalculator,
+    # Session 60 — grok_share_8d951e12.txt third-pass: 2 new classes (PAPER_242–243)
+    RingsOfRelativityEinsteinLensingMUGECalculator,
+    NGC3603FullMUGECavityPressureCalculator,
 )
 
 CP3_CALCULATORS = {
@@ -344,6 +347,9 @@ CP3_CALCULATORS = {
     'UQFFVacuumRepulsionCalculator': UQFFVacuumRepulsionCalculator,
     'UQFFTHzConduitShockCalculator': UQFFTHzConduitShockCalculator,
     'UQFFSpookyActionDPMCalculator': UQFFSpookyActionDPMCalculator,
+    # Session 60 — grok_share_8d951e12.txt third-pass: 2 new classes (PAPER_242–243)
+    'RingsOfRelativityEinsteinLensingMUGECalculator': RingsOfRelativityEinsteinLensingMUGECalculator,
+    'NGC3603FullMUGECavityPressureCalculator': NGC3603FullMUGECavityPressureCalculator,
 }
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -483,8 +489,8 @@ ALL_CALCULATORS = {
 }
 
 # Module metadata
-AGGREGATOR_VERSION = "2.3.0"
-TOTAL_MODULES = 21  # CP1, CP2 v2.3.0, CP3 (Sessions 41-59, 110 classes), + 10 thread registries + PAPER_196-241
+AGGREGATOR_VERSION = "2.4.0"
+TOTAL_MODULES = 21  # CP1, CP2 v2.4.0, CP3 (Sessions 41-60, 112 classes), + 10 thread registries + PAPER_196-243
 
 
 def get_calculator(name: str):
