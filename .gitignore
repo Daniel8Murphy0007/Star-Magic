@@ -241,3 +241,10 @@ grok_api_config.json
 
 # production_pipeline run-artifact JSONs (timestamped per-run)
 production_output/*.json
+
+wolfram_debug_phase1.txt
+coAnQi_log_1769801137.txt
+*_log_*.txt
+wolfram_debug_*.txt
+
+.vs-kubernetes/
