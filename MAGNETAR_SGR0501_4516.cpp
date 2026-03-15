@@ -22,10 +22,11 @@
  * Key Features:
  *   - Default values from UQFF document (M = 2.785e30 kg, r = 20e3 m, etc.).
  *   - Setter methods for updates: setVar(double new_val) or addToVar(double delta)/subtractFromVar(double delta).
- *   - Computes g_Magnetar(r, t) with ALL 9 terms: base+H0+B, UQFF Ug (Ug1–Ug4), Lambda,
- *     scaled EM, GW back-reaction, quantum uncertainty floor, fluid self-gravity,
- *     dual-mode oscillatory waves, and DM + density perturbation contributions.
- *   - Default values use physically observed values for SGR 0501+4516 (B0=1.9e14 T, B_crit=4.4e13 T).
+ *   - Computes g_Magnetar(r, t) with ALL 11 terms matching MagnetarSGR0501MUGEFullCalculator (CP3):
+ *     base+H0+B, UQFF Ug (Ug1–Ug4), Lambda, scaled EM, GW back-reaction, quantum uncertainty,
+ *     fluid self-gravity, oscillatory waves, DM+density perturbation, magnetic stored energy,
+ *     and cumulative burst-decay energy.
+ *   - Canonical UQFF defaults: B0=1e10 T, B_crit=1e11 T. Expected g≈4.474e12 m/s² at t=5000 yr.
  * 
  * Author: Encoded by Grok (xAI), based on Daniel T. Murphy's UQFF manuscript.
  * Date: October 08, 2025
@@ -83,6 +84,11 @@ private:
     double t_Hubble_gyr;        // Hubble time in Gyr (oscillatory Mode 2 scalar)
     double M_DM_factor;         // Dark matter mass as fraction of M
     double delta_rho_over_rho;  // Density perturbation fraction
+    // Term 10: magnetic stored energy
+    double mu0;                 // Permeability of free space (H/m)
+    // Term 11: cumulative burst-decay energy
+    double L0_W;                // Initial burst luminosity (W)
+    double tau_decay;           // Burst decay timescale (s)
 
     // Computed caches (updated on demand)
     double ug1_base;        // Cached Ug1 = G*M/r^2
@@ -106,12 +112,12 @@ public:
         G = 6.6743e-11;
         M = 1.4 * 1.989e30;
         r = 20e3;
-        H0 = 2.184e-18;
-        B0 = 1.9e14;           // SGR 0501+4516 observed dipole surface field (T) — Swift/RXTE timing
+        H0 = 2.268e-18;              // Hubble constant [CP3 canonical value] (s^-1)
+        B0 = 1e10;             // UQFF manuscript canonical calibration value (T)
         tau_B = 4000 * 3.156e7;
-        B_crit = 4.4e13;       // Schwinger quantum critical field (T) — standard magnetar reference
-        Lambda = 1.1e-52;
-        c_light = 3e8;
+        B_crit = 1e11;         // UQFF framework calibration constant (T) [CP3 canonical]
+        Lambda = 1.114e-52;          // Cosmological constant [CP3 canonical] (m^-2)
+        c_light = 2.998e8;           // Speed of light [CP3 precise value] (m/s)
         q_charge = 1.602e-19;
         v_surf = 1e6;
         f_TRZ = 0.1;
@@ -124,18 +130,21 @@ public:
 
         // Full-term-inclusion parameters
         hbar = 1.0546e-34;
-        t_Hubble = 13.8e9 * 3.156e7;
-        delta_x = 1e-10;
+        t_Hubble = 1.0 / H0;               // Hubble time = 1/H0 (s) [CP3 canonical]
+        delta_x = 1e-15;                   // Nuclear scale for neutron star [CP3 canonical]
         delta_p = hbar / delta_x;
         integral_psi = 1.0;
-        rho_fluid = 1e17;                   // Neutron star interior density (kg/m³)
-        A_osc = 1e10;                       // Scaled to ~ug1_base magnitude (m/s²)
-        k_osc = 1.0 / 20e3;                // = 1/r (rad/m)
-        omega_osc = 2.0 * UQFF_PI / 5.0;  // = 2π/P_init (rad/s)
-        x_pos = 20e3;                       // = r (m)
+        rho_fluid = 1e-9;                  // Magnetospheric ambient density (kg/m³) [CP3 canonical]
+        A_osc = 1e10;                      // Oscillatory amplitude (m/s²)
+        k_osc = 2.0 * UQFF_PI / r;        // k = 2π/r [CP3 canonical]
+        omega_osc = 2.0 * UQFF_PI * (c_light / r);  // ω = 2π·c/r (light-crossing freq) [CP3 canonical]
+        x_pos = 20e3;                      // = r (m)
         t_Hubble_gyr = 13.8;
         M_DM_factor = 0.1;
         delta_rho_over_rho = 1e-5;
+        mu0 = 1.2566e-6;                   // H/m
+        L0_W = 1e28;                       // Initial burst luminosity (W) [CP3 canonical]
+        tau_decay = 3.5 * 3.156e7;         // 3.5 yr burst decay timescale (s) [CP3 canonical]
 
         I_ns = 0.0;            // will be set by updateCache()
         logging_enabled = false;
@@ -190,6 +199,9 @@ public:
         else if (varName == "t_Hubble_gyr") { t_Hubble_gyr = newValue; }
         else if (varName == "M_DM_factor") { M_DM_factor = newValue; }
         else if (varName == "delta_rho_over_rho") { delta_rho_over_rho = newValue; }
+        else if (varName == "mu0") { mu0 = newValue; }
+        else if (varName == "L0_W") { L0_W = newValue; }
+        else if (varName == "tau_decay") { tau_decay = newValue; }
         else {
             std::cerr << "Error: Unknown variable '" << varName << "'." << std::endl;
             return false;
@@ -246,6 +258,9 @@ public:
         else if (varName == "t_Hubble_gyr") return t_Hubble_gyr;
         else if (varName == "M_DM_factor") return M_DM_factor;
         else if (varName == "delta_rho_over_rho") return delta_rho_over_rho;
+        else if (varName == "mu0") return mu0;
+        else if (varName == "L0_W") return L0_W;
+        else if (varName == "tau_decay") return tau_decay;
         else {
             std::cerr << "Error: Unknown variable '" << varName << "'." << std::endl;
             return std::numeric_limits<double>::quiet_NaN();  // NaN prevents silent corruption
@@ -275,17 +290,19 @@ public:
         return omega0 * (-1.0 / tau_Omega) * exp(-t / tau_Omega);
     }
 
-    // Ug terms computation (requires t for Ug3 rotational coupling)
+    // Ug terms computation (requires t for dynamic v_surf and Ug3)
     double compute_Ug(double Bt, double t) const {
+        // Dynamic surface velocity: v_surf(t) = Ω(t)·r  [CP3 canonical: spin-down dependent]
+        double omega_t    = Omega_t(t);
+        double dOdt       = dOmega_dt(t);
+        double v_surf_dyn = omega_t * r;
         // Ug1: base Newtonian gravity
         double Ug1 = ug1_base;
-        // Ug2: charge-reactivity — EM acceleration from surface charge carrier in magnetar B field
-        double Ug2 = (q_charge * v_surf * Bt) / (proton_mass * r);
-        // Ug3: string-rotation coupling — angular momentum flux contribution to effective gravity
-        double omega_t = Omega_t(t);
-        double dOdt    = dOmega_dt(t);
-        double Ug3     = r * omega_t * std::abs(dOdt);
-        // Ug4: magnetic field suppression/reversal of base gravity (super-critical when B > B_crit)
+        // Ug2: charge-reactivity — EM from time-varying surface velocity in magnetar B field
+        double Ug2 = (q_charge * v_surf_dyn * Bt) / (proton_mass * r);
+        // Ug3: string-rotation coupling — angular momentum flux contribution
+        double Ug3 = r * omega_t * std::abs(dOdt);
+        // Ug4: magnetic suppression of base gravity
         double Ug4 = Ug1 * (1.0 - Bt / B_crit);
         return (Ug1 + Ug2 + Ug3 + Ug4) * (1.0 + f_TRZ);
     }
@@ -297,7 +314,8 @@ public:
             return 0.0;
         }
 
-        double Bt = B_t(t);
+        double Bt   = B_t(t);
+        double omega_t = Omega_t(t);
         double dOdt = dOmega_dt(t);
 
         // Term 1: Base + H0 + B corrections
@@ -311,19 +329,18 @@ public:
         // Term 3: Lambda
         double term3 = (Lambda * c_light * c_light) / 3.0;
 
-        // Term 4: Scaled EM
-        double cross_vB = v_surf * Bt;  // Magnitude, assuming perpendicular
-        double em_base = (q_charge * cross_vB) / proton_mass;
+        // Term 4: Scaled EM — uses dynamic v_surf = Ω(t)·r  [CP3 canonical]
+        double v_surf_dyn = omega_t * r;
+        double cross_vB   = v_surf_dyn * Bt;
+        double em_base    = (q_charge * cross_vB) / proton_mass;
         double corr_UA = 1 + (rho_vac_UA / rho_vac_SCm);
         double term4 = (em_base * corr_UA) * scale_EM;
 
-        // Term 5: GW back-reaction (spin-down power → gravity correction)
-        // g_GW = I_ns * Omega(t) * |dOmega/dt| / (M * c * r)
-        //      = 0.4 * r * Omega(t) * |dOmega/dt| / c_light   [units: m/s^2]
-        double omega_t = Omega_t(t);
-        double term5   = (I_ns * omega_t * std::abs(dOdt)) / (M * c_light * r);
+        // Term 5: GW back-reaction — canonical UQFF/CP3 formula
+        // a_GW = (G·M²)/(c⁴·r) · (dΩ/dt)²
+        double term5 = (G * M * M / (std::pow(c_light, 4) * r)) * (dOdt * dOdt);
 
-        // Term 6: Quantum uncertainty gravity floor
+        // Term 6: Quantum uncertainty gravity floor  [CP3: delta_x=1e-15 m, t_Hubble=1/H0]
         // g_Q = (ħ / √(Δx·Δp)) · ψ_integral · (2π / t_Hubble)
         double sqrt_unc = std::sqrt(delta_x * delta_p);
         double term_q   = (hbar / sqrt_unc) * integral_psi * (2.0 * UQFF_PI / t_Hubble);
@@ -333,30 +350,33 @@ public:
         double V          = compute_V();
         double term_fluid = (rho_fluid * V * ug1_base) / M;
 
-        // Term 8: Dual-mode oscillatory gravity
-        // Mode 1 (standing wave):              2·A·cos(k·x)·cos(ω·t)
-        // Mode 2 (Hubble-normalised travelling): (2π/T_H_gyr)·A·cos(k·x − ω·t)
-        double term_osc1 = 2.0 * A_osc * std::cos(k_osc * x_pos) * std::cos(omega_osc * t);
-        double term_osc2 = (2.0 * UQFF_PI / t_Hubble_gyr) * A_osc
-                           * std::cos(k_osc * x_pos - omega_osc * t);
-        double term_osc  = term_osc1 + term_osc2;
+        // Term 8: Standing-wave oscillatory gravity  [CP3: k=2π/r, ω=2π·c/r]
+        // Only Mode 1 standing wave used in CP3 MagnetarSGR0501 canonical class
+        double term_osc = 2.0 * A_osc * std::cos(k_osc * x_pos) * std::cos(omega_osc * t);
 
-        // Term 9: Dark matter + density perturbation
-        // g_DM   = G · M_DM / r²                  (enclosed DM mass contribution)
-        // g_pert = delta_rho_over_rho · ug1_base   (fractional density perturbation)
+        // Term 9: Dark matter + density perturbation  [CP3 canonical with tidal factor]
+        // g = (1 + M_DM/M) · (δρ/ρ + 3·G·M/r³)   — includes tidal/self-gravity correction
         double M_dm    = M * M_DM_factor;
-        double g_DM    = (G * M_dm) / (r * r);
-        double g_pert  = delta_rho_over_rho * ug1_base;
-        double term_DM = g_DM + g_pert;
+        double term_DM = (1.0 + M_dm / M) * (delta_rho_over_rho + 3.0 * G * M / (r * r * r));
+
+        // Term 10: Magnetic stored energy acceleration  [CP3 NOVEL — a_mag = M_mag/(M·r)]
+        // M_mag = B(t)²·V / (2·μ₀)   [energy density × volume]
+        double M_mag   = (Bt * Bt / (2.0 * mu0)) * V;
+        double term10  = M_mag / (M * r);
+
+        // Term 11: Cumulative burst-decay energy  [CP3 NOVEL — a_decay = L₀·τ_d·(1−e^(−t/τ_d))/(M·r)]
+        double cum_D   = L0_W * tau_decay * (1.0 - std::exp(-t / tau_decay));
+        double term11  = cum_D / (M * r);
 
         double result = term1 + term2 + term3 + term4 + term5
-                      + term_q + term_fluid + term_osc + term_DM;
+                      + term_q + term_fluid + term_osc + term_DM + term10 + term11;
         if (logging_enabled)
             std::cout << "[LOG] compute_g_Magnetar(t=" << t << ") = " << result
                       << "  [t1=" << term1 << " t2=" << term2 << " t3=" << term3
                       << " t4=" << term4 << " t5=" << term5
                       << " tq=" << term_q << " tf=" << term_fluid
-                      << " tosc=" << term_osc << " tdm=" << term_DM << "]" << std::endl;
+                      << " tosc=" << term_osc << " tdm=" << term_DM
+                      << " t10=" << term10 << " t11=" << term11 << "]" << std::endl;
         return result;
     }
 
@@ -396,6 +416,9 @@ public:
         os << "t_Hubble_gyr:     " << t_Hubble_gyr      << " Gyr" << std::endl;
         os << "M_DM_factor:      " << M_DM_factor       << std::endl;
         os << "delta_rho/rho:    " << delta_rho_over_rho << std::endl;
+        os << "mu0:              " << mu0               << " H/m" << std::endl;
+        os << "L0_W:             " << L0_W              << " W" << std::endl;
+        os << "tau_decay:        " << tau_decay         << " s" << std::endl;
         os << "--- Cached ---" << std::endl;
         os << "ug1_base:    " << ug1_base     << " m/s^2" << std::endl;
         os << "I_ns:        " << I_ns         << " kg m^2" << std::endl;
@@ -436,8 +459,11 @@ public:
         ofs << std::scientific << std::setprecision(10);
         const char* names[] = {
             "G","M","r","H0","B0","tau_B","B_crit","Lambda","c_light",
-            "q_charge","v_surf","f_TRZ","rho_vac_UA","rho_vac_SCm",
-            "P_init","tau_Omega","scale_EM","proton_mass"
+            "q_charge","f_TRZ","rho_vac_UA","rho_vac_SCm",
+            "P_init","tau_Omega","scale_EM","proton_mass",
+            "hbar","t_Hubble","delta_x","delta_p","integral_psi",
+            "rho_fluid","A_osc","k_osc","omega_osc","x_pos","t_Hubble_gyr",
+            "M_DM_factor","delta_rho_over_rho","mu0","L0_W","tau_decay"
         };
         for (const char* n : names)
             ofs << n << " = " << getVariable(n) << "\n";
