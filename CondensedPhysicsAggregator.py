@@ -10,7 +10,7 @@ while maintaining a single-import API.
 ARCHITECTURE:
     CondensedPhysics.py      → Foundation (1011 base classes)
     CondensedPhysics2.py     → Extension 1 (17+ classes: Orb Analysis 10/11+)
-    CondensedPhysics3.py     → Extension 2 (112 classes: 15+ categories, Sessions 41-60, 2026-03-14)
+    CondensedPhysics3.py     → Extension 2 (118 classes: 15+ categories, Sessions 41-62, 2026-03-14)
     CondensedPhysicsAggregator.py → This file (unified API)
 
 USAGE:
@@ -79,7 +79,7 @@ from CondensedPhysics2 import (
 )
 
 # ═══════════════════════════════════════════════════════════════════════════════
-# IMPORT FROM CONDENSEDPHYSICS3.PY (EXTENSION 2 — 112 classes, 15+ categories)
+# IMPORT FROM CONDENSEDPHYSICS3.PY (EXTENSION 2 — 118 classes, 15+ categories)
 # Source: Grok threads ba4c0789 (Session 41), 7f9068 (Session 47), 381a8fe7 (Session 48), 7514fe (Session 50)
 # ═══════════════════════════════════════════════════════════════════════════════
 
@@ -223,6 +223,13 @@ from CondensedPhysics3 import (
     # Session 60 — grok_share_8d951e12.txt third-pass: 2 new classes (PAPER_242–243)
     RingsOfRelativityEinsteinLensingMUGECalculator,
     NGC3603FullMUGECavityPressureCalculator,
+    # Session 62 — grok_share_8d951e12.txt fourth-pass: 6 new classes (PAPER_244–249)
+    MUGEQuantumUncertaintyTermCalculator,
+    MUGEFluidSelfGravityTermCalculator,
+    MUGEDualModeOscillatoryGravityCalculator,
+    MUGEMergerInteractionModulationCalculator,
+    UQFFSource10BatchProfiledCalculator,
+    UQFFCUDAGPUOptimizationPatternCalculator,
 )
 
 CP3_CALCULATORS = {
@@ -350,6 +357,13 @@ CP3_CALCULATORS = {
     # Session 60 — grok_share_8d951e12.txt third-pass: 2 new classes (PAPER_242–243)
     'RingsOfRelativityEinsteinLensingMUGECalculator': RingsOfRelativityEinsteinLensingMUGECalculator,
     'NGC3603FullMUGECavityPressureCalculator': NGC3603FullMUGECavityPressureCalculator,
+    # Session 62 — grok_share_8d951e12.txt fourth-pass: 6 new classes (PAPER_244–249)
+    'MUGEQuantumUncertaintyTermCalculator': MUGEQuantumUncertaintyTermCalculator,
+    'MUGEFluidSelfGravityTermCalculator': MUGEFluidSelfGravityTermCalculator,
+    'MUGEDualModeOscillatoryGravityCalculator': MUGEDualModeOscillatoryGravityCalculator,
+    'MUGEMergerInteractionModulationCalculator': MUGEMergerInteractionModulationCalculator,
+    'UQFFSource10BatchProfiledCalculator': UQFFSource10BatchProfiledCalculator,
+    'UQFFCUDAGPUOptimizationPatternCalculator': UQFFCUDAGPUOptimizationPatternCalculator,
 }
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -490,7 +504,7 @@ ALL_CALCULATORS = {
 
 # Module metadata
 AGGREGATOR_VERSION = "2.4.0"
-TOTAL_MODULES = 21  # CP1, CP2 v2.4.0, CP3 (Sessions 41-60, 112 classes), + 10 thread registries + PAPER_196-243
+TOTAL_MODULES = 21  # CP1, CP2 v2.5.0, CP3 (Sessions 41-62, 118 classes), + 10 thread registries + PAPER_196-249
 
 
 def get_calculator(name: str):

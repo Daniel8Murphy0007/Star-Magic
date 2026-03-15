@@ -7088,6 +7088,467 @@ class NGC3603FullMUGECavityPressureCalculator(_CP3Calculator):
         }
 
 
+# ===========================================================================
+# Session 61 — grok_share_8d951e12.txt FOURTH-PASS (unique sub-term physics)
+# ===========================================================================
+
+class MUGEQuantumUncertaintyTermCalculator(_CP3Calculator):
+    """
+    PAPER_244 — Universal MUGE quantum uncertainty gravity sub-term.
+
+    Present identically in ALL 19 grok_share_8d951e12 C++ MUGE modules as term_q.
+    Extracted as a standalone precision calculator for independent sensitivity analysis.
+
+    Core formula
+    ------------
+    g_Q = (ħ / √(Δx · Δp)) · ψ_integral · (2π / t_Hubble)
+
+    with Heisenberg minimum-uncertainty: Δx · Δp ≥ ħ/2, so √(Δx·Δp) ≥ √(ħ/2).
+    When Δp = ħ/Δx (minimum uncertainty): √(Δx·Δp) = √ħ → g_Q = ħ^(1/2)·ψ·2π/t_H.
+
+    Physical interpretation
+    -----------------------
+    Quantum vacuum fluctuations impose a minimum effective gravity perturbation on
+    every astrophysical body. The Hubble-time normalization (2π/t_H) connects the
+    quantum zero-point scale to the cosmological time horizon.
+    """
+
+    def compute(self, dataset: dict) -> dict:
+        import math
+        hbar          = dataset.get('hbar', 1.0546e-34)      # J·s
+        delta_x       = dataset.get('delta_x', 1e-10)        # m  (position uncertainty)
+        delta_p       = dataset.get('delta_p', hbar / dataset.get('delta_x', 1e-10))  # kg·m/s
+        psi_integral  = dataset.get('psi_integral', 1.0)     # wavefunction norm
+        t_Hubble      = dataset.get('t_Hubble', 13.8e9 * 3.156e7)   # s
+
+        sqrt_unc = math.sqrt(delta_x * delta_p)
+        g_Q = (hbar / sqrt_unc) * psi_integral * (2 * math.pi / t_Hubble)
+
+        # Heisenberg lower bound check
+        heisenberg_bound = math.sqrt(hbar / 2.0)
+        g_Q_min = (hbar / heisenberg_bound) * psi_integral * (2 * math.pi / t_Hubble)
+
+        return {
+            'primary_equations': [
+                f"g_Q = (ħ/√(Δx·Δp))·ψ·(2π/t_H) = {g_Q:.4e} m/s²",
+                f"√(Δx·Δp) = {sqrt_unc:.4e}  [Δx={delta_x:.2e} m, Δp={delta_p:.2e} kg·m/s]",
+                f"g_Q_min (Heisenberg bound) = {g_Q_min:.4e} m/s²",
+                f"Hubble normalisation: 2π/t_H = {2*math.pi/t_Hubble:.4e} s⁻¹",
+            ],
+            'available_equations': [
+                "Min uncertainty product: Δx·Δp = ħ/2  →  g_Q_min = √(2ħ)·ψ·2π/t_H",
+                "Ratio g_Q/g_Newtonian: quantum fraction of local gravity",
+                "Time dependence: if ψ decays as ψ₀·e^(-t/τ_Q),  g_Q(t) drops exponentially",
+                "Hubble-time sensitivity: δg_Q/δt_H = −g_Q/t_H",
+                "Scale comparison: g_Q vs kBT/mL  (thermal vs quantum gravity)",
+            ],
+            'simulation_set': {
+                'delta_x_sweep':    'Δx from 1e-15 (nuclear) to 1e-3 m (macroscopic)',
+                'psi_integral_sweep': 'ψ from 0.1 to 10.0 (wavefunction normalisation)',
+                't_Hubble_sweep':   't_H from 10–20 Gyr (cosmological age uncertainty)',
+                'quantum_fraction':  'g_Q/(g_Q + g_Newtonian) over radius sweep',
+            },
+            'parameters': {
+                'g_Q': g_Q, 'g_Q_min': g_Q_min,
+                'sqrt_unc': sqrt_unc, 'hbar': hbar,
+                'delta_x': delta_x, 'delta_p': delta_p,
+            },
+        }
+
+
+class MUGEFluidSelfGravityTermCalculator(_CP3Calculator):
+    """
+    PAPER_245 — Universal MUGE fluid self-gravity sub-term.
+
+    Present identically in ALL 19 grok_share_8d951e12 C++ MUGE modules as term_fluid.
+    Computes the effective gravitational acceleration contribution from the surrounding
+    fluid/plasma medium exerting buoyancy on the astrophysical body.
+
+    Core formula
+    ------------
+    g_fluid = (ρ_fluid · V · g_grav) / M
+
+    where V = (4/3)·π·r³  (sphere volume defined by characteristic radius r).
+    This is the Archimedes buoyancy principle transposed to gravity:
+    g_fluid = g_Archimedes = V·ρ_f·g_grav / M_body.
+    """
+
+    def compute(self, dataset: dict) -> dict:
+        import math
+        G          = dataset.get('G', 6.6743e-11)
+        M          = dataset.get('M_kg', 1.989e30)       # kg
+        r          = dataset.get('r_m', 6.957e8)         # m  (characteristic radius)
+        rho_fluid  = dataset.get('rho_fluid', 1e-20)     # kg/m³ (ambient medium)
+
+        V       = (4.0 / 3.0) * math.pi * r**3
+        g_grav  = G * M / r**2                          # local Newtonian g
+        g_fluid = (rho_fluid * V * g_grav) / M
+
+        # Ratio fluid/Newtonian
+        ratio = g_fluid / g_grav if g_grav != 0 else 0.0
+
+        # Crossover radius where g_fluid = g_grav → rho_fluid·V = M
+        r_crossover = (3.0 * M / (4.0 * math.pi * rho_fluid))**(1.0/3.0) if rho_fluid > 0 else float('inf')
+
+        return {
+            'primary_equations': [
+                f"V = (4/3)πr³ = {V:.4e} m³",
+                f"g_grav = G·M/r² = {g_grav:.4e} m/s²",
+                f"g_fluid = ρ_f·V·g_grav/M = {g_fluid:.4e} m/s²",
+                f"g_fluid/g_grav = ρ_f·V/M = {ratio:.4e}  [Archimedes fraction]",
+                f"Crossover radius (g_fluid=g_Newt): r_c = {r_crossover:.4e} m",
+            ],
+            'available_equations': [
+                "Buoyancy crossover: ρ_f·V = M → ρ_f = M/V = 3M/(4πr³)",
+                "g_fluid as fraction: η = ρ_f·(4πr³/3)/M = ρ_f·V/M",
+                "Fluid pressure gradient: ∇P = ρ_f·g → P = ρ_f·g·r (column)",
+                "Rayleigh-Taylor stability: growth rate σ = √(g_fluid·k·Δρ/ρ)",
+                "Kelvin-Helmholtz: shear instability scale L = v_shear²/(g_fluid·Δρ/ρ)",
+            ],
+            'simulation_set': {
+                'rho_fluid_sweep':    'ρ_f from 1e-25 (void) to 1e-10 kg/m³ (dense cloud)',
+                'radius_sweep':       'r from stellar to galactic scale',
+                'mass_sweep':         'M from 1 M☉ to 1e15 M☉ galaxy cluster',
+                'buoyancy_fraction':  'η = g_fluid/g_grav over rho_fluid space',
+            },
+            'parameters': {
+                'V_m3': V, 'g_grav': g_grav, 'g_fluid': g_fluid,
+                'ratio': ratio, 'r_crossover_m': r_crossover,
+            },
+        }
+
+
+class MUGEDualModeOscillatoryGravityCalculator(_CP3Calculator):
+    """
+    PAPER_246 — Universal MUGE dual-mode oscillatory gravity sub-term.
+
+    Present identically in ALL 19 grok_share_8d951e12 C++ MUGE modules as term_osc.
+    Combines a standing-wave mode and a Hubble-normalised travelling wave mode:
+
+    Core formula
+    ------------
+    g_osc = 2·A·cos(k·x)·cos(ω·t)          [standing wave, Mode 1]
+          + (2π/T_H_gyr)·A·cos(k·x − ω·t)  [Hubble-normalised traveling, Mode 2]
+
+    Mode 1 is a spatial standing wave (interference of two counter-propagating waves).
+    Mode 2 is a traveling wave amplitude-scaled to Hubble time in Gyr units,
+    connecting local oscillations to the cosmological horizon frequency.
+    """
+
+    def compute(self, dataset: dict) -> dict:
+        import math
+        A           = dataset.get('A_osc', 1e-10)        # m/s² amplitude
+        k           = dataset.get('k_osc', 1.0 / dataset.get('r_m', 1e16))   # rad/m
+        omega       = dataset.get('omega_osc', 2 * math.pi / (dataset.get('r_m', 1e16) / 3e8))
+        x           = dataset.get('x_pos', dataset.get('r_m', 1e16))         # m
+        t           = dataset.get('t_s', 0.0)            # s
+        t_H_gyr     = dataset.get('t_Hubble_gyr', 13.8)  # Gyr (scalar)
+
+        mode1 = 2.0 * A * math.cos(k * x) * math.cos(omega * t)
+        mode2 = (2.0 * math.pi / t_H_gyr) * A * math.cos(k * x - omega * t)
+        g_osc = mode1 + mode2
+
+        # Phase information
+        phase_kx     = k * x
+        phase_kx_wt  = k * x - omega * t
+        amp_ratio    = (2 * math.pi / t_H_gyr)  # Mode2/A relative to mode1/2A
+
+        return {
+            'primary_equations': [
+                f"Mode 1 (standing): 2A·cos(kx)·cos(ωt) = {mode1:.4e} m/s²",
+                f"Mode 2 (travel):  (2π/T_H_gyr)·A·cos(kx−ωt) = {mode2:.4e} m/s²",
+                f"g_osc = mode1 + mode2 = {g_osc:.4e} m/s²",
+                f"k·x = {phase_kx:.4f} rad,  k·x−ω·t = {phase_kx_wt:.4f} rad",
+                f"Mode2 amplitude factor (2π/T_H_gyr) = {amp_ratio:.4f}",
+            ],
+            'available_equations': [
+                "Standing wave nodes: cos(kx)=0 → x = (n+½)π/k",
+                "Traveling wave phase velocity: v_phase = ω/k",
+                "Group velocity (envelope): v_group = dω/dk (needs dispersion relation)",
+                "Total amplitude envelope: |g_osc_max| ≤ 2A + (2π/T_H_gyr)·A",
+                "Resonance condition: ω_local = 2π/t_Hubble (Mode 2 dominates)",
+                "Time average: <g_osc> = 0  (both modes average to zero)",
+            ],
+            'simulation_set': {
+                'omega_sweep':      'ω from 2πν_THz to 2π/t_H (THz to cosmic scales)',
+                'k_sweep':          'k from 1/pc to 1/nucleus (spatial scale)',
+                'A_sweep':          'A from 1e-15 to 1e-5 m/s² (field strength)',
+                'phase_evolution':  'g_osc(t) over 0 to 10 Gyr at fixed x',
+            },
+            'parameters': {
+                'mode1': mode1, 'mode2': mode2, 'g_osc': g_osc,
+                'A': A, 'k': k, 'omega': omega, 'amp_ratio': amp_ratio,
+            },
+        }
+
+
+class MUGEMergerInteractionModulationCalculator(_CP3Calculator):
+    """
+    PAPER_247 — MUGE galaxy merger interaction gravity modulation term.
+
+    Present in AntennaeGalaxies and HUDF modules as interaction term I(t) that
+    amplifies the UQFF Ug gravity by (1 + I(t)) during active merger phases.
+    Captures tidal forcing and gravitational potential deepening during coalescence.
+
+    Core formula
+    ------------
+    I(t) = I₀ · exp(−t / τ_merger)
+    g_merger = g_base · (1 + I(t))
+
+    where g_base = UQFF Ug = (Ug1 + Ug4)·(1 + f_TRZ)·(1 + I(t))
+    and Ug1 = G·M(t)/r²,  Ug4 = Ug1·(1 − B/B_crit).
+
+    The (1+I) factor boosts local gravity during the merger by up to (1+I₀) ≈ 1.1
+    at t=0 and decays exponentially to unity asymptotically (relaxed state).
+    """
+
+    def compute(self, dataset: dict) -> dict:
+        import math
+        I0           = dataset.get('I0', 0.1)             # initial interaction factor
+        tau_merger   = dataset.get('tau_merger_s', 400e6 * 3.156e7)  # s (400 Myr default)
+        t            = dataset.get('t_s', 0.0)            # s
+        G            = dataset.get('G', 6.6743e-11)
+        M            = dataset.get('M_kg', 2e11 * 1.989e30)
+        r            = dataset.get('r_m', 30000 * 9.461e15)
+        f_TRZ        = dataset.get('f_TRZ', 0.1)
+        B            = dataset.get('B_T', 1e-5)
+        B_crit       = dataset.get('B_crit_T', 1e11)
+
+        It   = I0 * math.exp(-t / tau_merger)
+        Ug1  = G * M / r**2
+        Ug4  = Ug1 * (1.0 - B / B_crit)
+        g_base_no_I = (Ug1 + Ug4) * (1 + f_TRZ)
+        g_merger    = g_base_no_I * (1.0 + It)
+        boost       = (g_merger - g_base_no_I) / g_base_no_I * 100.0  # %
+
+        # Merger half-life
+        t_half = tau_merger * math.log(2.0)
+        # Time for I to fall below 1%
+        t_relax = tau_merger * math.log(I0 / 0.01) if I0 > 0.01 else 0.0
+
+        return {
+            'primary_equations': [
+                f"I(t) = I₀·e^(−t/τ_m) = {It:.4e}  [I₀={I0}, τ_m={tau_merger:.3e} s]",
+                f"Ug1 = G·M/r² = {Ug1:.4e} m/s²",
+                f"g_base (no merger) = (Ug1+Ug4)·(1+f_TRZ) = {g_base_no_I:.4e} m/s²",
+                f"g_merger = g_base·(1+I(t)) = {g_merger:.4e} m/s²",
+                f"Gravity boost = +{boost:.2f}%  at t={t:.3e} s",
+                f"Merger half-life t½ = {t_half:.3e} s  ({t_half/3.156e16:.2f} Gyr)",
+                f"Relaxation time (I<1%) = {t_relax:.3e} s  ({t_relax/3.156e16:.2f} Gyr)",
+            ],
+            'available_equations': [
+                "Peak boost: (1+I₀) at t=0 → need τ_merger for rate",
+                "Energy deposited by tidal torque: E_tide ∝ I₀·Ug1·τ_merger",
+                "SFR enhancement: SFR(t) = SFR₀·(1+I(t))  (tidal trigger)",
+                "Gas inflow rate: dM_gas/dt ∝ I(t)·v_infall²/G·M",
+                "BH accretion boost: L_AGN ∝ Ṁ_BH·c² with Ṁ_BH enhanced by I(t)",
+            ],
+            'simulation_set': {
+                'I0_sweep':         'I₀ from 0.01 to 1.0 (minor to major merger)',
+                'tau_merger_sweep': 'τ_m from 100 Myr to 2 Gyr (fast vs long merger)',
+                'mass_ratio_sweep': 'M1/M2 from 1:1 to 1:10 (merger mass ratio)',
+                'phase_evolution':  'g_merger(t) over 0 to 10τ_m',
+            },
+            'parameters': {
+                'It': It, 'g_base': g_base_no_I, 'g_merger': g_merger,
+                'boost_pct': boost, 't_half_s': t_half, 't_relax_s': t_relax,
+            },
+        }
+
+
+class UQFFSource10BatchProfiledCalculator(_CP3Calculator):
+    """
+    PAPER_248 — Source10 upgraded batch-compute + OpenMP + chrono profiling calculator.
+
+    Captures the three-pass Source10 upgrade from grok_share_8d951e12.txt that adds:
+    1. Replaced legacy <cstdlib>/<ctime> RNG with mt19937 (Mersenne Twister)
+    2. Configurable scaling_factors map with file-loadable config
+    3. batch_compute_F_U_Bi_i() for N systems × T timesteps with OpenMP parallelism
+    4. chrono::high_resolution_clock profiling on all compute paths
+
+    Core formulae
+    -------------
+    F_U_Bi_i = integrand·x² + LENR_scale·activation·e^(−t/1e6) + DE + resonance·η + rel·(1+f_TRZ)
+
+    g_UQFF   = Σᵢ₌₁²⁶(Ug1ᵢ + Ug2ᵢ + Ug3ᵢ + Ug4ᵢ) + Λc²/3 + g_Q
+
+    DPM_resonance = g_H·μ_B·B₀ / (ħ·ω₀) × 2.82e−56   [Eta Carinae calibration]
+    """
+
+    def compute(self, dataset: dict) -> dict:
+        import math, time
+
+        # Core catalogue constants
+        g_H          = dataset.get('g_H', 1.252e46)       # Hydrogen g-factor
+        mu_B         = dataset.get('mu_B', 9.274e-24)     # Bohr magneton J/T
+        B0           = dataset.get('B0_T', 1e-4)          # T
+        h_planck     = dataset.get('hbar', 1.0546e-34)    # J·s
+        omega0       = dataset.get('omega0', 1e-12)        # rad/s base
+        adj_factor   = dataset.get('adj_factor', 2.82e-56) # Eta Car calibration
+
+        integrand    = dataset.get('integrand', 1.56e36)
+        x2           = dataset.get('x2', 1.35e172)
+        LENR_scale   = dataset.get('LENR_scale', 1e12)
+        activation   = dataset.get('activation', 1.0)
+        DE           = dataset.get('DE', 1.0)
+        resonance    = dataset.get('resonance', 1.0)
+        neutron_fac  = dataset.get('neutron_factor', 1.0)
+        rel_term     = dataset.get('rel_term', 4.30e33)
+        f_TRZ        = dataset.get('f_TRZ', 0.1)
+        t            = dataset.get('t_s', 0.0)
+
+        # Batch parameters
+        n_systems    = dataset.get('n_systems', 1)
+        t_end_s      = dataset.get('t_end_s', 1e15)
+        n_steps      = int(dataset.get('n_steps', 10))
+
+        # DPM resonance
+        DPM_res = (g_H * mu_B * B0 / (h_planck * omega0)) * adj_factor
+
+        # F_U_Bi_i at given t
+        t1 = integrand * x2
+        t2 = LENR_scale * activation * math.exp(-t / 1e6)
+        t3 = DE + resonance * neutron_fac
+        t4 = rel_term * (1.0 + f_TRZ)
+        FU = t1 + t2 + t3 + t4
+
+        # 26-layer g_UQFF sum (simplified: all layers equal)
+        Ug1 = dataset.get('Ug1_base', 4.645e11)
+        Ug4 = dataset.get('Ug4_base', 4.512e11)
+        sum_Ug = 26.0 * (Ug1 + Ug4)
+        Lambda = dataset.get('Lambda', 1.1e-52)
+        c = 3e8
+        G_sum = sum_Ug + Lambda * c**2 / 3.0
+
+        # Batch timing simulation (Python proxy for OpenMP wall time)
+        t_steps = [t_end_s * i / max(n_steps - 1, 1) for i in range(n_steps)]
+        t_start = time.perf_counter()
+        batch_results = []
+        for sys_i in range(n_systems):
+            for ts in t_steps:
+                val = (t1 + LENR_scale * activation * math.exp(-ts / 1e6) + t3 + t4)
+                batch_results.append(val)
+        elapsed_ms = (time.perf_counter() - t_start) * 1000.0
+
+        return {
+            'primary_equations': [
+                f"DPM_resonance = g_H·μ_B·B₀/(ħ·ω₀)·adj = {DPM_res:.4e} J/m³",
+                f"F_U_Bi_i(t={t:.2e}) = integrand·x²+LENR+DE+rel = {FU:.4e} N",
+                f"  term1 = integrand·x² = {t1:.4e}",
+                f"  term2 = LENR·activation·e^(-t/1e6) = {t2:.4e}",
+                f"  term4 = rel·(1+f_TRZ) = {t4:.4e}",
+                f"g_UQFF 26-layer sum = {G_sum:.4e} m/s²",
+                f"Batch: {n_systems} systems × {n_steps} steps → {elapsed_ms:.3f} ms",
+            ],
+            'available_equations': [
+                "Config scaling: LENR_scale adjustable → e.g. 1e13 for enhanced LENR",
+                "Batch throughput: N·T / elapsed_ms  (systems/ms)",
+                "DPM resonance calibration: adj_factor = 3.11e9/(g_H·μ_B·B₀/(ħ·ω₀))",
+                "g_UQFF(r,t) full: +Lambda·c²/3 + quantum_term + EM_term",
+                "OpenMP reduction: pre_sum_Ug = Σ(Ug1ᵢ+Ug2ᵢ+Ug3ᵢ+Ug4ᵢ), parallelised",
+            ],
+            'simulation_set': {
+                'LENR_scale_sweep':  'LENR from 1e10 to 1e14 (scaling sensitivity)',
+                'system_count_sweep': 'n_systems from 1 to 10000 (throughput test)',
+                'step_count_sweep':  'n_steps from 10 to 10000 (resolution vs speed)',
+                'F_U_Bi_i_vs_t':    'F_U_Bi_i(t) over 0 to 1e15 s',
+            },
+            'parameters': {
+                'DPM_resonance': DPM_res, 'F_U_Bi_i': FU,
+                'g_UQFF_sum': G_sum, 'batch_elapsed_ms': elapsed_ms,
+                'n_batch': len(batch_results),
+            },
+        }
+
+
+class UQFFCUDAGPUOptimizationPatternCalculator(_CP3Calculator):
+    """
+    PAPER_249 — CUDA GPU optimization patterns for UQFF multi-system computations.
+
+    From the final section of grok_share_8d951e12.txt: Grok provided a canonical
+    CUDA tiled shared-memory matrix-multiply kernel as the reference GPU acceleration
+    pattern for UQFF bulk multi-system evaluation on Ampere/Ada/Hopper GPUs.
+
+    Core CUDA patterns documented
+    -----------------------------
+    1. Tiled GEMM: shared-memory sA[32][32], sB[32][32] eliminates global reads
+       Wall time: O(N³/32²) global accesses vs O(N³) naive
+    2. Coalesced access: thread (tx,ty) reads A[by+ty][k*32+tx] → stride-1 per warp
+    3. Warp occupancy target: ≥70% SM utilisation on Hopper H100
+    4. cudaGraph capture: 5× lower launch overhead for repetitive MUGE sweeps
+    5. NCCL multi-GPU: collective reduce for ensemble UQFF statistics
+
+    Applicable to UQFF when
+    -----------------------
+    - Evaluating g_total(r,t) across 500+ systems × 10000 timesteps
+    - Computing 26-layer Ug sums in parallel (each layer = independent thread block)
+    - Batch-computing F_U_Bi_i across system parameter sweeps
+    """
+
+    def compute(self, dataset: dict) -> dict:
+        import math
+
+        N           = int(dataset.get('N_matrix', 1024))   # matrix dimension
+        n_systems   = int(dataset.get('n_systems', 500))
+        n_timesteps = int(dataset.get('n_timesteps', 10000))
+        tile        = int(dataset.get('tile_size', 32))
+        sm_count    = int(dataset.get('sm_count', 132))     # H100 SMs
+        threads_per_block = tile * tile
+
+        # GEMM tile efficiency
+        global_reads_naive = N**3
+        global_reads_tiled = N**3 / tile
+        speedup_tiled = global_reads_naive / global_reads_tiled
+
+        # Occupancy estimate
+        regs_per_thread = 32
+        shared_mem_bytes = 2 * tile * tile * 4  # 2 tiles × float32
+        warps_per_block  = threads_per_block // 32
+        max_blocks_per_sm = 2048 // threads_per_block  # H100: 2048 threads/SM
+        occupancy_pct    = min(100.0, warps_per_block * max_blocks_per_sm / 64.0 * 100.0)
+
+        # MUGE multi-system throughput  (26 layers × N_systems × T_steps)
+        total_ops = 26 * n_systems * n_timesteps
+        tflops_h100 = 989e12  # H100 FP32 TFLOPS (tensor core peak)
+        min_time_ms = total_ops / tflops_h100 * 1000.0
+
+        # cudaGraph launch overhead saving
+        kernel_launch_ns = 5000  # ~5 μs naive
+        graph_launch_ns  = 1000  # ~1 μs with graph
+        overhead_saving_pct = (1 - graph_launch_ns / kernel_launch_ns) * 100.0
+
+        return {
+            'primary_equations': [
+                f"GEMM tiled speedup: N³/tile÷N³ = 1/tile = ×{speedup_tiled:.0f} global reads saved",
+                f"Shared mem per block: 2×{tile}²×4 B = {shared_mem_bytes} B ({shared_mem_bytes/1024:.1f} KB)",
+                f"Est. SM occupancy: {occupancy_pct:.1f}%  ({warps_per_block} warps/block)",
+                f"MUGE 26L×{n_systems}sys×{n_timesteps}steps = {total_ops:.2e} ops",
+                f"H100 peak FP32: {tflops_h100:.2e} FLOPS → min_time = {min_time_ms:.3f} ms",
+                f"cudaGraph launch savings: {overhead_saving_pct:.0f}% overhead reduction",
+                "Kernel: __shared__ sA[32][32],sB[32][32]; coalesced A[by+ty][k*32+tx]",
+            ],
+            'available_equations': [
+                "Roofline model: compute-bound if FLOPS/byte > machine balance (~20:1 H100)",
+                "Memory bandwidth: 3.35 TB/s (H100 HBM3) → 26-layer Ug bandwidth need",
+                "NVLink all-reduce: latency = α + n·msg_size/bandwidth (ring topology)",
+                "cudaMemPrefetchAsync: prefetch latency ≈ 0 with UM if aligned to 2 MiB",
+                "Warp divergence cost: up to 32× slowdown per divergent warp",
+                "Loop unroll pragma: #pragma unroll 32 for inner GEMM dot product",
+            ],
+            'simulation_set': {
+                'tile_sweep':        'tile from 8 to 128 (optimal shared mem block)',
+                'N_system_sweep':    'n_systems from 10 to 10000 (scaling analysis)',
+                'occupancy_vs_regs': 'occupancy as function of register count/thread',
+                'graph_vs_naive':    'cudaGraph vs naive launch overhead for N kernels',
+            },
+            'parameters': {
+                'tile': tile, 'speedup_tiled': speedup_tiled,
+                'occupancy_pct': occupancy_pct, 'total_ops': total_ops,
+                'min_time_ms': min_time_ms, 'overhead_saving_pct': overhead_saving_pct,
+            },
+        }
+
+
 # ---------------------------------------------------------------------------
 # __all__ export
 # ---------------------------------------------------------------------------
@@ -7249,4 +7710,11 @@ __all__ = [
     # Session 60 — PAPER_242–243 (grok_share_8d951e12.txt third-pass)
     "RingsOfRelativityEinsteinLensingMUGECalculator",
     "NGC3603FullMUGECavityPressureCalculator",
+    # Session 62 — PAPER_244–249 (grok_share_8d951e12.txt fourth-pass — universal sub-terms + GPU)
+    "MUGEQuantumUncertaintyTermCalculator",
+    "MUGEFluidSelfGravityTermCalculator",
+    "MUGEDualModeOscillatoryGravityCalculator",
+    "MUGEMergerInteractionModulationCalculator",
+    "UQFFSource10BatchProfiledCalculator",
+    "UQFFCUDAGPUOptimizationPatternCalculator",
 ]
