@@ -23,7 +23,9 @@ wheels/
 venv/
 ENV/
 env/
-.venv
+.venv/
+.venv_py314_backup/
+.venv_py314_backup
 
 # IDE
 .vscode/*
@@ -144,16 +146,22 @@ msvc_errors*.txt
 validation_log.txt
 
 # ============================================================
+# LARGE AI CONVERSATION AND DEBUG OUTPUT FILES
+# ============================================================
+# NOTE: Also add these to .vscode/settings.json under files.exclude
+# and files.watcherExclude to prevent VS Code from indexing them.
+grok_share_*.txt
+wolfram_debug_phase1.txt
+wolfram_debug_*.txt
+
+# ============================================================
 # BUILD OUTPUT AND STATUS FILES
 # ============================================================
 build_output.txt
 BUILD_STATUS.md
 CMAKE_BUILD_STATUS.md
 C++17_MINGW_CONTAMINATION_REPORT.txt
-build/
-build_backup_*/
 build_wolfram/
-build_msvc/
 
 # ============================================================
 # TEST OUTPUT
@@ -233,9 +241,6 @@ holographic_sc_vs_T.csv
 uqff_entanglement_entropy_vs_T.csv
 
 uqff_black_hole_entropy_vs_M.csv
-
-grok_api_config.json
-
 
 grok_api_config.json
 
