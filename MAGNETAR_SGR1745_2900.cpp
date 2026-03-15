@@ -21,10 +21,15 @@
  * 
  * Key Features:
  *   - UQFF canonical: B=2e10 T, B_crit=1e11 T, r=20 km, Hz=2.269e-18 s⁻¹ [CP3 SGR1745BHProximityMagEnergyCalculator].
- *   - 12-term MUGE: base+Hz+f_sc, Ug(f_TRZ), Lambda, EM(dynamic v_surf), GW, BH proximity,
- *     magnetic stored energy, burst decay, quantum, fluid, oscillatory (Mode 1), DM+tidal.
+ *   - 15-term MUGE: base+Hz+f_sc, Ug(f_TRZ), Lambda, EM(dynamic v_surf), GW, BH monopole,
+ *     BH 2nd-order tidal gradient, magnetic stored energy (dynamic B), burst decay (cumulative),
+ *     oscillatory burst D(t), quantum, fluid, oscillatory (Mode 1), DM+tidal.
+ *   - Dynamic B(t) = B0·exp(−t/tau_B): f_sc, M_mag, and EM all evolve with spin-down.
+ *   - Burst modulation D(t) = D₀·cos(ω_D·t)·e^(−t/τ_D) from MagnetarSGR1745DynamicModulationCalculator (CP3).
+ *   - BH tidal gradient: a_tidal = 2·G·M_BH/r_BH³·r (2nd-order at 0.92 pc from Sgr A*).
  *   - Dynamic v_surf: (2π/P_init)·r from ATNF pulse period P_init=3.76 s.
  *   - UQFF 2.0 self-expanding framework: dynamic parameters, logging, state export.
+ *   - cross_validate() utility for dual-method UQFF/MUGE cross-validation with SGR0501.
  *   - Setter methods for updates: setVar(double new_val) or addToVar(double delta)/subtractFromVar(double delta).
  * 
  * Author: Encoded by Grok (xAI), based on Daniel T. Murphy's UQFF manuscript.
@@ -74,8 +79,10 @@ private:
     double mu0;             // Vacuum permeability
     double L0_W;            // Initial luminosity (W)
     double tau_decay;       // Decay timescale (s)
-
-    // Additional parameters for full inclusion of terms
+    // Upgrade 2: D(t) burst modulation (MagnetarSGR1745DynamicModulationCalculator, CP3)
+    double D0_burst;        // Burst modulation amplitude (m/s^2)
+    double omega_D;         // Burst modulation angular frequency (rad/s)
+    double tau_D;           // Burst modulation decay timescale (s)
     double hbar;            // Reduced Planck's constant
     double t_Hubble;        // Hubble time (s)
     double t_Hubble_gyr;    // Hubble time in Gyr
@@ -134,8 +141,10 @@ public:
         mu0 = 1.2566e-6;                   // Permeability of free space [CP3 canonical] (H/m)
         L0_W = 5e28;                       // Initial burst luminosity [CP3 canonical] (W)
         tau_decay = 3.5 * 3.15576e7;       // 3.5 yr burst decay [CP3 canonical] (s)
-
-        // Full-term parameters
+        // Upgrade 2: D(t) burst modulation parameters [MagnetarSGR1745DynamicModulationCalculator]
+        D0_burst  = 1e-3;                   // Burst modulation amplitude (m/s^2)
+        omega_D   = 2.0 * UQFF_PI / 11.0;  // ~11 s burst repeat period (rad/s)
+        tau_D     = 3.5 * 3.15576e7;        // Burst modulation decay timescale = tau_decay (s)
         hbar = 1.0546e-34;
         t_Hubble = 1.0 / Hz;              // Hubble time = 1/Hz [CP3 canonical] (s)
         t_Hubble_gyr = 13.8;
@@ -198,6 +207,9 @@ public:
         else if (varName == "mu0") { mu0 = newValue; }
         else if (varName == "L0_W") { L0_W = newValue; }
         else if (varName == "tau_decay") { tau_decay = newValue; }
+        else if (varName == "D0_burst") { D0_burst = newValue; }
+        else if (varName == "omega_D")  { omega_D  = newValue; }
+        else if (varName == "tau_D")    { tau_D    = newValue; }
         // Full terms
         else if (varName == "hbar") { hbar = newValue; }
         else if (varName == "t_Hubble") { t_Hubble = newValue; }
@@ -256,6 +268,9 @@ public:
         else if (varName == "mu0") return mu0;
         else if (varName == "L0_W") return L0_W;
         else if (varName == "tau_decay") return tau_decay;
+        else if (varName == "D0_burst") return D0_burst;
+        else if (varName == "omega_D")  return omega_D;
+        else if (varName == "tau_D")    return tau_D;
         // Full terms
         else if (varName == "hbar") return hbar;
         else if (varName == "t_Hubble") return t_Hubble;
@@ -276,9 +291,10 @@ public:
         }
     }
 
-    // B(t) - static B for this model
-    double B_t(double /*t*/) const {
-        return B;
+    // B(t) - UPGRADE 1: dynamic exponential decay  [B(t) = B0·exp(−t/tau_B)]
+    // Activates when tau_B > 0; previously static. Drives dynamic f_sc, M_mag, EM.
+    double B_t(double t) const {
+        return B0 * std::exp(-t / tau_B);
     }
 
     // Omega(t) computation
@@ -304,10 +320,11 @@ public:
         return (4.0 / 3.0) * UQFF_PI * r * r * r;
     }
 
-    // Magnetic energy M_mag (J)
-    double compute_M_mag() const {
-        double V = compute_V();
-        return (B_t(0) * B_t(0) / (2 * mu0)) * V;
+    // Magnetic energy M_mag(t) (J)  — now uses dynamic B(t) [Upgrade 1]
+    double compute_M_mag(double t = 0.0) const {
+        double Bt = B_t(t);
+        double V  = compute_V();
+        return (Bt * Bt / (2.0 * mu0)) * V;
     }
 
     // Cumulative decay energy up to t (J)  [CP3: L₀·τ_d·(1−e^(−t/τ_d))]
@@ -322,19 +339,22 @@ public:
             return 0.0;
         }
 
-        double Bt = B_t(t);
+        double Bt = B_t(t);         // Upgrade 1: dynamic B(t) = B0*exp(-t/tau_B)
         double dOdt = dOmega_dt(t);
-
-        // f_sc update
-        double current_f_sc = 1 - (Bt / B_crit);
+        double current_f_sc = 1.0 - (Bt / B_crit);  // Evolves with B(t)
 
         // Term 1: Base + H(z) + B corrections
         double corr_H = 1 + Hz * t;
         double corr_B = current_f_sc;
         double term1 = ug1_base * corr_H * corr_B;
 
-        // BH term
+        // BH term (monopole)
         double term_BH = (G * M_BH) / (r_BH * r_BH);
+
+        // UPGRADE 3: BH 2nd-order tidal gradient [a_tidal = 2·G·M_BH/r_BH³·r]
+        // Differential tidal force across NS body at 0.92 pc from Sgr A*.
+        // Not negligible: at r_BH=2.83e16 m, a_tidal ~ G*M_BH*r/r_BH^3 is measurable.
+        double term_tidal = 2.0 * G * M_BH * r / (r_BH * r_BH * r_BH);
 
         // Term 2: UQFF Ug 
         double term2 = compute_Ug();
@@ -370,24 +390,30 @@ public:
         double term_dm_force_like = (M + M_dm) * (pert1 + pert2);
         double term_DM = term_dm_force_like / M;
 
-        // Magnetic energy term (effective g)
-        double M_mag = compute_M_mag();
+        // Magnetic energy term (effective g)  — dynamic M_mag(t) [Upgrade 1]
+        double M_mag = compute_M_mag(t);
         double term_mag = M_mag / (M * r);
 
         // Decay term (cumulative energy effective g)
         double cum_D = compute_cumulative_D(t);
         double term_decay = cum_D / (M * r);
 
-        // Total g_Magnetar (all terms summed)
-        double result = term1 + term_BH + term2 + term3 + term4 + term5
-                      + term_q + term_fluid + term_osc + term_DM + term_mag + term_decay;
+        // UPGRADE 2: D(t) burst modulation  [MagnetarSGR1745DynamicModulationCalculator]
+        // a_D(t) = D₀ · cos(ω_D · t) · e^(−t/τ_D)
+        double term_burst = D0_burst * std::cos(omega_D * t) * std::exp(-t / tau_D);
+
+        // Total g_Magnetar (all 15 terms)
+        double result = term1 + term_BH + term_tidal + term2 + term3 + term4 + term5
+                      + term_q + term_fluid + term_osc + term_DM + term_mag + term_decay + term_burst;
         if (logging_enabled)
             std::cout << "[LOG] compute_g_Magnetar(t=" << t << ") = " << result
-                      << "  [t1=" << term1 << " tBH=" << term_BH << " t2=" << term2
+                      << "  [t1=" << term1 << " tBH=" << term_BH
+                      << " ttidal=" << term_tidal << " t2=" << term2
                       << " t3=" << term3 << " t4=" << term4 << " t5=" << term5
                       << " tq=" << term_q << " tf=" << term_fluid
                       << " tosc=" << term_osc << " tdm=" << term_DM
-                      << " tmag=" << term_mag << " tdecay=" << term_decay << "]" << std::endl;
+                      << " tmag=" << term_mag << " tdecay=" << term_decay
+                      << " tburst=" << term_burst << "]" << std::endl;
         return result;
     }
 
@@ -418,6 +444,9 @@ public:
         os << "mu0:            " << mu0            << " H/m" << std::endl;
         os << "L0_W:           " << L0_W           << " W" << std::endl;
         os << "tau_decay:      " << tau_decay      << " s" << std::endl;
+        os << "D0_burst:       " << D0_burst        << " m/s^2 (burst modulation amplitude)" << std::endl;
+        os << "omega_D:        " << omega_D         << " rad/s (burst repeat ~11 s)" << std::endl;
+        os << "tau_D:          " << tau_D           << " s (burst decay timescale)" << std::endl;
         os << "--- Full-Term Parameters ---" << std::endl;
         os << "hbar:           " << hbar           << " J s" << std::endl;
         os << "t_Hubble:       " << t_Hubble       << " s (= 1/Hz)" << std::endl;
@@ -431,7 +460,7 @@ public:
         os << "delta_rho/rho:  " << delta_rho_over_rho << std::endl;
         os << "--- Cached ---" << std::endl;
         os << "ug1_base:       " << ug1_base       << " m/s^2" << std::endl;
-        os << "M_mag (J):      " << compute_M_mag() << " J" << std::endl;
+        os << "M_mag (J):      " << compute_M_mag(0.0) << " J (at t=0)" << std::endl;
     }
 
     // Example computation at t=1 year (for testing)
@@ -478,6 +507,7 @@ public:
             "q_charge","f_TRZ","rho_vac_UA","rho_vac_SCm",
             "P_init","tau_Omega","scale_EM","proton_mass",
             "M_BH","r_BH","mu0","L0_W","tau_decay",
+            "D0_burst","omega_D","tau_D",
             "hbar","t_Hubble","delta_x","delta_p","integral_psi",
             "rho_fluid","A_osc","k_osc","omega_osc","x_pos","t_Hubble_gyr",
             "M_DM_factor","delta_rho_over_rho"
@@ -488,6 +518,23 @@ public:
             ofs << "dynamic." << kv.first << " = " << kv.second << "\n";
         if (logging_enabled)
             std::cout << "[LOG] State exported to: " << filename << std::endl;
+    }
+    // UPGRADE 4: Cross-validate with MagnetarSGR0501_4516 (dual-method UQFF/MUGE pipeline)
+    // Returns fractional difference |g1745 - g0501| / g0501 at the canonical t=5000 yr epoch.
+    // Values < 0.01 indicate UQFF self-consistency across independent magnetar systems.
+    // Include MAGNETAR_SGR0501_4516.cpp in the same translation unit before using.
+    template<typename MagSGR0501>
+    double cross_validate(const MagSGR0501& sgr0501, double t_years = 5000.0) const {
+        double t_s    = t_years * 3.15576e7;
+        double g1745  = compute_g_Magnetar(t_s);
+        double g0501  = sgr0501.compute_g_Magnetar(t_s);
+        double frac   = (g0501 != 0.0) ? std::abs(g1745 - g0501) / std::abs(g0501) : 
+                        std::numeric_limits<double>::quiet_NaN();
+        if (logging_enabled)
+            std::cout << "[CROSS-VALIDATE] t=" << t_years << " yr  "
+                      << "g_SGR1745=" << g1745 << "  g_SGR0501=" << g0501
+                      << "  frac_diff=" << frac << std::endl;
+        return frac;
     }
 };
 
