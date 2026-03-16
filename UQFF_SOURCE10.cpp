@@ -57,6 +57,8 @@
 #include <sstream>
 #include <iomanip>
 #include <limits>
+#include <random>
+#include <chrono>
 
 // UQFF 2.0 — Wolfram Term Macros (auto-registration with Wolfram KB)
 #define WOLFRAM_TERM_SOURCE10_BASE "UQFFSource10:F_U_Bi_i=integrand*x2+LENR*act*exp(-t/tau)+DE+resonance*neutron+rel*(1+f_TRZ)"
@@ -164,13 +166,18 @@ private:
     // UQFF 2.0 — Self-Expanding Framework
     bool logging_enabled;
     std::map<std::string, double> dynamic_params;
+    mutable std::mt19937 rng;
+    mutable std::uniform_real_distribution<double> dis;
 
     // Computed caches
     double DPM_resonance;   // Resonance energy density (J/m^3)
 
 public:
     // Constructor initializes defaults from catalogue
-    UQFFSource10() {
+    UQFFSource10()
+        : rng(static_cast<unsigned>(std::chrono::steady_clock::now().time_since_epoch().count()))
+        , dis(0.0, 1.0)
+    {
         initializeCatalogue();
     }
 
@@ -318,6 +325,7 @@ public:
 
     // Compute F_U_Bi_i (UQFF Core Buoyancy — Catalogue master 4-term equation)
     double compute_F_U_Bi_i(double t) {
+        auto _t0 = std::chrono::high_resolution_clock::now();
         // Long-form 4-term: integrand×x2 + LENR(t) + DE+resonance + rel×TRZ
         double term1 = integrand * x_2;
         double term2 = LENR_term * activation_term * std::exp(-t / tau_SF);
@@ -325,11 +333,13 @@ public:
         double term4 = rel_term * (1.0 + f_TRZ);
         double result = term1 + term2 + term3 + term4;
         if (logging_enabled) {
+            auto _t1 = std::chrono::high_resolution_clock::now();
+            double _ms = std::chrono::duration<double, std::milli>(_t1 - _t0).count();
             std::ostringstream oss;
             oss << std::scientific << "compute_F_U_Bi_i: t=" << t
                 << " term1=" << term1 << " term2=" << term2
                 << " term3=" << term3 << " term4=" << term4
-                << " result=" << result;
+                << " result=" << result << " elapsed=" << _ms << "ms";
             log(oss.str());
         }
         return result;
@@ -337,6 +347,7 @@ public:
 
     // Compute g_UQFF(r, t) — 26-layer Triadic sum + Lambda + quantum + 3-tier CP3/PAPER_198 buoyancy
     double compute_g_UQFF(double r_input, double t) {
+        auto _t0 = std::chrono::high_resolution_clock::now();
         // 26-layer Triadic MUGE: g = Σ(Ug1_i + Ug2_i + Ug3_i + Ug4_i, i=1..26)
         double sum_Ug = 0.0;
         for (int i = 0; i < 26; ++i) {
@@ -357,6 +368,8 @@ public:
         double g_total    = sum_Ug + Lambda_term + quantum_term
                             + term_Ubi + term_FUBii + term_Ub_i;
         if (logging_enabled) {
+            auto _t1 = std::chrono::high_resolution_clock::now();
+            double _ms = std::chrono::duration<double, std::milli>(_t1 - _t0).count();
             std::ostringstream oss;
             oss << std::scientific
                 << "compute_g_UQFF: r=" << r_input << " t=" << t
@@ -364,7 +377,7 @@ public:
                 << " quantum=" << quantum_term
                 << " Ubi=" << term_Ubi << " FUBii=" << term_FUBii
                 << " Ub_i=" << term_Ub_i << " FU_diag=" << FU_diag
-                << " g_total=" << g_total;
+                << " g_total=" << g_total << " elapsed=" << _ms << "ms";
             log(oss.str());
         }
         return g_total;
@@ -436,6 +449,14 @@ public:
     double getDynamicParameter(const std::string& name) const {
         auto it = dynamic_params.find(name);
         return (it != dynamic_params.end()) ? it->second : 0.0;
+    }
+
+    // Named scaling factor interface — wraps setDynamicParameter for LENR/DE/resonance scaling
+    void setScalingFactor(const std::string& name, double value) {
+        setDynamicParameter(name, value);
+    }
+    double getScalingFactor(const std::string& name) const {
+        return getDynamicParameter(name);
     }
 
     void exportState(const std::string& filename = "UQFFSource10_state.txt") const {
