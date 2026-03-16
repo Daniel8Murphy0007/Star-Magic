@@ -59,6 +59,7 @@
 #include <limits>
 #include <random>
 #include <chrono>
+#include <cassert>  // For runUnitTests()
 
 // UQFF 2.0 — Wolfram Term Macros (auto-registration with Wolfram KB)
 #define WOLFRAM_TERM_SOURCE10_BASE "UQFFSource10:F_U_Bi_i=integrand*x2+LENR*act*exp(-t/tau)+DE+resonance*neutron+rel*(1+f_TRZ)"
@@ -171,6 +172,7 @@ private:
 
     // Computed caches
     double DPM_resonance;   // Resonance energy density (J/m^3)
+    double pre_sum_Ug;      // Precomputed 26-layer Triadic sum (updated in updateCache)
 
 public:
     // Constructor initializes defaults from catalogue
@@ -306,6 +308,10 @@ public:
         DPM_resonance = step3_g_muB_B0 / step4_h_omega0;  // 1.1e65 base
         // Scaled for Q_wave ≈ 3.11e9 J/m³
         DPM_resonance *= 2.82e-56;  // Adjustment factor from doc
+        // Precompute 26-layer Triadic sum for compute_g_UQFF reuse
+        pre_sum_Ug = 0.0;
+        for (int i = 0; i < 26; ++i)
+            pre_sum_Ug += Ug1_vec[i] + Ug2_vec[i] + Ug3_vec[i] + Ug4_vec[i];
     }
 
     // Universal setter for catalogue variables
@@ -400,11 +406,8 @@ public:
     // Compute g_UQFF(r, t) — 26-layer Triadic sum + Lambda + quantum + 3-tier CP3/PAPER_198 buoyancy
     double compute_g_UQFF(double r_input, double t) {
         auto _t0 = std::chrono::high_resolution_clock::now();
-        // 26-layer Triadic MUGE: g = Σ(Ug1_i + Ug2_i + Ug3_i + Ug4_i, i=1..26)
-        double sum_Ug = 0.0;
-        for (int i = 0; i < 26; ++i) {
-            sum_Ug += Ug1_vec[i] + Ug2_vec[i] + Ug3_vec[i] + Ug4_vec[i];
-        }
+        // 26-layer Triadic MUGE: use precomputed sum from updateCache()
+        double sum_Ug = pre_sum_Ug;
         // Cosmological and quantum terms
         double Lambda_term  = (Lambda * c_light * c_light) / 3.0;
         double quantum_term = (hbar / std::sqrt(delta_x * delta_p)) * integral_psi
@@ -509,6 +512,43 @@ public:
     }
     double getScalingFactor(const std::string& name) const {
         return getDynamicParameter(name);
+    }
+
+    // Unit tests — assert-based validation suite for core compute methods
+    void runUnitTests() {
+        std::cout << "Running UQFF Source10 Unit Tests..." << std::endl;
+
+        // Test 1: DPM_resonance ≈ 3.11e9 J/m³
+        double res1 = compute_DPM_resonance();
+        assert(std::abs(res1 - 3.11e9) < 1e8);
+        std::cout << "Test 1: DPM_resonance PASSED (" << res1 << " J/m^3)" << std::endl;
+
+        // Test 2: F_U_Bi_i(t=0) dominated by term1 = integrand*x_2 ≈ 2.11e208
+        double f1 = compute_F_U_Bi_i(0.0);
+        assert(std::abs(f1 - 2.11e208) < 1e206);
+        std::cout << "Test 2: F_U_Bi_i(t=0) PASSED (" << f1 << " N)" << std::endl;
+
+        // Test 3: pre_sum_Ug = 26*(4.645e11+0+0+4.645e11) = ~2.4154e13
+        double expected_sum = 26.0 * (4.645e11 + 4.645e11);
+        assert(std::abs(pre_sum_Ug - expected_sum) < 1e10);
+        std::cout << "Test 3: pre_sum_Ug PASSED (" << pre_sum_Ug << ")" << std::endl;
+
+        // Test 4: setVariable LENR_term change raises F_U_Bi_i at t=0
+        double f_before = compute_F_U_Bi_i(0.0);
+        double saved_LENR = LENR_term;
+        setVariable("LENR_term", LENR_term * 2.0);
+        double f_after = compute_F_U_Bi_i(0.0);
+        assert(f_after > f_before);
+        setVariable("LENR_term", saved_LENR);  // restore
+        std::cout << "Test 4: LENR_term scaling PASSED" << std::endl;
+
+        // Test 5: batch_compute_F_U_Bi_i returns correct size
+        std::vector<double> times = {0.0, 1.0e13, 2.0e13};
+        auto batch = batch_compute_F_U_Bi_i(times);
+        assert(batch.size() == 3);
+        std::cout << "Test 5: batch_compute size PASSED (" << batch.size() << " results)" << std::endl;
+
+        std::cout << "All 5 tests PASSED." << std::endl;
     }
 
     void exportState(const std::string& filename = "UQFFSource10_state.txt") const {
