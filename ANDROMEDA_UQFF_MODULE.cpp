@@ -30,6 +30,7 @@
 #define WOLFRAM_TERM_ANDROMEDA_BLUE  "AndromedaUQFF:kappa_approach=1/(1+z); z=-0.001(blueshift,approaching); g_amp=g_UQFF/(1+z) [PAPER_273]"
 #define WOLFRAM_TERM_ANDROMEDA_HI    "AndromedaUQFF:omega_HI=2*Pi*1.42040575e9 rad/s; F_res=A*Cos[omega_HI*t]*Exp[-t/tau_gal] [PAPER_274]"
 #define WOLFRAM_TERM_ANDROMEDA_DM    "AndromedaUQFF:g_DM=G*f_DM*M/r^2+f_DM^(1/3)*G*(1-f_DM)*M/r^2; f_DM=0.80; xi_DM=0.9283 [PAPER_275]"
+#define WOLFRAM_TERM_ANDROMEDA_FRIED "AndromedaUQFF:g_exp=G*M/r^2*H(z)*t; H(z)=H0*Sqrt[Om_m*(1+z)^3+Om_L]/Mpc2m; H_UQFF=H(z)*t_H~0.987 [PAPER_276]"
 
 class AndromedaUQFFModule {
 private:
@@ -83,6 +84,16 @@ private:
     // Approach amplifier (PAPER_273)
     double kappa_approach;  // 1/(1+z): >1 for blueshift (z<0)
 
+    // Friedmann expansion coupling (PAPER_276)
+    double H0;              // Hubble constant (km/s/Mpc): 70.0
+    double Omega_m;         // Matter density parameter: 0.3
+    double Omega_Lam;       // Dark energy density parameter: 0.7
+    double Mpc_to_m;        // Metres per Mpc: 3.086e22
+    double rho_dust;        // ISM dust density (kg/m³): 1e-20
+    // Derived DM split (computed in updateCache)
+    double M_visible;       // (1-f_DM)*M kg
+    double M_DM_mass;       // f_DM*M kg
+
     // 26-layer Triadic MUGE
     std::vector<double> Ug1_vec;  // Magnetic dipole (scaled to g_base per layer)
     std::vector<double> Ug2_vec;  // Charge-reactivity (zero — negligible for galaxy)
@@ -128,6 +139,19 @@ private:
         return omega_HI;  // ~8.9282e9 rad/s
     }
 
+    double computeFriedmannExpansion(double t) {
+        // Friedmann H(z) expansion coupling: g_expansion = g_base * H(z) * t (PAPER_276)
+        double H_kms = H0 * std::sqrt(Omega_m * std::pow(1.0 + z, 3.0) + Omega_Lam);
+        double H_si  = (H_kms * 1.0e3) / Mpc_to_m;  // s^-1
+        return g_base_cache * H_si * t;               // m/s^2
+    }
+
+    double computeDustDrag() {
+        // ISM dust ram-pressure drag acceleration (PAPER_276 minor additive term)
+        double rho_mean = M / V_fluid;
+        return (rho_dust * v_orbit * v_orbit) / (c_light * c_light * rho_mean) * g_base_cache;
+    }
+
     void updateCache() {
         g_base_cache = G_grav * M / (r * r);
         for (int i = 0; i < 26; ++i) {
@@ -140,6 +164,8 @@ private:
         kappa_approach = 1.0 / (1.0 + z);
         xi_DM  = std::pow(f_DM, 1.0 / 3.0);
         delta_p = hbar / delta_x;
+        M_visible  = (1.0 - f_DM) * M;
+        M_DM_mass  = f_DM * M;
     }
 
     void log(const std::string& msg) const {
@@ -201,6 +227,19 @@ public:
         xi_DM  = 1.0;
         delta_p = hbar / delta_x;
 
+        // Friedmann parameters (PAPER_276)
+        H0        = 70.0;                         // km/s/Mpc
+        Omega_m   = 0.3;
+        Omega_Lam = 0.7;
+        Mpc_to_m  = 3.086e22;                     // m/Mpc
+
+        // ISM dust drag (PAPER_276)
+        rho_dust  = 1.0e-20;                      // kg/m³ — ISM dust mass density
+
+        // Derived (computed in updateCache)
+        M_visible = 0.0;
+        M_DM_mass = 0.0;
+
         updateCache();
     }
 
@@ -220,6 +259,10 @@ public:
         else if (name == "A_res")     { A_res     = value; }
         else if (name == "nu_HI")     { nu_HI     = value; omega_HI = 2.0*M_PI*nu_HI; }
         else if (name == "rho_fluid") { rho_fluid = value; }
+        else if (name == "H0")        { H0        = value; }
+        else if (name == "Omega_m")   { Omega_m   = value; }
+        else if (name == "Omega_Lam") { Omega_Lam = value; }
+        else if (name == "rho_dust")  { rho_dust  = value; }
     }
 
     void addToVariable(const std::string& name, double delta) {
@@ -246,9 +289,12 @@ public:
         double fluid       = computeFluidTerm(g_grav);              // IGM buoyancy
         double resonant    = computeResonantTerm(t);                // 21-cm HI (PAPER_274)
         double DM_term     = computeDMTerm();                       // DM partition (PAPER_275)
+        double g_expansion = computeFriedmannExpansion(t);          // Friedmann H(z) coupling (PAPER_276)
+        double a_dust      = computeDustDrag();                     // ISM dust drag (PAPER_276)
 
         double g_sum   = g_grav + Ug_sum + Lambda_term + quantum
-                         + Lorentz + fluid + resonant + DM_term;
+                         + Lorentz + fluid + resonant + DM_term
+                         + g_expansion + a_dust;
 
         // Blueshift approach amplifier κ_approach (PAPER_273)
         double g_total = g_sum * kappa_approach;
@@ -263,6 +309,7 @@ public:
                 << " Lambda=" << Lambda_term << " quantum=" << quantum
                 << " Lorentz=" << Lorentz << " fluid=" << fluid
                 << " resonant=" << resonant << " DM=" << DM_term
+                << " g_exp=" << g_expansion << " dust=" << a_dust
                 << " kappa=" << kappa_approach << " g_total=" << g_total
                 << " elapsed=" << _ms << "ms";
             log(oss.str());
@@ -290,7 +337,14 @@ public:
             << "  g_DM          = G*f_DM*M/r^2 + xi_DM*G*(1-f_DM)*M/r^2 [PAPER_275]\n"
             << "    f_DM        = " << f_DM << "  xi_DM=f_DM^(1/3)=" << xi_DM << "\n"
             << "  kappa_approach= 1/(1+z) = " << kappa_approach
-            << "  [z=" << z << ", blueshift] [PAPER_273]\n";
+            << "  [z=" << z << ", blueshift] [PAPER_273]\n"
+            << "  g_expansion   = G*M/r^2 * H(z)*t [PAPER_276]\n"
+            << "    H(z)        = H0*sqrt(Om_m*(1+z)^3+Om_L)/Mpc = "
+            << (H0*std::sqrt(Omega_m*std::pow(1.0+z,3.0)+Omega_Lam)*1.0e3/Mpc_to_m) << " s^-1\n"
+            << "    H_UQFF      = H(z)*t_H = "
+            << (H0*std::sqrt(Omega_m*std::pow(1.0+z,3.0)+Omega_Lam)*1.0e3/Mpc_to_m*t_Hubble)
+            << " [Friedmann-UQFF resonance ~0.987]\n"
+            << "  a_dust        = rho_dust*v^2/(c^2*rho_mean)*g_base [PAPER_276 minor]\n";
         return oss.str();
     }
 
@@ -317,6 +371,12 @@ public:
         std::cout << "pre_sum_Ug     : " << pre_sum_Ug  << " m/s^2 (26-layer sum)" << std::endl;
         std::cout << "rho_fluid      : " << rho_fluid   << " kg/m^3 (IGM)" << std::endl;
         std::cout << "Lambda         : " << Lambda      << " m^-2" << std::endl;
+        std::cout << "H0             : " << H0          << " km/s/Mpc [PAPER_276]" << std::endl;
+        std::cout << "Omega_m        : " << Omega_m     << " [PAPER_276]" << std::endl;
+        std::cout << "Omega_Lam      : " << Omega_Lam   << " [PAPER_276]" << std::endl;
+        std::cout << "rho_dust       : " << rho_dust    << " kg/m^3 [PAPER_276]" << std::endl;
+        std::cout << "M_visible      : " << M_visible   << " kg = (1-f_DM)*M" << std::endl;
+        std::cout << "M_DM_mass      : " << M_DM_mass   << " kg = f_DM*M" << std::endl;
         std::cout << "logging        : " << (logging_enabled ? "ON" : "OFF") << std::endl;
         std::cout << "dynamic_params : " << dynamic_params.size() << " entries" << std::endl;
     }
@@ -374,6 +434,13 @@ public:
         ofs << "xi_DM "          << xi_DM         << "\n";
         ofs << "pre_sum_Ug "     << pre_sum_Ug    << "\n";
         ofs << "g_base_cache "   << g_base_cache  << "\n";
+        ofs << "H0 "             << H0            << "\n";
+        ofs << "Omega_m "        << Omega_m       << "\n";
+        ofs << "Omega_Lam "      << Omega_Lam     << "\n";
+        ofs << "Mpc_to_m "       << Mpc_to_m      << "\n";
+        ofs << "rho_dust "       << rho_dust      << "\n";
+        ofs << "M_visible "      << M_visible     << "\n";
+        ofs << "M_DM_mass "      << M_DM_mass     << "\n";
         for (auto& kv : dynamic_params)
             ofs << "dyn_" << kv.first << " " << kv.second << "\n";
         ofs.close();
@@ -395,5 +462,6 @@ public:
 // PAPER_273: kappa_approach = 1/(1+z) = 1/0.999 = 1.001001 for z=-0.001 blueshift amplifier
 // PAPER_274: omega_HI = 2pi*1.42040575e9 = 8.9282e9 rad/s; 21-cm HI UQFF galactic resonance
 // PAPER_275: xi_DM = f_DM^(1/3) = 0.80^(1/3) = 0.9283; DM NFW coupling exponent 1/3
+// PAPER_276: H_UQFF = H(z)*t_H = 0.987; Friedmann-UQFF near-unity resonance; g_exp = g_base*H(z)*t
 
 #endif // ANDROMEDA_UQFF_MODULE_H

@@ -9506,6 +9506,68 @@ class AndromedaDMShellPartitionCalculator(_CP3Calculator):
         }
 
 
+class AndromedaFriedmannHzExpansionCalculator(_CP3Calculator):
+    """PAPER_276: Andromeda Friedmann H(z) UQFF Expansion Coupling.
+    g_expansion = G*M/r² * H(z)*t; H(z) = H0*sqrt(Ω_m*(1+z)³ + Ω_Λ) / Mpc_to_m.
+    H_UQFF = H(z)*t_Hubble ≈ 0.987 — Friedmann-UQFF near-unity resonance coefficient.
+    For Andromeda z=-0.001: H(z)=69.969 km/s/Mpc=2.269e-18 s^-1; doubles g_base over t_H.
+    Also introduces M_visible/(M_DM_mass cascade and ISM dust drag term a_dust.
+    """
+
+    METADATA = {
+        'paper': 'PAPER_276',
+        'module': 'ANDROMEDA_UQFF_MODULE (M31 Master, Session 76)',
+        'system': 'Andromeda M31 (z=-0.001 blueshift, Friedmann-UQFF coupling)',
+        'physics': 'Friedmann H(z), H_UQFF near-unity resonance, expansion coupling, dust drag, M_visible cascade',
+    }
+
+    def calculate(self, dataset: dict) -> dict:
+        import math
+        z         = dataset.get('z', -0.001)
+        H0_kms    = dataset.get('H0_kms', 70.0)
+        Omega_m   = dataset.get('Omega_m', 0.3)
+        Omega_Lam = dataset.get('Omega_Lam', 0.7)
+        Mpc_to_m  = dataset.get('Mpc_to_m', 3.086e22)
+        t_Hubble  = dataset.get('t_Hubble', 4.352e17)
+        t         = dataset.get('t', t_Hubble)
+        G         = 6.674e-11
+        M         = dataset.get('M', 1.989e42)
+        r         = dataset.get('r', 1.04e21)
+        f_DM      = dataset.get('f_DM', 0.80)
+        v_orbit   = dataset.get('v_orbit', 2.5e5)
+        c_light   = 2.998e8
+        rho_dust  = dataset.get('rho_dust', 1.0e-20)
+        V_fluid   = dataset.get('V_fluid', 1.0e60)
+        g_base    = G * M / (r * r)
+
+        H_kms  = H0_kms * math.sqrt(Omega_m * (1.0 + z) ** 3 + Omega_Lam)
+        H_si   = H_kms * 1.0e3 / Mpc_to_m          # s^-1
+        H_UQFF = H_si * t_Hubble                     # near-unity Friedmann-UQFF resonance
+        g_expansion = g_base * H_si * t
+
+        # ISM dust drag (minor additive)
+        rho_mean = M / V_fluid
+        a_dust   = (rho_dust * v_orbit ** 2) / (c_light ** 2 * rho_mean) * g_base
+
+        # M split cascade
+        M_visible = (1.0 - f_DM) * M
+        M_DM_mass = f_DM * M
+
+        return {
+            'H_kms':                          H_kms,
+            'H_si_s':                         H_si,
+            'H_UQFF':                         H_UQFF,
+            'g_expansion_m_s2':               g_expansion,
+            'g_expansion_at_tH_m_s2':         g_base * H_si * t_Hubble,
+            'friedmann_doubling_fraction':     (g_base * H_si * t_Hubble) / g_base,
+            'a_dust_m_s2':                    a_dust,
+            'M_visible_kg':                   M_visible,
+            'M_DM_mass_kg':                   M_DM_mass,
+            'g_base_m_s2':                    g_base,
+            'paper': 'PAPER_276',
+        }
+
+
 # ---------------------------------------------------------------------------
 # __all__ export
 # ---------------------------------------------------------------------------
@@ -9701,4 +9763,6 @@ __all__ = [
     "AndromedaBlueshiftApproachAmplifierCalculator",
     "AndromedaHI21cmUQFFResonanceCalculator",
     "AndromedaDMShellPartitionCalculator",
+    # Session 76 — PAPER_276 (Andromeda Friedmann H(z) UQFF Expansion Coupling)
+    "AndromedaFriedmannHzExpansionCalculator",
 ]
