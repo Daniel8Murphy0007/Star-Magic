@@ -9817,6 +9817,78 @@ class SaturnAtmosphericWindKineticPressureCalculator:
         }
 
 
+class SaturnSolarTidalHubbleExpansionCalculator:
+    """PAPER_283 — UQFF Solar Tidal Hubble Expansion Coupling: g_ST_HE = g_Sun_tidal * (1 + H0*t).
+    hubble_tidal_factor(4.5 Gyr) = 1.3222 (32% boost); Δg = 2.09e-5 m/s².
+    First UQFF multiplicative Solar-Tidal-Hubble coupling — planetary-stellar-cosmological three-body channel.
+    Distinct from additive g_exp = g_grav*H*t (self-gravity Hubble) in same module.
+    Universal formula: xi_HT = 1 + H0*t_age (independent of planet; scales with g_tidal,0).
+    Module: SATURN_UQFF_MODULE.cpp (21st C++ module, Session 79).
+    """
+
+    def compute(self, dataset: dict) -> dict:
+        import math
+        G          = float(dataset.get('G_grav', 6.674e-11))
+        M_Sun      = float(dataset.get('M_Sun', 1.989e30))
+        r_orbit    = float(dataset.get('r_orbit', 1.43e12))       # m Saturn orbital radius
+        H0_kms     = float(dataset.get('H0', 70.0))               # km/s/Mpc
+        Mpc_to_m   = float(dataset.get('Mpc_to_m', 3.086e22))
+        Omega_m    = float(dataset.get('Omega_m', 0.3))
+        Omega_Lam  = float(dataset.get('Omega_Lam', 0.7))
+        t_Solar_age = float(dataset.get('t_Solar_age', 4.5e9 * 3.156e7))  # s: 4.5 Gyr
+        t_eval     = float(dataset.get('t', t_Solar_age))         # evaluation epoch
+
+        # H(z=0) in s^-1
+        H0_si = H0_kms * 1.0e3 / Mpc_to_m * math.sqrt(Omega_m + Omega_Lam)
+
+        # Static Solar tidal (PAPER_280)
+        g_sun_tidal_0 = G * M_Sun / (r_orbit ** 2)
+
+        # PAPER_283: time-dependent Solar Tidal Hubble Expansion Coupling
+        g_ST_HE = g_sun_tidal_0 * (1.0 + H0_si * t_eval)
+        hubble_tidal_factor = 1.0 + H0_si * t_Solar_age   # reference at Solar System age
+        h0t_age = H0_si * t_Solar_age
+        delta_g = g_sun_tidal_0 * h0t_age
+
+        # Gas giant universal comparison at t_Solar_age
+        gas_giant_r_orbits = {
+            'Mercury': 5.79e10,
+            'Venus':   1.08e11,
+            'Earth':   1.496e11,
+            'Mars':    2.28e11,
+            'Jupiter': 7.78e11,
+            'Saturn':  1.43e12,
+            'Uranus':  2.87e12,
+            'Neptune': 4.50e12,
+        }
+        comparison = {}
+        for planet, r_orb in gas_giant_r_orbits.items():
+            g_tid = G * M_Sun / (r_orb ** 2)
+            comparison[planet] = {
+                'g_tidal_0':    g_tid,
+                'hubble_factor': hubble_tidal_factor,
+                'g_ST_HE':      g_tid * hubble_tidal_factor,
+                'delta_g':      g_tid * h0t_age,
+            }
+
+        return {
+            'g_sun_tidal_0':       g_sun_tidal_0,
+            'g_ST_HE':            g_ST_HE,
+            'hubble_tidal_factor': hubble_tidal_factor,
+            'h0t_age':             h0t_age,
+            'delta_g_m_s2':       delta_g,
+            'delta_g_pct':        (delta_g / g_sun_tidal_0) * 100.0,
+            'H0_si':               H0_si,
+            't_Solar_age_s':       t_Solar_age,
+            't_eval_s':            t_eval,
+            'formula':             'g_ST_HE = G*M_Sun/r_orbit^2 * (1 + H0*t)',
+            'xi_HT_universal':     'xi_HT = 1 + H0*t_age (same for all planets at same epoch)',
+            'comparison_table':    comparison,
+            'module':              'SATURN_UQFF_MODULE (21st C++ module, Session 79)',
+            'paper':               'PAPER_283',
+        }
+
+
 # ---------------------------------------------------------------------------
 # __all__ export
 # ---------------------------------------------------------------------------
@@ -10022,4 +10094,6 @@ __all__ = [
     "SaturnSolarTidalPerturbationCalculator",
     "SaturnRingTidalGravityResonanceCalculator",
     "SaturnAtmosphericWindKineticPressureCalculator",
+    # Session 79 — PAPER_283 (Saturn UQFF 2.0 Solar Tidal Hubble Expansion Coupling)
+    "SaturnSolarTidalHubbleExpansionCalculator",
 ]

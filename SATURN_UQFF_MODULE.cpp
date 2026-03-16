@@ -25,10 +25,11 @@
 #include <chrono>
 
 // UQFF 2.0 — Wolfram Term Macros (auto-registration with Wolfram KB)
-#define WOLFRAM_TERM_SATURN_BASE    "SaturnUQFF:g_total=[g_grav+Ug_sum(26)+Lambda+quantum+Lorentz+fluid+F_ring_tidal+g_Sun_tidal+g_exp+a_wind]*corr_SC; z=0"
-#define WOLFRAM_TERM_SATURN_SOLAR   "SaturnUQFF:tau_Sun=M_Sun/M*(r/r_orbit)^2=6.22e-6; g_Sun_tidal=G*M_Sun/r_orbit^2=6.49e-5 m/s^2 [PAPER_280]"
-#define WOLFRAM_TERM_SATURN_RING    "SaturnUQFF:omega_ring_kep=Sqrt[G*M/r_ring^3]=1.481e-4 rad/s; g_ring=G*M_ring*r/r_ring^3=3.49e-8 m/s^2 [PAPER_281]"
-#define WOLFRAM_TERM_SATURN_WIND    "SaturnUQFF:a_wind=eta_wind^2*g_base=(v_wind/c)^2*g_base=2.904e-11 m/s^2; v_wind=500 m/s [PAPER_282]"
+#define WOLFRAM_TERM_SATURN_BASE         "SaturnUQFF:g_total=[g_grav+Ug_sum(26)+Lambda+quantum+Lorentz+fluid+F_ring_tidal+g_Sun_tidal*(1+H0*t)+g_exp+a_wind]*corr_SC; z=0"
+#define WOLFRAM_TERM_SATURN_SOLAR        "SaturnUQFF:tau_Sun=M_Sun/M*(r/r_orbit)^2=6.22e-6; g_Sun_tidal=G*M_Sun/r_orbit^2=6.49e-5 m/s^2 [PAPER_280]"
+#define WOLFRAM_TERM_SATURN_RING         "SaturnUQFF:omega_ring_kep=Sqrt[G*M/r_ring^3]=1.481e-4 rad/s; g_ring=G*M_ring*r/r_ring^3=3.49e-8 m/s^2 [PAPER_281]"
+#define WOLFRAM_TERM_SATURN_WIND         "SaturnUQFF:a_wind=eta_wind^2*g_base=(v_wind/c)^2*g_base=2.904e-11 m/s^2; v_wind=500 m/s [PAPER_282]"
+#define WOLFRAM_TERM_SATURN_HUBBLE_TIDAL "SaturnUQFF:g_ST_HE=g_Sun_tidal*(1+H0*t); hubble_tidal_factor(t_age)=1+H0*t_Solar_age=1.3222; Delta_g=g_Sun_tidal*H0*t_age=2.09e-5 m/s^2 [PAPER_283]"
 
 class SaturnUQFFModule {
 private:
@@ -96,6 +97,10 @@ private:
     double eta_wind;        // v_wind/c light speed ratio: 1.668e-6
     double a_wind;          // (v_wind/c)²×g_base wind kinetic pressure (m/s²): 2.904e-11
 
+    // PAPER_283: Solar Tidal Hubble Expansion Coupling
+    double t_Solar_age;          // Solar System age (s): 4.5 Gyr = 1.420e17 s
+    double hubble_tidal_factor;  // 1 + H(z=0)×t_Solar_age at system age = 1.3222 (32% boost)
+
     // No DM (planetary body: f_DM = 0, all visible mass)
 
     // 26-layer Triadic MUGE
@@ -151,6 +156,8 @@ private:
         // PAPER_282: Wind kinetic pressure coupling
         eta_wind = v_wind / c_light;
         a_wind   = eta_wind * eta_wind * g_base_cache;
+        // PAPER_283: Solar Tidal Hubble Expansion Coupling reference factor at Solar System age
+        hubble_tidal_factor = 1.0 + computeHz() * t_Solar_age;
         // SC correction
         corr_SC  = 1.0 - B_field / B_crit;
         delta_p  = hbar / delta_x;
@@ -214,16 +221,18 @@ public:
         Ug3_vec.resize(26, 0.0);
         Ug4_vec.resize(26, 0.0);
 
-        pre_sum_Ug     = 0.0;
-        g_base_cache   = 0.0;
-        tau_Sun        = 0.0;
-        g_Sun_tidal    = 0.0;
-        omega_ring_kep = 0.0;
-        g_ring_tidal   = 0.0;
-        eta_wind       = 0.0;
-        a_wind         = 0.0;
-        corr_SC        = 1.0;
-        delta_p        = hbar / delta_x;
+        pre_sum_Ug          = 0.0;
+        g_base_cache        = 0.0;
+        tau_Sun             = 0.0;
+        g_Sun_tidal         = 0.0;
+        omega_ring_kep      = 0.0;
+        g_ring_tidal        = 0.0;
+        eta_wind            = 0.0;
+        a_wind              = 0.0;
+        t_Solar_age         = 4.5e9 * 3.156e7;   // s: 4.5 Gyr Solar System age = 1.420e17 s
+        hubble_tidal_factor = 1.0;
+        corr_SC             = 1.0;
+        delta_p             = hbar / delta_x;
 
         updateCache();
     }
@@ -273,9 +282,9 @@ public:
         double Lorentz   = (q_charge * v_orbit * B_field) / M;  // Solar-orbit B coupling
         double fluid     = computeFluidTerm(g_grav);             // Atmospheric buoyancy
         double ring_term = computeRingTidalTerm(t);              // PAPER_281 ring tidal resonance
-        double sun_tidal = g_Sun_tidal;                          // PAPER_280 solar tidal (constant)
         double H_si      = computeHz();                          // Friedmann H(z=0)
-        double g_exp     = g_grav * H_si * t;                   // Hubble expansion coupling
+        double sun_tidal = g_Sun_tidal * (1.0 + H_si * t);      // PAPER_280+283: Solar tidal × Hubble expansion coupling
+        double g_exp     = g_grav * H_si * t;                   // Hubble expansion coupling on Saturn self-gravity
         double wind_term = a_wind;                               // PAPER_282 wind kinetic pressure
 
         double g_sum = g_grav + Ug_sum + Lambda_tm + quantum
@@ -294,9 +303,10 @@ public:
                 << " g_grav=" << g_grav << " Ug_sum=" << Ug_sum
                 << " Lambda=" << Lambda_tm << " quantum=" << quantum
                 << " Lorentz=" << Lorentz << " fluid=" << fluid
-                << " ring_tidal=" << ring_term << " sun_tidal=" << sun_tidal
+                << " ring_tidal=" << ring_term
+                << " sun_tidal=" << sun_tidal << " hbt_factor=" << (1.0 + H_si * t)
                 << " g_exp=" << g_exp << " a_wind=" << wind_term
-                << " tau_Sun=" << tau_Sun << " corr_SC=" << corr_SC
+                << " tau_Sun=" << tau_Sun << " hubble_tidal_factor=" << hubble_tidal_factor << " corr_SC=" << corr_SC
                 << " g_total=" << g_total << " elapsed=" << _ms << "ms";
             log(oss.str());
         }
@@ -321,10 +331,13 @@ public:
             << "    r_ring        = " << r_ring << " m (~2x Saturn radius)\n"
             << "    omega_ring_kep= sqrt(GM/r_ring^3) = " << omega_ring_kep << " rad/s\n"
             << "    g_ring_tidal  = G*M_ring*r/r_ring^3 = " << g_ring_tidal << " m/s^2\n"
-            << "  g_Sun_tidal     = G*M_Sun/r_orbit^2 = " << g_Sun_tidal << " m/s^2  [PAPER_280]\n"
-            << "    tau_Sun       = M_Sun/M*(r/r_orbit)^2 = " << tau_Sun << "  [Solar UQFF ratio]\n"
+            << "  g_Sun_tidal(t)  = G*M_Sun/r_orbit^2 * (1+H(z=0)*t)  [PAPER_280+283 Solar-Tidal-Hubble]\n"
+            << "    g_Sun_tidal_0 = " << g_Sun_tidal << " m/s^2  (static Solar tidal, PAPER_280)\n"
+            << "    hubble_factor = 1+H0*t_age = " << hubble_tidal_factor << "  (at Solar System age 4.5 Gyr)\n"
+            << "    Delta_g_ST_HE = g_Sun_tidal_0*H0*t_age = ~2.09e-05 m/s^2  [PAPER_283 Hubble correction]\n"
+            << "    tau_Sun       = M_Sun/M*(r/r_orbit)^2 = " << tau_Sun << "  [Solar UQFF ratio PAPER_280]\n"
             << "    M_Sun         = " << M_Sun << " kg  r_orbit = " << r_orbit << " m\n"
-            << "  g_exp           = g_base*H(z=0)*t  [Hubble expansion at z=0]\n"
+            << "  g_exp           = g_base*H(z=0)*t  [Hubble expansion on Saturn self-gravity]\n"
             << "  a_wind          = (v_wind/c)^2 * g_base = " << a_wind << " m/s^2  [PAPER_282]\n"
             << "    eta_wind      = v_wind/c = " << eta_wind << "  v_wind = " << v_wind << " m/s\n"
             << "  corr_SC         = 1 - B/B_crit = " << corr_SC
@@ -346,9 +359,11 @@ public:
         std::cout << "M_Sun          : " << M_Sun        << " kg (external body) [PAPER_280]" << std::endl;
         std::cout << "r_orbit        : " << r_orbit      << " m (Saturn-Sun distance)" << std::endl;
         std::cout << "v_orbit        : " << v_orbit      << " m/s (orbital velocity)" << std::endl;
-        std::cout << "tau_Sun        : " << tau_Sun      << " [Solar UQFF Tidal Ratio] [PAPER_280]" << std::endl;
-        std::cout << "g_Sun_tidal    : " << g_Sun_tidal  << " m/s^2 [PAPER_280]" << std::endl;
-        std::cout << "M_ring         : " << M_ring       << " kg [PAPER_281]" << std::endl;
+        std::cout << "tau_Sun             : " << tau_Sun               << " [Solar UQFF Tidal Ratio] [PAPER_280]" << std::endl;
+        std::cout << "g_Sun_tidal (base)  : " << g_Sun_tidal           << " m/s^2 [PAPER_280]" << std::endl;
+        std::cout << "t_Solar_age         : " << t_Solar_age           << " s (4.5 Gyr Solar System age) [PAPER_283]" << std::endl;
+        std::cout << "hubble_tidal_factor : " << hubble_tidal_factor   << " = 1+H0*t_age (32% boost at 4.5 Gyr) [PAPER_283]" << std::endl;
+        std::cout << "M_ring              : " << M_ring                << " kg [PAPER_281]" << std::endl;
         std::cout << "r_ring         : " << r_ring       << " m (~2x Saturn radius) [PAPER_281]" << std::endl;
         std::cout << "omega_ring_kep : " << omega_ring_kep << " rad/s [PAPER_281]" << std::endl;
         std::cout << "g_ring_tidal   : " << g_ring_tidal << " m/s^2 [PAPER_281]" << std::endl;
@@ -427,7 +442,9 @@ public:
         ofs << "eta_wind "        << eta_wind        << "\n";
         ofs << "a_wind "          << a_wind          << "\n";
         ofs << "pre_sum_Ug "      << pre_sum_Ug      << "\n";
-        ofs << "g_base_cache "    << g_base_cache    << "\n";
+        ofs << "g_base_cache "         << g_base_cache        << "\n";
+        ofs << "t_Solar_age "          << t_Solar_age         << "\n";
+        ofs << "hubble_tidal_factor "  << hubble_tidal_factor << "\n";
         for (auto& kv : dynamic_params)
             ofs << "dyn_" << kv.first << " " << kv.second << "\n";
         ofs.close();
@@ -449,5 +466,6 @@ public:
 // PAPER_280: tau_Sun = 6.22e-6; g_Sun_tidal = 6.49e-5 m/s²; first UQFF Solar tidal ratio
 // PAPER_281: omega_ring_kep = 1.481e-4 rad/s; T_ring = 11.78 hours; g_ring_tidal = 3.49e-8 m/s²
 // PAPER_282: a_wind = 2.904e-11 m/s²; eta_wind = 1.668e-6; first UQFF gas-giant wind term
+// PAPER_283: g_ST_HE = g_Sun_tidal*(1+H0*t); hubble_tidal_factor(4.5 Gyr)=1.3222; Δg=2.09e-5 m/s²; first UQFF Solar-Tidal-Hubble coupling
 
 #endif // SATURN_UQFF_MODULE_H
