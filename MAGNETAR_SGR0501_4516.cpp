@@ -22,10 +22,10 @@
  * Key Features:
  *   - Default values from UQFF document (M = 2.785e30 kg, r = 20e3 m, etc.).
  *   - Setter methods for updates: setVar(double new_val) or addToVar(double delta)/subtractFromVar(double delta).
- *   - Computes g_Magnetar(r, t) with ALL 11 terms matching MagnetarSGR0501MUGEFullCalculator (CP3):
+ *   - Computes g_Magnetar(r, t) with ALL 13 terms (11 CP3 canonical + D(t) burst modulation + galactic tidal):
  *     base+H0+B, UQFF Ug (Ug1–Ug4), Lambda, scaled EM, GW back-reaction, quantum uncertainty,
  *     fluid self-gravity, oscillatory waves, DM+density perturbation, magnetic stored energy,
- *     and cumulative burst-decay energy.
+ *     cumulative burst-decay, D(t) burst modulation, and galactic center tidal gradient.
  *   - Canonical UQFF defaults: B0=1e10 T, B_crit=1e11 T. Expected g≈4.474e12 m/s² at t=5000 yr.
  * 
  * Author: Encoded by Grok (xAI), based on Daniel T. Murphy's UQFF manuscript.
@@ -89,6 +89,13 @@ private:
     // Term 11: cumulative burst-decay energy
     double L0_W;                // Initial burst luminosity (W)
     double tau_decay;           // Burst decay timescale (s)
+    // Term 12: D(t) burst modulation [MagnetarSGR1745DynamicModulationCalculator, CP3]
+    double D0_burst;            // Burst acceleration amplitude (m/s²)
+    double omega_D;             // Burst modulation angular frequency (rad/s)
+    double tau_D;               // Burst modulation decay timescale (s)
+    // Term 13: Galactic center tidal gradient
+    double M_GC;                // Galactic center effective mass (kg)
+    double r_GC;                // SGR0501 galactocentric distance (m)
 
     // Computed caches (updated on demand)
     double ug1_base;        // Cached Ug1 = G*M/r^2
@@ -114,7 +121,7 @@ public:
         r = 20e3;
         H0 = 2.268e-18;              // Hubble constant [CP3 canonical value] (s^-1)
         B0 = 1e10;             // UQFF manuscript canonical calibration value (T)
-        tau_B = 4000 * 3.156e7;
+        tau_B = 4000 * 3.15576e7;
         B_crit = 1e11;         // UQFF framework calibration constant (T) [CP3 canonical]
         Lambda = 1.114e-52;          // Cosmological constant [CP3 canonical] (m^-2)
         c_light = 2.998e8;           // Speed of light [CP3 precise value] (m/s)
@@ -144,7 +151,12 @@ public:
         delta_rho_over_rho = 1e-5;
         mu0 = 1.2566e-6;                   // H/m
         L0_W = 1e28;                       // Initial burst luminosity (W) [CP3 canonical]
-        tau_decay = 3.5 * 3.156e7;         // 3.5 yr burst decay timescale (s) [CP3 canonical]
+        tau_decay = 3.5 * 3.15576e7;        // 3.5 yr burst decay timescale (s) [CP3 canonical]
+        D0_burst  = 1e-3;                   // Burst amplitude [CP3 canonical, m/s²]
+        omega_D   = 2.0 * UQFF_PI / 15.0;  // 15 s burst recurrence period (SGR0501 2008 cadence) [rad/s]
+        tau_D     = 3.5 * 3.15576e7;        // 3.5 yr modulation decay [CP3 canonical] (s)
+        M_GC      = 4.0e6 * 1.989e30;       // Galactic center mass ≈ 4×10⁶ M_sun (kg)
+        r_GC      = 10.0 * 3.0857e19;       // SGR0501 galactocentric distance ≈ 10 kpc (m)
 
         I_ns = 0.0;            // will be set by updateCache()
         logging_enabled = false;
@@ -202,6 +214,11 @@ public:
         else if (varName == "mu0") { mu0 = newValue; }
         else if (varName == "L0_W") { L0_W = newValue; }
         else if (varName == "tau_decay") { tau_decay = newValue; }
+        else if (varName == "D0_burst") { D0_burst = newValue; }
+        else if (varName == "omega_D")  { omega_D  = newValue; }
+        else if (varName == "tau_D")    { tau_D    = newValue; }
+        else if (varName == "M_GC")     { M_GC     = newValue; }
+        else if (varName == "r_GC")     { r_GC     = newValue; }
         else {
             std::cerr << "Error: Unknown variable '" << varName << "'." << std::endl;
             return false;
@@ -261,6 +278,11 @@ public:
         else if (varName == "mu0") return mu0;
         else if (varName == "L0_W") return L0_W;
         else if (varName == "tau_decay") return tau_decay;
+        else if (varName == "D0_burst") return D0_burst;
+        else if (varName == "omega_D")  return omega_D;
+        else if (varName == "tau_D")    return tau_D;
+        else if (varName == "M_GC")     return M_GC;
+        else if (varName == "r_GC")     return r_GC;
         else {
             std::cerr << "Error: Unknown variable '" << varName << "'." << std::endl;
             return std::numeric_limits<double>::quiet_NaN();  // NaN prevents silent corruption
@@ -368,15 +390,25 @@ public:
         double cum_D   = L0_W * tau_decay * (1.0 - std::exp(-t / tau_decay));
         double term11  = cum_D / (M * r);
 
+        // Term 12: D(t) burst modulation [MagnetarSGR1745DynamicModulationCalculator, CP3]
+        // a_D(t) = D0 · cos(ω_D·t) · exp(−t/τ_D)  — oscillatory burst envelope
+        double term_burst = D0_burst * std::cos(omega_D * t) * std::exp(-t / tau_D);
+
+        // Term 13: Galactic center 2nd-order tidal gradient
+        // a_tidal = 2·G·M_GC / r_GC³ · r  (differential tidal from Sgr A* at ~10 kpc)
+        double term_tidal_GC = 2.0 * G * M_GC * r / (r_GC * r_GC * r_GC);
+
         double result = term1 + term2 + term3 + term4 + term5
-                      + term_q + term_fluid + term_osc + term_DM + term10 + term11;
+                      + term_q + term_fluid + term_osc + term_DM + term10 + term11
+                      + term_burst + term_tidal_GC;
         if (logging_enabled)
             std::cout << "[LOG] compute_g_Magnetar(t=" << t << ") = " << result
                       << "  [t1=" << term1 << " t2=" << term2 << " t3=" << term3
                       << " t4=" << term4 << " t5=" << term5
                       << " tq=" << term_q << " tf=" << term_fluid
                       << " tosc=" << term_osc << " tdm=" << term_DM
-                      << " t10=" << term10 << " t11=" << term11 << "]" << std::endl;
+                      << " t10=" << term10 << " t11=" << term11
+                      << " tburst=" << term_burst << " ttidal=" << term_tidal_GC << "]" << std::endl;
         return result;
     }
 
@@ -419,6 +451,11 @@ public:
         os << "mu0:              " << mu0               << " H/m" << std::endl;
         os << "L0_W:             " << L0_W              << " W" << std::endl;
         os << "tau_decay:        " << tau_decay         << " s" << std::endl;
+        os << "D0_burst:         " << D0_burst          << " m/s^2" << std::endl;
+        os << "omega_D:          " << omega_D           << " rad/s" << std::endl;
+        os << "tau_D:            " << tau_D             << " s" << std::endl;
+        os << "M_GC:             " << M_GC              << " kg" << std::endl;
+        os << "r_GC:             " << r_GC              << " m" << std::endl;
         os << "--- Cached ---" << std::endl;
         os << "ug1_base:    " << ug1_base     << " m/s^2" << std::endl;
         os << "I_ns:        " << I_ns         << " kg m^2" << std::endl;
@@ -426,7 +463,7 @@ public:
 
     // Example computation at t=5000 years (for testing)
     double exampleAt5000Years() const {
-        double t_example = 5000 * 3.156e7;
+        double t_example = 5000 * 3.15576e7;
         return compute_g_Magnetar(t_example);
     }
 
@@ -463,7 +500,8 @@ public:
             "P_init","tau_Omega","scale_EM","proton_mass",
             "hbar","t_Hubble","delta_x","delta_p","integral_psi",
             "rho_fluid","A_osc","k_osc","omega_osc","x_pos","t_Hubble_gyr",
-            "M_DM_factor","delta_rho_over_rho","mu0","L0_W","tau_decay"
+            "M_DM_factor","delta_rho_over_rho","mu0","L0_W","tau_decay",
+            "D0_burst","omega_D","tau_D","M_GC","r_GC"
         };
         for (const char* n : names)
             ofs << n << " = " << getVariable(n) << "\n";
@@ -471,6 +509,24 @@ public:
             ofs << "dynamic." << kv.first << " = " << kv.second << "\n";
         if (logging_enabled)
             std::cout << "[LOG] State exported to: " << filename << std::endl;
+    }
+    // Cross-validate against SGR1745 at t=5000 yr — fractional |g0501 − g1745| / |g0501|
+    // Header-only template; works with any MagSGR1745 type — no coupling dependency
+    template<typename MagSGR1745>
+    double cross_validate(const MagSGR1745& sgr1745, double t_years = 5000.0) const {
+        double t_s   = t_years * 3.15576e7;
+        double g0501 = compute_g_Magnetar(t_s);
+        double g1745 = sgr1745.compute_g_Magnetar(t_s);
+        double frac  = (g0501 != 0.0)
+                       ? std::abs(g1745 - g0501) / std::abs(g0501)
+                       : std::numeric_limits<double>::quiet_NaN();
+        if (logging_enabled)
+            std::cout << "[XVAL] SGR0501 g(" << t_years << "yr)=" << g0501
+                      << "  SGR1745 g=" << g1745
+                      << "  frac_diff=" << frac
+                      << ((!std::isnan(frac) && frac < 0.01) ? "  [UQFF SELF-CONSISTENT]" : "")
+                      << std::endl;
+        return frac;
     }
 };
 
