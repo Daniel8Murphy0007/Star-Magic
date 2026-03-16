@@ -9099,6 +9099,140 @@ class HUDFGravitationalMeissnerCalculator(_CP3Calculator):
 
 
 # ---------------------------------------------------------------------------
+# Session 73 — PAPER_267–269 (NGC 1792 Module 19 UQFF 2.0 Unique Physics)
+# ---------------------------------------------------------------------------
+
+class NGC1792StarburstBuoyancyCoherenceCalculator(_CP3Calculator):
+    """PAPER_267: sSFR as dimensionless buoyancy coupling constant in NGC 1792.
+    Demonstrates coherence of all 3 buoyancy tiers via SFR_factor = sSFR = 10^-9 yr^-1.
+    """
+
+    METADATA = {
+        'paper': 'PAPER_267',
+        'module': 'GALAXY_NGC_1792 (Module 19)',
+        'system': 'NGC 1792 starburst galaxy',
+        'physics': 'SFR normalization, buoyancy coherence, sSFR coupling',
+    }
+
+    def calculate(self, dataset: dict) -> dict:
+        import math
+        M0 = dataset.get('M0', 1.989e40)          # kg (1e10 Msun)
+        r = dataset.get('r', 7.569e20)             # m
+        SFR_Msun = dataset.get('SFR_Msun', 10.0)  # M_sun/yr
+        M0_Msun = dataset.get('M0_Msun', 1e10)    # M_sun
+        tau_SF = dataset.get('tau_SF', 100e6 * 3.15576e7)  # s
+        t = dataset.get('t', 50e6 * 3.15576e7)    # s
+        beta_i = dataset.get('beta_i', 0.61)
+        omega_g = dataset.get('omega_g', 7.3e-16)  # rad/s
+        U_UA = dataset.get('U_UA', 1e-11)
+        G = 6.674e-11
+        Mt = M0 * (1.0 + SFR_Msun / M0_Msun * t / 3.15576e7)
+        ug1_t = G * Mt / r**2
+        sSFR = SFR_Msun / M0_Msun  # yr^-1 = dimensionless coupling
+        # 3 buoyancy tiers
+        tier1 = 0.5 * ug1_t
+        tier2 = abs(beta_i * ug1_t * omega_g * (Mt / r) * U_UA * math.cos(math.pi * t))
+        M_ext = dataset.get('M_Fornax', 1.393e44)
+        r_ext = dataset.get('r_Fornax', 6.17e23)
+        tier3 = abs(beta_i * ug1_t * omega_g * (M_ext / r_ext) * U_UA * math.cos(math.pi * t))
+        decay = math.exp(-t / tau_SF)
+        delta_g = sSFR * (tier1 + tier2 + tier3) * decay
+        coherence_ratio = (tier1 + tier2 + tier3) / (ug1_t if ug1_t != 0 else 1.0)
+        return {
+            'sSFR_coupling': sSFR,
+            'tier1_Ubi': tier1,
+            'tier2_FUBii': tier2,
+            'tier3_Ub_i': tier3,
+            'delta_g_buoy_total': delta_g,
+            'coherence_ratio': coherence_ratio,
+            'starburst_decay': decay,
+            'paper': 'PAPER_267',
+        }
+
+
+class NGC1792HubbleSlowModeOscillatorCalculator(_CP3Calculator):
+    """PAPER_268: Two-mode GW superposition producing Hubble-timescale amplitude modulation.
+    Dimensional bug fix: term_osc2 now uses t_Hubble in seconds, revealing Hubble slow mode.
+    """
+
+    METADATA = {
+        'paper': 'PAPER_268',
+        'module': 'GALAXY_NGC_1792 (Module 19)',
+        'system': 'NGC 1792 starburst galaxy',
+        'physics': 'Dual oscillatory GW modes, Hubble slow mode, amplitude modulation, 5.8 ppm',
+    }
+
+    def calculate(self, dataset: dict) -> dict:
+        import math
+        r = dataset.get('r', 7.569e20)                       # m
+        c = 2.998e8                                           # m/s
+        t_Hubble = dataset.get('t_Hubble', 4.352e17)         # s
+        omega_fast = 2 * math.pi * c / r                     # fast galactic mode rad/s
+        omega_hubble = 2 * math.pi / t_Hubble                # Hubble slow mode rad/s
+        modulation_depth = omega_hubble / omega_fast         # dimensionless (ppm)
+        T_fast = 2 * math.pi / omega_fast                    # s
+        T_hubble = 2 * math.pi / omega_hubble                # s (≈ t_Hubble)
+        D_H = c * t_Hubble                                   # Hubble horizon m
+        epsilon_alt = r / D_H                                # r/D_H form of modulation depth
+        bug_factor = 13.8 / t_Hubble                         # pre-fix vs post-fix ratio
+        return {
+            'omega_fast_rad_s': omega_fast,
+            'omega_hubble_rad_s': omega_hubble,
+            'modulation_depth': modulation_depth,
+            'modulation_depth_ppm': modulation_depth * 1e6,
+            'T_fast_s': T_fast,
+            'T_fast_yr': T_fast / 3.15576e7,
+            'T_hubble_s': T_hubble,
+            'D_H_m': D_H,
+            'epsilon_r_over_DH': epsilon_alt,
+            'pre_fix_overestimate_factor': 1.0 / bug_factor,
+            'gw_band_hz': omega_hubble / (2 * math.pi),
+            'paper': 'PAPER_268',
+        }
+
+
+class NGC1792RamPressureDegeneracyCalculator(_CP3Calculator):
+    """PAPER_269: Ram Pressure Degeneracy Point (RPDP) — kinematic invariant g_feedback = v_wind^2.
+    At rho_wind == rho_fluid, the SN feedback term is density-independent: term_feedback = v^2.
+    """
+
+    METADATA = {
+        'paper': 'PAPER_269',
+        'module': 'GALAXY_NGC_1792 (Module 19)',
+        'system': 'NGC 1792 starburst galaxy',
+        'physics': 'RPDP, ram pressure degeneracy, kinematic invariant, SN buoyancy neutral',
+    }
+
+    def calculate(self, dataset: dict) -> dict:
+        G = 6.674e-11
+        M0 = dataset.get('M0', 1.989e40)
+        r = dataset.get('r', 7.569e20)
+        rho_wind = dataset.get('rho_wind', 1e-21)   # kg/m^3
+        rho_fluid = dataset.get('rho_fluid', 1e-21) # kg/m^3
+        v_wind = dataset.get('v_wind', 2e6)         # m/s
+        is_rpdp = abs(rho_wind - rho_fluid) < 1e-30 * max(abs(rho_wind), abs(rho_fluid), 1e-30)
+        if rho_fluid != 0.0:
+            g_feedback = rho_wind * v_wind**2 / rho_fluid
+        else:
+            g_feedback = 0.0
+        kinematic_invariant_v2 = v_wind**2  # value at RPDP
+        term1 = G * M0 / r**2
+        rpdp_dominance_ratio = g_feedback / term1 if term1 != 0 else float('inf')
+        buoyancy_force = (rho_fluid - rho_wind) * v_wind * 1.0  # normalized
+        return {
+            'is_rpdp': is_rpdp,
+            'rho_ratio': rho_wind / rho_fluid if rho_fluid != 0 else float('inf'),
+            'g_feedback_m_s2': g_feedback,
+            'kinematic_invariant_v2': kinematic_invariant_v2,
+            'rpdp_dominance_ratio': rpdp_dominance_ratio,
+            'newtonian_g_m_s2': term1,
+            'buoyancy_neutral': is_rpdp,
+            'net_buoyancy_force_norm': buoyancy_force,
+            'paper': 'PAPER_269',
+        }
+
+
+# ---------------------------------------------------------------------------
 # __all__ export
 # ---------------------------------------------------------------------------
 
@@ -9281,4 +9415,8 @@ __all__ = [
     "HUDFTRZCPTPhaseCalculator",
     "HUDFInteractionCascadeBuoyancyCalculator",
     "HUDFGravitationalMeissnerCalculator",
+    # Session 73 — PAPER_267–269 (NGC 1792 Module 19 UQFF 2.0 Unique Physics)
+    "NGC1792StarburstBuoyancyCoherenceCalculator",
+    "NGC1792HubbleSlowModeOscillatorCalculator",
+    "NGC1792RamPressureDegeneracyCalculator",
 ]
