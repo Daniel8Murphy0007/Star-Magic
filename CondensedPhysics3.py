@@ -9690,6 +9690,134 @@ class SombreroSMBHDominanceRatioCalculator:
 
 
 # ---------------------------------------------------------------------------
+# Session 78 — PAPER_280–282 (Saturn UQFF 2.0 — First Planetary-Scale Module)
+# ---------------------------------------------------------------------------
+
+class SaturnSolarTidalPerturbationCalculator:
+    """PAPER_280 — Solar UQFF Tidal Perturbation Ratio τ_Sun = M_Sun/M×(r/r_orbit)² = 6.22e-6.
+    First planetary UQFF module (all prior = stellar/galactic). g_Sun_tidal = 6.49e-5 m/s².
+    Universal formula τ_planet = M_star/M_planet × (r_planet/r_orbit)² for any Solar System body.
+    Module: SATURN_UQFF_MODULE.cpp (21st C++ module, Session 78).
+    """
+
+    def compute(self, dataset: dict) -> dict:
+        import math
+        G        = float(dataset.get('G_grav', 6.674e-11))
+        M        = float(dataset.get('M', 5.683e26))         # Saturn mass (kg)
+        r        = float(dataset.get('r', 6.0268e7))         # Saturn radius (m)
+        M_Sun    = float(dataset.get('M_Sun', 1.989e30))     # Sun mass (kg)
+        r_orbit  = float(dataset.get('r_orbit', 1.43e12))   # Saturn orbital radius (m)
+
+        g_base       = G * M / (r * r)
+        g_Sun_tidal  = G * M_Sun / (r_orbit * r_orbit)
+        tau_Sun      = (M_Sun / M) * (r / r_orbit) ** 2
+
+        # Solar System planetary comparison table
+        comparison = {
+            'Mercury': {'M_planet_kg': 3.30e23, 'r_m': 2.44e6,    'r_orbit_m': 5.79e10,  'tau_Sun': (1.989e30/3.30e23)*(2.44e6/5.79e10)**2},
+            'Earth':   {'M_planet_kg': 5.97e24, 'r_m': 6.37e6,    'r_orbit_m': 1.496e11, 'tau_Sun': (1.989e30/5.97e24)*(6.37e6/1.496e11)**2},
+            'Jupiter': {'M_planet_kg': 1.898e27,'r_m': 7.15e7,    'r_orbit_m': 7.78e11,  'tau_Sun': (1.989e30/1.898e27)*(7.15e7/7.78e11)**2},
+            'Saturn':  {'M_planet_kg': M,        'r_m': r,          'r_orbit_m': r_orbit,   'tau_Sun': tau_Sun},
+        }
+
+        return {
+            'g_base_m_s2':      g_base,
+            'g_Sun_tidal_m_s2': g_Sun_tidal,
+            'tau_Sun':          tau_Sun,
+            'tau_Sun_formula':  'tau_Sun = M_Sun/M * (r_planet/r_orbit)^2',
+            'tau_Sun_ppm':      tau_Sun * 1e6,
+            'comparison_table': comparison,
+            'module':           'SATURN_UQFF_MODULE (21st C++ module, Session 78)',
+            'paper':            'PAPER_280',
+        }
+
+
+class SaturnRingTidalGravityResonanceCalculator:
+    """PAPER_281 — Ring Keplerian Resonance ω_ring_kep = 1.481e-4 rad/s; T_ring = 11.78 h.
+    First-order ring tidal: g_ring = G×M_ring×r/r_ring³ = 3.49e-8 m/s². proximity_ratio = 2.0.
+    F_ring(t) = g_ring_tidal × cos(ω_ring × t) — pure oscillatory (stable ring, no decay).
+    Distinct from PAPER_278 (Sombrero galactic ring): planetary ring, r_ring > r_planet.
+    Module: SATURN_UQFF_MODULE.cpp (21st C++ module, Session 78).
+    """
+
+    def compute(self, dataset: dict) -> dict:
+        import math
+        G       = float(dataset.get('G_grav', 6.674e-11))
+        M       = float(dataset.get('M', 5.683e26))          # Saturn mass (kg)
+        r       = float(dataset.get('r', 6.0268e7))          # Saturn radius (m)
+        M_ring  = float(dataset.get('M_ring', 1.5e19))       # Ring system mass (kg)
+        r_ring  = float(dataset.get('r_ring', 1.2e8))        # Mean ring radius (m, ~2×r)
+        t       = float(dataset.get('t', 0.0))               # Time (s)
+
+        omega_ring_kep = math.sqrt(G * M / r_ring**3)
+        T_ring_s       = 2.0 * math.pi / omega_ring_kep
+        T_ring_h       = T_ring_s / 3600.0
+        g_ring_tidal   = G * M_ring * r / r_ring**3          # first-order ring tidal
+        F_ring_at_t    = g_ring_tidal * math.cos(omega_ring_kep * t)
+        proximity_ratio = r_ring / r                          # ~2.0 for Saturn rings
+
+        return {
+            'omega_ring_kep_rad_s':  omega_ring_kep,
+            'T_ring_s':              T_ring_s,
+            'T_ring_h':              T_ring_h,
+            'g_ring_tidal_m_s2':     g_ring_tidal,
+            'F_ring_at_t_m_s2':      F_ring_at_t,
+            'proximity_ratio':       proximity_ratio,
+            'formula_g_ring':        'g_ring = G*M_ring*r/r_ring^3 (first-order tidal)',
+            'formula_F_ring':        'F_ring(t) = g_ring_tidal * cos(omega_ring_kep * t)',
+            'note':                  'ring is OUTSIDE planet (r_ring=2*r); pure oscillatory (no decay)',
+            'module':                'SATURN_UQFF_MODULE (21st C++ module, Session 78)',
+            'paper':                 'PAPER_281',
+        }
+
+
+class SaturnAtmosphericWindKineticPressureCalculator:
+    """PAPER_282 — UQFF Atmospheric Wind: a_wind = (v_wind/c)² × g_base = 2.904e-11 m/s².
+    η_wind = v_wind/c = 1.668e-6. v_wind = 500 m/s (2nd fastest Solar System planet wind).
+    First UQFF gas-giant atmospheric wind kinetic pressure term. Universal formula for any gas giant.
+    Module: SATURN_UQFF_MODULE.cpp (21st C++ module, Session 78).
+    """
+
+    def compute(self, dataset: dict) -> dict:
+        G       = float(dataset.get('G_grav', 6.674e-11))
+        M       = float(dataset.get('M', 5.683e26))
+        r       = float(dataset.get('r', 6.0268e7))
+        v_wind  = float(dataset.get('v_wind', 500.0))         # m/s equatorial wind
+        c_light = float(dataset.get('c_light', 2.998e8))
+
+        g_base    = G * M / (r * r)
+        eta_wind  = v_wind / c_light
+        a_wind    = eta_wind ** 2 * g_base
+        a_wind_pct = (a_wind / g_base) * 100.0
+
+        # Solar system gas giant comparison: a_wind = (v_wind/c)^2 * g_base
+        gas_giant_comparison = {
+            'Saturn':  {'v_wind_m_s': 500,  'g_base': 10.44,  'eta': 500/2.998e8,  'a_wind': (500/2.998e8)**2 * 10.44},
+            'Jupiter': {'v_wind_m_s': 150,  'g_base': 23.12,  'eta': 150/2.998e8,  'a_wind': (150/2.998e8)**2 * 23.12},
+            'Uranus':  {'v_wind_m_s': 250,  'g_base': 8.87,   'eta': 250/2.998e8,  'a_wind': (250/2.998e8)**2 * 8.87},
+            'Neptune': {'v_wind_m_s': 600,  'g_base': 11.15,  'eta': 600/2.998e8,  'a_wind': (600/2.998e8)**2 * 11.15},
+        }
+
+        import math
+        v_esc = math.sqrt(2.0 * G * M / r)
+        wind_escape_fraction = v_wind / v_esc
+
+        return {
+            'eta_wind':               eta_wind,
+            'a_wind_m_s2':            a_wind,
+            'a_wind_pct_of_gbase':    a_wind_pct,
+            'v_wind_m_s':             v_wind,
+            'g_base_m_s2':            g_base,
+            'v_esc_m_s':              v_esc,
+            'wind_escape_fraction':   wind_escape_fraction,
+            'formula':                'a_wind = (v_wind/c)^2 * g_base = eta_wind^2 * g_base',
+            'gas_giant_comparison':   gas_giant_comparison,
+            'module':                 'SATURN_UQFF_MODULE (21st C++ module, Session 78)',
+            'paper':                  'PAPER_282',
+        }
+
+
+# ---------------------------------------------------------------------------
 # __all__ export
 # ---------------------------------------------------------------------------
 
@@ -9890,4 +10018,8 @@ __all__ = [
     "SombreroRecessionDampingKappaCalculator",
     "SombreroRingResonatorDustRingCalculator",
     "SombreroSMBHDominanceRatioCalculator",
+    # Session 78 — PAPER_280–282 (Saturn UQFF 2.0 Unique Physics — first planetary-scale module)
+    "SaturnSolarTidalPerturbationCalculator",
+    "SaturnRingTidalGravityResonanceCalculator",
+    "SaturnAtmosphericWindKineticPressureCalculator",
 ]

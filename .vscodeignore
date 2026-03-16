@@ -1,0 +1,15 @@
+﻿**/*.csv
+**/*.bin
+**/*.dat
+**/*.npy
+**/*.npz
+**/*.pkl
+**/*.h5
+**/*.hdf5
+**/*.fits
+**/*.gz
+**/__pycache__/**
+**/.git/**
+**/venv/**
+**/.venv/**
+**/node_modules/**
