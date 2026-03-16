@@ -38,6 +38,10 @@
 #include <iostream>
 #include <cmath>
 #include <iomanip>
+#include <string>
+#include <limits>
+#include <map>
+#include <fstream>
 
 class StarbirthTapestry {
 private:
@@ -87,6 +91,10 @@ private:
 
     // Computed caches (updated on demand)
     double ug1_base;        // Cached Ug1 for initial M
+
+    // UQFF 2.0 Self-Expanding Framework
+    bool logging_enabled;
+    std::map<std::string, double> dynamic_params;
 
 public:
     // Constructor with default UQFF values
@@ -145,6 +153,7 @@ public:
         M_R136 = 1.989e35;           // R136 cluster mass ~1e5 M_sun (external body)
         r_R136 = 6.15e18;            // Distance to R136 ~650 ly in meters
 
+        logging_enabled = false;
         updateCache();
     }
 
@@ -341,8 +350,16 @@ public:
         double FU_diag = -(term2 + term_Ubi) * ug1_t;  // diagnostic only (not added to total)
 
         // Total g_Starbirth (12 terms: 9 original + 3 UQFF buoyancy tiers)
-        return term1 + term2 + term3 + term4 + term_q + term_fluid + term_osc + term_DM + term_wind
-               + term_Ubi + term_F_UBii + term_Ub_i;
+        double result = term1 + term2 + term3 + term4 + term_q + term_fluid + term_osc + term_DM + term_wind
+                      + term_Ubi + term_F_UBii + term_Ub_i;
+        if (logging_enabled)
+            std::cout << "[LOG] compute_g_Starbirth(t=" << t << ") = " << result
+                      << "  [t1=" << term1 << " t2=" << term2 << " t3=" << term3
+                      << " t4=" << term4 << " tq=" << term_q << " tf=" << term_fluid
+                      << " tosc=" << term_osc << " tdm=" << term_DM << " twind=" << term_wind
+                      << " tUbi=" << term_Ubi << " tF_UBii=" << term_F_UBii
+                      << " tUb_i=" << term_Ub_i << " FU_diag=" << FU_diag << "]" << std::endl;
+        return result;
     }
 
     // Debug/Output method (for transparency in base program)
@@ -364,6 +381,65 @@ public:
     double exampleAt2_5Myr() const {
         double t_example = 2.5e6 * 3.156e7;
         return compute_g_Starbirth(t_example);
+    }
+
+    // ── UQFF 2.0 Self-Expanding Framework ────────────────────────────────────
+
+    void setEnableLogging(bool enabled) { logging_enabled = enabled; }
+    bool getLoggingEnabled() const      { return logging_enabled; }
+
+    void setDynamicParameter(const std::string& key, double value) {
+        dynamic_params[key] = value;
+        if (logging_enabled)
+            std::cout << "[LOG] Dynamic param set: " << key << " = " << value << std::endl;
+    }
+
+    double getDynamicParameter(const std::string& key) const {
+        auto it = dynamic_params.find(key);
+        if (it != dynamic_params.end()) return it->second;
+        if (logging_enabled)
+            std::cout << "[LOG] Dynamic param not found: " << key << std::endl;
+        return std::numeric_limits<double>::quiet_NaN();
+    }
+
+    void exportState(const std::string& filename = "STARBIRTH_TAPESTRY_state.txt") const {
+        std::ofstream ofs(filename);
+        if (!ofs) {
+            std::cerr << "Error: Cannot open '" << filename << "' for state export." << std::endl;
+            return;
+        }
+        ofs << "# StarbirthTapestry state export\n";
+        ofs << std::scientific << std::setprecision(10);
+        const char* names[] = {
+            "G","M_initial","r","H0","B","B_crit","Lambda","c_light",
+            "q_charge","gas_v","f_TRZ","M_dot_factor","tau_SF",
+            "rho_wind","v_wind","rho_fluid","rho_vac_UA","rho_vac_SCm","scale_EM","proton_mass",
+            "hbar","t_Hubble","t_Hubble_gyr","delta_x","delta_p","integral_psi",
+            "A_osc","k_osc","omega_osc","x_pos","M_DM_factor","delta_rho_over_rho",
+            "beta_i","omega_g","U_UA","M_R136","r_R136"
+        };
+        for (const char* n : names)
+            ofs << n << " = " << getVariable(n) << "\n";
+        for (const auto& kv : dynamic_params)
+            ofs << "dynamic." << kv.first << " = " << kv.second << "\n";
+        if (logging_enabled)
+            std::cout << "[LOG] State exported to: " << filename << std::endl;
+    }
+
+    // Cross-validate against Westerlund2 at t=1 Myr — fractional |gTapestry − gWd2| / |gTapestry|
+    template<typename Westerlund2T>
+    double cross_validate(const Westerlund2T& wd2, double t_years = 1.0e6) const {
+        double t_s   = t_years * 3.156e7;
+        double g_tap = compute_g_Starbirth(t_s);
+        double g_wd2 = wd2.compute_g_Westerlund2(t_s);
+        double frac  = (g_tap != 0.0)
+                       ? std::abs(g_wd2 - g_tap) / std::abs(g_tap)
+                       : std::numeric_limits<double>::quiet_NaN();
+        if (logging_enabled)
+            std::cout << "[XVAL] Tapestry g(" << t_years << "yr)=" << g_tap
+                      << "  Wd2 g=" << g_wd2
+                      << "  frac_diff=" << frac << std::endl;
+        return frac;
     }
 };
 
