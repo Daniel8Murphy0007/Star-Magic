@@ -9569,6 +9569,127 @@ class AndromedaFriedmannHzExpansionCalculator(_CP3Calculator):
 
 
 # ---------------------------------------------------------------------------
+# Session 77 — PAPER_277–279 (Sombrero UQFF 2.0 Unique Physics)
+# ---------------------------------------------------------------------------
+
+class SombreroRecessionDampingKappaCalculator:
+    """PAPER_277 — UQFF Gravitational Recession Damping Factor κ_recession = 1/(1+z)
+    for positive redshift z > 0 (receding galaxy).  Complement of PAPER_273 blueshift
+    amplifier; together they establish the Universal UQFF Bidirectional Redshift Law.
+    """
+
+    def compute(self, dataset: dict) -> dict:
+        z        = float(dataset.get('z', 0.0063))          # positive = recession
+        G        = float(dataset.get('G_grav', 6.674e-11))
+        M        = float(dataset.get('M', 1.989e41))
+        r        = float(dataset.get('r', 2.36e20))
+
+        g_base       = G * M / (r * r)
+        kappa_rec    = 1.0 / (1.0 + z)
+        g_recession  = g_base * kappa_rec
+        delta_g      = g_base - g_recession          # attenuation magnitude
+        g_damp_pct   = (1.0 - kappa_rec) * 100.0    # % damping
+
+        # Cascade table κ(z) at representative redshifts
+        cascade_zs = [-0.001, 0.0, 0.0063, 0.1, 0.5, 1.0, 3.5]
+        cascade_table = {str(zi): round(1.0 / (1.0 + zi), 8) for zi in cascade_zs}
+
+        return {
+            'z':                      z,
+            'kappa_recession':        kappa_rec,
+            'g_base_m_s2':            g_base,
+            'g_recession_m_s2':       g_recession,
+            'delta_g_recession_m_s2': delta_g,
+            'g_damping_pct':          g_damp_pct,
+            'cascade_table_kappa(z)': cascade_table,
+            'bidirectional_law':      'kappa(z) = 1/(1+z); z>0 DAMPS, z<0 AMPLIFIES',
+            'papers':                 ['PAPER_277', 'PAPER_273'],
+        }
+
+
+class SombreroRingResonatorDustRingCalculator:
+    """PAPER_278 — Sombrero Dust Ring UQFF Gravitational Ring Resonator.
+    Derives ω_ring = √(GM/r_ring³) and F_ring = A_ring·cos(ω_ring·t) for the
+    stable equatorial dust lane at r_ring = r/3.  First pure-undamped UQFF ring term.
+    """
+
+    def compute(self, dataset: dict) -> dict:
+        import math
+        G       = float(dataset.get('G_grav', 6.674e-11))
+        M       = float(dataset.get('M', 1.989e41))
+        r       = float(dataset.get('r', 2.36e20))
+        f_ring  = float(dataset.get('f_ring', 0.001))
+        t       = float(dataset.get('t', 0.0))         # evaluation time (s)
+
+        g_base     = G * M / (r * r)
+        r_ring     = r / 3.0
+        r_ring3    = r_ring ** 3
+        omega_ring = math.sqrt(G * M / r_ring3)
+        T_ring_s   = 2.0 * math.pi / omega_ring
+        T_ring_Myr = T_ring_s / 3.1557e13              # s → Myr
+
+        proximity_factor = (r / r_ring) ** 2           # = 3² = 9
+        A_ring     = proximity_factor * f_ring * g_base
+        F_ring_t   = A_ring * math.cos(omega_ring * t)
+
+        return {
+            'r_ring_m':               r_ring,
+            'omega_ring_rad_s':       omega_ring,
+            'T_ring_Myr':             T_ring_Myr,
+            'proximity_factor':       proximity_factor,
+            'f_ring':                 f_ring,
+            'A_ring_m_s2':            A_ring,
+            'F_ring_at_t_m_s2':       F_ring_t,
+            'form':                   'F_ring = A_ring * cos(omega_ring * t)',
+            'decay':                  'none (stable ring — pure oscillatory)',
+            'g_base_m_s2':            g_base,
+            'paper':                  'PAPER_278',
+        }
+
+
+class SombreroSMBHDominanceRatioCalculator:
+    """PAPER_279 — Sombrero SMBH Dominance Ratio γ_BH = M_BH/M = 0.01 (1%) and
+    UQFF Sphere of Influence r_SOI = r·√(γ_BH) = 2.36×10¹⁹ m.
+    First UQFF module with γ_BH = 1% — 250× dominant vs Sgr A*.
+    """
+
+    def compute(self, dataset: dict) -> dict:
+        import math
+        G    = float(dataset.get('G_grav', 6.674e-11))
+        M    = float(dataset.get('M', 1.989e41))
+        M_BH = float(dataset.get('M_BH', 1.989e39))
+        r    = float(dataset.get('r', 2.36e20))
+
+        g_base   = G * M / (r * r)
+        gamma_BH = M_BH / M
+        g_BH     = G * M_BH / (r * r)            # = gamma_BH * g_base
+        r_SOI    = r * math.sqrt(gamma_BH)
+
+        # Comparison table: γ_BH for other well-known SMBHs
+        comparison = {
+            'Sgr_A*':     {'M_BH_Msun': 4e6,   'M_gal_Msun': 1e11,  'gamma_BH': 4e-6/1.0},
+            'Andromeda':  {'M_BH_Msun': 1.4e8, 'M_gal_Msun': 1e12,  'gamma_BH': 1.4e-4},
+            'M87':        {'M_BH_Msun': 6.5e9, 'M_gal_Msun': 6e12,  'gamma_BH': 1.08e-3},
+            'Sombrero':   {'M_BH_Msun': 1e9,   'M_gal_Msun': 1e11,  'gamma_BH': 0.01},
+        }
+
+        sgrA_gamma = 4e-6                         # Sgr A* γ_BH (corrected fraction)
+        dominance_vs_sgrA = gamma_BH / sgrA_gamma if sgrA_gamma > 0 else 0.0
+
+        return {
+            'gamma_BH':                gamma_BH,
+            'g_BH_m_s2':               g_BH,
+            'r_SOI_m':                 r_SOI,
+            'r_SOI_formula':           'r_SOI = r * sqrt(gamma_BH)',
+            'g_base_m_s2':             g_base,
+            'BH_fraction_pct':         gamma_BH * 100.0,
+            'dominance_vs_SgrA*_times': dominance_vs_sgrA,
+            'comparison_table':        comparison,
+            'paper':                   'PAPER_279',
+        }
+
+
+# ---------------------------------------------------------------------------
 # __all__ export
 # ---------------------------------------------------------------------------
 
@@ -9765,4 +9886,8 @@ __all__ = [
     "AndromedaDMShellPartitionCalculator",
     # Session 76 — PAPER_276 (Andromeda Friedmann H(z) UQFF Expansion Coupling)
     "AndromedaFriedmannHzExpansionCalculator",
+    # Session 77 — PAPER_277–279 (Sombrero UQFF 2.0 Unique Physics)
+    "SombreroRecessionDampingKappaCalculator",
+    "SombreroRingResonatorDustRingCalculator",
+    "SombreroSMBHDominanceRatioCalculator",
 ]
