@@ -212,6 +212,10 @@ public:
             oss << "loadConfig: loaded " << loaded << " params from '" << config_file << "'";
             log(oss.str());
         }
+        // Default fallbacks — ensure core scaling keys are always present
+        if (dynamic_params.find("LENR")      == dynamic_params.end()) dynamic_params["LENR"]      = 1.0e12;
+        if (dynamic_params.find("DE")        == dynamic_params.end()) dynamic_params["DE"]        = 1.0;
+        if (dynamic_params.find("resonance") == dynamic_params.end()) dynamic_params["resonance"] = 1.0;
         updateCache();
     }
 
