@@ -183,6 +183,36 @@ public:
 
     ~UQFFSource10() {}
 
+    // Load key=value scaling overrides from a config file into dynamic_params
+    // Format: one "key=value" per line; lines beginning with '#' are comments
+    void loadConfig(const std::string& config_file) {
+        if (config_file.empty()) return;
+        std::ifstream file(config_file);
+        if (!file.is_open()) {
+            if (logging_enabled) log("loadConfig: cannot open '" + config_file + "'");
+            return;
+        }
+        std::string line;
+        int loaded = 0;
+        while (std::getline(file, line)) {
+            if (line.empty() || line[0] == '#') continue;
+            size_t eq = line.find('=');
+            if (eq == std::string::npos) continue;
+            std::string key = line.substr(0, eq);
+            try {
+                double val = std::stod(line.substr(eq + 1));
+                dynamic_params[key] = val;
+                ++loaded;
+            } catch (...) {}
+        }
+        if (logging_enabled) {
+            std::ostringstream oss;
+            oss << "loadConfig: loaded " << loaded << " params from '" << config_file << "'";
+            log(oss.str());
+        }
+        updateCache();
+    }
+
     // Initialization from document catalogue
     void initializeCatalogue() {
         // UQFF Core defaults (Eta Carinae benchmark values)
@@ -343,6 +373,28 @@ public:
             log(oss.str());
         }
         return result;
+    }
+
+    // Batch compute F_U_Bi_i over a vector of time points — returns one result per t
+    std::vector<double> batch_compute_F_U_Bi_i(const std::vector<double>& times) {
+        std::vector<double> results;
+        results.reserve(times.size());
+        auto _t0 = std::chrono::high_resolution_clock::now();
+        for (double t : times) {
+            double term1 = integrand * x_2;
+            double term2 = LENR_term * activation_term * std::exp(-t / tau_SF);
+            double term3 = DE_term + resonance_term * neutron_factor;
+            double term4 = rel_term * (1.0 + f_TRZ);
+            results.push_back(term1 + term2 + term3 + term4);
+        }
+        if (logging_enabled) {
+            auto _t1 = std::chrono::high_resolution_clock::now();
+            double _ms = std::chrono::duration<double, std::milli>(_t1 - _t0).count();
+            std::ostringstream oss;
+            oss << "batch_compute_F_U_Bi_i: " << times.size() << " steps, elapsed=" << _ms << "ms";
+            log(oss.str());
+        }
+        return results;
     }
 
     // Compute g_UQFF(r, t) — 26-layer Triadic sum + Lambda + quantum + 3-tier CP3/PAPER_198 buoyancy
