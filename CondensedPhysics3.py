@@ -9233,6 +9233,142 @@ class NGC1792RamPressureDegeneracyCalculator(_CP3Calculator):
 
 
 # ---------------------------------------------------------------------------
+# Session 74 — PAPER_270–272 (UQFF Source10 Catalogue Unique Physics)
+# ---------------------------------------------------------------------------
+
+class Source10DPMResonanceAmplificationCalculator(_CP3Calculator):
+    """PAPER_270: g_H = 1.252e46 UQFF cosmic orbital amplifier.
+    89-decade amplification chain: DPM_resonance = g_H * mu_B * B0 / (hbar * omega_0).
+    Bridge constant Q_bridge = g_H * 2.82e-56 = 3.53e-10 (UQFF DPM fine-structure analogue).
+    """
+
+    METADATA = {
+        'paper': 'PAPER_270',
+        'module': 'UQFF_SOURCE10 (Catalogue Master)',
+        'system': 'Eta Carinae / DPM universal',
+        'physics': 'g_H cosmic amplifier, DPM resonance, Q_bridge constant, 89-decade span',
+    }
+
+    def calculate(self, dataset: dict) -> dict:
+        g_H = dataset.get('g_H', 1.252e46)
+        mu_B = dataset.get('mu_B', 9.274e-24)    # Bohr magneton J/T
+        B0 = dataset.get('B0', 1e-4)              # T
+        hbar = dataset.get('hbar', 1.0546e-34)    # J·s
+        omega_0 = dataset.get('omega_0', 1e12)    # rad/s
+        Q_bridge_factor = dataset.get('Q_bridge_factor', 2.82e-56)
+        DPM_resonance = g_H * mu_B * B0 / (hbar * omega_0)   # raw 89-decade ratio
+        E_DPM = DPM_resonance * Q_bridge_factor               # J/m³ energy density
+        Q_bridge = g_H * Q_bridge_factor
+        import math
+        amplification_decades = math.log10(abs(DPM_resonance)) if DPM_resonance > 0 else 0.0
+        return {
+            'g_H': g_H,
+            'DPM_resonance_ratio': DPM_resonance,
+            'E_DPM_J_per_m3': E_DPM,
+            'Q_bridge': Q_bridge,
+            'amplification_decades': amplification_decades,
+            'mu_B_J_per_T': mu_B,
+            'B0_T': B0,
+            'paper': 'PAPER_270',
+        }
+
+
+class Source10THz​DoubleGateConduitCalculator(_CP3Calculator):
+    """PAPER_271: THz Double-Gate Star Formation — dual binary conditions.
+    F_conduit = k_conduit * H_abundance * water_state * neutron_factor.
+    Both Gate 1 (water_state=1, classical fluid) AND Gate 2 (neutron_factor=1, Kozima quantum)
+    must be simultaneously open for maximum conduit force.
+    THz ratio (omega_thz/omega_0)^2 = 1.44 encodes Colman-Gillespie 1.25 THz window.
+    """
+
+    METADATA = {
+        'paper': 'PAPER_271',
+        'module': 'UQFF_SOURCE10 (Catalogue Master)',
+        'system': 'Star-forming regions (universal)',
+        'physics': 'THz double gate, Kozima neutron factor, Colman-Gillespie resonance, conduit force',
+    }
+
+    def calculate(self, dataset: dict) -> dict:
+        k_conduit = dataset.get('k_conduit', 8.99e9)       # Coulomb constant N·m²/C² repurposed
+        H_abundance = dataset.get('H_abundance', 0.74)     # cosmic hydrogen mass fraction
+        water_state = dataset.get('water_state', 1.0)      # Gate 1: 1=incompressible, 0=not
+        neutron_factor = dataset.get('neutron_factor', 1.0) # Gate 2: 1=Kozima stable, 0=not
+        omega_thz = dataset.get('omega_thz', 1.2e12)       # rad/s
+        omega_0 = dataset.get('omega_0', 1e12)             # rad/s
+        k_thz = dataset.get('k_thz', 1.38e-23)            # J/K (Boltzmann, THz coupling)
+        conduit_scale = dataset.get('conduit_scale', 1e12) # normalisation scale
+        F_conduit_norm = k_conduit * H_abundance * water_state * neutron_factor
+        thz_ratio = omega_thz / omega_0
+        thz_ratio_squared = thz_ratio ** 2
+        F_thz_shock = k_thz * thz_ratio_squared * neutron_factor * conduit_scale
+        both_gates_open = (water_state >= 1.0) and (neutron_factor >= 1.0)
+        gate_status = 'BOTH_OPEN_MAX_SF' if both_gates_open else 'AT_LEAST_ONE_CLOSED'
+        return {
+            'F_conduit_N_norm': F_conduit_norm,
+            'F_thz_shock_N': F_thz_shock,
+            'thz_ratio': thz_ratio,
+            'thz_ratio_squared': thz_ratio_squared,
+            'thz_enhancement_pct': (thz_ratio_squared - 1.0) * 100.0,
+            'gate1_water_state': water_state,
+            'gate2_neutron_factor': neutron_factor,
+            'both_gates_open': both_gates_open,
+            'gate_status': gate_status,
+            'H_abundance': H_abundance,
+            'paper': 'PAPER_271',
+        }
+
+
+class Source10GravitationalVacuumDragCalculator(_CP3Calculator):
+    """PAPER_272: Gravitational Vacuum Drag — k_vac = G = 6.674e-11.
+    F_vac_rep = G * delta_rho_vac * M * v — velocity-dependent gravitational force.
+    k_vac = G (Newton's constant) establishes UQFF Vacuum-Gravitational Duality:
+    same G governs static gravity AND vacuum momentum drag.
+    """
+
+    METADATA = {
+        'paper': 'PAPER_272',
+        'module': 'UQFF_SOURCE10 (Catalogue Master)',
+        'system': 'Eta Carinae / universal',
+        'physics': 'k_vac=G, vacuum drag, velocity-dependent gravity, gravitational duality',
+    }
+
+    def calculate(self, dataset: dict) -> dict:
+        import math
+        G = 6.674e-11                                       # Newton's G = k_vac
+        k_vac = dataset.get('k_vac', G)                    # must equal G
+        delta_rho_vac = dataset.get('delta_rho_vac', 1e-26) # kg/m^3 vacuum density gradient
+        M = dataset.get('M', 2.387e32)                     # kg (Eta Carinae default)
+        v = dataset.get('v', 1e4)                          # m/s
+        r = dataset.get('r', 7.11e19)                      # m (for Stokes analogy)
+        # Core UQFF vacuum drag force
+        F_vac_rep = k_vac * delta_rho_vac * M * v
+        # Is k_vac numerically G?
+        k_vac_is_G = abs(k_vac - G) / G < 1e-6
+        # Gravitational drag coefficient [s^-1]
+        drag_coeff = G * delta_rho_vac
+        # Stokes analogy: F = 6*pi*eta*r*v -> eta_UQFF
+        denom = 6.0 * math.pi * r
+        stokes_eta_UQFF = (G * delta_rho_vac * M) / denom if denom != 0 else 0.0
+        # Newtonian gravity for comparison
+        F_newton = G * M * M / r**2  # self-gravity approximation
+        drag_to_newton_ratio = F_vac_rep / F_newton if F_newton != 0 else float('inf')
+        return {
+            'F_vac_rep_N': F_vac_rep,
+            'k_vac': k_vac,
+            'k_vac_equals_G': k_vac_is_G,
+            'G_reference': G,
+            'drag_coefficient_per_s': drag_coeff,
+            'stokes_eta_UQFF_Pa_s': stokes_eta_UQFF,
+            'F_newton_N': F_newton,
+            'drag_to_newton_ratio': drag_to_newton_ratio,
+            'delta_rho_vac_kg_m3': delta_rho_vac,
+            'M_kg': M,
+            'v_m_s': v,
+            'paper': 'PAPER_272',
+        }
+
+
+# ---------------------------------------------------------------------------
 # __all__ export
 # ---------------------------------------------------------------------------
 
@@ -9419,4 +9555,8 @@ __all__ = [
     "NGC1792StarburstBuoyancyCoherenceCalculator",
     "NGC1792HubbleSlowModeOscillatorCalculator",
     "NGC1792RamPressureDegeneracyCalculator",
+    # Session 74 — PAPER_270–272 (UQFF Source10 Catalogue Unique Physics)
+    "Source10DPMResonanceAmplificationCalculator",
+    "Source10THz​DoubleGateConduitCalculator",
+    "Source10GravitationalVacuumDragCalculator",
 ]
