@@ -87,6 +87,11 @@ private:
     double M_NSC;           // Nuclear star cluster mass (kg)
     double r_NSC;           // NSC distance from BH (m) ~3 pc
 
+    // UQFF Buoyancy parameters (CP1/CP2/CP3 pipeline)
+    double beta_i;     // Buoyancy coupling constant [CP3 canonical: 0.61, PAPER_198]
+    double omega_g;    // Galactic rotation rate [CP1/CP2 canonical: 7.3e-16 rad/s]
+    double U_UA;       // Unit charge aether parameter [CP1/CP2 canonical: 1e-11 C]
+
     // UQFF 2.0 framework
     bool logging_enabled;
     std::map<std::string, double> dynamic_params;
@@ -151,6 +156,11 @@ public:
         r_NSC     = 9.26e16;                     // 3 pc in metres
         logging_enabled = false;
 
+        // UQFF buoyancy parameters (CP3/PAPER_198/CP1 canonical)
+        beta_i  = 0.61;      // PAPER_198/CP3 canonical coupling [FUBiiTaxonomy, BETA_I]
+        omega_g = 7.3e-16;   // Galactic rotation rate [CP1/CP2 canonical] (rad/s)
+        U_UA    = 1e-11;     // Unit charge aether [CP1/CP2 canonical] (C)
+
         updateCache();
     }
 
@@ -200,6 +210,9 @@ public:
         else if (varName == "tau_D")       { tau_D = newValue; }
         else if (varName == "M_NSC")       { M_NSC = newValue; }
         else if (varName == "r_NSC")       { r_NSC = newValue; }
+        else if (varName == "beta_i")      { beta_i  = newValue; }
+        else if (varName == "omega_g")     { omega_g = newValue; }
+        else if (varName == "U_UA")        { U_UA    = newValue; }
         else if (varName == "logging_enabled") { logging_enabled = (newValue != 0.0); }
         else {
             std::cerr << "Error: Unknown variable '" << varName << "'." << std::endl;
@@ -260,6 +273,9 @@ public:
         else if (varName == "tau_D")       return tau_D;
         else if (varName == "M_NSC")       return M_NSC;
         else if (varName == "r_NSC")       return r_NSC;
+        else if (varName == "beta_i")      return beta_i;
+        else if (varName == "omega_g")     return omega_g;
+        else if (varName == "U_UA")        return U_UA;
         else if (varName == "logging_enabled") return logging_enabled ? 1.0 : 0.0;
         else {
             std::cerr << "Error: Unknown variable '" << varName << "'." << std::endl;
@@ -370,14 +386,39 @@ public:
         //          M_NSC = 2.5×10⁷ M_sun, r_NSC = 3 pc (9.26×10¹⁶ m)
         double term12 = 2.0 * G * M_NSC * r / (r_NSC * r_NSC * r_NSC);
 
-        // Total g_SgrA (12-term MUGE)
+        // UQFF Buoyancy Terms (CP1/CP2/CP3 pipeline — previously missing from C++ modules)
+        // Ubi (CP3 canonical line 1770): Static half-gravity buoyancy — dominant term
+        // Ubi = 0.5 × (G·M(t)/r²) [FUBiiTaxonomyCompactObjectCalculator, PAPER_198]
+        // Uses ug1_t (time-evolving mass) for accretion-consistent buoyancy
+        double term_Ubi = 0.5 * ug1_t;
+
+        // F_UBii (PAPER_198 compact object): -β_i × Ug_i × ω_g × (M(t)/r) × [UA] × cos(π·t)
+        // Reference magnitude for SMBH: ~1e36 N [CP3 PAPER_198 taxonomy; BH tier]
+        double term_F_UBii = -beta_i * ug1_t * omega_g * (Mt / r) * U_UA
+                             * std::cos(UQFF_PI * t);
+
+        // Ub_i (CP1 outer-frame): buoyancy from nuclear star cluster at 3 pc
+        // Ub_i = -β_i × ug1_t × ω_g × (M_NSC / r_NSC) × [UA] × cos(π·t)
+        // Sgr A*'s buoyancy is driven by the NSC embedding it (M_NSC = 2.5×10⁷ M_sun at 3 pc)
+        // CP1 compute_buoyancy_regime: Sgr A* is NEGATIVE buoyancy (F_U_Bi_i = -8.31e211 N)
+        double term_Ub_i = -beta_i * ug1_t * omega_g * (M_NSC / r_NSC) * U_UA
+                           * std::cos(UQFF_PI * t);
+
+        // FU diagnostic (CP3): FU = -(Ug_sum + Ubi) × g_base [logged only, not added again]
+        double FU_diag = -(term2 + term_Ubi) * ug1_t;
+
+        // Total g_SgrA (15-term MUGE)
         double g_total = term1 + term2 + term3 + term4 + term5 + term_q
-                       + term_fluid + term_osc + term_DM + term10 + term11 + term12;
+                       + term_fluid + term_osc + term_DM + term10 + term11 + term12
+                       + term_Ubi + term_F_UBii + term_Ub_i;
 
         if (logging_enabled) {
             std::cout << "[SMBHSgrAStar] t=" << t
                       << " T10=" << term10 << " T11=" << term11
-                      << " T12=" << term12 << " g=" << g_total << std::endl;
+                      << " T12=" << term12
+                      << " tUbi=" << term_Ubi << " tF_UBii=" << term_F_UBii
+                      << " tUb_i=" << term_Ub_i << " FU_diag=" << FU_diag
+                      << " g=" << g_total << std::endl;
         }
         return g_total;
     }

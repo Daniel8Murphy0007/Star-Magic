@@ -97,6 +97,11 @@ private:
     double M_DM_factor;     // Dark matter mass fraction
     double delta_rho_over_rho; // Density perturbation fraction
 
+    // UQFF Buoyancy parameters (CP1/CP2/CP3 pipeline)
+    double beta_i;     // Buoyancy coupling constant [CP3 canonical: 0.61, PAPER_198]
+    double omega_g;    // Galactic rotation rate [CP1/CP2 canonical: 7.3e-16 rad/s]
+    double U_UA;       // Unit charge aether parameter [CP1/CP2 canonical: 1e-11 C]
+
     // Computed caches (updated on demand)
     double ug1_base;        // Cached Ug1 = G*M/r^2
     double B;               // Current B (static in this model)
@@ -158,6 +163,11 @@ public:
         x_pos = r;
         M_DM_factor = 0.1;
         delta_rho_over_rho = 1e-5;
+
+        // UQFF buoyancy parameters (CP3/PAPER_198/CP1 canonical)
+        beta_i  = 0.61;      // PAPER_198/CP3 canonical coupling [FUBiiTaxonomy, BETA_I]
+        omega_g = 7.3e-16;   // Galactic rotation rate [CP1/CP2 canonical] (rad/s)
+        U_UA    = 1e-11;     // Unit charge aether [CP1/CP2 canonical] (C)
 
         logging_enabled = false;
         updateCache();
@@ -224,6 +234,9 @@ public:
         else if (varName == "x_pos") { x_pos = newValue; }
         else if (varName == "M_DM_factor") { M_DM_factor = newValue; }
         else if (varName == "delta_rho_over_rho") { delta_rho_over_rho = newValue; }
+        else if (varName == "beta_i")  { beta_i  = newValue; }
+        else if (varName == "omega_g") { omega_g = newValue; }
+        else if (varName == "U_UA")    { U_UA    = newValue; }
         else {
             std::cerr << "Error: Unknown variable '" << varName << "'." << std::endl;
             return false;
@@ -285,6 +298,9 @@ public:
         else if (varName == "x_pos") return x_pos;
         else if (varName == "M_DM_factor") return M_DM_factor;
         else if (varName == "delta_rho_over_rho") return delta_rho_over_rho;
+        else if (varName == "beta_i")  return beta_i;
+        else if (varName == "omega_g") return omega_g;
+        else if (varName == "U_UA")    return U_UA;
         else {
             std::cerr << "Error: Unknown variable '" << varName << "'." << std::endl;
             return std::numeric_limits<double>::quiet_NaN();  // NaN prevents silent corruption
@@ -402,9 +418,29 @@ public:
         // a_D(t) = D₀ · cos(ω_D · t) · e^(−t/τ_D)
         double term_burst = D0_burst * std::cos(omega_D * t) * std::exp(-t / tau_D);
 
-        // Total g_Magnetar (all 15 terms)
+        // UQFF Buoyancy Terms (CP1/CP2/CP3 pipeline — previously missing from C++ modules)
+        // Ubi (CP3 canonical line 1770): Static half-gravity buoyancy — dominant term
+        // Ubi = 0.5 × (G·M/r²) [FUBiiTaxonomyCompactObjectCalculator, PAPER_198]
+        double term_Ubi = 0.5 * ug1_base;
+
+        // F_UBii (PAPER_198 compact object): -β_i × Ug_i × ω_g × (M/r) × [UA] × cos(π·t)
+        // Reference magnitude for magnetar: ~1e38 N [CP3 PAPER_198 taxonomy]
+        double term_F_UBii = -beta_i * ug1_base * omega_g * (M / r) * U_UA
+                             * std::cos(UQFF_PI * t);
+
+        // Ub_i (CP1 outer-frame): buoyancy from Sgr A* gravitational field at 0.92 pc
+        // Ub_i = -β_i × ug1_base × ω_g × (M_BH / r_BH) × [UA] × cos(π·t)
+        // Driving body: Sgr A* (M_BH = 4×10⁶ M_sun, r_BH = 0.92 pc = 2.83×10¹⁶ m)
+        double term_Ub_i = -beta_i * ug1_base * omega_g * (M_BH / r_BH) * U_UA
+                           * std::cos(UQFF_PI * t);
+
+        // FU diagnostic (CP3): FU = -(Ug_sum + Ubi) × g_base [logged only, not added again]
+        double FU_diag = -(term2 + term_Ubi) * ug1_base;
+
+        // Total g_Magnetar (all 18 terms)
         double result = term1 + term_BH + term_tidal + term2 + term3 + term4 + term5
-                      + term_q + term_fluid + term_osc + term_DM + term_mag + term_decay + term_burst;
+                      + term_q + term_fluid + term_osc + term_DM + term_mag + term_decay + term_burst
+                      + term_Ubi + term_F_UBii + term_Ub_i;
         if (logging_enabled)
             std::cout << "[LOG] compute_g_Magnetar(t=" << t << ") = " << result
                       << "  [t1=" << term1 << " tBH=" << term_BH
@@ -413,7 +449,9 @@ public:
                       << " tq=" << term_q << " tf=" << term_fluid
                       << " tosc=" << term_osc << " tdm=" << term_DM
                       << " tmag=" << term_mag << " tdecay=" << term_decay
-                      << " tburst=" << term_burst << "]" << std::endl;
+                      << " tburst=" << term_burst
+                      << " tUbi=" << term_Ubi << " tF_UBii=" << term_F_UBii
+                      << " tUb_i=" << term_Ub_i << " FU_diag=" << FU_diag << "]" << std::endl;
         return result;
     }
 
