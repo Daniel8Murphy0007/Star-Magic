@@ -9368,6 +9368,144 @@ class Source10GravitationalVacuumDragCalculator(_CP3Calculator):
         }
 
 
+class AndromedaBlueshiftApproachAmplifierCalculator(_CP3Calculator):
+    """PAPER_273: kappa_approach = 1/(1+z) for z<0 (blueshift/approaching systems).
+    For Andromeda z=-0.001: kappa_approach=1.001001, amplifying total UQFF gravity ~0.1%.
+    As z→-1, kappa→∞ — UQFF Gravitational Approach Resonance Cascade.
+    """
+
+    METADATA = {
+        'paper': 'PAPER_273',
+        'module': 'ANDROMEDA_UQFF_MODULE (M31 Master, Session 75)',
+        'system': 'Andromeda M31 (z=-0.001, approaching MW at ~110 km/s)',
+        'physics': 'blueshift amplifier, kappa_approach, negative redshift, approach cascade',
+    }
+
+    def calculate(self, dataset: dict) -> dict:
+        import math
+        z = dataset.get('z', -0.001)                    # Andromeda default: blueshift
+        g_total = dataset.get('g_total', 6.627e-9)      # m/s² — pre-kappa UQFF sum
+        kappa_approach = 1.0 / (1.0 + z)
+        g_amplified = g_total * kappa_approach
+        delta_g = g_amplified - g_total
+        amplification_pct = (kappa_approach - 1.0) * 100.0
+        # Cascade analysis: kappa vs z
+        cascade_table = {z_val: 1.0/(1.0+z_val) for z_val in [-0.001, -0.01, -0.1, -0.5, -0.9]}
+        # Merger timescale estimate (v_approach ≈ |z|*c)
+        c_light = 2.998e8
+        v_approach = abs(z) * c_light                   # m/s
+        t_merge_s = dataset.get('r', 2.407e22) / v_approach if v_approach > 0 else float('inf')
+        t_merge_gyr = t_merge_s / 3.15576e16            # in Gyr
+        return {
+            'z': z,
+            'kappa_approach': kappa_approach,
+            'g_total_input': g_total,
+            'g_amplified': g_amplified,
+            'delta_g_m_s2': delta_g,
+            'amplification_pct': amplification_pct,
+            'v_approach_m_s': v_approach,
+            't_merge_gyr_estimate': t_merge_gyr,
+            'cascade_table_kappa_vs_z': cascade_table,
+            'paper': 'PAPER_273',
+        }
+
+
+class AndromedaHI21cmUQFFResonanceCalculator(_CP3Calculator):
+    """PAPER_274: omega_HI = 2pi*nu_HI = 8.9282e9 rad/s as UQFF galactic buoyancy resonance.
+    nu_HI = 1.42040575e9 Hz (hydrogen 21-cm spin-flip, hyperfine transition).
+    Bridges atomic quantum physics (hyperfine E_HF=hbar*omega_HI) to galaxy-scale buoyancy.
+    HI-UQFF Bridging Constant: Omega_bridge = omega_HI / omega_g = 1.223e25.
+    """
+
+    METADATA = {
+        'paper': 'PAPER_274',
+        'module': 'ANDROMEDA_UQFF_MODULE (M31 Master, Session 75)',
+        'system': 'Andromeda M31 / universal HI-traced galaxies',
+        'physics': 'HI 21-cm, omega_HI, hyperfine bridge, galactic resonance, Omega_bridge',
+    }
+
+    def calculate(self, dataset: dict) -> dict:
+        import math
+        nu_HI   = dataset.get('nu_HI', 1.42040575e9)        # Hz — canonical HI
+        A_res   = dataset.get('A_res', 1.0e-12)             # m/s²
+        tau_gal = dataset.get('tau_gal', 1.0e9 * 3.15576e7) # s — 1 Gyr
+        t       = dataset.get('t', 0.0)                      # s
+        omega_g = dataset.get('omega_g', 7.3e-16)            # rad/s canonical
+        hbar    = 1.0546e-34                                 # J·s
+        omega_HI = 2.0 * math.pi * nu_HI
+        F_res = A_res * math.cos(omega_HI * t) * math.exp(-t / tau_gal)
+        E_HF = hbar * omega_HI                               # hyperfine energy J
+        Omega_bridge = omega_HI / omega_g                   # HI-UQFF bridging constant
+        period_HI = 2.0 * math.pi / omega_HI                # s
+        # Time-average (over many oscillations): zero amplitude
+        # Envelope at t = tau_gal: A_res * exp(-1)
+        F_res_at_tau = A_res * math.exp(-1.0)
+        return {
+            'nu_HI_Hz': nu_HI,
+            'omega_HI_rad_s': omega_HI,
+            'F_res_at_t': F_res,
+            't_s': t,
+            'F_res_at_1Gyr_envelope': F_res_at_tau,
+            'E_HF_J': E_HF,
+            'period_HI_s': period_HI,
+            'Omega_bridge': Omega_bridge,
+            'omega_g_rad_s': omega_g,
+            'A_res_m_s2': A_res,
+            'tau_gal_s': tau_gal,
+            'paper': 'PAPER_274',
+        }
+
+
+class AndromedaDMShellPartitionCalculator(_CP3Calculator):
+    """PAPER_275: UQFF DM 80/20 Shell Partition — f_DM^(1/3) NFW coupling exponent.
+    g_DM_total = G*f_DM*M/r² + xi_DM*G*(1-f_DM)*M/r²; xi_DM = f_DM^(1/3).
+    For Andromeda f_DM=0.80: xi_DM=0.9283 (UQFF dark matter coupling constant).
+    Predicts 1.4% reduction vs linear g = GM/r² superposition.
+    """
+
+    METADATA = {
+        'paper': 'PAPER_275',
+        'module': 'ANDROMEDA_UQFF_MODULE (M31 Master, Session 75)',
+        'system': 'Andromeda M31 (f_DM=0.80) / universal DM galaxies',
+        'physics': 'DM shell partition, xi_DM, f_DM^(1/3), NFW coupling exponent, 80/20',
+    }
+
+    def calculate(self, dataset: dict) -> dict:
+        import math
+        G     = 6.674e-11
+        M     = dataset.get('M', 1.989e42)               # kg (1e12 Msun default)
+        r     = dataset.get('r', 1.04e21)                 # m
+        f_DM  = dataset.get('f_DM', 0.80)                # DM mass fraction
+        g_base = G * M / (r * r)
+        g_vis  = G * (1.0 - f_DM) * M / (r * r)         # visible matter
+        g_dm   = G * f_DM         * M / (r * r)         # dark matter
+        xi_DM  = f_DM ** (1.0 / 3.0)                    # NFW coupling exponent
+        g_int  = xi_DM * g_vis                           # DM-visible coupling
+        g_DM_total = g_dm + g_int
+        delta_vs_linear = g_DM_total - g_base
+        delta_pct = (delta_vs_linear / g_base) * 100.0
+        # Generalised table for nearby f_DM values
+        partition_table = {}
+        for f in [0.70, 0.75, 0.80, 0.85, 0.90]:
+            g_v = G * (1.0 - f) * M / (r * r)
+            g_d = G * f * M / (r * r)
+            xi  = f ** (1.0 / 3.0)
+            partition_table[f] = {'xi_DM': xi, 'g_DM_total': g_d + xi * g_v}
+        return {
+            'f_DM': f_DM,
+            'xi_DM': xi_DM,
+            'g_base_linear_m_s2': g_base,
+            'g_vis_m_s2': g_vis,
+            'g_dm_m_s2': g_dm,
+            'g_int_m_s2': g_int,
+            'g_DM_total_m_s2': g_DM_total,
+            'delta_vs_linear_m_s2': delta_vs_linear,
+            'delta_vs_linear_pct': delta_pct,
+            'partition_table': partition_table,
+            'paper': 'PAPER_275',
+        }
+
+
 # ---------------------------------------------------------------------------
 # __all__ export
 # ---------------------------------------------------------------------------
@@ -9559,4 +9697,8 @@ __all__ = [
     "Source10DPMResonanceAmplificationCalculator",
     "Source10THz​DoubleGateConduitCalculator",
     "Source10GravitationalVacuumDragCalculator",
+    # Session 75 — PAPER_273–275 (Andromeda UQFF 2.0 Unique Physics)
+    "AndromedaBlueshiftApproachAmplifierCalculator",
+    "AndromedaHI21cmUQFFResonanceCalculator",
+    "AndromedaDMShellPartitionCalculator",
 ]
