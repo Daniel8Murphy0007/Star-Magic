@@ -10923,6 +10923,119 @@ class HydrogenPToEAetherGravitationalDominanceCalculator:
         }
 
 
+class LagoonNebulaSFRMassRunawayCalculator:
+    """PAPER_305 — SFR Mass Runaway Amplifier. DeltaM/M0(1 Myr)=10.0; m_factor=11.0.
+    t_consume=100 kyr. SFR/M0=1e-5 yr^-1. FIRST UQFF SFR runaway (DeltaM>M0 at 1 Myr).
+    Session 87 — 29th C++ module — FIRST H II Region."""
+
+    def compute(self, dataset: dict) -> dict:
+        import math
+        M0_sun      = dataset.get('M0_sun',    1.0e4)      # M_sun
+        SFR_sun_yr  = dataset.get('SFR_sun_yr', 0.1)       # M_sun/yr
+        r           = dataset.get('r',          5.2e17)    # m
+        G           = dataset.get('G',          6.6743e-11)
+        M_SUN       = 1.989e30
+        YR_TO_S     = 3.15576e7
+        M0_kg       = M0_sun * M_SUN
+        SFR_kg_s    = SFR_sun_yr * M_SUN / YR_TO_S
+        g_base      = G * M0_kg / (r * r)
+        dg_dt       = G * SFR_kg_s / (r * r)              # m/s^3
+        msf_1Myr    = SFR_sun_yr * 1.0e6 / M0_sun         # 10.0
+        m_factor    = 1.0 + msf_1Myr                      # 11.0
+        t_consume   = M0_sun / SFR_sun_yr                 # 1e5 yr
+        SFR_over_M0 = SFR_sun_yr / M0_sun                 # 1e-5 yr^-1
+        t_1Myr      = 1.0e6 * YR_TO_S
+        Delta_g_1Myr = dg_dt * t_1Myr                     # ~4.90e-11 m/s^2
+        return {
+            'g_base_m_s2':       g_base,       # 4.91e-12 m/s^2
+            'msf_1Myr':          msf_1Myr,     # 10.0 [PAPER_305]
+            'm_factor_1Myr':     m_factor,     # 11.0 [PAPER_305]
+            't_consume_yr':      t_consume,    # 1e5 yr [PAPER_305]
+            'SFR_over_M0_yr':    SFR_over_M0,  # 1e-5 yr^-1 [PAPER_305]
+            'dg_dt_m_s3':        dg_dt,        # 1.553e-24 m/s^3
+            'Delta_g_1Myr':      Delta_g_1Myr, # ~4.90e-11 m/s^2 (= 10*g_base)
+            'note':              'FIRST UQFF SFR runaway: DeltaM/M0=10 at 1 Myr; m_factor=11; t_consume=100 kyr',
+            'paper':             'PAPER_305',
+            'system':            'Lagoon Nebula M8/NGC 6523 — H II region SFR runaway',
+            'session':           87,
+        }
+
+
+class LagoonNebulaHerschelRadiationErosionCalculator:
+    """PAPER_306 — Herschel 36 Radiation Erosion. eta_rad=1.53e18.
+    a_rad=7.51e6 m/s^2. FIRST UQFF single-star radiation pressure parameter.
+    L_H36=7.65e31 W (O7V). Session 87 — 29th C++ module — FIRST H II Region."""
+
+    def compute(self, dataset: dict) -> dict:
+        import math
+        L_H36    = dataset.get('L_H36',     7.65e31)   # W  (Herschel 36 O7V)
+        r        = dataset.get('r',         5.2e17)    # m
+        rho      = dataset.get('rho_fluid', 1.0e-20)   # kg/m^3
+        c        = dataset.get('c',         2.998e8)   # m/s
+        M0_sun   = dataset.get('M0_sun',    1.0e4)
+        G        = dataset.get('G',         6.6743e-11)
+        M_SUN    = 1.989e30
+        M0_kg    = M0_sun * M_SUN
+        g_base   = G * M0_kg / (r * r)
+        flux     = L_H36 / (4.0 * math.pi * r * r * c)   # Pa  (7.511e-14)
+        a_rad    = flux / rho                             # m/s^2  (7.51e6) [P306]
+        eta_rad  = a_rad / g_base if g_base != 0 else 0.0  # 1.53e18 [P306]
+        return {
+            'g_base_m_s2':    g_base,    # 4.91e-12 m/s^2
+            'flux_Pa':        flux,      # 7.511e-14 Pa
+            'a_rad_m_s2':     a_rad,     # 7.51e6 m/s^2 [PAPER_306]
+            'eta_rad':        eta_rad,   # 1.53e18 [PAPER_306]
+            'note':           'FIRST UQFF single-star (Herschel 36 O7V) radiation parameter; eta_rad=1.53e18 (18 orders > g_base)',
+            'paper':          'PAPER_306',
+            'system':         'Lagoon Nebula M8/NGC 6523 — Herschel 36 radiation erosion',
+            'session':        87,
+        }
+
+
+class LagoonNebulaDualRadiationEMBarrierCalculator:
+    """PAPER_307 — Dual Radiation-EM Barrier. a_EM=9.59e7 m/s^2; a_EM/a_rad=12.77.
+    eta_EM=1.96e19. FIRST UQFF dual-barrier HII module: both a_EM AND a_rad >> g_base.
+    EM leads radiation by 12.77x. Session 87 — 29th C++ module — FIRST H II Region."""
+
+    def compute(self, dataset: dict) -> dict:
+        import math
+        v_gas    = dataset.get('v_gas',     1.0e5)     # m/s
+        B        = dataset.get('B',         1.0e-5)    # T
+        r        = dataset.get('r',         5.2e17)    # m
+        rho      = dataset.get('rho_fluid', 1.0e-20)   # kg/m^3
+        L_H36    = dataset.get('L_H36',     7.65e31)   # W
+        M0_sun   = dataset.get('M0_sun',    1.0e4)
+        G        = dataset.get('G',         6.6743e-11)
+        q        = 1.602e-19    # C
+        m_H      = 1.6726e-27   # kg
+        c        = 2.998e8      # m/s
+        M_SUN    = 1.989e30
+        M0_kg    = M0_sun * M_SUN
+        g_base   = G * M0_kg / (r * r)
+        # PAPER_307 — EM turbulence
+        a_EM     = q * v_gas * B / m_H                              # 9.59e7 m/s^2
+        eta_EM   = a_EM / g_base if g_base != 0 else 0.0            # 1.96e19
+        # PAPER_306 — radiation (for ratio)
+        flux     = L_H36 / (4.0 * math.pi * r * r * c)
+        a_rad    = flux / rho                                       # 7.51e6 m/s^2
+        eta_rad  = a_rad / g_base if g_base != 0 else 0.0
+        aEM_over_aRad = a_EM / a_rad if a_rad != 0 else 0.0        # 12.77
+        net_barrier   = a_EM - a_rad                                # 8.84e7 m/s^2
+        return {
+            'g_base_m_s2':       g_base,         # 4.91e-12 m/s^2
+            'a_EM_m_s2':         a_EM,            # 9.59e7 m/s^2 [PAPER_307]
+            'eta_EM':            eta_EM,          # 1.96e19 [PAPER_307]
+            'a_rad_m_s2':        a_rad,           # 7.51e6 m/s^2 [PAPER_306]
+            'eta_rad':           eta_rad,         # 1.53e18 [PAPER_306]
+            'aEM_over_aRad':     aEM_over_aRad,   # 12.77 [PAPER_307]
+            'net_barrier_m_s2':  net_barrier,     # 8.84e7 m/s^2 (EM dominates)
+            'note':              'FIRST UQFF dual-barrier: a_EM=9.59e7 AND a_rad=7.51e6 both >> g_base=4.91e-12; EM leads rad 12.77x',
+            'paper':             'PAPER_307',
+            'system':            'Lagoon Nebula M8/NGC 6523 — dual radiation-EM barrier HII',
+            'session':           87,
+        }
+
+
 # ---------------------------------------------------------------------------
 # __all__ export
 # ---------------------------------------------------------------------------
@@ -11158,4 +11271,8 @@ __all__ = [
     "HydrogenPToEUg4iResonanceBridgeCalculator",
     "HydrogenPToETHzQuantumDegeneracyCalculator",
     "HydrogenPToEAetherGravitationalDominanceCalculator",
+    # Session 87 — PAPER_305–307 (Lagoon Nebula UQFF 2.0 — 29th C++ module, FIRST H II Region)
+    "LagoonNebulaSFRMassRunawayCalculator",
+    "LagoonNebulaHerschelRadiationErosionCalculator",
+    "LagoonNebulaDualRadiationEMBarrierCalculator",
 ]
