@@ -10057,6 +10057,160 @@ class M16NebularFriedmannRedshiftCalculator:
 
 
 # ---------------------------------------------------------------------------
+# Session 81 — PAPER_287–289 (ResonanceSC UQFF 2.0 — 23rd C++ module, FIRST universal RSC module)
+# ---------------------------------------------------------------------------
+
+class ResonanceSCDPMTHzCascadeCalculator:
+    """PAPER_287: DPM-THz Plasmotic Vacuum Cascade Amplification (Gamma_THz = 3.33e7).
+    First UQFF cascaded resonance chain: DPM seeds THz via E_vac/E_vac_ISM=10 vacuum contrast.
+    a_DPM = F_DPM*f_DPM*E_vac/(c*V_sys) = 3.545e-18 m/s^2;
+    Gamma_THz = 10*f_THz*v_exp/c = 3.33e7; a_THz = Gamma_THz*a_DPM = 1.182e-10 m/s^2.
+    """
+
+    def compute(self, dataset: dict) -> dict:
+        import math
+
+        c_light  = dataset.get('c_light',  3.0e8)
+        E_vac    = dataset.get('E_vac',    7.09e-36)    # J/m^3 plasmotic vacuum
+        f_DPM    = dataset.get('f_DPM',    1.0e12)      # Hz DPM intrinsic
+        f_THz    = dataset.get('f_THz',    1.0e12)      # Hz THz pipeline
+        I_curr   = dataset.get('I_curr',   1.0e21)      # A magnetar current proxy
+        A_vort   = dataset.get('A_vort',   3.142e8)     # m^2 vortical area proxy
+        omega_1  = dataset.get('omega_1',  1.0e-3)      # rad/s
+        omega_2  = dataset.get('omega_2',  -1.0e-3)     # rad/s
+        v_exp    = dataset.get('v_exp',    1.0e3)       # m/s expansion
+        V_sys    = dataset.get('V_sys',    4.189e12)    # m^3 ~NS sphere r=1e4 m
+
+        F_DPM     = I_curr * A_vort * (omega_1 - omega_2)           # 6.284e26 N
+        a_DPM     = (F_DPM * f_DPM * E_vac) / (c_light * V_sys)    # 3.545e-18 m/s^2
+        E_vac_ISM = E_vac / 10.0
+        Gamma_THz = 10.0 * f_THz * v_exp / c_light                  # 3.33e7
+        a_THz     = Gamma_THz * a_DPM                               # 1.182e-10 m/s^2
+
+        return {
+            'F_DPM_N':            F_DPM,
+            'a_DPM_m_s2':         a_DPM,
+            'E_vac_ISM_J_m3':     E_vac_ISM,
+            'Gamma_THz':          Gamma_THz,
+            'a_THz_m_s2':         a_THz,
+            'cascade_ratio':      a_THz / a_DPM if a_DPM != 0 else 0,
+            'amplification_orders': math.log10(Gamma_THz) if Gamma_THz > 0 else 0,
+            'paper':              'PAPER_287',
+            'system':             'Universal RSC UQFF — DPM-THz Cascade',
+            'session':            81,
+        }
+
+
+class ResonanceSCCosmicAgeStandingWaveCalculator:
+    """PAPER_288: Cosmic-Age Standing-Traveling Wave Bridge (2*pi/13.8 phase factor, T/S=0.2277).
+    First UQFF term encoding T_universe=13.8 Gyr as quantum oscillation normalization.
+    a_osc = 2A*cos(k*x)*cos(omega*t) + (2*pi/13.8)*A*Re[exp(i*(kx-omega*t))]
+    T/S amplitude ratio = pi/13.8 = 0.2277; standing peak=2A; traveling peak=(2pi/13.8)*A.
+    """
+
+    def compute(self, dataset: dict) -> dict:
+        import math, cmath
+
+        A_amp       = dataset.get('A_amp',      1.0e-10)    # m oscillation amplitude
+        k_wave      = dataset.get('k_wave',     1.0e20)     # m^-1 wavenumber
+        omega_osc   = dataset.get('omega_osc',  1.0e15)     # rad/s
+        x_pos       = dataset.get('x_pos',      0.0)        # m spatial position
+        t           = dataset.get('t',          0.0)        # s time
+        T_cosmic    = dataset.get('T_cosmic_gyr', 13.8)     # Gyr cosmic age
+
+        pi = math.pi
+        # Standing wave: 2A*cos(kx)*cos(omega*t)
+        a_standing  = 2.0 * A_amp * math.cos(k_wave * x_pos) * math.cos(omega_osc * t)
+        # Traveling wave: (2*pi/T_cosmic)*A*Re[exp(i*(kx-omega*t))]
+        phase       = complex(0.0, k_wave * x_pos - omega_osc * t)
+        a_traveling = (2.0 * pi / T_cosmic) * A_amp * cmath.exp(phase).real
+        a_osc_total = a_standing + a_traveling
+
+        T_S_ratio   = pi / T_cosmic                        # 0.2277
+        standing_peak   = 2.0 * A_amp
+        traveling_peak  = (2.0 * pi / T_cosmic) * A_amp   # 4.553e-11 m
+
+        # Oscillation frequency
+        f_osc_hz    = omega_osc / (2.0 * pi)
+        T_univ_s    = T_cosmic * 1.0e9 * 3.156e7          # Gyr -> s
+        N_cycles    = f_osc_hz * T_univ_s
+
+        return {
+            'a_standing_m':         a_standing,
+            'a_traveling_m':        a_traveling,
+            'a_osc_total_m':        a_osc_total,
+            'T_S_amplitude_ratio':  T_S_ratio,
+            'standing_peak_m':      standing_peak,
+            'traveling_peak_m':     traveling_peak,
+            'cosmic_age_gyr':       T_cosmic,
+            'f_osc_hz':             f_osc_hz,
+            'N_cycles_in_T_univ':   N_cycles,
+            'phase_factor_2pi_13p8': 2.0 * pi / T_cosmic,
+            'paper':                'PAPER_288',
+            'system':               'Universal RSC UQFF — Cosmic-Age Standing Wave',
+            'session':              81,
+        }
+
+
+class ResonanceSCCooperDPMFreqSynthesisCalculator:
+    """PAPER_289: Cooper-DPM Dual-Frequency SC Synthesis (A_sc=6.994e21, Meissner quench at B->B_crit).
+    First UQFF resonance-channel Meissner gravity quench (distinct from PAPER_266 galactic quench).
+    a_sc_freq = hbar*f_super*f_DPM*a_DPM/(E_vac*c) = A_sc * a_DPM;
+    g_res_sc = a_res_total * (1-B/B_crit) * (1+f_TRZ); at B=B_crit: g_res_sc=0.
+    """
+
+    def compute(self, dataset: dict) -> dict:
+
+        hbar     = dataset.get('hbar',    1.0546e-34)   # J*s
+        f_super  = dataset.get('f_super', 1.411e16)     # Hz Cooper pair frequency
+        f_DPM    = dataset.get('f_DPM',   1.0e12)       # Hz DPM mode
+        E_vac    = dataset.get('E_vac',   7.09e-36)     # J/m^3 plasmotic vacuum
+        c_light  = dataset.get('c_light', 3.0e8)        # m/s
+        a_DPM    = dataset.get('a_DPM',   3.545e-18)    # m/s^2 DPM base (PAPER_287)
+        B_field  = dataset.get('B_field', 1.0e-5)       # T operating field
+        B_crit   = dataset.get('B_crit',  1.0e11)       # T magnetar critical
+        f_TRZ    = dataset.get('f_TRZ',   0.1)          # time-reversal correction
+        a_res_total = dataset.get('a_res_total', None)  # total resonance (optional)
+
+        E_Cooper    = hbar * f_super                                  # 1.488e-18 J
+        A_sc_factor = hbar * f_super * f_DPM / (E_vac * c_light)     # 6.994e21
+        a_sc_freq   = A_sc_factor * a_DPM                            # ~2.479e4 m/s^2
+        SCm         = 1.0 - B_field / B_crit
+        trz_factor  = 1.0 + f_TRZ                                    # 1.1
+
+        # Meissner quench regime classification
+        B_ratio = B_field / B_crit
+        if B_ratio < 1e-8:
+            sc_regime = 'ISM_near_zero'
+        elif B_ratio < 0.1:
+            sc_regime = 'low_field'
+        elif B_ratio < 0.9:
+            sc_regime = 'intermediate'
+        else:
+            sc_regime = 'near_quench'
+
+        result = {
+            'E_Cooper_J':       E_Cooper,
+            'E_Cooper_eV':      E_Cooper / 1.602e-19,
+            'A_sc_factor':      A_sc_factor,
+            'a_sc_freq_m_s2':   a_sc_freq,
+            'B_field_T':        B_field,
+            'B_crit_T':         B_crit,
+            'B_over_Bcrit':     B_ratio,
+            'SCm':              SCm,
+            'trz_factor':       trz_factor,
+            'sc_regime':        sc_regime,
+            'paper':            'PAPER_289',
+            'system':           'Universal RSC UQFF — Cooper-DPM SC Synthesis',
+            'session':          81,
+        }
+        if a_res_total is not None:
+            result['g_res_sc_m_s2'] = a_res_total * SCm * trz_factor
+            result['g_res_sc_factor'] = SCm * trz_factor
+        return result
+
+
+# ---------------------------------------------------------------------------
 # __all__ export
 # ---------------------------------------------------------------------------
 
@@ -10267,4 +10421,8 @@ __all__ = [
     "M16DualMassCoActionProductCalculator",
     "M16ErosionSaturationHalfTimeCalculator",
     "M16NebularFriedmannRedshiftCalculator",
+    # Session 81 — PAPER_287–289 (ResonanceSC UQFF 2.0 — 23rd C++ module, FIRST universal RSC module)
+    "ResonanceSCDPMTHzCascadeCalculator",
+    "ResonanceSCCosmicAgeStandingWaveCalculator",
+    "ResonanceSCCooperDPMFreqSynthesisCalculator",
 ]
