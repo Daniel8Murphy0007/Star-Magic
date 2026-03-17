@@ -10579,6 +10579,118 @@ class CR24CompressedCooperSuperSeedingCalculator:
         }
 
 
+class UniverseDiameterLambdaVacuumAccelerationCalculator:
+    """PAPER_296 — UQFF Cosmological Constant Direct Vacuum Acceleration.
+    a_Lambda = Lambda*c^2/3 = 3.30e-36 m/s^2.
+    FIRST UQFF explicit dark-energy term (all 25 prior modules: Lambda implicit in H(z)).
+    Gamma_Lambda = a_Lambda/g_base = 9.57e-27. d_Lambda = 0.5*a_Lambda*t_H^2 = 0.313 m.
+    Session 84 — 26th C++ UQFF module — Observable Universe as system."""
+
+    def compute(self, dataset: dict) -> dict:
+        import math
+        G         = dataset.get('G',       6.6743e-11)
+        c         = dataset.get('c',       3.0e8)
+        Lambda    = dataset.get('Lambda',  1.1e-52)   # m^-2 cosmological constant
+        M         = dataset.get('M',       1.0e54)    # kg total matter+DM
+        r         = dataset.get('r',       4.4e26)    # m obs universe radius
+        t_H       = dataset.get('t_H',     4.355e17)  # s canonical 13.8 Gyr
+
+        g_base    = G * M / (r * r)                   # 3.447e-10 m/s^2
+        a_Lambda  = Lambda * c * c / 3.0              # 3.30e-36 m/s^2 [PAPER_296]
+        Gamma_Lam = a_Lambda / g_base if g_base != 0.0 else 0.0  # 9.57e-27
+        d_Lambda  = 0.5 * a_Lambda * t_H * t_H        # 0.313 m cosmic displacement
+
+        return {
+            'Lambda_m_neg2':           Lambda,
+            'g_base_m_s2':             g_base,
+            'a_Lambda_m_s2':           a_Lambda,        # 3.30e-36 [PAPER_296]
+            'Gamma_Lambda':            Gamma_Lam,       # 9.57e-27 dark-energy/gravity ratio
+            'd_Lambda_m':              d_Lambda,        # 0.313 m macroscopic displacement
+            'orders_below_g_base':     -math.log10(Gamma_Lam) if Gamma_Lam > 0.0 else 0.0,  # 26.0
+            'note':                    'FIRST UQFF explicit Lambda term; vacuum-energy 27 orders below gravity',
+            'paper':                   'PAPER_296',
+            'system':                  'Observable Universe — Lambda direct dark-energy',
+            'session':                 84,
+        }
+
+
+class UniverseDiameterSuperluminalHubbleRatioCalculator:
+    """PAPER_297 — UQFF Superluminal Hubble Expansion Ratio eta_exp = 3.328 > 1.
+    v_exp = H0*r_obs = 9.984e8 m/s = 3.328c. FIRST UQFF parameter eta_exp > 1.
+    Hubble sphere r_H = c/H0 = 1.322e26 m. r_obs = 3.328*r_H.
+    Expansion factor at t_H = 1.988 (near-doubling). Session 84."""
+
+    def compute(self, dataset: dict) -> dict:
+        c      = dataset.get('c',    3.0e8)
+        H0_si  = dataset.get('H0',   2.269e-18)    # s^-1
+        r_obs  = dataset.get('r',    4.4e26)        # m
+        G      = dataset.get('G',    6.6743e-11)
+        M      = dataset.get('M',    1.0e54)        # kg
+        t_H    = dataset.get('t_H',  4.355e17)      # s
+        Omega_m = dataset.get('Omega_m', 0.3)
+        Omega_L = dataset.get('Omega_L', 0.7)
+
+        import math
+        v_exp    = H0_si * r_obs                    # 9.984e8 m/s
+        eta_exp  = v_exp / c                        # 3.328 [PAPER_297]
+        r_H      = c / H0_si                        # 1.322e26 m Hubble sphere
+        Hz       = H0_si * math.sqrt(Omega_m + Omega_L)  # H(z=0)
+        xi_H     = 1.0 + Hz * t_H                  # 1.988 expansion factor
+        g_base   = G * M / (r_obs * r_obs)
+        a_EM_ref = (1.602e-19 * v_exp * 1e-15 / 1.673e-27) * (1.0 + eta_exp) * 1e-12
+
+        return {
+            'v_exp_m_s':               v_exp,           # 9.984e8
+            'eta_exp':                 eta_exp,         # 3.328 > 1 [PAPER_297]
+            'r_H_m':                   r_H,             # 1.322e26
+            'r_obs_over_r_H':          r_obs / r_H,     # 3.328
+            'expansion_factor_at_tH':  xi_H,            # 1.988 near-doubling
+            'a_base_at_tH_m_s2':       g_base * xi_H,
+            'a_EM_m_s2':               a_EM_ref,        # 4.136e-10
+            'superluminal':            eta_exp > 1.0,
+            'note':                    'FIRST UQFF eta_exp>1; boundary recedes superluminally; no SR violation (metric expansion)',
+            'paper':                   'PAPER_297',
+            'system':                  'Observable Universe — superluminal Hubble expansion',
+            'session':                 84,
+        }
+
+
+class UniverseDiameterGRCurvatureDominanceCalculator:
+    """PAPER_298 — UQFF Universe-Scale GR Curvature Dominance: epsilon_GR = 5.056 > 1.
+    a_GR = g_base * epsilon_GR = 1.743e-9 m/s^2 (5x Newtonian base).
+    r_S/r_obs = 3.371 -> obs universe at 30% of Schwarzschild radius.
+    FIRST UQFF epsilon_GR > 1. All 25 prior modules epsilon_GR << 1. Session 84."""
+
+    def compute(self, dataset: dict) -> dict:
+        G      = dataset.get('G',   6.6743e-11)
+        c      = dataset.get('c',   3.0e8)
+        M      = dataset.get('M',   1.0e54)     # kg
+        r      = dataset.get('r',   4.4e26)     # m
+
+        g_base      = G * M / (r * r)                          # 3.447e-10 m/s^2
+        epsilon_GR  = 3.0 * G * M / (r * c * c)               # 5.056 [PAPER_298]
+        a_GR        = g_base * epsilon_GR                      # 1.743e-9 m/s^2
+        r_S         = 2.0 * G * M / (c * c)                    # Schwarzschild radius
+        r_S_over_r  = r_S / r                                  # 3.371
+        regime      = 'GR-Dominant' if epsilon_GR >= 1.0 else 'Post-Newtonian'
+
+        return {
+            'epsilon_GR':              epsilon_GR,     # 5.056 > 1 [PAPER_298]
+            'a_GR_m_s2':               a_GR,           # 1.743e-9 dominant term
+            'g_base_m_s2':             g_base,         # 3.447e-10
+            'a_GR_over_g_base':        epsilon_GR,     # 5.056 GR exceeds Newton by 5x
+            'r_S_m':                   r_S,            # 1.483e27
+            'r_S_over_r_obs':          r_S_over_r,     # 3.371
+            'r_obs_over_r_S':          r / r_S,        # 0.297 (inside 30% of Schwarzschild)
+            'regime':                  regime,
+            'gr_dominant':             epsilon_GR > 1.0,
+            'note':                    'FIRST UQFF GR>Newton; a_GR=5*g_base; obs universe at 30% of own Schwarzschild',
+            'paper':                   'PAPER_298',
+            'system':                  'Observable Universe — GR curvature dominance',
+            'session':                 84,
+        }
+
+
 # ---------------------------------------------------------------------------
 # __all__ export
 # ---------------------------------------------------------------------------
@@ -10802,4 +10914,8 @@ __all__ = [
     "CR24DualChannelArchitectureCalculator",
     "CR24VacuumDifferentialHarmonicCalculator",
     "CR24CompressedCooperSuperSeedingCalculator",
+    # Session 84 — PAPER_296–298 (Universe Diameter UQFF 2.0 — 26th C++ module, FIRST Universe-as-system + FIRST eta_exp>1 + FIRST epsilon_GR>1)
+    "UniverseDiameterLambdaVacuumAccelerationCalculator",
+    "UniverseDiameterSuperluminalHubbleRatioCalculator",
+    "UniverseDiameterGRCurvatureDominanceCalculator",
 ]
