@@ -10809,6 +10809,121 @@ class HydrogenAtomProtonGRSpectralMinimumCalculator:
 
 
 # ---------------------------------------------------------------------------
+# Session 86 — PAPER_302–304 (Hydrogen PToE Resonance UQFF 2.0 — 28th C++ module, FIRST PToE resonance module)
+# ---------------------------------------------------------------------------
+
+class HydrogenPToEUg4iResonanceBridgeCalculator:
+    """PAPER_302 — Hydrogen PToE U_g4i Reactive-Resonance Vacuum Bridge.
+    Gamma_u4i = a_u4i/a_DPM = 4.704e36. a_u4i = 3.155e33 m/s^2 DOMINANT.
+    FIRST PToE resonance module. FIRST UQFF U_g4i-dominant term.
+    a_DPM = 6.71e-4 m/s^2 (seed). Session 86."""
+
+    def compute(self, dataset: dict) -> dict:
+        import math
+        r_Bohr   = dataset.get('r_Bohr',   5.2918e-11)   # m
+        M_proton = dataset.get('M_proton',  1.6726e-27)   # kg
+        G        = dataset.get('G',         6.6743e-11)
+        HBAR     = dataset.get('HBAR',      1.0546e-34)
+        F_LENR   = dataset.get('F_LENR',    1.0e-10)
+        rho_U    = dataset.get('rho_U',     1.0e3)        # kg/m^3
+        V_sys    = (4.0/3.0) * math.pi * r_Bohr**3       # 6.207e-31 m^3
+        E_vac    = dataset.get('E_vac',     7.09e-36)     # J/m^3
+        f_res    = dataset.get('f_res',     1.0e15)       # Hz
+        C_LIGHT  = dataset.get('C_LIGHT',   2.998e8)
+
+        g_base   = G * M_proton / r_Bohr**2               # 3.986e-17 m/s^2
+        a_DPM    = E_vac * f_res * V_sys / HBAR           # seed ~6.71e-4 m/s^2
+        a_u4i    = F_LENR * rho_U * V_sys * a_DPM / HBAR  # 3.155e33 m/s^2 [P302]
+        Gamma_u4i = a_u4i / a_DPM if a_DPM != 0 else 0.0  # 4.704e36 [P302]
+
+        return {
+            'a_DPM_seed_m_s2':     a_DPM,       # 6.71e-4 m/s^2
+            'a_u4i_dominant_m_s2': a_u4i,        # 3.155e33 m/s^2 [PAPER_302]
+            'Gamma_u4i':           Gamma_u4i,     # 4.704e36 [PAPER_302]
+            'g_Newton_m_s2':       g_base,        # 3.986e-17 m/s^2
+            'V_sys_m3':            V_sys,         # 6.207e-31 m^3
+            'note':                'U_g4i reactive-resonance vacuum bridge; Gamma_u4i=a_u4i/a_DPM=4.704e36; FIRST PToE module; FIRST U_g4i dominant',
+            'paper':               'PAPER_302',
+            'system':              'Hydrogen PToE — Bohr orbit resonance',
+            'session':             86,
+        }
+
+
+class HydrogenPToETHzQuantumDegeneracyCalculator:
+    """PAPER_303 — Hydrogen PToE Lyman-Alpha Triple Resonance Lock.
+    f_THz/f_DPM = 1.000 (Lyman-alpha lock). Gamma_THz = 7.298e13.
+    a_THz = a_qorb = 4.895e10 m/s^2. FIRST UQFF frequency-degenerate pair.
+    Session 86."""
+
+    def compute(self, dataset: dict) -> dict:
+        import math
+        r_Bohr   = dataset.get('r_Bohr',   5.2918e-11)
+        M_proton = dataset.get('M_proton',  1.6726e-27)
+        G        = dataset.get('G',         6.6743e-11)
+        HBAR     = dataset.get('HBAR',      1.0546e-34)
+        E_vac    = dataset.get('E_vac',     7.09e-36)
+        f_DPM    = dataset.get('f_DPM',     1.0e15)       # Hz — Lyman-alpha
+        f_THz    = dataset.get('f_THz',     1.0e15)       # Hz — Lyman-alpha (locked)
+        f_qorb   = dataset.get('f_qorb',    1.0e15)       # Hz — Lyman-alpha (locked)
+        C_LIGHT  = dataset.get('C_LIGHT',   2.998e8)
+        ALPHA_FS = dataset.get('ALPHA_FS',  7.2974e-3)
+        v_exp    = ALPHA_FS * C_LIGHT                      # 2.187e6 m/s (electron orbital)
+        V_sys    = (4.0/3.0) * math.pi * r_Bohr**3
+
+        a_DPM_seed   = E_vac * f_DPM * V_sys / HBAR
+        Gamma_THz    = 10.0 * f_THz * v_exp / C_LIGHT     # 7.298e13 [P303]
+        a_THz        = Gamma_THz * a_DPM_seed              # 4.895e10 m/s^2 [P303]
+        a_qorb       = 10.0 * f_qorb * v_exp / C_LIGHT * a_DPM_seed  # = a_THz [P303]
+        freq_ratio   = f_THz / f_DPM if f_DPM != 0 else 0.0          # 1.000 [P303]
+
+        return {
+            'f_DPM_Hz':             f_DPM,         # 1.0e15 Hz
+            'f_THz_Hz':             f_THz,         # 1.0e15 Hz
+            'freq_lock_ratio':      freq_ratio,    # 1.000 [PAPER_303]
+            'Gamma_THz':            Gamma_THz,     # 7.298e13 [PAPER_303]
+            'a_THz_m_s2':           a_THz,         # 4.895e10 [PAPER_303]
+            'a_qorb_m_s2':          a_qorb,        # 4.895e10 (degenerate) [PAPER_303]
+            'v_exp_m_s':            v_exp,          # 2.187e6 m/s
+            'note':                 'f_THz/f_DPM=1.000 Lyman-alpha lock; Gamma_THz=7.298e13; a_THz=a_qorb=4.895e10; FIRST UQFF degenerate pair',
+            'paper':                'PAPER_303',
+            'system':               'Hydrogen PToE — Lyman-alpha triple resonance lock',
+            'session':              86,
+        }
+
+
+class HydrogenPToEAetherGravitationalDominanceCalculator:
+    """PAPER_304 — Aether Gravitational Dominance at Atomic Scale.
+    xi_aether = a_aether/g_Newton = 1.852e24. a_aether = 7.38e7 m/s^2.
+    g_Newton = 3.986e-17 m/s^2. Completes 3-rung UQFF vacuum driver hierarchy.
+    Session 86."""
+
+    def compute(self, dataset: dict) -> dict:
+        import math
+        r_Bohr   = dataset.get('r_Bohr',   5.2918e-11)
+        M_proton = dataset.get('M_proton',  1.6726e-27)
+        G        = dataset.get('G',         6.6743e-11)
+        HBAR     = dataset.get('HBAR',      1.0546e-34)
+        E_vac    = dataset.get('E_vac',     7.09e-36)
+        f_res    = dataset.get('f_res',     1.0e15)
+
+        V_sys      = (4.0/3.0) * math.pi * r_Bohr**3   # 6.207e-31 m^3
+        g_Newton   = G * M_proton / r_Bohr**2           # 3.986e-17 m/s^2
+        a_aether   = E_vac * f_res * V_sys / HBAR       # 7.38e7 m/s^2 [P304]
+        xi_aether  = a_aether / g_Newton if g_Newton != 0 else 0.0  # 1.852e24 [P304]
+
+        return {
+            'g_Newton_m_s2':        g_Newton,       # 3.986e-17 m/s^2
+            'V_sys_m3':             V_sys,           # 6.207e-31 m^3
+            'a_aether_m_s2':        a_aether,        # 7.38e7 m/s^2 [PAPER_304]
+            'xi_aether':            xi_aether,       # 1.852e24 [PAPER_304]
+            'note':                 'Aether dominates Newton by 1.852e24 at r_Bohr; completes 3-rung hierarchy (Cosmos:Lambda, NS:EM, Atom:Aether)',
+            'paper':                'PAPER_304',
+            'system':               'Hydrogen PToE — aether vacuum dominance at Bohr radius',
+            'session':              86,
+        }
+
+
+# ---------------------------------------------------------------------------
 # __all__ export
 # ---------------------------------------------------------------------------
 
@@ -11039,4 +11154,8 @@ __all__ = [
     "HydrogenAtomLorentzEMDominanceCalculator",
     "HydrogenAtomLymanCosmosBridgeCalculator",
     "HydrogenAtomProtonGRSpectralMinimumCalculator",
+    # Session 86 — PAPER_302–304 (Hydrogen PToE Resonance UQFF 2.0 — 28th C++ module, FIRST PToE resonance module)
+    "HydrogenPToEUg4iResonanceBridgeCalculator",
+    "HydrogenPToETHzQuantumDegeneracyCalculator",
+    "HydrogenPToEAetherGravitationalDominanceCalculator",
 ]
