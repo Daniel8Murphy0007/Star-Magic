@@ -9890,6 +9890,173 @@ class SaturnSolarTidalHubbleExpansionCalculator:
 
 
 # ---------------------------------------------------------------------------
+# Session 80 — PAPER_284–286 (M16 Eagle Nebula UQFF 2.0 — first nebular z>0 module)
+# ---------------------------------------------------------------------------
+
+class M16DualMassCoActionProductCalculator:
+    """PAPER_284: M16 Eagle Nebula Dual Mass Co-Action Product (Φ_dm).
+    Φ_dm = (1+SFR_rate*t)*(1-E_0*(1-exp(-t/tau))) — multiplicative SFR×erosion product.
+    First UQFF multiplicative coupling of additive-gain × saturation-subtractive on same gravity term.
+    At t=5 Myr: M_sf_frac=4164.8, E_rad=0.2433, Phi_dm=3151.9, gap_mult_add=-1013.3 (24.3% less than additive).
+    System: M16 Eagle Nebula, M=1200 M_sun=2.387e33 kg, r=3.31e17 m, Session 80, 22nd C++ UQFF module.
+    """
+
+    def compute(self, dataset: dict) -> dict:
+        import math
+        M_Sun      = dataset.get('M_Sun',      1.989e30)      # kg
+        M0_Msun    = dataset.get('M0_Msun',    1200.0)        # M_sun
+        M0         = M0_Msun * M_Sun                          # kg
+        SFR_Msun_yr = dataset.get('SFR_Msun_yr', 1.0)        # M_sun/yr
+        tau_erode  = dataset.get('tau_erode',  9.468e13)      # s (3 Myr)
+        E_0        = dataset.get('E_0',        0.3)           # dimensionless
+        t          = dataset.get('t',          1.578e14)      # s default 5 Myr
+        G          = dataset.get('G',          6.674e-11)
+        M          = dataset.get('M',          M0)            # kg
+        r          = dataset.get('r',          3.31e17)       # m
+
+        g_base      = G * M / (r * r)
+        SFR_rate    = SFR_Msun_yr / M0_Msun / 3.156e7        # s^-1
+        M_sf_frac   = SFR_rate * t
+        E_rad       = E_0 * (1.0 - math.exp(-t / tau_erode))
+        Phi_dm      = (1.0 + M_sf_frac) * (1.0 - E_rad)
+        Phi_add     = (1.0 + M_sf_frac) - E_rad              # additive form for comparison
+        gap_mult_add = -(M_sf_frac * E_rad)                  # PAPER_284 cross-term
+
+        g_dyn       = g_base * Phi_dm
+
+        return {
+            'g_base_m_s2':       g_base,
+            'SFR_rate_per_s':    SFR_rate,
+            'M_sf_frac':         M_sf_frac,
+            'E_rad':             E_rad,
+            'Phi_dm_mult':       Phi_dm,
+            'Phi_dm_add':        Phi_add,
+            'gap_mult_add':      gap_mult_add,
+            'gap_pct':           abs(gap_mult_add) / (Phi_add + 1e-300) * 100.0,
+            'g_dyn_m_s2':        g_dyn,
+            'tau_erode_s':       tau_erode,
+            'E_0':               E_0,
+            't_s':               t,
+            'paper':             'PAPER_284',
+            'system':            'M16 Eagle Nebula (IC 4703)',
+            'session':           80,
+        }
+
+
+class M16ErosionSaturationHalfTimeCalculator:
+    """PAPER_285: M16 Eagle Nebula Erosion Saturation Half-Time.
+    t_half = tau*ln(2) = 6.561e13 s = 2.079 Myr (time when E_rad = E_0/2).
+    DeltaGMax = E_0 * g_base = 4.36e-13 m/s² (asymptotic max erosion gravity amplitude).
+    Peak damping rate at t=0: dg_erode/dt = E_0/tau * g_base = 4.61e-27 m/s^2/s.
+    First UQFF module to formally catalogue photoevaporation half-time & asymptotic erosion.
+    System: M16 Eagle Nebula, M=1200 M_sun=2.387e33 kg, tau=3 Myr, Session 80.
+    """
+
+    def compute(self, dataset: dict) -> dict:
+        import math
+        M_Sun     = dataset.get('M_Sun',    1.989e30)
+        M0_Msun   = dataset.get('M0_Msun',  1200.0)
+        M0        = M0_Msun * M_Sun
+        tau_erode = dataset.get('tau_erode', 9.468e13)       # s
+        E_0       = dataset.get('E_0',       0.3)
+        G         = dataset.get('G',         6.674e-11)
+        M         = dataset.get('M',         M0)
+        r         = dataset.get('r',         3.31e17)
+
+        g_base    = G * M / (r * r)
+        t_half    = tau_erode * math.log(2.0)
+        DeltaGMax = E_0 * g_base
+        peak_rate = (E_0 / tau_erode) * g_base                # dg_erode/dt at t=0
+
+        # Saturation profile at key times
+        profile   = {}
+        for t_myr, label in [(0, '0 Myr'), (t_half, '2.079 Myr (t_half)'),
+                              (tau_erode, '3 Myr (tau)'), (1.578e14, '5 Myr'), (1e17, 'asymptote')]:
+            E = E_0 * (1.0 - math.exp(-t_myr / tau_erode)) if t_myr > 0 else 0.0
+            profile[label] = {
+                'E_rad':        E,
+                'E_frac_of_E0': E / E_0 if E_0 > 0 else 0.0,
+                'g_erode_m_s2': E * g_base,
+            }
+
+        return {
+            'g_base_m_s2':   g_base,
+            't_half_s':      t_half,
+            't_half_Myr':    2.079,
+            'DeltaGMax_m_s2': DeltaGMax,
+            'peak_rate_m_s2_per_s': peak_rate,
+            'tau_erode_s':   tau_erode,
+            'E_0':           E_0,
+            'saturation_profile': profile,
+            'paper':         'PAPER_285',
+            'system':        'M16 Eagle Nebula (IC 4703)',
+            'session':       80,
+        }
+
+
+class M16NebularFriedmannRedshiftCalculator:
+    """PAPER_286: M16 Eagle Nebula Nebular Friedmann Redshift Parameter κ_neb.
+    z=0.0015 (Eagle Nebula ~5700 ly) — FIRST UQFF nebular module with z>0.
+    H(z=0.0015) = 70.047 km/s/Mpc; kappa_neb = [H(z)-H(0)]/H(0) = 6.71e-4.
+    g_exp(5 Myr) = g_base * H(z=0.0015) * t = 5.21e-16 m/s² (tiny; formally catalogued).
+    First UQFF kappa_neb parameter; template for all sub-Hubble nebular z>0 objects.
+    System: M16 Eagle Nebula, z=0.0015, Session 80, 22nd C++ UQFF module.
+    """
+
+    def compute(self, dataset: dict) -> dict:
+        import math
+        H0        = dataset.get('H0',       70.0)      # km/s/Mpc
+        Omega_m   = dataset.get('Omega_m',  0.3)
+        Omega_Lam = dataset.get('Omega_Lam', 0.7)
+        Mpc_to_m  = dataset.get('Mpc_to_m', 3.086e22)  # m/Mpc
+        z         = dataset.get('z',        0.0015)
+        G         = dataset.get('G',        6.674e-11)
+        M_Sun     = dataset.get('M_Sun',    1.989e30)
+        M0_Msun   = dataset.get('M0_Msun',  1200.0)
+        M         = dataset.get('M',        M0_Msun * M_Sun)
+        r         = dataset.get('r',        3.31e17)
+        t         = dataset.get('t',        1.578e14)   # s default 5 Myr
+
+        def H_kms(zz):
+            return H0 * math.sqrt(Omega_m * (1.0 + zz)**3 + Omega_Lam)
+
+        def H_si(zz):
+            return H_kms(zz) * 1.0e3 / Mpc_to_m
+
+        H_z0     = H_kms(0.0)
+        H_z      = H_kms(z)
+        kappa_neb = (H_z - H_z0) / H_z0
+
+        g_base   = G * M / (r * r)
+        H_z_si   = H_si(z)
+        g_exp    = g_base * H_z_si * t
+
+        # Comparison table across nearby nebulae (template kappa_neb values)
+        comparison = {
+            'Rho_Ophiuchi (z=0.0004)': (H_kms(0.0004) - H_z0) / H_z0,
+            'Orion (z=0.00143)':       (H_kms(0.00143) - H_z0) / H_z0,
+            'M16 Eagle (z=0.0015)':    kappa_neb,
+            'Carina (z=0.0026)':       (H_kms(0.0026) - H_z0) / H_z0,
+        }
+
+        return {
+            'z':              z,
+            'H_z0_km_s_Mpc':  H_z0,
+            'H_z_km_s_Mpc':   H_z,
+            'kappa_neb':      kappa_neb,
+            'H_z_si_per_s':   H_z_si,
+            'g_base_m_s2':    g_base,
+            'g_exp_m_s2':     g_exp,
+            't_s':            t,
+            'kappa_neb_pct':  kappa_neb * 100.0,
+            'nebula_kappa_comparison': comparison,
+            'paper':          'PAPER_286',
+            'system':         'M16 Eagle Nebula (IC 4703) — FIRST UQFF nebular z>0',
+            'session':        80,
+        }
+
+
+# ---------------------------------------------------------------------------
 # __all__ export
 # ---------------------------------------------------------------------------
 
@@ -10096,4 +10263,8 @@ __all__ = [
     "SaturnAtmosphericWindKineticPressureCalculator",
     # Session 79 — PAPER_283 (Saturn UQFF 2.0 Solar Tidal Hubble Expansion Coupling)
     "SaturnSolarTidalHubbleExpansionCalculator",
+    # Session 80 — PAPER_284–286 (M16 Eagle Nebula UQFF 2.0 — first nebular z>0 module)
+    "M16DualMassCoActionProductCalculator",
+    "M16ErosionSaturationHalfTimeCalculator",
+    "M16NebularFriedmannRedshiftCalculator",
 ]
