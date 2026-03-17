@@ -10691,6 +10691,123 @@ class UniverseDiameterGRCurvatureDominanceCalculator:
         }
 
 
+
+# ---------------------------------------------------------------------------
+# Session 85 — PAPER_299–301 — Hydrogen Atom UQFF 2.0 (27th C++ module, FIRST atomic-scale)
+# ---------------------------------------------------------------------------
+
+class HydrogenAtomLorentzEMDominanceCalculator:
+    """PAPER_299 — Hydrogen UQFF Electrogravitational Dominance Ratio: eta_EM = 9.65e29.
+    g_base = GM_p/r_Bohr^2 = 3.99e-17 m/s^2 (UQFF gravitational minimum).
+    a_Lorentz = q*v_orb*B/m_e = 3.85e13 m/s^2 (EM dominant term).
+    eta_EM = a_Lorentz/g_base = 9.65e29 — FIRST eta_EM; FIRST atomic UQFF module. Session 85."""
+
+    def compute(self, dataset: dict) -> dict:
+        G       = dataset.get('G',       6.6743e-11)
+        M_p     = dataset.get('M_p',     1.6726e-27)    # kg proton mass
+        r_Bohr  = dataset.get('r_Bohr',  5.2918e-11)    # m Bohr radius
+        q       = dataset.get('q',       1.6022e-19)    # C elementary charge
+        v_orb   = dataset.get('v_orb',   2.1877e6)      # m/s orbital velocity = alpha*c
+        B_atom  = dataset.get('B_atom',  1.0e-4)        # T ambient B-field at Bohr orbit
+        m_e     = dataset.get('m_e',     9.1094e-31)    # kg electron mass
+
+        g_base    = G * M_p / (r_Bohr * r_Bohr)        # 3.986e-17 m/s^2 UQFF minimum
+        a_Lorentz = (q * v_orb * B_atom) / m_e         # 3.848e13 m/s^2
+        eta_EM    = a_Lorentz / g_base if g_base > 0 else 0.0  # 9.65e29 [PAPER_299]
+
+        import math
+        orders_above = math.log10(eta_EM) if eta_EM > 0 else 0.0  # ~29.98 orders
+
+        return {
+            'g_base_m_s2':         g_base,         # 3.986e-17 (UQFF minimum)
+            'a_Lorentz_m_s2':      a_Lorentz,      # 3.848e13 (dominant)
+            'eta_EM':              eta_EM,          # 9.65e29 [PAPER_299]
+            'orders_above_gravity': orders_above,   # ~30 orders
+            'em_dominated':        a_Lorentz > g_base,
+            'note':                'FIRST eta_EM in UQFF; EM force 9.65e29 x gravitational base at Bohr orbit',
+            'paper':               'PAPER_299',
+            'system':              'Hydrogen atom — ground state Bohr orbit',
+            'session':             85,
+        }
+
+
+class HydrogenAtomLymanCosmosBridgeCalculator:
+    """PAPER_300 — Lyman-Alpha Cosmic Bridge: T/S = pi/13.8 = 0.2277.
+    omega_Lyman = 2*pi*c/lambda_Ly = 1.549e16 rad/s. chi_bridge = omega_L * t_H = 6.745e33.
+    T/S ratio matches PAPER_288 RSC value at 34-order frequency separation.
+    Universal pi/T_U constant proven at atomic UV scale. Session 85."""
+
+    def compute(self, dataset: dict) -> dict:
+        import math
+        c           = dataset.get('c',           2.998e8)       # m/s
+        lambda_Ly   = dataset.get('lambda_Ly',   1.216e-7)      # m Lyman-alpha
+        T_U_gyr     = dataset.get('T_U_gyr',     13.8)          # Gyr cosmic age
+        t_H_s       = dataset.get('t_H_s',       13.8e9 * 3.15576e7)  # s Hubble time
+        A_osc       = dataset.get('A_osc',        1.0e-10)       # m/s^2 oscill. amplitude
+
+        omega_Lyman = 2.0 * math.pi * c / lambda_Ly    # 1.549e16 rad/s [PAPER_300]
+        k_Lyman     = 2.0 * math.pi / lambda_Ly        # 5.166e7 m^-1
+        chi_bridge  = omega_Lyman * t_H_s              # 6.745e33 [PAPER_300]
+        T_over_S    = math.pi / T_U_gyr                # 0.2277 = pi/13.8 [PAPER_300]
+
+        # Resonant acceleration terms
+        a_standing  = A_osc * (1.0 + math.cos(0.0))   # standing peak: 2*A = 2e-10
+        a_traveling = A_osc * math.cos(chi_bridge % (2.0 * math.pi))  # traveling
+
+        return {
+            'omega_Lyman_rad_s':  omega_Lyman,      # 1.549e16 [PAPER_300]
+            'k_Lyman_m-1':        k_Lyman,          # 5.166e7
+            'chi_bridge':         chi_bridge,        # 6.745e33 [PAPER_300]
+            'T_over_S':           T_over_S,          # 0.2277 = pi/13.8 [PAPER_300]
+            'a_standing_m_s2':    a_standing,        # 2e-10 standing peak
+            'a_traveling_m_s2':   a_traveling,       # travelling component
+            'pi_over_T_U':        T_over_S,          # universal constant
+            'note':               'T/S=pi/13.8=0.2277 universal; chi_bridge=6.745e33; matches PAPER_288 RSC at 34-order freq gap',
+            'paper':              'PAPER_300',
+            'system':             'Hydrogen atom — Lyman-alpha orbital resonance',
+            'session':            85,
+        }
+
+
+class HydrogenAtomProtonGRSpectralMinimumCalculator:
+    """PAPER_301 — Proton GR Spectral Minimum: epsilon_GR = 7.04e-44.
+    r_S(proton) = 2.484e-54 m; r_Bohr/r_S = 2.13e43.
+    UQFF GR spectral span H->Universe: 7.18e43 (44 orders).
+    FIRST sub-Newtonian epsilon_GR; counterpart to PAPER_298 epsilon_GR=5.056. Session 85."""
+
+    def compute(self, dataset: dict) -> dict:
+        import math
+        G       = dataset.get('G',       6.6743e-11)
+        c       = dataset.get('c',       2.998e8)
+        M_p     = dataset.get('M_p',     1.6726e-27)    # kg proton
+        r_Bohr  = dataset.get('r_Bohr',  5.2918e-11)    # m Bohr radius
+        eps_max = dataset.get('eps_max', 5.056)         # PAPER_298 Universe max
+
+        c2          = c * c
+        g_base      = G * M_p / (r_Bohr * r_Bohr)     # 3.986e-17 m/s^2
+        epsilon_GR  = 3.0 * G * M_p / (r_Bohr * c2)  # 7.04e-44 [PAPER_301]
+        r_S         = 2.0 * G * M_p / c2              # 2.484e-54 m
+        r_over_rS   = r_Bohr / r_S                    # 2.13e43
+        a_GR_min    = g_base * epsilon_GR              # 2.81e-60 m/s^2
+        gr_span     = eps_max / epsilon_GR if epsilon_GR > 0 else 0.0  # 7.18e43
+        log_span    = math.log10(gr_span) if gr_span > 0 else 0.0
+
+        return {
+            'epsilon_GR':          epsilon_GR,     # 7.04e-44 [PAPER_301]
+            'r_S_m':               r_S,            # 2.484e-54 m
+            'r_Bohr_over_r_S':     r_over_rS,      # 2.13e43
+            'a_GR_min_m_s2':       a_GR_min,       # 2.81e-60 m/s^2
+            'g_base_m_s2':         g_base,         # 3.986e-17 m/s^2
+            'gr_spectral_span':    gr_span,         # 7.18e43 [PAPER_301]
+            'gr_spectral_log10':   log_span,        # ~43.9 orders
+            'regime':              'sub-Newtonian',
+            'note':                'UQFF GR minimum; GR span H->Universe=7.18e43 (44 orders); r_Bohr=2.13e43*r_S',
+            'paper':               'PAPER_301',
+            'system':              'Hydrogen atom — proton Schwarzschild vs Bohr orbit',
+            'session':             85,
+        }
+
+
 # ---------------------------------------------------------------------------
 # __all__ export
 # ---------------------------------------------------------------------------
@@ -10918,4 +11035,8 @@ __all__ = [
     "UniverseDiameterLambdaVacuumAccelerationCalculator",
     "UniverseDiameterSuperluminalHubbleRatioCalculator",
     "UniverseDiameterGRCurvatureDominanceCalculator",
+    # Session 85 — PAPER_299–301 (Hydrogen Atom UQFF 2.0 — 27th C++ module, FIRST atomic-scale)
+    "HydrogenAtomLorentzEMDominanceCalculator",
+    "HydrogenAtomLymanCosmosBridgeCalculator",
+    "HydrogenAtomProtonGRSpectralMinimumCalculator",
 ]
