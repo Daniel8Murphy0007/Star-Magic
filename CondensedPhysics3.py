@@ -10356,6 +10356,230 @@ class CrabPulsarOscResonanceWindowCalculator:
 
 
 # ---------------------------------------------------------------------------
+# Session 83 — PAPER_293–295  CR24 UQFF 2.0  (25th C++ module, FIRST dual-channel)
+# Systems 18-24 class: f_DPM = 1e11 Hz
+# PAPER_293: Dual-Channel Co-Sum Architecture  R_CR = 1.490e-17
+# PAPER_294: Vacuum Differential Harmonic  a_vac_diff = 128.4 m/s²  (FIRST ħ-denom)
+# PAPER_295: Compressed Cooper Super-Seeding  a_super ∝ f_DPM²  A_sc = 6.994e18
+# ---------------------------------------------------------------------------
+
+class CR24DualChannelArchitectureCalculator:
+    """PAPER_293 — UQFF CR24 Dual-Channel Compressed+Resonance Co-Sum Architecture.
+
+    First UQFF module with explicit 4-term compressed + 6-term resonance co-sum.
+    g_CR = (Σ_comp + Σ_res) × SCm × (1 + f_TRZ)
+    R_CR = Σ_comp / Σ_res = 1.490e-17 (resonance dominates by 17 orders at sys 18-24).
+    """
+
+    # Physical constants
+    _C     = 3.0e8
+    _HBAR  = 1.0546e-34
+    _E_VAC = 7.09e-36
+    _PI    = 3.141592653589793
+
+    def compute(self, dataset: dict) -> dict:
+        # --- Extract parameters (with defaults for systems 18-24 class) ---
+        f_DPM      = dataset.get('f_DPM',      1.0e11)
+        f_THz      = dataset.get('f_THz',      1.0e11)
+        f_vac_diff = dataset.get('f_vac_diff', 0.143)
+        f_super    = dataset.get('f_super',    1.411e15)
+        I_curr     = dataset.get('I',          1.0e20)
+        A_vort     = dataset.get('A_vort',     3.142e18)
+        omega_1    = dataset.get('omega_1',    1.0e-2)
+        omega_2    = dataset.get('omega_2',   -1.0e-2)
+        v_exp      = dataset.get('v_exp',      1.0e5)
+        E_0        = dataset.get('E_0',        6.381e-36)
+        V_sys      = dataset.get('V_sys',      4.189e18)
+        f_aether   = dataset.get('f_aether',   1.0e3)
+        f_react    = dataset.get('f_react',    1.0e9)
+        f_quantum  = dataset.get('f_quantum',  1.445e-17)
+        f_fluid    = dataset.get('f_fluid',    1.269e-14)
+        f_exp_freq = dataset.get('f_exp_freq', 1.373e-8)
+        V_fluid    = dataset.get('V_fluid',    1.0e6)
+        f_TRZ      = dataset.get('f_TRZ',      0.1)
+        B          = dataset.get('B',          0.0)
+        B_crit     = dataset.get('B_crit',     1.0e11)
+        f_sc       = dataset.get('f_sc',       1.0)
+        E_ISM      = self._E_VAC / 10.0
+
+        # --- DPM seed ---
+        F_DPM  = I_curr * A_vort * (omega_1 - omega_2)
+        a_DPM  = (F_DPM * f_DPM * self._E_VAC) / (self._C * V_sys)
+
+        # --- Compressed channel (4 terms) ---
+        Gamma_THz   = 10.0 * f_THz * v_exp / self._C
+        a_THz       = Gamma_THz * a_DPM
+        a_vac_diff  = (E_0 * f_vac_diff * V_sys * a_DPM) / self._HBAR   # PAPER_294
+        A_sc        = (self._HBAR * f_super * f_DPM) / (self._E_VAC * self._C)
+        a_super     = A_sc * a_DPM                                        # PAPER_295
+        sigma_comp  = a_DPM + a_THz + a_vac_diff + a_super
+
+        # --- Resonance channel (6 terms) ---
+        a_aether  = f_aether * 1.0e-8 * f_DPM * (1.0 + f_TRZ) * a_DPM
+        a_u_g4i   = f_sc * f_react * a_DPM / (self._E_VAC * self._C)
+        a_quantum = (f_quantum * self._E_VAC * a_DPM) / (E_ISM * self._C)
+        a_fluid   = (f_fluid * self._E_VAC * V_fluid * a_DPM) / (E_ISM * self._C)
+        a_exp     = (f_exp_freq * self._E_VAC * a_DPM) / (E_ISM * self._C)
+        a_osc     = 0.0                                                  # t=0 static snapshot
+        sigma_res = a_aether + a_u_g4i + a_osc + a_quantum + a_fluid + a_exp
+
+        # --- Co-sum + SC + TRZ ---
+        SCm   = 1.0 - B / B_crit
+        g_CR  = (sigma_comp + sigma_res) * SCm * (1.0 + f_TRZ)
+
+        # --- Channel dominance ratio [PAPER_293] ---
+        R_CR  = sigma_comp / sigma_res if sigma_res != 0.0 else 0.0
+
+        return {
+            # Compressed channel
+            'a_DPM_m_s2':          a_DPM,
+            'a_THz_m_s2':          a_THz,
+            'a_vac_diff_m_s2':     a_vac_diff,
+            'a_super_m_s2':        a_super,
+            'sigma_comp_m_s2':     sigma_comp,
+            # Resonance channel
+            'a_aether_m_s2':       a_aether,
+            'a_u_g4i_m_s2':        a_u_g4i,
+            'a_osc_m_s2':          a_osc,
+            'a_quantum_m_s2':      a_quantum,
+            'a_fluid_m_s2':        a_fluid,
+            'a_exp_m_s2':          a_exp,
+            'sigma_res_m_s2':      sigma_res,
+            # Co-sum result
+            'SCm':                 SCm,
+            'g_CR_m_s2':           g_CR,
+            # PAPER_293 observable
+            'R_CR':                R_CR,
+            'R_CR_note':           'sigma_comp/sigma_res; resonance dominates by 17 orders at sys18-24',
+            'compressed_terms':    4,
+            'resonance_terms':     6,
+            'paper':               'PAPER_293',
+            'system':              'CR24 Dual-Channel Systems 18-24 (Sombrero/Saturn/M16/Crab/NGC class)',
+            'session':             83,
+        }
+
+
+class CR24VacuumDifferentialHarmonicCalculator:
+    """PAPER_294 — UQFF CR24 Vacuum Differential Harmonic (VDH) ħ-Denominator Coupling.
+
+    a_vac_diff = (E_0 * f_vac_diff * V_sys * a_DPM) / ħ
+    FIRST UQFF term with ħ in denominator (quantum-volume diffusion coupling).
+    f_vac_diff = 0.143 Hz → T_vac = 6.993 s ≈ 7-second vacuum beat period.
+    E_0 = 6.381e-36 J/m³; E_0/E_vac = 0.9001 (10% plasmotic vacuum deficit).
+    V_sys/ħ = 3.973e52 m³/(J·s) — quantum-volume coupling constant.
+    """
+
+    _C     = 3.0e8
+    _HBAR  = 1.0546e-34
+    _E_VAC = 7.09e-36
+
+    def compute(self, dataset: dict) -> dict:
+        f_DPM      = dataset.get('f_DPM',      1.0e11)
+        I_curr     = dataset.get('I',          1.0e20)
+        A_vort     = dataset.get('A_vort',     3.142e18)
+        omega_1    = dataset.get('omega_1',    1.0e-2)
+        omega_2    = dataset.get('omega_2',   -1.0e-2)
+        V_sys      = dataset.get('V_sys',      4.189e18)
+        E_0        = dataset.get('E_0',        6.381e-36)
+        f_vac_diff = dataset.get('f_vac_diff', 0.143)
+
+        # DPM seed
+        F_DPM = I_curr * A_vort * (omega_1 - omega_2)
+        a_DPM = (F_DPM * f_DPM * self._E_VAC) / (self._C * V_sys)
+
+        # [PAPER_294] VDH term — ħ in denominator
+        a_vac_diff     = (E_0 * f_vac_diff * V_sys * a_DPM) / self._HBAR
+
+        # Derived observables
+        T_vac          = 1.0 / f_vac_diff             # 6.993 s vacuum beat period
+        E_0_over_E_vac = E_0 / self._E_VAC            # 0.9001 vacuum deficit ratio
+        V_over_hbar    = V_sys / self._HBAR            # 3.973e52 quantum-volume coupling
+
+        return {
+            'F_DPM_N':                 F_DPM,
+            'a_DPM_m_s2':              a_DPM,
+            'E_0_J_m3':                E_0,
+            'E_0_over_E_vac':          E_0_over_E_vac,
+            'E_0_deficit_pct':         (1.0 - E_0_over_E_vac) * 100.0,
+            'f_vac_diff_Hz':           f_vac_diff,
+            'T_vac_s':                 T_vac,
+            'T_vac_note':              'approx 7-second vacuum beat period (ELF band)',
+            'V_sys_m3':                V_sys,
+            'hbar_J_s':                self._HBAR,
+            'V_over_hbar_m3_per_J_s':  V_over_hbar,
+            'a_vac_diff_m_s2':         a_vac_diff,
+            'hbar_position':           'denominator — FIRST UQFF hbar-denom term [PAPER_294]',
+            'paper':                   'PAPER_294',
+            'system':                  'CR24 Vacuum Differential Harmonic — Systems 18-24 class',
+            'session':                 83,
+        }
+
+
+class CR24CompressedCooperSuperSeedingCalculator:
+    """PAPER_295 — UQFF CR24 Compressed Cooper Super-Seeding, f_DPM² Quadratic Class Scaling.
+
+    a_super = A_sc * a_DPM;  A_sc = ħ * f_super * f_DPM / (E_vac * c)
+    A_sc ∝ f_DPM  and  a_DPM ∝ f_DPM  ⟹  a_super ∝ f_DPM² (quadratic class scaling).
+    Systems 18-24 (f_DPM=1e11): A_sc=6.994e18, a_super=2.479e4 m/s².
+    Magnetar class (f_DPM=1e12): A_sc=6.994e21, a_super=2.479e8 m/s² (+4 orders).
+    Compressed channel (pre-oscillatory) vs PAPER_289 resonance channel (post-THz).
+    """
+
+    _C     = 3.0e8
+    _HBAR  = 1.0546e-34
+    _E_VAC = 7.09e-36
+
+    def compute(self, dataset: dict) -> dict:
+        f_DPM   = dataset.get('f_DPM',   1.0e11)
+        I_curr  = dataset.get('I',       1.0e20)
+        A_vort  = dataset.get('A_vort',  3.142e18)
+        omega_1 = dataset.get('omega_1', 1.0e-2)
+        omega_2 = dataset.get('omega_2',-1.0e-2)
+        V_sys   = dataset.get('V_sys',   4.189e18)
+        f_super = dataset.get('f_super', 1.411e15)
+
+        # DPM seed
+        F_DPM = I_curr * A_vort * (omega_1 - omega_2)
+        a_DPM = (F_DPM * f_DPM * self._E_VAC) / (self._C * V_sys)
+
+        # [PAPER_295] Cooper amplitude — scales linearly with f_DPM
+        A_sc    = (self._HBAR * f_super * f_DPM) / (self._E_VAC * self._C)
+
+        # a_super = A_sc * a_DPM → quadratic in f_DPM (A_sc ∝ f_DPM, a_DPM ∝ f_DPM)
+        a_super = A_sc * a_DPM
+
+        # Class comparison: compute A_sc and a_super at adjacent DPM class (×10)
+        f_DPM_mag   = f_DPM * 10.0
+        A_sc_mag    = (self._HBAR * f_super * f_DPM_mag) / (self._E_VAC * self._C)
+        a_DPM_mag   = (F_DPM * f_DPM_mag * self._E_VAC) / (self._C * V_sys)
+        a_super_mag = A_sc_mag * a_DPM_mag
+
+        scaling_ratio = a_super_mag / a_super if a_super != 0.0 else 0.0
+
+        return {
+            'f_DPM_Hz':                f_DPM,
+            'F_DPM_N':                 F_DPM,
+            'a_DPM_m_s2':              a_DPM,
+            'f_super_Hz':              f_super,
+            'A_sc':                    A_sc,
+            'A_sc_note':               'A_sc = hbar*f_super*f_DPM/(E_vac*c); A_sc prop f_DPM',
+            'a_super_m_s2':            a_super,
+            'channel':                 'compressed (pre-oscillatory seeding)',
+            # f_DPM^2 scaling verification at f_DPM*10 class
+            'f_DPM_next_class_Hz':     f_DPM_mag,
+            'A_sc_next_class':         A_sc_mag,
+            'a_super_next_class_m_s2': a_super_mag,
+            'scaling_ratio':           scaling_ratio,
+            'scaling_exponent':        2.0,
+            'scaling_note':            'a_super props f_DPM^2; each 10x f_DPM gives 100x a_super',
+            'PAPER_289_comparison':    'PAPER_289 RSC places equivalent term in resonance channel post-THz; CR24 places in compressed channel pre-oscillatory',
+            'paper':                   'PAPER_295',
+            'system':                  'CR24 Compressed Cooper Super-Seeding — Systems 18-24 vs magnetar class',
+            'session':                 83,
+        }
+
+
+# ---------------------------------------------------------------------------
 # __all__ export
 # ---------------------------------------------------------------------------
 
@@ -10574,4 +10798,8 @@ __all__ = [
     "CrabSNRDPMDilutionCalculator",
     "CrabFilamentSpectralTriadCalculator",
     "CrabPulsarOscResonanceWindowCalculator",
+    # Session 83 — PAPER_293–295 (CR24 UQFF 2.0 — 25th C++ module, FIRST UQFF dual-channel module)
+    "CR24DualChannelArchitectureCalculator",
+    "CR24VacuumDifferentialHarmonicCalculator",
+    "CR24CompressedCooperSuperSeedingCalculator",
 ]
