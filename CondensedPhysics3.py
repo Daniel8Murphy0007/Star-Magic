@@ -10210,6 +10210,151 @@ class ResonanceSCCooperDPMFreqSynthesisCalculator:
         return result
 
 
+class CrabSNRDPMDilutionCalculator:
+    """PAPER_290: Crab SNR DPM Vacuum Dilution — a_DPM(t) ∝ r(t)⁻³ in Expanding PWN.
+    FIRST UQFF module with dynamic V_sys(t) = (4/3)*pi*(r0+v_exp*t)^3 (expanding SNR).
+    F_DPM=6.284e26 N; a_DPM(t=0)=2.521e-56 m/s^2; a_DPM(971yr)=3.772e-57 m/s^2.
+    Dilution factor D = (r(971yr)/r0)^3 = 6.69x over Crab's 971-year life.
+    Gamma_THz = 10*f_THz*v_exp/c = 5.0e10 (1500x RSC Gamma=3.33e7 — SNR shock amplification).
+    """
+
+    def compute(self, dataset: dict) -> dict:
+        import math
+
+        f_DPM   = dataset.get('f_DPM',    1.0e12)       # Hz DPM mode
+        f_THz   = dataset.get('f_THz',    1.0e12)       # Hz THz mode
+        E_vac   = dataset.get('E_vac',    7.09e-36)     # J/m^3 plasmotic vacuum
+        c_light = dataset.get('c_light',  3.0e8)        # m/s
+        I_curr  = dataset.get('I_curr',   1.0e21)       # A Crab wind proxy
+        A_vort  = dataset.get('A_vort',   3.142e8)      # m^2
+        omega_1 = dataset.get('omega_1',  1.0e-3)       # rad/s
+        omega_2 = dataset.get('omega_2',  -1.0e-3)      # rad/s
+        r0      = dataset.get('r0',       5.2e16)       # m initial radius
+        v_exp   = dataset.get('v_exp',    1.5e6)        # m/s Crab expansion
+        t       = dataset.get('t',        3.064e10)     # s default = 971 yr
+
+        F_DPM      = I_curr * A_vort * (omega_1 - omega_2)              # 6.284e26 N
+        V0         = (4.0 / 3.0) * math.pi * r0 ** 3
+        a_DPM_t0   = (F_DPM * f_DPM * E_vac) / (c_light * V0)
+        r_t        = r0 + v_exp * t
+        V_sys_t    = (4.0 / 3.0) * math.pi * r_t ** 3
+        a_DPM_t    = (F_DPM * f_DPM * E_vac) / (c_light * V_sys_t)
+        dilution_D = V_sys_t / V0   # = (r_t/r0)^3
+        Gamma_THz  = 10.0 * f_THz * v_exp / c_light   # 5.0e10
+
+        return {
+            'F_DPM_N':          F_DPM,
+            'V0_m3':            V0,
+            'a_DPM_t0_m_s2':    a_DPM_t0,
+            'r_t_m':            r_t,
+            'V_sys_t_m3':       V_sys_t,
+            'a_DPM_t_m_s2':     a_DPM_t,
+            'dilution_D':       dilution_D,
+            'Gamma_THz':        Gamma_THz,
+            't_s':              t,
+            'paper':            'PAPER_290',
+            'system':           'Crab Nebula PWN — SNR DPM Vacuum Dilution',
+            'session':          82,
+        }
+
+
+class CrabFilamentSpectralTriadCalculator:
+    """PAPER_291: Crab Filament Spectral Triad — Three-Scale DPM Seeding, 9 frequency decades.
+    f_quantum=1.445e-17 Hz (T~2.19 Gyr), f_fluid=1.269e-14 Hz (T~2.49 Myr), f_exp=1.373e-8 Hz (T~2.31 yr).
+    FIRST UQFF volumetric filament knot coupling: V_knot=1e3 m^3 in a_fluid term.
+    a_quantum=10*f_q*a_DPM/c; a_fluid=10*f_fl*V_knot*a_DPM/c; a_exp=10*f_exp*a_DPM/c.
+    """
+
+    def compute(self, dataset: dict) -> dict:
+
+        c_light  = dataset.get('c_light',   3.0e8)       # m/s
+        E_vac    = dataset.get('E_vac',     7.09e-36)    # J/m^3
+        a_DPM    = dataset.get('a_DPM',     3.772e-57)   # m/s^2 default at 971 yr
+        f_quantum= dataset.get('f_quantum', 1.445e-17)   # Hz quantum de Broglie mode
+        f_fluid  = dataset.get('f_fluid',   1.269e-14)   # Hz KH turbulence
+        f_exp    = dataset.get('f_exp',     1.373e-8)    # Hz free expansion
+        V_knot   = dataset.get('V_knot',    1.0e3)       # m^3 filament vortical knot volume
+
+        E_vac_ISM  = E_vac / 10.0
+        a_quantum  = (f_quantum * E_vac * a_DPM) / (E_vac_ISM * c_light)
+        a_fluid    = (f_fluid   * E_vac * V_knot * a_DPM) / (E_vac_ISM * c_light)
+        a_exp      = (f_exp     * E_vac * a_DPM) / (E_vac_ISM * c_light)
+        a_triad    = a_quantum + a_fluid + a_exp
+
+        import math
+        freq_span_decades = math.log10(f_exp / f_quantum)  # ~9.0 decades
+        fluid_to_quantum_ratio = a_fluid / a_quantum if a_quantum > 0 else 0
+
+        return {
+            'a_quantum_m_s2':          a_quantum,
+            'a_fluid_m_s2':            a_fluid,
+            'a_exp_m_s2':              a_exp,
+            'a_triad_m_s2':            a_triad,
+            'V_knot_m3':               V_knot,
+            'f_quantum_Hz':            f_quantum,
+            'f_fluid_Hz':              f_fluid,
+            'f_exp_Hz':                f_exp,
+            'freq_span_decades':       freq_span_decades,
+            'fluid_to_quantum_ratio':  fluid_to_quantum_ratio,
+            'paper':                   'PAPER_291',
+            'system':                  'Crab Nebula PWN — Filament Spectral Triad',
+            'session':                 82,
+        }
+
+
+class CrabPulsarOscResonanceWindowCalculator:
+    """PAPER_292: Crab Pulsar 60s UQFF Resonance Window — f_osc=1812 Hz spin-to-vacuum DPM lock.
+    f_pulsar=30.2 Hz (33.1 ms period); f_osc=30.2*60=1812 Hz (60s timing-window frequency).
+    omega_pulsar=2*pi*1812=11385 rad/s; A_pulsar=(f_osc/f_DPM)*A_amp=1.812e-19 m.
+    pulse_lock=f_osc/f_DPM=1.812e-9; synchrotron ratio=omega_osc/omega_pulsar=8.785e10.
+    a_osc=2A*cos(kx)*cos(w_osc*t)+(2pi/13.8)*A*Re[exp(i(kx-w_osc*t))]+A_p*cos(omega_p*t).
+    """
+
+    def compute(self, dataset: dict) -> dict:
+        import math, cmath
+
+        c_light    = dataset.get('c_light',   3.0e8)
+        f_DPM      = dataset.get('f_DPM',     1.0e12)     # Hz DPM mode
+        f_pulsar   = dataset.get('f_pulsar',  30.2)       # Hz Crab pulsar spin
+        A_amp      = dataset.get('A_amp',     1.0e-10)    # m oscillation amplitude
+        k_wave     = dataset.get('k_wave',    1.0e20)     # m^-1
+        omega_osc  = dataset.get('omega_osc', 1.0e15)     # rad/s synchrotron scale
+        x_pos      = dataset.get('x_pos',     0.0)        # m
+        t          = dataset.get('t',         0.0)        # s
+        T_cosmic   = 13.8                                 # Gyr cosmic age normalization
+
+        f_osc       = f_pulsar * 60.0                              # 1812 Hz
+        omega_p     = 2.0 * math.pi * f_osc                       # 11385 rad/s
+        A_pulsar    = (f_osc / f_DPM) * A_amp                     # 1.812e-19 m
+        pulse_lock  = f_osc / f_DPM                               # 1.812e-9
+        sync_ratio  = omega_osc / omega_p                         # 8.785e10
+
+        # Full oscillatory term (PAPER_288 + PAPER_292)
+        a_standing  = 2.0 * A_amp * math.cos(k_wave * x_pos) * math.cos(omega_osc * t)
+        phase       = complex(0.0, k_wave * x_pos - omega_osc * t)
+        a_traveling = (2.0 * math.pi / T_cosmic) * A_amp * cmath.exp(phase).real
+        a_pulsar_m  = A_pulsar * math.cos(omega_p * t)            # PAPER_292 DPM lock
+        a_osc_total = a_standing + a_traveling + a_pulsar_m
+        T_S_ratio   = math.pi / T_cosmic                          # 0.2277 (PAPER_288)
+
+        return {
+            'f_pulsar_Hz':          f_pulsar,
+            'f_osc_Hz':             f_osc,
+            'omega_pulsar_rad_s':   omega_p,
+            'A_pulsar_m':           A_pulsar,
+            'pulse_lock':           pulse_lock,
+            'sync_ratio':           sync_ratio,
+            'a_standing_m_s2':      a_standing,
+            'a_traveling_m_s2':     a_traveling,
+            'a_pulsar_m_s2':        a_pulsar_m,
+            'a_osc_total_m_s2':     a_osc_total,
+            'T_S_ratio':            T_S_ratio,
+            'paper':                'PAPER_292',
+            'system':               'Crab Nebula PWN — Pulsar 60s Resonance Window',
+            'session':              82,
+        }
+
+
 # ---------------------------------------------------------------------------
 # __all__ export
 # ---------------------------------------------------------------------------
@@ -10425,4 +10570,8 @@ __all__ = [
     "ResonanceSCDPMTHzCascadeCalculator",
     "ResonanceSCCosmicAgeStandingWaveCalculator",
     "ResonanceSCCooperDPMFreqSynthesisCalculator",
+    # Session 82 — PAPER_290–292 (Crab UQFF 2.0 — 24th C++ module, FIRST UQFF PWN module)
+    "CrabSNRDPMDilutionCalculator",
+    "CrabFilamentSpectralTriadCalculator",
+    "CrabPulsarOscResonanceWindowCalculator",
 ]
