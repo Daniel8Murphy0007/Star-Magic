@@ -11767,6 +11767,141 @@ class OrionCompactHIISFRBindingCrossoverCalculator:
 
 
 # ---------------------------------------------------------------------------
+# Session 92 — PAPER_320-322 (CR34 UQFF 2.0 — 34th C++ module, 2nd Dual-Channel 7-system)
+# ---------------------------------------------------------------------------
+
+class CR34DPMForceDensitySpectralAtlasCalculator:
+    """Session 92 — PAPER_320: CR34 7-system DPM force density spectral atlas.
+    xi_span=1e35; H Atom=1.500e25 N/m^3 (max); Universe=1.500e-10 N/m^3 (min);
+    Orion=9.12 N/m^3 HII balance.
+    f_density = I * A_vort * delta_omega / V_sys [N/m^3]
+    FIRST UQFF 35-order DPM force density spectral atlas spanning 7 systems."""
+
+    SYSTEMS = {
+        26: {'name': 'Universe',    'I': 1e24, 'A_vort': 3.142e52, 'omega_diff': 2e-6,  'V_sys': 4.189e80},
+        27: {'name': 'H Atom',      'I': 1e18, 'A_vort': 3.142e-21,'omega_diff': 2e-3,  'V_sys': 4.189e-31},
+        28: {'name': 'H PToE',      'I': 1e18, 'A_vort': 3.142e-21,'omega_diff': 2e-3,  'V_sys': 4.189e-31},
+        30: {'name': 'Lagoon M8',   'I': 1e20, 'A_vort': 3.142e35, 'omega_diff': 2e-2,  'V_sys': 5.913e53},
+        31: {'name': 'Spirals+SN',  'I': 1e22, 'A_vort': 3.142e41, 'omega_diff': 2e-1,  'V_sys': 1.543e64},
+        32: {'name': 'NGC 6302',    'I': 1e20, 'A_vort': 3.142e32, 'omega_diff': 2e-3,  'V_sys': 1.458e48},
+        34: {'name': 'Orion M42',   'I': 1e20, 'A_vort': 3.142e34, 'omega_diff': 2e-2,  'V_sys': 6.887e51},
+    }
+
+    def compute(self, dataset: dict = None) -> dict:
+        densities = {}
+        for sid, p in self.SYSTEMS.items():
+            F_dpm = p['I'] * p['A_vort'] * p['omega_diff']   # N (DPM force)
+            f_den = F_dpm / p['V_sys']                        # N/m^3
+            densities[sid] = {'name': p['name'], 'f_density_N_m3': f_den}
+        f_max = densities[27]['f_density_N_m3']
+        f_min = densities[26]['f_density_N_m3']
+        xi_span = f_max / f_min if f_min > 0 else float('inf')
+        return {
+            'densities':           densities,
+            'f_density_max_N_m3':  f_max,
+            'f_density_min_N_m3':  f_min,
+            'xi_span':             xi_span,
+            'orion_density_N_m3':  densities[34]['f_density_N_m3'],
+            'HII_balance_label':   'Orion sys34 is macroscopic HII balance point',
+            'papers':              ['PAPER_320'],
+            'session':             92,
+        }
+
+
+class CR34CrossChannelDominanceCrossoverCalculator:
+    """Session 92 — PAPER_321: CR34 cross-channel dominance reversal threshold.
+    V_f_crossover = hbar / (E_0 * f_vac_diff * E_vac * c) = 5.43e28 m^3/Hz.
+    Compressed dominant when V_sys/f_react > crossover (nebular/cosmic).
+    Resonance dominant when V_sys/f_react < crossover (atomic).
+    H Atom: 69 orders below. Universe: 44 orders above.
+    FIRST UQFF cross-channel dominance reversal threshold."""
+
+    HBAR       = 1.0546e-34
+    E_0        = 6.381e-36
+    F_VAC_DIFF = 0.143
+    E_VAC      = 7.09e-36
+    C_LIGHT    = 3.0e8
+
+    SYSTEMS = {
+        26: {'name': 'Universe',   'V_sys': 4.189e80, 'f_react': 1e7},
+        27: {'name': 'H Atom',     'V_sys': 4.189e-31,'f_react': 1e10},
+        28: {'name': 'H PToE',     'V_sys': 4.189e-31,'f_react': 1e10},
+        30: {'name': 'Lagoon M8',  'V_sys': 5.913e53, 'f_react': 1e9},
+        31: {'name': 'Spirals+SN', 'V_sys': 1.543e64, 'f_react': 1e8},
+        32: {'name': 'NGC 6302',   'V_sys': 1.458e48, 'f_react': 1e10},
+        34: {'name': 'Orion M42',  'V_sys': 6.887e51, 'f_react': 1e9},
+    }
+
+    def compute(self, dataset: dict = None) -> dict:
+        import math
+        V_f_cross = self.HBAR / (self.E_0 * self.F_VAC_DIFF * self.E_VAC * self.C_LIGHT)
+        per_system = {}
+        for sid, p in self.SYSTEMS.items():
+            V_f_ratio = p['V_sys'] / p['f_react']
+            dominant  = 'compressed' if V_f_ratio > V_f_cross else 'resonance'
+            delta_log = math.log10(V_f_ratio / V_f_cross)
+            per_system[sid] = {
+                'name':      p['name'],
+                'V_f_ratio': V_f_ratio,
+                'dominant':  dominant,
+                'delta_log10_from_crossover': delta_log,
+            }
+        return {
+            'V_f_crossover_m3_Hz': V_f_cross,
+            'per_system':          per_system,
+            'H_Atom_orders_below': abs(per_system[27]['delta_log10_from_crossover']),
+            'Universe_orders_above': per_system[26]['delta_log10_from_crossover'],
+            'papers':              ['PAPER_321'],
+            'session':             92,
+        }
+
+
+class CR34HiIRegionTHzGeometricDifferentialCalculator:
+    """Session 92 — PAPER_322: Orion/Lagoon THz acceleration ratio = 8.59.
+    Same f_DPM=1e11/f_THz=1e11/v_exp=1e4 (identical DPM class).
+    Ratio = (A_vort_34 * V_sys_30) / (A_vort_30 * V_sys_34) = 8.59.
+    Gamma_THz identical for both; ratio purely from DPM geometric surface density.
+    FIRST UQFF intra-HII THz geometric amplification differential."""
+
+    E_VAC   = 7.09e-36
+    C_LIGHT = 3.0e8
+
+    def compute(self, dataset: dict = None) -> dict:
+        # Orion sys34 (canonical V_sys=6.887e51, stub was 6.132e51 FIXED)
+        I, f_DPM, E_vac, c = 1e20, 1e11, self.E_VAC, self.C_LIGHT
+        omega_34, A_34, V_34 = 2e-2, 3.142e34, 6.887e51
+        omega_30, A_30, V_30 = 2e-2, 3.142e35, 5.913e53
+        f_THz, v_exp = 1e11, 1e4
+
+        Gamma_THz = 10.0 * f_THz * v_exp / c
+
+        F_34   = I * A_34 * omega_34
+        a_34   = F_34 * f_DPM * E_vac / (c * V_34)
+        a_THz_34 = Gamma_THz * a_34
+
+        F_30   = I * A_30 * omega_30
+        a_30   = F_30 * f_DPM * E_vac / (c * V_30)
+        a_THz_30 = Gamma_THz * a_30
+
+        ratio = a_THz_34 / a_THz_30 if a_THz_30 != 0 else float('inf')
+        geo_ratio = (A_34 * V_30) / (A_30 * V_34)
+
+        return {
+            'a_DPM_Orion_m_s2':       a_34,
+            'a_DPM_Lagoon_m_s2':      a_30,
+            'Gamma_THz':              Gamma_THz,
+            'a_THz_Orion_m_s2':       a_THz_34,
+            'a_THz_Lagoon_m_s2':      a_THz_30,
+            'THz_ratio_Orion_Lagoon': ratio,
+            'geometric_ratio':        geo_ratio,
+            'Gamma_THz_identical':    True,
+            'same_DPM_class':         'f_DPM=f_THz=1e11 v_exp=1e4 m/s',
+            'papers':                 ['PAPER_322'],
+            'session':                92,
+        }
+
+
+# ---------------------------------------------------------------------------
 # __all__ export
 # ---------------------------------------------------------------------------
 
@@ -12021,4 +12156,8 @@ __all__ = [
     "OrionTrapeziumWindRamPressureDominanceCalculator",
     "OrionTrapeziumOBUVRadiationChampagneFlowCalculator",
     "OrionCompactHIISFRBindingCrossoverCalculator",
+    # Session 92 — PAPER_320-322 (CR34 UQFF 2.0 — 34th C++ module, 2nd Dual-Channel 7-system)
+    "CR34DPMForceDensitySpectralAtlasCalculator",
+    "CR34CrossChannelDominanceCrossoverCalculator",
+    "CR34HiIRegionTHzGeometricDifferentialCalculator",
 ]
