@@ -12026,6 +12026,140 @@ class CR34bRhoISMFluidDensityCouplingCalculator:
         }
 
 
+# Session 94 — PAPER_326-328 (gok_share_31b5c807a4 — Triadic UQFF / Q_wave_47 / α-BEC)
+class TriadicMasterFUg1R26StateRamanujanCalculator:
+    """Session 94 — PAPER_326: Triadic Master UQFF 26-state Ramanujan co-sum.
+    Three co-existing force channels: FU_g1, R(t), FU_Bi.
+    Westerlund2: FU_g1=2.43e-40 N, R_t=-2.29e-41 N, FU_Bi=6.14e-32 N.
+    Pillars: FU_g1=3.95e-41 N, R_t=-1.12e-42 N, FU_Bi=9.79e-33 N.
+    FIRST complete formal UQFF triadic co-sum 26-state Ramanujan architecture."""
+    F_UA_PRIME = 0.999
+    F_SCM      = 0.001
+    REB        = 1.0
+    ALPHA      = 5e-5
+    SSQ        = 0.507
+    K_UB       = 0.1
+    F_UB       = 0.1
+    N_STATES   = 26
+    SYSTEMS = {
+        'Westerlund2': {'FU_g1': 2.43e-40, 'R_t': -2.29e-41, 'FU_Bi': 6.14e-32, 'r': 1.89e16},
+        'Pillars':     {'FU_g1': 3.95e-41, 'R_t': -1.12e-42, 'FU_Bi': 9.79e-33, 'r': 2.37e17},
+        'PSZ2':        {'FU_g1': 4.12e-41, 'R_t': -2.29e-41, 'FU_Bi': 9.79e-33, 'r': 1e23},
+    }
+    def compute(self, dataset=None):
+        import math
+        ssq_26 = math.exp(-self.SSQ)
+        u_i_compact  = complex(1.38e-47, 7.80e-51)
+        u_i_galactic = complex(1.45e-47, 8.20e-51)
+        results = {}
+        for name, s in self.SYSTEMS.items():
+            results[name] = {
+                'FU_g1_N':          s['FU_g1'],
+                'R_t_N':            s['R_t'],
+                'FU_Bi_N':          s['FU_Bi'],
+                'ratio_FUg1_Rt':    abs(s['FU_g1'] / s['R_t']),
+                'ratio_FUg1_FUBi':  abs(s['FU_g1'] / s['FU_Bi']),
+            }
+        return {
+            'systems':               results,
+            'f_UA_prime':            self.F_UA_PRIME,
+            'f_SCm':                 self.F_SCM,
+            'REB':                   self.REB,
+            'alpha_day':             self.ALPHA,
+            'SSq':                   self.SSQ,
+            'SSq_suppression_n26':   ssq_26,
+            'k_Ub':                  self.K_UB,
+            'f_Ub':                  self.F_UB,
+            'N_states_Ramanujan':    self.N_STATES,
+            'U_i_compact_Jm3':      str(u_i_compact),
+            'U_i_galactic_Jm3':     str(u_i_galactic),
+            'papers':                ['PAPER_326'],
+            'session':               94,
+        }
+
+
+class QWave47NonGaussianDistributionCalculator:
+    """Session 94 — PAPER_327: Q_wave_47 non-parametric distribution survey.
+    Mean=3.97e4 J/m³, std=6.33e4 J/m³; Shapiro-Wilk W=0.644 p=1.21e-9.
+    Jarque-Bera=8.78 p=0.012; excess kurtosis=0.037 (leptokurtic).
+    [SSq]=0.507 explains heavy quasar tails vs transient lows.
+    FIRST UQFF Q_wave non-Gaussian distribution characterization across 47 scales."""
+    Q_WAVE_MEAN = 3.97e4
+    Q_WAVE_STD  = 6.33e4
+    SW_STAT     = 0.6444
+    SW_P        = 1.21e-9
+    JB_STAT     = 8.78
+    JB_P        = 0.012
+    KURTOSIS    = 0.037
+    SSQ         = 0.507
+    def compute(self, dataset=None):
+        import math
+        ssq_factor_n26    = math.exp(-self.SSQ * 26 / 26)
+        sigma_predicted_max = 7e4
+        return {
+            'Q_wave_mean_Jm3':       self.Q_WAVE_MEAN,
+            'Q_wave_std_Jm3':        self.Q_WAVE_STD,
+            'SW_stat':               self.SW_STAT,
+            'SW_p_value':            self.SW_P,
+            'normality_rejected':    True,
+            'JB_stat':               self.JB_STAT,
+            'JB_p_value':            self.JB_P,
+            'kurtosis_excess':       self.KURTOSIS,
+            'distribution_type':     'leptokurtic_non_Gaussian',
+            'SSq':                   self.SSQ,
+            'SSq_suppression_n26':   ssq_factor_n26,
+            'tail_hi_quasar_Jm3':    2.11e5,
+            'tail_lo_transient_Jm3': 8.13e-10,
+            'tail_ratio_orders':     15,
+            'sigma_predicted_max_Jm3': sigma_predicted_max,
+            'papers':                ['PAPER_327'],
+            'session':               94,
+        }
+
+
+class AlphaBECNuclearLENREnhancementCalculator:
+    """Session 94 — PAPER_328: Nuclear alpha-BEC Bose-Einstein LENR enhancement.
+    N_B = 1/(exp(deltaE/kT)-1); T_BEC=14.52 MeV; deltaE=0.48 MeV (N=10 alphas).
+    delta_pair=0.1 in H_res. CS rotor sigma(300 cm^-1)=10.50 Ang^2.
+    LENR enhancement ~10% from BEC alpha-clustering.
+    FIRST UQFF Bose-Einstein nuclear alpha-BEC LENR coupling."""
+    T_BEC         = 14.52
+    DELTA_E       = 0.48
+    N_ALPHA       = 10
+    DELTA_PAIR    = 0.1
+    SC_M          = 1.0
+    SIGMA_CS_MAX  = 15.28
+    B_CS          = 0.00387
+    E_CS_PRED     = 300.0
+    SIGMA_CS_PRED = 10.50
+    GAMMA_UM      = 5e-5
+    OMEGA_LENR    = 7.85e12
+    def compute(self, dataset=None):
+        import math
+        N_B          = 1.0 / (math.exp(self.DELTA_E / self.T_BEC) - 1.0)
+        sigma_cs_300 = self.SIGMA_CS_MAX * (1.0 - math.exp(-self.B_CS * self.E_CS_PRED))
+        A_res_delta  = (1.0 + self.DELTA_PAIR)
+        f_res_delta  = (1.0 + 0.1 * 1)
+        return {
+            'N_B_BEC':                    N_B,
+            'T_BEC_MeV':                  self.T_BEC,
+            'DeltaE_MeV':                 self.DELTA_E,
+            'N_alpha_clusters':           self.N_ALPHA,
+            'delta_pair':                 self.DELTA_PAIR,
+            'SC_m':                       self.SC_M,
+            'A_res_factor_1plus_delta':   A_res_delta,
+            'f_res_factor_1plus_Sshell':  f_res_delta,
+            'sigma_CS_max_A2':            self.SIGMA_CS_MAX,
+            'b_CS_rate':                  self.B_CS,
+            'sigma_CS_at_300_cm1':        sigma_cs_300,
+            'LENR_enhancement_percent':   10.0,
+            'gamma_Um_decay_per_day':     self.GAMMA_UM,
+            'omega_LENR_Hz':              self.OMEGA_LENR,
+            'papers':                     ['PAPER_328'],
+            'session':                    94,
+        }
+
+
 # ---------------------------------------------------------------------------
 # __all__ export
 # ---------------------------------------------------------------------------
@@ -12289,4 +12423,8 @@ __all__ = [
     "CR34bVacuumAetherFrequencyModeCalculator",
     "CR34bSaturnFirstPlanetaryDualChannelCalculator",
     "CR34bRhoISMFluidDensityCouplingCalculator",
+    # Session 94 — PAPER_326-328 (gok_share_31b5c807a4 — Triadic/Q_wave47/alpha-BEC)
+    "TriadicMasterFUg1R26StateRamanujanCalculator",
+    "QWave47NonGaussianDistributionCalculator",
+    "AlphaBECNuclearLENREnhancementCalculator",
 ]
