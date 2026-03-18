@@ -11554,6 +11554,219 @@ class CooperDPMf1THz_AscConfirmationCalculator:
 
 
 # ---------------------------------------------------------------------------
+# Session 91 — PAPER_317–319 (Orion Nebula M42/NGC 1976 UQFF 2.0)
+# 33rd C++ module — FIRST Trapezium OB-cluster driven HII region
+# ---------------------------------------------------------------------------
+
+class OrionTrapeziumWindRamPressureDominanceCalculator:
+    """PAPER_317 — Orion M42 Trapezium Wind Ram Pressure Dominance.
+    eta_wind = 28.47; a_wind(t=0) = 5.424e-10 m/s^2; t_erosion = 467 kyr.
+    FIRST UQFF HII region ram pressure dominance ratio.
+    System: Orion Nebula M42/NGC 1976 — 33rd C++ module, Session 91."""
+
+    def compute(self, dataset: dict = None) -> dict:
+        import math
+        G    = 6.6743e-11
+        dataset = dataset or {}
+        M        = dataset.get('M',       3.978e33)   # 2000 M_sun
+        r        = dataset.get('r',       1.18e17)
+        rho      = dataset.get('rho',     1e-20)
+        v_wind   = dataset.get('v_wind',  8e3)
+        t_age_s  = dataset.get('t_age_s', 9.467e12)   # 3e5 yr in s
+        YEAR_TO_S= 3.15576e7
+        g_base   = G * M / (r * r)
+        a_wind_0 = v_wind * v_wind / r
+        a_wind_t = a_wind_0 * 2.0                     # at t = t_age
+        eta_wind = a_wind_0 / g_base
+        eta_wind_t = a_wind_t / g_base
+        P_ram    = rho * v_wind * v_wind
+        P_grav   = G * M * rho / r
+        eta_P    = P_ram / P_grav
+        t_erosion_s = r / v_wind
+        t_erosion_kyr = t_erosion_s / (YEAR_TO_S * 1e3)
+        t_age_kyr = t_age_s / (YEAR_TO_S * 1e3)
+        proplyds_survive = t_erosion_kyr > t_age_kyr
+        return {
+            'primary_equations': [
+                f'g_base = G*M/r^2 = {g_base:.3e} m/s^2',
+                f'a_wind(t=0) = v_wind^2/r = {a_wind_0:.3e} m/s^2',
+                f'eta_wind = a_wind/g_base = {eta_wind:.4f}  [PAPER_317: 28.47]',
+                f'P_ram/P_grav = {eta_P:.4f}  [ram pressure > gravity by 28.5x]',
+                f't_erosion = r/v_wind = {t_erosion_s:.3e} s = {t_erosion_kyr:.1f} kyr',
+            ],
+            'available_equations': [
+                'g_base = G*M/r^2',
+                'a_wind(t) = v_wind^2/r * (1+t/t_age)',
+                'eta_wind = a_wind/g_base = P_ram/P_grav',
+                'P_ram = rho*v_wind^2',
+                'P_grav = G*M*rho/r',
+                't_erosion = r/v_wind',
+                'W_KE/W_grav ≈ eta_wind',
+            ],
+            'simulation_set': [
+                {'t_kyr': tkyr,
+                 'a_wind': a_wind_0 * (1.0 + tkyr * 1e3 * YEAR_TO_S / t_age_s),
+                 'eta_wind': a_wind_0 * (1.0 + tkyr * 1e3 * YEAR_TO_S / t_age_s) / g_base}
+                for tkyr in [0, 100, 300, 467, 600, 1000]
+            ],
+            'g_base_m_s2':        g_base,
+            'a_wind_t0_m_s2':     a_wind_0,
+            'a_wind_tage_m_s2':   a_wind_t,
+            'eta_wind_t0':        eta_wind,
+            'eta_wind_tage':      eta_wind_t,
+            'P_ram_Pa':           P_ram,
+            'P_grav_Pa':          P_grav,
+            'eta_P':              eta_P,
+            't_erosion_s':        t_erosion_s,
+            't_erosion_kyr':      t_erosion_kyr,
+            't_age_kyr':          t_age_kyr,
+            'proplyds_survive':   proplyds_survive,
+            'papers':             ['PAPER_317'],
+            'session':            91,
+        }
+
+
+class OrionTrapeziumOBUVRadiationChampagneFlowCalculator:
+    """PAPER_318 — Trapezium OB Cluster UV Radiation Dominance — Champagne Flow.
+    eta_rad = 7.664e18; a_rad = 1.461e8 m/s^2; L_trap = 7.656e31 W.
+    FIRST UQFF sub-pc compact HII Trapezium OB UV radiation dominance.
+    System: Orion Nebula M42/NGC 1976 — 33rd C++ module, Session 91."""
+
+    def compute(self, dataset: dict = None) -> dict:
+        import math
+        G    = 6.6743e-11
+        c    = 2.998e8
+        L_SUN = 3.828e26
+        dataset = dataset or {}
+        M       = dataset.get('M',       3.978e33)
+        r       = dataset.get('r',       1.18e17)
+        rho     = dataset.get('rho',     1e-20)
+        L_trap  = dataset.get('L_trap',  2e5 * L_SUN)  # 7.656e31 W
+        g_base  = G * M / (r * r)
+        A_trap  = 4.0 * math.pi * r * r
+        P_rad   = L_trap / (A_trap * c)
+        a_rad   = P_rad / rho
+        eta_rad = a_rad / g_base
+        champagne_flow = eta_rad > 1.0
+        # Compare with Lagoon (PAPER_306)
+        lagoon_eta = 1.53e18
+        ratio_vs_lagoon = eta_rad / lagoon_eta
+        # a_rad vs a_wind for cross-check
+        v_wind  = dataset.get('v_wind', 8e3)
+        a_wind  = v_wind * v_wind / r
+        rad_vs_wind = a_rad / a_wind
+        return {
+            'primary_equations': [
+                f'L_trap = {L_trap:.3e} W  (2e5 L_sun, Trapezium theta1 Ori C)',
+                f'A_4pi = 4*pi*r^2 = {A_trap:.3e} m^2',
+                f'P_rad = L_trap/(A*c) = {P_rad:.3e} Pa',
+                f'a_rad = P_rad/rho = {a_rad:.3e} m/s^2  [PAPER_318]',
+                f'eta_rad = a_rad/g_base = {eta_rad:.3e}  [champagne_flow={champagne_flow}]',
+            ],
+            'available_equations': [
+                'A_trap = 4*pi*r^2',
+                'P_rad = L_trap / (4*pi*r^2*c)',
+                'a_rad = P_rad / rho_fluid',
+                'eta_rad = a_rad / g_base',
+                'champagne_flow: eta_rad >> 1 => ionized gas escapes freely',
+                'ratio_vs_Lagoon_PAPER306 = eta_rad / 1.53e18',
+            ],
+            'simulation_set': [
+                {'L_Lsun': lv,
+                 'a_rad': (lv * L_SUN) / (A_trap * c * rho),
+                 'eta_rad': (lv * L_SUN) / (A_trap * c * rho) / g_base}
+                for lv in [1e4, 5e4, 1e5, 2e5, 5e5, 1e6]
+            ],
+            'L_trap_W':          L_trap,
+            'P_rad_Pa':          P_rad,
+            'a_rad_m_s2':        a_rad,
+            'g_base_m_s2':       g_base,
+            'eta_rad':           eta_rad,
+            'champagne_flow':    champagne_flow,
+            'ratio_vs_lagoon':   ratio_vs_lagoon,
+            'rad_vs_wind':       rad_vs_wind,
+            'papers':            ['PAPER_318'],
+            'session':           91,
+        }
+
+
+class OrionCompactHIISFRBindingCrossoverCalculator:
+    """PAPER_319 — Compact HII SFR Gravitational Binding Phase Transition.
+    t_cross = 67730 yr; sSFR = 5e-4 yr^-1 (50x Lagoon); m_factor(t_age) = 151.
+    FIRST UQFF compact HII SFR runaway gravitational binding phase transition.
+    System: Orion Nebula M42/NGC 1976 — 33rd C++ module, Session 91."""
+
+    def compute(self, dataset: dict = None) -> dict:
+        import math
+        G    = 6.6743e-11
+        M_SUN = 1.989e30
+        YEAR_TO_S = 3.15576e7
+        dataset   = dataset or {}
+        M         = dataset.get('M',      3.978e33)   # 2000 M_sun
+        r         = dataset.get('r',      1.18e17)
+        v_wind    = dataset.get('v_wind', 8e3)
+        SFR_yr    = dataset.get('SFR_yr', 1.0)        # M_sun/yr
+        t_age_yr  = dataset.get('t_age_yr', 3e5)
+        M_sun_cnt = M / M_SUN                         # 2000
+        g_base    = G * M / (r * r)
+        a_wind_0  = v_wind * v_wind / r
+        sSFR      = SFR_yr / M_sun_cnt                # 5e-4 yr^-1
+        t_consume = M_sun_cnt / SFR_yr                # 2000 yr
+        # m_factor at key epochs
+        m_factor_tage = 1.0 + SFR_yr * t_age_yr / M_sun_cnt
+        m_factor_1myr = 1.0 + SFR_yr * 1e6 / M_sun_cnt
+        g_sfr_tage = g_base * m_factor_tage
+        a_wind_tage = a_wind_0 * (1.0 + t_age_yr / t_age_yr)  # = 2*a_wind_0
+        binding_ratio_tage = g_sfr_tage / a_wind_tage
+        # t_cross: g_base*(1+sSFR*t) = a_wind_0*(1+t/t_age_yr)
+        num   = a_wind_0 - g_base
+        den   = g_base * sSFR - a_wind_0 / t_age_yr
+        t_cross = num / den if abs(den) > 1e-60 else 0.0  # yr
+        # Lagoon comparison
+        lagoon_sSFR = 1e-5
+        ratio_vs_lagoon = sSFR / lagoon_sSFR
+        return {
+            'primary_equations': [
+                f'sSFR = SFR_yr/M_sun_cnt = {sSFR:.2e} yr^-1  (50x Lagoon)',
+                f't_cross = {t_cross:.1f} yr  [unbound->bound crossover]',
+                f'm_factor(t_age={t_age_yr/1e3:.0f} kyr) = {m_factor_tage:.1f}  [g_SFR = {g_sfr_tage:.3e} m/s^2]',
+                f'binding_ratio(t_age) = g_SFR/a_wind = {binding_ratio_tage:.3f}  [gravitationally bound]',
+                f't_consume = M/SFR = {t_consume:.0f} yr  [gas depletion without OMC-1 inflow]',
+            ],
+            'available_equations': [
+                'M_sf(t) = SFR_yr * t_yr / M_sun_count',
+                'm_factor(t) = 1 + M_sf(t)',
+                'g_SFR(t) = g_base * m_factor(t)',
+                'a_wind(t) = v_wind^2/r * (1+t/t_age)',
+                't_cross: g_SFR(t) = a_wind(t)',
+                'sSFR = SFR_yr / M_sun_count',
+                't_consume = M_sun_count / SFR_yr',
+                'binding_ratio = g_SFR/a_wind',
+            ],
+            'simulation_set': [
+                {'t_kyr': tkyr,
+                 'g_SFR': g_base * (1.0 + SFR_yr * tkyr * 1e3 / M_sun_cnt),
+                 'a_wind': a_wind_0 * (1.0 + tkyr * 1e3 / t_age_yr),
+                 'bound': g_base * (1.0 + SFR_yr * tkyr * 1e3 / M_sun_cnt) >
+                          a_wind_0 * (1.0 + tkyr * 1e3 / t_age_yr)}
+                for tkyr in [0, 50, 67.73, 100, 300, 1000]
+            ],
+            'g_base_m_s2':        g_base,
+            'a_wind_0_m_s2':      a_wind_0,
+            'sSFR_yr':            sSFR,
+            'sSFR_ratio_lagoon':  ratio_vs_lagoon,
+            't_cross_yr':         t_cross,
+            't_consume_yr':       t_consume,
+            'm_factor_tage':      m_factor_tage,
+            'm_factor_1myr':      m_factor_1myr,
+            'g_sfr_tage_m_s2':    g_sfr_tage,
+            'binding_ratio_tage': binding_ratio_tage,
+            'papers':             ['PAPER_319'],
+            'session':            91,
+        }
+
+
+# ---------------------------------------------------------------------------
 # __all__ export
 # ---------------------------------------------------------------------------
 
@@ -11804,4 +12017,8 @@ __all__ = [
     "BipolarPNLobeResonanceDPMMacroAntennaCalculator",
     "ResonanceVacDiffTHzCrossoverRadiusCalculator",
     "CooperDPMf1THz_AscConfirmationCalculator",
+    # Session 91 — PAPER_317–319 (Orion M42 UQFF 2.0 — 33rd C++ module, FIRST Trapezium OB HII region)
+    "OrionTrapeziumWindRamPressureDominanceCalculator",
+    "OrionTrapeziumOBUVRadiationChampagneFlowCalculator",
+    "OrionCompactHIISFRBindingCrossoverCalculator",
 ]
