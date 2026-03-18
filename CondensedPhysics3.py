@@ -11218,6 +11218,167 @@ class SpiralDMVisiblePartitionRotationCalculator:
         }
 
 
+class BiPolarPNWindShockGravitationalDominanceCalculator:
+    """PAPER_311 — NGC 6302 Bipolar PN Wind Shock Dominance. eta_wind=7.127e5.
+    a_wind(t_eject)=2.114e-6 m/s^2; g_base=2.967e-12 m/s^2; KE/grav_well=3.564e5.
+    Session 89 — 31st C++ module — FIRST Bipolar PN UQFF 2.0.
+    FIRST UQFF explicit bipolar PN wind shock gravitational dominance analysis.
+    WOLFRAM_TERM: NGC6302_WIND_SHOCK"""
+
+    def compute(self, dataset: dict) -> dict:
+        import math
+        G       = 6.6743e-11
+        M_SUN   = 1.989e30
+        YR_TO_S = 3.156e7
+        M       = dataset.get('M',          2.0 * M_SUN)
+        r       = dataset.get('r',          9.46e15)
+        v_wind  = dataset.get('v_wind',     1.0e5)
+        t_eject = dataset.get('t_eject',    2000.0 * YR_TO_S)
+        t       = dataset.get('t',          t_eject)
+        g_base        = G * M / (r * r)
+        a_wind_t0     = v_wind**2 / r
+        a_wind_tej    = 2.0 * v_wind**2 / r
+        eta_wind      = a_wind_tej / g_base
+        grav_well     = G * M / r
+        KE_over_gwell = v_wind**2 / grav_well
+        a_wind_t      = v_wind**2 * (1.0 + t / t_eject) / r
+        return {
+            'primary_equations': [
+                f'g_base = G*M/r^2 = {g_base:.4e} m/s^2  [PAPER_311]',
+                f'a_wind(t=0) = v_wind^2/r = {a_wind_t0:.4e} m/s^2',
+                f'a_wind(t_eject) = 2*v_wind^2/r = {a_wind_tej:.4e} m/s^2',
+                f'eta_wind = a_wind(t_ej)/g_base = {eta_wind:.4e}',
+                f'KE/grav_well = v_wind^2/(GM/r) = {KE_over_gwell:.4e}',
+            ],
+            'available_equations': [
+                'g_base(M, r)',
+                'a_wind(v_wind, r, t, t_eject)',
+                'eta_wind(a_wind, g_base)',
+                'KE_over_gwell(v_wind, G, M, r)',
+            ],
+            'simulation_set': [
+                {'t_yr': tv,
+                 't_s': tv * YR_TO_S,
+                 'a_wind': v_wind**2 * (1.0 + tv * YR_TO_S / t_eject) / r}
+                for tv in [0, 500, 1000, 2000, 5000, 10000]
+            ],
+            'g_base_m_s2':      g_base,
+            'a_wind_t0_m_s2':   a_wind_t0,
+            'a_wind_teject_m_s2': a_wind_tej,
+            'eta_wind':         eta_wind,
+            'KE_over_gwell':    KE_over_gwell,
+            'papers':           ['PAPER_311'],
+            'session':          89,
+        }
+
+
+class BiPolarPNUVRadiationPressureCalculator:
+    """PAPER_312 — NGC 6302 Central WD UV Radiation Pressure. eta_rad=1.913e20.
+    L_star=5000 L_sun (T_eff=200,000K); P_rad=5.672e-12 Pa; a_rad=5.672e8 m/s^2.
+    Session 89 — 31st C++ module — FIRST Bipolar PN UQFF 2.0.
+    FIRST UQFF explicit hot-WD UV radiation pressure gravitational signature.
+    WOLFRAM_TERM: NGC6302_UV_RADIATION"""
+
+    def compute(self, dataset: dict) -> dict:
+        import math
+        G       = 6.6743e-11
+        C_LIGHT = 3.0e8
+        L_SUN   = 3.828e26
+        M_SUN   = 1.989e30
+        M         = dataset.get('M',          2.0 * M_SUN)
+        r         = dataset.get('r',          9.46e15)
+        n_Lsun    = dataset.get('n_Lsun',     5000.0)
+        L_star    = dataset.get('L_star',     n_Lsun * L_SUN)
+        rho_fluid = dataset.get('rho_fluid',  1.0e-20)
+        g_base    = G * M / (r * r)
+        P_rad     = L_star / (4.0 * math.pi * r * r * C_LIGHT)
+        a_rad     = P_rad / rho_fluid
+        eta_rad   = a_rad / g_base
+        return {
+            'primary_equations': [
+                f'L_star = {n_Lsun:.0f} L_sun = {L_star:.4e} W  [PAPER_312]',
+                f'P_rad = L/(4pi*r^2*c) = {P_rad:.4e} Pa',
+                f'a_rad = P_rad/rho = {a_rad:.4e} m/s^2',
+                f'eta_rad = a_rad/g_base = {eta_rad:.4e}  (DOMINANT: {eta_rad:.2e}x gravity)',
+            ],
+            'available_equations': [
+                'P_rad(L_star, r)',
+                'a_rad(P_rad, rho_fluid)',
+                'eta_rad(a_rad, g_base)',
+                'L_star(n_Lsun)',
+            ],
+            'simulation_set': [
+                {'n_Lsun': nl,
+                 'L_W': nl * L_SUN,
+                 'P_rad_Pa': nl * L_SUN / (4.0 * math.pi * r * r * C_LIGHT),
+                 'a_rad': nl * L_SUN / (4.0 * math.pi * r * r * C_LIGHT * rho_fluid)}
+                for nl in [1000, 2000, 5000, 10000, 50000]
+            ],
+            'L_star_W':     L_star,
+            'P_rad_Pa':     P_rad,
+            'a_rad_m_s2':   a_rad,
+            'eta_rad':      eta_rad,
+            'papers':       ['PAPER_312'],
+            'session':      89,
+        }
+
+
+class EquatorialTorusMagneticConfinementCalculator:
+    """PAPER_313 — NGC 6302 Equatorial Torus Magnetic Confinement. eta_B_conf=3.979e5.
+    beta_plasma=2.513e-6; v_Alfven=8.921e7 m/s; v_A/v_wind=892.1.
+    Session 89 — 31st C++ module — FIRST Bipolar PN UQFF 2.0.
+    FIRST UQFF equatorial PN torus magnetic confinement (beta_plasma < 10^-5, magnetically dominated).
+    WOLFRAM_TERM: NGC6302_TORUS_CONFINEMENT"""
+
+    def compute(self, dataset: dict) -> dict:
+        import math
+        MU_0      = 1.2566e-6
+        B         = dataset.get('B',         1.0e-5)
+        v_wind    = dataset.get('v_wind',    1.0e5)
+        rho_fluid = dataset.get('rho_fluid', 1.0e-20)
+        P_mag         = B**2 / (2.0 * MU_0)
+        P_ram         = rho_fluid * v_wind**2
+        eta_B_conf    = P_mag / P_ram
+        beta_plasma   = P_ram / P_mag
+        v_Alfven      = B / math.sqrt(MU_0 * rho_fluid)
+        vA_over_vwind = v_Alfven / v_wind
+        C_LIGHT       = 3.0e8
+        vA_over_c     = v_Alfven / C_LIGHT
+        return {
+            'primary_equations': [
+                f'P_mag = B^2/(2*mu0) = {P_mag:.4e} Pa  [PAPER_313]',
+                f'P_ram = rho*v_wind^2 = {P_ram:.4e} Pa',
+                f'eta_B_conf = P_mag/P_ram = {eta_B_conf:.4e}  (magnetically dominated)',
+                f'beta_plasma = P_ram/P_mag = {beta_plasma:.4e}  (beta << 1)',
+                f'v_Alfven = B/sqrt(mu0*rho) = {v_Alfven:.4e} m/s  ({vA_over_c:.4f} c)',
+                f'v_Alfven/v_wind = {vA_over_vwind:.2f}',
+            ],
+            'available_equations': [
+                'P_mag(B)',
+                'P_ram(rho_fluid, v_wind)',
+                'eta_B_conf(P_mag, P_ram)',
+                'beta_plasma(P_ram, P_mag)',
+                'v_Alfven(B, rho_fluid)',
+            ],
+            'simulation_set': [
+                {'B_T': bv,
+                 'P_mag_Pa': bv**2 / (2.0 * MU_0),
+                 'eta_B': bv**2 / (2.0 * MU_0 * P_ram),
+                 'v_Alfven': bv / math.sqrt(MU_0 * rho_fluid)}
+                for bv in [1e-6, 1e-5, 1e-4, 1e-3, 1e-2]
+            ],
+            'P_mag_Pa':         P_mag,
+            'P_ram_Pa':         P_ram,
+            'eta_B_conf':       eta_B_conf,
+            'beta_plasma':      beta_plasma,
+            'v_Alfven_m_s':     v_Alfven,
+            'vA_over_vwind':    vA_over_vwind,
+            'vA_over_c':        vA_over_c,
+            'papers':           ['PAPER_313'],
+            'session':          89,
+        }
+
+
 # ---------------------------------------------------------------------------
 # __all__ export
 # ---------------------------------------------------------------------------
@@ -11461,4 +11622,8 @@ __all__ = [
     "SpiralArmTorqueGravitationalAmplifierCalculator",
     "SNIaHubbleTensionImprintCalculator",
     "SpiralDMVisiblePartitionRotationCalculator",
+    # Session 89 — PAPER_311–313 (NGC 6302 UQFF 2.0 — 31st C++ module, FIRST Bipolar PN)
+    "BiPolarPNWindShockGravitationalDominanceCalculator",
+    "BiPolarPNUVRadiationPressureCalculator",
+    "EquatorialTorusMagneticConfinementCalculator",
 ]
