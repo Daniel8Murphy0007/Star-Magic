@@ -59,6 +59,8 @@ private:
     static constexpr double HBAR         = 1.0546e-34;
     static constexpr double E_VAC        = 7.09e-36;
     static constexpr double E_0          = 6.381e-36;   // reduced vacuum [PAPER_294 pattern]
+    static constexpr double LAMBDA       = 1.1e-52;      // cosmological constant Λ [CR34b]
+    static constexpr double F_AETHER     = 1.576e-35;    // Aether frequency [CR34b]
     static constexpr double PI           = 3.141592653589793;
     static constexpr double T_COSMIC_GYR = 13.8;
 
@@ -159,8 +161,8 @@ const CR34SystemParams CompressedResonanceUQFF34Module::SYSTEMS[7] = {
     {1e10, 1e22, 3.142e41, 2e-1, 2e5,   1.543e64,
      1e10, 0.143, 1.411e14, 1e1, 1e8,  1.445e-17, 1.269e-14, 1.373e-8,
      1e13, 1e16, 1e-8, 1e12,  "Spirals+SN Ia"},
-    // sys32: NGC 6302 Bug Nebula
-    {1e12, 1e20, 3.142e32, 2e-3, 2.68e5, 1.458e48,
+    // sys32: NGC 6302 Bug Nebula (A_vort=7.207e32 precise; 3.142e32 was π-placeholder [CR34b])
+    {1e12, 1e20, 7.207e32, 2e-3, 2.68e5, 1.458e48,
      1e12, 0.143, 1.411e16, 1e4, 1e10, 1.445e-17, 1.269e-14, 1.373e-8,
      1e15, 1e20, 1e-10, 1e3,  "NGC 6302 Bug Nebula"},
     // sys34: Orion Nebula M42 (V_sys canonical=(4/3)pi*(1.18e17)^3=6.887e51; stub 6.132e51 FIXED)
