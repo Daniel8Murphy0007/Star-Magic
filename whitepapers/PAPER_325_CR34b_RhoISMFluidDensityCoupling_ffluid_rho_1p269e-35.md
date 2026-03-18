@@ -1,0 +1,73 @@
+# PAPER_325 — CR34b Rho-ISM Fluid Density Coupling: f_fluid×ρ_ISM = 1.269×10⁻³⁵ kg/m³/Hz
+**Session 93 | CompressedResonanceUQFF34bModule | UQFF Fluid Term Enhancement**
+**FIRST UQFF mass-density-weighted fluid accelerative term in dual-channel framework**
+
+---
+
+## Abstract
+CR34b introduces a mass-density-weighted fluid term `a_fluid_rho` that extends the CR34 volumetric fluid term by multiplying by the ISM ambient density ρ_ISM. The product `f_fluid × ρ_ISM = 1.269×10⁻¹⁴ × 1×10⁻²¹ = 1.269×10⁻³⁵ kg/m³/Hz` defines the ISM fluid coupling constant — the first UQFF fluid term that properly accounts for the mass density of the medium through which DPM propagates. CR34b with ρ_ISM = 1 kg/m³ reduces identically to the CR34 fluid term, confirming backward compatibility.
+
+---
+
+## Fluid Term Comparison
+
+### CR34 (volumetric only):
+$$a_{\text{fluid}} = \frac{f_{\text{fluid}} \cdot E_{\text{VAC}} \cdot V_{\text{fluid}} \cdot a_{\text{DPM}}}{(E_{\text{VAC}}/10) \cdot c} = \frac{f_{\text{fluid}} \times 10 \times V_{\text{fluid}}}{c} \cdot a_{\text{DPM}}$$
+
+### CR34b (rho-weighted):
+$$a_{\text{fluid\_rho}} = \frac{f_{\text{fluid}} \cdot E_{\text{VAC,neb}} \cdot V_{\text{fluid}} \cdot \rho_{\text{ISM}} \cdot a_{\text{DPM}}}{E_{\text{VAC,ISM}} \cdot c} = \frac{f_{\text{fluid}} \times 10 \times V_{\text{fluid}} \times \rho_{\text{ISM}}}{c} \cdot a_{\text{DPM}}$$
+
+**Ratio:** `a_fluid_rho / a_fluid = ρ_ISM`
+
+For ISM: `ρ_ISM = 1×10⁻²¹ kg/m³` → CR34b fluid term is 10²¹ times smaller than CR34 fluid term.
+
+---
+
+## ISM Fluid Coupling Constant
+
+$$\xi_{\text{fluid}} = f_{\text{fluid}} \times \rho_{\text{ISM}} = 1.269 \times 10^{-14} \text{ Hz} \times 1 \times 10^{-21} \text{ kg/m}^3 = 1.269 \times 10^{-35} \text{ kg/m}^3/\text{Hz}$$
+
+This constant governs the mass-coupling of DPM force density to the interstellar medium. Its units [kg/m³/Hz] make it the UQFF analogue of a fluid dynamic viscosity-frequency product.
+
+---
+
+## System-Specific rho_fluid Values in CR34b
+
+| System | rho_fluid [kg/m³] | Context |
+|--------|------------------|---------|
+| Sombrero (sys18) | 1×10⁻²¹ | ISM proxy |
+| Andromeda (sys19) | 1×10⁻²¹ | ISM proxy |
+| Universe (sys20) | 8.6×10⁻²⁷ | CMB baryon density |
+| Saturn (sys22) | 1×10⁻²¹ | ISM proxy (magnetospheric) |
+| M16 Eagle (sys23) | 1×10⁻²⁰ | HII region density (10× ISM) |
+| Crab Nebula (sys24) | 1×10⁻²¹ | SNR ISM proxy |
+
+Universe uses baryon density 8.6×10⁻²⁷ kg/m³ (consistent with CR34 Universe Diameter system).
+M16 Eagle uses 1×10⁻²⁰ (denser HII environment).
+
+---
+
+## Physical Interpretation
+
+The ISM cloud is not empty — it has mass density ρ_ISM. DPM force propagates through this medium and couples to it through the fluid term. CR34's omission of ρ is equivalent to treating the ISM as a massless field — valid for first-order estimates but incomplete. CR34b corrects this:
+
+$$a_{\text{fluid\_rho}} = \kappa_{\text{DPM}} \cdot f_{\text{fluid}} \cdot V_{\text{fluid}} \cdot \rho_{\text{fluid}} \cdot a_{\text{DPM}}$$
+
+where $\kappa_{\text{DPM}} = E_{\text{VAC,neb}} / (E_{\text{VAC,ISM}} \cdot c) = 10/c = 3.333 \times 10^{-8}$ s/m.
+
+---
+
+## Backward Compatibility
+
+Setting ρ_fluid = 1 kg/m³ in CR34b:
+$$a_{\text{fluid\_rho}}|_{\rho=1} = \frac{f_{\text{fluid}} \times 10 \times V_{\text{fluid}}}{c} \cdot a_{\text{DPM}} = a_{\text{fluid(CR34)}}$$
+
+**CR34b fluid term is a strict generalization of CR34 fluid term.** CR34b introduces density-physical consistency; CR34 remains valid at unit-density approximation.
+
+---
+
+## Classification
+- **FIRST UQFF mass-density-weighted fluid accelerative term**
+- **ISM coupling constant ξ_fluid = 1.269×10⁻³⁵ kg/m³/Hz**
+- **CR34b strictly extends CR34** — reduces to CR34 when ρ_ISM = 1 kg/m³
+- Copyright — Daniel T. Murphy, Session 93 (March 18, 2026)

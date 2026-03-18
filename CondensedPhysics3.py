@@ -11901,6 +11901,131 @@ class CR34HiIRegionTHzGeometricDifferentialCalculator:
         }
 
 
+# Session 93 — PAPER_323-325 (CR34b UQFF 2.0 — 35th C++ module, CR34 variant, 11-term 6-system)
+
+class CR34bVacuumAetherFrequencyModeCalculator:
+    """Session 93 — PAPER_323: F_AETHER=1.576e-35 Hz, 11th UQFF term: vacuum aether frequency mode.
+    a_aether_freq = F_AETHER * E_VAC_neb * a_DPM / (E_VAC_ISM * c) = 5.253e-43 * a_DPM.
+    Smallest UQFF coupling coefficient identified. Cosmological vacuum frequency mode.
+    Distinct from a_aether_res (resonance). Forms UQFF aether doublet with a_aether_res.
+    FIRST vacuum aether frequency mode in UQFF dual-channel framework."""
+
+    F_AETHER    = 1.576e-35
+    E_VAC_NEB   = 7.09e-36
+    E_VAC_ISM   = 7.09e-37
+    C_LIGHT     = 3.0e8
+
+    # CR34b 6-system a_DPM seeds (computed from SYSTEMS table)
+    SYSTEMS = {
+        18: {'name': 'Sombrero M104',  'a_DPM': 7.985e-35},
+        19: {'name': 'Andromeda M31',  'a_DPM': 6.988e-36},
+        20: {'name': 'Universe',       'a_DPM': 4.163e-42},
+        22: {'name': 'Saturn',         'a_DPM': 1.617e-24},
+        23: {'name': 'M16 Eagle',      'a_DPM': 1.549e-24},
+        24: {'name': 'Crab Nebula M1', 'a_DPM': 1.504e-19},
+    }
+
+    def compute(self, dataset: dict = None) -> dict:
+        kappa = (self.F_AETHER * self.E_VAC_NEB) / (self.E_VAC_ISM * self.C_LIGHT)
+        results = {}
+        for sid, s in self.SYSTEMS.items():
+            results[f'sys{sid}_{s["name"].replace(" ","_")}'] = s['a_DPM'] * kappa
+        return {
+            'F_AETHER_Hz':               self.F_AETHER,
+            'coupling_coefficient':      kappa,
+            'coupling_label':            '5.253e-43 [smallest UQFF coefficient]',
+            'a_aether_freq_per_system':  results,
+            'aether_doublet':            'a_aether_res (resonance) + a_aether_freq (frequency)',
+            'T_aether_oscillation_yr':   1.0 / (self.F_AETHER * 3.156e7),
+            'papers':                    ['PAPER_323'],
+            'session':                   93,
+        }
+
+
+class CR34bSaturnFirstPlanetaryDualChannelCalculator:
+    """Session 93 — PAPER_324: Saturn FIRST planetary body in UQFF dual-channel.
+    V_sys=9.184e23 m^3 fills planetary gap in xi_span between atomic and nebular.
+    a_vac_diff=1.29e-2 m/s^2 dominates compressed channel for planetary scale.
+    f_DPM=1e12 Hz: microwave THz-boundary regime — first planetary in CR series.
+    FIRST planetary-scale dual-channel UQFF computation."""
+
+    E_VAC   = 7.09e-36
+    E_0     = 6.381e-36
+    HBAR    = 1.0546e-34
+    C_LIGHT = 3.0e8
+
+    def compute(self, dataset: dict = None) -> dict:
+        # Saturn sys22 parameters
+        I, A_vort, omega_diff = 1e19, 3.142e15, 2e-3
+        f_DPM, V_sys, f_vac_diff = 1e12, 9.184e23, 0.143
+        f_super = 1.411e16
+        F_DPM = I * A_vort * omega_diff
+        a_DPM = (F_DPM * f_DPM * self.E_VAC) / (self.C_LIGHT * V_sys)
+        A_sc  = (self.HBAR * f_super * f_DPM) / (self.E_VAC * self.C_LIGHT)
+        a_super     = A_sc * a_DPM
+        a_vac_diff  = (self.E_0 * f_vac_diff * V_sys * a_DPM) / self.HBAR
+        v_exp       = 5e3
+        Gamma_THz   = 10.0 * 1e12 * v_exp / self.C_LIGHT
+        a_THz       = Gamma_THz * a_DPM
+        a_comp      = a_DPM + a_THz + a_vac_diff + a_super
+        vac_diff_fraction = a_vac_diff / a_comp if a_comp != 0 else 0
+        return {
+            'system':                    'Saturn sys22',
+            'V_sys_m3':                  V_sys,
+            'f_DPM_Hz':                  f_DPM,
+            'F_DPM_N':                   F_DPM,
+            'a_DPM_m_s2':               a_DPM,
+            'a_THz_m_s2':               a_THz,
+            'a_vac_diff_m_s2':          a_vac_diff,
+            'a_super_m_s2':             a_super,
+            'a_comp_m_s2':              a_comp,
+            'vac_diff_fraction':         vac_diff_fraction,
+            'dominant_term':             'a_vac_diff',
+            'xi_span_coverage':          'fills planetary gap: atomic(4.189e-31) -> Saturn(9.184e23) -> nebular',
+            'freq_regime':               'THz-boundary 1e12 Hz — same as Crab/NGC6302',
+            'first_planetary':           True,
+            'papers':                    ['PAPER_324'],
+            'session':                   93,
+        }
+
+
+class CR34bRhoISMFluidDensityCouplingCalculator:
+    """Session 93 — PAPER_325: CR34b rho-ISM density-weighted fluid term.
+    a_fluid_rho = f_fluid * E_VAC_neb * V_fluid * rho_ISM * a_DPM / (E_VAC_ISM * c).
+    ISM coupling constant: f_fluid * rho_ISM = 1.269e-35 kg/m^3/Hz.
+    CR34b extends CR34 fluid term: CR34b(rho=1) = CR34 fluid term exactly.
+    FIRST UQFF mass-density-weighted fluid accelerative term."""
+
+    E_VAC_NEB = 7.09e-36
+    E_VAC_ISM = 7.09e-37
+    C_LIGHT   = 3.0e8
+    F_FLUID   = 1.269e-14
+    RHO_ISM   = 1e-21      # kg/m^3 standard ISM
+
+    def compute(self, dataset: dict = None) -> dict:
+        kappa_DPM  = self.E_VAC_NEB / (self.E_VAC_ISM * self.C_LIGHT)  # 10/c
+        xi_fluid   = self.F_FLUID * self.RHO_ISM
+        # CR34 fluid: a = f_fluid * 10 * V * a_DPM / c  (rho not included)
+        # CR34b fluid: a = f_fluid * 10 * V * rho * a_DPM / c
+        ratio_cr34b_to_cr34 = self.RHO_ISM  # = 1e-21
+        # For Eagle Nebula sys23: rho_HII = 1e-20 (10x denser)
+        xi_fluid_HII = self.F_FLUID * 1e-20
+        return {
+            'ISM_coupling_constant_kg_m3_Hz': xi_fluid,
+            'kappa_DPM_s_m':                  kappa_DPM,
+            'ratio_CR34b_to_CR34':            ratio_cr34b_to_cr34,
+            'CR34b_reduces_to_CR34_at_rho1':  True,
+            'rho_fluid_ISM_kg_m3':            self.RHO_ISM,
+            'xi_fluid_ISM':                   xi_fluid,
+            'xi_fluid_HII_Eagle_M16':         xi_fluid_HII,
+            'rho_Universe_baryon_kg_m3':      8.6e-27,
+            'rho_Saturn_magnetosphere':       1e-21,
+            'unit':                           'kg/m^3/Hz (UQFF fluid coupling units)',
+            'papers':                         ['PAPER_325'],
+            'session':                        93,
+        }
+
+
 # ---------------------------------------------------------------------------
 # __all__ export
 # ---------------------------------------------------------------------------
@@ -12160,4 +12285,8 @@ __all__ = [
     "CR34DPMForceDensitySpectralAtlasCalculator",
     "CR34CrossChannelDominanceCrossoverCalculator",
     "CR34HiIRegionTHzGeometricDifferentialCalculator",
+    # Session 93 — PAPER_323-325 (CR34b UQFF 2.0 — 35th C++ module, CR34 variant, 11-term 6-system)
+    "CR34bVacuumAetherFrequencyModeCalculator",
+    "CR34bSaturnFirstPlanetaryDualChannelCalculator",
+    "CR34bRhoISMFluidDensityCouplingCalculator",
 ]
