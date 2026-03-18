@@ -11036,6 +11036,188 @@ class LagoonNebulaDualRadiationEMBarrierCalculator:
         }
 
 
+
+class SpiralArmTorqueGravitationalAmplifierCalculator:
+    """PAPER_308 — Spiral Arm Torque Gravitational Amplifier.
+    tau_spiral(10 Gyr)=2.046; T_pattern=307 Myr; dTau/dt=6.483e-18 s^-1=2.741x H0_SH0ES.
+    g_amp=3.046 (gravity 3x at 10 Gyr). f_gas=0.01; Omega_p=6.483e-16 rad/s.
+    Session 88 — 30th C++ module — FIRST Spiral+SN Ia UQFF 2.0.
+    FIRST UQFF spiral arm pattern speed gravitational amplifier."""
+
+    def compute(self, dataset: dict) -> dict:
+        import math
+        G       = 6.6743e-11
+        M_SUN   = 1.989e30
+        YR_TO_S = 3.15576e7
+        KPC_M   = 3.086e19
+        MPC_M   = 3.086e22
+        M       = dataset.get('M', 1.0e11 * M_SUN)
+        M_gas   = dataset.get('M_gas', 1.0e9 * M_SUN)
+        r       = dataset.get('r', 9.258e20)
+        Omega_p = dataset.get('Omega_p', 20.0e3 / KPC_M)
+        H0      = dataset.get('H0', 73.0)
+        f_gas          = M_gas / M
+        T_pattern      = 2.0 * math.pi / Omega_p
+        T_10Gyr        = 10.0e9 * YR_TO_S
+        tau_10Gyr      = f_gas * Omega_p * T_10Gyr
+        g_amp          = 1.0 + tau_10Gyr
+        dTau_dt        = f_gas * Omega_p
+        H0_SI          = H0 * 1.0e3 / MPC_M
+        dTau_vs_H0     = dTau_dt / H0_SI if H0_SI else 0.0
+        T_Myr          = T_pattern / (1.0e6 * YR_TO_S)
+        return {
+            'primary_equations': [
+                f'tau_spiral(t) = (M_gas/M) * Omega_p * t  [PAPER_308 — dimensionless torque]',
+                f'tau_spiral(10 Gyr) = {f_gas} * {Omega_p:.4e} * {T_10Gyr:.4e} = {tau_10Gyr:.4f}',
+                f'g_amp = 1 + tau = {g_amp:.4f}  (gravity {g_amp:.2f}x at 10 Gyr)',
+                f'T_pattern = 2pi/Omega_p = {T_pattern:.4e} s = {T_Myr:.1f} Myr',
+                f'dTau/dt = {dTau_dt:.4e} s^-1  ({dTau_vs_H0:.3f} x H0_SH0ES)',
+            ],
+            'available_equations': [
+                'tau_spiral(t) via f_gas, Omega_p, t',
+                'T_pattern_Myr(Omega_p)',
+                'dTau_vs_H0(H0_SH0ES)',
+                'g_amp(tau)',
+            ],
+            'simulation_set': [
+                {'t_Gyr': t, 'tau': f_gas * Omega_p * t * 1.0e9 * YR_TO_S,
+                 'g_amp': 1.0 + f_gas * Omega_p * t * 1.0e9 * YR_TO_S}
+                for t in [0, 1, 2, 5, 7, 10]
+            ],
+            'tau_spiral_10Gyr': tau_10Gyr,
+            'T_pattern_Myr':    T_Myr,
+            'dTau_dt':          dTau_dt,
+            'dTau_vs_H0':       dTau_vs_H0,
+            'g_amp':            g_amp,
+            'papers':           ['PAPER_308'],
+            'session':          88,
+        }
+
+
+class SNIaHubbleTensionImprintCalculator:
+    """PAPER_309 — SN Ia Hubble Tension Imprint. delta_SN=2.52% at z=0.5, t=5 Gyr.
+    eta_SN=2.0e16; a_SN=3.096e5 m/s^2; H0_SH0ES=73.0 vs Planck=67.4 (8.31% tension).
+    flux_SN=3.096e-16 Pa. Session 88 — 30th C++ module — FIRST Spiral+SN Ia.
+    FIRST UQFF SN Ia H0 tension gravitational signature."""
+
+    def compute(self, dataset: dict) -> dict:
+        import math
+        G         = 6.6743e-11
+        C_LIGHT   = 2.998e8
+        M_SUN     = 1.989e30
+        YR_TO_S   = 3.15576e7
+        MPC_M     = 3.086e22
+        H0_PLANCK = 67.4
+        M       = dataset.get('M', 1.0e11 * M_SUN)
+        r       = dataset.get('r', 9.258e20)
+        L_SN    = dataset.get('L_SN', 1.0e36)
+        rho_f   = dataset.get('rho_fluid', 1.0e-21)
+        H0      = dataset.get('H0', 73.0)
+        Omega_m = dataset.get('Omega_m', 0.3)
+        Omega_L = dataset.get('Omega_L', 0.7)
+        z       = dataset.get('z', 0.5)
+        flux_SN     = L_SN / (4.0 * math.pi * r * r * C_LIGHT)
+        a_SN        = flux_SN / rho_f
+        g_base      = G * M / (r * r)
+        eta_SN      = a_SN / g_base if g_base else 0.0
+        h_factor    = math.sqrt(Omega_m * (1 + z)**3 + Omega_L)
+        Hz_SH0ES    = (H0 * 1.0e3 / MPC_M) * h_factor
+        Hz_Planck   = (H0_PLANCK * 1.0e3 / MPC_M) * h_factor
+        t_5Gyr      = 5.0e9 * YR_TO_S
+        fac_SH0ES   = 1.0 + Hz_SH0ES  * t_5Gyr
+        fac_Planck  = 1.0 + Hz_Planck * t_5Gyr
+        delta_SN    = (fac_SH0ES - fac_Planck) / fac_SH0ES if fac_SH0ES else 0.0
+        d_tension   = (H0 - H0_PLANCK) / H0_PLANCK * 100.0
+        return {
+            'primary_equations': [
+                f'flux_SN = L_SN/(4pi*r^2*c) = {flux_SN:.4e} Pa  [PAPER_309]',
+                f'a_SN = flux_SN/rho_ISM = {a_SN:.4e} m/s^2',
+                f'eta_SN = a_SN/g_base = {eta_SN:.3e}',
+                f'H0_SH0ES={H0} vs H0_Planck={H0_PLANCK} km/s/Mpc; tension={d_tension:.2f}%',
+                f'delta_SN/SN(z={z}, t=5 Gyr) = {delta_SN:.4f} = {delta_SN*100:.2f}%',
+            ],
+            'available_equations': [
+                'a_SN(L_SN, r, rho_ISM)',
+                'eta_SN(a_SN, g_base)',
+                'Hz_SH0ES_vs_Planck(z)',
+                'delta_tension(H0_SH0ES, H0_Planck, z, t)',
+            ],
+            'simulation_set': [
+                {'z': zv, 'delta_pct': (
+                    (1 + (H0*1e3/MPC_M)*math.sqrt(Omega_m*(1+zv)**3+Omega_L)*t_5Gyr) -
+                    (1 + (H0_PLANCK*1e3/MPC_M)*math.sqrt(Omega_m*(1+zv)**3+Omega_L)*t_5Gyr)
+                ) / (1 + (H0*1e3/MPC_M)*math.sqrt(Omega_m*(1+zv)**3+Omega_L)*t_5Gyr) * 100
+                for zv in [0.1, 0.3, 0.5, 1.0, 1.5]
+                }
+            ],
+            'flux_SN_Pa':       flux_SN,
+            'a_SN_m_s2':        a_SN,
+            'eta_SN':           eta_SN,
+            'delta_tension_pct':delta_SN * 100.0,
+            'H0_tension_pct':   d_tension,
+            'papers':           ['PAPER_309'],
+            'session':          88,
+        }
+
+
+class SpiralDMVisiblePartitionRotationCalculator:
+    """PAPER_310 — DM/Visible Mass Partition Rotation Curve Excess. eta_DM_vis=5.667.
+    v_excess=67.1%; v_circ=1.197e5 m/s; g_DM=1.316e-11 m/s^2; g_vis=2.324e-12 m/s^2.
+    Session 88 — 30th C++ module — FIRST Spiral+SN Ia UQFF 2.0.
+    FIRST UQFF explicit DM/visible partition with rotation curve excess analysis."""
+
+    def compute(self, dataset: dict) -> dict:
+        import math
+        G     = 6.6743e-11
+        M_SUN = 1.989e30
+        M     = dataset.get('M', 1.0e11 * M_SUN)
+        f_vis = dataset.get('f_vis', 0.15)
+        f_DM  = dataset.get('f_DM', 0.85)
+        r     = dataset.get('r', 9.258e20)
+        v_rot = dataset.get('v_rot', 2.0e5)
+        M_vis       = f_vis * M
+        M_dm        = f_DM  * M
+        eta_DM_vis  = f_DM / f_vis if f_vis else 0.0
+        g_vis       = G * M_vis / (r * r)
+        g_DM        = G * M_dm  / (r * r)
+        g_base      = G * M     / (r * r)
+        v_circ      = math.sqrt(G * M / r)
+        v_excess    = v_rot / v_circ if v_circ else 0.0
+        return {
+            'primary_equations': [
+                f'eta_DM_vis = f_DM/f_vis = {f_DM}/{f_vis} = {eta_DM_vis:.4f}  [PAPER_310]',
+                f'g_vis = G*M_vis/r^2 = {g_vis:.4e} m/s^2',
+                f'g_DM  = G*M_DM/r^2  = {g_DM:.4e} m/s^2  ({eta_DM_vis:.3f}x g_vis)',
+                f'v_circ = sqrt(GM/r)  = {v_circ:.4e} m/s  (Keplerian)',
+                f'v_rot  = {v_rot:.4e} m/s  (observed flat curve)',
+                f'v_excess = v_rot/v_circ = {v_excess:.4f}  ({(v_excess-1)*100:.1f}% above Keplerian)',
+            ],
+            'available_equations': [
+                'eta_DM_vis(f_DM, f_vis)',
+                'g_vis(M, f_vis, r)',
+                'g_DM(M, f_DM, r)',
+                'v_circ(M, r)',
+                'v_excess(v_rot, v_circ)',
+            ],
+            'simulation_set': [
+                {'f_DM': fd, 'f_vis': 1.0-fd,
+                 'eta': fd/(1.0-fd),
+                 'g_DM': G*fd*M/(r*r),
+                 'v_circ': math.sqrt(G*M/r),
+                 'v_excess': v_rot / math.sqrt(G*M/r)}
+                for fd in [0.70, 0.75, 0.80, 0.85, 0.90]
+            ],
+            'eta_DM_vis':   eta_DM_vis,
+            'g_vis_m_s2':   g_vis,
+            'g_DM_m_s2':    g_DM,
+            'v_circ_m_s':   v_circ,
+            'v_excess':     v_excess,
+            'v_excess_pct': (v_excess - 1.0) * 100.0,
+            'papers':       ['PAPER_310'],
+            'session':      88,
+        }
+
+
 # ---------------------------------------------------------------------------
 # __all__ export
 # ---------------------------------------------------------------------------
@@ -11275,4 +11457,8 @@ __all__ = [
     "LagoonNebulaSFRMassRunawayCalculator",
     "LagoonNebulaHerschelRadiationErosionCalculator",
     "LagoonNebulaDualRadiationEMBarrierCalculator",
+    # Session 88 — PAPER_308–310 (Spiral+SN Ia UQFF 2.0 — 30th C++ module, FIRST Spiral+SN Ia)
+    "SpiralArmTorqueGravitationalAmplifierCalculator",
+    "SNIaHubbleTensionImprintCalculator",
+    "SpiralDMVisiblePartitionRotationCalculator",
 ]
