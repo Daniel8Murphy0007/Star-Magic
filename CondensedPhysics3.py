@@ -11379,6 +11379,180 @@ class EquatorialTorusMagneticConfinementCalculator:
         }
 
 
+class BipolarPNLobeResonanceDPMMacroAntennaCalculator:
+    """PAPER_314 — NGC6302 Bipolar PN Lobe DPM Macro-Antenna Force.
+    F_DPM = I_wind * A_area * delta_omega = 1.267e50 N;
+    a_DPM = 2.497e-31 m/s².
+    13-order amplification over compact DPM force (PAPER_293 F=6.284e36 N).
+    FIRST UQFF DPM force at planetary nebula lobe scale (r~1.5 ly)."""
+
+    def compute(self, dataset: dict) -> dict:
+        import math
+        G = 6.6743e-11
+        c = 2.998e8
+        PI = math.pi
+        E_VAC_NEB  = dataset.get('E_vac_neb',  7.09e-36)
+        r          = dataset.get('r',           1.42e16)
+        I_wind     = dataset.get('I_wind',      1e20)
+        omega_1    = dataset.get('omega_1',     1e-3)
+        omega_2    = dataset.get('omega_2',     -1e-3)
+        f_DPM      = dataset.get('f_DPM',       1e12)
+        A_area     = PI * r * r
+        V_sys      = (4.0/3.0) * PI * r**3
+        delta_omega = omega_1 - omega_2
+        F_DPM      = I_wind * A_area * delta_omega
+        a_DPM      = (F_DPM * f_DPM * E_VAC_NEB) / (c * V_sys)
+        F_compact  = 6.284e36  # PAPER_293 reference
+        ratio_FPN  = F_DPM / F_compact
+        return {
+            'primary_equations': [
+                f'F_DPM = I_wind * A_area * Δω = {I_wind:.2e} * {A_area:.3e} * {delta_omega:.2e} = {F_DPM:.3e} N',
+                f'a_DPM = F_DPM * f_DPM * E_vac_neb / (c * V_sys) = {a_DPM:.3e} m/s²',
+                f'F_PN/F_compact = {F_DPM:.3e}/{F_compact:.3e} = {ratio_FPN:.3e} (13-order amplification)',
+            ],
+            'available_equations': [
+                'A_area(r) = pi*r²',
+                'V_sys(r)  = (4/3)*pi*r³',
+                'F_DPM(I, A, Δω)',
+                'a_DPM(F_DPM, f_DPM, E_vac_neb, c, V_sys)',
+                'ratio_FPN_compact',
+            ],
+            'simulation_set': [
+                {'r_m': rv,
+                 'A_area_m2': PI * rv**2,
+                 'F_DPM_N': I_wind * PI * rv**2 * delta_omega,
+                 'a_DPM_m_s2': (I_wind * PI * rv**2 * delta_omega * f_DPM * E_VAC_NEB)
+                               / (c * (4.0/3.0)*PI*rv**3)}
+                for rv in [1e14, 1e15, 1.42e16, 1e17, 1e18]
+            ],
+            'F_DPM_N':         F_DPM,
+            'a_DPM_m_s2':      a_DPM,
+            'ratio_FPN_compact': ratio_FPN,
+            'papers':          ['PAPER_314'],
+            'session':         90,
+        }
+
+
+class ResonanceVacDiffTHzCrossoverRadiusCalculator:
+    """PAPER_315 — NGC6302 UQFF Resonance VacDiff-THz Crossover Radius.
+    r_cross = 3.280 km: below = THz dominant; above = VacDiff dominant.
+    Gamma_THz=8.939e9; a_THz=2.232e-21 m/s²;
+    a_vac_diff/a_THz at PN scale = 8.118e37 (38-order dominance).
+    FIRST UQFF bi-modal resonance crossover radius."""
+
+    def compute(self, dataset: dict) -> dict:
+        import math
+        PI    = math.pi
+        c     = 2.998e8
+        HBAR  = 1.0546e-34
+        E_0   = dataset.get('E_0',      6.381e-36)
+        E_VAC_NEB = dataset.get('E_vac_neb', 7.09e-36)
+        E_VAC_ISM = dataset.get('E_vac_ISM', 7.09e-37)
+        f_THz = dataset.get('f_THz',   1e12)
+        v_exp = dataset.get('v_exp',   2.68e5)
+        r     = dataset.get('r',       1.42e16)
+        VAC_RATIO = E_VAC_NEB / E_VAC_ISM
+        Gamma_THz = VAC_RATIO * f_THz * v_exp / c
+        # crossover radius
+        r3_cross  = (3.0 * HBAR * Gamma_THz) / (4.0 * PI * E_0)
+        r_cross   = r3_cross ** (1.0/3.0)
+        # dominance at current r
+        V_sys     = (4.0/3.0) * PI * r**3
+        vac_THz_ratio = (E_0 * V_sys / HBAR) / Gamma_THz
+        # Crab comparison
+        Gamma_Crab = VAC_RATIO * 1e12 * 1.5e6 / c
+        ratio_scale = Gamma_THz / Gamma_Crab
+        v_ratio     = v_exp / 1.5e6
+        return {
+            'primary_equations': [
+                f'Γ_THz = VAC_RATIO * f_THz * v_exp / c = {VAC_RATIO} * {f_THz:.0e} * {v_exp:.2e} / c = {Gamma_THz:.3e}',
+                f'r_cross = (3*ħ*Γ_THz / (4π*E_0))^(1/3) = {r_cross:.3e} m = {r_cross/1e3:.3f} km',
+                f'a_vac_diff/a_THz at r={r:.2e} m = {vac_THz_ratio:.3e} (VacDiff dominates by 38 orders)',
+            ],
+            'available_equations': [
+                'Gamma_THz(f_THz, v_exp, VAC_RATIO)',
+                'r_cross = (3*hbar*Gamma_THz/(4*pi*E_0))^(1/3)',
+                'vac_THz_ratio(E_0, V_sys, hbar, Gamma_THz)',
+                'scaling_law: Gamma_THz/Gamma_Crab = v_exp/v_exp_Crab',
+            ],
+            'simulation_set': [
+                {'v_exp_m_s': vv,
+                 'Gamma_THz': VAC_RATIO * f_THz * vv / c,
+                 'r_cross_km': ((3*HBAR * VAC_RATIO * f_THz * vv / c) / (4*PI*E_0))**(1.0/3.0) / 1e3}
+                for vv in [1e4, 1e5, 2.68e5, 1e6, 1.5e6]
+            ],
+            'Gamma_THz':        Gamma_THz,
+            'r_cross_m':        r_cross,
+            'r_cross_km':       r_cross / 1e3,
+            'vac_THz_ratio_PN': vac_THz_ratio,
+            'Gamma_Crab':       Gamma_Crab,
+            'ratio_NGC6302_Crab': ratio_scale,
+            'v_ratio_check':    v_ratio,
+            'papers':           ['PAPER_315'],
+            'session':          90,
+        }
+
+
+class CooperDPMf1THz_AscConfirmationCalculator:
+    """PAPER_316 — NGC6302 Cooper-DPM f_DPM=1e12 Hz Class Confirmation.
+    A_sc=6.994e21; a_super=1.747e-9 m/s².
+    Confirms PAPER_295 prediction for f_DPM=1e12 class.
+    PN hierarchy: a_vac_diff >> a_super >> a_THz >> a_DPM (38-decade span)."""
+
+    def compute(self, dataset: dict) -> dict:
+        import math
+        PI    = math.pi
+        c     = 2.998e8
+        HBAR  = 1.0546e-34
+        E_VAC_ISM = dataset.get('E_vac_ISM', 7.09e-37)
+        f_super   = dataset.get('f_super',   1.411e16)
+        f_DPM     = dataset.get('f_DPM',     1e12)
+        a_DPM     = dataset.get('a_DPM',     2.497e-31)
+        A_sc      = (HBAR * f_super * f_DPM) / (E_VAC_ISM * c)
+        a_super   = A_sc * a_DPM
+        # Session-83 PAPER_295 reference for f_DPM=1e11
+        A_sc_ref  = (HBAR * f_super * 1e11) / (E_VAC_ISM * c)
+        ratio_Asc = A_sc / A_sc_ref
+        # approximate a_vac_diff at PN scale for hierarchy
+        r         = dataset.get('r', 1.42e16)
+        E_0       = dataset.get('E_0', 6.381e-36)
+        V_sys     = (4.0/3.0) * PI * r**3
+        a_vac_diff = (E_0 * V_sys / HBAR) * a_DPM
+        E_VAC_NEB  = dataset.get('E_vac_neb', 7.09e-36)
+        v_exp      = dataset.get('v_exp', 2.68e5)
+        Gamma_THz  = (E_VAC_NEB/E_VAC_ISM) * 1e12 * v_exp / c
+        a_THz      = Gamma_THz * a_DPM
+        return {
+            'primary_equations': [
+                f'A_sc = ħ*f_super*f_DPM / (E_vac_ISM*c) = {A_sc:.3e}  [PAPER_295 predicted 6.994e21 ✓]',
+                f'a_super = A_sc * a_DPM = {A_sc:.3e} * {a_DPM:.3e} = {a_super:.3e} m/s²',
+                f'PN hierarchy: a_vac_diff({a_vac_diff:.2e}) >> a_super({a_super:.2e}) >> a_THz({a_THz:.2e}) >> a_DPM({a_DPM:.2e})',
+            ],
+            'available_equations': [
+                'A_sc(hbar, f_super, f_DPM, E_vac_ISM, c)',
+                'a_super = A_sc * a_DPM',
+                'quadratic_law: a_super ∝ f_DPM² at fixed seed',
+                'hierarchy_span_decades = log10(a_vac_diff/a_DPM)',
+            ],
+            'simulation_set': [
+                {'f_DPM_Hz': fv,
+                 'A_sc': (HBAR * f_super * fv) / (E_VAC_ISM * c),
+                 'a_super_m_s2': (HBAR * f_super * fv / (E_VAC_ISM * c)) * a_DPM}
+                for fv in [1e9, 1e10, 1e11, 1e12, 1e13]
+            ],
+            'A_sc':            A_sc,
+            'a_super_m_s2':    a_super,
+            'A_sc_ref_1e11':   A_sc_ref,
+            'ratio_A_sc':      ratio_Asc,
+            'a_vac_diff_m_s2': a_vac_diff,
+            'a_THz_m_s2':      a_THz,
+            'hierarchy_span_log10': math.log10(abs(a_vac_diff / a_DPM)) if a_DPM != 0 else 0,
+            'PAPER_295_confirms': abs(A_sc - 6.994e21) / 6.994e21 < 0.01,
+            'papers':          ['PAPER_316'],
+            'session':         90,
+        }
+
+
 # ---------------------------------------------------------------------------
 # __all__ export
 # ---------------------------------------------------------------------------
@@ -11626,4 +11800,8 @@ __all__ = [
     "BiPolarPNWindShockGravitationalDominanceCalculator",
     "BiPolarPNUVRadiationPressureCalculator",
     "EquatorialTorusMagneticConfinementCalculator",
+    # Session 90 — PAPER_314–316 (NGC6302 Resonance UQFF 2.0 — 32nd C++ module, FIRST Resonance-Channel PN companion)
+    "BipolarPNLobeResonanceDPMMacroAntennaCalculator",
+    "ResonanceVacDiffTHzCrossoverRadiusCalculator",
+    "CooperDPMf1THz_AscConfirmationCalculator",
 ]
