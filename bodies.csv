@@ -239,3 +239,28 @@ SGR_1833-0832,2.8e30,1e4,1e5,1e7,0.831,1.1e10,1e21,1e-16,1.0,1.0,5.23
 PSR_J0437-4715,2.86e30,1e4,1e5,1e6,1.09e3,3e4,1e20,1e-15,1.0,1.0,6.86e3
 # Abell 2744 (Pandora's Box): z=0.308, M~3.2e15 Msun, T~10keV, complex merging; PAPER_210 MOND lensing
 Abell_2744,6.36e45,4.6e22,1.2e23,1.16e8,1e-18,1e-8,1e20,1e-20,0.99,1e-4,1e-18
+# === Session 99 Grok Thread Re-Analysis (gok_share_31b5c807a4) — New Bodies.csv Entries ===
+# TOI-1227b: Young transiting Neptune ~11 Myr, LCC member, disk coupling, PAPER_357 physics
+TOI_1227b,7.5e25,2.24e7,1e10,400.0,1e-5,1e-4,1e12,1e-13,1e-3,1e-3,2.3e-6
+# PSZ2 G181.06+48.47: Full 5-eq triadic capstone, z=0.40, M=1e14 Msun, FU_Bi_i=-8.32e217 N, PAPER_367
+PSZ2_G181_06_Triadic,2e44,1.5e22,1e23,1e8,1e-18,1e-10,1e26,1e-24,1.0,1.0,1e-20
+# AT2024tvd: Wandering MBH TDE, r_offset=2.47e17 m (8 pc), arXiv:2506.04440, L_X~1e36 W, PAPER_358
+AT2024tvd_WanderingTDE,1.989e36,2.95e9,2.47e17,1e5,1e-8,1e-3,1e30,1e-20,0.99,0.0001,1e-12
+# G359.13142-0.20005: GC magnetic filament, B_0=1e-5 T, negative E(t) erosion, PAPER_359
+G359_13142_Filament,1e32,1e16,5e15,1e4,1e-12,1e-5,1e15,1e-16,1.0,1.0,1e-14
+# J1610+1811: High-z quasar jet z=6.5, k_rel=Gamma^2=20.25, Chandra Jun 2025, PAPER_360
+J1610_1811_HighZ,1.989e39,3e12,1e24,1e7,1e-13,1e-7,1e28,1e-24,0.99,0.0001,1e-18
+# Stephan's Quintet HCG92: Compact group, dv=1500 km/s shock, JWST MIRI/NIRSpec Aug 2025, PAPER_348
+Stephans_Quintet_HCG92,7.96e41,3e21,1e22,1e6,1e-14,1e-8,1e24,1e-22,1.0,1.0,1e-16
+# SPT-CL J2215-3537: Galaxy cluster z=1.16, highest FU_Bi_i=-1.40e218 N, SFR=700 Msun/yr, PAPER_349
+SPT_CL_J2215_3537,1.455e45,1.2e22,1e23,1e8,1e-18,1e-9,1e26,1e-24,1.0,1.0,1e-20
+# Lagoon Nebula M8 NGC 6523: r~55 ly, Herschel 36 O7V ionised, LAGOON_UQFF_MODULE.cpp, z=0.0013
+Lagoon_Nebula_M8,1.989e34,5.2e17,5.2e17,5e3,1e-11,1e-5,1e15,1e-14,1.0,1.0,1e-13
+# Abell 2256: Galaxy cluster merger M~1e15 Msun, LOFAR relics, Astronomy Mag May 2025
+Abell_2256_Cluster,1.989e45,1.85e22,1e23,1e8,1e-18,1e-10,1e26,1e-24,1.0,1.0,1e-20
+# IC 2163: Interacting spiral tidal arms with NGC 2207, Hubble Aug 2025
+IC_2163_Interacting,9.95e40,1.5e21,1e22,1e4,1e-14,1e-7,1e23,1e-21,1.0,1.0,1e-17
+# M87 Jet (BZ mechanism): Lorentz-boosted jet, omega_act=2pi/day, L_X~1e40 W, JWST IR Jul 2025, PAPER_346
+M87_Jet_BZ,1.29e40,4.6e15,3e21,1e6,7.27e-5,1.5e-2,1e24,1e-22,1.0,1.0,1e-15
+# Jupiter Aurorae UQFF: H3+ aurora coupling, B=4.2 G polar, Juno Callisto flyby Sep 2025
+Jupiter_Aurorae_UQFF,1.898e27,6.9911e7,1e9,1000.0,1.76e-4,4.2e-4,1e15,1e-13,1e-3,1e-3,1.678e-8
