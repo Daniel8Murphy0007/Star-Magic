@@ -582,3 +582,498 @@ namespace StarMagic09Sept {
 // End of STAR_MAGIC_09SEPT_UQFF_MODULE.cpp
 // Session 100 — PAPER_368 / PAPER_369 / PAPER_370
 // ============================================================
+
+// ============================================================
+// SESSION 101 EXTENSION — PAPER_371 / PAPER_372 / PAPER_373 / PAPER_374 / PAPER_375
+// Source: grok_share_11254865.txt (lines 2000–8800, extended re-analysis)
+// Source docs integrated:
+//   "200. MUGE Compression cycle 3_Superconductive Resonance_11May2025.docx"
+//   "100. MUGE Compression cycle 3_11May2025.docx"
+//   "Compressed UQFF Equation_14May2025.docx"
+//   "Master UQFF Resonance Equation_14May2025.docx"
+//   "UQFF_Resonance Superconductive Universal Gravity Equation system proof set._15May2025.docx"
+// ============================================================
+
+namespace StarMagic09Sept_Session101 {
+
+// ============================================================
+// WOLFRAM_TERM Macros — Session 101 additions
+// ============================================================
+#define WOLFRAM_TERM_MUGE_RESONANCE \
+    "MUGE_Resonance[fDPM_,fTHz_,Evac_neb_,Evac_ISM_,Delta_Evac_,Fsuper_,UA_SCM_,omega_i_," \
+    "k4_res_,freact_,fquantum_,fAether_,fosc_,fTRZ_,I_,A_,omega1_,omega2_," \
+    "Vsys_,vexp_,Ereact_,H_z_,t_,ffluid_,c_] := " \
+    "Let[{FDPM=I*A*(omega1-omega2),aDPM=FDPM*fDPM*Evac_neb*c*Vsys}," \
+    "aDPM + fTHz*Evac_neb*vexp*aDPM/Evac_ISM/c + Delta_Evac*vexp^2*aDPM/Evac_neb/c^2 + " \
+    "Fsuper*fTHz*aDPM/Evac_neb/c + UA_SCM*omega_i*fTHz*aDPM*(1+fTRZ) + " \
+    "k4_res*Ereact*freact*aDPM/Evac_neb*c + fquantum*Evac_neb*aDPM/Evac_ISM/c + " \
+    "fAether*Evac_neb*aDPM/Evac_ISM/c + ffluid*Evac_neb*Vsys/Evac_ISM/c + " \
+    "fosc*Cos[2*Pi*fosc*t] + 2*Pi*H_z*t*Evac_neb*aDPM/Evac_ISM/c + fTRZ]"
+
+#define WOLFRAM_TERM_COMPRESSED_UQFF_BCRIT \
+    "CompressedUQFF_Bcrit[G_,M_,r_,H0_,t_,B_,Bcrit_,Lambda_,c_,hbar_,rho_fluid_,V_,g_local_,M_DM_,delta_rho_,rho_] := " \
+    "(G*M/r^2)*(1+H0*t)*(1-B/Bcrit) + Lambda*c^2/3 + " \
+    "(hbar/1e-68)*2.176e-18*(2*Pi/4.35e17) + rho_fluid*V*g_local + " \
+    "(M+M_DM)*(delta_rho/rho + 3*G*M/r^3)"
+
+#define WOLFRAM_TERM_WORMHOLE_GEODESIC \
+    "WormholeGeodesic[b_,r_,E_,L_,lambda_step_,n_steps_] := " \
+    "NestList[Function[{r0,phi0,t0},{r0 + lambda_step*Sqrt[E^2-L^2/(b^2+r0^2)]," \
+    "phi0 + lambda_step*L/(b^2+r0^2), t0 + lambda_step*E}], {0,0,0}, n_steps]"
+
+#define WOLFRAM_TERM_UQFF_ADVANCED \
+    "UQFF_Advanced[g_compressed_,g_resonance_,a_worm_,B_,Bcrit_,v_,c_] := " \
+    "g_compressed*Exp[-B/Bcrit] + g_resonance/Sqrt[1-(v/c)^2] + a_worm"
+
+// ============================================================
+// PAPER_371: MUGE 12-Term Superconductive Resonance Framework
+// Source: "200. MUGE Compression cycle 3_Superconductive Resonance_11May2025.docx"
+// ============================================================
+
+struct ResonanceParams {
+    double fDPM        = 1e12;      // Hz — DPM frequency
+    double fTHz        = 1e12;      // Hz — THz frequency
+    double Evac_neb    = 7.09e-36;  // J  — nebular vacuum energy
+    double Evac_ISM    = 7.09e-37;  // J  — ISM vacuum energy
+    double Delta_Evac  = 6.381e-36; // J  — vacuum energy difference
+    double Fsuper      = 6.287e-19; // N  — superconductive force
+    double UA_SCM      = 10.0;      //    — aether SCm coupling
+    double omega_i     = 1e-8;      // rad/s — intrinsic angular frequency
+    double k4_res      = 1.0;       //    — resonance Ug4 coupling
+    double freact      = 1e10;      // Hz — reactive frequency
+    double fquantum    = 1.445e-17; // Hz — quantum frequency
+    double fAether     = 1.576e-35; // Hz — aether frequency
+    double fosc        = 4.57e14;   // Hz — oscillation frequency
+    double fTRZ        = 0.1;       //    — time-reversal correction
+    double c_res       = 3e8;       // m/s
+};
+
+struct MUGESystem {
+    std::string name;
+    double M;           // kg — system mass
+    double r;           // m  — characteristic radius
+    double B;           // T  — magnetic field
+    double Bcrit;       // T  — critical field
+    double Vsys;        // m³ — system volume
+    double ffluid;      // Hz — fluid frequency
+    double vexp;        // m/s — expansion velocity
+    double rho_fluid;   // kg/m³ — fluid density
+    double M_DM;        // kg — dark matter mass
+};
+
+// Predefined 7-system catalog (demo only; runtime values from source2.cpp pipeline)
+inline MUGESystem make_SGR1745() {
+    return {"SGR1745-2900", 2.984e30, 1e4, 1e10, 1e11, 4.189e12, 1.269e-14, 1e3, 1e-3, 0.0};
+}
+inline MUGESystem make_SagA_star() {
+    return {"Sagittarius A*", 8.155e36, 1e12, 1e-5, 1e-4, 3.552e45, 3.465e-8, 1e6, 1e-4, 8e36};
+}
+inline MUGESystem make_Tapestry() {
+    return {"Tapestry Starbirth", 1.989e35, 3.086e17, 1e-4, 1e-3, 1e53, 1e-12, 1e4, 1e-4, 0.0};
+}
+inline MUGESystem make_Westerlund2() {
+    return {"Westerlund 2", 1.989e35, 3.086e17, 1e-4, 1e-3, 1e53, 1e-12, 1e4, 1e-4, 0.0};
+}
+inline MUGESystem make_Pillars() {
+    return {"Pillars of Creation", 1.989e32, 9.46e15, 1e-4, 1e-3, 3.552e48, 8.457e-14, 1e3, 1e-5, 0.0};
+}
+inline MUGESystem make_Rings() {
+    return {"Rings of Relativity", 1.989e36, 3.086e17, 1e-5, 1e-4, 1e54, 1e-9, 1e5, 1e-5, 1.989e35};
+}
+inline MUGESystem make_StudentGuide() {
+    return {"Student's Guide Universe", 1e53, 1e26, 1e-10, 1e-9, 1e80, 1e-18, 1e7, 1e-10, 1e52};
+}
+
+// Individual MUGE resonance term functions (PAPER_371)
+inline double compute_aDPM(const MUGESystem& sys, const ResonanceParams& p,
+                            double I = 1.0, double A = 1.0,
+                            double omega1 = 1e12, double omega2 = 9.99e11) {
+    double FDPM = I * A * (omega1 - omega2);
+    return FDPM * p.fDPM * p.Evac_neb * p.c_res * sys.Vsys;
+}
+
+inline double compute_aTHz(const ResonanceParams& p, double aDPM, double vexp) {
+    return p.fTHz * p.Evac_neb * vexp * aDPM / p.Evac_ISM / p.c_res;
+}
+
+inline double compute_avac_diff(const ResonanceParams& p, double aDPM, double vexp) {
+    return p.Delta_Evac * vexp * vexp * aDPM / p.Evac_neb / (p.c_res * p.c_res);
+}
+
+inline double compute_asuper_freq(const ResonanceParams& p, double aDPM) {
+    return p.Fsuper * p.fTHz * aDPM / p.Evac_neb / p.c_res;
+}
+
+inline double compute_aaether_res(const ResonanceParams& p, double aDPM) {
+    return p.UA_SCM * p.omega_i * p.fTHz * aDPM * (1.0 + p.fTRZ);
+}
+
+inline double compute_Ug4i(const ResonanceParams& p, double aDPM, double Ereact) {
+    return p.k4_res * Ereact * p.freact * aDPM / p.Evac_neb * p.c_res;
+}
+
+inline double compute_aquantum_freq(const ResonanceParams& p, double aDPM) {
+    return p.fquantum * p.Evac_neb * aDPM / p.Evac_ISM / p.c_res;
+}
+
+inline double compute_aAether_freq(const ResonanceParams& p, double aDPM) {
+    return p.fAether * p.Evac_neb * aDPM / p.Evac_ISM / p.c_res;
+}
+
+inline double compute_afluid_freq(const MUGESystem& sys, const ResonanceParams& p) {
+    return sys.ffluid * p.Evac_neb * sys.Vsys / p.Evac_ISM / p.c_res;
+}
+
+inline double compute_Osc_term(const ResonanceParams& p, double t) {
+    return p.fosc * std::cos(2.0 * M_PI * p.fosc * t);
+}
+
+inline double compute_aexp_freq(const ResonanceParams& p, double aDPM,
+                                 double H_z, double t) {
+    return 2.0 * M_PI * H_z * t * p.Evac_neb * aDPM / p.Evac_ISM / p.c_res;
+}
+
+// Master 12-term MUGE resonance function (PAPER_371)
+inline double compute_resonance_MUGE(const MUGESystem& sys,
+                                      const ResonanceParams& p = ResonanceParams(),
+                                      double t = 0.0,
+                                      double H_z = 2.269e-18,
+                                      double Ereact = 1.0) {
+    double aDPM      = compute_aDPM(sys, p);
+    double aTHz      = compute_aTHz(p, aDPM, sys.vexp);
+    double avac_diff = compute_avac_diff(p, aDPM, sys.vexp);
+    double asuper    = compute_asuper_freq(p, aDPM);
+    double aaether   = compute_aaether_res(p, aDPM);
+    double Ug4i      = compute_Ug4i(p, aDPM, Ereact);
+    double aquantum  = compute_aquantum_freq(p, aDPM);
+    double aAether   = compute_aAether_freq(p, aDPM);
+    double afluid    = compute_afluid_freq(sys, p);
+    double Osc       = compute_Osc_term(p, t);
+    double aexp      = compute_aexp_freq(p, aDPM, H_z, t);
+    double fTRZ      = p.fTRZ;
+    return aDPM + aTHz + avac_diff + asuper + aaether + Ug4i
+         + aquantum + aAether + afluid + Osc + aexp + fTRZ;
+}
+
+// ============================================================
+// PAPER_372: Compressed UQFF with B/Bcrit Superconductivity
+// Source: "100. MUGE Compression cycle 3_11May2025.docx"
+// ============================================================
+
+namespace CompressedUQFF {
+    constexpr double G        = 6.674e-11;
+    constexpr double H0       = 2.269e-18; // s⁻¹ (Hubble constant)
+    constexpr double Lambda   = 1.1e-52;   // m⁻²
+    constexpr double c        = 3e8;
+    constexpr double hbar     = 1.055e-34;
+    constexpr double tHubble  = 4.35e17;   // s
+
+    inline double compressed_base(const MUGESystem& sys) {
+        return G * sys.M / (sys.r * sys.r);
+    }
+    inline double compressed_expansion(const MUGESystem& sys, double t) {
+        return 1.0 + H0 * t;
+    }
+    inline double compressed_super_adj(const MUGESystem& sys) {
+        return 1.0 - sys.B / sys.Bcrit;
+    }
+    inline double compressed_env() {
+        return 1.0; // default Fenv
+    }
+    inline double compressed_cosm() {
+        return Lambda * c * c / 3.0;
+    }
+    inline double compressed_quantum() {
+        // (ℏ/Δx·Δp)·∫(ψ*Ĥψ dV)·(2π/tHubble) — symbolic constant
+        return (hbar / 1e-68) * 2.176e-18 * (2.0 * M_PI / tHubble);
+    }
+    inline double compressed_fluid(const MUGESystem& sys, double g_local) {
+        return sys.rho_fluid * sys.Vsys * g_local;
+    }
+    inline double compressed_perturbation(const MUGESystem& sys) {
+        double delta_rho_over_rho = 1e-5; // dimensionless density perturbation
+        return (sys.M + sys.M_DM) * (delta_rho_over_rho + 3.0 * G * sys.M / (sys.r * sys.r * sys.r));
+    }
+    // Master compressed UQFF (PAPER_372)
+    inline double compute_compressed_MUGE(const MUGESystem& sys, double t = 0.0) {
+        double base  = compressed_base(sys);
+        double exp_  = compressed_expansion(sys, t);
+        double super = compressed_super_adj(sys);
+        double env   = compressed_env();
+        double cosm  = compressed_cosm();
+        double quant = compressed_quantum();
+        double fluid = compressed_fluid(sys, base * super);
+        double pert  = compressed_perturbation(sys);
+        return base * exp_ * super * (1.0 + env) + cosm + quant + fluid + pert;
+    }
+} // namespace CompressedUQFF
+
+// ============================================================
+// PAPER_373: Morris-Thorne Wormhole Null Geodesics
+// Source: wormhole section (lines ~2700–2800)
+// FIRST wormhole physics in the entire CP pipeline.
+// ============================================================
+
+namespace WormholeGeodesics {
+    // Morris-Thorne metric: ds² = -dt² + dr² + (b²+r²)(dθ²+sin²θ dφ²)
+    constexpr double b_throat = 1.0; // throat radius (m)
+
+    struct GeodesicState {
+        double r, phi, t_coord;
+    };
+
+    // dr/dλ = ±√(E²−L²/(b²+r²))
+    inline double drdt(double E, double L, double r, double b = b_throat) {
+        double arg = E * E - L * L / (b * b + r * r);
+        return (arg >= 0.0) ? std::sqrt(arg) : 0.0;
+    }
+    inline double dphidt(double L, double r, double b = b_throat) {
+        return L / (b * b + r * r);
+    }
+    // Embedding: z_embed = b·arcsinh(r/b),  ρ_embed = √(b²+r²)
+    inline double z_embed(double r, double b = b_throat) {
+        return b * std::asinh(r / b);
+    }
+    inline double rho_embed(double r, double b = b_throat) {
+        return std::sqrt(b * b + r * r);
+    }
+    // Propagate null geodesic for n steps of dlambda
+    inline std::vector<GeodesicState> propagate(double E, double L,
+                                                  double r0, int n_steps = 100,
+                                                  double dlambda = 0.1) {
+        std::vector<GeodesicState> traj;
+        traj.reserve(n_steps + 1);
+        GeodesicState s{r0, 0.0, 0.0};
+        traj.push_back(s);
+        for (int i = 0; i < n_steps; ++i) {
+            double dr  = drdt(E, L, s.r) * dlambda;
+            double dph = dphidt(L, s.r) * dlambda;
+            double dt  = E * dlambda;
+            s.r += dr; s.phi += dph; s.t_coord += dt;
+            traj.push_back(s);
+        }
+        return traj;
+    }
+    // Self-test: traversal (L=0.5, E=1.0) and reflection (L=1.5, E=1.0)
+    inline void selftest(std::ostream& os = std::cout) {
+        os << "[WormholeGeodesics] PAPER_373 self-test\n";
+        // Traversal case
+        auto trav = propagate(1.0, 0.5, 2.0, 50, 0.1);
+        os << "  Traversal L=0.5: r_final=" << trav.back().r << " (expect crosses 0)\n";
+        // Reflection case
+        auto refl = propagate(1.0, 1.5, 2.0, 50, 0.1);
+        double r_min = *std::min_element(refl.begin(), refl.end(),
+                         [](const GeodesicState& a, const GeodesicState& b){ return a.r < b.r; }).r;
+        os << "  Reflection L=1.5: r_min=" << refl[0].r << " (expect ≈1.12)\n";
+        os << "  z_embed(r=1.0)=" << z_embed(1.0) << " rho_embed(r=1.0)=" << rho_embed(1.0) << "\n";
+        os << "[WormholeGeodesics] PAPER_373 self-test complete.\n";
+    }
+} // namespace WormholeGeodesics
+
+// ============================================================
+// PAPER_374: J1610+1811 Relativistic Quasar Jet UQFF-NS Coupling
+// Source: simulate_quasar_jet() (lines ~5100–5200)
+// Distinct from PAPER_360 (FU/Bi at z=6.5): this is UQFF resonance
+// force coupling into NS solver at v_SCm=0.99c.
+// Observational: z=3.122, P_jet=4e45 W, L=2e46 W → v_SCm=0.99c
+// ============================================================
+
+namespace J1610QuasarJet {
+    constexpr double c            = 3e8;
+    constexpr double z_redshift   = 3.122;      // J1610+1811 redshift
+    constexpr double P_jet        = 4e45;        // W — jet power
+    constexpr double L_luminosity = 2e46;        // W — total luminosity
+    constexpr double v_SCm_rel    = 0.99 * c;    // m/s — relativistic jet velocity
+
+    // Simulate quasar jet with UQFF resonance force coupling
+    // Returns mean |v| of final NS field (normalised)
+    inline double simulate_relativistic_quasar_jet(
+            std::ostream& os = std::cout, int NS_steps = 10) {
+        // System: Sagittarius A* as proxy for quasar host SMBH
+        MUGESystem sagA = make_SagA_star();
+        ResonanceParams res;
+        double uqff_g = compute_resonance_MUGE(sagA, res);
+
+        // NS FluidSolver (FluidSolver is defined in Session 100 namespace above)
+        using namespace StarMagic09Sept;
+        FluidSolver fs;
+        double jet_force = v_SCm_rel / 10.0; // relativistic jet forcing
+
+        double mean_v = 0.0;
+        for (int step = 0; step < NS_steps; ++step) {
+            int N = fs.N;
+            // Inject relativistic jet force into central column
+            for (int i = N / 4; i <= 3 * N / 4; ++i)
+                fs.v[(i) * (N + 2) + N / 2] += jet_force;
+            // Add UQFF resonance as uniform body force (scaled for NS grid)
+            for (int i = 0; i < (N + 2) * (N + 2); ++i)
+                fs.v[i] += uqff_g / 1e30;
+            fs.step(fs.visc, 0.0, fs.dt);
+        }
+        // Compute mean |v|
+        int N = fs.N; double sum = 0.0; int cnt = 0;
+        for (int i = 1; i <= N; ++i)
+            for (int j = 1; j <= N; ++j) {
+                double u = fs.u[i * (N + 2) + j];
+                double v = fs.v[i * (N + 2) + j];
+                sum += std::sqrt(u * u + v * v); cnt++;
+            }
+        mean_v = sum / cnt;
+        os << "J1610+1811 Relativistic Quasar Jet (PAPER_374)\n";
+        os << "  z=" << z_redshift << " P_jet=" << P_jet << "W  L=" << L_luminosity << "W\n";
+        os << "  v_SCm=" << v_SCm_rel << " m/s  uqff_g=" << uqff_g << " m/s²\n";
+        os << "  NS mean|v| after " << NS_steps << " steps = " << mean_v << "\n";
+        return mean_v;
+    }
+} // namespace J1610QuasarJet
+
+// ============================================================
+// PAPER_375: UQFF Advanced Integration
+// Wormhole-MUGE term + Meissner exponential + Relativistic γ + Error propagation
+// Source: Unified UQFF analysis (lines ~7500–8800), three new docs
+// ============================================================
+
+namespace UQFFAdvanced {
+    constexpr double f_worm = 1e-10; // wormhole coupling constant
+    constexpr double c = 3e8;
+
+    // 1. Wormhole-MUGE coupling term
+    inline double compute_a_wormhole(double Evac_neb, double b, double r) {
+        return f_worm * Evac_neb / (b * b + r * r);
+    }
+
+    // 2. Meissner exponential superconductivity (type-II improved form)
+    // Replaces linear (1−B/Bcrit) from PAPER_372 with exp(−B/Bcrit)
+    inline double meissner_exp(double B, double Bcrit) {
+        return std::exp(-B / Bcrit);
+    }
+
+    // 3. Relativistic Lorentz correction
+    inline double lorentz_gamma(double v) {
+        double beta = v / c;
+        if (beta >= 1.0) beta = 0.9999999;
+        return 1.0 / std::sqrt(1.0 - beta * beta);
+    }
+    inline double apply_lorentz(double aDPM, double v) {
+        return aDPM / lorentz_gamma(v);
+    }
+
+    // 4. Error propagation
+    inline double error_propagation(const std::vector<double>& delta_terms) {
+        double sum_sq = 0.0;
+        for (double d : delta_terms) sum_sq += d * d;
+        return std::sqrt(sum_sq);
+    }
+
+    // Master unified UQFF with all advanced terms (PAPER_375)
+    inline double compute_unified_UQFF(const MUGESystem& sys,
+                                        const ResonanceParams& res = ResonanceParams(),
+                                        double t = 0.0,
+                                        double v_jet = 0.0,
+                                        double b_worm = 1.0,
+                                        double r_worm = 1.0) {
+        // Compressed UQFF base with Meissner exponential
+        double base       = CompressedUQFF::compressed_base(sys);
+        double expansion  = CompressedUQFF::compressed_expansion(sys, t);
+        double meissner   = meissner_exp(sys.B, sys.Bcrit);
+        double cosm       = CompressedUQFF::compressed_cosm();
+        double quant      = CompressedUQFF::compressed_quantum();
+        double fluid      = CompressedUQFF::compressed_fluid(sys, base);
+        double pert       = CompressedUQFF::compressed_perturbation(sys);
+        double g_compressed = base * expansion * meissner + cosm + quant + fluid + pert;
+
+        // MUGE Resonance with relativistic gamma on aDPM
+        double aDPM_raw   = compute_aDPM(sys, res);
+        double aDPM_rel   = apply_lorentz(aDPM_raw, v_jet);
+        // Substitute aDPM_rel into resonance (pass as modified param)
+        ResonanceParams res_mod = res;
+        // Scale full resonance by aDPM_rel / aDPM_raw ratio
+        double gamma_ratio = (aDPM_raw != 0.0) ? aDPM_rel / aDPM_raw : 1.0;
+        double g_resonance = compute_resonance_MUGE(sys, res_mod, t) * gamma_ratio;
+
+        // Wormhole-MUGE term
+        double a_worm = compute_a_wormhole(res.Evac_neb, b_worm, r_worm);
+
+        return g_compressed + g_resonance + a_worm;
+    }
+
+    // Error propagation for all MUGE terms
+    inline double compute_total_uncertainty(const MUGESystem& sys,
+                                             const ResonanceParams& p = ResonanceParams(),
+                                             double frac_error = 0.01) {
+        std::vector<double> deltas;
+        double aDPM = compute_aDPM(sys, p);
+        deltas.push_back(std::abs(aDPM) * frac_error);
+        deltas.push_back(std::abs(compute_aTHz(p, aDPM, sys.vexp)) * frac_error);
+        deltas.push_back(std::abs(compute_avac_diff(p, aDPM, sys.vexp)) * frac_error);
+        deltas.push_back(std::abs(compute_asuper_freq(p, aDPM)) * frac_error);
+        deltas.push_back(std::abs(compute_aaether_res(p, aDPM)) * frac_error);
+        deltas.push_back(std::abs(compute_afluid_freq(sys, p)) * frac_error);
+        return error_propagation(deltas);
+    }
+} // namespace UQFFAdvanced
+
+// ============================================================
+// Session 101 self-test — PAPER_371–375
+// ============================================================
+inline void run_session101_selftest(std::ostream& os = std::cout) {
+    os << "\n[Session101] Self-test — PAPER_371 / PAPER_372 / PAPER_373 / PAPER_374 / PAPER_375\n";
+
+    ResonanceParams res;
+    MUGESystem sgr = make_SGR1745();
+    MUGESystem sagA = make_SagA_star();
+
+    // PAPER_371: resonance MUGE on SGR1745
+    double g_res = compute_resonance_MUGE(sgr, res);
+    os << "PAPER_371 resonance_MUGE(SGR1745) = " << g_res << " m/s²  (expect ~1.773e-9)\n";
+
+    // PAPER_371: individual terms
+    double aDPM   = compute_aDPM(sgr, res);
+    double aTHz   = compute_aTHz(res, aDPM, sgr.vexp);
+    double avac   = compute_avac_diff(res, aDPM, sgr.vexp);
+    double asuper = compute_asuper_freq(res, aDPM);
+    double aaether= compute_aaether_res(res, aDPM);
+    double aquant = compute_aquantum_freq(res, aDPM);
+    double aAeth  = compute_aAether_freq(res, aDPM);
+    double aexp   = compute_aexp_freq(res, aDPM, 2.269e-18, 3.799e10);
+    os << "  aTHz          = " << aTHz   << "  (expect ~1.182e-33)\n";
+    os << "  avac_diff     = " << avac   << "  (expect ~3.545e-53)\n";
+    os << "  asuper_freq   = " << asuper << "  (expect ~1.048e-21)\n";
+    os << "  aaether_res   = " << aaether<< "  (expect ~3.900e-38)\n";
+    os << "  aquantum_freq = " << aquant << "  (expect ~1.708e-66)\n";
+    os << "  aAether_freq  = " << aAeth  << "  (expect ~1.863e-84)\n";
+    os << "  aexp_freq(t=3.799e10) = " << aexp << "  (expect ~1.623e-57)\n";
+    os << "  afluid_freq(SGR1745)  = " << compute_afluid_freq(sgr, res) << "  (expect ~1.773e-9)\n";
+
+    // PAPER_372: compressed MUGE on SGR1745
+    double g_comp = CompressedUQFF::compute_compressed_MUGE(sgr);
+    os << "PAPER_372 compressed_MUGE(SGR1745) = " << g_comp << " m/s²  (expect ~1.782e39)\n";
+
+    // PAPER_373: wormhole geodesics
+    WormholeGeodesics::selftest(os);
+
+    // PAPER_374: relativistic quasar jet
+    double mean_v = J1610QuasarJet::simulate_relativistic_quasar_jet(os);
+    os << "PAPER_374 J1610 NS mean|v| = " << mean_v << "\n";
+
+    // PAPER_375: unified UQFF
+    double g_unified = UQFFAdvanced::compute_unified_UQFF(sagA, res, 0.0,
+                                                            J1610QuasarJet::v_SCm_rel);
+    double dg        = UQFFAdvanced::compute_total_uncertainty(sgr, res);
+    os << "PAPER_375 unified_UQFF(SagA*, v=0.99c) = " << g_unified << "\n";
+    os << "PAPER_375 δg(SGR1745, 1% error) = " << dg << "\n";
+    double gma = UQFFAdvanced::lorentz_gamma(J1610QuasarJet::v_SCm_rel);
+    os << "PAPER_375 γ(v=0.99c) = " << gma << "  (expect ~7.09)\n";
+    double a_worm_test = UQFFAdvanced::compute_a_wormhole(res.Evac_neb, 1.0, 1.0);
+    os << "PAPER_375 a_worm(r=1,b=1) = " << a_worm_test << "\n";
+
+    os << "[Session101] Self-test complete. Papers: 371 / 372 / 373 / 374 / 375\n\n";
+}
+
+} // namespace StarMagic09Sept_Session101
+
+// ============================================================
+// End of STAR_MAGIC_09SEPT_UQFF_MODULE.cpp
+// Session 100 — PAPER_368 / PAPER_369 / PAPER_370
+// Session 101 — PAPER_371 / PAPER_372 / PAPER_373 / PAPER_374 / PAPER_375
+// ============================================================

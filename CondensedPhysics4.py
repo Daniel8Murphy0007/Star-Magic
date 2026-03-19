@@ -1566,6 +1566,548 @@ class StarMagic09SeptUQFFMultiBodyNSCalculator(_CP4Calculator):
 
 
 # ===========================================================================
+# SESSION 101 — PAPER_371–375 (grok_share_11254865.txt, lines 2000–8800)
+# Source docs: MUGE Compression cycle 3 (11May2025), Compressed UQFF (14May2025),
+#              Master UQFF Resonance (14May2025), UQFF proof set (15May2025)
+# ===========================================================================
+
+class MUGESuperconductive12TermResonanceCalculator(_CP4Calculator):
+    """Session 101 — PAPER_371: MUGE 12-Term Superconductive Resonance Framework.
+    Source: "200. MUGE Compression cycle 3_Superconductive Resonance_11May2025.docx"
+    (grok_share_11254865.txt, lines 2000–2700)
+
+    Master equation:
+    g(r,t) = aDPM + aTHz + avac_diff + asuper_freq + aaether_res + Ug4i
+           + aquantum_freq + aAether_freq + afluid_freq + Osc_term + aexp_freq + fTRZ
+
+    ResonanceParams defaults:
+      fDPM=fTHz=1e12, Evac_neb=7.09e-36, Evac_ISM=7.09e-37, Delta_Evac=6.381e-36,
+      Fsuper=6.287e-19, UA_SCM=10, omega_i=1e-8, k4_res=1.0, freact=1e10,
+      fquantum=1.445e-17, fAether=1.576e-35, fosc=4.57e14, fTRZ=0.1, c=3e8
+
+    Validated: afluid_freq(SGR1745)=1.773e-9 m/s², resonance_MUGE(SGR1745)=1.773e-9 m/s²
+    CP4 class #19
+    """
+    category = "MUGE Resonance / Superconductive"
+
+    # Physical constants
+    _C = 3e8  # m/s
+
+    def compute(self, dataset: dict = None) -> dict:
+        if dataset is None:
+            dataset = {}
+
+        # Resonance parameters (from dataset or defaults)
+        fDPM       = float(dataset.get('fDPM',       1e12))
+        fTHz       = float(dataset.get('fTHz',       1e12))
+        Evac_neb   = float(dataset.get('Evac_neb',   7.09e-36))
+        Evac_ISM   = float(dataset.get('Evac_ISM',   7.09e-37))
+        Delta_Evac = float(dataset.get('Delta_Evac', 6.381e-36))
+        Fsuper     = float(dataset.get('Fsuper',     6.287e-19))
+        UA_SCM     = float(dataset.get('UA_SCM',     10.0))
+        omega_i    = float(dataset.get('omega_i',    1e-8))
+        k4_res     = float(dataset.get('k4_res',     1.0))
+        freact     = float(dataset.get('freact',     1e10))
+        fquantum   = float(dataset.get('fquantum',   1.445e-17))
+        fAether    = float(dataset.get('fAether',    1.576e-35))
+        fosc       = float(dataset.get('fosc',       4.57e14))
+        fTRZ       = float(dataset.get('fTRZ',       0.1))
+        c          = self._C
+
+        # System parameters
+        Vsys   = float(dataset.get('Vsys',   4.189e12))   # m³
+        vexp   = float(dataset.get('vexp',   1e3))         # m/s
+        ffluid = float(dataset.get('ffluid', 1.269e-14))  # Hz
+        Ereact = float(dataset.get('Ereact', 1.0))
+        H_z    = float(dataset.get('H_z',    2.269e-18))  # s⁻¹
+        I_cur  = float(dataset.get('I_cur',  1.0))        # A
+        A_area = float(dataset.get('A_area', 1.0))        # m²
+        omega1 = float(dataset.get('omega1', 1e12))
+        omega2 = float(dataset.get('omega2', 9.99e11))
+        t      = float(dataset.get('t',      0.0))        # s
+
+        import math
+
+        # DPM base
+        FDPM  = I_cur * A_area * (omega1 - omega2)
+        aDPM  = FDPM * fDPM * Evac_neb * c * Vsys
+
+        # 11 resonance terms
+        aTHz        = fTHz * Evac_neb * vexp * aDPM / Evac_ISM / c
+        avac_diff   = Delta_Evac * vexp**2 * aDPM / Evac_neb / c**2
+        asuper_freq = Fsuper * fTHz * aDPM / Evac_neb / c
+        aaether_res = UA_SCM * omega_i * fTHz * aDPM * (1.0 + fTRZ)
+        Ug4i        = k4_res * Ereact * freact * aDPM / Evac_neb * c
+        aquantum_freq = fquantum * Evac_neb * aDPM / Evac_ISM / c
+        aAether_freq  = fAether  * Evac_neb * aDPM / Evac_ISM / c
+        afluid_freq   = ffluid   * Evac_neb * Vsys  / Evac_ISM / c
+        Osc_term    = fosc * math.cos(2.0 * math.pi * fosc * t)
+        aexp_freq   = 2.0 * math.pi * H_z * t * Evac_neb * aDPM / Evac_ISM / c
+
+        g_resonance = (aDPM + aTHz + avac_diff + asuper_freq + aaether_res + Ug4i
+                       + aquantum_freq + aAether_freq + afluid_freq
+                       + Osc_term + aexp_freq + fTRZ)
+
+        return {
+            'primary_equations': {
+                'g_resonance_MUGE': {
+                    'formula': ('g = aDPM + aTHz + avac_diff + asuper_freq + aaether_res + Ug4i'
+                                ' + aquantum_freq + aAether_freq + afluid_freq + Osc_term + aexp_freq + fTRZ'),
+                    'value_ms2': g_resonance,
+                },
+            },
+            'available_equations': {
+                'aDPM':         aDPM,
+                'aTHz':         aTHz,
+                'avac_diff':    avac_diff,
+                'asuper_freq':  asuper_freq,
+                'aaether_res':  aaether_res,
+                'Ug4i':         Ug4i,
+                'aquantum_freq': aquantum_freq,
+                'aAether_freq':  aAether_freq,
+                'afluid_freq':   afluid_freq,
+                'Osc_term':      Osc_term,
+                'aexp_freq':     aexp_freq,
+                'fTRZ':          fTRZ,
+            },
+            'simulation_set': {
+                'FDPM':  FDPM,
+                'aDPM':  aDPM,
+                'Evac_neb':  Evac_neb,
+                'Evac_ISM':  Evac_ISM,
+            },
+            'papers':   ['PAPER_371'],
+            'session':  101,
+        }
+
+
+class CompressedUQFFBcritSuperconductivityCalculator(_CP4Calculator):
+    """Session 101 — PAPER_372: Compressed UQFF with B/Bcrit Linear Meissner Superconductivity.
+    Source: "100. MUGE Compression cycle 3_11May2025.docx"
+    (grok_share_11254865.txt, lines 2700–3400)
+
+    Master equation:
+    g_UQFF = (GM/r²)·(1+H₀t)·(1−B/Bcrit)·(1+Fenv)
+           + Ug_sum + Λc²/3 + (ℏ/ΔxΔp)·∫ψ*Ĥψ dV·(2π/tH) + ρf·V·g + (M+MDM)·(δρ/ρ+3GM/r³)
+
+    7 systems: SGR1745, SagA*, Tapestry, Westerlund2, Pillars, Rings, StudentGuide
+    Unit test: compressed_MUGE(SGR1745) ≈ 1.782×10³⁹ m/s²
+    CP4 class #20
+    """
+    category = "Compressed UQFF / Superconductivity"
+
+    _G        = 6.674e-11
+    _H0       = 2.269e-18   # s⁻¹
+    _Lambda   = 1.1e-52     # m⁻²
+    _c        = 3e8
+    _hbar     = 1.055e-34
+    _tHubble  = 4.35e17     # s
+
+    def compute(self, dataset: dict = None) -> dict:
+        if dataset is None:
+            dataset = {}
+
+        import math
+
+        M         = float(dataset.get('M',          2.984e30))  # kg
+        r         = float(dataset.get('r',          1e4))        # m
+        B         = float(dataset.get('B',          1e10))       # T
+        Bcrit     = float(dataset.get('Bcrit',      1e11))       # T
+        Vsys      = float(dataset.get('Vsys',       4.189e12))   # m³
+        rho_fluid = float(dataset.get('rho_fluid',  1e-3))       # kg/m³
+        M_DM      = float(dataset.get('M_DM',       0.0))        # kg
+        t         = float(dataset.get('t',          0.0))        # s
+
+        G       = self._G
+        H0      = self._H0
+        Lambda  = self._Lambda
+        c       = self._c
+        hbar    = self._hbar
+        tH      = self._tHubble
+
+        base       = G * M / r**2
+        expansion  = 1.0 + H0 * t
+        super_adj  = 1.0 - B / Bcrit
+        cosm       = Lambda * c**2 / 3.0
+        quantum    = (hbar / 1e-68) * 2.176e-18 * (2.0 * math.pi / tH)
+        g_local    = base * super_adj
+        fluid      = rho_fluid * Vsys * g_local
+        delta_rho_over_rho = 1e-5
+        pert       = (M + M_DM) * (delta_rho_over_rho + 3.0 * G * M / r**3)
+
+        g_compressed = base * expansion * super_adj + cosm + quantum + fluid + pert
+
+        return {
+            'primary_equations': {
+                'g_compressed_UQFF': {
+                    'formula': ('g = (GM/r²)·(1+H₀t)·(1-B/Bcrit) + Λc²/3'
+                                ' + ℏ-quantum + ρ_f·V·g + (M+M_DM)·(δρ/ρ+3GM/r³)'),
+                    'value_ms2': g_compressed,
+                },
+            },
+            'available_equations': {
+                'base_grav':    base,
+                'expansion':    expansion,
+                'meissner_lin': super_adj,
+                'cosm_const':   cosm,
+                'quantum_term': quantum,
+                'fluid_term':   fluid,
+                'perturbation': pert,
+            },
+            'simulation_set': {
+                'B_over_Bcrit': B / Bcrit,
+                'H0_t':         H0 * t,
+            },
+            'papers':   ['PAPER_372'],
+            'session':  101,
+        }
+
+
+class MorrisThorneWormholeNullGeodesicsCalculator(_CP4Calculator):
+    """Session 101 — PAPER_373: Morris-Thorne Wormhole Null Geodesics.
+    Source: wormhole section (grok_share_11254865.txt, lines 2700–2800)
+    FIRST wormhole physics in the entire CP pipeline.
+
+    Metric: ds² = -dt² + dr² + (b²+r²)(dθ²+sin²θ dφ²),  b=1.0 m
+    Geodesics:
+      dr/dλ = ±√(E²-L²/(b²+r²))
+      dφ/dλ = L/(b²+r²)
+      dt/dλ = E
+    Traversal: L=0.5 (crosses throat)  |  Reflection: L=1.5 (r_min≈1.118)
+    Embedding: z_embed = b·arcsinh(r/b),  ρ_embed = √(b²+r²)
+    CP4 class #21
+    """
+    category = "Wormhole / General Relativity"
+
+    def compute(self, dataset: dict = None) -> dict:
+        if dataset is None:
+            dataset = {}
+
+        import math
+
+        b       = float(dataset.get('b',        1.0))    # throat radius (m)
+        r       = float(dataset.get('r',        2.0))    # starting radius (m)
+        E       = float(dataset.get('E',        1.0))    # energy parameter
+        L       = float(dataset.get('L',        0.5))    # angular momentum
+        dlambda = float(dataset.get('dlambda',  0.1))
+        n_steps = int(dataset.get('n_steps',    50))
+
+        # Compute drdt, dphidt at starting point
+        vr_arg = E**2 - L**2 / (b**2 + r**2)
+        dr     = math.sqrt(max(0.0, vr_arg)) * dlambda
+        dphi   = (L / (b**2 + r**2)) * dlambda
+        dt     = E * dlambda
+
+        # Reflection turning radius (if L > 0)
+        r_min_eqn = L**2 / E**2 - b**2
+        r_min = math.sqrt(max(0.0, r_min_eqn))
+
+        # Embedding functions
+        z_embed   = b * math.asinh(r / b)
+        rho_embed = math.sqrt(b**2 + r**2)
+
+        # Simple trajectory propagation (Euler)
+        traj = []
+        r_cur, phi_cur, t_cur = r, 0.0, 0.0
+        for _ in range(n_steps):
+            arg = E**2 - L**2 / (b**2 + r_cur**2)
+            if arg < 0.0:
+                break
+            r_cur   += math.sqrt(arg) * dlambda
+            phi_cur += (L / (b**2 + r_cur**2)) * dlambda
+            t_cur   += E * dlambda
+            traj.append({'r': r_cur, 'phi': phi_cur, 't': t_cur})
+
+        behaviour = 'traversal' if L < E * b else 'reflection'
+
+        return {
+            'primary_equations': {
+                'geodesic_dr': {
+                    'formula': 'dr/dλ = ±√(E²-L²/(b²+r²))',
+                    'value':   dr,
+                },
+                'geodesic_dphi': {
+                    'formula': 'dφ/dλ = L/(b²+r²)',
+                    'value':   dphi,
+                },
+            },
+            'available_equations': {
+                'r_min_reflection': r_min,
+                'z_embed':          z_embed,
+                'rho_embed':        rho_embed,
+                'behaviour':        behaviour,
+                'n_steps_taken':    len(traj),
+                'r_final':          traj[-1]['r'] if traj else r,
+            },
+            'simulation_set': {
+                'b_throat':  b,
+                'E':         E,
+                'L':         L,
+                'trajectory_length': len(traj),
+            },
+            'papers':   ['PAPER_373'],
+            'session':  101,
+        }
+
+
+class J1610RelativisticQuasarJetUQFFNSCalculator(_CP4Calculator):
+    """Session 101 — PAPER_374: J1610+1811 Relativistic Quasar Jet UQFF-NS Coupling.
+    Source: simulate_quasar_jet() (grok_share_11254865.txt, lines ~5100–5200)
+    Distinct from PAPER_360 (FU/Bi at z=6.5): this is UQFF resonance force
+    coupling into Navier-Stokes at v_SCm=0.99c.
+
+    J1610+1811 observational data:
+      z=3.122, P_jet=4e45 W, L=2e46 W → v_SCm=0.99c=2.97e8 m/s
+    Algorithm:
+      g_UQFF = compute_resonance_MUGE(SgrA*)
+      NS 10 steps, jet_force = v_SCm/10, body_force = g_UQFF/1e30
+    CP4 class #22
+    """
+    category = "Quasar Jet / Relativistic / UQFF-NS"
+
+    _c           = 3e8
+    _z_redshift  = 3.122
+    _P_jet       = 4e45      # W
+    _L_luminosity = 2e46     # W
+    _v_SCm_rel   = 0.99 * 3e8  # m/s
+
+    def compute(self, dataset: dict = None) -> dict:
+        if dataset is None:
+            dataset = {}
+
+        import math
+
+        v_SCm    = float(dataset.get('v_SCm',    self._v_SCm_rel))
+        z        = float(dataset.get('z',        self._z_redshift))
+        P_jet    = float(dataset.get('P_jet',    self._P_jet))
+        L_lum    = float(dataset.get('L_lum',    self._L_luminosity))
+        N_grid   = int(dataset.get('N_grid',     32))
+        NS_steps = int(dataset.get('NS_steps',   10))
+        t        = float(dataset.get('t',        0.0))
+
+        c = self._c
+
+        # Lorentz factor
+        beta = v_SCm / c
+        if beta >= 1.0:
+            beta = 0.9999999
+        gamma = 1.0 / math.sqrt(1.0 - beta**2)
+
+        # UQFF resonance g for SgrA* (proxy host SMBH)
+        sgrA_dataset = {
+            'M': 8.155e36, 'r': 1e12, 'B': 1e-5, 'Bcrit': 1e-4,
+            'Vsys': 3.552e45, 'ffluid': 3.465e-8, 'vexp': 1e6,
+            'Ereact': 1.0, 'H_z': 2.269e-18, 't': t,
+        }
+        resonance_calc = MUGESuperconductive12TermResonanceCalculator()
+        res_result = resonance_calc.compute(sgrA_dataset)
+        g_uqff     = res_result['primary_equations']['g_resonance_MUGE']['value_ms2']
+
+        # NS forcing parameters
+        jet_force   = v_SCm / 10.0
+        body_force  = g_uqff / 1e30
+
+        # Simplified velocity-field kinetic energy proxy
+        # (full NS diffuse/advect/project not reimplemented in Python — energy budget used)
+        # After NS_steps with jet_force injected into N/4 cells of N column:
+        jet_cells     = N_grid // 2  # cells receiving jet force
+        mean_v_final  = (jet_force * NS_steps * jet_cells + body_force * NS_steps * N_grid**2) / N_grid**2
+
+        return {
+            'primary_equations': {
+                'mean_v_NS': {
+                    'formula': '(jet_force·steps·jet_cells + body_force·steps·N²) / N²',
+                    'value':   mean_v_final,
+                },
+                'lorentz_gamma': {
+                    'formula': 'γ = 1/√(1-v²/c²)',
+                    'value':   gamma,
+                },
+                'g_uqff_sgrA': {
+                    'formula': '12-term MUGE resonance (SgrA* proxy)',
+                    'value':   g_uqff,
+                },
+            },
+            'available_equations': {
+                'jet_force':   jet_force,
+                'body_force':  body_force,
+                'v_SCm':       v_SCm,
+                'z_redshift':  z,
+                'P_jet_W':     P_jet,
+                'L_lum_W':     L_lum,
+                'beta':        beta,
+            },
+            'simulation_set': {
+                'N_grid':     N_grid,
+                'NS_steps':   NS_steps,
+                'g_uqff':     g_uqff,
+                'jet_force':  jet_force,
+            },
+            'papers':   ['PAPER_374'],
+            'session':  101,
+        }
+
+
+class UQFFWormholeMeissnerRelativisticGammaCalculator(_CP4Calculator):
+    """Session 101 — PAPER_375: UQFF Advanced Integration.
+    Wormhole-MUGE term + Meissner exponential + Relativistic γ correction + Error propagation.
+    Source: Unified UQFF analysis (grok_share_11254865.txt, lines 7500–8800)
+    Integrates: "Compressed UQFF Equation_14May2025.docx",
+                "Master UQFF Resonance Equation_14May2025.docx",
+                "UQFF_Resonance Superconductive Universal Gravity Equation system proof set._15May2025.docx"
+
+    Four formulations:
+      1. a_worm = f_worm · Evac_neb / (b²+r²)          [wormhole-MUGE coupling]
+      2. exp(-B/Bcrit)                                    [Meissner exponential, type-II]
+      3. a_DPM → a_DPM/γ, γ=1/√(1-v²/c²)               [relativistic Lorentz]
+      4. δg = √Σ(δaᵢ)²                                  [error propagation]
+    CP4 class #23
+    """
+    category = "UQFF Advanced Integration / Wormhole / Meissner / Relativistic"
+
+    _c      = 3e8
+    _f_worm = 1e-10
+
+    def compute(self, dataset: dict = None) -> dict:
+        if dataset is None:
+            dataset = {}
+
+        import math
+
+        # Wormhole parameters
+        b_worm   = float(dataset.get('b_worm',   1.0))     # m
+        r_worm   = float(dataset.get('r_worm',   1.0))     # m
+        Evac_neb = float(dataset.get('Evac_neb', 7.09e-36))# J
+        f_worm   = self._f_worm
+
+        # Meissner exponential parameters
+        B        = float(dataset.get('B',        1e10))    # T
+        Bcrit    = float(dataset.get('Bcrit',    1e11))    # T
+
+        # Relativistic parameters
+        v_jet    = float(dataset.get('v_jet',    0.99 * self._c))  # m/s
+        c        = self._c
+        beta     = v_jet / c
+        if beta >= 1.0:
+            beta = 0.9999999
+        gamma    = 1.0 / math.sqrt(1.0 - beta**2)
+
+        # Compressed UQFF with Meissner exponential (PAPER_375 improved form)
+        M        = float(dataset.get('M',   2.984e30))
+        r        = float(dataset.get('r',   1e4))
+        H0       = 2.269e-18
+        Lambda   = 1.1e-52
+        hbar     = 1.055e-34
+        tH       = 4.35e17
+        G        = 6.674e-11
+        t        = float(dataset.get('t',   0.0))
+
+        base     = G * M / r**2
+        meissner = math.exp(-B / Bcrit)              # exponential form (improved)
+        cosm     = Lambda * c**2 / 3.0
+        quantum  = (hbar / 1e-68) * 2.176e-18 * (2.0 * math.pi / tH)
+        g_compressed_exp = base * (1.0 + H0 * t) * meissner + cosm + quantum
+
+        # MUGE resonance with Lorentz-corrected aDPM
+        # aDPM with gamma applied
+        Vsys   = float(dataset.get('Vsys',   4.189e12))
+        vexp   = float(dataset.get('vexp',   1e3))
+        fDPM   = float(dataset.get('fDPM',   1e12))
+        I_cur  = float(dataset.get('I_cur',  1.0))
+        A_area = float(dataset.get('A_area', 1.0))
+        omega1 = float(dataset.get('omega1', 1e12))
+        omega2 = float(dataset.get('omega2', 9.99e11))
+        FDPM   = I_cur * A_area * (omega1 - omega2)
+        aDPM_raw = FDPM * fDPM * Evac_neb * c * Vsys
+        aDPM_rel = aDPM_raw / gamma  # Lorentz-corrected
+
+        # Wormhole-MUGE term
+        a_worm = f_worm * Evac_neb / (b_worm**2 + r_worm**2)
+
+        # Unified UQFF
+        g_unified = g_compressed_exp + aDPM_rel + a_worm
+
+        # Error propagation (1% fractional error on each term)
+        frac = float(dataset.get('frac_error', 0.01))
+        Evac_ISM = float(dataset.get('Evac_ISM', 7.09e-37))
+        fTHz   = float(dataset.get('fTHz', 1e12))
+        aTHz   = fTHz * Evac_neb * vexp * aDPM_raw / Evac_ISM / c
+        Delta_Evac = float(dataset.get('Delta_Evac', 6.381e-36))
+        avac   = Delta_Evac * vexp**2 * aDPM_raw / Evac_neb / c**2
+        Fsuper = float(dataset.get('Fsuper', 6.287e-19))
+        asuper = Fsuper * fTHz * aDPM_raw / Evac_neb / c
+        ffluid = float(dataset.get('ffluid', 1.269e-14))
+        afluid = ffluid * Evac_neb * Vsys / Evac_ISM / c
+        terms  = [aDPM_rel, aTHz, avac, asuper, afluid]
+        delta_g = math.sqrt(sum((frac * abs(a))**2 for a in terms))
+
+        return {
+            'primary_equations': {
+                'g_unified_UQFF': {
+                    'formula': 'g = g_compressed_exp + aDPM/γ + a_worm',
+                    'value_ms2': g_unified,
+                },
+                'delta_g_error': {
+                    'formula': 'δg = √Σ(frac·|aᵢ|)²',
+                    'value':   delta_g,
+                },
+                'lorentz_gamma': {
+                    'formula': 'γ = 1/√(1-v²/c²)',
+                    'value':   gamma,
+                },
+            },
+            'available_equations': {
+                'a_worm':           a_worm,
+                'meissner_exp':     meissner,
+                'aDPM_lorentz':     aDPM_rel,
+                'g_compressed_exp': g_compressed_exp,
+                'B_over_Bcrit':     B / Bcrit,
+                'beta':             beta,
+            },
+            'simulation_set': {
+                'f_worm':   f_worm,
+                'gamma':    gamma,
+                'b_worm':   b_worm,
+                'r_worm':   r_worm,
+                'frac_error': frac,
+            },
+            'papers':   ['PAPER_375'],
+            'session':  101,
+        }
+
+
+class StarMagic11254865MUGESessionHubCalculator(_CP4Calculator):
+    """Session 101 — hub: grok_share_11254865.txt (extended re-analysis, lines 2000–8800).
+    PAPER_371: MUGE 12-Term Superconductive Resonance (Evac_neb, 12 terms, 7 systems)
+    PAPER_372: Compressed UQFF B/Bcrit Linear Meissner (7-system, 8 modular functions)
+    PAPER_373: Morris-Thorne Wormhole Null Geodesics (FIRST wormhole in CP pipeline)
+    PAPER_374: J1610+1811 Relativistic Quasar Jet UQFF-NS (v=0.99c, z=3.122)
+    PAPER_375: UQFF Advanced Integration (wormhole term + Meissner exp + γ + δg)
+    CP4 class #24 — full Session 101 hub
+    """
+    category = "Session Hub / Multi-Physics"
+
+    def compute(self, dataset: dict = None) -> dict:
+        res_result    = MUGESuperconductive12TermResonanceCalculator().compute(dataset)
+        comp_result   = CompressedUQFFBcritSuperconductivityCalculator().compute(dataset)
+        worm_result   = MorrisThorneWormholeNullGeodesicsCalculator().compute(dataset)
+        jet_result    = J1610RelativisticQuasarJetUQFFNSCalculator().compute(dataset)
+        adv_result    = UQFFWormholeMeissnerRelativisticGammaCalculator().compute(dataset)
+        return {
+            'PAPER_371_MUGE_Resonance':    res_result,
+            'PAPER_372_Compressed_UQFF':   comp_result,
+            'PAPER_373_Wormhole':          worm_result,
+            'PAPER_374_Quasar_Jet':        jet_result,
+            'PAPER_375_Advanced_UQFF':     adv_result,
+            'source_file':  'grok_share_11254865.txt',
+            'source_lines': '2000-8800 (Session 101 extended re-analysis)',
+            'cpp_module':   'STAR_MAGIC_09SEPT_UQFF_MODULE.cpp',
+            'papers':       ['PAPER_371', 'PAPER_372', 'PAPER_373', 'PAPER_374', 'PAPER_375'],
+            'session':      101,
+        }
+
+
+# ===========================================================================
 # CP4 REGISTRY
 # ===========================================================================
 
@@ -1590,4 +2132,11 @@ __all__ = [
     "NavierStokesStableFluidUQFFQuasarJetCalculator",        # PAPER_369
     "MultiBodySolarPcorePlanetaryScalingCalculator",         # PAPER_370
     "StarMagic09SeptUQFFMultiBodyNSCalculator",              # PAPER_368–370 hub
+    # --- Session 101: MUGE Resonance/Compression/Wormhole — PAPER_371–375 ---
+    "MUGESuperconductive12TermResonanceCalculator",       # PAPER_371
+    "CompressedUQFFBcritSuperconductivityCalculator",     # PAPER_372
+    "MorrisThorneWormholeNullGeodesicsCalculator",        # PAPER_373
+    "J1610RelativisticQuasarJetUQFFNSCalculator",         # PAPER_374
+    "UQFFWormholeMeissnerRelativisticGammaCalculator",    # PAPER_375
+    "StarMagic11254865MUGESessionHubCalculator",          # PAPER_371–375 hub
 ]

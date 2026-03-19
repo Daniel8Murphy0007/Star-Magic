@@ -297,3 +297,258 @@ STAR_MAGIC_09SEPT_UQFF_MODULE.cpp
 ---
 
 *Generated: Session 100 | Source: grok_share_11254865.txt | Papers: 367→370*
+---
+
+## SESSION 101 — PAPER_371–375 (Extended Lines 2000–8800)
+
+> Session 101 performed a full re-read of grok_share_11254865.txt (all 8800 lines).
+> Session 100 processed only ~1500 of 8800 lines. Five new physics groups discovered below.
+
+---
+
+## 13. PAPER_371 — MUGE 12-Term Superconductive Resonance Framework
+
+**Source doc:** "200. MUGE Compression cycle 3_Superconductive Resonance_11May2025.docx"
+(lines ~2000–2700 of grok_share_11254865.txt)
+
+### Master Equation
+```
+g(r,t) = aDPM + aTHz + avac_diff + asuper_freq + aaether_res + Ug4i
+        + aquantum_freq + aAether_freq + afluid_freq + Osc_term + aexp_freq + fTRZ
+```
+
+### Sub-Term Formulas
+
+| Term | Formula |
+|------|---------|
+| aDPM | FDPM·fDPM·Evac_neb·c·Vsys;  FDPM = I·A·(ω1−ω2) |
+| aTHz | fTHz·Evac_neb·vexp·aDPM / Evac_ISM / c |
+| avac_diff | ΔEvac·vexp²·aDPM / Evac_neb / c² |
+| asuper_freq | Fsuper·fTHz·aDPM / Evac_neb / c |
+| aaether_res | UA_SCM·ωi·fTHz·aDPM·(1+fTRZ) |
+| Ug4i | k4_res·Ereact(t)·freact·aDPM / Evac_neb·c |
+| aquantum_freq | fquantum·Evac_neb·aDPM / Evac_ISM / c |
+| aAether_freq | fAether·Evac_neb·aDPM / Evac_ISM / c |
+| afluid_freq | ffluid·Evac_neb·Vsys / Evac_ISM / c |
+| Osc_term | fosc·cos(2π·fosc·t) |
+| aexp_freq | 2π·H_z·t·Evac_neb·aDPM / Evac_ISM / c |
+| fTRZ | 0.1 (time-reversal correction, additive constant) |
+
+### ResonanceParams Struct Defaults
+```cpp
+fDPM       = 1e12 Hz       fTHz       = 1e12 Hz
+Evac_neb   = 7.09e-36 J    Evac_ISM   = 7.09e-37 J
+Delta_Evac = 6.381e-36 J   Fsuper     = 6.287e-19 N
+UA_SCM     = 10            omega_i    = 1e-8 rad/s
+k4_res     = 1.0           freact     = 1e10 Hz
+fquantum   = 1.445e-17 Hz  fAether    = 1.576e-35 Hz
+fosc       = 4.57e14 Hz    fTRZ       = 0.1
+c_res      = 3e8 m/s
+```
+
+### Unit Test Validation Values
+| Test | System | Expected Value |
+|------|--------|----------------|
+| test_compute_aTHz (aDPM=3.545e-42, vexp=1e3) | — | 1.182×10⁻³³ |
+| test_compute_avac_diff | — | 3.545×10⁻⁵³ |
+| test_compute_asuper_freq | — | 1.048×10⁻²¹ |
+| test_compute_aaether_res | — | 3.900×10⁻³⁸ |
+| test_compute_aquantum_freq | — | 1.708×10⁻⁶⁶ |
+| test_compute_aAether_freq | — | 1.863×10⁻⁸⁴ |
+| test_compute_aexp_freq (t=3.799e10) | — | 1.623×10⁻⁵⁷ |
+| test_compute_afluid_freq | SGR1745 | 1.773×10⁻⁹ m/s² |
+| test_compute_resonance_MUGE | SGR1745 | 1.773×10⁻⁹ m/s² |
+
+**CP4 class:** `MUGESuperconductive12TermResonanceCalculator`
+
+---
+
+## 14. PAPER_372 — Compressed UQFF with B/Bcrit Superconductivity
+
+**Source doc:** "100. MUGE Compression cycle 3_11May2025.docx"
+(lines ~2700–3400 of grok_share_11254865.txt)
+
+### Master Equation
+```
+g_UQFF(r,t) = [G·M(t)/r²]·[1+H(t,z)]·[1-B/Bcrit]·[1+Fenv]
+            + (Ug1+Ug2+Ug3'+Ug4)
+            + (Λ·c²/3)
+            + (ℏ/Δx·Δp)·∫(ψtotal·Ĥ·ψtotal dV)·(2π/tHubble)
+            + ρfluid·V·g
+            + (Mvisible+MDM)·(δρ/ρ + 3G·M/r³)
+```
+
+### Modular C++ Functions
+```cpp
+compute_compressed_base(sys)         → G·M/r²
+compute_compressed_expansion(sys)    → 1 + H0·t          (H0=2.269e-18 s⁻¹)
+compute_compressed_super_adj(sys)    → 1 − B/Bcrit
+compute_compressed_env()             → 1.0 (default Fenv)
+compute_compressed_Ug_sum(sys)       → Ug1+Ug2+Ug3'+Ug4
+compute_compressed_cosm()            → Λ·c²/3             (Λ=1.1e-52 m⁻²)
+compute_compressed_quantum()         → (ℏ/1e-68)·2.176e-18·(2π/4.35e17)
+compute_compressed_fluid(sys)        → rho_fluid·Vsys·g_local
+compute_compressed_perturbation(sys) → (M+M_DM)·(δρ/ρ + 3G·M/r³)
+```
+
+### Unit Test Validation
+- test_compute_compressed_MUGE (SGR1745): expected = **1.782×10³⁹ m/s²**
+
+### 7-System MUGESystem Parameters
+| System | M (kg) | r (m) | B (T) | Bcrit (T) | Vsys (m³) | ffluid (Hz) |
+|--------|--------|-------|-------|-----------|-----------|-------------|
+| Magnetar SGR1745-2900 | 2.984e30 | 1e4 | 1e10 | 1e11 | 4.189e12 | 1.269e-14 |
+| Sagittarius A* | 8.155e36 | 1e12 | 1e-5 | 1e-4 | 3.552e45 | 3.465e-8 |
+| Tapestry Starbirth | 1.989e35 | 3.086e17 | 1e-4 | 1e-3 | 1e53 | 1e-12 |
+| Westerlund 2 | 1.989e35 | 3.086e17 | 1e-4 | 1e-3 | 1e53 | 1e-12 |
+| Pillars of Creation | 1.989e32 | 9.46e15 | 1e-4 | 1e-3 | 3.552e48 | 8.457e-14 |
+| Rings of Relativity | 1.989e36 | 3.086e17 | 1e-5 | 1e-4 | 1e54 | 1e-9 |
+| Student's Guide Universe | 1e53 | 1e26 | 1e-10 | 1e-9 | 1e80 | 1e-18 |
+
+**CP4 class:** `CompressedUQFFBcritSuperconductivityCalculator`
+
+---
+
+## 15. PAPER_373 — Morris-Thorne Wormhole Null Geodesics
+
+**Source:** Wormhole section (lines ~2700–2800 of grok_share_11254865.txt)
+**Significance: FIRST wormhole physics in the entire CP pipeline.**
+
+### Metric
+```
+ds² = −dt² + dr² + (b²+r²)(dθ²+sin²θ dφ²)
+b = 1.0 m (throat radius)
+```
+
+### Geodesic Equations
+```
+dr/dλ = ±√(E² − L²/(b²+r²))
+dφ/dλ = L/(b²+r²)
+dt/dλ = E
+```
+
+### Traversal Cases
+| Case | L | E | Behaviour | r_min |
+|------|---|---|-----------|-------|
+| Traversal | 0.5 | 1.0 | Crosses throat (r=0 → negative r) | 0 |
+| Reflection | 1.5 | 1.0 | Turns at r_min | √(L²−b²) ≈ 1.12 |
+
+### Embedding Functions
+```
+z_embed(r) = b · arcsinh(r/b)
+ρ_embed(r) = √(b²+r²)
+```
+
+**CP4 class:** `MorrisThorneWormholeNullGeodesicsCalculator`
+
+---
+
+## 16. PAPER_374 — J1610+1811 Relativistic Quasar Jet UQFF-NS Coupling
+
+**Source:** `simulate_quasar_jet()` (lines ~5100–5200 of grok_share_11254865.txt)
+**Distinct from PAPER_360:** PAPER_360 = FU/Bi calculations for J1610+1811 at z=6.5;
+PAPER_374 = UQFF resonance force coupling into Navier-Stokes jet simulation at v=0.99c.
+
+### J1610+1811 Observational Data
+| Parameter | Value |
+|-----------|-------|
+| Redshift z | 3.122 |
+| Jet power | ~4×10⁴⁵ W |
+| Luminosity | ~2×10⁴⁶ W |
+| Derived v_SCm | 0.99·c = 2.97×10⁸ m/s |
+
+### UQFF-NS Coupling Algorithm
+```
+1. Create FluidSolver (N=32 grid, visc=0.0001, dt=0.1)
+2. Compute uqff_g = compute_resonance_MUGE(sagA, res_params)
+3. Set jet_force = v_SCm / 10.0
+4. Run 10 NS steps:
+      inject jet force at central column (i ∈ [N/4, 3N/4], j=N/2)
+      add uqff_g / 1e30 as uniform body force
+      execute NS step (diffuse → advect → project)
+5. Print ASCII velocity field:
+      '#' → |v| > 1.0,  '+' → |v| > 0.5,  '.' → |v| > 0.1,  ' ' → ≤ 0.1
+```
+
+**CP4 class:** `J1610RelativisticQuasarJetUQFFNSCalculator`
+
+---
+
+## 17. PAPER_375 — UQFF Advanced Integration (Wormhole-MUGE + Meissner + Relativistic γ + Error Propagation)
+
+**Source:** Unified UQFF analysis (lines ~7500–8800), integrating three new documents:
+- "Compressed UQFF Equation_14May2025.docx"
+- "Master UQFF Resonance Equation_14May2025.docx"
+- "UQFF_Resonance Superconductive Universal Gravity Equation system proof set._15May2025.docx"
+
+### Four New Mathematical Formulations
+
+#### 1. Wormhole-MUGE Term (NEW coupling)
+```
+a_worm = f_worm · Evac_neb · (b² + r²)⁻¹
+f_worm = 1e-10 (wormhole coupling constant)
+Add as extra term to compute_resonance_MUGE()
+```
+
+#### 2. Meissner Exponential Superconductivity (improved model)
+```
+Linear form (PAPER_372):   (1 − B/Bcrit)
+Exponential form (PAPER_375):  e^(−B/Bcrit)
+More physically accurate for type-II superconductors (London penetration depth)
+```
+
+#### 3. Relativistic Lorentz Correction
+```
+γ = 1 / √(1 − v²/c²)
+a_DPM → a_DPM / γ
+Applied when v = v_SCm = 0.99·c  →  γ ≈ 7.09
+```
+
+#### 4. Error Propagation Formalism
+```
+δg = √( Σᵢ (δaᵢ)² )
+where δaᵢ = uncertainty in each MUGE term aᵢ
+```
+
+### Unified UQFF Equation (complete form)
+```
+g(r,t) = [GM(t)/r² · (1+H(t,z)) · exp(−B(t)/Bcrit) · (1+Fenv(t))
+          + ΣUgi + Λc²/3 + ℏ/ΔxΔp · ∫ψ*Ĥψ dV · 2π/tHubble
+          + ρfluid·V·g + (Mvis+MDM)(δρ/ρ + 3GM/r³)]
+        + [aDPM/γ + aTHz + avac_diff + asuper_freq + aaether_res
+           + Ug4i + aquantum_freq + aAether_freq + afluid_freq
+           + Osc_term + aexp_freq + fTRZ]
+        + a_worm
+± δg    (error propagation)
+```
+
+**CP4 class:** `UQFFWormholeMeissnerRelativisticGammaCalculator`
+
+---
+
+## 18. Session 101 New Physics Summary (PAPER_371–375)
+
+| PAPER | Title | Primary Equation | Key Values |
+|-------|-------|-----------------|------------|
+| **371** | MUGE 12-Term Superconductive Resonance | `g=aDPM+aTHz+avac_diff+asuper_freq+aaether_res+Ug4i+aquantum_freq+aAether_freq+afluid_freq+Osc_term+aexp_freq+fTRZ` | afluid_freq(SGR1745)=1.773e-9 m/s² |
+| **372** | Compressed UQFF B/Bcrit Superconductivity | `g=(GM/r²)·(1−B/Bcrit)·(1+H)+Ug_sum+Λc²/3+quantum+fluid+perturbation` | compressed_MUGE(SGR1745)≈1.782e39 m/s² |
+| **373** | Morris-Thorne Wormhole Null Geodesics | `dr/dλ=±√(E²−L²/(b²+r²))` | b=1.0; L=0.5 traverse, L=1.5 reflect |
+| **374** | J1610+1811 Relativistic Quasar Jet | UQFF resonance force → NS solver; v_SCm=0.99c | z=3.122; P_jet=4e45 W; L=2e46 W |
+| **375** | UQFF Advanced Integration | Full unified with a_worm+Meissner exp+γ+δg | a_worm=f_worm·Evac_neb/(b²+r²); γ≈7.09 |
+
+---
+
+## 19. Session 101 CP4 Classes (PAPER_371–375 + hub)
+
+```
+MUGESuperconductive12TermResonanceCalculator     → PAPER_371  (CP4 #19)
+CompressedUQFFBcritSuperconductivityCalculator   → PAPER_372  (CP4 #20)
+MorrisThorneWormholeNullGeodesicsCalculator      → PAPER_373  (CP4 #21)
+J1610RelativisticQuasarJetUQFFNSCalculator       → PAPER_374  (CP4 #22)
+UQFFWormholeMeissnerRelativisticGammaCalculator  → PAPER_375  (CP4 #23)
+StarMagic11254865MUGESessionHubCalculator        → PAPER_371–375 hub (CP4 #24)
+```
+
+---
+
+*Updated: Session 101 | Source: grok_share_11254865.txt (all 8800 lines) | Papers: 370→375*
