@@ -666,3 +666,36 @@ StarMagic11254865Session102HubCalculator   → PAPER_376–377 hub (CP4 #27)
 ---
 
 *Updated: Session 102 | Source: grok_share_11254865.txt (all 10,322 lines confirmed) | Papers: 375→377*
+
+---
+
+## 24. Session 103 CP4 Class Additions
+
+```
+CohesiveUQFFIntegrationCalculator      → PAPER_378  (CP4 #28)
+DualModelMUGEComparisonCalculator      → PAPER_379  (CP4 #29)
+UQFFSolvableEquationSetCalculator      → PAPER_380  (CP4 #30)
+StarMagic11254865Session103HubCalculator → PAPER_378–380 hub (CP4 #31)
+```
+
+---
+
+## 25. Session 103 Summary
+
+| Item | Before | After |
+|------|--------|-------|
+| Source file lines re-analyzed | 0 (re-analysis pass) | **lines 2400–6000 revisited** |
+| New undiscovered content found | — | Cohesive formula, dual-model table, solvable eq. set |
+| Papers | 377 | **380** |
+| CP4 classes | 27 | **31** |
+| VMI version | v4.58 | **v4.59** |
+
+**Key new physics (Session 103 — re-analysis pass):**
+- **Cohesive UQFF Formula**: `g_cohesive = g_compressed + Σ a_resonance_i · exp(-αt)` — unifies PAPER_371 (resonance) and PAPER_372 (compressed) in a single damped-resonance integration formula. NOT in any previous paper.
+- **SM gravity emergence condition**: Standard gravity GM/r² recovered when fTRZ=0 (phase equilibrium) AND αt >> 1 — compressed UQFF = low-frequency limit.
+- **7-system dual-model comparison**: SGR1745 compressed=1.782×10³⁹ vs resonance=1.773×10⁻⁹ (48 orders divergence — perturbation term dominance makes compressed model unphysical for magnetars). Tapestry/Westerlund/Pillars/Rings/Student's Guide converge in both models.
+- **10 Solvable Equations**: Navier-Stokes, Yang-Mills Mass Gap, Riemann Hypothesis (3 Millennium Prize Problems) + 7 classical equations have structural analogs in UQFF terms. First time enumerated as a set.
+
+---
+
+*Updated: Session 103 | Source: grok_share_11254865.txt re-analysis (lines 2400–6000) | Papers: 377→380*

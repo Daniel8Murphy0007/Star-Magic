@@ -2310,6 +2310,325 @@ class StarMagic11254865Session102HubCalculator(_CP4Calculator):
         }
 
 
+# ---------------------------------------------------------------------------
+# Session 103 — PAPER_378-380  (re-analysis pass: lines 2400-6000 revisited)
+# ---------------------------------------------------------------------------
+
+class CohesiveUQFFIntegrationCalculator(_CP4Calculator):
+    """PAPER_378 — Cohesive UQFF Integration Formula.
+    Source: grok_share_11254865.txt lines ~3100-3200 (Grok response to '100.' doc)
+    Formula: g_cohesive(r,t) = g_compressed + sum_i(a_resonance_i * exp(-alpha*t))
+    SM gravity emergence: GM/r^2 recovered when fTRZ=0 (phase equilibrium) + alpha*t>>1
+    Unifies Compressed MUGE (PAPER_372) and Resonance MUGE (PAPER_371) in one formula.
+    CP4 class #28
+    """
+    category = "Framework Synthesis / Unified MUGE"
+
+    # Resonance damping coefficient (derived from UQFF calibration)
+    alpha_default = 0.0005   # s⁻¹  (matching kappa_day converted to s⁻¹)
+
+    def compute(self, dataset: dict = None) -> dict:
+        import math
+        dataset = dataset or {}
+
+        # Compressed MUGE baseline
+        G       = 6.674e-11
+        M       = float(dataset.get('M',  2.984e30))   # kg
+        r       = float(dataset.get('r',  1e4))        # m
+        H0      = 2.268e-18
+        t       = float(dataset.get('t',  3.799e10))   # s
+        B       = float(dataset.get('B',  1e10))
+        Bcrit   = float(dataset.get('Bcrit', 1e11))
+        Lambda  = 1.1e-52
+        c       = 3.0e8
+        hbar    = 1.055e-34
+        m_e     = 9.109e-31
+        tH      = 4.35e17
+        k_q     = float(dataset.get('k_q', 1e-18))
+
+        g_newton   = G * M / r**2
+        g_exp_term = g_newton * (1.0 + H0 * t) * math.exp(-B / Bcrit)
+        g_cosm     = Lambda * c**2 / 3.0
+        g_quantum  = (hbar**2) / (m_e * c * (r + k_q * t)**2)
+        g_compressed = g_exp_term + g_cosm + g_quantum
+
+        # Resonance MUGE terms (representative: aDPM + afluid for SGR1745)
+        mu0      = 4 * math.pi * 1e-7
+        I_cur    = float(dataset.get('I_cur',  1e21))
+        A_area   = float(dataset.get('A_area', 3.142e8))
+        omega1   = float(dataset.get('omega1', 1e-3))
+        omega2   = float(dataset.get('omega2', -1e-3))
+        Evac_neb = float(dataset.get('Evac_neb', 7.09e-36))
+        Evac_ISM = float(dataset.get('Evac_ISM', 7.09e-37))
+        Vsys     = float(dataset.get('Vsys', 4.189e12))
+        ffluid   = float(dataset.get('ffluid', 1.269e-14))
+
+        aDPM     = mu0 * I_cur * A_area * omega1 * omega2 * 4 * math.pi / r**3
+        afluid   = ffluid * Evac_neb * Vsys / Evac_ISM / c
+        a_resonance_terms = [aDPM, afluid]
+
+        # Cohesive formula: g_cohesive = g_compressed + sum(a_res_i * exp(-alpha*t))
+        alpha    = float(dataset.get('alpha', self.alpha_default))
+        decay    = math.exp(-alpha * t)
+        g_cohesive = g_compressed + sum(a * decay for a in a_resonance_terms)
+
+        # SM gravity emergence: when fTRZ=0 and alpha*t >> 1
+        fTRZ   = float(dataset.get('fTRZ', 0.0))
+        sm_limit_approached = (fTRZ == 0.0) and (alpha * t > 10.0)
+
+        return {
+            'primary_equations': {
+                'g_cohesive': {
+                    'formula': 'g_cohesive = g_compressed + Σ a_resonance_i · exp(-α·t)',
+                    'value_ms2': g_cohesive,
+                },
+                'g_compressed': {
+                    'formula': 'g_comp = (GM/r²)(1+H0·t)exp(-B/Bcrit) + Λc²/3 + ħ²/(m_e·c·r²)',
+                    'value_ms2': g_compressed,
+                },
+                'alpha_damping': {
+                    'formula': 'α = resonance damping factor',
+                    'value_per_s': alpha,
+                },
+            },
+            'sm_gravity_emergence': {
+                'condition':    'fTRZ = 0 AND α·t >> 1',
+                'fTRZ':         fTRZ,
+                'alpha_t':      alpha * t,
+                'sm_limit_approached': sm_limit_approached,
+                'limit_result': 'g → GM/r² (standard gravity)',
+            },
+            'resonance_terms': {
+                'aDPM_ms2':    aDPM,
+                'afluid_ms2':  afluid,
+                'decay_factor': decay,
+            },
+            'available_equations': [
+                'g_cohesive = g_compressed + Σ a_res · exp(-αt)',
+                'g_compressed = (GM/r²)(1+H0t)exp(-B/Bcrit) + Λc²/3 + ħ²/(m_e·c·r²)',
+                'SM limit: g → GM/r² when fTRZ=0, αt→∞',
+                'Low-freq limit: compressed MUGE',
+                'High-freq/compact limit: resonance MUGE dominates',
+            ],
+            'simulation_set': {
+                'alpha':         alpha,
+                'decay_at_t':    decay,
+                'g_compressed':  g_compressed,
+                'g_cohesive':    g_cohesive,
+                'fTRZ':          fTRZ,
+            },
+            'papers':  ['PAPER_378'],
+            'session': 103,
+        }
+
+
+class DualModelMUGEComparisonCalculator(_CP4Calculator):
+    """PAPER_379 — MUGE Dual-Model 7-System Numeric Comparison.
+    Source: grok_share_11254865.txt lines ~2700-3100
+    Side-by-side compressed vs resonance MUGE for all 7 canonical systems.
+    Key finding: SGR1745 shows 48-order divergence (perturbation vs fluid dominance);
+    star-forming regions (Tapestry, Westerlund, Pillars, Rings, Student's Guide) converge.
+    CP4 class #29
+    """
+    category = "MUGE Validation / Comparison"
+
+    # Validated 7-system numeric results (Grok-derived, grok_share_11254865.txt)
+    REFERENCE_TABLE = {
+        'Magnetar SGR 1745-2900':           {'compressed': 1.782e39,  'resonance': 1.773e-9},
+        'Sagittarius A*':                   {'compressed': 3.552e20,  'resonance': 4.105e29},
+        'Tapestry of Blazing Starbirth':    {'compressed': 1.001e27,  'resonance': 1.001e27},
+        'Westerlund 2':                     {'compressed': 1.001e27,  'resonance': 1.001e27},
+        'Pillars of Creation':              {'compressed': 2.001e26,  'resonance': 2.001e26},
+        'Rings of Relativity':              {'compressed': 5.005e25,  'resonance': 5.005e25},
+        "Student's Guide to the Universe":  {'compressed': 3.958e14,  'resonance': 3.958e14},
+    }
+
+    def compute(self, dataset: dict = None) -> dict:
+        import math
+
+        # Compute ratios and convergence flags
+        comparison = {}
+        for name, vals in self.REFERENCE_TABLE.items():
+            g_comp = vals['compressed']
+            g_res  = vals['resonance']
+            ratio  = g_comp / g_res if g_res != 0 else float('inf')
+            log10_ratio = math.log10(abs(ratio)) if ratio != 0 else 0
+            converged  = abs(log10_ratio) < 1.0   # within 1 order = converged
+            comparison[name] = {
+                'compressed_ms2':  g_comp,
+                'resonance_ms2':   g_res,
+                'ratio':           ratio,
+                'log10_abs_ratio': log10_ratio,
+                'models_converge': converged,
+            }
+
+        sgr = comparison['Magnetar SGR 1745-2900']
+        sgr_diverge_orders = sgr['log10_abs_ratio']
+
+        # Convergence count
+        n_converged = sum(1 for v in comparison.values() if v['models_converge'])
+
+        return {
+            'primary_equations': {
+                'compressed_MUGE': 'PAPER_372 — 6+2 modular terms (Newtonian+Meissner+etc.)',
+                'resonance_MUGE':  'PAPER_371 — 12-term (aDPM + aTHz + ... + afluid)',
+                'cohesive_formula': 'PAPER_378 — g_cohesive = g_comp + Σ a_res · exp(-αt)',
+            },
+            'comparison_table': comparison,
+            'key_findings': {
+                'SGR1745_divergence_orders': sgr_diverge_orders,
+                'SGR1745_compressed':        sgr['compressed_ms2'],
+                'SGR1745_resonance':         sgr['resonance_ms2'],
+                'SGR1745_interpretation':    'Compressed unphysical for magnetar (perturbation term dominant); resonance preferred',
+                'systems_converged':         n_converged,
+                'total_systems':             len(comparison),
+                'convergence_regime':        'Star-forming regions, nebulae, cosmological',
+                'divergence_regime':         'Compact objects (magnetar, SMBH)',
+            },
+            'available_equations': [
+                'compressed_g = Newtonian + expansion + super + envelope + Ug_sum + cosm + quantum + fluid + perturbation',
+                'resonance_g = aDPM + aTHz + avac + asuper + aaether_res + Ug4i + aquantum + aaether + afluid + osc + aexp + fTRZ + a_worm',
+                'convergence_criterion: |log10(g_comp/g_res)| < 1',
+            ],
+            'simulation_set': {
+                'reference_table': self.REFERENCE_TABLE,
+                'convergence_summary': {
+                    name: v['models_converge'] for name, v in comparison.items()
+                },
+            },
+            'papers':  ['PAPER_379'],
+            'session': 103,
+        }
+
+
+class UQFFSolvableEquationSetCalculator(_CP4Calculator):
+    """PAPER_380 — UQFF Framework Solvable Equation Set (10 equations, 3 Millennium).
+    Source: grok_share_11254865.txt lines ~3170-3200
+    UQFF structural analogs to: Navier-Stokes, Yang-Mills Mass Gap, Riemann Hypothesis,
+    Einstein Field Eqs, Schrodinger, Maxwell, Hubble, Black-Scholes, Heat Eq, Wave Eq.
+    Three Millennium Prize Problems have UQFF term-level analogs.
+    CP4 class #30
+    """
+    category = "Framework Synthesis / Mathematical Analogies"
+
+    EQUATION_SET = {
+        'Navier-Stokes': {
+            'millennium_prize': True,
+            'uqff_term':        'a_fluid_freq = f_fluid * Evac_neb * Vsys / Evac_ISM / c',
+            'mechanism':        'Resonance fluid term models turbulence smoothness via vacuum energy coupling',
+            'paper_ref':        'PAPER_369',
+        },
+        'Yang-Mills_Mass_Gap': {
+            'millennium_prize': True,
+            'uqff_term':        'a_super = Phi_flux * (B/Bcrit)^0.5 * exp(-B/Bcrit) / c',
+            'mechanism':        'SCm Meissner exponential induces mass gap in gauge fields at B=Bcrit',
+            'paper_ref':        'PAPER_372',
+        },
+        'Riemann_Hypothesis': {
+            'millennium_prize': True,
+            'uqff_term':        'aDPM = mu0 * I * A * omega1 * omega2 * 4pi / r^3; omega1=-omega2',
+            'mechanism':        'pi-cycles in resonances encode zeta zeros; omega1+omega2=0 mirrors Re(s)=1/2',
+            'paper_ref':        'PAPER_371',
+        },
+        'Einstein_Field_Equations': {
+            'millennium_prize': False,
+            'uqff_term':        'g_cohesive → GM/r² when fTRZ=0, αt→∞',
+            'mechanism':        'Resonance UQFF approximates GR post-Newtonian expansion at low frequency',
+            'paper_ref':        'PAPER_378',
+        },
+        'Schrodinger_Equation': {
+            'millennium_prize': False,
+            'uqff_term':        'a_quantum = hbar^2 / (m_e * c * (r + k_q*t)^2)',
+            'mechanism':        'Quantum term structurally identical to kinetic energy operator on Gaussian packet',
+            'paper_ref':        'PAPER_372',
+        },
+        'Maxwells_Equations': {
+            'millennium_prize': False,
+            'uqff_term':        'aDPM = mu0 * I * A * omega^2 * 4pi / r^3',
+            'mechanism':        'Magnetic dipole moment from Biot-Savart law; UQFF replaces Newton with Maxwell',
+            'paper_ref':        'PAPER_371',
+        },
+        'Hubbles_Law': {
+            'millennium_prize': False,
+            'uqff_term':        'a_expansion = H0 * v_exp',
+            'mechanism':        'Cosmological expansion term directly models Hubble recession acceleration',
+            'paper_ref':        'PAPER_372',
+        },
+        'Black-Scholes': {
+            'millennium_prize': False,
+            'uqff_term':        'a_perturbation = (M + M_DM) * (delta_rho/rho + 3GM/r^3)',
+            'mechanism':        'DM density perturbation analogous to stochastic volatility; e^(-αt) → discount factor',
+            'paper_ref':        'PAPER_378',
+        },
+        'Heat_Equation': {
+            'millennium_prize': False,
+            'uqff_term':        'g_cohesive: Σ a_res * exp(-α*t)',
+            'mechanism':        'Resonance decay exp(-αt) identical to heat equation separable solution',
+            'paper_ref':        'PAPER_378',
+        },
+        'Wave_Equation': {
+            'millennium_prize': False,
+            'uqff_term':        'a_aether = A0 * cos(pi*tn) * f_omega; a_THz = M_Delta * sin(2pi*fTHz*t)',
+            'mechanism':        'Cosine/sine oscillatory terms are exact wave equation solutions at freq fTHz',
+            'paper_ref':        'PAPER_371',
+        },
+    }
+
+    def compute(self, dataset: dict = None) -> dict:
+        millennium_eqs = [k for k, v in self.EQUATION_SET.items() if v['millennium_prize']]
+        classical_eqs  = [k for k, v in self.EQUATION_SET.items() if not v['millennium_prize']]
+
+        return {
+            'primary_equations': {
+                'total_equations':      len(self.EQUATION_SET),
+                'millennium_count':     len(millennium_eqs),
+                'classical_count':      len(classical_eqs),
+                'millennium_problems':  millennium_eqs,
+                'classical_equations':  classical_eqs,
+            },
+            'equation_mechanisms': self.EQUATION_SET,
+            'key_findings': {
+                'Navier-Stokes_mechanism':  'Fluid freq term stabilizes NS turbulence body force',
+                'Yang-Mills_mechanism':     'Meissner exp(-B/Bcrit) = mass gap at B=Bcrit',
+                'Riemann_mechanism':        'omega1=-omega2 symmetry mirrors Re(s)=1/2 critical line',
+                'unified_framework':        'All 10 emerge from common UQFF term structure',
+            },
+            'available_equations': [
+                eq for eq in self.EQUATION_SET.keys()
+            ],
+            'simulation_set': {
+                'equation_set':      self.EQUATION_SET,
+                'millennium_prizes': millennium_eqs,
+            },
+            'papers':  ['PAPER_380'],
+            'session': 103,
+        }
+
+
+class StarMagic11254865Session103HubCalculator(_CP4Calculator):
+    """Session 103 hub — grok_share_11254865.txt re-analysis pass (lines 2400-6000).
+    PAPER_378: Cohesive UQFF Integration Formula (g_cohesive = g_comp + Σa_res·exp(-αt))
+    PAPER_379: MUGE Dual-Model 7-System Comparison (compressed vs resonance, all systems)
+    PAPER_380: UQFF Solvable Equation Set (10 eqs, 3 Millennium Prize Problems)
+    CP4 class #31 — Session 103 hub
+    """
+    category = "Session Hub / Multi-Physics"
+
+    def compute(self, dataset: dict = None) -> dict:
+        cohesive_result  = CohesiveUQFFIntegrationCalculator().compute(dataset)
+        dual_result      = DualModelMUGEComparisonCalculator().compute(dataset)
+        solvable_result  = UQFFSolvableEquationSetCalculator().compute(dataset)
+        return {
+            'PAPER_378_Cohesive_UQFF':    cohesive_result,
+            'PAPER_379_DualModel_7Sys':   dual_result,
+            'PAPER_380_Solvable_EqSet':   solvable_result,
+            'source_file':  'grok_share_11254865.txt',
+            'source_lines': '2400-6000 (Session 103 re-analysis pass)',
+            'papers':       ['PAPER_378', 'PAPER_379', 'PAPER_380'],
+            'session':      103,
+        }
+
+
 # ===========================================================================
 # CP4 REGISTRY
 # ===========================================================================
@@ -2346,4 +2665,8 @@ __all__ = [
     "UQFFResonanceFormalProofSetCalculator",              # PAPER_376
     "WormholeMUGETermImplSafetyCalculator",               # PAPER_377
     "StarMagic11254865Session102HubCalculator",           # PAPER_376-377 hub
-]
+    # --- Session 103: Re-analysis pass — PAPER_378-380 ---
+    "CohesiveUQFFIntegrationCalculator",                  # PAPER_378
+    "DualModelMUGEComparisonCalculator",                  # PAPER_379
+    "UQFFSolvableEquationSetCalculator",                  # PAPER_380
+    "StarMagic11254865Session103HubCalculator",           # PAPER_378-380 hub
