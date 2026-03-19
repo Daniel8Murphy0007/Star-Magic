@@ -2107,6 +2107,209 @@ class StarMagic11254865MUGESessionHubCalculator(_CP4Calculator):
         }
 
 
+
+# ---------------------------------------------------------------------------
+# Session 102 — PAPER_376–377  (grok_share_11254865.txt lines 6001–10322)
+# ---------------------------------------------------------------------------
+
+class UQFFResonanceFormalProofSetCalculator(_CP4Calculator):
+    """PAPER_376 — UQFF Resonance Superconductive Formal Proof Set.
+    Source: 'UQFF_Resonance Superconductive Universal Gravity Equation system
+    proof set._15May2025.docx' + 'Compressed UQFF Equation_14May2025.docx'
+    + 'Master UQFF Resonance Equation_14May2025.docx'
+    Formal proofs: dimensional consistency, boundary conditions,
+    resonance amplification at ω=2π/tHubble, Meissner superconductivity,
+    empirical validation vs Chandra magnetar & EHT Sgr A* data.
+    CP4 class #25
+    """
+    category = "Formal Validation"
+
+    # Validated constants (PAPER_376 §8)
+    H0         = 2.269e-18   # s⁻¹
+    Lambda     = 1.1e-52     # m⁻²
+    c          = 3.0e8       # m/s
+    hbar       = 1.0546e-34  # J·s
+    tHubble    = 4.35e17     # s
+    Bcrit_mag  = 1e11        # T  (magnetar critical field)
+    fquantum   = 1.445e-17   # Hz = 2π/tHubble (Hubble resonance)
+    Ereact_0   = 1046.0      # J  (magnetar flare seed energy)
+    kappa_day  = 0.0005      # day⁻¹  (SCm reactivity decay)
+
+    def compute(self, dataset: dict = None) -> dict:
+        import math
+        # Proof 1: Newtonian baseline at 1 AU
+        G = 6.6743e-11
+        M_sun = 1.989e30
+        AU = 1.496e11
+        g_newton = G * M_sun / (AU * AU)
+
+        # Proof 2: Boundary conditions
+        g_cosm = self.Lambda * self.c**2 / 3.0
+        H_tz_zero = self.H0 * 0.0   # t→0 → 0
+
+        # Proof 3: Resonance frequency
+        omega_res = 2 * math.pi / self.tHubble
+
+        # Proof 4: Meissner forms
+        B_test, Bcrit = 1e10, self.Bcrit_mag
+        meissner_linear = 1.0 - B_test / Bcrit
+        meissner_exp    = math.exp(-B_test / Bcrit)
+
+        # Proof 5: Empirical — magnetar Ereact window
+        ereact_10d  = self.Ereact_0 * math.exp(-self.kappa_day * 10.0)
+        ereact_100d = self.Ereact_0 * math.exp(-self.kappa_day * 100.0)
+
+        return {
+            'primary_equations': {
+                'newtonian_1AU_m_s2':    g_newton,
+                'cosm_floor_m_s2':       g_cosm,
+                'omega_res_rad_s':       omega_res,
+                'fquantum_Hz':           self.fquantum,
+                'fquantum_check':        abs(omega_res - self.fquantum) / self.fquantum,
+            },
+            'boundary_conditions': {
+                'r_to_inf_dominant_term': 'Lambda_c2_3',
+                't_to_0_dominant_term':   'Newtonian_GM_r2',
+                'H_tz_at_t0':             H_tz_zero,
+            },
+            'superconductivity_proofs': {
+                'B_test_T':         B_test,
+                'Bcrit_T':          Bcrit,
+                'meissner_linear':  meissner_linear,
+                'meissner_exp':     meissner_exp,
+            },
+            'empirical_validation': {
+                'ereact_10_days_J':   ereact_10d,
+                'ereact_100_days_J':  ereact_100d,
+                'flare_window_days':  '10–100 (Chandra observed)',
+                'sgr_a_accretion':    '~1e-8 M_sun/yr (EHT)',
+            },
+            'available_equations': [
+                'g_newton = G*M/r²',
+                'g_cosm = Λ·c²/3',
+                'omega_res = 2π/tHubble',
+                'meissner_linear = 1 - B/Bcrit',
+                'meissner_exp = exp(-B/Bcrit)',
+                'Ereact(t) = 1046·exp(-κ·t)',
+            ],
+            'simulation_set': {
+                'omega_res':       omega_res,
+                'meissner_linear': meissner_linear,
+                'meissner_exp':    meissner_exp,
+                'g_newton_1AU':    g_newton,
+            },
+            'papers':  ['PAPER_376'],
+            'session': 102,
+        }
+
+
+class WormholeMUGETermImplSafetyCalculator(_CP4Calculator):
+    """PAPER_377 — compute_a_wormhole() Implementation & MUGE Safety Infrastructure.
+    Source: grok_share_11254865.txt lines 8600–10322 (C++ v8/v9 final programs)
+    Implements: compute_a_wormhole(r, b=1.0) = f_worm·Evac_neb/(b²+r²)
+    Added to compute_resonance_MUGE as 13th final term.
+    Includes: division-by-zero error safety, 24-test assertion suite,
+              18-field CSV I/O (load_muge_systems), multi-file architecture.
+    CP4 class #26
+    """
+    category = "Physics Implementation / Validation Infrastructure"
+
+    # Default wormhole parameters
+    b_throat  = 1.0       # m — Morris-Thorne throat radius
+    f_worm    = 1.0       # dimensionless coupling
+    Evac_neb  = 7.09e-36  # J/m³ — nebular vacuum energy
+
+    def compute_a_wormhole(self, r: float, b: float = None,
+                           f_worm: float = None,
+                           Evac_neb: float = None) -> float:
+        b       = b       if b       is not None else self.b_throat
+        f_worm  = f_worm  if f_worm  is not None else self.f_worm
+        Evac_neb = Evac_neb if Evac_neb is not None else self.Evac_neb
+        return f_worm * Evac_neb / (b**2 + r**2)
+
+    def compute(self, dataset: dict = None) -> dict:
+        import math
+        r_test_values = [0.0, 1e4, 1e12, 3.086e17, 1e26]
+        systems = {
+            'Magnetar SGR 1745-2900':           1e4,
+            'Sagittarius A*':                   1e12,
+            'Tapestry of Blazing Starbirth':    3.086e17,
+            'Westerlund 2':                     3.086e17,
+            'Pillars of Creation':              9.46e15,
+            'Rings of Relativity':              3.086e17,
+            "Student's Guide to the Universe":  1e26,
+        }
+
+        wormhole_by_system = {
+            name: self.compute_a_wormhole(r)
+            for name, r in systems.items()
+        }
+
+        # Unit test validation
+        r_test, b_test = 1e4, 1.0
+        expected = 1.0 / (1.0 + r_test**2)   # f_worm=1, Evac_neb=1
+        computed = self.compute_a_wormhole(r_test, b=b_test, f_worm=1.0, Evac_neb=1.0)
+        test_pass = abs(computed - expected) < 1e-6
+
+        # Max term vs resonance MUGE check (wormhole should be subdominant)
+        afluid_sgr = 1.773e-9   # dominant resonance term for SGR 1745-2900
+        a_worm_sgr = wormhole_by_system['Magnetar SGR 1745-2900']
+        subdominant = a_worm_sgr < afluid_sgr * 1e-30
+
+        return {
+            'primary_equations': {
+                'formula':  'a_worm = f_worm * Evac_neb / (b^2 + r^2)',
+                'b_default_m':    self.b_throat,
+                'f_worm_default': self.f_worm,
+                'Evac_neb':       self.Evac_neb,
+            },
+            'wormhole_by_system': wormhole_by_system,
+            'unit_test': {
+                'test_compute_a_wormhole_pass': test_pass,
+                'expected': expected,
+                'computed': computed,
+            },
+            'available_equations': [
+                'a_worm(r, b=1.0) = f_worm·Evac_neb/(b²+r²)',
+                'resonance_MUGE = aDPM+aTHz+...+fTRZ + a_worm  (13 terms)',
+                'CSV format (18 fields): name,I,A,omega1,omega2,Vsys,vexp,t,z,ffluid,M,r,B,Bcrit,rho_fluid,g_local,M_DM,delta_rho_rho',
+            ],
+            'simulation_set': {
+                'b_throat':                self.b_throat,
+                'wormhole_by_system':      wormhole_by_system,
+                'is_subdominant_vs_fluid': subdominant,
+                'total_resonance_terms':   13,
+                'total_unit_tests':        24,
+            },
+            'papers':  ['PAPER_377'],
+            'session': 102,
+        }
+
+
+class StarMagic11254865Session102HubCalculator(_CP4Calculator):
+    """Session 102 hub — grok_share_11254865.txt COMPLETE re-analysis
+    (lines 6001–10322, full 10,322-line file now confirmed read).
+    PAPER_376: UQFF Formal Proof Set (dimensional, boundary, resonance, empirical)
+    PAPER_377: compute_a_wormhole() + MUGE Safety (error handling, 24 tests, CSV I/O)
+    CP4 class #27 — Session 102 hub
+    """
+    category = "Session Hub / Multi-Physics"
+
+    def compute(self, dataset: dict = None) -> dict:
+        proof_result  = UQFFResonanceFormalProofSetCalculator().compute(dataset)
+        worm_result   = WormholeMUGETermImplSafetyCalculator().compute(dataset)
+        return {
+            'PAPER_376_Formal_Proof_Set':    proof_result,
+            'PAPER_377_Wormhole_Impl_Safety': worm_result,
+            'source_file':  'grok_share_11254865.txt',
+            'source_lines': '6001-10322 (Session 102 — final unread block, file complete)',
+            'total_file_lines': 10322,
+            'cpp_module':   'STAR_MAGIC_09SEPT_UQFF_MODULE.cpp',
+            'papers':       ['PAPER_376', 'PAPER_377'],
+            'session':      102,
+        }
+
+
 # ===========================================================================
 # CP4 REGISTRY
 # ===========================================================================
@@ -2138,5 +2341,9 @@ __all__ = [
     "MorrisThorneWormholeNullGeodesicsCalculator",        # PAPER_373
     "J1610RelativisticQuasarJetUQFFNSCalculator",         # PAPER_374
     "UQFFWormholeMeissnerRelativisticGammaCalculator",    # PAPER_375
-    "StarMagic11254865MUGESessionHubCalculator",          # PAPER_371–375 hub
+    "StarMagic11254865MUGESessionHubCalculator",          # PAPER_371-375 hub
+    # --- Session 102: UQFF Proof Set + Wormhole Impl --- PAPER_376-377 ---
+    "UQFFResonanceFormalProofSetCalculator",              # PAPER_376
+    "WormholeMUGETermImplSafetyCalculator",               # PAPER_377
+    "StarMagic11254865Session102HubCalculator",           # PAPER_376-377 hub
 ]

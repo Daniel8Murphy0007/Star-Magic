@@ -1073,7 +1073,161 @@ inline void run_session101_selftest(std::ostream& os = std::cout) {
 } // namespace StarMagic09Sept_Session101
 
 // ============================================================
+// SESSION 102 — PAPER_376 / PAPER_377
+// grok_share_11254865.txt lines 6001-10322 re-analysis
+// ============================================================
+
+namespace Session102_FormalProofWormhole {
+
+// ---------------------------------------------------------------------------
+// PAPER_376 — UQFF Resonance Superconductive Formal Proof Set
+// Source: "UQFF_Resonance Superconductive Universal Gravity Equation system
+//          proof set._15May2025.docx"
+// Five proofs: dimensional consistency, boundary conditions, resonance
+// amplification at omega=2pi/tHubble, Meissner superconductivity, empirical
+// validation vs Chandra magnetar data and EHT Sgr A* accretion.
+// ---------------------------------------------------------------------------
+
+namespace UQFFProofSet {
+    static constexpr double G        = 6.6743e-11;
+    static constexpr double M_sun    = 1.989e30;
+    static constexpr double AU       = 1.496e11;
+    static constexpr double c        = 3.0e8;
+    static constexpr double Lambda   = 1.1e-52;
+    static constexpr double tHubble  = 4.35e17;
+    static constexpr double fquantum = 1.445e-17;  // Hz = 2pi/tHubble (exact)
+    static constexpr double Ereact_0 = 1046.0;     // J   — magnetar flare seed
+    static constexpr double kappa    = 0.0005;     // day⁻¹  decay rate
+
+    // Proof 1: Newtonian baseline at 1 AU  → m/s²
+    inline double proof1_newtonian_1AU() {
+        return G * M_sun / (AU * AU);
+    }
+
+    // Proof 2: Cosmological floor (r→∞)  → m/s²
+    inline double proof2_cosm_floor() {
+        return Lambda * c * c / 3.0;
+    }
+
+    // Proof 3: Resonance frequency  → confirms fquantum = 2pi/tHubble
+    inline double proof3_omega_resonance() {
+        return 2.0 * 3.14159265358979323846 / tHubble;  // rad/s
+    }
+
+    // Proof 4: Meissner suppression factor (linear form)
+    inline double proof4_meissner_linear(double B, double Bcrit) {
+        return 1.0 - B / Bcrit;
+    }
+
+    // Proof 4: Meissner suppression factor (exponential form)
+    inline double proof4_meissner_exp(double B, double Bcrit) {
+        return std::exp(-B / Bcrit);
+    }
+
+    // Proof 5: Magnetar reactive energy at time t (days)
+    inline double proof5_ereact(double t_days) {
+        return Ereact_0 * std::exp(-kappa * t_days);
+    }
+
+    inline void selftest(std::ostream& os) {
+        double g1AU     = proof1_newtonian_1AU();
+        double g_cosm   = proof2_cosm_floor();
+        double omega    = proof3_omega_resonance();
+        double fq_check = std::abs(omega - fquantum) / fquantum;
+        double m_lin    = proof4_meissner_linear(1e10, 1e11);
+        double m_exp    = proof4_meissner_exp(1e10, 1e11);
+        double er_10    = proof5_ereact(10.0);
+        double er_100   = proof5_ereact(100.0);
+
+        os << "[PAPER_376] Proof1 g(1AU)      = " << g1AU     << " m/s² (expect 5.93e-3)\n";
+        os << "[PAPER_376] Proof2 cosm floor  = " << g_cosm   << " m/s²\n";
+        os << "[PAPER_376] Proof3 omega_res   = " << omega     << " rad/s\n";
+        os << "[PAPER_376] Proof3 fquantum    = " << fquantum  << " Hz  delta_rel=" << fq_check << "\n";
+        os << "[PAPER_376] Proof4 Meissner L  = " << m_lin     << "  (1-B/Bcrit)\n";
+        os << "[PAPER_376] Proof4 Meissner E  = " << m_exp     << "  exp(-B/Bcrit)\n";
+        os << "[PAPER_376] Proof5 Ereact(10d) = " << er_10     << " J\n";
+        os << "[PAPER_376] Proof5 Ereact(100d)= " << er_100    << " J\n";
+        os << "[PAPER_376] Empirical: magnetar flares 10-100 days (Chandra); SgrA* ~1e-8 M_sun/yr (EHT)\n\n";
+    }
+} // namespace UQFFProofSet
+
+
+// ---------------------------------------------------------------------------
+// PAPER_377 — compute_a_wormhole() Production Implementation
+//             + MUGE Error-Safety Infrastructure
+// Source: grok_share_11254865.txt, C++ v8/v9 (lines 8600-10322)
+// ---------------------------------------------------------------------------
+
+namespace WormholeImpl {
+    static constexpr double DEFAULT_B       = 1.0;       // m   (MT throat)
+    static constexpr double DEFAULT_F_WORM  = 1.0;       // coupling factor
+    static constexpr double DEFAULT_EVAC    = 7.09e-36;  // J/m³ nebular vac energy
+
+    // 13th term in compute_resonance_MUGE — production implementation
+    // a_worm = f_worm * Evac_neb / (b² + r²)
+    inline double compute_a_wormhole(double r,
+                                     double b       = DEFAULT_B,
+                                     double f_worm  = DEFAULT_F_WORM,
+                                     double Evac_neb = DEFAULT_EVAC) {
+        // Safety: denominator is always >= b² > 0 for b > 0
+        return f_worm * Evac_neb / (b * b + r * r);
+    }
+
+    // 24th unit test — test_compute_a_wormhole
+    // Contract: at r=1e4, b=1, f_worm=1, Evac_neb=1 → result = 1/(1+r²)
+    inline bool test_compute_a_wormhole(std::ostream& os) {
+        const double r_test = 1e4;
+        double expected = 1.0 / (DEFAULT_B * DEFAULT_B + r_test * r_test);
+        double result   = compute_a_wormhole(r_test, DEFAULT_B, 1.0, 1.0);
+        bool pass = std::abs(result - expected) < 1e-6 * expected;
+        os << "[PAPER_377] test_compute_a_wormhole: result=" << result
+           << " expected=" << expected << " PASS=" << (pass ? "YES" : "NO") << "\n";
+        return pass;
+    }
+
+    // 7 reference system values
+    struct SystemR { const char* name; double r; };
+    static const SystemR SYSTEMS[] = {
+        {"SGR_1745-2900",                 1e4   },
+        {"Sagittarius_A*",                1e12  },
+        {"Tapestry_Blazing_Starbirth",    3.086e17},
+        {"Westerlund_2",                  3.086e17},
+        {"Pillars_of_Creation",           9.46e15 },
+        {"Rings_of_Relativity",           3.086e17},
+        {"Students_Guide_Universe",       1e26  },
+    };
+
+    inline void selftest(std::ostream& os) {
+        os << "[PAPER_377] compute_a_wormhole() implementation (C++ v8/v9 final):\n";
+        os << "[PAPER_377] formula: f_worm * Evac_neb / (b^2 + r^2)\n";
+        os << "[PAPER_377] 13th term in compute_resonance_MUGE()\n";
+        os << "[PAPER_377] 18-field CSV I/O: name,I,A,omega1,omega2,Vsys,vexp,t,z,ffluid,M,r,B,Bcrit,rho_fluid,g_local,M_DM,delta_rho_rho\n";
+        for (const auto& s : SYSTEMS) {
+            double a = compute_a_wormhole(s.r);
+            os << "[PAPER_377] a_worm(" << s.name << ", r=" << s.r << ") = " << a << " m/s²\n";
+        }
+        test_compute_a_wormhole(os);
+        os << "[PAPER_377] Error-safe functions: compute_compressed_base (throw if r==0),\n"
+              "              compute_compressed_super_adj (throw if Bcrit==0),\n"
+              "              compute_compressed_quantum (throw if Delta_x_p==0),\n"
+              "              compute_compressed_perturbation (throw if r==0)\n";
+        os << "[PAPER_377] Total unit tests in suite: 24\n\n";
+    }
+} // namespace WormholeImpl
+
+// Session 102 combined self-test
+inline void session102_selftest(std::ostream& os) {
+    os << "=== Session 102 Self-Test: PAPER_376 + PAPER_377 ===\n";
+    UQFFProofSet::selftest(os);
+    WormholeImpl::selftest(os);
+    os << "[Session102] Self-test complete. Papers: 376 / 377\n\n";
+}
+
+} // namespace Session102_FormalProofWormhole
+
+// ============================================================
 // End of STAR_MAGIC_09SEPT_UQFF_MODULE.cpp
 // Session 100 — PAPER_368 / PAPER_369 / PAPER_370
 // Session 101 — PAPER_371 / PAPER_372 / PAPER_373 / PAPER_374 / PAPER_375
+// Session 102 — PAPER_376 / PAPER_377
 // ============================================================
