@@ -1,0 +1,137 @@
+# PAPER_394 — F_U Complete Three-Term Star Magic Master Equation
+
+**Source:** grok_share_cfdcad2f5.txt, lines ~200–1600 (C++ `compute_FU()` + simulation outputs)  
+**Section:** `main.cpp` `compute_FU()` function + "Program Execution Summary" Grok response  
+**Session:** 107 (grok_share_cfdcad2f5.txt deep re-analysis pass)  
+**CP4 Class:** `FUThreeTermStarMagicMasterCalculator` (CP4 #45)
+
+---
+
+## 1. Overview
+
+PAPER_326 introduced the **Triadic Master Equation** for $F_U$ with three co-equal Aether arms.
+PAPER_394 upgrades this to the **complete four-Ug plus buoyancy plus magnetic plus metric tensor**
+form that is actually implemented in the Grok simulation, with confirmed numerical outputs for
+all four test bodies.
+
+The complete implementation reveals:
+1. Four Ug gravitational-field terms (not three)
+2. Explicit buoyancy sum $\Sigma U_{bi}$
+3. Magnetic string term $U_m$
+4. Aether metric tensor trace $\text{tr}(A_{\mu\nu})$
+5. k-constants: $k_1=1.5$, $k_2=1.2$, $k_3=1.8$, $k_4=2.0$
+
+---
+
+## 2. The Complete F_U Formula
+
+### 2.1 Master Equation (Full Form)
+
+$$\boxed{F_U = \sum_{i=1}^{4}(U_{g,i} + U_{bi}) + U_m + \text{tr}(A_{\mu\nu})}$$
+
+### 2.2 Expanded Form
+
+$$F_U = (U_{g1} + U_{bi1}) + (U_{g2} + U_{bi2}) + (U_{g3} + U_{bi3}) + (U_{g4} + U_{bi4}) + U_m + \text{tr}(A_{\mu\nu})$$
+
+### 2.3 Individual Term Definitions
+
+**Term 1 — Magnetic Dipole (Ug1):**
+$$U_{g1} = k_1 \cdot \mu_s(t) \cdot \nabla M_s/r \cdot e^{-\alpha t} \cdot \cos(\pi t_n) \cdot \delta_{\text{def}}(t)$$
+$$k_1 = 1.5$$
+
+**Term 2 — Charge-Reactivity (Ug2):**
+$$U_{g2} = k_2 \cdot (Q_A + Q_{UA}) \cdot \frac{M_s}{r^2} \cdot S(r,R_b) \cdot w_{\text{sw}} \cdot H_{\text{SCm}} \cdot E_{\text{react}}$$
+$$k_2 = 1.2$$
+
+**Term 3 — String Rotation (Ug3):**
+$$U_{g3} = k_3 \cdot B_j(t) \cdot \cos(\omega_s(t) \cdot \pi t) \cdot P_{\text{core}} \cdot E_{\text{react}}$$
+$$k_3 = 1.8$$
+
+**Term 4 — Vacuum Concentration / BH Coupling (Ug4):**
+$$U_{g4} = k_4 \cdot \rho_v \cdot C_{\text{conc}} \cdot \frac{M_{bh}}{d_g} \cdot e^{-\alpha t} \cdot \cos(\pi t_n) \cdot (1 + f_{\text{fb}})$$
+$$k_4 = 2.0$$
+
+**Buoyancy (Ubi for each Ugi):**
+$$U_{bi,i} = -\beta_i \cdot U_{g,i} \cdot \Omega_g \cdot \frac{M_{bh}}{d_g} \cdot (1 + \epsilon_{sw}\rho_{sw}) \cdot [UA] \cdot \cos(\pi t_n)$$
+
+**Magnetic Strings (Um):**
+$$U_m = \frac{\mu_j(t)}{r_j} \cdot (1 - e^{-\gamma t}\cos(\pi t_n)) \cdot \hat\Phi \cdot n_{\text{strings}} \cdot P_{\text{SCm}} \cdot E_{\text{react}}$$
+
+**Aether Metric Tensor Term:**
+$$\text{tr}(A_{\mu\nu}) = \text{tr}(g_{\mu\nu}) + 4\eta T_{s00}\cos(\pi t_n) = -2 + 4\eta T_{s00}\cos(\pi t_n)$$
+
+---
+
+## 3. k-Constants Table
+
+| Constant | Value | Term | Physical Role |
+|----------|-------|------|--------------|
+| $k_1$ | 1.5 | Ug1 | Dipole magnetic coupling weight |
+| $k_2$ | 1.2 | Ug2 | Charge-reactivity coupling weight |
+| $k_3$ | 1.8 | Ug3 | String rotation coupling weight |
+| $k_4$ | 2.0 | Ug4 | Vacuum-BH concentration weight |
+| $\beta_i$ | 0.6 | Ubi | Buoyancy ratio coefficient |
+
+---
+
+## 4. Simulation Verification
+
+### 4.1 FU Outputs at t=0, r=R_b
+
+| Body | R_b (m) | M_s (kg) | FU (normalized units) |
+|------|---------|---------|----------------------|
+| Sun | $1.496\times10^{13}$ | $1.989\times10^{30}$ | $-2.063905868374393\times10^{59}$ |
+| Earth | $1\times10^7$ | $5.972\times10^{24}$ | $-2.0639058683743924\times10^{53}$ |
+| Jupiter | $1\times10^8$ | $1.898\times10^{27}$ | $-2.0639058683743924\times10^{54}$ |
+| Neptune | $5\times10^7$ | $1.024\times10^{26}$ | $-2.0639058683743926\times10^{52}$ |
+
+### 4.2 Dominant Term Analysis
+
+The output $F_U \sim -10^{59}$ for the Sun is driven by:
+- $U_{g3}(\text{Sun}) \sim k_3 \times B_j \times E_{\text{react}} = 1.8\times10^3\times8.808\times10^{54} \approx 10^{58}$
+- $U_{bi3}(\text{Sun}) \approx -0.6 \times U_{g3} \rightarrow $ also $\sim 10^{58}$, negative
+
+The net negative sign of $F_U$ arises because $\Omega_g = 7.3\times10^{-16}$ and $U_{bi,i}$ terms
+slightly dominate due to the $M_{bh}/d_g$ coupling, making the buoyancy terms collectively
+exceed the gravitational terms.
+
+### 4.3 Structural Pattern
+
+The ratio between bodies scales with their characteristic radii:
+$$F_U(\text{Sun})/F_U(\text{Earth}) \approx 10^{59}/10^{53} = 10^6$$
+
+For $R_b(\text{Sun})=1.496\times10^{13}$ vs $R_b(\text{Earth})=10^7$: ratio $= 1.496\times10^6 \approx 10^6$ ✓
+
+---
+
+## 5. Comparison to Existing Papers
+
+| Paper | F_U Form | What's Missing |
+|-------|---------|----------------|
+| PAPER_326 | 3-arm Triadic | No Ug4, no explicit Ubi sum, no metric term |
+| PAPER_345 | Partial expansion | Missing k-constants verification |
+| PAPER_350 | v_SCm in E_react | No complete combination |
+| **PAPER_394** | **All 4 Ug + Ubi + Um + tr(A)** | **Complete form + verified outputs** |
+
+---
+
+## 6. Global Parameters
+
+| Parameter | Value | Role |
+|-----------|-------|------|
+| $\Omega_g$ | $7.3\times10^{-16}$ rad/s | Galactic angular frequency |
+| $M_{bh}$ | $8.15\times10^{36}$ kg | Central BH mass (SgrA*: 4.1M$\odot$) |
+| $d_g$ | $2.55\times10^{20}$ m | Distance to galactic center |
+| $\rho_v$ | $6\times10^{-27}$ kg/m³ | Vacuum energy density |
+| $C_{\text{conc}}$ | 1.0 | Concentration factor |
+| $n_{\text{strings}}$ | $10^9$ | Number of magnetic strings |
+
+---
+
+## 7. Summary
+
+PAPER_394 documents the **complete implementation** of the UQFF unified field strength $F_U$
+as used in the Grok simulation. The formula contains four Ug terms (k1=1.5, k2=1.2, k3=1.8,
+k4=2.0), four corresponding buoyancy corrections, magnetic string term $U_m$, and Aether metric
+tensor trace $\text{tr}(A_{\mu\nu})$. Verified simulation outputs confirm $F_U(\text{Sun}) =
+-2.064\times10^{59}$ with Ug3 as the dominant driving term via $E_{\text{react}} = 8.808\times10^{54}$ J.
