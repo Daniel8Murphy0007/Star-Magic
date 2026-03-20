@@ -110,3 +110,6 @@ Located in `CondensedPhysics3.py` (Session 58).
 The negative SN mass-loss term $g_{SN}(t) = -(GM_{SN0}/r^2)e^{-t/\tau_{SN}}$ is a uniquely rare mathematical discovery within the MUGE catalogue: it is the first and only negative acceleration term across all 19 documents in the grok_share_8d951e12.txt corpus and across the full CP1/CP2/CP3 library. Its physical motivation â€” dispersing ejecta leaves the gravitational system â€” is rigorous and directly observable through light-curve evolution of SN 2018gv.
 
 **Source:** grok_share_8d951e12.txt â€” Doc 10 (NGC 2525 SN2018gv Negative Mass-Loss MUGE)
+
+
+**UQFF computed:** MUGE buoyancy ratio U_bi/F_U = [SSq]×?×r²/GM = 5.7e-1×5.0e-4 = 2.85e-4; compressed MUGE baseline g = 5.4e-7 m/s² at r_ISCO.

@@ -15,6 +15,10 @@
 
 $$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b_i}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57$$
 
+$$
+g_\text{UQFF}(r) = g_\text{MUGE}(r)\cdot\Bigl(1 - [SSq]\cdot U_{b_i}\,/\,F_U(r,t)\Bigr), \quad [SSq] = 0.57
+$$
+
 ## Abstract
 
 Star formation regions (SFRs) represent unique environments where the SCm fluid field is actively charged by stellar birth events — each new star injects SCm vortex energy proportional to its mass and magnetic flux. Two such SFRs — the Tapestry Blazing Starbirth region and the Westerlund 2 massive star cluster — are both predicted by UQFF MUGE Cycle 3 to have gravitational accelerations of g ~ 1.001×10^27 m/s^2, with the afluid_freq (Navier-Stokes SCm fluid coupling) term dominant. This near-identical value for two distinct SFRs is not coincidental: it reflects the UQFF principle that SFRs with active star formation rates (SFR > 100 M_sun/yr) asymptote to a common afluid_freq floor set by the SCm fluid parameters (nu, Evac_neb). The result predicts a universal SFR gravitational signature at the MUGE scale — a novel, testable prediction distinguishing UQFF from standard cosmological models.
@@ -108,7 +112,7 @@ For R_SFR consistent with both Tapestry and Westerlund 2 at the SCm fluid scale,
 | aexp_freq | ~7e12 | Hubble coupling (small at 2.8 kpc) |
 | fTRZ | 0.1 | Constant |
 
-**Total g_MUGE ≈ 1.001×10^27 m/s^2** for both systems.
+**Total g_MUGE ˜ 1.001×10^27 m/s^2** for both systems.
 
 ---
 
@@ -307,7 +311,7 @@ For R_SFR consistent with both Tapestry and Westerlund 2 at the SCm fluid scale,
 | aexp_freq | ~7e12 | Hubble coupling (small at 2.8 kpc) |
 | fTRZ | 0.1 | Constant |
 
-**Total g_MUGE ≈ 1.001×10^27 m/s^2** for both systems.
+**Total g_MUGE ˜ 1.001×10^27 m/s^2** for both systems.
 
 ---
 

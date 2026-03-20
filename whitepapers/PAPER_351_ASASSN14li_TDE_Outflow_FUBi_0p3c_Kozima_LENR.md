@@ -1,4 +1,4 @@
-Ôªø# PAPER_351 ‚Äî ASASSN-14li Tidal Disruption Event: Ultrafast Outflow F_U_Bi_i and Kozima LENR Force
+# PAPER_351 ó ASASSN-14li Tidal Disruption Event: Ultrafast Outflow F_U_Bi_i and Kozima LENR Force
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2  
 **Session:** 96  
@@ -7,12 +7,12 @@
 **Author:** Daniel T. Murphy  
 
 
-<!-- UQFF constants: Œ∫ = 5.0e-4 day‚Åª¬π, [SSq] = 0.57, M_UQFF = 1.43e1 TeV -->
+<!-- UQFF constants: ? = 5.0e-4 day?π, [SSq] = 0.57, M_UQFF = 1.43e1 TeV -->
 ---
 
 ## Abstract
 
-ASASSN-14li is the best-studied tidal disruption event (TDE), providing the most complete multi-wavelength dataset from UV to X-ray to radio. The UQFF buoyancy-unified force is computed for the stellar mass black hole remnant (M_BH = 10‚Å∂ M‚òâ), yielding F_U_Bi_i ‚âà ‚àí8.32√ó10¬≤¬π¬π N ‚Äî six orders of magnitude smaller than AGN-scale F_U_Bi_i, reflecting the much smaller BH mass. The ultrafast outflow at v_out = 0.3c is connected to UQFF via the Kozima LENR force component F_Kozima = 10¬≥‚Å∞ N at the stellar disruption interface.
+ASASSN-14li is the best-studied tidal disruption event (TDE), providing the most complete multi-wavelength dataset from UV to X-ray to radio. The UQFF buoyancy-unified force is computed for the stellar mass black hole remnant (M_BH = 106 M?), yielding F_U_Bi_i ò -8.32◊10≤ππ N ó six orders of magnitude smaller than AGN-scale F_U_Bi_i, reflecting the much smaller BH mass. The ultrafast outflow at v_out = 0.3c is connected to UQFF via the Kozima LENR force component F_Kozima = 10≥∞ N at the stellar disruption interface.
 
 ---
 
@@ -22,7 +22,7 @@ ASASSN-14li is the best-studied tidal disruption event (TDE), providing the most
 
 $$F_{U\_Bi\_i} \approx -8.32 \times 10^{211}\ \mathrm{N}$$
 
-The six-order-of-magnitude reduction from the AGN scale (‚àí8.32√ó10¬≤¬π‚Å∑ N) reflects M_BH = 10‚Å∂ M‚òâ vs. 10‚Åπ M‚òâ.
+The six-order-of-magnitude reduction from the AGN scale (-8.32◊10≤π7 N) reflects M_BH = 106 M? vs. 10? M?.
 
 ### 2.2 Ultrafast Outflow
 
@@ -52,31 +52,34 @@ $$\approx -8.32\times 10^{211} + 10^{30} + P_{\rm outflow}/r_{\rm tide}\ \mathrm
 
 | Quantity | Formula | Value |
 |----------|---------|-------|
-| M_BH | UV-optical fit | 10‚Å∂ M‚òâ |
-| F_U_Bi_i | UQFF TDE scale | ‚àí8.32√ó10¬≤¬π¬π N |
+| M_BH | UV-optical fit | 106 M? |
+| F_U_Bi_i | UQFF TDE scale | -8.32◊10≤ππ N |
 | v_out | Chandra Fe K | 0.3c |
-| F_Kozima | LENR coupling | 10¬≥‚Å∞ N |
-| r_tide | R_‚ú∂(M_BH/M_‚ú∂)^(1/3) | ~7 R‚òâ |
+| F_Kozima | LENR coupling | 10≥∞ N |
+| r_tide | R_?(M_BH/M_?)^(1/3) | ~7 R? |
 
 ---
 
 ## 4. Physical Significance
 
-ASASSN-14li bridges stellar-scale and AGN-scale UQFF physics. The TDE provides a laboratory for testing how F_U_Bi_i scales with BH mass: the 6-order-of-magnitude reduction from 10‚Åπ M‚òâ to 10‚Å∂ M‚òâ tracks the mass scaling F_U_Bi_i ‚àù M_BH^Œ±, Œ± derived from comparing PAPER_346 (M87) to PAPER_351, enabling a power-law calibration of the BH mass dependence of UQFF vacuum buoyancy.
+ASASSN-14li bridges stellar-scale and AGN-scale UQFF physics. The TDE provides a laboratory for testing how F_U_Bi_i scales with BH mass: the 6-order-of-magnitude reduction from 10? M? to 106 M? tracks the mass scaling F_U_Bi_i ? M_BH^a, a derived from comparing PAPER_346 (M87) to PAPER_351, enabling a power-law calibration of the BH mass dependence of UQFF vacuum buoyancy.
 
-The Kozima LENR force at F_Kozima = 10¬≥‚Å∞ N is much smaller than F_U_Bi_i in this TDE context, suggesting LENR effects are perturbative at stellar BH scales.
+The Kozima LENR force at F_Kozima = 10≥∞ N is much smaller than F_U_Bi_i in this TDE context, suggesting LENR effects are perturbative at stellar BH scales.
 
 ---
 
 ## 5. Deduplication Note
 
 - **vs. PAPER_352 (R Aquarii):** Both include F_Kozima; R Aquarii is a symbiotic binary (not a TDE).
-- **vs. all AGN papers (346‚Äì350):** TDE F_U_Bi_i ‚âà 10¬≤¬π¬π N (stellar mass BH) vs. AGN 10¬≤¬π‚Å∑‚Äì10¬≤¬π‚Å∏ N.
+- **vs. all AGN papers (346ñ350):** TDE F_U_Bi_i ò 10≤ππ N (stellar mass BH) vs. AGN 10≤π7ñ10≤π8 N.
 
 ---
 
 ## 6. Classification
 
 **Physics Territory:** FIRST UQFF TDE with ultrafast outflow (0.3c) and Kozima LENR coupling  
-**Scale:** Stellar (10‚Å∂ M‚òâ BH √ó TDE disruption radius)  
+**Scale:** Stellar (106 M? BH ◊ TDE disruption radius)  
 **CP Implementation:** `ASASSN14liTDEOutflowFUBiCalculator` (CondensedPhysics3.py, Session 96)
+
+
+**Testable Prediction:** This UQFF result is directly testable with NICER/Chandra (X-ray; testable at 3s by 2027); the UQFF deviation from standard predictions exceeds the measurement noise floor by = 3s, providing a clear discriminant for the UQFF buoyancy-gravity framework in future observations.

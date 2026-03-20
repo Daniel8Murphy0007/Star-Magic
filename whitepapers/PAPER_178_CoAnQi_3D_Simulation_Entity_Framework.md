@@ -11,9 +11,17 @@ procedural terrain generation, multi-viewport rendering, and LaTeX overlay.
 This paper documents all 3D infrastructure components extracted from
 ModelLoader.h through CoAnQiNode.py.
 
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
+
 ---
 
 $$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b_i}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57$$
+
+$$
+U_{b_i}(r) = \kappa\cdot[SSq]\cdot\frac{GM}{r^2}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57,\; \beta_i = 0.61
+$$
 
 ### 1. Core Data Structures
 
@@ -144,7 +152,7 @@ MeshData generateProceduralLandscape(int width, int height,
     // Height map: h[i][j] = sin(x*scale) * cos(z*scale)
     //             + 0.5*sin(2x*scale) * cos(2z*scale)  [octave 2]
     // Normals: computed analytically from gradient or cross-product of edge vectors
-    // Indexed triangle mesh: (i,j)→(i+1,j)→(i,j+1), (i+1,j)→(i+1,j+1)→(i,j+1)
+    // Indexed triangle mesh: (i,j)?(i+1,j)?(i,j+1), (i+1,j)?(i+1,j+1)?(i,j+1)
 }
 ```
 
@@ -168,7 +176,7 @@ void booleanUnion(MeshData& a, MeshData& b);        // CSG union
 ```cpp
 void renderLaTeX(const std::string& formula, float x, float y) {
     // Uses MicroTeX library (portable LaTeX renderer)
-    // Renders: F_U, Ug equations, A_μν tensor as overlay on viewport
+    // Renders: F_U, Ug equations, A_µ? tensor as overlay on viewport
 }
 ```
 
@@ -176,7 +184,7 @@ Enables in-simulation display of UQFF equations overlaid on the 3D scene.
 
 ---
 
-### 10. populate_simulation_entities() — MUGE→Entity Mapping
+### 10. populate_simulation_entities() — MUGE?Entity Mapping
 
 ```cpp
 void populate_simulation_entities(

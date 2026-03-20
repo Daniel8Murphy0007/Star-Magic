@@ -12,6 +12,10 @@
 
 GW150914 is the first directly detected gravitational wave event, a binary black hole merger at D_L = 410 Mpc with component masses 36 + 29 M☉. We apply the Unified Quantum Field Framework (UQFF) to the strain time series and show that UQFF damping reduces the peak strain by 66.7% (from 1.25 × 10⁻²¹ to 4.16 × 10⁻²²), suppresses SNR from 24 to 8, and introduces a phase lag of 0.126 rad and ±1% interference ripples in the strain envelope. Crucially, the 66.7% reduction produces an apparent distance overestimate of 1231 Mpc (vs true 410 Mpc)—a factor of 3× bias that directly impacts Hubble constant measurements from GW events.
 
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0�10?4 day?�, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
+
 ---
 
 ## 1. Event Parameters

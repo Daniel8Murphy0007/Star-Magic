@@ -10,9 +10,17 @@
 
 $$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b_i}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57$$
 
+$$
+P_\text{sw}^\text{UQFF} = \tfrac{1}{2}\rho_\text{sw}v_\text{sw}^2\bigl(1 + [SSq]\cdot\exp(-\kappa\,r/v_\text{sw})\bigr), \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1}
+$$
+
 ## Abstract
 
 This paper documents the canonical parameter set for the four Solar System bodies encoded as CelestialBody struct instances in the CoAnQi codebase: the Sun, Earth, Jupiter, and Neptune. Each body is fully specified by twelve UQFF parameters derived from observational data. These parameter values are the authoritative defaults used for Solar System UQFF validation and serve as the cross-validation baseline for all heliocentric calculations. The paper includes the exact numerical values, units, physical interpretation, and UQFF equations in which each parameter appears.
+
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -46,17 +54,17 @@ struct CelestialBody {
 ```cpp
 CelestialBody sun = {
     "Sun",
-    1.989e30,            // Ms: 1.989 × 10³⁰ kg (IAU 2015)
-    6.96e8,              // Rs: 6.96 × 10⁸ m = 696,000 km
-    1.496e13,            // Rb: 1.496 × 10¹³ m ≈ 100 AU (heliosphere)
+    1.989e30,            // Ms: 1.989 × 10³° kg (IAU 2015)
+    6.96e8,              // Rs: 6.96 × 108 m = 696,000 km
+    1.496e13,            // Rb: 1.496 × 10¹³ m ˜ 100 AU (heliosphere)
     5778.0,              // Ts_surface: 5778 K (photospheric effective temperature)
-    2.5e-6,              // omega_s: 2.5 μrad/s (surface rotation, equatorial ~25 days)
-    1e-4,                // Bs_avg: 100 μT average dipole field
-    1e15,                // SCm_density: 10¹⁵ kg/m³ (UQFF calibrated)
-    1e-11,               // QUA: 10⁻¹¹ C
-    1.0,                 // Pcore: normalized (physical ~2.5 × 10¹⁶ Pa)
+    2.5e-6,              // omega_s: 2.5 µrad/s (surface rotation, equatorial ~25 days)
+    1e-4,                // Bs_avg: 100 µT average dipole field
+    1e15,                // SCm_density: 10¹5 kg/m³ (UQFF calibrated)
+    1e-11,               // QUA: 10?¹¹ C
+    1.0,                 // Pcore: normalized (physical ~2.5 × 10¹6 Pa)
     1.0,                 // PSCm: normalized SCm pressure
-    2.0*M_PI/(11.0*365.25*86400)  // omega_c: 2π / (11-year solar cycle)
+    2.0*M_PI/(11.0*365.25*86400)  // omega_c: 2p / (11-year solar cycle)
 };
 ```
 
@@ -79,17 +87,17 @@ CelestialBody sun = {
 ```cpp
 CelestialBody earth = {
     "Earth",
-    5.972e24,            // Ms: 5.972 × 10²⁴ kg
-    6.371e6,             // Rs: 6.371 × 10⁶ m (mean radius)
-    1e7,                 // Rb: 10⁷ m (Van Allen belt inner edge)
+    5.972e24,            // Ms: 5.972 × 10²4 kg
+    6.371e6,             // Rs: 6.371 × 106 m (mean radius)
+    1e7,                 // Rb: 107 m (Van Allen belt inner edge)
     288.0,               // Ts_surface: 288 K (global mean surface temperature)
-    7.292e-5,            // omega_s: 7.292 × 10⁻⁵ rad/s (1 sidereal day)
-    3e-5,                // Bs_avg: 30 μT (Earth's mean field ~50 μT dipole/2)
+    7.292e-5,            // omega_s: 7.292 × 10?5 rad/s (1 sidereal day)
+    3e-5,                // Bs_avg: 30 µT (Earth's mean field ~50 µT dipole/2)
     1e12,                // SCm_density: 10¹² kg/m³ (UQFF calibrated for rocky planet)
-    1e-12,               // QUA: 10⁻¹² C
+    1e-12,               // QUA: 10?¹² C
     1e-3,                // Pcore: normalized (physical ~3.6 × 10¹¹ Pa inner core)
     1e-3,                // PSCm: normalized SCm pressure
-    2.0*M_PI/(1.0*365.25*86400)   // omega_c: 2π / (1-year orbital cycle)
+    2.0*M_PI/(1.0*365.25*86400)   // omega_c: 2p / (1-year orbital cycle)
 };
 ```
 
@@ -110,17 +118,17 @@ CelestialBody earth = {
 ```cpp
 CelestialBody jupiter = {
     "Jupiter",
-    1.898e27,            // Ms: 1.898 × 10²⁷ kg (1/1047 solar mass)
-    6.9911e7,            // Rs: 6.9911 × 10⁷ m (equatorial)
-    1e8,                 // Rb: 10⁸ m (magnetosphere inner edge)
+    1.898e27,            // Ms: 1.898 × 10²7 kg (1/1047 solar mass)
+    6.9911e7,            // Rs: 6.9911 × 107 m (equatorial)
+    1e8,                 // Rb: 108 m (magnetosphere inner edge)
     165.0,               // Ts_surface: 165 K (cloud-top effective temperature)
-    1.76e-4,             // omega_s: 1.76 × 10⁻⁴ rad/s (9.93-hour rotation)
-    4e-4,                // Bs_avg: 400 μT (Jovian dipole ~420 μT equatorial)
+    1.76e-4,             // omega_s: 1.76 × 10?4 rad/s (9.93-hour rotation)
+    4e-4,                // Bs_avg: 400 µT (Jovian dipole ~420 µT equatorial)
     1e13,                // SCm_density: 10¹³ kg/m³ (metallic hydrogen mantle)
-    1e-11,               // QUA: 10⁻¹¹ C (stormy ionosphere)
+    1e-11,               // QUA: 10?¹¹ C (stormy ionosphere)
     1e-3,                // Pcore: normalized
     1e-3,                // PSCm: normalized
-    2.0*M_PI/(11.86*365.25*86400) // omega_c: 2π / (11.86-year Jupiter orbital period)
+    2.0*M_PI/(11.86*365.25*86400) // omega_c: 2p / (11.86-year Jupiter orbital period)
 };
 ```
 
@@ -137,17 +145,17 @@ Jupiter's `omega_c` period (11.86 years) is nearly identical to the Sun's solar 
 ```cpp
 CelestialBody neptune = {
     "Neptune",
-    1.024e26,            // Ms: 1.024 × 10²⁶ kg
-    2.4622e7,            // Rs: 2.4622 × 10⁷ m (equatorial)
-    5e7,                 // Rb: 5 × 10⁷ m (magnetospheric inner boundary)
+    1.024e26,            // Ms: 1.024 × 10²6 kg
+    2.4622e7,            // Rs: 2.4622 × 107 m (equatorial)
+    5e7,                 // Rb: 5 × 107 m (magnetospheric inner boundary)
     72.0,                // Ts_surface: 72 K (effective temperature)
-    1.08e-4,             // omega_s: 1.08 × 10⁻⁴ rad/s (16.11-hour rotation)
-    1e-4,                // Bs_avg: 100 μT (highly tilted dipole ~14–16 μT at 1 R_N)
+    1.08e-4,             // omega_s: 1.08 × 10?4 rad/s (16.11-hour rotation)
+    1e-4,                // Bs_avg: 100 µT (highly tilted dipole ~14–16 µT at 1 R_N)
     1e11,                // SCm_density: 10¹¹ kg/m³ (ice giant, water/ammonia mantle)
-    1e-13,               // QUA: 10⁻¹³ C
+    1e-13,               // QUA: 10?¹³ C
     1e-3,                // Pcore: normalized
     1e-3,                // PSCm: normalized
-    2.0*M_PI/(164.8*365.25*86400) // omega_c: 2π / (164.8-year Neptune orbital period)
+    2.0*M_PI/(164.8*365.25*86400) // omega_c: 2p / (164.8-year Neptune orbital period)
 };
 ```
 

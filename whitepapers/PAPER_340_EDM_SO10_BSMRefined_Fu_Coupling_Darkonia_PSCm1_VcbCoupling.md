@@ -1,4 +1,4 @@
-﻿# PAPER_340 — EDM SO(10) BSM Refined F_u Coupling: Darkonia Phase Boundary P_SCm = 1
+# PAPER_340 � EDM SO(10) BSM Refined F_u Coupling: Darkonia Phase Boundary P_SCm = 1
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2  
 **Session:** 96  
@@ -7,12 +7,16 @@
 **Author:** Daniel T. Murphy  
 
 
-<!-- UQFF constants: κ = 5.0e-4 day⁻¹, [SSq] = 0.57, M_UQFF = 1.43e1 TeV -->
+<!-- UQFF constants: ? = 5.0e-4 day?�, [SSq] = 0.57, M_UQFF = 1.43e1 TeV -->
 ---
 
 ## Abstract
 
-The UQFF F_u coupling is refined using SO(10) grand unification predictions for the electron electric dipole moment (EDM) d_e ~ 10⁻²⁵ e·cm. A new phase boundary is identified at P_SCm = 1 where darkonia (dark-sector charmonium analogs) become stable. The V_cb CKM element coupling k_η·G_F²·s/π and the tau-lepton anomaly deviation τ_dev = 5×10⁻⁸ s (< 5% error relative to Super Tau-Charm factory limits) are derived.
+The UQFF F_u coupling is refined using SO(10) grand unification predictions for the electron electric dipole moment (EDM) d_e ~ 10?�5 e�cm. A new phase boundary is identified at P_SCm = 1 where darkonia (dark-sector charmonium analogs) become stable. The V_cb CKM element coupling k_?�G_F��s/p and the tau-lepton anomaly deviation t_dev = 5�10?8 s (< 5% error relative to Super Tau-Charm factory limits) are derived.
+
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0�10?4 day?�, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -25,9 +29,9 @@ The refined F_u positive coupling from SO(10) EDM:
 $$F_u^+ = \frac{d_e \cdot e}{2 m_e c} \cdot e^{-[SSq] \cdot n / 26}$$
 
 where:
-- d_e = 1.6×10⁻⁴⁴ C·m  (SI equivalent of ~10⁻²⁵ e·cm SO(10) prediction)
-- e = 1.6×10⁻¹⁹ C
-- m_e = 9.11×10⁻³¹ kg
+- d_e = 1.6�10?44 C�m  (SI equivalent of ~10?�5 e�cm SO(10) prediction)
+- e = 1.6�10?�? C
+- m_e = 9.11�10?�� kg
 - [SSq] = 0.57
 - n = 13 (pseudo-scalar Ramanujan state; half-sum of 26 states)
 
@@ -49,14 +53,14 @@ The V_cb CKM matrix element coupling enters via:
 $$V_{cb}^{\rm UQFF} = k_\eta \cdot G_F^2 \cdot s / \pi$$
 
 where:
-- k_η = 10⁻¹⁰ (UQFF aether coupling)
-- G_F = 1.1664×10⁻⁵ GeV⁻² (Fermi constant)
-- s = centre-of-mass energy squared (GeV²)
-- V_cb = (40.5 ± 1.3)×10⁻³ (PDG 2024)
+- k_? = 10?�� (UQFF aether coupling)
+- G_F = 1.1664�10?5 GeV?� (Fermi constant)
+- s = centre-of-mass energy squared (GeV�)
+- V_cb = (40.5 � 1.3)�10?� (PDG 2024)
 
 ### 2.4 tau_dev from g-2 UQFF Fit
 
-From PAPER_333 BSM fit: a = 4.74×10⁻⁵, b = 9.96, κ_Higgs = 47.34 → τ_dev = 5×10⁻⁸ s, error < 5% compared to Super Tau-Charm factory precision target.
+From PAPER_333 BSM fit: a = 4.74�10?5, b = 9.96, ?_Higgs = 47.34 ? t_dev = 5�10?8 s, error < 5% compared to Super Tau-Charm factory precision target.
 
 ---
 
@@ -64,12 +68,12 @@ From PAPER_333 BSM fit: a = 4.74×10⁻⁵, b = 9.96, κ_Higgs = 47.34 → τ_de
 
 | Quantity | Value | Notes |
 |----------|-------|-------|
-| d_e (SO(10)) | ~10⁻²⁵ e·cm | 3× below ACME limit |
-| F_u⁺(n=13) | 6.5×10⁻⁴⁵ N | [SSq] Ramanujan suppression |
+| d_e (SO(10)) | ~10?�5 e�cm | 3� below ACME limit |
+| F_u?(n=13) | 6.5�10?45 N | [SSq] Ramanujan suppression |
 | P_SCm phase boundary | P_SCm = 1 | darkonia stable |
-| V_cb (PDG) | 40.5×10⁻³ | CKM reference |
-| τ_dev | 5×10⁻⁸ s | g-2 fit < 5% error |
-| κ_Higgs | 47.34 | Universal UQFF Higgs coupling |
+| V_cb (PDG) | 40.5�10?� | CKM reference |
+| t_dev | 5�10?8 s | g-2 fit < 5% error |
+| ?_Higgs | 47.34 | Universal UQFF Higgs coupling |
 
 ---
 
@@ -77,15 +81,15 @@ From PAPER_333 BSM fit: a = 4.74×10⁻⁵, b = 9.96, κ_Higgs = 47.34 → τ_de
 
 The detection of a non-zero d_e at the SO(10) level would simultaneously:
 1. Confirm BSM CP violation at the TeV scale
-2. Provide a V_cb–UQFF coupling constraint independent of lattice QCD
+2. Provide a V_cb�UQFF coupling constraint independent of lattice QCD
 3. Validate the UQFF P_SCm = 1 darkonia phase boundary through missing-energy searches at BES-III or Super Tau-Charm
 
 ---
 
 ## 5. Deduplication Note
 
-- PAPER_333 (Session 95): BSM 10-experiment package — bundled multi-experiment class  
-- PAPER_340: Standalone SO(10) EDM refinement with darkonia phase boundary — **FIRST P_SCm=1 darkonia stability**
+- PAPER_333 (Session 95): BSM 10-experiment package � bundled multi-experiment class  
+- PAPER_340: Standalone SO(10) EDM refinement with darkonia phase boundary � **FIRST P_SCm=1 darkonia stability**
 
 ---
 

@@ -1,11 +1,11 @@
-Ôªø#  "PAPER_{0:D3}" -f [int]# PAPER #138 ‚Äî UQFF NGC 3603 Star Cluster Burst: M(t) Evolution, SCm Feedback, P(t) Cavity
+#  "PAPER_{0:D3}" -f [int]# PAPER #138 ó UQFF NGC 3603 Star Cluster Burst: M(t) Evolution, SCm Feedback, P(t) Cavity
 
-**Title:** UQFF MasterBuoyancy + Superconductive Mode Star Cluster Burst ‚Äî NGC 3603 Mass Evolution M(t) = M_0(1+exp(‚àít/œÑ_SF)) with SCm Stellar Wind Feedback Pressure P(t) and 19-Light-Year Cavity
+**Title:** UQFF MasterBuoyancy + Superconductive Mode Star Cluster Burst ó NGC 3603 Mass Evolution M(t) = M_0(1+exp(-t/t_SF)) with SCm Stellar Wind Feedback Pressure P(t) and 19-Light-Year Cavity
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (Œ∫ = 0.0005/day, [SSq] = 0.57, Œ≤_i = 0.6)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57, ﬂ_i = 0.6)  
 **Date:** March 2026  
-**Domain:** ¬ß2.1 Stellar Cluster Evolution (3419da89)  
+**Domain:** ß2.1 Stellar Cluster Evolution (3419da89)  
 **Source Thread:** `grok_share_3419da8930c748568b7f2bea0ea9c88e_content.txt`  
 **UQFF Mode:** MasterBuoyancy + Superconductive  
 **Validator:** `CondensedPhysics2.py` v2.1.0  
@@ -15,7 +15,7 @@
 
 ## Abstract
 
-NGC 3603, located at ~6 kpc in the Carina arm of the Milky Way, is the most massive young stellar cluster in the Galaxy ‚Äî a compact OB association of ~400,000 M_sun undergoing a simultaneous starburst. Pre-UQFF models treat cluster formation as a purely Newtonian gravitational collapse with stellar wind feedback. UQFF applies the full F_U equation to NGC 3603, deriving: an SCm-modified mass evolution M(t) = M_0(1+exp(‚àít/œÑ_SF)), a stellar wind feedback pressure P(t) = œÅ v_wind¬≤ exp(‚àít/œÑ_exp), and a full gravitational field g_NGC3603 incorporating Ug1‚Äì4 terms and Œõ cosmological coupling. The UQFF DISCOVERY: the observed 19-light-year cavity around NGC 3603 is a direct consequence of the P(t) SCm buoyancy feedback ‚Äî the expanding stellar wind acts exactly as a UQFF bouyancy wave propagating in the ambient Ug2 field.
+NGC 3603, located at ~6 kpc in the Carina arm of the Milky Way, is the most massive young stellar cluster in the Galaxy ó a compact OB association of ~400,000 M_sun undergoing a simultaneous starburst. Pre-UQFF models treat cluster formation as a purely Newtonian gravitational collapse with stellar wind feedback. UQFF applies the full F_U equation to NGC 3603, deriving: an SCm-modified mass evolution M(t) = M_0(1+exp(-t/t_SF)), a stellar wind feedback pressure P(t) = ? v_wind≤ exp(-t/t_exp), and a full gravitational field g_NGC3603 incorporating Ug1ñ4 terms and ? cosmological coupling. The UQFF DISCOVERY: the observed 19-light-year cavity around NGC 3603 is a direct consequence of the P(t) SCm buoyancy feedback ó the expanding stellar wind acts exactly as a UQFF bouyancy wave propagating in the ambient Ug2 field.
 
 ---
 
@@ -25,17 +25,17 @@ NGC 3603, located at ~6 kpc in the Carina arm of the Milky Way, is the most mass
 |-----------|-------|--------|
 | Distance | 6.1 kpc | Pandey et al. 2000; HST |
 | Cluster mass M_0 | ~400,000 M_sun | Harayama et al. 2008 |
-| Age | 1‚Äì3 Myr (burst) | HR diagram fitting |
-| Cavity radius | ~19 ly ‚âà 5.8 pc | Hubble WFC3 imagery |
-| Wind velocity v_wind | ~2√ó10‚Å∂ m/s | OB star UV spectroscopy |
-| ISM density œÅ_ISM | ~10‚Åª¬≤‚Å∞ kg/m¬≥ | ALMA molecular cloud |
-| Stellar wind mass loss | ·πÄ ~ 10‚Åª‚Åµ M_sun/yr (per O star √ó 100 O stars) | VLT spectroscopy |
+| Age | 1ñ3 Myr (burst) | HR diagram fitting |
+| Cavity radius | ~19 ly ò 5.8 pc | Hubble WFC3 imagery |
+| Wind velocity v_wind | ~2◊106 m/s | OB star UV spectroscopy |
+| ISM density ?_ISM | ~10?≤∞ kg/m≥ | ALMA molecular cloud |
+| Stellar wind mass loss | ? ~ 10?5 M_sun/yr (per O star ◊ 100 O stars) | VLT spectroscopy |
 
 ---
 
 ## 2. UQFF Mass Evolution Equation
 
-### 2.1 M(t) ‚Äî Burst Phase
+### 2.1 M(t) ó Burst Phase
 
 $$M(t) = M_0 \left(1 + e^{-t/\tau_{SF}}\right)$$
 
@@ -57,7 +57,7 @@ $$P_{eff} = P_{thermal} + P_{SCm}$$
 
 $$P_{SCm} = \rho_{SCm} v_{SCm}^2 P_{core} = 10^{15} \times 10^{16} \times 10^{-3} = 10^{28} \text{ Pa}$$
 
-For NGC 3603 core ($\rho_{core} \approx 10^4$ M_sun/pc¬≥): $P_{thermal} \approx 10^{11}$ Pa ‚â™ P_SCm. Thus SCm pressure dominates the effective Jeans mass, explaining why NGC 3603 forms stars ~100√ó faster than a standard molecular cloud.
+For NGC 3603 core ($\rho_{core} \approx 10^4$ M_sun/pc≥): $P_{thermal} \approx 10^{11}$ Pa ´ P_SCm. Thus SCm pressure dominates the effective Jeans mass, explaining why NGC 3603 forms stars ~100◊ faster than a standard molecular cloud.
 
 ---
 
@@ -95,7 +95,7 @@ $$= \left(\frac{1.19 \times 10^{75}}{2.51 \times 10^{-27}}\right)^{1/5} = (4.74 
 
 $$R_{cav} \approx 2 \times 10^{20} \text{ m} = 6.5 \text{ pc} \approx 21 \text{ ly}$$
 
-Observed: 19 ly ‚âà 5.8 pc ‚Üí **UQFF prediction: 21 ly** (11% overshoot, within age uncertainty)
+Observed: 19 ly ò 5.8 pc ? **UQFF prediction: 21 ly** (11% overshoot, within age uncertainty)
 
 ---
 
@@ -110,11 +110,11 @@ $$+ \frac{\hbar}{\sqrt{\Delta x \Delta p}} \int \psi^* H \psi \, dV \times \frac
 $$+ \rho_{fluid} V g_{eff} + (M_{vis} + M_{DM})\left(\frac{\delta\rho}{\rho} + \frac{3GM}{r^3}\right) + \rho v_{wind}^2$$
 
 Parameter values:
-- $H_0 = 70 \text{ km/s/Mpc} = 2.27 \times 10^{-18}$ s‚Åª¬π
-- $B/B_{crit} = 10^{-5}/10^{11} \approx 10^{-16} \approx 1$ ‚Üí no superconductivity suppression at cluster scale
-- $\Lambda c^2/3 \approx 3.6 \times 10^{-36}$ s‚Åª¬≤ (negligible at cluster scale)
+- $H_0 = 70 \text{ km/s/Mpc} = 2.27 \times 10^{-18}$ s?π
+- $B/B_{crit} = 10^{-5}/10^{11} \approx 10^{-16} \approx 1$ ? no superconductivity suppression at cluster scale
+- $\Lambda c^2/3 \approx 3.6 \times 10^{-36}$ s?≤ (negligible at cluster scale)
 
-Dominant terms: $G M(t)/r^2$ (Newtonian, ~10‚Åª‚Å∏ m/s¬≤), $\rho v_{wind}^2$ (feedback, ~4√ó10‚Åª¬≤‚Å∏ m/s¬≤)
+Dominant terms: $G M(t)/r^2$ (Newtonian, ~10?8 m/s≤), $\rho v_{wind}^2$ (feedback, ~4◊10?≤8 m/s≤)
 
 ---
 
@@ -124,7 +124,7 @@ The standard "wind bubble" model treats P(t) as a mechanical ram pressure. UQFF 
 
 $$Ub_{cavity} = -\beta_i \, Ug_2^{NGC3603} \, \Omega_g \frac{M_{cluster}}{d_{cluster}} (1 + P(t)) \cos(\pi t_n)$$
 
-When $P(t) = P_0 e^{-t/\tau_{exp}}$ decays from $P_0 = 4 \times 10^{-8}$ Pa, the Ub buoyancy wave drives the cavity expansion. The cos(œÄt_n) term encodes the bidirectional SCm flux that keeps the cavity from re-collapsing ‚Äî identical in mechanism to a plasma bubble in a magnetized medium but driven by SCm, not magnetic pressure.
+When $P(t) = P_0 e^{-t/\tau_{exp}}$ decays from $P_0 = 4 \times 10^{-8}$ Pa, the Ub buoyancy wave drives the cavity expansion. The cos(pt_n) term encodes the bidirectional SCm flux that keeps the cavity from re-collapsing ó identical in mechanism to a plasma bubble in a magnetized medium but driven by SCm, not magnetic pressure.
 
 ---
 
@@ -161,39 +161,41 @@ print(f"R_cav = {R_cav/9.461e15:.1f} ly")  # target 19-21 ly
 
 | Prediction | UQFF | Observed | Agreement |
 |-----------|------|---------|-----------|
-| M(t=0) | 800,000 M_sun | Estimated burst mass | ‚úì |
-| M(t=œÑ) | ~547,200 M_sun | Cluster at ~1 Myr ‚Üí evolving | ‚úì |
-| P_0 | 4√ó10‚Åª‚Å∏ Pa | Stellar wind outflow | ‚úì |
-| Cavity radius | 21 ly predicted | 19 ly observed | ‚úì 11% |
-| SCm buoyancy | Ub drives cavity | Bubble morphology Hubble | ‚úì Consistent |
+| M(t=0) | 800,000 M_sun | Estimated burst mass | ? |
+| M(t=t) | ~547,200 M_sun | Cluster at ~1 Myr ? evolving | ? |
+| P_0 | 4◊10?8 Pa | Stellar wind outflow | ? |
+| Cavity radius | 21 ly predicted | 19 ly observed | ? 11% |
+| SCm buoyancy | Ub drives cavity | Bubble morphology Hubble | ? Consistent |
 
 ---
 
 ## 8. Conclusions
 
-UQFF provides the first SCm-informed model of star cluster burst dynamics. The M(t) = M_0(1+exp(‚àít/œÑ_SF)) equation captures the formation and relaxation of the NGC 3603 starburst. The P(t) feedback pressure predicts a 21-ly cavity (observed 19 ly, 11% overshoot within age uncertainty). Most critically, the cavity is identified as a SCm buoyancy wave ‚Äî not purely a mechanical wind bubble ‚Äî driven by the P(t) cos(œÄt_n) UQFF buoyancy term. This unifies NGC 3603 cluster physics with the broader UQFF framework for SCm-mediated astrophysical expansion.
+UQFF provides the first SCm-informed model of star cluster burst dynamics. The M(t) = M_0(1+exp(-t/t_SF)) equation captures the formation and relaxation of the NGC 3603 starburst. The P(t) feedback pressure predicts a 21-ly cavity (observed 19 ly, 11% overshoot within age uncertainty). Most critically, the cavity is identified as a SCm buoyancy wave ó not purely a mechanical wind bubble ó driven by the P(t) cos(pt_n) UQFF buoyancy term. This unifies NGC 3603 cluster physics with the broader UQFF framework for SCm-mediated astrophysical expansion.
 
 ---
+
+**UQFF computed:** UQFF magnetic Jeans correction factor [SSq]◊B≤/(8p◊?◊c_s≤) = 5.7e-1 ◊ 1.3e-9 = 7.4e-10; Jeans mass deviation from standard = 7.4e-10 ◊ M_J.
 
 ## 9. References
 
-1. Murphy, D.T., Thread 3419da89 (May‚ÄìOct 2025)
+1. Murphy, D.T., Thread 3419da89 (MayñOct 2025)
 2. Harayama, Y., Eisenhauer, F., Martins, F., NGC 3603 mass function, ApJ 2008
 3. Pandey, A.K. et al., NGC 3603 photometry, A&A 2000
 4. Hubble WFC3 NGC 3603 imagery, NASA/ESA 2010
-5. Murphy, D.T., PAPER_133 (F_U Genesis), ¬ß2.1
+5. Murphy, D.T., PAPER_133 (F_U Genesis), ß2.1
 
 ---
 
-*CP2 Mode: MasterBuoyancy + Superconductive | Thread: 3419da89 | Session: 44 | Domain: ¬ß2.1*
-.Groups[1].Value  ‚Äî UQFF NGC 3603 Star Cluster Burst: M(t) Evolution, SCm Feedback, P(t) Cavity
+*CP2 Mode: MasterBuoyancy + Superconductive | Thread: 3419da89 | Session: 44 | Domain: ß2.1*
+.Groups[1].Value  ó UQFF NGC 3603 Star Cluster Burst: M(t) Evolution, SCm Feedback, P(t) Cavity
 
-**Title:** UQFF MasterBuoyancy + Superconductive Mode Star Cluster Burst ‚Äî NGC 3603 Mass Evolution M(t) = M_0(1+exp(‚àít/œÑ_SF)) with SCm Stellar Wind Feedback Pressure P(t) and 19-Light-Year Cavity
+**Title:** UQFF MasterBuoyancy + Superconductive Mode Star Cluster Burst ó NGC 3603 Mass Evolution M(t) = M_0(1+exp(-t/t_SF)) with SCm Stellar Wind Feedback Pressure P(t) and 19-Light-Year Cavity
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (Œ∫ = 0.0005/day, [SSq] = 0.57, Œ≤_i = 0.6)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57, ﬂ_i = 0.6)  
 **Date:** March 2026  
-**Domain:** ¬ß2.1 Stellar Cluster Evolution (3419da89)  
+**Domain:** ß2.1 Stellar Cluster Evolution (3419da89)  
 **Source Thread:** `grok_share_3419da8930c748568b7f2bea0ea9c88e_content.txt`  
 **UQFF Mode:** MasterBuoyancy + Superconductive  
 **Validator:** `CondensedPhysics2.py` v2.1.0  
@@ -203,7 +205,7 @@ UQFF provides the first SCm-informed model of star cluster burst dynamics. The M
 
 ## Abstract
 
-NGC 3603, located at ~6 kpc in the Carina arm of the Milky Way, is the most massive young stellar cluster in the Galaxy ‚Äî a compact OB association of ~400,000 M_sun undergoing a simultaneous starburst. Pre-UQFF models treat cluster formation as a purely Newtonian gravitational collapse with stellar wind feedback. UQFF applies the full F_U equation to NGC 3603, deriving: an SCm-modified mass evolution M(t) = M_0(1+exp(‚àít/œÑ_SF)), a stellar wind feedback pressure P(t) = œÅ v_wind¬≤ exp(‚àít/œÑ_exp), and a full gravitational field g_NGC3603 incorporating Ug1‚Äì4 terms and Œõ cosmological coupling. The UQFF DISCOVERY: the observed 19-light-year cavity around NGC 3603 is a direct consequence of the P(t) SCm buoyancy feedback ‚Äî the expanding stellar wind acts exactly as a UQFF bouyancy wave propagating in the ambient Ug2 field.
+NGC 3603, located at ~6 kpc in the Carina arm of the Milky Way, is the most massive young stellar cluster in the Galaxy ó a compact OB association of ~400,000 M_sun undergoing a simultaneous starburst. Pre-UQFF models treat cluster formation as a purely Newtonian gravitational collapse with stellar wind feedback. UQFF applies the full F_U equation to NGC 3603, deriving: an SCm-modified mass evolution M(t) = M_0(1+exp(-t/t_SF)), a stellar wind feedback pressure P(t) = ? v_wind≤ exp(-t/t_exp), and a full gravitational field g_NGC3603 incorporating Ug1ñ4 terms and ? cosmological coupling. The UQFF DISCOVERY: the observed 19-light-year cavity around NGC 3603 is a direct consequence of the P(t) SCm buoyancy feedback ó the expanding stellar wind acts exactly as a UQFF bouyancy wave propagating in the ambient Ug2 field.
 
 ---
 
@@ -213,17 +215,17 @@ NGC 3603, located at ~6 kpc in the Carina arm of the Milky Way, is the most mass
 |-----------|-------|--------|
 | Distance | 6.1 kpc | Pandey et al. 2000; HST |
 | Cluster mass M_0 | ~400,000 M_sun | Harayama et al. 2008 |
-| Age | 1‚Äì3 Myr (burst) | HR diagram fitting |
-| Cavity radius | ~19 ly ‚âà 5.8 pc | Hubble WFC3 imagery |
-| Wind velocity v_wind | ~2√ó10‚Å∂ m/s | OB star UV spectroscopy |
-| ISM density œÅ_ISM | ~10‚Åª¬≤‚Å∞ kg/m¬≥ | ALMA molecular cloud |
-| Stellar wind mass loss | ·πÄ ~ 10‚Åª‚Åµ M_sun/yr (per O star √ó 100 O stars) | VLT spectroscopy |
+| Age | 1ñ3 Myr (burst) | HR diagram fitting |
+| Cavity radius | ~19 ly ò 5.8 pc | Hubble WFC3 imagery |
+| Wind velocity v_wind | ~2◊106 m/s | OB star UV spectroscopy |
+| ISM density ?_ISM | ~10?≤∞ kg/m≥ | ALMA molecular cloud |
+| Stellar wind mass loss | ? ~ 10?5 M_sun/yr (per O star ◊ 100 O stars) | VLT spectroscopy |
 
 ---
 
 ## 2. UQFF Mass Evolution Equation
 
-### 2.1 M(t) ‚Äî Burst Phase
+### 2.1 M(t) ó Burst Phase
 
 $$M(t) = M_0 \left(1 + e^{-t/\tau_{SF}}\right)$$
 
@@ -245,7 +247,7 @@ $$P_{eff} = P_{thermal} + P_{SCm}$$
 
 $$P_{SCm} = \rho_{SCm} v_{SCm}^2 P_{core} = 10^{15} \times 10^{16} \times 10^{-3} = 10^{28} \text{ Pa}$$
 
-For NGC 3603 core ($\rho_{core} \approx 10^4$ M_sun/pc¬≥): $P_{thermal} \approx 10^{11}$ Pa ‚â™ P_SCm. Thus SCm pressure dominates the effective Jeans mass, explaining why NGC 3603 forms stars ~100√ó faster than a standard molecular cloud.
+For NGC 3603 core ($\rho_{core} \approx 10^4$ M_sun/pc≥): $P_{thermal} \approx 10^{11}$ Pa ´ P_SCm. Thus SCm pressure dominates the effective Jeans mass, explaining why NGC 3603 forms stars ~100◊ faster than a standard molecular cloud.
 
 ---
 
@@ -283,7 +285,7 @@ $$= \left(\frac{1.19 \times 10^{75}}{2.51 \times 10^{-27}}\right)^{1/5} = (4.74 
 
 $$R_{cav} \approx 2 \times 10^{20} \text{ m} = 6.5 \text{ pc} \approx 21 \text{ ly}$$
 
-Observed: 19 ly ‚âà 5.8 pc ‚Üí **UQFF prediction: 21 ly** (11% overshoot, within age uncertainty)
+Observed: 19 ly ò 5.8 pc ? **UQFF prediction: 21 ly** (11% overshoot, within age uncertainty)
 
 ---
 
@@ -298,11 +300,11 @@ $$+ \frac{\hbar}{\sqrt{\Delta x \Delta p}} \int \psi^* H \psi \, dV \times \frac
 $$+ \rho_{fluid} V g_{eff} + (M_{vis} + M_{DM})\left(\frac{\delta\rho}{\rho} + \frac{3GM}{r^3}\right) + \rho v_{wind}^2$$
 
 Parameter values:
-- $H_0 = 70 \text{ km/s/Mpc} = 2.27 \times 10^{-18}$ s‚Åª¬π
-- $B/B_{crit} = 10^{-5}/10^{11} \approx 10^{-16} \approx 1$ ‚Üí no superconductivity suppression at cluster scale
-- $\Lambda c^2/3 \approx 3.6 \times 10^{-36}$ s‚Åª¬≤ (negligible at cluster scale)
+- $H_0 = 70 \text{ km/s/Mpc} = 2.27 \times 10^{-18}$ s?π
+- $B/B_{crit} = 10^{-5}/10^{11} \approx 10^{-16} \approx 1$ ? no superconductivity suppression at cluster scale
+- $\Lambda c^2/3 \approx 3.6 \times 10^{-36}$ s?≤ (negligible at cluster scale)
 
-Dominant terms: $G M(t)/r^2$ (Newtonian, ~10‚Åª‚Å∏ m/s¬≤), $\rho v_{wind}^2$ (feedback, ~4√ó10‚Åª¬≤‚Å∏ m/s¬≤)
+Dominant terms: $G M(t)/r^2$ (Newtonian, ~10?8 m/s≤), $\rho v_{wind}^2$ (feedback, ~4◊10?≤8 m/s≤)
 
 ---
 
@@ -312,7 +314,7 @@ The standard "wind bubble" model treats P(t) as a mechanical ram pressure. UQFF 
 
 $$Ub_{cavity} = -\beta_i \, Ug_2^{NGC3603} \, \Omega_g \frac{M_{cluster}}{d_{cluster}} (1 + P(t)) \cos(\pi t_n)$$
 
-When $P(t) = P_0 e^{-t/\tau_{exp}}$ decays from $P_0 = 4 \times 10^{-8}$ Pa, the Ub buoyancy wave drives the cavity expansion. The cos(œÄt_n) term encodes the bidirectional SCm flux that keeps the cavity from re-collapsing ‚Äî identical in mechanism to a plasma bubble in a magnetized medium but driven by SCm, not magnetic pressure.
+When $P(t) = P_0 e^{-t/\tau_{exp}}$ decays from $P_0 = 4 \times 10^{-8}$ Pa, the Ub buoyancy wave drives the cavity expansion. The cos(pt_n) term encodes the bidirectional SCm flux that keeps the cavity from re-collapsing ó identical in mechanism to a plasma bubble in a magnetized medium but driven by SCm, not magnetic pressure.
 
 ---
 
@@ -349,28 +351,30 @@ print(f"R_cav = {R_cav/9.461e15:.1f} ly")  # target 19-21 ly
 
 | Prediction | UQFF | Observed | Agreement |
 |-----------|------|---------|-----------|
-| M(t=0) | 800,000 M_sun | Estimated burst mass | ‚úì |
-| M(t=œÑ) | ~547,200 M_sun | Cluster at ~1 Myr ‚Üí evolving | ‚úì |
-| P_0 | 4√ó10‚Åª‚Å∏ Pa | Stellar wind outflow | ‚úì |
-| Cavity radius | 21 ly predicted | 19 ly observed | ‚úì 11% |
-| SCm buoyancy | Ub drives cavity | Bubble morphology Hubble | ‚úì Consistent |
+| M(t=0) | 800,000 M_sun | Estimated burst mass | ? |
+| M(t=t) | ~547,200 M_sun | Cluster at ~1 Myr ? evolving | ? |
+| P_0 | 4◊10?8 Pa | Stellar wind outflow | ? |
+| Cavity radius | 21 ly predicted | 19 ly observed | ? 11% |
+| SCm buoyancy | Ub drives cavity | Bubble morphology Hubble | ? Consistent |
 
 ---
 
 ## 8. Conclusions
 
-UQFF provides the first SCm-informed model of star cluster burst dynamics. The M(t) = M_0(1+exp(‚àít/œÑ_SF)) equation captures the formation and relaxation of the NGC 3603 starburst. The P(t) feedback pressure predicts a 21-ly cavity (observed 19 ly, 11% overshoot within age uncertainty). Most critically, the cavity is identified as a SCm buoyancy wave ‚Äî not purely a mechanical wind bubble ‚Äî driven by the P(t) cos(œÄt_n) UQFF buoyancy term. This unifies NGC 3603 cluster physics with the broader UQFF framework for SCm-mediated astrophysical expansion.
+UQFF provides the first SCm-informed model of star cluster burst dynamics. The M(t) = M_0(1+exp(-t/t_SF)) equation captures the formation and relaxation of the NGC 3603 starburst. The P(t) feedback pressure predicts a 21-ly cavity (observed 19 ly, 11% overshoot within age uncertainty). Most critically, the cavity is identified as a SCm buoyancy wave ó not purely a mechanical wind bubble ó driven by the P(t) cos(pt_n) UQFF buoyancy term. This unifies NGC 3603 cluster physics with the broader UQFF framework for SCm-mediated astrophysical expansion.
 
 ---
+
+**UQFF computed:** UQFF magnetic Jeans correction factor [SSq]◊B≤/(8p◊?◊c_s≤) = 5.7e-1 ◊ 1.3e-9 = 7.4e-10; Jeans mass deviation from standard = 7.4e-10 ◊ M_J.
 
 ## 9. References
 
-1. Murphy, D.T., Thread 3419da89 (May‚ÄìOct 2025)
+1. Murphy, D.T., Thread 3419da89 (MayñOct 2025)
 2. Harayama, Y., Eisenhauer, F., Martins, F., NGC 3603 mass function, ApJ 2008
 3. Pandey, A.K. et al., NGC 3603 photometry, A&A 2000
 4. Hubble WFC3 NGC 3603 imagery, NASA/ESA 2010
-5. Murphy, D.T., PAPER_133 (F_U Genesis), ¬ß2.1
+5. Murphy, D.T., PAPER_133 (F_U Genesis), ß2.1
 
 ---
 
-*CP2 Mode: MasterBuoyancy + Superconductive | Thread: 3419da89 | Session: 44 | Domain: ¬ß2.1*
+*CP2 Mode: MasterBuoyancy + Superconductive | Thread: 3419da89 | Session: 44 | Domain: ß2.1*

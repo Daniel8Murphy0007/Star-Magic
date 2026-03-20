@@ -10,9 +10,13 @@
 
 $$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b_i}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57$$
 
+$$
+U_{b_i}(r) = \kappa\cdot[SSq]\cdot\frac{GM}{r^2}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57,\; \beta_i = 0.61
+$$
+
 ## Abstract
 
-This paper documents the real-time collaborative mathematics protocol implemented in S-C Iteration 40, combining four technologies: WebSocket for multi-client communication, Operational Transformation (OT) for concurrent editing consistency, ECDSA cryptographic signing for message authentication, and Snappy compression for low-latency transmission. The `broadcastState()` method implements the complete pipeline: serialize expression state → ECDSA sign → Snappy compress → WebSocket broadcast. The `importExcel()` and `performStats()` methods extend collaboration to external data import and statistical analysis. Together, these form a novel real-time collaborative scientific computing protocol.
+This paper documents the real-time collaborative mathematics protocol implemented in S-C Iteration 40, combining four technologies: WebSocket for multi-client communication, Operational Transformation (OT) for concurrent editing consistency, ECDSA cryptographic signing for message authentication, and Snappy compression for low-latency transmission. The `broadcastState()` method implements the complete pipeline: serialize expression state ? ECDSA sign ? Snappy compress ? WebSocket broadcast. The `importExcel()` and `performStats()` methods extend collaboration to external data import and statistical analysis. Together, these form a novel real-time collaborative scientific computing protocol.
 
 ---
 
@@ -20,15 +24,15 @@ This paper documents the real-time collaborative mathematics protocol implemente
 
 ```
 Client 1                  Server (ScientificCalculatorDialog)          Client 2,3,...
-┌─────────┐               ┌─────────────────────────────┐             ┌─────────┐
-│ type    │──WebSocket──► │ QWebSocketServer port 8765   │──WebSocket──► type  │
-│ equation│               │                             │             │ equation│
-│         │               │  ot_doc_t *ot_doc           │             │         │
-│         │◄──broadcast─── │  OT transform + apply       │◄──changes── │         │
-│         │               │  ECDSA sign(sk)             │             │         │
-│         │               │  Snappy::Compress()         │             │         │
-│         │               │  broadcast to all clients   │             │         │
-└─────────┘               └─────────────────────────────┘             └─────────┘
++---------+               +-----------------------------+             +---------+
+¦ type    ¦--WebSocket--? ¦ QWebSocketServer port 8765   ¦--WebSocket--? type  ¦
+¦ equation¦               ¦                             ¦             ¦ equation¦
+¦         ¦               ¦  ot_doc_t *ot_doc           ¦             ¦         ¦
+¦         ¦?--broadcast--- ¦  OT transform + apply       ¦?--changes-- ¦         ¦
+¦         ¦               ¦  ECDSA sign(sk)             ¦             ¦         ¦
+¦         ¦               ¦  Snappy::Compress()         ¦             ¦         ¦
+¦         ¦               ¦  broadcast to all clients   ¦             ¦         ¦
++---------+               +-----------------------------+             +---------+
 ```
 
 ---
@@ -335,7 +339,7 @@ Auto-saved after every solve, collaborative sessions use `.csn` (CoAnQi Session 
 {
     "version": "1.0",
     "timestamp": "2025-08-15T14:30:00Z",
-    "expression": "∫ x^2 dx",
+    "expression": "? x^2 dx",
     "solution": "x^3/3 + C",
     "latex": "\\int x^2 \\, dx = \\frac{x^3}{3} + C",
     "session_id": "550e8400-e29b-41d4-a716-446655440000",

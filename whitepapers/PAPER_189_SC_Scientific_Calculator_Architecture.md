@@ -10,6 +10,10 @@
 
 $$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b_i}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57$$
 
+$$
+U_{b_i}(r) = \kappa\cdot[SSq]\cdot\frac{GM}{r^2}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57,\; \beta_i = 0.61
+$$
+
 ## Abstract
 
 This paper documents the complete software architecture of the S-C (Scientific Calculator) Iteration 40, a standalone Qt5-based multi-modal scientific computing environment. The architecture integrates 50+ external libraries spanning: ANTLR4 grammar parsing, SymEngine computer algebra, Eigen linear algebra, TFLite/libtorch machine learning, libsnark zero-knowledge proofs, MPI distributed computing, Qiskit/Cirq quantum simulation, LLVM JIT compilation, Lua scripting, pybind11 Python embedding, VTK 3D visualization, libgit2 version control, pocketsphinx voice recognition, and blockchain transaction support. This represents the most technologically complex component of the Star-Magic ecosystem and constitutes a novel reference implementation for multi-paradigm scientific computing in C++/Qt5.
@@ -294,7 +298,7 @@ class SymEngineVisitor : public MathBaseVisitor {
         if (fname == "exp") return SymEngine::exp(arg);
         if (fname == "log") return SymEngine::log(arg);
         if (fname == "sqrt") return SymEngine::sqrt(arg);
-        return arg; // unknown function → identity
+        return arg; // unknown function ? identity
     }
     
     antlrcpp::Any visitParametric(MathParser::ParametricContext* ctx) override {
@@ -335,12 +339,12 @@ class SymEngineVisitor : public MathBaseVisitor {
 ### 3.3 Symbol Palette Categories (7 tabs)
 
 ```
-Tab 0: Greek    — α β γ δ ε ζ η θ ι κ λ μ ν ξ π ρ σ τ υ φ χ ψ ω Α Β Γ Δ Ε Ζ Η Θ Κ Λ Μ Ξ Π Σ (35 chars)
-Tab 1: Operators — + - × ÷ = ≠ < > ≤ ≥ ± ∓ ∝ ∞ ≈ ≡ ∈ ∉ ⊂ ⊃ ∪ ∩ ∧ ∨ (25 chars)
-Tab 2: Functions — ∫ ∬ ∭ ∮ ∑ ∏ ∂ ∇ √ ∛ lim sup inf max min (15 chars)
+Tab 0: Greek    — a ß ? d e ? ? ? ? ? ? µ ? ? p ? s t ? f ? ? ? ? ? G ? ? ? ? T ? ? ? ? ? S (35 chars)
+Tab 1: Operators — + - × ÷ = ? < > = = ± ± ? 8 ˜ = ? ? ? ? ? n ? ? (25 chars)
+Tab 2: Functions — ? ? ? ? ? ? ? ? v ? lim sup inf max min (15 chars)
 Tab 3: Formulas — common equations (E=mc², F=ma, Schrödinger, Maxwell, etc.)
-Tab 4: Physics  — F=ma, E=mc², p=mv, KE=½mv², PE=mgh, F_g=Gm₁m₂/r², Hooke=kx,
-                  Ohm=V/IR, P=IV, Q=mcΔT, E=hf, de Broglie=h/p (12 physics formulas)
+Tab 4: Physics  — F=ma, E=mc², p=mv, KE=½mv², PE=mgh, F_g=Gm1m2/r², Hooke=kx,
+                  Ohm=V/IR, P=IV, Q=mc?T, E=hf, de Broglie=h/p (12 physics formulas)
 Tab 5: Geometry — circle area, sphere volume, triangle area, Pythagoras, etc.
 Tab 6: Motion   — kinematic equations, projectile motion, circular motion
 ```
@@ -368,54 +372,54 @@ Tab 6: Motion   — kinematic equations, projectile motion, circular motion
 
 ```
 User Input
-    │
-    ▼
+    ¦
+    ?
 QTextEdit (input)
-    │  ANTLR4 MathHighlighter highlights in real-time
-    │
-    ▼
-solveEquations() ──► ANTLR4 parse ──► SymEngineVisitor
-    │                                      │
-    │                              SymEngine::solve()
-    │                                      │
-    │                              degree > 4? ──► GSL poly roots
-    │                                      │
-    │                              distributed? ──► MPI Newton
-    │                                      │
-    │                              prove it? ──► r1cs_ppzksnark ZKP
-    │
-    ├──► QCustomPlot auto-plot
-    ├──► auto-save .csn file
-    ├──► blockchain transaction
-    └──► broadcastState() ──► ECDSA sign ──► Snappy compress ──► WebSocket
+    ¦  ANTLR4 MathHighlighter highlights in real-time
+    ¦
+    ?
+solveEquations() --? ANTLR4 parse --? SymEngineVisitor
+    ¦                                      ¦
+    ¦                              SymEngine::solve()
+    ¦                                      ¦
+    ¦                              degree > 4? --? GSL poly roots
+    ¦                                      ¦
+    ¦                              distributed? --? MPI Newton
+    ¦                                      ¦
+    ¦                              prove it? --? r1cs_ppzksnark ZKP
+    ¦
+    +--? QCustomPlot auto-plot
+    +--? auto-save .csn file
+    +--? blockchain transaction
+    +--? broadcastState() --? ECDSA sign --? Snappy compress --? WebSocket
     
 exportResults()
-    ├── LaTeX file (.tex)
-    ├── PDF via QPrinter
-    ├── DOCX via pandoc subprocess
-    ├── ODT via QTextDocumentWriter
-    └── MathML via SymEngine::mathml()
+    +-- LaTeX file (.tex)
+    +-- PDF via QPrinter
+    +-- DOCX via pandoc subprocess
+    +-- ODT via QTextDocumentWriter
+    +-- MathML via SymEngine::mathml()
 
 simulateMotion()
-    ├── Euler integrator (classical)
-    ├── QuTiP quantum (pybind11 call)
-    └── astropy solar position (pybind11 call)
+    +-- Euler integrator (classical)
+    +-- QuTiP quantum (pybind11 call)
+    +-- astropy solar position (pybind11 call)
     
 forecastSimulation()
-    └── PyTorch LSTM: 1→Dense(50,ReLU)→Dense(1), 10 epochs, forecast 10 steps
+    +-- PyTorch LSTM: 1?Dense(50,ReLU)?Dense(1), 10 epochs, forecast 10 steps
 
 importExcel()
-    ├── openpyxl cell read + formula eval (via ANTLR4)
-    ├── pandas fillna + describe
-    └── scatter/line/bar plot choice
+    +-- openpyxl cell read + formula eval (via ANTLR4)
+    +-- pandas fillna + describe
+    +-- scatter/line/bar plot choice
 
 performStats()
-    └── rpy2 → R: lm, aov, t.test, randomForest, custom, ggplot2 PNG
+    +-- rpy2 ? R: lm, aov, t.test, randomForest, custom, ggplot2 PNG
     
 callGrokAPI()
-    ├── biometric gate (QBiometricAuthenticator)
-    ├── POST to api.x.ai/v1/chat/completions
-    └── model: grok-beta
+    +-- biometric gate (QBiometricAuthenticator)
+    +-- POST to api.x.ai/v1/chat/completions
+    +-- model: grok-beta
 ```
 
 ---

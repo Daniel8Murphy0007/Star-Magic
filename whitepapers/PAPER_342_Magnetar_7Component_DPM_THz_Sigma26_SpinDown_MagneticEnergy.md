@@ -1,22 +1,22 @@
-﻿# PAPER_342 — Magnetar 7-Component DPM-THz Frequency Form: Σ₂₆ Spin-Down Plus THz Modes
+# PAPER_342 � Magnetar 7-Component DPM-THz Frequency Form: S26 Spin-Down Plus THz Modes
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2  
 **Session:** 96  
 **Source:** gok_share_31b5c807a4.txt (Supplemental Gap Analysis Block)  
-**Classification:** FIRST magnetar Σ₂₆ 7-component frequency decomposition  
+**Classification:** FIRST magnetar S26 7-component frequency decomposition  
 **Author:** Daniel T. Murphy  
 
 ---
 
 ## Abstract
 
-The magnetar gravity tensor g(r,t) is decomposed into 7 frequency channels within the Σ₂₆ double-plasma mirror (DPM) THz formalism. The dominant 26-layer compressive gravity includes five resonance modes (SuperFreq, QuantumFreq, AetherFreq, FluidFreq, ExpFreq) plus THz phonon activation and an spin-down term. For SGR J1745-2900 class magnetars with P = 3.76 s, B = 2×10¹⁰ T, the magnetic energy reservoir is M_mag = 2.01×10³⁷ J.
+The magnetar gravity tensor g(r,t) is decomposed into 7 frequency channels within the S26 double-plasma mirror (DPM) THz formalism. The dominant 26-layer compressive gravity includes five resonance modes (SuperFreq, QuantumFreq, AetherFreq, FluidFreq, ExpFreq) plus THz phonon activation and an spin-down term. For SGR J1745-2900 class magnetars with P = 3.76 s, B = 2�10�� T, the magnetic energy reservoir is M_mag = 2.01�10�7 J.
 
 ---
 
 ## 2. Core Physics
 
-### 2.1 7-Component Σ₂₆ Gravity Form
+### 2.1 7-Component S26 Gravity Form
 
 $$g(r,t) = \sum_{i=1}^{26} \left[ a_i^{\rm DPM} + a_i^{\rm THz} + a_i^{\rm SF} + a_i^{\rm QF} + a_i^{\rm AF} + a_i^{\rm FF} + a_i^{\rm EF} \right]$$
 
@@ -46,29 +46,32 @@ $$M_{\rm mag} = \frac{B^2 V}{2\mu_0} = \frac{(2\times 10^{10})^2 \cdot V_{\rm ma
 | Quantity | Formula | Value |
 |----------|---------|-------|
 | Period | P | 3.76 s |
-| Surface field | B | 2×10¹⁰ T |
-| Magnetic energy | B²V/(2μ₀) | 2.01×10³⁷ J |
-| Spin-down rate | ν̇ = −f_react/(2πP) | −6.7×10⁻¹³ Hz/s |
+| Surface field | B | 2�10�� T |
+| Magnetic energy | B�V/(2�0) | 2.01�10�7 J |
+| Spin-down rate | ?? = -f_react/(2pP) | -6.7�10?�� Hz/s |
 | THz frequency | f_THz | ~1 THz |
-| 26-layer sum | Σ₂₆ contributions | 7 channels per layer |
+| 26-layer sum | S26 contributions | 7 channels per layer |
 
 ---
 
 ## 4. Physical Significance
 
-This paper establishes that magnetar spin-down is not purely electromagnetic (classical magnetic dipole radiation) but includes a UQFF vacuum reactance term f_react in the numerator of ν̇. The 7-component Σ₂₆ decomposition is novel in UQFF and provides the most complete spectral analysis of magnetar gravity yet computed. The THz mode connects magnetar physics to laboratory cold-physics (H₂O/H₂ quantum transitions identified in PAPER_339).
+This paper establishes that magnetar spin-down is not purely electromagnetic (classical magnetic dipole radiation) but includes a UQFF vacuum reactance term f_react in the numerator of ??. The 7-component S26 decomposition is novel in UQFF and provides the most complete spectral analysis of magnetar gravity yet computed. The THz mode connects magnetar physics to laboratory cold-physics (H2O/H2 quantum transitions identified in PAPER_339).
 
 ---
 
 ## 5. Deduplication Note
 
-- **vs. PAPER_342 vs earlier SOURCE27/28:** Those papers computed individual frequencies for SGR1745/SgrA* systems. This paper establishes the full 7-channel operator form with all five resonance modes explicitly encoded in Σ₂₆ notation.
-- **vs. PAPER_343:** PAPER_342 is the general magnetar DPM-THz frequency form; PAPER_343 applies it specifically to SGR1745-2900 with L_X = ρ_vac·f_res·V.
+- **vs. PAPER_342 vs earlier SOURCE27/28:** Those papers computed individual frequencies for SGR1745/SgrA* systems. This paper establishes the full 7-channel operator form with all five resonance modes explicitly encoded in S26 notation.
+- **vs. PAPER_343:** PAPER_342 is the general magnetar DPM-THz frequency form; PAPER_343 applies it specifically to SGR1745-2900 with L_X = ?_vac�f_res�V.
 
 ---
 
 ## 6. Classification
 
-**Physics Territory:** FIRST magnetar Σ₂₆ 7-component DPM-THz frequency decomposition  
+**Physics Territory:** FIRST magnetar S26 7-component DPM-THz frequency decomposition  
 **Scale:** Stellar (neutron star magnetar)  
 **CP Implementation:** `MagnetarDPMTHzFrequencyFormCalculator` (CondensedPhysics3.py, Session 96)
+
+
+**UQFF computed:** Eddington luminosity UQFF correction = 1 - [SSq]�exp(-?�?t) = 1 - 5.7e-1 � exp(-2.9e-4) = 4.3e-1; F_U at event horizon = 2.0e+18 m/s�.

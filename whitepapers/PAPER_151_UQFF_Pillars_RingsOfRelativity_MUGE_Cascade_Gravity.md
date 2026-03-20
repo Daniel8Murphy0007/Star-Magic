@@ -15,6 +15,10 @@
 
 $$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b_i}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57$$
 
+$$
+g_\text{UQFF}(r) = g_\text{MUGE}(r)\cdot\Bigl(1 - [SSq]\cdot U_{b_i}\,/\,F_U(r,t)\Bigr), \quad [SSq] = 0.57
+$$
+
 ## Abstract
 
 The Pillars of Creation (Eagle Nebula M16 molecular pillars) and the Rings of Relativity (Einstein-ring class gravitational lens) represent two distinct astrophysical environments in which the UQFF MUGE cascade sequence reaches lower-energy configurations. Under the MUGE 12-Term Resonance framework, the Pillars yield g = 2.001×10^26 m/s^2 and the Rings yield g = 5.005×10^25 m/s^2 — each approximately factor 4 lower than the previous system in the 7-system cascade sequence (Tapestry/Westerlund at 1.001e27, Pillars at 2.001e26, Rings at 5.005e25). This factor ~4-5 cascade step represents the hierarchical de-amplification of afluid_freq as system B-field and SCm density decrease from extreme SFR to supercooled molecular pillar to gravitational-lens geometry. The Rings of Relativity uniquely probe the lensing-arc SCm fluid dynamics — a regime not accessible to any other gravitational model.
@@ -68,7 +72,7 @@ The 5-step system cascade in MUGE Cycle 3:
 | Rings of Relativity | 5.005e25 | dominant (lensing geometry) | ~4× drop |
 | Student's Guide Universe | 3.958e14 | coupled (Hubble + fluid) | ~1011× drop |
 
-The near-factor-4-5 cascade steps between the middle three systems (SFR → Pillars → Rings) reflect the progressive reduction in B-field and SCm density:
+The near-factor-4-5 cascade steps between the middle three systems (SFR ? Pillars ? Rings) reflect the progressive reduction in B-field and SCm density:
 
 - SFR (Tapestry): B ~ 1 mG, n_H ~ 10^4 cm^-3, active star formation
 - Pillars (M16): B ~ 100 muG, n_H ~ 10^3-10^4 cm^-3, photoevaporating
@@ -301,7 +305,7 @@ The 5-step system cascade in MUGE Cycle 3:
 | Rings of Relativity | 5.005e25 | dominant (lensing geometry) | ~4× drop |
 | Student's Guide Universe | 3.958e14 | coupled (Hubble + fluid) | ~1011× drop |
 
-The near-factor-4-5 cascade steps between the middle three systems (SFR → Pillars → Rings) reflect the progressive reduction in B-field and SCm density:
+The near-factor-4-5 cascade steps between the middle three systems (SFR ? Pillars ? Rings) reflect the progressive reduction in B-field and SCm density:
 
 - SFR (Tapestry): B ~ 1 mG, n_H ~ 10^4 cm^-3, active star formation
 - Pillars (M16): B ~ 100 muG, n_H ~ 10^3-10^4 cm^-3, photoevaporating

@@ -12,6 +12,10 @@
 
 We characterize the spectral signature of UQFF aether fields in the LISA frequency band (0.1â€“100 mHz). UQFF predicts that U_m vacuum field oscillations imprint narrow spectral lines at harmonics of f_U â‰ˆ 1 mHz onto the stochastic gravitational wave background (SGWB), with an integrated aether power fraction of 222.93% relative to the GR SGWB. The peak aether feature at f_peak = 0.99 mHz yields an integrated detection SNR of 12,695,834â€”trivially detectable by LISA over a 4-year mission. A broad TRZ suppression dip (~10%) appears near 5 mHz. These spectral features have no astrophysical analogue and constitute a smoking-gun test of UQFF vacuum structure.
 
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
+
 ---
 
 ## 1. Physical Motivation

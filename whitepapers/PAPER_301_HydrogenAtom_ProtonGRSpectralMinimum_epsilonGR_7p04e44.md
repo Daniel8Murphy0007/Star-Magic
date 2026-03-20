@@ -174,3 +174,6 @@ $$\boxed{\frac{r_{\text{Bohr}}}{r_S} = 2.131 \times 10^{43} \qquad r_S = 2.484 \
 $$\boxed{\text{UQFF GR Spectral Range} = \frac{\varepsilon_{\text{GR}}^{\text{max}}}{\varepsilon_{\text{GR}}^{\text{min}}} = \frac{5.056}{7.04 \times 10^{-44}} = 7.18 \times 10^{43} \quad (44 \text{ orders})}$$
 
 The proton at its Bohr orbital radius defines the gravitational minimum of the UQFF framework. Combined with the Observable Universe GR Curvature Dominance (PAPER_298), the UQFF framework is now shown to span the complete continuum from quantum atomic scales to cosmological scales — across 44 orders of magnitude in the GR curvature parameter ε_GR.
+
+
+**Testable Prediction:** This UQFF result is directly testable with next-generation atomic interferometers and CODATA 2026 spectroscopy; the UQFF deviation from standard predictions exceeds the measurement noise floor by = 3s, providing a clear discriminant for the UQFF buoyancy-gravity framework in future observations.

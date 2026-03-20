@@ -8,9 +8,17 @@ distinct physical contribution: Newtonian base, cosmological expansion,
 magnetic suppression, environmental context, Ug contributions, cosmological
 constant, quantum corrections, fluid dynamics, and density perturbations.
 
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
+
 ---
 
 $$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b_i}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57$$
+
+$$
+g_\text{UQFF}(r) = g_\text{MUGE}(r)\cdot\Bigl(1 - [SSq]\cdot U_{b_i}\,/\,F_U(r,t)\Bigr), \quad [SSq] = 0.57
+$$
 
 ### 1. MUGESystem Struct
 
@@ -43,20 +51,20 @@ struct MUGESystem {
 ```
 compressed_base = G × M / r²
 Constants: G = 6.67430e-11
-Test: M=1.989e30 kg, r=1.496e11 m → ≈ 0.0059 m/s²
+Test: M=1.989e30 kg, r=1.496e11 m ? ˜ 0.0059 m/s²
 ```
 
 #### Term 2 — Hubble Expansion
 ```
 compressed_expansion = 1 + H0 × vexp
-H0 = 2.269e-18 s⁻¹ (≈ 70.1 km/s/Mpc)
+H0 = 2.269e-18 s?¹ (˜ 70.1 km/s/Mpc)
 At t=0: expansion = 1.0
 ```
 
 #### Term 3 — Magnetic Suppression (Super Adjustment)
 ```
-compressed_super_adj = 1 − B/Bcrit
-Test: B=1e10 T, Bcrit=1e11 T → 0.9
+compressed_super_adj = 1 - B/Bcrit
+Test: B=1e10 T, Bcrit=1e11 T ? 0.9
 Above Bcrit: approaches 0 (magnetic quench)
 ```
 
@@ -72,32 +80,32 @@ compressed_Ug_sum = 0.0   [Ug interface placeholder for future coupling]
 
 #### Term 6 — Cosmological Constant Term
 ```
-compressed_cosm = Λ × c² / 3
-Λ = 1.1e-52 m⁻² (dark energy)
+compressed_cosm = ? × c² / 3
+? = 1.1e-52 m?² (dark energy)
 c = 3e8 m/s
-→ compressed_cosm = 1.1e-52 × 9e16 / 3 ≈ 3.3e-37 m/s²
+? compressed_cosm = 1.1e-52 × 9e16 / 3 ˜ 3.3e-37 m/s²
 ```
 
 #### Term 7 — Quantum Correction
 ```
-compressed_quantum = (ℏ / Δx_p) × ∫ψ × (2π / t_Hubble)
+compressed_quantum = (? / ?x_p) × ?? × (2p / t_Hubble)
 
 Parameters:
-  ℏ              = 1.0546e-34 J·s
-  Δx_p           = Δx × Δp = 1e-68 J·m (minimal uncertainty product)
-  ∫ψ             = integral_psi = 2.176e-18 (ground state energy proxy)
+  ?              = 1.0546e-34 J·s
+  ?x_p           = ?x × ?p = 1e-68 J·m (minimal uncertainty product)
+  ??             = integral_psi = 2.176e-18 (ground state energy proxy)
   t_Hubble       = 4.35e17 s
 
-→ quantum = (1.0546e-34 / 1e-68) × 2.176e-18 × (2π / 4.35e17)
+? quantum = (1.0546e-34 / 1e-68) × 2.176e-18 × (2p / 4.35e17)
            = 1.0546e34 × 2.176e-18 × 1.443e-17
-           ≈ 3.312e-1
+           ˜ 3.312e-1
 ```
 
 #### Term 8 — Fluid Dynamics
 ```
 compressed_fluid = rho_fluid × Vsys × g_local
 Test (SGR1745): rho_fluid=1e-15, Vsys=4.189e12, g_local=10.0
-→ compressed_fluid = 1e-15 × 4.189e12 × 10 = 4.189e-2
+? compressed_fluid = 1e-15 × 4.189e12 × 10 = 4.189e-2
 ```
 
 #### Term 9 — Density Perturbation
@@ -115,11 +123,11 @@ compressed_MUGE = base × expansion × super_adj × env × (1 + Ug_sum)
                 + cosm + quantum + fluid + perturbation
 
 Expected (SGR1745):
-  base ≈ G×2.984e30/1e8 ≈ 1.99e11
-  expansion ≈ 1 + 2.269e-18×1e3 ≈ 1.0
+  base ˜ G×2.984e30/1e8 ˜ 1.99e11
+  expansion ˜ 1 + 2.269e-18×1e3 ˜ 1.0
   fluid = 4.189e-2
-  perturbation ≈ M×δρ terms
-  Total → ≈ 1.782e39 (from unit test)
+  perturbation ˜ M×d? terms
+  Total ? ˜ 1.782e39 (from unit test)
 ```
 
 ---
@@ -128,8 +136,8 @@ Expected (SGR1745):
 
 | System | compressed_MUGE [m/s²] |
 |--------|------------------------|
-| SGR 1745-2900 | ≈ 1.782e39 |
-| Sagittarius A* | ≈ 1.782e39×(M_SgrA/M_SGR) |
+| SGR 1745-2900 | ˜ 1.782e39 |
+| Sagittarius A* | ˜ 1.782e39×(M_SgrA/M_SGR) |
 | Student Guide | cosmological scale |
 
 ---

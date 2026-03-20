@@ -15,9 +15,17 @@
 
 $$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b_i}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57$$
 
+$$
+g_\text{UQFF}(r) = g_\text{MUGE}(r)\cdot\Bigl(1 - [SSq]\cdot U_{b_i}\,/\,F_U(r,t)\Bigr), \quad [SSq] = 0.57
+$$
+
 ## Abstract
 
 This paper derives all 12 terms of the MUGE Resonance Master equation from first principles within the UQFF Star-Magic framework. The master equation g(r,t) = aDPM + aTHz + avac_diff + asuper_freq + aaether_res + Ug4i + aquantum_freq + aAether_freq + afluid_freq + Osc_term + aexp_freq + fTRZ represents the complete decomposition of gravitational acceleration into twelve physically distinct resonance channels. Each term is derived from the fundamental SCm (Superconductive Material) and UA (Universal Aether) fields, with dimensional analysis confirming m/s^2 units throughout. The hierarchy of term dominance shifts with physical regime: aDPM (FDPM vortical driver) dominates for extreme-mass systems like Sgr A*, while afluid_freq (Navier-Stokes jet coupling) dominates for compact stellar objects, stellar nurseries, and molecular clouds. The constant fTRZ=0.1 serves as the topological resonance zone boundary condition, with the critical limit lim(fTRZ->0) recovering Newtonian G*M/r^2.
+
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -274,6 +282,10 @@ The 12-term MUGE Resonance Master equation provides a complete, dimensionally co
 ## Abstract
 
 This paper derives all 12 terms of the MUGE Resonance Master equation from first principles within the UQFF Star-Magic framework. The master equation g(r,t) = aDPM + aTHz + avac_diff + asuper_freq + aaether_res + Ug4i + aquantum_freq + aAether_freq + afluid_freq + Osc_term + aexp_freq + fTRZ represents the complete decomposition of gravitational acceleration into twelve physically distinct resonance channels. Each term is derived from the fundamental SCm (Superconductive Material) and UA (Universal Aether) fields, with dimensional analysis confirming m/s^2 units throughout. The hierarchy of term dominance shifts with physical regime: aDPM (FDPM vortical driver) dominates for extreme-mass systems like Sgr A*, while afluid_freq (Navier-Stokes jet coupling) dominates for compact stellar objects, stellar nurseries, and molecular clouds. The constant fTRZ=0.1 serves as the topological resonance zone boundary condition, with the critical limit lim(fTRZ->0) recovering Newtonian G*M/r^2.
+
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 

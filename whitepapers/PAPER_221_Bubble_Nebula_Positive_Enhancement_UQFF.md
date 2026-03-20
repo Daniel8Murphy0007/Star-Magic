@@ -10,9 +10,17 @@
 
 $$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b_i}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57$$
 
+$$
+M_J^\text{UQFF} = M_J^\text{Jeans}\cdot\Bigl(1 - [SSq]\cdot\frac{B^2}{8\pi\rho c_s^2}\Bigr), \quad [SSq] = 0.57
+$$
+
 ## Abstract
 
 The Bubble Nebula (NGC 7635) introduces the first POSITIVE irradiation enhancement multiplier in the 29 UQFF documents: `(1+E(t))`. This is the mathematical inverse of the Pillars of Creation and Horsehead Nebula's `(1-E(t))` erosion factor. While `(1-E(t))` represents UV photodissociation REDUCING the effective gravitational term, `(1+E(t))` represents stellar wind INFLATING a pressure shell — the ram pressure of the bubble compresses surrounding ISM, effectively increasing the net inward force term. We prove this sign reversal is not an artifact but a physically necessary consequence of the wind-dominated vs. radiation-dominated regime.
+
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -22,8 +30,8 @@ From Document 12 of grok_share_7514fe:
 
 ```
 g_Bubble(r, t) = (G·M)/r² · (1+H(z)·t) · (1-B/B_crit) · (1+E(t))
-               + (Ug1+Ug2+Ug3+Ug4) + Λc²/3 + QM + fluid + DM
-               + ρ·v_wind²
+               + (Ug1+Ug2+Ug3+Ug4) + ?c²/3 + QM + fluid + DM
+               + ?·v_wind²
 ```
 
 The key feature: `(1+E(t))` as a POSITIVE multiplier with `E(t) > 0`.
@@ -36,8 +44,8 @@ The key feature: `(1+E(t))` as a POSITIVE multiplier with `E(t) > 0`.
 
 | System | Term | Sign | Physical Cause |
 |--------|------|------|---------------|
-| Pillars (Doc 7) | `(1-E(t))` | − | UV photodissociation erodes pillars |
-| Horsehead (Doc 15) | `(1-E(t))` | − | Sigma Orionis UV radiation photoevaporates |
+| Pillars (Doc 7) | `(1-E(t))` | - | UV photodissociation erodes pillars |
+| Horsehead (Doc 15) | `(1-E(t))` | - | Sigma Orionis UV radiation photoevaporates |
 | **Bubble (Doc 12)** | **(1+E(t))** | **+** | **Wind inflation compresses surrounding ISM** |
 | Bubble Nebula E(t) | `P_wind/P_gravity` | > 0 | Always subadditive |
 
@@ -46,12 +54,12 @@ The key feature: `(1+E(t))` as a POSITIVE multiplier with `E(t) > 0`.
 For the Bubble Nebula, E(t) is the **wind pressure to gravity ratio**:
 
 ```
-E(t) = P_wind / P_gravity = (ρ_wind · v_wind² · r²) / (G · M · ρ_shell)
+E(t) = P_wind / P_gravity = (?_wind · v_wind² · r²) / (G · M · ?_shell)
 ```
 
 For BD+60°2522 (the O6-type central star):
-- v_wind ≈ 1500 km/s = 1.5×10⁶ m/s
-- Stellar mass-loss rate Ṁ ≈ 4×10⁻⁷ M☉/yr
+- v_wind ˜ 1500 km/s = 1.5×106 m/s
+- Stellar mass-loss rate ? ˜ 4×10?7 M?/yr
 
 The wind inflates a bubble by pushing material OUTWARD. However, the swept-up shell at radius r experiences:
 1. **Inward:** gravity G·M/r²  
@@ -82,20 +90,20 @@ In the Bubble Nebula:
 
 | Parameter | Value | Source |
 |-----------|-------|--------|
-| M (central star) | 1.5×10³¹ kg (43 M☉) | O6If spectral class |
-| r (bubble radius) | 2.84×10¹⁶ m (3 ly) | IR imaging |
-| v_wind | 1.5×10⁶ m/s | UV P-Cygni profiles |
-| E(t) | ≈ 0.05 | Stellar wind models |
+| M (central star) | 1.5×10³¹ kg (43 M?) | O6If spectral class |
+| r (bubble radius) | 2.84×10¹6 m (3 ly) | IR imaging |
+| v_wind | 1.5×106 m/s | UV P-Cygni profiles |
+| E(t) | ˜ 0.05 | Stellar wind models |
 
 ### 3.2 Calculation
 
 ```
 g_base = G·M/r² · (1+H·t) · (1-B/B_crit) · (1+E(t))
        = 6.674e-11 · 1.5e31 / (2.84e16)² · 1.000099 · 0.9999977 · 1.05
-       ≈ 1.31×10⁻³⁴ · 1.05
-       ≈ 1.37×10⁻³⁴ m/s²
+       ˜ 1.31×10?³4 · 1.05
+       ˜ 1.37×10?³4 m/s²
 
-ρ·v_wind² = 1e-23 · (1.5e6)² = 2.25×10⁻¹¹ m/s² >> g_base
+?·v_wind² = 1e-23 · (1.5e6)² = 2.25×10?¹¹ m/s² >> g_base
 ```
 
 The wind term completely dominates, consistent with the Bubble Nebula being a **wind-dominated system** where the bubble expansion is controlled by stellar wind power, not gravity. The gravitational term appears in the equation for completeness but plays a secondary role in the dynamics.

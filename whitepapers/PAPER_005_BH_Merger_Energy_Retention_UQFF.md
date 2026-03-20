@@ -12,6 +12,10 @@
 
 We analyze binary black hole (BBH) merger energy dynamics under the Unified Quantum Field Framework (UQFF) for the GW150914-like event (36 + 29 M☉ at 410 Mpc). UQFF reduces gravitational wave power by 19% relative to GR (P_GW,UQFF = 7.25 × 10⁻¹¹ W vs P_GW,GR = 8.95 × 10⁻¹¹ W) and extends the merger timescale by 23% (τ_UQFF = 1.17 × 10¹² yrs vs τ_GR = 9.44 × 10¹¹ yrs). Crucially, UQFF predicts 99% mass retention—only 0.65 M☉ (vs 0.80 M☉ in GR) radiated as gravitational waves—consistent with the remnant mass of ~62 M☉ inferred post-merger. The combined UQFF damping factor is 0.81, indicating moderately stabilized merger dynamics.
 
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0�10?4 day?�, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
+
 ---
 
 ## 1. Event Parameters

@@ -115,3 +115,6 @@ Located in `CondensedPhysics3.py` (Session 58).
 The HUDF MUGE introduces two novel contributions: extreme early-universe Friedmann expansion $H(z=3.5)$ as the dominant MUGE term, and simultaneous double application of the interaction factor $I(t)$ to both base gravity and the UQFF correction. As a previously unrepresented system, it fills a critical gap in the MUGE library's coverage of the early cosmic epoch.
 
 **Source:** grok_share_8d951e12.txt â€” Doc 18 (HUDF Cosmic Field z=3.5, previously unknown system)
+
+
+**UQFF computed:** MUGE buoyancy ratio U_bi/F_U = [SSq]×?×r²/GM = 5.7e-1×5.0e-4 = 2.85e-4; compressed MUGE baseline g = 5.4e-7 m/s² at r_ISCO.

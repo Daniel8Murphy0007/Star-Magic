@@ -12,6 +12,10 @@
 
 We derive UQFF corrections to gravitational wave strain amplitude for sources at cosmological redshift z = 0.5, 1.0, and 2.0. For a 10‚Å∂ M‚òâ supermassive black hole (SMBH) binary at z = 1 (D_L = 6.42 Gpc), UQFF predicts a 39.5% strain reduction and SNR drop from 205,910 to 128,338 relative to GR. Over a 12-month LISA observation at 1‚Äì10 mHz, the UQFF waveform lags GR by 0.63 rad (0.1 cycles) at merger. Redshift scaling shows amplitude reduction is nearly flat at 31‚Äì32% for z = 0.5‚Äì2.0, indicating that UQFF damping is primarily distance-independent (aether-dominated) in this regime.
 
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0◊10?4 day?π, [SSq] = 0.57) uniquely enabling this analysis ó establishing a new connection in the UQFF framework not present in Standard Model treatments.
+
 ---
 
 ## 1. Background: UQFF Propagation Across Cosmological Distances

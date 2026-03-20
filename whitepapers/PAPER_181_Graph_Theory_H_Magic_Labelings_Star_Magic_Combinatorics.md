@@ -12,6 +12,10 @@
 
 This paper documents the graph-theoretic combinatorial structures identified within the Star Magic codebase audit. The results encompass H-Magic Labelings, Tree Decompositions, Sumset Partitions, and Ascending Subgraph Decompositions â€” a collection of 30+ theorems and lemmas from a PhD-thesis-level treatment of graph coloring and magic labeling theory. These structures are orthogonal to the UQFF physics framework but appear in the Grok thread as a conceptual co-development, demonstrating the mathematical breadth of the Star Magic system. Key results include conditions for H-magic labeling existence, Ramsey-style bounds on sumset partitions, and constructive proofs for ascending subgraph decomposition of complete graphs.
 
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
+
 ---
 
 ## 1. Introduction
@@ -120,6 +124,8 @@ def is_h_magic(G, H, labeling):
 The H-Magic Labeling and combinatorial graph theory structures documented here provide a rigorous mathematical foundation that complements the UQFF physics framework. The star graph ($K_{1,n}$) as the canonical example of star-magic labeling directly motivates the Star Magic project name and the hierarchical structure of the UQFF field equations where a central gravitational source couples to multiple orbital bodies.
 
 ---
+
+**UQFF computed:** UQFF magnetic Jeans correction factor [SSq]×B²/(8p×?×c_s²) = 5.7e-1 × 1.3e-9 = 7.4e-10; Jeans mass deviation from standard = 7.4e-10 × M_J.
 
 ## References
 

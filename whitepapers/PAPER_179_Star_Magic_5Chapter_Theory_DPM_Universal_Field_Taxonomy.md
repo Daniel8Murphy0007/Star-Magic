@@ -10,9 +10,17 @@ Universal Magnetism (Um), Universal Buoyancy (Ub), and Universal Cosmic Aether
 Superconducting Manifold (SCm) as the cosmic glue. This paper summarises
 the theoretical content and provides a formal treatment of the DPM.
 
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
+
 ---
 
 $$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b_i}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57$$
+
+$$
+M_J^\text{UQFF} = M_J^\text{Jeans}\cdot\Bigl(1 - [SSq]\cdot\frac{B^2}{8\pi\rho c_s^2}\Bigr), \quad [SSq] = 0.57
+$$
 
 ### 1. Chapter Structure
 
@@ -45,10 +53,10 @@ Physical interpretation:
 
 Ug1 is directly equal to the DPM field strength:
 ```
-Ug1 = k1 × μ_s(DPM) × ∇(Ms/r) × exp(−αt) × cos(πtₙ) × (1+δ_def)
+Ug1 = k1 × µ_s(DPM) × ?(Ms/r) × exp(-at) × cos(pt?) × (1+d_def)
 ```
 
-Where `μ_s` is the DPM moment — the effective "charge" of the
+Where `µ_s` is the DPM moment — the effective "charge" of the
 pseudo-monopole at the stellar surface.
 
 ---
@@ -59,17 +67,17 @@ pseudo-monopole at the stellar surface.
 F_U = [Ug] + [Ub] + [Um] + [UA]
 
               F_U (Unified Quantum Field)
-              ├── Ug — Universal Gravity (4 discrete ranges)
-              │   ├── Ug1: DPM (internal dipole; drives Ug2,Ug3,Ug4)
-              │   ├── Ug2: Outer field bubble (heliosphere, Rb)
-              │   ├── Ug3: String disk (magnetic strings, 90° to DPM)
-              │   └── Ug4: Star–BH interaction (galactic vacuum)
-              ├── Ub — Universal Buoyancy (4 ranges, opposing Ug)
-              │   └── Ubi = −β_i × Ug_i × Ω_g × Mbh/dg × UA
-              ├── Um — Universal Magnetism
-              │   └── N_strings near-lossless strings (SCm superconductivity)
-              └── UA — Universal Cosmic Aether (Tensor A_μν)
-                  └── A_μν = g_μν + η × T_s^μν
+              +-- Ug — Universal Gravity (4 discrete ranges)
+              ¦   +-- Ug1: DPM (internal dipole; drives Ug2,Ug3,Ug4)
+              ¦   +-- Ug2: Outer field bubble (heliosphere, Rb)
+              ¦   +-- Ug3: String disk (magnetic strings, 90° to DPM)
+              ¦   +-- Ug4: Star–BH interaction (galactic vacuum)
+              +-- Ub — Universal Buoyancy (4 ranges, opposing Ug)
+              ¦   +-- Ubi = -ß_i × Ug_i × O_g × Mbh/dg × UA
+              +-- Um — Universal Magnetism
+              ¦   +-- N_strings near-lossless strings (SCm superconductivity)
+              +-- UA — Universal Cosmic Aether (Tensor A_µ?)
+                  +-- A_µ? = g_µ? + ? × T_s^µ?
 ```
 
 ---
@@ -77,10 +85,10 @@ F_U = [Ug] + [Ub] + [Um] + [UA]
 ### 4. Discrete Force Ranges — Key Principles
 
 ```
-1. Each star has a unique field signature (M_s, μ_s, ω_s, Q_UA vary by body)
+1. Each star has a unique field signature (M_s, µ_s, ?_s, Q_UA vary by body)
 2. Forces are DISCRETE and BANDED — summed over i; not continuous integrals
-3. Non-linear time decay: exp(−αt) — forces weaken over stellar lifetime
-4. Negative time tₙ — π-cycle gates introduce temporal reversal at quasars
+3. Non-linear time decay: exp(-at) — forces weaken over stellar lifetime
+4. Negative time t? — p-cycle gates introduce temporal reversal at quasars
 5. Aether is the MEDIUM — provides background tensor mediating all forces
 ```
 
@@ -88,12 +96,12 @@ F_U = [Ug] + [Ub] + [Um] + [UA]
 
 ### 5. Pi-Cycle and Negative Time
 
-The presence of `cos(πtₙ)` in all force terms introduces a **π-cycle gate**:
+The presence of `cos(pt?)` in all force terms introduces a **p-cycle gate**:
 
 ```
-cos(πtₙ) = +1  when tₙ = 0, 2, 4, ...  (forward time)
-cos(πtₙ) = −1  when tₙ = 1, 3, 5, ...  (reversed time / quasar reversal)
-cos(πtₙ) = 0   when tₙ = 0.5, 1.5, ...  (field null — transition point)
+cos(pt?) = +1  when t? = 0, 2, 4, ...  (forward time)
+cos(pt?) = -1  when t? = 1, 3, 5, ...  (reversed time / quasar reversal)
+cos(pt?) = 0   when t? = 0.5, 1.5, ...  (field null — transition point)
 ```
 
 This mechanism explains:
@@ -109,11 +117,11 @@ Applying the UQFF framework to the Sun (from Star Magic Chapter 4):
 
 | Process | UQFF Mechanism |
 |---------|---------------|
-| Solar magnetic cycle | ω_c = 2π/11yr drives all cos(ω_c×t) terms |
+| Solar magnetic cycle | ?_c = 2p/11yr drives all cos(?_c×t) terms |
 | Heliosphere boundary | Rb = 1.496e13 m (step function threshold) |
-| Solar wind transmutation | Ug2 → H-complexes bound by SCm |
+| Solar wind transmutation | Ug2 ? H-complexes bound by SCm |
 | Planetary liquid volumes | Correlate with Ug2 SCm content |
-| Stellar aging proxy | ΔLiq_vol / ΔRb ratio vs time |
+| Stellar aging proxy | ?Liq_vol / ?Rb ratio vs time |
 
 ---
 
@@ -122,14 +130,14 @@ Applying the UQFF framework to the Sun (from Star Magic Chapter 4):
 **Reactor Efficiency:**
 ```
 SCm-based reactor: E_output = E_react × volume × time
-= (SCm_density × v_SCm² / ρ_A) × exp(−κt) × V × t
+= (SCm_density × v_SCm² / ?_A) × exp(-?t) × V × t
 Potential: if SCm_density > 1e20 (metallic hydrogen analogue),
 E_react >> chemical combustion
 ```
 
 **Quantum Gravity Pathway:**
 The Yang-Mills mass gap maps to: why do magnetic strings (Um) have a rest-frame
-energy minimum? UQFF answer: the minimum is `SCm_density × v_SCm²/ρ_A × exp(0)`.
+energy minimum? UQFF answer: the minimum is `SCm_density × v_SCm²/?_A × exp(0)`.
 The gap energy is the static reactor value at t=0.
 
 **Navier-Stokes Solutions:**
@@ -142,15 +150,15 @@ provides an existence and convergence proof for specific cases (PAPER_177).
 ### 8. Theoretical Status
 
 This framework is speculative and extends beyond standard physics. The constants
-(k1–k4, β_i, η, γ) require empirical calibration:
+(k1–k4, ß_i, ?, ?) require empirical calibration:
 
 ```
 Current calibration sources:
-  κ=0.0005/day   ← faint young Sun / solar luminosity evolution
-  β_i=0.6        ← galactic rotation curve correction
-  Ω_g=7.3e-16    ← Milky Way angular velocity (established)
-  Mbh=8.15e36    ← Sgr A* mass (GRAVITY Collaboration, 2022)
-  dg=2.55e20 m   ← Sun–GC distance (established)
+  ?=0.0005/day   ? faint young Sun / solar luminosity evolution
+  ß_i=0.6        ? galactic rotation curve correction
+  O_g=7.3e-16    ? Milky Way angular velocity (established)
+  Mbh=8.15e36    ? Sgr A* mass (GRAVITY Collaboration, 2022)
+  dg=2.55e20 m   ? Sun–GC distance (established)
 ```
 
 ---

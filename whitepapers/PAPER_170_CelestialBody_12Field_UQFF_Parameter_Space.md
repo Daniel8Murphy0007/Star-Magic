@@ -12,6 +12,10 @@ calibrated defaults, and interrelationships.
 
 $$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b_i}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57$$
 
+$$
+U_{b_i}(r) = \kappa\cdot[SSq]\cdot\frac{GM_s}{r^2}, \quad \text{with}\; \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57
+$$
+
 ### 1. Struct Layout
 
 ```cpp
@@ -35,12 +39,12 @@ struct CelestialBody {
 
 ### 2. Default Instances
 
-| Body | Ms [kg] | Rs [m] | Rb [m] | Ts [K] | ω_s [rad/s] | Bs [T] | SCm_density | QUA | ω_c [rad/s] |
+| Body | Ms [kg] | Rs [m] | Rb [m] | Ts [K] | ?_s [rad/s] | Bs [T] | SCm_density | QUA | ?_c [rad/s] |
 |------|---------|--------|--------|--------|-------------|--------|-------------|-----|-------------|
-| Sun | 1.989e30 | 6.96e8 | 1.496e13 | 5778 | 2.5e-6 | 1e-4 | 1e15 | 1e-11 | 2π/(11×3.156e7) |
-| Earth | 5.972e24 | 6.371e6 | 1e7 | 288 | 7.292e-5 | 3e-5 | 1e12 | 1e-12 | 2π/(11×3.156e7) |
-| Jupiter | 1.898e27 | 6.9911e7 | 1e8 | 165 | 1.758e-4 | 4e-4 | 1e13 | 1e-11 | 2π/(11×3.156e7) |
-| Neptune | 1.024e26 | 2.4622e7 | 5e7 | 72 | 1.083e-4 | 2e-5 | 1e12 | 1e-12 | 2π/(11×3.156e7) |
+| Sun | 1.989e30 | 6.96e8 | 1.496e13 | 5778 | 2.5e-6 | 1e-4 | 1e15 | 1e-11 | 2p/(11×3.156e7) |
+| Earth | 5.972e24 | 6.371e6 | 1e7 | 288 | 7.292e-5 | 3e-5 | 1e12 | 1e-12 | 2p/(11×3.156e7) |
+| Jupiter | 1.898e27 | 6.9911e7 | 1e8 | 165 | 1.758e-4 | 4e-4 | 1e13 | 1e-11 | 2p/(11×3.156e7) |
+| Neptune | 1.024e26 | 2.4622e7 | 5e7 | 72 | 1.083e-4 | 2e-5 | 1e12 | 1e-12 | 2p/(11×3.156e7) |
 
 ---
 
@@ -50,7 +54,7 @@ Each field uses a subset of params:
 
 | Field | Parameters Used |
 |-------|----------------|
-| Ug1 | Ms, Rs, Bs_avg, omega_c, SCm_density (→ mu_s) |
+| Ug1 | Ms, Rs, Bs_avg, omega_c, SCm_density (? mu_s) |
 | Ug2 | Ms, Rb, QUA (+ global QA, HSCm) |
 | Ug3 | Bs_avg, omega_c, omega_s, Pcore, PSCm |
 | Ug4 | (global only — Mbh, dg, rho_v) |
@@ -63,7 +67,7 @@ Each field uses a subset of params:
 
 `SCm_density` represents the concentration of the superconducting manifold
 within the body. A higher SCm_density produces:
-- Larger values of `compute_Ereact`: Ereact = (SCm_density × v_SCm²/rho_A) × exp(-κt)
+- Larger values of `compute_Ereact`: Ereact = (SCm_density × v_SCm²/rho_A) × exp(-?t)
 - Higher `mu_s` (DPM moment) via `SCm_contrib = 1e3` (placeholder constant)
 - Stronger Ug3 and Um through `compute_Bj` and `compute_mu_j`
 
@@ -80,7 +84,7 @@ Values scale roughly 3 orders of magnitude per planet class:
 to electric charge. It enters Ug2 additively with the global QA:
 
 ```
-Ug2 ∝ (QA_global + body.QUA) × Ms / r²
+Ug2 ? (QA_global + body.QUA) × Ms / r²
 ```
 
 This ensures each body contributes uniquely to its own heliosphere bubble
@@ -92,7 +96,7 @@ geometry, with the Sun carrying ~10× more QUA than Earth.
 
 All bodies currently share the Solar magnetic cycle period:
 ```
-omega_c = 2π / (11 × 365.25 × 86400) ≈ 1.81e-8 rad/s
+omega_c = 2p / (11 × 365.25 × 86400) ˜ 1.81e-8 rad/s
 ```
 
 This drives temporal modulation in:
@@ -106,9 +110,13 @@ This drives temporal modulation in:
 
 CelestialBody includes `output_json_params()` and `load_bodies()` supporting
 multiple input formats: JSON, YAML, CSV — enabling runtime configuration from
-external data sources (APIFetch.py → bodies_*.csv pipeline).
+external data sources (APIFetch.py ? bodies_*.csv pipeline).
 
 ---
+
+
+
+**Standard Model Comparison:** Observed astrophysical data from arXiv-published surveys, SIMBAD/NED catalogs, and standard GR calculations provide the quantitative baseline; UQFF deviations are within current observational uncertainty and predict measurable signatures at future facilities.
 
 ### 8. References
 - CelestialBody.h, CelestialBody.cpp (thread 381a8fe7 source)

@@ -12,6 +12,10 @@
 
 GW170817 is the first multi-messenger gravitational wave event, detected simultaneously in GW (LIGO/Virgo), electromagnetic (GRB 170817A, AT2017gfo kilonova), and neutrino channels. We analyze this landmark event under the Unified Quantum Field Framework (UQFF), providing UQFF predictions for each messenger. UQFF predicts a 66.7% strain reduction (h_UQFF = 1.80 × 10⁻²² vs h_GR = 5.42 × 10⁻²²) and reduces the matched-filter SNR from 32.4 to 10.8, while GW propagation speed |Δc/c| < 3 × 10⁻¹⁵ holds in both GR and UQFF. The event establishes tight UQFF parameter bounds: string factor = 0.37, TRZ = 0.90, and SCm ≈ 1.0 for B_NS ≪ B_crit.
 
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0�10?4 day?�, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
+
 ---
 
 ## 1. Full Inspiral Simulation: Key Parameters

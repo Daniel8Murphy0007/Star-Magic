@@ -1,18 +1,22 @@
-ï»¿# PAPER_260: Horsehead Nebula â€” Universal Erosion-Buoyancy Coupling: Structural-Form Independence in Photodissociation Regions
+# PAPER_260: Horsehead Nebula — Universal Erosion-Buoyancy Coupling: Structural-Form Independence in Photodissociation Regions
 
 **Author:** Daniel T. Murphy (daniel.murphy00@gmail.com)  
-**Framework:** UQFF v4.25 â€” Star-Magic Physics  
-**Source:** HorseheadNebula.cpp UQFF 2.0 Upgrade â€” Session 72e  
+**Framework:** UQFF v4.25 — Star-Magic Physics  
+**Source:** HorseheadNebula.cpp UQFF 2.0 Upgrade — Session 72e  
 **Date:** March 16, 2026  
-**Series:** Phase 2 Session 72e â€” Â§3.1 C++ Module Physics Extraction
+**Series:** Phase 2 Session 72e — §3.1 C++ Module Physics Extraction
 
 ---
 
 
-<!-- UQFF constants: Îº = 5.0e-4 dayâ»Â¹, [SSq] = 0.57, M_UQFF = 1.43e1 TeV -->
+<!-- UQFF constants: ? = 5.0e-4 day?¹, [SSq] = 0.57, M_UQFF = 1.43e1 TeV -->
 ## Abstract
 
-This paper derives and proves the **Universal Erosion-Buoyancy Coupling** within the Unified Quantum Field Framework (UQFF) for Barnard 33 (the Horsehead Nebula), a dark lane nebula in the Orion molecular cloud complex at ~1,375 ly. The critical discovery is that the E(t) photoevaporation erosion mechanism â€” previously established in the Pillars of Creation (Eagle Nebula M16, a pillar-structured PDR) â€” operates **identically in a pillar-less dark nebula**. This proves the UQFF erosion-buoyancy co-action is **independent of three-dimensional structural morphology**. The mechanism depends only on: (1) the presence of an ionizing radiation field, (2) a neutral gas mass reservoir, and (3) the gravitational kernel `ug1_base = GÂ·M/rÂ²`. It is therefore a **universal photodissociation region (PDR) property**, applicable to pillars, dark lanes, cometary globules, elephant trunks, and any PDR boundary geometry. Static M (no M(t) â€” dark nebula, not a star-forming cluster) is maintained throughout, and `ug1_base` is fixed, distinguishing the Horsehead from M(t)-dynamic systems.
+This paper derives and proves the **Universal Erosion-Buoyancy Coupling** within the Unified Quantum Field Framework (UQFF) for Barnard 33 (the Horsehead Nebula), a dark lane nebula in the Orion molecular cloud complex at ~1,375 ly. The critical discovery is that the E(t) photoevaporation erosion mechanism — previously established in the Pillars of Creation (Eagle Nebula M16, a pillar-structured PDR) — operates **identically in a pillar-less dark nebula**. This proves the UQFF erosion-buoyancy co-action is **independent of three-dimensional structural morphology**. The mechanism depends only on: (1) the presence of an ionizing radiation field, (2) a neutral gas mass reservoir, and (3) the gravitational kernel `ug1_base = G·M/r²`. It is therefore a **universal photodissociation region (PDR) property**, applicable to pillars, dark lanes, cometary globules, elephant trunks, and any PDR boundary geometry. Static M (no M(t) — dark nebula, not a star-forming cluster) is maintained throughout, and `ug1_base` is fixed, distinguishing the Horsehead from M(t)-dynamic systems.
+
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -21,30 +25,30 @@ This paper derives and proves the **Universal Erosion-Buoyancy Coupling** within
 From `HorseheadNebula.cpp` (UQFF 2.0, Session 72e upgrade):
 
 ```
-g_Horsehead(r, t) = term1  [base gravity Ã— Hâ‚€Â·t Ã— (1âˆ’B/B_crit) Ã— E(t) erosion damping]
+g_Horsehead(r, t) = term1  [base gravity × H0·t × (1-B/B_crit) × E(t) erosion damping]
                  + term2    [UQFF Ug1+Ug4 with f_TRZ and E(t)]
-                 + term3    [Î›cÂ²/3 cosmological constant]
-                 + term4    [scaled EM: q(vÃ—B)/m_p Ã— corr_UA]
-                 + term_q   [quantum uncertainty â„/âˆš(Î”xÂ·Î”p) Ã— Ïˆ Ã— (2Ï€/t_H)]
-                 + term_fluid [Ï_fluidÂ·VÂ·ug1_base / M]
-                 + term_osc  [2AÂ·cos(kx)Â·cos(Ï‰t) + (2Ï€/t_H_gyr)Â·AÂ·cos(kxâˆ’Ï‰t)]
-                 + term_DM   [(M + M_DM)Â·(Î´Ï/Ï + 3GM/rÂ³) / M]
-                 + term_wind [Ï_windÂ·v_windÂ²]
-                 + term_tide [2GÂ·M_GCÂ·r / r_GCÂ³]
-                 + term_Ubi  [0.5 Ã— ug1_base]                        â† Tier-1 buoyancy
-                 + term_F_UBii [âˆ’Î²_iÂ·ug1_baseÂ·Ï‰_gÂ·(M/r)Â·U_UAÂ·cos(Ï€Â·t)]  â† Tier-2
-                 + term_Ub_i   [âˆ’Î²_iÂ·ug1_baseÂ·Ï‰_gÂ·(M_GC/r_GC)Â·U_UAÂ·cos(Ï€Â·t)] â† Tier-3 Sgr A*
+                 + term3    [?c²/3 cosmological constant]
+                 + term4    [scaled EM: q(v×B)/m_p × corr_UA]
+                 + term_q   [quantum uncertainty ?/v(?x·?p) × ? × (2p/t_H)]
+                 + term_fluid [?_fluid·V·ug1_base / M]
+                 + term_osc  [2A·cos(kx)·cos(?t) + (2p/t_H_gyr)·A·cos(kx-?t)]
+                 + term_DM   [(M + M_DM)·(d?/? + 3GM/r³) / M]
+                 + term_wind [?_wind·v_wind²]
+                 + term_tide [2G·M_GC·r / r_GC³]
+                 + term_Ubi  [0.5 × ug1_base]                        ? Tier-1 buoyancy
+                 + term_F_UBii [-ß_i·ug1_base·?_g·(M/r)·U_UA·cos(p·t)]  ? Tier-2
+                 + term_Ub_i   [-ß_i·ug1_base·?_g·(M_GC/r_GC)·U_UA·cos(p·t)] ? Tier-3 Sgr A*
 ```
 
 **System Parameters:**
-- M = 1,000 M_sun = 1.989Ã—10Â³Â³ kg (dark nebula neutral gas mass; static â€” no star formation)
-- r = 2.5 ly = 2.3653Ã—10Â¹â¶ m
-- Eâ‚€ = 0.1; Ï„_erosion = 5 Myr (E(t) erosion of dark lane by Ïƒ Orionis UV field)
-- External radiation source: Ïƒ Orionis OB association (~0.5Â° projected separation)
-- Î²_i = 0.61, Ï‰_g = 7.3Ã—10â»Â¹â¶, U_UA = 1Ã—10â»Â¹Â¹ (UQFF canonical)
-- M_GC = 7.956Ã—10Â³â¶ kg (Sgr A* outer frame, ~4Ã—10â¶ M_sun)
-- r_GC = 2.623Ã—10Â²â° m (~8.5 kpc, Horsehead/Orion arm â†’ Galactic Center)
-- B field of Orion: ~5 Î¼G; Ï_wind = 5Ã—10â»Â²Â¹ kg/mÂ³ (IC 434 H II region wind)
+- M = 1,000 M_sun = 1.989×10³³ kg (dark nebula neutral gas mass; static — no star formation)
+- r = 2.5 ly = 2.3653×10¹6 m
+- E0 = 0.1; t_erosion = 5 Myr (E(t) erosion of dark lane by s Orionis UV field)
+- External radiation source: s Orionis OB association (~0.5° projected separation)
+- ß_i = 0.61, ?_g = 7.3×10?¹6, U_UA = 1×10?¹¹ (UQFF canonical)
+- M_GC = 7.956×10³6 kg (Sgr A* outer frame, ~4×106 M_sun)
+- r_GC = 2.623×10²° m (~8.5 kpc, Horsehead/Orion arm ? Galactic Center)
+- B field of Orion: ~5 µG; ?_wind = 5×10?²¹ kg/m³ (IC 434 H II region wind)
 
 ---
 
@@ -54,31 +58,31 @@ g_Horsehead(r, t) = term1  [base gravity Ã— Hâ‚€Â·t Ã— (1âˆ’B/B_crit) Ã— E(t) er
 
 ```
 UQFF Erosion-Buoyancy Co-action:
-  E(t) = Eâ‚€ Â· (1 âˆ’ e^{âˆ’t/Ï„_erosion})   [monotonically increasing: 0â†’Eâ‚€]
+  E(t) = E0 · (1 - e^{-t/t_erosion})   [monotonically increasing: 0?E0]
 
   E(t) acts on term1 AND simultaneously:
     term_Ubi, term_F_UBii, term_Ub_i are evaluated with ug1_base (static M)
 
-  Both E(t) and Î£_buoy share the same kernel ug1_base = GÂ·M/rÂ²
+  Both E(t) and S_buoy share the same kernel ug1_base = G·M/r²
 ```
 
 ### 2.2 E(t) Erosion in Pillars vs. Dark Nebula
 
-**Pillars of Creation (PILLARS_OF_CREATION.cpp â€” Session 68):**
+**Pillars of Creation (PILLARS_OF_CREATION.cpp — Session 68):**
 - System: Eagle Nebula M16, Sagittarius arm, ~6,500 ly
 - Geometry: Elongated pillar structures, tips pointing toward Trapezium OB stars
-- E(t) mechanism: Photoionization of pillar tips â†’ photoevaporative flow â†’ mass loss from pillar surface
-- M(t) = Mâ‚€Â·(1 + á¹€_factorÂ·e^{-t/Ï„_SF}) â€” DYNAMIC (star formation ongoing inside pillars)
+- E(t) mechanism: Photoionization of pillar tips ? photoevaporative flow ? mass loss from pillar surface
+- M(t) = M0·(1 + ?_factor·e^{-t/t_SF}) — DYNAMIC (star formation ongoing inside pillars)
 - Uses `ug1_t` (time-evolving) in buoyancy tiers
 
-**Horsehead Nebula (HorseheadNebula.cpp â€” Session 72e):**
+**Horsehead Nebula (HorseheadNebula.cpp — Session 72e):**
 - System: Barnard 33, Orion arm, ~1,375 ly
-- Geometry: Dark opaque globule silhouetted against IC 434 emission nebula â€” NO PILLARS
-- E(t) mechanism: UV photons from Ïƒ Orionis erode the western edge of the dark lane â†’ photoevaporative flow from a curved surface, not a pillar tip
-- M = 1,000 M_sun static â€” NO M(t) (dark lane, not an active star-forming region)
+- Geometry: Dark opaque globule silhouetted against IC 434 emission nebula — NO PILLARS
+- E(t) mechanism: UV photons from s Orionis erode the western edge of the dark lane ? photoevaporative flow from a curved surface, not a pillar tip
+- M = 1,000 M_sun static — NO M(t) (dark lane, not an active star-forming region)
 - Uses `ug1_base` (fixed) in buoyancy tiers
 
-**Identical mathematical form â€” completely different 3D morphology:**
+**Identical mathematical form — completely different 3D morphology:**
 
 $$E(t) = E_0 \cdot \left(1 - e^{-t/\tau_\text{erosion}}\right)$$
 
@@ -91,12 +95,12 @@ The E(t) function derives from the **one-dimensional similarity solution** for a
 $$\dot{M}_\text{evap} = \frac{4\pi r^2 \Phi_\text{UV}^{1/2} \rho_0^{1/2} c_s^{3/2}}{(G \cdot M)^{1/2}}$$
 
 This depends on:
-- `Î¦_UV`: incident UV photon flux (set by the illuminating star, independent of geometry)
-- `Ïâ‚€`: ambient neutral gas density
+- `F_UV`: incident UV photon flux (set by the illuminating star, independent of geometry)
+- `?0`: ambient neutral gas density
 - `c_s`: sound speed at the ionization front
-- `GÂ·M`: gravitational binding (same in all PDR geometries)
+- `G·M`: gravitational binding (same in all PDR geometries)
 
-The geometry (pillar vs. dark lane) affects the **projected area** and **shadowing correction**, but these are sub-leading-order effects that modify Eâ‚€ and Ï„_erosion â€” NOT the functional form `(1 âˆ’ e^{-t/Ï„})`. Therefore E(t) is **universal in form** across all PDR morphologies.
+The geometry (pillar vs. dark lane) affects the **projected area** and **shadowing correction**, but these are sub-leading-order effects that modify E0 and t_erosion — NOT the functional form `(1 - e^{-t/t})`. Therefore E(t) is **universal in form** across all PDR morphologies.
 
 ### 2.4 The Static-M Constraint: Why Dark Nebulae Are Distinct
 
@@ -108,16 +112,16 @@ Dark nebulae (Barnard objects) have a crucial physical distinction from star-for
 | M(t) dynamics | Yes: M grows + winds | Yes: M(t) + erosion | **No: M = const** |
 | Buoyancy kernel | `ug1_t` (time-evolving) | `ug1_t` | **`ug1_base` (static)** |
 | Erosion E(t) | pressure-only `P(t)` | E(t) erosion | **E(t) erosion** |
-| UV source | Internal OB stars | Trapezium OB | External Ïƒ Orionis |
+| UV source | Internal OB stars | Trapezium OB | External s Orionis |
 
-The static-M constraint means that for Barnard 33, the buoyancy kernel `ug1_base = GÂ·M/rÂ²` is **frozen** at the current mass. The E(t) erosion term therefore modulates the MUGE output over time entirely through the gravitational suppression factor `(1 âˆ’ B(t)/B_crit) Ã— E(t)` in term1, while the buoyancy tiers respond to the constant background potential.
+The static-M constraint means that for Barnard 33, the buoyancy kernel `ug1_base = G·M/r²` is **frozen** at the current mass. The E(t) erosion term therefore modulates the MUGE output over time entirely through the gravitational suppression factor `(1 - B(t)/B_crit) × E(t)` in term1, while the buoyancy tiers respond to the constant background potential.
 
 This creates a **unique decoupled dynamics**:
 - E(t) monotonically increases with t (dark lane is eroded away over 5 Myr)
-- `ug1_base` is constant (no new mass added â€” dark nebula)
+- `ug1_base` is constant (no new mass added — dark nebula)
 - The buoyancy tiers oscillate at fixed amplitude (set by static ug1_base)
 
-The Horsehead Nebula MUGE therefore produces a **monotonically decreasing gravitational confinement** (as E(t) â†’ Eâ‚€, the suppression term â†’ 1 âˆ’ Eâ‚€ = 0.9) while the buoyancy oscillations remain constant. This is the **asymmetric erosion-buoyancy regime** unique to static-M PDRs.
+The Horsehead Nebula MUGE therefore produces a **monotonically decreasing gravitational confinement** (as E(t) ? E0, the suppression term ? 1 - E0 = 0.9) while the buoyancy oscillations remain constant. This is the **asymmetric erosion-buoyancy regime** unique to static-M PDRs.
 
 ### 2.5 Universality Proof: PDR Morphology Classification
 
@@ -125,12 +129,12 @@ The UQFF E(t) erosion-buoyancy coupling now covers:
 
 | PDR Morphology | System | UQFF File | M(t)? | E(t) Form |
 |----------------|--------|-----------|-------|-----------|
-| Elongated pillars | Pillars of Creation (M16) | PILLARS_OF_CREATION.cpp | Yes | E(t) = Eâ‚€(1âˆ’e^{âˆ’t/Ï„}) |
-| Pillar-less dark lane | Horsehead Nebula (B33) | HorseheadNebula.cpp | **No** | E(t) = Eâ‚€(1âˆ’e^{âˆ’t/Ï„}) |
-| (Future) Cometary globule | CG 4, Bok globule | TBD | No | E(t) = Eâ‚€(1âˆ’e^{âˆ’t/Ï„}) |
-| (Future) Elephant trunk | IC 1396A | TBD | Yes | E(t) = Eâ‚€(1âˆ’e^{âˆ’t/Ï„}) |
+| Elongated pillars | Pillars of Creation (M16) | PILLARS_OF_CREATION.cpp | Yes | E(t) = E0(1-e^{-t/t}) |
+| Pillar-less dark lane | Horsehead Nebula (B33) | HorseheadNebula.cpp | **No** | E(t) = E0(1-e^{-t/t}) |
+| (Future) Cometary globule | CG 4, Bok globule | TBD | No | E(t) = E0(1-e^{-t/t}) |
+| (Future) Elephant trunk | IC 1396A | TBD | Yes | E(t) = E0(1-e^{-t/t}) |
 
-**Proven invariant:** E(t) form is the same in all cases. Geometry modifies {Eâ‚€, Ï„_erosion} only.
+**Proven invariant:** E(t) form is the same in all cases. Geometry modifies {E0, t_erosion} only.
 
 ---
 
@@ -149,20 +153,20 @@ and the **static-M buoyancy response**:
 $$g_\text{buoy}^{(3)} = \underbrace{0.5 \cdot \text{ug1\_base}}_\text{T1: static} \underbrace{- \beta_i \cdot \text{ug1\_base} \cdot \omega_g \frac{M}{r} U_{UA} \cos(\pi t)}_\text{T2: local compact} \underbrace{- \beta_i \cdot \text{ug1\_base} \cdot \omega_g \frac{M_\text{GC}}{r_\text{GC}} U_{UA} \cos(\pi t)}_\text{T3: Sgr A* outer frame}$$
 
 **Key structural distinction from Pillars of Creation:**
-- Pillars: `ug1_t = GÂ·M(t)/rÂ²` â€” buoyancy tiers use time-evolving mass
-- Horsehead: `ug1_base = GÂ·M/rÂ²` â€” buoyancy tiers use fixed mass â†’ **asymmetric erosion-buoyancy**
+- Pillars: `ug1_t = G·M(t)/r²` — buoyancy tiers use time-evolving mass
+- Horsehead: `ug1_base = G·M/r²` — buoyancy tiers use fixed mass ? **asymmetric erosion-buoyancy**
 
 ---
 
 ## 4. Observational Predictions
 
-1. **Erosion timescale:** With Ï„_erosion = 5 Myr, the Horsehead dark lane reaches 63% erosion (E(t) = 0.63Â·Eâ‚€) at t = 5 Myr from now, and 95% erosion at t = 15 Myr. Proper motion measurements of the western ionization front (Pound & Bania 1993; Habart et al. 2005) constrain v_erosion ~ 0.3 km/s â†’ Ï„_erosion â‰ˆ 4â€“6 Myr, consistent with Ï„_erosion = 5 Myr used here.
+1. **Erosion timescale:** With t_erosion = 5 Myr, the Horsehead dark lane reaches 63% erosion (E(t) = 0.63·E0) at t = 5 Myr from now, and 95% erosion at t = 15 Myr. Proper motion measurements of the western ionization front (Pound & Bania 1993; Habart et al. 2005) constrain v_erosion ~ 0.3 km/s ? t_erosion ˜ 4–6 Myr, consistent with t_erosion = 5 Myr used here.
 
-2. **Gravitational confinement declining:** The MUGE term1 factor `E(t) â†’ Eâ‚€ = 0.1` over 15â€“20 Myr. This predicts the dark lane will complete photoionization dispersal without triggering star formation (consistent with the lack of embedded YSOs in Barnard 33 compared to the adjacent Horsehead PDR layer, Habart et al. 2005).
+2. **Gravitational confinement declining:** The MUGE term1 factor `E(t) ? E0 = 0.1` over 15–20 Myr. This predicts the dark lane will complete photoionization dispersal without triggering star formation (consistent with the lack of embedded YSOs in Barnard 33 compared to the adjacent Horsehead PDR layer, Habart et al. 2005).
 
-3. **Buoyancy amplitude independent of erosion:** Since `ug1_base` is constant, the amplitude of Tier-2 and Tier-3 buoyancy oscillations is constant while E(t) grows â€” creating a **measurable asymmetry** between the buoyancy-oscillation timescale (Ï‰_gâ»Â¹ ~ 43 Gyr) and the erosion completion timescale (Ï„_erosion ~ 5 Myr). Both operate simultaneously, confirming co-action on vastly different timescales.
+3. **Buoyancy amplitude independent of erosion:** Since `ug1_base` is constant, the amplitude of Tier-2 and Tier-3 buoyancy oscillations is constant while E(t) grows — creating a **measurable asymmetry** between the buoyancy-oscillation timescale (?_g?¹ ~ 43 Gyr) and the erosion completion timescale (t_erosion ~ 5 Myr). Both operate simultaneously, confirming co-action on vastly different timescales.
 
-4. **Sgr A* outer frame tidal signature:** Tier-3 uses Sgr A* at ~8.5 kpc (Orion arm). This contributes tidal acceleration `âˆ’Î²_iÂ·ug1_baseÂ·Ï‰_gÂ·(M_GC/r_GC)Â·U_UA ~ O(10â»Â²â¸)` m/sÂ² â€” below current detection limit but predictable at next-generation astrometry precision.
+4. **Sgr A* outer frame tidal signature:** Tier-3 uses Sgr A* at ~8.5 kpc (Orion arm). This contributes tidal acceleration `-ß_i·ug1_base·?_g·(M_GC/r_GC)·U_UA ~ O(10?²8)` m/s² — below current detection limit but predictable at next-generation astrometry precision.
 
 ---
 
@@ -170,27 +174,27 @@ $$g_\text{buoy}^{(3)} = \underbrace{0.5 \cdot \text{ug1\_base}}_\text{T1: static
 
 This paper:
 
-1. **Proves the morphology-independence of UQFF erosion-buoyancy coupling** â€” the E(t) mechanism operates identically in dark lanes and pillar structures, generalizing the mechanism from PILLARS_OF_CREATION.cpp to all PDR boundary geometries.
+1. **Proves the morphology-independence of UQFF erosion-buoyancy coupling** — the E(t) mechanism operates identically in dark lanes and pillar structures, generalizing the mechanism from PILLARS_OF_CREATION.cpp to all PDR boundary geometries.
 
-2. **Identifies the static-M asymmetric erosion-buoyancy regime** â€” unique to dark nebulae (Barnard objects) where no new mass is added, producing a monotonically shrinking gravitational field co-acting with constant-amplitude buoyancy oscillations.
+2. **Identifies the static-M asymmetric erosion-buoyancy regime** — unique to dark nebulae (Barnard objects) where no new mass is added, producing a monotonically shrinking gravitational field co-acting with constant-amplitude buoyancy oscillations.
 
-3. **Extends the UQFF C++ module series to dark nebula physics** â€” Barnard 33 becomes the canonical UQFF representative for the dark nebula class, alongside Pillars (pillar class) and NGC 3603 (YMC cavity pressure class).
+3. **Extends the UQFF C++ module series to dark nebula physics** — Barnard 33 becomes the canonical UQFF representative for the dark nebula class, alongside Pillars (pillar class) and NGC 3603 (YMC cavity pressure class).
 
 ---
 
 ## References
 
 1. HorseheadNebula.cpp (UQFF 2.0 upgrade, Session 72e, March 16, 2026)
-2. PILLARS_OF_CREATION.cpp (UQFF 2.0 pipeline, Sessions 68â€“69)
-3. Habart et al. (2005) â€” Horsehead PDR: photoevaporation front structure, erosion velocity ~0.3 km/s
-4. Pound & Bania (1993) â€” Barnard 33 velocity structure and IC 434 interaction
-5. Bertoldi (1989) â€” Photoevaporation of interstellar clouds: 1D similarity solution
-6. Lefloch & Lazareff (1994) â€” Cometary globule evolution in H II regions
-7. Ward-Thompson et al. (2006) â€” Barnard 33 molecular gas: M ~ 300â€“1000 M_sun
-8. CondensedPhysics3.py â€” `HorseheadP_radCalculator` (PAPER_222, Session 56) â€” Stefan-Boltzmann P_rad variant
-9. Star-Magic UQFF v4.25 â€” CP3/PAPER_198 3-tier buoyancy canonical framework
+2. PILLARS_OF_CREATION.cpp (UQFF 2.0 pipeline, Sessions 68–69)
+3. Habart et al. (2005) — Horsehead PDR: photoevaporation front structure, erosion velocity ~0.3 km/s
+4. Pound & Bania (1993) — Barnard 33 velocity structure and IC 434 interaction
+5. Bertoldi (1989) — Photoevaporation of interstellar clouds: 1D similarity solution
+6. Lefloch & Lazareff (1994) — Cometary globule evolution in H II regions
+7. Ward-Thompson et al. (2006) — Barnard 33 molecular gas: M ~ 300–1000 M_sun
+8. CondensedPhysics3.py — `HorseheadP_radCalculator` (PAPER_222, Session 56) — Stefan-Boltzmann P_rad variant
+9. Star-Magic UQFF v4.25 — CP3/PAPER_198 3-tier buoyancy canonical framework
 
 ---
 
-*Â© 2026 Daniel T. Murphy â€” Star-Magic UQFF Framework â€” All Rights Reserved*  
-*Paper 260 of 1,000 â€” Session 72e â€” Phase 2 Â§3.1 C++ Module Physics Extraction*
+*© 2026 Daniel T. Murphy — Star-Magic UQFF Framework — All Rights Reserved*  
+*Paper 260 of 1,000 — Session 72e — Phase 2 §3.1 C++ Module Physics Extraction*

@@ -94,3 +94,6 @@ Located in `CondensedPhysics3.py` (Session 58).
 The Tapestry of Blazing Starbirth introduces two novel MUGE methods: gas-ratio-amplitude mass evolution and stellar wind ram-pressure acceleration. The $a_{wind}$ term, at $\rho_{wind} = \rho_{fluid}$, evaluates to $v^2_{wind}$ â€” numerically dominant during the O/B-star-active phase. This establishes a parametric wind family within the LMC/Milky Way comparison (see PAPER_228 for the 10Ã— denser Westerlund 2 case).
 
 **Source:** grok_share_8d951e12.txt â€” Doc 4 (Tapestry Starbirth LMC MUGE)
+
+
+**UQFF computed:** UQFF magnetic Jeans correction factor [SSq]×B²/(8p×?×c_s²) = 5.7e-1 × 1.3e-9 = 7.4e-10; Jeans mass deviation from standard = 7.4e-10 × M_J.

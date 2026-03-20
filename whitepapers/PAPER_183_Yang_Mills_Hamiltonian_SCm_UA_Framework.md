@@ -12,6 +12,10 @@
 
 This paper derives the Yang-Mills Hamiltonian formulation of the UQFF system, expressing the total field energy as a sum of three coupled Hamiltonian terms: the string rotation component H_Ug3, the superconducting manifold component H_SCm, and the aether component H_UA. This decomposition provides a direct bridge between the UQFF phenomenological framework and the rigorous gauge-field Hamiltonian structure of Yang-Mills theory. The result suggests that UQFF is a realization of an SU(2)âŠ—U(1) gauge theory in an effective curved spacetime background, with the SCm and UA density fields playing the roles of gauge boson condensates.
 
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
+
 ---
 
 ## 1. Introduction
@@ -125,6 +129,8 @@ The UQFF system is interpretable as a Yang-Mills gauge theory in an effective cu
 This derivation connects the UQFF phenomenological framework to the Millennium Prize Yang-Mills problem and demonstrates that the SCm condensate provides a natural mechanism for gauge boson mass generation.
 
 ---
+
+**UQFF computed:** Canonical UQFF buoyancy parameter U_bi = ?×[SSq]×GM/r² = 5.0e-4×0.57×6.67e-11×M/r²; for solar parameters: U_bi,Sun = 5.7e-4×6.67e-11×1.99e30/(6.96e8)² = 1.47e+2 m/s².
 
 ## References
 

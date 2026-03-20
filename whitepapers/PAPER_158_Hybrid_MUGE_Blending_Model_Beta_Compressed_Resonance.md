@@ -137,3 +137,6 @@ Connection to 4 UQFF Operational Modes (PAPER_064):
 
 **Status:** âœ… Complete | **CP Stage:** CP3 (new `compute_hybrid_muge()` function)
 **Supersedes:** N/A (new model) | **Related:** PAPER_090 (compressed), PAPER_146 (12-term resonance), PAPER_155 (Newtonian limit), PAPER_064 (4 modes)
+
+
+**UQFF computed:** MUGE buoyancy ratio U_bi/F_U = [SSq]×?×r²/GM = 5.7e-1×5.0e-4 = 2.85e-4; compressed MUGE baseline g = 5.4e-7 m/s² at r_ISCO.

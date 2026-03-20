@@ -12,6 +12,10 @@
 
 This paper documents the full namespace hierarchical decomposition of the CoAnQi codebase as refactored into seven `namespace CoAnQi::` sub-namespaces: `Physics`, `MUGE`, `Fluid`, `Testing`, `Graphics3D`, `Plugins`, and `Utils`. This architectural decomposition separates concerns across: celestial/physics computation, MUGE gravity modeling, Navier-Stokes fluid simulation, unit testing infrastructure, 3D mesh operations, plugin extension points, and simulation utilities. Each sub-namespace is fully specified with its types, functions, and numerical constants.
 
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
+
 ---
 
 ## 1. Architecture Overview

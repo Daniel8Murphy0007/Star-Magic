@@ -1,7 +1,7 @@
-ï»¿# UQFF  
+# UQFF  
     $n = [int]# UQFF  "PAPER_{0:D3}" -f [int]# UQFF  
     $n = [int]# UQFF PAPER_276
-## Andromeda Friedmann-UQFF Gravity Coupling: H(z)Ã—t Expansion Term and H_UQFF Near-Unity Resonance
+## Andromeda Friedmann-UQFF Gravity Coupling: H(z)×t Expansion Term and H_UQFF Near-Unity Resonance
 
 **Author:** Daniel T. Murphy  
 **Session:** 76 (March 2026)  
@@ -12,15 +12,15 @@
 
 ## Abstract
 
-This paper introduces a new UQFF gravity term for the Andromeda Galaxy (M31): the **Friedmann-UQFF Expansion Coupling**, defined as g_expansion = (GÂ·M/rÂ²) Ã— H(z) Ã— t. For Andromeda's blueshift redshift z = âˆ’0.001, the Friedmann H(z) equals 69.969 km/s/Mpc = 2.269Ã—10â»Â¹â¸ sâ»Â¹. Evaluated at the Hubble timescale t = t_H = 4.352Ã—10Â¹â· s, the dimensionless Friedmann-UQFF Resonance Coefficient H_UQFF = H(z)Ã—t_H â‰ˆ **0.987** â€” a near-unity value representing gravitational doubling over cosmological time. This paper also introduces the M_visible/M_DM_mass cascade (explicit DM split tracking) and a minor ISM dust drag acceleration term. Together these constitute three additive UQFF 2.0 enhancements derived from the Andromeda module upgrade.
+This paper introduces a new UQFF gravity term for the Andromeda Galaxy (M31): the **Friedmann-UQFF Expansion Coupling**, defined as g_expansion = (G·M/r²) × H(z) × t. For Andromeda's blueshift redshift z = -0.001, the Friedmann H(z) equals 69.969 km/s/Mpc = 2.269×10?¹8 s?¹. Evaluated at the Hubble timescale t = t_H = 4.352×10¹7 s, the dimensionless Friedmann-UQFF Resonance Coefficient H_UQFF = H(z)×t_H ˜ **0.987** — a near-unity value representing gravitational doubling over cosmological time. This paper also introduces the M_visible/M_DM_mass cascade (explicit DM split tracking) and a minor ISM dust drag acceleration term. Together these constitute three additive UQFF 2.0 enhancements derived from the Andromeda module upgrade.
 
 ---
 
 ## 1. Background
 
-The UQFF framework computes total gravitational acceleration g_total(r,t) as a sum of Newtonian, Triadic (26-layer), cosmological, quantum, electromagnetic, fluid, resonant, and dark matter terms. PAPER_273â€“275 established the Andromeda-specific physics: blueshift approach amplifier Îº, HI 21-cm resonance, and DM 80/20 NFW partition.
+The UQFF framework computes total gravitational acceleration g_total(r,t) as a sum of Newtonian, Triadic (26-layer), cosmological, quantum, electromagnetic, fluid, resonant, and dark matter terms. PAPER_273–275 established the Andromeda-specific physics: blueshift approach amplifier ?, HI 21-cm resonance, and DM 80/20 NFW partition.
 
-The original Andromeda implementation (pre-Session 76) lacked a time-dependent expansion coupling that accounts for the Friedmann-Lemaitre cosmological evolution of Hubble parameter H(z). This is significant because over a Hubble timescale, H(z)Ã—t â‰ˆ 1 â€” implying that expansion-mediated gravitational coupling is of the same order as the base Newtonian term.
+The original Andromeda implementation (pre-Session 76) lacked a time-dependent expansion coupling that accounts for the Friedmann-Lemaitre cosmological evolution of Hubble parameter H(z). This is significant because over a Hubble timescale, H(z)×t ˜ 1 — implying that expansion-mediated gravitational coupling is of the same order as the base Newtonian term.
 
 ---
 
@@ -28,11 +28,11 @@ The original Andromeda implementation (pre-Session 76) lacked a time-dependent e
 
 ### 2.1 Friedmann Equation
 
-The Hubble parameter as a function of redshift in the standard Î›CDM cosmology:
+The Hubble parameter as a function of redshift in the standard ?CDM cosmology:
 
 $$H(z) = H_0 \sqrt{\Omega_m (1+z)^3 + \Omega_\Lambda}$$
 
-For Andromeda parameters: Hâ‚€ = 70.0 km/s/Mpc, Î©_m = 0.3, Î©_Î› = 0.7, z = âˆ’0.001.
+For Andromeda parameters: H0 = 70.0 km/s/Mpc, O_m = 0.3, O_? = 0.7, z = -0.001.
 
 $$H(z=-0.001) = 70.0 \times \sqrt{0.3 \times (0.999)^3 + 0.7}$$
 
@@ -40,7 +40,7 @@ $$= 70.0 \times \sqrt{0.3 \times 0.997003 + 0.7} = 70.0 \times \sqrt{0.9991}$$
 
 $$= 70.0 \times 0.99955 = 69.969 \text{ km/s/Mpc}$$
 
-In SI units: H_SI = 69.969 Ã— 10Â³ / 3.086Ã—10Â²Â² = **2.269Ã—10â»Â¹â¸ sâ»Â¹**
+In SI units: H_SI = 69.969 × 10³ / 3.086×10²² = **2.269×10?¹8 s?¹**
 
 ### 2.2 UQFF Expansion Term
 
@@ -51,9 +51,9 @@ $$g_{\text{expansion}}(r, t) = \frac{G \cdot M}{r^2} \cdot H(z) \cdot t$$
 This represents the gravitational effect of cosmological expansion flow coupling into UQFF buoyancy at timescale t.
 
 **Numerical values for Andromeda:**
-- g_base = GÃ—M/rÂ² = 6.674Ã—10â»Â¹Â¹ Ã— 1.989Ã—10â´Â² / (1.04Ã—10Â²Â¹)Â² = **1.227Ã—10â»Â¹â° m/sÂ²**
-- At t = 1 Gyr (3.156Ã—10Â¹â¶ s): g_expansion = 1.227Ã—10â»Â¹â° Ã— 2.269Ã—10â»Â¹â¸ Ã— 3.156Ã—10Â¹â¶ = **8.79Ã—10â»Â¹Â³ m/sÂ²**
-- At t = t_Hubble (4.352Ã—10Â¹â· s): g_expansion = 1.227Ã—10â»Â¹â° Ã— 0.987 = **1.211Ã—10â»Â¹â° m/sÂ²**
+- g_base = G×M/r² = 6.674×10?¹¹ × 1.989×104² / (1.04×10²¹)² = **1.227×10?¹° m/s²**
+- At t = 1 Gyr (3.156×10¹6 s): g_expansion = 1.227×10?¹° × 2.269×10?¹8 × 3.156×10¹6 = **8.79×10?¹³ m/s²**
+- At t = t_Hubble (4.352×10¹7 s): g_expansion = 1.227×10?¹° × 0.987 = **1.211×10?¹° m/s²**
 
 ---
 
@@ -63,48 +63,48 @@ This represents the gravitational effect of cosmological expansion flow coupling
 
 $$H_{\text{UQFF}} = H(z) \times t_H$$
 
-where t_H = 4.352Ã—10Â¹â· s (Hubble time â‰ˆ 13.8 Gyr).
+where t_H = 4.352×10¹7 s (Hubble time ˜ 13.8 Gyr).
 
-**For Andromeda (z = âˆ’0.001):**
+**For Andromeda (z = -0.001):**
 
 $$H_{\text{UQFF}} = 2.269 \times 10^{-18} \times 4.352 \times 10^{17} = \mathbf{0.987}$$
 
 ### 3.2 Near-Unity Discovery
 
-H_UQFF â‰ˆ 0.987 â‰ˆ **1** is a remarkable result. It means:
+H_UQFF ˜ 0.987 ˜ **1** is a remarkable result. It means:
 
-> Over a Hubble timescale, the Friedmann expansion coupling adds an amount of gravitational acceleration equal to **98.7% of the base Newtonian term** â€” nearly doubling g_base.
+> Over a Hubble timescale, the Friedmann expansion coupling adds an amount of gravitational acceleration equal to **98.7% of the base Newtonian term** — nearly doubling g_base.
 
-This near-unity value is not coincidental. In a flat Î›CDM universe (Î©_m + Î©_Î› = 1):
+This near-unity value is not coincidental. In a flat ?CDM universe (O_m + O_? = 1):
 
 $$H_{\text{UQFF}} = H_0 \times t_H \approx 1.0$$
 
-because Hâ‚€ Ã— t_H is the dimensionless Hubble number â‰ˆ 0.96â€“1.0 for observationally consistent Hâ‚€.
+because H0 × t_H is the dimensionless Hubble number ˜ 0.96–1.0 for observationally consistent H0.
 
-**New UQFF Constant:** H_UQFF = H(z)Ã—t_H â€” **Friedmann-UQFF Near-Unity Resonance Coefficient**
+**New UQFF Constant:** H_UQFF = H(z)×t_H — **Friedmann-UQFF Near-Unity Resonance Coefficient**
 
 | Parameter | Value |
 |---|---|
-| Hâ‚€ | 70.0 km/s/Mpc |
-| Î©_m | 0.3 |
-| Î©_Î› | 0.7 |
-| z (Andromeda) | âˆ’0.001 |
-| H(z) | 2.269Ã—10â»Â¹â¸ sâ»Â¹ |
-| t_H | 4.352Ã—10Â¹â· s |
+| H0 | 70.0 km/s/Mpc |
+| O_m | 0.3 |
+| O_? | 0.7 |
+| z (Andromeda) | -0.001 |
+| H(z) | 2.269×10?¹8 s?¹ |
+| t_H | 4.352×10¹7 s |
 | **H_UQFF** | **0.987** (~1) |
-| g_expansion(t_H) | 1.211Ã—10â»Â¹â° m/sÂ² |
-| g_base | 1.227Ã—10â»Â¹â° m/sÂ² |
+| g_expansion(t_H) | 1.211×10?¹° m/s² |
+| g_base | 1.227×10?¹° m/s² |
 | Ratio g_exp/g_base | 98.7% |
 
 ### 3.3 Blueshift Sensitivity
 
-For blueshift z < 0: H(z) is slightly **lower** than Hâ‚€ (matter term Î©_mÃ—(1+z)Â³ is suppressed below Î©_m for z < 0), meaning:
+For blueshift z < 0: H(z) is slightly **lower** than H0 (matter term O_m×(1+z)³ is suppressed below O_m for z < 0), meaning:
 
 $$H(z < 0) < H_0 \Rightarrow H_{\text{UQFF}}(z < 0) < H_{\text{UQFF}}(z=0)$$
 
-For Andromeda (z = âˆ’0.001): H_UQFF = 0.987 vs flat-universe H_UQFFâ‚€ = 0.9985. The blueshift suppresses H_UQFF by 0.15%.
+For Andromeda (z = -0.001): H_UQFF = 0.987 vs flat-universe H_UQFF0 = 0.9985. The blueshift suppresses H_UQFF by 0.15%.
 
-This is the inverse of the redshift behaviour (z > 0 â†’ H(z) > Hâ‚€ for moderate z), making Andromeda's approaching trajectory a unique laboratory for probing blueshift Friedmann-UQFF coupling.
+This is the inverse of the redshift behaviour (z > 0 ? H(z) > H0 for moderate z), making Andromeda's approaching trajectory a unique laboratory for probing blueshift Friedmann-UQFF coupling.
 
 ---
 
@@ -114,7 +114,7 @@ A second minor additive term captures ISM dust ram-pressure drag:
 
 $$a_{\text{dust}} = \frac{\rho_{\text{dust}} \cdot v_{\text{orbit}}^2}{c^2 \cdot \rho_{\text{mean}}} \cdot g_{\text{base}}$$
 
-where Ï_mean = M/V_fluid = 1.989Ã—10â´Â² / 10â¶â° = 1.989Ã—10â»Â¹â¸ kg/mÂ³.
+where ?_mean = M/V_fluid = 1.989×104² / 106° = 1.989×10?¹8 kg/m³.
 
 **Numerical value for Andromeda:**
 $$a_{\text{dust}} = \frac{10^{-20} \times (2.5 \times 10^5)^2}{(2.998 \times 10^8)^2 \times 1.989 \times 10^{-18}} \times 1.227 \times 10^{-10}$$
@@ -134,50 +134,50 @@ When M is updated via `updateVariable("M", value)`, the derived quantities are n
 $$M_{\text{visible}} = (1 - f_{\text{DM}}) \times M$$
 $$M_{\text{DM,mass}} = f_{\text{DM}} \times M$$
 
-For Andromeda defaults: M = 1.989Ã—10â´Â² kg, f_DM = 0.80:
-- M_visible = 0.20 Ã— 1.989Ã—10â´Â² = **3.978Ã—10â´Â¹ kg** (20% visible baryons)
-- M_DM_mass = 0.80 Ã— 1.989Ã—10â´Â² = **1.591Ã—10â´Â² kg** (80% dark matter)
+For Andromeda defaults: M = 1.989×104² kg, f_DM = 0.80:
+- M_visible = 0.20 × 1.989×104² = **3.978×104¹ kg** (20% visible baryons)
+- M_DM_mass = 0.80 × 1.989×104² = **1.591×104² kg** (80% dark matter)
 
-These are tracked in `updateCache()` and exported via `exportState()` (params 26â€“32), providing explicit bookkeeping of the M31 baryonic/DM split consistent with PAPER_275.
+These are tracked in `updateCache()` and exported via `exportState()` (params 26–32), providing explicit bookkeeping of the M31 baryonic/DM split consistent with PAPER_275.
 
 ---
 
 ## 6. Updated ANDROMEDA_UQFF_MODULE.cpp g_total
 
-The full UQFF 2.0 equation for Andromeda with all PAPER_273â€“276 terms:
+The full UQFF 2.0 equation for Andromeda with all PAPER_273–276 terms:
 
 $$g_{\text{total}}(r, t) = \left[ g_{\text{grav}} + U_{g,\text{sum}}^{(26)} + \Lambda\text{-term} + g_Q + g_L + g_{\text{fluid}} + F_{\text{res}}(\omega_{\text{HI}}) + g_{\text{DM}} + g_{\text{expansion}} + a_{\text{dust}} \right] \times \kappa_{\text{approach}}$$
 
 **Term magnitudes at t=0 (current epoch):**
 
-| Term | Value (m/sÂ²) | Paper |
+| Term | Value (m/s²) | Paper |
 |---|---|---|
-| g_grav = GÂ·M/rÂ² | 1.227Ã—10â»Â¹â° | baseline |
-| Ug_sum (26 layers) | 6.380Ã—10â»â¹ | 26-layer Triadic |
-| Î›-term | 2.998Ã—10â»Â³â¶ | cosmological |
-| g_quantum | ~2Ã—10â»Â²â¶ | HUP |
-| g_Lorentz | ~2Ã—10â»Â³â¶ | IGM EM |
-| g_fluid | ~8Ã—10â»Â²Â³ | IGM buoyancy |
-| F_res(Ï‰_HI) at t=0 | 1Ã—10â»Â¹Â² | PAPER_274 |
-| g_DM | 1.356Ã—10â»Â¹â° | PAPER_275 |
+| g_grav = G·M/r² | 1.227×10?¹° | baseline |
+| Ug_sum (26 layers) | 6.380×10?? | 26-layer Triadic |
+| ?-term | 2.998×10?³6 | cosmological |
+| g_quantum | ~2×10?²6 | HUP |
+| g_Lorentz | ~2×10?³6 | IGM EM |
+| g_fluid | ~8×10?²³ | IGM buoyancy |
+| F_res(?_HI) at t=0 | 1×10?¹² | PAPER_274 |
+| g_DM | 1.356×10?¹° | PAPER_275 |
 | g_expansion at t=0 | 0 | PAPER_276 |
-| a_dust | 4.29Ã—10â»Â¹â¹ | PAPER_276 |
-| Îº_approach | 1.001001 | PAPER_273 |
+| a_dust | 4.29×10?¹? | PAPER_276 |
+| ?_approach | 1.001001 | PAPER_273 |
 
-Note: g_expansion grows linearly with t, dominating over g_grav at t â‰¥ t_H.
+Note: g_expansion grows linearly with t, dominating over g_grav at t = t_H.
 
 ---
 
-## 7. exportState Update (25 â†’ 32 parameters)
+## 7. exportState Update (25 ? 32 parameters)
 
 Seven new parameters added to `exportState()`:
 1. `H0` = 70.0 km/s/Mpc
 2. `Omega_m` = 0.3
 3. `Omega_Lam` = 0.7
-4. `Mpc_to_m` = 3.086Ã—10Â²Â²
-5. `rho_dust` = 1Ã—10â»Â²â° kg/mÂ³
-6. `M_visible` = (1â€“f_DM)Ã—M
-7. `M_DM_mass` = f_DMÃ—M
+4. `Mpc_to_m` = 3.086×10²²
+5. `rho_dust` = 1×10?²° kg/m³
+6. `M_visible` = (1–f_DM)×M
+7. `M_DM_mass` = f_DM×M
 
 ---
 
@@ -185,19 +185,19 @@ Seven new parameters added to `exportState()`:
 
 **Three new UQFF enhancements for Andromeda (PAPER_276):**
 
-1. **Friedmann-UQFF Expansion Coupling**: g_expansion = g_base Ã— H(z) Ã— t. At t = t_H, adds 98.7% of g_base â€” near-gravitational doubling over cosmological time.
+1. **Friedmann-UQFF Expansion Coupling**: g_expansion = g_base × H(z) × t. At t = t_H, adds 98.7% of g_base — near-gravitational doubling over cosmological time.
 
-2. **H_UQFF = 0.987**: New UQFF constant (Friedmann-UQFF Near-Unity Resonance Coefficient). Near-unity reflects the fundamental relationship Hâ‚€ Ã— t_H â‰ˆ 1 in flat Î›CDM. Andromeda's blueshift (z = âˆ’0.001) makes H_UQFF 0.15% below flat-universe value â€” a blueshift Friedmann suppression.
+2. **H_UQFF = 0.987**: New UQFF constant (Friedmann-UQFF Near-Unity Resonance Coefficient). Near-unity reflects the fundamental relationship H0 × t_H ˜ 1 in flat ?CDM. Andromeda's blueshift (z = -0.001) makes H_UQFF 0.15% below flat-universe value — a blueshift Friedmann suppression.
 
-3. **M_visible/M_DM_mass cascade + dust drag**: Explicit DM split bookkeeping (updateCache) and ISM dust ram-pressure (a_dust â‰ˆ 4Ã—10â»Â¹â¹ m/sÂ²).
+3. **M_visible/M_DM_mass cascade + dust drag**: Explicit DM split bookkeeping (updateCache) and ISM dust ram-pressure (a_dust ˜ 4×10?¹? m/s²).
 
 ---
 
-**Watermark:** Â©2025-2026 Daniel T. Murphy, daniel.murphy00@gmail.com â€“ All Rights Reserved
+**Watermark:** ©2025-2026 Daniel T. Murphy, daniel.murphy00@gmail.com – All Rights Reserved
 .Groups[1].Value
     "PAPER_{0:D3}" -f $n
   
-## Andromeda Friedmann-UQFF Gravity Coupling: H(z)Ã—t Expansion Term and H_UQFF Near-Unity Resonance
+## Andromeda Friedmann-UQFF Gravity Coupling: H(z)×t Expansion Term and H_UQFF Near-Unity Resonance
 
 **Author:** Daniel T. Murphy  
 **Session:** 76 (March 2026)  
@@ -208,15 +208,15 @@ Seven new parameters added to `exportState()`:
 
 ## Abstract
 
-This paper introduces a new UQFF gravity term for the Andromeda Galaxy (M31): the **Friedmann-UQFF Expansion Coupling**, defined as g_expansion = (GÂ·M/rÂ²) Ã— H(z) Ã— t. For Andromeda's blueshift redshift z = âˆ’0.001, the Friedmann H(z) equals 69.969 km/s/Mpc = 2.269Ã—10â»Â¹â¸ sâ»Â¹. Evaluated at the Hubble timescale t = t_H = 4.352Ã—10Â¹â· s, the dimensionless Friedmann-UQFF Resonance Coefficient H_UQFF = H(z)Ã—t_H â‰ˆ **0.987** â€” a near-unity value representing gravitational doubling over cosmological time. This paper also introduces the M_visible/M_DM_mass cascade (explicit DM split tracking) and a minor ISM dust drag acceleration term. Together these constitute three additive UQFF 2.0 enhancements derived from the Andromeda module upgrade.
+This paper introduces a new UQFF gravity term for the Andromeda Galaxy (M31): the **Friedmann-UQFF Expansion Coupling**, defined as g_expansion = (G·M/r²) × H(z) × t. For Andromeda's blueshift redshift z = -0.001, the Friedmann H(z) equals 69.969 km/s/Mpc = 2.269×10?¹8 s?¹. Evaluated at the Hubble timescale t = t_H = 4.352×10¹7 s, the dimensionless Friedmann-UQFF Resonance Coefficient H_UQFF = H(z)×t_H ˜ **0.987** — a near-unity value representing gravitational doubling over cosmological time. This paper also introduces the M_visible/M_DM_mass cascade (explicit DM split tracking) and a minor ISM dust drag acceleration term. Together these constitute three additive UQFF 2.0 enhancements derived from the Andromeda module upgrade.
 
 ---
 
 ## 1. Background
 
-The UQFF framework computes total gravitational acceleration g_total(r,t) as a sum of Newtonian, Triadic (26-layer), cosmological, quantum, electromagnetic, fluid, resonant, and dark matter terms. PAPER_273â€“275 established the Andromeda-specific physics: blueshift approach amplifier Îº, HI 21-cm resonance, and DM 80/20 NFW partition.
+The UQFF framework computes total gravitational acceleration g_total(r,t) as a sum of Newtonian, Triadic (26-layer), cosmological, quantum, electromagnetic, fluid, resonant, and dark matter terms. PAPER_273–275 established the Andromeda-specific physics: blueshift approach amplifier ?, HI 21-cm resonance, and DM 80/20 NFW partition.
 
-The original Andromeda implementation (pre-Session 76) lacked a time-dependent expansion coupling that accounts for the Friedmann-Lemaitre cosmological evolution of Hubble parameter H(z). This is significant because over a Hubble timescale, H(z)Ã—t â‰ˆ 1 â€” implying that expansion-mediated gravitational coupling is of the same order as the base Newtonian term.
+The original Andromeda implementation (pre-Session 76) lacked a time-dependent expansion coupling that accounts for the Friedmann-Lemaitre cosmological evolution of Hubble parameter H(z). This is significant because over a Hubble timescale, H(z)×t ˜ 1 — implying that expansion-mediated gravitational coupling is of the same order as the base Newtonian term.
 
 ---
 
@@ -224,11 +224,11 @@ The original Andromeda implementation (pre-Session 76) lacked a time-dependent e
 
 ### 2.1 Friedmann Equation
 
-The Hubble parameter as a function of redshift in the standard Î›CDM cosmology:
+The Hubble parameter as a function of redshift in the standard ?CDM cosmology:
 
 $$H(z) = H_0 \sqrt{\Omega_m (1+z)^3 + \Omega_\Lambda}$$
 
-For Andromeda parameters: Hâ‚€ = 70.0 km/s/Mpc, Î©_m = 0.3, Î©_Î› = 0.7, z = âˆ’0.001.
+For Andromeda parameters: H0 = 70.0 km/s/Mpc, O_m = 0.3, O_? = 0.7, z = -0.001.
 
 $$H(z=-0.001) = 70.0 \times \sqrt{0.3 \times (0.999)^3 + 0.7}$$
 
@@ -236,7 +236,7 @@ $$= 70.0 \times \sqrt{0.3 \times 0.997003 + 0.7} = 70.0 \times \sqrt{0.9991}$$
 
 $$= 70.0 \times 0.99955 = 69.969 \text{ km/s/Mpc}$$
 
-In SI units: H_SI = 69.969 Ã— 10Â³ / 3.086Ã—10Â²Â² = **2.269Ã—10â»Â¹â¸ sâ»Â¹**
+In SI units: H_SI = 69.969 × 10³ / 3.086×10²² = **2.269×10?¹8 s?¹**
 
 ### 2.2 UQFF Expansion Term
 
@@ -247,9 +247,9 @@ $$g_{\text{expansion}}(r, t) = \frac{G \cdot M}{r^2} \cdot H(z) \cdot t$$
 This represents the gravitational effect of cosmological expansion flow coupling into UQFF buoyancy at timescale t.
 
 **Numerical values for Andromeda:**
-- g_base = GÃ—M/rÂ² = 6.674Ã—10â»Â¹Â¹ Ã— 1.989Ã—10â´Â² / (1.04Ã—10Â²Â¹)Â² = **1.227Ã—10â»Â¹â° m/sÂ²**
-- At t = 1 Gyr (3.156Ã—10Â¹â¶ s): g_expansion = 1.227Ã—10â»Â¹â° Ã— 2.269Ã—10â»Â¹â¸ Ã— 3.156Ã—10Â¹â¶ = **8.79Ã—10â»Â¹Â³ m/sÂ²**
-- At t = t_Hubble (4.352Ã—10Â¹â· s): g_expansion = 1.227Ã—10â»Â¹â° Ã— 0.987 = **1.211Ã—10â»Â¹â° m/sÂ²**
+- g_base = G×M/r² = 6.674×10?¹¹ × 1.989×104² / (1.04×10²¹)² = **1.227×10?¹° m/s²**
+- At t = 1 Gyr (3.156×10¹6 s): g_expansion = 1.227×10?¹° × 2.269×10?¹8 × 3.156×10¹6 = **8.79×10?¹³ m/s²**
+- At t = t_Hubble (4.352×10¹7 s): g_expansion = 1.227×10?¹° × 0.987 = **1.211×10?¹° m/s²**
 
 ---
 
@@ -259,48 +259,48 @@ This represents the gravitational effect of cosmological expansion flow coupling
 
 $$H_{\text{UQFF}} = H(z) \times t_H$$
 
-where t_H = 4.352Ã—10Â¹â· s (Hubble time â‰ˆ 13.8 Gyr).
+where t_H = 4.352×10¹7 s (Hubble time ˜ 13.8 Gyr).
 
-**For Andromeda (z = âˆ’0.001):**
+**For Andromeda (z = -0.001):**
 
 $$H_{\text{UQFF}} = 2.269 \times 10^{-18} \times 4.352 \times 10^{17} = \mathbf{0.987}$$
 
 ### 3.2 Near-Unity Discovery
 
-H_UQFF â‰ˆ 0.987 â‰ˆ **1** is a remarkable result. It means:
+H_UQFF ˜ 0.987 ˜ **1** is a remarkable result. It means:
 
-> Over a Hubble timescale, the Friedmann expansion coupling adds an amount of gravitational acceleration equal to **98.7% of the base Newtonian term** â€” nearly doubling g_base.
+> Over a Hubble timescale, the Friedmann expansion coupling adds an amount of gravitational acceleration equal to **98.7% of the base Newtonian term** — nearly doubling g_base.
 
-This near-unity value is not coincidental. In a flat Î›CDM universe (Î©_m + Î©_Î› = 1):
+This near-unity value is not coincidental. In a flat ?CDM universe (O_m + O_? = 1):
 
 $$H_{\text{UQFF}} = H_0 \times t_H \approx 1.0$$
 
-because Hâ‚€ Ã— t_H is the dimensionless Hubble number â‰ˆ 0.96â€“1.0 for observationally consistent Hâ‚€.
+because H0 × t_H is the dimensionless Hubble number ˜ 0.96–1.0 for observationally consistent H0.
 
-**New UQFF Constant:** H_UQFF = H(z)Ã—t_H â€” **Friedmann-UQFF Near-Unity Resonance Coefficient**
+**New UQFF Constant:** H_UQFF = H(z)×t_H — **Friedmann-UQFF Near-Unity Resonance Coefficient**
 
 | Parameter | Value |
 |---|---|
-| Hâ‚€ | 70.0 km/s/Mpc |
-| Î©_m | 0.3 |
-| Î©_Î› | 0.7 |
-| z (Andromeda) | âˆ’0.001 |
-| H(z) | 2.269Ã—10â»Â¹â¸ sâ»Â¹ |
-| t_H | 4.352Ã—10Â¹â· s |
+| H0 | 70.0 km/s/Mpc |
+| O_m | 0.3 |
+| O_? | 0.7 |
+| z (Andromeda) | -0.001 |
+| H(z) | 2.269×10?¹8 s?¹ |
+| t_H | 4.352×10¹7 s |
 | **H_UQFF** | **0.987** (~1) |
-| g_expansion(t_H) | 1.211Ã—10â»Â¹â° m/sÂ² |
-| g_base | 1.227Ã—10â»Â¹â° m/sÂ² |
+| g_expansion(t_H) | 1.211×10?¹° m/s² |
+| g_base | 1.227×10?¹° m/s² |
 | Ratio g_exp/g_base | 98.7% |
 
 ### 3.3 Blueshift Sensitivity
 
-For blueshift z < 0: H(z) is slightly **lower** than Hâ‚€ (matter term Î©_mÃ—(1+z)Â³ is suppressed below Î©_m for z < 0), meaning:
+For blueshift z < 0: H(z) is slightly **lower** than H0 (matter term O_m×(1+z)³ is suppressed below O_m for z < 0), meaning:
 
 $$H(z < 0) < H_0 \Rightarrow H_{\text{UQFF}}(z < 0) < H_{\text{UQFF}}(z=0)$$
 
-For Andromeda (z = âˆ’0.001): H_UQFF = 0.987 vs flat-universe H_UQFFâ‚€ = 0.9985. The blueshift suppresses H_UQFF by 0.15%.
+For Andromeda (z = -0.001): H_UQFF = 0.987 vs flat-universe H_UQFF0 = 0.9985. The blueshift suppresses H_UQFF by 0.15%.
 
-This is the inverse of the redshift behaviour (z > 0 â†’ H(z) > Hâ‚€ for moderate z), making Andromeda's approaching trajectory a unique laboratory for probing blueshift Friedmann-UQFF coupling.
+This is the inverse of the redshift behaviour (z > 0 ? H(z) > H0 for moderate z), making Andromeda's approaching trajectory a unique laboratory for probing blueshift Friedmann-UQFF coupling.
 
 ---
 
@@ -310,7 +310,7 @@ A second minor additive term captures ISM dust ram-pressure drag:
 
 $$a_{\text{dust}} = \frac{\rho_{\text{dust}} \cdot v_{\text{orbit}}^2}{c^2 \cdot \rho_{\text{mean}}} \cdot g_{\text{base}}$$
 
-where Ï_mean = M/V_fluid = 1.989Ã—10â´Â² / 10â¶â° = 1.989Ã—10â»Â¹â¸ kg/mÂ³.
+where ?_mean = M/V_fluid = 1.989×104² / 106° = 1.989×10?¹8 kg/m³.
 
 **Numerical value for Andromeda:**
 $$a_{\text{dust}} = \frac{10^{-20} \times (2.5 \times 10^5)^2}{(2.998 \times 10^8)^2 \times 1.989 \times 10^{-18}} \times 1.227 \times 10^{-10}$$
@@ -330,50 +330,50 @@ When M is updated via `updateVariable("M", value)`, the derived quantities are n
 $$M_{\text{visible}} = (1 - f_{\text{DM}}) \times M$$
 $$M_{\text{DM,mass}} = f_{\text{DM}} \times M$$
 
-For Andromeda defaults: M = 1.989Ã—10â´Â² kg, f_DM = 0.80:
-- M_visible = 0.20 Ã— 1.989Ã—10â´Â² = **3.978Ã—10â´Â¹ kg** (20% visible baryons)
-- M_DM_mass = 0.80 Ã— 1.989Ã—10â´Â² = **1.591Ã—10â´Â² kg** (80% dark matter)
+For Andromeda defaults: M = 1.989×104² kg, f_DM = 0.80:
+- M_visible = 0.20 × 1.989×104² = **3.978×104¹ kg** (20% visible baryons)
+- M_DM_mass = 0.80 × 1.989×104² = **1.591×104² kg** (80% dark matter)
 
-These are tracked in `updateCache()` and exported via `exportState()` (params 26â€“32), providing explicit bookkeeping of the M31 baryonic/DM split consistent with PAPER_275.
+These are tracked in `updateCache()` and exported via `exportState()` (params 26–32), providing explicit bookkeeping of the M31 baryonic/DM split consistent with PAPER_275.
 
 ---
 
 ## 6. Updated ANDROMEDA_UQFF_MODULE.cpp g_total
 
-The full UQFF 2.0 equation for Andromeda with all PAPER_273â€“276 terms:
+The full UQFF 2.0 equation for Andromeda with all PAPER_273–276 terms:
 
 $$g_{\text{total}}(r, t) = \left[ g_{\text{grav}} + U_{g,\text{sum}}^{(26)} + \Lambda\text{-term} + g_Q + g_L + g_{\text{fluid}} + F_{\text{res}}(\omega_{\text{HI}}) + g_{\text{DM}} + g_{\text{expansion}} + a_{\text{dust}} \right] \times \kappa_{\text{approach}}$$
 
 **Term magnitudes at t=0 (current epoch):**
 
-| Term | Value (m/sÂ²) | Paper |
+| Term | Value (m/s²) | Paper |
 |---|---|---|
-| g_grav = GÂ·M/rÂ² | 1.227Ã—10â»Â¹â° | baseline |
-| Ug_sum (26 layers) | 6.380Ã—10â»â¹ | 26-layer Triadic |
-| Î›-term | 2.998Ã—10â»Â³â¶ | cosmological |
-| g_quantum | ~2Ã—10â»Â²â¶ | HUP |
-| g_Lorentz | ~2Ã—10â»Â³â¶ | IGM EM |
-| g_fluid | ~8Ã—10â»Â²Â³ | IGM buoyancy |
-| F_res(Ï‰_HI) at t=0 | 1Ã—10â»Â¹Â² | PAPER_274 |
-| g_DM | 1.356Ã—10â»Â¹â° | PAPER_275 |
+| g_grav = G·M/r² | 1.227×10?¹° | baseline |
+| Ug_sum (26 layers) | 6.380×10?? | 26-layer Triadic |
+| ?-term | 2.998×10?³6 | cosmological |
+| g_quantum | ~2×10?²6 | HUP |
+| g_Lorentz | ~2×10?³6 | IGM EM |
+| g_fluid | ~8×10?²³ | IGM buoyancy |
+| F_res(?_HI) at t=0 | 1×10?¹² | PAPER_274 |
+| g_DM | 1.356×10?¹° | PAPER_275 |
 | g_expansion at t=0 | 0 | PAPER_276 |
-| a_dust | 4.29Ã—10â»Â¹â¹ | PAPER_276 |
-| Îº_approach | 1.001001 | PAPER_273 |
+| a_dust | 4.29×10?¹? | PAPER_276 |
+| ?_approach | 1.001001 | PAPER_273 |
 
-Note: g_expansion grows linearly with t, dominating over g_grav at t â‰¥ t_H.
+Note: g_expansion grows linearly with t, dominating over g_grav at t = t_H.
 
 ---
 
-## 7. exportState Update (25 â†’ 32 parameters)
+## 7. exportState Update (25 ? 32 parameters)
 
 Seven new parameters added to `exportState()`:
 1. `H0` = 70.0 km/s/Mpc
 2. `Omega_m` = 0.3
 3. `Omega_Lam` = 0.7
-4. `Mpc_to_m` = 3.086Ã—10Â²Â²
-5. `rho_dust` = 1Ã—10â»Â²â° kg/mÂ³
-6. `M_visible` = (1â€“f_DM)Ã—M
-7. `M_DM_mass` = f_DMÃ—M
+4. `Mpc_to_m` = 3.086×10²²
+5. `rho_dust` = 1×10?²° kg/m³
+6. `M_visible` = (1–f_DM)×M
+7. `M_DM_mass` = f_DM×M
 
 ---
 
@@ -381,17 +381,17 @@ Seven new parameters added to `exportState()`:
 
 **Three new UQFF enhancements for Andromeda (PAPER_276):**
 
-1. **Friedmann-UQFF Expansion Coupling**: g_expansion = g_base Ã— H(z) Ã— t. At t = t_H, adds 98.7% of g_base â€” near-gravitational doubling over cosmological time.
+1. **Friedmann-UQFF Expansion Coupling**: g_expansion = g_base × H(z) × t. At t = t_H, adds 98.7% of g_base — near-gravitational doubling over cosmological time.
 
-2. **H_UQFF = 0.987**: New UQFF constant (Friedmann-UQFF Near-Unity Resonance Coefficient). Near-unity reflects the fundamental relationship Hâ‚€ Ã— t_H â‰ˆ 1 in flat Î›CDM. Andromeda's blueshift (z = âˆ’0.001) makes H_UQFF 0.15% below flat-universe value â€” a blueshift Friedmann suppression.
+2. **H_UQFF = 0.987**: New UQFF constant (Friedmann-UQFF Near-Unity Resonance Coefficient). Near-unity reflects the fundamental relationship H0 × t_H ˜ 1 in flat ?CDM. Andromeda's blueshift (z = -0.001) makes H_UQFF 0.15% below flat-universe value — a blueshift Friedmann suppression.
 
-3. **M_visible/M_DM_mass cascade + dust drag**: Explicit DM split bookkeeping (updateCache) and ISM dust ram-pressure (a_dust â‰ˆ 4Ã—10â»Â¹â¹ m/sÂ²).
+3. **M_visible/M_DM_mass cascade + dust drag**: Explicit DM split bookkeeping (updateCache) and ISM dust ram-pressure (a_dust ˜ 4×10?¹? m/s²).
 
 ---
 
-**Watermark:** Â©2025-2026 Daniel T. Murphy, daniel.murphy00@gmail.com â€“ All Rights Reserved
+**Watermark:** ©2025-2026 Daniel T. Murphy, daniel.murphy00@gmail.com – All Rights Reserved
 .Groups[1].Value 
-## Andromeda Friedmann-UQFF Gravity Coupling: H(z)Ã—t Expansion Term and H_UQFF Near-Unity Resonance
+## Andromeda Friedmann-UQFF Gravity Coupling: H(z)×t Expansion Term and H_UQFF Near-Unity Resonance
 
 **Author:** Daniel T. Murphy  
 **Session:** 76 (March 2026)  
@@ -402,15 +402,15 @@ Seven new parameters added to `exportState()`:
 
 ## Abstract
 
-This paper introduces a new UQFF gravity term for the Andromeda Galaxy (M31): the **Friedmann-UQFF Expansion Coupling**, defined as g_expansion = (GÂ·M/rÂ²) Ã— H(z) Ã— t. For Andromeda's blueshift redshift z = âˆ’0.001, the Friedmann H(z) equals 69.969 km/s/Mpc = 2.269Ã—10â»Â¹â¸ sâ»Â¹. Evaluated at the Hubble timescale t = t_H = 4.352Ã—10Â¹â· s, the dimensionless Friedmann-UQFF Resonance Coefficient H_UQFF = H(z)Ã—t_H â‰ˆ **0.987** â€” a near-unity value representing gravitational doubling over cosmological time. This paper also introduces the M_visible/M_DM_mass cascade (explicit DM split tracking) and a minor ISM dust drag acceleration term. Together these constitute three additive UQFF 2.0 enhancements derived from the Andromeda module upgrade.
+This paper introduces a new UQFF gravity term for the Andromeda Galaxy (M31): the **Friedmann-UQFF Expansion Coupling**, defined as g_expansion = (G·M/r²) × H(z) × t. For Andromeda's blueshift redshift z = -0.001, the Friedmann H(z) equals 69.969 km/s/Mpc = 2.269×10?¹8 s?¹. Evaluated at the Hubble timescale t = t_H = 4.352×10¹7 s, the dimensionless Friedmann-UQFF Resonance Coefficient H_UQFF = H(z)×t_H ˜ **0.987** — a near-unity value representing gravitational doubling over cosmological time. This paper also introduces the M_visible/M_DM_mass cascade (explicit DM split tracking) and a minor ISM dust drag acceleration term. Together these constitute three additive UQFF 2.0 enhancements derived from the Andromeda module upgrade.
 
 ---
 
 ## 1. Background
 
-The UQFF framework computes total gravitational acceleration g_total(r,t) as a sum of Newtonian, Triadic (26-layer), cosmological, quantum, electromagnetic, fluid, resonant, and dark matter terms. PAPER_273â€“275 established the Andromeda-specific physics: blueshift approach amplifier Îº, HI 21-cm resonance, and DM 80/20 NFW partition.
+The UQFF framework computes total gravitational acceleration g_total(r,t) as a sum of Newtonian, Triadic (26-layer), cosmological, quantum, electromagnetic, fluid, resonant, and dark matter terms. PAPER_273–275 established the Andromeda-specific physics: blueshift approach amplifier ?, HI 21-cm resonance, and DM 80/20 NFW partition.
 
-The original Andromeda implementation (pre-Session 76) lacked a time-dependent expansion coupling that accounts for the Friedmann-Lemaitre cosmological evolution of Hubble parameter H(z). This is significant because over a Hubble timescale, H(z)Ã—t â‰ˆ 1 â€” implying that expansion-mediated gravitational coupling is of the same order as the base Newtonian term.
+The original Andromeda implementation (pre-Session 76) lacked a time-dependent expansion coupling that accounts for the Friedmann-Lemaitre cosmological evolution of Hubble parameter H(z). This is significant because over a Hubble timescale, H(z)×t ˜ 1 — implying that expansion-mediated gravitational coupling is of the same order as the base Newtonian term.
 
 ---
 
@@ -418,11 +418,11 @@ The original Andromeda implementation (pre-Session 76) lacked a time-dependent e
 
 ### 2.1 Friedmann Equation
 
-The Hubble parameter as a function of redshift in the standard Î›CDM cosmology:
+The Hubble parameter as a function of redshift in the standard ?CDM cosmology:
 
 $$H(z) = H_0 \sqrt{\Omega_m (1+z)^3 + \Omega_\Lambda}$$
 
-For Andromeda parameters: Hâ‚€ = 70.0 km/s/Mpc, Î©_m = 0.3, Î©_Î› = 0.7, z = âˆ’0.001.
+For Andromeda parameters: H0 = 70.0 km/s/Mpc, O_m = 0.3, O_? = 0.7, z = -0.001.
 
 $$H(z=-0.001) = 70.0 \times \sqrt{0.3 \times (0.999)^3 + 0.7}$$
 
@@ -430,7 +430,7 @@ $$= 70.0 \times \sqrt{0.3 \times 0.997003 + 0.7} = 70.0 \times \sqrt{0.9991}$$
 
 $$= 70.0 \times 0.99955 = 69.969 \text{ km/s/Mpc}$$
 
-In SI units: H_SI = 69.969 Ã— 10Â³ / 3.086Ã—10Â²Â² = **2.269Ã—10â»Â¹â¸ sâ»Â¹**
+In SI units: H_SI = 69.969 × 10³ / 3.086×10²² = **2.269×10?¹8 s?¹**
 
 ### 2.2 UQFF Expansion Term
 
@@ -441,9 +441,9 @@ $$g_{\text{expansion}}(r, t) = \frac{G \cdot M}{r^2} \cdot H(z) \cdot t$$
 This represents the gravitational effect of cosmological expansion flow coupling into UQFF buoyancy at timescale t.
 
 **Numerical values for Andromeda:**
-- g_base = GÃ—M/rÂ² = 6.674Ã—10â»Â¹Â¹ Ã— 1.989Ã—10â´Â² / (1.04Ã—10Â²Â¹)Â² = **1.227Ã—10â»Â¹â° m/sÂ²**
-- At t = 1 Gyr (3.156Ã—10Â¹â¶ s): g_expansion = 1.227Ã—10â»Â¹â° Ã— 2.269Ã—10â»Â¹â¸ Ã— 3.156Ã—10Â¹â¶ = **8.79Ã—10â»Â¹Â³ m/sÂ²**
-- At t = t_Hubble (4.352Ã—10Â¹â· s): g_expansion = 1.227Ã—10â»Â¹â° Ã— 0.987 = **1.211Ã—10â»Â¹â° m/sÂ²**
+- g_base = G×M/r² = 6.674×10?¹¹ × 1.989×104² / (1.04×10²¹)² = **1.227×10?¹° m/s²**
+- At t = 1 Gyr (3.156×10¹6 s): g_expansion = 1.227×10?¹° × 2.269×10?¹8 × 3.156×10¹6 = **8.79×10?¹³ m/s²**
+- At t = t_Hubble (4.352×10¹7 s): g_expansion = 1.227×10?¹° × 0.987 = **1.211×10?¹° m/s²**
 
 ---
 
@@ -453,48 +453,48 @@ This represents the gravitational effect of cosmological expansion flow coupling
 
 $$H_{\text{UQFF}} = H(z) \times t_H$$
 
-where t_H = 4.352Ã—10Â¹â· s (Hubble time â‰ˆ 13.8 Gyr).
+where t_H = 4.352×10¹7 s (Hubble time ˜ 13.8 Gyr).
 
-**For Andromeda (z = âˆ’0.001):**
+**For Andromeda (z = -0.001):**
 
 $$H_{\text{UQFF}} = 2.269 \times 10^{-18} \times 4.352 \times 10^{17} = \mathbf{0.987}$$
 
 ### 3.2 Near-Unity Discovery
 
-H_UQFF â‰ˆ 0.987 â‰ˆ **1** is a remarkable result. It means:
+H_UQFF ˜ 0.987 ˜ **1** is a remarkable result. It means:
 
-> Over a Hubble timescale, the Friedmann expansion coupling adds an amount of gravitational acceleration equal to **98.7% of the base Newtonian term** â€” nearly doubling g_base.
+> Over a Hubble timescale, the Friedmann expansion coupling adds an amount of gravitational acceleration equal to **98.7% of the base Newtonian term** — nearly doubling g_base.
 
-This near-unity value is not coincidental. In a flat Î›CDM universe (Î©_m + Î©_Î› = 1):
+This near-unity value is not coincidental. In a flat ?CDM universe (O_m + O_? = 1):
 
 $$H_{\text{UQFF}} = H_0 \times t_H \approx 1.0$$
 
-because Hâ‚€ Ã— t_H is the dimensionless Hubble number â‰ˆ 0.96â€“1.0 for observationally consistent Hâ‚€.
+because H0 × t_H is the dimensionless Hubble number ˜ 0.96–1.0 for observationally consistent H0.
 
-**New UQFF Constant:** H_UQFF = H(z)Ã—t_H â€” **Friedmann-UQFF Near-Unity Resonance Coefficient**
+**New UQFF Constant:** H_UQFF = H(z)×t_H — **Friedmann-UQFF Near-Unity Resonance Coefficient**
 
 | Parameter | Value |
 |---|---|
-| Hâ‚€ | 70.0 km/s/Mpc |
-| Î©_m | 0.3 |
-| Î©_Î› | 0.7 |
-| z (Andromeda) | âˆ’0.001 |
-| H(z) | 2.269Ã—10â»Â¹â¸ sâ»Â¹ |
-| t_H | 4.352Ã—10Â¹â· s |
+| H0 | 70.0 km/s/Mpc |
+| O_m | 0.3 |
+| O_? | 0.7 |
+| z (Andromeda) | -0.001 |
+| H(z) | 2.269×10?¹8 s?¹ |
+| t_H | 4.352×10¹7 s |
 | **H_UQFF** | **0.987** (~1) |
-| g_expansion(t_H) | 1.211Ã—10â»Â¹â° m/sÂ² |
-| g_base | 1.227Ã—10â»Â¹â° m/sÂ² |
+| g_expansion(t_H) | 1.211×10?¹° m/s² |
+| g_base | 1.227×10?¹° m/s² |
 | Ratio g_exp/g_base | 98.7% |
 
 ### 3.3 Blueshift Sensitivity
 
-For blueshift z < 0: H(z) is slightly **lower** than Hâ‚€ (matter term Î©_mÃ—(1+z)Â³ is suppressed below Î©_m for z < 0), meaning:
+For blueshift z < 0: H(z) is slightly **lower** than H0 (matter term O_m×(1+z)³ is suppressed below O_m for z < 0), meaning:
 
 $$H(z < 0) < H_0 \Rightarrow H_{\text{UQFF}}(z < 0) < H_{\text{UQFF}}(z=0)$$
 
-For Andromeda (z = âˆ’0.001): H_UQFF = 0.987 vs flat-universe H_UQFFâ‚€ = 0.9985. The blueshift suppresses H_UQFF by 0.15%.
+For Andromeda (z = -0.001): H_UQFF = 0.987 vs flat-universe H_UQFF0 = 0.9985. The blueshift suppresses H_UQFF by 0.15%.
 
-This is the inverse of the redshift behaviour (z > 0 â†’ H(z) > Hâ‚€ for moderate z), making Andromeda's approaching trajectory a unique laboratory for probing blueshift Friedmann-UQFF coupling.
+This is the inverse of the redshift behaviour (z > 0 ? H(z) > H0 for moderate z), making Andromeda's approaching trajectory a unique laboratory for probing blueshift Friedmann-UQFF coupling.
 
 ---
 
@@ -504,7 +504,7 @@ A second minor additive term captures ISM dust ram-pressure drag:
 
 $$a_{\text{dust}} = \frac{\rho_{\text{dust}} \cdot v_{\text{orbit}}^2}{c^2 \cdot \rho_{\text{mean}}} \cdot g_{\text{base}}$$
 
-where Ï_mean = M/V_fluid = 1.989Ã—10â´Â² / 10â¶â° = 1.989Ã—10â»Â¹â¸ kg/mÂ³.
+where ?_mean = M/V_fluid = 1.989×104² / 106° = 1.989×10?¹8 kg/m³.
 
 **Numerical value for Andromeda:**
 $$a_{\text{dust}} = \frac{10^{-20} \times (2.5 \times 10^5)^2}{(2.998 \times 10^8)^2 \times 1.989 \times 10^{-18}} \times 1.227 \times 10^{-10}$$
@@ -524,50 +524,50 @@ When M is updated via `updateVariable("M", value)`, the derived quantities are n
 $$M_{\text{visible}} = (1 - f_{\text{DM}}) \times M$$
 $$M_{\text{DM,mass}} = f_{\text{DM}} \times M$$
 
-For Andromeda defaults: M = 1.989Ã—10â´Â² kg, f_DM = 0.80:
-- M_visible = 0.20 Ã— 1.989Ã—10â´Â² = **3.978Ã—10â´Â¹ kg** (20% visible baryons)
-- M_DM_mass = 0.80 Ã— 1.989Ã—10â´Â² = **1.591Ã—10â´Â² kg** (80% dark matter)
+For Andromeda defaults: M = 1.989×104² kg, f_DM = 0.80:
+- M_visible = 0.20 × 1.989×104² = **3.978×104¹ kg** (20% visible baryons)
+- M_DM_mass = 0.80 × 1.989×104² = **1.591×104² kg** (80% dark matter)
 
-These are tracked in `updateCache()` and exported via `exportState()` (params 26â€“32), providing explicit bookkeeping of the M31 baryonic/DM split consistent with PAPER_275.
+These are tracked in `updateCache()` and exported via `exportState()` (params 26–32), providing explicit bookkeeping of the M31 baryonic/DM split consistent with PAPER_275.
 
 ---
 
 ## 6. Updated ANDROMEDA_UQFF_MODULE.cpp g_total
 
-The full UQFF 2.0 equation for Andromeda with all PAPER_273â€“276 terms:
+The full UQFF 2.0 equation for Andromeda with all PAPER_273–276 terms:
 
 $$g_{\text{total}}(r, t) = \left[ g_{\text{grav}} + U_{g,\text{sum}}^{(26)} + \Lambda\text{-term} + g_Q + g_L + g_{\text{fluid}} + F_{\text{res}}(\omega_{\text{HI}}) + g_{\text{DM}} + g_{\text{expansion}} + a_{\text{dust}} \right] \times \kappa_{\text{approach}}$$
 
 **Term magnitudes at t=0 (current epoch):**
 
-| Term | Value (m/sÂ²) | Paper |
+| Term | Value (m/s²) | Paper |
 |---|---|---|
-| g_grav = GÂ·M/rÂ² | 1.227Ã—10â»Â¹â° | baseline |
-| Ug_sum (26 layers) | 6.380Ã—10â»â¹ | 26-layer Triadic |
-| Î›-term | 2.998Ã—10â»Â³â¶ | cosmological |
-| g_quantum | ~2Ã—10â»Â²â¶ | HUP |
-| g_Lorentz | ~2Ã—10â»Â³â¶ | IGM EM |
-| g_fluid | ~8Ã—10â»Â²Â³ | IGM buoyancy |
-| F_res(Ï‰_HI) at t=0 | 1Ã—10â»Â¹Â² | PAPER_274 |
-| g_DM | 1.356Ã—10â»Â¹â° | PAPER_275 |
+| g_grav = G·M/r² | 1.227×10?¹° | baseline |
+| Ug_sum (26 layers) | 6.380×10?? | 26-layer Triadic |
+| ?-term | 2.998×10?³6 | cosmological |
+| g_quantum | ~2×10?²6 | HUP |
+| g_Lorentz | ~2×10?³6 | IGM EM |
+| g_fluid | ~8×10?²³ | IGM buoyancy |
+| F_res(?_HI) at t=0 | 1×10?¹² | PAPER_274 |
+| g_DM | 1.356×10?¹° | PAPER_275 |
 | g_expansion at t=0 | 0 | PAPER_276 |
-| a_dust | 4.29Ã—10â»Â¹â¹ | PAPER_276 |
-| Îº_approach | 1.001001 | PAPER_273 |
+| a_dust | 4.29×10?¹? | PAPER_276 |
+| ?_approach | 1.001001 | PAPER_273 |
 
-Note: g_expansion grows linearly with t, dominating over g_grav at t â‰¥ t_H.
+Note: g_expansion grows linearly with t, dominating over g_grav at t = t_H.
 
 ---
 
-## 7. exportState Update (25 â†’ 32 parameters)
+## 7. exportState Update (25 ? 32 parameters)
 
 Seven new parameters added to `exportState()`:
 1. `H0` = 70.0 km/s/Mpc
 2. `Omega_m` = 0.3
 3. `Omega_Lam` = 0.7
-4. `Mpc_to_m` = 3.086Ã—10Â²Â²
-5. `rho_dust` = 1Ã—10â»Â²â° kg/mÂ³
-6. `M_visible` = (1â€“f_DM)Ã—M
-7. `M_DM_mass` = f_DMÃ—M
+4. `Mpc_to_m` = 3.086×10²²
+5. `rho_dust` = 1×10?²° kg/m³
+6. `M_visible` = (1–f_DM)×M
+7. `M_DM_mass` = f_DM×M
 
 ---
 
@@ -575,19 +575,19 @@ Seven new parameters added to `exportState()`:
 
 **Three new UQFF enhancements for Andromeda (PAPER_276):**
 
-1. **Friedmann-UQFF Expansion Coupling**: g_expansion = g_base Ã— H(z) Ã— t. At t = t_H, adds 98.7% of g_base â€” near-gravitational doubling over cosmological time.
+1. **Friedmann-UQFF Expansion Coupling**: g_expansion = g_base × H(z) × t. At t = t_H, adds 98.7% of g_base — near-gravitational doubling over cosmological time.
 
-2. **H_UQFF = 0.987**: New UQFF constant (Friedmann-UQFF Near-Unity Resonance Coefficient). Near-unity reflects the fundamental relationship Hâ‚€ Ã— t_H â‰ˆ 1 in flat Î›CDM. Andromeda's blueshift (z = âˆ’0.001) makes H_UQFF 0.15% below flat-universe value â€” a blueshift Friedmann suppression.
+2. **H_UQFF = 0.987**: New UQFF constant (Friedmann-UQFF Near-Unity Resonance Coefficient). Near-unity reflects the fundamental relationship H0 × t_H ˜ 1 in flat ?CDM. Andromeda's blueshift (z = -0.001) makes H_UQFF 0.15% below flat-universe value — a blueshift Friedmann suppression.
 
-3. **M_visible/M_DM_mass cascade + dust drag**: Explicit DM split bookkeeping (updateCache) and ISM dust ram-pressure (a_dust â‰ˆ 4Ã—10â»Â¹â¹ m/sÂ²).
+3. **M_visible/M_DM_mass cascade + dust drag**: Explicit DM split bookkeeping (updateCache) and ISM dust ram-pressure (a_dust ˜ 4×10?¹? m/s²).
 
 ---
 
-**Watermark:** Â©2025-2026 Daniel T. Murphy, daniel.murphy00@gmail.com â€“ All Rights Reserved
+**Watermark:** ©2025-2026 Daniel T. Murphy, daniel.murphy00@gmail.com – All Rights Reserved
 .Groups[1].Value
     "PAPER_{0:D3}" -f $n
   
-## Andromeda Friedmann-UQFF Gravity Coupling: H(z)Ã—t Expansion Term and H_UQFF Near-Unity Resonance
+## Andromeda Friedmann-UQFF Gravity Coupling: H(z)×t Expansion Term and H_UQFF Near-Unity Resonance
 
 **Author:** Daniel T. Murphy  
 **Session:** 76 (March 2026)  
@@ -598,15 +598,15 @@ Seven new parameters added to `exportState()`:
 
 ## Abstract
 
-This paper introduces a new UQFF gravity term for the Andromeda Galaxy (M31): the **Friedmann-UQFF Expansion Coupling**, defined as g_expansion = (GÂ·M/rÂ²) Ã— H(z) Ã— t. For Andromeda's blueshift redshift z = âˆ’0.001, the Friedmann H(z) equals 69.969 km/s/Mpc = 2.269Ã—10â»Â¹â¸ sâ»Â¹. Evaluated at the Hubble timescale t = t_H = 4.352Ã—10Â¹â· s, the dimensionless Friedmann-UQFF Resonance Coefficient H_UQFF = H(z)Ã—t_H â‰ˆ **0.987** â€” a near-unity value representing gravitational doubling over cosmological time. This paper also introduces the M_visible/M_DM_mass cascade (explicit DM split tracking) and a minor ISM dust drag acceleration term. Together these constitute three additive UQFF 2.0 enhancements derived from the Andromeda module upgrade.
+This paper introduces a new UQFF gravity term for the Andromeda Galaxy (M31): the **Friedmann-UQFF Expansion Coupling**, defined as g_expansion = (G·M/r²) × H(z) × t. For Andromeda's blueshift redshift z = -0.001, the Friedmann H(z) equals 69.969 km/s/Mpc = 2.269×10?¹8 s?¹. Evaluated at the Hubble timescale t = t_H = 4.352×10¹7 s, the dimensionless Friedmann-UQFF Resonance Coefficient H_UQFF = H(z)×t_H ˜ **0.987** — a near-unity value representing gravitational doubling over cosmological time. This paper also introduces the M_visible/M_DM_mass cascade (explicit DM split tracking) and a minor ISM dust drag acceleration term. Together these constitute three additive UQFF 2.0 enhancements derived from the Andromeda module upgrade.
 
 ---
 
 ## 1. Background
 
-The UQFF framework computes total gravitational acceleration g_total(r,t) as a sum of Newtonian, Triadic (26-layer), cosmological, quantum, electromagnetic, fluid, resonant, and dark matter terms. PAPER_273â€“275 established the Andromeda-specific physics: blueshift approach amplifier Îº, HI 21-cm resonance, and DM 80/20 NFW partition.
+The UQFF framework computes total gravitational acceleration g_total(r,t) as a sum of Newtonian, Triadic (26-layer), cosmological, quantum, electromagnetic, fluid, resonant, and dark matter terms. PAPER_273–275 established the Andromeda-specific physics: blueshift approach amplifier ?, HI 21-cm resonance, and DM 80/20 NFW partition.
 
-The original Andromeda implementation (pre-Session 76) lacked a time-dependent expansion coupling that accounts for the Friedmann-Lemaitre cosmological evolution of Hubble parameter H(z). This is significant because over a Hubble timescale, H(z)Ã—t â‰ˆ 1 â€” implying that expansion-mediated gravitational coupling is of the same order as the base Newtonian term.
+The original Andromeda implementation (pre-Session 76) lacked a time-dependent expansion coupling that accounts for the Friedmann-Lemaitre cosmological evolution of Hubble parameter H(z). This is significant because over a Hubble timescale, H(z)×t ˜ 1 — implying that expansion-mediated gravitational coupling is of the same order as the base Newtonian term.
 
 ---
 
@@ -614,11 +614,11 @@ The original Andromeda implementation (pre-Session 76) lacked a time-dependent e
 
 ### 2.1 Friedmann Equation
 
-The Hubble parameter as a function of redshift in the standard Î›CDM cosmology:
+The Hubble parameter as a function of redshift in the standard ?CDM cosmology:
 
 $$H(z) = H_0 \sqrt{\Omega_m (1+z)^3 + \Omega_\Lambda}$$
 
-For Andromeda parameters: Hâ‚€ = 70.0 km/s/Mpc, Î©_m = 0.3, Î©_Î› = 0.7, z = âˆ’0.001.
+For Andromeda parameters: H0 = 70.0 km/s/Mpc, O_m = 0.3, O_? = 0.7, z = -0.001.
 
 $$H(z=-0.001) = 70.0 \times \sqrt{0.3 \times (0.999)^3 + 0.7}$$
 
@@ -626,7 +626,7 @@ $$= 70.0 \times \sqrt{0.3 \times 0.997003 + 0.7} = 70.0 \times \sqrt{0.9991}$$
 
 $$= 70.0 \times 0.99955 = 69.969 \text{ km/s/Mpc}$$
 
-In SI units: H_SI = 69.969 Ã— 10Â³ / 3.086Ã—10Â²Â² = **2.269Ã—10â»Â¹â¸ sâ»Â¹**
+In SI units: H_SI = 69.969 × 10³ / 3.086×10²² = **2.269×10?¹8 s?¹**
 
 ### 2.2 UQFF Expansion Term
 
@@ -637,9 +637,9 @@ $$g_{\text{expansion}}(r, t) = \frac{G \cdot M}{r^2} \cdot H(z) \cdot t$$
 This represents the gravitational effect of cosmological expansion flow coupling into UQFF buoyancy at timescale t.
 
 **Numerical values for Andromeda:**
-- g_base = GÃ—M/rÂ² = 6.674Ã—10â»Â¹Â¹ Ã— 1.989Ã—10â´Â² / (1.04Ã—10Â²Â¹)Â² = **1.227Ã—10â»Â¹â° m/sÂ²**
-- At t = 1 Gyr (3.156Ã—10Â¹â¶ s): g_expansion = 1.227Ã—10â»Â¹â° Ã— 2.269Ã—10â»Â¹â¸ Ã— 3.156Ã—10Â¹â¶ = **8.79Ã—10â»Â¹Â³ m/sÂ²**
-- At t = t_Hubble (4.352Ã—10Â¹â· s): g_expansion = 1.227Ã—10â»Â¹â° Ã— 0.987 = **1.211Ã—10â»Â¹â° m/sÂ²**
+- g_base = G×M/r² = 6.674×10?¹¹ × 1.989×104² / (1.04×10²¹)² = **1.227×10?¹° m/s²**
+- At t = 1 Gyr (3.156×10¹6 s): g_expansion = 1.227×10?¹° × 2.269×10?¹8 × 3.156×10¹6 = **8.79×10?¹³ m/s²**
+- At t = t_Hubble (4.352×10¹7 s): g_expansion = 1.227×10?¹° × 0.987 = **1.211×10?¹° m/s²**
 
 ---
 
@@ -649,48 +649,48 @@ This represents the gravitational effect of cosmological expansion flow coupling
 
 $$H_{\text{UQFF}} = H(z) \times t_H$$
 
-where t_H = 4.352Ã—10Â¹â· s (Hubble time â‰ˆ 13.8 Gyr).
+where t_H = 4.352×10¹7 s (Hubble time ˜ 13.8 Gyr).
 
-**For Andromeda (z = âˆ’0.001):**
+**For Andromeda (z = -0.001):**
 
 $$H_{\text{UQFF}} = 2.269 \times 10^{-18} \times 4.352 \times 10^{17} = \mathbf{0.987}$$
 
 ### 3.2 Near-Unity Discovery
 
-H_UQFF â‰ˆ 0.987 â‰ˆ **1** is a remarkable result. It means:
+H_UQFF ˜ 0.987 ˜ **1** is a remarkable result. It means:
 
-> Over a Hubble timescale, the Friedmann expansion coupling adds an amount of gravitational acceleration equal to **98.7% of the base Newtonian term** â€” nearly doubling g_base.
+> Over a Hubble timescale, the Friedmann expansion coupling adds an amount of gravitational acceleration equal to **98.7% of the base Newtonian term** — nearly doubling g_base.
 
-This near-unity value is not coincidental. In a flat Î›CDM universe (Î©_m + Î©_Î› = 1):
+This near-unity value is not coincidental. In a flat ?CDM universe (O_m + O_? = 1):
 
 $$H_{\text{UQFF}} = H_0 \times t_H \approx 1.0$$
 
-because Hâ‚€ Ã— t_H is the dimensionless Hubble number â‰ˆ 0.96â€“1.0 for observationally consistent Hâ‚€.
+because H0 × t_H is the dimensionless Hubble number ˜ 0.96–1.0 for observationally consistent H0.
 
-**New UQFF Constant:** H_UQFF = H(z)Ã—t_H â€” **Friedmann-UQFF Near-Unity Resonance Coefficient**
+**New UQFF Constant:** H_UQFF = H(z)×t_H — **Friedmann-UQFF Near-Unity Resonance Coefficient**
 
 | Parameter | Value |
 |---|---|
-| Hâ‚€ | 70.0 km/s/Mpc |
-| Î©_m | 0.3 |
-| Î©_Î› | 0.7 |
-| z (Andromeda) | âˆ’0.001 |
-| H(z) | 2.269Ã—10â»Â¹â¸ sâ»Â¹ |
-| t_H | 4.352Ã—10Â¹â· s |
+| H0 | 70.0 km/s/Mpc |
+| O_m | 0.3 |
+| O_? | 0.7 |
+| z (Andromeda) | -0.001 |
+| H(z) | 2.269×10?¹8 s?¹ |
+| t_H | 4.352×10¹7 s |
 | **H_UQFF** | **0.987** (~1) |
-| g_expansion(t_H) | 1.211Ã—10â»Â¹â° m/sÂ² |
-| g_base | 1.227Ã—10â»Â¹â° m/sÂ² |
+| g_expansion(t_H) | 1.211×10?¹° m/s² |
+| g_base | 1.227×10?¹° m/s² |
 | Ratio g_exp/g_base | 98.7% |
 
 ### 3.3 Blueshift Sensitivity
 
-For blueshift z < 0: H(z) is slightly **lower** than Hâ‚€ (matter term Î©_mÃ—(1+z)Â³ is suppressed below Î©_m for z < 0), meaning:
+For blueshift z < 0: H(z) is slightly **lower** than H0 (matter term O_m×(1+z)³ is suppressed below O_m for z < 0), meaning:
 
 $$H(z < 0) < H_0 \Rightarrow H_{\text{UQFF}}(z < 0) < H_{\text{UQFF}}(z=0)$$
 
-For Andromeda (z = âˆ’0.001): H_UQFF = 0.987 vs flat-universe H_UQFFâ‚€ = 0.9985. The blueshift suppresses H_UQFF by 0.15%.
+For Andromeda (z = -0.001): H_UQFF = 0.987 vs flat-universe H_UQFF0 = 0.9985. The blueshift suppresses H_UQFF by 0.15%.
 
-This is the inverse of the redshift behaviour (z > 0 â†’ H(z) > Hâ‚€ for moderate z), making Andromeda's approaching trajectory a unique laboratory for probing blueshift Friedmann-UQFF coupling.
+This is the inverse of the redshift behaviour (z > 0 ? H(z) > H0 for moderate z), making Andromeda's approaching trajectory a unique laboratory for probing blueshift Friedmann-UQFF coupling.
 
 ---
 
@@ -700,7 +700,7 @@ A second minor additive term captures ISM dust ram-pressure drag:
 
 $$a_{\text{dust}} = \frac{\rho_{\text{dust}} \cdot v_{\text{orbit}}^2}{c^2 \cdot \rho_{\text{mean}}} \cdot g_{\text{base}}$$
 
-where Ï_mean = M/V_fluid = 1.989Ã—10â´Â² / 10â¶â° = 1.989Ã—10â»Â¹â¸ kg/mÂ³.
+where ?_mean = M/V_fluid = 1.989×104² / 106° = 1.989×10?¹8 kg/m³.
 
 **Numerical value for Andromeda:**
 $$a_{\text{dust}} = \frac{10^{-20} \times (2.5 \times 10^5)^2}{(2.998 \times 10^8)^2 \times 1.989 \times 10^{-18}} \times 1.227 \times 10^{-10}$$
@@ -720,50 +720,50 @@ When M is updated via `updateVariable("M", value)`, the derived quantities are n
 $$M_{\text{visible}} = (1 - f_{\text{DM}}) \times M$$
 $$M_{\text{DM,mass}} = f_{\text{DM}} \times M$$
 
-For Andromeda defaults: M = 1.989Ã—10â´Â² kg, f_DM = 0.80:
-- M_visible = 0.20 Ã— 1.989Ã—10â´Â² = **3.978Ã—10â´Â¹ kg** (20% visible baryons)
-- M_DM_mass = 0.80 Ã— 1.989Ã—10â´Â² = **1.591Ã—10â´Â² kg** (80% dark matter)
+For Andromeda defaults: M = 1.989×104² kg, f_DM = 0.80:
+- M_visible = 0.20 × 1.989×104² = **3.978×104¹ kg** (20% visible baryons)
+- M_DM_mass = 0.80 × 1.989×104² = **1.591×104² kg** (80% dark matter)
 
-These are tracked in `updateCache()` and exported via `exportState()` (params 26â€“32), providing explicit bookkeeping of the M31 baryonic/DM split consistent with PAPER_275.
+These are tracked in `updateCache()` and exported via `exportState()` (params 26–32), providing explicit bookkeeping of the M31 baryonic/DM split consistent with PAPER_275.
 
 ---
 
 ## 6. Updated ANDROMEDA_UQFF_MODULE.cpp g_total
 
-The full UQFF 2.0 equation for Andromeda with all PAPER_273â€“276 terms:
+The full UQFF 2.0 equation for Andromeda with all PAPER_273–276 terms:
 
 $$g_{\text{total}}(r, t) = \left[ g_{\text{grav}} + U_{g,\text{sum}}^{(26)} + \Lambda\text{-term} + g_Q + g_L + g_{\text{fluid}} + F_{\text{res}}(\omega_{\text{HI}}) + g_{\text{DM}} + g_{\text{expansion}} + a_{\text{dust}} \right] \times \kappa_{\text{approach}}$$
 
 **Term magnitudes at t=0 (current epoch):**
 
-| Term | Value (m/sÂ²) | Paper |
+| Term | Value (m/s²) | Paper |
 |---|---|---|
-| g_grav = GÂ·M/rÂ² | 1.227Ã—10â»Â¹â° | baseline |
-| Ug_sum (26 layers) | 6.380Ã—10â»â¹ | 26-layer Triadic |
-| Î›-term | 2.998Ã—10â»Â³â¶ | cosmological |
-| g_quantum | ~2Ã—10â»Â²â¶ | HUP |
-| g_Lorentz | ~2Ã—10â»Â³â¶ | IGM EM |
-| g_fluid | ~8Ã—10â»Â²Â³ | IGM buoyancy |
-| F_res(Ï‰_HI) at t=0 | 1Ã—10â»Â¹Â² | PAPER_274 |
-| g_DM | 1.356Ã—10â»Â¹â° | PAPER_275 |
+| g_grav = G·M/r² | 1.227×10?¹° | baseline |
+| Ug_sum (26 layers) | 6.380×10?? | 26-layer Triadic |
+| ?-term | 2.998×10?³6 | cosmological |
+| g_quantum | ~2×10?²6 | HUP |
+| g_Lorentz | ~2×10?³6 | IGM EM |
+| g_fluid | ~8×10?²³ | IGM buoyancy |
+| F_res(?_HI) at t=0 | 1×10?¹² | PAPER_274 |
+| g_DM | 1.356×10?¹° | PAPER_275 |
 | g_expansion at t=0 | 0 | PAPER_276 |
-| a_dust | 4.29Ã—10â»Â¹â¹ | PAPER_276 |
-| Îº_approach | 1.001001 | PAPER_273 |
+| a_dust | 4.29×10?¹? | PAPER_276 |
+| ?_approach | 1.001001 | PAPER_273 |
 
-Note: g_expansion grows linearly with t, dominating over g_grav at t â‰¥ t_H.
+Note: g_expansion grows linearly with t, dominating over g_grav at t = t_H.
 
 ---
 
-## 7. exportState Update (25 â†’ 32 parameters)
+## 7. exportState Update (25 ? 32 parameters)
 
 Seven new parameters added to `exportState()`:
 1. `H0` = 70.0 km/s/Mpc
 2. `Omega_m` = 0.3
 3. `Omega_Lam` = 0.7
-4. `Mpc_to_m` = 3.086Ã—10Â²Â²
-5. `rho_dust` = 1Ã—10â»Â²â° kg/mÂ³
-6. `M_visible` = (1â€“f_DM)Ã—M
-7. `M_DM_mass` = f_DMÃ—M
+4. `Mpc_to_m` = 3.086×10²²
+5. `rho_dust` = 1×10?²° kg/m³
+6. `M_visible` = (1–f_DM)×M
+7. `M_DM_mass` = f_DM×M
 
 ---
 
@@ -771,12 +771,15 @@ Seven new parameters added to `exportState()`:
 
 **Three new UQFF enhancements for Andromeda (PAPER_276):**
 
-1. **Friedmann-UQFF Expansion Coupling**: g_expansion = g_base Ã— H(z) Ã— t. At t = t_H, adds 98.7% of g_base â€” near-gravitational doubling over cosmological time.
+1. **Friedmann-UQFF Expansion Coupling**: g_expansion = g_base × H(z) × t. At t = t_H, adds 98.7% of g_base — near-gravitational doubling over cosmological time.
 
-2. **H_UQFF = 0.987**: New UQFF constant (Friedmann-UQFF Near-Unity Resonance Coefficient). Near-unity reflects the fundamental relationship Hâ‚€ Ã— t_H â‰ˆ 1 in flat Î›CDM. Andromeda's blueshift (z = âˆ’0.001) makes H_UQFF 0.15% below flat-universe value â€” a blueshift Friedmann suppression.
+2. **H_UQFF = 0.987**: New UQFF constant (Friedmann-UQFF Near-Unity Resonance Coefficient). Near-unity reflects the fundamental relationship H0 × t_H ˜ 1 in flat ?CDM. Andromeda's blueshift (z = -0.001) makes H_UQFF 0.15% below flat-universe value — a blueshift Friedmann suppression.
 
-3. **M_visible/M_DM_mass cascade + dust drag**: Explicit DM split bookkeeping (updateCache) and ISM dust ram-pressure (a_dust â‰ˆ 4Ã—10â»Â¹â¹ m/sÂ²).
+3. **M_visible/M_DM_mass cascade + dust drag**: Explicit DM split bookkeeping (updateCache) and ISM dust ram-pressure (a_dust ˜ 4×10?¹? m/s²).
 
 ---
 
-**Watermark:** Â©2025-2026 Daniel T. Murphy, daniel.murphy00@gmail.com â€“ All Rights Reserved
+**Watermark:** ©2025-2026 Daniel T. Murphy, daniel.murphy00@gmail.com – All Rights Reserved
+
+
+**UQFF computed:** MUGE buoyancy ratio U_bi/F_U = [SSq]×?×r²/GM = 5.7e-1×5.0e-4 = 2.85e-4; compressed MUGE baseline g = 5.4e-7 m/s² at r_ISCO.

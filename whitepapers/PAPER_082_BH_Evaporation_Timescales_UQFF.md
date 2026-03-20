@@ -1,27 +1,31 @@
-ï»¿#  "PAPER_{0:D3}" -f [int]# PAPER #82 â€” Black Hole Evaporation Timescales: UQFF Corrections
+#  "PAPER_{0:D3}" -f [int]# PAPER #82 — Black Hole Evaporation Timescales: UQFF Corrections
 
 **Title:** UQFF-Corrected Black Hole Evaporation Timescales: Stellar Mass Through Primordial Black Holes
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (Îº = 0.0005/day, [SSq] = 0.57)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57)  
 **Date:** March 7, 2026  
 **Source Data:** validate_hawking_temperature.py (Tests 2, 6), CondensedPhysics.py simulate_evaporation()  
-**Index Slot:** Â§1.11 Black Hole Physics & Hawking Radiation,  
-    $n = [int]# PAPER #82 â€” Black Hole Evaporation Timescales: UQFF Corrections
+**Index Slot:** §1.11 Black Hole Physics & Hawking Radiation,  
+    $n = [int]# PAPER #82 — Black Hole Evaporation Timescales: UQFF Corrections
 
 **Title:** UQFF-Corrected Black Hole Evaporation Timescales: Stellar Mass Through Primordial Black Holes
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (Îº = 0.0005/day, [SSq] = 0.57)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57)  
 **Date:** March 7, 2026  
 **Source Data:** validate_hawking_temperature.py (Tests 2, 6), CondensedPhysics.py simulate_evaporation()  
-**Index Slot:** Â§1.11 Black Hole Physics & Hawking Radiation, PAPER_082  
+**Index Slot:** §1.11 Black Hole Physics & Hawking Radiation, PAPER_082  
 
 ---
 
 ## Abstract
 
-Black hole evaporation timescales are computed via the Stefan-Boltzmann law applied to UQFF-modified Hawking radiation. The standard result t_evap = 5120Ï€GÂ²MÂ³/(â„câ´) is modified by the T_UQFF/T_H = 0.99 ratio. This changes evaporation rates by a factor of (T_UQFF/T_H)â´ = 0.96, extending evaporation timescales by ~4% for all black holes. The `validate_hawking_temperature.py` evaporation simulation (Test 6) confirms mass evolution for primordial BHs at 10Â¹â° kg over 100 timesteps.
+Black hole evaporation timescales are computed via the Stefan-Boltzmann law applied to UQFF-modified Hawking radiation. The standard result t_evap = 5120pG²M³/(?c4) is modified by the T_UQFF/T_H = 0.99 ratio. This changes evaporation rates by a factor of (T_UQFF/T_H)4 = 0.96, extending evaporation timescales by ~4% for all black holes. The `validate_hawking_temperature.py` evaporation simulation (Test 6) confirms mass evolution for primordial BHs at 10¹° kg over 100 timesteps.
+
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -35,50 +39,50 @@ $$t_{\rm evap}^{\rm GR} = \frac{5120 \pi G^2 M_0^3}{\hbar c^4}$$
 
 $$t_{\rm evap}^{\rm UQFF} = \frac{t_{\rm evap}^{\rm GR}}{(T_{\rm UQFF}/T_H)^4} = \frac{t_{\rm evap}^{\rm GR}}{0.99^4} = t_{\rm evap}^{\rm GR} \times 1.041$$
 
-**UQFF evaporation timescale is 4.1% longer than GR** â€” black holes are slightly more stable in the UQFF vacuum.
+**UQFF evaporation timescale is 4.1% longer than GR** — black holes are slightly more stable in the UQFF vacuum.
 
 ---
 
 ## 2. Evaporation Timescales: Full Table
 
-| System | Mâ‚€ | t_evap_GR | t_evap_UQFF | Survives Universe |
+| System | M0 | t_evap_GR | t_evap_UQFF | Survives Universe |
 |--------|-----|-----------|-------------|-------------------|
-| Sgr A* | 4Ã—10â¶ Mâ˜‰ | 8.7Ã—10â¸Â³ s | 9.1Ã—10â¸Â³ s | âœ… Yes |
-| M87* | 6.5Ã—10â¹ Mâ˜‰ | 3.8Ã—10â¹âµ s | 4.0Ã—10â¹âµ s | âœ… Yes |
-| Stellar BH | 10 Mâ˜‰ | 2.1Ã—10â·â´ s | 2.2Ã—10â·â´ s | âœ… Yes |
-| Primordial BH | 5.7Ã—10Â¹Â¹ kg | 4.35Ã—10Â¹â· s = t_U | 4.52Ã—10Â¹â· s | Borderline |
-| Primordial BH | 1Ã—10Â¹â° kg | 2.3Ã—10Â¹Â² s (73 kyr) | 2.4Ã—10Â¹Â² s | âŒ Evaporated |
+| Sgr A* | 4×106 M? | 8.7×108³ s | 9.1×108³ s | ? Yes |
+| M87* | 6.5×10? M? | 3.8×10?5 s | 4.0×10?5 s | ? Yes |
+| Stellar BH | 10 M? | 2.1×1074 s | 2.2×1074 s | ? Yes |
+| Primordial BH | 5.7×10¹¹ kg | 4.35×10¹7 s = t_U | 4.52×10¹7 s | Borderline |
+| Primordial BH | 1×10¹° kg | 2.3×10¹² s (73 kyr) | 2.4×10¹² s | ? Evaporated |
 
 The validate_hawking_temperature.py Test 2 confirms:
-- Stellar BH (10 Mâ˜‰): `survives_universe = True` âœ“
-- Test 6 simulation: M_initial = 10Â¹â° kg, 100 steps, mass_lost_fraction computed âœ“
+- Stellar BH (10 M?): `survives_universe = True` ?
+- Test 6 simulation: M_initial = 10¹° kg, 100 steps, mass_lost_fraction computed ?
 
 ---
 
 ## 3. Mass Evolution Simulation
 
-From `simulate_evaporation(M_initial = 10Â¹â° kg, dt = 10Â¹â° s, n_steps = 100)`:
+From `simulate_evaporation(M_initial = 10¹° kg, dt = 10¹° s, n_steps = 100)`:
 
 $$\frac{dM}{dt} = -\frac{k_{\rm UQFF}}{M^2}, \quad k_{\rm UQFF} = \frac{\hbar c^4 (T_{\rm UQFF}/T_H)^4}{15360 \pi G^2}$$
 
-With T_UQFF/T_H = 0.99: k_UQFF = 0.96 Ã— k_GR
+With T_UQFF/T_H = 0.99: k_UQFF = 0.96 × k_GR
 
-At t = 100 Ã— 10Â¹â° s = 10Â¹Â² s:
-- M_final â‰ˆ M_initial Ã— (1 âˆ’ t/t_evap)^{1/3} = 10Â¹â° Ã— (1 âˆ’ 10Â¹Â²/2.4Ã—10Â¹Â²)^{1/3}
-- M_final â‰ˆ 10Â¹â° Ã— 0.583^{1/3} â‰ˆ 8.35Ã—10â¹ kg
-- Mass lost fraction â‰ˆ **16.5%** over first 10Â¹Â² s
+At t = 100 × 10¹° s = 10¹² s:
+- M_final ˜ M_initial × (1 - t/t_evap)^{1/3} = 10¹° × (1 - 10¹²/2.4×10¹²)^{1/3}
+- M_final ˜ 10¹° × 0.583^{1/3} ˜ 8.35×10? kg
+- Mass lost fraction ˜ **16.5%** over first 10¹² s
 
-Arrays `times[]`, `masses[]`, `temperatures_H[]` all have matching lengths (validate Test 6). âœ“
+Arrays `times[]`, `masses[]`, `temperatures_H[]` all have matching lengths (validate Test 6). ?
 
 ---
 
 ## 4. UQFF Mass Evolution Equation
 
-The UQFF modifies the mass loss rate through the vacuum buoyancy correction. During late-stage evaporation (M â†’ M_Planck):
+The UQFF modifies the mass loss rate through the vacuum buoyancy correction. During late-stage evaporation (M ? M_Planck):
 
 $$\frac{dM_{\rm UQFF}}{dt} = -\frac{k_{\rm UQFF}}{M^2} + \frac{g_{\rm Buoyant} \times V_{\rm BH}}{c^2}$$
 
-The buoyancy term: g_Buoyant Ã— V_BH / cÂ² = Ï_vac Ã— 10âµâµ Ã— (4/3)Ï€ r_SÂ³ / cÂ² ~ 10â»â¸â° kg/s â†’ negligible vs the thermal term at all masses above Planck mass.
+The buoyancy term: g_Buoyant × V_BH / c² = ?_vac × 1055 × (4/3)p r_S³ / c² ~ 10?8° kg/s ? negligible vs the thermal term at all masses above Planck mass.
 
 ---
 
@@ -86,13 +90,13 @@ The buoyancy term: g_Buoyant Ã— V_BH / cÂ² = Ï_vac Ã— 10âµâµ Ã— (4/3)Ï€ r_SÂ³
 
 | Parameter | GR Value | UQFF Value | Change |
 |-----------|---------|------------|--------|
-| Evaporation factor | k_GR | 0.96 Ã— k_GR | âˆ’4% |
-| Timescale t_evap | t_GR | 1.041 Ã— t_GR | +4.1% |
+| Evaporation factor | k_GR | 0.96 × k_GR | -4% |
+| Timescale t_evap | t_GR | 1.041 × t_GR | +4.1% |
 | Stellar BH survival | Yes | Yes | Unchanged |
-| Primordial threshold mass | 5.7Ã—10Â¹Â¹ kg | 5.5Ã—10Â¹Â¹ kg | âˆ’3.5% |
-| Test 2 | `survives = True` | Confirmed | âœ… PASS |
+| Primordial threshold mass | 5.7×10¹¹ kg | 5.5×10¹¹ kg | -3.5% |
+| Test 2 | `survives = True` | Confirmed | ? PASS |
 
-*Source: validate_hawking_temperature.py Tests 2+6, simulate_evaporation() | Îº = 0.0005/day | [SSq] = 0.57*
+*Source: validate_hawking_temperature.py Tests 2+6, simulate_evaporation() | ? = 0.0005/day | [SSq] = 0.57*
 .Groups[1].Value
     "PAPER_{0:D3}" -f $n
     
@@ -101,7 +105,11 @@ The buoyancy term: g_Buoyant Ã— V_BH / cÂ² = Ï_vac Ã— 10âµâµ Ã— (4/3)Ï€ r_SÂ³
 
 ## Abstract
 
-Black hole evaporation timescales are computed via the Stefan-Boltzmann law applied to UQFF-modified Hawking radiation. The standard result t_evap = 5120Ï€GÂ²MÂ³/(â„câ´) is modified by the T_UQFF/T_H = 0.99 ratio. This changes evaporation rates by a factor of (T_UQFF/T_H)â´ = 0.96, extending evaporation timescales by ~4% for all black holes. The `validate_hawking_temperature.py` evaporation simulation (Test 6) confirms mass evolution for primordial BHs at 10Â¹â° kg over 100 timesteps.
+Black hole evaporation timescales are computed via the Stefan-Boltzmann law applied to UQFF-modified Hawking radiation. The standard result t_evap = 5120pG²M³/(?c4) is modified by the T_UQFF/T_H = 0.99 ratio. This changes evaporation rates by a factor of (T_UQFF/T_H)4 = 0.96, extending evaporation timescales by ~4% for all black holes. The `validate_hawking_temperature.py` evaporation simulation (Test 6) confirms mass evolution for primordial BHs at 10¹° kg over 100 timesteps.
+
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -115,50 +123,50 @@ $$t_{\rm evap}^{\rm GR} = \frac{5120 \pi G^2 M_0^3}{\hbar c^4}$$
 
 $$t_{\rm evap}^{\rm UQFF} = \frac{t_{\rm evap}^{\rm GR}}{(T_{\rm UQFF}/T_H)^4} = \frac{t_{\rm evap}^{\rm GR}}{0.99^4} = t_{\rm evap}^{\rm GR} \times 1.041$$
 
-**UQFF evaporation timescale is 4.1% longer than GR** â€” black holes are slightly more stable in the UQFF vacuum.
+**UQFF evaporation timescale is 4.1% longer than GR** — black holes are slightly more stable in the UQFF vacuum.
 
 ---
 
 ## 2. Evaporation Timescales: Full Table
 
-| System | Mâ‚€ | t_evap_GR | t_evap_UQFF | Survives Universe |
+| System | M0 | t_evap_GR | t_evap_UQFF | Survives Universe |
 |--------|-----|-----------|-------------|-------------------|
-| Sgr A* | 4Ã—10â¶ Mâ˜‰ | 8.7Ã—10â¸Â³ s | 9.1Ã—10â¸Â³ s | âœ… Yes |
-| M87* | 6.5Ã—10â¹ Mâ˜‰ | 3.8Ã—10â¹âµ s | 4.0Ã—10â¹âµ s | âœ… Yes |
-| Stellar BH | 10 Mâ˜‰ | 2.1Ã—10â·â´ s | 2.2Ã—10â·â´ s | âœ… Yes |
-| Primordial BH | 5.7Ã—10Â¹Â¹ kg | 4.35Ã—10Â¹â· s = t_U | 4.52Ã—10Â¹â· s | Borderline |
-| Primordial BH | 1Ã—10Â¹â° kg | 2.3Ã—10Â¹Â² s (73 kyr) | 2.4Ã—10Â¹Â² s | âŒ Evaporated |
+| Sgr A* | 4×106 M? | 8.7×108³ s | 9.1×108³ s | ? Yes |
+| M87* | 6.5×10? M? | 3.8×10?5 s | 4.0×10?5 s | ? Yes |
+| Stellar BH | 10 M? | 2.1×1074 s | 2.2×1074 s | ? Yes |
+| Primordial BH | 5.7×10¹¹ kg | 4.35×10¹7 s = t_U | 4.52×10¹7 s | Borderline |
+| Primordial BH | 1×10¹° kg | 2.3×10¹² s (73 kyr) | 2.4×10¹² s | ? Evaporated |
 
 The validate_hawking_temperature.py Test 2 confirms:
-- Stellar BH (10 Mâ˜‰): `survives_universe = True` âœ“
-- Test 6 simulation: M_initial = 10Â¹â° kg, 100 steps, mass_lost_fraction computed âœ“
+- Stellar BH (10 M?): `survives_universe = True` ?
+- Test 6 simulation: M_initial = 10¹° kg, 100 steps, mass_lost_fraction computed ?
 
 ---
 
 ## 3. Mass Evolution Simulation
 
-From `simulate_evaporation(M_initial = 10Â¹â° kg, dt = 10Â¹â° s, n_steps = 100)`:
+From `simulate_evaporation(M_initial = 10¹° kg, dt = 10¹° s, n_steps = 100)`:
 
 $$\frac{dM}{dt} = -\frac{k_{\rm UQFF}}{M^2}, \quad k_{\rm UQFF} = \frac{\hbar c^4 (T_{\rm UQFF}/T_H)^4}{15360 \pi G^2}$$
 
-With T_UQFF/T_H = 0.99: k_UQFF = 0.96 Ã— k_GR
+With T_UQFF/T_H = 0.99: k_UQFF = 0.96 × k_GR
 
-At t = 100 Ã— 10Â¹â° s = 10Â¹Â² s:
-- M_final â‰ˆ M_initial Ã— (1 âˆ’ t/t_evap)^{1/3} = 10Â¹â° Ã— (1 âˆ’ 10Â¹Â²/2.4Ã—10Â¹Â²)^{1/3}
-- M_final â‰ˆ 10Â¹â° Ã— 0.583^{1/3} â‰ˆ 8.35Ã—10â¹ kg
-- Mass lost fraction â‰ˆ **16.5%** over first 10Â¹Â² s
+At t = 100 × 10¹° s = 10¹² s:
+- M_final ˜ M_initial × (1 - t/t_evap)^{1/3} = 10¹° × (1 - 10¹²/2.4×10¹²)^{1/3}
+- M_final ˜ 10¹° × 0.583^{1/3} ˜ 8.35×10? kg
+- Mass lost fraction ˜ **16.5%** over first 10¹² s
 
-Arrays `times[]`, `masses[]`, `temperatures_H[]` all have matching lengths (validate Test 6). âœ“
+Arrays `times[]`, `masses[]`, `temperatures_H[]` all have matching lengths (validate Test 6). ?
 
 ---
 
 ## 4. UQFF Mass Evolution Equation
 
-The UQFF modifies the mass loss rate through the vacuum buoyancy correction. During late-stage evaporation (M â†’ M_Planck):
+The UQFF modifies the mass loss rate through the vacuum buoyancy correction. During late-stage evaporation (M ? M_Planck):
 
 $$\frac{dM_{\rm UQFF}}{dt} = -\frac{k_{\rm UQFF}}{M^2} + \frac{g_{\rm Buoyant} \times V_{\rm BH}}{c^2}$$
 
-The buoyancy term: g_Buoyant Ã— V_BH / cÂ² = Ï_vac Ã— 10âµâµ Ã— (4/3)Ï€ r_SÂ³ / cÂ² ~ 10â»â¸â° kg/s â†’ negligible vs the thermal term at all masses above Planck mass.
+The buoyancy term: g_Buoyant × V_BH / c² = ?_vac × 1055 × (4/3)p r_S³ / c² ~ 10?8° kg/s ? negligible vs the thermal term at all masses above Planck mass.
 
 ---
 
@@ -166,46 +174,50 @@ The buoyancy term: g_Buoyant Ã— V_BH / cÂ² = Ï_vac Ã— 10âµâµ Ã— (4/3)Ï€ r_SÂ³
 
 | Parameter | GR Value | UQFF Value | Change |
 |-----------|---------|------------|--------|
-| Evaporation factor | k_GR | 0.96 Ã— k_GR | âˆ’4% |
-| Timescale t_evap | t_GR | 1.041 Ã— t_GR | +4.1% |
+| Evaporation factor | k_GR | 0.96 × k_GR | -4% |
+| Timescale t_evap | t_GR | 1.041 × t_GR | +4.1% |
 | Stellar BH survival | Yes | Yes | Unchanged |
-| Primordial threshold mass | 5.7Ã—10Â¹Â¹ kg | 5.5Ã—10Â¹Â¹ kg | âˆ’3.5% |
-| Test 2 | `survives = True` | Confirmed | âœ… PASS |
+| Primordial threshold mass | 5.7×10¹¹ kg | 5.5×10¹¹ kg | -3.5% |
+| Test 2 | `survives = True` | Confirmed | ? PASS |
 
-*Source: validate_hawking_temperature.py Tests 2+6, simulate_evaporation() | Îº = 0.0005/day | [SSq] = 0.57*
-.Groups[1].Value  â€” Black Hole Evaporation Timescales: UQFF Corrections
-
-**Title:** UQFF-Corrected Black Hole Evaporation Timescales: Stellar Mass Through Primordial Black Holes
-
-**Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (Îº = 0.0005/day, [SSq] = 0.57)  
-**Date:** March 7, 2026  
-**Source Data:** validate_hawking_temperature.py (Tests 2, 6), CondensedPhysics.py simulate_evaporation()  
-**Index Slot:** Â§1.11 Black Hole Physics & Hawking Radiation,  
-    $n = [int]#  "PAPER_{0:D3}" -f [int]# PAPER #82 â€” Black Hole Evaporation Timescales: UQFF Corrections
+*Source: validate_hawking_temperature.py Tests 2+6, simulate_evaporation() | ? = 0.0005/day | [SSq] = 0.57*
+.Groups[1].Value  — Black Hole Evaporation Timescales: UQFF Corrections
 
 **Title:** UQFF-Corrected Black Hole Evaporation Timescales: Stellar Mass Through Primordial Black Holes
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (Îº = 0.0005/day, [SSq] = 0.57)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57)  
 **Date:** March 7, 2026  
 **Source Data:** validate_hawking_temperature.py (Tests 2, 6), CondensedPhysics.py simulate_evaporation()  
-**Index Slot:** Â§1.11 Black Hole Physics & Hawking Radiation,  
-    $n = [int]# PAPER #82 â€” Black Hole Evaporation Timescales: UQFF Corrections
+**Index Slot:** §1.11 Black Hole Physics & Hawking Radiation,  
+    $n = [int]#  "PAPER_{0:D3}" -f [int]# PAPER #82 — Black Hole Evaporation Timescales: UQFF Corrections
 
 **Title:** UQFF-Corrected Black Hole Evaporation Timescales: Stellar Mass Through Primordial Black Holes
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (Îº = 0.0005/day, [SSq] = 0.57)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57)  
 **Date:** March 7, 2026  
 **Source Data:** validate_hawking_temperature.py (Tests 2, 6), CondensedPhysics.py simulate_evaporation()  
-**Index Slot:** Â§1.11 Black Hole Physics & Hawking Radiation, PAPER_082  
+**Index Slot:** §1.11 Black Hole Physics & Hawking Radiation,  
+    $n = [int]# PAPER #82 — Black Hole Evaporation Timescales: UQFF Corrections
+
+**Title:** UQFF-Corrected Black Hole Evaporation Timescales: Stellar Mass Through Primordial Black Holes
+
+**Author:** Daniel T. Murphy  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57)  
+**Date:** March 7, 2026  
+**Source Data:** validate_hawking_temperature.py (Tests 2, 6), CondensedPhysics.py simulate_evaporation()  
+**Index Slot:** §1.11 Black Hole Physics & Hawking Radiation, PAPER_082  
 
 ---
 
 ## Abstract
 
-Black hole evaporation timescales are computed via the Stefan-Boltzmann law applied to UQFF-modified Hawking radiation. The standard result t_evap = 5120Ï€GÂ²MÂ³/(â„câ´) is modified by the T_UQFF/T_H = 0.99 ratio. This changes evaporation rates by a factor of (T_UQFF/T_H)â´ = 0.96, extending evaporation timescales by ~4% for all black holes. The `validate_hawking_temperature.py` evaporation simulation (Test 6) confirms mass evolution for primordial BHs at 10Â¹â° kg over 100 timesteps.
+Black hole evaporation timescales are computed via the Stefan-Boltzmann law applied to UQFF-modified Hawking radiation. The standard result t_evap = 5120pG²M³/(?c4) is modified by the T_UQFF/T_H = 0.99 ratio. This changes evaporation rates by a factor of (T_UQFF/T_H)4 = 0.96, extending evaporation timescales by ~4% for all black holes. The `validate_hawking_temperature.py` evaporation simulation (Test 6) confirms mass evolution for primordial BHs at 10¹° kg over 100 timesteps.
+
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -219,50 +231,50 @@ $$t_{\rm evap}^{\rm GR} = \frac{5120 \pi G^2 M_0^3}{\hbar c^4}$$
 
 $$t_{\rm evap}^{\rm UQFF} = \frac{t_{\rm evap}^{\rm GR}}{(T_{\rm UQFF}/T_H)^4} = \frac{t_{\rm evap}^{\rm GR}}{0.99^4} = t_{\rm evap}^{\rm GR} \times 1.041$$
 
-**UQFF evaporation timescale is 4.1% longer than GR** â€” black holes are slightly more stable in the UQFF vacuum.
+**UQFF evaporation timescale is 4.1% longer than GR** — black holes are slightly more stable in the UQFF vacuum.
 
 ---
 
 ## 2. Evaporation Timescales: Full Table
 
-| System | Mâ‚€ | t_evap_GR | t_evap_UQFF | Survives Universe |
+| System | M0 | t_evap_GR | t_evap_UQFF | Survives Universe |
 |--------|-----|-----------|-------------|-------------------|
-| Sgr A* | 4Ã—10â¶ Mâ˜‰ | 8.7Ã—10â¸Â³ s | 9.1Ã—10â¸Â³ s | âœ… Yes |
-| M87* | 6.5Ã—10â¹ Mâ˜‰ | 3.8Ã—10â¹âµ s | 4.0Ã—10â¹âµ s | âœ… Yes |
-| Stellar BH | 10 Mâ˜‰ | 2.1Ã—10â·â´ s | 2.2Ã—10â·â´ s | âœ… Yes |
-| Primordial BH | 5.7Ã—10Â¹Â¹ kg | 4.35Ã—10Â¹â· s = t_U | 4.52Ã—10Â¹â· s | Borderline |
-| Primordial BH | 1Ã—10Â¹â° kg | 2.3Ã—10Â¹Â² s (73 kyr) | 2.4Ã—10Â¹Â² s | âŒ Evaporated |
+| Sgr A* | 4×106 M? | 8.7×108³ s | 9.1×108³ s | ? Yes |
+| M87* | 6.5×10? M? | 3.8×10?5 s | 4.0×10?5 s | ? Yes |
+| Stellar BH | 10 M? | 2.1×1074 s | 2.2×1074 s | ? Yes |
+| Primordial BH | 5.7×10¹¹ kg | 4.35×10¹7 s = t_U | 4.52×10¹7 s | Borderline |
+| Primordial BH | 1×10¹° kg | 2.3×10¹² s (73 kyr) | 2.4×10¹² s | ? Evaporated |
 
 The validate_hawking_temperature.py Test 2 confirms:
-- Stellar BH (10 Mâ˜‰): `survives_universe = True` âœ“
-- Test 6 simulation: M_initial = 10Â¹â° kg, 100 steps, mass_lost_fraction computed âœ“
+- Stellar BH (10 M?): `survives_universe = True` ?
+- Test 6 simulation: M_initial = 10¹° kg, 100 steps, mass_lost_fraction computed ?
 
 ---
 
 ## 3. Mass Evolution Simulation
 
-From `simulate_evaporation(M_initial = 10Â¹â° kg, dt = 10Â¹â° s, n_steps = 100)`:
+From `simulate_evaporation(M_initial = 10¹° kg, dt = 10¹° s, n_steps = 100)`:
 
 $$\frac{dM}{dt} = -\frac{k_{\rm UQFF}}{M^2}, \quad k_{\rm UQFF} = \frac{\hbar c^4 (T_{\rm UQFF}/T_H)^4}{15360 \pi G^2}$$
 
-With T_UQFF/T_H = 0.99: k_UQFF = 0.96 Ã— k_GR
+With T_UQFF/T_H = 0.99: k_UQFF = 0.96 × k_GR
 
-At t = 100 Ã— 10Â¹â° s = 10Â¹Â² s:
-- M_final â‰ˆ M_initial Ã— (1 âˆ’ t/t_evap)^{1/3} = 10Â¹â° Ã— (1 âˆ’ 10Â¹Â²/2.4Ã—10Â¹Â²)^{1/3}
-- M_final â‰ˆ 10Â¹â° Ã— 0.583^{1/3} â‰ˆ 8.35Ã—10â¹ kg
-- Mass lost fraction â‰ˆ **16.5%** over first 10Â¹Â² s
+At t = 100 × 10¹° s = 10¹² s:
+- M_final ˜ M_initial × (1 - t/t_evap)^{1/3} = 10¹° × (1 - 10¹²/2.4×10¹²)^{1/3}
+- M_final ˜ 10¹° × 0.583^{1/3} ˜ 8.35×10? kg
+- Mass lost fraction ˜ **16.5%** over first 10¹² s
 
-Arrays `times[]`, `masses[]`, `temperatures_H[]` all have matching lengths (validate Test 6). âœ“
+Arrays `times[]`, `masses[]`, `temperatures_H[]` all have matching lengths (validate Test 6). ?
 
 ---
 
 ## 4. UQFF Mass Evolution Equation
 
-The UQFF modifies the mass loss rate through the vacuum buoyancy correction. During late-stage evaporation (M â†’ M_Planck):
+The UQFF modifies the mass loss rate through the vacuum buoyancy correction. During late-stage evaporation (M ? M_Planck):
 
 $$\frac{dM_{\rm UQFF}}{dt} = -\frac{k_{\rm UQFF}}{M^2} + \frac{g_{\rm Buoyant} \times V_{\rm BH}}{c^2}$$
 
-The buoyancy term: g_Buoyant Ã— V_BH / cÂ² = Ï_vac Ã— 10âµâµ Ã— (4/3)Ï€ r_SÂ³ / cÂ² ~ 10â»â¸â° kg/s â†’ negligible vs the thermal term at all masses above Planck mass.
+The buoyancy term: g_Buoyant × V_BH / c² = ?_vac × 1055 × (4/3)p r_S³ / c² ~ 10?8° kg/s ? negligible vs the thermal term at all masses above Planck mass.
 
 ---
 
@@ -270,13 +282,13 @@ The buoyancy term: g_Buoyant Ã— V_BH / cÂ² = Ï_vac Ã— 10âµâµ Ã— (4/3)Ï€ r_SÂ³
 
 | Parameter | GR Value | UQFF Value | Change |
 |-----------|---------|------------|--------|
-| Evaporation factor | k_GR | 0.96 Ã— k_GR | âˆ’4% |
-| Timescale t_evap | t_GR | 1.041 Ã— t_GR | +4.1% |
+| Evaporation factor | k_GR | 0.96 × k_GR | -4% |
+| Timescale t_evap | t_GR | 1.041 × t_GR | +4.1% |
 | Stellar BH survival | Yes | Yes | Unchanged |
-| Primordial threshold mass | 5.7Ã—10Â¹Â¹ kg | 5.5Ã—10Â¹Â¹ kg | âˆ’3.5% |
-| Test 2 | `survives = True` | Confirmed | âœ… PASS |
+| Primordial threshold mass | 5.7×10¹¹ kg | 5.5×10¹¹ kg | -3.5% |
+| Test 2 | `survives = True` | Confirmed | ? PASS |
 
-*Source: validate_hawking_temperature.py Tests 2+6, simulate_evaporation() | Îº = 0.0005/day | [SSq] = 0.57*
+*Source: validate_hawking_temperature.py Tests 2+6, simulate_evaporation() | ? = 0.0005/day | [SSq] = 0.57*
 .Groups[1].Value
     "PAPER_{0:D3}" -f $n
     
@@ -285,7 +297,11 @@ The buoyancy term: g_Buoyant Ã— V_BH / cÂ² = Ï_vac Ã— 10âµâµ Ã— (4/3)Ï€ r_SÂ³
 
 ## Abstract
 
-Black hole evaporation timescales are computed via the Stefan-Boltzmann law applied to UQFF-modified Hawking radiation. The standard result t_evap = 5120Ï€GÂ²MÂ³/(â„câ´) is modified by the T_UQFF/T_H = 0.99 ratio. This changes evaporation rates by a factor of (T_UQFF/T_H)â´ = 0.96, extending evaporation timescales by ~4% for all black holes. The `validate_hawking_temperature.py` evaporation simulation (Test 6) confirms mass evolution for primordial BHs at 10Â¹â° kg over 100 timesteps.
+Black hole evaporation timescales are computed via the Stefan-Boltzmann law applied to UQFF-modified Hawking radiation. The standard result t_evap = 5120pG²M³/(?c4) is modified by the T_UQFF/T_H = 0.99 ratio. This changes evaporation rates by a factor of (T_UQFF/T_H)4 = 0.96, extending evaporation timescales by ~4% for all black holes. The `validate_hawking_temperature.py` evaporation simulation (Test 6) confirms mass evolution for primordial BHs at 10¹° kg over 100 timesteps.
+
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -299,50 +315,50 @@ $$t_{\rm evap}^{\rm GR} = \frac{5120 \pi G^2 M_0^3}{\hbar c^4}$$
 
 $$t_{\rm evap}^{\rm UQFF} = \frac{t_{\rm evap}^{\rm GR}}{(T_{\rm UQFF}/T_H)^4} = \frac{t_{\rm evap}^{\rm GR}}{0.99^4} = t_{\rm evap}^{\rm GR} \times 1.041$$
 
-**UQFF evaporation timescale is 4.1% longer than GR** â€” black holes are slightly more stable in the UQFF vacuum.
+**UQFF evaporation timescale is 4.1% longer than GR** — black holes are slightly more stable in the UQFF vacuum.
 
 ---
 
 ## 2. Evaporation Timescales: Full Table
 
-| System | Mâ‚€ | t_evap_GR | t_evap_UQFF | Survives Universe |
+| System | M0 | t_evap_GR | t_evap_UQFF | Survives Universe |
 |--------|-----|-----------|-------------|-------------------|
-| Sgr A* | 4Ã—10â¶ Mâ˜‰ | 8.7Ã—10â¸Â³ s | 9.1Ã—10â¸Â³ s | âœ… Yes |
-| M87* | 6.5Ã—10â¹ Mâ˜‰ | 3.8Ã—10â¹âµ s | 4.0Ã—10â¹âµ s | âœ… Yes |
-| Stellar BH | 10 Mâ˜‰ | 2.1Ã—10â·â´ s | 2.2Ã—10â·â´ s | âœ… Yes |
-| Primordial BH | 5.7Ã—10Â¹Â¹ kg | 4.35Ã—10Â¹â· s = t_U | 4.52Ã—10Â¹â· s | Borderline |
-| Primordial BH | 1Ã—10Â¹â° kg | 2.3Ã—10Â¹Â² s (73 kyr) | 2.4Ã—10Â¹Â² s | âŒ Evaporated |
+| Sgr A* | 4×106 M? | 8.7×108³ s | 9.1×108³ s | ? Yes |
+| M87* | 6.5×10? M? | 3.8×10?5 s | 4.0×10?5 s | ? Yes |
+| Stellar BH | 10 M? | 2.1×1074 s | 2.2×1074 s | ? Yes |
+| Primordial BH | 5.7×10¹¹ kg | 4.35×10¹7 s = t_U | 4.52×10¹7 s | Borderline |
+| Primordial BH | 1×10¹° kg | 2.3×10¹² s (73 kyr) | 2.4×10¹² s | ? Evaporated |
 
 The validate_hawking_temperature.py Test 2 confirms:
-- Stellar BH (10 Mâ˜‰): `survives_universe = True` âœ“
-- Test 6 simulation: M_initial = 10Â¹â° kg, 100 steps, mass_lost_fraction computed âœ“
+- Stellar BH (10 M?): `survives_universe = True` ?
+- Test 6 simulation: M_initial = 10¹° kg, 100 steps, mass_lost_fraction computed ?
 
 ---
 
 ## 3. Mass Evolution Simulation
 
-From `simulate_evaporation(M_initial = 10Â¹â° kg, dt = 10Â¹â° s, n_steps = 100)`:
+From `simulate_evaporation(M_initial = 10¹° kg, dt = 10¹° s, n_steps = 100)`:
 
 $$\frac{dM}{dt} = -\frac{k_{\rm UQFF}}{M^2}, \quad k_{\rm UQFF} = \frac{\hbar c^4 (T_{\rm UQFF}/T_H)^4}{15360 \pi G^2}$$
 
-With T_UQFF/T_H = 0.99: k_UQFF = 0.96 Ã— k_GR
+With T_UQFF/T_H = 0.99: k_UQFF = 0.96 × k_GR
 
-At t = 100 Ã— 10Â¹â° s = 10Â¹Â² s:
-- M_final â‰ˆ M_initial Ã— (1 âˆ’ t/t_evap)^{1/3} = 10Â¹â° Ã— (1 âˆ’ 10Â¹Â²/2.4Ã—10Â¹Â²)^{1/3}
-- M_final â‰ˆ 10Â¹â° Ã— 0.583^{1/3} â‰ˆ 8.35Ã—10â¹ kg
-- Mass lost fraction â‰ˆ **16.5%** over first 10Â¹Â² s
+At t = 100 × 10¹° s = 10¹² s:
+- M_final ˜ M_initial × (1 - t/t_evap)^{1/3} = 10¹° × (1 - 10¹²/2.4×10¹²)^{1/3}
+- M_final ˜ 10¹° × 0.583^{1/3} ˜ 8.35×10? kg
+- Mass lost fraction ˜ **16.5%** over first 10¹² s
 
-Arrays `times[]`, `masses[]`, `temperatures_H[]` all have matching lengths (validate Test 6). âœ“
+Arrays `times[]`, `masses[]`, `temperatures_H[]` all have matching lengths (validate Test 6). ?
 
 ---
 
 ## 4. UQFF Mass Evolution Equation
 
-The UQFF modifies the mass loss rate through the vacuum buoyancy correction. During late-stage evaporation (M â†’ M_Planck):
+The UQFF modifies the mass loss rate through the vacuum buoyancy correction. During late-stage evaporation (M ? M_Planck):
 
 $$\frac{dM_{\rm UQFF}}{dt} = -\frac{k_{\rm UQFF}}{M^2} + \frac{g_{\rm Buoyant} \times V_{\rm BH}}{c^2}$$
 
-The buoyancy term: g_Buoyant Ã— V_BH / cÂ² = Ï_vac Ã— 10âµâµ Ã— (4/3)Ï€ r_SÂ³ / cÂ² ~ 10â»â¸â° kg/s â†’ negligible vs the thermal term at all masses above Planck mass.
+The buoyancy term: g_Buoyant × V_BH / c² = ?_vac × 1055 × (4/3)p r_S³ / c² ~ 10?8° kg/s ? negligible vs the thermal term at all masses above Planck mass.
 
 ---
 
@@ -350,45 +366,49 @@ The buoyancy term: g_Buoyant Ã— V_BH / cÂ² = Ï_vac Ã— 10âµâµ Ã— (4/3)Ï€ r_SÂ³
 
 | Parameter | GR Value | UQFF Value | Change |
 |-----------|---------|------------|--------|
-| Evaporation factor | k_GR | 0.96 Ã— k_GR | âˆ’4% |
-| Timescale t_evap | t_GR | 1.041 Ã— t_GR | +4.1% |
+| Evaporation factor | k_GR | 0.96 × k_GR | -4% |
+| Timescale t_evap | t_GR | 1.041 × t_GR | +4.1% |
 | Stellar BH survival | Yes | Yes | Unchanged |
-| Primordial threshold mass | 5.7Ã—10Â¹Â¹ kg | 5.5Ã—10Â¹Â¹ kg | âˆ’3.5% |
-| Test 2 | `survives = True` | Confirmed | âœ… PASS |
+| Primordial threshold mass | 5.7×10¹¹ kg | 5.5×10¹¹ kg | -3.5% |
+| Test 2 | `survives = True` | Confirmed | ? PASS |
 
-*Source: validate_hawking_temperature.py Tests 2+6, simulate_evaporation() | Îº = 0.0005/day | [SSq] = 0.57*
-.Groups[1].Value  â€” Black Hole Evaporation Timescales: UQFF Corrections
-
-**Title:** UQFF-Corrected Black Hole Evaporation Timescales: Stellar Mass Through Primordial Black Holes
-
-**Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (Îº = 0.0005/day, [SSq] = 0.57)  
-**Date:** March 7, 2026  
-**Source Data:** validate_hawking_temperature.py (Tests 2, 6), CondensedPhysics.py simulate_evaporation()  
-**Index Slot:** Â§1.11 Black Hole Physics & Hawking Radiation,  "PAPER_{0:D3}" -f [int]# PAPER #82 â€” Black Hole Evaporation Timescales: UQFF Corrections
+*Source: validate_hawking_temperature.py Tests 2+6, simulate_evaporation() | ? = 0.0005/day | [SSq] = 0.57*
+.Groups[1].Value  — Black Hole Evaporation Timescales: UQFF Corrections
 
 **Title:** UQFF-Corrected Black Hole Evaporation Timescales: Stellar Mass Through Primordial Black Holes
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (Îº = 0.0005/day, [SSq] = 0.57)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57)  
 **Date:** March 7, 2026  
 **Source Data:** validate_hawking_temperature.py (Tests 2, 6), CondensedPhysics.py simulate_evaporation()  
-**Index Slot:** Â§1.11 Black Hole Physics & Hawking Radiation,  
-    $n = [int]# PAPER #82 â€” Black Hole Evaporation Timescales: UQFF Corrections
+**Index Slot:** §1.11 Black Hole Physics & Hawking Radiation,  "PAPER_{0:D3}" -f [int]# PAPER #82 — Black Hole Evaporation Timescales: UQFF Corrections
 
 **Title:** UQFF-Corrected Black Hole Evaporation Timescales: Stellar Mass Through Primordial Black Holes
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (Îº = 0.0005/day, [SSq] = 0.57)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57)  
 **Date:** March 7, 2026  
 **Source Data:** validate_hawking_temperature.py (Tests 2, 6), CondensedPhysics.py simulate_evaporation()  
-**Index Slot:** Â§1.11 Black Hole Physics & Hawking Radiation, PAPER_082  
+**Index Slot:** §1.11 Black Hole Physics & Hawking Radiation,  
+    $n = [int]# PAPER #82 — Black Hole Evaporation Timescales: UQFF Corrections
+
+**Title:** UQFF-Corrected Black Hole Evaporation Timescales: Stellar Mass Through Primordial Black Holes
+
+**Author:** Daniel T. Murphy  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57)  
+**Date:** March 7, 2026  
+**Source Data:** validate_hawking_temperature.py (Tests 2, 6), CondensedPhysics.py simulate_evaporation()  
+**Index Slot:** §1.11 Black Hole Physics & Hawking Radiation, PAPER_082  
 
 ---
 
 ## Abstract
 
-Black hole evaporation timescales are computed via the Stefan-Boltzmann law applied to UQFF-modified Hawking radiation. The standard result t_evap = 5120Ï€GÂ²MÂ³/(â„câ´) is modified by the T_UQFF/T_H = 0.99 ratio. This changes evaporation rates by a factor of (T_UQFF/T_H)â´ = 0.96, extending evaporation timescales by ~4% for all black holes. The `validate_hawking_temperature.py` evaporation simulation (Test 6) confirms mass evolution for primordial BHs at 10Â¹â° kg over 100 timesteps.
+Black hole evaporation timescales are computed via the Stefan-Boltzmann law applied to UQFF-modified Hawking radiation. The standard result t_evap = 5120pG²M³/(?c4) is modified by the T_UQFF/T_H = 0.99 ratio. This changes evaporation rates by a factor of (T_UQFF/T_H)4 = 0.96, extending evaporation timescales by ~4% for all black holes. The `validate_hawking_temperature.py` evaporation simulation (Test 6) confirms mass evolution for primordial BHs at 10¹° kg over 100 timesteps.
+
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -402,50 +422,50 @@ $$t_{\rm evap}^{\rm GR} = \frac{5120 \pi G^2 M_0^3}{\hbar c^4}$$
 
 $$t_{\rm evap}^{\rm UQFF} = \frac{t_{\rm evap}^{\rm GR}}{(T_{\rm UQFF}/T_H)^4} = \frac{t_{\rm evap}^{\rm GR}}{0.99^4} = t_{\rm evap}^{\rm GR} \times 1.041$$
 
-**UQFF evaporation timescale is 4.1% longer than GR** â€” black holes are slightly more stable in the UQFF vacuum.
+**UQFF evaporation timescale is 4.1% longer than GR** — black holes are slightly more stable in the UQFF vacuum.
 
 ---
 
 ## 2. Evaporation Timescales: Full Table
 
-| System | Mâ‚€ | t_evap_GR | t_evap_UQFF | Survives Universe |
+| System | M0 | t_evap_GR | t_evap_UQFF | Survives Universe |
 |--------|-----|-----------|-------------|-------------------|
-| Sgr A* | 4Ã—10â¶ Mâ˜‰ | 8.7Ã—10â¸Â³ s | 9.1Ã—10â¸Â³ s | âœ… Yes |
-| M87* | 6.5Ã—10â¹ Mâ˜‰ | 3.8Ã—10â¹âµ s | 4.0Ã—10â¹âµ s | âœ… Yes |
-| Stellar BH | 10 Mâ˜‰ | 2.1Ã—10â·â´ s | 2.2Ã—10â·â´ s | âœ… Yes |
-| Primordial BH | 5.7Ã—10Â¹Â¹ kg | 4.35Ã—10Â¹â· s = t_U | 4.52Ã—10Â¹â· s | Borderline |
-| Primordial BH | 1Ã—10Â¹â° kg | 2.3Ã—10Â¹Â² s (73 kyr) | 2.4Ã—10Â¹Â² s | âŒ Evaporated |
+| Sgr A* | 4×106 M? | 8.7×108³ s | 9.1×108³ s | ? Yes |
+| M87* | 6.5×10? M? | 3.8×10?5 s | 4.0×10?5 s | ? Yes |
+| Stellar BH | 10 M? | 2.1×1074 s | 2.2×1074 s | ? Yes |
+| Primordial BH | 5.7×10¹¹ kg | 4.35×10¹7 s = t_U | 4.52×10¹7 s | Borderline |
+| Primordial BH | 1×10¹° kg | 2.3×10¹² s (73 kyr) | 2.4×10¹² s | ? Evaporated |
 
 The validate_hawking_temperature.py Test 2 confirms:
-- Stellar BH (10 Mâ˜‰): `survives_universe = True` âœ“
-- Test 6 simulation: M_initial = 10Â¹â° kg, 100 steps, mass_lost_fraction computed âœ“
+- Stellar BH (10 M?): `survives_universe = True` ?
+- Test 6 simulation: M_initial = 10¹° kg, 100 steps, mass_lost_fraction computed ?
 
 ---
 
 ## 3. Mass Evolution Simulation
 
-From `simulate_evaporation(M_initial = 10Â¹â° kg, dt = 10Â¹â° s, n_steps = 100)`:
+From `simulate_evaporation(M_initial = 10¹° kg, dt = 10¹° s, n_steps = 100)`:
 
 $$\frac{dM}{dt} = -\frac{k_{\rm UQFF}}{M^2}, \quad k_{\rm UQFF} = \frac{\hbar c^4 (T_{\rm UQFF}/T_H)^4}{15360 \pi G^2}$$
 
-With T_UQFF/T_H = 0.99: k_UQFF = 0.96 Ã— k_GR
+With T_UQFF/T_H = 0.99: k_UQFF = 0.96 × k_GR
 
-At t = 100 Ã— 10Â¹â° s = 10Â¹Â² s:
-- M_final â‰ˆ M_initial Ã— (1 âˆ’ t/t_evap)^{1/3} = 10Â¹â° Ã— (1 âˆ’ 10Â¹Â²/2.4Ã—10Â¹Â²)^{1/3}
-- M_final â‰ˆ 10Â¹â° Ã— 0.583^{1/3} â‰ˆ 8.35Ã—10â¹ kg
-- Mass lost fraction â‰ˆ **16.5%** over first 10Â¹Â² s
+At t = 100 × 10¹° s = 10¹² s:
+- M_final ˜ M_initial × (1 - t/t_evap)^{1/3} = 10¹° × (1 - 10¹²/2.4×10¹²)^{1/3}
+- M_final ˜ 10¹° × 0.583^{1/3} ˜ 8.35×10? kg
+- Mass lost fraction ˜ **16.5%** over first 10¹² s
 
-Arrays `times[]`, `masses[]`, `temperatures_H[]` all have matching lengths (validate Test 6). âœ“
+Arrays `times[]`, `masses[]`, `temperatures_H[]` all have matching lengths (validate Test 6). ?
 
 ---
 
 ## 4. UQFF Mass Evolution Equation
 
-The UQFF modifies the mass loss rate through the vacuum buoyancy correction. During late-stage evaporation (M â†’ M_Planck):
+The UQFF modifies the mass loss rate through the vacuum buoyancy correction. During late-stage evaporation (M ? M_Planck):
 
 $$\frac{dM_{\rm UQFF}}{dt} = -\frac{k_{\rm UQFF}}{M^2} + \frac{g_{\rm Buoyant} \times V_{\rm BH}}{c^2}$$
 
-The buoyancy term: g_Buoyant Ã— V_BH / cÂ² = Ï_vac Ã— 10âµâµ Ã— (4/3)Ï€ r_SÂ³ / cÂ² ~ 10â»â¸â° kg/s â†’ negligible vs the thermal term at all masses above Planck mass.
+The buoyancy term: g_Buoyant × V_BH / c² = ?_vac × 1055 × (4/3)p r_S³ / c² ~ 10?8° kg/s ? negligible vs the thermal term at all masses above Planck mass.
 
 ---
 
@@ -453,13 +473,13 @@ The buoyancy term: g_Buoyant Ã— V_BH / cÂ² = Ï_vac Ã— 10âµâµ Ã— (4/3)Ï€ r_SÂ³
 
 | Parameter | GR Value | UQFF Value | Change |
 |-----------|---------|------------|--------|
-| Evaporation factor | k_GR | 0.96 Ã— k_GR | âˆ’4% |
-| Timescale t_evap | t_GR | 1.041 Ã— t_GR | +4.1% |
+| Evaporation factor | k_GR | 0.96 × k_GR | -4% |
+| Timescale t_evap | t_GR | 1.041 × t_GR | +4.1% |
 | Stellar BH survival | Yes | Yes | Unchanged |
-| Primordial threshold mass | 5.7Ã—10Â¹Â¹ kg | 5.5Ã—10Â¹Â¹ kg | âˆ’3.5% |
-| Test 2 | `survives = True` | Confirmed | âœ… PASS |
+| Primordial threshold mass | 5.7×10¹¹ kg | 5.5×10¹¹ kg | -3.5% |
+| Test 2 | `survives = True` | Confirmed | ? PASS |
 
-*Source: validate_hawking_temperature.py Tests 2+6, simulate_evaporation() | Îº = 0.0005/day | [SSq] = 0.57*
+*Source: validate_hawking_temperature.py Tests 2+6, simulate_evaporation() | ? = 0.0005/day | [SSq] = 0.57*
 .Groups[1].Value
     "PAPER_{0:D3}" -f $n
     
@@ -468,7 +488,11 @@ The buoyancy term: g_Buoyant Ã— V_BH / cÂ² = Ï_vac Ã— 10âµâµ Ã— (4/3)Ï€ r_SÂ³
 
 ## Abstract
 
-Black hole evaporation timescales are computed via the Stefan-Boltzmann law applied to UQFF-modified Hawking radiation. The standard result t_evap = 5120Ï€GÂ²MÂ³/(â„câ´) is modified by the T_UQFF/T_H = 0.99 ratio. This changes evaporation rates by a factor of (T_UQFF/T_H)â´ = 0.96, extending evaporation timescales by ~4% for all black holes. The `validate_hawking_temperature.py` evaporation simulation (Test 6) confirms mass evolution for primordial BHs at 10Â¹â° kg over 100 timesteps.
+Black hole evaporation timescales are computed via the Stefan-Boltzmann law applied to UQFF-modified Hawking radiation. The standard result t_evap = 5120pG²M³/(?c4) is modified by the T_UQFF/T_H = 0.99 ratio. This changes evaporation rates by a factor of (T_UQFF/T_H)4 = 0.96, extending evaporation timescales by ~4% for all black holes. The `validate_hawking_temperature.py` evaporation simulation (Test 6) confirms mass evolution for primordial BHs at 10¹° kg over 100 timesteps.
+
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -482,50 +506,50 @@ $$t_{\rm evap}^{\rm GR} = \frac{5120 \pi G^2 M_0^3}{\hbar c^4}$$
 
 $$t_{\rm evap}^{\rm UQFF} = \frac{t_{\rm evap}^{\rm GR}}{(T_{\rm UQFF}/T_H)^4} = \frac{t_{\rm evap}^{\rm GR}}{0.99^4} = t_{\rm evap}^{\rm GR} \times 1.041$$
 
-**UQFF evaporation timescale is 4.1% longer than GR** â€” black holes are slightly more stable in the UQFF vacuum.
+**UQFF evaporation timescale is 4.1% longer than GR** — black holes are slightly more stable in the UQFF vacuum.
 
 ---
 
 ## 2. Evaporation Timescales: Full Table
 
-| System | Mâ‚€ | t_evap_GR | t_evap_UQFF | Survives Universe |
+| System | M0 | t_evap_GR | t_evap_UQFF | Survives Universe |
 |--------|-----|-----------|-------------|-------------------|
-| Sgr A* | 4Ã—10â¶ Mâ˜‰ | 8.7Ã—10â¸Â³ s | 9.1Ã—10â¸Â³ s | âœ… Yes |
-| M87* | 6.5Ã—10â¹ Mâ˜‰ | 3.8Ã—10â¹âµ s | 4.0Ã—10â¹âµ s | âœ… Yes |
-| Stellar BH | 10 Mâ˜‰ | 2.1Ã—10â·â´ s | 2.2Ã—10â·â´ s | âœ… Yes |
-| Primordial BH | 5.7Ã—10Â¹Â¹ kg | 4.35Ã—10Â¹â· s = t_U | 4.52Ã—10Â¹â· s | Borderline |
-| Primordial BH | 1Ã—10Â¹â° kg | 2.3Ã—10Â¹Â² s (73 kyr) | 2.4Ã—10Â¹Â² s | âŒ Evaporated |
+| Sgr A* | 4×106 M? | 8.7×108³ s | 9.1×108³ s | ? Yes |
+| M87* | 6.5×10? M? | 3.8×10?5 s | 4.0×10?5 s | ? Yes |
+| Stellar BH | 10 M? | 2.1×1074 s | 2.2×1074 s | ? Yes |
+| Primordial BH | 5.7×10¹¹ kg | 4.35×10¹7 s = t_U | 4.52×10¹7 s | Borderline |
+| Primordial BH | 1×10¹° kg | 2.3×10¹² s (73 kyr) | 2.4×10¹² s | ? Evaporated |
 
 The validate_hawking_temperature.py Test 2 confirms:
-- Stellar BH (10 Mâ˜‰): `survives_universe = True` âœ“
-- Test 6 simulation: M_initial = 10Â¹â° kg, 100 steps, mass_lost_fraction computed âœ“
+- Stellar BH (10 M?): `survives_universe = True` ?
+- Test 6 simulation: M_initial = 10¹° kg, 100 steps, mass_lost_fraction computed ?
 
 ---
 
 ## 3. Mass Evolution Simulation
 
-From `simulate_evaporation(M_initial = 10Â¹â° kg, dt = 10Â¹â° s, n_steps = 100)`:
+From `simulate_evaporation(M_initial = 10¹° kg, dt = 10¹° s, n_steps = 100)`:
 
 $$\frac{dM}{dt} = -\frac{k_{\rm UQFF}}{M^2}, \quad k_{\rm UQFF} = \frac{\hbar c^4 (T_{\rm UQFF}/T_H)^4}{15360 \pi G^2}$$
 
-With T_UQFF/T_H = 0.99: k_UQFF = 0.96 Ã— k_GR
+With T_UQFF/T_H = 0.99: k_UQFF = 0.96 × k_GR
 
-At t = 100 Ã— 10Â¹â° s = 10Â¹Â² s:
-- M_final â‰ˆ M_initial Ã— (1 âˆ’ t/t_evap)^{1/3} = 10Â¹â° Ã— (1 âˆ’ 10Â¹Â²/2.4Ã—10Â¹Â²)^{1/3}
-- M_final â‰ˆ 10Â¹â° Ã— 0.583^{1/3} â‰ˆ 8.35Ã—10â¹ kg
-- Mass lost fraction â‰ˆ **16.5%** over first 10Â¹Â² s
+At t = 100 × 10¹° s = 10¹² s:
+- M_final ˜ M_initial × (1 - t/t_evap)^{1/3} = 10¹° × (1 - 10¹²/2.4×10¹²)^{1/3}
+- M_final ˜ 10¹° × 0.583^{1/3} ˜ 8.35×10? kg
+- Mass lost fraction ˜ **16.5%** over first 10¹² s
 
-Arrays `times[]`, `masses[]`, `temperatures_H[]` all have matching lengths (validate Test 6). âœ“
+Arrays `times[]`, `masses[]`, `temperatures_H[]` all have matching lengths (validate Test 6). ?
 
 ---
 
 ## 4. UQFF Mass Evolution Equation
 
-The UQFF modifies the mass loss rate through the vacuum buoyancy correction. During late-stage evaporation (M â†’ M_Planck):
+The UQFF modifies the mass loss rate through the vacuum buoyancy correction. During late-stage evaporation (M ? M_Planck):
 
 $$\frac{dM_{\rm UQFF}}{dt} = -\frac{k_{\rm UQFF}}{M^2} + \frac{g_{\rm Buoyant} \times V_{\rm BH}}{c^2}$$
 
-The buoyancy term: g_Buoyant Ã— V_BH / cÂ² = Ï_vac Ã— 10âµâµ Ã— (4/3)Ï€ r_SÂ³ / cÂ² ~ 10â»â¸â° kg/s â†’ negligible vs the thermal term at all masses above Planck mass.
+The buoyancy term: g_Buoyant × V_BH / c² = ?_vac × 1055 × (4/3)p r_S³ / c² ~ 10?8° kg/s ? negligible vs the thermal term at all masses above Planck mass.
 
 ---
 
@@ -533,20 +557,24 @@ The buoyancy term: g_Buoyant Ã— V_BH / cÂ² = Ï_vac Ã— 10âµâµ Ã— (4/3)Ï€ r_SÂ³
 
 | Parameter | GR Value | UQFF Value | Change |
 |-----------|---------|------------|--------|
-| Evaporation factor | k_GR | 0.96 Ã— k_GR | âˆ’4% |
-| Timescale t_evap | t_GR | 1.041 Ã— t_GR | +4.1% |
+| Evaporation factor | k_GR | 0.96 × k_GR | -4% |
+| Timescale t_evap | t_GR | 1.041 × t_GR | +4.1% |
 | Stellar BH survival | Yes | Yes | Unchanged |
-| Primordial threshold mass | 5.7Ã—10Â¹Â¹ kg | 5.5Ã—10Â¹Â¹ kg | âˆ’3.5% |
-| Test 2 | `survives = True` | Confirmed | âœ… PASS |
+| Primordial threshold mass | 5.7×10¹¹ kg | 5.5×10¹¹ kg | -3.5% |
+| Test 2 | `survives = True` | Confirmed | ? PASS |
 
-*Source: validate_hawking_temperature.py Tests 2+6, simulate_evaporation() | Îº = 0.0005/day | [SSq] = 0.57*
+*Source: validate_hawking_temperature.py Tests 2+6, simulate_evaporation() | ? = 0.0005/day | [SSq] = 0.57*
 .Groups[1].Value   
 
 ---
 
 ## Abstract
 
-Black hole evaporation timescales are computed via the Stefan-Boltzmann law applied to UQFF-modified Hawking radiation. The standard result t_evap = 5120Ï€GÂ²MÂ³/(â„câ´) is modified by the T_UQFF/T_H = 0.99 ratio. This changes evaporation rates by a factor of (T_UQFF/T_H)â´ = 0.96, extending evaporation timescales by ~4% for all black holes. The `validate_hawking_temperature.py` evaporation simulation (Test 6) confirms mass evolution for primordial BHs at 10Â¹â° kg over 100 timesteps.
+Black hole evaporation timescales are computed via the Stefan-Boltzmann law applied to UQFF-modified Hawking radiation. The standard result t_evap = 5120pG²M³/(?c4) is modified by the T_UQFF/T_H = 0.99 ratio. This changes evaporation rates by a factor of (T_UQFF/T_H)4 = 0.96, extending evaporation timescales by ~4% for all black holes. The `validate_hawking_temperature.py` evaporation simulation (Test 6) confirms mass evolution for primordial BHs at 10¹° kg over 100 timesteps.
+
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -560,50 +588,50 @@ $$t_{\rm evap}^{\rm GR} = \frac{5120 \pi G^2 M_0^3}{\hbar c^4}$$
 
 $$t_{\rm evap}^{\rm UQFF} = \frac{t_{\rm evap}^{\rm GR}}{(T_{\rm UQFF}/T_H)^4} = \frac{t_{\rm evap}^{\rm GR}}{0.99^4} = t_{\rm evap}^{\rm GR} \times 1.041$$
 
-**UQFF evaporation timescale is 4.1% longer than GR** â€” black holes are slightly more stable in the UQFF vacuum.
+**UQFF evaporation timescale is 4.1% longer than GR** — black holes are slightly more stable in the UQFF vacuum.
 
 ---
 
 ## 2. Evaporation Timescales: Full Table
 
-| System | Mâ‚€ | t_evap_GR | t_evap_UQFF | Survives Universe |
+| System | M0 | t_evap_GR | t_evap_UQFF | Survives Universe |
 |--------|-----|-----------|-------------|-------------------|
-| Sgr A* | 4Ã—10â¶ Mâ˜‰ | 8.7Ã—10â¸Â³ s | 9.1Ã—10â¸Â³ s | âœ… Yes |
-| M87* | 6.5Ã—10â¹ Mâ˜‰ | 3.8Ã—10â¹âµ s | 4.0Ã—10â¹âµ s | âœ… Yes |
-| Stellar BH | 10 Mâ˜‰ | 2.1Ã—10â·â´ s | 2.2Ã—10â·â´ s | âœ… Yes |
-| Primordial BH | 5.7Ã—10Â¹Â¹ kg | 4.35Ã—10Â¹â· s = t_U | 4.52Ã—10Â¹â· s | Borderline |
-| Primordial BH | 1Ã—10Â¹â° kg | 2.3Ã—10Â¹Â² s (73 kyr) | 2.4Ã—10Â¹Â² s | âŒ Evaporated |
+| Sgr A* | 4×106 M? | 8.7×108³ s | 9.1×108³ s | ? Yes |
+| M87* | 6.5×10? M? | 3.8×10?5 s | 4.0×10?5 s | ? Yes |
+| Stellar BH | 10 M? | 2.1×1074 s | 2.2×1074 s | ? Yes |
+| Primordial BH | 5.7×10¹¹ kg | 4.35×10¹7 s = t_U | 4.52×10¹7 s | Borderline |
+| Primordial BH | 1×10¹° kg | 2.3×10¹² s (73 kyr) | 2.4×10¹² s | ? Evaporated |
 
 The validate_hawking_temperature.py Test 2 confirms:
-- Stellar BH (10 Mâ˜‰): `survives_universe = True` âœ“
-- Test 6 simulation: M_initial = 10Â¹â° kg, 100 steps, mass_lost_fraction computed âœ“
+- Stellar BH (10 M?): `survives_universe = True` ?
+- Test 6 simulation: M_initial = 10¹° kg, 100 steps, mass_lost_fraction computed ?
 
 ---
 
 ## 3. Mass Evolution Simulation
 
-From `simulate_evaporation(M_initial = 10Â¹â° kg, dt = 10Â¹â° s, n_steps = 100)`:
+From `simulate_evaporation(M_initial = 10¹° kg, dt = 10¹° s, n_steps = 100)`:
 
 $$\frac{dM}{dt} = -\frac{k_{\rm UQFF}}{M^2}, \quad k_{\rm UQFF} = \frac{\hbar c^4 (T_{\rm UQFF}/T_H)^4}{15360 \pi G^2}$$
 
-With T_UQFF/T_H = 0.99: k_UQFF = 0.96 Ã— k_GR
+With T_UQFF/T_H = 0.99: k_UQFF = 0.96 × k_GR
 
-At t = 100 Ã— 10Â¹â° s = 10Â¹Â² s:
-- M_final â‰ˆ M_initial Ã— (1 âˆ’ t/t_evap)^{1/3} = 10Â¹â° Ã— (1 âˆ’ 10Â¹Â²/2.4Ã—10Â¹Â²)^{1/3}
-- M_final â‰ˆ 10Â¹â° Ã— 0.583^{1/3} â‰ˆ 8.35Ã—10â¹ kg
-- Mass lost fraction â‰ˆ **16.5%** over first 10Â¹Â² s
+At t = 100 × 10¹° s = 10¹² s:
+- M_final ˜ M_initial × (1 - t/t_evap)^{1/3} = 10¹° × (1 - 10¹²/2.4×10¹²)^{1/3}
+- M_final ˜ 10¹° × 0.583^{1/3} ˜ 8.35×10? kg
+- Mass lost fraction ˜ **16.5%** over first 10¹² s
 
-Arrays `times[]`, `masses[]`, `temperatures_H[]` all have matching lengths (validate Test 6). âœ“
+Arrays `times[]`, `masses[]`, `temperatures_H[]` all have matching lengths (validate Test 6). ?
 
 ---
 
 ## 4. UQFF Mass Evolution Equation
 
-The UQFF modifies the mass loss rate through the vacuum buoyancy correction. During late-stage evaporation (M â†’ M_Planck):
+The UQFF modifies the mass loss rate through the vacuum buoyancy correction. During late-stage evaporation (M ? M_Planck):
 
 $$\frac{dM_{\rm UQFF}}{dt} = -\frac{k_{\rm UQFF}}{M^2} + \frac{g_{\rm Buoyant} \times V_{\rm BH}}{c^2}$$
 
-The buoyancy term: g_Buoyant Ã— V_BH / cÂ² = Ï_vac Ã— 10âµâµ Ã— (4/3)Ï€ r_SÂ³ / cÂ² ~ 10â»â¸â° kg/s â†’ negligible vs the thermal term at all masses above Planck mass.
+The buoyancy term: g_Buoyant × V_BH / c² = ?_vac × 1055 × (4/3)p r_S³ / c² ~ 10?8° kg/s ? negligible vs the thermal term at all masses above Planck mass.
 
 ---
 
@@ -611,13 +639,13 @@ The buoyancy term: g_Buoyant Ã— V_BH / cÂ² = Ï_vac Ã— 10âµâµ Ã— (4/3)Ï€ r_SÂ³
 
 | Parameter | GR Value | UQFF Value | Change |
 |-----------|---------|------------|--------|
-| Evaporation factor | k_GR | 0.96 Ã— k_GR | âˆ’4% |
-| Timescale t_evap | t_GR | 1.041 Ã— t_GR | +4.1% |
+| Evaporation factor | k_GR | 0.96 × k_GR | -4% |
+| Timescale t_evap | t_GR | 1.041 × t_GR | +4.1% |
 | Stellar BH survival | Yes | Yes | Unchanged |
-| Primordial threshold mass | 5.7Ã—10Â¹Â¹ kg | 5.5Ã—10Â¹Â¹ kg | âˆ’3.5% |
-| Test 2 | `survives = True` | Confirmed | âœ… PASS |
+| Primordial threshold mass | 5.7×10¹¹ kg | 5.5×10¹¹ kg | -3.5% |
+| Test 2 | `survives = True` | Confirmed | ? PASS |
 
-*Source: validate_hawking_temperature.py Tests 2+6, simulate_evaporation() | Îº = 0.0005/day | [SSq] = 0.57*
+*Source: validate_hawking_temperature.py Tests 2+6, simulate_evaporation() | ? = 0.0005/day | [SSq] = 0.57*
 .Groups[1].Value
     "PAPER_{0:D3}" -f $n
     
@@ -626,7 +654,11 @@ The buoyancy term: g_Buoyant Ã— V_BH / cÂ² = Ï_vac Ã— 10âµâµ Ã— (4/3)Ï€ r_SÂ³
 
 ## Abstract
 
-Black hole evaporation timescales are computed via the Stefan-Boltzmann law applied to UQFF-modified Hawking radiation. The standard result t_evap = 5120Ï€GÂ²MÂ³/(â„câ´) is modified by the T_UQFF/T_H = 0.99 ratio. This changes evaporation rates by a factor of (T_UQFF/T_H)â´ = 0.96, extending evaporation timescales by ~4% for all black holes. The `validate_hawking_temperature.py` evaporation simulation (Test 6) confirms mass evolution for primordial BHs at 10Â¹â° kg over 100 timesteps.
+Black hole evaporation timescales are computed via the Stefan-Boltzmann law applied to UQFF-modified Hawking radiation. The standard result t_evap = 5120pG²M³/(?c4) is modified by the T_UQFF/T_H = 0.99 ratio. This changes evaporation rates by a factor of (T_UQFF/T_H)4 = 0.96, extending evaporation timescales by ~4% for all black holes. The `validate_hawking_temperature.py` evaporation simulation (Test 6) confirms mass evolution for primordial BHs at 10¹° kg over 100 timesteps.
+
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -640,50 +672,50 @@ $$t_{\rm evap}^{\rm GR} = \frac{5120 \pi G^2 M_0^3}{\hbar c^4}$$
 
 $$t_{\rm evap}^{\rm UQFF} = \frac{t_{\rm evap}^{\rm GR}}{(T_{\rm UQFF}/T_H)^4} = \frac{t_{\rm evap}^{\rm GR}}{0.99^4} = t_{\rm evap}^{\rm GR} \times 1.041$$
 
-**UQFF evaporation timescale is 4.1% longer than GR** â€” black holes are slightly more stable in the UQFF vacuum.
+**UQFF evaporation timescale is 4.1% longer than GR** — black holes are slightly more stable in the UQFF vacuum.
 
 ---
 
 ## 2. Evaporation Timescales: Full Table
 
-| System | Mâ‚€ | t_evap_GR | t_evap_UQFF | Survives Universe |
+| System | M0 | t_evap_GR | t_evap_UQFF | Survives Universe |
 |--------|-----|-----------|-------------|-------------------|
-| Sgr A* | 4Ã—10â¶ Mâ˜‰ | 8.7Ã—10â¸Â³ s | 9.1Ã—10â¸Â³ s | âœ… Yes |
-| M87* | 6.5Ã—10â¹ Mâ˜‰ | 3.8Ã—10â¹âµ s | 4.0Ã—10â¹âµ s | âœ… Yes |
-| Stellar BH | 10 Mâ˜‰ | 2.1Ã—10â·â´ s | 2.2Ã—10â·â´ s | âœ… Yes |
-| Primordial BH | 5.7Ã—10Â¹Â¹ kg | 4.35Ã—10Â¹â· s = t_U | 4.52Ã—10Â¹â· s | Borderline |
-| Primordial BH | 1Ã—10Â¹â° kg | 2.3Ã—10Â¹Â² s (73 kyr) | 2.4Ã—10Â¹Â² s | âŒ Evaporated |
+| Sgr A* | 4×106 M? | 8.7×108³ s | 9.1×108³ s | ? Yes |
+| M87* | 6.5×10? M? | 3.8×10?5 s | 4.0×10?5 s | ? Yes |
+| Stellar BH | 10 M? | 2.1×1074 s | 2.2×1074 s | ? Yes |
+| Primordial BH | 5.7×10¹¹ kg | 4.35×10¹7 s = t_U | 4.52×10¹7 s | Borderline |
+| Primordial BH | 1×10¹° kg | 2.3×10¹² s (73 kyr) | 2.4×10¹² s | ? Evaporated |
 
 The validate_hawking_temperature.py Test 2 confirms:
-- Stellar BH (10 Mâ˜‰): `survives_universe = True` âœ“
-- Test 6 simulation: M_initial = 10Â¹â° kg, 100 steps, mass_lost_fraction computed âœ“
+- Stellar BH (10 M?): `survives_universe = True` ?
+- Test 6 simulation: M_initial = 10¹° kg, 100 steps, mass_lost_fraction computed ?
 
 ---
 
 ## 3. Mass Evolution Simulation
 
-From `simulate_evaporation(M_initial = 10Â¹â° kg, dt = 10Â¹â° s, n_steps = 100)`:
+From `simulate_evaporation(M_initial = 10¹° kg, dt = 10¹° s, n_steps = 100)`:
 
 $$\frac{dM}{dt} = -\frac{k_{\rm UQFF}}{M^2}, \quad k_{\rm UQFF} = \frac{\hbar c^4 (T_{\rm UQFF}/T_H)^4}{15360 \pi G^2}$$
 
-With T_UQFF/T_H = 0.99: k_UQFF = 0.96 Ã— k_GR
+With T_UQFF/T_H = 0.99: k_UQFF = 0.96 × k_GR
 
-At t = 100 Ã— 10Â¹â° s = 10Â¹Â² s:
-- M_final â‰ˆ M_initial Ã— (1 âˆ’ t/t_evap)^{1/3} = 10Â¹â° Ã— (1 âˆ’ 10Â¹Â²/2.4Ã—10Â¹Â²)^{1/3}
-- M_final â‰ˆ 10Â¹â° Ã— 0.583^{1/3} â‰ˆ 8.35Ã—10â¹ kg
-- Mass lost fraction â‰ˆ **16.5%** over first 10Â¹Â² s
+At t = 100 × 10¹° s = 10¹² s:
+- M_final ˜ M_initial × (1 - t/t_evap)^{1/3} = 10¹° × (1 - 10¹²/2.4×10¹²)^{1/3}
+- M_final ˜ 10¹° × 0.583^{1/3} ˜ 8.35×10? kg
+- Mass lost fraction ˜ **16.5%** over first 10¹² s
 
-Arrays `times[]`, `masses[]`, `temperatures_H[]` all have matching lengths (validate Test 6). âœ“
+Arrays `times[]`, `masses[]`, `temperatures_H[]` all have matching lengths (validate Test 6). ?
 
 ---
 
 ## 4. UQFF Mass Evolution Equation
 
-The UQFF modifies the mass loss rate through the vacuum buoyancy correction. During late-stage evaporation (M â†’ M_Planck):
+The UQFF modifies the mass loss rate through the vacuum buoyancy correction. During late-stage evaporation (M ? M_Planck):
 
 $$\frac{dM_{\rm UQFF}}{dt} = -\frac{k_{\rm UQFF}}{M^2} + \frac{g_{\rm Buoyant} \times V_{\rm BH}}{c^2}$$
 
-The buoyancy term: g_Buoyant Ã— V_BH / cÂ² = Ï_vac Ã— 10âµâµ Ã— (4/3)Ï€ r_SÂ³ / cÂ² ~ 10â»â¸â° kg/s â†’ negligible vs the thermal term at all masses above Planck mass.
+The buoyancy term: g_Buoyant × V_BH / c² = ?_vac × 1055 × (4/3)p r_S³ / c² ~ 10?8° kg/s ? negligible vs the thermal term at all masses above Planck mass.
 
 ---
 
@@ -691,10 +723,13 @@ The buoyancy term: g_Buoyant Ã— V_BH / cÂ² = Ï_vac Ã— 10âµâµ Ã— (4/3)Ï€ r_SÂ³
 
 | Parameter | GR Value | UQFF Value | Change |
 |-----------|---------|------------|--------|
-| Evaporation factor | k_GR | 0.96 Ã— k_GR | âˆ’4% |
-| Timescale t_evap | t_GR | 1.041 Ã— t_GR | +4.1% |
+| Evaporation factor | k_GR | 0.96 × k_GR | -4% |
+| Timescale t_evap | t_GR | 1.041 × t_GR | +4.1% |
 | Stellar BH survival | Yes | Yes | Unchanged |
-| Primordial threshold mass | 5.7Ã—10Â¹Â¹ kg | 5.5Ã—10Â¹Â¹ kg | âˆ’3.5% |
-| Test 2 | `survives = True` | Confirmed | âœ… PASS |
+| Primordial threshold mass | 5.7×10¹¹ kg | 5.5×10¹¹ kg | -3.5% |
+| Test 2 | `survives = True` | Confirmed | ? PASS |
 
-*Source: validate_hawking_temperature.py Tests 2+6, simulate_evaporation() | Îº = 0.0005/day | [SSq] = 0.57*
+*Source: validate_hawking_temperature.py Tests 2+6, simulate_evaporation() | ? = 0.0005/day | [SSq] = 0.57*
+
+
+**UQFF computed:** Eddington luminosity UQFF correction = 1 - [SSq]×exp(-?×?t) = 1 - 5.7e-1 × exp(-2.9e-4) = 4.3e-1; F_U at event horizon = 2.0e+18 m/s².

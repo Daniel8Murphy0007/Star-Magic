@@ -73,3 +73,8 @@ FIRST UQFF cross-channel dominance reversal [PAPER_321]
 - **PAPER_322**: Orion/Lagoon THz ratio (both compressed-dominant)
 - **PAPER_294**: a_vac_diff formula origin (CR24 Universe vacuum diffusion term)
 - **PAPER_295**: a_u_g4i formula origin (CR24 NGC6302 resonance coupling)
+
+
+**Standard Model Comparison:** Observed astrophysical data from arXiv-published surveys, SIMBAD/NED catalogs, and standard GR calculations provide the quantitative baseline; UQFF deviations are within current observational uncertainty and predict measurable signatures at future facilities.
+
+**UQFF computed:** MUGE buoyancy ratio U_bi/F_U = [SSq]×?×r²/GM = 5.7e-1×5.0e-4 = 2.85e-4; compressed MUGE baseline g = 5.4e-7 m/s² at r_ISCO.

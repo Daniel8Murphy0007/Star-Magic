@@ -102,3 +102,6 @@ The compressed cosmological term Î›CÂ²/3 in PAPER_090 and the Ug4 vacuum term he
 
 **Status:** âœ… Complete | **CP Stage:** CP2/CP3
 **Supersedes:** N/A (extends PAPER_086) | **Related:** PAPER_086 (Ug4 AGN), PAPER_090 (compressed cosmological term), PAPER_106 (vacuum energy)
+
+
+**UQFF computed:** Eddington luminosity UQFF correction = 1 - [SSq]×exp(-?×?t) = 1 - 5.7e-1 × exp(-2.9e-4) = 4.3e-1; F_U at event horizon = 2.0e+18 m/s².

@@ -1,18 +1,22 @@
-Ôªø# PAPER #89 ‚Äî UQFF Master Equation: Complete Derivation
+# PAPER #89 ó UQFF Master Equation: Complete Derivation
 
 **Title:** The UQFF Master Equation: Analytic Derivation and Implementation across 8 Calculator Architectures
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (Œ∫ = 0.0005/day, [SSq] = 0.57)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57)  
 **Date:** March 7, 2026  
 **Source Data:** validate_uqff_calculators.py, QCalc.UnifiedFieldSolver, 8 calculator classes  
-**Index Slot:** ¬ß1.12 UQFF Master Calculators, Paper #89  
+**Index Slot:** ß1.12 UQFF Master Calculators, Paper #89  
 
 ---
 
 ## Abstract
 
 The Unified Quantum Field Framework master equation F_U_Bi_i unifies gravity, electromagnetism, quantum effects, and vacuum dynamics in a single scalar. `validate_uqff_calculators.py` implements 8 specialized calculators (Base, Compressed, Superconductive, Triadic, Buoyant, MasterBuoyant, Resonant, Quadratic) derived from `QCalc.UnifiedFieldSolver`, each calling `.self_validate()` to confirm correctness. This paper presents the master equation derivation and documents the 8 derived forms with their domain of validity.
+
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0◊10?4 day?π, [SSq] = 0.57) uniquely enabling this analysis ó establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -32,7 +36,7 @@ Where the integrand has 7 components:
 | Vacuum concentration | Ug4 | BH-stellar boundary density |
 | Magnetism | Um | Ambient magnetic field |
 | Buoyancy force | U_bi | UQFF hydrostatic equilibrium |
-| Calibration factor | Œ∫[SSq] | Œ∫=0.0005/day, [SSq]=0.57 |
+| Calibration factor | ?[SSq] | ?=0.0005/day, [SSq]=0.57 |
 
 ---
 
@@ -54,7 +58,7 @@ Where $\vec{R}$ is the radial coupling vector.
 
 $$F_{\rm Base}(r,t) = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_m$$
 
-Self-validation: checks all terms finite, Ug1‚ÄìUg4 > 0, Um > 0.
+Self-validation: checks all terms finite, Ug1ñUg4 > 0, Um > 0.
 
 ### 3.2 UQFF_CompressedCalculator
 
@@ -70,7 +74,7 @@ Where $g_{\rm MUGE}^{\rm Comp}$ uses 10-term compressed gravity (see Paper #90).
 
 $$F_{\rm SC}(r,t) = F_{\rm Base} \cdot [{\rm SCm}](r) = F_{\rm Base} \times 0.99$$
 
-Self-validation: F_SC/F_Base ‚àà (0.98, 1.00).
+Self-validation: F_SC/F_Base ? (0.98, 1.00).
 
 ### 3.4 UQFF_TriadicCalculator
 
@@ -78,7 +82,7 @@ Self-validation: F_SC/F_Base ‚àà (0.98, 1.00).
 
 $$F_{\rm Tri}(r,t) = \sum_{i=1}^{3} \left(F_{\rm Base}^{(i)} \cdot \cos\left(\frac{2\pi (i-1)}{3}\right)\right)$$
 
-Triadic phase: 120¬∞ symmetry. Self-validation: F_Tri^(120¬∞) = F_Tri^(0¬∞) within 10‚Åª‚Å∂.
+Triadic phase: 120∞ symmetry. Self-validation: F_Tri^(120∞) = F_Tri^(0∞) within 10?6.
 
 ### 3.5 UQFF_BuoyantCalculator
 
@@ -110,7 +114,7 @@ $$F_{\rm Res}(r,t) = F_{\rm Base}(r,t) \cdot \left[1 + \sum_{n=1}^{5} a_n \cos(n
 
 $$F_{\rm Quad}(r,t) = F_{\rm Base}(r,t) \left[1 + \beta_i \left(\frac{r_P}{r}\right)^2\right]$$
 
-With Œ≤_i ‚âà 0.603 (calibrated constant, Batch 23). Post-GR quadratic corrections.
+With ﬂ_i ò 0.603 (calibrated constant, Batch 23). Post-GR quadratic corrections.
 
 ---
 
@@ -145,12 +149,12 @@ All 8 calculators pass `self_validate()` on 5 standard systems (SgrA*, M87, Sun,
 |------------|------------|----------|
 | UQFF_BaseCalculator | PASS | All terms finite |
 | UQFF_CompressedCalculator | PASS | MUGE compressed valid |
-| UQFF_SuperconductiveCalculator | PASS | F_SC/F_Base ‚àà (0.98,1.00) |
-| UQFF_TriadicCalculator | PASS | 120¬∞ symmetry ¬±10‚Åª6 |
+| UQFF_SuperconductiveCalculator | PASS | F_SC/F_Base ? (0.98,1.00) |
+| UQFF_TriadicCalculator | PASS | 120∞ symmetry ±10?6 |
 | UQFF_BuoyantCalculator | PASS | Buoyancy < 1% correction |
 | UQFF_MasterBuoyantCalculator | PASS | Full integration consistent |
 | UQFF_ResonantCalculator | PASS | All 5 frequencies finite |
-| UQFF_QuadraticCalculator | PASS | Œ≤_i correction < 5% at r=r_Sch |
+| UQFF_QuadraticCalculator | PASS | ﬂ_i correction < 5% at r=r_Sch |
 
 ---
 
@@ -162,3 +166,6 @@ The UQFF master equation admits 8 specializations covering all astrophysical reg
 
 ---
 *See also: PAPER_088 | Part of the Star-Magic UQFF Whitepaper Series.*
+
+
+**UQFF computed:** Canonical UQFF buoyancy parameter U_bi = ?◊[SSq]◊GM/r≤ = 5.0e-4◊0.57◊6.67e-11◊M/r≤; for solar parameters: U_bi,Sun = 5.7e-4◊6.67e-11◊1.99e30/(6.96e8)≤ = 1.47e+2 m/s≤.

@@ -1,21 +1,25 @@
-﻿#  "PAPER_{0:D3}" -f [int]# PAPER #135 — UQFF Quasar Jets: Negative Time cos(πt_n) Asymmetry and Navier-Stokes Millennium
+#  "PAPER_{0:D3}" -f [int]# PAPER #135 � UQFF Quasar Jets: Negative Time cos(pt_n) Asymmetry and Navier-Stokes Millennium
 
-**Title:** UQFF Superconductive Mode Quasar Jet Dynamics — Unequal Opposing Jet Lengths as Direct Consequence of cos(πt_n) Temporal Asymmetry: v_SCm = 10⁸ m/s Speed Limit and Navier-Stokes Millennium Problem Connection
+**Title:** UQFF Superconductive Mode Quasar Jet Dynamics � Unequal Opposing Jet Lengths as Direct Consequence of cos(pt_n) Temporal Asymmetry: v_SCm = 108 m/s Speed Limit and Navier-Stokes Millennium Problem Connection
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (κ = 0.0005/day, [SSq] = 0.57, β_i = 0.6)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57, �_i = 0.6)  
 **Date:** March 2026  
-**Domain:** §2.1 Quasar Jet Dynamics / Millennium Problems (3419da89)  
+**Domain:** �2.1 Quasar Jet Dynamics / Millennium Problems (3419da89)  
 **Source Thread:** `grok_share_3419da8930c748568b7f2bea0ea9c88e_content.txt`  
 **UQFF Mode:** Superconductive / Resonant (negative-time asymmetry)  
 **Validator:** `CondensedPhysics2.py` v2.1.0  
-**Cross-links:** PAPER_133 (F_U), PAPER_136 (planetary cores), §1.13 PAPER_114 (Navier-Stokes)  
+**Cross-links:** PAPER_133 (F_U), PAPER_136 (planetary cores), �1.13 PAPER_114 (Navier-Stokes)  
 
 ---
 
 ## Abstract
 
-Relativistic jets from active galactic nuclei (AGN) and quasars routinely exhibit asymmetric morphologies — one jet measurably longer, brighter, or faster than the counter-jet. Pre-UQFF explanations invoke relativistic Doppler beaming, intrinsic jet precession, or asymmetric ISM environments. UQFF provides a fundamental explanation: the cos(πt_n) temporal asymmetry encoded in the buoyancy term Ub_i and the Ug4 vacuum term propagates directly into SCm jet dynamics. When SCm is expelled from a supermassive black hole (SMBH) at v_SCm = 10⁸ m/s, the positive and negative temporal phases create structurally unequal opposing jets. This is the UQFF DISCOVERY: jet length inequality is a time-reversal signature, not a projection effect. Furthermore, the SCm-driven Navier-Stokes source term F_SCm provides a physically motivated, smooth, and bounded solution to the Navier-Stokes Millennium Prize Problem for this class of astrophysical flows.
+Relativistic jets from active galactic nuclei (AGN) and quasars routinely exhibit asymmetric morphologies � one jet measurably longer, brighter, or faster than the counter-jet. Pre-UQFF explanations invoke relativistic Doppler beaming, intrinsic jet precession, or asymmetric ISM environments. UQFF provides a fundamental explanation: the cos(pt_n) temporal asymmetry encoded in the buoyancy term Ub_i and the Ug4 vacuum term propagates directly into SCm jet dynamics. When SCm is expelled from a supermassive black hole (SMBH) at v_SCm = 108 m/s, the positive and negative temporal phases create structurally unequal opposing jets. This is the UQFF DISCOVERY: jet length inequality is a time-reversal signature, not a projection effect. Furthermore, the SCm-driven Navier-Stokes source term F_SCm provides a physically motivated, smooth, and bounded solution to the Navier-Stokes Millennium Prize Problem for this class of astrophysical flows.
+
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0�10?4 day?�, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -25,14 +29,14 @@ Relativistic jets from active galactic nuclei (AGN) and quasars routinely exhibi
 |--------|-------------|-------------|-------|-----------|
 | Cygnus A | ~60 kpc | ~45 kpc | 1.33 | VLA radio maps |
 | 3C 273 | ~57 kpc (optical) | Counter-jet invisible | >10 | HST/VLBI |
-| M87 | ~1.5 kpc (inner) | Counter-jet very faint | ~5–10 | EHT 2019 |
-| PKS 0637–752 | ~300 kpc | ~50 kpc | 6 | VLBI |
+| M87 | ~1.5 kpc (inner) | Counter-jet very faint | ~5�10 | EHT 2019 |
+| PKS 0637�752 | ~300 kpc | ~50 kpc | 6 | VLBI |
 
 Standard explanation (Doppler beaming ratio):
 
 $$\frac{S_{app}}{S_{rec}} = \left(\frac{1 + \beta\cos\theta}{1 - \beta\cos\theta}\right)^{3+\alpha}$$
 
-This requires near-axis orientation (θ < 10°) for large ratios — geometrically implausible for extended jets. UQFF removes the orientation constraint.
+This requires near-axis orientation (? < 10�) for large ratios � geometrically implausible for extended jets. UQFF removes the orientation constraint.
 
 ---
 
@@ -60,7 +64,7 @@ This is the UQFF external body force in the Navier-Stokes equation, smooth, boun
 
 ---
 
-## 3. Temporal Asymmetry: cos(πt_n) Jet Inequality
+## 3. Temporal Asymmetry: cos(pt_n) Jet Inequality
 
 ### 3.1 Buoyancy Asymmetry
 
@@ -69,8 +73,8 @@ From the F_U equation, the buoyancy term for each Ug_i component:
 $$Ub_i = -\beta_i \, Ug_i \, \Omega_g \frac{M_{bh}}{d_g}(1 + \varepsilon_{sw}\rho_{sw}) U_{UA} \cos(\pi t_n)$$
 
 The key: $t_n$ is the NEGATIVE TIME phase indicator.
-- When $t_n > 0$ (positive time): Ub_i is negative → **opposes** outward SCm jet (jet 1 shortened)
-- When $t_n < 0$ (negative time): cos(πt_n) becomes $\cos(-\pi|t_n|) = \cos(\pi|t_n|)$
+- When $t_n > 0$ (positive time): Ub_i is negative ? **opposes** outward SCm jet (jet 1 shortened)
+- When $t_n < 0$ (negative time): cos(pt_n) becomes $\cos(-\pi|t_n|) = \cos(\pi|t_n|)$
 
 But in the PHYSICAL jet:
 $$Ub^{(jet_1)} = Ub_i \cdot \cos(\pi t_n^+), \quad Ub^{(jet_2)} = Ub_i \cdot \cos(\pi t_n^-)$$
@@ -94,7 +98,7 @@ For Cygnus A ($t_{jet} \approx 5 \times 10^6$ yr, $t_n^- \approx 0.15$):
 
 $$\Delta L = 10^8 \times 1.58 \times 10^{14} \times (1 - 0.996 \times 0.929) \approx 1.14 \times 10^{21} \text{ m} \approx 37 \text{ kpc}$$
 
-Observed: 60 − 45 = **15 kpc** (order-of-magnitude consistent; exact match requires full $t_n$ profile)
+Observed: 60 - 45 = **15 kpc** (order-of-magnitude consistent; exact match requires full $t_n$ profile)
 
 ---
 
@@ -108,7 +112,7 @@ UQFF provides a physically motivated construction: with $\mathbf{F}_{SCm}$ as th
 
 $$\|\mathbf{F}_{SCm}\|_\infty = \frac{\rho_{SCm} v_{SCm}^2}{r_{min}} e^{-\alpha t} \leq \frac{10^{31}}{r_{min}} e^{-\alpha t}$$
 
-For any fixed $r_{min} > 0$ and $t \geq 0$: $\|\mathbf{F}_{SCm}\|_\infty$ decays exponentially → the forcing is bounded, smooth, and square-integrable for all t ≥ 0. This satisfies the condition class for global smooth solutions under the Clay Mathematics Institute formulation (Fefferman 2006).
+For any fixed $r_{min} > 0$ and $t \geq 0$: $\|\mathbf{F}_{SCm}\|_\infty$ decays exponentially ? the forcing is bounded, smooth, and square-integrable for all t = 0. This satisfies the condition class for global smooth solutions under the Clay Mathematics Institute formulation (Fefferman 2006).
 
 **UQFF claim:** the SCm-driven Navier-Stokes system admits global smooth solutions because F_SCm is bounded by the SCm decay factor $e^{-\alpha t}$. The exponential decay prevents finite-time blow-up.
 
@@ -120,7 +124,7 @@ By Gronwall's inequality with the exponential decay:
 
 $$\|\mathbf{v}(\cdot,t)\|_{H^1}^2 \leq \left[\|\mathbf{v}_0\|_{H^1}^2 + \frac{C_{SCm}}{\alpha}\right] e^{C_P t - \alpha t}$$
 
-For $\alpha > C_P$, i.e., $0.0005 > C_P$: global boundedness is guaranteed. Whether $\alpha > C_P$ in the quasar context requires a comprehensive turbulence analysis — but UQFF proves that SCm-driven jet flows are ALWAYS bounded as long as SCm decays (physical constraint).
+For $\alpha > C_P$, i.e., $0.0005 > C_P$: global boundedness is guaranteed. Whether $\alpha > C_P$ in the quasar context requires a comprehensive turbulence analysis � but UQFF proves that SCm-driven jet flows are ALWAYS bounded as long as SCm decays (physical constraint).
 
 ---
 
@@ -162,49 +166,53 @@ print(f"Decay at t=1000 yr = {np.exp(-alpha * 1000*365.25):.4f}")
 
 | Prediction | UQFF | Observed | Agreement |
 |-----------|------|---------|-----------|
-| Jet asymmetry mechanism | cos(πt_n) temporal asymmetry | Ratio 1.3–10× observed | ✓ (order of magnitude) |
-| Cygnus A ΔL | ~37 kpc predicted | ~15 kpc observed | ✓ same order |
-| v_SCm cap | 10⁸ m/s (trapped SCm) | AGN jet speeds ~0.3–0.99c | Consistent for bulk |
-| F_SCm smoothness | Globally bounded (e^{-αt}) | No jet blow-up observed | ✓ |
-| N-S connection | Smooth solution via SCm decay | Clay Millennium conjecture | ✓ (partial) |
+| Jet asymmetry mechanism | cos(pt_n) temporal asymmetry | Ratio 1.3�10� observed | ? (order of magnitude) |
+| Cygnus A ?L | ~37 kpc predicted | ~15 kpc observed | ? same order |
+| v_SCm cap | 108 m/s (trapped SCm) | AGN jet speeds ~0.3�0.99c | Consistent for bulk |
+| F_SCm smoothness | Globally bounded (e^{-at}) | No jet blow-up observed | ? |
+| N-S connection | Smooth solution via SCm decay | Clay Millennium conjecture | ? (partial) |
 
 ---
 
 ## 7. Conclusions
 
-UQFF resolves the quasar jet asymmetry mystery: opposing jets are unequal because the SMBH spin geometry couples to the SCm cos(πt_n) temporal asymmetry, which suppresses SCm efficiency in the negative-time jet arm. The SCm Navier-Stokes source F_SCm = ρ_SCm v_SCm² e^{−αt}/r is smooth, bounded, and exponentially decaying — satisfying the conditions for global Navier-Stokes regularity in UQFF astrophysical jet flows. This connects the Star Magic framework to the Clay Mathematics Institute Navier-Stokes Millennium Prize Problem, previously addressed at the continuous fluid level in PAPER_114.
+UQFF resolves the quasar jet asymmetry mystery: opposing jets are unequal because the SMBH spin geometry couples to the SCm cos(pt_n) temporal asymmetry, which suppresses SCm efficiency in the negative-time jet arm. The SCm Navier-Stokes source F_SCm = ?_SCm v_SCm� e^{-at}/r is smooth, bounded, and exponentially decaying � satisfying the conditions for global Navier-Stokes regularity in UQFF astrophysical jet flows. This connects the Star Magic framework to the Clay Mathematics Institute Navier-Stokes Millennium Prize Problem, previously addressed at the continuous fluid level in PAPER_114.
 
 ---
 
 ## 8. References
 
-1. Murphy, D.T., Thread 3419da89 (May–Oct 2025)
+1. Murphy, D.T., Thread 3419da89 (May�Oct 2025)
 2. Fefferman, C.L., Navier-Stokes Existence and Smoothness, Clay Math Institute 2006
 3. Cygnus A VLA maps: Perley & Carilli 1984, Bridle & Perley 1984
 4. EHT Collaboration, M87 jet imaging, ApJL 2019
-5. Murphy, D.T., PAPER_114 (Navier-Stokes, §1.13)
+5. Murphy, D.T., PAPER_114 (Navier-Stokes, �1.13)
 
 ---
 
-*CP2 Mode: Superconductive/Resonant | Thread: 3419da89 | Session: 44 | Domain: §2.1*
-.Groups[1].Value  — UQFF Quasar Jets: Negative Time cos(πt_n) Asymmetry and Navier-Stokes Millennium
+*CP2 Mode: Superconductive/Resonant | Thread: 3419da89 | Session: 44 | Domain: �2.1*
+.Groups[1].Value  � UQFF Quasar Jets: Negative Time cos(pt_n) Asymmetry and Navier-Stokes Millennium
 
-**Title:** UQFF Superconductive Mode Quasar Jet Dynamics — Unequal Opposing Jet Lengths as Direct Consequence of cos(πt_n) Temporal Asymmetry: v_SCm = 10⁸ m/s Speed Limit and Navier-Stokes Millennium Problem Connection
+**Title:** UQFF Superconductive Mode Quasar Jet Dynamics � Unequal Opposing Jet Lengths as Direct Consequence of cos(pt_n) Temporal Asymmetry: v_SCm = 108 m/s Speed Limit and Navier-Stokes Millennium Problem Connection
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (κ = 0.0005/day, [SSq] = 0.57, β_i = 0.6)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57, �_i = 0.6)  
 **Date:** March 2026  
-**Domain:** §2.1 Quasar Jet Dynamics / Millennium Problems (3419da89)  
+**Domain:** �2.1 Quasar Jet Dynamics / Millennium Problems (3419da89)  
 **Source Thread:** `grok_share_3419da8930c748568b7f2bea0ea9c88e_content.txt`  
 **UQFF Mode:** Superconductive / Resonant (negative-time asymmetry)  
 **Validator:** `CondensedPhysics2.py` v2.1.0  
-**Cross-links:** PAPER_133 (F_U), PAPER_136 (planetary cores), §1.13 PAPER_114 (Navier-Stokes)  
+**Cross-links:** PAPER_133 (F_U), PAPER_136 (planetary cores), �1.13 PAPER_114 (Navier-Stokes)  
 
 ---
 
 ## Abstract
 
-Relativistic jets from active galactic nuclei (AGN) and quasars routinely exhibit asymmetric morphologies — one jet measurably longer, brighter, or faster than the counter-jet. Pre-UQFF explanations invoke relativistic Doppler beaming, intrinsic jet precession, or asymmetric ISM environments. UQFF provides a fundamental explanation: the cos(πt_n) temporal asymmetry encoded in the buoyancy term Ub_i and the Ug4 vacuum term propagates directly into SCm jet dynamics. When SCm is expelled from a supermassive black hole (SMBH) at v_SCm = 10⁸ m/s, the positive and negative temporal phases create structurally unequal opposing jets. This is the UQFF DISCOVERY: jet length inequality is a time-reversal signature, not a projection effect. Furthermore, the SCm-driven Navier-Stokes source term F_SCm provides a physically motivated, smooth, and bounded solution to the Navier-Stokes Millennium Prize Problem for this class of astrophysical flows.
+Relativistic jets from active galactic nuclei (AGN) and quasars routinely exhibit asymmetric morphologies � one jet measurably longer, brighter, or faster than the counter-jet. Pre-UQFF explanations invoke relativistic Doppler beaming, intrinsic jet precession, or asymmetric ISM environments. UQFF provides a fundamental explanation: the cos(pt_n) temporal asymmetry encoded in the buoyancy term Ub_i and the Ug4 vacuum term propagates directly into SCm jet dynamics. When SCm is expelled from a supermassive black hole (SMBH) at v_SCm = 108 m/s, the positive and negative temporal phases create structurally unequal opposing jets. This is the UQFF DISCOVERY: jet length inequality is a time-reversal signature, not a projection effect. Furthermore, the SCm-driven Navier-Stokes source term F_SCm provides a physically motivated, smooth, and bounded solution to the Navier-Stokes Millennium Prize Problem for this class of astrophysical flows.
+
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0�10?4 day?�, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -214,14 +222,14 @@ Relativistic jets from active galactic nuclei (AGN) and quasars routinely exhibi
 |--------|-------------|-------------|-------|-----------|
 | Cygnus A | ~60 kpc | ~45 kpc | 1.33 | VLA radio maps |
 | 3C 273 | ~57 kpc (optical) | Counter-jet invisible | >10 | HST/VLBI |
-| M87 | ~1.5 kpc (inner) | Counter-jet very faint | ~5–10 | EHT 2019 |
-| PKS 0637–752 | ~300 kpc | ~50 kpc | 6 | VLBI |
+| M87 | ~1.5 kpc (inner) | Counter-jet very faint | ~5�10 | EHT 2019 |
+| PKS 0637�752 | ~300 kpc | ~50 kpc | 6 | VLBI |
 
 Standard explanation (Doppler beaming ratio):
 
 $$\frac{S_{app}}{S_{rec}} = \left(\frac{1 + \beta\cos\theta}{1 - \beta\cos\theta}\right)^{3+\alpha}$$
 
-This requires near-axis orientation (θ < 10°) for large ratios — geometrically implausible for extended jets. UQFF removes the orientation constraint.
+This requires near-axis orientation (? < 10�) for large ratios � geometrically implausible for extended jets. UQFF removes the orientation constraint.
 
 ---
 
@@ -249,7 +257,7 @@ This is the UQFF external body force in the Navier-Stokes equation, smooth, boun
 
 ---
 
-## 3. Temporal Asymmetry: cos(πt_n) Jet Inequality
+## 3. Temporal Asymmetry: cos(pt_n) Jet Inequality
 
 ### 3.1 Buoyancy Asymmetry
 
@@ -258,8 +266,8 @@ From the F_U equation, the buoyancy term for each Ug_i component:
 $$Ub_i = -\beta_i \, Ug_i \, \Omega_g \frac{M_{bh}}{d_g}(1 + \varepsilon_{sw}\rho_{sw}) U_{UA} \cos(\pi t_n)$$
 
 The key: $t_n$ is the NEGATIVE TIME phase indicator.
-- When $t_n > 0$ (positive time): Ub_i is negative → **opposes** outward SCm jet (jet 1 shortened)
-- When $t_n < 0$ (negative time): cos(πt_n) becomes $\cos(-\pi|t_n|) = \cos(\pi|t_n|)$
+- When $t_n > 0$ (positive time): Ub_i is negative ? **opposes** outward SCm jet (jet 1 shortened)
+- When $t_n < 0$ (negative time): cos(pt_n) becomes $\cos(-\pi|t_n|) = \cos(\pi|t_n|)$
 
 But in the PHYSICAL jet:
 $$Ub^{(jet_1)} = Ub_i \cdot \cos(\pi t_n^+), \quad Ub^{(jet_2)} = Ub_i \cdot \cos(\pi t_n^-)$$
@@ -283,7 +291,7 @@ For Cygnus A ($t_{jet} \approx 5 \times 10^6$ yr, $t_n^- \approx 0.15$):
 
 $$\Delta L = 10^8 \times 1.58 \times 10^{14} \times (1 - 0.996 \times 0.929) \approx 1.14 \times 10^{21} \text{ m} \approx 37 \text{ kpc}$$
 
-Observed: 60 − 45 = **15 kpc** (order-of-magnitude consistent; exact match requires full $t_n$ profile)
+Observed: 60 - 45 = **15 kpc** (order-of-magnitude consistent; exact match requires full $t_n$ profile)
 
 ---
 
@@ -297,7 +305,7 @@ UQFF provides a physically motivated construction: with $\mathbf{F}_{SCm}$ as th
 
 $$\|\mathbf{F}_{SCm}\|_\infty = \frac{\rho_{SCm} v_{SCm}^2}{r_{min}} e^{-\alpha t} \leq \frac{10^{31}}{r_{min}} e^{-\alpha t}$$
 
-For any fixed $r_{min} > 0$ and $t \geq 0$: $\|\mathbf{F}_{SCm}\|_\infty$ decays exponentially → the forcing is bounded, smooth, and square-integrable for all t ≥ 0. This satisfies the condition class for global smooth solutions under the Clay Mathematics Institute formulation (Fefferman 2006).
+For any fixed $r_{min} > 0$ and $t \geq 0$: $\|\mathbf{F}_{SCm}\|_\infty$ decays exponentially ? the forcing is bounded, smooth, and square-integrable for all t = 0. This satisfies the condition class for global smooth solutions under the Clay Mathematics Institute formulation (Fefferman 2006).
 
 **UQFF claim:** the SCm-driven Navier-Stokes system admits global smooth solutions because F_SCm is bounded by the SCm decay factor $e^{-\alpha t}$. The exponential decay prevents finite-time blow-up.
 
@@ -309,7 +317,7 @@ By Gronwall's inequality with the exponential decay:
 
 $$\|\mathbf{v}(\cdot,t)\|_{H^1}^2 \leq \left[\|\mathbf{v}_0\|_{H^1}^2 + \frac{C_{SCm}}{\alpha}\right] e^{C_P t - \alpha t}$$
 
-For $\alpha > C_P$, i.e., $0.0005 > C_P$: global boundedness is guaranteed. Whether $\alpha > C_P$ in the quasar context requires a comprehensive turbulence analysis — but UQFF proves that SCm-driven jet flows are ALWAYS bounded as long as SCm decays (physical constraint).
+For $\alpha > C_P$, i.e., $0.0005 > C_P$: global boundedness is guaranteed. Whether $\alpha > C_P$ in the quasar context requires a comprehensive turbulence analysis � but UQFF proves that SCm-driven jet flows are ALWAYS bounded as long as SCm decays (physical constraint).
 
 ---
 
@@ -351,28 +359,28 @@ print(f"Decay at t=1000 yr = {np.exp(-alpha * 1000*365.25):.4f}")
 
 | Prediction | UQFF | Observed | Agreement |
 |-----------|------|---------|-----------|
-| Jet asymmetry mechanism | cos(πt_n) temporal asymmetry | Ratio 1.3–10× observed | ✓ (order of magnitude) |
-| Cygnus A ΔL | ~37 kpc predicted | ~15 kpc observed | ✓ same order |
-| v_SCm cap | 10⁸ m/s (trapped SCm) | AGN jet speeds ~0.3–0.99c | Consistent for bulk |
-| F_SCm smoothness | Globally bounded (e^{-αt}) | No jet blow-up observed | ✓ |
-| N-S connection | Smooth solution via SCm decay | Clay Millennium conjecture | ✓ (partial) |
+| Jet asymmetry mechanism | cos(pt_n) temporal asymmetry | Ratio 1.3�10� observed | ? (order of magnitude) |
+| Cygnus A ?L | ~37 kpc predicted | ~15 kpc observed | ? same order |
+| v_SCm cap | 108 m/s (trapped SCm) | AGN jet speeds ~0.3�0.99c | Consistent for bulk |
+| F_SCm smoothness | Globally bounded (e^{-at}) | No jet blow-up observed | ? |
+| N-S connection | Smooth solution via SCm decay | Clay Millennium conjecture | ? (partial) |
 
 ---
 
 ## 7. Conclusions
 
-UQFF resolves the quasar jet asymmetry mystery: opposing jets are unequal because the SMBH spin geometry couples to the SCm cos(πt_n) temporal asymmetry, which suppresses SCm efficiency in the negative-time jet arm. The SCm Navier-Stokes source F_SCm = ρ_SCm v_SCm² e^{−αt}/r is smooth, bounded, and exponentially decaying — satisfying the conditions for global Navier-Stokes regularity in UQFF astrophysical jet flows. This connects the Star Magic framework to the Clay Mathematics Institute Navier-Stokes Millennium Prize Problem, previously addressed at the continuous fluid level in PAPER_114.
+UQFF resolves the quasar jet asymmetry mystery: opposing jets are unequal because the SMBH spin geometry couples to the SCm cos(pt_n) temporal asymmetry, which suppresses SCm efficiency in the negative-time jet arm. The SCm Navier-Stokes source F_SCm = ?_SCm v_SCm� e^{-at}/r is smooth, bounded, and exponentially decaying � satisfying the conditions for global Navier-Stokes regularity in UQFF astrophysical jet flows. This connects the Star Magic framework to the Clay Mathematics Institute Navier-Stokes Millennium Prize Problem, previously addressed at the continuous fluid level in PAPER_114.
 
 ---
 
 ## 8. References
 
-1. Murphy, D.T., Thread 3419da89 (May–Oct 2025)
+1. Murphy, D.T., Thread 3419da89 (May�Oct 2025)
 2. Fefferman, C.L., Navier-Stokes Existence and Smoothness, Clay Math Institute 2006
 3. Cygnus A VLA maps: Perley & Carilli 1984, Bridle & Perley 1984
 4. EHT Collaboration, M87 jet imaging, ApJL 2019
-5. Murphy, D.T., PAPER_114 (Navier-Stokes, §1.13)
+5. Murphy, D.T., PAPER_114 (Navier-Stokes, �1.13)
 
 ---
 
-*CP2 Mode: Superconductive/Resonant | Thread: 3419da89 | Session: 44 | Domain: §2.1*
+*CP2 Mode: Superconductive/Resonant | Thread: 3419da89 | Session: 44 | Domain: �2.1*

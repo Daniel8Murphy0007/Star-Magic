@@ -10,9 +10,17 @@
 
 $$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b_i}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57$$
 
+$$
+M_J^\text{UQFF} = M_J^\text{Jeans}\cdot\Bigl(1 - [SSq]\cdot\frac{B^2}{8\pi\rho c_s^2}\Bigr), \quad [SSq] = 0.57
+$$
+
 ## Abstract
 
-Nine astrophysical systems were processed from September 2025 detailed documents during the "Nine Sep docs" assimilation in gok_share_31b5c807a4. This paper catalogues the complete parameter set, scale class assignment, all 5 UQFF equation outputs, and 2025 observational source for each system. Systems span 7 orders of magnitude from Jupiter (10⁷ m) to Abell 2256 (1.5×10²⁵ m). Two canonical UQFF scale classes are established: Compact (x_2 ≤ 10 kly) and Galactic/Cluster (x_2 ≥ 60 Mly).
+Nine astrophysical systems were processed from September 2025 detailed documents during the "Nine Sep docs" assimilation in gok_share_31b5c807a4. This paper catalogues the complete parameter set, scale class assignment, all 5 UQFF equation outputs, and 2025 observational source for each system. Systems span 7 orders of magnitude from Jupiter (107 m) to Abell 2256 (1.5×10²5 m). Two canonical UQFF scale classes are established: Compact (x_2 = 10 kly) and Galactic/Cluster (x_2 = 60 Mly).
+
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -22,25 +30,25 @@ Nine astrophysical systems were processed from September 2025 detailed documents
 
 **Compact Class (CC):** Neutron Stars, Pulsars, SNRs, Stellar/Solar bodies
 ```
-x_2 (separation) ≤ 10 kly
-UQFF F_U_Bi_i ≈ −2.09×10²¹² N  (leading-term compact)
-g_Compressed  ≈  3.95×10⁻⁴¹ N
-R(t)          ≈ −1.12×10⁻⁴² N
-F_U_Bi        ≈  9.79×10⁻³³ N
-U_i           ≈  1.38×10⁻⁴⁷ + i·7.80×10⁻⁵¹  J/m³
+x_2 (separation) = 10 kly
+UQFF F_U_Bi_i ˜ -2.09×10²¹² N  (leading-term compact)
+g_Compressed  ˜  3.95×10?4¹ N
+R(t)          ˜ -1.12×10?4² N
+F_U_Bi        ˜  9.79×10?³³ N
+U_i           ˜  1.38×10?47 + i·7.80×10?5¹  J/m³
 ```
 
 **Galactic/Cluster Class (GC):** AGN, ICM/Radio-relic clusters, Interacting spirals, Galaxy clusters
 ```
-x_2 (separation) ≥ 60 Mly
-UQFF F_U_Bi_i ≈ −8.32×10²¹⁷ N  (leading-term galactic)
-g_Compressed  ≈  4.12×10⁻⁴¹ N
-R(t)          ≈ −2.29×10⁻⁴¹ N
-F_U_Bi        ≈  1.02×10⁻³² N
-U_i           ≈  1.45×10⁻⁴⁷ + i·8.20×10⁻⁵¹  J/m³
+x_2 (separation) = 60 Mly
+UQFF F_U_Bi_i ˜ -8.32×10²¹7 N  (leading-term galactic)
+g_Compressed  ˜  4.12×10?4¹ N
+R(t)          ˜ -2.29×10?4¹ N
+F_U_Bi        ˜  1.02×10?³² N
+U_i           ˜  1.45×10?47 + i·8.20×10?5¹  J/m³
 ```
 
-Note: Jupiter is at Solar system scale (7.15×10⁷ m radius) → Compact class applies.
+Note: Jupiter is at Solar system scale (7.15×107 m radius) ? Compact class applies.
 
 ---
 
@@ -53,20 +61,20 @@ Note: Jupiter is at Solar system scale (7.15×10⁷ m radius) → Compact class 
 | Type | Pulsar Wind Nebula + SNR | — |
 | Distance | 2.87 kly (0.88 kpc) | Dodson + Deshpande 2003 |
 | x_2 (sep) | 2.9 kly | Document |
-| Mass | 1.4 M_☉ (NS) | — |
+| Mass | 1.4 M_? (NS) | — |
 | Period P | 0.08927 s | Chandra 2025 |
-| Ṗ | 1.25×10⁻¹³ s/s | Fermi-LAT 2025 |
+| ? | 1.25×10?¹³ s/s | Fermi-LAT 2025 |
 | B_surface | 3.38×10¹² G | — |
 | Scale class | **Compact** | x_2 < 10 kly |
 | **2025 Obs. Source** | **Chandra ACIS (2025) + Fermi-LAT PASS 8 (2025)** | — |
 
 **Five UQFF Equations:**
 ```
-F_U_Bi_i = −2.09×10²¹² N   [Compact CC; PAPER_332 12-term]
-g_Comp   =  3.95×10⁻⁴¹ N   [PAPER_336 6-term all-forces]
-R(t)     = −1.12×10⁻⁴² N   [PAPER_336 26×4 cosine]
-F_U_Bi   =  9.79×10⁻³³ N   [PAPER_335 buoyancy kernel]
-U_i      =  1.38×10⁻⁴⁷ + i·7.80×10⁻⁵¹  J/m³  [PAPER_334]
+F_U_Bi_i = -2.09×10²¹² N   [Compact CC; PAPER_332 12-term]
+g_Comp   =  3.95×10?4¹ N   [PAPER_336 6-term all-forces]
+R(t)     = -1.12×10?4² N   [PAPER_336 26×4 cosine]
+F_U_Bi   =  9.79×10?³³ N   [PAPER_335 buoyancy kernel]
+U_i      =  1.38×10?47 + i·7.80×10?5¹  J/m³  [PAPER_334]
 ```
 
 ---
@@ -78,19 +86,19 @@ U_i      =  1.38×10⁻⁴⁷ + i·7.80×10⁻⁵¹  J/m³  [PAPER_334]
 | Type | Seyfert AGN barred spiral | — |
 | Distance | 60.7 Mly | Hubble/HST |
 | x_2 (sep) | 60.7 Mly | Document |
-| BH Mass | 2×10⁷ M_☉ | X-ray variability |
-| SFR | 30 M_☉/yr | ALMA |
-| B_AGN | ~10⁴ G (corona) | — |
+| BH Mass | 2×107 M_? | X-ray variability |
+| SFR | 30 M_?/yr | ALMA |
+| B_AGN | ~104 G (corona) | — |
 | Scale class | **Galactic** | x_2 > 60 Mly |
 | **2025 Obs. Source** | **Hubble ACS Aug 2025 (NGC 1365 reprocessed mosaic)**| — |
 
 **Five UQFF Equations:**
 ```
-F_U_Bi_i = −8.32×10²¹⁷ N   [Galactic GC]
-g_Comp   =  4.12×10⁻⁴¹ N
-R(t)     = −2.29×10⁻⁴¹ N
-F_U_Bi   =  1.02×10⁻³² N
-U_i      =  1.45×10⁻⁴⁷ + i·8.20×10⁻⁵¹  J/m³
+F_U_Bi_i = -8.32×10²¹7 N   [Galactic GC]
+g_Comp   =  4.12×10?4¹ N
+R(t)     = -2.29×10?4¹ N
+F_U_Bi   =  1.02×10?³² N
+U_i      =  1.45×10?47 + i·8.20×10?5¹  J/m³
 ```
 
 ---
@@ -109,11 +117,11 @@ U_i      =  1.45×10⁻⁴⁷ + i·8.20×10⁻⁵¹  J/m³
 
 **Five UQFF Equations:**
 ```
-F_U_Bi_i = −8.32×10²¹⁷ N
-g_Comp   =  4.12×10⁻⁴¹ N
-R(t)     = −2.29×10⁻⁴¹ N
-F_U_Bi   =  1.02×10⁻³² N
-U_i      =  1.45×10⁻⁴⁷ + i·8.20×10⁻⁵¹  J/m³
+F_U_Bi_i = -8.32×10²¹7 N
+g_Comp   =  4.12×10?4¹ N
+R(t)     = -2.29×10?4¹ N
+F_U_Bi   =  1.02×10?³² N
+U_i      =  1.45×10?47 + i·8.20×10?5¹  J/m³
 ```
 
 ---
@@ -125,7 +133,7 @@ U_i      =  1.45×10⁻⁴⁷ + i·8.20×10⁻⁵¹  J/m³
 | Type | Merging galaxy cluster, double radio relic | — |
 | Distance | ~470 Mpc (~1.5 Gly equivalent z) | A&A |
 | x_2 (sep) | 1.5 Gly | Document |
-| M_cluster | ~4×10¹⁵ M_☉ | X-ray |
+| M_cluster | ~4×10¹5 M_? | X-ray |
 | T_ICM | ~7.5 keV | Chandra |
 | Relic length | ~1.7 Mpc | LOFAR |
 | Scale class | **Cluster** | x_2 >> 60 Mly |
@@ -133,11 +141,11 @@ U_i      =  1.45×10⁻⁴⁷ + i·8.20×10⁻⁵¹  J/m³
 
 **Five UQFF Equations:**
 ```
-F_U_Bi_i = −8.32×10²¹⁷ N   [Cluster scale → same GC class]
-g_Comp   =  4.12×10⁻⁴¹ N
-R(t)     = −2.29×10⁻⁴¹ N
-F_U_Bi   =  1.02×10⁻³² N
-U_i      =  1.45×10⁻⁴⁷ + i·8.20×10⁻⁵¹  J/m³
+F_U_Bi_i = -8.32×10²¹7 N   [Cluster scale ? same GC class]
+g_Comp   =  4.12×10?4¹ N
+R(t)     = -2.29×10?4¹ N
+F_U_Bi   =  1.02×10?³² N
+U_i      =  1.45×10?47 + i·8.20×10?5¹  J/m³
 ```
 
 ---
@@ -150,18 +158,18 @@ U_i      =  1.45×10⁻⁴⁷ + i·8.20×10⁻⁵¹  J/m³
 | Distance | 6.5 kly (2.0 kpc) | Trimble 1968 |
 | x_2 (sep) | 6.5 kly | Document |
 | Period P | 0.03337 s | — |
-| Ṗ | 4.21×10⁻¹³ s/s | — |
+| ? | 4.21×10?¹³ s/s | — |
 | B_surface | 3.8×10¹² G | — |
 | Scale class | **Compact** | x_2 < 10 kly |
 | **2025 Obs. Source** | **SST-1M Cherenkov Array + LOFAR 2025 (new wisp morphology)** | — |
 
 **Five UQFF Equations:**
 ```
-F_U_Bi_i = −2.09×10²¹² N
-g_Comp   =  3.95×10⁻⁴¹ N
-R(t)     = −1.12×10⁻⁴² N
-F_U_Bi   =  9.79×10⁻³³ N
-U_i      =  1.38×10⁻⁴⁷ + i·7.80×10⁻⁵¹  J/m³
+F_U_Bi_i = -2.09×10²¹² N
+g_Comp   =  3.95×10?4¹ N
+R(t)     = -1.12×10?4² N
+F_U_Bi   =  9.79×10?³³ N
+U_i      =  1.38×10?47 + i·7.80×10?5¹  J/m³
 ```
 
 ---
@@ -173,18 +181,18 @@ U_i      =  1.38×10⁻⁴⁷ + i·7.80×10⁻⁵¹  J/m³
 | Type | Interacting galaxy (ocular ring + tidal tails) | — |
 | Distance | 80 Mly | — |
 | x_2 (sep) | 80 Mly | Document |
-| SFR | 25 M_☉/yr | ALMA |
+| SFR | 25 M_?/yr | ALMA |
 | Interaction partner | NGC 2207 (80 Mly) | HST |
 | Scale class | **Galactic** | x_2 > 60 Mly |
 | **2025 Obs. Source** | **Hubble WFC3 Aug 2025 (IC 2163/NGC 2207 interaction re-analysis)** | — |
 
 **Five UQFF Equations:**
 ```
-F_U_Bi_i = −8.32×10²¹⁷ N
-g_Comp   =  4.12×10⁻⁴¹ N
-R(t)     = −2.29×10⁻⁴¹ N
-F_U_Bi   =  1.02×10⁻³² N
-U_i      =  1.45×10⁻⁴⁷ + i·8.20×10⁻⁵¹  J/m³
+F_U_Bi_i = -8.32×10²¹7 N
+g_Comp   =  4.12×10?4¹ N
+R(t)     = -2.29×10?4¹ N
+F_U_Bi   =  1.02×10?³² N
+U_i      =  1.45×10?47 + i·8.20×10?5¹  J/m³
 ```
 
 ---
@@ -195,20 +203,20 @@ U_i      =  1.45×10⁻⁴⁷ + i·8.20×10⁻⁵¹  J/m³
 |-----------|-------|--------|
 | Type | Gas giant planetary auroral system | — |
 | Distance | 5.2 AU (from Sun) | — |
-| x_2 (sep) | r = 7.15×10⁷ m (equatorial radius) | Document |
+| x_2 (sep) | r = 7.15×107 m (equatorial radius) | Document |
 | B_polar | 14 G | — |
 | H3+ emission | UV-optical | Webb UV/IR |
-| Io plasma torus | 6 t/s SO₂ injection | Galileo/JUNO |
-| Scale class | **Compact** | r = 7.15×10⁷ m << 10 kly |
+| Io plasma torus | 6 t/s SO2 injection | Galileo/JUNO |
+| Scale class | **Compact** | r = 7.15×107 m << 10 kly |
 | **2025 Obs. Source** | **JWST NIRCam + MIRI May 2025 (Jupiter aurora seasonal survey)** | — |
 
 **Five UQFF Equations:**
 ```
-F_U_Bi_i = −2.09×10²¹² N   [Compact class by x_2 << parsec]
-g_Comp   =  3.95×10⁻⁴¹ N
-R(t)     = −1.12×10⁻⁴² N
-F_U_Bi   =  9.79×10⁻³³ N
-U_i      =  1.38×10⁻⁴⁷ + i·7.80×10⁻⁵¹  J/m³
+F_U_Bi_i = -2.09×10²¹² N   [Compact class by x_2 << parsec]
+g_Comp   =  3.95×10?4¹ N
+R(t)     = -1.12×10?4² N
+F_U_Bi   =  9.79×10?³³ N
+U_i      =  1.38×10?47 + i·7.80×10?5¹  J/m³
 ```
 
 ---
@@ -221,18 +229,18 @@ U_i      =  1.38×10⁻⁴⁷ + i·7.80×10⁻⁵¹  J/m³
 | Distance | 5 kly (1.54 kpc) | VVV survey |
 | x_2 (sep) | 5 kly | Document |
 | Age | ~2 Myr | — |
-| SFR | 0.1 M_☉/yr | ALMA |
+| SFR | 0.1 M_?/yr | ALMA |
 | T_HII | ~10,000 K | — |
 | Scale class | **Compact** | x_2 < 10 kly |
 | **2025 Obs. Source** | **In-The-Sky + ESA June 2025 (Gaia DR3 proper motions, new distance refinement)** | — |
 
 **Five UQFF Equations:**
 ```
-F_U_Bi_i = −2.09×10²¹² N
-g_Comp   =  3.95×10⁻⁴¹ N
-R(t)     = −1.12×10⁻⁴² N
-F_U_Bi   =  9.79×10⁻³³ N
-U_i      =  1.38×10⁻⁴⁷ + i·7.80×10⁻⁵¹  J/m³
+F_U_Bi_i = -2.09×10²¹² N
+g_Comp   =  3.95×10?4¹ N
+R(t)     = -1.12×10?4² N
+F_U_Bi   =  9.79×10?³³ N
+U_i      =  1.38×10?47 + i·7.80×10?5¹  J/m³
 ```
 
 ---
@@ -244,18 +252,18 @@ U_i      =  1.38×10⁻⁴⁷ + i·7.80×10⁻⁵¹  J/m³
 | Type | Disrupted barred spiral (IC 2163 interaction partner) | — |
 | Distance | 114 Mly | SIMBAD |
 | x_2 (sep) | 114 Mly | Document |
-| BH Mass | ~3×10⁷ M_☉ | X-ray |
-| SFR | 40 M_☉/yr (starburst enhanced) | ALMA |
+| BH Mass | ~3×107 M_? | X-ray |
+| SFR | 40 M_?/yr (starburst enhanced) | ALMA |
 | Scale class | **Galactic** | x_2 > 60 Mly |
 | **2025 Obs. Source** | **Hubble WFC3 Aug 2025 (NGC 2207 UV starburst morphology, new data)** | — |
 
 **Five UQFF Equations:**
 ```
-F_U_Bi_i = −8.32×10²¹⁷ N
-g_Comp   =  4.12×10⁻⁴¹ N
-R(t)     = −2.29×10⁻⁴¹ N
-F_U_Bi   =  1.02×10⁻³² N
-U_i      =  1.45×10⁻⁴⁷ + i·8.20×10⁻⁵¹  J/m³
+F_U_Bi_i = -8.32×10²¹7 N
+g_Comp   =  4.12×10?4¹ N
+R(t)     = -2.29×10?4¹ N
+F_U_Bi   =  1.02×10?³² N
+U_i      =  1.45×10?47 + i·8.20×10?5¹  J/m³
 ```
 
 ---
@@ -264,15 +272,15 @@ U_i      =  1.45×10⁻⁴⁷ + i·8.20×10⁻⁵¹  J/m³
 
 | System | x_2 | Class | F_U_Bi_i (N) | g_Comp (N) | R(t) (N) | F_U_Bi (N) | U_i (J/m³) |
 |--------|-----|-------|-------------|-----------|---------|-----------|-----------|
-| Vela | 2.9 kly | CC | −2.09e212 | 3.95e−41 | −1.12e−42 | 9.79e−33 | 1.38e−47+i7.80e−51 |
-| Crab | 6.5 kly | CC | −2.09e212 | 3.95e−41 | −1.12e−42 | 9.79e−33 | 1.38e−47+i7.80e−51 |
-| Lagoon M8 | 5 kly | CC | −2.09e212 | 3.95e−41 | −1.12e−42 | 9.79e−33 | 1.38e−47+i7.80e−51 |
-| Jupiter | 7.15e7 m | CC | −2.09e212 | 3.95e−41 | −1.12e−42 | 9.79e−33 | 1.38e−47+i7.80e−51 |
-| NGC 1365 | 60.7 Mly | GC | −8.32e217 | 4.12e−41 | −2.29e−41 | 1.02e−32 | 1.45e−47+i8.20e−51 |
-| ESO 137-001 | 70 Mpc | GC | −8.32e217 | 4.12e−41 | −2.29e−41 | 1.02e−32 | 1.45e−47+i8.20e−51 |
-| IC 2163 | 80 Mly | GC | −8.32e217 | 4.12e−41 | −2.29e−41 | 1.02e−32 | 1.45e−47+i8.20e−51 |
-| NGC 2207 | 114 Mly | GC | −8.32e217 | 4.12e−41 | −2.29e−41 | 1.02e−32 | 1.45e−47+i8.20e−51 |
-| Abell 2256 | 1.5 Gly | GC | −8.32e217 | 4.12e−41 | −2.29e−41 | 1.02e−32 | 1.45e−47+i8.20e−51 |
+| Vela | 2.9 kly | CC | -2.09e212 | 3.95e-41 | -1.12e-42 | 9.79e-33 | 1.38e-47+i7.80e-51 |
+| Crab | 6.5 kly | CC | -2.09e212 | 3.95e-41 | -1.12e-42 | 9.79e-33 | 1.38e-47+i7.80e-51 |
+| Lagoon M8 | 5 kly | CC | -2.09e212 | 3.95e-41 | -1.12e-42 | 9.79e-33 | 1.38e-47+i7.80e-51 |
+| Jupiter | 7.15e7 m | CC | -2.09e212 | 3.95e-41 | -1.12e-42 | 9.79e-33 | 1.38e-47+i7.80e-51 |
+| NGC 1365 | 60.7 Mly | GC | -8.32e217 | 4.12e-41 | -2.29e-41 | 1.02e-32 | 1.45e-47+i8.20e-51 |
+| ESO 137-001 | 70 Mpc | GC | -8.32e217 | 4.12e-41 | -2.29e-41 | 1.02e-32 | 1.45e-47+i8.20e-51 |
+| IC 2163 | 80 Mly | GC | -8.32e217 | 4.12e-41 | -2.29e-41 | 1.02e-32 | 1.45e-47+i8.20e-51 |
+| NGC 2207 | 114 Mly | GC | -8.32e217 | 4.12e-41 | -2.29e-41 | 1.02e-32 | 1.45e-47+i8.20e-51 |
+| Abell 2256 | 1.5 Gly | GC | -8.32e217 | 4.12e-41 | -2.29e-41 | 1.02e-32 | 1.45e-47+i8.20e-51 |
 
 **CC = Compact Class; GC = Galactic/Cluster Class**
 

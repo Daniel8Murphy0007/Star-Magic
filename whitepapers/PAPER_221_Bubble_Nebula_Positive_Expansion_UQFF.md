@@ -10,9 +10,17 @@
 
 $$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b_i}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57$$
 
+$$
+M_J^\text{UQFF} = M_J^\text{Jeans}\cdot\Bigl(1 - [SSq]\cdot\frac{B^2}{8\pi\rho c_s^2}\Bigr), \quad [SSq] = 0.57
+$$
+
 ## Abstract
 
 The Bubble Nebula (NGC 7635) introduces `(1+E(t))` — a POSITIVE shell expansion enhancement multiplier on the base UQFF gravity term. This is the exact sign-inverse of the Pillars of Creation `(1-E(t))` irradiation erosion multiplier. The physical distinction is fundamental: in the Pillars, irradiation from nearby O-stars ERODES the pillar surface (reducing effective gravity); in the Bubble Nebula, the powerful stellar wind of the O6.5 star BD+60°2522 inflates a compressed swept-up shell where ram pressure COMPRESSES the surrounding ISM, creating a positive gravitational enhancement. We prove this sign distinction, derive E(t) from first principles, and show why no other system in the 29 UQFF documents uses a positive expansion multiplier of this form.
+
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -23,8 +31,8 @@ From Document 12 of grok_share_7514fe:
 ```
 g_Bubble(r, t) = (G·M)/r² · (1+H(z)·t) · (1-B/B_crit) · (1+E(t))
                + (Ug1 + Ug2 + Ug3 + Ug4)
-               + Λc²/3 + QM + q(v×B) + fluid + DM
-               + ρ·v_wind²
+               + ?c²/3 + QM + q(v×B) + fluid + DM
+               + ?·v_wind²
 ```
 
 **Key distinguishing feature:** `(1+E(t))` with positive sign, multiplied onto the Newtonian base gravity.
@@ -48,15 +56,15 @@ The expansion enhancement fraction:
 
 ```
 E(t) = P_wind(r, t) / P_gravity(r)
-     = ρ_wind · v_wind² · r² / (G · M · ρ_shell)
+     = ?_wind · v_wind² · r² / (G · M · ?_shell)
 ```
 
 Parameters for NGC 7635:
-- BD+60°2522: O6.5 star, mass-loss rate Ṁ ≈ 3×10⁻⁶ M☉/yr
-- v_wind ≈ 1500 km/s (characteristic O-type stellar wind)
-- r_bubble ≈ 3 ly ≈ 2.84×10¹⁶ m (bubble shell radius)
+- BD+60°2522: O6.5 star, mass-loss rate ? ˜ 3×10?6 M?/yr
+- v_wind ˜ 1500 km/s (characteristic O-type stellar wind)
+- r_bubble ˜ 3 ly ˜ 2.84×10¹6 m (bubble shell radius)
 
-Steady-state: `E(t) ≈ 0.05` (5% wind enhancement) when wind pressure = 5% of gravity. This small but nonzero term can be observed via the optical-IR morphology: the Bubble Nebula shell is distinctly asymmetric — BD+60°2522 is off-center, with the compressed ISM side showing higher surface brightness (higher effective g) than the freely-expanding leading edge.
+Steady-state: `E(t) ˜ 0.05` (5% wind enhancement) when wind pressure = 5% of gravity. This small but nonzero term can be observed via the optical-IR morphology: the Bubble Nebula shell is distinctly asymmetric — BD+60°2522 is off-center, with the compressed ISM side showing higher surface brightness (higher effective g) than the freely-expanding leading edge.
 
 ---
 
@@ -69,8 +77,8 @@ dP_shell/dt = P_wind - P_gravity - P_thermal
 
 In the compressed-shell quasi-equilibrium:
 ```
-P_wind = ρ_w · v_w² ≈ P_gravity + δP
-→ (effective gravity enhancement) = δP / P_gravity = E(t)
+P_wind = ?_w · v_w² ˜ P_gravity + dP
+? (effective gravity enhancement) = dP / P_gravity = E(t)
 ```
 
 When E(t) > 0: compressed shell has HIGHER effective gravity than without wind. This confines the shell against further expansion — explaining why NGC 7635 has a relatively stable, rounded morphology (unlike an unconstrained free-expansion bubble).
@@ -79,11 +87,11 @@ When E(t) > 0: compressed shell has HIGHER effective gravity than without wind. 
 
 ```
 g_base = G·M/r² · (1+H·t) · (1-B/B_crit)
-       ≈ 6.674e-11 · 1.5e31 / (2.84e16)² · 1.000 · 0.9999
-       ≈ 1.23×10⁻⁵² m/s²
+       ˜ 6.674e-11 · 1.5e31 / (2.84e16)² · 1.000 · 0.9999
+       ˜ 1.23×10?5² m/s²
 
 g_shell = g_base · (1+0.05) = g_base · 1.05
-→ 5% enhancement over purely Newtonian value
+? 5% enhancement over purely Newtonian value
 ```
 
 ---

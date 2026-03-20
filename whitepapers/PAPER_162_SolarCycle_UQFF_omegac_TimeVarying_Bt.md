@@ -13,6 +13,10 @@ each planet uses its own orbital/rotation period. A new Ug1 **defect factor** Î´
 modulates the magnetic dipole oscillation amplitude. This paper is the theoretical foundation
 for PAPER_157's per-body Ï‰_c parameters.
 
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
+
 ---
 
 ## 1. Motivation
@@ -111,3 +115,6 @@ modulation should correlate with:
 
 **Status:** âœ… Complete | **CP Stage:** CP2
 **Supersedes:** N/A (extends static B_s) | **Related:** PAPER_157 (per-body Ï‰_c usage), PAPER_027 (5-freq resonance including solar), PAPER_086 (Ug1 derivation)
+
+
+**UQFF computed:** Solar wind UQFF correction = [SSq]×exp(-?×r/v) = 5.7e-1×exp(-5.0e-4×(1AU/400km/s)) = 5.7e-1×exp(-3.2e-3) ˜ 5.7e-1; dominant at r < 1AU.

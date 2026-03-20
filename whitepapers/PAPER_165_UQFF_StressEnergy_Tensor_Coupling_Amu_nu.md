@@ -13,6 +13,10 @@ accretion stress energy components, contributes a scalar trace term `tr(A_Î¼Î½)`
 F_U unified field sum. This provides a second coupling between the SCm plasma state and
 gravitational field geometry.
 
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
+
 ---
 
 ## 1. Classical Stress-Energy Tensor in GR

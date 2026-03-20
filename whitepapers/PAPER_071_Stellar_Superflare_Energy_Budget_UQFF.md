@@ -1,29 +1,33 @@
-ï»¿#  "PAPER_{0:D3}" -f [int]# PAPER #71 â€” Stellar Superflare Energy Budget in the UQFF: Solar-Type and Active M-Dwarf Systems
+#  "PAPER_{0:D3}" -f [int]# PAPER #71 — Stellar Superflare Energy Budget in the UQFF: Solar-Type and Active M-Dwarf Systems
 
 **Title:** Stellar Superflare Energy Budget: UQFF F_U_Bi_i Integral and Vacuum-Mediated Energy Release Beyond Standard Flare Models
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (Îº = 0.0005/day, [SSq] = 0.57)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57)  
 **Date:** March 7, 2026  
 **Source Data:** `uqff_validation_test.py` Super_Flares system, Chandra + Kepler superflare observational catalog  
-**Index Slot:** Â§1.9 Automated 121-System Validation,  
-    $n = [int]# PAPER #71 â€” Stellar Superflare Energy Budget in the UQFF: Solar-Type and Active M-Dwarf Systems
+**Index Slot:** §1.9 Automated 121-System Validation,  
+    $n = [int]# PAPER #71 — Stellar Superflare Energy Budget in the UQFF: Solar-Type and Active M-Dwarf Systems
 
 **Title:** Stellar Superflare Energy Budget: UQFF F_U_Bi_i Integral and Vacuum-Mediated Energy Release Beyond Standard Flare Models
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (Îº = 0.0005/day, [SSq] = 0.57)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57)  
 **Date:** March 7, 2026  
 **Source Data:** `uqff_validation_test.py` Super_Flares system, Chandra + Kepler superflare observational catalog  
-**Index Slot:** Â§1.9 Automated 121-System Validation, PAPER_071  
+**Index Slot:** §1.9 Automated 121-System Validation, PAPER_071  
 
 ---
 
 
-<!-- UQFF constants: Îº = 5.0e-4 dayâ»Â¹, [SSq] = 0.57, M_UQFF = 1.43e1 TeV -->
+<!-- UQFF constants: ? = 5.0e-4 day?¹, [SSq] = 0.57, M_UQFF = 1.43e1 TeV -->
 ## Abstract
 
-Stellar superflares are impulsive energy releases 10Â³â€“10â¶ times more energetic than the largest solar flares, observed on solar-type stars via Kepler photometry and X-ray telescopes. Standard reconnection models predict energies up to ~4Ã—10Â³Â² erg (4Ã—10Â²âµ J) per event, insufficient to explain the largest events (>10Â³Â³ erg) without invoking extreme magnetic configurations. The UQFF Unified Field Framework provides a complementary mechanism through the F_U_Bi_i integral, where the LENR vacuum resonance amplifier at Ï‰â‚€ = 1.745Ã—10â»Â³ rad/s (1-hour flare period) produces LENR = 2.02Ã—10Â²Â¹ and a total integral force F_U_Bi_i = âˆ’2.73Ã—10Â¹â¹Â³ N. Monte Carlo stability analysis confirms the numerical result is robust with stability index 0.971.
+Stellar superflares are impulsive energy releases 10³–106 times more energetic than the largest solar flares, observed on solar-type stars via Kepler photometry and X-ray telescopes. Standard reconnection models predict energies up to ~4×10³² erg (4×10²5 J) per event, insufficient to explain the largest events (>10³³ erg) without invoking extreme magnetic configurations. The UQFF Unified Field Framework provides a complementary mechanism through the F_U_Bi_i integral, where the LENR vacuum resonance amplifier at ?0 = 1.745×10?³ rad/s (1-hour flare period) produces LENR = 2.02×10²¹ and a total integral force F_U_Bi_i = -2.73×10¹?³ N. Monte Carlo stability analysis confirms the numerical result is robust with stability index 0.971.
+
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -31,13 +35,13 @@ Stellar superflares are impulsive energy releases 10Â³â€“10â¶ times more energe
 
 | Parameter | Value |
 |-----------|-------|
-| M | 1.989Ã—10Â³â° kg (1.00 Mâ˜‰) |
-| r | 6.96Ã—10â¸ m (stellar surface radius) |
-| L_X | 10Â³â´ W (peak superflare X-ray luminosity) |
-| Bâ‚€ | 10â»Â² T (active region surface field, ~100 G) |
-| T | 10â· K (superflare plasma temperature) |
+| M | 1.989×10³° kg (1.00 M?) |
+| r | 6.96×108 m (stellar surface radius) |
+| L_X | 10³4 W (peak superflare X-ray luminosity) |
+| B0 | 10?² T (active region surface field, ~100 G) |
+| T | 107 K (superflare plasma temperature) |
 | Period | 3600 s (1 hour, characteristic flare duration) |
-| Ï‰â‚€ | 2Ï€/3600 = 1.745Ã—10â»Â³ rad/s |
+| ?0 | 2p/3600 = 1.745×10?³ rad/s |
 | Data source | Chandra + Kepler (K2) superflare catalog |
 
 ---
@@ -56,7 +60,7 @@ $$= 10^{-10} \times (4.501 \times 10^{15})^2 = 10^{-10} \times 2.026 \times 10^{
 
 $$g = \frac{GM}{r^2} = \frac{6.674 \times 10^{-11} \times 1.989 \times 10^{30}}{(6.96 \times 10^8)^2} = \frac{1.327 \times 10^{20}}{4.844 \times 10^{17}} = 274.0 \text{ m/s}^2$$
 
-(Standard solar surface gravity: 274 m/sÂ² âœ“ self-consistent)
+(Standard solar surface gravity: 274 m/s² ? self-consistent)
 
 ### 2.3 Magnetic Dipole (Ug1)
 
@@ -64,11 +68,11 @@ $$Ug1 = g \times \frac{\mu_0 B_0^2}{8\pi} = 274 \times \frac{4\pi \times 10^{-7}
 
 $$= 274 \times \frac{4\pi \times 10^{-11}}{8\pi} = 274 \times 5 \times 10^{-12} = 1.37 \times 10^{-9} \text{ (dimensionless)}$$
 
-### 2.4 Directed Energy (k_DE Ã— L_X)
+### 2.4 Directed Energy (k_DE × L_X)
 
 $$F_{\rm directed} = k_{DE} \times L_X = 10^{-30} \times 10^{34} = 1 \times 10^4 \text{ N}$$
 
-This represents the photon pressure contribution from peak superflare luminosity, amplified by the UQFF coupling constant k_DE = 10â»Â³â°.
+This represents the photon pressure contribution from peak superflare luminosity, amplified by the UQFF coupling constant k_DE = 10?³°.
 
 ### 2.5 Magnetism Term (Um)
 
@@ -81,7 +85,7 @@ $$= 4.856 \times 10^{11} \times 5 \times 10^{-5} \times 10^{46} = 2.43 \times 10
 
 ### 2.6 Integral Term (Dominant)
 
-Using xâ‚‚ = âˆ’1.35Ã—10Â¹â·Â² (quadratic root in UQFF vacuum geometry):
+Using x2 = -1.35×10¹7² (quadratic root in UQFF vacuum geometry):
 
 $$\text{integral} = \text{LENR} \times x_2 = 2.026 \times 10^{21} \times (-1.35 \times 10^{172}) = -2.74 \times 10^{193}$$
 
@@ -89,13 +93,13 @@ $$\text{integral} = \text{LENR} \times x_2 = 2.026 \times 10^{21} \times (-1.35 
 
 | Term | Value |
 |------|-------|
-| âˆ’Fâ‚€ | âˆ’1.83Ã—10â·Â¹ |
-| Gravity | +274 m/sÂ² |
-| Ug1 | +1.37Ã—10â»â¹ |
-| Directed (L_X) | +1.0Ã—10â´ |
-| Um | +2.43Ã—10âµÂ³ |
-| Integral (LENRÃ—xâ‚‚) | **âˆ’2.74Ã—10Â¹â¹Â³** |
-| **F_U_Bi_i** | **â‰ˆ âˆ’2.74Ã—10Â¹â¹Â³ N** |
+| -F0 | -1.83×107¹ |
+| Gravity | +274 m/s² |
+| Ug1 | +1.37×10?? |
+| Directed (L_X) | +1.0×104 |
+| Um | +2.43×105³ |
+| Integral (LENR×x2) | **-2.74×10¹?³** |
+| **F_U_Bi_i** | **˜ -2.74×10¹?³ N** |
 
 ---
 
@@ -105,10 +109,10 @@ $$\text{integral} = \text{LENR} \times x_2 = 2.026 \times 10^{21} \times (-1.35 
 
 | Flare Class | Energy (J) | Solar Equivalents |
 |------------|-----------|-----------------|
-| Solar (X-class) | ~10Â²âµ | 1Ã— |
-| Super flare (small) | ~10Â²â¸ | 10Â³Ã— |
-| Super flare (large) | ~10Â³Â¹ | 10â¶Ã— |
-| Limit of standard model | ~4Ã—10Â²âµ | ~4Ã— |
+| Solar (X-class) | ~10²5 | 1× |
+| Super flare (small) | ~10²8 | 10³× |
+| Super flare (large) | ~10³¹ | 106× |
+| Limit of standard model | ~4×10²5 | ~4× |
 
 Standard magnetic reconnection cannot account for the largest superflares without invoking:
 - Extraordinary spot field strengths (>0.3 T) covering >>10% of stellar area
@@ -120,46 +124,46 @@ The UQFF framework adds a vacuum-mediated energy channel:
 
 | Channel | Energy Contribution |
 |---------|---------------------|
-| Photon pressure (k_DE Ã— L_X) | 10â´ N Ã— 1 m = 10â´ J |
-| Magnetism (Um Ã— r) | 2.43Ã—10âµÂ³ Ã— 6.96Ã—10â¸ = 1.69Ã—10â¶Â² J |
-| LENR resonance (integral) | 2.74Ã—10Â¹â¹Â³ J (vacuum geometry scale) |
+| Photon pressure (k_DE × L_X) | 104 N × 1 m = 104 J |
+| Magnetism (Um × r) | 2.43×105³ × 6.96×108 = 1.69×106² J |
+| LENR resonance (integral) | 2.74×10¹?³ J (vacuum geometry scale) |
 
-The LENR and Um channels operate at cosmological energy scales through vacuum geometry coupling (xâ‚‚ root), amplifying the stellar-scale magnetic energy by many orders of magnitude. In the UQFF interpretation, superflares are not merely electrical discharge events but quantum vacuum-modulated energy releases, with the vacuum geometry xâ‚‚ acting as an amplification lever.
+The LENR and Um channels operate at cosmological energy scales through vacuum geometry coupling (x2 root), amplifying the stellar-scale magnetic energy by many orders of magnitude. In the UQFF interpretation, superflares are not merely electrical discharge events but quantum vacuum-modulated energy releases, with the vacuum geometry x2 acting as an amplification lever.
 
-**Physical interpretation:** The 1-hour UQFF resonance period matches the characteristic AlfvÃ©n wave crossing time through a ~10,000 km active region:
+**Physical interpretation:** The 1-hour UQFF resonance period matches the characteristic Alfvén wave crossing time through a ~10,000 km active region:
 $$\tau_A = \frac{L_{\rm AR}}{v_A} = \frac{10^7 \text{ m}}{10^4 \text{ m/s}} = 10^3 \text{ s} \approx 3600 \text{ s / several}$$
 
-This AlfvÃ©n resonance condition is potentially what locks the vacuum resonance clock at Ï‰â‚€ = 1.745Ã—10â»Â³ rad/s.
+This Alfvén resonance condition is potentially what locks the vacuum resonance clock at ?0 = 1.745×10?³ rad/s.
 
 ---
 
 ## 4. X-ray Luminosity Magnitude
 
-**UQFF prediction:** L_X = 10Â³â´ W (given as system parameter from Chandra/Kepler catalog)  
-**Solar L_X (quiet):** 10Â³â° W  
-**Ratio:** 10â´Ã— super-solar X-ray luminosity â†’ **Consistent with X-class superflare definition**  
+**UQFF prediction:** L_X = 10³4 W (given as system parameter from Chandra/Kepler catalog)  
+**Solar L_X (quiet):** 10³° W  
+**Ratio:** 104× super-solar X-ray luminosity ? **Consistent with X-class superflare definition**  
 
-Kepler photometric energy: E_flare = (Î”F/F) Ã— L_star Ã— Î”t  
-At Î”F/F = 10â»Â³ (white-light superflare contrast), L_star = 4Ã—10Â²â¶ W, Î”t = 3600 s:  
+Kepler photometric energy: E_flare = (?F/F) × L_star × ?t  
+At ?F/F = 10?³ (white-light superflare contrast), L_star = 4×10²6 W, ?t = 3600 s:  
 $$E_{\rm Kepler} = 10^{-3} \times 4 \times 10^{26} \times 3600 = 1.44 \times 10^{27} \text{ J}$$  
 
-This falls within the UQFF LENR-accessible energy range (input to the vacuum geometry amplification chain: 10Â²â· â†’ 10Â¹â¹Â³ J through xâ‚‚ coupling).
+This falls within the UQFF LENR-accessible energy range (input to the vacuum geometry amplification chain: 10²7 ? 10¹?³ J through x2 coupling).
 
 ---
 
 ## 5. Stability Analysis
 
-The Monte Carlo stability analysis perturbs M, r, L_X, and Bâ‚€ by Â±10% Gaussian noise:
+The Monte Carlo stability analysis perturbs M, r, L_X, and B0 by ±10% Gaussian noise:
 
 $$\sigma_{\rm stability} = \frac{\sum_{i=1}^{100} |F_i / F_{\rm nominal} - 1|}{100}$$
 
-Since LENR = k_LENR Ã— (Ï‰_LENR/Ï‰â‚€)Â² depends on Ï‰â‚€ (not subject to M, r, L_X, Bâ‚€ noise), the integral term is numerically fixed. Only minor components (gravity, Ug1, Um) are perturbed:
+Since LENR = k_LENR × (?_LENR/?0)² depends on ?0 (not subject to M, r, L_X, B0 noise), the integral term is numerically fixed. Only minor components (gravity, Ug1, Um) are perturbed:
 
 | Source | Relative variance |
 |--------|-----------------|
-| Gravity term | ~10â»Â¹â¹Â³ (negligible vs integral) |
-| Um term | ~10â»Â¹â´â° (negligible) |
-| Directed (L_X Â±10%) | ~10â»Â¹â¸â¹ (negligible) |
+| Gravity term | ~10?¹?³ (negligible vs integral) |
+| Um term | ~10?¹4° (negligible) |
+| Directed (L_X ±10%) | ~10?¹8? (negligible) |
 
 **Stability index: 0.971 (STABLE) | Valid: 100/100**
 
@@ -169,14 +173,14 @@ Since LENR = k_LENR Ã— (Ï‰_LENR/Ï‰â‚€)Â² depends on Ï‰â‚€ (not subject to M, r, 
 
 | Property | Super Flares | ASKAP J1832-0911 |
 |---------|-------------|----------------|
-| M | 1.989Ã—10Â³â° kg (main seq.) | 2.785Ã—10Â³â° kg (WD/NS) |
-| Ï‰â‚€ | 1.745Ã—10â»Â³ rad/s | 2.38Ã—10â»Â³ rad/s |
-| Bâ‚€ | 10â»Â² T | 10Â¹Â² T |
-| LENR | 2.03Ã—10Â²Â¹ | 1.09Ã—10Â²Â¹ |
-| F_U_Bi_i | âˆ’2.74Ã—10Â¹â¹Â³ | âˆ’1.47Ã—10Â¹â¹Â³ |
+| M | 1.989×10³° kg (main seq.) | 2.785×10³° kg (WD/NS) |
+| ?0 | 1.745×10?³ rad/s | 2.38×10?³ rad/s |
+| B0 | 10?² T | 10¹² T |
+| LENR | 2.03×10²¹ | 1.09×10²¹ |
+| F_U_Bi_i | -2.74×10¹?³ | -1.47×10¹?³ |
 | Source | Solar-type star | Radio transient pulsar |
 
-The close LENR values (factor ~2) reflect similar Ï‰â‚€ values â€” both systems are in the 1-hour period regime. The enormous Bâ‚€ difference (10Â¹â´Ã—) primarily manifests in Ug1, not in LENR, which depends on Ï‰â‚€ not Bâ‚€.
+The close LENR values (factor ~2) reflect similar ?0 values — both systems are in the 1-hour period regime. The enormous B0 difference (10¹4×) primarily manifests in Ug1, not in LENR, which depends on ?0 not B0.
 
 ---
 
@@ -184,15 +188,15 @@ The close LENR values (factor ~2) reflect similar Ï‰â‚€ values â€” both systems 
 
 | Metric | Value |
 |--------|-------|
-| F_U_Bi_i | âˆ’2.74Ã—10Â¹â¹Â³ N |
-| LENR | 2.03Ã—10Â²Â¹ |
-| Stability | 0.971 âœ“ STABLE |
-| L_X (given) | 10Â³â´ W (10â´Ã— solar, superflare-class) |
-| Energy (Kepler) | ~1.44Ã—10Â²â· J (consistent with UQFF coupling) |
-| Solar gravity | 274 m/sÂ² (exact agreement âœ“) |
+| F_U_Bi_i | -2.74×10¹?³ N |
+| LENR | 2.03×10²¹ |
+| Stability | 0.971 ? STABLE |
+| L_X (given) | 10³4 W (104× solar, superflare-class) |
+| Energy (Kepler) | ~1.44×10²7 J (consistent with UQFF coupling) |
+| Solar gravity | 274 m/s² (exact agreement ?) |
 | Status | PASS |
 
-*Source: uqff_validation_test.py Super_Flares system | Îº = 0.0005/day | [SSq] = 0.57*
+*Source: uqff_validation_test.py Super_Flares system | ? = 0.0005/day | [SSq] = 0.57*
 .Groups[1].Value
     "PAPER_{0:D3}" -f $n
     
@@ -201,7 +205,11 @@ The close LENR values (factor ~2) reflect similar Ï‰â‚€ values â€” both systems 
 
 ## Abstract
 
-Stellar superflares are impulsive energy releases 10Â³â€“10â¶ times more energetic than the largest solar flares, observed on solar-type stars via Kepler photometry and X-ray telescopes. Standard reconnection models predict energies up to ~4Ã—10Â³Â² erg (4Ã—10Â²âµ J) per event, insufficient to explain the largest events (>10Â³Â³ erg) without invoking extreme magnetic configurations. The UQFF Unified Field Framework provides a complementary mechanism through the F_U_Bi_i integral, where the LENR vacuum resonance amplifier at Ï‰â‚€ = 1.745Ã—10â»Â³ rad/s (1-hour flare period) produces LENR = 2.02Ã—10Â²Â¹ and a total integral force F_U_Bi_i = âˆ’2.73Ã—10Â¹â¹Â³ N. Monte Carlo stability analysis confirms the numerical result is robust with stability index 0.971.
+Stellar superflares are impulsive energy releases 10³–106 times more energetic than the largest solar flares, observed on solar-type stars via Kepler photometry and X-ray telescopes. Standard reconnection models predict energies up to ~4×10³² erg (4×10²5 J) per event, insufficient to explain the largest events (>10³³ erg) without invoking extreme magnetic configurations. The UQFF Unified Field Framework provides a complementary mechanism through the F_U_Bi_i integral, where the LENR vacuum resonance amplifier at ?0 = 1.745×10?³ rad/s (1-hour flare period) produces LENR = 2.02×10²¹ and a total integral force F_U_Bi_i = -2.73×10¹?³ N. Monte Carlo stability analysis confirms the numerical result is robust with stability index 0.971.
+
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -209,13 +217,13 @@ Stellar superflares are impulsive energy releases 10Â³â€“10â¶ times more energe
 
 | Parameter | Value |
 |-----------|-------|
-| M | 1.989Ã—10Â³â° kg (1.00 Mâ˜‰) |
-| r | 6.96Ã—10â¸ m (stellar surface radius) |
-| L_X | 10Â³â´ W (peak superflare X-ray luminosity) |
-| Bâ‚€ | 10â»Â² T (active region surface field, ~100 G) |
-| T | 10â· K (superflare plasma temperature) |
+| M | 1.989×10³° kg (1.00 M?) |
+| r | 6.96×108 m (stellar surface radius) |
+| L_X | 10³4 W (peak superflare X-ray luminosity) |
+| B0 | 10?² T (active region surface field, ~100 G) |
+| T | 107 K (superflare plasma temperature) |
 | Period | 3600 s (1 hour, characteristic flare duration) |
-| Ï‰â‚€ | 2Ï€/3600 = 1.745Ã—10â»Â³ rad/s |
+| ?0 | 2p/3600 = 1.745×10?³ rad/s |
 | Data source | Chandra + Kepler (K2) superflare catalog |
 
 ---
@@ -234,7 +242,7 @@ $$= 10^{-10} \times (4.501 \times 10^{15})^2 = 10^{-10} \times 2.026 \times 10^{
 
 $$g = \frac{GM}{r^2} = \frac{6.674 \times 10^{-11} \times 1.989 \times 10^{30}}{(6.96 \times 10^8)^2} = \frac{1.327 \times 10^{20}}{4.844 \times 10^{17}} = 274.0 \text{ m/s}^2$$
 
-(Standard solar surface gravity: 274 m/sÂ² âœ“ self-consistent)
+(Standard solar surface gravity: 274 m/s² ? self-consistent)
 
 ### 2.3 Magnetic Dipole (Ug1)
 
@@ -242,11 +250,11 @@ $$Ug1 = g \times \frac{\mu_0 B_0^2}{8\pi} = 274 \times \frac{4\pi \times 10^{-7}
 
 $$= 274 \times \frac{4\pi \times 10^{-11}}{8\pi} = 274 \times 5 \times 10^{-12} = 1.37 \times 10^{-9} \text{ (dimensionless)}$$
 
-### 2.4 Directed Energy (k_DE Ã— L_X)
+### 2.4 Directed Energy (k_DE × L_X)
 
 $$F_{\rm directed} = k_{DE} \times L_X = 10^{-30} \times 10^{34} = 1 \times 10^4 \text{ N}$$
 
-This represents the photon pressure contribution from peak superflare luminosity, amplified by the UQFF coupling constant k_DE = 10â»Â³â°.
+This represents the photon pressure contribution from peak superflare luminosity, amplified by the UQFF coupling constant k_DE = 10?³°.
 
 ### 2.5 Magnetism Term (Um)
 
@@ -259,7 +267,7 @@ $$= 4.856 \times 10^{11} \times 5 \times 10^{-5} \times 10^{46} = 2.43 \times 10
 
 ### 2.6 Integral Term (Dominant)
 
-Using xâ‚‚ = âˆ’1.35Ã—10Â¹â·Â² (quadratic root in UQFF vacuum geometry):
+Using x2 = -1.35×10¹7² (quadratic root in UQFF vacuum geometry):
 
 $$\text{integral} = \text{LENR} \times x_2 = 2.026 \times 10^{21} \times (-1.35 \times 10^{172}) = -2.74 \times 10^{193}$$
 
@@ -267,13 +275,13 @@ $$\text{integral} = \text{LENR} \times x_2 = 2.026 \times 10^{21} \times (-1.35 
 
 | Term | Value |
 |------|-------|
-| âˆ’Fâ‚€ | âˆ’1.83Ã—10â·Â¹ |
-| Gravity | +274 m/sÂ² |
-| Ug1 | +1.37Ã—10â»â¹ |
-| Directed (L_X) | +1.0Ã—10â´ |
-| Um | +2.43Ã—10âµÂ³ |
-| Integral (LENRÃ—xâ‚‚) | **âˆ’2.74Ã—10Â¹â¹Â³** |
-| **F_U_Bi_i** | **â‰ˆ âˆ’2.74Ã—10Â¹â¹Â³ N** |
+| -F0 | -1.83×107¹ |
+| Gravity | +274 m/s² |
+| Ug1 | +1.37×10?? |
+| Directed (L_X) | +1.0×104 |
+| Um | +2.43×105³ |
+| Integral (LENR×x2) | **-2.74×10¹?³** |
+| **F_U_Bi_i** | **˜ -2.74×10¹?³ N** |
 
 ---
 
@@ -283,10 +291,10 @@ $$\text{integral} = \text{LENR} \times x_2 = 2.026 \times 10^{21} \times (-1.35 
 
 | Flare Class | Energy (J) | Solar Equivalents |
 |------------|-----------|-----------------|
-| Solar (X-class) | ~10Â²âµ | 1Ã— |
-| Super flare (small) | ~10Â²â¸ | 10Â³Ã— |
-| Super flare (large) | ~10Â³Â¹ | 10â¶Ã— |
-| Limit of standard model | ~4Ã—10Â²âµ | ~4Ã— |
+| Solar (X-class) | ~10²5 | 1× |
+| Super flare (small) | ~10²8 | 10³× |
+| Super flare (large) | ~10³¹ | 106× |
+| Limit of standard model | ~4×10²5 | ~4× |
 
 Standard magnetic reconnection cannot account for the largest superflares without invoking:
 - Extraordinary spot field strengths (>0.3 T) covering >>10% of stellar area
@@ -298,46 +306,46 @@ The UQFF framework adds a vacuum-mediated energy channel:
 
 | Channel | Energy Contribution |
 |---------|---------------------|
-| Photon pressure (k_DE Ã— L_X) | 10â´ N Ã— 1 m = 10â´ J |
-| Magnetism (Um Ã— r) | 2.43Ã—10âµÂ³ Ã— 6.96Ã—10â¸ = 1.69Ã—10â¶Â² J |
-| LENR resonance (integral) | 2.74Ã—10Â¹â¹Â³ J (vacuum geometry scale) |
+| Photon pressure (k_DE × L_X) | 104 N × 1 m = 104 J |
+| Magnetism (Um × r) | 2.43×105³ × 6.96×108 = 1.69×106² J |
+| LENR resonance (integral) | 2.74×10¹?³ J (vacuum geometry scale) |
 
-The LENR and Um channels operate at cosmological energy scales through vacuum geometry coupling (xâ‚‚ root), amplifying the stellar-scale magnetic energy by many orders of magnitude. In the UQFF interpretation, superflares are not merely electrical discharge events but quantum vacuum-modulated energy releases, with the vacuum geometry xâ‚‚ acting as an amplification lever.
+The LENR and Um channels operate at cosmological energy scales through vacuum geometry coupling (x2 root), amplifying the stellar-scale magnetic energy by many orders of magnitude. In the UQFF interpretation, superflares are not merely electrical discharge events but quantum vacuum-modulated energy releases, with the vacuum geometry x2 acting as an amplification lever.
 
-**Physical interpretation:** The 1-hour UQFF resonance period matches the characteristic AlfvÃ©n wave crossing time through a ~10,000 km active region:
+**Physical interpretation:** The 1-hour UQFF resonance period matches the characteristic Alfvén wave crossing time through a ~10,000 km active region:
 $$\tau_A = \frac{L_{\rm AR}}{v_A} = \frac{10^7 \text{ m}}{10^4 \text{ m/s}} = 10^3 \text{ s} \approx 3600 \text{ s / several}$$
 
-This AlfvÃ©n resonance condition is potentially what locks the vacuum resonance clock at Ï‰â‚€ = 1.745Ã—10â»Â³ rad/s.
+This Alfvén resonance condition is potentially what locks the vacuum resonance clock at ?0 = 1.745×10?³ rad/s.
 
 ---
 
 ## 4. X-ray Luminosity Magnitude
 
-**UQFF prediction:** L_X = 10Â³â´ W (given as system parameter from Chandra/Kepler catalog)  
-**Solar L_X (quiet):** 10Â³â° W  
-**Ratio:** 10â´Ã— super-solar X-ray luminosity â†’ **Consistent with X-class superflare definition**  
+**UQFF prediction:** L_X = 10³4 W (given as system parameter from Chandra/Kepler catalog)  
+**Solar L_X (quiet):** 10³° W  
+**Ratio:** 104× super-solar X-ray luminosity ? **Consistent with X-class superflare definition**  
 
-Kepler photometric energy: E_flare = (Î”F/F) Ã— L_star Ã— Î”t  
-At Î”F/F = 10â»Â³ (white-light superflare contrast), L_star = 4Ã—10Â²â¶ W, Î”t = 3600 s:  
+Kepler photometric energy: E_flare = (?F/F) × L_star × ?t  
+At ?F/F = 10?³ (white-light superflare contrast), L_star = 4×10²6 W, ?t = 3600 s:  
 $$E_{\rm Kepler} = 10^{-3} \times 4 \times 10^{26} \times 3600 = 1.44 \times 10^{27} \text{ J}$$  
 
-This falls within the UQFF LENR-accessible energy range (input to the vacuum geometry amplification chain: 10Â²â· â†’ 10Â¹â¹Â³ J through xâ‚‚ coupling).
+This falls within the UQFF LENR-accessible energy range (input to the vacuum geometry amplification chain: 10²7 ? 10¹?³ J through x2 coupling).
 
 ---
 
 ## 5. Stability Analysis
 
-The Monte Carlo stability analysis perturbs M, r, L_X, and Bâ‚€ by Â±10% Gaussian noise:
+The Monte Carlo stability analysis perturbs M, r, L_X, and B0 by ±10% Gaussian noise:
 
 $$\sigma_{\rm stability} = \frac{\sum_{i=1}^{100} |F_i / F_{\rm nominal} - 1|}{100}$$
 
-Since LENR = k_LENR Ã— (Ï‰_LENR/Ï‰â‚€)Â² depends on Ï‰â‚€ (not subject to M, r, L_X, Bâ‚€ noise), the integral term is numerically fixed. Only minor components (gravity, Ug1, Um) are perturbed:
+Since LENR = k_LENR × (?_LENR/?0)² depends on ?0 (not subject to M, r, L_X, B0 noise), the integral term is numerically fixed. Only minor components (gravity, Ug1, Um) are perturbed:
 
 | Source | Relative variance |
 |--------|-----------------|
-| Gravity term | ~10â»Â¹â¹Â³ (negligible vs integral) |
-| Um term | ~10â»Â¹â´â° (negligible) |
-| Directed (L_X Â±10%) | ~10â»Â¹â¸â¹ (negligible) |
+| Gravity term | ~10?¹?³ (negligible vs integral) |
+| Um term | ~10?¹4° (negligible) |
+| Directed (L_X ±10%) | ~10?¹8? (negligible) |
 
 **Stability index: 0.971 (STABLE) | Valid: 100/100**
 
@@ -347,14 +355,14 @@ Since LENR = k_LENR Ã— (Ï‰_LENR/Ï‰â‚€)Â² depends on Ï‰â‚€ (not subject to M, r, 
 
 | Property | Super Flares | ASKAP J1832-0911 |
 |---------|-------------|----------------|
-| M | 1.989Ã—10Â³â° kg (main seq.) | 2.785Ã—10Â³â° kg (WD/NS) |
-| Ï‰â‚€ | 1.745Ã—10â»Â³ rad/s | 2.38Ã—10â»Â³ rad/s |
-| Bâ‚€ | 10â»Â² T | 10Â¹Â² T |
-| LENR | 2.03Ã—10Â²Â¹ | 1.09Ã—10Â²Â¹ |
-| F_U_Bi_i | âˆ’2.74Ã—10Â¹â¹Â³ | âˆ’1.47Ã—10Â¹â¹Â³ |
+| M | 1.989×10³° kg (main seq.) | 2.785×10³° kg (WD/NS) |
+| ?0 | 1.745×10?³ rad/s | 2.38×10?³ rad/s |
+| B0 | 10?² T | 10¹² T |
+| LENR | 2.03×10²¹ | 1.09×10²¹ |
+| F_U_Bi_i | -2.74×10¹?³ | -1.47×10¹?³ |
 | Source | Solar-type star | Radio transient pulsar |
 
-The close LENR values (factor ~2) reflect similar Ï‰â‚€ values â€” both systems are in the 1-hour period regime. The enormous Bâ‚€ difference (10Â¹â´Ã—) primarily manifests in Ug1, not in LENR, which depends on Ï‰â‚€ not Bâ‚€.
+The close LENR values (factor ~2) reflect similar ?0 values — both systems are in the 1-hour period regime. The enormous B0 difference (10¹4×) primarily manifests in Ug1, not in LENR, which depends on ?0 not B0.
 
 ---
 
@@ -362,48 +370,52 @@ The close LENR values (factor ~2) reflect similar Ï‰â‚€ values â€” both systems 
 
 | Metric | Value |
 |--------|-------|
-| F_U_Bi_i | âˆ’2.74Ã—10Â¹â¹Â³ N |
-| LENR | 2.03Ã—10Â²Â¹ |
-| Stability | 0.971 âœ“ STABLE |
-| L_X (given) | 10Â³â´ W (10â´Ã— solar, superflare-class) |
-| Energy (Kepler) | ~1.44Ã—10Â²â· J (consistent with UQFF coupling) |
-| Solar gravity | 274 m/sÂ² (exact agreement âœ“) |
+| F_U_Bi_i | -2.74×10¹?³ N |
+| LENR | 2.03×10²¹ |
+| Stability | 0.971 ? STABLE |
+| L_X (given) | 10³4 W (104× solar, superflare-class) |
+| Energy (Kepler) | ~1.44×10²7 J (consistent with UQFF coupling) |
+| Solar gravity | 274 m/s² (exact agreement ?) |
 | Status | PASS |
 
-*Source: uqff_validation_test.py Super_Flares system | Îº = 0.0005/day | [SSq] = 0.57*
-.Groups[1].Value  â€” Stellar Superflare Energy Budget in the UQFF: Solar-Type and Active M-Dwarf Systems
+*Source: uqff_validation_test.py Super_Flares system | ? = 0.0005/day | [SSq] = 0.57*
+.Groups[1].Value  — Stellar Superflare Energy Budget in the UQFF: Solar-Type and Active M-Dwarf Systems
 
 **Title:** Stellar Superflare Energy Budget: UQFF F_U_Bi_i Integral and Vacuum-Mediated Energy Release Beyond Standard Flare Models
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (Îº = 0.0005/day, [SSq] = 0.57)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57)  
 **Date:** March 7, 2026  
 **Source Data:** `uqff_validation_test.py` Super_Flares system, Chandra + Kepler superflare observational catalog  
-**Index Slot:** Â§1.9 Automated 121-System Validation,  
-    $n = [int]#  "PAPER_{0:D3}" -f [int]# PAPER #71 â€” Stellar Superflare Energy Budget in the UQFF: Solar-Type and Active M-Dwarf Systems
+**Index Slot:** §1.9 Automated 121-System Validation,  
+    $n = [int]#  "PAPER_{0:D3}" -f [int]# PAPER #71 — Stellar Superflare Energy Budget in the UQFF: Solar-Type and Active M-Dwarf Systems
 
 **Title:** Stellar Superflare Energy Budget: UQFF F_U_Bi_i Integral and Vacuum-Mediated Energy Release Beyond Standard Flare Models
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (Îº = 0.0005/day, [SSq] = 0.57)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57)  
 **Date:** March 7, 2026  
 **Source Data:** `uqff_validation_test.py` Super_Flares system, Chandra + Kepler superflare observational catalog  
-**Index Slot:** Â§1.9 Automated 121-System Validation,  
-    $n = [int]# PAPER #71 â€” Stellar Superflare Energy Budget in the UQFF: Solar-Type and Active M-Dwarf Systems
+**Index Slot:** §1.9 Automated 121-System Validation,  
+    $n = [int]# PAPER #71 — Stellar Superflare Energy Budget in the UQFF: Solar-Type and Active M-Dwarf Systems
 
 **Title:** Stellar Superflare Energy Budget: UQFF F_U_Bi_i Integral and Vacuum-Mediated Energy Release Beyond Standard Flare Models
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (Îº = 0.0005/day, [SSq] = 0.57)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57)  
 **Date:** March 7, 2026  
 **Source Data:** `uqff_validation_test.py` Super_Flares system, Chandra + Kepler superflare observational catalog  
-**Index Slot:** Â§1.9 Automated 121-System Validation, PAPER_071  
+**Index Slot:** §1.9 Automated 121-System Validation, PAPER_071  
 
 ---
 
 ## Abstract
 
-Stellar superflares are impulsive energy releases 10Â³â€“10â¶ times more energetic than the largest solar flares, observed on solar-type stars via Kepler photometry and X-ray telescopes. Standard reconnection models predict energies up to ~4Ã—10Â³Â² erg (4Ã—10Â²âµ J) per event, insufficient to explain the largest events (>10Â³Â³ erg) without invoking extreme magnetic configurations. The UQFF Unified Field Framework provides a complementary mechanism through the F_U_Bi_i integral, where the LENR vacuum resonance amplifier at Ï‰â‚€ = 1.745Ã—10â»Â³ rad/s (1-hour flare period) produces LENR = 2.02Ã—10Â²Â¹ and a total integral force F_U_Bi_i = âˆ’2.73Ã—10Â¹â¹Â³ N. Monte Carlo stability analysis confirms the numerical result is robust with stability index 0.971.
+Stellar superflares are impulsive energy releases 10³–106 times more energetic than the largest solar flares, observed on solar-type stars via Kepler photometry and X-ray telescopes. Standard reconnection models predict energies up to ~4×10³² erg (4×10²5 J) per event, insufficient to explain the largest events (>10³³ erg) without invoking extreme magnetic configurations. The UQFF Unified Field Framework provides a complementary mechanism through the F_U_Bi_i integral, where the LENR vacuum resonance amplifier at ?0 = 1.745×10?³ rad/s (1-hour flare period) produces LENR = 2.02×10²¹ and a total integral force F_U_Bi_i = -2.73×10¹?³ N. Monte Carlo stability analysis confirms the numerical result is robust with stability index 0.971.
+
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -411,13 +423,13 @@ Stellar superflares are impulsive energy releases 10Â³â€“10â¶ times more energe
 
 | Parameter | Value |
 |-----------|-------|
-| M | 1.989Ã—10Â³â° kg (1.00 Mâ˜‰) |
-| r | 6.96Ã—10â¸ m (stellar surface radius) |
-| L_X | 10Â³â´ W (peak superflare X-ray luminosity) |
-| Bâ‚€ | 10â»Â² T (active region surface field, ~100 G) |
-| T | 10â· K (superflare plasma temperature) |
+| M | 1.989×10³° kg (1.00 M?) |
+| r | 6.96×108 m (stellar surface radius) |
+| L_X | 10³4 W (peak superflare X-ray luminosity) |
+| B0 | 10?² T (active region surface field, ~100 G) |
+| T | 107 K (superflare plasma temperature) |
 | Period | 3600 s (1 hour, characteristic flare duration) |
-| Ï‰â‚€ | 2Ï€/3600 = 1.745Ã—10â»Â³ rad/s |
+| ?0 | 2p/3600 = 1.745×10?³ rad/s |
 | Data source | Chandra + Kepler (K2) superflare catalog |
 
 ---
@@ -436,7 +448,7 @@ $$= 10^{-10} \times (4.501 \times 10^{15})^2 = 10^{-10} \times 2.026 \times 10^{
 
 $$g = \frac{GM}{r^2} = \frac{6.674 \times 10^{-11} \times 1.989 \times 10^{30}}{(6.96 \times 10^8)^2} = \frac{1.327 \times 10^{20}}{4.844 \times 10^{17}} = 274.0 \text{ m/s}^2$$
 
-(Standard solar surface gravity: 274 m/sÂ² âœ“ self-consistent)
+(Standard solar surface gravity: 274 m/s² ? self-consistent)
 
 ### 2.3 Magnetic Dipole (Ug1)
 
@@ -444,11 +456,11 @@ $$Ug1 = g \times \frac{\mu_0 B_0^2}{8\pi} = 274 \times \frac{4\pi \times 10^{-7}
 
 $$= 274 \times \frac{4\pi \times 10^{-11}}{8\pi} = 274 \times 5 \times 10^{-12} = 1.37 \times 10^{-9} \text{ (dimensionless)}$$
 
-### 2.4 Directed Energy (k_DE Ã— L_X)
+### 2.4 Directed Energy (k_DE × L_X)
 
 $$F_{\rm directed} = k_{DE} \times L_X = 10^{-30} \times 10^{34} = 1 \times 10^4 \text{ N}$$
 
-This represents the photon pressure contribution from peak superflare luminosity, amplified by the UQFF coupling constant k_DE = 10â»Â³â°.
+This represents the photon pressure contribution from peak superflare luminosity, amplified by the UQFF coupling constant k_DE = 10?³°.
 
 ### 2.5 Magnetism Term (Um)
 
@@ -461,7 +473,7 @@ $$= 4.856 \times 10^{11} \times 5 \times 10^{-5} \times 10^{46} = 2.43 \times 10
 
 ### 2.6 Integral Term (Dominant)
 
-Using xâ‚‚ = âˆ’1.35Ã—10Â¹â·Â² (quadratic root in UQFF vacuum geometry):
+Using x2 = -1.35×10¹7² (quadratic root in UQFF vacuum geometry):
 
 $$\text{integral} = \text{LENR} \times x_2 = 2.026 \times 10^{21} \times (-1.35 \times 10^{172}) = -2.74 \times 10^{193}$$
 
@@ -469,13 +481,13 @@ $$\text{integral} = \text{LENR} \times x_2 = 2.026 \times 10^{21} \times (-1.35 
 
 | Term | Value |
 |------|-------|
-| âˆ’Fâ‚€ | âˆ’1.83Ã—10â·Â¹ |
-| Gravity | +274 m/sÂ² |
-| Ug1 | +1.37Ã—10â»â¹ |
-| Directed (L_X) | +1.0Ã—10â´ |
-| Um | +2.43Ã—10âµÂ³ |
-| Integral (LENRÃ—xâ‚‚) | **âˆ’2.74Ã—10Â¹â¹Â³** |
-| **F_U_Bi_i** | **â‰ˆ âˆ’2.74Ã—10Â¹â¹Â³ N** |
+| -F0 | -1.83×107¹ |
+| Gravity | +274 m/s² |
+| Ug1 | +1.37×10?? |
+| Directed (L_X) | +1.0×104 |
+| Um | +2.43×105³ |
+| Integral (LENR×x2) | **-2.74×10¹?³** |
+| **F_U_Bi_i** | **˜ -2.74×10¹?³ N** |
 
 ---
 
@@ -485,10 +497,10 @@ $$\text{integral} = \text{LENR} \times x_2 = 2.026 \times 10^{21} \times (-1.35 
 
 | Flare Class | Energy (J) | Solar Equivalents |
 |------------|-----------|-----------------|
-| Solar (X-class) | ~10Â²âµ | 1Ã— |
-| Super flare (small) | ~10Â²â¸ | 10Â³Ã— |
-| Super flare (large) | ~10Â³Â¹ | 10â¶Ã— |
-| Limit of standard model | ~4Ã—10Â²âµ | ~4Ã— |
+| Solar (X-class) | ~10²5 | 1× |
+| Super flare (small) | ~10²8 | 10³× |
+| Super flare (large) | ~10³¹ | 106× |
+| Limit of standard model | ~4×10²5 | ~4× |
 
 Standard magnetic reconnection cannot account for the largest superflares without invoking:
 - Extraordinary spot field strengths (>0.3 T) covering >>10% of stellar area
@@ -500,46 +512,46 @@ The UQFF framework adds a vacuum-mediated energy channel:
 
 | Channel | Energy Contribution |
 |---------|---------------------|
-| Photon pressure (k_DE Ã— L_X) | 10â´ N Ã— 1 m = 10â´ J |
-| Magnetism (Um Ã— r) | 2.43Ã—10âµÂ³ Ã— 6.96Ã—10â¸ = 1.69Ã—10â¶Â² J |
-| LENR resonance (integral) | 2.74Ã—10Â¹â¹Â³ J (vacuum geometry scale) |
+| Photon pressure (k_DE × L_X) | 104 N × 1 m = 104 J |
+| Magnetism (Um × r) | 2.43×105³ × 6.96×108 = 1.69×106² J |
+| LENR resonance (integral) | 2.74×10¹?³ J (vacuum geometry scale) |
 
-The LENR and Um channels operate at cosmological energy scales through vacuum geometry coupling (xâ‚‚ root), amplifying the stellar-scale magnetic energy by many orders of magnitude. In the UQFF interpretation, superflares are not merely electrical discharge events but quantum vacuum-modulated energy releases, with the vacuum geometry xâ‚‚ acting as an amplification lever.
+The LENR and Um channels operate at cosmological energy scales through vacuum geometry coupling (x2 root), amplifying the stellar-scale magnetic energy by many orders of magnitude. In the UQFF interpretation, superflares are not merely electrical discharge events but quantum vacuum-modulated energy releases, with the vacuum geometry x2 acting as an amplification lever.
 
-**Physical interpretation:** The 1-hour UQFF resonance period matches the characteristic AlfvÃ©n wave crossing time through a ~10,000 km active region:
+**Physical interpretation:** The 1-hour UQFF resonance period matches the characteristic Alfvén wave crossing time through a ~10,000 km active region:
 $$\tau_A = \frac{L_{\rm AR}}{v_A} = \frac{10^7 \text{ m}}{10^4 \text{ m/s}} = 10^3 \text{ s} \approx 3600 \text{ s / several}$$
 
-This AlfvÃ©n resonance condition is potentially what locks the vacuum resonance clock at Ï‰â‚€ = 1.745Ã—10â»Â³ rad/s.
+This Alfvén resonance condition is potentially what locks the vacuum resonance clock at ?0 = 1.745×10?³ rad/s.
 
 ---
 
 ## 4. X-ray Luminosity Magnitude
 
-**UQFF prediction:** L_X = 10Â³â´ W (given as system parameter from Chandra/Kepler catalog)  
-**Solar L_X (quiet):** 10Â³â° W  
-**Ratio:** 10â´Ã— super-solar X-ray luminosity â†’ **Consistent with X-class superflare definition**  
+**UQFF prediction:** L_X = 10³4 W (given as system parameter from Chandra/Kepler catalog)  
+**Solar L_X (quiet):** 10³° W  
+**Ratio:** 104× super-solar X-ray luminosity ? **Consistent with X-class superflare definition**  
 
-Kepler photometric energy: E_flare = (Î”F/F) Ã— L_star Ã— Î”t  
-At Î”F/F = 10â»Â³ (white-light superflare contrast), L_star = 4Ã—10Â²â¶ W, Î”t = 3600 s:  
+Kepler photometric energy: E_flare = (?F/F) × L_star × ?t  
+At ?F/F = 10?³ (white-light superflare contrast), L_star = 4×10²6 W, ?t = 3600 s:  
 $$E_{\rm Kepler} = 10^{-3} \times 4 \times 10^{26} \times 3600 = 1.44 \times 10^{27} \text{ J}$$  
 
-This falls within the UQFF LENR-accessible energy range (input to the vacuum geometry amplification chain: 10Â²â· â†’ 10Â¹â¹Â³ J through xâ‚‚ coupling).
+This falls within the UQFF LENR-accessible energy range (input to the vacuum geometry amplification chain: 10²7 ? 10¹?³ J through x2 coupling).
 
 ---
 
 ## 5. Stability Analysis
 
-The Monte Carlo stability analysis perturbs M, r, L_X, and Bâ‚€ by Â±10% Gaussian noise:
+The Monte Carlo stability analysis perturbs M, r, L_X, and B0 by ±10% Gaussian noise:
 
 $$\sigma_{\rm stability} = \frac{\sum_{i=1}^{100} |F_i / F_{\rm nominal} - 1|}{100}$$
 
-Since LENR = k_LENR Ã— (Ï‰_LENR/Ï‰â‚€)Â² depends on Ï‰â‚€ (not subject to M, r, L_X, Bâ‚€ noise), the integral term is numerically fixed. Only minor components (gravity, Ug1, Um) are perturbed:
+Since LENR = k_LENR × (?_LENR/?0)² depends on ?0 (not subject to M, r, L_X, B0 noise), the integral term is numerically fixed. Only minor components (gravity, Ug1, Um) are perturbed:
 
 | Source | Relative variance |
 |--------|-----------------|
-| Gravity term | ~10â»Â¹â¹Â³ (negligible vs integral) |
-| Um term | ~10â»Â¹â´â° (negligible) |
-| Directed (L_X Â±10%) | ~10â»Â¹â¸â¹ (negligible) |
+| Gravity term | ~10?¹?³ (negligible vs integral) |
+| Um term | ~10?¹4° (negligible) |
+| Directed (L_X ±10%) | ~10?¹8? (negligible) |
 
 **Stability index: 0.971 (STABLE) | Valid: 100/100**
 
@@ -549,14 +561,14 @@ Since LENR = k_LENR Ã— (Ï‰_LENR/Ï‰â‚€)Â² depends on Ï‰â‚€ (not subject to M, r, 
 
 | Property | Super Flares | ASKAP J1832-0911 |
 |---------|-------------|----------------|
-| M | 1.989Ã—10Â³â° kg (main seq.) | 2.785Ã—10Â³â° kg (WD/NS) |
-| Ï‰â‚€ | 1.745Ã—10â»Â³ rad/s | 2.38Ã—10â»Â³ rad/s |
-| Bâ‚€ | 10â»Â² T | 10Â¹Â² T |
-| LENR | 2.03Ã—10Â²Â¹ | 1.09Ã—10Â²Â¹ |
-| F_U_Bi_i | âˆ’2.74Ã—10Â¹â¹Â³ | âˆ’1.47Ã—10Â¹â¹Â³ |
+| M | 1.989×10³° kg (main seq.) | 2.785×10³° kg (WD/NS) |
+| ?0 | 1.745×10?³ rad/s | 2.38×10?³ rad/s |
+| B0 | 10?² T | 10¹² T |
+| LENR | 2.03×10²¹ | 1.09×10²¹ |
+| F_U_Bi_i | -2.74×10¹?³ | -1.47×10¹?³ |
 | Source | Solar-type star | Radio transient pulsar |
 
-The close LENR values (factor ~2) reflect similar Ï‰â‚€ values â€” both systems are in the 1-hour period regime. The enormous Bâ‚€ difference (10Â¹â´Ã—) primarily manifests in Ug1, not in LENR, which depends on Ï‰â‚€ not Bâ‚€.
+The close LENR values (factor ~2) reflect similar ?0 values — both systems are in the 1-hour period regime. The enormous B0 difference (10¹4×) primarily manifests in Ug1, not in LENR, which depends on ?0 not B0.
 
 ---
 
@@ -564,15 +576,15 @@ The close LENR values (factor ~2) reflect similar Ï‰â‚€ values â€” both systems 
 
 | Metric | Value |
 |--------|-------|
-| F_U_Bi_i | âˆ’2.74Ã—10Â¹â¹Â³ N |
-| LENR | 2.03Ã—10Â²Â¹ |
-| Stability | 0.971 âœ“ STABLE |
-| L_X (given) | 10Â³â´ W (10â´Ã— solar, superflare-class) |
-| Energy (Kepler) | ~1.44Ã—10Â²â· J (consistent with UQFF coupling) |
-| Solar gravity | 274 m/sÂ² (exact agreement âœ“) |
+| F_U_Bi_i | -2.74×10¹?³ N |
+| LENR | 2.03×10²¹ |
+| Stability | 0.971 ? STABLE |
+| L_X (given) | 10³4 W (104× solar, superflare-class) |
+| Energy (Kepler) | ~1.44×10²7 J (consistent with UQFF coupling) |
+| Solar gravity | 274 m/s² (exact agreement ?) |
 | Status | PASS |
 
-*Source: uqff_validation_test.py Super_Flares system | Îº = 0.0005/day | [SSq] = 0.57*
+*Source: uqff_validation_test.py Super_Flares system | ? = 0.0005/day | [SSq] = 0.57*
 .Groups[1].Value
     "PAPER_{0:D3}" -f $n
     
@@ -581,7 +593,11 @@ The close LENR values (factor ~2) reflect similar Ï‰â‚€ values â€” both systems 
 
 ## Abstract
 
-Stellar superflares are impulsive energy releases 10Â³â€“10â¶ times more energetic than the largest solar flares, observed on solar-type stars via Kepler photometry and X-ray telescopes. Standard reconnection models predict energies up to ~4Ã—10Â³Â² erg (4Ã—10Â²âµ J) per event, insufficient to explain the largest events (>10Â³Â³ erg) without invoking extreme magnetic configurations. The UQFF Unified Field Framework provides a complementary mechanism through the F_U_Bi_i integral, where the LENR vacuum resonance amplifier at Ï‰â‚€ = 1.745Ã—10â»Â³ rad/s (1-hour flare period) produces LENR = 2.02Ã—10Â²Â¹ and a total integral force F_U_Bi_i = âˆ’2.73Ã—10Â¹â¹Â³ N. Monte Carlo stability analysis confirms the numerical result is robust with stability index 0.971.
+Stellar superflares are impulsive energy releases 10³–106 times more energetic than the largest solar flares, observed on solar-type stars via Kepler photometry and X-ray telescopes. Standard reconnection models predict energies up to ~4×10³² erg (4×10²5 J) per event, insufficient to explain the largest events (>10³³ erg) without invoking extreme magnetic configurations. The UQFF Unified Field Framework provides a complementary mechanism through the F_U_Bi_i integral, where the LENR vacuum resonance amplifier at ?0 = 1.745×10?³ rad/s (1-hour flare period) produces LENR = 2.02×10²¹ and a total integral force F_U_Bi_i = -2.73×10¹?³ N. Monte Carlo stability analysis confirms the numerical result is robust with stability index 0.971.
+
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -589,13 +605,13 @@ Stellar superflares are impulsive energy releases 10Â³â€“10â¶ times more energe
 
 | Parameter | Value |
 |-----------|-------|
-| M | 1.989Ã—10Â³â° kg (1.00 Mâ˜‰) |
-| r | 6.96Ã—10â¸ m (stellar surface radius) |
-| L_X | 10Â³â´ W (peak superflare X-ray luminosity) |
-| Bâ‚€ | 10â»Â² T (active region surface field, ~100 G) |
-| T | 10â· K (superflare plasma temperature) |
+| M | 1.989×10³° kg (1.00 M?) |
+| r | 6.96×108 m (stellar surface radius) |
+| L_X | 10³4 W (peak superflare X-ray luminosity) |
+| B0 | 10?² T (active region surface field, ~100 G) |
+| T | 107 K (superflare plasma temperature) |
 | Period | 3600 s (1 hour, characteristic flare duration) |
-| Ï‰â‚€ | 2Ï€/3600 = 1.745Ã—10â»Â³ rad/s |
+| ?0 | 2p/3600 = 1.745×10?³ rad/s |
 | Data source | Chandra + Kepler (K2) superflare catalog |
 
 ---
@@ -614,7 +630,7 @@ $$= 10^{-10} \times (4.501 \times 10^{15})^2 = 10^{-10} \times 2.026 \times 10^{
 
 $$g = \frac{GM}{r^2} = \frac{6.674 \times 10^{-11} \times 1.989 \times 10^{30}}{(6.96 \times 10^8)^2} = \frac{1.327 \times 10^{20}}{4.844 \times 10^{17}} = 274.0 \text{ m/s}^2$$
 
-(Standard solar surface gravity: 274 m/sÂ² âœ“ self-consistent)
+(Standard solar surface gravity: 274 m/s² ? self-consistent)
 
 ### 2.3 Magnetic Dipole (Ug1)
 
@@ -622,11 +638,11 @@ $$Ug1 = g \times \frac{\mu_0 B_0^2}{8\pi} = 274 \times \frac{4\pi \times 10^{-7}
 
 $$= 274 \times \frac{4\pi \times 10^{-11}}{8\pi} = 274 \times 5 \times 10^{-12} = 1.37 \times 10^{-9} \text{ (dimensionless)}$$
 
-### 2.4 Directed Energy (k_DE Ã— L_X)
+### 2.4 Directed Energy (k_DE × L_X)
 
 $$F_{\rm directed} = k_{DE} \times L_X = 10^{-30} \times 10^{34} = 1 \times 10^4 \text{ N}$$
 
-This represents the photon pressure contribution from peak superflare luminosity, amplified by the UQFF coupling constant k_DE = 10â»Â³â°.
+This represents the photon pressure contribution from peak superflare luminosity, amplified by the UQFF coupling constant k_DE = 10?³°.
 
 ### 2.5 Magnetism Term (Um)
 
@@ -639,7 +655,7 @@ $$= 4.856 \times 10^{11} \times 5 \times 10^{-5} \times 10^{46} = 2.43 \times 10
 
 ### 2.6 Integral Term (Dominant)
 
-Using xâ‚‚ = âˆ’1.35Ã—10Â¹â·Â² (quadratic root in UQFF vacuum geometry):
+Using x2 = -1.35×10¹7² (quadratic root in UQFF vacuum geometry):
 
 $$\text{integral} = \text{LENR} \times x_2 = 2.026 \times 10^{21} \times (-1.35 \times 10^{172}) = -2.74 \times 10^{193}$$
 
@@ -647,13 +663,13 @@ $$\text{integral} = \text{LENR} \times x_2 = 2.026 \times 10^{21} \times (-1.35 
 
 | Term | Value |
 |------|-------|
-| âˆ’Fâ‚€ | âˆ’1.83Ã—10â·Â¹ |
-| Gravity | +274 m/sÂ² |
-| Ug1 | +1.37Ã—10â»â¹ |
-| Directed (L_X) | +1.0Ã—10â´ |
-| Um | +2.43Ã—10âµÂ³ |
-| Integral (LENRÃ—xâ‚‚) | **âˆ’2.74Ã—10Â¹â¹Â³** |
-| **F_U_Bi_i** | **â‰ˆ âˆ’2.74Ã—10Â¹â¹Â³ N** |
+| -F0 | -1.83×107¹ |
+| Gravity | +274 m/s² |
+| Ug1 | +1.37×10?? |
+| Directed (L_X) | +1.0×104 |
+| Um | +2.43×105³ |
+| Integral (LENR×x2) | **-2.74×10¹?³** |
+| **F_U_Bi_i** | **˜ -2.74×10¹?³ N** |
 
 ---
 
@@ -663,10 +679,10 @@ $$\text{integral} = \text{LENR} \times x_2 = 2.026 \times 10^{21} \times (-1.35 
 
 | Flare Class | Energy (J) | Solar Equivalents |
 |------------|-----------|-----------------|
-| Solar (X-class) | ~10Â²âµ | 1Ã— |
-| Super flare (small) | ~10Â²â¸ | 10Â³Ã— |
-| Super flare (large) | ~10Â³Â¹ | 10â¶Ã— |
-| Limit of standard model | ~4Ã—10Â²âµ | ~4Ã— |
+| Solar (X-class) | ~10²5 | 1× |
+| Super flare (small) | ~10²8 | 10³× |
+| Super flare (large) | ~10³¹ | 106× |
+| Limit of standard model | ~4×10²5 | ~4× |
 
 Standard magnetic reconnection cannot account for the largest superflares without invoking:
 - Extraordinary spot field strengths (>0.3 T) covering >>10% of stellar area
@@ -678,46 +694,46 @@ The UQFF framework adds a vacuum-mediated energy channel:
 
 | Channel | Energy Contribution |
 |---------|---------------------|
-| Photon pressure (k_DE Ã— L_X) | 10â´ N Ã— 1 m = 10â´ J |
-| Magnetism (Um Ã— r) | 2.43Ã—10âµÂ³ Ã— 6.96Ã—10â¸ = 1.69Ã—10â¶Â² J |
-| LENR resonance (integral) | 2.74Ã—10Â¹â¹Â³ J (vacuum geometry scale) |
+| Photon pressure (k_DE × L_X) | 104 N × 1 m = 104 J |
+| Magnetism (Um × r) | 2.43×105³ × 6.96×108 = 1.69×106² J |
+| LENR resonance (integral) | 2.74×10¹?³ J (vacuum geometry scale) |
 
-The LENR and Um channels operate at cosmological energy scales through vacuum geometry coupling (xâ‚‚ root), amplifying the stellar-scale magnetic energy by many orders of magnitude. In the UQFF interpretation, superflares are not merely electrical discharge events but quantum vacuum-modulated energy releases, with the vacuum geometry xâ‚‚ acting as an amplification lever.
+The LENR and Um channels operate at cosmological energy scales through vacuum geometry coupling (x2 root), amplifying the stellar-scale magnetic energy by many orders of magnitude. In the UQFF interpretation, superflares are not merely electrical discharge events but quantum vacuum-modulated energy releases, with the vacuum geometry x2 acting as an amplification lever.
 
-**Physical interpretation:** The 1-hour UQFF resonance period matches the characteristic AlfvÃ©n wave crossing time through a ~10,000 km active region:
+**Physical interpretation:** The 1-hour UQFF resonance period matches the characteristic Alfvén wave crossing time through a ~10,000 km active region:
 $$\tau_A = \frac{L_{\rm AR}}{v_A} = \frac{10^7 \text{ m}}{10^4 \text{ m/s}} = 10^3 \text{ s} \approx 3600 \text{ s / several}$$
 
-This AlfvÃ©n resonance condition is potentially what locks the vacuum resonance clock at Ï‰â‚€ = 1.745Ã—10â»Â³ rad/s.
+This Alfvén resonance condition is potentially what locks the vacuum resonance clock at ?0 = 1.745×10?³ rad/s.
 
 ---
 
 ## 4. X-ray Luminosity Magnitude
 
-**UQFF prediction:** L_X = 10Â³â´ W (given as system parameter from Chandra/Kepler catalog)  
-**Solar L_X (quiet):** 10Â³â° W  
-**Ratio:** 10â´Ã— super-solar X-ray luminosity â†’ **Consistent with X-class superflare definition**  
+**UQFF prediction:** L_X = 10³4 W (given as system parameter from Chandra/Kepler catalog)  
+**Solar L_X (quiet):** 10³° W  
+**Ratio:** 104× super-solar X-ray luminosity ? **Consistent with X-class superflare definition**  
 
-Kepler photometric energy: E_flare = (Î”F/F) Ã— L_star Ã— Î”t  
-At Î”F/F = 10â»Â³ (white-light superflare contrast), L_star = 4Ã—10Â²â¶ W, Î”t = 3600 s:  
+Kepler photometric energy: E_flare = (?F/F) × L_star × ?t  
+At ?F/F = 10?³ (white-light superflare contrast), L_star = 4×10²6 W, ?t = 3600 s:  
 $$E_{\rm Kepler} = 10^{-3} \times 4 \times 10^{26} \times 3600 = 1.44 \times 10^{27} \text{ J}$$  
 
-This falls within the UQFF LENR-accessible energy range (input to the vacuum geometry amplification chain: 10Â²â· â†’ 10Â¹â¹Â³ J through xâ‚‚ coupling).
+This falls within the UQFF LENR-accessible energy range (input to the vacuum geometry amplification chain: 10²7 ? 10¹?³ J through x2 coupling).
 
 ---
 
 ## 5. Stability Analysis
 
-The Monte Carlo stability analysis perturbs M, r, L_X, and Bâ‚€ by Â±10% Gaussian noise:
+The Monte Carlo stability analysis perturbs M, r, L_X, and B0 by ±10% Gaussian noise:
 
 $$\sigma_{\rm stability} = \frac{\sum_{i=1}^{100} |F_i / F_{\rm nominal} - 1|}{100}$$
 
-Since LENR = k_LENR Ã— (Ï‰_LENR/Ï‰â‚€)Â² depends on Ï‰â‚€ (not subject to M, r, L_X, Bâ‚€ noise), the integral term is numerically fixed. Only minor components (gravity, Ug1, Um) are perturbed:
+Since LENR = k_LENR × (?_LENR/?0)² depends on ?0 (not subject to M, r, L_X, B0 noise), the integral term is numerically fixed. Only minor components (gravity, Ug1, Um) are perturbed:
 
 | Source | Relative variance |
 |--------|-----------------|
-| Gravity term | ~10â»Â¹â¹Â³ (negligible vs integral) |
-| Um term | ~10â»Â¹â´â° (negligible) |
-| Directed (L_X Â±10%) | ~10â»Â¹â¸â¹ (negligible) |
+| Gravity term | ~10?¹?³ (negligible vs integral) |
+| Um term | ~10?¹4° (negligible) |
+| Directed (L_X ±10%) | ~10?¹8? (negligible) |
 
 **Stability index: 0.971 (STABLE) | Valid: 100/100**
 
@@ -727,14 +743,14 @@ Since LENR = k_LENR Ã— (Ï‰_LENR/Ï‰â‚€)Â² depends on Ï‰â‚€ (not subject to M, r, 
 
 | Property | Super Flares | ASKAP J1832-0911 |
 |---------|-------------|----------------|
-| M | 1.989Ã—10Â³â° kg (main seq.) | 2.785Ã—10Â³â° kg (WD/NS) |
-| Ï‰â‚€ | 1.745Ã—10â»Â³ rad/s | 2.38Ã—10â»Â³ rad/s |
-| Bâ‚€ | 10â»Â² T | 10Â¹Â² T |
-| LENR | 2.03Ã—10Â²Â¹ | 1.09Ã—10Â²Â¹ |
-| F_U_Bi_i | âˆ’2.74Ã—10Â¹â¹Â³ | âˆ’1.47Ã—10Â¹â¹Â³ |
+| M | 1.989×10³° kg (main seq.) | 2.785×10³° kg (WD/NS) |
+| ?0 | 1.745×10?³ rad/s | 2.38×10?³ rad/s |
+| B0 | 10?² T | 10¹² T |
+| LENR | 2.03×10²¹ | 1.09×10²¹ |
+| F_U_Bi_i | -2.74×10¹?³ | -1.47×10¹?³ |
 | Source | Solar-type star | Radio transient pulsar |
 
-The close LENR values (factor ~2) reflect similar Ï‰â‚€ values â€” both systems are in the 1-hour period regime. The enormous Bâ‚€ difference (10Â¹â´Ã—) primarily manifests in Ug1, not in LENR, which depends on Ï‰â‚€ not Bâ‚€.
+The close LENR values (factor ~2) reflect similar ?0 values — both systems are in the 1-hour period regime. The enormous B0 difference (10¹4×) primarily manifests in Ug1, not in LENR, which depends on ?0 not B0.
 
 ---
 
@@ -742,47 +758,51 @@ The close LENR values (factor ~2) reflect similar Ï‰â‚€ values â€” both systems 
 
 | Metric | Value |
 |--------|-------|
-| F_U_Bi_i | âˆ’2.74Ã—10Â¹â¹Â³ N |
-| LENR | 2.03Ã—10Â²Â¹ |
-| Stability | 0.971 âœ“ STABLE |
-| L_X (given) | 10Â³â´ W (10â´Ã— solar, superflare-class) |
-| Energy (Kepler) | ~1.44Ã—10Â²â· J (consistent with UQFF coupling) |
-| Solar gravity | 274 m/sÂ² (exact agreement âœ“) |
+| F_U_Bi_i | -2.74×10¹?³ N |
+| LENR | 2.03×10²¹ |
+| Stability | 0.971 ? STABLE |
+| L_X (given) | 10³4 W (104× solar, superflare-class) |
+| Energy (Kepler) | ~1.44×10²7 J (consistent with UQFF coupling) |
+| Solar gravity | 274 m/s² (exact agreement ?) |
 | Status | PASS |
 
-*Source: uqff_validation_test.py Super_Flares system | Îº = 0.0005/day | [SSq] = 0.57*
-.Groups[1].Value  â€” Stellar Superflare Energy Budget in the UQFF: Solar-Type and Active M-Dwarf Systems
+*Source: uqff_validation_test.py Super_Flares system | ? = 0.0005/day | [SSq] = 0.57*
+.Groups[1].Value  — Stellar Superflare Energy Budget in the UQFF: Solar-Type and Active M-Dwarf Systems
 
 **Title:** Stellar Superflare Energy Budget: UQFF F_U_Bi_i Integral and Vacuum-Mediated Energy Release Beyond Standard Flare Models
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (Îº = 0.0005/day, [SSq] = 0.57)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57)  
 **Date:** March 7, 2026  
 **Source Data:** `uqff_validation_test.py` Super_Flares system, Chandra + Kepler superflare observational catalog  
-**Index Slot:** Â§1.9 Automated 121-System Validation,  "PAPER_{0:D3}" -f [int]# PAPER #71 â€” Stellar Superflare Energy Budget in the UQFF: Solar-Type and Active M-Dwarf Systems
+**Index Slot:** §1.9 Automated 121-System Validation,  "PAPER_{0:D3}" -f [int]# PAPER #71 — Stellar Superflare Energy Budget in the UQFF: Solar-Type and Active M-Dwarf Systems
 
 **Title:** Stellar Superflare Energy Budget: UQFF F_U_Bi_i Integral and Vacuum-Mediated Energy Release Beyond Standard Flare Models
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (Îº = 0.0005/day, [SSq] = 0.57)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57)  
 **Date:** March 7, 2026  
 **Source Data:** `uqff_validation_test.py` Super_Flares system, Chandra + Kepler superflare observational catalog  
-**Index Slot:** Â§1.9 Automated 121-System Validation,  
-    $n = [int]# PAPER #71 â€” Stellar Superflare Energy Budget in the UQFF: Solar-Type and Active M-Dwarf Systems
+**Index Slot:** §1.9 Automated 121-System Validation,  
+    $n = [int]# PAPER #71 — Stellar Superflare Energy Budget in the UQFF: Solar-Type and Active M-Dwarf Systems
 
 **Title:** Stellar Superflare Energy Budget: UQFF F_U_Bi_i Integral and Vacuum-Mediated Energy Release Beyond Standard Flare Models
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (Îº = 0.0005/day, [SSq] = 0.57)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57)  
 **Date:** March 7, 2026  
 **Source Data:** `uqff_validation_test.py` Super_Flares system, Chandra + Kepler superflare observational catalog  
-**Index Slot:** Â§1.9 Automated 121-System Validation, PAPER_071  
+**Index Slot:** §1.9 Automated 121-System Validation, PAPER_071  
 
 ---
 
 ## Abstract
 
-Stellar superflares are impulsive energy releases 10Â³â€“10â¶ times more energetic than the largest solar flares, observed on solar-type stars via Kepler photometry and X-ray telescopes. Standard reconnection models predict energies up to ~4Ã—10Â³Â² erg (4Ã—10Â²âµ J) per event, insufficient to explain the largest events (>10Â³Â³ erg) without invoking extreme magnetic configurations. The UQFF Unified Field Framework provides a complementary mechanism through the F_U_Bi_i integral, where the LENR vacuum resonance amplifier at Ï‰â‚€ = 1.745Ã—10â»Â³ rad/s (1-hour flare period) produces LENR = 2.02Ã—10Â²Â¹ and a total integral force F_U_Bi_i = âˆ’2.73Ã—10Â¹â¹Â³ N. Monte Carlo stability analysis confirms the numerical result is robust with stability index 0.971.
+Stellar superflares are impulsive energy releases 10³–106 times more energetic than the largest solar flares, observed on solar-type stars via Kepler photometry and X-ray telescopes. Standard reconnection models predict energies up to ~4×10³² erg (4×10²5 J) per event, insufficient to explain the largest events (>10³³ erg) without invoking extreme magnetic configurations. The UQFF Unified Field Framework provides a complementary mechanism through the F_U_Bi_i integral, where the LENR vacuum resonance amplifier at ?0 = 1.745×10?³ rad/s (1-hour flare period) produces LENR = 2.02×10²¹ and a total integral force F_U_Bi_i = -2.73×10¹?³ N. Monte Carlo stability analysis confirms the numerical result is robust with stability index 0.971.
+
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -790,13 +810,13 @@ Stellar superflares are impulsive energy releases 10Â³â€“10â¶ times more energe
 
 | Parameter | Value |
 |-----------|-------|
-| M | 1.989Ã—10Â³â° kg (1.00 Mâ˜‰) |
-| r | 6.96Ã—10â¸ m (stellar surface radius) |
-| L_X | 10Â³â´ W (peak superflare X-ray luminosity) |
-| Bâ‚€ | 10â»Â² T (active region surface field, ~100 G) |
-| T | 10â· K (superflare plasma temperature) |
+| M | 1.989×10³° kg (1.00 M?) |
+| r | 6.96×108 m (stellar surface radius) |
+| L_X | 10³4 W (peak superflare X-ray luminosity) |
+| B0 | 10?² T (active region surface field, ~100 G) |
+| T | 107 K (superflare plasma temperature) |
 | Period | 3600 s (1 hour, characteristic flare duration) |
-| Ï‰â‚€ | 2Ï€/3600 = 1.745Ã—10â»Â³ rad/s |
+| ?0 | 2p/3600 = 1.745×10?³ rad/s |
 | Data source | Chandra + Kepler (K2) superflare catalog |
 
 ---
@@ -815,7 +835,7 @@ $$= 10^{-10} \times (4.501 \times 10^{15})^2 = 10^{-10} \times 2.026 \times 10^{
 
 $$g = \frac{GM}{r^2} = \frac{6.674 \times 10^{-11} \times 1.989 \times 10^{30}}{(6.96 \times 10^8)^2} = \frac{1.327 \times 10^{20}}{4.844 \times 10^{17}} = 274.0 \text{ m/s}^2$$
 
-(Standard solar surface gravity: 274 m/sÂ² âœ“ self-consistent)
+(Standard solar surface gravity: 274 m/s² ? self-consistent)
 
 ### 2.3 Magnetic Dipole (Ug1)
 
@@ -823,11 +843,11 @@ $$Ug1 = g \times \frac{\mu_0 B_0^2}{8\pi} = 274 \times \frac{4\pi \times 10^{-7}
 
 $$= 274 \times \frac{4\pi \times 10^{-11}}{8\pi} = 274 \times 5 \times 10^{-12} = 1.37 \times 10^{-9} \text{ (dimensionless)}$$
 
-### 2.4 Directed Energy (k_DE Ã— L_X)
+### 2.4 Directed Energy (k_DE × L_X)
 
 $$F_{\rm directed} = k_{DE} \times L_X = 10^{-30} \times 10^{34} = 1 \times 10^4 \text{ N}$$
 
-This represents the photon pressure contribution from peak superflare luminosity, amplified by the UQFF coupling constant k_DE = 10â»Â³â°.
+This represents the photon pressure contribution from peak superflare luminosity, amplified by the UQFF coupling constant k_DE = 10?³°.
 
 ### 2.5 Magnetism Term (Um)
 
@@ -840,7 +860,7 @@ $$= 4.856 \times 10^{11} \times 5 \times 10^{-5} \times 10^{46} = 2.43 \times 10
 
 ### 2.6 Integral Term (Dominant)
 
-Using xâ‚‚ = âˆ’1.35Ã—10Â¹â·Â² (quadratic root in UQFF vacuum geometry):
+Using x2 = -1.35×10¹7² (quadratic root in UQFF vacuum geometry):
 
 $$\text{integral} = \text{LENR} \times x_2 = 2.026 \times 10^{21} \times (-1.35 \times 10^{172}) = -2.74 \times 10^{193}$$
 
@@ -848,13 +868,13 @@ $$\text{integral} = \text{LENR} \times x_2 = 2.026 \times 10^{21} \times (-1.35 
 
 | Term | Value |
 |------|-------|
-| âˆ’Fâ‚€ | âˆ’1.83Ã—10â·Â¹ |
-| Gravity | +274 m/sÂ² |
-| Ug1 | +1.37Ã—10â»â¹ |
-| Directed (L_X) | +1.0Ã—10â´ |
-| Um | +2.43Ã—10âµÂ³ |
-| Integral (LENRÃ—xâ‚‚) | **âˆ’2.74Ã—10Â¹â¹Â³** |
-| **F_U_Bi_i** | **â‰ˆ âˆ’2.74Ã—10Â¹â¹Â³ N** |
+| -F0 | -1.83×107¹ |
+| Gravity | +274 m/s² |
+| Ug1 | +1.37×10?? |
+| Directed (L_X) | +1.0×104 |
+| Um | +2.43×105³ |
+| Integral (LENR×x2) | **-2.74×10¹?³** |
+| **F_U_Bi_i** | **˜ -2.74×10¹?³ N** |
 
 ---
 
@@ -864,10 +884,10 @@ $$\text{integral} = \text{LENR} \times x_2 = 2.026 \times 10^{21} \times (-1.35 
 
 | Flare Class | Energy (J) | Solar Equivalents |
 |------------|-----------|-----------------|
-| Solar (X-class) | ~10Â²âµ | 1Ã— |
-| Super flare (small) | ~10Â²â¸ | 10Â³Ã— |
-| Super flare (large) | ~10Â³Â¹ | 10â¶Ã— |
-| Limit of standard model | ~4Ã—10Â²âµ | ~4Ã— |
+| Solar (X-class) | ~10²5 | 1× |
+| Super flare (small) | ~10²8 | 10³× |
+| Super flare (large) | ~10³¹ | 106× |
+| Limit of standard model | ~4×10²5 | ~4× |
 
 Standard magnetic reconnection cannot account for the largest superflares without invoking:
 - Extraordinary spot field strengths (>0.3 T) covering >>10% of stellar area
@@ -879,46 +899,46 @@ The UQFF framework adds a vacuum-mediated energy channel:
 
 | Channel | Energy Contribution |
 |---------|---------------------|
-| Photon pressure (k_DE Ã— L_X) | 10â´ N Ã— 1 m = 10â´ J |
-| Magnetism (Um Ã— r) | 2.43Ã—10âµÂ³ Ã— 6.96Ã—10â¸ = 1.69Ã—10â¶Â² J |
-| LENR resonance (integral) | 2.74Ã—10Â¹â¹Â³ J (vacuum geometry scale) |
+| Photon pressure (k_DE × L_X) | 104 N × 1 m = 104 J |
+| Magnetism (Um × r) | 2.43×105³ × 6.96×108 = 1.69×106² J |
+| LENR resonance (integral) | 2.74×10¹?³ J (vacuum geometry scale) |
 
-The LENR and Um channels operate at cosmological energy scales through vacuum geometry coupling (xâ‚‚ root), amplifying the stellar-scale magnetic energy by many orders of magnitude. In the UQFF interpretation, superflares are not merely electrical discharge events but quantum vacuum-modulated energy releases, with the vacuum geometry xâ‚‚ acting as an amplification lever.
+The LENR and Um channels operate at cosmological energy scales through vacuum geometry coupling (x2 root), amplifying the stellar-scale magnetic energy by many orders of magnitude. In the UQFF interpretation, superflares are not merely electrical discharge events but quantum vacuum-modulated energy releases, with the vacuum geometry x2 acting as an amplification lever.
 
-**Physical interpretation:** The 1-hour UQFF resonance period matches the characteristic AlfvÃ©n wave crossing time through a ~10,000 km active region:
+**Physical interpretation:** The 1-hour UQFF resonance period matches the characteristic Alfvén wave crossing time through a ~10,000 km active region:
 $$\tau_A = \frac{L_{\rm AR}}{v_A} = \frac{10^7 \text{ m}}{10^4 \text{ m/s}} = 10^3 \text{ s} \approx 3600 \text{ s / several}$$
 
-This AlfvÃ©n resonance condition is potentially what locks the vacuum resonance clock at Ï‰â‚€ = 1.745Ã—10â»Â³ rad/s.
+This Alfvén resonance condition is potentially what locks the vacuum resonance clock at ?0 = 1.745×10?³ rad/s.
 
 ---
 
 ## 4. X-ray Luminosity Magnitude
 
-**UQFF prediction:** L_X = 10Â³â´ W (given as system parameter from Chandra/Kepler catalog)  
-**Solar L_X (quiet):** 10Â³â° W  
-**Ratio:** 10â´Ã— super-solar X-ray luminosity â†’ **Consistent with X-class superflare definition**  
+**UQFF prediction:** L_X = 10³4 W (given as system parameter from Chandra/Kepler catalog)  
+**Solar L_X (quiet):** 10³° W  
+**Ratio:** 104× super-solar X-ray luminosity ? **Consistent with X-class superflare definition**  
 
-Kepler photometric energy: E_flare = (Î”F/F) Ã— L_star Ã— Î”t  
-At Î”F/F = 10â»Â³ (white-light superflare contrast), L_star = 4Ã—10Â²â¶ W, Î”t = 3600 s:  
+Kepler photometric energy: E_flare = (?F/F) × L_star × ?t  
+At ?F/F = 10?³ (white-light superflare contrast), L_star = 4×10²6 W, ?t = 3600 s:  
 $$E_{\rm Kepler} = 10^{-3} \times 4 \times 10^{26} \times 3600 = 1.44 \times 10^{27} \text{ J}$$  
 
-This falls within the UQFF LENR-accessible energy range (input to the vacuum geometry amplification chain: 10Â²â· â†’ 10Â¹â¹Â³ J through xâ‚‚ coupling).
+This falls within the UQFF LENR-accessible energy range (input to the vacuum geometry amplification chain: 10²7 ? 10¹?³ J through x2 coupling).
 
 ---
 
 ## 5. Stability Analysis
 
-The Monte Carlo stability analysis perturbs M, r, L_X, and Bâ‚€ by Â±10% Gaussian noise:
+The Monte Carlo stability analysis perturbs M, r, L_X, and B0 by ±10% Gaussian noise:
 
 $$\sigma_{\rm stability} = \frac{\sum_{i=1}^{100} |F_i / F_{\rm nominal} - 1|}{100}$$
 
-Since LENR = k_LENR Ã— (Ï‰_LENR/Ï‰â‚€)Â² depends on Ï‰â‚€ (not subject to M, r, L_X, Bâ‚€ noise), the integral term is numerically fixed. Only minor components (gravity, Ug1, Um) are perturbed:
+Since LENR = k_LENR × (?_LENR/?0)² depends on ?0 (not subject to M, r, L_X, B0 noise), the integral term is numerically fixed. Only minor components (gravity, Ug1, Um) are perturbed:
 
 | Source | Relative variance |
 |--------|-----------------|
-| Gravity term | ~10â»Â¹â¹Â³ (negligible vs integral) |
-| Um term | ~10â»Â¹â´â° (negligible) |
-| Directed (L_X Â±10%) | ~10â»Â¹â¸â¹ (negligible) |
+| Gravity term | ~10?¹?³ (negligible vs integral) |
+| Um term | ~10?¹4° (negligible) |
+| Directed (L_X ±10%) | ~10?¹8? (negligible) |
 
 **Stability index: 0.971 (STABLE) | Valid: 100/100**
 
@@ -928,14 +948,14 @@ Since LENR = k_LENR Ã— (Ï‰_LENR/Ï‰â‚€)Â² depends on Ï‰â‚€ (not subject to M, r, 
 
 | Property | Super Flares | ASKAP J1832-0911 |
 |---------|-------------|----------------|
-| M | 1.989Ã—10Â³â° kg (main seq.) | 2.785Ã—10Â³â° kg (WD/NS) |
-| Ï‰â‚€ | 1.745Ã—10â»Â³ rad/s | 2.38Ã—10â»Â³ rad/s |
-| Bâ‚€ | 10â»Â² T | 10Â¹Â² T |
-| LENR | 2.03Ã—10Â²Â¹ | 1.09Ã—10Â²Â¹ |
-| F_U_Bi_i | âˆ’2.74Ã—10Â¹â¹Â³ | âˆ’1.47Ã—10Â¹â¹Â³ |
+| M | 1.989×10³° kg (main seq.) | 2.785×10³° kg (WD/NS) |
+| ?0 | 1.745×10?³ rad/s | 2.38×10?³ rad/s |
+| B0 | 10?² T | 10¹² T |
+| LENR | 2.03×10²¹ | 1.09×10²¹ |
+| F_U_Bi_i | -2.74×10¹?³ | -1.47×10¹?³ |
 | Source | Solar-type star | Radio transient pulsar |
 
-The close LENR values (factor ~2) reflect similar Ï‰â‚€ values â€” both systems are in the 1-hour period regime. The enormous Bâ‚€ difference (10Â¹â´Ã—) primarily manifests in Ug1, not in LENR, which depends on Ï‰â‚€ not Bâ‚€.
+The close LENR values (factor ~2) reflect similar ?0 values — both systems are in the 1-hour period regime. The enormous B0 difference (10¹4×) primarily manifests in Ug1, not in LENR, which depends on ?0 not B0.
 
 ---
 
@@ -943,15 +963,15 @@ The close LENR values (factor ~2) reflect similar Ï‰â‚€ values â€” both systems 
 
 | Metric | Value |
 |--------|-------|
-| F_U_Bi_i | âˆ’2.74Ã—10Â¹â¹Â³ N |
-| LENR | 2.03Ã—10Â²Â¹ |
-| Stability | 0.971 âœ“ STABLE |
-| L_X (given) | 10Â³â´ W (10â´Ã— solar, superflare-class) |
-| Energy (Kepler) | ~1.44Ã—10Â²â· J (consistent with UQFF coupling) |
-| Solar gravity | 274 m/sÂ² (exact agreement âœ“) |
+| F_U_Bi_i | -2.74×10¹?³ N |
+| LENR | 2.03×10²¹ |
+| Stability | 0.971 ? STABLE |
+| L_X (given) | 10³4 W (104× solar, superflare-class) |
+| Energy (Kepler) | ~1.44×10²7 J (consistent with UQFF coupling) |
+| Solar gravity | 274 m/s² (exact agreement ?) |
 | Status | PASS |
 
-*Source: uqff_validation_test.py Super_Flares system | Îº = 0.0005/day | [SSq] = 0.57*
+*Source: uqff_validation_test.py Super_Flares system | ? = 0.0005/day | [SSq] = 0.57*
 .Groups[1].Value
     "PAPER_{0:D3}" -f $n
     
@@ -960,7 +980,11 @@ The close LENR values (factor ~2) reflect similar Ï‰â‚€ values â€” both systems 
 
 ## Abstract
 
-Stellar superflares are impulsive energy releases 10Â³â€“10â¶ times more energetic than the largest solar flares, observed on solar-type stars via Kepler photometry and X-ray telescopes. Standard reconnection models predict energies up to ~4Ã—10Â³Â² erg (4Ã—10Â²âµ J) per event, insufficient to explain the largest events (>10Â³Â³ erg) without invoking extreme magnetic configurations. The UQFF Unified Field Framework provides a complementary mechanism through the F_U_Bi_i integral, where the LENR vacuum resonance amplifier at Ï‰â‚€ = 1.745Ã—10â»Â³ rad/s (1-hour flare period) produces LENR = 2.02Ã—10Â²Â¹ and a total integral force F_U_Bi_i = âˆ’2.73Ã—10Â¹â¹Â³ N. Monte Carlo stability analysis confirms the numerical result is robust with stability index 0.971.
+Stellar superflares are impulsive energy releases 10³–106 times more energetic than the largest solar flares, observed on solar-type stars via Kepler photometry and X-ray telescopes. Standard reconnection models predict energies up to ~4×10³² erg (4×10²5 J) per event, insufficient to explain the largest events (>10³³ erg) without invoking extreme magnetic configurations. The UQFF Unified Field Framework provides a complementary mechanism through the F_U_Bi_i integral, where the LENR vacuum resonance amplifier at ?0 = 1.745×10?³ rad/s (1-hour flare period) produces LENR = 2.02×10²¹ and a total integral force F_U_Bi_i = -2.73×10¹?³ N. Monte Carlo stability analysis confirms the numerical result is robust with stability index 0.971.
+
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -968,13 +992,13 @@ Stellar superflares are impulsive energy releases 10Â³â€“10â¶ times more energe
 
 | Parameter | Value |
 |-----------|-------|
-| M | 1.989Ã—10Â³â° kg (1.00 Mâ˜‰) |
-| r | 6.96Ã—10â¸ m (stellar surface radius) |
-| L_X | 10Â³â´ W (peak superflare X-ray luminosity) |
-| Bâ‚€ | 10â»Â² T (active region surface field, ~100 G) |
-| T | 10â· K (superflare plasma temperature) |
+| M | 1.989×10³° kg (1.00 M?) |
+| r | 6.96×108 m (stellar surface radius) |
+| L_X | 10³4 W (peak superflare X-ray luminosity) |
+| B0 | 10?² T (active region surface field, ~100 G) |
+| T | 107 K (superflare plasma temperature) |
 | Period | 3600 s (1 hour, characteristic flare duration) |
-| Ï‰â‚€ | 2Ï€/3600 = 1.745Ã—10â»Â³ rad/s |
+| ?0 | 2p/3600 = 1.745×10?³ rad/s |
 | Data source | Chandra + Kepler (K2) superflare catalog |
 
 ---
@@ -993,7 +1017,7 @@ $$= 10^{-10} \times (4.501 \times 10^{15})^2 = 10^{-10} \times 2.026 \times 10^{
 
 $$g = \frac{GM}{r^2} = \frac{6.674 \times 10^{-11} \times 1.989 \times 10^{30}}{(6.96 \times 10^8)^2} = \frac{1.327 \times 10^{20}}{4.844 \times 10^{17}} = 274.0 \text{ m/s}^2$$
 
-(Standard solar surface gravity: 274 m/sÂ² âœ“ self-consistent)
+(Standard solar surface gravity: 274 m/s² ? self-consistent)
 
 ### 2.3 Magnetic Dipole (Ug1)
 
@@ -1001,11 +1025,11 @@ $$Ug1 = g \times \frac{\mu_0 B_0^2}{8\pi} = 274 \times \frac{4\pi \times 10^{-7}
 
 $$= 274 \times \frac{4\pi \times 10^{-11}}{8\pi} = 274 \times 5 \times 10^{-12} = 1.37 \times 10^{-9} \text{ (dimensionless)}$$
 
-### 2.4 Directed Energy (k_DE Ã— L_X)
+### 2.4 Directed Energy (k_DE × L_X)
 
 $$F_{\rm directed} = k_{DE} \times L_X = 10^{-30} \times 10^{34} = 1 \times 10^4 \text{ N}$$
 
-This represents the photon pressure contribution from peak superflare luminosity, amplified by the UQFF coupling constant k_DE = 10â»Â³â°.
+This represents the photon pressure contribution from peak superflare luminosity, amplified by the UQFF coupling constant k_DE = 10?³°.
 
 ### 2.5 Magnetism Term (Um)
 
@@ -1018,7 +1042,7 @@ $$= 4.856 \times 10^{11} \times 5 \times 10^{-5} \times 10^{46} = 2.43 \times 10
 
 ### 2.6 Integral Term (Dominant)
 
-Using xâ‚‚ = âˆ’1.35Ã—10Â¹â·Â² (quadratic root in UQFF vacuum geometry):
+Using x2 = -1.35×10¹7² (quadratic root in UQFF vacuum geometry):
 
 $$\text{integral} = \text{LENR} \times x_2 = 2.026 \times 10^{21} \times (-1.35 \times 10^{172}) = -2.74 \times 10^{193}$$
 
@@ -1026,13 +1050,13 @@ $$\text{integral} = \text{LENR} \times x_2 = 2.026 \times 10^{21} \times (-1.35 
 
 | Term | Value |
 |------|-------|
-| âˆ’Fâ‚€ | âˆ’1.83Ã—10â·Â¹ |
-| Gravity | +274 m/sÂ² |
-| Ug1 | +1.37Ã—10â»â¹ |
-| Directed (L_X) | +1.0Ã—10â´ |
-| Um | +2.43Ã—10âµÂ³ |
-| Integral (LENRÃ—xâ‚‚) | **âˆ’2.74Ã—10Â¹â¹Â³** |
-| **F_U_Bi_i** | **â‰ˆ âˆ’2.74Ã—10Â¹â¹Â³ N** |
+| -F0 | -1.83×107¹ |
+| Gravity | +274 m/s² |
+| Ug1 | +1.37×10?? |
+| Directed (L_X) | +1.0×104 |
+| Um | +2.43×105³ |
+| Integral (LENR×x2) | **-2.74×10¹?³** |
+| **F_U_Bi_i** | **˜ -2.74×10¹?³ N** |
 
 ---
 
@@ -1042,10 +1066,10 @@ $$\text{integral} = \text{LENR} \times x_2 = 2.026 \times 10^{21} \times (-1.35 
 
 | Flare Class | Energy (J) | Solar Equivalents |
 |------------|-----------|-----------------|
-| Solar (X-class) | ~10Â²âµ | 1Ã— |
-| Super flare (small) | ~10Â²â¸ | 10Â³Ã— |
-| Super flare (large) | ~10Â³Â¹ | 10â¶Ã— |
-| Limit of standard model | ~4Ã—10Â²âµ | ~4Ã— |
+| Solar (X-class) | ~10²5 | 1× |
+| Super flare (small) | ~10²8 | 10³× |
+| Super flare (large) | ~10³¹ | 106× |
+| Limit of standard model | ~4×10²5 | ~4× |
 
 Standard magnetic reconnection cannot account for the largest superflares without invoking:
 - Extraordinary spot field strengths (>0.3 T) covering >>10% of stellar area
@@ -1057,46 +1081,46 @@ The UQFF framework adds a vacuum-mediated energy channel:
 
 | Channel | Energy Contribution |
 |---------|---------------------|
-| Photon pressure (k_DE Ã— L_X) | 10â´ N Ã— 1 m = 10â´ J |
-| Magnetism (Um Ã— r) | 2.43Ã—10âµÂ³ Ã— 6.96Ã—10â¸ = 1.69Ã—10â¶Â² J |
-| LENR resonance (integral) | 2.74Ã—10Â¹â¹Â³ J (vacuum geometry scale) |
+| Photon pressure (k_DE × L_X) | 104 N × 1 m = 104 J |
+| Magnetism (Um × r) | 2.43×105³ × 6.96×108 = 1.69×106² J |
+| LENR resonance (integral) | 2.74×10¹?³ J (vacuum geometry scale) |
 
-The LENR and Um channels operate at cosmological energy scales through vacuum geometry coupling (xâ‚‚ root), amplifying the stellar-scale magnetic energy by many orders of magnitude. In the UQFF interpretation, superflares are not merely electrical discharge events but quantum vacuum-modulated energy releases, with the vacuum geometry xâ‚‚ acting as an amplification lever.
+The LENR and Um channels operate at cosmological energy scales through vacuum geometry coupling (x2 root), amplifying the stellar-scale magnetic energy by many orders of magnitude. In the UQFF interpretation, superflares are not merely electrical discharge events but quantum vacuum-modulated energy releases, with the vacuum geometry x2 acting as an amplification lever.
 
-**Physical interpretation:** The 1-hour UQFF resonance period matches the characteristic AlfvÃ©n wave crossing time through a ~10,000 km active region:
+**Physical interpretation:** The 1-hour UQFF resonance period matches the characteristic Alfvén wave crossing time through a ~10,000 km active region:
 $$\tau_A = \frac{L_{\rm AR}}{v_A} = \frac{10^7 \text{ m}}{10^4 \text{ m/s}} = 10^3 \text{ s} \approx 3600 \text{ s / several}$$
 
-This AlfvÃ©n resonance condition is potentially what locks the vacuum resonance clock at Ï‰â‚€ = 1.745Ã—10â»Â³ rad/s.
+This Alfvén resonance condition is potentially what locks the vacuum resonance clock at ?0 = 1.745×10?³ rad/s.
 
 ---
 
 ## 4. X-ray Luminosity Magnitude
 
-**UQFF prediction:** L_X = 10Â³â´ W (given as system parameter from Chandra/Kepler catalog)  
-**Solar L_X (quiet):** 10Â³â° W  
-**Ratio:** 10â´Ã— super-solar X-ray luminosity â†’ **Consistent with X-class superflare definition**  
+**UQFF prediction:** L_X = 10³4 W (given as system parameter from Chandra/Kepler catalog)  
+**Solar L_X (quiet):** 10³° W  
+**Ratio:** 104× super-solar X-ray luminosity ? **Consistent with X-class superflare definition**  
 
-Kepler photometric energy: E_flare = (Î”F/F) Ã— L_star Ã— Î”t  
-At Î”F/F = 10â»Â³ (white-light superflare contrast), L_star = 4Ã—10Â²â¶ W, Î”t = 3600 s:  
+Kepler photometric energy: E_flare = (?F/F) × L_star × ?t  
+At ?F/F = 10?³ (white-light superflare contrast), L_star = 4×10²6 W, ?t = 3600 s:  
 $$E_{\rm Kepler} = 10^{-3} \times 4 \times 10^{26} \times 3600 = 1.44 \times 10^{27} \text{ J}$$  
 
-This falls within the UQFF LENR-accessible energy range (input to the vacuum geometry amplification chain: 10Â²â· â†’ 10Â¹â¹Â³ J through xâ‚‚ coupling).
+This falls within the UQFF LENR-accessible energy range (input to the vacuum geometry amplification chain: 10²7 ? 10¹?³ J through x2 coupling).
 
 ---
 
 ## 5. Stability Analysis
 
-The Monte Carlo stability analysis perturbs M, r, L_X, and Bâ‚€ by Â±10% Gaussian noise:
+The Monte Carlo stability analysis perturbs M, r, L_X, and B0 by ±10% Gaussian noise:
 
 $$\sigma_{\rm stability} = \frac{\sum_{i=1}^{100} |F_i / F_{\rm nominal} - 1|}{100}$$
 
-Since LENR = k_LENR Ã— (Ï‰_LENR/Ï‰â‚€)Â² depends on Ï‰â‚€ (not subject to M, r, L_X, Bâ‚€ noise), the integral term is numerically fixed. Only minor components (gravity, Ug1, Um) are perturbed:
+Since LENR = k_LENR × (?_LENR/?0)² depends on ?0 (not subject to M, r, L_X, B0 noise), the integral term is numerically fixed. Only minor components (gravity, Ug1, Um) are perturbed:
 
 | Source | Relative variance |
 |--------|-----------------|
-| Gravity term | ~10â»Â¹â¹Â³ (negligible vs integral) |
-| Um term | ~10â»Â¹â´â° (negligible) |
-| Directed (L_X Â±10%) | ~10â»Â¹â¸â¹ (negligible) |
+| Gravity term | ~10?¹?³ (negligible vs integral) |
+| Um term | ~10?¹4° (negligible) |
+| Directed (L_X ±10%) | ~10?¹8? (negligible) |
 
 **Stability index: 0.971 (STABLE) | Valid: 100/100**
 
@@ -1106,14 +1130,14 @@ Since LENR = k_LENR Ã— (Ï‰_LENR/Ï‰â‚€)Â² depends on Ï‰â‚€ (not subject to M, r, 
 
 | Property | Super Flares | ASKAP J1832-0911 |
 |---------|-------------|----------------|
-| M | 1.989Ã—10Â³â° kg (main seq.) | 2.785Ã—10Â³â° kg (WD/NS) |
-| Ï‰â‚€ | 1.745Ã—10â»Â³ rad/s | 2.38Ã—10â»Â³ rad/s |
-| Bâ‚€ | 10â»Â² T | 10Â¹Â² T |
-| LENR | 2.03Ã—10Â²Â¹ | 1.09Ã—10Â²Â¹ |
-| F_U_Bi_i | âˆ’2.74Ã—10Â¹â¹Â³ | âˆ’1.47Ã—10Â¹â¹Â³ |
+| M | 1.989×10³° kg (main seq.) | 2.785×10³° kg (WD/NS) |
+| ?0 | 1.745×10?³ rad/s | 2.38×10?³ rad/s |
+| B0 | 10?² T | 10¹² T |
+| LENR | 2.03×10²¹ | 1.09×10²¹ |
+| F_U_Bi_i | -2.74×10¹?³ | -1.47×10¹?³ |
 | Source | Solar-type star | Radio transient pulsar |
 
-The close LENR values (factor ~2) reflect similar Ï‰â‚€ values â€” both systems are in the 1-hour period regime. The enormous Bâ‚€ difference (10Â¹â´Ã—) primarily manifests in Ug1, not in LENR, which depends on Ï‰â‚€ not Bâ‚€.
+The close LENR values (factor ~2) reflect similar ?0 values — both systems are in the 1-hour period regime. The enormous B0 difference (10¹4×) primarily manifests in Ug1, not in LENR, which depends on ?0 not B0.
 
 ---
 
@@ -1121,22 +1145,26 @@ The close LENR values (factor ~2) reflect similar Ï‰â‚€ values â€” both systems 
 
 | Metric | Value |
 |--------|-------|
-| F_U_Bi_i | âˆ’2.74Ã—10Â¹â¹Â³ N |
-| LENR | 2.03Ã—10Â²Â¹ |
-| Stability | 0.971 âœ“ STABLE |
-| L_X (given) | 10Â³â´ W (10â´Ã— solar, superflare-class) |
-| Energy (Kepler) | ~1.44Ã—10Â²â· J (consistent with UQFF coupling) |
-| Solar gravity | 274 m/sÂ² (exact agreement âœ“) |
+| F_U_Bi_i | -2.74×10¹?³ N |
+| LENR | 2.03×10²¹ |
+| Stability | 0.971 ? STABLE |
+| L_X (given) | 10³4 W (104× solar, superflare-class) |
+| Energy (Kepler) | ~1.44×10²7 J (consistent with UQFF coupling) |
+| Solar gravity | 274 m/s² (exact agreement ?) |
 | Status | PASS |
 
-*Source: uqff_validation_test.py Super_Flares system | Îº = 0.0005/day | [SSq] = 0.57*
+*Source: uqff_validation_test.py Super_Flares system | ? = 0.0005/day | [SSq] = 0.57*
 .Groups[1].Value   
 
 ---
 
 ## Abstract
 
-Stellar superflares are impulsive energy releases 10Â³â€“10â¶ times more energetic than the largest solar flares, observed on solar-type stars via Kepler photometry and X-ray telescopes. Standard reconnection models predict energies up to ~4Ã—10Â³Â² erg (4Ã—10Â²âµ J) per event, insufficient to explain the largest events (>10Â³Â³ erg) without invoking extreme magnetic configurations. The UQFF Unified Field Framework provides a complementary mechanism through the F_U_Bi_i integral, where the LENR vacuum resonance amplifier at Ï‰â‚€ = 1.745Ã—10â»Â³ rad/s (1-hour flare period) produces LENR = 2.02Ã—10Â²Â¹ and a total integral force F_U_Bi_i = âˆ’2.73Ã—10Â¹â¹Â³ N. Monte Carlo stability analysis confirms the numerical result is robust with stability index 0.971.
+Stellar superflares are impulsive energy releases 10³–106 times more energetic than the largest solar flares, observed on solar-type stars via Kepler photometry and X-ray telescopes. Standard reconnection models predict energies up to ~4×10³² erg (4×10²5 J) per event, insufficient to explain the largest events (>10³³ erg) without invoking extreme magnetic configurations. The UQFF Unified Field Framework provides a complementary mechanism through the F_U_Bi_i integral, where the LENR vacuum resonance amplifier at ?0 = 1.745×10?³ rad/s (1-hour flare period) produces LENR = 2.02×10²¹ and a total integral force F_U_Bi_i = -2.73×10¹?³ N. Monte Carlo stability analysis confirms the numerical result is robust with stability index 0.971.
+
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -1144,13 +1172,13 @@ Stellar superflares are impulsive energy releases 10Â³â€“10â¶ times more energe
 
 | Parameter | Value |
 |-----------|-------|
-| M | 1.989Ã—10Â³â° kg (1.00 Mâ˜‰) |
-| r | 6.96Ã—10â¸ m (stellar surface radius) |
-| L_X | 10Â³â´ W (peak superflare X-ray luminosity) |
-| Bâ‚€ | 10â»Â² T (active region surface field, ~100 G) |
-| T | 10â· K (superflare plasma temperature) |
+| M | 1.989×10³° kg (1.00 M?) |
+| r | 6.96×108 m (stellar surface radius) |
+| L_X | 10³4 W (peak superflare X-ray luminosity) |
+| B0 | 10?² T (active region surface field, ~100 G) |
+| T | 107 K (superflare plasma temperature) |
 | Period | 3600 s (1 hour, characteristic flare duration) |
-| Ï‰â‚€ | 2Ï€/3600 = 1.745Ã—10â»Â³ rad/s |
+| ?0 | 2p/3600 = 1.745×10?³ rad/s |
 | Data source | Chandra + Kepler (K2) superflare catalog |
 
 ---
@@ -1169,7 +1197,7 @@ $$= 10^{-10} \times (4.501 \times 10^{15})^2 = 10^{-10} \times 2.026 \times 10^{
 
 $$g = \frac{GM}{r^2} = \frac{6.674 \times 10^{-11} \times 1.989 \times 10^{30}}{(6.96 \times 10^8)^2} = \frac{1.327 \times 10^{20}}{4.844 \times 10^{17}} = 274.0 \text{ m/s}^2$$
 
-(Standard solar surface gravity: 274 m/sÂ² âœ“ self-consistent)
+(Standard solar surface gravity: 274 m/s² ? self-consistent)
 
 ### 2.3 Magnetic Dipole (Ug1)
 
@@ -1177,11 +1205,11 @@ $$Ug1 = g \times \frac{\mu_0 B_0^2}{8\pi} = 274 \times \frac{4\pi \times 10^{-7}
 
 $$= 274 \times \frac{4\pi \times 10^{-11}}{8\pi} = 274 \times 5 \times 10^{-12} = 1.37 \times 10^{-9} \text{ (dimensionless)}$$
 
-### 2.4 Directed Energy (k_DE Ã— L_X)
+### 2.4 Directed Energy (k_DE × L_X)
 
 $$F_{\rm directed} = k_{DE} \times L_X = 10^{-30} \times 10^{34} = 1 \times 10^4 \text{ N}$$
 
-This represents the photon pressure contribution from peak superflare luminosity, amplified by the UQFF coupling constant k_DE = 10â»Â³â°.
+This represents the photon pressure contribution from peak superflare luminosity, amplified by the UQFF coupling constant k_DE = 10?³°.
 
 ### 2.5 Magnetism Term (Um)
 
@@ -1194,7 +1222,7 @@ $$= 4.856 \times 10^{11} \times 5 \times 10^{-5} \times 10^{46} = 2.43 \times 10
 
 ### 2.6 Integral Term (Dominant)
 
-Using xâ‚‚ = âˆ’1.35Ã—10Â¹â·Â² (quadratic root in UQFF vacuum geometry):
+Using x2 = -1.35×10¹7² (quadratic root in UQFF vacuum geometry):
 
 $$\text{integral} = \text{LENR} \times x_2 = 2.026 \times 10^{21} \times (-1.35 \times 10^{172}) = -2.74 \times 10^{193}$$
 
@@ -1202,13 +1230,13 @@ $$\text{integral} = \text{LENR} \times x_2 = 2.026 \times 10^{21} \times (-1.35 
 
 | Term | Value |
 |------|-------|
-| âˆ’Fâ‚€ | âˆ’1.83Ã—10â·Â¹ |
-| Gravity | +274 m/sÂ² |
-| Ug1 | +1.37Ã—10â»â¹ |
-| Directed (L_X) | +1.0Ã—10â´ |
-| Um | +2.43Ã—10âµÂ³ |
-| Integral (LENRÃ—xâ‚‚) | **âˆ’2.74Ã—10Â¹â¹Â³** |
-| **F_U_Bi_i** | **â‰ˆ âˆ’2.74Ã—10Â¹â¹Â³ N** |
+| -F0 | -1.83×107¹ |
+| Gravity | +274 m/s² |
+| Ug1 | +1.37×10?? |
+| Directed (L_X) | +1.0×104 |
+| Um | +2.43×105³ |
+| Integral (LENR×x2) | **-2.74×10¹?³** |
+| **F_U_Bi_i** | **˜ -2.74×10¹?³ N** |
 
 ---
 
@@ -1218,10 +1246,10 @@ $$\text{integral} = \text{LENR} \times x_2 = 2.026 \times 10^{21} \times (-1.35 
 
 | Flare Class | Energy (J) | Solar Equivalents |
 |------------|-----------|-----------------|
-| Solar (X-class) | ~10Â²âµ | 1Ã— |
-| Super flare (small) | ~10Â²â¸ | 10Â³Ã— |
-| Super flare (large) | ~10Â³Â¹ | 10â¶Ã— |
-| Limit of standard model | ~4Ã—10Â²âµ | ~4Ã— |
+| Solar (X-class) | ~10²5 | 1× |
+| Super flare (small) | ~10²8 | 10³× |
+| Super flare (large) | ~10³¹ | 106× |
+| Limit of standard model | ~4×10²5 | ~4× |
 
 Standard magnetic reconnection cannot account for the largest superflares without invoking:
 - Extraordinary spot field strengths (>0.3 T) covering >>10% of stellar area
@@ -1233,46 +1261,46 @@ The UQFF framework adds a vacuum-mediated energy channel:
 
 | Channel | Energy Contribution |
 |---------|---------------------|
-| Photon pressure (k_DE Ã— L_X) | 10â´ N Ã— 1 m = 10â´ J |
-| Magnetism (Um Ã— r) | 2.43Ã—10âµÂ³ Ã— 6.96Ã—10â¸ = 1.69Ã—10â¶Â² J |
-| LENR resonance (integral) | 2.74Ã—10Â¹â¹Â³ J (vacuum geometry scale) |
+| Photon pressure (k_DE × L_X) | 104 N × 1 m = 104 J |
+| Magnetism (Um × r) | 2.43×105³ × 6.96×108 = 1.69×106² J |
+| LENR resonance (integral) | 2.74×10¹?³ J (vacuum geometry scale) |
 
-The LENR and Um channels operate at cosmological energy scales through vacuum geometry coupling (xâ‚‚ root), amplifying the stellar-scale magnetic energy by many orders of magnitude. In the UQFF interpretation, superflares are not merely electrical discharge events but quantum vacuum-modulated energy releases, with the vacuum geometry xâ‚‚ acting as an amplification lever.
+The LENR and Um channels operate at cosmological energy scales through vacuum geometry coupling (x2 root), amplifying the stellar-scale magnetic energy by many orders of magnitude. In the UQFF interpretation, superflares are not merely electrical discharge events but quantum vacuum-modulated energy releases, with the vacuum geometry x2 acting as an amplification lever.
 
-**Physical interpretation:** The 1-hour UQFF resonance period matches the characteristic AlfvÃ©n wave crossing time through a ~10,000 km active region:
+**Physical interpretation:** The 1-hour UQFF resonance period matches the characteristic Alfvén wave crossing time through a ~10,000 km active region:
 $$\tau_A = \frac{L_{\rm AR}}{v_A} = \frac{10^7 \text{ m}}{10^4 \text{ m/s}} = 10^3 \text{ s} \approx 3600 \text{ s / several}$$
 
-This AlfvÃ©n resonance condition is potentially what locks the vacuum resonance clock at Ï‰â‚€ = 1.745Ã—10â»Â³ rad/s.
+This Alfvén resonance condition is potentially what locks the vacuum resonance clock at ?0 = 1.745×10?³ rad/s.
 
 ---
 
 ## 4. X-ray Luminosity Magnitude
 
-**UQFF prediction:** L_X = 10Â³â´ W (given as system parameter from Chandra/Kepler catalog)  
-**Solar L_X (quiet):** 10Â³â° W  
-**Ratio:** 10â´Ã— super-solar X-ray luminosity â†’ **Consistent with X-class superflare definition**  
+**UQFF prediction:** L_X = 10³4 W (given as system parameter from Chandra/Kepler catalog)  
+**Solar L_X (quiet):** 10³° W  
+**Ratio:** 104× super-solar X-ray luminosity ? **Consistent with X-class superflare definition**  
 
-Kepler photometric energy: E_flare = (Î”F/F) Ã— L_star Ã— Î”t  
-At Î”F/F = 10â»Â³ (white-light superflare contrast), L_star = 4Ã—10Â²â¶ W, Î”t = 3600 s:  
+Kepler photometric energy: E_flare = (?F/F) × L_star × ?t  
+At ?F/F = 10?³ (white-light superflare contrast), L_star = 4×10²6 W, ?t = 3600 s:  
 $$E_{\rm Kepler} = 10^{-3} \times 4 \times 10^{26} \times 3600 = 1.44 \times 10^{27} \text{ J}$$  
 
-This falls within the UQFF LENR-accessible energy range (input to the vacuum geometry amplification chain: 10Â²â· â†’ 10Â¹â¹Â³ J through xâ‚‚ coupling).
+This falls within the UQFF LENR-accessible energy range (input to the vacuum geometry amplification chain: 10²7 ? 10¹?³ J through x2 coupling).
 
 ---
 
 ## 5. Stability Analysis
 
-The Monte Carlo stability analysis perturbs M, r, L_X, and Bâ‚€ by Â±10% Gaussian noise:
+The Monte Carlo stability analysis perturbs M, r, L_X, and B0 by ±10% Gaussian noise:
 
 $$\sigma_{\rm stability} = \frac{\sum_{i=1}^{100} |F_i / F_{\rm nominal} - 1|}{100}$$
 
-Since LENR = k_LENR Ã— (Ï‰_LENR/Ï‰â‚€)Â² depends on Ï‰â‚€ (not subject to M, r, L_X, Bâ‚€ noise), the integral term is numerically fixed. Only minor components (gravity, Ug1, Um) are perturbed:
+Since LENR = k_LENR × (?_LENR/?0)² depends on ?0 (not subject to M, r, L_X, B0 noise), the integral term is numerically fixed. Only minor components (gravity, Ug1, Um) are perturbed:
 
 | Source | Relative variance |
 |--------|-----------------|
-| Gravity term | ~10â»Â¹â¹Â³ (negligible vs integral) |
-| Um term | ~10â»Â¹â´â° (negligible) |
-| Directed (L_X Â±10%) | ~10â»Â¹â¸â¹ (negligible) |
+| Gravity term | ~10?¹?³ (negligible vs integral) |
+| Um term | ~10?¹4° (negligible) |
+| Directed (L_X ±10%) | ~10?¹8? (negligible) |
 
 **Stability index: 0.971 (STABLE) | Valid: 100/100**
 
@@ -1282,14 +1310,14 @@ Since LENR = k_LENR Ã— (Ï‰_LENR/Ï‰â‚€)Â² depends on Ï‰â‚€ (not subject to M, r, 
 
 | Property | Super Flares | ASKAP J1832-0911 |
 |---------|-------------|----------------|
-| M | 1.989Ã—10Â³â° kg (main seq.) | 2.785Ã—10Â³â° kg (WD/NS) |
-| Ï‰â‚€ | 1.745Ã—10â»Â³ rad/s | 2.38Ã—10â»Â³ rad/s |
-| Bâ‚€ | 10â»Â² T | 10Â¹Â² T |
-| LENR | 2.03Ã—10Â²Â¹ | 1.09Ã—10Â²Â¹ |
-| F_U_Bi_i | âˆ’2.74Ã—10Â¹â¹Â³ | âˆ’1.47Ã—10Â¹â¹Â³ |
+| M | 1.989×10³° kg (main seq.) | 2.785×10³° kg (WD/NS) |
+| ?0 | 1.745×10?³ rad/s | 2.38×10?³ rad/s |
+| B0 | 10?² T | 10¹² T |
+| LENR | 2.03×10²¹ | 1.09×10²¹ |
+| F_U_Bi_i | -2.74×10¹?³ | -1.47×10¹?³ |
 | Source | Solar-type star | Radio transient pulsar |
 
-The close LENR values (factor ~2) reflect similar Ï‰â‚€ values â€” both systems are in the 1-hour period regime. The enormous Bâ‚€ difference (10Â¹â´Ã—) primarily manifests in Ug1, not in LENR, which depends on Ï‰â‚€ not Bâ‚€.
+The close LENR values (factor ~2) reflect similar ?0 values — both systems are in the 1-hour period regime. The enormous B0 difference (10¹4×) primarily manifests in Ug1, not in LENR, which depends on ?0 not B0.
 
 ---
 
@@ -1297,15 +1325,15 @@ The close LENR values (factor ~2) reflect similar Ï‰â‚€ values â€” both systems 
 
 | Metric | Value |
 |--------|-------|
-| F_U_Bi_i | âˆ’2.74Ã—10Â¹â¹Â³ N |
-| LENR | 2.03Ã—10Â²Â¹ |
-| Stability | 0.971 âœ“ STABLE |
-| L_X (given) | 10Â³â´ W (10â´Ã— solar, superflare-class) |
-| Energy (Kepler) | ~1.44Ã—10Â²â· J (consistent with UQFF coupling) |
-| Solar gravity | 274 m/sÂ² (exact agreement âœ“) |
+| F_U_Bi_i | -2.74×10¹?³ N |
+| LENR | 2.03×10²¹ |
+| Stability | 0.971 ? STABLE |
+| L_X (given) | 10³4 W (104× solar, superflare-class) |
+| Energy (Kepler) | ~1.44×10²7 J (consistent with UQFF coupling) |
+| Solar gravity | 274 m/s² (exact agreement ?) |
 | Status | PASS |
 
-*Source: uqff_validation_test.py Super_Flares system | Îº = 0.0005/day | [SSq] = 0.57*
+*Source: uqff_validation_test.py Super_Flares system | ? = 0.0005/day | [SSq] = 0.57*
 .Groups[1].Value
     "PAPER_{0:D3}" -f $n
     
@@ -1314,7 +1342,11 @@ The close LENR values (factor ~2) reflect similar Ï‰â‚€ values â€” both systems 
 
 ## Abstract
 
-Stellar superflares are impulsive energy releases 10Â³â€“10â¶ times more energetic than the largest solar flares, observed on solar-type stars via Kepler photometry and X-ray telescopes. Standard reconnection models predict energies up to ~4Ã—10Â³Â² erg (4Ã—10Â²âµ J) per event, insufficient to explain the largest events (>10Â³Â³ erg) without invoking extreme magnetic configurations. The UQFF Unified Field Framework provides a complementary mechanism through the F_U_Bi_i integral, where the LENR vacuum resonance amplifier at Ï‰â‚€ = 1.745Ã—10â»Â³ rad/s (1-hour flare period) produces LENR = 2.02Ã—10Â²Â¹ and a total integral force F_U_Bi_i = âˆ’2.73Ã—10Â¹â¹Â³ N. Monte Carlo stability analysis confirms the numerical result is robust with stability index 0.971.
+Stellar superflares are impulsive energy releases 10³–106 times more energetic than the largest solar flares, observed on solar-type stars via Kepler photometry and X-ray telescopes. Standard reconnection models predict energies up to ~4×10³² erg (4×10²5 J) per event, insufficient to explain the largest events (>10³³ erg) without invoking extreme magnetic configurations. The UQFF Unified Field Framework provides a complementary mechanism through the F_U_Bi_i integral, where the LENR vacuum resonance amplifier at ?0 = 1.745×10?³ rad/s (1-hour flare period) produces LENR = 2.02×10²¹ and a total integral force F_U_Bi_i = -2.73×10¹?³ N. Monte Carlo stability analysis confirms the numerical result is robust with stability index 0.971.
+
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -1322,13 +1354,13 @@ Stellar superflares are impulsive energy releases 10Â³â€“10â¶ times more energe
 
 | Parameter | Value |
 |-----------|-------|
-| M | 1.989Ã—10Â³â° kg (1.00 Mâ˜‰) |
-| r | 6.96Ã—10â¸ m (stellar surface radius) |
-| L_X | 10Â³â´ W (peak superflare X-ray luminosity) |
-| Bâ‚€ | 10â»Â² T (active region surface field, ~100 G) |
-| T | 10â· K (superflare plasma temperature) |
+| M | 1.989×10³° kg (1.00 M?) |
+| r | 6.96×108 m (stellar surface radius) |
+| L_X | 10³4 W (peak superflare X-ray luminosity) |
+| B0 | 10?² T (active region surface field, ~100 G) |
+| T | 107 K (superflare plasma temperature) |
 | Period | 3600 s (1 hour, characteristic flare duration) |
-| Ï‰â‚€ | 2Ï€/3600 = 1.745Ã—10â»Â³ rad/s |
+| ?0 | 2p/3600 = 1.745×10?³ rad/s |
 | Data source | Chandra + Kepler (K2) superflare catalog |
 
 ---
@@ -1347,7 +1379,7 @@ $$= 10^{-10} \times (4.501 \times 10^{15})^2 = 10^{-10} \times 2.026 \times 10^{
 
 $$g = \frac{GM}{r^2} = \frac{6.674 \times 10^{-11} \times 1.989 \times 10^{30}}{(6.96 \times 10^8)^2} = \frac{1.327 \times 10^{20}}{4.844 \times 10^{17}} = 274.0 \text{ m/s}^2$$
 
-(Standard solar surface gravity: 274 m/sÂ² âœ“ self-consistent)
+(Standard solar surface gravity: 274 m/s² ? self-consistent)
 
 ### 2.3 Magnetic Dipole (Ug1)
 
@@ -1355,11 +1387,11 @@ $$Ug1 = g \times \frac{\mu_0 B_0^2}{8\pi} = 274 \times \frac{4\pi \times 10^{-7}
 
 $$= 274 \times \frac{4\pi \times 10^{-11}}{8\pi} = 274 \times 5 \times 10^{-12} = 1.37 \times 10^{-9} \text{ (dimensionless)}$$
 
-### 2.4 Directed Energy (k_DE Ã— L_X)
+### 2.4 Directed Energy (k_DE × L_X)
 
 $$F_{\rm directed} = k_{DE} \times L_X = 10^{-30} \times 10^{34} = 1 \times 10^4 \text{ N}$$
 
-This represents the photon pressure contribution from peak superflare luminosity, amplified by the UQFF coupling constant k_DE = 10â»Â³â°.
+This represents the photon pressure contribution from peak superflare luminosity, amplified by the UQFF coupling constant k_DE = 10?³°.
 
 ### 2.5 Magnetism Term (Um)
 
@@ -1372,7 +1404,7 @@ $$= 4.856 \times 10^{11} \times 5 \times 10^{-5} \times 10^{46} = 2.43 \times 10
 
 ### 2.6 Integral Term (Dominant)
 
-Using xâ‚‚ = âˆ’1.35Ã—10Â¹â·Â² (quadratic root in UQFF vacuum geometry):
+Using x2 = -1.35×10¹7² (quadratic root in UQFF vacuum geometry):
 
 $$\text{integral} = \text{LENR} \times x_2 = 2.026 \times 10^{21} \times (-1.35 \times 10^{172}) = -2.74 \times 10^{193}$$
 
@@ -1380,13 +1412,13 @@ $$\text{integral} = \text{LENR} \times x_2 = 2.026 \times 10^{21} \times (-1.35 
 
 | Term | Value |
 |------|-------|
-| âˆ’Fâ‚€ | âˆ’1.83Ã—10â·Â¹ |
-| Gravity | +274 m/sÂ² |
-| Ug1 | +1.37Ã—10â»â¹ |
-| Directed (L_X) | +1.0Ã—10â´ |
-| Um | +2.43Ã—10âµÂ³ |
-| Integral (LENRÃ—xâ‚‚) | **âˆ’2.74Ã—10Â¹â¹Â³** |
-| **F_U_Bi_i** | **â‰ˆ âˆ’2.74Ã—10Â¹â¹Â³ N** |
+| -F0 | -1.83×107¹ |
+| Gravity | +274 m/s² |
+| Ug1 | +1.37×10?? |
+| Directed (L_X) | +1.0×104 |
+| Um | +2.43×105³ |
+| Integral (LENR×x2) | **-2.74×10¹?³** |
+| **F_U_Bi_i** | **˜ -2.74×10¹?³ N** |
 
 ---
 
@@ -1396,10 +1428,10 @@ $$\text{integral} = \text{LENR} \times x_2 = 2.026 \times 10^{21} \times (-1.35 
 
 | Flare Class | Energy (J) | Solar Equivalents |
 |------------|-----------|-----------------|
-| Solar (X-class) | ~10Â²âµ | 1Ã— |
-| Super flare (small) | ~10Â²â¸ | 10Â³Ã— |
-| Super flare (large) | ~10Â³Â¹ | 10â¶Ã— |
-| Limit of standard model | ~4Ã—10Â²âµ | ~4Ã— |
+| Solar (X-class) | ~10²5 | 1× |
+| Super flare (small) | ~10²8 | 10³× |
+| Super flare (large) | ~10³¹ | 106× |
+| Limit of standard model | ~4×10²5 | ~4× |
 
 Standard magnetic reconnection cannot account for the largest superflares without invoking:
 - Extraordinary spot field strengths (>0.3 T) covering >>10% of stellar area
@@ -1411,46 +1443,46 @@ The UQFF framework adds a vacuum-mediated energy channel:
 
 | Channel | Energy Contribution |
 |---------|---------------------|
-| Photon pressure (k_DE Ã— L_X) | 10â´ N Ã— 1 m = 10â´ J |
-| Magnetism (Um Ã— r) | 2.43Ã—10âµÂ³ Ã— 6.96Ã—10â¸ = 1.69Ã—10â¶Â² J |
-| LENR resonance (integral) | 2.74Ã—10Â¹â¹Â³ J (vacuum geometry scale) |
+| Photon pressure (k_DE × L_X) | 104 N × 1 m = 104 J |
+| Magnetism (Um × r) | 2.43×105³ × 6.96×108 = 1.69×106² J |
+| LENR resonance (integral) | 2.74×10¹?³ J (vacuum geometry scale) |
 
-The LENR and Um channels operate at cosmological energy scales through vacuum geometry coupling (xâ‚‚ root), amplifying the stellar-scale magnetic energy by many orders of magnitude. In the UQFF interpretation, superflares are not merely electrical discharge events but quantum vacuum-modulated energy releases, with the vacuum geometry xâ‚‚ acting as an amplification lever.
+The LENR and Um channels operate at cosmological energy scales through vacuum geometry coupling (x2 root), amplifying the stellar-scale magnetic energy by many orders of magnitude. In the UQFF interpretation, superflares are not merely electrical discharge events but quantum vacuum-modulated energy releases, with the vacuum geometry x2 acting as an amplification lever.
 
-**Physical interpretation:** The 1-hour UQFF resonance period matches the characteristic AlfvÃ©n wave crossing time through a ~10,000 km active region:
+**Physical interpretation:** The 1-hour UQFF resonance period matches the characteristic Alfvén wave crossing time through a ~10,000 km active region:
 $$\tau_A = \frac{L_{\rm AR}}{v_A} = \frac{10^7 \text{ m}}{10^4 \text{ m/s}} = 10^3 \text{ s} \approx 3600 \text{ s / several}$$
 
-This AlfvÃ©n resonance condition is potentially what locks the vacuum resonance clock at Ï‰â‚€ = 1.745Ã—10â»Â³ rad/s.
+This Alfvén resonance condition is potentially what locks the vacuum resonance clock at ?0 = 1.745×10?³ rad/s.
 
 ---
 
 ## 4. X-ray Luminosity Magnitude
 
-**UQFF prediction:** L_X = 10Â³â´ W (given as system parameter from Chandra/Kepler catalog)  
-**Solar L_X (quiet):** 10Â³â° W  
-**Ratio:** 10â´Ã— super-solar X-ray luminosity â†’ **Consistent with X-class superflare definition**  
+**UQFF prediction:** L_X = 10³4 W (given as system parameter from Chandra/Kepler catalog)  
+**Solar L_X (quiet):** 10³° W  
+**Ratio:** 104× super-solar X-ray luminosity ? **Consistent with X-class superflare definition**  
 
-Kepler photometric energy: E_flare = (Î”F/F) Ã— L_star Ã— Î”t  
-At Î”F/F = 10â»Â³ (white-light superflare contrast), L_star = 4Ã—10Â²â¶ W, Î”t = 3600 s:  
+Kepler photometric energy: E_flare = (?F/F) × L_star × ?t  
+At ?F/F = 10?³ (white-light superflare contrast), L_star = 4×10²6 W, ?t = 3600 s:  
 $$E_{\rm Kepler} = 10^{-3} \times 4 \times 10^{26} \times 3600 = 1.44 \times 10^{27} \text{ J}$$  
 
-This falls within the UQFF LENR-accessible energy range (input to the vacuum geometry amplification chain: 10Â²â· â†’ 10Â¹â¹Â³ J through xâ‚‚ coupling).
+This falls within the UQFF LENR-accessible energy range (input to the vacuum geometry amplification chain: 10²7 ? 10¹?³ J through x2 coupling).
 
 ---
 
 ## 5. Stability Analysis
 
-The Monte Carlo stability analysis perturbs M, r, L_X, and Bâ‚€ by Â±10% Gaussian noise:
+The Monte Carlo stability analysis perturbs M, r, L_X, and B0 by ±10% Gaussian noise:
 
 $$\sigma_{\rm stability} = \frac{\sum_{i=1}^{100} |F_i / F_{\rm nominal} - 1|}{100}$$
 
-Since LENR = k_LENR Ã— (Ï‰_LENR/Ï‰â‚€)Â² depends on Ï‰â‚€ (not subject to M, r, L_X, Bâ‚€ noise), the integral term is numerically fixed. Only minor components (gravity, Ug1, Um) are perturbed:
+Since LENR = k_LENR × (?_LENR/?0)² depends on ?0 (not subject to M, r, L_X, B0 noise), the integral term is numerically fixed. Only minor components (gravity, Ug1, Um) are perturbed:
 
 | Source | Relative variance |
 |--------|-----------------|
-| Gravity term | ~10â»Â¹â¹Â³ (negligible vs integral) |
-| Um term | ~10â»Â¹â´â° (negligible) |
-| Directed (L_X Â±10%) | ~10â»Â¹â¸â¹ (negligible) |
+| Gravity term | ~10?¹?³ (negligible vs integral) |
+| Um term | ~10?¹4° (negligible) |
+| Directed (L_X ±10%) | ~10?¹8? (negligible) |
 
 **Stability index: 0.971 (STABLE) | Valid: 100/100**
 
@@ -1460,14 +1492,14 @@ Since LENR = k_LENR Ã— (Ï‰_LENR/Ï‰â‚€)Â² depends on Ï‰â‚€ (not subject to M, r, 
 
 | Property | Super Flares | ASKAP J1832-0911 |
 |---------|-------------|----------------|
-| M | 1.989Ã—10Â³â° kg (main seq.) | 2.785Ã—10Â³â° kg (WD/NS) |
-| Ï‰â‚€ | 1.745Ã—10â»Â³ rad/s | 2.38Ã—10â»Â³ rad/s |
-| Bâ‚€ | 10â»Â² T | 10Â¹Â² T |
-| LENR | 2.03Ã—10Â²Â¹ | 1.09Ã—10Â²Â¹ |
-| F_U_Bi_i | âˆ’2.74Ã—10Â¹â¹Â³ | âˆ’1.47Ã—10Â¹â¹Â³ |
+| M | 1.989×10³° kg (main seq.) | 2.785×10³° kg (WD/NS) |
+| ?0 | 1.745×10?³ rad/s | 2.38×10?³ rad/s |
+| B0 | 10?² T | 10¹² T |
+| LENR | 2.03×10²¹ | 1.09×10²¹ |
+| F_U_Bi_i | -2.74×10¹?³ | -1.47×10¹?³ |
 | Source | Solar-type star | Radio transient pulsar |
 
-The close LENR values (factor ~2) reflect similar Ï‰â‚€ values â€” both systems are in the 1-hour period regime. The enormous Bâ‚€ difference (10Â¹â´Ã—) primarily manifests in Ug1, not in LENR, which depends on Ï‰â‚€ not Bâ‚€.
+The close LENR values (factor ~2) reflect similar ?0 values — both systems are in the 1-hour period regime. The enormous B0 difference (10¹4×) primarily manifests in Ug1, not in LENR, which depends on ?0 not B0.
 
 ---
 
@@ -1475,12 +1507,12 @@ The close LENR values (factor ~2) reflect similar Ï‰â‚€ values â€” both systems 
 
 | Metric | Value |
 |--------|-------|
-| F_U_Bi_i | âˆ’2.74Ã—10Â¹â¹Â³ N |
-| LENR | 2.03Ã—10Â²Â¹ |
-| Stability | 0.971 âœ“ STABLE |
-| L_X (given) | 10Â³â´ W (10â´Ã— solar, superflare-class) |
-| Energy (Kepler) | ~1.44Ã—10Â²â· J (consistent with UQFF coupling) |
-| Solar gravity | 274 m/sÂ² (exact agreement âœ“) |
+| F_U_Bi_i | -2.74×10¹?³ N |
+| LENR | 2.03×10²¹ |
+| Stability | 0.971 ? STABLE |
+| L_X (given) | 10³4 W (104× solar, superflare-class) |
+| Energy (Kepler) | ~1.44×10²7 J (consistent with UQFF coupling) |
+| Solar gravity | 274 m/s² (exact agreement ?) |
 | Status | PASS |
 
-*Source: uqff_validation_test.py Super_Flares system | Îº = 0.0005/day | [SSq] = 0.57*
+*Source: uqff_validation_test.py Super_Flares system | ? = 0.0005/day | [SSq] = 0.57*

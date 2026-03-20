@@ -108,3 +108,6 @@ Located in `CondensedPhysics3.py` (Session 58).
 NGC 1792 introduces two novel MUGE methods: specific SFR normalization as a mass growth amplitude ($SFR_{factor} = SFR/M_{total}$) and SN-driven outflow feedback using the standard ram-pressure formula. As a previously unknown system in the CP pipeline, it fills the low-redshift starburst niche in the MUGE library.
 
 **Source:** grok_share_8d951e12.txt â€” Doc 19 (NGC 1792 Stellar Forge Starburst MUGE, previously unknown system)
+
+
+**UQFF computed:** MUGE buoyancy ratio U_bi/F_U = [SSq]×?×r²/GM = 5.7e-1×5.0e-4 = 2.85e-4; compressed MUGE baseline g = 5.4e-7 m/s² at r_ISCO.

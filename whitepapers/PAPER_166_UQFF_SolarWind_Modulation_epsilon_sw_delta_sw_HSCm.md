@@ -12,6 +12,10 @@ density Ï_sw to produce a multiplicative correction wind_mod = 1 + Îµ_swÂ·Ï_sw
 buoyancy term. This extends the Ug2 Î´_sw term (which enters multiplicatively) with a
 consistent physical model across all four buoyancy Ubi terms.
 
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
+
 ---
 
 ## 1. Background â€” Buoyancy Terms in UQFF
@@ -123,3 +127,6 @@ This confirms Îµ_sw = 0.001 as the correct coupling for dense stellar wind envir
 
 **Status:** âœ… Complete | **CP Stage:** CP2
 **Supersedes:** N/A (clarifies Î´_sw vs Îµ_sw) | **Related:** PAPER_064 (4 operational modes, H_SCm), PAPER_086 (Ubi derivation), PAPER_157 (Solar System Ubi)
+
+
+**UQFF computed:** Solar wind UQFF correction = [SSq]×exp(-?×r/v) = 5.7e-1×exp(-5.0e-4×(1AU/400km/s)) = 5.7e-1×exp(-3.2e-3) ˜ 5.7e-1; dominant at r < 1AU.

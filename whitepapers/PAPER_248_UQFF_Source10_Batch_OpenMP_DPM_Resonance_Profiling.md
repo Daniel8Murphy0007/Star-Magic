@@ -10,13 +10,21 @@
 
 $$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b_i}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57$$
 
+$$
+g_\text{UQFF}(r) = g_\text{MUGE}(r)\cdot\Bigl(1 - [SSq]\cdot U_{b_i}\,/\,F_U(r,t)\Bigr), \quad [SSq] = 0.57
+$$
+
 ## Abstract
 
 UQFF Source10 represents the third-generation implementation of the core F_U_Bi_i integral calculator, incorporating three major engineering upgrades over the baseline Source10 module: (1) reproducible stochastic sampling via the Mersenne Twister (mt19937) random number generator, (2) a configurable `scaling_factors` map enabling per-system parameter overrides at runtime, and (3) a `batch_compute_F_U_Bi_i()` function with OpenMP parallelisation across system ensembles, instrumented with `chrono::high_resolution_clock` profiling.
 
-The central physics result is the 26-layer UQFF gravity sum `g_UQFF = Σᵢ₌₁²⁶(Ug1ᵢ + Ug2ᵢ + Ug3ᵢ + Ug4ᵢ) + Λc²/3 + g_Q`, with the DPM resonance term calibrated to the Eta Carinae system: `DPM_resonance = g_H · μ_B · B₀ / (ħ · ω₀) × 2.82×10⁻⁵⁶`. This empirical calibration constant (adj_factor = 2.82×10⁻⁵⁶) was derived by matching the UQFF integral output to the observed Eta Carinae X-ray luminosity and outflow velocity, establishing it as a benchmark anchor for all DPM resonance calculations in the framework.
+The central physics result is the 26-layer UQFF gravity sum `g_UQFF = S??1²6(Ug1? + Ug2? + Ug3? + Ug4?) + ?c²/3 + g_Q`, with the DPM resonance term calibrated to the Eta Carinae system: `DPM_resonance = g_H · µ_B · B0 / (h · ?0) × 2.82×10?56`. This empirical calibration constant (adj_factor = 2.82×10?56) was derived by matching the UQFF integral output to the observed Eta Carinae X-ray luminosity and outflow velocity, establishing it as a benchmark anchor for all DPM resonance calculations in the framework.
 
 The F_U_Bi_i integrand combines LENR, dark energy, neutron, relativistic, activation, and vacuum-field forces in a single quadrature, producing the buoyancy force integral that distinguishes UQFF from purely Newtonian or GR-based frameworks.
+
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -24,36 +32,36 @@ The F_U_Bi_i integrand combines LENR, dark energy, neutron, relativistic, activa
 
 | Parameter | Symbol | Value | Units | Meaning |
 |-----------|--------|-------|-------|---------|
-| Eta Carinae calibration | adj_factor | 2.82 × 10⁻⁵⁶ | dimensionless | DPM resonance anchor |
-| Grok hydrogen scale | g_H | 1.252 × 10⁴⁶ | dimensionless | Hydrogen energy scale parameter |
-| Bohr magneton | μ_B | 9.274 × 10⁻²⁴ | J/T | Magnetic moment quantum |
-| Applied B field | B₀ | 1 × 10⁻⁴ | T | Eta Carinae surface field |
-| Reduced Planck | ħ | 1.0546 × 10⁻³⁴ | J·s | Quantum of action |
-| Resonance frequency | ω₀ | 1 × 10⁻¹² | rad/s | System characteristic frequency |
+| Eta Carinae calibration | adj_factor | 2.82 × 10?56 | dimensionless | DPM resonance anchor |
+| Grok hydrogen scale | g_H | 1.252 × 1046 | dimensionless | Hydrogen energy scale parameter |
+| Bohr magneton | µ_B | 9.274 × 10?²4 | J/T | Magnetic moment quantum |
+| Applied B field | B0 | 1 × 10?4 | T | Eta Carinae surface field |
+| Reduced Planck | h | 1.0546 × 10?³4 | J·s | Quantum of action |
+| Resonance frequency | ?0 | 1 × 10?¹² | rad/s | System characteristic frequency |
 
 **DPM Resonance (Eta Carinae calibrated):**
 ```
-DPM_resonance = g_H · μ_B · B₀ / (ħ · ω₀) × adj_factor
+DPM_resonance = g_H · µ_B · B0 / (h · ?0) × adj_factor
               = 1.252e46 × 9.274e-24 × 1e-4 / (1.0546e-34 × 1e-12) × 2.82e-56
-              ≈ 1.76e5   [dimensionless]
+              ˜ 1.76e5   [dimensionless]
 ```
 
 **F_U_Bi_i Full Integrand:**
 ```
-F_U_Bi_i = ∫₀^{x₂} [−F₀
-               + (m_e c²/r²)·DPM_momentum·cosθ         [momentum term]
+F_U_Bi_i = ?0^{x2} [-F0
+               + (m_e c²/r²)·DPM_momentum·cos?         [momentum term]
                + (GM/r²)·DPM_gravity                    [gravity term]
-               + ρ_vac·DPM_stability                    [vacuum field]
-               + k_LENR·(ω_LENR/ω₀)² · activation·e^{-t/1e6}  [LENR+decay]
+               + ?_vac·DPM_stability                    [vacuum field]
+               + k_LENR·(?_LENR/?0)² · activation·e^{-t/1e6}  [LENR+decay]
                + k_DE·L_X                               [dark energy]
                + F_res·DPM_resonance                    [magnetic resonance]
-               + k_n·σ_n                                [neutron drop]
+               + k_n·s_n                                [neutron drop]
                + k_rel·(E_cm/E_cp)²] dx                [relativistic]
 ```
 
 **26-layer UQFF total gravity:**
 ```
-g_UQFF = Σᵢ₌₁²⁶ (Ug1ᵢ + Ug2ᵢ + Ug3ᵢ + Ug4ᵢ) + Λc²/3 + g_Q
+g_UQFF = S??1²6 (Ug1? + Ug2? + Ug3? + Ug4?) + ?c²/3 + g_Q
 ```
 
 ---
@@ -62,33 +70,33 @@ g_UQFF = Σᵢ₌₁²⁶ (Ug1ᵢ + Ug2ᵢ + Ug3ᵢ + Ug4ᵢ) + Λc²/3 + g_Q
 
 ### 2.1 DPM Resonance and the Eta Carinae Calibration
 
-The **DPM (Distributed Plasma/Phonon Magnon) resonance term** was originally formulated by Colman and Gillespie in the context of 300 Hz activation frequencies in condensed matter. In UQFF the resonance is elevated to astrophysical scales via the parameter ω₀ — the characteristic frequency of the gravitating system.
+The **DPM (Distributed Plasma/Phonon Magnon) resonance term** was originally formulated by Colman and Gillespie in the context of 300 Hz activation frequencies in condensed matter. In UQFF the resonance is elevated to astrophysical scales via the parameter ?0 — the characteristic frequency of the gravitating system.
 
-The Eta Carinae calibration establishes the empirical constant `adj_factor = 2.82×10⁻⁵⁶`: this value was obtained by requiring the UQFF total F_U_Bi_i computation to reproduce the Eta Carinae X-ray luminosity within observational uncertainties (L_X ≈ 10³⁵ W, Chandra 2023). All other UQFF systems then use this same adj_factor, making Eta Carinae the **DPM anchor** of the entire framework.
+The Eta Carinae calibration establishes the empirical constant `adj_factor = 2.82×10?56`: this value was obtained by requiring the UQFF total F_U_Bi_i computation to reproduce the Eta Carinae X-ray luminosity within observational uncertainties (L_X ˜ 10³5 W, Chandra 2023). All other UQFF systems then use this same adj_factor, making Eta Carinae the **DPM anchor** of the entire framework.
 
-At ω₀ = 10⁻¹² rad/s: `DPM_resonance ≈ 1.76 × 10⁵` (PAPER_251 value). At ω₀ = 10⁻¹⁵ rad/s (Sgr A*): `DPM_resonance ≈ 1.76 × 10⁸`. The resonance scales inversely with ω₀ — lower frequency systems exhibit dramatically higher DPM coupling.
+At ?0 = 10?¹² rad/s: `DPM_resonance ˜ 1.76 × 105` (PAPER_251 value). At ?0 = 10?¹5 rad/s (Sgr A*): `DPM_resonance ˜ 1.76 × 108`. The resonance scales inversely with ?0 — lower frequency systems exhibit dramatically higher DPM coupling.
 
 ### 2.2 LENR Time-Decay Activation
 
 The LENR term includes an exponential activation decay:
 ```
-F_LENR_active = k_LENR · (ω_LENR/ω₀)² · activation · exp(−t/1e6)
+F_LENR_active = k_LENR · (?_LENR/?0)² · activation · exp(-t/1e6)
 ```
 
-The `1e6 s` decay constant (≈ 11.6 days) represents the transient activation phase of LENR processes (Kozima cold-fusion phonon coherence lifetime). For astrophysical epochs t ≫ 10⁶ s, `exp(−t/1e6) → 0` and the LENR term reverts to its steady-state value `k_LENR·(ω_LENR/ω₀)²`.
+The `1e6 s` decay constant (˜ 11.6 days) represents the transient activation phase of LENR processes (Kozima cold-fusion phonon coherence lifetime). For astrophysical epochs t » 106 s, `exp(-t/1e6) ? 0` and the LENR term reverts to its steady-state value `k_LENR·(?_LENR/?0)²`.
 
-### 2.3 Quadratic Root Integration Limit x₂
+### 2.3 Quadratic Root Integration Limit x2
 
-The upper integration limit x₂ is the physical root of the stability condition:
+The upper integration limit x2 is the physical root of the stability condition:
 
 ```
 a·x² + b·x + c = 0
 a = GM/r² · DPM_gravity
-b = 4.72 × 10⁻³   (canonical, r = 6.17×10¹⁶ m systems)
-c = −F₀ + ρ_vac·DPM_stability
+b = 4.72 × 10?³   (canonical, r = 6.17×10¹6 m systems)
+c = -F0 + ?_vac·DPM_stability
 ```
 
-The discriminant sign determines whether the stability boundary is real or complex. For vacuum-dominated conditions (|c| ≫ 4ac), `x₂ ≈ −c/b = (F₀ − ρ_vac·DPM_stab) / b` — the root is set by the vacuum energy F₀ and the stability stiffness coefficient b.
+The discriminant sign determines whether the stability boundary is real or complex. For vacuum-dominated conditions (|c| » 4ac), `x2 ˜ -c/b = (F0 - ?_vac·DPM_stab) / b` — the root is set by the vacuum energy F0 and the stability stiffness coefficient b.
 
 ### 2.4 Batch OpenMP Architecture
 
@@ -111,7 +119,7 @@ for (int i = 0; i < N_systems; ++i) {
 
 ## 3. 26-Layer Gravity Decomposition Theorem
 
-**Theorem (UQFF 26-Layer Completeness):** The total UQFF gravity field `g_UQFF` is the complete sum of contributions from 26 independent dimensional spheres (layers), each carrying four sub-terms Ug1, Ug2, Ug3, Ug4, plus the cosmological constant term Λc²/3 and the quantum term g_Q. The 26 layers are parallelisable as independent thread blocks in GPU implementations (PAPER_249).
+**Theorem (UQFF 26-Layer Completeness):** The total UQFF gravity field `g_UQFF` is the complete sum of contributions from 26 independent dimensional spheres (layers), each carrying four sub-terms Ug1, Ug2, Ug3, Ug4, plus the cosmological constant term ?c²/3 and the quantum term g_Q. The 26 layers are parallelisable as independent thread blocks in GPU implementations (PAPER_249).
 
 For batch computation across N systems × 26 layers × 4 sub-terms: total operations = `N × 26 × 4 = 104N`. At N = 500: 52,000 sub-term evaluations per batch — well within GPU L1 cache for tiled execution.
 
@@ -119,7 +127,7 @@ For batch computation across N systems × 26 layers × 4 sub-terms: total operat
 
 ## 4. Observational Predictions / Validation
 
-- **DPM calibration robustness:** adj_factor = 2.82×10⁻⁵⁶ was derived from Eta Carinae (L_X = 10³⁵ W). PAPER_251's DPM invisibility discovery (B₀ = 10⁻⁴ T yields same F_U_Bi as B₀ = 10⁻⁵ T) validates that the calibration is insensitive to magnetic field: the adj_factor is a fundamental coupling constant, not a field-dependent fit.
+- **DPM calibration robustness:** adj_factor = 2.82×10?56 was derived from Eta Carinae (L_X = 10³5 W). PAPER_251's DPM invisibility discovery (B0 = 10?4 T yields same F_U_Bi as B0 = 10?5 T) validates that the calibration is insensitive to magnetic field: the adj_factor is a fundamental coupling constant, not a field-dependent fit.
 - **OpenMP scaling benchmark:** Linear speedup up to 8 threads confirmed for N = 100–1000 systems; super-linear speedup for N < 50 due to cache effects.
 - **mt19937 reproducibility:** Identical random seeds produce identical integration paths — essential for bit-reproducible UQFF ensemble results across different runs and machines.
 

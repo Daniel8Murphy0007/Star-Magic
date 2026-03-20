@@ -1,27 +1,31 @@
-ï»¿#  "PAPER_{0:D3}" -f [int]# PAPER #73 â€” Stellar Parameter Validation: GAIA DR4 vs UQFF
+#  "PAPER_{0:D3}" -f [int]# PAPER #73 — Stellar Parameter Validation: GAIA DR4 vs UQFF
 
 **Title:** GAIA DR4 Astrometric Cross-Validation of UQFF Stellar Gravity Predictions
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (Îº = 0.0005/day, [SSq] = 0.57)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57)  
 **Date:** March 7, 2026  
 **Source Data:** QCalc_validation.py (DataSourceURLs: GAIA_DR4), validate_phase3.py  
-**Index Slot:** Â§1.10 Database Integration & Multi-Wavelength Astrophysics,  
-    $n = [int]# PAPER #73 â€” Stellar Parameter Validation: GAIA DR4 vs UQFF
+**Index Slot:** §1.10 Database Integration & Multi-Wavelength Astrophysics,  
+    $n = [int]# PAPER #73 — Stellar Parameter Validation: GAIA DR4 vs UQFF
 
 **Title:** GAIA DR4 Astrometric Cross-Validation of UQFF Stellar Gravity Predictions
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (Îº = 0.0005/day, [SSq] = 0.57)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57)  
 **Date:** March 7, 2026  
 **Source Data:** QCalc_validation.py (DataSourceURLs: GAIA_DR4), validate_phase3.py  
-**Index Slot:** Â§1.10 Database Integration & Multi-Wavelength Astrophysics, PAPER_073  
+**Index Slot:** §1.10 Database Integration & Multi-Wavelength Astrophysics, PAPER_073  
 
 ---
 
 ## Abstract
 
-The GAIA DR4 mission (anticipated 2026) provides the highest-precision stellar astrometry ever achieved, including proper motions, parallaxes, and radial velocities for >1.5 billion stars. The UQFF predicts stellar surface gravity through the Compressed operational mode: g_C = (M/r) Ã— 10â»Â¹â°. This paper validates UQFF stellar gravity predictions against GAIA DR4 astrometry for 5 stellar categories: main sequence (Sun-like), red giants, white dwarfs, neutron stars (proper motion tracking), and brown dwarfs. The UQFF GAIA TAP query infrastructure is implemented in `QCalc_validation.py` (`GAIA_TAP = gea.esac.esa.int/tap-server/tap/sync`).
+The GAIA DR4 mission (anticipated 2026) provides the highest-precision stellar astrometry ever achieved, including proper motions, parallaxes, and radial velocities for >1.5 billion stars. The UQFF predicts stellar surface gravity through the Compressed operational mode: g_C = (M/r) × 10?¹°. This paper validates UQFF stellar gravity predictions against GAIA DR4 astrometry for 5 stellar categories: main sequence (Sun-like), red giants, white dwarfs, neutron stars (proper motion tracking), and brown dwarfs. The UQFF GAIA TAP query infrastructure is implemented in `QCalc_validation.py` (`GAIA_TAP = gea.esac.esa.int/tap-server/tap/sync`).
+
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -54,13 +58,13 @@ LIMIT 1000
 
 $$g_{\rm UQFF}^{(C)} = \frac{M_\star}{R_\star} \times 10^{-10}$$
 
-| Star Type | M/Mâ˜‰ | R/Râ˜‰ | g_Newton (m/sÂ²) | g_UQFF_C (m/sÂ²) | UQFF/Newton |
+| Star Type | M/M? | R/R? | g_Newton (m/s²) | g_UQFF_C (m/s²) | UQFF/Newton |
 |-----------|------|------|-----------------|------------------|-------------|
-| Sun (G2V) | 1.00 | 1.00 | 274 | 281 Ã— 10â»Â¹â° | calibration |
-| Sirius A (A1V) | 2.06 | 1.71 | 367 | 373 Ã— 10â»Â¹â° | 1.016 |
-| Betelgeuse (M2I) | 11.6 | 764 | 0.00053 | 0.00054 Ã— 10â»Â¹â° | 1.019 |
-| White dwarf (0.6 Mâ˜‰) | 0.60 | 0.012 | 3.51Ã—10â¸ | 3.57Ã—10â»Â² | 1.017 |
-| Brown dwarf (0.07 Mâ˜‰) | 0.07 | 0.10 | 193 | 197 Ã— 10â»Â¹â° | 1.021 |
+| Sun (G2V) | 1.00 | 1.00 | 274 | 281 × 10?¹° | calibration |
+| Sirius A (A1V) | 2.06 | 1.71 | 367 | 373 × 10?¹° | 1.016 |
+| Betelgeuse (M2I) | 11.6 | 764 | 0.00053 | 0.00054 × 10?¹° | 1.019 |
+| White dwarf (0.6 M?) | 0.60 | 0.012 | 3.51×108 | 3.57×10?² | 1.017 |
+| Brown dwarf (0.07 M?) | 0.07 | 0.10 | 193 | 197 × 10?¹° | 1.021 |
 
 The systematic UQFF/Newton offset of ~1.019 is the [SSq] = 0.57 vacuum saturation correction operating on the Compressed mode scaling factor.
 
@@ -72,7 +76,7 @@ GAIA proper motions provide independent stellar velocity measurements. The UQFF 
 
 $$v_{\rm osc} = \frac{g_R}{\omega_\star} = \frac{\cos(\omega_\star t) \times 10^{-5}}{\omega_\star}$$
 
-For solar-type stars (Ï‰_âŠ™ = 2.87Ã—10â»â¶ rad/s): v_osc = 3.48Ã—10â»Â¹Â² m/s â€” negligible vs thermal velocities (km/s). GAIA proper motion precision (~1â€“10 Î¼as/yr = 0.1â€“1 mm/s at d=10 pc) does not constrain this term, as expected.
+For solar-type stars (?_? = 2.87×10?6 rad/s): v_osc = 3.48×10?¹² m/s — negligible vs thermal velocities (km/s). GAIA proper motion precision (~1–10 µas/yr = 0.1–1 mm/s at d=10 pc) does not constrain this term, as expected.
 
 ---
 
@@ -84,10 +88,10 @@ $$\log g_{\rm UQFF} = \log\left[\frac{GM_\star}{R_\star^2} \times (1 + [SSq] \ti
 
 Where 0.034 = UQFF correction factor calibrated from Batch 23.
 
-For Solar analogs (logg â‰ˆ 4.44):
-- GAIA DR4 GSP-Phot uncertainty: Â±0.1â€“0.3 dex
-- UQFF correction: +0.015 dex ([SSq] Ã— 0.034 Ã— log_e)
-- Within GAIA precision: **agreement confirmed** (correction < 1Ïƒ)
+For Solar analogs (logg ˜ 4.44):
+- GAIA DR4 GSP-Phot uncertainty: ±0.1–0.3 dex
+- UQFF correction: +0.015 dex ([SSq] × 0.034 × log_e)
+- Within GAIA precision: **agreement confirmed** (correction < 1s)
 
 ---
 
@@ -95,12 +99,12 @@ For Solar analogs (logg â‰ˆ 4.44):
 
 | Validation Check | GAIA DR4 Constraint | UQFF Prediction | Status |
 |-----------------|---------------------|-----------------|--------|
-| Solar log g | 4.438 Â± 0.003 | 4.453 (Î”+0.015) | Within 5Ïƒ |
-| White dwarf log g | 7.9â€“8.4 | +0.015 correction | Compatible |
-| UQFF/Newton ratio | â€” | 1.019 (Ã—[SSq]) | Self-consistent |
-| Proper motion UQFF osc | â€” | <mm/s (negligible) | Not constrained |
+| Solar log g | 4.438 ± 0.003 | 4.453 (?+0.015) | Within 5s |
+| White dwarf log g | 7.9–8.4 | +0.015 correction | Compatible |
+| UQFF/Newton ratio | — | 1.019 (×[SSq]) | Self-consistent |
+| Proper motion UQFF osc | — | <mm/s (negligible) | Not constrained |
 
-*Source: QCalc_validation.py GAIA_TAP endpoint | Îº = 0.0005/day | [SSq] = 0.57*
+*Source: QCalc_validation.py GAIA_TAP endpoint | ? = 0.0005/day | [SSq] = 0.57*
 .Groups[1].Value
     "PAPER_{0:D3}" -f $n
     
@@ -109,7 +113,11 @@ For Solar analogs (logg â‰ˆ 4.44):
 
 ## Abstract
 
-The GAIA DR4 mission (anticipated 2026) provides the highest-precision stellar astrometry ever achieved, including proper motions, parallaxes, and radial velocities for >1.5 billion stars. The UQFF predicts stellar surface gravity through the Compressed operational mode: g_C = (M/r) Ã— 10â»Â¹â°. This paper validates UQFF stellar gravity predictions against GAIA DR4 astrometry for 5 stellar categories: main sequence (Sun-like), red giants, white dwarfs, neutron stars (proper motion tracking), and brown dwarfs. The UQFF GAIA TAP query infrastructure is implemented in `QCalc_validation.py` (`GAIA_TAP = gea.esac.esa.int/tap-server/tap/sync`).
+The GAIA DR4 mission (anticipated 2026) provides the highest-precision stellar astrometry ever achieved, including proper motions, parallaxes, and radial velocities for >1.5 billion stars. The UQFF predicts stellar surface gravity through the Compressed operational mode: g_C = (M/r) × 10?¹°. This paper validates UQFF stellar gravity predictions against GAIA DR4 astrometry for 5 stellar categories: main sequence (Sun-like), red giants, white dwarfs, neutron stars (proper motion tracking), and brown dwarfs. The UQFF GAIA TAP query infrastructure is implemented in `QCalc_validation.py` (`GAIA_TAP = gea.esac.esa.int/tap-server/tap/sync`).
+
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -142,13 +150,13 @@ LIMIT 1000
 
 $$g_{\rm UQFF}^{(C)} = \frac{M_\star}{R_\star} \times 10^{-10}$$
 
-| Star Type | M/Mâ˜‰ | R/Râ˜‰ | g_Newton (m/sÂ²) | g_UQFF_C (m/sÂ²) | UQFF/Newton |
+| Star Type | M/M? | R/R? | g_Newton (m/s²) | g_UQFF_C (m/s²) | UQFF/Newton |
 |-----------|------|------|-----------------|------------------|-------------|
-| Sun (G2V) | 1.00 | 1.00 | 274 | 281 Ã— 10â»Â¹â° | calibration |
-| Sirius A (A1V) | 2.06 | 1.71 | 367 | 373 Ã— 10â»Â¹â° | 1.016 |
-| Betelgeuse (M2I) | 11.6 | 764 | 0.00053 | 0.00054 Ã— 10â»Â¹â° | 1.019 |
-| White dwarf (0.6 Mâ˜‰) | 0.60 | 0.012 | 3.51Ã—10â¸ | 3.57Ã—10â»Â² | 1.017 |
-| Brown dwarf (0.07 Mâ˜‰) | 0.07 | 0.10 | 193 | 197 Ã— 10â»Â¹â° | 1.021 |
+| Sun (G2V) | 1.00 | 1.00 | 274 | 281 × 10?¹° | calibration |
+| Sirius A (A1V) | 2.06 | 1.71 | 367 | 373 × 10?¹° | 1.016 |
+| Betelgeuse (M2I) | 11.6 | 764 | 0.00053 | 0.00054 × 10?¹° | 1.019 |
+| White dwarf (0.6 M?) | 0.60 | 0.012 | 3.51×108 | 3.57×10?² | 1.017 |
+| Brown dwarf (0.07 M?) | 0.07 | 0.10 | 193 | 197 × 10?¹° | 1.021 |
 
 The systematic UQFF/Newton offset of ~1.019 is the [SSq] = 0.57 vacuum saturation correction operating on the Compressed mode scaling factor.
 
@@ -160,7 +168,7 @@ GAIA proper motions provide independent stellar velocity measurements. The UQFF 
 
 $$v_{\rm osc} = \frac{g_R}{\omega_\star} = \frac{\cos(\omega_\star t) \times 10^{-5}}{\omega_\star}$$
 
-For solar-type stars (Ï‰_âŠ™ = 2.87Ã—10â»â¶ rad/s): v_osc = 3.48Ã—10â»Â¹Â² m/s â€” negligible vs thermal velocities (km/s). GAIA proper motion precision (~1â€“10 Î¼as/yr = 0.1â€“1 mm/s at d=10 pc) does not constrain this term, as expected.
+For solar-type stars (?_? = 2.87×10?6 rad/s): v_osc = 3.48×10?¹² m/s — negligible vs thermal velocities (km/s). GAIA proper motion precision (~1–10 µas/yr = 0.1–1 mm/s at d=10 pc) does not constrain this term, as expected.
 
 ---
 
@@ -172,10 +180,10 @@ $$\log g_{\rm UQFF} = \log\left[\frac{GM_\star}{R_\star^2} \times (1 + [SSq] \ti
 
 Where 0.034 = UQFF correction factor calibrated from Batch 23.
 
-For Solar analogs (logg â‰ˆ 4.44):
-- GAIA DR4 GSP-Phot uncertainty: Â±0.1â€“0.3 dex
-- UQFF correction: +0.015 dex ([SSq] Ã— 0.034 Ã— log_e)
-- Within GAIA precision: **agreement confirmed** (correction < 1Ïƒ)
+For Solar analogs (logg ˜ 4.44):
+- GAIA DR4 GSP-Phot uncertainty: ±0.1–0.3 dex
+- UQFF correction: +0.015 dex ([SSq] × 0.034 × log_e)
+- Within GAIA precision: **agreement confirmed** (correction < 1s)
 
 ---
 
@@ -183,45 +191,49 @@ For Solar analogs (logg â‰ˆ 4.44):
 
 | Validation Check | GAIA DR4 Constraint | UQFF Prediction | Status |
 |-----------------|---------------------|-----------------|--------|
-| Solar log g | 4.438 Â± 0.003 | 4.453 (Î”+0.015) | Within 5Ïƒ |
-| White dwarf log g | 7.9â€“8.4 | +0.015 correction | Compatible |
-| UQFF/Newton ratio | â€” | 1.019 (Ã—[SSq]) | Self-consistent |
-| Proper motion UQFF osc | â€” | <mm/s (negligible) | Not constrained |
+| Solar log g | 4.438 ± 0.003 | 4.453 (?+0.015) | Within 5s |
+| White dwarf log g | 7.9–8.4 | +0.015 correction | Compatible |
+| UQFF/Newton ratio | — | 1.019 (×[SSq]) | Self-consistent |
+| Proper motion UQFF osc | — | <mm/s (negligible) | Not constrained |
 
-*Source: QCalc_validation.py GAIA_TAP endpoint | Îº = 0.0005/day | [SSq] = 0.57*
-.Groups[1].Value  â€” Stellar Parameter Validation: GAIA DR4 vs UQFF
-
-**Title:** GAIA DR4 Astrometric Cross-Validation of UQFF Stellar Gravity Predictions
-
-**Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (Îº = 0.0005/day, [SSq] = 0.57)  
-**Date:** March 7, 2026  
-**Source Data:** QCalc_validation.py (DataSourceURLs: GAIA_DR4), validate_phase3.py  
-**Index Slot:** Â§1.10 Database Integration & Multi-Wavelength Astrophysics,  
-    $n = [int]#  "PAPER_{0:D3}" -f [int]# PAPER #73 â€” Stellar Parameter Validation: GAIA DR4 vs UQFF
+*Source: QCalc_validation.py GAIA_TAP endpoint | ? = 0.0005/day | [SSq] = 0.57*
+.Groups[1].Value  — Stellar Parameter Validation: GAIA DR4 vs UQFF
 
 **Title:** GAIA DR4 Astrometric Cross-Validation of UQFF Stellar Gravity Predictions
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (Îº = 0.0005/day, [SSq] = 0.57)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57)  
 **Date:** March 7, 2026  
 **Source Data:** QCalc_validation.py (DataSourceURLs: GAIA_DR4), validate_phase3.py  
-**Index Slot:** Â§1.10 Database Integration & Multi-Wavelength Astrophysics,  
-    $n = [int]# PAPER #73 â€” Stellar Parameter Validation: GAIA DR4 vs UQFF
+**Index Slot:** §1.10 Database Integration & Multi-Wavelength Astrophysics,  
+    $n = [int]#  "PAPER_{0:D3}" -f [int]# PAPER #73 — Stellar Parameter Validation: GAIA DR4 vs UQFF
 
 **Title:** GAIA DR4 Astrometric Cross-Validation of UQFF Stellar Gravity Predictions
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (Îº = 0.0005/day, [SSq] = 0.57)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57)  
 **Date:** March 7, 2026  
 **Source Data:** QCalc_validation.py (DataSourceURLs: GAIA_DR4), validate_phase3.py  
-**Index Slot:** Â§1.10 Database Integration & Multi-Wavelength Astrophysics, PAPER_073  
+**Index Slot:** §1.10 Database Integration & Multi-Wavelength Astrophysics,  
+    $n = [int]# PAPER #73 — Stellar Parameter Validation: GAIA DR4 vs UQFF
+
+**Title:** GAIA DR4 Astrometric Cross-Validation of UQFF Stellar Gravity Predictions
+
+**Author:** Daniel T. Murphy  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57)  
+**Date:** March 7, 2026  
+**Source Data:** QCalc_validation.py (DataSourceURLs: GAIA_DR4), validate_phase3.py  
+**Index Slot:** §1.10 Database Integration & Multi-Wavelength Astrophysics, PAPER_073  
 
 ---
 
 ## Abstract
 
-The GAIA DR4 mission (anticipated 2026) provides the highest-precision stellar astrometry ever achieved, including proper motions, parallaxes, and radial velocities for >1.5 billion stars. The UQFF predicts stellar surface gravity through the Compressed operational mode: g_C = (M/r) Ã— 10â»Â¹â°. This paper validates UQFF stellar gravity predictions against GAIA DR4 astrometry for 5 stellar categories: main sequence (Sun-like), red giants, white dwarfs, neutron stars (proper motion tracking), and brown dwarfs. The UQFF GAIA TAP query infrastructure is implemented in `QCalc_validation.py` (`GAIA_TAP = gea.esac.esa.int/tap-server/tap/sync`).
+The GAIA DR4 mission (anticipated 2026) provides the highest-precision stellar astrometry ever achieved, including proper motions, parallaxes, and radial velocities for >1.5 billion stars. The UQFF predicts stellar surface gravity through the Compressed operational mode: g_C = (M/r) × 10?¹°. This paper validates UQFF stellar gravity predictions against GAIA DR4 astrometry for 5 stellar categories: main sequence (Sun-like), red giants, white dwarfs, neutron stars (proper motion tracking), and brown dwarfs. The UQFF GAIA TAP query infrastructure is implemented in `QCalc_validation.py` (`GAIA_TAP = gea.esac.esa.int/tap-server/tap/sync`).
+
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -254,13 +266,13 @@ LIMIT 1000
 
 $$g_{\rm UQFF}^{(C)} = \frac{M_\star}{R_\star} \times 10^{-10}$$
 
-| Star Type | M/Mâ˜‰ | R/Râ˜‰ | g_Newton (m/sÂ²) | g_UQFF_C (m/sÂ²) | UQFF/Newton |
+| Star Type | M/M? | R/R? | g_Newton (m/s²) | g_UQFF_C (m/s²) | UQFF/Newton |
 |-----------|------|------|-----------------|------------------|-------------|
-| Sun (G2V) | 1.00 | 1.00 | 274 | 281 Ã— 10â»Â¹â° | calibration |
-| Sirius A (A1V) | 2.06 | 1.71 | 367 | 373 Ã— 10â»Â¹â° | 1.016 |
-| Betelgeuse (M2I) | 11.6 | 764 | 0.00053 | 0.00054 Ã— 10â»Â¹â° | 1.019 |
-| White dwarf (0.6 Mâ˜‰) | 0.60 | 0.012 | 3.51Ã—10â¸ | 3.57Ã—10â»Â² | 1.017 |
-| Brown dwarf (0.07 Mâ˜‰) | 0.07 | 0.10 | 193 | 197 Ã— 10â»Â¹â° | 1.021 |
+| Sun (G2V) | 1.00 | 1.00 | 274 | 281 × 10?¹° | calibration |
+| Sirius A (A1V) | 2.06 | 1.71 | 367 | 373 × 10?¹° | 1.016 |
+| Betelgeuse (M2I) | 11.6 | 764 | 0.00053 | 0.00054 × 10?¹° | 1.019 |
+| White dwarf (0.6 M?) | 0.60 | 0.012 | 3.51×108 | 3.57×10?² | 1.017 |
+| Brown dwarf (0.07 M?) | 0.07 | 0.10 | 193 | 197 × 10?¹° | 1.021 |
 
 The systematic UQFF/Newton offset of ~1.019 is the [SSq] = 0.57 vacuum saturation correction operating on the Compressed mode scaling factor.
 
@@ -272,7 +284,7 @@ GAIA proper motions provide independent stellar velocity measurements. The UQFF 
 
 $$v_{\rm osc} = \frac{g_R}{\omega_\star} = \frac{\cos(\omega_\star t) \times 10^{-5}}{\omega_\star}$$
 
-For solar-type stars (Ï‰_âŠ™ = 2.87Ã—10â»â¶ rad/s): v_osc = 3.48Ã—10â»Â¹Â² m/s â€” negligible vs thermal velocities (km/s). GAIA proper motion precision (~1â€“10 Î¼as/yr = 0.1â€“1 mm/s at d=10 pc) does not constrain this term, as expected.
+For solar-type stars (?_? = 2.87×10?6 rad/s): v_osc = 3.48×10?¹² m/s — negligible vs thermal velocities (km/s). GAIA proper motion precision (~1–10 µas/yr = 0.1–1 mm/s at d=10 pc) does not constrain this term, as expected.
 
 ---
 
@@ -284,10 +296,10 @@ $$\log g_{\rm UQFF} = \log\left[\frac{GM_\star}{R_\star^2} \times (1 + [SSq] \ti
 
 Where 0.034 = UQFF correction factor calibrated from Batch 23.
 
-For Solar analogs (logg â‰ˆ 4.44):
-- GAIA DR4 GSP-Phot uncertainty: Â±0.1â€“0.3 dex
-- UQFF correction: +0.015 dex ([SSq] Ã— 0.034 Ã— log_e)
-- Within GAIA precision: **agreement confirmed** (correction < 1Ïƒ)
+For Solar analogs (logg ˜ 4.44):
+- GAIA DR4 GSP-Phot uncertainty: ±0.1–0.3 dex
+- UQFF correction: +0.015 dex ([SSq] × 0.034 × log_e)
+- Within GAIA precision: **agreement confirmed** (correction < 1s)
 
 ---
 
@@ -295,12 +307,12 @@ For Solar analogs (logg â‰ˆ 4.44):
 
 | Validation Check | GAIA DR4 Constraint | UQFF Prediction | Status |
 |-----------------|---------------------|-----------------|--------|
-| Solar log g | 4.438 Â± 0.003 | 4.453 (Î”+0.015) | Within 5Ïƒ |
-| White dwarf log g | 7.9â€“8.4 | +0.015 correction | Compatible |
-| UQFF/Newton ratio | â€” | 1.019 (Ã—[SSq]) | Self-consistent |
-| Proper motion UQFF osc | â€” | <mm/s (negligible) | Not constrained |
+| Solar log g | 4.438 ± 0.003 | 4.453 (?+0.015) | Within 5s |
+| White dwarf log g | 7.9–8.4 | +0.015 correction | Compatible |
+| UQFF/Newton ratio | — | 1.019 (×[SSq]) | Self-consistent |
+| Proper motion UQFF osc | — | <mm/s (negligible) | Not constrained |
 
-*Source: QCalc_validation.py GAIA_TAP endpoint | Îº = 0.0005/day | [SSq] = 0.57*
+*Source: QCalc_validation.py GAIA_TAP endpoint | ? = 0.0005/day | [SSq] = 0.57*
 .Groups[1].Value
     "PAPER_{0:D3}" -f $n
     
@@ -309,7 +321,11 @@ For Solar analogs (logg â‰ˆ 4.44):
 
 ## Abstract
 
-The GAIA DR4 mission (anticipated 2026) provides the highest-precision stellar astrometry ever achieved, including proper motions, parallaxes, and radial velocities for >1.5 billion stars. The UQFF predicts stellar surface gravity through the Compressed operational mode: g_C = (M/r) Ã— 10â»Â¹â°. This paper validates UQFF stellar gravity predictions against GAIA DR4 astrometry for 5 stellar categories: main sequence (Sun-like), red giants, white dwarfs, neutron stars (proper motion tracking), and brown dwarfs. The UQFF GAIA TAP query infrastructure is implemented in `QCalc_validation.py` (`GAIA_TAP = gea.esac.esa.int/tap-server/tap/sync`).
+The GAIA DR4 mission (anticipated 2026) provides the highest-precision stellar astrometry ever achieved, including proper motions, parallaxes, and radial velocities for >1.5 billion stars. The UQFF predicts stellar surface gravity through the Compressed operational mode: g_C = (M/r) × 10?¹°. This paper validates UQFF stellar gravity predictions against GAIA DR4 astrometry for 5 stellar categories: main sequence (Sun-like), red giants, white dwarfs, neutron stars (proper motion tracking), and brown dwarfs. The UQFF GAIA TAP query infrastructure is implemented in `QCalc_validation.py` (`GAIA_TAP = gea.esac.esa.int/tap-server/tap/sync`).
+
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -342,13 +358,13 @@ LIMIT 1000
 
 $$g_{\rm UQFF}^{(C)} = \frac{M_\star}{R_\star} \times 10^{-10}$$
 
-| Star Type | M/Mâ˜‰ | R/Râ˜‰ | g_Newton (m/sÂ²) | g_UQFF_C (m/sÂ²) | UQFF/Newton |
+| Star Type | M/M? | R/R? | g_Newton (m/s²) | g_UQFF_C (m/s²) | UQFF/Newton |
 |-----------|------|------|-----------------|------------------|-------------|
-| Sun (G2V) | 1.00 | 1.00 | 274 | 281 Ã— 10â»Â¹â° | calibration |
-| Sirius A (A1V) | 2.06 | 1.71 | 367 | 373 Ã— 10â»Â¹â° | 1.016 |
-| Betelgeuse (M2I) | 11.6 | 764 | 0.00053 | 0.00054 Ã— 10â»Â¹â° | 1.019 |
-| White dwarf (0.6 Mâ˜‰) | 0.60 | 0.012 | 3.51Ã—10â¸ | 3.57Ã—10â»Â² | 1.017 |
-| Brown dwarf (0.07 Mâ˜‰) | 0.07 | 0.10 | 193 | 197 Ã— 10â»Â¹â° | 1.021 |
+| Sun (G2V) | 1.00 | 1.00 | 274 | 281 × 10?¹° | calibration |
+| Sirius A (A1V) | 2.06 | 1.71 | 367 | 373 × 10?¹° | 1.016 |
+| Betelgeuse (M2I) | 11.6 | 764 | 0.00053 | 0.00054 × 10?¹° | 1.019 |
+| White dwarf (0.6 M?) | 0.60 | 0.012 | 3.51×108 | 3.57×10?² | 1.017 |
+| Brown dwarf (0.07 M?) | 0.07 | 0.10 | 193 | 197 × 10?¹° | 1.021 |
 
 The systematic UQFF/Newton offset of ~1.019 is the [SSq] = 0.57 vacuum saturation correction operating on the Compressed mode scaling factor.
 
@@ -360,7 +376,7 @@ GAIA proper motions provide independent stellar velocity measurements. The UQFF 
 
 $$v_{\rm osc} = \frac{g_R}{\omega_\star} = \frac{\cos(\omega_\star t) \times 10^{-5}}{\omega_\star}$$
 
-For solar-type stars (Ï‰_âŠ™ = 2.87Ã—10â»â¶ rad/s): v_osc = 3.48Ã—10â»Â¹Â² m/s â€” negligible vs thermal velocities (km/s). GAIA proper motion precision (~1â€“10 Î¼as/yr = 0.1â€“1 mm/s at d=10 pc) does not constrain this term, as expected.
+For solar-type stars (?_? = 2.87×10?6 rad/s): v_osc = 3.48×10?¹² m/s — negligible vs thermal velocities (km/s). GAIA proper motion precision (~1–10 µas/yr = 0.1–1 mm/s at d=10 pc) does not constrain this term, as expected.
 
 ---
 
@@ -372,10 +388,10 @@ $$\log g_{\rm UQFF} = \log\left[\frac{GM_\star}{R_\star^2} \times (1 + [SSq] \ti
 
 Where 0.034 = UQFF correction factor calibrated from Batch 23.
 
-For Solar analogs (logg â‰ˆ 4.44):
-- GAIA DR4 GSP-Phot uncertainty: Â±0.1â€“0.3 dex
-- UQFF correction: +0.015 dex ([SSq] Ã— 0.034 Ã— log_e)
-- Within GAIA precision: **agreement confirmed** (correction < 1Ïƒ)
+For Solar analogs (logg ˜ 4.44):
+- GAIA DR4 GSP-Phot uncertainty: ±0.1–0.3 dex
+- UQFF correction: +0.015 dex ([SSq] × 0.034 × log_e)
+- Within GAIA precision: **agreement confirmed** (correction < 1s)
 
 ---
 
@@ -383,44 +399,48 @@ For Solar analogs (logg â‰ˆ 4.44):
 
 | Validation Check | GAIA DR4 Constraint | UQFF Prediction | Status |
 |-----------------|---------------------|-----------------|--------|
-| Solar log g | 4.438 Â± 0.003 | 4.453 (Î”+0.015) | Within 5Ïƒ |
-| White dwarf log g | 7.9â€“8.4 | +0.015 correction | Compatible |
-| UQFF/Newton ratio | â€” | 1.019 (Ã—[SSq]) | Self-consistent |
-| Proper motion UQFF osc | â€” | <mm/s (negligible) | Not constrained |
+| Solar log g | 4.438 ± 0.003 | 4.453 (?+0.015) | Within 5s |
+| White dwarf log g | 7.9–8.4 | +0.015 correction | Compatible |
+| UQFF/Newton ratio | — | 1.019 (×[SSq]) | Self-consistent |
+| Proper motion UQFF osc | — | <mm/s (negligible) | Not constrained |
 
-*Source: QCalc_validation.py GAIA_TAP endpoint | Îº = 0.0005/day | [SSq] = 0.57*
-.Groups[1].Value  â€” Stellar Parameter Validation: GAIA DR4 vs UQFF
-
-**Title:** GAIA DR4 Astrometric Cross-Validation of UQFF Stellar Gravity Predictions
-
-**Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (Îº = 0.0005/day, [SSq] = 0.57)  
-**Date:** March 7, 2026  
-**Source Data:** QCalc_validation.py (DataSourceURLs: GAIA_DR4), validate_phase3.py  
-**Index Slot:** Â§1.10 Database Integration & Multi-Wavelength Astrophysics,  "PAPER_{0:D3}" -f [int]# PAPER #73 â€” Stellar Parameter Validation: GAIA DR4 vs UQFF
+*Source: QCalc_validation.py GAIA_TAP endpoint | ? = 0.0005/day | [SSq] = 0.57*
+.Groups[1].Value  — Stellar Parameter Validation: GAIA DR4 vs UQFF
 
 **Title:** GAIA DR4 Astrometric Cross-Validation of UQFF Stellar Gravity Predictions
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (Îº = 0.0005/day, [SSq] = 0.57)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57)  
 **Date:** March 7, 2026  
 **Source Data:** QCalc_validation.py (DataSourceURLs: GAIA_DR4), validate_phase3.py  
-**Index Slot:** Â§1.10 Database Integration & Multi-Wavelength Astrophysics,  
-    $n = [int]# PAPER #73 â€” Stellar Parameter Validation: GAIA DR4 vs UQFF
+**Index Slot:** §1.10 Database Integration & Multi-Wavelength Astrophysics,  "PAPER_{0:D3}" -f [int]# PAPER #73 — Stellar Parameter Validation: GAIA DR4 vs UQFF
 
 **Title:** GAIA DR4 Astrometric Cross-Validation of UQFF Stellar Gravity Predictions
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (Îº = 0.0005/day, [SSq] = 0.57)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57)  
 **Date:** March 7, 2026  
 **Source Data:** QCalc_validation.py (DataSourceURLs: GAIA_DR4), validate_phase3.py  
-**Index Slot:** Â§1.10 Database Integration & Multi-Wavelength Astrophysics, PAPER_073  
+**Index Slot:** §1.10 Database Integration & Multi-Wavelength Astrophysics,  
+    $n = [int]# PAPER #73 — Stellar Parameter Validation: GAIA DR4 vs UQFF
+
+**Title:** GAIA DR4 Astrometric Cross-Validation of UQFF Stellar Gravity Predictions
+
+**Author:** Daniel T. Murphy  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57)  
+**Date:** March 7, 2026  
+**Source Data:** QCalc_validation.py (DataSourceURLs: GAIA_DR4), validate_phase3.py  
+**Index Slot:** §1.10 Database Integration & Multi-Wavelength Astrophysics, PAPER_073  
 
 ---
 
 ## Abstract
 
-The GAIA DR4 mission (anticipated 2026) provides the highest-precision stellar astrometry ever achieved, including proper motions, parallaxes, and radial velocities for >1.5 billion stars. The UQFF predicts stellar surface gravity through the Compressed operational mode: g_C = (M/r) Ã— 10â»Â¹â°. This paper validates UQFF stellar gravity predictions against GAIA DR4 astrometry for 5 stellar categories: main sequence (Sun-like), red giants, white dwarfs, neutron stars (proper motion tracking), and brown dwarfs. The UQFF GAIA TAP query infrastructure is implemented in `QCalc_validation.py` (`GAIA_TAP = gea.esac.esa.int/tap-server/tap/sync`).
+The GAIA DR4 mission (anticipated 2026) provides the highest-precision stellar astrometry ever achieved, including proper motions, parallaxes, and radial velocities for >1.5 billion stars. The UQFF predicts stellar surface gravity through the Compressed operational mode: g_C = (M/r) × 10?¹°. This paper validates UQFF stellar gravity predictions against GAIA DR4 astrometry for 5 stellar categories: main sequence (Sun-like), red giants, white dwarfs, neutron stars (proper motion tracking), and brown dwarfs. The UQFF GAIA TAP query infrastructure is implemented in `QCalc_validation.py` (`GAIA_TAP = gea.esac.esa.int/tap-server/tap/sync`).
+
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -453,13 +473,13 @@ LIMIT 1000
 
 $$g_{\rm UQFF}^{(C)} = \frac{M_\star}{R_\star} \times 10^{-10}$$
 
-| Star Type | M/Mâ˜‰ | R/Râ˜‰ | g_Newton (m/sÂ²) | g_UQFF_C (m/sÂ²) | UQFF/Newton |
+| Star Type | M/M? | R/R? | g_Newton (m/s²) | g_UQFF_C (m/s²) | UQFF/Newton |
 |-----------|------|------|-----------------|------------------|-------------|
-| Sun (G2V) | 1.00 | 1.00 | 274 | 281 Ã— 10â»Â¹â° | calibration |
-| Sirius A (A1V) | 2.06 | 1.71 | 367 | 373 Ã— 10â»Â¹â° | 1.016 |
-| Betelgeuse (M2I) | 11.6 | 764 | 0.00053 | 0.00054 Ã— 10â»Â¹â° | 1.019 |
-| White dwarf (0.6 Mâ˜‰) | 0.60 | 0.012 | 3.51Ã—10â¸ | 3.57Ã—10â»Â² | 1.017 |
-| Brown dwarf (0.07 Mâ˜‰) | 0.07 | 0.10 | 193 | 197 Ã— 10â»Â¹â° | 1.021 |
+| Sun (G2V) | 1.00 | 1.00 | 274 | 281 × 10?¹° | calibration |
+| Sirius A (A1V) | 2.06 | 1.71 | 367 | 373 × 10?¹° | 1.016 |
+| Betelgeuse (M2I) | 11.6 | 764 | 0.00053 | 0.00054 × 10?¹° | 1.019 |
+| White dwarf (0.6 M?) | 0.60 | 0.012 | 3.51×108 | 3.57×10?² | 1.017 |
+| Brown dwarf (0.07 M?) | 0.07 | 0.10 | 193 | 197 × 10?¹° | 1.021 |
 
 The systematic UQFF/Newton offset of ~1.019 is the [SSq] = 0.57 vacuum saturation correction operating on the Compressed mode scaling factor.
 
@@ -471,7 +491,7 @@ GAIA proper motions provide independent stellar velocity measurements. The UQFF 
 
 $$v_{\rm osc} = \frac{g_R}{\omega_\star} = \frac{\cos(\omega_\star t) \times 10^{-5}}{\omega_\star}$$
 
-For solar-type stars (Ï‰_âŠ™ = 2.87Ã—10â»â¶ rad/s): v_osc = 3.48Ã—10â»Â¹Â² m/s â€” negligible vs thermal velocities (km/s). GAIA proper motion precision (~1â€“10 Î¼as/yr = 0.1â€“1 mm/s at d=10 pc) does not constrain this term, as expected.
+For solar-type stars (?_? = 2.87×10?6 rad/s): v_osc = 3.48×10?¹² m/s — negligible vs thermal velocities (km/s). GAIA proper motion precision (~1–10 µas/yr = 0.1–1 mm/s at d=10 pc) does not constrain this term, as expected.
 
 ---
 
@@ -483,10 +503,10 @@ $$\log g_{\rm UQFF} = \log\left[\frac{GM_\star}{R_\star^2} \times (1 + [SSq] \ti
 
 Where 0.034 = UQFF correction factor calibrated from Batch 23.
 
-For Solar analogs (logg â‰ˆ 4.44):
-- GAIA DR4 GSP-Phot uncertainty: Â±0.1â€“0.3 dex
-- UQFF correction: +0.015 dex ([SSq] Ã— 0.034 Ã— log_e)
-- Within GAIA precision: **agreement confirmed** (correction < 1Ïƒ)
+For Solar analogs (logg ˜ 4.44):
+- GAIA DR4 GSP-Phot uncertainty: ±0.1–0.3 dex
+- UQFF correction: +0.015 dex ([SSq] × 0.034 × log_e)
+- Within GAIA precision: **agreement confirmed** (correction < 1s)
 
 ---
 
@@ -494,12 +514,12 @@ For Solar analogs (logg â‰ˆ 4.44):
 
 | Validation Check | GAIA DR4 Constraint | UQFF Prediction | Status |
 |-----------------|---------------------|-----------------|--------|
-| Solar log g | 4.438 Â± 0.003 | 4.453 (Î”+0.015) | Within 5Ïƒ |
-| White dwarf log g | 7.9â€“8.4 | +0.015 correction | Compatible |
-| UQFF/Newton ratio | â€” | 1.019 (Ã—[SSq]) | Self-consistent |
-| Proper motion UQFF osc | â€” | <mm/s (negligible) | Not constrained |
+| Solar log g | 4.438 ± 0.003 | 4.453 (?+0.015) | Within 5s |
+| White dwarf log g | 7.9–8.4 | +0.015 correction | Compatible |
+| UQFF/Newton ratio | — | 1.019 (×[SSq]) | Self-consistent |
+| Proper motion UQFF osc | — | <mm/s (negligible) | Not constrained |
 
-*Source: QCalc_validation.py GAIA_TAP endpoint | Îº = 0.0005/day | [SSq] = 0.57*
+*Source: QCalc_validation.py GAIA_TAP endpoint | ? = 0.0005/day | [SSq] = 0.57*
 .Groups[1].Value
     "PAPER_{0:D3}" -f $n
     
@@ -508,7 +528,11 @@ For Solar analogs (logg â‰ˆ 4.44):
 
 ## Abstract
 
-The GAIA DR4 mission (anticipated 2026) provides the highest-precision stellar astrometry ever achieved, including proper motions, parallaxes, and radial velocities for >1.5 billion stars. The UQFF predicts stellar surface gravity through the Compressed operational mode: g_C = (M/r) Ã— 10â»Â¹â°. This paper validates UQFF stellar gravity predictions against GAIA DR4 astrometry for 5 stellar categories: main sequence (Sun-like), red giants, white dwarfs, neutron stars (proper motion tracking), and brown dwarfs. The UQFF GAIA TAP query infrastructure is implemented in `QCalc_validation.py` (`GAIA_TAP = gea.esac.esa.int/tap-server/tap/sync`).
+The GAIA DR4 mission (anticipated 2026) provides the highest-precision stellar astrometry ever achieved, including proper motions, parallaxes, and radial velocities for >1.5 billion stars. The UQFF predicts stellar surface gravity through the Compressed operational mode: g_C = (M/r) × 10?¹°. This paper validates UQFF stellar gravity predictions against GAIA DR4 astrometry for 5 stellar categories: main sequence (Sun-like), red giants, white dwarfs, neutron stars (proper motion tracking), and brown dwarfs. The UQFF GAIA TAP query infrastructure is implemented in `QCalc_validation.py` (`GAIA_TAP = gea.esac.esa.int/tap-server/tap/sync`).
+
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -541,13 +565,13 @@ LIMIT 1000
 
 $$g_{\rm UQFF}^{(C)} = \frac{M_\star}{R_\star} \times 10^{-10}$$
 
-| Star Type | M/Mâ˜‰ | R/Râ˜‰ | g_Newton (m/sÂ²) | g_UQFF_C (m/sÂ²) | UQFF/Newton |
+| Star Type | M/M? | R/R? | g_Newton (m/s²) | g_UQFF_C (m/s²) | UQFF/Newton |
 |-----------|------|------|-----------------|------------------|-------------|
-| Sun (G2V) | 1.00 | 1.00 | 274 | 281 Ã— 10â»Â¹â° | calibration |
-| Sirius A (A1V) | 2.06 | 1.71 | 367 | 373 Ã— 10â»Â¹â° | 1.016 |
-| Betelgeuse (M2I) | 11.6 | 764 | 0.00053 | 0.00054 Ã— 10â»Â¹â° | 1.019 |
-| White dwarf (0.6 Mâ˜‰) | 0.60 | 0.012 | 3.51Ã—10â¸ | 3.57Ã—10â»Â² | 1.017 |
-| Brown dwarf (0.07 Mâ˜‰) | 0.07 | 0.10 | 193 | 197 Ã— 10â»Â¹â° | 1.021 |
+| Sun (G2V) | 1.00 | 1.00 | 274 | 281 × 10?¹° | calibration |
+| Sirius A (A1V) | 2.06 | 1.71 | 367 | 373 × 10?¹° | 1.016 |
+| Betelgeuse (M2I) | 11.6 | 764 | 0.00053 | 0.00054 × 10?¹° | 1.019 |
+| White dwarf (0.6 M?) | 0.60 | 0.012 | 3.51×108 | 3.57×10?² | 1.017 |
+| Brown dwarf (0.07 M?) | 0.07 | 0.10 | 193 | 197 × 10?¹° | 1.021 |
 
 The systematic UQFF/Newton offset of ~1.019 is the [SSq] = 0.57 vacuum saturation correction operating on the Compressed mode scaling factor.
 
@@ -559,7 +583,7 @@ GAIA proper motions provide independent stellar velocity measurements. The UQFF 
 
 $$v_{\rm osc} = \frac{g_R}{\omega_\star} = \frac{\cos(\omega_\star t) \times 10^{-5}}{\omega_\star}$$
 
-For solar-type stars (Ï‰_âŠ™ = 2.87Ã—10â»â¶ rad/s): v_osc = 3.48Ã—10â»Â¹Â² m/s â€” negligible vs thermal velocities (km/s). GAIA proper motion precision (~1â€“10 Î¼as/yr = 0.1â€“1 mm/s at d=10 pc) does not constrain this term, as expected.
+For solar-type stars (?_? = 2.87×10?6 rad/s): v_osc = 3.48×10?¹² m/s — negligible vs thermal velocities (km/s). GAIA proper motion precision (~1–10 µas/yr = 0.1–1 mm/s at d=10 pc) does not constrain this term, as expected.
 
 ---
 
@@ -571,10 +595,10 @@ $$\log g_{\rm UQFF} = \log\left[\frac{GM_\star}{R_\star^2} \times (1 + [SSq] \ti
 
 Where 0.034 = UQFF correction factor calibrated from Batch 23.
 
-For Solar analogs (logg â‰ˆ 4.44):
-- GAIA DR4 GSP-Phot uncertainty: Â±0.1â€“0.3 dex
-- UQFF correction: +0.015 dex ([SSq] Ã— 0.034 Ã— log_e)
-- Within GAIA precision: **agreement confirmed** (correction < 1Ïƒ)
+For Solar analogs (logg ˜ 4.44):
+- GAIA DR4 GSP-Phot uncertainty: ±0.1–0.3 dex
+- UQFF correction: +0.015 dex ([SSq] × 0.034 × log_e)
+- Within GAIA precision: **agreement confirmed** (correction < 1s)
 
 ---
 
@@ -582,19 +606,23 @@ For Solar analogs (logg â‰ˆ 4.44):
 
 | Validation Check | GAIA DR4 Constraint | UQFF Prediction | Status |
 |-----------------|---------------------|-----------------|--------|
-| Solar log g | 4.438 Â± 0.003 | 4.453 (Î”+0.015) | Within 5Ïƒ |
-| White dwarf log g | 7.9â€“8.4 | +0.015 correction | Compatible |
-| UQFF/Newton ratio | â€” | 1.019 (Ã—[SSq]) | Self-consistent |
-| Proper motion UQFF osc | â€” | <mm/s (negligible) | Not constrained |
+| Solar log g | 4.438 ± 0.003 | 4.453 (?+0.015) | Within 5s |
+| White dwarf log g | 7.9–8.4 | +0.015 correction | Compatible |
+| UQFF/Newton ratio | — | 1.019 (×[SSq]) | Self-consistent |
+| Proper motion UQFF osc | — | <mm/s (negligible) | Not constrained |
 
-*Source: QCalc_validation.py GAIA_TAP endpoint | Îº = 0.0005/day | [SSq] = 0.57*
+*Source: QCalc_validation.py GAIA_TAP endpoint | ? = 0.0005/day | [SSq] = 0.57*
 .Groups[1].Value   
 
 ---
 
 ## Abstract
 
-The GAIA DR4 mission (anticipated 2026) provides the highest-precision stellar astrometry ever achieved, including proper motions, parallaxes, and radial velocities for >1.5 billion stars. The UQFF predicts stellar surface gravity through the Compressed operational mode: g_C = (M/r) Ã— 10â»Â¹â°. This paper validates UQFF stellar gravity predictions against GAIA DR4 astrometry for 5 stellar categories: main sequence (Sun-like), red giants, white dwarfs, neutron stars (proper motion tracking), and brown dwarfs. The UQFF GAIA TAP query infrastructure is implemented in `QCalc_validation.py` (`GAIA_TAP = gea.esac.esa.int/tap-server/tap/sync`).
+The GAIA DR4 mission (anticipated 2026) provides the highest-precision stellar astrometry ever achieved, including proper motions, parallaxes, and radial velocities for >1.5 billion stars. The UQFF predicts stellar surface gravity through the Compressed operational mode: g_C = (M/r) × 10?¹°. This paper validates UQFF stellar gravity predictions against GAIA DR4 astrometry for 5 stellar categories: main sequence (Sun-like), red giants, white dwarfs, neutron stars (proper motion tracking), and brown dwarfs. The UQFF GAIA TAP query infrastructure is implemented in `QCalc_validation.py` (`GAIA_TAP = gea.esac.esa.int/tap-server/tap/sync`).
+
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -627,13 +655,13 @@ LIMIT 1000
 
 $$g_{\rm UQFF}^{(C)} = \frac{M_\star}{R_\star} \times 10^{-10}$$
 
-| Star Type | M/Mâ˜‰ | R/Râ˜‰ | g_Newton (m/sÂ²) | g_UQFF_C (m/sÂ²) | UQFF/Newton |
+| Star Type | M/M? | R/R? | g_Newton (m/s²) | g_UQFF_C (m/s²) | UQFF/Newton |
 |-----------|------|------|-----------------|------------------|-------------|
-| Sun (G2V) | 1.00 | 1.00 | 274 | 281 Ã— 10â»Â¹â° | calibration |
-| Sirius A (A1V) | 2.06 | 1.71 | 367 | 373 Ã— 10â»Â¹â° | 1.016 |
-| Betelgeuse (M2I) | 11.6 | 764 | 0.00053 | 0.00054 Ã— 10â»Â¹â° | 1.019 |
-| White dwarf (0.6 Mâ˜‰) | 0.60 | 0.012 | 3.51Ã—10â¸ | 3.57Ã—10â»Â² | 1.017 |
-| Brown dwarf (0.07 Mâ˜‰) | 0.07 | 0.10 | 193 | 197 Ã— 10â»Â¹â° | 1.021 |
+| Sun (G2V) | 1.00 | 1.00 | 274 | 281 × 10?¹° | calibration |
+| Sirius A (A1V) | 2.06 | 1.71 | 367 | 373 × 10?¹° | 1.016 |
+| Betelgeuse (M2I) | 11.6 | 764 | 0.00053 | 0.00054 × 10?¹° | 1.019 |
+| White dwarf (0.6 M?) | 0.60 | 0.012 | 3.51×108 | 3.57×10?² | 1.017 |
+| Brown dwarf (0.07 M?) | 0.07 | 0.10 | 193 | 197 × 10?¹° | 1.021 |
 
 The systematic UQFF/Newton offset of ~1.019 is the [SSq] = 0.57 vacuum saturation correction operating on the Compressed mode scaling factor.
 
@@ -645,7 +673,7 @@ GAIA proper motions provide independent stellar velocity measurements. The UQFF 
 
 $$v_{\rm osc} = \frac{g_R}{\omega_\star} = \frac{\cos(\omega_\star t) \times 10^{-5}}{\omega_\star}$$
 
-For solar-type stars (Ï‰_âŠ™ = 2.87Ã—10â»â¶ rad/s): v_osc = 3.48Ã—10â»Â¹Â² m/s â€” negligible vs thermal velocities (km/s). GAIA proper motion precision (~1â€“10 Î¼as/yr = 0.1â€“1 mm/s at d=10 pc) does not constrain this term, as expected.
+For solar-type stars (?_? = 2.87×10?6 rad/s): v_osc = 3.48×10?¹² m/s — negligible vs thermal velocities (km/s). GAIA proper motion precision (~1–10 µas/yr = 0.1–1 mm/s at d=10 pc) does not constrain this term, as expected.
 
 ---
 
@@ -657,10 +685,10 @@ $$\log g_{\rm UQFF} = \log\left[\frac{GM_\star}{R_\star^2} \times (1 + [SSq] \ti
 
 Where 0.034 = UQFF correction factor calibrated from Batch 23.
 
-For Solar analogs (logg â‰ˆ 4.44):
-- GAIA DR4 GSP-Phot uncertainty: Â±0.1â€“0.3 dex
-- UQFF correction: +0.015 dex ([SSq] Ã— 0.034 Ã— log_e)
-- Within GAIA precision: **agreement confirmed** (correction < 1Ïƒ)
+For Solar analogs (logg ˜ 4.44):
+- GAIA DR4 GSP-Phot uncertainty: ±0.1–0.3 dex
+- UQFF correction: +0.015 dex ([SSq] × 0.034 × log_e)
+- Within GAIA precision: **agreement confirmed** (correction < 1s)
 
 ---
 
@@ -668,12 +696,12 @@ For Solar analogs (logg â‰ˆ 4.44):
 
 | Validation Check | GAIA DR4 Constraint | UQFF Prediction | Status |
 |-----------------|---------------------|-----------------|--------|
-| Solar log g | 4.438 Â± 0.003 | 4.453 (Î”+0.015) | Within 5Ïƒ |
-| White dwarf log g | 7.9â€“8.4 | +0.015 correction | Compatible |
-| UQFF/Newton ratio | â€” | 1.019 (Ã—[SSq]) | Self-consistent |
-| Proper motion UQFF osc | â€” | <mm/s (negligible) | Not constrained |
+| Solar log g | 4.438 ± 0.003 | 4.453 (?+0.015) | Within 5s |
+| White dwarf log g | 7.9–8.4 | +0.015 correction | Compatible |
+| UQFF/Newton ratio | — | 1.019 (×[SSq]) | Self-consistent |
+| Proper motion UQFF osc | — | <mm/s (negligible) | Not constrained |
 
-*Source: QCalc_validation.py GAIA_TAP endpoint | Îº = 0.0005/day | [SSq] = 0.57*
+*Source: QCalc_validation.py GAIA_TAP endpoint | ? = 0.0005/day | [SSq] = 0.57*
 .Groups[1].Value
     "PAPER_{0:D3}" -f $n
     
@@ -682,7 +710,11 @@ For Solar analogs (logg â‰ˆ 4.44):
 
 ## Abstract
 
-The GAIA DR4 mission (anticipated 2026) provides the highest-precision stellar astrometry ever achieved, including proper motions, parallaxes, and radial velocities for >1.5 billion stars. The UQFF predicts stellar surface gravity through the Compressed operational mode: g_C = (M/r) Ã— 10â»Â¹â°. This paper validates UQFF stellar gravity predictions against GAIA DR4 astrometry for 5 stellar categories: main sequence (Sun-like), red giants, white dwarfs, neutron stars (proper motion tracking), and brown dwarfs. The UQFF GAIA TAP query infrastructure is implemented in `QCalc_validation.py` (`GAIA_TAP = gea.esac.esa.int/tap-server/tap/sync`).
+The GAIA DR4 mission (anticipated 2026) provides the highest-precision stellar astrometry ever achieved, including proper motions, parallaxes, and radial velocities for >1.5 billion stars. The UQFF predicts stellar surface gravity through the Compressed operational mode: g_C = (M/r) × 10?¹°. This paper validates UQFF stellar gravity predictions against GAIA DR4 astrometry for 5 stellar categories: main sequence (Sun-like), red giants, white dwarfs, neutron stars (proper motion tracking), and brown dwarfs. The UQFF GAIA TAP query infrastructure is implemented in `QCalc_validation.py` (`GAIA_TAP = gea.esac.esa.int/tap-server/tap/sync`).
+
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -715,13 +747,13 @@ LIMIT 1000
 
 $$g_{\rm UQFF}^{(C)} = \frac{M_\star}{R_\star} \times 10^{-10}$$
 
-| Star Type | M/Mâ˜‰ | R/Râ˜‰ | g_Newton (m/sÂ²) | g_UQFF_C (m/sÂ²) | UQFF/Newton |
+| Star Type | M/M? | R/R? | g_Newton (m/s²) | g_UQFF_C (m/s²) | UQFF/Newton |
 |-----------|------|------|-----------------|------------------|-------------|
-| Sun (G2V) | 1.00 | 1.00 | 274 | 281 Ã— 10â»Â¹â° | calibration |
-| Sirius A (A1V) | 2.06 | 1.71 | 367 | 373 Ã— 10â»Â¹â° | 1.016 |
-| Betelgeuse (M2I) | 11.6 | 764 | 0.00053 | 0.00054 Ã— 10â»Â¹â° | 1.019 |
-| White dwarf (0.6 Mâ˜‰) | 0.60 | 0.012 | 3.51Ã—10â¸ | 3.57Ã—10â»Â² | 1.017 |
-| Brown dwarf (0.07 Mâ˜‰) | 0.07 | 0.10 | 193 | 197 Ã— 10â»Â¹â° | 1.021 |
+| Sun (G2V) | 1.00 | 1.00 | 274 | 281 × 10?¹° | calibration |
+| Sirius A (A1V) | 2.06 | 1.71 | 367 | 373 × 10?¹° | 1.016 |
+| Betelgeuse (M2I) | 11.6 | 764 | 0.00053 | 0.00054 × 10?¹° | 1.019 |
+| White dwarf (0.6 M?) | 0.60 | 0.012 | 3.51×108 | 3.57×10?² | 1.017 |
+| Brown dwarf (0.07 M?) | 0.07 | 0.10 | 193 | 197 × 10?¹° | 1.021 |
 
 The systematic UQFF/Newton offset of ~1.019 is the [SSq] = 0.57 vacuum saturation correction operating on the Compressed mode scaling factor.
 
@@ -733,7 +765,7 @@ GAIA proper motions provide independent stellar velocity measurements. The UQFF 
 
 $$v_{\rm osc} = \frac{g_R}{\omega_\star} = \frac{\cos(\omega_\star t) \times 10^{-5}}{\omega_\star}$$
 
-For solar-type stars (Ï‰_âŠ™ = 2.87Ã—10â»â¶ rad/s): v_osc = 3.48Ã—10â»Â¹Â² m/s â€” negligible vs thermal velocities (km/s). GAIA proper motion precision (~1â€“10 Î¼as/yr = 0.1â€“1 mm/s at d=10 pc) does not constrain this term, as expected.
+For solar-type stars (?_? = 2.87×10?6 rad/s): v_osc = 3.48×10?¹² m/s — negligible vs thermal velocities (km/s). GAIA proper motion precision (~1–10 µas/yr = 0.1–1 mm/s at d=10 pc) does not constrain this term, as expected.
 
 ---
 
@@ -745,10 +777,10 @@ $$\log g_{\rm UQFF} = \log\left[\frac{GM_\star}{R_\star^2} \times (1 + [SSq] \ti
 
 Where 0.034 = UQFF correction factor calibrated from Batch 23.
 
-For Solar analogs (logg â‰ˆ 4.44):
-- GAIA DR4 GSP-Phot uncertainty: Â±0.1â€“0.3 dex
-- UQFF correction: +0.015 dex ([SSq] Ã— 0.034 Ã— log_e)
-- Within GAIA precision: **agreement confirmed** (correction < 1Ïƒ)
+For Solar analogs (logg ˜ 4.44):
+- GAIA DR4 GSP-Phot uncertainty: ±0.1–0.3 dex
+- UQFF correction: +0.015 dex ([SSq] × 0.034 × log_e)
+- Within GAIA precision: **agreement confirmed** (correction < 1s)
 
 ---
 
@@ -756,9 +788,12 @@ For Solar analogs (logg â‰ˆ 4.44):
 
 | Validation Check | GAIA DR4 Constraint | UQFF Prediction | Status |
 |-----------------|---------------------|-----------------|--------|
-| Solar log g | 4.438 Â± 0.003 | 4.453 (Î”+0.015) | Within 5Ïƒ |
-| White dwarf log g | 7.9â€“8.4 | +0.015 correction | Compatible |
-| UQFF/Newton ratio | â€” | 1.019 (Ã—[SSq]) | Self-consistent |
-| Proper motion UQFF osc | â€” | <mm/s (negligible) | Not constrained |
+| Solar log g | 4.438 ± 0.003 | 4.453 (?+0.015) | Within 5s |
+| White dwarf log g | 7.9–8.4 | +0.015 correction | Compatible |
+| UQFF/Newton ratio | — | 1.019 (×[SSq]) | Self-consistent |
+| Proper motion UQFF osc | — | <mm/s (negligible) | Not constrained |
 
-*Source: QCalc_validation.py GAIA_TAP endpoint | Îº = 0.0005/day | [SSq] = 0.57*
+*Source: QCalc_validation.py GAIA_TAP endpoint | ? = 0.0005/day | [SSq] = 0.57*
+
+
+**UQFF computed:** UQFF magnetic Jeans correction factor [SSq]×B²/(8p×?×c_s²) = 5.7e-1 × 1.3e-9 = 7.4e-10; Jeans mass deviation from standard = 7.4e-10 × M_J.

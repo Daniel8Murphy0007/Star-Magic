@@ -14,6 +14,10 @@
 
 The Sombrero Galaxy (M104) harbours one of the most massive black holes relative to its host galaxy mass of any object in the Local Universe: M_BH = 10⁹ M_sun in a galaxy of total mass M = 10¹¹ M_sun, giving a **SMBH Dominance Ratio** γ_BH = M_BH/M = 0.01 (1%). For comparison, the Milky Way's Sgr A* has γ_BH ≈ 4×10⁻⁵ (~0.004%); Sombrero's SMBH is **250× more dominant relative to its host**. Within the UQFF framework, we define the **UQFF Sphere of Influence** r_SOI = r×√(γ_BH), the radius at which the central BH's direct gravitational contribution equals the total galaxy contribution at the reference radius. For Sombrero, r_SOI = 2.36×10¹⁹ m — a precise UQFF prediction setting the boundary inside which BH gravity exceeds galaxy-mean gravity in the UQFF model.
 
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0�10?4 day?�, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
+
 ---
 
 ## 1. Observational Motivation

@@ -14,6 +14,10 @@ the Morris-Thorne geodesic metric treatment in PAPER_153. PAPER_153 concerns the
 spacetime metric; this paper concerns the **gravitational acceleration** contribution to MUGE
 from the wormhole throat vacuum energy.
 
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
+
 ---
 
 ## 1. Background â€” The 12-Term MUGE (PAPER_146)

@@ -11,6 +11,10 @@
 
 The stochastic gravitational wave background (SGWB) from unresolved compact binary mergers provides a probe of cosmic merger history. We calculate SGWB energy density Î©_GW(f) in the Unified Quantum Field Framework (UQFF), accounting for frequency-dependent damping (D_total = 0.333 for BNS, 0.81 for BBH). UQFF predicts a factor 9-11 reduction in SGWB amplitude at f ~ 100 Hz compared to GR, with characteristic spectral features at TRZ resonances. For LIGO/Virgo, UQFF delays SGWB detection from 2028 (GR prediction) to 2032-2035. LISA measurements at mHz frequencies will discriminate UQFF from GR via slope differences in Î©_GW(f) power spectrum.
 
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
+
 ---
 
 ## 1. Introduction

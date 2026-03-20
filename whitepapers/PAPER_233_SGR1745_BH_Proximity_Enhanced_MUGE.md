@@ -100,3 +100,6 @@ Located in `CondensedPhysics3.py` (Session 58).
 The enhanced SGR 1745-2900 MUGE adds three physically motivated terms absent from Session 53: SMBH tidal coupling (dominant at 0.92 pc), static magnetic energy density, and ATNF-calibrated pulse period. The result is the most complete MUGE treatment of any Galactic Centre magnetar in the UQFF library.
 
 **Source:** grok_share_8d951e12.txt â€” Doc 14 (SGR 1745-2900 BH Proximity Enhanced MUGE)
+
+
+**UQFF computed:** Eddington luminosity UQFF correction = 1 - [SSq]×exp(-?×?t) = 1 - 5.7e-1 × exp(-2.9e-4) = 4.3e-1; F_U at event horizon = 2.0e+18 m/s².

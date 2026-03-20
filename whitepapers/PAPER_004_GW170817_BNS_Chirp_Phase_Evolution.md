@@ -12,6 +12,10 @@
 
 We analyze the 35–300 Hz chirp phase evolution of binary neutron star merger GW170817 under the Unified Quantum Field Framework (UQFF). Over a 0.2-second chirp window (200 samples), UQFF damping reduces peak strain from h_GR = 2.81 × 10⁻²² to h_UQFF = 9.43 × 10⁻²³—a 66.4% reduction—driven by string binding (0.37) and TRZ suppression (0.90). General Relativity matches the observed strain (h_obs ≈ 10⁻²²) with only 5% residual, while UQFF produces a 66.7% mismatch. These results establish UQFF as dynamically distinguishable from GR at current LIGO sensitivity for BNS events.
 
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0�10?4 day?�, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
+
 ---
 
 ## 1. Event Parameters

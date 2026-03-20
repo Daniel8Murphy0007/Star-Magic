@@ -1,29 +1,33 @@
-ï»¿#  "PAPER_{0:D3}" -f [int]# PAPER #48 â€” Black Hole Interaction Energy in the 26D UQFF
+#  "PAPER_{0:D3}" -f [int]# PAPER #48 — Black Hole Interaction Energy in the 26D UQFF
 
-**Title:** Ug4 Black Hole Vacuum Pressure: 26-Level Polynomial Classification, Time Decay, and the Sunâ€“Sgr A* Reference Calculation
-
-**Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (Îº = 0.0005/day, [SSq] = 0.57)  
-**Date:** March 7, 2026  
-**Validator:** `QCalc_Phase1_Validation.py` Test 3: PASS âœ“  
-**Source Module:** `QCalc_Phase1_Validation.py`, `source4.cpp` (SOURCE4), `MAIN_1_CoAnQi.cpp`  
-**Index Slot:** Â§1.6 26-Dimensional Energy Structure,  
-    $n = [int]# PAPER #48 â€” Black Hole Interaction Energy in the 26D UQFF
-
-**Title:** Ug4 Black Hole Vacuum Pressure: 26-Level Polynomial Classification, Time Decay, and the Sunâ€“Sgr A* Reference Calculation
+**Title:** Ug4 Black Hole Vacuum Pressure: 26-Level Polynomial Classification, Time Decay, and the Sun–Sgr A* Reference Calculation
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (Îº = 0.0005/day, [SSq] = 0.57)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57)  
 **Date:** March 7, 2026  
-**Validator:** `QCalc_Phase1_Validation.py` Test 3: PASS âœ“  
+**Validator:** `QCalc_Phase1_Validation.py` Test 3: PASS ?  
 **Source Module:** `QCalc_Phase1_Validation.py`, `source4.cpp` (SOURCE4), `MAIN_1_CoAnQi.cpp`  
-**Index Slot:** Â§1.6 26-Dimensional Energy Structure, PAPER_048  
+**Index Slot:** §1.6 26-Dimensional Energy Structure,  
+    $n = [int]# PAPER #48 — Black Hole Interaction Energy in the 26D UQFF
+
+**Title:** Ug4 Black Hole Vacuum Pressure: 26-Level Polynomial Classification, Time Decay, and the Sun–Sgr A* Reference Calculation
+
+**Author:** Daniel T. Murphy  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57)  
+**Date:** March 7, 2026  
+**Validator:** `QCalc_Phase1_Validation.py` Test 3: PASS ?  
+**Source Module:** `QCalc_Phase1_Validation.py`, `source4.cpp` (SOURCE4), `MAIN_1_CoAnQi.cpp`  
+**Index Slot:** §1.6 26-Dimensional Energy Structure, PAPER_048  
 
 ---
 
 ## Abstract
 
-The Ug4 component of the UQFF gravity decomposition represents the vacuum concentration force â€” the pressure exerted on a mass by the [SCm] medium around a black hole. Ug4 depends on the black hole mass, the squared distance between source and field point, the vacuum [SCm] density (Î»_vac[SCm]), and an exponential time decay that drives Ug4 toward zero over cosmological timescales. For the reference calculation (Sun at 25,800 ly from Sgr A*, over the 4.5 Gyr lifetime of the Solar System), Ug4 = 1.8937Ã—10â»Â²Â³ N/mÂ², confirmed by the QCalc Phase 1 validator. The 26-level polynomial classifies black holes by level, mapping stellar-mass BH â†’ Level 21, supermassive BH â†’ Level 24, and ultra-massive BH â†’ Level 26.
+The Ug4 component of the UQFF gravity decomposition represents the vacuum concentration force — the pressure exerted on a mass by the [SCm] medium around a black hole. Ug4 depends on the black hole mass, the squared distance between source and field point, the vacuum [SCm] density (?_vac[SCm]), and an exponential time decay that drives Ug4 toward zero over cosmological timescales. For the reference calculation (Sun at 25,800 ly from Sgr A*, over the 4.5 Gyr lifetime of the Solar System), Ug4 = 1.8937×10?²³ N/m², confirmed by the QCalc Phase 1 validator. The 26-level polynomial classifies black holes by level, mapping stellar-mass BH ? Level 21, supermassive BH ? Level 24, and ultra-massive BH ? Level 26.
+
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -33,24 +37,24 @@ Within the four-component UQFF gravity decomposition:
 
 $$F_U = \sum_{i=1}^{26} \left[ Ug1_i + Ug2_i + Ug3_i + Ug4_i \right]$$
 
-The Ug4 term â€” vacuum concentration â€” is:
+The Ug4 term — vacuum concentration — is:
 
 $$Ug4 = \frac{M_{\rm BH} \cdot \lambda_{\rm vac}[SCm]}{d_g^2 \cdot E_{\rm LEP}} \times e^{-\alpha \cdot t} \times \cos(\pi \cdot t_n)$$
 
 where:
-| Parameter | Symbol | Value (Sunâ€“Sgr A* case) |
+| Parameter | Symbol | Value (Sun–Sgr A* case) |
 |-----------|--------|------------------------|
-| BH mass | M_BH | 8.2543Ã—10Â³â¶ kg (4.15Ã—10â¶ Mâ˜‰) |
-| SCm vacuum density | Î»_vac[SCm] | 8.988Ã—10Â³Â¹ J/mÂ³ (= Ï_SCm Ã— cÂ²) |
-| Distance (GC) | d_g | 2.44Ã—10Â²â° m (25,800 ly) |
+| BH mass | M_BH | 8.2543×10³6 kg (4.15×106 M?) |
+| SCm vacuum density | ?_vac[SCm] | 8.988×10³¹ J/m³ (= ?_SCm × c²) |
+| Distance (GC) | d_g | 2.44×10²° m (25,800 ly) |
 | LEP energy | E_LEP | 1 J (normalization) |
-| Decay constant | Î± | 10â»Â¹â° dayâ»Â¹ |
-| Elapsed time | t | 1.6436Ã—10Â¹Â² days (4.5 Gyr) |
-| Decay phase | t_n | 0 â†’ cos(0) = 1 |
+| Decay constant | a | 10?¹° day?¹ |
+| Elapsed time | t | 1.6436×10¹² days (4.5 Gyr) |
+| Decay phase | t_n | 0 ? cos(0) = 1 |
 
 ### 1.1 Decay Factor Analysis
 
-The product Î±Â·t = 10â»Â¹â° Ã— 1.6436Ã—10Â¹Â² = 164.36
+The product a·t = 10?¹° × 1.6436×10¹² = 164.36
 
 $$e^{-\alpha t} = e^{-164.36} \approx 6.25\times10^{-72} \approx 0$$
 
@@ -61,9 +65,9 @@ However, the **peak value at t = 0** (at formation of the Solar System or at the
 $$Ug4(t=0) = \frac{8.2543\times10^{36} \times 8.988\times10^{31}}{(2.44\times10^{20})^2 \times 1}$$
 $$= \frac{7.417\times10^{68}}{5.954\times10^{40}} = 1.246\times10^{28} \text{ N/m}^2$$
 
-This peak value is then modulated by the decay. The QCalc validator reports **Ug4 = 1.8937Ã—10â»Â²Â³ N/mÂ²** as the time-averaged or Îº-corrected result, which incorporates the UQFF Îº parameter (0.0005/day) to produce a physically meaningful finite value rather than zero or the initial peak.
+This peak value is then modulated by the decay. The QCalc validator reports **Ug4 = 1.8937×10?²³ N/m²** as the time-averaged or ?-corrected result, which incorporates the UQFF ? parameter (0.0005/day) to produce a physically meaningful finite value rather than zero or the initial peak.
 
-**Validator confirms: Ug4 BH Interaction (Sunâ€“Sgr A*) â†’ PASS âœ“**
+**Validator confirms: Ug4 BH Interaction (Sun–Sgr A*) ? PASS ?**
 
 ---
 
@@ -73,10 +77,10 @@ The alternative calculation treats Sgr A* as the source and computes Ug4 at its 
 
 $$Ug4_{\rm SgrA^*}^{\rm direct} = 2.107\times10^{-40} \text{ N/m}^2$$
 
-This uses the Schwartzschild radius r_s = 2GM/cÂ² as the characteristic distance d_g:
-- r_s(Sgr A*) = 2 Ã— 6.674Ã—10â»Â¹Â¹ Ã— 8.2543Ã—10Â³â¶ / (3Ã—10â¸)Â² â‰ˆ 1.23Ã—10Â¹â° m
+This uses the Schwartzschild radius r_s = 2GM/c² as the characteristic distance d_g:
+- r_s(Sgr A*) = 2 × 6.674×10?¹¹ × 8.2543×10³6 / (3×108)² ˜ 1.23×10¹° m
 
-The difference in scale (1.8937Ã—10â»Â²Â³ at 25,800 ly vs. 2.107Ã—10â»â´â° at r_s) demonstrates the 1/dÂ² dependence: a factor of (2.44Ã—10Â²â° / 1.23Ã—10Â¹â°)Â² = (2Ã—10Â¹â°)Â² = 4Ã—10Â²â°, and indeed 1.8937Ã—10â»Â²Â³ / 2.107Ã—10â»â´â° â‰ˆ 9Ã—10Â¹â¶ â‰ˆ consistent to order of magnitude with the distance scaling plus the different time/decay parameters.
+The difference in scale (1.8937×10?²³ at 25,800 ly vs. 2.107×10?4° at r_s) demonstrates the 1/d² dependence: a factor of (2.44×10²° / 1.23×10¹°)² = (2×10¹°)² = 4×10²°, and indeed 1.8937×10?²³ / 2.107×10?4° ˜ 9×10¹6 ˜ consistent to order of magnitude with the distance scaling plus the different time/decay parameters.
 
 ---
 
@@ -86,52 +90,52 @@ The 26-level polynomial assigns different classes of black holes to specific ene
 
 $$E_n = 10^{n-20} \text{ J} \quad (n = 1, 2, \ldots, 26)$$
 
-Black hole mass-energy scale M_BH Ã— cÂ²:
+Black hole mass-energy scale M_BH × c²:
 
-| BH Class | Mass Range (Mâ˜‰) | E_BH (J) | Level n | Level Character |
+| BH Class | Mass Range (M?) | E_BH (J) | Level n | Level Character |
 |---------|-----------------|----------|---------|-----------------|
-| Micro-BH | < 10â»âµ | < 10Â²âµ | 1â€“5 | Quantum domain |
-| Primordial | 10â»âµâ€“10â»Â¹ | 10Â²âµâ€“10Â³â° | 6â€“10 | Pre-Stellar |
-| Stellar | 3â€“50 Mâ˜‰ | 10â´â·â€“10â´â¸ | **21** | Stellar BH Level |
-| Intermediate | 10Â²â€“10âµ Mâ˜‰ | 10â´â¹â€“10âµÂ² | **22** | IMBH Level |
-| Supermassive | 10â¶â€“10â¹ Mâ˜‰ | 10âµÂ³â€“10âµâ¶ | **24** | SMBH Level (Sgr A* fits here) |
-| Ultra-Massive | > 10Â¹â° Mâ˜‰ | > 10âµâ· | **26** | UMB Level |
+| Micro-BH | < 10?5 | < 10²5 | 1–5 | Quantum domain |
+| Primordial | 10?5–10?¹ | 10²5–10³° | 6–10 | Pre-Stellar |
+| Stellar | 3–50 M? | 1047–1048 | **21** | Stellar BH Level |
+| Intermediate | 10²–105 M? | 104?–105² | **22** | IMBH Level |
+| Supermassive | 106–10? M? | 105³–1056 | **24** | SMBH Level (Sgr A* fits here) |
+| Ultra-Massive | > 10¹° M? | > 1057 | **26** | UMB Level |
 
 ### 3.1 Sgr A* Level Assignment
 
-Sgr A*: M_BH = 4.15Ã—10â¶ Mâ˜‰ = 8.2543Ã—10Â³â¶ kg  
-E_SgrA* Ã— cÂ² = 8.2543Ã—10Â³â¶ Ã— (3Ã—10â¸)Â² = 7.43Ã—10âµÂ³ J  
-âŸ¹ Level: n = logâ‚â‚€(7.43Ã—10âµÂ³) + 20 â‰ˆ 53.87 + 20 = 73.87  
+Sgr A*: M_BH = 4.15×106 M? = 8.2543×10³6 kg  
+E_SgrA* × c² = 8.2543×10³6 × (3×108)² = 7.43×105³ J  
+? Level: n = log10(7.43×105³) + 20 ˜ 53.87 + 20 = 73.87  
 
-This is off scale â€” BH levels compress many decades into Levels 21â€“26. The mapping is logarithmic in mass but the level index is coarser than the exponential spread. The physical interpretation: **Level 24 encompasses all SMBH because the UQFF distinguishes** 10â°â€“10Â²â¶ J in 26 levels; BH mass-energy exceeds Level 26 in absolute J, but the *coupling tensor* index n = 24 represents the highest active UQFF interaction channel for SMBH.
+This is off scale — BH levels compress many decades into Levels 21–26. The mapping is logarithmic in mass but the level index is coarser than the exponential spread. The physical interpretation: **Level 24 encompasses all SMBH because the UQFF distinguishes** 10°–10²6 J in 26 levels; BH mass-energy exceeds Level 26 in absolute J, but the *coupling tensor* index n = 24 represents the highest active UQFF interaction channel for SMBH.
 
 ### 3.2 Level Coupling for BH Interactions
 
-The Ug4 coupling Î»_24 = 0.10 (from the Î»_i table, Level 24):
+The Ug4 coupling ?_24 = 0.10 (from the ?_i table, Level 24):
 
 $$Ug4_{\rm eff} = \lambda_{24} \times Ug4 = 0.10 \times 1.8937\times10^{-23} = 1.894\times10^{-24} \text{ N/m}^2$$
 
-The very small coupling (Î»_24 = 0.10) reflects that SMBH-level interactions operate near the upper boundary of the UQFF 26-level system, where Î»_i is at minimum.
+The very small coupling (?_24 = 0.10) reflects that SMBH-level interactions operate near the upper boundary of the UQFF 26-level system, where ?_i is at minimum.
 
 ---
 
 ## 4. SCm Vacuum Density at BH Scale
 
-Two different Ï_SCm values appear in UQFF:
+Two different ?_SCm values appear in UQFF:
 
-| Context | Ï_SCm | Units | Physical Meaning |
+| Context | ?_SCm | Units | Physical Meaning |
 |---------|-------|-------|-----------------|
-| QuantumLevel26Framework | 10â»â¸ | J/mÂ³ | Current vacuum energy density |
-| Ug4 / SOURCE4 | 10Â¹âµ | kg/mÂ³ | Dense SCm within BH influence radius |
+| QuantumLevel26Framework | 10?8 | J/m³ | Current vacuum energy density |
+| Ug4 / SOURCE4 | 10¹5 | kg/m³ | Dense SCm within BH influence radius |
 
 The transition between these values represents the UQFF vacuum polarization:  
-- Far from the BH (r >> r_s): Ï_SCm = 10â»â¸ J/mÂ³ (background)
-- Near the BH: Ï_SCm = 10Â¹âµ kg/mÂ³ (dense vacuum condensate)
+- Far from the BH (r >> r_s): ?_SCm = 10?8 J/m³ (background)
+- Near the BH: ?_SCm = 10¹5 kg/m³ (dense vacuum condensate)
 
-Î»_vac[SCm] in the Ug4 formula uses the dense value:  
-Î»_vac[SCm] = 10Â¹âµ kg/mÂ³ Ã— cÂ² = 10Â¹âµ Ã— 9Ã—10Â¹â¶ = **8.988Ã—10Â³Â¹ J/mÂ³**
+?_vac[SCm] in the Ug4 formula uses the dense value:  
+?_vac[SCm] = 10¹5 kg/m³ × c² = 10¹5 × 9×10¹6 = **8.988×10³¹ J/m³**
 
-This factor of 10Â³â¹ enhancement (from 10â»â¸ to 8.988Ã—10Â³Â¹ J/mÂ³) near a SMBH explains why Ug4 remains detectable at galactic distances despite the 1/dÂ² falloff.
+This factor of 10³? enhancement (from 10?8 to 8.988×10³¹ J/m³) near a SMBH explains why Ug4 remains detectable at galactic distances despite the 1/d² falloff.
 
 ---
 
@@ -139,29 +143,29 @@ This factor of 10Â³â¹ enhancement (from 10â»â¸ to 8.988Ã—10Â³Â¹ J/mÂ³) near a
 
 The exponential decay ensures BH interactions become negligible over cosmological time:
 
-| Epoch | t (Gyr) | Î±Â·t | e^(âˆ’Î±Â·t) | Ug4/Ug4_max |
+| Epoch | t (Gyr) | a·t | e^(-a·t) | Ug4/Ug4_max |
 |-------|---------|-----|----------|-------------|
 | Formation | 0 | 0 | 1.00 | 100% |
-| Early solar | 0.5 | 18.3 | 1.1Ã—10â»â¸ | ~0 |
-| Present | 4.5 | 164 | 6Ã—10â»â·Â² | ~0 |
-| Late universe | 10 | 365 | 10â»Â¹âµâ¸ | ~0 |
+| Early solar | 0.5 | 18.3 | 1.1×10?8 | ~0 |
+| Present | 4.5 | 164 | 6×10?7² | ~0 |
+| Late universe | 10 | 365 | 10?¹58 | ~0 |
 
 The complete decay of Ug4 within the first Gyr implies that:
 1. BH-mediated vacuum pressure was much stronger in the early universe
 2. The formation of the first galaxies may have been partly driven by Ug4 concentrating [SCm] vacuum around early BH seeds
-3. Modern gravitational astronomy (weak lensing, galactic rotation) measures Ug4 â‰ˆ 0, consistent with its complete decay but leaving the [UA] and static gravity components measurable
+3. Modern gravitational astronomy (weak lensing, galactic rotation) measures Ug4 ˜ 0, consistent with its complete decay but leaving the [UA] and static gravity components measurable
 
 ---
 
 ## Conclusions
 
-1. Ug4 = 1.8937Ã—10â»Â²Â³ N/mÂ² for the Sunâ€“Sgr A* system at t = 4.5 Gyr â€” validated to PASS âœ“
-2. The time decay factor e^(âˆ’164.36) â‰ˆ 10â»â·Â² drives Ug4 to zero over cosmological timescales
-3. Black holes are classified by UQFF Level: stellar BH â†’ Level 21, SMBH â†’ Level 24, ultra-massive â†’ Level 26
-4. The coupling Î»_24 = 0.10 for SMBH-level Ug4 interactions reflects minimal vacuum coupling at the high-mass end of the 26-level hierarchy
-5. The Ï_SCm = 10Â¹âµ kg/mÂ³ dense vacuum condensate near BH is 10Â³â¹ times stronger than the background vacuum density, driving all detectable Ug4 signals
+1. Ug4 = 1.8937×10?²³ N/m² for the Sun–Sgr A* system at t = 4.5 Gyr — validated to PASS ?
+2. The time decay factor e^(-164.36) ˜ 10?7² drives Ug4 to zero over cosmological timescales
+3. Black holes are classified by UQFF Level: stellar BH ? Level 21, SMBH ? Level 24, ultra-massive ? Level 26
+4. The coupling ?_24 = 0.10 for SMBH-level Ug4 interactions reflects minimal vacuum coupling at the high-mass end of the 26-level hierarchy
+5. The ?_SCm = 10¹5 kg/m³ dense vacuum condensate near BH is 10³? times stronger than the background vacuum density, driving all detectable Ug4 signals
 
-*Validator: `QCalc_Phase1_Validation.py` Test 3 PASS âœ“ | Ug4 Sunâ€“Sgr A* = 1.8937Ã—10â»Â²Â³ N/mÂ² | Îº = 0.0005/day | [SSq] = 0.57*
+*Validator: `QCalc_Phase1_Validation.py` Test 3 PASS ? | Ug4 Sun–Sgr A* = 1.8937×10?²³ N/m² | ? = 0.0005/day | [SSq] = 0.57*
 .Groups[1].Value
     "PAPER_{0:D3}" -f $n
     
@@ -170,7 +174,11 @@ The complete decay of Ug4 within the first Gyr implies that:
 
 ## Abstract
 
-The Ug4 component of the UQFF gravity decomposition represents the vacuum concentration force â€” the pressure exerted on a mass by the [SCm] medium around a black hole. Ug4 depends on the black hole mass, the squared distance between source and field point, the vacuum [SCm] density (Î»_vac[SCm]), and an exponential time decay that drives Ug4 toward zero over cosmological timescales. For the reference calculation (Sun at 25,800 ly from Sgr A*, over the 4.5 Gyr lifetime of the Solar System), Ug4 = 1.8937Ã—10â»Â²Â³ N/mÂ², confirmed by the QCalc Phase 1 validator. The 26-level polynomial classifies black holes by level, mapping stellar-mass BH â†’ Level 21, supermassive BH â†’ Level 24, and ultra-massive BH â†’ Level 26.
+The Ug4 component of the UQFF gravity decomposition represents the vacuum concentration force — the pressure exerted on a mass by the [SCm] medium around a black hole. Ug4 depends on the black hole mass, the squared distance between source and field point, the vacuum [SCm] density (?_vac[SCm]), and an exponential time decay that drives Ug4 toward zero over cosmological timescales. For the reference calculation (Sun at 25,800 ly from Sgr A*, over the 4.5 Gyr lifetime of the Solar System), Ug4 = 1.8937×10?²³ N/m², confirmed by the QCalc Phase 1 validator. The 26-level polynomial classifies black holes by level, mapping stellar-mass BH ? Level 21, supermassive BH ? Level 24, and ultra-massive BH ? Level 26.
+
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -180,24 +188,24 @@ Within the four-component UQFF gravity decomposition:
 
 $$F_U = \sum_{i=1}^{26} \left[ Ug1_i + Ug2_i + Ug3_i + Ug4_i \right]$$
 
-The Ug4 term â€” vacuum concentration â€” is:
+The Ug4 term — vacuum concentration — is:
 
 $$Ug4 = \frac{M_{\rm BH} \cdot \lambda_{\rm vac}[SCm]}{d_g^2 \cdot E_{\rm LEP}} \times e^{-\alpha \cdot t} \times \cos(\pi \cdot t_n)$$
 
 where:
-| Parameter | Symbol | Value (Sunâ€“Sgr A* case) |
+| Parameter | Symbol | Value (Sun–Sgr A* case) |
 |-----------|--------|------------------------|
-| BH mass | M_BH | 8.2543Ã—10Â³â¶ kg (4.15Ã—10â¶ Mâ˜‰) |
-| SCm vacuum density | Î»_vac[SCm] | 8.988Ã—10Â³Â¹ J/mÂ³ (= Ï_SCm Ã— cÂ²) |
-| Distance (GC) | d_g | 2.44Ã—10Â²â° m (25,800 ly) |
+| BH mass | M_BH | 8.2543×10³6 kg (4.15×106 M?) |
+| SCm vacuum density | ?_vac[SCm] | 8.988×10³¹ J/m³ (= ?_SCm × c²) |
+| Distance (GC) | d_g | 2.44×10²° m (25,800 ly) |
 | LEP energy | E_LEP | 1 J (normalization) |
-| Decay constant | Î± | 10â»Â¹â° dayâ»Â¹ |
-| Elapsed time | t | 1.6436Ã—10Â¹Â² days (4.5 Gyr) |
-| Decay phase | t_n | 0 â†’ cos(0) = 1 |
+| Decay constant | a | 10?¹° day?¹ |
+| Elapsed time | t | 1.6436×10¹² days (4.5 Gyr) |
+| Decay phase | t_n | 0 ? cos(0) = 1 |
 
 ### 1.1 Decay Factor Analysis
 
-The product Î±Â·t = 10â»Â¹â° Ã— 1.6436Ã—10Â¹Â² = 164.36
+The product a·t = 10?¹° × 1.6436×10¹² = 164.36
 
 $$e^{-\alpha t} = e^{-164.36} \approx 6.25\times10^{-72} \approx 0$$
 
@@ -208,9 +216,9 @@ However, the **peak value at t = 0** (at formation of the Solar System or at the
 $$Ug4(t=0) = \frac{8.2543\times10^{36} \times 8.988\times10^{31}}{(2.44\times10^{20})^2 \times 1}$$
 $$= \frac{7.417\times10^{68}}{5.954\times10^{40}} = 1.246\times10^{28} \text{ N/m}^2$$
 
-This peak value is then modulated by the decay. The QCalc validator reports **Ug4 = 1.8937Ã—10â»Â²Â³ N/mÂ²** as the time-averaged or Îº-corrected result, which incorporates the UQFF Îº parameter (0.0005/day) to produce a physically meaningful finite value rather than zero or the initial peak.
+This peak value is then modulated by the decay. The QCalc validator reports **Ug4 = 1.8937×10?²³ N/m²** as the time-averaged or ?-corrected result, which incorporates the UQFF ? parameter (0.0005/day) to produce a physically meaningful finite value rather than zero or the initial peak.
 
-**Validator confirms: Ug4 BH Interaction (Sunâ€“Sgr A*) â†’ PASS âœ“**
+**Validator confirms: Ug4 BH Interaction (Sun–Sgr A*) ? PASS ?**
 
 ---
 
@@ -220,10 +228,10 @@ The alternative calculation treats Sgr A* as the source and computes Ug4 at its 
 
 $$Ug4_{\rm SgrA^*}^{\rm direct} = 2.107\times10^{-40} \text{ N/m}^2$$
 
-This uses the Schwartzschild radius r_s = 2GM/cÂ² as the characteristic distance d_g:
-- r_s(Sgr A*) = 2 Ã— 6.674Ã—10â»Â¹Â¹ Ã— 8.2543Ã—10Â³â¶ / (3Ã—10â¸)Â² â‰ˆ 1.23Ã—10Â¹â° m
+This uses the Schwartzschild radius r_s = 2GM/c² as the characteristic distance d_g:
+- r_s(Sgr A*) = 2 × 6.674×10?¹¹ × 8.2543×10³6 / (3×108)² ˜ 1.23×10¹° m
 
-The difference in scale (1.8937Ã—10â»Â²Â³ at 25,800 ly vs. 2.107Ã—10â»â´â° at r_s) demonstrates the 1/dÂ² dependence: a factor of (2.44Ã—10Â²â° / 1.23Ã—10Â¹â°)Â² = (2Ã—10Â¹â°)Â² = 4Ã—10Â²â°, and indeed 1.8937Ã—10â»Â²Â³ / 2.107Ã—10â»â´â° â‰ˆ 9Ã—10Â¹â¶ â‰ˆ consistent to order of magnitude with the distance scaling plus the different time/decay parameters.
+The difference in scale (1.8937×10?²³ at 25,800 ly vs. 2.107×10?4° at r_s) demonstrates the 1/d² dependence: a factor of (2.44×10²° / 1.23×10¹°)² = (2×10¹°)² = 4×10²°, and indeed 1.8937×10?²³ / 2.107×10?4° ˜ 9×10¹6 ˜ consistent to order of magnitude with the distance scaling plus the different time/decay parameters.
 
 ---
 
@@ -233,52 +241,52 @@ The 26-level polynomial assigns different classes of black holes to specific ene
 
 $$E_n = 10^{n-20} \text{ J} \quad (n = 1, 2, \ldots, 26)$$
 
-Black hole mass-energy scale M_BH Ã— cÂ²:
+Black hole mass-energy scale M_BH × c²:
 
-| BH Class | Mass Range (Mâ˜‰) | E_BH (J) | Level n | Level Character |
+| BH Class | Mass Range (M?) | E_BH (J) | Level n | Level Character |
 |---------|-----------------|----------|---------|-----------------|
-| Micro-BH | < 10â»âµ | < 10Â²âµ | 1â€“5 | Quantum domain |
-| Primordial | 10â»âµâ€“10â»Â¹ | 10Â²âµâ€“10Â³â° | 6â€“10 | Pre-Stellar |
-| Stellar | 3â€“50 Mâ˜‰ | 10â´â·â€“10â´â¸ | **21** | Stellar BH Level |
-| Intermediate | 10Â²â€“10âµ Mâ˜‰ | 10â´â¹â€“10âµÂ² | **22** | IMBH Level |
-| Supermassive | 10â¶â€“10â¹ Mâ˜‰ | 10âµÂ³â€“10âµâ¶ | **24** | SMBH Level (Sgr A* fits here) |
-| Ultra-Massive | > 10Â¹â° Mâ˜‰ | > 10âµâ· | **26** | UMB Level |
+| Micro-BH | < 10?5 | < 10²5 | 1–5 | Quantum domain |
+| Primordial | 10?5–10?¹ | 10²5–10³° | 6–10 | Pre-Stellar |
+| Stellar | 3–50 M? | 1047–1048 | **21** | Stellar BH Level |
+| Intermediate | 10²–105 M? | 104?–105² | **22** | IMBH Level |
+| Supermassive | 106–10? M? | 105³–1056 | **24** | SMBH Level (Sgr A* fits here) |
+| Ultra-Massive | > 10¹° M? | > 1057 | **26** | UMB Level |
 
 ### 3.1 Sgr A* Level Assignment
 
-Sgr A*: M_BH = 4.15Ã—10â¶ Mâ˜‰ = 8.2543Ã—10Â³â¶ kg  
-E_SgrA* Ã— cÂ² = 8.2543Ã—10Â³â¶ Ã— (3Ã—10â¸)Â² = 7.43Ã—10âµÂ³ J  
-âŸ¹ Level: n = logâ‚â‚€(7.43Ã—10âµÂ³) + 20 â‰ˆ 53.87 + 20 = 73.87  
+Sgr A*: M_BH = 4.15×106 M? = 8.2543×10³6 kg  
+E_SgrA* × c² = 8.2543×10³6 × (3×108)² = 7.43×105³ J  
+? Level: n = log10(7.43×105³) + 20 ˜ 53.87 + 20 = 73.87  
 
-This is off scale â€” BH levels compress many decades into Levels 21â€“26. The mapping is logarithmic in mass but the level index is coarser than the exponential spread. The physical interpretation: **Level 24 encompasses all SMBH because the UQFF distinguishes** 10â°â€“10Â²â¶ J in 26 levels; BH mass-energy exceeds Level 26 in absolute J, but the *coupling tensor* index n = 24 represents the highest active UQFF interaction channel for SMBH.
+This is off scale — BH levels compress many decades into Levels 21–26. The mapping is logarithmic in mass but the level index is coarser than the exponential spread. The physical interpretation: **Level 24 encompasses all SMBH because the UQFF distinguishes** 10°–10²6 J in 26 levels; BH mass-energy exceeds Level 26 in absolute J, but the *coupling tensor* index n = 24 represents the highest active UQFF interaction channel for SMBH.
 
 ### 3.2 Level Coupling for BH Interactions
 
-The Ug4 coupling Î»_24 = 0.10 (from the Î»_i table, Level 24):
+The Ug4 coupling ?_24 = 0.10 (from the ?_i table, Level 24):
 
 $$Ug4_{\rm eff} = \lambda_{24} \times Ug4 = 0.10 \times 1.8937\times10^{-23} = 1.894\times10^{-24} \text{ N/m}^2$$
 
-The very small coupling (Î»_24 = 0.10) reflects that SMBH-level interactions operate near the upper boundary of the UQFF 26-level system, where Î»_i is at minimum.
+The very small coupling (?_24 = 0.10) reflects that SMBH-level interactions operate near the upper boundary of the UQFF 26-level system, where ?_i is at minimum.
 
 ---
 
 ## 4. SCm Vacuum Density at BH Scale
 
-Two different Ï_SCm values appear in UQFF:
+Two different ?_SCm values appear in UQFF:
 
-| Context | Ï_SCm | Units | Physical Meaning |
+| Context | ?_SCm | Units | Physical Meaning |
 |---------|-------|-------|-----------------|
-| QuantumLevel26Framework | 10â»â¸ | J/mÂ³ | Current vacuum energy density |
-| Ug4 / SOURCE4 | 10Â¹âµ | kg/mÂ³ | Dense SCm within BH influence radius |
+| QuantumLevel26Framework | 10?8 | J/m³ | Current vacuum energy density |
+| Ug4 / SOURCE4 | 10¹5 | kg/m³ | Dense SCm within BH influence radius |
 
 The transition between these values represents the UQFF vacuum polarization:  
-- Far from the BH (r >> r_s): Ï_SCm = 10â»â¸ J/mÂ³ (background)
-- Near the BH: Ï_SCm = 10Â¹âµ kg/mÂ³ (dense vacuum condensate)
+- Far from the BH (r >> r_s): ?_SCm = 10?8 J/m³ (background)
+- Near the BH: ?_SCm = 10¹5 kg/m³ (dense vacuum condensate)
 
-Î»_vac[SCm] in the Ug4 formula uses the dense value:  
-Î»_vac[SCm] = 10Â¹âµ kg/mÂ³ Ã— cÂ² = 10Â¹âµ Ã— 9Ã—10Â¹â¶ = **8.988Ã—10Â³Â¹ J/mÂ³**
+?_vac[SCm] in the Ug4 formula uses the dense value:  
+?_vac[SCm] = 10¹5 kg/m³ × c² = 10¹5 × 9×10¹6 = **8.988×10³¹ J/m³**
 
-This factor of 10Â³â¹ enhancement (from 10â»â¸ to 8.988Ã—10Â³Â¹ J/mÂ³) near a SMBH explains why Ug4 remains detectable at galactic distances despite the 1/dÂ² falloff.
+This factor of 10³? enhancement (from 10?8 to 8.988×10³¹ J/m³) near a SMBH explains why Ug4 remains detectable at galactic distances despite the 1/d² falloff.
 
 ---
 
@@ -286,65 +294,69 @@ This factor of 10Â³â¹ enhancement (from 10â»â¸ to 8.988Ã—10Â³Â¹ J/mÂ³) near a
 
 The exponential decay ensures BH interactions become negligible over cosmological time:
 
-| Epoch | t (Gyr) | Î±Â·t | e^(âˆ’Î±Â·t) | Ug4/Ug4_max |
+| Epoch | t (Gyr) | a·t | e^(-a·t) | Ug4/Ug4_max |
 |-------|---------|-----|----------|-------------|
 | Formation | 0 | 0 | 1.00 | 100% |
-| Early solar | 0.5 | 18.3 | 1.1Ã—10â»â¸ | ~0 |
-| Present | 4.5 | 164 | 6Ã—10â»â·Â² | ~0 |
-| Late universe | 10 | 365 | 10â»Â¹âµâ¸ | ~0 |
+| Early solar | 0.5 | 18.3 | 1.1×10?8 | ~0 |
+| Present | 4.5 | 164 | 6×10?7² | ~0 |
+| Late universe | 10 | 365 | 10?¹58 | ~0 |
 
 The complete decay of Ug4 within the first Gyr implies that:
 1. BH-mediated vacuum pressure was much stronger in the early universe
 2. The formation of the first galaxies may have been partly driven by Ug4 concentrating [SCm] vacuum around early BH seeds
-3. Modern gravitational astronomy (weak lensing, galactic rotation) measures Ug4 â‰ˆ 0, consistent with its complete decay but leaving the [UA] and static gravity components measurable
+3. Modern gravitational astronomy (weak lensing, galactic rotation) measures Ug4 ˜ 0, consistent with its complete decay but leaving the [UA] and static gravity components measurable
 
 ---
 
 ## Conclusions
 
-1. Ug4 = 1.8937Ã—10â»Â²Â³ N/mÂ² for the Sunâ€“Sgr A* system at t = 4.5 Gyr â€” validated to PASS âœ“
-2. The time decay factor e^(âˆ’164.36) â‰ˆ 10â»â·Â² drives Ug4 to zero over cosmological timescales
-3. Black holes are classified by UQFF Level: stellar BH â†’ Level 21, SMBH â†’ Level 24, ultra-massive â†’ Level 26
-4. The coupling Î»_24 = 0.10 for SMBH-level Ug4 interactions reflects minimal vacuum coupling at the high-mass end of the 26-level hierarchy
-5. The Ï_SCm = 10Â¹âµ kg/mÂ³ dense vacuum condensate near BH is 10Â³â¹ times stronger than the background vacuum density, driving all detectable Ug4 signals
+1. Ug4 = 1.8937×10?²³ N/m² for the Sun–Sgr A* system at t = 4.5 Gyr — validated to PASS ?
+2. The time decay factor e^(-164.36) ˜ 10?7² drives Ug4 to zero over cosmological timescales
+3. Black holes are classified by UQFF Level: stellar BH ? Level 21, SMBH ? Level 24, ultra-massive ? Level 26
+4. The coupling ?_24 = 0.10 for SMBH-level Ug4 interactions reflects minimal vacuum coupling at the high-mass end of the 26-level hierarchy
+5. The ?_SCm = 10¹5 kg/m³ dense vacuum condensate near BH is 10³? times stronger than the background vacuum density, driving all detectable Ug4 signals
 
-*Validator: `QCalc_Phase1_Validation.py` Test 3 PASS âœ“ | Ug4 Sunâ€“Sgr A* = 1.8937Ã—10â»Â²Â³ N/mÂ² | Îº = 0.0005/day | [SSq] = 0.57*
-.Groups[1].Value  â€” Black Hole Interaction Energy in the 26D UQFF
+*Validator: `QCalc_Phase1_Validation.py` Test 3 PASS ? | Ug4 Sun–Sgr A* = 1.8937×10?²³ N/m² | ? = 0.0005/day | [SSq] = 0.57*
+.Groups[1].Value  — Black Hole Interaction Energy in the 26D UQFF
 
-**Title:** Ug4 Black Hole Vacuum Pressure: 26-Level Polynomial Classification, Time Decay, and the Sunâ€“Sgr A* Reference Calculation
-
-**Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (Îº = 0.0005/day, [SSq] = 0.57)  
-**Date:** March 7, 2026  
-**Validator:** `QCalc_Phase1_Validation.py` Test 3: PASS âœ“  
-**Source Module:** `QCalc_Phase1_Validation.py`, `source4.cpp` (SOURCE4), `MAIN_1_CoAnQi.cpp`  
-**Index Slot:** Â§1.6 26-Dimensional Energy Structure,  
-    $n = [int]#  "PAPER_{0:D3}" -f [int]# PAPER #48 â€” Black Hole Interaction Energy in the 26D UQFF
-
-**Title:** Ug4 Black Hole Vacuum Pressure: 26-Level Polynomial Classification, Time Decay, and the Sunâ€“Sgr A* Reference Calculation
+**Title:** Ug4 Black Hole Vacuum Pressure: 26-Level Polynomial Classification, Time Decay, and the Sun–Sgr A* Reference Calculation
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (Îº = 0.0005/day, [SSq] = 0.57)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57)  
 **Date:** March 7, 2026  
-**Validator:** `QCalc_Phase1_Validation.py` Test 3: PASS âœ“  
+**Validator:** `QCalc_Phase1_Validation.py` Test 3: PASS ?  
 **Source Module:** `QCalc_Phase1_Validation.py`, `source4.cpp` (SOURCE4), `MAIN_1_CoAnQi.cpp`  
-**Index Slot:** Â§1.6 26-Dimensional Energy Structure,  
-    $n = [int]# PAPER #48 â€” Black Hole Interaction Energy in the 26D UQFF
+**Index Slot:** §1.6 26-Dimensional Energy Structure,  
+    $n = [int]#  "PAPER_{0:D3}" -f [int]# PAPER #48 — Black Hole Interaction Energy in the 26D UQFF
 
-**Title:** Ug4 Black Hole Vacuum Pressure: 26-Level Polynomial Classification, Time Decay, and the Sunâ€“Sgr A* Reference Calculation
+**Title:** Ug4 Black Hole Vacuum Pressure: 26-Level Polynomial Classification, Time Decay, and the Sun–Sgr A* Reference Calculation
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (Îº = 0.0005/day, [SSq] = 0.57)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57)  
 **Date:** March 7, 2026  
-**Validator:** `QCalc_Phase1_Validation.py` Test 3: PASS âœ“  
+**Validator:** `QCalc_Phase1_Validation.py` Test 3: PASS ?  
 **Source Module:** `QCalc_Phase1_Validation.py`, `source4.cpp` (SOURCE4), `MAIN_1_CoAnQi.cpp`  
-**Index Slot:** Â§1.6 26-Dimensional Energy Structure, PAPER_048  
+**Index Slot:** §1.6 26-Dimensional Energy Structure,  
+    $n = [int]# PAPER #48 — Black Hole Interaction Energy in the 26D UQFF
+
+**Title:** Ug4 Black Hole Vacuum Pressure: 26-Level Polynomial Classification, Time Decay, and the Sun–Sgr A* Reference Calculation
+
+**Author:** Daniel T. Murphy  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57)  
+**Date:** March 7, 2026  
+**Validator:** `QCalc_Phase1_Validation.py` Test 3: PASS ?  
+**Source Module:** `QCalc_Phase1_Validation.py`, `source4.cpp` (SOURCE4), `MAIN_1_CoAnQi.cpp`  
+**Index Slot:** §1.6 26-Dimensional Energy Structure, PAPER_048  
 
 ---
 
 ## Abstract
 
-The Ug4 component of the UQFF gravity decomposition represents the vacuum concentration force â€” the pressure exerted on a mass by the [SCm] medium around a black hole. Ug4 depends on the black hole mass, the squared distance between source and field point, the vacuum [SCm] density (Î»_vac[SCm]), and an exponential time decay that drives Ug4 toward zero over cosmological timescales. For the reference calculation (Sun at 25,800 ly from Sgr A*, over the 4.5 Gyr lifetime of the Solar System), Ug4 = 1.8937Ã—10â»Â²Â³ N/mÂ², confirmed by the QCalc Phase 1 validator. The 26-level polynomial classifies black holes by level, mapping stellar-mass BH â†’ Level 21, supermassive BH â†’ Level 24, and ultra-massive BH â†’ Level 26.
+The Ug4 component of the UQFF gravity decomposition represents the vacuum concentration force — the pressure exerted on a mass by the [SCm] medium around a black hole. Ug4 depends on the black hole mass, the squared distance between source and field point, the vacuum [SCm] density (?_vac[SCm]), and an exponential time decay that drives Ug4 toward zero over cosmological timescales. For the reference calculation (Sun at 25,800 ly from Sgr A*, over the 4.5 Gyr lifetime of the Solar System), Ug4 = 1.8937×10?²³ N/m², confirmed by the QCalc Phase 1 validator. The 26-level polynomial classifies black holes by level, mapping stellar-mass BH ? Level 21, supermassive BH ? Level 24, and ultra-massive BH ? Level 26.
+
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -354,24 +366,24 @@ Within the four-component UQFF gravity decomposition:
 
 $$F_U = \sum_{i=1}^{26} \left[ Ug1_i + Ug2_i + Ug3_i + Ug4_i \right]$$
 
-The Ug4 term â€” vacuum concentration â€” is:
+The Ug4 term — vacuum concentration — is:
 
 $$Ug4 = \frac{M_{\rm BH} \cdot \lambda_{\rm vac}[SCm]}{d_g^2 \cdot E_{\rm LEP}} \times e^{-\alpha \cdot t} \times \cos(\pi \cdot t_n)$$
 
 where:
-| Parameter | Symbol | Value (Sunâ€“Sgr A* case) |
+| Parameter | Symbol | Value (Sun–Sgr A* case) |
 |-----------|--------|------------------------|
-| BH mass | M_BH | 8.2543Ã—10Â³â¶ kg (4.15Ã—10â¶ Mâ˜‰) |
-| SCm vacuum density | Î»_vac[SCm] | 8.988Ã—10Â³Â¹ J/mÂ³ (= Ï_SCm Ã— cÂ²) |
-| Distance (GC) | d_g | 2.44Ã—10Â²â° m (25,800 ly) |
+| BH mass | M_BH | 8.2543×10³6 kg (4.15×106 M?) |
+| SCm vacuum density | ?_vac[SCm] | 8.988×10³¹ J/m³ (= ?_SCm × c²) |
+| Distance (GC) | d_g | 2.44×10²° m (25,800 ly) |
 | LEP energy | E_LEP | 1 J (normalization) |
-| Decay constant | Î± | 10â»Â¹â° dayâ»Â¹ |
-| Elapsed time | t | 1.6436Ã—10Â¹Â² days (4.5 Gyr) |
-| Decay phase | t_n | 0 â†’ cos(0) = 1 |
+| Decay constant | a | 10?¹° day?¹ |
+| Elapsed time | t | 1.6436×10¹² days (4.5 Gyr) |
+| Decay phase | t_n | 0 ? cos(0) = 1 |
 
 ### 1.1 Decay Factor Analysis
 
-The product Î±Â·t = 10â»Â¹â° Ã— 1.6436Ã—10Â¹Â² = 164.36
+The product a·t = 10?¹° × 1.6436×10¹² = 164.36
 
 $$e^{-\alpha t} = e^{-164.36} \approx 6.25\times10^{-72} \approx 0$$
 
@@ -382,9 +394,9 @@ However, the **peak value at t = 0** (at formation of the Solar System or at the
 $$Ug4(t=0) = \frac{8.2543\times10^{36} \times 8.988\times10^{31}}{(2.44\times10^{20})^2 \times 1}$$
 $$= \frac{7.417\times10^{68}}{5.954\times10^{40}} = 1.246\times10^{28} \text{ N/m}^2$$
 
-This peak value is then modulated by the decay. The QCalc validator reports **Ug4 = 1.8937Ã—10â»Â²Â³ N/mÂ²** as the time-averaged or Îº-corrected result, which incorporates the UQFF Îº parameter (0.0005/day) to produce a physically meaningful finite value rather than zero or the initial peak.
+This peak value is then modulated by the decay. The QCalc validator reports **Ug4 = 1.8937×10?²³ N/m²** as the time-averaged or ?-corrected result, which incorporates the UQFF ? parameter (0.0005/day) to produce a physically meaningful finite value rather than zero or the initial peak.
 
-**Validator confirms: Ug4 BH Interaction (Sunâ€“Sgr A*) â†’ PASS âœ“**
+**Validator confirms: Ug4 BH Interaction (Sun–Sgr A*) ? PASS ?**
 
 ---
 
@@ -394,10 +406,10 @@ The alternative calculation treats Sgr A* as the source and computes Ug4 at its 
 
 $$Ug4_{\rm SgrA^*}^{\rm direct} = 2.107\times10^{-40} \text{ N/m}^2$$
 
-This uses the Schwartzschild radius r_s = 2GM/cÂ² as the characteristic distance d_g:
-- r_s(Sgr A*) = 2 Ã— 6.674Ã—10â»Â¹Â¹ Ã— 8.2543Ã—10Â³â¶ / (3Ã—10â¸)Â² â‰ˆ 1.23Ã—10Â¹â° m
+This uses the Schwartzschild radius r_s = 2GM/c² as the characteristic distance d_g:
+- r_s(Sgr A*) = 2 × 6.674×10?¹¹ × 8.2543×10³6 / (3×108)² ˜ 1.23×10¹° m
 
-The difference in scale (1.8937Ã—10â»Â²Â³ at 25,800 ly vs. 2.107Ã—10â»â´â° at r_s) demonstrates the 1/dÂ² dependence: a factor of (2.44Ã—10Â²â° / 1.23Ã—10Â¹â°)Â² = (2Ã—10Â¹â°)Â² = 4Ã—10Â²â°, and indeed 1.8937Ã—10â»Â²Â³ / 2.107Ã—10â»â´â° â‰ˆ 9Ã—10Â¹â¶ â‰ˆ consistent to order of magnitude with the distance scaling plus the different time/decay parameters.
+The difference in scale (1.8937×10?²³ at 25,800 ly vs. 2.107×10?4° at r_s) demonstrates the 1/d² dependence: a factor of (2.44×10²° / 1.23×10¹°)² = (2×10¹°)² = 4×10²°, and indeed 1.8937×10?²³ / 2.107×10?4° ˜ 9×10¹6 ˜ consistent to order of magnitude with the distance scaling plus the different time/decay parameters.
 
 ---
 
@@ -407,52 +419,52 @@ The 26-level polynomial assigns different classes of black holes to specific ene
 
 $$E_n = 10^{n-20} \text{ J} \quad (n = 1, 2, \ldots, 26)$$
 
-Black hole mass-energy scale M_BH Ã— cÂ²:
+Black hole mass-energy scale M_BH × c²:
 
-| BH Class | Mass Range (Mâ˜‰) | E_BH (J) | Level n | Level Character |
+| BH Class | Mass Range (M?) | E_BH (J) | Level n | Level Character |
 |---------|-----------------|----------|---------|-----------------|
-| Micro-BH | < 10â»âµ | < 10Â²âµ | 1â€“5 | Quantum domain |
-| Primordial | 10â»âµâ€“10â»Â¹ | 10Â²âµâ€“10Â³â° | 6â€“10 | Pre-Stellar |
-| Stellar | 3â€“50 Mâ˜‰ | 10â´â·â€“10â´â¸ | **21** | Stellar BH Level |
-| Intermediate | 10Â²â€“10âµ Mâ˜‰ | 10â´â¹â€“10âµÂ² | **22** | IMBH Level |
-| Supermassive | 10â¶â€“10â¹ Mâ˜‰ | 10âµÂ³â€“10âµâ¶ | **24** | SMBH Level (Sgr A* fits here) |
-| Ultra-Massive | > 10Â¹â° Mâ˜‰ | > 10âµâ· | **26** | UMB Level |
+| Micro-BH | < 10?5 | < 10²5 | 1–5 | Quantum domain |
+| Primordial | 10?5–10?¹ | 10²5–10³° | 6–10 | Pre-Stellar |
+| Stellar | 3–50 M? | 1047–1048 | **21** | Stellar BH Level |
+| Intermediate | 10²–105 M? | 104?–105² | **22** | IMBH Level |
+| Supermassive | 106–10? M? | 105³–1056 | **24** | SMBH Level (Sgr A* fits here) |
+| Ultra-Massive | > 10¹° M? | > 1057 | **26** | UMB Level |
 
 ### 3.1 Sgr A* Level Assignment
 
-Sgr A*: M_BH = 4.15Ã—10â¶ Mâ˜‰ = 8.2543Ã—10Â³â¶ kg  
-E_SgrA* Ã— cÂ² = 8.2543Ã—10Â³â¶ Ã— (3Ã—10â¸)Â² = 7.43Ã—10âµÂ³ J  
-âŸ¹ Level: n = logâ‚â‚€(7.43Ã—10âµÂ³) + 20 â‰ˆ 53.87 + 20 = 73.87  
+Sgr A*: M_BH = 4.15×106 M? = 8.2543×10³6 kg  
+E_SgrA* × c² = 8.2543×10³6 × (3×108)² = 7.43×105³ J  
+? Level: n = log10(7.43×105³) + 20 ˜ 53.87 + 20 = 73.87  
 
-This is off scale â€” BH levels compress many decades into Levels 21â€“26. The mapping is logarithmic in mass but the level index is coarser than the exponential spread. The physical interpretation: **Level 24 encompasses all SMBH because the UQFF distinguishes** 10â°â€“10Â²â¶ J in 26 levels; BH mass-energy exceeds Level 26 in absolute J, but the *coupling tensor* index n = 24 represents the highest active UQFF interaction channel for SMBH.
+This is off scale — BH levels compress many decades into Levels 21–26. The mapping is logarithmic in mass but the level index is coarser than the exponential spread. The physical interpretation: **Level 24 encompasses all SMBH because the UQFF distinguishes** 10°–10²6 J in 26 levels; BH mass-energy exceeds Level 26 in absolute J, but the *coupling tensor* index n = 24 represents the highest active UQFF interaction channel for SMBH.
 
 ### 3.2 Level Coupling for BH Interactions
 
-The Ug4 coupling Î»_24 = 0.10 (from the Î»_i table, Level 24):
+The Ug4 coupling ?_24 = 0.10 (from the ?_i table, Level 24):
 
 $$Ug4_{\rm eff} = \lambda_{24} \times Ug4 = 0.10 \times 1.8937\times10^{-23} = 1.894\times10^{-24} \text{ N/m}^2$$
 
-The very small coupling (Î»_24 = 0.10) reflects that SMBH-level interactions operate near the upper boundary of the UQFF 26-level system, where Î»_i is at minimum.
+The very small coupling (?_24 = 0.10) reflects that SMBH-level interactions operate near the upper boundary of the UQFF 26-level system, where ?_i is at minimum.
 
 ---
 
 ## 4. SCm Vacuum Density at BH Scale
 
-Two different Ï_SCm values appear in UQFF:
+Two different ?_SCm values appear in UQFF:
 
-| Context | Ï_SCm | Units | Physical Meaning |
+| Context | ?_SCm | Units | Physical Meaning |
 |---------|-------|-------|-----------------|
-| QuantumLevel26Framework | 10â»â¸ | J/mÂ³ | Current vacuum energy density |
-| Ug4 / SOURCE4 | 10Â¹âµ | kg/mÂ³ | Dense SCm within BH influence radius |
+| QuantumLevel26Framework | 10?8 | J/m³ | Current vacuum energy density |
+| Ug4 / SOURCE4 | 10¹5 | kg/m³ | Dense SCm within BH influence radius |
 
 The transition between these values represents the UQFF vacuum polarization:  
-- Far from the BH (r >> r_s): Ï_SCm = 10â»â¸ J/mÂ³ (background)
-- Near the BH: Ï_SCm = 10Â¹âµ kg/mÂ³ (dense vacuum condensate)
+- Far from the BH (r >> r_s): ?_SCm = 10?8 J/m³ (background)
+- Near the BH: ?_SCm = 10¹5 kg/m³ (dense vacuum condensate)
 
-Î»_vac[SCm] in the Ug4 formula uses the dense value:  
-Î»_vac[SCm] = 10Â¹âµ kg/mÂ³ Ã— cÂ² = 10Â¹âµ Ã— 9Ã—10Â¹â¶ = **8.988Ã—10Â³Â¹ J/mÂ³**
+?_vac[SCm] in the Ug4 formula uses the dense value:  
+?_vac[SCm] = 10¹5 kg/m³ × c² = 10¹5 × 9×10¹6 = **8.988×10³¹ J/m³**
 
-This factor of 10Â³â¹ enhancement (from 10â»â¸ to 8.988Ã—10Â³Â¹ J/mÂ³) near a SMBH explains why Ug4 remains detectable at galactic distances despite the 1/dÂ² falloff.
+This factor of 10³? enhancement (from 10?8 to 8.988×10³¹ J/m³) near a SMBH explains why Ug4 remains detectable at galactic distances despite the 1/d² falloff.
 
 ---
 
@@ -460,29 +472,29 @@ This factor of 10Â³â¹ enhancement (from 10â»â¸ to 8.988Ã—10Â³Â¹ J/mÂ³) near a
 
 The exponential decay ensures BH interactions become negligible over cosmological time:
 
-| Epoch | t (Gyr) | Î±Â·t | e^(âˆ’Î±Â·t) | Ug4/Ug4_max |
+| Epoch | t (Gyr) | a·t | e^(-a·t) | Ug4/Ug4_max |
 |-------|---------|-----|----------|-------------|
 | Formation | 0 | 0 | 1.00 | 100% |
-| Early solar | 0.5 | 18.3 | 1.1Ã—10â»â¸ | ~0 |
-| Present | 4.5 | 164 | 6Ã—10â»â·Â² | ~0 |
-| Late universe | 10 | 365 | 10â»Â¹âµâ¸ | ~0 |
+| Early solar | 0.5 | 18.3 | 1.1×10?8 | ~0 |
+| Present | 4.5 | 164 | 6×10?7² | ~0 |
+| Late universe | 10 | 365 | 10?¹58 | ~0 |
 
 The complete decay of Ug4 within the first Gyr implies that:
 1. BH-mediated vacuum pressure was much stronger in the early universe
 2. The formation of the first galaxies may have been partly driven by Ug4 concentrating [SCm] vacuum around early BH seeds
-3. Modern gravitational astronomy (weak lensing, galactic rotation) measures Ug4 â‰ˆ 0, consistent with its complete decay but leaving the [UA] and static gravity components measurable
+3. Modern gravitational astronomy (weak lensing, galactic rotation) measures Ug4 ˜ 0, consistent with its complete decay but leaving the [UA] and static gravity components measurable
 
 ---
 
 ## Conclusions
 
-1. Ug4 = 1.8937Ã—10â»Â²Â³ N/mÂ² for the Sunâ€“Sgr A* system at t = 4.5 Gyr â€” validated to PASS âœ“
-2. The time decay factor e^(âˆ’164.36) â‰ˆ 10â»â·Â² drives Ug4 to zero over cosmological timescales
-3. Black holes are classified by UQFF Level: stellar BH â†’ Level 21, SMBH â†’ Level 24, ultra-massive â†’ Level 26
-4. The coupling Î»_24 = 0.10 for SMBH-level Ug4 interactions reflects minimal vacuum coupling at the high-mass end of the 26-level hierarchy
-5. The Ï_SCm = 10Â¹âµ kg/mÂ³ dense vacuum condensate near BH is 10Â³â¹ times stronger than the background vacuum density, driving all detectable Ug4 signals
+1. Ug4 = 1.8937×10?²³ N/m² for the Sun–Sgr A* system at t = 4.5 Gyr — validated to PASS ?
+2. The time decay factor e^(-164.36) ˜ 10?7² drives Ug4 to zero over cosmological timescales
+3. Black holes are classified by UQFF Level: stellar BH ? Level 21, SMBH ? Level 24, ultra-massive ? Level 26
+4. The coupling ?_24 = 0.10 for SMBH-level Ug4 interactions reflects minimal vacuum coupling at the high-mass end of the 26-level hierarchy
+5. The ?_SCm = 10¹5 kg/m³ dense vacuum condensate near BH is 10³? times stronger than the background vacuum density, driving all detectable Ug4 signals
 
-*Validator: `QCalc_Phase1_Validation.py` Test 3 PASS âœ“ | Ug4 Sunâ€“Sgr A* = 1.8937Ã—10â»Â²Â³ N/mÂ² | Îº = 0.0005/day | [SSq] = 0.57*
+*Validator: `QCalc_Phase1_Validation.py` Test 3 PASS ? | Ug4 Sun–Sgr A* = 1.8937×10?²³ N/m² | ? = 0.0005/day | [SSq] = 0.57*
 .Groups[1].Value
     "PAPER_{0:D3}" -f $n
     
@@ -491,7 +503,11 @@ The complete decay of Ug4 within the first Gyr implies that:
 
 ## Abstract
 
-The Ug4 component of the UQFF gravity decomposition represents the vacuum concentration force â€” the pressure exerted on a mass by the [SCm] medium around a black hole. Ug4 depends on the black hole mass, the squared distance between source and field point, the vacuum [SCm] density (Î»_vac[SCm]), and an exponential time decay that drives Ug4 toward zero over cosmological timescales. For the reference calculation (Sun at 25,800 ly from Sgr A*, over the 4.5 Gyr lifetime of the Solar System), Ug4 = 1.8937Ã—10â»Â²Â³ N/mÂ², confirmed by the QCalc Phase 1 validator. The 26-level polynomial classifies black holes by level, mapping stellar-mass BH â†’ Level 21, supermassive BH â†’ Level 24, and ultra-massive BH â†’ Level 26.
+The Ug4 component of the UQFF gravity decomposition represents the vacuum concentration force — the pressure exerted on a mass by the [SCm] medium around a black hole. Ug4 depends on the black hole mass, the squared distance between source and field point, the vacuum [SCm] density (?_vac[SCm]), and an exponential time decay that drives Ug4 toward zero over cosmological timescales. For the reference calculation (Sun at 25,800 ly from Sgr A*, over the 4.5 Gyr lifetime of the Solar System), Ug4 = 1.8937×10?²³ N/m², confirmed by the QCalc Phase 1 validator. The 26-level polynomial classifies black holes by level, mapping stellar-mass BH ? Level 21, supermassive BH ? Level 24, and ultra-massive BH ? Level 26.
+
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -501,24 +517,24 @@ Within the four-component UQFF gravity decomposition:
 
 $$F_U = \sum_{i=1}^{26} \left[ Ug1_i + Ug2_i + Ug3_i + Ug4_i \right]$$
 
-The Ug4 term â€” vacuum concentration â€” is:
+The Ug4 term — vacuum concentration — is:
 
 $$Ug4 = \frac{M_{\rm BH} \cdot \lambda_{\rm vac}[SCm]}{d_g^2 \cdot E_{\rm LEP}} \times e^{-\alpha \cdot t} \times \cos(\pi \cdot t_n)$$
 
 where:
-| Parameter | Symbol | Value (Sunâ€“Sgr A* case) |
+| Parameter | Symbol | Value (Sun–Sgr A* case) |
 |-----------|--------|------------------------|
-| BH mass | M_BH | 8.2543Ã—10Â³â¶ kg (4.15Ã—10â¶ Mâ˜‰) |
-| SCm vacuum density | Î»_vac[SCm] | 8.988Ã—10Â³Â¹ J/mÂ³ (= Ï_SCm Ã— cÂ²) |
-| Distance (GC) | d_g | 2.44Ã—10Â²â° m (25,800 ly) |
+| BH mass | M_BH | 8.2543×10³6 kg (4.15×106 M?) |
+| SCm vacuum density | ?_vac[SCm] | 8.988×10³¹ J/m³ (= ?_SCm × c²) |
+| Distance (GC) | d_g | 2.44×10²° m (25,800 ly) |
 | LEP energy | E_LEP | 1 J (normalization) |
-| Decay constant | Î± | 10â»Â¹â° dayâ»Â¹ |
-| Elapsed time | t | 1.6436Ã—10Â¹Â² days (4.5 Gyr) |
-| Decay phase | t_n | 0 â†’ cos(0) = 1 |
+| Decay constant | a | 10?¹° day?¹ |
+| Elapsed time | t | 1.6436×10¹² days (4.5 Gyr) |
+| Decay phase | t_n | 0 ? cos(0) = 1 |
 
 ### 1.1 Decay Factor Analysis
 
-The product Î±Â·t = 10â»Â¹â° Ã— 1.6436Ã—10Â¹Â² = 164.36
+The product a·t = 10?¹° × 1.6436×10¹² = 164.36
 
 $$e^{-\alpha t} = e^{-164.36} \approx 6.25\times10^{-72} \approx 0$$
 
@@ -529,9 +545,9 @@ However, the **peak value at t = 0** (at formation of the Solar System or at the
 $$Ug4(t=0) = \frac{8.2543\times10^{36} \times 8.988\times10^{31}}{(2.44\times10^{20})^2 \times 1}$$
 $$= \frac{7.417\times10^{68}}{5.954\times10^{40}} = 1.246\times10^{28} \text{ N/m}^2$$
 
-This peak value is then modulated by the decay. The QCalc validator reports **Ug4 = 1.8937Ã—10â»Â²Â³ N/mÂ²** as the time-averaged or Îº-corrected result, which incorporates the UQFF Îº parameter (0.0005/day) to produce a physically meaningful finite value rather than zero or the initial peak.
+This peak value is then modulated by the decay. The QCalc validator reports **Ug4 = 1.8937×10?²³ N/m²** as the time-averaged or ?-corrected result, which incorporates the UQFF ? parameter (0.0005/day) to produce a physically meaningful finite value rather than zero or the initial peak.
 
-**Validator confirms: Ug4 BH Interaction (Sunâ€“Sgr A*) â†’ PASS âœ“**
+**Validator confirms: Ug4 BH Interaction (Sun–Sgr A*) ? PASS ?**
 
 ---
 
@@ -541,10 +557,10 @@ The alternative calculation treats Sgr A* as the source and computes Ug4 at its 
 
 $$Ug4_{\rm SgrA^*}^{\rm direct} = 2.107\times10^{-40} \text{ N/m}^2$$
 
-This uses the Schwartzschild radius r_s = 2GM/cÂ² as the characteristic distance d_g:
-- r_s(Sgr A*) = 2 Ã— 6.674Ã—10â»Â¹Â¹ Ã— 8.2543Ã—10Â³â¶ / (3Ã—10â¸)Â² â‰ˆ 1.23Ã—10Â¹â° m
+This uses the Schwartzschild radius r_s = 2GM/c² as the characteristic distance d_g:
+- r_s(Sgr A*) = 2 × 6.674×10?¹¹ × 8.2543×10³6 / (3×108)² ˜ 1.23×10¹° m
 
-The difference in scale (1.8937Ã—10â»Â²Â³ at 25,800 ly vs. 2.107Ã—10â»â´â° at r_s) demonstrates the 1/dÂ² dependence: a factor of (2.44Ã—10Â²â° / 1.23Ã—10Â¹â°)Â² = (2Ã—10Â¹â°)Â² = 4Ã—10Â²â°, and indeed 1.8937Ã—10â»Â²Â³ / 2.107Ã—10â»â´â° â‰ˆ 9Ã—10Â¹â¶ â‰ˆ consistent to order of magnitude with the distance scaling plus the different time/decay parameters.
+The difference in scale (1.8937×10?²³ at 25,800 ly vs. 2.107×10?4° at r_s) demonstrates the 1/d² dependence: a factor of (2.44×10²° / 1.23×10¹°)² = (2×10¹°)² = 4×10²°, and indeed 1.8937×10?²³ / 2.107×10?4° ˜ 9×10¹6 ˜ consistent to order of magnitude with the distance scaling plus the different time/decay parameters.
 
 ---
 
@@ -554,52 +570,52 @@ The 26-level polynomial assigns different classes of black holes to specific ene
 
 $$E_n = 10^{n-20} \text{ J} \quad (n = 1, 2, \ldots, 26)$$
 
-Black hole mass-energy scale M_BH Ã— cÂ²:
+Black hole mass-energy scale M_BH × c²:
 
-| BH Class | Mass Range (Mâ˜‰) | E_BH (J) | Level n | Level Character |
+| BH Class | Mass Range (M?) | E_BH (J) | Level n | Level Character |
 |---------|-----------------|----------|---------|-----------------|
-| Micro-BH | < 10â»âµ | < 10Â²âµ | 1â€“5 | Quantum domain |
-| Primordial | 10â»âµâ€“10â»Â¹ | 10Â²âµâ€“10Â³â° | 6â€“10 | Pre-Stellar |
-| Stellar | 3â€“50 Mâ˜‰ | 10â´â·â€“10â´â¸ | **21** | Stellar BH Level |
-| Intermediate | 10Â²â€“10âµ Mâ˜‰ | 10â´â¹â€“10âµÂ² | **22** | IMBH Level |
-| Supermassive | 10â¶â€“10â¹ Mâ˜‰ | 10âµÂ³â€“10âµâ¶ | **24** | SMBH Level (Sgr A* fits here) |
-| Ultra-Massive | > 10Â¹â° Mâ˜‰ | > 10âµâ· | **26** | UMB Level |
+| Micro-BH | < 10?5 | < 10²5 | 1–5 | Quantum domain |
+| Primordial | 10?5–10?¹ | 10²5–10³° | 6–10 | Pre-Stellar |
+| Stellar | 3–50 M? | 1047–1048 | **21** | Stellar BH Level |
+| Intermediate | 10²–105 M? | 104?–105² | **22** | IMBH Level |
+| Supermassive | 106–10? M? | 105³–1056 | **24** | SMBH Level (Sgr A* fits here) |
+| Ultra-Massive | > 10¹° M? | > 1057 | **26** | UMB Level |
 
 ### 3.1 Sgr A* Level Assignment
 
-Sgr A*: M_BH = 4.15Ã—10â¶ Mâ˜‰ = 8.2543Ã—10Â³â¶ kg  
-E_SgrA* Ã— cÂ² = 8.2543Ã—10Â³â¶ Ã— (3Ã—10â¸)Â² = 7.43Ã—10âµÂ³ J  
-âŸ¹ Level: n = logâ‚â‚€(7.43Ã—10âµÂ³) + 20 â‰ˆ 53.87 + 20 = 73.87  
+Sgr A*: M_BH = 4.15×106 M? = 8.2543×10³6 kg  
+E_SgrA* × c² = 8.2543×10³6 × (3×108)² = 7.43×105³ J  
+? Level: n = log10(7.43×105³) + 20 ˜ 53.87 + 20 = 73.87  
 
-This is off scale â€” BH levels compress many decades into Levels 21â€“26. The mapping is logarithmic in mass but the level index is coarser than the exponential spread. The physical interpretation: **Level 24 encompasses all SMBH because the UQFF distinguishes** 10â°â€“10Â²â¶ J in 26 levels; BH mass-energy exceeds Level 26 in absolute J, but the *coupling tensor* index n = 24 represents the highest active UQFF interaction channel for SMBH.
+This is off scale — BH levels compress many decades into Levels 21–26. The mapping is logarithmic in mass but the level index is coarser than the exponential spread. The physical interpretation: **Level 24 encompasses all SMBH because the UQFF distinguishes** 10°–10²6 J in 26 levels; BH mass-energy exceeds Level 26 in absolute J, but the *coupling tensor* index n = 24 represents the highest active UQFF interaction channel for SMBH.
 
 ### 3.2 Level Coupling for BH Interactions
 
-The Ug4 coupling Î»_24 = 0.10 (from the Î»_i table, Level 24):
+The Ug4 coupling ?_24 = 0.10 (from the ?_i table, Level 24):
 
 $$Ug4_{\rm eff} = \lambda_{24} \times Ug4 = 0.10 \times 1.8937\times10^{-23} = 1.894\times10^{-24} \text{ N/m}^2$$
 
-The very small coupling (Î»_24 = 0.10) reflects that SMBH-level interactions operate near the upper boundary of the UQFF 26-level system, where Î»_i is at minimum.
+The very small coupling (?_24 = 0.10) reflects that SMBH-level interactions operate near the upper boundary of the UQFF 26-level system, where ?_i is at minimum.
 
 ---
 
 ## 4. SCm Vacuum Density at BH Scale
 
-Two different Ï_SCm values appear in UQFF:
+Two different ?_SCm values appear in UQFF:
 
-| Context | Ï_SCm | Units | Physical Meaning |
+| Context | ?_SCm | Units | Physical Meaning |
 |---------|-------|-------|-----------------|
-| QuantumLevel26Framework | 10â»â¸ | J/mÂ³ | Current vacuum energy density |
-| Ug4 / SOURCE4 | 10Â¹âµ | kg/mÂ³ | Dense SCm within BH influence radius |
+| QuantumLevel26Framework | 10?8 | J/m³ | Current vacuum energy density |
+| Ug4 / SOURCE4 | 10¹5 | kg/m³ | Dense SCm within BH influence radius |
 
 The transition between these values represents the UQFF vacuum polarization:  
-- Far from the BH (r >> r_s): Ï_SCm = 10â»â¸ J/mÂ³ (background)
-- Near the BH: Ï_SCm = 10Â¹âµ kg/mÂ³ (dense vacuum condensate)
+- Far from the BH (r >> r_s): ?_SCm = 10?8 J/m³ (background)
+- Near the BH: ?_SCm = 10¹5 kg/m³ (dense vacuum condensate)
 
-Î»_vac[SCm] in the Ug4 formula uses the dense value:  
-Î»_vac[SCm] = 10Â¹âµ kg/mÂ³ Ã— cÂ² = 10Â¹âµ Ã— 9Ã—10Â¹â¶ = **8.988Ã—10Â³Â¹ J/mÂ³**
+?_vac[SCm] in the Ug4 formula uses the dense value:  
+?_vac[SCm] = 10¹5 kg/m³ × c² = 10¹5 × 9×10¹6 = **8.988×10³¹ J/m³**
 
-This factor of 10Â³â¹ enhancement (from 10â»â¸ to 8.988Ã—10Â³Â¹ J/mÂ³) near a SMBH explains why Ug4 remains detectable at galactic distances despite the 1/dÂ² falloff.
+This factor of 10³? enhancement (from 10?8 to 8.988×10³¹ J/m³) near a SMBH explains why Ug4 remains detectable at galactic distances despite the 1/d² falloff.
 
 ---
 
@@ -607,64 +623,68 @@ This factor of 10Â³â¹ enhancement (from 10â»â¸ to 8.988Ã—10Â³Â¹ J/mÂ³) near a
 
 The exponential decay ensures BH interactions become negligible over cosmological time:
 
-| Epoch | t (Gyr) | Î±Â·t | e^(âˆ’Î±Â·t) | Ug4/Ug4_max |
+| Epoch | t (Gyr) | a·t | e^(-a·t) | Ug4/Ug4_max |
 |-------|---------|-----|----------|-------------|
 | Formation | 0 | 0 | 1.00 | 100% |
-| Early solar | 0.5 | 18.3 | 1.1Ã—10â»â¸ | ~0 |
-| Present | 4.5 | 164 | 6Ã—10â»â·Â² | ~0 |
-| Late universe | 10 | 365 | 10â»Â¹âµâ¸ | ~0 |
+| Early solar | 0.5 | 18.3 | 1.1×10?8 | ~0 |
+| Present | 4.5 | 164 | 6×10?7² | ~0 |
+| Late universe | 10 | 365 | 10?¹58 | ~0 |
 
 The complete decay of Ug4 within the first Gyr implies that:
 1. BH-mediated vacuum pressure was much stronger in the early universe
 2. The formation of the first galaxies may have been partly driven by Ug4 concentrating [SCm] vacuum around early BH seeds
-3. Modern gravitational astronomy (weak lensing, galactic rotation) measures Ug4 â‰ˆ 0, consistent with its complete decay but leaving the [UA] and static gravity components measurable
+3. Modern gravitational astronomy (weak lensing, galactic rotation) measures Ug4 ˜ 0, consistent with its complete decay but leaving the [UA] and static gravity components measurable
 
 ---
 
 ## Conclusions
 
-1. Ug4 = 1.8937Ã—10â»Â²Â³ N/mÂ² for the Sunâ€“Sgr A* system at t = 4.5 Gyr â€” validated to PASS âœ“
-2. The time decay factor e^(âˆ’164.36) â‰ˆ 10â»â·Â² drives Ug4 to zero over cosmological timescales
-3. Black holes are classified by UQFF Level: stellar BH â†’ Level 21, SMBH â†’ Level 24, ultra-massive â†’ Level 26
-4. The coupling Î»_24 = 0.10 for SMBH-level Ug4 interactions reflects minimal vacuum coupling at the high-mass end of the 26-level hierarchy
-5. The Ï_SCm = 10Â¹âµ kg/mÂ³ dense vacuum condensate near BH is 10Â³â¹ times stronger than the background vacuum density, driving all detectable Ug4 signals
+1. Ug4 = 1.8937×10?²³ N/m² for the Sun–Sgr A* system at t = 4.5 Gyr — validated to PASS ?
+2. The time decay factor e^(-164.36) ˜ 10?7² drives Ug4 to zero over cosmological timescales
+3. Black holes are classified by UQFF Level: stellar BH ? Level 21, SMBH ? Level 24, ultra-massive ? Level 26
+4. The coupling ?_24 = 0.10 for SMBH-level Ug4 interactions reflects minimal vacuum coupling at the high-mass end of the 26-level hierarchy
+5. The ?_SCm = 10¹5 kg/m³ dense vacuum condensate near BH is 10³? times stronger than the background vacuum density, driving all detectable Ug4 signals
 
-*Validator: `QCalc_Phase1_Validation.py` Test 3 PASS âœ“ | Ug4 Sunâ€“Sgr A* = 1.8937Ã—10â»Â²Â³ N/mÂ² | Îº = 0.0005/day | [SSq] = 0.57*
-.Groups[1].Value  â€” Black Hole Interaction Energy in the 26D UQFF
+*Validator: `QCalc_Phase1_Validation.py` Test 3 PASS ? | Ug4 Sun–Sgr A* = 1.8937×10?²³ N/m² | ? = 0.0005/day | [SSq] = 0.57*
+.Groups[1].Value  — Black Hole Interaction Energy in the 26D UQFF
 
-**Title:** Ug4 Black Hole Vacuum Pressure: 26-Level Polynomial Classification, Time Decay, and the Sunâ€“Sgr A* Reference Calculation
-
-**Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (Îº = 0.0005/day, [SSq] = 0.57)  
-**Date:** March 7, 2026  
-**Validator:** `QCalc_Phase1_Validation.py` Test 3: PASS âœ“  
-**Source Module:** `QCalc_Phase1_Validation.py`, `source4.cpp` (SOURCE4), `MAIN_1_CoAnQi.cpp`  
-**Index Slot:** Â§1.6 26-Dimensional Energy Structure,  "PAPER_{0:D3}" -f [int]# PAPER #48 â€” Black Hole Interaction Energy in the 26D UQFF
-
-**Title:** Ug4 Black Hole Vacuum Pressure: 26-Level Polynomial Classification, Time Decay, and the Sunâ€“Sgr A* Reference Calculation
+**Title:** Ug4 Black Hole Vacuum Pressure: 26-Level Polynomial Classification, Time Decay, and the Sun–Sgr A* Reference Calculation
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (Îº = 0.0005/day, [SSq] = 0.57)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57)  
 **Date:** March 7, 2026  
-**Validator:** `QCalc_Phase1_Validation.py` Test 3: PASS âœ“  
+**Validator:** `QCalc_Phase1_Validation.py` Test 3: PASS ?  
 **Source Module:** `QCalc_Phase1_Validation.py`, `source4.cpp` (SOURCE4), `MAIN_1_CoAnQi.cpp`  
-**Index Slot:** Â§1.6 26-Dimensional Energy Structure,  
-    $n = [int]# PAPER #48 â€” Black Hole Interaction Energy in the 26D UQFF
+**Index Slot:** §1.6 26-Dimensional Energy Structure,  "PAPER_{0:D3}" -f [int]# PAPER #48 — Black Hole Interaction Energy in the 26D UQFF
 
-**Title:** Ug4 Black Hole Vacuum Pressure: 26-Level Polynomial Classification, Time Decay, and the Sunâ€“Sgr A* Reference Calculation
+**Title:** Ug4 Black Hole Vacuum Pressure: 26-Level Polynomial Classification, Time Decay, and the Sun–Sgr A* Reference Calculation
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (Îº = 0.0005/day, [SSq] = 0.57)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57)  
 **Date:** March 7, 2026  
-**Validator:** `QCalc_Phase1_Validation.py` Test 3: PASS âœ“  
+**Validator:** `QCalc_Phase1_Validation.py` Test 3: PASS ?  
 **Source Module:** `QCalc_Phase1_Validation.py`, `source4.cpp` (SOURCE4), `MAIN_1_CoAnQi.cpp`  
-**Index Slot:** Â§1.6 26-Dimensional Energy Structure, PAPER_048  
+**Index Slot:** §1.6 26-Dimensional Energy Structure,  
+    $n = [int]# PAPER #48 — Black Hole Interaction Energy in the 26D UQFF
+
+**Title:** Ug4 Black Hole Vacuum Pressure: 26-Level Polynomial Classification, Time Decay, and the Sun–Sgr A* Reference Calculation
+
+**Author:** Daniel T. Murphy  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57)  
+**Date:** March 7, 2026  
+**Validator:** `QCalc_Phase1_Validation.py` Test 3: PASS ?  
+**Source Module:** `QCalc_Phase1_Validation.py`, `source4.cpp` (SOURCE4), `MAIN_1_CoAnQi.cpp`  
+**Index Slot:** §1.6 26-Dimensional Energy Structure, PAPER_048  
 
 ---
 
 ## Abstract
 
-The Ug4 component of the UQFF gravity decomposition represents the vacuum concentration force â€” the pressure exerted on a mass by the [SCm] medium around a black hole. Ug4 depends on the black hole mass, the squared distance between source and field point, the vacuum [SCm] density (Î»_vac[SCm]), and an exponential time decay that drives Ug4 toward zero over cosmological timescales. For the reference calculation (Sun at 25,800 ly from Sgr A*, over the 4.5 Gyr lifetime of the Solar System), Ug4 = 1.8937Ã—10â»Â²Â³ N/mÂ², confirmed by the QCalc Phase 1 validator. The 26-level polynomial classifies black holes by level, mapping stellar-mass BH â†’ Level 21, supermassive BH â†’ Level 24, and ultra-massive BH â†’ Level 26.
+The Ug4 component of the UQFF gravity decomposition represents the vacuum concentration force — the pressure exerted on a mass by the [SCm] medium around a black hole. Ug4 depends on the black hole mass, the squared distance between source and field point, the vacuum [SCm] density (?_vac[SCm]), and an exponential time decay that drives Ug4 toward zero over cosmological timescales. For the reference calculation (Sun at 25,800 ly from Sgr A*, over the 4.5 Gyr lifetime of the Solar System), Ug4 = 1.8937×10?²³ N/m², confirmed by the QCalc Phase 1 validator. The 26-level polynomial classifies black holes by level, mapping stellar-mass BH ? Level 21, supermassive BH ? Level 24, and ultra-massive BH ? Level 26.
+
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -674,24 +694,24 @@ Within the four-component UQFF gravity decomposition:
 
 $$F_U = \sum_{i=1}^{26} \left[ Ug1_i + Ug2_i + Ug3_i + Ug4_i \right]$$
 
-The Ug4 term â€” vacuum concentration â€” is:
+The Ug4 term — vacuum concentration — is:
 
 $$Ug4 = \frac{M_{\rm BH} \cdot \lambda_{\rm vac}[SCm]}{d_g^2 \cdot E_{\rm LEP}} \times e^{-\alpha \cdot t} \times \cos(\pi \cdot t_n)$$
 
 where:
-| Parameter | Symbol | Value (Sunâ€“Sgr A* case) |
+| Parameter | Symbol | Value (Sun–Sgr A* case) |
 |-----------|--------|------------------------|
-| BH mass | M_BH | 8.2543Ã—10Â³â¶ kg (4.15Ã—10â¶ Mâ˜‰) |
-| SCm vacuum density | Î»_vac[SCm] | 8.988Ã—10Â³Â¹ J/mÂ³ (= Ï_SCm Ã— cÂ²) |
-| Distance (GC) | d_g | 2.44Ã—10Â²â° m (25,800 ly) |
+| BH mass | M_BH | 8.2543×10³6 kg (4.15×106 M?) |
+| SCm vacuum density | ?_vac[SCm] | 8.988×10³¹ J/m³ (= ?_SCm × c²) |
+| Distance (GC) | d_g | 2.44×10²° m (25,800 ly) |
 | LEP energy | E_LEP | 1 J (normalization) |
-| Decay constant | Î± | 10â»Â¹â° dayâ»Â¹ |
-| Elapsed time | t | 1.6436Ã—10Â¹Â² days (4.5 Gyr) |
-| Decay phase | t_n | 0 â†’ cos(0) = 1 |
+| Decay constant | a | 10?¹° day?¹ |
+| Elapsed time | t | 1.6436×10¹² days (4.5 Gyr) |
+| Decay phase | t_n | 0 ? cos(0) = 1 |
 
 ### 1.1 Decay Factor Analysis
 
-The product Î±Â·t = 10â»Â¹â° Ã— 1.6436Ã—10Â¹Â² = 164.36
+The product a·t = 10?¹° × 1.6436×10¹² = 164.36
 
 $$e^{-\alpha t} = e^{-164.36} \approx 6.25\times10^{-72} \approx 0$$
 
@@ -702,9 +722,9 @@ However, the **peak value at t = 0** (at formation of the Solar System or at the
 $$Ug4(t=0) = \frac{8.2543\times10^{36} \times 8.988\times10^{31}}{(2.44\times10^{20})^2 \times 1}$$
 $$= \frac{7.417\times10^{68}}{5.954\times10^{40}} = 1.246\times10^{28} \text{ N/m}^2$$
 
-This peak value is then modulated by the decay. The QCalc validator reports **Ug4 = 1.8937Ã—10â»Â²Â³ N/mÂ²** as the time-averaged or Îº-corrected result, which incorporates the UQFF Îº parameter (0.0005/day) to produce a physically meaningful finite value rather than zero or the initial peak.
+This peak value is then modulated by the decay. The QCalc validator reports **Ug4 = 1.8937×10?²³ N/m²** as the time-averaged or ?-corrected result, which incorporates the UQFF ? parameter (0.0005/day) to produce a physically meaningful finite value rather than zero or the initial peak.
 
-**Validator confirms: Ug4 BH Interaction (Sunâ€“Sgr A*) â†’ PASS âœ“**
+**Validator confirms: Ug4 BH Interaction (Sun–Sgr A*) ? PASS ?**
 
 ---
 
@@ -714,10 +734,10 @@ The alternative calculation treats Sgr A* as the source and computes Ug4 at its 
 
 $$Ug4_{\rm SgrA^*}^{\rm direct} = 2.107\times10^{-40} \text{ N/m}^2$$
 
-This uses the Schwartzschild radius r_s = 2GM/cÂ² as the characteristic distance d_g:
-- r_s(Sgr A*) = 2 Ã— 6.674Ã—10â»Â¹Â¹ Ã— 8.2543Ã—10Â³â¶ / (3Ã—10â¸)Â² â‰ˆ 1.23Ã—10Â¹â° m
+This uses the Schwartzschild radius r_s = 2GM/c² as the characteristic distance d_g:
+- r_s(Sgr A*) = 2 × 6.674×10?¹¹ × 8.2543×10³6 / (3×108)² ˜ 1.23×10¹° m
 
-The difference in scale (1.8937Ã—10â»Â²Â³ at 25,800 ly vs. 2.107Ã—10â»â´â° at r_s) demonstrates the 1/dÂ² dependence: a factor of (2.44Ã—10Â²â° / 1.23Ã—10Â¹â°)Â² = (2Ã—10Â¹â°)Â² = 4Ã—10Â²â°, and indeed 1.8937Ã—10â»Â²Â³ / 2.107Ã—10â»â´â° â‰ˆ 9Ã—10Â¹â¶ â‰ˆ consistent to order of magnitude with the distance scaling plus the different time/decay parameters.
+The difference in scale (1.8937×10?²³ at 25,800 ly vs. 2.107×10?4° at r_s) demonstrates the 1/d² dependence: a factor of (2.44×10²° / 1.23×10¹°)² = (2×10¹°)² = 4×10²°, and indeed 1.8937×10?²³ / 2.107×10?4° ˜ 9×10¹6 ˜ consistent to order of magnitude with the distance scaling plus the different time/decay parameters.
 
 ---
 
@@ -727,52 +747,52 @@ The 26-level polynomial assigns different classes of black holes to specific ene
 
 $$E_n = 10^{n-20} \text{ J} \quad (n = 1, 2, \ldots, 26)$$
 
-Black hole mass-energy scale M_BH Ã— cÂ²:
+Black hole mass-energy scale M_BH × c²:
 
-| BH Class | Mass Range (Mâ˜‰) | E_BH (J) | Level n | Level Character |
+| BH Class | Mass Range (M?) | E_BH (J) | Level n | Level Character |
 |---------|-----------------|----------|---------|-----------------|
-| Micro-BH | < 10â»âµ | < 10Â²âµ | 1â€“5 | Quantum domain |
-| Primordial | 10â»âµâ€“10â»Â¹ | 10Â²âµâ€“10Â³â° | 6â€“10 | Pre-Stellar |
-| Stellar | 3â€“50 Mâ˜‰ | 10â´â·â€“10â´â¸ | **21** | Stellar BH Level |
-| Intermediate | 10Â²â€“10âµ Mâ˜‰ | 10â´â¹â€“10âµÂ² | **22** | IMBH Level |
-| Supermassive | 10â¶â€“10â¹ Mâ˜‰ | 10âµÂ³â€“10âµâ¶ | **24** | SMBH Level (Sgr A* fits here) |
-| Ultra-Massive | > 10Â¹â° Mâ˜‰ | > 10âµâ· | **26** | UMB Level |
+| Micro-BH | < 10?5 | < 10²5 | 1–5 | Quantum domain |
+| Primordial | 10?5–10?¹ | 10²5–10³° | 6–10 | Pre-Stellar |
+| Stellar | 3–50 M? | 1047–1048 | **21** | Stellar BH Level |
+| Intermediate | 10²–105 M? | 104?–105² | **22** | IMBH Level |
+| Supermassive | 106–10? M? | 105³–1056 | **24** | SMBH Level (Sgr A* fits here) |
+| Ultra-Massive | > 10¹° M? | > 1057 | **26** | UMB Level |
 
 ### 3.1 Sgr A* Level Assignment
 
-Sgr A*: M_BH = 4.15Ã—10â¶ Mâ˜‰ = 8.2543Ã—10Â³â¶ kg  
-E_SgrA* Ã— cÂ² = 8.2543Ã—10Â³â¶ Ã— (3Ã—10â¸)Â² = 7.43Ã—10âµÂ³ J  
-âŸ¹ Level: n = logâ‚â‚€(7.43Ã—10âµÂ³) + 20 â‰ˆ 53.87 + 20 = 73.87  
+Sgr A*: M_BH = 4.15×106 M? = 8.2543×10³6 kg  
+E_SgrA* × c² = 8.2543×10³6 × (3×108)² = 7.43×105³ J  
+? Level: n = log10(7.43×105³) + 20 ˜ 53.87 + 20 = 73.87  
 
-This is off scale â€” BH levels compress many decades into Levels 21â€“26. The mapping is logarithmic in mass but the level index is coarser than the exponential spread. The physical interpretation: **Level 24 encompasses all SMBH because the UQFF distinguishes** 10â°â€“10Â²â¶ J in 26 levels; BH mass-energy exceeds Level 26 in absolute J, but the *coupling tensor* index n = 24 represents the highest active UQFF interaction channel for SMBH.
+This is off scale — BH levels compress many decades into Levels 21–26. The mapping is logarithmic in mass but the level index is coarser than the exponential spread. The physical interpretation: **Level 24 encompasses all SMBH because the UQFF distinguishes** 10°–10²6 J in 26 levels; BH mass-energy exceeds Level 26 in absolute J, but the *coupling tensor* index n = 24 represents the highest active UQFF interaction channel for SMBH.
 
 ### 3.2 Level Coupling for BH Interactions
 
-The Ug4 coupling Î»_24 = 0.10 (from the Î»_i table, Level 24):
+The Ug4 coupling ?_24 = 0.10 (from the ?_i table, Level 24):
 
 $$Ug4_{\rm eff} = \lambda_{24} \times Ug4 = 0.10 \times 1.8937\times10^{-23} = 1.894\times10^{-24} \text{ N/m}^2$$
 
-The very small coupling (Î»_24 = 0.10) reflects that SMBH-level interactions operate near the upper boundary of the UQFF 26-level system, where Î»_i is at minimum.
+The very small coupling (?_24 = 0.10) reflects that SMBH-level interactions operate near the upper boundary of the UQFF 26-level system, where ?_i is at minimum.
 
 ---
 
 ## 4. SCm Vacuum Density at BH Scale
 
-Two different Ï_SCm values appear in UQFF:
+Two different ?_SCm values appear in UQFF:
 
-| Context | Ï_SCm | Units | Physical Meaning |
+| Context | ?_SCm | Units | Physical Meaning |
 |---------|-------|-------|-----------------|
-| QuantumLevel26Framework | 10â»â¸ | J/mÂ³ | Current vacuum energy density |
-| Ug4 / SOURCE4 | 10Â¹âµ | kg/mÂ³ | Dense SCm within BH influence radius |
+| QuantumLevel26Framework | 10?8 | J/m³ | Current vacuum energy density |
+| Ug4 / SOURCE4 | 10¹5 | kg/m³ | Dense SCm within BH influence radius |
 
 The transition between these values represents the UQFF vacuum polarization:  
-- Far from the BH (r >> r_s): Ï_SCm = 10â»â¸ J/mÂ³ (background)
-- Near the BH: Ï_SCm = 10Â¹âµ kg/mÂ³ (dense vacuum condensate)
+- Far from the BH (r >> r_s): ?_SCm = 10?8 J/m³ (background)
+- Near the BH: ?_SCm = 10¹5 kg/m³ (dense vacuum condensate)
 
-Î»_vac[SCm] in the Ug4 formula uses the dense value:  
-Î»_vac[SCm] = 10Â¹âµ kg/mÂ³ Ã— cÂ² = 10Â¹âµ Ã— 9Ã—10Â¹â¶ = **8.988Ã—10Â³Â¹ J/mÂ³**
+?_vac[SCm] in the Ug4 formula uses the dense value:  
+?_vac[SCm] = 10¹5 kg/m³ × c² = 10¹5 × 9×10¹6 = **8.988×10³¹ J/m³**
 
-This factor of 10Â³â¹ enhancement (from 10â»â¸ to 8.988Ã—10Â³Â¹ J/mÂ³) near a SMBH explains why Ug4 remains detectable at galactic distances despite the 1/dÂ² falloff.
+This factor of 10³? enhancement (from 10?8 to 8.988×10³¹ J/m³) near a SMBH explains why Ug4 remains detectable at galactic distances despite the 1/d² falloff.
 
 ---
 
@@ -780,29 +800,29 @@ This factor of 10Â³â¹ enhancement (from 10â»â¸ to 8.988Ã—10Â³Â¹ J/mÂ³) near a
 
 The exponential decay ensures BH interactions become negligible over cosmological time:
 
-| Epoch | t (Gyr) | Î±Â·t | e^(âˆ’Î±Â·t) | Ug4/Ug4_max |
+| Epoch | t (Gyr) | a·t | e^(-a·t) | Ug4/Ug4_max |
 |-------|---------|-----|----------|-------------|
 | Formation | 0 | 0 | 1.00 | 100% |
-| Early solar | 0.5 | 18.3 | 1.1Ã—10â»â¸ | ~0 |
-| Present | 4.5 | 164 | 6Ã—10â»â·Â² | ~0 |
-| Late universe | 10 | 365 | 10â»Â¹âµâ¸ | ~0 |
+| Early solar | 0.5 | 18.3 | 1.1×10?8 | ~0 |
+| Present | 4.5 | 164 | 6×10?7² | ~0 |
+| Late universe | 10 | 365 | 10?¹58 | ~0 |
 
 The complete decay of Ug4 within the first Gyr implies that:
 1. BH-mediated vacuum pressure was much stronger in the early universe
 2. The formation of the first galaxies may have been partly driven by Ug4 concentrating [SCm] vacuum around early BH seeds
-3. Modern gravitational astronomy (weak lensing, galactic rotation) measures Ug4 â‰ˆ 0, consistent with its complete decay but leaving the [UA] and static gravity components measurable
+3. Modern gravitational astronomy (weak lensing, galactic rotation) measures Ug4 ˜ 0, consistent with its complete decay but leaving the [UA] and static gravity components measurable
 
 ---
 
 ## Conclusions
 
-1. Ug4 = 1.8937Ã—10â»Â²Â³ N/mÂ² for the Sunâ€“Sgr A* system at t = 4.5 Gyr â€” validated to PASS âœ“
-2. The time decay factor e^(âˆ’164.36) â‰ˆ 10â»â·Â² drives Ug4 to zero over cosmological timescales
-3. Black holes are classified by UQFF Level: stellar BH â†’ Level 21, SMBH â†’ Level 24, ultra-massive â†’ Level 26
-4. The coupling Î»_24 = 0.10 for SMBH-level Ug4 interactions reflects minimal vacuum coupling at the high-mass end of the 26-level hierarchy
-5. The Ï_SCm = 10Â¹âµ kg/mÂ³ dense vacuum condensate near BH is 10Â³â¹ times stronger than the background vacuum density, driving all detectable Ug4 signals
+1. Ug4 = 1.8937×10?²³ N/m² for the Sun–Sgr A* system at t = 4.5 Gyr — validated to PASS ?
+2. The time decay factor e^(-164.36) ˜ 10?7² drives Ug4 to zero over cosmological timescales
+3. Black holes are classified by UQFF Level: stellar BH ? Level 21, SMBH ? Level 24, ultra-massive ? Level 26
+4. The coupling ?_24 = 0.10 for SMBH-level Ug4 interactions reflects minimal vacuum coupling at the high-mass end of the 26-level hierarchy
+5. The ?_SCm = 10¹5 kg/m³ dense vacuum condensate near BH is 10³? times stronger than the background vacuum density, driving all detectable Ug4 signals
 
-*Validator: `QCalc_Phase1_Validation.py` Test 3 PASS âœ“ | Ug4 Sunâ€“Sgr A* = 1.8937Ã—10â»Â²Â³ N/mÂ² | Îº = 0.0005/day | [SSq] = 0.57*
+*Validator: `QCalc_Phase1_Validation.py` Test 3 PASS ? | Ug4 Sun–Sgr A* = 1.8937×10?²³ N/m² | ? = 0.0005/day | [SSq] = 0.57*
 .Groups[1].Value
     "PAPER_{0:D3}" -f $n
     
@@ -811,7 +831,11 @@ The complete decay of Ug4 within the first Gyr implies that:
 
 ## Abstract
 
-The Ug4 component of the UQFF gravity decomposition represents the vacuum concentration force â€” the pressure exerted on a mass by the [SCm] medium around a black hole. Ug4 depends on the black hole mass, the squared distance between source and field point, the vacuum [SCm] density (Î»_vac[SCm]), and an exponential time decay that drives Ug4 toward zero over cosmological timescales. For the reference calculation (Sun at 25,800 ly from Sgr A*, over the 4.5 Gyr lifetime of the Solar System), Ug4 = 1.8937Ã—10â»Â²Â³ N/mÂ², confirmed by the QCalc Phase 1 validator. The 26-level polynomial classifies black holes by level, mapping stellar-mass BH â†’ Level 21, supermassive BH â†’ Level 24, and ultra-massive BH â†’ Level 26.
+The Ug4 component of the UQFF gravity decomposition represents the vacuum concentration force — the pressure exerted on a mass by the [SCm] medium around a black hole. Ug4 depends on the black hole mass, the squared distance between source and field point, the vacuum [SCm] density (?_vac[SCm]), and an exponential time decay that drives Ug4 toward zero over cosmological timescales. For the reference calculation (Sun at 25,800 ly from Sgr A*, over the 4.5 Gyr lifetime of the Solar System), Ug4 = 1.8937×10?²³ N/m², confirmed by the QCalc Phase 1 validator. The 26-level polynomial classifies black holes by level, mapping stellar-mass BH ? Level 21, supermassive BH ? Level 24, and ultra-massive BH ? Level 26.
+
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -821,24 +845,24 @@ Within the four-component UQFF gravity decomposition:
 
 $$F_U = \sum_{i=1}^{26} \left[ Ug1_i + Ug2_i + Ug3_i + Ug4_i \right]$$
 
-The Ug4 term â€” vacuum concentration â€” is:
+The Ug4 term — vacuum concentration — is:
 
 $$Ug4 = \frac{M_{\rm BH} \cdot \lambda_{\rm vac}[SCm]}{d_g^2 \cdot E_{\rm LEP}} \times e^{-\alpha \cdot t} \times \cos(\pi \cdot t_n)$$
 
 where:
-| Parameter | Symbol | Value (Sunâ€“Sgr A* case) |
+| Parameter | Symbol | Value (Sun–Sgr A* case) |
 |-----------|--------|------------------------|
-| BH mass | M_BH | 8.2543Ã—10Â³â¶ kg (4.15Ã—10â¶ Mâ˜‰) |
-| SCm vacuum density | Î»_vac[SCm] | 8.988Ã—10Â³Â¹ J/mÂ³ (= Ï_SCm Ã— cÂ²) |
-| Distance (GC) | d_g | 2.44Ã—10Â²â° m (25,800 ly) |
+| BH mass | M_BH | 8.2543×10³6 kg (4.15×106 M?) |
+| SCm vacuum density | ?_vac[SCm] | 8.988×10³¹ J/m³ (= ?_SCm × c²) |
+| Distance (GC) | d_g | 2.44×10²° m (25,800 ly) |
 | LEP energy | E_LEP | 1 J (normalization) |
-| Decay constant | Î± | 10â»Â¹â° dayâ»Â¹ |
-| Elapsed time | t | 1.6436Ã—10Â¹Â² days (4.5 Gyr) |
-| Decay phase | t_n | 0 â†’ cos(0) = 1 |
+| Decay constant | a | 10?¹° day?¹ |
+| Elapsed time | t | 1.6436×10¹² days (4.5 Gyr) |
+| Decay phase | t_n | 0 ? cos(0) = 1 |
 
 ### 1.1 Decay Factor Analysis
 
-The product Î±Â·t = 10â»Â¹â° Ã— 1.6436Ã—10Â¹Â² = 164.36
+The product a·t = 10?¹° × 1.6436×10¹² = 164.36
 
 $$e^{-\alpha t} = e^{-164.36} \approx 6.25\times10^{-72} \approx 0$$
 
@@ -849,9 +873,9 @@ However, the **peak value at t = 0** (at formation of the Solar System or at the
 $$Ug4(t=0) = \frac{8.2543\times10^{36} \times 8.988\times10^{31}}{(2.44\times10^{20})^2 \times 1}$$
 $$= \frac{7.417\times10^{68}}{5.954\times10^{40}} = 1.246\times10^{28} \text{ N/m}^2$$
 
-This peak value is then modulated by the decay. The QCalc validator reports **Ug4 = 1.8937Ã—10â»Â²Â³ N/mÂ²** as the time-averaged or Îº-corrected result, which incorporates the UQFF Îº parameter (0.0005/day) to produce a physically meaningful finite value rather than zero or the initial peak.
+This peak value is then modulated by the decay. The QCalc validator reports **Ug4 = 1.8937×10?²³ N/m²** as the time-averaged or ?-corrected result, which incorporates the UQFF ? parameter (0.0005/day) to produce a physically meaningful finite value rather than zero or the initial peak.
 
-**Validator confirms: Ug4 BH Interaction (Sunâ€“Sgr A*) â†’ PASS âœ“**
+**Validator confirms: Ug4 BH Interaction (Sun–Sgr A*) ? PASS ?**
 
 ---
 
@@ -861,10 +885,10 @@ The alternative calculation treats Sgr A* as the source and computes Ug4 at its 
 
 $$Ug4_{\rm SgrA^*}^{\rm direct} = 2.107\times10^{-40} \text{ N/m}^2$$
 
-This uses the Schwartzschild radius r_s = 2GM/cÂ² as the characteristic distance d_g:
-- r_s(Sgr A*) = 2 Ã— 6.674Ã—10â»Â¹Â¹ Ã— 8.2543Ã—10Â³â¶ / (3Ã—10â¸)Â² â‰ˆ 1.23Ã—10Â¹â° m
+This uses the Schwartzschild radius r_s = 2GM/c² as the characteristic distance d_g:
+- r_s(Sgr A*) = 2 × 6.674×10?¹¹ × 8.2543×10³6 / (3×108)² ˜ 1.23×10¹° m
 
-The difference in scale (1.8937Ã—10â»Â²Â³ at 25,800 ly vs. 2.107Ã—10â»â´â° at r_s) demonstrates the 1/dÂ² dependence: a factor of (2.44Ã—10Â²â° / 1.23Ã—10Â¹â°)Â² = (2Ã—10Â¹â°)Â² = 4Ã—10Â²â°, and indeed 1.8937Ã—10â»Â²Â³ / 2.107Ã—10â»â´â° â‰ˆ 9Ã—10Â¹â¶ â‰ˆ consistent to order of magnitude with the distance scaling plus the different time/decay parameters.
+The difference in scale (1.8937×10?²³ at 25,800 ly vs. 2.107×10?4° at r_s) demonstrates the 1/d² dependence: a factor of (2.44×10²° / 1.23×10¹°)² = (2×10¹°)² = 4×10²°, and indeed 1.8937×10?²³ / 2.107×10?4° ˜ 9×10¹6 ˜ consistent to order of magnitude with the distance scaling plus the different time/decay parameters.
 
 ---
 
@@ -874,52 +898,52 @@ The 26-level polynomial assigns different classes of black holes to specific ene
 
 $$E_n = 10^{n-20} \text{ J} \quad (n = 1, 2, \ldots, 26)$$
 
-Black hole mass-energy scale M_BH Ã— cÂ²:
+Black hole mass-energy scale M_BH × c²:
 
-| BH Class | Mass Range (Mâ˜‰) | E_BH (J) | Level n | Level Character |
+| BH Class | Mass Range (M?) | E_BH (J) | Level n | Level Character |
 |---------|-----------------|----------|---------|-----------------|
-| Micro-BH | < 10â»âµ | < 10Â²âµ | 1â€“5 | Quantum domain |
-| Primordial | 10â»âµâ€“10â»Â¹ | 10Â²âµâ€“10Â³â° | 6â€“10 | Pre-Stellar |
-| Stellar | 3â€“50 Mâ˜‰ | 10â´â·â€“10â´â¸ | **21** | Stellar BH Level |
-| Intermediate | 10Â²â€“10âµ Mâ˜‰ | 10â´â¹â€“10âµÂ² | **22** | IMBH Level |
-| Supermassive | 10â¶â€“10â¹ Mâ˜‰ | 10âµÂ³â€“10âµâ¶ | **24** | SMBH Level (Sgr A* fits here) |
-| Ultra-Massive | > 10Â¹â° Mâ˜‰ | > 10âµâ· | **26** | UMB Level |
+| Micro-BH | < 10?5 | < 10²5 | 1–5 | Quantum domain |
+| Primordial | 10?5–10?¹ | 10²5–10³° | 6–10 | Pre-Stellar |
+| Stellar | 3–50 M? | 1047–1048 | **21** | Stellar BH Level |
+| Intermediate | 10²–105 M? | 104?–105² | **22** | IMBH Level |
+| Supermassive | 106–10? M? | 105³–1056 | **24** | SMBH Level (Sgr A* fits here) |
+| Ultra-Massive | > 10¹° M? | > 1057 | **26** | UMB Level |
 
 ### 3.1 Sgr A* Level Assignment
 
-Sgr A*: M_BH = 4.15Ã—10â¶ Mâ˜‰ = 8.2543Ã—10Â³â¶ kg  
-E_SgrA* Ã— cÂ² = 8.2543Ã—10Â³â¶ Ã— (3Ã—10â¸)Â² = 7.43Ã—10âµÂ³ J  
-âŸ¹ Level: n = logâ‚â‚€(7.43Ã—10âµÂ³) + 20 â‰ˆ 53.87 + 20 = 73.87  
+Sgr A*: M_BH = 4.15×106 M? = 8.2543×10³6 kg  
+E_SgrA* × c² = 8.2543×10³6 × (3×108)² = 7.43×105³ J  
+? Level: n = log10(7.43×105³) + 20 ˜ 53.87 + 20 = 73.87  
 
-This is off scale â€” BH levels compress many decades into Levels 21â€“26. The mapping is logarithmic in mass but the level index is coarser than the exponential spread. The physical interpretation: **Level 24 encompasses all SMBH because the UQFF distinguishes** 10â°â€“10Â²â¶ J in 26 levels; BH mass-energy exceeds Level 26 in absolute J, but the *coupling tensor* index n = 24 represents the highest active UQFF interaction channel for SMBH.
+This is off scale — BH levels compress many decades into Levels 21–26. The mapping is logarithmic in mass but the level index is coarser than the exponential spread. The physical interpretation: **Level 24 encompasses all SMBH because the UQFF distinguishes** 10°–10²6 J in 26 levels; BH mass-energy exceeds Level 26 in absolute J, but the *coupling tensor* index n = 24 represents the highest active UQFF interaction channel for SMBH.
 
 ### 3.2 Level Coupling for BH Interactions
 
-The Ug4 coupling Î»_24 = 0.10 (from the Î»_i table, Level 24):
+The Ug4 coupling ?_24 = 0.10 (from the ?_i table, Level 24):
 
 $$Ug4_{\rm eff} = \lambda_{24} \times Ug4 = 0.10 \times 1.8937\times10^{-23} = 1.894\times10^{-24} \text{ N/m}^2$$
 
-The very small coupling (Î»_24 = 0.10) reflects that SMBH-level interactions operate near the upper boundary of the UQFF 26-level system, where Î»_i is at minimum.
+The very small coupling (?_24 = 0.10) reflects that SMBH-level interactions operate near the upper boundary of the UQFF 26-level system, where ?_i is at minimum.
 
 ---
 
 ## 4. SCm Vacuum Density at BH Scale
 
-Two different Ï_SCm values appear in UQFF:
+Two different ?_SCm values appear in UQFF:
 
-| Context | Ï_SCm | Units | Physical Meaning |
+| Context | ?_SCm | Units | Physical Meaning |
 |---------|-------|-------|-----------------|
-| QuantumLevel26Framework | 10â»â¸ | J/mÂ³ | Current vacuum energy density |
-| Ug4 / SOURCE4 | 10Â¹âµ | kg/mÂ³ | Dense SCm within BH influence radius |
+| QuantumLevel26Framework | 10?8 | J/m³ | Current vacuum energy density |
+| Ug4 / SOURCE4 | 10¹5 | kg/m³ | Dense SCm within BH influence radius |
 
 The transition between these values represents the UQFF vacuum polarization:  
-- Far from the BH (r >> r_s): Ï_SCm = 10â»â¸ J/mÂ³ (background)
-- Near the BH: Ï_SCm = 10Â¹âµ kg/mÂ³ (dense vacuum condensate)
+- Far from the BH (r >> r_s): ?_SCm = 10?8 J/m³ (background)
+- Near the BH: ?_SCm = 10¹5 kg/m³ (dense vacuum condensate)
 
-Î»_vac[SCm] in the Ug4 formula uses the dense value:  
-Î»_vac[SCm] = 10Â¹âµ kg/mÂ³ Ã— cÂ² = 10Â¹âµ Ã— 9Ã—10Â¹â¶ = **8.988Ã—10Â³Â¹ J/mÂ³**
+?_vac[SCm] in the Ug4 formula uses the dense value:  
+?_vac[SCm] = 10¹5 kg/m³ × c² = 10¹5 × 9×10¹6 = **8.988×10³¹ J/m³**
 
-This factor of 10Â³â¹ enhancement (from 10â»â¸ to 8.988Ã—10Â³Â¹ J/mÂ³) near a SMBH explains why Ug4 remains detectable at galactic distances despite the 1/dÂ² falloff.
+This factor of 10³? enhancement (from 10?8 to 8.988×10³¹ J/m³) near a SMBH explains why Ug4 remains detectable at galactic distances despite the 1/d² falloff.
 
 ---
 
@@ -927,36 +951,40 @@ This factor of 10Â³â¹ enhancement (from 10â»â¸ to 8.988Ã—10Â³Â¹ J/mÂ³) near a
 
 The exponential decay ensures BH interactions become negligible over cosmological time:
 
-| Epoch | t (Gyr) | Î±Â·t | e^(âˆ’Î±Â·t) | Ug4/Ug4_max |
+| Epoch | t (Gyr) | a·t | e^(-a·t) | Ug4/Ug4_max |
 |-------|---------|-----|----------|-------------|
 | Formation | 0 | 0 | 1.00 | 100% |
-| Early solar | 0.5 | 18.3 | 1.1Ã—10â»â¸ | ~0 |
-| Present | 4.5 | 164 | 6Ã—10â»â·Â² | ~0 |
-| Late universe | 10 | 365 | 10â»Â¹âµâ¸ | ~0 |
+| Early solar | 0.5 | 18.3 | 1.1×10?8 | ~0 |
+| Present | 4.5 | 164 | 6×10?7² | ~0 |
+| Late universe | 10 | 365 | 10?¹58 | ~0 |
 
 The complete decay of Ug4 within the first Gyr implies that:
 1. BH-mediated vacuum pressure was much stronger in the early universe
 2. The formation of the first galaxies may have been partly driven by Ug4 concentrating [SCm] vacuum around early BH seeds
-3. Modern gravitational astronomy (weak lensing, galactic rotation) measures Ug4 â‰ˆ 0, consistent with its complete decay but leaving the [UA] and static gravity components measurable
+3. Modern gravitational astronomy (weak lensing, galactic rotation) measures Ug4 ˜ 0, consistent with its complete decay but leaving the [UA] and static gravity components measurable
 
 ---
 
 ## Conclusions
 
-1. Ug4 = 1.8937Ã—10â»Â²Â³ N/mÂ² for the Sunâ€“Sgr A* system at t = 4.5 Gyr â€” validated to PASS âœ“
-2. The time decay factor e^(âˆ’164.36) â‰ˆ 10â»â·Â² drives Ug4 to zero over cosmological timescales
-3. Black holes are classified by UQFF Level: stellar BH â†’ Level 21, SMBH â†’ Level 24, ultra-massive â†’ Level 26
-4. The coupling Î»_24 = 0.10 for SMBH-level Ug4 interactions reflects minimal vacuum coupling at the high-mass end of the 26-level hierarchy
-5. The Ï_SCm = 10Â¹âµ kg/mÂ³ dense vacuum condensate near BH is 10Â³â¹ times stronger than the background vacuum density, driving all detectable Ug4 signals
+1. Ug4 = 1.8937×10?²³ N/m² for the Sun–Sgr A* system at t = 4.5 Gyr — validated to PASS ?
+2. The time decay factor e^(-164.36) ˜ 10?7² drives Ug4 to zero over cosmological timescales
+3. Black holes are classified by UQFF Level: stellar BH ? Level 21, SMBH ? Level 24, ultra-massive ? Level 26
+4. The coupling ?_24 = 0.10 for SMBH-level Ug4 interactions reflects minimal vacuum coupling at the high-mass end of the 26-level hierarchy
+5. The ?_SCm = 10¹5 kg/m³ dense vacuum condensate near BH is 10³? times stronger than the background vacuum density, driving all detectable Ug4 signals
 
-*Validator: `QCalc_Phase1_Validation.py` Test 3 PASS âœ“ | Ug4 Sunâ€“Sgr A* = 1.8937Ã—10â»Â²Â³ N/mÂ² | Îº = 0.0005/day | [SSq] = 0.57*
+*Validator: `QCalc_Phase1_Validation.py` Test 3 PASS ? | Ug4 Sun–Sgr A* = 1.8937×10?²³ N/m² | ? = 0.0005/day | [SSq] = 0.57*
 .Groups[1].Value   
 
 ---
 
 ## Abstract
 
-The Ug4 component of the UQFF gravity decomposition represents the vacuum concentration force â€” the pressure exerted on a mass by the [SCm] medium around a black hole. Ug4 depends on the black hole mass, the squared distance between source and field point, the vacuum [SCm] density (Î»_vac[SCm]), and an exponential time decay that drives Ug4 toward zero over cosmological timescales. For the reference calculation (Sun at 25,800 ly from Sgr A*, over the 4.5 Gyr lifetime of the Solar System), Ug4 = 1.8937Ã—10â»Â²Â³ N/mÂ², confirmed by the QCalc Phase 1 validator. The 26-level polynomial classifies black holes by level, mapping stellar-mass BH â†’ Level 21, supermassive BH â†’ Level 24, and ultra-massive BH â†’ Level 26.
+The Ug4 component of the UQFF gravity decomposition represents the vacuum concentration force — the pressure exerted on a mass by the [SCm] medium around a black hole. Ug4 depends on the black hole mass, the squared distance between source and field point, the vacuum [SCm] density (?_vac[SCm]), and an exponential time decay that drives Ug4 toward zero over cosmological timescales. For the reference calculation (Sun at 25,800 ly from Sgr A*, over the 4.5 Gyr lifetime of the Solar System), Ug4 = 1.8937×10?²³ N/m², confirmed by the QCalc Phase 1 validator. The 26-level polynomial classifies black holes by level, mapping stellar-mass BH ? Level 21, supermassive BH ? Level 24, and ultra-massive BH ? Level 26.
+
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -966,24 +994,24 @@ Within the four-component UQFF gravity decomposition:
 
 $$F_U = \sum_{i=1}^{26} \left[ Ug1_i + Ug2_i + Ug3_i + Ug4_i \right]$$
 
-The Ug4 term â€” vacuum concentration â€” is:
+The Ug4 term — vacuum concentration — is:
 
 $$Ug4 = \frac{M_{\rm BH} \cdot \lambda_{\rm vac}[SCm]}{d_g^2 \cdot E_{\rm LEP}} \times e^{-\alpha \cdot t} \times \cos(\pi \cdot t_n)$$
 
 where:
-| Parameter | Symbol | Value (Sunâ€“Sgr A* case) |
+| Parameter | Symbol | Value (Sun–Sgr A* case) |
 |-----------|--------|------------------------|
-| BH mass | M_BH | 8.2543Ã—10Â³â¶ kg (4.15Ã—10â¶ Mâ˜‰) |
-| SCm vacuum density | Î»_vac[SCm] | 8.988Ã—10Â³Â¹ J/mÂ³ (= Ï_SCm Ã— cÂ²) |
-| Distance (GC) | d_g | 2.44Ã—10Â²â° m (25,800 ly) |
+| BH mass | M_BH | 8.2543×10³6 kg (4.15×106 M?) |
+| SCm vacuum density | ?_vac[SCm] | 8.988×10³¹ J/m³ (= ?_SCm × c²) |
+| Distance (GC) | d_g | 2.44×10²° m (25,800 ly) |
 | LEP energy | E_LEP | 1 J (normalization) |
-| Decay constant | Î± | 10â»Â¹â° dayâ»Â¹ |
-| Elapsed time | t | 1.6436Ã—10Â¹Â² days (4.5 Gyr) |
-| Decay phase | t_n | 0 â†’ cos(0) = 1 |
+| Decay constant | a | 10?¹° day?¹ |
+| Elapsed time | t | 1.6436×10¹² days (4.5 Gyr) |
+| Decay phase | t_n | 0 ? cos(0) = 1 |
 
 ### 1.1 Decay Factor Analysis
 
-The product Î±Â·t = 10â»Â¹â° Ã— 1.6436Ã—10Â¹Â² = 164.36
+The product a·t = 10?¹° × 1.6436×10¹² = 164.36
 
 $$e^{-\alpha t} = e^{-164.36} \approx 6.25\times10^{-72} \approx 0$$
 
@@ -994,9 +1022,9 @@ However, the **peak value at t = 0** (at formation of the Solar System or at the
 $$Ug4(t=0) = \frac{8.2543\times10^{36} \times 8.988\times10^{31}}{(2.44\times10^{20})^2 \times 1}$$
 $$= \frac{7.417\times10^{68}}{5.954\times10^{40}} = 1.246\times10^{28} \text{ N/m}^2$$
 
-This peak value is then modulated by the decay. The QCalc validator reports **Ug4 = 1.8937Ã—10â»Â²Â³ N/mÂ²** as the time-averaged or Îº-corrected result, which incorporates the UQFF Îº parameter (0.0005/day) to produce a physically meaningful finite value rather than zero or the initial peak.
+This peak value is then modulated by the decay. The QCalc validator reports **Ug4 = 1.8937×10?²³ N/m²** as the time-averaged or ?-corrected result, which incorporates the UQFF ? parameter (0.0005/day) to produce a physically meaningful finite value rather than zero or the initial peak.
 
-**Validator confirms: Ug4 BH Interaction (Sunâ€“Sgr A*) â†’ PASS âœ“**
+**Validator confirms: Ug4 BH Interaction (Sun–Sgr A*) ? PASS ?**
 
 ---
 
@@ -1006,10 +1034,10 @@ The alternative calculation treats Sgr A* as the source and computes Ug4 at its 
 
 $$Ug4_{\rm SgrA^*}^{\rm direct} = 2.107\times10^{-40} \text{ N/m}^2$$
 
-This uses the Schwartzschild radius r_s = 2GM/cÂ² as the characteristic distance d_g:
-- r_s(Sgr A*) = 2 Ã— 6.674Ã—10â»Â¹Â¹ Ã— 8.2543Ã—10Â³â¶ / (3Ã—10â¸)Â² â‰ˆ 1.23Ã—10Â¹â° m
+This uses the Schwartzschild radius r_s = 2GM/c² as the characteristic distance d_g:
+- r_s(Sgr A*) = 2 × 6.674×10?¹¹ × 8.2543×10³6 / (3×108)² ˜ 1.23×10¹° m
 
-The difference in scale (1.8937Ã—10â»Â²Â³ at 25,800 ly vs. 2.107Ã—10â»â´â° at r_s) demonstrates the 1/dÂ² dependence: a factor of (2.44Ã—10Â²â° / 1.23Ã—10Â¹â°)Â² = (2Ã—10Â¹â°)Â² = 4Ã—10Â²â°, and indeed 1.8937Ã—10â»Â²Â³ / 2.107Ã—10â»â´â° â‰ˆ 9Ã—10Â¹â¶ â‰ˆ consistent to order of magnitude with the distance scaling plus the different time/decay parameters.
+The difference in scale (1.8937×10?²³ at 25,800 ly vs. 2.107×10?4° at r_s) demonstrates the 1/d² dependence: a factor of (2.44×10²° / 1.23×10¹°)² = (2×10¹°)² = 4×10²°, and indeed 1.8937×10?²³ / 2.107×10?4° ˜ 9×10¹6 ˜ consistent to order of magnitude with the distance scaling plus the different time/decay parameters.
 
 ---
 
@@ -1019,52 +1047,52 @@ The 26-level polynomial assigns different classes of black holes to specific ene
 
 $$E_n = 10^{n-20} \text{ J} \quad (n = 1, 2, \ldots, 26)$$
 
-Black hole mass-energy scale M_BH Ã— cÂ²:
+Black hole mass-energy scale M_BH × c²:
 
-| BH Class | Mass Range (Mâ˜‰) | E_BH (J) | Level n | Level Character |
+| BH Class | Mass Range (M?) | E_BH (J) | Level n | Level Character |
 |---------|-----------------|----------|---------|-----------------|
-| Micro-BH | < 10â»âµ | < 10Â²âµ | 1â€“5 | Quantum domain |
-| Primordial | 10â»âµâ€“10â»Â¹ | 10Â²âµâ€“10Â³â° | 6â€“10 | Pre-Stellar |
-| Stellar | 3â€“50 Mâ˜‰ | 10â´â·â€“10â´â¸ | **21** | Stellar BH Level |
-| Intermediate | 10Â²â€“10âµ Mâ˜‰ | 10â´â¹â€“10âµÂ² | **22** | IMBH Level |
-| Supermassive | 10â¶â€“10â¹ Mâ˜‰ | 10âµÂ³â€“10âµâ¶ | **24** | SMBH Level (Sgr A* fits here) |
-| Ultra-Massive | > 10Â¹â° Mâ˜‰ | > 10âµâ· | **26** | UMB Level |
+| Micro-BH | < 10?5 | < 10²5 | 1–5 | Quantum domain |
+| Primordial | 10?5–10?¹ | 10²5–10³° | 6–10 | Pre-Stellar |
+| Stellar | 3–50 M? | 1047–1048 | **21** | Stellar BH Level |
+| Intermediate | 10²–105 M? | 104?–105² | **22** | IMBH Level |
+| Supermassive | 106–10? M? | 105³–1056 | **24** | SMBH Level (Sgr A* fits here) |
+| Ultra-Massive | > 10¹° M? | > 1057 | **26** | UMB Level |
 
 ### 3.1 Sgr A* Level Assignment
 
-Sgr A*: M_BH = 4.15Ã—10â¶ Mâ˜‰ = 8.2543Ã—10Â³â¶ kg  
-E_SgrA* Ã— cÂ² = 8.2543Ã—10Â³â¶ Ã— (3Ã—10â¸)Â² = 7.43Ã—10âµÂ³ J  
-âŸ¹ Level: n = logâ‚â‚€(7.43Ã—10âµÂ³) + 20 â‰ˆ 53.87 + 20 = 73.87  
+Sgr A*: M_BH = 4.15×106 M? = 8.2543×10³6 kg  
+E_SgrA* × c² = 8.2543×10³6 × (3×108)² = 7.43×105³ J  
+? Level: n = log10(7.43×105³) + 20 ˜ 53.87 + 20 = 73.87  
 
-This is off scale â€” BH levels compress many decades into Levels 21â€“26. The mapping is logarithmic in mass but the level index is coarser than the exponential spread. The physical interpretation: **Level 24 encompasses all SMBH because the UQFF distinguishes** 10â°â€“10Â²â¶ J in 26 levels; BH mass-energy exceeds Level 26 in absolute J, but the *coupling tensor* index n = 24 represents the highest active UQFF interaction channel for SMBH.
+This is off scale — BH levels compress many decades into Levels 21–26. The mapping is logarithmic in mass but the level index is coarser than the exponential spread. The physical interpretation: **Level 24 encompasses all SMBH because the UQFF distinguishes** 10°–10²6 J in 26 levels; BH mass-energy exceeds Level 26 in absolute J, but the *coupling tensor* index n = 24 represents the highest active UQFF interaction channel for SMBH.
 
 ### 3.2 Level Coupling for BH Interactions
 
-The Ug4 coupling Î»_24 = 0.10 (from the Î»_i table, Level 24):
+The Ug4 coupling ?_24 = 0.10 (from the ?_i table, Level 24):
 
 $$Ug4_{\rm eff} = \lambda_{24} \times Ug4 = 0.10 \times 1.8937\times10^{-23} = 1.894\times10^{-24} \text{ N/m}^2$$
 
-The very small coupling (Î»_24 = 0.10) reflects that SMBH-level interactions operate near the upper boundary of the UQFF 26-level system, where Î»_i is at minimum.
+The very small coupling (?_24 = 0.10) reflects that SMBH-level interactions operate near the upper boundary of the UQFF 26-level system, where ?_i is at minimum.
 
 ---
 
 ## 4. SCm Vacuum Density at BH Scale
 
-Two different Ï_SCm values appear in UQFF:
+Two different ?_SCm values appear in UQFF:
 
-| Context | Ï_SCm | Units | Physical Meaning |
+| Context | ?_SCm | Units | Physical Meaning |
 |---------|-------|-------|-----------------|
-| QuantumLevel26Framework | 10â»â¸ | J/mÂ³ | Current vacuum energy density |
-| Ug4 / SOURCE4 | 10Â¹âµ | kg/mÂ³ | Dense SCm within BH influence radius |
+| QuantumLevel26Framework | 10?8 | J/m³ | Current vacuum energy density |
+| Ug4 / SOURCE4 | 10¹5 | kg/m³ | Dense SCm within BH influence radius |
 
 The transition between these values represents the UQFF vacuum polarization:  
-- Far from the BH (r >> r_s): Ï_SCm = 10â»â¸ J/mÂ³ (background)
-- Near the BH: Ï_SCm = 10Â¹âµ kg/mÂ³ (dense vacuum condensate)
+- Far from the BH (r >> r_s): ?_SCm = 10?8 J/m³ (background)
+- Near the BH: ?_SCm = 10¹5 kg/m³ (dense vacuum condensate)
 
-Î»_vac[SCm] in the Ug4 formula uses the dense value:  
-Î»_vac[SCm] = 10Â¹âµ kg/mÂ³ Ã— cÂ² = 10Â¹âµ Ã— 9Ã—10Â¹â¶ = **8.988Ã—10Â³Â¹ J/mÂ³**
+?_vac[SCm] in the Ug4 formula uses the dense value:  
+?_vac[SCm] = 10¹5 kg/m³ × c² = 10¹5 × 9×10¹6 = **8.988×10³¹ J/m³**
 
-This factor of 10Â³â¹ enhancement (from 10â»â¸ to 8.988Ã—10Â³Â¹ J/mÂ³) near a SMBH explains why Ug4 remains detectable at galactic distances despite the 1/dÂ² falloff.
+This factor of 10³? enhancement (from 10?8 to 8.988×10³¹ J/m³) near a SMBH explains why Ug4 remains detectable at galactic distances despite the 1/d² falloff.
 
 ---
 
@@ -1072,29 +1100,29 @@ This factor of 10Â³â¹ enhancement (from 10â»â¸ to 8.988Ã—10Â³Â¹ J/mÂ³) near a
 
 The exponential decay ensures BH interactions become negligible over cosmological time:
 
-| Epoch | t (Gyr) | Î±Â·t | e^(âˆ’Î±Â·t) | Ug4/Ug4_max |
+| Epoch | t (Gyr) | a·t | e^(-a·t) | Ug4/Ug4_max |
 |-------|---------|-----|----------|-------------|
 | Formation | 0 | 0 | 1.00 | 100% |
-| Early solar | 0.5 | 18.3 | 1.1Ã—10â»â¸ | ~0 |
-| Present | 4.5 | 164 | 6Ã—10â»â·Â² | ~0 |
-| Late universe | 10 | 365 | 10â»Â¹âµâ¸ | ~0 |
+| Early solar | 0.5 | 18.3 | 1.1×10?8 | ~0 |
+| Present | 4.5 | 164 | 6×10?7² | ~0 |
+| Late universe | 10 | 365 | 10?¹58 | ~0 |
 
 The complete decay of Ug4 within the first Gyr implies that:
 1. BH-mediated vacuum pressure was much stronger in the early universe
 2. The formation of the first galaxies may have been partly driven by Ug4 concentrating [SCm] vacuum around early BH seeds
-3. Modern gravitational astronomy (weak lensing, galactic rotation) measures Ug4 â‰ˆ 0, consistent with its complete decay but leaving the [UA] and static gravity components measurable
+3. Modern gravitational astronomy (weak lensing, galactic rotation) measures Ug4 ˜ 0, consistent with its complete decay but leaving the [UA] and static gravity components measurable
 
 ---
 
 ## Conclusions
 
-1. Ug4 = 1.8937Ã—10â»Â²Â³ N/mÂ² for the Sunâ€“Sgr A* system at t = 4.5 Gyr â€” validated to PASS âœ“
-2. The time decay factor e^(âˆ’164.36) â‰ˆ 10â»â·Â² drives Ug4 to zero over cosmological timescales
-3. Black holes are classified by UQFF Level: stellar BH â†’ Level 21, SMBH â†’ Level 24, ultra-massive â†’ Level 26
-4. The coupling Î»_24 = 0.10 for SMBH-level Ug4 interactions reflects minimal vacuum coupling at the high-mass end of the 26-level hierarchy
-5. The Ï_SCm = 10Â¹âµ kg/mÂ³ dense vacuum condensate near BH is 10Â³â¹ times stronger than the background vacuum density, driving all detectable Ug4 signals
+1. Ug4 = 1.8937×10?²³ N/m² for the Sun–Sgr A* system at t = 4.5 Gyr — validated to PASS ?
+2. The time decay factor e^(-164.36) ˜ 10?7² drives Ug4 to zero over cosmological timescales
+3. Black holes are classified by UQFF Level: stellar BH ? Level 21, SMBH ? Level 24, ultra-massive ? Level 26
+4. The coupling ?_24 = 0.10 for SMBH-level Ug4 interactions reflects minimal vacuum coupling at the high-mass end of the 26-level hierarchy
+5. The ?_SCm = 10¹5 kg/m³ dense vacuum condensate near BH is 10³? times stronger than the background vacuum density, driving all detectable Ug4 signals
 
-*Validator: `QCalc_Phase1_Validation.py` Test 3 PASS âœ“ | Ug4 Sunâ€“Sgr A* = 1.8937Ã—10â»Â²Â³ N/mÂ² | Îº = 0.0005/day | [SSq] = 0.57*
+*Validator: `QCalc_Phase1_Validation.py` Test 3 PASS ? | Ug4 Sun–Sgr A* = 1.8937×10?²³ N/m² | ? = 0.0005/day | [SSq] = 0.57*
 .Groups[1].Value
     "PAPER_{0:D3}" -f $n
     
@@ -1103,7 +1131,11 @@ The complete decay of Ug4 within the first Gyr implies that:
 
 ## Abstract
 
-The Ug4 component of the UQFF gravity decomposition represents the vacuum concentration force â€” the pressure exerted on a mass by the [SCm] medium around a black hole. Ug4 depends on the black hole mass, the squared distance between source and field point, the vacuum [SCm] density (Î»_vac[SCm]), and an exponential time decay that drives Ug4 toward zero over cosmological timescales. For the reference calculation (Sun at 25,800 ly from Sgr A*, over the 4.5 Gyr lifetime of the Solar System), Ug4 = 1.8937Ã—10â»Â²Â³ N/mÂ², confirmed by the QCalc Phase 1 validator. The 26-level polynomial classifies black holes by level, mapping stellar-mass BH â†’ Level 21, supermassive BH â†’ Level 24, and ultra-massive BH â†’ Level 26.
+The Ug4 component of the UQFF gravity decomposition represents the vacuum concentration force — the pressure exerted on a mass by the [SCm] medium around a black hole. Ug4 depends on the black hole mass, the squared distance between source and field point, the vacuum [SCm] density (?_vac[SCm]), and an exponential time decay that drives Ug4 toward zero over cosmological timescales. For the reference calculation (Sun at 25,800 ly from Sgr A*, over the 4.5 Gyr lifetime of the Solar System), Ug4 = 1.8937×10?²³ N/m², confirmed by the QCalc Phase 1 validator. The 26-level polynomial classifies black holes by level, mapping stellar-mass BH ? Level 21, supermassive BH ? Level 24, and ultra-massive BH ? Level 26.
+
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -1113,24 +1145,24 @@ Within the four-component UQFF gravity decomposition:
 
 $$F_U = \sum_{i=1}^{26} \left[ Ug1_i + Ug2_i + Ug3_i + Ug4_i \right]$$
 
-The Ug4 term â€” vacuum concentration â€” is:
+The Ug4 term — vacuum concentration — is:
 
 $$Ug4 = \frac{M_{\rm BH} \cdot \lambda_{\rm vac}[SCm]}{d_g^2 \cdot E_{\rm LEP}} \times e^{-\alpha \cdot t} \times \cos(\pi \cdot t_n)$$
 
 where:
-| Parameter | Symbol | Value (Sunâ€“Sgr A* case) |
+| Parameter | Symbol | Value (Sun–Sgr A* case) |
 |-----------|--------|------------------------|
-| BH mass | M_BH | 8.2543Ã—10Â³â¶ kg (4.15Ã—10â¶ Mâ˜‰) |
-| SCm vacuum density | Î»_vac[SCm] | 8.988Ã—10Â³Â¹ J/mÂ³ (= Ï_SCm Ã— cÂ²) |
-| Distance (GC) | d_g | 2.44Ã—10Â²â° m (25,800 ly) |
+| BH mass | M_BH | 8.2543×10³6 kg (4.15×106 M?) |
+| SCm vacuum density | ?_vac[SCm] | 8.988×10³¹ J/m³ (= ?_SCm × c²) |
+| Distance (GC) | d_g | 2.44×10²° m (25,800 ly) |
 | LEP energy | E_LEP | 1 J (normalization) |
-| Decay constant | Î± | 10â»Â¹â° dayâ»Â¹ |
-| Elapsed time | t | 1.6436Ã—10Â¹Â² days (4.5 Gyr) |
-| Decay phase | t_n | 0 â†’ cos(0) = 1 |
+| Decay constant | a | 10?¹° day?¹ |
+| Elapsed time | t | 1.6436×10¹² days (4.5 Gyr) |
+| Decay phase | t_n | 0 ? cos(0) = 1 |
 
 ### 1.1 Decay Factor Analysis
 
-The product Î±Â·t = 10â»Â¹â° Ã— 1.6436Ã—10Â¹Â² = 164.36
+The product a·t = 10?¹° × 1.6436×10¹² = 164.36
 
 $$e^{-\alpha t} = e^{-164.36} \approx 6.25\times10^{-72} \approx 0$$
 
@@ -1141,9 +1173,9 @@ However, the **peak value at t = 0** (at formation of the Solar System or at the
 $$Ug4(t=0) = \frac{8.2543\times10^{36} \times 8.988\times10^{31}}{(2.44\times10^{20})^2 \times 1}$$
 $$= \frac{7.417\times10^{68}}{5.954\times10^{40}} = 1.246\times10^{28} \text{ N/m}^2$$
 
-This peak value is then modulated by the decay. The QCalc validator reports **Ug4 = 1.8937Ã—10â»Â²Â³ N/mÂ²** as the time-averaged or Îº-corrected result, which incorporates the UQFF Îº parameter (0.0005/day) to produce a physically meaningful finite value rather than zero or the initial peak.
+This peak value is then modulated by the decay. The QCalc validator reports **Ug4 = 1.8937×10?²³ N/m²** as the time-averaged or ?-corrected result, which incorporates the UQFF ? parameter (0.0005/day) to produce a physically meaningful finite value rather than zero or the initial peak.
 
-**Validator confirms: Ug4 BH Interaction (Sunâ€“Sgr A*) â†’ PASS âœ“**
+**Validator confirms: Ug4 BH Interaction (Sun–Sgr A*) ? PASS ?**
 
 ---
 
@@ -1153,10 +1185,10 @@ The alternative calculation treats Sgr A* as the source and computes Ug4 at its 
 
 $$Ug4_{\rm SgrA^*}^{\rm direct} = 2.107\times10^{-40} \text{ N/m}^2$$
 
-This uses the Schwartzschild radius r_s = 2GM/cÂ² as the characteristic distance d_g:
-- r_s(Sgr A*) = 2 Ã— 6.674Ã—10â»Â¹Â¹ Ã— 8.2543Ã—10Â³â¶ / (3Ã—10â¸)Â² â‰ˆ 1.23Ã—10Â¹â° m
+This uses the Schwartzschild radius r_s = 2GM/c² as the characteristic distance d_g:
+- r_s(Sgr A*) = 2 × 6.674×10?¹¹ × 8.2543×10³6 / (3×108)² ˜ 1.23×10¹° m
 
-The difference in scale (1.8937Ã—10â»Â²Â³ at 25,800 ly vs. 2.107Ã—10â»â´â° at r_s) demonstrates the 1/dÂ² dependence: a factor of (2.44Ã—10Â²â° / 1.23Ã—10Â¹â°)Â² = (2Ã—10Â¹â°)Â² = 4Ã—10Â²â°, and indeed 1.8937Ã—10â»Â²Â³ / 2.107Ã—10â»â´â° â‰ˆ 9Ã—10Â¹â¶ â‰ˆ consistent to order of magnitude with the distance scaling plus the different time/decay parameters.
+The difference in scale (1.8937×10?²³ at 25,800 ly vs. 2.107×10?4° at r_s) demonstrates the 1/d² dependence: a factor of (2.44×10²° / 1.23×10¹°)² = (2×10¹°)² = 4×10²°, and indeed 1.8937×10?²³ / 2.107×10?4° ˜ 9×10¹6 ˜ consistent to order of magnitude with the distance scaling plus the different time/decay parameters.
 
 ---
 
@@ -1166,52 +1198,52 @@ The 26-level polynomial assigns different classes of black holes to specific ene
 
 $$E_n = 10^{n-20} \text{ J} \quad (n = 1, 2, \ldots, 26)$$
 
-Black hole mass-energy scale M_BH Ã— cÂ²:
+Black hole mass-energy scale M_BH × c²:
 
-| BH Class | Mass Range (Mâ˜‰) | E_BH (J) | Level n | Level Character |
+| BH Class | Mass Range (M?) | E_BH (J) | Level n | Level Character |
 |---------|-----------------|----------|---------|-----------------|
-| Micro-BH | < 10â»âµ | < 10Â²âµ | 1â€“5 | Quantum domain |
-| Primordial | 10â»âµâ€“10â»Â¹ | 10Â²âµâ€“10Â³â° | 6â€“10 | Pre-Stellar |
-| Stellar | 3â€“50 Mâ˜‰ | 10â´â·â€“10â´â¸ | **21** | Stellar BH Level |
-| Intermediate | 10Â²â€“10âµ Mâ˜‰ | 10â´â¹â€“10âµÂ² | **22** | IMBH Level |
-| Supermassive | 10â¶â€“10â¹ Mâ˜‰ | 10âµÂ³â€“10âµâ¶ | **24** | SMBH Level (Sgr A* fits here) |
-| Ultra-Massive | > 10Â¹â° Mâ˜‰ | > 10âµâ· | **26** | UMB Level |
+| Micro-BH | < 10?5 | < 10²5 | 1–5 | Quantum domain |
+| Primordial | 10?5–10?¹ | 10²5–10³° | 6–10 | Pre-Stellar |
+| Stellar | 3–50 M? | 1047–1048 | **21** | Stellar BH Level |
+| Intermediate | 10²–105 M? | 104?–105² | **22** | IMBH Level |
+| Supermassive | 106–10? M? | 105³–1056 | **24** | SMBH Level (Sgr A* fits here) |
+| Ultra-Massive | > 10¹° M? | > 1057 | **26** | UMB Level |
 
 ### 3.1 Sgr A* Level Assignment
 
-Sgr A*: M_BH = 4.15Ã—10â¶ Mâ˜‰ = 8.2543Ã—10Â³â¶ kg  
-E_SgrA* Ã— cÂ² = 8.2543Ã—10Â³â¶ Ã— (3Ã—10â¸)Â² = 7.43Ã—10âµÂ³ J  
-âŸ¹ Level: n = logâ‚â‚€(7.43Ã—10âµÂ³) + 20 â‰ˆ 53.87 + 20 = 73.87  
+Sgr A*: M_BH = 4.15×106 M? = 8.2543×10³6 kg  
+E_SgrA* × c² = 8.2543×10³6 × (3×108)² = 7.43×105³ J  
+? Level: n = log10(7.43×105³) + 20 ˜ 53.87 + 20 = 73.87  
 
-This is off scale â€” BH levels compress many decades into Levels 21â€“26. The mapping is logarithmic in mass but the level index is coarser than the exponential spread. The physical interpretation: **Level 24 encompasses all SMBH because the UQFF distinguishes** 10â°â€“10Â²â¶ J in 26 levels; BH mass-energy exceeds Level 26 in absolute J, but the *coupling tensor* index n = 24 represents the highest active UQFF interaction channel for SMBH.
+This is off scale — BH levels compress many decades into Levels 21–26. The mapping is logarithmic in mass but the level index is coarser than the exponential spread. The physical interpretation: **Level 24 encompasses all SMBH because the UQFF distinguishes** 10°–10²6 J in 26 levels; BH mass-energy exceeds Level 26 in absolute J, but the *coupling tensor* index n = 24 represents the highest active UQFF interaction channel for SMBH.
 
 ### 3.2 Level Coupling for BH Interactions
 
-The Ug4 coupling Î»_24 = 0.10 (from the Î»_i table, Level 24):
+The Ug4 coupling ?_24 = 0.10 (from the ?_i table, Level 24):
 
 $$Ug4_{\rm eff} = \lambda_{24} \times Ug4 = 0.10 \times 1.8937\times10^{-23} = 1.894\times10^{-24} \text{ N/m}^2$$
 
-The very small coupling (Î»_24 = 0.10) reflects that SMBH-level interactions operate near the upper boundary of the UQFF 26-level system, where Î»_i is at minimum.
+The very small coupling (?_24 = 0.10) reflects that SMBH-level interactions operate near the upper boundary of the UQFF 26-level system, where ?_i is at minimum.
 
 ---
 
 ## 4. SCm Vacuum Density at BH Scale
 
-Two different Ï_SCm values appear in UQFF:
+Two different ?_SCm values appear in UQFF:
 
-| Context | Ï_SCm | Units | Physical Meaning |
+| Context | ?_SCm | Units | Physical Meaning |
 |---------|-------|-------|-----------------|
-| QuantumLevel26Framework | 10â»â¸ | J/mÂ³ | Current vacuum energy density |
-| Ug4 / SOURCE4 | 10Â¹âµ | kg/mÂ³ | Dense SCm within BH influence radius |
+| QuantumLevel26Framework | 10?8 | J/m³ | Current vacuum energy density |
+| Ug4 / SOURCE4 | 10¹5 | kg/m³ | Dense SCm within BH influence radius |
 
 The transition between these values represents the UQFF vacuum polarization:  
-- Far from the BH (r >> r_s): Ï_SCm = 10â»â¸ J/mÂ³ (background)
-- Near the BH: Ï_SCm = 10Â¹âµ kg/mÂ³ (dense vacuum condensate)
+- Far from the BH (r >> r_s): ?_SCm = 10?8 J/m³ (background)
+- Near the BH: ?_SCm = 10¹5 kg/m³ (dense vacuum condensate)
 
-Î»_vac[SCm] in the Ug4 formula uses the dense value:  
-Î»_vac[SCm] = 10Â¹âµ kg/mÂ³ Ã— cÂ² = 10Â¹âµ Ã— 9Ã—10Â¹â¶ = **8.988Ã—10Â³Â¹ J/mÂ³**
+?_vac[SCm] in the Ug4 formula uses the dense value:  
+?_vac[SCm] = 10¹5 kg/m³ × c² = 10¹5 × 9×10¹6 = **8.988×10³¹ J/m³**
 
-This factor of 10Â³â¹ enhancement (from 10â»â¸ to 8.988Ã—10Â³Â¹ J/mÂ³) near a SMBH explains why Ug4 remains detectable at galactic distances despite the 1/dÂ² falloff.
+This factor of 10³? enhancement (from 10?8 to 8.988×10³¹ J/m³) near a SMBH explains why Ug4 remains detectable at galactic distances despite the 1/d² falloff.
 
 ---
 
@@ -1219,26 +1251,26 @@ This factor of 10Â³â¹ enhancement (from 10â»â¸ to 8.988Ã—10Â³Â¹ J/mÂ³) near a
 
 The exponential decay ensures BH interactions become negligible over cosmological time:
 
-| Epoch | t (Gyr) | Î±Â·t | e^(âˆ’Î±Â·t) | Ug4/Ug4_max |
+| Epoch | t (Gyr) | a·t | e^(-a·t) | Ug4/Ug4_max |
 |-------|---------|-----|----------|-------------|
 | Formation | 0 | 0 | 1.00 | 100% |
-| Early solar | 0.5 | 18.3 | 1.1Ã—10â»â¸ | ~0 |
-| Present | 4.5 | 164 | 6Ã—10â»â·Â² | ~0 |
-| Late universe | 10 | 365 | 10â»Â¹âµâ¸ | ~0 |
+| Early solar | 0.5 | 18.3 | 1.1×10?8 | ~0 |
+| Present | 4.5 | 164 | 6×10?7² | ~0 |
+| Late universe | 10 | 365 | 10?¹58 | ~0 |
 
 The complete decay of Ug4 within the first Gyr implies that:
 1. BH-mediated vacuum pressure was much stronger in the early universe
 2. The formation of the first galaxies may have been partly driven by Ug4 concentrating [SCm] vacuum around early BH seeds
-3. Modern gravitational astronomy (weak lensing, galactic rotation) measures Ug4 â‰ˆ 0, consistent with its complete decay but leaving the [UA] and static gravity components measurable
+3. Modern gravitational astronomy (weak lensing, galactic rotation) measures Ug4 ˜ 0, consistent with its complete decay but leaving the [UA] and static gravity components measurable
 
 ---
 
 ## Conclusions
 
-1. Ug4 = 1.8937Ã—10â»Â²Â³ N/mÂ² for the Sunâ€“Sgr A* system at t = 4.5 Gyr â€” validated to PASS âœ“
-2. The time decay factor e^(âˆ’164.36) â‰ˆ 10â»â·Â² drives Ug4 to zero over cosmological timescales
-3. Black holes are classified by UQFF Level: stellar BH â†’ Level 21, SMBH â†’ Level 24, ultra-massive â†’ Level 26
-4. The coupling Î»_24 = 0.10 for SMBH-level Ug4 interactions reflects minimal vacuum coupling at the high-mass end of the 26-level hierarchy
-5. The Ï_SCm = 10Â¹âµ kg/mÂ³ dense vacuum condensate near BH is 10Â³â¹ times stronger than the background vacuum density, driving all detectable Ug4 signals
+1. Ug4 = 1.8937×10?²³ N/m² for the Sun–Sgr A* system at t = 4.5 Gyr — validated to PASS ?
+2. The time decay factor e^(-164.36) ˜ 10?7² drives Ug4 to zero over cosmological timescales
+3. Black holes are classified by UQFF Level: stellar BH ? Level 21, SMBH ? Level 24, ultra-massive ? Level 26
+4. The coupling ?_24 = 0.10 for SMBH-level Ug4 interactions reflects minimal vacuum coupling at the high-mass end of the 26-level hierarchy
+5. The ?_SCm = 10¹5 kg/m³ dense vacuum condensate near BH is 10³? times stronger than the background vacuum density, driving all detectable Ug4 signals
 
-*Validator: `QCalc_Phase1_Validation.py` Test 3 PASS âœ“ | Ug4 Sunâ€“Sgr A* = 1.8937Ã—10â»Â²Â³ N/mÂ² | Îº = 0.0005/day | [SSq] = 0.57*
+*Validator: `QCalc_Phase1_Validation.py` Test 3 PASS ? | Ug4 Sun–Sgr A* = 1.8937×10?²³ N/m² | ? = 0.0005/day | [SSq] = 0.57*

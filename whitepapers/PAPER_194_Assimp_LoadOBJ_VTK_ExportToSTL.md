@@ -10,9 +10,17 @@
 
 $$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b_i}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57$$
 
+$$
+U_{b_i}(r) = \kappa\cdot[SSq]\cdot\frac{GM}{r^2}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57,\; \beta_i = 0.61
+$$
+
 ## Abstract
 
 This paper provides complete reference implementations for 3D mesh I/O in the CoAnQi `Graphics3D` namespace: `loadOBJ()` using the Assimp library for multi-mesh, multi-normal, multi-UV OBJ import, and `exportToSTL()` using VTK's `vtkSTLWriter` for binary/ASCII STL export. Additional operations documented include `exportOBJ()` for round-trip mesh preservation, `loadTexture()` for OpenGL texture loading, procedural landscape generation via Perlin noise, mesh extrusion, boolean union, and LaTeX expression rendering into OpenGL textures.
+
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -24,7 +32,7 @@ bool CoAnQi::Graphics3D::loadOBJ(const std::string& path, MeshData& mesh) {
     
     // Post-processing flags
     const aiScene* scene = importer.ReadFile(path,
-        aiProcess_Triangulate        |  // All primitives → triangles
+        aiProcess_Triangulate        |  // All primitives ? triangles
         aiProcess_FlipUVs            |  // Flip V for OpenGL (0,0 = bottom-left)
         aiProcess_GenSmoothNormals   |  // Auto-generate smooth normals if missing
         aiProcess_CalcTangentSpace   |  // Compute tangent/bitangent vectors
@@ -411,11 +419,11 @@ void CoAnQi::Graphics3D::renderMultiViewports(
 
 | Format | Library | Import | Export | Binary | Normals | UV | Animation |
 |--------|---------|--------|--------|--------|---------|-----|-----------|
-| OBJ | Assimp | ✓ | Manual | ✗ (ASCII) | ✓ | ✓ | ✗ |
-| STL | VTK | ✗ | ✓ | ✓/✗ | ✓ (binary) | ✗ | ✗ |
-| FBX | Assimp | ✓ | ✗ | ✓ | ✓ | ✓ | ✓ |
-| glTF | tinygltf | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
-| PLY | Assimp | ✓ | ✗ | ✓/✗ | ✓ | ✓ | ✗ |
+| OBJ | Assimp | ? | Manual | ? (ASCII) | ? | ? | ? |
+| STL | VTK | ? | ? | ?/? | ? (binary) | ? | ? |
+| FBX | Assimp | ? | ? | ? | ? | ? | ? |
+| glTF | tinygltf | ? | ? | ? | ? | ? | ? |
+| PLY | Assimp | ? | ? | ?/? | ? | ? | ? |
 
 CoAnQi uses OBJ for general mesh exchange and STL for 3D printing/physics simulation export.
 

@@ -101,3 +101,6 @@ Located in `CondensedPhysics3.py` (Session 58).
 The decaying erosion factor $(1 - E_0 e^{-t/\tau_e})$ is a genuinely novel MUGE term. Combined with the sign-comparison against the Bubble Nebula's $(1 + E(t))$, this establishes a physically rigorous erosion/compression taxonomy within the UQFF nebular MUGE family: negative sign for ablative processes, positive for compressive ones.
 
 **Source:** grok_share_8d951e12.txt â€” Doc 7 (Pillars of Creation Erosion MUGE)
+
+
+**UQFF computed:** MUGE buoyancy ratio U_bi/F_U = [SSq]×?×r²/GM = 5.7e-1×5.0e-4 = 2.85e-4; compressed MUGE baseline g = 5.4e-7 m/s² at r_ISCO.

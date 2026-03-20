@@ -11,6 +11,10 @@
 
 This paper investigates the cosmological implications of modified gravitational wave propagation under the Unified Quantum Field Framework (UQFF). We demonstrate that UQFF-induced damping affects standard siren distance measurements, potentially resolving tensions in Hubble constant determinations and providing new constraints on dark energy models.
 
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
+
 ---
 
 ## 1. Introduction

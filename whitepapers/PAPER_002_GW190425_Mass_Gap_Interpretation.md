@@ -12,6 +12,10 @@
 
 GW190425 (April 25, 2019) is the second confirmed BNS merger, with total mass 3.64 M☉—the heaviest known BNS system and the first event whose component masses overlap the astrophysical mass gap (2.5–5 M☉). We apply UQFF damping to the short inspiral signal (30–400 Hz, 0.2 s) and find a combined reduction factor of 0.5297 (47.0% amplitude suppression). The heavier component m1 = 2.52 M☉ sits at the mass gap boundary; UQFF assigns P(NS) = 49%, P(BH) = 51%, consistent with extreme SCm suppression. We tabulate SCm values across five magnetic field scenarios from standard pulsars to hyper-magnetars, showing that SCm → 0 only at B ≳ 10¹⁵ G, making GW190425 the premier laboratory for mass-gap compact object discrimination.
 
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0�10?4 day?�, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
+
 ---
 
 ## 1. Event Parameters

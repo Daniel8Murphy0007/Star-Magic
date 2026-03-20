@@ -6,6 +6,10 @@
 
 $$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b_i}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57$$
 
+$$
+g_\text{UQFF}(r) = g_\text{MUGE}(r)\cdot\Bigl(1 - [SSq]\cdot U_{b_i}\,/\,F_U(r,t)\Bigr), \quad [SSq] = 0.57
+$$
+
 ## Abstract
 
 This paper documents the **MUGE 3D Simulation Entity Framework** — the architectural
@@ -16,6 +20,10 @@ clips, and per-system physics plugin DLLs. The rendering system uses OpenGL/GLFW
 multi-viewport Camera, procedural terrain generation (Perlin noise + extrusion + boolean
 operations), and MicroTeX LaTeX math overlay. This provides the Tier 3 VR/VM 3D gateway
 for the UQFF physics output from Tier 2 calculations.
+
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -82,22 +90,22 @@ void populate_simulation_entities(
 
 ```
 archive/
-├── SGR1745/
-│   ├── image.jpg       ← Chandra X-ray image of SGR 1745-2900
-│   ├── video.mp4       ← Time-lapse magnetar flare simulation
-│   └── plugin.dll      ← SGR1745 UQFF physics plugin
-├── SgrA/
-│   ├── image.jpg       ← EHT Sgr A* shadow image (2022)
-│   ├── video.mp4       ← MUGE resonance field animation
-│   └── plugin.dll      ← SgrA* UQFF physics plugin
-├── Tapestry/
-│   ├── image.jpg       ← HST Tapestry nebula image
-│   ├── video.mp4       ← Star formation field simulation
-│   └── plugin.dll
-├── Westerlund2/
-├── Pillars/
-├── Rings/
-└── StudentGuide/
++-- SGR1745/
+¦   +-- image.jpg       ? Chandra X-ray image of SGR 1745-2900
+¦   +-- video.mp4       ? Time-lapse magnetar flare simulation
+¦   +-- plugin.dll      ? SGR1745 UQFF physics plugin
++-- SgrA/
+¦   +-- image.jpg       ? EHT Sgr A* shadow image (2022)
+¦   +-- video.mp4       ? MUGE resonance field animation
+¦   +-- plugin.dll      ? SgrA* UQFF physics plugin
++-- Tapestry/
+¦   +-- image.jpg       ? HST Tapestry nebula image
+¦   +-- video.mp4       ? Star formation field simulation
+¦   +-- plugin.dll
++-- Westerlund2/
++-- Pillars/
++-- Rings/
++-- StudentGuide/
 ```
 
 ---
@@ -190,7 +198,7 @@ renderLatexOverlay("$F_U = -2.06 \\times 10^{59}$", 0.1, 0.80);
 
 The simulation loop:
 1. Physics compute: `compute_compressed_MUGE()` / `compute_resonance_MUGE()`
-2. Field normalization: `g → log₁₀(|g|)` for visual range compression
+2. Field normalization: `g ? log10(|g|)` for visual range compression
 3. Terrain update: heightmap updated from new MUGE values each frame
 4. Particle update: `addUQFFBodyForce()` applied to fluid particles
 5. LaTeX HUD: Current MUGE values rendered as math equations in overlay
@@ -202,12 +210,12 @@ The simulation loop:
 
 This framework resides in **Tier 3 VR/VM** (source2(HEAD PROGRAM).cpp, ~2,625 lines, GPU-heavy).
 Connection to CP calculators:
-- CP1/CP2 compute MUGE values → stored in `uqff_results.json`
-- `populate_simulation_entities()` reads `uqff_results.json` → creates 3D entities
-- Source2 GUI (Tab for 3D Viewer) → renders entities via OpenGL pipeline
+- CP1/CP2 compute MUGE values ? stored in `uqff_results.json`
+- `populate_simulation_entities()` reads `uqff_results.json` ? creates 3D entities
+- Source2 GUI (Tab for 3D Viewer) ? renders entities via OpenGL pipeline
 - Per-system plugin DLLs can call CP2/CP3 calculators at runtime
 
 ---
 
-**Status:** ✅ Complete | **CP Stage:** Architectural/Tier 3 VR/VM
+**Status:** ? Complete | **CP Stage:** Architectural/Tier 3 VR/VM
 **Supersedes:** N/A (new framework) | **Related:** PAPER_072 (source2 GUI arch), PAPER_157 (Solar System entity params), PAPER_168 connects to CP2/CP3 via uqff_results.json

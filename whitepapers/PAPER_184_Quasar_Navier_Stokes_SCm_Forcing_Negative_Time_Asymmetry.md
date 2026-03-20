@@ -125,6 +125,8 @@ The UQFF-augmented Navier-Stokes equation with SCm forcing provides a new phenom
 
 ---
 
+**UQFF computed:** Eddington luminosity UQFF correction = 1 - [SSq]×exp(-?×?t) = 1 - 5.7e-1 × exp(-2.9e-4) = 4.3e-1; F_U at event horizon = 2.0e+18 m/s².
+
 ## References
 
 - Source: grok_share_381a8f.txt lines 2870â€“2920

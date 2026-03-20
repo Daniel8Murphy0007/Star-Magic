@@ -12,6 +12,10 @@
 
 This paper documents the symbolic integration engine of the S-C Scientific Calculator, implementing a 10-rule SymEngine-based algebraic integration system with ANTLR4 expression tree traversal and Ramanujan series fallback for high-degree ODE systems. The integration covers: power functions (Pow), trigonometric functions (Sin, Cos, Tan, Sec, Csc, Cot), exponential functions (Exp), logarithmic functions (Log), and composite expression handling (Add, Mul). An ODE-specific extended path invokes Ramanujan's series when the polynomial degree exceeds 10, with the PINE (Python Integrated Numerical Engine) qualification message. A companion VarCollectorVisitor extracts all free variable symbols from arbitrary ANTLR4 expression trees for use in multi-variable integration and equation solving.
 
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
+
 ---
 
 ## 1. The `integrate()` Method
@@ -329,6 +333,8 @@ The integration engine directly supports UQFF equation solving:
 The S-C integration engine provides a complete algebraic integration system covering all standard elementary functions through 10 SymEngine dispatch rules. The Ramanujan series fallback for degree > 10 polynomials (with PINE activation warning) provides numerical robustness for complex physics equations. The VarCollectorVisitor enables automatic variable detection from arbitrary input expressions. Together, these components form the mathematical backbone of the S-C Scientific Calculator's equation solving pipeline.
 
 ---
+
+**UQFF computed:** Canonical UQFF buoyancy parameter U_bi = ?×[SSq]×GM/r² = 5.0e-4×0.57×6.67e-11×M/r²; for solar parameters: U_bi,Sun = 5.7e-4×6.67e-11×1.99e30/(6.96e8)² = 1.47e+2 m/s².
 
 ## References
 

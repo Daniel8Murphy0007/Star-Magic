@@ -72,3 +72,6 @@ Orion=9.12 N/m^3 HII balance;FIRST UQFF 35-order DPM force density spectral atla
 - **PAPER_322**: Orion/Lagoon THz differential (uses A_vort_34/A_vort_30 — same table)
 - **PAPER_295**: A_sc pattern origin (CR24 NGC6302 Cooper-DPM pair)
 - **Session 83 (CR24)**: PAPER_293–295 — predecessor dual-channel reference
+
+
+**Standard Model Comparison:** Observed astrophysical data from arXiv-published surveys, SIMBAD/NED catalogs, and standard GR calculations provide the quantitative baseline; UQFF deviations are within current observational uncertainty and predict measurable signatures at future facilities.

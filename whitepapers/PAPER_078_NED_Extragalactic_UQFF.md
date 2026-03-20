@@ -1,29 +1,33 @@
-ï»¿#  "PAPER_{0:D3}" -f [int]# PAPER #78 â€” Extragalactic Physics: NED Multi-Wavelength + UQFF
+#  "PAPER_{0:D3}" -f [int]# PAPER #78 — Extragalactic Physics: NED Multi-Wavelength + UQFF
 
 **Title:** NED Multi-Wavelength Extragalactic Physics: AGN Luminosity Functions and UQFF Buoyancy-Modified Hubble Tension Analysis
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (Îº = 0.0005/day, [SSq] = 0.57)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57)  
 **Date:** March 7, 2026  
 **Source Data:** QCalc_validation.py (DataSourceURLs: NED_BASE, NED_API, QUASAR_SDSS)  
-**Index Slot:** Â§1.10 Database Integration & Multi-Wavelength Astrophysics,  
-    $n = [int]# PAPER #78 â€” Extragalactic Physics: NED Multi-Wavelength + UQFF
+**Index Slot:** §1.10 Database Integration & Multi-Wavelength Astrophysics,  
+    $n = [int]# PAPER #78 — Extragalactic Physics: NED Multi-Wavelength + UQFF
 
 **Title:** NED Multi-Wavelength Extragalactic Physics: AGN Luminosity Functions and UQFF Buoyancy-Modified Hubble Tension Analysis
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (Îº = 0.0005/day, [SSq] = 0.57)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57)  
 **Date:** March 7, 2026  
 **Source Data:** QCalc_validation.py (DataSourceURLs: NED_BASE, NED_API, QUASAR_SDSS)  
-**Index Slot:** Â§1.10 Database Integration & Multi-Wavelength Astrophysics, PAPER_078  
+**Index Slot:** §1.10 Database Integration & Multi-Wavelength Astrophysics, PAPER_078  
 
 ---
 
 
-<!-- UQFF constants: Îº = 5.0e-4 dayâ»Â¹, [SSq] = 0.57, M_UQFF = 1.43e1 TeV -->
+<!-- UQFF constants: ? = 5.0e-4 day?¹, [SSq] = 0.57, M_UQFF = 1.43e1 TeV -->
 ## Abstract
 
-The NED (NASA/IPAC Extragalactic Database) multi-wavelength catalog covers UV through radio for >1 billion extragalactic objects. Key physics tests for UQFF: (1) AGN luminosity functions comparing UQFF-enhanced accretion vs standard models, (2) the Hubble tension (Hâ‚€ = 67â€“73 km/s/Mpc) examined through the UQFF Buoyant vacuum correction, and (3) quasar absorption line systems (DLA/LLS) testing the UQFF vacuum density at cosmological redshifts.
+The NED (NASA/IPAC Extragalactic Database) multi-wavelength catalog covers UV through radio for >1 billion extragalactic objects. Key physics tests for UQFF: (1) AGN luminosity functions comparing UQFF-enhanced accretion vs standard models, (2) the Hubble tension (H0 = 67–73 km/s/Mpc) examined through the UQFF Buoyant vacuum correction, and (3) quasar absorption line systems (DLA/LLS) testing the UQFF vacuum density at cosmological redshifts.
+
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -31,13 +35,13 @@ The NED (NASA/IPAC Extragalactic Database) multi-wavelength catalog covers UV th
 
 ### Hubble Tension Context
 
-| Measurement | Hâ‚€ (km/s/Mpc) | Method |
+| Measurement | H0 (km/s/Mpc) | Method |
 |-------------|---------------|--------|
-| Planck 2018 (CMB) | 67.4 Â± 0.5 | Early universe |
-| SH0ES 2023 (Cepheids) | 73.0 Â± 1.0 | Distance ladder |
-| Tension | 4.2Ïƒ | â€” |
+| Planck 2018 (CMB) | 67.4 ± 0.5 | Early universe |
+| SH0ES 2023 (Cepheids) | 73.0 ± 1.0 | Distance ladder |
+| Tension | 4.2s | — |
 
-### UQFF Buoyant Correction to Hâ‚€
+### UQFF Buoyant Correction to H0
 
 The UQFF vacuum buoyancy modifies the effective expansion rate:
 
@@ -47,7 +51,7 @@ The [UA] = 0.0001 fractional vacuum coupling adds:
 
 $$\Delta H_0 = H_0 \times [UA] \times 0.5 = 67.4 \times 0.0001 \times 0.5 = 0.0034 \text{ km/s/Mpc}$$
 
-**UQFF correction to Hubble tension: Î”Hâ‚€ = 0.003 km/s/Mpc** â€” far too small to resolve the 5.6 km/s/Mpc tension. The UQFF does not attempt to resolve Hubble tension through the basic [UA] coupling; a higher-order Resonant Hubble correction would require additional development.
+**UQFF correction to Hubble tension: ?H0 = 0.003 km/s/Mpc** — far too small to resolve the 5.6 km/s/Mpc tension. The UQFF does not attempt to resolve Hubble tension through the basic [UA] coupling; a higher-order Resonant Hubble correction would require additional development.
 
 ---
 
@@ -59,20 +63,20 @@ $$L_*^{\rm UQFF} = L_*^{\rm standard} \times (1 + [SCm]) = L_* \times 1.99$$
 
 NED quasar catalog comparison:
 
-| Redshift bin | L*_standard (Lâ˜‰) | L*_UQFF (Lâ˜‰) | NED data range |
+| Redshift bin | L*_standard (L?) | L*_UQFF (L?) | NED data range |
 |-------------|------------------|---------------|----------------|
-| z = 0.5 | 10^{45.0} | 10^{45.3} | 10^{44.8}â€“10^{45.5} |
-| z = 1.0 | 10^{45.5} | 10^{45.8} | 10^{45.2}â€“10^{46.0} |
-| z = 2.0 | 10^{45.8} | 10^{46.1} | 10^{45.5}â€“10^{46.3} |
-| z = 3.0 | 10^{46.0} | 10^{46.3} | 10^{45.7}â€“10^{46.5} |
+| z = 0.5 | 10^{45.0} | 10^{45.3} | 10^{44.8}–10^{45.5} |
+| z = 1.0 | 10^{45.5} | 10^{45.8} | 10^{45.2}–10^{46.0} |
+| z = 2.0 | 10^{45.8} | 10^{46.1} | 10^{45.5}–10^{46.3} |
+| z = 3.0 | 10^{46.0} | 10^{46.3} | 10^{45.7}–10^{46.5} |
 
-**UQFF L* shift of 0.3 dex lies within the 0.5-dex observed scatter** â€” compatible with NED quasar data at all redshifts.
+**UQFF L* shift of 0.3 dex lies within the 0.5-dex observed scatter** — compatible with NED quasar data at all redshifts.
 
 ---
 
 ## 3. Quasar Absorption Line Systems
 
-DLA (Damped Lyman-Î±) systems contain high column density neutral hydrogen (N_HI > 2Ã—10Â²â° cmâ»Â²). The UQFF predicts no modification to the HI 21 cm line frequency (only gravitational Doppler at 10â»Â¹â° level). NED DLA catalog: UQFF-consistent.
+DLA (Damped Lyman-a) systems contain high column density neutral hydrogen (N_HI > 2×10²° cm?²). The UQFF predicts no modification to the HI 21 cm line frequency (only gravitational Doppler at 10?¹° level). NED DLA catalog: UQFF-consistent.
 
 ---
 
@@ -80,11 +84,11 @@ DLA (Damped Lyman-Î±) systems contain high column density neutral hydrogen (N_HI
 
 | Observable | NED Data | UQFF Prediction | Agreement |
 |-----------|---------|-----------------|-----------|
-| Hâ‚€ tension | 5.6 km/s/Mpc gap | Î”Hâ‚€ = 0.003 (negligible) | Not resolved |
-| AGN L* | 10^{45}â€“10^{46.5} | +0.3 dex ([SCm]) | Within scatter |
+| H0 tension | 5.6 km/s/Mpc gap | ?H0 = 0.003 (negligible) | Not resolved |
+| AGN L* | 10^{45}–10^{46.5} | +0.3 dex ([SCm]) | Within scatter |
 | DLA HI column | N_HI > 10^{20} | Unmodified | Compatible |
 
-*Source: QCalc_validation.py NED_BASE endpoint | Îº = 0.0005/day | [SSq] = 0.57*
+*Source: QCalc_validation.py NED_BASE endpoint | ? = 0.0005/day | [SSq] = 0.57*
 .Groups[1].Value
     "PAPER_{0:D3}" -f $n
     
@@ -93,7 +97,11 @@ DLA (Damped Lyman-Î±) systems contain high column density neutral hydrogen (N_HI
 
 ## Abstract
 
-The NED (NASA/IPAC Extragalactic Database) multi-wavelength catalog covers UV through radio for >1 billion extragalactic objects. Key physics tests for UQFF: (1) AGN luminosity functions comparing UQFF-enhanced accretion vs standard models, (2) the Hubble tension (Hâ‚€ = 67â€“73 km/s/Mpc) examined through the UQFF Buoyant vacuum correction, and (3) quasar absorption line systems (DLA/LLS) testing the UQFF vacuum density at cosmological redshifts.
+The NED (NASA/IPAC Extragalactic Database) multi-wavelength catalog covers UV through radio for >1 billion extragalactic objects. Key physics tests for UQFF: (1) AGN luminosity functions comparing UQFF-enhanced accretion vs standard models, (2) the Hubble tension (H0 = 67–73 km/s/Mpc) examined through the UQFF Buoyant vacuum correction, and (3) quasar absorption line systems (DLA/LLS) testing the UQFF vacuum density at cosmological redshifts.
+
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -101,13 +109,13 @@ The NED (NASA/IPAC Extragalactic Database) multi-wavelength catalog covers UV th
 
 ### Hubble Tension Context
 
-| Measurement | Hâ‚€ (km/s/Mpc) | Method |
+| Measurement | H0 (km/s/Mpc) | Method |
 |-------------|---------------|--------|
-| Planck 2018 (CMB) | 67.4 Â± 0.5 | Early universe |
-| SH0ES 2023 (Cepheids) | 73.0 Â± 1.0 | Distance ladder |
-| Tension | 4.2Ïƒ | â€” |
+| Planck 2018 (CMB) | 67.4 ± 0.5 | Early universe |
+| SH0ES 2023 (Cepheids) | 73.0 ± 1.0 | Distance ladder |
+| Tension | 4.2s | — |
 
-### UQFF Buoyant Correction to Hâ‚€
+### UQFF Buoyant Correction to H0
 
 The UQFF vacuum buoyancy modifies the effective expansion rate:
 
@@ -117,7 +125,7 @@ The [UA] = 0.0001 fractional vacuum coupling adds:
 
 $$\Delta H_0 = H_0 \times [UA] \times 0.5 = 67.4 \times 0.0001 \times 0.5 = 0.0034 \text{ km/s/Mpc}$$
 
-**UQFF correction to Hubble tension: Î”Hâ‚€ = 0.003 km/s/Mpc** â€” far too small to resolve the 5.6 km/s/Mpc tension. The UQFF does not attempt to resolve Hubble tension through the basic [UA] coupling; a higher-order Resonant Hubble correction would require additional development.
+**UQFF correction to Hubble tension: ?H0 = 0.003 km/s/Mpc** — far too small to resolve the 5.6 km/s/Mpc tension. The UQFF does not attempt to resolve Hubble tension through the basic [UA] coupling; a higher-order Resonant Hubble correction would require additional development.
 
 ---
 
@@ -129,20 +137,20 @@ $$L_*^{\rm UQFF} = L_*^{\rm standard} \times (1 + [SCm]) = L_* \times 1.99$$
 
 NED quasar catalog comparison:
 
-| Redshift bin | L*_standard (Lâ˜‰) | L*_UQFF (Lâ˜‰) | NED data range |
+| Redshift bin | L*_standard (L?) | L*_UQFF (L?) | NED data range |
 |-------------|------------------|---------------|----------------|
-| z = 0.5 | 10^{45.0} | 10^{45.3} | 10^{44.8}â€“10^{45.5} |
-| z = 1.0 | 10^{45.5} | 10^{45.8} | 10^{45.2}â€“10^{46.0} |
-| z = 2.0 | 10^{45.8} | 10^{46.1} | 10^{45.5}â€“10^{46.3} |
-| z = 3.0 | 10^{46.0} | 10^{46.3} | 10^{45.7}â€“10^{46.5} |
+| z = 0.5 | 10^{45.0} | 10^{45.3} | 10^{44.8}–10^{45.5} |
+| z = 1.0 | 10^{45.5} | 10^{45.8} | 10^{45.2}–10^{46.0} |
+| z = 2.0 | 10^{45.8} | 10^{46.1} | 10^{45.5}–10^{46.3} |
+| z = 3.0 | 10^{46.0} | 10^{46.3} | 10^{45.7}–10^{46.5} |
 
-**UQFF L* shift of 0.3 dex lies within the 0.5-dex observed scatter** â€” compatible with NED quasar data at all redshifts.
+**UQFF L* shift of 0.3 dex lies within the 0.5-dex observed scatter** — compatible with NED quasar data at all redshifts.
 
 ---
 
 ## 3. Quasar Absorption Line Systems
 
-DLA (Damped Lyman-Î±) systems contain high column density neutral hydrogen (N_HI > 2Ã—10Â²â° cmâ»Â²). The UQFF predicts no modification to the HI 21 cm line frequency (only gravitational Doppler at 10â»Â¹â° level). NED DLA catalog: UQFF-consistent.
+DLA (Damped Lyman-a) systems contain high column density neutral hydrogen (N_HI > 2×10²° cm?²). The UQFF predicts no modification to the HI 21 cm line frequency (only gravitational Doppler at 10?¹° level). NED DLA catalog: UQFF-consistent.
 
 ---
 
@@ -150,44 +158,48 @@ DLA (Damped Lyman-Î±) systems contain high column density neutral hydrogen (N_HI
 
 | Observable | NED Data | UQFF Prediction | Agreement |
 |-----------|---------|-----------------|-----------|
-| Hâ‚€ tension | 5.6 km/s/Mpc gap | Î”Hâ‚€ = 0.003 (negligible) | Not resolved |
-| AGN L* | 10^{45}â€“10^{46.5} | +0.3 dex ([SCm]) | Within scatter |
+| H0 tension | 5.6 km/s/Mpc gap | ?H0 = 0.003 (negligible) | Not resolved |
+| AGN L* | 10^{45}–10^{46.5} | +0.3 dex ([SCm]) | Within scatter |
 | DLA HI column | N_HI > 10^{20} | Unmodified | Compatible |
 
-*Source: QCalc_validation.py NED_BASE endpoint | Îº = 0.0005/day | [SSq] = 0.57*
-.Groups[1].Value  â€” Extragalactic Physics: NED Multi-Wavelength + UQFF
+*Source: QCalc_validation.py NED_BASE endpoint | ? = 0.0005/day | [SSq] = 0.57*
+.Groups[1].Value  — Extragalactic Physics: NED Multi-Wavelength + UQFF
 
 **Title:** NED Multi-Wavelength Extragalactic Physics: AGN Luminosity Functions and UQFF Buoyancy-Modified Hubble Tension Analysis
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (Îº = 0.0005/day, [SSq] = 0.57)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57)  
 **Date:** March 7, 2026  
 **Source Data:** QCalc_validation.py (DataSourceURLs: NED_BASE, NED_API, QUASAR_SDSS)  
-**Index Slot:** Â§1.10 Database Integration & Multi-Wavelength Astrophysics,  
-    $n = [int]#  "PAPER_{0:D3}" -f [int]# PAPER #78 â€” Extragalactic Physics: NED Multi-Wavelength + UQFF
+**Index Slot:** §1.10 Database Integration & Multi-Wavelength Astrophysics,  
+    $n = [int]#  "PAPER_{0:D3}" -f [int]# PAPER #78 — Extragalactic Physics: NED Multi-Wavelength + UQFF
 
 **Title:** NED Multi-Wavelength Extragalactic Physics: AGN Luminosity Functions and UQFF Buoyancy-Modified Hubble Tension Analysis
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (Îº = 0.0005/day, [SSq] = 0.57)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57)  
 **Date:** March 7, 2026  
 **Source Data:** QCalc_validation.py (DataSourceURLs: NED_BASE, NED_API, QUASAR_SDSS)  
-**Index Slot:** Â§1.10 Database Integration & Multi-Wavelength Astrophysics,  
-    $n = [int]# PAPER #78 â€” Extragalactic Physics: NED Multi-Wavelength + UQFF
+**Index Slot:** §1.10 Database Integration & Multi-Wavelength Astrophysics,  
+    $n = [int]# PAPER #78 — Extragalactic Physics: NED Multi-Wavelength + UQFF
 
 **Title:** NED Multi-Wavelength Extragalactic Physics: AGN Luminosity Functions and UQFF Buoyancy-Modified Hubble Tension Analysis
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (Îº = 0.0005/day, [SSq] = 0.57)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57)  
 **Date:** March 7, 2026  
 **Source Data:** QCalc_validation.py (DataSourceURLs: NED_BASE, NED_API, QUASAR_SDSS)  
-**Index Slot:** Â§1.10 Database Integration & Multi-Wavelength Astrophysics, PAPER_078  
+**Index Slot:** §1.10 Database Integration & Multi-Wavelength Astrophysics, PAPER_078  
 
 ---
 
 ## Abstract
 
-The NED (NASA/IPAC Extragalactic Database) multi-wavelength catalog covers UV through radio for >1 billion extragalactic objects. Key physics tests for UQFF: (1) AGN luminosity functions comparing UQFF-enhanced accretion vs standard models, (2) the Hubble tension (Hâ‚€ = 67â€“73 km/s/Mpc) examined through the UQFF Buoyant vacuum correction, and (3) quasar absorption line systems (DLA/LLS) testing the UQFF vacuum density at cosmological redshifts.
+The NED (NASA/IPAC Extragalactic Database) multi-wavelength catalog covers UV through radio for >1 billion extragalactic objects. Key physics tests for UQFF: (1) AGN luminosity functions comparing UQFF-enhanced accretion vs standard models, (2) the Hubble tension (H0 = 67–73 km/s/Mpc) examined through the UQFF Buoyant vacuum correction, and (3) quasar absorption line systems (DLA/LLS) testing the UQFF vacuum density at cosmological redshifts.
+
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -195,13 +207,13 @@ The NED (NASA/IPAC Extragalactic Database) multi-wavelength catalog covers UV th
 
 ### Hubble Tension Context
 
-| Measurement | Hâ‚€ (km/s/Mpc) | Method |
+| Measurement | H0 (km/s/Mpc) | Method |
 |-------------|---------------|--------|
-| Planck 2018 (CMB) | 67.4 Â± 0.5 | Early universe |
-| SH0ES 2023 (Cepheids) | 73.0 Â± 1.0 | Distance ladder |
-| Tension | 4.2Ïƒ | â€” |
+| Planck 2018 (CMB) | 67.4 ± 0.5 | Early universe |
+| SH0ES 2023 (Cepheids) | 73.0 ± 1.0 | Distance ladder |
+| Tension | 4.2s | — |
 
-### UQFF Buoyant Correction to Hâ‚€
+### UQFF Buoyant Correction to H0
 
 The UQFF vacuum buoyancy modifies the effective expansion rate:
 
@@ -211,7 +223,7 @@ The [UA] = 0.0001 fractional vacuum coupling adds:
 
 $$\Delta H_0 = H_0 \times [UA] \times 0.5 = 67.4 \times 0.0001 \times 0.5 = 0.0034 \text{ km/s/Mpc}$$
 
-**UQFF correction to Hubble tension: Î”Hâ‚€ = 0.003 km/s/Mpc** â€” far too small to resolve the 5.6 km/s/Mpc tension. The UQFF does not attempt to resolve Hubble tension through the basic [UA] coupling; a higher-order Resonant Hubble correction would require additional development.
+**UQFF correction to Hubble tension: ?H0 = 0.003 km/s/Mpc** — far too small to resolve the 5.6 km/s/Mpc tension. The UQFF does not attempt to resolve Hubble tension through the basic [UA] coupling; a higher-order Resonant Hubble correction would require additional development.
 
 ---
 
@@ -223,20 +235,20 @@ $$L_*^{\rm UQFF} = L_*^{\rm standard} \times (1 + [SCm]) = L_* \times 1.99$$
 
 NED quasar catalog comparison:
 
-| Redshift bin | L*_standard (Lâ˜‰) | L*_UQFF (Lâ˜‰) | NED data range |
+| Redshift bin | L*_standard (L?) | L*_UQFF (L?) | NED data range |
 |-------------|------------------|---------------|----------------|
-| z = 0.5 | 10^{45.0} | 10^{45.3} | 10^{44.8}â€“10^{45.5} |
-| z = 1.0 | 10^{45.5} | 10^{45.8} | 10^{45.2}â€“10^{46.0} |
-| z = 2.0 | 10^{45.8} | 10^{46.1} | 10^{45.5}â€“10^{46.3} |
-| z = 3.0 | 10^{46.0} | 10^{46.3} | 10^{45.7}â€“10^{46.5} |
+| z = 0.5 | 10^{45.0} | 10^{45.3} | 10^{44.8}–10^{45.5} |
+| z = 1.0 | 10^{45.5} | 10^{45.8} | 10^{45.2}–10^{46.0} |
+| z = 2.0 | 10^{45.8} | 10^{46.1} | 10^{45.5}–10^{46.3} |
+| z = 3.0 | 10^{46.0} | 10^{46.3} | 10^{45.7}–10^{46.5} |
 
-**UQFF L* shift of 0.3 dex lies within the 0.5-dex observed scatter** â€” compatible with NED quasar data at all redshifts.
+**UQFF L* shift of 0.3 dex lies within the 0.5-dex observed scatter** — compatible with NED quasar data at all redshifts.
 
 ---
 
 ## 3. Quasar Absorption Line Systems
 
-DLA (Damped Lyman-Î±) systems contain high column density neutral hydrogen (N_HI > 2Ã—10Â²â° cmâ»Â²). The UQFF predicts no modification to the HI 21 cm line frequency (only gravitational Doppler at 10â»Â¹â° level). NED DLA catalog: UQFF-consistent.
+DLA (Damped Lyman-a) systems contain high column density neutral hydrogen (N_HI > 2×10²° cm?²). The UQFF predicts no modification to the HI 21 cm line frequency (only gravitational Doppler at 10?¹° level). NED DLA catalog: UQFF-consistent.
 
 ---
 
@@ -244,11 +256,11 @@ DLA (Damped Lyman-Î±) systems contain high column density neutral hydrogen (N_HI
 
 | Observable | NED Data | UQFF Prediction | Agreement |
 |-----------|---------|-----------------|-----------|
-| Hâ‚€ tension | 5.6 km/s/Mpc gap | Î”Hâ‚€ = 0.003 (negligible) | Not resolved |
-| AGN L* | 10^{45}â€“10^{46.5} | +0.3 dex ([SCm]) | Within scatter |
+| H0 tension | 5.6 km/s/Mpc gap | ?H0 = 0.003 (negligible) | Not resolved |
+| AGN L* | 10^{45}–10^{46.5} | +0.3 dex ([SCm]) | Within scatter |
 | DLA HI column | N_HI > 10^{20} | Unmodified | Compatible |
 
-*Source: QCalc_validation.py NED_BASE endpoint | Îº = 0.0005/day | [SSq] = 0.57*
+*Source: QCalc_validation.py NED_BASE endpoint | ? = 0.0005/day | [SSq] = 0.57*
 .Groups[1].Value
     "PAPER_{0:D3}" -f $n
     
@@ -257,7 +269,11 @@ DLA (Damped Lyman-Î±) systems contain high column density neutral hydrogen (N_HI
 
 ## Abstract
 
-The NED (NASA/IPAC Extragalactic Database) multi-wavelength catalog covers UV through radio for >1 billion extragalactic objects. Key physics tests for UQFF: (1) AGN luminosity functions comparing UQFF-enhanced accretion vs standard models, (2) the Hubble tension (Hâ‚€ = 67â€“73 km/s/Mpc) examined through the UQFF Buoyant vacuum correction, and (3) quasar absorption line systems (DLA/LLS) testing the UQFF vacuum density at cosmological redshifts.
+The NED (NASA/IPAC Extragalactic Database) multi-wavelength catalog covers UV through radio for >1 billion extragalactic objects. Key physics tests for UQFF: (1) AGN luminosity functions comparing UQFF-enhanced accretion vs standard models, (2) the Hubble tension (H0 = 67–73 km/s/Mpc) examined through the UQFF Buoyant vacuum correction, and (3) quasar absorption line systems (DLA/LLS) testing the UQFF vacuum density at cosmological redshifts.
+
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -265,13 +281,13 @@ The NED (NASA/IPAC Extragalactic Database) multi-wavelength catalog covers UV th
 
 ### Hubble Tension Context
 
-| Measurement | Hâ‚€ (km/s/Mpc) | Method |
+| Measurement | H0 (km/s/Mpc) | Method |
 |-------------|---------------|--------|
-| Planck 2018 (CMB) | 67.4 Â± 0.5 | Early universe |
-| SH0ES 2023 (Cepheids) | 73.0 Â± 1.0 | Distance ladder |
-| Tension | 4.2Ïƒ | â€” |
+| Planck 2018 (CMB) | 67.4 ± 0.5 | Early universe |
+| SH0ES 2023 (Cepheids) | 73.0 ± 1.0 | Distance ladder |
+| Tension | 4.2s | — |
 
-### UQFF Buoyant Correction to Hâ‚€
+### UQFF Buoyant Correction to H0
 
 The UQFF vacuum buoyancy modifies the effective expansion rate:
 
@@ -281,7 +297,7 @@ The [UA] = 0.0001 fractional vacuum coupling adds:
 
 $$\Delta H_0 = H_0 \times [UA] \times 0.5 = 67.4 \times 0.0001 \times 0.5 = 0.0034 \text{ km/s/Mpc}$$
 
-**UQFF correction to Hubble tension: Î”Hâ‚€ = 0.003 km/s/Mpc** â€” far too small to resolve the 5.6 km/s/Mpc tension. The UQFF does not attempt to resolve Hubble tension through the basic [UA] coupling; a higher-order Resonant Hubble correction would require additional development.
+**UQFF correction to Hubble tension: ?H0 = 0.003 km/s/Mpc** — far too small to resolve the 5.6 km/s/Mpc tension. The UQFF does not attempt to resolve Hubble tension through the basic [UA] coupling; a higher-order Resonant Hubble correction would require additional development.
 
 ---
 
@@ -293,20 +309,20 @@ $$L_*^{\rm UQFF} = L_*^{\rm standard} \times (1 + [SCm]) = L_* \times 1.99$$
 
 NED quasar catalog comparison:
 
-| Redshift bin | L*_standard (Lâ˜‰) | L*_UQFF (Lâ˜‰) | NED data range |
+| Redshift bin | L*_standard (L?) | L*_UQFF (L?) | NED data range |
 |-------------|------------------|---------------|----------------|
-| z = 0.5 | 10^{45.0} | 10^{45.3} | 10^{44.8}â€“10^{45.5} |
-| z = 1.0 | 10^{45.5} | 10^{45.8} | 10^{45.2}â€“10^{46.0} |
-| z = 2.0 | 10^{45.8} | 10^{46.1} | 10^{45.5}â€“10^{46.3} |
-| z = 3.0 | 10^{46.0} | 10^{46.3} | 10^{45.7}â€“10^{46.5} |
+| z = 0.5 | 10^{45.0} | 10^{45.3} | 10^{44.8}–10^{45.5} |
+| z = 1.0 | 10^{45.5} | 10^{45.8} | 10^{45.2}–10^{46.0} |
+| z = 2.0 | 10^{45.8} | 10^{46.1} | 10^{45.5}–10^{46.3} |
+| z = 3.0 | 10^{46.0} | 10^{46.3} | 10^{45.7}–10^{46.5} |
 
-**UQFF L* shift of 0.3 dex lies within the 0.5-dex observed scatter** â€” compatible with NED quasar data at all redshifts.
+**UQFF L* shift of 0.3 dex lies within the 0.5-dex observed scatter** — compatible with NED quasar data at all redshifts.
 
 ---
 
 ## 3. Quasar Absorption Line Systems
 
-DLA (Damped Lyman-Î±) systems contain high column density neutral hydrogen (N_HI > 2Ã—10Â²â° cmâ»Â²). The UQFF predicts no modification to the HI 21 cm line frequency (only gravitational Doppler at 10â»Â¹â° level). NED DLA catalog: UQFF-consistent.
+DLA (Damped Lyman-a) systems contain high column density neutral hydrogen (N_HI > 2×10²° cm?²). The UQFF predicts no modification to the HI 21 cm line frequency (only gravitational Doppler at 10?¹° level). NED DLA catalog: UQFF-consistent.
 
 ---
 
@@ -314,43 +330,47 @@ DLA (Damped Lyman-Î±) systems contain high column density neutral hydrogen (N_HI
 
 | Observable | NED Data | UQFF Prediction | Agreement |
 |-----------|---------|-----------------|-----------|
-| Hâ‚€ tension | 5.6 km/s/Mpc gap | Î”Hâ‚€ = 0.003 (negligible) | Not resolved |
-| AGN L* | 10^{45}â€“10^{46.5} | +0.3 dex ([SCm]) | Within scatter |
+| H0 tension | 5.6 km/s/Mpc gap | ?H0 = 0.003 (negligible) | Not resolved |
+| AGN L* | 10^{45}–10^{46.5} | +0.3 dex ([SCm]) | Within scatter |
 | DLA HI column | N_HI > 10^{20} | Unmodified | Compatible |
 
-*Source: QCalc_validation.py NED_BASE endpoint | Îº = 0.0005/day | [SSq] = 0.57*
-.Groups[1].Value  â€” Extragalactic Physics: NED Multi-Wavelength + UQFF
+*Source: QCalc_validation.py NED_BASE endpoint | ? = 0.0005/day | [SSq] = 0.57*
+.Groups[1].Value  — Extragalactic Physics: NED Multi-Wavelength + UQFF
 
 **Title:** NED Multi-Wavelength Extragalactic Physics: AGN Luminosity Functions and UQFF Buoyancy-Modified Hubble Tension Analysis
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (Îº = 0.0005/day, [SSq] = 0.57)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57)  
 **Date:** March 7, 2026  
 **Source Data:** QCalc_validation.py (DataSourceURLs: NED_BASE, NED_API, QUASAR_SDSS)  
-**Index Slot:** Â§1.10 Database Integration & Multi-Wavelength Astrophysics,  "PAPER_{0:D3}" -f [int]# PAPER #78 â€” Extragalactic Physics: NED Multi-Wavelength + UQFF
+**Index Slot:** §1.10 Database Integration & Multi-Wavelength Astrophysics,  "PAPER_{0:D3}" -f [int]# PAPER #78 — Extragalactic Physics: NED Multi-Wavelength + UQFF
 
 **Title:** NED Multi-Wavelength Extragalactic Physics: AGN Luminosity Functions and UQFF Buoyancy-Modified Hubble Tension Analysis
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (Îº = 0.0005/day, [SSq] = 0.57)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57)  
 **Date:** March 7, 2026  
 **Source Data:** QCalc_validation.py (DataSourceURLs: NED_BASE, NED_API, QUASAR_SDSS)  
-**Index Slot:** Â§1.10 Database Integration & Multi-Wavelength Astrophysics,  
-    $n = [int]# PAPER #78 â€” Extragalactic Physics: NED Multi-Wavelength + UQFF
+**Index Slot:** §1.10 Database Integration & Multi-Wavelength Astrophysics,  
+    $n = [int]# PAPER #78 — Extragalactic Physics: NED Multi-Wavelength + UQFF
 
 **Title:** NED Multi-Wavelength Extragalactic Physics: AGN Luminosity Functions and UQFF Buoyancy-Modified Hubble Tension Analysis
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (Îº = 0.0005/day, [SSq] = 0.57)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57)  
 **Date:** March 7, 2026  
 **Source Data:** QCalc_validation.py (DataSourceURLs: NED_BASE, NED_API, QUASAR_SDSS)  
-**Index Slot:** Â§1.10 Database Integration & Multi-Wavelength Astrophysics, PAPER_078  
+**Index Slot:** §1.10 Database Integration & Multi-Wavelength Astrophysics, PAPER_078  
 
 ---
 
 ## Abstract
 
-The NED (NASA/IPAC Extragalactic Database) multi-wavelength catalog covers UV through radio for >1 billion extragalactic objects. Key physics tests for UQFF: (1) AGN luminosity functions comparing UQFF-enhanced accretion vs standard models, (2) the Hubble tension (Hâ‚€ = 67â€“73 km/s/Mpc) examined through the UQFF Buoyant vacuum correction, and (3) quasar absorption line systems (DLA/LLS) testing the UQFF vacuum density at cosmological redshifts.
+The NED (NASA/IPAC Extragalactic Database) multi-wavelength catalog covers UV through radio for >1 billion extragalactic objects. Key physics tests for UQFF: (1) AGN luminosity functions comparing UQFF-enhanced accretion vs standard models, (2) the Hubble tension (H0 = 67–73 km/s/Mpc) examined through the UQFF Buoyant vacuum correction, and (3) quasar absorption line systems (DLA/LLS) testing the UQFF vacuum density at cosmological redshifts.
+
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -358,13 +378,13 @@ The NED (NASA/IPAC Extragalactic Database) multi-wavelength catalog covers UV th
 
 ### Hubble Tension Context
 
-| Measurement | Hâ‚€ (km/s/Mpc) | Method |
+| Measurement | H0 (km/s/Mpc) | Method |
 |-------------|---------------|--------|
-| Planck 2018 (CMB) | 67.4 Â± 0.5 | Early universe |
-| SH0ES 2023 (Cepheids) | 73.0 Â± 1.0 | Distance ladder |
-| Tension | 4.2Ïƒ | â€” |
+| Planck 2018 (CMB) | 67.4 ± 0.5 | Early universe |
+| SH0ES 2023 (Cepheids) | 73.0 ± 1.0 | Distance ladder |
+| Tension | 4.2s | — |
 
-### UQFF Buoyant Correction to Hâ‚€
+### UQFF Buoyant Correction to H0
 
 The UQFF vacuum buoyancy modifies the effective expansion rate:
 
@@ -374,7 +394,7 @@ The [UA] = 0.0001 fractional vacuum coupling adds:
 
 $$\Delta H_0 = H_0 \times [UA] \times 0.5 = 67.4 \times 0.0001 \times 0.5 = 0.0034 \text{ km/s/Mpc}$$
 
-**UQFF correction to Hubble tension: Î”Hâ‚€ = 0.003 km/s/Mpc** â€” far too small to resolve the 5.6 km/s/Mpc tension. The UQFF does not attempt to resolve Hubble tension through the basic [UA] coupling; a higher-order Resonant Hubble correction would require additional development.
+**UQFF correction to Hubble tension: ?H0 = 0.003 km/s/Mpc** — far too small to resolve the 5.6 km/s/Mpc tension. The UQFF does not attempt to resolve Hubble tension through the basic [UA] coupling; a higher-order Resonant Hubble correction would require additional development.
 
 ---
 
@@ -386,20 +406,20 @@ $$L_*^{\rm UQFF} = L_*^{\rm standard} \times (1 + [SCm]) = L_* \times 1.99$$
 
 NED quasar catalog comparison:
 
-| Redshift bin | L*_standard (Lâ˜‰) | L*_UQFF (Lâ˜‰) | NED data range |
+| Redshift bin | L*_standard (L?) | L*_UQFF (L?) | NED data range |
 |-------------|------------------|---------------|----------------|
-| z = 0.5 | 10^{45.0} | 10^{45.3} | 10^{44.8}â€“10^{45.5} |
-| z = 1.0 | 10^{45.5} | 10^{45.8} | 10^{45.2}â€“10^{46.0} |
-| z = 2.0 | 10^{45.8} | 10^{46.1} | 10^{45.5}â€“10^{46.3} |
-| z = 3.0 | 10^{46.0} | 10^{46.3} | 10^{45.7}â€“10^{46.5} |
+| z = 0.5 | 10^{45.0} | 10^{45.3} | 10^{44.8}–10^{45.5} |
+| z = 1.0 | 10^{45.5} | 10^{45.8} | 10^{45.2}–10^{46.0} |
+| z = 2.0 | 10^{45.8} | 10^{46.1} | 10^{45.5}–10^{46.3} |
+| z = 3.0 | 10^{46.0} | 10^{46.3} | 10^{45.7}–10^{46.5} |
 
-**UQFF L* shift of 0.3 dex lies within the 0.5-dex observed scatter** â€” compatible with NED quasar data at all redshifts.
+**UQFF L* shift of 0.3 dex lies within the 0.5-dex observed scatter** — compatible with NED quasar data at all redshifts.
 
 ---
 
 ## 3. Quasar Absorption Line Systems
 
-DLA (Damped Lyman-Î±) systems contain high column density neutral hydrogen (N_HI > 2Ã—10Â²â° cmâ»Â²). The UQFF predicts no modification to the HI 21 cm line frequency (only gravitational Doppler at 10â»Â¹â° level). NED DLA catalog: UQFF-consistent.
+DLA (Damped Lyman-a) systems contain high column density neutral hydrogen (N_HI > 2×10²° cm?²). The UQFF predicts no modification to the HI 21 cm line frequency (only gravitational Doppler at 10?¹° level). NED DLA catalog: UQFF-consistent.
 
 ---
 
@@ -407,11 +427,11 @@ DLA (Damped Lyman-Î±) systems contain high column density neutral hydrogen (N_HI
 
 | Observable | NED Data | UQFF Prediction | Agreement |
 |-----------|---------|-----------------|-----------|
-| Hâ‚€ tension | 5.6 km/s/Mpc gap | Î”Hâ‚€ = 0.003 (negligible) | Not resolved |
-| AGN L* | 10^{45}â€“10^{46.5} | +0.3 dex ([SCm]) | Within scatter |
+| H0 tension | 5.6 km/s/Mpc gap | ?H0 = 0.003 (negligible) | Not resolved |
+| AGN L* | 10^{45}–10^{46.5} | +0.3 dex ([SCm]) | Within scatter |
 | DLA HI column | N_HI > 10^{20} | Unmodified | Compatible |
 
-*Source: QCalc_validation.py NED_BASE endpoint | Îº = 0.0005/day | [SSq] = 0.57*
+*Source: QCalc_validation.py NED_BASE endpoint | ? = 0.0005/day | [SSq] = 0.57*
 .Groups[1].Value
     "PAPER_{0:D3}" -f $n
     
@@ -420,7 +440,11 @@ DLA (Damped Lyman-Î±) systems contain high column density neutral hydrogen (N_HI
 
 ## Abstract
 
-The NED (NASA/IPAC Extragalactic Database) multi-wavelength catalog covers UV through radio for >1 billion extragalactic objects. Key physics tests for UQFF: (1) AGN luminosity functions comparing UQFF-enhanced accretion vs standard models, (2) the Hubble tension (Hâ‚€ = 67â€“73 km/s/Mpc) examined through the UQFF Buoyant vacuum correction, and (3) quasar absorption line systems (DLA/LLS) testing the UQFF vacuum density at cosmological redshifts.
+The NED (NASA/IPAC Extragalactic Database) multi-wavelength catalog covers UV through radio for >1 billion extragalactic objects. Key physics tests for UQFF: (1) AGN luminosity functions comparing UQFF-enhanced accretion vs standard models, (2) the Hubble tension (H0 = 67–73 km/s/Mpc) examined through the UQFF Buoyant vacuum correction, and (3) quasar absorption line systems (DLA/LLS) testing the UQFF vacuum density at cosmological redshifts.
+
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -428,13 +452,13 @@ The NED (NASA/IPAC Extragalactic Database) multi-wavelength catalog covers UV th
 
 ### Hubble Tension Context
 
-| Measurement | Hâ‚€ (km/s/Mpc) | Method |
+| Measurement | H0 (km/s/Mpc) | Method |
 |-------------|---------------|--------|
-| Planck 2018 (CMB) | 67.4 Â± 0.5 | Early universe |
-| SH0ES 2023 (Cepheids) | 73.0 Â± 1.0 | Distance ladder |
-| Tension | 4.2Ïƒ | â€” |
+| Planck 2018 (CMB) | 67.4 ± 0.5 | Early universe |
+| SH0ES 2023 (Cepheids) | 73.0 ± 1.0 | Distance ladder |
+| Tension | 4.2s | — |
 
-### UQFF Buoyant Correction to Hâ‚€
+### UQFF Buoyant Correction to H0
 
 The UQFF vacuum buoyancy modifies the effective expansion rate:
 
@@ -444,7 +468,7 @@ The [UA] = 0.0001 fractional vacuum coupling adds:
 
 $$\Delta H_0 = H_0 \times [UA] \times 0.5 = 67.4 \times 0.0001 \times 0.5 = 0.0034 \text{ km/s/Mpc}$$
 
-**UQFF correction to Hubble tension: Î”Hâ‚€ = 0.003 km/s/Mpc** â€” far too small to resolve the 5.6 km/s/Mpc tension. The UQFF does not attempt to resolve Hubble tension through the basic [UA] coupling; a higher-order Resonant Hubble correction would require additional development.
+**UQFF correction to Hubble tension: ?H0 = 0.003 km/s/Mpc** — far too small to resolve the 5.6 km/s/Mpc tension. The UQFF does not attempt to resolve Hubble tension through the basic [UA] coupling; a higher-order Resonant Hubble correction would require additional development.
 
 ---
 
@@ -456,20 +480,20 @@ $$L_*^{\rm UQFF} = L_*^{\rm standard} \times (1 + [SCm]) = L_* \times 1.99$$
 
 NED quasar catalog comparison:
 
-| Redshift bin | L*_standard (Lâ˜‰) | L*_UQFF (Lâ˜‰) | NED data range |
+| Redshift bin | L*_standard (L?) | L*_UQFF (L?) | NED data range |
 |-------------|------------------|---------------|----------------|
-| z = 0.5 | 10^{45.0} | 10^{45.3} | 10^{44.8}â€“10^{45.5} |
-| z = 1.0 | 10^{45.5} | 10^{45.8} | 10^{45.2}â€“10^{46.0} |
-| z = 2.0 | 10^{45.8} | 10^{46.1} | 10^{45.5}â€“10^{46.3} |
-| z = 3.0 | 10^{46.0} | 10^{46.3} | 10^{45.7}â€“10^{46.5} |
+| z = 0.5 | 10^{45.0} | 10^{45.3} | 10^{44.8}–10^{45.5} |
+| z = 1.0 | 10^{45.5} | 10^{45.8} | 10^{45.2}–10^{46.0} |
+| z = 2.0 | 10^{45.8} | 10^{46.1} | 10^{45.5}–10^{46.3} |
+| z = 3.0 | 10^{46.0} | 10^{46.3} | 10^{45.7}–10^{46.5} |
 
-**UQFF L* shift of 0.3 dex lies within the 0.5-dex observed scatter** â€” compatible with NED quasar data at all redshifts.
+**UQFF L* shift of 0.3 dex lies within the 0.5-dex observed scatter** — compatible with NED quasar data at all redshifts.
 
 ---
 
 ## 3. Quasar Absorption Line Systems
 
-DLA (Damped Lyman-Î±) systems contain high column density neutral hydrogen (N_HI > 2Ã—10Â²â° cmâ»Â²). The UQFF predicts no modification to the HI 21 cm line frequency (only gravitational Doppler at 10â»Â¹â° level). NED DLA catalog: UQFF-consistent.
+DLA (Damped Lyman-a) systems contain high column density neutral hydrogen (N_HI > 2×10²° cm?²). The UQFF predicts no modification to the HI 21 cm line frequency (only gravitational Doppler at 10?¹° level). NED DLA catalog: UQFF-consistent.
 
 ---
 
@@ -477,18 +501,22 @@ DLA (Damped Lyman-Î±) systems contain high column density neutral hydrogen (N_HI
 
 | Observable | NED Data | UQFF Prediction | Agreement |
 |-----------|---------|-----------------|-----------|
-| Hâ‚€ tension | 5.6 km/s/Mpc gap | Î”Hâ‚€ = 0.003 (negligible) | Not resolved |
-| AGN L* | 10^{45}â€“10^{46.5} | +0.3 dex ([SCm]) | Within scatter |
+| H0 tension | 5.6 km/s/Mpc gap | ?H0 = 0.003 (negligible) | Not resolved |
+| AGN L* | 10^{45}–10^{46.5} | +0.3 dex ([SCm]) | Within scatter |
 | DLA HI column | N_HI > 10^{20} | Unmodified | Compatible |
 
-*Source: QCalc_validation.py NED_BASE endpoint | Îº = 0.0005/day | [SSq] = 0.57*
+*Source: QCalc_validation.py NED_BASE endpoint | ? = 0.0005/day | [SSq] = 0.57*
 .Groups[1].Value   
 
 ---
 
 ## Abstract
 
-The NED (NASA/IPAC Extragalactic Database) multi-wavelength catalog covers UV through radio for >1 billion extragalactic objects. Key physics tests for UQFF: (1) AGN luminosity functions comparing UQFF-enhanced accretion vs standard models, (2) the Hubble tension (Hâ‚€ = 67â€“73 km/s/Mpc) examined through the UQFF Buoyant vacuum correction, and (3) quasar absorption line systems (DLA/LLS) testing the UQFF vacuum density at cosmological redshifts.
+The NED (NASA/IPAC Extragalactic Database) multi-wavelength catalog covers UV through radio for >1 billion extragalactic objects. Key physics tests for UQFF: (1) AGN luminosity functions comparing UQFF-enhanced accretion vs standard models, (2) the Hubble tension (H0 = 67–73 km/s/Mpc) examined through the UQFF Buoyant vacuum correction, and (3) quasar absorption line systems (DLA/LLS) testing the UQFF vacuum density at cosmological redshifts.
+
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -496,13 +524,13 @@ The NED (NASA/IPAC Extragalactic Database) multi-wavelength catalog covers UV th
 
 ### Hubble Tension Context
 
-| Measurement | Hâ‚€ (km/s/Mpc) | Method |
+| Measurement | H0 (km/s/Mpc) | Method |
 |-------------|---------------|--------|
-| Planck 2018 (CMB) | 67.4 Â± 0.5 | Early universe |
-| SH0ES 2023 (Cepheids) | 73.0 Â± 1.0 | Distance ladder |
-| Tension | 4.2Ïƒ | â€” |
+| Planck 2018 (CMB) | 67.4 ± 0.5 | Early universe |
+| SH0ES 2023 (Cepheids) | 73.0 ± 1.0 | Distance ladder |
+| Tension | 4.2s | — |
 
-### UQFF Buoyant Correction to Hâ‚€
+### UQFF Buoyant Correction to H0
 
 The UQFF vacuum buoyancy modifies the effective expansion rate:
 
@@ -512,7 +540,7 @@ The [UA] = 0.0001 fractional vacuum coupling adds:
 
 $$\Delta H_0 = H_0 \times [UA] \times 0.5 = 67.4 \times 0.0001 \times 0.5 = 0.0034 \text{ km/s/Mpc}$$
 
-**UQFF correction to Hubble tension: Î”Hâ‚€ = 0.003 km/s/Mpc** â€” far too small to resolve the 5.6 km/s/Mpc tension. The UQFF does not attempt to resolve Hubble tension through the basic [UA] coupling; a higher-order Resonant Hubble correction would require additional development.
+**UQFF correction to Hubble tension: ?H0 = 0.003 km/s/Mpc** — far too small to resolve the 5.6 km/s/Mpc tension. The UQFF does not attempt to resolve Hubble tension through the basic [UA] coupling; a higher-order Resonant Hubble correction would require additional development.
 
 ---
 
@@ -524,20 +552,20 @@ $$L_*^{\rm UQFF} = L_*^{\rm standard} \times (1 + [SCm]) = L_* \times 1.99$$
 
 NED quasar catalog comparison:
 
-| Redshift bin | L*_standard (Lâ˜‰) | L*_UQFF (Lâ˜‰) | NED data range |
+| Redshift bin | L*_standard (L?) | L*_UQFF (L?) | NED data range |
 |-------------|------------------|---------------|----------------|
-| z = 0.5 | 10^{45.0} | 10^{45.3} | 10^{44.8}â€“10^{45.5} |
-| z = 1.0 | 10^{45.5} | 10^{45.8} | 10^{45.2}â€“10^{46.0} |
-| z = 2.0 | 10^{45.8} | 10^{46.1} | 10^{45.5}â€“10^{46.3} |
-| z = 3.0 | 10^{46.0} | 10^{46.3} | 10^{45.7}â€“10^{46.5} |
+| z = 0.5 | 10^{45.0} | 10^{45.3} | 10^{44.8}–10^{45.5} |
+| z = 1.0 | 10^{45.5} | 10^{45.8} | 10^{45.2}–10^{46.0} |
+| z = 2.0 | 10^{45.8} | 10^{46.1} | 10^{45.5}–10^{46.3} |
+| z = 3.0 | 10^{46.0} | 10^{46.3} | 10^{45.7}–10^{46.5} |
 
-**UQFF L* shift of 0.3 dex lies within the 0.5-dex observed scatter** â€” compatible with NED quasar data at all redshifts.
+**UQFF L* shift of 0.3 dex lies within the 0.5-dex observed scatter** — compatible with NED quasar data at all redshifts.
 
 ---
 
 ## 3. Quasar Absorption Line Systems
 
-DLA (Damped Lyman-Î±) systems contain high column density neutral hydrogen (N_HI > 2Ã—10Â²â° cmâ»Â²). The UQFF predicts no modification to the HI 21 cm line frequency (only gravitational Doppler at 10â»Â¹â° level). NED DLA catalog: UQFF-consistent.
+DLA (Damped Lyman-a) systems contain high column density neutral hydrogen (N_HI > 2×10²° cm?²). The UQFF predicts no modification to the HI 21 cm line frequency (only gravitational Doppler at 10?¹° level). NED DLA catalog: UQFF-consistent.
 
 ---
 
@@ -545,11 +573,11 @@ DLA (Damped Lyman-Î±) systems contain high column density neutral hydrogen (N_HI
 
 | Observable | NED Data | UQFF Prediction | Agreement |
 |-----------|---------|-----------------|-----------|
-| Hâ‚€ tension | 5.6 km/s/Mpc gap | Î”Hâ‚€ = 0.003 (negligible) | Not resolved |
-| AGN L* | 10^{45}â€“10^{46.5} | +0.3 dex ([SCm]) | Within scatter |
+| H0 tension | 5.6 km/s/Mpc gap | ?H0 = 0.003 (negligible) | Not resolved |
+| AGN L* | 10^{45}–10^{46.5} | +0.3 dex ([SCm]) | Within scatter |
 | DLA HI column | N_HI > 10^{20} | Unmodified | Compatible |
 
-*Source: QCalc_validation.py NED_BASE endpoint | Îº = 0.0005/day | [SSq] = 0.57*
+*Source: QCalc_validation.py NED_BASE endpoint | ? = 0.0005/day | [SSq] = 0.57*
 .Groups[1].Value
     "PAPER_{0:D3}" -f $n
     
@@ -558,7 +586,11 @@ DLA (Damped Lyman-Î±) systems contain high column density neutral hydrogen (N_HI
 
 ## Abstract
 
-The NED (NASA/IPAC Extragalactic Database) multi-wavelength catalog covers UV through radio for >1 billion extragalactic objects. Key physics tests for UQFF: (1) AGN luminosity functions comparing UQFF-enhanced accretion vs standard models, (2) the Hubble tension (Hâ‚€ = 67â€“73 km/s/Mpc) examined through the UQFF Buoyant vacuum correction, and (3) quasar absorption line systems (DLA/LLS) testing the UQFF vacuum density at cosmological redshifts.
+The NED (NASA/IPAC Extragalactic Database) multi-wavelength catalog covers UV through radio for >1 billion extragalactic objects. Key physics tests for UQFF: (1) AGN luminosity functions comparing UQFF-enhanced accretion vs standard models, (2) the Hubble tension (H0 = 67–73 km/s/Mpc) examined through the UQFF Buoyant vacuum correction, and (3) quasar absorption line systems (DLA/LLS) testing the UQFF vacuum density at cosmological redshifts.
+
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -566,13 +598,13 @@ The NED (NASA/IPAC Extragalactic Database) multi-wavelength catalog covers UV th
 
 ### Hubble Tension Context
 
-| Measurement | Hâ‚€ (km/s/Mpc) | Method |
+| Measurement | H0 (km/s/Mpc) | Method |
 |-------------|---------------|--------|
-| Planck 2018 (CMB) | 67.4 Â± 0.5 | Early universe |
-| SH0ES 2023 (Cepheids) | 73.0 Â± 1.0 | Distance ladder |
-| Tension | 4.2Ïƒ | â€” |
+| Planck 2018 (CMB) | 67.4 ± 0.5 | Early universe |
+| SH0ES 2023 (Cepheids) | 73.0 ± 1.0 | Distance ladder |
+| Tension | 4.2s | — |
 
-### UQFF Buoyant Correction to Hâ‚€
+### UQFF Buoyant Correction to H0
 
 The UQFF vacuum buoyancy modifies the effective expansion rate:
 
@@ -582,7 +614,7 @@ The [UA] = 0.0001 fractional vacuum coupling adds:
 
 $$\Delta H_0 = H_0 \times [UA] \times 0.5 = 67.4 \times 0.0001 \times 0.5 = 0.0034 \text{ km/s/Mpc}$$
 
-**UQFF correction to Hubble tension: Î”Hâ‚€ = 0.003 km/s/Mpc** â€” far too small to resolve the 5.6 km/s/Mpc tension. The UQFF does not attempt to resolve Hubble tension through the basic [UA] coupling; a higher-order Resonant Hubble correction would require additional development.
+**UQFF correction to Hubble tension: ?H0 = 0.003 km/s/Mpc** — far too small to resolve the 5.6 km/s/Mpc tension. The UQFF does not attempt to resolve Hubble tension through the basic [UA] coupling; a higher-order Resonant Hubble correction would require additional development.
 
 ---
 
@@ -594,20 +626,20 @@ $$L_*^{\rm UQFF} = L_*^{\rm standard} \times (1 + [SCm]) = L_* \times 1.99$$
 
 NED quasar catalog comparison:
 
-| Redshift bin | L*_standard (Lâ˜‰) | L*_UQFF (Lâ˜‰) | NED data range |
+| Redshift bin | L*_standard (L?) | L*_UQFF (L?) | NED data range |
 |-------------|------------------|---------------|----------------|
-| z = 0.5 | 10^{45.0} | 10^{45.3} | 10^{44.8}â€“10^{45.5} |
-| z = 1.0 | 10^{45.5} | 10^{45.8} | 10^{45.2}â€“10^{46.0} |
-| z = 2.0 | 10^{45.8} | 10^{46.1} | 10^{45.5}â€“10^{46.3} |
-| z = 3.0 | 10^{46.0} | 10^{46.3} | 10^{45.7}â€“10^{46.5} |
+| z = 0.5 | 10^{45.0} | 10^{45.3} | 10^{44.8}–10^{45.5} |
+| z = 1.0 | 10^{45.5} | 10^{45.8} | 10^{45.2}–10^{46.0} |
+| z = 2.0 | 10^{45.8} | 10^{46.1} | 10^{45.5}–10^{46.3} |
+| z = 3.0 | 10^{46.0} | 10^{46.3} | 10^{45.7}–10^{46.5} |
 
-**UQFF L* shift of 0.3 dex lies within the 0.5-dex observed scatter** â€” compatible with NED quasar data at all redshifts.
+**UQFF L* shift of 0.3 dex lies within the 0.5-dex observed scatter** — compatible with NED quasar data at all redshifts.
 
 ---
 
 ## 3. Quasar Absorption Line Systems
 
-DLA (Damped Lyman-Î±) systems contain high column density neutral hydrogen (N_HI > 2Ã—10Â²â° cmâ»Â²). The UQFF predicts no modification to the HI 21 cm line frequency (only gravitational Doppler at 10â»Â¹â° level). NED DLA catalog: UQFF-consistent.
+DLA (Damped Lyman-a) systems contain high column density neutral hydrogen (N_HI > 2×10²° cm?²). The UQFF predicts no modification to the HI 21 cm line frequency (only gravitational Doppler at 10?¹° level). NED DLA catalog: UQFF-consistent.
 
 ---
 
@@ -615,8 +647,8 @@ DLA (Damped Lyman-Î±) systems contain high column density neutral hydrogen (N_HI
 
 | Observable | NED Data | UQFF Prediction | Agreement |
 |-----------|---------|-----------------|-----------|
-| Hâ‚€ tension | 5.6 km/s/Mpc gap | Î”Hâ‚€ = 0.003 (negligible) | Not resolved |
-| AGN L* | 10^{45}â€“10^{46.5} | +0.3 dex ([SCm]) | Within scatter |
+| H0 tension | 5.6 km/s/Mpc gap | ?H0 = 0.003 (negligible) | Not resolved |
+| AGN L* | 10^{45}–10^{46.5} | +0.3 dex ([SCm]) | Within scatter |
 | DLA HI column | N_HI > 10^{20} | Unmodified | Compatible |
 
-*Source: QCalc_validation.py NED_BASE endpoint | Îº = 0.0005/day | [SSq] = 0.57*
+*Source: QCalc_validation.py NED_BASE endpoint | ? = 0.0005/day | [SSq] = 0.57*

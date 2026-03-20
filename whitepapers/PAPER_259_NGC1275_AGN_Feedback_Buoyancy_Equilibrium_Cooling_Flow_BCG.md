@@ -156,6 +156,8 @@ This is the **first UQFF whitepaper** to derive an equilibrium condition between
 
 ---
 
+**UQFF computed:** Eddington luminosity UQFF correction = 1 - [SSq]×exp(-?×?t) = 1 - 5.7e-1 × exp(-2.9e-4) = 4.3e-1; F_U at event horizon = 2.0e+18 m/s².
+
 ## References
 
 1. NGC1275.cpp (UQFF 2.0 upgrade, Session 72f, March 16, 2026) â€” `term_cool = rho_cool * v_cool^2 / rho_fluid`

@@ -1,27 +1,31 @@
-ï»¿#  "PAPER_{0:D3}" -f [int]# PAPER #74 â€” Galactic Structure: NED + SIMBAD + UQFF Cross-Validation
+#  "PAPER_{0:D3}" -f [int]# PAPER #74 — Galactic Structure: NED + SIMBAD + UQFF Cross-Validation
 
 **Title:** Galactic Structure Cross-Validation: NED and SIMBAD Multi-Object Queries vs UQFF Predicted Velocity Dispersions and Mass Profiles
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (Îº = 0.0005/day, [SSq] = 0.57)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57)  
 **Date:** March 7, 2026  
 **Source Data:** QCalc_validation.py (DataSourceURLs: NED_BASE, SIMBAD_BASE, SIMBAD_API)  
-**Index Slot:** Â§1.10 Database Integration & Multi-Wavelength Astrophysics,  
-    $n = [int]# PAPER #74 â€” Galactic Structure: NED + SIMBAD + UQFF Cross-Validation
+**Index Slot:** §1.10 Database Integration & Multi-Wavelength Astrophysics,  
+    $n = [int]# PAPER #74 — Galactic Structure: NED + SIMBAD + UQFF Cross-Validation
 
 **Title:** Galactic Structure Cross-Validation: NED and SIMBAD Multi-Object Queries vs UQFF Predicted Velocity Dispersions and Mass Profiles
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (Îº = 0.0005/day, [SSq] = 0.57)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57)  
 **Date:** March 7, 2026  
 **Source Data:** QCalc_validation.py (DataSourceURLs: NED_BASE, SIMBAD_BASE, SIMBAD_API)  
-**Index Slot:** Â§1.10 Database Integration & Multi-Wavelength Astrophysics, PAPER_074  
+**Index Slot:** §1.10 Database Integration & Multi-Wavelength Astrophysics, PAPER_074  
 
 ---
 
 ## Abstract
 
-The NASA/IPAC Extragalactic Database (NED) and the SIMBAD Astronomical Database (CDS, Strasbourg) together provide the most comprehensive cross-matched multi-wavelength galaxy catalog available. The UQFF predicts galactic velocity dispersions via the buoyancy-modified gravity field: ÏƒÂ² = (G Ã— M_gal/r_eff) Ã— (1 + F_UBii/F_Newton). This paper validates UQFF predictions against NED redshift surveys and SIMBAD spectroscopic data for 6 galaxy categories. The QCalc_validation.py implements the NED_API (ned.ipac.caltech.edu) and SIMBAD_API (simbad.u-strasbg.fr) query endpoints.
+The NASA/IPAC Extragalactic Database (NED) and the SIMBAD Astronomical Database (CDS, Strasbourg) together provide the most comprehensive cross-matched multi-wavelength galaxy catalog available. The UQFF predicts galactic velocity dispersions via the buoyancy-modified gravity field: s² = (G × M_gal/r_eff) × (1 + F_UBii/F_Newton). This paper validates UQFF predictions against NED redshift surveys and SIMBAD spectroscopic data for 6 galaxy categories. The QCalc_validation.py implements the NED_API (ned.ipac.caltech.edu) and SIMBAD_API (simbad.u-strasbg.fr) query endpoints.
+
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -70,16 +74,16 @@ $$\sigma_{\rm UQFF}^2 = \sigma_{\rm Newton}^2 \times \left(1 + \frac{F_{U,Bi,i}}
 
 ### Validation Results by Galaxy Type
 
-| Galaxy | Type | Ïƒ_Newton (km/s) | Ïƒ_UQFF (km/s) | NED Ïƒ_obs (km/s) | Match |
+| Galaxy | Type | s_Newton (km/s) | s_UQFF (km/s) | NED s_obs (km/s) | Match |
 |--------|------|-----------------|----------------|-------------------|-------|
-| M87 (NGC 4486) | E0 | 342 | 348 | 324 Â± 12 | < 2Ïƒ |
-| Virgo A | E0 | 334 | 340 | 314 Â± 10 | < 3Ïƒ |
-| M81 | Sab | 156 | 159 | 143 Â± 7 | < 2.5Ïƒ |
-| Milky Way | SBbc | 105 | 107 | 100 Â± 6 | < 1.3Ïƒ |
-| M51 (Whirlpool) | Sbc | 88 | 90 | 85 Â± 8 | < 1Ïƒ |
-| NGC 1277 (compact) | S0 | 360 | 367 | 333 Â± 18 | < 2Ïƒ |
+| M87 (NGC 4486) | E0 | 342 | 348 | 324 ± 12 | < 2s |
+| Virgo A | E0 | 334 | 340 | 314 ± 10 | < 3s |
+| M81 | Sab | 156 | 159 | 143 ± 7 | < 2.5s |
+| Milky Way | SBbc | 105 | 107 | 100 ± 6 | < 1.3s |
+| M51 (Whirlpool) | Sbc | 88 | 90 | 85 ± 8 | < 1s |
+| NGC 1277 (compact) | S0 | 360 | 367 | 333 ± 18 | < 2s |
 
-Average UQFF enhancement: Ïƒ_UQFF/Ïƒ_Newton = **1.018** (= [SSq] Ã— 0.032 correction factor).
+Average UQFF enhancement: s_UQFF/s_Newton = **1.018** (= [SSq] × 0.032 correction factor).
 
 ---
 
@@ -89,7 +93,7 @@ SIMBAD provides stellar/galactic spectral types and radial velocities. The UQFF 
 
 $$\delta \mu_{\rm UQFF} = \mu_{\rm Hubble} \times [SSq] \times \frac{r_{\rm AGN}}{r_{\rm gal}}$$
 
-For M31 (Andromeda): r_AGN/r_gal ~ 0.001, so Î´Î¼ ~ 0.057% â€” within SIMBAD proper motion uncertainties (> 10%) for extragalactic objects.
+For M31 (Andromeda): r_AGN/r_gal ~ 0.001, so dµ ~ 0.057% — within SIMBAD proper motion uncertainties (> 10%) for extragalactic objects.
 
 ---
 
@@ -99,10 +103,10 @@ When SIMBAD + NED + GAIA data are combined for the same galaxy:
 
 | Parameter | SIMBAD | NED | GAIA | UQFF |
 |-----------|--------|-----|------|------|
-| Redshift z | âœ“ | âœ“ | â€” | Hubble standard |
-| Ïƒ_los (km/s) | âœ“ | âœ“ | â€” | +1.018Ã— |
-| Photometric M_star | â€” | âœ“ | âœ“ | Input |
-| Proper motion | â€” | â€” | âœ“ | +Î´Î¼ (negligible) |
+| Redshift z | ? | ? | — | Hubble standard |
+| s_los (km/s) | ? | ? | — | +1.018× |
+| Photometric M_star | — | ? | ? | Input |
+| Proper motion | — | — | ? | +dµ (negligible) |
 
 ---
 
@@ -110,11 +114,11 @@ When SIMBAD + NED + GAIA data are combined for the same galaxy:
 
 | Database | Query Method | UQFF Prediction | Agreement |
 |----------|-------------|-----------------|-----------|
-| NED | TAP ADQL / ObjectLookup | Ïƒ enhancement Ã—1.018 | <2â€“3Ïƒ |
-| SIMBAD | TAP ADQL | Radial velocity: unmodified | < 1Ïƒ |
+| NED | TAP ADQL / ObjectLookup | s enhancement ×1.018 | <2–3s |
+| SIMBAD | TAP ADQL | Radial velocity: unmodified | < 1s |
 | Combined | Cross-match | Consistent systematic +1.8% | Self-consistent |
 
-*Source: QCalc_validation.py NED_BASE + SIMBAD_BASE endpoints | Îº = 0.0005/day | [SSq] = 0.57*
+*Source: QCalc_validation.py NED_BASE + SIMBAD_BASE endpoints | ? = 0.0005/day | [SSq] = 0.57*
 .Groups[1].Value
     "PAPER_{0:D3}" -f $n
     
@@ -123,7 +127,11 @@ When SIMBAD + NED + GAIA data are combined for the same galaxy:
 
 ## Abstract
 
-The NASA/IPAC Extragalactic Database (NED) and the SIMBAD Astronomical Database (CDS, Strasbourg) together provide the most comprehensive cross-matched multi-wavelength galaxy catalog available. The UQFF predicts galactic velocity dispersions via the buoyancy-modified gravity field: ÏƒÂ² = (G Ã— M_gal/r_eff) Ã— (1 + F_UBii/F_Newton). This paper validates UQFF predictions against NED redshift surveys and SIMBAD spectroscopic data for 6 galaxy categories. The QCalc_validation.py implements the NED_API (ned.ipac.caltech.edu) and SIMBAD_API (simbad.u-strasbg.fr) query endpoints.
+The NASA/IPAC Extragalactic Database (NED) and the SIMBAD Astronomical Database (CDS, Strasbourg) together provide the most comprehensive cross-matched multi-wavelength galaxy catalog available. The UQFF predicts galactic velocity dispersions via the buoyancy-modified gravity field: s² = (G × M_gal/r_eff) × (1 + F_UBii/F_Newton). This paper validates UQFF predictions against NED redshift surveys and SIMBAD spectroscopic data for 6 galaxy categories. The QCalc_validation.py implements the NED_API (ned.ipac.caltech.edu) and SIMBAD_API (simbad.u-strasbg.fr) query endpoints.
+
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -172,16 +180,16 @@ $$\sigma_{\rm UQFF}^2 = \sigma_{\rm Newton}^2 \times \left(1 + \frac{F_{U,Bi,i}}
 
 ### Validation Results by Galaxy Type
 
-| Galaxy | Type | Ïƒ_Newton (km/s) | Ïƒ_UQFF (km/s) | NED Ïƒ_obs (km/s) | Match |
+| Galaxy | Type | s_Newton (km/s) | s_UQFF (km/s) | NED s_obs (km/s) | Match |
 |--------|------|-----------------|----------------|-------------------|-------|
-| M87 (NGC 4486) | E0 | 342 | 348 | 324 Â± 12 | < 2Ïƒ |
-| Virgo A | E0 | 334 | 340 | 314 Â± 10 | < 3Ïƒ |
-| M81 | Sab | 156 | 159 | 143 Â± 7 | < 2.5Ïƒ |
-| Milky Way | SBbc | 105 | 107 | 100 Â± 6 | < 1.3Ïƒ |
-| M51 (Whirlpool) | Sbc | 88 | 90 | 85 Â± 8 | < 1Ïƒ |
-| NGC 1277 (compact) | S0 | 360 | 367 | 333 Â± 18 | < 2Ïƒ |
+| M87 (NGC 4486) | E0 | 342 | 348 | 324 ± 12 | < 2s |
+| Virgo A | E0 | 334 | 340 | 314 ± 10 | < 3s |
+| M81 | Sab | 156 | 159 | 143 ± 7 | < 2.5s |
+| Milky Way | SBbc | 105 | 107 | 100 ± 6 | < 1.3s |
+| M51 (Whirlpool) | Sbc | 88 | 90 | 85 ± 8 | < 1s |
+| NGC 1277 (compact) | S0 | 360 | 367 | 333 ± 18 | < 2s |
 
-Average UQFF enhancement: Ïƒ_UQFF/Ïƒ_Newton = **1.018** (= [SSq] Ã— 0.032 correction factor).
+Average UQFF enhancement: s_UQFF/s_Newton = **1.018** (= [SSq] × 0.032 correction factor).
 
 ---
 
@@ -191,7 +199,7 @@ SIMBAD provides stellar/galactic spectral types and radial velocities. The UQFF 
 
 $$\delta \mu_{\rm UQFF} = \mu_{\rm Hubble} \times [SSq] \times \frac{r_{\rm AGN}}{r_{\rm gal}}$$
 
-For M31 (Andromeda): r_AGN/r_gal ~ 0.001, so Î´Î¼ ~ 0.057% â€” within SIMBAD proper motion uncertainties (> 10%) for extragalactic objects.
+For M31 (Andromeda): r_AGN/r_gal ~ 0.001, so dµ ~ 0.057% — within SIMBAD proper motion uncertainties (> 10%) for extragalactic objects.
 
 ---
 
@@ -201,10 +209,10 @@ When SIMBAD + NED + GAIA data are combined for the same galaxy:
 
 | Parameter | SIMBAD | NED | GAIA | UQFF |
 |-----------|--------|-----|------|------|
-| Redshift z | âœ“ | âœ“ | â€” | Hubble standard |
-| Ïƒ_los (km/s) | âœ“ | âœ“ | â€” | +1.018Ã— |
-| Photometric M_star | â€” | âœ“ | âœ“ | Input |
-| Proper motion | â€” | â€” | âœ“ | +Î´Î¼ (negligible) |
+| Redshift z | ? | ? | — | Hubble standard |
+| s_los (km/s) | ? | ? | — | +1.018× |
+| Photometric M_star | — | ? | ? | Input |
+| Proper motion | — | — | ? | +dµ (negligible) |
 
 ---
 
@@ -212,44 +220,48 @@ When SIMBAD + NED + GAIA data are combined for the same galaxy:
 
 | Database | Query Method | UQFF Prediction | Agreement |
 |----------|-------------|-----------------|-----------|
-| NED | TAP ADQL / ObjectLookup | Ïƒ enhancement Ã—1.018 | <2â€“3Ïƒ |
-| SIMBAD | TAP ADQL | Radial velocity: unmodified | < 1Ïƒ |
+| NED | TAP ADQL / ObjectLookup | s enhancement ×1.018 | <2–3s |
+| SIMBAD | TAP ADQL | Radial velocity: unmodified | < 1s |
 | Combined | Cross-match | Consistent systematic +1.8% | Self-consistent |
 
-*Source: QCalc_validation.py NED_BASE + SIMBAD_BASE endpoints | Îº = 0.0005/day | [SSq] = 0.57*
-.Groups[1].Value  â€” Galactic Structure: NED + SIMBAD + UQFF Cross-Validation
+*Source: QCalc_validation.py NED_BASE + SIMBAD_BASE endpoints | ? = 0.0005/day | [SSq] = 0.57*
+.Groups[1].Value  — Galactic Structure: NED + SIMBAD + UQFF Cross-Validation
 
 **Title:** Galactic Structure Cross-Validation: NED and SIMBAD Multi-Object Queries vs UQFF Predicted Velocity Dispersions and Mass Profiles
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (Îº = 0.0005/day, [SSq] = 0.57)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57)  
 **Date:** March 7, 2026  
 **Source Data:** QCalc_validation.py (DataSourceURLs: NED_BASE, SIMBAD_BASE, SIMBAD_API)  
-**Index Slot:** Â§1.10 Database Integration & Multi-Wavelength Astrophysics,  
-    $n = [int]#  "PAPER_{0:D3}" -f [int]# PAPER #74 â€” Galactic Structure: NED + SIMBAD + UQFF Cross-Validation
+**Index Slot:** §1.10 Database Integration & Multi-Wavelength Astrophysics,  
+    $n = [int]#  "PAPER_{0:D3}" -f [int]# PAPER #74 — Galactic Structure: NED + SIMBAD + UQFF Cross-Validation
 
 **Title:** Galactic Structure Cross-Validation: NED and SIMBAD Multi-Object Queries vs UQFF Predicted Velocity Dispersions and Mass Profiles
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (Îº = 0.0005/day, [SSq] = 0.57)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57)  
 **Date:** March 7, 2026  
 **Source Data:** QCalc_validation.py (DataSourceURLs: NED_BASE, SIMBAD_BASE, SIMBAD_API)  
-**Index Slot:** Â§1.10 Database Integration & Multi-Wavelength Astrophysics,  
-    $n = [int]# PAPER #74 â€” Galactic Structure: NED + SIMBAD + UQFF Cross-Validation
+**Index Slot:** §1.10 Database Integration & Multi-Wavelength Astrophysics,  
+    $n = [int]# PAPER #74 — Galactic Structure: NED + SIMBAD + UQFF Cross-Validation
 
 **Title:** Galactic Structure Cross-Validation: NED and SIMBAD Multi-Object Queries vs UQFF Predicted Velocity Dispersions and Mass Profiles
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (Îº = 0.0005/day, [SSq] = 0.57)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57)  
 **Date:** March 7, 2026  
 **Source Data:** QCalc_validation.py (DataSourceURLs: NED_BASE, SIMBAD_BASE, SIMBAD_API)  
-**Index Slot:** Â§1.10 Database Integration & Multi-Wavelength Astrophysics, PAPER_074  
+**Index Slot:** §1.10 Database Integration & Multi-Wavelength Astrophysics, PAPER_074  
 
 ---
 
 ## Abstract
 
-The NASA/IPAC Extragalactic Database (NED) and the SIMBAD Astronomical Database (CDS, Strasbourg) together provide the most comprehensive cross-matched multi-wavelength galaxy catalog available. The UQFF predicts galactic velocity dispersions via the buoyancy-modified gravity field: ÏƒÂ² = (G Ã— M_gal/r_eff) Ã— (1 + F_UBii/F_Newton). This paper validates UQFF predictions against NED redshift surveys and SIMBAD spectroscopic data for 6 galaxy categories. The QCalc_validation.py implements the NED_API (ned.ipac.caltech.edu) and SIMBAD_API (simbad.u-strasbg.fr) query endpoints.
+The NASA/IPAC Extragalactic Database (NED) and the SIMBAD Astronomical Database (CDS, Strasbourg) together provide the most comprehensive cross-matched multi-wavelength galaxy catalog available. The UQFF predicts galactic velocity dispersions via the buoyancy-modified gravity field: s² = (G × M_gal/r_eff) × (1 + F_UBii/F_Newton). This paper validates UQFF predictions against NED redshift surveys and SIMBAD spectroscopic data for 6 galaxy categories. The QCalc_validation.py implements the NED_API (ned.ipac.caltech.edu) and SIMBAD_API (simbad.u-strasbg.fr) query endpoints.
+
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -298,16 +310,16 @@ $$\sigma_{\rm UQFF}^2 = \sigma_{\rm Newton}^2 \times \left(1 + \frac{F_{U,Bi,i}}
 
 ### Validation Results by Galaxy Type
 
-| Galaxy | Type | Ïƒ_Newton (km/s) | Ïƒ_UQFF (km/s) | NED Ïƒ_obs (km/s) | Match |
+| Galaxy | Type | s_Newton (km/s) | s_UQFF (km/s) | NED s_obs (km/s) | Match |
 |--------|------|-----------------|----------------|-------------------|-------|
-| M87 (NGC 4486) | E0 | 342 | 348 | 324 Â± 12 | < 2Ïƒ |
-| Virgo A | E0 | 334 | 340 | 314 Â± 10 | < 3Ïƒ |
-| M81 | Sab | 156 | 159 | 143 Â± 7 | < 2.5Ïƒ |
-| Milky Way | SBbc | 105 | 107 | 100 Â± 6 | < 1.3Ïƒ |
-| M51 (Whirlpool) | Sbc | 88 | 90 | 85 Â± 8 | < 1Ïƒ |
-| NGC 1277 (compact) | S0 | 360 | 367 | 333 Â± 18 | < 2Ïƒ |
+| M87 (NGC 4486) | E0 | 342 | 348 | 324 ± 12 | < 2s |
+| Virgo A | E0 | 334 | 340 | 314 ± 10 | < 3s |
+| M81 | Sab | 156 | 159 | 143 ± 7 | < 2.5s |
+| Milky Way | SBbc | 105 | 107 | 100 ± 6 | < 1.3s |
+| M51 (Whirlpool) | Sbc | 88 | 90 | 85 ± 8 | < 1s |
+| NGC 1277 (compact) | S0 | 360 | 367 | 333 ± 18 | < 2s |
 
-Average UQFF enhancement: Ïƒ_UQFF/Ïƒ_Newton = **1.018** (= [SSq] Ã— 0.032 correction factor).
+Average UQFF enhancement: s_UQFF/s_Newton = **1.018** (= [SSq] × 0.032 correction factor).
 
 ---
 
@@ -317,7 +329,7 @@ SIMBAD provides stellar/galactic spectral types and radial velocities. The UQFF 
 
 $$\delta \mu_{\rm UQFF} = \mu_{\rm Hubble} \times [SSq] \times \frac{r_{\rm AGN}}{r_{\rm gal}}$$
 
-For M31 (Andromeda): r_AGN/r_gal ~ 0.001, so Î´Î¼ ~ 0.057% â€” within SIMBAD proper motion uncertainties (> 10%) for extragalactic objects.
+For M31 (Andromeda): r_AGN/r_gal ~ 0.001, so dµ ~ 0.057% — within SIMBAD proper motion uncertainties (> 10%) for extragalactic objects.
 
 ---
 
@@ -327,10 +339,10 @@ When SIMBAD + NED + GAIA data are combined for the same galaxy:
 
 | Parameter | SIMBAD | NED | GAIA | UQFF |
 |-----------|--------|-----|------|------|
-| Redshift z | âœ“ | âœ“ | â€” | Hubble standard |
-| Ïƒ_los (km/s) | âœ“ | âœ“ | â€” | +1.018Ã— |
-| Photometric M_star | â€” | âœ“ | âœ“ | Input |
-| Proper motion | â€” | â€” | âœ“ | +Î´Î¼ (negligible) |
+| Redshift z | ? | ? | — | Hubble standard |
+| s_los (km/s) | ? | ? | — | +1.018× |
+| Photometric M_star | — | ? | ? | Input |
+| Proper motion | — | — | ? | +dµ (negligible) |
 
 ---
 
@@ -338,11 +350,11 @@ When SIMBAD + NED + GAIA data are combined for the same galaxy:
 
 | Database | Query Method | UQFF Prediction | Agreement |
 |----------|-------------|-----------------|-----------|
-| NED | TAP ADQL / ObjectLookup | Ïƒ enhancement Ã—1.018 | <2â€“3Ïƒ |
-| SIMBAD | TAP ADQL | Radial velocity: unmodified | < 1Ïƒ |
+| NED | TAP ADQL / ObjectLookup | s enhancement ×1.018 | <2–3s |
+| SIMBAD | TAP ADQL | Radial velocity: unmodified | < 1s |
 | Combined | Cross-match | Consistent systematic +1.8% | Self-consistent |
 
-*Source: QCalc_validation.py NED_BASE + SIMBAD_BASE endpoints | Îº = 0.0005/day | [SSq] = 0.57*
+*Source: QCalc_validation.py NED_BASE + SIMBAD_BASE endpoints | ? = 0.0005/day | [SSq] = 0.57*
 .Groups[1].Value
     "PAPER_{0:D3}" -f $n
     
@@ -351,7 +363,11 @@ When SIMBAD + NED + GAIA data are combined for the same galaxy:
 
 ## Abstract
 
-The NASA/IPAC Extragalactic Database (NED) and the SIMBAD Astronomical Database (CDS, Strasbourg) together provide the most comprehensive cross-matched multi-wavelength galaxy catalog available. The UQFF predicts galactic velocity dispersions via the buoyancy-modified gravity field: ÏƒÂ² = (G Ã— M_gal/r_eff) Ã— (1 + F_UBii/F_Newton). This paper validates UQFF predictions against NED redshift surveys and SIMBAD spectroscopic data for 6 galaxy categories. The QCalc_validation.py implements the NED_API (ned.ipac.caltech.edu) and SIMBAD_API (simbad.u-strasbg.fr) query endpoints.
+The NASA/IPAC Extragalactic Database (NED) and the SIMBAD Astronomical Database (CDS, Strasbourg) together provide the most comprehensive cross-matched multi-wavelength galaxy catalog available. The UQFF predicts galactic velocity dispersions via the buoyancy-modified gravity field: s² = (G × M_gal/r_eff) × (1 + F_UBii/F_Newton). This paper validates UQFF predictions against NED redshift surveys and SIMBAD spectroscopic data for 6 galaxy categories. The QCalc_validation.py implements the NED_API (ned.ipac.caltech.edu) and SIMBAD_API (simbad.u-strasbg.fr) query endpoints.
+
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -400,16 +416,16 @@ $$\sigma_{\rm UQFF}^2 = \sigma_{\rm Newton}^2 \times \left(1 + \frac{F_{U,Bi,i}}
 
 ### Validation Results by Galaxy Type
 
-| Galaxy | Type | Ïƒ_Newton (km/s) | Ïƒ_UQFF (km/s) | NED Ïƒ_obs (km/s) | Match |
+| Galaxy | Type | s_Newton (km/s) | s_UQFF (km/s) | NED s_obs (km/s) | Match |
 |--------|------|-----------------|----------------|-------------------|-------|
-| M87 (NGC 4486) | E0 | 342 | 348 | 324 Â± 12 | < 2Ïƒ |
-| Virgo A | E0 | 334 | 340 | 314 Â± 10 | < 3Ïƒ |
-| M81 | Sab | 156 | 159 | 143 Â± 7 | < 2.5Ïƒ |
-| Milky Way | SBbc | 105 | 107 | 100 Â± 6 | < 1.3Ïƒ |
-| M51 (Whirlpool) | Sbc | 88 | 90 | 85 Â± 8 | < 1Ïƒ |
-| NGC 1277 (compact) | S0 | 360 | 367 | 333 Â± 18 | < 2Ïƒ |
+| M87 (NGC 4486) | E0 | 342 | 348 | 324 ± 12 | < 2s |
+| Virgo A | E0 | 334 | 340 | 314 ± 10 | < 3s |
+| M81 | Sab | 156 | 159 | 143 ± 7 | < 2.5s |
+| Milky Way | SBbc | 105 | 107 | 100 ± 6 | < 1.3s |
+| M51 (Whirlpool) | Sbc | 88 | 90 | 85 ± 8 | < 1s |
+| NGC 1277 (compact) | S0 | 360 | 367 | 333 ± 18 | < 2s |
 
-Average UQFF enhancement: Ïƒ_UQFF/Ïƒ_Newton = **1.018** (= [SSq] Ã— 0.032 correction factor).
+Average UQFF enhancement: s_UQFF/s_Newton = **1.018** (= [SSq] × 0.032 correction factor).
 
 ---
 
@@ -419,7 +435,7 @@ SIMBAD provides stellar/galactic spectral types and radial velocities. The UQFF 
 
 $$\delta \mu_{\rm UQFF} = \mu_{\rm Hubble} \times [SSq] \times \frac{r_{\rm AGN}}{r_{\rm gal}}$$
 
-For M31 (Andromeda): r_AGN/r_gal ~ 0.001, so Î´Î¼ ~ 0.057% â€” within SIMBAD proper motion uncertainties (> 10%) for extragalactic objects.
+For M31 (Andromeda): r_AGN/r_gal ~ 0.001, so dµ ~ 0.057% — within SIMBAD proper motion uncertainties (> 10%) for extragalactic objects.
 
 ---
 
@@ -429,10 +445,10 @@ When SIMBAD + NED + GAIA data are combined for the same galaxy:
 
 | Parameter | SIMBAD | NED | GAIA | UQFF |
 |-----------|--------|-----|------|------|
-| Redshift z | âœ“ | âœ“ | â€” | Hubble standard |
-| Ïƒ_los (km/s) | âœ“ | âœ“ | â€” | +1.018Ã— |
-| Photometric M_star | â€” | âœ“ | âœ“ | Input |
-| Proper motion | â€” | â€” | âœ“ | +Î´Î¼ (negligible) |
+| Redshift z | ? | ? | — | Hubble standard |
+| s_los (km/s) | ? | ? | — | +1.018× |
+| Photometric M_star | — | ? | ? | Input |
+| Proper motion | — | — | ? | +dµ (negligible) |
 
 ---
 
@@ -440,43 +456,47 @@ When SIMBAD + NED + GAIA data are combined for the same galaxy:
 
 | Database | Query Method | UQFF Prediction | Agreement |
 |----------|-------------|-----------------|-----------|
-| NED | TAP ADQL / ObjectLookup | Ïƒ enhancement Ã—1.018 | <2â€“3Ïƒ |
-| SIMBAD | TAP ADQL | Radial velocity: unmodified | < 1Ïƒ |
+| NED | TAP ADQL / ObjectLookup | s enhancement ×1.018 | <2–3s |
+| SIMBAD | TAP ADQL | Radial velocity: unmodified | < 1s |
 | Combined | Cross-match | Consistent systematic +1.8% | Self-consistent |
 
-*Source: QCalc_validation.py NED_BASE + SIMBAD_BASE endpoints | Îº = 0.0005/day | [SSq] = 0.57*
-.Groups[1].Value  â€” Galactic Structure: NED + SIMBAD + UQFF Cross-Validation
+*Source: QCalc_validation.py NED_BASE + SIMBAD_BASE endpoints | ? = 0.0005/day | [SSq] = 0.57*
+.Groups[1].Value  — Galactic Structure: NED + SIMBAD + UQFF Cross-Validation
 
 **Title:** Galactic Structure Cross-Validation: NED and SIMBAD Multi-Object Queries vs UQFF Predicted Velocity Dispersions and Mass Profiles
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (Îº = 0.0005/day, [SSq] = 0.57)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57)  
 **Date:** March 7, 2026  
 **Source Data:** QCalc_validation.py (DataSourceURLs: NED_BASE, SIMBAD_BASE, SIMBAD_API)  
-**Index Slot:** Â§1.10 Database Integration & Multi-Wavelength Astrophysics,  "PAPER_{0:D3}" -f [int]# PAPER #74 â€” Galactic Structure: NED + SIMBAD + UQFF Cross-Validation
+**Index Slot:** §1.10 Database Integration & Multi-Wavelength Astrophysics,  "PAPER_{0:D3}" -f [int]# PAPER #74 — Galactic Structure: NED + SIMBAD + UQFF Cross-Validation
 
 **Title:** Galactic Structure Cross-Validation: NED and SIMBAD Multi-Object Queries vs UQFF Predicted Velocity Dispersions and Mass Profiles
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (Îº = 0.0005/day, [SSq] = 0.57)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57)  
 **Date:** March 7, 2026  
 **Source Data:** QCalc_validation.py (DataSourceURLs: NED_BASE, SIMBAD_BASE, SIMBAD_API)  
-**Index Slot:** Â§1.10 Database Integration & Multi-Wavelength Astrophysics,  
-    $n = [int]# PAPER #74 â€” Galactic Structure: NED + SIMBAD + UQFF Cross-Validation
+**Index Slot:** §1.10 Database Integration & Multi-Wavelength Astrophysics,  
+    $n = [int]# PAPER #74 — Galactic Structure: NED + SIMBAD + UQFF Cross-Validation
 
 **Title:** Galactic Structure Cross-Validation: NED and SIMBAD Multi-Object Queries vs UQFF Predicted Velocity Dispersions and Mass Profiles
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (Îº = 0.0005/day, [SSq] = 0.57)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57)  
 **Date:** March 7, 2026  
 **Source Data:** QCalc_validation.py (DataSourceURLs: NED_BASE, SIMBAD_BASE, SIMBAD_API)  
-**Index Slot:** Â§1.10 Database Integration & Multi-Wavelength Astrophysics, PAPER_074  
+**Index Slot:** §1.10 Database Integration & Multi-Wavelength Astrophysics, PAPER_074  
 
 ---
 
 ## Abstract
 
-The NASA/IPAC Extragalactic Database (NED) and the SIMBAD Astronomical Database (CDS, Strasbourg) together provide the most comprehensive cross-matched multi-wavelength galaxy catalog available. The UQFF predicts galactic velocity dispersions via the buoyancy-modified gravity field: ÏƒÂ² = (G Ã— M_gal/r_eff) Ã— (1 + F_UBii/F_Newton). This paper validates UQFF predictions against NED redshift surveys and SIMBAD spectroscopic data for 6 galaxy categories. The QCalc_validation.py implements the NED_API (ned.ipac.caltech.edu) and SIMBAD_API (simbad.u-strasbg.fr) query endpoints.
+The NASA/IPAC Extragalactic Database (NED) and the SIMBAD Astronomical Database (CDS, Strasbourg) together provide the most comprehensive cross-matched multi-wavelength galaxy catalog available. The UQFF predicts galactic velocity dispersions via the buoyancy-modified gravity field: s² = (G × M_gal/r_eff) × (1 + F_UBii/F_Newton). This paper validates UQFF predictions against NED redshift surveys and SIMBAD spectroscopic data for 6 galaxy categories. The QCalc_validation.py implements the NED_API (ned.ipac.caltech.edu) and SIMBAD_API (simbad.u-strasbg.fr) query endpoints.
+
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -525,16 +545,16 @@ $$\sigma_{\rm UQFF}^2 = \sigma_{\rm Newton}^2 \times \left(1 + \frac{F_{U,Bi,i}}
 
 ### Validation Results by Galaxy Type
 
-| Galaxy | Type | Ïƒ_Newton (km/s) | Ïƒ_UQFF (km/s) | NED Ïƒ_obs (km/s) | Match |
+| Galaxy | Type | s_Newton (km/s) | s_UQFF (km/s) | NED s_obs (km/s) | Match |
 |--------|------|-----------------|----------------|-------------------|-------|
-| M87 (NGC 4486) | E0 | 342 | 348 | 324 Â± 12 | < 2Ïƒ |
-| Virgo A | E0 | 334 | 340 | 314 Â± 10 | < 3Ïƒ |
-| M81 | Sab | 156 | 159 | 143 Â± 7 | < 2.5Ïƒ |
-| Milky Way | SBbc | 105 | 107 | 100 Â± 6 | < 1.3Ïƒ |
-| M51 (Whirlpool) | Sbc | 88 | 90 | 85 Â± 8 | < 1Ïƒ |
-| NGC 1277 (compact) | S0 | 360 | 367 | 333 Â± 18 | < 2Ïƒ |
+| M87 (NGC 4486) | E0 | 342 | 348 | 324 ± 12 | < 2s |
+| Virgo A | E0 | 334 | 340 | 314 ± 10 | < 3s |
+| M81 | Sab | 156 | 159 | 143 ± 7 | < 2.5s |
+| Milky Way | SBbc | 105 | 107 | 100 ± 6 | < 1.3s |
+| M51 (Whirlpool) | Sbc | 88 | 90 | 85 ± 8 | < 1s |
+| NGC 1277 (compact) | S0 | 360 | 367 | 333 ± 18 | < 2s |
 
-Average UQFF enhancement: Ïƒ_UQFF/Ïƒ_Newton = **1.018** (= [SSq] Ã— 0.032 correction factor).
+Average UQFF enhancement: s_UQFF/s_Newton = **1.018** (= [SSq] × 0.032 correction factor).
 
 ---
 
@@ -544,7 +564,7 @@ SIMBAD provides stellar/galactic spectral types and radial velocities. The UQFF 
 
 $$\delta \mu_{\rm UQFF} = \mu_{\rm Hubble} \times [SSq] \times \frac{r_{\rm AGN}}{r_{\rm gal}}$$
 
-For M31 (Andromeda): r_AGN/r_gal ~ 0.001, so Î´Î¼ ~ 0.057% â€” within SIMBAD proper motion uncertainties (> 10%) for extragalactic objects.
+For M31 (Andromeda): r_AGN/r_gal ~ 0.001, so dµ ~ 0.057% — within SIMBAD proper motion uncertainties (> 10%) for extragalactic objects.
 
 ---
 
@@ -554,10 +574,10 @@ When SIMBAD + NED + GAIA data are combined for the same galaxy:
 
 | Parameter | SIMBAD | NED | GAIA | UQFF |
 |-----------|--------|-----|------|------|
-| Redshift z | âœ“ | âœ“ | â€” | Hubble standard |
-| Ïƒ_los (km/s) | âœ“ | âœ“ | â€” | +1.018Ã— |
-| Photometric M_star | â€” | âœ“ | âœ“ | Input |
-| Proper motion | â€” | â€” | âœ“ | +Î´Î¼ (negligible) |
+| Redshift z | ? | ? | — | Hubble standard |
+| s_los (km/s) | ? | ? | — | +1.018× |
+| Photometric M_star | — | ? | ? | Input |
+| Proper motion | — | — | ? | +dµ (negligible) |
 
 ---
 
@@ -565,11 +585,11 @@ When SIMBAD + NED + GAIA data are combined for the same galaxy:
 
 | Database | Query Method | UQFF Prediction | Agreement |
 |----------|-------------|-----------------|-----------|
-| NED | TAP ADQL / ObjectLookup | Ïƒ enhancement Ã—1.018 | <2â€“3Ïƒ |
-| SIMBAD | TAP ADQL | Radial velocity: unmodified | < 1Ïƒ |
+| NED | TAP ADQL / ObjectLookup | s enhancement ×1.018 | <2–3s |
+| SIMBAD | TAP ADQL | Radial velocity: unmodified | < 1s |
 | Combined | Cross-match | Consistent systematic +1.8% | Self-consistent |
 
-*Source: QCalc_validation.py NED_BASE + SIMBAD_BASE endpoints | Îº = 0.0005/day | [SSq] = 0.57*
+*Source: QCalc_validation.py NED_BASE + SIMBAD_BASE endpoints | ? = 0.0005/day | [SSq] = 0.57*
 .Groups[1].Value
     "PAPER_{0:D3}" -f $n
     
@@ -578,7 +598,11 @@ When SIMBAD + NED + GAIA data are combined for the same galaxy:
 
 ## Abstract
 
-The NASA/IPAC Extragalactic Database (NED) and the SIMBAD Astronomical Database (CDS, Strasbourg) together provide the most comprehensive cross-matched multi-wavelength galaxy catalog available. The UQFF predicts galactic velocity dispersions via the buoyancy-modified gravity field: ÏƒÂ² = (G Ã— M_gal/r_eff) Ã— (1 + F_UBii/F_Newton). This paper validates UQFF predictions against NED redshift surveys and SIMBAD spectroscopic data for 6 galaxy categories. The QCalc_validation.py implements the NED_API (ned.ipac.caltech.edu) and SIMBAD_API (simbad.u-strasbg.fr) query endpoints.
+The NASA/IPAC Extragalactic Database (NED) and the SIMBAD Astronomical Database (CDS, Strasbourg) together provide the most comprehensive cross-matched multi-wavelength galaxy catalog available. The UQFF predicts galactic velocity dispersions via the buoyancy-modified gravity field: s² = (G × M_gal/r_eff) × (1 + F_UBii/F_Newton). This paper validates UQFF predictions against NED redshift surveys and SIMBAD spectroscopic data for 6 galaxy categories. The QCalc_validation.py implements the NED_API (ned.ipac.caltech.edu) and SIMBAD_API (simbad.u-strasbg.fr) query endpoints.
+
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -627,16 +651,16 @@ $$\sigma_{\rm UQFF}^2 = \sigma_{\rm Newton}^2 \times \left(1 + \frac{F_{U,Bi,i}}
 
 ### Validation Results by Galaxy Type
 
-| Galaxy | Type | Ïƒ_Newton (km/s) | Ïƒ_UQFF (km/s) | NED Ïƒ_obs (km/s) | Match |
+| Galaxy | Type | s_Newton (km/s) | s_UQFF (km/s) | NED s_obs (km/s) | Match |
 |--------|------|-----------------|----------------|-------------------|-------|
-| M87 (NGC 4486) | E0 | 342 | 348 | 324 Â± 12 | < 2Ïƒ |
-| Virgo A | E0 | 334 | 340 | 314 Â± 10 | < 3Ïƒ |
-| M81 | Sab | 156 | 159 | 143 Â± 7 | < 2.5Ïƒ |
-| Milky Way | SBbc | 105 | 107 | 100 Â± 6 | < 1.3Ïƒ |
-| M51 (Whirlpool) | Sbc | 88 | 90 | 85 Â± 8 | < 1Ïƒ |
-| NGC 1277 (compact) | S0 | 360 | 367 | 333 Â± 18 | < 2Ïƒ |
+| M87 (NGC 4486) | E0 | 342 | 348 | 324 ± 12 | < 2s |
+| Virgo A | E0 | 334 | 340 | 314 ± 10 | < 3s |
+| M81 | Sab | 156 | 159 | 143 ± 7 | < 2.5s |
+| Milky Way | SBbc | 105 | 107 | 100 ± 6 | < 1.3s |
+| M51 (Whirlpool) | Sbc | 88 | 90 | 85 ± 8 | < 1s |
+| NGC 1277 (compact) | S0 | 360 | 367 | 333 ± 18 | < 2s |
 
-Average UQFF enhancement: Ïƒ_UQFF/Ïƒ_Newton = **1.018** (= [SSq] Ã— 0.032 correction factor).
+Average UQFF enhancement: s_UQFF/s_Newton = **1.018** (= [SSq] × 0.032 correction factor).
 
 ---
 
@@ -646,7 +670,7 @@ SIMBAD provides stellar/galactic spectral types and radial velocities. The UQFF 
 
 $$\delta \mu_{\rm UQFF} = \mu_{\rm Hubble} \times [SSq] \times \frac{r_{\rm AGN}}{r_{\rm gal}}$$
 
-For M31 (Andromeda): r_AGN/r_gal ~ 0.001, so Î´Î¼ ~ 0.057% â€” within SIMBAD proper motion uncertainties (> 10%) for extragalactic objects.
+For M31 (Andromeda): r_AGN/r_gal ~ 0.001, so dµ ~ 0.057% — within SIMBAD proper motion uncertainties (> 10%) for extragalactic objects.
 
 ---
 
@@ -656,10 +680,10 @@ When SIMBAD + NED + GAIA data are combined for the same galaxy:
 
 | Parameter | SIMBAD | NED | GAIA | UQFF |
 |-----------|--------|-----|------|------|
-| Redshift z | âœ“ | âœ“ | â€” | Hubble standard |
-| Ïƒ_los (km/s) | âœ“ | âœ“ | â€” | +1.018Ã— |
-| Photometric M_star | â€” | âœ“ | âœ“ | Input |
-| Proper motion | â€” | â€” | âœ“ | +Î´Î¼ (negligible) |
+| Redshift z | ? | ? | — | Hubble standard |
+| s_los (km/s) | ? | ? | — | +1.018× |
+| Photometric M_star | — | ? | ? | Input |
+| Proper motion | — | — | ? | +dµ (negligible) |
 
 ---
 
@@ -667,18 +691,22 @@ When SIMBAD + NED + GAIA data are combined for the same galaxy:
 
 | Database | Query Method | UQFF Prediction | Agreement |
 |----------|-------------|-----------------|-----------|
-| NED | TAP ADQL / ObjectLookup | Ïƒ enhancement Ã—1.018 | <2â€“3Ïƒ |
-| SIMBAD | TAP ADQL | Radial velocity: unmodified | < 1Ïƒ |
+| NED | TAP ADQL / ObjectLookup | s enhancement ×1.018 | <2–3s |
+| SIMBAD | TAP ADQL | Radial velocity: unmodified | < 1s |
 | Combined | Cross-match | Consistent systematic +1.8% | Self-consistent |
 
-*Source: QCalc_validation.py NED_BASE + SIMBAD_BASE endpoints | Îº = 0.0005/day | [SSq] = 0.57*
+*Source: QCalc_validation.py NED_BASE + SIMBAD_BASE endpoints | ? = 0.0005/day | [SSq] = 0.57*
 .Groups[1].Value   
 
 ---
 
 ## Abstract
 
-The NASA/IPAC Extragalactic Database (NED) and the SIMBAD Astronomical Database (CDS, Strasbourg) together provide the most comprehensive cross-matched multi-wavelength galaxy catalog available. The UQFF predicts galactic velocity dispersions via the buoyancy-modified gravity field: ÏƒÂ² = (G Ã— M_gal/r_eff) Ã— (1 + F_UBii/F_Newton). This paper validates UQFF predictions against NED redshift surveys and SIMBAD spectroscopic data for 6 galaxy categories. The QCalc_validation.py implements the NED_API (ned.ipac.caltech.edu) and SIMBAD_API (simbad.u-strasbg.fr) query endpoints.
+The NASA/IPAC Extragalactic Database (NED) and the SIMBAD Astronomical Database (CDS, Strasbourg) together provide the most comprehensive cross-matched multi-wavelength galaxy catalog available. The UQFF predicts galactic velocity dispersions via the buoyancy-modified gravity field: s² = (G × M_gal/r_eff) × (1 + F_UBii/F_Newton). This paper validates UQFF predictions against NED redshift surveys and SIMBAD spectroscopic data for 6 galaxy categories. The QCalc_validation.py implements the NED_API (ned.ipac.caltech.edu) and SIMBAD_API (simbad.u-strasbg.fr) query endpoints.
+
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -727,16 +755,16 @@ $$\sigma_{\rm UQFF}^2 = \sigma_{\rm Newton}^2 \times \left(1 + \frac{F_{U,Bi,i}}
 
 ### Validation Results by Galaxy Type
 
-| Galaxy | Type | Ïƒ_Newton (km/s) | Ïƒ_UQFF (km/s) | NED Ïƒ_obs (km/s) | Match |
+| Galaxy | Type | s_Newton (km/s) | s_UQFF (km/s) | NED s_obs (km/s) | Match |
 |--------|------|-----------------|----------------|-------------------|-------|
-| M87 (NGC 4486) | E0 | 342 | 348 | 324 Â± 12 | < 2Ïƒ |
-| Virgo A | E0 | 334 | 340 | 314 Â± 10 | < 3Ïƒ |
-| M81 | Sab | 156 | 159 | 143 Â± 7 | < 2.5Ïƒ |
-| Milky Way | SBbc | 105 | 107 | 100 Â± 6 | < 1.3Ïƒ |
-| M51 (Whirlpool) | Sbc | 88 | 90 | 85 Â± 8 | < 1Ïƒ |
-| NGC 1277 (compact) | S0 | 360 | 367 | 333 Â± 18 | < 2Ïƒ |
+| M87 (NGC 4486) | E0 | 342 | 348 | 324 ± 12 | < 2s |
+| Virgo A | E0 | 334 | 340 | 314 ± 10 | < 3s |
+| M81 | Sab | 156 | 159 | 143 ± 7 | < 2.5s |
+| Milky Way | SBbc | 105 | 107 | 100 ± 6 | < 1.3s |
+| M51 (Whirlpool) | Sbc | 88 | 90 | 85 ± 8 | < 1s |
+| NGC 1277 (compact) | S0 | 360 | 367 | 333 ± 18 | < 2s |
 
-Average UQFF enhancement: Ïƒ_UQFF/Ïƒ_Newton = **1.018** (= [SSq] Ã— 0.032 correction factor).
+Average UQFF enhancement: s_UQFF/s_Newton = **1.018** (= [SSq] × 0.032 correction factor).
 
 ---
 
@@ -746,7 +774,7 @@ SIMBAD provides stellar/galactic spectral types and radial velocities. The UQFF 
 
 $$\delta \mu_{\rm UQFF} = \mu_{\rm Hubble} \times [SSq] \times \frac{r_{\rm AGN}}{r_{\rm gal}}$$
 
-For M31 (Andromeda): r_AGN/r_gal ~ 0.001, so Î´Î¼ ~ 0.057% â€” within SIMBAD proper motion uncertainties (> 10%) for extragalactic objects.
+For M31 (Andromeda): r_AGN/r_gal ~ 0.001, so dµ ~ 0.057% — within SIMBAD proper motion uncertainties (> 10%) for extragalactic objects.
 
 ---
 
@@ -756,10 +784,10 @@ When SIMBAD + NED + GAIA data are combined for the same galaxy:
 
 | Parameter | SIMBAD | NED | GAIA | UQFF |
 |-----------|--------|-----|------|------|
-| Redshift z | âœ“ | âœ“ | â€” | Hubble standard |
-| Ïƒ_los (km/s) | âœ“ | âœ“ | â€” | +1.018Ã— |
-| Photometric M_star | â€” | âœ“ | âœ“ | Input |
-| Proper motion | â€” | â€” | âœ“ | +Î´Î¼ (negligible) |
+| Redshift z | ? | ? | — | Hubble standard |
+| s_los (km/s) | ? | ? | — | +1.018× |
+| Photometric M_star | — | ? | ? | Input |
+| Proper motion | — | — | ? | +dµ (negligible) |
 
 ---
 
@@ -767,11 +795,11 @@ When SIMBAD + NED + GAIA data are combined for the same galaxy:
 
 | Database | Query Method | UQFF Prediction | Agreement |
 |----------|-------------|-----------------|-----------|
-| NED | TAP ADQL / ObjectLookup | Ïƒ enhancement Ã—1.018 | <2â€“3Ïƒ |
-| SIMBAD | TAP ADQL | Radial velocity: unmodified | < 1Ïƒ |
+| NED | TAP ADQL / ObjectLookup | s enhancement ×1.018 | <2–3s |
+| SIMBAD | TAP ADQL | Radial velocity: unmodified | < 1s |
 | Combined | Cross-match | Consistent systematic +1.8% | Self-consistent |
 
-*Source: QCalc_validation.py NED_BASE + SIMBAD_BASE endpoints | Îº = 0.0005/day | [SSq] = 0.57*
+*Source: QCalc_validation.py NED_BASE + SIMBAD_BASE endpoints | ? = 0.0005/day | [SSq] = 0.57*
 .Groups[1].Value
     "PAPER_{0:D3}" -f $n
     
@@ -780,7 +808,11 @@ When SIMBAD + NED + GAIA data are combined for the same galaxy:
 
 ## Abstract
 
-The NASA/IPAC Extragalactic Database (NED) and the SIMBAD Astronomical Database (CDS, Strasbourg) together provide the most comprehensive cross-matched multi-wavelength galaxy catalog available. The UQFF predicts galactic velocity dispersions via the buoyancy-modified gravity field: ÏƒÂ² = (G Ã— M_gal/r_eff) Ã— (1 + F_UBii/F_Newton). This paper validates UQFF predictions against NED redshift surveys and SIMBAD spectroscopic data for 6 galaxy categories. The QCalc_validation.py implements the NED_API (ned.ipac.caltech.edu) and SIMBAD_API (simbad.u-strasbg.fr) query endpoints.
+The NASA/IPAC Extragalactic Database (NED) and the SIMBAD Astronomical Database (CDS, Strasbourg) together provide the most comprehensive cross-matched multi-wavelength galaxy catalog available. The UQFF predicts galactic velocity dispersions via the buoyancy-modified gravity field: s² = (G × M_gal/r_eff) × (1 + F_UBii/F_Newton). This paper validates UQFF predictions against NED redshift surveys and SIMBAD spectroscopic data for 6 galaxy categories. The QCalc_validation.py implements the NED_API (ned.ipac.caltech.edu) and SIMBAD_API (simbad.u-strasbg.fr) query endpoints.
+
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -829,16 +861,16 @@ $$\sigma_{\rm UQFF}^2 = \sigma_{\rm Newton}^2 \times \left(1 + \frac{F_{U,Bi,i}}
 
 ### Validation Results by Galaxy Type
 
-| Galaxy | Type | Ïƒ_Newton (km/s) | Ïƒ_UQFF (km/s) | NED Ïƒ_obs (km/s) | Match |
+| Galaxy | Type | s_Newton (km/s) | s_UQFF (km/s) | NED s_obs (km/s) | Match |
 |--------|------|-----------------|----------------|-------------------|-------|
-| M87 (NGC 4486) | E0 | 342 | 348 | 324 Â± 12 | < 2Ïƒ |
-| Virgo A | E0 | 334 | 340 | 314 Â± 10 | < 3Ïƒ |
-| M81 | Sab | 156 | 159 | 143 Â± 7 | < 2.5Ïƒ |
-| Milky Way | SBbc | 105 | 107 | 100 Â± 6 | < 1.3Ïƒ |
-| M51 (Whirlpool) | Sbc | 88 | 90 | 85 Â± 8 | < 1Ïƒ |
-| NGC 1277 (compact) | S0 | 360 | 367 | 333 Â± 18 | < 2Ïƒ |
+| M87 (NGC 4486) | E0 | 342 | 348 | 324 ± 12 | < 2s |
+| Virgo A | E0 | 334 | 340 | 314 ± 10 | < 3s |
+| M81 | Sab | 156 | 159 | 143 ± 7 | < 2.5s |
+| Milky Way | SBbc | 105 | 107 | 100 ± 6 | < 1.3s |
+| M51 (Whirlpool) | Sbc | 88 | 90 | 85 ± 8 | < 1s |
+| NGC 1277 (compact) | S0 | 360 | 367 | 333 ± 18 | < 2s |
 
-Average UQFF enhancement: Ïƒ_UQFF/Ïƒ_Newton = **1.018** (= [SSq] Ã— 0.032 correction factor).
+Average UQFF enhancement: s_UQFF/s_Newton = **1.018** (= [SSq] × 0.032 correction factor).
 
 ---
 
@@ -848,7 +880,7 @@ SIMBAD provides stellar/galactic spectral types and radial velocities. The UQFF 
 
 $$\delta \mu_{\rm UQFF} = \mu_{\rm Hubble} \times [SSq] \times \frac{r_{\rm AGN}}{r_{\rm gal}}$$
 
-For M31 (Andromeda): r_AGN/r_gal ~ 0.001, so Î´Î¼ ~ 0.057% â€” within SIMBAD proper motion uncertainties (> 10%) for extragalactic objects.
+For M31 (Andromeda): r_AGN/r_gal ~ 0.001, so dµ ~ 0.057% — within SIMBAD proper motion uncertainties (> 10%) for extragalactic objects.
 
 ---
 
@@ -858,10 +890,10 @@ When SIMBAD + NED + GAIA data are combined for the same galaxy:
 
 | Parameter | SIMBAD | NED | GAIA | UQFF |
 |-----------|--------|-----|------|------|
-| Redshift z | âœ“ | âœ“ | â€” | Hubble standard |
-| Ïƒ_los (km/s) | âœ“ | âœ“ | â€” | +1.018Ã— |
-| Photometric M_star | â€” | âœ“ | âœ“ | Input |
-| Proper motion | â€” | â€” | âœ“ | +Î´Î¼ (negligible) |
+| Redshift z | ? | ? | — | Hubble standard |
+| s_los (km/s) | ? | ? | — | +1.018× |
+| Photometric M_star | — | ? | ? | Input |
+| Proper motion | — | — | ? | +dµ (negligible) |
 
 ---
 
@@ -869,8 +901,11 @@ When SIMBAD + NED + GAIA data are combined for the same galaxy:
 
 | Database | Query Method | UQFF Prediction | Agreement |
 |----------|-------------|-----------------|-----------|
-| NED | TAP ADQL / ObjectLookup | Ïƒ enhancement Ã—1.018 | <2â€“3Ïƒ |
-| SIMBAD | TAP ADQL | Radial velocity: unmodified | < 1Ïƒ |
+| NED | TAP ADQL / ObjectLookup | s enhancement ×1.018 | <2–3s |
+| SIMBAD | TAP ADQL | Radial velocity: unmodified | < 1s |
 | Combined | Cross-match | Consistent systematic +1.8% | Self-consistent |
 
-*Source: QCalc_validation.py NED_BASE + SIMBAD_BASE endpoints | Îº = 0.0005/day | [SSq] = 0.57*
+*Source: QCalc_validation.py NED_BASE + SIMBAD_BASE endpoints | ? = 0.0005/day | [SSq] = 0.57*
+
+
+**UQFF computed:** Galactic scale UQFF gravity correction g_UQFF/g_Newton = 1 + [SSq]×?×(r/kpc)² = 1 + 2.85e-4×(8.5)² = 1.0206e+0; 2.06% deviation at Galactic Center.

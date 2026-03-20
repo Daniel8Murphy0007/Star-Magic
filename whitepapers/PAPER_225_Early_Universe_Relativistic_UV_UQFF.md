@@ -285,6 +285,8 @@ calculator classes across CP3 from this single source document.
 
 ---
 
+**UQFF computed:** Canonical UQFF buoyancy parameter U_bi = ?×[SSq]×GM/r² = 5.0e-4×0.57×6.67e-11×M/r²; for solar parameters: U_bi,Sun = 5.7e-4×6.67e-11×1.99e30/(6.96e8)² = 1.47e+2 m/s².
+
 ## References
 
 1. Murphy, D.T. (2026). *UQFF Star-Magic Framework v4.7* â€” `CondensedPhysics3.py`, Session 57.

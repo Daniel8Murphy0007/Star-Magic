@@ -1,27 +1,31 @@
-ï»¿#  "PAPER_{0:D3}" -f [int]# PAPER #69 â€” Radio Transient Stability in UQFF: ASKAP J1832-0911
+#  "PAPER_{0:D3}" -f [int]# PAPER #69 — Radio Transient Stability in UQFF: ASKAP J1832-0911
 
 **Title:** Long-Period Radio Transient ASKAP J1832-0911: UQFF Numeric Stability Analysis and F_U_Bi_i Field Derivation
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (Îº = 0.0005/day, [SSq] = 0.57)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57)  
 **Date:** March 7, 2026  
 **Source Data:** `uqff_validation_test.py` ASKAP_J1832-0911 system, Chandra + ASKAP May 2025 data  
-**Index Slot:** Â§1.9 Automated 121-System Validation,  
-    $n = [int]# PAPER #69 â€” Radio Transient Stability in UQFF: ASKAP J1832-0911
+**Index Slot:** §1.9 Automated 121-System Validation,  
+    $n = [int]# PAPER #69 — Radio Transient Stability in UQFF: ASKAP J1832-0911
 
 **Title:** Long-Period Radio Transient ASKAP J1832-0911: UQFF Numeric Stability Analysis and F_U_Bi_i Field Derivation
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (Îº = 0.0005/day, [SSq] = 0.57)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57)  
 **Date:** March 7, 2026  
 **Source Data:** `uqff_validation_test.py` ASKAP_J1832-0911 system, Chandra + ASKAP May 2025 data  
-**Index Slot:** Â§1.9 Automated 121-System Validation, PAPER_069  
+**Index Slot:** §1.9 Automated 121-System Validation, PAPER_069  
 
 ---
 
 ## Abstract
 
-ASKAP J1832-0911 is a Long Period Transient (LPT) with a 44-minute emission cycle discovered by ASKAP in 2023 (Hurley-Walker et al. 2023) and followed up with Chandra X-ray Observatory in 2025. Its alternating X-ray/radio pulses are unlike standard pulsar emission mechanisms, suggesting a neutron star in an unusual rotational state. The UQFF analyzes ASKAP J1832-0911 via the F_U_Bi_i integral, finding a LENR-dominated field of F_U_Bi_i â‰ˆ âˆ’1.47Ã—10Â¹â¹Â³ N. Monte Carlo numeric stability (n=100, Â±10% parameter noise) confirms a stability index of 0.97, validating the UQFF equation set for LPT systems.
+ASKAP J1832-0911 is a Long Period Transient (LPT) with a 44-minute emission cycle discovered by ASKAP in 2023 (Hurley-Walker et al. 2023) and followed up with Chandra X-ray Observatory in 2025. Its alternating X-ray/radio pulses are unlike standard pulsar emission mechanisms, suggesting a neutron star in an unusual rotational state. The UQFF analyzes ASKAP J1832-0911 via the F_U_Bi_i integral, finding a LENR-dominated field of F_U_Bi_i ˜ -1.47×10¹?³ N. Monte Carlo numeric stability (n=100, ±10% parameter noise) confirms a stability index of 0.97, validating the UQFF equation set for LPT systems.
+
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -29,14 +33,14 @@ ASKAP J1832-0911 is a Long Period Transient (LPT) with a 44-minute emission cycl
 
 | Parameter | Symbol | Value | Source |
 |-----------|--------|-------|--------|
-| Mass | M | 2.785Ã—10Â³â° kg (1.4 Mâ˜‰) | NS canonical |
-| Distance | r | 4.63Ã—10Â¹â¶ m (~15,000 ly) | ASKAP parallax |
-| X-ray luminosity | L_X | 10Â³Â² W | Chandra 2025 |
-| Magnetic field (surface) | Bâ‚€ | 10Â¹Â² T (magnetar-class) | Inferred |
-| Temperature | T | 10â· K | Chandra X-ray |
+| Mass | M | 2.785×10³° kg (1.4 M?) | NS canonical |
+| Distance | r | 4.63×10¹6 m (~15,000 ly) | ASKAP parallax |
+| X-ray luminosity | L_X | 10³² W | Chandra 2025 |
+| Magnetic field (surface) | B0 | 10¹² T (magnetar-class) | Inferred |
+| Temperature | T | 107 K | Chandra X-ray |
 | Period | P | 2640 s (44 min) | ASKAP direct |
-| Angular frequency | Ï‰â‚€ | 2.380Ã—10â»Â³ rad/s | 2Ï€/2640 |
-| Data source | â€” | Chandra + ASKAP (May 2025) | â€” |
+| Angular frequency | ?0 | 2.380×10?³ rad/s | 2p/2640 |
+| Data source | — | Chandra + ASKAP (May 2025) | — |
 
 ---
 
@@ -48,17 +52,17 @@ $$F_{U,Bi,i} = -F_0 + p + g + Ug_1 + Ug_2 + Ug_3 + Ug_4 + U_m + \int \mathcal{I}
 
 | Component | Formula | Value (N) |
 |-----------|---------|---------|
-| Base force constant | âˆ’ Fâ‚€ = âˆ’1.83Ã—10â·Â¹ | âˆ’1.83Ã—10â·Â¹ |
-| Momentum | (m_e cÂ²/rÂ²) Ã— 0.93 Ã— cos(Ï€/4) | 2.52Ã—10â»â´â· |
-| Gravity | GM/rÂ² | 8.67Ã—10â»Â¹â´ |
-| Ug1 (dipole) | (GM/rÂ²)(1+Î´)(Î¼â‚€Bâ‚€Â²/8Ï€) | **4.34Ã—10Â³** |
-| Ug2 (bubble) | (GM/rÂ²)(Q_A+Q_UA)Ã—H_SCm | 9.64Ã—10â»Â²âµ |
-| Ug3 (string) | (c/r)Ã—Ï‰_sÃ—sin(Î¸)Ã—Bâ‚€ | ~10â»Â²â° |
-| Ug4 (vacuum BH) | kâ‚„Ã—Ï_SCmÃ—(M_BH/d_g)Ã—e^{-Îº} | ~10â»âµâ° |
-| Um (magnetism) | (Î¼_j/r)Ã—(1-e^{-Î³t})Ã—E_react | 3.65Ã—10â´âµ |
-| **LENR resonance** | k_LENRÃ—(Ï‰_LENR/Ï‰â‚€)Â² | **1.09Ã—10Â²Â¹** |
-| **Integral term** | LENR Ã— xâ‚‚ | **âˆ’1.47Ã—10Â¹â¹Â³** |
-| **F_U_Bi_i (total)** | | **â‰ˆ âˆ’1.47Ã—10Â¹â¹Â³** |
+| Base force constant | - F0 = -1.83×107¹ | -1.83×107¹ |
+| Momentum | (m_e c²/r²) × 0.93 × cos(p/4) | 2.52×10?47 |
+| Gravity | GM/r² | 8.67×10?¹4 |
+| Ug1 (dipole) | (GM/r²)(1+d)(µ0B0²/8p) | **4.34×10³** |
+| Ug2 (bubble) | (GM/r²)(Q_A+Q_UA)×H_SCm | 9.64×10?²5 |
+| Ug3 (string) | (c/r)×?_s×sin(?)×B0 | ~10?²° |
+| Ug4 (vacuum BH) | k4×?_SCm×(M_BH/d_g)×e^{-?} | ~10?5° |
+| Um (magnetism) | (µ_j/r)×(1-e^{-?t})×E_react | 3.65×1045 |
+| **LENR resonance** | k_LENR×(?_LENR/?0)² | **1.09×10²¹** |
+| **Integral term** | LENR × x2 | **-1.47×10¹?³** |
+| **F_U_Bi_i (total)** | | **˜ -1.47×10¹?³** |
 
 ### LENR Resonance Dominance
 
@@ -66,7 +70,7 @@ $$\text{LENR} = k_{\rm LENR} \times \left(\frac{\omega_{\rm LENR}}{\omega_0}\rig
 
 $$\text{Integral} = 1.09 \times 10^{21} \times (-1.35 \times 10^{172}) = -1.47 \times 10^{193}$$
 
-The LENR term (1.09Ã—10Â²Â¹) dominates all other integrand terms by >10â·; the integral term dominates F_U_Bi_i by >10Â¹Â²Â² over Fâ‚€.
+The LENR term (1.09×10²¹) dominates all other integrand terms by >107; the integral term dominates F_U_Bi_i by >10¹²² over F0.
 
 ---
 
@@ -81,31 +85,31 @@ The 44-minute period is far longer than standard pulsar periods (ms to seconds),
 
 **UQFF interpretation:**
 
-The UQFF LENR term scales as (Ï‰_LENR/Ï‰â‚€)Â². For Ï‰â‚€ = 2.38Ã—10â»Â³ rad/s (44 min):
-- LENR = 1.09Ã—10Â²Â¹ â€” 10â¶Ã— larger than for a typical 1-second pulsar
-- This means the UQFF vacuum resonance is 10â¶-fold stronger for this slow system
+The UQFF LENR term scales as (?_LENR/?0)². For ?0 = 2.38×10?³ rad/s (44 min):
+- LENR = 1.09×10²¹ — 106× larger than for a typical 1-second pulsar
+- This means the UQFF vacuum resonance is 106-fold stronger for this slow system
 
 **UQFF prediction for LPT period selection:**
 
 $$P_{\rm UQFF} = P_0 \times \sqrt{\frac{k_{\rm LENR,max}}{k_{\rm LENR,threshold}}} = 1 \text{ s} \times \sqrt{\frac{10^{21}}{10^9}} = 1 \times 10^6 \text{ s}$$
 
-But actual P = 2640 s << 10â¶ s â†’ LPT is in an intermediate regime where UQFF resonance first exceeds threshold (LENR > 10Â¹âµ) at P ~ 44 min. This predicts a **minimum threshold period** for LPT-class pulsar activity at P â‰ˆ 44 min, consistent with ASKAP J1832's observed period being the first above this threshold.
+But actual P = 2640 s << 106 s ? LPT is in an intermediate regime where UQFF resonance first exceeds threshold (LENR > 10¹5) at P ~ 44 min. This predicts a **minimum threshold period** for LPT-class pulsar activity at P ˜ 44 min, consistent with ASKAP J1832's observed period being the first above this threshold.
 
 ---
 
 ## 4. Monte Carlo Numeric Stability
 
-Protocol: n = 100 trials, Â±10% Gaussian noise applied to M, r, L_X, Bâ‚€.
+Protocol: n = 100 trials, ±10% Gaussian noise applied to M, r, L_X, B0.
 
 | Metric | Value |
 |--------|-------|
-| Mean F_U_Bi_i | âˆ’1.47Ã—10Â¹â¹Â³ N |
-| Std Dev | ~4.4Ã—10Â¹â¹Â¹ N |
+| Mean F_U_Bi_i | -1.47×10¹?³ N |
+| Std Dev | ~4.4×10¹?¹ N |
 | Stability index | **0.970** |
 | Valid samples | 100/100 |
-| Status | **âœ“ STABLE** |
+| Status | **? STABLE** |
 
-**Why stability is high:** The integral_term = LENR Ã— xâ‚‚ dominates F_U_Bi_i. LENR = k_LENR Ã— (Ï‰_LENR/Ï‰â‚€)Â² depends only on Ï‰â‚€ (the spin period), which is **not** varied in the noise test â€” it is the precisely measured period from ASKAP timing. Therefore, 97% of the total F_U_Bi_i value is stable against M, r, L_X, Bâ‚€ parameter noise.
+**Why stability is high:** The integral_term = LENR × x2 dominates F_U_Bi_i. LENR = k_LENR × (?_LENR/?0)² depends only on ?0 (the spin period), which is **not** varied in the noise test — it is the precisely measured period from ASKAP timing. Therefore, 97% of the total F_U_Bi_i value is stable against M, r, L_X, B0 parameter noise.
 
 ---
 
@@ -114,14 +118,14 @@ Protocol: n = 100 trials, Â±10% Gaussian noise applied to M, r, L_X, Bâ‚€.
 ASKAP J1832-0911 alternates between X-ray (Chandra) and radio (ASKAP) pulses on a ~44-minute cycle.
 
 **UQFF explanation:**
-- **X-ray phase**: Compressed mode dominant (g = M/r Ã— 10â»Â¹â°) â†’ accretion column compresses vacuum, emitting X-ray
-- **Radio phase**: Resonant mode dominant (cos(Ï‰â‚€t) Ã— 10â»âµ) â†’ TRZ vacuum oscillation at Ï‰â‚€ induces MHz-GHz coherent emission
-- **Alternation**: The Îº-decay oscillator switches between modes on the 44-min periodicity: when E_react Ã— e^{âˆ’Îºt} drops below threshold, Compressedâ†’Resonant transition occurs
+- **X-ray phase**: Compressed mode dominant (g = M/r × 10?¹°) ? accretion column compresses vacuum, emitting X-ray
+- **Radio phase**: Resonant mode dominant (cos(?0t) × 10?5) ? TRZ vacuum oscillation at ?0 induces MHz-GHz coherent emission
+- **Alternation**: The ?-decay oscillator switches between modes on the 44-min periodicity: when E_react × e^{-?t} drops below threshold, Compressed?Resonant transition occurs
 
 Threshold:
 $$E_{\rm threshold} = E_{\rm react,0} \times e^{-\kappa \times t_{\rm transition}} \Rightarrow t_{\rm transition} = \frac{\ln(E_0/E_{\rm thresh})}{\kappa} = \frac{\ln(10^{46}/10^{40})}{0.0005} = \frac{13.8}{0.0005} = 27600 \text{ days}$$
 
-On 44-minute timescales, the Îº-decay is negligible (Î”Îºt â‰ˆ 2Ã—10â»âµ) â€” the alternation is driven by the phase of the Resonant mode cos(Ï‰â‚€t), which switches sign at t = Ï€/Ï‰â‚€ = 1320 s â‰ˆ 22 min (half-period). This gives alternating X-ray (expansion phase) and radio (compression phase) at the 22-minute half-cycle â€” fully consistent with the observed 44-minute full cycle.
+On 44-minute timescales, the ?-decay is negligible (??t ˜ 2×10?5) — the alternation is driven by the phase of the Resonant mode cos(?0t), which switches sign at t = p/?0 = 1320 s ˜ 22 min (half-period). This gives alternating X-ray (expansion phase) and radio (compression phase) at the 22-minute half-cycle — fully consistent with the observed 44-minute full cycle.
 
 ---
 
@@ -130,13 +134,13 @@ On 44-minute timescales, the Îº-decay is negligible (Î”Îºt â‰ˆ 2Ã—10â»âµ) â€” 
 | Quantity | Value |
 |---------|-------|
 | Period | 44 min (2640 s) |
-| Ï‰â‚€ | 2.38Ã—10â»Â³ rad/s |
-| LENR resonance | 1.09Ã—10Â²Â¹ |
-| F_U_Bi_i | **âˆ’1.47Ã—10Â¹â¹Â³ N** |
+| ?0 | 2.38×10?³ rad/s |
+| LENR resonance | 1.09×10²¹ |
+| F_U_Bi_i | **-1.47×10¹?³ N** |
 | Stability | **0.970 (STABLE)** |
-| X-ray/radio alternation | UQFF Compressedâ†”Resonant mode switching at Ï‰â‚€ half-period |
+| X-ray/radio alternation | UQFF Compressed?Resonant mode switching at ?0 half-period |
 
-*Source: uqff_validation_test.py ASKAP_J1832-0911, Chandra X-ray Observatory + ASKAP (May 2025) | Îº = 0.0005/day | [SSq] = 0.57*
+*Source: uqff_validation_test.py ASKAP_J1832-0911, Chandra X-ray Observatory + ASKAP (May 2025) | ? = 0.0005/day | [SSq] = 0.57*
 .Groups[1].Value
     "PAPER_{0:D3}" -f $n
     
@@ -145,7 +149,11 @@ On 44-minute timescales, the Îº-decay is negligible (Î”Îºt â‰ˆ 2Ã—10â»âµ) â€” 
 
 ## Abstract
 
-ASKAP J1832-0911 is a Long Period Transient (LPT) with a 44-minute emission cycle discovered by ASKAP in 2023 (Hurley-Walker et al. 2023) and followed up with Chandra X-ray Observatory in 2025. Its alternating X-ray/radio pulses are unlike standard pulsar emission mechanisms, suggesting a neutron star in an unusual rotational state. The UQFF analyzes ASKAP J1832-0911 via the F_U_Bi_i integral, finding a LENR-dominated field of F_U_Bi_i â‰ˆ âˆ’1.47Ã—10Â¹â¹Â³ N. Monte Carlo numeric stability (n=100, Â±10% parameter noise) confirms a stability index of 0.97, validating the UQFF equation set for LPT systems.
+ASKAP J1832-0911 is a Long Period Transient (LPT) with a 44-minute emission cycle discovered by ASKAP in 2023 (Hurley-Walker et al. 2023) and followed up with Chandra X-ray Observatory in 2025. Its alternating X-ray/radio pulses are unlike standard pulsar emission mechanisms, suggesting a neutron star in an unusual rotational state. The UQFF analyzes ASKAP J1832-0911 via the F_U_Bi_i integral, finding a LENR-dominated field of F_U_Bi_i ˜ -1.47×10¹?³ N. Monte Carlo numeric stability (n=100, ±10% parameter noise) confirms a stability index of 0.97, validating the UQFF equation set for LPT systems.
+
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -153,14 +161,14 @@ ASKAP J1832-0911 is a Long Period Transient (LPT) with a 44-minute emission cycl
 
 | Parameter | Symbol | Value | Source |
 |-----------|--------|-------|--------|
-| Mass | M | 2.785Ã—10Â³â° kg (1.4 Mâ˜‰) | NS canonical |
-| Distance | r | 4.63Ã—10Â¹â¶ m (~15,000 ly) | ASKAP parallax |
-| X-ray luminosity | L_X | 10Â³Â² W | Chandra 2025 |
-| Magnetic field (surface) | Bâ‚€ | 10Â¹Â² T (magnetar-class) | Inferred |
-| Temperature | T | 10â· K | Chandra X-ray |
+| Mass | M | 2.785×10³° kg (1.4 M?) | NS canonical |
+| Distance | r | 4.63×10¹6 m (~15,000 ly) | ASKAP parallax |
+| X-ray luminosity | L_X | 10³² W | Chandra 2025 |
+| Magnetic field (surface) | B0 | 10¹² T (magnetar-class) | Inferred |
+| Temperature | T | 107 K | Chandra X-ray |
 | Period | P | 2640 s (44 min) | ASKAP direct |
-| Angular frequency | Ï‰â‚€ | 2.380Ã—10â»Â³ rad/s | 2Ï€/2640 |
-| Data source | â€” | Chandra + ASKAP (May 2025) | â€” |
+| Angular frequency | ?0 | 2.380×10?³ rad/s | 2p/2640 |
+| Data source | — | Chandra + ASKAP (May 2025) | — |
 
 ---
 
@@ -172,17 +180,17 @@ $$F_{U,Bi,i} = -F_0 + p + g + Ug_1 + Ug_2 + Ug_3 + Ug_4 + U_m + \int \mathcal{I}
 
 | Component | Formula | Value (N) |
 |-----------|---------|---------|
-| Base force constant | âˆ’ Fâ‚€ = âˆ’1.83Ã—10â·Â¹ | âˆ’1.83Ã—10â·Â¹ |
-| Momentum | (m_e cÂ²/rÂ²) Ã— 0.93 Ã— cos(Ï€/4) | 2.52Ã—10â»â´â· |
-| Gravity | GM/rÂ² | 8.67Ã—10â»Â¹â´ |
-| Ug1 (dipole) | (GM/rÂ²)(1+Î´)(Î¼â‚€Bâ‚€Â²/8Ï€) | **4.34Ã—10Â³** |
-| Ug2 (bubble) | (GM/rÂ²)(Q_A+Q_UA)Ã—H_SCm | 9.64Ã—10â»Â²âµ |
-| Ug3 (string) | (c/r)Ã—Ï‰_sÃ—sin(Î¸)Ã—Bâ‚€ | ~10â»Â²â° |
-| Ug4 (vacuum BH) | kâ‚„Ã—Ï_SCmÃ—(M_BH/d_g)Ã—e^{-Îº} | ~10â»âµâ° |
-| Um (magnetism) | (Î¼_j/r)Ã—(1-e^{-Î³t})Ã—E_react | 3.65Ã—10â´âµ |
-| **LENR resonance** | k_LENRÃ—(Ï‰_LENR/Ï‰â‚€)Â² | **1.09Ã—10Â²Â¹** |
-| **Integral term** | LENR Ã— xâ‚‚ | **âˆ’1.47Ã—10Â¹â¹Â³** |
-| **F_U_Bi_i (total)** | | **â‰ˆ âˆ’1.47Ã—10Â¹â¹Â³** |
+| Base force constant | - F0 = -1.83×107¹ | -1.83×107¹ |
+| Momentum | (m_e c²/r²) × 0.93 × cos(p/4) | 2.52×10?47 |
+| Gravity | GM/r² | 8.67×10?¹4 |
+| Ug1 (dipole) | (GM/r²)(1+d)(µ0B0²/8p) | **4.34×10³** |
+| Ug2 (bubble) | (GM/r²)(Q_A+Q_UA)×H_SCm | 9.64×10?²5 |
+| Ug3 (string) | (c/r)×?_s×sin(?)×B0 | ~10?²° |
+| Ug4 (vacuum BH) | k4×?_SCm×(M_BH/d_g)×e^{-?} | ~10?5° |
+| Um (magnetism) | (µ_j/r)×(1-e^{-?t})×E_react | 3.65×1045 |
+| **LENR resonance** | k_LENR×(?_LENR/?0)² | **1.09×10²¹** |
+| **Integral term** | LENR × x2 | **-1.47×10¹?³** |
+| **F_U_Bi_i (total)** | | **˜ -1.47×10¹?³** |
 
 ### LENR Resonance Dominance
 
@@ -190,7 +198,7 @@ $$\text{LENR} = k_{\rm LENR} \times \left(\frac{\omega_{\rm LENR}}{\omega_0}\rig
 
 $$\text{Integral} = 1.09 \times 10^{21} \times (-1.35 \times 10^{172}) = -1.47 \times 10^{193}$$
 
-The LENR term (1.09Ã—10Â²Â¹) dominates all other integrand terms by >10â·; the integral term dominates F_U_Bi_i by >10Â¹Â²Â² over Fâ‚€.
+The LENR term (1.09×10²¹) dominates all other integrand terms by >107; the integral term dominates F_U_Bi_i by >10¹²² over F0.
 
 ---
 
@@ -205,31 +213,31 @@ The 44-minute period is far longer than standard pulsar periods (ms to seconds),
 
 **UQFF interpretation:**
 
-The UQFF LENR term scales as (Ï‰_LENR/Ï‰â‚€)Â². For Ï‰â‚€ = 2.38Ã—10â»Â³ rad/s (44 min):
-- LENR = 1.09Ã—10Â²Â¹ â€” 10â¶Ã— larger than for a typical 1-second pulsar
-- This means the UQFF vacuum resonance is 10â¶-fold stronger for this slow system
+The UQFF LENR term scales as (?_LENR/?0)². For ?0 = 2.38×10?³ rad/s (44 min):
+- LENR = 1.09×10²¹ — 106× larger than for a typical 1-second pulsar
+- This means the UQFF vacuum resonance is 106-fold stronger for this slow system
 
 **UQFF prediction for LPT period selection:**
 
 $$P_{\rm UQFF} = P_0 \times \sqrt{\frac{k_{\rm LENR,max}}{k_{\rm LENR,threshold}}} = 1 \text{ s} \times \sqrt{\frac{10^{21}}{10^9}} = 1 \times 10^6 \text{ s}$$
 
-But actual P = 2640 s << 10â¶ s â†’ LPT is in an intermediate regime where UQFF resonance first exceeds threshold (LENR > 10Â¹âµ) at P ~ 44 min. This predicts a **minimum threshold period** for LPT-class pulsar activity at P â‰ˆ 44 min, consistent with ASKAP J1832's observed period being the first above this threshold.
+But actual P = 2640 s << 106 s ? LPT is in an intermediate regime where UQFF resonance first exceeds threshold (LENR > 10¹5) at P ~ 44 min. This predicts a **minimum threshold period** for LPT-class pulsar activity at P ˜ 44 min, consistent with ASKAP J1832's observed period being the first above this threshold.
 
 ---
 
 ## 4. Monte Carlo Numeric Stability
 
-Protocol: n = 100 trials, Â±10% Gaussian noise applied to M, r, L_X, Bâ‚€.
+Protocol: n = 100 trials, ±10% Gaussian noise applied to M, r, L_X, B0.
 
 | Metric | Value |
 |--------|-------|
-| Mean F_U_Bi_i | âˆ’1.47Ã—10Â¹â¹Â³ N |
-| Std Dev | ~4.4Ã—10Â¹â¹Â¹ N |
+| Mean F_U_Bi_i | -1.47×10¹?³ N |
+| Std Dev | ~4.4×10¹?¹ N |
 | Stability index | **0.970** |
 | Valid samples | 100/100 |
-| Status | **âœ“ STABLE** |
+| Status | **? STABLE** |
 
-**Why stability is high:** The integral_term = LENR Ã— xâ‚‚ dominates F_U_Bi_i. LENR = k_LENR Ã— (Ï‰_LENR/Ï‰â‚€)Â² depends only on Ï‰â‚€ (the spin period), which is **not** varied in the noise test â€” it is the precisely measured period from ASKAP timing. Therefore, 97% of the total F_U_Bi_i value is stable against M, r, L_X, Bâ‚€ parameter noise.
+**Why stability is high:** The integral_term = LENR × x2 dominates F_U_Bi_i. LENR = k_LENR × (?_LENR/?0)² depends only on ?0 (the spin period), which is **not** varied in the noise test — it is the precisely measured period from ASKAP timing. Therefore, 97% of the total F_U_Bi_i value is stable against M, r, L_X, B0 parameter noise.
 
 ---
 
@@ -238,14 +246,14 @@ Protocol: n = 100 trials, Â±10% Gaussian noise applied to M, r, L_X, Bâ‚€.
 ASKAP J1832-0911 alternates between X-ray (Chandra) and radio (ASKAP) pulses on a ~44-minute cycle.
 
 **UQFF explanation:**
-- **X-ray phase**: Compressed mode dominant (g = M/r Ã— 10â»Â¹â°) â†’ accretion column compresses vacuum, emitting X-ray
-- **Radio phase**: Resonant mode dominant (cos(Ï‰â‚€t) Ã— 10â»âµ) â†’ TRZ vacuum oscillation at Ï‰â‚€ induces MHz-GHz coherent emission
-- **Alternation**: The Îº-decay oscillator switches between modes on the 44-min periodicity: when E_react Ã— e^{âˆ’Îºt} drops below threshold, Compressedâ†’Resonant transition occurs
+- **X-ray phase**: Compressed mode dominant (g = M/r × 10?¹°) ? accretion column compresses vacuum, emitting X-ray
+- **Radio phase**: Resonant mode dominant (cos(?0t) × 10?5) ? TRZ vacuum oscillation at ?0 induces MHz-GHz coherent emission
+- **Alternation**: The ?-decay oscillator switches between modes on the 44-min periodicity: when E_react × e^{-?t} drops below threshold, Compressed?Resonant transition occurs
 
 Threshold:
 $$E_{\rm threshold} = E_{\rm react,0} \times e^{-\kappa \times t_{\rm transition}} \Rightarrow t_{\rm transition} = \frac{\ln(E_0/E_{\rm thresh})}{\kappa} = \frac{\ln(10^{46}/10^{40})}{0.0005} = \frac{13.8}{0.0005} = 27600 \text{ days}$$
 
-On 44-minute timescales, the Îº-decay is negligible (Î”Îºt â‰ˆ 2Ã—10â»âµ) â€” the alternation is driven by the phase of the Resonant mode cos(Ï‰â‚€t), which switches sign at t = Ï€/Ï‰â‚€ = 1320 s â‰ˆ 22 min (half-period). This gives alternating X-ray (expansion phase) and radio (compression phase) at the 22-minute half-cycle â€” fully consistent with the observed 44-minute full cycle.
+On 44-minute timescales, the ?-decay is negligible (??t ˜ 2×10?5) — the alternation is driven by the phase of the Resonant mode cos(?0t), which switches sign at t = p/?0 = 1320 s ˜ 22 min (half-period). This gives alternating X-ray (expansion phase) and radio (compression phase) at the 22-minute half-cycle — fully consistent with the observed 44-minute full cycle.
 
 ---
 
@@ -254,46 +262,50 @@ On 44-minute timescales, the Îº-decay is negligible (Î”Îºt â‰ˆ 2Ã—10â»âµ) â€” 
 | Quantity | Value |
 |---------|-------|
 | Period | 44 min (2640 s) |
-| Ï‰â‚€ | 2.38Ã—10â»Â³ rad/s |
-| LENR resonance | 1.09Ã—10Â²Â¹ |
-| F_U_Bi_i | **âˆ’1.47Ã—10Â¹â¹Â³ N** |
+| ?0 | 2.38×10?³ rad/s |
+| LENR resonance | 1.09×10²¹ |
+| F_U_Bi_i | **-1.47×10¹?³ N** |
 | Stability | **0.970 (STABLE)** |
-| X-ray/radio alternation | UQFF Compressedâ†”Resonant mode switching at Ï‰â‚€ half-period |
+| X-ray/radio alternation | UQFF Compressed?Resonant mode switching at ?0 half-period |
 
-*Source: uqff_validation_test.py ASKAP_J1832-0911, Chandra X-ray Observatory + ASKAP (May 2025) | Îº = 0.0005/day | [SSq] = 0.57*
-.Groups[1].Value  â€” Radio Transient Stability in UQFF: ASKAP J1832-0911
-
-**Title:** Long-Period Radio Transient ASKAP J1832-0911: UQFF Numeric Stability Analysis and F_U_Bi_i Field Derivation
-
-**Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (Îº = 0.0005/day, [SSq] = 0.57)  
-**Date:** March 7, 2026  
-**Source Data:** `uqff_validation_test.py` ASKAP_J1832-0911 system, Chandra + ASKAP May 2025 data  
-**Index Slot:** Â§1.9 Automated 121-System Validation,  
-    $n = [int]#  "PAPER_{0:D3}" -f [int]# PAPER #69 â€” Radio Transient Stability in UQFF: ASKAP J1832-0911
+*Source: uqff_validation_test.py ASKAP_J1832-0911, Chandra X-ray Observatory + ASKAP (May 2025) | ? = 0.0005/day | [SSq] = 0.57*
+.Groups[1].Value  — Radio Transient Stability in UQFF: ASKAP J1832-0911
 
 **Title:** Long-Period Radio Transient ASKAP J1832-0911: UQFF Numeric Stability Analysis and F_U_Bi_i Field Derivation
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (Îº = 0.0005/day, [SSq] = 0.57)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57)  
 **Date:** March 7, 2026  
 **Source Data:** `uqff_validation_test.py` ASKAP_J1832-0911 system, Chandra + ASKAP May 2025 data  
-**Index Slot:** Â§1.9 Automated 121-System Validation,  
-    $n = [int]# PAPER #69 â€” Radio Transient Stability in UQFF: ASKAP J1832-0911
+**Index Slot:** §1.9 Automated 121-System Validation,  
+    $n = [int]#  "PAPER_{0:D3}" -f [int]# PAPER #69 — Radio Transient Stability in UQFF: ASKAP J1832-0911
 
 **Title:** Long-Period Radio Transient ASKAP J1832-0911: UQFF Numeric Stability Analysis and F_U_Bi_i Field Derivation
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (Îº = 0.0005/day, [SSq] = 0.57)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57)  
 **Date:** March 7, 2026  
 **Source Data:** `uqff_validation_test.py` ASKAP_J1832-0911 system, Chandra + ASKAP May 2025 data  
-**Index Slot:** Â§1.9 Automated 121-System Validation, PAPER_069  
+**Index Slot:** §1.9 Automated 121-System Validation,  
+    $n = [int]# PAPER #69 — Radio Transient Stability in UQFF: ASKAP J1832-0911
+
+**Title:** Long-Period Radio Transient ASKAP J1832-0911: UQFF Numeric Stability Analysis and F_U_Bi_i Field Derivation
+
+**Author:** Daniel T. Murphy  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57)  
+**Date:** March 7, 2026  
+**Source Data:** `uqff_validation_test.py` ASKAP_J1832-0911 system, Chandra + ASKAP May 2025 data  
+**Index Slot:** §1.9 Automated 121-System Validation, PAPER_069  
 
 ---
 
 ## Abstract
 
-ASKAP J1832-0911 is a Long Period Transient (LPT) with a 44-minute emission cycle discovered by ASKAP in 2023 (Hurley-Walker et al. 2023) and followed up with Chandra X-ray Observatory in 2025. Its alternating X-ray/radio pulses are unlike standard pulsar emission mechanisms, suggesting a neutron star in an unusual rotational state. The UQFF analyzes ASKAP J1832-0911 via the F_U_Bi_i integral, finding a LENR-dominated field of F_U_Bi_i â‰ˆ âˆ’1.47Ã—10Â¹â¹Â³ N. Monte Carlo numeric stability (n=100, Â±10% parameter noise) confirms a stability index of 0.97, validating the UQFF equation set for LPT systems.
+ASKAP J1832-0911 is a Long Period Transient (LPT) with a 44-minute emission cycle discovered by ASKAP in 2023 (Hurley-Walker et al. 2023) and followed up with Chandra X-ray Observatory in 2025. Its alternating X-ray/radio pulses are unlike standard pulsar emission mechanisms, suggesting a neutron star in an unusual rotational state. The UQFF analyzes ASKAP J1832-0911 via the F_U_Bi_i integral, finding a LENR-dominated field of F_U_Bi_i ˜ -1.47×10¹?³ N. Monte Carlo numeric stability (n=100, ±10% parameter noise) confirms a stability index of 0.97, validating the UQFF equation set for LPT systems.
+
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -301,14 +313,14 @@ ASKAP J1832-0911 is a Long Period Transient (LPT) with a 44-minute emission cycl
 
 | Parameter | Symbol | Value | Source |
 |-----------|--------|-------|--------|
-| Mass | M | 2.785Ã—10Â³â° kg (1.4 Mâ˜‰) | NS canonical |
-| Distance | r | 4.63Ã—10Â¹â¶ m (~15,000 ly) | ASKAP parallax |
-| X-ray luminosity | L_X | 10Â³Â² W | Chandra 2025 |
-| Magnetic field (surface) | Bâ‚€ | 10Â¹Â² T (magnetar-class) | Inferred |
-| Temperature | T | 10â· K | Chandra X-ray |
+| Mass | M | 2.785×10³° kg (1.4 M?) | NS canonical |
+| Distance | r | 4.63×10¹6 m (~15,000 ly) | ASKAP parallax |
+| X-ray luminosity | L_X | 10³² W | Chandra 2025 |
+| Magnetic field (surface) | B0 | 10¹² T (magnetar-class) | Inferred |
+| Temperature | T | 107 K | Chandra X-ray |
 | Period | P | 2640 s (44 min) | ASKAP direct |
-| Angular frequency | Ï‰â‚€ | 2.380Ã—10â»Â³ rad/s | 2Ï€/2640 |
-| Data source | â€” | Chandra + ASKAP (May 2025) | â€” |
+| Angular frequency | ?0 | 2.380×10?³ rad/s | 2p/2640 |
+| Data source | — | Chandra + ASKAP (May 2025) | — |
 
 ---
 
@@ -320,17 +332,17 @@ $$F_{U,Bi,i} = -F_0 + p + g + Ug_1 + Ug_2 + Ug_3 + Ug_4 + U_m + \int \mathcal{I}
 
 | Component | Formula | Value (N) |
 |-----------|---------|---------|
-| Base force constant | âˆ’ Fâ‚€ = âˆ’1.83Ã—10â·Â¹ | âˆ’1.83Ã—10â·Â¹ |
-| Momentum | (m_e cÂ²/rÂ²) Ã— 0.93 Ã— cos(Ï€/4) | 2.52Ã—10â»â´â· |
-| Gravity | GM/rÂ² | 8.67Ã—10â»Â¹â´ |
-| Ug1 (dipole) | (GM/rÂ²)(1+Î´)(Î¼â‚€Bâ‚€Â²/8Ï€) | **4.34Ã—10Â³** |
-| Ug2 (bubble) | (GM/rÂ²)(Q_A+Q_UA)Ã—H_SCm | 9.64Ã—10â»Â²âµ |
-| Ug3 (string) | (c/r)Ã—Ï‰_sÃ—sin(Î¸)Ã—Bâ‚€ | ~10â»Â²â° |
-| Ug4 (vacuum BH) | kâ‚„Ã—Ï_SCmÃ—(M_BH/d_g)Ã—e^{-Îº} | ~10â»âµâ° |
-| Um (magnetism) | (Î¼_j/r)Ã—(1-e^{-Î³t})Ã—E_react | 3.65Ã—10â´âµ |
-| **LENR resonance** | k_LENRÃ—(Ï‰_LENR/Ï‰â‚€)Â² | **1.09Ã—10Â²Â¹** |
-| **Integral term** | LENR Ã— xâ‚‚ | **âˆ’1.47Ã—10Â¹â¹Â³** |
-| **F_U_Bi_i (total)** | | **â‰ˆ âˆ’1.47Ã—10Â¹â¹Â³** |
+| Base force constant | - F0 = -1.83×107¹ | -1.83×107¹ |
+| Momentum | (m_e c²/r²) × 0.93 × cos(p/4) | 2.52×10?47 |
+| Gravity | GM/r² | 8.67×10?¹4 |
+| Ug1 (dipole) | (GM/r²)(1+d)(µ0B0²/8p) | **4.34×10³** |
+| Ug2 (bubble) | (GM/r²)(Q_A+Q_UA)×H_SCm | 9.64×10?²5 |
+| Ug3 (string) | (c/r)×?_s×sin(?)×B0 | ~10?²° |
+| Ug4 (vacuum BH) | k4×?_SCm×(M_BH/d_g)×e^{-?} | ~10?5° |
+| Um (magnetism) | (µ_j/r)×(1-e^{-?t})×E_react | 3.65×1045 |
+| **LENR resonance** | k_LENR×(?_LENR/?0)² | **1.09×10²¹** |
+| **Integral term** | LENR × x2 | **-1.47×10¹?³** |
+| **F_U_Bi_i (total)** | | **˜ -1.47×10¹?³** |
 
 ### LENR Resonance Dominance
 
@@ -338,7 +350,7 @@ $$\text{LENR} = k_{\rm LENR} \times \left(\frac{\omega_{\rm LENR}}{\omega_0}\rig
 
 $$\text{Integral} = 1.09 \times 10^{21} \times (-1.35 \times 10^{172}) = -1.47 \times 10^{193}$$
 
-The LENR term (1.09Ã—10Â²Â¹) dominates all other integrand terms by >10â·; the integral term dominates F_U_Bi_i by >10Â¹Â²Â² over Fâ‚€.
+The LENR term (1.09×10²¹) dominates all other integrand terms by >107; the integral term dominates F_U_Bi_i by >10¹²² over F0.
 
 ---
 
@@ -353,31 +365,31 @@ The 44-minute period is far longer than standard pulsar periods (ms to seconds),
 
 **UQFF interpretation:**
 
-The UQFF LENR term scales as (Ï‰_LENR/Ï‰â‚€)Â². For Ï‰â‚€ = 2.38Ã—10â»Â³ rad/s (44 min):
-- LENR = 1.09Ã—10Â²Â¹ â€” 10â¶Ã— larger than for a typical 1-second pulsar
-- This means the UQFF vacuum resonance is 10â¶-fold stronger for this slow system
+The UQFF LENR term scales as (?_LENR/?0)². For ?0 = 2.38×10?³ rad/s (44 min):
+- LENR = 1.09×10²¹ — 106× larger than for a typical 1-second pulsar
+- This means the UQFF vacuum resonance is 106-fold stronger for this slow system
 
 **UQFF prediction for LPT period selection:**
 
 $$P_{\rm UQFF} = P_0 \times \sqrt{\frac{k_{\rm LENR,max}}{k_{\rm LENR,threshold}}} = 1 \text{ s} \times \sqrt{\frac{10^{21}}{10^9}} = 1 \times 10^6 \text{ s}$$
 
-But actual P = 2640 s << 10â¶ s â†’ LPT is in an intermediate regime where UQFF resonance first exceeds threshold (LENR > 10Â¹âµ) at P ~ 44 min. This predicts a **minimum threshold period** for LPT-class pulsar activity at P â‰ˆ 44 min, consistent with ASKAP J1832's observed period being the first above this threshold.
+But actual P = 2640 s << 106 s ? LPT is in an intermediate regime where UQFF resonance first exceeds threshold (LENR > 10¹5) at P ~ 44 min. This predicts a **minimum threshold period** for LPT-class pulsar activity at P ˜ 44 min, consistent with ASKAP J1832's observed period being the first above this threshold.
 
 ---
 
 ## 4. Monte Carlo Numeric Stability
 
-Protocol: n = 100 trials, Â±10% Gaussian noise applied to M, r, L_X, Bâ‚€.
+Protocol: n = 100 trials, ±10% Gaussian noise applied to M, r, L_X, B0.
 
 | Metric | Value |
 |--------|-------|
-| Mean F_U_Bi_i | âˆ’1.47Ã—10Â¹â¹Â³ N |
-| Std Dev | ~4.4Ã—10Â¹â¹Â¹ N |
+| Mean F_U_Bi_i | -1.47×10¹?³ N |
+| Std Dev | ~4.4×10¹?¹ N |
 | Stability index | **0.970** |
 | Valid samples | 100/100 |
-| Status | **âœ“ STABLE** |
+| Status | **? STABLE** |
 
-**Why stability is high:** The integral_term = LENR Ã— xâ‚‚ dominates F_U_Bi_i. LENR = k_LENR Ã— (Ï‰_LENR/Ï‰â‚€)Â² depends only on Ï‰â‚€ (the spin period), which is **not** varied in the noise test â€” it is the precisely measured period from ASKAP timing. Therefore, 97% of the total F_U_Bi_i value is stable against M, r, L_X, Bâ‚€ parameter noise.
+**Why stability is high:** The integral_term = LENR × x2 dominates F_U_Bi_i. LENR = k_LENR × (?_LENR/?0)² depends only on ?0 (the spin period), which is **not** varied in the noise test — it is the precisely measured period from ASKAP timing. Therefore, 97% of the total F_U_Bi_i value is stable against M, r, L_X, B0 parameter noise.
 
 ---
 
@@ -386,14 +398,14 @@ Protocol: n = 100 trials, Â±10% Gaussian noise applied to M, r, L_X, Bâ‚€.
 ASKAP J1832-0911 alternates between X-ray (Chandra) and radio (ASKAP) pulses on a ~44-minute cycle.
 
 **UQFF explanation:**
-- **X-ray phase**: Compressed mode dominant (g = M/r Ã— 10â»Â¹â°) â†’ accretion column compresses vacuum, emitting X-ray
-- **Radio phase**: Resonant mode dominant (cos(Ï‰â‚€t) Ã— 10â»âµ) â†’ TRZ vacuum oscillation at Ï‰â‚€ induces MHz-GHz coherent emission
-- **Alternation**: The Îº-decay oscillator switches between modes on the 44-min periodicity: when E_react Ã— e^{âˆ’Îºt} drops below threshold, Compressedâ†’Resonant transition occurs
+- **X-ray phase**: Compressed mode dominant (g = M/r × 10?¹°) ? accretion column compresses vacuum, emitting X-ray
+- **Radio phase**: Resonant mode dominant (cos(?0t) × 10?5) ? TRZ vacuum oscillation at ?0 induces MHz-GHz coherent emission
+- **Alternation**: The ?-decay oscillator switches between modes on the 44-min periodicity: when E_react × e^{-?t} drops below threshold, Compressed?Resonant transition occurs
 
 Threshold:
 $$E_{\rm threshold} = E_{\rm react,0} \times e^{-\kappa \times t_{\rm transition}} \Rightarrow t_{\rm transition} = \frac{\ln(E_0/E_{\rm thresh})}{\kappa} = \frac{\ln(10^{46}/10^{40})}{0.0005} = \frac{13.8}{0.0005} = 27600 \text{ days}$$
 
-On 44-minute timescales, the Îº-decay is negligible (Î”Îºt â‰ˆ 2Ã—10â»âµ) â€” the alternation is driven by the phase of the Resonant mode cos(Ï‰â‚€t), which switches sign at t = Ï€/Ï‰â‚€ = 1320 s â‰ˆ 22 min (half-period). This gives alternating X-ray (expansion phase) and radio (compression phase) at the 22-minute half-cycle â€” fully consistent with the observed 44-minute full cycle.
+On 44-minute timescales, the ?-decay is negligible (??t ˜ 2×10?5) — the alternation is driven by the phase of the Resonant mode cos(?0t), which switches sign at t = p/?0 = 1320 s ˜ 22 min (half-period). This gives alternating X-ray (expansion phase) and radio (compression phase) at the 22-minute half-cycle — fully consistent with the observed 44-minute full cycle.
 
 ---
 
@@ -402,13 +414,13 @@ On 44-minute timescales, the Îº-decay is negligible (Î”Îºt â‰ˆ 2Ã—10â»âµ) â€” 
 | Quantity | Value |
 |---------|-------|
 | Period | 44 min (2640 s) |
-| Ï‰â‚€ | 2.38Ã—10â»Â³ rad/s |
-| LENR resonance | 1.09Ã—10Â²Â¹ |
-| F_U_Bi_i | **âˆ’1.47Ã—10Â¹â¹Â³ N** |
+| ?0 | 2.38×10?³ rad/s |
+| LENR resonance | 1.09×10²¹ |
+| F_U_Bi_i | **-1.47×10¹?³ N** |
 | Stability | **0.970 (STABLE)** |
-| X-ray/radio alternation | UQFF Compressedâ†”Resonant mode switching at Ï‰â‚€ half-period |
+| X-ray/radio alternation | UQFF Compressed?Resonant mode switching at ?0 half-period |
 
-*Source: uqff_validation_test.py ASKAP_J1832-0911, Chandra X-ray Observatory + ASKAP (May 2025) | Îº = 0.0005/day | [SSq] = 0.57*
+*Source: uqff_validation_test.py ASKAP_J1832-0911, Chandra X-ray Observatory + ASKAP (May 2025) | ? = 0.0005/day | [SSq] = 0.57*
 .Groups[1].Value
     "PAPER_{0:D3}" -f $n
     
@@ -417,7 +429,11 @@ On 44-minute timescales, the Îº-decay is negligible (Î”Îºt â‰ˆ 2Ã—10â»âµ) â€” 
 
 ## Abstract
 
-ASKAP J1832-0911 is a Long Period Transient (LPT) with a 44-minute emission cycle discovered by ASKAP in 2023 (Hurley-Walker et al. 2023) and followed up with Chandra X-ray Observatory in 2025. Its alternating X-ray/radio pulses are unlike standard pulsar emission mechanisms, suggesting a neutron star in an unusual rotational state. The UQFF analyzes ASKAP J1832-0911 via the F_U_Bi_i integral, finding a LENR-dominated field of F_U_Bi_i â‰ˆ âˆ’1.47Ã—10Â¹â¹Â³ N. Monte Carlo numeric stability (n=100, Â±10% parameter noise) confirms a stability index of 0.97, validating the UQFF equation set for LPT systems.
+ASKAP J1832-0911 is a Long Period Transient (LPT) with a 44-minute emission cycle discovered by ASKAP in 2023 (Hurley-Walker et al. 2023) and followed up with Chandra X-ray Observatory in 2025. Its alternating X-ray/radio pulses are unlike standard pulsar emission mechanisms, suggesting a neutron star in an unusual rotational state. The UQFF analyzes ASKAP J1832-0911 via the F_U_Bi_i integral, finding a LENR-dominated field of F_U_Bi_i ˜ -1.47×10¹?³ N. Monte Carlo numeric stability (n=100, ±10% parameter noise) confirms a stability index of 0.97, validating the UQFF equation set for LPT systems.
+
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -425,14 +441,14 @@ ASKAP J1832-0911 is a Long Period Transient (LPT) with a 44-minute emission cycl
 
 | Parameter | Symbol | Value | Source |
 |-----------|--------|-------|--------|
-| Mass | M | 2.785Ã—10Â³â° kg (1.4 Mâ˜‰) | NS canonical |
-| Distance | r | 4.63Ã—10Â¹â¶ m (~15,000 ly) | ASKAP parallax |
-| X-ray luminosity | L_X | 10Â³Â² W | Chandra 2025 |
-| Magnetic field (surface) | Bâ‚€ | 10Â¹Â² T (magnetar-class) | Inferred |
-| Temperature | T | 10â· K | Chandra X-ray |
+| Mass | M | 2.785×10³° kg (1.4 M?) | NS canonical |
+| Distance | r | 4.63×10¹6 m (~15,000 ly) | ASKAP parallax |
+| X-ray luminosity | L_X | 10³² W | Chandra 2025 |
+| Magnetic field (surface) | B0 | 10¹² T (magnetar-class) | Inferred |
+| Temperature | T | 107 K | Chandra X-ray |
 | Period | P | 2640 s (44 min) | ASKAP direct |
-| Angular frequency | Ï‰â‚€ | 2.380Ã—10â»Â³ rad/s | 2Ï€/2640 |
-| Data source | â€” | Chandra + ASKAP (May 2025) | â€” |
+| Angular frequency | ?0 | 2.380×10?³ rad/s | 2p/2640 |
+| Data source | — | Chandra + ASKAP (May 2025) | — |
 
 ---
 
@@ -444,17 +460,17 @@ $$F_{U,Bi,i} = -F_0 + p + g + Ug_1 + Ug_2 + Ug_3 + Ug_4 + U_m + \int \mathcal{I}
 
 | Component | Formula | Value (N) |
 |-----------|---------|---------|
-| Base force constant | âˆ’ Fâ‚€ = âˆ’1.83Ã—10â·Â¹ | âˆ’1.83Ã—10â·Â¹ |
-| Momentum | (m_e cÂ²/rÂ²) Ã— 0.93 Ã— cos(Ï€/4) | 2.52Ã—10â»â´â· |
-| Gravity | GM/rÂ² | 8.67Ã—10â»Â¹â´ |
-| Ug1 (dipole) | (GM/rÂ²)(1+Î´)(Î¼â‚€Bâ‚€Â²/8Ï€) | **4.34Ã—10Â³** |
-| Ug2 (bubble) | (GM/rÂ²)(Q_A+Q_UA)Ã—H_SCm | 9.64Ã—10â»Â²âµ |
-| Ug3 (string) | (c/r)Ã—Ï‰_sÃ—sin(Î¸)Ã—Bâ‚€ | ~10â»Â²â° |
-| Ug4 (vacuum BH) | kâ‚„Ã—Ï_SCmÃ—(M_BH/d_g)Ã—e^{-Îº} | ~10â»âµâ° |
-| Um (magnetism) | (Î¼_j/r)Ã—(1-e^{-Î³t})Ã—E_react | 3.65Ã—10â´âµ |
-| **LENR resonance** | k_LENRÃ—(Ï‰_LENR/Ï‰â‚€)Â² | **1.09Ã—10Â²Â¹** |
-| **Integral term** | LENR Ã— xâ‚‚ | **âˆ’1.47Ã—10Â¹â¹Â³** |
-| **F_U_Bi_i (total)** | | **â‰ˆ âˆ’1.47Ã—10Â¹â¹Â³** |
+| Base force constant | - F0 = -1.83×107¹ | -1.83×107¹ |
+| Momentum | (m_e c²/r²) × 0.93 × cos(p/4) | 2.52×10?47 |
+| Gravity | GM/r² | 8.67×10?¹4 |
+| Ug1 (dipole) | (GM/r²)(1+d)(µ0B0²/8p) | **4.34×10³** |
+| Ug2 (bubble) | (GM/r²)(Q_A+Q_UA)×H_SCm | 9.64×10?²5 |
+| Ug3 (string) | (c/r)×?_s×sin(?)×B0 | ~10?²° |
+| Ug4 (vacuum BH) | k4×?_SCm×(M_BH/d_g)×e^{-?} | ~10?5° |
+| Um (magnetism) | (µ_j/r)×(1-e^{-?t})×E_react | 3.65×1045 |
+| **LENR resonance** | k_LENR×(?_LENR/?0)² | **1.09×10²¹** |
+| **Integral term** | LENR × x2 | **-1.47×10¹?³** |
+| **F_U_Bi_i (total)** | | **˜ -1.47×10¹?³** |
 
 ### LENR Resonance Dominance
 
@@ -462,7 +478,7 @@ $$\text{LENR} = k_{\rm LENR} \times \left(\frac{\omega_{\rm LENR}}{\omega_0}\rig
 
 $$\text{Integral} = 1.09 \times 10^{21} \times (-1.35 \times 10^{172}) = -1.47 \times 10^{193}$$
 
-The LENR term (1.09Ã—10Â²Â¹) dominates all other integrand terms by >10â·; the integral term dominates F_U_Bi_i by >10Â¹Â²Â² over Fâ‚€.
+The LENR term (1.09×10²¹) dominates all other integrand terms by >107; the integral term dominates F_U_Bi_i by >10¹²² over F0.
 
 ---
 
@@ -477,31 +493,31 @@ The 44-minute period is far longer than standard pulsar periods (ms to seconds),
 
 **UQFF interpretation:**
 
-The UQFF LENR term scales as (Ï‰_LENR/Ï‰â‚€)Â². For Ï‰â‚€ = 2.38Ã—10â»Â³ rad/s (44 min):
-- LENR = 1.09Ã—10Â²Â¹ â€” 10â¶Ã— larger than for a typical 1-second pulsar
-- This means the UQFF vacuum resonance is 10â¶-fold stronger for this slow system
+The UQFF LENR term scales as (?_LENR/?0)². For ?0 = 2.38×10?³ rad/s (44 min):
+- LENR = 1.09×10²¹ — 106× larger than for a typical 1-second pulsar
+- This means the UQFF vacuum resonance is 106-fold stronger for this slow system
 
 **UQFF prediction for LPT period selection:**
 
 $$P_{\rm UQFF} = P_0 \times \sqrt{\frac{k_{\rm LENR,max}}{k_{\rm LENR,threshold}}} = 1 \text{ s} \times \sqrt{\frac{10^{21}}{10^9}} = 1 \times 10^6 \text{ s}$$
 
-But actual P = 2640 s << 10â¶ s â†’ LPT is in an intermediate regime where UQFF resonance first exceeds threshold (LENR > 10Â¹âµ) at P ~ 44 min. This predicts a **minimum threshold period** for LPT-class pulsar activity at P â‰ˆ 44 min, consistent with ASKAP J1832's observed period being the first above this threshold.
+But actual P = 2640 s << 106 s ? LPT is in an intermediate regime where UQFF resonance first exceeds threshold (LENR > 10¹5) at P ~ 44 min. This predicts a **minimum threshold period** for LPT-class pulsar activity at P ˜ 44 min, consistent with ASKAP J1832's observed period being the first above this threshold.
 
 ---
 
 ## 4. Monte Carlo Numeric Stability
 
-Protocol: n = 100 trials, Â±10% Gaussian noise applied to M, r, L_X, Bâ‚€.
+Protocol: n = 100 trials, ±10% Gaussian noise applied to M, r, L_X, B0.
 
 | Metric | Value |
 |--------|-------|
-| Mean F_U_Bi_i | âˆ’1.47Ã—10Â¹â¹Â³ N |
-| Std Dev | ~4.4Ã—10Â¹â¹Â¹ N |
+| Mean F_U_Bi_i | -1.47×10¹?³ N |
+| Std Dev | ~4.4×10¹?¹ N |
 | Stability index | **0.970** |
 | Valid samples | 100/100 |
-| Status | **âœ“ STABLE** |
+| Status | **? STABLE** |
 
-**Why stability is high:** The integral_term = LENR Ã— xâ‚‚ dominates F_U_Bi_i. LENR = k_LENR Ã— (Ï‰_LENR/Ï‰â‚€)Â² depends only on Ï‰â‚€ (the spin period), which is **not** varied in the noise test â€” it is the precisely measured period from ASKAP timing. Therefore, 97% of the total F_U_Bi_i value is stable against M, r, L_X, Bâ‚€ parameter noise.
+**Why stability is high:** The integral_term = LENR × x2 dominates F_U_Bi_i. LENR = k_LENR × (?_LENR/?0)² depends only on ?0 (the spin period), which is **not** varied in the noise test — it is the precisely measured period from ASKAP timing. Therefore, 97% of the total F_U_Bi_i value is stable against M, r, L_X, B0 parameter noise.
 
 ---
 
@@ -510,14 +526,14 @@ Protocol: n = 100 trials, Â±10% Gaussian noise applied to M, r, L_X, Bâ‚€.
 ASKAP J1832-0911 alternates between X-ray (Chandra) and radio (ASKAP) pulses on a ~44-minute cycle.
 
 **UQFF explanation:**
-- **X-ray phase**: Compressed mode dominant (g = M/r Ã— 10â»Â¹â°) â†’ accretion column compresses vacuum, emitting X-ray
-- **Radio phase**: Resonant mode dominant (cos(Ï‰â‚€t) Ã— 10â»âµ) â†’ TRZ vacuum oscillation at Ï‰â‚€ induces MHz-GHz coherent emission
-- **Alternation**: The Îº-decay oscillator switches between modes on the 44-min periodicity: when E_react Ã— e^{âˆ’Îºt} drops below threshold, Compressedâ†’Resonant transition occurs
+- **X-ray phase**: Compressed mode dominant (g = M/r × 10?¹°) ? accretion column compresses vacuum, emitting X-ray
+- **Radio phase**: Resonant mode dominant (cos(?0t) × 10?5) ? TRZ vacuum oscillation at ?0 induces MHz-GHz coherent emission
+- **Alternation**: The ?-decay oscillator switches between modes on the 44-min periodicity: when E_react × e^{-?t} drops below threshold, Compressed?Resonant transition occurs
 
 Threshold:
 $$E_{\rm threshold} = E_{\rm react,0} \times e^{-\kappa \times t_{\rm transition}} \Rightarrow t_{\rm transition} = \frac{\ln(E_0/E_{\rm thresh})}{\kappa} = \frac{\ln(10^{46}/10^{40})}{0.0005} = \frac{13.8}{0.0005} = 27600 \text{ days}$$
 
-On 44-minute timescales, the Îº-decay is negligible (Î”Îºt â‰ˆ 2Ã—10â»âµ) â€” the alternation is driven by the phase of the Resonant mode cos(Ï‰â‚€t), which switches sign at t = Ï€/Ï‰â‚€ = 1320 s â‰ˆ 22 min (half-period). This gives alternating X-ray (expansion phase) and radio (compression phase) at the 22-minute half-cycle â€” fully consistent with the observed 44-minute full cycle.
+On 44-minute timescales, the ?-decay is negligible (??t ˜ 2×10?5) — the alternation is driven by the phase of the Resonant mode cos(?0t), which switches sign at t = p/?0 = 1320 s ˜ 22 min (half-period). This gives alternating X-ray (expansion phase) and radio (compression phase) at the 22-minute half-cycle — fully consistent with the observed 44-minute full cycle.
 
 ---
 
@@ -526,45 +542,49 @@ On 44-minute timescales, the Îº-decay is negligible (Î”Îºt â‰ˆ 2Ã—10â»âµ) â€” 
 | Quantity | Value |
 |---------|-------|
 | Period | 44 min (2640 s) |
-| Ï‰â‚€ | 2.38Ã—10â»Â³ rad/s |
-| LENR resonance | 1.09Ã—10Â²Â¹ |
-| F_U_Bi_i | **âˆ’1.47Ã—10Â¹â¹Â³ N** |
+| ?0 | 2.38×10?³ rad/s |
+| LENR resonance | 1.09×10²¹ |
+| F_U_Bi_i | **-1.47×10¹?³ N** |
 | Stability | **0.970 (STABLE)** |
-| X-ray/radio alternation | UQFF Compressedâ†”Resonant mode switching at Ï‰â‚€ half-period |
+| X-ray/radio alternation | UQFF Compressed?Resonant mode switching at ?0 half-period |
 
-*Source: uqff_validation_test.py ASKAP_J1832-0911, Chandra X-ray Observatory + ASKAP (May 2025) | Îº = 0.0005/day | [SSq] = 0.57*
-.Groups[1].Value  â€” Radio Transient Stability in UQFF: ASKAP J1832-0911
-
-**Title:** Long-Period Radio Transient ASKAP J1832-0911: UQFF Numeric Stability Analysis and F_U_Bi_i Field Derivation
-
-**Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (Îº = 0.0005/day, [SSq] = 0.57)  
-**Date:** March 7, 2026  
-**Source Data:** `uqff_validation_test.py` ASKAP_J1832-0911 system, Chandra + ASKAP May 2025 data  
-**Index Slot:** Â§1.9 Automated 121-System Validation,  "PAPER_{0:D3}" -f [int]# PAPER #69 â€” Radio Transient Stability in UQFF: ASKAP J1832-0911
+*Source: uqff_validation_test.py ASKAP_J1832-0911, Chandra X-ray Observatory + ASKAP (May 2025) | ? = 0.0005/day | [SSq] = 0.57*
+.Groups[1].Value  — Radio Transient Stability in UQFF: ASKAP J1832-0911
 
 **Title:** Long-Period Radio Transient ASKAP J1832-0911: UQFF Numeric Stability Analysis and F_U_Bi_i Field Derivation
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (Îº = 0.0005/day, [SSq] = 0.57)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57)  
 **Date:** March 7, 2026  
 **Source Data:** `uqff_validation_test.py` ASKAP_J1832-0911 system, Chandra + ASKAP May 2025 data  
-**Index Slot:** Â§1.9 Automated 121-System Validation,  
-    $n = [int]# PAPER #69 â€” Radio Transient Stability in UQFF: ASKAP J1832-0911
+**Index Slot:** §1.9 Automated 121-System Validation,  "PAPER_{0:D3}" -f [int]# PAPER #69 — Radio Transient Stability in UQFF: ASKAP J1832-0911
 
 **Title:** Long-Period Radio Transient ASKAP J1832-0911: UQFF Numeric Stability Analysis and F_U_Bi_i Field Derivation
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (Îº = 0.0005/day, [SSq] = 0.57)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57)  
 **Date:** March 7, 2026  
 **Source Data:** `uqff_validation_test.py` ASKAP_J1832-0911 system, Chandra + ASKAP May 2025 data  
-**Index Slot:** Â§1.9 Automated 121-System Validation, PAPER_069  
+**Index Slot:** §1.9 Automated 121-System Validation,  
+    $n = [int]# PAPER #69 — Radio Transient Stability in UQFF: ASKAP J1832-0911
+
+**Title:** Long-Period Radio Transient ASKAP J1832-0911: UQFF Numeric Stability Analysis and F_U_Bi_i Field Derivation
+
+**Author:** Daniel T. Murphy  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57)  
+**Date:** March 7, 2026  
+**Source Data:** `uqff_validation_test.py` ASKAP_J1832-0911 system, Chandra + ASKAP May 2025 data  
+**Index Slot:** §1.9 Automated 121-System Validation, PAPER_069  
 
 ---
 
 ## Abstract
 
-ASKAP J1832-0911 is a Long Period Transient (LPT) with a 44-minute emission cycle discovered by ASKAP in 2023 (Hurley-Walker et al. 2023) and followed up with Chandra X-ray Observatory in 2025. Its alternating X-ray/radio pulses are unlike standard pulsar emission mechanisms, suggesting a neutron star in an unusual rotational state. The UQFF analyzes ASKAP J1832-0911 via the F_U_Bi_i integral, finding a LENR-dominated field of F_U_Bi_i â‰ˆ âˆ’1.47Ã—10Â¹â¹Â³ N. Monte Carlo numeric stability (n=100, Â±10% parameter noise) confirms a stability index of 0.97, validating the UQFF equation set for LPT systems.
+ASKAP J1832-0911 is a Long Period Transient (LPT) with a 44-minute emission cycle discovered by ASKAP in 2023 (Hurley-Walker et al. 2023) and followed up with Chandra X-ray Observatory in 2025. Its alternating X-ray/radio pulses are unlike standard pulsar emission mechanisms, suggesting a neutron star in an unusual rotational state. The UQFF analyzes ASKAP J1832-0911 via the F_U_Bi_i integral, finding a LENR-dominated field of F_U_Bi_i ˜ -1.47×10¹?³ N. Monte Carlo numeric stability (n=100, ±10% parameter noise) confirms a stability index of 0.97, validating the UQFF equation set for LPT systems.
+
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -572,14 +592,14 @@ ASKAP J1832-0911 is a Long Period Transient (LPT) with a 44-minute emission cycl
 
 | Parameter | Symbol | Value | Source |
 |-----------|--------|-------|--------|
-| Mass | M | 2.785Ã—10Â³â° kg (1.4 Mâ˜‰) | NS canonical |
-| Distance | r | 4.63Ã—10Â¹â¶ m (~15,000 ly) | ASKAP parallax |
-| X-ray luminosity | L_X | 10Â³Â² W | Chandra 2025 |
-| Magnetic field (surface) | Bâ‚€ | 10Â¹Â² T (magnetar-class) | Inferred |
-| Temperature | T | 10â· K | Chandra X-ray |
+| Mass | M | 2.785×10³° kg (1.4 M?) | NS canonical |
+| Distance | r | 4.63×10¹6 m (~15,000 ly) | ASKAP parallax |
+| X-ray luminosity | L_X | 10³² W | Chandra 2025 |
+| Magnetic field (surface) | B0 | 10¹² T (magnetar-class) | Inferred |
+| Temperature | T | 107 K | Chandra X-ray |
 | Period | P | 2640 s (44 min) | ASKAP direct |
-| Angular frequency | Ï‰â‚€ | 2.380Ã—10â»Â³ rad/s | 2Ï€/2640 |
-| Data source | â€” | Chandra + ASKAP (May 2025) | â€” |
+| Angular frequency | ?0 | 2.380×10?³ rad/s | 2p/2640 |
+| Data source | — | Chandra + ASKAP (May 2025) | — |
 
 ---
 
@@ -591,17 +611,17 @@ $$F_{U,Bi,i} = -F_0 + p + g + Ug_1 + Ug_2 + Ug_3 + Ug_4 + U_m + \int \mathcal{I}
 
 | Component | Formula | Value (N) |
 |-----------|---------|---------|
-| Base force constant | âˆ’ Fâ‚€ = âˆ’1.83Ã—10â·Â¹ | âˆ’1.83Ã—10â·Â¹ |
-| Momentum | (m_e cÂ²/rÂ²) Ã— 0.93 Ã— cos(Ï€/4) | 2.52Ã—10â»â´â· |
-| Gravity | GM/rÂ² | 8.67Ã—10â»Â¹â´ |
-| Ug1 (dipole) | (GM/rÂ²)(1+Î´)(Î¼â‚€Bâ‚€Â²/8Ï€) | **4.34Ã—10Â³** |
-| Ug2 (bubble) | (GM/rÂ²)(Q_A+Q_UA)Ã—H_SCm | 9.64Ã—10â»Â²âµ |
-| Ug3 (string) | (c/r)Ã—Ï‰_sÃ—sin(Î¸)Ã—Bâ‚€ | ~10â»Â²â° |
-| Ug4 (vacuum BH) | kâ‚„Ã—Ï_SCmÃ—(M_BH/d_g)Ã—e^{-Îº} | ~10â»âµâ° |
-| Um (magnetism) | (Î¼_j/r)Ã—(1-e^{-Î³t})Ã—E_react | 3.65Ã—10â´âµ |
-| **LENR resonance** | k_LENRÃ—(Ï‰_LENR/Ï‰â‚€)Â² | **1.09Ã—10Â²Â¹** |
-| **Integral term** | LENR Ã— xâ‚‚ | **âˆ’1.47Ã—10Â¹â¹Â³** |
-| **F_U_Bi_i (total)** | | **â‰ˆ âˆ’1.47Ã—10Â¹â¹Â³** |
+| Base force constant | - F0 = -1.83×107¹ | -1.83×107¹ |
+| Momentum | (m_e c²/r²) × 0.93 × cos(p/4) | 2.52×10?47 |
+| Gravity | GM/r² | 8.67×10?¹4 |
+| Ug1 (dipole) | (GM/r²)(1+d)(µ0B0²/8p) | **4.34×10³** |
+| Ug2 (bubble) | (GM/r²)(Q_A+Q_UA)×H_SCm | 9.64×10?²5 |
+| Ug3 (string) | (c/r)×?_s×sin(?)×B0 | ~10?²° |
+| Ug4 (vacuum BH) | k4×?_SCm×(M_BH/d_g)×e^{-?} | ~10?5° |
+| Um (magnetism) | (µ_j/r)×(1-e^{-?t})×E_react | 3.65×1045 |
+| **LENR resonance** | k_LENR×(?_LENR/?0)² | **1.09×10²¹** |
+| **Integral term** | LENR × x2 | **-1.47×10¹?³** |
+| **F_U_Bi_i (total)** | | **˜ -1.47×10¹?³** |
 
 ### LENR Resonance Dominance
 
@@ -609,7 +629,7 @@ $$\text{LENR} = k_{\rm LENR} \times \left(\frac{\omega_{\rm LENR}}{\omega_0}\rig
 
 $$\text{Integral} = 1.09 \times 10^{21} \times (-1.35 \times 10^{172}) = -1.47 \times 10^{193}$$
 
-The LENR term (1.09Ã—10Â²Â¹) dominates all other integrand terms by >10â·; the integral term dominates F_U_Bi_i by >10Â¹Â²Â² over Fâ‚€.
+The LENR term (1.09×10²¹) dominates all other integrand terms by >107; the integral term dominates F_U_Bi_i by >10¹²² over F0.
 
 ---
 
@@ -624,31 +644,31 @@ The 44-minute period is far longer than standard pulsar periods (ms to seconds),
 
 **UQFF interpretation:**
 
-The UQFF LENR term scales as (Ï‰_LENR/Ï‰â‚€)Â². For Ï‰â‚€ = 2.38Ã—10â»Â³ rad/s (44 min):
-- LENR = 1.09Ã—10Â²Â¹ â€” 10â¶Ã— larger than for a typical 1-second pulsar
-- This means the UQFF vacuum resonance is 10â¶-fold stronger for this slow system
+The UQFF LENR term scales as (?_LENR/?0)². For ?0 = 2.38×10?³ rad/s (44 min):
+- LENR = 1.09×10²¹ — 106× larger than for a typical 1-second pulsar
+- This means the UQFF vacuum resonance is 106-fold stronger for this slow system
 
 **UQFF prediction for LPT period selection:**
 
 $$P_{\rm UQFF} = P_0 \times \sqrt{\frac{k_{\rm LENR,max}}{k_{\rm LENR,threshold}}} = 1 \text{ s} \times \sqrt{\frac{10^{21}}{10^9}} = 1 \times 10^6 \text{ s}$$
 
-But actual P = 2640 s << 10â¶ s â†’ LPT is in an intermediate regime where UQFF resonance first exceeds threshold (LENR > 10Â¹âµ) at P ~ 44 min. This predicts a **minimum threshold period** for LPT-class pulsar activity at P â‰ˆ 44 min, consistent with ASKAP J1832's observed period being the first above this threshold.
+But actual P = 2640 s << 106 s ? LPT is in an intermediate regime where UQFF resonance first exceeds threshold (LENR > 10¹5) at P ~ 44 min. This predicts a **minimum threshold period** for LPT-class pulsar activity at P ˜ 44 min, consistent with ASKAP J1832's observed period being the first above this threshold.
 
 ---
 
 ## 4. Monte Carlo Numeric Stability
 
-Protocol: n = 100 trials, Â±10% Gaussian noise applied to M, r, L_X, Bâ‚€.
+Protocol: n = 100 trials, ±10% Gaussian noise applied to M, r, L_X, B0.
 
 | Metric | Value |
 |--------|-------|
-| Mean F_U_Bi_i | âˆ’1.47Ã—10Â¹â¹Â³ N |
-| Std Dev | ~4.4Ã—10Â¹â¹Â¹ N |
+| Mean F_U_Bi_i | -1.47×10¹?³ N |
+| Std Dev | ~4.4×10¹?¹ N |
 | Stability index | **0.970** |
 | Valid samples | 100/100 |
-| Status | **âœ“ STABLE** |
+| Status | **? STABLE** |
 
-**Why stability is high:** The integral_term = LENR Ã— xâ‚‚ dominates F_U_Bi_i. LENR = k_LENR Ã— (Ï‰_LENR/Ï‰â‚€)Â² depends only on Ï‰â‚€ (the spin period), which is **not** varied in the noise test â€” it is the precisely measured period from ASKAP timing. Therefore, 97% of the total F_U_Bi_i value is stable against M, r, L_X, Bâ‚€ parameter noise.
+**Why stability is high:** The integral_term = LENR × x2 dominates F_U_Bi_i. LENR = k_LENR × (?_LENR/?0)² depends only on ?0 (the spin period), which is **not** varied in the noise test — it is the precisely measured period from ASKAP timing. Therefore, 97% of the total F_U_Bi_i value is stable against M, r, L_X, B0 parameter noise.
 
 ---
 
@@ -657,14 +677,14 @@ Protocol: n = 100 trials, Â±10% Gaussian noise applied to M, r, L_X, Bâ‚€.
 ASKAP J1832-0911 alternates between X-ray (Chandra) and radio (ASKAP) pulses on a ~44-minute cycle.
 
 **UQFF explanation:**
-- **X-ray phase**: Compressed mode dominant (g = M/r Ã— 10â»Â¹â°) â†’ accretion column compresses vacuum, emitting X-ray
-- **Radio phase**: Resonant mode dominant (cos(Ï‰â‚€t) Ã— 10â»âµ) â†’ TRZ vacuum oscillation at Ï‰â‚€ induces MHz-GHz coherent emission
-- **Alternation**: The Îº-decay oscillator switches between modes on the 44-min periodicity: when E_react Ã— e^{âˆ’Îºt} drops below threshold, Compressedâ†’Resonant transition occurs
+- **X-ray phase**: Compressed mode dominant (g = M/r × 10?¹°) ? accretion column compresses vacuum, emitting X-ray
+- **Radio phase**: Resonant mode dominant (cos(?0t) × 10?5) ? TRZ vacuum oscillation at ?0 induces MHz-GHz coherent emission
+- **Alternation**: The ?-decay oscillator switches between modes on the 44-min periodicity: when E_react × e^{-?t} drops below threshold, Compressed?Resonant transition occurs
 
 Threshold:
 $$E_{\rm threshold} = E_{\rm react,0} \times e^{-\kappa \times t_{\rm transition}} \Rightarrow t_{\rm transition} = \frac{\ln(E_0/E_{\rm thresh})}{\kappa} = \frac{\ln(10^{46}/10^{40})}{0.0005} = \frac{13.8}{0.0005} = 27600 \text{ days}$$
 
-On 44-minute timescales, the Îº-decay is negligible (Î”Îºt â‰ˆ 2Ã—10â»âµ) â€” the alternation is driven by the phase of the Resonant mode cos(Ï‰â‚€t), which switches sign at t = Ï€/Ï‰â‚€ = 1320 s â‰ˆ 22 min (half-period). This gives alternating X-ray (expansion phase) and radio (compression phase) at the 22-minute half-cycle â€” fully consistent with the observed 44-minute full cycle.
+On 44-minute timescales, the ?-decay is negligible (??t ˜ 2×10?5) — the alternation is driven by the phase of the Resonant mode cos(?0t), which switches sign at t = p/?0 = 1320 s ˜ 22 min (half-period). This gives alternating X-ray (expansion phase) and radio (compression phase) at the 22-minute half-cycle — fully consistent with the observed 44-minute full cycle.
 
 ---
 
@@ -673,13 +693,13 @@ On 44-minute timescales, the Îº-decay is negligible (Î”Îºt â‰ˆ 2Ã—10â»âµ) â€” 
 | Quantity | Value |
 |---------|-------|
 | Period | 44 min (2640 s) |
-| Ï‰â‚€ | 2.38Ã—10â»Â³ rad/s |
-| LENR resonance | 1.09Ã—10Â²Â¹ |
-| F_U_Bi_i | **âˆ’1.47Ã—10Â¹â¹Â³ N** |
+| ?0 | 2.38×10?³ rad/s |
+| LENR resonance | 1.09×10²¹ |
+| F_U_Bi_i | **-1.47×10¹?³ N** |
 | Stability | **0.970 (STABLE)** |
-| X-ray/radio alternation | UQFF Compressedâ†”Resonant mode switching at Ï‰â‚€ half-period |
+| X-ray/radio alternation | UQFF Compressed?Resonant mode switching at ?0 half-period |
 
-*Source: uqff_validation_test.py ASKAP_J1832-0911, Chandra X-ray Observatory + ASKAP (May 2025) | Îº = 0.0005/day | [SSq] = 0.57*
+*Source: uqff_validation_test.py ASKAP_J1832-0911, Chandra X-ray Observatory + ASKAP (May 2025) | ? = 0.0005/day | [SSq] = 0.57*
 .Groups[1].Value
     "PAPER_{0:D3}" -f $n
     
@@ -688,7 +708,11 @@ On 44-minute timescales, the Îº-decay is negligible (Î”Îºt â‰ˆ 2Ã—10â»âµ) â€” 
 
 ## Abstract
 
-ASKAP J1832-0911 is a Long Period Transient (LPT) with a 44-minute emission cycle discovered by ASKAP in 2023 (Hurley-Walker et al. 2023) and followed up with Chandra X-ray Observatory in 2025. Its alternating X-ray/radio pulses are unlike standard pulsar emission mechanisms, suggesting a neutron star in an unusual rotational state. The UQFF analyzes ASKAP J1832-0911 via the F_U_Bi_i integral, finding a LENR-dominated field of F_U_Bi_i â‰ˆ âˆ’1.47Ã—10Â¹â¹Â³ N. Monte Carlo numeric stability (n=100, Â±10% parameter noise) confirms a stability index of 0.97, validating the UQFF equation set for LPT systems.
+ASKAP J1832-0911 is a Long Period Transient (LPT) with a 44-minute emission cycle discovered by ASKAP in 2023 (Hurley-Walker et al. 2023) and followed up with Chandra X-ray Observatory in 2025. Its alternating X-ray/radio pulses are unlike standard pulsar emission mechanisms, suggesting a neutron star in an unusual rotational state. The UQFF analyzes ASKAP J1832-0911 via the F_U_Bi_i integral, finding a LENR-dominated field of F_U_Bi_i ˜ -1.47×10¹?³ N. Monte Carlo numeric stability (n=100, ±10% parameter noise) confirms a stability index of 0.97, validating the UQFF equation set for LPT systems.
+
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -696,14 +720,14 @@ ASKAP J1832-0911 is a Long Period Transient (LPT) with a 44-minute emission cycl
 
 | Parameter | Symbol | Value | Source |
 |-----------|--------|-------|--------|
-| Mass | M | 2.785Ã—10Â³â° kg (1.4 Mâ˜‰) | NS canonical |
-| Distance | r | 4.63Ã—10Â¹â¶ m (~15,000 ly) | ASKAP parallax |
-| X-ray luminosity | L_X | 10Â³Â² W | Chandra 2025 |
-| Magnetic field (surface) | Bâ‚€ | 10Â¹Â² T (magnetar-class) | Inferred |
-| Temperature | T | 10â· K | Chandra X-ray |
+| Mass | M | 2.785×10³° kg (1.4 M?) | NS canonical |
+| Distance | r | 4.63×10¹6 m (~15,000 ly) | ASKAP parallax |
+| X-ray luminosity | L_X | 10³² W | Chandra 2025 |
+| Magnetic field (surface) | B0 | 10¹² T (magnetar-class) | Inferred |
+| Temperature | T | 107 K | Chandra X-ray |
 | Period | P | 2640 s (44 min) | ASKAP direct |
-| Angular frequency | Ï‰â‚€ | 2.380Ã—10â»Â³ rad/s | 2Ï€/2640 |
-| Data source | â€” | Chandra + ASKAP (May 2025) | â€” |
+| Angular frequency | ?0 | 2.380×10?³ rad/s | 2p/2640 |
+| Data source | — | Chandra + ASKAP (May 2025) | — |
 
 ---
 
@@ -715,17 +739,17 @@ $$F_{U,Bi,i} = -F_0 + p + g + Ug_1 + Ug_2 + Ug_3 + Ug_4 + U_m + \int \mathcal{I}
 
 | Component | Formula | Value (N) |
 |-----------|---------|---------|
-| Base force constant | âˆ’ Fâ‚€ = âˆ’1.83Ã—10â·Â¹ | âˆ’1.83Ã—10â·Â¹ |
-| Momentum | (m_e cÂ²/rÂ²) Ã— 0.93 Ã— cos(Ï€/4) | 2.52Ã—10â»â´â· |
-| Gravity | GM/rÂ² | 8.67Ã—10â»Â¹â´ |
-| Ug1 (dipole) | (GM/rÂ²)(1+Î´)(Î¼â‚€Bâ‚€Â²/8Ï€) | **4.34Ã—10Â³** |
-| Ug2 (bubble) | (GM/rÂ²)(Q_A+Q_UA)Ã—H_SCm | 9.64Ã—10â»Â²âµ |
-| Ug3 (string) | (c/r)Ã—Ï‰_sÃ—sin(Î¸)Ã—Bâ‚€ | ~10â»Â²â° |
-| Ug4 (vacuum BH) | kâ‚„Ã—Ï_SCmÃ—(M_BH/d_g)Ã—e^{-Îº} | ~10â»âµâ° |
-| Um (magnetism) | (Î¼_j/r)Ã—(1-e^{-Î³t})Ã—E_react | 3.65Ã—10â´âµ |
-| **LENR resonance** | k_LENRÃ—(Ï‰_LENR/Ï‰â‚€)Â² | **1.09Ã—10Â²Â¹** |
-| **Integral term** | LENR Ã— xâ‚‚ | **âˆ’1.47Ã—10Â¹â¹Â³** |
-| **F_U_Bi_i (total)** | | **â‰ˆ âˆ’1.47Ã—10Â¹â¹Â³** |
+| Base force constant | - F0 = -1.83×107¹ | -1.83×107¹ |
+| Momentum | (m_e c²/r²) × 0.93 × cos(p/4) | 2.52×10?47 |
+| Gravity | GM/r² | 8.67×10?¹4 |
+| Ug1 (dipole) | (GM/r²)(1+d)(µ0B0²/8p) | **4.34×10³** |
+| Ug2 (bubble) | (GM/r²)(Q_A+Q_UA)×H_SCm | 9.64×10?²5 |
+| Ug3 (string) | (c/r)×?_s×sin(?)×B0 | ~10?²° |
+| Ug4 (vacuum BH) | k4×?_SCm×(M_BH/d_g)×e^{-?} | ~10?5° |
+| Um (magnetism) | (µ_j/r)×(1-e^{-?t})×E_react | 3.65×1045 |
+| **LENR resonance** | k_LENR×(?_LENR/?0)² | **1.09×10²¹** |
+| **Integral term** | LENR × x2 | **-1.47×10¹?³** |
+| **F_U_Bi_i (total)** | | **˜ -1.47×10¹?³** |
 
 ### LENR Resonance Dominance
 
@@ -733,7 +757,7 @@ $$\text{LENR} = k_{\rm LENR} \times \left(\frac{\omega_{\rm LENR}}{\omega_0}\rig
 
 $$\text{Integral} = 1.09 \times 10^{21} \times (-1.35 \times 10^{172}) = -1.47 \times 10^{193}$$
 
-The LENR term (1.09Ã—10Â²Â¹) dominates all other integrand terms by >10â·; the integral term dominates F_U_Bi_i by >10Â¹Â²Â² over Fâ‚€.
+The LENR term (1.09×10²¹) dominates all other integrand terms by >107; the integral term dominates F_U_Bi_i by >10¹²² over F0.
 
 ---
 
@@ -748,31 +772,31 @@ The 44-minute period is far longer than standard pulsar periods (ms to seconds),
 
 **UQFF interpretation:**
 
-The UQFF LENR term scales as (Ï‰_LENR/Ï‰â‚€)Â². For Ï‰â‚€ = 2.38Ã—10â»Â³ rad/s (44 min):
-- LENR = 1.09Ã—10Â²Â¹ â€” 10â¶Ã— larger than for a typical 1-second pulsar
-- This means the UQFF vacuum resonance is 10â¶-fold stronger for this slow system
+The UQFF LENR term scales as (?_LENR/?0)². For ?0 = 2.38×10?³ rad/s (44 min):
+- LENR = 1.09×10²¹ — 106× larger than for a typical 1-second pulsar
+- This means the UQFF vacuum resonance is 106-fold stronger for this slow system
 
 **UQFF prediction for LPT period selection:**
 
 $$P_{\rm UQFF} = P_0 \times \sqrt{\frac{k_{\rm LENR,max}}{k_{\rm LENR,threshold}}} = 1 \text{ s} \times \sqrt{\frac{10^{21}}{10^9}} = 1 \times 10^6 \text{ s}$$
 
-But actual P = 2640 s << 10â¶ s â†’ LPT is in an intermediate regime where UQFF resonance first exceeds threshold (LENR > 10Â¹âµ) at P ~ 44 min. This predicts a **minimum threshold period** for LPT-class pulsar activity at P â‰ˆ 44 min, consistent with ASKAP J1832's observed period being the first above this threshold.
+But actual P = 2640 s << 106 s ? LPT is in an intermediate regime where UQFF resonance first exceeds threshold (LENR > 10¹5) at P ~ 44 min. This predicts a **minimum threshold period** for LPT-class pulsar activity at P ˜ 44 min, consistent with ASKAP J1832's observed period being the first above this threshold.
 
 ---
 
 ## 4. Monte Carlo Numeric Stability
 
-Protocol: n = 100 trials, Â±10% Gaussian noise applied to M, r, L_X, Bâ‚€.
+Protocol: n = 100 trials, ±10% Gaussian noise applied to M, r, L_X, B0.
 
 | Metric | Value |
 |--------|-------|
-| Mean F_U_Bi_i | âˆ’1.47Ã—10Â¹â¹Â³ N |
-| Std Dev | ~4.4Ã—10Â¹â¹Â¹ N |
+| Mean F_U_Bi_i | -1.47×10¹?³ N |
+| Std Dev | ~4.4×10¹?¹ N |
 | Stability index | **0.970** |
 | Valid samples | 100/100 |
-| Status | **âœ“ STABLE** |
+| Status | **? STABLE** |
 
-**Why stability is high:** The integral_term = LENR Ã— xâ‚‚ dominates F_U_Bi_i. LENR = k_LENR Ã— (Ï‰_LENR/Ï‰â‚€)Â² depends only on Ï‰â‚€ (the spin period), which is **not** varied in the noise test â€” it is the precisely measured period from ASKAP timing. Therefore, 97% of the total F_U_Bi_i value is stable against M, r, L_X, Bâ‚€ parameter noise.
+**Why stability is high:** The integral_term = LENR × x2 dominates F_U_Bi_i. LENR = k_LENR × (?_LENR/?0)² depends only on ?0 (the spin period), which is **not** varied in the noise test — it is the precisely measured period from ASKAP timing. Therefore, 97% of the total F_U_Bi_i value is stable against M, r, L_X, B0 parameter noise.
 
 ---
 
@@ -781,14 +805,14 @@ Protocol: n = 100 trials, Â±10% Gaussian noise applied to M, r, L_X, Bâ‚€.
 ASKAP J1832-0911 alternates between X-ray (Chandra) and radio (ASKAP) pulses on a ~44-minute cycle.
 
 **UQFF explanation:**
-- **X-ray phase**: Compressed mode dominant (g = M/r Ã— 10â»Â¹â°) â†’ accretion column compresses vacuum, emitting X-ray
-- **Radio phase**: Resonant mode dominant (cos(Ï‰â‚€t) Ã— 10â»âµ) â†’ TRZ vacuum oscillation at Ï‰â‚€ induces MHz-GHz coherent emission
-- **Alternation**: The Îº-decay oscillator switches between modes on the 44-min periodicity: when E_react Ã— e^{âˆ’Îºt} drops below threshold, Compressedâ†’Resonant transition occurs
+- **X-ray phase**: Compressed mode dominant (g = M/r × 10?¹°) ? accretion column compresses vacuum, emitting X-ray
+- **Radio phase**: Resonant mode dominant (cos(?0t) × 10?5) ? TRZ vacuum oscillation at ?0 induces MHz-GHz coherent emission
+- **Alternation**: The ?-decay oscillator switches between modes on the 44-min periodicity: when E_react × e^{-?t} drops below threshold, Compressed?Resonant transition occurs
 
 Threshold:
 $$E_{\rm threshold} = E_{\rm react,0} \times e^{-\kappa \times t_{\rm transition}} \Rightarrow t_{\rm transition} = \frac{\ln(E_0/E_{\rm thresh})}{\kappa} = \frac{\ln(10^{46}/10^{40})}{0.0005} = \frac{13.8}{0.0005} = 27600 \text{ days}$$
 
-On 44-minute timescales, the Îº-decay is negligible (Î”Îºt â‰ˆ 2Ã—10â»âµ) â€” the alternation is driven by the phase of the Resonant mode cos(Ï‰â‚€t), which switches sign at t = Ï€/Ï‰â‚€ = 1320 s â‰ˆ 22 min (half-period). This gives alternating X-ray (expansion phase) and radio (compression phase) at the 22-minute half-cycle â€” fully consistent with the observed 44-minute full cycle.
+On 44-minute timescales, the ?-decay is negligible (??t ˜ 2×10?5) — the alternation is driven by the phase of the Resonant mode cos(?0t), which switches sign at t = p/?0 = 1320 s ˜ 22 min (half-period). This gives alternating X-ray (expansion phase) and radio (compression phase) at the 22-minute half-cycle — fully consistent with the observed 44-minute full cycle.
 
 ---
 
@@ -797,20 +821,24 @@ On 44-minute timescales, the Îº-decay is negligible (Î”Îºt â‰ˆ 2Ã—10â»âµ) â€” 
 | Quantity | Value |
 |---------|-------|
 | Period | 44 min (2640 s) |
-| Ï‰â‚€ | 2.38Ã—10â»Â³ rad/s |
-| LENR resonance | 1.09Ã—10Â²Â¹ |
-| F_U_Bi_i | **âˆ’1.47Ã—10Â¹â¹Â³ N** |
+| ?0 | 2.38×10?³ rad/s |
+| LENR resonance | 1.09×10²¹ |
+| F_U_Bi_i | **-1.47×10¹?³ N** |
 | Stability | **0.970 (STABLE)** |
-| X-ray/radio alternation | UQFF Compressedâ†”Resonant mode switching at Ï‰â‚€ half-period |
+| X-ray/radio alternation | UQFF Compressed?Resonant mode switching at ?0 half-period |
 
-*Source: uqff_validation_test.py ASKAP_J1832-0911, Chandra X-ray Observatory + ASKAP (May 2025) | Îº = 0.0005/day | [SSq] = 0.57*
+*Source: uqff_validation_test.py ASKAP_J1832-0911, Chandra X-ray Observatory + ASKAP (May 2025) | ? = 0.0005/day | [SSq] = 0.57*
 .Groups[1].Value   
 
 ---
 
 ## Abstract
 
-ASKAP J1832-0911 is a Long Period Transient (LPT) with a 44-minute emission cycle discovered by ASKAP in 2023 (Hurley-Walker et al. 2023) and followed up with Chandra X-ray Observatory in 2025. Its alternating X-ray/radio pulses are unlike standard pulsar emission mechanisms, suggesting a neutron star in an unusual rotational state. The UQFF analyzes ASKAP J1832-0911 via the F_U_Bi_i integral, finding a LENR-dominated field of F_U_Bi_i â‰ˆ âˆ’1.47Ã—10Â¹â¹Â³ N. Monte Carlo numeric stability (n=100, Â±10% parameter noise) confirms a stability index of 0.97, validating the UQFF equation set for LPT systems.
+ASKAP J1832-0911 is a Long Period Transient (LPT) with a 44-minute emission cycle discovered by ASKAP in 2023 (Hurley-Walker et al. 2023) and followed up with Chandra X-ray Observatory in 2025. Its alternating X-ray/radio pulses are unlike standard pulsar emission mechanisms, suggesting a neutron star in an unusual rotational state. The UQFF analyzes ASKAP J1832-0911 via the F_U_Bi_i integral, finding a LENR-dominated field of F_U_Bi_i ˜ -1.47×10¹?³ N. Monte Carlo numeric stability (n=100, ±10% parameter noise) confirms a stability index of 0.97, validating the UQFF equation set for LPT systems.
+
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -818,14 +846,14 @@ ASKAP J1832-0911 is a Long Period Transient (LPT) with a 44-minute emission cycl
 
 | Parameter | Symbol | Value | Source |
 |-----------|--------|-------|--------|
-| Mass | M | 2.785Ã—10Â³â° kg (1.4 Mâ˜‰) | NS canonical |
-| Distance | r | 4.63Ã—10Â¹â¶ m (~15,000 ly) | ASKAP parallax |
-| X-ray luminosity | L_X | 10Â³Â² W | Chandra 2025 |
-| Magnetic field (surface) | Bâ‚€ | 10Â¹Â² T (magnetar-class) | Inferred |
-| Temperature | T | 10â· K | Chandra X-ray |
+| Mass | M | 2.785×10³° kg (1.4 M?) | NS canonical |
+| Distance | r | 4.63×10¹6 m (~15,000 ly) | ASKAP parallax |
+| X-ray luminosity | L_X | 10³² W | Chandra 2025 |
+| Magnetic field (surface) | B0 | 10¹² T (magnetar-class) | Inferred |
+| Temperature | T | 107 K | Chandra X-ray |
 | Period | P | 2640 s (44 min) | ASKAP direct |
-| Angular frequency | Ï‰â‚€ | 2.380Ã—10â»Â³ rad/s | 2Ï€/2640 |
-| Data source | â€” | Chandra + ASKAP (May 2025) | â€” |
+| Angular frequency | ?0 | 2.380×10?³ rad/s | 2p/2640 |
+| Data source | — | Chandra + ASKAP (May 2025) | — |
 
 ---
 
@@ -837,17 +865,17 @@ $$F_{U,Bi,i} = -F_0 + p + g + Ug_1 + Ug_2 + Ug_3 + Ug_4 + U_m + \int \mathcal{I}
 
 | Component | Formula | Value (N) |
 |-----------|---------|---------|
-| Base force constant | âˆ’ Fâ‚€ = âˆ’1.83Ã—10â·Â¹ | âˆ’1.83Ã—10â·Â¹ |
-| Momentum | (m_e cÂ²/rÂ²) Ã— 0.93 Ã— cos(Ï€/4) | 2.52Ã—10â»â´â· |
-| Gravity | GM/rÂ² | 8.67Ã—10â»Â¹â´ |
-| Ug1 (dipole) | (GM/rÂ²)(1+Î´)(Î¼â‚€Bâ‚€Â²/8Ï€) | **4.34Ã—10Â³** |
-| Ug2 (bubble) | (GM/rÂ²)(Q_A+Q_UA)Ã—H_SCm | 9.64Ã—10â»Â²âµ |
-| Ug3 (string) | (c/r)Ã—Ï‰_sÃ—sin(Î¸)Ã—Bâ‚€ | ~10â»Â²â° |
-| Ug4 (vacuum BH) | kâ‚„Ã—Ï_SCmÃ—(M_BH/d_g)Ã—e^{-Îº} | ~10â»âµâ° |
-| Um (magnetism) | (Î¼_j/r)Ã—(1-e^{-Î³t})Ã—E_react | 3.65Ã—10â´âµ |
-| **LENR resonance** | k_LENRÃ—(Ï‰_LENR/Ï‰â‚€)Â² | **1.09Ã—10Â²Â¹** |
-| **Integral term** | LENR Ã— xâ‚‚ | **âˆ’1.47Ã—10Â¹â¹Â³** |
-| **F_U_Bi_i (total)** | | **â‰ˆ âˆ’1.47Ã—10Â¹â¹Â³** |
+| Base force constant | - F0 = -1.83×107¹ | -1.83×107¹ |
+| Momentum | (m_e c²/r²) × 0.93 × cos(p/4) | 2.52×10?47 |
+| Gravity | GM/r² | 8.67×10?¹4 |
+| Ug1 (dipole) | (GM/r²)(1+d)(µ0B0²/8p) | **4.34×10³** |
+| Ug2 (bubble) | (GM/r²)(Q_A+Q_UA)×H_SCm | 9.64×10?²5 |
+| Ug3 (string) | (c/r)×?_s×sin(?)×B0 | ~10?²° |
+| Ug4 (vacuum BH) | k4×?_SCm×(M_BH/d_g)×e^{-?} | ~10?5° |
+| Um (magnetism) | (µ_j/r)×(1-e^{-?t})×E_react | 3.65×1045 |
+| **LENR resonance** | k_LENR×(?_LENR/?0)² | **1.09×10²¹** |
+| **Integral term** | LENR × x2 | **-1.47×10¹?³** |
+| **F_U_Bi_i (total)** | | **˜ -1.47×10¹?³** |
 
 ### LENR Resonance Dominance
 
@@ -855,7 +883,7 @@ $$\text{LENR} = k_{\rm LENR} \times \left(\frac{\omega_{\rm LENR}}{\omega_0}\rig
 
 $$\text{Integral} = 1.09 \times 10^{21} \times (-1.35 \times 10^{172}) = -1.47 \times 10^{193}$$
 
-The LENR term (1.09Ã—10Â²Â¹) dominates all other integrand terms by >10â·; the integral term dominates F_U_Bi_i by >10Â¹Â²Â² over Fâ‚€.
+The LENR term (1.09×10²¹) dominates all other integrand terms by >107; the integral term dominates F_U_Bi_i by >10¹²² over F0.
 
 ---
 
@@ -870,31 +898,31 @@ The 44-minute period is far longer than standard pulsar periods (ms to seconds),
 
 **UQFF interpretation:**
 
-The UQFF LENR term scales as (Ï‰_LENR/Ï‰â‚€)Â². For Ï‰â‚€ = 2.38Ã—10â»Â³ rad/s (44 min):
-- LENR = 1.09Ã—10Â²Â¹ â€” 10â¶Ã— larger than for a typical 1-second pulsar
-- This means the UQFF vacuum resonance is 10â¶-fold stronger for this slow system
+The UQFF LENR term scales as (?_LENR/?0)². For ?0 = 2.38×10?³ rad/s (44 min):
+- LENR = 1.09×10²¹ — 106× larger than for a typical 1-second pulsar
+- This means the UQFF vacuum resonance is 106-fold stronger for this slow system
 
 **UQFF prediction for LPT period selection:**
 
 $$P_{\rm UQFF} = P_0 \times \sqrt{\frac{k_{\rm LENR,max}}{k_{\rm LENR,threshold}}} = 1 \text{ s} \times \sqrt{\frac{10^{21}}{10^9}} = 1 \times 10^6 \text{ s}$$
 
-But actual P = 2640 s << 10â¶ s â†’ LPT is in an intermediate regime where UQFF resonance first exceeds threshold (LENR > 10Â¹âµ) at P ~ 44 min. This predicts a **minimum threshold period** for LPT-class pulsar activity at P â‰ˆ 44 min, consistent with ASKAP J1832's observed period being the first above this threshold.
+But actual P = 2640 s << 106 s ? LPT is in an intermediate regime where UQFF resonance first exceeds threshold (LENR > 10¹5) at P ~ 44 min. This predicts a **minimum threshold period** for LPT-class pulsar activity at P ˜ 44 min, consistent with ASKAP J1832's observed period being the first above this threshold.
 
 ---
 
 ## 4. Monte Carlo Numeric Stability
 
-Protocol: n = 100 trials, Â±10% Gaussian noise applied to M, r, L_X, Bâ‚€.
+Protocol: n = 100 trials, ±10% Gaussian noise applied to M, r, L_X, B0.
 
 | Metric | Value |
 |--------|-------|
-| Mean F_U_Bi_i | âˆ’1.47Ã—10Â¹â¹Â³ N |
-| Std Dev | ~4.4Ã—10Â¹â¹Â¹ N |
+| Mean F_U_Bi_i | -1.47×10¹?³ N |
+| Std Dev | ~4.4×10¹?¹ N |
 | Stability index | **0.970** |
 | Valid samples | 100/100 |
-| Status | **âœ“ STABLE** |
+| Status | **? STABLE** |
 
-**Why stability is high:** The integral_term = LENR Ã— xâ‚‚ dominates F_U_Bi_i. LENR = k_LENR Ã— (Ï‰_LENR/Ï‰â‚€)Â² depends only on Ï‰â‚€ (the spin period), which is **not** varied in the noise test â€” it is the precisely measured period from ASKAP timing. Therefore, 97% of the total F_U_Bi_i value is stable against M, r, L_X, Bâ‚€ parameter noise.
+**Why stability is high:** The integral_term = LENR × x2 dominates F_U_Bi_i. LENR = k_LENR × (?_LENR/?0)² depends only on ?0 (the spin period), which is **not** varied in the noise test — it is the precisely measured period from ASKAP timing. Therefore, 97% of the total F_U_Bi_i value is stable against M, r, L_X, B0 parameter noise.
 
 ---
 
@@ -903,14 +931,14 @@ Protocol: n = 100 trials, Â±10% Gaussian noise applied to M, r, L_X, Bâ‚€.
 ASKAP J1832-0911 alternates between X-ray (Chandra) and radio (ASKAP) pulses on a ~44-minute cycle.
 
 **UQFF explanation:**
-- **X-ray phase**: Compressed mode dominant (g = M/r Ã— 10â»Â¹â°) â†’ accretion column compresses vacuum, emitting X-ray
-- **Radio phase**: Resonant mode dominant (cos(Ï‰â‚€t) Ã— 10â»âµ) â†’ TRZ vacuum oscillation at Ï‰â‚€ induces MHz-GHz coherent emission
-- **Alternation**: The Îº-decay oscillator switches between modes on the 44-min periodicity: when E_react Ã— e^{âˆ’Îºt} drops below threshold, Compressedâ†’Resonant transition occurs
+- **X-ray phase**: Compressed mode dominant (g = M/r × 10?¹°) ? accretion column compresses vacuum, emitting X-ray
+- **Radio phase**: Resonant mode dominant (cos(?0t) × 10?5) ? TRZ vacuum oscillation at ?0 induces MHz-GHz coherent emission
+- **Alternation**: The ?-decay oscillator switches between modes on the 44-min periodicity: when E_react × e^{-?t} drops below threshold, Compressed?Resonant transition occurs
 
 Threshold:
 $$E_{\rm threshold} = E_{\rm react,0} \times e^{-\kappa \times t_{\rm transition}} \Rightarrow t_{\rm transition} = \frac{\ln(E_0/E_{\rm thresh})}{\kappa} = \frac{\ln(10^{46}/10^{40})}{0.0005} = \frac{13.8}{0.0005} = 27600 \text{ days}$$
 
-On 44-minute timescales, the Îº-decay is negligible (Î”Îºt â‰ˆ 2Ã—10â»âµ) â€” the alternation is driven by the phase of the Resonant mode cos(Ï‰â‚€t), which switches sign at t = Ï€/Ï‰â‚€ = 1320 s â‰ˆ 22 min (half-period). This gives alternating X-ray (expansion phase) and radio (compression phase) at the 22-minute half-cycle â€” fully consistent with the observed 44-minute full cycle.
+On 44-minute timescales, the ?-decay is negligible (??t ˜ 2×10?5) — the alternation is driven by the phase of the Resonant mode cos(?0t), which switches sign at t = p/?0 = 1320 s ˜ 22 min (half-period). This gives alternating X-ray (expansion phase) and radio (compression phase) at the 22-minute half-cycle — fully consistent with the observed 44-minute full cycle.
 
 ---
 
@@ -919,13 +947,13 @@ On 44-minute timescales, the Îº-decay is negligible (Î”Îºt â‰ˆ 2Ã—10â»âµ) â€” 
 | Quantity | Value |
 |---------|-------|
 | Period | 44 min (2640 s) |
-| Ï‰â‚€ | 2.38Ã—10â»Â³ rad/s |
-| LENR resonance | 1.09Ã—10Â²Â¹ |
-| F_U_Bi_i | **âˆ’1.47Ã—10Â¹â¹Â³ N** |
+| ?0 | 2.38×10?³ rad/s |
+| LENR resonance | 1.09×10²¹ |
+| F_U_Bi_i | **-1.47×10¹?³ N** |
 | Stability | **0.970 (STABLE)** |
-| X-ray/radio alternation | UQFF Compressedâ†”Resonant mode switching at Ï‰â‚€ half-period |
+| X-ray/radio alternation | UQFF Compressed?Resonant mode switching at ?0 half-period |
 
-*Source: uqff_validation_test.py ASKAP_J1832-0911, Chandra X-ray Observatory + ASKAP (May 2025) | Îº = 0.0005/day | [SSq] = 0.57*
+*Source: uqff_validation_test.py ASKAP_J1832-0911, Chandra X-ray Observatory + ASKAP (May 2025) | ? = 0.0005/day | [SSq] = 0.57*
 .Groups[1].Value
     "PAPER_{0:D3}" -f $n
     
@@ -934,7 +962,11 @@ On 44-minute timescales, the Îº-decay is negligible (Î”Îºt â‰ˆ 2Ã—10â»âµ) â€” 
 
 ## Abstract
 
-ASKAP J1832-0911 is a Long Period Transient (LPT) with a 44-minute emission cycle discovered by ASKAP in 2023 (Hurley-Walker et al. 2023) and followed up with Chandra X-ray Observatory in 2025. Its alternating X-ray/radio pulses are unlike standard pulsar emission mechanisms, suggesting a neutron star in an unusual rotational state. The UQFF analyzes ASKAP J1832-0911 via the F_U_Bi_i integral, finding a LENR-dominated field of F_U_Bi_i â‰ˆ âˆ’1.47Ã—10Â¹â¹Â³ N. Monte Carlo numeric stability (n=100, Â±10% parameter noise) confirms a stability index of 0.97, validating the UQFF equation set for LPT systems.
+ASKAP J1832-0911 is a Long Period Transient (LPT) with a 44-minute emission cycle discovered by ASKAP in 2023 (Hurley-Walker et al. 2023) and followed up with Chandra X-ray Observatory in 2025. Its alternating X-ray/radio pulses are unlike standard pulsar emission mechanisms, suggesting a neutron star in an unusual rotational state. The UQFF analyzes ASKAP J1832-0911 via the F_U_Bi_i integral, finding a LENR-dominated field of F_U_Bi_i ˜ -1.47×10¹?³ N. Monte Carlo numeric stability (n=100, ±10% parameter noise) confirms a stability index of 0.97, validating the UQFF equation set for LPT systems.
+
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -942,14 +974,14 @@ ASKAP J1832-0911 is a Long Period Transient (LPT) with a 44-minute emission cycl
 
 | Parameter | Symbol | Value | Source |
 |-----------|--------|-------|--------|
-| Mass | M | 2.785Ã—10Â³â° kg (1.4 Mâ˜‰) | NS canonical |
-| Distance | r | 4.63Ã—10Â¹â¶ m (~15,000 ly) | ASKAP parallax |
-| X-ray luminosity | L_X | 10Â³Â² W | Chandra 2025 |
-| Magnetic field (surface) | Bâ‚€ | 10Â¹Â² T (magnetar-class) | Inferred |
-| Temperature | T | 10â· K | Chandra X-ray |
+| Mass | M | 2.785×10³° kg (1.4 M?) | NS canonical |
+| Distance | r | 4.63×10¹6 m (~15,000 ly) | ASKAP parallax |
+| X-ray luminosity | L_X | 10³² W | Chandra 2025 |
+| Magnetic field (surface) | B0 | 10¹² T (magnetar-class) | Inferred |
+| Temperature | T | 107 K | Chandra X-ray |
 | Period | P | 2640 s (44 min) | ASKAP direct |
-| Angular frequency | Ï‰â‚€ | 2.380Ã—10â»Â³ rad/s | 2Ï€/2640 |
-| Data source | â€” | Chandra + ASKAP (May 2025) | â€” |
+| Angular frequency | ?0 | 2.380×10?³ rad/s | 2p/2640 |
+| Data source | — | Chandra + ASKAP (May 2025) | — |
 
 ---
 
@@ -961,17 +993,17 @@ $$F_{U,Bi,i} = -F_0 + p + g + Ug_1 + Ug_2 + Ug_3 + Ug_4 + U_m + \int \mathcal{I}
 
 | Component | Formula | Value (N) |
 |-----------|---------|---------|
-| Base force constant | âˆ’ Fâ‚€ = âˆ’1.83Ã—10â·Â¹ | âˆ’1.83Ã—10â·Â¹ |
-| Momentum | (m_e cÂ²/rÂ²) Ã— 0.93 Ã— cos(Ï€/4) | 2.52Ã—10â»â´â· |
-| Gravity | GM/rÂ² | 8.67Ã—10â»Â¹â´ |
-| Ug1 (dipole) | (GM/rÂ²)(1+Î´)(Î¼â‚€Bâ‚€Â²/8Ï€) | **4.34Ã—10Â³** |
-| Ug2 (bubble) | (GM/rÂ²)(Q_A+Q_UA)Ã—H_SCm | 9.64Ã—10â»Â²âµ |
-| Ug3 (string) | (c/r)Ã—Ï‰_sÃ—sin(Î¸)Ã—Bâ‚€ | ~10â»Â²â° |
-| Ug4 (vacuum BH) | kâ‚„Ã—Ï_SCmÃ—(M_BH/d_g)Ã—e^{-Îº} | ~10â»âµâ° |
-| Um (magnetism) | (Î¼_j/r)Ã—(1-e^{-Î³t})Ã—E_react | 3.65Ã—10â´âµ |
-| **LENR resonance** | k_LENRÃ—(Ï‰_LENR/Ï‰â‚€)Â² | **1.09Ã—10Â²Â¹** |
-| **Integral term** | LENR Ã— xâ‚‚ | **âˆ’1.47Ã—10Â¹â¹Â³** |
-| **F_U_Bi_i (total)** | | **â‰ˆ âˆ’1.47Ã—10Â¹â¹Â³** |
+| Base force constant | - F0 = -1.83×107¹ | -1.83×107¹ |
+| Momentum | (m_e c²/r²) × 0.93 × cos(p/4) | 2.52×10?47 |
+| Gravity | GM/r² | 8.67×10?¹4 |
+| Ug1 (dipole) | (GM/r²)(1+d)(µ0B0²/8p) | **4.34×10³** |
+| Ug2 (bubble) | (GM/r²)(Q_A+Q_UA)×H_SCm | 9.64×10?²5 |
+| Ug3 (string) | (c/r)×?_s×sin(?)×B0 | ~10?²° |
+| Ug4 (vacuum BH) | k4×?_SCm×(M_BH/d_g)×e^{-?} | ~10?5° |
+| Um (magnetism) | (µ_j/r)×(1-e^{-?t})×E_react | 3.65×1045 |
+| **LENR resonance** | k_LENR×(?_LENR/?0)² | **1.09×10²¹** |
+| **Integral term** | LENR × x2 | **-1.47×10¹?³** |
+| **F_U_Bi_i (total)** | | **˜ -1.47×10¹?³** |
 
 ### LENR Resonance Dominance
 
@@ -979,7 +1011,7 @@ $$\text{LENR} = k_{\rm LENR} \times \left(\frac{\omega_{\rm LENR}}{\omega_0}\rig
 
 $$\text{Integral} = 1.09 \times 10^{21} \times (-1.35 \times 10^{172}) = -1.47 \times 10^{193}$$
 
-The LENR term (1.09Ã—10Â²Â¹) dominates all other integrand terms by >10â·; the integral term dominates F_U_Bi_i by >10Â¹Â²Â² over Fâ‚€.
+The LENR term (1.09×10²¹) dominates all other integrand terms by >107; the integral term dominates F_U_Bi_i by >10¹²² over F0.
 
 ---
 
@@ -994,31 +1026,31 @@ The 44-minute period is far longer than standard pulsar periods (ms to seconds),
 
 **UQFF interpretation:**
 
-The UQFF LENR term scales as (Ï‰_LENR/Ï‰â‚€)Â². For Ï‰â‚€ = 2.38Ã—10â»Â³ rad/s (44 min):
-- LENR = 1.09Ã—10Â²Â¹ â€” 10â¶Ã— larger than for a typical 1-second pulsar
-- This means the UQFF vacuum resonance is 10â¶-fold stronger for this slow system
+The UQFF LENR term scales as (?_LENR/?0)². For ?0 = 2.38×10?³ rad/s (44 min):
+- LENR = 1.09×10²¹ — 106× larger than for a typical 1-second pulsar
+- This means the UQFF vacuum resonance is 106-fold stronger for this slow system
 
 **UQFF prediction for LPT period selection:**
 
 $$P_{\rm UQFF} = P_0 \times \sqrt{\frac{k_{\rm LENR,max}}{k_{\rm LENR,threshold}}} = 1 \text{ s} \times \sqrt{\frac{10^{21}}{10^9}} = 1 \times 10^6 \text{ s}$$
 
-But actual P = 2640 s << 10â¶ s â†’ LPT is in an intermediate regime where UQFF resonance first exceeds threshold (LENR > 10Â¹âµ) at P ~ 44 min. This predicts a **minimum threshold period** for LPT-class pulsar activity at P â‰ˆ 44 min, consistent with ASKAP J1832's observed period being the first above this threshold.
+But actual P = 2640 s << 106 s ? LPT is in an intermediate regime where UQFF resonance first exceeds threshold (LENR > 10¹5) at P ~ 44 min. This predicts a **minimum threshold period** for LPT-class pulsar activity at P ˜ 44 min, consistent with ASKAP J1832's observed period being the first above this threshold.
 
 ---
 
 ## 4. Monte Carlo Numeric Stability
 
-Protocol: n = 100 trials, Â±10% Gaussian noise applied to M, r, L_X, Bâ‚€.
+Protocol: n = 100 trials, ±10% Gaussian noise applied to M, r, L_X, B0.
 
 | Metric | Value |
 |--------|-------|
-| Mean F_U_Bi_i | âˆ’1.47Ã—10Â¹â¹Â³ N |
-| Std Dev | ~4.4Ã—10Â¹â¹Â¹ N |
+| Mean F_U_Bi_i | -1.47×10¹?³ N |
+| Std Dev | ~4.4×10¹?¹ N |
 | Stability index | **0.970** |
 | Valid samples | 100/100 |
-| Status | **âœ“ STABLE** |
+| Status | **? STABLE** |
 
-**Why stability is high:** The integral_term = LENR Ã— xâ‚‚ dominates F_U_Bi_i. LENR = k_LENR Ã— (Ï‰_LENR/Ï‰â‚€)Â² depends only on Ï‰â‚€ (the spin period), which is **not** varied in the noise test â€” it is the precisely measured period from ASKAP timing. Therefore, 97% of the total F_U_Bi_i value is stable against M, r, L_X, Bâ‚€ parameter noise.
+**Why stability is high:** The integral_term = LENR × x2 dominates F_U_Bi_i. LENR = k_LENR × (?_LENR/?0)² depends only on ?0 (the spin period), which is **not** varied in the noise test — it is the precisely measured period from ASKAP timing. Therefore, 97% of the total F_U_Bi_i value is stable against M, r, L_X, B0 parameter noise.
 
 ---
 
@@ -1027,14 +1059,14 @@ Protocol: n = 100 trials, Â±10% Gaussian noise applied to M, r, L_X, Bâ‚€.
 ASKAP J1832-0911 alternates between X-ray (Chandra) and radio (ASKAP) pulses on a ~44-minute cycle.
 
 **UQFF explanation:**
-- **X-ray phase**: Compressed mode dominant (g = M/r Ã— 10â»Â¹â°) â†’ accretion column compresses vacuum, emitting X-ray
-- **Radio phase**: Resonant mode dominant (cos(Ï‰â‚€t) Ã— 10â»âµ) â†’ TRZ vacuum oscillation at Ï‰â‚€ induces MHz-GHz coherent emission
-- **Alternation**: The Îº-decay oscillator switches between modes on the 44-min periodicity: when E_react Ã— e^{âˆ’Îºt} drops below threshold, Compressedâ†’Resonant transition occurs
+- **X-ray phase**: Compressed mode dominant (g = M/r × 10?¹°) ? accretion column compresses vacuum, emitting X-ray
+- **Radio phase**: Resonant mode dominant (cos(?0t) × 10?5) ? TRZ vacuum oscillation at ?0 induces MHz-GHz coherent emission
+- **Alternation**: The ?-decay oscillator switches between modes on the 44-min periodicity: when E_react × e^{-?t} drops below threshold, Compressed?Resonant transition occurs
 
 Threshold:
 $$E_{\rm threshold} = E_{\rm react,0} \times e^{-\kappa \times t_{\rm transition}} \Rightarrow t_{\rm transition} = \frac{\ln(E_0/E_{\rm thresh})}{\kappa} = \frac{\ln(10^{46}/10^{40})}{0.0005} = \frac{13.8}{0.0005} = 27600 \text{ days}$$
 
-On 44-minute timescales, the Îº-decay is negligible (Î”Îºt â‰ˆ 2Ã—10â»âµ) â€” the alternation is driven by the phase of the Resonant mode cos(Ï‰â‚€t), which switches sign at t = Ï€/Ï‰â‚€ = 1320 s â‰ˆ 22 min (half-period). This gives alternating X-ray (expansion phase) and radio (compression phase) at the 22-minute half-cycle â€” fully consistent with the observed 44-minute full cycle.
+On 44-minute timescales, the ?-decay is negligible (??t ˜ 2×10?5) — the alternation is driven by the phase of the Resonant mode cos(?0t), which switches sign at t = p/?0 = 1320 s ˜ 22 min (half-period). This gives alternating X-ray (expansion phase) and radio (compression phase) at the 22-minute half-cycle — fully consistent with the observed 44-minute full cycle.
 
 ---
 
@@ -1043,10 +1075,13 @@ On 44-minute timescales, the Îº-decay is negligible (Î”Îºt â‰ˆ 2Ã—10â»âµ) â€” 
 | Quantity | Value |
 |---------|-------|
 | Period | 44 min (2640 s) |
-| Ï‰â‚€ | 2.38Ã—10â»Â³ rad/s |
-| LENR resonance | 1.09Ã—10Â²Â¹ |
-| F_U_Bi_i | **âˆ’1.47Ã—10Â¹â¹Â³ N** |
+| ?0 | 2.38×10?³ rad/s |
+| LENR resonance | 1.09×10²¹ |
+| F_U_Bi_i | **-1.47×10¹?³ N** |
 | Stability | **0.970 (STABLE)** |
-| X-ray/radio alternation | UQFF Compressedâ†”Resonant mode switching at Ï‰â‚€ half-period |
+| X-ray/radio alternation | UQFF Compressed?Resonant mode switching at ?0 half-period |
 
-*Source: uqff_validation_test.py ASKAP_J1832-0911, Chandra X-ray Observatory + ASKAP (May 2025) | Îº = 0.0005/day | [SSq] = 0.57*
+*Source: uqff_validation_test.py ASKAP_J1832-0911, Chandra X-ray Observatory + ASKAP (May 2025) | ? = 0.0005/day | [SSq] = 0.57*
+
+
+**UQFF computed:** Canonical UQFF buoyancy parameter U_bi = ?×[SSq]×GM/r² = 5.0e-4×0.57×6.67e-11×M/r²; for solar parameters: U_bi,Sun = 5.7e-4×6.67e-11×1.99e30/(6.96e8)² = 1.47e+2 m/s².

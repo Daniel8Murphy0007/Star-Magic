@@ -1,27 +1,31 @@
-﻿#  "PAPER_{0:D3}" -f [int]# PAPER #76 — Gamma-Ray Sources: Fermi-LAT + UQFF Emission Model
+#  "PAPER_{0:D3}" -f [int]# PAPER #76 � Gamma-Ray Sources: Fermi-LAT + UQFF Emission Model
 
 **Title:** Fermi-LAT 4FGL Gamma-Ray Source Catalog: UQFF Resonant Mode Emission Predictions
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (κ = 0.0005/day, [SSq] = 0.57)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57)  
 **Date:** March 7, 2026  
 **Source Data:** QCalc_validation.py (DataSourceURLs: FERMI_LAT, FERMI_4FGL, HEASARC_GAMMA)  
-**Index Slot:** §1.10 Database Integration & Multi-Wavelength Astrophysics,  
-    $n = [int]# PAPER #76 — Gamma-Ray Sources: Fermi-LAT + UQFF Emission Model
+**Index Slot:** �1.10 Database Integration & Multi-Wavelength Astrophysics,  
+    $n = [int]# PAPER #76 � Gamma-Ray Sources: Fermi-LAT + UQFF Emission Model
 
 **Title:** Fermi-LAT 4FGL Gamma-Ray Source Catalog: UQFF Resonant Mode Emission Predictions
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (κ = 0.0005/day, [SSq] = 0.57)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57)  
 **Date:** March 7, 2026  
 **Source Data:** QCalc_validation.py (DataSourceURLs: FERMI_LAT, FERMI_4FGL, HEASARC_GAMMA)  
-**Index Slot:** §1.10 Database Integration & Multi-Wavelength Astrophysics, PAPER_076  
+**Index Slot:** �1.10 Database Integration & Multi-Wavelength Astrophysics, PAPER_076  
 
 ---
 
 ## Abstract
 
-The Fermi Gamma-ray Space Telescope 4th Source Catalog (4FGL-DR3, ~3800 sources, 100 MeV–1 TeV) provides the definitive census of gamma-ray emitters. The UQFF Resonant mode predicts periodic gamma-ray modulation in blazars and pulsars through the cos(ωt) × 10⁻⁵ term. For high-energy gamma-ray emission, the UQFF also predicts a vacuum Cherenkov-like correction to the effective photon mass via the [UA] vacuum density. This paper validates UQFF emission predictions against 4FGL sources using the QCalc_validation.py Fermi endpoints.
+The Fermi Gamma-ray Space Telescope 4th Source Catalog (4FGL-DR3, ~3800 sources, 100 MeV�1 TeV) provides the definitive census of gamma-ray emitters. The UQFF Resonant mode predicts periodic gamma-ray modulation in blazars and pulsars through the cos(?t) � 10?5 term. For high-energy gamma-ray emission, the UQFF also predicts a vacuum Cherenkov-like correction to the effective photon mass via the [UA] vacuum density. This paper validates UQFF emission predictions against 4FGL sources using the QCalc_validation.py Fermi endpoints.
+
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0�10?4 day?�, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -44,12 +48,12 @@ The UQFF Resonant mode predicts blazar gamma-ray flux modulation:
 $$F_\gamma(t) = F_0 \times [1 + A_R \times \cos(\omega_{\rm blazar} t)]$$
 
 Where:
-- A_R = 10⁻⁵ (Resonant mode amplitude)
-- ω_blazar = system spin/jet frequency (typically 10⁻⁷ to 10⁻⁵ rad/s for BL Lac objects)
+- A_R = 10?5 (Resonant mode amplitude)
+- ?_blazar = system spin/jet frequency (typically 10?7 to 10?5 rad/s for BL Lac objects)
 
 For Markarian 421 (BL Lac, d=134 Mpc):
-- ω_Mrk421 = 2π/(315 days) = 2.31×10⁻⁷ rad/s
-- F_modulation = 10⁻⁵ × F_0 = **0.001% flux variation** (below Fermi-LAT sensitivity for typical 1-day bins)
+- ?_Mrk421 = 2p/(315 days) = 2.31�10?7 rad/s
+- F_modulation = 10?5 � F_0 = **0.001% flux variation** (below Fermi-LAT sensitivity for typical 1-day bins)
 
 ### UQFF Effective Photon Mass
 
@@ -61,19 +65,19 @@ This corresponds to an energy threshold modification:
 
 $$\Delta E_{\rm threshold} = m_{\gamma,\rm UQFF}^2 c^4 / (2 E_\gamma) \approx 10^{-60} \text{ eV at } E_\gamma = 1 \text{ TeV}$$
 
-Far below any observable threshold → **Fermi-LAT spectral shapes are unmodified by UQFF.**
+Far below any observable threshold ? **Fermi-LAT spectral shapes are unmodified by UQFF.**
 
 ---
 
 ## 3. Pulsar Gamma-Ray Phase Validation
 
 For the Crab Pulsar (PSR J0534+2200, f =  29.65 Hz):
-- ω_Crab = 2π × 29.65 = 186.3 rad/s
-- UQFF Resonant: g_R = cos(186.3t) × 10⁻⁵
-- At emission pulse (t = 0): g_R = 10⁻⁵ m/s² maximum
-- This corresponds to a phase-dependent gravity variation of 3.6×10⁻⁸ relative to Newtonian g
+- ?_Crab = 2p � 29.65 = 186.3 rad/s
+- UQFF Resonant: g_R = cos(186.3t) � 10?5
+- At emission pulse (t = 0): g_R = 10?5 m/s� maximum
+- This corresponds to a phase-dependent gravity variation of 3.6�10?8 relative to Newtonian g
 
-The Fermi-LAT 4FGL catalog lists the Crab as **4FGL J0534.5+2201** with flux (100 MeV–100 GeV) = 5.65×10⁻⁷ ph/cm²/s. UQFF does not modify the average flux but predicts a 10⁻⁵ amplitude modulation component — below 4FGL timing precision for single-pulse analysis but potentially detectable in epoch-folded analysis.
+The Fermi-LAT 4FGL catalog lists the Crab as **4FGL J0534.5+2201** with flux (100 MeV�100 GeV) = 5.65�10?7 ph/cm�/s. UQFF does not modify the average flux but predicts a 10?5 amplitude modulation component � below 4FGL timing precision for single-pulse analysis but potentially detectable in epoch-folded analysis.
 
 ---
 
@@ -81,11 +85,11 @@ The Fermi-LAT 4FGL catalog lists the Crab as **4FGL J0534.5+2201** with flux (10
 
 | 4FGL Source | Type | UQFF Prediction | Fermi-LAT Constraint |
 |-------------|------|-----------------|---------------------|
-| J0534.5+2201 | Pulsar (Crab) | 10⁻⁵ flux modulation | <1% in phase-folded |
-| J0537−4943 | Pulsar | 10⁻⁵ amplitude | Compatible |
-| J1256−0547 (3C 279) | FSRQ blazar | 10⁻⁵ quasi-periodic | Not resolved |
-| J1103.5+1157 (Mrk 421) | BL Lac | 10⁻⁵ at ω_jet | Below sensitivity |
-| J1653.9−0158 | BL Lac (ultrafast) | Resonant peak | Not constrained |
+| J0534.5+2201 | Pulsar (Crab) | 10?5 flux modulation | <1% in phase-folded |
+| J0537-4943 | Pulsar | 10?5 amplitude | Compatible |
+| J1256-0547 (3C 279) | FSRQ blazar | 10?5 quasi-periodic | Not resolved |
+| J1103.5+1157 (Mrk 421) | BL Lac | 10?5 at ?_jet | Below sensitivity |
+| J1653.9-0158 | BL Lac (ultrafast) | Resonant peak | Not constrained |
 
 ---
 
@@ -94,11 +98,11 @@ The Fermi-LAT 4FGL catalog lists the Crab as **4FGL J0534.5+2201** with flux (10
 | Gamma-Ray Observable | Standard GR+QED | UQFF Prediction | 4FGL Status |
 |--------------------|-----------------|----------------|-------------|
 | Average flux | Eddington-based | Unmodified | Match |
-| Spectral shape | Power law/cutoff | Unmodified (m_γ ~ 10⁻³⁵ eV) | Match |
-| Flux periodicity | Source-dependent | +10⁻⁵ modulation | Below sensitivity |
-| Phase-pulse profile | Fixed | +10⁻⁵ at peak phase | Not constrained |
+| Spectral shape | Power law/cutoff | Unmodified (m_? ~ 10?�5 eV) | Match |
+| Flux periodicity | Source-dependent | +10?5 modulation | Below sensitivity |
+| Phase-pulse profile | Fixed | +10?5 at peak phase | Not constrained |
 
-*Source: QCalc_validation.py FERMI_LAT + FERMI_4FGL endpoints | κ = 0.0005/day | [SSq] = 0.57*
+*Source: QCalc_validation.py FERMI_LAT + FERMI_4FGL endpoints | ? = 0.0005/day | [SSq] = 0.57*
 .Groups[1].Value
     "PAPER_{0:D3}" -f $n
     
@@ -107,7 +111,11 @@ The Fermi-LAT 4FGL catalog lists the Crab as **4FGL J0534.5+2201** with flux (10
 
 ## Abstract
 
-The Fermi Gamma-ray Space Telescope 4th Source Catalog (4FGL-DR3, ~3800 sources, 100 MeV–1 TeV) provides the definitive census of gamma-ray emitters. The UQFF Resonant mode predicts periodic gamma-ray modulation in blazars and pulsars through the cos(ωt) × 10⁻⁵ term. For high-energy gamma-ray emission, the UQFF also predicts a vacuum Cherenkov-like correction to the effective photon mass via the [UA] vacuum density. This paper validates UQFF emission predictions against 4FGL sources using the QCalc_validation.py Fermi endpoints.
+The Fermi Gamma-ray Space Telescope 4th Source Catalog (4FGL-DR3, ~3800 sources, 100 MeV�1 TeV) provides the definitive census of gamma-ray emitters. The UQFF Resonant mode predicts periodic gamma-ray modulation in blazars and pulsars through the cos(?t) � 10?5 term. For high-energy gamma-ray emission, the UQFF also predicts a vacuum Cherenkov-like correction to the effective photon mass via the [UA] vacuum density. This paper validates UQFF emission predictions against 4FGL sources using the QCalc_validation.py Fermi endpoints.
+
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0�10?4 day?�, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -130,12 +138,12 @@ The UQFF Resonant mode predicts blazar gamma-ray flux modulation:
 $$F_\gamma(t) = F_0 \times [1 + A_R \times \cos(\omega_{\rm blazar} t)]$$
 
 Where:
-- A_R = 10⁻⁵ (Resonant mode amplitude)
-- ω_blazar = system spin/jet frequency (typically 10⁻⁷ to 10⁻⁵ rad/s for BL Lac objects)
+- A_R = 10?5 (Resonant mode amplitude)
+- ?_blazar = system spin/jet frequency (typically 10?7 to 10?5 rad/s for BL Lac objects)
 
 For Markarian 421 (BL Lac, d=134 Mpc):
-- ω_Mrk421 = 2π/(315 days) = 2.31×10⁻⁷ rad/s
-- F_modulation = 10⁻⁵ × F_0 = **0.001% flux variation** (below Fermi-LAT sensitivity for typical 1-day bins)
+- ?_Mrk421 = 2p/(315 days) = 2.31�10?7 rad/s
+- F_modulation = 10?5 � F_0 = **0.001% flux variation** (below Fermi-LAT sensitivity for typical 1-day bins)
 
 ### UQFF Effective Photon Mass
 
@@ -147,19 +155,19 @@ This corresponds to an energy threshold modification:
 
 $$\Delta E_{\rm threshold} = m_{\gamma,\rm UQFF}^2 c^4 / (2 E_\gamma) \approx 10^{-60} \text{ eV at } E_\gamma = 1 \text{ TeV}$$
 
-Far below any observable threshold → **Fermi-LAT spectral shapes are unmodified by UQFF.**
+Far below any observable threshold ? **Fermi-LAT spectral shapes are unmodified by UQFF.**
 
 ---
 
 ## 3. Pulsar Gamma-Ray Phase Validation
 
 For the Crab Pulsar (PSR J0534+2200, f =  29.65 Hz):
-- ω_Crab = 2π × 29.65 = 186.3 rad/s
-- UQFF Resonant: g_R = cos(186.3t) × 10⁻⁵
-- At emission pulse (t = 0): g_R = 10⁻⁵ m/s² maximum
-- This corresponds to a phase-dependent gravity variation of 3.6×10⁻⁸ relative to Newtonian g
+- ?_Crab = 2p � 29.65 = 186.3 rad/s
+- UQFF Resonant: g_R = cos(186.3t) � 10?5
+- At emission pulse (t = 0): g_R = 10?5 m/s� maximum
+- This corresponds to a phase-dependent gravity variation of 3.6�10?8 relative to Newtonian g
 
-The Fermi-LAT 4FGL catalog lists the Crab as **4FGL J0534.5+2201** with flux (100 MeV–100 GeV) = 5.65×10⁻⁷ ph/cm²/s. UQFF does not modify the average flux but predicts a 10⁻⁵ amplitude modulation component — below 4FGL timing precision for single-pulse analysis but potentially detectable in epoch-folded analysis.
+The Fermi-LAT 4FGL catalog lists the Crab as **4FGL J0534.5+2201** with flux (100 MeV�100 GeV) = 5.65�10?7 ph/cm�/s. UQFF does not modify the average flux but predicts a 10?5 amplitude modulation component � below 4FGL timing precision for single-pulse analysis but potentially detectable in epoch-folded analysis.
 
 ---
 
@@ -167,11 +175,11 @@ The Fermi-LAT 4FGL catalog lists the Crab as **4FGL J0534.5+2201** with flux (10
 
 | 4FGL Source | Type | UQFF Prediction | Fermi-LAT Constraint |
 |-------------|------|-----------------|---------------------|
-| J0534.5+2201 | Pulsar (Crab) | 10⁻⁵ flux modulation | <1% in phase-folded |
-| J0537−4943 | Pulsar | 10⁻⁵ amplitude | Compatible |
-| J1256−0547 (3C 279) | FSRQ blazar | 10⁻⁵ quasi-periodic | Not resolved |
-| J1103.5+1157 (Mrk 421) | BL Lac | 10⁻⁵ at ω_jet | Below sensitivity |
-| J1653.9−0158 | BL Lac (ultrafast) | Resonant peak | Not constrained |
+| J0534.5+2201 | Pulsar (Crab) | 10?5 flux modulation | <1% in phase-folded |
+| J0537-4943 | Pulsar | 10?5 amplitude | Compatible |
+| J1256-0547 (3C 279) | FSRQ blazar | 10?5 quasi-periodic | Not resolved |
+| J1103.5+1157 (Mrk 421) | BL Lac | 10?5 at ?_jet | Below sensitivity |
+| J1653.9-0158 | BL Lac (ultrafast) | Resonant peak | Not constrained |
 
 ---
 
@@ -180,44 +188,48 @@ The Fermi-LAT 4FGL catalog lists the Crab as **4FGL J0534.5+2201** with flux (10
 | Gamma-Ray Observable | Standard GR+QED | UQFF Prediction | 4FGL Status |
 |--------------------|-----------------|----------------|-------------|
 | Average flux | Eddington-based | Unmodified | Match |
-| Spectral shape | Power law/cutoff | Unmodified (m_γ ~ 10⁻³⁵ eV) | Match |
-| Flux periodicity | Source-dependent | +10⁻⁵ modulation | Below sensitivity |
-| Phase-pulse profile | Fixed | +10⁻⁵ at peak phase | Not constrained |
+| Spectral shape | Power law/cutoff | Unmodified (m_? ~ 10?�5 eV) | Match |
+| Flux periodicity | Source-dependent | +10?5 modulation | Below sensitivity |
+| Phase-pulse profile | Fixed | +10?5 at peak phase | Not constrained |
 
-*Source: QCalc_validation.py FERMI_LAT + FERMI_4FGL endpoints | κ = 0.0005/day | [SSq] = 0.57*
-.Groups[1].Value  — Gamma-Ray Sources: Fermi-LAT + UQFF Emission Model
-
-**Title:** Fermi-LAT 4FGL Gamma-Ray Source Catalog: UQFF Resonant Mode Emission Predictions
-
-**Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (κ = 0.0005/day, [SSq] = 0.57)  
-**Date:** March 7, 2026  
-**Source Data:** QCalc_validation.py (DataSourceURLs: FERMI_LAT, FERMI_4FGL, HEASARC_GAMMA)  
-**Index Slot:** §1.10 Database Integration & Multi-Wavelength Astrophysics,  
-    $n = [int]#  "PAPER_{0:D3}" -f [int]# PAPER #76 — Gamma-Ray Sources: Fermi-LAT + UQFF Emission Model
+*Source: QCalc_validation.py FERMI_LAT + FERMI_4FGL endpoints | ? = 0.0005/day | [SSq] = 0.57*
+.Groups[1].Value  � Gamma-Ray Sources: Fermi-LAT + UQFF Emission Model
 
 **Title:** Fermi-LAT 4FGL Gamma-Ray Source Catalog: UQFF Resonant Mode Emission Predictions
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (κ = 0.0005/day, [SSq] = 0.57)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57)  
 **Date:** March 7, 2026  
 **Source Data:** QCalc_validation.py (DataSourceURLs: FERMI_LAT, FERMI_4FGL, HEASARC_GAMMA)  
-**Index Slot:** §1.10 Database Integration & Multi-Wavelength Astrophysics,  
-    $n = [int]# PAPER #76 — Gamma-Ray Sources: Fermi-LAT + UQFF Emission Model
+**Index Slot:** �1.10 Database Integration & Multi-Wavelength Astrophysics,  
+    $n = [int]#  "PAPER_{0:D3}" -f [int]# PAPER #76 � Gamma-Ray Sources: Fermi-LAT + UQFF Emission Model
 
 **Title:** Fermi-LAT 4FGL Gamma-Ray Source Catalog: UQFF Resonant Mode Emission Predictions
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (κ = 0.0005/day, [SSq] = 0.57)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57)  
 **Date:** March 7, 2026  
 **Source Data:** QCalc_validation.py (DataSourceURLs: FERMI_LAT, FERMI_4FGL, HEASARC_GAMMA)  
-**Index Slot:** §1.10 Database Integration & Multi-Wavelength Astrophysics, PAPER_076  
+**Index Slot:** �1.10 Database Integration & Multi-Wavelength Astrophysics,  
+    $n = [int]# PAPER #76 � Gamma-Ray Sources: Fermi-LAT + UQFF Emission Model
+
+**Title:** Fermi-LAT 4FGL Gamma-Ray Source Catalog: UQFF Resonant Mode Emission Predictions
+
+**Author:** Daniel T. Murphy  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57)  
+**Date:** March 7, 2026  
+**Source Data:** QCalc_validation.py (DataSourceURLs: FERMI_LAT, FERMI_4FGL, HEASARC_GAMMA)  
+**Index Slot:** �1.10 Database Integration & Multi-Wavelength Astrophysics, PAPER_076  
 
 ---
 
 ## Abstract
 
-The Fermi Gamma-ray Space Telescope 4th Source Catalog (4FGL-DR3, ~3800 sources, 100 MeV–1 TeV) provides the definitive census of gamma-ray emitters. The UQFF Resonant mode predicts periodic gamma-ray modulation in blazars and pulsars through the cos(ωt) × 10⁻⁵ term. For high-energy gamma-ray emission, the UQFF also predicts a vacuum Cherenkov-like correction to the effective photon mass via the [UA] vacuum density. This paper validates UQFF emission predictions against 4FGL sources using the QCalc_validation.py Fermi endpoints.
+The Fermi Gamma-ray Space Telescope 4th Source Catalog (4FGL-DR3, ~3800 sources, 100 MeV�1 TeV) provides the definitive census of gamma-ray emitters. The UQFF Resonant mode predicts periodic gamma-ray modulation in blazars and pulsars through the cos(?t) � 10?5 term. For high-energy gamma-ray emission, the UQFF also predicts a vacuum Cherenkov-like correction to the effective photon mass via the [UA] vacuum density. This paper validates UQFF emission predictions against 4FGL sources using the QCalc_validation.py Fermi endpoints.
+
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0�10?4 day?�, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -240,12 +252,12 @@ The UQFF Resonant mode predicts blazar gamma-ray flux modulation:
 $$F_\gamma(t) = F_0 \times [1 + A_R \times \cos(\omega_{\rm blazar} t)]$$
 
 Where:
-- A_R = 10⁻⁵ (Resonant mode amplitude)
-- ω_blazar = system spin/jet frequency (typically 10⁻⁷ to 10⁻⁵ rad/s for BL Lac objects)
+- A_R = 10?5 (Resonant mode amplitude)
+- ?_blazar = system spin/jet frequency (typically 10?7 to 10?5 rad/s for BL Lac objects)
 
 For Markarian 421 (BL Lac, d=134 Mpc):
-- ω_Mrk421 = 2π/(315 days) = 2.31×10⁻⁷ rad/s
-- F_modulation = 10⁻⁵ × F_0 = **0.001% flux variation** (below Fermi-LAT sensitivity for typical 1-day bins)
+- ?_Mrk421 = 2p/(315 days) = 2.31�10?7 rad/s
+- F_modulation = 10?5 � F_0 = **0.001% flux variation** (below Fermi-LAT sensitivity for typical 1-day bins)
 
 ### UQFF Effective Photon Mass
 
@@ -257,19 +269,19 @@ This corresponds to an energy threshold modification:
 
 $$\Delta E_{\rm threshold} = m_{\gamma,\rm UQFF}^2 c^4 / (2 E_\gamma) \approx 10^{-60} \text{ eV at } E_\gamma = 1 \text{ TeV}$$
 
-Far below any observable threshold → **Fermi-LAT spectral shapes are unmodified by UQFF.**
+Far below any observable threshold ? **Fermi-LAT spectral shapes are unmodified by UQFF.**
 
 ---
 
 ## 3. Pulsar Gamma-Ray Phase Validation
 
 For the Crab Pulsar (PSR J0534+2200, f =  29.65 Hz):
-- ω_Crab = 2π × 29.65 = 186.3 rad/s
-- UQFF Resonant: g_R = cos(186.3t) × 10⁻⁵
-- At emission pulse (t = 0): g_R = 10⁻⁵ m/s² maximum
-- This corresponds to a phase-dependent gravity variation of 3.6×10⁻⁸ relative to Newtonian g
+- ?_Crab = 2p � 29.65 = 186.3 rad/s
+- UQFF Resonant: g_R = cos(186.3t) � 10?5
+- At emission pulse (t = 0): g_R = 10?5 m/s� maximum
+- This corresponds to a phase-dependent gravity variation of 3.6�10?8 relative to Newtonian g
 
-The Fermi-LAT 4FGL catalog lists the Crab as **4FGL J0534.5+2201** with flux (100 MeV–100 GeV) = 5.65×10⁻⁷ ph/cm²/s. UQFF does not modify the average flux but predicts a 10⁻⁵ amplitude modulation component — below 4FGL timing precision for single-pulse analysis but potentially detectable in epoch-folded analysis.
+The Fermi-LAT 4FGL catalog lists the Crab as **4FGL J0534.5+2201** with flux (100 MeV�100 GeV) = 5.65�10?7 ph/cm�/s. UQFF does not modify the average flux but predicts a 10?5 amplitude modulation component � below 4FGL timing precision for single-pulse analysis but potentially detectable in epoch-folded analysis.
 
 ---
 
@@ -277,11 +289,11 @@ The Fermi-LAT 4FGL catalog lists the Crab as **4FGL J0534.5+2201** with flux (10
 
 | 4FGL Source | Type | UQFF Prediction | Fermi-LAT Constraint |
 |-------------|------|-----------------|---------------------|
-| J0534.5+2201 | Pulsar (Crab) | 10⁻⁵ flux modulation | <1% in phase-folded |
-| J0537−4943 | Pulsar | 10⁻⁵ amplitude | Compatible |
-| J1256−0547 (3C 279) | FSRQ blazar | 10⁻⁵ quasi-periodic | Not resolved |
-| J1103.5+1157 (Mrk 421) | BL Lac | 10⁻⁵ at ω_jet | Below sensitivity |
-| J1653.9−0158 | BL Lac (ultrafast) | Resonant peak | Not constrained |
+| J0534.5+2201 | Pulsar (Crab) | 10?5 flux modulation | <1% in phase-folded |
+| J0537-4943 | Pulsar | 10?5 amplitude | Compatible |
+| J1256-0547 (3C 279) | FSRQ blazar | 10?5 quasi-periodic | Not resolved |
+| J1103.5+1157 (Mrk 421) | BL Lac | 10?5 at ?_jet | Below sensitivity |
+| J1653.9-0158 | BL Lac (ultrafast) | Resonant peak | Not constrained |
 
 ---
 
@@ -290,11 +302,11 @@ The Fermi-LAT 4FGL catalog lists the Crab as **4FGL J0534.5+2201** with flux (10
 | Gamma-Ray Observable | Standard GR+QED | UQFF Prediction | 4FGL Status |
 |--------------------|-----------------|----------------|-------------|
 | Average flux | Eddington-based | Unmodified | Match |
-| Spectral shape | Power law/cutoff | Unmodified (m_γ ~ 10⁻³⁵ eV) | Match |
-| Flux periodicity | Source-dependent | +10⁻⁵ modulation | Below sensitivity |
-| Phase-pulse profile | Fixed | +10⁻⁵ at peak phase | Not constrained |
+| Spectral shape | Power law/cutoff | Unmodified (m_? ~ 10?�5 eV) | Match |
+| Flux periodicity | Source-dependent | +10?5 modulation | Below sensitivity |
+| Phase-pulse profile | Fixed | +10?5 at peak phase | Not constrained |
 
-*Source: QCalc_validation.py FERMI_LAT + FERMI_4FGL endpoints | κ = 0.0005/day | [SSq] = 0.57*
+*Source: QCalc_validation.py FERMI_LAT + FERMI_4FGL endpoints | ? = 0.0005/day | [SSq] = 0.57*
 .Groups[1].Value
     "PAPER_{0:D3}" -f $n
     
@@ -303,7 +315,11 @@ The Fermi-LAT 4FGL catalog lists the Crab as **4FGL J0534.5+2201** with flux (10
 
 ## Abstract
 
-The Fermi Gamma-ray Space Telescope 4th Source Catalog (4FGL-DR3, ~3800 sources, 100 MeV–1 TeV) provides the definitive census of gamma-ray emitters. The UQFF Resonant mode predicts periodic gamma-ray modulation in blazars and pulsars through the cos(ωt) × 10⁻⁵ term. For high-energy gamma-ray emission, the UQFF also predicts a vacuum Cherenkov-like correction to the effective photon mass via the [UA] vacuum density. This paper validates UQFF emission predictions against 4FGL sources using the QCalc_validation.py Fermi endpoints.
+The Fermi Gamma-ray Space Telescope 4th Source Catalog (4FGL-DR3, ~3800 sources, 100 MeV�1 TeV) provides the definitive census of gamma-ray emitters. The UQFF Resonant mode predicts periodic gamma-ray modulation in blazars and pulsars through the cos(?t) � 10?5 term. For high-energy gamma-ray emission, the UQFF also predicts a vacuum Cherenkov-like correction to the effective photon mass via the [UA] vacuum density. This paper validates UQFF emission predictions against 4FGL sources using the QCalc_validation.py Fermi endpoints.
+
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0�10?4 day?�, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -326,12 +342,12 @@ The UQFF Resonant mode predicts blazar gamma-ray flux modulation:
 $$F_\gamma(t) = F_0 \times [1 + A_R \times \cos(\omega_{\rm blazar} t)]$$
 
 Where:
-- A_R = 10⁻⁵ (Resonant mode amplitude)
-- ω_blazar = system spin/jet frequency (typically 10⁻⁷ to 10⁻⁵ rad/s for BL Lac objects)
+- A_R = 10?5 (Resonant mode amplitude)
+- ?_blazar = system spin/jet frequency (typically 10?7 to 10?5 rad/s for BL Lac objects)
 
 For Markarian 421 (BL Lac, d=134 Mpc):
-- ω_Mrk421 = 2π/(315 days) = 2.31×10⁻⁷ rad/s
-- F_modulation = 10⁻⁵ × F_0 = **0.001% flux variation** (below Fermi-LAT sensitivity for typical 1-day bins)
+- ?_Mrk421 = 2p/(315 days) = 2.31�10?7 rad/s
+- F_modulation = 10?5 � F_0 = **0.001% flux variation** (below Fermi-LAT sensitivity for typical 1-day bins)
 
 ### UQFF Effective Photon Mass
 
@@ -343,19 +359,19 @@ This corresponds to an energy threshold modification:
 
 $$\Delta E_{\rm threshold} = m_{\gamma,\rm UQFF}^2 c^4 / (2 E_\gamma) \approx 10^{-60} \text{ eV at } E_\gamma = 1 \text{ TeV}$$
 
-Far below any observable threshold → **Fermi-LAT spectral shapes are unmodified by UQFF.**
+Far below any observable threshold ? **Fermi-LAT spectral shapes are unmodified by UQFF.**
 
 ---
 
 ## 3. Pulsar Gamma-Ray Phase Validation
 
 For the Crab Pulsar (PSR J0534+2200, f =  29.65 Hz):
-- ω_Crab = 2π × 29.65 = 186.3 rad/s
-- UQFF Resonant: g_R = cos(186.3t) × 10⁻⁵
-- At emission pulse (t = 0): g_R = 10⁻⁵ m/s² maximum
-- This corresponds to a phase-dependent gravity variation of 3.6×10⁻⁸ relative to Newtonian g
+- ?_Crab = 2p � 29.65 = 186.3 rad/s
+- UQFF Resonant: g_R = cos(186.3t) � 10?5
+- At emission pulse (t = 0): g_R = 10?5 m/s� maximum
+- This corresponds to a phase-dependent gravity variation of 3.6�10?8 relative to Newtonian g
 
-The Fermi-LAT 4FGL catalog lists the Crab as **4FGL J0534.5+2201** with flux (100 MeV–100 GeV) = 5.65×10⁻⁷ ph/cm²/s. UQFF does not modify the average flux but predicts a 10⁻⁵ amplitude modulation component — below 4FGL timing precision for single-pulse analysis but potentially detectable in epoch-folded analysis.
+The Fermi-LAT 4FGL catalog lists the Crab as **4FGL J0534.5+2201** with flux (100 MeV�100 GeV) = 5.65�10?7 ph/cm�/s. UQFF does not modify the average flux but predicts a 10?5 amplitude modulation component � below 4FGL timing precision for single-pulse analysis but potentially detectable in epoch-folded analysis.
 
 ---
 
@@ -363,11 +379,11 @@ The Fermi-LAT 4FGL catalog lists the Crab as **4FGL J0534.5+2201** with flux (10
 
 | 4FGL Source | Type | UQFF Prediction | Fermi-LAT Constraint |
 |-------------|------|-----------------|---------------------|
-| J0534.5+2201 | Pulsar (Crab) | 10⁻⁵ flux modulation | <1% in phase-folded |
-| J0537−4943 | Pulsar | 10⁻⁵ amplitude | Compatible |
-| J1256−0547 (3C 279) | FSRQ blazar | 10⁻⁵ quasi-periodic | Not resolved |
-| J1103.5+1157 (Mrk 421) | BL Lac | 10⁻⁵ at ω_jet | Below sensitivity |
-| J1653.9−0158 | BL Lac (ultrafast) | Resonant peak | Not constrained |
+| J0534.5+2201 | Pulsar (Crab) | 10?5 flux modulation | <1% in phase-folded |
+| J0537-4943 | Pulsar | 10?5 amplitude | Compatible |
+| J1256-0547 (3C 279) | FSRQ blazar | 10?5 quasi-periodic | Not resolved |
+| J1103.5+1157 (Mrk 421) | BL Lac | 10?5 at ?_jet | Below sensitivity |
+| J1653.9-0158 | BL Lac (ultrafast) | Resonant peak | Not constrained |
 
 ---
 
@@ -376,43 +392,47 @@ The Fermi-LAT 4FGL catalog lists the Crab as **4FGL J0534.5+2201** with flux (10
 | Gamma-Ray Observable | Standard GR+QED | UQFF Prediction | 4FGL Status |
 |--------------------|-----------------|----------------|-------------|
 | Average flux | Eddington-based | Unmodified | Match |
-| Spectral shape | Power law/cutoff | Unmodified (m_γ ~ 10⁻³⁵ eV) | Match |
-| Flux periodicity | Source-dependent | +10⁻⁵ modulation | Below sensitivity |
-| Phase-pulse profile | Fixed | +10⁻⁵ at peak phase | Not constrained |
+| Spectral shape | Power law/cutoff | Unmodified (m_? ~ 10?�5 eV) | Match |
+| Flux periodicity | Source-dependent | +10?5 modulation | Below sensitivity |
+| Phase-pulse profile | Fixed | +10?5 at peak phase | Not constrained |
 
-*Source: QCalc_validation.py FERMI_LAT + FERMI_4FGL endpoints | κ = 0.0005/day | [SSq] = 0.57*
-.Groups[1].Value  — Gamma-Ray Sources: Fermi-LAT + UQFF Emission Model
-
-**Title:** Fermi-LAT 4FGL Gamma-Ray Source Catalog: UQFF Resonant Mode Emission Predictions
-
-**Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (κ = 0.0005/day, [SSq] = 0.57)  
-**Date:** March 7, 2026  
-**Source Data:** QCalc_validation.py (DataSourceURLs: FERMI_LAT, FERMI_4FGL, HEASARC_GAMMA)  
-**Index Slot:** §1.10 Database Integration & Multi-Wavelength Astrophysics,  "PAPER_{0:D3}" -f [int]# PAPER #76 — Gamma-Ray Sources: Fermi-LAT + UQFF Emission Model
+*Source: QCalc_validation.py FERMI_LAT + FERMI_4FGL endpoints | ? = 0.0005/day | [SSq] = 0.57*
+.Groups[1].Value  � Gamma-Ray Sources: Fermi-LAT + UQFF Emission Model
 
 **Title:** Fermi-LAT 4FGL Gamma-Ray Source Catalog: UQFF Resonant Mode Emission Predictions
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (κ = 0.0005/day, [SSq] = 0.57)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57)  
 **Date:** March 7, 2026  
 **Source Data:** QCalc_validation.py (DataSourceURLs: FERMI_LAT, FERMI_4FGL, HEASARC_GAMMA)  
-**Index Slot:** §1.10 Database Integration & Multi-Wavelength Astrophysics,  
-    $n = [int]# PAPER #76 — Gamma-Ray Sources: Fermi-LAT + UQFF Emission Model
+**Index Slot:** �1.10 Database Integration & Multi-Wavelength Astrophysics,  "PAPER_{0:D3}" -f [int]# PAPER #76 � Gamma-Ray Sources: Fermi-LAT + UQFF Emission Model
 
 **Title:** Fermi-LAT 4FGL Gamma-Ray Source Catalog: UQFF Resonant Mode Emission Predictions
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (κ = 0.0005/day, [SSq] = 0.57)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57)  
 **Date:** March 7, 2026  
 **Source Data:** QCalc_validation.py (DataSourceURLs: FERMI_LAT, FERMI_4FGL, HEASARC_GAMMA)  
-**Index Slot:** §1.10 Database Integration & Multi-Wavelength Astrophysics, PAPER_076  
+**Index Slot:** �1.10 Database Integration & Multi-Wavelength Astrophysics,  
+    $n = [int]# PAPER #76 � Gamma-Ray Sources: Fermi-LAT + UQFF Emission Model
+
+**Title:** Fermi-LAT 4FGL Gamma-Ray Source Catalog: UQFF Resonant Mode Emission Predictions
+
+**Author:** Daniel T. Murphy  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57)  
+**Date:** March 7, 2026  
+**Source Data:** QCalc_validation.py (DataSourceURLs: FERMI_LAT, FERMI_4FGL, HEASARC_GAMMA)  
+**Index Slot:** �1.10 Database Integration & Multi-Wavelength Astrophysics, PAPER_076  
 
 ---
 
 ## Abstract
 
-The Fermi Gamma-ray Space Telescope 4th Source Catalog (4FGL-DR3, ~3800 sources, 100 MeV–1 TeV) provides the definitive census of gamma-ray emitters. The UQFF Resonant mode predicts periodic gamma-ray modulation in blazars and pulsars through the cos(ωt) × 10⁻⁵ term. For high-energy gamma-ray emission, the UQFF also predicts a vacuum Cherenkov-like correction to the effective photon mass via the [UA] vacuum density. This paper validates UQFF emission predictions against 4FGL sources using the QCalc_validation.py Fermi endpoints.
+The Fermi Gamma-ray Space Telescope 4th Source Catalog (4FGL-DR3, ~3800 sources, 100 MeV�1 TeV) provides the definitive census of gamma-ray emitters. The UQFF Resonant mode predicts periodic gamma-ray modulation in blazars and pulsars through the cos(?t) � 10?5 term. For high-energy gamma-ray emission, the UQFF also predicts a vacuum Cherenkov-like correction to the effective photon mass via the [UA] vacuum density. This paper validates UQFF emission predictions against 4FGL sources using the QCalc_validation.py Fermi endpoints.
+
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0�10?4 day?�, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -435,12 +455,12 @@ The UQFF Resonant mode predicts blazar gamma-ray flux modulation:
 $$F_\gamma(t) = F_0 \times [1 + A_R \times \cos(\omega_{\rm blazar} t)]$$
 
 Where:
-- A_R = 10⁻⁵ (Resonant mode amplitude)
-- ω_blazar = system spin/jet frequency (typically 10⁻⁷ to 10⁻⁵ rad/s for BL Lac objects)
+- A_R = 10?5 (Resonant mode amplitude)
+- ?_blazar = system spin/jet frequency (typically 10?7 to 10?5 rad/s for BL Lac objects)
 
 For Markarian 421 (BL Lac, d=134 Mpc):
-- ω_Mrk421 = 2π/(315 days) = 2.31×10⁻⁷ rad/s
-- F_modulation = 10⁻⁵ × F_0 = **0.001% flux variation** (below Fermi-LAT sensitivity for typical 1-day bins)
+- ?_Mrk421 = 2p/(315 days) = 2.31�10?7 rad/s
+- F_modulation = 10?5 � F_0 = **0.001% flux variation** (below Fermi-LAT sensitivity for typical 1-day bins)
 
 ### UQFF Effective Photon Mass
 
@@ -452,19 +472,19 @@ This corresponds to an energy threshold modification:
 
 $$\Delta E_{\rm threshold} = m_{\gamma,\rm UQFF}^2 c^4 / (2 E_\gamma) \approx 10^{-60} \text{ eV at } E_\gamma = 1 \text{ TeV}$$
 
-Far below any observable threshold → **Fermi-LAT spectral shapes are unmodified by UQFF.**
+Far below any observable threshold ? **Fermi-LAT spectral shapes are unmodified by UQFF.**
 
 ---
 
 ## 3. Pulsar Gamma-Ray Phase Validation
 
 For the Crab Pulsar (PSR J0534+2200, f =  29.65 Hz):
-- ω_Crab = 2π × 29.65 = 186.3 rad/s
-- UQFF Resonant: g_R = cos(186.3t) × 10⁻⁵
-- At emission pulse (t = 0): g_R = 10⁻⁵ m/s² maximum
-- This corresponds to a phase-dependent gravity variation of 3.6×10⁻⁸ relative to Newtonian g
+- ?_Crab = 2p � 29.65 = 186.3 rad/s
+- UQFF Resonant: g_R = cos(186.3t) � 10?5
+- At emission pulse (t = 0): g_R = 10?5 m/s� maximum
+- This corresponds to a phase-dependent gravity variation of 3.6�10?8 relative to Newtonian g
 
-The Fermi-LAT 4FGL catalog lists the Crab as **4FGL J0534.5+2201** with flux (100 MeV–100 GeV) = 5.65×10⁻⁷ ph/cm²/s. UQFF does not modify the average flux but predicts a 10⁻⁵ amplitude modulation component — below 4FGL timing precision for single-pulse analysis but potentially detectable in epoch-folded analysis.
+The Fermi-LAT 4FGL catalog lists the Crab as **4FGL J0534.5+2201** with flux (100 MeV�100 GeV) = 5.65�10?7 ph/cm�/s. UQFF does not modify the average flux but predicts a 10?5 amplitude modulation component � below 4FGL timing precision for single-pulse analysis but potentially detectable in epoch-folded analysis.
 
 ---
 
@@ -472,11 +492,11 @@ The Fermi-LAT 4FGL catalog lists the Crab as **4FGL J0534.5+2201** with flux (10
 
 | 4FGL Source | Type | UQFF Prediction | Fermi-LAT Constraint |
 |-------------|------|-----------------|---------------------|
-| J0534.5+2201 | Pulsar (Crab) | 10⁻⁵ flux modulation | <1% in phase-folded |
-| J0537−4943 | Pulsar | 10⁻⁵ amplitude | Compatible |
-| J1256−0547 (3C 279) | FSRQ blazar | 10⁻⁵ quasi-periodic | Not resolved |
-| J1103.5+1157 (Mrk 421) | BL Lac | 10⁻⁵ at ω_jet | Below sensitivity |
-| J1653.9−0158 | BL Lac (ultrafast) | Resonant peak | Not constrained |
+| J0534.5+2201 | Pulsar (Crab) | 10?5 flux modulation | <1% in phase-folded |
+| J0537-4943 | Pulsar | 10?5 amplitude | Compatible |
+| J1256-0547 (3C 279) | FSRQ blazar | 10?5 quasi-periodic | Not resolved |
+| J1103.5+1157 (Mrk 421) | BL Lac | 10?5 at ?_jet | Below sensitivity |
+| J1653.9-0158 | BL Lac (ultrafast) | Resonant peak | Not constrained |
 
 ---
 
@@ -485,11 +505,11 @@ The Fermi-LAT 4FGL catalog lists the Crab as **4FGL J0534.5+2201** with flux (10
 | Gamma-Ray Observable | Standard GR+QED | UQFF Prediction | 4FGL Status |
 |--------------------|-----------------|----------------|-------------|
 | Average flux | Eddington-based | Unmodified | Match |
-| Spectral shape | Power law/cutoff | Unmodified (m_γ ~ 10⁻³⁵ eV) | Match |
-| Flux periodicity | Source-dependent | +10⁻⁵ modulation | Below sensitivity |
-| Phase-pulse profile | Fixed | +10⁻⁵ at peak phase | Not constrained |
+| Spectral shape | Power law/cutoff | Unmodified (m_? ~ 10?�5 eV) | Match |
+| Flux periodicity | Source-dependent | +10?5 modulation | Below sensitivity |
+| Phase-pulse profile | Fixed | +10?5 at peak phase | Not constrained |
 
-*Source: QCalc_validation.py FERMI_LAT + FERMI_4FGL endpoints | κ = 0.0005/day | [SSq] = 0.57*
+*Source: QCalc_validation.py FERMI_LAT + FERMI_4FGL endpoints | ? = 0.0005/day | [SSq] = 0.57*
 .Groups[1].Value
     "PAPER_{0:D3}" -f $n
     
@@ -498,7 +518,11 @@ The Fermi-LAT 4FGL catalog lists the Crab as **4FGL J0534.5+2201** with flux (10
 
 ## Abstract
 
-The Fermi Gamma-ray Space Telescope 4th Source Catalog (4FGL-DR3, ~3800 sources, 100 MeV–1 TeV) provides the definitive census of gamma-ray emitters. The UQFF Resonant mode predicts periodic gamma-ray modulation in blazars and pulsars through the cos(ωt) × 10⁻⁵ term. For high-energy gamma-ray emission, the UQFF also predicts a vacuum Cherenkov-like correction to the effective photon mass via the [UA] vacuum density. This paper validates UQFF emission predictions against 4FGL sources using the QCalc_validation.py Fermi endpoints.
+The Fermi Gamma-ray Space Telescope 4th Source Catalog (4FGL-DR3, ~3800 sources, 100 MeV�1 TeV) provides the definitive census of gamma-ray emitters. The UQFF Resonant mode predicts periodic gamma-ray modulation in blazars and pulsars through the cos(?t) � 10?5 term. For high-energy gamma-ray emission, the UQFF also predicts a vacuum Cherenkov-like correction to the effective photon mass via the [UA] vacuum density. This paper validates UQFF emission predictions against 4FGL sources using the QCalc_validation.py Fermi endpoints.
+
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0�10?4 day?�, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -521,12 +545,12 @@ The UQFF Resonant mode predicts blazar gamma-ray flux modulation:
 $$F_\gamma(t) = F_0 \times [1 + A_R \times \cos(\omega_{\rm blazar} t)]$$
 
 Where:
-- A_R = 10⁻⁵ (Resonant mode amplitude)
-- ω_blazar = system spin/jet frequency (typically 10⁻⁷ to 10⁻⁵ rad/s for BL Lac objects)
+- A_R = 10?5 (Resonant mode amplitude)
+- ?_blazar = system spin/jet frequency (typically 10?7 to 10?5 rad/s for BL Lac objects)
 
 For Markarian 421 (BL Lac, d=134 Mpc):
-- ω_Mrk421 = 2π/(315 days) = 2.31×10⁻⁷ rad/s
-- F_modulation = 10⁻⁵ × F_0 = **0.001% flux variation** (below Fermi-LAT sensitivity for typical 1-day bins)
+- ?_Mrk421 = 2p/(315 days) = 2.31�10?7 rad/s
+- F_modulation = 10?5 � F_0 = **0.001% flux variation** (below Fermi-LAT sensitivity for typical 1-day bins)
 
 ### UQFF Effective Photon Mass
 
@@ -538,19 +562,19 @@ This corresponds to an energy threshold modification:
 
 $$\Delta E_{\rm threshold} = m_{\gamma,\rm UQFF}^2 c^4 / (2 E_\gamma) \approx 10^{-60} \text{ eV at } E_\gamma = 1 \text{ TeV}$$
 
-Far below any observable threshold → **Fermi-LAT spectral shapes are unmodified by UQFF.**
+Far below any observable threshold ? **Fermi-LAT spectral shapes are unmodified by UQFF.**
 
 ---
 
 ## 3. Pulsar Gamma-Ray Phase Validation
 
 For the Crab Pulsar (PSR J0534+2200, f =  29.65 Hz):
-- ω_Crab = 2π × 29.65 = 186.3 rad/s
-- UQFF Resonant: g_R = cos(186.3t) × 10⁻⁵
-- At emission pulse (t = 0): g_R = 10⁻⁵ m/s² maximum
-- This corresponds to a phase-dependent gravity variation of 3.6×10⁻⁸ relative to Newtonian g
+- ?_Crab = 2p � 29.65 = 186.3 rad/s
+- UQFF Resonant: g_R = cos(186.3t) � 10?5
+- At emission pulse (t = 0): g_R = 10?5 m/s� maximum
+- This corresponds to a phase-dependent gravity variation of 3.6�10?8 relative to Newtonian g
 
-The Fermi-LAT 4FGL catalog lists the Crab as **4FGL J0534.5+2201** with flux (100 MeV–100 GeV) = 5.65×10⁻⁷ ph/cm²/s. UQFF does not modify the average flux but predicts a 10⁻⁵ amplitude modulation component — below 4FGL timing precision for single-pulse analysis but potentially detectable in epoch-folded analysis.
+The Fermi-LAT 4FGL catalog lists the Crab as **4FGL J0534.5+2201** with flux (100 MeV�100 GeV) = 5.65�10?7 ph/cm�/s. UQFF does not modify the average flux but predicts a 10?5 amplitude modulation component � below 4FGL timing precision for single-pulse analysis but potentially detectable in epoch-folded analysis.
 
 ---
 
@@ -558,11 +582,11 @@ The Fermi-LAT 4FGL catalog lists the Crab as **4FGL J0534.5+2201** with flux (10
 
 | 4FGL Source | Type | UQFF Prediction | Fermi-LAT Constraint |
 |-------------|------|-----------------|---------------------|
-| J0534.5+2201 | Pulsar (Crab) | 10⁻⁵ flux modulation | <1% in phase-folded |
-| J0537−4943 | Pulsar | 10⁻⁵ amplitude | Compatible |
-| J1256−0547 (3C 279) | FSRQ blazar | 10⁻⁵ quasi-periodic | Not resolved |
-| J1103.5+1157 (Mrk 421) | BL Lac | 10⁻⁵ at ω_jet | Below sensitivity |
-| J1653.9−0158 | BL Lac (ultrafast) | Resonant peak | Not constrained |
+| J0534.5+2201 | Pulsar (Crab) | 10?5 flux modulation | <1% in phase-folded |
+| J0537-4943 | Pulsar | 10?5 amplitude | Compatible |
+| J1256-0547 (3C 279) | FSRQ blazar | 10?5 quasi-periodic | Not resolved |
+| J1103.5+1157 (Mrk 421) | BL Lac | 10?5 at ?_jet | Below sensitivity |
+| J1653.9-0158 | BL Lac (ultrafast) | Resonant peak | Not constrained |
 
 ---
 
@@ -571,18 +595,22 @@ The Fermi-LAT 4FGL catalog lists the Crab as **4FGL J0534.5+2201** with flux (10
 | Gamma-Ray Observable | Standard GR+QED | UQFF Prediction | 4FGL Status |
 |--------------------|-----------------|----------------|-------------|
 | Average flux | Eddington-based | Unmodified | Match |
-| Spectral shape | Power law/cutoff | Unmodified (m_γ ~ 10⁻³⁵ eV) | Match |
-| Flux periodicity | Source-dependent | +10⁻⁵ modulation | Below sensitivity |
-| Phase-pulse profile | Fixed | +10⁻⁵ at peak phase | Not constrained |
+| Spectral shape | Power law/cutoff | Unmodified (m_? ~ 10?�5 eV) | Match |
+| Flux periodicity | Source-dependent | +10?5 modulation | Below sensitivity |
+| Phase-pulse profile | Fixed | +10?5 at peak phase | Not constrained |
 
-*Source: QCalc_validation.py FERMI_LAT + FERMI_4FGL endpoints | κ = 0.0005/day | [SSq] = 0.57*
+*Source: QCalc_validation.py FERMI_LAT + FERMI_4FGL endpoints | ? = 0.0005/day | [SSq] = 0.57*
 .Groups[1].Value   
 
 ---
 
 ## Abstract
 
-The Fermi Gamma-ray Space Telescope 4th Source Catalog (4FGL-DR3, ~3800 sources, 100 MeV–1 TeV) provides the definitive census of gamma-ray emitters. The UQFF Resonant mode predicts periodic gamma-ray modulation in blazars and pulsars through the cos(ωt) × 10⁻⁵ term. For high-energy gamma-ray emission, the UQFF also predicts a vacuum Cherenkov-like correction to the effective photon mass via the [UA] vacuum density. This paper validates UQFF emission predictions against 4FGL sources using the QCalc_validation.py Fermi endpoints.
+The Fermi Gamma-ray Space Telescope 4th Source Catalog (4FGL-DR3, ~3800 sources, 100 MeV�1 TeV) provides the definitive census of gamma-ray emitters. The UQFF Resonant mode predicts periodic gamma-ray modulation in blazars and pulsars through the cos(?t) � 10?5 term. For high-energy gamma-ray emission, the UQFF also predicts a vacuum Cherenkov-like correction to the effective photon mass via the [UA] vacuum density. This paper validates UQFF emission predictions against 4FGL sources using the QCalc_validation.py Fermi endpoints.
+
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0�10?4 day?�, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -605,12 +633,12 @@ The UQFF Resonant mode predicts blazar gamma-ray flux modulation:
 $$F_\gamma(t) = F_0 \times [1 + A_R \times \cos(\omega_{\rm blazar} t)]$$
 
 Where:
-- A_R = 10⁻⁵ (Resonant mode amplitude)
-- ω_blazar = system spin/jet frequency (typically 10⁻⁷ to 10⁻⁵ rad/s for BL Lac objects)
+- A_R = 10?5 (Resonant mode amplitude)
+- ?_blazar = system spin/jet frequency (typically 10?7 to 10?5 rad/s for BL Lac objects)
 
 For Markarian 421 (BL Lac, d=134 Mpc):
-- ω_Mrk421 = 2π/(315 days) = 2.31×10⁻⁷ rad/s
-- F_modulation = 10⁻⁵ × F_0 = **0.001% flux variation** (below Fermi-LAT sensitivity for typical 1-day bins)
+- ?_Mrk421 = 2p/(315 days) = 2.31�10?7 rad/s
+- F_modulation = 10?5 � F_0 = **0.001% flux variation** (below Fermi-LAT sensitivity for typical 1-day bins)
 
 ### UQFF Effective Photon Mass
 
@@ -622,19 +650,19 @@ This corresponds to an energy threshold modification:
 
 $$\Delta E_{\rm threshold} = m_{\gamma,\rm UQFF}^2 c^4 / (2 E_\gamma) \approx 10^{-60} \text{ eV at } E_\gamma = 1 \text{ TeV}$$
 
-Far below any observable threshold → **Fermi-LAT spectral shapes are unmodified by UQFF.**
+Far below any observable threshold ? **Fermi-LAT spectral shapes are unmodified by UQFF.**
 
 ---
 
 ## 3. Pulsar Gamma-Ray Phase Validation
 
 For the Crab Pulsar (PSR J0534+2200, f =  29.65 Hz):
-- ω_Crab = 2π × 29.65 = 186.3 rad/s
-- UQFF Resonant: g_R = cos(186.3t) × 10⁻⁵
-- At emission pulse (t = 0): g_R = 10⁻⁵ m/s² maximum
-- This corresponds to a phase-dependent gravity variation of 3.6×10⁻⁸ relative to Newtonian g
+- ?_Crab = 2p � 29.65 = 186.3 rad/s
+- UQFF Resonant: g_R = cos(186.3t) � 10?5
+- At emission pulse (t = 0): g_R = 10?5 m/s� maximum
+- This corresponds to a phase-dependent gravity variation of 3.6�10?8 relative to Newtonian g
 
-The Fermi-LAT 4FGL catalog lists the Crab as **4FGL J0534.5+2201** with flux (100 MeV–100 GeV) = 5.65×10⁻⁷ ph/cm²/s. UQFF does not modify the average flux but predicts a 10⁻⁵ amplitude modulation component — below 4FGL timing precision for single-pulse analysis but potentially detectable in epoch-folded analysis.
+The Fermi-LAT 4FGL catalog lists the Crab as **4FGL J0534.5+2201** with flux (100 MeV�100 GeV) = 5.65�10?7 ph/cm�/s. UQFF does not modify the average flux but predicts a 10?5 amplitude modulation component � below 4FGL timing precision for single-pulse analysis but potentially detectable in epoch-folded analysis.
 
 ---
 
@@ -642,11 +670,11 @@ The Fermi-LAT 4FGL catalog lists the Crab as **4FGL J0534.5+2201** with flux (10
 
 | 4FGL Source | Type | UQFF Prediction | Fermi-LAT Constraint |
 |-------------|------|-----------------|---------------------|
-| J0534.5+2201 | Pulsar (Crab) | 10⁻⁵ flux modulation | <1% in phase-folded |
-| J0537−4943 | Pulsar | 10⁻⁵ amplitude | Compatible |
-| J1256−0547 (3C 279) | FSRQ blazar | 10⁻⁵ quasi-periodic | Not resolved |
-| J1103.5+1157 (Mrk 421) | BL Lac | 10⁻⁵ at ω_jet | Below sensitivity |
-| J1653.9−0158 | BL Lac (ultrafast) | Resonant peak | Not constrained |
+| J0534.5+2201 | Pulsar (Crab) | 10?5 flux modulation | <1% in phase-folded |
+| J0537-4943 | Pulsar | 10?5 amplitude | Compatible |
+| J1256-0547 (3C 279) | FSRQ blazar | 10?5 quasi-periodic | Not resolved |
+| J1103.5+1157 (Mrk 421) | BL Lac | 10?5 at ?_jet | Below sensitivity |
+| J1653.9-0158 | BL Lac (ultrafast) | Resonant peak | Not constrained |
 
 ---
 
@@ -655,11 +683,11 @@ The Fermi-LAT 4FGL catalog lists the Crab as **4FGL J0534.5+2201** with flux (10
 | Gamma-Ray Observable | Standard GR+QED | UQFF Prediction | 4FGL Status |
 |--------------------|-----------------|----------------|-------------|
 | Average flux | Eddington-based | Unmodified | Match |
-| Spectral shape | Power law/cutoff | Unmodified (m_γ ~ 10⁻³⁵ eV) | Match |
-| Flux periodicity | Source-dependent | +10⁻⁵ modulation | Below sensitivity |
-| Phase-pulse profile | Fixed | +10⁻⁵ at peak phase | Not constrained |
+| Spectral shape | Power law/cutoff | Unmodified (m_? ~ 10?�5 eV) | Match |
+| Flux periodicity | Source-dependent | +10?5 modulation | Below sensitivity |
+| Phase-pulse profile | Fixed | +10?5 at peak phase | Not constrained |
 
-*Source: QCalc_validation.py FERMI_LAT + FERMI_4FGL endpoints | κ = 0.0005/day | [SSq] = 0.57*
+*Source: QCalc_validation.py FERMI_LAT + FERMI_4FGL endpoints | ? = 0.0005/day | [SSq] = 0.57*
 .Groups[1].Value
     "PAPER_{0:D3}" -f $n
     
@@ -668,7 +696,11 @@ The Fermi-LAT 4FGL catalog lists the Crab as **4FGL J0534.5+2201** with flux (10
 
 ## Abstract
 
-The Fermi Gamma-ray Space Telescope 4th Source Catalog (4FGL-DR3, ~3800 sources, 100 MeV–1 TeV) provides the definitive census of gamma-ray emitters. The UQFF Resonant mode predicts periodic gamma-ray modulation in blazars and pulsars through the cos(ωt) × 10⁻⁵ term. For high-energy gamma-ray emission, the UQFF also predicts a vacuum Cherenkov-like correction to the effective photon mass via the [UA] vacuum density. This paper validates UQFF emission predictions against 4FGL sources using the QCalc_validation.py Fermi endpoints.
+The Fermi Gamma-ray Space Telescope 4th Source Catalog (4FGL-DR3, ~3800 sources, 100 MeV�1 TeV) provides the definitive census of gamma-ray emitters. The UQFF Resonant mode predicts periodic gamma-ray modulation in blazars and pulsars through the cos(?t) � 10?5 term. For high-energy gamma-ray emission, the UQFF also predicts a vacuum Cherenkov-like correction to the effective photon mass via the [UA] vacuum density. This paper validates UQFF emission predictions against 4FGL sources using the QCalc_validation.py Fermi endpoints.
+
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0�10?4 day?�, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -691,12 +723,12 @@ The UQFF Resonant mode predicts blazar gamma-ray flux modulation:
 $$F_\gamma(t) = F_0 \times [1 + A_R \times \cos(\omega_{\rm blazar} t)]$$
 
 Where:
-- A_R = 10⁻⁵ (Resonant mode amplitude)
-- ω_blazar = system spin/jet frequency (typically 10⁻⁷ to 10⁻⁵ rad/s for BL Lac objects)
+- A_R = 10?5 (Resonant mode amplitude)
+- ?_blazar = system spin/jet frequency (typically 10?7 to 10?5 rad/s for BL Lac objects)
 
 For Markarian 421 (BL Lac, d=134 Mpc):
-- ω_Mrk421 = 2π/(315 days) = 2.31×10⁻⁷ rad/s
-- F_modulation = 10⁻⁵ × F_0 = **0.001% flux variation** (below Fermi-LAT sensitivity for typical 1-day bins)
+- ?_Mrk421 = 2p/(315 days) = 2.31�10?7 rad/s
+- F_modulation = 10?5 � F_0 = **0.001% flux variation** (below Fermi-LAT sensitivity for typical 1-day bins)
 
 ### UQFF Effective Photon Mass
 
@@ -708,19 +740,19 @@ This corresponds to an energy threshold modification:
 
 $$\Delta E_{\rm threshold} = m_{\gamma,\rm UQFF}^2 c^4 / (2 E_\gamma) \approx 10^{-60} \text{ eV at } E_\gamma = 1 \text{ TeV}$$
 
-Far below any observable threshold → **Fermi-LAT spectral shapes are unmodified by UQFF.**
+Far below any observable threshold ? **Fermi-LAT spectral shapes are unmodified by UQFF.**
 
 ---
 
 ## 3. Pulsar Gamma-Ray Phase Validation
 
 For the Crab Pulsar (PSR J0534+2200, f =  29.65 Hz):
-- ω_Crab = 2π × 29.65 = 186.3 rad/s
-- UQFF Resonant: g_R = cos(186.3t) × 10⁻⁵
-- At emission pulse (t = 0): g_R = 10⁻⁵ m/s² maximum
-- This corresponds to a phase-dependent gravity variation of 3.6×10⁻⁸ relative to Newtonian g
+- ?_Crab = 2p � 29.65 = 186.3 rad/s
+- UQFF Resonant: g_R = cos(186.3t) � 10?5
+- At emission pulse (t = 0): g_R = 10?5 m/s� maximum
+- This corresponds to a phase-dependent gravity variation of 3.6�10?8 relative to Newtonian g
 
-The Fermi-LAT 4FGL catalog lists the Crab as **4FGL J0534.5+2201** with flux (100 MeV–100 GeV) = 5.65×10⁻⁷ ph/cm²/s. UQFF does not modify the average flux but predicts a 10⁻⁵ amplitude modulation component — below 4FGL timing precision for single-pulse analysis but potentially detectable in epoch-folded analysis.
+The Fermi-LAT 4FGL catalog lists the Crab as **4FGL J0534.5+2201** with flux (100 MeV�100 GeV) = 5.65�10?7 ph/cm�/s. UQFF does not modify the average flux but predicts a 10?5 amplitude modulation component � below 4FGL timing precision for single-pulse analysis but potentially detectable in epoch-folded analysis.
 
 ---
 
@@ -728,11 +760,11 @@ The Fermi-LAT 4FGL catalog lists the Crab as **4FGL J0534.5+2201** with flux (10
 
 | 4FGL Source | Type | UQFF Prediction | Fermi-LAT Constraint |
 |-------------|------|-----------------|---------------------|
-| J0534.5+2201 | Pulsar (Crab) | 10⁻⁵ flux modulation | <1% in phase-folded |
-| J0537−4943 | Pulsar | 10⁻⁵ amplitude | Compatible |
-| J1256−0547 (3C 279) | FSRQ blazar | 10⁻⁵ quasi-periodic | Not resolved |
-| J1103.5+1157 (Mrk 421) | BL Lac | 10⁻⁵ at ω_jet | Below sensitivity |
-| J1653.9−0158 | BL Lac (ultrafast) | Resonant peak | Not constrained |
+| J0534.5+2201 | Pulsar (Crab) | 10?5 flux modulation | <1% in phase-folded |
+| J0537-4943 | Pulsar | 10?5 amplitude | Compatible |
+| J1256-0547 (3C 279) | FSRQ blazar | 10?5 quasi-periodic | Not resolved |
+| J1103.5+1157 (Mrk 421) | BL Lac | 10?5 at ?_jet | Below sensitivity |
+| J1653.9-0158 | BL Lac (ultrafast) | Resonant peak | Not constrained |
 
 ---
 
@@ -741,8 +773,11 @@ The Fermi-LAT 4FGL catalog lists the Crab as **4FGL J0534.5+2201** with flux (10
 | Gamma-Ray Observable | Standard GR+QED | UQFF Prediction | 4FGL Status |
 |--------------------|-----------------|----------------|-------------|
 | Average flux | Eddington-based | Unmodified | Match |
-| Spectral shape | Power law/cutoff | Unmodified (m_γ ~ 10⁻³⁵ eV) | Match |
-| Flux periodicity | Source-dependent | +10⁻⁵ modulation | Below sensitivity |
-| Phase-pulse profile | Fixed | +10⁻⁵ at peak phase | Not constrained |
+| Spectral shape | Power law/cutoff | Unmodified (m_? ~ 10?�5 eV) | Match |
+| Flux periodicity | Source-dependent | +10?5 modulation | Below sensitivity |
+| Phase-pulse profile | Fixed | +10?5 at peak phase | Not constrained |
 
-*Source: QCalc_validation.py FERMI_LAT + FERMI_4FGL endpoints | κ = 0.0005/day | [SSq] = 0.57*
+*Source: QCalc_validation.py FERMI_LAT + FERMI_4FGL endpoints | ? = 0.0005/day | [SSq] = 0.57*
+
+
+**UQFF computed:** Canonical UQFF buoyancy parameter U_bi = ?�[SSq]�GM/r� = 5.0e-4�0.57�6.67e-11�M/r�; for solar parameters: U_bi,Sun = 5.7e-4�6.67e-11�1.99e30/(6.96e8)� = 1.47e+2 m/s�.

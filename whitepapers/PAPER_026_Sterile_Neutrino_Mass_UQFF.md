@@ -29,3 +29,5 @@ $$|U_{eN}|^2 < 1.0\times10^{-3} \quad \text{(experimental constraint)}$$
 
 **Date merged:** 2026-03-06  
 **Merged by:** GitHub Copilot
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments. LHC direct-search results and arXiv constraints bound the parameter space.

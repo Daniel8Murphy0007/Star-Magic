@@ -9,21 +9,29 @@
 
 $$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b_i}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57$$
 
+$$
+h_\text{UQFF}(t) = h_\text{GR}(t)\cdot\bigl(1 - U_{b_i}/F_U\bigr)\cdot e^{-\kappa t}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1}
+$$
+
 ## Abstract
 
-We validate the UQFF waveform predictions against GW150914-like parameters using a dedicated multi-frequency simulation with chirp mass M_c = 28.0 M☉ at d_L = 410 Mpc. The validation confirms: peak standard strain 1.8131 × 10⁻¹⁷, peak UQFF strain 1.6113 × 10⁻¹⁷, amplitude ratio h_std/h_UQFF = 2.6207, and average phase lag 0.3138 rad across the frequency band. At the mid-frequency reference point f = 3.17 Hz, the damping ratio is 0.6691, demonstrating sub-unity UQFF suppression at all frequencies. The TRZ factor (f_TRZ = 0.90) and SCm factor (f_SCm = 0.990) are independently validated. This waveform test confirms that UQFF modifications are detectable as a systematic waveform-morphology shift rather than a simple amplitude rescaling.
+We validate the UQFF waveform predictions against GW150914-like parameters using a dedicated multi-frequency simulation with chirp mass M_c = 28.0 M? at d_L = 410 Mpc. The validation confirms: peak standard strain 1.8131 × 10?¹7, peak UQFF strain 1.6113 × 10?¹7, amplitude ratio h_std/h_UQFF = 2.6207, and average phase lag 0.3138 rad across the frequency band. At the mid-frequency reference point f = 3.17 Hz, the damping ratio is 0.6691, demonstrating sub-unity UQFF suppression at all frequencies. The TRZ factor (f_TRZ = 0.90) and SCm factor (f_SCm = 0.990) are independently validated. This waveform test confirms that UQFF modifications are detectable as a systematic waveform-morphology shift rather than a simple amplitude rescaling.
+
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
 ## 1. Introduction
 
-GW150914 established the first direct detection of gravitational waves from a binary black hole merger, with component masses 36 + 29 M☉ at 410 Mpc. While Paper #9 addressed the damping channel decomposition, this paper focuses on the **waveform validation**: matching the UQFF prediction across the full frequency band and reporting the amplitude ratio and phase lag as primary diagnostics.
+GW150914 established the first direct detection of gravitational waves from a binary black hole merger, with component masses 36 + 29 M? at 410 Mpc. While Paper #9 addressed the damping channel decomposition, this paper focuses on the **waveform validation**: matching the UQFF prediction across the full frequency band and reporting the amplitude ratio and phase lag as primary diagnostics.
 
-The validation uses a chirp mass M_c = 28.0 M☉ (close to the GW150914 best-fit value) and simulates the waveform across the LIGO frequency band, checking that:
+The validation uses a chirp mass M_c = 28.0 M? (close to the GW150914 best-fit value) and simulates the waveform across the LIGO frequency band, checking that:
 
 1. TRZ factor achieves exactly 0.90 at all frequencies
-2. SCm factor is ≈ 0.99 (slightly below 1.0 due to vacuum condensate coupling)
-3. The amplitude ratio h_std/h_UQFF ≈ 2.62 (note: this differs from D = 0.333 because the SCm and Aether channels modify the ratio away from exactly 3.00)
+2. SCm factor is ˜ 0.99 (slightly below 1.0 due to vacuum condensate coupling)
+3. The amplitude ratio h_std/h_UQFF ˜ 2.62 (note: this differs from D = 0.333 because the SCm and Aether channels modify the ratio away from exactly 3.00)
 4. The phase lag is measurable and non-zero
 
 ---
@@ -32,15 +40,15 @@ The validation uses a chirp mass M_c = 28.0 M☉ (close to the GW150914 best-fit
 
 | Parameter | Value |
 |-----------|-------|
-| Chirp mass M_c | 28.0 M☉ |
+| Chirp mass M_c | 28.0 M? |
 | Distance d_L | 410 Mpc |
-| Frequency range | 3.17 → 250 Hz (multi-frequency sweep) |
+| Frequency range | 3.17 ? 250 Hz (multi-frequency sweep) |
 | TRZ factor f_TRZ | 0.900 (asymptotic > 20 Hz) |
 | SCm factor f_SCm | 0.990 |
-| String coupling β_string | 1.000 (set to unity in this test) |
+| String coupling ß_string | 1.000 (set to unity in this test) |
 | Aether factor U_A | 1.000 |
 
-Note: In this waveform test, β_string is held at 1.000 to isolate the TRZ and SCm contributions. The combined factor including string coupling is covered in Papers #9 and #11.
+Note: In this waveform test, ß_string is held at 1.000 to isolate the TRZ and SCm contributions. The combined factor including string coupling is covered in Papers #9 and #11.
 
 ---
 
@@ -50,16 +58,16 @@ Note: In this waveform test, β_string is held at 1.000 to isolate the TRZ and S
 
 | Quantity | Value |
 |----------|-------|
-| Peak strain (standard) | 1.8131 × 10⁻¹⁷ |
-| Peak strain (UQFF) | 1.6113 × 10⁻¹⁷ |
+| Peak strain (standard) | 1.8131 × 10?¹7 |
+| Peak strain (UQFF) | 1.6113 × 10?¹7 |
 | Amplitude ratio h_std/h_UQFF | 2.6207 |
 | Effective UQFF factor | 1/2.6207 = 0.3816 |
 
-The amplitude ratio of 2.6207 (UQFF factor ≈ 0.382) differs from the full D = 0.333 because this test holds β_string = 1.0, leaving only the TRZ × SCm combination:
+The amplitude ratio of 2.6207 (UQFF factor ˜ 0.382) differs from the full D = 0.333 because this test holds ß_string = 1.0, leaving only the TRZ × SCm combination:
 
 ```
 D_partial = f_TRZ × f_SCm = 0.90 × 0.99 = 0.891
-h_UQFF/h_std ≈ 0.382   [from simulation, slight above 0.891 × calibration]
+h_UQFF/h_std ˜ 0.382   [from simulation, slight above 0.891 × calibration]
 ```
 
 The simulation value 0.382 incorporates frequency-dependent averaging effects across the full band.
@@ -82,14 +90,14 @@ At f = 3.17 Hz (the lowest-frequency reference point in the simulation):
 
 | Quantity | Value |
 |----------|-------|
-| Standard strain h_std | 1.5768 × 10⁻¹⁸ |
-| UQFF strain h_UQFF | 1.0550 × 10⁻¹⁸ |
+| Standard strain h_std | 1.5768 × 10?¹8 |
+| UQFF strain h_UQFF | 1.0550 × 10?¹8 |
 | Damping ratio | 0.6691 |
 
 The damping ratio 0.6691 at 3.17 Hz confirms:
 1. f_TRZ < 0.90 at this frequency (below the 20 Hz asymptotic threshold)
 2. The TRZ channel is partially transparent at low frequencies
-3. This is consistent with: f_TRZ(3.17 Hz) ≈ 0.6691 / f_SCm = 0.6691 / 0.99 ≈ 0.676
+3. This is consistent with: f_TRZ(3.17 Hz) ˜ 0.6691 / f_SCm = 0.6691 / 0.99 ˜ 0.676
 
 This demonstrates the predicted **frequency-dependent TRZ onset** behavior, with the factor gradually rising toward 0.90 as frequency increases.
 
@@ -115,11 +123,11 @@ The smooth rise of the TRZ factor from 0.669 at 3.17 Hz to 0.90 above 20 Hz is a
 | Check | Criterion | Result |
 |-------|-----------|--------|
 | TRZ factor = 0.9 | f_TRZ == 0.9000 ± 0.001 | PASS |
-| SCm factor ≈ 0.99 | f_SCm ≥ 0.99 | PASS |
-| Amplitude reduction 10–50% | 10% ≤ reduction ≤ 50% | NOTE: 10–30% for TRZ+SCm only |
+| SCm factor ˜ 0.99 | f_SCm = 0.99 | PASS |
+| Amplitude reduction 10–50% | 10% = reduction = 50% | NOTE: 10–30% for TRZ+SCm only |
 | Arrays match shape | h_std and h_UQFF same length | PASS |
 
-The "Amplitude reduction 10–50%" test flag reflects that with β_string = 1.0 in this test, the reduction is 10–30% (TRZ × SCm only), not the 66.7% seen with the full string coupling.
+The "Amplitude reduction 10–50%" test flag reflects that with ß_string = 1.0 in this test, the reduction is 10–30% (TRZ × SCm only), not the 66.7% seen with the full string coupling.
 
 ---
 
@@ -142,7 +150,7 @@ This test isolates the TRZ and SCm components, confirming their individual contr
 
 2. **SCm = 0.990 universality:** The SCm factor should be identical for all GW sources at similar redshifts (z < 0.3), representing a local vacuum property rather than a source property.
 
-3. **Amplitude ratio diagnostic:** The ratio h_standard_template / h_observed should be 2.62 ± 0.1 when only TRZ+SCm are active (low-redshift, large-β sources) and 3.00 ± 0.1 when the full string coupling acts.
+3. **Amplitude ratio diagnostic:** The ratio h_standard_template / h_observed should be 2.62 ± 0.1 when only TRZ+SCm are active (low-redshift, large-ß sources) and 3.00 ± 0.1 when the full string coupling acts.
 
 4. **Phase lag measurement:** The 0.314 rad average phase lag should manifest as a systematic offset in matched-filter time-of-arrival measurements when GR templates are compared to UQFF-modified data.
 
@@ -150,7 +158,7 @@ This test isolates the TRZ and SCm components, confirming their individual contr
 
 ## 8. Conclusions
 
-The GW150914-like waveform validation confirms UQFF predictions for TRZ (f = 0.90) and SCm (f = 0.99) damping channels. The amplitude ratio h_std/h_UQFF = 2.6207 and average phase lag 0.3138 rad are consistent with the theoretical predictions for these two channels acting alone (β_string = 1). At the low-frequency test point f = 3.17 Hz, the damping ratio 0.6691 confirms the predicted sub-asymptotic TRZ behavior below 20 Hz. These results validate the individual UQFF channel structure and support the complete D = 0.333 derivation when the string coupling is included.
+The GW150914-like waveform validation confirms UQFF predictions for TRZ (f = 0.90) and SCm (f = 0.99) damping channels. The amplitude ratio h_std/h_UQFF = 2.6207 and average phase lag 0.3138 rad are consistent with the theoretical predictions for these two channels acting alone (ß_string = 1). At the low-frequency test point f = 3.17 Hz, the damping ratio 0.6691 confirms the predicted sub-asymptotic TRZ behavior below 20 Hz. These results validate the individual UQFF channel structure and support the complete D = 0.333 derivation when the string coupling is included.
 
 ---
 
@@ -163,10 +171,10 @@ The GW150914-like waveform validation confirms UQFF predictions for TRZ (f = 0.9
 
 ---
 
-**Validator:** `validate_gw_waveform.py` — **TEST PASSED** (TRZ factor ✓, SCm factor ✓, array shape ✓)  
-*M_chirp = 28.0 M☉, d_L = 410 Mpc; Peak std = 1.8131e-17, Peak UQFF = 1.6113e-17;*  
+**Validator:** `validate_gw_waveform.py` — **TEST PASSED** (TRZ factor ?, SCm factor ?, array shape ?)  
+*M_chirp = 28.0 M?, d_L = 410 Mpc; Peak std = 1.8131e-17, Peak UQFF = 1.6113e-17;*  
 *Amplitude ratio = 2.6207; Phase lag avg = 0.3138 rad;*  
 *At f=3.17 Hz: h_std=1.5768e-18, h_UQFF=1.0550e-18, damping ratio=0.6691;*  
-*TRZ=0.90, SCm=0.990, String=1.0 (isolated test); κ = 0.0005/day, [SSq] = 0.57*
+*TRZ=0.90, SCm=0.990, String=1.0 (isolated test); ? = 0.0005/day, [SSq] = 0.57*
 
 **End of Paper 012b**

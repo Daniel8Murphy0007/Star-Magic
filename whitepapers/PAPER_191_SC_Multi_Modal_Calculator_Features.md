@@ -10,9 +10,17 @@
 
 $$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b_i}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57$$
 
+$$
+U_{b_i}(r) = \kappa\cdot[SSq]\cdot\frac{GM}{r^2}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57,\; \beta_i = 0.61
+$$
+
 ## Abstract
 
 This paper catalogs the eight multi-modal feature systems of the S-C Scientific Calculator that extend beyond standard computation: (1) VR/AR scene integration via Qt3D and QVTKOpenGLNativeWidget, (2) voice recognition via pocketsphinx speech-to-command, (3) blockchain transaction logging for equation provenance, (4) IoT broadcast via MQTT protocol, (5) haptic feedback via QFeedbackHapticEffect, (6) machine learning autocomplete via PyTorch LSTM model `autocomplete.pt`, (7) biometric authentication gate for secure API access, and (8) gesture-controlled navigation. Each system is documented with its initialization sequence, data flow, and integration points within the ScientificCalculatorDialog.
+
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -42,8 +50,8 @@ class MathHighlighter : public QSyntaxHighlighter {
                 case MathLexer::OPERATOR:
                     fmt.setForeground(Qt::red);
                     break;
-                case MathLexer::INTEGRAL:    // ∫∬∭∮
-                case MathLexer::SUMMATION:   // ∑∏
+                case MathLexer::INTEGRAL:    // ????
+                case MathLexer::SUMMATION:   // ??
                     fmt.setForeground(Qt::magenta);
                     fmt.setFontWeight(QFont::Bold);
                     break;
@@ -214,7 +222,7 @@ public:
 
 Three Qt gestures mapped to calculator operations:
 
-### 6.1 PinchGesture → Zoom Output
+### 6.1 PinchGesture ? Zoom Output
 
 ```cpp
 void ScientificCalculatorDialog::gestureEvent(QGestureEvent* event) {
@@ -225,7 +233,7 @@ void ScientificCalculatorDialog::gestureEvent(QGestureEvent* event) {
     }
 ```
 
-### 6.2 SwipeGesture → Undo/Redo/∫/∂
+### 6.2 SwipeGesture ? Undo/Redo/?/?
 
 ```cpp
     else if (QGesture* gesture = event->gesture(Qt::SwipeGesture)) {
@@ -235,13 +243,13 @@ void ScientificCalculatorDialog::gestureEvent(QGestureEvent* event) {
             case QSwipeGesture::Right: undoStack->redo(); break;
         }
         switch (swipe->verticalDirection()) {
-            case QSwipeGesture::Up:   input->insertPlainText("∫"); break;
-            case QSwipeGesture::Down: input->insertPlainText("∂"); break;
+            case QSwipeGesture::Up:   input->insertPlainText("?"); break;
+            case QSwipeGesture::Down: input->insertPlainText("?"); break;
         }
     }
 ```
 
-### 6.3 PanGesture → Insert Operators
+### 6.3 PanGesture ? Insert Operators
 
 ```cpp
     else if (QGesture* gesture = event->gesture(Qt::PanGesture)) {

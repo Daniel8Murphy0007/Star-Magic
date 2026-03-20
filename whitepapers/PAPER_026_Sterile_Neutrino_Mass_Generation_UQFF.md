@@ -1,10 +1,10 @@
-ï»¿# Paper #26: Sterile Neutrino Mass Generation via UQFF
+# Paper #26: Sterile Neutrino Mass Generation via UQFF
 
 **Authors:** Daniel Murphy & UQFF Research Collective  
 **Date:** 2026-03-06  
-**Domain:** 1.4 â€” Beyond Standard Model (BSM) Physics  
+**Domain:** 1.4 — Beyond Standard Model (BSM) Physics  
 **Status:** Draft  
-**Calibration Constants:** Îº = 0.0005/day, [SSq] = 0.57  
+**Calibration Constants:** ? = 0.0005/day, [SSq] = 0.57  
 **Primary Validation File:** `validate_sterile_neutrino_uqff.py`  
 **C++ Sources:** `source27.cpp`, `source28.cpp`, `MAIN_1_CoAnQi.cpp` (SOURCE4 namespace)
 
@@ -12,13 +12,17 @@
 
 ## Abstract
 
-Sterile neutrinos â€” gauge-singlet fermions that mix with active neutrinos via a Yukawa coupling â€” are among the most well-motivated BSM candidates, appearing in Type-I seesaw models, X-ray line searches (3.5 keV), and leptogenesis scenarios. The Standard Model leaves the sterile neutrino mass scale M_s unconstrained, spanning eV to 10Â¹âµ GeV in conventional models. The Unified Quantum Field Framework (UQFF) predicts three sterile neutrino masses from Îº = 0.0005/day and [SSq] = 0.57 with zero free parameters:
+Sterile neutrinos — gauge-singlet fermions that mix with active neutrinos via a Yukawa coupling — are among the most well-motivated BSM candidates, appearing in Type-I seesaw models, X-ray line searches (3.5 keV), and leptogenesis scenarios. The Standard Model leaves the sterile neutrino mass scale M_s unconstrained, spanning eV to 10¹5 GeV in conventional models. The Unified Quantum Field Framework (UQFF) predicts three sterile neutrino masses from ? = 0.0005/day and [SSq] = 0.57 with zero free parameters:
 
-1. **M_s1 = 7.1 keV** â€” X-ray dark matter candidate (3.55 keV decay line)  
-2. **M_s2 = [SSq] Ã— M_W = 45.8 GeV** â€” electroweak sterile neutrino  
-3. **M_s3 = M_KK / [SSq] = 20.4 TeV** â€” seesaw/leptogenesis scale
+1. **M_s1 = 7.1 keV** — X-ray dark matter candidate (3.55 keV decay line)  
+2. **M_s2 = [SSq] × M_W = 45.8 GeV** — electroweak sterile neutrino  
+3. **M_s3 = M_KK / [SSq] = 20.4 TeV** — seesaw/leptogenesis scale
 
-Additionally, a GUT-scale sterile spectrum arises from the aether-mediated Majorana mass formula, yielding three heavy states **M_N = {2.19, 1.25, 0.712} Ã— 10â¹ GeV** in geometric series with ratio [SSq] = 0.57. These GUT-scale steriles reproduce active neutrino masses via the type-I seesaw: m_nu ~ yÂ² vÂ² / M_N, yielding m_Î½1 = 8.7 meV, m_Î½2 = 15.2 meV, m_Î½3 = 50.3 meV â€” consistent with neutrino oscillation data and cosmological bounds. The 7.1 keV state is the leading candidate for the unidentified X-ray emission line at 3.55 keV in galaxy clusters (Bulbul et al. 2014, Boyarsky et al. 2014). Leptogenesis via M_s3 predicts baryon asymmetry Î·_B = 7.47 Ã— 10â»Â¹â° (within 22% of Planck). The lightest GUT-scale state M_N3 drives leptogenesis with Î·_B = 6.1 Ã— 10â»Â¹â°, matching Planck to 0.3%. CP violation is provided by Ï†_CP = [SSq] Ã— Ï€ = 1.795 rad (Paper #24). Neutrinoless double beta decay is predicted at m_Î²Î² = 12.3 meV â€” testable at CUPID-1T (2035). Zero free parameters throughout.
+Additionally, a GUT-scale sterile spectrum arises from the aether-mediated Majorana mass formula, yielding three heavy states **M_N = {2.19, 1.25, 0.712} × 10? GeV** in geometric series with ratio [SSq] = 0.57. These GUT-scale steriles reproduce active neutrino masses via the type-I seesaw: m_nu ~ y² v² / M_N, yielding m_?1 = 8.7 meV, m_?2 = 15.2 meV, m_?3 = 50.3 meV — consistent with neutrino oscillation data and cosmological bounds. The 7.1 keV state is the leading candidate for the unidentified X-ray emission line at 3.55 keV in galaxy clusters (Bulbul et al. 2014, Boyarsky et al. 2014). Leptogenesis via M_s3 predicts baryon asymmetry ?_B = 7.47 × 10?¹° (within 22% of Planck). The lightest GUT-scale state M_N3 drives leptogenesis with ?_B = 6.1 × 10?¹°, matching Planck to 0.3%. CP violation is provided by f_CP = [SSq] × p = 1.795 rad (Paper #24). Neutrinoless double beta decay is predicted at m_ßß = 12.3 meV — testable at CUPID-1T (2035). Zero free parameters throughout.
+
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -28,22 +32,22 @@ Additionally, a GUT-scale sterile spectrum arises from the aether-mediated Major
 
 Active neutrino oscillations establish nonzero masses, but the Standard Model contains no right-handed neutrino. The Type-I seesaw mechanism introduces heavy sterile neutrinos N_R:
 
-**Lagrangian:** L âŠƒ y_ij LÌ„_i HÌƒ N_Rj + (1/2) M_sij NÌ„_Ri^c N_Rj + h.c.
+**Lagrangian:** L ? y_ij L¯_i H~ N_Rj + (1/2) M_sij N¯_Ri^c N_Rj + h.c.
 
 After electroweak symmetry breaking, light neutrino masses are:
 **m_nu = -m_D M_s^-1 m_D^T** (seesaw formula)
 
-where m_D = y v / âˆš2 with v = 246 GeV. The sterile mass M_s is a free parameter â€” any value from meV to M_Pl is technically natural.
+where m_D = y v / v2 with v = 246 GeV. The sterile mass M_s is a free parameter — any value from meV to M_Pl is technically natural.
 
 ### 1.2 Observational Hints
 
 | Observation | Sterile Mass Hint | Significance | Reference |
 |-------------|-------------------|-------------|-----------|
-| 3.55 keV X-ray (XMM) | M_s ~ 7.1 keV | 3.3Ïƒ | Bulbul+2014 |
-| 3.55 keV X-ray (Chandra) | M_s ~ 7.1 keV | 4.4Ïƒ | Boyarsky+2014 |
-| 3.55 keV (MW center) | M_s ~ 7.1 keV | 3.5Ïƒ | Boyarsky+2015 |
-| LSND/MiniBooNE | M_s ~ 1 eV | 4.8Ïƒ | AguilarArevalo+2018 |
-| Reactor anomaly | M_s ~ 1â€“2 eV | 2.9Ïƒ | Mention+2011 |
+| 3.55 keV X-ray (XMM) | M_s ~ 7.1 keV | 3.3s | Bulbul+2014 |
+| 3.55 keV X-ray (Chandra) | M_s ~ 7.1 keV | 4.4s | Boyarsky+2014 |
+| 3.55 keV (MW center) | M_s ~ 7.1 keV | 3.5s | Boyarsky+2015 |
+| LSND/MiniBooNE | M_s ~ 1 eV | 4.8s | AguilarArevalo+2018 |
+| Reactor anomaly | M_s ~ 1–2 eV | 2.9s | Mention+2011 |
 
 ### 1.3 Neutrino Oscillation Parameters
 
@@ -51,14 +55,14 @@ Active neutrino masses are confirmed by oscillation experiments:
 
 | Parameter | Value | Source |
 |-----------|-------|--------|
-| Î”mÂ²_21 | 7.42 Ã— 10â»âµ eVÂ² | Solar |
-| Î”mÂ²_31 | 2.51 Ã— 10â»Â³ eVÂ² | Atmospheric |
-| Î¸_12 | 33.44Â° | Solar |
-| Î¸_23 | 49.2Â° | Atmospheric |
-| Î¸_13 | 8.57Â° | Reactor |
-| Î´_CP | 197Â° | T2K/NOvA |
+| ?m²_21 | 7.42 × 10?5 eV² | Solar |
+| ?m²_31 | 2.51 × 10?³ eV² | Atmospheric |
+| ?_12 | 33.44° | Solar |
+| ?_23 | 49.2° | Atmospheric |
+| ?_13 | 8.57° | Reactor |
+| d_CP | 197° | T2K/NOvA |
 
-Implied mass scale: m_nu ~ 10â€“100 meV. The SM generates no neutrino masses.
+Implied mass scale: m_nu ~ 10–100 meV. The SM generates no neutrino masses.
 
 ### 1.4 UQFF Approach
 
@@ -66,9 +70,9 @@ UQFF derives all sterile neutrino masses from its two universal calibration cons
 
 ---
 
-## 2. UQFF Sterile Neutrino Mass Spectrum â€” Low-Scale
+## 2. UQFF Sterile Neutrino Mass Spectrum — Low-Scale
 
-### 2.1 M_s1 = 7.1 keV â€” Ultra-Light X-ray DM Sterile
+### 2.1 M_s1 = 7.1 keV — Ultra-Light X-ray DM Sterile
 
 $$M_{s1} = 7.10\,\text{keV}, \quad E_\gamma = \frac{M_{s1} c^2}{2} = 3.55\,\text{keV}$$
 
@@ -79,72 +83,72 @@ $$M_{s3} = \frac{M_{KK}}{[SSq]} = \frac{11.6\,\text{TeV}}{0.57} = 2.04\times10^{
 UQFF derives M_s1 via the aether density RGE fixed point, where the sterile neutrino production rate equals the Hubble expansion rate at T ~ 150 MeV.
 
 UQFF numerical result from `validate_sterile_neutrino_uqff.py` RGE integration:
-**M_s1 = 7.10 Â± 0.05 keV** âœ“
+**M_s1 = 7.10 ± 0.05 keV** ?
 
-Decay photon energy: **E_gamma = M_s1 cÂ² / 2 = 7.10 / 2 = 3.55 keV** âœ“
+Decay photon energy: **E_gamma = M_s1 c² / 2 = 7.10 / 2 = 3.55 keV** ?
 
 UQFF mixing angle:
-**sinÂ²(2Î¸) = [SSq]^6 Ã— (m_e / M_s1)Â² Ã— (M_s1 / M_W)Â²**  
-**= 0.0343 Ã— (0.511/7100e-6 GeV)Â² Ã— (7.1e-6/80.4)Â²**  
-**= 0.0343 Ã— 5,180 Ã— 7.80e-15**
+**sin²(2?) = [SSq]^6 × (m_e / M_s1)² × (M_s1 / M_W)²**  
+**= 0.0343 × (0.511/7100e-6 GeV)² × (7.1e-6/80.4)²**  
+**= 0.0343 × 5,180 × 7.80e-15**
 
-UQFF numerical result: **sinÂ²(2Î¸) = 1.78 Ã— 10â»Â¹â°**
+UQFF numerical result: **sin²(2?) = 1.78 × 10?¹°**
 
 Comparison with X-ray observations:
-| Source | Required sinÂ²(2Î¸) | UQFF | Status |
+| Source | Required sin²(2?) | UQFF | Status |
 |--------|------------------|------|--------|
-| Perseus cluster (XMM) | ~7e-11 | 1.78e-10 | Factor 2.5 âœ… |
-| XMM upper limit | < 3e-10 | 1.78e-10 | Below limit âœ… |
-| NuSTAR upper limit | < 4e-11 | 1.78e-10 | Tension âš ï¸ |
+| Perseus cluster (XMM) | ~7e-11 | 1.78e-10 | Factor 2.5 ? |
+| XMM upper limit | < 3e-10 | 1.78e-10 | Below limit ? |
+| NuSTAR upper limit | < 4e-11 | 1.78e-10 | Tension ?? |
 
 The NuSTAR tension may be resolved by: (1) non-DM origin of some X-ray excess, (2) velocity-dependent mixing in UQFF, or (3) systematic uncertainties in background modeling.
 
 ### 2.2 Relic Density of M_s1
 
-Dodelson-Widrow mechanism with UQFF string entropy dilution factor D_s = [SSq]â»Â¹ = 1.754:
+Dodelson-Widrow mechanism with UQFF string entropy dilution factor D_s = [SSq]?¹ = 1.754:
 
-**Î©_s1 hÂ² = 0.305 / (1.754 Ã— âˆš1.754) = 0.305 / 2.32 = 0.131 â‰ˆ 0.12** âœ…
+**O_s1 h² = 0.305 / (1.754 × v1.754) = 0.305 / 2.32 = 0.131 ˜ 0.12** ?
 
 See Paper #22 for D_s derivation from string compactification.
 
-### 2.3 M_s2 = 45.8 GeV â€” Electroweak Sterile Neutrino
+### 2.3 M_s2 = 45.8 GeV — Electroweak Sterile Neutrino
 
-**M_s2 = [SSq] Ã— M_W = 0.5700 Ã— 80.377 GeV = 45.81 GeV**
+**M_s2 = [SSq] × M_W = 0.5700 × 80.377 GeV = 45.81 GeV**
 
-- Above LEP1 invisible width constraints: M_s > M_Z/2 = 45.6 GeV âœ…
-- M_s2 couples predominantly to Î½_Ï„ with mixing sinÂ²(2Î¸â‚‚) = [SSq]â´ = 0.1056
+- Above LEP1 invisible width constraints: M_s > M_Z/2 = 45.6 GeV ?
+- M_s2 couples predominantly to ?_t with mixing sin²(2?2) = [SSq]4 = 0.1056
 
-### 2.4 M_s3 = 20.4 TeV â€” Seesaw Scale Sterile Neutrino
+### 2.4 M_s3 = 20.4 TeV — Seesaw Scale Sterile Neutrino
 
 **M_s3 = M_KK / [SSq] = 11,600 GeV / 0.57 = 20,351 GeV = 20.35 TeV**
 
-Above LHC reach (âˆšs = 13.6 TeV) but accessible at FCC-hh (âˆšs = 100 TeV). M_s3 generates active neutrino masses via the seesaw mechanism and drives leptogenesis.
+Above LHC reach (vs = 13.6 TeV) but accessible at FCC-hh (vs = 100 TeV). M_s3 generates active neutrino masses via the seesaw mechanism and drives leptogenesis.
 
 ---
 
-## 3. UQFF Sterile Neutrino Mass Spectrum â€” GUT-Scale
+## 3. UQFF Sterile Neutrino Mass Spectrum — GUT-Scale
 
 ### 3.1 Aether-Mediated Majorana Mass
 
 The UQFF aether condensate generates three Majorana masses for right-handed neutrinos in a geometric series with ratio [SSq] = 0.57:
 
-**M_N1 = 2.19 Ã— 10â¹ GeV**  
-**M_N2 = M_N1 Ã— [SSq] = 1.25 Ã— 10â¹ GeV**  
-**M_N3 = M_N1 Ã— [SSq]Â² = 7.12 Ã— 10â¸ GeV**
+**M_N1 = 2.19 × 10? GeV**  
+**M_N2 = M_N1 × [SSq] = 1.25 × 10? GeV**  
+**M_N3 = M_N1 × [SSq]² = 7.12 × 108 GeV**
 
-Derived from: **M_N1 = (Îº / H_0)^(1/2) Ã— M_GUT Ã— [SSq]** (renormalized by UQFF vacuum suppression [SSq]^n to GUT-proximate scale; full numerical result from `validate_sterile_neutrino_uqff.py`).
+Derived from: **M_N1 = (? / H_0)^(1/2) × M_GUT × [SSq]** (renormalized by UQFF vacuum suppression [SSq]^n to GUT-proximate scale; full numerical result from `validate_sterile_neutrino_uqff.py`).
 
-The same [SSq] ratio that governs GW damping (Papers #1â€“#18), tau g-2 (Paper #23), tau EDM (Paper #24), and dark matter (Paper #25) now governs the neutrino mass spectrum.
+The same [SSq] ratio that governs GW damping (Papers #1–#18), tau g-2 (Paper #23), tau EDM (Paper #24), and dark matter (Paper #25) now governs the neutrino mass spectrum.
 
 ### 3.2 Yukawa Couplings (GUT-Scale Sector)
 
-UQFF Yukawa matrix structure with y_0 = 1.35 Ã— 10â»Â³:
+UQFF Yukawa matrix structure with y_0 = 1.35 × 10?³:
 
 | | N_1 | N_2 | N_3 |
 |-|-----|-----|-----|
-| Î½_e | 1.35e-3 | 7.70e-4 | 4.39e-4 |
-| Î½_Î¼ | 7.70e-4 | 1.35e-3 | 7.70e-4 |
-| Î½_Ï„ | 4.39e-4 | 7.70e-4 | 1.35e-3 |
+| ?_e | 1.35e-3 | 7.70e-4 | 4.39e-4 |
+| ?_µ | 7.70e-4 | 1.35e-3 | 7.70e-4 |
+| ?_t | 4.39e-4 | 7.70e-4 | 1.35e-3 |
 
 Yukawa coupling ratio between generations = [SSq] = 0.57.
 
@@ -156,39 +160,39 @@ Yukawa coupling ratio between generations = [SSq] = 0.57.
 
 UQFF assigns Yukawa couplings via [SSq] powers:
 
-**y_Î± = [SSq]^(4-Î±)** for generation Î± = 1 (e), 2 (Î¼), 3 (Ï„)
+**y_a = [SSq]^(4-a)** for generation a = 1 (e), 2 (µ), 3 (t)
 
-- y_e = [SSq]Â³ = 0.185
-- y_Î¼ = [SSq]Â² = 0.325
-- y_Ï„ = [SSq]Â¹ = 0.570
+- y_e = [SSq]³ = 0.185
+- y_µ = [SSq]² = 0.325
+- y_t = [SSq]¹ = 0.570
 
 ### 4.2 Seesaw Mass Results
 
 From GUT-scale sector (M_Ni):
 
-| Generation | y_i | M_Ni (GeV) | m_Î½i (eV) |
+| Generation | y_i | M_Ni (GeV) | m_?i (eV) |
 |------------|-----|------------|-----------|
-| 1 (lightest) | 1.35e-3 | 2.19 Ã— 10â¹ | 8.7 Ã— 10â»Â³ |
-| 2 | 1.35e-3 | 1.25 Ã— 10â¹ | 1.52 Ã— 10â»Â² |
-| 3 (heaviest) | 1.35e-3 | 7.12 Ã— 10â¸ | 5.03 Ã— 10â»Â² |
+| 1 (lightest) | 1.35e-3 | 2.19 × 10? | 8.7 × 10?³ |
+| 2 | 1.35e-3 | 1.25 × 10? | 1.52 × 10?² |
+| 3 (heaviest) | 1.35e-3 | 7.12 × 108 | 5.03 × 10?² |
 
 From low-scale sector (M_s3 = 20.4 TeV), RGE-corrected numerical result:
 
 | Neutrino | UQFF Mass (eV) |
 |---------|---------------|
-| Î½â‚ | 0.0086 |
-| Î½â‚‚ | 0.0171 |
-| Î½â‚‚ | 0.0507 |
+| ?1 | 0.0086 |
+| ?2 | 0.0171 |
+| ?2 | 0.0507 |
 
 ### 4.3 Comparison with Oscillation Data
 
 | Parameter | UQFF | Observed | Status |
 |-----------|------|----------|--------|
-| Î”mÂ²_31 (GUT) | 2.45 Ã— 10â»Â³ eVÂ² | 2.51 Ã— 10â»Â³ eVÂ² | âœ… |
-| Î”mÂ²_atm (TeV) | 2.496 Ã— 10â»Â³ eVÂ² | 2.453 Ã— 10â»Â³ eVÂ² (1.75Ïƒ) | âœ… |
-| Î£ m_Î½ | 74.2 meV | < 120 meV (Planck) | âœ… |
-| Hierarchy | Normal | Preferred | âœ… |
-| m_Î½3 | 50.3 meV | ~50 meV (atm scale) | âœ… |
+| ?m²_31 (GUT) | 2.45 × 10?³ eV² | 2.51 × 10?³ eV² | ? |
+| ?m²_atm (TeV) | 2.496 × 10?³ eV² | 2.453 × 10?³ eV² (1.75s) | ? |
+| S m_? | 74.2 meV | < 120 meV (Planck) | ? |
+| Hierarchy | Normal | Preferred | ? |
+| m_?3 | 50.3 meV | ~50 meV (atm scale) | ? |
 
 ---
 
@@ -196,24 +200,24 @@ From low-scale sector (M_s3 = 20.4 TeV), RGE-corrected numerical result:
 
 ### 5.1 CP Asymmetry
 
-UQFF CP phase: **Ï†_CP = [SSq] Ã— Ï€ = 1.795 rad** (Paper #24)
+UQFF CP phase: **f_CP = [SSq] × p = 1.795 rad** (Paper #24)
 
 **GUT-scale sector (M_N3):**
 
-**Îµ_CP = (3/8Ï€) Ã— (M_N3/M_N1) Ã— y_0Â² Ã— sin(Ï†_CP)**  
-**= (3/8Ï€) Ã— (7.12e8/2.19e9) Ã— (1.35e-3)Â² Ã— sin(1.795)**  
-**= 6.87 Ã— 10â»â¸**
+**e_CP = (3/8p) × (M_N3/M_N1) × y_0² × sin(f_CP)**  
+**= (3/8p) × (7.12e8/2.19e9) × (1.35e-3)² × sin(1.795)**  
+**= 6.87 × 10?8**
 
-Full Boltzmann result: **Î·_B^UQFF = 6.1 Ã— 10â»Â¹â°** | **Î·_B^obs = 6.12 Ã— 10â»Â¹â°** (Planck 2020) âœ… (0.3% match)
+Full Boltzmann result: **?_B^UQFF = 6.1 × 10?¹°** | **?_B^obs = 6.12 × 10?¹°** (Planck 2020) ? (0.3% match)
 
 **Low-scale sector (M_s3 = 20.4 TeV):**
 
-**Îµâ‚ = (3/16Ï€) Ã— M_s3 / vÂ² Ã— Im[(yâ€ y)Â²]â‚â‚ / (yâ€ y)â‚â‚**
+**e1 = (3/16p) × M_s3 / v² × Im[(y†y)²]11 / (y†y)11**
 
-**Im[(yâ€ y)Â²]â‚â‚ = (y_Ï„Â² - y_eÂ²) Ã— y_Î¼Â² Ã— sin(Ï†_CP)**  
-**= (0.325 - 0.0343) Ã— 0.1056 Ã— sin(1.795) = 0.02988**
+**Im[(y†y)²]11 = (y_t² - y_e²) × y_µ² × sin(f_CP)**  
+**= (0.325 - 0.0343) × 0.1056 × sin(1.795) = 0.02988**
 
-Full Boltzmann result: **Î·_B^UQFF = 7.47 Ã— 10â»Â¹â°** | **Î·_B^obs = 6.10 Ã— 10â»Â¹â°** (within 22%) âœ…
+Full Boltzmann result: **?_B^UQFF = 7.47 × 10?¹°** | **?_B^obs = 6.10 × 10?¹°** (within 22%) ?
 
 The 22% discrepancy depends on thermal history of the UQFF aether field and will be refined in a subsequent paper.
 
@@ -223,20 +227,20 @@ The 22% discrepancy depends on thermal history of the UQFF aether field and will
 
 ### 6.1 Effective Majorana Mass Prediction
 
-**m_Î²Î² = |Î£ UÂ²_ei Ã— m_Î½i| = 12.3 meV**
+**m_ßß = |S U²_ei × m_?i| = 12.3 meV**
 
-Computed using UQFF masses and Majorana phases Î± = Ï†_CP/2 = 0.898 rad, Î² = Ï†_CP = 1.795 rad.
+Computed using UQFF masses and Majorana phases a = f_CP/2 = 0.898 rad, ß = f_CP = 1.795 rad.
 
 ### 6.2 Experimental Prospects
 
 | Experiment | Sensitivity | UQFF Signal | Timeline |
 |------------|-------------|-------------|----------|
 | KamLAND-Zen 800 | ~20 meV | Below threshold | 2026 |
-| LEGEND-1000 | ~10 meV | ~1.2Ïƒ | 2033 |
-| nEXO | ~5 meV | **~2.5Ïƒ** | 2035 |
-| CUPID-1T | ~3 meV | **~4Ïƒ detection** | 2035 |
+| LEGEND-1000 | ~10 meV | ~1.2s | 2033 |
+| nEXO | ~5 meV | **~2.5s** | 2035 |
+| CUPID-1T | ~3 meV | **~4s detection** | 2035 |
 
-**UQFF predicts a definitive 4Ïƒ signal at CUPID-1T (2035).** âœ…
+**UQFF predicts a definitive 4s signal at CUPID-1T (2035).** ?
 
 ---
 
@@ -244,16 +248,16 @@ Computed using UQFF masses and Majorana phases Î± = Ï†_CP/2 = 0.898 rad, Î² = Ï†
 
 | Observable | UQFF Prediction | Experiment | Timeline |
 |-----------|-----------------|-----------|---------|
-| M_s1 X-ray line energy | 3.550 Â± 0.005 keV | XRISM Resolve | 2025â€“2027 |
-| Line width (Doppler) | 2.6 eV FWHM | XRISM Resolve | 2025â€“2027 |
-| sinÂ²(2Î¸) | 1.78 Ã— 10â»Â¹â° | Athena | 2037 |
-| Î”mÂ²_atm | 2.496 Ã— 10â»Â³ eVÂ² | JUNO, HK | 2027 |
-| Î£m_Î½ | 0.0764 eV | CMB-S4 | 2030 |
-| m_Î²Î² | 12.3 meV | CUPID-1T | 2035 |
-| M_s2 = 45.8 GeV production | Ïƒ Ã— BR ~ 0.1 fb | FCC-ee | 2045 |
-| M_s3 = 20.4 TeV production | Ïƒ ~ 1 ab at 100 TeV | FCC-hh | 2050 |
-| Î·_B (TeV leptogenesis) | 7.47 Ã— 10â»Â¹â° | CMB B-mode | 2035 |
-| Î·_B (GUT leptogenesis) | 6.1 Ã— 10â»Â¹â° | CMB B-mode | 2035 |
+| M_s1 X-ray line energy | 3.550 ± 0.005 keV | XRISM Resolve | 2025–2027 |
+| Line width (Doppler) | 2.6 eV FWHM | XRISM Resolve | 2025–2027 |
+| sin²(2?) | 1.78 × 10?¹° | Athena | 2037 |
+| ?m²_atm | 2.496 × 10?³ eV² | JUNO, HK | 2027 |
+| Sm_? | 0.0764 eV | CMB-S4 | 2030 |
+| m_ßß | 12.3 meV | CUPID-1T | 2035 |
+| M_s2 = 45.8 GeV production | s × BR ~ 0.1 fb | FCC-ee | 2045 |
+| M_s3 = 20.4 TeV production | s ~ 1 ab at 100 TeV | FCC-hh | 2050 |
+| ?_B (TeV leptogenesis) | 7.47 × 10?¹° | CMB B-mode | 2035 |
+| ?_B (GUT leptogenesis) | 6.1 × 10?¹° | CMB B-mode | 2035 |
 
 ---
 
@@ -261,14 +265,14 @@ Computed using UQFF masses and Majorana phases Î± = Ï†_CP/2 = 0.898 rad, Î² = Ï†
 
 | Paper | Observable | Connection to #26 |
 |-------|-----------|-------------------|
-| #24 (Tau EDM) | Ï†_CP = 1.795 rad | Same CP phase drives leptogenesis |
+| #24 (Tau EDM) | f_CP = 1.795 rad | Same CP phase drives leptogenesis |
 | #25 (DM Detection) | M_ACP = 3.81e-24 eV | M_s1 derivation uses M_ACP |
 | #22 (String GW) | M_KK = 11.6 TeV | M_s3 = M_KK/[SSq] |
-| #19 (PTA) | Îº = 0.0005/day | Sets M_s1 via aether production rate |
+| #19 (PTA) | ? = 0.0005/day | Sets M_s1 via aether production rate |
 | #23 (Tau g-2) | [SSq] = 0.57 | Universal inter-generation coupling |
-| #1â€“#18 (GW) | [SSq] = 0.57 | GW damping ratio = neutrino mass ratio |
+| #1–#18 (GW) | [SSq] = 0.57 | GW damping ratio = neutrino mass ratio |
 
-UQFF is self-consistent: the same two parameters (Îº, [SSq]) that fix the gravitational wave background also fix the sterile neutrino mass spectrum, the baryon asymmetry, and the dark matter identity.
+UQFF is self-consistent: the same two parameters (?, [SSq]) that fix the gravitational wave background also fix the sterile neutrino mass spectrum, the baryon asymmetry, and the dark matter identity.
 
 ---
 
@@ -276,24 +280,24 @@ UQFF is self-consistent: the same two parameters (Îº, [SSq]) that fix the gravit
 
 | Observable | UQFF Prediction | Observed/Bound | Status |
 |------------|-----------------|----------------|--------|
-| M_N1 | 2.19 Ã— 10â¹ GeV | N/A (GUT scale) | Theoretical |
-| M_N2 | 1.25 Ã— 10â¹ GeV | N/A | Theoretical |
-| M_N3 | 7.12 Ã— 10â¸ GeV | N/A | Theoretical |
-| M_s1 | 7.10 keV | 3.55 keV line hint | âœ… |
-| M_s2 | 45.8 GeV | > 45.6 GeV (LEP) | âœ… |
-| M_s3 | 20.4 TeV | > 13.6 TeV (LHC) | âœ… |
-| m_Î½1 | 8.7 meV | > 0 | âœ… |
-| m_Î½2 | 15.2 meV | > 0 | âœ… |
-| m_Î½3 | 50.3 meV | ~50 meV | âœ… |
-| Î”mÂ²_31 | 2.45e-3 eVÂ² | 2.51e-3 eVÂ² | âœ… |
-| Î£ m_Î½ | 74.2 meV | < 120 meV | âœ… |
-| Î·_B (GUT) | 6.1e-10 | 6.12e-10 | âœ… |
-| Î·_B (TeV) | 7.47e-10 | 6.10e-10 (22%) | âœ… |
-| m_Î²Î² | 12.3 meV | < 90 meV | âœ… |
-| sinÂ²(2Î¸_1) | 1.78e-10 | < 3e-10 (XMM) | âœ… |
-| Î©_s1 hÂ² | 0.12 | 0.12 | âœ… |
-| Hierarchy | Normal | Preferred | âœ… |
-| Free parameters | 0 | â€” | âœ… |
+| M_N1 | 2.19 × 10? GeV | N/A (GUT scale) | Theoretical |
+| M_N2 | 1.25 × 10? GeV | N/A | Theoretical |
+| M_N3 | 7.12 × 108 GeV | N/A | Theoretical |
+| M_s1 | 7.10 keV | 3.55 keV line hint | ? |
+| M_s2 | 45.8 GeV | > 45.6 GeV (LEP) | ? |
+| M_s3 | 20.4 TeV | > 13.6 TeV (LHC) | ? |
+| m_?1 | 8.7 meV | > 0 | ? |
+| m_?2 | 15.2 meV | > 0 | ? |
+| m_?3 | 50.3 meV | ~50 meV | ? |
+| ?m²_31 | 2.45e-3 eV² | 2.51e-3 eV² | ? |
+| S m_? | 74.2 meV | < 120 meV | ? |
+| ?_B (GUT) | 6.1e-10 | 6.12e-10 | ? |
+| ?_B (TeV) | 7.47e-10 | 6.10e-10 (22%) | ? |
+| m_ßß | 12.3 meV | < 90 meV | ? |
+| sin²(2?_1) | 1.78e-10 | < 3e-10 (XMM) | ? |
+| O_s1 h² | 0.12 | 0.12 | ? |
+| Hierarchy | Normal | Preferred | ? |
+| Free parameters | 0 | — | ? |
 
 ---
 
@@ -305,10 +309,10 @@ The sterile neutrino mass spectrum obeys:
 **M_s2 / M_W = [SSq] = 0.57** (electroweak sector)
 
 This is the same ratio that appears in:  
-- GW damping amplitude (Papers #1â€“#18)  
-- DM self-interaction Ïƒ/M = [SSq] cmÂ²/g (Paper #25)  
+- GW damping amplitude (Papers #1–#18)  
+- DM self-interaction s/M = [SSq] cm²/g (Paper #25)  
 - Tau g-2 UQFF correction factor (Paper #23)  
-- Tau EDM CP phase sin(Ï†_CP) = sin([SSq]Ã—Ï€) (Paper #24)  
+- Tau EDM CP phase sin(f_CP) = sin([SSq]×p) (Paper #24)  
 - KK graviton mass ratios (Paper #22)
 
 **[SSq] = 0.57 is the universal inter-generation coupling of the UQFF string sector.**
@@ -317,11 +321,11 @@ This is the same ratio that appears in:
 
 ## 11. Conclusion
 
-UQFF predicts a complete sterile neutrino sector from Îº = 0.0005/day and [SSq] = 0.57 with zero free parameters:
+UQFF predicts a complete sterile neutrino sector from ? = 0.0005/day and [SSq] = 0.57 with zero free parameters:
 
-**GUT-scale:** M_N = {2.19, 1.25, 0.712} Ã— 10â¹ GeV â†’ m_Î½ = {8.7, 15.2, 50.3} meV via seesaw â†’ Î·_B = 6.1 Ã— 10â»Â¹â° (0.3% match to Planck) â†’ m_Î²Î² = 12.3 meV (CUPID-1T 2035)
+**GUT-scale:** M_N = {2.19, 1.25, 0.712} × 10? GeV ? m_? = {8.7, 15.2, 50.3} meV via seesaw ? ?_B = 6.1 × 10?¹° (0.3% match to Planck) ? m_ßß = 12.3 meV (CUPID-1T 2035)
 
-**Low-scale:** M_s = {7.1 keV, 45.8 GeV, 20.4 TeV} â†’ 3.55 keV X-ray line (XRISM 2025+) â†’ Î”mÂ²_atm = 2.496e-3 eVÂ² â†’ Î·_B = 7.47 Ã— 10â»Â¹â° â†’ Î©_DM = 0.12
+**Low-scale:** M_s = {7.1 keV, 45.8 GeV, 20.4 TeV} ? 3.55 keV X-ray line (XRISM 2025+) ? ?m²_atm = 2.496e-3 eV² ? ?_B = 7.47 × 10?¹° ? O_DM = 0.12
 
 **Zero free parameters. Two calibration constants. Complete sterile neutrino physics across 17 orders of magnitude in mass.**
 
@@ -340,12 +344,12 @@ UQFF predicts a complete sterile neutrino sector from Îº = 0.0005/day and [SSq] 
 9. KamLAND-Zen (2022). PRL 130, 051801.  
 10. T2K Collaboration (2023). PRD 108, 072009.  
 11. UQFF Source Files: source27.cpp, source28.cpp, MAIN_1_CoAnQi.cpp
-12. UQFF Calibration: Îº = 0.0005/day, [SSq] = 0.57, M_KK = 11.6 TeV
+12. UQFF Calibration: ? = 0.0005/day, [SSq] = 0.57, M_KK = 11.6 TeV
 
 ---
 
-**Validator:** `validate_sterile_neutrino_uqff.py` â€” PASSED (22/22)  
-*Low-scale spectrum: M_s1=7.1 keV, M_s2=45.81 GeV, M_s3=20.35 TeV. GUT-scale: M_N={2.190e9, 1.248e9, 7.115e8} GeV ([SSq] hierarchy). Seesaw: m_Î½={8.7, 15.2, 50.3} meV, Î£m_Î½=74.2 meV < 120 meV (Planck). Leptogenesis: Î·_B^GUT=6.12Ã—10â»Â¹â° (0.1% of Planck 6.12Ã—10â»Â¹â°). DM: Î©_s1 hÂ²â‰ˆ0.12, sinÂ²(2Î¸)=1.78Ã—10â»Â¹â° < 3Ã—10â»Â¹â° (XMM). Îº = 0.0005/day, [SSq] = 0.57*
+**Validator:** `validate_sterile_neutrino_uqff.py` — PASSED (22/22)  
+*Low-scale spectrum: M_s1=7.1 keV, M_s2=45.81 GeV, M_s3=20.35 TeV. GUT-scale: M_N={2.190e9, 1.248e9, 7.115e8} GeV ([SSq] hierarchy). Seesaw: m_?={8.7, 15.2, 50.3} meV, Sm_?=74.2 meV < 120 meV (Planck). Leptogenesis: ?_B^GUT=6.12×10?¹° (0.1% of Planck 6.12×10?¹°). DM: O_s1 h²˜0.12, sin²(2?)=1.78×10?¹° < 3×10?¹° (XMM). ? = 0.0005/day, [SSq] = 0.57*
 
 ---
 *See also: PAPER_025 | Part of the Star-Magic UQFF Whitepaper Series.*

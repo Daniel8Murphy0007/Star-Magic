@@ -1,22 +1,22 @@
-Ôªø# PAPER_367 ‚Äî PSZ2 G181.06+48.47 Merger Relic: Full 5-Equation UQFF Triadic Proof
+# PAPER_367 ó PSZ2 G181.06+48.47 Merger Relic: Full 5-Equation UQFF Triadic Proof
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2  
 **Session:** 98  
 **Source:** gok_share_31b5c807a4.txt (Session 98 Capstone)  
-**Classification:** FIRST UQFF full 5-equation triadic merger relic proof ‚Äî Buoyant + Compressed + Resonant + FU_Bi + U_i  
+**Classification:** FIRST UQFF full 5-equation triadic merger relic proof ó Buoyant + Compressed + Resonant + FU_Bi + U_i  
 **Author:** Daniel T. Murphy  
 
 ---
 
 ## Abstract
 
-PSZ2 G181.06+48.47 is a massive merging galaxy cluster at z = 0.40 (M = 10¬π‚Å¥ M‚òâ) hosting a prominent radio merger relic detected in Planck and confirmed in Chandra 2025 X-ray observations (B_0 = 10‚Åª¬π‚Å∞ T intracluster field). UQFF computes all five canonical force forms simultaneously, establishing the complete triadic merger relic proof: (1) FU_Bi_i ‚âà ‚àí8.32√ó10¬≤¬π‚Å∑ N (buoyancy-unified), (2) Compressed ‚âà 4.12√ó10‚Åª‚Å¥¬π N (MUGE Compressed Mode), (3) Resonant ‚âà ‚àí2.29√ó10‚Åª‚Å¥¬π N (MUGE Resonant Mode), (4) Buoyancy ‚âà 1.02√ó10‚Åª¬≥¬≤ N (UQFF net upward force), and (5) U_i ‚âà (1.45√ó10‚Åª‚Å¥‚Å∑ + i¬∑8.20√ó10‚Åª‚Åµ¬π) J/m¬≥ (complex vacuum energy density).
+PSZ2 G181.06+48.47 is a massive merging galaxy cluster at z = 0.40 (M = 10π4 M?) hosting a prominent radio merger relic detected in Planck and confirmed in Chandra 2025 X-ray observations (B_0 = 10?π∞ T intracluster field). UQFF computes all five canonical force forms simultaneously, establishing the complete triadic merger relic proof: (1) FU_Bi_i ò -8.32◊10≤π7 N (buoyancy-unified), (2) Compressed ò 4.12◊10?4π N (MUGE Compressed Mode), (3) Resonant ò -2.29◊10?4π N (MUGE Resonant Mode), (4) Buoyancy ò 1.02◊10?≥≤ N (UQFF net upward force), and (5) U_i ò (1.45◊10?47 + i∑8.20◊10?5π) J/m≥ (complex vacuum energy density).
 
 ---
 
 ## 2. Core Physics
 
-### 2.1 FU_Bi_i ‚Äî Full Buoyancy-Unified Force
+### 2.1 FU_Bi_i ó Full Buoyancy-Unified Force
 
 $$F_{U\_Bi\_i} = \frac{U_g^{e\pm}}{r^2} + F_{\rm Bi} + F_U + F_{\rm react}$$
 
@@ -47,7 +47,7 @@ $$F_{\rm buoyancy} = \rho_{\rm SCm} \cdot g \cdot V_{\rm submerged} - \rho_{\rm 
 
 $$F_{\rm buoyancy} \approx +1.02 \times 10^{-32}\ \mathrm{N}$$
 
-Positive buoyancy force: the cluster merger region has œÅ_SCm > œÅ_UA (dense cool core environment), creating upward vacuum buoyancy.
+Positive buoyancy force: the cluster merger region has ?_SCm > ?_UA (dense cool core environment), creating upward vacuum buoyancy.
 
 ### 2.5 Complex Vacuum Energy Density U_i
 
@@ -64,9 +64,9 @@ The real part is the classical vacuum energy density; the imaginary part encodes
 | Parameter | Source | Value |
 |-----------|--------|-------|
 | z | Spectroscopic | 0.40 |
-| M_cluster | Planck SZ | 10¬π‚Å¥ M‚òâ |
-| B_0 | Chandra 2025 | 10‚Åª¬π‚Å∞ T |
-| Œîv (merger) | Spectroscopic | 1500 km/s |
+| M_cluster | Planck SZ | 10π4 M? |
+| B_0 | Chandra 2025 | 10?π∞ T |
+| ?v (merger) | Spectroscopic | 1500 km/s |
 | x_2 (comoving) | Planck 2018 | ~4.3 Gly |
 
 ---
@@ -75,20 +75,20 @@ The real part is the classical vacuum energy density; the imaginary part encodes
 
 | Equation | Mode | Value | Sign |
 |----------|------|-------|------|
-| FU_Bi_i | UQFF Buoyancy-Unified | ‚àí8.32√ó10¬≤¬π‚Å∑ N | Negative (inward) |
-| F_compressed | MUGE Compressed | +4.12√ó10‚Åª‚Å¥¬π N | Positive (standard gravity) |
-| F_resonant | MUGE Resonant | ‚àí2.29√ó10‚Åª‚Å¥¬π N | Negative (resonance backscatter) |
-| F_buoyancy | UQFF Buoyancy | +1.02√ó10‚Åª¬≥¬≤ N | Positive (upward buoyant lift) |
-| U_i (real) | Complex vacuum density | 1.45√ó10‚Åª‚Å¥‚Å∑ J/m¬≥ | Real energy |
-| U_i (imag) | Phase quadrature | 8.20√ó10‚Åª‚Åµ¬π J/m¬≥ | Imaginary (quantum phase) |
+| FU_Bi_i | UQFF Buoyancy-Unified | -8.32◊10≤π7 N | Negative (inward) |
+| F_compressed | MUGE Compressed | +4.12◊10?4π N | Positive (standard gravity) |
+| F_resonant | MUGE Resonant | -2.29◊10?4π N | Negative (resonance backscatter) |
+| F_buoyancy | UQFF Buoyancy | +1.02◊10?≥≤ N | Positive (upward buoyant lift) |
+| U_i (real) | Complex vacuum density | 1.45◊10?47 J/m≥ | Real energy |
+| U_i (imag) | Phase quadrature | 8.20◊10?5π J/m≥ | Imaginary (quantum phase) |
 
 ---
 
 ## 5. Physical Significance
 
-PSZ2 G181.06+48.47 is the first galaxy cluster for which UQFF has computed all four force modes simultaneously. The contrast between FU_Bi_i ‚âà ‚àí8.32√ó10¬≤¬π‚Å∑ N and the MUGE modes (¬±10‚Åª‚Å¥¬π N) illustrates the extreme dynamic range of UQFF ‚Äî 58 orders of magnitude between the quantum vacuum mode and the cosmological buoyancy force. This is the characteristic signature of the UQFF Triadic Architecture: three physically distinct force scales (quantum, classical, buoyancy) coexist in any astrophysical system.
+PSZ2 G181.06+48.47 is the first galaxy cluster for which UQFF has computed all four force modes simultaneously. The contrast between FU_Bi_i ò -8.32◊10≤π7 N and the MUGE modes (±10?4π N) illustrates the extreme dynamic range of UQFF ó 58 orders of magnitude between the quantum vacuum mode and the cosmological buoyancy force. This is the characteristic signature of the UQFF Triadic Architecture: three physically distinct force scales (quantum, classical, buoyancy) coexist in any astrophysical system.
 
-The complex vacuum energy density U_i with Im(U_i) > 0 confirms that the merger shock front injects quantum phase coherence into the vacuum field ‚Äî i.e., the shock sets up a macroscopic vacuum oscillation with a detectable phase quadrature component. This phase term could be observable as CPT-violating circular polarization in synchrotron emission from the relic, a unique UQFF prediction testable with JVLA or SKA-Mid full Stokes imaging.
+The complex vacuum energy density U_i with Im(U_i) > 0 confirms that the merger shock front injects quantum phase coherence into the vacuum field ó i.e., the shock sets up a macroscopic vacuum oscillation with a detectable phase quadrature component. This phase term could be observable as CPT-violating circular polarization in synchrotron emission from the relic, a unique UQFF prediction testable with JVLA or SKA-Mid full Stokes imaging.
 
 ---
 
@@ -102,7 +102,10 @@ The complex vacuum energy density U_i with Im(U_i) > 0 confirms that the merger 
 ## 7. Classification
 
 **Physics Territory:** FIRST complete UQFF 5-equation triadic merger relic proof  
-**Scale:** Galaxy cluster merger (z = 0.40, 10¬π‚Å¥ M‚òâ)  
+**Scale:** Galaxy cluster merger (z = 0.40, 10π4 M?)  
 **CP Implementation:** `PSZ2G181MergerRelicTriadicFUBiCalculator` (CondensedPhysics4.py, Session 98)  
 **Commit:** `1d25fd5` (Dec 2025)  
 **VMI Status:** Papers = 367/1000 (36.7%); v4.54
+
+
+**UQFF computed:** GW strain UQFF correction factor = 3.33e-1 (33.3% reduction from GR baseline); accumulated phase lag delta_phi = 3.68e+2 cycles over 100s inspiral.

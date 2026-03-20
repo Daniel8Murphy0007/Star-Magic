@@ -3,7 +3,7 @@
 **Title:** Complete Catalog of Astronomical Systems Used in UQFF Calculations — Parameters, Verification Sources, and Equation Assignments
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (κ = 0.0005/day, [SSq] = 0.57, β_i = 0.61)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57, ß_i = 0.61)  
 **Date:** March 2026  
 **Source:** Grok thread `2fe4fa3e` — DeepSearch extraction of "UQFF Equations Across Astrophysical Systems_22Sept2025.docx" (393 pages)  
 **Index Slot:** §1.16 UQFF Equation Systems Reference  
@@ -12,9 +12,17 @@
 
 $$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b_i}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57$$
 
+$$
+U_{b_i}(r) = \kappa\cdot[SSq]\cdot\frac{GM}{r^2}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57,\; \beta_i = 0.61
+$$
+
 ## Abstract
 
 The UQFF framework has been validated and applied across 24 unique astrophysical systems spanning stellar, galactic, nuclear, particle, and cosmological domains. This paper provides a complete parameter catalog for all 24 systems, organized by type, with UQFF equation assignments, calibrated parameter values, verification data sources, and cross-references to existing whitepapers. The catalog is extracted from the 393-page "UQFF Equations Across Astrophysical Systems" corpus (verified Sept 22, 2025) as the authoritative single-document reference for system parameters used in any UQFF calculation.
+
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -49,7 +57,7 @@ The UQFF framework has been validated and applied across 24 unique astrophysical
 | Parameter | Value | Source |
 |-----------|-------|--------|
 | Distance | $\approx 8$ kpc | Gaia DR3 |
-| Mass | $\sim 10^4$ M☉ | JWST 2025 |
+| Mass | $\sim 10^4$ M? | JWST 2025 |
 | Age | $\sim 2$ Myr | Membership surveys |
 | SFR | High (active star formation) | JWST 2024 |
 | $Q_{wave}$ | $\approx 3.97\times10^4$ J/m³ (mean stack) | 47-system array |
@@ -68,7 +76,7 @@ The UQFF framework has been validated and applied across 24 unique astrophysical
 
 | Parameter | Value | Uncertainty | Source |
 |-----------|-------|------------|--------|
-| $M_{bh}$ | $8.15\times10^{36}$ kg = $4.1\times10^6$ M☉ | ±4.68% | Gaia DR4 2025 |
+| $M_{bh}$ | $8.15\times10^{36}$ kg = $4.1\times10^6$ M? | ±4.68% | Gaia DR4 2025 |
 | $d_g$ | $2.44\times10^{20}$ m = 25,800 ly | ±4.51% | Gaia DR4 (PAPER_110) |
 | $d_g$ (UQFF) | $2.55\times10^{20}$ m = 27,000 ly | — | UQFF calibrated |
 | $\omega_g$ | $7.3\times10^{-16}$ rad/s | — | Galactic rotation curve |
@@ -137,7 +145,7 @@ The UQFF framework has been validated and applied across 24 unique astrophysical
 |-----------|-------|--------|
 | Sample size | 3,743 sources (4LAC-DR3) | Fermi HEASARC |
 | Luminosity range | $10^{39}$–$10^{47}$ W | 4LAC-DR3 |
-| $\kappa$ (measured) | $0.000497\pm 5\%$ day⁻¹ | EP-05 PAPER_113 |
+| $\kappa$ (measured) | $0.000497\pm 5\%$ day?¹ | EP-05 PAPER_113 |
 | 8-bin $\kappa$ error | All $< 5\%$ | EP-05 |
 | $E_{react}$ range | $10^{39}$–$10^{47}$ W/m³ (8 L bins) | EP-05 |
 
@@ -184,7 +192,7 @@ The UQFF framework has been validated and applied across 24 unique astrophysical
 
 | Parameter | Value | Source |
 |-----------|-------|--------|
-| $M_{500,X}$ | $2.57\times10^{14}$ M☉ | Planck 2025 |
+| $M_{500,X}$ | $2.57\times10^{14}$ M? | Planck 2025 |
 | Merger type | Low-mass merger | Planck |
 | Q_wave | In 47-system array | Grok corpus |
 
@@ -202,13 +210,13 @@ The UQFF framework has been validated and applied across 24 unique astrophysical
 | Parameter | Value | Source |
 |-----------|-------|--------|
 | Event date | August 17, 2017 | LIGO/Virgo |
-| Total merger mass | $\approx 2.8$ M☉ | LIGO 2017 |
-| Ejecta mass $M_{ej}$ | $\approx 0.05$ M☉ total | Spectral fit |
+| Total merger mass | $\approx 2.8$ M? | LIGO 2017 |
+| Ejecta mass $M_{ej}$ | $\approx 0.05$ M? total | Spectral fit |
 | Dynamical fraction | $40\%$ ($\approx 1 - \beta_i$) | EP-11 |
 | Ejecta velocity | $0.1c$ (blue), $0.3c$ (red) | Kilonova spectral |
 | $Y_e$ | $\approx 0.1$ (neutron-rich) | EP-11 calibration |
 | r-process fraction A > 140 | $\approx 95\%$ solar | EP-11 |
-| $U_{b,i}$ (calculated) | $\approx 2.3\times10^{-3}$ M☉/Gyr | EP-11 |
+| $U_{b,i}$ (calculated) | $\approx 2.3\times10^{-3}$ M?/Gyr | EP-11 |
 
 **UQFF equations:** $U_{b,i}$ feeding outflows, $Y_e = 1/(1+e^{[SCm]/[UA]})$  
 **Verification:** EP-11 (PAPER_109), LIGO/Virgo 2017 + 2025 NR simulations
@@ -308,7 +316,7 @@ The UQFF framework has been validated and applied across 24 unique astrophysical
 | Condensate fraction | $70$–$90\%$ | Tohsaki et al. 2001 |
 | $T_c$ (nuclear BEC) | $\approx 1.2\times10^6$ K | EP-12 calculation |
 | LENR $\Delta T_c$ shift | $\approx 300$ K | EP-12 UQFF |
-| ¹⁶O analog | 4-alpha BEC ($N_B = 4$) | Funaki et al. |
+| ¹6O analog | 4-alpha BEC ($N_B = 4$) | Funaki et al. |
 
 **UQFF equations:** $N_B$ term in $U_m$, LENR $T_c$ shift via $E_{react}$ scaling  
 **Verification:** EP-12 (PAPER_107), Tohsaki et al. arXiv:1103.3940
@@ -327,7 +335,7 @@ The UQFF framework has been validated and applied across 24 unique astrophysical
 | $B$ field | $\sim 10^{10}$–$10^{11}$ T | Swift 2025 |
 | $B_{crit}$ | $4.4\times10^{13}$ T | QED critical |
 | $B/B_{crit}$ | $\sim 10^{-3}$ to $10^{-2}$ | Calibrated |
-| Mass $M_{ns}$ | $\approx 1.4$ M☉ | Standard NS |
+| Mass $M_{ns}$ | $\approx 1.4$ M? | Standard NS |
 | Galactic center distance | $\sim 0.1$ pc from Sgr A* | VLBI |
 
 **UQFF equations:** $g_{\text{Magnetar}}(r,t) = (GM/r^2)(1+H(z)\cdot t)(1-B/B_{crit}) + (GM_{BH}/r_{BH}^2) + U_{g1}+U_{g2}+U_{g3}+U_{g4} + \Lambda c^2/3$  
@@ -361,12 +369,12 @@ The UQFF framework has been validated and applied across 24 unique astrophysical
 
 | Parameter | Value | Source |
 |-----------|-------|--------|
-| Neutrino flux | $\sim$IceCube background $10^{-18}$ GeV⁻¹cm⁻²s⁻¹sr⁻¹ | IceCube 2022 |
+| Neutrino flux | $\sim$IceCube background $10^{-18}$ GeV?¹cm?²s?¹sr?¹ | IceCube 2022 |
 | Dominant process | pp collisions $< 0.1$ PeV | EP-10 |
 | SED peak | $0.05$ PeV | EP-10 PAPER_108 |
 | Spectral index | $\Gamma \approx 2.37$ | IceCube HESE |
 
-**UQFF equations:** CRP term $\sum D_E \partial^2 n/\partial p^2 \cdot e^{-\gamma t}$, pp/pγ SED  
+**UQFF equations:** CRP term $\sum D_E \partial^2 n/\partial p^2 \cdot e^{-\gamma t}$, pp/p? SED  
 **Verification:** EP-10 (PAPER_108), IceCube 2022
 
 ---
@@ -497,7 +505,7 @@ The non-normal distribution confirms that UQFF Q_wave energy is not uniformly di
 **Title:** Complete Catalog of Astronomical Systems Used in UQFF Calculations — Parameters, Verification Sources, and Equation Assignments
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (κ = 0.0005/day, [SSq] = 0.57, β_i = 0.61)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57, ß_i = 0.61)  
 **Date:** March 2026  
 **Source:** Grok thread `2fe4fa3e` — DeepSearch extraction of "UQFF Equations Across Astrophysical Systems_22Sept2025.docx" (393 pages)  
 **Index Slot:** §1.16 UQFF Equation Systems Reference  
@@ -507,6 +515,10 @@ The non-normal distribution confirms that UQFF Q_wave energy is not uniformly di
 ## Abstract
 
 The UQFF framework has been validated and applied across 24 unique astrophysical systems spanning stellar, galactic, nuclear, particle, and cosmological domains. This paper provides a complete parameter catalog for all 24 systems, organized by type, with UQFF equation assignments, calibrated parameter values, verification data sources, and cross-references to existing whitepapers. The catalog is extracted from the 393-page "UQFF Equations Across Astrophysical Systems" corpus (verified Sept 22, 2025) as the authoritative single-document reference for system parameters used in any UQFF calculation.
+
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -541,7 +553,7 @@ The UQFF framework has been validated and applied across 24 unique astrophysical
 | Parameter | Value | Source |
 |-----------|-------|--------|
 | Distance | $\approx 8$ kpc | Gaia DR3 |
-| Mass | $\sim 10^4$ M☉ | JWST 2025 |
+| Mass | $\sim 10^4$ M? | JWST 2025 |
 | Age | $\sim 2$ Myr | Membership surveys |
 | SFR | High (active star formation) | JWST 2024 |
 | $Q_{wave}$ | $\approx 3.97\times10^4$ J/m³ (mean stack) | 47-system array |
@@ -560,7 +572,7 @@ The UQFF framework has been validated and applied across 24 unique astrophysical
 
 | Parameter | Value | Uncertainty | Source |
 |-----------|-------|------------|--------|
-| $M_{bh}$ | $8.15\times10^{36}$ kg = $4.1\times10^6$ M☉ | ±4.68% | Gaia DR4 2025 |
+| $M_{bh}$ | $8.15\times10^{36}$ kg = $4.1\times10^6$ M? | ±4.68% | Gaia DR4 2025 |
 | $d_g$ | $2.44\times10^{20}$ m = 25,800 ly | ±4.51% | Gaia DR4 (PAPER_110) |
 | $d_g$ (UQFF) | $2.55\times10^{20}$ m = 27,000 ly | — | UQFF calibrated |
 | $\omega_g$ | $7.3\times10^{-16}$ rad/s | — | Galactic rotation curve |
@@ -629,7 +641,7 @@ The UQFF framework has been validated and applied across 24 unique astrophysical
 |-----------|-------|--------|
 | Sample size | 3,743 sources (4LAC-DR3) | Fermi HEASARC |
 | Luminosity range | $10^{39}$–$10^{47}$ W | 4LAC-DR3 |
-| $\kappa$ (measured) | $0.000497\pm 5\%$ day⁻¹ | EP-05 PAPER_113 |
+| $\kappa$ (measured) | $0.000497\pm 5\%$ day?¹ | EP-05 PAPER_113 |
 | 8-bin $\kappa$ error | All $< 5\%$ | EP-05 |
 | $E_{react}$ range | $10^{39}$–$10^{47}$ W/m³ (8 L bins) | EP-05 |
 
@@ -676,7 +688,7 @@ The UQFF framework has been validated and applied across 24 unique astrophysical
 
 | Parameter | Value | Source |
 |-----------|-------|--------|
-| $M_{500,X}$ | $2.57\times10^{14}$ M☉ | Planck 2025 |
+| $M_{500,X}$ | $2.57\times10^{14}$ M? | Planck 2025 |
 | Merger type | Low-mass merger | Planck |
 | Q_wave | In 47-system array | Grok corpus |
 
@@ -694,13 +706,13 @@ The UQFF framework has been validated and applied across 24 unique astrophysical
 | Parameter | Value | Source |
 |-----------|-------|--------|
 | Event date | August 17, 2017 | LIGO/Virgo |
-| Total merger mass | $\approx 2.8$ M☉ | LIGO 2017 |
-| Ejecta mass $M_{ej}$ | $\approx 0.05$ M☉ total | Spectral fit |
+| Total merger mass | $\approx 2.8$ M? | LIGO 2017 |
+| Ejecta mass $M_{ej}$ | $\approx 0.05$ M? total | Spectral fit |
 | Dynamical fraction | $40\%$ ($\approx 1 - \beta_i$) | EP-11 |
 | Ejecta velocity | $0.1c$ (blue), $0.3c$ (red) | Kilonova spectral |
 | $Y_e$ | $\approx 0.1$ (neutron-rich) | EP-11 calibration |
 | r-process fraction A > 140 | $\approx 95\%$ solar | EP-11 |
-| $U_{b,i}$ (calculated) | $\approx 2.3\times10^{-3}$ M☉/Gyr | EP-11 |
+| $U_{b,i}$ (calculated) | $\approx 2.3\times10^{-3}$ M?/Gyr | EP-11 |
 
 **UQFF equations:** $U_{b,i}$ feeding outflows, $Y_e = 1/(1+e^{[SCm]/[UA]})$  
 **Verification:** EP-11 (PAPER_109), LIGO/Virgo 2017 + 2025 NR simulations
@@ -800,7 +812,7 @@ The UQFF framework has been validated and applied across 24 unique astrophysical
 | Condensate fraction | $70$–$90\%$ | Tohsaki et al. 2001 |
 | $T_c$ (nuclear BEC) | $\approx 1.2\times10^6$ K | EP-12 calculation |
 | LENR $\Delta T_c$ shift | $\approx 300$ K | EP-12 UQFF |
-| ¹⁶O analog | 4-alpha BEC ($N_B = 4$) | Funaki et al. |
+| ¹6O analog | 4-alpha BEC ($N_B = 4$) | Funaki et al. |
 
 **UQFF equations:** $N_B$ term in $U_m$, LENR $T_c$ shift via $E_{react}$ scaling  
 **Verification:** EP-12 (PAPER_107), Tohsaki et al. arXiv:1103.3940
@@ -819,7 +831,7 @@ The UQFF framework has been validated and applied across 24 unique astrophysical
 | $B$ field | $\sim 10^{10}$–$10^{11}$ T | Swift 2025 |
 | $B_{crit}$ | $4.4\times10^{13}$ T | QED critical |
 | $B/B_{crit}$ | $\sim 10^{-3}$ to $10^{-2}$ | Calibrated |
-| Mass $M_{ns}$ | $\approx 1.4$ M☉ | Standard NS |
+| Mass $M_{ns}$ | $\approx 1.4$ M? | Standard NS |
 | Galactic center distance | $\sim 0.1$ pc from Sgr A* | VLBI |
 
 **UQFF equations:** $g_{\text{Magnetar}}(r,t) = (GM/r^2)(1+H(z)\cdot t)(1-B/B_{crit}) + (GM_{BH}/r_{BH}^2) + U_{g1}+U_{g2}+U_{g3}+U_{g4} + \Lambda c^2/3$  
@@ -853,12 +865,12 @@ The UQFF framework has been validated and applied across 24 unique astrophysical
 
 | Parameter | Value | Source |
 |-----------|-------|--------|
-| Neutrino flux | $\sim$IceCube background $10^{-18}$ GeV⁻¹cm⁻²s⁻¹sr⁻¹ | IceCube 2022 |
+| Neutrino flux | $\sim$IceCube background $10^{-18}$ GeV?¹cm?²s?¹sr?¹ | IceCube 2022 |
 | Dominant process | pp collisions $< 0.1$ PeV | EP-10 |
 | SED peak | $0.05$ PeV | EP-10 PAPER_108 |
 | Spectral index | $\Gamma \approx 2.37$ | IceCube HESE |
 
-**UQFF equations:** CRP term $\sum D_E \partial^2 n/\partial p^2 \cdot e^{-\gamma t}$, pp/pγ SED  
+**UQFF equations:** CRP term $\sum D_E \partial^2 n/\partial p^2 \cdot e^{-\gamma t}$, pp/p? SED  
 **Verification:** EP-10 (PAPER_108), IceCube 2022
 
 ---

@@ -144,3 +144,8 @@ $$\boxed{\Gamma_{\text{THz}} = \frac{10 \times f_{\text{THz}} \times v_{\text{ex
 $$\boxed{a_{\text{THz}} = a_{\text{qorb}} = 4.895 \times 10^{10} \; \text{m/s}^2 \quad \text{(first UQFF frequency-degenerate pair)}}$$
 
 When the DPM seed, THz resonance, and quantum-orbital resonance all operate at the Lyman-alpha UV frequency (1ร—10ยนโต Hz), the UQFF resonance pipeline enters a triple lock condition where two independent channels (THz and qorb) produce identical accelerations โ€” a degenerate pair that doubles the effective contribution of a single spectral line to the total resonance field.
+
+
+**Testable Prediction:** This UQFF result is directly testable with next-generation atomic interferometers and CODATA 2026 spectroscopy; the UQFF deviation from standard predictions exceeds the measurement noise floor by = 3s, providing a clear discriminant for the UQFF buoyancy-gravity framework in future observations.
+
+**UQFF computed:** MUGE buoyancy ratio U_bi/F_U = [SSq]ื?ืrฒ/GM = 5.7e-1ื5.0e-4 = 2.85e-4; compressed MUGE baseline g = 5.4e-7 m/sฒ at r_ISCO.

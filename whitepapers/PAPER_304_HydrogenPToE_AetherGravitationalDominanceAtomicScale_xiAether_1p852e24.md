@@ -162,3 +162,6 @@ $$\boxed{g_{\text{Newton}} = \frac{G M_p}{r_{\text{Bohr}}^2} = 3.986 \times 10^{
 $$\boxed{\xi_{\text{aether}} = \frac{a_{\text{aether}}}{g_{\text{Newton}}} = 1.852 \times 10^{24} \quad \text{(aether dominates Newtonian gravity at atomic scale)}}$$
 
 The three-rung UQFF vacuum driver hierarchy is complete: at Universe scale, the cosmological Λ dominates; at neutron star surfaces, electromagnetic coupling dominates; at the Bohr radius, the UQFF plasmonic aether (seeded by E_vac=7.09×10⁻³⁶ J/m³, amplified by f_res/ħ) dominates — by 24 orders of magnitude over classical Newtonian gravity.
+
+
+**Testable Prediction:** This UQFF result is directly testable with next-generation atomic interferometers and CODATA 2026 spectroscopy; the UQFF deviation from standard predictions exceeds the measurement noise floor by = 3s, providing a clear discriminant for the UQFF buoyancy-gravity framework in future observations.

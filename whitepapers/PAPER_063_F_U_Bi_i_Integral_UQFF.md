@@ -1,29 +1,33 @@
-Ôªø#  "PAPER_{0:D3}" -f [int]# PAPER #63 ‚Äî F_U_Bi_i Integral: Complete Derivation and 52-System Ensemble Analysis
+#  "PAPER_{0:D3}" -f [int]# PAPER #63 ó F_U_Bi_i Integral: Complete Derivation and 52-System Ensemble Analysis
 
 **Title:** The F_U_Bi_i Integral: Master Buoyant Force Derivation, Ensemble Statistics, and KAPPA_MCMC Calibration Across 52 Astrophysical Systems
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (Œ∫ = 0.0005/day, [SSq] = 0.57)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57)  
 **Date:** March 7, 2026  
 **Source Data:** GrokThread_UQFF_0904_Validation.py (n=52 systems), Batch 23 MAIN_1_CoAnQi.cpp  
-**Index Slot:** ¬ß1.8 Alpha Multiplicity & BEC Nuclear Physics,  
-    $n = [int]# PAPER #63 ‚Äî F_U_Bi_i Integral: Complete Derivation and 52-System Ensemble Analysis
+**Index Slot:** ß1.8 Alpha Multiplicity & BEC Nuclear Physics,  
+    $n = [int]# PAPER #63 ó F_U_Bi_i Integral: Complete Derivation and 52-System Ensemble Analysis
 
 **Title:** The F_U_Bi_i Integral: Master Buoyant Force Derivation, Ensemble Statistics, and KAPPA_MCMC Calibration Across 52 Astrophysical Systems
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (Œ∫ = 0.0005/day, [SSq] = 0.57)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57)  
 **Date:** March 7, 2026  
 **Source Data:** GrokThread_UQFF_0904_Validation.py (n=52 systems), Batch 23 MAIN_1_CoAnQi.cpp  
-**Index Slot:** ¬ß1.8 Alpha Multiplicity & BEC Nuclear Physics, PAPER_063  
+**Index Slot:** ß1.8 Alpha Multiplicity & BEC Nuclear Physics, PAPER_063  
 
 ---
 
 
-<!-- UQFF constants: Œ∫ = 5.0e-4 day‚Åª¬π, [SSq] = 0.57, M_UQFF = 1.43e1 TeV -->
+<!-- UQFF constants: ? = 5.0e-4 day?π, [SSq] = 0.57, M_UQFF = 1.43e1 TeV -->
 ## Abstract
 
-The F_U_Bi_i integral is the core computational product of the Unified Quantum Field Framework (UQFF), representing the integrated buoyant force acting on any astrophysical body. Evaluated across 52 systems spanning neutron stars, galaxies, gravitational lenses, merger events, and cosmological references, the integral yields F_U_Bi_i_mean = ‚àí6.05√ó10¬≤¬π‚Å∑ N with a bootstrap standard deviation of 3%. The corresponding cosmic x_2 quadratic solution is ‚àí3.40√ó10¬π‚Å∑¬≤ m. KAPPA_MCMC calibration across 47 systems yields Œ∫_MCMC = 0.00052/day (4% from canonical 0.0005/day). Statistical analysis of the residual distribution ŒîœÅ confirms leptokurtic behavior (Shapiro-Wilk, Anderson-Darling reject normality; bootstrap 3% std is robust).
+The F_U_Bi_i integral is the core computational product of the Unified Quantum Field Framework (UQFF), representing the integrated buoyant force acting on any astrophysical body. Evaluated across 52 systems spanning neutron stars, galaxies, gravitational lenses, merger events, and cosmological references, the integral yields F_U_Bi_i_mean = -6.05◊10≤π7 N with a bootstrap standard deviation of 3%. The corresponding cosmic x_2 quadratic solution is -3.40◊10π7≤ m. KAPPA_MCMC calibration across 47 systems yields ?_MCMC = 0.00052/day (4% from canonical 0.0005/day). Statistical analysis of the residual distribution ?? confirms leptokurtic behavior (Shapiro-Wilk, Anderson-Darling reject normality; bootstrap 3% std is robust).
+
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0◊10?4 day?π, [SSq] = 0.57) uniquely enabling this analysis ó establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -34,7 +38,7 @@ The F_U_Bi_i integral is the core computational product of the Unified Quantum F
 $$F_{U,Bi,i} = \Omega_g \cdot \frac{M_{\rm bh}}{d_g} \cdot \sum_{j=1}^{N} \left(Ug_{j} + Ub_{j}\right)$$
 
 Where:
-- Œ©g = Omega factor (spin-orbit coupling parameter)
+- Og = Omega factor (spin-orbit coupling parameter)
 - M_bh = Black hole mass (kg)
 - d_g = Galaxy distance (m)
 - Ug_j, Ub_j = j-th order gravitational and buoyancy potentials
@@ -49,9 +53,9 @@ $$F_{U,Bi,i} = F_{Bi} \cdot \frac{1 + f_{\rm TRZ}}{1 - \Omega_g}$$
 Where:
 - F_Bi = Base buoyancy force (N)
 - f_TRZ = Toroidal Resonance Zone correction (dimensionless)
-- Œ©g = 0.0‚Äì0.95 (sub-unity spin for causal stability)
+- Og = 0.0ñ0.95 (sub-unity spin for causal stability)
 
-**Physical meaning**: Resonant modification of F_Bi by the TRZ gravity zone ‚Äî the toroidal vortex structure that forms around ultra-compact objects. Applied to magnetars, neutron stars, and close merger remnants.
+**Physical meaning**: Resonant modification of F_Bi by the TRZ gravity zone ó the toroidal vortex structure that forms around ultra-compact objects. Applied to magnetars, neutron stars, and close merger remnants.
 
 ### Form Master Buoyant (all scales)
 
@@ -62,7 +66,7 @@ Where:
 - Ub_i = i-th buoyancy term: $\rho_{\rm vac} \times g \times V_{\rm eff,i}$
 - Ui_i = i-th ionization/quantum correction: $k_\kappa \times k_\eta$
 
-**Physical meaning**: The general master integral applicable at all scales (nuclear through cosmological). Reduces to Form C-1/C-2 in the galactic limit and to the alpha-cluster buoyancy term in the nuclear limit (Papers #59‚Äì#61).
+**Physical meaning**: The general master integral applicable at all scales (nuclear through cosmological). Reduces to Form C-1/C-2 in the galactic limit and to the alpha-cluster buoyancy term in the nuclear limit (Papers #59ñ#61).
 
 ---
 
@@ -73,10 +77,10 @@ Where:
 | Metric | Value |
 |--------|-------|
 | n systems | **52** |
-| F_U_Bi_i mean | **‚àí6.05√ó10¬≤¬π‚Å∑ N** |
+| F_U_Bi_i mean | **-6.05◊10≤π7 N** |
 | Log bootstrap std | **3%** |
-| F_U_Bi_i range | ~10¬≥ N (nuclear) to ~10¬≤‚Å¥‚Å∞ N (AGN clusters) |
-| x_2 cosmic | **‚àí3.40√ó10¬π‚Å∑¬≤ m** |
+| F_U_Bi_i range | ~10≥ N (nuclear) to ~10≤4∞ N (AGN clusters) |
+| x_2 cosmic | **-3.40◊10π7≤ m** |
 | Sign convention | Negative = binding/stabilizing |
 
 ### System Category Breakdown
@@ -89,8 +93,8 @@ Where:
 | Gravitational lenses | Einstein Ring (#30), Hubble Lens (#31) | 5 |
 | Star-forming regions | Orion OB1 (#22), Carina Nebula | 5 |
 | Merger events | GW190521 (#51), AT2017gfo (#45) | 4 |
-| LENR / BEC (¬ß1.8) | W-L LENR (#49), BEC Œ±-cluster (#50) | 2 |
-| Cosmological | CMB ŒõCDM (#52), Hubble tension check | 2 |
+| LENR / BEC (ß1.8) | W-L LENR (#49), BEC a-cluster (#50) | 2 |
+| Cosmological | CMB ?CDM (#52), Hubble tension check | 2 |
 | Other astrophysical | Comets, solar flares, brown dwarfs | 3 |
 
 ### Cosmic Quadratic Solution
@@ -103,7 +107,7 @@ Solving for x (cosmic wavenumber scale):
 
 $$x_2 = -3.40 \times 10^{172} \text{ m}$$
 
-This represents the second root of the cosmic F_U_Bi_i field equation ‚Äî the scale at which the net buoyant force changes sign (from binding to repulsive). It lies far beyond the observable universe (~10¬≤‚Å∂ m), confirming the UQFF framework is energetically stable on all accessible astrophysical scales.
+This represents the second root of the cosmic F_U_Bi_i field equation ó the scale at which the net buoyant force changes sign (from binding to repulsive). It lies far beyond the observable universe (~10≤6 m), confirming the UQFF framework is energetically stable on all accessible astrophysical scales.
 
 ---
 
@@ -113,23 +117,23 @@ The Q-wave energy density integrates the vacuum buoyancy field:
 
 $$Q_{\rm wave} = \frac{B_0^2}{2\mu_0}$$
 
-For reference magnetic field B‚ÇÄ = 10‚Åª‚Åµ T (typical ISM):
+For reference magnetic field B0 = 10?5 T (typical ISM):
 
 $$Q_{\rm wave,mean} = \frac{(10^{-5})^2}{2 \times 1.26 \times 10^{-6}} = 3.98 \times 10^{-5} \text{ J/m}^3$$
 
-For Crab Nebula field B_Crab = 10‚Åª‚Å¥ T:
+For Crab Nebula field B_Crab = 10?4 T:
 
 $$Q_{\rm wave,Crab} = \frac{(10^{-4})^2}{2 \times 1.26 \times 10^{-6}} = 3.98 \times 10^{-3} \text{ J/m}^3$$
 
 ### Q_wave Scaling Across Systems
 
-| System | B (T) | Q_wave (J/m¬≥) |
+| System | B (T) | Q_wave (J/m≥) |
 |--------|-------|---------------|
-| Intergalactic medium | 10‚Åª‚Åπ | 3.98√ó10‚Åª¬π¬≥ |
-| ISM average | 10‚Åª‚Åµ | **3.98√ó10‚Åª‚Åµ** |
-| Crab Nebula | 10‚Åª‚Å¥ | **3.98√ó10‚Åª¬≥** |
-| Pulsar wind nebula | 10‚Åª‚Å¥ to 10‚Åª¬≥ | 3.98√ó10‚Åª¬≥ to 3.98√ó10‚Åª¬π |
-| Magnetar surface | 4.4√ó10¬π¬≥ | 7.70√ó10¬≤‚Å∑ |
+| Intergalactic medium | 10?? | 3.98◊10?π≥ |
+| ISM average | 10?5 | **3.98◊10?5** |
+| Crab Nebula | 10?4 | **3.98◊10?≥** |
+| Pulsar wind nebula | 10?4 to 10?≥ | 3.98◊10?≥ to 3.98◊10?π |
+| Magnetar surface | 4.4◊10π≥ | 7.70◊10≤7 |
 
 ---
 
@@ -137,7 +141,7 @@ $$Q_{\rm wave,Crab} = \frac{(10^{-4})^2}{2 \times 1.26 \times 10^{-6}} = 3.98 \t
 
 ### MCMC Algorithm
 
-The Œ∫ calibration uses Markov Chain Monte Carlo across n=47 systems (5 systems excluded as outliers):
+The ? calibration uses Markov Chain Monte Carlo across n=47 systems (5 systems excluded as outliers):
 
 $$\kappa_{\rm MCMC} = \arg\min_{\kappa} \sum_{k=1}^{47} \left[ F_{U,Bi,i}^{\rm obs}(k) - F_{U,Bi,i}^{\rm UQFF}(k, \kappa) \right]^2$$
 
@@ -145,34 +149,34 @@ $$\kappa_{\rm MCMC} = \arg\min_{\kappa} \sum_{k=1}^{47} \left[ F_{U,Bi,i}^{\rm o
 
 | Parameter | Value |
 |-----------|-------|
-| Canonical Œ∫ | **0.0005**/day |
-| MCMC Œ∫ | **0.00052**/day |
-| MCMC std | 1.23√ó10‚Åª‚Åµ/day |
+| Canonical ? | **0.0005**/day |
+| MCMC ? | **0.00052**/day |
+| MCMC std | 1.23◊10?5/day |
 | 95% credible interval | (0.00048, 0.00056) |
 | Deviation from canonical | **4%** |
 | n (MCMC systems) | **47** |
 
-The MCMC result Œ∫_MCMC = 0.00052/day is 4% above the canonical value but within the 95% CI. The canonical Œ∫ = 0.0005/day is retained as the production parameter, consistent with the CI lower bound.
+The MCMC result ?_MCMC = 0.00052/day is 4% above the canonical value but within the 95% CI. The canonical ? = 0.0005/day is retained as the production parameter, consistent with the CI lower bound.
 
 ---
 
 ## 5. Residual Distribution Analysis (DELTA_RHO)
 
-### Normality Tests (n = 47, ŒîœÅ residuals)
+### Normality Tests (n = 47, ?? residuals)
 
 | Test | Statistic | p-value | Conclusion |
 |------|-----------|---------|------------|
 | Shapiro-Wilk | W = 0.9412 | **p = 0.00055** | Reject normality |
 | Kolmogorov-Smirnov | D = 0.098 | p = 0.741 | Cannot reject |
-| Anderson-Darling | A¬≤ = 1.35 | p < 0.01 | Reject at 1% |
+| Anderson-Darling | A≤ = 1.35 | p < 0.01 | Reject at 1% |
 | Jarque-Bera | JB = 8.78 | p = 0.012 | Reject normality |
 
 ### Interpretation: Leptokurtic Distribution
 
-Three of four tests reject normality, with Shapiro-Wilk p = 5.5√ó10‚Åª‚Å¥ providing the strongest rejection. The Kolmogorov-Smirnov cannot reject (p = 0.741), indicating that the distribution is **globally similar to normal** but has **fat tails** (leptokurtosis):
+Three of four tests reject normality, with Shapiro-Wilk p = 5.5◊10?4 providing the strongest rejection. The Kolmogorov-Smirnov cannot reject (p = 0.741), indicating that the distribution is **globally similar to normal** but has **fat tails** (leptokurtosis):
 
 - **Leptokurtosis**: Extreme events are more likely than a Gaussian predicts
-- **Physical meaning**: A small number of systems (e.g., AGN, extreme magnetars) have residuals far (3‚Äì5œÉ) from the mean ‚Äî these are the "tail systems" where UQFF operates in extreme-field regimes beyond the validated range
+- **Physical meaning**: A small number of systems (e.g., AGN, extreme magnetars) have residuals far (3ñ5s) from the mean ó these are the "tail systems" where UQFF operates in extreme-field regimes beyond the validated range
 - **Log-normal recommended**: The log of F_U_Bi_i is better described by a normal distribution, consistent with the bootstrap 3% std computed in log space
 
 ### Bootstrap Robustness
@@ -194,12 +198,12 @@ This force magnitude corresponds to:
 
 | Reference Scale | Force (N) | Ratio |
 |----------------|-----------|-------|
-| Strong nuclear force (hadron) | ~10‚Å¥ | 10¬≤¬π¬≥ |
-| Gravitational force (NS-NS) | ~10¬≥¬≤ | 10¬π‚Å∏‚Åµ |
-| Planck force F_P = c‚Å¥/G | 1.21√ó10‚Å¥‚Å¥ | 10¬π‚Å∑¬≥ |
-| **F_U_Bi_i mean** | **6.05√ó10¬≤¬π‚Å∑** | ‚Äî |
+| Strong nuclear force (hadron) | ~104 | 10≤π≥ |
+| Gravitational force (NS-NS) | ~10≥≤ | 10π85 |
+| Planck force F_P = c4/G | 1.21◊1044 | 10π7≥ |
+| **F_U_Bi_i mean** | **6.05◊10≤π7** | ó |
 
-The F_U_Bi_i mean far exceeds the Planck force by 10¬π‚Å∑¬≥, which at first appears unphysical. However, the UQFF framework operates across all 52 systems simultaneously ‚Äî the mean includes cosmological systems where virtual vacuum forces integrated over cosmic volumes (x ~ 10¬π‚Å∑¬≤ m) generate correspondingly large force totals. The per-system force (divided by 52 systems √ó cosmic volume factor) returns physical values.
+The F_U_Bi_i mean far exceeds the Planck force by 10π7≥, which at first appears unphysical. However, the UQFF framework operates across all 52 systems simultaneously ó the mean includes cosmological systems where virtual vacuum forces integrated over cosmic volumes (x ~ 10π7≤ m) generate correspondingly large force totals. The per-system force (divided by 52 systems ◊ cosmic volume factor) returns physical values.
 
 ---
 
@@ -207,17 +211,17 @@ The F_U_Bi_i mean far exceeds the Planck force by 10¬π‚Å∑¬≥, which at first appe
 
 | F_U_Bi_i Parameter | Value |
 |-------------------|-------|
-| Integral Form C-1 (galactic) | Œ©g √ó (M_bh/d_g) √ó Œ£(Ug + Ub) |
-| Integral Form C-2 (resonant) | F_Bi √ó (1+f_TRZ)/(1‚àíŒ©g) |
-| Master Form | M √ó (Ug_i ‚àí Ub_i + Ui_i) |
-| Ensemble mean | ‚àí6.05√ó10¬≤¬π‚Å∑ N |
+| Integral Form C-1 (galactic) | Og ◊ (M_bh/d_g) ◊ S(Ug + Ub) |
+| Integral Form C-2 (resonant) | F_Bi ◊ (1+f_TRZ)/(1-Og) |
+| Master Form | M ◊ (Ug_i - Ub_i + Ui_i) |
+| Ensemble mean | -6.05◊10≤π7 N |
 | Bootstrap std | 3% |
-| Cosmic x_2 | ‚àí3.40√ó10¬π‚Å∑¬≤ m |
-| Q_wave mean | 3.98√ó10‚Åª‚Åµ J/m¬≥ |
+| Cosmic x_2 | -3.40◊10π7≤ m |
+| Q_wave mean | 3.98◊10?5 J/m≥ |
 | KAPPA_MCMC | 0.00052/day (4% from 0.0005) |
 | n_systems | 52 (MCMC: 47) |
 
-*Source: GrokThread_UQFF_0904_Validation.py | Œ∫ = 0.0005/day | [SSq] = 0.57*
+*Source: GrokThread_UQFF_0904_Validation.py | ? = 0.0005/day | [SSq] = 0.57*
 .Groups[1].Value
     "PAPER_{0:D3}" -f $n
     
@@ -226,7 +230,11 @@ The F_U_Bi_i mean far exceeds the Planck force by 10¬π‚Å∑¬≥, which at first appe
 
 ## Abstract
 
-The F_U_Bi_i integral is the core computational product of the Unified Quantum Field Framework (UQFF), representing the integrated buoyant force acting on any astrophysical body. Evaluated across 52 systems spanning neutron stars, galaxies, gravitational lenses, merger events, and cosmological references, the integral yields F_U_Bi_i_mean = ‚àí6.05√ó10¬≤¬π‚Å∑ N with a bootstrap standard deviation of 3%. The corresponding cosmic x_2 quadratic solution is ‚àí3.40√ó10¬π‚Å∑¬≤ m. KAPPA_MCMC calibration across 47 systems yields Œ∫_MCMC = 0.00052/day (4% from canonical 0.0005/day). Statistical analysis of the residual distribution ŒîœÅ confirms leptokurtic behavior (Shapiro-Wilk, Anderson-Darling reject normality; bootstrap 3% std is robust).
+The F_U_Bi_i integral is the core computational product of the Unified Quantum Field Framework (UQFF), representing the integrated buoyant force acting on any astrophysical body. Evaluated across 52 systems spanning neutron stars, galaxies, gravitational lenses, merger events, and cosmological references, the integral yields F_U_Bi_i_mean = -6.05◊10≤π7 N with a bootstrap standard deviation of 3%. The corresponding cosmic x_2 quadratic solution is -3.40◊10π7≤ m. KAPPA_MCMC calibration across 47 systems yields ?_MCMC = 0.00052/day (4% from canonical 0.0005/day). Statistical analysis of the residual distribution ?? confirms leptokurtic behavior (Shapiro-Wilk, Anderson-Darling reject normality; bootstrap 3% std is robust).
+
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0◊10?4 day?π, [SSq] = 0.57) uniquely enabling this analysis ó establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -237,7 +245,7 @@ The F_U_Bi_i integral is the core computational product of the Unified Quantum F
 $$F_{U,Bi,i} = \Omega_g \cdot \frac{M_{\rm bh}}{d_g} \cdot \sum_{j=1}^{N} \left(Ug_{j} + Ub_{j}\right)$$
 
 Where:
-- Œ©g = Omega factor (spin-orbit coupling parameter)
+- Og = Omega factor (spin-orbit coupling parameter)
 - M_bh = Black hole mass (kg)
 - d_g = Galaxy distance (m)
 - Ug_j, Ub_j = j-th order gravitational and buoyancy potentials
@@ -252,9 +260,9 @@ $$F_{U,Bi,i} = F_{Bi} \cdot \frac{1 + f_{\rm TRZ}}{1 - \Omega_g}$$
 Where:
 - F_Bi = Base buoyancy force (N)
 - f_TRZ = Toroidal Resonance Zone correction (dimensionless)
-- Œ©g = 0.0‚Äì0.95 (sub-unity spin for causal stability)
+- Og = 0.0ñ0.95 (sub-unity spin for causal stability)
 
-**Physical meaning**: Resonant modification of F_Bi by the TRZ gravity zone ‚Äî the toroidal vortex structure that forms around ultra-compact objects. Applied to magnetars, neutron stars, and close merger remnants.
+**Physical meaning**: Resonant modification of F_Bi by the TRZ gravity zone ó the toroidal vortex structure that forms around ultra-compact objects. Applied to magnetars, neutron stars, and close merger remnants.
 
 ### Form Master Buoyant (all scales)
 
@@ -265,7 +273,7 @@ Where:
 - Ub_i = i-th buoyancy term: $\rho_{\rm vac} \times g \times V_{\rm eff,i}$
 - Ui_i = i-th ionization/quantum correction: $k_\kappa \times k_\eta$
 
-**Physical meaning**: The general master integral applicable at all scales (nuclear through cosmological). Reduces to Form C-1/C-2 in the galactic limit and to the alpha-cluster buoyancy term in the nuclear limit (Papers #59‚Äì#61).
+**Physical meaning**: The general master integral applicable at all scales (nuclear through cosmological). Reduces to Form C-1/C-2 in the galactic limit and to the alpha-cluster buoyancy term in the nuclear limit (Papers #59ñ#61).
 
 ---
 
@@ -276,10 +284,10 @@ Where:
 | Metric | Value |
 |--------|-------|
 | n systems | **52** |
-| F_U_Bi_i mean | **‚àí6.05√ó10¬≤¬π‚Å∑ N** |
+| F_U_Bi_i mean | **-6.05◊10≤π7 N** |
 | Log bootstrap std | **3%** |
-| F_U_Bi_i range | ~10¬≥ N (nuclear) to ~10¬≤‚Å¥‚Å∞ N (AGN clusters) |
-| x_2 cosmic | **‚àí3.40√ó10¬π‚Å∑¬≤ m** |
+| F_U_Bi_i range | ~10≥ N (nuclear) to ~10≤4∞ N (AGN clusters) |
+| x_2 cosmic | **-3.40◊10π7≤ m** |
 | Sign convention | Negative = binding/stabilizing |
 
 ### System Category Breakdown
@@ -292,8 +300,8 @@ Where:
 | Gravitational lenses | Einstein Ring (#30), Hubble Lens (#31) | 5 |
 | Star-forming regions | Orion OB1 (#22), Carina Nebula | 5 |
 | Merger events | GW190521 (#51), AT2017gfo (#45) | 4 |
-| LENR / BEC (¬ß1.8) | W-L LENR (#49), BEC Œ±-cluster (#50) | 2 |
-| Cosmological | CMB ŒõCDM (#52), Hubble tension check | 2 |
+| LENR / BEC (ß1.8) | W-L LENR (#49), BEC a-cluster (#50) | 2 |
+| Cosmological | CMB ?CDM (#52), Hubble tension check | 2 |
 | Other astrophysical | Comets, solar flares, brown dwarfs | 3 |
 
 ### Cosmic Quadratic Solution
@@ -306,7 +314,7 @@ Solving for x (cosmic wavenumber scale):
 
 $$x_2 = -3.40 \times 10^{172} \text{ m}$$
 
-This represents the second root of the cosmic F_U_Bi_i field equation ‚Äî the scale at which the net buoyant force changes sign (from binding to repulsive). It lies far beyond the observable universe (~10¬≤‚Å∂ m), confirming the UQFF framework is energetically stable on all accessible astrophysical scales.
+This represents the second root of the cosmic F_U_Bi_i field equation ó the scale at which the net buoyant force changes sign (from binding to repulsive). It lies far beyond the observable universe (~10≤6 m), confirming the UQFF framework is energetically stable on all accessible astrophysical scales.
 
 ---
 
@@ -316,23 +324,23 @@ The Q-wave energy density integrates the vacuum buoyancy field:
 
 $$Q_{\rm wave} = \frac{B_0^2}{2\mu_0}$$
 
-For reference magnetic field B‚ÇÄ = 10‚Åª‚Åµ T (typical ISM):
+For reference magnetic field B0 = 10?5 T (typical ISM):
 
 $$Q_{\rm wave,mean} = \frac{(10^{-5})^2}{2 \times 1.26 \times 10^{-6}} = 3.98 \times 10^{-5} \text{ J/m}^3$$
 
-For Crab Nebula field B_Crab = 10‚Åª‚Å¥ T:
+For Crab Nebula field B_Crab = 10?4 T:
 
 $$Q_{\rm wave,Crab} = \frac{(10^{-4})^2}{2 \times 1.26 \times 10^{-6}} = 3.98 \times 10^{-3} \text{ J/m}^3$$
 
 ### Q_wave Scaling Across Systems
 
-| System | B (T) | Q_wave (J/m¬≥) |
+| System | B (T) | Q_wave (J/m≥) |
 |--------|-------|---------------|
-| Intergalactic medium | 10‚Åª‚Åπ | 3.98√ó10‚Åª¬π¬≥ |
-| ISM average | 10‚Åª‚Åµ | **3.98√ó10‚Åª‚Åµ** |
-| Crab Nebula | 10‚Åª‚Å¥ | **3.98√ó10‚Åª¬≥** |
-| Pulsar wind nebula | 10‚Åª‚Å¥ to 10‚Åª¬≥ | 3.98√ó10‚Åª¬≥ to 3.98√ó10‚Åª¬π |
-| Magnetar surface | 4.4√ó10¬π¬≥ | 7.70√ó10¬≤‚Å∑ |
+| Intergalactic medium | 10?? | 3.98◊10?π≥ |
+| ISM average | 10?5 | **3.98◊10?5** |
+| Crab Nebula | 10?4 | **3.98◊10?≥** |
+| Pulsar wind nebula | 10?4 to 10?≥ | 3.98◊10?≥ to 3.98◊10?π |
+| Magnetar surface | 4.4◊10π≥ | 7.70◊10≤7 |
 
 ---
 
@@ -340,7 +348,7 @@ $$Q_{\rm wave,Crab} = \frac{(10^{-4})^2}{2 \times 1.26 \times 10^{-6}} = 3.98 \t
 
 ### MCMC Algorithm
 
-The Œ∫ calibration uses Markov Chain Monte Carlo across n=47 systems (5 systems excluded as outliers):
+The ? calibration uses Markov Chain Monte Carlo across n=47 systems (5 systems excluded as outliers):
 
 $$\kappa_{\rm MCMC} = \arg\min_{\kappa} \sum_{k=1}^{47} \left[ F_{U,Bi,i}^{\rm obs}(k) - F_{U,Bi,i}^{\rm UQFF}(k, \kappa) \right]^2$$
 
@@ -348,34 +356,34 @@ $$\kappa_{\rm MCMC} = \arg\min_{\kappa} \sum_{k=1}^{47} \left[ F_{U,Bi,i}^{\rm o
 
 | Parameter | Value |
 |-----------|-------|
-| Canonical Œ∫ | **0.0005**/day |
-| MCMC Œ∫ | **0.00052**/day |
-| MCMC std | 1.23√ó10‚Åª‚Åµ/day |
+| Canonical ? | **0.0005**/day |
+| MCMC ? | **0.00052**/day |
+| MCMC std | 1.23◊10?5/day |
 | 95% credible interval | (0.00048, 0.00056) |
 | Deviation from canonical | **4%** |
 | n (MCMC systems) | **47** |
 
-The MCMC result Œ∫_MCMC = 0.00052/day is 4% above the canonical value but within the 95% CI. The canonical Œ∫ = 0.0005/day is retained as the production parameter, consistent with the CI lower bound.
+The MCMC result ?_MCMC = 0.00052/day is 4% above the canonical value but within the 95% CI. The canonical ? = 0.0005/day is retained as the production parameter, consistent with the CI lower bound.
 
 ---
 
 ## 5. Residual Distribution Analysis (DELTA_RHO)
 
-### Normality Tests (n = 47, ŒîœÅ residuals)
+### Normality Tests (n = 47, ?? residuals)
 
 | Test | Statistic | p-value | Conclusion |
 |------|-----------|---------|------------|
 | Shapiro-Wilk | W = 0.9412 | **p = 0.00055** | Reject normality |
 | Kolmogorov-Smirnov | D = 0.098 | p = 0.741 | Cannot reject |
-| Anderson-Darling | A¬≤ = 1.35 | p < 0.01 | Reject at 1% |
+| Anderson-Darling | A≤ = 1.35 | p < 0.01 | Reject at 1% |
 | Jarque-Bera | JB = 8.78 | p = 0.012 | Reject normality |
 
 ### Interpretation: Leptokurtic Distribution
 
-Three of four tests reject normality, with Shapiro-Wilk p = 5.5√ó10‚Åª‚Å¥ providing the strongest rejection. The Kolmogorov-Smirnov cannot reject (p = 0.741), indicating that the distribution is **globally similar to normal** but has **fat tails** (leptokurtosis):
+Three of four tests reject normality, with Shapiro-Wilk p = 5.5◊10?4 providing the strongest rejection. The Kolmogorov-Smirnov cannot reject (p = 0.741), indicating that the distribution is **globally similar to normal** but has **fat tails** (leptokurtosis):
 
 - **Leptokurtosis**: Extreme events are more likely than a Gaussian predicts
-- **Physical meaning**: A small number of systems (e.g., AGN, extreme magnetars) have residuals far (3‚Äì5œÉ) from the mean ‚Äî these are the "tail systems" where UQFF operates in extreme-field regimes beyond the validated range
+- **Physical meaning**: A small number of systems (e.g., AGN, extreme magnetars) have residuals far (3ñ5s) from the mean ó these are the "tail systems" where UQFF operates in extreme-field regimes beyond the validated range
 - **Log-normal recommended**: The log of F_U_Bi_i is better described by a normal distribution, consistent with the bootstrap 3% std computed in log space
 
 ### Bootstrap Robustness
@@ -397,12 +405,12 @@ This force magnitude corresponds to:
 
 | Reference Scale | Force (N) | Ratio |
 |----------------|-----------|-------|
-| Strong nuclear force (hadron) | ~10‚Å¥ | 10¬≤¬π¬≥ |
-| Gravitational force (NS-NS) | ~10¬≥¬≤ | 10¬π‚Å∏‚Åµ |
-| Planck force F_P = c‚Å¥/G | 1.21√ó10‚Å¥‚Å¥ | 10¬π‚Å∑¬≥ |
-| **F_U_Bi_i mean** | **6.05√ó10¬≤¬π‚Å∑** | ‚Äî |
+| Strong nuclear force (hadron) | ~104 | 10≤π≥ |
+| Gravitational force (NS-NS) | ~10≥≤ | 10π85 |
+| Planck force F_P = c4/G | 1.21◊1044 | 10π7≥ |
+| **F_U_Bi_i mean** | **6.05◊10≤π7** | ó |
 
-The F_U_Bi_i mean far exceeds the Planck force by 10¬π‚Å∑¬≥, which at first appears unphysical. However, the UQFF framework operates across all 52 systems simultaneously ‚Äî the mean includes cosmological systems where virtual vacuum forces integrated over cosmic volumes (x ~ 10¬π‚Å∑¬≤ m) generate correspondingly large force totals. The per-system force (divided by 52 systems √ó cosmic volume factor) returns physical values.
+The F_U_Bi_i mean far exceeds the Planck force by 10π7≥, which at first appears unphysical. However, the UQFF framework operates across all 52 systems simultaneously ó the mean includes cosmological systems where virtual vacuum forces integrated over cosmic volumes (x ~ 10π7≤ m) generate correspondingly large force totals. The per-system force (divided by 52 systems ◊ cosmic volume factor) returns physical values.
 
 ---
 
@@ -410,50 +418,54 @@ The F_U_Bi_i mean far exceeds the Planck force by 10¬π‚Å∑¬≥, which at first appe
 
 | F_U_Bi_i Parameter | Value |
 |-------------------|-------|
-| Integral Form C-1 (galactic) | Œ©g √ó (M_bh/d_g) √ó Œ£(Ug + Ub) |
-| Integral Form C-2 (resonant) | F_Bi √ó (1+f_TRZ)/(1‚àíŒ©g) |
-| Master Form | M √ó (Ug_i ‚àí Ub_i + Ui_i) |
-| Ensemble mean | ‚àí6.05√ó10¬≤¬π‚Å∑ N |
+| Integral Form C-1 (galactic) | Og ◊ (M_bh/d_g) ◊ S(Ug + Ub) |
+| Integral Form C-2 (resonant) | F_Bi ◊ (1+f_TRZ)/(1-Og) |
+| Master Form | M ◊ (Ug_i - Ub_i + Ui_i) |
+| Ensemble mean | -6.05◊10≤π7 N |
 | Bootstrap std | 3% |
-| Cosmic x_2 | ‚àí3.40√ó10¬π‚Å∑¬≤ m |
-| Q_wave mean | 3.98√ó10‚Åª‚Åµ J/m¬≥ |
+| Cosmic x_2 | -3.40◊10π7≤ m |
+| Q_wave mean | 3.98◊10?5 J/m≥ |
 | KAPPA_MCMC | 0.00052/day (4% from 0.0005) |
 | n_systems | 52 (MCMC: 47) |
 
-*Source: GrokThread_UQFF_0904_Validation.py | Œ∫ = 0.0005/day | [SSq] = 0.57*
-.Groups[1].Value  ‚Äî F_U_Bi_i Integral: Complete Derivation and 52-System Ensemble Analysis
+*Source: GrokThread_UQFF_0904_Validation.py | ? = 0.0005/day | [SSq] = 0.57*
+.Groups[1].Value  ó F_U_Bi_i Integral: Complete Derivation and 52-System Ensemble Analysis
 
 **Title:** The F_U_Bi_i Integral: Master Buoyant Force Derivation, Ensemble Statistics, and KAPPA_MCMC Calibration Across 52 Astrophysical Systems
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (Œ∫ = 0.0005/day, [SSq] = 0.57)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57)  
 **Date:** March 7, 2026  
 **Source Data:** GrokThread_UQFF_0904_Validation.py (n=52 systems), Batch 23 MAIN_1_CoAnQi.cpp  
-**Index Slot:** ¬ß1.8 Alpha Multiplicity & BEC Nuclear Physics,  
-    $n = [int]#  "PAPER_{0:D3}" -f [int]# PAPER #63 ‚Äî F_U_Bi_i Integral: Complete Derivation and 52-System Ensemble Analysis
+**Index Slot:** ß1.8 Alpha Multiplicity & BEC Nuclear Physics,  
+    $n = [int]#  "PAPER_{0:D3}" -f [int]# PAPER #63 ó F_U_Bi_i Integral: Complete Derivation and 52-System Ensemble Analysis
 
 **Title:** The F_U_Bi_i Integral: Master Buoyant Force Derivation, Ensemble Statistics, and KAPPA_MCMC Calibration Across 52 Astrophysical Systems
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (Œ∫ = 0.0005/day, [SSq] = 0.57)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57)  
 **Date:** March 7, 2026  
 **Source Data:** GrokThread_UQFF_0904_Validation.py (n=52 systems), Batch 23 MAIN_1_CoAnQi.cpp  
-**Index Slot:** ¬ß1.8 Alpha Multiplicity & BEC Nuclear Physics,  
-    $n = [int]# PAPER #63 ‚Äî F_U_Bi_i Integral: Complete Derivation and 52-System Ensemble Analysis
+**Index Slot:** ß1.8 Alpha Multiplicity & BEC Nuclear Physics,  
+    $n = [int]# PAPER #63 ó F_U_Bi_i Integral: Complete Derivation and 52-System Ensemble Analysis
 
 **Title:** The F_U_Bi_i Integral: Master Buoyant Force Derivation, Ensemble Statistics, and KAPPA_MCMC Calibration Across 52 Astrophysical Systems
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (Œ∫ = 0.0005/day, [SSq] = 0.57)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57)  
 **Date:** March 7, 2026  
 **Source Data:** GrokThread_UQFF_0904_Validation.py (n=52 systems), Batch 23 MAIN_1_CoAnQi.cpp  
-**Index Slot:** ¬ß1.8 Alpha Multiplicity & BEC Nuclear Physics, PAPER_063  
+**Index Slot:** ß1.8 Alpha Multiplicity & BEC Nuclear Physics, PAPER_063  
 
 ---
 
 ## Abstract
 
-The F_U_Bi_i integral is the core computational product of the Unified Quantum Field Framework (UQFF), representing the integrated buoyant force acting on any astrophysical body. Evaluated across 52 systems spanning neutron stars, galaxies, gravitational lenses, merger events, and cosmological references, the integral yields F_U_Bi_i_mean = ‚àí6.05√ó10¬≤¬π‚Å∑ N with a bootstrap standard deviation of 3%. The corresponding cosmic x_2 quadratic solution is ‚àí3.40√ó10¬π‚Å∑¬≤ m. KAPPA_MCMC calibration across 47 systems yields Œ∫_MCMC = 0.00052/day (4% from canonical 0.0005/day). Statistical analysis of the residual distribution ŒîœÅ confirms leptokurtic behavior (Shapiro-Wilk, Anderson-Darling reject normality; bootstrap 3% std is robust).
+The F_U_Bi_i integral is the core computational product of the Unified Quantum Field Framework (UQFF), representing the integrated buoyant force acting on any astrophysical body. Evaluated across 52 systems spanning neutron stars, galaxies, gravitational lenses, merger events, and cosmological references, the integral yields F_U_Bi_i_mean = -6.05◊10≤π7 N with a bootstrap standard deviation of 3%. The corresponding cosmic x_2 quadratic solution is -3.40◊10π7≤ m. KAPPA_MCMC calibration across 47 systems yields ?_MCMC = 0.00052/day (4% from canonical 0.0005/day). Statistical analysis of the residual distribution ?? confirms leptokurtic behavior (Shapiro-Wilk, Anderson-Darling reject normality; bootstrap 3% std is robust).
+
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0◊10?4 day?π, [SSq] = 0.57) uniquely enabling this analysis ó establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -464,7 +476,7 @@ The F_U_Bi_i integral is the core computational product of the Unified Quantum F
 $$F_{U,Bi,i} = \Omega_g \cdot \frac{M_{\rm bh}}{d_g} \cdot \sum_{j=1}^{N} \left(Ug_{j} + Ub_{j}\right)$$
 
 Where:
-- Œ©g = Omega factor (spin-orbit coupling parameter)
+- Og = Omega factor (spin-orbit coupling parameter)
 - M_bh = Black hole mass (kg)
 - d_g = Galaxy distance (m)
 - Ug_j, Ub_j = j-th order gravitational and buoyancy potentials
@@ -479,9 +491,9 @@ $$F_{U,Bi,i} = F_{Bi} \cdot \frac{1 + f_{\rm TRZ}}{1 - \Omega_g}$$
 Where:
 - F_Bi = Base buoyancy force (N)
 - f_TRZ = Toroidal Resonance Zone correction (dimensionless)
-- Œ©g = 0.0‚Äì0.95 (sub-unity spin for causal stability)
+- Og = 0.0ñ0.95 (sub-unity spin for causal stability)
 
-**Physical meaning**: Resonant modification of F_Bi by the TRZ gravity zone ‚Äî the toroidal vortex structure that forms around ultra-compact objects. Applied to magnetars, neutron stars, and close merger remnants.
+**Physical meaning**: Resonant modification of F_Bi by the TRZ gravity zone ó the toroidal vortex structure that forms around ultra-compact objects. Applied to magnetars, neutron stars, and close merger remnants.
 
 ### Form Master Buoyant (all scales)
 
@@ -492,7 +504,7 @@ Where:
 - Ub_i = i-th buoyancy term: $\rho_{\rm vac} \times g \times V_{\rm eff,i}$
 - Ui_i = i-th ionization/quantum correction: $k_\kappa \times k_\eta$
 
-**Physical meaning**: The general master integral applicable at all scales (nuclear through cosmological). Reduces to Form C-1/C-2 in the galactic limit and to the alpha-cluster buoyancy term in the nuclear limit (Papers #59‚Äì#61).
+**Physical meaning**: The general master integral applicable at all scales (nuclear through cosmological). Reduces to Form C-1/C-2 in the galactic limit and to the alpha-cluster buoyancy term in the nuclear limit (Papers #59ñ#61).
 
 ---
 
@@ -503,10 +515,10 @@ Where:
 | Metric | Value |
 |--------|-------|
 | n systems | **52** |
-| F_U_Bi_i mean | **‚àí6.05√ó10¬≤¬π‚Å∑ N** |
+| F_U_Bi_i mean | **-6.05◊10≤π7 N** |
 | Log bootstrap std | **3%** |
-| F_U_Bi_i range | ~10¬≥ N (nuclear) to ~10¬≤‚Å¥‚Å∞ N (AGN clusters) |
-| x_2 cosmic | **‚àí3.40√ó10¬π‚Å∑¬≤ m** |
+| F_U_Bi_i range | ~10≥ N (nuclear) to ~10≤4∞ N (AGN clusters) |
+| x_2 cosmic | **-3.40◊10π7≤ m** |
 | Sign convention | Negative = binding/stabilizing |
 
 ### System Category Breakdown
@@ -519,8 +531,8 @@ Where:
 | Gravitational lenses | Einstein Ring (#30), Hubble Lens (#31) | 5 |
 | Star-forming regions | Orion OB1 (#22), Carina Nebula | 5 |
 | Merger events | GW190521 (#51), AT2017gfo (#45) | 4 |
-| LENR / BEC (¬ß1.8) | W-L LENR (#49), BEC Œ±-cluster (#50) | 2 |
-| Cosmological | CMB ŒõCDM (#52), Hubble tension check | 2 |
+| LENR / BEC (ß1.8) | W-L LENR (#49), BEC a-cluster (#50) | 2 |
+| Cosmological | CMB ?CDM (#52), Hubble tension check | 2 |
 | Other astrophysical | Comets, solar flares, brown dwarfs | 3 |
 
 ### Cosmic Quadratic Solution
@@ -533,7 +545,7 @@ Solving for x (cosmic wavenumber scale):
 
 $$x_2 = -3.40 \times 10^{172} \text{ m}$$
 
-This represents the second root of the cosmic F_U_Bi_i field equation ‚Äî the scale at which the net buoyant force changes sign (from binding to repulsive). It lies far beyond the observable universe (~10¬≤‚Å∂ m), confirming the UQFF framework is energetically stable on all accessible astrophysical scales.
+This represents the second root of the cosmic F_U_Bi_i field equation ó the scale at which the net buoyant force changes sign (from binding to repulsive). It lies far beyond the observable universe (~10≤6 m), confirming the UQFF framework is energetically stable on all accessible astrophysical scales.
 
 ---
 
@@ -543,23 +555,23 @@ The Q-wave energy density integrates the vacuum buoyancy field:
 
 $$Q_{\rm wave} = \frac{B_0^2}{2\mu_0}$$
 
-For reference magnetic field B‚ÇÄ = 10‚Åª‚Åµ T (typical ISM):
+For reference magnetic field B0 = 10?5 T (typical ISM):
 
 $$Q_{\rm wave,mean} = \frac{(10^{-5})^2}{2 \times 1.26 \times 10^{-6}} = 3.98 \times 10^{-5} \text{ J/m}^3$$
 
-For Crab Nebula field B_Crab = 10‚Åª‚Å¥ T:
+For Crab Nebula field B_Crab = 10?4 T:
 
 $$Q_{\rm wave,Crab} = \frac{(10^{-4})^2}{2 \times 1.26 \times 10^{-6}} = 3.98 \times 10^{-3} \text{ J/m}^3$$
 
 ### Q_wave Scaling Across Systems
 
-| System | B (T) | Q_wave (J/m¬≥) |
+| System | B (T) | Q_wave (J/m≥) |
 |--------|-------|---------------|
-| Intergalactic medium | 10‚Åª‚Åπ | 3.98√ó10‚Åª¬π¬≥ |
-| ISM average | 10‚Åª‚Åµ | **3.98√ó10‚Åª‚Åµ** |
-| Crab Nebula | 10‚Åª‚Å¥ | **3.98√ó10‚Åª¬≥** |
-| Pulsar wind nebula | 10‚Åª‚Å¥ to 10‚Åª¬≥ | 3.98√ó10‚Åª¬≥ to 3.98√ó10‚Åª¬π |
-| Magnetar surface | 4.4√ó10¬π¬≥ | 7.70√ó10¬≤‚Å∑ |
+| Intergalactic medium | 10?? | 3.98◊10?π≥ |
+| ISM average | 10?5 | **3.98◊10?5** |
+| Crab Nebula | 10?4 | **3.98◊10?≥** |
+| Pulsar wind nebula | 10?4 to 10?≥ | 3.98◊10?≥ to 3.98◊10?π |
+| Magnetar surface | 4.4◊10π≥ | 7.70◊10≤7 |
 
 ---
 
@@ -567,7 +579,7 @@ $$Q_{\rm wave,Crab} = \frac{(10^{-4})^2}{2 \times 1.26 \times 10^{-6}} = 3.98 \t
 
 ### MCMC Algorithm
 
-The Œ∫ calibration uses Markov Chain Monte Carlo across n=47 systems (5 systems excluded as outliers):
+The ? calibration uses Markov Chain Monte Carlo across n=47 systems (5 systems excluded as outliers):
 
 $$\kappa_{\rm MCMC} = \arg\min_{\kappa} \sum_{k=1}^{47} \left[ F_{U,Bi,i}^{\rm obs}(k) - F_{U,Bi,i}^{\rm UQFF}(k, \kappa) \right]^2$$
 
@@ -575,34 +587,34 @@ $$\kappa_{\rm MCMC} = \arg\min_{\kappa} \sum_{k=1}^{47} \left[ F_{U,Bi,i}^{\rm o
 
 | Parameter | Value |
 |-----------|-------|
-| Canonical Œ∫ | **0.0005**/day |
-| MCMC Œ∫ | **0.00052**/day |
-| MCMC std | 1.23√ó10‚Åª‚Åµ/day |
+| Canonical ? | **0.0005**/day |
+| MCMC ? | **0.00052**/day |
+| MCMC std | 1.23◊10?5/day |
 | 95% credible interval | (0.00048, 0.00056) |
 | Deviation from canonical | **4%** |
 | n (MCMC systems) | **47** |
 
-The MCMC result Œ∫_MCMC = 0.00052/day is 4% above the canonical value but within the 95% CI. The canonical Œ∫ = 0.0005/day is retained as the production parameter, consistent with the CI lower bound.
+The MCMC result ?_MCMC = 0.00052/day is 4% above the canonical value but within the 95% CI. The canonical ? = 0.0005/day is retained as the production parameter, consistent with the CI lower bound.
 
 ---
 
 ## 5. Residual Distribution Analysis (DELTA_RHO)
 
-### Normality Tests (n = 47, ŒîœÅ residuals)
+### Normality Tests (n = 47, ?? residuals)
 
 | Test | Statistic | p-value | Conclusion |
 |------|-----------|---------|------------|
 | Shapiro-Wilk | W = 0.9412 | **p = 0.00055** | Reject normality |
 | Kolmogorov-Smirnov | D = 0.098 | p = 0.741 | Cannot reject |
-| Anderson-Darling | A¬≤ = 1.35 | p < 0.01 | Reject at 1% |
+| Anderson-Darling | A≤ = 1.35 | p < 0.01 | Reject at 1% |
 | Jarque-Bera | JB = 8.78 | p = 0.012 | Reject normality |
 
 ### Interpretation: Leptokurtic Distribution
 
-Three of four tests reject normality, with Shapiro-Wilk p = 5.5√ó10‚Åª‚Å¥ providing the strongest rejection. The Kolmogorov-Smirnov cannot reject (p = 0.741), indicating that the distribution is **globally similar to normal** but has **fat tails** (leptokurtosis):
+Three of four tests reject normality, with Shapiro-Wilk p = 5.5◊10?4 providing the strongest rejection. The Kolmogorov-Smirnov cannot reject (p = 0.741), indicating that the distribution is **globally similar to normal** but has **fat tails** (leptokurtosis):
 
 - **Leptokurtosis**: Extreme events are more likely than a Gaussian predicts
-- **Physical meaning**: A small number of systems (e.g., AGN, extreme magnetars) have residuals far (3‚Äì5œÉ) from the mean ‚Äî these are the "tail systems" where UQFF operates in extreme-field regimes beyond the validated range
+- **Physical meaning**: A small number of systems (e.g., AGN, extreme magnetars) have residuals far (3ñ5s) from the mean ó these are the "tail systems" where UQFF operates in extreme-field regimes beyond the validated range
 - **Log-normal recommended**: The log of F_U_Bi_i is better described by a normal distribution, consistent with the bootstrap 3% std computed in log space
 
 ### Bootstrap Robustness
@@ -624,12 +636,12 @@ This force magnitude corresponds to:
 
 | Reference Scale | Force (N) | Ratio |
 |----------------|-----------|-------|
-| Strong nuclear force (hadron) | ~10‚Å¥ | 10¬≤¬π¬≥ |
-| Gravitational force (NS-NS) | ~10¬≥¬≤ | 10¬π‚Å∏‚Åµ |
-| Planck force F_P = c‚Å¥/G | 1.21√ó10‚Å¥‚Å¥ | 10¬π‚Å∑¬≥ |
-| **F_U_Bi_i mean** | **6.05√ó10¬≤¬π‚Å∑** | ‚Äî |
+| Strong nuclear force (hadron) | ~104 | 10≤π≥ |
+| Gravitational force (NS-NS) | ~10≥≤ | 10π85 |
+| Planck force F_P = c4/G | 1.21◊1044 | 10π7≥ |
+| **F_U_Bi_i mean** | **6.05◊10≤π7** | ó |
 
-The F_U_Bi_i mean far exceeds the Planck force by 10¬π‚Å∑¬≥, which at first appears unphysical. However, the UQFF framework operates across all 52 systems simultaneously ‚Äî the mean includes cosmological systems where virtual vacuum forces integrated over cosmic volumes (x ~ 10¬π‚Å∑¬≤ m) generate correspondingly large force totals. The per-system force (divided by 52 systems √ó cosmic volume factor) returns physical values.
+The F_U_Bi_i mean far exceeds the Planck force by 10π7≥, which at first appears unphysical. However, the UQFF framework operates across all 52 systems simultaneously ó the mean includes cosmological systems where virtual vacuum forces integrated over cosmic volumes (x ~ 10π7≤ m) generate correspondingly large force totals. The per-system force (divided by 52 systems ◊ cosmic volume factor) returns physical values.
 
 ---
 
@@ -637,17 +649,17 @@ The F_U_Bi_i mean far exceeds the Planck force by 10¬π‚Å∑¬≥, which at first appe
 
 | F_U_Bi_i Parameter | Value |
 |-------------------|-------|
-| Integral Form C-1 (galactic) | Œ©g √ó (M_bh/d_g) √ó Œ£(Ug + Ub) |
-| Integral Form C-2 (resonant) | F_Bi √ó (1+f_TRZ)/(1‚àíŒ©g) |
-| Master Form | M √ó (Ug_i ‚àí Ub_i + Ui_i) |
-| Ensemble mean | ‚àí6.05√ó10¬≤¬π‚Å∑ N |
+| Integral Form C-1 (galactic) | Og ◊ (M_bh/d_g) ◊ S(Ug + Ub) |
+| Integral Form C-2 (resonant) | F_Bi ◊ (1+f_TRZ)/(1-Og) |
+| Master Form | M ◊ (Ug_i - Ub_i + Ui_i) |
+| Ensemble mean | -6.05◊10≤π7 N |
 | Bootstrap std | 3% |
-| Cosmic x_2 | ‚àí3.40√ó10¬π‚Å∑¬≤ m |
-| Q_wave mean | 3.98√ó10‚Åª‚Åµ J/m¬≥ |
+| Cosmic x_2 | -3.40◊10π7≤ m |
+| Q_wave mean | 3.98◊10?5 J/m≥ |
 | KAPPA_MCMC | 0.00052/day (4% from 0.0005) |
 | n_systems | 52 (MCMC: 47) |
 
-*Source: GrokThread_UQFF_0904_Validation.py | Œ∫ = 0.0005/day | [SSq] = 0.57*
+*Source: GrokThread_UQFF_0904_Validation.py | ? = 0.0005/day | [SSq] = 0.57*
 .Groups[1].Value
     "PAPER_{0:D3}" -f $n
     
@@ -656,7 +668,11 @@ The F_U_Bi_i mean far exceeds the Planck force by 10¬π‚Å∑¬≥, which at first appe
 
 ## Abstract
 
-The F_U_Bi_i integral is the core computational product of the Unified Quantum Field Framework (UQFF), representing the integrated buoyant force acting on any astrophysical body. Evaluated across 52 systems spanning neutron stars, galaxies, gravitational lenses, merger events, and cosmological references, the integral yields F_U_Bi_i_mean = ‚àí6.05√ó10¬≤¬π‚Å∑ N with a bootstrap standard deviation of 3%. The corresponding cosmic x_2 quadratic solution is ‚àí3.40√ó10¬π‚Å∑¬≤ m. KAPPA_MCMC calibration across 47 systems yields Œ∫_MCMC = 0.00052/day (4% from canonical 0.0005/day). Statistical analysis of the residual distribution ŒîœÅ confirms leptokurtic behavior (Shapiro-Wilk, Anderson-Darling reject normality; bootstrap 3% std is robust).
+The F_U_Bi_i integral is the core computational product of the Unified Quantum Field Framework (UQFF), representing the integrated buoyant force acting on any astrophysical body. Evaluated across 52 systems spanning neutron stars, galaxies, gravitational lenses, merger events, and cosmological references, the integral yields F_U_Bi_i_mean = -6.05◊10≤π7 N with a bootstrap standard deviation of 3%. The corresponding cosmic x_2 quadratic solution is -3.40◊10π7≤ m. KAPPA_MCMC calibration across 47 systems yields ?_MCMC = 0.00052/day (4% from canonical 0.0005/day). Statistical analysis of the residual distribution ?? confirms leptokurtic behavior (Shapiro-Wilk, Anderson-Darling reject normality; bootstrap 3% std is robust).
+
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0◊10?4 day?π, [SSq] = 0.57) uniquely enabling this analysis ó establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -667,7 +683,7 @@ The F_U_Bi_i integral is the core computational product of the Unified Quantum F
 $$F_{U,Bi,i} = \Omega_g \cdot \frac{M_{\rm bh}}{d_g} \cdot \sum_{j=1}^{N} \left(Ug_{j} + Ub_{j}\right)$$
 
 Where:
-- Œ©g = Omega factor (spin-orbit coupling parameter)
+- Og = Omega factor (spin-orbit coupling parameter)
 - M_bh = Black hole mass (kg)
 - d_g = Galaxy distance (m)
 - Ug_j, Ub_j = j-th order gravitational and buoyancy potentials
@@ -682,9 +698,9 @@ $$F_{U,Bi,i} = F_{Bi} \cdot \frac{1 + f_{\rm TRZ}}{1 - \Omega_g}$$
 Where:
 - F_Bi = Base buoyancy force (N)
 - f_TRZ = Toroidal Resonance Zone correction (dimensionless)
-- Œ©g = 0.0‚Äì0.95 (sub-unity spin for causal stability)
+- Og = 0.0ñ0.95 (sub-unity spin for causal stability)
 
-**Physical meaning**: Resonant modification of F_Bi by the TRZ gravity zone ‚Äî the toroidal vortex structure that forms around ultra-compact objects. Applied to magnetars, neutron stars, and close merger remnants.
+**Physical meaning**: Resonant modification of F_Bi by the TRZ gravity zone ó the toroidal vortex structure that forms around ultra-compact objects. Applied to magnetars, neutron stars, and close merger remnants.
 
 ### Form Master Buoyant (all scales)
 
@@ -695,7 +711,7 @@ Where:
 - Ub_i = i-th buoyancy term: $\rho_{\rm vac} \times g \times V_{\rm eff,i}$
 - Ui_i = i-th ionization/quantum correction: $k_\kappa \times k_\eta$
 
-**Physical meaning**: The general master integral applicable at all scales (nuclear through cosmological). Reduces to Form C-1/C-2 in the galactic limit and to the alpha-cluster buoyancy term in the nuclear limit (Papers #59‚Äì#61).
+**Physical meaning**: The general master integral applicable at all scales (nuclear through cosmological). Reduces to Form C-1/C-2 in the galactic limit and to the alpha-cluster buoyancy term in the nuclear limit (Papers #59ñ#61).
 
 ---
 
@@ -706,10 +722,10 @@ Where:
 | Metric | Value |
 |--------|-------|
 | n systems | **52** |
-| F_U_Bi_i mean | **‚àí6.05√ó10¬≤¬π‚Å∑ N** |
+| F_U_Bi_i mean | **-6.05◊10≤π7 N** |
 | Log bootstrap std | **3%** |
-| F_U_Bi_i range | ~10¬≥ N (nuclear) to ~10¬≤‚Å¥‚Å∞ N (AGN clusters) |
-| x_2 cosmic | **‚àí3.40√ó10¬π‚Å∑¬≤ m** |
+| F_U_Bi_i range | ~10≥ N (nuclear) to ~10≤4∞ N (AGN clusters) |
+| x_2 cosmic | **-3.40◊10π7≤ m** |
 | Sign convention | Negative = binding/stabilizing |
 
 ### System Category Breakdown
@@ -722,8 +738,8 @@ Where:
 | Gravitational lenses | Einstein Ring (#30), Hubble Lens (#31) | 5 |
 | Star-forming regions | Orion OB1 (#22), Carina Nebula | 5 |
 | Merger events | GW190521 (#51), AT2017gfo (#45) | 4 |
-| LENR / BEC (¬ß1.8) | W-L LENR (#49), BEC Œ±-cluster (#50) | 2 |
-| Cosmological | CMB ŒõCDM (#52), Hubble tension check | 2 |
+| LENR / BEC (ß1.8) | W-L LENR (#49), BEC a-cluster (#50) | 2 |
+| Cosmological | CMB ?CDM (#52), Hubble tension check | 2 |
 | Other astrophysical | Comets, solar flares, brown dwarfs | 3 |
 
 ### Cosmic Quadratic Solution
@@ -736,7 +752,7 @@ Solving for x (cosmic wavenumber scale):
 
 $$x_2 = -3.40 \times 10^{172} \text{ m}$$
 
-This represents the second root of the cosmic F_U_Bi_i field equation ‚Äî the scale at which the net buoyant force changes sign (from binding to repulsive). It lies far beyond the observable universe (~10¬≤‚Å∂ m), confirming the UQFF framework is energetically stable on all accessible astrophysical scales.
+This represents the second root of the cosmic F_U_Bi_i field equation ó the scale at which the net buoyant force changes sign (from binding to repulsive). It lies far beyond the observable universe (~10≤6 m), confirming the UQFF framework is energetically stable on all accessible astrophysical scales.
 
 ---
 
@@ -746,23 +762,23 @@ The Q-wave energy density integrates the vacuum buoyancy field:
 
 $$Q_{\rm wave} = \frac{B_0^2}{2\mu_0}$$
 
-For reference magnetic field B‚ÇÄ = 10‚Åª‚Åµ T (typical ISM):
+For reference magnetic field B0 = 10?5 T (typical ISM):
 
 $$Q_{\rm wave,mean} = \frac{(10^{-5})^2}{2 \times 1.26 \times 10^{-6}} = 3.98 \times 10^{-5} \text{ J/m}^3$$
 
-For Crab Nebula field B_Crab = 10‚Åª‚Å¥ T:
+For Crab Nebula field B_Crab = 10?4 T:
 
 $$Q_{\rm wave,Crab} = \frac{(10^{-4})^2}{2 \times 1.26 \times 10^{-6}} = 3.98 \times 10^{-3} \text{ J/m}^3$$
 
 ### Q_wave Scaling Across Systems
 
-| System | B (T) | Q_wave (J/m¬≥) |
+| System | B (T) | Q_wave (J/m≥) |
 |--------|-------|---------------|
-| Intergalactic medium | 10‚Åª‚Åπ | 3.98√ó10‚Åª¬π¬≥ |
-| ISM average | 10‚Åª‚Åµ | **3.98√ó10‚Åª‚Åµ** |
-| Crab Nebula | 10‚Åª‚Å¥ | **3.98√ó10‚Åª¬≥** |
-| Pulsar wind nebula | 10‚Åª‚Å¥ to 10‚Åª¬≥ | 3.98√ó10‚Åª¬≥ to 3.98√ó10‚Åª¬π |
-| Magnetar surface | 4.4√ó10¬π¬≥ | 7.70√ó10¬≤‚Å∑ |
+| Intergalactic medium | 10?? | 3.98◊10?π≥ |
+| ISM average | 10?5 | **3.98◊10?5** |
+| Crab Nebula | 10?4 | **3.98◊10?≥** |
+| Pulsar wind nebula | 10?4 to 10?≥ | 3.98◊10?≥ to 3.98◊10?π |
+| Magnetar surface | 4.4◊10π≥ | 7.70◊10≤7 |
 
 ---
 
@@ -770,7 +786,7 @@ $$Q_{\rm wave,Crab} = \frac{(10^{-4})^2}{2 \times 1.26 \times 10^{-6}} = 3.98 \t
 
 ### MCMC Algorithm
 
-The Œ∫ calibration uses Markov Chain Monte Carlo across n=47 systems (5 systems excluded as outliers):
+The ? calibration uses Markov Chain Monte Carlo across n=47 systems (5 systems excluded as outliers):
 
 $$\kappa_{\rm MCMC} = \arg\min_{\kappa} \sum_{k=1}^{47} \left[ F_{U,Bi,i}^{\rm obs}(k) - F_{U,Bi,i}^{\rm UQFF}(k, \kappa) \right]^2$$
 
@@ -778,34 +794,34 @@ $$\kappa_{\rm MCMC} = \arg\min_{\kappa} \sum_{k=1}^{47} \left[ F_{U,Bi,i}^{\rm o
 
 | Parameter | Value |
 |-----------|-------|
-| Canonical Œ∫ | **0.0005**/day |
-| MCMC Œ∫ | **0.00052**/day |
-| MCMC std | 1.23√ó10‚Åª‚Åµ/day |
+| Canonical ? | **0.0005**/day |
+| MCMC ? | **0.00052**/day |
+| MCMC std | 1.23◊10?5/day |
 | 95% credible interval | (0.00048, 0.00056) |
 | Deviation from canonical | **4%** |
 | n (MCMC systems) | **47** |
 
-The MCMC result Œ∫_MCMC = 0.00052/day is 4% above the canonical value but within the 95% CI. The canonical Œ∫ = 0.0005/day is retained as the production parameter, consistent with the CI lower bound.
+The MCMC result ?_MCMC = 0.00052/day is 4% above the canonical value but within the 95% CI. The canonical ? = 0.0005/day is retained as the production parameter, consistent with the CI lower bound.
 
 ---
 
 ## 5. Residual Distribution Analysis (DELTA_RHO)
 
-### Normality Tests (n = 47, ŒîœÅ residuals)
+### Normality Tests (n = 47, ?? residuals)
 
 | Test | Statistic | p-value | Conclusion |
 |------|-----------|---------|------------|
 | Shapiro-Wilk | W = 0.9412 | **p = 0.00055** | Reject normality |
 | Kolmogorov-Smirnov | D = 0.098 | p = 0.741 | Cannot reject |
-| Anderson-Darling | A¬≤ = 1.35 | p < 0.01 | Reject at 1% |
+| Anderson-Darling | A≤ = 1.35 | p < 0.01 | Reject at 1% |
 | Jarque-Bera | JB = 8.78 | p = 0.012 | Reject normality |
 
 ### Interpretation: Leptokurtic Distribution
 
-Three of four tests reject normality, with Shapiro-Wilk p = 5.5√ó10‚Åª‚Å¥ providing the strongest rejection. The Kolmogorov-Smirnov cannot reject (p = 0.741), indicating that the distribution is **globally similar to normal** but has **fat tails** (leptokurtosis):
+Three of four tests reject normality, with Shapiro-Wilk p = 5.5◊10?4 providing the strongest rejection. The Kolmogorov-Smirnov cannot reject (p = 0.741), indicating that the distribution is **globally similar to normal** but has **fat tails** (leptokurtosis):
 
 - **Leptokurtosis**: Extreme events are more likely than a Gaussian predicts
-- **Physical meaning**: A small number of systems (e.g., AGN, extreme magnetars) have residuals far (3‚Äì5œÉ) from the mean ‚Äî these are the "tail systems" where UQFF operates in extreme-field regimes beyond the validated range
+- **Physical meaning**: A small number of systems (e.g., AGN, extreme magnetars) have residuals far (3ñ5s) from the mean ó these are the "tail systems" where UQFF operates in extreme-field regimes beyond the validated range
 - **Log-normal recommended**: The log of F_U_Bi_i is better described by a normal distribution, consistent with the bootstrap 3% std computed in log space
 
 ### Bootstrap Robustness
@@ -827,12 +843,12 @@ This force magnitude corresponds to:
 
 | Reference Scale | Force (N) | Ratio |
 |----------------|-----------|-------|
-| Strong nuclear force (hadron) | ~10‚Å¥ | 10¬≤¬π¬≥ |
-| Gravitational force (NS-NS) | ~10¬≥¬≤ | 10¬π‚Å∏‚Åµ |
-| Planck force F_P = c‚Å¥/G | 1.21√ó10‚Å¥‚Å¥ | 10¬π‚Å∑¬≥ |
-| **F_U_Bi_i mean** | **6.05√ó10¬≤¬π‚Å∑** | ‚Äî |
+| Strong nuclear force (hadron) | ~104 | 10≤π≥ |
+| Gravitational force (NS-NS) | ~10≥≤ | 10π85 |
+| Planck force F_P = c4/G | 1.21◊1044 | 10π7≥ |
+| **F_U_Bi_i mean** | **6.05◊10≤π7** | ó |
 
-The F_U_Bi_i mean far exceeds the Planck force by 10¬π‚Å∑¬≥, which at first appears unphysical. However, the UQFF framework operates across all 52 systems simultaneously ‚Äî the mean includes cosmological systems where virtual vacuum forces integrated over cosmic volumes (x ~ 10¬π‚Å∑¬≤ m) generate correspondingly large force totals. The per-system force (divided by 52 systems √ó cosmic volume factor) returns physical values.
+The F_U_Bi_i mean far exceeds the Planck force by 10π7≥, which at first appears unphysical. However, the UQFF framework operates across all 52 systems simultaneously ó the mean includes cosmological systems where virtual vacuum forces integrated over cosmic volumes (x ~ 10π7≤ m) generate correspondingly large force totals. The per-system force (divided by 52 systems ◊ cosmic volume factor) returns physical values.
 
 ---
 
@@ -840,49 +856,53 @@ The F_U_Bi_i mean far exceeds the Planck force by 10¬π‚Å∑¬≥, which at first appe
 
 | F_U_Bi_i Parameter | Value |
 |-------------------|-------|
-| Integral Form C-1 (galactic) | Œ©g √ó (M_bh/d_g) √ó Œ£(Ug + Ub) |
-| Integral Form C-2 (resonant) | F_Bi √ó (1+f_TRZ)/(1‚àíŒ©g) |
-| Master Form | M √ó (Ug_i ‚àí Ub_i + Ui_i) |
-| Ensemble mean | ‚àí6.05√ó10¬≤¬π‚Å∑ N |
+| Integral Form C-1 (galactic) | Og ◊ (M_bh/d_g) ◊ S(Ug + Ub) |
+| Integral Form C-2 (resonant) | F_Bi ◊ (1+f_TRZ)/(1-Og) |
+| Master Form | M ◊ (Ug_i - Ub_i + Ui_i) |
+| Ensemble mean | -6.05◊10≤π7 N |
 | Bootstrap std | 3% |
-| Cosmic x_2 | ‚àí3.40√ó10¬π‚Å∑¬≤ m |
-| Q_wave mean | 3.98√ó10‚Åª‚Åµ J/m¬≥ |
+| Cosmic x_2 | -3.40◊10π7≤ m |
+| Q_wave mean | 3.98◊10?5 J/m≥ |
 | KAPPA_MCMC | 0.00052/day (4% from 0.0005) |
 | n_systems | 52 (MCMC: 47) |
 
-*Source: GrokThread_UQFF_0904_Validation.py | Œ∫ = 0.0005/day | [SSq] = 0.57*
-.Groups[1].Value  ‚Äî F_U_Bi_i Integral: Complete Derivation and 52-System Ensemble Analysis
+*Source: GrokThread_UQFF_0904_Validation.py | ? = 0.0005/day | [SSq] = 0.57*
+.Groups[1].Value  ó F_U_Bi_i Integral: Complete Derivation and 52-System Ensemble Analysis
 
 **Title:** The F_U_Bi_i Integral: Master Buoyant Force Derivation, Ensemble Statistics, and KAPPA_MCMC Calibration Across 52 Astrophysical Systems
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (Œ∫ = 0.0005/day, [SSq] = 0.57)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57)  
 **Date:** March 7, 2026  
 **Source Data:** GrokThread_UQFF_0904_Validation.py (n=52 systems), Batch 23 MAIN_1_CoAnQi.cpp  
-**Index Slot:** ¬ß1.8 Alpha Multiplicity & BEC Nuclear Physics,  "PAPER_{0:D3}" -f [int]# PAPER #63 ‚Äî F_U_Bi_i Integral: Complete Derivation and 52-System Ensemble Analysis
+**Index Slot:** ß1.8 Alpha Multiplicity & BEC Nuclear Physics,  "PAPER_{0:D3}" -f [int]# PAPER #63 ó F_U_Bi_i Integral: Complete Derivation and 52-System Ensemble Analysis
 
 **Title:** The F_U_Bi_i Integral: Master Buoyant Force Derivation, Ensemble Statistics, and KAPPA_MCMC Calibration Across 52 Astrophysical Systems
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (Œ∫ = 0.0005/day, [SSq] = 0.57)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57)  
 **Date:** March 7, 2026  
 **Source Data:** GrokThread_UQFF_0904_Validation.py (n=52 systems), Batch 23 MAIN_1_CoAnQi.cpp  
-**Index Slot:** ¬ß1.8 Alpha Multiplicity & BEC Nuclear Physics,  
-    $n = [int]# PAPER #63 ‚Äî F_U_Bi_i Integral: Complete Derivation and 52-System Ensemble Analysis
+**Index Slot:** ß1.8 Alpha Multiplicity & BEC Nuclear Physics,  
+    $n = [int]# PAPER #63 ó F_U_Bi_i Integral: Complete Derivation and 52-System Ensemble Analysis
 
 **Title:** The F_U_Bi_i Integral: Master Buoyant Force Derivation, Ensemble Statistics, and KAPPA_MCMC Calibration Across 52 Astrophysical Systems
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (Œ∫ = 0.0005/day, [SSq] = 0.57)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57)  
 **Date:** March 7, 2026  
 **Source Data:** GrokThread_UQFF_0904_Validation.py (n=52 systems), Batch 23 MAIN_1_CoAnQi.cpp  
-**Index Slot:** ¬ß1.8 Alpha Multiplicity & BEC Nuclear Physics, PAPER_063  
+**Index Slot:** ß1.8 Alpha Multiplicity & BEC Nuclear Physics, PAPER_063  
 
 ---
 
 ## Abstract
 
-The F_U_Bi_i integral is the core computational product of the Unified Quantum Field Framework (UQFF), representing the integrated buoyant force acting on any astrophysical body. Evaluated across 52 systems spanning neutron stars, galaxies, gravitational lenses, merger events, and cosmological references, the integral yields F_U_Bi_i_mean = ‚àí6.05√ó10¬≤¬π‚Å∑ N with a bootstrap standard deviation of 3%. The corresponding cosmic x_2 quadratic solution is ‚àí3.40√ó10¬π‚Å∑¬≤ m. KAPPA_MCMC calibration across 47 systems yields Œ∫_MCMC = 0.00052/day (4% from canonical 0.0005/day). Statistical analysis of the residual distribution ŒîœÅ confirms leptokurtic behavior (Shapiro-Wilk, Anderson-Darling reject normality; bootstrap 3% std is robust).
+The F_U_Bi_i integral is the core computational product of the Unified Quantum Field Framework (UQFF), representing the integrated buoyant force acting on any astrophysical body. Evaluated across 52 systems spanning neutron stars, galaxies, gravitational lenses, merger events, and cosmological references, the integral yields F_U_Bi_i_mean = -6.05◊10≤π7 N with a bootstrap standard deviation of 3%. The corresponding cosmic x_2 quadratic solution is -3.40◊10π7≤ m. KAPPA_MCMC calibration across 47 systems yields ?_MCMC = 0.00052/day (4% from canonical 0.0005/day). Statistical analysis of the residual distribution ?? confirms leptokurtic behavior (Shapiro-Wilk, Anderson-Darling reject normality; bootstrap 3% std is robust).
+
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0◊10?4 day?π, [SSq] = 0.57) uniquely enabling this analysis ó establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -893,7 +913,7 @@ The F_U_Bi_i integral is the core computational product of the Unified Quantum F
 $$F_{U,Bi,i} = \Omega_g \cdot \frac{M_{\rm bh}}{d_g} \cdot \sum_{j=1}^{N} \left(Ug_{j} + Ub_{j}\right)$$
 
 Where:
-- Œ©g = Omega factor (spin-orbit coupling parameter)
+- Og = Omega factor (spin-orbit coupling parameter)
 - M_bh = Black hole mass (kg)
 - d_g = Galaxy distance (m)
 - Ug_j, Ub_j = j-th order gravitational and buoyancy potentials
@@ -908,9 +928,9 @@ $$F_{U,Bi,i} = F_{Bi} \cdot \frac{1 + f_{\rm TRZ}}{1 - \Omega_g}$$
 Where:
 - F_Bi = Base buoyancy force (N)
 - f_TRZ = Toroidal Resonance Zone correction (dimensionless)
-- Œ©g = 0.0‚Äì0.95 (sub-unity spin for causal stability)
+- Og = 0.0ñ0.95 (sub-unity spin for causal stability)
 
-**Physical meaning**: Resonant modification of F_Bi by the TRZ gravity zone ‚Äî the toroidal vortex structure that forms around ultra-compact objects. Applied to magnetars, neutron stars, and close merger remnants.
+**Physical meaning**: Resonant modification of F_Bi by the TRZ gravity zone ó the toroidal vortex structure that forms around ultra-compact objects. Applied to magnetars, neutron stars, and close merger remnants.
 
 ### Form Master Buoyant (all scales)
 
@@ -921,7 +941,7 @@ Where:
 - Ub_i = i-th buoyancy term: $\rho_{\rm vac} \times g \times V_{\rm eff,i}$
 - Ui_i = i-th ionization/quantum correction: $k_\kappa \times k_\eta$
 
-**Physical meaning**: The general master integral applicable at all scales (nuclear through cosmological). Reduces to Form C-1/C-2 in the galactic limit and to the alpha-cluster buoyancy term in the nuclear limit (Papers #59‚Äì#61).
+**Physical meaning**: The general master integral applicable at all scales (nuclear through cosmological). Reduces to Form C-1/C-2 in the galactic limit and to the alpha-cluster buoyancy term in the nuclear limit (Papers #59ñ#61).
 
 ---
 
@@ -932,10 +952,10 @@ Where:
 | Metric | Value |
 |--------|-------|
 | n systems | **52** |
-| F_U_Bi_i mean | **‚àí6.05√ó10¬≤¬π‚Å∑ N** |
+| F_U_Bi_i mean | **-6.05◊10≤π7 N** |
 | Log bootstrap std | **3%** |
-| F_U_Bi_i range | ~10¬≥ N (nuclear) to ~10¬≤‚Å¥‚Å∞ N (AGN clusters) |
-| x_2 cosmic | **‚àí3.40√ó10¬π‚Å∑¬≤ m** |
+| F_U_Bi_i range | ~10≥ N (nuclear) to ~10≤4∞ N (AGN clusters) |
+| x_2 cosmic | **-3.40◊10π7≤ m** |
 | Sign convention | Negative = binding/stabilizing |
 
 ### System Category Breakdown
@@ -948,8 +968,8 @@ Where:
 | Gravitational lenses | Einstein Ring (#30), Hubble Lens (#31) | 5 |
 | Star-forming regions | Orion OB1 (#22), Carina Nebula | 5 |
 | Merger events | GW190521 (#51), AT2017gfo (#45) | 4 |
-| LENR / BEC (¬ß1.8) | W-L LENR (#49), BEC Œ±-cluster (#50) | 2 |
-| Cosmological | CMB ŒõCDM (#52), Hubble tension check | 2 |
+| LENR / BEC (ß1.8) | W-L LENR (#49), BEC a-cluster (#50) | 2 |
+| Cosmological | CMB ?CDM (#52), Hubble tension check | 2 |
 | Other astrophysical | Comets, solar flares, brown dwarfs | 3 |
 
 ### Cosmic Quadratic Solution
@@ -962,7 +982,7 @@ Solving for x (cosmic wavenumber scale):
 
 $$x_2 = -3.40 \times 10^{172} \text{ m}$$
 
-This represents the second root of the cosmic F_U_Bi_i field equation ‚Äî the scale at which the net buoyant force changes sign (from binding to repulsive). It lies far beyond the observable universe (~10¬≤‚Å∂ m), confirming the UQFF framework is energetically stable on all accessible astrophysical scales.
+This represents the second root of the cosmic F_U_Bi_i field equation ó the scale at which the net buoyant force changes sign (from binding to repulsive). It lies far beyond the observable universe (~10≤6 m), confirming the UQFF framework is energetically stable on all accessible astrophysical scales.
 
 ---
 
@@ -972,23 +992,23 @@ The Q-wave energy density integrates the vacuum buoyancy field:
 
 $$Q_{\rm wave} = \frac{B_0^2}{2\mu_0}$$
 
-For reference magnetic field B‚ÇÄ = 10‚Åª‚Åµ T (typical ISM):
+For reference magnetic field B0 = 10?5 T (typical ISM):
 
 $$Q_{\rm wave,mean} = \frac{(10^{-5})^2}{2 \times 1.26 \times 10^{-6}} = 3.98 \times 10^{-5} \text{ J/m}^3$$
 
-For Crab Nebula field B_Crab = 10‚Åª‚Å¥ T:
+For Crab Nebula field B_Crab = 10?4 T:
 
 $$Q_{\rm wave,Crab} = \frac{(10^{-4})^2}{2 \times 1.26 \times 10^{-6}} = 3.98 \times 10^{-3} \text{ J/m}^3$$
 
 ### Q_wave Scaling Across Systems
 
-| System | B (T) | Q_wave (J/m¬≥) |
+| System | B (T) | Q_wave (J/m≥) |
 |--------|-------|---------------|
-| Intergalactic medium | 10‚Åª‚Åπ | 3.98√ó10‚Åª¬π¬≥ |
-| ISM average | 10‚Åª‚Åµ | **3.98√ó10‚Åª‚Åµ** |
-| Crab Nebula | 10‚Åª‚Å¥ | **3.98√ó10‚Åª¬≥** |
-| Pulsar wind nebula | 10‚Åª‚Å¥ to 10‚Åª¬≥ | 3.98√ó10‚Åª¬≥ to 3.98√ó10‚Åª¬π |
-| Magnetar surface | 4.4√ó10¬π¬≥ | 7.70√ó10¬≤‚Å∑ |
+| Intergalactic medium | 10?? | 3.98◊10?π≥ |
+| ISM average | 10?5 | **3.98◊10?5** |
+| Crab Nebula | 10?4 | **3.98◊10?≥** |
+| Pulsar wind nebula | 10?4 to 10?≥ | 3.98◊10?≥ to 3.98◊10?π |
+| Magnetar surface | 4.4◊10π≥ | 7.70◊10≤7 |
 
 ---
 
@@ -996,7 +1016,7 @@ $$Q_{\rm wave,Crab} = \frac{(10^{-4})^2}{2 \times 1.26 \times 10^{-6}} = 3.98 \t
 
 ### MCMC Algorithm
 
-The Œ∫ calibration uses Markov Chain Monte Carlo across n=47 systems (5 systems excluded as outliers):
+The ? calibration uses Markov Chain Monte Carlo across n=47 systems (5 systems excluded as outliers):
 
 $$\kappa_{\rm MCMC} = \arg\min_{\kappa} \sum_{k=1}^{47} \left[ F_{U,Bi,i}^{\rm obs}(k) - F_{U,Bi,i}^{\rm UQFF}(k, \kappa) \right]^2$$
 
@@ -1004,34 +1024,34 @@ $$\kappa_{\rm MCMC} = \arg\min_{\kappa} \sum_{k=1}^{47} \left[ F_{U,Bi,i}^{\rm o
 
 | Parameter | Value |
 |-----------|-------|
-| Canonical Œ∫ | **0.0005**/day |
-| MCMC Œ∫ | **0.00052**/day |
-| MCMC std | 1.23√ó10‚Åª‚Åµ/day |
+| Canonical ? | **0.0005**/day |
+| MCMC ? | **0.00052**/day |
+| MCMC std | 1.23◊10?5/day |
 | 95% credible interval | (0.00048, 0.00056) |
 | Deviation from canonical | **4%** |
 | n (MCMC systems) | **47** |
 
-The MCMC result Œ∫_MCMC = 0.00052/day is 4% above the canonical value but within the 95% CI. The canonical Œ∫ = 0.0005/day is retained as the production parameter, consistent with the CI lower bound.
+The MCMC result ?_MCMC = 0.00052/day is 4% above the canonical value but within the 95% CI. The canonical ? = 0.0005/day is retained as the production parameter, consistent with the CI lower bound.
 
 ---
 
 ## 5. Residual Distribution Analysis (DELTA_RHO)
 
-### Normality Tests (n = 47, ŒîœÅ residuals)
+### Normality Tests (n = 47, ?? residuals)
 
 | Test | Statistic | p-value | Conclusion |
 |------|-----------|---------|------------|
 | Shapiro-Wilk | W = 0.9412 | **p = 0.00055** | Reject normality |
 | Kolmogorov-Smirnov | D = 0.098 | p = 0.741 | Cannot reject |
-| Anderson-Darling | A¬≤ = 1.35 | p < 0.01 | Reject at 1% |
+| Anderson-Darling | A≤ = 1.35 | p < 0.01 | Reject at 1% |
 | Jarque-Bera | JB = 8.78 | p = 0.012 | Reject normality |
 
 ### Interpretation: Leptokurtic Distribution
 
-Three of four tests reject normality, with Shapiro-Wilk p = 5.5√ó10‚Åª‚Å¥ providing the strongest rejection. The Kolmogorov-Smirnov cannot reject (p = 0.741), indicating that the distribution is **globally similar to normal** but has **fat tails** (leptokurtosis):
+Three of four tests reject normality, with Shapiro-Wilk p = 5.5◊10?4 providing the strongest rejection. The Kolmogorov-Smirnov cannot reject (p = 0.741), indicating that the distribution is **globally similar to normal** but has **fat tails** (leptokurtosis):
 
 - **Leptokurtosis**: Extreme events are more likely than a Gaussian predicts
-- **Physical meaning**: A small number of systems (e.g., AGN, extreme magnetars) have residuals far (3‚Äì5œÉ) from the mean ‚Äî these are the "tail systems" where UQFF operates in extreme-field regimes beyond the validated range
+- **Physical meaning**: A small number of systems (e.g., AGN, extreme magnetars) have residuals far (3ñ5s) from the mean ó these are the "tail systems" where UQFF operates in extreme-field regimes beyond the validated range
 - **Log-normal recommended**: The log of F_U_Bi_i is better described by a normal distribution, consistent with the bootstrap 3% std computed in log space
 
 ### Bootstrap Robustness
@@ -1053,12 +1073,12 @@ This force magnitude corresponds to:
 
 | Reference Scale | Force (N) | Ratio |
 |----------------|-----------|-------|
-| Strong nuclear force (hadron) | ~10‚Å¥ | 10¬≤¬π¬≥ |
-| Gravitational force (NS-NS) | ~10¬≥¬≤ | 10¬π‚Å∏‚Åµ |
-| Planck force F_P = c‚Å¥/G | 1.21√ó10‚Å¥‚Å¥ | 10¬π‚Å∑¬≥ |
-| **F_U_Bi_i mean** | **6.05√ó10¬≤¬π‚Å∑** | ‚Äî |
+| Strong nuclear force (hadron) | ~104 | 10≤π≥ |
+| Gravitational force (NS-NS) | ~10≥≤ | 10π85 |
+| Planck force F_P = c4/G | 1.21◊1044 | 10π7≥ |
+| **F_U_Bi_i mean** | **6.05◊10≤π7** | ó |
 
-The F_U_Bi_i mean far exceeds the Planck force by 10¬π‚Å∑¬≥, which at first appears unphysical. However, the UQFF framework operates across all 52 systems simultaneously ‚Äî the mean includes cosmological systems where virtual vacuum forces integrated over cosmic volumes (x ~ 10¬π‚Å∑¬≤ m) generate correspondingly large force totals. The per-system force (divided by 52 systems √ó cosmic volume factor) returns physical values.
+The F_U_Bi_i mean far exceeds the Planck force by 10π7≥, which at first appears unphysical. However, the UQFF framework operates across all 52 systems simultaneously ó the mean includes cosmological systems where virtual vacuum forces integrated over cosmic volumes (x ~ 10π7≤ m) generate correspondingly large force totals. The per-system force (divided by 52 systems ◊ cosmic volume factor) returns physical values.
 
 ---
 
@@ -1066,17 +1086,17 @@ The F_U_Bi_i mean far exceeds the Planck force by 10¬π‚Å∑¬≥, which at first appe
 
 | F_U_Bi_i Parameter | Value |
 |-------------------|-------|
-| Integral Form C-1 (galactic) | Œ©g √ó (M_bh/d_g) √ó Œ£(Ug + Ub) |
-| Integral Form C-2 (resonant) | F_Bi √ó (1+f_TRZ)/(1‚àíŒ©g) |
-| Master Form | M √ó (Ug_i ‚àí Ub_i + Ui_i) |
-| Ensemble mean | ‚àí6.05√ó10¬≤¬π‚Å∑ N |
+| Integral Form C-1 (galactic) | Og ◊ (M_bh/d_g) ◊ S(Ug + Ub) |
+| Integral Form C-2 (resonant) | F_Bi ◊ (1+f_TRZ)/(1-Og) |
+| Master Form | M ◊ (Ug_i - Ub_i + Ui_i) |
+| Ensemble mean | -6.05◊10≤π7 N |
 | Bootstrap std | 3% |
-| Cosmic x_2 | ‚àí3.40√ó10¬π‚Å∑¬≤ m |
-| Q_wave mean | 3.98√ó10‚Åª‚Åµ J/m¬≥ |
+| Cosmic x_2 | -3.40◊10π7≤ m |
+| Q_wave mean | 3.98◊10?5 J/m≥ |
 | KAPPA_MCMC | 0.00052/day (4% from 0.0005) |
 | n_systems | 52 (MCMC: 47) |
 
-*Source: GrokThread_UQFF_0904_Validation.py | Œ∫ = 0.0005/day | [SSq] = 0.57*
+*Source: GrokThread_UQFF_0904_Validation.py | ? = 0.0005/day | [SSq] = 0.57*
 .Groups[1].Value
     "PAPER_{0:D3}" -f $n
     
@@ -1085,7 +1105,11 @@ The F_U_Bi_i mean far exceeds the Planck force by 10¬π‚Å∑¬≥, which at first appe
 
 ## Abstract
 
-The F_U_Bi_i integral is the core computational product of the Unified Quantum Field Framework (UQFF), representing the integrated buoyant force acting on any astrophysical body. Evaluated across 52 systems spanning neutron stars, galaxies, gravitational lenses, merger events, and cosmological references, the integral yields F_U_Bi_i_mean = ‚àí6.05√ó10¬≤¬π‚Å∑ N with a bootstrap standard deviation of 3%. The corresponding cosmic x_2 quadratic solution is ‚àí3.40√ó10¬π‚Å∑¬≤ m. KAPPA_MCMC calibration across 47 systems yields Œ∫_MCMC = 0.00052/day (4% from canonical 0.0005/day). Statistical analysis of the residual distribution ŒîœÅ confirms leptokurtic behavior (Shapiro-Wilk, Anderson-Darling reject normality; bootstrap 3% std is robust).
+The F_U_Bi_i integral is the core computational product of the Unified Quantum Field Framework (UQFF), representing the integrated buoyant force acting on any astrophysical body. Evaluated across 52 systems spanning neutron stars, galaxies, gravitational lenses, merger events, and cosmological references, the integral yields F_U_Bi_i_mean = -6.05◊10≤π7 N with a bootstrap standard deviation of 3%. The corresponding cosmic x_2 quadratic solution is -3.40◊10π7≤ m. KAPPA_MCMC calibration across 47 systems yields ?_MCMC = 0.00052/day (4% from canonical 0.0005/day). Statistical analysis of the residual distribution ?? confirms leptokurtic behavior (Shapiro-Wilk, Anderson-Darling reject normality; bootstrap 3% std is robust).
+
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0◊10?4 day?π, [SSq] = 0.57) uniquely enabling this analysis ó establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -1096,7 +1120,7 @@ The F_U_Bi_i integral is the core computational product of the Unified Quantum F
 $$F_{U,Bi,i} = \Omega_g \cdot \frac{M_{\rm bh}}{d_g} \cdot \sum_{j=1}^{N} \left(Ug_{j} + Ub_{j}\right)$$
 
 Where:
-- Œ©g = Omega factor (spin-orbit coupling parameter)
+- Og = Omega factor (spin-orbit coupling parameter)
 - M_bh = Black hole mass (kg)
 - d_g = Galaxy distance (m)
 - Ug_j, Ub_j = j-th order gravitational and buoyancy potentials
@@ -1111,9 +1135,9 @@ $$F_{U,Bi,i} = F_{Bi} \cdot \frac{1 + f_{\rm TRZ}}{1 - \Omega_g}$$
 Where:
 - F_Bi = Base buoyancy force (N)
 - f_TRZ = Toroidal Resonance Zone correction (dimensionless)
-- Œ©g = 0.0‚Äì0.95 (sub-unity spin for causal stability)
+- Og = 0.0ñ0.95 (sub-unity spin for causal stability)
 
-**Physical meaning**: Resonant modification of F_Bi by the TRZ gravity zone ‚Äî the toroidal vortex structure that forms around ultra-compact objects. Applied to magnetars, neutron stars, and close merger remnants.
+**Physical meaning**: Resonant modification of F_Bi by the TRZ gravity zone ó the toroidal vortex structure that forms around ultra-compact objects. Applied to magnetars, neutron stars, and close merger remnants.
 
 ### Form Master Buoyant (all scales)
 
@@ -1124,7 +1148,7 @@ Where:
 - Ub_i = i-th buoyancy term: $\rho_{\rm vac} \times g \times V_{\rm eff,i}$
 - Ui_i = i-th ionization/quantum correction: $k_\kappa \times k_\eta$
 
-**Physical meaning**: The general master integral applicable at all scales (nuclear through cosmological). Reduces to Form C-1/C-2 in the galactic limit and to the alpha-cluster buoyancy term in the nuclear limit (Papers #59‚Äì#61).
+**Physical meaning**: The general master integral applicable at all scales (nuclear through cosmological). Reduces to Form C-1/C-2 in the galactic limit and to the alpha-cluster buoyancy term in the nuclear limit (Papers #59ñ#61).
 
 ---
 
@@ -1135,10 +1159,10 @@ Where:
 | Metric | Value |
 |--------|-------|
 | n systems | **52** |
-| F_U_Bi_i mean | **‚àí6.05√ó10¬≤¬π‚Å∑ N** |
+| F_U_Bi_i mean | **-6.05◊10≤π7 N** |
 | Log bootstrap std | **3%** |
-| F_U_Bi_i range | ~10¬≥ N (nuclear) to ~10¬≤‚Å¥‚Å∞ N (AGN clusters) |
-| x_2 cosmic | **‚àí3.40√ó10¬π‚Å∑¬≤ m** |
+| F_U_Bi_i range | ~10≥ N (nuclear) to ~10≤4∞ N (AGN clusters) |
+| x_2 cosmic | **-3.40◊10π7≤ m** |
 | Sign convention | Negative = binding/stabilizing |
 
 ### System Category Breakdown
@@ -1151,8 +1175,8 @@ Where:
 | Gravitational lenses | Einstein Ring (#30), Hubble Lens (#31) | 5 |
 | Star-forming regions | Orion OB1 (#22), Carina Nebula | 5 |
 | Merger events | GW190521 (#51), AT2017gfo (#45) | 4 |
-| LENR / BEC (¬ß1.8) | W-L LENR (#49), BEC Œ±-cluster (#50) | 2 |
-| Cosmological | CMB ŒõCDM (#52), Hubble tension check | 2 |
+| LENR / BEC (ß1.8) | W-L LENR (#49), BEC a-cluster (#50) | 2 |
+| Cosmological | CMB ?CDM (#52), Hubble tension check | 2 |
 | Other astrophysical | Comets, solar flares, brown dwarfs | 3 |
 
 ### Cosmic Quadratic Solution
@@ -1165,7 +1189,7 @@ Solving for x (cosmic wavenumber scale):
 
 $$x_2 = -3.40 \times 10^{172} \text{ m}$$
 
-This represents the second root of the cosmic F_U_Bi_i field equation ‚Äî the scale at which the net buoyant force changes sign (from binding to repulsive). It lies far beyond the observable universe (~10¬≤‚Å∂ m), confirming the UQFF framework is energetically stable on all accessible astrophysical scales.
+This represents the second root of the cosmic F_U_Bi_i field equation ó the scale at which the net buoyant force changes sign (from binding to repulsive). It lies far beyond the observable universe (~10≤6 m), confirming the UQFF framework is energetically stable on all accessible astrophysical scales.
 
 ---
 
@@ -1175,23 +1199,23 @@ The Q-wave energy density integrates the vacuum buoyancy field:
 
 $$Q_{\rm wave} = \frac{B_0^2}{2\mu_0}$$
 
-For reference magnetic field B‚ÇÄ = 10‚Åª‚Åµ T (typical ISM):
+For reference magnetic field B0 = 10?5 T (typical ISM):
 
 $$Q_{\rm wave,mean} = \frac{(10^{-5})^2}{2 \times 1.26 \times 10^{-6}} = 3.98 \times 10^{-5} \text{ J/m}^3$$
 
-For Crab Nebula field B_Crab = 10‚Åª‚Å¥ T:
+For Crab Nebula field B_Crab = 10?4 T:
 
 $$Q_{\rm wave,Crab} = \frac{(10^{-4})^2}{2 \times 1.26 \times 10^{-6}} = 3.98 \times 10^{-3} \text{ J/m}^3$$
 
 ### Q_wave Scaling Across Systems
 
-| System | B (T) | Q_wave (J/m¬≥) |
+| System | B (T) | Q_wave (J/m≥) |
 |--------|-------|---------------|
-| Intergalactic medium | 10‚Åª‚Åπ | 3.98√ó10‚Åª¬π¬≥ |
-| ISM average | 10‚Åª‚Åµ | **3.98√ó10‚Åª‚Åµ** |
-| Crab Nebula | 10‚Åª‚Å¥ | **3.98√ó10‚Åª¬≥** |
-| Pulsar wind nebula | 10‚Åª‚Å¥ to 10‚Åª¬≥ | 3.98√ó10‚Åª¬≥ to 3.98√ó10‚Åª¬π |
-| Magnetar surface | 4.4√ó10¬π¬≥ | 7.70√ó10¬≤‚Å∑ |
+| Intergalactic medium | 10?? | 3.98◊10?π≥ |
+| ISM average | 10?5 | **3.98◊10?5** |
+| Crab Nebula | 10?4 | **3.98◊10?≥** |
+| Pulsar wind nebula | 10?4 to 10?≥ | 3.98◊10?≥ to 3.98◊10?π |
+| Magnetar surface | 4.4◊10π≥ | 7.70◊10≤7 |
 
 ---
 
@@ -1199,7 +1223,7 @@ $$Q_{\rm wave,Crab} = \frac{(10^{-4})^2}{2 \times 1.26 \times 10^{-6}} = 3.98 \t
 
 ### MCMC Algorithm
 
-The Œ∫ calibration uses Markov Chain Monte Carlo across n=47 systems (5 systems excluded as outliers):
+The ? calibration uses Markov Chain Monte Carlo across n=47 systems (5 systems excluded as outliers):
 
 $$\kappa_{\rm MCMC} = \arg\min_{\kappa} \sum_{k=1}^{47} \left[ F_{U,Bi,i}^{\rm obs}(k) - F_{U,Bi,i}^{\rm UQFF}(k, \kappa) \right]^2$$
 
@@ -1207,34 +1231,34 @@ $$\kappa_{\rm MCMC} = \arg\min_{\kappa} \sum_{k=1}^{47} \left[ F_{U,Bi,i}^{\rm o
 
 | Parameter | Value |
 |-----------|-------|
-| Canonical Œ∫ | **0.0005**/day |
-| MCMC Œ∫ | **0.00052**/day |
-| MCMC std | 1.23√ó10‚Åª‚Åµ/day |
+| Canonical ? | **0.0005**/day |
+| MCMC ? | **0.00052**/day |
+| MCMC std | 1.23◊10?5/day |
 | 95% credible interval | (0.00048, 0.00056) |
 | Deviation from canonical | **4%** |
 | n (MCMC systems) | **47** |
 
-The MCMC result Œ∫_MCMC = 0.00052/day is 4% above the canonical value but within the 95% CI. The canonical Œ∫ = 0.0005/day is retained as the production parameter, consistent with the CI lower bound.
+The MCMC result ?_MCMC = 0.00052/day is 4% above the canonical value but within the 95% CI. The canonical ? = 0.0005/day is retained as the production parameter, consistent with the CI lower bound.
 
 ---
 
 ## 5. Residual Distribution Analysis (DELTA_RHO)
 
-### Normality Tests (n = 47, ŒîœÅ residuals)
+### Normality Tests (n = 47, ?? residuals)
 
 | Test | Statistic | p-value | Conclusion |
 |------|-----------|---------|------------|
 | Shapiro-Wilk | W = 0.9412 | **p = 0.00055** | Reject normality |
 | Kolmogorov-Smirnov | D = 0.098 | p = 0.741 | Cannot reject |
-| Anderson-Darling | A¬≤ = 1.35 | p < 0.01 | Reject at 1% |
+| Anderson-Darling | A≤ = 1.35 | p < 0.01 | Reject at 1% |
 | Jarque-Bera | JB = 8.78 | p = 0.012 | Reject normality |
 
 ### Interpretation: Leptokurtic Distribution
 
-Three of four tests reject normality, with Shapiro-Wilk p = 5.5√ó10‚Åª‚Å¥ providing the strongest rejection. The Kolmogorov-Smirnov cannot reject (p = 0.741), indicating that the distribution is **globally similar to normal** but has **fat tails** (leptokurtosis):
+Three of four tests reject normality, with Shapiro-Wilk p = 5.5◊10?4 providing the strongest rejection. The Kolmogorov-Smirnov cannot reject (p = 0.741), indicating that the distribution is **globally similar to normal** but has **fat tails** (leptokurtosis):
 
 - **Leptokurtosis**: Extreme events are more likely than a Gaussian predicts
-- **Physical meaning**: A small number of systems (e.g., AGN, extreme magnetars) have residuals far (3‚Äì5œÉ) from the mean ‚Äî these are the "tail systems" where UQFF operates in extreme-field regimes beyond the validated range
+- **Physical meaning**: A small number of systems (e.g., AGN, extreme magnetars) have residuals far (3ñ5s) from the mean ó these are the "tail systems" where UQFF operates in extreme-field regimes beyond the validated range
 - **Log-normal recommended**: The log of F_U_Bi_i is better described by a normal distribution, consistent with the bootstrap 3% std computed in log space
 
 ### Bootstrap Robustness
@@ -1256,12 +1280,12 @@ This force magnitude corresponds to:
 
 | Reference Scale | Force (N) | Ratio |
 |----------------|-----------|-------|
-| Strong nuclear force (hadron) | ~10‚Å¥ | 10¬≤¬π¬≥ |
-| Gravitational force (NS-NS) | ~10¬≥¬≤ | 10¬π‚Å∏‚Åµ |
-| Planck force F_P = c‚Å¥/G | 1.21√ó10‚Å¥‚Å¥ | 10¬π‚Å∑¬≥ |
-| **F_U_Bi_i mean** | **6.05√ó10¬≤¬π‚Å∑** | ‚Äî |
+| Strong nuclear force (hadron) | ~104 | 10≤π≥ |
+| Gravitational force (NS-NS) | ~10≥≤ | 10π85 |
+| Planck force F_P = c4/G | 1.21◊1044 | 10π7≥ |
+| **F_U_Bi_i mean** | **6.05◊10≤π7** | ó |
 
-The F_U_Bi_i mean far exceeds the Planck force by 10¬π‚Å∑¬≥, which at first appears unphysical. However, the UQFF framework operates across all 52 systems simultaneously ‚Äî the mean includes cosmological systems where virtual vacuum forces integrated over cosmic volumes (x ~ 10¬π‚Å∑¬≤ m) generate correspondingly large force totals. The per-system force (divided by 52 systems √ó cosmic volume factor) returns physical values.
+The F_U_Bi_i mean far exceeds the Planck force by 10π7≥, which at first appears unphysical. However, the UQFF framework operates across all 52 systems simultaneously ó the mean includes cosmological systems where virtual vacuum forces integrated over cosmic volumes (x ~ 10π7≤ m) generate correspondingly large force totals. The per-system force (divided by 52 systems ◊ cosmic volume factor) returns physical values.
 
 ---
 
@@ -1269,24 +1293,28 @@ The F_U_Bi_i mean far exceeds the Planck force by 10¬π‚Å∑¬≥, which at first appe
 
 | F_U_Bi_i Parameter | Value |
 |-------------------|-------|
-| Integral Form C-1 (galactic) | Œ©g √ó (M_bh/d_g) √ó Œ£(Ug + Ub) |
-| Integral Form C-2 (resonant) | F_Bi √ó (1+f_TRZ)/(1‚àíŒ©g) |
-| Master Form | M √ó (Ug_i ‚àí Ub_i + Ui_i) |
-| Ensemble mean | ‚àí6.05√ó10¬≤¬π‚Å∑ N |
+| Integral Form C-1 (galactic) | Og ◊ (M_bh/d_g) ◊ S(Ug + Ub) |
+| Integral Form C-2 (resonant) | F_Bi ◊ (1+f_TRZ)/(1-Og) |
+| Master Form | M ◊ (Ug_i - Ub_i + Ui_i) |
+| Ensemble mean | -6.05◊10≤π7 N |
 | Bootstrap std | 3% |
-| Cosmic x_2 | ‚àí3.40√ó10¬π‚Å∑¬≤ m |
-| Q_wave mean | 3.98√ó10‚Åª‚Åµ J/m¬≥ |
+| Cosmic x_2 | -3.40◊10π7≤ m |
+| Q_wave mean | 3.98◊10?5 J/m≥ |
 | KAPPA_MCMC | 0.00052/day (4% from 0.0005) |
 | n_systems | 52 (MCMC: 47) |
 
-*Source: GrokThread_UQFF_0904_Validation.py | Œ∫ = 0.0005/day | [SSq] = 0.57*
+*Source: GrokThread_UQFF_0904_Validation.py | ? = 0.0005/day | [SSq] = 0.57*
 .Groups[1].Value   
 
 ---
 
 ## Abstract
 
-The F_U_Bi_i integral is the core computational product of the Unified Quantum Field Framework (UQFF), representing the integrated buoyant force acting on any astrophysical body. Evaluated across 52 systems spanning neutron stars, galaxies, gravitational lenses, merger events, and cosmological references, the integral yields F_U_Bi_i_mean = ‚àí6.05√ó10¬≤¬π‚Å∑ N with a bootstrap standard deviation of 3%. The corresponding cosmic x_2 quadratic solution is ‚àí3.40√ó10¬π‚Å∑¬≤ m. KAPPA_MCMC calibration across 47 systems yields Œ∫_MCMC = 0.00052/day (4% from canonical 0.0005/day). Statistical analysis of the residual distribution ŒîœÅ confirms leptokurtic behavior (Shapiro-Wilk, Anderson-Darling reject normality; bootstrap 3% std is robust).
+The F_U_Bi_i integral is the core computational product of the Unified Quantum Field Framework (UQFF), representing the integrated buoyant force acting on any astrophysical body. Evaluated across 52 systems spanning neutron stars, galaxies, gravitational lenses, merger events, and cosmological references, the integral yields F_U_Bi_i_mean = -6.05◊10≤π7 N with a bootstrap standard deviation of 3%. The corresponding cosmic x_2 quadratic solution is -3.40◊10π7≤ m. KAPPA_MCMC calibration across 47 systems yields ?_MCMC = 0.00052/day (4% from canonical 0.0005/day). Statistical analysis of the residual distribution ?? confirms leptokurtic behavior (Shapiro-Wilk, Anderson-Darling reject normality; bootstrap 3% std is robust).
+
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0◊10?4 day?π, [SSq] = 0.57) uniquely enabling this analysis ó establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -1297,7 +1325,7 @@ The F_U_Bi_i integral is the core computational product of the Unified Quantum F
 $$F_{U,Bi,i} = \Omega_g \cdot \frac{M_{\rm bh}}{d_g} \cdot \sum_{j=1}^{N} \left(Ug_{j} + Ub_{j}\right)$$
 
 Where:
-- Œ©g = Omega factor (spin-orbit coupling parameter)
+- Og = Omega factor (spin-orbit coupling parameter)
 - M_bh = Black hole mass (kg)
 - d_g = Galaxy distance (m)
 - Ug_j, Ub_j = j-th order gravitational and buoyancy potentials
@@ -1312,9 +1340,9 @@ $$F_{U,Bi,i} = F_{Bi} \cdot \frac{1 + f_{\rm TRZ}}{1 - \Omega_g}$$
 Where:
 - F_Bi = Base buoyancy force (N)
 - f_TRZ = Toroidal Resonance Zone correction (dimensionless)
-- Œ©g = 0.0‚Äì0.95 (sub-unity spin for causal stability)
+- Og = 0.0ñ0.95 (sub-unity spin for causal stability)
 
-**Physical meaning**: Resonant modification of F_Bi by the TRZ gravity zone ‚Äî the toroidal vortex structure that forms around ultra-compact objects. Applied to magnetars, neutron stars, and close merger remnants.
+**Physical meaning**: Resonant modification of F_Bi by the TRZ gravity zone ó the toroidal vortex structure that forms around ultra-compact objects. Applied to magnetars, neutron stars, and close merger remnants.
 
 ### Form Master Buoyant (all scales)
 
@@ -1325,7 +1353,7 @@ Where:
 - Ub_i = i-th buoyancy term: $\rho_{\rm vac} \times g \times V_{\rm eff,i}$
 - Ui_i = i-th ionization/quantum correction: $k_\kappa \times k_\eta$
 
-**Physical meaning**: The general master integral applicable at all scales (nuclear through cosmological). Reduces to Form C-1/C-2 in the galactic limit and to the alpha-cluster buoyancy term in the nuclear limit (Papers #59‚Äì#61).
+**Physical meaning**: The general master integral applicable at all scales (nuclear through cosmological). Reduces to Form C-1/C-2 in the galactic limit and to the alpha-cluster buoyancy term in the nuclear limit (Papers #59ñ#61).
 
 ---
 
@@ -1336,10 +1364,10 @@ Where:
 | Metric | Value |
 |--------|-------|
 | n systems | **52** |
-| F_U_Bi_i mean | **‚àí6.05√ó10¬≤¬π‚Å∑ N** |
+| F_U_Bi_i mean | **-6.05◊10≤π7 N** |
 | Log bootstrap std | **3%** |
-| F_U_Bi_i range | ~10¬≥ N (nuclear) to ~10¬≤‚Å¥‚Å∞ N (AGN clusters) |
-| x_2 cosmic | **‚àí3.40√ó10¬π‚Å∑¬≤ m** |
+| F_U_Bi_i range | ~10≥ N (nuclear) to ~10≤4∞ N (AGN clusters) |
+| x_2 cosmic | **-3.40◊10π7≤ m** |
 | Sign convention | Negative = binding/stabilizing |
 
 ### System Category Breakdown
@@ -1352,8 +1380,8 @@ Where:
 | Gravitational lenses | Einstein Ring (#30), Hubble Lens (#31) | 5 |
 | Star-forming regions | Orion OB1 (#22), Carina Nebula | 5 |
 | Merger events | GW190521 (#51), AT2017gfo (#45) | 4 |
-| LENR / BEC (¬ß1.8) | W-L LENR (#49), BEC Œ±-cluster (#50) | 2 |
-| Cosmological | CMB ŒõCDM (#52), Hubble tension check | 2 |
+| LENR / BEC (ß1.8) | W-L LENR (#49), BEC a-cluster (#50) | 2 |
+| Cosmological | CMB ?CDM (#52), Hubble tension check | 2 |
 | Other astrophysical | Comets, solar flares, brown dwarfs | 3 |
 
 ### Cosmic Quadratic Solution
@@ -1366,7 +1394,7 @@ Solving for x (cosmic wavenumber scale):
 
 $$x_2 = -3.40 \times 10^{172} \text{ m}$$
 
-This represents the second root of the cosmic F_U_Bi_i field equation ‚Äî the scale at which the net buoyant force changes sign (from binding to repulsive). It lies far beyond the observable universe (~10¬≤‚Å∂ m), confirming the UQFF framework is energetically stable on all accessible astrophysical scales.
+This represents the second root of the cosmic F_U_Bi_i field equation ó the scale at which the net buoyant force changes sign (from binding to repulsive). It lies far beyond the observable universe (~10≤6 m), confirming the UQFF framework is energetically stable on all accessible astrophysical scales.
 
 ---
 
@@ -1376,23 +1404,23 @@ The Q-wave energy density integrates the vacuum buoyancy field:
 
 $$Q_{\rm wave} = \frac{B_0^2}{2\mu_0}$$
 
-For reference magnetic field B‚ÇÄ = 10‚Åª‚Åµ T (typical ISM):
+For reference magnetic field B0 = 10?5 T (typical ISM):
 
 $$Q_{\rm wave,mean} = \frac{(10^{-5})^2}{2 \times 1.26 \times 10^{-6}} = 3.98 \times 10^{-5} \text{ J/m}^3$$
 
-For Crab Nebula field B_Crab = 10‚Åª‚Å¥ T:
+For Crab Nebula field B_Crab = 10?4 T:
 
 $$Q_{\rm wave,Crab} = \frac{(10^{-4})^2}{2 \times 1.26 \times 10^{-6}} = 3.98 \times 10^{-3} \text{ J/m}^3$$
 
 ### Q_wave Scaling Across Systems
 
-| System | B (T) | Q_wave (J/m¬≥) |
+| System | B (T) | Q_wave (J/m≥) |
 |--------|-------|---------------|
-| Intergalactic medium | 10‚Åª‚Åπ | 3.98√ó10‚Åª¬π¬≥ |
-| ISM average | 10‚Åª‚Åµ | **3.98√ó10‚Åª‚Åµ** |
-| Crab Nebula | 10‚Åª‚Å¥ | **3.98√ó10‚Åª¬≥** |
-| Pulsar wind nebula | 10‚Åª‚Å¥ to 10‚Åª¬≥ | 3.98√ó10‚Åª¬≥ to 3.98√ó10‚Åª¬π |
-| Magnetar surface | 4.4√ó10¬π¬≥ | 7.70√ó10¬≤‚Å∑ |
+| Intergalactic medium | 10?? | 3.98◊10?π≥ |
+| ISM average | 10?5 | **3.98◊10?5** |
+| Crab Nebula | 10?4 | **3.98◊10?≥** |
+| Pulsar wind nebula | 10?4 to 10?≥ | 3.98◊10?≥ to 3.98◊10?π |
+| Magnetar surface | 4.4◊10π≥ | 7.70◊10≤7 |
 
 ---
 
@@ -1400,7 +1428,7 @@ $$Q_{\rm wave,Crab} = \frac{(10^{-4})^2}{2 \times 1.26 \times 10^{-6}} = 3.98 \t
 
 ### MCMC Algorithm
 
-The Œ∫ calibration uses Markov Chain Monte Carlo across n=47 systems (5 systems excluded as outliers):
+The ? calibration uses Markov Chain Monte Carlo across n=47 systems (5 systems excluded as outliers):
 
 $$\kappa_{\rm MCMC} = \arg\min_{\kappa} \sum_{k=1}^{47} \left[ F_{U,Bi,i}^{\rm obs}(k) - F_{U,Bi,i}^{\rm UQFF}(k, \kappa) \right]^2$$
 
@@ -1408,34 +1436,34 @@ $$\kappa_{\rm MCMC} = \arg\min_{\kappa} \sum_{k=1}^{47} \left[ F_{U,Bi,i}^{\rm o
 
 | Parameter | Value |
 |-----------|-------|
-| Canonical Œ∫ | **0.0005**/day |
-| MCMC Œ∫ | **0.00052**/day |
-| MCMC std | 1.23√ó10‚Åª‚Åµ/day |
+| Canonical ? | **0.0005**/day |
+| MCMC ? | **0.00052**/day |
+| MCMC std | 1.23◊10?5/day |
 | 95% credible interval | (0.00048, 0.00056) |
 | Deviation from canonical | **4%** |
 | n (MCMC systems) | **47** |
 
-The MCMC result Œ∫_MCMC = 0.00052/day is 4% above the canonical value but within the 95% CI. The canonical Œ∫ = 0.0005/day is retained as the production parameter, consistent with the CI lower bound.
+The MCMC result ?_MCMC = 0.00052/day is 4% above the canonical value but within the 95% CI. The canonical ? = 0.0005/day is retained as the production parameter, consistent with the CI lower bound.
 
 ---
 
 ## 5. Residual Distribution Analysis (DELTA_RHO)
 
-### Normality Tests (n = 47, ŒîœÅ residuals)
+### Normality Tests (n = 47, ?? residuals)
 
 | Test | Statistic | p-value | Conclusion |
 |------|-----------|---------|------------|
 | Shapiro-Wilk | W = 0.9412 | **p = 0.00055** | Reject normality |
 | Kolmogorov-Smirnov | D = 0.098 | p = 0.741 | Cannot reject |
-| Anderson-Darling | A¬≤ = 1.35 | p < 0.01 | Reject at 1% |
+| Anderson-Darling | A≤ = 1.35 | p < 0.01 | Reject at 1% |
 | Jarque-Bera | JB = 8.78 | p = 0.012 | Reject normality |
 
 ### Interpretation: Leptokurtic Distribution
 
-Three of four tests reject normality, with Shapiro-Wilk p = 5.5√ó10‚Åª‚Å¥ providing the strongest rejection. The Kolmogorov-Smirnov cannot reject (p = 0.741), indicating that the distribution is **globally similar to normal** but has **fat tails** (leptokurtosis):
+Three of four tests reject normality, with Shapiro-Wilk p = 5.5◊10?4 providing the strongest rejection. The Kolmogorov-Smirnov cannot reject (p = 0.741), indicating that the distribution is **globally similar to normal** but has **fat tails** (leptokurtosis):
 
 - **Leptokurtosis**: Extreme events are more likely than a Gaussian predicts
-- **Physical meaning**: A small number of systems (e.g., AGN, extreme magnetars) have residuals far (3‚Äì5œÉ) from the mean ‚Äî these are the "tail systems" where UQFF operates in extreme-field regimes beyond the validated range
+- **Physical meaning**: A small number of systems (e.g., AGN, extreme magnetars) have residuals far (3ñ5s) from the mean ó these are the "tail systems" where UQFF operates in extreme-field regimes beyond the validated range
 - **Log-normal recommended**: The log of F_U_Bi_i is better described by a normal distribution, consistent with the bootstrap 3% std computed in log space
 
 ### Bootstrap Robustness
@@ -1457,12 +1485,12 @@ This force magnitude corresponds to:
 
 | Reference Scale | Force (N) | Ratio |
 |----------------|-----------|-------|
-| Strong nuclear force (hadron) | ~10‚Å¥ | 10¬≤¬π¬≥ |
-| Gravitational force (NS-NS) | ~10¬≥¬≤ | 10¬π‚Å∏‚Åµ |
-| Planck force F_P = c‚Å¥/G | 1.21√ó10‚Å¥‚Å¥ | 10¬π‚Å∑¬≥ |
-| **F_U_Bi_i mean** | **6.05√ó10¬≤¬π‚Å∑** | ‚Äî |
+| Strong nuclear force (hadron) | ~104 | 10≤π≥ |
+| Gravitational force (NS-NS) | ~10≥≤ | 10π85 |
+| Planck force F_P = c4/G | 1.21◊1044 | 10π7≥ |
+| **F_U_Bi_i mean** | **6.05◊10≤π7** | ó |
 
-The F_U_Bi_i mean far exceeds the Planck force by 10¬π‚Å∑¬≥, which at first appears unphysical. However, the UQFF framework operates across all 52 systems simultaneously ‚Äî the mean includes cosmological systems where virtual vacuum forces integrated over cosmic volumes (x ~ 10¬π‚Å∑¬≤ m) generate correspondingly large force totals. The per-system force (divided by 52 systems √ó cosmic volume factor) returns physical values.
+The F_U_Bi_i mean far exceeds the Planck force by 10π7≥, which at first appears unphysical. However, the UQFF framework operates across all 52 systems simultaneously ó the mean includes cosmological systems where virtual vacuum forces integrated over cosmic volumes (x ~ 10π7≤ m) generate correspondingly large force totals. The per-system force (divided by 52 systems ◊ cosmic volume factor) returns physical values.
 
 ---
 
@@ -1470,17 +1498,17 @@ The F_U_Bi_i mean far exceeds the Planck force by 10¬π‚Å∑¬≥, which at first appe
 
 | F_U_Bi_i Parameter | Value |
 |-------------------|-------|
-| Integral Form C-1 (galactic) | Œ©g √ó (M_bh/d_g) √ó Œ£(Ug + Ub) |
-| Integral Form C-2 (resonant) | F_Bi √ó (1+f_TRZ)/(1‚àíŒ©g) |
-| Master Form | M √ó (Ug_i ‚àí Ub_i + Ui_i) |
-| Ensemble mean | ‚àí6.05√ó10¬≤¬π‚Å∑ N |
+| Integral Form C-1 (galactic) | Og ◊ (M_bh/d_g) ◊ S(Ug + Ub) |
+| Integral Form C-2 (resonant) | F_Bi ◊ (1+f_TRZ)/(1-Og) |
+| Master Form | M ◊ (Ug_i - Ub_i + Ui_i) |
+| Ensemble mean | -6.05◊10≤π7 N |
 | Bootstrap std | 3% |
-| Cosmic x_2 | ‚àí3.40√ó10¬π‚Å∑¬≤ m |
-| Q_wave mean | 3.98√ó10‚Åª‚Åµ J/m¬≥ |
+| Cosmic x_2 | -3.40◊10π7≤ m |
+| Q_wave mean | 3.98◊10?5 J/m≥ |
 | KAPPA_MCMC | 0.00052/day (4% from 0.0005) |
 | n_systems | 52 (MCMC: 47) |
 
-*Source: GrokThread_UQFF_0904_Validation.py | Œ∫ = 0.0005/day | [SSq] = 0.57*
+*Source: GrokThread_UQFF_0904_Validation.py | ? = 0.0005/day | [SSq] = 0.57*
 .Groups[1].Value
     "PAPER_{0:D3}" -f $n
     
@@ -1489,7 +1517,11 @@ The F_U_Bi_i mean far exceeds the Planck force by 10¬π‚Å∑¬≥, which at first appe
 
 ## Abstract
 
-The F_U_Bi_i integral is the core computational product of the Unified Quantum Field Framework (UQFF), representing the integrated buoyant force acting on any astrophysical body. Evaluated across 52 systems spanning neutron stars, galaxies, gravitational lenses, merger events, and cosmological references, the integral yields F_U_Bi_i_mean = ‚àí6.05√ó10¬≤¬π‚Å∑ N with a bootstrap standard deviation of 3%. The corresponding cosmic x_2 quadratic solution is ‚àí3.40√ó10¬π‚Å∑¬≤ m. KAPPA_MCMC calibration across 47 systems yields Œ∫_MCMC = 0.00052/day (4% from canonical 0.0005/day). Statistical analysis of the residual distribution ŒîœÅ confirms leptokurtic behavior (Shapiro-Wilk, Anderson-Darling reject normality; bootstrap 3% std is robust).
+The F_U_Bi_i integral is the core computational product of the Unified Quantum Field Framework (UQFF), representing the integrated buoyant force acting on any astrophysical body. Evaluated across 52 systems spanning neutron stars, galaxies, gravitational lenses, merger events, and cosmological references, the integral yields F_U_Bi_i_mean = -6.05◊10≤π7 N with a bootstrap standard deviation of 3%. The corresponding cosmic x_2 quadratic solution is -3.40◊10π7≤ m. KAPPA_MCMC calibration across 47 systems yields ?_MCMC = 0.00052/day (4% from canonical 0.0005/day). Statistical analysis of the residual distribution ?? confirms leptokurtic behavior (Shapiro-Wilk, Anderson-Darling reject normality; bootstrap 3% std is robust).
+
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0◊10?4 day?π, [SSq] = 0.57) uniquely enabling this analysis ó establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -1500,7 +1532,7 @@ The F_U_Bi_i integral is the core computational product of the Unified Quantum F
 $$F_{U,Bi,i} = \Omega_g \cdot \frac{M_{\rm bh}}{d_g} \cdot \sum_{j=1}^{N} \left(Ug_{j} + Ub_{j}\right)$$
 
 Where:
-- Œ©g = Omega factor (spin-orbit coupling parameter)
+- Og = Omega factor (spin-orbit coupling parameter)
 - M_bh = Black hole mass (kg)
 - d_g = Galaxy distance (m)
 - Ug_j, Ub_j = j-th order gravitational and buoyancy potentials
@@ -1515,9 +1547,9 @@ $$F_{U,Bi,i} = F_{Bi} \cdot \frac{1 + f_{\rm TRZ}}{1 - \Omega_g}$$
 Where:
 - F_Bi = Base buoyancy force (N)
 - f_TRZ = Toroidal Resonance Zone correction (dimensionless)
-- Œ©g = 0.0‚Äì0.95 (sub-unity spin for causal stability)
+- Og = 0.0ñ0.95 (sub-unity spin for causal stability)
 
-**Physical meaning**: Resonant modification of F_Bi by the TRZ gravity zone ‚Äî the toroidal vortex structure that forms around ultra-compact objects. Applied to magnetars, neutron stars, and close merger remnants.
+**Physical meaning**: Resonant modification of F_Bi by the TRZ gravity zone ó the toroidal vortex structure that forms around ultra-compact objects. Applied to magnetars, neutron stars, and close merger remnants.
 
 ### Form Master Buoyant (all scales)
 
@@ -1528,7 +1560,7 @@ Where:
 - Ub_i = i-th buoyancy term: $\rho_{\rm vac} \times g \times V_{\rm eff,i}$
 - Ui_i = i-th ionization/quantum correction: $k_\kappa \times k_\eta$
 
-**Physical meaning**: The general master integral applicable at all scales (nuclear through cosmological). Reduces to Form C-1/C-2 in the galactic limit and to the alpha-cluster buoyancy term in the nuclear limit (Papers #59‚Äì#61).
+**Physical meaning**: The general master integral applicable at all scales (nuclear through cosmological). Reduces to Form C-1/C-2 in the galactic limit and to the alpha-cluster buoyancy term in the nuclear limit (Papers #59ñ#61).
 
 ---
 
@@ -1539,10 +1571,10 @@ Where:
 | Metric | Value |
 |--------|-------|
 | n systems | **52** |
-| F_U_Bi_i mean | **‚àí6.05√ó10¬≤¬π‚Å∑ N** |
+| F_U_Bi_i mean | **-6.05◊10≤π7 N** |
 | Log bootstrap std | **3%** |
-| F_U_Bi_i range | ~10¬≥ N (nuclear) to ~10¬≤‚Å¥‚Å∞ N (AGN clusters) |
-| x_2 cosmic | **‚àí3.40√ó10¬π‚Å∑¬≤ m** |
+| F_U_Bi_i range | ~10≥ N (nuclear) to ~10≤4∞ N (AGN clusters) |
+| x_2 cosmic | **-3.40◊10π7≤ m** |
 | Sign convention | Negative = binding/stabilizing |
 
 ### System Category Breakdown
@@ -1555,8 +1587,8 @@ Where:
 | Gravitational lenses | Einstein Ring (#30), Hubble Lens (#31) | 5 |
 | Star-forming regions | Orion OB1 (#22), Carina Nebula | 5 |
 | Merger events | GW190521 (#51), AT2017gfo (#45) | 4 |
-| LENR / BEC (¬ß1.8) | W-L LENR (#49), BEC Œ±-cluster (#50) | 2 |
-| Cosmological | CMB ŒõCDM (#52), Hubble tension check | 2 |
+| LENR / BEC (ß1.8) | W-L LENR (#49), BEC a-cluster (#50) | 2 |
+| Cosmological | CMB ?CDM (#52), Hubble tension check | 2 |
 | Other astrophysical | Comets, solar flares, brown dwarfs | 3 |
 
 ### Cosmic Quadratic Solution
@@ -1569,7 +1601,7 @@ Solving for x (cosmic wavenumber scale):
 
 $$x_2 = -3.40 \times 10^{172} \text{ m}$$
 
-This represents the second root of the cosmic F_U_Bi_i field equation ‚Äî the scale at which the net buoyant force changes sign (from binding to repulsive). It lies far beyond the observable universe (~10¬≤‚Å∂ m), confirming the UQFF framework is energetically stable on all accessible astrophysical scales.
+This represents the second root of the cosmic F_U_Bi_i field equation ó the scale at which the net buoyant force changes sign (from binding to repulsive). It lies far beyond the observable universe (~10≤6 m), confirming the UQFF framework is energetically stable on all accessible astrophysical scales.
 
 ---
 
@@ -1579,23 +1611,23 @@ The Q-wave energy density integrates the vacuum buoyancy field:
 
 $$Q_{\rm wave} = \frac{B_0^2}{2\mu_0}$$
 
-For reference magnetic field B‚ÇÄ = 10‚Åª‚Åµ T (typical ISM):
+For reference magnetic field B0 = 10?5 T (typical ISM):
 
 $$Q_{\rm wave,mean} = \frac{(10^{-5})^2}{2 \times 1.26 \times 10^{-6}} = 3.98 \times 10^{-5} \text{ J/m}^3$$
 
-For Crab Nebula field B_Crab = 10‚Åª‚Å¥ T:
+For Crab Nebula field B_Crab = 10?4 T:
 
 $$Q_{\rm wave,Crab} = \frac{(10^{-4})^2}{2 \times 1.26 \times 10^{-6}} = 3.98 \times 10^{-3} \text{ J/m}^3$$
 
 ### Q_wave Scaling Across Systems
 
-| System | B (T) | Q_wave (J/m¬≥) |
+| System | B (T) | Q_wave (J/m≥) |
 |--------|-------|---------------|
-| Intergalactic medium | 10‚Åª‚Åπ | 3.98√ó10‚Åª¬π¬≥ |
-| ISM average | 10‚Åª‚Åµ | **3.98√ó10‚Åª‚Åµ** |
-| Crab Nebula | 10‚Åª‚Å¥ | **3.98√ó10‚Åª¬≥** |
-| Pulsar wind nebula | 10‚Åª‚Å¥ to 10‚Åª¬≥ | 3.98√ó10‚Åª¬≥ to 3.98√ó10‚Åª¬π |
-| Magnetar surface | 4.4√ó10¬π¬≥ | 7.70√ó10¬≤‚Å∑ |
+| Intergalactic medium | 10?? | 3.98◊10?π≥ |
+| ISM average | 10?5 | **3.98◊10?5** |
+| Crab Nebula | 10?4 | **3.98◊10?≥** |
+| Pulsar wind nebula | 10?4 to 10?≥ | 3.98◊10?≥ to 3.98◊10?π |
+| Magnetar surface | 4.4◊10π≥ | 7.70◊10≤7 |
 
 ---
 
@@ -1603,7 +1635,7 @@ $$Q_{\rm wave,Crab} = \frac{(10^{-4})^2}{2 \times 1.26 \times 10^{-6}} = 3.98 \t
 
 ### MCMC Algorithm
 
-The Œ∫ calibration uses Markov Chain Monte Carlo across n=47 systems (5 systems excluded as outliers):
+The ? calibration uses Markov Chain Monte Carlo across n=47 systems (5 systems excluded as outliers):
 
 $$\kappa_{\rm MCMC} = \arg\min_{\kappa} \sum_{k=1}^{47} \left[ F_{U,Bi,i}^{\rm obs}(k) - F_{U,Bi,i}^{\rm UQFF}(k, \kappa) \right]^2$$
 
@@ -1611,34 +1643,34 @@ $$\kappa_{\rm MCMC} = \arg\min_{\kappa} \sum_{k=1}^{47} \left[ F_{U,Bi,i}^{\rm o
 
 | Parameter | Value |
 |-----------|-------|
-| Canonical Œ∫ | **0.0005**/day |
-| MCMC Œ∫ | **0.00052**/day |
-| MCMC std | 1.23√ó10‚Åª‚Åµ/day |
+| Canonical ? | **0.0005**/day |
+| MCMC ? | **0.00052**/day |
+| MCMC std | 1.23◊10?5/day |
 | 95% credible interval | (0.00048, 0.00056) |
 | Deviation from canonical | **4%** |
 | n (MCMC systems) | **47** |
 
-The MCMC result Œ∫_MCMC = 0.00052/day is 4% above the canonical value but within the 95% CI. The canonical Œ∫ = 0.0005/day is retained as the production parameter, consistent with the CI lower bound.
+The MCMC result ?_MCMC = 0.00052/day is 4% above the canonical value but within the 95% CI. The canonical ? = 0.0005/day is retained as the production parameter, consistent with the CI lower bound.
 
 ---
 
 ## 5. Residual Distribution Analysis (DELTA_RHO)
 
-### Normality Tests (n = 47, ŒîœÅ residuals)
+### Normality Tests (n = 47, ?? residuals)
 
 | Test | Statistic | p-value | Conclusion |
 |------|-----------|---------|------------|
 | Shapiro-Wilk | W = 0.9412 | **p = 0.00055** | Reject normality |
 | Kolmogorov-Smirnov | D = 0.098 | p = 0.741 | Cannot reject |
-| Anderson-Darling | A¬≤ = 1.35 | p < 0.01 | Reject at 1% |
+| Anderson-Darling | A≤ = 1.35 | p < 0.01 | Reject at 1% |
 | Jarque-Bera | JB = 8.78 | p = 0.012 | Reject normality |
 
 ### Interpretation: Leptokurtic Distribution
 
-Three of four tests reject normality, with Shapiro-Wilk p = 5.5√ó10‚Åª‚Å¥ providing the strongest rejection. The Kolmogorov-Smirnov cannot reject (p = 0.741), indicating that the distribution is **globally similar to normal** but has **fat tails** (leptokurtosis):
+Three of four tests reject normality, with Shapiro-Wilk p = 5.5◊10?4 providing the strongest rejection. The Kolmogorov-Smirnov cannot reject (p = 0.741), indicating that the distribution is **globally similar to normal** but has **fat tails** (leptokurtosis):
 
 - **Leptokurtosis**: Extreme events are more likely than a Gaussian predicts
-- **Physical meaning**: A small number of systems (e.g., AGN, extreme magnetars) have residuals far (3‚Äì5œÉ) from the mean ‚Äî these are the "tail systems" where UQFF operates in extreme-field regimes beyond the validated range
+- **Physical meaning**: A small number of systems (e.g., AGN, extreme magnetars) have residuals far (3ñ5s) from the mean ó these are the "tail systems" where UQFF operates in extreme-field regimes beyond the validated range
 - **Log-normal recommended**: The log of F_U_Bi_i is better described by a normal distribution, consistent with the bootstrap 3% std computed in log space
 
 ### Bootstrap Robustness
@@ -1660,12 +1692,12 @@ This force magnitude corresponds to:
 
 | Reference Scale | Force (N) | Ratio |
 |----------------|-----------|-------|
-| Strong nuclear force (hadron) | ~10‚Å¥ | 10¬≤¬π¬≥ |
-| Gravitational force (NS-NS) | ~10¬≥¬≤ | 10¬π‚Å∏‚Åµ |
-| Planck force F_P = c‚Å¥/G | 1.21√ó10‚Å¥‚Å¥ | 10¬π‚Å∑¬≥ |
-| **F_U_Bi_i mean** | **6.05√ó10¬≤¬π‚Å∑** | ‚Äî |
+| Strong nuclear force (hadron) | ~104 | 10≤π≥ |
+| Gravitational force (NS-NS) | ~10≥≤ | 10π85 |
+| Planck force F_P = c4/G | 1.21◊1044 | 10π7≥ |
+| **F_U_Bi_i mean** | **6.05◊10≤π7** | ó |
 
-The F_U_Bi_i mean far exceeds the Planck force by 10¬π‚Å∑¬≥, which at first appears unphysical. However, the UQFF framework operates across all 52 systems simultaneously ‚Äî the mean includes cosmological systems where virtual vacuum forces integrated over cosmic volumes (x ~ 10¬π‚Å∑¬≤ m) generate correspondingly large force totals. The per-system force (divided by 52 systems √ó cosmic volume factor) returns physical values.
+The F_U_Bi_i mean far exceeds the Planck force by 10π7≥, which at first appears unphysical. However, the UQFF framework operates across all 52 systems simultaneously ó the mean includes cosmological systems where virtual vacuum forces integrated over cosmic volumes (x ~ 10π7≤ m) generate correspondingly large force totals. The per-system force (divided by 52 systems ◊ cosmic volume factor) returns physical values.
 
 ---
 
@@ -1673,14 +1705,14 @@ The F_U_Bi_i mean far exceeds the Planck force by 10¬π‚Å∑¬≥, which at first appe
 
 | F_U_Bi_i Parameter | Value |
 |-------------------|-------|
-| Integral Form C-1 (galactic) | Œ©g √ó (M_bh/d_g) √ó Œ£(Ug + Ub) |
-| Integral Form C-2 (resonant) | F_Bi √ó (1+f_TRZ)/(1‚àíŒ©g) |
-| Master Form | M √ó (Ug_i ‚àí Ub_i + Ui_i) |
-| Ensemble mean | ‚àí6.05√ó10¬≤¬π‚Å∑ N |
+| Integral Form C-1 (galactic) | Og ◊ (M_bh/d_g) ◊ S(Ug + Ub) |
+| Integral Form C-2 (resonant) | F_Bi ◊ (1+f_TRZ)/(1-Og) |
+| Master Form | M ◊ (Ug_i - Ub_i + Ui_i) |
+| Ensemble mean | -6.05◊10≤π7 N |
 | Bootstrap std | 3% |
-| Cosmic x_2 | ‚àí3.40√ó10¬π‚Å∑¬≤ m |
-| Q_wave mean | 3.98√ó10‚Åª‚Åµ J/m¬≥ |
+| Cosmic x_2 | -3.40◊10π7≤ m |
+| Q_wave mean | 3.98◊10?5 J/m≥ |
 | KAPPA_MCMC | 0.00052/day (4% from 0.0005) |
 | n_systems | 52 (MCMC: 47) |
 
-*Source: GrokThread_UQFF_0904_Validation.py | Œ∫ = 0.0005/day | [SSq] = 0.57*
+*Source: GrokThread_UQFF_0904_Validation.py | ? = 0.0005/day | [SSq] = 0.57*

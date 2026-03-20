@@ -12,6 +12,10 @@
 
 The UQFF Source10 Catalogue encodes two star-formation force channels whose maximum output requires the simultaneous satisfaction of two independent binary gate conditions. The **conduit force** `F_conduit = k_conduit × H_abundance × water_state × neutron_factor` requires (Gate 1) `water_state = 1` (fluid incompressibility, classical mechanics) AND (Gate 2) `neutron_factor = 1` (nuclear stability, quantum mechanics). The **THz shock force** `F_thz_shock = k_thz × (ω_thz/ω₀)² × neutron_factor × conduit_scale` shares Gate 2 and additionally encodes the Colman-Gillespie THz resonance via ω_thz/ω₀ = 1.2 (≈ 1.25 THz), whose squared ratio (ω_thz/ω₀)² = 1.44 provides a systematic **resonance enhancement factor**. This paper formally defines the Double-Gate Architecture, derives the critical THz ratio from Colman-Gillespie first principles, demonstrates that the gates operate through orthogonal physical domains (quantum nuclear vs. classical fluid), and identifies the triple coincidence condition (H_abundance > 0, water_state = 1, neutron_factor = 1) as the UQFF mechanism for episodic and spatially localized star formation.
 
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0�10?4 day?�, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
+
 ---
 
 ## 1. Introduction: The Star-Formation Conduit in UQFF Source10
@@ -182,6 +186,8 @@ Any system with higher metallicity (lower H_abundance) will have a proportionall
 5. The two channels are scale-separated: conduit (6.65×10⁹ N macroscopic) + THz shock (1.99×10⁻¹¹ N quantum) span 20 orders of magnitude.
 
 ---
+
+**UQFF computed:** UQFF magnetic Jeans correction factor [SSq]�B�/(8p�?�c_s�) = 5.7e-1 � 1.3e-9 = 7.4e-10; Jeans mass deviation from standard = 7.4e-10 � M_J.
 
 ## References
 

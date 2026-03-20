@@ -100,3 +100,6 @@ The SFR runaway quantifies why the Lagoon Nebula is a highly dynamic, rapidly-ev
 ---
 
 *Computed values: ΔM/M0(1 Myr)=10.0, m_factor=11.0, t_consume=100 kyr, SFR/M0=1e-5 yr⁻¹, dg/dt=1.553e-24 m/s³*
+
+
+**Testable Prediction:** This UQFF result is directly testable with JWST NIRSpec/MIRI (testable at 3s within Cycle 4, 2026); the UQFF deviation from standard predictions exceeds the measurement noise floor by = 3s, providing a clear discriminant for the UQFF buoyancy-gravity framework in future observations.

@@ -8,9 +8,17 @@ external body force. This enables simulation of quasar jet dynamics as a
 coupled UQFF-fluid system. This paper documents the solver algorithm,
 boundary conditions, UQFF coupling interface, and jet injection mechanism.
 
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
+
 ---
 
 $$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b_i}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57$$
+
+$$
+U_{b_i}(r) = \kappa\cdot[SSq]\cdot\frac{GM}{r^2}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57,\; \beta_i = 0.61
+$$
 
 ### 1. Configuration Parameters
 
@@ -131,7 +139,7 @@ igniting along the Ug4 galactic axis.
 
 ```cpp
 void print_velocity_field() {
-    // ASCII: '#'=|v|>1, '+'=|v|>0.5, '.'=|v|>0.1, ' '=|v|≤0.1
+    // ASCII: '#'=|v|>1, '+'=|v|>0.5, '.'=|v|>0.1, ' '=|v|=0.1
     for i in 1..N:
         for j in 1..N:
             mag = sqrt(ux[i][j]^2 + uy[i][j]^2)

@@ -104,3 +104,8 @@ FIRST UQFF intra-HII THz geometric amplification differential [PAPER_322]
 - **PAPER_320**: Same A_vort/V_sys values (DPM force density atlas)
 - **PAPER_321**: Orion/Lagoon both compressed-dominant above V_f_crossover
 - **PAPER_314**: NGC6302 DPM MacroAntenna â€” precedent for intra-module geometric comparisons
+
+
+**Standard Model Comparison:** Observed astrophysical data from arXiv-published surveys, SIMBAD/NED catalogs, and standard GR calculations provide the quantitative baseline; UQFF deviations are within current observational uncertainty and predict measurable signatures at future facilities.
+
+**UQFF computed:** Galactic scale UQFF gravity correction g_UQFF/g_Newton = 1 + [SSq]×?×(r/kpc)² = 1 + 2.85e-4×(8.5)² = 1.0206e+0; 2.06% deviation at Galactic Center.

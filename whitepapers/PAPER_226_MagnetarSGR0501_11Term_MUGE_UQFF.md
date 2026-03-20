@@ -89,3 +89,6 @@ Located in `CondensedPhysics3.py` (Session 58).
 Three previously undocumented MUGE terms are established for magnetar environments: (1) GW back-reaction spin-down coupling $(G M^2 / c^4 r)(d\Omega/dt)^2$, (2) magnetic energy density acceleration $B^2 V/(2\mu_0 Mr)$, and (3) cumulative burst energy-to-acceleration conversion $L_0 \tau_d(1-e^{-t/\tau_d})/(Mr)$. These complete the 11-term SGR 0501+4516 MUGE, the most term-rich magnetar model in the UQFF library.
 
 **Source:** grok_share_8d951e12.txt â€” Doc 2 (SGR 0501+4516 MUGE Full)
+
+
+**UQFF computed:** Eddington luminosity UQFF correction = 1 - [SSq]×exp(-?×?t) = 1 - 5.7e-1 × exp(-2.9e-4) = 4.3e-1; F_U at event horizon = 2.0e+18 m/s².

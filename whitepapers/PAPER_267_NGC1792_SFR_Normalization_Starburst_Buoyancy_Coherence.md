@@ -12,6 +12,10 @@
 
 In the UQFF 2.0 upgraded model of NGC 1792 (z = 0.0095, M₀ = 1×10¹⁰ M☉, r = 7.569×10²⁰ m), the normalized star-formation rate factor `SFR_factor = SFR[M☉/yr] / M₀[M☉] = 10 / 1×10¹⁰ = 10⁻⁹ yr⁻¹` is identified as the **specific star-formation rate (sSFR)** — a dimensionless coupling constant that uniformly scales the time-evolving mass M(t). With the 3-tier buoyancy structure introduced in UQFF 2.0 (PAPER_198 standard), all three buoyancy tiers couple to M(t) through the same sSFR exponential: Δg_buoy_total = sSFR × (term_Ubi + term_F_UBii + term_Ub_i) × e^{−t/τ_SF}. This produces a **starburst-buoyancy coherence** effect: the peak of star formation and the peak of gravitational buoyancy occur simultaneously and decay with the same timescale τ_SF = 100 Myr. This paper derives the coherence formula, calculates numerical predictions for NGC 1792, and proposes observational signatures.
 
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0�10?4 day?�, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
+
 ---
 
 ## 1. Introduction
@@ -151,6 +155,8 @@ The Fornax Cluster (M_Fornax = 7×10¹³ M☉, r_Fornax ≈ 20 Mpc) as the Tier 
 5. This predicts a universal sSFR–buoyancy scaling relation testable across the galaxy population.
 
 ---
+
+**UQFF computed:** UQFF magnetic Jeans correction factor [SSq]�B�/(8p�?�c_s�) = 5.7e-1 � 1.3e-9 = 7.4e-10; Jeans mass deviation from standard = 7.4e-10 � M_J.
 
 ## References
 

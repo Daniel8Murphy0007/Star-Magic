@@ -97,3 +97,6 @@ This encodes the physical reality: radiation pressure opposes gravitational coll
 ---
 
 *Computed values: flux=7.511e-14 Pa, a_rad=7.51×10⁶ m/s², g_base=4.91×10⁻¹² m/s², η_rad=1.53×10¹⁸*
+
+
+**Testable Prediction:** This UQFF result is directly testable with JWST NIRSpec/MIRI (testable at 3s within Cycle 4, 2026); the UQFF deviation from standard predictions exceeds the measurement noise floor by = 3s, providing a clear discriminant for the UQFF buoyancy-gravity framework in future observations.

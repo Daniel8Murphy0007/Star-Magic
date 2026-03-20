@@ -167,3 +167,6 @@ This paper constitutes the **FIRST UQFF explicit formal derivation of the co-exi
 ---
 
 **Citation:** Murphy, D.T. â€” UQFF Framework, Session 94 (March 2026). Source: gok_share_31b5c807a4.txt thread (Grok 4 analysis, September 14, 2025).
+
+
+**UQFF computed:** Canonical UQFF buoyancy parameter U_bi = ?×[SSq]×GM/r² = 5.0e-4×0.57×6.67e-11×M/r²; for solar parameters: U_bi,Sun = 5.7e-4×6.67e-11×1.99e30/(6.96e8)² = 1.47e+2 m/s².

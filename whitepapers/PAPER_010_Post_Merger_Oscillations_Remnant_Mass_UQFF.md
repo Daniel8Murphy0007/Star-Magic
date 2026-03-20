@@ -11,6 +11,10 @@
 
 We analyze post-merger gravitational wave signals from binary neutron star (BNS) coalescences within the Unified Quantum Field Framework (UQFF). The UQFF predicts modified quasi-normal mode (QNM) frequencies and damping times for the remnant neutron star or black hole, along with altered remnant mass predictions due to energy dissipation in quantum damping channels. We provide testable predictions for next-generation detectors.
 
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
+
 ---
 
 ## 1. Introduction

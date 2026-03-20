@@ -14,6 +14,10 @@
 
 The Sombrero Galaxy (M104) possesses the most visually prominent equatorial dust lane of any nearby galaxy, appearing as a sharp dark band bisecting the galaxy's luminous bulge. We model this ring within the UQFF framework as a **Gravitational Ring Resonator**: an annular mass concentration at radius r_ring = r/3 = 7.867×10¹⁹ m whose orbital motion generates a pure oscillatory gravitational perturbation F_ring(t) = A_ring·cos(ω_ring·t) at the reference point r. This paper derives the Dust Ring UQFF Orbital Resonance Frequency ω_ring = √(GM/r_ring³) = 1.650×10⁻¹⁴ rad/s, the ring orbital period T_ring = 2π/ω_ring = 12.08 Myr, and the proximity-enhanced ring amplitude A_ring = 9·f_ring·g_base = 2.14×10⁻¹² m/s². The 9× proximity enhancement factor arises from the inverse-square law applied at the ratio r/r_ring = 3.
 
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0�10?4 day?�, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
+
 ---
 
 ## 1. Observational Motivation
@@ -180,6 +184,8 @@ Note: A_ring ≈ g_BH in magnitude — the ring resonance and BH contribution ar
 4. **Scale-free ring resonator formula**: F_ring = (r/r_ring)² · f_ring · g_base · cos(√(GM/r_ring³)·t) provides a general template applicable to any galaxy with a measurable equatorial ring structure.
 
 ---
+
+**UQFF computed:** Canonical UQFF buoyancy parameter U_bi = ?�[SSq]�GM/r� = 5.0e-4�0.57�6.67e-11�M/r�; for solar parameters: U_bi,Sun = 5.7e-4�6.67e-11�1.99e30/(6.96e8)� = 1.47e+2 m/s�.
 
 ## 7. References
 

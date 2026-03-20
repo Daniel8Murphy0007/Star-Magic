@@ -9,21 +9,25 @@
 
 $$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b_i}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57$$
 
+$$
+h_\text{UQFF}(t) = h_\text{GR}(t)\cdot\bigl(1 - U_{b_i}/F_U\bigr)\cdot e^{-\kappa t}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1}
+$$
+
 ## Abstract
 
-Extreme Mass Ratio Inspirals (EMRIs) — stellar-mass compact objects spiraling into supermassive black holes — are among the richest GW sources for testing modified gravity. We simulate a UQFF EMRI with M_SMBH = 10⁶ M☉, M_compact = 10 M☉ (mass ratio q = 10⁻⁵) at D_L = 2.68 Gpc (z = 0.5) over a 2-year LISA observation. Key UQFF predictions: (1) the EMRI signal exhibits 5 string harmonics at frequencies 0.293, 0.586, and 0.879 mHz (the three lowest harmonics of the f_ISCO = 2.931 mHz fundamental); (2) the stability factor is enhanced to 1.15 due to U_A Aether damping, which conversely increases EMRI orbital stability; (3) the peak UQFF strain is 5.6548 × 10⁻²³; (4) the SNR drops from 100 (GR) to 66.7 (UQFF). Over 1.77 × 10⁵ orbits in 2 years of observation, the accumulated phase lag and string harmonic pattern provide a multi-modal UQFF signature unique to EMRI waveforms.
+Extreme Mass Ratio Inspirals (EMRIs) — stellar-mass compact objects spiraling into supermassive black holes — are among the richest GW sources for testing modified gravity. We simulate a UQFF EMRI with M_SMBH = 106 M?, M_compact = 10 M? (mass ratio q = 10?5) at D_L = 2.68 Gpc (z = 0.5) over a 2-year LISA observation. Key UQFF predictions: (1) the EMRI signal exhibits 5 string harmonics at frequencies 0.293, 0.586, and 0.879 mHz (the three lowest harmonics of the f_ISCO = 2.931 mHz fundamental); (2) the stability factor is enhanced to 1.15 due to U_A Aether damping, which conversely increases EMRI orbital stability; (3) the peak UQFF strain is 5.6548 × 10?²³; (4) the SNR drops from 100 (GR) to 66.7 (UQFF). Over 1.77 × 105 orbits in 2 years of observation, the accumulated phase lag and string harmonic pattern provide a multi-modal UQFF signature unique to EMRI waveforms.
 
 ---
 
 ## 1. Introduction
 
-EMRIs are among the most information-rich gravitational wave sources because the compact object orbits the SMBH for ~10⁴–10⁵ cycles within the LISA band, accumulating a precise phase record sensitive to the SMBH spacetime geometry. In GR, the EMRI waveform encodes the Kerr metric to extraordinary precision.
+EMRIs are among the most information-rich gravitational wave sources because the compact object orbits the SMBH for ~104–105 cycles within the LISA band, accumulating a precise phase record sensitive to the SMBH spacetime geometry. In GR, the EMRI waveform encodes the Kerr metric to extraordinary precision.
 
 In UQFF, two additional effects modify EMRI waveforms:
 
 1. **Aether damping (U_A):** The Aether compression field couples to the long-duration orbital motion, providing a gradual phase-coherent modulation. For EMRIs at z = 0.5, U_A is non-negligible and increases the effective orbital stability.
 
-2. **String harmonics:** The string rotation coupling β_string introduces resonant couplings at sub-multiples of the ISCO frequency. For the benchmark system, these appear as 5 harmonic modes with detectable LISA SNR.
+2. **String harmonics:** The string rotation coupling ß_string introduces resonant couplings at sub-multiples of the ISCO frequency. For the benchmark system, these appear as 5 harmonic modes with detectable LISA SNR.
 
 The combination of Aether-modified stability and string harmonics creates a UQFF EMRI waveform that is qualitatively distinct from GR predictions.
 
@@ -33,9 +37,9 @@ The combination of Aether-modified stability and string harmonics creates a UQFF
 
 | Parameter | Value |
 |-----------|-------|
-| SMBH mass M_SMBH | 1.00 × 10⁶ M☉ |
-| Compact object mass M_c | 10.0 M☉ |
-| Mass ratio q | 1.00 × 10⁻⁵ |
+| SMBH mass M_SMBH | 1.00 × 106 M? |
+| Compact object mass M_c | 10.0 M? |
+| Mass ratio q | 1.00 × 10?5 |
 | Redshift z | 0.50 |
 | Luminosity distance D_L | 2.68 Gpc |
 | Observation duration | 2.0 yr |
@@ -49,7 +53,7 @@ The combination of Aether-modified stability and string harmonics creates a UQFF
 For a Schwarzschild SMBH (non-spinning, as in the benchmark), the ISCO frequency in the source frame is:
 
 ```
-f_ISCO,source = c³ / (6^(3/2) π G M_SMBH) = f_ISCO,source
+f_ISCO,source = c³ / (6^(3/2) p G M_SMBH) = f_ISCO,source
 ```
 
 Redshifted to the observer at z = 0.5:
@@ -68,7 +72,7 @@ Over the 2-year observation:
 |----------|-------|
 | f_ISCO (observer) | 2.931 mHz |
 | Observation duration | 2.0 yr |
-| Total EMRI orbits | 1.77 × 10⁵ |
+| Total EMRI orbits | 1.77 × 105 |
 | Mean orbital frequency | ~2 mHz (below ISCO) |
 | Orbital period | ~8.5 minutes |
 
@@ -80,7 +84,7 @@ The compact object completes 177,000 full orbits during the observation, each sl
 
 ### 4.1 Harmonic Structure
 
-The string coupling β_string introduces resonant standing modes in the UQFF vacuum field around the EMRI system. These modes occur at rational fractions of the ISCO frequency (sub-harmonic resonances):
+The string coupling ß_string introduces resonant standing modes in the UQFF vacuum field around the EMRI system. These modes occur at rational fractions of the ISCO frequency (sub-harmonic resonances):
 
 ```
 f_n = f_ISCO × (n/N_harmonics),  n = 1, 2, ..., N_harmonics
@@ -90,9 +94,9 @@ where N_harmonics = 5 for the benchmark system.
 
 | Harmonic n | Frequency (mHz) | Amplification |
 |------------|-----------------|---------------|
-| 1st | 0.2931 | ~β_string correction |
-| 2nd | 0.5862 | ~β_string² correction |
-| 3rd | 0.8793 | ~β_string³ correction |
+| 1st | 0.2931 | ~ß_string correction |
+| 2nd | 0.5862 | ~ß_string² correction |
+| 3rd | 0.8793 | ~ß_string³ correction |
 | 4th | 1.1724 | —|
 | 5th | 1.4655 (= f_ISCO × 0.5) | dominant sub-harmonic |
 
@@ -111,7 +115,7 @@ The string vacuum field around the EMRI orbit forms a resonant cavity with discr
 At z = 0.5, the Aether field U_A provides a mild restoring effect on the EMRI orbit:
 
 ```
-Stability factor = 1 + δ_A = 1 + 0.15 = 1.15
+Stability factor = 1 + d_A = 1 + 0.15 = 1.15
 ```
 
 This 15% stability enhancement means the EMRI orbit is ~15% more stable against runaway inspiral compared to the GR-only prediction. Physically, the Aether buoyancy term provides a slight positive pressure that retards the orbital energy dissipation rate.
@@ -122,8 +126,8 @@ This 15% stability enhancement means the EMRI orbit is ~15% more stable against 
 
 | Quantity | GR | UQFF |
 |----------|-----|------|
-| Orbits in 2 yr | 1.77 × 10⁵ | ~2.04 × 10⁵ (stability factor) |
-| Phase accuracy | σ_φ ~ 0.001 rad | σ_φ ~ 0.001 rad |
+| Orbits in 2 yr | 1.77 × 105 | ~2.04 × 105 (stability factor) |
+| Phase accuracy | s_f ~ 0.001 rad | s_f ~ 0.001 rad |
 | Phase lag vs GR | — | Large (>1000 rad) |
 
 ---
@@ -135,10 +139,10 @@ This 15% stability enhancement means the EMRI orbit is ~15% more stable against 
 The UQFF peak strain for the EMRI at D_L = 2.68 Gpc:
 
 ```
-h_UQFF,peak = 5.6548 × 10⁻²³
+h_UQFF,peak = 5.6548 × 10?²³
 ```
 
-This is ~60× smaller than the SMBH merger benchmark (h_SMBH ~ 4.3 × 10⁻¹⁹) due to the small mass ratio q = 10⁻⁵ reducing the quadrupole emission.
+This is ~60× smaller than the SMBH merger benchmark (h_SMBH ~ 4.3 × 10?¹?) due to the small mass ratio q = 10?5 reducing the quadrupole emission.
 
 ### 6.2 Signal-to-Noise Ratio
 
@@ -148,7 +152,7 @@ This is ~60× smaller than the SMBH merger benchmark (h_SMBH ~ 4.3 × 10⁻¹⁹
 | UQFF prediction | 66.7 |
 | Reduction factor | 0.667 |
 
-The SNR reduction factor 0.667 differs from the z=0 value of 0.333 because at z = 0.5 the Aether compensation partially offsets the string coupling, yielding D_eff(z=0.5) ≈ 0.667 for EMRI-type sources.
+The SNR reduction factor 0.667 differs from the z=0 value of 0.333 because at z = 0.5 the Aether compensation partially offsets the string coupling, yielding D_eff(z=0.5) ˜ 0.667 for EMRI-type sources.
 
 Both GR and UQFF predictions are above the LISA EMRI detection threshold (SNR ~ 20), ensuring detectability. The factor-of-1.5 SNR difference is measure over a 2-year coherent integration.
 
@@ -160,9 +164,9 @@ The complete UQFF EMRI signature consists of 4 observable components:
 
 | Component | Observable | UQFF vs GR |
 |-----------|-----------|-----------|
-| Base waveform | Phase evolution φ(t) | Phase lag > 1000 rad |
+| Base waveform | Phase evolution f(t) | Phase lag > 1000 rad |
 | SNR | Matched-filter SNR | 66.7 (UQFF) vs 100 (GR) |
-| Stability | Time in LISA band | +15% longer (→ more cycles) |
+| Stability | Time in LISA band | +15% longer (? more cycles) |
 | String harmonics | 5 spectral lines at f_ISCO × n/5 | Not present in GR |
 
 The string harmonic lines at 0.293, 0.586, 0.879 mHz are particularly diagnostic: they appear as narrow spectral features in the LISA TDI data stream at sub-ISCO frequencies, with known frequency ratios (1:2:3). Their absence would rule out string coupling; their presence at the predicted frequencies would confirm UQFF.
@@ -194,13 +198,13 @@ The EMRI UQFF factor at z = 0.5 (0.667) is intermediate between the local value 
 
 4. **Phase coherence:** EMRI parameter estimation should find residual phases of > 1000 rad when GR templates are used, pointing toward UQFF-modified templates.
 
-5. **Rate prediction:** 33.3 EMRI detections/yr (UQFF) vs 50/yr (GR). Three years of LISA operation will provide > 5σ discrimination between these rates.
+5. **Rate prediction:** 33.3 EMRI detections/yr (UQFF) vs 50/yr (GR). Three years of LISA operation will provide > 5s discrimination between these rates.
 
 ---
 
 ## 10. Conclusions
 
-UQFF modifies EMRI signals in four distinct ways: SNR reduction by factor 0.667 (vs GR), 5 string harmonic spectral lines at sub-ISCO frequencies, 15% stability enhancement from Aether damping, and accumulation of > 1000 rad phase lag over 1.77 × 10⁵ orbits. The predicted LISA EMRI detection rate is 33.3/yr (UQFF) vs 50/yr (GR). The multi-modal nature of UQFF EMRI modifications — involving both waveform amplitude and novel spectral features — makes EMRIs among the best LISA sources for testing the UQFF framework.
+UQFF modifies EMRI signals in four distinct ways: SNR reduction by factor 0.667 (vs GR), 5 string harmonic spectral lines at sub-ISCO frequencies, 15% stability enhancement from Aether damping, and accumulation of > 1000 rad phase lag over 1.77 × 105 orbits. The predicted LISA EMRI detection rate is 33.3/yr (UQFF) vs 50/yr (GR). The multi-modal nature of UQFF EMRI modifications — involving both waveform amplitude and novel spectral features — makes EMRIs among the best LISA sources for testing the UQFF framework.
 
 ---
 
@@ -214,10 +218,10 @@ UQFF modifies EMRI signals in four distinct ways: SNR reduction by factor 0.667 
 ---
 
 **Validator:** `validate_lisa.py` — **ALL 3 TESTS PASSED** (TEST 2: EMRI PASS)  
-*M_SMBH=10⁶ M☉, M_compact=10 M☉, q=10⁻⁵, z=0.5, D_L=2.68 Gpc;*  
-*f_ISCO=2.931 mHz; orbits=1.77×10⁵; observation=2 yr;*  
+*M_SMBH=106 M?, M_compact=10 M?, q=10?5, z=0.5, D_L=2.68 Gpc;*  
+*f_ISCO=2.931 mHz; orbits=1.77×105; observation=2 yr;*  
 *String harmonics: 5 modes at [0.293, 0.586, 0.879] mHz;*  
-*Stability factor=1.15; h_UQFF=5.6548e-23; SNR: 100 → 66.7;*  
-*EMRI rate: 50 → 33.3/yr; κ = 0.0005/day, [SSq] = 0.57*
+*Stability factor=1.15; h_UQFF=5.6548e-23; SNR: 100 ? 66.7;*  
+*EMRI rate: 50 ? 33.3/yr; ? = 0.0005/day, [SSq] = 0.57*
 
 **End of Paper 014b**

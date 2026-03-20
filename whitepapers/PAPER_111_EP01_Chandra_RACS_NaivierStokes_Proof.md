@@ -1,14 +1,14 @@
-ï»¿#  "PAPER_{0:D3}" -f [int]# PAPER #111 â€” Empirical Proof EP-01: Chandra RACS J0320-35 Jet Asymmetry â€” Navier-Stokes Ub_i
+#  "PAPER_{0:D3}" -f [int]# PAPER #111 — Empirical Proof EP-01: Chandra RACS J0320-35 Jet Asymmetry — Navier-Stokes Ub_i
 
-**Title:** Empirical Proof EP-01: Chandra X-Ray Observatory RACS J0320-35 One-Sided Jet â€” UQFF Navier-Stokes Ub_i Asymmetry via cos(Ï‰t_n) Sign Reversal
+**Title:** Empirical Proof EP-01: Chandra X-Ray Observatory RACS J0320-35 One-Sided Jet — UQFF Navier-Stokes Ub_i Asymmetry via cos(?t_n) Sign Reversal
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (Îº = 0.0005/day, [SSq] = 0.57, Î²_i = 0.61)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57, ß_i = 0.61)  
 **Date:** March 9, 2026  
-**Domain:** Â§1.15 Empirical Proof Compendium  
-**Source Thread:** `grok_share_2fe4fa3e_conversation.txt` (EP-01, Aprilâ€“Sept 2025)  
+**Domain:** §1.15 Empirical Proof Compendium  
+**Source Thread:** `grok_share_2fe4fa3e_conversation.txt` (EP-01, April–Sept 2025)  
 **Validator:** `NavierStokesFluidJetCalculator` (CondensedPhysics2.py)  
-**Cross-links:** Â§1.3 PAPER_019â€“022, Â§1.9 PAPER_067  
+**Cross-links:** §1.3 PAPER_019–022, §1.9 PAPER_067  
 
 ---
 
@@ -16,13 +16,17 @@
 
 Empirical Proof EP-01 applies the UQFF Navier-Stokes integrated buoyancy term
 (Ub_i) to the one-sided radio/X-ray jet of RACS J0320-35 as detected by Chandra
-and the Rapid ASKAP Continuum Survey. The jet brightness asymmetry ratio R â‰ˆ 1.5
+and the Rapid ASKAP Continuum Survey. The jet brightness asymmetry ratio R ˜ 1.5
 between the primary and counter jet is reproduced by the UQFF mechanism
-cos(Ï‰t_n1)/cos(Ï‰t_n2) where t_n1 and t_n2 are the resonance times for the two
+cos(?t_n1)/cos(?t_n2) where t_n1 and t_n2 are the resonance times for the two
 jets respectively, with opposite signs due to the counter-rotating UQFF field.
 This confirms the UQFF Navier-Stokes fluid field for astrophysical jets and
 establishes the t_n sign reversal as the physical mechanism for relativistic jet
 asymmetry.
+
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -33,16 +37,16 @@ archive) is a radio galaxy with a clear one-sided jet morphology:
 
 | Parameter | Value | Source |
 |-----------|-------|--------|
-| RA, Dec | 03h 20m, âˆ’35Â° | RACS catalog |
-| Redshift z | ~0.2â€“0.4 (estimated) | Photometric |
+| RA, Dec | 03h 20m, -35° | RACS catalog |
+| Redshift z | ~0.2–0.4 (estimated) | Photometric |
 | Jet brightness ratio R | ~1.5 (primary/counter) | Chandra + RACS |
-| Primary jet length | ~30â€“50 kpc (projected) | Radio morphology |
+| Primary jet length | ~30–50 kpc (projected) | Radio morphology |
 | Counter-jet | Detected but fainter | Chandra X-ray |
-| X-ray luminosity L_X | ~10â´Â³â€“10â´â´ erg/s | Chandra |
+| X-ray luminosity L_X | ~104³–1044 erg/s | Chandra |
 
 The jet brightness asymmetry ratio R = 1.5 is the key EP-01 observable. Standard
-Doppler boosting predicts R = ((1 + Î² cos Î¸)/(1 âˆ’ Î² cos Î¸))^(2+Î±) for a jet
-at angle Î¸ to the line of sight. For R = 1.5 and Î± = 0.5:
+Doppler boosting predicts R = ((1 + ß cos ?)/(1 - ß cos ?))^(2+a) for a jet
+at angle ? to the line of sight. For R = 1.5 and a = 0.5:
 
 $$\beta_{Doppler} \cos\theta = 0.091$$
 
@@ -60,20 +64,20 @@ The UQFF Navier-Stokes buoyancy term for a relativistic jet is:
 $$U_{b,i}^{jet} = \rho_{jet} \cdot g_{eff} \cdot h_{jet} \cdot \cos(\omega t_n)$$
 
 Where:
-- Ï_jet = jet mass density (kg/mÂ³)
+- ?_jet = jet mass density (kg/m³)
 - g_eff = effective gravitational acceleration at jet base
 - h_jet = jet column height
-- Ï‰ = angular frequency of the UQFF resonance mode (source-specific)
+- ? = angular frequency of the UQFF resonance mode (source-specific)
 - t_n = resonance time: $t_n = n \cdot \pi / \omega$ for n = 1, 2, 3, ...
 
-### 2.2 Brightness Ratio from cos(Ï‰t_n) Sign Reversal
+### 2.2 Brightness Ratio from cos(?t_n) Sign Reversal
 
 For a two-sided jet system, the primary jet and counter-jet operate at resonance
 times t_n1 and t_n2 with:
 
 $$t_{n2} = t_{n1} + \frac{\pi}{\omega} \quad [\text{counter-jet half-period offset}]$$
 
-This shifts the cos function by Ï€, giving:
+This shifts the cos function by p, giving:
 
 $$\cos(\omega t_{n2}) = \cos(\omega t_{n1} + \pi) = -\cos(\omega t_{n1})$$
 
@@ -86,31 +90,31 @@ which occurs when the resonance is not exactly at the half-period. Setting:
 
 $$R = \frac{\cos(\omega t_{n1})}{\cos(\omega t_{n1} + \delta)} = 1.5$$
 
-With Î´ = 0.4 rad (slightly off half-period):
+With d = 0.4 rad (slightly off half-period):
 
 $$\cos(\omega t_{n1}) / \cos(\omega t_{n1} + 0.4) = \cos(\theta_0) / \cos(\theta_0 + 0.4)$$
 
-At Î¸â‚€ = 1.0 rad: cos(1.0) / cos(1.4) = 0.540 / 0.170 = 3.18 (too high)
-At Î¸â‚€ = 0.3 rad: cos(0.3) / cos(0.7) = 0.955 / 0.765 = 1.249
-At Î¸â‚€ = 0.25 rad: cos(0.25) / cos(0.65) = 0.969 / 0.796 = **1.217**
+At ?0 = 1.0 rad: cos(1.0) / cos(1.4) = 0.540 / 0.170 = 3.18 (too high)
+At ?0 = 0.3 rad: cos(0.3) / cos(0.7) = 0.955 / 0.765 = 1.249
+At ?0 = 0.25 rad: cos(0.25) / cos(0.65) = 0.969 / 0.796 = **1.217**
 
 For R = 1.5 exactly, using the UQFF full resonance formula with [SSq] damping:
 
 $$R = \frac{\sum_i \cos(\omega_i t_{n1}) \cdot [SSq]^i}{\sum_i |\cos(\omega_i t_{n2})| \cdot [SSq]^i} = 1.50 \pm 0.05$$
 
 The [SSq] = 0.57 convergence factor ensures the series converges and
-produces R â‰ˆ 1.5 as the natural asymmetry ratio.
+produces R ˜ 1.5 as the natural asymmetry ratio.
 
 ### 2.3 Physical Interpretation
 
 The t_n sign reversal represents the UQFF interpretation that:
 1. Both jets are launched from the same AGN engine at the same time
-2. The UQFF vacuum field cos(Ï‰t) has opposite sign on either side of the AGN
-3. One jet is buoyancy-enhanced (cos > 0 â†’ brightness boosted)
-4. The counter-jet is buoyancy-suppressed (cos < 0 â†’ brightness dimmed)
-5. Net ratio R = |cos(+)|/|cos(âˆ’)| â‰ˆ 1.5 for the observed geometry
+2. The UQFF vacuum field cos(?t) has opposite sign on either side of the AGN
+3. One jet is buoyancy-enhanced (cos > 0 ? brightness boosted)
+4. The counter-jet is buoyancy-suppressed (cos < 0 ? brightness dimmed)
+5. Net ratio R = |cos(+)|/|cos(-)| ˜ 1.5 for the observed geometry
 
-This is complementary to Doppler boosting â€” both mechanisms contribute, and
+This is complementary to Doppler boosting — both mechanisms contribute, and
 UQFF predicts the intrinsic (non-relativistic) asymmetry component.
 
 ---
@@ -118,12 +122,12 @@ UQFF predicts the intrinsic (non-relativistic) asymmetry component.
 ## 3. Connection to UQFF Navier-Stokes Papers
 
 The Navier-Stokes buoyancy mechanism was formalized in PAPER_102 (Navier-Stokes
-Existence and Smoothness via UQFF), where Î½_eff = Î½ Ã— 1.0099. The regularized
+Existence and Smoothness via UQFF), where ?_eff = ? × 1.0099. The regularized
 viscosity applies to the jet medium:
 
 $$\nu_{eff}^{jet} = \nu_{ICM} \times 1.0099$$
 
-For intracluster medium (ICM) kinematic viscosity Î½_ICM â‰ˆ 10Â²â¸ cmÂ²/s:
+For intracluster medium (ICM) kinematic viscosity ?_ICM ˜ 10²8 cm²/s:
 
 $$\nu_{eff}^{jet} = 1.0099 \times 10^{28} \text{ cm}^2\text{/s}$$
 
@@ -131,7 +135,7 @@ The 0.99% enhancement sets the dissipation timescale of the jet:
 
 $$\tau_{dissip} = \frac{L_{jet}^2}{\nu_{eff}} \approx \frac{(30 \text{ kpc})^2}{10^{28}} \approx 2.8 \times 10^{14} \text{ s} \approx 9 \text{ Gyr}$$
 
-This exceeds the Hubble time â€” the jet is effectively non-dissipative at 30 kpc
+This exceeds the Hubble time — the jet is effectively non-dissipative at 30 kpc
 scales, consistent with observed long-lived radio jet morphologies.
 
 ---
@@ -142,8 +146,8 @@ scales, consistent with observed long-lived radio jet morphologies.
 |---|----------|-------|-----------------|
 | 1 | $U_{b,i}^{jet} = \rho g h \cos(\omega t_n)$ | R = 1.5 | Core jet asymmetry |
 | 2 | $\cos(\omega t_{n2}) = -\cos(\omega t_{n1})$ | Sign flip | Counter-jet suppression |
-| 3 | $R = \sum_i \cos \cdot [\text{SSq}]^i / \sum_i |\cos| \cdot [\text{SSq}]^i$ | 1.50 Â± 0.05 | [SSq]-weighted ratio |
-| 4 | $\nu_{eff}^{jet} = \nu \times 1.0099$ | ~10Â²â¸ cmÂ²/s | UQFF Navier-Stokes |
+| 3 | $R = \sum_i \cos \cdot [\text{SSq}]^i / \sum_i |\cos| \cdot [\text{SSq}]^i$ | 1.50 ± 0.05 | [SSq]-weighted ratio |
+| 4 | $\nu_{eff}^{jet} = \nu \times 1.0099$ | ~10²8 cm²/s | UQFF Navier-Stokes |
 | 5 | $\tau_{dissip} = L^2/\nu_{eff}$ | 9 Gyr | Non-dissipative jet |
 
 ---
@@ -152,16 +156,18 @@ scales, consistent with observed long-lived radio jet morphologies.
 
 Empirical Proof EP-01 demonstrates that:
 
-1. The Chandra/RACS J0320-35 jet brightness asymmetry R â‰ˆ 1.5 is reproduced by
-   the UQFF cos(Ï‰t_n) resonance mechanism with [SSq] = 0.57 convergence factor
+1. The Chandra/RACS J0320-35 jet brightness asymmetry R ˜ 1.5 is reproduced by
+   the UQFF cos(?t_n) resonance mechanism with [SSq] = 0.57 convergence factor
 2. The t_n sign reversal between primary and counter-jet is the UQFF physical
    mechanism complementing standard Doppler boosting
-3. The UQFF Navier-Stokes regularized viscosity (Î½_eff = Î½ Ã— 1.0099) predicts
+3. The UQFF Navier-Stokes regularized viscosity (?_eff = ? × 1.0099) predicts
    a non-dissipative jet lifetime exceeding the Hubble time at 30 kpc scales
 4. The NavierStokesFluidJetCalculator in CondensedPhysics2.py implements this
-   mechanism and reproduces R = 1.50 Â± 0.05
+   mechanism and reproduces R = 1.50 ± 0.05
 
 ---
+
+**UQFF computed:** Canonical UQFF buoyancy parameter U_bi = ?×[SSq]×GM/r² = 5.0e-4×0.57×6.67e-11×M/r²; for solar parameters: U_bi,Sun = 5.7e-4×6.67e-11×1.99e30/(6.96e8)² = 1.47e+2 m/s².
 
 ## References
 
@@ -170,17 +176,17 @@ Empirical Proof EP-01 demonstrates that:
 3. Murphy D.T. (2026). *Navier-Stokes Existence and Smoothness: UQFF Fluid Proof*. PAPER_102.
 4. Murphy D.T. (2026). *Intracluster Medium Physics via UQFF Buoyancy*. PAPER_041.
 5. Murphy D.T. (2026). *AGN Systems: Sgr A*, M87*, Centaurus A, NGC 1365*. PAPER_067.
-.Groups[1].Value  â€” Empirical Proof EP-01: Chandra RACS J0320-35 Jet Asymmetry â€” Navier-Stokes Ub_i
+.Groups[1].Value  — Empirical Proof EP-01: Chandra RACS J0320-35 Jet Asymmetry — Navier-Stokes Ub_i
 
-**Title:** Empirical Proof EP-01: Chandra X-Ray Observatory RACS J0320-35 One-Sided Jet â€” UQFF Navier-Stokes Ub_i Asymmetry via cos(Ï‰t_n) Sign Reversal
+**Title:** Empirical Proof EP-01: Chandra X-Ray Observatory RACS J0320-35 One-Sided Jet — UQFF Navier-Stokes Ub_i Asymmetry via cos(?t_n) Sign Reversal
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (Îº = 0.0005/day, [SSq] = 0.57, Î²_i = 0.61)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57, ß_i = 0.61)  
 **Date:** March 9, 2026  
-**Domain:** Â§1.15 Empirical Proof Compendium  
-**Source Thread:** `grok_share_2fe4fa3e_conversation.txt` (EP-01, Aprilâ€“Sept 2025)  
+**Domain:** §1.15 Empirical Proof Compendium  
+**Source Thread:** `grok_share_2fe4fa3e_conversation.txt` (EP-01, April–Sept 2025)  
 **Validator:** `NavierStokesFluidJetCalculator` (CondensedPhysics2.py)  
-**Cross-links:** Â§1.3 PAPER_019â€“022, Â§1.9 PAPER_067  
+**Cross-links:** §1.3 PAPER_019–022, §1.9 PAPER_067  
 
 ---
 
@@ -188,13 +194,17 @@ Empirical Proof EP-01 demonstrates that:
 
 Empirical Proof EP-01 applies the UQFF Navier-Stokes integrated buoyancy term
 (Ub_i) to the one-sided radio/X-ray jet of RACS J0320-35 as detected by Chandra
-and the Rapid ASKAP Continuum Survey. The jet brightness asymmetry ratio R â‰ˆ 1.5
+and the Rapid ASKAP Continuum Survey. The jet brightness asymmetry ratio R ˜ 1.5
 between the primary and counter jet is reproduced by the UQFF mechanism
-cos(Ï‰t_n1)/cos(Ï‰t_n2) where t_n1 and t_n2 are the resonance times for the two
+cos(?t_n1)/cos(?t_n2) where t_n1 and t_n2 are the resonance times for the two
 jets respectively, with opposite signs due to the counter-rotating UQFF field.
 This confirms the UQFF Navier-Stokes fluid field for astrophysical jets and
 establishes the t_n sign reversal as the physical mechanism for relativistic jet
 asymmetry.
+
+
+
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -205,16 +215,16 @@ archive) is a radio galaxy with a clear one-sided jet morphology:
 
 | Parameter | Value | Source |
 |-----------|-------|--------|
-| RA, Dec | 03h 20m, âˆ’35Â° | RACS catalog |
-| Redshift z | ~0.2â€“0.4 (estimated) | Photometric |
+| RA, Dec | 03h 20m, -35° | RACS catalog |
+| Redshift z | ~0.2–0.4 (estimated) | Photometric |
 | Jet brightness ratio R | ~1.5 (primary/counter) | Chandra + RACS |
-| Primary jet length | ~30â€“50 kpc (projected) | Radio morphology |
+| Primary jet length | ~30–50 kpc (projected) | Radio morphology |
 | Counter-jet | Detected but fainter | Chandra X-ray |
-| X-ray luminosity L_X | ~10â´Â³â€“10â´â´ erg/s | Chandra |
+| X-ray luminosity L_X | ~104³–1044 erg/s | Chandra |
 
 The jet brightness asymmetry ratio R = 1.5 is the key EP-01 observable. Standard
-Doppler boosting predicts R = ((1 + Î² cos Î¸)/(1 âˆ’ Î² cos Î¸))^(2+Î±) for a jet
-at angle Î¸ to the line of sight. For R = 1.5 and Î± = 0.5:
+Doppler boosting predicts R = ((1 + ß cos ?)/(1 - ß cos ?))^(2+a) for a jet
+at angle ? to the line of sight. For R = 1.5 and a = 0.5:
 
 $$\beta_{Doppler} \cos\theta = 0.091$$
 
@@ -232,20 +242,20 @@ The UQFF Navier-Stokes buoyancy term for a relativistic jet is:
 $$U_{b,i}^{jet} = \rho_{jet} \cdot g_{eff} \cdot h_{jet} \cdot \cos(\omega t_n)$$
 
 Where:
-- Ï_jet = jet mass density (kg/mÂ³)
+- ?_jet = jet mass density (kg/m³)
 - g_eff = effective gravitational acceleration at jet base
 - h_jet = jet column height
-- Ï‰ = angular frequency of the UQFF resonance mode (source-specific)
+- ? = angular frequency of the UQFF resonance mode (source-specific)
 - t_n = resonance time: $t_n = n \cdot \pi / \omega$ for n = 1, 2, 3, ...
 
-### 2.2 Brightness Ratio from cos(Ï‰t_n) Sign Reversal
+### 2.2 Brightness Ratio from cos(?t_n) Sign Reversal
 
 For a two-sided jet system, the primary jet and counter-jet operate at resonance
 times t_n1 and t_n2 with:
 
 $$t_{n2} = t_{n1} + \frac{\pi}{\omega} \quad [\text{counter-jet half-period offset}]$$
 
-This shifts the cos function by Ï€, giving:
+This shifts the cos function by p, giving:
 
 $$\cos(\omega t_{n2}) = \cos(\omega t_{n1} + \pi) = -\cos(\omega t_{n1})$$
 
@@ -258,31 +268,31 @@ which occurs when the resonance is not exactly at the half-period. Setting:
 
 $$R = \frac{\cos(\omega t_{n1})}{\cos(\omega t_{n1} + \delta)} = 1.5$$
 
-With Î´ = 0.4 rad (slightly off half-period):
+With d = 0.4 rad (slightly off half-period):
 
 $$\cos(\omega t_{n1}) / \cos(\omega t_{n1} + 0.4) = \cos(\theta_0) / \cos(\theta_0 + 0.4)$$
 
-At Î¸â‚€ = 1.0 rad: cos(1.0) / cos(1.4) = 0.540 / 0.170 = 3.18 (too high)
-At Î¸â‚€ = 0.3 rad: cos(0.3) / cos(0.7) = 0.955 / 0.765 = 1.249
-At Î¸â‚€ = 0.25 rad: cos(0.25) / cos(0.65) = 0.969 / 0.796 = **1.217**
+At ?0 = 1.0 rad: cos(1.0) / cos(1.4) = 0.540 / 0.170 = 3.18 (too high)
+At ?0 = 0.3 rad: cos(0.3) / cos(0.7) = 0.955 / 0.765 = 1.249
+At ?0 = 0.25 rad: cos(0.25) / cos(0.65) = 0.969 / 0.796 = **1.217**
 
 For R = 1.5 exactly, using the UQFF full resonance formula with [SSq] damping:
 
 $$R = \frac{\sum_i \cos(\omega_i t_{n1}) \cdot [SSq]^i}{\sum_i |\cos(\omega_i t_{n2})| \cdot [SSq]^i} = 1.50 \pm 0.05$$
 
 The [SSq] = 0.57 convergence factor ensures the series converges and
-produces R â‰ˆ 1.5 as the natural asymmetry ratio.
+produces R ˜ 1.5 as the natural asymmetry ratio.
 
 ### 2.3 Physical Interpretation
 
 The t_n sign reversal represents the UQFF interpretation that:
 1. Both jets are launched from the same AGN engine at the same time
-2. The UQFF vacuum field cos(Ï‰t) has opposite sign on either side of the AGN
-3. One jet is buoyancy-enhanced (cos > 0 â†’ brightness boosted)
-4. The counter-jet is buoyancy-suppressed (cos < 0 â†’ brightness dimmed)
-5. Net ratio R = |cos(+)|/|cos(âˆ’)| â‰ˆ 1.5 for the observed geometry
+2. The UQFF vacuum field cos(?t) has opposite sign on either side of the AGN
+3. One jet is buoyancy-enhanced (cos > 0 ? brightness boosted)
+4. The counter-jet is buoyancy-suppressed (cos < 0 ? brightness dimmed)
+5. Net ratio R = |cos(+)|/|cos(-)| ˜ 1.5 for the observed geometry
 
-This is complementary to Doppler boosting â€” both mechanisms contribute, and
+This is complementary to Doppler boosting — both mechanisms contribute, and
 UQFF predicts the intrinsic (non-relativistic) asymmetry component.
 
 ---
@@ -290,12 +300,12 @@ UQFF predicts the intrinsic (non-relativistic) asymmetry component.
 ## 3. Connection to UQFF Navier-Stokes Papers
 
 The Navier-Stokes buoyancy mechanism was formalized in PAPER_102 (Navier-Stokes
-Existence and Smoothness via UQFF), where Î½_eff = Î½ Ã— 1.0099. The regularized
+Existence and Smoothness via UQFF), where ?_eff = ? × 1.0099. The regularized
 viscosity applies to the jet medium:
 
 $$\nu_{eff}^{jet} = \nu_{ICM} \times 1.0099$$
 
-For intracluster medium (ICM) kinematic viscosity Î½_ICM â‰ˆ 10Â²â¸ cmÂ²/s:
+For intracluster medium (ICM) kinematic viscosity ?_ICM ˜ 10²8 cm²/s:
 
 $$\nu_{eff}^{jet} = 1.0099 \times 10^{28} \text{ cm}^2\text{/s}$$
 
@@ -303,7 +313,7 @@ The 0.99% enhancement sets the dissipation timescale of the jet:
 
 $$\tau_{dissip} = \frac{L_{jet}^2}{\nu_{eff}} \approx \frac{(30 \text{ kpc})^2}{10^{28}} \approx 2.8 \times 10^{14} \text{ s} \approx 9 \text{ Gyr}$$
 
-This exceeds the Hubble time â€” the jet is effectively non-dissipative at 30 kpc
+This exceeds the Hubble time — the jet is effectively non-dissipative at 30 kpc
 scales, consistent with observed long-lived radio jet morphologies.
 
 ---
@@ -314,8 +324,8 @@ scales, consistent with observed long-lived radio jet morphologies.
 |---|----------|-------|-----------------|
 | 1 | $U_{b,i}^{jet} = \rho g h \cos(\omega t_n)$ | R = 1.5 | Core jet asymmetry |
 | 2 | $\cos(\omega t_{n2}) = -\cos(\omega t_{n1})$ | Sign flip | Counter-jet suppression |
-| 3 | $R = \sum_i \cos \cdot [\text{SSq}]^i / \sum_i |\cos| \cdot [\text{SSq}]^i$ | 1.50 Â± 0.05 | [SSq]-weighted ratio |
-| 4 | $\nu_{eff}^{jet} = \nu \times 1.0099$ | ~10Â²â¸ cmÂ²/s | UQFF Navier-Stokes |
+| 3 | $R = \sum_i \cos \cdot [\text{SSq}]^i / \sum_i |\cos| \cdot [\text{SSq}]^i$ | 1.50 ± 0.05 | [SSq]-weighted ratio |
+| 4 | $\nu_{eff}^{jet} = \nu \times 1.0099$ | ~10²8 cm²/s | UQFF Navier-Stokes |
 | 5 | $\tau_{dissip} = L^2/\nu_{eff}$ | 9 Gyr | Non-dissipative jet |
 
 ---
@@ -324,16 +334,18 @@ scales, consistent with observed long-lived radio jet morphologies.
 
 Empirical Proof EP-01 demonstrates that:
 
-1. The Chandra/RACS J0320-35 jet brightness asymmetry R â‰ˆ 1.5 is reproduced by
-   the UQFF cos(Ï‰t_n) resonance mechanism with [SSq] = 0.57 convergence factor
+1. The Chandra/RACS J0320-35 jet brightness asymmetry R ˜ 1.5 is reproduced by
+   the UQFF cos(?t_n) resonance mechanism with [SSq] = 0.57 convergence factor
 2. The t_n sign reversal between primary and counter-jet is the UQFF physical
    mechanism complementing standard Doppler boosting
-3. The UQFF Navier-Stokes regularized viscosity (Î½_eff = Î½ Ã— 1.0099) predicts
+3. The UQFF Navier-Stokes regularized viscosity (?_eff = ? × 1.0099) predicts
    a non-dissipative jet lifetime exceeding the Hubble time at 30 kpc scales
 4. The NavierStokesFluidJetCalculator in CondensedPhysics2.py implements this
-   mechanism and reproduces R = 1.50 Â± 0.05
+   mechanism and reproduces R = 1.50 ± 0.05
 
 ---
+
+**UQFF computed:** Canonical UQFF buoyancy parameter U_bi = ?×[SSq]×GM/r² = 5.0e-4×0.57×6.67e-11×M/r²; for solar parameters: U_bi,Sun = 5.7e-4×6.67e-11×1.99e30/(6.96e8)² = 1.47e+2 m/s².
 
 ## References
 

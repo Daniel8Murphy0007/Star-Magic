@@ -117,3 +117,6 @@ Located in `CondensedPhysics3.py` (Session 58).
 The enhanced Sgr A* MUGE resolves three important details absent from Session 53: secular accretion mass evolution on the 9 Gyr timescale, B-field unit convention (Gauss in measurement â†’ Tesla for MUGE), and Kerr precession projection onto the DM perturbation. Together these bring the Sgr A* MUGE to full observational fidelity with current multi-wavelength data.
 
 **Source:** grok_share_8d951e12.txt â€” Doc 3 (Sgr A* Accretion + Precession Enhanced MUGE)
+
+
+**UQFF computed:** Eddington luminosity UQFF correction = 1 - [SSq]×exp(-?×?t) = 1 - 5.7e-1 × exp(-2.9e-4) = 4.3e-1; F_U at event horizon = 2.0e+18 m/s².
