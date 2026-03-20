@@ -8,10 +8,11 @@ CondensedPhysics calculator modules. This enables scalable file clustering
 while maintaining a single-import API.
 
 ARCHITECTURE:
-    CondensedPhysics.py      → Foundation (1,227 base classes)
-    CondensedPhysics2.py     → Extension 1 (600 classes: Orb Analysis 10/11+ and Grok thread extensions)
-    CondensedPhysics3.py     → Extension 2 (219 classes: 15+ categories, Sessions 41-96, 2026-03-20)
-    CondensedPhysics4.py     → Extension 3 (73 classes: Phase 4, Sessions 97-111, 2026-03-20)
+    CondensedPhysics.py      → Foundation (1,227 base classes, 168,784 lines)
+    CondensedPhysics2.py     → Extension 1 (600 classes, 45,991 lines: Orb Analysis 10/11+ and Grok thread extensions)
+    CondensedPhysics3.py     → Extension 2 (219 classes, 13,944 lines: 15+ categories, Sessions 41-96)
+    CondensedPhysics4.py     → Extension 3 (73 classes, 5,336 lines: Phase 4, Sessions 97-115, 2026-03-20)
+    Last updated: Session 115 v4.72 (2026-03-20) — 383/383 whitepaper QS=5 complete; CP totals unchanged
     CondensedPhysicsAggregator.py → This file (unified API)
 
 USAGE:
@@ -855,7 +856,7 @@ ALL_CALCULATORS = {
     **CP2_CALCULATORS,
     # CP3 Extension 2 (219 classes, 15+ categories, Sessions 41-96 — 2026-03-20)
     **CP3_CALCULATORS,
-    # CP4 Extension 3 (73 classes, Sessions 97-111 — 2026-03-20)
+    # CP4 Extension 3 (73 classes, Sessions 97-115 — 2026-03-20)
     **CP4_CALCULATORS,
     # Grok Thread UQFF Extensions (Thread 9c3666463ac14753b4f3bea869caaf01)
     **GROK_THREAD_UQFF_CALCULATORS,
@@ -871,8 +872,9 @@ ALL_CALCULATORS = {
 }
 
 # Module metadata
-AGGREGATOR_VERSION = "2.5.0"
-TOTAL_MODULES = 22  # CP1 (1,227 classes), CP2 (600 classes), CP3 (219 classes, Sessions 41-96), CP4 (73 classes, Sessions 97-111), + 10 thread registries
+AGGREGATOR_VERSION = "2.6.0"
+TOTAL_MODULES = 22  # CP1 (1,227 classes, 168,784L), CP2 (600 classes, 45,991L), CP3 (219 classes, 13,944L, Sessions 41-96), CP4 (73 classes, 5,336L, Sessions 97-115), + 10 thread registries
+# Updated: Session 115 v4.72 (2026-03-20) — 383/383 whitepapers at QS=5; all CP counts unchanged
 
 
 def get_calculator(name: str):

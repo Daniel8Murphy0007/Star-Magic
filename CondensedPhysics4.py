@@ -12,7 +12,8 @@ Source: gok_share_31b5c807a4.txt — Supplemental gap analysis
          Phillips 1995 rotor, BSM ALICE/NOMAD/DELPHI, PLCK/ASKAP/TOI systems)
 Extraction: 17 unique calculators (PAPER_355–370) not present in CP1, CP2, or CP3
 Author: Daniel T. Murphy — Star Magic / UQFF Framework
-Version: 1.1.0 (2026-03-19)
+Version: 1.2.0 (2026-03-20)
+Updated: Session 115 — v4.72 QS=5 content quality enrichment; all 383 whitepaper/ papers confirmed at QS=5 (Q1–Q5 all filled); no new CP4 classes this session; CP4=73 classes, 5,336 lines
 
 Architecture Compliance (MANDATORY):
   - PURE PHYSICS CALCULATOR — no hardcoded astronomical data
