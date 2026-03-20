@@ -1,0 +1,134 @@
+# PAPER_403 — Ubi: 4-Term Solar Wind Buoyancy Decomposition with ε_sw
+
+**Source:** grok_share_cfdcad2f5.txt, lines 277–1600 ("Star Magic_construction file_04Oct2025.docx" C++ implementation)  
+**Section:** C++ source — `compute_Ubi()` function as 4-term sum over all Ugi components  
+**Session:** 108 (grok_share_cfdcad2f5.txt construction file re-analysis)  
+**CP4 Class:** `Ubi4TermSolarWindBuoyancyEpsilonSwCalculator` (#52)
+
+---
+
+## 1. Overview
+
+PAPER_394 defined the buoyancy force $U_{bi}$ applied to a single Ugi term.
+PAPER_403 extracts the **complete 4-term Ubi decomposition** from the construction file:
+
+$$U_{bi} = U_{bi,1} + U_{bi,2} + U_{bi,3} + U_{bi,4}$$
+
+where each term applies the buoyancy formula independently to $U_{g1}$, $U_{g2}$, $U_{g3}$, $U_{g4}$.
+
+The novel addition is the **solar wind buoyancy modulation** $(1 + \varepsilon_{sw} \cdot \rho_{sw})$,
+a first-principles coupling between solar wind plasma density and UQFF buoyancy response.
+
+---
+
+## 2. Formula
+
+### 2.1 Individual Ubi Term
+
+$$\boxed{U_{bi,k} = -\beta_i \cdot U_{g,k} \cdot \Omega_g \cdot \frac{M_{bh}}{d_g} \cdot (1 + \varepsilon_{sw} \cdot \rho_{sw}) \cdot U_{UA} \cdot \cos(\pi t_n)}$$
+
+where $k = 1, 2, 3, 4$ and $U_{g,k}$ is the corresponding $U_{g1}$, $U_{g2}$, $U_{g3}$, $U_{g4}$.
+
+### 2.2 Total Buoyancy
+
+$$U_{bi,\text{total}} = \sum_{k=1}^{4} U_{bi,k} = -\beta_i \cdot \Omega_g \cdot \frac{M_{bh}}{d_g} \cdot (1 + \varepsilon_{sw} \cdot \rho_{sw}) \cdot U_{UA} \cdot \cos(\pi t_n) \cdot \left(U_{g1} + U_{g2} + U_{g3} + U_{g4}\right)$$
+
+---
+
+## 3. Parameters
+
+| Symbol | Value | Notes |
+|--------|-------|-------|
+| $\beta_i$ | 0.6 | Buoyancy coefficient (PAPER_394) |
+| $\Omega_g$ | $7.3\times10^{-16}$ rad/s | Galactic angular frequency |
+| $M_{bh}$ | $8.155\times10^{36}$ kg | Sgr A* |
+| $d_g$ | $2.62\times10^{20}$ m | GC distance |
+| $\varepsilon_{sw}$ | $10^{-3}$ | Solar wind buoyancy coupling coefficient |
+| $\rho_{sw}$ | $8\times10^{-21}$ kg/m³ | Solar wind plasma density at 1 AU |
+| $U_{UA}$ | 1.0 | Unified Aether field (default) |
+| $t_n$ | normalized time | $\cos(\pi t_n)$ oscillation |
+
+---
+
+## 4. Novel Physics
+
+### 4.1 Solar Wind Buoyancy Modulation (1 + ε_sw · ρ_sw)
+
+The modulation factor:
+$$1 + \varepsilon_{sw} \cdot \rho_{sw} = 1 + (10^{-3})(8\times10^{-21}) = 1 + 8\times10^{-24} \approx 1.000000000000000000000008$$
+
+At standard solar wind conditions, this is near-unity (0.8 parts in 10²³ amplification).
+However, during **solar energetic particle events** and **coronal mass ejections**, $\rho_{sw}$
+can increase by 6-8 orders: $\rho_{sw,\text{CME}} \sim 10^{-13}$ kg/m³.
+
+At CME density: $1 + \varepsilon_{sw} \cdot \rho_{sw,\text{CME}} = 1 + 10^{-16}$ — still small but
+potentially measurable in precision Ubi experiments.
+
+### 4.2 4-Term Ubi Architecture
+
+Prior formulations used a single $U_{bi}$ applied to the total $U_g$. The construction file reveals
+that **each Ugi component generates its own buoyancy response independently**:
+
+$$U_{bi,k} \propto U_{g,k}$$
+
+This creates a buoyancy **cascade**: large $U_{g2}$ (from E_react amplification) generates
+the dominant buoyancy contribution, while $U_{g4}$ (scale-invariant at $4.219\times10^{-10}$ m/s²)
+generates a universal background buoyancy.
+
+### 4.3 Comparison: Sum vs Previous Single-Term
+
+With the 4-term sum, total $U_{bi}$ at Sun:
+$$U_{bi,\text{total}} \approx -\beta_i \cdot \Omega_g \cdot \frac{M_{bh}}{d_g} \cdot 1.0 \cdot U_{UA} \cdot (U_{g1} + U_{g2} + U_{g3} + U_{g4})$$
+
+The dominant term will be $U_{bi,2}$ (from $U_{g2}$) due to E_react amplification.
+$U_{bi,4}$ provides the universal solar-wind-modulated vacuum background.
+
+---
+
+## 5. Solar Wind Density Scaling
+
+| Condition | $\rho_{sw}$ (kg/m³) | $(1 + \varepsilon_{sw} \cdot \rho_{sw})$ |
+|-----------|---------------------|------------------------------------------|
+| Calm solar wind (1 AU) | $8\times10^{-21}$ | $1 + 8\times10^{-24}$ |
+| Active solar wind | $8\times10^{-20}$ | $1 + 8\times10^{-23}$ |
+| Solar storm (CME) | $\sim10^{-17}$ | $1 + 10^{-20}$ |
+| Solar minimum (outer helio) | $\sim10^{-23}$ | $1 + 10^{-26}$ |
+
+The $\varepsilon_{sw}$ term provides UQFF **solar weather sensitivity** — a direct modulation
+of galactic-scale buoyancy by local solar wind conditions.
+
+---
+
+## 6. C++ Source
+
+```cpp
+// grok_share_cfdcad2f5.txt construction file
+double beta_i = 0.6;
+double epsilon_sw = 1e-3;
+double rho_sw = 8e-21;            // solar wind density at 1 AU
+double wind_mod = 1.0 + epsilon_sw * rho_sw;  // ≈ 1 + 8e-24
+double Omega_g = 7.3e-16;
+double UUA = 1.0;
+double cos_factor = cos(M_PI * t_n);
+
+// 4-term buoyancy sum
+double Ubi1 = -beta_i * Ug1 * Omega_g * (Mbh / dg) * wind_mod * UUA * cos_factor;
+double Ubi2 = -beta_i * Ug2 * Omega_g * (Mbh / dg) * wind_mod * UUA * cos_factor;
+double Ubi3 = -beta_i * Ug3 * Omega_g * (Mbh / dg) * wind_mod * UUA * cos_factor;
+double Ubi4 = -beta_i * Ug4 * Omega_g * (Mbh / dg) * wind_mod * UUA * cos_factor;
+double Ubi_total = Ubi1 + Ubi2 + Ubi3 + Ubi4;
+```
+
+---
+
+## 7. Relationship to Prior Papers
+
+| Paper | Ubi Form | Notes |
+|-------|----------|-------|
+| PAPER_198 | $U_{bi} = -\beta_i \cdot U_{g1} \cdot \omega_g \cdot (M/r) \cdot [UA] \cdot \cos(\pi t_n)$ | Single-term, compact object form |
+| PAPER_394 | FU master sum includes total $U_{bi}$ | Simplified sum |
+| PAPER_403 | 4-term $U_{bi}$ with $\varepsilon_{sw}$ solar wind | **NEW — FIRST ε_sw solar wind buoyancy** |
+
+---
+
+*Whitepaper generated Session 108. Source: grok_share_cfdcad2f5.txt lines 277-1600.*
