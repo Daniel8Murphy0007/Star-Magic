@@ -3338,6 +3338,371 @@ class LaTeXDualBlockUQFFMasterEquationCalculator(_CP4Calculator):
         }
 
 
+
+# ===========================================================================
+# SESSION 106: grok_share_cfdcad2f5.txt — PAPER_387–391
+# ===========================================================================
+
+class vSCmRelativisticParameterUpdateCalculator(_CP4Calculator):
+    """PAPER_387 — Relativistic SCm Velocity Parameter Update: v_SCm = 0.99c.
+    Source: grok_share_cfdcad2f5.txt (Star Magic_construction file_04Oct2025.docx)
+    Formal canonical assignment v_SCm = 0.99*c = 2.968e8 m/s (was 1e8 m/s).
+    8.808x amplification of Ereact = (rho_SCm * v_SCm^2 / rho_A) * exp(-kappa*t).
+    Validated by J1610+1811 quasar jet z=3.122 P_jet~4e45 W (PAPER_374).
+    CP4 class #38
+    """
+    category = "Parameter Calibration / Relativistic SCm / Ereact Channel"
+
+    def compute(self, dataset: dict) -> dict:
+        import math
+        c       = dataset.get('c',      2.998e8)   # m/s
+        v_SCm   = 0.99 * c                         # canonical 0.99c
+        rho_SCm = dataset.get('rho_SCm', 6e-27)    # kg/m³
+        rho_A   = dataset.get('rho_A',   1e-23)    # kg/m³
+        kappa   = dataset.get('kappa',   5.787e-9) # s⁻¹  (0.0005/day)
+        t       = dataset.get('t',       0.0)       # s
+
+        # Old vs new velocity
+        v_old   = 1e8   # m/s (prior preliminary value)
+        amp_ratio = v_SCm**2 / v_old**2   # ~8.808
+
+        # Ereact (reactive energy density)
+        Ereact = (rho_SCm * v_SCm**2 / rho_A) * math.exp(-kappa * t)
+        Ereact_old = (rho_SCm * v_old**2 / rho_A) * math.exp(-kappa * t)
+
+        # Relativistic correction factor v²/c²
+        beta_sq = v_SCm**2 / c**2   # 0.9801
+        lorentz_gamma = 1.0 / math.sqrt(1.0 - beta_sq)  # ~7.089
+
+        return {
+            'primary_equations': {
+                'v_SCm_canonical_ms': v_SCm,
+                'v_SCm_old_ms':       v_old,
+                'v_SCm_ratio':        v_SCm / v_old,
+                'v_sq_amplification': amp_ratio,
+                'Ereact_new_Jm3':     Ereact,
+                'Ereact_old_Jm3':     Ereact_old,
+                'Ereact_ratio':       Ereact / Ereact_old if Ereact_old != 0 else None,
+                'beta_sq':            beta_sq,
+                'lorentz_gamma':      lorentz_gamma,
+            },
+            'canonical_parameters': {
+                'c':        c,
+                'v_SCm':    v_SCm,
+                'rho_A':    rho_A,
+                'kappa_s':  kappa,
+            },
+            'available_equations': {
+                'Ereact':      'rho_SCm * v_SCm^2 / rho_A * exp(-kappa*t)',
+                'lorentz':     '1 / sqrt(1 - v^2/c^2)',
+                'beta_sq':     'v_SCm^2 / c^2',
+            },
+            'papers':  ['PAPER_387'],
+            'session': 106,
+        }
+
+
+class YangMillsMassGapVacuumDensityEvolutionCalculator(_CP4Calculator):
+    """PAPER_388 — Yang-Mills Mass Gap via SCm Vacuum Density Ratio Evolution.
+    Source: grok_share_cfdcad2f5.txt (UQFF_Resonance proof set_15May2025.docx)
+    Delta_m = sqrt(d(rho_vac_UA)/dt * (rho_SCm/rho_UA)^n * exp(-exp(-pi - t/year)))
+    Double-exponential Gumbel suppression; infinite mode series; Delta_m > 0 guaranteed.
+    Distinct from PAPER_380 (Meissner static Phi_flux/c * e^-1 formula).
+    CP4 class #39
+    """
+    category = "Yang-Mills / Mass Gap / Vacuum Density Evolution"
+
+    def compute(self, dataset: dict) -> dict:
+        import math
+        rho_vac_UA_0 = dataset.get('rho_vac_UA_0', 6e-27)   # kg/m³
+        kappa        = dataset.get('kappa',   5.787e-9)       # s⁻¹
+        f_SCm        = dataset.get('f_SCm',   0.001)          # rho_SCm/rho_UA ratio
+        n            = int(dataset.get('n',   1))              # mode number
+        t            = dataset.get('t',       0.0)             # s
+        year_s       = 3.15576e7                               # s
+
+        # Component 1: vacuum density time derivative
+        rho_vac_UA_t = rho_vac_UA_0 * math.exp(-math.exp(-kappa * t))
+        drho_dt = (rho_vac_UA_0 * kappa *
+                   math.exp(-kappa * t) *
+                   math.exp(-math.exp(-kappa * t)))
+
+        # Component 2: SCm/UA density ratio power law
+        density_ratio = f_SCm  # rho_SCm / rho_UA = f_SCm
+        R_n = density_ratio ** n
+
+        # Component 3: Gumbel double-exponential suppression
+        t_year = t / year_s
+        inner_arg = -math.pi - t_year
+        G_t = math.exp(-math.exp(inner_arg))
+
+        # Mass gap
+        radicand = abs(drho_dt) * R_n * G_t
+        Delta_m = math.sqrt(radicand)
+
+        # Mode spectrum
+        mode_spectrum = {}
+        for ni in range(1, 5):
+            Rni = density_ratio ** ni
+            mi = math.sqrt(abs(drho_dt) * Rni * G_t)
+            mode_spectrum[f'n={ni}'] = mi
+
+        return {
+            'primary_equations': {
+                'Delta_m':           Delta_m,
+                'drho_vac_UA_dt':    drho_dt,
+                'density_ratio_Rn':  R_n,
+                'Gumbel_Gt':         G_t,
+                'radicand':          radicand,
+                'mode_n':            n,
+            },
+            'mode_spectrum': mode_spectrum,
+            'component_analysis': {
+                'rho_vac_UA_t':  rho_vac_UA_t,
+                'f_SCm':         f_SCm,
+                'G_at_t0':       math.exp(-math.exp(-math.pi)),
+                'G_asymptote':   1.0,
+                'positivity_guaranteed': radicand >= 0,
+            },
+            'available_equations': {
+                'Delta_m':     'sqrt(drho_UA/dt * (f_SCm)^n * exp(-exp(-pi - t/year)))',
+                'G_t':         'exp(-exp(-pi - t/year))   [Gumbel suppression]',
+                'R_n':         '(rho_SCm/rho_UA)^n       [power-law mode ladder]',
+                'drho_dt':     'rho_UA_0 * kappa * exp(-kappa*t) * exp(-exp(-kappa*t))',
+            },
+            'distinction_from_PAPER_380': {
+                'PAPER_380_formula':  'Delta = Phi_flux/c * e^-1  (static Meissner)',
+                'PAPER_388_formula':  'Delta_m = sqrt(drho*R_n*G_t) (dynamic evolution)',
+                'key_difference':     'Time-dependent vacuum density ratio + Gumbel suppression',
+            },
+            'papers':  ['PAPER_388'],
+            'session': 106,
+        }
+
+
+class GalacticOmegaSVelocityDispersionCalibrationCalculator(_CP4Calculator):
+    """PAPER_389 — Galactic ω_s Calibration from Stellar Velocity Dispersion.
+    Source: grok_share_cfdcad2f5.txt (SMBH comparison to UQFF_17April2025.docx)
+    omega_s_galactic = (sigma_km_s * 1e3) / R_bulge_m
+    Direct Kepler proxy: anchors MUGE resonance angular frequency to spectroscopy.
+    Companion formula to PAPER_390 (M_BH-sigma) for complete SMBH parameterization.
+    CP4 class #40
+    """
+    category = "Observational Calibration / Galactic Angular Frequency / M-sigma"
+
+    def compute(self, dataset: dict) -> dict:
+        import math
+        sigma_km_s  = dataset.get('sigma_km_s',  200.0)    # km/s
+        R_bulge_m   = dataset.get('R_bulge_m',   6.171e19) # m (2 kpc default)
+
+        # Core formula: unit conversion km/s → m/s
+        omega_s = (sigma_km_s * 1e3) / R_bulge_m
+
+        # Virial Kepler cross-check
+        G = 6.674e-11
+        M_bulge = dataset.get('M_bulge_kg', None)
+        omega_kepler = None
+        if M_bulge is not None:
+            omega_kepler = math.sqrt(G * M_bulge / R_bulge_m**3)
+
+        # Worked examples table
+        examples = {
+            'SgrA_MW_center': (100.0, 1.5 * 3.086e19),
+            'M87_VirgoA':     (324.0, 7.0 * 3.086e19),
+            'NGC1275_PersA':  (260.0, 5.0 * 3.086e19),
+            'MWclass_spiral': (200.0, 2.0 * 3.086e19),
+            'massive_BCG':    (350.0, 15.0 * 3.086e19),
+        }
+        example_table = {
+            name: (s * 1e3) / R
+            for name, (s, R) in examples.items()
+        }
+
+        return {
+            'primary_equations': {
+                'omega_s_galactic_rads': omega_s,
+                'sigma_km_s':           sigma_km_s,
+                'R_bulge_m':            R_bulge_m,
+                'omega_kepler_rads':    omega_kepler,
+                'formula':              'omega_s = (sigma * 1e3) / R_bulge',
+            },
+            'worked_examples': example_table,
+            'physical_interpretation': {
+                'canonical_omega_g':    7.3e-16,
+                'canonical_context':    'Massive BCG ~350 km/s / 15 kpc',
+                'Kepler_equivalence':   'omega_s = sigma/R_bulge ~ sqrt(GM/R^3) for virialized system',
+            },
+            'available_equations': {
+                'omega_s':       'sigma_ms / R_bulge_m',
+                'omega_kepler':  'sqrt(G * M_bulge / R_bulge^3)',
+                'virial_check':  'sigma^2 ~ G * M_bulge / R_bulge',
+            },
+            'companion_paper': 'PAPER_390 (M_BH-sigma for M parameter)',
+            'papers':  ['PAPER_389'],
+            'session': 106,
+        }
+
+
+class SMBHMassSigmaDispersionRelationUQFFAnchorCalculator(_CP4Calculator):
+    """PAPER_390 — SMBH Mass–Velocity Dispersion Relation (M-σ) in UQFF Framework.
+    Source: grok_share_cfdcad2f5.txt (SMBH comparison to UQFF_17April2025.docx)
+    log10(M_BH/M_sun) = 0.309 * log10(sigma/200) + 4.38
+    Observational anchor for UQFF MUGE M parameter; slope 0.309, sigma_0=200 km/s.
+    Statistical first-estimate complement to canonical dynamical masses (PAPER_385).
+    CP4 class #41
+    """
+    category = "Observational Anchor / M-sigma Relation / SMBH Mass"
+
+    def compute(self, dataset: dict) -> dict:
+        import math
+        sigma_km_s = dataset.get('sigma_km_s', 200.0)   # km/s
+        M_sun      = 1.989e30                            # kg
+        slope      = 0.309
+        intercept  = 4.38
+        sigma_0    = 200.0                               # km/s normalization
+
+        # Core M-sigma formula
+        log_M_ratio = slope * math.log10(sigma_km_s / sigma_0) + intercept
+        M_BH_solar  = 10.0 ** log_M_ratio
+        M_BH_kg     = M_BH_solar * M_sun
+
+        # Power-law form prefactor
+        M0 = 10.0**intercept * M_sun  # M_BH at sigma=sigma_0
+
+        # Calibration table for key UQFF systems
+        systems = {
+            'SgrA_MW':      100.0,
+            'M87':          324.0,
+            'NGC1275':      260.0,
+            'normalization': 200.0,
+            'massive_BCG':  350.0,
+        }
+        calibration_table = {}
+        for name, sig in systems.items():
+            lM = slope * math.log10(sig / sigma_0) + intercept
+            calibration_table[name] = {
+                'sigma_km_s': sig,
+                'M_BH_solar': 10.0**lM,
+                'M_BH_kg':    10.0**lM * M_sun,
+            }
+
+        # Cross-validation against canonical PAPER_385 SgrA*
+        canonical_SagA_kg = 8.155e36   # from PAPER_385
+        ratio_canonical_vs_msigma = canonical_SagA_kg / calibration_table['SgrA_MW']['M_BH_kg']
+
+        return {
+            'primary_equations': {
+                'log_M_BH_solar':       log_M_ratio,
+                'M_BH_solar_masses':    M_BH_solar,
+                'M_BH_kg':              M_BH_kg,
+                'formula_log':          'log10(M/Msun) = 0.309*log10(sigma/200) + 4.38',
+                'formula_power_law':    'M_BH = 2.399e4 * Msun * (sigma/200)^0.309',
+                'sigma_normalization_km_s': sigma_0,
+                'slope':                slope,
+                'intercept':            intercept,
+            },
+            'calibration_table': calibration_table,
+            'cross_validation': {
+                'canonical_SagA_PAPER385_kg':      canonical_SagA_kg,
+                'msigma_SagA_prediction_kg':       calibration_table['SgrA_MW']['M_BH_kg'],
+                'ratio_canonical_vs_msigma':       ratio_canonical_vs_msigma,
+                'note': 'Canonical dynamical mass takes precedence for production calcs',
+            },
+            'available_equations': {
+                'log_form':   'log10(M/M_sun) = 0.309*log10(sigma/200) + 4.38',
+                'power_law':  'M_BH = 10^4.38 * M_sun * (sigma/200)^0.309',
+                'inverse':    'sigma = 200 * 10^((log10(M/Msun) - 4.38) / 0.309)',
+            },
+            'companion_paper': 'PAPER_389 (omega_s calibration)',
+            'papers':  ['PAPER_390'],
+            'session': 106,
+        }
+
+
+class HybridMUGEMeissnerBlendingModelCalculator(_CP4Calculator):
+    """PAPER_391 — Hybrid MUGE Blending Model: Meissner-Weighted Interpolation.
+    Source: grok_share_cfdcad2f5.txt (Compressed + Resonance MUGE docs, May 2025)
+    g_hybrid = beta * g_compressed + (1-beta) * g_resonance; beta = exp(-B/B_crit)
+    First UQFF dynamic channel blending; at B=B_crit resonance becomes dominant (63.2%).
+    Distinct from PAPER_293 (additive) and PAPER_375 (linear suppression).
+    CP4 class #42
+    """
+    category = "Hybrid MUGE / Channel Blending / Meissner-Weighted"
+
+    def compute(self, dataset: dict) -> dict:
+        import math
+        g_compressed = dataset.get('g_compressed', 1.782e39)  # m/s² (SGR1745 default)
+        g_resonance  = dataset.get('g_resonance',  1.773e-9)  # m/s² (SGR1745 default)
+        B            = dataset.get('B',       1e10)           # T
+        B_crit       = dataset.get('B_crit',  1e11)           # T
+
+        # Core blending factor
+        beta = math.exp(-B / B_crit)
+
+        # Hybrid gravity
+        g_comp_contrib = beta * g_compressed
+        g_res_contrib  = (1.0 - beta) * g_resonance
+        g_hybrid       = g_comp_contrib + g_res_contrib
+
+        # Mode classification
+        if beta > 0.9:
+            mode = "Compressed"
+        elif beta > 0.1:
+            mode = "Hybrid"
+        else:
+            mode = "Resonance"
+
+        # Three canonical transition points
+        beta_at_Bcrit      = math.exp(-1.0)          # = 0.3679
+        beta_at_half_Bcrit = math.exp(-0.5)          # = 0.6065
+        beta_at_2Bcrit     = math.exp(-2.0)          # = 0.1353
+
+        # Mode transition analysis
+        g_at_Bcrit  = (math.exp(-1.0) * g_compressed +
+                       (1.0 - math.exp(-1.0)) * g_resonance)
+        g_at_2Bcrit = (math.exp(-2.0) * g_compressed +
+                       (1.0 - math.exp(-2.0)) * g_resonance)
+
+        # Comparison with PAPER_293 additive dual-channel
+        g_CR_additive = g_compressed + g_resonance   # PAPER_293 form
+        g_hybrid_vs_additive = g_hybrid / g_CR_additive if g_CR_additive != 0 else None
+
+        return {
+            'primary_equations': {
+                'beta':                     beta,
+                'g_hybrid_ms2':             g_hybrid,
+                'g_compressed_contrib_ms2': g_comp_contrib,
+                'g_resonance_contrib_ms2':  g_res_contrib,
+                'dominant_mode':            mode,
+                'formula':                  'g_hybrid = exp(-B/Bcrit)*g_c + (1-exp(-B/Bcrit))*g_r',
+            },
+            'transition_points': {
+                'beta_at_B=Bcrit':         beta_at_Bcrit,
+                'beta_at_B=0.5Bcrit':      beta_at_half_Bcrit,
+                'beta_at_B=2Bcrit':        beta_at_2Bcrit,
+                'g_hybrid_at_Bcrit_ms2':   g_at_Bcrit,
+                'g_hybrid_at_2Bcrit_ms2':  g_at_2Bcrit,
+                'resonance_fraction_at_Bcrit': 1.0 - math.exp(-1.0),  # 0.6321
+            },
+            'comparison': {
+                'PAPER_293_additive_ms2':      g_CR_additive,
+                'PAPER_391_hybrid_ms2':        g_hybrid,
+                'hybrid_vs_additive_ratio':    g_hybrid_vs_additive,
+                'PAPER_375_linear_beta':       1.0 - B / B_crit,
+                'PAPER_391_exp_beta':          beta,
+                'exp_vs_linear_beta_ratio':    beta / (1.0 - B / B_crit) if (1.0 - B / B_crit) != 0 else None,
+            },
+            'available_equations': {
+                'g_hybrid':      'beta * g_c + (1-beta) * g_r',
+                'beta':          'exp(-B / B_crit)',
+                'pure_comp':     'g_hybrid(B→0) = g_compressed',
+                'pure_res':      'g_hybrid(B>>Bcrit) = g_resonance',
+            },
+            'papers':  ['PAPER_391'],
+            'session': 106,
+        }
+
+
 # ===========================================================================
 # CP4 REGISTRY
 # ===========================================================================
@@ -3385,4 +3750,10 @@ __all__ = [
     "SagAStarFullResonanceTermDecompositionCalculator",          # PAPER_384
     "Canonical7SystemUQFFParameterRegistryCalculator",           # PAPER_385
     "LaTeXDualBlockUQFFMasterEquationCalculator",                # PAPER_386 hub
+    # --- Session 106: grok_share_cfdcad2f5.txt — PAPER_387–391 ---
+    "vSCmRelativisticParameterUpdateCalculator",                 # PAPER_387
+    "YangMillsMassGapVacuumDensityEvolutionCalculator",          # PAPER_388
+    "GalacticOmegaSVelocityDispersionCalibrationCalculator",     # PAPER_389
+    "SMBHMassSigmaDispersionRelationUQFFAnchorCalculator",       # PAPER_390
+    "HybridMUGEMeissnerBlendingModelCalculator",                 # PAPER_391
 ]
