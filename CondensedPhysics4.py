@@ -5070,6 +5070,181 @@ class Session110Grok755feea7StarMagicBookPhysicsHubCalculator(_CP4Calculator):
 
 
 # ===========================================================================
+# Session 111 — grok_share_755feea7.txt exhaustive re-analysis
+# PAPER_420: F_U Complete — λ_i 4th Dissipation Sum (missing from compute_FU)
+# PAPER_421: Um Heaviside phase-transition amplifier + quasi-periodic beating
+# ===========================================================================
+
+class FUCompleteLambdaI4thDissipationSumCalculator(_CP4Calculator):
+    """CP4 #71 — PAPER_420: Complete F_U master equation with λ_i 4th dissipation sum.
+
+    The full F_U has FOUR terms; the current C++ compute_FU() implements only THREE.
+    Missing 4th term: −Σ_i[λ_i · U_i(r,t,ρ_vac,[SCm],ρ_vac,[UA],t_n) · E_react]
+
+    Source: grok_share_755feea7.txt lines 1938, 2301, 2605 — confirmed absent
+    from all PAPER_409-419 by exhaustive grep in Session 111.
+
+    Physical meaning: λ_i are dissipation coupling constants for each Ug field
+    channel (i=1..4), representing energy loss back into the vacuum via SCm
+    field defects and UA leakage proportional to E_react.
+    """
+    PAPER   = 'PAPER_420'
+    SESSION = 111
+
+    # Free parameters — not yet empirically constrained
+    LAMBDA_DEFAULT = [1e-10, 1e-12, 1e-11, 1e-13]  # λ_1..λ_4 placeholder values
+
+    def compute(self, dataset: dict) -> dict:
+        import math
+
+        r   = dataset.get('r', 1.496e11)       # m (1 AU default)
+        t   = dataset.get('t', 0.0)            # days
+        t_n = dataset.get('t_n', 0.0)          # negative-time parameter
+        rho_vac_SCm = dataset.get('rho_vac_SCm', 1e-10)   # J/m³
+        rho_vac_UA  = dataset.get('rho_vac_UA',  1e-23)   # J/m³
+        E_react     = dataset.get('E_react',     1e54)    # J (solar baseline)
+        kappa       = dataset.get('kappa',       5e-4)    # day⁻¹
+        lambdas     = dataset.get('lambda_i', self.LAMBDA_DEFAULT)
+
+        # U_i field amplitudes: SCm vacuum energy weighted by spatial factor
+        V_i = [1.0 / (r**2 + (i + 1) * 1e10) for i in range(4)]
+        cos_ptn = math.cos(math.pi * t_n)
+        U_i = [rho_vac_SCm * V_i[i] * cos_ptn + rho_vac_UA * V_i[i] * math.exp(-kappa * t)
+               for i in range(4)]
+
+        # 4th dissipation sum
+        dissipation_sum = -sum(lambdas[i] * U_i[i] * E_react for i in range(4))
+
+        # Each channel contribution
+        channel_breakdown = {
+            f'dissip_ch{i+1}': -lambdas[i] * U_i[i] * E_react for i in range(4)
+        }
+
+        return {
+            'dissipation_sum':   dissipation_sum,
+            'channel_breakdown': channel_breakdown,
+            'U_i':               U_i,
+            'lambda_i':          lambdas,
+            'E_react':           E_react,
+            'note': ('CODE GAP: compute_FU() missing this 4th term. '
+                     'Without it, F_U is over-estimated and energy is not conserved.'),
+        }
+
+
+class UmHeavisideQuasiPeriodicSCmPhaseTransitionAmplifierCalculator(_CP4Calculator):
+    """CP4 #72 — PAPER_421: Complete Um with Heaviside phase-transition amplifier
+    (factor 1+10^13·f_H) and quasi-periodic beating modifier (1+f_quasi).
+
+    Full Um formula from grok_share_755feea7.txt line 1963:
+      Um = Σ_j[μ_j/r_j · (1-e^{-γt·cos(πt_n)}) · φ̂_j]
+           · P_SCm · E_react
+           · (1 + 10^13 · f_Heaviside)    ← SCm phase-transition jump
+           · (1 + f_quasi)                 ← quasi-periodic beating
+
+    Both modifiers are ABSENT from all current compute_Um() implementations.
+
+    Heaviside: f_H = 1 when ρ_SCm ≥ ρ_c (SC phase), else 0 → 10^13× amplification
+    Quasi:     f_quasi = A_q·cos(Δω·t) — beating between nearby SCm modes
+               (solar example: Δω = 2π/434yr → Gleisberg-scale modulation)
+    """
+    PAPER   = 'PAPER_421'
+    SESSION = 111
+
+    RHO_C_DEFAULT  = 1e15      # kg/m³ — critical SCm superconducting density
+    A_Q_DEFAULT    = 0.1       # quasi-periodic amplitude (10%)
+    DELTA_OMEGA    = 2 * 3.14159265358979 / (434 * 365.25)  # rad/day (434-yr beat)
+
+    def compute(self, dataset: dict) -> dict:
+        import math
+
+        # Base Um parameters
+        mu_j     = dataset.get('mu_j',   2.26e19)    # T·m³ per string (solar baseline)
+        r_j      = dataset.get('r_j',    1.496e13)   # m
+        n_str    = dataset.get('n_strings', 1e9)     # number of strings
+        gamma    = dataset.get('gamma',  1e-4)       # day⁻¹
+        t        = dataset.get('t',      0.0)        # days
+        t_n      = dataset.get('t_n',    0.0)
+        P_SCm    = dataset.get('P_SCm',  1.0)
+        E_react  = dataset.get('E_react', 1e54)
+
+        # Heaviside modifier
+        rho_SCm = dataset.get('rho_SCm', 0.0)      # current SCm density
+        rho_c   = dataset.get('rho_c', self.RHO_C_DEFAULT)
+        f_H     = 1.0 if rho_SCm >= rho_c else 0.0
+        heaviside_factor = 1.0 + 1e13 * f_H
+
+        # Quasi-periodic beating modifier
+        A_q       = dataset.get('A_q', self.A_Q_DEFAULT)
+        delta_w   = dataset.get('delta_omega', self.DELTA_OMEGA)
+        f_quasi   = A_q * math.cos(delta_w * t)
+        quasi_factor = 1.0 + f_quasi
+
+        # Base Um (per string × number of strings)
+        cos_ptn = math.cos(math.pi * t_n)
+        decay   = 1.0 - math.exp(-gamma * t * cos_ptn) if t > 0 else 0.0
+        Um_base = (mu_j / r_j) * decay * n_str * P_SCm * E_react
+
+        # Full Um with both modifiers
+        Um_full = Um_base * heaviside_factor * quasi_factor
+
+        return {
+            'Um_base':            Um_base,
+            'Um_full':            Um_full,
+            'heaviside_factor':   heaviside_factor,
+            'quasi_factor':       quasi_factor,
+            'f_H':                f_H,
+            'f_quasi':            f_quasi,
+            'amplification_ratio': Um_full / Um_base if Um_base != 0 else None,
+            'in_sc_phase':        bool(f_H > 0),
+            'note': ('CODE GAP: compute_Um() missing heaviside_factor and '
+                     'quasi_factor. During SCm phase transition, Um is '
+                     'underestimated by factor ~10^13.'),
+        }
+
+
+class Session111Grok755feea7ExhaustiveReanalysisHubCalculator(_CP4Calculator):
+    """CP4 #73 — Session 111 Hub: grok_share_755feea7.txt 100% exhaustive re-analysis.
+
+    File fully read (lines 1-10798 complete). Physics in lines 1700-2800 only.
+    Lines 4800-10798 = C++ engineering code (no new physics).
+    Session 110 papers (PAPER_409-419) covered 11 concepts.
+    Session 111 found 2 genuinely uncaptured concepts: PAPER_420 and PAPER_421.
+    """
+    SESSION = 111
+    PAPERS  = [420, 421]
+
+    SESSION_PHYSICS = {
+        'source_file':    'grok_share_755feea7.txt',
+        'total_lines':    10798,
+        'lines_read':     '1-10798 (100%)',
+        'physics_section': 'lines 1700-2800 (Star Magic book chapter)',
+        'engineering_section': 'lines 2800-10798 (C++ CoAnQi codebase rewrites)',
+        'session_110_papers': list(range(410, 420)),
+        'session_111_papers': [420, 421],
+        'new_physics': [
+            'PAPER_420: λ_i 4th dissipation sum in F_U — absent from compute_FU()',
+            'PAPER_421: Um Heaviside 10^13 phase-transition amplifier + f_quasi beating — '
+            'absent from compute_Um()',
+        ],
+        'code_gaps_confirmed': [
+            'compute_FU(): missing −Σ_i[λ_i·U_i·E_react] 4th term',
+            'compute_Um(): missing (1+1e13·f_H) and (1+f_quasi) multipliers',
+        ],
+        'grep_evidence': 'Select-String for Heaviside|f_quasi|lambda_i across PAPER_41x → 0 hits',
+    }
+
+    def compute(self, dataset: dict) -> dict:
+        return {
+            'session':         111,
+            'source':          'grok_share_755feea7.txt',
+            'papers':          self.PAPERS,
+            'n_new_physics':   2,
+            'status':          'COMPLETE — file 100% exhausted',
+            'session_physics': self.SESSION_PHYSICS,
+        }
+
+
+# ===========================================================================
 # CP4 REGISTRY
 # ===========================================================================
 
@@ -5154,4 +5329,8 @@ __all__ = [
     "FUSunCompleteSCmSolarCycleFinalCalibrationCalculator",          # PAPER_418 (#68)
     "HamiltonianPlanetaryCoreHUg3HSCmHUAYangMillsMassGapCalculator", # PAPER_419 (#69)
     "Session110Grok755feea7StarMagicBookPhysicsHubCalculator",       # Session 110 hub (#70)
+    # --- Session 111: grok_share_755feea7.txt exhaustive re-analysis — PAPER_420–421 ---
+    "FUCompleteLambdaI4thDissipationSumCalculator",                  # PAPER_420 (#71)
+    "UmHeavisideQuasiPeriodicSCmPhaseTransitionAmplifierCalculator", # PAPER_421 (#72)
+    "Session111Grok755feea7ExhaustiveReanalysisHubCalculator",       # Session 111 hub (#73)
 ]
