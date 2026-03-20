@@ -4607,6 +4607,69 @@ class Session108CfdcAd2f5OctConstructionFileHubCalculator(_CP4Calculator):
         }
 
 
+class Session109CfdcAd2f5RefactoringSectionExhaustionHubCalculator(_CP4Calculator):
+    """CP4 #59 – Session 109 Hub: grok_share_cfdcad2f5.txt refactoring section
+    complete re-analysis (lines 2700–11854, all 9,154 lines systematic pass).
+    NO NEW PHYSICS FOUND — 100% of file exhausted.
+    All SGR1745 calibration anchors (aDPM=3.545e-42, aTHz=1.182e-33, afluid=1.773e-9,
+    etc.) confirmed already captured in PAPER_382 (Session 104).
+    Engineering content catalogued: 3D graphics pipeline (OpenGL/Vulkan/Qt3D/Ogre3D),
+    OpenMP parallelization, nlohmann/json + yaml-cpp multi-format loading,
+    CoAnQiNode.py crypto-privacy node, MUGE_simulation_entities landscape archiving,
+    Qt MainWindow with NASA/MAST/LIGO/EHT APIs. grok_share_cfdcad2f5.txt FULLY EXHAUSTED."""
+    SESSION = 109
+    PAPERS  = []          # No new papers — file exhausted
+
+    ENGINEERING_CONTENT = {
+        'lines_analyzed':   '2700–11854 (9154 lines)',
+        'refactoring_passes': 4,
+        'files_refactored': ['CelestialBody.h/cpp', 'MUGE.h/cpp', 'FluidSolver.h/cpp',
+                             'UnitTests.h/cpp', 'main.cpp'],
+        '3d_stack':         ['OpenGL/GLFW', 'Vulkan', 'Qt3D', 'Ogre3D', 'DirectX',
+                             'ModelLoader(OBJ)', 'Texture(stb_image)', 'Shader',
+                             'Camera(multi-viewport)', 'Animation(Assimp)'],
+        'infrastructure':   ['OpenMP', 'nlohmann/json', 'yaml-cpp', 'PluginModule',
+                             'LaTeXRenderer(MicroTeX)', 'Landscape(Perlin noise)',
+                             'MUGE_simulation_entities', 'landscape archive dirs'],
+        'python':           ['CoAnQiNode.py PImath key generation', 'device integrity',
+                             'privacy protection', 'boto3 S3', 'sqlite3', 'VTK', 'transformers'],
+        'qt_apis':          ['NASA APOD', 'NASA EPIC', 'MAST HST', 'LIGO WebSocket',
+                             'EHT WebSocket', 'Cognito authentication'],
+    }
+
+    # SGR1745 unit test calibration anchors — confirmed already in PAPER_382
+    SGR1745_CALIBRATION_CONFIRMED = {
+        'aDPM':          3.545e-42,   # m/s² — PAPER_382 ✓
+        'aTHz':          1.182e-33,   # m/s² — PAPER_382 ✓
+        'avac_diff':     3.545e-53,   # m/s² — PAPER_382 ✓
+        'asuper_freq':   1.048e-21,   # m/s² — PAPER_382 ✓
+        'aaether_res':   3.900e-38,   # m/s² — PAPER_382 ✓
+        'aquantum_freq': 1.708e-66,   # m/s² — PAPER_382 ✓
+        'aAether_freq':  1.863e-84,   # m/s² — PAPER_382 ✓
+        'afluid_freq':   1.773e-9,    # m/s² — PAPER_382 ✓ (dominant term)
+        'aexp_freq':     1.623e-57,   # m/s² — PAPER_382 ✓
+        'resonance_MUGE_total': 1.773e-9,   # dominated by afluid_freq
+        'compressed_MUGE_SGR1745': 1.782e39,
+        'prior_paper':   'PAPER_382',
+    }
+
+    def compute(self, dataset: dict) -> dict:
+        return {
+            'session':          109,
+            'source':           'grok_share_cfdcad2f5.txt',
+            'subsource':        'refactoring section lines 2700–11854',
+            'papers':           self.PAPERS,
+            'n_new_physics':    0,
+            'status':           'FILE_100_PERCENT_EXHAUSTED',
+            'engineering_content': self.ENGINEERING_CONTENT,
+            'sgr1745_calibration_confirmed': self.SGR1745_CALIBRATION_CONFIRMED,
+            'total_file_papers': list(range(387, 409)),  # PAPER_387–408 (Sessions 106–108)
+            'note': ('grok_share_cfdcad2f5.txt fully exhausted across Sessions 106/107/108/109. '
+                     'All physics captured in PAPER_387–408. Engineering refactoring '
+                     'contains no new physics; SGR1745 calibration values confirmed PAPER_382.'),
+        }
+
+
 # ===========================================================================
 # CP4 REGISTRY
 # ===========================================================================
@@ -4678,4 +4741,6 @@ __all__ = [
     "FU4BodySolarSystemNumericalVerificationCalculator",         # PAPER_407 (#56)
     "ResonanceMUGE14TermCompleteWormholeSumCalculator",          # PAPER_408 (#57)
     "Session108CfdcAd2f5OctConstructionFileHubCalculator",       # Session 108 hub (#58)
+    # --- Session 109: grok_share_cfdcad2f5.txt refactoring section — NO NEW PHYSICS ---
+    "Session109CfdcAd2f5RefactoringSectionExhaustionHubCalculator",  # Session 109 hub (#59)
 ]
