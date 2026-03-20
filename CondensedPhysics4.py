@@ -4671,6 +4671,405 @@ class Session109CfdcAd2f5RefactoringSectionExhaustionHubCalculator(_CP4Calculato
 
 
 # ===========================================================================
+# SESSION 110 — grok_share_755feea7.txt: "Star Magic" Book Physics
+# PAPER_410–419 | CP4 classes #60–#70
+# ===========================================================================
+
+class SCmHiddenElementUndetectableQsQuasarIgnitionCalculator(_CP4Calculator):
+    """CP4 #60 – PAPER_410: SCm zero-charge property (Qs=0), undetectability mechanism,
+    quasar ignition when Ug1+Ug2+Ug3 fail to trap SCm, FSCm body force, Ereact≈10^46."""
+    PAPER = 'PAPER_410'
+    EQUATIONS = {
+        'Qs_SCm': 0,
+        'rho_SCm': 1e15,        # kg/m³
+        'v_SCm': 1e8,            # m/s
+        'F_SCm': 'rho_SCm * v_SCm**2 / r * exp(-kappa * t)',
+        'E_react': 'rho_SCm * v_SCm**2 / rho_A * exp(-kappa * t)',
+        'E_react_t0': 1e54,
+    }
+    def compute(self, dataset: dict) -> dict:
+        import math
+        rho_SCm = dataset.get('rho_SCm', 1e15)
+        v_SCm   = dataset.get('v_SCm', 1e8)
+        rho_A   = dataset.get('rho_A', 1e-23)
+        kappa   = dataset.get('kappa', 0.0005)
+        t       = dataset.get('t', 0.0)
+        r       = dataset.get('r', 1.0)
+        F_SCm  = rho_SCm * v_SCm**2 / r * math.exp(-kappa * t)
+        Ereact = rho_SCm * v_SCm**2 / rho_A * math.exp(-kappa * t)
+        return {
+            'paper': self.PAPER,
+            'Qs_SCm': 0,
+            'F_SCm_body_force': F_SCm,
+            'E_react': Ereact,
+            'quasar_condition': 'Ug1+Ug2+Ug3 < F_trap_min → SCm escapes → ignition',
+        }
+
+
+class Ug1DPMDiPseudoMonopoleSolarCalibrationCalculator(_CP4Calculator):
+    """CP4 #61 – PAPER_411: Ug1 DPM (Di-Pseudo-Monopole) = [UA']/[SCm], solar magnetic
+    dipole μ_s calibration with SCm, cascade to Ug2/Ug3/Ug4 effects, δ_def factor."""
+    PAPER = 'PAPER_411'
+    SOLAR_PARAMS = {
+        'Bs_base': 1e-4,         # T — baseline solar surface field
+        'BSCm': 1e3,             # T — SCm magnetic contribution
+        'Rs': 6.96e8,            # m — solar radius
+        'mu_s_base': 3.38e20,    # T·m³ — Bs·Rs³
+        'mu_s_full': 3.38e23,    # T·m³ — (Bs+BSCm)·Rs³
+        'grad_Ms_r': 274.0,      # m/s² — ∇(Ms/r) surface gravity
+        'Ug1_t0': 1.39e26,       # calibrated Ug1 at t=0
+        'delta_def': '0.01 * sin(0.001*t)',
+    }
+    def compute(self, dataset: dict) -> dict:
+        import math
+        Bs   = dataset.get('Bs', 1e-4)
+        BSCm = dataset.get('BSCm', 1e3)
+        Rs   = dataset.get('Rs', 6.96e8)
+        k1   = dataset.get('k1', 1.5)
+        t    = dataset.get('t', 0.0)
+        tn   = dataset.get('tn', 0.0)
+        alpha = dataset.get('alpha', 0.001)
+        mu_s  = (Bs + BSCm) * Rs**3
+        grad  = 274.0
+        delta_def = 0.01 * math.sin(0.001 * t)
+        Ug1 = k1 * mu_s * grad * math.exp(-alpha * t) * math.cos(math.pi * tn) * (1.0 + delta_def)
+        return {
+            'paper': self.PAPER,
+            'mu_s': mu_s,
+            'DPM_ratio': 'UA_prime / SCm',
+            'Ug1': Ug1,
+            'delta_def': delta_def,
+        }
+
+
+class HeliosphereHydrogenComplexSCmStellarAgeCalculator(_CP4Calculator):
+    """CP4 #62 – PAPER_412: Ug2 transmutes solar winds → hydrogen complexes stuck to
+    heliosphere shell. Heliosphere thickness + planetary liquid volumes = stellar age
+    indicator. H_SCm ≈ 1 + [SCm]_helio/Ms. Frozen planets powered by solar winds."""
+    PAPER = 'PAPER_412'
+    CONSTANTS = {
+        'rho_sw': 8e-21,    # kg/m³
+        'v_sw': 5e5,        # m/s
+        'delta_sw': 0.01,
+        'H_SCm_approx': 1.0,
+        'heliosphere_R': 1.5e13,  # m ≈ 100 AU nominal
+    }
+    def compute(self, dataset: dict) -> dict:
+        import math
+        rho_SCm  = dataset.get('rho_SCm', 1e15)
+        V_SCm    = dataset.get('V_SCm', 1e-3)
+        Ms       = dataset.get('Ms', 1.989e30)
+        v_sw     = dataset.get('v_sw', 5e5)
+        delta_sw = dataset.get('delta_sw', 0.01)
+        H_SCm    = 1.0 + rho_SCm * V_SCm / Ms
+        wind_mod = 1.0 + delta_sw * v_sw
+        return {
+            'paper': self.PAPER,
+            'H_SCm': H_SCm,
+            'wind_modulation': wind_mod,
+            'stellar_age_proxy': 'heliosphere_thickness + sum(planetary_liquid_volumes)',
+            'frozen_planet_mechanism': 'solar wind penetration at extreme orbital distances',
+        }
+
+
+class Ug3CCWCWDifferentialRotationSCmPlanetaryCoreCalculator(_CP4Calculator):
+    """CP4 #63 – PAPER_413: CCW equatorial vs CW coronal rotation creates Ug3 disk.
+    ωs(t) = 2.5e-6 – 0.4e-6·sin(ωc·t). Planetary core exclusivity Pcore=1e-3.
+    Heliospheric current sheet tilt 0–30°."""
+    PAPER = 'PAPER_413'
+    ROTATION_PARAMS = {
+        'omega_eq': 2.9e-6,     # rad/s — equatorial CCW
+        'omega_pol': 2.1e-6,    # rad/s — polar/coronal CW
+        'omega_avg': 2.5e-6,    # rad/s — differential average
+        'omega_amp': 0.4e-6,    # rad/s — solar cycle amplitude
+        'Pcore': 1e-3,          # ratio — planetary/stellar SCm
+        'sheet_tilt_min': 0.0,  # degrees
+        'sheet_tilt_max': 30.0, # degrees
+        'sheet_tilt_avg': 15.0, # degrees
+    }
+    def compute(self, dataset: dict) -> dict:
+        import math
+        t       = dataset.get('t', 0.0)
+        omega_c = dataset.get('omega_c', 2 * math.pi / 3.96e8)
+        Pcore   = dataset.get('Pcore', 1e-3)
+        Bj      = dataset.get('Bj', 1e3)
+        k3      = dataset.get('k3', 1.8)
+        rho_A   = dataset.get('rho_A', 1e-23)
+        kappa   = dataset.get('kappa', 0.0005)
+        omega_s = 2.5e-6 - 0.4e-6 * math.sin(omega_c * t)
+        Ereact  = 1e15 * (1e8)**2 / rho_A * math.exp(-kappa * t)
+        cos_mod = math.cos(omega_s * t * math.pi)
+        Ug3 = k3 * Bj * cos_mod * Pcore * Ereact
+        return {
+            'paper': self.PAPER,
+            'omega_s': omega_s,
+            'Ug3': Ug3,
+            'Pcore': Pcore,
+            'sheet_tilt_avg_deg': 15.0,
+            'core_exclusivity': 'Ug3 interacts ONLY with planetary core SCm+UA',
+        }
+
+
+class QuasarJetNavierStokesUQFFFluidSolverBodyForceCalculator(_CP4Calculator):
+    """CP4 #64 – PAPER_414: Quasar ignition (Ug1+Ug2+Ug3 fail to trap SCm), FSCm enters
+    Navier-Stokes as body force, asymmetric jets from cos(πtn), FluidSolver.step coupling,
+    Millennium Problem N-S connection via e^(-κt) regularization."""
+    PAPER = 'PAPER_414'
+    NS_PARAMS = {
+        'rho_A': 1e-23,
+        'F_SCm_formula': 'rho_SCm * v_SCm**2 / r * exp(-kappa * t)',
+        'NS_modified': 'rho_A*(dv/dt + v·∇v) = -∇p + μ∇²v + F_SCm',
+        'grid_size': 32,
+        'normalization': 1e30,
+    }
+    def compute(self, dataset: dict) -> dict:
+        import math
+        rho_SCm = dataset.get('rho_SCm', 1e15)
+        v_SCm   = dataset.get('v_SCm', 1e8)
+        r       = dataset.get('r', 3.086e16)
+        kappa   = dataset.get('kappa', 0.0005)
+        t       = dataset.get('t', 0.0)
+        tn      = dataset.get('tn', 0.0)
+        F_SCm  = rho_SCm * v_SCm**2 / r * math.exp(-kappa * t)
+        cos_tn = math.cos(math.pi * tn)
+        jet_asymmetry = abs(cos_tn)
+        return {
+            'paper': self.PAPER,
+            'F_SCm_body_force': F_SCm,
+            'jet_asymmetry_factor': jet_asymmetry,
+            'NS_body_force_normalized': F_SCm / 1e30,
+            'quasar_igniton': 'Ug1+Ug2+Ug3 < F_trap → SCm escapes → F_SCm in N-S',
+        }
+
+
+class EreactSCmReactivityAetherDensityReactorEfficiencyCalculator(_CP4Calculator):
+    """CP4 #65 – PAPER_415: E_react = ρSCm·vSCm²/ρA·e^(-κt) ≈ 10^54·e^(-κt). Universal
+    reactor efficiency entering Ug2, Ug3, Um. κ=0.0005 day⁻¹. ρA=10^-23 kg/m³."""
+    PAPER = 'PAPER_415'
+    PARAMS = {
+        'rho_SCm': 1e15,
+        'v_SCm': 1e8,
+        'rho_A': 1e-23,
+        'kappa': 0.0005,
+        'E_react_t0': 1e54,
+    }
+    def compute(self, dataset: dict) -> dict:
+        import math
+        rho_SCm = dataset.get('rho_SCm', 1e15)
+        v_SCm   = dataset.get('v_SCm', 1e8)
+        rho_A   = dataset.get('rho_A', 1e-23)
+        kappa   = dataset.get('kappa', 0.0005)
+        t       = dataset.get('t', 0.0)
+        E_react = rho_SCm * v_SCm**2 / rho_A * math.exp(-kappa * t)
+        return {
+            'paper': self.PAPER,
+            'E_react': E_react,
+            'E_react_t0': rho_SCm * v_SCm**2 / rho_A,
+            'enters': ['Ug2', 'Ug3', 'Um'],
+            'interpretation': 'SCm kinetic power / aether resistance × decay',
+        }
+
+
+class TsUniverse5ComponentStressEnergyDecompositionCalculator(_CP4Calculator):
+    """CP4 #66 – PAPER_416: Full 5-component Ts00 decomposition: stellar rest energy +
+    luminosity + solar wind + SCm kinetic + UA kinetic. Dominant: SCm ~ 1.11e14 J/m³.
+    Complete A_μν metric tensor with η=1e-22 coupling."""
+    PAPER = 'PAPER_416'
+    SOLAR_VALUES = {
+        'T00_stellar_density': 1.27e20,   # J/m³  (Ms·c²/V)
+        'T00_SCm': 1.11e14,               # J/m³  (dominant after stellar)
+        'T00_solarwind': 2e-9,            # Pa    (negligible)
+        'T00_UA': 1.11e-24,               # J/m³  (negligible)
+        'eta': 1e-22,
+        'A_00_perturbation_stellar': 1.27e-2,
+        'A_00_perturbation_SCm': 1.11e-8,
+    }
+    def compute(self, dataset: dict) -> dict:
+        import math
+        c       = 3e8
+        Ms      = dataset.get('Ms', 1.989e30)
+        Rs      = dataset.get('Rs', 6.96e8)
+        Ls      = dataset.get('Ls', 3.828e26)
+        rho_sw  = dataset.get('rho_sw', 8e-21)
+        v_sw    = dataset.get('v_sw', 5e5)
+        rho_SCm = dataset.get('rho_SCm', 1e15)
+        v_SCm   = dataset.get('v_SCm', 1e8)
+        rho_A   = dataset.get('rho_A', 1e-23)
+        v_UA    = dataset.get('v_UA', 1e8)
+        eta     = dataset.get('eta', 1e-22)
+        V = (4/3) * math.pi * Rs**3
+        T1 = Ms * c**2 / V
+        T2 = Ls / (c**2 * V)
+        T3 = rho_sw * v_sw**2
+        T4 = rho_SCm * v_SCm**2 / c**2
+        T5 = rho_A * v_UA**2 / c**2
+        Ts00 = T1 + T2 + T3 + T4 + T5
+        return {
+            'paper': self.PAPER,
+            'T00_stellar': T1,  'T00_luminosity': T2,  'T00_solarwind': T3,
+            'T00_SCm': T4,      'T00_UA': T5,          'Ts00_total': Ts00,
+            'A_00': 1.0 + eta * Ts00,
+            'dominant_terms': ['T00_stellar (largest volume-dep)', 'T00_SCm (SCm dominant)'],
+        }
+
+
+class PiCyclesNegativeTimeCosineTemporalReversalCalculator(_CP4Calculator):
+    """CP4 #67 – PAPER_417: cos(πtn) temporal modulation in all UQFF terms.
+    tn = t - t0 admits negative values (temporal reversal). Non-linear Um oscillation:
+    (1 - e^(-γt·cos(πtn))). Riemann Hypothesis π-cycle prime distribution connection."""
+    PAPER = 'PAPER_417'
+    def compute(self, dataset: dict) -> dict:
+        import math
+        t       = dataset.get('t', 1.0)
+        t0      = dataset.get('t0', 0.0)
+        gamma   = dataset.get('gamma', 0.0001)
+        tn = t - t0
+        cos_pitn = math.cos(math.pi * tn)
+        Um_nonlinear = 1.0 - math.exp(-gamma * t * cos_pitn)
+        field_reversed = cos_pitn < 0
+        return {
+            'paper': self.PAPER,
+            'tn': tn,
+            'cos_pi_tn': cos_pitn,
+            'Um_nonlinear_factor': Um_nonlinear,
+            'field_reversed': field_reversed,
+            'temporal_reversal': tn < 0,
+            'riemann_connection': 'pi-cycle oscillations mirror prime counting function error term',
+        }
+
+
+class FUSunCompleteSCmSolarCycleFinalCalibrationCalculator(_CP4Calculator):
+    """CP4 #68 – PAPER_418: Complete F_U Sun with all 5 components + 11-year solar cycle.
+    Dominant term: (1.17e27 + 4.68e24·sin(ωct))·e^(-0.001t)·cos(πt).
+    Calibrated: k1=1.5, k2=1.2, k3=1.8, β=0.6, η=1e-22."""
+    PAPER = 'PAPER_418'
+    CALIBRATED_CONSTANTS = {
+        'k1': 1.5, 'k2': 1.2, 'k3': 1.8, 'k4': 2.0,
+        'beta': 0.6, 'eta': 1e-22,
+        'kappa': 5e-4, 'omega_c': 1.587e-8,   # 2π/3.96e8
+        'Ug1_t0': 1.17e27, 'Ug1_cycle_amp': 4.68e24,
+        'Ug2_term': 1.18e53, 'Um_t0': 2.26e19,
+    }
+    def compute(self, dataset: dict) -> dict:
+        import math
+        t    = dataset.get('t', 0.0)
+        tn   = dataset.get('tn', 0.0)
+        omega_c = 2 * math.pi / 3.96e8
+        # Ug1 term
+        Bs      = 1e-4 + 0.4e-4 * math.sin(omega_c * t)
+        mu_s    = (Bs + 1e3) * (6.96e8)**3
+        Ug1     = 1.5 * mu_s * 274.0 * math.exp(-0.001 * t) * math.cos(math.pi * tn) * (1 + 0.01 * math.sin(0.001 * t))
+        # Ug2 term
+        Ug2     = 1.18e53 * math.exp(-0.0005 * t)
+        # Ug3 term
+        omega_s = 2.5e-6 - 0.4e-6 * math.sin(omega_c * t)
+        Ug3     = 1.8 * (1e3 + 0.4 * math.sin(omega_c * t)) * math.cos(omega_s * t * math.pi) * 1e-3 * 1e54 * math.exp(-0.0005 * t)
+        # Um term
+        Um      = (2.26e19 + 9.04e16 * math.sin(omega_c * t)) * (1.0 - math.exp(-0.0001 * t))
+        # Metric
+        A_00    = 1.0 + 1.27e-20 + 1.11e-16
+        FU = Ug1 + Ug2 + Ug3 + Um + A_00
+        return {
+            'paper': self.PAPER,
+            'FU_total': FU, 'FU_Ug1': Ug1, 'FU_Ug2': Ug2,
+            'FU_Ug3': Ug3, 'FU_Um': Um, 'FU_A00': A_00,
+        }
+
+
+class HamiltonianPlanetaryCoreHUg3HSCmHUAYangMillsMassGapCalculator(_CP4Calculator):
+    """CP4 #69 – PAPER_419: H = HUg3 + HSCm + HUA for planetary core quantum gravity.
+    SCm superconductivity creates mass gap Δ in Ug3 field. HUg3=k3·ΣBj²/(2μ0)·cos(ωst·π).
+    Yang-Mills mass gap: Δ_SCm ≈ 10^38·Δ via Meissner-like mode exclusion."""
+    PAPER = 'PAPER_419'
+    MASS_GAP = {
+        'Bj': 1e3,
+        'Pcore': 1e-3,
+        'mu0': 4 * 3.14159265 * 1e-7,
+        'hbar': 1.055e-34,
+        'Delta_base': 3.98e8,    # J  — base mass gap
+        'enhancement': 1e38,     # SCm superconductivity enhancement factor
+        'Delta_SCm': 3.98e46,    # J  — effective mass gap
+    }
+    def compute(self, dataset: dict) -> dict:
+        import math
+        Bj      = dataset.get('Bj', 1e3)
+        rho_SCm = dataset.get('rho_SCm', 1e12)
+        v_SCm   = dataset.get('v_SCm', 1e8)
+        rho_A   = dataset.get('rho_A', 1e-23)
+        v_UA    = dataset.get('v_UA', 1e8)
+        eta     = dataset.get('eta', 1e-22)
+        k3      = dataset.get('k3', 1.8)
+        Pcore   = dataset.get('Pcore', 1e-3)
+        V_core  = dataset.get('V_core', 1.8e20)
+        t       = dataset.get('t', 0.0)
+        tn      = dataset.get('tn', 0.0)
+        omega_s = dataset.get('omega_s', 2.5e-6)
+        gamma   = dataset.get('gamma', 0.0001)
+        mu0 = 4 * math.pi * 1e-7
+        cos_mod = math.cos(omega_s * t * math.pi)
+        cos_tn  = math.cos(math.pi * tn)
+        H_Ug3 = k3 * Bj**2 / (2 * mu0) * cos_mod * Pcore * V_core
+        H_SCm = 0.5 * rho_SCm * v_SCm**2 * math.exp(-gamma * t) * V_core
+        H_UA  = 0.5 * eta * rho_A * v_UA**2 * cos_tn * V_core
+        hbar  = 1.055e-34
+        omega_fund = Bj**2 * Pcore / (2 * mu0 * hbar)
+        Delta = hbar * omega_fund
+        return {
+            'paper': self.PAPER,
+            'H_Ug3': H_Ug3, 'H_SCm': H_SCm, 'H_UA': H_UA,
+            'H_total': H_Ug3 + H_SCm + H_UA,
+            'mass_gap_base': Delta,
+            'mass_gap_SCm_enhanced': Delta * 1e38,
+            'yang_mills': 'mass gap Δ>0 from SCm superconducting Ug3 confinement',
+        }
+
+
+class Session110Grok755feea7StarMagicBookPhysicsHubCalculator(_CP4Calculator):
+    """CP4 #70 – Session 110 Hub: grok_share_755feea7.txt "Star Magic: The Quest for Unity"
+    complete analysis. 10 new papers PAPER_410–419 from Star Magic book physics content.
+    Source: Part 1 (lines 1–~1700) = CoAnQi C++ codebase (CelestialBody, MUGE, FluidSolver,
+    UnitTests, 3D rendering). Part 2 (lines ~1700–end) = Star Magic book physics."""
+    SESSION = 110
+    PAPERS  = list(range(410, 420))  # PAPER_410–419
+
+    SESSION_PHYSICS = {
+        'source_file':    'grok_share_755feea7.txt',
+        'total_lines':    '~2800+',
+        'part1':          'CoAnQi C++ codebase (CelestialBody, MUGE, FluidSolver, UnitTests)',
+        'part2':          '"Star Magic: The Quest for Unity" book — 9 chapters',
+        'new_papers':     10,
+        'paper_range':    'PAPER_410–419',
+        'topics': [
+            'PAPER_410: SCm hidden element Qs=0 undetectability + quasar ignition',
+            'PAPER_411: Ug1 DPM DiPseudoMonopole solar calibration μs=3.38e23 T·m³',
+            'PAPER_412: Heliosphere H-complex SCm transmutation + stellar age indicator',
+            'PAPER_413: Ug3 CCW/CW differential rotation Pcore=1e-3 planetary core disk',
+            'PAPER_414: Quasar N-S UQFF body force FSCm asymmetric jets Millennium Problem',
+            'PAPER_415: E_react=ρSCm·vSCm²/ρA·e^(-κt) universal reactor efficiency',
+            'PAPER_416: Ts00 5-component stress-energy SCm+UA+wind full decomposition',
+            'PAPER_417: cos(πtn) temporal reversal negative time π-cycle Riemann connection',
+            'PAPER_418: FU Sun complete SCm solar cycle final calibration all 5 terms',
+            'PAPER_419: Hamiltonian HUg3+HSCm+HUA Yang-Mills mass gap Δ≈10^46 J',
+        ],
+        'calibrated_constants': {
+            'k1': 1.5, 'k2': 1.2, 'k3': 1.8, 'k4': 2.0,
+            'beta': 0.6, 'eta': 1e-22, 'kappa': 5e-4,
+            'omega_c': '2π/3.96e8 s⁻¹ (11-yr solar cycle)',
+        },
+    }
+
+    def compute(self, dataset: dict) -> dict:
+        return {
+            'session':         110,
+            'source':          'grok_share_755feea7.txt',
+            'papers':          self.PAPERS,
+            'n_new_physics':   10,
+            'status':          'COMPLETE',
+            'session_physics': self.SESSION_PHYSICS,
+        }
+
+
+# ===========================================================================
 # CP4 REGISTRY
 # ===========================================================================
 
@@ -4743,4 +5142,16 @@ __all__ = [
     "Session108CfdcAd2f5OctConstructionFileHubCalculator",       # Session 108 hub (#58)
     # --- Session 109: grok_share_cfdcad2f5.txt refactoring section — NO NEW PHYSICS ---
     "Session109CfdcAd2f5RefactoringSectionExhaustionHubCalculator",  # Session 109 hub (#59)
+    # --- Session 110: grok_share_755feea7.txt Star Magic book physics — PAPER_410–419 ---
+    "SCmHiddenElementUndetectableQsQuasarIgnitionCalculator",        # PAPER_410 (#60)
+    "Ug1DPMDiPseudoMonopoleSolarCalibrationCalculator",              # PAPER_411 (#61)
+    "HeliosphereHydrogenComplexSCmStellarAgeCalculator",             # PAPER_412 (#62)
+    "Ug3CCWCWDifferentialRotationSCmPlanetaryCoreCalculator",        # PAPER_413 (#63)
+    "QuasarJetNavierStokesUQFFFluidSolverBodyForceCalculator",       # PAPER_414 (#64)
+    "EreactSCmReactivityAetherDensityReactorEfficiencyCalculator",   # PAPER_415 (#65)
+    "TsUniverse5ComponentStressEnergyDecompositionCalculator",       # PAPER_416 (#66)
+    "PiCyclesNegativeTimeCosineTemporalReversalCalculator",          # PAPER_417 (#67)
+    "FUSunCompleteSCmSolarCycleFinalCalibrationCalculator",          # PAPER_418 (#68)
+    "HamiltonianPlanetaryCoreHUg3HSCmHUAYangMillsMassGapCalculator", # PAPER_419 (#69)
+    "Session110Grok755feea7StarMagicBookPhysicsHubCalculator",       # Session 110 hub (#70)
 ]

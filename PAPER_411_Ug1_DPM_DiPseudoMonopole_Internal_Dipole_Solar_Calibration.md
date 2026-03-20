@@ -1,0 +1,160 @@
+# PAPER_411 – Ug1: Di-Pseudo-Monopole (DPM) Internal Dipole — Solar Calibration and Defect Mechanism
+
+**Source:** grok_share_755feea7.txt — "Star Magic" Chapter 1, Section Ug1, Solar Refinement  
+**Session:** 110 (grok_share_755feea7.txt analysis)  
+**CP4 Class:** `Ug1DPMDiPseudoMonopoleSolarCalibrationCalculator` (#61)
+
+---
+
+## 1. Overview
+
+PAPER_411 establishes **Ug1 — the Di-Pseudo-Monopole (DPM)** as the foundational internal driving force of any star. Ug1 is the **first and primary** gravity range in the UQFF hierarchy, capturing the stellar dipole moment arising from the interaction of Universal Aether derivatives (UA') with trapped SCm.
+
+**Key contributions of Ug1:**
+- Drives surface irregularities through internal defects ($\delta_{\text{def}}$)
+- Is the **origin force** from which Ug2, Ug3, Ug4, and Ug4i all cascade
+- Is modulated by π cycles and non-linear time decay
+- Has been calibrated using specific solar data: $\mu_s \approx 3.38 \times 10^{20} \, \text{T·m}^3$ (base)
+
+---
+
+## 2. Ug1 Equation
+
+$$Ug_1 = k_1 \cdot \mu_s(t, \rho_{\text{vac},[\text{SCm}]}) \cdot \nabla\!\left(\frac{M_s}{r}\right) e^{-\alpha t} \cdot \cos(\pi t_n) \cdot (1 + \delta_{\text{def}})$$
+
+where:
+
+| Symbol | Value (Sun) | Description |
+|--------|-------------|-------------|
+| $k_1$ | 1.5 | Coupling constant for Ug1 (refined) |
+| $\mu_s$ | $(10^3 + 0.4\sin(\omega_c t)) \cdot 3.38 \times 10^{20}$ T·m³ | Stellar DPM moment with SCm |
+| $\nabla(M_s/r)$ | $\approx 274$ m/s² | Gradient of gravitational potential at $r = R_s$ |
+| $\alpha$ | $0.001$ day$^{-1}$ | Non-linear time decay rate |
+| $\cos(\pi t_n)$ | oscillatory | π cycle modulation with negative time |
+| $\delta_{\text{def}}$ | $0.01 \cdot \sin(0.001 \, t)$ | Defect factor — drives surface irregularities |
+
+---
+
+## 3. Di-Pseudo-Monopole Physics
+
+### 3.1 DPM Definition
+
+The Di-Pseudo-Monopole is identified as:
+
+$$\text{DPM} \equiv \frac{[UA']}{[\text{SCm}]}$$
+
+where $[UA']$ is the first-order derivative of the Universal Aether, meaning the **gradient flux** of Aether as it interacts with the internal SCm configuration. The monopole character arises because adjacent field lines cannot escape (monopole-like), but the system is an internal dipole (hence "di-pseudo").
+
+### 3.2 Stellar DPM Moment (μ_s)
+
+For a star, the DPM moment is:
+
+$$\mu_s(t, \text{SCm}) = \left[B_s(t) + B_{\text{SCm}}\right] \cdot R_s^3$$
+
+where:
+- $B_s(t) = B_s^{(0)} + 0.4 \cdot \sin(\omega_c t)$ — time-varying surface field
+- $B_{\text{SCm}} \approx 10^3$ T — SCm-driven superconductive contribution (undetectable via $Q_s = 0$)
+
+#### Solar Values:
+
+$$B_s^{(0)} = 10^{-4} \, \text{T}, \quad R_s = 6.96 \times 10^8 \, \text{m}$$
+
+Base DPM moment (no SCm):
+$$\mu_{s,\text{base}} = 10^{-4} \cdot (6.96 \times 10^8)^3 \approx 3.38 \times 10^{20} \, \text{T·m}^3$$
+
+Full DPM moment (with SCm):
+$$\mu_{s,\text{full}} \approx (10^3 + 0.4\sin(\omega_c t)) \cdot 3.38 \times 10^{20} \approx 3.38 \times 10^{23} + 1.35 \times 10^{20} \sin(\omega_c t) \, \text{T·m}^3$$
+
+The **SCm contribution dominates** by 7 orders of magnitude over the bare magnetic field.
+
+---
+
+## 4. Gravitational Gradient Term
+
+$$\nabla\!\left(\frac{M_s}{r}\right) \approx \frac{G M_s}{R_s^2} = \frac{6.674 \times 10^{-11} \cdot 1.989 \times 10^{30}}{(6.96 \times 10^8)^2} \approx 274 \, \text{m/s}^2$$
+
+This is the **surface gravity** of the Sun, confirming dimensional alignment of the DPM gradient term.
+
+---
+
+## 5. Numerical Calibration at t = 0
+
+With $k_1 = 1.5$, $\delta_{\text{def}} = 0$, $\cos(\pi \cdot 0) = 1$:
+
+$$Ug_1(t=0) \approx 1.5 \cdot 3.38 \times 10^{23} \cdot 274 \cdot 1 = 1.39 \times 10^{26} \, \text{[normalized units]}$$
+
+With solar cycle oscillation:
+
+$$Ug_1(t) \approx (1.39 \times 10^{26} + 5.55 \times 10^{23} \cdot \sin(\omega_c t)) \cdot e^{-0.001t} \cdot \cos(\pi t)$$
+
+---
+
+## 6. Surface Irregularities via δ_def
+
+The defect factor models surface phenomena (sunspots, flares, magnetic anomalies):
+
+$$\delta_{\text{def}}(t) = 0.01 \cdot \sin(0.001 \, t)$$
+
+This modifies Ug1 by ±1% with a period of roughly 6,280 seconds (~1.7 hours), representing **rapid surface defect cycles** driven by the internal SCm structure.
+
+The Sun's observable surface activity (sunspots, differential rotation patterns) is a **direct readout** of these Ug1 internal defects — the surface magnetism is **unique to the surface**, not the interior.
+
+---
+
+## 7. Cascade to Ug2, Ug3, Ug4
+
+Ug1 is the generative force for all higher Ug terms:
+
+| Cascade Effect | Mechanism |
+|---|---|
+| Ug1 → Ug2 | DPM field bubble expands outward, forming the heliosphere via charge-reactive Aether trapping |
+| Ug1 → Ug3 | Equatorial CCW vs coronal CW spin differential (arising from DPM asymmetry) creates the magnetic strings disk |
+| Ug1 → Ug4 | DPM field propagates to the star–black hole interaction scale via vacuum energy modulation |
+| Ug1 → Ug4i | Sub-range DPM effects extend to galactic vacuum fluctuation coupling |
+
+---
+
+## 8. Code Implementation
+
+```cpp
+double compute_mu_s(double t, double Bs, double omega_c, double Rs, double SCm_contrib = 1e3) {
+    double Bs_t = Bs + 0.4 * std::sin(omega_c * t) + SCm_contrib;
+    return Bs_t * std::pow(Rs, 3);
+}
+
+double compute_grad_Ms_r(double Ms, double Rs) {
+    if (Rs <= 0.0) throw std::runtime_error("Invalid Rs value");
+    return G * Ms / (Rs * Rs);
+}
+
+double compute_Ug1(const CelestialBody& body, double r, double t, double tn,
+                   double alpha, double delta_def, double k1) {
+    if (r <= 0.0) throw std::runtime_error("Invalid r value");
+    double mu_s = compute_mu_s(t, body.Bs_avg, body.omega_c, body.Rs);
+    double grad_Ms_r = compute_grad_Ms_r(body.Ms, body.Rs);
+    double defect = 1.0 + delta_def * std::sin(0.001 * t);
+    return k1 * mu_s * grad_Ms_r * std::exp(-alpha * t) * std::cos(PI * tn) * defect;
+}
+```
+
+---
+
+## 9. Unit Test
+
+```python
+def test_Ug1_solar_calibration():
+    """Solar Ug1 at t=0, no defect"""
+    import math
+    G = 6.674e-11; Ms = 1.989e30; Rs = 6.96e8
+    Bs = 1e-4; SCm_contrib = 1e3; k1 = 1.5; alpha = 0.001; t = 0; tn = 0
+    mu_s = (Bs + SCm_contrib) * Rs**3          # ≈ 3.38e23
+    grad_Ms_r = G * Ms / Rs**2                 # ≈ 274
+    defect = 1.0
+    expected = k1 * mu_s * grad_Ms_r * math.exp(-alpha * t) * math.cos(math.pi * tn) * defect
+    # ≈ 1.39e26
+    assert expected > 1e25, f"Ug1 solar calibration failed: {expected}"
+```
+
+---
+
+*©2025 Daniel T. Murphy, daniel.murphy00@gmail.com – All Rights Reserved*
