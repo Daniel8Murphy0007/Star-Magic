@@ -2,7 +2,7 @@
 CondensedPhysics4.py — UQFF Phase 4 Physics Calculator
 =======================================================
 IPC Chain Position: 4 of 4
-  CondensedPhysics.py  (1,199 classes, Phase 1)
+  CondensedPhysics.py  (1,227 classes, Phase 1)
       → CondensedPhysics2.py (600 classes, Phase 2)
           → CondensedPhysics3.py (219 classes, Phase 3)
               → CondensedPhysics4.py (this file, Phase 4)
@@ -62,7 +62,7 @@ from typing import Any
 # IPC CHAIN: Import Phase 1, 2, and 3 calculators
 # ---------------------------------------------------------------------------
 try:
-    from CondensedPhysics import *        # Phase 1 — 1,199 classes
+    from CondensedPhysics import *        # Phase 1 — 1,227 classes
     _CP1_LOADED = True
 except ImportError:
     _CP1_LOADED = False

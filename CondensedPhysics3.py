@@ -2,7 +2,7 @@
 CondensedPhysics3.py — UQFF Phase 3 Physics Calculator
 =======================================================
 IPC Chain Position: 3 of 4
-  CondensedPhysics.py (1,199 classes, Phase 1)
+  CondensedPhysics.py (1,227 classes, Phase 1)
       → CondensedPhysics2.py (600 classes, Phase 2)
           → CondensedPhysics3.py (this file, Phase 3)
               → CondensedPhysics4.py (12 classes, Phase 4)
@@ -48,7 +48,7 @@ from typing import Any
 # IPC CHAIN: Import Phase 1 and Phase 2 calculators
 # ---------------------------------------------------------------------------
 try:
-    from CondensedPhysics import *       # Phase 1 — 1,199 classes
+    from CondensedPhysics import *       # Phase 1 — 1,227 classes
     _CP1_LOADED = True
 except ImportError:
     _CP1_LOADED = False
@@ -9274,7 +9274,7 @@ class Source10DPMResonanceAmplificationCalculator(_CP3Calculator):
         }
 
 
-class Source10THz​DoubleGateConduitCalculator(_CP3Calculator):
+class Source10THzDoubleGateConduitCalculator(_CP3Calculator):
     """PAPER_271: THz Double-Gate Star Formation — dual binary conditions.
     F_conduit = k_conduit * H_abundance * water_state * neutron_factor.
     Both Gate 1 (water_state=1, classical fluid) AND Gate 2 (neutron_factor=1, Kozima quantum)
@@ -13835,7 +13835,7 @@ __all__ = [
     "NGC1792RamPressureDegeneracyCalculator",
     # Session 74 — PAPER_270–272 (UQFF Source10 Catalogue Unique Physics)
     "Source10DPMResonanceAmplificationCalculator",
-    "Source10THz​DoubleGateConduitCalculator",
+    "Source10THzDoubleGateConduitCalculator",
     "Source10GravitationalVacuumDragCalculator",
     # Session 75 — PAPER_273–275 (Andromeda UQFF 2.0 Unique Physics)
     "AndromedaBlueshiftApproachAmplifierCalculator",
