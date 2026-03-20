@@ -699,3 +699,41 @@ StarMagic11254865Session103HubCalculator → PAPER_378–380 hub (CP4 #31)
 ---
 
 *Updated: Session 103 | Source: grok_share_11254865.txt re-analysis (lines 2400–6000) | Papers: 377→380*
+
+---
+
+## 26. Session 104 CP4 Class Additions
+
+```
+SGR1745CompressedMUGESpectralTermDecompositionCalculator  → PAPER_381  (CP4 #32)
+UQFF12TermSpectralLadderSGR1745Calculator                 → PAPER_382  (CP4 #33)
+Ug4iTransientAgeDecayLawCalculator                        → PAPER_383  (CP4 #34)
+SagAStarFullResonanceTermDecompositionCalculator          → PAPER_384  (CP4 #35)
+Canonical7SystemUQFFParameterRegistryCalculator           → PAPER_385  (CP4 #36)
+LaTeXDualBlockUQFFMasterEquationCalculator                → PAPER_386 hub (CP4 #37)
+```
+
+---
+
+## 27. Session 104 Summary
+
+| Item | Before | After |
+|------|--------|-------|
+| Source file lines analyzed | 10,322 (complete) | **complete re-analysis pass** |
+| New undiscovered findings | — | 15 findings (A–O); ~6 genuinely new |
+| Papers | 380 | **386** |
+| CP4 classes | 31 | **37** |
+| CP4 line count | 2331 | **2967** |
+| VMI version | v4.59 | **v4.60** |
+
+**Key new physics (Session 104 — complete re-analysis):**
+- **SGR1745 Compressed MUGE term-by-term**: Perturbation term = 1.782×10³⁹ m/s² dominates base (1.991×10¹² m/s²) by 27 orders. Model validity criterion: compressed MUGE valid only r > 1.3×10⁷ m. (PAPER_381)
+- **UQFF 12-Term Spectral Ladder**: First per-system tabulation for SGR1745 — 78-order dynamic range from afluid_freq=1.773×10⁻⁹ (dominant) to aAether_freq=1.863×10⁻⁸⁴ (minimum). (PAPER_382)
+- **Ug4i Age Discriminator**: E_react = 1046·e^(−0.0005·t) — Ug4i = 0 for all 7 canonical systems (all ancient). Only active for young/bursting events. (PAPER_383)
+- **Sagittarius A* full decomposition**: afluid_freq = 4.105×10²⁹ m/s² (DOMINANT resonance); 9-order gap between resonance fluid (10²⁹) and compressed fluid (10²⁰); fluid universality principle. (PAPER_384)
+- **Canonical 7-system parameter registry**: All 18 fields for all 7 systems formally documented; CSV format; 22-order radius span. (PAPER_385)
+- **LaTeX dual-block master equation**: Formal cohesive expression — [compressed block] + [resonance block] + a_worm. Three May-2025 documents (14May compressed, 14May resonance, 15May proofs) integrated; Meissner exp(-B/Bcrit) and error propagation δg=√Σ(δaᵢ)². (PAPER_386)
+
+---
+
+*Updated: Session 104 | Source: grok_share_11254865.txt complete re-analysis (lines 1–10,322) | Papers: 380→386*

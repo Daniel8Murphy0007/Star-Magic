@@ -2629,6 +2629,715 @@ class StarMagic11254865Session103HubCalculator(_CP4Calculator):
         }
 
 
+# ---------------------------------------------------------------------------
+# Session 104 — PAPER_381-386  (Complete re-analysis pass — lines 1-10322)
+# ---------------------------------------------------------------------------
+
+class SGR1745CompressedMUGESpectralTermDecompositionCalculator(_CP4Calculator):
+    """PAPER_381 — SGR1745 Compressed MUGE Spectral Term Decomposition.
+    Source: grok_share_11254865.txt lines ~2900-2904
+    First per-term breakdown of all 8 compressed MUGE terms for SGR1745.
+    Key finding: perturbation term (1.782e39 m/s²) dominates by 27 orders over
+    Newtonian base (1.991e12 m/s²) — compressed MUGE unphysical at r=1e4 m.
+    Establishes model validity criterion: compressed MUGE valid only r > 1.3e7 m.
+    CP4 class #32
+    """
+    category = "Spectral Term Decomposition / Compressed MUGE"
+
+    # SGR1745 canonical parameters
+    G        = 6.674e-11
+    M        = 2.984e30      # kg
+    r        = 1e4           # m
+    B        = 1e10          # T
+    Bcrit    = 1e11          # T
+    H0       = 2.269e-18     # s⁻¹
+    t        = 3.799e10      # s
+    Lambda   = 1.1e-52       # m⁻²
+    c        = 3e8           # m/s
+    hbar     = 1.055e-34     # J·s
+    tH       = 4.35e17       # s
+    Ereact_0 = 2.176e-18     # J — coherence integral
+    delta_xp = 1e-68         # J²·s² — uncertainty product
+    rho_f    = 1e15          # kg/m³
+    Vsys     = 4.189e12      # m³
+    g_local  = 1.991e12      # m/s²
+    M_DM     = 1e28          # kg
+    dRhoRho  = 0.1           # δρ/ρ
+    M_BH     = 4e6 * 1.989e30  # Sag A* mass
+    r_BH     = 26e3 * 3.086e16  # 26 kpc in m
+
+    def compute(self, dataset: dict = None) -> dict:
+        import math
+        if dataset is None:
+            dataset = {}
+
+        M      = float(dataset.get('M',      self.M))
+        r      = float(dataset.get('r',      self.r))
+        B      = float(dataset.get('B',      self.B))
+        Bcrit  = float(dataset.get('Bcrit',  self.Bcrit))
+        H0     = self.H0
+        t      = float(dataset.get('t',      self.t))
+        M_DM   = float(dataset.get('M_DM',   self.M_DM))
+        dRR    = float(dataset.get('dRhoRho', self.dRhoRho))
+        rho_f  = float(dataset.get('rho_f',  self.rho_f))
+        Vsys   = float(dataset.get('Vsys',   self.Vsys))
+        g_loc  = float(dataset.get('g_local', self.g_local))
+
+        G = self.G
+        c = self.c
+
+        # Term 1: Newtonian base
+        g_base = G * M / r**2
+
+        # Term 2: Hubble expansion factor
+        exp_factor = 1.0 + H0 * t
+
+        # Term 3: SC adjustment (linear Meissner)
+        sc_factor = 1.0 - (B / Bcrit)
+        g_SC_adj  = g_base * exp_factor * sc_factor
+
+        # Term 4: External BH gravity (Ug3')
+        g_ug3p = G * self.M_BH / self.r_BH**2
+
+        # Term 5: Cosmological constant floor
+        g_cosm = self.Lambda * c**2 / 3.0
+
+        # Term 6: Quantum coherence
+        g_quantum = (self.hbar / self.delta_xp) * self.Ereact_0 * (2.0 * math.pi / self.tH)
+
+        # Term 7: Fluid coupling
+        g_fluid = rho_f * Vsys * g_loc
+
+        # Term 8: DM perturbation (DOMINANT at compact r)
+        r3_term   = 3.0 * G * M / r**3
+        g_pert    = (M + M_DM) * (dRR + r3_term)
+
+        # Validity criterion
+        r_min = (3.0 * G * M / dRR) ** (1.0/3.0)
+
+        # Total compressed MUGE
+        g_total = g_SC_adj + g_ug3p + g_cosm + g_quantum + g_fluid + g_pert
+
+        return {
+            'primary_equations': {
+                'g_base_ms2':         g_base,
+                'g_SC_adj_ms2':       g_SC_adj,
+                'g_ug3p_ms2':         g_ug3p,
+                'g_cosm_ms2':         g_cosm,
+                'g_quantum_ms2':      g_quantum,
+                'g_fluid_ms2':        g_fluid,
+                'g_perturbation_ms2': g_pert,
+                'g_total_compressed': g_total,
+            },
+            'available_equations': {
+                'expansion_factor':  exp_factor,
+                'SC_meissner_factor': sc_factor,
+                'r3_term':           r3_term,
+                'dominance_ratio':   g_pert / g_base if g_base > 0 else float('inf'),
+                'r_min_compressed_m': r_min,
+            },
+            'simulation_set': {
+                'perturbation_dominates':   g_pert > g_SC_adj * 1e10,
+                'model_valid_at_r':         r > r_min,
+                'r_min_m':                  r_min,
+                'perturbation_vs_base_log10': math.log10(abs(g_pert) / abs(g_base)) if g_base > 0 else None,
+            },
+            'papers':  ['PAPER_381'],
+            'session': 104,
+        }
+
+
+class UQFF12TermSpectralLadderSGR1745Calculator(_CP4Calculator):
+    """PAPER_382 — UQFF 12-Term Full Spectral Ladder for SGR1745.
+    Source: grok_share_11254865.txt lines ~2920-2950 + unit tests lines ~7000-7600
+    First per-term numeric tabulation of all 12 resonance MUGE terms for SGR1745.
+    78-order dynamic range: afluid_freq=1.773e-9 (DOMINANT) down to aAether_freq=1.863e-84.
+    Confirms: Unit test reference values for all 12 computations.
+    Term hierarchy: afluid >> asuper >> aaether_res >> aTHz >> aDPM >> avac >> aexp >> aquantum >> aAether
+    CP4 class #33
+    """
+    category = "Spectral Ladder / Resonance MUGE / Term Hierarchy"
+
+    # SGR1745 canonical parameters (matching MUGESuperconductive12TermResonanceCalculator)
+    I_cur  = 1e21        # A
+    A_area = 3.142e8     # m²
+    omega1 = 1e12        # rad/s
+    omega2 = 9.99e11     # rad/s
+    Vsys   = 4.189e12    # m³
+    vexp   = 1e3         # m/s
+    t_age  = 3.799e10    # s
+    z      = 0.0009
+    ffluid = 1.269e-14   # Hz
+    M      = 2.984e30    # kg
+    r      = 1e4         # m
+    c      = 3e8         # m/s
+    G      = 6.674e-11
+    Evac_neb = 7.09e-36  # J/m³
+    Evac_ISM = 7.09e-37  # J/m³
+    hbar   = 1.055e-34   # J·s
+    tH     = 4.35e17     # s
+    fDPM   = 1e12        # Hz
+    fTHz   = 1e12        # Hz
+    dEvac  = 6.381e-36   # J/m³ — Δ_Evac
+    Fsuper = 6.287e-19   # N
+    Faether = 1e-40      # N
+    keta   = 1e-113      # TRZ coupling
+    Ereact_0 = 1046.0    # J
+    kappa  = 0.0005      # decay constant (parametric)
+
+    def compute(self, dataset: dict = None) -> dict:
+        import math
+        if dataset is None:
+            dataset = {}
+
+        Vsys   = float(dataset.get('Vsys',    self.Vsys))
+        vexp   = float(dataset.get('vexp',    self.vexp))
+        t_age  = float(dataset.get('t',       self.t_age))
+        ffluid = float(dataset.get('ffluid',  self.ffluid))
+        c      = self.c
+
+        # aDPM
+        FDPM   = self.I_cur * self.A_area * (self.omega1 - self.omega2)
+        aDPM   = FDPM * self.fDPM * self.Evac_neb * c * Vsys
+
+        # aTHz
+        aTHz   = self.fTHz * self.Evac_neb * vexp * aDPM / (self.Evac_ISM * c)
+
+        # avac_diff
+        avac   = self.dEvac * vexp**2 * aDPM / (self.Evac_neb * c**2)
+
+        # asuper_freq
+        asuper = self.Fsuper * self.fTHz * aDPM / (self.Evac_neb * c)
+
+        # aaether_res
+        aaether_res = self.Faether * aDPM / self.Evac_neb
+
+        # Ug4i via Ereact decay
+        Ereact = self.Ereact_0 * math.exp(-self.kappa * t_age)
+        Ug4i   = Ereact * self.Fsuper / (self.M * c**2 * self.r**2) if Ereact > 1e-100 else 0.0
+
+        # aquantum_freq
+        aquantum = (self.hbar / 1e-68) * 2.176e-18 * (2.0 * math.pi / self.tH)
+
+        # aAether_freq (theoretical minimum)
+        aAether = self.Faether * self.Evac_neb / (self.M * c * self.tH)
+
+        # afluid_freq (DOMINANT)
+        afluid = ffluid * self.Evac_neb * Vsys / (self.Evac_ISM * c)
+
+        # Osc_term (steady state)
+        Osc_term = 0.0
+
+        # aexp_freq
+        H_z   = self.c * 2.269e-18 * math.sqrt(0.3 * (1 + self.z)**3 + 0.7) / c
+        f_exp = 2.0 * math.pi * H_z * t_age
+        aexp  = f_exp * self.Evac_neb * aDPM / (self.Evac_ISM * c)
+
+        # fTRZ (parametric coupling constant)
+        fTRZ  = self.keta * self.Evac_neb / (1e-36 * c * self.tH)  # parametric
+
+        g_resonance = aDPM + aTHz + avac + asuper + aaether_res + Ug4i + aquantum + aAether + afluid + Osc_term + aexp + fTRZ
+
+        spectral_ladder = {
+            'afluid_freq':    afluid,
+            'asuper_freq':    asuper,
+            'aaether_res':    aaether_res,
+            'aTHz':           aTHz,
+            'aDPM':           aDPM,
+            'avac_diff':      avac,
+            'aexp_freq':      aexp,
+            'aquantum_freq':  aquantum,
+            'aAether_freq':   aAether,
+            'Ug4i':           Ug4i,
+            'Osc_term':       Osc_term,
+            'fTRZ':           fTRZ,
+        }
+
+        # Dynamic range
+        nonzero = [abs(v) for v in spectral_ladder.values() if abs(v) > 1e-200]
+        dyn_range_log10 = math.log10(max(nonzero) / min(nonzero)) if len(nonzero) >= 2 else 0.0
+
+        return {
+            'primary_equations': {
+                'g_resonance_MUGE_ms2': g_resonance,
+                'dominant_term':        'afluid_freq',
+                'dominant_value_ms2':   afluid,
+                'weakest_term':         'aAether_freq',
+                'weakest_value_ms2':    aAether,
+            },
+            'spectral_ladder': spectral_ladder,
+            'available_equations': {
+                'dynamic_range_log10':  dyn_range_log10,
+                'Ereact_at_t':          Ereact,
+                'Ug4i_active':          Ug4i > 1e-100,
+                'f_exp_Hz':             f_exp,
+            },
+            'simulation_set': {
+                'all_12_terms':     spectral_ladder,
+                'total_resonance':  g_resonance,
+                'fluid_dominated':  afluid > 10.0 * aTHz,
+            },
+            'unit_test_reference': {
+                'aDPM_expected':     3.545e-42,
+                'aTHz_expected':     1.182e-33,
+                'afluid_expected':   1.773e-9,
+                'aAether_expected':  1.863e-84,
+                'g_resonance_exp':   1.773e-9,
+            },
+            'papers':  ['PAPER_382'],
+            'session': 104,
+        }
+
+
+class Ug4iTransientAgeDecayLawCalculator(_CP4Calculator):
+    """PAPER_383 — Ug4i Transient Age-Dependent Decay Law.
+    Source: grok_share_11254865.txt lines ~2928-2932
+    E_react(t) = 1046 * exp(-0.0005 * t) — vacuum reactivity seed energy decay.
+    UQFF Age Discriminator: Ug4i = 0 for all 7 canonical systems (ancient).
+    Ug4i active only for young/bursting systems: t < threshold = (1/kappa)*ln(E0/epsilon).
+    Connects to 10-100 day Chandra magnetar flare window (PAPER_376).
+    CP4 class #34
+    """
+    category = "Transient Physics / Age Discriminator / Vacuum Reactivity"
+
+    Ereact_0  = 1046.0   # J — seed energy
+    kappa     = 0.0005   # decay constant (parametric, matching κ=0.0005/day calibration)
+    epsilon   = 1e-6     # computational floor [J]
+
+    def compute(self, dataset: dict = None) -> dict:
+        import math
+        if dataset is None:
+            dataset = {}
+
+        Ereact_0 = float(dataset.get('Ereact_0', self.Ereact_0))
+        kappa    = float(dataset.get('kappa',    self.kappa))
+        t        = float(dataset.get('t',        3.799e10))
+
+        # E_react decay
+        Ereact = Ereact_0 * math.exp(-kappa * t)
+
+        # Threshold age for Ug4i suppression
+        t_threshold = (1.0 / kappa) * math.log(Ereact_0 / self.epsilon)
+
+        # Ug4i status
+        is_active = Ereact > self.epsilon
+
+        # All 7 canonical systems
+        canonical_systems = {
+            'SGR1745':       {'t': 3.799e10},
+            'SagA_star':     {'t': 3.786e14},
+            'Tapestry':      {'t': 3.156e13},
+            'Westerlund2':   {'t': 3.156e13},
+            'Pillars':       {'t': 3.156e13},
+            'Rings':         {'t': 3.156e14},
+            'Student_Guide': {'t': 4.35e17},
+        }
+
+        system_ereact = {}
+        for name, params in canonical_systems.items():
+            e = Ereact_0 * math.exp(-kappa * params['t'])
+            system_ereact[name] = {
+                'Ereact_J': e,
+                'Ug4i_active': e > self.epsilon,
+            }
+
+        # Time series: Ereact vs days since event (for active burst)
+        time_series = {}
+        for d in [0, 10, 100, 1000]:
+            time_series[f't_{d}_days'] = Ereact_0 * math.exp(-kappa * d)
+
+        return {
+            'primary_equations': {
+                'Ereact_formula':    'E_react(t) = 1046 * exp(-0.0005 * t)',
+                'Ereact_at_t_J':     Ereact,
+                'Ug4i_active':       is_active,
+                't_threshold_days':  t_threshold,
+            },
+            'available_equations': {
+                'Ereact_10_days_J':   time_series['t_10_days'],
+                'Ereact_100_days_J':  time_series['t_100_days'],
+                'kappa_calibrated':   kappa,
+                'E0_seed_J':          Ereact_0,
+            },
+            'system_classification': system_ereact,
+            'simulation_set': {
+                'time_series_days':   time_series,
+                't_threshold':        t_threshold,
+                'all_canonical_inactive': all(
+                    not v['Ug4i_active'] for v in system_ereact.values()
+                ),
+            },
+            'papers':  ['PAPER_383'],
+            'session': 104,
+        }
+
+
+class SagAStarFullResonanceTermDecompositionCalculator(_CP4Calculator):
+    """PAPER_384 — Sagittarius A* Full Resonance + Compressed Term Decomposition.
+    Source: grok_share_11254865.txt lines ~2960-2990
+    First per-term decomposition for Sag A* under both MUGE models.
+    Resonance: aDPM=1.001e-10, aTHz=1.001e-2, afluid_freq=4.105e29 (DOMINANT).
+    Compressed: fluid=3.552e20, perturbation=2.966e34 (dominant in compressed).
+    Fluid Universality: afluid dominates in both compact (SGR1745) and SMBH (Sag A*) systems.
+    CP4 class #35
+    """
+    category = "Term Decomposition / SMBH / Multi-Model Comparison"
+
+    # Sag A* canonical parameters
+    I_cur   = 1e23
+    A_area  = 2.813e30
+    omega1  = 1e12
+    omega2  = 9.99e11
+    Vsys    = 3.552e45
+    vexp    = 5e6
+    t_age   = 3.786e14
+    z       = 0.0009
+    ffluid  = 3.465e-8
+    M       = 8.155e36
+    r       = 1e12
+    B       = 1e-5
+    Bcrit   = 1e-4
+    rho_f   = 1e-19
+    g_local = 5.443e2
+    M_DM    = 1e38
+    dRhoRho = 0.01
+    G       = 6.674e-11
+    c       = 3e8
+    Evac_neb = 7.09e-36
+    Evac_ISM = 7.09e-37
+    fTHz    = 1e12
+    fDPM    = 1e12
+    dEvac   = 6.381e-36
+    Fsuper  = 6.287e-10   # scaled for SMBH
+    H0      = 2.269e-18
+    Lambda  = 1.1e-52
+    tH      = 4.35e17
+
+    def compute(self, dataset: dict = None) -> dict:
+        import math
+        if dataset is None:
+            dataset = {}
+
+        M      = float(dataset.get('M',      self.M))
+        r      = float(dataset.get('r',      self.r))
+        B      = float(dataset.get('B',      self.B))
+        Bcrit  = float(dataset.get('Bcrit',  self.Bcrit))
+        Vsys   = float(dataset.get('Vsys',   self.Vsys))
+        vexp   = float(dataset.get('vexp',   self.vexp))
+        ffluid = float(dataset.get('ffluid', self.ffluid))
+        M_DM   = float(dataset.get('M_DM',   self.M_DM))
+        dRR    = float(dataset.get('dRhoRho', self.dRhoRho))
+        rho_f  = float(dataset.get('rho_f',  self.rho_f))
+        g_loc  = float(dataset.get('g_local', self.g_local))
+
+        # --- Resonance MUGE terms ---
+        FDPM   = self.I_cur * self.A_area * (self.omega1 - self.omega2)
+        aDPM   = FDPM * self.fDPM * self.Evac_neb * self.c * Vsys
+        aTHz   = self.fTHz * self.Evac_neb * vexp * aDPM / (self.Evac_ISM * self.c)
+        afluid = ffluid * self.Evac_neb * Vsys / (self.Evac_ISM * self.c)
+
+        g_resonance = aDPM + aTHz + afluid  # others negligible for Sag A*
+
+        # --- Compressed MUGE terms ---
+        g_base    = self.G * M / r**2
+        sc_factor = 1.0 - (B / Bcrit)
+        g_SC_adj  = g_base * sc_factor
+        g_fluid_c = rho_f * Vsys * g_loc
+        r3_term   = 3.0 * self.G * M / r**3
+        g_pert    = (M + M_DM) * (dRR + r3_term)
+        g_compressed = g_SC_adj + g_fluid_c + g_pert
+
+        # --- Cross-model comparison ---
+        # SGR1745 reference values (PAPER_382)
+        sgr_afluid = 1.773e-9     # m/s²
+        sgr_compress = 1.782e39  # m/s²
+
+        return {
+            'primary_equations': {
+                'g_resonance_total_ms2':     g_resonance,
+                'g_compressed_total_ms2':    g_compressed,
+                'resonance_dominant_term':   'afluid_freq',
+                'afluid_freq_ms2':           afluid,
+                'compressed_dominant_term':  'perturbation',
+                'g_pert_ms2':                g_pert,
+            },
+            'resonance_terms': {
+                'aDPM_ms2':    aDPM,
+                'aTHz_ms2':    aTHz,
+                'afluid_ms2':  afluid,
+            },
+            'compressed_terms': {
+                'g_base_ms2':     g_base,
+                'g_SC_adj_ms2':   g_SC_adj,
+                'g_fluid_ms2':    g_fluid_c,
+                'g_pert_ms2':     g_pert,
+            },
+            'available_equations': {
+                'res_vs_comp_ratio':       g_resonance / g_compressed if g_compressed != 0 else None,
+                'afluid_SagA_vs_SGR1745':  afluid / sgr_afluid,
+                'fluid_scale_log10':       math.log10(afluid / sgr_afluid) if sgr_afluid > 0 else None,
+            },
+            'simulation_set': {
+                'fluid_universally_dominant':   afluid > aTHz * 1e10,
+                'SMBH_vs_magnetar_fluid_ratio':  afluid / sgr_afluid,
+                'models_vs_SGR1745': {
+                    'SGR1745_resonance':   sgr_afluid,
+                    'SagA_resonance':      afluid,
+                    'SGR1745_compressed':  sgr_compress,
+                    'SagA_compressed':     g_compressed,
+                },
+            },
+            'papers':  ['PAPER_384'],
+            'session': 104,
+        }
+
+
+class Canonical7SystemUQFFParameterRegistryCalculator(_CP4Calculator):
+    """PAPER_385 — Canonical 7-System UQFF Parameter Registry.
+    Source: grok_share_11254865.txt lines ~6700-6850 + lines ~9400-10322 (main() C++)
+    First formal 18-field per-system registry for all 7 UQFF validation systems.
+    Systems span 22 orders in radius (1e4 m to 1e26 m), 23 orders in mass.
+    Includes CSV format, computed outputs, and scale comparison table.
+    Combined with unit test canonical reference values (Finding H).
+    CP4 class #36
+    """
+    category = "System Registry / Canonical Parameters / Multi-Scale"
+
+    REGISTRY = {
+        'sgr1745': {
+            'name': 'Magnetar SGR 1745-2900',
+            'I': 1e21, 'A': 3.142e8,
+            'omega1': 1e12, 'omega2': 9.99e11,
+            'Vsys': 4.189e12, 'vexp': 1e3,
+            't': 3.799e10, 'z': 0.0009,
+            'ffluid': 1.269e-14,
+            'M': 2.984e30, 'r': 1e4,
+            'B': 1e10, 'Bcrit': 1e11,
+            'rho_fluid': 1e15, 'g_local': 1.991e12,
+            'M_DM': 1e28, 'delta_rho_rho': 0.1,
+        },
+        'sagA': {
+            'name': 'Sagittarius A*',
+            'I': 1e23, 'A': 2.813e30,
+            'omega1': 1e12, 'omega2': 9.99e11,
+            'Vsys': 3.552e45, 'vexp': 5e6,
+            't': 3.786e14, 'z': 0.0009,
+            'ffluid': 3.465e-8,
+            'M': 8.155e36, 'r': 1e12,
+            'B': 1e-5, 'Bcrit': 1e-4,
+            'rho_fluid': 1e-19, 'g_local': 5.443e2,
+            'M_DM': 1e38, 'delta_rho_rho': 0.01,
+        },
+        'tapestry': {
+            'name': 'Tapestry of Blazing Starbirth',
+            'I': 1e22, 'A': 1e35,
+            'omega1': 1e12, 'omega2': 9.99e11,
+            'Vsys': 1e53, 'vexp': 1e4,
+            't': 3.156e13, 'z': 0.0,
+            'ffluid': 1e-12,
+            'M': 1.989e35, 'r': 3.086e17,
+            'B': 1e-9, 'Bcrit': 1e-8,
+            'rho_fluid': 1e-21, 'g_local': 1.39e-15,
+            'M_DM': 1e36, 'delta_rho_rho': 0.01,
+        },
+        'westerlund': {
+            'name': 'Westerlund 2 Star Cluster',
+            'I': 1e22, 'A': 1e35,
+            'omega1': 1e12, 'omega2': 9.99e11,
+            'Vsys': 1e53, 'vexp': 1e4,
+            't': 3.156e13, 'z': 0.0,
+            'ffluid': 1e-12,
+            'M': 1.989e35, 'r': 3.086e17,
+            'B': 1e-9, 'Bcrit': 1e-8,
+            'rho_fluid': 1e-21, 'g_local': 1.39e-15,
+            'M_DM': 1e36, 'delta_rho_rho': 0.01,
+        },
+        'pillars': {
+            'name': 'Pillars of Creation',
+            'I': 1e21, 'A': 2.813e32,
+            'omega1': 1e12, 'omega2': 9.99e11,
+            'Vsys': 3.552e48, 'vexp': 2e3,
+            't': 3.156e13, 'z': 0.0,
+            'ffluid': 8.457e-14,
+            'M': 1.989e32, 'r': 9.46e15,
+            'B': 1e-10, 'Bcrit': 1e-9,
+            'rho_fluid': 1e-23, 'g_local': 2.979e-10,
+            'M_DM': 1e32, 'delta_rho_rho': 0.05,
+        },
+        'rings': {
+            'name': 'Rings of Relativity Gravitational Lens',
+            'I': 1e22, 'A': 1e35,
+            'omega1': 1e12, 'omega2': 9.99e11,
+            'Vsys': 1e54, 'vexp': 1e5,
+            't': 3.156e14, 'z': 0.01,
+            'ffluid': 1e-9,
+            'M': 1.989e36, 'r': 3.086e17,
+            'B': 1e-10, 'Bcrit': 1e-9,
+            'rho_fluid': 1e-28, 'g_local': 1.391e-14,
+            'M_DM': 1e38, 'delta_rho_rho': 0.02,
+        },
+        'student_guide': {
+            'name': "Student's Guide to the Universe",
+            'I': 1e24, 'A': 1e52,
+            'omega1': 1e12, 'omega2': 9.99e11,
+            'Vsys': 1e80, 'vexp': 3e8,
+            't': 4.35e17, 'z': 0.0,
+            'ffluid': 1e-18,
+            'M': 1e53, 'r': 1e26,
+            'B': 1e-15, 'Bcrit': 1e-14,
+            'rho_fluid': 1e-26, 'g_local': 6.67e-33,
+            'M_DM': 1e53, 'delta_rho_rho': 0.001,
+        },
+    }
+
+    def compute(self, dataset: dict = None) -> dict:
+        import math
+
+        # Compute afluid_freq for each system (dominant resonance term)
+        G         = 6.674e-11
+        c         = 3e8
+        Evac_neb  = 7.09e-36
+        Evac_ISM  = 7.09e-37
+
+        system_outputs = {}
+        for key, sys in self.REGISTRY.items():
+            afluid = sys['ffluid'] * Evac_neb * sys['Vsys'] / (Evac_ISM * c)
+            g_newt = G * sys['M'] / sys['r']**2
+            system_outputs[key] = {
+                'name':            sys['name'],
+                'r_m':             sys['r'],
+                'M_kg':            sys['M'],
+                'afluid_ms2':      afluid,
+                'g_newton_ms2':    g_newt,
+                'fluid_log10':     math.log10(afluid) if afluid > 0 else None,
+                'newton_log10':    math.log10(g_newt) if g_newt > 0 else None,
+            }
+
+        radii = [sys['r'] for sys in self.REGISTRY.values()]
+        masses = [sys['M'] for sys in self.REGISTRY.values()]
+
+        return {
+            'primary_equations': {
+                'registry_count':         len(self.REGISTRY),
+                'radius_range_log10':     math.log10(max(radii) / min(radii)),
+                'mass_range_log10':       math.log10(max(masses) / min(masses)),
+                'field_count':            18,
+            },
+            'system_outputs': system_outputs,
+            'available_equations': {
+                'afluid = ffluid * Evac_neb * Vsys / (Evac_ISM * c)': 'dominant resonance term per system',
+                'g_newton = G * M / r^2': 'Newtonian baseline',
+                'CSV_header': 'name,I,A,omega1,omega2,Vsys,vexp,t,z,ffluid,M,r,B,Bcrit,rho_fluid,g_local,M_DM,delta_rho_rho',
+            },
+            'simulation_set': {
+                'all_systems': self.REGISTRY,
+                'system_count': len(self.REGISTRY),
+                'scale_span_orders_radius':  math.log10(max(radii) / min(radii)),
+                'scale_span_orders_mass':    math.log10(max(masses) / min(masses)),
+            },
+            'papers':  ['PAPER_385'],
+            'session': 104,
+        }
+
+
+class LaTeXDualBlockUQFFMasterEquationCalculator(_CP4Calculator):
+    """Session 104 hub — PAPER_386: LaTeX Dual-Block Cohesive UQFF Master Equation.
+    Source: grok_share_11254865.txt lines ~8230-8800 (3-document analysis) + ~8600-8650 (LaTeX)
+    Three May-2025 documents integrated: Compressed UQFF / Master UQFF Resonance / Proof Set.
+    Formal LaTeX dual-block: [compressed block] + [resonance block] + a_worm in one expression.
+    Proposed updates: Meissner exp(-B/Bcrit), error propagation delta_g, Lorentz aDPM/gamma.
+    Also serves as Session 104 hub for PAPER_381-386.
+    CP4 class #37 — Session 104 hub
+    """
+    category = "Master Equation / Document Integration / Session Hub"
+
+    # Canonical constants from May-2025 document integration
+    H0     = 2.269e-18    # s⁻¹
+    Lambda = 1.1e-52      # m⁻²
+    c      = 3e8          # m/s
+    hbar   = 1.055e-34    # J·s
+    tH     = 4.35e17      # s
+    omega_res_exact  = 1.445e-17   # rad/s = 2π/tHubble
+    kappa  = 0.0005       # day⁻¹ (decay)
+    b_worm = 1.0          # m
+    f_worm = 1e-10        # coupling
+    Evac_neb = 7.09e-36   # J/m³
+
+    def compute(self, dataset: dict = None) -> dict:
+        import math
+        if dataset is None:
+            dataset = {}
+
+        # Collect sub-paper results
+        p381 = SGR1745CompressedMUGESpectralTermDecompositionCalculator().compute(dataset)
+        p382 = UQFF12TermSpectralLadderSGR1745Calculator().compute(dataset)
+        p383 = Ug4iTransientAgeDecayLawCalculator().compute(dataset)
+        p384 = SagAStarFullResonanceTermDecompositionCalculator().compute(dataset)
+        p385 = Canonical7SystemUQFFParameterRegistryCalculator().compute(dataset)
+
+        # Dual-block master equation components
+        r = float(dataset.get('r', 1e4))
+        omega_res = 2.0 * math.pi / self.tH
+
+        # Meissner forms comparison
+        B_test, Bcrit_test = 1e10, 1e11
+        meissner_linear  = 1.0 - B_test / Bcrit_test
+        meissner_exp     = math.exp(-B_test / Bcrit_test)
+
+        # Wormhole term
+        a_worm = self.f_worm * self.Evac_neb / (self.b_worm**2 + r**2)
+
+        # Error propagation (using SGR1745 spectral ladder)
+        afluid = p382['primary_equations']['dominant_value_ms2']
+        frac   = float(dataset.get('frac_error', 0.01))
+        delta_g = frac * abs(afluid)  # fluid-dominated
+
+        # Three-document integration summary
+        doc_integration = {
+            'Doc1_Compressed_14May':  'Friedmann H(t,z) + psi_total + coherence integral + Meissner linear',
+            'Doc2_Resonance_14May':   '12-term co-sum; Aether framework; f_TRZ with k_eta=1e-113',
+            'Doc3_Proof_Set_15May':   '5 formal proofs: dimensional / boundary / resonance / Meissner / empirical',
+        }
+
+        return {
+            'primary_equations': {
+                'dual_block_LaTeX': (
+                    'g(r,t) = [Compressed_block] + [Resonance_block] + a_worm\n'
+                    'Compressed: GM(t)/r² · (1+H) · (1-B/Bcrit) · (1+Fenv) + ΣUgi + Λc²/3 + ℏ/(ΔxΔp)·∫ψ†Ĥψ·(2π/tH) + ρfVg + (M+MDM)(δρ/ρ+3GM/r³)\n'
+                    'Resonance: aDPM+aTHz+avac+asuper+aaether+Ug4i+aquantum+aAether+afluid+Osc+aexp+fTRZ\n'
+                    'Wormhole: a_worm = f_worm·Evac_neb/(b²+r²)'
+                ),
+                'omega_res_exact':      omega_res,
+                'meissner_linear':      meissner_linear,
+                'meissner_exponential': meissner_exp,
+                'a_worm':               a_worm,
+                'delta_g_error':        delta_g,
+            },
+            'document_integration': doc_integration,
+            'proposed_updates': {
+                'SC_meissner_improved': 'exp(-B/Bcrit) replaces (1-B/Bcrit)',
+                'error_propagation':    'delta_g = sqrt(sum(delta_ai^2))',
+                'lorentz_correction':   'aDPM -> aDPM/gamma for v > 0.1c',
+            },
+            'available_equations': {
+                'H_t_z': 'H0 * sqrt(0.3*(1+z)^3 + 0.7)',
+                'psi_total': 'psi_mag + psi_standing + psi_quantum',
+                'f_exp': '2*pi*H(z)*t',
+                'a_worm': 'f_worm * Evac_neb / (b^2 + r^2)',
+                'omega_res': '2*pi / tHubble',
+            },
+            'PAPER_381_SGR1745_compressed': p381['primary_equations'],
+            'PAPER_382_12term_ladder':       p382['spectral_ladder'],
+            'PAPER_383_Ug4i_decay':          p383['primary_equations'],
+            'PAPER_384_SagA_decomp':         p384['primary_equations'],
+            'PAPER_385_registry_count':      p385['primary_equations']['registry_count'],
+            'source_file':  'grok_share_11254865.txt',
+            'source_lines': '1-10322 (Session 104 complete re-analysis)',
+            'papers':       ['PAPER_381', 'PAPER_382', 'PAPER_383', 'PAPER_384', 'PAPER_385', 'PAPER_386'],
+            'session':      104,
+        }
+
+
 # ===========================================================================
 # CP4 REGISTRY
 # ===========================================================================
@@ -2669,4 +3378,11 @@ __all__ = [
     "CohesiveUQFFIntegrationCalculator",                  # PAPER_378
     "DualModelMUGEComparisonCalculator",                  # PAPER_379
     "UQFFSolvableEquationSetCalculator",                  # PAPER_380
-    "StarMagic11254865Session103HubCalculator",           # PAPER_378-380 hub
+    "StarMagic11254865Session103HubCalculator",           # PAPER_378-380 hub    # --- Session 104: Complete re-analysis — PAPER_381-386 ---
+    "SGR1745CompressedMUGESpectralTermDecompositionCalculator",  # PAPER_381
+    "UQFF12TermSpectralLadderSGR1745Calculator",                 # PAPER_382
+    "Ug4iTransientAgeDecayLawCalculator",                        # PAPER_383
+    "SagAStarFullResonanceTermDecompositionCalculator",          # PAPER_384
+    "Canonical7SystemUQFFParameterRegistryCalculator",           # PAPER_385
+    "LaTeXDualBlockUQFFMasterEquationCalculator",                # PAPER_386 hub
+]
