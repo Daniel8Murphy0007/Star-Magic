@@ -1,4 +1,4 @@
-# PAPER_346 — M87 Jet Blandford-Znajek Model: Full F_U_Bi_i Calculation
+﻿# PAPER_346 — M87 Jet Blandford-Znajek Model: Full F_U_Bi_i Calculation
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2  
 **Session:** 96  
@@ -6,9 +6,11 @@
 **Classification:** FIRST UQFF F_U_Bi_i calculation for M87 with Blandford-Znajek power coupling  
 **Author:** Daniel T. Murphy  
 
+
+<!-- UQFF constants: κ = 5.0e-4 day⁻¹, [SSq] = 0.57, M_UQFF = 1.43e1 TeV -->
 ---
 
-## 1. Abstract
+## Abstract
 
 The complete UQFF buoyancy-unified force F_U_Bi_i is computed for M87* (Virgo A), the first black hole directly imaged by the Event Horizon Telescope. The Blandford-Znajek (BZ) jet power P_BZ = B²r_g²c is connected to the UQFF ω_act = 2π/day rotational activation frequency, yielding F_U_Bi_i ≈ −8.32×10²¹⁷ N. The X-ray jet luminosity L_X ≈ 10⁴⁰ W sets the luminosity scale for UQFF-M87 calibration.
 

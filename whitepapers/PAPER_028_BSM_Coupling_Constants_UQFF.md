@@ -91,6 +91,10 @@ Within the UQFF framework, this tension is interpreted as a physical consequence
 
 ### 2.1 CKM Coupling in the UQFF Vacuum
 
+$$[SCm]_{flavor} = |V_{cb}|^2 = (39.2\times10^{-3})^2 = 1.537\times10^{-3}$$
+
+$$\Gamma(B \to D\ell\nu) \propto G_F^2 |V_{cb}|^2 m_B^5 |F(q^2)|^2, \quad |V_{cb}| = 3.92\times10^{-2}$$
+
 The UQFF assigns the CKM matrix element |V_cb| a physical role as a measure of the flavor-mixing vacuum density of the Superconducting Manifold. Specifically:
 ```
 [SCm]_flavor = |V_cb|²

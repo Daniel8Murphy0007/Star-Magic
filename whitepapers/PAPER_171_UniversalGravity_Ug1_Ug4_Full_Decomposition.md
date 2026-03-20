@@ -1,4 +1,4 @@
-# PAPER_171: Universal Gravity Ug1–Ug4 Full Decomposition
+﻿# PAPER_171: Universal Gravity Ug1–Ug4 Full Decomposition
 ## DPM, Heliosphere, Magnetic String Disk, and Star–Black Hole Interaction
 ## Whitepaper §2.4-C | Thread 381a8fe7 | Session 48
 
@@ -10,6 +10,8 @@ This paper documents all four Ug components as implemented in `CelestialBody.cpp
 and `main.cpp`, including all helper functions and calibrated constants.
 
 ---
+
+$$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b_i}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57$$
 
 ### 1. Helper Functions (CelestialBody.cpp)
 

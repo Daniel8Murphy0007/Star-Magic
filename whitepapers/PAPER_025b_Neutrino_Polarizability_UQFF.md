@@ -1,4 +1,4 @@
-# PAPER_025b: Neutrino Polarizability — UQFF Quantum Field Contributions
+﻿# PAPER_025b: Neutrino Polarizability — UQFF Quantum Field Contributions
 
 **Authors:** Daniel Murphy & UQFF Research Collective  
 **Date:** 2026-03-07  
@@ -7,6 +7,8 @@
 **arXiv Context:** 2506.15046 (Comagnetometer exotic spin couplings, axion-nucleon)
 
 ---
+
+$$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b_i}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57$$
 
 ## Abstract
 

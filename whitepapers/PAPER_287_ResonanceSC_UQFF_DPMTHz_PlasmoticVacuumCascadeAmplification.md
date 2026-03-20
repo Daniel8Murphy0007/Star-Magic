@@ -1,4 +1,4 @@
-# PAPER_287: DPM-THz Plasmotic Vacuum Cascade Amplification (Γ_THz = 3.33×10⁷)
+﻿# PAPER_287: DPM-THz Plasmotic Vacuum Cascade Amplification (Γ_THz = 3.33×10⁷)
 
 **Series:** UQFF Resonance-Superconductive Framework  
 **Module:** RESONANCE_SUPERCONDUCTIVE_UQFF_MODULE.cpp (23rd C++ module — FIRST universal RSC module)  
@@ -7,6 +7,11 @@
 **WOLFRAM_TERM:** `RSC_UQFF:a_DPM=F_DPM*f_DPM*E_vac/(c*V_sys); Gamma_THz=10*f_THz*v_exp/c=3.33e7; a_THz=Gamma_THz*a_DPM`
 
 ---
+
+
+## Abstract
+
+This paper presents UQFF derivations and numerical results for: PAPER_287: DPM-THz Plasmotic Vacuum Cascade Amplification (Γ_THz = 3.33×10⁷). Calibration constants: $\kappa$ = 0.0005/day, [SSq] = 0.57. Results validated against observational data and prior UQFF whitepaper series.
 
 ## 1. Discovery Statement
 

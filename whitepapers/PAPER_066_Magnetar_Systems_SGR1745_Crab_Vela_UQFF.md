@@ -1,4 +1,4 @@
-# PAPER #66 — Magnetar Systems: UQFF Predictions for SGR1745, Crab, Vela
+﻿# PAPER #66 — Magnetar Systems: UQFF Predictions for SGR1745, Crab, Vela
 
 **Title:** Magnetar Systems in the UQFF: Field Predictions for SGR1745, Crab, Vela, and ASKAP J1832-0911
 
@@ -127,3 +127,6 @@ $$v_{\rm kick} = \frac{F_{U,Bi,i} \times \Delta t}{M} = \frac{8.3 \times 10^{219
 | SGR1745 | 2.3×10¹⁰ | −3.0×10¹⁸⁷ | Compressed + Ug4 | SOURCE4 validated ✅ |
 
 *Source: uqff_validation_test.py, observational_systems_config.h, MAIN_1_CoAnQi.cpp SOURCE4 | κ = 0.0005/day | [SSq] = 0.57*
+
+---
+*See also: PAPER_065 | Part of the Star-Magic UQFF Whitepaper Series.*

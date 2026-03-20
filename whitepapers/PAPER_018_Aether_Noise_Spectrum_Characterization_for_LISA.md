@@ -34,7 +34,15 @@ The total stochastic power spectral density (PSD) in the LISA band:
 
 **S_UQFF(f) = S_GR(f) × [1 + P_aether(f)] × F_TRZ(f)**
 
-where the GR background follows S_GR(f) ∝ Ω_GW(f) ∝ f^(2/3) (inspiral-dominated), and:
+where the GR background follows $S_{GR}(f) \propto \Omega_{GW}(f) \propto f^{2/3}$ (inspiral-dominated), and:
+
+$$S_{UQFF}(f) = S_{GR}(f)\,[1 + P_{aether}(f)]\,F_{TRZ}(f)$$
+
+$$P_{aether}(f) = U_m \sum_n e^{-n/2}\,\delta(f - n f_U)\,W(\Delta f)$$
+
+$$F_{TRZ}(f) = 1 - 0.1\,\exp\!\left[-\frac{(f-f_{TRZ})^2}{2\sigma_{TRZ}^2}\right]$$
+
+**Key numerical results:** U_m = 1.0e-4, f_U(harmonic 1) = 9.9e-1 mHz = 9.9e-4 Hz, Omega_GW ~ 1.0e-9, F_TRZ peak suppression = 1.0e-1 (10%)
 
 **P_aether(f) = U_m × Σₙ exp(−n/2) × δ(f − n f_U) × W(Δf)**
 

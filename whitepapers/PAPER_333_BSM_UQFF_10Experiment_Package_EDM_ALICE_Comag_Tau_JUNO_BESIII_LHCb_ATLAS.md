@@ -1,4 +1,4 @@
-# PAPER_333 — BSM-UQFF Multi-Experiment Coupling Package: EDM, ALICE, Comagnetometer, Tau Dipole, JUNO, BESIII, LHCb, ATLAS, ECFA, and NOMAD
+﻿# PAPER_333 — BSM-UQFF Multi-Experiment Coupling Package: EDM, ALICE, Comagnetometer, Tau Dipole, JUNO, BESIII, LHCb, ATLAS, ECFA, and NOMAD
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2  
 **Session:** 95  
@@ -8,7 +8,9 @@
 
 ---
 
-## 1. Abstract
+$$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b_i}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57$$
+
+## Abstract
 
 This paper maps ten accelerator and detector experiments to UQFF variables, establishing a unified BSM (Beyond Standard Model)–UQFF coupling framework. Each experiment constrains or calibrates a specific UQFF parameter. The package includes: (1) an explicit EDM SO(10) force term added to F_U, (2) ALICE multiplicity scaling with [SSq] at level n=18, (3) comagnetometer axion coupling through the Um bilinear, (4) tau dipole connection to μ_j cos(πt_n), (5) JUNO PMT identification of SC_m→Qs=0, (6) BESIII DCS mapping to η flux, (7) LHCb LFV boundary revealing Um reversal at t_n<0, (8) ATLAS vector-like quarks fixing SC_m at heavy n=18, (9) ECFA Higgs/EW establishing κ_Higgs=1 at level 18, and (10) NOMAD monophoton connecting [SSq] at n=13. The g-2 fit yields a=4.74×10⁻⁵, b=9.96, κ_Higgs=47.34, τ_dev=5×10⁻⁸.
 

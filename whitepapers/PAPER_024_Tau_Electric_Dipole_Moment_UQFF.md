@@ -1,4 +1,4 @@
-# Paper #24: Tau Electric Dipole Moment via UQFF
+﻿# Paper #24: Tau Electric Dipole Moment via UQFF
 
 **Authors:** Daniel Murphy & UQFF Research Collective  
 **Date:** 2026-03-06  
@@ -34,6 +34,10 @@ A nonzero EDM requires P and T violation — by CPT theorem, CP violation. SM pr
 | LEP combined | |d_tau| < 1.5e-16 | 2003 |
 
 ### 1.3 UQFF CP-Violating Phase
+
+$$\varphi_{CP} = [SSq] \times \pi = 0.57 \times \pi = 1.795\,\text{rad}$$
+
+$$d_\tau^{UQFF} = \Delta a_\tau^{NP} \tan(\varphi_{CP}) \frac{e\hbar}{2m_\tau c} = 1.84\times10^{-20}\,e\cdot\text{cm}$$
 
 **φ_CP = [SSq] × π = 0.57 × π = 1.795 rad**
 
@@ -195,3 +199,6 @@ If measured φ_CP = 1.795 rad → UQFF confirmed.
 5. UQFF Source Files: source27.cpp, source28.cpp, MAIN_1_CoAnQi.cpp
 6. UQFF Calibration: kappa = 0.0005/day, [SSq] = 0.57
 7. arXiv:2506.14989
+
+---
+*See also: PAPER_023 | Part of the Star-Magic UQFF Whitepaper Series.*

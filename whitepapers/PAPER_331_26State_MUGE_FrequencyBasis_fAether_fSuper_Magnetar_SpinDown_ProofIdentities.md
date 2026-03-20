@@ -1,4 +1,4 @@
-# PAPER_331 — 26-State MUGE Frequency-Basis Representation with Calibrated 7-Frequency Set and 6 Proof Identities
+﻿# PAPER_331 — 26-State MUGE Frequency-Basis Representation with Calibrated 7-Frequency Set and 6 Proof Identities
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2  
 **Session:** 95  
@@ -8,7 +8,9 @@
 
 ---
 
-## 1. Abstract
+$$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b_i}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57$$
+
+## Abstract
 
 This paper introduces a distinct representation of the 26-state MUGE gravity equation expressed in terms of a 7-frequency basis rather than force components (Ug1–Ug4). The 26-state sum runs over 7 frequency channels per state, modulated by time-reversal frequency (f_TRZ), vacuum density ratio, and the [SSq] exponential suppression. Six proof identities are derived from dimensional analysis of the frequency basis — connecting orbital velocities, bubble radii, star-formation rates, supernova light curves, erosion timescales, and pulsar spin-down rates to the same frequency resonance parameter f_res. The magnetar spin-down identity `ν̇ = -f_react/(2πP)` provides direct observational calibration of f_react = 10¹⁰ Hz.
 

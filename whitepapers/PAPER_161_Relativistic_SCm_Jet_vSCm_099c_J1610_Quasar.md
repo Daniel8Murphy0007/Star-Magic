@@ -1,9 +1,11 @@
-# PAPER_161 — Relativistic SCm Jet Dynamics: v_SCm = 0.99c and J1610+1811 Quasar (z=3.122)
+﻿# PAPER_161 — Relativistic SCm Jet Dynamics: v_SCm = 0.99c and J1610+1811 Quasar (z=3.122)
 
 **Session:** 47 | **Date:** March 13, 2026 | **Thread:** 7f9068 | **Domain:** §2.3
 
 ---
 
+
+<!-- UQFF constants: κ = 5.0e-4 day⁻¹, [SSq] = 0.57, M_UQFF = 1.43e1 TeV -->
 ## Abstract
 
 This paper documents the integration of a relativistic superconductive medium (SCm) jet term

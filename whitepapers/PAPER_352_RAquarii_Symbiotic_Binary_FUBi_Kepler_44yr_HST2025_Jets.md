@@ -1,4 +1,4 @@
-# PAPER_352 — R Aquarii Symbiotic Binary: F_U_Bi_i with Kepler 44-Year Orbital Period
+﻿# PAPER_352 — R Aquarii Symbiotic Binary: F_U_Bi_i with Kepler 44-Year Orbital Period
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2  
 **Session:** 96  
@@ -8,7 +8,7 @@
 
 ---
 
-## 1. Abstract
+## Abstract
 
 R Aquarii is the nearest symbiotic nova system, consisting of a Mira Pulsating Giant and a white dwarf companion in a 44-year orbit. UQFF buoyancy-unified force F_U_Bi_i ≈ −2.09×10²¹² N is calculated at the binary orbital radius derived from Kepler's third law: a_orb = (GM·P²/4π²)^(1/3). HST 2025 near-UV imaging of the expanding jet system (launched ~10³ yr ago) provides the observational anchor. The UQFF Kozima LENR coupling is relevant at the mass transfer interface between the giant's wind and the WD accretion disk.
 

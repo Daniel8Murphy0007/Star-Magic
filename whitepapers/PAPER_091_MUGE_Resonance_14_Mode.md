@@ -1,4 +1,4 @@
-# PAPER #91 — MUGE Resonance: 14-Mode Gravity Framework
+﻿# PAPER #91 — MUGE Resonance: 14-Mode Gravity Framework
 
 **Title:** MUGE Resonance Gravity: 14-Mode Framework from aDPM Base Through Wormhole Metric
 
@@ -126,3 +126,6 @@ All 14 resonance modes computed for all 5 systems:
 The MUGE Resonance 14-mode framework provides the most complete gravity description for compact object environments, combining the 5-frequency resonance from source27/28 with TRZ, aDPM Doppler correction, and Planck-scale wormhole topology. All 14 modes are finite for 5 astrophysical systems.
 
 *Source: validate_uqff_muge.py | source4.cpp compute_resonance_MUGE_SOURCE4 | 14 modes × 5 systems all finite*
+
+---
+*See also: PAPER_090 | Part of the Star-Magic UQFF Whitepaper Series.*

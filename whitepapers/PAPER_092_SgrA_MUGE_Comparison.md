@@ -1,4 +1,4 @@
-# PAPER #92 — Sgr A* SMBH: MUGE vs Newtonian Gravity Comparison
+﻿# PAPER #92 — Sgr A* SMBH: MUGE vs Newtonian Gravity Comparison
 
 **Title:** Sagittarius A* SMBH Gravitational Field: 8-Term MUGE Decomposition and Quantum Coherence Peak at Horizon
 
@@ -106,3 +106,6 @@ The quantum coherence Gaussian serves as an **information anchor** at the horizo
 | base_gravity dominates near-horizon | 99.82% ✓ |
 
 *Source: validate_uqff_muge.py | from_system('SgrA') | r_horizon = 1.27 × 10¹⁰ m | all 8 terms PASS*
+
+---
+*See also: PAPER_091 | Part of the Star-Magic UQFF Whitepaper Series.*

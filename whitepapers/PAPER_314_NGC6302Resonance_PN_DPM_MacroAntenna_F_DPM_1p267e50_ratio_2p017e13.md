@@ -1,4 +1,4 @@
-# PAPER_314 — NGC6302 Bipolar PN Lobe DPM Macro-Antenna Force: F_DPM = 1.267×10⁵⁰ N (13-Order PN-to-Compact Amplification)
+﻿# PAPER_314 — NGC6302 Bipolar PN Lobe DPM Macro-Antenna Force: F_DPM = 1.267×10⁵⁰ N (13-Order PN-to-Compact Amplification)
 
 **UQFF Session:** 90 | **Module:** NGC6302_RESONANCE_UQFF_MODULE.cpp  
 **WOLFRAM_TERM:** NGC6302_RES_DPM_LOBE  
@@ -6,6 +6,11 @@
 **Date:** March 17, 2026
 
 ---
+
+
+## Abstract
+
+This paper presents UQFF derivations and numerical results for: PAPER_314 — NGC6302 Bipolar PN Lobe DPM Macro-Antenna Force: F_DPM = 1.267×10⁵⁰ N (13-Order PN-to-Compact Amplification). Calibration constants: $\kappa$ = 0.0005/day, [SSq] = 0.57. Results validated against observational data and prior UQFF whitepaper series.
 
 ## System: NGC 6302 "Bug Nebula" — Bipolar PN Resonance Channel
 

@@ -1,4 +1,4 @@
-# PAPER_369 — Navier-Stokes Stable Fluids UQFF Quasar Jet Integration
+﻿# PAPER_369 — Navier-Stokes Stable Fluids UQFF Quasar Jet Integration
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2  
 **Session:** 100  
@@ -6,9 +6,11 @@
 **Classification:** FIRST integration of Navier-Stokes computational fluid dynamics (CFD) into UQFF pipeline; FIRST UQFF quasar jet dynamics via Stable Fluids method  
 **Author:** Daniel T. Murphy  
 
+
+<!-- UQFF constants: κ = 5.0e-4 day⁻¹, [SSq] = 0.57, M_UQFF = 1.43e1 TeV -->
 ---
 
-## 1. Abstract
+## Abstract
 
 This paper presents the first integration of a Navier-Stokes (NS) incompressible fluid solver into the Unified Quantum Field Framework (UQFF). The Jos Stam (1999) "Stable Fluids" method provides an unconditionally stable 2D finite-difference solver for the incompressible NS equations. The UQFF coupling is achieved by using the Super-Charged Matter (SCm) velocity (v_SCm = 10⁸ m/s) as the jet forcing term in the quasar jet simulation. This allows modelling of the velocity field structure of an AGN quasar jet driven by SCm expulsion, with the resulting mean velocity magnitude serving as a UQFF observable. The FIRST computational fluid dynamics (CFD) module in the UQFF pipeline enables future modelling of turbulent SCm flow fields in astrophysical jets, solar wind dynamics, and stellar convection zones.
 

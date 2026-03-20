@@ -1,4 +1,4 @@
-# Paper #25: Dark Matter Direct Detection via UQFF
+﻿# Paper #25: Dark Matter Direct Detection via UQFF
 
 **Authors:** Daniel Murphy & UQFF Research Collective
 **Date:** 2026-03-06
@@ -46,6 +46,10 @@ De Broglie wavelength at v = 220 km/s: λ_dB = 2.29 kpc
 Suppresses structure below 2.3 kpc — consistent with galaxy core profiles and missing satellite solution.
 
 ### 2.2 Heavy ACP2
+
+$$M_{ACP} = \kappa \frac{\hbar}{c^2} = \frac{5.787\times10^{-9}\,\text{s}^{-1} \times 1.055\times10^{-34}\,\text{J·s}}{8.988\times10^{16}\,\text{m}^2/\text{s}^2} = 3.81\times10^{-24}\,\text{eV}/c^2$$
+
+$$M_{ACP2} = M_{KK} \times [SSq]^2 = 1.16\times10^{4}\,\text{GeV} \times 0.325 = 3.77\times10^{0}\,\text{TeV}$$
 
 M_ACP2 = M_KK × [SSq]² = 11,600 GeV × 0.325 = 3,770 GeV = 3.77 TeV
 
@@ -201,3 +205,6 @@ UQFF predicts two DM candidates from κ = 0.0005/day and [SSq] = 0.57:
 6. Tulin & Yu (2018). Phys.Rep. 730, 1.
 7. Planck Collaboration (2020). A&A 641, A6.
 8. UQFF: kappa=0.0005/day, [SSq]=0.57
+
+---
+*See also: PAPER_024 | Part of the Star-Magic UQFF Whitepaper Series.*

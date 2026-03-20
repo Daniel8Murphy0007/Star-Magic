@@ -1,4 +1,4 @@
-# PAPER_337 — Q_wave_81 Updated Statistics and Phase Separation Validation Model (Vela Pulsar)
+﻿# PAPER_337 — Q_wave_81 Updated Statistics and Phase Separation Validation Model (Vela Pulsar)
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2  
 **Session:** 95  
@@ -8,7 +8,9 @@
 
 ---
 
-## 1. Abstract
+$$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b_i}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57$$
+
+## Abstract
 
 This paper extends the Q_wave_47 wave-function amplitude statistics (PAPER_327, 47-system ensemble) to a new 81-system ensemble: Q_wave_81. It records the updated statistical parameters (mean=3.97×10⁴ J/m³, std=+0.5% above Q_wave_47 due to PWNe inclusion) and presents the phase separation validation model — a cosine-based fitting framework that yields sep≈0.3 when matched to the Vela Pulsar multi-peak pulse profile (Chandra/Fermi PASS 8 2025 data). A glitch recovery timescale prediction τ_glitch ~ 10¹¹ s is derived from the spin-down rate.
 

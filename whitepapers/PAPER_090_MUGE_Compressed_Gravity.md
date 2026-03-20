@@ -1,4 +1,4 @@
-# PAPER #90 — MUGE Compressed Gravity: Newtonian Base + 9 Corrections
+﻿# PAPER #90 — MUGE Compressed Gravity: Newtonian Base + 9 Corrections
 
 **Title:** MUGE Compressed Gravity: A 10-Term Framework Correcting Newtonian Gravity at Galaxy-to-Cosmological Scales
 
@@ -116,3 +116,6 @@ Where δ_Ug includes all 4 Ugk terms evaluated in the UQFF framework (not just t
 | All scales | No NaN/Inf (5 systems) | Numerically stable |
 
 *Source: validate_uqff_muge.py | source4.cpp compute_compressed_MUGE_SOURCE4 | 5 systems × 10 terms all finite*
+
+---
+*See also: PAPER_089 | Part of the Star-Magic UQFF Whitepaper Series.*

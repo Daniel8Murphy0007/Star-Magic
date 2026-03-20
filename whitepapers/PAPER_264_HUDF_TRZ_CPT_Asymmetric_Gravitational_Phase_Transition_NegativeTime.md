@@ -1,4 +1,4 @@
-# PAPER_264: HUDF Time-Reversal Zeroing (TRZ) Factor — CPT-Asymmetric UQFF Gravity at Cosmic Redshift z=3.5
+﻿# PAPER_264: HUDF Time-Reversal Zeroing (TRZ) Factor — CPT-Asymmetric UQFF Gravity at Cosmic Redshift z=3.5
 
 **Author:** Daniel T. Murphy (daniel.murphy00@gmail.com)
 **Framework:** UQFF v4.27 — Star-Magic Physics
@@ -8,6 +8,8 @@
 
 ---
 
+
+<!-- UQFF constants: κ = 5.0e-4 day⁻¹, [SSq] = 0.57, M_UQFF = 1.43e1 TeV -->
 ## Abstract
 
 The Hubble Ultra Deep Field (HUDF) MUGE equation contains a `f_TRZ` factor embedded in the UQFF term as `(1 + f_TRZ)`. In all previous UQFF modules this factor has been treated as a small perturbation (f_TRZ ≈ 0.01–0.1). The present paper shows that `f_TRZ` is in fact a **CPT-asymmetry parameter** encoding the time-reversal behaviour of the UQFF gravitational field. It defines a sharp phase boundary: at f_TRZ = -1, the UQFF field vanishes entirely ("Time-Reversal Zero Point"); at f_TRZ < -1, the UQFF field reverses sign, producing a genuine **negative-time anti-gravity regime**.

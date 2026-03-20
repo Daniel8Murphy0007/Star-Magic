@@ -1,4 +1,4 @@
-# PAPER #89 — UQFF Master Equation: Complete Derivation
+﻿# PAPER #89 — UQFF Master Equation: Complete Derivation
 
 **Title:** The UQFF Master Equation: Analytic Derivation and Implementation across 8 Calculator Architectures
 
@@ -159,3 +159,6 @@ All 8 calculators pass `self_validate()` on 5 standard systems (SgrA*, M87, Sun,
 The UQFF master equation admits 8 specializations covering all astrophysical regimes from smooth stellar systems (Base) to Planck-scale corrections (Quadratic). The `QCalc.UnifiedFieldSolver` seamlessly selects the appropriate calculator via system metadata, and all 8 pass self-validation.
 
 *Source: validate_uqff_calculators.py | QCalc.UnifiedFieldSolver | all 8 self_validate() PASS*
+
+---
+*See also: PAPER_088 | Part of the Star-Magic UQFF Whitepaper Series.*

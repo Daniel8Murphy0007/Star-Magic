@@ -1,4 +1,4 @@
-# PAPER_217: DeepSearch F_U_Bi_i Polynomial Verification and Rare Mathematical Discoveries
+﻿# PAPER_217: DeepSearch F_U_Bi_i Polynomial Verification and Rare Mathematical Discoveries
 
 **Author:** Daniel T. Murphy (daniel.murphy00@gmail.com)  
 **Framework:** UQFF v4.3 — Star-Magic Physics  
@@ -7,6 +7,9 @@
 **Series:** Phase 2 Session 54 — §2.8 Polynomial Stability Analysis
 
 ---
+
+$$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b_i}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57$$
+<!-- κ = 5.0e-4 day⁻¹, [SSq] = 0.57, β_i = 6.1e-1 -->
 
 ## Abstract
 

@@ -1,4 +1,4 @@
-# PAPER_284: M16 Eagle Nebula UQFF — Dual Mass Co-Action Product (Φ_dm)
+﻿# PAPER_284: M16 Eagle Nebula UQFF — Dual Mass Co-Action Product (Φ_dm)
 ## SFR Growth × Photoevaporation Erosion Multiplicative Coupling
 
 **Classification:** UQFF 2.0 Gravitational Physics — Nebular Mass Dynamics  
@@ -8,7 +8,7 @@
 
 ---
 
-## 1. Abstract
+## Abstract
 
 This paper introduces the **Dual Mass Co-Action Product** (Φ_dm) — a UQFF gravity modulation factor that couples star-formation-driven mass accumulation and radiation-driven photoevaporation erosion through a **multiplicative** product rather than the previously used additive form. For M16 (Eagle Nebula), with star formation rate SFR = 1 M☉/yr over initial gas mass M₀ = 1200 M☉, and maximum photoevaporation fraction E₀ = 0.3 (30%), the multiplicative form produces a 24.3% reduction in Φ_dm relative to the additive approximation at t = 5 Myr. This is the **first UQFF module** to simultaneously apply an additive-gain and saturation-subtractive product on the same gravity term.
 

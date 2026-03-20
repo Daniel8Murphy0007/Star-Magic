@@ -1,4 +1,4 @@
-# PAPER_269: Supernova Ram Pressure Degeneracy Point — Kinematic Invariant in NGC 1792 Starburst Gravity
+﻿# PAPER_269: Supernova Ram Pressure Degeneracy Point — Kinematic Invariant in NGC 1792 Starburst Gravity
 
 **Authors:** Daniel T. Murphy  
 **Date:** March 2026  
@@ -8,6 +8,8 @@
 
 ---
 
+
+<!-- UQFF constants: κ = 5.0e-4 day⁻¹, [SSq] = 0.57, M_UQFF = 1.43e1 TeV -->
 ## Abstract
 
 In NGC 1792, the physical parameters are initialized with `ρ_wind = ρ_fluid = 1×10⁻²¹ kg/m³` — setting the supernova wind density equal to the interstellar medium fluid density. At this **Ram Pressure Degeneracy Point (RPDP)**, the SN feedback gravity term simplifies to a **kinematic invariant**: `term_feedback = ρ_wind × v_wind² / ρ_fluid = v_wind²`, independent of density. For NGC 1792, `v_wind = 2×10⁶ m/s`, giving `g_feedback = 4×10¹² m/s²` — the numerically dominant term in the full MUGE calculation, exceeding the base gravitational term by ~22 orders of magnitude. This paper defines the RPDP formally, derives the kinematic invariant, computes the dominance ratio, and discusses the physical interpretation that at density degeneracy, SN ejecta "floats" in the ISM driven purely by kinematic pressure, creating a fundamentally new gravitational channel in UQFF.

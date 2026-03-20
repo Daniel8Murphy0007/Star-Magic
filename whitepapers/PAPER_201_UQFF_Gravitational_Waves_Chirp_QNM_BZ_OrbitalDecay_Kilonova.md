@@ -1,4 +1,4 @@
-# PAPER_201: UQFF Gravitational Waves — Chirp Mass, QNM, BZ, Orbital Decay, and Kilonova
+﻿# PAPER_201: UQFF Gravitational Waves — Chirp Mass, QNM, BZ, Orbital Decay, and Kilonova
 
 **Version:** 1.0  
 **Date:** March 13, 2026  
@@ -7,6 +7,8 @@
 **Source:** grok_share_7514fe.txt lines 6060–6080 (BB_C_Equations_04Sept2025.pdf items 1292–1300)
 
 ---
+
+$$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b_i}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57$$
 
 ## Abstract
 

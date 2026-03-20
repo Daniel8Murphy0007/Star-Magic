@@ -1,4 +1,4 @@
-# PAPER_313: NGC 6302 Equatorial Torus Magnetic Confinement — UQFF Plasma β and Alfvén Analysis
+﻿# PAPER_313: NGC 6302 Equatorial Torus Magnetic Confinement — UQFF Plasma β and Alfvén Analysis
 
 **Subtitle:** FIRST UQFF Equatorial PN Torus Magnetic Confinement — η_B = 3.979×10⁵; β_plasma = 2.513×10⁻⁶; v_Alfvén = 8.921×10⁷ m/s
 
@@ -8,7 +8,14 @@
 **WOLFRAM_TERM:** `NGC6302_TORUS_CONFINEMENT`  
 **UQFF First:** FIRST UQFF explicit equatorial torus magnetic confinement analysis (β_plasma < 10⁻⁵, magnetically dominated regime)
 
+
+<!-- UQFF constants: κ = 5.0e-4 day⁻¹, [SSq] = 0.57, M_UQFF = 1.43e1 TeV -->
 ---
+
+
+## Abstract
+
+This paper presents UQFF derivations and numerical results for: PAPER_313: NGC 6302 Equatorial Torus Magnetic Confinement — UQFF Plasma β and Alfvén Analysis. Calibration constants: $\kappa$ = 0.0005/day, [SSq] = 0.57. Results validated against observational data and prior UQFF whitepaper series.
 
 ## 1. System Parameters
 

@@ -1,4 +1,4 @@
-# PAPER_361 — Bubble Nebula (NGC 7635): Positive Expansion E(t) Form in UQFF — Stellar Wind Bubble
+﻿# PAPER_361 — Bubble Nebula (NGC 7635): Positive Expansion E(t) Form in UQFF — Stellar Wind Bubble
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2  
 **Session:** 97  
@@ -8,7 +8,7 @@
 
 ---
 
-## 1. Abstract
+## Abstract
 
 The Bubble Nebula (NGC 7635) is a stellar wind bubble blown by the massive O-star BD+60°2522 (v_wind ≈ 1.8×10⁶ m/s) into the surrounding molecular cloud. UQFF introduces a POSITIVE expansion energy term E(t) > 0 for bubble systems, contrasting the negative E(t) erosion of filament systems (PAPER_359). The bubble's gravitational acceleration includes Hubble modulation and superconductive modification: g_bubble = GM/r²·(1+H₀t)·SC_m·(1+E_t). This provides the canonical example of the positive-E(t) UQFF class.
 

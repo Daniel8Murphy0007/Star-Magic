@@ -1,4 +1,4 @@
-# PAPER_262: Galaxy NGC 2525 — SN Type Ia Negative-Mass-Loss Gravitational Sign Reversal: A New UQFF Mechanism Distinct from Buoyancy-Inversion
+﻿# PAPER_262: Galaxy NGC 2525 — SN Type Ia Negative-Mass-Loss Gravitational Sign Reversal: A New UQFF Mechanism Distinct from Buoyancy-Inversion
 
 **Author:** Daniel T. Murphy (daniel.murphy00@gmail.com)  
 **Framework:** UQFF v4.21 — Star-Magic Physics  
@@ -8,6 +8,8 @@
 
 ---
 
+
+<!-- UQFF constants: κ = 5.0e-4 day⁻¹, [SSq] = 0.57, M_UQFF = 1.43e1 TeV -->
 ## Abstract
 
 This paper derives and proves the **SN Type Ia Negative-Mass-Loss Gravitational Sign Reversal** mechanism within the Unified Quantum Field Framework (UQFF) for NGC 2525 (barred spiral, z ≈ 0.016, ~70 Mpc), host of the well-observed Type Ia supernova SN 2018gv. The unique physics is a negative contribution to the effective MUGE gravitational acceleration from SN ejecta mass permanently escaping the galaxy's gravitational potential well. This is expressed as `term_SN = −G·M_SN(t)/r²` with `M_SN(t) = M_ej·(1 − e^{-t/τ_SN})` — a growing negative gravitational term as the ejecta progressively decouples from the bound galaxy mass. This mechanism is **fundamentally distinct** from the only other UQFF gravitational sign reversal: the Sgr A* Negative Buoyancy Inversion (PAPER_253), which arises from an ω₀ regime change driving `F_LENR › F_res`. The two mechanisms are physically separate paths to negative g, mathematically distinguishable, and jointly prove the UQFF framework can generate gravitational sign reversal through **two independent channels**: ejecta mass loss and field inversion. Both are validated against observations and both are potentially present simultaneously in AGN-hosting galaxies with active supernova rates.

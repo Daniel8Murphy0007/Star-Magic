@@ -1,4 +1,4 @@
-# PAPER_180: CoAnQi Unit Test Suite — 26 Validated Functions and MUGE Proof Sets
+﻿# PAPER_180: CoAnQi Unit Test Suite — 26 Validated Functions and MUGE Proof Sets
 ## Whitepaper §2.4-L | Thread 381a8fe7 | Session 48
 
 ### Abstract
@@ -10,6 +10,8 @@ PAPER_174 produce consistent, reproducible physics outputs. This paper
 catalogues all 26 tests, their expected values, and validates the aDPM chain.
 
 ---
+
+$$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b_i}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57$$
 
 ### 1. Test Infrastructure
 

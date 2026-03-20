@@ -1,4 +1,4 @@
-# PAPER_281: Saturn Ring UQFF Tidal Gravity Resonance — ω_ring_kep, T_ring = 11.78 h, g_ring_tidal
+﻿# PAPER_281: Saturn Ring UQFF Tidal Gravity Resonance — ω_ring_kep, T_ring = 11.78 h, g_ring_tidal
 
 **Session:** 78  
 **Module:** SATURN_UQFF_MODULE.cpp (21st C++ module)  
@@ -7,7 +7,7 @@
 
 ---
 
-## 1. Abstract
+## Abstract
 
 Saturn's ring system (M_ring = 1.5×10¹⁹ kg, mean orbital radius r_ring = 1.2×10⁸ m ≈ 2× Saturn radius) creates a unique tidal perturbation on Saturn's surface gravity field. Unlike the Sombrero Galaxy dust ring (PAPER_278), which lies at r_ring < r_Sombrero and uses a galactic-scale proximity factor, Saturn's rings lie *outside* the planetary body (r_ring > r_Saturn) and are modelled using the classical **first-order tidal formula**. A new UQFF Ring Keplerian Resonance Frequency ω_ring_kep = 1.481×10⁻⁴ rad/s is derived, corresponding to a ring orbital period of T_ring = **11.78 hours** — consistent with observed Keplerian ring orbital periods. The oscillatory tidal term F_ring(t) = g_ring_tidal × cos(ω_ring_kep × t) introduces the first **planetary ring UQFF resonance** in the module catalogue.
 

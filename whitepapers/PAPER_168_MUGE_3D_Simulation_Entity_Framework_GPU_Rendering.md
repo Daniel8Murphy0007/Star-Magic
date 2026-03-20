@@ -1,8 +1,10 @@
-# PAPER_168 — MUGE 3D Simulation Entity Framework: GPU Rendering, Per-System Archives, OpenGL
+﻿# PAPER_168 — MUGE 3D Simulation Entity Framework: GPU Rendering, Per-System Archives, OpenGL
 
 **Session:** 47 | **Date:** March 13, 2026 | **Thread:** 7f9068 | **Domain:** §2.3
 
 ---
+
+$$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b_i}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57$$
 
 ## Abstract
 

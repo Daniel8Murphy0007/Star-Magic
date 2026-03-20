@@ -1,4 +1,4 @@
-# PAPER_174: Modular Resonance MUGE — 13-Term + Wormhole 14th Term
+﻿# PAPER_174: Modular Resonance MUGE — 13-Term + Wormhole 14th Term
 ## aDPM Chain and Resonance Frequency Decomposition
 ## Whitepaper §2.4-F | Thread 381a8fe7 | Session 48
 
@@ -10,6 +10,8 @@ constants. This paper documents all 14 terms, their physical bases, and
 calibrated expected values from the unit test suite.
 
 ---
+
+$$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b_i}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57$$
 
 ### 1. ResonanceParams Constants
 

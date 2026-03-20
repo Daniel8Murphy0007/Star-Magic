@@ -1,4 +1,4 @@
-# PAPER_224: Saturn UQFF — Dual-Source Gravity and Ring Tidal Tension T_ring
+﻿# PAPER_224: Saturn UQFF — Dual-Source Gravity and Ring Tidal Tension T_ring
 
 **Author:** Daniel T. Murphy (daniel.murphy00@gmail.com)  
 **Framework:** UQFF v4.3 — Star-Magic Physics  
@@ -7,6 +7,8 @@
 **Series:** Phase 2 Session 56 — §2.14 Fifth-Pass System Extraction
 
 ---
+
+$$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b_i}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57$$
 
 ## Abstract
 

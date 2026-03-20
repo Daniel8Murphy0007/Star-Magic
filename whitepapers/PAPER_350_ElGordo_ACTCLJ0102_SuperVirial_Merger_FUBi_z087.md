@@ -1,4 +1,4 @@
-# PAPER_350 — El Gordo (ACT-CL J0102-4915): Most Massive z>0.5 Cluster — Super-Virial Merger F_U_Bi_i
+﻿# PAPER_350 — El Gordo (ACT-CL J0102-4915): Most Massive z>0.5 Cluster — Super-Virial Merger F_U_Bi_i
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2  
 **Session:** 96  
@@ -6,9 +6,11 @@
 **Classification:** FIRST UQFF F_U_Bi_i for El Gordo — highest-mass z>0.5 merger cluster  
 **Author:** Daniel T. Murphy  
 
+
+<!-- UQFF constants: κ = 5.0e-4 day⁻¹, [SSq] = 0.57, M_UQFF = 1.43e1 TeV -->
 ---
 
-## 1. Abstract
+## Abstract
 
 El Gordo (ACT-CL J0102-4915) is the most massive known galaxy cluster at z > 0.5, with M = 3×10¹⁵ M☉ and a super-virial merger velocity Δv = 2500 km/s — more than double the cluster's virial velocity dispersion. The UQFF buoyancy-unified force yields F_U_Bi_i ≈ −1.40×10²¹⁸ N, matching SPT-CL J2215 in the HIGHEST F_U_Bi_i tier. The super-virial velocity exceeds the standard ΛCDM prediction, and the UQFF provides an alternative mechanism: enhanced vacuum buoyancy accelerates the merger beyond the virial limit.
 

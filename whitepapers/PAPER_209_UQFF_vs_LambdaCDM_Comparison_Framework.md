@@ -1,4 +1,4 @@
-# PAPER_209: UQFF vs Lambda-CDM Comparison Framework
+﻿# PAPER_209: UQFF vs Lambda-CDM Comparison Framework
 
 **Version:** 1.0  
 **Date:** March 13, 2026  
@@ -7,6 +7,9 @@
 **Source:** grok_share_7514fe.txt lines 842–895 (first PDF: UQFF+Equations+Across+Astrophysical+Systems_22Sept2025.pdf)
 
 ---
+
+$$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b_i}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57$$
+<!-- κ = 5.0e-4 day⁻¹, [SSq] = 0.57, β_i = 6.1e-1 -->
 
 ## Abstract
 

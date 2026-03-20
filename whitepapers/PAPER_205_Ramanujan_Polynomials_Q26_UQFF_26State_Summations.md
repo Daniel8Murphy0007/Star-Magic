@@ -1,4 +1,4 @@
-# PAPER_205: Ramanujan Polynomials Q_n(x) and UQFF 26-State Summations
+﻿# PAPER_205: Ramanujan Polynomials Q_n(x) and UQFF 26-State Summations
 
 **Version:** 1.0  
 **Date:** March 13, 2026  
@@ -7,6 +7,8 @@
 **Source:** grok_share_7514fe.txt lines 1745–1827 (UQFF Framwork 99_9_Complete_14Sept2025.pdf)
 
 ---
+
+$$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b_i}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57$$
 
 ## Abstract
 

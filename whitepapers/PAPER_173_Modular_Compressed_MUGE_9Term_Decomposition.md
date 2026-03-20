@@ -1,4 +1,4 @@
-# PAPER_173: Modular Compressed MUGE — 9-Term Mathematical Decomposition
+﻿# PAPER_173: Modular Compressed MUGE — 9-Term Mathematical Decomposition
 ## Whitepaper §2.4-E | Thread 381a8fe7 | Session 48
 
 ### Abstract
@@ -9,6 +9,8 @@ magnetic suppression, environmental context, Ug contributions, cosmological
 constant, quantum corrections, fluid dynamics, and density perturbations.
 
 ---
+
+$$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b_i}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57$$
 
 ### 1. MUGESystem Struct
 

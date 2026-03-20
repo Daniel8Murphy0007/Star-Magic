@@ -1,4 +1,4 @@
-# PAPER_329 — Um Bilinear Heaviside/Quasi Architecture + Vacuum Neutrino Energy Cascade with Nested Double-Exponential [SSq] Decay
+﻿# PAPER_329 — Um Bilinear Heaviside/Quasi Architecture + Vacuum Neutrino Energy Cascade with Nested Double-Exponential [SSq] Decay
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2  
 **Session:** 95  
@@ -8,7 +8,9 @@
 
 ---
 
-## 1. Abstract
+$$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b_i}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57$$
+
+## Abstract
 
 This paper presents the full Um bilinear architecture with Heaviside step-function and quasi-particle correction terms, together with the vacuum neutrino energy cascade equation which introduces a uniquely new mathematical form: a nested double-exponential where the outer exponent's argument itself contains an exponential. Combined, these equations describe how the Um magnetism term amplifies by a factor of 10¹³ at a Heaviside neutron-drop onset, and how the resulting vacuum density ratios propagate through a double-exponential [SSq] suppression to produce neutrino energy and decay rates.
 

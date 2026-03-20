@@ -52,6 +52,12 @@ GW170817 is the first multi-messenger gravitational wave event, detected simulta
 | String | 0.3700 | Quantum string dissipation |
 | **Combined** | **0.3330** | |
 
+$$h_{UQFF} = D_{total} \times h_{GR} = 0.333 \times 5.42\times10^{-22} = 1.80\times10^{-22}\,\mathrm{strain}$$
+
+$$\Delta\phi_{inspiral} = 2310.8\ \mathrm{rad}\ (367.8\ \mathrm{cycles}),\quad \mathrm{SNR}_{UQFF} = 10.8$$
+
+**Key numerical results:** h_GR = 5.42e-22 strain, D_total = 3.33e-1, h_UQFF = 1.80e-22 strain, SNR_UQFF = 1.08e1, |Δc/c| < 3e-15
+
 **UQFF Modified Strain:**
 
 **h_UQFF = F_combined × h_GR = 0.333 × 5.4176 × 10⁻²² = 1.8041 × 10⁻²²**

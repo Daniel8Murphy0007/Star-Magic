@@ -1,4 +1,4 @@
-# PAPER_282: Saturn UQFF Atmospheric Wind Kinetic Pressure Term — a_wind, η_wind
+﻿# PAPER_282: Saturn UQFF Atmospheric Wind Kinetic Pressure Term — a_wind, η_wind
 
 **Session:** 78  
 **Module:** SATURN_UQFF_MODULE.cpp (21st C++ module)  
@@ -7,7 +7,7 @@
 
 ---
 
-## 1. Abstract
+## Abstract
 
 Saturn's equatorial atmospheric jets reach speeds of ~500 m/s, the highest sustained planetary wind speed in the Solar System after Neptune. In the UQFF framework, we derive a new physics term — the **Atmospheric Wind Kinetic Pressure Coupling** — that captures the effect of atmospheric bulk motion on the planet's effective gravity field. Following the UQFF relativistic-ratio convention (velocity-to-light-speed ratio squared, as used in Lorentz and buoyancy terms), we define:
 

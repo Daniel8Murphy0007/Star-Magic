@@ -1,4 +1,4 @@
-# PAPER_176: SCm — Superconducting Manifold Discovery, Properties, and Cosmic Role
+﻿# PAPER_176: SCm — Superconducting Manifold Discovery, Properties, and Cosmic Role
 ## Whitepaper §2.4-H | Thread 381a8fe7 | Session 48
 
 ### Abstract
@@ -10,6 +10,8 @@ heliosphere formation (Ug2), and the quasar jet ejection mechanism. This paper
 documents all SCm properties, interactions, and measurement proxies.
 
 ---
+
+$$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b_i}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57$$
 
 ### 1. Fundamental Properties
 

@@ -1,9 +1,11 @@
-# PAPER_167 — GW231123: 225 M_sol BH Merger, UQFF Ug4 Feedback, and Yang-Mills Mass Gap
+﻿# PAPER_167 — GW231123: 225 M_sol BH Merger, UQFF Ug4 Feedback, and Yang-Mills Mass Gap
 
 **Session:** 47 | **Date:** March 13, 2026 | **Thread:** 7f9068 | **Domain:** §2.3
 
 ---
 
+
+<!-- UQFF constants: κ = 5.0e-4 day⁻¹, [SSq] = 0.57, M_UQFF = 1.43e1 TeV -->
 ## Abstract
 
 This paper analyzes the GW231123 gravitational wave event — a 225 M_sol binary black hole

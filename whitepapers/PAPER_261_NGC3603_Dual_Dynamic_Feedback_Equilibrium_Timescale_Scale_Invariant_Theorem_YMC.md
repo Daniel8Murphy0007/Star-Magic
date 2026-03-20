@@ -1,4 +1,4 @@
-# PAPER_261: NGC 3603 — Dual-Dynamic Feedback Equilibrium Timescale and Scale-Invariant Feedback Theorem in Young Massive Star Clusters
+﻿# PAPER_261: NGC 3603 — Dual-Dynamic Feedback Equilibrium Timescale and Scale-Invariant Feedback Theorem in Young Massive Star Clusters
 
 **Author:** Daniel T. Murphy (daniel.murphy00@gmail.com)  
 **Framework:** UQFF v4.22 — Star-Magic Physics  
@@ -8,6 +8,8 @@
 
 ---
 
+
+<!-- UQFF constants: κ = 5.0e-4 day⁻¹, [SSq] = 0.57, M_UQFF = 1.43e1 TeV -->
 ## Abstract
 
 This paper derives and proves the **Dual-Dynamic Feedback Equilibrium Timescale** and the **UQFF Scale-Invariant Feedback Theorem** for NGC 3603, the most luminous OB star cluster in the Milky Way (~7.6 kpc; Carina arm). The unique physics is the **simultaneous additive operation** of two independent time-dependent processes: (1) `M(t) = M₀·(1 + Ṁ_factor·e^{-t/τ_SF})` star-formation mass growth driving increasing gravitational confinement, and (2) `P(t) = P₀·e^{-t/τ_exp}` OB-stellar cavity pressure expansion driving dispersal. Both operate additively and simultaneously within the MUGE — a combination unprecedented among the UQFF C++ module series. A critical result emerges: when τ_SF = τ_exp (both equal to the characteristic star-formation timescale ~1 Myr for NGC 3603), the ratio of mechanical feedback to gravitational confinement is **constant throughout the star-formation event** — the **Scale-Invariant Feedback Theorem**. This provides a new explanation for the observed universal 30–35% star-formation efficiency in massive clusters and is testable with VLT/HST kinematics.

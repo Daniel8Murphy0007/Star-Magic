@@ -1,4 +1,4 @@
-# PAPER_169: CoAnQi Architecture — Multi-Tier UQFF+3D+Plugin System
+﻿# PAPER_169: CoAnQi Architecture — Multi-Tier UQFF+3D+Plugin System
 ## Whitepaper §2.4-A | Thread 381a8fe7 | Session 48
 
 ### Abstract
@@ -9,6 +9,8 @@ canonical six-tier architecture extracted from the CoAnQi codebase shared in
 Grok thread 381a8fe78e1a4ecbaf32a88aa386df30.
 
 ---
+
+$$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b_i}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57$$
 
 ### 1. System Tiers
 

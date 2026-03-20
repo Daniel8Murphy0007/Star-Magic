@@ -33,6 +33,14 @@ We analyze the 35–300 Hz chirp phase evolution of binary neutron star merger G
 
 The standard post-Newtonian chirp frequency evolution is:
 
+$$f(t) = \frac{1}{\pi}\left[\frac{5}{256\,\tau}\right]^{3/8} \left(\frac{G\mathcal{M}}{c^3}\right)^{-5/8}$$
+
+$$h_{GR}(f) = \frac{4}{D_L}\frac{G\mathcal{M}}{c^2}\left(\frac{\pi G\mathcal{M} f}{c^3}\right)^{2/3}$$
+
+$$h_{UQFF}(f) = D_{total} \times h_{GR}(f),\quad D_{total} = 0.333$$
+
+**Key numerical results:** h_GR(peak) = 2.8051e-22 strain, D_total = 3.33e-1, h_UQFF(peak) = 9.34e-23 strain, chirp mass = 1.188 M☉
+
 **f(t) = (1/π) × [5/(256 τ)]^(3/8) × (G M_chirp / c³)^(-5/8)**
 
 where τ = t_coal − t is the time to coalescence. Peak strain amplitude at frequency f:

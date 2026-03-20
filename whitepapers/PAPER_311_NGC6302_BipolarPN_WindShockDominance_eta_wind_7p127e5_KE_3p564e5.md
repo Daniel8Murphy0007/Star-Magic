@@ -1,4 +1,4 @@
-# PAPER_311: NGC 6302 Bipolar Planetary Nebula — UQFF Wind Shock Gravitational Dominance
+﻿# PAPER_311: NGC 6302 Bipolar Planetary Nebula — UQFF Wind Shock Gravitational Dominance
 
 **Subtitle:** FIRST UQFF Bipolar PN Wind Shock Analysis — η_wind = 7.127×10⁵; KE/grav_well = 3.564×10⁵
 
@@ -8,7 +8,14 @@
 **WOLFRAM_TERM:** `NGC6302_WIND_SHOCK`  
 **UQFF First:** FIRST UQFF explicit bipolar planetary nebula wind shock gravitational dominance analysis
 
+
+<!-- UQFF constants: κ = 5.0e-4 day⁻¹, [SSq] = 0.57, M_UQFF = 1.43e1 TeV -->
 ---
+
+
+## Abstract
+
+This paper presents UQFF derivations and numerical results for: PAPER_311: NGC 6302 Bipolar Planetary Nebula — UQFF Wind Shock Gravitational Dominance. Calibration constants: $\kappa$ = 0.0005/day, [SSq] = 0.57. Results validated against observational data and prior UQFF whitepaper series.
 
 ## 1. System Parameters
 

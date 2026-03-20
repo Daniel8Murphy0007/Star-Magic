@@ -1,4 +1,4 @@
-# PAPER_186: Solar System Canonical Body Reference — Four-Body Parameterization
+﻿# PAPER_186: Solar System Canonical Body Reference — Four-Body Parameterization
 
 **Version:** 1.0  
 **Date:** March 13, 2026  
@@ -7,6 +7,8 @@
 **Source:** grok_share_381a8f.txt lines 3200–4100 (standalone codebase rewrite v2)
 
 ---
+
+$$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b_i}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57$$
 
 ## Abstract
 

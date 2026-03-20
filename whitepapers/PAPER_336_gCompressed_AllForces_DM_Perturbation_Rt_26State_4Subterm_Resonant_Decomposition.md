@@ -1,4 +1,4 @@
-# PAPER_336 — g_Compressed Complete All-Forces Equation and R(t) 26-Component 4-Subterm Resonant Decomposition
+﻿# PAPER_336 — g_Compressed Complete All-Forces Equation and R(t) 26-Component 4-Subterm Resonant Decomposition
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2  
 **Session:** 95  
@@ -8,7 +8,9 @@
 
 ---
 
-## 1. Abstract
+$$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b_i}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57$$
+
+## Abstract
 
 This paper presents two companion equations from the nine-system September 2025 document assimilation: (1) g_Compressed in its complete all-forces form including the (M_vis+M_DM)(δρ/ρ + 3GM/r³) dark matter perturbation term, the ρ_fluid·V·g fluid buoyancy term, and the quantum Hamiltonian term; and (2) R(t) in its explicit 4-subterm per state decomposition showing all four resonance components: R_U_g1, R_U_g2, R_U_g3, and R_U_g4i per each of the 26 states.
 

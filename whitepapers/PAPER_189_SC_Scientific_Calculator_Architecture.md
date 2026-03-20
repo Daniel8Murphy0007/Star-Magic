@@ -1,4 +1,4 @@
-# PAPER_189: S-C Scientific Calculator Architecture — Qt5/ANTLR4/SymEngine/Units Stack
+﻿# PAPER_189: S-C Scientific Calculator Architecture — Qt5/ANTLR4/SymEngine/Units Stack
 
 **Version:** 1.0  
 **Date:** March 13, 2026  
@@ -7,6 +7,8 @@
 **Source:** grok_share_381a8f.txt lines 6400–7000 (S-C Iteration 40, dated 15 Aug 2025)
 
 ---
+
+$$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b_i}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57$$
 
 ## Abstract
 

@@ -1,4 +1,4 @@
-# PAPER_280: Saturn UQFF Solar Tidal Perturbation Ratio τ_Sun
+﻿# PAPER_280: Saturn UQFF Solar Tidal Perturbation Ratio τ_Sun
 
 **Session:** 78  
 **Module:** SATURN_UQFF_MODULE.cpp (21st C++ module — first planetary-scale UQFF module)  
@@ -7,7 +7,7 @@
 
 ---
 
-## 1. Abstract
+## Abstract
 
 Saturn is the first planetary-scale body in the UQFF module catalogue. All prior 20 C++ modules described stellar objects, neutron stars, or galaxies. The transition to a Solar System planet (z=0, f_DM=0, r=6.0268×10⁷ m) introduces a class of external gravitational coupling absent from stellar/galactic UQFF modules: the tidal perturbation exerted by the host star (the Sun) on the planet's surface gravity field. This paper defines and derives the **Solar UQFF Tidal Perturbation Ratio** τ_Sun, a dimensionless constant that quantifies the ratio of the Sun's tidal acceleration at Saturn's orbit to Saturn's own surface gravity. The ratio is 6.22×10⁻⁶ — small but non-zero, and physically the first UQFF solar coupling constant. A universal formula is derived for any planet.
 

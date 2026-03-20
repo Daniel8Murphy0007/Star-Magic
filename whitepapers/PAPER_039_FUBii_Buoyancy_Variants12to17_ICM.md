@@ -1,4 +1,4 @@
-# PAPER #39 — F_UBii Buoyancy Force: Proof Variants 12–17 (ICM Applications)
+﻿# PAPER #39 — F_UBii Buoyancy Force: Proof Variants 12–17 (ICM Applications)
 
 **Title:** UQFF Buoyancy Proof Variants 12–17: Hawking Radiation, Quantum Bounce, Roche Lobe Overflow, Entanglement Entropy, Decoherence, and Radio Lobe Dynamics
 
@@ -260,3 +260,6 @@ Variants 12–17 complete the F_UBii taxonomy:
 All 17 F_UBii variants are self-consistent with the base equation F_UBii = F_U − F_Bi − F_i, normalized by F_rel = 10⁻¹⁰ N and E_LEP = 1.22×10⁻¹⁹ J.
 
 *Validator: `BuoyancyProofVariants.py` → All 17 F_UBii variants operational ✓ | κ = 0.0005/day | [SSq] = 0.57*
+
+---
+*See also: PAPER_038 | Part of the Star-Magic UQFF Whitepaper Series.*

@@ -1,4 +1,4 @@
-# PAPER_030: UQFF Vacuum Energy and Dark Energy Connection
+﻿# PAPER_030: UQFF Vacuum Energy and Dark Energy Connection
 
 **Authors:** Daniel Murphy & UQFF Research Collective  
 **Date:** 2026-03-05  
@@ -6,6 +6,8 @@
 **Repository:** Daniel8Murphy0007/Star-Magic
 
 ---
+
+$$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b_i}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57$$
 
 ## Abstract
 

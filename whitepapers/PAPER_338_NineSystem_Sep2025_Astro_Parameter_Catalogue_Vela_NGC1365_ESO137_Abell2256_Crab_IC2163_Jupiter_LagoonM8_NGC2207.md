@@ -1,4 +1,4 @@
-# PAPER_338 — Nine-System September 2025 Astrophysical Parameter Catalogue: Vela, NGC 1365, ESO 137-001, Abell 2256, Crab Nebula, IC 2163, Jupiter, Lagoon M8, NGC 2207
+﻿# PAPER_338 — Nine-System September 2025 Astrophysical Parameter Catalogue: Vela, NGC 1365, ESO 137-001, Abell 2256, Crab Nebula, IC 2163, Jupiter, Lagoon M8, NGC 2207
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2  
 **Session:** 95  
@@ -8,7 +8,9 @@
 
 ---
 
-## 1. Abstract
+$$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b_i}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57$$
+
+## Abstract
 
 Nine astrophysical systems were processed from September 2025 detailed documents during the "Nine Sep docs" assimilation in gok_share_31b5c807a4. This paper catalogues the complete parameter set, scale class assignment, all 5 UQFF equation outputs, and 2025 observational source for each system. Systems span 7 orders of magnitude from Jupiter (10⁷ m) to Abell 2256 (1.5×10²⁵ m). Two canonical UQFF scale classes are established: Compact (x_2 ≤ 10 kly) and Galactic/Cluster (x_2 ≥ 60 Mly).
 

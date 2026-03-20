@@ -1,4 +1,4 @@
-# PAPER_319: Compact HII SFR Gravitational Binding Phase Transition
+﻿# PAPER_319: Compact HII SFR Gravitational Binding Phase Transition
 ## t_cross = 67,730 yr | sSFR = 5×10⁻⁴ yr⁻¹ (50× Lagoon) | m_factor(t_age) = 151
 ### FIRST UQFF Compact HII Region SFR Runaway Gravitational Binding Phase Transition
 
@@ -9,6 +9,8 @@
 
 ---
 
+
+<!-- UQFF constants: κ = 5.0e-4 day⁻¹, [SSq] = 0.57, M_UQFF = 1.43e1 TeV -->
 ## Abstract
 
 This paper derives the SFR-driven gravitational binding phase transition for the Orion Nebula. With SFR = 1 M_sun/yr acting on an initial mass M = 2000 M_sun, the specific star formation rate **sSFR = 5×10⁻⁴ yr⁻¹ is 50× that of the Lagoon Nebula** (1×10⁻⁵ yr⁻¹, PAPER_305). The system is born wind-dominated (unbound), but as SFR continuously adds mass, the effective gravitational acceleration amplified by the SFR mass factor m_factor(t) = 1 + SFR×t_yr/M_sun_count crosses the growing wind ram pressure at **t_cross = 67,730 yr**, transitioning the nebula from unbound to gravitationally bound. By t_age = 300 kyr, binding_ratio = g_SFR/a_wind = 2.654. This is the FIRST UQFF compact HII SFR runaway gravitational binding phase transition.

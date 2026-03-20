@@ -1,4 +1,4 @@
-# PAPER_211: UQFF 99-System Complete Framework and Compression Cycle 3
+﻿# PAPER_211: UQFF 99-System Complete Framework and Compression Cycle 3
 
 **Version:** 1.0  
 **Date:** March 13, 2026  
@@ -7,6 +7,8 @@
 **Source:** grok_share_7514fe.txt lines 1829–2010 (PDF 4: UQFF Framwork 99_9_Complete_14Sept2025.pdf)
 
 ---
+
+$$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b_i}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57$$
 
 ## Abstract
 

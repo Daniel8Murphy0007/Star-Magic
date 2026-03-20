@@ -1,4 +1,4 @@
-# PAPER_342 — Magnetar 7-Component DPM-THz Frequency Form: Σ₂₆ Spin-Down Plus THz Modes
+﻿# PAPER_342 — Magnetar 7-Component DPM-THz Frequency Form: Σ₂₆ Spin-Down Plus THz Modes
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2  
 **Session:** 96  
@@ -8,7 +8,7 @@
 
 ---
 
-## 1. Abstract
+## Abstract
 
 The magnetar gravity tensor g(r,t) is decomposed into 7 frequency channels within the Σ₂₆ double-plasma mirror (DPM) THz formalism. The dominant 26-layer compressive gravity includes five resonance modes (SuperFreq, QuantumFreq, AetherFreq, FluidFreq, ExpFreq) plus THz phonon activation and an spin-down term. For SGR J1745-2900 class magnetars with P = 3.76 s, B = 2×10¹⁰ T, the magnetic energy reservoir is M_mag = 2.01×10³⁷ J.
 

@@ -1,4 +1,4 @@
-# PAPER_367 — PSZ2 G181.06+48.47 Merger Relic: Full 5-Equation UQFF Triadic Proof
+﻿# PAPER_367 — PSZ2 G181.06+48.47 Merger Relic: Full 5-Equation UQFF Triadic Proof
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2  
 **Session:** 98  
@@ -8,7 +8,7 @@
 
 ---
 
-## 1. Abstract
+## Abstract
 
 PSZ2 G181.06+48.47 is a massive merging galaxy cluster at z = 0.40 (M = 10¹⁴ M☉) hosting a prominent radio merger relic detected in Planck and confirmed in Chandra 2025 X-ray observations (B_0 = 10⁻¹⁰ T intracluster field). UQFF computes all five canonical force forms simultaneously, establishing the complete triadic merger relic proof: (1) FU_Bi_i ≈ −8.32×10²¹⁷ N (buoyancy-unified), (2) Compressed ≈ 4.12×10⁻⁴¹ N (MUGE Compressed Mode), (3) Resonant ≈ −2.29×10⁻⁴¹ N (MUGE Resonant Mode), (4) Buoyancy ≈ 1.02×10⁻³² N (UQFF net upward force), and (5) U_i ≈ (1.45×10⁻⁴⁷ + i·8.20×10⁻⁵¹) J/m³ (complex vacuum energy density).
 

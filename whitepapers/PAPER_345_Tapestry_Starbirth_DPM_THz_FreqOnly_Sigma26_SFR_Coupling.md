@@ -1,4 +1,4 @@
-# PAPER_345 — Tapestry Starbirth Region: DPM-THz Frequency-Only Σ₂₆ Gravity and SFR Coupling
+﻿# PAPER_345 — Tapestry Starbirth Region: DPM-THz Frequency-Only Σ₂₆ Gravity and SFR Coupling
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2  
 **Session:** 96  
@@ -8,7 +8,7 @@
 
 ---
 
-## 1. Abstract
+## Abstract
 
 The Tapestry Star Formation Region is modeled using a DPM-THz frequency-only variant of the Σ₂₆ gravity form, where only the THz phonon, resonance frequency, and Hubble expansion terms are retained (mass terms suppressed by low column density). Star Formation Rate is expressed as SFR = ρ_gas·v_wind·f_res, the bubble radius scales as R_bubble = v_wind·t·f_res, and the net gravitational acceleration is driven purely by UQFF frequency modes rather than Newtonian mass terms.
 

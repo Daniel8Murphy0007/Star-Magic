@@ -1,4 +1,4 @@
-# PAPER_213: H_res Suite and D_universe Master Equations
+﻿# PAPER_213: H_res Suite and D_universe Master Equations
 
 **Version:** 1.0  
 **Date:** March 13, 2026  
@@ -7,6 +7,8 @@
 **Source:** grok_share_7514fe.txt lines 320–450 (PDF 1: UQFF+Equations+Across+Astrophysical+Systems_22Sept2025.pdf)
 
 ---
+
+$$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b_i}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57$$
 
 ## Abstract
 

@@ -34,6 +34,14 @@ GW190425 (April 25, 2019) is the second confirmed BNS merger, with total mass 3.
 
 The total UQFF amplitude modulation factor F is:
 
+$$F = A_{aether} \times A_{SCm}(B) \times A_{TRZ} \times A_{string}$$
+
+$$A_{SCm}(B) = \exp\!\left[-\left(\frac{B}{B_{crit}}\right)^2\right], \quad B_{crit} = 4.4\times10^{13}\,\mathrm{G}$$
+
+$$F_{UQFF} = 1.0 \times A_{SCm} \times 0.90 \times 0.37 = 0.5297$$
+
+**Key numerical results:** F_UQFF = 5.297e-1, amplitude reduction = 4.70e1%, h_GR = 1.702e-23 strain, h_UQFF = 1.067e-23 strain
+
 **F = A_aether × A_SCm(B) × A_TRZ × A_string**
 
 **A_SCm(B) = exp[−(B / B_crit)²]**

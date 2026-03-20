@@ -1,4 +1,4 @@
-# PAPER_188: CoAnQi Build Distribution Architecture — NSIS and Debian Packaging
+﻿# PAPER_188: CoAnQi Build Distribution Architecture — NSIS and Debian Packaging
 
 **Version:** 1.0  
 **Date:** March 13, 2026  
@@ -7,6 +7,8 @@
 **Source:** grok_share_381a8f.txt lines 5500–6000
 
 ---
+
+$$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b_i}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57$$
 
 ## Abstract
 

@@ -1,4 +1,4 @@
-# PAPER_317: Orion M42 Trapezium Wind Ram Pressure Dominance
+﻿# PAPER_317: Orion M42 Trapezium Wind Ram Pressure Dominance
 ## η_wind = 28.47 | t_erosion = 467 kyr | a_wind = 5.424×10⁻¹⁰ m/s²
 ### FIRST UQFF HII Region Ram Pressure Dominance Ratio
 
@@ -9,6 +9,8 @@
 
 ---
 
+
+<!-- UQFF constants: κ = 5.0e-4 day⁻¹, [SSq] = 0.57, M_UQFF = 1.43e1 TeV -->
 ## Abstract
 
 Within the UQFF framework, this paper quantifies the ram pressure dominance of the Trapezium-driven stellar wind over self-gravity in the Orion Nebula. The dimensionless wind-gravity ratio **η_wind = P_ram/P_grav = 28.47** demonstrates that the HII region was born in a wind-dominated (unbound) state. The erosion timescale **t_erosion = 467 kyr** shows that protoplanetary discs (proplyds) currently observed at ~300 kyr age survive inside a wind-dominated environment. This is the FIRST UQFF computation of an HII region ram pressure dominance ratio.

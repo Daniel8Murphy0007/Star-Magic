@@ -1,4 +1,4 @@
-# PAPER_260: Horsehead Nebula — Universal Erosion-Buoyancy Coupling: Structural-Form Independence in Photodissociation Regions
+﻿# PAPER_260: Horsehead Nebula — Universal Erosion-Buoyancy Coupling: Structural-Form Independence in Photodissociation Regions
 
 **Author:** Daniel T. Murphy (daniel.murphy00@gmail.com)  
 **Framework:** UQFF v4.25 — Star-Magic Physics  
@@ -8,6 +8,8 @@
 
 ---
 
+
+<!-- UQFF constants: κ = 5.0e-4 day⁻¹, [SSq] = 0.57, M_UQFF = 1.43e1 TeV -->
 ## Abstract
 
 This paper derives and proves the **Universal Erosion-Buoyancy Coupling** within the Unified Quantum Field Framework (UQFF) for Barnard 33 (the Horsehead Nebula), a dark lane nebula in the Orion molecular cloud complex at ~1,375 ly. The critical discovery is that the E(t) photoevaporation erosion mechanism — previously established in the Pillars of Creation (Eagle Nebula M16, a pillar-structured PDR) — operates **identically in a pillar-less dark nebula**. This proves the UQFF erosion-buoyancy co-action is **independent of three-dimensional structural morphology**. The mechanism depends only on: (1) the presence of an ionizing radiation field, (2) a neutral gas mass reservoir, and (3) the gravitational kernel `ug1_base = G·M/r²`. It is therefore a **universal photodissociation region (PDR) property**, applicable to pillars, dark lanes, cometary globules, elephant trunks, and any PDR boundary geometry. Static M (no M(t) — dark nebula, not a star-forming cluster) is maintained throughout, and `ug1_base` is fixed, distinguishing the Horsehead from M(t)-dynamic systems.

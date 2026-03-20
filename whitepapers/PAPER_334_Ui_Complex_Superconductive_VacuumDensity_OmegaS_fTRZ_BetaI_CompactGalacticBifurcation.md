@@ -1,4 +1,4 @@
-# PAPER_334 — U_i Complex-Valued Superconductive Vacuum Density: ω_s, f_TRZ, β_i and Compact/Galactic Class Bifurcation
+﻿# PAPER_334 — U_i Complex-Valued Superconductive Vacuum Density: ω_s, f_TRZ, β_i and Compact/Galactic Class Bifurcation
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2  
 **Session:** 95  
@@ -8,7 +8,9 @@
 
 ---
 
-## 1. Abstract
+$$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b_i}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57$$
+
+## Abstract
 
 This paper presents the complete U_i superconductive vacuum density equation in its full parameterized form, revealing a bifurcation into two complex-valued scale classes. The equation `U_i = λ_i(ρ_vac,[SCm]/ρ_vac,[UA] · ω_s(t) · cos(πt_n) · (1+f_TRZ))` produces measurably different complex values depending on whether the system belongs to the compact class (pulsars, SNRs, planetary, small nebulae) or the galactic class (AGN, interacting galaxies, galaxy clusters). All parameters including the imaginary parts are explicitly calibrated from the September 14, 2025 nine-system document assimilation.
 

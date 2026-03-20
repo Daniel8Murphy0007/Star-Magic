@@ -1,4 +1,4 @@
-# Whitepaper #27 — Lepton Flavor Violation Processes in UQFF
+﻿# Whitepaper #27 — Lepton Flavor Violation Processes in UQFF
 
 **Star-Magic UQFF Whitepaper Series**  
 **Author:** Daniel T. Murphy  
@@ -128,6 +128,10 @@ For lepton-flavor-violating processes, the transition requires a **temporal reve
 This destructive interference is the UQFF origin of LFV suppression.
 
 ### 2.3 The UQFF LFV Suppression Mechanism
+
+$$S_{LFV} = \exp(-|t_n| \times [SSq]) = \exp(-1.0 \times 0.57) = 5.655\times10^{-1}$$
+
+$$BR_{UQFF}(B^0 \to K^{*0}\tau^\pm e^\mp) = \left|\frac{F_U^{LFV}}{F_U^{total}}\right|^2 < 5.9\times10^{-6}$$
 
 The LFV branching ratio in UQFF is derived from the `LFVBDecayTerm` in `BSMPhysicsUQFFModule.cpp`:
 
@@ -460,3 +464,6 @@ The validation is implemented in `bsm_physics_validation.py` (Section 3), `sourc
 
 **Validator:** `bsm_physics_validation.py` — PASSED  
 *LFV: BR(B⁰→K*⁰τ⁻e⁺) < 5.9×10⁻⁶ (LHCb 90% CL exact), BR(B⁰→K*⁰τ⁺e⁻) < 4.9×10⁻⁶; UQFF t_n(τ⁻e⁺) = 3.833, Δt_n(CP) = 0.067; LFV suppression S = exp(−0.57) = 0.5655; κ = 0.0005/day, [SSq] = 0.57*
+
+---
+*See also: PAPER_026 | Part of the Star-Magic UQFF Whitepaper Series.*

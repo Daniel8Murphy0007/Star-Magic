@@ -1,4 +1,4 @@
-# PAPER_310 — Dark Matter / Visible Mass Partition Rotation Curve Excess
+﻿# PAPER_310 — Dark Matter / Visible Mass Partition Rotation Curve Excess
 ## η_DM/vis = 5.667 | v_excess = 67.1% above Keplerian | g_DM = 5.667 × g_vis
 
 **Session 88** | 30th C++ UQFF module | FIRST Spiral+SN Ia UQFF 2.0  
@@ -8,7 +8,7 @@
 
 ---
 
-## 1. Abstract
+## Abstract
 
 In Milky-Way class spiral galaxies, baryonic (visible) matter comprises only ~15% of total mass while dark matter contributes ~85%. The UQFF 2.0 framework explicitly partitions these contributions into separate gravitational acceleration terms g_vis and g_DM, enabling direct computation of their ratio and the predicted Keplerian rotation velocity deficit relative to the observed flat curve. The dark-matter to visible mass ratio η_DM/vis = f_DM/f_vis = 0.85/0.15 = **5.667** determines that g_DM = 5.667 × g_vis. The Keplerian circular velocity for total mass at 30 kpc is v_circ = 1.197 × 10⁵ m/s, while the observed flat rotation curve value v_rot = 2.0 × 10⁵ m/s exceeds this by **67.1%** — the UQFF rotation excess ratio v_excess = 1.671. This establishes the UQFF DM/visible partition as a first-principles derivation of the galactic rotation curve problem within the 9-term pipeline.
 

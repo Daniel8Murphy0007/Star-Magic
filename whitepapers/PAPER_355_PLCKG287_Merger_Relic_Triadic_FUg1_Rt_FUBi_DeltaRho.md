@@ -1,4 +1,4 @@
-# PAPER_355 — PLCK G287.0+32.9 Merger Relic: Triadic FU_g1 / R(t) / FU_Bi Form
+﻿# PAPER_355 — PLCK G287.0+32.9 Merger Relic: Triadic FU_g1 / R(t) / FU_Bi Form
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2  
 **Session:** 97  
@@ -8,7 +8,7 @@
 
 ---
 
-## 1. Abstract
+## Abstract
 
 PLCK G287.0+32.9 is a massive merging galaxy cluster with two prominent radio relics detected by Planck and confirmed by JVLA at z ≈ 0.39. The UQFF triadic framework is applied: (1) FU_g1 computes the first Σ₂₆ gravity component from the gas mass distribution, (2) compressed gravity R(t) ≈ −2.29×10⁻⁴¹ N represents the MUGE Compressed Mode prediction for relic propagation, and (3) FU_Bi_i provides the full buoyancy-unified force. The density perturbation δρ/ρ ~ 10⁻⁴ characterizes the relic shock front.
 

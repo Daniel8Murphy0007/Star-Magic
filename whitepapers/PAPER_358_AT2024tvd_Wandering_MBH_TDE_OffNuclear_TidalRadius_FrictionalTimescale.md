@@ -1,4 +1,4 @@
-# PAPER_358 — AT2024tvd Wandering Massive Black Hole TDE: Off-Nuclear Disruption Physics
+﻿# PAPER_358 — AT2024tvd Wandering Massive Black Hole TDE: Off-Nuclear Disruption Physics
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2  
 **Session:** 97  
@@ -6,9 +6,11 @@
 **Classification:** FIRST UQFF off-nuclear wandering massive black hole TDE — frictional timescale and tidal radius  
 **Author:** Daniel T. Murphy  
 
+
+<!-- UQFF constants: κ = 5.0e-4 day⁻¹, [SSq] = 0.57, M_UQFF = 1.43e1 TeV -->
 ---
 
-## 1. Abstract
+## Abstract
 
 AT2024tvd is the most compelling observed wandering massive black hole (wMBH) caught in the act of tidally disrupting a star at projected physical offset r_offset = 2.47×10¹⁷ m from the host galaxy nucleus. UQFF computes the tidal radius r_tide = R_star·(M_BH/M_star)^(1/3), the dynamical friction timescale t_fric for the wMBH sinking to the nucleus, and the full F_U_Bi_i at the off-nuclear disruption site.
 

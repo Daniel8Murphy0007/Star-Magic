@@ -1,4 +1,4 @@
-# PAPER_265: HUDF Dual-Channel Interaction Cascade Buoyancy — Quadratic I(t) Amplification at Cosmic Merger Peak
+﻿# PAPER_265: HUDF Dual-Channel Interaction Cascade Buoyancy — Quadratic I(t) Amplification at Cosmic Merger Peak
 
 **Author:** Daniel T. Murphy (daniel.murphy00@gmail.com)
 **Framework:** UQFF v4.27 — Star-Magic Physics
@@ -8,6 +8,8 @@
 
 ---
 
+
+<!-- UQFF constants: κ = 5.0e-4 day⁻¹, [SSq] = 0.57, M_UQFF = 1.43e1 TeV -->
 ## Abstract
 
 In the HUDFGalaxies MUGE formulation, the galaxy interaction factor I(t) = I₀ · exp(-t/τ_inter) is applied not to one gravitational channel but to **two simultaneously**: the base MUGE term (term1) and the UQFF unification term (term2) both receive the (1 + I(t)) modulation. This creates a structural feature that has not appeared in any prior UQFF module: a **dual-channel interaction cascade** in which both gravity channels amplify coherently during galaxy merger events.

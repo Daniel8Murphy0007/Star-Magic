@@ -1,4 +1,4 @@
-# PAPER_010b: Time-Domain Chirp Analysis — 23 Hz Onset and UQFF Frequency Evolution
+﻿# PAPER_010b: Time-Domain Chirp Analysis — 23 Hz Onset and UQFF Frequency Evolution
 
 **Authors:** Daniel Murphy & UQFF Research Collective  
 **Date:** 2026-03-07  
@@ -6,6 +6,8 @@
 **Repository:** Daniel8Murphy0007/Star-Magic
 
 ---
+
+$$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b_i}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57$$
 
 ## Abstract
 

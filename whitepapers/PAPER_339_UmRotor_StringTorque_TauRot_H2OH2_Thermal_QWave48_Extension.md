@@ -1,4 +1,4 @@
-# PAPER_339 — Um Rotor String-Rotation Torque Integration: τ_rot in the UQFF Um Framework
+﻿# PAPER_339 — Um Rotor String-Rotation Torque Integration: τ_rot in the UQFF Um Framework
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2  
 **Session:** 96  
@@ -8,7 +8,7 @@
 
 ---
 
-## 1. Abstract
+## Abstract
 
 The UQFF Um (magnetism/vacuum) field framework is extended with a rotor string-rotation torque term τ_rot = r × (−∇V). The torque couples the string rotation velocity (Ug₃) with the inelastic cross-section σ_CS = 10.50 Å² from the Phillips 1995 H₂O–H₂ close-coupling calculation, extending Q_wave_47 statistics to Q_wave_48 covering the thermal H₂O–H₂ regime. This is the first time a rotational torque τ_rot appears explicitly as an enhancement factor in the Um formula.
 

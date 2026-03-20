@@ -1,4 +1,4 @@
-# PAPER_335 — k^k REB-Coupled F_U_Bi_i Triadic Ramanujan Form and F_U_Bi Explicit Buoyancy Kernel with f_Ub Volume Ratio
+﻿# PAPER_335 — k^k REB-Coupled F_U_Bi_i Triadic Ramanujan Form and F_U_Bi Explicit Buoyancy Kernel with f_Ub Volume Ratio
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2  
 **Session:** 95  
@@ -8,7 +8,10 @@
 
 ---
 
-## 1. Abstract
+$$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b_i}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57$$
+<!-- κ = 5.0e-4 day⁻¹, [SSq] = 0.57, β_i = 6.1e-1 -->
+
+## Abstract
 
 This paper presents two distinct new equations from the Vela Pulsar September 14, 2025 document: (1) the k^k Ramanujan-inspired co-summation form of F_U_Bi_i where each state k is weighted by k raised to the k-th power (k^k), incorporating the Resonant Energy Bridge (REB) bilinear coupling; and (2) the explicit F_U_Bi buoyancy equation with the H_k geometry-kernel function and the f_Ub volume-ratio definition. Both equations represent a more fundamental derivation of the F_U_Bi_i integral compared to the phenomenological 12-term form of PAPER_332.
 

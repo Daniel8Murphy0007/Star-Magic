@@ -1,4 +1,4 @@
-# PAPER_353 — Double-Exponential Vacuum Decay Rate: ρ_SCm/ρ_UA Ratio with Near-Threshold Behavior
+﻿# PAPER_353 — Double-Exponential Vacuum Decay Rate: ρ_SCm/ρ_UA Ratio with Near-Threshold Behavior
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2  
 **Session:** 96  
@@ -6,9 +6,11 @@
 **Classification:** FIRST UQFF double-exponential vacuum decay rate with near-threshold (π − t → 0) behavior  
 **Author:** Daniel T. Murphy  
 
+
+<!-- UQFF constants: κ = 5.0e-4 day⁻¹, [SSq] = 0.57, M_UQFF = 1.43e1 TeV -->
 ---
 
-## 1. Abstract
+## Abstract
 
 A novel double-exponential decay rate formula is derived for UQFF vacuum energy channels, incorporating a near-threshold correction for the approach of t → π (the natural oscillation phase singularity). The rate is: Rate = (ρ_SCm/ρ_UA) · exp(−[SSq]·n/26 · exp(−(π − t))). The rho_ratio = ρ_SCm/ρ_UA = 0.1 establishes a 10:1 aether-to-superconductive vacuum density contrast, and the double-exponential structure ensures the rate approaches zero continuously as t → π (without a singularity).
 

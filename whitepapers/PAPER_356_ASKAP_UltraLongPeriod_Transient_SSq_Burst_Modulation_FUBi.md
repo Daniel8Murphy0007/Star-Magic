@@ -1,4 +1,4 @@
-# PAPER_356 — ASKAP Ultra-Long Period Transient: [SSq]-Modulated Burst Luminosity and F_U_Bi_i
+﻿# PAPER_356 — ASKAP Ultra-Long Period Transient: [SSq]-Modulated Burst Luminosity and F_U_Bi_i
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2  
 **Session:** 97  
@@ -8,7 +8,7 @@
 
 ---
 
-## 1. Abstract
+## Abstract
 
 ASKAP J1832-0911 and related ultra-long period transients (ULPTs) discovered by ASKAP have anomalously long periods (T ~ 1000–8000 s) incompatible with standard pulsar spin-down. UQFF provides a vacuum-buoyancy mechanism: the burst intensity is modulated by the [SSq] superposition factor and oscillates as I_burst = I_0 · exp(−[SSq]·n/26) · cos(2πt/T). The UQFF F_U_Bi_i ≈ −2.09×10²¹² N is computed for the estimated compact object mass. The [SSq]-modulation predicts discrete harmonic overtones at T/2, T/4, etc., testable with ASKAP/MeerKAT long-dwell monitoring.
 

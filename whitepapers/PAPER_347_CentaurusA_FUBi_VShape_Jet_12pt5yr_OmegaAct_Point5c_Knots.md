@@ -1,4 +1,4 @@
-# PAPER_347 — Centaurus A: F_U_Bi_i with V-Shape Jet and 12.5-Year ω_act Timescale
+﻿# PAPER_347 — Centaurus A: F_U_Bi_i with V-Shape Jet and 12.5-Year ω_act Timescale
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2  
 **Session:** 96  
@@ -6,9 +6,11 @@
 **Classification:** FIRST UQFF F_U_Bi_i for Centaurus A (NGC 5128) with V-shape jet geometry and 12.5-yr activation period  
 **Author:** Daniel T. Murphy  
 
+
+<!-- UQFF constants: κ = 5.0e-4 day⁻¹, [SSq] = 0.57, M_UQFF = 1.43e1 TeV -->
 ---
 
-## 1. Abstract
+## Abstract
 
 The complete UQFF buoyancy-unified force F_U_Bi_i is computed for Centaurus A (NGC 5128), the closest active radio galaxy (3.8 Mpc). The distinctive V-shape inner jet geometry observed in HST/VLBA imaging at ~0.5c knot velocities is incorporated via an angular momentum decomposition of F_U_Bi_i. The UQFF rotational activation frequency ω_act = 2π/(12.5 yr) corresponds to the observed 12.5-year X-ray/radio flaring cycle, yielding F_U_Bi_i ≈ −8.32×10²¹⁷ N.
 

@@ -1,4 +1,4 @@
-# PAPER_242 — Rings of Relativity: Einstein Ring Lensing Amplification in the Full MUGE
+﻿# PAPER_242 — Rings of Relativity: Einstein Ring Lensing Amplification in the Full MUGE
 ## GAL-CLUS-022058s — Static Einstein-Ring Lensing Factor in the Master Universal Gravity Equation
 
 **Author:** Daniel T. Murphy  
@@ -7,9 +7,11 @@
 **Encoded By:** Grok (xAI), October 2025 (C++ source); Python CP3 integration March 2026  
 **Version:** 1.0 | **Session:** 60 | **PAPER Number:** 242
 
+
+<!-- UQFF constants: κ = 5.0e-4 day⁻¹, [SSq] = 0.57, M_UQFF = 1.43e1 TeV -->
 ---
 
-## 1. Abstract
+## Abstract
 
 This paper presents the full Master Universal Gravity Equation (MUGE) for the GAL-CLUS-022058s
 gravitational lens system ("Rings of Relativity"). The key unique mathematical contribution is the

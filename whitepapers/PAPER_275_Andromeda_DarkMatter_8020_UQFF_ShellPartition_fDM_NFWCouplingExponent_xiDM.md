@@ -1,4 +1,4 @@
-# PAPER_275: UQFF Dark Matter 80/20 Shell Partition — f_DM^(1/3) NFW Coupling Exponent and the xi_DM Interaction Term
+﻿# PAPER_275: UQFF Dark Matter 80/20 Shell Partition — f_DM^(1/3) NFW Coupling Exponent and the xi_DM Interaction Term
 
 **Authors:** Daniel T. Murphy  
 **Date:** March 2026  
@@ -8,6 +8,8 @@
 
 ---
 
+
+<!-- UQFF constants: κ = 5.0e-4 day⁻¹, [SSq] = 0.57, M_UQFF = 1.43e1 TeV -->
 ## Abstract
 
 The Andromeda Galaxy (M31) contains approximately 80% dark matter by mass (f_DM = 0.80), with 20% in visible baryonic matter. Standard treatments simply add DM and visible matter contributions linearly: g_total = G×M/r². The UQFF Dark Matter 80/20 Shell Partition formulation separates DM and visible matter into distinct gravitational shells with an explicit coupling term. The discovery reported here is that the DM-to-visible gravitational interaction coupling naturally adopts the exponent 1/3 on the DM fraction: g_interaction = f_DM^(1/3) × g_vis. For f_DM = 0.80, this yields the **UQFF dark matter coupling constant** ξ_DM = 0.80^(1/3) = 0.9283. We demonstrate that this f_DM^(1/3) scaling is consistent with the NFW halo profile's central density behavior (ρ ∝ r^(−1) core) and provides a better UQFF representation of the gravitational interaction between the DM halo and the visible disk than linear superposition. The total DM gravitational term is g_DM_total = g_dm + ξ_DM × g_vis.

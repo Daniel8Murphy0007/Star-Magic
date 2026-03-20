@@ -31,6 +31,12 @@ We analyze binary black hole (BBH) merger energy dynamics under the Unified Quan
 
 Post-Newtonian GW power at late inspiral:
 
+$$P_{GW} = \frac{32}{5}\frac{G^4}{c^5}\frac{(m_1 m_2)^2(m_1+m_2)}{r^5}$$
+
+$$P_{GW,UQFF} = F_{combined}^2 \times P_{GW,GR},\quad F_{combined} = 0.903$$
+
+**Key numerical results:** P_GW(GR) = 8.9451e-11 W, P_GW(UQFF) = 7.2455e-11 W, \u03c4_merge(GR) = 9.4417e11 yr, \u03c4_merge(UQFF) = 1.1656e12 yr
+
 **P_GW = (32/5) × (G⁴/c⁵) × (m₁ m₂)² (m₁+m₂) / r⁵**
 
 UQFF modifies this via the combined damping factor (see §3):

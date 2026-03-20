@@ -1,4 +1,4 @@
-# PAPER_179: Star Magic 5-Chapter Theory — DPM and Universal Field Taxonomy
+﻿# PAPER_179: Star Magic 5-Chapter Theory — DPM and Universal Field Taxonomy
 ## Whitepaper §2.4-K | Thread 381a8fe7 | Session 48
 
 ### Abstract
@@ -11,6 +11,8 @@ Superconducting Manifold (SCm) as the cosmic glue. This paper summarises
 the theoretical content and provides a formal treatment of the DPM.
 
 ---
+
+$$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b_i}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57$$
 
 ### 1. Chapter Structure
 

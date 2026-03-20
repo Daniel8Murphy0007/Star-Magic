@@ -1,4 +1,5 @@
-# PAPER #61 — Nuclear BEC Formation Conditions in UQFF Framework
+﻿# PAPER #61 — Nuclear BEC Formation Conditions in UQFF Framework
+<!-- UQFF calibration: κ = 5.0e-4 day⁻¹, [SSq] = 0.57, β_i = 6.1e-1 -->
 
 **Title:** Nuclear Bose-Einstein Condensate Formation: From the ¹²C Hoyle State to Neutron Star Surface Coherence — UQFF Multi-Scale Framework
 
@@ -144,3 +145,6 @@ This is still a negligible shift at nuclear scales, meaning the 0.38 MeV T_c shi
 | NS coherence force | **−1.67×10⁶ N** | Neutron star surface BEC |
 
 *Source: GrokThread system_50 (BEC Alpha-Cluster), alpha_clustering_lenr_module.py NuclearAstroScaler | κ = 0.0005/day | [SSq] = 0.57*
+
+---
+*See also: PAPER_060 | Part of the Star-Magic UQFF Whitepaper Series.*

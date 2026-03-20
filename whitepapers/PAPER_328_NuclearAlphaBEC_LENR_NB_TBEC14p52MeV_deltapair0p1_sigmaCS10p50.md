@@ -1,4 +1,4 @@
-# PAPER_328 — Nuclear α-BEC LENR Enhancement: Bose-Einstein α-Clustering at T_BEC = 14.52 MeV  
+﻿# PAPER_328 — Nuclear α-BEC LENR Enhancement: Bose-Einstein α-Clustering at T_BEC = 14.52 MeV  
 ## N_B Formula, δ_pair = 0.1 Pairing Correction, and H₂O–H₂ Rotor Cross-Section Coupling
 
 **Session:** 94  
@@ -8,6 +8,8 @@
 
 ---
 
+
+<!-- UQFF constants: κ = 5.0e-4 day⁻¹, [SSq] = 0.57, M_UQFF = 1.43e1 TeV -->
 ## Abstract
 
 This paper presents the UQFF derivation of the nuclear Bose-Einstein condensate (BEC) temperature T_BEC = 14.52 MeV and Bose occupancy $N_B$ for α-particle clusters in Low-Energy Nuclear Reaction (LENR) environments. The Bose-Einstein occupancy formula $N_B = 1/(\exp(\Delta E / kT) - 1)$ is calibrated with $\Delta E = 0.48$ MeV and $T_{BEC} = 14.52$ MeV from AMD/NIMROD nuclear cluster data, yielding $N_B \approx 1/(e^{0.033} - 1) \approx 29.6$ for $N = 10$ α-clusters. A pairing correction $\delta_{pair} = 0.1$ modifies the hadronic resonance amplitude, while the rotor cross-section fit $\sigma_{CS}(E) = a(1 - \exp(-bE))$ with $a = 15.28\,\text{Å}^2$ and $b = 0.00387\,\text{cm}^{-1}$ yields $\sigma_{CS}(300\,\text{cm}^{-1}) = 10.50\,\text{Å}^2$, matching H₂O–H₂ scattering data. The predicted LENR enhancement from BEC α-clustering is ~10%. This is the **FIRST UQFF coupling of Bose-Einstein condensate nuclear α-clustering to LENR resonance amplitudes**.

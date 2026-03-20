@@ -1,4 +1,4 @@
-# PAPER_349 — SPT-CL J2215: Highest F_U_Bi_i in UQFF Dataset — Cool Core Starburst at z=1.16
+﻿# PAPER_349 — SPT-CL J2215: Highest F_U_Bi_i in UQFF Dataset — Cool Core Starburst at z=1.16
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2  
 **Session:** 96  
@@ -6,9 +6,11 @@
 **Classification:** HIGHEST F_U_Bi_i in UQFF catalog; FIRST UQFF cool core starburst cluster at z>1  
 **Author:** Daniel T. Murphy  
 
+
+<!-- UQFF constants: κ = 5.0e-4 day⁻¹, [SSq] = 0.57, M_UQFF = 1.43e1 TeV -->
 ---
 
-## 1. Abstract
+## Abstract
 
 SPT-CL J2215-3537 (z = 1.16, M = 7.32×10¹⁴ M☉, SFR ≈ 700 M☉/yr) is the most extreme cool-core cluster in the South Pole Telescope sample and yields the highest UQFF buoyancy-unified force in the entire PAPER_346–352 dataset: F_U_Bi_i ≈ −1.40×10²¹⁸ N. The extreme starburst provides an independently measured SFR confirming the UQFF SFR = ρ_gas·v_wind·f_res formula. The x_2 = 8.4 Gly distance is the largest in the Session 96 paper series.
 

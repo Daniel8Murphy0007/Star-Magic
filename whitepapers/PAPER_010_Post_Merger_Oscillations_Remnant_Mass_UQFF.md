@@ -48,6 +48,14 @@ The UQFF introduces:
 
 The UQFF-modified peak frequency:
 
+$$f_{UQFF} = f_{GR} \times [1 + \alpha_Q(M,\omega) - \beta_{damp}(\omega)]$$
+
+$$\alpha_Q \approx +0.02\text{ to }+0.05,\quad \beta_{damp} \approx +0.03\text{ to }+0.08$$
+
+$$f_{UQFF} \approx 0.95\,f_{GR},\quad f_{GR} \approx 2.5\,\mathrm{kHz}\Rightarrow f_{UQFF} \approx 2.375\,\mathrm{kHz}$$
+
+**Key numerical results:** f_GR = 2.5e3 Hz, f_UQFF = 2.375e3 Hz (shift = 1.25e2 Hz), D_total = 3.33e-1
+
 ```
 f_UQFF = f_GR × [1 + α_Q(M,ω) - β_damp(ω)]
 ```

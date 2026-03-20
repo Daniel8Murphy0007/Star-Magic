@@ -1,4 +1,4 @@
-# PAPER_208: UQFF Variable Calibration — ϕ, f_TRZ, ρ_vac,[UA], [SSq], Q_wave, and CIA Cross-Section
+﻿# PAPER_208: UQFF Variable Calibration — ϕ, f_TRZ, ρ_vac,[UA], [SSq], Q_wave, and CIA Cross-Section
 
 **Version:** 1.0  
 **Date:** March 13, 2026  
@@ -7,6 +7,9 @@
 **Source:** grok_share_7514fe.txt lines 1647–1715 (UQFF Framework Assimilation and Progress_22Sept2025.pdf)
 
 ---
+
+$$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b_i}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57$$
+<!-- κ = 5.0e-4 day⁻¹, [SSq] = 0.57, β_i = 6.1e-1 -->
 
 ## Abstract
 

@@ -40,6 +40,12 @@ The UQFF introduces:
 
 The UQFF-modified entangled state evolution:
 
+$$|\psi(t)\rangle_{UQFF} = \exp\!\left[-i\hat{H}_{eff}\,t - \frac{\gamma_{damp}(E)\,t}{2}\right]|\psi(0)\rangle$$
+
+$$\hat{H}_{eff} = \hat{H}_0 + \hat{H}_{int} + \hat{H}_{UQFF},\quad \hat{H}_{UQFF} = \alpha_Q\nabla^2\psi + \beta_{damp}\frac{\partial\psi}{\partial t}$$
+
+**Key numerical results:** gamma_damp ~ kappa × E/E_ref = 5.0e-4 × (E/E_ref), alpha_Q ~ 1.0e-2, D_total = 3.33e-1, entanglement range extended by 1/D_total = 3.0e0
+
 ```
 |ψ(t)⟩_UQFF = exp[-iĤ_eff t - γ_damp(E)t/2] |ψ(0)⟩
 ```

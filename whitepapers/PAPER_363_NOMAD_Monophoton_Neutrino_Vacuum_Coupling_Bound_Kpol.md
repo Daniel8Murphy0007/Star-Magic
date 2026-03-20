@@ -1,4 +1,4 @@
-# PAPER_363 — NOMAD Monophoton Search: UQFF Neutrino-Vacuum Coupling Bound at P_ν < 10⁻³² cm³
+﻿# PAPER_363 — NOMAD Monophoton Search: UQFF Neutrino-Vacuum Coupling Bound at P_ν < 10⁻³² cm³
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2  
 **Session:** 97  
@@ -6,9 +6,11 @@
 **Classification:** FIRST UQFF neutrino-vacuum coupling bound from NOMAD monophoton experiment  
 **Author:** Daniel T. Murphy  
 
+
+<!-- UQFF constants: κ = 5.0e-4 day⁻¹, [SSq] = 0.57, M_UQFF = 1.43e1 TeV -->
 ---
 
-## 1. Abstract
+## Abstract
 
 The NOMAD experiment (CERN, 1994–1997) searched for neutrino-mediated monophoton emission and set limits on new physics processes. UQFF derives a neutrino-vacuum energy coupling: E_nu_13 = E_base·ssq(13)·ρ_ratio, where ssq(13) is the [SSq] superposition factor at the 13th harmonic channel, and ρ_ratio = ρ_SCm/ρ_UA. The NOMAD upper limit on interaction probability P_ν < 10⁻³² cm³ constrains the UQFF neutrino polarization coupling K_pol via P_ν_UQFF = ρ_ratio·ssq(13)·K_pol.
 

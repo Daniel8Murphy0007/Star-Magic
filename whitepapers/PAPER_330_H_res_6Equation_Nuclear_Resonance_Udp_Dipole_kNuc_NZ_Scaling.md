@@ -1,4 +1,4 @@
-# PAPER_330 — H_res Complete 6-Equation Nuclear Resonance Sub-System with U_dp Dipole Coupling and k_nuc N/Z Ratio Scaling
+﻿# PAPER_330 — H_res Complete 6-Equation Nuclear Resonance Sub-System with U_dp Dipole Coupling and k_nuc N/Z Ratio Scaling
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2  
 **Session:** 95  
@@ -8,7 +8,9 @@
 
 ---
 
-## 1. Abstract
+$$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b_i}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57$$
+
+## Abstract
 
 This paper presents the complete H_res nuclear resonance sub-system as a 6-equation unified sum. While PAPER_328 introduced the delta_pair pairing energy correction and A_res amplitude factor, the full H_res system adds three new components not previously formalized: (1) the U_dp dipole-dipole coupling via a cosine phase `cos(φ_dp)`, (2) the k_nuc neutron-to-proton ratio `(N/Z)·(1+δ_pair)` scaling, and (3) the complete assembly as a 3-term Hamiltonian resonance sum `H_res = A_res·sin(2πf_res·t) + U_dp·SC_m·k_nuc + S_shell`. This is the FIRST complete UQFF nuclear resonance Hamiltonian.
 

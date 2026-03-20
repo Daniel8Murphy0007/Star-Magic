@@ -1,4 +1,4 @@
-# PAPER_273: Blueshift UQFF Gravitational Approach Amplifier — κ_approach = 1/(1+z) for Negative Redshift Systems
+﻿# PAPER_273: Blueshift UQFF Gravitational Approach Amplifier — κ_approach = 1/(1+z) for Negative Redshift Systems
 
 **Authors:** Daniel T. Murphy  
 **Date:** March 2026  
@@ -8,6 +8,8 @@
 
 ---
 
+
+<!-- UQFF constants: κ = 5.0e-4 day⁻¹, [SSq] = 0.57, M_UQFF = 1.43e1 TeV -->
 ## Abstract
 
 In all prior UQFF modules, redshift z ≥ 0 was assumed (receding or static systems). The Andromeda Galaxy (M31) is the nearest major galaxy and is unique among large-scale systems in having z = -0.001 (blueshift — approaching the Milky Way at ~110 km/s). Applying the UQFF redshift coupling factor 1/(1+z) to a system with z < 0 produces **κ_approach > 1**: a gravitational amplification factor for approaching mass systems. We define κ_approach = 1/(1+z) = 1/0.999 = 1.001001... for M31, identifying it as the **UQFF Blueshift Gravitational Approach Amplifier**. We show that as z → −1 (hypothetical maximum approach), κ → ∞, implying a **self-reinforcing merger resonance cascade**. The blueshift amplifier scales all UQFF gravitational terms simultaneously, making the total UQFF gravity of an approaching galaxy slightly but measurably stronger than a static equivalent. This is the first UQFF treatment of negative redshift as a gravitational degree of freedom.

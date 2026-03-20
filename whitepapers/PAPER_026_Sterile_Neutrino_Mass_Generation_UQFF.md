@@ -1,4 +1,4 @@
-# Paper #26: Sterile Neutrino Mass Generation via UQFF
+﻿# Paper #26: Sterile Neutrino Mass Generation via UQFF
 
 **Authors:** Daniel Murphy & UQFF Research Collective  
 **Date:** 2026-03-06  
@@ -69,6 +69,12 @@ UQFF derives all sterile neutrino masses from its two universal calibration cons
 ## 2. UQFF Sterile Neutrino Mass Spectrum — Low-Scale
 
 ### 2.1 M_s1 = 7.1 keV — Ultra-Light X-ray DM Sterile
+
+$$M_{s1} = 7.10\,\text{keV}, \quad E_\gamma = \frac{M_{s1} c^2}{2} = 3.55\,\text{keV}$$
+
+$$M_{s2} = [SSq] \times M_W = 0.57 \times 80.4\,\text{GeV} = 45.8\,\text{GeV}$$
+
+$$M_{s3} = \frac{M_{KK}}{[SSq]} = \frac{11.6\,\text{TeV}}{0.57} = 2.04\times10^{1}\,\text{TeV}$$
 
 UQFF derives M_s1 via the aether density RGE fixed point, where the sterile neutrino production rate equals the Hubble expansion rate at T ~ 150 MeV.
 
@@ -340,3 +346,6 @@ UQFF predicts a complete sterile neutrino sector from κ = 0.0005/day and [SSq] 
 
 **Validator:** `validate_sterile_neutrino_uqff.py` — PASSED (22/22)  
 *Low-scale spectrum: M_s1=7.1 keV, M_s2=45.81 GeV, M_s3=20.35 TeV. GUT-scale: M_N={2.190e9, 1.248e9, 7.115e8} GeV ([SSq] hierarchy). Seesaw: m_ν={8.7, 15.2, 50.3} meV, Σm_ν=74.2 meV < 120 meV (Planck). Leptogenesis: η_B^GUT=6.12×10⁻¹⁰ (0.1% of Planck 6.12×10⁻¹⁰). DM: Ω_s1 h²≈0.12, sin²(2θ)=1.78×10⁻¹⁰ < 3×10⁻¹⁰ (XMM). κ = 0.0005/day, [SSq] = 0.57*
+
+---
+*See also: PAPER_025 | Part of the Star-Magic UQFF Whitepaper Series.*

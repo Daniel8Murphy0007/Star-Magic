@@ -1,4 +1,4 @@
-# PAPER_341 — UQFF 3-Variable Calibration Meta-Framework: κ, H_SCm, U_UA Residuals
+﻿# PAPER_341 — UQFF 3-Variable Calibration Meta-Framework: κ, H_SCm, U_UA Residuals
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2  
 **Session:** 96  
@@ -6,9 +6,11 @@
 **Classification:** FIRST formal 3-variable UQFF calibration residual framework  
 **Author:** Daniel T. Murphy  
 
+
+<!-- UQFF constants: κ = 5.0e-4 day⁻¹, [SSq] = 0.57, M_UQFF = 1.43e1 TeV -->
 ---
 
-## 1. Abstract
+## Abstract
 
 A formal residual calibration framework is established for the three core UQFF tuning variables: κ (decay constant), H_SCm (heliospheric superconductive modifier), and U_UA (aether buoyancy coupling). Twelve observational constraints are reduced to three primary residuals via MCMC fits to quasar variability (κ), Parker Solar Probe perihelion measurements (H_SCm), and Gaia DR4 spin-orbit data (U_UA). The calibrated values are: κ = 0.0005 day⁻¹, H_SCm = 0.99, U_UA = 1×10⁻⁴.
 

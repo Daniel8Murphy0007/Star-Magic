@@ -1,4 +1,4 @@
-# PAPER_192: S-C Collaborative Real-Time Mathematics — WebSocket, OT, ECDSA, and Snappy
+﻿# PAPER_192: S-C Collaborative Real-Time Mathematics — WebSocket, OT, ECDSA, and Snappy
 
 **Version:** 1.0  
 **Date:** March 13, 2026  
@@ -7,6 +7,8 @@
 **Source:** grok_share_381a8f.txt lines 7200–8000
 
 ---
+
+$$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b_i}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57$$
 
 ## Abstract
 

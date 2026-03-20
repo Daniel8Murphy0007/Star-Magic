@@ -1,4 +1,4 @@
-# PAPER_340 — EDM SO(10) BSM Refined F_u Coupling: Darkonia Phase Boundary P_SCm = 1
+﻿# PAPER_340 — EDM SO(10) BSM Refined F_u Coupling: Darkonia Phase Boundary P_SCm = 1
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2  
 **Session:** 96  
@@ -6,9 +6,11 @@
 **Classification:** FIRST SO(10) EDM darkonia phase boundary in UQFF; FIRST V_cb coupling derivation  
 **Author:** Daniel T. Murphy  
 
+
+<!-- UQFF constants: κ = 5.0e-4 day⁻¹, [SSq] = 0.57, M_UQFF = 1.43e1 TeV -->
 ---
 
-## 1. Abstract
+## Abstract
 
 The UQFF F_u coupling is refined using SO(10) grand unification predictions for the electron electric dipole moment (EDM) d_e ~ 10⁻²⁵ e·cm. A new phase boundary is identified at P_SCm = 1 where darkonia (dark-sector charmonium analogs) become stable. The V_cb CKM element coupling k_η·G_F²·s/π and the tau-lepton anomaly deviation τ_dev = 5×10⁻⁸ s (< 5% error relative to Super Tau-Charm factory limits) are derived.
 

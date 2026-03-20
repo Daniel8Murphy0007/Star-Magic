@@ -1,4 +1,4 @@
-# PAPER_216: Triadic UQFF Numerical Validation Suite — Westerlund 2 and Pillars of Creation
+﻿# PAPER_216: Triadic UQFF Numerical Validation Suite — Westerlund 2 and Pillars of Creation
 
 **Author:** Daniel T. Murphy (daniel.murphy00@gmail.com)  
 **Framework:** UQFF v4.3 — Star-Magic Physics  
@@ -7,6 +7,9 @@
 **Series:** Phase 2 Session 54 — §2.7 Third-Pass Extraction
 
 ---
+
+$$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b_i}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57$$
+<!-- κ = 5.0e-4 day⁻¹, [SSq] = 0.57, β_i = 6.1e-1 -->
 
 ## Abstract
 

@@ -1,4 +1,4 @@
-# PAPER_360 — J1610+1811 High-z Quasar Jet at z=6.5: Relativistic Lorentz Factor k_rel Coupling
+﻿# PAPER_360 — J1610+1811 High-z Quasar Jet at z=6.5: Relativistic Lorentz Factor k_rel Coupling
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2  
 **Session:** 97  
@@ -6,9 +6,11 @@
 **Classification:** FIRST UQFF high-z quasar jet (z=6.5) with Lorentz factor k_rel = Γ² relativistic coupling  
 **Author:** Daniel T. Murphy  
 
+
+<!-- UQFF constants: κ = 5.0e-4 day⁻¹, [SSq] = 0.57, M_UQFF = 1.43e1 TeV -->
 ---
 
-## 1. Abstract
+## Abstract
 
 J1610+1811 is a blazer-class quasar at z = 6.5 (lookback time ~12.9 Gyr) with a relativistic jet Lorentz factor Γ ≈ 4.5. UQFF introduces a relativistic coupling constant k_rel = Γ² = k_rel_0 × 20.25 (Lorentz factor squared) to scale the vacuum buoyancy force in the jet frame. The Friedmann Hubble parameter H(z = 6.5) is computed from H(z) = H₀√[0.3(1+z)³ + 0.7], and F_U_Bi_i ≈ −8.32×10²¹⁷ N is evaluated in the observer frame.
 

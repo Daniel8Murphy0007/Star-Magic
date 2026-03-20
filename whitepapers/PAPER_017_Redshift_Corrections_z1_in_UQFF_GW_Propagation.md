@@ -92,6 +92,14 @@ Modulations over the 12-month observation:
 
 The phase lag accumulates from TRZ energy withdrawal throughout the inspiral:
 
+$$\varphi_{lag}(t) = 2\pi \times f_{TRZ} \times \frac{t}{\tau_{merge}}$$
+
+$$h_{UQFF}(D_L, z) = F_{combined}(D_L, z) \times h_{GR}(D_L),\quad F_{combined} = 6.217\times10^{-1}$$
+
+$$h_{GR,peak} = 2.9275\times10^{-19}\,\mathrm{strain},\quad h_{UQFF,peak} = 1.7702\times10^{-19}\,\mathrm{strain}$$
+
+**Key numerical results:** D_L = 6.42e0 Gpc, F_combined = 6.217e-1, h_GR = 2.9275e-19 strain, h_UQFF = 1.7702e-19 strain, phi_lag = 6.3e-1 rad
+
 **φ_lag(t) = 2π × f_TRZ × t / τ_merge**
 
 - At t = 0: φ_lag = 0 rad  

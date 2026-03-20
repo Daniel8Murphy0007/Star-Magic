@@ -1,4 +1,4 @@
-# PAPER #37 — F_UBii Buoyancy Force: Proof Variants 2–6 (Thermodynamic Series)
+﻿# PAPER #37 — F_UBii Buoyancy Force: Proof Variants 2–6 (Thermodynamic Series)
 
 **Title:** UQFF Buoyancy Proof Variants 2–6: Terminal Velocity, Ionization, Energy Coupling, Orbital Decay, and Kilonova Buoyancy
 
@@ -217,3 +217,6 @@ The thermodynamic series of F_UBii variants (2–6) demonstrates the versatility
 All five variants share the common F_UBii = F_U − F_Bi − F_i architecture with F_rel = 10⁻¹⁰ N normalization and E_LEP = 1.22×10⁻¹⁹ J quantum granularity (Paper #36).
 
 *Validator: `BuoyancyProofVariants.py` → All 17 F_UBii variants operational ✓ | κ = 0.0005/day | [SSq] = 0.57*
+
+---
+*See also: PAPER_036 | Part of the Star-Magic UQFF Whitepaper Series.*

@@ -1,4 +1,4 @@
-# PAPER_351 — ASASSN-14li Tidal Disruption Event: Ultrafast Outflow F_U_Bi_i and Kozima LENR Force
+﻿# PAPER_351 — ASASSN-14li Tidal Disruption Event: Ultrafast Outflow F_U_Bi_i and Kozima LENR Force
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2  
 **Session:** 96  
@@ -6,9 +6,11 @@
 **Classification:** FIRST UQFF F_U_Bi_i for a TDE with 0.3c ultrafast outflow and Kozima LENR coupling  
 **Author:** Daniel T. Murphy  
 
+
+<!-- UQFF constants: κ = 5.0e-4 day⁻¹, [SSq] = 0.57, M_UQFF = 1.43e1 TeV -->
 ---
 
-## 1. Abstract
+## Abstract
 
 ASASSN-14li is the best-studied tidal disruption event (TDE), providing the most complete multi-wavelength dataset from UV to X-ray to radio. The UQFF buoyancy-unified force is computed for the stellar mass black hole remnant (M_BH = 10⁶ M☉), yielding F_U_Bi_i ≈ −8.32×10²¹¹ N — six orders of magnitude smaller than AGN-scale F_U_Bi_i, reflecting the much smaller BH mass. The ultrafast outflow at v_out = 0.3c is connected to UQFF via the Kozima LENR force component F_Kozima = 10³⁰ N at the stellar disruption interface.
 

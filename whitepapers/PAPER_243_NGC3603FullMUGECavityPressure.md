@@ -1,4 +1,4 @@
-# PAPER_243 — NGC 3603 Full MUGE: Time-Varying Mass M(t) and Additive Cavity Pressure P(t)/ρ
+﻿# PAPER_243 — NGC 3603 Full MUGE: Time-Varying Mass M(t) and Additive Cavity Pressure P(t)/ρ
 ## NGC 3603 Extreme Young Star Cluster — Complete 10-Term Master Universal Gravity Equation
 
 **Author:** Daniel T. Murphy  
@@ -7,9 +7,11 @@
 **Encoded By:** Grok (xAI), October 2025 (C++ source); Python CP3 integration March 2026  
 **Version:** 1.0 | **Session:** 60 | **PAPER Number:** 243
 
+
+<!-- UQFF constants: κ = 5.0e-4 day⁻¹, [SSq] = 0.57, M_UQFF = 1.43e1 TeV -->
 ---
 
-## 1. Abstract
+## Abstract
 
 This paper presents the complete 10-term Master Universal Gravity Equation (MUGE) for the
 NGC 3603 extreme young star cluster, incorporating two novel mathematical elements not previously

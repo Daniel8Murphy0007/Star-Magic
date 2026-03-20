@@ -1,4 +1,4 @@
-# Paper #23: Tau Anomalous Magnetic Moment (g-2) via UQFF
+﻿# Paper #23: Tau Anomalous Magnetic Moment (g-2) via UQFF
 
 **Authors:** Daniel Murphy & UQFF Research Collective  
 **Date:** 2026-03-06  
@@ -23,6 +23,12 @@ The anomalous magnetic moment of the tau lepton a_tau = (g_tau - 2)/2 is among t
 ### 1.1 The Anomalous Magnetic Moment
 
 The magnetic moment of a lepton l is:
+
+$$\mu_l = g_l \frac{e}{2m_l} S, \qquad a_l = \frac{g_l - 2}{2}$$
+
+$$\Delta a_\tau^{UQFF} = \kappa \cdot [SSq] \cdot \frac{m_\tau^2}{M_{UQFF}^2} = +3.42\times10^{-6}, \quad M_{UQFF} = 1.43\times10^{1}\,\text{TeV}$$
+
+**Key numerical results:** $a_\tau^{SM} = 1.17721\times10^{-3}$, $\Delta a_\tau^{UQFF} = 3.42\times10^{-6}$
 
 **mu_l = g_l x (e / 2m_l) x S**
 
@@ -219,3 +225,6 @@ UQFF predicts:
 5. UQFF Source Files: source27.cpp, source28.cpp, MAIN_1_CoAnQi.cpp
 6. UQFF Calibration: kappa = 0.0005/day, [SSq] = 0.57
 7. arXiv:2506.14881
+
+---
+*See also: PAPER_022 | Part of the Star-Magic UQFF Whitepaper Series.*

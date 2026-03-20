@@ -1,4 +1,4 @@
-# PAPER_366 — Sgr A* JWST 2025 NIR Flare: ω_act Derivation from k_act Contrast Amplitude
+﻿# PAPER_366 — Sgr A* JWST 2025 NIR Flare: ω_act Derivation from k_act Contrast Amplitude
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2  
 **Session:** 97  
@@ -6,9 +6,11 @@
 **Classification:** FIRST UQFF derivation of ω_act for Sgr A* directly from JWST 2025 NIR flare contrast amplitude k_act  
 **Author:** Daniel T. Murphy  
 
+
+<!-- UQFF constants: κ = 5.0e-4 day⁻¹, [SSq] = 0.57, M_UQFF = 1.43e1 TeV -->
 ---
 
-## 1. Abstract
+## Abstract
 
 JWST 2025 near-infrared (NIR) camera observations of Sgr A* reveal quasi-periodic flare events with f_flare = 5.56×10⁻⁴ Hz and contrast amplitude k_act. UQFF derives the activation angular frequency ω_act = 2πf_flare = 3.49×10⁻³ rad/s and connects f_TRZ = f_flare as the UQFF vacuum reactance trigger frequency for the Galactic Center. The contrast amplitude k_act quantifies the NIR flux ratio between flare peak and quiescent state, providing a direct observational calibration of the UQFF ω_act parameter.
 

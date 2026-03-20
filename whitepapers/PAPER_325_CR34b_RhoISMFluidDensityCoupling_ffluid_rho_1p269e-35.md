@@ -1,9 +1,11 @@
-# PAPER_325 — CR34b Rho-ISM Fluid Density Coupling: f_fluid×ρ_ISM = 1.269×10⁻³⁵ kg/m³/Hz
+﻿# PAPER_325 — CR34b Rho-ISM Fluid Density Coupling: f_fluid×ρ_ISM = 1.269×10⁻³⁵ kg/m³/Hz
 **Session 93 | CompressedResonanceUQFF34bModule | UQFF Fluid Term Enhancement**
 **FIRST UQFF mass-density-weighted fluid accelerative term in dual-channel framework**
 
 ---
 
+
+<!-- UQFF constants: κ = 5.0e-4 day⁻¹, [SSq] = 0.57, M_UQFF = 1.43e1 TeV -->
 ## Abstract
 CR34b introduces a mass-density-weighted fluid term `a_fluid_rho` that extends the CR34 volumetric fluid term by multiplying by the ISM ambient density ρ_ISM. The product `f_fluid × ρ_ISM = 1.269×10⁻¹⁴ × 1×10⁻²¹ = 1.269×10⁻³⁵ kg/m³/Hz` defines the ISM fluid coupling constant — the first UQFF fluid term that properly accounts for the mass density of the medium through which DPM propagates. CR34b with ρ_ISM = 1 kg/m³ reduces identically to the CR34 fluid term, confirming backward compatibility.
 

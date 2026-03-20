@@ -1,4 +1,4 @@
-# PAPER_220: Crab Nebula Pulsar Wind Nebula UQFF — F_wind and M_mag in Expanding PWN
+﻿# PAPER_220: Crab Nebula Pulsar Wind Nebula UQFF — F_wind and M_mag in Expanding PWN
 
 **Author:** Daniel T. Murphy (daniel.murphy00@gmail.com)  
 **Framework:** UQFF v4.3 — Star-Magic Physics  
@@ -7,6 +7,8 @@
 **Series:** Phase 2 Session 55 — §2.10 Fourth-Pass System Extraction
 
 ---
+
+$$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b_i}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57$$
 
 ## Abstract
 

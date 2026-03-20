@@ -1,4 +1,4 @@
-# PAPER_200: Um Universal Magnetism Taxonomy — Complete Variant Catalogue
+﻿# PAPER_200: Um Universal Magnetism Taxonomy — Complete Variant Catalogue
 
 **Version:** 1.0  
 **Date:** March 13, 2026  
@@ -7,6 +7,9 @@
 **Source:** grok_share_7514fe.txt lines 2676–2762 and 6000–6400 (BB_C_Equations_04Sept2025.pdf catalogue)
 
 ---
+
+$$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b_i}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57$$
+<!-- κ = 5.0e-4 day⁻¹, [SSq] = 0.57, β_i = 6.1e-1 -->
 
 ## Abstract
 

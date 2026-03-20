@@ -1,4 +1,4 @@
-# PAPER_368 — Ug4 Vacuum Energy ΛCDM Galactic Black Hole Coupling
+﻿# PAPER_368 — Ug4 Vacuum Energy ΛCDM Galactic Black Hole Coupling
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2  
 **Session:** 100  
@@ -6,9 +6,11 @@
 **Classification:** FIRST explicit ΛCDM dark-energy mass density coupling to galactic BH distance ratio as UQFF Ug4 gravity term  
 **Author:** Daniel T. Murphy  
 
+
+<!-- UQFF constants: κ = 5.0e-4 day⁻¹, [SSq] = 0.57, M_UQFF = 1.43e1 TeV -->
 ---
 
-## 1. Abstract
+## Abstract
 
 This paper presents a new explicit form for the fourth Universal Gravity component Ug4 in the Unified Quantum Field Framework (UQFF). Unlike the prior Ug4 implementation (Thread f3c55f52, which uses the vacuum energy in J/m³ with a [SCm] multiplier and a quantum-scale coupling constant k4=10⁻⁴⁰), this form directly couples the cosmologically-measured ΛCDM dark-energy mass density ρ_v = 6×10⁻²⁷ kg/m³ to the galactic black hole mass-distance ratio Mbh/dg. The coupling constant k4=2.0 and concentration factor C_conc characterise this new form. A time-decay exp(−αt) and UQFF harmonic cos(πtn) modulate the coupling, with an AGN feedback enhancement factor (1+f_feedback). Numerical evaluation gives Ug4(t=0, tn=0) ≈ 4.22×10⁻¹⁰ m/s², comparable to galactic-scale gravitational accelerations.
 

@@ -1,4 +1,4 @@
-# PAPER_219: M16 Eagle Nebula UQFF — Star Formation Rate Enhancement and Radiation Subtraction
+﻿# PAPER_219: M16 Eagle Nebula UQFF — Star Formation Rate Enhancement and Radiation Subtraction
 
 **Author:** Daniel T. Murphy (daniel.murphy00@gmail.com)  
 **Framework:** UQFF v4.3 — Star-Magic Physics  
@@ -7,6 +7,8 @@
 **Series:** Phase 2 Session 55 — §2.9 Fourth-Pass System Extraction
 
 ---
+
+$$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b_i}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57$$
 
 ## Abstract
 

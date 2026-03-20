@@ -1,4 +1,4 @@
-# PAPER_308 — Spiral Arm Torque Gravitational Amplifier
+﻿# PAPER_308 — Spiral Arm Torque Gravitational Amplifier
 ## τ_spiral(10 Gyr) = 2.046 | T_pattern = 307 Myr | dτ/dt = 2.741 × H₀_SH0ES
 
 **Session 88** | 30th C++ UQFF module | FIRST Spiral+SN Ia UQFF 2.0  
@@ -8,7 +8,7 @@
 
 ---
 
-## 1. Abstract
+## Abstract
 
 Spiral galaxies evolve under pattern-speed-driven star-formation torques whose cumulative gravitational amplitudes differ fundamentally from static NFW or Keplerian assumptions. Within the UQFF (Unified Quantum Field Framework) 2.0 pipeline, a dimensionless spiral torque factor τ_spiral = (M_gas/M) × Ω_p × t accumulates over cosmic time and multiplies the base gravitational term. At 10 Gyr the amplifier reaches τ = 2.046, boosting effective gravity by a factor of 3.046×. The torque rate dτ/dt = 6.483 × 10⁻¹⁸ s⁻¹ exceeds H₀_SH0ES (73.0 km/s/Mpc = 2.366 × 10⁻¹⁸ s⁻¹) by a factor of 2.741, establishing a new UQFF cosmic-rate comparison.
 

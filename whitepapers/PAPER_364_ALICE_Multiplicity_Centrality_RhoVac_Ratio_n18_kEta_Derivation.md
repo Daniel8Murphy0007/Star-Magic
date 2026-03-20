@@ -1,4 +1,4 @@
-# PAPER_364 — ALICE Multiplicity Centrality: ρ_vac Ratio at Channel 18 and k_η Derivation
+﻿# PAPER_364 — ALICE Multiplicity Centrality: ρ_vac Ratio at Channel 18 and k_η Derivation
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2  
 **Session:** 97  
@@ -6,9 +6,11 @@
 **Classification:** FIRST UQFF treatment of LHC heavy-ion multiplicity centrality with ρ_SCm/ρ_UA ratio at n=18  
 **Author:** Daniel T. Murphy  
 
+
+<!-- UQFF constants: κ = 5.0e-4 day⁻¹, [SSq] = 0.57, M_UQFF = 1.43e1 TeV -->
 ---
 
-## 1. Abstract
+## Abstract
 
 ALICE experiment data on Pb-Pb charged particle multiplicity (dN_ch/dη) vs. collision energy (√s) and centrality class are connected to UQFF via the vacuum density ratio at the 18th harmonic channel: ρ_ratio_18 = (ρ_SCm/ρ_UA)·exp(−[SSq]·18/26). The empirical multiplicity scaling dN_ch/dη ∝ √s^0.156 is reproduced by the UQFF formula with derived coupling constant k_η_18, connecting heavy-ion collision multiplicities to vacuum-field harmonic structure.
 

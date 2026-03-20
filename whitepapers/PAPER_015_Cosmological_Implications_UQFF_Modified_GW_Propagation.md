@@ -39,6 +39,12 @@ The UQFF introduces:
 
 Modified wave equation:
 
+$$\Box h_{\mu\nu} + \Gamma_{UQFF}(f,z)\,\partial_t h_{\mu\nu} = 0$$
+
+$$\Gamma_{UQFF}(f,z) = \Gamma_0 \left(\frac{f}{f_{ref}}\right)^{\alpha} \left(\frac{1+z}{H(z)}\right)^{\beta}$$
+
+**Key numerical results:** Gamma_0 = 2.3e-18 Hz, alpha = -7.0e-1, beta = 8.0e-1, f_ref = 1.0e2 Hz, D_total = 3.33e-1
+
 ```
 □h_μν + Γ_UQFF(f,z) ∂_t h_μν = 0
 ```

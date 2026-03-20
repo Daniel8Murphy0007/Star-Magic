@@ -1,4 +1,4 @@
-# PAPER_008b: Full Inspiral Waveform Modeling with UQFF — GW170817 100-Second Analysis
+﻿# PAPER_008b: Full Inspiral Waveform Modeling with UQFF — GW170817 100-Second Analysis
 
 **Authors:** Daniel Murphy & UQFF Research Collective  
 **Date:** 2026-03-07  
@@ -7,6 +7,8 @@
 **arXiv Context:** GW170817 (BNS inspiral, LIGO O2)
 
 ---
+
+$$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b_i}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57$$
 
 ## Abstract
 

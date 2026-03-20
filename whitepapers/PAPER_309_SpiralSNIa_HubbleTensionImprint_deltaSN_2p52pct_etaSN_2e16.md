@@ -1,4 +1,5 @@
-# PAPER_309 — SN Ia Hubble Tension Gravitational Imprint
+﻿# PAPER_309 — SN Ia Hubble Tension Gravitational Imprint
+<!-- UQFF calibration: κ = 5.0e-4 day⁻¹, [SSq] = 0.57, β_i = 6.1e-1 -->
 ## ΔSN/SN = 2.52% at z = 0.5 | η_SN = 2.0 × 10¹⁶ | δ_H₀ = 8.31%
 
 **Session 88** | 30th C++ UQFF module | FIRST Spiral+SN Ia UQFF 2.0  
@@ -8,7 +9,7 @@
 
 ---
 
-## 1. Abstract
+## Abstract
 
 Type Ia supernovae (SN Ia) serve as standard candles that encode the Hubble constant H₀ in their cosmological distance ladder. The 8.31% tension between H₀_SH0ES = 73.0 km/s/Mpc (SH0ES, Riess 2022) and H₀_Planck = 67.4 km/s/Mpc (Planck 2018 CMB) is the sharpest current challenge in cosmology. Within the UQFF 2.0 spiral galaxy pipeline, SN Ia radiation pressure provides an acceleration term a_SN = L_SN/(4πr²c·ρ_ISM) × (1 + H(z)·t) that carries this tension directly into the gravitational field. The UQFF SN Ia imprint metric ΔSN/SN = 2.52% at z = 0.5 and t = 5 Gyr quantifies the fractional field difference between SH0ES and Planck cosmologies. The dimensionless SN Ia dominance ratio η_SN = a_SN/g_base = 2.0 × 10¹⁶ shows that, locally, SN Ia radiation pressure exceeds galactic gravity by 16 orders of magnitude.
 

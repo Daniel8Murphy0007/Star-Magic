@@ -1,4 +1,4 @@
-# PAPER_365 — Magnetar Magnetic Energy and Outburst Timescale: M_mag = 2.01×10³⁷ J and τ = 12.7 yr
+﻿# PAPER_365 — Magnetar Magnetic Energy and Outburst Timescale: M_mag = 2.01×10³⁷ J and τ = 12.7 yr
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2  
 **Session:** 97  
@@ -6,9 +6,11 @@
 **Classification:** FIRST UQFF derivation of magnetar outburst timescale τ_outburst from M_mag/L_X ratio  
 **Author:** Daniel T. Murphy  
 
+
+<!-- UQFF constants: κ = 5.0e-4 day⁻¹, [SSq] = 0.57, M_UQFF = 1.43e1 TeV -->
 ---
 
-## 1. Abstract
+## Abstract
 
 The total magnetic energy reservoir of a canonical magnetar (B = 2×10¹⁰ T, SGR class) is computed as M_mag = B²V/(2μ₀) = 2.01×10³⁷ J. This reservoir drains at the persistent X-ray luminosity L_X, giving an outburst timescale τ_outburst = M_mag/L_X ≈ 12.7 yr. The spin-down rate is ν̇ = −f_react/(2πP), connecting observed spin-down to the UQFF vacuum reactance frequency. These three values (M_mag, τ_outburst, ν̇) form the canonical magnetar energy budget in UQFF.
 

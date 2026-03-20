@@ -1,4 +1,4 @@
-# PAPER_370 — Multi-Body Solar CelestialBody Pcore Planetary Scaling Law
+﻿# PAPER_370 — Multi-Body Solar CelestialBody Pcore Planetary Scaling Law
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2  
 **Session:** 100  
@@ -6,9 +6,11 @@
 **Classification:** FIRST UQFF Pcore planetary scaling law; FIRST UQFF orbital-cycle frequency bridge; FIRST UQFF ice giant (Neptune frozen planet) module  
 **Author:** Daniel T. Murphy  
 
+
+<!-- UQFF constants: κ = 5.0e-4 day⁻¹, [SSq] = 0.57, M_UQFF = 1.43e1 TeV -->
 ---
 
-## 1. Abstract
+## Abstract
 
 This paper establishes the UQFF multi-body solar system framework from the Star Magic_09Sept2025.docx source document, introducing three new physics results: (1) the Pcore planetary scaling law (Pcore=1.0 for stars, Pcore=10⁻³ for planets), (2) the orbital-cycle UQFF frequency bridge (ω_c = 2π/T_orbital for planets vs 2π/T_solar_cycle for the Sun), and (3) the first UQFF module for Neptune as a frozen ice giant at T_surf=72K. The four bodies (Sun, Earth, Jupiter, Neptune) collectively span 8 orders of mass (10²⁴–10³⁰ kg) and 5 orders of SCm_density (10¹¹–10¹⁵ kg/m³), providing a comprehensive planetary validation dataset for UQFF.
 

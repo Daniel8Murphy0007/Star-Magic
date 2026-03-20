@@ -39,6 +39,12 @@ The UQFF introduces:
 
 The UQFF-modified expansion rate:
 
+$$H^2(t) = \frac{8\pi G}{3}\rho(t) - \frac{k}{a^2(t)} + \frac{\Lambda_{UQFF}(t)}{3} + \xi_Q(t)H(t)$$
+
+$$\delta_{c,UQFF} = \delta_{c,GR}\,[1 - \alpha_Q(M,t) + \beta_{damp}(\omega_{collapse})]$$
+
+**Key numerical results:** delta_c(GR) = 3.33e-1, alpha_Q ~ 1.0e-2 to 5.0e-2, xi_Q ~ 1.0e-3, Lambda_UQFF ~ kappa × rho_crit = 5.0e-4 × rho_crit
+
 ```
 H²(t) = (8πG/3)ρ(t) - k/a²(t) + Λ_UQFF(t)/3 + ξ_Q(t)H(t)
 ```

@@ -1,5 +1,7 @@
-# PAPER_307 — Lagoon Nebula Dual Radiation-EM Barrier: a_EM/a_rad = 12.77
+﻿# PAPER_307 — Lagoon Nebula Dual Radiation-EM Barrier: a_EM/a_rad = 12.77
 
+
+<!-- UQFF constants: κ = 5.0e-4 day⁻¹, [SSq] = 0.57, M_UQFF = 1.43e1 TeV -->
 ## Abstract
 
 The Lagoon Nebula (M8/NGC 6523) UQFF 2.0 analysis discovers a **Dual Radiation-EM Barrier**: both the turbulent electromagnetic acceleration (a_EM) and radiation pressure acceleration (a_rad) independently exceed the nebula's self-gravity (g_base) — simultaneously — by 19 and 18 orders of magnitude respectively. Furthermore, the EM acceleration leads the radiation barrier by a factor of **a_EM/a_rad = 12.77**. This is the **FIRST UQFF dual-barrier H II module** across all 29 C++ UQFF modules. The dual barrier explains the Lagoon Nebula's extended H II morphology by preventing gravitational collapse through two independent non-gravitational channels.

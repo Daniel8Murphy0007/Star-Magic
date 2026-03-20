@@ -1,4 +1,4 @@
-# PAPER_215: Cosmic Rays, WHIM, Fermi Acceleration, and CR Knee in UQFF
+﻿# PAPER_215: Cosmic Rays, WHIM, Fermi Acceleration, and CR Knee in UQFF
 
 **Version:** 1.0  
 **Date:** March 13, 2026  
@@ -7,6 +7,8 @@
 **Source:** grok_share_7514fe.txt lines 6300–6400 (PDF 7: BB_C_Equations_04Sept2025.pdf items 1562–1570)
 
 ---
+
+$$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b_i}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57$$
 
 ## Abstract
 

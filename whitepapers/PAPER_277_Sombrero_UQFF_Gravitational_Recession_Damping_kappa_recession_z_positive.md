@@ -1,4 +1,4 @@
-# PAPER_277 — UQFF Gravitational Recession Damping Factor κ_recession for Positive Redshift
+﻿# PAPER_277 — UQFF Gravitational Recession Damping Factor κ_recession for Positive Redshift
 
 **Author:** Daniel T. Murphy
 **Module:** SOMBRERO_UQFF_MODULE.cpp (UQFF 2.0)
@@ -10,6 +10,8 @@
 
 ---
 
+
+<!-- UQFF constants: κ = 5.0e-4 day⁻¹, [SSq] = 0.57, M_UQFF = 1.43e1 TeV -->
 ## Abstract
 
 We introduce the UQFF Gravitational Recession Damping Factor κ_recession = 1/(1+z) for galaxies receding from the observer (positive cosmological redshift z > 0). Applied to the Sombrero Galaxy (M104, z = +0.0063), this factor yields κ_recession = 0.99374, attenuating the total UQFF gravitational output by 0.63% relative to the rest-frame value. This result is the precise complement of PAPER_273's blueshift amplifier (Andromeda, z = −0.001, κ > 1), and together the two whitepapers establish the **Universal UQFF Bidirectional Redshift Law**: the single analytic function κ(z) = 1/(1+z) applies for all z, unifying recession and approach within one UQFF correction framework.

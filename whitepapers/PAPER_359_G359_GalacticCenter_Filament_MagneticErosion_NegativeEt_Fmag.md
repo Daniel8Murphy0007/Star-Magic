@@ -1,4 +1,4 @@
-# PAPER_359 — G359 Galactic Center Filament: Magnetic Erosion E(t) and Negative F_U_Bi_i
+﻿# PAPER_359 — G359 Galactic Center Filament: Magnetic Erosion E(t) and Negative F_U_Bi_i
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2  
 **Session:** 97  
@@ -8,7 +8,7 @@
 
 ---
 
-## 1. Abstract
+## Abstract
 
 The G359 filament complex is a system of non-thermal radio filaments in the Galactic Center region, magnetically anchored by B_0 = 10⁻⁵ T ordered fields threading molecular clouds. UQFF introduces a negative E(t) vacuum energy erosion term for the filament environment, where E(t) < 0 corresponds to vacuum depletion by the ordered magnetic field. The magnetic buoyancy force per unit volume F_mag = B₀²/(2μ₀)·V is computed alongside the full F_U_Bi_i ≈ −8.32×10²¹⁷ N.
 

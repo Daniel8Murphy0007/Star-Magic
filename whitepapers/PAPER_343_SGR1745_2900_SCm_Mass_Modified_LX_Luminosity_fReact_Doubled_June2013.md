@@ -1,4 +1,4 @@
-# PAPER_343 — SGR J1745-2900: SC_m Mass-Modified Luminosity and Doubled f_react (June 2013)
+﻿# PAPER_343 — SGR J1745-2900: SC_m Mass-Modified Luminosity and Doubled f_react (June 2013)
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2  
 **Session:** 96  
@@ -8,7 +8,7 @@
 
 ---
 
-## 1. Abstract
+## Abstract
 
 A novel UQFF form for the superconductive modifier SC_m of SGR J1745-2900 is derived as a mass-dependent suppression by the critical field ratio: SC_m = M·(1 − B/B_crit). The X-ray luminosity is expressed as L_X = ρ_vac·f_res·V, coupling vacuum energy density, resonance frequency, and magnetospheric volume. The activation event of June 2013 corresponds to a doubling of f_react, confirmed by the sudden spin-up and luminosity jump. T_surf = 1.16×10⁷ K is derived from the Stefan-Boltzmann radiative balance.
 

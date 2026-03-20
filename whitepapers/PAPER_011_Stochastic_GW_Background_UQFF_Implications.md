@@ -42,6 +42,15 @@ GR prediction:
 ### 2.1 Damping Factor
 
 Each merger contributes strain:
+
+$$h_{UQFF} = D_{total} \times h_{GR}$$
+
+$$\Omega_{GW,UQFF} = D^2_{total} \times \Omega_{GW,GR}$$
+
+$$\Omega_{GW,GR}(f) \sim 10^{-9}\text{ at }f=100\,\mathrm{Hz},\quad D^2_{total}(BNS) = 1.11\times10^{-1}$$
+
+**Key numerical results:** D_total(BNS) = 3.33e-1, D_total(BBH) = 8.10e-1, Omega_GW(GR) ~ 1.0e-9, Omega_GW(UQFF,BNS) ~ 1.11e-10
+
 **h_UQFF = D_total × h_GR**
 
 Energy density scales as:

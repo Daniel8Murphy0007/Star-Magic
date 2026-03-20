@@ -1,4 +1,4 @@
-# PAPER_354 — D_Universe 5th Factor: Spatial Curvature Completion of the 4-Factor Chain (PAPER_296)
+﻿# PAPER_354 — D_Universe 5th Factor: Spatial Curvature Completion of the 4-Factor Chain (PAPER_296)
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2  
 **Session:** 96  
@@ -6,9 +6,11 @@
 **Classification:** FIRST UQFF 5th factor spatial curvature term for D_universe; completes PAPER_296 chain  
 **Author:** Daniel T. Murphy  
 
+
+<!-- UQFF constants: κ = 5.0e-4 day⁻¹, [SSq] = 0.57, M_UQFF = 1.43e1 TeV -->
 ---
 
-## 1. Abstract
+## Abstract
 
 PAPER_296 established a 4-factor chain for the UQFF Universe expansion parameter D_universe. This paper adds the mandatory 5th factor: a spatial curvature correction (1 + k·r_c²), where k is the curvature constant and r_c is the Friedmann comoving curvature radius. The complete 5-factor D_universe is now: D_universe = [4 prior factors] × (1 + k·r_c²). For a flat universe (k = 0), the 5th factor = 1 and PAPER_296 is recovered. For non-flat models, this term accounts for the deviation of cosmic spatial geometry from the Minkowski approximation used in earlier UQFF distance calculations.
 

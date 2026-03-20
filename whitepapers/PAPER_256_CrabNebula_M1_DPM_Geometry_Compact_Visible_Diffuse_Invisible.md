@@ -1,4 +1,4 @@
-# PAPER_256: Crab Nebula M1 DPM Geometry Probe — Compact-Object DPM Visibility vs Diffuse-Gas Invisibility
+﻿# PAPER_256: Crab Nebula M1 DPM Geometry Probe — Compact-Object DPM Visibility vs Diffuse-Gas Invisibility
 
 **Author:** Daniel T. Murphy (daniel.murphy00@gmail.com)
 **Framework:** UQFF v4.27 — Star-Magic Physics
@@ -7,6 +7,8 @@
 **Series:** Phase 2 Session 72d — §3.x ALMA Cycle 12 Neutron Star UQFF Integrals
 
 ---
+
+$$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b_i}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57$$
 
 ## Abstract
 

@@ -1,4 +1,4 @@
-# PAPER_203: UQFF CMB, Structure Growth, Non-Gaussianity, and Curvature Perturbation
+﻿# PAPER_203: UQFF CMB, Structure Growth, Non-Gaussianity, and Curvature Perturbation
 
 **Version:** 1.0  
 **Date:** March 13, 2026  
@@ -7,6 +7,9 @@
 **Source:** grok_share_7514fe.txt lines 6080–6095 (BB_C_Equations items 1380–1430)
 
 ---
+
+$$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b_i}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57$$
+<!-- κ = 5.0e-4 day⁻¹, [SSq] = 0.57, β_i = 6.1e-1 -->
 
 ## Abstract
 

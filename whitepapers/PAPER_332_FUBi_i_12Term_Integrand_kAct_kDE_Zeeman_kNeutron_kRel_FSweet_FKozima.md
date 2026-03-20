@@ -1,4 +1,4 @@
-# PAPER_332 — F_U_Bi_i Complete 12-Term Explicit Integrand: k_act, k_DE, Zeeman Coupling, k_neutron, k_rel, F_Sweet,vac, and F_Kozima Neutron Drop
+﻿# PAPER_332 — F_U_Bi_i Complete 12-Term Explicit Integrand: k_act, k_DE, Zeeman Coupling, k_neutron, k_rel, F_Sweet,vac, and F_Kozima Neutron Drop
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2  
 **Session:** 95  
@@ -8,7 +8,9 @@
 
 ---
 
-## 1. Abstract
+$$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b_i}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57$$
+
+## Abstract
 
 This paper presents the complete 12-term F_U_Bi_i integrand in verbatim form. Prior pipeline whitepapers (PAPER_198 through PAPER_256) documented the F_U_Bi_i framework with the first five terms (vacuum repulsion, DPM momentum, DPM gravity, DPM stability, LENR phonon). This paper formally defines Terms 6–12 which were first revealed in the September 14, 2025 Grok 4 deep-analysis thread: k_act cosine activity coupling, k_DE×L_X dark energy–luminosity product, Zeeman magnetic coupling, k_neutron×σ_n neutron cross-section term, relativistic center-of-mass correction, F_Sweet vacuum (~10⁻³⁹ N, negligible), and F_Kozima neutron drop (~10³⁰–10³³ N, the dominant new-term contribution). These seven new terms complete the F_U_Bi_i force integrand to full 12-term status.
 

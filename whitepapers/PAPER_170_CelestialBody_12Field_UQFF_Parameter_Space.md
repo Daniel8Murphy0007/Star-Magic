@@ -1,4 +1,4 @@
-# PAPER_170: CelestialBody 12-Field UQFF Parameter Space
+﻿# PAPER_170: CelestialBody 12-Field UQFF Parameter Space
 ## Whitepaper §2.4-B | Thread 381a8fe7 | Session 48
 
 ### Abstract
@@ -9,6 +9,8 @@ full FU field. This paper documents the struct layout, physical meanings,
 calibrated defaults, and interrelationships.
 
 ---
+
+$$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b_i}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57$$
 
 ### 1. Struct Layout
 

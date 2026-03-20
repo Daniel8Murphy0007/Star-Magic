@@ -1,4 +1,4 @@
-# PAPER_175: 26 Quantum Energy Levels and Vacuum Energy Density ρ_vac
+﻿# PAPER_175: 26 Quantum Energy Levels and Vacuum Energy Density ρ_vac
 ## Whitepaper §2.4-G | Thread 381a8fe7 | Session 48
 
 ### Abstract
@@ -10,6 +10,8 @@ the level hierarchy, the energy scale formula, and the vacuum energy density
 formulation extracted from the Star Magic theoretical chapters.
 
 ---
+
+$$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b_i}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57$$
 
 ### 1. The 26-Level Energy Hierarchy
 

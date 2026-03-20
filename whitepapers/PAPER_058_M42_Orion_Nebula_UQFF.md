@@ -1,4 +1,4 @@
-# PAPER #58 — M42 Orion Nebula: Peak Gravitational Density in UQFF Suite
+﻿# PAPER #58 — M42 Orion Nebula: Peak Gravitational Density in UQFF Suite
 
 **Title:** M42 Great Orion Nebula: The Highest g_grav Object in the UQFF Cross-Validation Suite — Proximity-Driven Gravitational Dominance and the Trapezium OB Cluster
 
@@ -11,6 +11,8 @@
 
 ---
 
+
+<!-- UQFF constants: κ = 5.0e-4 day⁻¹, [SSq] = 0.57, M_UQFF = 1.43e1 TeV -->
 ## Abstract
 
 M42, the Great Orion Nebula, is the closest massive star-forming HII region to Earth at 410 pc (~1,344 light-years). The UQFF M42Model produces the **highest g_grav in the entire ten-model suite**: g = 6.6376×10⁻¹⁰ m/s², driven primarily by proximity rather than extraordinary mass. Standard g_compressed (1.0533×10⁻²) and R_amplitude (1.1586×10⁻²) confirm M42 is a steady-state, non-compressed HII region. All 4 tests pass with g_grav consistent with a ~1,500–2,000 M☉ ionized cloud at 410 pc. This paper also examines why M42's peak g_grav exceeds Carina (NGC3372, at 2,300 pc, mass ~10⁵ M☉) and derived implications for UQFF distance scaling.
@@ -172,3 +174,6 @@ At g_grav = 6.64×10⁻¹⁰ (M42 scale), the predicted J-shock velocity for a m
 5. **4-decade g_grav span**: Across the 10-model suite, g_grav spans 4 orders of magnitude (M42 → Tarantula), all reproduced from κ and [SSq] alone
 
 *Validator: `validate_all_models.py` M42Model — 4/4 PASS ✓ | κ = 0.0005/day | [SSq] = 0.57*
+
+---
+*See also: PAPER_057 | Part of the Star-Magic UQFF Whitepaper Series.*

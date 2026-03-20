@@ -1,4 +1,4 @@
-# PAPER_344 — Sgr A* GW Precession-Squared Form and JWST 2025 Flare Frequency Derivation
+﻿# PAPER_344 — Sgr A* GW Precession-Squared Form and JWST 2025 Flare Frequency Derivation
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2  
 **Session:** 96  
@@ -8,7 +8,7 @@
 
 ---
 
-## 1. Abstract
+## Abstract
 
 A novel squared gravitational wave precession operator is derived for Sgr A* as GW_prec² = (GM²/c⁴r)(dΩ/dt)². A second-order perturbation term pert2 = 3GM/r³·sin(30°) captures the inclined S2 stellar orbit at θ = 30°, coupling orbital geometry to the UQFF vacuum field. JWST 2025 near-infrared flare observations yield f_flare = 5.56×10⁻⁴ Hz, directly constraining the vacuum reactance frequency f_TRZ for Sgr A*.
 

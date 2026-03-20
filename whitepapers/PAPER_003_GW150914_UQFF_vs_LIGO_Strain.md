@@ -32,6 +32,12 @@ GW150914 is the first directly detected gravitational wave event, a binary black
 
 UQFF modifies the propagating strain amplitude through four coupled vacuum channels:
 
+$$h_{UQFF}(t) = h_{GR}(t) \times F_{combined}(t)$$
+
+$$F = A_{aether} \times A_{SCm} \times A_{TRZ} \times A_{string} = 1.0 \times 1.0 \times 0.90 \times 0.37 = 0.333$$
+
+**Key numerical results:** F_combined = 3.33e-1, h_GR(peak) ~ 1.0e-21 strain at 150 Hz, h_UQFF = 3.33e-22 strain, D_L = 4.10e2 Mpc
+
 **h_UQFF(t) = h_GR(t) × F_combined(t)**
 
 where the combined factor:

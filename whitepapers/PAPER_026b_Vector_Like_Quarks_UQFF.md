@@ -1,4 +1,4 @@
-# PAPER_026b: Vector-Like Quarks — UQFF Mass Generation and LHC Constraints
+﻿# PAPER_026b: Vector-Like Quarks — UQFF Mass Generation and LHC Constraints
 
 **Authors:** Daniel Murphy & UQFF Research Collective  
 **Date:** 2026-03-07  
@@ -7,6 +7,8 @@
 **arXiv Context:** 2506.15515 (ATLAS VLQ search, Run 2), 2506.15164 (JUNO PMT neutrino mass sensitivity)
 
 ---
+
+$$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b_i}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57$$
 
 ## Abstract
 

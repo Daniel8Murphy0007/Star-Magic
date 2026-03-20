@@ -1,4 +1,4 @@
-# PAPER_362 — H₂O/H₂ Rotor Phillips Cross-Section: σ(E) = a(1−e^{−bE}) Form and UQFF Rate Constant
+﻿# PAPER_362 — H₂O/H₂ Rotor Phillips Cross-Section: σ(E) = a(1−e^{−bE}) Form and UQFF Rate Constant
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2  
 **Session:** 97  
@@ -6,9 +6,11 @@
 **Classification:** FIRST UQFF molecular rotor Phillips cross-section formula with k_rate = σ·v_therm  
 **Author:** Daniel T. Murphy  
 
+
+<!-- UQFF constants: κ = 5.0e-4 day⁻¹, [SSq] = 0.57, M_UQFF = 1.43e1 TeV -->
 ---
 
-## 1. Abstract
+## Abstract
 
 The H₂O/H₂ rotational excitation cross-section from the Phillips (1994) energy-dependent formula σ(E) = a·(1 − e^{−bE}) is connected to the UQFF framework. The calibrated parameters a = 15.28 Å² (saturation cross-section) and b = 0.00387 cm (energy slope parameter) reproduce σ(300 cm⁻¹) = 10.50 Å². The UQFF rate constant k_rate = σ·v_therm links the molecular cross-section to the vacuum buoyancy scale via the U_UA coupling established in PAPER_341.
 

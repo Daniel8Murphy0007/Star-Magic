@@ -1,4 +1,4 @@
-# PAPER_348 — Stephan's Quintet Shock Ridge: F_U_Bi_i with KE Density and LENR Energy Coupling
+﻿# PAPER_348 — Stephan's Quintet Shock Ridge: F_U_Bi_i with KE Density and LENR Energy Coupling
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2  
 **Session:** 96  
@@ -6,9 +6,11 @@
 **Classification:** FIRST UQFF F_U_Bi_i for an intergalactic shock ridge with LENR coupling  
 **Author:** Daniel T. Murphy  
 
+
+<!-- UQFF constants: κ = 5.0e-4 day⁻¹, [SSq] = 0.57, M_UQFF = 1.43e1 TeV -->
 ---
 
-## 1. Abstract
+## Abstract
 
 The complete UQFF buoyancy-unified force F_U_Bi_i is computed for the Stephan's Quintet compact group intergalactic shock ridge. The 1500 km/s relative velocity of the NGC 7318b intruder galaxy generates a kinetic energy density KE_den = ½ρ·Δv², which couples to the UQFF vacuum field via FLEENR (Low Energy Nuclear Reaction force component). The shock ridge lies at x_2 = 290 Mly and yields F_U_Bi_i ≈ −8.32×10²¹⁷ N.
 

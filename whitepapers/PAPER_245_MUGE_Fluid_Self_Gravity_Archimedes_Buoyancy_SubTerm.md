@@ -1,4 +1,4 @@
-# PAPER_245: MUGE Fluid Self-Gravity Archimedes Buoyancy Sub-Term — Universal Gravitational Buoyancy
+﻿# PAPER_245: MUGE Fluid Self-Gravity Archimedes Buoyancy Sub-Term — Universal Gravitational Buoyancy
 
 **Author:** Daniel T. Murphy (daniel.murphy00@gmail.com)
 **Framework:** UQFF v4.27 — Star-Magic Physics
@@ -7,6 +7,8 @@
 **Series:** Phase 2 Session 62 — §3.x Universal MUGE Sub-Term Integration
 
 ---
+
+$$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b_i}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57$$
 
 ## Abstract
 

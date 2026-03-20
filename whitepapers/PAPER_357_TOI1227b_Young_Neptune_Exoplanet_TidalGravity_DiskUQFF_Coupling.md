@@ -1,4 +1,4 @@
-# PAPER_357 — TOI-1227b: Young Neptune Exoplanet with Tidal Gravity and Disk-UQFF Coupling
+﻿# PAPER_357 — TOI-1227b: Young Neptune Exoplanet with Tidal Gravity and Disk-UQFF Coupling
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2  
 **Session:** 97  
@@ -6,9 +6,11 @@
 **Classification:** FIRST UQFF calculation for a young exoplanet (T_age = 11 Myr) with tidal + disk force coupling  
 **Author:** Daniel T. Murphy  
 
+
+<!-- UQFF constants: κ = 5.0e-4 day⁻¹, [SSq] = 0.57, M_UQFF = 1.43e1 TeV -->
 ---
 
-## 1. Abstract
+## Abstract
 
 TOI-1227b is a rare young sub-Neptune (T_age = 11 Myr, P_orb = 11 days) still embedded in the debris disk of its M-dwarf host. UQFF computes the tidal gravitational acceleration g_tide = GM_star/a_orb² at the orbital radius, a disk-UQFF force F_disk = ρ_disk·v_disk²·(1+H₀t)·SC_m incorporating Hubble expansion and superconductive modifier, and the full F_U_Bi_i. TOI-1227b provides a benchmark for UQFF at typical planetary mass and orbital scales during the planet formation epoch.
 

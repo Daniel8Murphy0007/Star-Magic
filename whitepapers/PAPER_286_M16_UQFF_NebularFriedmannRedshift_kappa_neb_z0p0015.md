@@ -1,4 +1,4 @@
-# PAPER_286: M16 Eagle Nebula UQFF — Nebular Friedmann Redshift Parameter κ_neb
+﻿# PAPER_286: M16 Eagle Nebula UQFF — Nebular Friedmann Redshift Parameter κ_neb
 ## First UQFF Nebular Module with z > 0: H(z=0.0015) = 70.047 km/s/Mpc
 
 **Classification:** UQFF 2.0 Gravitational Physics — Nebular Cosmological Coupling  
@@ -8,7 +8,7 @@
 
 ---
 
-## 1. Abstract
+## Abstract
 
 M16 (Eagle Nebula, IC 4703) is located at ~5700 light-years distance, corresponding to cosmological redshift z = 0.0015. While this redshift is sub-Hubble (far smaller than extragalactic objects), it is **non-zero**, making M16 the **first UQFF nebular module to carry a cosmological redshift parameter**. This paper defines the **UQFF Nebular Redshift Parameter** κ_neb = [H(z=0.0015) − H(z=0)] / H(z=0) = **6.71 × 10⁻⁴**, quantifying the fractional departure of the Friedmann Hubble rate at M16's redshift from the present-epoch value. The expansion coupling term g_exp = g_base × H(z=0.0015) × t contributes g_exp ≈ 5.21 × 10⁻¹⁶ m/s² at t = 5 Myr — tiny but formally catalogued for the first time in UQFF nebular physics.
 
