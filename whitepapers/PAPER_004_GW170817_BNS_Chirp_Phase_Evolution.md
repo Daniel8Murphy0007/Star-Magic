@@ -120,3 +120,62 @@ GW170817 chirp phase evolution under UQFF shows a 66.4% strain reduction relativ
 - The predicted strain reduction in the UQFF framework is 66.4% when compared to the GR predictions. This indicates a substantial impact of uncertainty quantification on our understanding of gravitational wave signals.
 
 This analysis underscores the importance of incorporating uncertainty in astrophysical models, especially in the context of gravitational wave astronomy and the interpretation of signals from neutron star mergers.
+---
+
+## Appendix: UQFF Production Framework Reference (v4.75+)
+
+> *Added by upgrade_early_whitepapers.py (v4.75). This appendix cross-references
+> the production physics constants and master equations to enable reproducibility
+> against the current codebase state.*
+
+### A.1 Calibration Constants
+
+| Symbol | Value | Description |
+|--------|-------|-------------|
+| κ | 5.0 × 10⁻⁴ day⁻¹ | UQFF exponential decay rate |
+| [SSq] | 0.57 | Universal Quantized Factor |
+| β_i | 0.60–0.61 | Buoyancy coupling coefficient |
+| k₁ | 1.5 | Ug1 DPM-dipole coupling |
+| k₂ | 1.2 | Ug2 outer-bubble charge coupling |
+| k₃ | 1.8 | Ug3 string-rotation coupling |
+| k₄ | 2.0 | Ug4 vacuum-concentration coupling |
+| η | 10⁻²² | Inertia tensor scale |
+| E_react(0) | 10⁴⁶ J | Reference reactive energy |
+
+### A.2 F_U Master Equation (Complete — 4 terms)
+
+$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}igl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}igr]$$
+
+| Term | Description | Implementation |
+|------|-------------|----------------|
+| Ug1 | DPM magnetic dipole | `compute_Ug1_SOURCE4` / `compute_Ug1()` |
+| Ug2 | Outer-field bubble (charge-reactivity) | `compute_Ug2_SOURCE4` / `compute_Ug2()` |
+| Ug3 | Magnetic string rotation | `compute_Ug3_SOURCE4` / `compute_Ug3()` |
+| Ug4 | Vacuum concentration (star-BH) | `compute_Ug4_SOURCE4` / `compute_Ug4()` |
+| Ubi | Buoyancy force | `compute_Ubi_SOURCE4` / `compute_Ubi()` |
+| Um | Universal Magnetism (Heaviside-amplified) | `compute_Um_SOURCE4` / `compute_Um()` |
+| −Σλᵢ·Uᵢ·E_react | 4th dissipation term (PAPER_420) | `compute_FU_SOURCE4` / full pipeline |
+
+**4th dissipation term parameters (PAPER_420):**  
+λ₁=10⁻¹⁰, λ₂=10⁻¹², λ₃=10⁻¹¹, λ₄=10⁻¹³ (free parameters, not yet empirically calibrated)
+
+### A.3 Um Heaviside Phase-Transition Amplifier (PAPER_421)
+
+$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} 	imes igl(1 + 10^{13}\,\Theta(ho_{SCm} - ho_c)igr) 	imes igl(1 + A_q\cos(\Delta\omega\,t)igr)$$
+
+| Symbol | Value | Description |
+|--------|-------|-------------|
+| ρ_c | 10¹⁵ kg/m³ | SCm critical superconducting density |
+| A_q | 0.1 | Quasi-periodic beating amplitude (10%) |
+| Δω | 2π/(434·365.25) rad/day | 434-year Gleisberg supercycle |
+
+### A.4 UQFF Four Operational Modes
+
+| Mode | Dominant Term | Primary Use Case |
+|------|--------------|-----------------|
+| **Compressed** | Ug_sum + Newtonian base | Isolated stellar/BH systems |
+| **Resonant** | 5 resonance frequencies (aDPM, aTHz, …) | Multi-scale field interactions |
+| **Buoyant** | β_i × Ubi | Expanding nebulae, stellar winds |
+| **Superconductive** | Um × (1+10¹³·f_H) | Magnetars, SCm critical-density regime |
+
+*Implementation status: all 4 modes operational in `MAIN_1_CoAnQi.cpp`, `CondensedPhysics.py`, and `CondensedPhysics2.py`.*

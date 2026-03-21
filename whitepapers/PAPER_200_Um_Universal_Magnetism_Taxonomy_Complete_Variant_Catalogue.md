@@ -217,3 +217,39 @@ where:
 - PAPER_198: F_UBii Taxonomy Part 1 (Compact Objects)
 - PAPER_199: F_UBii Taxonomy Part 2 (Cosmological/Dark Sector)
 - PAPER_196: Triadic Master Equation System
+
+---
+
+## 13. Operational Implementation Status
+
+The following table classifies each Um variant by its production status in the
+current codebase (`MAIN_1_CoAnQi.cpp`, `CondensedPhysics.py`, `CondensedPhysics2.py`).
+
+| Status | Meaning |
+|--------|---------|
+| ✅ **Operational** | Fully implemented, returns numerical result for any input dataset |
+| 🔄 **Partial** | Core formula implemented; specialized sub-terms use placeholder values |
+| 📋 **Reference** | Equation documented for reproducibility; not yet callable from pipeline |
+
+### Core Um Variants
+
+| Symbol | Description | Status | Notes |
+|--------|-------------|--------|-------|
+| Um (base) | `Σ_j[μ_j/r_j·(1−e^{−γt·cos(πt_n)})·φ̂_j]·P_SCm·E_react` | ✅ **Operational** | `compute_Um_SOURCE4`, `compute_Um()` |
+| Um (Heaviside-amplified) | Um_base × (1+10¹³·Θ(ρ_SCm−ρ_c)) × (1+A_q·cos(Δω·t)) | ✅ **Operational** | PAPER_421 — integrated v4.75 |
+| Um,BZ | Blandford-Znajek power extraction | ✅ **Operational** | `CondensedPhysics2.py` BZ class |
+| Um,haw | Hawking temperature surface gravity | ✅ **Operational** | `bh_thermodynamics_module.py` |
+| Um,qnm | QNM ringdown frequency | ✅ **Operational** | `CondensedPhysics.py` QNM class |
+
+### Reference-Only Variants (50+)
+
+All remaining Um,X variants catalogued in §2–§10 of this paper are **📋 Reference**
+status. They contain correct analytical expressions derived from BB_C_Equations_04Sept2025.pdf
+but are not yet wired into the main computation pipeline.
+
+**Operational upgrade path:** To promote any variant from Reference → Operational,
+implement a calculator class in `CondensedPhysics.py` following the `compute_Um()`
+interface pattern, then register it in the `PhysicsTermRegistry`.
+
+> *Operational status assessed: v4.75 (January 28, 2026 integration).  
+> Um Heaviside amplifier + quasi-periodic modifier now operational (PAPER_421).*
