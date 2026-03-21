@@ -5581,6 +5581,194 @@ class Session112GrokC020496d9ExhaustiveAuditHubCalculator(_CP4Calculator):
 
 
 # ===========================================================================
+# Session 113 — grok_share_c020496d9e.txt RE-ANALYSIS (focused buoyancy/systems)
+# PAPER_423: Um Complete with SSq Vacuum Thermal Damping  e^{-[SSq]}
+# ===========================================================================
+
+class UmCompleteSSqVacuumThermalDampingCalculator(_CP4Calculator):
+    """CP4 #76 — PAPER_423: Complete U_m with [SSq] vacuum thermal damping factor.
+
+    Source: grok_share_c020496d9e.txt  —  "Sub-Equations (Updated)" /
+    "DPM Creation Scenario Update" sections.  Explicit document formula:
+
+      Um = Σ_j [μ_j(t,ρ_vac,[SCm]) / r_j · (1−e^{−γt}·cos(πt_n)) · φ̂_j]
+           · P_SCm · E_react
+           · (1 + 10^13 · f_Heaviside)   ← SCm phase-transition jump (PAPER_421)
+           · (1 + f_quasi)                ← quasi-periodic beating (PAPER_421)
+           · e^{−[SSq]}                   ← vacuum thermal damping  (NEW ← PAPER_423)
+
+    PAPER_421 (Session 111) captured the Heaviside and quasi-periodic terms.
+    This session's re-analysis identified the remaining `e^{−[SSq]}` multiplier
+    absent from all existing U_m calculators. At [SSq]=0.57, e^{−0.57}≈0.566,
+    reducing the already-amplified U_m by ~43.4% — a physically significant
+    thermal vacuum attenuation.
+
+    VERIFICATION (no prior class has all three modifiers):
+      - CP3 UmBilinearHeavisideNeutrinoVacuumCascadeCalculator: Heaviside only
+      - CP4 UmHeavisideQuasiPeriodicSCmPhaseTransitionAmplifierCalculator:
+            Heaviside + quasi — MISSING e^{-[SSq]}
+      - All other Um classes: base form only
+    """
+    PAPER   = 'PAPER_423'
+    SESSION = 113
+
+    SSQ_DEFAULT    = 0.57          # calibrated [SSq] = 0.57
+    RHO_C_DEFAULT  = 1e15          # kg/m³ — critical SCm density for Heaviside
+    A_Q_DEFAULT    = 0.1           # quasi-periodic amplitude
+    DELTA_OMEGA    = 2 * 3.14159265358979 / (434 * 365.25)  # rad/day (434-yr beat)
+
+    def compute(self, dataset: dict) -> dict:
+        import math
+
+        # Base Um parameters
+        mu_j    = dataset.get('mu_j',      2.26e19)   # T·m³ per string
+        r_j     = dataset.get('r_j',       1.496e13)  # m
+        n_str   = dataset.get('n_strings', 1e9)
+        gamma   = dataset.get('gamma',     1e-4)       # day⁻¹
+        t       = dataset.get('t',         0.0)        # days
+        t_n     = dataset.get('t_n',       0.0)
+        P_SCm   = dataset.get('P_SCm',     1.0)
+        E_react = dataset.get('E_react',   1e54)
+        SSq     = dataset.get('SSq',       self.SSQ_DEFAULT)
+
+        # Heaviside: f_H = 1 when ρ_SCm ≥ ρ_c (SC phase)
+        rho_SCm = dataset.get('rho_SCm',   0.0)
+        rho_c   = dataset.get('rho_c',     self.RHO_C_DEFAULT)
+        f_H     = 1.0 if rho_SCm >= rho_c else 0.0
+        heaviside_factor = 1.0 + 1e13 * f_H
+
+        # Quasi-periodic beating
+        A_q     = dataset.get('A_q',       self.A_Q_DEFAULT)
+        delta_w = dataset.get('delta_omega', self.DELTA_OMEGA)
+        f_quasi = A_q * math.cos(delta_w * t)
+        quasi_factor = 1.0 + f_quasi
+
+        # SSq vacuum thermal damping: e^{-[SSq]}
+        ssq_damping = math.exp(-SSq)
+
+        # Base Um
+        cos_ptn = math.cos(math.pi * t_n)
+        decay   = 1.0 - math.exp(-gamma * t * cos_ptn) if t > 0 else 0.0
+        Um_base = (mu_j / r_j) * decay * n_str * P_SCm * E_react
+
+        # PAPER_421 form (Heaviside + quasi only)
+        Um_421 = Um_base * heaviside_factor * quasi_factor
+
+        # PAPER_423 complete form (Heaviside + quasi + SSq damping)
+        Um_full = Um_421 * ssq_damping
+
+        ratio_423_to_421 = ssq_damping  # always exp(-SSq) relative to PAPER_421
+
+        return {
+            'Um_base':              Um_base,
+            'Um_PAPER_421':         Um_421,
+            'Um_PAPER_423_full':    Um_full,
+            'ssq_damping':          ssq_damping,
+            'heaviside_factor':     heaviside_factor,
+            'quasi_factor':         quasi_factor,
+            'ratio_423_to_421':     ratio_423_to_421,
+            'in_sc_phase':          bool(f_H > 0),
+            'primary_equations': [
+                f"Um_base = (μ/r)·decay·n·P_SCm·E_react = {Um_base:.4e}",
+                f"(1+10^13·f_H) = {heaviside_factor:.4e}",
+                f"(1+f_quasi)   = {quasi_factor:.6f}",
+                f"e^{{-[SSq]}}=[SSq={SSq:.3f}] → {ssq_damping:.6f}  [PAPER_423 NEW]",
+                f"Um_PAPER_421  = {Um_421:.4e}",
+                f"Um_PAPER_423  = {Um_full:.4e}  (~{ratio_423_to_421*100:.1f}% of PAPER_421)",
+            ],
+            'available_equations': [
+                "SSq sensitivity: d(Um_423)/d[SSq] = -Um_423 (exponential slope)",
+                "Phase-transition threshold: Um_423 steps by 10^13 at ρ_SCm = ρ_c",
+                "Quasi-periodic envelope: 434-yr Gleisberg modulation on all three factors",
+            ],
+            'simulation_set': {
+                'SSq_sweep':      '[SSq] from 0.1 to 2.0 (damping 90% range)',
+                'rho_SCm_sweep':  'ρ_SCm bracketing ρ_c (Heaviside step)',
+                'temperature_analog': 'ssq_damping as vacuum thermal equilibrium',
+            },
+            'gap_note': (
+                'CODE GAP: PAPER_421 (CP4 #72) is missing the e^{-[SSq]} '
+                'vacuum thermal damping factor. At [SSq]=0.57, e^{-0.57}≈0.566 — '
+                'a ~43.4% reduction in Um after phase-transition amplification. '
+                'Physically: the vacuum cannot sustain infinite amplification; '
+                '[SSq] mediates thermal equilibration of the SCm field.'
+            ),
+        }
+
+
+class Session113GrokC020496d9ReAnalysisHubCalculator(_CP4Calculator):
+    """CP4 #77 — Session 113 Hub: grok_share_c020496d9e.txt focused re-analysis.
+
+    Re-analysis focus: NEW astrophysical systems + NEW buoyancy mathematics.
+
+    ASTROPHYSICAL SYSTEMS:
+      22 systems explicitly extracted by Grok; 7 documents (5,9,13,17,21,25,29)
+      had NO unique equations (structurally identical to compressed form) — all
+      22 are already in the codebase.
+
+    BUOYANCY MATHEMATICS (targeted re-scan):
+      All prior items confirmed already in codebase:
+        ✓ FU_Bi with e^{-(π-t_n)} — CP3 UQFFBuoyancyMasterIntegralCalculator
+        ✓ f_Ub = k_Ub·Δk_η·(ρ_UA/ρ_SCm)·(V_l/V_b) — CP3 full form
+        ✓ H_m buoyancy harmonic series — CP3 DPMHarmonicBuoyancySeriesCalculator
+        ✓ Vacuum Density Series Σ(1/n^26)·[SSq]^n — CP3
+        ✓ F_UV, F_mm, F_hyb — CP3 FUBiiExtendedIntegralCalculator / HierRemnant
+        ✓ F_hier, ΔF decay integral — CP3 RemnantHierarchyDecayCalculator
+        ✓ [SSq] log definition — CP3 line 3791
+        ✓ t_n = t/t_Hubble·(1+H(z)·t_0) — CP3 DPMHarmonicBuoyancySeriesCalculator
+        ✓ f_z,CGM ≈ 1.46×10^{-73} — CP3 UQFFCGMSSqMetallicityCalculator
+        ✓ SSq-resonance e^{-[SSq]·i/26} — CP3 TriadicSSqFeedbackCorrectionCalculator
+        ✓ Dipole Vortex Primes p>26 — CP3 DipoleVortexPrimeEncodingCalculator
+        ✓ U_g2 ACP harmonic form — CP3 DPMHarmonicBuoyancySeriesCalculator
+
+      NEW  (1 genuine gap found):
+        ★ PAPER_423: e^{-[SSq]} vacuum thermal damping on Um — CP4 #76
+    """
+    SESSION = 113
+    PAPERS  = [423]
+
+    SESSION_PHYSICS = {
+        'source_file':    'grok_share_c020496d9e.txt',
+        'reanalysis_of':  'Session 112 source (re-scan for systems + buoyancy)',
+        'focus_areas':    ['new astrophysical systems', 'new buoyancy mathematics'],
+        'systems_found':  0,
+        'buoyancy_gaps_found': 1,
+        'new_items': [
+            'PAPER_423: UmCompleteSSqVacuumThermalDampingCalculator — '
+            'e^{-[SSq]} trailing damping factor on fully-amplified Um '
+            '(Heaviside+quasi+SSq all three combined for first time)',
+        ],
+        'systems_confirmed_existing': [
+            'SGR1745 Magnetar(Doc2a), SgrA*(Doc3), Tapestry(Doc4), Westerlund2(Doc6)',
+            'Pillars(Doc7), Rings(Doc8), NGC2525(Doc10), NGC3603(Doc11)',
+            'BubbleNebula(Doc12), Antennae(Doc14), Horsehead(Doc15)',
+            'NGC1275(Doc16), HUDF(Doc18), NGC1792(Doc19), Sombrero(Doc20)',
+            'Saturn(Doc22), M16_Eagle(Doc23), CrabNebula(Doc24)',
+            'D_universe(Doc26), HAtom(Doc27), HResonance(Doc28), StudentGuide(Doc1)',
+        ],
+        'missing_docs': {
+            5: 'No unique equations — structurally identical to compressed form',
+            9: 'No unique equations — structurally identical to compressed form',
+            13: 'No unique equations — structurally identical to compressed form',
+            17: 'No unique equations — structurally identical to compressed form',
+            21: 'No unique equations — structurally identical to compressed form',
+            25: 'No unique equations — structurally identical to compressed form',
+            29: 'Universe diameter source doc — eq already in D_universe (Doc26)',
+        },
+    }
+
+    def compute(self, dataset: dict = None) -> dict:
+        return {
+            'session':         113,
+            'source':          'grok_share_c020496d9e.txt',
+            'papers':          self.PAPERS,
+            'n_new_physics':   1,
+            'status':          'COMPLETE — targeted re-analysis finished',
+            'session_physics': self.SESSION_PHYSICS,
+        }
+
+
+# ===========================================================================
 # CP4 REGISTRY
 # ===========================================================================
 
@@ -5672,4 +5860,7 @@ __all__ = [
     # --- Session 112: grok_share_c020496d9e.txt exhaustive audit — PAPER_422 ---
     "UQFF29SystemCrossValidationMatrixCalculator",                   # PAPER_422 (#74)
     "Session112GrokC020496d9ExhaustiveAuditHubCalculator",           # Session 112 hub (#75)
+    # --- Session 113: grok_share_c020496d9e.txt re-analysis (systems + buoyancy) — PAPER_423 ---
+    "UmCompleteSSqVacuumThermalDampingCalculator",                   # PAPER_423 (#76)
+    "Session113GrokC020496d9ReAnalysisHubCalculator",                # Session 113 hub (#77)
 ]

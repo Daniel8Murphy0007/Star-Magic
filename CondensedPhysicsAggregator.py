@@ -772,6 +772,8 @@ from CondensedPhysics4 import (
     Session111Grok755feea7ExhaustiveReanalysisHubCalculator,
     UQFF29SystemCrossValidationMatrixCalculator,
     Session112GrokC020496d9ExhaustiveAuditHubCalculator,
+    UmCompleteSSqVacuumThermalDampingCalculator,
+    Session113GrokC020496d9ReAnalysisHubCalculator,
 )
 
 CP4_CALCULATORS = {
@@ -849,6 +851,8 @@ CP4_CALCULATORS = {
     'Session111Grok755feea7ExhaustiveReanalysisHubCalculator': Session111Grok755feea7ExhaustiveReanalysisHubCalculator,
     'UQFF29SystemCrossValidationMatrixCalculator': UQFF29SystemCrossValidationMatrixCalculator,
     'Session112GrokC020496d9ExhaustiveAuditHubCalculator': Session112GrokC020496d9ExhaustiveAuditHubCalculator,
+    'UmCompleteSSqVacuumThermalDampingCalculator': UmCompleteSSqVacuumThermalDampingCalculator,
+    'Session113GrokC020496d9ReAnalysisHubCalculator': Session113GrokC020496d9ReAnalysisHubCalculator,
 }
 
 # ═══════════════════════════════════════════════════════════════════════════════
