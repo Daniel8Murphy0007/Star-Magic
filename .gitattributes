@@ -8,3 +8,4 @@ source2.cpp filter=lfs diff=lfs merge=lfs -text
 physics_backend.cpp filter=lfs diff=lfs merge=lfs -text
 QCalc.py filter=lfs diff=lfs merge=lfs -text
 index.js filter=lfs diff=lfs merge=lfs -text
+*.pdf binary
