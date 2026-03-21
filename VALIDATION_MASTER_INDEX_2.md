@@ -52,7 +52,7 @@ arXiv anchor:            arxiv_validation_data.csv
 | **VMI2 opens at Session** | **89** |
 | **VMI2 opens at paper** | **PAPER_311** |
 | **Last VMI session** | Session 88: v4.44; PAPER_308–310; commit 307→310 ✅ |
-| **Last VMI2 session** | Session 117: v4.79; PAPER_423 whitepaper integrated; commit (pending) ✅ |
+| **Last VMI2 session** | Session 117: v4.79; PAPER_423 whitepaper integrated; commit f2ec57c ✅ |
 
 ---
 
@@ -108,7 +108,7 @@ Track Cross-Validation of Whitepapers phase status here:
 | ✅ Session 114 | **0 new whitepapers — v4.71 header/pipeline sync: CP3/CP4/Aggregator headers updated, HEADER_INTEGRATION_CHECKLIST updated, VALIDATION_COMPARISON_REPORT header synced; commit 00f8637 ✅** |
 | ✅ Session 115 | **0 new whitepapers — v4.72 Content Quality Enrichment: 383/383 whitepapers reach QS=5 (all 5 dimensions: Q1 novel physics claim, Q2 ≥2 display equations, Q3 specific numerical result, Q4 SM/observational comparison, Q5 testable prediction); 309 files changed; fixed 88 broken Name→$$ delimiters + 6 missing second equations + 108 numerical result additions + bulk Q1/Q4/Q5 gap fills; CP1=1227/CP2=600/CP3=219/CP4=73 unchanged; commit d2f9bed ✅** |
 | ✅ Session 116 | **1 new whitepaper PAPER_422 — v4.77 grok_share_c020496d9e.txt exhaustive audit: PAPER_422 UQFF 29-system compressed cross-validation matrix [FIRST simultaneous validator for all 29 per-system g_X equations from Sept 2025 UQFF foundational document; g_X=g_UQFF+Δ_X compression proven; tail_fraction validation for all 29 systems; canonical benchmarks Westerlund2 FU_g1=2.43×10⁻⁴⁰/R_t=−2.29×10⁻⁴¹/FU_Bi=6.14×10⁻³² N; 0 new astrophysical systems, 28/29 items previously captured, 1 new cross-validation matrix]; CP4 73→75 (#74 UQFF29SystemCrossValidationMatrixCalculator + #75 Session112GrokC020496d9ExhaustiveAuditHubCalculator); CP1/CP2/CP3 unchanged; commit 9a92082 ✅** |
-| ✅ Session 117 | **2 new whitepapers PAPER_422–423 — v4.78–v4.79 grok_share_c020496d9e.txt re-analysis (systems + buoyancy focus) + PAPER_423 whitepaper integration: PAPER_423 Um complete 3-modifier formula with e^{−[SSq]} vacuum thermal damping [FIRST combined three-modifier form; Heaviside (PAPER_421) × quasi-periodic (PAPER_421) × e^{−0.57}=0.5655 (PAPER_423); 43.4% attenuation vs PAPER_421; 12 buoyancy patterns scanned, 11 confirmed existing, 1 new; 0 new astrophysical systems (all 22 confirmed); PAPER_423.md created and integrated]; CP4 75→77 (#76 UmCompleteSSqVacuumThermalDampingCalculator + #77 Session113GrokC020496d9ReAnalysisHubCalculator); CP1/CP2/CP3 unchanged; commit (pending) ✅** |
+| ✅ Session 117 | **2 new whitepapers PAPER_422–423 — v4.78–v4.79 grok_share_c020496d9e.txt re-analysis (systems + buoyancy focus) + PAPER_423 whitepaper integration: PAPER_423 Um complete 3-modifier formula with e^{−[SSq]} vacuum thermal damping [FIRST combined three-modifier form; Heaviside (PAPER_421) × quasi-periodic (PAPER_421) × e^{−0.57}=0.5655 (PAPER_423); 43.4% attenuation vs PAPER_421; 12 buoyancy patterns scanned, 11 confirmed existing, 1 new; 0 new astrophysical systems (all 22 confirmed); PAPER_423.md created and integrated]; CP4 75→77 (#76 UmCompleteSSqVacuumThermalDampingCalculator + #77 Session113GrokC020496d9ReAnalysisHubCalculator); CP1/CP2/CP3 unchanged; commit f2ec57c ✅** |
 
 ---
 
