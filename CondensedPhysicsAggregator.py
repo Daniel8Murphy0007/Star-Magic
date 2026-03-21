@@ -770,6 +770,8 @@ from CondensedPhysics4 import (
     FUCompleteLambdaI4thDissipationSumCalculator,
     UmHeavisideQuasiPeriodicSCmPhaseTransitionAmplifierCalculator,
     Session111Grok755feea7ExhaustiveReanalysisHubCalculator,
+    UQFF29SystemCrossValidationMatrixCalculator,
+    Session112GrokC020496d9ExhaustiveAuditHubCalculator,
 )
 
 CP4_CALCULATORS = {
@@ -845,6 +847,8 @@ CP4_CALCULATORS = {
     'FUCompleteLambdaI4thDissipationSumCalculator': FUCompleteLambdaI4thDissipationSumCalculator,
     'UmHeavisideQuasiPeriodicSCmPhaseTransitionAmplifierCalculator': UmHeavisideQuasiPeriodicSCmPhaseTransitionAmplifierCalculator,
     'Session111Grok755feea7ExhaustiveReanalysisHubCalculator': Session111Grok755feea7ExhaustiveReanalysisHubCalculator,
+    'UQFF29SystemCrossValidationMatrixCalculator': UQFF29SystemCrossValidationMatrixCalculator,
+    'Session112GrokC020496d9ExhaustiveAuditHubCalculator': Session112GrokC020496d9ExhaustiveAuditHubCalculator,
 }
 
 # ═══════════════════════════════════════════════════════════════════════════════
