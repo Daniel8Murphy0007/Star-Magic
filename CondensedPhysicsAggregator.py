@@ -774,6 +774,14 @@ from CondensedPhysics4 import (
     Session112GrokC020496d9ExhaustiveAuditHubCalculator,
     UmCompleteSSqVacuumThermalDampingCalculator,
     Session113GrokC020496d9ReAnalysisHubCalculator,
+    # Session 114 — PAPER_424–429
+    FUBiiUmUniversalCompanionCatalogCalculator,
+    DPMFourComponentCorrelationCalculator,
+    UAScmJWSTALMACERNValidationTableCalculator,
+    TwentySixDResonanceLayerAmplitudeFrequencyCalculator,
+    HResPeriodicTableUniversalNuclearCorrelationCalculator,
+    ThreeNewNumberSystemsVacuumDipoleBuoyancyCalculator,
+    Session114GrokC020496d9DeepPhysicsHubCalculator,
 )
 
 CP4_CALCULATORS = {
@@ -853,6 +861,14 @@ CP4_CALCULATORS = {
     'Session112GrokC020496d9ExhaustiveAuditHubCalculator': Session112GrokC020496d9ExhaustiveAuditHubCalculator,
     'UmCompleteSSqVacuumThermalDampingCalculator': UmCompleteSSqVacuumThermalDampingCalculator,
     'Session113GrokC020496d9ReAnalysisHubCalculator': Session113GrokC020496d9ReAnalysisHubCalculator,
+    # Session 114 — PAPER_424–429
+    'FUBiiUmUniversalCompanionCatalogCalculator': FUBiiUmUniversalCompanionCatalogCalculator,
+    'DPMFourComponentCorrelationCalculator': DPMFourComponentCorrelationCalculator,
+    'UAScmJWSTALMACERNValidationTableCalculator': UAScmJWSTALMACERNValidationTableCalculator,
+    'TwentySixDResonanceLayerAmplitudeFrequencyCalculator': TwentySixDResonanceLayerAmplitudeFrequencyCalculator,
+    'HResPeriodicTableUniversalNuclearCorrelationCalculator': HResPeriodicTableUniversalNuclearCorrelationCalculator,
+    'ThreeNewNumberSystemsVacuumDipoleBuoyancyCalculator': ThreeNewNumberSystemsVacuumDipoleBuoyancyCalculator,
+    'Session114GrokC020496d9DeepPhysicsHubCalculator': Session114GrokC020496d9DeepPhysicsHubCalculator,
 }
 
 # ═══════════════════════════════════════════════════════════════════════════════
