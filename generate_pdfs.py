@@ -536,8 +536,8 @@ def cpp_file_to_pdf(cpp_path: Path, out_dir: Path, styles):
 
 def main():
     repo = Path(__file__).parent
-    out_dir = repo / 'pdfs'
-    out_dir.mkdir(exist_ok=True)
+    out_dir = repo / 'Manuscript 1_12Feb2026' / 'whitepapers_pdf'
+    out_dir.mkdir(parents=True, exist_ok=True)
 
     styles = make_styles()
 
