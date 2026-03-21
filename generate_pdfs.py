@@ -37,13 +37,13 @@ UQFF_DARK       = HexColor('#0d1b2a')   # deep navy
 UQFF_ACCENT     = HexColor('#1a6b8a')   # teal accent
 UQFF_ACCENT2    = HexColor('#2d9cdb')   # lighter teal (h2)
 UQFF_ACCENT3    = HexColor('#56b9da')   # h3
-UQFF_BG_CODE    = HexColor('#1e2a38')   # code block background
+UQFF_BG_CODE    = HexColor('#eef4f8')   # code block background (light)
 UQFF_TEXT       = HexColor('#1c2b36')   # body text
 UQFF_MUTED      = HexColor('#4a6377')   # captions / footers
 UQFF_RULE       = HexColor('#1a6b8a')   # horizontal rule
 UQFF_TABLE_HDR  = HexColor('#1a6b8a')
 UQFF_TABLE_ALT  = HexColor('#e8f4f8')
-UQFF_CODE_TEXT  = HexColor('#d4effa')   # monospace on dark bg
+UQFF_CODE_TEXT  = HexColor('#1c2b36')   # monospace — dark on light bg
 
 # ─── Page geometry ─────────────────────────────────────────────────────────────
 PAGE_W, PAGE_H  = letter
@@ -459,10 +459,10 @@ def cpp_line_markup(line: str) -> tuple[str, str]:
         idx = safe.index('//')
         comment = safe[idx:]
         code    = safe[:idx]
-        code    = _CPP_KW.sub(r'<font color="#56b9da"><b>\1</b></font>', code)
-        safe    = code + f'<font color="#7ec8a8">{comment}</font>'
+        code    = _CPP_KW.sub(r'<font color="#1a6b8a"><b>\1</b></font>', code)
+        safe    = code + f'<font color="#4a7a60">{comment}</font>'
     else:
-        safe = _CPP_KW.sub(r'<font color="#56b9da"><b>\1</b></font>', safe)
+        safe = _CPP_KW.sub(r'<font color="#1a6b8a"><b>\1</b></font>', safe)
     return safe
 
 
