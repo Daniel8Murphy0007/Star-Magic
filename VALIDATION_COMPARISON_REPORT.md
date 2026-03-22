@@ -564,4 +564,4 @@ deviation = abs(measured - predicted) / abs(predicted) * 100
 **For:** Star-Magic UQFF Integration Project
 **Date:** March 20, 2026 (Session 115 sync) — **Last Synced: March 2026 (Session 118, v4.80, CP4 77→84, 429/1000 papers)**
 **User:** Daniel Murphy
-**State:** CP1 = 1,227 classes, CP2 = 600 classes, CP3 = 219 classes, CP4 = 103 classes, Aggregator updated (v4.93), VMI2 v4.93, 454/1000 papers, 383/383 QS=5, commit `ff05e9a`→v4.93
+**State:** CP1 = 1,227 classes, CP2 = 600 classes, CP3 = 219 classes, CP4 = 103 classes, Aggregator updated (v4.93), VMI2 v4.93, 446/1000 papers, 383/383 QS=5, commit `ff05e9a`→v4.93
