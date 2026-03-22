@@ -7262,4 +7262,14 @@ __all__ = [
     "MultiSystemCompressionCycle2Calculator",                        # PAPER_454 (#92)
     "UQFFExpandedSystemRegistryCalculator",                          # PAPER_455 (#93)
     "Session115GrokShare5fa36e4eHubCalculator",                      # Session 115 hub (#94)
+    # --- Session 116: grok_share_e70525fa.txt MUGE+UFE module library — PAPER_456—463 ---
+    "MUGECompressed29SystemUnifiedGravityCalculator",                # PAPER_456 (#95)
+    "MUGECompressed38SystemExtendedEnvCalculator",                   # PAPER_457 (#96)
+    "MUGEFinal7SystemResonanceAccelerationsCalculator",              # PAPER_458 (#97)
+    "UFEOrbPlasmoidDynamicsRedDwarfCalculator",                      # PAPER_459 (#98)
+    "NebularUQFFDrawing32LENRHiggsCalculator",                       # PAPER_460 (#99)
+    "RedDwarfLENRPiSeriesHiggsCalculator",                           # PAPER_461 (#100)
+    "InertiaUQFFWaveEnergyThreeLegProofsetCalculator",               # PAPER_462 (#101)
+    "HydrogenCompressedSpaceEspaceThreeLegCalculator",               # PAPER_463 (#102)
+    "Session116GrokShareE70525FaHubCalculator",                      # Session 116 hub (#103)
 ]
