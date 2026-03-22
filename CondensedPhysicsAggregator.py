@@ -11,8 +11,8 @@ ARCHITECTURE:
     CondensedPhysics.py      → Foundation (1,227 base classes, 168,784 lines)
     CondensedPhysics2.py     → Extension 1 (600 classes, 45,991 lines: Orb Analysis 10/11+ and Grok thread extensions)
     CondensedPhysics3.py     → Extension 2 (219 classes, 13,944 lines: 15+ categories, Sessions 41-96)
-    CondensedPhysics4.py     → Extension 3 (73 classes, 5,336 lines: Phase 4, Sessions 97-115, 2026-03-20)
-    Last updated: Session 115 v4.72 (2026-03-20) — 383/383 whitepaper QS=5 complete; CP totals unchanged
+    CondensedPhysics4.py     → Extension 3 (94 classes, 7,275 lines: Phase 4, Sessions 97-120, 2026-03-22)
+    Last updated: Session 120 v4.90 (2026-03-22) — 15 root-level UQFF C++ module pairs added (grok_share_dc707f5d3); CP4 83→94; PAPER_447–455 integrated
     CondensedPhysicsAggregator.py → This file (unified API)
 
 USAGE:
@@ -687,8 +687,9 @@ from GrokThreadUQFFExtensions import (
 )
 
 # ═══════════════════════════════════════════════════════════════════════════════
-# IMPORT FROM CONDENSEDPHYSICS4.PY (EXTENSION 3 — 73 classes, Sessions 97-111)
+# IMPORT FROM CONDENSEDPHYSICS4.PY (EXTENSION 3 — 94 classes, Sessions 97-120)
 # Source: gok_share_31b5c807a4 + grok_share_11254865 + grok_share_cfdcad2f5 + grok_share_755feea7
+#         + grok_share_c020496d9e + grok_share_5fa36e4e035 + grok_share_dc707f5d3
 # ═══════════════════════════════════════════════════════════════════════════════
 from CondensedPhysics4 import (
     # Sessions 97-98 — CP4 creation + PSZ2 gap fill (PAPER_355–367)
@@ -782,6 +783,17 @@ from CondensedPhysics4 import (
     HResPeriodicTableUniversalNuclearCorrelationCalculator,
     ThreeNewNumberSystemsVacuumDipoleBuoyancyCalculator,
     Session114GrokC020496d9DeepPhysicsHubCalculator,
+    # Session 115 — grok_share_5fa36e4e035.txt UQFF module library (PAPER_447–455)
+    OrionNebulaHAlphaUQFFCalculator,
+    MultiSystemUQFFCoreCalculator,
+    YoungStarsOutflowsPressureCalculator,
+    EagleNebulaWindRadiationCalculator,
+    BigBangCosmicQGDMGWCalculator,
+    CompressedUQFFEnvModularCalculator,
+    MagnetarDualModeUQFFCalculator,
+    MultiSystemCompressionCycle2Calculator,
+    UQFFExpandedSystemRegistryCalculator,
+    Session115GrokShare5fa36e4eHubCalculator,
 )
 
 CP4_CALCULATORS = {
@@ -869,6 +881,17 @@ CP4_CALCULATORS = {
     'HResPeriodicTableUniversalNuclearCorrelationCalculator': HResPeriodicTableUniversalNuclearCorrelationCalculator,
     'ThreeNewNumberSystemsVacuumDipoleBuoyancyCalculator': ThreeNewNumberSystemsVacuumDipoleBuoyancyCalculator,
     'Session114GrokC020496d9DeepPhysicsHubCalculator': Session114GrokC020496d9DeepPhysicsHubCalculator,
+    # Session 115 — PAPER_447–455 (grok_share_5fa36e4e035.txt)
+    'OrionNebulaHAlphaUQFFCalculator': OrionNebulaHAlphaUQFFCalculator,
+    'MultiSystemUQFFCoreCalculator': MultiSystemUQFFCoreCalculator,
+    'YoungStarsOutflowsPressureCalculator': YoungStarsOutflowsPressureCalculator,
+    'EagleNebulaWindRadiationCalculator': EagleNebulaWindRadiationCalculator,
+    'BigBangCosmicQGDMGWCalculator': BigBangCosmicQGDMGWCalculator,
+    'CompressedUQFFEnvModularCalculator': CompressedUQFFEnvModularCalculator,
+    'MagnetarDualModeUQFFCalculator': MagnetarDualModeUQFFCalculator,
+    'MultiSystemCompressionCycle2Calculator': MultiSystemCompressionCycle2Calculator,
+    'UQFFExpandedSystemRegistryCalculator': UQFFExpandedSystemRegistryCalculator,
+    'Session115GrokShare5fa36e4eHubCalculator': Session115GrokShare5fa36e4eHubCalculator,
 }
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -880,7 +903,7 @@ ALL_CALCULATORS = {
     **CP2_CALCULATORS,
     # CP3 Extension 2 (219 classes, 15+ categories, Sessions 41-96 — 2026-03-20)
     **CP3_CALCULATORS,
-    # CP4 Extension 3 (73 classes, Sessions 97-115 — 2026-03-20)
+    # CP4 Extension 3 (94 classes, Sessions 97-120 — 2026-03-22)
     **CP4_CALCULATORS,
     # Grok Thread UQFF Extensions (Thread 9c3666463ac14753b4f3bea869caaf01)
     **GROK_THREAD_UQFF_CALCULATORS,
@@ -897,8 +920,8 @@ ALL_CALCULATORS = {
 
 # Module metadata
 AGGREGATOR_VERSION = "2.6.0"
-TOTAL_MODULES = 22  # CP1 (1,227 classes, 168,784L), CP2 (600 classes, 45,991L), CP3 (219 classes, 13,944L, Sessions 41-96), CP4 (73 classes, 5,336L, Sessions 97-115), + 10 thread registries
-# Updated: Session 115 v4.72 (2026-03-20) — 383/383 whitepapers at QS=5; all CP counts unchanged
+TOTAL_MODULES = 22  # CP1 (1,227 classes, 168,784L), CP2 (600 classes, 45,991L), CP3 (219 classes, 13,944L, Sessions 41-96), CP4 (94 classes, 7,275L, Sessions 97-120), + 10 thread registries
+# Updated: Session 120 v4.90 (2026-03-22) — 15 root-level UQFF C++ module pairs (grok_share_dc707f5d3); CP4 83→94 (PAPER_447–455)
 
 
 def get_calculator(name: str):
