@@ -1,4 +1,28 @@
-/**
+"""
+gen_source10.py — Generator for UQFFSource10.h
+Integration hub and advanced UQFF calculator class.
+Includes all 16 prior MUGE module headers, implements the
+UQFF::Source10 class with:
+  - 5 subsystem forces (F_U_Bi_i, F_vac_rep, F_thz_shock, F_conduit, F_spooky)
+  - 26-layer Triadic UQFF gravity
+  - DPM resonance (Q_wave ≈ 3.11e9 J/m³)
+  - loadConfig(file), setScalingFactor(key,val)
+  - batch_compute_F_U_Bi_i(times, N) with OpenMP
+  - runUnitTests() with 5 assert-based tests
+  - mt19937 rng seeded with chrono::steady_clock
+  - CLI: --test, --profile, count=N, --config=, t=
+
+Run:  python gen_source10.py
+Output: UQFFSource10.h
+"""
+import os
+
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+OUTPUT_FILE = os.path.join(SCRIPT_DIR, "UQFFSource10.h")
+
+
+def get_content():
+    return r"""/**
  * ================================================================================================
  * Header: UQFFSource10.h   (UQFF Integration Hub)
  *
@@ -456,3 +480,16 @@ int main(int argc, char* argv[]) {
 #endif  // UQFF_NO_MAIN
 
 #endif  // UQFF_SOURCE10_H
+"""
+
+
+def main():
+    print("gen_source10.py — Generating UQFFSource10.h ...")
+    content = get_content()
+    with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
+        f.write(content)
+    print(f"  Written: {OUTPUT_FILE}  ({len(content.splitlines())} lines)")
+
+
+if __name__ == "__main__":
+    main()
