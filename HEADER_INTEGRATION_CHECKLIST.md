@@ -67,10 +67,11 @@
 | 116 | `9a92082` | 219 | 600 | 75 | v2.6.0 | 422/1000 |
 | **117** | **`f2ec57c`** | **219** | **600** | **77** | **v2.6.0** | **423/1000** |
 | 118 | `f99d75e` | 219 | 600 | 84 | v2.6.0 | 429/1000 |
-| **119** | **`2c49575`** | **219** | **600** | **101** | **v2.6.0** | **446/1000** |
-| **120** | **`b0c83cb`** | **219** | **600** | **101** | **v2.6.0** | **446/1000** |
+| **119** | **`2c49575`** | **219** | **600** | **84** | **v2.6.0** | **446/1000** |
+| **120** | **`b0c83cb`** | **219** | **600** | **94** | **v2.6.0** | **446/1000** |
+| **116** | **`ff05e9a`** | **219** | **600** | **103** | **v2.6.0** | **454/1000** |
 
-**Current State**: CP1 = 1,227 calculators, CP2 = 600 calculators, CP3 = 219 calculators, CP4 = 101 calculators (no new CP4 classes in Session 120; Aggregator import synced 84→94 adding 10 PAPER_447–455 Session 115 classes), Aggregator v2.6.0, VMI2 v4.90, 446/1000 papers; Session 120 added 15 root-level UQFF C++ module pairs from grok_share_dc707f5d3.txt (+9 observational systems refs); commit b0c83cb
+**Current State**: CP1 = 1,227 calculators, CP2 = 600 calculators, CP3 = 219 calculators, CP4 = 103 calculators (Session 116 v4.93: 9 MUGE+UFE Python classes added #95–#103, PAPER_456–463), Aggregator v2.6.0, VMI2 v4.93, 454/1000 papers; Session 116 added 8 C++ module pairs (modules/muge/ + modules/ufe/) + 9 CP4 Python calculators; commit ff05e9a
 
 ---
 
