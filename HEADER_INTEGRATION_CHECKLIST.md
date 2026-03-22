@@ -71,8 +71,9 @@
 | **120** | **`b0c83cb`** | **219** | **600** | **94** | **v2.6.0** | **446/1000** |
 | **116** | **`ff05e9a`** | **219** | **600** | **103** | **v2.6.0** | **446/1000** |
 | **121** | **v4.94** | **219** | **600** | **103** | **v2.6.0** | **463/1000** |
+| **122** | **v4.95** | **219** | **600** | **103** | **v2.6.0** | **471/1000** |
 
-**Current State**: CP1 = 1,227 calculators, CP2 = 600 calculators, CP3 = 219 calculators, CP4 = 103 calculators (Session 116 v4.93: 9 MUGE+UFE Python classes added #95–#103, PAPER_456–463 reserved), Aggregator v2.6.0, VMI2 v4.94, 463/1000 papers; Session 121 created 17 whitepaper files PAPER_447–463 (Sessions 115+116 physics fully documented); commit v4.94
+**Current State**: CP1 = 1,227 calculators, CP2 = 600 calculators, CP3 = 219 calculators, CP4 = 103 calculators (Session 116 v4.93: 9 MUGE+UFE Python classes added #95–#103, PAPER_456–463 reserved), Aggregator v2.6.0, VMI2 v4.95, 471/1000 papers; Session 122 created 8 whitepaper files PAPER_464–471 (grok_share_dc707f5d3.txt Session 120 C++ module back-fill: M51, NGC1316, V838Mon, NGC1300, SMBHBinary, NGC346, SMBH M-σ, LENR K_η); commit v4.95
 
 ---
 
