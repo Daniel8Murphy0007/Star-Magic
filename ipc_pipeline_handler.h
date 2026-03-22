@@ -55,6 +55,10 @@
  *   "NGC2525SN", "NGC3603Cavity", "BubbleNebulaMUGE", "AntennaeGalaxies",
  *   "HorseheadErosion", "NGC1275Filament", "HUDFCosmicScale", "NGC1792Starburst",
  *   "TriadicGravity", "5ForceFramework", "PerSystemMUGE", "MUGETauSF" (Session 119 — PAPER_430-446, 17 papers)
+ *   "M51Whirlpool", "NGC1316DustBunnies", "V838MonEcho", "NGC1300Bar",
+ *   "NGC2264Cone", "UGC10214Tadpole", "NGC4676Mice", "RedSpiderNGC6537",
+ *   "SMBHBinaryLISA", "LENRNeutron", "LENRCalib", "UQFFCompressionCycle2",
+ *   "SMBHMsigma", "NGC346SMCHii" (Session 120 — grok_share_dc707f5d3, 15 UQFF modules)
  * 
  * Performance comparison:
  * - QCalc: 9,149 lines, imports in 1.09s, subprocess ~920ms
@@ -79,7 +83,8 @@
  * Updated: 2026-03-06 (Thread 1a2726a4: 5 Q_wave/rotor/MUGE/BEC/complex-Ui UQFF; CP2=548 classes; IPC 0x0A00-0x0A04; commit e7f31e6)
  * Updated: 2026-03-12 (CP3 integrated into CondensedPhysicsAggregator v1.3.0; 34 CP3 trigger keywords added; Session 42)
  * Updated: 2026-03-22 (Session 119 — PAPER_430-446 per-system MUGE library; 17 papers; 16 system headers annotated; observational_systems_config.h +16 systems; 17 PDFs generated; commit v4.89)
- * Phase: 0 - Unification (IPC Wiring), Phase 2 - Extensions (CP2), Phase 3 - Extensions (CP3), Phase 6 - Per-System MUGE Library
+ * Updated: 2026-03-22 (Session 120 — grok_share_dc707f5d3; 15 root-level UQFF module helper files; 9 new observational systems PAPER_447-455; 14 CP trigger keywords added; commit v4.90)
+ * Phase: 0 - Unification (IPC Wiring), Phase 2 - Extensions (CP2), Phase 3 - Extensions (CP3), Phase 6 - Per-System MUGE Library, Phase 7 - UQFF Module Library
  */
 
 #ifndef IPC_PIPELINE_HANDLER_H

@@ -603,7 +603,103 @@ static const std::map<std::string, ObservationalSystem> OBSERVATIONAL_SYSTEMS = 
                  1e4,       // T_gas (K, ISM)
                  1e-16,     // omega0 (rad/s, galactic rotation)
                  3.156e15,  // t_age (s, ~100 Myr starburst)
-                 "galaxy", "HST/Chandra/Spitzer"}}};
+                 "galaxy", "HST/Chandra/Spitzer"}},
+
+    // PAPER_447 — M51 Whirlpool Galaxy (tidal NGC5195, 2-arm spiral density wave)
+    {"M51Whirlpool", {"M51 Whirlpool Galaxy (+ NGC 5195)", "Interacting spiral; 2-arm spiral density wave psi=A*exp(-r^2/2sigma^2)*exp(i*(m*theta-omega*t)); tidal merger tau=5e8 yr; BH reaction Ug4; Session 120 (PAPER_447)",
+                      3.182e41,  // M (kg, ~1.6e11 M_sun)
+                      7.277e20,  // r (m, ~23.58 kpc)
+                      1e37,      // L_X (W, spiral galaxy)
+                      1e-5,      // B0 (T, ISM field)
+                      1e-21,     // rho_gas (kg/m^3)
+                      1e4,       // T_gas (K)
+                      1e-16,     // omega0 (rad/s, galactic rotation)
+                      3.156e16,  // t_age (s, ~1 Gyr)
+                      "galaxy", "HST/Chandra/Spitzer/JWST"}},
+
+    // PAPER_448 — V838 Monocerotis (expanding light echo, peak L=2.3e38 W)
+    {"V838Mon", {"V838 Monocerotis (light echo nova)", "Peculiar stellar eruption; expanding light echo R_echo(t)=c*(t_obs-D/c); Ug_echo=G*M/R_echo^2*exp(-R_echo/r0); L_peak=2.3e38 W; Session 120 (PAPER_448)",
+                 1.591e31,  // M (kg, ~8 M_sun progenitor)
+                 5.677e16,  // r (m, ~6 ly light echo radius)
+                 2.3e38,    // L_X (W, peak eruption luminosity)
+                 1e-4,      // B0 (T, stellar field)
+                 1e-22,     // rho_gas (kg/m^3, circumstellar)
+                 3500.0,    // T_gas (K, cool giant)
+                 1e-6,      // omega0 (rad/s, stellar rotation)
+                 6.31e8,    // t_age (s, ~20 yr post-eruption)
+                 "stellar", "HST/Spitzer/VLT/Keck"}},
+
+    // PAPER_449 — NGC1300 Barred Galaxy (bar arm resonance v_arm=200 km/s)
+    {"NGC1300Bar", {"NGC 1300 Barred Spiral Galaxy", "Barred spiral; Ug3_arm=G*M/r_arm^2 bar resonance; v_arm=200 km/s; orbital resonance forcing; Session 120 (PAPER_449)",
+                    1.989e41,  // M (kg, ~1e11 M_sun)
+                    3.638e20,  // r (m, ~11.79 kpc)
+                    1e36,      // L_X (W)
+                    1e-5,      // B0 (T)
+                    1e-21,     // rho_gas (kg/m^3)
+                    1e4,       // T_gas (K)
+                    1e-16,     // omega0 (rad/s)
+                    3.156e16,  // t_age (s, ~1 Gyr)
+                    "galaxy", "HST/VLT"}},
+
+    // PAPER_450 — NGC2264 Cone Nebula (wind erosion F_erode=0.05*(t/3Myr))
+    {"NGC2264ConeNebula", {"NGC 2264 Cone Nebula (Young Stellar Region)", "HII star-forming region; wind erosion F_erode=0.05*(t/3Myr); Ug3'=G*20Msun/r_star^2; M=100 Msun; Session 120 (PAPER_450)",
+                           1.989e32,  // M (kg, ~100 M_sun)
+                           3.31e16,   // r (m, ~1.07 pc)
+                           1e33,      // L_X (W, HII emission)
+                           1e-3,      // B0 (T, HII field)
+                           1e-20,     // rho_gas (kg/m^3)
+                           1e4,       // T_gas (K)
+                           1e-14,     // omega0 (rad/s)
+                           3.156e14,  // t_age (s, ~10 Myr)
+                           "hii_region", "HST/Spitzer/Chandra"}},
+
+    // PAPER_451 — UGC10214 Tadpole Galaxy (tidal tail v_tail=400 km/s, M_dwarf=3.5e9 Msun)
+    {"UGC10214Tadpole", {"UGC 10214 Tadpole Galaxy (tidal encounter)", "Tidal interaction; F_tidal=G*M_dwarf*exp(-t/tau_merge)/d^2; v_tail=400 km/s; tau_merge=2.5e8 yr; Session 120 (PAPER_451)",
+                          1.989e41,  // M (kg, ~1e11 M_sun)
+                          1.697e21,  // r (m, ~55 kpc)
+                          1e37,      // L_X (W)
+                          1e-5,      // B0 (T)
+                          1e-21,     // rho_gas (kg/m^3)
+                          1e4,       // T_gas (K)
+                          1e-16,     // omega0 (rad/s)
+                          3.156e15,  // t_age (s, ~100 Myr encounter)
+                          "galaxy", "HST/ACS"}},
+
+    // PAPER_452 — NGC4676 The Mice (THz H_eff(z)=H(z)*(1+f_THz*log(1+z)), Ug2_THz)
+    {"NGC4676TheMice", {"NGC 4676 The Mice (merging galaxy pair)", "Interacting pair; THz Aether expansion H_eff(z)=H(z)*(1+f_THz*log(1+z)); Ug2_THz time-growing; f_THz=0.05; z=0.022; Session 120 (PAPER_452)",
+                         1.989e41,  // M (kg, ~1e11 M_sun each; 2x5e10)
+                         1.543e21,  // r (m, ~50 kpc)
+                         1e37,      // L_X (W)
+                         1e-5,      // B0 (T)
+                         1e-21,     // rho_gas (kg/m^3)
+                         1e4,       // T_gas (K)
+                         1e-16,     // omega0 (rad/s)
+                         3.156e15,  // t_age (s, ~100 Myr merge stage)
+                         "galaxy", "HST/ACS/Spitzer"}},
+
+    // PAPER_453 — NGC6537 Red Spider Nebula (frequency-domain gravity, a=f_total*lambda_P/(2*pi))
+    {"NGC6537RedSpider", {"NGC 6537 Red Spider Nebula (bipolar PN)", "Bipolar planetary nebula; freq-domain gravity a=f_total*lambda_Planck/(2*pi); f_super=1.411e16 Hz; t_age=1900 yr; Session 120 (PAPER_453)",
+                           1.193e30,  // M (kg, ~0.6 M_sun central WD)
+                           7.1e15,    // r (m, bipolar lobe radius)
+                           1e36,      // L_X (W, hot PN)
+                           1e-4,      // B0 (T)
+                           1e-22,     // rho_gas (kg/m^3, bipolar lobe)
+                           1e5,       // T_gas (K, fast wind plasma)
+                           1e-12,     // omega0 (rad/s)
+                           5.996e10,  // t_age (s, ~1900 yr)
+                           "planetary_nebula", "HST/NICMOS/VLT"}},
+
+    // PAPER_454 — SMBH Binary LISA Source (Peters inspiral r(t)=r0*(1-t/t_coal)^(1/4))
+    {"SMBHBinaryLISA", {"SMBH Binary LISA Gravitational Wave Source", "SMBH binary inspiral; r(t)=r0*(1-t/t_coal)^(1/4) Peters formula; M1=4e6 Msun + M2=2e6 Msun; t_coal=1.555e7 s; freq-domain gravity; Session 120 (PAPER_454)",
+                         1.193e37,  // M (kg, ~6e6 M_sun combined)
+                         9.461e14,  // r (m, ~0.1 ly initial separation)
+                         1e44,      // L_X (W, AGN combined)
+                         1e-4,      // B0 (T, accretion disk)
+                         1e-20,     // rho_gas (kg/m^3, AGN torus gas)
+                         1e8,       // T_gas (K, AGN accretion)
+                         1e-4,      // omega0 (rad/s, SMBH orbit)
+                         1.555e7,   // t_age (s, coalescence time)
+                         "smbh_binary", "LISA/VLBI/HST"}}};
 
 // ============================================================================
 // HELPER FUNCTIONS
