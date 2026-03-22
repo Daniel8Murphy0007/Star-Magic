@@ -12,7 +12,7 @@ ARCHITECTURE:
     CondensedPhysics2.py     → Extension 1 (600 classes, 45,991 lines: Orb Analysis 10/11+ and Grok thread extensions)
     CondensedPhysics3.py     → Extension 2 (219 classes, 13,944 lines: 15+ categories, Sessions 41-96)
     CondensedPhysics4.py     → Extension 3 (94 classes, 7,275 lines: Phase 4, Sessions 97-120, 2026-03-22)
-    Last updated: Session 120 v4.90 (2026-03-22) — 15 root-level UQFF C++ module pairs added (grok_share_dc707f5d3); CP4 83→94; PAPER_447–455 integrated
+    Last updated: Session 120 v4.90 (2026-03-22) — 15 root-level UQFF C++ module pairs added (grok_share_dc707f5d3); CP4 84→94; PAPER_447–455 integrated
     CondensedPhysicsAggregator.py → This file (unified API)
 
 USAGE:
@@ -921,7 +921,7 @@ ALL_CALCULATORS = {
 # Module metadata
 AGGREGATOR_VERSION = "2.6.0"
 TOTAL_MODULES = 22  # CP1 (1,227 classes, 168,784L), CP2 (600 classes, 45,991L), CP3 (219 classes, 13,944L, Sessions 41-96), CP4 (94 classes, 7,275L, Sessions 97-120), + 10 thread registries
-# Updated: Session 120 v4.90 (2026-03-22) — 15 root-level UQFF C++ module pairs (grok_share_dc707f5d3); CP4 83→94 (PAPER_447–455)
+# Updated: Session 120 v4.90 (2026-03-22) — 15 root-level UQFF C++ module pairs (grok_share_dc707f5d3); CP4 84→94 (PAPER_447–455)
 
 
 def get_calculator(name: str):
