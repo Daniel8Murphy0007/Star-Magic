@@ -363,6 +363,7 @@ if(USE_EMBEDDED_WOLFRAM)
     add_executable(MAIN_1_CoAnQi 
         MAIN_1_CoAnQi.cpp
         ipc/uqff_ipc.cpp
+        Core/Modules/WolframFieldUnityModule.cpp
     )
     
     # Disable AUTOMOC for MAIN_1_CoAnQi - it's a pure C++ physics calculator, not a Qt GUI app
@@ -414,6 +415,7 @@ else()
     add_executable(MAIN_1_CoAnQi 
         MAIN_1_CoAnQi.cpp
         ipc/uqff_ipc.cpp
+        Core/Modules/WolframFieldUnityModule.cpp
     )
     
     # Disable AUTOMOC for MAIN_1_CoAnQi - pure C++ physics calculator

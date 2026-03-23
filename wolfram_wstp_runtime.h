@@ -98,11 +98,11 @@ namespace WolframWSTPConstants {
     constexpr double PI_UNITY = 3.141592653589793;
     
     namespace SacredTime {
-        constexpr double INFINITY_RATIO = 3.141592653589793 / 7.0;
+        constexpr double INFINITY_RATIO = 1.000000001;                  // Infinity curve seed (matches WolframFieldUnityModule.h SacredTime)
         constexpr double CONSCIOUSNESS_FREQ = 7.83;    // Schumann resonance (Hz)
         constexpr double GOLDEN_CYCLE = 1.6180339887;  // Golden ratio
         constexpr double MAYAN_BAKTUN = 144000.0;      // 144,000 days
-        constexpr double BIBLE_GENERATION = 40.0;      // 40 years
+        constexpr double BIBLE_GENERATION = 33.333333333333333;         // Biblical generation — Christ+Enoch resonance (33.33 yr)
         constexpr double MAYAN_KATUN = 7200.0;         // 7,200 days
         constexpr double MAYAN_TUN = 360.0;            // 360 days
     }

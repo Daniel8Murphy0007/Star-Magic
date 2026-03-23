@@ -224,10 +224,14 @@ public:
         double chaotic_decimal = PI_MEAN + dis(gen) * CHAOS_RANGE; // Fluctuating π as mean
         if (std::abs(chaotic_decimal - PI_MEAN) < 0.001)
         { // Near ideal: Catalog spinor bundle
+#ifdef USE_EMBEDDED_WOLFRAM
             // Export to Wolfram for verification (via source174)
             std::string eq = "Simplify[(" + std::to_string(void_volume) + ")^3 / (" + std::to_string(VACUUM_CONSTANT) + " / " + std::to_string(J_CONSTANT) + "^3)]";
             std::string wolfram_result = WolframEvalToString(eq);
             std::cout << "Wolfram Spinor Verification: " << wolfram_result << std::endl;
+#else
+            std::cout << "Spinor pattern locked (Wolfram verification skipped — build without WSTP)" << std::endl;
+#endif
         }
     }
 
@@ -386,7 +390,9 @@ void UQFF_SimulateNucleus(double time)
     double quantum_freq = uqff_egg.getQuantumFrequency();
     // Export full 26D state to Wolfram (e.g., for manifold visualization)
     std::string state_eq = "Sphere[26] / Pi"; // Simplified 26D π-mean
+#ifdef USE_EMBEDDED_WOLFRAM
     WolframEvalToString(state_eq);
+#endif
 }
 
 // Standalone main() for testing when compiled directly
