@@ -70,6 +70,10 @@
  *   "SurfaceMagneticField", "SurfaceTemperature", "TimeReversalZone", "Ug1Defect",
  *   "Ug3DiskVector", "AetherVacuumDensity", "UniversalInertiaVacuum", "ScmVacuumDensity",
  *   "UaVacuumDensity", "ScmVelocity" (Session 124 — grok_share_b0a3dc1d, 48 module .h+.cpp implementations)
+ *   "UQFFBuoyancy", "UQFFBuoyancyAstro", "UQFFBuoyancyCNB", "J1610Quasar", "PLCKCluster",
+ *   "PSZ2MergingCluster", "ASKAPTransient", "SonificationCollection", "CentaurusACNB",
+ *   "CNBNeutrinoCoupling", "SweetVacuum", "KozimaDropTNCF", "QuadraticRootIntegral", "LENRDominant"
+ *   (Session 125 — grok_share_4e4d8be1f7; 3 UQFFBuoyancy modules; PAPER_479-480; CNB neutrino term)
  * 
  * Performance comparison:
  * - QCalc: 9,149 lines, imports in 1.09s, subprocess ~920ms
