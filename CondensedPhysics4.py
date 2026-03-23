@@ -8105,4 +8105,8 @@ __all__ = [
     "InertiaUQFFWaveEnergyThreeLegProofsetCalculator",               # PAPER_462 (#101)
     "HydrogenCompressedSpaceEspaceThreeLegCalculator",               # PAPER_463 (#102)
     "Session116GrokShareE70525FaHubCalculator",                      # Session 116 hub (#103)
+    # --- Session 125: grok_share_4e4d8be1f7.txt — UQFFBuoyancy 3 modules, PAPER_479-480 ---
+    "Session125GrokShare4e4d8be1f7HubCalculator",                    # Session 125 hub (#104)
+    # --- Session 126: grok_share_bdfb3a05b06.txt — 43 UQFF modules, PAPER_481-483 ---
+    "Session126GrokShareBdfb3a05b06HubCalculator",                   # Session 126 hub (#105)
 ]

@@ -74,6 +74,13 @@
  *   "PSZ2MergingCluster", "ASKAPTransient", "SonificationCollection", "CentaurusACNB",
  *   "CNBNeutrinoCoupling", "SweetVacuum", "KozimaDropTNCF", "QuadraticRootIntegral", "LENRDominant"
  *   (Session 125 — grok_share_4e4d8be1f7; 3 UQFFBuoyancy modules; PAPER_479-480; CNB neutrino term)
+ *   "ASASSN14liModule", "CrabNebulaModule", "ElGordoModule", "ESO137Module", "IC2163Module",
+ *   "J1610Module", "JupiterAuroraeModule", "LagoonNebulaModule", "M87JetModule", "NGC1365Module",
+ *   "NGC2207Module", "RAquariiModule", "SgrAStarModule", "SPTCLJ2215Module", "StephanQuintetModule",
+ *   "VelaPulsarModule", "HydrogenResonanceModule", "PTOE_NuclearResonance", "StarMagicUQFFModule",
+ *   "AstroSystems4", "NebulaTriadic5", "NebulaTriadic7", "UQFF8AstroSystems", "UQFF8Triadic",
+ *   "AT2024tvd", "NGC4826", "computeGasNebulaIntegration", "computeTriadicSolution", "computeMasterEquations"
+ *   (Session 126 — grok_share_bdfb3a05b06; 43 UQFF modules; PAPER_481-483; 18 individual + PTOE + MultiSystem)
  * 
  * Performance comparison:
  * - QCalc: 9,149 lines, imports in 1.09s, subprocess ~920ms
@@ -100,7 +107,9 @@
  * Updated: 2026-03-22 (Session 119 — PAPER_430-446 per-system MUGE library; 17 papers; 16 system headers annotated; observational_systems_config.h +16 systems; 17 PDFs generated; commit v4.89)
  * Updated: 2026-03-22 (Session 120 — grok_share_dc707f5d3; 15 root-level UQFF module helper files; 9 new observational systems PAPER_447-455; 14 CP trigger keywords added; commit v4.90)
  * Updated: 2026-03-23 (Session 124 — grok_share_b0a3dc1d; 48 module .h+.cpp implementations completed; 48 CP trigger keywords added; MUGEModule.h/.cpp new; commit 2498120 v4.97)
- * Phase: 0 - Unification (IPC Wiring), Phase 2 - Extensions (CP2), Phase 3 - Extensions (CP3), Phase 6 - Per-System MUGE Library, Phase 7 - UQFF Module Library, Phase 8 - Sub-Term Module Implementation
+ * Updated: 2026-03-23 (Session 125 — grok_share_4e4d8be1f7; 3 UQFFBuoyancy C++ modules; PAPER_479-480; CP2 600+2; CP4 103+1; commit v4.98)
+ * Updated: 2026-03-23 (Session 126 — grok_share_bdfb3a05b06; 43 UQFF modules (18 individual + PTOE + 4 multi-system compilers); PAPER_481-483; CP2 +5=605; CP4 +2=105; commit v4.99)
+ * Phase: 0 - Unification (IPC Wiring), Phase 2 - Extensions (CP2), Phase 3 - Extensions (CP3), Phase 6 - Per-System MUGE Library, Phase 7 - UQFF Module Library, Phase 8 - Sub-Term Module Implementation, Phase 9 - Oct2025 Module Suite
  */
 
 #ifndef IPC_PIPELINE_HANDLER_H
