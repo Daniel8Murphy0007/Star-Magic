@@ -1,11 +1,11 @@
 // Abell2256UQFFModule.h
-// Modular C++ implementation of the UQFF Force for Abell 2256 (Galaxy Cluster, merging ICM) in the UQFF framework.
-// Computes F_U_Bi_i,enhanced = ∫_{x1}^{x2} [-F0 + DPM_mom + DPM_grav + DPM_stab + LENR + Activation + DE + EM + Neutron + Rel + Sweet_vac + Kozima] dx
-// Abell 2256: M=1.5e15 M_sun, r=1.42e25 m, level=13; F ≈ -1.23e218 N (largest cluster UQFF output)
-// Cluster physics: merger shocks, radio relics, ICM plasma, Kozima coupling dominant
+// Modular C++ implementation of the UQFF Force for Abell 2256 (Galaxy Cluster) in the Universal Quantum Field Superconductive Framework (UQFF).
+// This module computes F_U_Bi_i,enhanced as integral from x1 to x2 of [-F0 + DPM terms + LENR + activation + DE + EM + neutron + rel + Sweet + Kozima].
 // Pluggable: #include "Abell2256UQFFModule.h"
-// Abell2256UQFFModule mod; mod.computeF_U_Bi(0.0, 1.42e25, 0.0);
-// Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025. Source: grok_share_b0a3dc1d.txt
+// Abell2256UQFFModule mod; mod.computeF_U_Bi(0.0, 1.42e25, 0.0); mod.updateVariable("M", new_value);
+// Variables in std::map; defaults for Abell 2256 (M=1.5e15 M_sun, r=1.42e25 m, level=13); ~ -1.23e218 N at t=0.
+// Approximations: Integral approx via average * Δx; cos(θ)=1; ω_LENR / ω_0 tuned; Sweet/Kozima small/negligible.
+// Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
 #ifndef ABELL_2256_UQFF_MODULE_H
 #define ABELL_2256_UQFF_MODULE_H

@@ -1,11 +1,11 @@
 // ButterflyNebulaUQFFModule.h
-// Modular C++ implementation of the UQFF Force for Butterfly Nebula (NGC 6302) in the UQFF framework.
-// Computes F_U_Bi_i,enhanced = ∫_{x1}^{x2} [-F0 + DPM_mom + DPM_grav + DPM_stab + LENR + Activation + DE + EM + Neutron + Rel + Sweet_vac + Kozima] dx
-// NGC 6302: M=0.64 M_sun, r=3.22e19 m, level=13; F ≈ -2.09e212 N (repulsive stabilization)
-// Kozima: k_n σ_n (ω_LENR/ω_0) ≈ 7.85e30 N; Sweet-Patterson: ρ_[UA] DPM_stab V ≈ 7.09e-39 N
+// Modular C++ implementation of the UQFF Force for NGC 6302 (Butterfly Nebula) in the Universal Quantum Field Superconductive Framework (UQFF).
+// This module computes F_U_Bi_i,enhanced as integral from x1 to x2 of [-F0 + DPM terms + LENR + activation + DE + EM + neutron + rel + Sweet + Kozima].
 // Pluggable: #include "ButterflyNebulaUQFFModule.h"
-// ButterflyNebulaUQFFModule mod; mod.computeF_U_Bi(0.0, 3.22e19, 0.0);
-// Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025. Source: grok_share_b0a3dc1d.txt
+// ButterflyNebulaUQFFModule mod; mod.computeF_U_Bi(0.0, 3.22e19, 0.0); mod.updateVariable("M", new_value);
+// Variables in std::map; defaults for NGC 6302 (M=0.64 M_sun, r=3.22e19 m, level=13); ~ -2.09e212 N at t=0.
+// Approximations: Integral approx via average * Δx; cos(θ)=1; ω_LENR / ω_0 tuned; Sweet/Kozima small/negligible.
+// Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
 #ifndef BUTTERFLY_NEBULA_UQFF_MODULE_H
 #define BUTTERFLY_NEBULA_UQFF_MODULE_H

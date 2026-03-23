@@ -1,7 +1,11 @@
 // SolarCycleFrequencyModule.h
-// Solar 11-year activity cycle: f_sc = 1/(11 yr) ≈ 2.88e-9 Hz.
-// Provides periodic solar wind modulation, magnetic polarity reversal factor, K_p index scaling.
-// Watermark: Copyright - Daniel T. Murphy. Source: grok_share_b0a3dc1d.txt L6284
+// Modular C++ implementation of the Solar Cycle Frequency (ω_c) in the Universal Quantum Field Superconductive Framework (UQFF).
+// This module computes ω_c = 2π / 3.96e8 s⁻¹ (~1.59e-8 rad/s, period ~12.55 years); used in sin(ω_c t) for μ_j in U_m.
+// Pluggable: #include "SolarCycleFrequencyModule.h"
+// SolarCycleFrequencyModule mod; mod.computeMuJExample(0.0); mod.updateVariable("period", new_value);
+// Variables in std::map; example for Sun at t=0 (sin=0, μ_j=3.38e23 T·m³); t~1 year: slight increase.
+// Approximations: Period=3.96e8 s (~12.55 yr); base B_j=1e3 T.
+// Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
 #ifndef SOLAR_CYCLE_FREQUENCY_MODULE_H
 #define SOLAR_CYCLE_FREQUENCY_MODULE_H
@@ -15,18 +19,27 @@
 class SolarCycleFrequencyModule {
 private:
     std::map<std::string, double> variables;
+    double computeOmega_c();
+    double computeSinOmegaCT(double t);
 
 public:
+    // Constructor: Initialize with framework defaults
     SolarCycleFrequencyModule();
+
+    // Dynamic variable operations
     void updateVariable(const std::string& name, double value);
     void addToVariable(const std::string& name, double delta);
     void subtractFromVariable(const std::string& name, double delta);
 
-    double computeCycleFrequency();          // f_sc = 1/(11×3.156e7) ≈ 2.88e-9 Hz
-    double computeAmplitude(double t);       // A cos(2π f_sc t) [unitless modulator]
-    double computePolarityPhase(double t);   // 22-year Hale cycle sign bit
-    double computeSSNModulation(double ssn); // F_10.7 proxy for SFR→v_sw
+    // Core computations
+    double computeOmega_c();  // 2π / period s⁻¹
+    double computeSinOmegaCT(double t);  // sin(ω_c t)
+    double computeMuJExample(double t);  // (10^3 + 0.4 sin(ω_c t)) * 3.38e20 T·m³
+
+    // Output descriptive text
     std::string getEquationText();
+
+    // Print all current variables
     void printVariables();
 };
 

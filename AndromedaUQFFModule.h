@@ -1,12 +1,13 @@
 // AndromedaUQFFModule.h
-// Modular C++ implementation of the UQFF Force for Andromeda Galaxy (M31) in the Universal Quantum Field Superconductive Framework (UQFF).
-// Computes g_Andromeda(r, t) = (G M / r^2)(1 + H(z) t)(1 + f_TRZ) + G M_BH / r_BH^2 + a_dust + EM_term
-// Systems: Andromeda M31 (M=1e12 M_sun, z=-0.001 blueshift, dust lanes, SMBH M_BH=1.4e8 M_sun)
-// g ≈ 6.27 m/s² at t=10 Gyr (dust-dominated, minimal expansion due to blueshift)
-// Pluggable: #include "AndromedaUQFFModule.h"
-// AndromedaUQFFModule mod; mod.computeG(t); mod.updateVariable("v_orbit", 3e5);
-// Variables in std::map; UQFF terms: f_TRZ, Aether vacua ratio for EM enhancement.
-// Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025. Source: grok_share_b0a3dc1d.txt
+// Modular C++ implementation of the Master Universal Gravity Equation (UQFF) for Andromeda Galaxy Evolution.
+// This module can be plugged into a base program by including this header and linking the .cpp.
+// Usage: #include "AndromedaUQFFModule.h"
+// AndromedaUQFFModule mod; mod.computeG(t); mod.updateVariable("M", new_value);
+// Variables stored in std::map for dynamic updates.
+// Includes base gravity with expansion and TRZ, BH term, dust friction a_dust, EM/Aether term.
+// Approximations: z=-0.001 (blueshift); dust scaled by 1e-12; EM normalized to proton mass.
+// Andromeda params: M=1e12 Msun, r=1.04e21 m, M_BH=1.4e8 Msun, v_orbit=2.5e5 m/s, etc.
+// Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
 #ifndef ANDROMEDA_UQFF_MODULE_H
 #define ANDROMEDA_UQFF_MODULE_H

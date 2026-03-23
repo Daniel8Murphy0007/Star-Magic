@@ -1,10 +1,11 @@
 // DPMModule.h
-// Models the Dense Plasma Medium (DPM) birth: 26-sphere pre-Big Bang configuration.
-// Equation: (x-h)²+(y-k)²+(z-l)²=r² for 26 states distributed on unit sphere.
-// [SCm] (massless metal) + [UA] (self-plasmotic vacuum) form the 26-shell EM field → Resonant DPM spheres.
-// Resonance Factor = (G M / r²) × q × Higgs_support; [UA] decays exp(-γt) during inflation.
-// At t_pre=0: Resonance ≈ 1e-11 (normalized); 26 random centers on unit sphere.
-// Watermark: Copyright - Daniel T. Murphy. Source: grok_share_b0a3dc1d.txt L1871
+// Modular C++ implementation of the Birth of Di-Pseudo-Monopole (DPM) in the Universal Quantum Field Superconductive Framework (UQFF).
+// This module models the Pre-Big Bang reaction of [SCm] and [UA] in a 26-shell oscillating EM field, yielding 26 resonant sphere centers.
+// Pluggable: #include "DPMModule.h"
+// DPMModule mod; mod.computeDPM(); mod.updateVariable("num_states", 26);
+// Variables in std::map; computes sphere centers (h,k,l,r) for 26 states; resonant points via standing waves.
+// Approximations: 26 centers distributed on unit sphere; r fixed; [SCm]/[UA] energies as scalars; inflation barriers at -1/2 states.
+// Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
 #ifndef DPM_MODULE_H
 #define DPM_MODULE_H
@@ -15,34 +16,35 @@
 #include <cmath>
 #include <iostream>
 #include <iomanip>
-#include <random>
 
 class DPMModule {
 private:
     std::map<std::string, double> variables;
-    std::vector<std::vector<double>> computeSphereCenters();
+    std::vector<std::vector<double>> computeSphereCenters();  // 26 centers [h,k,l]
     std::vector<double> computeResonantPoints(double h, double k, double l, double r);
 
 public:
+    // Constructor: Initialize with UQFF defaults for DPM birth
     DPMModule();
+
+    // Dynamic variable operations
     void updateVariable(const std::string& name, double value);
     void addToVariable(const std::string& name, double delta);
     void subtractFromVariable(const std::string& name, double delta);
 
-    // Returns 26 sphere centers [[h,k,l], ...] on unit sphere
-    std::vector<std::vector<double>> computeDPM();
+    // Core computations
+    std::vector<std::vector<double>> computeDPM();  // Returns 26 sphere centers [[h,k,l], ...]
+    double computeSCmEnergy();  // [SCm] massless metal energy
+    double computeUAEnergy();   // [UA] self-plasmotic vacuum energy
+    double computeResonanceFactor();  // Belly Button cosmic standing resonance
 
-    // [SCm] massless metal energy (J)
-    double computeSCmEnergy();
-
-    // [UA] self-plasmotic vacuum energy (J)
-    double computeUAEnergy();
-
-    // Belly Button cosmic standing resonance factor
-    double computeResonanceFactor();
-
+    // Output descriptive text
     std::string getEquationText();
+
+    // Print all current variables
     void printVariables();
+
+    // Print DPM sphere centers
     void printDPMSpheres();
 };
 

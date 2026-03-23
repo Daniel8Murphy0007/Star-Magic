@@ -1,7 +1,11 @@
 // ReciprocationDecayModule.h
-// Reciprocation decay rate: γ = γ_0 × exp(-t / τ_rec) — models the decay of UQFF
-// reciprocal field coupling over cosmic time. At τ_rec = 1 Gyr and t=10 Gyr: γ ≈ 4.5e-5 γ_0.
-// Watermark: Copyright - Daniel T. Murphy. Source: grok_share_b0a3dc1d.txt L5712
+// Modular C++ implementation of the Reciprocation Decay Rate (γ) in the Universal Quantum Field Superconductive Framework (UQFF).
+// This module computes γ=0.00005 day⁻¹ (~5.8e-10 s⁻¹); used in exp(-γ t cos(π t_n)) for U_m decay.
+// Pluggable: #include "ReciprocationDecayModule.h"
+// ReciprocationDecayModule mod; mod.computeOneMinusExp(1000.0, 0.0); mod.updateVariable("gamma_day", new_value);
+// Variables in std::map; example for t=1000 days, t_n=0; 1-exp ≈0.049.
+// Approximations: cos(π t_n)=1; timescale ~55 years; μ_j / r_j=2.26e10 T m².
+// Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
 #ifndef RECIPROCATION_DECAY_MODULE_H
 #define RECIPROCATION_DECAY_MODULE_H
@@ -15,19 +19,36 @@
 class ReciprocationDecayModule {
 private:
     std::map<std::string, double> variables;
+    double computeGamma_s();  // γ in s⁻¹
+    double computeCosPiTn(double t_n);
+    double computeExpTerm(double t_day, double t_n);
+    double computeOneMinusExp(double t_day, double t_n);
 
 public:
+    // Constructor: Initialize with framework defaults
     ReciprocationDecayModule();
+
+    // Dynamic variable operations
     void updateVariable(const std::string& name, double value);
     void addToVariable(const std::string& name, double delta);
     void subtractFromVariable(const std::string& name, double delta);
 
-    double computeDecayRate(double t);       // γ = γ_0 exp(-t/τ_rec) [s⁻¹]
-    double computeHalfLife();               // t_½ = τ_rec ln(2) [s]
-    double computeResidual(double t0, double t1); // ∫ γ dt over [t0,t1]
-    double computeUgRecModulation(double Ug, double t); // Ug × γ/γ_0
+    // Core computations
+    double computeGamma_day();  // 0.00005 day⁻¹
+    double computeGamma_s();    // ~5.8e-10 s⁻¹
+    double computeCosPiTn(double t_n);  // cos(π t_n)
+    double computeExpTerm(double t_day, double t_n);  // exp(-γ t cos(π t_n))
+    double computeOneMinusExp(double t_day, double t_n);  // 1 - exp(...)
+    double computeUmExample(double t_day, double t_n, double mu_over_rj = 2.26e10);  // Simplified U_m contrib
+
+    // Output descriptive text
     std::string getEquationText();
+
+    // Print all current variables
     void printVariables();
+
+    // Print decay effects
+    void printDecayEffects(double t_day = 1000.0, double t_n = 0.0);
 };
 
 #endif // RECIPROCATION_DECAY_MODULE_H

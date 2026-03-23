@@ -1,8 +1,11 @@
 // SolarWindBuoyancyModule.h
-// Computes buoyancy modulation by solar wind density: (1 + ε_sw × ρ_vac,sw)
-// ε_sw = 0.001 (unitless); ρ_vac,sw = 8e-21 J/m³; correction ≈ 8e-24 (negligible).
-// In U_bi: the modulation factor stabilizes heliosphere/nebulae via minor SW density effect.
-// Watermark: Copyright - Daniel T. Murphy. Source: grok_share_b0a3dc1d.txt L2277
+// Modular C++ implementation of the Buoyancy Modulation by Solar Wind Density (ε_sw) in the Universal Quantum Field Superconductive Framework (UQFF).
+// This module computes the modulation factor (1 + ε_sw * ρ_vac,sw) in the Universal Buoyancy term U_bi, with ε_sw=0.001 (unitless).
+// Pluggable: #include "SolarWindBuoyancyModule.h"
+// SolarWindBuoyancyModule mod; mod.computeModulationFactor(); mod.updateVariable("epsilon_sw", new_value);
+// Variables in std::map; negligible correction ~8e-24; integrates into U_b1 example computation.
+// Approximations: cos(π t_n)=1; U_UA=1; ρ_vac,sw as energy density (8e-21 J/m^3).
+// Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
 #ifndef SOLAR_WIND_BUOYANCY_MODULE_H
 #define SOLAR_WIND_BUOYANCY_MODULE_H
@@ -16,24 +19,27 @@
 class SolarWindBuoyancyModule {
 private:
     std::map<std::string, double> variables;
-    double computeModulationFactorInternal();
+    double computeModulationFactor();
+    double computeU_b1();  // Example U_b1 integration
 
 public:
+    // Constructor: Initialize with framework defaults
     SolarWindBuoyancyModule();
+
+    // Dynamic variable operations
     void updateVariable(const std::string& name, double value);
     void addToVariable(const std::string& name, double delta);
     void subtractFromVariable(const std::string& name, double delta);
 
-    // ε_sw = 0.001 (fixed)
-    double computeEpsilon_sw();
+    // Core computations
+    double computeEpsilon_sw();  // ε_sw = 0.001 (unitless)
+    double computeModulationFactor();  // 1 + ε_sw * ρ_vac,sw
+    double computeU_b1();  // Full U_b1 with modulation
 
-    // (1 + ε_sw × ρ_vac,sw) modulation factor
-    double computeModulationFactor();
-
-    // Example U_b1 with full modulation
-    double computeU_b1();
-
+    // Output descriptive text
     std::string getEquationText();
+
+    // Print all current variables
     void printVariables();
 };
 

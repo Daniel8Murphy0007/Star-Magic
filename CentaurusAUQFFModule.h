@@ -1,12 +1,11 @@
 // CentaurusAUQFFModule.h
-// Modular C++ implementation of the UQFF Force for Centaurus A (NGC 5128, Radio Galaxy) in the UQFF framework.
-// Computes F_U_Bi_i,enhanced = ∫_{x1}^{x2} [-F0 + DPM_mom + DPM_grav + DPM_stab + LENR + Activation + DE + EM + Neutron + Rel + Sweet_vac + Kozima] dx
-// NGC 5128: M=5.5e9 M_sun, r=1.17e23 m, level=13; F ≈ -8.32e217 N (AGN jet radio galaxy)
-// Kozima: k_n σ_n (ω_LENR/ω_0) ≈ 7.85e30 N; Sweet-Patterson: ρ_[UA] ≈ 7.09e-39 N
-// Supplements PAPER_347 (V-shape jet, 12.5yr activation) with generalized integral formulation.
+// Modular C++ implementation of the UQFF Force for NGC 5128 (Centaurus A, Radio Galaxy) in the Universal Quantum Field Superconductive Framework (UQFF).
+// This module computes F_U_Bi_i,enhanced as integral from x1 to x2 of [-F0 + DPM terms + LENR + activation + DE + EM + neutron + rel + Sweet + Kozima].
 // Pluggable: #include "CentaurusAUQFFModule.h"
-// CentaurusAUQFFModule mod; mod.computeF_U_Bi(0.0, 1.17e23, 0.0);
-// Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025. Source: grok_share_b0a3dc1d.txt
+// CentaurusAUQFFModule mod; mod.computeF_U_Bi(0.0, 1.17e23, 0.0); mod.updateVariable("M", new_value);
+// Variables in std::map; defaults for NGC 5128 (M=5.5e9 M_sun, r=1.17e23 m, level=13); ~ -8.32e217 N at t=0.
+// Approximations: Integral approx via average * Δx; cos(θ)=1; ω_LENR / ω_0 tuned; Sweet/Kozima small/negligible.
+// Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
 #ifndef CENTAURUS_A_UQFF_MODULE_H
 #define CENTAURUS_A_UQFF_MODULE_H

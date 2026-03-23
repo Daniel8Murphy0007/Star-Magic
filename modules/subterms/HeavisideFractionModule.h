@@ -1,7 +1,11 @@
 // HeavisideFractionModule.h
-// Models the Heaviside fraction H(f) = θ(f - f_c) step function: 0 below threshold, 1 above.
-// Used as phase selector in UQFF quantum state transitions and vacuum energy plateaus.
-// Watermark: Copyright - Daniel T. Murphy. Source: grok_share_b0a3dc1d.txt L3669
+// Modular C++ implementation of the Heaviside Component Fraction (f_Heaviside) in the Universal Quantum Field Superconductive Framework (UQFF).
+// This module computes f_Heaviside=0.01 (unitless) and its scaling (1 + 10^13 * f_Heaviside) in Universal Magnetism U_m term.
+// Pluggable: #include "HeavisideFractionModule.h"
+// HeavisideFractionModule mod; mod.computeUmContribution(0.0); mod.updateVariable("f_Heaviside", new_value);
+// Variables in std::map; example for Sun at t=0, t_n=0; amplifies by ~10^11.
+// Approximations: 1 - e^{-γ t cos(π t_n)}=0 at t=0; φ_hat_j=1; P_SCm=1; f_quasi=0.01.
+// Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
 #ifndef HEAVISIDE_FRACTION_MODULE_H
 #define HEAVISIDE_FRACTION_MODULE_H
@@ -15,18 +19,33 @@
 class HeavisideFractionModule {
 private:
     std::map<std::string, double> variables;
+    double computeHeavisideFactor();
+    double computeUmBase(int j, double t);
+    double computeUmContribution(int j, double t);
 
 public:
+    // Constructor: Initialize with framework defaults
     HeavisideFractionModule();
+
+    // Dynamic variable operations
     void updateVariable(const std::string& name, double value);
     void addToVariable(const std::string& name, double delta);
     void subtractFromVariable(const std::string& name, double delta);
 
-    double computeHeaviside(double f);          // H(f): 0 if f < f_c, 1 if f >= f_c
-    double computeSmoothHeaviside(double f);    // Sigmoid approximation: 1/(1+exp(-k(f-f_c)))
-    double computeFraction(double f1, double f2);  // Fraction of [f1,f2] above f_c
+    // Core computations
+    double computeF_Heaviside();  // 0.01 (unitless)
+    double computeHeavisideFactor();  // 1 + 10^13 * f_Heaviside
+    double computeUmContribution(int j, double t);  // U_m single string (J/m^3)
+    double computeUmWithNoHeaviside(int j, double t);  // Without Heaviside
+
+    // Output descriptive text
     std::string getEquationText();
+
+    // Print all current variables
     void printVariables();
+
+    // Print U_m comparison (with/without Heaviside)
+    void printUmComparison(int j = 1, double t = 0.0);
 };
 
 #endif // HEAVISIDE_FRACTION_MODULE_H
