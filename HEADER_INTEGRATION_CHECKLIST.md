@@ -72,8 +72,9 @@
 | **116** | **`ff05e9a`** | **219** | **600** | **103** | **v2.6.0** | **446/1000** |
 | **121** | **v4.94** | **219** | **600** | **103** | **v2.6.0** | **463/1000** |
 | **122** | **v4.95** | **219** | **600** | **103** | **v2.6.0** | **471/1000** |
+| **123** | **v4.96** | **219** | **600** | **103** | **v2.7.0** | **478/1000** |
 
-**Current State**: CP1 = 1,227 calculators, CP2 = 600 calculators, CP3 = 219 calculators, CP4 = 103 calculators (Session 116 v4.93: 9 MUGE+UFE Python classes added #95–#103, PAPER_456–463 reserved), Aggregator v2.6.0, VMI2 v4.95, 471/1000 papers; Session 122 created 8 whitepaper files PAPER_464–471 (grok_share_dc707f5d3.txt Session 120 C++ module back-fill: M51, NGC1316, V838Mon, NGC1300, SMBHBinary, NGC346, SMBH M-σ, LENR K_η); commit v4.95
+**Current State**: CP1 = 1,227 calculators, CP2 = 600 calculators, CP3 = 219 calculators, CP4 = 103 calculators (Session 116 v4.93: 9 MUGE+UFE Python classes added #95–#103, PAPER_456–463 reserved), Aggregator v2.7.0, VMI2 v4.96, 478/1000 papers; Session 123 created 7 whitepaper files PAPER_472–478 + 30 sub-term .h files in modules/subterms/ (from grok_share_b0a3dc1d.txt: Abell2256 UQFF, MUGEModule 7-sys, MUGEResonanceModule 12-sys, SubTerm Catalogue 44 calculators, DPM 26-sphere, β_i buoyancy, aether η); commit v4.96
 
 ---
 
