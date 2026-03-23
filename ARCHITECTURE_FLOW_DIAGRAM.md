@@ -1,10 +1,11 @@
 # Star-Magic UQFF Architecture Flow Diagram
 
-> **Version:** 4.4.0 (CANONICAL - DO NOT DEVIATE)
+> **Version:** 5.0.0 (CANONICAL - DO NOT DEVIATE)
 > **Generated:** 2026-02-21
 > **Updated:** 2026-03-06 (v4.3.7 + Thread f3c55f52 5 vacuum-mediated UQFF + Thread ff01cb3a 5 full-reconstruction UQFF + Thread 3a469fcc 8 canonical UQFF + GW PAPER_016/017/018 + PAPER_UQFF_VacuumEnergy)
 > **Updated:** 2026-03-06 (v4.3.8 + Thread 1a2726a4: 5 Q_wave/rotor/MUGE/BEC/complex-Ui UQFF; CP2=548 classes; IPC 0x0A00-0x0A04; commit e7f31e6)
 > **Updated:** 2026-03-08 (v4.4.0 + Comprehensive 6-Tier Architecture Documentation; §1.10-§1.13 Whitepapers #73-#105 Complete; Mission Cascade Steps 1-7; Complete Header/Pipeline Inventory; Backup File List; MAIN_1=107,019 lines; source2=15,753 lines; CP2=548+ classes)
+> **Updated:** 2026-03-23 (v5.0.0 + Session 129: 7 new UQFF C++ modules from grok_share_97bfeecaa5.txt; 50 total UQFF modules; PAPER_484–490; CP2=600 classes; 490/1000 whitepapers; commit a25a8a4)
 > **Author:** Daniel T. Murphy
 > **CRITICAL:** This is the MASTER architecture document. All other docs must match.
 
@@ -44,6 +45,7 @@
 | **v4.3.7** | **Thread f3c55f52: 5 vacuum-mediated UQFF calculators -> CP2.py (529 classes)** | ✅ **Complete** | bc5ca8f |
 | **v4.3.8** | **Thread 1a2726a4: 5 Q_wave/rotor/MUGE/BEC/complex-Ui UQFF calculators -> CP2.py (548 classes)** | ✅ **Complete** | e7f31e6 |
 | **v4.4.0** | **Comprehensive 6-Tier Architecture Documentation; §1.10-§1.13 Whitepapers #73-#105 Complete (105 total); Mission Cascade Steps 1-7; Complete Header/Pipeline Inventory** | ✅ **Complete** | 4aec717 |
+| **v5.0.0** | **Session 129: grok_share_97bfeecaa5.txt — 7 new UQFF C++ modules (UQFFCalculations/UQFFBuoyancySNR/UQFFCassini/UQFFMultiAstro/UQFFEightAstro/UQFFNineteen26D/WolframFieldUnity); 50 total UQFF modules; PAPER_484–490; 490/1000 whitepapers; CP2=600; 61 PDFs** | ✅ **Complete** | a25a8a4 |
 
 ---
 
@@ -52,7 +54,7 @@
 | Tier | Layer | Programs | Purpose |
 |------|-------|----------|---------|
 | **1** | **USER INTERFACE** | `source2.cpp` (15,753 lines, Qt6, 21 tabs) | Where ALL user workflows begin |
-| **2** | **COMPUTATION** | `MAIN_1_CoAnQi.cpp` (107,019L), `QCalc.py` (9,100+L), `CondensedPhysics.py` (81,626L), `CondensedPhysics2.py` (37,420+L), `uqff_server.js` (index.js lib) | 5 calculators run simultaneously in parallel |
+| **2** | **COMPUTATION** | `MAIN_1_CoAnQi.cpp` (107,019L), `QCalc.py` (9,100+L), `CondensedPhysics.py` (81,626L), `CondensedPhysics2.py` (45,990L, 600 classes), `uqff_server.js` (index.js lib) | 5 calculators run simultaneously in parallel |
 | **3** | **VR/VM BACKEND** | `source2(HEAD PROGRAM).cpp` (2,625L), `physics_backend.cpp` (~12,000L) | GPU-heavy simulations, headless CPU physics |
 | **4** | **IPC LAYER** | `uqff_ipc.h` (515L v3.1), `python_bridge.h`, `physics_service.h` (470L v3.1), `ipc_pipeline_handler.h` | 45-message-type cross-platform pipeline |
 | **5** | **STORAGE** | `bodies_*.csv`, `uqff_results.json`, `CondensedPhysics_OutputData.py`, `session_*.json`, `coAnQi_log_*.txt` | Data persistence and user RECALL |
@@ -631,3 +633,4 @@ CondensedPhysics_OutputData.py
 *Updated: 2026-03-06 (v4.3.7 Thread f3c55f52 + Thread ff01cb3a + Thread 3a469fcc + GW PAPER_016/017/018 + PAPER_UQFF_VacuumEnergy; CP2=529 classes; 19 whitepapers) by Daniel T. Murphy*
 *Updated: 2026-03-06 (v4.3.8 Thread 1a2726a4: Shapiro-Wilk Q_wave normality + H2O-H2 Rotor CS + DPM-THz MUGE + BEC Alpha-Clustering + Superconductive Complex Ui; CP2=548 classes; IPC 0x0A00-0x0A04; commit e7f31e6) by Daniel T. Murphy*
 *Updated: 2026-03-08 (v4.4.0 Comprehensive 6-Tier Architecture + Mission Cascade + Complete Header/Pipeline Inventory + §1.10-§1.13 Whitepapers #73-#105 Complete; MAIN_1=107,019L; source2=15,753L; CP2=548+ classes; 105+ whitepapers) by Daniel T. Murphy*
+*Updated: 2026-03-23 (v5.0.0 Session 129: grok_share_97bfeecaa5.txt 7 new UQFF modules; 50 total UQFF C++ modules; CP2=600 classes; PAPER_484–490; 490/1000 whitepapers; 61 PDFs; commit a25a8a4) by Daniel T. Murphy*

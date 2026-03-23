@@ -2,7 +2,7 @@
 
 ## CANONICAL ARCHITECTURE RULES (DO NOT DEVIATE)
 
-> **CRITICAL:** Read ARCHITECTURE_FLOW_DIAGRAM.md v4.4.0 CANONICAL for complete architecture.
+> **CRITICAL:** Read ARCHITECTURE_FLOW_DIAGRAM.md v5.0.0 CANONICAL for complete architecture.
 
 1. **USER INPUT goes FIRST** → enters through `source2.cpp` (Principal GUI)
 2. **source2.cpp** = Principal GUI application (15,753 lines, user-facing, 21 tabs, Qt6) - **USER STARTS HERE**
@@ -10,7 +10,7 @@
 4. **physics_backend.cpp** = CPU-bound physics server (headless, ~12,000 lines)
 5. **index.js** = LIBRARY INDEX (NOT a calculator) - exports 106 systems for require()
 6. **uqff_server.js** = REST API server that imports index.js library (Port 3141)
-7. **CondensedPhysics2.py** = UQFF Extensions calculator (37,420+ lines, 548+ classes) - **5th parallel calculator**
+7. **CondensedPhysics2.py** = UQFF Extensions calculator (45,990 lines, 600 classes) - **5th parallel calculator**
 
 ### Port Assignments (CANONICAL)
 | Port | Service | Description |
@@ -29,7 +29,7 @@ USER QUERY → source2.cpp (PRINCIPAL GUI, 15,753L) → APIFetch.py (55 APIs) �
    ┌───────────┬────────────┬─────────────────┬──────────────────┬────────────┐
    ▼           ▼            ▼                 ▼                  ▼            
 MAIN_1     QCalc.py   CondensedPhys   CondensedPhysics2.py  uqff_server.js
-CoAnQi.cpp  (9K)      ics.py (81K)    (37K, 548+ classes)   (index.js LIB)
+CoAnQi.cpp  (9K)      ics.py (81K)    (46K, 600 classes)    (index.js LIB)
    │           │            │                 │                  │
    └───────────┴────────────┴─────────────────┴──────────────────┘
                     ↓
@@ -45,7 +45,7 @@ CoAnQi.cpp  (9K)      ics.py (81K)    (37K, 548+ classes)   (index.js LIB)
 ## Big Picture Architecture
 - **6-Tier Cross-Platform System:**
   - **Tier 1 GUI:** `source2.cpp` (15,753 lines, Qt6, 21 tabs) — where ALL user workflows begin
-  - **Tier 2 Compute (5 parallel calculators):** `MAIN_1_CoAnQi.cpp` (107,019 lines) + `QCalc.py` (9,100+L) + `CondensedPhysics.py` (81,626L, 176 classes) + `CondensedPhysics2.py` (37,420+L, 548+ classes) + `uqff_server.js` (imports index.js)
+  - **Tier 2 Compute (5 parallel calculators):** `MAIN_1_CoAnQi.cpp` (107,019 lines) + `QCalc.py` (9,100+L) + `CondensedPhysics.py` (81,626L, 176 classes) + `CondensedPhysics2.py` (45,990L, 600 classes) + `uqff_server.js` (imports index.js)
   - **Tier 3 VR/VM Backend:** `source2(HEAD PROGRAM).cpp` (2,625L GPU) + `physics_backend.cpp` (~12,000L CPU)
   - **Tier 4 IPC:** `uqff_ipc.h` (515L v3.1, 45 message types), `python_bridge.h`, `physics_service.h` (470L v3.1)
   - **Tier 5 Storage:** `bodies_*.csv`, `uqff_results.json`, `CondensedPhysics_OutputData.py` (RECALL)
@@ -60,9 +60,10 @@ CoAnQi.cpp  (9K)      ics.py (81K)    (37K, 548+ classes)   (index.js LIB)
   - **Batch 22** (Jan 28, 2026): 5 PhysicsTerm classes from Astrophysical Transients Module (ASKAP J1832-0911, Helix Nebula, R Aquarii, PN Template, Super Flares)
   - **Batch 23** (Jan 28, 2026): **13 PhysicsTerm classes** from Complete UQFF Validation (κ calibration, [SSq], Gaia DR4, LIGO GWTC-4.0, Neutrino SED, AT2019qiz, Widom-Larsen LENR, BEC Integration, F_U_Bi_i Integral, 4 UQFF Operational Modes: Compressed/Resonant/Buoyant/Superconductive)
   - **Grok Thread Integrations** (Feb–Mar 2026): 8 thread batches — 28+ new CP2 calculator classes (v4.3.1 → v4.3.8, CP2 512→548 classes)
+  - **Session 129** (Mar 23, 2026): 7 new UQFF C++ module pairs from grok_share_97bfeecaa5.txt (UQFFCalculationsModule, UQFFBuoyancySNRModule, UQFFCassiniBuoyancyModule, UQFFMultiAstroSystemsModule, UQFFEightAstroSystemsModule, UQFFNineteenAstroSystemsModule, WolframFieldUnityModule); PAPER_484–490; **50 total UQFF C++ modules**; v5.00
   - 6,688+ physics terms registered (Wolfram KB + extracted modules + validation batches)
   - 57 files skipped (GUI infrastructure, duplicate wrappers)
-- **Whitepaper Suite:** 105+ whitepapers complete (§1.1–§1.13, commit 4aec717, March 8, 2026) — includes §1.13 Millennium Prize papers (Navier-Stokes, Yang-Mills, Riemann, P≠NP)
+- **Whitepaper Suite:** 490/1,000 whitepapers in progress (105+ formal §1.1–§1.13 committed March 8, 2026; PAPER_001–490 total, 49.0% of target) — includes §1.13 Millennium Prize papers (Navier-Stokes, Yang-Mills, Riemann, P≠NP)
 - **UQFF Solvability:** 99.9% (Grok 4 analysis Sept 14-21, 2025), calibrated constants: κ=0.0005/day, [SSq]=0.57, H_SCm≈0.99, U_UA≈0.0001, k_η=10⁻¹¹³, β_i≈0.603
 - **Self-Expanding Framework 2.0:** Dynamic term registration, runtime parameters, state export/import, auto-optimization, metadata tracking
 - **Build System:** CMake + Visual Studio 2022 (MSVC 14.44.35219), C++20 standard, Windows threading compatibility, UPX 5.0.2 compression (1.43 MB, 15.51% ratio)

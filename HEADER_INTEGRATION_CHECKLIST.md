@@ -75,8 +75,12 @@
 | **123** | **v4.96** | **219** | **600** | **103** | **v2.7.0** | **478/1000** |
 | **124** | **v4.97** | **219** | **600** | **103** | **v2.7.0** | **478/1000** |
 | **125** | **v4.98** | **219** | **600** | **103** | **v2.8.0** | **480/1000** |
+| **126** | **`84907b3`** | **219** | **600** | **103** | **v2.8.0** | **483/1000** |
+| **127** | **`d5db462`** | **219** | **600** | **103** | **v2.8.0** | **483/1000** |
+| **128** | *(scan only)* | **219** | **600** | **103** | **v2.8.0** | **483/1000** |
+| **129** | **`a25a8a4`** | **219** | **600** | **103** | **v2.9.0** | **490/1000** |
 
-**Current State**: CP1 = 1,227 calculators, CP2 = 600 calculators, CP3 = 219 calculators, CP4 = 103 calculators (Session 116 v4.93: 9 MUGE+UFE Python classes added #95–#103, PAPER_456–463 reserved), Aggregator v2.7.0, VMI2 v4.97, 478/1000 papers; Session 124 completed .cpp implementations for all 48 modules from grok_share_b0a3dc1d.txt (6 root-level + 42 modules/subterms/); 48 .h files corrected with source-exact signatures; new MUGEModule.h/.cpp; 96 files changed 8,263 insertions; commit 2498120 (v4.97)
+**Current State**: CP1 = 1,227 calculators, CP2 = 600 calculators, CP3 = 219 calculators, CP4 = 103 calculators, Aggregator v2.9.0, VMI2 v5.00, **490/1000 papers**; Session 129 v5.00: 7 new UQFF C++ modules from grok_share_97bfeecaa5.txt (UQFFCalculationsModule, UQFFBuoyancySNRModule, UQFFCassiniBuoyancyModule, UQFFMultiAstroSystemsModule, UQFFEightAstroSystemsModule, UQFFNineteenAstroSystemsModule, WolframFieldUnityModule); 50 total UQFF modules; PAPER_484–490 created + renamed + 7 PDFs; commit a25a8a4 (v5.00)
 
 ---
 
