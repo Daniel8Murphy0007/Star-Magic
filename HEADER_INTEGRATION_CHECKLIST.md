@@ -79,8 +79,10 @@
 | **127** | **`d5db462`** | **219** | **600** | **103** | **v2.8.0** | **483/1000** |
 | **128** | *(scan only)* | **219** | **600** | **103** | **v2.8.0** | **483/1000** |
 | **129** | **`a25a8a4`** | **219** | **600** | **103** | **v2.9.0** | **490/1000** |
+| **130** | **`de4894f`** | **219** | **600** | **103** | **v2.9.0** | **490/1000** |
+| **131** | **`(Session 131)`** | **219** | **610** | **103** | **v3.1.0** | **494/1000** |
 
-**Current State**: CP1 = 1,227 calculators, CP2 = 600 calculators, CP3 = 219 calculators, CP4 = 103 calculators, Aggregator v2.9.0, VMI2 v5.00, **490/1000 papers**; Session 129 v5.00: 7 new UQFF C++ modules from grok_share_97bfeecaa5.txt (UQFFCalculationsModule, UQFFBuoyancySNRModule, UQFFCassiniBuoyancyModule, UQFFMultiAstroSystemsModule, UQFFEightAstroSystemsModule, UQFFNineteenAstroSystemsModule, WolframFieldUnityModule); 50 total UQFF modules; PAPER_484–490 created + renamed + 7 PDFs; commit a25a8a4 (v5.00)
+**Current State**: CP1 = 1,227 calculators, CP2 = 610 calculators (+4 Session 131), CP3 = 219 calculators, CP4 = 103 classes / 110 registry entries, Aggregator v3.1.0, VMI2 v5.02, **494/1000 papers**; Session 131 v5.02: QCalc.py 4 new calculators (MUGECalculator/MUGEResonanceCalculator/UniversalFieldCalculator/BSMParticleCalculator) + 42 new CONSTANTS; CP2 mirrored with 4 new classes (MUGECompressedNineTermCalculator, MUGEResonanceThirteenModeCalculator, UniversalFieldDecompositionCalculator, BSMParticleObservablesCalculator); CP4 registry updated #106–#110; PAPER_491–494 created; Session 130 v5.01: C++ PhysicsTerm registry repair (Batches 20+21, 743 new terms, wolfram_sources_bridge.cpp); commit de4894f
 
 ---
 

@@ -8109,4 +8109,10 @@ __all__ = [
     "Session125GrokShare4e4d8be1f7HubCalculator",                    # Session 125 hub (#104)
     # --- Session 126: grok_share_bdfb3a05b06.txt — 43 UQFF modules, PAPER_481-483 ---
     "Session126GrokShareBdfb3a05b06HubCalculator",                   # Session 126 hub (#105)
+    # --- Session 131: QCalc.py Batch 20/21 expansion — PAPER_491–494 ---
+    "MUGECompressedNineTermCalculator",                               # PAPER_491 (#106)
+    "MUGEResonanceThirteenModeCalculator",                           # PAPER_492 (#107)
+    "UniversalFieldDecompositionCalculator",                         # PAPER_493 (#108)
+    "BSMParticleObservablesCalculator",                              # PAPER_494 (#109)
+    "Session131QCalcBatch2021ExpansionHubCalculator",                # Session 131 hub (#110)
 ]
