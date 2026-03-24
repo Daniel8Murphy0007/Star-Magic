@@ -301,6 +301,26 @@ static const std::map<std::string, ObservationalSystem> OBSERVATIONAL_SYSTEMS = 
                1.43e10, // t_age (s, ~453 years)
                "snr", "Chandra/XMM/VLA"}},
 
+    // SNR G272.2-03.2 — Added Session 133 (grok_share_c35c3b7a1, Nov 24-28 2025)
+    // Chandra "cosmic gourd" Nov 2025 release; Type Ia thermal composite; Vela constellation
+    // Cosmic Egg connection: egg-hatching shell morphology; SCm shell collapse (Type Ia no NS)
+    {"SNR_G272", {"SNR G272.2-03.2 (Cosmic Gourd)", "Type Ia supernova remnant in Vela; thermal composite; Chandra Nov 2025 release; ~7500 yr; UQFF egg-hatching structure",
+                  4e30,    // M (kg, ~2 M_sun ejecta + swept ISM at 7500 yr)
+                  4e17,    // r (m, ~13 pc at 2.5 kpc, 17.5 arcmin diameter)
+                  2e29,    // L_X (W, cooling older remnant, Chandra detected)
+                  5e-8,    // B0 (T, compressed ISM magnetic field at shock)
+                  5e-23,   // rho_gas (kg/m³, Vela ISM density)
+                  1e7,     // T_gas (K, shock-heated, cooling at 7500 yr)
+                  0.0,     // omega0 (rad/s, Type Ia — no neutron star remnant)
+                  2.37e11, // t_age (s, ~7500 years × 3.156e7 s/yr)
+                  "snr", "Chandra/XMM-Newton",
+                  2,       // Dominant Epoch: 2 (Star/Planetary — SN remnant post-stellar death)
+                  false,   // No Epoch 1 (pre-stellar phase past)
+                  true,    // Epoch 2 (stellar death/remnant expansion) ← DOMINANT
+                  false,   // No Epoch 3 (not galactic scale)
+                  false,   // No Epoch 4 (no SMBH/magnetar — Type Ia)
+                  false}}, // No Epoch 5 (not globular cluster)
+
     // ========== GALAXIES (Source157, 158, 160) ==========
 
     {"M74", {"M74 (NGC 628)", "Grand design spiral galaxy",
