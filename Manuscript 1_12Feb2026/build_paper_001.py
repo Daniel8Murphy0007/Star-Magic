@@ -15,7 +15,8 @@ from reportlab.platypus import (
 )
 import os
 
-OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+_SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+OUT = os.path.join(os.path.normpath(os.path.join(_SCRIPT_DIR, "..", "pdf")),
                    "PAPER_001_GW170817_UQFF_Damping_Analysis.pdf")
 
 W, H = A4

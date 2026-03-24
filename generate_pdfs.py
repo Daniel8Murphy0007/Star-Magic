@@ -536,7 +536,7 @@ def cpp_file_to_pdf(cpp_path: Path, out_dir: Path, styles):
 
 def main():
     repo = Path(__file__).parent
-    out_dir = repo / 'Manuscript 1_12Feb2026' / 'whitepapers_pdf'
+    out_dir = repo / 'pdf'
     out_dir.mkdir(parents=True, exist_ok=True)
 
     styles = make_styles()
@@ -567,7 +567,7 @@ def main():
 
     print('\n── Markdown papers ──────────────────────────────────────────────────')
     for fname in md_targets:
-        src = repo / fname
+        src = repo / 'whitepapers' / fname
         if not src.exists():
             print(f'  [SKIP]  {fname}  (not found)')
             errors.append(f'NOT FOUND: {fname}')

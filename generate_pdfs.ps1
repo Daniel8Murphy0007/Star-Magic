@@ -1,5 +1,6 @@
 $pandoc = "$env:LOCALAPPDATA\Pandoc\pandoc.exe"
 $xe    = "C:\Users\tmsjd\AppData\Local\Programs\MiKTeX\miktex\bin\x64\xelatex.exe"
+$srcDir = "whitepapers"
 $outDir = "pdf"
 if (!(Test-Path $outDir)) { New-Item -ItemType Directory -Path $outDir | Out-Null }
 
@@ -28,8 +29,9 @@ $ok = 0; $fail = 0; $failList = @()
 foreach ($md in $papers) {
     $stem = $md -replace '\.md$', ''
     $pdf  = Join-Path $outDir "$stem.pdf"
+    $src  = Join-Path $srcDir $md
     Write-Host -NoNewline "[$($ok+$fail+1)/17] $md ... "
-    $err = & $pandoc $md -o $pdf `
+    $err = & $pandoc $src -o $pdf `
         "--pdf-engine=$xe" `
         -V "geometry:margin=1in" `
         -V "fontsize=11pt" `

@@ -16,6 +16,7 @@ from reportlab.platypus import (
 import os
 
 DIR = os.path.dirname(os.path.abspath(__file__))
+PDF_DIR = os.path.normpath(os.path.join(DIR, "..", "pdf"))
 W, H = A4
 TW = W - 2.2 * inch
 
@@ -107,7 +108,7 @@ def build(out_path, story):
 # PAPER_371 — MUGE 12-Term Superconductive Resonance
 # ═══════════════════════════════════════════════════════
 def build_371():
-    out = os.path.join(DIR, "PAPER_371_MUGE_12Term_Superconductive_Resonance.pdf")
+    out = os.path.join(PDF_DIR, "PAPER_371_MUGE_12Term_Superconductive_Resonance.pdf")
     s = title_block("PAPER_371",
         "MUGE 12-Term Superconductive Resonance Framework",
         "101", "grok_share_11254865.txt (lines 2000-2700)")
@@ -235,7 +236,7 @@ def build_371():
 # PAPER_372 — Compressed UQFF with B/Bcrit Superconductivity
 # ═══════════════════════════════════════════════════════
 def build_372():
-    out = os.path.join(DIR, "PAPER_372_Compressed_UQFF_Bcrit.pdf")
+    out = os.path.join(PDF_DIR, "PAPER_372_Compressed_UQFF_Bcrit.pdf")
     s = title_block("PAPER_372",
         "Compressed UQFF with B/B" + SUB("crit") + " Superconductivity",
         "101", "grok_share_11254865.txt (lines 2700-3400)")
@@ -318,7 +319,7 @@ def build_372():
 # PAPER_373 — Morris-Thorne Wormhole Null Geodesics
 # ═══════════════════════════════════════════════════════
 def build_373():
-    out = os.path.join(DIR, "PAPER_373_MorrisThorne_Wormhole_Null_Geodesics.pdf")
+    out = os.path.join(PDF_DIR, "PAPER_373_MorrisThorne_Wormhole_Null_Geodesics.pdf")
     s = title_block("PAPER_373",
         "Morris-Thorne Wormhole Null Geodesics",
         "101", "grok_share_11254865.txt (lines 2700-2800)")
@@ -415,7 +416,7 @@ def build_373():
 # PAPER_374 — J1610+1811 Relativistic Quasar Jet UQFF-NS Coupling
 # ═══════════════════════════════════════════════════════
 def build_374():
-    out = os.path.join(DIR, "PAPER_374_J1610_Relativistic_Quasar_Jet.pdf")
+    out = os.path.join(PDF_DIR, "PAPER_374_J1610_Relativistic_Quasar_Jet.pdf")
     s = title_block("PAPER_374",
         "J1610+1811 Relativistic Quasar Jet UQFF&#8211;NS Coupling",
         "101", "grok_share_11254865.txt (lines 5100-5200)")
@@ -498,7 +499,7 @@ def build_374():
 # PAPER_375 — UQFF Advanced Integration
 # ═══════════════════════════════════════════════════════
 def build_375():
-    out = os.path.join(DIR, "PAPER_375_UQFF_Advanced_Integration.pdf")
+    out = os.path.join(PDF_DIR, "PAPER_375_UQFF_Advanced_Integration.pdf")
     s = title_block("PAPER_375",
         "UQFF Advanced Integration:<br/>Wormhole-MUGE | Meissner Exponential"
         "<br/>Relativistic &#947; | Error Propagation",
@@ -608,7 +609,7 @@ def build_375():
 # PAPER_376 — UQFF Resonance Superconductive Formal Proof Set
 # ═══════════════════════════════════════════════════════
 def build_376():
-    out = os.path.join(DIR, "PAPER_376_UQFF_Resonance_Formal_Proof_Set.pdf")
+    out = os.path.join(PDF_DIR, "PAPER_376_UQFF_Resonance_Formal_Proof_Set.pdf")
     s = title_block("PAPER_376",
         "UQFF Resonance Superconductive Formal Proof Set",
         "102", "grok_share_11254865.txt (lines 6001-10322)")

@@ -5,7 +5,7 @@ Universal markdown → PDF converter for the Star-Magic UQFF whitepaper series.
 Processes every PAPER_*.md in:
   - <repo>/whitepapers/
   - <repo>/  (root, excluding already-covered ones)
-Outputs all PDFs to:  <repo>/Manuscript 1_12Feb2026/whitepapers_pdf/
+Outputs all PDFs to:  <repo>/pdf/
 Requires: pip install reportlab
 """
 
@@ -28,7 +28,7 @@ except ImportError:
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 REPO_DIR   = os.path.dirname(SCRIPT_DIR)
 WP_DIR     = os.path.join(REPO_DIR, "whitepapers")
-OUT_DIR    = os.path.join(SCRIPT_DIR, "whitepapers_pdf")
+OUT_DIR    = os.path.join(REPO_DIR, "pdf")
 os.makedirs(OUT_DIR, exist_ok=True)
 
 # ── Styles ───────────────────────────────────────────────────────────────────
