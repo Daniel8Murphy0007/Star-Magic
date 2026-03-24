@@ -82,7 +82,7 @@
 | **130** | **`de4894f`** | **219** | **600** | **103** | **v2.9.0** | **490/1000** |
 | **131** | **`(Session 131)`** | **219** | **610** | **103** | **v3.1.0** | **494/1000** |
 
-**Current State**: CP1 = 1,227 calculators, CP2 = 610 calculators (+4 Session 131), CP3 = 219 calculators, CP4 = 103 classes / 110 registry entries, Aggregator v3.1.0, VMI2 v5.02, **494/1000 papers**; Session 131 v5.02: QCalc.py 4 new calculators (MUGECalculator/MUGEResonanceCalculator/UniversalFieldCalculator/BSMParticleCalculator) + 42 new CONSTANTS; CP2 mirrored with 4 new classes (MUGECompressedNineTermCalculator, MUGEResonanceThirteenModeCalculator, UniversalFieldDecompositionCalculator, BSMParticleObservablesCalculator); CP4 registry updated #106–#110; PAPER_491–494 created; Session 130 v5.01: C++ PhysicsTerm registry repair (Batches 20+21, 743 new terms, wolfram_sources_bridge.cpp); commit de4894f
+**Current State**: CP1 = 1,227 calculators, CP2 = 610 calculators (+4 Session 131), CP3 = 219 calculators, CP4 = 103 classes / 110 registry entries, Aggregator v3.1.0, VMI2 v5.02, **494/1000 papers**; Session 131 v5.02: QCalc.py 4 new calculators (MUGECalculator/MUGEResonanceCalculator/UniversalFieldCalculator/BSMParticleCalculator) + 42 new CONSTANTS; CP2 mirrored with 4 new classes (MUGECompressedNineTermCalculator, MUGEResonanceThirteenModeCalculator, UniversalFieldDecompositionCalculator, BSMParticleObservablesCalculator); CP4 registry updated #106–#110; PAPER_491–494 created + 4 PDFs generated (65 total); Session 130 v5.01: C++ PhysicsTerm registry repair (Batches 20+21, 743 new terms, wolfram_sources_bridge.cpp); commit de4894f
 
 ---
 

@@ -54,7 +54,7 @@ arXiv anchor:            arxiv_validation_data.csv
 | **VMI2 opens at paper** | **PAPER_311** |
 | **Last VMI session** | Session 88: v4.44; PAPER_308–310; commit 307→310 ✅ |
 | **Last VMI2 session** | Session 131 v5.02: QCalc.py 4 new calculators (MUGE/Resonance/UniversalField/BSM) + 4 new CP2 classes + 4 new CP4 registry entries + PAPER_491–494; commits 3d2559e (QCalc) ✅ |
-| **PDFs generated** | **61 PDFs** in pdf/ directory (PAPER_430–446 Session 119; PAPER_447–483 Session 127; PAPER_484–490 Session 129) |
+| **PDFs generated** | **65 PDFs** in pdf/ directory (PAPER_430–446 Session 119; PAPER_447–483 Session 127; PAPER_484–490 Session 129; PAPER_491–494 Session 131) |
 
 ---
 
