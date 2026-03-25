@@ -1,4 +1,4 @@
-# PAPER_536 — Shell Radiance Prototype Equation: Full 26D Layer Formulation
+# PAPER_519 — Shell Radiance Prototype Equation: Full 26D Layer Formulation
 
 **Author:** Daniel T. Murphy  
 **Framework:** Star-Magic / UQFF  
@@ -130,5 +130,5 @@ mass-origin problem and unify observable cosmology with 26D UQFF geometry.
 
 ---
 
-*See also: PAPER_533 (DPM Shell Radiance), PAPER_534 (Negative Time Proof),
-PAPER_535 (DPM Forces), PAPER_537 (Session 140 Hub).*
+*See also: PAPER_516 (DPM Shell Radiance), PAPER_517 (Negative Time Proof),
+PAPER_518 (DPM Forces), PAPER_520 (Session 140 Hub).*

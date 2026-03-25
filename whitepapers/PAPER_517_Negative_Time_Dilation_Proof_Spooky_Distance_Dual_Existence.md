@@ -1,4 +1,4 @@
-# PAPER_534 — Negative Time Dilation Proof: Spooky Distance & Dual Existence Mathematics
+# PAPER_517 — Negative Time Dilation Proof: Spooky Distance & Dual Existence Mathematics
 
 **Author:** Daniel T. Murphy  
 **Framework:** Star-Magic / UQFF  
@@ -126,5 +126,5 @@ for bidirectional causality in 26D shells without violating locality.
 
 ---
 
-*See also: PAPER_533 (DPM Shell Radiance), PAPER_535 (DPM Forces),
-PAPER_536 (Shell Radiance Prototype), PAPER_537 (Session 140 Hub).*
+*See also: PAPER_516 (DPM Shell Radiance), PAPER_518 (DPM Forces),
+PAPER_519 (Shell Radiance Prototype), PAPER_520 (Session 140 Hub).*

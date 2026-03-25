@@ -1,4 +1,4 @@
-"""build_papers_533_537.py -- Generate PDFs for PAPER_533-537 (Session 140)
+"""build_papers_516_520.py -- Generate PDFs for PAPER_516-520 (Session 140)
 Source: grok_share_0f5d4c91f2c.txt — BigBangHypergraphTheory recalculation
 5 papers: DPM Shell Radiance, Negative Time Proof, DPM Forces, Shell Prototype, Hub
 """
@@ -15,15 +15,15 @@ styles  = genpdf.make_styles()
 
 targets = [
     # Session 140: grok_share_0f5d4c91f2c.txt — DPM Shell Radiance & Negative Time
-    'PAPER_533_DPM_Layered_Shell_Energy_Radiance_Phase_Cascade.md',
-    'PAPER_534_Negative_Time_Dilation_Proof_Spooky_Distance_Dual_Existence.md',
-    'PAPER_535_DPM_Unified_Inertia_Centripetal_Centrifugal_Forces.md',
-    'PAPER_536_Shell_Radiance_Prototype_Full_26D_Layer_Formulation.md',
-    'PAPER_537_Session140_Hub_DPM_Shell_Radiance_Negative_Time_Forces.md',
+    'PAPER_516_DPM_Layered_Shell_Energy_Radiance_Phase_Cascade.md',
+    'PAPER_517_Negative_Time_Dilation_Proof_Spooky_Distance_Dual_Existence.md',
+    'PAPER_518_DPM_Unified_Inertia_Centripetal_Centrifugal_Forces.md',
+    'PAPER_519_Shell_Radiance_Prototype_Full_26D_Layer_Formulation.md',
+    'PAPER_520_Session140_Hub_DPM_Shell_Radiance_Negative_Time_Forces.md',
 ]
 
 print('=' * 70)
-print('  UQFF PDF Generator -- PAPER_533-537 (Session 140)')
+print('  UQFF PDF Generator -- PAPER_516-520 (Session 140)')
 print('  Source: grok_share_0f5d4c91f2c.txt')
 print('  Physics: DPM Shell Radiance, Negative Time, DPM-Unified Forces')
 print(f'  Output: {out_dir}')
@@ -52,4 +52,4 @@ if errors:
     sys.exit(1)
 else:
     print(f'  All {len(targets)} PDFs generated successfully.')
-    print('  Session 140 complete: PAPER_533-537')
+    print('  Session 140 complete: PAPER_516-520')

@@ -1,4 +1,4 @@
-# PAPER_535 — DPM-Unified Inertia, Centripetal, and Centrifugal Forces: Resolving the Classical Conundrum
+# PAPER_518 — DPM-Unified Inertia, Centripetal, and Centrifugal Forces: Resolving the Classical Conundrum
 
 **Author:** Daniel T. Murphy  
 **Framework:** Star-Magic / UQFF  
@@ -40,7 +40,7 @@ equilibrium defines mass occurrence without invoking any intrinsic property.
 $$\boxed{F_{\text{inert}} = -\frac{\partial\bigl(DPM_{\text{react}} \cdot
 ShellEnergy\bigr)}{\partial v^{26}} \cdot t_{\text{neg}}}$$
 
-- $DPM_{\text{react}}$ is the DPM reaction strength (see PAPER_533 §3.2)
+- $DPM_{\text{react}}$ is the DPM reaction strength (see PAPER_516 §3.2)
 - $ShellEnergy$ is the layer-integrated radiance
 - $t_{\text{neg}} < 0$: the negative time factor ensures $F_{\text{inert}} > 0$
   (resists velocity change)
@@ -134,5 +134,5 @@ conundrum of the status of centrifugal force is resolved.
 
 ---
 
-*See also: PAPER_533 (DPM Shell Radiance), PAPER_534 (Negative Time Proof),
-PAPER_536 (Shell Radiance Prototype), PAPER_537 (Session 140 Hub).*
+*See also: PAPER_516 (DPM Shell Radiance), PAPER_517 (Negative Time Proof),
+PAPER_519 (Shell Radiance Prototype), PAPER_520 (Session 140 Hub).*

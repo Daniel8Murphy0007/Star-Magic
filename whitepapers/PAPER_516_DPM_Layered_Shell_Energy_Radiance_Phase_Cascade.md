@@ -1,4 +1,4 @@
-# PAPER_533 — DPM Layered Shell-Energy Radiance Phase Cascade
+# PAPER_516 — DPM Layered Shell-Energy Radiance Phase Cascade
 
 **Author:** Daniel T. Murphy  
 **Framework:** Star-Magic / Unified Quantum Field Framework (UQFF)  
@@ -58,7 +58,7 @@ where $\kappa = 5 \times 10^{-4}$ (calibration constant).
 $$\boxed{ShellEnergy^{(l)} = \int Radiance_{\text{quant}}\, dt_{\text{neg}}}$$
 
 Each layer integral is taken over negative time $dt_{\text{neg}}$, where
-$t_{\text{neg}} < 0$ is proved by observable time dilation (see PAPER_534).
+$t_{\text{neg}} < 0$ is proved by observable time dilation (see PAPER_517).
 
 ---
 
@@ -123,5 +123,5 @@ shell radiance equilibrium, not intrinsic properties.
 
 ---
 
-*See also: PAPER_534 (Negative Time Proof), PAPER_535 (DPM-Unified Forces),
-PAPER_536 (Shell Radiance Prototype), PAPER_537 (Session 140 Hub).*
+*See also: PAPER_517 (Negative Time Proof), PAPER_518 (DPM-Unified Forces),
+PAPER_519 (Shell Radiance Prototype), PAPER_520 (Session 140 Hub).*
