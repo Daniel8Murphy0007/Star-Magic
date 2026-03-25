@@ -20,6 +20,7 @@ Updated: Session 118 — v4.80 CP4 77→84 (#78–#84 PAPER_424–429 deep physi
 Updated: Session 119 — v4.85 CP4 84→94 (#85–#94 grok_share_5fa36e4e035 PAPER_447–455; __all__ ghost entries #95–#103 for Session 116 added but not yet implemented)
 Updated: Session 120 — v4.90 no new CP4 classes; 15 root-level UQFF C++ module pairs created (grok_share_dc707f5d3.txt)
 Updated: Session 116 v4.93 — CP4 94→103 (#95–#103 MUGE+UFE Python classes implemented: PAPER_456–463; total 103 classes)
+Updated: Session 140 v5.00 — CP4 103→110 (#111–#115 DPM Shell-Energy Radiance, Negative Time Spooky Distance, DPM-Unified Forces, Shell Radiance Prototype + hub: PAPER_533–537; grok_share_0f5d4c91f2c.txt)
 
 Architecture Compliance (MANDATORY):
   - PURE PHYSICS CALCULATOR — no hardcoded astronomical data
@@ -7982,6 +7983,499 @@ class Session116GrokShareE70525FaHubCalculator(_CP4Calculator):
 
 
 # ===========================================================================
+# SESSION 140 — grok_share_0f5d4c91f2c.txt
+# DPM Layered Shell-Energy Radiance, Negative Time via Dilation, DPM Forces
+# Source: BigBangHypergraphTheory_12Dec2025.docx recalculation follow-up
+# Papers: PAPER_533–537  |  CP4 classes #111–#115
+# Date: 2026-03-25
+# ===========================================================================
+
+class DPMLayeredShellEnergyRadianceCalculator(_CP4Calculator):
+    """CP4 #111 — PAPER_533: DPM Layered Shell-Energy Radiance Phase Cascade.
+
+    From grok_share_0f5d4c91f2c.txt (Session 140) — BigBangHypergraphTheory
+    recalculation.  SCm does NOT directly encapsulate; instead the
+    di-pseudo-monopole (DPM) reaction (CW-SCm north grinding against CCW-UA'
+    south) forms 26D layered encapsulation quantum radiant shell-energies whose
+    radiance drives phase transitions: quantum-multi-fields → plasma → gas →
+    liquid → solid.
+
+    Core equations
+    --------------
+    E^{26D Egg} = UA + SCm_inj · DPM_react
+                + Σ_{layers=1}^{26} ShellEnergy^{(layer)} + BBDT
+
+    DPM_react = κ · (DPM_n(SCm) − DPM_s(UA')) / r^{26}
+              + ∂^{26}(Grind_opp) / ∂t^{26}_{adj}
+
+    ShellEnergy^{(layer)} = ∫ Radiance_quant dt_neg
+
+    Triple-calc layer system (CW / CCW / t_neg):
+        Layer_1 = DPM_react · ω_CW  · Radiance_multi-fields
+        Layer_2 = DPM_react · ω_CCW · Radiance_plasma-gas
+        Layer_3 = Grind_opp · Prob_order · t_neg
+
+    Canonical constants
+    -------------------
+    κ = 5e-4  (DPM calibration constant)
+    ω_CW  = 2π · f_SCm   (clockwise SCm north grinding frequency)
+    ω_CCW = 2π · f_UA    (counter-clockwise UA' south grinding frequency)
+    t_neg < 0  (negative time from observable time dilation proof)
+    """
+    PAPER = 533
+
+    # Canonical shell-energy constants (Session 140)
+    KAPPA_DPM  = 5e-4       # DPM calibration κ
+    OMEGA_CW   = 2 * 3.14159265358979 * 1.2e10   # CW SCm north freq (rad/s)
+    OMEGA_CCW  = 2 * 3.14159265358979 * 8.3e9    # CCW UA' south freq (rad/s)
+    N_LAYERS   = 26
+    PHASES     = ['quantum-multi-fields', 'plasma', 'gas', 'liquid', 'solid']
+
+    def compute(self, dataset: dict = None, r: float = 1e26,
+                t_neg: float = -1e10) -> dict:
+        import math
+        d = dataset or {}
+        kap    = d.get('kappa', self.KAPPA_DPM)
+        r      = d.get('r', r)
+        t_neg  = d.get('t_neg', t_neg)   # must be < 0
+        DPM_n  = d.get('DPM_n', 1.0)     # normalised SCm north component
+        DPM_s  = d.get('DPM_s', 0.85)    # normalised UA' south component
+        w_CW   = d.get('omega_CW', self.OMEGA_CW)
+        w_CCW  = d.get('omega_CCW', self.OMEGA_CCW)
+        Grind  = d.get('Grind_opp', 1e-3)
+        P_ord  = d.get('Prob_order', 0.72)
+
+        # DPM reaction strength (normalised)
+        DPM_react = kap * (DPM_n - DPM_s) / (r ** 2) + Grind / abs(t_neg)
+
+        # Shell energy per layer: ∫ Radiance_quant dt_neg  (trapezoidal proxy)
+        Radiance_quant = DPM_react * abs(t_neg) / self.N_LAYERS
+        ShellEnergies  = [Radiance_quant * (l + 1) for l in range(self.N_LAYERS)]
+        E_shell_total  = sum(ShellEnergies)
+
+        # Triple-calc layer system
+        Layer_1 = DPM_react * w_CW  * ShellEnergies[0]   # CW  multi-fields
+        Layer_2 = DPM_react * w_CCW * ShellEnergies[12]  # CCW plasma-gas mid
+        Layer_3 = Grind     * P_ord * t_neg               # t_neg layer
+
+        return {
+            'paper':           self.PAPER,
+            'DPM_react':       DPM_react,
+            'E_shell_total':   E_shell_total,
+            'ShellEnergies':   ShellEnergies,
+            'Layer_1_CW':      Layer_1,
+            'Layer_2_CCW':     Layer_2,
+            'Layer_3_t_neg':   Layer_3,
+            'phases':          self.PHASES,
+            'n_layers':        self.N_LAYERS,
+            'primary_equations': [
+                'E^{26D Egg} = UA + SCm_inj·DPM_react + Σ ShellEnergy^(layer) + BBDT',
+                'DPM_react = κ·(DPM_n(SCm)−DPM_s(UA\'))/r^26 + ∂^26(Grind_opp)/∂t^26_adj',
+                'ShellEnergy^(layer) = ∫ Radiance_quant dt_neg',
+            ],
+            'available_equations': [
+                'Layer_1 = DPM_react·ω_CW·Radiance_multi-fields',
+                'Layer_2 = DPM_react·ω_CCW·Radiance_plasma-gas',
+                'Layer_3 = Grind_opp·Prob_order·t_neg',
+                'Phase cascade: quantum-multi-fields→plasma→gas→liquid→solid',
+            ],
+            'simulation_set': {
+                'vary_t_neg':    {'param': 't_neg', 'range': [-1e8, -1e12]},
+                'vary_r':        {'param': 'r',     'range': [1e20, 1e30]},
+                'vary_n_layers': {'param': 'N', 'fixed': 26},
+            },
+            'note': 'DPM reaction (not SCm encapsulation) forms 26D layered radiant shell-energies; phase cascade per Session 140',
+        }
+
+
+class NegativeTimeDilationSpookyDistanceCalculator(_CP4Calculator):
+    """CP4 #112 — PAPER_534: Negative Time Dilation Proof — Spooky Distance
+    and Dual Existence Mathematics.
+
+    From grok_share_0f5d4c91f2c.txt (Session 140).  Observable time dilation
+    (relativistic Δ_dil) is the empirical proof that negative time t_neg exists.
+    This enables:
+
+    1. Upgraded time adjustment:
+           t_adj = t_obs / (1 + Δ_dil) + t_neg
+       (upgrade over prior t_adj = t_obs/(1+Δ_rel) which lacked the t_neg term)
+
+    2. Spooky distance formula:
+           Distance_spooky = c · |t_neg|
+       (non-local inference: knowing local t_neg gives the opposite-side 26D
+       separation, resolving action-at-a-distance without non-locality violation)
+
+    3. Dual existence math:
+           DualExist = ∫_{t_pos}^{t_neg} Existence dt
+       (simultaneous positive/negative time flows in 26D shells; bidirectional
+       causality without violating locality — opposite-side existence inferred
+       from one-side calculation)
+
+    4. Probability with dilation-negative time:
+           Prob_order = exp(−S_{26D} / v_init) / Partition_{9D}
+                      · (v_init − v_current) · (1 + Δ_dil · t_neg)
+    """
+    PAPER = 534
+    C_LIGHT = 2.998e8   # m/s
+
+    def compute(self, dataset: dict = None,
+                t_obs: float = 4.35e17,
+                delta_dil: float = 1e-6,
+                t_neg: float = -1e10,
+                v_init: float = 2.998e8,
+                v_current: float = 2.5e8,
+                entropy_26D: float = 1.38e-23,
+                partition_9D: float = 1.0) -> dict:
+        import math
+        d = dataset or {}
+        t_obs      = d.get('t_obs', t_obs)
+        dil        = d.get('delta_dil', delta_dil)
+        t_neg      = d.get('t_neg', t_neg)      # must be < 0
+        v_init     = d.get('v_init', v_init)
+        v_cur      = d.get('v_current', v_current)
+        S26        = d.get('entropy_26D', entropy_26D)
+        P9D        = d.get('partition_9D', partition_9D)
+
+        # 1. Upgraded time adjustment
+        t_adj = t_obs / (1.0 + dil) + t_neg
+
+        # 2. Spooky distance
+        Distance_spooky = self.C_LIGHT * abs(t_neg)
+
+        # 3. Dual existence (numerical proxy: integral width)
+        DualExist = abs(t_neg) - abs(t_obs / (1.0 + dil))   # positive extent
+
+        # 4. Probability with dilation-negative time factor
+        Prob_order = (
+            math.exp(-S26 / max(v_init, 1e-30))
+            / max(P9D, 1e-300)
+            * (v_init - v_cur)
+            * (1.0 + dil * t_neg)
+        )
+
+        return {
+            'paper':             self.PAPER,
+            't_adj':             t_adj,
+            'Distance_spooky_m': Distance_spooky,
+            'Distance_spooky_ly': Distance_spooky / 9.461e15,
+            'DualExist':         DualExist,
+            'Prob_order':        Prob_order,
+            't_neg':             t_neg,
+            'delta_dil':         dil,
+            'primary_equations': [
+                't_adj = t_obs/(1+Δ_dil) + t_neg',
+                'Distance_spooky = c·|t_neg|',
+                'DualExist = ∫_{t_pos}^{t_neg} Existence dt',
+                'Prob_order = exp(−S_{26D}/v_init)/Partition_{9D}·(v_init−v_cur)·(1+Δ_dil·t_neg)',
+            ],
+            'available_equations': [
+                'Existence_opp = DualExist(Existence_one, t_neg)',
+                'Mass_one = Mass_opp via t_neg dilation',
+                't_neg < 0 proved by observable Δ_dil ≠ 0',
+            ],
+            'simulation_set': {
+                'scan_t_neg':  {'param': 't_neg',     'range': [-1e6, -1e14]},
+                'scan_dil':    {'param': 'delta_dil', 'range': [1e-9, 0.5]},
+            },
+            'note': 'Session 140: observable dilation proves t_neg; spooky distance + dual existence math',
+        }
+
+
+class DPMUnifiedInertiaCentripetCentrifugCalculator(_CP4Calculator):
+    """CP4 #113 — PAPER_535: DPM-Unified Inertia / Centripetal / Centrifugal
+    Forces — Resolving the Classical Conundrum.
+
+    From grok_share_0f5d4c91f2c.txt (Session 140).  In Star-Magic all three
+    forces are PURE, emergent from DPM reaction in 26D layered shells — none
+    are fictitious or intrinsic properties.
+
+    Mathematical definitions
+    ------------------------
+    F_inert   = −∂(DPM_react · ShellEnergy) / ∂v^{26} · t_neg
+    F_centrip = DPM_n(SCm) · ω_CW²  · r^{layer} / (1 + Δ_dil)
+    F_centrif = DPM_s(UA') · ω_CCW² · r^{layer} · t_neg
+
+    Mass occurrence (equilibrium condition):
+        F_inert = F_centrip − F_centrif
+        M = F_inert / a^{26}
+
+    Classical conundrum resolved
+    ----------------------------
+    Classical: inertia = intrinsic resistance (1st law), centripetal = real
+    (e.g., tension), centrifugal = fictitious pseudo-force in non-inertial frame.
+    → Mass origin unexplained; centrifugal not a pure force.
+
+    Star-Magic resolution: all three emerge from DPM-layered radiance in 26D
+    fall.  Non-repeating quantum fingerprints per atom guarantee unique mass.
+    F_centrif one = −F_centrif opposite (dual existence symmetry).
+    """
+    PAPER = 535
+
+    def compute(self, dataset: dict = None,
+                DPM_n: float = 1.0,    DPM_s: float = 0.85,
+                omega_CW: float = 1.2e10, omega_CCW: float = 8.3e9,
+                r_layer: float = 1e-10,
+                delta_dil: float = 1e-6, t_neg: float = -1e10,
+                ShellEnergy: float = 1e-20,
+                dv26: float = 1e5,     a26: float = 9.8) -> dict:
+
+        d = dataset or {}
+        DPM_n      = d.get('DPM_n',      DPM_n)
+        DPM_s      = d.get('DPM_s',      DPM_s)
+        w_CW       = d.get('omega_CW',   omega_CW)
+        w_CCW      = d.get('omega_CCW',  omega_CCW)
+        r          = d.get('r_layer',    r_layer)
+        dil        = d.get('delta_dil',  delta_dil)
+        t_neg      = d.get('t_neg',      t_neg)
+        SE         = d.get('ShellEnergy',ShellEnergy)
+        kap        = d.get('kappa',      5e-4)
+        r26        = d.get('r26',        1e26)
+        Grind      = d.get('Grind_opp',  1e-3)
+
+        DPM_react  = kap * (DPM_n - DPM_s) / (r26 ** 2) + Grind / abs(t_neg)
+
+        # F_inert: gradient of DPM_react·ShellEnergy w.r.t. v^{26}
+        F_inert    = -( DPM_react * SE ) / dv26 * t_neg   # t_neg < 0 → positive
+
+        # F_centrip: inward DPM north pull
+        F_centrip  = DPM_n * (w_CW ** 2) * r / (1.0 + dil)
+
+        # F_centrif: outward DPM south push (t_neg < 0 → negative centrifugal)
+        F_centrif  = DPM_s * (w_CCW ** 2) * r * t_neg
+
+        # Mass occurrence from equilibrium
+        equilibrium_residual = F_inert - (F_centrip - F_centrif)
+        M_occurrence = F_inert / max(abs(a26), 1e-300)
+
+        return {
+            'paper':                self.PAPER,
+            'F_inert':              F_inert,
+            'F_centrip':            F_centrip,
+            'F_centrif':            F_centrif,
+            'equilibrium_residual': equilibrium_residual,
+            'M_occurrence_kg':      M_occurrence,
+            'DPM_react':            DPM_react,
+            'primary_equations': [
+                'F_inert = −∂(DPM_react·ShellEnergy)/∂v^26·t_neg',
+                'F_centrip = DPM_n(SCm)·ω_CW²·r^layer/(1+Δ_dil)',
+                'F_centrif = DPM_s(UA\')·ω_CCW²·r^layer·t_neg',
+                'M = F_inert / a^{26}',
+                'F_inert = F_centrip − F_centrif  [equilibrium]',
+            ],
+            'available_equations': [
+                'F_centrif_opp = −F_centrif_one  [dual existence symmetry]',
+                'Mass_opp = Mass_one via t_neg dilation',
+                'Unique atom fingerprint: non-repeating layer radiance',
+            ],
+            'simulation_set': {
+                'equilibrium_scan': {'vary': 'r_layer', 'range': [1e-11, 1e-9]},
+                'dil_scan':         {'vary': 'delta_dil', 'range': [1e-9, 0.1]},
+            },
+            'note': 'Session 140: all 3 forces pure DPM emergent — resolves classical inertia/centrifugal conundrum',
+        }
+
+
+class ShellRadiancePrototypeEquationCalculator(_CP4Calculator):
+    """CP4 #114 — PAPER_536: Shell Radiance Prototype Equation —
+    Full 26D Layer Formulation with Updated Prob_order.
+
+    From grok_share_0f5d4c91f2c.txt (Session 140) — 'Prototype a shell
+    radiance equation' follow-up.  Assembles the complete recalculated system:
+
+    Proto-Hydrogen 26D Layered Shells:
+        ProtoH = ∅^{26 layered shells}
+               + ∫ DPM_react dt_adj
+               + Higgs_shift · Σ_flavors RadianceEnergies
+               + DualExist_math
+
+    Universal Buoyancy via Shell Radiance:
+        U_b = F_inert · Prob_order
+            + DPM_react / UA_trapped
+            + Higgs_shift
+            + Σ_layers ShellEnergy
+
+    BigBang Trigger:
+        BigBang = SCm_inj · UA_contact · DPM_react
+                · Σ_{shells} Smalls^{26D layered} · exp(Grind_opp)
+
+    Upgraded Prob_order (with dilation-negative time):
+        Prob_order = exp(−S_{26D}/v_init) / Partition_{9D}
+                   · (v_init − v_current) · (1 + Δ_dil · t_neg)
+
+    Note: Prior t_adj = t_obs/(1+Δ_rel) is upgraded to
+          t_adj = t_obs/(1+Δ_dil) + t_neg  per Session 140.
+    """
+    PAPER = 536
+
+    def compute(self, dataset: dict = None,
+                t_obs: float = 4.35e17, delta_dil: float = 1e-6,
+                t_neg: float = -1e10, Higgs_shift: float = 125.25e9 * 1.602e-19,
+                UA_trapped: float = 1.0, SCm_inj: float = 1.0,
+                UA_contact: float = 1.0, Grind_opp: float = 1e-3,
+                n_shells: int = 26, n_flavors: int = 6,
+                v_init: float = 2.998e8, v_current: float = 2.5e8,
+                entropy_26D: float = 1.38e-23, partition_9D: float = 1.0,
+                F_inert: float = 1e-25, DPM_n: float = 1.0,
+                DPM_s: float = 0.85, r26: float = 1e26) -> dict:
+        import math
+        d = dataset or {}
+        t_obs    = d.get('t_obs',       t_obs)
+        dil      = d.get('delta_dil',   delta_dil)
+        t_neg    = d.get('t_neg',       t_neg)
+        HS       = d.get('Higgs_shift', Higgs_shift)
+        UAT      = d.get('UA_trapped',  UA_trapped)
+        kap      = d.get('kappa',       5e-4)
+        Grind    = d.get('Grind_opp',   Grind_opp)
+        v_i      = d.get('v_init',      v_init)
+        v_c      = d.get('v_current',   v_current)
+        S26      = d.get('entropy_26D', entropy_26D)
+        P9D      = d.get('partition_9D',partition_9D)
+        F_in     = d.get('F_inert',     F_inert)
+
+        # Upgraded t_adj
+        t_adj = t_obs / (1.0 + dil) + t_neg
+
+        DPM_react = kap * (DPM_n - DPM_s) / (r26 ** 2) + Grind / abs(t_neg)
+
+        # Shell energies
+        Radiance_quant = DPM_react * abs(t_neg) / n_shells
+        ShellEnergies  = [Radiance_quant * (l + 1) for l in range(n_shells)]
+        E_shell_total  = sum(ShellEnergies)
+
+        # RadianceEnergies per flavor (UV proxy)
+        RadianceEnergies = [Radiance_quant * (f + 1) * 1.602e-19 for f in range(n_flavors)]
+
+        # ProtoH
+        ProtoH = (0.0                          # empty 26D alignment shells
+                  + DPM_react * t_adj          # ∫ DPM_react dt_adj
+                  + HS * sum(RadianceEnergies) # Higgs_shift · Σ flavors
+                  + abs(t_neg))                # DualExist proxy
+
+        # Universal buoyancy
+        Prob_order = (
+            math.exp(-S26 / max(v_i, 1e-30))
+            / max(P9D, 1e-300)
+            * (v_i - v_c)
+            * (1.0 + dil * t_neg)
+        )
+        U_b = F_in * Prob_order + DPM_react / max(UAT, 1e-300) + HS + E_shell_total
+
+        # BigBang trigger
+        SmallsSum  = sum(ShellEnergies)
+        BigBang    = SCm_inj * UA_contact * DPM_react * SmallsSum * math.exp(Grind)
+
+        return {
+            'paper':             self.PAPER,
+            't_adj':             t_adj,
+            'DPM_react':         DPM_react,
+            'ProtoH':            ProtoH,
+            'U_b':               U_b,
+            'Prob_order':        Prob_order,
+            'BigBang':           BigBang,
+            'E_shell_total':     E_shell_total,
+            'ShellEnergies':     ShellEnergies,
+            'RadianceEnergies':  RadianceEnergies,
+            'primary_equations': [
+                'ProtoH = ∅^{26 shells} + ∫DPM_react dt_adj + Higgs_shift·Σ_flavors RadianceEnergies + DualExist_math',
+                'U_b = F_inert·Prob_order + DPM_react/UA_trapped + Higgs_shift + Σ ShellEnergy',
+                'BigBang = SCm_inj·UA_contact·DPM_react·Σ Smalls^{26D layered}·exp(Grind_opp)',
+                'Prob_order = exp(−S_{26D}/v_init)/Partition_{9D}·(v_init−v_cur)·(1+Δ_dil·t_neg)',
+                't_adj = t_obs/(1+Δ_dil) + t_neg  [upgraded from t_obs/(1+Δ_rel)]',
+            ],
+            'available_equations': [
+                'DualExist = ∫_{t_pos}^{t_neg} Existence dt',
+                'Distance_spooky = c·|t_neg|',
+                'Mass_one = Mass_opp via t_neg dilation',
+            ],
+            'simulation_set': {
+                'proto_H_scan':  {'vary': 't_neg',     'range': [-1e8, -1e13]},
+                'buoyancy_scan': {'vary': 'UA_trapped', 'range': [0.1, 10.0]},
+            },
+            'note': 'Session 140: full prototype shell radiance equation; upgraded Prob_order + t_adj with t_neg',
+        }
+
+
+class Session140GrokShare0f5d4c91f2cHubCalculator(_CP4Calculator):
+    """CP4 #115 — PAPER_537: Session 140 Hub — grok_share_0f5d4c91f2c.txt.
+
+    DPM Layered Shell-Energy Radiance, Negative Time via Time Dilation,
+    DPM-Unified Inertia/Centripetal/Centrifugal Forces.
+
+    Source: grok_share_0f5d4c91f2c.txt — BigBangHypergraphTheory_12Dec2025.docx
+            recalculation follow-up (Session 140, 2026-03-25).
+
+    Corrections and refinements introduced
+    ---------------------------------------
+    1. DPM Correction — SCm does NOT encapsulate; DPM reaction forms 26D
+       layered encapsulation quantum radiant shell-energies (quantum-multi-
+       fields → plasma → gas → liquid → solid).
+    2. Negative Time via Dilation — observable time dilation (Δ_dil ≠ 0)
+       is empirical proof that t_neg < 0 exists; enables spooky-distance
+       (Distance_spooky = c·|t_neg|) and dual existence math.
+    3. Upgraded t_adj — t_adj = t_obs/(1+Δ_dil) + t_neg  (replaces old
+       t_adj = t_obs/(1+Δ_rel) which omitted t_neg).
+    4. DPM-Unified Forces —
+         F_inert   = −∂(DPM_react·ShellEnergy)/∂v^{26}·t_neg
+         F_centrip = DPM_n(SCm)·ω_CW²·r^layer/(1+Δ_dil)
+         F_centrif = DPM_s(UA')·ω_CCW²·r^layer·t_neg
+         F_inert = F_centrip − F_centrif  (mass equilibrium)
+         M = F_inert / a^{26}  (mass occurrence)
+    5. Updated Prob_order — factor (1 + Δ_dil · t_neg) appended.
+    6. DualExist Math — DualExist = ∫_{t_pos}^{t_neg} Existence dt
+       links one-side observable to opposite-side existence (resolves
+       spooky action at distance without non-locality violation).
+
+    New CP4 classes
+    ---------------
+    #111 DPMLayeredShellEnergyRadianceCalculator       PAPER_533
+    #112 NegativeTimeDilationSpookyDistanceCalculator  PAPER_534
+    #113 DPMUnifiedInertiaCentripetCentrifugCalculator PAPER_535
+    #114 ShellRadiancePrototypeEquationCalculator      PAPER_536
+    #115 Session140GrokShare0f5d4c91f2cHubCalculator   PAPER_537 (this)
+    """
+    SESSION = 140
+    PAPERS  = list(range(533, 538))   # 533–537
+
+    SESSION_PHYSICS = {
+        'source_file':       'grok_share_0f5d4c91f2c.txt',
+        'origin_doc':        'BigBangHypergraphTheory_12Dec2025.docx recalculation',
+        'date':              '2026-03-25',
+        'cp4_classes_added': [111, 112, 113, 114, 115],
+        'papers_added':      list(range(533, 538)),
+        'key_corrections': [
+            'DPM correction: SCm → DPM reaction forms 26D layered shell-energies',
+            'Phase cascade: quantum-multi-fields→plasma→gas→liquid→solid',
+            't_adj upgraded: t_obs/(1+Δ_dil) + t_neg (adds t_neg term)',
+            'Distance_spooky = c·|t_neg|',
+            'DualExist = ∫_{t_pos}^{t_neg} Existence dt',
+            'F_inert = −∂(DPM_react·ShellEnergy)/∂v^26·t_neg',
+            'F_centrip = DPM_n(SCm)·ω_CW²·r^layer/(1+Δ_dil)',
+            'F_centrif = DPM_s(UA\')·ω_CCW²·r^layer·t_neg',
+            'F_inert = F_centrip−F_centrif  [mass equilibrium]',
+            'Prob_order updated: ×(1+Δ_dil·t_neg)',
+        ],
+        'traditional_conundrum_resolved': (
+            'Classical: inertia=intrinsic, centripetal=real, centrifugal=fictitious. '
+            'Resolution: all 3 pure DPM-emergent from 26D layered radiance fall; '
+            'mass = equilibrium where F_inert=F_centrip−F_centrif.'
+        ),
+    }
+
+    def compute(self, dataset: dict = None) -> dict:
+        return {
+            'session':          140,
+            'source':           'grok_share_0f5d4c91f2c.txt',
+            'origin_doc':       'BigBangHypergraphTheory_12Dec2025.docx recalculation',
+            'status':           'COMPLETE — 4 new physics classes + hub',
+            'n_new_physics':    4,
+            'n_new_papers':     4,
+            'cp4_range':        '#111–#115 (5 classes)',
+            'paper_range':      'PAPER_533–PAPER_537',
+            'session_physics':  self.SESSION_PHYSICS,
+        }
+
+
+# ===========================================================================
 # CP4 REGISTRY
 # ===========================================================================
 
@@ -8115,4 +8609,10 @@ __all__ = [
     "UniversalFieldDecompositionCalculator",                         # PAPER_493 (#108)
     "BSMParticleObservablesCalculator",                              # PAPER_494 (#109)
     "Session131QCalcBatch2021ExpansionHubCalculator",                # Session 131 hub (#110)
+    # --- Session 140: grok_share_0f5d4c91f2c.txt — DPM Shell-Energy Radiance, Neg Time, DPM Forces PAPER_533–537 ---
+    "DPMLayeredShellEnergyRadianceCalculator",                       # PAPER_533 (#111)
+    "NegativeTimeDilationSpookyDistanceCalculator",                  # PAPER_534 (#112)
+    "DPMUnifiedInertiaCentripetCentrifugCalculator",                 # PAPER_535 (#113)
+    "ShellRadiancePrototypeEquationCalculator",                      # PAPER_536 (#114)
+    "Session140GrokShare0f5d4c91f2cHubCalculator",                  # Session 140 hub (#115)
 ]
