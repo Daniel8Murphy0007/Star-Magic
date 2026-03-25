@@ -8,12 +8,12 @@ CondensedPhysics calculator modules. This enables scalable file clustering
 while maintaining a single-import API.
 
 ARCHITECTURE:
-    CondensedPhysics.py      → Foundation (1,227 base classes, 168,784 lines)
-    CondensedPhysics2.py     → Extension 1 (600 classes, 45,991 lines: Orb Analysis 10/11+ and Grok thread extensions)
+    CondensedPhysics.py      → Foundation (1,227 base classes, 168,803 lines)
+    CondensedPhysics2.py     → Extension 1 (622 classes, 47,694+ lines: Orb Analysis 10/11+ + Grok thread extensions + Session 137 _84A767D3 + Session 138 SOURCE179)
     CondensedPhysics3.py     → Extension 2 (219 classes, 13,944 lines: 15+ categories, Sessions 41-96)
     CondensedPhysics4.py     → Extension 3 (103 classes, Sessions 97-120, 2026-03-22)
-    Last updated: Session 116 v4.93 (2026-03-22) — 9 MUGE+UFE Python classes added (grok_share_e70525fa); CP4 94→103; PAPER_456–463 integrated
-    CondensedPhysicsAggregator.py → This file (unified API)
+    Last updated: Session 138 v5.03 (2026-03-25) — source179.cpp SOURCE179 PI Co-Resonance Field; CP2 622 (+6 Session137 +6 Session138); PAPER_509–515; 532 PDFs; 51 C++ modules
+    CondensedPhysicsAggregator.py → This file (unified API, v3.2.0)
 
 USAGE:
     # Import everything from unified API
@@ -76,7 +76,25 @@ from CondensedPhysics2 import (
     TotalEnergyBudgetCalculator,
     ORB_ANALYSIS_11_CALCULATORS,
     
-    # Aggregated CP2 registry
+    # Session 137 — Wolfram/_84A767D3 PhysicsTerm CP2 wrappers (PAPER_502–508)
+    SOURCE_SESSION137_CP2,
+    PIInfinityDecoderCalculator_84A767D3,
+    WolframFieldUnityCalculator_84A767D3,
+    SacredTimePhaseCalculator_84A767D3,
+    HypergraphDimensionCalculator_84A767D3,
+    BuoyantGravityHypergraphCalculator_84A767D3,
+    WSTPBridgeValidationCalculator_84A767D3,
+
+    # Session 138 — SOURCE179 PI Co-Resonance Field (PAPER_509–515)
+    SOURCE_SOURCE179_CP2,
+    GW150914PCRCalculator,
+    PSRJ0437SacredOrbitCalculator,
+    EtaCarinaBuoyantPCRCalculator,
+    NGC1277HypergraphDimCalculator,
+    TON618SacredPhaseCalculator,
+    TXS0506PICoSumCalculator,
+
+    # Aggregated CP2 registry (now includes Session 137 + 138 after merge)
     CP2_CALCULATORS,
 )
 
@@ -940,9 +958,10 @@ ALL_CALCULATORS = {
 }
 
 # Module metadata
-AGGREGATOR_VERSION = "2.6.0"
-TOTAL_MODULES = 22  # CP1 (1,227 classes, 168,784L), CP2 (600 classes, 45,991L), CP3 (219 classes, 13,944L, Sessions 41-96), CP4 (103 classes, Sessions 97-120), + 10 thread registries
-# Updated: Session 116 v4.93 (2026-03-22) — 9 MUGE+UFE Python classes implemented (grok_share_e70525fa); CP4 94→103 (PAPER_456–463)
+# Module metadata
+AGGREGATOR_VERSION = "3.2.0"
+TOTAL_MODULES = 24  # CP1 (1,227 classes, 168,803L), CP2 (622 classes: +6 Session137 _84A767D3 +6 Session138 SOURCE179), CP3 (219 classes, 13,944L), CP4 (103 classes), + 10 thread registries + source179 PCR module
+# Updated: Session 138 v5.03 (2026-03-25) — source179.cpp SOURCE179 + Batch 22+23; CP2 622; PAPER_509–515; 532 PDFs; 51 C++ modules
 
 
 def get_calculator(name: str):
@@ -1043,7 +1062,24 @@ __all__ = [
     'CP2_VERSION',
     'CP2_CLASS_COUNT',
     'CP2_CALCULATORS',
-    
+
+    # Session 137 CP2 wrappers (_84A767D3 series)
+    'SOURCE_SESSION137_CP2',
+    'PIInfinityDecoderCalculator_84A767D3',
+    'WolframFieldUnityCalculator_84A767D3',
+    'SacredTimePhaseCalculator_84A767D3',
+    'HypergraphDimensionCalculator_84A767D3',
+    'BuoyantGravityHypergraphCalculator_84A767D3',
+    'WSTPBridgeValidationCalculator_84A767D3',
+
+    # Session 138 SOURCE179 PI Co-Resonance Field calculators
+    'SOURCE_SOURCE179_CP2',
+    'GW150914PCRCalculator',
+    'PSRJ0437SacredOrbitCalculator',
+    'EtaCarinaBuoyantPCRCalculator',
+    'NGC1277HypergraphDimCalculator',
+    'TON618SacredPhaseCalculator',
+    'TXS0506PICoSumCalculator',
     # Orb Analysis_10
     'ORB_ANALYSIS_10_PARAMS',
     'ThirtySixFrameSequenceCalculator',
