@@ -20,7 +20,7 @@ Updated: Session 118 — v4.80 CP4 77→84 (#78–#84 PAPER_424–429 deep physi
 Updated: Session 119 — v4.85 CP4 84→94 (#85–#94 grok_share_5fa36e4e035 PAPER_447–455; __all__ ghost entries #95–#103 for Session 116 added but not yet implemented)
 Updated: Session 120 — v4.90 no new CP4 classes; 15 root-level UQFF C++ module pairs created (grok_share_dc707f5d3.txt)
 Updated: Session 116 v4.93 — CP4 94→103 (#95–#103 MUGE+UFE Python classes implemented: PAPER_456–463; total 103 classes)
-Updated: Session 140 v5.00 — CP4 103→110 (#111–#115 DPM Shell-Energy Radiance, Negative Time Spooky Distance, DPM-Unified Forces, Shell Radiance Prototype + hub: PAPER_533–537; grok_share_0f5d4c91f2c.txt)
+Updated: Session 140 v5.00 — CP4 103→110 (#111–#115 DPM Shell-Energy Radiance, Negative Time Spooky Distance, DPM-Unified Forces, Shell Radiance Prototype + hub: PAPER_516–520; grok_share_0f5d4c91f2c.txt)
 
 Architecture Compliance (MANDATORY):
   - PURE PHYSICS CALCULATOR — no hardcoded astronomical data
@@ -7986,12 +7986,12 @@ class Session116GrokShareE70525FaHubCalculator(_CP4Calculator):
 # SESSION 140 — grok_share_0f5d4c91f2c.txt
 # DPM Layered Shell-Energy Radiance, Negative Time via Dilation, DPM Forces
 # Source: BigBangHypergraphTheory_12Dec2025.docx recalculation follow-up
-# Papers: PAPER_533–537  |  CP4 classes #111–#115
+# Papers: PAPER_516–520  |  CP4 classes #111–#115
 # Date: 2026-03-25
 # ===========================================================================
 
 class DPMLayeredShellEnergyRadianceCalculator(_CP4Calculator):
-    """CP4 #111 — PAPER_533: DPM Layered Shell-Energy Radiance Phase Cascade.
+    """CP4 #111 — PAPER_516: DPM Layered Shell-Energy Radiance Phase Cascade.
 
     From grok_share_0f5d4c91f2c.txt (Session 140) — BigBangHypergraphTheory
     recalculation.  SCm does NOT directly encapsulate; instead the
@@ -8022,7 +8022,7 @@ class DPMLayeredShellEnergyRadianceCalculator(_CP4Calculator):
     ω_CCW = 2π · f_UA    (counter-clockwise UA' south grinding frequency)
     t_neg < 0  (negative time from observable time dilation proof)
     """
-    PAPER = 533
+    PAPER = 516
 
     # Canonical shell-energy constants (Session 140)
     KAPPA_DPM  = 5e-4       # DPM calibration κ
@@ -8089,7 +8089,7 @@ class DPMLayeredShellEnergyRadianceCalculator(_CP4Calculator):
 
 
 class NegativeTimeDilationSpookyDistanceCalculator(_CP4Calculator):
-    """CP4 #112 — PAPER_534: Negative Time Dilation Proof — Spooky Distance
+    """CP4 #112 — PAPER_517: Negative Time Dilation Proof — Spooky Distance
     and Dual Existence Mathematics.
 
     From grok_share_0f5d4c91f2c.txt (Session 140).  Observable time dilation
@@ -8115,7 +8115,7 @@ class NegativeTimeDilationSpookyDistanceCalculator(_CP4Calculator):
            Prob_order = exp(−S_{26D} / v_init) / Partition_{9D}
                       · (v_init − v_current) · (1 + Δ_dil · t_neg)
     """
-    PAPER = 534
+    PAPER = 517
     C_LIGHT = 2.998e8   # m/s
 
     def compute(self, dataset: dict = None,
@@ -8182,7 +8182,7 @@ class NegativeTimeDilationSpookyDistanceCalculator(_CP4Calculator):
 
 
 class DPMUnifiedInertiaCentripetCentrifugCalculator(_CP4Calculator):
-    """CP4 #113 — PAPER_535: DPM-Unified Inertia / Centripetal / Centrifugal
+    """CP4 #113 — PAPER_518: DPM-Unified Inertia / Centripetal / Centrifugal
     Forces — Resolving the Classical Conundrum.
 
     From grok_share_0f5d4c91f2c.txt (Session 140).  In Star-Magic all three
@@ -8209,7 +8209,7 @@ class DPMUnifiedInertiaCentripetCentrifugCalculator(_CP4Calculator):
     fall.  Non-repeating quantum fingerprints per atom guarantee unique mass.
     F_centrif one = −F_centrif opposite (dual existence symmetry).
     """
-    PAPER = 535
+    PAPER = 518
 
     def compute(self, dataset: dict = None,
                 DPM_n: float = 1.0,    DPM_s: float = 0.85,
@@ -8276,7 +8276,7 @@ class DPMUnifiedInertiaCentripetCentrifugCalculator(_CP4Calculator):
 
 
 class ShellRadiancePrototypeEquationCalculator(_CP4Calculator):
-    """CP4 #114 — PAPER_536: Shell Radiance Prototype Equation —
+    """CP4 #114 — PAPER_519: Shell Radiance Prototype Equation —
     Full 26D Layer Formulation with Updated Prob_order.
 
     From grok_share_0f5d4c91f2c.txt (Session 140) — 'Prototype a shell
@@ -8305,7 +8305,7 @@ class ShellRadiancePrototypeEquationCalculator(_CP4Calculator):
     Note: Prior t_adj = t_obs/(1+Δ_rel) is upgraded to
           t_adj = t_obs/(1+Δ_dil) + t_neg  per Session 140.
     """
-    PAPER = 536
+    PAPER = 519
 
     def compute(self, dataset: dict = None,
                 t_obs: float = 4.35e17, delta_dil: float = 1e-6,
@@ -8396,7 +8396,7 @@ class ShellRadiancePrototypeEquationCalculator(_CP4Calculator):
 
 
 class Session140GrokShare0f5d4c91f2cHubCalculator(_CP4Calculator):
-    """CP4 #115 — PAPER_537: Session 140 Hub — grok_share_0f5d4c91f2c.txt.
+    """CP4 #115 — PAPER_520: Session 140 Hub — grok_share_0f5d4c91f2c.txt.
 
     DPM Layered Shell-Energy Radiance, Negative Time via Time Dilation,
     DPM-Unified Inertia/Centripetal/Centrifugal Forces.
@@ -8427,21 +8427,21 @@ class Session140GrokShare0f5d4c91f2cHubCalculator(_CP4Calculator):
 
     New CP4 classes
     ---------------
-    #111 DPMLayeredShellEnergyRadianceCalculator       PAPER_533
-    #112 NegativeTimeDilationSpookyDistanceCalculator  PAPER_534
-    #113 DPMUnifiedInertiaCentripetCentrifugCalculator PAPER_535
-    #114 ShellRadiancePrototypeEquationCalculator      PAPER_536
-    #115 Session140GrokShare0f5d4c91f2cHubCalculator   PAPER_537 (this)
+    #111 DPMLayeredShellEnergyRadianceCalculator       PAPER_516
+    #112 NegativeTimeDilationSpookyDistanceCalculator  PAPER_517
+    #113 DPMUnifiedInertiaCentripetCentrifugCalculator PAPER_518
+    #114 ShellRadiancePrototypeEquationCalculator      PAPER_519
+    #115 Session140GrokShare0f5d4c91f2cHubCalculator   PAPER_520 (this)
     """
     SESSION = 140
-    PAPERS  = list(range(533, 538))   # 533–537
+    PAPERS  = list(range(516, 521))   # 516–520
 
     SESSION_PHYSICS = {
         'source_file':       'grok_share_0f5d4c91f2c.txt',
         'origin_doc':        'BigBangHypergraphTheory_12Dec2025.docx recalculation',
         'date':              '2026-03-25',
         'cp4_classes_added': [111, 112, 113, 114, 115],
-        'papers_added':      list(range(533, 538)),
+        'papers_added':      list(range(516, 521)),
         'key_corrections': [
             'DPM correction: SCm → DPM reaction forms 26D layered shell-energies',
             'Phase cascade: quantum-multi-fields→plasma→gas→liquid→solid',
@@ -8470,7 +8470,7 @@ class Session140GrokShare0f5d4c91f2cHubCalculator(_CP4Calculator):
             'n_new_physics':    4,
             'n_new_papers':     4,
             'cp4_range':        '#111–#115 (5 classes)',
-            'paper_range':      'PAPER_533–PAPER_537',
+            'paper_range':      'PAPER_516–PAPER_520',
             'session_physics':  self.SESSION_PHYSICS,
         }
 
@@ -8609,10 +8609,10 @@ __all__ = [
     "UniversalFieldDecompositionCalculator",                         # PAPER_493 (#108)
     "BSMParticleObservablesCalculator",                              # PAPER_494 (#109)
     "Session131QCalcBatch2021ExpansionHubCalculator",                # Session 131 hub (#110)
-    # --- Session 140: grok_share_0f5d4c91f2c.txt — DPM Shell-Energy Radiance, Neg Time, DPM Forces PAPER_533–537 ---
-    "DPMLayeredShellEnergyRadianceCalculator",                       # PAPER_533 (#111)
-    "NegativeTimeDilationSpookyDistanceCalculator",                  # PAPER_534 (#112)
-    "DPMUnifiedInertiaCentripetCentrifugCalculator",                 # PAPER_535 (#113)
-    "ShellRadiancePrototypeEquationCalculator",                      # PAPER_536 (#114)
+    # --- Session 140: grok_share_0f5d4c91f2c.txt — DPM Shell-Energy Radiance, Neg Time, DPM Forces PAPER_516–520 ---
+    "DPMLayeredShellEnergyRadianceCalculator",                       # PAPER_516 (#111)
+    "NegativeTimeDilationSpookyDistanceCalculator",                  # PAPER_517 (#112)
+    "DPMUnifiedInertiaCentripetCentrifugCalculator",                 # PAPER_518 (#113)
+    "ShellRadiancePrototypeEquationCalculator",                      # PAPER_519 (#114)
     "Session140GrokShare0f5d4c91f2cHubCalculator",                  # Session 140 hub (#115)
 ]
