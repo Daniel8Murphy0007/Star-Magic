@@ -8,6 +8,11 @@
 > **Updated:** 2026-03-23 (v5.0.0 + Session 129: 7 new UQFF C++ modules from grok_share_97bfeecaa5.txt; 50 total UQFF modules; PAPER_484–490; CP2=600 classes; 490/1000 whitepapers; commit a25a8a4)
 > **Updated:** 2026-03-23 (v5.01 + Session 130: C++ PhysicsTerm registry repair Batches 20+21; wolfram_sources_bridge.cpp; 5 WSTP fixes; commits b4516c9+de4894f)
 > **Updated:** 2026-03-23 (v5.02 + Session 131: QCalc.py +4 calculators +42 constants; CP2=610; CP4 registry #106–#110; PAPER_491–494; 494/1000 whitepapers)
+> **Updated:** 2026-03-25 (v5.03 + Sessions 136–138: PAPER_496–515; source179.cpp SOURCE179 PI Co-Resonance Field; CP2=622; 51 C++ modules; 515/1000 whitepapers)
+> **Updated:** 2026-03-25 (v5.04–v5.06 + Sessions 140–142: BigBangHypergraphTheory (3 grok_share docs); CP4 103→125 (#111–#125); PAPER_516–530; 530/1000 whitepapers)
+> **Updated:** 2026-03-26/27 (v5.07 + Sessions 143–147: Proplyd/DPM/BSFG factorial physics (5 grok_share docs); CP4 125→148 (#126–#148); PAPER_531–553; 553/1000 whitepapers)
+> **Updated:** 2026-03-27 (v5.08 + Session 148: BSFG Complete Geometric System; CP4 148→153 (#149–#153); PAPER_554–558 (5); 558/1000; commit dfe9393)
+> **Updated:** 2026-03-27 (v5.09 + Session 149: BSFG Open Questions Resolved — Einstein G_μν, holonomy SO⁺(3,1)×U(1)²², BH horizon r_h=0.233R_☉, Bohr-Sommerfeld r_cross=0.36 AU; CP4 153→157 (#154–#157); PAPER_559–562 (4); 562/1000; commit 960a11d)
 > **Author:** Daniel T. Murphy
 > **CRITICAL:** This is the MASTER architecture document. All other docs must match.
 
@@ -50,6 +55,11 @@
 | **v5.0.0** | **Session 129: grok_share_97bfeecaa5.txt — 7 new UQFF C++ modules (UQFFCalculations/UQFFBuoyancySNR/UQFFCassini/UQFFMultiAstro/UQFFEightAstro/UQFFNineteen26D/WolframFieldUnity); 50 total UQFF modules; PAPER_484–490; 490/1000 whitepapers; CP2=600; 61 PDFs** | ✅ **Complete** | a25a8a4 |
 | **v5.01** | **Session 130: C++ PhysicsTerm registry continuity repair (Batch 20 49-term + Batch 21 694-term wolfram bridge); wolfram_sources_bridge.cpp (sw4w–sw85w namespaces); 5 WSTP defects fixed; MAIN_1 ~7,554 registered terms; QCalc.py unchanged** | ✅ **Complete** | de4894f |
 | **v5.02** | **Session 131: QCalc.py Batch 20/21 Python expansion — 4 new calculators (MUGECalculator, MUGEResonanceCalculator, UniversalFieldCalculator, BSMParticleCalculator) + 42 new CONSTANTS; CP2=610 (+4 classes); CP4 registry #106–#110; PAPER_491–494; 494/1000 (49.4%)** | ✅ **Complete** | Session 131 |
+| **v5.03** | **Sessions 136–138: PAPER_496–515 (20 papers); source179.cpp SOURCE179 PICoResonanceField+SacredQuantumOrbit+HypergraphBFSDimension; Batch 22+23 registered; CP2=622 (+12); Aggregator v3.2.0; 51 C++ modules; 515/1000 (51.5%)** | ✅ **Complete** | Session 138 |
+| **v5.04–v5.06** | **Sessions 140–142: BigBangHypergraphTheory (grok_share_0f5d4c/3b6f268/2515709); CP4 103→125 (#111–#125); SOURCE180–182_RESULTS (doc_id=25–27); PAPER_516–530 (15) + 15 PDFs; 530/1000 (53.0%)** | ✅ **Complete** | Session 142 |
+| **v5.07** | **Sessions 143–147: Proplyd/DPM/BSFG factorial physics (grok_share_fd81483/dbd8866/22e7a1a/366dc39/b08cc4e); CP4 125→148 (#126–#148); SOURCE183–187_RESULTS (doc_id=28–32); PAPER_531–553 (23) + 23 PDFs; 553/1000 (55.3%)** | ✅ **Complete** | Session 147 |
+| **v5.08** | **Session 148: BSFG Complete Geometric System (A_μν Aether metric, R^r_0r0 Riemann curvature, G_iso=SO(3)×U(1)²³ isometry, Levi-Civita compatibility, 26D factorial line element, VDS/DVP/BH26 atlas theorem hub, BC-duality); CP4 148→153 (#149–#153); PAPER_554–558 (5) + 5 PDFs; 558/1000 (55.8%); commit dfe9393** | ✅ **Complete** | dfe9393 |
+| **v5.09** | **Session 149: BSFG Open Questions Resolved (Q1: Einstein G_μν amp=1.2×10⁴ non-Einstein; Q2: G_hol=SO⁺(3,1)×U(1)²²; Q3: r_h=0.233R☉ blinking horizon T_H=3.37×10⁻¹² K; Q4: r_cross=0.36 AU Bohr-Sommerfeld); CP4 153→157 (#154–#157); PAPER_559–562 (4) + 4 PDFs; 562/1000 (56.2%); commit 960a11d** | ✅ **Complete** | 960a11d |
 
 ---
 
@@ -58,7 +68,7 @@
 | Tier | Layer | Programs | Purpose |
 |------|-------|----------|---------|
 | **1** | **USER INTERFACE** | `source2.cpp` (15,753 lines, Qt6, 21 tabs) | Where ALL user workflows begin |
-| **2** | **COMPUTATION** | `MAIN_1_CoAnQi.cpp` (107,019L), `QCalc.py` (9,833L, 27 classes), `CondensedPhysics.py` (81,626L), `CondensedPhysics2.py` (46,476L, 610 classes), `uqff_server.js` (index.js lib) | 5 calculators run simultaneously in parallel |
+| **2** | **COMPUTATION** | `MAIN_1_CoAnQi.cpp` (107,019L), `QCalc.py` (9,833L, 27 classes), `CondensedPhysics.py` (81,626L), `CondensedPhysics2.py` (46,476L, 622 classes), `CondensedPhysics4.py` (157 classes, v5.09), `uqff_server.js` (index.js lib) | 5+ calculators run simultaneously in parallel |
 | **3** | **VR/VM BACKEND** | `source2(HEAD PROGRAM).cpp` (2,625L), `physics_backend.cpp` (~12,000L) | GPU-heavy simulations, headless CPU physics |
 | **4** | **IPC LAYER** | `uqff_ipc.h` (515L v3.1), `python_bridge.h`, `physics_service.h` (470L v3.1), `ipc_pipeline_handler.h` | 45-message-type cross-platform pipeline |
 | **5** | **STORAGE** | `bodies_*.csv`, `uqff_results.json`, `CondensedPhysics_OutputData.py`, `session_*.json`, `coAnQi_log_*.txt` | Data persistence and user RECALL |
@@ -640,3 +650,8 @@ CondensedPhysics_OutputData.py
 *Updated: 2026-03-23 (v5.0.0 Session 129: grok_share_97bfeecaa5.txt 7 new UQFF modules; 50 total UQFF C++ modules; CP2=600 classes; PAPER_484–490; 490/1000 whitepapers; 61 PDFs; commit a25a8a4) by Daniel T. Murphy*
 *Updated: 2026-03-23 (v5.01 Session 130: C++ PhysicsTerm registry repair Batches 20+21 +743 terms; wolfram_sources_bridge.cpp; 5 WSTP fixes; commits b4516c9+de4894f) by Daniel T. Murphy*
 *Updated: 2026-03-23 (v5.02 Session 131: QCalc.py +4 calculators +42 constants; CP2=610; CP4 registry #106–#110; PAPER_491–494; 494/1000 whitepapers) by Daniel T. Murphy*
+*Updated: 2026-03-25 (v5.03 Sessions 136–138: source179.cpp PICoResonanceField; CP2=622; 51 C++ modules; PAPER_496–515; 515/1000 whitepapers) by Daniel T. Murphy*
+*Updated: 2026-03-25 (v5.04–v5.06 Sessions 140–142: BigBangHypergraphTheory; CP4=103→125; PAPER_516–530; 530/1000 whitepapers) by Daniel T. Murphy*
+*Updated: 2026-03-26/27 (v5.07 Sessions 143–147: Proplyd/DPM/BSFG factorial; CP4=125→148; PAPER_531–553; 553/1000 whitepapers) by Daniel T. Murphy*
+*Updated: 2026-03-27 (v5.08 Session 148: BSFG Complete Geometric System; CP4=148→153; PAPER_554–558; 558/1000; commit dfe9393) by Daniel T. Murphy*
+*Updated: 2026-03-27 (v5.09 Session 149: BSFG Open Questions Resolved; CP4=153→157; PAPER_559–562; 562/1000; commit 960a11d) by Daniel T. Murphy*
