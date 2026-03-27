@@ -29,6 +29,7 @@ Updated: Session 145 v5.05 — CP4 135→140 (#136–#140 DPM Proplyd Bidirectio
     Updated: Session 146 v5.06 — CP4 140→144 (#141–#144 Ug/Ub Boundary Overlap, Ug4 BH Tidal, F_U_Bi_i Collapse Proof, Galaxy Merger UQFF vs Newton/Einstein Hub: PAPER_546–549; grok_share_366dc393a37.txt)
     Updated: Session 147 v5.07 — CP4 144→148 (#145–#148 Um26D Quantization, Ug26D Anti-Collapse, UQFF_comp 26D Tensor Hub, FUBi 26th Polynomial: PAPER_550–553; grok_share_b08cc4e3684.txt)
     Updated: Session 148 v5.08 — CP4 148→153 (#149–#153 BSFG Riemann Curvature, Geodesic+Compat, 26D Line Element, Symmetry Group, Unification Atlas Hub: PAPER_554–558; Buoyancy-Stratified Factorial Geometry complete system)
+    Updated: Session 149 v5.09 — CP4 153→157 (#154–#157 BSFG Field Equations, Holonomy Group, BH Horizon, Bohr-Sommerfeld: PAPER_559–562; four open questions resolved)
 
 Architecture Compliance (MANDATORY):
   - PURE PHYSICS CALCULATOR — no hardcoded astronomical data
@@ -10389,6 +10390,15 @@ _S148_RS       = 6.96e8                             # solar radius (m)
 _S148_DVP_P    = 113                                # DVP prime modulus
 _S148_FAC26    = _math_s148.factorial(26)           # 26! = 4.0329e+26
 
+# ── Session 149 constants (BSFG Open Questions: Field Eq, Holonomy, BH Horizon, BS Quant) ──
+_S149_G_N       = 6.674e-11    # gravitational constant [m³/(kg·s²)]
+_S149_HBAR      = 1.055e-34    # reduced Planck constant [J·s]
+_S149_KB        = 1.381e-23    # Boltzmann constant [J/K]
+_S149_H_PL      = 6.626e-34    # Planck constant [J·s]
+_S149_LP        = 1.616e-35    # Planck length [m]
+_S149_AU        = 1.496e11     # 1 AU [m]
+_S149_LAM_OBS   = 1.1e-52      # Observed cosmological constant [m^{-2}]
+
 
 # CP4 REGISTRY
 # ===========================================================================
@@ -11202,6 +11212,366 @@ class BSFGUnificationAtlasTheoremHubCalculator(_CP4Calculator):
             'session': self.SESSION, 'papers': [self.PAPER],
         }
 
+
+# PAPER_559–562   CP4 #154–#157   Session 149
+# BSFG Open Questions: Field Equations, Holonomy, BH Horizon, Bohr-Sommerfeld
+# ══════════════════════════════════════════════════════════════════════════════
+
+
+class BSFGEinsteinTensorFieldEquationsCalculator(_CP4Calculator):
+    """CP4 #154 — PAPER_559: BSFG Einstein Tensor and Self-Sourced Field Equations.
+    G_μν = R_μν - ½ A_μν R_scalar  (Einstein tensor of BSFG metric)
+    G_00 = R_00 - ½ A_00 R;  G_rr = R_rr - ½ Arr R
+    Source T_s00: natural Aether energy density [Pa] from CP4 #149
+    Amplification: amp = G_00/(κ_E·T_s00) ≈ 18η·c⁴/(8πG·r²) >> 1
+    Λ_eff = κ_E·η·T_s00/2  (effective cosmological constant from Aether)
+    At r=Rs, tn=0: amp ≈ 1.8e4, Λ_eff ≈ 1.3e-45 m⁻² (7 orders above observed Λ)
+    Source: CP4 #149 (R_μν), CP4 #43 (η, T_s00)  PAPER_559
+    """
+    SESSION = 149
+    PAPER   = 'PAPER_559'
+
+    def compute(self, dataset: dict) -> dict:
+        import math
+        r   = dataset.get('r',   _S148_RS)
+        tn  = dataset.get('t_n', 0.0)
+        eta = dataset.get('eta', _S148_ETA)
+        Ms  = dataset.get('Ms',  _S148_MS)
+        Ls  = dataset.get('Ls',  3.828e26)
+        c   = _S148_C_LIGHT
+        G_N = _S149_G_N
+
+        C_num  = (Ms * c**2 + Ls / c**2) / ((4.0 / 3.0) * math.pi)
+        cos_tn = math.cos(math.pi * tn)
+        V      = (4.0 / 3.0) * math.pi * r**3
+        Ts00   = Ms * c**2 / V
+        eps    = eta * Ts00 * cos_tn
+        eps_p  = -3.0 * eta * cos_tn * C_num / r**4
+        eps_pp = 12.0 * eta * cos_tn * C_num / r**5
+        A00    =  1.0 + eps
+        Arr    = -1.0 + eps
+
+        # Riemann + Ricci (same as CP4 #149)
+        R_r0r0   = eps_pp / 2.0 - (eps_p**2) / 2.0
+        R_00     = 3.0 * R_r0r0
+        R_rr     = -R_r0r0 + 2.0 * (eps_pp / 2.0 - eps_p**2 / 4.0)
+        R_scalar = R_00 / A00 + R_rr / Arr
+
+        # Einstein tensor: G_μν = R_μν - ½ A_μν R_scalar
+        G_00 = R_00 - 0.5 * A00 * R_scalar
+        G_rr = R_rr - 0.5 * Arr * R_scalar
+
+        # Einstein gravitational constant κ_E = 8πG/c⁴  [m/kg]
+        kappa_E = 8.0 * math.pi * G_N / c**4
+
+        # Effective source consistent with BSFG geometry [Pa]
+        T00_eff_Pa = G_00 / kappa_E
+
+        # GR prediction: RHS if Einstein eq applied to natural Aether energy density
+        RHS_00 = kappa_E * Ts00
+
+        # BSFG amplification: curvature per unit Aether energy vs GR expectation
+        amp_factor = G_00 / RHS_00 if abs(RHS_00) > 0 else float('nan')
+
+        # Effective cosmological constant from Aether trace: Λ_eff = κ_E·η·T_s00/2
+        Lambda_eff   = kappa_E * eta * Ts00 / 2.0
+        Lambda_obs   = _S149_LAM_OBS
+        Lambda_ratio = Lambda_eff / Lambda_obs if Lambda_obs > 0 else float('nan')
+
+        # Vacuum energy density from Λ_eff
+        rho_vac_eff = Lambda_eff * c**2 / (8.0 * math.pi * G_N)
+
+        return {
+            'paper':         self.PAPER,
+            'G_00':          G_00,
+            'G_rr':          G_rr,
+            'R_scalar':      R_scalar,
+            'T00_eff_Pa':    T00_eff_Pa,
+            'T_s00_Pa':      Ts00,
+            'kappa_E':       kappa_E,
+            'RHS_00_GR':     RHS_00,
+            'amp_factor':    amp_factor,
+            'Lambda_eff':    Lambda_eff,
+            'Lambda_obs':    Lambda_obs,
+            'Lambda_ratio':  Lambda_ratio,
+            'rho_vac_eff':   rho_vac_eff,
+            'non_Einstein':  (abs(amp_factor) > 10) if not math.isnan(amp_factor) else False,
+            'equations': {
+                'Einstein_tensor': 'G_μν = R_μν - ½A_μν·R_scalar',
+                'amplification':   'amp = G_00/(κ_E·T_s00) ≈ 18η·c⁴/(8πG·r²)',
+                'Lambda_eff':      'Λ_eff = κ_E·η·T_s00/2',
+                'non_Einstein':    'amp >> 1: BSFG curvature not sourced by T_s00 alone',
+            },
+            'session': self.SESSION, 'papers': [self.PAPER],
+        }
+
+
+class BSFGHolonomyGroupParallelTransportCalculator(_CP4Calculator):
+    """CP4 #155 — PAPER_560: BSFG Holonomy Group and Parallel Transport.
+    4D BSFG slice: R_scalar ≠ 0 → not Ricci-flat → G_hol(M⁴) = SO+(3,1)
+    T²² extra dims (i=5..26): flat → G_hol(T²²) = U(1)²²
+    Full holonomy: G_hol(M²⁶) = SO+(3,1) × U(1)²²
+    Parallel transport angle (small loop, area ΔA): δφ = R^r_0r0 · ΔA
+    Berger exclusion: G_2 requires 7D Ricci-flat; Spin(7) requires 8D Ricci-flat
+    Connection 1-form: ω^0_r = Γ⁰_{0r} = ε′/(2A_00)
+    Source: CP4 #149 (Riemann), CP4 #151 (T²² compactification)  PAPER_560
+    """
+    SESSION = 149
+    PAPER   = 'PAPER_560'
+
+    def compute(self, dataset: dict) -> dict:
+        import math
+        r   = dataset.get('r',            _S148_RS)
+        tn  = dataset.get('t_n',          0.0)
+        eta = dataset.get('eta',          _S148_ETA)
+        Ms  = dataset.get('Ms',           _S148_MS)
+        Ls  = dataset.get('Ls',           3.828e26)
+        dA  = dataset.get('loop_area_m2', None)      # coordinate loop area [m²]
+        c   = _S148_C_LIGHT
+
+        C_num  = (Ms * c**2 + Ls / c**2) / ((4.0 / 3.0) * math.pi)
+        cos_tn = math.cos(math.pi * tn)
+        V      = (4.0 / 3.0) * math.pi * r**3
+        Ts00   = Ms * c**2 / V
+        eps    = eta * Ts00 * cos_tn
+        eps_p  = -3.0 * eta * cos_tn * C_num / r**4
+        eps_pp = 12.0 * eta * cos_tn * C_num / r**5
+        A00    =  1.0 + eps
+        Arr    = -1.0 + eps
+
+        R_r0r0   = eps_pp / 2.0 - (eps_p**2) / 2.0
+        R_00     = 3.0 * R_r0r0
+        R_rr     = -R_r0r0 + 2.0 * (eps_pp / 2.0 - eps_p**2 / 4.0)
+        R_scalar = R_00 / A00 + R_rr / Arr
+
+        # 4D holonomy: not Ricci-flat → SO+(3,1)
+        is_Ricci_flat = abs(R_scalar) < 1e-50
+
+        # T²² (22 flat extra dims i=5..26): holonomy = U(1)²²
+        n_extra_flat = 22
+
+        # Default loop area: r² (coordinate area at test radius)
+        if dA is None:
+            dA = r * r
+
+        # Parallel transport holonomy angle (small loop approximation)
+        delta_phi = R_r0r0 * dA
+
+        # At Planck area
+        delta_phi_Planck = R_r0r0 * (_S149_LP ** 2)
+
+        # At 1 AU² loop (evaluated at 1 AU, not at r)
+        R_r0r0_AU = (6.0 * eta * cos_tn * C_num / _S149_AU**5
+                     if abs(cos_tn) > 1e-15 else 0.0)
+        delta_phi_AU2 = R_r0r0_AU * _S149_AU**2
+
+        # Connection 1-form ω^0_r = Γ⁰_{0r}
+        omega_0r = eps_p / (2.0 * A00)
+
+        # Berger's list exclusion
+        has_G2    = False    # G_2: 7D Ricci-flat — BSFG is 4D non-Ricci-flat
+        has_Spin7 = False    # Spin(7): 8D Ricci-flat — BSFG fails both
+
+        return {
+            'paper':              self.PAPER,
+            'G_hol_4D':           'SO+(3,1)',
+            'G_hol_extra':        f'U(1)^{n_extra_flat}',
+            'G_hol_full':         f'SO+(3,1) x U(1)^{n_extra_flat}',
+            'n_extra_flat_dims':  n_extra_flat,
+            'R_r0r0_at_r':        R_r0r0,
+            'R_scalar':           R_scalar,
+            'is_Ricci_flat':      is_Ricci_flat,
+            'has_G2_holonomy':    has_G2,
+            'has_Spin7_holonomy': has_Spin7,
+            'delta_phi_rad':      delta_phi,
+            'delta_phi_Planck':   delta_phi_Planck,
+            'delta_phi_AU2_rad':  delta_phi_AU2,
+            'loop_area_m2':       dA,
+            'omega_0r':           omega_0r,
+            'holonomy_trivial':   (abs(delta_phi) < 1e-100),
+            'equations': {
+                'hol_4D':        'G_hol(M⁴_BSFG) = SO+(3,1)  [R_scalar ≠ 0]',
+                'hol_T22':       'G_hol(T²²) = U(1)²²  [flat extra dims]',
+                'hol_full':      'G_hol(M²⁶) = SO+(3,1) × U(1)²²',
+                'transport':     'δφ = R^r_0r0 · ΔA  [small-loop holonomy]',
+                'G2_exclude':    'G_2: 7D Ricci-flat required → excluded',
+                'Spin7_exclude': 'Spin(7): 8D Ricci-flat required → excluded',
+            },
+            'session': self.SESSION, 'papers': [self.PAPER],
+        }
+
+
+class BSFGBlackHoleSolutionHorizonCalculator(_CP4Calculator):
+    """CP4 #156 — PAPER_561: BSFG Black Hole Horizon Solution.
+    Horizon: A_00(r_h) = 0 → 1 + η·C_num·cos(πt_n)/r_h³ = 0
+    Physical horizon exists only when cos(πt_n) < 0  (½ < t_n < 3/2, Aether anti-phase)
+    At t_n=1 (cos=-1): r_h = (η·C_num)^{1/3} ≈ 1.62×10⁸ m ≈ 0.23 R_☉
+    Surface gravity: κ_BSFG = c²|∂_r A_00|_{r_h}/2 = 3c²η|C_num||cos|/(2r_h⁴)
+    Hawking temperature: T_H = ℏ·κ/(2π·k_B·c) ≈ 3.37×10⁻¹² K (ultra-cold)
+    Scale hierarchy: r_h ≈ 0.23R_☉ ≪ r_q ≈ 0.097 AU ≪ R_☉ (proplyd vs horizon)
+    Source: CP4 #149 (A_00), CP4 #147 (r_q contrast)  PAPER_561
+    """
+    SESSION = 149
+    PAPER   = 'PAPER_561'
+
+    def compute(self, dataset: dict) -> dict:
+        import math
+        tn   = dataset.get('t_n',  1.0)      # default: full anti-phase
+        eta  = dataset.get('eta',  _S148_ETA)
+        Ms   = dataset.get('Ms',   _S148_MS)
+        Ls   = dataset.get('Ls',   3.828e26)
+        c    = _S148_C_LIGHT
+        G_N  = _S149_G_N
+        hbar = _S149_HBAR
+        kB   = _S149_KB
+
+        C_num  = (Ms * c**2 + Ls / c**2) / ((4.0 / 3.0) * math.pi)
+        cos_tn = math.cos(math.pi * tn)
+
+        # Horizon condition: r_h³ = -η·C_num·cos(πt_n)  [cos < 0 required]
+        horizon_exists = cos_tn < -1e-15
+        r_h = (-eta * C_num * cos_tn) ** (1.0 / 3.0) if horizon_exists else float('nan')
+
+        # GR Schwarzschild radius (comparison)
+        r_s_GR = 2.0 * G_N * Ms / c**2
+
+        # BSFG surface gravity: κ = c²|∂_r A_00|_{r_h}/2
+        # ∂_r A_00|_{r_h} = -3η·C_num·cos_tn/r_h⁴
+        if horizon_exists:
+            dA00_dr    = -3.0 * eta * C_num * cos_tn / r_h**4
+            kappa_BSFG = c**2 * abs(dA00_dr) / 2.0
+        else:
+            dA00_dr    = float('nan')
+            kappa_BSFG = float('nan')
+
+        # BSFG Hawking temperature: T_H = ℏ·κ/(2π·k_B·c)
+        T_H_BSFG = (hbar * kappa_BSFG / (2.0 * math.pi * kB * c)
+                    if horizon_exists else float('nan'))
+
+        # GR Hawking temperature
+        T_H_GR = hbar * c**3 / (8.0 * math.pi * G_N * Ms * kB)
+
+        # Proplyd r_q (from CP4 #147 / S147 constants)
+        r_q_m = _S147_R_Q_AU * _S147_AU_IN_M
+
+        return {
+            'paper':             self.PAPER,
+            'horizon_exists':    horizon_exists,
+            't_n':               tn,
+            'cos_pi_tn':         cos_tn,
+            'r_h_m':             r_h,
+            'r_h_over_Rs':       r_h / _S148_RS      if horizon_exists else float('nan'),
+            'r_h_over_r_s_GR':  r_h / r_s_GR        if horizon_exists else float('nan'),
+            'r_h_over_r_q':     r_h / r_q_m         if horizon_exists else float('nan'),
+            'kappa_BSFG_ms2':   kappa_BSFG,
+            'T_H_BSFG_K':       T_H_BSFG,
+            'T_H_GR_K':         T_H_GR,
+            'r_s_GR_m':         r_s_GR,
+            'r_q_canonical_m':  r_q_m,
+            'eta_Cnum':         eta * abs(C_num),
+            'equations': {
+                'horizon_cond': 'A_00(r_h)=0: r_h³=−η·C_num·cos(πt_n)  [cos<0]',
+                'r_h_formula':  'r_h=(η·|C_num||cos(πt_n)|)^{1/3}',
+                'surf_gravity': 'κ_BSFG=c²|∂_rA_00|_{r_h}/2',
+                'Hawking_T':    'T_H=ℏ·κ/(2π·k_B·c)',
+                'phase_cond':   'Physical horizon: ½<t_n<3/2 (Aether anti-phase)',
+            },
+            'session': self.SESSION, 'papers': [self.PAPER],
+        }
+
+
+class BSFGBohrSommerfeldAetherQuantizationCalculator(_CP4Calculator):
+    """CP4 #157 — PAPER_562: BSFG Bohr-Sommerfeld Aether Quantization.
+    BSFG orbital potential: U_BSFG = -GM/r + η·c²·C_num·cos(πt_n)/(2r³)
+    Circular orbit: v²_orbit = GM/r + r·c²·ε′/2  (CP4 #150 geodesic result)
+    Correction ratio: δJ/J ≈ v²_aether/(2v²_newton) = r·c²·ε′/(2GM)
+    Crossover radius: r_cross=(η·c²|cos|·C_num/GM)^{½} ≈ 0.36 AU  [Aether≡Newton]
+    Aether dominates for r < r_cross; Newtonian for r > r_cross
+    Quantum of Aether action: h_η = η × h_Planck  (BSFG-quantum coupling)
+    n_Kepler = √(GMr)/ℏ;  δn = (δJ/J)·n_Kepler  (BSFG quantum-number shift)
+    Source: CP4 #150 (v_orbit geodesic), CP4 #43 (η, C_num)  PAPER_562
+    """
+    SESSION = 149
+    PAPER   = 'PAPER_562'
+
+    def compute(self, dataset: dict) -> dict:
+        import math
+        r    = dataset.get('r',   _S148_RS)
+        tn   = dataset.get('t_n', 0.0)
+        eta  = dataset.get('eta', _S148_ETA)
+        Ms   = dataset.get('Ms',  _S148_MS)
+        Ls   = dataset.get('Ls',  3.828e26)
+        c    = _S148_C_LIGHT
+        G_N  = _S149_G_N
+        hbar = _S149_HBAR
+        h_pl = _S149_H_PL
+
+        C_num  = (Ms * c**2 + Ls / c**2) / ((4.0 / 3.0) * math.pi)
+        cos_tn = math.cos(math.pi * tn)
+        eps_p  = -3.0 * eta * cos_tn * C_num / r**4
+
+        # Orbital velocities squared (CP4 #150 geodesic pattern)
+        v2_newton = G_N * Ms / r
+        v2_aether = r * eps_p * c**2 / 2.0
+        v2_total  = v2_newton + v2_aether
+        v_orbit   = math.sqrt(max(v2_total, 0.0))
+
+        # Fractional action correction
+        delta_J_over_J = (v2_aether / (2.0 * v2_newton)
+                          if v2_newton != 0 else float('nan'))
+
+        # Crossover radius: |v²_aether| = v²_newton
+        # → r² = η·c²·|cos|·C_num/GM
+        if abs(cos_tn) > 1e-15:
+            r_cross_m  = math.sqrt(eta * c**2 * abs(cos_tn) * C_num / (G_N * Ms))
+            r_cross_AU = r_cross_m / _S149_AU
+        else:
+            r_cross_m  = float('nan')
+            r_cross_AU = float('nan')
+
+        # Quantum of Aether action
+        h_eta = eta * h_pl
+
+        # Bohr-Sommerfeld specific angular momentum and quantum number
+        J_spec  = math.sqrt(G_N * Ms * r)   # m²/s
+        n_Kepler = J_spec / hbar
+        delta_n  = (delta_J_over_J * n_Kepler
+                    if not math.isnan(delta_J_over_J) else float('nan'))
+
+        # δJ/J at 1 AU for comparison
+        eps_p_AU    = -3.0 * eta * cos_tn * C_num / _S149_AU**4
+        v2_a_AU     = _S149_AU * eps_p_AU * c**2 / 2.0
+        v2_n_AU     = G_N * Ms / _S149_AU
+        dJJ_1AU     = v2_a_AU / (2.0 * v2_n_AU) if v2_n_AU > 0 else float('nan')
+
+        return {
+            'paper':               self.PAPER,
+            'r_m':                 r,
+            'v2_newton_m2s2':      v2_newton,
+            'v2_aether_m2s2':      v2_aether,
+            'v2_total_m2s2':       v2_total,
+            'v_orbit_ms':          v_orbit,
+            'delta_J_over_J':      delta_J_over_J,
+            'delta_J_over_J_1AU':  dJJ_1AU,
+            'r_cross_m':           r_cross_m,
+            'r_cross_AU':          r_cross_AU,
+            'aether_dominates':    abs(v2_aether) > v2_newton,
+            'h_eta':               h_eta,
+            'J_spec_m2s':          J_spec,
+            'n_Kepler':            n_Kepler,
+            'delta_n_BSFG':        delta_n,
+            'equations': {
+                'potential':  'U_BSFG=-GM/r+η·c²·C_num·cos(πt_n)/(2r³)',
+                'v_orbit':    'v²_orbit=GM/r+r·c²·ε′/2  (CP4 #150)',
+                'BS_ratio':   'δJ/J≈r·c²·ε′/(2GM)=v²_aether/(2v²_newton)',
+                'crossover':  'r_cross=(η·c²|cos|C_num/GM)^{1/2}',
+                'h_eta':      'h_η=η×h_Planck  (Aether-action quantum)',
+                'quantum_n':  'δn=(δJ/J)×n_Kepler',
+            },
+            'session': self.SESSION, 'papers': [self.PAPER],
+        }
+
+
 __all__ = [
     # --- Session 97: CP4 initial — PAPER_355–366 ---
     "PLCKClusterG287MergerRelicTriadicCalculator",       # PAPER_355
@@ -11386,5 +11756,10 @@ __all__ = [
     "BSFG26DLineElementFactorialCompactificationCalculator",  # PAPER_556 (#151)
     "BSFGSymmetryGroupIsometryAnalysisCalculator",            # PAPER_557 (#152)
     "BSFGUnificationAtlasTheoremHubCalculator",               # PAPER_558 hub (#153)
+    # --- Session 149: BSFG Open Questions resolved — PAPER_559–562 ---
+    "BSFGEinsteinTensorFieldEquationsCalculator",             # PAPER_559 (#154)
+    "BSFGHolonomyGroupParallelTransportCalculator",           # PAPER_560 (#155)
+    "BSFGBlackHoleSolutionHorizonCalculator",                 # PAPER_561 (#156)
+    "BSFGBohrSommerfeldAetherQuantizationCalculator",         # PAPER_562 (#157)
 
 ]
