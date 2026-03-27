@@ -134,6 +134,9 @@ constexpr double AMP_FACTOR_REF = 1.2e4;               // G_00 / (κ_E · T_s00)
 constexpr double LAMBDA_EFF_REF = 1.312e-45;           // Λ_eff at R_SUN  [m^{-2}]
 constexpr double R_Q_AU_REF     = 0.0973;              // Proplyd quantization radius  [AU]
 
+// BH26 ReRing oscillation centre frequency (_S146_RERING_BB)
+constexpr double RERING_BB_HZ   = 1.15e14;            // Hz
+
 // ============================================================================
 // SECTION 3 — RESULT STRUCTS
 // Each struct is the return type of one public API function.
