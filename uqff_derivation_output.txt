@@ -1,0 +1,63 @@
+﻿===================================================
+  UQFF Constant Derivation - Wolfram Engine 14.3  
+===================================================
+
+--- PART 1: Z26 = Li26(SSq) ---
+Z26 = PolyLog[26, 0.57] = 0.5700000048414601
+Z26 = PolyLog[26, 4/7] = 0.57142857629433014635698851814448308158`15.
+Diff |0.57 - 4/7| = 0.0014285714285714457
+Diff |Z26(0.57) - Z26(4/7)| = 0.0014285714528701199
+
+Key insight: For large degree n, Li_n(x) = x + x^2/2^n + x^3/3^n + ...
+At n=26, second term = 0.57^2/2^26 = 4.841387271881103*^-9
+Hence Z26 ~ SSq is expected, not a special property of 0.57
+
+--- PART 2: Origin of SSq = 0.57 ---
+beta = (1-Ye)^(1/26) at Ye=0.1: 0.9959558720743248
+  -> 0.9^(1/26) = 0.9959558720743248 not 0.57
+SSq^26 = 4.495171312401197*^-7 (26-layer total suppression)
+SSq^13 = 0.00067046038752496 (13-layer, half-shell suppression)
+
+4/7 = 0.57142857142857142857142857142857142857`10.
+Diff 0.57 - 4/7 = -0.0014285714285714457 (0.57 is slightly less)
+FractionBox: SSq = 57/100 exactly (terminating decimal)
+The physics discriminates 57/100 vs 4/7 only at 4th decimal place
+
+--- PART 3: kappa from JWST quasar tau=2000 days ---
+kappa = 1/tau = 1/2000 days = ScientificForm[0.0005`6., 4]
+Target kappa = 5e-4 = ScientificForm[1/2000, 4]
+Match: kappa derived = kappa target? Diff =      -9
+0. 10
+E-fold check: exp(-kappa * tau) = exp(-1) = 0.3678794411714423216`6.
+
+--- PART 4: FindFit SSq from Solar system SCm densities ---
+Log10 linear fit: intercept=14.70000000170702 slope=-1.3000000011380135
+slope = -log10(base) where base is the ratio per step
+Density ratio per step = 10^|slope| = 19.95262320197211
+Exp fit: alpha = 4.603366216999058 (compare SSq=0.57, but note alpha is per body-step)
+         rho0 = ScientificForm[9.999999095119099*^14]
+Note: alpha here is per 1-unit n step, not directly SSq
+SSq enters as: rho(n) = rho0 * Exp[-SSq * n * C] where C = ln(rho_step)
+
+--- PART 5: [UA] from H_SCm = 0.99 constraint ---
+rhoUA/rhoSCm = (1 - H_SCm)/H_SCm = 0.01010101010101011
+[UA] enters as rhoUA = [UA] * rho_vac_lambda
+[UA] = 1e-4 from bodies.csv column U_UA (all rows)
+Interpreted as: Boson-aether density = 1e-4 of total vacuum density
+
+--- PART 6: Cross-verification ---
+F_Ubi = [UA]*SSq*kappa*Z26 = ScientificForm[1.6245000137981612*^-8]
+This is the characteristic buoyancy coupling strength
+SSq^26 = 4.495171312401197*^-7 (full 26-layer suppression factor)
+sqrt(SSq^26) = SSq^13 = 0.00067046038752496 (half-stack)
+kappa * Z26 = ScientificForm[0.00028500000242073005] day^-1
+
+=== FINAL RESULTS ===
+[SSq]  = 0.57 = 57/100  [empirical; ~4/7 but not exact; triple convergence]
+Z26    = 0.5700000048414601  [= PolyLog[26, 0.57]; ~SSq by Li_n large-n property]
+kappa  = ScientificForm[0.0005`6., 3] day^-1  [= 1/2000 exactly; JWST quasar tau]
+[UA]   = 1e-4           [vacuum density fraction; H_SCm constraint gives ratio only]
+
+===================================================
+  DERIVATION COMPLETE ΓÇö v2                        
+===================================================
