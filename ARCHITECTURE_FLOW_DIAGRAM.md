@@ -13,6 +13,7 @@
 > **Updated:** 2026-03-26/27 (v5.07 + Sessions 143–147: Proplyd/DPM/BSFG factorial physics (5 grok_share docs); CP4 125→148 (#126–#148); PAPER_531–553; 553/1000 whitepapers)
 > **Updated:** 2026-03-27 (v5.08 + Session 148: BSFG Complete Geometric System; CP4 148→153 (#149–#153); PAPER_554–558 (5); 558/1000; commit dfe9393)
 > **Updated:** 2026-03-27 (v5.09 + Session 149: BSFG Open Questions Resolved — Einstein G_μν, holonomy SO⁺(3,1)×U(1)²², BH horizon r_h=0.233R_☉, Bohr-Sommerfeld r_cross=0.36 AU; CP4 153→157 (#154–#157); PAPER_559–562 (4); 562/1000; commit 960a11d)
+> **Updated:** 2026-03-28 (v5.10 + Session 151 Phase H: Millennium Prize discrepancies resolved — 9 CP2 classes integrated from PAPER_530/540/543/544/104/156/553; CP4 #125/#135/#138/#139 + P≠NP/BSD/Hodge/FUBi26; CP2 622→631; commit 65c7f0f)
 > **Author:** Daniel T. Murphy
 > **CRITICAL:** This is the MASTER architecture document. All other docs must match.
 
@@ -60,6 +61,7 @@
 | **v5.07** | **Sessions 143–147: Proplyd/DPM/BSFG factorial physics (grok_share_fd81483/dbd8866/22e7a1a/366dc39/b08cc4e); CP4 125→148 (#126–#148); SOURCE183–187_RESULTS (doc_id=28–32); PAPER_531–553 (23) + 23 PDFs; 553/1000 (55.3%)** | ✅ **Complete** | Session 147 |
 | **v5.08** | **Session 148: BSFG Complete Geometric System (A_μν Aether metric, R^r_0r0 Riemann curvature, G_iso=SO(3)×U(1)²³ isometry, Levi-Civita compatibility, 26D factorial line element, VDS/DVP/BH26 atlas theorem hub, BC-duality); CP4 148→153 (#149–#153); PAPER_554–558 (5) + 5 PDFs; 558/1000 (55.8%); commit dfe9393** | ✅ **Complete** | dfe9393 |
 | **v5.09** | **Session 149: BSFG Open Questions Resolved (Q1: Einstein G_μν amp=1.2×10⁴ non-Einstein; Q2: G_hol=SO⁺(3,1)×U(1)²²; Q3: r_h=0.233R☉ blinking horizon T_H=3.37×10⁻¹² K; Q4: r_cross=0.36 AU Bohr-Sommerfeld); CP4 153→157 (#154–#157); PAPER_559–562 (4) + 4 PDFs; 562/1000 (56.2%); commit 960a11d** | ✅ **Complete** | 960a11d |
+| **v5.10** | **Session 151 Phase H: Millennium Prize discrepancy fix — 9 CP2 classes integrated from PAPER_530 (#125), PAPER_540 (#135), PAPER_543 (#138), PAPER_544 (#139), PAPER_104 (P≠NP), PAPER_156 eq-M5 (BSD), PAPER_156 eq-M6 (Hodge), PAPER_553 (#148/FUBi26); MillenniumPrizeUQFFHubCalculator (master hub, 6/6 problems); CP2 622→631; SOURCE_MILLENNIUM_CP2 registry; QCalcGeom 60/60 PASS maintained; 562/1000 whitepapers (unchanged); commit 65c7f0f** | ✅ **Complete** | 65c7f0f |
 
 ---
 
@@ -68,7 +70,7 @@
 | Tier | Layer | Programs | Purpose |
 |------|-------|----------|---------|
 | **1** | **USER INTERFACE** | `source2.cpp` (15,753 lines, Qt6, 21 tabs) | Where ALL user workflows begin |
-| **2** | **COMPUTATION** | `MAIN_1_CoAnQi.cpp` (107,019L), `QCalc.py` (9,833L, 27 classes), `CondensedPhysics.py` (81,626L), `CondensedPhysics2.py` (46,476L, 622 classes), `CondensedPhysics4.py` (157 classes, v5.09), `uqff_server.js` (index.js lib) | 5+ calculators run simultaneously in parallel |
+| **2** | **COMPUTATION** | `MAIN_1_CoAnQi.cpp` (107,019L), `QCalc.py` (9,833L, 27 classes), `CondensedPhysics.py` (81,626L), `CondensedPhysics2.py` (631 classes, v5.10), `CondensedPhysics4.py` (157 classes, v5.09), `uqff_server.js` (index.js lib) | 5+ calculators run simultaneously in parallel |
 | **3** | **VR/VM BACKEND** | `source2(HEAD PROGRAM).cpp` (2,625L), `physics_backend.cpp` (~12,000L) | GPU-heavy simulations, headless CPU physics |
 | **4** | **IPC LAYER** | `uqff_ipc.h` (515L v3.1), `python_bridge.h`, `physics_service.h` (470L v3.1), `ipc_pipeline_handler.h` | 45-message-type cross-platform pipeline |
 | **5** | **STORAGE** | `bodies_*.csv`, `uqff_results.json`, `CondensedPhysics_OutputData.py`, `session_*.json`, `coAnQi_log_*.txt` | Data persistence and user RECALL |
@@ -655,3 +657,4 @@ CondensedPhysics_OutputData.py
 *Updated: 2026-03-26/27 (v5.07 Sessions 143–147: Proplyd/DPM/BSFG factorial; CP4=125→148; PAPER_531–553; 553/1000 whitepapers) by Daniel T. Murphy*
 *Updated: 2026-03-27 (v5.08 Session 148: BSFG Complete Geometric System; CP4=148→153; PAPER_554–558; 558/1000; commit dfe9393) by Daniel T. Murphy*
 *Updated: 2026-03-27 (v5.09 Session 149: BSFG Open Questions Resolved; CP4=153→157; PAPER_559–562; 562/1000; commit 960a11d) by Daniel T. Murphy*
+*Updated: 2026-03-28 (v5.10 Session 151 Phase H: 9 Millennium Prize CP2 classes; CP2=631; NS/YM/Riemann/P≠NP/BSD/Hodge/FUBi26 + master hub; commit 65c7f0f) by Daniel T. Murphy*
