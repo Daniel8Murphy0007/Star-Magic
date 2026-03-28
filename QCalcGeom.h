@@ -62,6 +62,14 @@ constexpr int    QCALCGEOM_VERSION_MINOR = 1;
 constexpr int    QCALCGEOM_VERSION_PATCH = 0;
 constexpr const char* QCALCGEOM_VERSION_STR = "1.1.0-S151";
 
+// C++ standard gate — matches CMakeLists.txt /std:c++20 project setting
+// MSVC reports correct value only with /Zc:__cplusplus; fall back to _MSVC_LANG
+#if defined(_MSC_VER)
+  static_assert(_MSVC_LANG >= 201703L, "QCalcGeom requires C++17 or later (C++20 preferred)");
+#else
+  static_assert(__cplusplus >= 201703L, "QCalcGeom requires C++17 or later (C++20 preferred)");
+#endif
+
 // ============================================================================
 // SECTION 2 — CANONICAL CONSTANTS
 // All values must match qcalcgeom_tests.cpp Section 1 exactly.
