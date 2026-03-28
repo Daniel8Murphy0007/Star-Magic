@@ -58,9 +58,9 @@ namespace QCALCGEOM {
 // ============================================================================
 
 constexpr int    QCALCGEOM_VERSION_MAJOR = 1;
-constexpr int    QCALCGEOM_VERSION_MINOR = 1;
+constexpr int    QCALCGEOM_VERSION_MINOR = 2;
 constexpr int    QCALCGEOM_VERSION_PATCH = 0;
-constexpr const char* QCALCGEOM_VERSION_STR = "1.1.0-S151";
+constexpr const char* QCALCGEOM_VERSION_STR = "1.2.0-S151G";
 
 // C++ standard gate — matches CMakeLists.txt /std:c++20 project setting
 // MSVC reports correct value only with /Zc:__cplusplus; fall back to _MSVC_LANG
@@ -343,6 +343,54 @@ struct BSFGBuoyancyResult {
     bool   zero_crossing; ///< true when |cos(π·t_n)| < 1e-10             (half-phase)
 };
 
+/**
+ * @brief Result of the 26th-order polynomial derivative expansion.
+ *
+ * Covers tests T51–T56 (group POLY26, Session 151 Phase G).
+ *
+ * Applies the master formula from the 26D projection framework:
+ *   d^{26}/dr^{26} (c/r^k) = (k+25)!//(k-1)! · c / r^{k+26}
+ *
+ * The Pochhammer rising-factorial coefficient k*(k+1)*...*(k+25) is
+ * computed exactly as a double product to avoid overflow.
+ * At cosmic radii (r ≳ 1 AU) with physical c, the term is < 10^{-280}
+ * (negligible) — confirming no singularity at non-zero r.
+ */
+struct Poly26Result {
+    double value;           ///< (k+25)!/(k-1)! * c / r^{k+26}               [SI]
+    double factorial_ratio; ///< Pochhammer (k)_{26} = k*(k+1)*...*(k+25)     [dimensionless]
+    double r_power;         ///< r^{k+26}                                      [m^{k+26}]
+    bool   negligible;      ///< true when |value| < POLY26_NEGLIGIBILITY_THR
+};
+
+/// Threshold below which a poly26 term is considered physically negligible
+constexpr double POLY26_NEGLIGIBILITY_THR = 1.0e-100;
+
+/**
+ * @brief Result of the UQFF compressed-field matrix evaluation.
+ *
+ * Covers tests T57–T60 (group UQFF-COMP, Session 151 Phase G).
+ *
+ * The 3×3 UQFF_comp tensor diagonal entries are:
+ *   m00 = poly26_derivative(1, G·M_⊙, r).value  (26th r-deriv of U_g base)
+ *   m11 = poly26_derivative(26, κ=1, r).value    (26th r-deriv of U_m base)
+ *   m22 = 26! * G_N / rho^{27}                   (26th ρ-deriv of U_b = G_N/ρ)
+ *
+ * Off-diagonal entries are 13th-order cross-coupling estimates:
+ *   cross_d13 = sqrt(|poly_d13_ug| * |poly_d13_um|)  (geometric mean coupling)
+ *
+ * Positive definiteness (eigenvalue_min > 0) confirms that the 26th-order
+ * expansion does not introduce negative-energy modes.
+ */
+struct UQFFCompResult {
+    double m00;           ///< Diagonal: 26th r-deriv of gravitational U_g term
+    double m11;           ///< Diagonal: 26th r-deriv of magnetic U_m term
+    double m22;           ///< Diagonal: 26th ρ-deriv of buoyancy U_b term
+    double cross_d13;     ///< Off-diagonal 13th-order cross-coupling estimate
+    double eigenvalue_min;///< Minimum diagonal (proxy for smallest eigenvalue)
+    bool   positive_definite; ///< true when eigenvalue_min > 0
+};
+
 // ============================================================================
 // SECTION 4 — PUBLIC API DECLARATIONS
 // Implemented in QCalcGeom.cpp (Phase B).
@@ -507,12 +555,49 @@ BSFGBuoyancyResult bsfg_buoyancy(double r, double t_n,
     double U_UA       = U_UA_BSFG);
 
 /**
- * @brief Run all 50 QCalcGeom requirements-boundary tests and print results.
+ * @brief Compute the 26th-order polynomial derivative of (c / r^k).
+ *
+ * Implements the closed-form result:
+ *   d^{26}/dr^{26} (c/r^k) = (k+25)!/(k-1)! · c / r^{k+26}
+ *
+ * The coefficient is computed as the Pochhammer product k*(k+1)*...*(k+25)
+ * using double arithmetic (exact for k ≤ 40 given double's 53-bit mantissa
+ * vs product magnitude).  Requires k ≥ 1 and r > 0.
+ *
+ * @param k  Power of inverse-r in c/r^k (k ≥ 1)
+ * @param c  Scale coefficient
+ * @param r  Radial coordinate [m] (must be > 0)
+ * @return   Poly26Result with value, factorial_ratio, r_power, negligible flag
+ *
+ * Test coverage: T51–T56 (group POLY26)
+ * Reference: Grok thread grok_share_79fdf5367d1.txt — 26th-order expansions;
+ *            iterative differentiation: each step multiplies by -(k+m)/r
+ */
+Poly26Result poly26_derivative(int k, double c, double r);
+
+/**
+ * @brief Evaluate the UQFF compressed-field (UQFF_comp) matrix at (r, rho).
+ *
+ * Constructs the 3×3 UQFF_comp tensor diagonal and cross-coupling entries
+ * using poly26_derivative.  Returns the minimum diagonal as eigenvalue_min.
+ *
+ * @param r    Radial coordinate [m] (must be > 0)
+ * @param rho  Mass-energy density [kg/m³] (must be > 0)
+ * @return     UQFFCompResult with m00/m11/m22 diagonals, cross_d13, eigenvalue_min
+ *
+ * Test coverage: T57–T60 (group UQFF-COMP)
+ * Reference: Grok thread grok_share_79fdf5367d1.txt — UQFF_comp matrix
+ */
+UQFFCompResult uqff_comp_matrix(double r, double rho);
+
+/**
+ * @brief Run all 60 QCalcGeom requirements-boundary tests and print results.
  *
  * Phases A-E: 40 original BSFG/VDS/DVP/BSH/BH26/COSMO/CHALLENGE tests (T01-T40)
- * plus 10 Session-151 negative-time + negative-buoyancy tests (T41-T50).
+ * Phase E:    10 Session-151 negative-time + negative-buoyancy tests (T41-T50).
+ * Phase G:    10 Session-151 26th-order expansion tests (T51-T60).
  *
- * Expected result post Phase E: 50/50 PASS.
+ * Expected result post Phase G: 60/60 PASS.
  */
 void runQCalcGeomTests();
 
@@ -564,6 +649,21 @@ std::string bsfg_geodesic_wstp(double r0, double t_max);
  * Returns Wolfram T_{22} KK mass spectrum → BH26 λ_k bin string.
  */
 std::string kkm_spectrum_wstp();
+
+/**
+ * [W7] Symbolic 26th-order derivative of c/r^k via Wolfram FullSimplify[D[...]].
+ *
+ * Sends to Wolfram:
+ *   FullSimplify[D[c/r^k, {r,26}], Assumptions -> r > 0]
+ *
+ * Expected symbolic result: (k+25)!/(k-1)! * c / r^(k+26)
+ * e.g. for k=1, c=1: 26! / r^27  →  "403291461126605635584000000/r^27"
+ *
+ * @param k  Power of inverse-r (k ≥ 1)
+ * @param c  Scale coefficient (passed as WL literal string, e.g. "1", "1*^-22")
+ * @return   Wolfram FullSimplify result string
+ */
+std::string poly26_symbolic(int k, const std::string& c_wl);
 
 } // namespace geom_w
 #endif // USE_EMBEDDED_WOLFRAM

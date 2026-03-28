@@ -260,6 +260,33 @@ std::string kkm_spectrum_wstp()
     return WolframEvalToString(wl);
 }
 
+// ─────────────────────────────────────────────────────────────────────────────
+// W7 — Symbolic 26th-order derivative of c/r^k
+//
+// Sends to Wolfram:
+//   FullSimplify[D[c_wl/r^k, {r,26}], Assumptions -> r > 0]
+//
+// Expected result: (k+25)!/(k-1)! * c / r^{k+26}
+// e.g. k=1, c_wl="1":  "403291461126605635584000000/r^27"  (= 26!/r^27)
+// e.g. k=2, c_wl="1":  "10888869450418352160768000000/r^28" (= 27!/r^28)
+//
+// Validates the closed-form Pochhammer expansion computed in poly26_derivative().
+// Test: W7("1","1") should return a string containing "r^27".
+//
+// @param k     Power of inverse-r (k >= 1); passed as integer
+// @param c_wl  Coefficient as Wolfram Language literal, e.g. "1", "1*^-22"
+// @return      Wolfram FullSimplify result string
+// ─────────────────────────────────────────────────────────────────────────────
+std::string poly26_symbolic(int k, const std::string& c_wl)
+{
+    std::ostringstream wl;
+    wl << "FullSimplify["
+       <<   "D[" << c_wl << "/r^" << k << ",{r,26}],"
+       <<   "Assumptions->r>0"
+       << "]";
+    return WolframEvalToString(wl.str());
+}
+
 } // namespace geom_w
 } // namespace QCALCGEOM
 
