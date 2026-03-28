@@ -178,6 +178,11 @@ enum class MessageType : uint32_t {
     BEC_ALPHA_CLUSTERING        = 0x0A03,  // N_B=1/(exp(DE/kT)-1); T=14.52 MeV; delta_pair=0.1; kappa_Higgs=47.34
     SUPERCONDUCTIVE_UI_COMPLEX  = 0x0A04,  // U_i complex; rho_A=1e-30+i*1e-31 kg/m3; beta_i=0.6; omega_s=2.5e-6 rad/s
 
+    // QCalcGeom BSFG Geometric Calculator (Session 150, March 2026)
+    QCALCGEOM_COMPUTE           = 0x0B01,  // Route to bsfg_metric/horizon/bsfg_geodesic/bsfg_holonomy/etc.
+    QCALCGEOM_RESULT            = 0x0B02,  // Return BSFGMetricResult / BSFGHorizonResult / etc.
+    QCALCGEOM_TEST_RUN          = 0x0B03,  // Trigger QCALCGEOM::runQCalcGeomTests() (40 tests)
+
     // Responses
     RESPONSE_SUCCESS        = 0x1000,  // Operation completed
     RESPONSE_ERROR          = 0x1001,  // Operation failed
