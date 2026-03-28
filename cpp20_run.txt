@@ -1,0 +1,89 @@
+
+================================================================================
+QCalcGeom Requirements-Boundary Test Suite (Phase E — neg-buoy + neg-time)
+Session 151 | 50 Tests | BSFG+VDS+DVP+BSH+BH26+Cosmological+NegBuoy+NegTime
+================================================================================
+
+ID   GROUP          TEST NAME                                      COMPUTED    EXPECTED  TOL%  STATUS
+--------------------------------------------------------------------------------------------------
+
+  [BSFG-METRIC]
+T01  BSFG-METRIC    eps_prime at R_SUN, t_n=0                    5.4635e-11  5.4700e-112.0000   PASS
+T02  BSFG-METRIC    R^r_0r0 at R_SUN, t_n=0                      1.5551e-19  1.5700e-192.0000   PASS
+T03  BSFG-METRIC    R^r_0r0 -> 0 as eta -> 0                     1.6489e-56      (qual)0.0000   PASS
+T04  BSFG-METRIC    eps(t_n=0) == eps(t_n=2) (full phase cycle   0.0000e+00      (qual)0.0000   PASS
+T05  BSFG-METRIC    eps sign flip: t_n=0 (+) vs t_n=1 (-)       -1.0000e+00 -1.0000e+001.0000   PASS
+T06  BSFG-METRIC    eps_pp(r/2)/eps_pp(r) = 2^5 = 32 (r^{-5} l   3.2000e+01  3.2000e+010.0100   PASS
+
+  [BSFG-GEOM]
+T07  BSFG-GEOM      Blinking horizon r_h approx 1.62e8 m at t_   1.6228e+08  1.6200e+082.0000   PASS
+T08  BSFG-GEOM      Hawking T_H at BSFG horizon approx 3.37e-1   3.3715e-12  3.3700e-123.0000   PASS
+T09  BSFG-GEOM      Aether-Newton crossover r_cross approx 0.3   3.5981e-01  3.6000e-012.0000   PASS
+T10  BSFG-GEOM      h_eta = eta x h_Planck = 6.626e-56 J·s      6.6260e-56  6.6260e-560.0100   PASS
+T11  BSFG-GEOM      Holonomy 28 generators: SO+(3,1)xU(1)^22     2.8000e+01  2.8000e+010.0000   PASS
+T12  BSFG-GEOM      M^26 = M^4_BSFG x T^22: dim=4+22=26          2.6000e+01  2.6000e+010.0000   PASS
+
+  [VDS]
+T13  VDS            VDS(0.57) approx 0.570 (n=1 dominance)       5.7000e-01  5.7000e-010.0000   PASS
+T14  VDS            VDS: |t_n| decreasing for n=1..10            5.7000e-01  5.7000e-010.0000   PASS
+T15  VDS            VDS strictly increasing in SSq               5.7000e-01  5.7000e-010.0000   PASS
+T16  VDS            VDS(N=200) == Li_26(0.57) to 10 d.p.         0.0000e+00      (qual)0.0000   PASS
+
+  [DVP]
+T17  DVP            30th prime = 113 = DVP P_special             1.1300e+02  1.1300e+020.0000   PASS
+T18  DVP            26! mod 113 != 0 (= 12, non-repeating)       1.2000e+01  1.2000e+010.0000   PASS
+T19  DVP            Vortex encoding a(p) strictly decreasing p   7.9072e-46      (qual)0.0000   PASS
+T20  DVP            113 is prime: Z/113Z forms a field           1.1200e+02  1.1200e+020.0000   PASS
+T21  DVP            r_q = (2/26!)^{1/26} approx 0.0973 AU        9.7339e-02  9.7300e-021.0000   PASS
+
+  [BSH]
+T22  BSH            H_2 = f_Ub*(1+1/2) = 3.30e7                  3.3000e+07  3.3000e+070.0010   PASS
+T23  BSH            U_g2 > 0 at canonical params (t_n=0.5, ome   1.1799e+09      (qual)0.0000   PASS
+T24  BSH            (1-e^{-SSq*20}) -> 1: BSH summand saturate   9.9999e-01  1.0000e+000.0100   PASS
+
+  [BH26]
+T25  BH26           lam_k=k(k+25): lam_1=26, lam_26=1326         1.3260e+03  1.3260e+030.0000   PASS
+T26  BH26           Upper 13-rung sum > lower (BH > star parti   3.8403e+00      (qual)0.0000   PASS
+T27  BH26           BH26 Gaussian bins: 92/225/345 GHz all non   1.0000e+00  1.0000e+000.0000   PASS
+
+  [COSMO]
+T28  COSMO          Lambda_eff = kE*eta*Ts00/2 approx 1.312e-4   1.3124e-45  1.3120e-452.0000   PASS
+T29  COSMO          amp_factor = G_00/(kE*Ts00) approx 1.2e4     1.1954e+04  1.2000e+045.0000   PASS
+T30  COSMO          r_h_BSFG / r_s_GR approx 5.5e4 (horizon sc   5.5012e+04  5.5000e+045.0000   PASS
+
+  [CHALLENGE]
+T31  CHALLENGE      BSFG metric -> flat at r=67 AU: |eps| < 1e   4.2735e-15      (qual)0.0000   PASS
+T32  CHALLENGE      Friedmann H from BSFG rho_vac_eff is finit   6.2748e-15      (qual)0.0000   PASS
+T33  CHALLENGE      Page curve: 98.95% information unitarity     9.8950e-01  9.8950e-010.1000   PASS
+T34  CHALLENGE      |dJ/J| at 1 AU << 1 (Aether sub-dominant)    9.7098e-02      (qual)0.0000   PASS
+T35  CHALLENGE      Yang-Mills proxy: sqrt(|R_scalar|) > 0 at    5.4924e-10      (qual)0.0000   PASS
+T36  CHALLENGE      Penrose NEC: R_00 > 0 at t_n=0 (singularit   4.6652e-19      (qual)0.0000   PASS
+T37  CHALLENGE      T_H_BSFG/T_H_GR < 1e-3 (BSFG horizon ultra   5.4534e-05  5.5000e-055.0000   PASS
+T38  CHALLENGE      BSFG dim = 26 = bosonic string critical di   2.6000e+01  2.6000e+010.0000   PASS
+T39  CHALLENGE      BSFG NS regularity: Dg_r = eps'/2 finite a   2.7318e-11      (qual)0.0000   PASS
+T40  CHALLENGE      Holographic S_BH = A/(4l_P^2) > 0 at BSFG    3.1681e+86      (qual)0.0000   PASS
+
+  [NEG-BUOY]
+T41  NEG-BUOY       Ubi < 0 at t_n=0 (opposes gravity normal)   -7.6301e+33      (qual)0.0000   PASS
+T42  NEG-BUOY       Ubi > 0 at t_n=1 (neg buoyancy negentropic   7.6301e+33      (qual)0.0000   PASS
+T43  NEG-BUOY       Ubi approx 0 at t_n=0.5 (zero crossover)    -4.6721e+17      (qual)0.0000   PASS
+T44  NEG-BUOY       Ubi(t_n=0)+Ubi(t_n=1)=0 exact antisymmetry   0.0000e+00      (qual)0.0000   PASS
+T45  NEG-BUOY       r^{-2} scaling: |Ubi(r/2)|/|Ubi(r)| = 4.0    4.0000e+00  4.0000e+000.1000   PASS
+T46  NEG-BUOY       Period: Ubi(t_n=2)==Ubi(t_n=0) cos(2pi)=1    0.0000e+00      (qual)0.0000   PASS
+
+  [NEG-TIME]
+T47  NEG-TIME       eps(t_n=-1)==eps(t_n=+1) cosine even         0.0000e+00      (qual)0.0000   PASS
+T48  NEG-TIME       Horizon exists at t_n=-1 (neg-time same as   1.6228e+08  1.6200e+082.0000   PASS
+T49  NEG-TIME       Ubi(t_n=-1)==Ubi(t_n=+1) neg-time symmetry   0.0000e+00      (qual)0.0000   PASS
+T50  NEG-TIME       NegTimeModule: 1-exp(y*t*cos(pi*1))<0 grow  -5.1271e-02 -5.1000e-025.0000   PASS
+--------------------------------------------------------------------------------------------------
+
+=== SUMMARY ===
+  Total tests:  50
+  PASSED:       50
+  FAILED:       0
+
+================================================================================
+[QCalcGeom] Tests complete (Phase E): 50/50 passed | Session 151 | March 28 2026
+================================================================================
+

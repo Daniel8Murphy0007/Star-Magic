@@ -1,0 +1,3 @@
+
+C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic>call C:\PROGRA~1\MICROS~3\18\PROFES~1\VC\AUXILI~1\Build\vcvars64.bat 
+\Microsoft was unexpected at this time.

@@ -415,7 +415,7 @@ def extract_title_meta(md_text: str):
 # ─── Markdown → PDF ───────────────────────────────────────────────────────────
 
 def md_file_to_pdf(md_path: Path, out_dir: Path, styles):
-    md_text = md_path.read_text(encoding='utf-8')
+    md_text = md_path.read_text(encoding='utf-8', errors='replace')
     paper_title = extract_title_meta(md_text)
     out_path = out_dir / (md_path.stem + '.pdf')
 
@@ -551,6 +551,15 @@ def main():
         'PAPER_427_26D_Resonance_Layer_Amplitude_Frequency.md',
         'PAPER_428_HRes_Periodic_Table_Universal_Nuclear.md',
         'PAPER_429_Three_New_Number_Systems_Vacuum_Dipole_Buoyancy.md',
+        # Millennium Prize Suite (Session 151H)
+        'PAPER_104_P_vs_NP_UQFF.md',
+        'PAPER_156_UQFF_Millennium_Prize_Roadmap_10_Equations_Clay_Bridge.md',
+        'PAPER_530_Session142_Hub_Millennium_YangMills_Riemann_PvsNP_UQFF.md',
+        'PAPER_540_YangMills_DPM_Quantization_Millennium_Hub.md',
+        'PAPER_543_Navier_Stokes_Discrete_Hypergraph_Regularity_Proof.md',
+        'PAPER_544_YangMills_DPM_Gauge_Field_Mass_Gap_Proof.md',
+        'PAPER_553_FUBi26th_Gaussian_Polynomial_Bounded_Proof.md',
+        'PAPER_563_Millennium_Prize_UQFF_Coordinator_All_Six_Problems.md',
     ]
 
     cpp_targets = [

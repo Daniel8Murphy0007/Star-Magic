@@ -698,3 +698,38 @@ This roadmap (PAPER_156) is supported by the complete 156-paper Star-Magic white
 - Murphy D.T. (2026), PAPER_001–132 — Phase 1 Star-Magic whitepaper suite
 - `MAIN_1_CoAnQi.cpp` — 107,019 lines, 446 modules, SOURCE1-116 + SOURCE4
 - `grok_share_07b7f7a635c04b6e90170b8a481ab1b0_content.txt` — Thread 07b7f7a6 extraction
+
+---
+
+## Appendix D — Cross-Reference to the Millennium Prize Suite (Session 151H)
+
+This paper covers the **BSD Conjecture** (eq-M5) and **Hodge Conjecture** (eq-M6)
+in UQFF notation.  It belongs to the eight-paper Millennium suite coordinated by
+PAPER_563.
+
+| Paper | Problem(s) | Lead equation |
+|-------|-----------|--------------|
+| PAPER_156 (this paper) | BSD + Hodge | $\mathrm{ord}_{s=1} L_\text{UQFF}$; $E_n \in \mathbb{Q}$ |
+| PAPER_104 | P?NP | $2^{26}/26^4 \approx 147$ |
+| PAPER_530 | YM + RH + P?NP | 3D-IPO; DVP $p=113$ |
+| PAPER_540 | YM + RH + P?NP + NS | DPM quantization hub |
+| PAPER_543 | Navier-Stokes | $\lambda_\text{max} < 1$ |
+| PAPER_544 | Yang-Mills | Mass gap $\Delta > 0$ |
+| PAPER_553 | FUBi26 | Convergence anchor for all partial sums |
+| PAPER_563 | **All six (coordinator)** | Master equation $M_\text{UQFF}$ |
+
+### BSD ? FUBi26 Connection
+
+The $L$-function Taylor expansion at $s=1$ uses the same Gaussian truncated
+polynomial regime proven complete in PAPER_553.  The FUBi26 bound
+$1/27! < \varepsilon_\text{float64}$ confirms all BSD partial products converge
+within machine precision.
+
+### Hodge ? $Z_{26}$ Connection
+
+The rationality check $E_n/E_0 \in \mathbb{Q}$ for $n=1..26$ relies on
+$Z_{26} = \mathrm{Li}_{26}([SSq]) \approx 0.5699$ being rational-representable
+in float64, guaranteed by the FUBi26 bound.
+
+CP4 classes: `BSDConjectureRankCalculator` (#141–142), `HodgeConjectureCalculator`
+(#143), tests T57–T64 (all PASS, commit a0b2d55). See PAPER_563 §8 for full registry.

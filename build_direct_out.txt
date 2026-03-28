@@ -1,0 +1,13 @@
+Microsoft (R) C/C++ Optimizing Compiler Version 19.50.35724 for x64
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+QCalcGeom.cpp
+_qcg_main.cpp
+Generating Code...
+Microsoft (R) Incremental Linker Version 14.50.35724.0
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+/out:qcalcgeom_phaseE.exe 
+QCalcGeom.obj 
+_qcg_main.obj 
+EXIT_CODE=0

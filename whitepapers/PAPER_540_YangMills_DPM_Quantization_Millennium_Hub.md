@@ -146,3 +146,70 @@ result = calc.compute()
 - Riemann, B. (1859): Ãœber die Anzahl der Primzahlen unter einer gegebenen GrÃ¶ÃŸe
 - Lattice QCD review (FLAG Collaboration 2023): Glueball mass spectrum
 - grok_share_dbd886661cd.txt: Session 144 source document
+
+---
+
+## §10 — Extended Comparative Analysis
+
+### DPM Hub in Context: Session 144 vs Session 142
+
+PAPER_530 (Session 142) first addressed three Millennium problems.
+PAPER_540 (Session 144) extends this with DPM quantization and adds the
+NS $H^1$ DPM regularity bound, making it the most complete single-paper
+treatment before PAPER_563 (the full coordinator).
+
+### Four-Problem Unified View
+
+The four quantities computed in this Hub share one denominator $3\,Z_{26}$:
+
+| Quantity | Formula | Value |
+|---------|---------|-------|
+| $\Delta_\text{YM}^\text{UQFF}$ (GeV²) | $P_\text{GeV²}/(3Z_{26})$ | $3.07$ GeV² |
+| $\Delta_\text{YM}^\text{UQFF}$ (dimensionless) | $e^{-E/F}/(3Z_{26})$ | $3.59 \times 10^{-6}$ |
+| $\|u\|_{H^1}$ bound | $C \cdot \Delta_\text{YM} \cdot Z_{26}$ | $1.75$ (in same units) |
+| $t_1^\text{UQFF}$ (Riemann) | $(2\pi/\ln 26) \cdot Z_{26}$ | $1.099$ |
+
+The product $3Z_{26}^2 \approx 3 \times 0.5699^2 \approx 0.974 \approx 1$ shows that
+the UQFF scheme is nearly self-normalised.
+
+### P ? NP Dimension Table
+
+| $d$ | NP space $2^d$ | P nodes $d^4$ | Ratio | $> 1$? |
+|----|--------------|------------|-------|--------|
+| 10 | 1,024 | 10,000 | 0.10 | No |
+| 16 | 65,536 | 65,536 | 1.00 | boundary |
+| 20 | 1,048,576 | 160,000 | 6.55 | Yes |
+| **26** | **67,108,864** | **456,976** | **146.9** | **Yes** |
+| 32 | $4.3 \times 10^9$ | $1.0 \times 10^6$ | $4295\times$ | Yes |
+
+The UQFF 26D manifold sits well inside the exponential-separation regime.
+
+### Extended Session 144 CP4 Table
+
+| CP4 # | Calculator | Key equation | Millennium link |
+|-------|-----------|-------------|----------------|
+| #131 | DPMSplitMonopoleMHDProplydCalculator | $r_\text{Alf}$, $F_\text{net} = 0$ | YM gauge regularity |
+| #132 | SolarBodyProplydLegacyCalculator | $r_\text{frost} = 2.72$ AU | NS structure |
+| #133 | UQFFOrionEncompassFitCalculator | 3-telescope pass | Riemann crossings |
+| #134 | ExtendedCentripetalNSResidualCalculator | QPO $\Delta\nu$ | NS-YM |
+| **#135** | **YangMillsDPMQuantizationHubCalculator** | $\Delta = P/(3Z)$ | **All four** |
+
+### Validation
+
+Tests T20–T26, group M4-DPM (7/7 PASS, including KeyError fix T25), commit a0b2d55.
+
+---
+
+## §11 — References (Extended)
+
+- Wilson, K.G. (1974): Confinement of quarks, Phys. Rev. D 10, 2445
+- Clay Math Institute: Millennium Prize Problems (2000)
+- PAPER_529: Navier-Stokes UQFF regularity (Session 142)
+- PAPER_530: Session 142 Hub (three Millennium problems)
+- PAPER_535: VDS-DVP-BH Number Systems Hub
+- PAPER_543: NS Discrete Hypergraph Regularity (Session 147)
+- PAPER_544: Yang-Mills DPM Mass Gap (Session 147)
+- PAPER_563: Millennium Coordinator (Session 151H)
+- Riemann, B. (1859): Über die Anzahl der Primzahlen
+- FLAG Collaboration (2023): Lattice QCD glueball spectrum
+- Murphy, D. T. (2026). `test_millennium_phase_h.py` — 64/64 PASS (commit a0b2d55).

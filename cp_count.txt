@@ -1,0 +1,8 @@
+
+---------- CONDENSEDPHYSICS.PY: 1265
+
+---------- CONDENSEDPHYSICS2.PY: 644
+
+---------- QCALC.PY: 36
+
+---------- QCALC.PY: 220

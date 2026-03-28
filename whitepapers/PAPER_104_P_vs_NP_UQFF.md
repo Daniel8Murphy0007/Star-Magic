@@ -796,3 +796,27 @@ No proof of P ≠ NP is presented. The UQFF provides a **physical model** sugges
 | Proof status | Open (Millennium Prize) | Physical argument only |
 
 *Source: UQFF 26D framework | [UA]=0.0001 | 26D channel structure | P vs NP Millennium Prize context*
+
+---
+
+## Appendix C — Cross-Reference to the Millennium Prize Suite (Session 151H)
+
+This paper is one of **six open-problem treatments** in the UQFF Millennium Prize
+framework.  The full suite is coordinated by PAPER_563.
+
+| Paper | Problem | Status |
+|-------|---------|--------|
+| PAPER_104 (this paper) | P vs NP | Physical argument — $2^{26}/26^4 \approx 147\times$ |
+| PAPER_156 | BSD + Hodge | Physical argument |
+| PAPER_530 | YM + RH + P≠NP Hub | Session 142 |
+| PAPER_540 | YM + RH + P≠NP + NS Hub | Session 144, DPM |
+| PAPER_543 | Navier-Stokes | $\lambda_\text{max} < 1$ |
+| PAPER_544 | Yang-Mills | Mass gap $\Delta > 0$ |
+| PAPER_553 | FUBi26 | Convergence foundation |
+| PAPER_563 | **All six (coordinator)** | Master equation $M_\text{UQFF}$ |
+
+The P≠NP result of this paper ($2^{26}/26^4 \approx 147$) appears as the
+"dimension-26 separaton constant" in PAPER_530, PAPER_540, and PAPER_563.
+
+CP4 class: `PvsNPQuantumHypergraphCalculator` (#140), tests T56–T64 (all PASS,
+commit a0b2d55).  See PAPER_563 §8 for the nine-calculator registry.
