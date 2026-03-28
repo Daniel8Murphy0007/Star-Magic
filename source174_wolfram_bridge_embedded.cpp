@@ -32,7 +32,7 @@ bool InitializeWolframKernel()
     char* argv[] = {
         (char*)"CoAnQi",
         (char*)"-linkname",
-        (char*)"\"C:\\Program Files\\Wolfram Research\\Wolfram Engine\\14.3\\wolfram.exe\" -mathlink -nogui",
+        (char*)"\"C:\\Program Files\\Wolfram Research\\Wolfram Engine\\14.3\\WolframKernel.exe\" -wstp",
         (char*)"-linkmode",
         (char*)"launch",
         nullptr

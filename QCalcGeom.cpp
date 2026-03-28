@@ -369,6 +369,54 @@ BH26Result bh26_eigenvalue(int k) {
     return b;
 }
 
+// ----------------------------------------------------------------------------
+// bsfg_buoyancy(r, t_n, beta_i, Omega_g, M_bh, d_g, epsilon_sw, rho_sw, U_UA)
+// BSFG buoyancy force coupling — implements SOURCE4 compute_Ubi_SOURCE4 formula:
+//   Ubi = −β_i · Ug_field · orbit_factor · cos(π t_n)
+// where
+//   Ug_field     = G · M_⊙² / r²       [BSFG Newtonian self-energy coupling]
+//   orbit_factor = Ω_g · M_bh / d_g · wind_mod · U_UA
+//   wind_mod     = 1 + ε_sw · ρ_sw     [≈ 1 for canonical parameters]
+//   cos(π t_n)   even in t_n → time-reversal symmetry exact
+//
+// Sign physics:
+//   t_n ≈ 0 : cos = +1 → Ubi < 0 (buoyancy OPPOSES gravity — normal)
+//   t_n ≈ ±1: cos = −1 → Ubi > 0 (buoyancy AIDS collapse — negentropic infall)
+//   t_n ≈ ±½: cos =  0 → Ubi ≈ 0 (zero-buoyancy crossover)
+//
+// Source: MAIN_1_CoAnQi.cpp SOURCE4 namespace compute_Ubi_SOURCE4 (line ~27344)
+//         source106.cpp NegativeTimeModule — cos(π·t_n) time-reversal symmetry
+// Session 151 Phase E — March 28 2026
+// ----------------------------------------------------------------------------
+BSFGBuoyancyResult bsfg_buoyancy(double r, double t_n,
+    double beta_i, double Omega_g, double M_bh, double d_g,
+    double epsilon_sw, double rho_sw, double U_UA)
+{
+    BSFGBuoyancyResult b{};
+
+    // BSFG gravitational field coupling: SOURCE4-canonical self-energy G·M_⊙²/r²
+    b.Ug_field     = G_NEWTON * M_SUN * M_SUN / (r * r);
+
+    // Time phase factor — even in t_n (cos symmetry from source106 NegativeTimeModule)
+    b.cos_tn       = std::cos(M_PI * t_n);
+
+    // Wind buoyancy modulation (≈1 for canonical ε_sw·ρ_sw ≈ 8e-24)
+    const double wind_mod = 1.0 + epsilon_sw * rho_sw;
+
+    // Orbital buoyancy factor: Ω_g·M_bh/d_g·wind_mod·U_UA
+    b.orbit_factor = Omega_g * M_bh / d_g * wind_mod * U_UA;
+
+    // SOURCE4 Ubi formula (sign convention: negative = opposes gravity)
+    b.Ubi          = -beta_i * b.Ug_field * b.orbit_factor * b.cos_tn;
+
+    // Sign flags
+    b.negative     = (b.Ubi < 0.0);
+    b.inverted     = (b.Ubi > 0.0);
+    b.zero_crossing= (std::abs(b.cos_tn) < 1.0e-10);
+
+    return b;
+}
+
 // ============================================================================
 // SECTION 3 — REQUIREMENTS-BOUNDARY TEST RUNNER
 // Uses the real QCalcGeom functions (Phase B refactoring of qcalcgeom_tests.cpp).
@@ -380,12 +428,12 @@ void runQCalcGeomTests() {
     using std::setw;
 
     cout << "\n" << std::string(80, '=') << "\n";
-    cout << "QCalcGeom Requirements-Boundary Test Suite (Phase B — Real Functions)\n";
-    cout << "Session 150 | 40 Tests | BSFG+VDS+DVP+BSH+BH26+Cosmological\n";
+    cout << "QCalcGeom Requirements-Boundary Test Suite (Phase E — neg-buoy + neg-time)\n";
+    cout << "Session 151 | 50 Tests | BSFG+VDS+DVP+BSH+BH26+Cosmological+NegBuoy+NegTime\n";
     cout << std::string(80, '=') << "\n\n";
 
     std::vector<TestResult> R;
-    R.reserve(40);
+    R.reserve(50);
 
     // ── BSFG-METRIC (T01–T06) ────────────────────────────────────────────────
 
@@ -760,6 +808,98 @@ void runQCalcGeomTests() {
             S, 0.0, 0.0, qual, qual });
     }
 
+    // ── NEG-BUOY (T41–T46): BSFG buoyancy sign physics (Session 151, Phase E) ─
+
+    {   // T41: Ubi < 0 at t_n=0 (buoyancy OPPOSES gravity — normal stabilisation)
+        auto b = bsfg_buoyancy(R_SUN, 0.0);
+        bool qual = b.negative;
+        R.push_back({ "T41","NEG-BUOY",
+            "Ubi < 0 at t_n=0 (opposes gravity normal)",
+            b.Ubi, 0.0, 0.0, qual, qual });
+    }
+    {   // T42: Ubi > 0 at t_n=1 (buoyancy AIDS collapse — negentropic infall)
+        auto b = bsfg_buoyancy(R_SUN, 1.0);
+        bool qual = b.inverted;
+        R.push_back({ "T42","NEG-BUOY",
+            "Ubi > 0 at t_n=1 (neg buoyancy negentropic infall)",
+            b.Ubi, 0.0, 0.0, qual, qual });
+    }
+    {   // T43: Ubi ≈ 0 at t_n=0.5 (zero-buoyancy crossover, cos(π/2)=0)
+        auto b   = bsfg_buoyancy(R_SUN, 0.5);
+        bool qual = b.zero_crossing && (std::abs(b.Ubi) < 1.0e-10 * std::abs(UBI_BSFG_REF));
+        R.push_back({ "T43","NEG-BUOY",
+            "Ubi approx 0 at t_n=0.5 (zero crossover)",
+            b.Ubi, 0.0, 0.0, qual, qual });
+    }
+    {   // T44: Ubi(t_n=0) + Ubi(t_n=1) = 0 (exact antisymmetry)
+        auto b0 = bsfg_buoyancy(R_SUN, 0.0);
+        auto b1 = bsfg_buoyancy(R_SUN, 1.0);
+        double delta = std::abs(b0.Ubi + b1.Ubi);
+        bool qual = delta < 1.0e-10 * std::abs(b0.Ubi);
+        R.push_back({ "T44","NEG-BUOY",
+            "Ubi(t_n=0)+Ubi(t_n=1)=0 exact antisymmetry",
+            delta, 0.0, 0.0, qual, qual });
+    }
+    {   // T45: r^{-2} scaling — |Ubi(R_SUN/2)| / |Ubi(R_SUN)| = 4.0 (Ug ∝ r^{-2})
+        auto br  = bsfg_buoyancy(R_SUN,       0.0);
+        auto br2 = bsfg_buoyancy(R_SUN / 2.0, 0.0);
+        double ratio = (std::abs(br.Ubi) > 0.0) ? std::abs(br2.Ubi) / std::abs(br.Ubi) : 0.0;
+        R.push_back(make_r("T45","NEG-BUOY",
+            "r^{-2} scaling: |Ubi(r/2)|/|Ubi(r)| = 4.0",
+            ratio, 4.0, 0.1));
+    }
+    {   // T46: Period recovery — Ubi(t_n=2) == Ubi(t_n=0) (cos(2π)=cos(0))
+        auto b0 = bsfg_buoyancy(R_SUN, 0.0);
+        auto b2 = bsfg_buoyancy(R_SUN, 2.0);
+        double delta = std::abs(b0.Ubi - b2.Ubi);
+        bool qual = delta < 1.0e-10 * std::abs(b0.Ubi);
+        R.push_back({ "T46","NEG-BUOY",
+            "Period: Ubi(t_n=2)==Ubi(t_n=0) cos(2pi)=1",
+            delta, 0.0, 0.0, qual, qual });
+    }
+
+    // ── NEG-TIME (T47–T50): negative t_n phase symmetry (source106 physics) ─
+
+    {   // T47: ε(t_n=-1) = ε(t_n=+1) — cosine is even
+        auto mn = bsfg_metric(R_SUN, -1.0);
+        auto mp = bsfg_metric(R_SUN, +1.0);
+        double delta = std::abs(mn.eps - mp.eps);
+        bool qual = delta < 1.0e-50;
+        R.push_back({ "T47","NEG-TIME",
+            "eps(t_n=-1)==eps(t_n=+1) cosine even",
+            delta, 0.0, 0.0, qual, qual });
+    }
+    {   // T48: Horizon exists at t_n=-1 (cos(π·(-1))=-1 < 0 → horizon present)
+        auto h = bsfg_horizon(-1.0);
+        bool qual = h.exists;
+        R.push_back({ "T48","NEG-TIME",
+            "Horizon exists at t_n=-1 (neg-time same as +1)",
+            h.r_h, R_H_BSFG_REF, 2.0, qual, qual });
+    }
+    {   // T49: Ubi(t_n=-1) == Ubi(t_n=+1) — neg-time buoyancy same phase
+        auto bn = bsfg_buoyancy(R_SUN, -1.0);
+        auto bp = bsfg_buoyancy(R_SUN, +1.0);
+        double delta = std::abs(bn.Ubi - bp.Ubi);
+        bool qual = delta < 1.0e-10 * std::abs(bp.Ubi);
+        R.push_back({ "T49","NEG-TIME",
+            "Ubi(t_n=-1)==Ubi(t_n=+1) neg-time symmetry",
+            delta, 0.0, 0.0, qual, qual });
+    }
+    {   // T50: Negentropic growth — source106 NegativeTimeModule physics
+        // 1 - exp(-gamma*t*cos(pi*1)) = 1 - exp(+0.05) ≈ -0.051 < 0
+        // At t_n=±1 the Um decay term goes NEGATIVE (growth phase, not decay).
+        // This is the "time-reversal (negative t) explains echoes" path from
+        // grok_share_366dc393a37.txt + source106.cpp canonical values.
+        const double gamma  = 5.0e-5;   // day^-1 (source106 canonical γ)
+        const double t_days = 1000.0;   // example epoch (source106 printTnEffects)
+        // t_n = 1 (or -1): cos(π·1) = -1 → argument = +gamma*t → growth
+        double one_minus_exp = 1.0 - std::exp(-gamma * t_days * std::cos(M_PI * 1.0));
+        bool qual = (one_minus_exp < 0.0);  // must be negative (growth, not decay)
+        R.push_back(make_r("T50","NEG-TIME",
+            "NegTimeModule: 1-exp(y*t*cos(pi*1))<0 growth",
+            one_minus_exp, -0.051, 5.0, qual));
+    }
+
     // ── Print results table ──────────────────────────────────────────────────
 
     cout << std::left
@@ -815,8 +955,8 @@ void runQCalcGeomTests() {
     }
 
     cout << "\n" << std::string(80, '=') << "\n"
-         << "[QCalcGeom] Tests complete (Phase B): " << pass_cnt << "/"
-         << R.size() << " passed | Session 150 | March 27 2026\n"
+         << "[QCalcGeom] Tests complete (Phase E): " << pass_cnt << "/"
+         << R.size() << " passed | Session 151 | March 28 2026\n"
          << std::string(80, '=') << "\n\n";
 }
 

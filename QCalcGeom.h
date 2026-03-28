@@ -37,7 +37,7 @@
  *
  * Author   : Daniel T. Murphy
  * Created  : Session 150 — March 27, 2026
- * Version  : 1.0.0
+ * Version  : 1.1.0
  */
 
 #ifndef QCALCGEOM_H
@@ -58,9 +58,9 @@ namespace QCALCGEOM {
 // ============================================================================
 
 constexpr int    QCALCGEOM_VERSION_MAJOR = 1;
-constexpr int    QCALCGEOM_VERSION_MINOR = 0;
+constexpr int    QCALCGEOM_VERSION_MINOR = 1;
 constexpr int    QCALCGEOM_VERSION_PATCH = 0;
-constexpr const char* QCALCGEOM_VERSION_STR = "1.0.0-S150";
+constexpr const char* QCALCGEOM_VERSION_STR = "1.1.0-S151";
 
 // ============================================================================
 // SECTION 2 — CANONICAL CONSTANTS
@@ -136,6 +136,22 @@ constexpr double R_Q_AU_REF     = 0.0973;              // Proplyd quantization r
 
 // BH26 ReRing oscillation centre frequency (_S146_RERING_BB)
 constexpr double RERING_BB_HZ   = 1.15e14;            // Hz
+
+// ─── Buoyancy canonical parameters (SOURCE4 compute_Ubi_SOURCE4 formula) ───
+// Source: MAIN_1_CoAnQi.cpp SOURCE4 namespace, session 151 neg-buoy integration.
+// Ubi = −β_i · Ug_field · Ω_g · M_bh / d_g · wind_mod · U_UA · cos(π·t_n)
+
+constexpr double BETA_I_BSFG    = 0.6;                // β_i — buoyancy coupling constant
+constexpr double OMEGA_G_BSFG   = 7.3e-16;            // Ω_g  — galactic spin rate  [rad/s]
+constexpr double M_BH_BSFG      = 8.15e36;            // M_bh — canonical BH mass   [kg]
+constexpr double D_G_BSFG       = 2.55e20;            // d_g  — GC distance          [m]
+constexpr double EPS_SW_BSFG    = 0.001;              // ε_sw — solar wind modulation
+constexpr double RHO_SW_BSFG    = 8.0e-21;            // ρ_sw — solar wind density  [kg/m³]
+constexpr double U_UA_BSFG      = 1.0;                // U_UA — Aether buoyancy factor
+
+/// Reference Ubi at r=R_SUN, t_n=0 (canonical BSFG, SOURCE4 parameters)
+/// = −β_i · (G·M_⊙²/R_⊙²) · (Ω_g·M_bh/d_g) · wind_mod · U_UA · 1.0 ≈ −7.63e33
+constexpr double UBI_BSFG_REF   = -7.63e33;
 
 // ============================================================================
 // SECTION 3 — RESULT STRUCTS
@@ -290,6 +306,35 @@ struct BH26Result {
     bool   finite;      ///< true for all k ≥ 1 (all eigenvalues are finite)
 };
 
+/**
+ * @brief BSFG buoyancy (Ubi) force coupling at (r, t_n).
+ *
+ * Covers tests T41–T50 (groups NEG-BUOY + NEG-TIME, Session 151).
+ *
+ * Follows SOURCE4 compute_Ubi_SOURCE4 formula exactly:
+ *   Ubi = −β_i · Ug_field · (Ω_g · M_bh / d_g) · wind_mod · U_UA · cos(π·t_n)
+ * where:
+ *   Ug_field = G · M_⊙² / r²   (BSFG Newtonian self-energy coupling)
+ *   wind_mod = 1 + ε_sw · ρ_sw  (solar wind buoyancy modulation ≈ 1)
+ *
+ * Sign physics (SOURCE4 canonical, _S151_UBI):
+ *   t_n = 0  → cos = +1 → Ubi < 0  : buoyancy OPPOSES gravity (normal stabilisation)
+ *   t_n = ±1 → cos = −1 → Ubi > 0  : buoyancy AIDS collapse   (negentropic infall phase)
+ *   t_n = ±½ → cos =  0 → Ubi ≈ 0  : zero-buoyancy crossover
+ *
+ * Negative time (t_n < 0): cosine is even → Ubi(t_n) = Ubi(−t_n) exactly.
+ * This is the BSFG realisation of source106 NegativeTimeModule time-reversal symmetry.
+ */
+struct BSFGBuoyancyResult {
+    double Ubi;           ///< Buoyancy coupling: −β_i·Ug·orbit·cos(π·t_n)
+    double Ug_field;      ///< BSFG gravitational coupling G·M_⊙²/r²             [N-equiv]
+    double orbit_factor;  ///< Ω_g·M_bh/d_g · wind_mod · U_UA
+    double cos_tn;        ///< cos(π·t_n) — time phase modulator
+    bool   negative;      ///< true when Ubi < 0: buoyancy OPPOSES gravity (normal)
+    bool   inverted;      ///< true when Ubi > 0: buoyancy AIDS collapse  (negentropic)
+    bool   zero_crossing; ///< true when |cos(π·t_n)| < 1e-10             (half-phase)
+};
+
 // ============================================================================
 // SECTION 4 — PUBLIC API DECLARATIONS
 // Implemented in QCalcGeom.cpp (Phase B).
@@ -419,15 +464,47 @@ BSHResult bsh_harmonic(double f_Ub  = 3.3e7,
 BH26Result bh26_eigenvalue(int k);
 
 /**
- * @brief Run all 40 QCalcGeom requirements-boundary tests and print results.
+ * @brief Compute the BSFG buoyancy (Ubi) force coupling at (r, t_n).
  *
- * Calls the inline tests from qcalcgeom_tests.cpp when the test file is
- * #included as a translation unit alongside QCalcGeom.cpp.  In standalone
- * mode (QCALCGEOM_STANDALONE defined), qcalcgeom_tests.cpp's own main()
- * calls this instead.
+ * Implements SOURCE4 compute_Ubi_SOURCE4 formula:
+ *   Ubi = −β_i · (G·M_⊙²/r²) · (Ω_g·M_bh/d_g) · wind_mod · U_UA · cos(π·t_n)
  *
- * Expected result post Phase B: 40/40 PASS.
- * Current result (Phase A): 40/40 PASS (all tests self-contained, no QCalcGeom.cpp needed).
+ * where wind_mod = 1 + ε_sw · ρ_sw and all default parameters match the
+ * SOURCE4 canonical constants defined in Section 2.
+ *
+ * Negative time (t_n < 0): cos(π·t_n) is even → Ubi(t_n) ≡ Ubi(−t_n).
+ * Time-reversal symmetry is thus exact — source106 NegativeTimeModule property.
+ *
+ * @param r        Radial coordinate [m] (must be > 0)
+ * @param t_n      Phase parameter (any real value, including t_n < 0)
+ * @param beta_i   Buoyancy coupling β_i    (default BETA_I_BSFG = 0.6)
+ * @param Omega_g  Galactic spin rate [rad/s] (default OMEGA_G_BSFG = 7.3e-16)
+ * @param M_bh     BH mass [kg]              (default M_BH_BSFG = 8.15e36)
+ * @param d_g      GC distance [m]           (default D_G_BSFG = 2.55e20)
+ * @param epsilon_sw SW modulation factor    (default EPS_SW_BSFG = 0.001)
+ * @param rho_sw   SW density [kg/m³]        (default RHO_SW_BSFG = 8e-21)
+ * @param U_UA     Aether factor             (default U_UA_BSFG = 1.0)
+ * @return         BSFGBuoyancyResult with Ubi, orbit_factor, cos_tn, sign flags
+ *
+ * Test coverage: T41–T50 (Session 151 Phase E)
+ * Reference: SOURCE4 compute_Ubi_SOURCE4; source106 NegativeTimeModule
+ */
+BSFGBuoyancyResult bsfg_buoyancy(double r, double t_n,
+    double beta_i     = BETA_I_BSFG,
+    double Omega_g    = OMEGA_G_BSFG,
+    double M_bh       = M_BH_BSFG,
+    double d_g        = D_G_BSFG,
+    double epsilon_sw = EPS_SW_BSFG,
+    double rho_sw     = RHO_SW_BSFG,
+    double U_UA       = U_UA_BSFG);
+
+/**
+ * @brief Run all 50 QCalcGeom requirements-boundary tests and print results.
+ *
+ * Phases A-E: 40 original BSFG/VDS/DVP/BSH/BH26/COSMO/CHALLENGE tests (T01-T40)
+ * plus 10 Session-151 negative-time + negative-buoyancy tests (T41-T50).
+ *
+ * Expected result post Phase E: 50/50 PASS.
  */
 void runQCalcGeomTests();
 

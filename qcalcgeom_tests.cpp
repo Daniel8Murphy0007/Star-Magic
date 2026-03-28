@@ -123,6 +123,17 @@ constexpr unsigned long long FAC26_LO = 1126605635584000000ULL; // lower 64-bit 
 constexpr double C_NUM_SOLAR   = 4.273e46;
 // Default [SSq] — triple-convergence (CMB/Kepler/ALMA)
 constexpr double SSQ_DEFAULT   = 0.57;
+
+// ─── Buoyancy canonical parameters (SOURCE4 + source106, Session 151) ───────
+constexpr double BETA_I_BSFG   = 0.6;       // β_i  — buoyancy coupling constant
+constexpr double OMEGA_G_BSFG  = 7.3e-16;   // Ω_g  — galactic spin rate [rad/s]
+constexpr double M_BH_BSFG     = 8.15e36;   // M_bh — canonical BH mass [kg]
+constexpr double D_G_BSFG      = 2.55e20;   // d_g  — GC distance [m]
+constexpr double EPS_SW_BSFG   = 0.001;     // ε_sw — solar wind modulation
+constexpr double RHO_SW_BSFG   = 8.0e-21;  // ρ_sw — solar wind density [kg/m³]
+constexpr double U_UA_BSFG     = 1.0;       // U_UA — Aether buoyancy factor
+/// Ubi at r=R_SUN, t_n=0: −β_i·(G·M_⊙²/R_⊙²)·(Ω_g·M_bh/d_g)·wind·U_UA ≈ −7.63e33
+constexpr double UBI_BSFG_REF  = -7.63e33;
 // Einstein kappa_E = 8πG/c⁴
 constexpr double KAPPA_E       = 8.0 * M_PI * G_NEWTON / (C_LIGHT * C_LIGHT * C_LIGHT * C_LIGHT);
 // BSFG amplification factor (non-Einstein, from CP4 #154)
@@ -207,6 +218,39 @@ inline GeomTestResult make_result(const std::string& id, const std::string& grou
     bool pnum = within_tol(computed, expected, tol_pct);
     return { id, group, name, computed, expected, tol_pct,
              pnum && qual_ok, qual_ok, note };
+}
+
+// ============================================================================
+// BSFG BUOYANCY HELPER — mirrors SOURCE4 compute_Ubi_SOURCE4 exactly.
+// Session 151 Phase E negative-buoyancy + negative-time integration.
+//   Ubi = −β_i · Ug_field · orbit_factor · cos(π·t_n)
+//   Ug_field     = G·M_⊙²/r²     (BSFG Newtonian self-energy coupling)
+//   orbit_factor = Ω_g·M_bh/d_g · wind_mod · U_UA
+//   wind_mod     = 1 + ε_sw·ρ_sw  (≈ 1 for canonical params)
+// Sign: negative = buoyancy opposes gravity; positive = negentropic infall.
+// Negative time: cos(π·t_n) is even → Ubi(−t_n) = Ubi(+t_n) exactly.
+// ============================================================================
+struct BSFGBuoyancyFields {
+    double Ubi, Ug_field, orbit_factor, cos_tn;
+    bool   negative, inverted, zero_crossing;
+};
+
+inline BSFGBuoyancyFields bsfg_buoy_compute(double r, double t_n,
+    double beta_i  = BETA_I_BSFG,  double Omega_g  = OMEGA_G_BSFG,
+    double M_bh    = M_BH_BSFG,    double d_g      = D_G_BSFG,
+    double eps_sw  = EPS_SW_BSFG,  double rho_sw   = RHO_SW_BSFG,
+    double U_UA    = U_UA_BSFG)
+{
+    BSFGBuoyancyFields b;
+    b.Ug_field     = G_NEWTON * M_SUN * M_SUN / (r * r);
+    b.cos_tn       = std::cos(M_PI * t_n);
+    double wind_mod = 1.0 + eps_sw * rho_sw;
+    b.orbit_factor = Omega_g * M_bh / d_g * wind_mod * U_UA;
+    b.Ubi          = -beta_i * b.Ug_field * b.orbit_factor * b.cos_tn;
+    b.negative     = (b.Ubi < 0.0);
+    b.inverted     = (b.Ubi > 0.0);
+    b.zero_crossing= (std::abs(b.cos_tn) < 1.0e-10);
+    return b;
 }
 
 // ============================================================================
@@ -890,10 +934,139 @@ inline GeomTestResult T40_holographic_entropy() {
 // SECTION 10 — MASTER TEST RUNNER
 // ============================================================================
 
+// ─── NEG-BUOY Tests T41–T46 ─────────────────────────────────────────────────
+
+// T41: Ubi < 0 at t_n=0 — buoyancy OPPOSES gravity (normal stabilisation)
+inline GeomTestResult T41_ubi_negative_tn0() {
+    auto b = bsfg_buoy_compute(R_SUN, 0.0);
+    bool qual_ok = b.negative;
+    return { "T41","NEG-BUOY",
+             "Ubi < 0 at t_n=0 (opposes gravity normal)",
+             b.Ubi, 0.0, 0.0, qual_ok, qual_ok,
+             "SOURCE4 Ubi: -beta*Ug*orbit*cos(0)=-beta*Ug*orbit<0" };
+}
+
+// T42: Ubi > 0 at t_n=1 — negative buoyancy (negentropic infall phase)
+inline GeomTestResult T42_ubi_inverted_tn1() {
+    auto b = bsfg_buoy_compute(R_SUN, 1.0);
+    bool qual_ok = b.inverted;
+    return { "T42","NEG-BUOY",
+             "Ubi > 0 at t_n=1 (neg buoyancy negentropic)",
+             b.Ubi, 0.0, 0.0, qual_ok, qual_ok,
+             "cos(pi)=-1 flips Ubi sign: buoyancy aids collapse (UQFF infall)" };
+}
+
+// T43: Ubi ≈ 0 at t_n=0.5 — zero-buoyancy crossover (cos(π/2)=0)
+inline GeomTestResult T43_ubi_zero_crossing() {
+    auto b   = bsfg_buoy_compute(R_SUN, 0.5);
+    bool qual_ok = b.zero_crossing && (std::abs(b.Ubi) < 1.0e-10 * std::abs(UBI_BSFG_REF));
+    return { "T43","NEG-BUOY",
+             "Ubi approx 0 at t_n=0.5 (zero crossover)",
+             b.Ubi, 0.0, 0.0, qual_ok, qual_ok,
+             "cos(pi/2)=0 → Ubi=0: buoyancy-gravity equilibrium phase" };
+}
+
+// T44: Ubi(t_n=0) + Ubi(t_n=1) = 0 — exact antisymmetry
+inline GeomTestResult T44_ubi_antisymmetry() {
+    auto b0 = bsfg_buoy_compute(R_SUN, 0.0);
+    auto b1 = bsfg_buoy_compute(R_SUN, 1.0);
+    double delta = std::abs(b0.Ubi + b1.Ubi);
+    bool qual_ok = delta < 1.0e-10 * std::abs(b0.Ubi);
+    return { "T44","NEG-BUOY",
+             "Ubi(t_n=0)+Ubi(t_n=1)=0 exact antisymmetry",
+             delta, 0.0, 0.0, qual_ok, qual_ok,
+             "cos(0)=-cos(pi): Ubi(0)=-Ubi(1) exactly" };
+}
+
+// T45: r^{-2} scaling — |Ubi(R_SUN/2)| / |Ubi(R_SUN)| = 4.0
+inline GeomTestResult T45_ubi_r_scaling() {
+    auto br  = bsfg_buoy_compute(R_SUN,       0.0);
+    auto br2 = bsfg_buoy_compute(R_SUN / 2.0, 0.0);
+    double ratio = (std::abs(br.Ubi) > 0.0) ? std::abs(br2.Ubi) / std::abs(br.Ubi) : 0.0;
+    bool qual_ok = std::abs(ratio - 4.0) / 4.0 < 0.001;
+    return make_result("T45","NEG-BUOY",
+        "r^{-2} scaling: |Ubi(r/2)|/|Ubi(r)| = 4.0",
+        ratio, 4.0, 0.1,
+        qual_ok,
+        "Ug = G*M^2/r^2: halving r quadruples Ubi exactly");
+}
+
+// T46: Period recovery — Ubi(t_n=2) == Ubi(t_n=0)  [cos(2π)=cos(0)]
+inline GeomTestResult T46_ubi_period_recovery() {
+    auto b0 = bsfg_buoy_compute(R_SUN, 0.0);
+    auto b2 = bsfg_buoy_compute(R_SUN, 2.0);
+    double delta = std::abs(b0.Ubi - b2.Ubi);
+    bool qual_ok = delta < 1.0e-10 * std::abs(b0.Ubi);
+    return { "T46","NEG-BUOY",
+             "Period: Ubi(t_n=2)==Ubi(t_n=0) cos(2pi)=1",
+             delta, 0.0, 0.0, qual_ok, qual_ok,
+             "Full buoyancy cycle restored after t_n=2 (cos period)" };
+}
+
+// ─── NEG-TIME Tests T47–T50 ─────────────────────────────────────────────────
+// Verifies source106 NegativeTimeModule time-reversal symmetry in BSFG context.
+
+// T47: ε(t_n=-1) = ε(t_n=+1) — cosine is even → negative time identical to positive
+inline GeomTestResult T47_neg_time_metric_parity() {
+    BSFGFields mn = bsfg_compute(R_SUN, -1.0);
+    BSFGFields mp = bsfg_compute(R_SUN, +1.0);
+    double delta  = std::abs(mn.eps - mp.eps);
+    bool qual_ok  = delta < 1.0e-50;
+    return { "T47","NEG-TIME",
+             "eps(t_n=-1)==eps(t_n=+1) cosine even",
+             delta, 0.0, 0.0, qual_ok, qual_ok,
+             "cos(-pi)=cos(pi): negative time gives identical metric" };
+}
+
+// T48: Horizon exists at t_n=-1 — neg-time horizon same as t_n=+1
+inline GeomTestResult T48_neg_time_horizon() {
+    // Inline horizon compute (mirrors runQCalcGeomTests T07 but at t_n=-1)
+    BSFGFields f   = bsfg_compute(R_SUN, 0.0);   // get C_num
+    double cos_tn  = std::cos(M_PI * (-1.0));    // = cos(-pi) = -1
+    double arg     = -ETA_BSFG * f.C_num * cos_tn; // = ETA*C_num > 0 → horizon exists
+    bool exists    = (arg > 0.0);
+    double r_h     = exists ? std::cbrt(arg) : 0.0;
+    bool qual_ok   = exists;
+    return make_result("T48","NEG-TIME",
+        "Horizon exists at t_n=-1 (neg-time same as +1)",
+        r_h, R_H_BSFG_REF, 2.0,
+        qual_ok,
+        "cos(-pi)=-1: neg-time horizon identical to t_n=+1 blinking horizon");
+}
+
+// T49: Ubi(t_n=-1) == Ubi(t_n=+1) — neg-time buoyancy phase identical to +1
+inline GeomTestResult T49_neg_time_buoyancy_symmetry() {
+    auto bn  = bsfg_buoy_compute(R_SUN, -1.0);
+    auto bp  = bsfg_buoy_compute(R_SUN, +1.0);
+    double delta = std::abs(bn.Ubi - bp.Ubi);
+    bool qual_ok = (bn.inverted && bp.inverted) && (delta < 1.0e-10 * std::abs(bp.Ubi));
+    return { "T49","NEG-TIME",
+             "Ubi(t_n=-1)==Ubi(t_n=+1) neg-time symmetry",
+             delta, 0.0, 0.0, qual_ok, qual_ok,
+             "Both t_n=-1 and +1 give Ubi>0 (negentropic infall phase)" };
+}
+
+// T50: Negentropic growth — source106 NegativeTimeModule physics
+// 1 - exp(-γ·t·cos(π·1)) = 1 - exp(+0.05) ≈ -0.051 < 0
+// Source: source106.cpp printTnEffects(): "t_n=-1: 1-exp ≈ -0.051 (growth phase)"
+// Reference: grok_share_366dc393a37.txt "time-reversal (negative t) explains echoes in mergers"
+inline GeomTestResult T50_neg_time_negentropic_growth() {
+    const double gamma  = 5.0e-5;    // day^-1 canonical (source106)
+    const double t_days = 1000.0;    // days (canonical example from source106)
+    // t_n = 1 or t_n = -1: cos(π·(±1)) = -1 → argument = +gamma*t > 0 → exp > 1 → growth
+    double one_minus_exp = 1.0 - std::exp(-gamma * t_days * std::cos(M_PI * 1.0));
+    bool qual_ok = (one_minus_exp < 0.0);  // negative = growth phase (negentropic)
+    return make_result("T50","NEG-TIME",
+        "NegTimeModule: 1-exp(y*t*cos(pi))<0 growth",
+        one_minus_exp, -0.051, 5.0,
+        qual_ok,
+        "source106: 1-exp(+0.05)=-0.051 negentropic; grok_share: echoes in mergers");
+}
+
 inline void runQCalcGeomTests() {
     std::cout << "\n" << std::string(80, '=') << std::endl;
     std::cout << "QCalcGeom Requirements-Boundary Test Suite" << std::endl;
-    std::cout << "Session 150 | 40 Tests | BSFG+VDS+DVP+BSH+BH26+Cosmological" << std::endl;
+    std::cout << "Session 151 | 50 Tests | BSFG+VDS+DVP+BSH+BH26+Cosmological+NegBuoy+NegTime" << std::endl;
     std::cout << std::string(80, '=') << "\n" << std::endl;
 
     // Collect all results
@@ -946,6 +1119,18 @@ inline void runQCalcGeomTests() {
         T38_string_dimension_match(),
         T39_navier_stokes_regularity(),
         T40_holographic_entropy(),
+        // NEG-BUOY (T41–T46) — SOURCE4 compute_Ubi_SOURCE4 physics
+        T41_ubi_negative_tn0(),
+        T42_ubi_inverted_tn1(),
+        T43_ubi_zero_crossing(),
+        T44_ubi_antisymmetry(),
+        T45_ubi_r_scaling(),
+        T46_ubi_period_recovery(),
+        // NEG-TIME (T47–T50) — source106 NegativeTimeModule physics
+        T47_neg_time_metric_parity(),
+        T48_neg_time_horizon(),
+        T49_neg_time_buoyancy_symmetry(),
+        T50_neg_time_negentropic_growth(),
     };
 
     // Print group headers and results
@@ -1035,7 +1220,7 @@ inline void runQCalcGeomTests() {
 
     std::cout << "\n" << std::string(80, '=') << "\n";
     std::cout << "[QCalcGeom] Tests complete: " << pass_count << "/" << results.size()
-              << " passed | Session 150 | March 27 2026\n";
+              << " passed | Session 151 | March 28 2026\n";
     std::cout << std::string(80, '=') << "\n" << std::endl;
 }
 
