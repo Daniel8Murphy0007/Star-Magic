@@ -18418,3 +18418,15 @@ void registerAllWolframSourceTerms(CalculatorCore& core) {
 }
 
 // Bridge terms total: 694
+
+// ─────────────────────────────────────────────────────────────────────────────
+// QCalcGeom geom_w bridge — Phase C (Session 150, March 27 2026)
+//
+// Provides the out-of-line definitions for QCALCGEOM::geom_w::W1-W6 that are
+// declared in QCalcGeom.h Section 5 under #ifdef USE_EMBEDDED_WOLFRAM.
+// qcalcgeom_wolfram.h is an implementation header: it defines the six
+// functions exactly once here in the Wolfram build TU.
+// ─────────────────────────────────────────────────────────────────────────────
+#ifdef USE_EMBEDDED_WOLFRAM
+#include "qcalcgeom_wolfram.h"
+#endif // USE_EMBEDDED_WOLFRAM
