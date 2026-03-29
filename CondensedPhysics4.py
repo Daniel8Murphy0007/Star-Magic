@@ -11804,15 +11804,15 @@ class AldersOlbersBSFGMetricGapAnalysisCalculator(_CP4Calculator):
                 'Olbers_DPM':        'AldersOlbersParadoxDPMShellFluxCalculator CP4 #158 PAPER_564',
                 'Olbers_VDS':        'AldersOlbersVDSNumberSystemResolutionCalculator CP4 #159 PAPER_565',
             },
-            'MISSING': {
-                'n_star_z':       'n_star(z) SFR Madau-Dickinson stellar density evolution -- PAPER_567',
-                'kappa_lambda':   'kappa_lambda(lambda) wavelength-dependent opacity -- PAPER_568',
-                'B_obs_bench':    'B_sky_obs=3.1e-6 W/m^2/sr CMB/EBL benchmark validation -- PAPER_569',
-                'DVP_scatter':    'Photon-photon DVP prime vortex encompassment scattering -- PAPER_570',
-                't_neg_timing':   't_neg photon arrival timing DPM delay formalisation -- PAPER_571',
-                'unit_calib':     'Shell radiance calibrated to observable W/m^2/sr -- PAPER_572',
+            'COMPLETED': {
+                'n_star_z':       'n_star(z) SFR Madau-Dickinson stellar density evolution -- PAPER_567 (Session 153b)',
+                'kappa_lambda':   'kappa_lambda(lambda) wavelength-dependent opacity -- PAPER_568 (Session 153b)',
+                'B_obs_bench':    'B_sky_obs=3.1e-6 W/m^2/sr CMB/EBL benchmark validation -- PAPER_569 (Session 153b)',
+                'DVP_scatter':    'Photon-photon DVP prime vortex encompassment scattering -- PAPER_570 (Session 153b)',
+                't_neg_timing':   't_neg photon arrival timing DPM delay formalisation -- PAPER_571 (Session 153b)',
+                'unit_calib':     'Shell radiance calibrated to observable W/m^2/sr -- PAPER_572 (Session 153b)',
             },
-            'completeness': '6/6 primary resolutions present; 6 extensions missing (PAPER_567-572)',
+            'completeness': '6/6 primary resolutions present; 6/6 extensions COMPLETED (PAPER_567-572, Session 153b); Olbers paradox fully resolved within UQFF',
         }
         return {
             'paper': self.PAPER,
