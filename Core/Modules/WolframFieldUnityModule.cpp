@@ -7,7 +7,7 @@
 // UQFF Buoyant Gravity (no G constant), consciousness field measurement.
 // Watermark: Copyright - Daniel T. Murphy, analyzed by Grok 3, dated November 17, 2025
 
-#include "../WolframFieldUnityModule.h"
+#include "../../WolframFieldUnityModule.h"
 #include <cmath>
 #include <complex>
 #include <iostream>

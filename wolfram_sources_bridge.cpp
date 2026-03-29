@@ -17994,6 +17994,152 @@ public:
 } // namespace sw85
 
 // ====================================================================
+// OLBERS PARADOX MODULE (Session 153)
+// Alders (Olbers') Paradox: dark night sky problem
+// UQFF resolution via finite age, Hubble redshift, Q_wave absorption,
+// [SSq]=0.507 polynomial suppression, 26D DPM geometry
+// ====================================================================
+namespace sw_olbers {
+
+// Demonstrates the paradox: B_sky = n_star*L_star*r_max/(4*pi*c) -> diverges
+class OlbersInfiniteFluxTerm : public ::PhysicsTerm {
+public:
+    double compute(double t, const std::map<std::string, double>& params) const override {
+        auto it_n = params.find("n_star");
+        auto it_L = params.find("L_star");
+        auto it_r = params.find("r_max");
+        auto it_c = params.find("c");
+        double n_star = (it_n != params.end()) ? it_n->second : 1e-56;
+        double L_star = (it_L != params.end()) ? it_L->second : 3.828e26;
+        double r_max  = (it_r != params.end()) ? it_r->second : 4.4e26;
+        double c      = (it_c != params.end()) ? it_c->second : 2.998e8;
+        constexpr double pi = 3.14159265358979;
+        return n_star * L_star * r_max / (4.0 * pi * c);
+    }
+    std::string getName() const override { return "Olbers_InfiniteFlux"; }
+    std::string getDescription() const override {
+        return "Olbers Paradox: B_sky=n_star*L_star*r_max/(4*pi*c) — diverges for r_max->inf";
+    }
+};
+
+// Resolution 1: Finite age / observable horizon — r_max = c * t_Hubble
+class OlbersFiniteHorizonTerm : public ::PhysicsTerm {
+public:
+    double compute(double t, const std::map<std::string, double>& params) const override {
+        auto it_n  = params.find("n_star");
+        auto it_L  = params.find("L_star");
+        auto it_tH = params.find("t_Hubble");
+        double n_star = (it_n  != params.end()) ? it_n->second  : 1e-56;
+        double L_star = (it_L  != params.end()) ? it_L->second  : 3.828e26;
+        double t_H    = (it_tH != params.end()) ? it_tH->second : 4.35e17;
+        constexpr double pi = 3.14159265358979;
+        // B_finite = n_star * L_star * t_H / (4*pi)  [c cancels: r_max = c*t_H]
+        return n_star * L_star * t_H / (4.0 * pi);
+    }
+    std::string getName() const override { return "Olbers_FiniteHorizon"; }
+    std::string getDescription() const override {
+        return "Resolution 1: Finite universe age t_H=13.8 Gyr -> B_finite=n*L*t_H/(4*pi)";
+    }
+};
+
+// Resolution 2: Hubble redshift (1+z)^-4 bolometric attenuation
+class OlbersRedshiftAttenuationTerm : public ::PhysicsTerm {
+public:
+    double compute(double t, const std::map<std::string, double>& params) const override {
+        auto it_n  = params.find("n_star");
+        auto it_L  = params.find("L_star");
+        auto it_H0 = params.find("H0_bridge");
+        auto it_c  = params.find("c");
+        auto it_r  = params.find("r_max");
+        double n_star = (it_n  != params.end()) ? it_n->second  : 1e-56;
+        double L_star = (it_L  != params.end()) ? it_L->second  : 3.828e26;
+        double H0     = (it_H0 != params.end()) ? it_H0->second : 2.27e-18;
+        double c      = (it_c  != params.end()) ? it_c->second  : 2.998e8;
+        double r_max  = (it_r  != params.end()) ? it_r->second  : 4.4e26;
+        constexpr double pi = 3.14159265358979;
+        double ratio = H0 * r_max / c;
+        double integral = 0.0;
+        if (ratio > 0.0) {
+            double inv_factor = 1.0 / ((1.0 + ratio) * (1.0 + ratio) * (1.0 + ratio));
+            integral = (c / H0) * (1.0 - inv_factor) / 3.0;
+        } else {
+            integral = r_max;
+        }
+        // B = n * L / (4*pi*c) * integral_(1+z)^-4 dr
+        return n_star * L_star * integral / (4.0 * pi * c);
+    }
+    std::string getName() const override { return "Olbers_RedshiftAttenuation"; }
+    std::string getDescription() const override {
+        return "Resolution 2: Hubble redshift (1+z)^-4 -> B=n*L/(4pi*c)*Integral(c/(H0r+c))^4 dr";
+    }
+};
+
+// Resolution 3: UQFF Q_wave aether absorption — I(r) = I0 * exp(-kappa * Q_wave * r)
+class OlbersQWaveAbsorptionTerm : public ::PhysicsTerm {
+public:
+    double compute(double t, const std::map<std::string, double>& params) const override {
+        auto it_B   = params.find("B");
+        auto it_kq  = params.find("kappa_Qw");
+        auto it_r   = params.find("r_max");
+        auto it_I0  = params.find("I0_flux");
+        double B        = (it_B  != params.end()) ? it_B->second  : 1e-15;
+        double kappa_Qw = (it_kq != params.end()) ? it_kq->second : 1e-55;
+        double r_max    = (it_r  != params.end()) ? it_r->second  : 4.4e26;
+        double I0       = (it_I0 != params.end()) ? it_I0->second : 1e-8;
+        constexpr double mu0 = 1.2566e-6;
+        double Q_wave = B * B / (2.0 * mu0);
+        double exponent = kappa_Qw * Q_wave * r_max;
+        double attenuation = 0.0;
+        if (exponent > 1e-10) {
+            attenuation = (1.0 - std::exp(-exponent)) / exponent;
+        } else {
+            attenuation = 1.0 - exponent * 0.5;
+        }
+        return I0 * attenuation;
+    }
+    std::string getName() const override { return "Olbers_QwaveAbsorption"; }
+    std::string getDescription() const override {
+        return "UQFF: Q_wave=B^2/(2mu0) aether absorption -> I(r)=I0*exp(-kappa*Q_wave*r) -> finite sky";
+    }
+};
+
+// Resolution 4: UQFF 26D [SSq]=0.507 polynomial suppression across DPM spheres
+// B_total = Sum(n=1..26) B_n * [SSq]^n * exp(-alpha*n/26) — converges (geometric series)
+class Olbers26DSuppressionTerm : public ::PhysicsTerm {
+public:
+    double compute(double t, const std::map<std::string, double>& params) const override {
+        auto it_B0  = params.find("B0_shell");
+        auto it_ssq = params.find("SSq");
+        auto it_a   = params.find("alpha_26D");
+        auto it_H0  = params.find("H0_bridge");
+        auto it_c   = params.find("c");
+        double B0       = (it_B0  != params.end()) ? it_B0->second  : 1e-8;
+        double SSq      = (it_ssq != params.end()) ? it_ssq->second : 0.507;
+        double alpha_26 = (it_a   != params.end()) ? it_a->second   : 1.0;
+        double H0       = (it_H0  != params.end()) ? it_H0->second  : 2.27e-18;
+        double c        = (it_c   != params.end()) ? it_c->second   : 2.998e8;
+        double r_H = c / H0;  // Hubble radius
+        double B_total = 0.0;
+        double ssq_pow = SSq;  // [SSq]^1 initially
+        for (int n = 1; n <= 26; ++n) {
+            double fn = static_cast<double>(n);
+            double B_n = B0 / (fn * fn);  // 1/n^2 shell dimming
+            double age_factor = std::exp(-alpha_26 * fn / 26.0);
+            B_total += B_n * ssq_pow * age_factor;
+            ssq_pow *= SSq;  // [SSq]^(n+1)
+        }
+        (void)r_H;  // available for callers via params
+        return B_total;
+    }
+    std::string getName() const override { return "Olbers_26DPolynomialSuppression"; }
+    std::string getDescription() const override {
+        return "UQFF 26D: B_total=Sum(n=1->26) B_n*[SSq]^n*exp(-alpha*n/26) -> converges to dark sky";
+    }
+};
+
+} // namespace sw_olbers
+
+// ====================================================================
 // BATCH 21 REGISTRATION FUNCTION
 // ====================================================================
 
@@ -18694,9 +18840,15 @@ void registerAllWolframSourceTerms(CalculatorCore& core) {
     core.registerPhysicsTerm("BlockchainECDSA", std::make_unique<sw8::BlockchainECDSATerm>(), "Wolfram-Source");
     core.registerPhysicsTerm("OperationalTransform", std::make_unique<sw8::OperationalTransformTerm>(), "Wolfram-Source");
     core.registerPhysicsTerm("MPIDistributed", std::make_unique<sw8::MPIDistributedTerm>(), "Wolfram-Source");
+    // Session 153: Alders (Olbers') Paradox Module — 5 new terms (total: 699)
+    core.registerPhysicsTerm("Olbers_InfiniteFlux",               std::make_unique<sw_olbers::OlbersInfiniteFluxTerm>(),               "Wolfram-Source");
+    core.registerPhysicsTerm("Olbers_FiniteHorizon",              std::make_unique<sw_olbers::OlbersFiniteHorizonTerm>(),              "Wolfram-Source");
+    core.registerPhysicsTerm("Olbers_RedshiftAttenuation",        std::make_unique<sw_olbers::OlbersRedshiftAttenuationTerm>(),        "Wolfram-Source");
+    core.registerPhysicsTerm("Olbers_QwaveAbsorption",            std::make_unique<sw_olbers::OlbersQWaveAbsorptionTerm>(),            "Wolfram-Source");
+    core.registerPhysicsTerm("Olbers_26DPolynomialSuppression",   std::make_unique<sw_olbers::Olbers26DSuppressionTerm>(),             "Wolfram-Source");
 }
 
-// Bridge terms total: 694
+// Bridge terms total: 699
 
 // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 // QCalcGeom geom_w bridge â€” Phase C (Session 150, March 27 2026)
