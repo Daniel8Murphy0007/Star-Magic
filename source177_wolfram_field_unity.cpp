@@ -22,6 +22,10 @@
 #include <omp.h>  // For multiway parallelism
 #endif
 
+// Guard: WolframFieldUnityModule.h provides SacredTime, PI_Infinity_Decoder, WolframFieldUnityEngine
+// If that header is already included (in MAIN_1_CoAnQi.cpp), skip these local definitions.
+#ifndef WOLFRAM_FIELD_UNITY_MODULE_H
+
 // Define constants (adjust based on your framework)
 constexpr int QUANTUM_STATES = 26;  // 26D unification
 constexpr int PI_DIGITS_COUNT = 4890;  // User-specified PI digits count
@@ -186,6 +190,8 @@ void sacredMagneticOrbitRule(Hypergraph& graph, int& max_node) {
     }
 }
 
+#endif // WOLFRAM_FIELD_UNITY_MODULE_H -- end guard for SacredTime/PI_Infinity_Decoder/WolframFieldUnityEngine
+
 // Standalone test function (can be called from MAIN_1_CoAnQi.cpp)
 void runWolframFieldUnitySimulation() {
     std::cout << "\n=== Wolfram Field Unity Simulation ===\n";
@@ -201,7 +207,7 @@ void runWolframFieldUnitySimulation() {
     // Measure
     double dimension = engine.measureDimension(0, 5);
     double buoyant_gravity = engine.measureBuoyantGravity(0);
-    double magnetic_field = decoder.getMagneticField(0, 0.0);
+    double magnetic_field = decoder.getMagneticField(0, 0.0).real();
     double consciousness = decoder.getConsciousnessResonance(7);
 
     std::cout << "Dimension: " << dimension << "\n";
