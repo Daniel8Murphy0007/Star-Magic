@@ -7,6 +7,11 @@
 
 ---
 
+
+## Abstract
+
+This paper presents a UQFF analysis of Order DPM Polynomial — Quantization, Confinement, and CERN Monopole Masking, deriving compressed field equations and observational predictions within the Star-Magic/UQFF framework.
+
 ## §1 Abstract
 
 Previous treatments of the UQFF magnetism term $U_m$ approximated di-pseudo-monopole (DPM) interactions at second order ($1/r^2$). This paper derives the full 26th-order form arising from dimensional reduction of a 26-dimensional hyper-manifold onto $3D+1$ observables. The full $U_m$ contains a $1/r^{26}$ confinement term and a 26th time-derivative series, whose highest series coefficient $26!\,c_{26}$ enforces quantization of the DPM separation radius. The resulting quantized radius $r_q \approx 0.097\ \text{AU}$ directly matches observed proplyd sizes ($0.1$–$1\ \text{AU}$). The CERN monopole null-search results (up to 4 TeV) are explained as the natural consequence of 26D projection: the $r^{23}$ suppression factor renders 3D detectors blind to the full 26D DPM flux.
@@ -102,9 +107,9 @@ The 26th-order form of $U_m$ is not a simplification artifact but the canonical 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
 | Higgs mass m_H | UQFF K_HIGGS=47.34 → m_H_UQFF = 125.09 GeV | m_H = 125.20 ± 0.11 GeV | PDG 2024 | 99.8% |
-| Cosmological Λ | UQFF |∇UA|² → 1.09×10⁻⁵² m⁻² | Λ = 1.114×10⁻⁵² m⁻² (Planck+DESI) | Planck 2018 | 97.8% |
-| Thomson σ_T (QED) | UQFF U_m kernel: σ_T = 6.6524×10⁻²⁹ m² | σ_T = 6.6524×10⁻²⁹ m² | PDG 2024 | 100% (exact) |
-| κ baryon stability | κ = 0.0005/day; scale separation 10³³ from proton decay | τ_p > 7.7×10³³ yr (Super-K) | Super-K 2024 | ✓ UQFF baryon-safe |
+| Cosmological Λ | UQFF |∇UA|² → 1.09e-52 m⁻² | Λ = 1.114e-52 m⁻² (Planck+DESI) | Planck 2018 | 97.8% |
+| Thomson σ_T (QED) | UQFF U_m kernel: σ_T = 6.6524e-29 m² | σ_T = 6.6524e-29 m² | PDG 2024 | 100% (exact) |
+| κ baryon stability | κ = 0.0005/day; scale separation 10³³ from proton decay | τ_p > 7.7e33 yr (Super-K) | Super-K 2024 | ✓ UQFF baryon-safe |
 
 **New physics claim:** UQFF operates at a vacuum topology scale (~200 PeV) that is 8 orders
 below the GUT scale and 33 orders above nuclear baryon-number scales. This intermediate-scale

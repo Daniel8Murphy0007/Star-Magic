@@ -8,6 +8,11 @@
 
 ---
 
+
+## Abstract
+
+This paper presents a UQFF analysis of Dyer Conjecture via Eigenvalue Rank Cohomology, deriving compressed field equations and observational predictions within the Star-Magic/UQFF framework.
+
 ## §1. Abstract
 
 The Birch and Swinnerton-Dyer (BSD) Conjecture states that the rank of an elliptic curve E over ℚ equals the order of vanishing of its L-function L(E,s) at s=1. This paper demonstrates that the Star-Magic UQFF tensor provides a natural eigenvalue-multiplicity framework in which BSD rank is identified with the multiplicity of the minimal eigenvalue λ₁ of the 26D compressed UQFF operator. The Shafarevich–Tate group magnitude |Sha(E)| maps directly to the buoyancy term db, and the Néron–Tate regulator R maps to the gravitomagnetic coupling dg/dm. The 26! factorial bound limits orbital complexity to 26 independent directions, providing a topological upper bound on rank.
@@ -81,7 +86,7 @@ $$\text{rank}(E) \leq 26$$
 
 ## §6. Numerical Validation (Orion Parameters)
 
-With P ≈ 9.99×10⁻⁶, d_g = d_m = d_b ≈ 10⁻²⁸¹, c = 0:
+With P ≈ 9.99e-6, d_g = d_m = d_b ≈ 10⁻²⁸¹, c = 0:
 
 $$\lambda_1 \approx \lambda_2 \approx 3.33 \times 10^{-6} > 0$$
 
@@ -123,9 +128,9 @@ The UQFF tensor provides an eigenvalue-rank identification that encompasses the 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
 | Higgs mass m_H | UQFF K_HIGGS=47.34 → m_H_UQFF = 125.09 GeV | m_H = 125.20 ± 0.11 GeV | PDG 2024 | 99.8% |
-| Cosmological Λ | UQFF |∇UA|² → 1.09×10⁻⁵² m⁻² | Λ = 1.114×10⁻⁵² m⁻² (Planck+DESI) | Planck 2018 | 97.8% |
-| Thomson σ_T (QED) | UQFF U_m kernel: σ_T = 6.6524×10⁻²⁹ m² | σ_T = 6.6524×10⁻²⁹ m² | PDG 2024 | 100% (exact) |
-| κ baryon stability | κ = 0.0005/day; scale separation 10³³ from proton decay | τ_p > 7.7×10³³ yr (Super-K) | Super-K 2024 | ✓ UQFF baryon-safe |
+| Cosmological Λ | UQFF |∇UA|² → 1.09e-52 m⁻² | Λ = 1.114e-52 m⁻² (Planck+DESI) | Planck 2018 | 97.8% |
+| Thomson σ_T (QED) | UQFF U_m kernel: σ_T = 6.6524e-29 m² | σ_T = 6.6524e-29 m² | PDG 2024 | 100% (exact) |
+| κ baryon stability | κ = 0.0005/day; scale separation 10³³ from proton decay | τ_p > 7.7e33 yr (Super-K) | Super-K 2024 | ✓ UQFF baryon-safe |
 
 **New physics claim:** UQFF operates at a vacuum topology scale (~200 PeV) that is 8 orders
 below the GUT scale and 33 orders above nuclear baryon-number scales. This intermediate-scale

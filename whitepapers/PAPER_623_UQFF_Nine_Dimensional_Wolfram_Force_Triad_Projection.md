@@ -8,6 +8,14 @@
 
 ---
 
+
+## Abstract
+
+$$F_{U,Bi} = \kappa \cdot \frac{\rho_{\text{SCm}}}{\rho_{\text{UA}}} \cdot (U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_m + U_{bi})$$
+
+
+This paper presents a UQFF analysis of UQFF Nine-Dimensional Wolfram Force-Triad Projection, deriving compressed field equations and observational predictions within the Star-Magic/UQFF framework.
+
 ## §1 Abstract
 
 The UQFF force triad (Ug, Um, Ub) is embedded in a nine-dimensional Wolfram hypergraph
@@ -72,8 +80,8 @@ From 9D hypergraph coordinates to observable 3D jet coordinates:
 x_proj = P · x_v,   P ∈ ℝ^{3×9}  (QR-orthogonal projector)
 ```
 
-Scale factor for M87: jet_length = 4.6×10¹⁹ m → multiply projected coordinates.  
-Scale factor for CenA: jet_length = 7.7×10¹⁹ m.
+Scale factor for M87: jet_length = 4.6e19 m → multiply projected coordinates.  
+Scale factor for CenA: jet_length = 7.7e19 m.
 
 ---
 
@@ -85,7 +93,7 @@ f_event = |∇UA|³ × 10¹⁵  Hz   (BH26 cubic rebound law)
 ```
 
 Top-5 frequency predictions from 50-iteration run:
-- f₁ ≈ 1.0×10¹⁸ Hz (hard X-ray)
+- f₁ ≈ 1.0e18 Hz (hard X-ray)
 - f₂–f₅ scale as cumulative |∇UA|³
 
 ---
@@ -96,7 +104,7 @@ Top-5 frequency predictions from 50-iteration run:
 |-----------|-------------------|------|
 | M87 jet polarization flips | DVP junction events in d4–d6 | 3 EHT 2017–2021 flips |
 | CenA VHE knots | High-arity branching in d4–d6 | MNRAS 2025 VHE knots |
-| X-ray frequency floor | f ≈ 5.71×10¹⁶ Hz (M87) | Chandra/EHT Dec 2025 |
+| X-ray frequency floor | f ≈ 5.71e16 Hz (M87) | Chandra/EHT Dec 2025 |
 
 ---
 
@@ -106,7 +114,7 @@ Top-5 frequency predictions from 50-iteration run:
 |------------|-----------------|-----------------|--------|-----------|
 | W boson mass m_W | Force triads at 9D balance: SU(2) weak force gauge boson; UQFF K_HIGGS = 47.34 → m_W ~ 80 GeV | m_W = 80.377 ± 0.012 GeV | PDG 2024 | Triad structure consistent |
 | Strong/EM/Weak force ratios | d1–d3 EM, d4–d6 Nuclear, d7–d9 Weak: 9 dimensions = 3 force triads | SM α_s : α_EM : α_W ~ 0.12 : 1/137 : 1/30 at M_Z | PDG 2024 | Dimensional mapping aligns force hierarchy |
-| X-ray frequency f (M87 jet) | f_event = \|∇UA\|³ × 10¹⁵ Hz ≈ 5.71×10¹⁶ Hz | Chandra/EHT Dec 2025: X-ray jet ≥ 5×10¹⁶ Hz | Chandra Dec 2025 | ✓ Consistent |
+| X-ray frequency f (M87 jet) | f_event = \|∇UA\|³ × 10¹⁵ Hz ≈ 5.71e16 Hz | Chandra/EHT Dec 2025: X-ray jet ≥ 5×10¹⁶ Hz | Chandra Dec 2025 | ✓ Consistent |
 | M87 jet polarization flips | DVP junction events at d4–d6 asymmetry: 3 flips predicted | EHT 2017–2021: 3 polarization flip events | EHT arXiv 2021 | ✓ Exact count match |
 
 **New physics claim:** The 9D force triad architecture maps exactly onto the 3 SM gauge groups

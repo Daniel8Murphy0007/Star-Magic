@@ -43,11 +43,11 @@ $$E_{epoch} = h \cdot f_{Orion} \cdot epoch = 6.626\times10^{-34} \times 6.93\ti
 
 | Epoch | E_epoch (J) |
 |-------|------------|
-| 1 | 4.59×10⁻²⁴ |
-| 2 | 9.18×10⁻²⁴ |
-| 3 | 1.38×10⁻²³ |
-| 4 | 1.84×10⁻²³ |
-| 5 | 2.30×10⁻²³ |
+| 1 | 4.59e-24 |
+| 2 | 9.18e-24 |
+| 3 | 1.38e-23 |
+| 4 | 1.84e-23 |
+| 5 | 2.30e-23 |
 
 **Discrete** (Wolfram hypergraph): Each epoch corresponds to one Wolfram rule application in the hypergraph node-rewriting system. The discrete transitions produce unique nuclear fingerprints consistent with observed isotope abundances.
 

@@ -37,12 +37,12 @@ Each quark flavor contributes a characteristic energy to the shell filling proce
 
 | Flavor | Mass (MeV/c²) | Shell Energy (J) |
 |--------|--------------|-----------------|
-| up     | 2.2          | 3.6×10⁻³⁰ |
-| down   | 4.7          | 9.0×10⁻³⁰ |
-| strange| 96           | 1.7×10⁻²⁷ |
-| charm  | 1275         | 2.2×10⁻²⁷ |
-| bottom | 4180         | 7.4×10⁻²⁷ |
-| top    | 173,100      | 3.1×10⁻²⁵ |
+| up     | 2.2          | 3.6e-30 |
+| down   | 4.7          | 9.0e-30 |
+| strange| 96           | 1.7e-27 |
+| charm  | 1275         | 2.2e-27 |
+| bottom | 4180         | 7.4e-27 |
+| top    | 173,100      | 3.1e-25 |
 
 The Higgs shift serves as the coupling between these high-mass contributions and the low-energy shells (Higgs_shift ≈ 0.01 for the early universe, scaling the heavy flavors down to accessible energies).
 

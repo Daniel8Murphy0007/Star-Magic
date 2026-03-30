@@ -16,6 +16,9 @@ $$
 
 ## Abstract
 
+> **Key UQFF calibrated constants:** κ = 5.0e-4 day⁻¹; [SSq] = 5.7e-1; H_SCm ≈ 9.9e-1; U_UA ≈ 1.0e-4; k_η = 1.0e-113; β_i ≈ 6.0e-1; G = 6.674e-11 N·m²/kg²
+
+
 This paper documents the 99-system UQFF framework as established in the Sept 14, 2025 session, representing 99.9% theoretical completion. The framework encompasses 29 explicitly named astrophysical systems plus 70 additional implied systems within a unified compressed master equation. Compression Cycle 3 reduces the system-specific parameter space to a single universal gravitational envelope function F_env(t) plus per-system correction terms, achieving 85% backbone unification and 40% term reduction from the original 99-equation set. The compressed master equation and all 7 canonical pre-defined systems are enumerated.
 
 

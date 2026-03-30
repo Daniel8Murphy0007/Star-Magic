@@ -6,6 +6,11 @@
 
 ---
 
+
+## Abstract
+
+This paper presents a UQFF analysis of SGR 0501+4516 Magnetar: First Complete Per-System MUGE Derivation, deriving compressed field equations and observational predictions within the Star-Magic/UQFF framework.
+
 ## 1. Overview
 
 PAPER_430 presents the first complete per-system Master Universal Gravity Equation (MUGE) for **SGR 0501+4516**, a magnetar distinct from SGR 1745-2900 (previously modelled in PAPER_342/343). SGR 0501+4516 is observed ~80 arcminutes from supernova remnant HB9, with magnetic field evolution  $B(t) = 10^{10} \exp(-t/\tau_B)$ T and rotation rate $\Omega(t) = (2\pi/P_0)\exp(-t/\tau_\Omega)$, where this paper derives the **complete 10-term g_Magnetar(r,t)** incorporating all UQFF force channels.

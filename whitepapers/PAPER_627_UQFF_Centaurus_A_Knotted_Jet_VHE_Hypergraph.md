@@ -8,12 +8,20 @@
 
 ---
 
+
+## Abstract
+
+$$F_{U,Bi} = \kappa \cdot \frac{\rho_{\text{SCm}}}{\rho_{\text{UA}}} \cdot (U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_m + U_{bi})$$
+
+
+This paper presents a UQFF analysis of UQFF Centaurus A Knotted Jet VHE Hypergraph, deriving compressed field equations and observational predictions within the Star-Magic/UQFF framework.
+
 ## §1 Abstract
 
 Centaurus A (NGC 5128 / IC 3412) hosts the closest AGN jet at 12–13 Mly, providing
 the highest-resolution test of UQFF jet physics. The 26D simultaneous sculpting
 framework with arity threshold 8 and 200 iterations reproduces the knotted, V-shaped
-morphology, VHE X-ray knot spectrum (6.14×10¹⁶ Hz floor), and superluminal knot
+morphology, VHE X-ray knot spectrum (6.14e16 Hz floor), and superluminal knot
 speeds (1–2c apparent) reported in MNRAS 2025. Seven DVP vortex-prime pocket pockets
 form naturally — more than M87 (4 pockets) — consistent with the merger-induced
 knotty morphology of CenA.
@@ -24,9 +32,9 @@ knotty morphology of CenA.
 
 | Parameter | Value |
 |-----------|-------|
-| BH mass | 5.5×10⁷ M☉ = 1.09×10³⁸ kg |
-| Distance | 12–13 Mly = 1.23×10²³ m |
-| Jet length | 25,000 ly = 7.7×10¹⁹ m |
+| BH mass | 5.5e7 M☉ = 1.09e38 kg |
+| Distance | 12–13 Mly = 1.23e23 m |
+| Jet length | 25,000 ly = 7.7e19 m |
 | ∇UA (jet base) | ~10⁻¹⁹ m⁻¹ |
 | RA/Dec | per MNRAS 2025 catalog |
 | Observation | MNRAS 2025 VHE knots + JWST MICONIC + Chandra superluminal knots |
@@ -57,14 +65,14 @@ knotty morphology of CenA.
 
 **f³ rebound frequencies (Hz), first 5:**
 ```
-f₁ = 6.14×10¹⁶   (VHE X-ray floor, MNRAS 2025 knots)
-f₂ = 1.25×10¹⁷
-f₃ = 2.48×10¹⁷
-f₄ = 3.19×10¹⁷
-f₅ = 4.52×10¹⁷
+f₁ = 6.14e16   (VHE X-ray floor, MNRAS 2025 knots)
+f₂ = 1.25e17
+f₃ = 2.48e17
+f₄ = 3.19e17
+f₅ = 4.52e17
 ```
 
-Full ramp: 6.14×10¹⁶ – 10¹⁸ Hz (VHE to hard X-ray).
+Full ramp: 6.14e16 – 10¹⁸ Hz (VHE to hard X-ray).
 
 **f³ accumulation law (BH26 cubic rebound):**
 ```
@@ -97,7 +105,7 @@ Chandra time-domain data.
 |---------|------|-----|---------------|
 | Morphology | Knotty/V-shaped | Smooth/elongated | Merger vs elliptical host |
 | Pocket count | 7 | 4 | Higher arity threshold in CenA |
-| VHE floor (Hz) | 6.14×10¹⁶ | 5.71×10¹⁶ | BH mass ratio |
+| VHE floor (Hz) | 6.14e16 | 5.71e16 | BH mass ratio |
 | Superluminal knots | 1–2c apparent | < 1c apparent | Doppler boost in merger jet |
 | JWST feature | MICONIC ionized outflows | Infrared jet spine | Host galaxy environment |
 
@@ -128,7 +136,7 @@ inclination angle (~15° to line of sight).
 | Apparent superluminal speed β_app | β_app = v·sin(φ)/(c−v·cos(φ)); v=0.97c, φ=15° → β_app ≈ 1.4c | Chandra/VLBI: apparent speed 1–2c | Chandra CenA | ✓ 1.4c within 1–2c range |
 | VHE gamma-ray threshold (CenA) | DVP high-arity branching produces photons > 100 GeV | H.E.S.S./VERITAS CenA VHE: E_VHE > 100 GeV | MNRAS 2025 | ✓ Consistent |
 | Synchrotron self-Compton (QED) | U_m Compton scattering: f_IC = (4/3)γ²f_sync; γ~10⁶ | QED SSC: E_γ_max ~ γ² × 1 keV | QED | ✓ Energy range aligned |
-| Black hole mass (M87 BH) | BH26 pocket shell at r_S = 2GM/c²; M_M87 = 6.5×10⁹ M_☉ | EHT shadow: M_M87 = 6.5±0.2×10⁹ M_☉ | EHT 2019 | Shared input |
+| Black hole mass (M87 BH) | BH26 pocket shell at r_S = 2GM/c²; M_M87 = 6.5e9 M_☉ | EHT shadow: M_M87 = 6.5±0.2e9 M_☉ | EHT 2019 | Shared input |
 
 **New physics claim:** The CenA knotted jet exhibits arity-8 branching nodes that
 produce VHE photon bursts uncorrelated with core accretion rate — a UQFF prediction

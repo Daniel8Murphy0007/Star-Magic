@@ -76,7 +76,7 @@ v(?x · ?p)_min = (h/2)^(1/4) · (h/2)^(1/4) ... wait — exact minimum:
 g_Q_min = [h / v(h/2)] · ? · (2p/t_H) = v(2h) · ? · (2p/t_H)
 ```
 
-Numerically: `g_Q_min ˜ v(2 × 1.0546×10?³4) × 1.0 × (2p / 4.354×10¹7) ˜ 2.1×10?¹7 × 1.44×10?¹7 ˜ 3.0×10?³4 m/s²`
+Numerically: `g_Q_min ˜ v(2 × 1.0546×10?³4) × 1.0 × (2p / 4.354e17) ˜ 2.1×10?¹7 × 1.44×10?¹7 ˜ 3.0×10?³4 m/s²`
 
 This is vastly smaller than Newtonian gravity but non-zero; it is the irreducible quantum gravitational background within MUGE.
 
@@ -84,7 +84,7 @@ This is vastly smaller than Newtonian gravity but non-zero; it is the irreducibl
 
 The factor `2p/t_Hubble` encodes the idea that quantum fluctuations driving gravitational corrections are coherent over a single Hubble horizon cycle. The `2p` factor is the natural angular period of any oscillatory or wave-like process when expressed in circular frequency. This is consistent with the 26-layer MUGE framework in which each layer carries its own oscillatory quantum factor; `g_Q` represents the zero-point of that tower.
 
-At the current epoch, `t_Hubble = 13.8 × 10? × 3.156 × 107 ˜ 4.354 × 10¹7 s`, giving `2p/t_Hubble ˜ 1.443 × 10?¹7 rad/s` — a cosmologically small frequency that suppresses `g_Q` to astrophysically negligible values in isolation. Its importance lies in structural universality, not magnitude.
+At the current epoch, `t_Hubble = 13.8 × 10? × 3.156 × 107 ˜ 4.354e17 s`, giving `2p/t_Hubble ˜ 1.443 × 10?¹7 rad/s` — a cosmologically small frequency that suppresses `g_Q` to astrophysically negligible values in isolation. Its importance lies in structural universality, not magnitude.
 
 ### 2.4 Time-Evolved and Thermal Variants
 

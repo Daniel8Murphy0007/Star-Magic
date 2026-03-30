@@ -6,6 +6,11 @@
 
 ---
 
+
+## Abstract
+
+This paper presents a UQFF analysis of Collection Framework, deriving compressed field equations and observational predictions within the Star-Magic/UQFF framework.
+
 ## §1.1 Abstract
 
 The WOLFRAM_TERM auto-collection framework enables any C++ source file in the Star-Magic repo to contribute physics terms to the Wolfram symbolic verification pipeline. Each file annotates its primary equation with a `#define WOLFRAM_TERM "..."` macro. At runtime, source176 scans all `.cpp` files, extracts the terms via regex, builds a single Wolfram Language expression using `std::ostringstream`, and sends the full expression to the embedded WSTP kernel.

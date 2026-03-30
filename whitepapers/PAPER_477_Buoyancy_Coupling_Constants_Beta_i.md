@@ -32,13 +32,13 @@ $$U_{b,i} = -\beta_i \cdot U_{g,i} \cdot \Omega_g \cdot \frac{M_{BH}}{d_g} \cdot
 |--------|-----------|----------------|
 | β_i | Buoyancy coupling constant | 0.6 (all i) |
 | U_{g,i} | UQFF sub-field i energy density | Computed per system |
-| Ω_g | Galactic spin parameter | 7.3 × 10⁻¹⁶ rad/s (MW) |
+| Ω_g | Galactic spin parameter | 7.3e-16 rad/s (MW) |
 | M_BH | Central black hole mass | 8 × 10³⁶ kg (Sag A*) |
-| d_g | Galactic distance (virial) | 2.55 × 10²⁰ m (MW) |
+| d_g | Galactic distance (virial) | 2.55e20 m (MW) |
 | E_react | Reactive energy coupling | ~1 J/m³ (calibrated) |
 | ε_sw | Solar wind modulation factor | 0.001 |
 | ρ_vac,sw | Solar wind vacuum density | ~10⁻²³ J/m³ |
-| U_UA | Universal Aether field energy | 7.09 × 10⁻³⁶ J/m³ |
+| U_UA | Universal Aether field energy | 7.09e-36 J/m³ |
 | t_n | Normalized time (0 = now) | 0 |
 | cos(π t_n) | Temporal phase | +1 at t_n = 0 |
 
@@ -110,10 +110,10 @@ The period T_osc corresponds to cosmic timescales related to the [SCm] decay rat
 
 | System | U_{g,1} | β₁ | U_{b,1} (J/m³) |
 |--------|---------|-----|----------------|
-| Sun surface | 274 m/s² | 0.6 | −2.68×10⁻²³ |
-| Sag A* horizon | 5.6×10⁸ m/s² | 0.6 | −5.5×10⁻¹⁷ |
-| Magnetar surface | 1.79×10¹² m/s² | 0.6 | −1.75×10⁻¹³ |
-| Pillar of Creation | 9.4×10⁻¹³ m/s² | 0.6 | +support | 
+| Sun surface | 274 m/s² | 0.6 | −2.68e-23 |
+| Sag A* horizon | 5.6e8 m/s² | 0.6 | −5.5e-17 |
+| Magnetar surface | 1.79e12 m/s² | 0.6 | −1.75e-13 |
+| Pillar of Creation | 9.4e-13 m/s² | 0.6 | +support | 
 | Andromeda disk | ~6 m/s² | 0.6 | −negligible |
 
 ---
@@ -125,7 +125,7 @@ The β = 0.6 framework implies:
 1. **No system has zero net gravity**: Even at maximum buoyancy, 40% of Ug remains
 2. **Galaxy rotation curves**: Buoyancy supplements dark matter in the outer disk where Ug is weak — buoyancy cannot fully explain flat rotation curves but reduces the required dark matter fraction by ~30%
 3. **Galaxy cluster stability**: At cluster scales, buoyancy provides internal pressure equivalent to ~0.6 × ICM thermal pressure — consistent with observed virial theorem ratios
-4. **Molecular cloud lifetimes**: β = 0.6 provides 60% support against self-gravity → τ_cloud ∝ (1 − β)⁻¹ τ_ff ≈ 2.5 × 10⁷ yr (observed: 10⁷–10⁸ yr ✓)
+4. **Molecular cloud lifetimes**: β = 0.6 provides 60% support against self-gravity → τ_cloud ∝ (1 − β)⁻¹ τ_ff ≈ 2.5e7 yr (observed: 10⁷–10⁸ yr ✓)
 
 ---
 
@@ -140,9 +140,9 @@ The buoyancy coupling constant β_i = 0.6 (uniform across all UQFF sub-fields) p
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
 | Higgs mass m_H | UQFF K_HIGGS=47.34 → m_H_UQFF = 125.09 GeV | m_H = 125.20 ± 0.11 GeV | PDG 2024 | 99.8% |
-| Cosmological Λ | UQFF |∇UA|² → 1.09×10⁻⁵² m⁻² | Λ = 1.114×10⁻⁵² m⁻² (Planck+DESI) | Planck 2018 | 97.8% |
-| Thomson σ_T (QED) | UQFF U_m kernel: σ_T = 6.6524×10⁻²⁹ m² | σ_T = 6.6524×10⁻²⁹ m² | PDG 2024 | 100% (exact) |
-| κ baryon stability | κ = 0.0005/day; scale separation 10³³ from proton decay | τ_p > 7.7×10³³ yr (Super-K) | Super-K 2024 | ✓ UQFF baryon-safe |
+| Cosmological Λ | UQFF |∇UA|² → 1.09e-52 m⁻² | Λ = 1.114e-52 m⁻² (Planck+DESI) | Planck 2018 | 97.8% |
+| Thomson σ_T (QED) | UQFF U_m kernel: σ_T = 6.6524e-29 m² | σ_T = 6.6524e-29 m² | PDG 2024 | 100% (exact) |
+| κ baryon stability | κ = 0.0005/day; scale separation 10³³ from proton decay | τ_p > 7.7e33 yr (Super-K) | Super-K 2024 | ✓ UQFF baryon-safe |
 
 **New physics claim:** UQFF operates at a vacuum topology scale (~200 PeV) that is 8 orders
 below the GUT scale and 33 orders above nuclear baryon-number scales. This intermediate-scale
@@ -153,6 +153,6 @@ while remaining consistent with all collider and nuclear precision measurements.
 
 
 
-**UQFF Parameters:** β_i = 0.6 | ε_sw = 0.001 | [SSq] = 0.57 | Ω_g = 7.3×10⁻¹⁶ rad/s  
+**UQFF Parameters:** β_i = 0.6 | ε_sw = 0.001 | [SSq] = 0.57 | Ω_g = 7.3e-16 rad/s  
 **Class:** `BuoyancyCouplingModule` | **Source:** `grok_share_b0a3dc1d.txt` L2082–2276  
 **Tags:** buoyancy, coupling-constants, β_i, vacuum-medium, molecular-clouds, galaxy-clusters, solar-wind  

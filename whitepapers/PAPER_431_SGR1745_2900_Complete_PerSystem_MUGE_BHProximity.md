@@ -6,6 +6,11 @@
 
 ---
 
+
+## Abstract
+
+This paper presents a UQFF analysis of SGR 1745-2900 Complete Per-System MUGE: Black Hole Proximity + All-Channel Derivation, deriving compressed field equations and observational predictions within the Star-Magic/UQFF framework.
+
 ## 1. Overview
 
 PAPER_431 provides the **first complete 10-channel per-system MUGE** for SGR 1745-2900 — the magnetar located near the Galactic Centre, 0.1 pc from Sgr A*. While PAPER_342 (tail term) and PAPER_372 (compressed abstract) captured partial physics, this paper contains the first explicit computation of ALL terms simultaneously, including the novel **gravitational BH proximity term** $g_\text{BH}$ and the **cumulative decay energy term** $M_\text{mag}/(M \cdot r)$ — neither of which appeared in PAPER_342/343.
@@ -100,7 +105,7 @@ The BH proximity term $T_3 \approx 5.98 \times 10^{-5}$ m/s² is **negligible at
 | Prior Paper | What Was Captured | What PAPER_431 Adds |
 |-------------|------------------|--------------------|
 | PAPER_342 | 7-component Σ₂₆ frequency form (tail only) | Complete 10-term simultaneous evaluation |
-| PAPER_343 | SC_m mass modifier M_mag=2.01×10³⁷ J | First g_cum(t) formula as effective acceleration |
+| PAPER_343 | SC_m mass modifier M_mag=2.01e37 J | First g_cum(t) formula as effective acceleration |
 | PAPER_372 | Compressed abstract (one line) | All 10 terms with numerical values |
 | PAPER_384 | SgrA* spectral decomposition (different system) | BH proximity T_3 at SGR1745 distance |
 
@@ -121,7 +126,7 @@ UQFF adds:
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Thomson σ_T (QED synchrotron) | UQFF U_m scattering kernel: σ_T = 6.6524×10⁻²⁹ m² | σ_T = 6.6524×10⁻²⁹ m² (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
+| Thomson σ_T (QED synchrotron) | UQFF U_m scattering kernel: σ_T = 6.6524e-29 m² | σ_T = 6.6524e-29 m² (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
 | SGR 1745-2900 Magnetar luminosity X-ray 2–10 keV | UQFF MUGE g_total → L_X via Stefan-Boltzmann + buoyancy flux: L_X ≈ g_total × M_env | L_X L_X ~ 10³⁵ erg/s | Chandra CXC | ✓ Consistent order of magnitude |
 | GR Schwarzschild limit | UQFF g_total must satisfy g ≤ c²/(2r_s) at event horizon | r_s = 2GM/c² (GR exact) | PDG 2024 / GR | ✓ UQFF respects GR horizon |
 | κ vacuum rate vs X-ray variability | UQFF κ = 0.0005/day → timescale τ_UQFF = 2000 days | Observed X-ray variability τ_obs (instrument monitoring) | Chandra CXC | Testable UQFF variability timescale |

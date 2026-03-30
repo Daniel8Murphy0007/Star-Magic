@@ -7,6 +7,11 @@
 
 ---
 
+
+## Abstract
+
+This paper presents a UQFF analysis of Galactic ω_s Calibration from Stellar Velocity Dispersion, deriving compressed field equations and observational predictions within the Star-Magic/UQFF framework.
+
 ## 1. Overview
 
 The UQFF framework encodes angular frequency inputs for astrophysical systems through
@@ -80,7 +85,7 @@ From literature:
 
 $$\omega_{s,\text{galactic}}^{\text{SgrA*}} = \frac{100 \times 10^3}{4.629\times10^{19}} = \frac{10^5}{4.629\times10^{19}} \approx 2.160\times10^{-15} \text{ rad/s}$$
 
-This is consistent with the canonical `ω_g = 7.3×10⁻¹⁶` rad/s used in the UQFF pipeline
+This is consistent with the canonical `ω_g = 7.3e-16` rad/s used in the UQFF pipeline
 (within a factor of ~3, reflecting the difference between bulge rotation and nuclear disk).
 
 ### 3.2 M87 (Virgo A, NGC 4486)
@@ -111,12 +116,12 @@ $$\omega_{s,\text{galactic}}^{\text{MW-class}} = \frac{2\times10^5}{6.171\times1
 
 | System | σ (km/s) | R_bulge (kpc) | ω_s_galactic (rad/s) |
 |--------|----------|--------------|----------------------|
-| Dwarf elliptical | 40 | 0.3 | 4.24×10⁻¹⁵ |
-| Milky Way center | 100 | 1.5 | 2.16×10⁻¹⁵ |
-| Milky Way spiral | 200 | 2.0 | 3.24×10⁻¹⁵ |
-| M87 (Virgo A) | 324 | 7.0 | 1.50×10⁻¹⁵ |
-| NGC 1275 (Perseus A) | 260 | 5.0 | 1.69×10⁻¹⁵ |
-| Massive BCG | 350 | 15.0 | 7.56×10⁻¹⁶ |
+| Dwarf elliptical | 40 | 0.3 | 4.24e-15 |
+| Milky Way center | 100 | 1.5 | 2.16e-15 |
+| Milky Way spiral | 200 | 2.0 | 3.24e-15 |
+| M87 (Virgo A) | 324 | 7.0 | 1.50e-15 |
+| NGC 1275 (Perseus A) | 260 | 5.0 | 1.69e-15 |
+| Massive BCG | 350 | 15.0 | 7.56e-16 |
 
 The canonical UQFF value $\omega_g = 7.3\times10^{-16}$ rad/s corresponds to a massive BCG
 ($\sigma\sim350$ km/s, $R_{\text{bulge}}\sim15$ kpc), consistent with its use in the CP1/CP3
@@ -148,7 +153,7 @@ def compute_omega_s_galactic(sigma_km_s: float, R_bulge_m: float) -> float:
 ### 5.2 Replacing Hardcoded ω_g
 
 For systems with known $\sigma$ and $R_{\text{bulge}}$, this formula replaces the
-canonical `ω_g = 7.3×10⁻¹⁶ rad/s` with a system-specific observationally anchored value.
+canonical `ω_g = 7.3e-16 rad/s` with a system-specific observationally anchored value.
 
 The MUGE resonance tier `term_Ub_i = -β_i × ug1 × ω_s × (M/r) × U_UA × cos(π·t)` then
 uses $\omega_{s,\text{galactic}}$ for the system-specific outer-frame coupling.

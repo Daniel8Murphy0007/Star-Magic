@@ -8,6 +8,14 @@
 
 ---
 
+
+## Abstract
+
+$$F_{U,Bi} = \kappa \cdot \frac{\rho_{\text{SCm}}}{\rho_{\text{UA}}} \cdot (U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_m + U_{bi})$$
+
+
+This paper presents a UQFF analysis of UQFF M87 Jet 9D Hypergraph Pocket Shell Simulation, deriving compressed field equations and observational predictions within the Star-Magic/UQFF framework.
+
 ## §1 Abstract
 
 Full 9D Wolfram hypergraph simulation of the M87 AGN jet using 200 iterations

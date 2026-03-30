@@ -7,6 +7,11 @@
 
 ---
 
+
+## Abstract
+
+This paper presents a UQFF analysis of Inflationary Epoch Details from UQFF Grinding, deriving compressed field equations and observational predictions within the Star-Magic/UQFF framework.
+
 ## §1 Abstract
 
 Cosmic inflation requires $\ddot{a} > 0$ — accelerated expansion in the early universe
@@ -116,7 +121,7 @@ No free inflaton field is required.
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Cosmological constant Λ | UQFF |∇UA|² → Λ_UQFF = 1.09×10⁻⁵² m⁻² | Λ = 1.114×10⁻⁵² m⁻² (Planck 2018 + DESI 2025) | Planck 2018 / DESI | 97.8% |
+| Cosmological constant Λ | UQFF |∇UA|² → Λ_UQFF = 1.09e-52 m⁻² | Λ = 1.114e-52 m⁻² (Planck 2018 + DESI 2025) | Planck 2018 / DESI | 97.8% |
 | Dark energy fraction Ω_Λ | UQFF [SSq]=0.57; Ω_Λ ~ [SSq]×1.20 = 0.684 | Ω_Λ = 0.6847 ± 0.0073 | Planck 2018 | 99.9% |
 | CMB temperature T_CMB | UQFF vacuum condensate → T_CMB = (ρ_UA/σ_SB)^0.25 = 2.726 K | T_CMB = 2.72548 K | FIRAS 1996 | 99.98% |
 | H₀ Hubble constant | UQFF: H₀_UQFF = κ × c / r_Hubble = 67.4 km/s/Mpc | H₀ = 67.4 ± 0.5 km/s/Mpc (Planck) | Planck 2018 | ✓ Consistent (Planck value) |

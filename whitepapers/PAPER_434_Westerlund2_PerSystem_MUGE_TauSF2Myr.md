@@ -6,6 +6,11 @@
 
 ---
 
+
+## Abstract
+
+This paper presents a UQFF analysis of Westerlund 2: Per-System MUGE with τ=2 Myr Wind Evolution and M₀=30,000 M☉, deriving compressed field equations and observational predictions within the Star-Magic/UQFF framework.
+
 ## 1. Overview
 
 PAPER_434 provides the **complete per-system MUGE** for Westerlund 2 — one of the most massive young star clusters in the Milky Way ($M \approx 30{,}000 \, M_\odot$, age $\sim 2$ Myr, $d \approx 8$ kpc). While canonical values for Westerlund 2 appear in PAPER_326/372/399 (FU_g1, R_t, FU_Bi), none of those papers derived the **full 10-term MUGE with all individual Ug and environmental channels** calibrated to the cluster-specific parameters: $M_0 = 30{,}000 \, M_\odot$, $v_\text{wind} = 2000$ km/s, $\tau_\text{SF} = 2 \times 10^6$ yr.
@@ -107,7 +112,7 @@ Standard stellar dynamics: $v_\text{esc} = \sqrt{2GM/r} \approx 2.9$ km/s. The o
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Thomson σ_T (QED synchrotron) | UQFF U_m scattering kernel: σ_T = 6.6524×10⁻²⁹ m² | σ_T = 6.6524×10⁻²⁹ m² (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
+| Thomson σ_T (QED synchrotron) | UQFF U_m scattering kernel: σ_T = 6.6524e-29 m² | σ_T = 6.6524e-29 m² (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
 | Westerlund 2 Cluster luminosity X-ray 0.5–7 keV | UQFF MUGE g_total → L_X via Stefan-Boltzmann + buoyancy flux: L_X ≈ g_total × M_env | L_X L_X ~ 10³⁴ erg/s | Chandra CXC | ✓ Consistent order of magnitude |
 | GR Schwarzschild limit | UQFF g_total must satisfy g ≤ c²/(2r_s) at event horizon | r_s = 2GM/c² (GR exact) | PDG 2024 / GR | ✓ UQFF respects GR horizon |
 | κ vacuum rate vs X-ray variability | UQFF κ = 0.0005/day → timescale τ_UQFF = 2000 days | Observed X-ray variability τ_obs (instrument monitoring) | Chandra CXC | Testable UQFF variability timescale |

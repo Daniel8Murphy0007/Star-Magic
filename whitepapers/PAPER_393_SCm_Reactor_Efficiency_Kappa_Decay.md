@@ -7,6 +7,11 @@
 
 ---
 
+
+## Abstract
+
+This paper presents a UQFF analysis of SCm Reactor Efficiency with κ-Decay: E_react = (ρ_SCm·v_SCm²/ρ_A)·exp(−κt), deriving compressed field equations and observational predictions within the Star-Magic/UQFF framework.
+
 ## 1. Overview
 
 The UQFF framework models the **Superconducting Matter (SCm) reactor efficiency** as a

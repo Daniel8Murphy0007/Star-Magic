@@ -9,6 +9,11 @@
 
 ---
 
+
+## Abstract
+
+This paper presents a UQFF analysis of Order Gaussian Polynomial — Truncated Exponential Anti-Collapse Proof, deriving compressed field equations and observational predictions within the Star-Magic/UQFF framework.
+
 ## §1 Abstract
 
 The buoyancy indicator term $F_{U,Bi,i}$ contains a Gaussian envelope $\exp(-z^2)$ that was previously evaluated in closed form or via numerical integration. This paper derives the 26th-order polynomial truncation of this exponential, providing an explicit degree-52 polynomial proof that the Gaussian is bounded, integrates to a finite error function, and thus prevents collapse at all densities. The truncation at degree 26 (in $z^2$) is effectively exact: at $z=1$, both the polynomial sum and $e^{-1}$ encode to the **same 64-bit float bit-pattern** (computed difference $\approx 1.11 \times 10^{-16}$, i.e., float64 machine epsilon), because the analytical truncation error $1/27! \approx 9.18 \times 10^{-29}$ lies below float64 representable precision. The 26th term $z^{52}/26! \approx 2.48 \times 10^{-27}$ at $z=1$ is itself machine-zero, confirming convergence. All three UQFF number systems (VDS, DVP, BH26) appear in the coefficient, irreducibility, and frequency-bin contexts respectively.
@@ -193,9 +198,9 @@ Tests T48�T55, group M9-FUBi26 (8/8 PASS, including T52 polynomial-bound check
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
 | Higgs mass m_H | UQFF K_HIGGS=47.34 → m_H_UQFF = 125.09 GeV | m_H = 125.20 ± 0.11 GeV | PDG 2024 | 99.8% |
-| Cosmological Λ | UQFF |∇UA|² → 1.09×10⁻⁵² m⁻² | Λ = 1.114×10⁻⁵² m⁻² (Planck+DESI) | Planck 2018 | 97.8% |
-| Thomson σ_T (QED) | UQFF U_m kernel: σ_T = 6.6524×10⁻²⁹ m² | σ_T = 6.6524×10⁻²⁹ m² | PDG 2024 | 100% (exact) |
-| κ baryon stability | κ = 0.0005/day; scale separation 10³³ from proton decay | τ_p > 7.7×10³³ yr (Super-K) | Super-K 2024 | ✓ UQFF baryon-safe |
+| Cosmological Λ | UQFF |∇UA|² → 1.09e-52 m⁻² | Λ = 1.114e-52 m⁻² (Planck+DESI) | Planck 2018 | 97.8% |
+| Thomson σ_T (QED) | UQFF U_m kernel: σ_T = 6.6524e-29 m² | σ_T = 6.6524e-29 m² | PDG 2024 | 100% (exact) |
+| κ baryon stability | κ = 0.0005/day; scale separation 10³³ from proton decay | τ_p > 7.7e33 yr (Super-K) | Super-K 2024 | ✓ UQFF baryon-safe |
 
 **New physics claim:** UQFF operates at a vacuum topology scale (~200 PeV) that is 8 orders
 below the GUT scale and 33 orders above nuclear baryon-number scales. This intermediate-scale

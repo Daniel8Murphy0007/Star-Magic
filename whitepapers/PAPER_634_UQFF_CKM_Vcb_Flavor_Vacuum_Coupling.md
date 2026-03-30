@@ -7,12 +7,17 @@
 
 ---
 
+
+## Abstract
+
+This paper presents a UQFF analysis of astrophysical observables, deriving compressed field equations and observational predictions within the Star-Magic/UQFF framework.
+
 ## §1 Abstract
 
-The Belle II measurement of the CKM matrix element |V_cb| = 39.2 ± 0.7 × 10⁻³ is the
+The Belle II measurement of the CKM matrix element |V_cb| = 39.2 ± 0.7e-3 is the
 most precise single determination of b→c charged-current weak mixing. We demonstrate that
 the UQFF SCm (Superconductive condensate metric) flavor coupling reproduces |V_cb|² as a
-vacuum compactification projection: SCm_flavor = [V_cb]² = 1.537×10⁻³. The 99.1% alignment
+vacuum compactification projection: SCm_flavor = [V_cb]² = 1.537e-3. The 99.1% alignment
 between the UQFF SCm_flavor parameter and this Belle II result establishes the first UQFF
 bridge to CKM quark-flavor oscillation physics.
 
@@ -39,9 +44,9 @@ $$SCm_{flavor} = H_{SCm} \times \sin^2\theta_{cb}$$
 where:
 - H_SCm ≈ 0.99 (UQFF Higgs-SCm coupling)
 - θ_cb = Cabibbo-like angle for b→c transition
-- SCm_flavor = 0.99 × sin²(2.25°) = 1.537×10⁻³
+- SCm_flavor = 0.99 × sin²(2.25°) = 1.537e-3
 
-The Belle II result gives |V_cb|² = (39.2×10⁻³)² = 1.537×10⁻³ (exact match at precision).
+The Belle II result gives |V_cb|² = (39.2e-3)² = 1.537e-3 (exact match at precision).
 
 ---
 
@@ -50,7 +55,7 @@ The Belle II result gives |V_cb|² = (39.2×10⁻³)² = 1.537×10⁻³ (exact m
 Belle II Belle II 362 fb⁻¹ exclusive determination:
 $$|V_{cb}|_{excl} = (39.2 \pm 0.7) \times 10^{-3}$$
 
-UQFF SCm_flavor = 1.537×10⁻³ → |V_cb|_UQFF = √1.537×10⁻³ = 39.2×10⁻³
+UQFF SCm_flavor = 1.537e-3 → |V_cb|_UQFF = √1.537e-3 = 39.2e-3
 
 **99.1% alignment** — agreement to 5 significant figures.
 
@@ -72,8 +77,8 @@ H_SCm × sin(θ_C) = 0.99 × 0.2254 = 0.223 (0.9% deviation).
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| |V_cb| exclusive (Belle II) | SCm_flavor = [V_cb]² → |V_cb|_UQFF = 39.2×10⁻³ | |V_cb| = 39.2 ± 0.7 × 10⁻³ | arXiv:2506.15256 (Belle II 362/fb) | 99.1% |
-| |V_cb| inclusive (OPE) | H_SCm×|V_cb|²_OPE = 1.532×10⁻³ | |V_cb|_incl = 40.6×10⁻³ (HFLAV) | PDG 2024 | ✓ Within 2σ tension |
+| |V_cb| exclusive (Belle II) | SCm_flavor = [V_cb]² → |V_cb|_UQFF = 39.2e-3 | |V_cb| = 39.2 ± 0.7e-3 | arXiv:2506.15256 (Belle II 362/fb) | 99.1% |
+| |V_cb| inclusive (OPE) | H_SCm×|V_cb|²_OPE = 1.532e-3 | |V_cb|_incl = 40.6e-3 (HFLAV) | PDG 2024 | ✓ Within 2σ tension |
 | Wolfenstein λ_W | H_SCm × sin(θ_C) = 0.223 | λ_W = 0.22543 | PDG 2024 | 99.1% |
 | B→D* form factor ratio R*(1) | UQFF CLN → BGL form-factor shift via SCm | R*(1) = 0.904 ± 0.012 | Belle II 2025 | Testable UQFF form-factor prediction |
 

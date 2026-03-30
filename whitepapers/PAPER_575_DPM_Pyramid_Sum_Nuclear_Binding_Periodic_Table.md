@@ -1,10 +1,18 @@
 # PAPER_575 — DPM Pyramid Sum Nuclear Binding & Periodic Table
 
+> **Key UQFF calibrated constants:** κ = 5.0e-4 day⁻¹; [SSq] = 5.7e-1; H_SCm ≈ 9.9e-1; U_UA ≈ 1.0e-4; k_η = 1.0e-113; β_i ≈ 6.0e-1; G = 6.674e-11 N·m²/kg²
+
+
 **CP4 Class:** `#162  DPMPyramidSumNuclearBindingPeriodicTableCalculator`  
 **Session:** 154  
 **Cross-refs:** PAPER_573 (hub), PAPER_550 (DPM quantisation), PAPER_551 (factorial anti-collapse)
 
 ---
+
+
+## Abstract
+
+This paper presents a UQFF analysis of DPM Pyramid Sum Nuclear Binding & Periodic Table, deriving compressed field equations and observational predictions within the Star-Magic/UQFF framework.
 
 ## §1 Abstract
 

@@ -10,6 +10,14 @@
 
 ---
 
+
+## Abstract
+
+$$F_{U,Bi} = \kappa \cdot \frac{\rho_{\text{SCm}}}{\rho_{\text{UA}}} \cdot (U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_m + U_{bi})$$
+
+
+This paper presents a UQFF analysis of UQFF Resonance Superconductive Formal Proof Set, deriving compressed field equations and observational predictions within the Star-Magic/UQFF framework.
+
 ## 1. Overview
 
 This paper formalizes the mathematical proof set validating the UQFF Resonance
@@ -46,7 +54,7 @@ reduce to m/s² through the Evac_neb / Evac_ISM / c normalization chain.
 ## 3. Boundary Conditions (Proof 2)
 
 ```
-As r → ∞:     g_UQFF → Λ·c²/3 = 1.1×10⁻⁵² × (3×10⁸)² / 3 ≈ 3.3×10⁻³⁶ m/s²
+As r → ∞:     g_UQFF → Λ·c²/3 = 1.1e-52 × (3×10⁸)² / 3 ≈ 3.3e-36 m/s²
               Cosmological constant dominates (dark energy floor)
 
 As t → 0:     g_UQFF → G·M/r² (Newtonian gravity recovered)
@@ -64,15 +72,15 @@ As B >> Bcrit: Meissner complete expulsion, g → 0 (field excluded from bulk)
 
 The quantum coherence integral amplifies at the cosmic resonance frequency:
 ```
-ω_res = 2π / t_Hubble = 2π / 4.35×10¹⁷ s ≈ 1.445×10⁻¹⁷ rad/s
+ω_res = 2π / t_Hubble = 2π / 4.35e17 s ≈ 1.445e-17 rad/s
 ```
 
-Key value: `fquantum = 1.445×10⁻¹⁷` in ResonanceParams matches this frequency exactly.
+Key value: `fquantum = 1.445e-17` in ResonanceParams matches this frequency exactly.
 
 The aquantum_freq term:
 ```
 aquantum_freq = fquantum × Evac_neb × aDPM / Evac_ISM / c
-             = 1.445×10⁻¹⁷ × 7.09×10⁻³⁶ × aDPM / 7.09×10⁻³⁷ / 3×10⁸
+             = 1.445e-17 × 7.09e-36 × aDPM / 7.09e-37 / 3×10⁸
 ```
 This ensures the quantum coherence frequency (Hubble time resonance) is present
 in every MUGE computation.
@@ -114,7 +122,7 @@ At B = Bcrit:
 ### 6.2 Sagittarius A* (Sgr A*)
 
 **Observed:** Accretion rate ~10⁻⁸ M⊙/yr (Event Horizon Telescope)
-**UQFF Prediction:** resonance_MUGE(Sgr A*) ≈ 4.105×10²⁹ m/s²
+**UQFF Prediction:** resonance_MUGE(Sgr A*) ≈ 4.105e29 m/s²
   This extreme acceleration in the innermost accretion region is consistent with
   the high-luminosity flares observed by EHT in 2022-2025.
 
@@ -122,7 +130,7 @@ At B = Bcrit:
 
 **test_compute_compressed_base() at 1 AU:**
 ```
-Expected: G × M_sun / (1 AU)² = 6.674×10⁻¹¹ × 1.989×10³⁰ / (1.496×10¹¹)²
+Expected: G × M_sun / (1 AU)² = 6.674e-11 × 1.989e30 / (1.496e11)²
          ≈ 0.00593 m/s²
 Computed: ✓ (assertion passes)
 ```
@@ -153,12 +161,12 @@ Where:
 
 | Parameter | Value | Proof Context |
 |-----------|-------|--------------|
-| H₀ | 2.269×10⁻¹⁸ s⁻¹ | Expansion factor baseline (matches Planck 2018) |
-| Λ | 1.1×10⁻⁵² m⁻² | Cosmological constant (ΛCDM) |
-| ℏ | 1.0546×10⁻³⁴ J·s | Quantum coherence integral |
-| tHubble | 4.35×10¹⁷ s | Resonance amplification timescale |
+| H₀ | 2.269e-18 s⁻¹ | Expansion factor baseline (matches Planck 2018) |
+| Λ | 1.1e-52 m⁻² | Cosmological constant (ΛCDM) |
+| ℏ | 1.0546e-34 J·s | Quantum coherence integral |
+| tHubble | 4.35e17 s | Resonance amplification timescale |
 | Bcrit | 10¹¹ T | Magnetar critical field (PAPER_372) |
-| fquantum | 1.445×10⁻¹⁷ Hz | = 2π/tHubble (Hubble resonance) |
+| fquantum | 1.445e-17 Hz | = 2π/tHubble (Hubble resonance) |
 | Ereact(t=0) | 1046 J | Magnetar flare energy seed |
 | kappa | 0.0005 day⁻¹ | SCm reactivity decay, matches 10-100 day flare window |
 

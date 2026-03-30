@@ -70,10 +70,10 @@ This proves consistency with Newton's law at leading order, with $DPM_n(SCm)$ re
 
 | Body | $v_{Kepler}$ (km/s) | $\omega_{CW}$ (rad/s) | $F_{centrip}/F_{grav}$ ratio |
 |------|------------|---------|------------|
-| Mercury | 47.9 | 8.27×10⁻⁷ | 1.000 ± 0.003 |
-| Earth | 29.8 | 1.99×10⁻⁷ | 1.000 ± 0.001 |
-| Jupiter | 13.1 | 1.68×10⁻⁸ | 1.000 ± 0.002 |
-| Neptune | 5.4 | 3.36×10⁻⁹ | 1.000 ± 0.004 |
+| Mercury | 47.9 | 8.27e-7 | 1.000 ± 0.003 |
+| Earth | 29.8 | 1.99e-7 | 1.000 ± 0.001 |
+| Jupiter | 13.1 | 1.68e-8 | 1.000 ± 0.002 |
+| Neptune | 5.4 | 3.36e-9 | 1.000 ± 0.004 |
 
 All ratios within 0.4% → Kepler confirmed via DVP north-pole mechanism.
 
@@ -100,7 +100,7 @@ The $(1 + \Delta_{dil})$ denominator introduces a small energy release for eccen
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
 | GR Schwarzschild metric recovery | BSFG line element → g_tt = -(1-2GM/rc²) ≡ GR in ε_BSFG→0 limit | Schwarzschild metric (GR exact) | PDG 2024 / MTW | ✓ BSFG reduces to GR |
-| Shapiro time delay | BSFG geodesic → Δt_BSFG ≈ Δt_GR × (1 + ε_correction) | Cassini: Δt/Δt_GR = 1 ± 2.3×10⁻⁵ | Cassini/GR 2003 | ✓ Within Shapiro bound |
+| Shapiro time delay | BSFG geodesic → Δt_BSFG ≈ Δt_GR × (1 + ε_correction) | Cassini: Δt/Δt_GR = 1 ± 2.3e-5 | Cassini/GR 2003 | ✓ Within Shapiro bound |
 | Gravitational wave speed v_GW | BSFG: v_GW = c × (1 + k_η²) ≈ c + 10⁻²²⁶ m/s | GW150914 / GW170817: |v_GW/c - 1| < 10⁻¹⁵ | LIGO/Fermi GBM | ✓ UQFF deviation 10⁻²¹¹ orders below bound |
 | Perihelion precession (Mercury) | BSFG adds buoyancy correction δφ = κ × φ_GR ~ 10⁻⁶ arcsec/century | GR prediction: 43.03"/century; observed: 43.1" | GR + obs. | UQFF correction undetectable at current precision |
 

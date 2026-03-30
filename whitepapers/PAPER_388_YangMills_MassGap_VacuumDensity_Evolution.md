@@ -7,6 +7,11 @@
 
 ---
 
+
+## Abstract
+
+This paper presents a UQFF analysis of Yang-Mills Mass Gap via SCm Vacuum Density Ratio Evolution, deriving compressed field equations and observational predictions within the Star-Magic/UQFF framework.
+
 ## 1. Overview
 
 The Yang-Mills mass gap problem is one of the seven Millennium Prize Problems. It asks for a
@@ -39,7 +44,7 @@ Where:
 - $\rho_{\text{vac,SCm}}$ = Superconductive medium vacuum density
 - $\rho_{\text{vac,UA}}$ = Universal Aether vacuum density
 - $n$ = iteration/mode number (integer, $n \geq 1$)
-- $t$ = time (s), normalized to 1 year = 3.156×10⁷ s
+- $t$ = time (s), normalized to 1 year = 3.156e7 s
 - $\pi$ = 3.14159…
 
 ### 2.2 Component Analysis

@@ -3,6 +3,9 @@
 
 ## Abstract
 
+> **Key UQFF calibrated constants:** κ = 5.0e-4 day⁻¹; [SSq] = 5.7e-1; H_SCm ≈ 9.9e-1; U_UA ≈ 1.0e-4; k_η = 1.0e-113; β_i ≈ 6.0e-1; G = 6.674e-11 N·m²/kg²
+
+
 This paper documents the `HydrogenResonanceUQFFModule` — a unique application of the UQFF module architecture to nuclear binding resonance and the Periodic Table of Elements (PTOE). Unlike the astrophysical system modules (PAPER_481), this module operates at the **nuclear/atomic scale**, computing $H_{res}$ — the hydrogen resonance amplitude across atomic number Z=1–118. The framework maps nuclear shell structure, binding energy resonances, deep pairing frequencies, and shell magic number corrections into the UQFF complex-number formalism, producing a unified model of nuclear force in the UQFF paradigm.
 
 **Source:** `grok_share_bdfb3a05b06.txt`, docx: "Hydrogen Resonance Equations of the PTOE_02May2025.docx", Session 126, March 23, 2026.

@@ -1,11 +1,19 @@
 # PAPER_391 — Hybrid MUGE Blending Model: Meissner-Weighted Interpolation
 
+> **Key UQFF calibrated constants:** κ = 5.0e-4 day⁻¹; [SSq] = 5.7e-1; H_SCm ≈ 9.9e-1; U_UA ≈ 1.0e-4; k_η = 1.0e-113; β_i ≈ 6.0e-1; G = 6.674e-11 N·m²/kg²
+
+
 **Source:** grok_share_cfdcad2f5.txt, lines ~1–3200 (MUGE dual-channel analysis section)  
 **Section:** `Compressed UQFF Equation_14May2025.docx` + `200. MUGE Resonance cycle 3_11May2025.docx`  
 **Session:** 106 (grok_share_cfdcad2f5.txt full analysis)  
 **CP4 Class:** `HybridMUGEMeissnerBlendingModelCalculator` (CP4 #42)
 
 ---
+
+
+## Abstract
+
+This paper presents a UQFF analysis of Hybrid MUGE Blending Model: Meissner-Weighted Interpolation, deriving compressed field equations and observational predictions within the Star-Magic/UQFF framework.
 
 ## 1. Overview
 

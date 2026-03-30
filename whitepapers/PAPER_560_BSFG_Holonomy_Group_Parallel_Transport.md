@@ -9,6 +9,11 @@
 
 ---
 
+
+## Abstract
+
+This paper presents a UQFF analysis of Stratified Factorial Geometry — Holonomy Group and Parallel Transport, deriving compressed field equations and observational predictions within the Star-Magic/UQFF framework.
+
 ## §1 Abstract
 
 We determine the holonomy group of the 26-dimensional BSFG manifold $\mathcal{M}^{26} = \mathcal{M}^4_{\rm BSFG} \times T^{22}$. The 4D BSFG slice has Ricci scalar $R_{\rm scalar} \neq 0$ — it is not Ricci-flat — so it carries the generic pseudo-Riemannian holonomy $SO^+(3,1)$. The 22 compactified extra dimensions (PAPER_556) form flat tori with holonomy $U(1)^{22}$. The full result:
@@ -101,7 +106,7 @@ The $R_\odot^2$ result ($\sim 0.075$ rad $\approx 4.3°$) shows BSFG parallel tr
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
 | GR Schwarzschild metric recovery | BSFG line element → g_tt = -(1-2GM/rc²) ≡ GR in ε_BSFG→0 limit | Schwarzschild metric (GR exact) | PDG 2024 / MTW | ✓ BSFG reduces to GR |
-| Shapiro time delay | BSFG geodesic → Δt_BSFG ≈ Δt_GR × (1 + ε_correction) | Cassini: Δt/Δt_GR = 1 ± 2.3×10⁻⁵ | Cassini/GR 2003 | ✓ Within Shapiro bound |
+| Shapiro time delay | BSFG geodesic → Δt_BSFG ≈ Δt_GR × (1 + ε_correction) | Cassini: Δt/Δt_GR = 1 ± 2.3e-5 | Cassini/GR 2003 | ✓ Within Shapiro bound |
 | Gravitational wave speed v_GW | BSFG: v_GW = c × (1 + k_η²) ≈ c + 10⁻²²⁶ m/s | GW150914 / GW170817: |v_GW/c - 1| < 10⁻¹⁵ | LIGO/Fermi GBM | ✓ UQFF deviation 10⁻²¹¹ orders below bound |
 | Perihelion precession (Mercury) | BSFG adds buoyancy correction δφ = κ × φ_GR ~ 10⁻⁶ arcsec/century | GR prediction: 43.03"/century; observed: 43.1" | GR + obs. | UQFF correction undetectable at current precision |
 

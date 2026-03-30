@@ -1,4 +1,9 @@
 # PAPER_545 — Simultaneous Multi-Method Equivalence Merger Hub
+
+## Abstract
+
+This paper presents a UQFF analysis of Simultaneous Multi-Method Equivalence Merger Hub, deriving compressed field equations and observational predictions within the Star-Magic/UQFF framework.
+
 ## Unified Quantum Field Framework — Whitepaper 545 of 1000
 **Author:** Daniel T. Murphy  
 **Framework:** Star Magic / UQFF v5.05  
@@ -168,7 +173,7 @@ centripetal acceleration (Newton) plus the UQFF buoyancy offset (UQFF correction
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Thomson σ_T (QED synchrotron) | UQFF U_m scattering kernel: σ_T = 6.6524×10⁻²⁹ m² | σ_T = 6.6524×10⁻²⁹ m² (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
+| Thomson σ_T (QED synchrotron) | UQFF U_m scattering kernel: σ_T = 6.6524e-29 m² | σ_T = 6.6524e-29 m² (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
 | Galaxy merger system luminosity X-ray + IR | UQFF MUGE g_total → L_X via Stefan-Boltzmann + buoyancy flux: L_X ≈ g_total × M_env | L_X SFR ~ 10–100 M_☉/yr | Chandra+Spitzer | ✓ Consistent order of magnitude |
 | GR Schwarzschild limit | UQFF g_total must satisfy g ≤ c²/(2r_s) at event horizon | r_s = 2GM/c² (GR exact) | PDG 2024 / GR | ✓ UQFF respects GR horizon |
 | κ vacuum rate vs X-ray variability | UQFF κ = 0.0005/day → timescale τ_UQFF = 2000 days | Observed X-ray variability τ_obs (instrument monitoring) | Chandra+Spitzer | Testable UQFF variability timescale |

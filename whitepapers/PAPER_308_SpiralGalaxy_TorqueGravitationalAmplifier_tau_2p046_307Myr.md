@@ -10,7 +10,7 @@
 
 ## Abstract
 
-Spiral galaxies evolve under pattern-speed-driven star-formation torques whose cumulative gravitational amplitudes differ fundamentally from static NFW or Keplerian assumptions. Within the UQFF (Unified Quantum Field Framework) 2.0 pipeline, a dimensionless spiral torque factor τ_spiral = (M_gas/M) × Ω_p × t accumulates over cosmic time and multiplies the base gravitational term. At 10 Gyr the amplifier reaches τ = 2.046, boosting effective gravity by a factor of 3.046×. The torque rate dτ/dt = 6.483 × 10⁻¹⁸ s⁻¹ exceeds H₀_SH0ES (73.0 km/s/Mpc = 2.366 × 10⁻¹⁸ s⁻¹) by a factor of 2.741, establishing a new UQFF cosmic-rate comparison.
+Spiral galaxies evolve under pattern-speed-driven star-formation torques whose cumulative gravitational amplitudes differ fundamentally from static NFW or Keplerian assumptions. Within the UQFF (Unified Quantum Field Framework) 2.0 pipeline, a dimensionless spiral torque factor τ_spiral = (M_gas/M) × Ω_p × t accumulates over cosmic time and multiplies the base gravitational term. At 10 Gyr the amplifier reaches τ = 2.046, boosting effective gravity by a factor of 3.046×. The torque rate dτ/dt = 6.483e-18 s⁻¹ exceeds H₀_SH0ES (73.0 km/s/Mpc = 2.366e-18 s⁻¹) by a factor of 2.741, establishing a new UQFF cosmic-rate comparison.
 
 ---
 
@@ -18,10 +18,10 @@ Spiral galaxies evolve under pattern-speed-driven star-formation torques whose c
 
 | Parameter | Value | Notes |
 |-----------|-------|-------|
-| M (galaxy) | 1.989 × 10⁴¹ kg | 1 × 10¹¹ M_sun (Milky-Way class) |
-| M_gas (arm gas) | 1.989 × 10³⁹ kg | 1 × 10⁹ M_sun |
-| r | 9.258 × 10²⁰ m | ~30 kpc half-radius |
-| Ω_p (pattern speed) | 6.483 × 10⁻¹⁶ rad/s | 20 km/s/kpc |
+| M (galaxy) | 1.989e41 kg | 1 × 10¹¹ M_sun (Milky-Way class) |
+| M_gas (arm gas) | 1.989e39 kg | 1 × 10⁹ M_sun |
+| r | 9.258e20 m | ~30 kpc half-radius |
+| Ω_p (pattern speed) | 6.483e-16 rad/s | 20 km/s/kpc |
 | H₀_SH0ES | 73.0 km/s/Mpc | SH0ES, Riess et al. 2022 |
 | f_gas = M_gas/M | 0.01 | Gas arm mass fraction |
 
@@ -35,8 +35,8 @@ The spiral arm torque amplifier in UQFF 2.0 is defined as a dimensionless runnin
 $$\tau_{\rm spiral}(t) = \frac{M_{\rm gas}}{M} \cdot \Omega_p \cdot t$$
 
 - f_gas = 10⁹ / 10¹¹ = **0.01**  
-- Ω_p = 20.0 × 10³ / 3.086 × 10¹⁹ = **6.483 × 10⁻¹⁶ rad/s**
-- t (10 Gyr) = 10 × 10⁹ × 3.15576 × 10⁷ = **3.156 × 10¹⁷ s**
+- Ω_p = 20.0e3 / 3.086e19 = **6.483e-16 rad/s**
+- t (10 Gyr) = 10 × 10⁹ × 3.15576e7 = **3.156e17 s**
 
 $$\tau_{\rm spiral}(10\,{\rm Gyr}) = 0.01 \times 6.483\times10^{-16} \times 3.156\times10^{17} = \boxed{2.046}$$
 
@@ -84,7 +84,7 @@ The spiral arm torque factor captures how non-axisymmetric mass flows (gas infal
 
 | Term | Value | Notes |
 |------|-------|-------|
-| g_base = GM/r² | 1.549 × 10⁻¹¹ m/s² | Reference gravity at 30 kpc |
+| g_base = GM/r² | 1.549e-11 m/s² | Reference gravity at 30 kpc |
 | Hubble factor (1 + Hz·t) | system-z dependent | Expansion correction |
 | Torque factor (1 + τ) | **3.046** | PAPER_308 key result at 10 Gyr |
 | SC factor (1 − B/B_crit) | ≈ 1.0 | Galactic B ≪ B_crit |
@@ -92,8 +92,8 @@ The spiral arm torque factor captures how non-axisymmetric mass flows (gas infal
 | Ug_sum | 2 × g_base | Magnetic-dipole + vacuum-SC |
 | Λ term | ~ 0 | Sub-dominant at galactic scales |
 | Quantum term | ℏ/(m_H·Δx²) | HUP contribution |
-| g_DM | 1.316 × 10⁻¹¹ m/s² | PAPER_310 dark matter partition |
-| a_SN | 3.096 × 10⁵ m/s² | PAPER_309 SN Ia radiation pressure |
+| g_DM | 1.316e-11 m/s² | PAPER_310 dark matter partition |
+| a_SN | 3.096e5 m/s² | PAPER_309 SN Ia radiation pressure |
 
 ---
 

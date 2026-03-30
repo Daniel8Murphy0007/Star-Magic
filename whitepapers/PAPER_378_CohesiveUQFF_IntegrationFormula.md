@@ -7,6 +7,11 @@
 
 ---
 
+
+## Abstract
+
+This paper presents a UQFF analysis of Cohesive UQFF Integration Formula: Compressed×Resonance Unification with Resonance Damping and SM Gravity Emergence, deriving compressed field equations and observational predictions within the Star-Magic/UQFF framework.
+
 ## 1. Overview
 
 This paper formalises the *Cohesive Superconductive Framework* proposed by Grok when
@@ -107,7 +112,7 @@ interpretation. PAPER_378 establishes the physically motivated exponential coupl
 | α | 0.001 | day⁻¹ | Non-linear time decay rate (same as `alpha` global in C++ code) |
 | α (resonance damping) | To be calibrated per system | s⁻¹ | System-dependent resonance decay |
 | fTRZ | 0.1 | — | Time-reversal correction (= 0 for SM limit) |
-| tHubble | 4.35×10¹⁷ | s | Resonance averaging timescale |
+| tHubble | 4.35e17 | s | Resonance averaging timescale |
 
 ---
 

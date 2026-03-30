@@ -1,10 +1,18 @@
 # PAPER_577 — Island of Stability 5th Epoch: Superheavy Z=119–126
 
+> **Key UQFF calibrated constants:** κ = 5.0e-4 day⁻¹; [SSq] = 5.7e-1; H_SCm ≈ 9.9e-1; U_UA ≈ 1.0e-4; k_η = 1.0e-113; β_i ≈ 6.0e-1; G = 6.674e-11 N·m²/kg²
+
+
 **CP4 Class:** `#164  IslandOfStability5thEpochSuperheavyElementsCalculator`  
 **Session:** 154  
 **Cross-refs:** PAPER_547 (Ug4 BH tidal), PAPER_548 (FUBi collapse prevention), PAPER_573 (hub)
 
 ---
+
+
+## Abstract
+
+This paper presents a UQFF analysis of Island of Stability 5th Epoch: Superheavy Z=119–126, deriving compressed field equations and observational predictions within the Star-Magic/UQFF framework.
 
 ## §1 Abstract
 

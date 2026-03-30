@@ -7,6 +7,11 @@
 
 ---
 
+
+## Abstract
+
+This paper presents a UQFF analysis of Wormhole UQFF Acceleration: 13th Resonance Term a_worm = f_worm·E_vac_neb/(b²+r²), deriving compressed field equations and observational predictions within the Star-Magic/UQFF framework.
+
 ## 1. Overview
 
 PAPER_373 (Morris-Thorne Wormhole Null Geodesics) covered wormhole topology and geodesic

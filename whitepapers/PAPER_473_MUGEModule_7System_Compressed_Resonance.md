@@ -24,13 +24,13 @@ $$g_{MUGE} = g_{Newton} + \delta g_{expansion} + \delta g_{magnetic} + \delta g_
 
 | ID | System | M (M☉) | r (m) | Key Feature |
 |----|--------|---------|-------|-------------|
-| 1 | SGR 1745-2900 (Magnetar) | 1.4 | 10⁴ | B = 2.3×10¹² T near B_crit |
-| 2 | Sagittarius A* (SMBH) | 4×10⁶ | 5.5×10¹⁰ | Galactic centre SMBH |
-| 3 | Tapestry of Blazing Starbirth | 1×10⁶ | 3.09×10¹⁹ | Active star formation |
-| 4 | Westerlund 2 | 1×10⁵ | 4.63×10¹⁹ | Young massive star cluster |
-| 5 | Pillars of Creation | 2×10³ | 9.46×10¹⁹ | Molecular cloud pillars |
-| 6 | Rings of Relativity | 1×10¹¹ | 3.09×10²² | Gravitational lens arc |
-| 7 | Student's Guide to the Universe | 1×10²³ | 4.41×10²⁶ | Cosmological reference volume |
+| 1 | SGR 1745-2900 (Magnetar) | 1.4 | 10⁴ | B = 2.3e12 T near B_crit |
+| 2 | Sagittarius A* (SMBH) | 4×10⁶ | 5.5e10 | Galactic centre SMBH |
+| 3 | Tapestry of Blazing Starbirth | 1×10⁶ | 3.09e19 | Active star formation |
+| 4 | Westerlund 2 | 1×10⁵ | 4.63e19 | Young massive star cluster |
+| 5 | Pillars of Creation | 2×10³ | 9.46e19 | Molecular cloud pillars |
+| 6 | Rings of Relativity | 1×10¹¹ | 3.09e22 | Gravitational lens arc |
+| 7 | Student's Guide to the Universe | 1×10²³ | 4.41e26 | Cosmological reference volume |
 
 ---
 
@@ -59,13 +59,13 @@ $$g_{comp}(r,t) = \frac{GM}{r^2}(1 + H(z)t)\left(1 - \frac{B}{B_{crit}}\right)(1
 
 | System | g_comp (m/s²) |
 |--------|--------------|
-| SGR 1745-2900 | 1.79 × 10¹² |
-| Sagittarius A* | 4.62 × 10⁸ |
-| Tapestry | 3.1 × 10⁻¹¹ |
-| Westerlund 2 | 7.4 × 10⁻¹¹ |
-| Pillars of Creation | 9.4 × 10⁻¹³ |
-| Rings of Relativity | 7.3 × 10⁻⁹ |
-| Student Guide | 1.8 × 10⁻¹² |
+| SGR 1745-2900 | 1.79e12 |
+| Sagittarius A* | 4.62e8 |
+| Tapestry | 3.1e-11 |
+| Westerlund 2 | 7.4e-11 |
+| Pillars of Creation | 9.4e-13 |
+| Rings of Relativity | 7.3e-9 |
+| Student Guide | 1.8e-12 |
 
 ---
 
@@ -127,7 +127,7 @@ The `MUGEModule` provides a comprehensive 7-system gravitational framework spann
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Thomson σ_T (QED synchrotron) | UQFF U_m scattering kernel: σ_T = 6.6524×10⁻²⁹ m² | σ_T = 6.6524×10⁻²⁹ m² (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
+| Thomson σ_T (QED synchrotron) | UQFF U_m scattering kernel: σ_T = 6.6524e-29 m² | σ_T = 6.6524e-29 m² (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
 | Astrophysical system luminosity X-ray / Radio | UQFF MUGE g_total → L_X via Stefan-Boltzmann + buoyancy flux: L_X ≈ g_total × M_env | L_X L ≥ 10³⁷ erg/s | Chandra CXC | ✓ Consistent order of magnitude |
 | GR Schwarzschild limit | UQFF g_total must satisfy g ≤ c²/(2r_s) at event horizon | r_s = 2GM/c² (GR exact) | PDG 2024 / GR | ✓ UQFF respects GR horizon |
 | κ vacuum rate vs X-ray variability | UQFF κ = 0.0005/day → timescale τ_UQFF = 2000 days | Observed X-ray variability τ_obs (instrument monitoring) | Chandra CXC | Testable UQFF variability timescale |
@@ -141,6 +141,6 @@ future Chandra CXC monitoring observations.
 
 
 
-**UQFF Parameters:** κ = 0.0005/day | [SSq] = 0.57 | B_crit = 4.4×10¹³ T  
+**UQFF Parameters:** κ = 0.0005/day | [SSq] = 0.57 | B_crit = 4.4e13 T  
 **Class:** `MUGEModule` | **Source:** `grok_share_b0a3dc1d.txt` L195–735  
 **Tags:** MUGE, compressed-gravity, resonance, 7-system, feedback, dark-matter, magnetar, Sagittarius-A  

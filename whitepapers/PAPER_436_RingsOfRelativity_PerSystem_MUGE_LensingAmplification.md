@@ -6,6 +6,11 @@
 
 ---
 
+
+## Abstract
+
+This paper presents a UQFF analysis of Rings of Relativity: Per-System MUGE with L(t) Lensing Amplification at z=0.5, deriving compressed field equations and observational predictions within the Star-Magic/UQFF framework.
+
 ## 1. Overview
 
 PAPER_436 delivers the **complete per-system MUGE** for the "Rings of Relativity" — a near-perfect Einstein ring designated **GAL-CLUS-022058s** (the "Molten Ring") at cosmological redshift $z_\text{lens} = 0.5$, discovered in 2020 via Hubble WFC3 imaging. The lensing cluster mass is $M \approx 10^{14} \, M_\odot$, with Einstein radius $r_E \approx 10$ kpc $= 3.086 \times 10^{20}$ m.
@@ -103,7 +108,7 @@ General Relativity prediction: Einstein radius $\theta_E$ precisely given by mas
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Thomson σ_T (QED synchrotron) | UQFF U_m scattering kernel: σ_T = 6.6524×10⁻²⁹ m² | σ_T = 6.6524×10⁻²⁹ m² (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
+| Thomson σ_T (QED synchrotron) | UQFF U_m scattering kernel: σ_T = 6.6524e-29 m² | σ_T = 6.6524e-29 m² (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
 | Rings of Relativity Lens luminosity Optical/IR lensing | UQFF MUGE g_total → L_X via Stefan-Boltzmann + buoyancy flux: L_X ≈ g_total × M_env | L_X Einstein radius θ_E ~ 1" | HST / JWST | ✓ Consistent order of magnitude |
 | GR Schwarzschild limit | UQFF g_total must satisfy g ≤ c²/(2r_s) at event horizon | r_s = 2GM/c² (GR exact) | PDG 2024 / GR | ✓ UQFF respects GR horizon |
 | κ vacuum rate vs X-ray variability | UQFF κ = 0.0005/day → timescale τ_UQFF = 2000 days | Observed X-ray variability τ_obs (instrument monitoring) | HST / JWST | Testable UQFF variability timescale |

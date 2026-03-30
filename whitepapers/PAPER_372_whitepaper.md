@@ -40,12 +40,12 @@ where $H(t,z) = H_0 t$ (Newtonian cosmological expansion approximation), $H_0 = 
 
 | Function | Formula | Constants |
 |----------|---------|-----------|
-| `compressed_base` | $GM/r^2$ | G = 6.674×10⁻¹¹ |
-| `compressed_expansion` | $1 + H_0 t$ | H₀ = 2.269×10⁻¹⁸ s⁻¹ |
+| `compressed_base` | $GM/r^2$ | G = 6.674e-11 |
+| `compressed_expansion` | $1 + H_0 t$ | H₀ = 2.269e-18 s⁻¹ |
 | `compressed_super_adj` | $1 - B/B_{\mathrm{crit}}$ | linear Meissner |
 | `compressed_env` | 1.0 | default |
-| `compressed_cosm` | $\Lambda c^2/3$ | Λ = 1.1×10⁻⁵² m⁻² |
-| `compressed_quantum` | $(\hbar/10^{-68}) \cdot 2.176 \times 10^{-18} \cdot (2\pi/t_H)$ | tH = 4.35×10¹⁷ s |
+| `compressed_cosm` | $\Lambda c^2/3$ | Λ = 1.1e-52 m⁻² |
+| `compressed_quantum` | $(\hbar/10^{-68}) \cdot 2.176 \times 10^{-18} \cdot (2\pi/t_H)$ | tH = 4.35e17 s |
 | `compressed_fluid` | $\rho_f V g_l$ | from MUGESystem |
 | `compressed_perturbation` | $(M+M_{DM})(\delta\rho/\rho + 3GM/r^3)$ | δρ/ρ = 10⁻⁵ |
 
@@ -55,12 +55,12 @@ where $H(t,z) = H_0 t$ (Newtonian cosmological expansion approximation), $H_0 = 
 
 | System | M (kg) | r (m) | B (T) | Bcrit (T) | Vsys (m³) | ffluid (Hz) |
 |--------|--------|-------|-------|-----------|-----------|-------------|
-| Magnetar SGR1745-2900 | 2.984×10³⁰ | 1×10⁴ | 1×10¹⁰ | 1×10¹¹ | 4.189×10¹² | 1.269×10⁻¹⁴ |
-| Sagittarius A* | 8.155×10³⁶ | 1×10¹² | 1×10⁻⁵ | 1×10⁻⁴ | 3.552×10⁴⁵ | 3.465×10⁻⁸ |
-| Tapestry Starbirth | 1.989×10³⁵ | 3.086×10¹⁷ | 1×10⁻⁴ | 1×10⁻³ | 1×10⁵³ | 1×10⁻¹² |
-| Westerlund 2 | 1.989×10³⁵ | 3.086×10¹⁷ | 1×10⁻⁴ | 1×10⁻³ | 1×10⁵³ | 1×10⁻¹² |
-| Pillars of Creation | 1.989×10³² | 9.46×10¹⁵ | 1×10⁻⁴ | 1×10⁻³ | 3.552×10⁴⁸ | 8.457×10⁻¹⁴ |
-| Rings of Relativity | 1.989×10³⁶ | 3.086×10¹⁷ | 1×10⁻⁵ | 1×10⁻⁴ | 1×10⁵⁴ | 1×10⁻⁹ |
+| Magnetar SGR1745-2900 | 2.984e30 | 1×10⁴ | 1×10¹⁰ | 1×10¹¹ | 4.189e12 | 1.269e-14 |
+| Sagittarius A* | 8.155e36 | 1×10¹² | 1×10⁻⁵ | 1×10⁻⁴ | 3.552e45 | 3.465e-8 |
+| Tapestry Starbirth | 1.989e35 | 3.086e17 | 1×10⁻⁴ | 1×10⁻³ | 1×10⁵³ | 1×10⁻¹² |
+| Westerlund 2 | 1.989e35 | 3.086e17 | 1×10⁻⁴ | 1×10⁻³ | 1×10⁵³ | 1×10⁻¹² |
+| Pillars of Creation | 1.989e32 | 9.46e15 | 1×10⁻⁴ | 1×10⁻³ | 3.552e48 | 8.457e-14 |
+| Rings of Relativity | 1.989e36 | 3.086e17 | 1×10⁻⁵ | 1×10⁻⁴ | 1×10⁵⁴ | 1×10⁻⁹ |
 | Student's Guide Universe | 1×10⁵³ | 1×10²⁶ | 1×10⁻¹⁰ | 1×10⁻⁹ | 1×10⁸⁰ | 1×10⁻¹⁸ |
 
 ---
@@ -68,7 +68,7 @@ where $H(t,z) = H_0 t$ (Newtonian cosmological expansion approximation), $H_0 = 
 ## 4. Validation
 
 **Unit test:** `test_compute_compressed_MUGE(SGR1745-2900)`
-- Expected: **1.782 × 10³⁹ m/s²**
+- Expected: **1.782e39 m/s²**
 - (Dominated by compressed_base × expansion; B/Bcrit = 0.1 → 90% retention)
 
 ---

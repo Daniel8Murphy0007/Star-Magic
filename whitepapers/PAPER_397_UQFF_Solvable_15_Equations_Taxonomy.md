@@ -1,11 +1,19 @@
 # PAPER_397 — UQFF Solvable Equations Taxonomy: 15 Classical Laws Unified
 
+> **Key UQFF calibrated constants:** κ = 5.0e-4 day⁻¹; [SSq] = 5.7e-1; H_SCm ≈ 9.9e-1; U_UA ≈ 1.0e-4; k_η = 1.0e-113; β_i ≈ 6.0e-1; G = 6.674e-11 N·m²/kg²
+
+
 **Source:** grok_share_cfdcad2f5.txt, lines ~1–200 (KB section) + lines ~2500–3500 (DeepSearch validation)  
 **Section:** UQFF theoretical framework summary; CERN/arXiv DeepSearch response  
 **Session:** 107 (grok_share_cfdcad2f5.txt deep re-analysis pass)  
 **CP4 Class:** `UQFFSolvable15EquationsTaxonomyCalculator` (CP4 #48 — final class this session)
 
 ---
+
+
+## Abstract
+
+This paper presents a UQFF analysis of UQFF Solvable Equations Taxonomy: 15 Classical Laws Unified, deriving compressed field equations and observational predictions within the Star-Magic/UQFF framework.
 
 ## 1. Overview
 

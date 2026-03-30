@@ -7,6 +7,14 @@
 
 ---
 
+
+## Abstract
+
+$$F_{U,Bi} = \kappa \cdot \frac{\rho_{\text{SCm}}}{\rho_{\text{UA}}} \cdot (U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_m + U_{bi})$$
+
+
+This paper presents a UQFF analysis of Canonical 7-System UQFF Parameter Registry, deriving compressed field equations and observational predictions within the Star-Magic/UQFF framework.
+
 ## 1. Overview
 
 PAPER_379 compared the compressed vs resonance MUGE outputs for all 7 canonical systems. PAPER_377

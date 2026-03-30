@@ -8,6 +8,14 @@
 
 ---
 
+
+## Abstract
+
+$$F_{U,Bi} = \kappa \cdot \frac{\rho_{\text{SCm}}}{\rho_{\text{UA}}} \cdot (U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_m + U_{bi})$$
+
+
+This paper presents a UQFF analysis of UQFF 26D Simultaneous Geometric Infinity Sculpting, deriving compressed field equations and observational predictions within the Star-Magic/UQFF framework.
+
 ## §1 Abstract
 
 **This paper introduces the most significant architectural correction to Wolfram-UQFF
@@ -96,7 +104,7 @@ d²⁶/d(∇UA)²⁶ [Ub] = g · 26! / (∇UA)²⁵
 ```
 
 As ∇UA increases along the jet path, the cubic cumulative sum generates the frequency
-ramp observed in X-ray jets (5.71×10¹⁶ Hz → 10¹⁸ Hz for M87; 6.14×10¹⁶ Hz → 10¹⁸ Hz
+ramp observed in X-ray jets (5.71e16 Hz → 10¹⁸ Hz for M87; 6.14e16 Hz → 10¹⁸ Hz
 for CenA).
 
 ---
@@ -157,9 +165,9 @@ simultaneous model naturally generates these features as emergent geometry.
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
 | Gravitational lensing (GR) | EM gravity string = Σ\|∇UA\|·max/N; lensing from UA void pocket intersections | GR: α_lens = 4GM/(c²b) | GR + Chandra | UQFF extends GR: adds geometric void topology |
-| f³ frequency rebound (X-ray) | freq ∝ cumsum(\|∇UA\|)³ × 10¹⁵ Hz → 5.71×10¹⁶–10¹⁸ Hz | Chandra X-ray jets: 5×10¹⁶–10¹⁸ Hz range | Chandra Dec 2025 | ✓ Consistent range |
+| f³ frequency rebound (X-ray) | freq ∝ cumsum(\|∇UA\|)³ × 10¹⁵ Hz → 5.71e16–10¹⁸ Hz | Chandra X-ray jets: 5×10¹⁶–10¹⁸ Hz range | Chandra Dec 2025 | ✓ Consistent range |
 | Oscillation mode energies | 5-mode: [0, 0.187, 0.300, 0.300, 0.187] | QED vacuum oscillation n=1–5: Σ(2n+1)ħω | QED (Casimir) | UQFF geometric analog of vacuum oscillator |
-| 26D factorial bound | 26! = 4.03×10²⁶ (BH26 upper bound) | 26D compactification scale M_string ~ 10²⁶GeV | String th. | 26! ≈ M_string dimensionless |
+| 26D factorial bound | 26! = 4.03e26 (BH26 upper bound) | 26D compactification scale M_string ~ 10²⁶GeV | String th. | 26! ≈ M_string dimensionless |
 
 **New physics claim:** Simultaneous external↔internal boundary cycling produces emergent knotted
 jet morphology that linear GR/QED models cannot replicate — predicting correlation length

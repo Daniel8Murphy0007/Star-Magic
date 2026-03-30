@@ -37,7 +37,7 @@ In the canonical DPM configuration:
 
 $$V_{DPM} = \sum_{k=1}^{26} \frac{4}{3} \pi r_k^3$$
 
-At Big Bang: r_k = r_Planck = 1.616 × 10⁻³⁵ m → V_DPM = 26 × (4/3)π r_P³ ≈ 7.24 × 10⁻¹⁰⁴ m³
+At Big Bang: r_k = r_Planck = 1.616e-35 m → V_DPM = 26 × (4/3)π r_P³ ≈ 7.24e-104 m³
 
 ---
 
@@ -65,7 +65,7 @@ with γ ≈ 0.001 s⁻¹ (inflationary damping rate) and $E_{UA,0}$ = 10⁴⁵ J
 
 At t_inflation ≈ 10⁻³² s: $E_{UA} \approx 10^{45} \times e^{-10^{-35}} \approx 10^{45}$ J (barely decayed)
 
-At t = 10 Gyr: $E_{UA} \approx 10^{45} \times e^{-γ \times 3×10^{17}} \approx$ negligible → present vacuum density ρ_vac_UA = 7.09 × 10⁻³⁶ J/m³
+At t = 10 Gyr: $E_{UA} \approx 10^{45} \times e^{-γ \times 3×10^{17}} \approx$ negligible → present vacuum density ρ_vac_UA = 7.09e-36 J/m³
 
 ### 3.3 Resonance Factor
 
@@ -73,7 +73,7 @@ DPM states couple to gravity through:
 
 $$R_{DPM} = \frac{G M}{r^2} \times q_{Higgs} \times H_{support} \approx 10^{-11} \text{ (normalized)}$$
 
-where $q_{Higgs}$ is the Higgs field coupling fraction and $H_{support}$ is the DPM-Higgs resonance support factor. At r = 1 m, M = 1 kg: R = G ≈ 6.67 × 10⁻¹¹ ≈ 10⁻¹⁰.
+where $q_{Higgs}$ is the Higgs field coupling fraction and $H_{support}$ is the DPM-Higgs resonance support factor. At r = 1 m, M = 1 kg: R = G ≈ 6.67e-11 ≈ 10⁻¹⁰.
 
 ---
 
@@ -114,7 +114,7 @@ The DPM initial conditions propagate to present physics as:
 |------------|----------------------|
 | 26 spheres | 26-layer compressed gravity framework (SOURCE115) |
 | SCm binding E = 10⁴² J | [SSq] = 0.57 calibration |
-| [UA] decay rate γ | ρ_vac_UA = 7.09×10⁻³⁶ J/m³ |
+| [UA] decay rate γ | ρ_vac_UA = 7.09e-36 J/m³ |
 | +½ / −½ states | Ug fields vs. buoyancy fields |
 | Resonance factor R | κ = 0.0005/day DPM coupling |
 | Binary encoding | k_η = 10⁻¹¹³ suppression |
@@ -147,7 +147,7 @@ The DPM makes the following testable predictions:
 
 1. **CMB power spectrum**: 26-sphere geometry → specific l-multipole oscillations at l = 26, 52, 78
 2. **Gravitational wave background**: 26D collapse → specific GW frequency spectrum
-3. **Dark matter mass spectrum**: −½ states → SM-neutral particles at E = E_SCm/26 ≈ 3.8 × 10⁴⁰ J/particle
+3. **Dark matter mass spectrum**: −½ states → SM-neutral particles at E = E_SCm/26 ≈ 3.8e40 J/particle
 4. **Vacuum energy fine-tuning**: ρ_Λ / ρ_DPM = 10⁻⁹⁰ naturally from exp(−γ t_age) decay
 
 ---
@@ -162,7 +162,7 @@ The DPM provides a pre-Big Bang origin model for the 26-dimensional structure un
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Cosmological constant Λ | UQFF |∇UA|² → Λ_UQFF = 1.09×10⁻⁵² m⁻² | Λ = 1.114×10⁻⁵² m⁻² (Planck 2018 + DESI 2025) | Planck 2018 / DESI | 97.8% |
+| Cosmological constant Λ | UQFF |∇UA|² → Λ_UQFF = 1.09e-52 m⁻² | Λ = 1.114e-52 m⁻² (Planck 2018 + DESI 2025) | Planck 2018 / DESI | 97.8% |
 | Dark energy fraction Ω_Λ | UQFF [SSq]=0.57; Ω_Λ ~ [SSq]×1.20 = 0.684 | Ω_Λ = 0.6847 ± 0.0073 | Planck 2018 | 99.9% |
 | CMB temperature T_CMB | UQFF vacuum condensate → T_CMB = (ρ_UA/σ_SB)^0.25 = 2.726 K | T_CMB = 2.72548 K | FIRAS 1996 | 99.98% |
 | H₀ Hubble constant | UQFF: H₀_UQFF = κ × c / r_Hubble = 67.4 km/s/Mpc | H₀ = 67.4 ± 0.5 km/s/Mpc (Planck) | Planck 2018 | ✓ Consistent (Planck value) |

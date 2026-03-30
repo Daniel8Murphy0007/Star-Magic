@@ -9,6 +9,11 @@
 
 ---
 
+
+## Abstract
+
+This paper presents a UQFF analysis of DPM as Quantum Frequency Driver: Ug1_spectra and UQFF Spectral Tensor, deriving compressed field equations and observational predictions within the Star-Magic/UQFF framework.
+
 ## §1 — Novel Physics Claim
 
 The Di-Pseudo-Monopole (DPM) is re-framed as a quantum **frequency driver**
@@ -126,7 +131,7 @@ represent cross-regime spectral leakage mediated by quantum eggs.
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
 | Navier-Stokes regularity (Millennium) | UQFF DVP hypergraph flow → bounded vorticity |ω|² ≤ C via buoyancy | Clay Math. Navier-Stokes Problem: global regularity unknown | Clay / Fefferman 2006 | UQFF establishes bounded criterion |
-| QCD viscosity η/s | UQFF: κ × [SSq] / β_i ≈ 4.7×10⁻⁴ (dimensionless) | η/s = 1/(4π) ~ 0.0796 (AdS/CFT lower bound) | RHIC/ALICE 2005–2025 | UQFF above KSS bound ✓ |
+| QCD viscosity η/s | UQFF: κ × [SSq] / β_i ≈ 4.7e-4 (dimensionless) | η/s = 1/(4π) ~ 0.0796 (AdS/CFT lower bound) | RHIC/ALICE 2005–2025 | UQFF above KSS bound ✓ |
 | Turbulent dissipation scale (Kolmogorov) | η_K = (ν³/ε)^0.25; UQFF sets ε via DVP pocket scale ~10⁻¹³ m | Kolmogorov scale lab: 10⁻⁴–10⁻³ m (turbulent flows) | Fluid dynamics | UQFF sets quantum floor, not macroscopic |
 | Quark-gluon plasma viscosity (ALICE) | UQFF vacuum buoyancy coupling → QGP η/s consistent | ALICE QGP: η/s ~ 0.1–0.2 at √s=2.76 TeV | ALICE 2013 | ✓ Consistent with viscous QGP regime |
 

@@ -7,6 +7,11 @@
 
 ---
 
+
+## Abstract
+
+This paper presents a UQFF analysis of Order Factorial Anti-Collapse and Ug4 Dual 13+13 Split, deriving compressed field equations and observational predictions within the Star-Magic/UQFF framework.
+
 ## §1 Abstract
 
 The gravitational field term $U_g$ in UQFF is standardly written in first-order form for validation against observational datasets. The full 26th-order form, derived from 26D dimensional reduction, yields $U_{g1}^{(26)} = 26!\,a_0$ as a constant term (stable core) from the highest-degree polynomial, and $U_{g4}^{\text{split}} = (13!)^2 \cdot r \cdot t$ from the dual 13+13 splitting of $\partial^{26}(r\cdot t)$. The latter provides the BH–star duality in the UQFF: two BH26 13-mode sub-series correspond to the split. The factorial bound $26!$ establishes a vacuum-energy-level anti-collapse density threshold of $\rho_{\min} \approx 2.48 \times 10^{-30}\ \text{kg/m}^3$, below which no physical system can exist and singularities are mathematically impossible.
@@ -101,9 +106,9 @@ The 26th-order $U_g$ framework:
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
 | Higgs mass m_H | UQFF K_HIGGS=47.34 → m_H_UQFF = 125.09 GeV | m_H = 125.20 ± 0.11 GeV | PDG 2024 | 99.8% |
-| Cosmological Λ | UQFF |∇UA|² → 1.09×10⁻⁵² m⁻² | Λ = 1.114×10⁻⁵² m⁻² (Planck+DESI) | Planck 2018 | 97.8% |
-| Thomson σ_T (QED) | UQFF U_m kernel: σ_T = 6.6524×10⁻²⁹ m² | σ_T = 6.6524×10⁻²⁹ m² | PDG 2024 | 100% (exact) |
-| κ baryon stability | κ = 0.0005/day; scale separation 10³³ from proton decay | τ_p > 7.7×10³³ yr (Super-K) | Super-K 2024 | ✓ UQFF baryon-safe |
+| Cosmological Λ | UQFF |∇UA|² → 1.09e-52 m⁻² | Λ = 1.114e-52 m⁻² (Planck+DESI) | Planck 2018 | 97.8% |
+| Thomson σ_T (QED) | UQFF U_m kernel: σ_T = 6.6524e-29 m² | σ_T = 6.6524e-29 m² | PDG 2024 | 100% (exact) |
+| κ baryon stability | κ = 0.0005/day; scale separation 10³³ from proton decay | τ_p > 7.7e33 yr (Super-K) | Super-K 2024 | ✓ UQFF baryon-safe |
 
 **New physics claim:** UQFF operates at a vacuum topology scale (~200 PeV) that is 8 orders
 below the GUT scale and 33 orders above nuclear baryon-number scales. This intermediate-scale

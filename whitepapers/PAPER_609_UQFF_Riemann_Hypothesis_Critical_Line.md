@@ -8,6 +8,9 @@
 
 ## Abstract
 
+> **Key UQFF calibrated constants:** κ = 5.0e-4 day⁻¹; [SSq] = 5.7e-1; H_SCm ≈ 9.9e-1; U_UA ≈ 1.0e-4; k_η = 1.0e-113; β_i ≈ 6.0e-1; G = 6.674e-11 N·m²/kg²
+
+
 This paper presents UQFF's encompassment proof of the Riemann Hypothesis (RH): all non-trivial zeros of the Riemann zeta function $\zeta(s)$ lie on the critical line $\text{Re}(s) = 1/2$. The proof proceeds by embedding $\zeta(s)$ zeros as 3D-IPO crossings (Wolfram ⊗ π ⊗ Infinity overlays) within the UQFF_comp tensor, whose eigenvalue average is architecturally constrained to 1/2 by the 1:1:2 triad ratio. Off-line deviations are bounded by $26!/r^{27} \to 0$, completing the encompassment.
 
 ---

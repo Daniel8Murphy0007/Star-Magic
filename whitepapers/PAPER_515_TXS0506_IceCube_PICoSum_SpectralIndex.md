@@ -80,7 +80,7 @@ $$
 | IceCube TXS 0506 spectral index | UQFF PI co-sum → Γ_ν = 2.13 (blazar neutrino spectral index) | IceCube TXS0506: E²dΦ/dE at 290 TeV; Γ ~ 2.18 | IceCube 2018 | 97.7% |
 | Neutrino mass bound Σm_ν | UQFF k_η suppression → Σm_ν < 0.12 eV | Planck CMB: Σm_ν < 0.12 eV (95% CL) | Planck 2018 | ✓ Consistent |
 | Neutrino vacuum oscillation | UQFF SCm_flavor maps to PMNS mixing: θ_23 ~ arcsin(√[SSq]) = 49° | θ_23 = 48.8° ± 1.0° (NOvA/T2K) | PDG 2024 | 99.6% |
-| σ(νN) cross-section at 290 TeV | UQFF Ug2 charge-reactivity flux → σ_UQFF ~ SM (no new-physics enhancement) | SM prediction at 290 TeV: σ ~ 6.4×10⁻³³ cm² | PDG / SM perturbative | ✓ UQFF consistent with SM σ |
+| σ(νN) cross-section at 290 TeV | UQFF Ug2 charge-reactivity flux → σ_UQFF ~ SM (no new-physics enhancement) | SM prediction at 290 TeV: σ ~ 6.4e-33 cm² | PDG / SM perturbative | ✓ UQFF consistent with SM σ |
 
 **New physics claim:** UQFF SCm_flavor parameter maps to the atmospheric mixing angle θ_23 = 49°
 with 99.6% accuracy — the same constant that governs CKM beauty-charm mixing governs neutrino

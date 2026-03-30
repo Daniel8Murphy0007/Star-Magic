@@ -8,6 +8,14 @@
 
 ---
 
+
+## Abstract
+
+$$F_{U,Bi} = \kappa \cdot \frac{\rho_{\text{SCm}}}{\rho_{\text{UA}}} \cdot (U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_m + U_{bi})$$
+
+
+This paper presents a UQFF analysis of UQFF MS 0735.6+7421 Cluster AGN Jet Void Pocket, deriving compressed field equations and observational predictions within the Star-Magic/UQFF framework.
+
 ## §1 Abstract
 
 MS 0735.6+7421 is a massive galaxy cluster from the Chandra 9 December 2025 X-ray
@@ -23,8 +31,8 @@ rebound stabilizes the explosive DVP energy.
 
 | Parameter | Value |
 |-----------|-------|
-| Distance | 2.6 Gly = 2.46×10²⁵ m |
-| Effective radius r_eff | 1.32×10²² m |
+| Distance | 2.6 Gly = 2.46e25 m |
+| Effective radius r_eff | 1.32e22 m |
 | Chandra exposure | 149 hours (ACIS) |
 | Temperature | ~10⁸ K |
 | ∇UA (cluster voids) | ~10⁻²² m⁻¹ |
@@ -76,7 +84,7 @@ The 9D Gaussian sum at cluster scale:
 ∇UA_9D_cluster = Σ_{d=1}^{9} exp(−(r/d+1 − r/d+1)²/(2·(σ/d+1)²))
 ```
 
-At r_eff = 1.32×10²² m, each Gaussian peaks at the channel centroid. The total
+At r_eff = 1.32e22 m, each Gaussian peaks at the channel centroid. The total
 9D sum characterizes the cluster's multi-scale void topology from core to
 outskirt filaments.
 
@@ -87,8 +95,8 @@ outskirt filaments.
 | Component | Frequency (Hz) | Physical Process |
 |-----------|---------------|-----------------|
 | Thermal (10⁸ K) | k_B·T/h ≈ 2×10¹⁸ Hz | ICM thermal bremsstrahlung |
-| Low keV Chandra | 0.5 keV → 1.2×10¹⁷ Hz | Soft X-ray spectral edge |
-| High keV Chandra | 7 keV → 1.7×10¹⁸ Hz | Hard X-ray spectral cutoff |
+| Low keV Chandra | 0.5 keV → 1.2e17 Hz | Soft X-ray spectral edge |
+| High keV Chandra | 7 keV → 1.7e18 Hz | Hard X-ray spectral cutoff |
 | DVP explosive event | ~10¹⁶–10¹⁸ Hz | Pocket formation burst |
 
 ---
@@ -111,7 +119,7 @@ MS 0735.6+7421 is UQFF's premier testbed for the DVP explosive mechanism:
 | AGN jet kinetic power P_jet | DVP flux: P_jet ≈ (1/2)ρ_vac × A_jet × v_jet³; for MS 0735: P_jet ~ 10⁶⁷ W | Chandra MS 0735: P_jet ≈ 10⁶⁷ W (cavity inflation) | Chandra Dec 2025 | ✓ Consistent |
 | Radio lobe cavity energy (QHD) | BH26: E_cavity = P_jet × t_bubble ≈ 6×10⁶³ J | MS 0735 cavities: E ≈ 6×10⁶³ J (Chandra/VLA) | Chandra + VLA | ✓ Consistent |
 | Eddington luminosity ceiling | L_Edd = 4πGMm_pc/σ_T; M_BH ~ 3×10⁰M_☉ | MS 0735 BH mass: ~10¹⁰M_☉; L_Edd ~ 10⁶µ W | PDG / Chandra | UQFF jet power within Eddington limit |
-| σ_T Thomson cross-section (QED) | U_m scattering: σ_T = 6.65×10⁻²⁹ m² | σ_T = 6.6524×10⁻²⁹ m² | PDG (QED) | 100% (exact QED input) |
+| σ_T Thomson cross-section (QED) | U_m scattering: σ_T = 6.65e-29 m² | σ_T = 6.6524e-29 m² | PDG (QED) | 100% (exact QED input) |
 
 **New physics claim:** The DVP explosive mechanism deposits energy into cavities at a rate
 determined by the gradient pocket geometry, NOT by standard MHD jet propagation. The

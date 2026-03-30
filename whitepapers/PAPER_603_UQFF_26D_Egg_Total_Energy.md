@@ -34,8 +34,8 @@ $$E^{26D\,Egg} = UA + SCm_{inj} \cdot \sum_{k=1}^{5} [UA^{(k)}] + Grind_{opp} + 
 | Universal Aether energy | UA | 10⁻¹² J | Ground state before SCm formation |
 | SCm injection density | SCm_inj | 10⁻⁶ kg/m³ | Superconductor condensation rate |
 | Layer k aether energy | UA^(k) | k×10⁻¹³ J | Per-layer aether contribution |
-| DPM grinding opposition | Grind_opp | 0.5×10⁻¹² J | Net energy from DPM friction |
-| Big Bang Dilation Term | BBDT | 2.3×10⁻¹⁵ J | Cosmological redshift energy |
+| DPM grinding opposition | Grind_opp | 0.5e-12 J | Net energy from DPM friction |
+| Big Bang Dilation Term | BBDT | 2.3e-15 J | Cosmological redshift energy |
 
 ---
 
@@ -67,8 +67,8 @@ where $H_0 \approx 67.4\text{ km/s/Mpc}$ and $t_{adj}$ is the age-adjusted time.
 
 With default parameters:
 - UA = 10⁻¹² J, SCm_inj = 10⁻⁶, layers = [10⁻¹³, 2×10⁻¹³, ..., 5×10⁻¹³]
-- SCm_sum = 10⁻⁶ × (1.5×10⁻¹²) = 1.5×10⁻¹⁸ J
-- E_egg = 10⁻¹² + 1.5×10⁻¹⁸ + 0.5×10⁻¹² + 2.3×10⁻¹⁵ → **1.5023×10⁻¹²**  J
+- SCm_sum = 10⁻⁶ × (1.5e-12) = 1.5e-18 J
+- E_egg = 10⁻¹² + 1.5e-18 + 0.5e-12 + 2.3e-15 → **1.5023e-12**  J
 
 The BBD fraction (BBDT/E_egg) ≈ 0.15%, consistent with Λ contribution being small.
 

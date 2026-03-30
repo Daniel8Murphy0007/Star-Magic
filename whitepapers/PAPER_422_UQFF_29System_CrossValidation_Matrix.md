@@ -6,6 +6,11 @@
 
 ---
 
+
+## Abstract
+
+This paper presents a UQFF analysis of UQFF 29-System Compressed Cross-Validation Matrix, deriving compressed field equations and observational predictions within the Star-Magic/UQFF framework.
+
 ## 1. Overview
 
 PAPER_422 introduces the **29-System Compressed UQFF Cross-Validation Matrix** — the first unified validator that simultaneously evaluates all 29 per-system g_X equations from the Sept 22, 2025 UQFF foundational document and verifies each against the compressed UQFF master form.
@@ -117,8 +122,8 @@ From CP3 `TriadicMasterFUg1R26StateRamanujanCalculator` (PAPER_313):
 
 | System | FU_g1 (N) | R(t) (N) | FU_Bi (N) |
 |---|---|---|---|
-| Westerlund 2 | 2.43 × 10⁻⁴⁰ | −2.29 × 10⁻⁴¹ | 6.14 × 10⁻³² |
-| Pillars of Creation | 3.95 × 10⁻⁴¹ | −1.12 × 10⁻⁴² | 9.79 × 10⁻³³ |
+| Westerlund 2 | 2.43e-40 | −2.29e-41 | 6.14e-32 |
+| Pillars of Creation | 3.95e-41 | −1.12e-42 | 9.79e-33 |
 
 The cross-validation matrix confirms these benchmarks by computing g_X for both systems and comparing to the canonical values within tolerance ε = 5%.
 
@@ -172,7 +177,7 @@ This class provides the **first computable proof** that the Sept 2025 UQFF found
 | Higgs mass m_H | UQFF K_HIGGS=47.34 → m_H_UQFF = 125.09 GeV | m_H = 125.20 ± 0.11 GeV | PDG 2024 | 99.8% |
 | sin²θ_W weak mixing | UQFF H_SCm=0.990 → 4-fold formula → 0.2304 | sin²θ_W = 0.23122 ± 0.00003 | PDG 2024 | 99.6% |
 | ALICE dN/dη (13.6 TeV) | UQFF [SSq]×1.077 = β_i = 0.614 | dN/dη = 17.43 ± 0.06 | ALICE Run 3 (arXiv:2506.14989) | 99.9% |
-| Cross-system κ universality | κ = 0.0005/day for all 29 systems (no per-system tuning) | Proton decay Γ_p < 1.30×10⁻³⁴/yr (Super-K) | Super-K SK-VII 2024 | 10³³ scale separation confirmed |
+| Cross-system κ universality | κ = 0.0005/day for all 29 systems (no per-system tuning) | Proton decay Γ_p < 1.30e-34/yr (Super-K) | Super-K SK-VII 2024 | 10³³ scale separation confirmed |
 
 **New physics claim:** The same UQFF parameter set (κ, [SSq], β_i, H_SCm) simultaneously
 reproduces Higgs mass (99.8%), weak mixing angle (99.6%), and ALICE multiplicity (99.9%)

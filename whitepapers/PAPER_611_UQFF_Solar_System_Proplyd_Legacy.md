@@ -8,6 +8,9 @@
 
 ## Abstract
 
+> **Key UQFF calibrated constants:** κ = 5.0e-4 day⁻¹; [SSq] = 5.7e-1; H_SCm ≈ 9.9e-1; U_UA ≈ 1.0e-4; k_η = 1.0e-113; β_i ≈ 6.0e-1; G = 6.674e-11 N·m²/kg²
+
+
 The present-day orbital eccentricities of Solar System bodies are explained as inherited signatures from a proplyd (proto-planetary disk) phase in which Dipole Pressure Mechanics (DPM) migration events altered planetary trajectories. Each planet's eccentricity encodes the cumulative DPM perturbation received during the estimated 18 million year proplyd phase. Comets and trans-Neptunian objects (TNOs) are identified as surviving icy proplyd-edge remnants. A BH26 harmonic threshold governs the 18% survival rate of proplyd material becoming bound planetary objects.
 
 ---

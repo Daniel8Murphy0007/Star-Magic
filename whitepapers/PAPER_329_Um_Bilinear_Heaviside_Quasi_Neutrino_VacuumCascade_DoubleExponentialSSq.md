@@ -16,6 +16,9 @@ $$
 
 ## Abstract
 
+> **Key UQFF calibrated constants:** κ = 5.0e-4 day⁻¹; [SSq] = 5.7e-1; H_SCm ≈ 9.9e-1; U_UA ≈ 1.0e-4; k_η = 1.0e-113; β_i ≈ 6.0e-1; G = 6.674e-11 N·m²/kg²
+
+
 This paper presents the full Um bilinear architecture with Heaviside step-function and quasi-particle correction terms, together with the vacuum neutrino energy cascade equation which introduces a uniquely new mathematical form: a nested double-exponential where the outer exponent's argument itself contains an exponential. Combined, these equations describe how the Um magnetism term amplifies by a factor of 10¹³ at a Heaviside neutron-drop onset, and how the resulting vacuum density ratios propagate through a double-exponential [SSq] suppression to produce neutrino energy and decay rates.
 
 ---

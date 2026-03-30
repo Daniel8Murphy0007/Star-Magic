@@ -6,6 +6,11 @@
 **Calculator:** `HiggsInertialGradientCalculator` (CondensedPhysics2.py), `PhysicsTerm_Higgs_1JKDSGV7` (MAIN_1_CoAnQi.cpp)
 ---
 
+
+## Abstract
+
+This paper presents a UQFF analysis of Higgs as Inertial Gradient Shift Marker: UQFF Reinterpretation, deriving compressed field equations and observational predictions within the Star-Magic/UQFF framework.
+
 ## §1 Novel Claim
 
 The Higgs boson is fundamental but its observed "flavor" particles from LHC
@@ -130,7 +135,7 @@ to map the full 26D mathematical picture. Therefore:
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
 | Higgs mass m_H | m_H_UQFF = 125.09 GeV (K_HIGGS=47.34) | m_H = 125.20 ± 0.11 GeV | PDG 2024 | 99.8% |
-| κ consistency check | κ = 0.0005/day; ratio to proton decay rate: 10³³ decoupling | Super-K τ_p > 7.7×10³³ yr | Super-K 2024 | ✓ UQFF baryon-safe |
+| κ consistency check | κ = 0.0005/day; ratio to proton decay rate: 10³³ decoupling | Super-K τ_p > 7.7e33 yr | Super-K 2024 | ✓ UQFF baryon-safe |
 | [SSq] dark energy ratio | [SSq] = 0.57 (UQFF vacuum fraction) | CMB Ω_Λ = 0.6847 (Planck 2018) | Planck 2018 | 83% (dark energy order) |
 | Fine structure α derivation | α_UQFF from DPM flux/void ratio | α = 1/137.036 | PDG 2024 / NIST | ✓ Target value |
 

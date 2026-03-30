@@ -7,9 +7,14 @@
 
 ---
 
+
+## Abstract
+
+This paper presents a UQFF analysis of SGR1745 Compressed MUGE Spectral Term Decomposition & Perturbation Dominance Law, deriving compressed field equations and observational predictions within the Star-Magic/UQFF framework.
+
 ## 1. Overview
 
-PAPER_372 documented the final compressed MUGE result for SGR1745 (g ≈ 1.782×10³⁹ m/s²) and
+PAPER_372 documented the final compressed MUGE result for SGR1745 (g ≈ 1.782e39 m/s²) and
 established the 8-function modular structure. However, it did NOT record the individual magnitudes
 of all 8 terms side-by-side. This paper fills that gap with the first complete **spectral term
 decomposition** showing the relative magnitude of each compressed MUGE contribution.
@@ -23,11 +28,11 @@ Newtonian base, revealing why the compressed model is **unphysical at magnetar s
 
 | Parameter | Symbol | Value | Units |
 |-----------|--------|-------|-------|
-| Mass | M | 2.984×10³⁰ | kg |
+| Mass | M | 2.984e30 | kg |
 | Radius | r | 1×10⁴ | m |
 | Magnetic field | B | 1×10¹⁰ | T |
 | Critical B-field | B_crit | 1×10¹¹ | T |
-| Age | t | 3.799×10¹⁰ | s |
+| Age | t | 3.799e10 | s |
 | Redshift | z | 0.0009 | — |
 | Expansion velocity | v_exp | 1×10³ | m/s |
 | Dark matter mass | M_DM | 1×10²⁸ | kg |
@@ -95,13 +100,13 @@ $$\boxed{g_\text{pert} = 1.782\times10^{39} \ \text{m/s}^2 \quad (\textbf{DOMINA
 
 | Term | Formula | Value (m/s²) | Orders above base |
 |------|---------|:------------:|:-----------------:|
-| Base (Newtonian) | GM/r² | 1.991×10¹² | — |
-| SC adj (×0.9) | ×(1−B/B_crit) | 1.792×10¹² | 0 |
-| Ug3′ (ext. BH) | GM_BH/r_BH² | 6.746×10⁻⁵ | −17 |
-| Cosmological floor | Λc²/3 | 3.3×10⁻³⁶ | −48 |
-| Quantum coherence | ℏ⟨Ĥ⟩·2π/t_H | 3.316×10⁻³⁵ | −47 |
-| Fluid coupling | ρ_f·V·g_loc | 4.189×10⁻² | −14 |
-| **Perturbation (DM)** | **(M+M_DM)(δρ/ρ+3GM/r³)** | **1.782×10³⁹** | **+27** |
+| Base (Newtonian) | GM/r² | 1.991e12 | — |
+| SC adj (×0.9) | ×(1−B/B_crit) | 1.792e12 | 0 |
+| Ug3′ (ext. BH) | GM_BH/r_BH² | 6.746e-5 | −17 |
+| Cosmological floor | Λc²/3 | 3.3e-36 | −48 |
+| Quantum coherence | ℏ⟨Ĥ⟩·2π/t_H | 3.316e-35 | −47 |
+| Fluid coupling | ρ_f·V·g_loc | 4.189e-2 | −14 |
+| **Perturbation (DM)** | **(M+M_DM)(δρ/ρ+3GM/r³)** | **1.782e39** | **+27** |
 
 ---
 

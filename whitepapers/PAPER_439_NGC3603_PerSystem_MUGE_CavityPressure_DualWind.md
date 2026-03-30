@@ -6,6 +6,11 @@
 
 ---
 
+
+## Abstract
+
+This paper presents a UQFF analysis of NGC 3603 Extreme Star Cluster: Per-System MUGE with P(t) Cavity Pressure and Dual Wind, deriving compressed field equations and observational predictions within the Star-Magic/UQFF framework.
+
 ## 1. Overview
 
 PAPER_439 provides the **complete per-system MUGE** for NGC 3603 — the most luminous young massive star cluster (YMC) in the Milky Way at $d \approx 7$ kpc, containing multiple WR stars, O-supergiants, and blue-luminous variables. The cluster age is $\sim 1$ Myr with $M_0 \approx 400{,}000 \, M_\odot$ and a rapidly expanding wind-blown cavity at $r = 9.5$ ly.
@@ -115,7 +120,7 @@ Standard YMC models (Pellegrini et al. 2011): Pressure-driven bubble expansion d
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Thomson σ_T (QED synchrotron) | UQFF U_m scattering kernel: σ_T = 6.6524×10⁻²⁹ m² | σ_T = 6.6524×10⁻²⁹ m² (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
+| Thomson σ_T (QED synchrotron) | UQFF U_m scattering kernel: σ_T = 6.6524e-29 m² | σ_T = 6.6524e-29 m² (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
 | NGC 3603 Star Cluster luminosity X-ray + UV | UQFF MUGE g_total → L_X via Stefan-Boltzmann + buoyancy flux: L_X ≈ g_total × M_env | L_X L_X ~ 10³⁵ erg/s | Chandra CXC | ✓ Consistent order of magnitude |
 | GR Schwarzschild limit | UQFF g_total must satisfy g ≤ c²/(2r_s) at event horizon | r_s = 2GM/c² (GR exact) | PDG 2024 / GR | ✓ UQFF respects GR horizon |
 | κ vacuum rate vs X-ray variability | UQFF κ = 0.0005/day → timescale τ_UQFF = 2000 days | Observed X-ray variability τ_obs (instrument monitoring) | Chandra CXC | Testable UQFF variability timescale |

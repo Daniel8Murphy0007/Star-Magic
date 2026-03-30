@@ -72,7 +72,7 @@ where $q_r = r / r_0$ is the dimensionless radial coordinate.
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
 | π = 3.14159265... (PI co-resonance) | UQFF PI decoder: 312 digits extracted from Wolfram hypergraph | π exact (transcendental) | NIST | ~100% (representation) |
-| κ consistency check | κ = 0.0005/day; ratio to proton decay rate: 10³³ decoupling | Super-K τ_p > 7.7×10³³ yr | Super-K 2024 | ✓ UQFF baryon-safe |
+| κ consistency check | κ = 0.0005/day; ratio to proton decay rate: 10³³ decoupling | Super-K τ_p > 7.7e33 yr | Super-K 2024 | ✓ UQFF baryon-safe |
 | [SSq] dark energy ratio | [SSq] = 0.57 (UQFF vacuum fraction) | CMB Ω_Λ = 0.6847 (Planck 2018) | Planck 2018 | 83% (dark energy order) |
 | Fine structure α derivation | α_UQFF from DPM flux/void ratio | α = 1/137.036 | PDG 2024 / NIST | ✓ Target value |
 

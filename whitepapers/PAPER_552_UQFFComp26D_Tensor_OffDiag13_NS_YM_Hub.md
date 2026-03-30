@@ -1,11 +1,19 @@
 # PAPER_552: Full UQFF_comp 26D Tensor — Off-Diagonal ∂^13 Couplings, NS Smoothness, and YM Mass Gap Hub
 
+> **Key UQFF calibrated constants:** κ = 5.0e-4 day⁻¹; [SSq] = 5.7e-1; H_SCm ≈ 9.9e-1; U_UA ≈ 1.0e-4; k_η = 1.0e-113; β_i ≈ 6.0e-1; G = 6.674e-11 N·m²/kg²
+
+
 **Author:** Daniel T. Murphy — Star Magic / UQFF Framework  
 **Session:** 147 | **Source:** grok_share_b08cc4e3684.txt  
 **CP4 Class:** `UQFFComp26DTensorOffDiag13NSYMHubCalculator` (#147, hub)  
 **Date:** 2026-03-27  
 
 ---
+
+
+## Abstract
+
+This paper presents a UQFF analysis of Off-Diagonal ∂^13 Couplings, NS Smoothness, and YM Mass Gap Hub, deriving compressed field equations and observational predictions within the Star-Magic/UQFF framework.
 
 ## §1 Abstract
 

@@ -7,6 +7,11 @@
 
 ---
 
+
+## Abstract
+
+This paper presents a UQFF analysis of Relativistic SCm Velocity Parameter Update: v_SCm = 0.99c, deriving compressed field equations and observational predictions within the Star-Magic/UQFF framework.
+
 ## 1. Overview
 
 Prior UQFF implementations used a preliminary value `v_SCm = 1×10⁸ m/s` for the

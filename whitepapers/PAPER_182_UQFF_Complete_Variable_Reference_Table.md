@@ -10,11 +10,14 @@
 
 ## Abstract
 
+> **Key UQFF calibrated constants:** κ = 5.0e-4 day⁻¹; [SSq] = 5.7e-1; H_SCm ≈ 9.9e-1; U_UA ≈ 1.0e-4; k_η = 1.0e-113; β_i ≈ 6.0e-1; G = 6.674e-11 N·m²/kg²
+
+
 This paper provides a complete, authoritative reference table for all variables, parameters, and physical constants used in the Unified Quantum Field Framework (UQFF). Twenty-plus variables are catalogued with their symbols, units, canonical numerical values, physical interpretation, and the equation components they appear in. This constitutes the definitive variable dictionary for the UQFF system and serves as the primary reference for all subsequent whitepaper derivations. The table establishes the calibrated constants: κ = 0.0005 day⁻¹, [SSq] = 0.57, H_SCm ≈ 0.99, U_UA ≈ 0.0001, k_η = 10⁻¹¹³, β_i ≈ 0.603.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0�10?4 day?�, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0�10?4 day?�, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 

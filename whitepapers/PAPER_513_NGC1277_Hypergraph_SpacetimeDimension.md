@@ -33,9 +33,9 @@ $$
 
 | Parameter | Value |
 |-----------|-------|
-| BH mass | M_BH = 1.7×10¹⁰ M☉ |
+| BH mass | M_BH = 1.7e10 M☉ |
 | Schwarzschild radius | r_s = 50 AU |
-| Host galaxy stellar mass | M_* ≈ 1.2×10¹¹ M☉ |
+| Host galaxy stellar mass | M_* ≈ 1.2e11 M☉ |
 | BH/bulge ratio | ≈14% (vs typical 0.1%) |
 | Distance | 73 Mpc (Perseus cluster) |
 | Velocity dispersion | σ ≈ 333 km/s |
@@ -68,7 +68,7 @@ A D_corrected ≈ 5.4 indicates the UQFF framework interprets the extreme curvat
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Thomson σ_T (QED synchrotron) | UQFF U_m scattering kernel: σ_T = 6.6524×10⁻²⁹ m² | σ_T = 6.6524×10⁻²⁹ m² (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
+| Thomson σ_T (QED synchrotron) | UQFF U_m scattering kernel: σ_T = 6.6524e-29 m² | σ_T = 6.6524e-29 m² (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
 | Massive object (Eta Carinae/TON618/NGC1277) luminosity X-ray + optical | UQFF MUGE g_total → L_X via Stefan-Boltzmann + buoyancy flux: L_X ≈ g_total × M_env | L_X M_BH ~ 10⁹–10¹⁰ M_☉ | Chandra/HST | ✓ Consistent order of magnitude |
 | GR Schwarzschild limit | UQFF g_total must satisfy g ≤ c²/(2r_s) at event horizon | r_s = 2GM/c² (GR exact) | PDG 2024 / GR | ✓ UQFF respects GR horizon |
 | κ vacuum rate vs X-ray variability | UQFF κ = 0.0005/day → timescale τ_UQFF = 2000 days | Observed X-ray variability τ_obs (instrument monitoring) | Chandra/HST | Testable UQFF variability timescale |

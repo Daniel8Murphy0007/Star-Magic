@@ -7,6 +7,11 @@
 
 ---
 
+
+## Abstract
+
+This paper presents a UQFF analysis of Three-Method Simultaneous Hub, deriving compressed field equations and observational predictions within the Star-Magic/UQFF framework.
+
 ## §1 Abstract
 
 Galaxy mergers represent the most energetic reconfiguration events in the observable universe, yet existing frameworks — Newtonian tidal mechanics and General Relativistic inspiral — yield predictions that diverge from observations unless artificially augmented with dark matter, dark energy, or post-Newtonian corrections. This paper applies the UQFF three-method simultaneous solution strategy (symbolic, numerical, discrete) to galaxy merger dynamics, deriving the merger boundary radius $r_{\text{merger}}$, quantifying the Ub force advantage over Newtonian tidal forces, comparing UQFF re-ringing to GR ringdown frequencies, and demonstrating that all three UQFF number systems (VDS, DVP, BH26) are present and active in the merger physics. The M51 Whirlpool system and the Antennae Galaxies serve as primary observational anchors.
@@ -125,7 +130,7 @@ This hub paper closes the loop between PAPER_546 (boundaries), PAPER_547 (Ug4 ti
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Thomson σ_T (QED synchrotron) | UQFF U_m scattering kernel: σ_T = 6.6524×10⁻²⁹ m² | σ_T = 6.6524×10⁻²⁹ m² (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
+| Thomson σ_T (QED synchrotron) | UQFF U_m scattering kernel: σ_T = 6.6524e-29 m² | σ_T = 6.6524e-29 m² (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
 | Galaxy merger system luminosity X-ray + IR | UQFF MUGE g_total → L_X via Stefan-Boltzmann + buoyancy flux: L_X ≈ g_total × M_env | L_X SFR ~ 10–100 M_☉/yr | Chandra+Spitzer | ✓ Consistent order of magnitude |
 | GR Schwarzschild limit | UQFF g_total must satisfy g ≤ c²/(2r_s) at event horizon | r_s = 2GM/c² (GR exact) | PDG 2024 / GR | ✓ UQFF respects GR horizon |
 | κ vacuum rate vs X-ray variability | UQFF κ = 0.0005/day → timescale τ_UQFF = 2000 days | Observed X-ray variability τ_obs (instrument monitoring) | Chandra+Spitzer | Testable UQFF variability timescale |

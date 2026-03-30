@@ -1,11 +1,19 @@
 # PAPER_398 — CoAnQi PImath Encryption Key and UQFF π-Cycle Connection
 
+> **Key UQFF calibrated constants:** κ = 5.0e-4 day⁻¹; [SSq] = 5.7e-1; H_SCm ≈ 9.9e-1; U_UA ≈ 1.0e-4; k_η = 1.0e-113; β_i ≈ 6.0e-1; G = 6.674e-11 N·m²/kg²
+
+
 **Source:** grok_share_cfdcad2f5.txt, lines ~6000–7500 (CoAnQiNode.py + Qt C++ GUI snippet)  
 **Section:** CoAnQiNode.py `generate_pimath_key()` method; Qt GUI API key section  
 **Session:** 107 (grok_share_cfdcad2f5.txt deep re-analysis pass)  
 **CP4 Class:** *(informatics bridge paper — no new CP4 class; integrated into Session 107 hub)*
 
 ---
+
+
+## Abstract
+
+This paper presents a UQFF analysis of CoAnQi PImath Encryption Key and UQFF π-Cycle Connection, deriving compressed field equations and observational predictions within the Star-Magic/UQFF framework.
 
 ## 1. Overview
 

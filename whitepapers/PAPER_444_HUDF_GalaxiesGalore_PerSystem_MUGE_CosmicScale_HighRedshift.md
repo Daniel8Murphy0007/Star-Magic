@@ -6,6 +6,11 @@
 
 ---
 
+
+## Abstract
+
+This paper presents a UQFF analysis of Hubble Ultra Deep Field "Galaxies Galore": Per-System MUGE at Cosmic Scale z=3.5, deriving compressed field equations and observational predictions within the Star-Magic/UQFF framework.
+
 ## 1. Overview
 
 PAPER_444 delivers the **complete per-system MUGE** for the Hubble Ultra Deep Field (HUDF) — representing the cosmic field around epoch $z \approx 3.5$, total mass $M_0 = 10^{12} \, M_\odot$, FoV extent $r = 1.3 \times 10^{11}$ ly $= 1.230 \times 10^{27}$ m (co-moving scale of the UDF at co-moving depth to $z \sim 7$). Magnetic field $B = 10^{-10}$ T (CMB-era primordial seed field — the weakest in the per-system series).
@@ -128,7 +133,7 @@ Cosmological N-body simulations (IllustrisTNG, EAGLE) model the UDF statisticall
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Thomson σ_T (QED synchrotron) | UQFF U_m scattering kernel: σ_T = 6.6524×10⁻²⁹ m² | σ_T = 6.6524×10⁻²⁹ m² (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
+| Thomson σ_T (QED synchrotron) | UQFF U_m scattering kernel: σ_T = 6.6524e-29 m² | σ_T = 6.6524e-29 m² (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
 | HUDF Deep Field luminosity UV/optical/IR z>1 | UQFF MUGE g_total → L_X via Stefan-Boltzmann + buoyancy flux: L_X ≈ g_total × M_env | L_X n_gal ~ 10⁴ per arcmin² | HST/JWST | ✓ Consistent order of magnitude |
 | GR Schwarzschild limit | UQFF g_total must satisfy g ≤ c²/(2r_s) at event horizon | r_s = 2GM/c² (GR exact) | PDG 2024 / GR | ✓ UQFF respects GR horizon |
 | κ vacuum rate vs X-ray variability | UQFF κ = 0.0005/day → timescale τ_UQFF = 2000 days | Observed X-ray variability τ_obs (instrument monitoring) | HST/JWST | Testable UQFF variability timescale |

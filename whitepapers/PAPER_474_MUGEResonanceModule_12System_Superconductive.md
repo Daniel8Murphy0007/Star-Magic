@@ -30,17 +30,17 @@ These additions are critical for systems with active outflows (Bubble Nebula), s
 | # | System | M (M☉) | r (m) | System Type |
 |---|--------|---------|-------|-------------|
 | 1 | SGR 1745-2900 | 1.4 | 10⁴ | Magnetar |
-| 2 | Sagittarius A* | 4×10⁶ | 5.5×10¹⁰ | SMBH |
-| 3 | Tapestry Starbirth | 1×10⁶ | 3.09×10¹⁹ | Star-forming region |
-| 4 | Westerlund 2 | 1×10⁵ | 4.63×10¹⁹ | Young star cluster |
-| 5 | Pillars of Creation | 2×10³ | 9.46×10¹⁹ | Molecular cloud |
-| 6 | Rings of Relativity | 1×10¹¹ | 3.09×10²² | Gravitational lens |
-| 7 | Student Guide Universe | 1×10²³ | 4.41×10²⁶ | Cosmological |
-| **8** | **NGC 2525** | **1.5×10¹⁰** | **1.85×10²¹** | **Interacting galaxy** |
-| **9** | **NGC 3603** | **1×10⁶** | **3.09×10¹⁹** | **Ultra-compact HII** |
-| **10** | **Bubble Nebula NGC 7635** | **100** | **4.73×10¹⁶** | **Stellar-wind shell** |
-| **11** | **Antennae NGC 4038/39** | **5×10¹⁰** | **4.63×10²¹** | **Galaxy merger** |
-| **12** | **Horsehead Nebula** | **5** | **9.46×10¹⁵** | **Dark nebula** |
+| 2 | Sagittarius A* | 4×10⁶ | 5.5e10 | SMBH |
+| 3 | Tapestry Starbirth | 1×10⁶ | 3.09e19 | Star-forming region |
+| 4 | Westerlund 2 | 1×10⁵ | 4.63e19 | Young star cluster |
+| 5 | Pillars of Creation | 2×10³ | 9.46e19 | Molecular cloud |
+| 6 | Rings of Relativity | 1×10¹¹ | 3.09e22 | Gravitational lens |
+| 7 | Student Guide Universe | 1×10²³ | 4.41e26 | Cosmological |
+| **8** | **NGC 2525** | **1.5e10** | **1.85e21** | **Interacting galaxy** |
+| **9** | **NGC 3603** | **1×10⁶** | **3.09e19** | **Ultra-compact HII** |
+| **10** | **Bubble Nebula NGC 7635** | **100** | **4.73e16** | **Stellar-wind shell** |
+| **11** | **Antennae NGC 4038/39** | **5×10¹⁰** | **4.63e21** | **Galaxy merger** |
+| **12** | **Horsehead Nebula** | **5** | **9.46e15** | **Dark nebula** |
 
 *Bold = new systems not in PAPER_473.*
 
@@ -71,10 +71,10 @@ where r_0 is the wormhole throat radius. For standard galactic systems, r_0 ≪ 
 ### 4.1 NGC 2525 — Interacting Galaxy
 
 NGC 2525 hosts a spiral arm tidal distortion from companion interaction. MUGE parameters:
-- V_sys = 1.543 × 10⁶⁴ m³ (virial volume, anomalously large — tidal inflation)
-- f_fluid = 8.457 × 10⁻⁴ Hz (tidal oscillation frequency)
+- V_sys = 1.543e64 m³ (virial volume, anomalously large — tidal inflation)
+- f_fluid = 8.457e-4 Hz (tidal oscillation frequency)
 - Dominant term: a_fluidFreq (tidal viscosity drives resonance floor)
-- g_res ≈ 1.2 × 10⁻¹⁰ m/s² (above MOND threshold)
+- g_res ≈ 1.2e-10 m/s² (above MOND threshold)
 
 ### 4.2 NGC 3603 — Ultra-Compact H II Region
 
@@ -86,7 +86,7 @@ Same bulk params as Tapestry but with ultra-high stellar density driving elevate
 
 Stellar wind expanding shell:
 - M = 100 M☉ (central O-star BD+60°2522)
-- r_shell = 4.73 × 10¹⁶ m (~2.5 pc)
+- r_shell = 4.73e16 m (~2.5 pc)
 - v_exp = 5 × 10⁴ m/s (wind expansion velocity)
 - Key: a_fluidFreq = ν ∇²v_wind drives oscillatory gravity ring
 - f_TRZ correction: shell edge shows time-reversal geometry (expanding vs. falling material)
@@ -97,14 +97,14 @@ $$g_{Bubble} \approx \frac{GM_{env}}{r^2} + \frac{\nu v_{exp}}{r^2}$$
 
 Merging pair with SFR ~ 20 M☉/yr each:
 - M = 5 × 10¹⁰ M☉ (combined)
-- r = 4.63 × 10²¹ m (merger separation → effective radius)
+- r = 4.63e21 m (merger separation → effective radius)
 - Both DPM and fluid terms elevated due to nuclear starburst
 - g_res ≈ 8 × 10⁻¹¹ m/s²
 
 ### 4.5 Horsehead Nebula
 
 Dense molecular cloud pillar illuminated by σ Ori:
-- M = 5 M☉, r = 9.46 × 10¹⁵ m
+- M = 5 M☉, r = 9.46e15 m
 - v_sw = 2 × 10³ m/s (UV-driven photoevaporation flow)
 - [SCm] aether coupling suppresses gravity relative to Newtonian: effective g reduced 15%
 - g_res ≈ 2 × 10⁻¹² m/s²
@@ -115,18 +115,18 @@ Dense molecular cloud pillar illuminated by σ Ori:
 
 | System | g_Newtonian (m/s²) | g_comp (m/s²) | g_res (m/s²) |
 |--------|------------------|--------------|-------------|
-| SGR 1745 | 1.83×10¹² | 1.79×10¹² | 1.1×10⁻¹⁰ |
-| Sag A* | 4.64×10⁸ | 4.62×10⁸ | 9.8×10⁻¹¹ |
-| Tapestry | 3.1×10⁻¹¹ | 3.1×10⁻¹¹ | 1.0×10⁻¹⁰ |
-| Westerlund 2 | 7.4×10⁻¹¹ | 7.4×10⁻¹¹ | 1.0×10⁻¹⁰ |
-| Pillars | 9.4×10⁻¹³ | 9.4×10⁻¹³ | 9.9×10⁻¹¹ |
-| Rings | 7.3×10⁻⁹ | 7.3×10⁻⁹ | 1.0×10⁻¹⁰ |
-| Student Guide | 1.8×10⁻¹² | 1.8×10⁻¹² | 9.9×10⁻¹¹ |
-| **NGC 2525** | **9.1×10⁻¹²** | **9.1×10⁻¹²** | **1.2×10⁻¹⁰** |
-| **NGC 3603** | **3.1×10⁻¹¹** | **3.1×10⁻¹¹** | **3.0×10⁻¹⁰** |
-| **Bubble NGC 7635** | **1.5×10⁻¹³** | **1.5×10⁻¹³** | **4.2×10⁻¹³** |
-| **Antennae** | **3.4×10⁻¹²** | **3.4×10⁻¹²** | **8.0×10⁻¹¹** |
-| **Horsehead** | **2.4×10⁻¹⁴** | **2.2×10⁻¹⁴** | **2.0×10⁻¹²** |
+| SGR 1745 | 1.83e12 | 1.79e12 | 1.1e-10 |
+| Sag A* | 4.64e8 | 4.62e8 | 9.8e-11 |
+| Tapestry | 3.1e-11 | 3.1e-11 | 1.0e-10 |
+| Westerlund 2 | 7.4e-11 | 7.4e-11 | 1.0e-10 |
+| Pillars | 9.4e-13 | 9.4e-13 | 9.9e-11 |
+| Rings | 7.3e-9 | 7.3e-9 | 1.0e-10 |
+| Student Guide | 1.8e-12 | 1.8e-12 | 9.9e-11 |
+| **NGC 2525** | **9.1e-12** | **9.1e-12** | **1.2e-10** |
+| **NGC 3603** | **3.1e-11** | **3.1e-11** | **3.0e-10** |
+| **Bubble NGC 7635** | **1.5e-13** | **1.5e-13** | **4.2e-13** |
+| **Antennae** | **3.4e-12** | **3.4e-12** | **8.0e-11** |
+| **Horsehead** | **2.4e-14** | **2.2e-14** | **2.0e-12** |
 
 ---
 
@@ -134,9 +134,9 @@ Dense molecular cloud pillar illuminated by σ Ori:
 
 Across all 12 systems, g_res clusters near 10⁻¹⁰ m/s² with exceptions only in the most diffuse objects (Horsehead, Bubble). This is a key UQFF prediction:
 
-> **The UQFF superconductive resonance floor equals the MOND acceleration scale a₀ ≈ 1.2 × 10⁻¹⁰ m/s².**
+> **The UQFF superconductive resonance floor equals the MOND acceleration scale a₀ ≈ 1.2e-10 m/s².**
 
-This is not imposed — it emerges from the [SCm] vacuum density ρ_vac_SCm = 7.09 × 10⁻³⁷ J/m³ and the calibrated η coupling constant.
+This is not imposed — it emerges from the [SCm] vacuum density ρ_vac_SCm = 7.09e-37 J/m³ and the calibrated η coupling constant.
 
 ---
 
@@ -150,7 +150,7 @@ The 12-system MUGEResonanceModule validates UQFF superconductive resonance acros
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Thomson σ_T (QED synchrotron) | UQFF U_m scattering kernel: σ_T = 6.6524×10⁻²⁹ m² | σ_T = 6.6524×10⁻²⁹ m² (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
+| Thomson σ_T (QED synchrotron) | UQFF U_m scattering kernel: σ_T = 6.6524e-29 m² | σ_T = 6.6524e-29 m² (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
 | Astrophysical system luminosity X-ray / Radio | UQFF MUGE g_total → L_X via Stefan-Boltzmann + buoyancy flux: L_X ≈ g_total × M_env | L_X L ≥ 10³⁷ erg/s | Chandra CXC | ✓ Consistent order of magnitude |
 | GR Schwarzschild limit | UQFF g_total must satisfy g ≤ c²/(2r_s) at event horizon | r_s = 2GM/c² (GR exact) | PDG 2024 / GR | ✓ UQFF respects GR horizon |
 | κ vacuum rate vs X-ray variability | UQFF κ = 0.0005/day → timescale τ_UQFF = 2000 days | Observed X-ray variability τ_obs (instrument monitoring) | Chandra CXC | Testable UQFF variability timescale |

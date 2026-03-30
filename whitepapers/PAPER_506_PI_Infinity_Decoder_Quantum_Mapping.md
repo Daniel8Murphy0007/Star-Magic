@@ -6,6 +6,14 @@
 
 ---
 
+
+## Abstract
+
+$$F_{U,Bi} = \kappa \cdot \frac{\rho_{\text{SCm}}}{\rho_{\text{UA}}} \cdot (U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_m + U_{bi})$$
+
+
+This paper presents a UQFF analysis of Quantum State Phase Mapping, deriving compressed field equations and observational predictions within the Star-Magic/UQFF framework.
+
 ## §1.1 Abstract
 
 The PI Infinity Decoder maps the first 728 decimal digits of π (after the decimal point) into a quantum amplitude array of size `PI_DIGITS_COUNT × 1` via iterative phase accumulation. Each element of the array encodes a magnetic field amplitude that depends on digit value, sacred time constants, and quantum state index. The mapping allows any quantum state `i ∈ [0, 312)` to be assigned a unique, deterministic magnetic field value and a complex-valued DPM pair (UA' + i·SCm) derived from π's infinite non-repeating sequence.
@@ -112,7 +120,7 @@ Resonance:         R(ℓ) = ¹/₇ Σ_{k=1}^{7} fk(ℓ)                [dimensio
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
 | π = 3.14159265... (PI co-resonance) | UQFF PI decoder: 312 digits extracted from Wolfram hypergraph | π exact (transcendental) | NIST | ~100% (representation) |
-| κ consistency check | κ = 0.0005/day; ratio to proton decay rate: 10³³ decoupling | Super-K τ_p > 7.7×10³³ yr | Super-K 2024 | ✓ UQFF baryon-safe |
+| κ consistency check | κ = 0.0005/day; ratio to proton decay rate: 10³³ decoupling | Super-K τ_p > 7.7e33 yr | Super-K 2024 | ✓ UQFF baryon-safe |
 | [SSq] dark energy ratio | [SSq] = 0.57 (UQFF vacuum fraction) | CMB Ω_Λ = 0.6847 (Planck 2018) | Planck 2018 | 83% (dark energy order) |
 | Fine structure α derivation | α_UQFF from DPM flux/void ratio | α = 1/137.036 | PDG 2024 / NIST | ✓ Target value |
 

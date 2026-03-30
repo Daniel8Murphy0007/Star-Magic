@@ -1,12 +1,12 @@
 # PAPER_514: TON 618 Sacred Time Phase Integral at Cosmological Scale
 ## Star Magic UQFF Framework — Session 138
 **Author:** Daniel T. Murphy | **Date:** March 2026  
-**Module:** source179.cpp | **Target:** TON 618 quasar (z=2.219, M_BH=6.6×10¹⁰ M☉)
+**Module:** source179.cpp | **Target:** TON 618 quasar (z=2.219, M_BH=6.6e10 M☉)
 
 ---
 
 ## Abstract
-TON 618 hosts one of the most massive known black holes in the universe (M_BH = 6.6×10¹⁰ M☉ = 66 billion solar masses) at redshift z=2.219, corresponding to a lookback time of ≈10.4 Gyr. The 7-harmonic Sacred Time Phase Integral Ψ_sacred(T) accumulates phase from Mayan calendar cycles, Schumann resonance, Biblical generation periods, and the Golden Ratio. At cosmological timescales (T~10⁸ days), Ψ_sacred reveals how sacred cycles phase-lock with the cosmic expansion timeline.
+TON 618 hosts one of the most massive known black holes in the universe (M_BH = 6.6e10 M☉ = 66 billion solar masses) at redshift z=2.219, corresponding to a lookback time of ≈10.4 Gyr. The 7-harmonic Sacred Time Phase Integral Ψ_sacred(T) accumulates phase from Mayan calendar cycles, Schumann resonance, Biblical generation periods, and the Golden Ratio. At cosmological timescales (T~10⁸ days), Ψ_sacred reveals how sacred cycles phase-lock with the cosmic expansion timeline.
 
 ---
 
@@ -68,7 +68,7 @@ The sacred time phase integral encodes how Mayan and Biblical temporal cycles ph
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
 | π = 3.14159265... (PI co-resonance) | UQFF PI decoder: 312 digits extracted from Wolfram hypergraph | π exact (transcendental) | NIST | ~100% (representation) |
-| κ consistency check | κ = 0.0005/day; ratio to proton decay rate: 10³³ decoupling | Super-K τ_p > 7.7×10³³ yr | Super-K 2024 | ✓ UQFF baryon-safe |
+| κ consistency check | κ = 0.0005/day; ratio to proton decay rate: 10³³ decoupling | Super-K τ_p > 7.7e33 yr | Super-K 2024 | ✓ UQFF baryon-safe |
 | [SSq] dark energy ratio | [SSq] = 0.57 (UQFF vacuum fraction) | CMB Ω_Λ = 0.6847 (Planck 2018) | Planck 2018 | 83% (dark energy order) |
 | Fine structure α derivation | α_UQFF from DPM flux/void ratio | α = 1/137.036 | PDG 2024 / NIST | ✓ Target value |
 

@@ -6,6 +6,11 @@
 
 ---
 
+
+## Abstract
+
+This paper presents a UQFF analysis of astrophysical observables, deriving compressed field equations and observational predictions within the Star-Magic/UQFF framework.
+
 ## §1.1 Abstract
 
 The UQFF Full Lagrangian Wolfram Export assembles a complete 26-dimensional unified field Lagrangian from the 8+ source-file contributions and sends it to the embedded WSTP kernel for symbolic reduction via `FullSimplify`. This paper documents the Lagrangian structure, the export protocol, the precision settings, and the expected simplification outcomes.
@@ -105,7 +110,7 @@ k_η        = 10^{-113}        (vacuum coupling)
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
 | π = 3.14159265... (PI co-resonance) | UQFF PI decoder: 312 digits extracted from Wolfram hypergraph | π exact (transcendental) | NIST | ~100% (representation) |
-| κ consistency check | κ = 0.0005/day; ratio to proton decay rate: 10³³ decoupling | Super-K τ_p > 7.7×10³³ yr | Super-K 2024 | ✓ UQFF baryon-safe |
+| κ consistency check | κ = 0.0005/day; ratio to proton decay rate: 10³³ decoupling | Super-K τ_p > 7.7e33 yr | Super-K 2024 | ✓ UQFF baryon-safe |
 | [SSq] dark energy ratio | [SSq] = 0.57 (UQFF vacuum fraction) | CMB Ω_Λ = 0.6847 (Planck 2018) | Planck 2018 | 83% (dark energy order) |
 | Fine structure α derivation | α_UQFF from DPM flux/void ratio | α = 1/137.036 | PDG 2024 / NIST | ✓ Target value |
 

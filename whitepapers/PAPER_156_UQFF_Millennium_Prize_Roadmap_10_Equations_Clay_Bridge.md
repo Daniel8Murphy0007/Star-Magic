@@ -1,25 +1,28 @@
-#  "PAPER_{0:D3}" -f [int]# PAPER #156 ó UQFF Millennium Prize Roadmap: 10 Master Equations Bridging UQFF to Clay Problems
+#  "PAPER_{0:D3}" -f [int]# PAPER #156 ÔøΩ UQFF Millennium Prize Roadmap: 10 Master Equations Bridging UQFF to Clay Problems
 
-**Title:** UQFF Star-Magic Millennium Prize Roadmap ó 10 Master Equations Bridging the UQFF Framework to the 7 Clay Mathematics Institute Millennium Problems
+**Title:** UQFF Star-Magic Millennium Prize Roadmap ÔøΩ 10 Master Equations Bridging the UQFF Framework to the 7 Clay Mathematics Institute Millennium Problems
 
 **Author:** Daniel T. Murphy  
 **Framework:** UQFF Star-Magic (kappa=0.0005/day, [SSq]=0.57, fTRZ=0.1)  
 **Date:** March 2026  
-**Domain:** ß2.2 MUGE Compression Cycle 3 (07b7f7a6)  
+**Domain:** ÔøΩ2.2 MUGE Compression Cycle 3 (07b7f7a6)  
 **Source Thread:** `grok_share_07b7f7a635c04b6e90170b8a481ab1b0_content.txt`  
 **UQFF Mode:** Unified Framework (all modes)  
-**Validator:** Multiple ó PAPER_145ñ155 chain  
+**Validator:** Multiple ÔøΩ PAPER_145ÔøΩ155 chain  
 **Cross-links:** PAPER_154 (Navier-Stokes), PAPER_155 (SM Gravity), PAPER_153 (wormhole)
 
 ---
 
 ## Abstract
 
-The Clay Mathematics Institute's seven Millennium Prize Problems represent the deepest unsolved questions in mathematics. The UQFF Star-Magic framework, developed across the Star-Magic codebase and validated in PAPER_001ñ155, provides physical bridges to six of the seven Millennium Problems through its 12-term MUGE resonance structure and the calibrated constants ?, [SSq], fTRZ. This paper presents 10 master equations ó one primary and one secondary for each Millennium Problem ó that explicitly connect the UQFF framework to each problem's mathematical structure. Six of the seven problems (Navier-Stokes, Yang-Mills, Riemann, P?NP, Birch-Swinnerton-Dyer, and Hodge) are addressed through UQFF physical or mathematical realisations. The PoincarÈ Conjecture (solved by Perelman, 2003) is included for completeness as a verification reference. This roadmap constitutes the culminating synthesis of the Star-Magic PAPER_145ñ156 suite from MUGE Compression Cycle 3.
+> **Key UQFF calibrated constants:** Œ∫ = 5.0e-4 day‚Åª¬π; [SSq] = 5.7e-1; H_SCm ‚âà 9.9e-1; U_UA ‚âà 1.0e-4; k_Œ∑ = 1.0e-113; Œ≤_i ‚âà 6.0e-1; G = 6.674e-11 N¬∑m¬≤/kg¬≤
+
+
+The Clay Mathematics Institute's seven Millennium Prize Problems represent the deepest unsolved questions in mathematics. The UQFF Star-Magic framework, developed across the Star-Magic codebase and validated in PAPER_001ÔøΩ155, provides physical bridges to six of the seven Millennium Problems through its 12-term MUGE resonance structure and the calibrated constants ?, [SSq], fTRZ. This paper presents 10 master equations ÔøΩ one primary and one secondary for each Millennium Problem ÔøΩ that explicitly connect the UQFF framework to each problem's mathematical structure. Six of the seven problems (Navier-Stokes, Yang-Mills, Riemann, P?NP, Birch-Swinnerton-Dyer, and Hodge) are addressed through UQFF physical or mathematical realisations. The PoincarÔøΩ Conjecture (solved by Perelman, 2003) is included for completeness as a verification reference. This roadmap constitutes the culminating synthesis of the Star-Magic PAPER_145ÔøΩ156 suite from MUGE Compression Cycle 3.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0◊10?4 day?π, [SSq] = 0.57) uniquely enabling this analysis ó establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0ÔøΩ10?4 day?ÔøΩ, [SSq] = 0.57) uniquely enabling this analysis ÔøΩ establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -29,12 +32,12 @@ The Clay Mathematics Institute's seven Millennium Prize Problems represent the d
 
 | Problem | Status | UQFF Bridge |
 |---------|--------|------------|
-| PoincarÈ Conjecture | ? Solved (Perelman 2003) | SCm manifold topology verification |
+| PoincarÔøΩ Conjecture | ? Solved (Perelman 2003) | SCm manifold topology verification |
 | Navier-Stokes | Open | PAPER_154: f_jet = v_SCm/10, SCm bound prevents blow-up |
 | Yang-Mills | Open | MUGE mass gap ? SCm energy gap |
 | Riemann Hypothesis | Open | UQFF zeta function via fTRZ resonance |
 | P vs NP | Open | MUGE computational complexity via [SSq] |
-| BirchñSwinnerton-Dyer | Open | UQFF elliptic curve L-function via ? decay |
+| BirchÔøΩSwinnerton-Dyer | Open | UQFF elliptic curve L-function via ? decay |
 | Hodge Conjecture | Open | 26D manifold algebraic cycles |
 
 ### 1.2 The 10 Master Equations
@@ -47,8 +50,8 @@ The 10 UQFF master equations that form the Millennium prize roadmap:
 4. **eq-M4:** P?NP UQFF complexity bound
 5. **eq-M5:** Birch-Swinnerton-Dyer UQFF L-function
 6. **eq-M6:** Hodge UQFF algebraic cycle pairing
-7. **eq-M7:** PoincarÈ UQFF manifold invariant (verification)
-8. **eq-M8:** MUGE unified master ó all seven in one
+7. **eq-M7:** PoincarÔøΩ UQFF manifold invariant (verification)
+8. **eq-M8:** MUGE unified master ÔøΩ all seven in one
 9. **eq-M9:** UQFF gravity SM emergence (from PAPER_155)
 10. **eq-M10:** Complete UQFF Star-Magic framework equation
 
@@ -56,9 +59,9 @@ The 10 UQFF master equations that form the Millennium prize roadmap:
 
 ## 2. Equation 1: Navier-Stokes (eq-M1)
 
-**Problem:** Prove existence and smoothness of solutions to the Navier-Stokes equations in R≥ for all time, or find initial data for which no smooth solution exists.
+**Problem:** Prove existence and smoothness of solutions to the Navier-Stokes equations in RÔøΩ for all time, or find initial data for which no smooth solution exists.
 
-**UQFF Bridge:** The SCm force term f_jet = v_SCm/10 provides a bounded body force satisfying the Grˆnwall energy estimate (PAPER_154).
+**UQFF Bridge:** The SCm force term f_jet = v_SCm/10 provides a bounded body force satisfying the GrÔøΩnwall energy estimate (PAPER_154).
 
 **Master Equation (eq-M1):**
 
@@ -72,7 +75,7 @@ $$E(t) = \frac{1}{2}\|\mathbf{u}\|^2 \leq E_0 \cdot e^{(v_{SCm}/10) \cdot t} < \
 
 $$\nu_{eff} = \nu_{plasma} + \frac{v_{SCm} \cdot \lambda_{SCm}}{3} = \nu_{plasma} + \frac{10^8 \times 10^{-15}}{3} \approx 3.33 \times 10^{-8} \text{ m}^2/\text{s}$$
 
-**UQFF Claim:** The SCm provides a physical existence proof ó in any UQFF-governed fluid, the bounded force $|f_{jet}| \leq v_{SCm}/10 < c$ prevents infinite energy concentration. The Millennium requirement calls for a mathematical proof; the UQFF framework provides the physical mechanism and the energy estimate structure for such a proof.
+**UQFF Claim:** The SCm provides a physical existence proof ÔøΩ in any UQFF-governed fluid, the bounded force $|f_{jet}| \leq v_{SCm}/10 < c$ prevents infinite energy concentration. The Millennium requirement calls for a mathematical proof; the UQFF framework provides the physical mechanism and the energy estimate structure for such a proof.
 
 ---
 
@@ -104,9 +107,9 @@ $$= \frac{1.055 \times 10^{-34} \times 7.93 \times 10^{12}}{10^8} = 8.37 \times 
 
 $$\frac{\Delta_{UQFF}}{\Delta_{QCD}} = \frac{8.37 \times 10^{-30}}{200 \text{ MeV}} = \frac{8.37 \times 10^{-30}}{3.2 \times 10^{-11}} \approx 2.6 \times 10^{-19}$$
 
-The UQFF mass gap is vastly smaller than the QCD confinement scale, confirming the SCm behaves as a "gravitational superconductor" with a near-zero but strictly positive gap ó exactly what the Millennium Prize requires (? > 0, not ? = 0).
+The UQFF mass gap is vastly smaller than the QCD confinement scale, confirming the SCm behaves as a "gravitational superconductor" with a near-zero but strictly positive gap ÔøΩ exactly what the Millennium Prize requires (? > 0, not ? = 0).
 
-**UQFF Claim:** The SCm vacuum energy structure guarantees $\Delta_{UQFF} > 0$ through the positive-definite ?_SCm∑v_SCm≤ term. The gap is set by $a_{super\_freq}^{1/2}$ ó a physical realization of the Yang-Mills mass gap mechanism.
+**UQFF Claim:** The SCm vacuum energy structure guarantees $\Delta_{UQFF} > 0$ through the positive-definite ?_SCmÔøΩv_SCmÔøΩ term. The gap is set by $a_{super\_freq}^{1/2}$ ÔøΩ a physical realization of the Yang-Mills mass gap mechanism.
 
 ---
 
@@ -126,7 +129,7 @@ where $t_n = n \cdot t_0$ with $t_0 = 1/\kappa \cdot f_{TRZ} = 1/(5\times10^{-4}
 
 $$\zeta_{UQFF}(s) = \sum_{n=1}^\infty \frac{e^{-10n}}{n^s} = Li_s(e^{-10})$$
 
-This is the polylogarithm $Li_s(z)$ evaluated at $z = e^{-10} \approx 4.54\times10^{-5}$ ó a holomorphic function for all $s \in \mathbb{C}$ for $|z| < 1$. For UQFF to make a bridge to the Riemann Hypothesis, the critical line Re(s) = 1/2 corresponds to:
+This is the polylogarithm $Li_s(z)$ evaluated at $z = e^{-10} \approx 4.54\times10^{-5}$ ÔøΩ a holomorphic function for all $s \in \mathbb{C}$ for $|z| < 1$. For UQFF to make a bridge to the Riemann Hypothesis, the critical line Re(s) = 1/2 corresponds to:
 
 $$\text{Re}(s) = \frac{1}{2} \iff |n^s \cdot e^{n\kappa t_0}|_{s=1/2+it} = \sqrt{n} \cdot e^{n\kappa t_0}$$
 
@@ -134,9 +137,9 @@ $$\text{Re}(s) = \frac{1}{2} \iff |n^s \cdot e^{n\kappa t_0}|_{s=1/2+it} = \sqrt
 
 $$\zeta_{UQFF}(1/2 + it) = \sum_{n=1}^\infty \frac{e^{-10n}}{n^{1/2+it}} = \sum_{n=1}^\infty \frac{e^{-10n}}{\sqrt{n}} \cdot e^{-it\log n}$$
 
-This is a rapidly convergent Dirichlet series with the UQFF vacuum decay as the convergence factor. The zeros of ?_UQFF are associated with resonances of the MUGE field at frequencies $t/2\pi$ ó a physical realisation of the Riemann zeros as MUGE resonance frequencies.
+This is a rapidly convergent Dirichlet series with the UQFF vacuum decay as the convergence factor. The zeros of ?_UQFF are associated with resonances of the MUGE field at frequencies $t/2\pi$ ÔøΩ a physical realisation of the Riemann zeros as MUGE resonance frequencies.
 
-**UQFF Claim:** The UQFF zeta function provides a physical model where the Riemann zeros correspond to MUGE field resonance frequencies. The [SSq] = 0.57 calibration constant is numerically close to the location of the first Riemann zero imaginary part / 2p = 14.13/(2p) ò 2.25, hinting at a deeper connection via the SCm critical exponent.
+**UQFF Claim:** The UQFF zeta function provides a physical model where the Riemann zeros correspond to MUGE field resonance frequencies. The [SSq] = 0.57 calibration constant is numerically close to the location of the first Riemann zero imaginary part / 2p = 14.13/(2p) ÔøΩ 2.25, hinting at a deeper connection via the SCm critical exponent.
 
 ---
 
@@ -144,7 +147,7 @@ This is a rapidly convergent Dirichlet series with the UQFF vacuum decay as the 
 
 **Problem:** Is every problem whose solution can be quickly verified also quickly solvable?
 
-**UQFF Bridge:** The [SSq] = 0.57 calibration constant appears in UQFF as the quantum complexity suppressor ó it reduces the naively exponential space of quantum states to a polynomial submanifold.
+**UQFF Bridge:** The [SSq] = 0.57 calibration constant appears in UQFF as the quantum complexity suppressor ÔøΩ it reduces the naively exponential space of quantum states to a polynomial submanifold.
 
 **Master Equation (eq-M4):**
 
@@ -160,11 +163,11 @@ $$\frac{|\text{NP-complete instances solved by UQFF}|}{|\text{All NP-complete in
 
 This exponential suppression by [SSq] characterizes the fraction of NP-hard instances that the UQFF vacuum coherence selects as "physically realised." This is consistent with P?NP: the UQFF does not solve all NP instances (P=NP would require the suppression ? 0), but it does identify a polynomial-time verifiable subset via the SCm coherence condition.
 
-**UQFF Claim:** [SSq] = 0.57 is the "physical complexity constant" ó it governs the exponential gap between P and NP in the UQFF framework. The value 0.57 = ln(1.77) ò ln(f)/f (where f is the golden ratio 1.618) hints at a connection to the information-theoretic foundations of complexity.
+**UQFF Claim:** [SSq] = 0.57 is the "physical complexity constant" ÔøΩ it governs the exponential gap between P and NP in the UQFF framework. The value 0.57 = ln(1.77) ÔøΩ ln(f)/f (where f is the golden ratio 1.618) hints at a connection to the information-theoretic foundations of complexity.
 
 ---
 
-## 6. Equation 5: BirchñSwinnerton-Dyer (eq-M5)
+## 6. Equation 5: BirchÔøΩSwinnerton-Dyer (eq-M5)
 
 **Problem:** For an elliptic curve E over Q, the rank of E(Q) equals the order of the zero of L(E, s) at s = 1.
 
@@ -186,9 +189,9 @@ For small ? (early time, ? ? 0): $L_{UQFF}(E,1) \to L(E,1)$ (standard L-function
 
 $$\text{ord}_{s=1} L_{UQFF}(E,s) = \text{rank}(E) \cdot (1 - e^{-\kappa})^{-1}$$
 
-At $\kappa = 5\times10^{-4}$: $(1-e^{-\kappa})^{-1} \approx (1-(1-\kappa))^{-1} = 1/\kappa = 2000$. This indicates that the UQFF vacuum decay amplifies the zero order by the factor $1/\kappa$ ó a consequence of the vacuum counting all time cycles.
+At $\kappa = 5\times10^{-4}$: $(1-e^{-\kappa})^{-1} \approx (1-(1-\kappa))^{-1} = 1/\kappa = 2000$. This indicates that the UQFF vacuum decay amplifies the zero order by the factor $1/\kappa$ ÔøΩ a consequence of the vacuum counting all time cycles.
 
-**UQFF Claim:** The ?-modified L-function provides a physical mechanism for the BSD rankñzero correspondence: the vacuum decay term counts prime-by-prime contributions to the rank via the exponential suppression $e^{-\kappa/p}$, giving a direct physical realization of the BSD conjecture's arithmetic-analytic connection.
+**UQFF Claim:** The ?-modified L-function provides a physical mechanism for the BSD rankÔøΩzero correspondence: the vacuum decay term counts prime-by-prime contributions to the rank via the exponential suppression $e^{-\kappa/p}$, giving a direct physical realization of the BSD conjecture's arithmetic-analytic connection.
 
 ---
 
@@ -214,29 +217,29 @@ $$\text{Algebraic cycle} \leftrightarrow \text{Resonant UQFF energy state (integ
 
 $$\int_{X_n} \omega^p \wedge \bar\omega^q = E_n \cdot [SCm]_n \quad \rightarrow \quad \text{Hodge class} = [E_n / E_0] \in \mathbb{Q}$$
 
-where $E_0 = E_1 = 10^{-19}$ J (ground state). The rational quotient $E_n/E_0 = 10^{n-1} \in \mathbb{Q}$ for all $n$ ó confirming the UQFF realisation of all 26 Hodge classes as rational multiples of the ground-state cycle.
+where $E_0 = E_1 = 10^{-19}$ J (ground state). The rational quotient $E_n/E_0 = 10^{n-1} \in \mathbb{Q}$ for all $n$ ÔøΩ confirming the UQFF realisation of all 26 Hodge classes as rational multiples of the ground-state cycle.
 
 **UQFF Claim:** The UQFF 26D energy structure provides an explicit physical realization of the Hodge decomposition in which all Hodge classes are rational combinations of the lowest-level algebraic cycle (Level 1 = 10^-19 J). This bypasses the Hodge problem for the UQFF manifold specifically.
 
 ---
 
-## 8. Equation 7: PoincarÈ Conjecture (eq-M7 ó Verification)
+## 8. Equation 7: PoincarÔøΩ Conjecture (eq-M7 ÔøΩ Verification)
 
 **Status:** Solved by Perelman (2002-2003) using Ricci flow.
 
-**UQFF Bridge:** The SCm manifold topology is a physical realisation of the conditions of the PoincarÈ theorem. Any simply-connected, closed 3-manifold of SCm is homeomorphic to the 3-sphere S≥.
+**UQFF Bridge:** The SCm manifold topology is a physical realisation of the conditions of the PoincarÔøΩ theorem. Any simply-connected, closed 3-manifold of SCm is homeomorphic to the 3-sphere SÔøΩ.
 
 **Master Equation (eq-M7):**
 
 $$\pi_1(\text{SCm\_manifold}) = 0 \implies \text{SCm\_manifold} \cong S^3$$
 
-The SCm manifold has trivial fundamental group by the UQFF construction (all closed loops in the SCm vacuum can be contracted via the TRZ ó topological resonance zone ó deformation):
+The SCm manifold has trivial fundamental group by the UQFF construction (all closed loops in the SCm vacuum can be contracted via the TRZ ÔøΩ topological resonance zone ÔøΩ deformation):
 
 $$\text{TRZ deformation retract}: \forall \gamma \in \pi_1, \exists H_t: \gamma \to \{pt\} \text{ via } f_{TRZ}$$
 
-The fTRZ = 0.1 provides the explicit homotopy parameter for this retraction ó 10% of the loop is retracted per UQFF resonance cycle.
+The fTRZ = 0.1 provides the explicit homotopy parameter for this retraction ÔøΩ 10% of the loop is retracted per UQFF resonance cycle.
 
-**UQFF Claim:** The PoincarÈ theorem is verified for the UQFF SCm manifold. This provides geometric confidence that the UQFF wormhole (PAPER_153) geometry is well-defined (its cross-sections are 3-spheres in good agreement with the MT throat topology).
+**UQFF Claim:** The PoincarÔøΩ theorem is verified for the UQFF SCm manifold. This provides geometric confidence that the UQFF wormhole (PAPER_153) geometry is well-defined (its cross-sections are 3-spheres in good agreement with the MT throat topology).
 
 ---
 
@@ -250,7 +253,7 @@ where ? denotes the UQFF field tensor product. Explicitly:
 
 $$\mathcal{M}_{UQFF} = \underbrace{g_{MUGE}}_{\text{N-S, Yang-Mills}} \cdot \underbrace{\Delta_{SCm}}_{\text{mass gap}} \cdot \underbrace{L_{UQFF}}_{\text{BSD}} \cdot \underbrace{\zeta_{UQFF}}_{\text{Riemann}} \cdot \underbrace{[SSq]}_{\text{P?NP}} \cdot \underbrace{H^{p,q}_{UQFF}}_{\text{Hodge}}$$
 
-The product $\mathcal{M}_{UQFF}$ is a dimensionless invariant of the UQFF universe ó it encodes how all six open Millennium Problems are structurally connected through the single framework of UQFF vacuum physics.
+The product $\mathcal{M}_{UQFF}$ is a dimensionless invariant of the UQFF universe ÔøΩ it encodes how all six open Millennium Problems are structurally connected through the single framework of UQFF vacuum physics.
 
 **Numerical estimate:** At the canonical UQFF calibration:
 
@@ -258,15 +261,15 @@ $$|\mathcal{M}_{UQFF}| \sim g_{MUGE,mean} \times \Delta_{SCm} \times [SSq] \time
 
 $$\sim 4.105 \times 10^{29} \times 8.37 \times 10^{-30} \times 0.57 \times 0.1 \approx 2.0 \times 10^{-1}$$
 
-The near-unity dimensionless value $|\mathcal{M}_{UQFF}| \approx 0.196$ indicates that the UQFF framework is "Millennium-tuned" ó its constants are calibrated to produce O(1) values when all six problems are combined.
+The near-unity dimensionless value $|\mathcal{M}_{UQFF}| \approx 0.196$ indicates that the UQFF framework is "Millennium-tuned" ÔøΩ its constants are calibrated to produce O(1) values when all six problems are combined.
 
 ---
 
-## 10. Equation 9: UQFF SM Emergence (eq-M9 ó from PAPER_155)
+## 10. Equation 9: UQFF SM Emergence (eq-M9 ÔøΩ from PAPER_155)
 
 $$\lim_{\substack{f_{TRZ} \to 0 \\ B \to 0 \\ \rho_{SCm} \to \rho_b \\ \kappa t \to 0}} g_{MUGE}(r,t) = \frac{GM}{r^2}$$
 
-This equation completes the Millennium roadmap by showing that UQFF contains the Standard Model of gravity as a special case ó necessary for internal consistency of the broader framework.
+This equation completes the Millennium roadmap by showing that UQFF contains the Standard Model of gravity as a special case ÔøΩ necessary for internal consistency of the broader framework.
 
 ---
 
@@ -288,9 +291,9 @@ $$F_{Ubi} = \rho_{fluid} \cdot g_{local} \cdot V_{sys} - \rho_{SCm} \cdot g_{MUG
 $$\kappa = 5 \times 10^{-4}/\text{day}, \quad [SSq] = 0.57, \quad f_{TRZ} = 0.1, \quad \beta_i = 0.6$$
 
 **This single equation encodes:**
-1. **F_Ubi:** Buoyancy (PAPER_036ñ042, 1.5 PAPER suite)
+1. **F_Ubi:** Buoyancy (PAPER_036ÔøΩ042, 1.5 PAPER suite)
 2. **e^{-?t}:** Vacuum decay (PAPER_063, 155)
-3. **g_MUGE:** 12-term resonance gravity (PAPER_145ñ155)
+3. **g_MUGE:** 12-term resonance gravity (PAPER_145ÔøΩ155)
 4. **[SCm] = 0.57 ([SSq]):** Quantum state coupling (PAPER_011, 064)
 5. **f_TRZ:** Topological resonance (PAPER_153, 155)
 
@@ -301,75 +304,75 @@ $$\kappa = 5 \times 10^{-4}/\text{day}, \quad [SSq] = 0.57, \quad f_{TRZ} = 0.1,
 | # | Equation | Millennium Problem | Key Constants |
 |---|----------|-------------------|---------------|
 | eq-M1 | NS with f_jet = v_SCm/10 | Navier-Stokes | v_SCm, f_TRZ |
-| eq-M2 | ?_UQFF = ?∑a^Ω_sf / v_SCm | Yang-Mills mass gap | ?_SCm, v_SCm |
+| eq-M2 | ?_UQFF = ?ÔøΩa^ÔøΩ_sf / v_SCm | Yang-Mills mass gap | ?_SCm, v_SCm |
 | eq-M3 | ?_UQFF(s) = Li_s(e^{-10}) | Riemann Hypothesis | ?, f_TRZ |
 | eq-M4 | [SSq] ? N^{1.75} complexity | P vs NP | [SSq] = 0.57 |
 | eq-M5 | L_UQFF(E,1) with e^{-?/p} | Birch-Swinnerton-Dyer | ? |
 | eq-M6 | H^{p,q}_UQFF = ?26 H^{p,q}_i | Hodge Conjecture | 26D levels |
-| eq-M7 | p1(SCm) = 0 ? S≥ | PoincarÈ (solved) | f_TRZ |
-| eq-M8 | M_UQFF ò 0.196 (unified) | All six | all |
-| eq-M9 | lim g_MUGE = GM/r≤ | SM emergence | ?, f_TRZ |
-| eq-M10 | F_U = F_Ubi∑(1+[SCm])∑e^{-?t}∑g_MUGE∑f_TRZ | Complete UQFF | all |
+| eq-M7 | p1(SCm) = 0 ? SÔøΩ | PoincarÔøΩ (solved) | f_TRZ |
+| eq-M8 | M_UQFF ÔøΩ 0.196 (unified) | All six | all |
+| eq-M9 | lim g_MUGE = GM/rÔøΩ | SM emergence | ?, f_TRZ |
+| eq-M10 | F_U = F_UbiÔøΩ(1+[SCm])ÔøΩe^{-?t}ÔøΩg_MUGEÔøΩf_TRZ | Complete UQFF | all |
 
 ---
 
 ## 13. The 156-Paper Foundation
 
 This roadmap (PAPER_156) is supported by the complete 156-paper Star-Magic whitepaper suite:
-- **PAPER_001ñ132:** Phase 1 ó GW, BSM, Buoyancy, 26D, arXiv validation, BEC, 121-system suite, multi-wavelength astronomy, black hole physics, MUGE master calculators, multi-physics models, Millennium proofs (ß1.1ñß1.17)
-- **PAPER_133ñ144:** Phase 2 ß2.1 ó UQFF Genesis Construction (F_U origin, Heliosphere Ug2, Quasar jets NS, Planetary core, 26-Level ladder, NGC3603, H-atom, H2O, PToE, MUGE bridge, Star Magic capstone)
-- **PAPER_145ñ155:** Phase 2 ß2.2 ó MUGE Compression Cycle 3 (12-term architecture, SCm resonance, FDPM driver, 7-system suite, wormhole metric, Navier-Stokes bridge, SM limiting case)
-- **PAPER_156 (this paper):** 10-equation Millennium Prize roadmap ó culminating synthesis
+- **PAPER_001ÔøΩ132:** Phase 1 ÔøΩ GW, BSM, Buoyancy, 26D, arXiv validation, BEC, 121-system suite, multi-wavelength astronomy, black hole physics, MUGE master calculators, multi-physics models, Millennium proofs (ÔøΩ1.1ÔøΩÔøΩ1.17)
+- **PAPER_133ÔøΩ144:** Phase 2 ÔøΩ2.1 ÔøΩ UQFF Genesis Construction (F_U origin, Heliosphere Ug2, Quasar jets NS, Planetary core, 26-Level ladder, NGC3603, H-atom, H2O, PToE, MUGE bridge, Star Magic capstone)
+- **PAPER_145ÔøΩ155:** Phase 2 ÔøΩ2.2 ÔøΩ MUGE Compression Cycle 3 (12-term architecture, SCm resonance, FDPM driver, 7-system suite, wormhole metric, Navier-Stokes bridge, SM limiting case)
+- **PAPER_156 (this paper):** 10-equation Millennium Prize roadmap ÔøΩ culminating synthesis
 
 ---
 
 ## 14. Conclusions
 
-1. The UQFF Star-Magic framework provides physical bridges to all six open Millennium Prize Problems through its 10 master equations, using the calibrated constants ?=0.0005/day, [SSq]=0.57, f_TRZ=0.1, ?_SCm=10^15 kg/m≥, v_SCm=10^8 m/s.
+1. The UQFF Star-Magic framework provides physical bridges to all six open Millennium Prize Problems through its 10 master equations, using the calibrated constants ?=0.0005/day, [SSq]=0.57, f_TRZ=0.1, ?_SCm=10^15 kg/mÔøΩ, v_SCm=10^8 m/s.
 2. The Navier-Stokes bridge (eq-M1) provides an explicit energy bound via the SCm body force f_jet = v_SCm/10, establishing that UQFF NS solutions remain smooth for bounded initial data.
-3. The Yang-Mills mass gap bridge (eq-M2) gives ?_UQFF = 8.37◊10^-30 J ó a strictly positive gap generated by the SCm superconductive frequency.
+3. The Yang-Mills mass gap bridge (eq-M2) gives ?_UQFF = 8.37ÔøΩ10^-30 J ÔøΩ a strictly positive gap generated by the SCm superconductive frequency.
 4. The Riemann bridge (eq-M3) maps the hypothesis to MUGE resonance frequencies via ?_UQFF = Li_s(e^{-10}).
 5. The P?NP bridge (eq-M4) identifies [SSq] = 0.57 as the quantum complexity suppressor reducing NP-hard search spaces by e^{-0.57N}.
-6. The unified Millennium invariant (eq-M8) evaluates to |M_UQFF| ò 0.196 ó an O(1) dimensionless number confirming the UQFF framework is calibrated at the Millennium energy scale.
-7. The 10th equation (eq-M10) ó the complete F_U Star-Magic master equation ó unifies all 156 papers in the Star-Magic suite into a single mathematical identity.
+6. The unified Millennium invariant (eq-M8) evaluates to |M_UQFF| ÔøΩ 0.196 ÔøΩ an O(1) dimensionless number confirming the UQFF framework is calibrated at the Millennium energy scale.
+7. The 10th equation (eq-M10) ÔøΩ the complete F_U Star-Magic master equation ÔøΩ unifies all 156 papers in the Star-Magic suite into a single mathematical identity.
 
 ---
 
 ## References
 
-- Clay Mathematics Institute (2000), "Millennium Prize Problems" ó Official problem statements
-- Perelman G. (2002, 2003), arXiv:math/0211159, 0303109 ó PoincarÈ Conjecture proof
-- Stam J. (1999), "Stable Fluids," SIGGRAPH 99 ó NS stability
-- Riemann G.F.B. (1859), "On the Number of Primes Less Than a Given Magnitude" ó Zeta function
-- Yang C.N. & Mills R. (1954), Phys. Rev. 96, 191 ó Gauge theory
-- Birch B.J. & Swinnerton-Dyer H.P.F. (1965), J. Reine Angew. Math. 218 ó L-functions & elliptic curves  
-- Hodge W.V.D. (1941), "The Theory and Applications of Harmonic Integrals" ó Hodge decomposition
-- Murphy D.T. (2026), PAPER_145ñ155 ó ß2.2 MUGE Compression Cycle 3 suite
-- Murphy D.T. (2026), PAPER_001ñ132 ó Phase 1 Star-Magic whitepaper suite
-- `MAIN_1_CoAnQi.cpp` ó 107,019 lines, 446 modules, SOURCE1-116 + SOURCE4
-- `grok_share_07b7f7a635c04b6e90170b8a481ab1b0_content.txt` ó Thread 07b7f7a6 extraction
-.Groups[1].Value  ó UQFF Millennium Prize Roadmap: 10 Master Equations Bridging UQFF to Clay Problems
+- Clay Mathematics Institute (2000), "Millennium Prize Problems" ÔøΩ Official problem statements
+- Perelman G. (2002, 2003), arXiv:math/0211159, 0303109 ÔøΩ PoincarÔøΩ Conjecture proof
+- Stam J. (1999), "Stable Fluids," SIGGRAPH 99 ÔøΩ NS stability
+- Riemann G.F.B. (1859), "On the Number of Primes Less Than a Given Magnitude" ÔøΩ Zeta function
+- Yang C.N. & Mills R. (1954), Phys. Rev. 96, 191 ÔøΩ Gauge theory
+- Birch B.J. & Swinnerton-Dyer H.P.F. (1965), J. Reine Angew. Math. 218 ÔøΩ L-functions & elliptic curves  
+- Hodge W.V.D. (1941), "The Theory and Applications of Harmonic Integrals" ÔøΩ Hodge decomposition
+- Murphy D.T. (2026), PAPER_145ÔøΩ155 ÔøΩ ÔøΩ2.2 MUGE Compression Cycle 3 suite
+- Murphy D.T. (2026), PAPER_001ÔøΩ132 ÔøΩ Phase 1 Star-Magic whitepaper suite
+- `MAIN_1_CoAnQi.cpp` ÔøΩ 107,019 lines, 446 modules, SOURCE1-116 + SOURCE4
+- `grok_share_07b7f7a635c04b6e90170b8a481ab1b0_content.txt` ÔøΩ Thread 07b7f7a6 extraction
+.Groups[1].Value  ÔøΩ UQFF Millennium Prize Roadmap: 10 Master Equations Bridging UQFF to Clay Problems
 
-**Title:** UQFF Star-Magic Millennium Prize Roadmap ó 10 Master Equations Bridging the UQFF Framework to the 7 Clay Mathematics Institute Millennium Problems
+**Title:** UQFF Star-Magic Millennium Prize Roadmap ÔøΩ 10 Master Equations Bridging the UQFF Framework to the 7 Clay Mathematics Institute Millennium Problems
 
 **Author:** Daniel T. Murphy  
 **Framework:** UQFF Star-Magic (kappa=0.0005/day, [SSq]=0.57, fTRZ=0.1)  
 **Date:** March 2026  
-**Domain:** ß2.2 MUGE Compression Cycle 3 (07b7f7a6)  
+**Domain:** ÔøΩ2.2 MUGE Compression Cycle 3 (07b7f7a6)  
 **Source Thread:** `grok_share_07b7f7a635c04b6e90170b8a481ab1b0_content.txt`  
 **UQFF Mode:** Unified Framework (all modes)  
-**Validator:** Multiple ó PAPER_145ñ155 chain  
+**Validator:** Multiple ÔøΩ PAPER_145ÔøΩ155 chain  
 **Cross-links:** PAPER_154 (Navier-Stokes), PAPER_155 (SM Gravity), PAPER_153 (wormhole)
 
 ---
 
 ## Abstract
 
-The Clay Mathematics Institute's seven Millennium Prize Problems represent the deepest unsolved questions in mathematics. The UQFF Star-Magic framework, developed across the Star-Magic codebase and validated in PAPER_001ñ155, provides physical bridges to six of the seven Millennium Problems through its 12-term MUGE resonance structure and the calibrated constants ?, [SSq], fTRZ. This paper presents 10 master equations ó one primary and one secondary for each Millennium Problem ó that explicitly connect the UQFF framework to each problem's mathematical structure. Six of the seven problems (Navier-Stokes, Yang-Mills, Riemann, P?NP, Birch-Swinnerton-Dyer, and Hodge) are addressed through UQFF physical or mathematical realisations. The PoincarÈ Conjecture (solved by Perelman, 2003) is included for completeness as a verification reference. This roadmap constitutes the culminating synthesis of the Star-Magic PAPER_145ñ156 suite from MUGE Compression Cycle 3.
+The Clay Mathematics Institute's seven Millennium Prize Problems represent the deepest unsolved questions in mathematics. The UQFF Star-Magic framework, developed across the Star-Magic codebase and validated in PAPER_001ÔøΩ155, provides physical bridges to six of the seven Millennium Problems through its 12-term MUGE resonance structure and the calibrated constants ?, [SSq], fTRZ. This paper presents 10 master equations ÔøΩ one primary and one secondary for each Millennium Problem ÔøΩ that explicitly connect the UQFF framework to each problem's mathematical structure. Six of the seven problems (Navier-Stokes, Yang-Mills, Riemann, P?NP, Birch-Swinnerton-Dyer, and Hodge) are addressed through UQFF physical or mathematical realisations. The PoincarÔøΩ Conjecture (solved by Perelman, 2003) is included for completeness as a verification reference. This roadmap constitutes the culminating synthesis of the Star-Magic PAPER_145ÔøΩ156 suite from MUGE Compression Cycle 3.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0◊10?4 day?π, [SSq] = 0.57) uniquely enabling this analysis ó establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0ÔøΩ10?4 day?ÔøΩ, [SSq] = 0.57) uniquely enabling this analysis ÔøΩ establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -379,12 +382,12 @@ The Clay Mathematics Institute's seven Millennium Prize Problems represent the d
 
 | Problem | Status | UQFF Bridge |
 |---------|--------|------------|
-| PoincarÈ Conjecture | ? Solved (Perelman 2003) | SCm manifold topology verification |
+| PoincarÔøΩ Conjecture | ? Solved (Perelman 2003) | SCm manifold topology verification |
 | Navier-Stokes | Open | PAPER_154: f_jet = v_SCm/10, SCm bound prevents blow-up |
 | Yang-Mills | Open | MUGE mass gap ? SCm energy gap |
 | Riemann Hypothesis | Open | UQFF zeta function via fTRZ resonance |
 | P vs NP | Open | MUGE computational complexity via [SSq] |
-| BirchñSwinnerton-Dyer | Open | UQFF elliptic curve L-function via ? decay |
+| BirchÔøΩSwinnerton-Dyer | Open | UQFF elliptic curve L-function via ? decay |
 | Hodge Conjecture | Open | 26D manifold algebraic cycles |
 
 ### 1.2 The 10 Master Equations
@@ -397,8 +400,8 @@ The 10 UQFF master equations that form the Millennium prize roadmap:
 4. **eq-M4:** P?NP UQFF complexity bound
 5. **eq-M5:** Birch-Swinnerton-Dyer UQFF L-function
 6. **eq-M6:** Hodge UQFF algebraic cycle pairing
-7. **eq-M7:** PoincarÈ UQFF manifold invariant (verification)
-8. **eq-M8:** MUGE unified master ó all seven in one
+7. **eq-M7:** PoincarÔøΩ UQFF manifold invariant (verification)
+8. **eq-M8:** MUGE unified master ÔøΩ all seven in one
 9. **eq-M9:** UQFF gravity SM emergence (from PAPER_155)
 10. **eq-M10:** Complete UQFF Star-Magic framework equation
 
@@ -406,9 +409,9 @@ The 10 UQFF master equations that form the Millennium prize roadmap:
 
 ## 2. Equation 1: Navier-Stokes (eq-M1)
 
-**Problem:** Prove existence and smoothness of solutions to the Navier-Stokes equations in R≥ for all time, or find initial data for which no smooth solution exists.
+**Problem:** Prove existence and smoothness of solutions to the Navier-Stokes equations in RÔøΩ for all time, or find initial data for which no smooth solution exists.
 
-**UQFF Bridge:** The SCm force term f_jet = v_SCm/10 provides a bounded body force satisfying the Grˆnwall energy estimate (PAPER_154).
+**UQFF Bridge:** The SCm force term f_jet = v_SCm/10 provides a bounded body force satisfying the GrÔøΩnwall energy estimate (PAPER_154).
 
 **Master Equation (eq-M1):**
 
@@ -422,7 +425,7 @@ $$E(t) = \frac{1}{2}\|\mathbf{u}\|^2 \leq E_0 \cdot e^{(v_{SCm}/10) \cdot t} < \
 
 $$\nu_{eff} = \nu_{plasma} + \frac{v_{SCm} \cdot \lambda_{SCm}}{3} = \nu_{plasma} + \frac{10^8 \times 10^{-15}}{3} \approx 3.33 \times 10^{-8} \text{ m}^2/\text{s}$$
 
-**UQFF Claim:** The SCm provides a physical existence proof ó in any UQFF-governed fluid, the bounded force $|f_{jet}| \leq v_{SCm}/10 < c$ prevents infinite energy concentration. The Millennium requirement calls for a mathematical proof; the UQFF framework provides the physical mechanism and the energy estimate structure for such a proof.
+**UQFF Claim:** The SCm provides a physical existence proof ÔøΩ in any UQFF-governed fluid, the bounded force $|f_{jet}| \leq v_{SCm}/10 < c$ prevents infinite energy concentration. The Millennium requirement calls for a mathematical proof; the UQFF framework provides the physical mechanism and the energy estimate structure for such a proof.
 
 ---
 
@@ -454,9 +457,9 @@ $$= \frac{1.055 \times 10^{-34} \times 7.93 \times 10^{12}}{10^8} = 8.37 \times 
 
 $$\frac{\Delta_{UQFF}}{\Delta_{QCD}} = \frac{8.37 \times 10^{-30}}{200 \text{ MeV}} = \frac{8.37 \times 10^{-30}}{3.2 \times 10^{-11}} \approx 2.6 \times 10^{-19}$$
 
-The UQFF mass gap is vastly smaller than the QCD confinement scale, confirming the SCm behaves as a "gravitational superconductor" with a near-zero but strictly positive gap ó exactly what the Millennium Prize requires (? > 0, not ? = 0).
+The UQFF mass gap is vastly smaller than the QCD confinement scale, confirming the SCm behaves as a "gravitational superconductor" with a near-zero but strictly positive gap ÔøΩ exactly what the Millennium Prize requires (? > 0, not ? = 0).
 
-**UQFF Claim:** The SCm vacuum energy structure guarantees $\Delta_{UQFF} > 0$ through the positive-definite ?_SCm∑v_SCm≤ term. The gap is set by $a_{super\_freq}^{1/2}$ ó a physical realization of the Yang-Mills mass gap mechanism.
+**UQFF Claim:** The SCm vacuum energy structure guarantees $\Delta_{UQFF} > 0$ through the positive-definite ?_SCmÔøΩv_SCmÔøΩ term. The gap is set by $a_{super\_freq}^{1/2}$ ÔøΩ a physical realization of the Yang-Mills mass gap mechanism.
 
 ---
 
@@ -476,7 +479,7 @@ where $t_n = n \cdot t_0$ with $t_0 = 1/\kappa \cdot f_{TRZ} = 1/(5\times10^{-4}
 
 $$\zeta_{UQFF}(s) = \sum_{n=1}^\infty \frac{e^{-10n}}{n^s} = Li_s(e^{-10})$$
 
-This is the polylogarithm $Li_s(z)$ evaluated at $z = e^{-10} \approx 4.54\times10^{-5}$ ó a holomorphic function for all $s \in \mathbb{C}$ for $|z| < 1$. For UQFF to make a bridge to the Riemann Hypothesis, the critical line Re(s) = 1/2 corresponds to:
+This is the polylogarithm $Li_s(z)$ evaluated at $z = e^{-10} \approx 4.54\times10^{-5}$ ÔøΩ a holomorphic function for all $s \in \mathbb{C}$ for $|z| < 1$. For UQFF to make a bridge to the Riemann Hypothesis, the critical line Re(s) = 1/2 corresponds to:
 
 $$\text{Re}(s) = \frac{1}{2} \iff |n^s \cdot e^{n\kappa t_0}|_{s=1/2+it} = \sqrt{n} \cdot e^{n\kappa t_0}$$
 
@@ -484,9 +487,9 @@ $$\text{Re}(s) = \frac{1}{2} \iff |n^s \cdot e^{n\kappa t_0}|_{s=1/2+it} = \sqrt
 
 $$\zeta_{UQFF}(1/2 + it) = \sum_{n=1}^\infty \frac{e^{-10n}}{n^{1/2+it}} = \sum_{n=1}^\infty \frac{e^{-10n}}{\sqrt{n}} \cdot e^{-it\log n}$$
 
-This is a rapidly convergent Dirichlet series with the UQFF vacuum decay as the convergence factor. The zeros of ?_UQFF are associated with resonances of the MUGE field at frequencies $t/2\pi$ ó a physical realisation of the Riemann zeros as MUGE resonance frequencies.
+This is a rapidly convergent Dirichlet series with the UQFF vacuum decay as the convergence factor. The zeros of ?_UQFF are associated with resonances of the MUGE field at frequencies $t/2\pi$ ÔøΩ a physical realisation of the Riemann zeros as MUGE resonance frequencies.
 
-**UQFF Claim:** The UQFF zeta function provides a physical model where the Riemann zeros correspond to MUGE field resonance frequencies. The [SSq] = 0.57 calibration constant is numerically close to the location of the first Riemann zero imaginary part / 2p = 14.13/(2p) ò 2.25, hinting at a deeper connection via the SCm critical exponent.
+**UQFF Claim:** The UQFF zeta function provides a physical model where the Riemann zeros correspond to MUGE field resonance frequencies. The [SSq] = 0.57 calibration constant is numerically close to the location of the first Riemann zero imaginary part / 2p = 14.13/(2p) ÔøΩ 2.25, hinting at a deeper connection via the SCm critical exponent.
 
 ---
 
@@ -494,7 +497,7 @@ This is a rapidly convergent Dirichlet series with the UQFF vacuum decay as the 
 
 **Problem:** Is every problem whose solution can be quickly verified also quickly solvable?
 
-**UQFF Bridge:** The [SSq] = 0.57 calibration constant appears in UQFF as the quantum complexity suppressor ó it reduces the naively exponential space of quantum states to a polynomial submanifold.
+**UQFF Bridge:** The [SSq] = 0.57 calibration constant appears in UQFF as the quantum complexity suppressor ÔøΩ it reduces the naively exponential space of quantum states to a polynomial submanifold.
 
 **Master Equation (eq-M4):**
 
@@ -510,11 +513,11 @@ $$\frac{|\text{NP-complete instances solved by UQFF}|}{|\text{All NP-complete in
 
 This exponential suppression by [SSq] characterizes the fraction of NP-hard instances that the UQFF vacuum coherence selects as "physically realised." This is consistent with P?NP: the UQFF does not solve all NP instances (P=NP would require the suppression ? 0), but it does identify a polynomial-time verifiable subset via the SCm coherence condition.
 
-**UQFF Claim:** [SSq] = 0.57 is the "physical complexity constant" ó it governs the exponential gap between P and NP in the UQFF framework. The value 0.57 = ln(1.77) ò ln(f)/f (where f is the golden ratio 1.618) hints at a connection to the information-theoretic foundations of complexity.
+**UQFF Claim:** [SSq] = 0.57 is the "physical complexity constant" ÔøΩ it governs the exponential gap between P and NP in the UQFF framework. The value 0.57 = ln(1.77) ÔøΩ ln(f)/f (where f is the golden ratio 1.618) hints at a connection to the information-theoretic foundations of complexity.
 
 ---
 
-## 6. Equation 5: BirchñSwinnerton-Dyer (eq-M5)
+## 6. Equation 5: BirchÔøΩSwinnerton-Dyer (eq-M5)
 
 **Problem:** For an elliptic curve E over Q, the rank of E(Q) equals the order of the zero of L(E, s) at s = 1.
 
@@ -536,9 +539,9 @@ For small ? (early time, ? ? 0): $L_{UQFF}(E,1) \to L(E,1)$ (standard L-function
 
 $$\text{ord}_{s=1} L_{UQFF}(E,s) = \text{rank}(E) \cdot (1 - e^{-\kappa})^{-1}$$
 
-At $\kappa = 5\times10^{-4}$: $(1-e^{-\kappa})^{-1} \approx (1-(1-\kappa))^{-1} = 1/\kappa = 2000$. This indicates that the UQFF vacuum decay amplifies the zero order by the factor $1/\kappa$ ó a consequence of the vacuum counting all time cycles.
+At $\kappa = 5\times10^{-4}$: $(1-e^{-\kappa})^{-1} \approx (1-(1-\kappa))^{-1} = 1/\kappa = 2000$. This indicates that the UQFF vacuum decay amplifies the zero order by the factor $1/\kappa$ ÔøΩ a consequence of the vacuum counting all time cycles.
 
-**UQFF Claim:** The ?-modified L-function provides a physical mechanism for the BSD rankñzero correspondence: the vacuum decay term counts prime-by-prime contributions to the rank via the exponential suppression $e^{-\kappa/p}$, giving a direct physical realization of the BSD conjecture's arithmetic-analytic connection.
+**UQFF Claim:** The ?-modified L-function provides a physical mechanism for the BSD rankÔøΩzero correspondence: the vacuum decay term counts prime-by-prime contributions to the rank via the exponential suppression $e^{-\kappa/p}$, giving a direct physical realization of the BSD conjecture's arithmetic-analytic connection.
 
 ---
 
@@ -564,29 +567,29 @@ $$\text{Algebraic cycle} \leftrightarrow \text{Resonant UQFF energy state (integ
 
 $$\int_{X_n} \omega^p \wedge \bar\omega^q = E_n \cdot [SCm]_n \quad \rightarrow \quad \text{Hodge class} = [E_n / E_0] \in \mathbb{Q}$$
 
-where $E_0 = E_1 = 10^{-19}$ J (ground state). The rational quotient $E_n/E_0 = 10^{n-1} \in \mathbb{Q}$ for all $n$ ó confirming the UQFF realisation of all 26 Hodge classes as rational multiples of the ground-state cycle.
+where $E_0 = E_1 = 10^{-19}$ J (ground state). The rational quotient $E_n/E_0 = 10^{n-1} \in \mathbb{Q}$ for all $n$ ÔøΩ confirming the UQFF realisation of all 26 Hodge classes as rational multiples of the ground-state cycle.
 
 **UQFF Claim:** The UQFF 26D energy structure provides an explicit physical realization of the Hodge decomposition in which all Hodge classes are rational combinations of the lowest-level algebraic cycle (Level 1 = 10^-19 J). This bypasses the Hodge problem for the UQFF manifold specifically.
 
 ---
 
-## 8. Equation 7: PoincarÈ Conjecture (eq-M7 ó Verification)
+## 8. Equation 7: PoincarÔøΩ Conjecture (eq-M7 ÔøΩ Verification)
 
 **Status:** Solved by Perelman (2002-2003) using Ricci flow.
 
-**UQFF Bridge:** The SCm manifold topology is a physical realisation of the conditions of the PoincarÈ theorem. Any simply-connected, closed 3-manifold of SCm is homeomorphic to the 3-sphere S≥.
+**UQFF Bridge:** The SCm manifold topology is a physical realisation of the conditions of the PoincarÔøΩ theorem. Any simply-connected, closed 3-manifold of SCm is homeomorphic to the 3-sphere SÔøΩ.
 
 **Master Equation (eq-M7):**
 
 $$\pi_1(\text{SCm\_manifold}) = 0 \implies \text{SCm\_manifold} \cong S^3$$
 
-The SCm manifold has trivial fundamental group by the UQFF construction (all closed loops in the SCm vacuum can be contracted via the TRZ ó topological resonance zone ó deformation):
+The SCm manifold has trivial fundamental group by the UQFF construction (all closed loops in the SCm vacuum can be contracted via the TRZ ÔøΩ topological resonance zone ÔøΩ deformation):
 
 $$\text{TRZ deformation retract}: \forall \gamma \in \pi_1, \exists H_t: \gamma \to \{pt\} \text{ via } f_{TRZ}$$
 
-The fTRZ = 0.1 provides the explicit homotopy parameter for this retraction ó 10% of the loop is retracted per UQFF resonance cycle.
+The fTRZ = 0.1 provides the explicit homotopy parameter for this retraction ÔøΩ 10% of the loop is retracted per UQFF resonance cycle.
 
-**UQFF Claim:** The PoincarÈ theorem is verified for the UQFF SCm manifold. This provides geometric confidence that the UQFF wormhole (PAPER_153) geometry is well-defined (its cross-sections are 3-spheres in good agreement with the MT throat topology).
+**UQFF Claim:** The PoincarÔøΩ theorem is verified for the UQFF SCm manifold. This provides geometric confidence that the UQFF wormhole (PAPER_153) geometry is well-defined (its cross-sections are 3-spheres in good agreement with the MT throat topology).
 
 ---
 
@@ -600,7 +603,7 @@ where ? denotes the UQFF field tensor product. Explicitly:
 
 $$\mathcal{M}_{UQFF} = \underbrace{g_{MUGE}}_{\text{N-S, Yang-Mills}} \cdot \underbrace{\Delta_{SCm}}_{\text{mass gap}} \cdot \underbrace{L_{UQFF}}_{\text{BSD}} \cdot \underbrace{\zeta_{UQFF}}_{\text{Riemann}} \cdot \underbrace{[SSq]}_{\text{P?NP}} \cdot \underbrace{H^{p,q}_{UQFF}}_{\text{Hodge}}$$
 
-The product $\mathcal{M}_{UQFF}$ is a dimensionless invariant of the UQFF universe ó it encodes how all six open Millennium Problems are structurally connected through the single framework of UQFF vacuum physics.
+The product $\mathcal{M}_{UQFF}$ is a dimensionless invariant of the UQFF universe ÔøΩ it encodes how all six open Millennium Problems are structurally connected through the single framework of UQFF vacuum physics.
 
 **Numerical estimate:** At the canonical UQFF calibration:
 
@@ -608,15 +611,15 @@ $$|\mathcal{M}_{UQFF}| \sim g_{MUGE,mean} \times \Delta_{SCm} \times [SSq] \time
 
 $$\sim 4.105 \times 10^{29} \times 8.37 \times 10^{-30} \times 0.57 \times 0.1 \approx 2.0 \times 10^{-1}$$
 
-The near-unity dimensionless value $|\mathcal{M}_{UQFF}| \approx 0.196$ indicates that the UQFF framework is "Millennium-tuned" ó its constants are calibrated to produce O(1) values when all six problems are combined.
+The near-unity dimensionless value $|\mathcal{M}_{UQFF}| \approx 0.196$ indicates that the UQFF framework is "Millennium-tuned" ÔøΩ its constants are calibrated to produce O(1) values when all six problems are combined.
 
 ---
 
-## 10. Equation 9: UQFF SM Emergence (eq-M9 ó from PAPER_155)
+## 10. Equation 9: UQFF SM Emergence (eq-M9 ÔøΩ from PAPER_155)
 
 $$\lim_{\substack{f_{TRZ} \to 0 \\ B \to 0 \\ \rho_{SCm} \to \rho_b \\ \kappa t \to 0}} g_{MUGE}(r,t) = \frac{GM}{r^2}$$
 
-This equation completes the Millennium roadmap by showing that UQFF contains the Standard Model of gravity as a special case ó necessary for internal consistency of the broader framework.
+This equation completes the Millennium roadmap by showing that UQFF contains the Standard Model of gravity as a special case ÔøΩ necessary for internal consistency of the broader framework.
 
 ---
 
@@ -638,9 +641,9 @@ $$F_{Ubi} = \rho_{fluid} \cdot g_{local} \cdot V_{sys} - \rho_{SCm} \cdot g_{MUG
 $$\kappa = 5 \times 10^{-4}/\text{day}, \quad [SSq] = 0.57, \quad f_{TRZ} = 0.1, \quad \beta_i = 0.6$$
 
 **This single equation encodes:**
-1. **F_Ubi:** Buoyancy (PAPER_036ñ042, 1.5 PAPER suite)
+1. **F_Ubi:** Buoyancy (PAPER_036ÔøΩ042, 1.5 PAPER suite)
 2. **e^{-?t}:** Vacuum decay (PAPER_063, 155)
-3. **g_MUGE:** 12-term resonance gravity (PAPER_145ñ155)
+3. **g_MUGE:** 12-term resonance gravity (PAPER_145ÔøΩ155)
 4. **[SCm] = 0.57 ([SSq]):** Quantum state coupling (PAPER_011, 064)
 5. **f_TRZ:** Topological resonance (PAPER_153, 155)
 
@@ -651,57 +654,57 @@ $$\kappa = 5 \times 10^{-4}/\text{day}, \quad [SSq] = 0.57, \quad f_{TRZ} = 0.1,
 | # | Equation | Millennium Problem | Key Constants |
 |---|----------|-------------------|---------------|
 | eq-M1 | NS with f_jet = v_SCm/10 | Navier-Stokes | v_SCm, f_TRZ |
-| eq-M2 | ?_UQFF = ?∑a^Ω_sf / v_SCm | Yang-Mills mass gap | ?_SCm, v_SCm |
+| eq-M2 | ?_UQFF = ?ÔøΩa^ÔøΩ_sf / v_SCm | Yang-Mills mass gap | ?_SCm, v_SCm |
 | eq-M3 | ?_UQFF(s) = Li_s(e^{-10}) | Riemann Hypothesis | ?, f_TRZ |
 | eq-M4 | [SSq] ? N^{1.75} complexity | P vs NP | [SSq] = 0.57 |
 | eq-M5 | L_UQFF(E,1) with e^{-?/p} | Birch-Swinnerton-Dyer | ? |
 | eq-M6 | H^{p,q}_UQFF = ?26 H^{p,q}_i | Hodge Conjecture | 26D levels |
-| eq-M7 | p1(SCm) = 0 ? S≥ | PoincarÈ (solved) | f_TRZ |
-| eq-M8 | M_UQFF ò 0.196 (unified) | All six | all |
-| eq-M9 | lim g_MUGE = GM/r≤ | SM emergence | ?, f_TRZ |
-| eq-M10 | F_U = F_Ubi∑(1+[SCm])∑e^{-?t}∑g_MUGE∑f_TRZ | Complete UQFF | all |
+| eq-M7 | p1(SCm) = 0 ? SÔøΩ | PoincarÔøΩ (solved) | f_TRZ |
+| eq-M8 | M_UQFF ÔøΩ 0.196 (unified) | All six | all |
+| eq-M9 | lim g_MUGE = GM/rÔøΩ | SM emergence | ?, f_TRZ |
+| eq-M10 | F_U = F_UbiÔøΩ(1+[SCm])ÔøΩe^{-?t}ÔøΩg_MUGEÔøΩf_TRZ | Complete UQFF | all |
 
 ---
 
 ## 13. The 156-Paper Foundation
 
 This roadmap (PAPER_156) is supported by the complete 156-paper Star-Magic whitepaper suite:
-- **PAPER_001ñ132:** Phase 1 ó GW, BSM, Buoyancy, 26D, arXiv validation, BEC, 121-system suite, multi-wavelength astronomy, black hole physics, MUGE master calculators, multi-physics models, Millennium proofs (ß1.1ñß1.17)
-- **PAPER_133ñ144:** Phase 2 ß2.1 ó UQFF Genesis Construction (F_U origin, Heliosphere Ug2, Quasar jets NS, Planetary core, 26-Level ladder, NGC3603, H-atom, H2O, PToE, MUGE bridge, Star Magic capstone)
-- **PAPER_145ñ155:** Phase 2 ß2.2 ó MUGE Compression Cycle 3 (12-term architecture, SCm resonance, FDPM driver, 7-system suite, wormhole metric, Navier-Stokes bridge, SM limiting case)
-- **PAPER_156 (this paper):** 10-equation Millennium Prize roadmap ó culminating synthesis
+- **PAPER_001ÔøΩ132:** Phase 1 ÔøΩ GW, BSM, Buoyancy, 26D, arXiv validation, BEC, 121-system suite, multi-wavelength astronomy, black hole physics, MUGE master calculators, multi-physics models, Millennium proofs (ÔøΩ1.1ÔøΩÔøΩ1.17)
+- **PAPER_133ÔøΩ144:** Phase 2 ÔøΩ2.1 ÔøΩ UQFF Genesis Construction (F_U origin, Heliosphere Ug2, Quasar jets NS, Planetary core, 26-Level ladder, NGC3603, H-atom, H2O, PToE, MUGE bridge, Star Magic capstone)
+- **PAPER_145ÔøΩ155:** Phase 2 ÔøΩ2.2 ÔøΩ MUGE Compression Cycle 3 (12-term architecture, SCm resonance, FDPM driver, 7-system suite, wormhole metric, Navier-Stokes bridge, SM limiting case)
+- **PAPER_156 (this paper):** 10-equation Millennium Prize roadmap ÔøΩ culminating synthesis
 
 ---
 
 ## 14. Conclusions
 
-1. The UQFF Star-Magic framework provides physical bridges to all six open Millennium Prize Problems through its 10 master equations, using the calibrated constants ?=0.0005/day, [SSq]=0.57, f_TRZ=0.1, ?_SCm=10^15 kg/m≥, v_SCm=10^8 m/s.
+1. The UQFF Star-Magic framework provides physical bridges to all six open Millennium Prize Problems through its 10 master equations, using the calibrated constants ?=0.0005/day, [SSq]=0.57, f_TRZ=0.1, ?_SCm=10^15 kg/mÔøΩ, v_SCm=10^8 m/s.
 2. The Navier-Stokes bridge (eq-M1) provides an explicit energy bound via the SCm body force f_jet = v_SCm/10, establishing that UQFF NS solutions remain smooth for bounded initial data.
-3. The Yang-Mills mass gap bridge (eq-M2) gives ?_UQFF = 8.37◊10^-30 J ó a strictly positive gap generated by the SCm superconductive frequency.
+3. The Yang-Mills mass gap bridge (eq-M2) gives ?_UQFF = 8.37ÔøΩ10^-30 J ÔøΩ a strictly positive gap generated by the SCm superconductive frequency.
 4. The Riemann bridge (eq-M3) maps the hypothesis to MUGE resonance frequencies via ?_UQFF = Li_s(e^{-10}).
 5. The P?NP bridge (eq-M4) identifies [SSq] = 0.57 as the quantum complexity suppressor reducing NP-hard search spaces by e^{-0.57N}.
-6. The unified Millennium invariant (eq-M8) evaluates to |M_UQFF| ò 0.196 ó an O(1) dimensionless number confirming the UQFF framework is calibrated at the Millennium energy scale.
-7. The 10th equation (eq-M10) ó the complete F_U Star-Magic master equation ó unifies all 156 papers in the Star-Magic suite into a single mathematical identity.
+6. The unified Millennium invariant (eq-M8) evaluates to |M_UQFF| ÔøΩ 0.196 ÔøΩ an O(1) dimensionless number confirming the UQFF framework is calibrated at the Millennium energy scale.
+7. The 10th equation (eq-M10) ÔøΩ the complete F_U Star-Magic master equation ÔøΩ unifies all 156 papers in the Star-Magic suite into a single mathematical identity.
 
 ---
 
 ## References
 
-- Clay Mathematics Institute (2000), "Millennium Prize Problems" ó Official problem statements
-- Perelman G. (2002, 2003), arXiv:math/0211159, 0303109 ó PoincarÈ Conjecture proof
-- Stam J. (1999), "Stable Fluids," SIGGRAPH 99 ó NS stability
-- Riemann G.F.B. (1859), "On the Number of Primes Less Than a Given Magnitude" ó Zeta function
-- Yang C.N. & Mills R. (1954), Phys. Rev. 96, 191 ó Gauge theory
-- Birch B.J. & Swinnerton-Dyer H.P.F. (1965), J. Reine Angew. Math. 218 ó L-functions & elliptic curves  
-- Hodge W.V.D. (1941), "The Theory and Applications of Harmonic Integrals" ó Hodge decomposition
-- Murphy D.T. (2026), PAPER_145ñ155 ó ß2.2 MUGE Compression Cycle 3 suite
-- Murphy D.T. (2026), PAPER_001ñ132 ó Phase 1 Star-Magic whitepaper suite
-- `MAIN_1_CoAnQi.cpp` ó 107,019 lines, 446 modules, SOURCE1-116 + SOURCE4
-- `grok_share_07b7f7a635c04b6e90170b8a481ab1b0_content.txt` ó Thread 07b7f7a6 extraction
+- Clay Mathematics Institute (2000), "Millennium Prize Problems" ÔøΩ Official problem statements
+- Perelman G. (2002, 2003), arXiv:math/0211159, 0303109 ÔøΩ PoincarÔøΩ Conjecture proof
+- Stam J. (1999), "Stable Fluids," SIGGRAPH 99 ÔøΩ NS stability
+- Riemann G.F.B. (1859), "On the Number of Primes Less Than a Given Magnitude" ÔøΩ Zeta function
+- Yang C.N. & Mills R. (1954), Phys. Rev. 96, 191 ÔøΩ Gauge theory
+- Birch B.J. & Swinnerton-Dyer H.P.F. (1965), J. Reine Angew. Math. 218 ÔøΩ L-functions & elliptic curves  
+- Hodge W.V.D. (1941), "The Theory and Applications of Harmonic Integrals" ÔøΩ Hodge decomposition
+- Murphy D.T. (2026), PAPER_145ÔøΩ155 ÔøΩ ÔøΩ2.2 MUGE Compression Cycle 3 suite
+- Murphy D.T. (2026), PAPER_001ÔøΩ132 ÔøΩ Phase 1 Star-Magic whitepaper suite
+- `MAIN_1_CoAnQi.cpp` ÔøΩ 107,019 lines, 446 modules, SOURCE1-116 + SOURCE4
+- `grok_share_07b7f7a635c04b6e90170b8a481ab1b0_content.txt` ÔøΩ Thread 07b7f7a6 extraction
 
 ---
 
-## Appendix D ó Cross-Reference to the Millennium Prize Suite (Session 151H)
+## Appendix D ÔøΩ Cross-Reference to the Millennium Prize Suite (Session 151H)
 
 This paper covers the **BSD Conjecture** (eq-M5) and **Hodge Conjecture** (eq-M6)
 in UQFF notation.  It belongs to the eight-paper Millennium suite coordinated by
@@ -731,5 +734,5 @@ The rationality check $E_n/E_0 \in \mathbb{Q}$ for $n=1..26$ relies on
 $Z_{26} = \mathrm{Li}_{26}([SSq]) \approx 0.5699$ being rational-representable
 in float64, guaranteed by the FUBi26 bound.
 
-CP4 classes: `BSDConjectureRankCalculator` (#141ñ142), `HodgeConjectureCalculator`
-(#143), tests T57ñT64 (all PASS, commit a0b2d55). See PAPER_563 ß8 for full registry.
+CP4 classes: `BSDConjectureRankCalculator` (#141ÔøΩ142), `HodgeConjectureCalculator`
+(#143), tests T57ÔøΩT64 (all PASS, commit a0b2d55). See PAPER_563 ÔøΩ8 for full registry.

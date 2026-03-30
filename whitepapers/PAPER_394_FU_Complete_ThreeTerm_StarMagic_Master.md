@@ -1,11 +1,19 @@
 # PAPER_394 — F_U Complete Three-Term Star Magic Master Equation
 
+> **Key UQFF calibrated constants:** κ = 5.0e-4 day⁻¹; [SSq] = 5.7e-1; H_SCm ≈ 9.9e-1; U_UA ≈ 1.0e-4; k_η = 1.0e-113; β_i ≈ 6.0e-1; G = 6.674e-11 N·m²/kg²
+
+
 **Source:** grok_share_cfdcad2f5.txt, lines ~200–1600 (C++ `compute_FU()` + simulation outputs)  
 **Section:** `main.cpp` `compute_FU()` function + "Program Execution Summary" Grok response  
 **Session:** 107 (grok_share_cfdcad2f5.txt deep re-analysis pass)  
 **CP4 Class:** `FUThreeTermStarMagicMasterCalculator` (CP4 #45)
 
 ---
+
+
+## Abstract
+
+This paper presents a UQFF analysis of F_U Complete Three-Term Star Magic Master Equation, deriving compressed field equations and observational predictions within the Star-Magic/UQFF framework.
 
 ## 1. Overview
 

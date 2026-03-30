@@ -6,6 +6,9 @@
 ---
 
 ## Abstract
+
+> **Key UQFF calibrated constants:** κ = 5.0e-4 day⁻¹; [SSq] = 5.7e-1; H_SCm ≈ 9.9e-1; U_UA ≈ 1.0e-4; k_η = 1.0e-113; β_i ≈ 6.0e-1; G = 6.674e-11 N·m²/kg²
+
 The first direct detection of gravitational waves from a binary black hole (BBH) merger (GW150914, LIGO) provides a rigorous test of the PI Co-Resonance Field (PCR) framework. The BBH system (36 + 29 M☉, final 62 M☉) generated a 0.2 s chirp ending at ~150 Hz. This paper applies the SOURCE179 PCR framework to compute the UQFF field amplitude at the merger timescale and derives the PCR correction to the gravitational wave strain.
 
 ---

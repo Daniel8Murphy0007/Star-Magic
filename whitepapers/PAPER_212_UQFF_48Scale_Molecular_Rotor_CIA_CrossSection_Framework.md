@@ -16,7 +16,7 @@ $$
 
 ## Abstract
 
-The UQFF framework spans 48 distinct physical scales from molecular rotational torques (~10?³4 N·m) to the observable universe diameter (~93 Gly ˜ 8.8×10²6 m). This paper enumerates the complete 48-scale table, identifies the physical mechanisms and characteristic UQFF variables at each scale, and presents the collision-induced absorption (CIA) cross-section refit for H2O-H2 collisions from arXiv:2506.09257. The CIA refit yields b = 0.004997 Å²/(cm?¹) and s(?j=2, 400 cm?¹) = 11.65 Å², shifting the UQFF k_? parameter by ?k_? ˜ 7.25×108 relative units.
+The UQFF framework spans 48 distinct physical scales from molecular rotational torques (~10?³4 N·m) to the observable universe diameter (~93 Gly ˜ 8.8e26 m). This paper enumerates the complete 48-scale table, identifies the physical mechanisms and characteristic UQFF variables at each scale, and presents the collision-induced absorption (CIA) cross-section refit for H2O-H2 collisions from arXiv:2506.09257. The CIA refit yields b = 0.004997 Å²/(cm?¹) and s(?j=2, 400 cm?¹) = 11.65 Å², shifting the UQFF k_? parameter by ?k_? ˜ 7.25×108 relative units.
 
 
 

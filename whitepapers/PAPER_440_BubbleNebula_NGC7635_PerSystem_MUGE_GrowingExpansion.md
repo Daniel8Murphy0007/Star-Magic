@@ -6,6 +6,11 @@
 
 ---
 
+
+## Abstract
+
+This paper presents a UQFF analysis of Bubble Nebula NGC 7635: Per-System MUGE with E(t) GROWING Expansion and Low-Mass Central Star, deriving compressed field equations and observational predictions within the Star-Magic/UQFF framework.
+
 ## 1. Overview
 
 PAPER_440 delivers the **complete per-system MUGE** for the Bubble Nebula (NGC 7635) — a stellar wind nebula in Cassiopeia driven by the O-star SAO 20575 (BD+60°2522), $M_\star = 46 \, M_\odot$, at $d \approx 11$ kly. The bubble radius is $r \approx 5$ ly $= 4.731 \times 10^{16}$ m, with expansion age $\tau_\text{exp} = 4$ Myr.
@@ -94,7 +99,7 @@ Standard Weaver et al. (1977) stellar wind bubble model: $R \propto (L_w t^3/\rh
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Thomson σ_T (QED synchrotron) | UQFF U_m scattering kernel: σ_T = 6.6524×10⁻²⁹ m² | σ_T = 6.6524×10⁻²⁹ m² (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
+| Thomson σ_T (QED synchrotron) | UQFF U_m scattering kernel: σ_T = 6.6524e-29 m² | σ_T = 6.6524e-29 m² (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
 | Bubble Nebula NGC 7635 luminosity Hα + X-ray | UQFF MUGE g_total → L_X via Stefan-Boltzmann + buoyancy flux: L_X ≈ g_total × M_env | L_X R_bubble ~ 3 pc | HST + Chandra | ✓ Consistent order of magnitude |
 | GR Schwarzschild limit | UQFF g_total must satisfy g ≤ c²/(2r_s) at event horizon | r_s = 2GM/c² (GR exact) | PDG 2024 / GR | ✓ UQFF respects GR horizon |
 | κ vacuum rate vs X-ray variability | UQFF κ = 0.0005/day → timescale τ_UQFF = 2000 days | Observed X-ray variability τ_obs (instrument monitoring) | HST + Chandra | Testable UQFF variability timescale |

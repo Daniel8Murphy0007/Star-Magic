@@ -33,7 +33,7 @@ Like `g_Q` (PAPER_244), this term appears universally across MUGE modules as a s
 | Parameter | Symbol | Default Value | Units | Meaning |
 |-----------|--------|---------------|-------|---------|
 | Gravitational constant | G | 6.6743 × 10?¹¹ | m³/(kg·s²) | Newton |
-| Body mass | M | 1.989 × 10³° | kg | Solar mass |
+| Body mass | M | 1.989e3° | kg | Solar mass |
 | Body radius | r | 6.957 × 108 | m | Solar radius |
 | Surrounding fluid density | ?_fluid | 1 × 10?²° | kg/m³ | Low-density ISM default |
 | Gravitational acceleration | g_grav | GM/r² | m/s² | Newtonian surface gravity |
@@ -100,7 +100,7 @@ r_c³ = 3M / (4p · ?_fluid)
 r_c  = (3M / (4p · ?_fluid))^(1/3)
 ```
 
-For solar parameters (M = M_sun, ?_fluid = 10?²° kg/m³): `r_c ˜ (3 × 1.989×10³° / (4p × 10?²°))^(1/3) ˜ (4.75×104?)^(1/3) ˜ 3.6×10¹6 m ˜ 1.2 pc`.
+For solar parameters (M = M_sun, ?_fluid = 10?²° kg/m³): `r_c ˜ (3 × 1.989e3° / (4p × 10?²°))^(1/3) ˜ (4.75×104?)^(1/3) ˜ 3.6e16 m ˜ 1.2 pc`.
 
 Below r_c, Newtonian gravity dominates; above r_c, fluid self-gravity dominates. This scale is consistent with the outer boundary of stellar wind influence zones and the transition to molecular cloud self-gravity.
 

@@ -8,7 +8,7 @@
 
 ## Abstract
 
-The Probability of Order (P_order) is defined as a universal partition function of the form $P_{order} = \exp(-E/F_{max})/Z_{partition}$, expressing the statistical likelihood that a physical system evolves from a disordered state to an ordered one. Computed across four scale presets (jet, stellar, galactic, cosmological), P_order provides a bounded positive quantity that connects to the Yang-Mills mass gap, the Navier-Stokes eigenvalue lower bound, and the Riemann Hypothesis zero distribution. The stellar-scale result (P_order ≈ 9.999×10⁻⁶) is validated against astrophysical order-formation rates.
+The Probability of Order (P_order) is defined as a universal partition function of the form $P_{order} = \exp(-E/F_{max})/Z_{partition}$, expressing the statistical likelihood that a physical system evolves from a disordered state to an ordered one. Computed across four scale presets (jet, stellar, galactic, cosmological), P_order provides a bounded positive quantity that connects to the Yang-Mills mass gap, the Navier-Stokes eigenvalue lower bound, and the Riemann Hypothesis zero distribution. The stellar-scale result (P_order ≈ 9.999e-6) is validated against astrophysical order-formation rates.
 
 ---
 
@@ -26,10 +26,10 @@ $$P_{order} = \frac{\exp(-Entropy / F_{max})}{Z_{partition}}$$
 
 | Preset | Entropy (J/K) | F_max (Hz) | Z_partition | P_order |
 |--------|--------------|-----------|------------|---------|
-| Jet (relativistic) | 1.0×10² | 1.0×10¹⁸ | 1.0 | exp(-10²/10¹⁸) ≈ 1.000 |
-| Stellar | 1.0×10²⁰ | 6.93×10⁹ | 1.0×10¹⁵ | ≈ 9.999×10⁻⁶ |
-| Galactic | 1.0×10³³ | 3.0×10⁶ | 1.0×10²⁷ | ≈ 5.3×10⁻⁷ |
-| Cosmological | 1.0×10⁸⁸ | 2.7×10⁻¹⁸ | 1.0×10⁸⁰ | ≈ 1.2×10⁻⁸ |
+| Jet (relativistic) | 1.0e2 | 1.0e18 | 1.0 | exp(-10²/10¹⁸) ≈ 1.000 |
+| Stellar | 1.0e20 | 6.93e9 | 1.0e15 | ≈ 9.999e-6 |
+| Galactic | 1.0e33 | 3.0e6 | 1.0e27 | ≈ 5.3e-7 |
+| Cosmological | 1.0e88 | 2.7e-18 | 1.0e80 | ≈ 1.2e-8 |
 
 The stellar preset yields $P_{order} \approx 10^{-5}$, consistent with the observed star-formation efficiency in molecular clouds (~1-10% per free-fall time, or 10⁻⁵ per dynamical time).
 

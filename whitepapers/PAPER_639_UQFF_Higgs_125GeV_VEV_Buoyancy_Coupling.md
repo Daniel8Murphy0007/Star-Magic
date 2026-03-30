@@ -7,6 +7,11 @@
 
 ---
 
+
+## Abstract
+
+This paper presents a UQFF analysis of astrophysical observables, deriving compressed field equations and observational predictions within the Star-Magic/UQFF framework.
+
 ## §1 Abstract
 
 The Higgs boson mass m_H = 125.20 ± 0.11 GeV is the most precisely measured fundamental
@@ -76,7 +81,7 @@ HL-LHC targets δλ/λ ~ 50% at 3/ab, but this shift is undetectable. The UQFF s
 | m_H Higgs mass | m_H_UQFF = 125.09 GeV (K_HIGGS=47.34, H_SCm=0.99) | m_H = 125.20 ± 0.11 GeV | arXiv:2501.14849 + PDG 2024 | 99.79% |
 | λ Higgs self-coupling | λ = κ × K_HIGGS / H_SCm × R_unit = 0.1294 | λ = m_H²/(2v²) = 0.1294 | PDG 2024 | 100% |
 | VEV v = 246.22 GeV | UQFF uses v directly (fixed input) | v = 246.22 GeV | PDG 2024 | 100% (exact input) |
-| HL-LHC δλ measurement | UQFF δλ = +6.5×10⁻⁵ (positive direction) | HL-LHC: target δλ/λ ~ 50% by 2035 | HL-LHC projections | Testable UQFF prediction (sign) |
+| HL-LHC δλ measurement | UQFF δλ = +6.5e-5 (positive direction) | HL-LHC: target δλ/λ ~ 50% by 2035 | HL-LHC projections | Testable UQFF prediction (sign) |
 
 **New physics claim:** The UQFF bridge constant K_HIGGS = 47.34 provides a first-principles
 connection between the UQFF buoyancy frequency and the electroweak VEV. The Higgs mass

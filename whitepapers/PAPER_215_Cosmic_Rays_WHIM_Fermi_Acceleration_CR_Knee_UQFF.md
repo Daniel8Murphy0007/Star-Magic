@@ -110,15 +110,15 @@ Origin: maximum energy from SNR shock acceleration
 For typical Galactic SNR:
     B ˜ 3×10?¹° T (300 µG shock-compressed B)
     u_s ˜ 104 km/s = 107 m/s
-    R ˜ 10 pc = 3.09×10¹7 m
+    R ˜ 10 pc = 3.09e17 m
     Z = 1 (proton)
 
-    E_max = 1 × 1.6×10?¹? × 3×10?¹° × 107 × 3.09×10¹7
-          = 1.6×10?¹? × 9.27×10¹4
+    E_max = 1 × 1.6×10?¹? × 3×10?¹° × 107 × 3.09e17
+          = 1.6×10?¹? × 9.27e14
           = 1.48×10?4 J = 1.48×10?4/(1.6×10?¹?) eV
-          = 9.25×10¹4 eV ˜ 10¹5 eV = 1 PeV
+          = 9.25e14 eV ˜ 10¹5 eV = 1 PeV
 
-    For iron (Z=26): E_max,Fe = 26 × 10¹5 eV = 2.6×10¹6 eV
+    For iron (Z=26): E_max,Fe = 26 × 10¹5 eV = 2.6e16 eV
 
 UQFF knee explanation:
   E_max(Z) = Z × E_max,proton × (1 + UQFF_Ug1_correction)
@@ -198,7 +198,7 @@ Small-scale dynamo (Kazantsev 1968):
 For WHIM filaments (from grok_share_7514fe.txt lines 6360–6380):
   v_turb ~ 100 km/s (filament turbulence)
   l_turb ~ 100 kpc (driving scale)
-  ?_dynamo ~ 100 km/s / (100 kpc) = 105 / (3.09×10²¹) ˜ 3.2×10?¹7 s?¹
+  ?_dynamo ~ 100 km/s / (100 kpc) = 105 / (3.09e21) ˜ 3.2×10?¹7 s?¹
   Saturation timescale: t_sat ˜ ln(B_sat/B_seed)/? ~ 1 Gyr (produces µG-level B)
 
 UQFF coupling to Kazantsev dynamo:
@@ -238,11 +238,11 @@ Observational constraint:
 
 | Particle | Z | E_knee (standard) | E_knee (UQFF) | Detection |
 |---------|---|-------------------|---------------|-----------|
-| Proton | 1 | 3×10¹5 eV | 3.09×10¹5 eV | IceTop, KASCADE |
-| Helium | 2 | 6×10¹5 eV | 6.18×10¹5 eV | Tibet AS-? |
-| CNO | 7 | 2.1×10¹6 eV | 2.16×10¹6 eV | KASCADE-Grande |
-| Silicon | 14 | 4.2×10¹6 eV | 4.33×10¹6 eV | Auger low-energy |
-| Iron | 26 | 7.8×10¹6 eV | 8.04×10¹6 eV | KASCADE-Grande |
+| Proton | 1 | 3×10¹5 eV | 3.09e15 eV | IceTop, KASCADE |
+| Helium | 2 | 6×10¹5 eV | 6.18e15 eV | Tibet AS-? |
+| CNO | 7 | 2.1e16 eV | 2.16e16 eV | KASCADE-Grande |
+| Silicon | 14 | 4.2e16 eV | 4.33e16 eV | Auger low-energy |
+| Iron | 26 | 7.8e16 eV | 8.04e16 eV | KASCADE-Grande |
 
 UQFF shift: +3% from Ug1 magnetic enhancement ? consistent with observations (±5%)
 

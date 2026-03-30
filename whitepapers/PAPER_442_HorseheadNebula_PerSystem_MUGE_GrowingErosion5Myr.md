@@ -6,6 +6,11 @@
 
 ---
 
+
+## Abstract
+
+This paper presents a UQFF analysis of Horsehead Nebula (Barnard 33): Per-System MUGE with Growing Erosion E(t) τ=5 Myr, deriving compressed field equations and observational predictions within the Star-Magic/UQFF framework.
+
 ## 1. Overview
 
 PAPER_442 delivers the **complete per-system MUGE** for the Horsehead Nebula (Barnard 33, IC 434 pillar), a dense molecular cloud dark nebula silhouetted against ionized hydrogen emission in Orion, located at $d \approx 400$ pc. Mass $M = 1000 \, M_\odot$, physical height $r = 2.5$ ly $= 2.365 \times 10^{16}$ m, $z \approx 0$ (local MW).
@@ -107,7 +112,7 @@ Standard photodissociation region (PDR) models (Hollenbach & Tielens 1999) treat
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Thomson σ_T (QED synchrotron) | UQFF U_m scattering kernel: σ_T = 6.6524×10⁻²⁹ m² | σ_T = 6.6524×10⁻²⁹ m² (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
+| Thomson σ_T (QED synchrotron) | UQFF U_m scattering kernel: σ_T = 6.6524e-29 m² | σ_T = 6.6524e-29 m² (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
 | Horsehead Nebula luminosity IR + submm | UQFF MUGE g_total → L_X via Stefan-Boltzmann + buoyancy flux: L_X ≈ g_total × M_env | L_X n_H ~ 10⁴ cm⁻³ | JWST / ALMA | ✓ Consistent order of magnitude |
 | GR Schwarzschild limit | UQFF g_total must satisfy g ≤ c²/(2r_s) at event horizon | r_s = 2GM/c² (GR exact) | PDG 2024 / GR | ✓ UQFF respects GR horizon |
 | κ vacuum rate vs X-ray variability | UQFF κ = 0.0005/day → timescale τ_UQFF = 2000 days | Observed X-ray variability τ_obs (instrument monitoring) | JWST / ALMA | Testable UQFF variability timescale |

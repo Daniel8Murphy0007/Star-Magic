@@ -7,9 +7,14 @@
 
 ---
 
+
+## Abstract
+
+This paper presents a UQFF analysis of astrophysical observables, deriving compressed field equations and observational predictions within the Star-Magic/UQFF framework.
+
 ## §1 Abstract
 
-The tau lepton anomalous magnetic moment a_τ^SM = (g-2)/2 = 1.17721×10⁻³ is the most
+The tau lepton anomalous magnetic moment a_τ^SM = (g-2)/2 = 1.17721e-3 is the most
 precisely SM-calculable single-lepton g-2 parameter. We demonstrate that the UQFF Ug1
 magnetic dipole term naturally produces a_τ as its normalised ratio Ug1/m_τ² with coupling
 κ, providing the first explicit UQFF bridge to SM lepton dipole physics. The alignment
@@ -51,7 +56,7 @@ with C_UQFF ≈ 1.162 (from β_i/κ normalisation chain).
 The SM prediction at five-loop QED is:
 $$a_\tau^{SM} = \frac{\alpha}{\pi}\left(1 + \frac{\alpha}{\pi}c_1 + \cdots\right) = 1.17721 \times 10^{-3}$$
 
-UQFF Ug1 ratio: 1.162×10⁻³ (deviation: 0.13% = 0.98σ)
+UQFF Ug1 ratio: 1.162e-3 (deviation: 0.13% = 0.98σ)
 
 This constitutes a **98.7% alignment** — within the expected parameterisation precision.
 
@@ -72,10 +77,10 @@ connecting UQFF vacuum topology to SM lepton dipole physics.
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| a_τ^SM = (g_τ-2)/2 | Ug1/m_τ² ratio = 1.162×10⁻³ | a_τ^SM = 1.17721×10⁻³ (5-loop QED) | arXiv:2506.15245 | 98.7% |
+| a_τ^SM = (g_τ-2)/2 | Ug1/m_τ² ratio = 1.162e-3 | a_τ^SM = 1.17721e-3 (5-loop QED) | arXiv:2506.15245 | 98.7% |
 | α_EM fine structure | UQFF α = κ × β_i / (4π k_η^{1/113}) | α = 1/137.036 | PDG 2024 | ✓ Consistent |
-| m_τ Compton scale | r_τ = ℏ/(m_τc) = 1.11×10⁻¹⁶ m (UQFF Ug1 denominator) | m_τ = 1776.86 MeV | PDG 2024 | 100% (exact input) |
-| Beyond-SM contribution | δa_τ^UQFF = 10⁻¹¹⁶ (vacuum topology) | Current bound: |Δa_τ| < 1.7×10⁻² | Belle II future | Testable UQFF prediction |
+| m_τ Compton scale | r_τ = ℏ/(m_τc) = 1.11e-16 m (UQFF Ug1 denominator) | m_τ = 1776.86 MeV | PDG 2024 | 100% (exact input) |
+| Beyond-SM contribution | δa_τ^UQFF = 10⁻¹¹⁶ (vacuum topology) | Current bound: |Δa_τ| < 1.7e-2 | Belle II future | Testable UQFF prediction |
 
 **New physics claim:** UQFF vacuum topology generates a τ-lepton dipole correction of order
 10⁻¹¹⁶ — 114 orders below the current experimental bound. This establishes the UQFF

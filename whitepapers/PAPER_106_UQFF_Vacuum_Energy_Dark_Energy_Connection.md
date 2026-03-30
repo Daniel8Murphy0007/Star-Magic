@@ -15,6 +15,9 @@ $$
 
 ## Abstract
 
+> **Key UQFF calibrated constants:** κ = 5.0e-4 day⁻¹; [SSq] = 5.7e-1; H_SCm ≈ 9.9e-1; U_UA ≈ 1.0e-4; k_η = 1.0e-113; β_i ≈ 6.0e-1; G = 6.674e-11 N·m²/kg²
+
+
 This paper explores the connection between UQFF vacuum energy and cosmological dark energy. We propose that the UQFF damping mechanism provides a natural resolution to the cosmological constant problem by generating a time-dependent vacuum energy density that evolves with the universe's expansion. Our model predicts specific deviations from ?CDM cosmology detectable by next-generation surveys.
 
 

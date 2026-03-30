@@ -18,6 +18,9 @@ $$
 
 ## Abstract
 
+> **Key UQFF calibrated constants:** κ = 5.0e-4 day⁻¹; [SSq] = 5.7e-1; H_SCm ≈ 9.9e-1; U_UA ≈ 1.0e-4; k_η = 1.0e-113; β_i ≈ 6.0e-1; G = 6.674e-11 N·m²/kg²
+
+
 The UQFF framework has been validated and applied across 24 unique astrophysical systems spanning stellar, galactic, nuclear, particle, and cosmological domains. This paper provides a complete parameter catalog for all 24 systems, organized by type, with UQFF equation assignments, calibrated parameter values, verification data sources, and cross-references to existing whitepapers. The catalog is extracted from the 393-page "UQFF Equations Across Astrophysical Systems" corpus (verified Sept 22, 2025) as the authoritative single-document reference for system parameters used in any UQFF calculation.
 
 

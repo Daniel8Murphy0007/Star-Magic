@@ -8,6 +8,14 @@
 
 ---
 
+
+## Abstract
+
+$$F_{U,Bi} = \kappa \cdot \frac{\rho_{\text{SCm}}}{\rho_{\text{UA}}} \cdot (U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_m + U_{bi})$$
+
+
+This paper presents a UQFF analysis of UQFF Exotic Pocketed Shell Quantum Frequency Events, deriving compressed field equations and observational predictions within the Star-Magic/UQFF framework.
+
 ## §1 Abstract
 
 Pocketed shells are isolated void subgraphs — regions of the hypergraph where
@@ -117,9 +125,9 @@ Exotic pocket shells predict:
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
 | Exotic atom stability | Pocket shell stable when DPM asymmetry > 0; maps to QED bound-state stability | QED: exotic atoms (muonium/positronium) decay on τ ~ ns–μs | QED | UQFF predicts finite-lifetime exotic shells consistent with QED |\
-| Vacuum oscillation period | τ = 2π/\|∂SCm/∂t\| (SCm oscillation period) | QED vacuum fluctuation period: τ_QED = ħ/(m_e c²) = 1.29×10⁻²¹ s | QED | UQFF τ ≫ QED floor — cosmological scale |\
-| Thomson cross-section | U_m Compton: σ_T = 8π(α_EM ħ/(m_e c))²/3 | σ_T = 6.6524×10⁻²⁹ m² | PDG 2024 | Direct input to U_m pocket scattering |\
-| Pocket shell frequency floor | f_quantum = ħ/(m_e · r_pocket²) for r_pocket near Bohr radius | f_Bohr = 6.58×10¹⁵ Hz (Rydberg energy/ħ) | NIST CODATA | X-ray floor ~5.7×10¹⁶ Hz consistent (10× Rydberg) |
+| Vacuum oscillation period | τ = 2π/\|∂SCm/∂t\| (SCm oscillation period) | QED vacuum fluctuation period: τ_QED = ħ/(m_e c²) = 1.29e-21 s | QED | UQFF τ ≫ QED floor — cosmological scale |\
+| Thomson cross-section | U_m Compton: σ_T = 8π(α_EM ħ/(m_e c))²/3 | σ_T = 6.6524e-29 m² | PDG 2024 | Direct input to U_m pocket scattering |\
+| Pocket shell frequency floor | f_quantum = ħ/(m_e · r_pocket²) for r_pocket near Bohr radius | f_Bohr = 6.58e15 Hz (Rydberg energy/ħ) | NIST CODATA | X-ray floor ~5.7e16 Hz consistent (10× Rydberg) |
 
 **New physics claim:** Exotic void pocket shells at ∇UA_eq ≈ 31.62 represent a new class
 of astrophysical transient — neither thermal plasma nor classical particle physics — with a

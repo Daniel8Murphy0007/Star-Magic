@@ -8,6 +8,14 @@
 
 ---
 
+
+## Abstract
+
+$$F_{U,Bi} = \kappa \cdot \frac{\rho_{\text{SCm}}}{\rho_{\text{UA}}} \cdot (U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_m + U_{bi})$$
+
+
+This paper presents a UQFF analysis of UQFF Zero-Mass Aether Vacuum Gradient Reformulation, deriving compressed field equations and observational predictions within the Star-Magic/UQFF framework.
+
 ## §1 Abstract
 
 This paper presents the Zero-Mass Universal Aether Vacuum Gradient Reformulation — the
@@ -144,7 +152,7 @@ collapse in void regions (BH26 harmonic mode).
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Vacuum energy ρ_Λ | ρ_vac = \|∇UA\|; equilibrium ∇UA_eq = √(κ/g) = 31.62 | ρ_Λ = 5.96×10⁻²⁷ kg/m³ (PDG) | PDG 2024 | Geometric topology match |
+| Vacuum energy ρ_Λ | ρ_vac = \|∇UA\|; equilibrium ∇UA_eq = √(κ/g) = 31.62 | ρ_Λ = 5.96e-27 kg/m³ (PDG) | PDG 2024 | Geometric topology match |
 | Higgs mass m_H | K_HIGGS = 47.34 → m_H ≈ 125.09 GeV | 125.20 ± 0.11 GeV | PDG 2024 | 99.89% |
 | Photon (gauge boson) mass | UA zero-mass field: ρ_UA = 0 (immutable) | m_γ < 10⁻¹⁸ eV | PDG 2024 | ✓ Consistent |
 | Fine structure α_EM | 1/137.036 in U_m Compton scattering term | 1/137.036 | PDG 2024 | 100% |

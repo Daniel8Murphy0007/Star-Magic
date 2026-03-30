@@ -50,11 +50,11 @@ Models particle deceleration measured by the Cassini q-scope instrument, where r
 
 | Parameter | Value | Description |
 |-----------|-------|-------------|
-| Orbital distance | 1.43 × 10¹² m | Cassini orbital radius from Saturn center |
-| Ring radius scale | 7.0 × 10⁷ m | Ring system scale |
-| Saturn mass | 5.683 × 10²⁶ kg | Planetary mass |
-| Ring mass | 1.5 × 10¹⁹ kg | Total ring system mass estimate |
-| B field | 1.0 × 10⁻⁷ T | Saturn ring magnetic field |
+| Orbital distance | 1.43e12 m | Cassini orbital radius from Saturn center |
+| Ring radius scale | 7.0e7 m | Ring system scale |
+| Saturn mass | 5.683e26 kg | Planetary mass |
+| Ring mass | 1.5e19 kg | Total ring system mass estimate |
+| B field | 1.0e-7 T | Saturn ring magnetic field |
 | Wind velocity | 500.0 m/s | Saturn zonal wind speed |
 | Rotation period | 10.7 × 3600 s | Saturn rotation period |
 
@@ -101,9 +101,9 @@ providing an effective factor-of-$2\pi r_0$ enhancement over spherical for the e
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
 | Higgs mass m_H | UQFF K_HIGGS=47.34 → m_H_UQFF = 125.09 GeV | m_H = 125.20 ± 0.11 GeV | PDG 2024 | 99.8% |
-| Cosmological Λ | UQFF |∇UA|² → 1.09×10⁻⁵² m⁻² | Λ = 1.114×10⁻⁵² m⁻² (Planck+DESI) | Planck 2018 | 97.8% |
-| Thomson σ_T (QED) | UQFF U_m kernel: σ_T = 6.6524×10⁻²⁹ m² | σ_T = 6.6524×10⁻²⁹ m² | PDG 2024 | 100% (exact) |
-| κ baryon stability | κ = 0.0005/day; scale separation 10³³ from proton decay | τ_p > 7.7×10³³ yr (Super-K) | Super-K 2024 | ✓ UQFF baryon-safe |
+| Cosmological Λ | UQFF |∇UA|² → 1.09e-52 m⁻² | Λ = 1.114e-52 m⁻² (Planck+DESI) | Planck 2018 | 97.8% |
+| Thomson σ_T (QED) | UQFF U_m kernel: σ_T = 6.6524e-29 m² | σ_T = 6.6524e-29 m² | PDG 2024 | 100% (exact) |
+| κ baryon stability | κ = 0.0005/day; scale separation 10³³ from proton decay | τ_p > 7.7e33 yr (Super-K) | Super-K 2024 | ✓ UQFF baryon-safe |
 
 **New physics claim:** UQFF operates at a vacuum topology scale (~200 PeV) that is 8 orders
 below the GUT scale and 33 orders above nuclear baryon-number scales. This intermediate-scale

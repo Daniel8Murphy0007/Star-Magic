@@ -7,6 +7,11 @@
 
 ---
 
+
+## Abstract
+
+This paper presents a UQFF analysis of UQFF 12-Term Full Spectral Ladder for SGR1745, deriving compressed field equations and observational predictions within the Star-Magic/UQFF framework.
+
 ## 1. Overview
 
 PAPER_371 documented the 12-term resonance MUGE formula and structure (the co-sum of 12

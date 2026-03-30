@@ -7,6 +7,11 @@
 
 ---
 
+
+## Abstract
+
+This paper presents a UQFF analysis of Ug4i Transient Age-Dependent Decay Law, deriving compressed field equations and observational predictions within the Star-Magic/UQFF framework.
+
 ## 1. Overview
 
 The UQFF term **Ug4i** represents vacuum energy concentration reactivity — the scalar field
@@ -76,13 +81,13 @@ Using the canonical 7-system parameter registry (PAPER_385):
 
 | System | Age t (s) | E_react(t) (J) | Ug4i Status |
 |--------|----------:|:--------------:|:-----------:|
-| SGR1745 Magnetar | 3.799×10¹⁰ | ≈ 0 | **INACTIVE** |
-| Sagittarius A* | 3.786×10¹⁴ | ≈ 0 | INACTIVE |
-| Tapestry (Star Formation) | 3.156×10¹³ | ≈ 0 | INACTIVE |
-| Westerlund 2 (Cluster) | 3.156×10¹³ | ≈ 0 | INACTIVE |
-| Pillars of Creation | 3.156×10¹³ | ≈ 0 | INACTIVE |
-| Rings of Relativity | 3.156×10¹⁴ | ≈ 0 | INACTIVE |
-| Student's Guide (Cosm.) | 4.35×10¹⁷ | ≈ 0 | INACTIVE |
+| SGR1745 Magnetar | 3.799e10 | ≈ 0 | **INACTIVE** |
+| Sagittarius A* | 3.786e14 | ≈ 0 | INACTIVE |
+| Tapestry (Star Formation) | 3.156e13 | ≈ 0 | INACTIVE |
+| Westerlund 2 (Cluster) | 3.156e13 | ≈ 0 | INACTIVE |
+| Pillars of Creation | 3.156e13 | ≈ 0 | INACTIVE |
+| Rings of Relativity | 3.156e14 | ≈ 0 | INACTIVE |
+| Student's Guide (Cosm.) | 4.35e17 | ≈ 0 | INACTIVE |
 
 **Conclusion:** For all 7 canonical systems, $E_{react} \rightarrow 0$. Ug4i is numerically zero
 across the standard UQFF validation suite.

@@ -7,6 +7,11 @@
 
 ---
 
+
+## Abstract
+
+This paper presents a UQFF analysis of MUGE Dual-Model 7-System Numeric Comparison: Compressed vs Resonance, deriving compressed field equations and observational predictions within the Star-Magic/UQFF framework.
+
 ## 1. Overview
 
 When Grok integrated both MUGE documents ("100." Compressed + "200." Resonance), it produced
@@ -39,15 +44,15 @@ This data was NOT captured in PAPER_371 (resonance only) or PAPER_372 (compresse
 The magnetar case shows the **largest discrepancy** between the two models:
 
 ```
-Compressed MUGE: g ≈ 1.782×10³⁹ m/s² (dominated by perturbation term)
+Compressed MUGE: g ≈ 1.782e39 m/s² (dominated by perturbation term)
   Perturbation = (M + M_DM) · (δρ/ρ + 3GM/r³)
-               = (2.984×10³⁰ + 0) · (10⁻⁵ + 5.973×10⁸)
-               ≈ 1.782×10³⁹ m/s²
+               = (2.984e30 + 0) · (10⁻⁵ + 5.973e8)
+               ≈ 1.782e39 m/s²
 
-Resonance MUGE: g ≈ 1.773×10⁻⁹ m/s² (dominated by fluid term)
+Resonance MUGE: g ≈ 1.773e-9 m/s² (dominated by fluid term)
   a_fluid_freq = f_fluid · E_vac,neb · V_sys / E_vac,ISM / c
-               = 1.269×10⁻¹⁴ × 7.09×10⁻³⁶ × 4.189×10¹² / 7.09×10⁻³⁷ / 3×10⁸
-               ≈ 1.773×10⁻⁹ m/s²
+               = 1.269e-14 × 7.09e-36 × 4.189e12 / 7.09e-37 / 3×10⁸
+               ≈ 1.773e-9 m/s²
 ```
 
 **Physical interpretation:** The compressed model's perturbation term is **unphysically large**
@@ -63,8 +68,8 @@ suited to galactic/cosmological scales.
 ### 3.2 Sagittarius A* — Sgr A* Reversal (Resonance > Compressed by 9 Orders)
 
 ```
-Compressed MUGE: g ≈ 3.552×10²⁰ m/s² (dominated by fluid: ρ_fl·V·g_local)
-Resonance MUGE: g ≈ 4.105×10²⁹ m/s² (dominated by fluid: a_fluid_freq)
+Compressed MUGE: g ≈ 3.552e20 m/s² (dominated by fluid: ρ_fl·V·g_local)
+Resonance MUGE: g ≈ 4.105e29 m/s² (dominated by fluid: a_fluid_freq)
 ```
 
 Both models are fluid-dominated for Sgr A*, but the resonance model gives a value 9 orders
@@ -86,22 +91,22 @@ in BOTH models and is governed by the same physical inputs.
 
 ### System 1: Magnetar SGR 1745-2900
 ```
-M = 2.984×10³⁰ kg, r = 10⁴ m, t = 3.799×10¹⁰ s, z = 0.0009
+M = 2.984e30 kg, r = 10⁴ m, t = 3.799e10 s, z = 0.0009
 B = 10¹⁰ T, Bcrit = 10¹¹ T (B/Bcrit = 0.1 → 0.9 factor)
-ρ_fluid = 10⁻¹⁵ kg/m³, V = 4.189×10¹² m³, g_local = 10 m/s²
+ρ_fluid = 10⁻¹⁵ kg/m³, V = 4.189e12 m³, g_local = 10 m/s²
 M_DM = 0, δρ/ρ = 10⁻⁵
-Resonance: I=10²¹ A, A=3.142×10⁸ m², ω₁=10⁻³ rad/s, ω₂=-10⁻³ rad/s
-vexp = 10³ m/s, ffluid = 1.269×10⁻¹⁴ Hz
+Resonance: I=10²¹ A, A=3.142e8 m², ω₁=10⁻³ rad/s, ω₂=-10⁻³ rad/s
+vexp = 10³ m/s, ffluid = 1.269e-14 Hz
 ```
 
 ### System 2: Sagittarius A*
 ```
-M = 8.155×10³⁶ kg, r = 10¹² m, t = 3.786×10¹⁴ s, z = 0.0009
+M = 8.155e36 kg, r = 10¹² m, t = 3.786e14 s, z = 0.0009
 B = 10⁻⁵ T, Bcrit = 10⁻⁴ T (B/Bcrit = 0.1 → 0.9 factor)
-ρ_fluid = 10⁻²⁰ kg/m³, V = 3.552×10⁴⁵ m³, g_local = 10⁻⁵ m/s²
+ρ_fluid = 10⁻²⁰ kg/m³, V = 3.552e45 m³, g_local = 10⁻⁵ m/s²
 M_DM = 10³⁷ kg, δρ/ρ = 10⁻³
-Resonance: I=10²³ A, A=2.813×10³⁰ m², ω₁=10⁻⁵, ω₂=-10⁻⁵ rad/s
-vexp = 5×10⁶ m/s, ffluid = 3.465×10⁻⁸ Hz
+Resonance: I=10²³ A, A=2.813e30 m², ω₁=10⁻⁵, ω₂=-10⁻⁵ rad/s
+vexp = 5×10⁶ m/s, ffluid = 3.465e-8 Hz
 ```
 
 ### Systems 3–7 (Condensed)
@@ -139,13 +144,13 @@ Derived from the Grok computation (validated against Grok's work-shown derivatio
 
 | System | Compressed g | Resonance g | Notes |
 |--------|-------------|-------------|-------|
-| SGR 1745-2900 | 1.782×10³⁹ | **1.773×10⁻⁹** | Resonance = physical; compressed unphysical |
-| Sgr A* | 3.552×10²⁰ | **4.105×10²⁹** | Both fluid-dominated |
-| Tapestry | 1.001×10²⁷ | 1.001×10²⁷ | Convergent |
-| Westerlund | 1.001×10²⁷ | 1.001×10²⁷ | Convergent |
-| Pillars | 2.001×10²⁶ | 2.001×10²⁶ | Convergent |
-| Rings | 5.005×10²⁵ | 5.005×10²⁵ | Convergent |
-| Student's Guide | 3.958×10¹⁴ | 3.958×10¹⁴ | Convergent |
+| SGR 1745-2900 | 1.782e39 | **1.773e-9** | Resonance = physical; compressed unphysical |
+| Sgr A* | 3.552e20 | **4.105e29** | Both fluid-dominated |
+| Tapestry | 1.001e27 | 1.001e27 | Convergent |
+| Westerlund | 1.001e27 | 1.001e27 | Convergent |
+| Pillars | 2.001e26 | 2.001e26 | Convergent |
+| Rings | 5.005e25 | 5.005e25 | Convergent |
+| Student's Guide | 3.958e14 | 3.958e14 | Convergent |
 
 ---
 

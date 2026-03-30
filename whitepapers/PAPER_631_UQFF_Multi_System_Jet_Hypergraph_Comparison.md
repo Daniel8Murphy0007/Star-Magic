@@ -8,6 +8,14 @@
 
 ---
 
+
+## Abstract
+
+$$F_{U,Bi} = \kappa \cdot \frac{\rho_{\text{SCm}}}{\rho_{\text{UA}}} \cdot (U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_m + U_{bi})$$
+
+
+This paper presents a UQFF analysis of UQFF Multi-System Jet Hypergraph Comparison (5 Systems), deriving compressed field equations and observational predictions within the Star-Magic/UQFF framework.
+
 ## §1 Abstract
 
 This paper presents the first systematic UQFF comparison across five astrophysical
@@ -23,8 +31,8 @@ in BH mass and 3 orders of magnitude in distance.
 
 | System | Morphology | ∇UA_peak (m⁻¹) | Freq range (Hz) | Pockets | Match |
 |--------|-----------|---------------|----------------|---------|-------|
-| Centaurus A | Twisting knotty, V-shape (28 nodes) | ~10⁻¹⁹ | 6.14×10¹⁶–10¹⁸ | 7 | Strong |
-| M87 | Smooth elongation + pol. flips (12 nodes) | ~10⁻¹⁸ | 5.71×10¹⁶–10¹⁸ | 4 | Strong |
+| Centaurus A | Twisting knotty, V-shape (28 nodes) | ~10⁻¹⁹ | 6.14e16–10¹⁸ | 7 | Strong |
+| M87 | Smooth elongation + pol. flips (12 nodes) | ~10⁻¹⁸ | 5.71e16–10¹⁸ | 4 | Strong |
 | NGC 6278 | Compact core, minimal branching (10 nodes) | ~10⁻²⁰ | 10¹⁶–5×10¹⁷ | 1 | Good |
 | MS 0735.6+7421 | Extended multi-shell AGN outburst (15+ nodes) | ~10⁻²² | 10¹⁷–10¹⁸ | 5 | Good |
 | Perseus | Diffuse merger branches (20+ nodes, turbulent) | ~10⁻²¹ | 10¹⁶–10¹⁸ | 4 | Strong |
@@ -42,7 +50,7 @@ Systems ordered by void pocket gradient magnitude (most extreme void first):
 5. **MS 0735** — ∇UA ≈ 10⁻²² m⁻¹ (most extreme void, explosive DVP)
 
 The VDS gradient series spans **4 decades** in ∇UA (10⁻¹⁸ to 10⁻²²) while the
-observable frequency floors span less than one decade (5.71×10¹⁶ to 10¹⁷ Hz).
+observable frequency floors span less than one decade (5.71e16 to 10¹⁷ Hz).
 This compression is the **frequency floor universality** — BH26 cubic rebound
 saturates near 10¹⁶–10¹⁷ Hz regardless of ∇UA value.
 
@@ -72,8 +80,8 @@ f_floor ≈ (∇UA_node_1)³ × 10¹⁵  Hz
 ```
 
 For the 5 systems:
-- CenA: (0.85)³ × 10¹⁵ ≈ 6.14×10¹⁶ Hz  ✓ (MNRAS VHE knots)
-- M87:  (0.83)³ × 10¹⁵ ≈ 5.71×10¹⁶ Hz  ✓ (EHT 2021)
+- CenA: (0.85)³ × 10¹⁵ ≈ 6.14e16 Hz  ✓ (MNRAS VHE knots)
+- M87:  (0.83)³ × 10¹⁵ ≈ 5.71e16 Hz  ✓ (EHT 2021)
 - NGC 6278: lower ∇UA → lower floor ~10¹⁶ Hz (Chandra soft X-ray)
 - MS 0735: explosive mode → floor 10¹⁷ Hz (cluster ICM X-ray)
 - Perseus: merger-turbulent → floor 10¹⁶ Hz with 4% polarization
@@ -103,7 +111,7 @@ UQFF master equation with natural constants κ, g, λ adjusted for system scale.
 |---------------------|------------------|------------|
 | X-ray jet morphology | CenA, M87, MS 0735 | High |
 | Polarization fraction | Perseus (4%) | High |
-| Frequency floor | CenA (6.14×10¹⁶), M87 (5.71×10¹⁶) | High |
+| Frequency floor | CenA (6.14e16), M87 (5.71e16) | High |
 | VHE knot position | CenA | High |
 | BH-free pocket | NGC 6278 | Moderate |
 | Merger morphology | Perseus | Moderate |
@@ -116,8 +124,8 @@ Overall observation match score: 14/15 (Strong: 3×3=9, Good: 2×2=4, total=13+1
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Frequency floor (multi-system) | f_floor_UQFF = κ × c / (4π r_s); CenA: 6.14×10¹⁶ Hz, M87: 5.71×10¹⁶ Hz | Rydberg f = 3.29×10¹⁵ Hz (hydrogen ground state QED) | PDG / NIST | UQFF floor is ~10× Rydberg: consistent hierarchy |
-| Thomson σ_T (QED) — all systems | UQFF Compton/inverse-Compton scattering kernel across all 5 systems | σ_T = 6.6524×10⁻²⁹ m² | PDG (QED exact) | 100% (universal QED input) |
+| Frequency floor (multi-system) | f_floor_UQFF = κ × c / (4π r_s); CenA: 6.14e16 Hz, M87: 5.71e16 Hz | Rydberg f = 3.29e15 Hz (hydrogen ground state QED) | PDG / NIST | UQFF floor is ~10× Rydberg: consistent hierarchy |
+| Thomson σ_T (QED) — all systems | UQFF Compton/inverse-Compton scattering kernel across all 5 systems | σ_T = 6.6524e-29 m² | PDG (QED exact) | 100% (universal QED input) |
 | VHE threshold E > 100 GeV | CenA VHE prediction: E_VHE = ℏ × ω_VHE; ω_VHE = DVP arity-8 mode | H.E.S.S. CenA E_threshold: ~100 GeV | H.E.S.S. 2025 | ✓ Consistent |
 | Perseus polarization 4% | Cross-system DPM alignment: 4/100 → 4% (PAPER_630 result) | IXPE Perseus 4% confirmed | IXPE 2025 | ✓ Consistent |
 | 15/15 parameter set (no free params) | One UQFF master equation (κ=0.0005, [SSq]=0.57, β_i=0.61) for all systems | 5 systems × 3 observables = 15 tests | All above sources | 14/15 = 93.3% hit rate |

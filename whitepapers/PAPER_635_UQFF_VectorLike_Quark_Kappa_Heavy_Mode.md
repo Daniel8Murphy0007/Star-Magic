@@ -7,6 +7,11 @@
 
 ---
 
+
+## Abstract
+
+This paper presents a UQFF analysis of Like Quarks and κ Heavy-Mode Excitations, deriving compressed field equations and observational predictions within the Star-Magic/UQFF framework.
+
 ## §1 Abstract
 
 ATLAS Run 3 has constrained the coupling κ of Vector-Like Quarks (VLQ: B, T, X, Y) to the
@@ -33,9 +38,9 @@ topology. The UQFF coupling κ maps to the heavy-mode excitation amplitude.
 
 $$\kappa_{VLQ} = \sqrt{k_{\eta,VLQ}} = \sqrt{\kappa_{UQFF}^2 \times \tau_{EW}}$$
 
-where τ_EW = electroweak time scale = 1/(m_W/ℏ) = 8.2×10⁻²⁷ s.
+where τ_EW = electroweak time scale = 1/(m_W/ℏ) = 8.2e-27 s.
 
-Converting κ_UQFF = 0.0005/day = 5.79×10⁻⁹/s:
+Converting κ_UQFF = 0.0005/day = 5.79e-9/s:
 
 $$\kappa_{VLQ,avg} = \sqrt{(5.79 \times 10^{-9})^2 \times 8.2 \times 10^{-27}} \approx 0.37$$
 

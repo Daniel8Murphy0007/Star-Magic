@@ -1,11 +1,19 @@
 # PAPER_396 — Higgs as Emergent Level-18 UQFF Stratum: δ_n(n) = φ·(2π)^{n/6}
 
+> **Key UQFF calibrated constants:** κ = 5.0e-4 day⁻¹; [SSq] = 5.7e-1; H_SCm ≈ 9.9e-1; U_UA ≈ 1.0e-4; k_η = 1.0e-113; β_i ≈ 6.0e-1; G = 6.674e-11 N·m²/kg²
+
+
 **Source:** grok_share_cfdcad2f5.txt, lines ~1–200 (KB integration section, document headers)  
 **Section:** UQFF Higgs mechanism discussion embedded in C++ source KB documentation  
 **Session:** 107 (grok_share_cfdcad2f5.txt deep re-analysis pass)  
 **CP4 Class:** `HiggsEmergentLevel18UQFFStratumCalculator` (CP4 #47)
 
 ---
+
+
+## Abstract
+
+This paper presents a UQFF analysis of Higgs as Emergent Level-18 UQFF Stratum: δ_n(n) = φ·(2π)^{n/6}, deriving compressed field equations and observational predictions within the Star-Magic/UQFF framework.
 
 ## 1. Overview
 

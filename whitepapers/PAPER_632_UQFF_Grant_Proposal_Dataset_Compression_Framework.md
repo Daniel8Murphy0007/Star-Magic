@@ -8,6 +8,11 @@
 
 ---
 
+
+## Abstract
+
+This paper presents a UQFF analysis of UQFF Grant Proposal Dataset Compression Framework, deriving compressed field equations and observational predictions within the Star-Magic/UQFF framework.
+
 ## §1 Abstract
 
 This paper presents the UQFF dataset compression framework — a quantitative approach
@@ -40,8 +45,8 @@ $$
 
 | System | F_U_Bi_i | log₁₀ |
 |--------|---------|-------|
-| Sgr A* | −8.31×10²¹¹ N | 211 |
-| PSR J0030+0451 | +2.53×10²⁰⁸ N | 208 |
+| Sgr A* | −8.31e211 N | 211 |
+| PSR J0030+0451 | +2.53e208 N | 208 |
 | F_neutron (PSR J0030) | ~10⁴⁹ N | 49 |
 
 ---
@@ -110,7 +115,7 @@ each year contributes one harmonic layer, and 16 years = 16 BH26 modes.
 1. **Sgr A* isotopic anomaly:** 2H/1H > 10⁻⁵ from LENR DPM_resonance term ✓
 2. **PSR J0030 mass-radius:** NICER F_neutron ~ 10⁴⁹ N consistent with NS equations ✓
 3. **LENR resonance:** 1.2–1.3 THz Colman-Gillespie laboratory data ✓
-4. **26D factorial bound:** 26! = 4.03×10²⁶ (DVP configuration space limit) ✓
+4. **26D factorial bound:** 26! = 4.03e26 (DVP configuration space limit) ✓
 
 ---
 
@@ -118,9 +123,9 @@ each year contributes one harmonic layer, and 16 years = 16 BH26 modes.
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Proton decay upper limit Γ_p | κ = 0.0005/day = 0.1826/yr (UQFF rate constant); scale: Γ_UQFF / Γ_p = 10³³·⁶ decoupling | Super-K SK-VII: Γ_p < 4.17×10⁻³⁵/yr; τ_p > 7.7×10³³ yr | Super-K 2024 | 95.43% alignment (10³³·⁶ scale separation) |
+| Proton decay upper limit Γ_p | κ = 0.0005/day = 0.1826/yr (UQFF rate constant); scale: Γ_UQFF / Γ_p = 10³³·⁶ decoupling | Super-K SK-VII: Γ_p < 4.17e-35/yr; τ_p > 7.7e33 yr | Super-K 2024 | 95.43% alignment (10³³·⁶ scale separation) |
 | LENR resonance frequency | DPM_resonance = 1.25 THz; target window 1.2–1.3 THz | Colman-Gillespie laboratory: 1.2–1.3 THz anomalous heat | arXiv LENR data | ✓ Within experimental window |
-| String compactification scale | 26! = 4.03×10²⁶ → M_string ≈ ℏc / (26! × l_P) | SM electroweak scale: M_EW = 246 GeV; ratio M_string/M_EW ~ 10¹⁶ | PDG 2024 | Consistent with GUT-scale string unification |
+| String compactification scale | 26! = 4.03e26 → M_string ≈ ℏc / (26! × l_P) | SM electroweak scale: M_EW = 246 GeV; ratio M_string/M_EW ~ 10¹⁶ | PDG 2024 | Consistent with GUT-scale string unification |
 | Sgr A* isotopic 2H/1H > 10⁻⁵ | LENR DPM_resonance term: selective deuteron fusion at 1.25 THz | ALMA Sgr A* isotopic ratio: 2H/1H ~ 10⁻⁵ (anomalous vs ISM) | ALMA 2024 | ✓ Consistent |
 
 **New physics claim:** UQFF dataset compression encodes 16 years of astrophysical data

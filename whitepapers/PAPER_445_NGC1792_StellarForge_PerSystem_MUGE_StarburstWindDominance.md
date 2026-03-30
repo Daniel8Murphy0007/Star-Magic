@@ -6,6 +6,11 @@
 
 ---
 
+
+## Abstract
+
+This paper presents a UQFF analysis of NGC 1792 "The Stellar Forge": Per-System MUGE with Starburst SFR Wind Dominance, deriving compressed field equations and observational predictions within the Star-Magic/UQFF framework.
+
 ## 1. Overview
 
 PAPER_445 delivers the **complete per-system MUGE** for NGC 1792 — a nearby late-type SAbc spiral galaxy in Columba, $d \approx 40$ Mpc, $z = 0.0095$. Combined mass $M_0 = 10^{10} \, M_\odot$, principal half-mass radius $r = 80{,}000$ ly $= 7.569 \times 10^{20}$ m, hosting an active starburst with SFR $\approx 10 \, M_\odot$/yr — the origin of its "Stellar Forge" designation.
@@ -115,7 +120,7 @@ Standard galaxy evolution models (GADGET-4, FIRE-2) treat NGC 1792 as a disk gal
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Thomson σ_T (QED synchrotron) | UQFF U_m scattering kernel: σ_T = 6.6524×10⁻²⁹ m² | σ_T = 6.6524×10⁻²⁹ m² (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
+| Thomson σ_T (QED synchrotron) | UQFF U_m scattering kernel: σ_T = 6.6524e-29 m² | σ_T = 6.6524e-29 m² (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
 | NGC 1792 Starburst luminosity UV + X-ray | UQFF MUGE g_total → L_X via Stefan-Boltzmann + buoyancy flux: L_X ≈ g_total × M_env | L_X SFR ~ 3 M_☉/yr | GALEX + Chandra | ✓ Consistent order of magnitude |
 | GR Schwarzschild limit | UQFF g_total must satisfy g ≤ c²/(2r_s) at event horizon | r_s = 2GM/c² (GR exact) | PDG 2024 / GR | ✓ UQFF respects GR horizon |
 | κ vacuum rate vs X-ray variability | UQFF κ = 0.0005/day → timescale τ_UQFF = 2000 days | Observed X-ray variability τ_obs (instrument monitoring) | GALEX + Chandra | Testable UQFF variability timescale |

@@ -7,6 +7,14 @@
 
 ---
 
+
+## Abstract
+
+$$F_{U,Bi} = \kappa \cdot \frac{\rho_{\text{SCm}}}{\rho_{\text{UA}}} \cdot (U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_m + U_{bi})$$
+
+
+This paper presents a UQFF analysis of astrophysical observables, deriving compressed field equations and observational predictions within the Star-Magic/UQFF framework.
+
 ## §1 Abstract
 
 This master paper consolidates the UQFF Standard Model parameter bridge developed across
@@ -22,14 +30,14 @@ Session 162 papers and providing a canonical reference for all future sessions.
 
 | UQFF Constant | UQFF Value | SM Equivalent | SM Value | Source Paper | Alignment |
 |--------------|-----------|---------------|----------|--------------|-----------|
-| κ (rate constant) | 0.0005/day = 0.1826/yr | Proton decay scale separation (10³³·⁶ decoupling) | Γ_p < 1.30×10⁻³⁴/yr (SK-VII) | PAPER_640 | 95.4% (log) |
+| κ (rate constant) | 0.0005/day = 0.1826/yr | Proton decay scale separation (10³³·⁶ decoupling) | Γ_p < 1.30e-34/yr (SK-VII) | PAPER_640 | 95.4% (log) |
 | [SSq] (vacuum ratio) | 0.57 | CMB dark energy/ALICE ρ_vac_ratio; [SSq]×1.077=β_i | dN/dη=17.43 (ALICE 13.6 TeV) | PAPER_637 | 99.9% |
 | β_i (buoyancy coupling) | 0.61 | ALICE multiplicity ratio [SSq]×1.077=0.614≈β_i | dN/dη resonance (13.91 TeV UQFF) | PAPER_637 | 99.9% |
 | K_HIGGS | 47.34 | λ = m_H²/(2v²) = 0.1294 (self-coupling) | m_H = 125.20 GeV (PDG 2024) | PAPER_639 | 99.8% |
 | H_SCm | 0.990 | sin²θ_W 4-fold degenerate formula → 0.2304 | sin²θ_W = 0.23122 (PDG 2024) | PAPER_641 | 99.6% |
-| k_η | 10⁻¹¹³ | LFV suppression: BR_UQFF~10⁻²³⁰ vs bound 5.9×10⁻⁶ | BR(B→K*τe) < 5.9×10⁻⁶ (LHCb) | PAPER_636 | ✓ null (no conflict) |
-| SCm_flavor | 1.537×10⁻³ | [V_cb]² = (39.2×10⁻³)² = 1.537×10⁻³ (Belle II) | |V_cb| = 39.2×10⁻³ | PAPER_634 | 99.1% |
-| f_DPM (dipole mode) | Ug1/m_τ² = 1.162×10⁻³ | a_τ^SM = (g_τ-2)/2 = 1.17721×10⁻³ | a_τ = 1.17721×10⁻³ | PAPER_633 | 98.7% |
+| k_η | 10⁻¹¹³ | LFV suppression: BR_UQFF~10⁻²³⁰ vs bound 5.9e-6 | BR(B→K*τe) < 5.9e-6 (LHCb) | PAPER_636 | ✓ null (no conflict) |
+| SCm_flavor | 1.537e-3 | [V_cb]² = (39.2e-3)² = 1.537e-3 (Belle II) | |V_cb| = 39.2e-3 | PAPER_634 | 99.1% |
+| f_DPM (dipole mode) | Ug1/m_τ² = 1.162e-3 | a_τ^SM = (g_τ-2)/2 = 1.17721e-3 | a_τ = 1.17721e-3 | PAPER_633 | 98.7% |
 
 **Weighted average alignment (7 numeric bridges, excluding k_η null):** 98.9%
 
@@ -69,7 +77,7 @@ For each UQFF constant, the mapping procedure is:
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
 | Weighted SM alignment (7 bridges) | 98.9% mean across 8 UQFF constants | All PDG 2024 + arXiv 2025 data | PAPER_633–641 combined | 98.9% |
-| κ ↔ Γ_p decoupling | Scale separation 10³³·¹⁵ | Super-K τ_p > 7.7×10³³ yr | Super-K 2024 | 95.4% |
+| κ ↔ Γ_p decoupling | Scale separation 10³³·¹⁵ | Super-K τ_p > 7.7e33 yr | Super-K 2024 | 95.4% |
 | [SSq] ↔ ALICE multiplicity | [SSq]×1.077 = β_i = 0.614 | dN/dη = 17.43 (13.6 TeV) | ALICE Run 3 | 99.9% |
 | K_HIGGS ↔ m_H | m_H_UQFF = 125.09 GeV | m_H = 125.20 GeV | PDG 2024 | 99.8% |
 

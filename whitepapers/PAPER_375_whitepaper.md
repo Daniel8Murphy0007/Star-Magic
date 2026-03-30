@@ -10,6 +10,9 @@
 
 ## Abstract
 
+> **Key UQFF calibrated constants:** κ = 5.0e-4 day⁻¹; [SSq] = 5.7e-1; H_SCm ≈ 9.9e-1; U_UA ≈ 1.0e-4; k_η = 1.0e-113; β_i ≈ 6.0e-1; G = 6.674e-11 N·m²/kg²
+
+
 This paper presents the advanced integration of the UQFF framework combining four new
 mathematical formulations: (1) a wormhole-MUGE coupling term derived from the Morris-Thorne
 metric; (2) the exponential Meissner superconductivity model replacing the linear B/Bcrit

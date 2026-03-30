@@ -7,6 +7,11 @@
 
 ---
 
+
+## Abstract
+
+This paper presents a UQFF analysis of Fine-Structure Constant $\alpha$ Derived from UQFF DPM Ratios, deriving compressed field equations and observational predictions within the Star-Magic/UQFF framework.
+
 ## §1 Abstract
 
 The fine-structure constant $\alpha \approx 1/137.036$ governs the strength of
@@ -119,8 +124,8 @@ validates the UQFF framework and eliminates $\alpha$ as a free parameter of natu
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | α_UQFF = e²/(4πε₀ℏc) from DPM flux | α = 1/137.036 = 7.29735×10⁻³ | PDG / NIST | ≥99% |
-| κ consistency check | κ = 0.0005/day; ratio to proton decay rate: 10³³ decoupling | Super-K τ_p > 7.7×10³³ yr | Super-K 2024 | ✓ UQFF baryon-safe |
+| Fine structure constant α | α_UQFF = e²/(4πε₀ℏc) from DPM flux | α = 1/137.036 = 7.29735e-3 | PDG / NIST | ≥99% |
+| κ consistency check | κ = 0.0005/day; ratio to proton decay rate: 10³³ decoupling | Super-K τ_p > 7.7e33 yr | Super-K 2024 | ✓ UQFF baryon-safe |
 | [SSq] dark energy ratio | [SSq] = 0.57 (UQFF vacuum fraction) | CMB Ω_Λ = 0.6847 (Planck 2018) | Planck 2018 | 83% (dark energy order) |
 | Fine structure α derivation | α_UQFF from DPM flux/void ratio | α = 1/137.036 | PDG 2024 / NIST | ✓ Target value |
 

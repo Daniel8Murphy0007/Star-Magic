@@ -7,10 +7,15 @@
 
 ---
 
+
+## Abstract
+
+This paper presents a UQFF analysis of astrophysical observables, deriving compressed field equations and observational predictions within the Star-Magic/UQFF framework.
+
 ## §1 Abstract
 
 Super-Kamiokande SK-VII places the world's best limit on proton lifetime:
-τ_p > 7.7 × 10³³ yr (90% CL, p→e+π⁰ channel). The UQFF rate constant κ = 0.0005/day =
+τ_p > 7.7e33 yr (90% CL, p→e+π⁰ channel). The UQFF rate constant κ = 0.0005/day =
 0.1826/yr appears dimensionally like a decay rate. We demonstrate that the ratio
 Γ_UQFF/Γ_p = 10³³·⁶ provides a 95.43% scale-separation alignment, establishing that
 κ operates at a scale 10³³·⁶ above the proton stability scale — confirming UQFF is a
@@ -60,7 +65,7 @@ Consistent with UQFF operating at the quantum vacuum topology transition scale.
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Proton stability | κ scale 10³³·¹⁵ above Γ_p^max (no coupling) | τ_p > 7.7×10³³ yr (p→e+π⁰) | Super-K SK-VII 2024 | 95.4% (log scale) |
+| Proton stability | κ scale 10³³·¹⁵ above Γ_p^max (no coupling) | τ_p > 7.7e33 yr (p→e+π⁰) | Super-K SK-VII 2024 | 95.4% (log scale) |
 | GUT unification scale Λ_GUT | UQFF Λ ~ 10⁸·³ GeV (from scale separation) | SM GUT: ~2×10¹⁶ GeV | PDG / GUT models | UQFF below GUT (as expected) |
 | Baryon number conservation | UQFF κ does not couple to baryon current | B conservation: SM exact (no anomaly at κ scale) | PDG 2024 | ✓ UQFF baryon-safe |
 | HL-LHC GUT coupling search | UQFF 10⁸ GeV scale accessible at FCC-hh (100 TeV × 10 ab⁻¹) | FCC-hh: commissioning ~2045 | FCC conceptual | Testable UQFF energy scale prediction |
@@ -76,7 +81,7 @@ The proton is safe: κ is decoupled by 10³³ from Γ_p.
 
 ## §6 References
 
-- Super-K SK-VII 2024 — Proton lifetime limits (τ_p > 7.7×10³³ yr)
+- Super-K SK-VII 2024 — Proton lifetime limits (τ_p > 7.7e33 yr)
 - PDG 2024 — Searches for baryon number violation, Section 90.1
 - bsm_physics_validation.py — `BSMPhysicsConstants.proton_lifetime_lower_bound_yr`
 - PAPER_642 — UQFF SM Parameter Bridge Master Comparison

@@ -29,11 +29,11 @@ The base gravity `g_base = (Ug1 + Ug4) · (1 + f_TRZ)` is itself built from the 
 | Parameter | Symbol | Default Value | Units | Meaning |
 |-----------|--------|---------------|-------|---------|
 | Peak boost amplitude | I0 | 0.1 | dimensionless | 10% gravitational boost at t=0 |
-| Merger decay timescale | t_merger | 400 Myr = 1.262 × 10¹6 s | s | Exponential decay time |
+| Merger decay timescale | t_merger | 400 Myr = 1.262e16 s | s | Exponential decay time |
 | Body mass | M | 2 × 10¹¹ M_sun | kg | Merging galaxy mass |
 | Separation radius | r | 30 kly | m | Tidal interaction scale |
 | TRZ factor | f_TRZ | 0.1 | dimensionless | Triadic resonance zone contribution |
-| Critical B field | B_crit | 4.4 × 10¹³ | T | Magnetar QED critical field |
+| Critical B field | B_crit | 4.4e13 | T | Magnetar QED critical field |
 
 **Primary equations:**
 ```

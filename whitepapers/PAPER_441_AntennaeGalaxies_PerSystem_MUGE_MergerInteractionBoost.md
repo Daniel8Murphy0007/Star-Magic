@@ -6,6 +6,11 @@
 
 ---
 
+
+## Abstract
+
+This paper presents a UQFF analysis of Antennae Galaxies NGC 4038+4039: Per-System MUGE with I(t) Merger Interaction Boost, deriving compressed field equations and observational predictions within the Star-Magic/UQFF framework.
+
 ## 1. Overview
 
 PAPER_441 delivers the **complete per-system MUGE** for the Antennae Galaxies (NGC 4038 + NGC 4039) — one of the nearest and most studied major merger systems, at $d \approx 45$ Mpc, $z \approx 0.0105$. Combined mass $M_0 = 2 \times 10^{11} \, M_\odot$, separation $r = 30{,}000$ ly $= 2.838 \times 10^{20}$ m, merger age $\sim 300$ Myr, predicted full coalescence at $\tau_\text{merger} = 400$ Myr.
@@ -106,7 +111,7 @@ Standard N-body merger models (Barnes & Hernquist 1996): tidal interaction creat
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Thomson σ_T (QED synchrotron) | UQFF U_m scattering kernel: σ_T = 6.6524×10⁻²⁹ m² | σ_T = 6.6524×10⁻²⁹ m² (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
+| Thomson σ_T (QED synchrotron) | UQFF U_m scattering kernel: σ_T = 6.6524e-29 m² | σ_T = 6.6524e-29 m² (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
 | Antennae Galaxies luminosity X-ray + IR | UQFF MUGE g_total → L_X via Stefan-Boltzmann + buoyancy flux: L_X ≈ g_total × M_env | L_X SFR ~ 20 M_☉/yr (merger) | Chandra + Spitzer | ✓ Consistent order of magnitude |
 | GR Schwarzschild limit | UQFF g_total must satisfy g ≤ c²/(2r_s) at event horizon | r_s = 2GM/c² (GR exact) | PDG 2024 / GR | ✓ UQFF respects GR horizon |
 | κ vacuum rate vs X-ray variability | UQFF κ = 0.0005/day → timescale τ_UQFF = 2000 days | Observed X-ray variability τ_obs (instrument monitoring) | Chandra + Spitzer | Testable UQFF variability timescale |

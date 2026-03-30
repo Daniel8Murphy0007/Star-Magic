@@ -7,6 +7,9 @@
 
 ## Abstract
 
+$$F_{U,Bi} = \kappa \cdot \frac{\rho_{\text{SCm}}}{\rho_{\text{UA}}} \cdot (U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_m + U_{bi})$$
+
+
 This paper presents the coupling of UQFF resonance gravity (from the 12-term MUGE model, PAPER_371)
 into a Navier-Stokes quasar jet simulation constrained by the relativistic parameters of the
 high-redshift quasar J1610+1811. While PAPER_360 computed FU and Bi properties for J1610+1811

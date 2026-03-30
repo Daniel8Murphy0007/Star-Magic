@@ -6,6 +6,11 @@
 
 ---
 
+
+## Abstract
+
+This paper presents a UQFF analysis of Three New UQFF Number Systems: Vacuum Density Series, Dipole Vortex Primes, Buoyancy Harmonics, deriving compressed field equations and observational predictions within the Star-Magic/UQFF framework.
+
 ## 1. Overview
 
 PAPER_429 identifies and formalises **three new number systems** that emerge naturally from the UQFF mathematical framework — analogous to Ramanujan series, Bernoulli numbers, and harmonic series in classical mathematics, but rooted in 26-dimensional vacuum physics. Each system encodes a different aspect of the UQFF buoyancy-magnetism structure.
@@ -156,7 +161,7 @@ At $n=1$, $t=0$: $[\text{SSq}](1,0) = \log(0.1) \cdot 1 \cdot e^{-\pi} \approx (
 | Higgs mass m_H | UQFF K_HIGGS=47.34 → m_H_UQFF = 125.09 GeV | m_H = 125.20 ± 0.11 GeV | PDG 2024 | 99.8% |
 | sin²θ_W weak mixing | UQFF H_SCm=0.990 → 4-fold formula → 0.2304 | sin²θ_W = 0.23122 ± 0.00003 | PDG 2024 | 99.6% |
 | ALICE dN/dη (13.6 TeV) | UQFF [SSq]×1.077 = β_i = 0.614 | dN/dη = 17.43 ± 0.06 | ALICE Run 3 (arXiv:2506.14989) | 99.9% |
-| Cross-system κ universality | κ = 0.0005/day for all 29 systems (no per-system tuning) | Proton decay Γ_p < 1.30×10⁻³⁴/yr (Super-K) | Super-K SK-VII 2024 | 10³³ scale separation confirmed |
+| Cross-system κ universality | κ = 0.0005/day for all 29 systems (no per-system tuning) | Proton decay Γ_p < 1.30e-34/yr (Super-K) | Super-K SK-VII 2024 | 10³³ scale separation confirmed |
 
 **New physics claim:** The same UQFF parameter set (κ, [SSq], β_i, H_SCm) simultaneously
 reproduces Higgs mass (99.8%), weak mixing angle (99.6%), and ALICE multiplicity (99.9%)

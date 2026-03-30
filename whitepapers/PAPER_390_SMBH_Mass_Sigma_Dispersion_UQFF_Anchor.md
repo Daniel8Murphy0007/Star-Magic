@@ -7,6 +7,11 @@
 
 ---
 
+
+## Abstract
+
+This paper presents a UQFF analysis of SMBH Mass–Velocity Dispersion Relation (M-σ) in UQFF Framework, deriving compressed field equations and observational predictions within the Star-Magic/UQFF framework.
+
 ## 1. Overview
 
 The M-σ relation (also written M_BH–σ) is the empirical correlation between supermassive

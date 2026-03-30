@@ -8,7 +8,7 @@
 
 ## Abstract
 
-The 26th-order derivative of inverse-power fields produces a factorial amplification factor (k+25)!/(k-1)! that, paradoxically, guarantees negligibility at all physically relevant scales. This paper derives the general formula, establishes the anti-collapse density bound ρ_min ≈ 2.5×10⁻³⁰ kg/m³, and shows that all VDS vacuum density series terms are automatically bounded by this factorial ceiling when r > 0.
+The 26th-order derivative of inverse-power fields produces a factorial amplification factor (k+25)!/(k-1)! that, paradoxically, guarantees negligibility at all physically relevant scales. This paper derives the general formula, establishes the anti-collapse density bound ρ_min ≈ 2.5e-30 kg/m³, and shows that all VDS vacuum density series terms are automatically bounded by this factorial ceiling when r > 0.
 
 ---
 
@@ -34,12 +34,12 @@ Since 26 is even, $(-1)^{26} = +1$, so the correction term is always positive.
 
 ## 3. Factorial Magnitudes by Field Type
 
-| k | Field Type | (k+25)!/(k-1)! | At r=1 AU (1.5×10¹¹ m), c=1 |
+| k | Field Type | (k+25)!/(k-1)! | At r=1 AU (1.5e11 m), c=1 |
 |---|-----------|----------------|------------------------------|
-| 1 | Gravitational (1/r) | 26! ≈ 4.03×10²⁶ | ~4.03×10²⁶ / (1.5×10¹¹)²⁷ ≈ 10⁻²⁸² |
-| 2 | Magnetic (1/r²) | 27!/1! ≈ 1.09×10²⁸ | ~1.09×10²⁸ / (1.5×10¹¹)²⁸ ≈ 10⁻²⁹³ |
-| 3 | String (1/r³) | 28!/2! ≈ 1.52×10²⁹ | ~10⁻³⁰⁵ |
-| 4 | Vacuum (1/r⁴) | 29!/3! ≈ 2.20×10³⁰ | ~10⁻³¹⁶ |
+| 1 | Gravitational (1/r) | 26! ≈ 4.03e26 | ~4.03e26 / (1.5e11)²⁷ ≈ 10⁻²⁸² |
+| 2 | Magnetic (1/r²) | 27!/1! ≈ 1.09e28 | ~1.09e28 / (1.5e11)²⁸ ≈ 10⁻²⁹³ |
+| 3 | String (1/r³) | 28!/2! ≈ 1.52e29 | ~10⁻³⁰⁵ |
+| 4 | Vacuum (1/r⁴) | 29!/3! ≈ 2.20e30 | ~10⁻³¹⁶ |
 
 All values are negligibly small at r ≥ 1 AU, confirming no singularity contributions at astrophysical scales.
 
@@ -90,9 +90,9 @@ This is the UQFF resolution of the classical singularity problem: not renormaliz
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
 | Higgs mass m_H | UQFF K_HIGGS=47.34 → m_H_UQFF = 125.09 GeV | m_H = 125.20 ± 0.11 GeV | PDG 2024 | 99.8% |
-| Cosmological Λ | UQFF |∇UA|² → 1.09×10⁻⁵² m⁻² | Λ = 1.114×10⁻⁵² m⁻² (Planck+DESI) | Planck 2018 | 97.8% |
-| Thomson σ_T (QED) | UQFF U_m kernel: σ_T = 6.6524×10⁻²⁹ m² | σ_T = 6.6524×10⁻²⁹ m² | PDG 2024 | 100% (exact) |
-| κ baryon stability | κ = 0.0005/day; scale separation 10³³ from proton decay | τ_p > 7.7×10³³ yr (Super-K) | Super-K 2024 | ✓ UQFF baryon-safe |
+| Cosmological Λ | UQFF |∇UA|² → 1.09e-52 m⁻² | Λ = 1.114e-52 m⁻² (Planck+DESI) | Planck 2018 | 97.8% |
+| Thomson σ_T (QED) | UQFF U_m kernel: σ_T = 6.6524e-29 m² | σ_T = 6.6524e-29 m² | PDG 2024 | 100% (exact) |
+| κ baryon stability | κ = 0.0005/day; scale separation 10³³ from proton decay | τ_p > 7.7e33 yr (Super-K) | Super-K 2024 | ✓ UQFF baryon-safe |
 
 **New physics claim:** UQFF operates at a vacuum topology scale (~200 PeV) that is 8 orders
 below the GUT scale and 33 orders above nuclear baryon-number scales. This intermediate-scale

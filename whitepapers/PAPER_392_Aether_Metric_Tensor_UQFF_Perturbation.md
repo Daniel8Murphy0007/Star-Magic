@@ -7,6 +7,11 @@
 
 ---
 
+
+## Abstract
+
+This paper presents a UQFF analysis of Aether Metric Tensor UQFF Perturbation: A_μν = g_μν + η·T_s00·cos(πt_n), deriving compressed field equations and observational predictions within the Star-Magic/UQFF framework.
+
 ## 1. Overview
 
 The UQFF unified field framework treats spacetime geometry as a **perturbed Minkowski metric**

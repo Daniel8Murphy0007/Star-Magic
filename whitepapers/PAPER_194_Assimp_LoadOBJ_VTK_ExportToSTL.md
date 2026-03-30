@@ -16,6 +16,9 @@ $$
 
 ## Abstract
 
+> **Key UQFF calibrated constants:** κ = 5.0e-4 day⁻¹; [SSq] = 5.7e-1; H_SCm ≈ 9.9e-1; U_UA ≈ 1.0e-4; k_η = 1.0e-113; β_i ≈ 6.0e-1; G = 6.674e-11 N·m²/kg²
+
+
 This paper provides complete reference implementations for 3D mesh I/O in the CoAnQi `Graphics3D` namespace: `loadOBJ()` using the Assimp library for multi-mesh, multi-normal, multi-UV OBJ import, and `exportToSTL()` using VTK's `vtkSTLWriter` for binary/ASCII STL export. Additional operations documented include `exportOBJ()` for round-trip mesh preservation, `loadTexture()` for OpenGL texture loading, procedural landscape generation via Perlin noise, mesh extrusion, boolean union, and LaTeX expression rendering into OpenGL textures.
 
 

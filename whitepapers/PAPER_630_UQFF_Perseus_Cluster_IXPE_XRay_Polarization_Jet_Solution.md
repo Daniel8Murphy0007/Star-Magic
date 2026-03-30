@@ -8,6 +8,14 @@
 
 ---
 
+
+## Abstract
+
+$$F_{U,Bi} = \kappa \cdot \frac{\rho_{\text{SCm}}}{\rho_{\text{UA}}} \cdot (U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_m + U_{bi})$$
+
+
+This paper presents a UQFF analysis of UQFF Perseus Cluster IXPE X-Ray Polarization Jet Solution, deriving compressed field equations and observational predictions within the Star-Magic/UQFF framework.
+
 ## §1 Abstract
 
 The Perseus Cluster "jet mystery" — the origin of directed X-ray polarization in its  
@@ -23,8 +31,8 @@ field consistent with inverse Compton scattering and IXPE-observed polarization 
 
 | Parameter | Value |
 |-----------|-------|
-| Distance | 250 Mly = 2.36×10²⁴ m |
-| Effective radius | 1.94×10²¹ m |
+| Distance | 250 Mly = 2.36e24 m |
+| Effective radius | 1.94e21 m |
 | Chandra exposure | 330 hours |
 | IXPE exposure | 600 hours |
 | Net X-ray polarization | 4% |
@@ -130,7 +138,7 @@ The April 2025 discovery of a merger companion galaxy to Perseus is consistent w
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Thomson cross-section σ_T (QED) | DVP inverse Compton uses σ_T as scattering kernel: σ_T = U_m/ρ_vac | σ_T = 6.6524×10⁻²⁹ m² | PDG (QED exact) | 100% (exact QED input) |
+| Thomson cross-section σ_T (QED) | DVP inverse Compton uses σ_T as scattering kernel: σ_T = U_m/ρ_vac | σ_T = 6.6524e-29 m² | PDG (QED exact) | 100% (exact QED input) |
 | X-ray polarization degree 4% | UQFF: 4 DPM aligned pairs per 100 → 4% net polarization at jet angle | IXPE Perseus (930 hr combined): 4% net polarization fraction | IXPE 2025 | ✓ Consistent |
 | E-vector angle: jet-aligned | DVP d4–d6 azimuthal field selects jet-parallel E-vector | IXPE: electric-field vector aligned with radio jet axis | IXPE 2025 | ✓ Consistent |
 | Polarization variability period τ | τ = 2π/B_k; B_k = magnetic buoyancy wavenumber of DVP pocket | IXPE temporal monitoring: future observation testable (τ ~ yr) | IXPE future | Testable UQFF prediction |

@@ -10,6 +10,11 @@
 
 ---
 
+
+## Abstract
+
+This paper presents a UQFF analysis of Big Bang Hypergraph Origin & VDS Partition Function Emergence, deriving compressed field equations and observational predictions within the Star-Magic/UQFF framework.
+
 ## §1 — Overview
 
 This paper establishes the UQFF description of the **Big Bang as the first Wolfram

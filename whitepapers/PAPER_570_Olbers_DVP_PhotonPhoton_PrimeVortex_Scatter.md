@@ -8,6 +8,11 @@
 
 ---
 
+
+## Abstract
+
+This paper presents a UQFF analysis of Photon Scattering in Olbers Framework, deriving compressed field equations and observational predictions within the Star-Magic/UQFF framework.
+
 ## §1 Abstract
 
 Beyond dust opacity, photons are attenuated by **photon-photon scattering** — the Breit-Wheeler process $\gamma\gamma \to e^+e^-$ — particularly for TeV photons from distant blazars. In the UQFF framework, this process is modulated by **Dipole Vortex Prime (DVP) vortex encompassments** at primes $p > 26$: each prime lattice point acts as a scattering centre with amplitude $A(p) \propto [\text{SSq}]^{\pi(p)} / p^{26}$. This paper derives the DVP-modulated mean free path $\ell_\gamma\gamma$ and its contribution to Olbers suppression.
@@ -125,14 +130,14 @@ TeV photons are completely absorbed after a single DVP lattice spacing — this 
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| EBL flux (extragalactic background light) | UQFF DPM shell radiance cascade → J_EBL ≈ 3.1×10⁻⁶ W/m²/sr | EBL isotropic: ~2.5–5×10⁻⁶ W/m²/sr (UV-optical-IR) | Hauser & Dwek 2001; Fermi 2012 | ✓ Consistent |
+| EBL flux (extragalactic background light) | UQFF DPM shell radiance cascade → J_EBL ≈ 3.1e-6 W/m²/sr | EBL isotropic: ~2.5–5×10⁻⁶ W/m²/sr (UV-optical-IR) | Hauser & Dwek 2001; Fermi 2012 | ✓ Consistent |
 | Photon mass upper limit | UQFF UA=0 topology → photon strictly massless (m_γ < 10⁻¹¹³ eV) | m_γ < 10⁻¹⁸ eV (PDG 2024) | PDG 2024 | ✓ k_η suppresses photon mass to zero |
 | CMB temperature T_CMB | UQFF: T_CMB = (ρ_UA / σ_SB)^0.25 | T_CMB = 2.72548 ± 0.00057 K | FIRAS/CMB 1996 | ✓ Input parameter (exact match) |
 | Night sky darkness (Olbers) | UQFF DPM finite photon-photon scattering → finite sky brightness | Dark night sky: B_sky ~ 10⁻¹³ W/m²/sr | Photometry | ✓ UQFF DVP scatter provides opacity |
 
 **New physics claim:** The Olbers paradox is resolved in UQFF by DVP photon-photon scattering
 within pocket shells — each shell at redshift z contributes a DPM-suppressed flux. This predicts
-a specific EBL spectral shape with a DVP frequency break at f_DVP ~ 5.7×10¹⁶ Hz (FUV), testable
+a specific EBL spectral shape with a DVP frequency break at f_DVP ~ 5.7e16 Hz (FUV), testable
 with JWST ultra-deep field photometry.
 
 *Cite PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*

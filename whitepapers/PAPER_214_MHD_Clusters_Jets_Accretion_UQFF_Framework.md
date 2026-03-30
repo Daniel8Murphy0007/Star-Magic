@@ -151,7 +151,7 @@ UQFF F_env,sfr:
 
 Numerical calibration (Westerlund 2):
   SFR ˜ 2000 M_?/yr (starburst)
-  SFR_Kennicutt ˜ 2.5×10³ M_?/yr (from gas mass 106 M_?, t_ff ˜ 400 yr)
+  SFR_Kennicutt ˜ 2.5e3 M_?/yr (from gas mass 106 M_?, t_ff ˜ 400 yr)
   F_env,sfr ˜ 0.8 (slightly sub-Kennicutt)
 ```
 

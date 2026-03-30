@@ -9,6 +9,11 @@
 
 ---
 
+
+## Abstract
+
+This paper presents a UQFF analysis of Stratified Factorial Geometry — Einstein Tensor and Self-Sourced Field Equations, deriving compressed field equations and observational predictions within the Star-Magic/UQFF framework.
+
 ## §1 Abstract
 
 We derive the Einstein tensor $G_{\mu\nu} = R_{\mu\nu} - \tfrac{1}{2}A_{\mu\nu}R_{\rm scalar}$ for the Buoyancy-Stratified Factorial Geometry metric $A_{\mu\nu}(r) = g_{\mu\nu} + \varepsilon(r)\delta_{\mu\nu}$, and compare it to the natural Aether source $\kappa_E T_{s00}$ via standard Einstein equations. The key result is:
@@ -109,7 +114,7 @@ The BSFG metric is defined through $\varepsilon = \eta T_{s00} \cos(\pi t_n)$, a
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
 | GR Schwarzschild metric recovery | BSFG line element → g_tt = -(1-2GM/rc²) ≡ GR in ε_BSFG→0 limit | Schwarzschild metric (GR exact) | PDG 2024 / MTW | ✓ BSFG reduces to GR |
-| Shapiro time delay | BSFG geodesic → Δt_BSFG ≈ Δt_GR × (1 + ε_correction) | Cassini: Δt/Δt_GR = 1 ± 2.3×10⁻⁵ | Cassini/GR 2003 | ✓ Within Shapiro bound |
+| Shapiro time delay | BSFG geodesic → Δt_BSFG ≈ Δt_GR × (1 + ε_correction) | Cassini: Δt/Δt_GR = 1 ± 2.3e-5 | Cassini/GR 2003 | ✓ Within Shapiro bound |
 | Gravitational wave speed v_GW | BSFG: v_GW = c × (1 + k_η²) ≈ c + 10⁻²²⁶ m/s | GW150914 / GW170817: |v_GW/c - 1| < 10⁻¹⁵ | LIGO/Fermi GBM | ✓ UQFF deviation 10⁻²¹¹ orders below bound |
 | Perihelion precession (Mercury) | BSFG adds buoyancy correction δφ = κ × φ_GR ~ 10⁻⁶ arcsec/century | GR prediction: 43.03"/century; observed: 43.1" | GR + obs. | UQFF correction undetectable at current precision |
 

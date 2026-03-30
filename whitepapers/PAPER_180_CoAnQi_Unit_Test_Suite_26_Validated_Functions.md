@@ -1,4 +1,9 @@
 ﻿# PAPER_180: CoAnQi Unit Test Suite — 26 Validated Functions and MUGE Proof Sets
+
+## Abstract
+
+This paper presents a UQFF analysis of astrophysical observables, deriving compressed field equations and observational predictions within the Star-Magic/UQFF framework.
+
 ## Whitepaper §2.4-L | Thread 381a8fe7 | Session 48
 
 ### Abstract

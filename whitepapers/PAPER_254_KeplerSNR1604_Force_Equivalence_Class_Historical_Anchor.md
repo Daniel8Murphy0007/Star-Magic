@@ -16,11 +16,11 @@ $$
 
 ## Abstract
 
-Kepler's Supernova Remnant is the remnant of SN 1604 CE — the last supernova in the Milky Way observed with the naked eye, studied by Johannes Kepler, Galileo Galilei, and contemporaries. At approximately 20,000 light-years distance, it is the most distant SNR in the five-system Chandra dataset, yet its UQFF buoyancy force is identical to the closest member (SN 1006 at ~7,000 ly): F_U_Bi ˜ +2.11 × 10²°8 N.
+Kepler's Supernova Remnant is the remnant of SN 1604 CE — the last supernova in the Milky Way observed with the naked eye, studied by Johannes Kepler, Galileo Galilei, and contemporaries. At approximately 20,000 light-years distance, it is the most distant SNR in the five-system Chandra dataset, yet its UQFF buoyancy force is identical to the closest member (SN 1006 at ~7,000 ly): F_U_Bi ˜ +2.11e2°8 N.
 
 This identity — despite a 3× distance difference, a 2.4× age difference, a 10× lower X-ray luminosity (L_X = 10³¹ vs 10³² W for SN 1006), and the highest ejecta velocity in the dataset (v_shock = 4,000 km/s, the fastest Type Ia ejecta) — constitutes the **historical anchor** of the UQFF Force Equivalence Class. Both SN 1006 and Kepler SNR 1604 share ?0 = 10?¹², and this single shared parameter is sufficient to guarantee their identical UQFF buoyancy. History, distance, luminosity, and velocity are irrelevant.
 
-The paper also demonstrates a key quantitative result: `F_LENR/F_DE = 6.17 × 10³? / 10 ˜ 6 × 10³8` for Kepler's SNR — one order larger than for SN 1006. The fainter, more distant SNR requires an even stronger LENR dominance to maintain the equivalence class membership, underscoring that UQFF physics becomes **more robust** as physical parameters deviate from the Eta Carinae calibration anchor.
+The paper also demonstrates a key quantitative result: `F_LENR/F_DE = 6.17e3? / 10 ˜ 6 × 10³8` for Kepler's SNR — one order larger than for SN 1006. The fainter, more distant SNR requires an even stronger LENR dominance to maintain the equivalence class membership, underscoring that UQFF physics becomes **more robust** as physical parameters deviate from the Eta Carinae calibration anchor.
 
 
 
@@ -33,9 +33,9 @@ The paper also demonstrates a key quantitative result: `F_LENR/F_DE = 6.17 × 10
 | Parameter | Symbol | Value | Units | Source |
 |-----------|--------|-------|-------|--------|
 | Distance | d | ~20,000 ly (~6.4 kpc) | ly | Chandra/JWST 2023 |
-| Age | t | 1.325 × 10¹° s | s (~420 yr since 1604 CE) |
-| Ejecta mass | M | ~1 M_sun = 1.989 × 10³¹ | kg | Type Ia model |
-| Remnant radius | r | 6.17 × 10¹6 | m (~20 ly) | Chandra imaging |
+| Age | t | 1.325e1° s | s (~420 yr since 1604 CE) |
+| Ejecta mass | M | ~1 M_sun = 1.989e31 | kg | Type Ia model |
+| Remnant radius | r | 6.17e16 | m (~20 ly) | Chandra imaging |
 | **X-ray luminosity** | **L_X** | **10³¹ W** | **W** | **10× fainter than SN 1006** |
 | **Shock velocity** | **v_shock** | **4,000 km/s** | **m/s** | **Fastest in 5-system dataset** |
 | System frequency | ?0 | 10?¹² | rad/s | Same as SNR equivalence class |
@@ -60,8 +60,8 @@ F_DE(SN1006) = k_DE × 10³² = 100 N
 
 **LENR dominance ratio:**
 ```
-F_LENR / F_DE(Kepler) = 6.17×10³? / 10 = 6.17 × 10³8
-F_LENR / F_DE(SN1006) = 6.17×10³? / 100 = 6.17 × 10³7
+F_LENR / F_DE(Kepler) = 6.17e3? / 10 = 6.17e38
+F_LENR / F_DE(SN1006) = 6.17e3? / 100 = 6.17e37
 ```
 
 The more distant (fainter) system has a **10× larger LENR dominance ratio**. UQFF physics is more strongly dominated by LENR at greater distances, reinforcing the equivalence class as systems become fainter.
@@ -93,11 +93,11 @@ The five-system Chandra UQFF dataset (in full):
 
 | System | ?0 (rad/s) | F_U_Bi (N) | Class |
 |--------|-----------|------------|-------|
-| SN 1006 (PAPER_250) | 10?¹² | +2.11×10²°8 | Positive |
-| Eta Carinae (PAPER_251) | 10?¹² | +2.11×10²°8 | Positive |
-| Chandra Archive (PAPER_252) | 10?¹² | +2.11×10²°8 | Positive |
-| **Kepler SNR 1604 (PAPER_254)** | **10?¹²** | **+2.11×10²°8** | **Positive** |
-| Sgr A* (PAPER_253) | 10?¹5 | -8.31×10²¹¹ | **NEGATIVE** |
+| SN 1006 (PAPER_250) | 10?¹² | +2.11e2°8 | Positive |
+| Eta Carinae (PAPER_251) | 10?¹² | +2.11e2°8 | Positive |
+| Chandra Archive (PAPER_252) | 10?¹² | +2.11e2°8 | Positive |
+| **Kepler SNR 1604 (PAPER_254)** | **10?¹²** | **+2.11e2°8** | **Positive** |
+| Sgr A* (PAPER_253) | 10?¹5 | -8.31e211 | **NEGATIVE** |
 
 All four ?0 = 10?¹² systems share identical F_U_Bi. Sgr A* alone (?0 = 10?¹5) departs from the class.
 

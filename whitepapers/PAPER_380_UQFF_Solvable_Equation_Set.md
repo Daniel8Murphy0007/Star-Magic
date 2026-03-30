@@ -7,6 +7,11 @@
 
 ---
 
+
+## Abstract
+
+This paper presents a UQFF analysis of UQFF Framework Solvable Equation Set (10 Classical + Millennium Problems), deriving compressed field equations and observational predictions within the Star-Magic/UQFF framework.
+
 ## 1. Overview
 
 After completing the Cohesive UQFF integration analysis (PAPER_378), Grok identified **10 classical
@@ -50,7 +55,7 @@ density coupling that stabilizes turbulent fluid dynamics:
 $$a_{fluid\_freq} = f_{fluid} \cdot \frac{E_{vac,neb} \cdot V_{sys}}{E_{vac,ISM} \cdot c}$$
 
 The fluid frequency $f_{fluid}$ absorbs the Navier-Stokes turbulence cascades — when
-$f_{fluid}$ is determined empirically (e.g., 1.269×10⁻¹⁴ Hz for SGR1745), the UQFF fluid
+$f_{fluid}$ is determined empirically (e.g., 1.269e-14 Hz for SGR1745), the UQFF fluid
 term provides a closed-form model for the turbulent body force **f** in the NS equation.
 
 **Connection:** PAPER_369 — Navier-Stokes FluidSolver with UQFF body force injection

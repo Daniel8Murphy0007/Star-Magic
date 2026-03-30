@@ -73,7 +73,7 @@ This 63 orders of magnitude range explains why cosmic strings can significantly 
 
 $$A_\mu = \frac{\rho_A}{c^2} \partial_\mu \phi$$
 
-where φ is the aether scalar potential [J/kg = m²/s²] and ρ_A = 7.09 × 10⁻³⁶ J/m³.
+where φ is the aether scalar potential [J/kg = m²/s²] and ρ_A = 7.09e-36 J/m³.
 
 This is a gradient coupling: the aether field propagates in the direction of the steepest descent of the aether potential, analogous to an electric field E = −∇V.
 
@@ -100,11 +100,11 @@ The aether coupling framework depends on three distinct vacuum energy densities:
 
 | Vacuum | Symbol | Value (J/m³) | Physical Role |
 |--------|--------|-------------|--------------|
-| Universal Aether | ρ_vac_UA | 7.09 × 10⁻³⁶ | Inertial vacuum resistance |
-| SCm medium | ρ_vac_SCm | 7.09 × 10⁻³⁷ | Superconducting buoyancy |
-| Background Aether | ρ_vac_A | 7.09 × 10⁻³⁶ | Metric perturbation source |
+| Universal Aether | ρ_vac_UA | 7.09e-36 | Inertial vacuum resistance |
+| SCm medium | ρ_vac_SCm | 7.09e-37 | Superconducting buoyancy |
+| Background Aether | ρ_vac_A | 7.09e-36 | Metric perturbation source |
 
-**Total:** E_s_total = ρ_UA + ρ_SCm + ρ_A = 1.49 × 10⁻³⁵ J/m³
+**Total:** E_s_total = ρ_UA + ρ_SCm + ρ_A = 1.49e-35 J/m³
 
 **Ratio:** ρ_UA : ρ_SCm : ρ_A = 10 : 1 : 10 (ρ_UA = ρ_A, ρ_SCm is the sub-dominant term)
 
@@ -169,9 +169,9 @@ The AetherCouplingModule and BackgroundAetherModule together implement the UQFF 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
 | Higgs mass m_H | UQFF K_HIGGS=47.34 → m_H_UQFF = 125.09 GeV | m_H = 125.20 ± 0.11 GeV | PDG 2024 | 99.8% |
-| Cosmological Λ | UQFF |∇UA|² → 1.09×10⁻⁵² m⁻² | Λ = 1.114×10⁻⁵² m⁻² (Planck+DESI) | Planck 2018 | 97.8% |
-| Thomson σ_T (QED) | UQFF U_m kernel: σ_T = 6.6524×10⁻²⁹ m² | σ_T = 6.6524×10⁻²⁹ m² | PDG 2024 | 100% (exact) |
-| κ baryon stability | κ = 0.0005/day; scale separation 10³³ from proton decay | τ_p > 7.7×10³³ yr (Super-K) | Super-K 2024 | ✓ UQFF baryon-safe |
+| Cosmological Λ | UQFF |∇UA|² → 1.09e-52 m⁻² | Λ = 1.114e-52 m⁻² (Planck+DESI) | Planck 2018 | 97.8% |
+| Thomson σ_T (QED) | UQFF U_m kernel: σ_T = 6.6524e-29 m² | σ_T = 6.6524e-29 m² | PDG 2024 | 100% (exact) |
+| κ baryon stability | κ = 0.0005/day; scale separation 10³³ from proton decay | τ_p > 7.7e33 yr (Super-K) | Super-K 2024 | ✓ UQFF baryon-safe |
 
 **New physics claim:** UQFF operates at a vacuum topology scale (~200 PeV) that is 8 orders
 below the GUT scale and 33 orders above nuclear baryon-number scales. This intermediate-scale
@@ -182,6 +182,6 @@ while remaining consistent with all collider and nuclear precision measurements.
 
 
 
-**UQFF Parameters:** η ≈ 6.7×10³⁴ m³/J | ρ_vac_A = 7.09×10⁻³⁶ J/m³ | ρ_UA = ρ_A  
+**UQFF Parameters:** η ≈ 6.7e34 m³/J | ρ_vac_A = 7.09e-36 J/m³ | ρ_UA = ρ_A  
 **Classes:** `AetherCouplingModule`, `BackgroundAetherModule` | **Source:** `grok_share_b0a3dc1d.txt` L1502–1870  
 **Tags:** aether, metric-perturbation, η-coupling, background-field, vacuum-hierarchy, GR-extension  

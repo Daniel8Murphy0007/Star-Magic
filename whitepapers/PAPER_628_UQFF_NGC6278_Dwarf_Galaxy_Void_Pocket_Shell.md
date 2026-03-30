@@ -8,6 +8,14 @@
 
 ---
 
+
+## Abstract
+
+$$F_{U,Bi} = \kappa \cdot \frac{\rho_{\text{SCm}}}{\rho_{\text{UA}}} \cdot (U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_m + U_{bi})$$
+
+
+This paper presents a UQFF analysis of UQFF NGC 6278 Dwarf Galaxy Void Pocket Shell, deriving compressed field equations and observational predictions within the Star-Magic/UQFF framework.
+
 ## §1 Abstract
 
 NGC 6278 is a dwarf galaxy from the Chandra 11 December 2025 SMBHs release. It
@@ -24,7 +32,7 @@ topology, independent of point-mass sources.
 | Parameter | Value |
 |-----------|-------|
 | Distance | ~180 Mly |
-| Effective radius r_eff | 4.73×10²⁰ m |
+| Effective radius r_eff | 4.73e20 m |
 | BH mass (assumed) | ~10⁶ M☉ |
 | ∇UA (3D Wolfram, dwarf scale) | ~10⁻²⁰ m⁻¹ |
 | Temperature | ~10⁷ K |
@@ -79,10 +87,10 @@ f_event ≈ |λ · UA / t²| × 10¹⁸  Hz ≈ 10¹⁸  Hz  (X-ray core)
 
 Thermal X-ray frequency:
 ```
-f_thermal = k_B · T / h = (1.381×10⁻²³ · 10⁷) / (6.626×10⁻³⁴) ≈ 2.09×10¹⁷ Hz
+f_thermal = k_B · T / h = (1.381e-23 · 10⁷) / (6.626e-34) ≈ 2.09e17 Hz
 ```
 
-Both fall in the Chandra X-ray band (0.5–7 keV = 1.2×10¹⁷–1.7×10¹⁸ Hz) —
+Both fall in the Chandra X-ray band (0.5–7 keV = 1.2e17–1.7e18 Hz) —
 consistent with the December 2025 detection.
 
 ---
@@ -105,7 +113,7 @@ predicted by the DVP pocket shell frequency model.
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| X-ray emission 0.5–7 keV | DVP f = λ·UA/t² × 10¹⁵ Hz → 2.1×10¹⁶ Hz (0.09 keV floor); pocket shell at [∇UA]²⁶ | Chandra NGC 6278: SMBH detection 0.5–7 keV | Chandra 11 Dec 2025 | ✓ Consistent |
+| X-ray emission 0.5–7 keV | DVP f = λ·UA/t² × 10¹⁵ Hz → 2.1e16 Hz (0.09 keV floor); pocket shell at [∇UA]²⁶ | Chandra NGC 6278: SMBH detection 0.5–7 keV | Chandra 11 Dec 2025 | ✓ Consistent |
 | Dark matter velocity dispersion | UQFF: ∇UA ≈ 10⁻¹⁰ at dwarf scale; |∇UA| → σ_DM | PDG DM limits: σ_DM-nuc < 10⁻⁴⁶ cm² (direct detection) | PDG 2024 | UQFF DM = gradient topology (not particle) |
 | Dwarf galaxy mass M_* | Pocket shell stable at M < 10⁹ M_☉ (BH-free condition) | NGC 6278: M_* ~ stellar mass dwarf | Chandra 2025 | ✓ BH-free mass range |
 | Non-thermal X-ray spectral index | DVP pocket: non-thermal Γ ~ 1.5–2.0 (power-law photon index) | Thermal plasma: kT ~ 0.5 keV (bremsstrahlung) | X-ray spectroscopy | Distinguishable: UQFF Γ ≠ bremsstrahlung spectrum |

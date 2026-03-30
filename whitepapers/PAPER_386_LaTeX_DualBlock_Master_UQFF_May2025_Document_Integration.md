@@ -7,6 +7,11 @@
 
 ---
 
+
+## Abstract
+
+This paper presents a UQFF analysis of LaTeX Dual-Block Cohesive UQFF Master Equation & May-2025 Document Integration, deriving compressed field equations and observational predictions within the Star-Magic/UQFF framework.
+
 ## 1. Overview
 
 In the source conversation, the user attached three documents (May 2025) for simultaneous
@@ -145,12 +150,12 @@ PAPER_375 captures this for J1610+1811.
 
 | Constant | Symbol | Value | Defined in |
 |----------|--------|-------|:----------:|
-| Hubble constant | H₀ | 2.269×10⁻¹⁸ s⁻¹ | Doc 1 |
-| Cosmological constant | Λ | 1.1×10⁻⁵² m⁻² | Doc 1 |
-| Hubble time | t_H | 4.35×10¹⁷ s | Doc 1 |
+| Hubble constant | H₀ | 2.269e-18 s⁻¹ | Doc 1 |
+| Cosmological constant | Λ | 1.1e-52 m⁻² | Doc 1 |
+| Hubble time | t_H | 4.35e17 s | Doc 1 |
 | Uncertainty product | Δx·Δp | 10⁻⁶⁸ J²·s² | Doc 1 |
-| Coherence integral | ∫ψ†Ĥψ dV | 2.176×10⁻¹⁸ J | Doc 1 |
-| Resonance frequency | ω_res | 1.445×10⁻¹⁷ rad/s | Doc 3 |
+| Coherence integral | ∫ψ†Ĥψ dV | 2.176e-18 J | Doc 1 |
+| Resonance frequency | ω_res | 1.445e-17 rad/s | Doc 3 |
 | TRZ coupling | k_η | 10⁻¹¹³ | Doc 2 |
 | Decay constant | κ | 0.0005 day⁻¹ | Doc 3 |
 | Wormhole coupling | f_worm | 1×10⁻¹⁰ | C++ final |

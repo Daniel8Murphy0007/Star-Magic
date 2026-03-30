@@ -7,6 +7,11 @@
 
 ---
 
+
+## Abstract
+
+This paper presents a UQFF analysis of Sagittarius A* Full Resonance + Compressed Term Decomposition, deriving compressed field equations and observational predictions within the Star-Magic/UQFF framework.
+
 ## 1. Overview
 
 PAPER_371 (resonance MUGE framework) and PAPER_372 (compressed MUGE framework) described the
@@ -24,17 +29,17 @@ demonstrating a consistent **fluid-dominance law** across both compact object an
 
 | Parameter | Symbol | Value | Units |
 |-----------|--------|-------|-------|
-| Mass | M | 8.155×10³⁶ | kg |
+| Mass | M | 8.155e36 | kg |
 | Radius | r | 1×10¹² | m |
 | Magnetic field | B | 1×10⁻⁵ | T |
 | Critical B-field | B_crit | 1×10⁻⁴ | T |
-| Age | t | 3.786×10¹⁴ | s |
+| Age | t | 3.786e14 | s |
 | Redshift | z | 0.0009 | — |
-| V_sys | 3.552×10⁴⁵ | m³ |
+| V_sys | 3.552e45 | m³ |
 | v_exp | 5×10⁶ | m/s |
-| f_fluid | 3.465×10⁻⁸ | Hz |
+| f_fluid | 3.465e-8 | Hz |
 | Current I | 1×10²³ | A |
-| Area A | 2.813×10³⁰ | m² |
+| Area A | 2.813e30 | m² |
 
 ---
 
@@ -71,7 +76,7 @@ $$\boxed{a_{fluid\_freq}^{\text{SgrA}*} = 4.105\times10^{29} \ \text{m/s}^2 \qua
 | avac_diff | ~10⁻¹² | small — low Δ_Evac |
 | asuper_freq | ~10⁻⁵ | B-field much weaker than magnetar |
 | aaether_res | ~10⁻²⁸ | sub-dominant |
-| Ug4i | ≈ 0 | ancient system (t=3.786×10¹⁴ s) |
+| Ug4i | ≈ 0 | ancient system (t=3.786e14 s) |
 | aquantum_freq | ~10⁻⁶⁰ | Hubble quantum floor |
 | aAether_freq | ~10⁻⁷⁴ | minimum |
 | Osc_term | 0 | steady state |
@@ -117,21 +122,21 @@ $$\boxed{g_\text{pert}^{\text{SgrA}*} = 2.966\times10^{34} \ \text{m/s}^2}$$
 ### Resonance MUGE
 | Term | Value (m/s²) | Orders above aDPM |
 |------|:------------:|:-----------------:|
-| **afluid_freq** | **4.105×10²⁹** | +39 |
-| aTHz | 1.001×10⁻² | +32 |
-| aDPM | 1.001×10⁻¹⁰ | — |
+| **afluid_freq** | **4.105e29** | +39 |
+| aTHz | 1.001e-2 | +32 |
+| aDPM | 1.001e-10 | — |
 | All others | negligible | — |
 
-**Total resonance: ≈ 4.105×10²⁹ m/s²**
+**Total resonance: ≈ 4.105e29 m/s²**
 
 ### Compressed MUGE
 | Term | Value (m/s²) | Notes |
 |------|:------------:|-------|
-| **Perturbation** | **2.966×10³⁴** | DOMINANT |
-| Fluid | 3.552×10²⁰ | sub-dominant by 14 orders |
-| Newtonian SC | 4.899×10² | base |
+| **Perturbation** | **2.966e34** | DOMINANT |
+| Fluid | 3.552e20 | sub-dominant by 14 orders |
+| Newtonian SC | 4.899e2 | base |
 
-**Total compressed: ≈ 2.966×10³⁴ m/s²**
+**Total compressed: ≈ 2.966e34 m/s²**
 
 ---
 
@@ -139,12 +144,12 @@ $$\boxed{g_\text{pert}^{\text{SgrA}*} = 2.966\times10^{34} \ \text{m/s}^2}$$
 
 | Property | SGR1745 (Magnetar) | Sag A* (SMBH) |
 |----------|:-----------------:|:-------------:|
-| Resonance dominant term | afluid=1.773×10⁻⁹ | afluid=4.105×10²⁹ |
+| Resonance dominant term | afluid=1.773e-9 | afluid=4.105e29 |
 | Resonance dominant mechanism | vacuum×volume coupling | vacuum×volume coupling |
-| Compressed dominant term | perturbation=1.782×10³⁹ | perturbation=2.966×10³⁴ |
+| Compressed dominant term | perturbation=1.782e39 | perturbation=2.966e34 |
 | Compressed/Resonance ratio | ~10⁴⁸ | ~10⁵ |
-| Resonance total (m/s²) | 1.773×10⁻⁹ | 4.105×10²⁹ |
-| Fluid term ratio Sag A*/SGR1745 | — | ×2.3×10³⁸ |
+| Resonance total (m/s²) | 1.773e-9 | 4.105e29 |
+| Fluid term ratio Sag A*/SGR1745 | — | ×2.3e38 |
 
 **Fluid Universality Principle:** The dominant resonance term in both a compact magnetar ($r=10^4$ m) and a supermassive black hole ($r=10^{12}$ m) is $a_{fluid\_freq}$, but the values differ by **38 orders of magnitude**, scaling with $f_{fluid} \cdot V_{sys}$.
 

@@ -49,7 +49,7 @@ $$E_{pre} = \sum_{n=1}^{N} \frac{d_n(\pi)}{10^n} \cdot \prod_{i=1}^{7} f_i(\Delt
 **Parameters:**
 - $d_n(\pi)$: nth decimal digit of π (first 26: 3,1,4,1,5,9,2,6,5,3,5,8,9,7,9,3,2,3,8,4,6,2,6,4,3,3)
 - $\Delta QVD_n$: vacuum density perturbation at mode n (~1×10⁻⁶ dimensionless)
-- $\rho_{egg}$: pre-fertilization egg density (≈ 2.5×10⁻³⁰ kg/m³ — the anti-collapse threshold)
+- $\rho_{egg}$: pre-fertilization egg density (≈ 2.5e-30 kg/m³ — the anti-collapse threshold)
 - N: number of series terms (26 for first-order convergence)
 
 **Units**: E_pre has units of kg/m³ × dimensionless = kg/m³, interpreted as energy density when multiplied by shell volume.
@@ -69,7 +69,7 @@ $$\sum_{n=1}^{26} \frac{d_n(\pi)}{10^n} \approx 3.14159265358979323846264...$$
 Thus $E_{pre} \approx 3.14159 \times 10^0 \times (1 + 4\times10^{-6}) \times 2.5\times10^{-30}$
 $\approx 7.854 \times 10^{-30}$ kg/m³
 
-This places E_pre comfortably above the UQFF anti-collapse threshold (2.5×10⁻³⁰ kg/m³) by a factor of π, consistent with an egg that has not yet collapsed but has not yet hatched.
+This places E_pre comfortably above the UQFF anti-collapse threshold (2.5e-30 kg/m³) by a factor of π, consistent with an egg that has not yet collapsed but has not yet hatched.
 
 ---
 
@@ -90,7 +90,7 @@ The 7 perturbation functions trace back to the 7 fundamental flavors coupling in
 
 **DVP (Dipole Vortex Primes)**: The 7 perturbation channels correspond to DVP prime-indexed vacuum sectors. DVP primes (2, 3, 5, 7, 11, 13, 17) define which sectors are activated.
 
-**BH26 (Buoyancy Harmonics)**: The egg's pre-fertilization state occupies the lowest BH26 harmonic bin (n=1), far below the US_orb = 1.8×10³¹ Hz threshold for formation.
+**BH26 (Buoyancy Harmonics)**: The egg's pre-fertilization state occupies the lowest BH26 harmonic bin (n=1), far below the US_orb = 1.8e31 Hz threshold for formation.
 
 ---
 
@@ -98,8 +98,8 @@ The 7 perturbation functions trace back to the 7 fundamental flavors coupling in
 
 | Parameter | Value |
 |-----------|-------|
-| E_pre (26 terms) | ~7.854×10⁻³⁰ kg/m³ |
-| Anti-collapse bound | 2.5×10⁻³⁰ kg/m³ |
+| E_pre (26 terms) | ~7.854e-30 kg/m³ |
+| Anti-collapse bound | 2.5e-30 kg/m³ |
 | E_pre / bound | ~3.14 (= π) |
 | Series convergence (term 26) | d₂₆(π)/10²⁶ ≈ 3×10⁻²⁶ → negligible |
 | ΔQVD_n baseline | 10⁻⁶ (dimensionless) |

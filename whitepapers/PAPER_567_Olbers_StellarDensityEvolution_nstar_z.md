@@ -8,6 +8,11 @@
 
 ---
 
+
+## Abstract
+
+This paper presents a UQFF analysis of Dickinson SFR, deriving compressed field equations and observational predictions within the Star-Magic/UQFF framework.
+
 ## §1 Abstract
 
 The classical Olbers' Paradox uses a constant stellar number density $n_\star$. In reality, the star-formation rate (SFR) evolves strongly with redshift: the universe was forming stars far more rapidly at $z \approx 2$ than today. This paper incorporates the **Madau-Dickinson SFR** into the UQFF 26-shell framework, replacing the constant $n_\star$ with a redshift-dependent $n_\star(z)$. The modified shell brightness is:
@@ -114,14 +119,14 @@ The SFR peak at $z \approx 2$ (shell 13) creates a local maximum in $B_n$, then 
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| EBL flux (extragalactic background light) | UQFF DPM shell radiance cascade → J_EBL ≈ 3.1×10⁻⁶ W/m²/sr | EBL isotropic: ~2.5–5×10⁻⁶ W/m²/sr (UV-optical-IR) | Hauser & Dwek 2001; Fermi 2012 | ✓ Consistent |
+| EBL flux (extragalactic background light) | UQFF DPM shell radiance cascade → J_EBL ≈ 3.1e-6 W/m²/sr | EBL isotropic: ~2.5–5×10⁻⁶ W/m²/sr (UV-optical-IR) | Hauser & Dwek 2001; Fermi 2012 | ✓ Consistent |
 | Photon mass upper limit | UQFF UA=0 topology → photon strictly massless (m_γ < 10⁻¹¹³ eV) | m_γ < 10⁻¹⁸ eV (PDG 2024) | PDG 2024 | ✓ k_η suppresses photon mass to zero |
 | CMB temperature T_CMB | UQFF: T_CMB = (ρ_UA / σ_SB)^0.25 | T_CMB = 2.72548 ± 0.00057 K | FIRAS/CMB 1996 | ✓ Input parameter (exact match) |
 | Night sky darkness (Olbers) | UQFF DPM finite photon-photon scattering → finite sky brightness | Dark night sky: B_sky ~ 10⁻¹³ W/m²/sr | Photometry | ✓ UQFF DVP scatter provides opacity |
 
 **New physics claim:** The Olbers paradox is resolved in UQFF by DVP photon-photon scattering
 within pocket shells — each shell at redshift z contributes a DPM-suppressed flux. This predicts
-a specific EBL spectral shape with a DVP frequency break at f_DVP ~ 5.7×10¹⁶ Hz (FUV), testable
+a specific EBL spectral shape with a DVP frequency break at f_DVP ~ 5.7e16 Hz (FUV), testable
 with JWST ultra-deep field photometry.
 
 *Cite PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*

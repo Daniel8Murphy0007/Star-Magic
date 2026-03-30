@@ -6,6 +6,11 @@
 
 ---
 
+
+## Abstract
+
+This paper presents a UQFF analysis of Tapestry of Blazing Starbirth: Per-System MUGE with Stellar Wind Feedback M(t), deriving compressed field equations and observational predictions within the Star-Magic/UQFF framework.
+
 ## 1. Overview
 
 PAPER_433 presents the **complete per-system MUGE** for the "Tapestry of Blazing Starbirth" (NGC 2014 + NGC 2020 in the Large Magellanic Cloud). While PAPER_345 captured only the tail term $\Delta_\text{Tap} = \rho_\text{ISM} v_\text{wind}^2$ and PAPER_372 included the compressed abstract, this paper provides the **first complete 10-term derivation** with the unique stellar feedback function $M(t) = M_\text{init}(1 + M_f \, e^{-t/\tau_\text{SF}})$, where the cluster grows from 240 $M_\odot$ to a peak $\sim 10{,}000 \, M_\odot$ before declining.
@@ -109,7 +114,7 @@ Standard Jeans gravity: $g_\text{Jeans} = 4\pi G \rho_\text{cloud} r/3$. For thi
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Thomson σ_T (QED synchrotron) | UQFF U_m scattering kernel: σ_T = 6.6524×10⁻²⁹ m² | σ_T = 6.6524×10⁻²⁹ m² (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
+| Thomson σ_T (QED synchrotron) | UQFF U_m scattering kernel: σ_T = 6.6524e-29 m² | σ_T = 6.6524e-29 m² (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
 | Tapestry Star Formation luminosity Radio 1.4 GHz + IR | UQFF MUGE g_total → L_X via Stefan-Boltzmann + buoyancy flux: L_X ≈ g_total × M_env | L_X SFR ~ 10 M_☉/yr | ALMA / Spitzer | ✓ Consistent order of magnitude |
 | GR Schwarzschild limit | UQFF g_total must satisfy g ≤ c²/(2r_s) at event horizon | r_s = 2GM/c² (GR exact) | PDG 2024 / GR | ✓ UQFF respects GR horizon |
 | κ vacuum rate vs X-ray variability | UQFF κ = 0.0005/day → timescale τ_UQFF = 2000 days | Observed X-ray variability τ_obs (instrument monitoring) | ALMA / Spitzer | Testable UQFF variability timescale |

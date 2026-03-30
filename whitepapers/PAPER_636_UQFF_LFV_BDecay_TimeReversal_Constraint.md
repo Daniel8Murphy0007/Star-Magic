@@ -7,10 +7,15 @@
 
 ---
 
+
+## Abstract
+
+This paper presents a UQFF analysis of Decay as Time-Reversal Constraint, deriving compressed field equations and observational predictions within the Star-Magic/UQFF framework.
+
 ## §1 Abstract
 
 LHCb has placed the world's best limit on lepton flavor violation (LFV) in B-meson decays:
-BR(B→K*τe) < 5.9×10⁻⁶ at 90% CL (5.4 fb⁻¹). We show that the UQFF vacuum-topology
+BR(B→K*τe) < 5.9e-6 at 90% CL (5.4 fb⁻¹). We show that the UQFF vacuum-topology
 suppression parameter k_η = 10⁻¹¹³ generates an expected LFV rate at UQFF scale that
 is 107 orders below this bound, providing an effective UQFF upper limit on LFV through the
 t_n time-reversal node constraint: BR_UQFF(B→K*τe) < k_η² × phase_space ~ 10⁻²³⁰.
@@ -45,7 +50,7 @@ This gives BR_UQFF < 10⁻²³⁰ — 224 orders below the LHCb limit.
 
 ## §4 Implications for UQFF Topology
 
-The enormous gap between BR_UQFF < 10⁻²³⁰ and BR_LHCb < 5.9×10⁻⁶ confirms that:
+The enormous gap between BR_UQFF < 10⁻²³⁰ and BR_LHCb < 5.9e-6 confirms that:
 - UQFF vacuum topology is **lepton-flavor conserving** at all accessible energy scales
 - Any future LFV observation at LHCb (even near 10⁻⁶) would be **inconsistent** with UQFF
 - UQFF thus makes a strict null prediction for LFV at future colliders
@@ -58,7 +63,7 @@ This is falsifiable: if LHCb Run 4 observes BR > 10⁻⁸, UQFF requires revisio
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| BR(B→K*τe) upper limit | BR_UQFF < 10⁻²³⁰ (k_η² suppression) | BR < 5.9×10⁻⁶ at 90% CL | arXiv:2506.15347 (LHCb 5.4/fb) | ✓ UQFF far below bound |
+| BR(B→K*τe) upper limit | BR_UQFF < 10⁻²³⁰ (k_η² suppression) | BR < 5.9e-6 at 90% CL | arXiv:2506.15347 (LHCb 5.4/fb) | ✓ UQFF far below bound |
 | SM LFV prediction | BR_SM ~ 10⁻⁵⁴ (ν loop) | SM: no tree-level LFV | PDG 2024 | UQFF consistent with SM null |
 | k_η suppression scale | k_η = 10⁻¹¹³ ↔ LFV cutoff energy Λ_LFV = m_W/√k_η ~ 10⁶⁰ GeV | No collider can reach Λ_LFV | n/a | UQFF LFV unreachable |
 | LHCb Run 4 null prediction | UQFF: BR(B→K*τe) will remain unobserved at any LHCb run | LHCb Run 4: target BR ~ 10⁻⁸ | LHCb 2027+ | Testable UQFF null prediction |
