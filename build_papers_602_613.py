@@ -28,18 +28,18 @@ out_dir.mkdir(parents=True, exist_ok=True)
 styles  = genpdf.make_styles()
 
 targets = [
-    'PAPER_602.md',
-    'PAPER_603.md',
-    'PAPER_604.md',
-    'PAPER_605.md',
-    'PAPER_606.md',
-    'PAPER_607.md',
-    'PAPER_608.md',
-    'PAPER_609.md',
-    'PAPER_610.md',
-    'PAPER_611.md',
-    'PAPER_612.md',
-    'PAPER_613.md',
+    'PAPER_602_UQFF_Cosmic_Egg_Pre_Fertilization_Energy.md',
+    'PAPER_603_UQFF_26D_Egg_Total_Energy.md',
+    'PAPER_604_UQFF_Proto_Hydrogen_Shell_Alignment.md',
+    'PAPER_605_UQFF_26th_Order_Factorial_Bounds.md',
+    'PAPER_606_UQFF_Inertia_26D_Shell_Force.md',
+    'PAPER_607_UQFF_Centripetal_26D_Shell.md',
+    'PAPER_608_UQFF_Centrifugal_26D_Shell.md',
+    'PAPER_609_UQFF_Riemann_Hypothesis_Critical_Line.md',
+    'PAPER_610_UQFF_Mayan_Calendar_Nuclei_Epochs.md',
+    'PAPER_611_UQFF_Solar_System_Proplyd_Legacy.md',
+    'PAPER_612_UQFF_Probability_Of_Order_Partition.md',
+    'PAPER_613_UQFF_NASA_ATP_Grant_Framework_Validation.md',
 ]
 
 print('=' * 74)
