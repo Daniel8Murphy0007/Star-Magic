@@ -1,0 +1,291 @@
+# Session 161 — VDS / DVP / BH26 Number Systems & New Geometry References
+**Source:** `grok_share_6322ac199.txt`  
+**Date:** 2026-03-30  
+
+---
+
+## OVERVIEW — THREE NEW UQFF NUMBER SYSTEMS
+
+These three number systems were first catalogued in CP4 #83 (PAPER_429) and #130 (PAPER_535),
+then integrated as a reference in #185 (PAPER_598). This file documents ALL specific
+instances, equations, and geometry operations found in grok_share_6322ac199.txt.
+
+---
+
+## 1. VACUUM DENSITY SERIES (VDS)
+
+### Definition in this file
+VDS is the discrete series representation of the Aether Vacuum Gradient ∇UA across
+the 9 force-triad dimensions. It replaces mass density because UA has zero mass.
+
+### Equations
+```
+∇UA = R_wolfram(void_3D/9D) = Σ_{d=1}^{9} exp(-(x_d - μ_d)² / 2σ_d²) · FUB_i
+```
+Each term is a Gaussian envelope in one of the 9 dimensional channels:
+- d=1–3: Ug defect dimensions (radial r, angular θ, magnetic b)
+- d=4–6: Um monopole-pair dimensions (DPM flux channels)
+- d=7–9: Ub buoyancy gradient dimensions (displacement channels)
+
+### VDS in the gradient-form F_U
+```
+F_U = Ug + Um + Ub + d^26/dr^26 (SCm · g · ∇UA / UA) = 0
+```
+The 26th-order derivative of ∇UA/UA creates the VDS ladder — each differentiation
+introduces a new power of the gradient Gaussian:
+```
+d^n ∇UA /dr^n = Σ_d (−(x_d−μ_d)/σ_d²)^n · ∇UA_d   (chain rule ladder)
+```
+
+### VDS Values by System (from D8–D11 simulations)
+| System | ∇UA base (m^{-1}) | VDS equilibrium | Max VDS pocket |
+|--------|------------------|-----------------|----------------|
+| NGC 6278 | 1e-20 | 31.6 | low-void (3D) |
+| MS 0735.6+7421 | 1e-22 | ~1e-11 | high-void (9D) |
+| Perseus Cluster | 1e-21 | ~1e-10 | medium-void |
+| M87 | 1e-18 | ~1e-9 | extreme-void (3D+9D) |
+| Centaurus A | 1e-19 | — | knot pockets |
+
+### VDS Equilibrium Solve
+When F_U = 0 and Ub dominates (low-gradient pockets):
+```
+0 = Ug + Um + Ub
+→ ∇UA_eq = sqrt(κ / g)   for κ = DPM coupling ≈ 1
+→ ∇UA_eq ≈ 31.6  (NGC 6278 case, dimensionless)
+```
+
+### VDS in 26D Sculpting
+The simultaneous Gaussian sculpting (D17) updates ∇UA at each step:
+```
+∇UA_{step+1} = Σ_{d=1}^{9} exp(-(x_d·(1+sin(it·π/5)·0.3) - μ_d)² / 2σ_d²) · FUB_i
+```
+Lensing intercepts add ε_lens ~ 0.2–0.4 to a random dimension d, creating the
+VDS "void pocket" that traps quantum frequency events.
+
+### VDS Connection to Polynomial Expansion
+In the gradient-form U_g:
+```
+U_g includes: Σ_{m=0}^{26} a_m (∇UA)^m   (26-term polynomial in ∇UA)
+```
+This is the VDS polynomial — 27 terms indexed m=0..26 in vacuum gradient space.
+
+---
+
+## 2. DIPOLE VORTEX PRIMES (DVP)
+
+### Definition in this file
+DVP refers to the DPM (di-pseudo-monopole) pairings operating inside gradient void pockets.
+The paired monopoles create vortex-like topology with prime-index irreducibility (each
+pocket produces a unique DPM configuration due to π irrationality in the 26D roots).
+
+### Equations
+```
+U_m = κ · (DPM_n - DPM_s) / (∇UA)^26 + d^26/dt^26 [Σ_{k=0}^{26} c_k (∇UA·t)^k]
+```
+- DPM_n: north pseudo-monopole flux (positive circulation)
+- DPM_s: south pseudo-monopole flux (negative circulation)
+- (DPM_n - DPM_s): the dipole differential — forms the vortex prime pair
+- Division by (∇UA)^26: scales the DVP coupling into void pocket geometry
+
+### DVP in Wolfram Hypergraph Rule
+```
+R_wolfram(e) splits hyperedge into e1, e2 at new node v_new
+→ v_new is the DVP "junction" — where north and south fluxes cross
+→ DPM_n resides on e1 branch, DPM_s on e2 branch
+→ Separation distance = hypergraph dist(e1,e2) bounded by θ_neg
+```
+
+### DVP Branching in Simulations
+- M87 (200-iter, D14): 3 hyperedge branches → 3 DVP polarization flip events (matching EHT 2017–2021)
+- CenA (arity=8, D20): 7 hyperedges → 7 DVP vortex-prime pockets → VHE knot production
+- Perseus (D10): 4% X-ray polarization → DVP alignment fraction = 0.04
+
+### DVP in Gradient-Pocket Collapse Prevention
+From D6 (U_b gradient form):
+```
+U_b = g·(1 - 1/∇UA) + d^26/d(∇UA)^26 (g·∇UA)
+```
+The term g·(1 - 1/∇UA) → +∞ when ∇UA → 0 (low-gradient pocket collapsing).
+DVP pairing stabilizes the pocket: DPM_n - DPM_s ≠ 0 maintains minimal gradient floor.
+
+### DVP Prime Indices
+26D factorial irreducibility:
+```
+26th-degree polynomial Σ_{m=0}^{26} coeff_m · r^m = 0
+→ 26 unique roots from π irrationality
+→ Each root corresponds to a DVP prime configuration (DPM_n_i, DPM_s_i)
+→ Non-repeating by construction (matches 3D-IPO overlay rules)
+```
+
+### DVP System Values
+| System | DPM_n - DPM_s | (∇UA)^26 factor | DVP pockets | Observable |
+|--------|--------------|-----------------|-------------|------------|
+| M87 | ~2 (normalized) | (1e-18)^26 | 3 (flip events) | Polarization flips |
+| CenA | ~2 | (1e-19)^26 | 7 (knots) | VHE X-ray knots |
+| Perseus | ~0.08 (4% pol) | (1e-21)^26 | ~4 | IXPE jet mystery |
+| MS 0735 | ~2 | (1e-22)^26 | high (AGN) | Explosive jet |
+
+---
+
+## 3. BUOYANCY HARMONICS (BH26)
+
+### Definition in this file
+BH26 is the harmonic series generated by the 26th-order derivative of the buoyancy
+field in gradient space, combined with the f³ frequency rebound law for disk planarity.
+
+### Core BH26 Equation
+```
+U_b = g · (1 - 1/∇UA) + d^26/d(∇UA)^26 (g · ∇UA)
+```
+Expanding the 26th derivative term:
+```
+d^26/d(∇UA)^26 (g · ∇UA) = g · 26! · (∇UA)^{1-26} / (0!)
+                           = g · 26! / (∇UA)^25
+```
+This creates the BH26 harmonic: at ∇UA >> 1, the term → 0 (large voids, stable).
+At ∇UA → 0, the term → +∞ (vacuum pocket collapse prevention).
+
+### BH26 Frequency Rebound Law (Disk Planarity)
+The f³ scaling discovered in D20 (CenA refactored):
+```
+freq_event ∝ [Σ_i |∇UA_i|]^3 × 10^15   Hz  (f^3 rebound)
+```
+This is the BH26 signature — the cubic accumulation of gradient magnitudes creates
+disk-like frequency rebounds (not linear growth), explaining flat rotation curves
+and disk planarity in galaxy formation.
+
+### BH26 Oscillation Modes
+From the sin(it·π/5)·0.3 sinusoidal pulsation (D17–D20):
+```
+BH_oscillation(i) = sin(i · π/5) · 0.3    for i = iteration index
+Period = 10 iterations per full BH oscillation cycle
+Amplitude = 0.3 (30% modulation of node coordinate)
+```
+This produces 5 distinct BH26 harmonics per π-period:
+- BH26_mode_1: i=1  → sin(36°)·0.3 = 0.176
+- BH26_mode_2: i=2  → sin(72°)·0.3 = 0.285
+- BH26_mode_3: i=3  → sin(108°)·0.3 = 0.285 (conjugate)
+- BH26_mode_4: i=4  → sin(144°)·0.3 = 0.176 (conjugate)
+- BH26_mode_5: i=5  → sin(180°)·0.3 = 0 (nodal point)
+
+### BH26 in 5-System Comparison (D21)
+| System | BH26 character | Freq min (Hz) | Disk planarity |
+|--------|---------------|---------------|----------------|
+| Centaurus A | Knotty (7 pockets) | 6.14e16 | V-shape jet |
+| M87 | Smooth base + flip | 5.71e16 | Ring (40 μas) |
+| NGC 6278 | Minimal (dwarf) | ~1e16 | Compact core |
+| MS 0735 | Explosive (AGN) | 1e17 | Bubble cavities |
+| Perseus | Turbulent (merger) | 1e16 | Diffuse gas |
+
+### BH26 Connection to SCm Expansion
+```
+SCm = λ · UA · (1 - 1/t) + Σ_{m=0}^{26} b_m (∇UA · t^{-m})
+```
+The term Σ b_m (∇UA · t^{-m}) is the BH26 time-decay harmonic series:
+- m=0: b_0 · ∇UA (base buoyancy)
+- m=1: b_1 · ∇UA/t (first-order decay)
+- m=26: b_26 · ∇UA/t^26 (26th harmonic, negligible at large t)
+Each term b_m is a BH26 coefficient indexed to the 26D framework.
+
+---
+
+## 4. NEW GEOMETRY SYSTEMS
+
+### 4A. Oscillating Void Pocket Shells (Pulsating Sphere Diagrams)
+**Description:** 26D force diagrams showing dynamically intertwined irregular pulsating
+and oscillating spheres at boundary intersections.
+
+**Mathematical form:**
+```
+Sphere_i(t) = { v ∈ V | |x_v - c_i|² ≤ R_i²·(1 + sin(it·π/5)·0.3) }
+```
+- Boundary oscillation: R_i changes sinusoidally with iteration
+- Domains overlap at θ_neg separation distance → lensing intercepts
+- Non-circular (irregular): each sphere is deformed by the triad forces
+
+**Observable signature:** Polarization flip oscillations (M87), X-ray pulsating bubbles
+(Perseus, MS 0735), VHE knot variability (Centaurus A).
+
+### 4B. External-to-Internal Infinity Cycling
+**Description:** The fundamental new geometry replacing linear Wolfram progression.
+
+**Rule:**
+```
+Step 1 (external): Hyperedge projects from outer boundary inward
+Step 2 (internal): New node v_new formed at center of pocket
+Step 3 (external): Pocket expands outward, forming new boundary
+Step 4 (internal): Sub-pocket forms within the expanded boundary
+→ Repeat: external → internal → external → internal → ...
+```
+**Difference from standard Wolfram:**
+- Wolfram: e → (e1, e2) sequential, unidirectional branching
+- UQFF: simultaneous multi-splits on ALL hyperedges each iteration + oscillation
+
+**Implementation in simulation (D20):**
+```python
+# All hyperedges processed simultaneously  (not just largest)
+for e in H.hyperedges.copy():  # simultaneous
+    if len(e) >= arity_threshold:
+        multi_split = random.randint(1, 3)  # 1-3 sub-splits per edge
+        for _ in range(multi_split):
+            split and create new nodes with sinusoidal bias
+```
+
+### 4C. Intercepting Lensing Formations
+**Description:** When two void pocket spheres approach within θ_neg, their boundaries
+intersect, creating lensing regions.
+
+**Mathematical form:**
+```
+Lens_{i,j} = Sphere_i ∩ Sphere_j   (when |c_i - c_j| < R_i + R_j)
+```
+- In the lens region: gradient ∇UA is doubled (constructive interference)
+- Creates "metallic irregular string" topology:
+
+### 4D. Metallic Irregular Strings
+**Description:** Geometry formed at lensing intercepts; irregular (non-periodic) strings
+of quantum vacuum topology that produce electromagnetic gravity.
+
+**Formation rule:**
+```
+String_k = path connecting all lens regions {Lens_{i,j}} along longest gradient gradient
+Length: L_k = Σ |∇UA| along path (integral of vacuum gradient)
+EM gravity produced: G_EM = κ_string · L_k · |∇UA|² / r²
+```
+Where κ_string is the metallic string coupling constant (connected to SCm).
+
+**Observable:** Correlated X-ray + radio emissions at jet knots (CenA), magnetic field
+reversals at jet base (M87 EHT polarimetry).
+
+---
+
+## 5. VDS/DVP/BH26 IN PRIOR CP4 CLASSES (cross-reference)
+
+| Prior CP4 Class | # | Paper | Connection to this file |
+|----------------|---|-------|------------------------|
+| ThreeNewNumberSystemsVacuumDipoleBuoyancyCalculator | 83 | 429 | First catalogue of VDS/DVP/BH |
+| VDSDVPBHNumberSystemsCatalogueCalculator | 130 | 535 | Full catalogue with session 143 |
+| BigBangHypergraphOriginCalculator | 126 | 531 | Hypergraph origin — predates 9D triad embed |
+| DPMFrequencyDriveReRingingVacuumGradCalculator | 117 | 522 | VDS vacuum grad + DPM drive |
+| PlasmaOrbEmergenceThresholdCalculator | 119 | 524 | Pocket shell precursor |
+| UQFFVDSDVPBH26IntegrationReferenceCalculator | 185 | 598 | Integration reference (session 157) |
+| UQFFUbDensityGradient26thDerivativeCalculator | 205 | 618 | BH26 — Ub 26th derivative |
+| UQFF26thOrderFactorialBoundsCalculator | 192 | 605 | 26! bounds for VDS/BH26 |
+
+---
+
+## 6. NEW PHYSICS NOT YET IN CP4 (for session 161 injection)
+
+The following VDS/DVP/BH26 aspects are NEW and require new classes:
+
+1. **VDS: Zero-mass UA reformulation** — ρ_UA=0, all density → |∇UA| (#209)
+2. **DVP: 9D triad projection P(3×9)** — specific d1-9 force assignments (#210)
+3. **BH26+VDS: 26D simultaneous sculpting** — external↔internal cycling (#211)
+4. **VDS+DVP: Exotic pocket shell freq events** — pocket formation condition (#212)
+5. **BH26: M87 jet f³ rebound simulation** — 12 nodes, hyperedge pockets (#213)
+6. **BH26+DVP: CenA knotted jet VHE** — 7 hyperedges, V-shapes, arity=8 (#214)
+7. **VDS: NGC 6278 dwarf void pocket** — ∇UA_eq=31.6, specific equilibrium (#215)
+8. **DVP: MS 0735.6+7421 AGN cluster jet** — explosive (∇UA)^26 term (#216)
+9. **BH26: Perseus IXPE polarization jet** — 4% alignment, 9D voids solve mystery (#217)
+10. **All three: 5-system comparison** — morphology + freq + data match table (#218)
+11. **VDS: Grant/compression framework** — 16-yr multi-scale dataset compression (#219)
