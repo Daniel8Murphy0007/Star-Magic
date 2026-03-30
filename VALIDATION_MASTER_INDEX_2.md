@@ -38,14 +38,14 @@ arXiv anchor:            arxiv_validation_data.csv
 
 ---
 
-## CURRENT STATE — SESSION 157 METRICS
+## CURRENT STATE — SESSION 158 METRICS
 
 | Metric | Value |
 |--------|-------|
-| **Total Whitepapers (VMI + VMI2)** | **598 / 1,000** (59.8%) |
-| **598 in whitepapers/ (all QS=5)** | ✅ All 5 content quality dimensions complete (Sessions 113–157) |
+| **Total Whitepapers (VMI + VMI2)** | **601 / 1,000** (60.1%) |
+| **601 in whitepapers/ (all QS=5)** | ✅ All 5 content quality dimensions complete (Sessions 113–158) |
 | **CP1 Calculator Classes** | **1,227** (CondensedPhysics.py, 168,803 lines) |
-| **CP4 Calculator Classes** | **185** (CondensedPhysics4.py — v5.14; #170–#185 Session 157: UQFFSixFormSimultaneousSolverCalculator, UQFFCollatzConvergence26DCalculator, UQFFEulerEquationsInviscidProofCalculator, UQFFBigBangExpansionDynamicsCalculator, UQFFInflationaryEpochDetailsCalculator, UQFFMaxwellPowerLarge26thOrderCalculator, UQFFDarkEnergyVoidBuoyancyCalculator, UQFFPlanckConstantDerivedCalculator, UQFFFineStructureConstantDerivedCalculator, UQFFSpeedOfLightTriadEquilibriumCalculator, UQFFGravitationalConstantVoidCouplingCalculator, UQFFBlackHoleFiniteBoundCalculator, UQFFSgrAStarBoundApplicationCalculator, UQFFQuantumGravityUnificationCalculator, UQFFNegativeTimeDualExistenceCalculator, UQFFVDSDVPBH26IntegrationReferenceCalculator) |
+| **CP4 Calculator Classes** | **188** (CondensedPhysics4.py — v5.15; #186–#188 Session 158: UQFFBSDConjectureRankCohomologyCalculator, UQFFHodgeConjectureAlgebraicCyclesCalculator, UQFFMagneticGatewayCosmicFluxCalculator) |
 | **CP3 Calculator Classes** | **219** (CondensedPhysics3.py, 13,944 lines; unchanged Sessions 132–153) |
 | **CP2 Calculator Classes** | **622** (CondensedPhysics2.py; unchanged Sessions 139–153) |
 | **QCalc.py Calculators** | **27 classes** (9,833 lines — unchanged Sessions 132–153) |
@@ -53,8 +53,8 @@ arXiv anchor:            arxiv_validation_data.csv
 | **VMI2 opens at Session** | **89** |
 | **VMI2 opens at paper** | **PAPER_311** |
 | **Last VMI session** | Session 88: v4.44; PAPER_308–310; commit 307→310 ✅ |
-| **Last VMI2 session** | Session 157 v5.14: 6-Form UQFF Simultaneous Solver / Collatz 26D / Euler Inviscid / Big Bang Dynamics / Inflation / Maxwell 26th-Order / Dark Energy / h,α,c,G Derived / BH Finite Bound / Sgr A* / QG Unification / t_neg Dual Existence / VDS-DVP-BH26 Integration (grok_share_4cef778c78b8.txt); CP4 169→185 (#170–#185); PAPER_583–598 (16); 582→598/1000 (59.8%) |
-| **PDFs generated** | **614 PDFs** in pdf/ directory (PAPER_430–446 Session 119; … PAPER_579–582 Session 156; PAPER_583–598 Session 157 generated) |
+| **Last VMI2 session** | Session 158 v5.15: BSD Conjecture (rank=λ multiplicity, db~|Sha|Ω) / Hodge Conjecture (π-confinement algebraic cycles) / Magnetic Gateway Equation (Um cosmic flux, v_jet=c√(1−1/(1+E/mc²)²)) — remaining physics from grok_share_4cef778c78b8.txt fully extracted; CP4 185→188 (#186–#188); PAPER_599–601 (3); 598→601/1000 (60.1%) |
+| **PDFs generated** | **617 PDFs** in pdf/ directory (PAPER_430–446 Session 119; … PAPER_583–598 Session 157; PAPER_599–601 Session 158 generated) |
 
 ---
 
