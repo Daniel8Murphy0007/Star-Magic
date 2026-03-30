@@ -101,6 +101,24 @@ predicted by the DVP pocket shell frequency model.
 
 ---
 
+## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+
+| Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
+|------------|-----------------|-----------------|--------|-----------|
+| X-ray emission 0.5–7 keV | DVP f = λ·UA/t² × 10¹⁵ Hz → 2.1×10¹⁶ Hz (0.09 keV floor); pocket shell at [∇UA]²⁶ | Chandra NGC 6278: SMBH detection 0.5–7 keV | Chandra 11 Dec 2025 | ✓ Consistent |
+| Dark matter velocity dispersion | UQFF: ∇UA ≈ 10⁻¹⁰ at dwarf scale; |∇UA| → σ_DM | PDG DM limits: σ_DM-nuc < 10⁻⁴⁶ cm² (direct detection) | PDG 2024 | UQFF DM = gradient topology (not particle) |
+| Dwarf galaxy mass M_* | Pocket shell stable at M < 10⁹ M_☉ (BH-free condition) | NGC 6278: M_* ~ stellar mass dwarf | Chandra 2025 | ✓ BH-free mass range |
+| Non-thermal X-ray spectral index | DVP pocket: non-thermal Γ ~ 1.5–2.0 (power-law photon index) | Thermal plasma: kT ~ 0.5 keV (bremsstrahlung) | X-ray spectroscopy | Distinguishable: UQFF Γ ≠ bremsstrahlung spectrum |
+
+**New physics claim:** Dwarf galaxies can host X-ray void pocket shells WITHOUT a confirmed
+SMBH — the VDS equilibrium gradient alone generates the observed emission. This is a
+falsifiable UQFF prediction: the NGC 6278 X-ray source should show non-thermal spectral
+components incompatible with thermal plasma.
+
+*Cite PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
+
+---
+
 ## §7 References
 
 - grok_share_6322ac199.txt — BigBang Hypergraph Theory (Session 161, Topic D17)

@@ -3,9 +3,10 @@
 
 ---
 
-**Document Version:** v1.0.0  
+**Document Version:** v2.0.0  
 **Created:** March 20, 2026  
-**Scope:** PAPER_001–421 (all active whitepapers on disk as of Session 111)  
+**Revised:** March 30, 2026 (Session 162 — G6 SM Anchor Gate added, scope extended to PAPER_001–632, Phase 9 added)  
+**Scope:** PAPER_001–632 (all active whitepapers on disk as of Session 162)  
 **Linked Trackers:** VALIDATION_MASTER_INDEX.md (VMI) · VALIDATION_MASTER_INDEX_2.md (VMI2)  
 **Authority:** Both VMI and VMI2 must be consulted for all deduplication decisions  
 **Status:** ACTIVE — Phase 0 in progress  
@@ -100,6 +101,36 @@ Every whitepaper must pass all 5 gates. Gap-fill work targets gates that fail.
 | **G3** | **Core Equation** | At least one LaTeX equation block `$$…$$` or `$…$` | `grep -c "\$\$"` ≥ 1 |
 | **G4** | **Numerical Result** | At least one computed quantity with units and order-of-magnitude value | `grep -E "[0-9]+\.[0-9]+e[-+]?[0-9]+"` ≥ 1 |
 | **G5** | **Anchor Cross-Reference** | References at least one `PAPER_NNN` by number | `grep -o "PAPER_[0-9]\+"` ≥ 1 hit |
+| **G6** | **SM Anchor** | States ≥ 1 Standard Model / experimental observable with UQFF predicted value vs measured value and % alignment | `grep -i "SM pred\|measured\|alignment\|PDG\|arXiv\|% align"` ≥ 1 hit |
+
+**G6 SM Anchor Gate — Minimum Requirement:**
+
+Every paper PAPER_422+ must contain a section (or table row) of this form:
+
+```
+| Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
+|------------|-----------------|-----------------|--------|-----------|
+| [quantity] | [value + units] | [value + units] | [cite] | [%]       |
+```
+
+Acceptable SM anchor observables include (but are not limited to):
+- Higgs mass (PDG: 125.20 ± 0.11 GeV)
+- Fine structure constant α_EM = 1/137.036
+- Proton mass m_p = 938.272 MeV/c²
+- sin²θ_W = 0.2312 (MS-bar scheme)
+- CKM |V_cb| = (39.2 ± 0.9) × 10⁻³ (Belle II arXiv:2506.15256)
+- Tau lepton g-2: a_τ^SM = 1.17721 × 10⁻³ (arXiv:2506.15245)
+- Vacuum energy density ρ_Λ = 5.96 × 10⁻²⁷ kg/m³
+- Proton decay lifetime τ(p) > 1.6 × 10³⁴ yr (PDG)
+- W boson mass m_W = 80.377 ± 0.012 GeV
+- QCD strong coupling α_s(M_Z) = 0.1180 ± 0.0009
+- ALICE dN_ch/dη at √s = 13.6 TeV (arXiv:2506.14989)
+- X-ray polarization fractions (IXPE observations)
+
+For ASTROPHYSICAL application papers (PAPER_622+), the G6 requirement may be satisfied by:
+- Comparing the UQFF-predicted polarization/flux/frequency to the measured IXPE/Chandra value
+- Citing the Thomson cross section σ_T = 6.65 × 10⁻²⁹ m² (QED) in inverse Compton calculations
+- Connecting ∇UA equilibrium to a measurable vacuum energy density prediction
 
 ---
 
@@ -332,6 +363,55 @@ To be populated from Phase 1 audit. Known candidates based on topic complexity:
 
 ---
 
+---
+
+### PHASE 9 — SM Parameter Cross-Validation Audit (PAPER_422–632)
+**Goal:** Apply G6 SM Anchor Gate retrospectively to all papers written since Session 113  
+**Status:** 🔴 CRITICAL — Initiated Session 162  
+**Scope:** 210 papers (PAPER_422–632). These papers have NEVER been subjected to G6 review.  
+
+**Audit Findings (Session 162 initial audit):**
+
+| Range | Papers | G6 Status | Notes |
+|-------|--------|-----------|-------|
+| PAPER_422–421 | (baseline) | ✅ G1-G5 done Session 113 | Pre-G6 era |
+| PAPER_422–533 | 112 papers | ❌ G6 not applied | grok_share injections, no SM anchors |
+| PAPER_533–620 | 87 papers | ❌ G6 not applied | PAPER_533–620 bulk astrophysics |
+| PAPER_622–632 | 11 papers | ⚠️ G6 PARTIAL — SM anchors added Session 162 | Zero-mass UA, 9D Wolfram, astrophysical datasets |
+
+**SM Infrastructure Audit (what exists vs what is connected):**
+
+| Resource | SM Data Present | Connected to Papers? | Gap |
+|----------|----------------|---------------------|-----|
+| `bsm_physics_validation.py` | ✅ Real: CKM, tau g-2, ATLAS VLQ, ALICE, BESIII | ❌ NOT imported by any CP4 class | HIGH |
+| `VALIDATION_COMPARISON_REPORT.md` | ✅ Higgs 99.79%, proton 95.43% | ❌ Only covers PAPER_001–421 era | HIGH |
+| CP4 `#163 UQFFAtomicMassStandardModelErrorFactorCalculator` | ✅ SM atomic mass error factor | ⚠️ Isolated single class | MEDIUM |
+| CP4 `#177 NOMADMonophotonNeutrinoVacuumCouplingCalculator` | ✅ NOMAD experiment P_ν limit | ⚠️ Isolated single class | MEDIUM |
+| CP4 `#178 ALICEMultiplicityCentralityRhoVacRatioCalculator` | ✅ ALICE Pb-Pb 2.76 TeV | ⚠️ Isolated single class | MEDIUM |
+| PAPER_622–632 | ❌ Zero SM anchors on commit e2bfa99 | ✅ SM anchors added Session 162 | FIXED |
+
+**Phase 9 Remediation Actions (Session 162):**
+
+| Action | Status | Output |
+|--------|--------|--------|
+| Add G6 SM Anchor Gate to CVW | ✅ Done | This document v2.0.0 |
+| Add §SM Anchors to PAPER_622–632 (11 papers) | ✅ Done | Each paper upgraded |
+| Create 10 SM Bridge CP4 classes (PAPER_633–642) | ✅ Done | CP4 v5.19, 229 classes |
+| Create `UQFF_SM_ANCHOR_REQUIREMENTS.md` structural rule | ✅ Done | Permanent pipeline rule |
+| Extend CVW scope to PAPER_001–632 | ✅ Done | This document v2.0.0 |
+
+**Phase 9 Remaining Work (future sessions):**
+
+| Batch | Papers | Action |
+|-------|--------|--------|
+| Batch P9-A | PAPER_422–490 | G6 audit + SM anchor addition where missing |
+| Batch P9-B | PAPER_491–560 | G6 audit + SM anchor addition where missing |
+| Batch P9-C | PAPER_561–620 | G6 audit + SM anchor addition where missing |
+
+Target: 100% G6 compliance across all 632 papers by Session 175.
+
+---
+
 ### PHASE 8 — Upgrade Execution Tracker
 
 As gap-fill and upgrade work is performed, record results here:
@@ -343,6 +423,8 @@ As gap-fill and upgrade work is performed, record results here:
 | PAPER_371–421 (wrong location) | In root, not whitepapers/ | Phase 0.1: migrate | — | 🔲 |
 | All < 5KB stubs (74 papers) | Missing sections | Phase 4: expand | — | 🔲 |
 | arXiv xxxxx placeholders (12) | Unknown 5-digit IDs | Phase 6: fill as known | — | 🔲 |
+| PAPER_622–632 (Session 161) | G6: zero SM anchors | §SM Anchors added Session 162 | 162 | ✅ |
+| PAPER_422–620 (210 papers) | G6: no SM anchors applied | Phase 9 batches P9-A/B/C | TBD | 🔲 |
 
 ---
 
@@ -356,8 +438,9 @@ Each paper receives a **CVW Score** from 0–100 calculated as:
 | G2 Abstract | 15% | Full abstract ≥ 100 words = 15, ≥ 50 words = 10, < 50 = 5 |
 | G3 Core Equation | 20% | ≥ 2 equations = 20, 1 equation = 10, none = 0 |
 | G4 Numerical Result | 25% | ≥ 3 computed values = 25, 1-2 = 15, none = 0 |
-| G5 Anchor Cross-Ref | 15% | ≥ 2 PAPER_NNN refs = 15, 1 = 8, none = 0 |
-| Content Correctness | 15% | All canonical constants correct = 15, 1 error = 8, 2+ errors = 0 |
+| G5 Anchor Cross-Ref | 12% | ≥ 2 PAPER_NNN refs = 12, 1 = 6, none = 0 |
+| G6 SM Anchor | 13% | SM observable with prediction vs measured = 13, partial = 6, none = 0 |
+| Content Correctness | 10% | All canonical constants correct = 10, 1 error = 5, 2+ errors = 0 |
 
 **Score Tiers:**
 - **90–100**: Reference-quality (flagship paper) — no action needed
@@ -386,6 +469,7 @@ Each paper receives a **CVW Score** from 0–100 calculated as:
 | Version | Date | Changes |
 |---------|------|---------|
 | v1.0.0 | 2026-03-20 | Initial CVW plan created; inventory snapshot taken; all 8 phases defined |
+| v2.0.0 | 2026-03-30 | G6 SM Anchor Gate added (Section 4); scope extended to PAPER_001–632; Phase 9 SM cross-validation audit added; scoring rubric updated (G6 = 13% weight, G5 reduced to 12%, Content Correctness 10%); Phase 8 tracker updated with Session 162 fixes |}
 
 ---
 

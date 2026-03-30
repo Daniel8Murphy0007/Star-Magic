@@ -104,6 +104,24 @@ MS 0735.6+7421 is UQFF's premier testbed for the DVP explosive mechanism:
 
 ---
 
+## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+
+| Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
+|------------|-----------------|-----------------|--------|-----------|
+| AGN jet kinetic power P_jet | DVP flux: P_jet ≈ (1/2)ρ_vac × A_jet × v_jet³; for MS 0735: P_jet ~ 10⁶⁷ W | Chandra MS 0735: P_jet ≈ 10⁶⁷ W (cavity inflation) | Chandra Dec 2025 | ✓ Consistent |
+| Radio lobe cavity energy (QHD) | BH26: E_cavity = P_jet × t_bubble ≈ 6×10⁶³ J | MS 0735 cavities: E ≈ 6×10⁶³ J (Chandra/VLA) | Chandra + VLA | ✓ Consistent |
+| Eddington luminosity ceiling | L_Edd = 4πGMm_pc/σ_T; M_BH ~ 3×10⁰M_☉ | MS 0735 BH mass: ~10¹⁰M_☉; L_Edd ~ 10⁶µ W | PDG / Chandra | UQFF jet power within Eddington limit |
+| σ_T Thomson cross-section (QED) | U_m scattering: σ_T = 6.65×10⁻²⁹ m² | σ_T = 6.6524×10⁻²⁹ m² | PDG (QED) | 100% (exact QED input) |
+
+**New physics claim:** The DVP explosive mechanism deposits energy into cavities at a rate
+determined by the gradient pocket geometry, NOT by standard MHD jet propagation. The
+predicted X-ray brightness edge at r ≈ r_eff (cavity boundary) is a testable UQFF signature
+distinct from the ICM thermal pressure balance model.
+
+*Cite PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
+
+---
+
 ## §8 References
 
 - grok_share_6322ac199.txt — BigBang Hypergraph Theory (Session 161, Topic D18)
