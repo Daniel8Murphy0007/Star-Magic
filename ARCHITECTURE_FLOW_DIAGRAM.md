@@ -94,7 +94,7 @@
 | Tier | Layer | Programs | Purpose |
 |------|-------|----------|---------|
 | **1** | **USER INTERFACE** | `source2.cpp` (15,753 lines, Qt6, 21 tabs) | Where ALL user workflows begin |
-| **2** | **COMPUTATION** | `MAIN_1_CoAnQi.cpp` (107,019L), `QCalc.py` (9,833L, 27 classes), `CondensedPhysics.py` (81,626L), `CondensedPhysics2.py` (631 classes, v5.10–v5.21), `CondensedPhysics4.py` (229 classes, v5.19), `uqff_server.js` (index.js lib) | 5+ calculators run simultaneously in parallel |
+| **2** | **COMPUTATION** | `MAIN_1_CoAnQi.cpp` (107,019L), `QCalc.py` (9,833L, 27 classes), `CondensedPhysics.py` (81,626L), `CondensedPhysics2.py` (631 classes, v5.10–v5.21), `CondensedPhysics4.py` (239 classes, v5.24), `uqff_server.js` (index.js lib) | 5+ calculators run simultaneously in parallel |
 | **3** | **VR/VM BACKEND** | `source2(HEAD PROGRAM).cpp` (2,625L), `physics_backend.cpp` (~12,000L) | GPU-heavy simulations, headless CPU physics |
 | **4** | **IPC LAYER** | `uqff_ipc.h` (515L v3.1), `python_bridge.h`, `physics_service.h` (470L v3.1), `ipc_pipeline_handler.h` | 45-message-type cross-platform pipeline |
 | **5** | **STORAGE** | `bodies_*.csv`, `uqff_results.json`, `CondensedPhysics_OutputData.py`, `session_*.json`, `coAnQi_log_*.txt` | Data persistence and user RECALL |
@@ -695,3 +695,4 @@ CondensedPhysics_OutputData.py
 *Updated: 2026-03-30 (v5.21 Session 164: G1–G6 CVW compliance audit 296 papers; 660 PDFs in canonical pdf/; PAPER_371–375 .md+.pdf descriptive rename; CP4=229, CP2=631, 642/1000; HEAD de5dce5) by Daniel T. Murphy*
 *Updated: 2026-03-31 (v5.22 Sessions 165–166: doc sync + CVW v2.0.0 upgrade PAPER_400–421 (22 papers); all 642 papers fully CVW v2.0.0 compliant; HEAD 6916700) by Daniel T. Murphy*
 *Updated: 2026-03-31 (v5.23 Session 167: grok_share_6322ac199.txt audit; PAPER_643–645 (3 new whitepapers + 3 PDFs); CP4=229, CP2=631, 645/1000; HEAD 2de0dc6) by Daniel T. Murphy*
+*Updated: 2026-03-31 (v5.24 Session 168: grok_share_b2e2c5cba7a.txt audit; PAPER_646–655 (10 new whitepapers + 10 PDFs); 3 UQFF number systems (Vacuum Density Series / Dipole Vortex Primes / Buoyancy Harmonics); CP4=239 (+10: entries 230–239), CP2=631, 655/1000 (65.5%)) by Daniel T. Murphy*

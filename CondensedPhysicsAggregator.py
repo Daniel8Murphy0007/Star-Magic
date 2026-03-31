@@ -11,8 +11,8 @@ ARCHITECTURE:
     CondensedPhysics.py      → Foundation (1,227 base classes, 168,803 lines)
     CondensedPhysics2.py     → Extension 1 (631 classes, 48,679+ lines: Orb Analysis 10/11+ + Grok thread extensions + Session 137 _84A767D3 + Session 138 SOURCE179 + Session 151 Millennium Prize)
     CondensedPhysics3.py     → Extension 2 (219 classes, 13,944 lines: 15+ categories, Sessions 41-96)
-    CondensedPhysics4.py     → Extension 3 (229 classes, Sessions 97-162, 2026-03-30)
-    Last updated: Session 167 v5.23 (2026-03-31) — grok_share_6322ac199.txt audit; PAPER_643–645 (Thermal Lens LENR / Quantum Chip Emulation / EFE BH Singularity); 3 PDFs added; CP2=631, CP4=229 (unchanged); 645/1000 papers; HEAD 2de0dc6
+    CondensedPhysics4.py     → Extension 3 (239 classes, Sessions 97-168, 2026-03-31)
+    Last updated: Session 168 v5.24 (2026-03-31) — grok_share_b2e2c5cba7a.txt audit; PAPER_646–655 (10 new: Universal Inertial Operator / Vacuum Density Series / LENR D(-1) / Dipole Vortex Primes / Buoyancy Harmonics / Schwarzschild Proton / FSC QED / Pi-Wave Energy / Universe Diameter / Galactic Gravity Bands); 10 PDFs added; 3 UQFF number systems; CP2=631, CP4=239 (+10 entries 230–239); 655/1000 papers
     CondensedPhysicsAggregator.py → This file (unified API, v3.2.0)
 
 USAGE:
@@ -942,7 +942,7 @@ ALL_CALCULATORS = {
     **CP2_CALCULATORS,
     # CP3 Extension 2 (219 classes, 15+ categories, Sessions 41-96 — 2026-03-20)
     **CP3_CALCULATORS,
-    # CP4 Extension 3 (103 classes, Sessions 97-120 — 2026-03-22)
+    # CP4 Extension 3 (113 classes, Sessions 97-168 — 2026-03-31)
     **CP4_CALCULATORS,
     # Grok Thread UQFF Extensions (Thread 9c3666463ac14753b4f3bea869caaf01)
     **GROK_THREAD_UQFF_CALCULATORS,
@@ -960,7 +960,7 @@ ALL_CALCULATORS = {
 # Module metadata
 # Module metadata
 AGGREGATOR_VERSION = "3.2.0"
-TOTAL_MODULES = 24  # CP1 (1,227 classes, 168,803L), CP2 (622 classes: +6 Session137 _84A767D3 +6 Session138 SOURCE179), CP3 (219 classes, 13,944L), CP4 (103 classes), + 10 thread registries + source179 PCR module
+TOTAL_MODULES = 24  # CP1 (1,227 classes, 168,803L), CP2 (631 classes: +6 Session137 _84A767D3 +6 Session138 SOURCE179 +9 Session151 Millennium), CP3 (219 classes, 13,944L), CP4 (113 classes, entries 230–239 added Session168), + 10 thread registries + source179 PCR module
 # Updated: Session 138 v5.03 (2026-03-25) — source179.cpp SOURCE179 + Batch 22+23; CP2 622; PAPER_509–515; 532 PDFs; 51 C++ modules
 
 

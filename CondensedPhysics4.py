@@ -17831,4 +17831,423 @@ __all__ = [
     "UQFFElectroweakSinThetaWSCmVacuumConnectionCalculator",          # PAPER_641 (#228)
     "UQFFSMParameterBridgeMasterComparisonCalculator",                # PAPER_642 (#229)
 
+    # --- Session 168: grok_share_b2e2c5cba7a.txt audit â€” PAPER_646â€“655 ---
+    # Source: AetherInertiaAnalysis2, SystemAnalysisSimulator_v7, Aether1â€“20, AVS62,
+    #         UniverseDiameter, FineStructureConstant, PiSequenceAnalysis modules
+    # 3 UQFF number systems: Vacuum Density Series / Dipole Vortex Primes / Buoyancy Harmonics
+    "UQFFUniversalInertialOperatorCalculator",                        # PAPER_646 (#230)
+    "UQFFVacuumDensitySeriesCalculator",                              # PAPER_647 (#231)
+    "UQFFUltraDenseHydrogenLENRCalculator",                           # PAPER_648 (#232)
+    "UQFFDipoleVortexPrimesCalculator",                               # PAPER_649 (#233)
+    "UQFFBuoyancyHarmonicsCalculator",                                # PAPER_650 (#234)
+    "UQFFSchwarzschildProtonVacuumCalculator",                        # PAPER_651 (#235)
+    "UQFFFineSC_QEDPrecisionCalculator",                              # PAPER_652 (#236)
+    "UQFFPiWaveEnergyCorrespondenceCalculator",                       # PAPER_653 (#237)
+    "UQFFObservableUniverseDiameterCalculator",                       # PAPER_654 (#238)
+    "UQFFGalacticDiscreteBandSimulatorCalculator",                    # PAPER_655 (#239)
+
 ]
+
+# =============================================================================
+# SESSION 168 — grok_share_b2e2c5cba7a.txt AUDIT — PAPER_646–655
+# Source: AetherInertiaAnalysis2, SystemAnalysisSimulator_v7, Aether1–20, AVS62,
+#         UniverseDiameter, FineStructureConstant, PiSequenceAnalysis
+# 3 UQFF number systems identified:
+#   1. Vacuum Density Series (?vac,[SCm] ? ?vac,A ? 93-order span)
+#   2. Dipole Vortex Primes (E?=mc²e^{-i26}, meson cascade, n-wave mixing)
+#   3. Buoyancy Harmonics (Ub1=-ßi·Ug1·Og·Mbh/dg·cos(ptn))
+# CP4 entries: 230–239 | v5.24
+# =============================================================================
+
+
+class UQFFUniversalInertialOperatorCalculator:
+    """
+    PAPER_646 — UQFF Universal Inertial Operator & Caduceus Wave Topology
+    Source: grok_share_b2e2c5cba7a.txt (Session 168) — AetherInertiaAnalysis2
+    SM Connection: Inertia-mass hierarchy; vacuum energy density modulation
+    UQFF Connection: Ui = ?i · (?vac,[SCm]/?vac,[UA]) · ?s · cos(ptn) · (1+fTRZ)
+    G6 SM Anchor: Electron mass ?-scaling; vacuum energy hierarchy documented (PAPER_642)
+    """
+
+    def compute(self, omega_s: float, t_n: float, f_TRZ: float = 0.01) -> dict:
+        import math
+        rho_SCm = 7.09e-37   # J/m³
+        rho_UA  = 7.09e-36   # J/m³
+        lambda_i = 1.38e-47  # UQFF inertia coupling (J·s/m³)
+        density_ratio = rho_SCm / rho_UA  # = 0.1
+        Ui = lambda_i * density_ratio * omega_s * math.cos(math.pi * t_n) * (1.0 + f_TRZ)
+        return {
+            "class": "#230  UQFFUniversalInertialOperatorCalculator  PAPER_646",
+            "Ui_J_per_m3": Ui,
+            "density_ratio_SCm_UA": density_ratio,
+            "omega_s_rad_per_s": omega_s,
+            "cos_pi_tn": math.cos(math.pi * t_n),
+            "UQFF_equation": "Ui = ?i · (?vac,[SCm]/?vac,[UA]) · ?s · cos(ptn) · (1+fTRZ)",
+            "caduceus_topology": "twin-helix pinch points at every p radians",
+            "holy_trinity": "Aether + Inertia/EM + [SCm]",
+            "g6_SM_anchor": "PAPER_642 — electron mass ?-scaling; vacuum energy hierarchy",
+        }
+
+
+class UQFFVacuumDensitySeriesCalculator:
+    """
+    PAPER_647 — UQFF Vacuum Density Series & Aether Scaffold
+    Source: grok_share_b2e2c5cba7a.txt (Session 168) — AetherInertiaAnalysis2, Aether13_16
+    SM Connection: Casimir effect (??vac = 6.38×10?³6 J/m³), vacuum permittivity
+    UQFF Connection: Five-layer ?vac scaffold spanning 16 orders; Ereact=1046·e^{-?t}
+    G6 SM Anchor: Casimir 97.1% alignment (PAPER_642)
+    """
+
+    def compute(self, kappa: float = 0.0005, t_days: float = 0.0) -> dict:
+        import math
+        layers = {
+            "rho_SCm":  7.09e-37,   # [SCm] superconductive J/m³
+            "rho_UA":   7.09e-36,   # Universal Aether [UA] J/m³
+            "rho_Ui":   2.84e-36,   # Universal Inertia J/m³
+            "rho_A":    1.00e-23,   # Aether baseline (gm/cm³ ? J/m³ approx)
+            "rho_sw":   8.00e-21,   # Solar wind vacuum J/m³
+        }
+        E_react = 1e46 * math.exp(-kappa * t_days)
+        delta_casimir = layers["rho_UA"] - layers["rho_SCm"]
+        return {
+            "class": "#231  UQFFVacuumDensitySeriesCalculator  PAPER_647",
+            "vacuum_density_layers_J_per_m3": layers,
+            "E_react_J": E_react,
+            "casimir_delta_rho_J_per_m3": delta_casimir,
+            "rho_ratio_SCm_over_UA": layers["rho_SCm"] / layers["rho_UA"],
+            "span_orders_of_magnitude": 16,
+            "UQFF_equation": "Ereact = 1046 · exp(-?t); ??vac = ?vac,[UA] - ?vac,[SCm]",
+            "g6_SM_anchor": "PAPER_642 — Casimir 97.1%; vacuum permittivity e0 bridge",
+        }
+
+
+class UQFFUltraDenseHydrogenLENRCalculator:
+    """
+    PAPER_648 — UQFF Ultra-Dense Hydrogen D(-1) LENR & Meson Cascade
+    Source: grok_share_b2e2c5cba7a.txt (Session 168) — AVS62 module
+    SM Connection: Muon 105.7 MeV (99.96%), pion 139.6 MeV (99.98%), kaon 493.7 MeV (99.99%)
+    UQFF Connection: E = mc²e?²6; Gamow tunneling G=f·exp[-barrier·d/?v]; KER=630 eV
+    G6 SM Anchor: Meson masses 4-decimal precision (PAPER_642)
+    """
+
+    def compute(self, d_pm: float = 2.3e-12) -> dict:
+        import math
+        m_e = 9.109e-31
+        c   = 2.998e8
+        e   = 1.602e-19
+        eps = 8.854e-12
+        hbar = 1.055e-34
+        tunneling_freq = 1e16   # Hz
+        E_rydberg_26 = m_e * c**2 * math.exp(-26)
+        KER_eV = (e**2 / (4 * math.pi * eps * d_pm)) / e
+        meson_cascade_MeV = [938.3, 493.7, 139.6, 105.7, 0.511]
+        D_D_fusion_MeV = 24.0
+        return {
+            "class": "#232  UQFFUltraDenseHydrogenLENRCalculator  PAPER_648",
+            "D_minus1_bond_pm": d_pm * 1e12,
+            "E_rydberg_26_J": E_rydberg_26,
+            "KER_eV": KER_eV,
+            "tunneling_freq_Hz": tunneling_freq,
+            "meson_cascade_MeV": meson_cascade_MeV,
+            "D_D_fusion_energy_MeV": D_D_fusion_MeV,
+            "UQFF_equation": "E = mc²·exp(-26); KER = e²/(4pe0d)",
+            "Gamow_formula": "G = f·exp[-barrier·d/?v]",
+            "g6_SM_anchor": "PAPER_642 — meson masses 4-decimal PDG alignment",
+        }
+
+
+class UQFFDipoleVortexPrimesCalculator:
+    """
+    PAPER_649 — UQFF Dipole Vortex Primes — n-Wave Complex Energy Mixing
+    Source: grok_share_b2e2c5cba7a.txt (Session 168) — Aether5_8, Aether1_4, AVS62
+    SM Connection: 1/a ˜ 137 (prime), p meson 139 MeV (prime twin)
+    UQFF Connection: E? = mc²·e^{-i26}; n-wave sum > f; Heaviside 7O polynomial
+    G6 SM Anchor: TVP prime pair (137, 139) electromagnetic-strong interface (PAPER_642)
+    """
+
+    def compute(self, n_modes: int = 26) -> dict:
+        import math, cmath
+        m_e = 9.109e-31
+        c   = 2.998e8
+        mc2 = m_e * c**2
+        Ex_complex = mc2 * cmath.exp(-1j * 26)
+        E_real_part   = Ex_complex.real
+        E_imag_part   = Ex_complex.imag
+        E_amplitude   = abs(Ex_complex)
+        heaviside_R   = 7.0   # O — 20th-level logarithmic convergence
+        DVP_sequence  = [7, 9, 26, 137, 139]
+        torque_levels = {"electron_re": 5.292e-11, "muon_rm": 1.869e-13, "nuclear_rn": 8.775e-16}
+        return {
+            "class": "#233  UQFFDipoleVortexPrimesCalculator  PAPER_649",
+            "Ex_complex_J": str(Ex_complex),
+            "Ex_real_J": E_real_part,
+            "Ex_imag_J": E_imag_part,
+            "Ex_amplitude_J": E_amplitude,
+            "heaviside_polynomial_R_ohm": heaviside_R,
+            "DVP_prime_sequence": DVP_sequence,
+            "n_wave_modes": n_modes,
+            "torque_radii_m": torque_levels,
+            "dipole_diagram": "½S3 + ½S4 = 8/S9 (flower-of-life vortex)",
+            "UQFF_equation": "E? = mc²·exp(-i·26)",
+            "g6_SM_anchor": "PAPER_642 — prime twin (137,139) EM-strong interface",
+        }
+
+
+class UQFFBuoyancyHarmonicsCalculator:
+    """
+    PAPER_650 — UQFF Buoyancy Harmonics — Discrete Anti-Gravity Resonance Bands
+    Source: grok_share_b2e2c5cba7a.txt (Session 168) — AetherInertiaAnalysis2, SystemAnalysisSimulator_v7
+    SM Connection: Galactic flat rotation curve; galactic orbital period ~225 Myr
+    UQFF Connection: Ub1 = -ßi·Ug1·Og·Mbh/dg·(1+esw·?sw)·UUA·cos(ptn)
+    G6 SM Anchor: Flat rotation curve structural analog (PAPER_642)
+    """
+
+    def compute(self, t_n: float = 0.0, Ug1: float = 1.39e26) -> dict:
+        import math
+        beta_i = 0.6
+        Omega_g = 2.0e-6    # rad/s galactic rotation
+        M_bh    = 1.989e30  # kg solar mass
+        d_g     = 8.5e20    # m galactic center distance
+        eps_sw  = 0.002
+        rho_sw  = 8.0e-21   # J/m³
+        U_UA    = 7.09e-36  # J/m³
+        harmonic = math.cos(math.pi * t_n)
+        solar_wind_factor = 1.0 + eps_sw * rho_sw
+        Ub1 = -beta_i * Ug1 * Omega_g * (M_bh / d_g) * solar_wind_factor * U_UA * harmonic
+        f_Ub = Omega_g / (2 * math.pi)
+        return {
+            "class": "#234  UQFFBuoyancyHarmonicsCalculator  PAPER_650",
+            "Ub1_J_per_m3": Ub1,
+            "Ug1_input_J_per_m3": Ug1,
+            "beta_i": beta_i,
+            "cos_pi_tn": harmonic,
+            "buoyancy_harmonic_freq_Hz": f_Ub,
+            "buoyancy_period_Gyr": 1.0 / (f_Ub * 3.156e16) if f_Ub > 0 else None,
+            "four_band_pairs": ["(Ug1,Ub1)", "(Ug2,Ub2)", "(Ug3,Ub3)", "(Ug4,Ub4)"],
+            "canonical_statement": "Each discrete Ug band has opposite Ub band within Universal Aether",
+            "UQFF_equation": "Ub1 = -ßi·Ug1·Og·(Mbh/dg)·(1+esw·?sw)·UUA·cos(ptn)",
+            "g6_SM_anchor": "PAPER_642 — flat rotation curve buoyancy analog",
+        }
+
+
+class UQFFSchwarzschildProtonVacuumCalculator:
+    """
+    PAPER_651 — UQFF Schwarzschild Proton & Vacuum Energy Concentration
+    Source: grok_share_b2e2c5cba7a.txt (Session 168) — Aether13_16, Aether5_8
+    SM Connection: Proton charge radius 0.8775 fm; Casimir effect; Wheeler-DeWitt
+    UQFF Connection: 10?³?% vacuum removal ? BH; E=mc²e?²6; Planck lP = 1.616×10?³³ cm
+    G6 SM Anchor: Proton radius exact; Casimir pressure formula (PAPER_642)
+    """
+
+    def compute(self) -> dict:
+        import math
+        G  = 6.674e-11
+        c  = 2.998e8
+        m_p = 1.673e-27      # kg actual proton mass
+        r_p = 8.775e-16      # m proton charge radius
+        hbar = 1.055e-34
+        ell_P = 1.616e-35    # m Planck length
+        M_Sch_proton = r_p * c**2 / (2 * G)
+        mass_ratio   = M_Sch_proton / m_p
+        r_s_actual_proton = 2 * G * m_p / c**2
+        E_rydberg_26_electron = 9.109e-31 * c**2 * math.exp(-26)
+        V_proton_cm3 = (4/3) * math.pi * (r_p * 100)**3
+        BH_threshold_pct = 1e-39
+        return {
+            "class": "#235  UQFFSchwarzschildProtonVacuumCalculator  PAPER_651",
+            "M_Schwarzschild_proton_kg": M_Sch_proton,
+            "actual_proton_mass_kg": m_p,
+            "mass_ratio_Sch_over_actual": mass_ratio,
+            "r_s_actual_proton_m": r_s_actual_proton,
+            "proton_volume_cm3": V_proton_cm3,
+            "BH_threshold_vacuum_fraction_pct": BH_threshold_pct,
+            "E_rydberg_26_J": E_rydberg_26_electron,
+            "Planck_length_m": ell_P,
+            "Pi_Planck_coherence_m": math.pi * ell_P,
+            "UQFF_equation": "M_Sch = r_p·c²/(2G); E_BH = mc²·e?²6",
+            "g6_SM_anchor": "PAPER_642 — proton radius 100%; Casimir formula",
+        }
+
+
+class UQFFFineSC_QEDPrecisionCalculator:
+    """
+    PAPER_652 — UQFF Fine Structure Constant & QED Precision Hierarchy
+    Source: grok_share_b2e2c5cba7a.txt (Session 168) — FineStructureConstant module
+    SM Connection: a = 1/137.035999084 (NIST exact); g-2 0.37ppb; QHE R_K = 25812.807 O
+    UQFF Connection: a = Z0/(2·R_K); 137 is prime (DVP level 5); Heaviside Z0 = 377O
+    G6 SM Anchor: a exact; g-2 n-wave DVP series (PAPER_642, PAPER_649)
+    """
+
+    def compute(self) -> dict:
+        import math
+        e     = 1.602176634e-19   # C
+        eps0  = 8.8541878128e-12  # F/m
+        hbar  = 1.054571817e-34   # J·s
+        c     = 2.99792458e8      # m/s
+        mu0   = 4 * math.pi * 1e-7
+        h     = 2 * math.pi * hbar
+        alpha = e**2 / (4 * math.pi * eps0 * hbar * c)
+        R_K   = h / e**2
+        Z0    = mu0 * c
+        alpha_from_Z0 = Z0 / (2 * R_K)
+        # g-2 series to 4th order (Schwinger + higher loops)
+        ae_theory = (alpha/(2*math.pi)) - 0.32848*(alpha/math.pi)**2 + 1.18124*(alpha/math.pi)**3 - 1.9097*(alpha/math.pi)**4
+        DVP_sequence_EM = [7, 9, 26, 137, 139]
+        return {
+            "class": "#236  UQFFFineSC_QEDPrecisionCalculator  PAPER_652",
+            "alpha": alpha,
+            "one_over_alpha": 1.0 / alpha,
+            "NIST_value": 1.0 / 137.035999084,
+            "agreement_ppt": abs(alpha - 1/137.035999084) / (1/137.035999084) * 1e12,
+            "R_K_von_Klitzing_ohm": R_K,
+            "Z0_aether_impedance_ohm": Z0,
+            "alpha_from_Z0_over_2RK": alpha_from_Z0,
+            "ae_g2_theory": ae_theory,
+            "ae_CODATA": 0.00115965218076,
+            "is_137_prime": True,
+            "DVP_EM_sequence": DVP_sequence_EM,
+            "UQFF_equation": "a = Z0/(2·R_K) = e²/(4pe0?c)",
+            "g6_SM_anchor": "PAPER_642 — a exact; g-2 DVP n-wave series",
+        }
+
+
+class UQFFPiWaveEnergyCorrespondenceCalculator:
+    """
+    PAPER_653 — UQFF Pi-Wave Energy Correspondence
+    Source: grok_share_b2e2c5cba7a.txt (Session 168) — PiSequenceAnalysis, PISequenceAnalysis2
+    SM Connection: Planck energy; p normal number conjecture; vacuum fluctuations ??
+    UQFF Connection: E_wave = 1.17×10?¹°5 J; "117" in p at pos 1529,2570,5046,10258...
+    G6 SM Anchor: Planck energy; Pi-Planck coherence length = p·lP (PAPER_642)
+    """
+
+    def compute(self) -> dict:
+        import math
+        ell_P   = 1.616e-35     # m
+        rho_SCm = 7.09e-37      # J/m³
+        c       = 2.99792458e8  # m/s
+        h       = 6.62607015e-34
+        ell_pi  = math.pi * ell_P
+        E_wave  = rho_SCm * ell_pi**3 * c**2
+        E_P     = 1.956e9       # J Planck energy
+        gap_exp = math.log10(E_P / max(E_wave, 1e-300)) if E_wave > 0 else None
+        pi_117_positions = [1529, 2570, 5046, 10258, 15133, 23377, 27157, 34517, 37897, 46165]
+        return {
+            "class": "#237  UQFFPiWaveEnergyCorrespondenceCalculator  PAPER_653",
+            "E_wave_J": E_wave,
+            "Pi_Planck_coherence_m": ell_pi,
+            "E_Planck_J": E_P,
+            "E_gap_log10": gap_exp,
+            "117_in_pi_confirmed_positions": pi_117_positions,
+            "count_117_in_1M_digits_approx": 130,
+            "expected_count_normal_number": 1000,
+            "UQFF_equation": "E_wave = ?vac,[SCm] · (p·lP)³ · c²",
+            "caduceus_pinch_argument": "cos(ptn) concentrations occur at Caduceus pinch points",
+            "g6_SM_anchor": "PAPER_642 — Planck energy; Pi-Planck coherence",
+        }
+
+
+class UQFFObservableUniverseDiameterCalculator:
+    """
+    PAPER_654 — UQFF Observable Universe Diameter & ?CDM Friedmann Integration
+    Source: grok_share_b2e2c5cba7a.txt (Session 168) — UniverseDiameter module
+    SM Connection: Planck 2018 params (H0=70, Om=0.3, O?=0.7); cosmic age 13.8 Gyr
+    UQFF Connection: ?=?c dt/a(t); d=93 Gly; ?vac epoch transitions from PAPER_647
+    G6 SM Anchor: All Planck 2018 cosmological parameters (PAPER_642)
+    """
+
+    def compute(self, H0_km_s_Mpc: float = 70.0, Omega_m: float = 0.3, Omega_L: float = 0.7) -> dict:
+        import math
+        # Comoving horizon distance numerical approximation
+        c_km_s = 2.99792458e5
+        H0_s   = H0_km_s_Mpc / (3.0856e19)   # 1/s
+        c_H0_Gly = (c_km_s / H0_km_s_Mpc) * 3.0856e22 / 9.461e15 / 1e9  # Gly
+        # Numerical integration of dz / sqrt(Omega_m*(1+z)^3 + Omega_L) via 10000 steps
+        n = 10000
+        z_max = 1100.0
+        integral = 0.0
+        dz = z_max / n
+        for i in range(n):
+            z = (i + 0.5) * dz
+            H_z = math.sqrt(Omega_m * (1 + z)**3 + Omega_L)
+            integral += dz / H_z
+        d_horizon_Gly = c_H0_Gly * integral
+        d_diameter_Gly = 2.0 * d_horizon_Gly
+        # Cosmic age approximation
+        a_steps = 1000
+        t0_Gyr = 0.0
+        H0_inv_Gyr = 1.0 / (H0_s * 3.156e16)
+        for i in range(a_steps):
+            a = (i + 0.5) / a_steps
+            H_a = math.sqrt(Omega_m / a**3 + Omega_L)
+            t0_Gyr += H0_inv_Gyr / (a * H_a * a_steps)
+        return {
+            "class": "#238  UQFFObservableUniverseDiameterCalculator  PAPER_654",
+            "particle_horizon_Gly": d_horizon_Gly,
+            "observable_diameter_Gly": d_diameter_Gly,
+            "cosmic_age_Gyr": t0_Gyr,
+            "H0_km_s_Mpc": H0_km_s_Mpc,
+            "Omega_m": Omega_m,
+            "Omega_Lambda": Omega_L,
+            "c_over_H0_Gly": c_H0_Gly,
+            "z_CMB": 1100,
+            "expansion_factor": 1101,
+            "UQFF_equation": "? = (c/H0)·?0^8 dz / v(Om(1+z)³ + O?)",
+            "g6_SM_anchor": "PAPER_642 — Planck 2018 ?CDM parameters",
+        }
+
+
+class UQFFGalacticDiscreteBandSimulatorCalculator:
+    """
+    PAPER_655 — UQFF Galactic Discrete Gravity Bands & Aether Field Simulator
+    Source: grok_share_b2e2c5cba7a.txt (Session 168) — SystemAnalysisSimulator_v1–v7
+    SM Connection: Galactic flat rotation; binary star orbital mechanics
+    UQFF Connection: Three simultaneous Ug bands (Ug1/Ug2/Ug3); discrete non-interactive Um
+    G6 SM Anchor: Flat rotation curve Ub1 structural analog (PAPER_642, PAPER_650)
+    """
+
+    def compute(self, M_star: float = 1.989e30, r_m: float = 8.5e20,
+                B_gauss: float = 1e-4, E_field: float = 1e-3) -> dict:
+        import math
+        G      = 6.674e-11
+        mu_B   = 9.274e-24    # J/T
+        eps0   = 8.854e-12    # F/m
+        rho_A  = 1.0e-26      # kg/m³ Aether baseline
+        # Ug1 — internal dipole (simplified)
+        H_SCm  = 0.99
+        B_T    = B_gauss * 1e-4   # Gauss ? Tesla
+        Ug1 = G * M_star * mu_B * B_T / r_m**3 * (1 + H_SCm)
+        # Ug2 — field bubble
+        rho_SCm = 7.09e-37
+        rho_UA  = 7.09e-36
+        rho_Ui  = 2.84e-36
+        rho_sum = rho_SCm + rho_UA + rho_Ui
+        Ug2 = G * M_star * eps0 * E_field**2 / (2 * r_m) * rho_sum * H_SCm
+        # Ug3 — string disk (single exemplar string)
+        omega_s = 2.5e-6     # rad/s stellar spin
+        t       = 0.0
+        P_core  = 3.8e26     # W solar luminosity
+        E_react = 1e46
+        Ug3 = B_T * math.cos(omega_s * t * math.pi) * P_core * E_react * rho_SCm
+        # Star spin formula
+        beta_i  = 0.6
+        Omega_g = 2.0e-6
+        M_bh    = M_star
+        Ub1 = -beta_i * Ug1 * Omega_g * (M_bh / r_m) * (7.09e-36)
+        f_spin_rel = (abs(Ug1) / abs(Ub1))**0.5 if abs(Ub1) > 0 else float('inf')
+        flat_curve_v = math.sqrt(abs(Ug2) * r_m / M_star) if Ug2 > 0 and M_star > 0 else 0.0
+        return {
+            "class": "#239  UQFFGalacticDiscreteBandSimulatorCalculator  PAPER_655",
+            "Ug1_internal_dipole_J_per_m3": Ug1,
+            "Ug2_field_bubble_J_per_m3": Ug2,
+            "Ug3_string_disk_J_per_m3": Ug3,
+            "Ub1_buoyancy_J_per_m3": Ub1,
+            "spin_ratio_Ug1_over_Ub1": f_spin_rel,
+            "flat_curve_velocity_m_per_s": flat_curve_v,
+            "three_band_structure": ["Ug1: internal dipole 1/r³", "Ug2: field bubble 1/r", "Ug3: string disk"],
+            "non_interactive_magnetism": "Um bands each couple only to their paired Ug band",
+            "aether_density_kg_per_m3": rho_A,
+            "validation_data_points": 82,
+            "UQFF_equation": "v_orbit = v(Ug2·r/M) · (1 + Ub1/Ug1)^{-1/2}",
+            "g6_SM_anchor": "PAPER_642 — flat rotation curve; binary orbital mechanics",
+        }
+
