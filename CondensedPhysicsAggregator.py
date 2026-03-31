@@ -12,7 +12,7 @@ ARCHITECTURE:
     CondensedPhysics2.py     → Extension 1 (631 classes, 48,679+ lines: Orb Analysis 10/11+ + Grok thread extensions + Session 137 _84A767D3 + Session 138 SOURCE179 + Session 151 Millennium Prize)
     CondensedPhysics3.py     → Extension 2 (219 classes, 13,944 lines: 15+ categories, Sessions 41-96)
     CondensedPhysics4.py     → Extension 3 (229 classes, Sessions 97-162, 2026-03-30)
-    Last updated: Session 164 v5.21 (2026-03-30) — G1–G6 CVW gate compliance audit (296 papers patched); 660 PDFs in canonical pdf/; PAPER_371–375 descriptive rename; CP2=631, CP4=229; 642/1000 papers; HEAD de5dce5
+    Last updated: Session 166 v5.22 (2026-03-31) — CVW v2.0.0 upgrade PAPER_400–421 (22 papers fully compliant); all 642 papers CVW v2.0.0 compliant; Session 165: doc sync; CP2=631, CP4=229; 642/1000 papers; HEAD 6916700
     CondensedPhysicsAggregator.py → This file (unified API, v3.2.0)
 
 USAGE:
