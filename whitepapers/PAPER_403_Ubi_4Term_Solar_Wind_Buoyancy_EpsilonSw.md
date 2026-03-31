@@ -137,7 +137,7 @@ double Ubi_total = Ubi1 + Ubi2 + Ubi3 + Ubi4;
 
 ---
 
-## §SM Anchors — UQFF Predictions vs. Standard-Model Experiments
+## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 The UQFF framework makes observable predictions testable against established SM/experimental benchmarks:
 
@@ -154,7 +154,9 @@ The UQFF framework makes observable predictions testable against established SM/
 
 **Key UQFF calibrated constants:** κ = 5.0e-4 day⁻¹; [SSq] = 5.7e-1; H_SCm ≈ 9.9e-1; U_UA ≈ 1.0e-4; k_η = 1.0e-113; β_i ≈ 6.0e-1; G = 6.674e-11 N·m²/kg²
 
-*CVW Gate G6 — Session 164 patch*
+*CVW Gate G6 — Session 166 patch (CVW v2.0.0 upgrade)*
+
+*Cite PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
 
 ---
 
