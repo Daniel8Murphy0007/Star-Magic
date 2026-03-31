@@ -18,7 +18,7 @@ Usage:
 import os, sys, glob, subprocess, time, concurrent.futures, re, tempfile
 
 WHITEPAPER_DIR = "whitepapers"
-PDF_DIR        = "pdfs"
+PDF_DIR        = "pdf"
 HEADER_FILE    = "pdf_header.tex"
 WORKERS        = 6
 TIMEOUT_SEC    = 180

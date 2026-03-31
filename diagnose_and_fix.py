@@ -97,9 +97,9 @@ def try_generate_pdf(path, pdf_path):
     return False
 
 if __name__ == '__main__':
-    os.makedirs('pdfs', exist_ok=True)
+    os.makedirs('pdf', exist_ok=True)
     for path in PAPERS:
         fname = os.path.basename(path)
-        pdf_path = f"pdfs/{fname.replace('.md', '.pdf')}"
+        pdf_path = f"pdf/{fname.replace('.md', '.pdf')}"
         print(f'\n{fname}:')
         try_generate_pdf(path, pdf_path)
