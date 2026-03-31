@@ -9,10 +9,10 @@ while maintaining a single-import API.
 
 ARCHITECTURE:
     CondensedPhysics.py      → Foundation (1,227 base classes, 168,803 lines)
-    CondensedPhysics2.py     → Extension 1 (622 classes, 47,694+ lines: Orb Analysis 10/11+ + Grok thread extensions + Session 137 _84A767D3 + Session 138 SOURCE179)
+    CondensedPhysics2.py     → Extension 1 (631 classes, 48,679+ lines: Orb Analysis 10/11+ + Grok thread extensions + Session 137 _84A767D3 + Session 138 SOURCE179 + Session 151 Millennium Prize)
     CondensedPhysics3.py     → Extension 2 (219 classes, 13,944 lines: 15+ categories, Sessions 41-96)
-    CondensedPhysics4.py     → Extension 3 (103 classes, Sessions 97-120, 2026-03-22)
-    Last updated: Session 138 v5.03 (2026-03-25) — source179.cpp SOURCE179 PI Co-Resonance Field; CP2 622 (+6 Session137 +6 Session138); PAPER_509–515; 532 PDFs; 51 C++ modules
+    CondensedPhysics4.py     → Extension 3 (229 classes, Sessions 97-162, 2026-03-30)
+    Last updated: Session 164 v5.21 (2026-03-30) — G1–G6 CVW gate compliance audit (296 papers patched); 660 PDFs in canonical pdf/; PAPER_371–375 descriptive rename; CP2=631, CP4=229; 642/1000 papers; HEAD de5dce5
     CondensedPhysicsAggregator.py → This file (unified API, v3.2.0)
 
 USAGE:
