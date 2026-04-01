@@ -18251,3 +18251,134 @@ class UQFFGalacticDiscreteBandSimulatorCalculator:
             "g6_SM_anchor": "PAPER_642 — flat rotation curve; binary orbital mechanics",
         }
 
+
+
+# -----------------------------------------------------------------------------
+# CP4 ENTRY #240 — PAPER_656  (Session 170, April 1, 2026)
+# UQFFLightEchoEvolutionCalculator
+# Computes V838 Monocerotis UQFF master light echo intensity equation
+# -----------------------------------------------------------------------------
+import math as _math_cp4_240
+
+class UQFFLightEchoEvolutionCalculator:
+    """
+    CP4 Entry #240 — PAPER_656
+    UQFF V838 Monocerotis Light Echo Master Equation.
+    Models Hubble ACS light echo intensity incorporating Ug1 gravity,
+    f_TRZ time-reversal correction, and Aether density ratio.
+
+    Master equation:
+        I_echo(r,t) = [L_out / (4*pi*(ct)^2)]
+                      * sigma_scatter * rho_0
+                      * exp(-beta * Ug1(ct,t))
+                      * (1 + f_TRZ)
+                      * (1 + rho_UA / rho_SCm)
+
+    UQFF amplification factor: (1+0.1) * (1+10) = 12.1x vs classical prediction.
+
+    Reference: PAPER_656_UQFF_V838_Mon_Light_Echo_Master_Equation.md
+    Source: grok_share_fddbe3afc82.txt (May 08, 2025)
+    C++ module: V838MonLightEcho.h / V838MonLightEcho.cpp
+    CVW v2.0.0 compliant — G1-G6 gate verified
+    """
+
+    # Physical constants
+    C_LIGHT       = 3.0e8          # m/s
+    M_SOLAR       = 1.989e30       # kg (V838 Mon proxy)
+    L_SUN         = 3.826e26       # W
+    L_OUTBURST    = 600_000 * 3.826e26  # ~2.3e38 W
+    RHO_VAC_UA    = 7.09e-36       # J/m^3  Universal Aether
+    RHO_VAC_SCM   = 7.09e-37       # J/m^3  superconductive vacuum
+    F_TRZ         = 0.1            # time-reversal correction
+
+    def __init__(self, k1=1.0, alpha=0.01, beta=1.0,
+                 sigma_scatter=1.0e-20, rho_0=1.0e-20,
+                 mu_s=1.0, t_n=1.0):
+        self.k1            = k1
+        self.alpha         = alpha
+        self.beta          = beta
+        self.sigma_scatter = sigma_scatter
+        self.rho_0         = rho_0
+        self.mu_s          = mu_s
+        self.t_n           = t_n
+
+    @staticmethod
+    def years_to_seconds(years: float) -> float:
+        return years * 365.25 * 86400.0
+
+    def compute_r_echo(self, t: float) -> float:
+        """r_echo(t) = c * t"""
+        return self.C_LIGHT * t
+
+    def compute_ug1(self, r: float, t: float) -> float:
+        """U_g1 = k1 * mu_s * (M_s/r^2) * exp(-alpha*t) * cos(pi*t_n) * (1+delta_def)"""
+        delta_def  = 0.01 * _math_cp4_240.sin(0.001 * t)
+        grad_ms_r  = self.M_SOLAR / (r * r)
+        return (self.k1 * self.mu_s * grad_ms_r
+                * _math_cp4_240.exp(-self.alpha * t)
+                * _math_cp4_240.cos(_math_cp4_240.pi * self.t_n)
+                * (1.0 + delta_def))
+
+    def compute_rho_dust(self, r: float, t: float) -> float:
+        """rho_dust = rho_0 * exp(-beta * Ug1)"""
+        return self.rho_0 * _math_cp4_240.exp(-self.beta * self.compute_ug1(r, t))
+
+    def compute_i_echo_classical(self, r: float, t: float) -> float:
+        """Classical intensity: I = (L_out / 4*pi*r^2) * sigma * rho_dust"""
+        rho_d = self.compute_rho_dust(r, t)
+        return (self.L_OUTBURST / (4.0 * _math_cp4_240.pi * r * r)) * self.sigma_scatter * rho_d
+
+    def compute_i_echo_master(self, t: float) -> float:
+        """
+        Master UQFF equation at echo front r = ct:
+        I_echo = [L_out/(4*pi*(ct)^2)] * sigma * rho_0
+                 * exp(-beta*Ug1(ct,t)) * (1+f_TRZ) * (1+rho_UA/rho_SCm)
+        """
+        ct         = self.C_LIGHT * t
+        delta_def  = 0.01 * _math_cp4_240.sin(0.001 * t)
+        grad_ms_ct = self.M_SOLAR / (ct * ct)
+        ug1_ct     = (self.k1 * self.mu_s * grad_ms_ct
+                      * _math_cp4_240.exp(-self.alpha * t)
+                      * _math_cp4_240.cos(_math_cp4_240.pi * self.t_n)
+                      * (1.0 + delta_def))
+        exp_term     = _math_cp4_240.exp(-self.beta * ug1_ct)
+        aether_ratio = 1.0 + self.RHO_VAC_UA / self.RHO_VAC_SCM  # = 11.0
+        trz_factor   = 1.0 + self.F_TRZ                           # = 1.1
+        return ((self.L_OUTBURST / (4.0 * _math_cp4_240.pi * ct * ct))
+                * self.sigma_scatter * self.rho_0
+                * exp_term * trz_factor * aether_ratio)
+
+    def compute(self, dataset: dict) -> dict:
+        """
+        Receives dataset from source2.cpp; outputs equation sets.
+        dataset keys: t_years (float), r_override (optional float)
+        """
+        t_years = dataset.get("t_years", 3.0)
+        t       = self.years_to_seconds(t_years)
+        r_echo  = self.compute_r_echo(t)
+
+        i_classical = self.compute_i_echo_classical(r_echo, t)
+        i_master    = self.compute_i_echo_master(t)
+        uqff_amp    = (1.0 + self.F_TRZ) * (1.0 + self.RHO_VAC_UA / self.RHO_VAC_SCM)
+
+        return {
+            "class":                 "#240  UQFFLightEchoEvolutionCalculator  PAPER_656",
+            "t_years":               t_years,
+            "t_seconds":             t,
+            "r_echo_m":              r_echo,
+            "I_echo_classical":      i_classical,
+            "I_echo_master_UQFF":    i_master,
+            "UQFF_amplification_x":  uqff_amp,
+            "f_TRZ":                 self.F_TRZ,
+            "rho_vac_UA_J_m3":       self.RHO_VAC_UA,
+            "rho_vac_SCm_J_m3":      self.RHO_VAC_SCM,
+            "aether_ratio":          self.RHO_VAC_UA / self.RHO_VAC_SCM,
+            "L_outburst_W":          self.L_OUTBURST,
+            "delta_def_formula":     "0.01 * sin(0.001 * t)",
+            "master_equation":       "I = (L/(4pi(ct)^2)) * sigma * rho0 * exp(-b*Ug1) * (1+f_TRZ) * (1+rho_UA/rho_SCm)",
+            "observation":           "V838 Mon Hubble ACS Oct 2004, 20000 ly, 600000 L_Sun",
+            "contraction_illusion":  "negentropic f_TRZ macroscopic analog",
+            "g6_SM_anchor":          "PAPER_656 — V838 Mon Hubble light echo; aether+time-reversal amplification",
+            "paper":                 "PAPER_656_UQFF_V838_Mon_Light_Echo_Master_Equation.md",
+            "cpp_module":            "V838MonLightEcho.h / V838MonLightEcho.cpp",
+        }
