@@ -12,14 +12,14 @@
 
 ## Abstract
 
-GW170817, the first binary neutron star merger detected by LIGO/Virgo (August 17, 2017), provides the most stringent multi-messenger test of modified gravity. The UQFF predicts a modified GRB delay $\\Delta t_{\\text{UQFF}} = 1.7\\,(1 + f_{\\text{TRZ}} \\rho_{\\text{UA}}/\\rho_{\\text{SCm}})$ s and a reduced tidal deformability $\\Lambda_{\\text{UQFF}} = \\Lambda_{\\text{GR}}(1 - f_{\\text{TRZ}} \\rho_{\\text{SCm}}/\\rho_{\\text{UA}})$. Both effects are consistent with the observed 1.74 s EM/GW delay within UQFF parameter uncertainties.
+GW170817, the first binary neutron star merger detected by LIGO/Virgo (August 17, 2017), provides the most stringent multi-messenger test of modified gravity. The UQFF predicts a modified GRB delay $\Delta t_{\text{UQFF}} = 1.7\,(1 + f_{\text{TRZ}} \rho_{\text{UA}}/\rho_{\text{SCm}})$ s and a reduced tidal deformability $\Lambda_{\text{UQFF}} = \Lambda_{\text{GR}}(1 - f_{\text{TRZ}} \rho_{\text{SCm}}/\rho_{\text{UA}})$. Both effects are consistent with the observed 1.74 s EM/GW delay within UQFF parameter uncertainties.
 
 ---
 
 ## Primary UQFF Equation
 
 $$
-\\Delta t_{\\text{UQFF}} = 1.7\\left(1 + f_{\\text{TRZ}} \\frac{\\rho_{\\text{UA}}}{\\rho_{\\text{SCm}}}\\right)\\,\\text{s}
+\Delta t_{\text{UQFF}} = 1.7\left(1 + f_{\text{TRZ}} \frac{\rho_{\text{UA}}}{\rho_{\text{SCm}}}\right)\,\text{s}
 $$
 
 ---
@@ -28,10 +28,10 @@ $$
 
 | Parameter | Value | Description |
 |-----------|-------|-------------|
-| $m_1$ | $1.36\\,M_\\odot$ | NS1 mass |
-| $m_2$ | $1.17\\,M_\\odot$ | NS2 mass |
-| $d$ | $40\\,\\text{Mpc}$ | Distance |
-| $f_{\\text{peak}}$ | 1500 Hz | Post-merger freq |
+| $m_1$ | $1.36\,M_\odot$ | NS1 mass |
+| $m_2$ | $1.17\,M_\odot$ | NS2 mass |
+| $d$ | $40\,\text{Mpc}$ | Distance |
+| $f_{\text{peak}}$ | 1500 Hz | Post-merger freq |
 
 ---
 

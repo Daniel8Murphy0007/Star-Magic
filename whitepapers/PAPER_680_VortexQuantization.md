@@ -12,14 +12,14 @@
 
 ## Abstract
 
-Quantized vortices arise naturally in the UQFF Aether superfluid when angular momentum exceeds $n\\hbar$. We compute the circulation $\\kappa_v = n h/m_{\\text{UA}}$, vortex core $a_v \\approx \\xi_{\\text{UA}} e^{-n\\pi}$, and vortex energy per unit length $E_v/L = \\rho_{\\text{UA}} \\kappa_v^2/(4\\pi) \\ln(R/a_v) \\cdot (\\rho_{\\text{UA}}/\\rho_{\\text{SCm}})$. The UQFF Magnus force on a vortex is enhanced by $(1 + f_{\\text{TRZ}} \\rho_{\\text{UA}}/\\rho_{\\text{SCm}})$.
+Quantized vortices arise naturally in the UQFF Aether superfluid when angular momentum exceeds $n\hbar$. We compute the circulation $\kappa_v = n h/m_{\text{UA}}$, vortex core $a_v \approx \xi_{\text{UA}} e^{-n\pi}$, and vortex energy per unit length $E_v/L = \rho_{\text{UA}} \kappa_v^2/(4\pi) \ln(R/a_v) \cdot (\rho_{\text{UA}}/\rho_{\text{SCm}})$. The UQFF Magnus force on a vortex is enhanced by $(1 + f_{\text{TRZ}} \rho_{\text{UA}}/\rho_{\text{SCm}})$.
 
 ---
 
 ## Primary UQFF Equation
 
 $$
-\\kappa_v = \\frac{n h}{m_{\\text{UA}}}, \\quad \\frac{E_v}{L} = \\frac{\\rho_{\\text{UA}} \\kappa_v^2}{4\\pi} \\ln\\frac{R}{a_v} \\cdot \\frac{\\rho_{\\text{UA}}}{\\rho_{\\text{SCm}}}
+\kappa_v = \frac{n h}{m_{\text{UA}}}, \quad \frac{E_v}{L} = \frac{\rho_{\text{UA}} \kappa_v^2}{4\pi} \ln\frac{R}{a_v} \cdot \frac{\rho_{\text{UA}}}{\rho_{\text{SCm}}}
 $$
 
 ---
@@ -30,7 +30,7 @@ $$
 |-----------|-------|-------------|
 | $n$ | 1, 2, 3... | Winding number |
 | $R$ | system radius | Outer boundary |
-| $a_v$ | $\\xi e^{-n\\pi}$ | Vortex core radius |
+| $a_v$ | $\xi e^{-n\pi}$ | Vortex core radius |
 
 ---
 

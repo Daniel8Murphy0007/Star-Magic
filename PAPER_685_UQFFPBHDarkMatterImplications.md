@@ -12,14 +12,14 @@
 
 ## Abstract
 
-The UQFF extended PBH lifetime shifts the critical survival mass from $M_{\\text{crit,std}} \\approx 5\\times10^{11}$ kg to $M_{\\text{crit,UQFF}} = M_{\\text{crit,std}} / \\tau_{\\text{ratio}}^{1/3} \\approx 0.46 M_{\\text{crit,std}}$, expanding the viable PBH dark matter mass window. The DM fraction is boosted: $f_{\\text{PBH,UQFF}} = f_{\\text{PBH,GR}} \\cdot \\tau_{\\text{ratio}}^{2/3}$. In the UQFF framework the mass window $10^{10}$–$10^{17}$ kg is fully open as dark matter.
+The UQFF extended PBH lifetime shifts the critical survival mass from $M_{\text{crit,std}} \approx 5\times10^{11}$ kg to $M_{\text{crit,UQFF}} = M_{\text{crit,std}} / \tau_{\text{ratio}}^{1/3} \approx 0.46 M_{\text{crit,std}}$, expanding the viable PBH dark matter mass window. The DM fraction is boosted: $f_{\text{PBH,UQFF}} = f_{\text{PBH,GR}} \cdot \tau_{\text{ratio}}^{2/3}$. In the UQFF framework the mass window $10^{10}$–$10^{17}$ kg is fully open as dark matter.
 
 ---
 
 ## Primary UQFF Equation
 
 $$
-M_{\\text{crit,UQFF}} = \\frac{M_{\\text{crit,std}}}{\\tau_{\\text{ratio}}^{1/3}}, \\quad f_{\\text{PBH,UQFF}} = f_{\\text{PBH,GR}} \\cdot \\tau_{\\text{ratio}}^{2/3}
+M_{\text{crit,UQFF}} = \frac{M_{\text{crit,std}}}{\tau_{\text{ratio}}^{1/3}}, \quad f_{\text{PBH,UQFF}} = f_{\text{PBH,GR}} \cdot \tau_{\text{ratio}}^{2/3}
 $$
 
 ---
@@ -28,8 +28,8 @@ $$
 
 | Parameter | Value | Description |
 |-----------|-------|-------------|
-| $M_{\\text{crit,std}}$ | $5\\times10^{11}$ kg | Standard survival mass |
-| $\\tau_{\\text{ratio}}$ | $\\sim 11$ | UQFF lifetime boost |
+| $M_{\text{crit,std}}$ | $5\times10^{11}$ kg | Standard survival mass |
+| $\tau_{\text{ratio}}$ | $\sim 11$ | UQFF lifetime boost |
 | DM window | $10^{10}$–$10^{17}$ kg | UQFF viable range |
 
 ---

@@ -12,14 +12,14 @@
 
 ## Abstract
 
-We compute the UQFF suppression ratio $R_{\\text{supp}}(f) = h_{\\text{UQFF}}(f)/h_{\\text{GR}}(f)$ across both detector bands. A crossover frequency $f_{\\text{cross}}$ exists where LISA-band and LIGO-band suppressions are equal: dominated by $S_{\\text{UA,LISA}}$ at low $f$ and by $S_{U_m}$ at high $f$. We show that UQFF corrections are $\\sim 10\\%$ larger in the LISA band than in the LIGO band for stellar-mass BH sources.
+We compute the UQFF suppression ratio $R_{\text{supp}}(f) = h_{\text{UQFF}}(f)/h_{\text{GR}}(f)$ across both detector bands. A crossover frequency $f_{\text{cross}}$ exists where LISA-band and LIGO-band suppressions are equal: dominated by $S_{\text{UA,LISA}}$ at low $f$ and by $S_{U_m}$ at high $f$. We show that UQFF corrections are $\sim 10\%$ larger in the LISA band than in the LIGO band for stellar-mass BH sources.
 
 ---
 
 ## Primary UQFF Equation
 
 $$
-R_{\\text{supp}}(f) = (1-f_{\\text{TRZ}}) \\cdot S_{\\text{SCm}} \\cdot \\min(S_{U_m}, S_{\\text{UA,LISA}})
+R_{\text{supp}}(f) = (1-f_{\text{TRZ}}) \cdot S_{\text{SCm}} \cdot \min(S_{U_m}, S_{\text{UA,LISA}})
 $$
 
 ---
@@ -29,7 +29,7 @@ $$
 | Band | Freq Range | Dominant UQFF Effect |
 |------|-----------|---------------------|
 | LIGO | 10–2000 Hz | $S_{U_m}$ |
-| LISA | $10^{-4}$–$1$ Hz | $S_{\\text{UA,LISA}}$ |
+| LISA | $10^{-4}$–$1$ Hz | $S_{\text{UA,LISA}}$ |
 
 ---
 

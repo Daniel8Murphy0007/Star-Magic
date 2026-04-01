@@ -12,14 +12,14 @@
 
 ## Abstract
 
-Primordial black holes evaporate via Hawking radiation with standard lifetime $\\tau_{\\text{std}}(M) = 5120\\pi G^2 M^3/(\\hbar c^4)$. In UQFF the evaporation rate is suppressed by the condensate factor: $\\dot{M}_{\\text{UQFF}} = \\dot{M}_{\\text{std}} (1-f_{\\text{TRZ}}) (\\rho_{\\text{SCm}}/\\rho_{\\text{UA}}) e^{-U_m/k_B T_H}$, extending the PBH lifetime by a factor $\\tau_{\\text{UQFF}}/\\tau_{\\text{std}} \\approx \\rho_{\\text{UA}}/((1-f_{\\text{TRZ}}) \\rho_{\\text{SCm}}) \\approx 11$.
+Primordial black holes evaporate via Hawking radiation with standard lifetime $\tau_{\text{std}}(M) = 5120\pi G^2 M^3/(\hbar c^4)$. In UQFF the evaporation rate is suppressed by the condensate factor: $\dot{M}_{\text{UQFF}} = \dot{M}_{\text{std}} (1-f_{\text{TRZ}}) (\rho_{\text{SCm}}/\rho_{\text{UA}}) e^{-U_m/k_B T_H}$, extending the PBH lifetime by a factor $\tau_{\text{UQFF}}/\tau_{\text{std}} \approx \rho_{\text{UA}}/((1-f_{\text{TRZ}}) \rho_{\text{SCm}}) \approx 11$.
 
 ---
 
 ## Primary UQFF Equation
 
 $$
-\\dot{M}_{\\text{UQFF}} = -\\frac{\\hbar c^4}{15360\\pi G^2 M^2} (1-f_{\\text{TRZ}}) \\frac{\\rho_{\\text{SCm}}}{\\rho_{\\text{UA}}} e^{-U_m / k_B T_H}
+\dot{M}_{\text{UQFF}} = -\frac{\hbar c^4}{15360\pi G^2 M^2} (1-f_{\text{TRZ}}) \frac{\rho_{\text{SCm}}}{\rho_{\text{UA}}} e^{-U_m / k_B T_H}
 $$
 
 ---
@@ -29,8 +29,8 @@ $$
 | Parameter | Value | Description |
 |-----------|-------|-------------|
 | $M_0$ | $10^{12}$ kg | Initial PBH mass |
-| $\\tau_{\\text{UQFF}}/\\tau_{\\text{std}}$ | $\\sim 11$ | Lifetime extension |
-| $t_{\\text{form}}$ | $10^{-23}$ s | Formation epoch |
+| $\tau_{\text{UQFF}}/\tau_{\text{std}}$ | $\sim 11$ | Lifetime extension |
+| $t_{\text{form}}$ | $10^{-23}$ s | Formation epoch |
 
 ---
 

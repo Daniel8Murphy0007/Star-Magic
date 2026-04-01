@@ -12,14 +12,14 @@
 
 ## Abstract
 
-The Laser Interferometer Space Antenna (LISA) will open the millihertz GW window, targeting SMBH mergers, EMRIs, and galactic binaries. The UQFF introduces a unique LISA-band suppression via the Aether arm-length modulation: $S_{\\text{UA,LISA}} = 1 - \\rho_{\\text{UA}} L_{\\text{LISA}}/(k_B T_{\\text{eff}})$ and predicts an enhanced EMRI capture rate $R_{\\text{EMRI,UQFF}} = R_{\\text{GR}}(1 + f_{\\text{TRZ}} \\rho_{\\text{UA}}/\\rho_{\\text{SCm}})$.
+The Laser Interferometer Space Antenna (LISA) will open the millihertz GW window, targeting SMBH mergers, EMRIs, and galactic binaries. The UQFF introduces a unique LISA-band suppression via the Aether arm-length modulation: $S_{\text{UA,LISA}} = 1 - \rho_{\text{UA}} L_{\text{LISA}}/(k_B T_{\text{eff}})$ and predicts an enhanced EMRI capture rate $R_{\text{EMRI,UQFF}} = R_{\text{GR}}(1 + f_{\text{TRZ}} \rho_{\text{UA}}/\rho_{\text{SCm}})$.
 
 ---
 
 ## Primary UQFF Equation
 
 $$
-h_{\\text{UQFF,LISA}}(f) = h_{\\text{GR}}(f) \\cdot (1-f_{\\text{TRZ}}) \\cdot S_{\\text{UA,LISA}} \\cdot S_{\\text{SCm}}
+h_{\text{UQFF,LISA}}(f) = h_{\text{GR}}(f) \cdot (1-f_{\text{TRZ}}) \cdot S_{\text{UA,LISA}} \cdot S_{\text{SCm}}
 $$
 
 ---
@@ -28,9 +28,9 @@ $$
 
 | Parameter | Value | Description |
 |-----------|-------|-------------|
-| $L_{\\text{LISA}}$ | $2.5\\,\\text{Gm}$ | LISA arm length |
+| $L_{\text{LISA}}$ | $2.5\,\text{Gm}$ | LISA arm length |
 | $f$ | $10^{-4}$–$1$ Hz | LISA band |
-| $M_c$ | $10^8\\,M_\\odot$ | SMBH chirp mass |
+| $M_c$ | $10^8\,M_\odot$ | SMBH chirp mass |
 
 ---
 

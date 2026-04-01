@@ -12,14 +12,14 @@
 
 ## Abstract
 
-We numerically solve the radial Gross-Pitaevskii equation for the [UA] Aether wavefunction in the gravitational potential of a black hole, incorporating the UQFF magnetic string term $U_m(r,t)$. Using imaginary-time propagation we obtain the ground-state density profile $|\\psi(r)|^2$, chemical potential $\\mu_{\\text{UA}}$, and demonstrate aether density enhancement $n_{\\text{UA}}(r) = N_{\\text{UA}}(1 + r_s/r \\cdot f_{\\text{TRZ}})$ near the horizon.
+We numerically solve the radial Gross-Pitaevskii equation for the [UA] Aether wavefunction in the gravitational potential of a black hole, incorporating the UQFF magnetic string term $U_m(r,t)$. Using imaginary-time propagation we obtain the ground-state density profile $|\psi(r)|^2$, chemical potential $\mu_{\text{UA}}$, and demonstrate aether density enhancement $n_{\text{UA}}(r) = N_{\text{UA}}(1 + r_s/r \cdot f_{\text{TRZ}})$ near the horizon.
 
 ---
 
 ## Primary UQFF Equation
 
 $$
-i\\hbar \\frac{\\partial\\psi}{\\partial t} = \\left[-\\frac{\\hbar^2}{2m_{\\text{UA}}} \\nabla^2 + V_{\\text{grav}}(r) + g_{\\text{UA}}|\\psi|^2 + U_m(r,t)\\right]\\psi
+i\hbar \frac{\partial\psi}{\partial t} = \left[-\frac{\hbar^2}{2m_{\text{UA}}} \nabla^2 + V_{\text{grav}}(r) + g_{\text{UA}}|\psi|^2 + U_m(r,t)\right]\psi
 $$
 
 ---
@@ -28,9 +28,9 @@ $$
 
 | Parameter | Value | Description |
 |-----------|-------|-------------|
-| $M$ | $8.548\\times10^{36}$ kg | Sgr A* mass |
-| $r_{\\min}$ | $r_s$ | Inner boundary |
-| $N_{\\text{grid}}$ | 100 | Radial grid points |
+| $M$ | $8.548\times10^{36}$ kg | Sgr A* mass |
+| $r_{\min}$ | $r_s$ | Inner boundary |
+| $N_{\text{grid}}$ | 100 | Radial grid points |
 
 ---
 

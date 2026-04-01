@@ -12,14 +12,14 @@
 
 ## Abstract
 
-GW190425 represents the heaviest binary neutron star system observed (total mass $3.4\\,M_\\odot$). The UQFF framework predicts a post-merger phase shift $\\phi_{\\text{UQFF}} = \\kappa f_{\\text{TRZ}} t_{\\text{merger}}$ and constrains the ejecta mass through the condensate suppression: $M_{\\text{ej,UQFF}} < M_{\\text{ej,GR}} \\cdot (\\rho_{\\text{SCm}}/\\rho_{\\text{UA}}) (1-f_{\\text{TRZ}})$, resulting in an ejecta upper limit nearly two orders of magnitude below GR.
+GW190425 represents the heaviest binary neutron star system observed (total mass $3.4\,M_\odot$). The UQFF framework predicts a post-merger phase shift $\phi_{\text{UQFF}} = \kappa f_{\text{TRZ}} t_{\text{merger}}$ and constrains the ejecta mass through the condensate suppression: $M_{\text{ej,UQFF}} < M_{\text{ej,GR}} \cdot (\rho_{\text{SCm}}/\rho_{\text{UA}}) (1-f_{\text{TRZ}})$, resulting in an ejecta upper limit nearly two orders of magnitude below GR.
 
 ---
 
 ## Primary UQFF Equation
 
 $$
-M_{\\text{ej,UQFF}} = 0.05 M_{\\text{tot}} \\cdot \\frac{\\rho_{\\text{SCm}}}{\\rho_{\\text{UA}}} (1-f_{\\text{TRZ}})
+M_{\text{ej,UQFF}} = 0.05 M_{\text{tot}} \cdot \frac{\rho_{\text{SCm}}}{\rho_{\text{UA}}} (1-f_{\text{TRZ}})
 $$
 
 ---
@@ -28,9 +28,9 @@ $$
 
 | Parameter | Value | Description |
 |-----------|-------|-------------|
-| $m_1$ | $1.9\\,M_\\odot$ | NS1 mass |
-| $m_2$ | $1.5\\,M_\\odot$ | NS2 mass |
-| $d$ | $159\\,\\text{Mpc}$ | Distance |
+| $m_1$ | $1.9\,M_\odot$ | NS1 mass |
+| $m_2$ | $1.5\,M_\odot$ | NS2 mass |
+| $d$ | $159\,\text{Mpc}$ | Distance |
 
 ---
 

@@ -12,14 +12,14 @@
 
 ## Abstract
 
-We present the Unified Quantum Field Framework (UQFF) prediction for gravitational-wave strain $h_{\\text{UQFF}}(f)$ across the LIGO sensitivity band (10–2000 Hz). The UQFF modifies the standard GR inspiral waveform through three multiplicative suppression factors: time-reversal zone $f_{\\text{TRZ}}$, Schwarzschild-condensate $S_{\\text{SCm}}$, and magnetic string modulation $S_{U_m}$. We demonstrate a systematic frequency-dependent suppression of order $\\sim(1-f_{\\text{TRZ}})\\approx 0.9$ compared to GR, with phase shift $\\Delta\\phi = \\kappa f_{\\text{TRZ}} t_{\\text{coal}}$.
+We present the Unified Quantum Field Framework (UQFF) prediction for gravitational-wave strain $h_{\text{UQFF}}(f)$ across the LIGO sensitivity band (10–2000 Hz). The UQFF modifies the standard GR inspiral waveform through three multiplicative suppression factors: time-reversal zone $f_{\text{TRZ}}$, Schwarzschild-condensate $S_{\text{SCm}}$, and magnetic string modulation $S_{U_m}$. We demonstrate a systematic frequency-dependent suppression of order $\sim(1-f_{\text{TRZ}})\approx 0.9$ compared to GR, with phase shift $\Delta\phi = \kappa f_{\text{TRZ}} t_{\text{coal}}$.
 
 ---
 
 ## Primary UQFF Equation
 
 $$
-h_{\\text{UQFF}}(f) = h_{\\text{GR}}(f) \\cdot (1-f_{\\text{TRZ}}) \\cdot e^{-\\rho_{\\text{SCm}} r_s / k_B T_H} \\cdot e^{-U_m 2\\pi f / c^2}
+h_{\text{UQFF}}(f) = h_{\text{GR}}(f) \cdot (1-f_{\text{TRZ}}) \cdot e^{-\rho_{\text{SCm}} r_s / k_B T_H} \cdot e^{-U_m 2\pi f / c^2}
 $$
 
 ---
@@ -28,9 +28,9 @@ $$
 
 | Parameter | Value | Description |
 |-----------|-------|-------------|
-| $m_1$ | $1.36\\,M_\\odot$ | Primary mass |
-| $m_2$ | $1.17\\,M_\\odot$ | Secondary mass |
-| $d$ | $40\\,\\text{Mpc}$ | Luminosity distance |
+| $m_1$ | $1.36\,M_\odot$ | Primary mass |
+| $m_2$ | $1.17\,M_\odot$ | Secondary mass |
+| $d$ | $40\,\text{Mpc}$ | Luminosity distance |
 | $f$ | 10–2000 Hz | LIGO band |
 
 ---

@@ -12,14 +12,14 @@
 
 ## Abstract
 
-The standard Hawking temperature $T_H = \\hbar c^3 / (8\\pi G M k_B)$ is modulated in UQFF through three channels: time-reversal boost $(1+f_{\\text{TRZ}})$, condensate suppression $(1-\\rho_{\\text{SCm}}/\\rho_{\\text{UA}})$, and magnetic string correction $(1+U_m/k_B T_H)$. The combined modulation shifts the Planck spectrum peak by $\\Delta\\lambda_\\text{max} = \\hbar c/(2.82 k_B)(1/T_{\\text{UQFF}} - 1/T_H)$, observable in principle for primordial micro-BHs.
+The standard Hawking temperature $T_H = \hbar c^3 / (8\pi G M k_B)$ is modulated in UQFF through three channels: time-reversal boost $(1+f_{\text{TRZ}})$, condensate suppression $(1-\rho_{\text{SCm}}/\rho_{\text{UA}})$, and magnetic string correction $(1+U_m/k_B T_H)$. The combined modulation shifts the Planck spectrum peak by $\Delta\lambda_\text{max} = \hbar c/(2.82 k_B)(1/T_{\text{UQFF}} - 1/T_H)$, observable in principle for primordial micro-BHs.
 
 ---
 
 ## Primary UQFF Equation
 
 $$
-T_{\\text{UQFF}} = T_H (1+f_{\\text{TRZ}})\\left(1-\\frac{\\rho_{\\text{SCm}}}{\\rho_{\\text{UA}}}\\right)\\left(1+\\frac{U_m}{k_B T_H}\\right)
+T_{\text{UQFF}} = T_H (1+f_{\text{TRZ}})\left(1-\frac{\rho_{\text{SCm}}}{\rho_{\text{UA}}}\right)\left(1+\frac{U_m}{k_B T_H}\right)
 $$
 
 ---
@@ -28,9 +28,9 @@ $$
 
 | Factor | Value | Effect |
 |--------|-------|--------|
-| $1+f_{\\text{TRZ}}$ | 1.1 | Boost |
-| $1-\\rho_{\\text{SCm}}/\\rho_{\\text{UA}}$ | 0.9 | Suppression |
-| $1+U_m/k_B T_H$ | $\\sim 1$ | Modulation |
+| $1+f_{\text{TRZ}}$ | 1.1 | Boost |
+| $1-\rho_{\text{SCm}}/\rho_{\text{UA}}$ | 0.9 | Suppression |
+| $1+U_m/k_B T_H$ | $\sim 1$ | Modulation |
 
 ---
 

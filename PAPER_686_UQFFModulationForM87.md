@@ -12,14 +12,14 @@
 
 ## Abstract
 
-M87* ($6.5\\times10^9\\,M_\\odot$), imaged by the Event Horizon Telescope in 2019, provides the largest SMBH test bed. The UQFF predicts: modified shadow radius $r_{\\text{sh,UQFF}} = r_{\\text{sh}}\\sqrt{1+f_{\\text{TRZ}} \\rho_{\\text{UA}}/\\rho_{\\text{SCm}}}$, enhanced jet power $P_{\\text{jet,UQFF}} = P_{\\text{BZ}}(1+f_{\\text{TRZ}})\\sqrt{\\rho_{\\text{UA}}/\\rho_{\\text{SCm}}}$, and ring brightness ratio $(\\rho_{\\text{UA}}/\\rho_{\\text{SCm}})^{f_{\\text{TRZ}}/4} \\approx 1.58$.
+M87* ($6.5\times10^9\,M_\odot$), imaged by the Event Horizon Telescope in 2019, provides the largest SMBH test bed. The UQFF predicts: modified shadow radius $r_{\text{sh,UQFF}} = r_{\text{sh}}\sqrt{1+f_{\text{TRZ}} \rho_{\text{UA}}/\rho_{\text{SCm}}}$, enhanced jet power $P_{\text{jet,UQFF}} = P_{\text{BZ}}(1+f_{\text{TRZ}})\sqrt{\rho_{\text{UA}}/\rho_{\text{SCm}}}$, and ring brightness ratio $(\rho_{\text{UA}}/\rho_{\text{SCm}})^{f_{\text{TRZ}}/4} \approx 1.58$.
 
 ---
 
 ## Primary UQFF Equation
 
 $$
-r_{\\text{sh,UQFF}} = 3\\sqrt{3}\\frac{GM}{c^2}\\sqrt{1 + f_{\\text{TRZ}}\\frac{\\rho_{\\text{UA}}}{\\rho_{\\text{SCm}}}}
+r_{\text{sh,UQFF}} = 3\sqrt{3}\frac{GM}{c^2}\sqrt{1 + f_{\text{TRZ}}\frac{\rho_{\text{UA}}}{\rho_{\text{SCm}}}}
 $$
 
 ---
@@ -28,9 +28,9 @@ $$
 
 | Parameter | Value | Description |
 |-----------|-------|-------------|
-| $M_{\\text{M87*}}$ | $6.5\\times10^9\\,M_\\odot$ | SMBH mass |
-| $r_{\\text{shadow}}$ | $\\sim 5.5 r_s$ | Shadow radius |
-| $P_{\\text{jet}}$ | $10^{37}$ W | Blandford-Znajek power |
+| $M_{\text{M87*}}$ | $6.5\times10^9\,M_\odot$ | SMBH mass |
+| $r_{\text{shadow}}$ | $\sim 5.5 r_s$ | Shadow radius |
+| $P_{\text{jet}}$ | $10^{37}$ W | Blandford-Znajek power |
 
 ---
 

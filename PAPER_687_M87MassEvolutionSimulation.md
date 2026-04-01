@@ -12,14 +12,14 @@
 
 ## Abstract
 
-We simulate the coupled mass evolution of M87* over 13.8 Gyr combining UQFF-modified Bondi accretion $\\dot{M}_{\\text{Bondi,UQFF}} = \\dot{M}_{\\text{Bondi}}(\\rho_{\\text{eff}}/\\rho_{\\infty})(1+f_{\\text{TRZ}})$, suppressed Hawking evaporation, and Blandford-Znajek jet power in UQFF. Using RK4 integration with $\\Delta t = 10^{13}$ s steps, we find that M87* grows by $\\sim 15\\%$ over a Hubble time, consistent with observations suggesting limited current growth.
+We simulate the coupled mass evolution of M87* over 13.8 Gyr combining UQFF-modified Bondi accretion $\dot{M}_{\text{Bondi,UQFF}} = \dot{M}_{\text{Bondi}}(\rho_{\text{eff}}/\rho_{\infty})(1+f_{\text{TRZ}})$, suppressed Hawking evaporation, and Blandford-Znajek jet power in UQFF. Using RK4 integration with $\Delta t = 10^{13}$ s steps, we find that M87* grows by $\sim 15\%$ over a Hubble time, consistent with observations suggesting limited current growth.
 
 ---
 
 ## Primary UQFF Equation
 
 $$
-\\frac{dM}{dt} = \\dot{M}_{\\text{Bondi,UQFF}} + \\dot{M}_{\\text{evap,UQFF}} - \\frac{P_{\\text{jet,UQFF}}}{c^2}
+\frac{dM}{dt} = \dot{M}_{\text{Bondi,UQFF}} + \dot{M}_{\text{evap,UQFF}} - \frac{P_{\text{jet,UQFF}}}{c^2}
 $$
 
 ---
@@ -28,10 +28,10 @@ $$
 
 | Parameter | Value | Description |
 |-----------|-------|-------------|
-| $M_0$ | $6.5\\times10^9\\,M_\\odot$ | Initial M87* mass |
-| $\\rho_{\\text{ISM}}$ | $1.67\\times10^{-25}$ kg/m$^3$ | Intracluster medium |
-| $T_{\\text{ISM}}$ | $10^7$ K | ICM temperature |
-| $T_{\\text{Hubble}}$ | $13.8$ Gyr | Simulation duration |
+| $M_0$ | $6.5\times10^9\,M_\odot$ | Initial M87* mass |
+| $\rho_{\text{ISM}}$ | $1.67\times10^{-25}$ kg/m$^3$ | Intracluster medium |
+| $T_{\text{ISM}}$ | $10^7$ K | ICM temperature |
+| $T_{\text{Hubble}}$ | $13.8$ Gyr | Simulation duration |
 
 ---
 

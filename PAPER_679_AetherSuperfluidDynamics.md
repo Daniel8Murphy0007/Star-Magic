@@ -12,14 +12,14 @@
 
 ## Abstract
 
-The UQFF Universal Aether [UA] is modelled as a coherent bosonic superfluid described by a macroscopic wavefunction $\\Psi(r,t) = \\sqrt{n_{\\text{UA}}} e^{i\\phi}$. We derive the healing length $\\xi_{\\text{UA}} = \\hbar/\\sqrt{2 m_{\\text{UA}} g_{\\text{UA}} n_{\\text{UA}}}$, sound speed $c_{\\text{UA}} = \\sqrt{g_{\\text{UA}} n_{\\text{UA}}/m_{\\text{UA}}}$, and effective gravitational coupling $g_{\\text{eff}}(r) = g_N(r)(1 + c_{\\text{UA}}^2/c^2 \\cdot f_{\\text{TRZ}} \\rho_{\\text{UA}}/\\rho_{\\text{SCm}})$.
+The UQFF Universal Aether [UA] is modelled as a coherent bosonic superfluid described by a macroscopic wavefunction $\Psi(r,t) = \sqrt{n_{\text{UA}}} e^{i\phi}$. We derive the healing length $\xi_{\text{UA}} = \hbar/\sqrt{2 m_{\text{UA}} g_{\text{UA}} n_{\text{UA}}}$, sound speed $c_{\text{UA}} = \sqrt{g_{\text{UA}} n_{\text{UA}}/m_{\text{UA}}}$, and effective gravitational coupling $g_{\text{eff}}(r) = g_N(r)(1 + c_{\text{UA}}^2/c^2 \cdot f_{\text{TRZ}} \rho_{\text{UA}}/\rho_{\text{SCm}})$.
 
 ---
 
 ## Primary UQFF Equation
 
 $$
-c_{\\text{UA}} = \\sqrt{\\frac{g_{\\text{UA}} n_{\\text{UA}}}{m_{\\text{UA}}}}, \\quad \\xi_{\\text{UA}} = \\frac{\\hbar}{\\sqrt{2 m_{\\text{UA}} g_{\\text{UA}} n_{\\text{UA}}}}
+c_{\text{UA}} = \sqrt{\frac{g_{\text{UA}} n_{\text{UA}}}{m_{\text{UA}}}}, \quad \xi_{\text{UA}} = \frac{\hbar}{\sqrt{2 m_{\text{UA}} g_{\text{UA}} n_{\text{UA}}}}
 $$
 
 ---
@@ -28,9 +28,9 @@ $$
 
 | Parameter | Value | Description |
 |-----------|-------|-------------|
-| $m_{\\text{UA}}$ | $\\sim 2\\times10^{-68}$ kg | Ultralight boson mass |
-| $\\rho_{\\text{UA}}$ | $7.09\\times10^{-36}$ kg/m$^3$ | Aether density |
-| $g_{\\text{UA}}$ | $10^{-10}$ m$^3$/s$^2$ | Interaction strength |
+| $m_{\text{UA}}$ | $\sim 2\times10^{-68}$ kg | Ultralight boson mass |
+| $\rho_{\text{UA}}$ | $7.09\times10^{-36}$ kg/m$^3$ | Aether density |
+| $g_{\text{UA}}$ | $10^{-10}$ m$^3$/s$^2$ | Interaction strength |
 
 ---
 

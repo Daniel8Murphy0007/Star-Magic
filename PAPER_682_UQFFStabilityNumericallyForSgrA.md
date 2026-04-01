@@ -12,14 +12,14 @@
 
 ## Abstract
 
-We perform a four-pronged numerical stability analysis of the UQFF solution for Sgr A* ($M = 4.297\\times10^6\\,M_\\odot$): (1) perturbation expansion with imaginary frequency $\\omega_I^{\\text{UQFF}} < 0$ (damped), (2) Lyapunov exponent $\\lambda_{\\text{UQFF}} = -(\\rho_{\\text{SCm}}/\\rho_{\\text{UA}}) e^{-U_m/k_B T_H} / \\tau_{\\text{std}} < 0$, (3) RK4 mass evolution $M(t)$ confirming quasi-static behaviour over $10^{60}$ s, (4) fixed-point stability classification.
+We perform a four-pronged numerical stability analysis of the UQFF solution for Sgr A* ($M = 4.297\times10^6\,M_\odot$): (1) perturbation expansion with imaginary frequency $\omega_I^{\text{UQFF}} < 0$ (damped), (2) Lyapunov exponent $\lambda_{\text{UQFF}} = -(\rho_{\text{SCm}}/\rho_{\text{UA}}) e^{-U_m/k_B T_H} / \tau_{\text{std}} < 0$, (3) RK4 mass evolution $M(t)$ confirming quasi-static behaviour over $10^{60}$ s, (4) fixed-point stability classification.
 
 ---
 
 ## Primary UQFF Equation
 
 $$
-\\lambda_{\\text{UQFF}} = -\\frac{\\rho_{\\text{SCm}}}{\\rho_{\\text{UA}}} \\frac{e^{-U_m / k_B T_H}}{\\tau_{\\text{std}}(M)} < 0
+\lambda_{\text{UQFF}} = -\frac{\rho_{\text{SCm}}}{\rho_{\text{UA}}} \frac{e^{-U_m / k_B T_H}}{\tau_{\text{std}}(M)} < 0
 $$
 
 ---
@@ -28,9 +28,9 @@ $$
 
 | Parameter | Value | Description |
 |-----------|-------|-------------|
-| $M_{\\text{Sgr A*}}$ | $4.297\\times10^6\\,M_\\odot$ | Black hole mass |
-| $T_H$ | $1.4\\times10^{-14}$ K | Hawking temperature |
-| $\\lambda$ | $<0$ | Lyapunov exponent |
+| $M_{\text{Sgr A*}}$ | $4.297\times10^6\,M_\odot$ | Black hole mass |
+| $T_H$ | $1.4\times10^{-14}$ K | Hawking temperature |
+| $\lambda$ | $<0$ | Lyapunov exponent |
 
 ---
 
