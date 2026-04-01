@@ -18382,3 +18382,155 @@ class UQFFLightEchoEvolutionCalculator:
             "paper":                 "PAPER_656_UQFF_V838_Mon_Light_Echo_Master_Equation.md",
             "cpp_module":            "V838MonLightEcho.h / V838MonLightEcho.cpp",
         }
+
+
+# -----------------------------------------------------------------------------
+# CP4 ENTRY #241 — PAPER_657  (Session 171, April 2, 2026)
+# UQFFKnowledgeBase7Calculator
+# Computes all five UQFF quantum variable equations from Knowledge Base 7:
+#   f_Heaviside (Heaviside Fraction), i (Gravity Index), H_SCm (Heliosphere
+#   Factor), lambda_i (Inertia Coupling), j (Magnetic String Index).
+# Source: grok_share_f333a078289.txt — "UQFF Knowledge Base_7", May 08 2025
+# C++ Module: UQFF_Knowledge_Base_7.h / UQFF_Knowledge_Base_7.cpp
+# -----------------------------------------------------------------------------
+import math as _math_cp4_241
+
+class UQFFKnowledgeBase7Calculator:
+    """
+    CP4 Entry #241 — PAPER_657
+    UQFF Knowledge Base Version 7: Five Quantum Variable Integration.
+
+    Integrates five quantum variables into the UQFF formalism,
+    synthesised from document analyses conducted May 08, 2025:
+
+    Quantum Variables (Document Tags):
+      f_Heaviside = 0.01  [Heaviside Fraction]   — threshold/nonlinear amplification in Um
+      i           = 1..4  [Gravity Index]         — indexes Ug1—Ug4 in F_U summation
+      H_SCm       ~ 1.0   [Heliosphere Factor]    — heliospheric thickness scaling in Ug2
+      lambda_i    = 1.0   [Inertia Coupling]      — inertial resistance coupling in U_i
+      j           = 1..N  [Magnetic String Index] — indexes magnetic strings in Um and Ug3
+
+    Key Equations:
+      Eq.1  Um  = sum_j[mu_j/r_j*(1-exp(-g*t*cos(pi*t_n)))*phi_j]*P*E*(1+10^13*f_H)*(1+f_q)
+      Eq.4  F_U = sum_i[k_i*Ugi] + Um_base - sum_i[lambda_i*U_i*E_react]
+      Eq.6  Ug2 = k_2*(rho_UA+rho_SCm)*M_s/r^2*S(r-R_b)*(1+d_sw*v_sw)*H_SCm*E_react
+      Eq.9  U_i = lambda_i*rho_SCm*rho_UA*omega_s*cos(pi*t_n)*(1+f_TRZ)
+      Eq.12 Ug3 = k_3*sum_j B_j*cos(omega_s*t*pi)*P_core*E_react
+
+    Reference results (Solar system, t=0, t_n=0):
+      Um   ~ 2.28e65 J/m3  (f_Heaviside amplification: x10^11)
+      Ug2  ~ 1.18e53 J/m3  (H_SCm=1.0 nominal)
+      U_i  ~ 1.38e-47 J/m3  (-lambda_i*U_i*E_react ~ -0.138 J/m3)
+      Ug3  ~ 1.80e49 J/m3
+      F_U  ~ 1.42e53 J/m3  (Ug2-dominant gravity sum)
+
+    UQFF Connections:
+      f_Heaviside & j — F_env via Um; amplifies quasar jets & nebular dynamics
+      i               — F_env + psi_total via F_U; multi-scale gravity framework
+      H_SCm           — F_env via Ug2; heliospheric precision + reactor analogue
+      lambda_i        — F_env via U_i; inertial stability (plasmoids/molecular clouds)
+
+    Source: grok_share_f333a078289.txt (May 08, 2025; Youngstown OH 41.0997N 80.6495W)
+    Author: Daniel T. Murphy | Share: bGVnYWN5_8f3eb0d2-42b7-442d-a9fc-d6ad4f605967
+    """
+
+    # Physical constants (UQFF calibrated values)
+    RHO_VAC_UA  = 7.09e-36   # J/m3 — Universal Aether vacuum density
+    RHO_VAC_SCM = 7.09e-37   # J/m3 — SCm vacuum density
+    E_REACT     = 1.0e46     # J/m3 — Universal reaction energy scale
+    MU_J        = 3.38e23    # T*m3 — Solar magnetic dipole moment (per string j)
+    R_J         = 1.496e13   # m    — Reference radius (document calibration value)
+    GAMMA       = 0.00005    # day-1 — Magnetic field decay constant
+    M_SOLAR     = 1.989e30   # kg
+    R_SOLAR_1AU = 1.496e13   # m    — Reference heliospheric radius
+    OMEGA_S     = 2.5e-6     # rad/s — Solar spin angular velocity
+    B_J_DEFAULT = 1.0e3      # T    — Default magnetic field per string
+
+    def compute(self, dataset: dict) -> dict:
+        """
+        Receives dataset from source2.cpp (PRINCIPAL GUI); outputs all five
+        quantum variable equation sets with primary solutions.
+
+        dataset keys (all optional, defaults to Solar reference values):
+          t          : float — physical time [days]    (default 0.0)
+          t_n        : float — normalised time [0..1]  (default 0.0)
+          H_SCm      : float — heliosphere factor      (default 1.0)
+          lambda_i   : float — inertia coupling        (default 1.0)
+          f_Heaviside: float — Heaviside fraction      (default 0.01)
+          n_j        : int   — magnetic string count   (default 1)
+          n_i        : int   — gravity index count     (default 4)
+        """
+        import math as _m
+        t        = float(dataset.get('t',           0.0))
+        t_n      = float(dataset.get('t_n',         0.0))
+        H_SCm    = float(dataset.get('H_SCm',       1.0))
+        lambda_i = float(dataset.get('lambda_i',    1.0))
+        f_H      = float(dataset.get('f_Heaviside', 0.01))
+        n_j      = int(  dataset.get('n_j',         1))
+        n_i      = int(  dataset.get('n_i',         4))
+        f_quasi, f_TRZ = 0.01, 0.1
+        k1, k2, k3, k4 = 1.5, 1.2, 1.8, 1.0
+        Ug1_ref, Ug3_ref, Ug4_ref = 1.39e26, 1.8e49, 2.50e-20
+        delta_sw, v_sw = 0.01, 5.0e5
+        P_SCm, phi_j, P_core, B_j = 1.0, 1.0, 1.0, self.B_J_DEFAULT
+
+        cos_tn = _m.cos(_m.pi * t_n)
+
+        # Eq. 1: Um — Universal Magnetism
+        decay_sum     = n_j * (self.MU_J / self.R_J) * (1.0 - _m.exp(-self.GAMMA * t * cos_tn)) * phi_j
+        heaviside_amp = 1.0 + 1.0e13 * f_H   # = 1 + 10^11 when f_H=0.01
+        Um = decay_sum * P_SCm * self.E_REACT * heaviside_amp * (1.0 + f_quasi)
+
+        # Eq. 6: Ug2 — Heliospheric Gravity
+        rho_sum  = self.RHO_VAC_UA + self.RHO_VAC_SCM
+        grad_ms  = self.M_SOLAR / (self.R_SOLAR_1AU ** 2)
+        wind_mod = 1.0 + delta_sw * v_sw
+        Ug2 = k2 * rho_sum * grad_ms * 1.0 * wind_mod * H_SCm * self.E_REACT
+
+        # Eq. 9: U_i — Universal Inertia
+        Ui = lambda_i * self.RHO_VAC_SCM * self.RHO_VAC_UA * self.OMEGA_S * cos_tn * (1.0 + f_TRZ)
+        inertia_corr = -n_i * lambda_i * Ui * self.E_REACT
+
+        # Eq. 12: Ug3 — Magnetic-String Gravity
+        cos_spin = _m.cos(self.OMEGA_S * t * _m.pi)
+        Ug3 = k3 * (n_j * B_j) * cos_spin * P_core * self.E_REACT
+
+        # Eq. 4: F_U — Unified Field Force
+        grav_sum = k1 * Ug1_ref + k2 * Ug2 + k3 * Ug3_ref + k4 * Ug4_ref
+        FU = grav_sum + decay_sum + inertia_corr
+
+        return {
+            'class':            '#241  UQFFKnowledgeBase7Calculator  PAPER_657',
+            't_days':           t,
+            't_n':              t_n,
+            'H_SCm':            H_SCm,
+            'lambda_i':         lambda_i,
+            'f_Heaviside':      f_H,
+            'n_j_strings':      n_j,
+            'n_i_gravity':      n_i,
+            'Um_J_per_m3':      Um,
+            'Ug2_J_per_m3':     Ug2,
+            'Ui_J_per_m3':      Ui,
+            'neg_inertia_corr': inertia_corr,
+            'Ug3_J_per_m3':     Ug3,
+            'FU_J_per_m3':      FU,
+            'heaviside_amp':    heaviside_amp,
+            'Ug2_H_SCm_1p1':    k2 * rho_sum * grad_ms * wind_mod * 1.1 * self.E_REACT,
+            'doc_Um_ref':       '~2.28e65 J/m3 (large t, n_j=1)',
+            'doc_Ug2_ref':      '~1.18e53 J/m3 (H_SCm=1.0)',
+            'doc_Ui_ref':       '~1.38e-47 J/m3',
+            'doc_Ug3_ref':      '~1.80e49 J/m3',
+            'doc_FU_ref':       '~1.42e53 J/m3',
+            'eq1_Um':           'Um=sum_j[mu/r*(1-exp(-g*t*cos(pi*tn)))*phi]*P*E*(1+1e13*fH)*(1+fq)',
+            'eq4_FU':           'F_U=sum_i[ki*Ugi]+Um_base-sum_i[li*Ui*E]',
+            'eq6_Ug2':          'Ug2=k2*(rUA+rSCm)*M/r2*S*(1+dv)*H_SCm*E',
+            'eq9_Ui':           'Ui=li*rSCm*rUA*ws*cos(pi*tn)*(1+fTRZ)',
+            'eq12_Ug3':         'Ug3=k3*sum_j(Bj)*cos(ws*t*pi)*Pc*E',
+            'source_file':      'grok_share_f333a078289.txt',
+            'grok_date':        'May 08 2025 05:45 AM EDT',
+            'location':         '41.0997N 80.6495W Youngstown OH USA',
+            'cpp_module':       'UQFF_Knowledge_Base_7.h / UQFF_Knowledge_Base_7.cpp',
+            'g6_SM_anchor':     'PAPER_657 — KB7 five quantum variables: f_Heaviside Gravity-Index H_SCm lambda_i Magnetic-String-Index',
+            'paper':            'PAPER_657_UQFF_Knowledge_Base_7.md',
+            'share':            'https://grok.com/share/bGVnYWN5_8f3eb0d2-42b7-442d-a9fc-d6ad4f605967',
+        }
