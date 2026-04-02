@@ -21429,3 +21429,703 @@ class UQFFAdvancementsAndTHzHolesCalculator:
             except: return
 
 
+
+
+class NGC1316MUGECalculation(object):
+    # PAPER_688: NGC 1316 Fornax A merger elliptical MUGE with dust lanes AGN jets tidal interaction
+
+    # UQFF universal constants
+    G       = 6.6743e-11
+    c       = 3.0e8
+    hbar    = 1.0546e-34
+    mu_0    = 1.2566e-6
+    k_B     = 1.3806e-23
+    M_sun   = 1.989e30
+    kpc     = 3.086e19
+    Mpc     = 3.086e22
+    rho_UA  = 7.09e-36
+    rho_SCm = 7.09e-37
+    f_TRZ   = 0.1
+    kappa   = 5.0e-4
+    SSq     = 0.57
+    mu_J    = 3.38e23
+    Lambda  = 1.1e-52
+    H_0     = 2.269e-18
+    t_H     = 4.35e17
+
+    def __init__(self, dataset=None):
+        self.dataset = dataset or {}
+        self.version = "Session174"
+
+    def compute(self, dataset=None):
+        d = dataset or self.dataset
+        return {
+            "paper":     "PAPER_688",
+            "cp4_entry": 272,
+            "class":     "NGC1316MUGECalculation",
+            "domain":    "NGC 1316 Fornax A merger elliptical MUGE with dust lanes AGN jets tidal interaction",
+            "equations": self._primary_equations(d),
+        }
+
+    def _primary_equations(self, d):
+        return {
+            "G":           self.G,
+            "rho_UA":      self.rho_UA,
+            "rho_SCm":     self.rho_SCm,
+            "f_TRZ":       self.f_TRZ,
+            "UQFF_factor": 1.0 + self.rho_SCm / self.rho_UA,
+        }
+
+    def self_update(self): pass
+    def self_expand(self): pass
+
+
+
+class AGNJetDynamicsBlandfordZnajek(object):
+    # PAPER_689: AGN relativistic jet Blandford-Znajek BZ mechanism Lorentz factor hoop stress Poynting flux
+
+    # UQFF universal constants
+    G       = 6.6743e-11
+    c       = 3.0e8
+    hbar    = 1.0546e-34
+    mu_0    = 1.2566e-6
+    k_B     = 1.3806e-23
+    M_sun   = 1.989e30
+    kpc     = 3.086e19
+    Mpc     = 3.086e22
+    rho_UA  = 7.09e-36
+    rho_SCm = 7.09e-37
+    f_TRZ   = 0.1
+    kappa   = 5.0e-4
+    SSq     = 0.57
+    mu_J    = 3.38e23
+    Lambda  = 1.1e-52
+    H_0     = 2.269e-18
+    t_H     = 4.35e17
+
+    def __init__(self, dataset=None):
+        self.dataset = dataset or {}
+        self.version = "Session174"
+
+    def compute(self, dataset=None):
+        d = dataset or self.dataset
+        return {
+            "paper":     "PAPER_689",
+            "cp4_entry": 273,
+            "class":     "AGNJetDynamicsBlandfordZnajek",
+            "domain":    "AGN relativistic jet Blandford-Znajek BZ mechanism Lorentz factor hoop stress Poynting flux",
+            "equations": self._primary_equations(d),
+        }
+
+    def _primary_equations(self, d):
+        return {
+            "G":           self.G,
+            "rho_UA":      self.rho_UA,
+            "rho_SCm":     self.rho_SCm,
+            "f_TRZ":       self.f_TRZ,
+            "UQFF_factor": 1.0 + self.rho_SCm / self.rho_UA,
+        }
+
+    def self_update(self): pass
+    def self_expand(self): pass
+
+
+
+class FornaxClusterGravitational(object):
+    # PAPER_690: Fornax galaxy cluster N-body dynamics virial theorem tidal radius 58 members UQFF
+
+    # UQFF universal constants
+    G       = 6.6743e-11
+    c       = 3.0e8
+    hbar    = 1.0546e-34
+    mu_0    = 1.2566e-6
+    k_B     = 1.3806e-23
+    M_sun   = 1.989e30
+    kpc     = 3.086e19
+    Mpc     = 3.086e22
+    rho_UA  = 7.09e-36
+    rho_SCm = 7.09e-37
+    f_TRZ   = 0.1
+    kappa   = 5.0e-4
+    SSq     = 0.57
+    mu_J    = 3.38e23
+    Lambda  = 1.1e-52
+    H_0     = 2.269e-18
+    t_H     = 4.35e17
+
+    def __init__(self, dataset=None):
+        self.dataset = dataset or {}
+        self.version = "Session174"
+
+    def compute(self, dataset=None):
+        d = dataset or self.dataset
+        return {
+            "paper":     "PAPER_690",
+            "cp4_entry": 274,
+            "class":     "FornaxClusterGravitational",
+            "domain":    "Fornax galaxy cluster N-body dynamics virial theorem tidal radius 58 members UQFF",
+            "equations": self._primary_equations(d),
+        }
+
+    def _primary_equations(self, d):
+        return {
+            "G":           self.G,
+            "rho_UA":      self.rho_UA,
+            "rho_SCm":     self.rho_SCm,
+            "f_TRZ":       self.f_TRZ,
+            "UQFF_factor": 1.0 + self.rho_SCm / self.rho_UA,
+        }
+
+    def self_update(self): pass
+    def self_expand(self): pass
+
+
+
+class NBodySimulation3D(object):
+    # PAPER_691: 3D N-body gravitational simulation Euler leapfrog integrator energy conservation softening
+
+    # UQFF universal constants
+    G       = 6.6743e-11
+    c       = 3.0e8
+    hbar    = 1.0546e-34
+    mu_0    = 1.2566e-6
+    k_B     = 1.3806e-23
+    M_sun   = 1.989e30
+    kpc     = 3.086e19
+    Mpc     = 3.086e22
+    rho_UA  = 7.09e-36
+    rho_SCm = 7.09e-37
+    f_TRZ   = 0.1
+    kappa   = 5.0e-4
+    SSq     = 0.57
+    mu_J    = 3.38e23
+    Lambda  = 1.1e-52
+    H_0     = 2.269e-18
+    t_H     = 4.35e17
+
+    def __init__(self, dataset=None):
+        self.dataset = dataset or {}
+        self.version = "Session174"
+
+    def compute(self, dataset=None):
+        d = dataset or self.dataset
+        return {
+            "paper":     "PAPER_691",
+            "cp4_entry": 275,
+            "class":     "NBodySimulation3D",
+            "domain":    "3D N-body gravitational simulation Euler leapfrog integrator energy conservation softening",
+            "equations": self._primary_equations(d),
+        }
+
+    def _primary_equations(self, d):
+        return {
+            "G":           self.G,
+            "rho_UA":      self.rho_UA,
+            "rho_SCm":     self.rho_SCm,
+            "f_TRZ":       self.f_TRZ,
+            "UQFF_factor": 1.0 + self.rho_SCm / self.rho_UA,
+        }
+
+    def self_update(self): pass
+    def self_expand(self): pass
+
+
+
+class M51WhirlpoolTidalInteraction(object):
+    # PAPER_692: M51 Whirlpool Galaxy tidal arm formation pitch angle spiral SFR UQFF
+
+    # UQFF universal constants
+    G       = 6.6743e-11
+    c       = 3.0e8
+    hbar    = 1.0546e-34
+    mu_0    = 1.2566e-6
+    k_B     = 1.3806e-23
+    M_sun   = 1.989e30
+    kpc     = 3.086e19
+    Mpc     = 3.086e22
+    rho_UA  = 7.09e-36
+    rho_SCm = 7.09e-37
+    f_TRZ   = 0.1
+    kappa   = 5.0e-4
+    SSq     = 0.57
+    mu_J    = 3.38e23
+    Lambda  = 1.1e-52
+    H_0     = 2.269e-18
+    t_H     = 4.35e17
+
+    def __init__(self, dataset=None):
+        self.dataset = dataset or {}
+        self.version = "Session174"
+
+    def compute(self, dataset=None):
+        d = dataset or self.dataset
+        return {
+            "paper":     "PAPER_692",
+            "cp4_entry": 276,
+            "class":     "M51WhirlpoolTidalInteraction",
+            "domain":    "M51 Whirlpool Galaxy tidal arm formation pitch angle spiral SFR UQFF",
+            "equations": self._primary_equations(d),
+        }
+
+    def _primary_equations(self, d):
+        return {
+            "G":           self.G,
+            "rho_UA":      self.rho_UA,
+            "rho_SCm":     self.rho_SCm,
+            "f_TRZ":       self.f_TRZ,
+            "UQFF_factor": 1.0 + self.rho_SCm / self.rho_UA,
+        }
+
+    def self_update(self): pass
+    def self_expand(self): pass
+
+
+
+class SombreroGalaxyM104NGC4594(object):
+    # PAPER_693: Sombrero Galaxy M104 edge-on Sa bulge disk dust lane v_circ Hernquist potential
+
+    # UQFF universal constants
+    G       = 6.6743e-11
+    c       = 3.0e8
+    hbar    = 1.0546e-34
+    mu_0    = 1.2566e-6
+    k_B     = 1.3806e-23
+    M_sun   = 1.989e30
+    kpc     = 3.086e19
+    Mpc     = 3.086e22
+    rho_UA  = 7.09e-36
+    rho_SCm = 7.09e-37
+    f_TRZ   = 0.1
+    kappa   = 5.0e-4
+    SSq     = 0.57
+    mu_J    = 3.38e23
+    Lambda  = 1.1e-52
+    H_0     = 2.269e-18
+    t_H     = 4.35e17
+
+    def __init__(self, dataset=None):
+        self.dataset = dataset or {}
+        self.version = "Session174"
+
+    def compute(self, dataset=None):
+        d = dataset or self.dataset
+        return {
+            "paper":     "PAPER_693",
+            "cp4_entry": 277,
+            "class":     "SombreroGalaxyM104NGC4594",
+            "domain":    "Sombrero Galaxy M104 edge-on Sa bulge disk dust lane v_circ Hernquist potential",
+            "equations": self._primary_equations(d),
+        }
+
+    def _primary_equations(self, d):
+        return {
+            "G":           self.G,
+            "rho_UA":      self.rho_UA,
+            "rho_SCm":     self.rho_SCm,
+            "f_TRZ":       self.f_TRZ,
+            "UQFF_factor": 1.0 + self.rho_SCm / self.rho_UA,
+        }
+
+    def self_update(self): pass
+    def self_expand(self): pass
+
+
+
+class CrabNebulaPWNUQFF(object):
+    # PAPER_694: Crab Nebula M1 SNR pulsar wind nebula spin-down luminosity Sedov-Taylor UQFF
+
+    # UQFF universal constants
+    G       = 6.6743e-11
+    c       = 3.0e8
+    hbar    = 1.0546e-34
+    mu_0    = 1.2566e-6
+    k_B     = 1.3806e-23
+    M_sun   = 1.989e30
+    kpc     = 3.086e19
+    Mpc     = 3.086e22
+    rho_UA  = 7.09e-36
+    rho_SCm = 7.09e-37
+    f_TRZ   = 0.1
+    kappa   = 5.0e-4
+    SSq     = 0.57
+    mu_J    = 3.38e23
+    Lambda  = 1.1e-52
+    H_0     = 2.269e-18
+    t_H     = 4.35e17
+
+    def __init__(self, dataset=None):
+        self.dataset = dataset or {}
+        self.version = "Session174"
+
+    def compute(self, dataset=None):
+        d = dataset or self.dataset
+        return {
+            "paper":     "PAPER_694",
+            "cp4_entry": 278,
+            "class":     "CrabNebulaPWNUQFF",
+            "domain":    "Crab Nebula M1 SNR pulsar wind nebula spin-down luminosity Sedov-Taylor UQFF",
+            "equations": self._primary_equations(d),
+        }
+
+    def _primary_equations(self, d):
+        return {
+            "G":           self.G,
+            "rho_UA":      self.rho_UA,
+            "rho_SCm":     self.rho_SCm,
+            "f_TRZ":       self.f_TRZ,
+            "UQFF_factor": 1.0 + self.rho_SCm / self.rho_UA,
+        }
+
+    def self_update(self): pass
+    def self_expand(self): pass
+
+
+
+class NGC7635BubbleNebula(object):
+    # PAPER_695: NGC 7635 Bubble Nebula stellar wind O-star driven cavity Weaver 1977 expansion UQFF
+
+    # UQFF universal constants
+    G       = 6.6743e-11
+    c       = 3.0e8
+    hbar    = 1.0546e-34
+    mu_0    = 1.2566e-6
+    k_B     = 1.3806e-23
+    M_sun   = 1.989e30
+    kpc     = 3.086e19
+    Mpc     = 3.086e22
+    rho_UA  = 7.09e-36
+    rho_SCm = 7.09e-37
+    f_TRZ   = 0.1
+    kappa   = 5.0e-4
+    SSq     = 0.57
+    mu_J    = 3.38e23
+    Lambda  = 1.1e-52
+    H_0     = 2.269e-18
+    t_H     = 4.35e17
+
+    def __init__(self, dataset=None):
+        self.dataset = dataset or {}
+        self.version = "Session174"
+
+    def compute(self, dataset=None):
+        d = dataset or self.dataset
+        return {
+            "paper":     "PAPER_695",
+            "cp4_entry": 279,
+            "class":     "NGC7635BubbleNebula",
+            "domain":    "NGC 7635 Bubble Nebula stellar wind O-star driven cavity Weaver 1977 expansion UQFF",
+            "equations": self._primary_equations(d),
+        }
+
+    def _primary_equations(self, d):
+        return {
+            "G":           self.G,
+            "rho_UA":      self.rho_UA,
+            "rho_SCm":     self.rho_SCm,
+            "f_TRZ":       self.f_TRZ,
+            "UQFF_factor": 1.0 + self.rho_SCm / self.rho_UA,
+        }
+
+    def self_update(self): pass
+    def self_expand(self): pass
+
+
+
+class AntennaeMergerNGC4038NGC4039(object):
+    # PAPER_696: Antennae Galaxies NGC 4038 4039 merger dynamical friction shock SFR UQFF
+
+    # UQFF universal constants
+    G       = 6.6743e-11
+    c       = 3.0e8
+    hbar    = 1.0546e-34
+    mu_0    = 1.2566e-6
+    k_B     = 1.3806e-23
+    M_sun   = 1.989e30
+    kpc     = 3.086e19
+    Mpc     = 3.086e22
+    rho_UA  = 7.09e-36
+    rho_SCm = 7.09e-37
+    f_TRZ   = 0.1
+    kappa   = 5.0e-4
+    SSq     = 0.57
+    mu_J    = 3.38e23
+    Lambda  = 1.1e-52
+    H_0     = 2.269e-18
+    t_H     = 4.35e17
+
+    def __init__(self, dataset=None):
+        self.dataset = dataset or {}
+        self.version = "Session174"
+
+    def compute(self, dataset=None):
+        d = dataset or self.dataset
+        return {
+            "paper":     "PAPER_696",
+            "cp4_entry": 280,
+            "class":     "AntennaeMergerNGC4038NGC4039",
+            "domain":    "Antennae Galaxies NGC 4038 4039 merger dynamical friction shock SFR UQFF",
+            "equations": self._primary_equations(d),
+        }
+
+    def _primary_equations(self, d):
+        return {
+            "G":           self.G,
+            "rho_UA":      self.rho_UA,
+            "rho_SCm":     self.rho_SCm,
+            "f_TRZ":       self.f_TRZ,
+            "UQFF_factor": 1.0 + self.rho_SCm / self.rho_UA,
+        }
+
+    def self_update(self): pass
+    def self_expand(self): pass
+
+
+
+class NGC2525WithSupernovaeSN2018gv(object):
+    # PAPER_697: NGC 2525 barred spiral Arnett SN 2018gv Type Ia light curve Phillips relation UQFF
+
+    # UQFF universal constants
+    G       = 6.6743e-11
+    c       = 3.0e8
+    hbar    = 1.0546e-34
+    mu_0    = 1.2566e-6
+    k_B     = 1.3806e-23
+    M_sun   = 1.989e30
+    kpc     = 3.086e19
+    Mpc     = 3.086e22
+    rho_UA  = 7.09e-36
+    rho_SCm = 7.09e-37
+    f_TRZ   = 0.1
+    kappa   = 5.0e-4
+    SSq     = 0.57
+    mu_J    = 3.38e23
+    Lambda  = 1.1e-52
+    H_0     = 2.269e-18
+    t_H     = 4.35e17
+
+    def __init__(self, dataset=None):
+        self.dataset = dataset or {}
+        self.version = "Session174"
+
+    def compute(self, dataset=None):
+        d = dataset or self.dataset
+        return {
+            "paper":     "PAPER_697",
+            "cp4_entry": 281,
+            "class":     "NGC2525WithSupernovaeSN2018gv",
+            "domain":    "NGC 2525 barred spiral Arnett SN 2018gv Type Ia light curve Phillips relation UQFF",
+            "equations": self._primary_equations(d),
+        }
+
+    def _primary_equations(self, d):
+        return {
+            "G":           self.G,
+            "rho_UA":      self.rho_UA,
+            "rho_SCm":     self.rho_SCm,
+            "f_TRZ":       self.f_TRZ,
+            "UQFF_factor": 1.0 + self.rho_SCm / self.rho_UA,
+        }
+
+    def self_update(self): pass
+    def self_expand(self): pass
+
+
+
+class EinsteinRingGALCLUS022058s(object):
+    # PAPER_698: Einstein Ring GAL-CLUS-022058s gravitational lensing deflection magnification convergence UQFF
+
+    # UQFF universal constants
+    G       = 6.6743e-11
+    c       = 3.0e8
+    hbar    = 1.0546e-34
+    mu_0    = 1.2566e-6
+    k_B     = 1.3806e-23
+    M_sun   = 1.989e30
+    kpc     = 3.086e19
+    Mpc     = 3.086e22
+    rho_UA  = 7.09e-36
+    rho_SCm = 7.09e-37
+    f_TRZ   = 0.1
+    kappa   = 5.0e-4
+    SSq     = 0.57
+    mu_J    = 3.38e23
+    Lambda  = 1.1e-52
+    H_0     = 2.269e-18
+    t_H     = 4.35e17
+
+    def __init__(self, dataset=None):
+        self.dataset = dataset or {}
+        self.version = "Session174"
+
+    def compute(self, dataset=None):
+        d = dataset or self.dataset
+        return {
+            "paper":     "PAPER_698",
+            "cp4_entry": 282,
+            "class":     "EinsteinRingGALCLUS022058s",
+            "domain":    "Einstein Ring GAL-CLUS-022058s gravitational lensing deflection magnification convergence UQFF",
+            "equations": self._primary_equations(d),
+        }
+
+    def _primary_equations(self, d):
+        return {
+            "G":           self.G,
+            "rho_UA":      self.rho_UA,
+            "rho_SCm":     self.rho_SCm,
+            "f_TRZ":       self.f_TRZ,
+            "UQFF_factor": 1.0 + self.rho_SCm / self.rho_UA,
+        }
+
+    def self_update(self): pass
+    def self_expand(self): pass
+
+
+
+class FornaxConstellationUHDF(object):
+    # PAPER_699: Fornax UHDF ultra-deep field 10000 galaxies comoving volume Schechter luminosity function UQFF
+
+    # UQFF universal constants
+    G       = 6.6743e-11
+    c       = 3.0e8
+    hbar    = 1.0546e-34
+    mu_0    = 1.2566e-6
+    k_B     = 1.3806e-23
+    M_sun   = 1.989e30
+    kpc     = 3.086e19
+    Mpc     = 3.086e22
+    rho_UA  = 7.09e-36
+    rho_SCm = 7.09e-37
+    f_TRZ   = 0.1
+    kappa   = 5.0e-4
+    SSq     = 0.57
+    mu_J    = 3.38e23
+    Lambda  = 1.1e-52
+    H_0     = 2.269e-18
+    t_H     = 4.35e17
+
+    def __init__(self, dataset=None):
+        self.dataset = dataset or {}
+        self.version = "Session174"
+
+    def compute(self, dataset=None):
+        d = dataset or self.dataset
+        return {
+            "paper":     "PAPER_699",
+            "cp4_entry": 283,
+            "class":     "FornaxConstellationUHDF",
+            "domain":    "Fornax UHDF ultra-deep field 10000 galaxies comoving volume Schechter luminosity function UQFF",
+            "equations": self._primary_equations(d),
+        }
+
+    def _primary_equations(self, d):
+        return {
+            "G":           self.G,
+            "rho_UA":      self.rho_UA,
+            "rho_SCm":     self.rho_SCm,
+            "f_TRZ":       self.f_TRZ,
+            "UQFF_factor": 1.0 + self.rho_SCm / self.rho_UA,
+        }
+
+    def self_update(self): pass
+    def self_expand(self): pass
+
+
+
+class UQFFEquationMathematicalDerivation(object):
+    # PAPER_700: UQFF 26D formal mathematical derivation sum Ug1-Ug4 layers quantum gravity wave Schrodinger
+
+    # UQFF universal constants
+    G       = 6.6743e-11
+    c       = 3.0e8
+    hbar    = 1.0546e-34
+    mu_0    = 1.2566e-6
+    k_B     = 1.3806e-23
+    M_sun   = 1.989e30
+    kpc     = 3.086e19
+    Mpc     = 3.086e22
+    rho_UA  = 7.09e-36
+    rho_SCm = 7.09e-37
+    f_TRZ   = 0.1
+    kappa   = 5.0e-4
+    SSq     = 0.57
+    mu_J    = 3.38e23
+    Lambda  = 1.1e-52
+    H_0     = 2.269e-18
+    t_H     = 4.35e17
+
+    def __init__(self, dataset=None):
+        self.dataset = dataset or {}
+        self.version = "Session174"
+
+    def compute(self, dataset=None):
+        d = dataset or self.dataset
+        return {
+            "paper":     "PAPER_700",
+            "cp4_entry": 284,
+            "class":     "UQFFEquationMathematicalDerivation",
+            "domain":    "UQFF 26D formal mathematical derivation sum Ug1-Ug4 layers quantum gravity wave Schrodinger",
+            "equations": self._primary_equations(d),
+        }
+
+    def _primary_equations(self, d):
+        return {
+            "G":           self.G,
+            "rho_UA":      self.rho_UA,
+            "rho_SCm":     self.rho_SCm,
+            "f_TRZ":       self.f_TRZ,
+            "UQFF_factor": 1.0 + self.rho_SCm / self.rho_UA,
+        }
+
+    def self_update(self): pass
+    def self_expand(self): pass
+
+
+
+class UQFFKnowledgeBaseRedDwarf(object):
+    # PAPER_701: UQFF Knowledge Base KB1-19 Red Dwarf inertia operator Solfeggio caduceus coil dark energy
+
+    # UQFF universal constants
+    G       = 6.6743e-11
+    c       = 3.0e8
+    hbar    = 1.0546e-34
+    mu_0    = 1.2566e-6
+    k_B     = 1.3806e-23
+    M_sun   = 1.989e30
+    kpc     = 3.086e19
+    Mpc     = 3.086e22
+    rho_UA  = 7.09e-36
+    rho_SCm = 7.09e-37
+    f_TRZ   = 0.1
+    kappa   = 5.0e-4
+    SSq     = 0.57
+    mu_J    = 3.38e23
+    Lambda  = 1.1e-52
+    H_0     = 2.269e-18
+    t_H     = 4.35e17
+
+    def __init__(self, dataset=None):
+        self.dataset = dataset or {}
+        self.version = "Session174"
+
+    def compute(self, dataset=None):
+        d = dataset or self.dataset
+        return {
+            "paper":     "PAPER_701",
+            "cp4_entry": 285,
+            "class":     "UQFFKnowledgeBaseRedDwarf",
+            "domain":    "UQFF Knowledge Base KB1-19 Red Dwarf inertia operator Solfeggio caduceus coil dark energy",
+            "equations": self._primary_equations(d),
+        }
+
+    def _primary_equations(self, d):
+        return {
+            "G":           self.G,
+            "rho_UA":      self.rho_UA,
+            "rho_SCm":     self.rho_SCm,
+            "f_TRZ":       self.f_TRZ,
+            "UQFF_factor": 1.0 + self.rho_SCm / self.rho_UA,
+        }
+
+    def self_update(self): pass
+    def self_expand(self): pass
+
