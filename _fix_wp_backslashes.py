@@ -1,4 +1,4 @@
-"""Fix double-backslash LaTeX escaping in PAPER_674-687 whitepapers."""
+"""Fix double-backslash LaTeX escaping in PAPER_674-687 and PAPER_702-715 whitepapers."""
 import os
 
 ROOT = r"C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic"
@@ -19,6 +19,21 @@ cls_map = [
     (685, "UQFFPBHDarkMatterImplications"),
     (686, "UQFFModulationForM87"),
     (687, "M87MassEvolutionSimulation"),
+    # Session 175: PAPER_702-715
+    (702, "SaturnRingSystemUQFF"),
+    (703, "NGC1275MagneticMonsterUQFF"),
+    (704, "HorseheadNebulaBarnard33UQFF"),
+    (705, "NGC3603StarCluster2UQFF"),
+    (706, "NGC3603StarClusterPrimaryUQFF"),
+    (707, "NGC2525BarredSpiral2UQFF"),
+    (708, "PillarsOfCreationM16UQFF"),
+    (709, "Westerlund2StarClusterUQFF"),
+    (710, "NGC2014NGC2020StarformingUQFF"),
+    (711, "NGC2014NGC2020Variant2UQFF"),
+    (712, "PillarsOfCreationM16v2UQFF"),
+    (713, "UQFFKnowledgeBaseKB19"),
+    (714, "UQFFKnowledgeBaseKB18"),
+    (715, "UQFFKnowledgeBaseKB17"),
 ]
 
 targets = (

@@ -22129,3 +22129,703 @@ class UQFFKnowledgeBaseRedDwarf(object):
     def self_update(self): pass
     def self_expand(self): pass
 
+
+
+class SaturnRingSystemUQFF(object):
+    # PAPER_702: Saturn ring system MUGE2 planetary UQFF gravity equatorial ring tidal EM aether wind
+
+    # UQFF universal constants
+    G       = 6.6743e-11
+    c       = 3.0e8
+    hbar    = 1.0546e-34
+    mu_0    = 1.2566e-6
+    k_B     = 1.3806e-23
+    M_sun   = 1.989e30
+    kpc     = 3.086e19
+    Mpc     = 3.086e22
+    rho_UA  = 7.09e-36
+    rho_SCm = 7.09e-37
+    f_TRZ   = 0.1
+    kappa   = 5.0e-4
+    SSq     = 0.57
+    mu_J    = 3.38e23
+    Lambda  = 1.1e-52
+    H_0     = 2.269e-18
+    t_H     = 4.35e17
+
+    def __init__(self, dataset=None):
+        self.dataset = dataset or {}
+        self.version = "Session175"
+
+    def compute(self, dataset=None):
+        d = dataset or self.dataset
+        return {
+            "paper":     "PAPER_702",
+            "cp4_entry": 286,
+            "class":     "SaturnRingSystemUQFF",
+            "domain":    "Saturn ring system MUGE2 planetary UQFF gravity equatorial ring tidal EM aether wind",
+            "equations": self._primary_equations(d),
+        }
+
+    def _primary_equations(self, d):
+        return {
+            "G":           self.G,
+            "rho_UA":      self.rho_UA,
+            "rho_SCm":     self.rho_SCm,
+            "f_TRZ":       self.f_TRZ,
+            "UQFF_factor": 1.0 + self.rho_SCm / self.rho_UA,
+        }
+
+    def self_update(self): pass
+    def self_expand(self): pass
+
+
+
+class NGC1275MagneticMonsterUQFF(object):
+    # PAPER_703: NGC 1275 Perseus A magnetic monster Seyfert 1.5 filaments BH feedback MUGE UQFF
+
+    # UQFF universal constants
+    G       = 6.6743e-11
+    c       = 3.0e8
+    hbar    = 1.0546e-34
+    mu_0    = 1.2566e-6
+    k_B     = 1.3806e-23
+    M_sun   = 1.989e30
+    kpc     = 3.086e19
+    Mpc     = 3.086e22
+    rho_UA  = 7.09e-36
+    rho_SCm = 7.09e-37
+    f_TRZ   = 0.1
+    kappa   = 5.0e-4
+    SSq     = 0.57
+    mu_J    = 3.38e23
+    Lambda  = 1.1e-52
+    H_0     = 2.269e-18
+    t_H     = 4.35e17
+
+    def __init__(self, dataset=None):
+        self.dataset = dataset or {}
+        self.version = "Session175"
+
+    def compute(self, dataset=None):
+        d = dataset or self.dataset
+        return {
+            "paper":     "PAPER_703",
+            "cp4_entry": 287,
+            "class":     "NGC1275MagneticMonsterUQFF",
+            "domain":    "NGC 1275 Perseus A magnetic monster Seyfert 1.5 filaments BH feedback MUGE UQFF",
+            "equations": self._primary_equations(d),
+        }
+
+    def _primary_equations(self, d):
+        return {
+            "G":           self.G,
+            "rho_UA":      self.rho_UA,
+            "rho_SCm":     self.rho_SCm,
+            "f_TRZ":       self.f_TRZ,
+            "UQFF_factor": 1.0 + self.rho_SCm / self.rho_UA,
+        }
+
+    def self_update(self): pass
+    def self_expand(self): pass
+
+
+
+class HorseheadNebulaBarnard33UQFF(object):
+    # PAPER_704: Horsehead Nebula Barnard 33 dark nebula radiation pressure erosion infrared UQFF
+
+    # UQFF universal constants
+    G       = 6.6743e-11
+    c       = 3.0e8
+    hbar    = 1.0546e-34
+    mu_0    = 1.2566e-6
+    k_B     = 1.3806e-23
+    M_sun   = 1.989e30
+    kpc     = 3.086e19
+    Mpc     = 3.086e22
+    rho_UA  = 7.09e-36
+    rho_SCm = 7.09e-37
+    f_TRZ   = 0.1
+    kappa   = 5.0e-4
+    SSq     = 0.57
+    mu_J    = 3.38e23
+    Lambda  = 1.1e-52
+    H_0     = 2.269e-18
+    t_H     = 4.35e17
+
+    def __init__(self, dataset=None):
+        self.dataset = dataset or {}
+        self.version = "Session175"
+
+    def compute(self, dataset=None):
+        d = dataset or self.dataset
+        return {
+            "paper":     "PAPER_704",
+            "cp4_entry": 288,
+            "class":     "HorseheadNebulaBarnard33UQFF",
+            "domain":    "Horsehead Nebula Barnard 33 dark nebula radiation pressure erosion infrared UQFF",
+            "equations": self._primary_equations(d),
+        }
+
+    def _primary_equations(self, d):
+        return {
+            "G":           self.G,
+            "rho_UA":      self.rho_UA,
+            "rho_SCm":     self.rho_SCm,
+            "f_TRZ":       self.f_TRZ,
+            "UQFF_factor": 1.0 + self.rho_SCm / self.rho_UA,
+        }
+
+    def self_update(self): pass
+    def self_expand(self): pass
+
+
+
+class NGC3603StarCluster2UQFF(object):
+    # PAPER_705: NGC 3603 star cluster variant 2 Bok globule secondary SF stellar wind UQFF MUGE
+
+    # UQFF universal constants
+    G       = 6.6743e-11
+    c       = 3.0e8
+    hbar    = 1.0546e-34
+    mu_0    = 1.2566e-6
+    k_B     = 1.3806e-23
+    M_sun   = 1.989e30
+    kpc     = 3.086e19
+    Mpc     = 3.086e22
+    rho_UA  = 7.09e-36
+    rho_SCm = 7.09e-37
+    f_TRZ   = 0.1
+    kappa   = 5.0e-4
+    SSq     = 0.57
+    mu_J    = 3.38e23
+    Lambda  = 1.1e-52
+    H_0     = 2.269e-18
+    t_H     = 4.35e17
+
+    def __init__(self, dataset=None):
+        self.dataset = dataset or {}
+        self.version = "Session175"
+
+    def compute(self, dataset=None):
+        d = dataset or self.dataset
+        return {
+            "paper":     "PAPER_705",
+            "cp4_entry": 289,
+            "class":     "NGC3603StarCluster2UQFF",
+            "domain":    "NGC 3603 star cluster variant 2 Bok globule secondary SF stellar wind UQFF MUGE",
+            "equations": self._primary_equations(d),
+        }
+
+    def _primary_equations(self, d):
+        return {
+            "G":           self.G,
+            "rho_UA":      self.rho_UA,
+            "rho_SCm":     self.rho_SCm,
+            "f_TRZ":       self.f_TRZ,
+            "UQFF_factor": 1.0 + self.rho_SCm / self.rho_UA,
+        }
+
+    def self_update(self): pass
+    def self_expand(self): pass
+
+
+
+class NGC3603StarClusterPrimaryUQFF(object):
+    # PAPER_706: NGC 3603 primary star cluster Carina arm OB stars gas conversion hubble UQFF
+
+    # UQFF universal constants
+    G       = 6.6743e-11
+    c       = 3.0e8
+    hbar    = 1.0546e-34
+    mu_0    = 1.2566e-6
+    k_B     = 1.3806e-23
+    M_sun   = 1.989e30
+    kpc     = 3.086e19
+    Mpc     = 3.086e22
+    rho_UA  = 7.09e-36
+    rho_SCm = 7.09e-37
+    f_TRZ   = 0.1
+    kappa   = 5.0e-4
+    SSq     = 0.57
+    mu_J    = 3.38e23
+    Lambda  = 1.1e-52
+    H_0     = 2.269e-18
+    t_H     = 4.35e17
+
+    def __init__(self, dataset=None):
+        self.dataset = dataset or {}
+        self.version = "Session175"
+
+    def compute(self, dataset=None):
+        d = dataset or self.dataset
+        return {
+            "paper":     "PAPER_706",
+            "cp4_entry": 290,
+            "class":     "NGC3603StarClusterPrimaryUQFF",
+            "domain":    "NGC 3603 primary star cluster Carina arm OB stars gas conversion hubble UQFF",
+            "equations": self._primary_equations(d),
+        }
+
+    def _primary_equations(self, d):
+        return {
+            "G":           self.G,
+            "rho_UA":      self.rho_UA,
+            "rho_SCm":     self.rho_SCm,
+            "f_TRZ":       self.f_TRZ,
+            "UQFF_factor": 1.0 + self.rho_SCm / self.rho_UA,
+        }
+
+    def self_update(self): pass
+    def self_expand(self): pass
+
+
+
+class NGC2525BarredSpiral2UQFF(object):
+    # PAPER_707: NGC 2525 barred spiral galaxy variant 2 SN2018gv Type Ia feedback dark matter UQFF
+
+    # UQFF universal constants
+    G       = 6.6743e-11
+    c       = 3.0e8
+    hbar    = 1.0546e-34
+    mu_0    = 1.2566e-6
+    k_B     = 1.3806e-23
+    M_sun   = 1.989e30
+    kpc     = 3.086e19
+    Mpc     = 3.086e22
+    rho_UA  = 7.09e-36
+    rho_SCm = 7.09e-37
+    f_TRZ   = 0.1
+    kappa   = 5.0e-4
+    SSq     = 0.57
+    mu_J    = 3.38e23
+    Lambda  = 1.1e-52
+    H_0     = 2.269e-18
+    t_H     = 4.35e17
+
+    def __init__(self, dataset=None):
+        self.dataset = dataset or {}
+        self.version = "Session175"
+
+    def compute(self, dataset=None):
+        d = dataset or self.dataset
+        return {
+            "paper":     "PAPER_707",
+            "cp4_entry": 291,
+            "class":     "NGC2525BarredSpiral2UQFF",
+            "domain":    "NGC 2525 barred spiral galaxy variant 2 SN2018gv Type Ia feedback dark matter UQFF",
+            "equations": self._primary_equations(d),
+        }
+
+    def _primary_equations(self, d):
+        return {
+            "G":           self.G,
+            "rho_UA":      self.rho_UA,
+            "rho_SCm":     self.rho_SCm,
+            "f_TRZ":       self.f_TRZ,
+            "UQFF_factor": 1.0 + self.rho_SCm / self.rho_UA,
+        }
+
+    def self_update(self): pass
+    def self_expand(self): pass
+
+
+
+class PillarsOfCreationM16UQFF(object):
+    # PAPER_708: Pillars of Creation Eagle Nebula M16 photoevaporation Ug1 Ug4 Lambda UQFF MUGE
+
+    # UQFF universal constants
+    G       = 6.6743e-11
+    c       = 3.0e8
+    hbar    = 1.0546e-34
+    mu_0    = 1.2566e-6
+    k_B     = 1.3806e-23
+    M_sun   = 1.989e30
+    kpc     = 3.086e19
+    Mpc     = 3.086e22
+    rho_UA  = 7.09e-36
+    rho_SCm = 7.09e-37
+    f_TRZ   = 0.1
+    kappa   = 5.0e-4
+    SSq     = 0.57
+    mu_J    = 3.38e23
+    Lambda  = 1.1e-52
+    H_0     = 2.269e-18
+    t_H     = 4.35e17
+
+    def __init__(self, dataset=None):
+        self.dataset = dataset or {}
+        self.version = "Session175"
+
+    def compute(self, dataset=None):
+        d = dataset or self.dataset
+        return {
+            "paper":     "PAPER_708",
+            "cp4_entry": 292,
+            "class":     "PillarsOfCreationM16UQFF",
+            "domain":    "Pillars of Creation Eagle Nebula M16 photoevaporation Ug1 Ug4 Lambda UQFF MUGE",
+            "equations": self._primary_equations(d),
+        }
+
+    def _primary_equations(self, d):
+        return {
+            "G":           self.G,
+            "rho_UA":      self.rho_UA,
+            "rho_SCm":     self.rho_SCm,
+            "f_TRZ":       self.f_TRZ,
+            "UQFF_factor": 1.0 + self.rho_SCm / self.rho_UA,
+        }
+
+    def self_update(self): pass
+    def self_expand(self): pass
+
+
+
+class Westerlund2StarClusterUQFF(object):
+    # PAPER_709: Westerlund 2 super star cluster LMC rapid gas conversion OB winds Ug Lambda UQFF
+
+    # UQFF universal constants
+    G       = 6.6743e-11
+    c       = 3.0e8
+    hbar    = 1.0546e-34
+    mu_0    = 1.2566e-6
+    k_B     = 1.3806e-23
+    M_sun   = 1.989e30
+    kpc     = 3.086e19
+    Mpc     = 3.086e22
+    rho_UA  = 7.09e-36
+    rho_SCm = 7.09e-37
+    f_TRZ   = 0.1
+    kappa   = 5.0e-4
+    SSq     = 0.57
+    mu_J    = 3.38e23
+    Lambda  = 1.1e-52
+    H_0     = 2.269e-18
+    t_H     = 4.35e17
+
+    def __init__(self, dataset=None):
+        self.dataset = dataset or {}
+        self.version = "Session175"
+
+    def compute(self, dataset=None):
+        d = dataset or self.dataset
+        return {
+            "paper":     "PAPER_709",
+            "cp4_entry": 293,
+            "class":     "Westerlund2StarClusterUQFF",
+            "domain":    "Westerlund 2 super star cluster LMC rapid gas conversion OB winds Ug Lambda UQFF",
+            "equations": self._primary_equations(d),
+        }
+
+    def _primary_equations(self, d):
+        return {
+            "G":           self.G,
+            "rho_UA":      self.rho_UA,
+            "rho_SCm":     self.rho_SCm,
+            "f_TRZ":       self.f_TRZ,
+            "UQFF_factor": 1.0 + self.rho_SCm / self.rho_UA,
+        }
+
+    def self_update(self): pass
+    def self_expand(self): pass
+
+
+
+class NGC2014NGC2020StarformingUQFF(object):
+    # PAPER_710: NGC 2014 NGC 2020 Tapestry Blazing Starbirth LMC WR OB secondary SF UQFF MUGE
+
+    # UQFF universal constants
+    G       = 6.6743e-11
+    c       = 3.0e8
+    hbar    = 1.0546e-34
+    mu_0    = 1.2566e-6
+    k_B     = 1.3806e-23
+    M_sun   = 1.989e30
+    kpc     = 3.086e19
+    Mpc     = 3.086e22
+    rho_UA  = 7.09e-36
+    rho_SCm = 7.09e-37
+    f_TRZ   = 0.1
+    kappa   = 5.0e-4
+    SSq     = 0.57
+    mu_J    = 3.38e23
+    Lambda  = 1.1e-52
+    H_0     = 2.269e-18
+    t_H     = 4.35e17
+
+    def __init__(self, dataset=None):
+        self.dataset = dataset or {}
+        self.version = "Session175"
+
+    def compute(self, dataset=None):
+        d = dataset or self.dataset
+        return {
+            "paper":     "PAPER_710",
+            "cp4_entry": 294,
+            "class":     "NGC2014NGC2020StarformingUQFF",
+            "domain":    "NGC 2014 NGC 2020 Tapestry Blazing Starbirth LMC WR OB secondary SF UQFF MUGE",
+            "equations": self._primary_equations(d),
+        }
+
+    def _primary_equations(self, d):
+        return {
+            "G":           self.G,
+            "rho_UA":      self.rho_UA,
+            "rho_SCm":     self.rho_SCm,
+            "f_TRZ":       self.f_TRZ,
+            "UQFF_factor": 1.0 + self.rho_SCm / self.rho_UA,
+        }
+
+    def self_update(self): pass
+    def self_expand(self): pass
+
+
+
+class NGC2014NGC2020Variant2UQFF(object):
+    # PAPER_711: NGC 2014 NGC 2020 variant 2 Wolf-Rayet cone oxygen gas 11000K ejecta UQFF
+
+    # UQFF universal constants
+    G       = 6.6743e-11
+    c       = 3.0e8
+    hbar    = 1.0546e-34
+    mu_0    = 1.2566e-6
+    k_B     = 1.3806e-23
+    M_sun   = 1.989e30
+    kpc     = 3.086e19
+    Mpc     = 3.086e22
+    rho_UA  = 7.09e-36
+    rho_SCm = 7.09e-37
+    f_TRZ   = 0.1
+    kappa   = 5.0e-4
+    SSq     = 0.57
+    mu_J    = 3.38e23
+    Lambda  = 1.1e-52
+    H_0     = 2.269e-18
+    t_H     = 4.35e17
+
+    def __init__(self, dataset=None):
+        self.dataset = dataset or {}
+        self.version = "Session175"
+
+    def compute(self, dataset=None):
+        d = dataset or self.dataset
+        return {
+            "paper":     "PAPER_711",
+            "cp4_entry": 295,
+            "class":     "NGC2014NGC2020Variant2UQFF",
+            "domain":    "NGC 2014 NGC 2020 variant 2 Wolf-Rayet cone oxygen gas 11000K ejecta UQFF",
+            "equations": self._primary_equations(d),
+        }
+
+    def _primary_equations(self, d):
+        return {
+            "G":           self.G,
+            "rho_UA":      self.rho_UA,
+            "rho_SCm":     self.rho_SCm,
+            "f_TRZ":       self.f_TRZ,
+            "UQFF_factor": 1.0 + self.rho_SCm / self.rho_UA,
+        }
+
+    def self_update(self): pass
+    def self_expand(self): pass
+
+
+
+class PillarsOfCreationM16v2UQFF(object):
+    # PAPER_712: Pillars of Creation M16 variant 2 post-supernova protostar jets shockwave UQFF
+
+    # UQFF universal constants
+    G       = 6.6743e-11
+    c       = 3.0e8
+    hbar    = 1.0546e-34
+    mu_0    = 1.2566e-6
+    k_B     = 1.3806e-23
+    M_sun   = 1.989e30
+    kpc     = 3.086e19
+    Mpc     = 3.086e22
+    rho_UA  = 7.09e-36
+    rho_SCm = 7.09e-37
+    f_TRZ   = 0.1
+    kappa   = 5.0e-4
+    SSq     = 0.57
+    mu_J    = 3.38e23
+    Lambda  = 1.1e-52
+    H_0     = 2.269e-18
+    t_H     = 4.35e17
+
+    def __init__(self, dataset=None):
+        self.dataset = dataset or {}
+        self.version = "Session175"
+
+    def compute(self, dataset=None):
+        d = dataset or self.dataset
+        return {
+            "paper":     "PAPER_712",
+            "cp4_entry": 296,
+            "class":     "PillarsOfCreationM16v2UQFF",
+            "domain":    "Pillars of Creation M16 variant 2 post-supernova protostar jets shockwave UQFF",
+            "equations": self._primary_equations(d),
+        }
+
+    def _primary_equations(self, d):
+        return {
+            "G":           self.G,
+            "rho_UA":      self.rho_UA,
+            "rho_SCm":     self.rho_SCm,
+            "f_TRZ":       self.f_TRZ,
+            "UQFF_factor": 1.0 + self.rho_SCm / self.rho_UA,
+        }
+
+    def self_update(self): pass
+    def self_expand(self): pass
+
+
+
+class UQFFKnowledgeBaseKB19(object):
+    # PAPER_713: UQFF KB19 THz q-scope signals 1-50 bundle integral ACE DCE flow inversion
+
+    # UQFF universal constants
+    G       = 6.6743e-11
+    c       = 3.0e8
+    hbar    = 1.0546e-34
+    mu_0    = 1.2566e-6
+    k_B     = 1.3806e-23
+    M_sun   = 1.989e30
+    kpc     = 3.086e19
+    Mpc     = 3.086e22
+    rho_UA  = 7.09e-36
+    rho_SCm = 7.09e-37
+    f_TRZ   = 0.1
+    kappa   = 5.0e-4
+    SSq     = 0.57
+    mu_J    = 3.38e23
+    Lambda  = 1.1e-52
+    H_0     = 2.269e-18
+    t_H     = 4.35e17
+
+    def __init__(self, dataset=None):
+        self.dataset = dataset or {}
+        self.version = "Session175"
+
+    def compute(self, dataset=None):
+        d = dataset or self.dataset
+        return {
+            "paper":     "PAPER_713",
+            "cp4_entry": 297,
+            "class":     "UQFFKnowledgeBaseKB19",
+            "domain":    "UQFF KB19 THz q-scope signals 1-50 bundle integral ACE DCE flow inversion",
+            "equations": self._primary_equations(d),
+        }
+
+    def _primary_equations(self, d):
+        return {
+            "G":           self.G,
+            "rho_UA":      self.rho_UA,
+            "rho_SCm":     self.rho_SCm,
+            "f_TRZ":       self.f_TRZ,
+            "UQFF_factor": 1.0 + self.rho_SCm / self.rho_UA,
+        }
+
+    def self_update(self): pass
+    def self_expand(self): pass
+
+
+
+class UQFFKnowledgeBaseKB18(object):
+    # PAPER_714: UQFF KB18 THz q-scope signals 41-50 set-50 oscilloscope 200ns 500mV flow state
+
+    # UQFF universal constants
+    G       = 6.6743e-11
+    c       = 3.0e8
+    hbar    = 1.0546e-34
+    mu_0    = 1.2566e-6
+    k_B     = 1.3806e-23
+    M_sun   = 1.989e30
+    kpc     = 3.086e19
+    Mpc     = 3.086e22
+    rho_UA  = 7.09e-36
+    rho_SCm = 7.09e-37
+    f_TRZ   = 0.1
+    kappa   = 5.0e-4
+    SSq     = 0.57
+    mu_J    = 3.38e23
+    Lambda  = 1.1e-52
+    H_0     = 2.269e-18
+    t_H     = 4.35e17
+
+    def __init__(self, dataset=None):
+        self.dataset = dataset or {}
+        self.version = "Session175"
+
+    def compute(self, dataset=None):
+        d = dataset or self.dataset
+        return {
+            "paper":     "PAPER_714",
+            "cp4_entry": 298,
+            "class":     "UQFFKnowledgeBaseKB18",
+            "domain":    "UQFF KB18 THz q-scope signals 41-50 set-50 oscilloscope 200ns 500mV flow state",
+            "equations": self._primary_equations(d),
+        }
+
+    def _primary_equations(self, d):
+        return {
+            "G":           self.G,
+            "rho_UA":      self.rho_UA,
+            "rho_SCm":     self.rho_SCm,
+            "f_TRZ":       self.f_TRZ,
+            "UQFF_factor": 1.0 + self.rho_SCm / self.rho_UA,
+        }
+
+    def self_update(self): pass
+    def self_expand(self): pass
+
+
+
+class UQFFKnowledgeBaseKB17(object):
+    # PAPER_715: UQFF KB17 THz q-scope signals 31-40 set-40 Ug1 thread strength U_bi buoyancy
+
+    # UQFF universal constants
+    G       = 6.6743e-11
+    c       = 3.0e8
+    hbar    = 1.0546e-34
+    mu_0    = 1.2566e-6
+    k_B     = 1.3806e-23
+    M_sun   = 1.989e30
+    kpc     = 3.086e19
+    Mpc     = 3.086e22
+    rho_UA  = 7.09e-36
+    rho_SCm = 7.09e-37
+    f_TRZ   = 0.1
+    kappa   = 5.0e-4
+    SSq     = 0.57
+    mu_J    = 3.38e23
+    Lambda  = 1.1e-52
+    H_0     = 2.269e-18
+    t_H     = 4.35e17
+
+    def __init__(self, dataset=None):
+        self.dataset = dataset or {}
+        self.version = "Session175"
+
+    def compute(self, dataset=None):
+        d = dataset or self.dataset
+        return {
+            "paper":     "PAPER_715",
+            "cp4_entry": 299,
+            "class":     "UQFFKnowledgeBaseKB17",
+            "domain":    "UQFF KB17 THz q-scope signals 31-40 set-40 Ug1 thread strength U_bi buoyancy",
+            "equations": self._primary_equations(d),
+        }
+
+    def _primary_equations(self, d):
+        return {
+            "G":           self.G,
+            "rho_UA":      self.rho_UA,
+            "rho_SCm":     self.rho_SCm,
+            "f_TRZ":       self.f_TRZ,
+            "UQFF_factor": 1.0 + self.rho_SCm / self.rho_UA,
+        }
+
+    def self_update(self): pass
+    def self_expand(self): pass
+
