@@ -32,6 +32,7 @@ Updated: Session 145 v5.05 â€” CP4 135â†’140 (#136â€“#140 DPM Proplyd Bidirectio
     Updated: Session 149 v5.09 â€” CP4 153â†’157 (#154â€“#157 BSFG Field Equations, Holonomy Group, BH Horizon, Bohr-Sommerfeld: PAPER_559â€“562; four open questions resolved)
     Updated: Session 159 v5.17 â€” CP4 188â†’200 (#189â€“#200 Cosmic Egg Pre-Fertilization, 26D Egg Total Energy, Proto-H Shell Alignment, 26th-Order Factorial Bounds, 26D Shell Forces (Inertia/Centrip/Centrif), Riemann Hypothesis Critical Line, Mayan Calendar Nuclei Epochs, Solar System Proplyd Legacy, Probability of Order Partition, NASA ATP Framework Validation: PAPER_602â€“613; grok_share_6b8a9d9e17.txt)
 Updated: Updated: Session 161 v5.18 â€” CP4 208â†’219 (#209â€“#219 Zero-Mass UA Reformulation, 9D Wolfram Force-Triad Projection, 26D Simultaneous Geometric Infinity Sculpting, Exotic Pocket Shell Events, M87 Jet 9D Hypergraph, CenA Knotted Jet VHE, NGC6278/MS0735/Perseus Dataset Calculators, Multi-System Comparison, Grant Dataset Compression Framework: PAPER_622â€“632; grok_share_6322ac199.txt)
+Updated: Session 179 Part 3 v5.36 â€” CP4 309â†’311 (#318 LENRKnScenarioCalibrationCalculator + #319 Ug2ElectronShellEnergyCalculator: PAPER_734â€“735; thread_05June2025.txt audit; 311 total classes; 735/1000 papers)
     Updated: Session 162 v5.19 â€” CP4 219â†’229 (#220â€“#229 Tau Lepton G2 SM Bridge, CKM Vcb Flavor Vacuum Coupling, VLQ Kappa Heavy Mode, LFV BDecay TimeReversal, ALICE Run3 Multiplicity, BESIII DCS Cabibbo Dipole, Higgs 125GeV VEV Buoyancy, Proton Decay Kappa Scale, Electroweak SinThetaW SCm, SM Parameter Bridge Master: PAPER_633â€“642; SM Anchors added PAPER_622â€“632; CVW v2.0.0 G6 gate; UQFF_SM_ANCHOR_REQUIREMENTS.md)
 
 Architecture Compliance (MANDATORY):
@@ -17849,31 +17850,31 @@ __all__ = [
 ]
 
 # =============================================================================
-# SESSION 168 — grok_share_b2e2c5cba7a.txt AUDIT — PAPER_646–655
-# Source: AetherInertiaAnalysis2, SystemAnalysisSimulator_v7, Aether1–20, AVS62,
+# SESSION 168 ï¿½ grok_share_b2e2c5cba7a.txt AUDIT ï¿½ PAPER_646ï¿½655
+# Source: AetherInertiaAnalysis2, SystemAnalysisSimulator_v7, Aether1ï¿½20, AVS62,
 #         UniverseDiameter, FineStructureConstant, PiSequenceAnalysis
 # 3 UQFF number systems identified:
 #   1. Vacuum Density Series (?vac,[SCm] ? ?vac,A ? 93-order span)
-#   2. Dipole Vortex Primes (E?=mc²e^{-i26}, meson cascade, n-wave mixing)
-#   3. Buoyancy Harmonics (Ub1=-ßi·Ug1·Og·Mbh/dg·cos(ptn))
-# CP4 entries: 230–239 | v5.24
+#   2. Dipole Vortex Primes (E?=mcï¿½e^{-i26}, meson cascade, n-wave mixing)
+#   3. Buoyancy Harmonics (Ub1=-ï¿½iï¿½Ug1ï¿½Ogï¿½Mbh/dgï¿½cos(ptn))
+# CP4 entries: 230ï¿½239 | v5.24
 # =============================================================================
 
 
 class UQFFUniversalInertialOperatorCalculator:
     """
-    PAPER_646 — UQFF Universal Inertial Operator & Caduceus Wave Topology
-    Source: grok_share_b2e2c5cba7a.txt (Session 168) — AetherInertiaAnalysis2
+    PAPER_646 ï¿½ UQFF Universal Inertial Operator & Caduceus Wave Topology
+    Source: grok_share_b2e2c5cba7a.txt (Session 168) ï¿½ AetherInertiaAnalysis2
     SM Connection: Inertia-mass hierarchy; vacuum energy density modulation
-    UQFF Connection: Ui = ?i · (?vac,[SCm]/?vac,[UA]) · ?s · cos(ptn) · (1+fTRZ)
+    UQFF Connection: Ui = ?i ï¿½ (?vac,[SCm]/?vac,[UA]) ï¿½ ?s ï¿½ cos(ptn) ï¿½ (1+fTRZ)
     G6 SM Anchor: Electron mass ?-scaling; vacuum energy hierarchy documented (PAPER_642)
     """
 
     def compute(self, omega_s: float, t_n: float, f_TRZ: float = 0.01) -> dict:
         import math
-        rho_SCm = 7.09e-37   # J/m³
-        rho_UA  = 7.09e-36   # J/m³
-        lambda_i = 1.38e-47  # UQFF inertia coupling (J·s/m³)
+        rho_SCm = 7.09e-37   # J/mï¿½
+        rho_UA  = 7.09e-36   # J/mï¿½
+        lambda_i = 1.38e-47  # UQFF inertia coupling (Jï¿½s/mï¿½)
         density_ratio = rho_SCm / rho_UA  # = 0.1
         Ui = lambda_i * density_ratio * omega_s * math.cos(math.pi * t_n) * (1.0 + f_TRZ)
         return {
@@ -17882,30 +17883,30 @@ class UQFFUniversalInertialOperatorCalculator:
             "density_ratio_SCm_UA": density_ratio,
             "omega_s_rad_per_s": omega_s,
             "cos_pi_tn": math.cos(math.pi * t_n),
-            "UQFF_equation": "Ui = ?i · (?vac,[SCm]/?vac,[UA]) · ?s · cos(ptn) · (1+fTRZ)",
+            "UQFF_equation": "Ui = ?i ï¿½ (?vac,[SCm]/?vac,[UA]) ï¿½ ?s ï¿½ cos(ptn) ï¿½ (1+fTRZ)",
             "caduceus_topology": "twin-helix pinch points at every p radians",
             "holy_trinity": "Aether + Inertia/EM + [SCm]",
-            "g6_SM_anchor": "PAPER_642 — electron mass ?-scaling; vacuum energy hierarchy",
+            "g6_SM_anchor": "PAPER_642 ï¿½ electron mass ?-scaling; vacuum energy hierarchy",
         }
 
 
 class UQFFVacuumDensitySeriesCalculator:
     """
-    PAPER_647 — UQFF Vacuum Density Series & Aether Scaffold
-    Source: grok_share_b2e2c5cba7a.txt (Session 168) — AetherInertiaAnalysis2, Aether13_16
-    SM Connection: Casimir effect (??vac = 6.38×10?³6 J/m³), vacuum permittivity
-    UQFF Connection: Five-layer ?vac scaffold spanning 16 orders; Ereact=1046·e^{-?t}
+    PAPER_647 ï¿½ UQFF Vacuum Density Series & Aether Scaffold
+    Source: grok_share_b2e2c5cba7a.txt (Session 168) ï¿½ AetherInertiaAnalysis2, Aether13_16
+    SM Connection: Casimir effect (??vac = 6.38ï¿½10?ï¿½6 J/mï¿½), vacuum permittivity
+    UQFF Connection: Five-layer ?vac scaffold spanning 16 orders; Ereact=1046ï¿½e^{-?t}
     G6 SM Anchor: Casimir 97.1% alignment (PAPER_642)
     """
 
     def compute(self, kappa: float = 0.0005, t_days: float = 0.0) -> dict:
         import math
         layers = {
-            "rho_SCm":  7.09e-37,   # [SCm] superconductive J/m³
-            "rho_UA":   7.09e-36,   # Universal Aether [UA] J/m³
-            "rho_Ui":   2.84e-36,   # Universal Inertia J/m³
-            "rho_A":    1.00e-23,   # Aether baseline (gm/cm³ ? J/m³ approx)
-            "rho_sw":   8.00e-21,   # Solar wind vacuum J/m³
+            "rho_SCm":  7.09e-37,   # [SCm] superconductive J/mï¿½
+            "rho_UA":   7.09e-36,   # Universal Aether [UA] J/mï¿½
+            "rho_Ui":   2.84e-36,   # Universal Inertia J/mï¿½
+            "rho_A":    1.00e-23,   # Aether baseline (gm/cmï¿½ ? J/mï¿½ approx)
+            "rho_sw":   8.00e-21,   # Solar wind vacuum J/mï¿½
         }
         E_react = 1e46 * math.exp(-kappa * t_days)
         delta_casimir = layers["rho_UA"] - layers["rho_SCm"]
@@ -17916,17 +17917,17 @@ class UQFFVacuumDensitySeriesCalculator:
             "casimir_delta_rho_J_per_m3": delta_casimir,
             "rho_ratio_SCm_over_UA": layers["rho_SCm"] / layers["rho_UA"],
             "span_orders_of_magnitude": 16,
-            "UQFF_equation": "Ereact = 1046 · exp(-?t); ??vac = ?vac,[UA] - ?vac,[SCm]",
-            "g6_SM_anchor": "PAPER_642 — Casimir 97.1%; vacuum permittivity e0 bridge",
+            "UQFF_equation": "Ereact = 1046 ï¿½ exp(-?t); ??vac = ?vac,[UA] - ?vac,[SCm]",
+            "g6_SM_anchor": "PAPER_642 ï¿½ Casimir 97.1%; vacuum permittivity e0 bridge",
         }
 
 
 class UQFFUltraDenseHydrogenLENRCalculator:
     """
-    PAPER_648 — UQFF Ultra-Dense Hydrogen D(-1) LENR & Meson Cascade
-    Source: grok_share_b2e2c5cba7a.txt (Session 168) — AVS62 module
+    PAPER_648 ï¿½ UQFF Ultra-Dense Hydrogen D(-1) LENR & Meson Cascade
+    Source: grok_share_b2e2c5cba7a.txt (Session 168) ï¿½ AVS62 module
     SM Connection: Muon 105.7 MeV (99.96%), pion 139.6 MeV (99.98%), kaon 493.7 MeV (99.99%)
-    UQFF Connection: E = mc²e?²6; Gamow tunneling G=f·exp[-barrier·d/?v]; KER=630 eV
+    UQFF Connection: E = mcï¿½e?ï¿½6; Gamow tunneling G=fï¿½exp[-barrierï¿½d/?v]; KER=630 eV
     G6 SM Anchor: Meson masses 4-decimal precision (PAPER_642)
     """
 
@@ -17950,18 +17951,18 @@ class UQFFUltraDenseHydrogenLENRCalculator:
             "tunneling_freq_Hz": tunneling_freq,
             "meson_cascade_MeV": meson_cascade_MeV,
             "D_D_fusion_energy_MeV": D_D_fusion_MeV,
-            "UQFF_equation": "E = mc²·exp(-26); KER = e²/(4pe0d)",
-            "Gamow_formula": "G = f·exp[-barrier·d/?v]",
-            "g6_SM_anchor": "PAPER_642 — meson masses 4-decimal PDG alignment",
+            "UQFF_equation": "E = mcï¿½ï¿½exp(-26); KER = eï¿½/(4pe0d)",
+            "Gamow_formula": "G = fï¿½exp[-barrierï¿½d/?v]",
+            "g6_SM_anchor": "PAPER_642 ï¿½ meson masses 4-decimal PDG alignment",
         }
 
 
 class UQFFDipoleVortexPrimesCalculator:
     """
-    PAPER_649 — UQFF Dipole Vortex Primes — n-Wave Complex Energy Mixing
-    Source: grok_share_b2e2c5cba7a.txt (Session 168) — Aether5_8, Aether1_4, AVS62
-    SM Connection: 1/a ˜ 137 (prime), p meson 139 MeV (prime twin)
-    UQFF Connection: E? = mc²·e^{-i26}; n-wave sum > f; Heaviside 7O polynomial
+    PAPER_649 ï¿½ UQFF Dipole Vortex Primes ï¿½ n-Wave Complex Energy Mixing
+    Source: grok_share_b2e2c5cba7a.txt (Session 168) ï¿½ Aether5_8, Aether1_4, AVS62
+    SM Connection: 1/a ï¿½ 137 (prime), p meson 139 MeV (prime twin)
+    UQFF Connection: E? = mcï¿½ï¿½e^{-i26}; n-wave sum > f; Heaviside 7O polynomial
     G6 SM Anchor: TVP prime pair (137, 139) electromagnetic-strong interface (PAPER_642)
     """
 
@@ -17974,7 +17975,7 @@ class UQFFDipoleVortexPrimesCalculator:
         E_real_part   = Ex_complex.real
         E_imag_part   = Ex_complex.imag
         E_amplitude   = abs(Ex_complex)
-        heaviside_R   = 7.0   # O — 20th-level logarithmic convergence
+        heaviside_R   = 7.0   # O ï¿½ 20th-level logarithmic convergence
         DVP_sequence  = [7, 9, 26, 137, 139]
         torque_levels = {"electron_re": 5.292e-11, "muon_rm": 1.869e-13, "nuclear_rn": 8.775e-16}
         return {
@@ -17987,18 +17988,18 @@ class UQFFDipoleVortexPrimesCalculator:
             "DVP_prime_sequence": DVP_sequence,
             "n_wave_modes": n_modes,
             "torque_radii_m": torque_levels,
-            "dipole_diagram": "½S3 + ½S4 = 8/S9 (flower-of-life vortex)",
-            "UQFF_equation": "E? = mc²·exp(-i·26)",
-            "g6_SM_anchor": "PAPER_642 — prime twin (137,139) EM-strong interface",
+            "dipole_diagram": "ï¿½S3 + ï¿½S4 = 8/S9 (flower-of-life vortex)",
+            "UQFF_equation": "E? = mcï¿½ï¿½exp(-iï¿½26)",
+            "g6_SM_anchor": "PAPER_642 ï¿½ prime twin (137,139) EM-strong interface",
         }
 
 
 class UQFFBuoyancyHarmonicsCalculator:
     """
-    PAPER_650 — UQFF Buoyancy Harmonics — Discrete Anti-Gravity Resonance Bands
-    Source: grok_share_b2e2c5cba7a.txt (Session 168) — AetherInertiaAnalysis2, SystemAnalysisSimulator_v7
+    PAPER_650 ï¿½ UQFF Buoyancy Harmonics ï¿½ Discrete Anti-Gravity Resonance Bands
+    Source: grok_share_b2e2c5cba7a.txt (Session 168) ï¿½ AetherInertiaAnalysis2, SystemAnalysisSimulator_v7
     SM Connection: Galactic flat rotation curve; galactic orbital period ~225 Myr
-    UQFF Connection: Ub1 = -ßi·Ug1·Og·Mbh/dg·(1+esw·?sw)·UUA·cos(ptn)
+    UQFF Connection: Ub1 = -ï¿½iï¿½Ug1ï¿½Ogï¿½Mbh/dgï¿½(1+eswï¿½?sw)ï¿½UUAï¿½cos(ptn)
     G6 SM Anchor: Flat rotation curve structural analog (PAPER_642)
     """
 
@@ -18009,8 +18010,8 @@ class UQFFBuoyancyHarmonicsCalculator:
         M_bh    = 1.989e30  # kg solar mass
         d_g     = 8.5e20    # m galactic center distance
         eps_sw  = 0.002
-        rho_sw  = 8.0e-21   # J/m³
-        U_UA    = 7.09e-36  # J/m³
+        rho_sw  = 8.0e-21   # J/mï¿½
+        U_UA    = 7.09e-36  # J/mï¿½
         harmonic = math.cos(math.pi * t_n)
         solar_wind_factor = 1.0 + eps_sw * rho_sw
         Ub1 = -beta_i * Ug1 * Omega_g * (M_bh / d_g) * solar_wind_factor * U_UA * harmonic
@@ -18025,17 +18026,17 @@ class UQFFBuoyancyHarmonicsCalculator:
             "buoyancy_period_Gyr": 1.0 / (f_Ub * 3.156e16) if f_Ub > 0 else None,
             "four_band_pairs": ["(Ug1,Ub1)", "(Ug2,Ub2)", "(Ug3,Ub3)", "(Ug4,Ub4)"],
             "canonical_statement": "Each discrete Ug band has opposite Ub band within Universal Aether",
-            "UQFF_equation": "Ub1 = -ßi·Ug1·Og·(Mbh/dg)·(1+esw·?sw)·UUA·cos(ptn)",
-            "g6_SM_anchor": "PAPER_642 — flat rotation curve buoyancy analog",
+            "UQFF_equation": "Ub1 = -ï¿½iï¿½Ug1ï¿½Ogï¿½(Mbh/dg)ï¿½(1+eswï¿½?sw)ï¿½UUAï¿½cos(ptn)",
+            "g6_SM_anchor": "PAPER_642 ï¿½ flat rotation curve buoyancy analog",
         }
 
 
 class UQFFSchwarzschildProtonVacuumCalculator:
     """
-    PAPER_651 — UQFF Schwarzschild Proton & Vacuum Energy Concentration
-    Source: grok_share_b2e2c5cba7a.txt (Session 168) — Aether13_16, Aether5_8
+    PAPER_651 ï¿½ UQFF Schwarzschild Proton & Vacuum Energy Concentration
+    Source: grok_share_b2e2c5cba7a.txt (Session 168) ï¿½ Aether13_16, Aether5_8
     SM Connection: Proton charge radius 0.8775 fm; Casimir effect; Wheeler-DeWitt
-    UQFF Connection: 10?³?% vacuum removal ? BH; E=mc²e?²6; Planck lP = 1.616×10?³³ cm
+    UQFF Connection: 10?ï¿½?% vacuum removal ? BH; E=mcï¿½e?ï¿½6; Planck lP = 1.616ï¿½10?ï¿½ï¿½ cm
     G6 SM Anchor: Proton radius exact; Casimir pressure formula (PAPER_642)
     """
 
@@ -18064,17 +18065,17 @@ class UQFFSchwarzschildProtonVacuumCalculator:
             "E_rydberg_26_J": E_rydberg_26_electron,
             "Planck_length_m": ell_P,
             "Pi_Planck_coherence_m": math.pi * ell_P,
-            "UQFF_equation": "M_Sch = r_p·c²/(2G); E_BH = mc²·e?²6",
-            "g6_SM_anchor": "PAPER_642 — proton radius 100%; Casimir formula",
+            "UQFF_equation": "M_Sch = r_pï¿½cï¿½/(2G); E_BH = mcï¿½ï¿½e?ï¿½6",
+            "g6_SM_anchor": "PAPER_642 ï¿½ proton radius 100%; Casimir formula",
         }
 
 
 class UQFFFineSC_QEDPrecisionCalculator:
     """
-    PAPER_652 — UQFF Fine Structure Constant & QED Precision Hierarchy
-    Source: grok_share_b2e2c5cba7a.txt (Session 168) — FineStructureConstant module
+    PAPER_652 ï¿½ UQFF Fine Structure Constant & QED Precision Hierarchy
+    Source: grok_share_b2e2c5cba7a.txt (Session 168) ï¿½ FineStructureConstant module
     SM Connection: a = 1/137.035999084 (NIST exact); g-2 0.37ppb; QHE R_K = 25812.807 O
-    UQFF Connection: a = Z0/(2·R_K); 137 is prime (DVP level 5); Heaviside Z0 = 377O
+    UQFF Connection: a = Z0/(2ï¿½R_K); 137 is prime (DVP level 5); Heaviside Z0 = 377O
     G6 SM Anchor: a exact; g-2 n-wave DVP series (PAPER_642, PAPER_649)
     """
 
@@ -18082,7 +18083,7 @@ class UQFFFineSC_QEDPrecisionCalculator:
         import math
         e     = 1.602176634e-19   # C
         eps0  = 8.8541878128e-12  # F/m
-        hbar  = 1.054571817e-34   # J·s
+        hbar  = 1.054571817e-34   # Jï¿½s
         c     = 2.99792458e8      # m/s
         mu0   = 4 * math.pi * 1e-7
         h     = 2 * math.pi * hbar
@@ -18106,24 +18107,24 @@ class UQFFFineSC_QEDPrecisionCalculator:
             "ae_CODATA": 0.00115965218076,
             "is_137_prime": True,
             "DVP_EM_sequence": DVP_sequence_EM,
-            "UQFF_equation": "a = Z0/(2·R_K) = e²/(4pe0?c)",
-            "g6_SM_anchor": "PAPER_642 — a exact; g-2 DVP n-wave series",
+            "UQFF_equation": "a = Z0/(2ï¿½R_K) = eï¿½/(4pe0?c)",
+            "g6_SM_anchor": "PAPER_642 ï¿½ a exact; g-2 DVP n-wave series",
         }
 
 
 class UQFFPiWaveEnergyCorrespondenceCalculator:
     """
-    PAPER_653 — UQFF Pi-Wave Energy Correspondence
-    Source: grok_share_b2e2c5cba7a.txt (Session 168) — PiSequenceAnalysis, PISequenceAnalysis2
+    PAPER_653 ï¿½ UQFF Pi-Wave Energy Correspondence
+    Source: grok_share_b2e2c5cba7a.txt (Session 168) ï¿½ PiSequenceAnalysis, PISequenceAnalysis2
     SM Connection: Planck energy; p normal number conjecture; vacuum fluctuations ??
-    UQFF Connection: E_wave = 1.17×10?¹°5 J; "117" in p at pos 1529,2570,5046,10258...
-    G6 SM Anchor: Planck energy; Pi-Planck coherence length = p·lP (PAPER_642)
+    UQFF Connection: E_wave = 1.17ï¿½10?ï¿½ï¿½5 J; "117" in p at pos 1529,2570,5046,10258...
+    G6 SM Anchor: Planck energy; Pi-Planck coherence length = pï¿½lP (PAPER_642)
     """
 
     def compute(self) -> dict:
         import math
         ell_P   = 1.616e-35     # m
-        rho_SCm = 7.09e-37      # J/m³
+        rho_SCm = 7.09e-37      # J/mï¿½
         c       = 2.99792458e8  # m/s
         h       = 6.62607015e-34
         ell_pi  = math.pi * ell_P
@@ -18140,16 +18141,16 @@ class UQFFPiWaveEnergyCorrespondenceCalculator:
             "117_in_pi_confirmed_positions": pi_117_positions,
             "count_117_in_1M_digits_approx": 130,
             "expected_count_normal_number": 1000,
-            "UQFF_equation": "E_wave = ?vac,[SCm] · (p·lP)³ · c²",
+            "UQFF_equation": "E_wave = ?vac,[SCm] ï¿½ (pï¿½lP)ï¿½ ï¿½ cï¿½",
             "caduceus_pinch_argument": "cos(ptn) concentrations occur at Caduceus pinch points",
-            "g6_SM_anchor": "PAPER_642 — Planck energy; Pi-Planck coherence",
+            "g6_SM_anchor": "PAPER_642 ï¿½ Planck energy; Pi-Planck coherence",
         }
 
 
 class UQFFObservableUniverseDiameterCalculator:
     """
-    PAPER_654 — UQFF Observable Universe Diameter & ?CDM Friedmann Integration
-    Source: grok_share_b2e2c5cba7a.txt (Session 168) — UniverseDiameter module
+    PAPER_654 ï¿½ UQFF Observable Universe Diameter & ?CDM Friedmann Integration
+    Source: grok_share_b2e2c5cba7a.txt (Session 168) ï¿½ UniverseDiameter module
     SM Connection: Planck 2018 params (H0=70, Om=0.3, O?=0.7); cosmic age 13.8 Gyr
     UQFF Connection: ?=?c dt/a(t); d=93 Gly; ?vac epoch transitions from PAPER_647
     G6 SM Anchor: All Planck 2018 cosmological parameters (PAPER_642)
@@ -18191,15 +18192,15 @@ class UQFFObservableUniverseDiameterCalculator:
             "c_over_H0_Gly": c_H0_Gly,
             "z_CMB": 1100,
             "expansion_factor": 1101,
-            "UQFF_equation": "? = (c/H0)·?0^8 dz / v(Om(1+z)³ + O?)",
-            "g6_SM_anchor": "PAPER_642 — Planck 2018 ?CDM parameters",
+            "UQFF_equation": "? = (c/H0)ï¿½?0^8 dz / v(Om(1+z)ï¿½ + O?)",
+            "g6_SM_anchor": "PAPER_642 ï¿½ Planck 2018 ?CDM parameters",
         }
 
 
 class UQFFGalacticDiscreteBandSimulatorCalculator:
     """
-    PAPER_655 — UQFF Galactic Discrete Gravity Bands & Aether Field Simulator
-    Source: grok_share_b2e2c5cba7a.txt (Session 168) — SystemAnalysisSimulator_v1–v7
+    PAPER_655 ï¿½ UQFF Galactic Discrete Gravity Bands & Aether Field Simulator
+    Source: grok_share_b2e2c5cba7a.txt (Session 168) ï¿½ SystemAnalysisSimulator_v1ï¿½v7
     SM Connection: Galactic flat rotation; binary star orbital mechanics
     UQFF Connection: Three simultaneous Ug bands (Ug1/Ug2/Ug3); discrete non-interactive Um
     G6 SM Anchor: Flat rotation curve Ub1 structural analog (PAPER_642, PAPER_650)
@@ -18211,18 +18212,18 @@ class UQFFGalacticDiscreteBandSimulatorCalculator:
         G      = 6.674e-11
         mu_B   = 9.274e-24    # J/T
         eps0   = 8.854e-12    # F/m
-        rho_A  = 1.0e-26      # kg/m³ Aether baseline
-        # Ug1 — internal dipole (simplified)
+        rho_A  = 1.0e-26      # kg/mï¿½ Aether baseline
+        # Ug1 ï¿½ internal dipole (simplified)
         H_SCm  = 0.99
         B_T    = B_gauss * 1e-4   # Gauss ? Tesla
         Ug1 = G * M_star * mu_B * B_T / r_m**3 * (1 + H_SCm)
-        # Ug2 — field bubble
+        # Ug2 ï¿½ field bubble
         rho_SCm = 7.09e-37
         rho_UA  = 7.09e-36
         rho_Ui  = 2.84e-36
         rho_sum = rho_SCm + rho_UA + rho_Ui
         Ug2 = G * M_star * eps0 * E_field**2 / (2 * r_m) * rho_sum * H_SCm
-        # Ug3 — string disk (single exemplar string)
+        # Ug3 ï¿½ string disk (single exemplar string)
         omega_s = 2.5e-6     # rad/s stellar spin
         t       = 0.0
         P_core  = 3.8e26     # W solar luminosity
@@ -18243,18 +18244,18 @@ class UQFFGalacticDiscreteBandSimulatorCalculator:
             "Ub1_buoyancy_J_per_m3": Ub1,
             "spin_ratio_Ug1_over_Ub1": f_spin_rel,
             "flat_curve_velocity_m_per_s": flat_curve_v,
-            "three_band_structure": ["Ug1: internal dipole 1/r³", "Ug2: field bubble 1/r", "Ug3: string disk"],
+            "three_band_structure": ["Ug1: internal dipole 1/rï¿½", "Ug2: field bubble 1/r", "Ug3: string disk"],
             "non_interactive_magnetism": "Um bands each couple only to their paired Ug band",
             "aether_density_kg_per_m3": rho_A,
             "validation_data_points": 82,
-            "UQFF_equation": "v_orbit = v(Ug2·r/M) · (1 + Ub1/Ug1)^{-1/2}",
-            "g6_SM_anchor": "PAPER_642 — flat rotation curve; binary orbital mechanics",
+            "UQFF_equation": "v_orbit = v(Ug2ï¿½r/M) ï¿½ (1 + Ub1/Ug1)^{-1/2}",
+            "g6_SM_anchor": "PAPER_642 ï¿½ flat rotation curve; binary orbital mechanics",
         }
 
 
 
 # -----------------------------------------------------------------------------
-# CP4 ENTRY #240 — PAPER_656  (Session 170, April 1, 2026)
+# CP4 ENTRY #240 ï¿½ PAPER_656  (Session 170, April 1, 2026)
 # UQFFLightEchoEvolutionCalculator
 # Computes V838 Monocerotis UQFF master light echo intensity equation
 # -----------------------------------------------------------------------------
@@ -18262,7 +18263,7 @@ import math as _math_cp4_240
 
 class UQFFLightEchoEvolutionCalculator:
     """
-    CP4 Entry #240 — PAPER_656
+    CP4 Entry #240 ï¿½ PAPER_656
     UQFF V838 Monocerotis Light Echo Master Equation.
     Models Hubble ACS light echo intensity incorporating Ug1 gravity,
     f_TRZ time-reversal correction, and Aether density ratio.
@@ -18279,7 +18280,7 @@ class UQFFLightEchoEvolutionCalculator:
     Reference: PAPER_656_UQFF_V838_Mon_Light_Echo_Master_Equation.md
     Source: grok_share_fddbe3afc82.txt (May 08, 2025)
     C++ module: V838MonLightEcho.h / V838MonLightEcho.cpp
-    CVW v2.0.0 compliant — G1-G6 gate verified
+    CVW v2.0.0 compliant ï¿½ G1-G6 gate verified
     """
 
     # Physical constants
@@ -18378,37 +18379,37 @@ class UQFFLightEchoEvolutionCalculator:
             "master_equation":       "I = (L/(4pi(ct)^2)) * sigma * rho0 * exp(-b*Ug1) * (1+f_TRZ) * (1+rho_UA/rho_SCm)",
             "observation":           "V838 Mon Hubble ACS Oct 2004, 20000 ly, 600000 L_Sun",
             "contraction_illusion":  "negentropic f_TRZ macroscopic analog",
-            "g6_SM_anchor":          "PAPER_656 — V838 Mon Hubble light echo; aether+time-reversal amplification",
+            "g6_SM_anchor":          "PAPER_656 ï¿½ V838 Mon Hubble light echo; aether+time-reversal amplification",
             "paper":                 "PAPER_656_UQFF_V838_Mon_Light_Echo_Master_Equation.md",
             "cpp_module":            "V838MonLightEcho.h / V838MonLightEcho.cpp",
         }
 
 
 # -----------------------------------------------------------------------------
-# CP4 ENTRY #241 — PAPER_657  (Session 171, April 2, 2026)
+# CP4 ENTRY #241 ï¿½ PAPER_657  (Session 171, April 2, 2026)
 # UQFFKnowledgeBase7Calculator
 # Computes all five UQFF quantum variable equations from Knowledge Base 7:
 #   f_Heaviside (Heaviside Fraction), i (Gravity Index), H_SCm (Heliosphere
 #   Factor), lambda_i (Inertia Coupling), j (Magnetic String Index).
-# Source: grok_share_f333a078289.txt — "UQFF Knowledge Base_7", May 08 2025
+# Source: grok_share_f333a078289.txt ï¿½ "UQFF Knowledge Base_7", May 08 2025
 # C++ Module: UQFF_Knowledge_Base_7.h / UQFF_Knowledge_Base_7.cpp
 # -----------------------------------------------------------------------------
 import math as _math_cp4_241
 
 class UQFFKnowledgeBase7Calculator:
     """
-    CP4 Entry #241 — PAPER_657
+    CP4 Entry #241 ï¿½ PAPER_657
     UQFF Knowledge Base Version 7: Five Quantum Variable Integration.
 
     Integrates five quantum variables into the UQFF formalism,
     synthesised from document analyses conducted May 08, 2025:
 
     Quantum Variables (Document Tags):
-      f_Heaviside = 0.01  [Heaviside Fraction]   — threshold/nonlinear amplification in Um
-      i           = 1..4  [Gravity Index]         — indexes Ug1—Ug4 in F_U summation
-      H_SCm       ~ 1.0   [Heliosphere Factor]    — heliospheric thickness scaling in Ug2
-      lambda_i    = 1.0   [Inertia Coupling]      — inertial resistance coupling in U_i
-      j           = 1..N  [Magnetic String Index] — indexes magnetic strings in Um and Ug3
+      f_Heaviside = 0.01  [Heaviside Fraction]   ï¿½ threshold/nonlinear amplification in Um
+      i           = 1..4  [Gravity Index]         ï¿½ indexes Ug1ï¿½Ug4 in F_U summation
+      H_SCm       ~ 1.0   [Heliosphere Factor]    ï¿½ heliospheric thickness scaling in Ug2
+      lambda_i    = 1.0   [Inertia Coupling]      ï¿½ inertial resistance coupling in U_i
+      j           = 1..N  [Magnetic String Index] ï¿½ indexes magnetic strings in Um and Ug3
 
     Key Equations:
       Eq.1  Um  = sum_j[mu_j/r_j*(1-exp(-g*t*cos(pi*t_n)))*phi_j]*P*E*(1+10^13*f_H)*(1+f_q)
@@ -18425,26 +18426,26 @@ class UQFFKnowledgeBase7Calculator:
       F_U  ~ 1.42e53 J/m3  (Ug2-dominant gravity sum)
 
     UQFF Connections:
-      f_Heaviside & j — F_env via Um; amplifies quasar jets & nebular dynamics
-      i               — F_env + psi_total via F_U; multi-scale gravity framework
-      H_SCm           — F_env via Ug2; heliospheric precision + reactor analogue
-      lambda_i        — F_env via U_i; inertial stability (plasmoids/molecular clouds)
+      f_Heaviside & j ï¿½ F_env via Um; amplifies quasar jets & nebular dynamics
+      i               ï¿½ F_env + psi_total via F_U; multi-scale gravity framework
+      H_SCm           ï¿½ F_env via Ug2; heliospheric precision + reactor analogue
+      lambda_i        ï¿½ F_env via U_i; inertial stability (plasmoids/molecular clouds)
 
     Source: grok_share_f333a078289.txt (May 08, 2025; Youngstown OH 41.0997N 80.6495W)
     Author: Daniel T. Murphy | Share: bGVnYWN5_8f3eb0d2-42b7-442d-a9fc-d6ad4f605967
     """
 
     # Physical constants (UQFF calibrated values)
-    RHO_VAC_UA  = 7.09e-36   # J/m3 — Universal Aether vacuum density
-    RHO_VAC_SCM = 7.09e-37   # J/m3 — SCm vacuum density
-    E_REACT     = 1.0e46     # J/m3 — Universal reaction energy scale
-    MU_J        = 3.38e23    # T*m3 — Solar magnetic dipole moment (per string j)
-    R_J         = 1.496e13   # m    — Reference radius (document calibration value)
-    GAMMA       = 0.00005    # day-1 — Magnetic field decay constant
+    RHO_VAC_UA  = 7.09e-36   # J/m3 ï¿½ Universal Aether vacuum density
+    RHO_VAC_SCM = 7.09e-37   # J/m3 ï¿½ SCm vacuum density
+    E_REACT     = 1.0e46     # J/m3 ï¿½ Universal reaction energy scale
+    MU_J        = 3.38e23    # T*m3 ï¿½ Solar magnetic dipole moment (per string j)
+    R_J         = 1.496e13   # m    ï¿½ Reference radius (document calibration value)
+    GAMMA       = 0.00005    # day-1 ï¿½ Magnetic field decay constant
     M_SOLAR     = 1.989e30   # kg
-    R_SOLAR_1AU = 1.496e13   # m    — Reference heliospheric radius
-    OMEGA_S     = 2.5e-6     # rad/s — Solar spin angular velocity
-    B_J_DEFAULT = 1.0e3      # T    — Default magnetic field per string
+    R_SOLAR_1AU = 1.496e13   # m    ï¿½ Reference heliospheric radius
+    OMEGA_S     = 2.5e-6     # rad/s ï¿½ Solar spin angular velocity
+    B_J_DEFAULT = 1.0e3      # T    ï¿½ Default magnetic field per string
 
     def compute(self, dataset: dict) -> dict:
         """
@@ -18452,13 +18453,13 @@ class UQFFKnowledgeBase7Calculator:
         quantum variable equation sets with primary solutions.
 
         dataset keys (all optional, defaults to Solar reference values):
-          t          : float — physical time [days]    (default 0.0)
-          t_n        : float — normalised time [0..1]  (default 0.0)
-          H_SCm      : float — heliosphere factor      (default 1.0)
-          lambda_i   : float — inertia coupling        (default 1.0)
-          f_Heaviside: float — Heaviside fraction      (default 0.01)
-          n_j        : int   — magnetic string count   (default 1)
-          n_i        : int   — gravity index count     (default 4)
+          t          : float ï¿½ physical time [days]    (default 0.0)
+          t_n        : float ï¿½ normalised time [0..1]  (default 0.0)
+          H_SCm      : float ï¿½ heliosphere factor      (default 1.0)
+          lambda_i   : float ï¿½ inertia coupling        (default 1.0)
+          f_Heaviside: float ï¿½ Heaviside fraction      (default 0.01)
+          n_j        : int   ï¿½ magnetic string count   (default 1)
+          n_i        : int   ï¿½ gravity index count     (default 4)
         """
         import math as _m
         t        = float(dataset.get('t',           0.0))
@@ -18476,26 +18477,26 @@ class UQFFKnowledgeBase7Calculator:
 
         cos_tn = _m.cos(_m.pi * t_n)
 
-        # Eq. 1: Um — Universal Magnetism
+        # Eq. 1: Um ï¿½ Universal Magnetism
         decay_sum     = n_j * (self.MU_J / self.R_J) * (1.0 - _m.exp(-self.GAMMA * t * cos_tn)) * phi_j
         heaviside_amp = 1.0 + 1.0e13 * f_H   # = 1 + 10^11 when f_H=0.01
         Um = decay_sum * P_SCm * self.E_REACT * heaviside_amp * (1.0 + f_quasi)
 
-        # Eq. 6: Ug2 — Heliospheric Gravity
+        # Eq. 6: Ug2 ï¿½ Heliospheric Gravity
         rho_sum  = self.RHO_VAC_UA + self.RHO_VAC_SCM
         grad_ms  = self.M_SOLAR / (self.R_SOLAR_1AU ** 2)
         wind_mod = 1.0 + delta_sw * v_sw
         Ug2 = k2 * rho_sum * grad_ms * 1.0 * wind_mod * H_SCm * self.E_REACT
 
-        # Eq. 9: U_i — Universal Inertia
+        # Eq. 9: U_i ï¿½ Universal Inertia
         Ui = lambda_i * self.RHO_VAC_SCM * self.RHO_VAC_UA * self.OMEGA_S * cos_tn * (1.0 + f_TRZ)
         inertia_corr = -n_i * lambda_i * Ui * self.E_REACT
 
-        # Eq. 12: Ug3 — Magnetic-String Gravity
+        # Eq. 12: Ug3 ï¿½ Magnetic-String Gravity
         cos_spin = _m.cos(self.OMEGA_S * t * _m.pi)
         Ug3 = k3 * (n_j * B_j) * cos_spin * P_core * self.E_REACT
 
-        # Eq. 4: F_U — Unified Field Force
+        # Eq. 4: F_U ï¿½ Unified Field Force
         grav_sum = k1 * Ug1_ref + k2 * Ug2 + k3 * Ug3_ref + k4 * Ug4_ref
         FU = grav_sum + decay_sum + inertia_corr
 
@@ -18530,26 +18531,26 @@ class UQFFKnowledgeBase7Calculator:
             'grok_date':        'May 08 2025 05:45 AM EDT',
             'location':         '41.0997N 80.6495W Youngstown OH USA',
             'cpp_module':       'UQFF_Knowledge_Base_7.h / UQFF_Knowledge_Base_7.cpp',
-            'g6_SM_anchor':     'PAPER_657 — KB7 five quantum variables: f_Heaviside Gravity-Index H_SCm lambda_i Magnetic-String-Index',
+            'g6_SM_anchor':     'PAPER_657 ï¿½ KB7 five quantum variables: f_Heaviside Gravity-Index H_SCm lambda_i Magnetic-String-Index',
             'paper':            'PAPER_657_UQFF_Knowledge_Base_7.md',
             'share':            'https://grok.com/share/bGVnYWN5_8f3eb0d2-42b7-442d-a9fc-d6ad4f605967',
         }
 
 
 # -----------------------------------------------------------------------------
-# CP4 ENTRY #242 — PAPER_658  (Session 172, April 2, 2026)
+# CP4 ENTRY #242 ï¿½ PAPER_658  (Session 172, April 2, 2026)
 # BlackHoleBounceUQFFCalculator
 # Loop Quantum Gravity bounce with UQFF vacuum density elevation.
-# LQC modified Friedmann: H² = (8ÏG/3)Î±(1-Î±/Î±_c)
+# LQC modified Friedmann: Hï¿½ = (8ï¿½G/3)Î±(1-Î±/Î±_c)
 # UQFF elevates Î±_c by factor (1 + Î±_UA/Î±_SCm) ~ 11.
-# Source: grok_share_fc21e30c24b4.txt — "BlackHoleBounce" class, May 2025
+# Source: grok_share_fc21e30c24b4.txt ï¿½ "BlackHoleBounce" class, May 2025
 # C++ Module: BlackHoleBounceUQFF.h / BlackHoleBounceUQFF.cpp
 # -----------------------------------------------------------------------------
 import math as _math_cp4_242
 
 class BlackHoleBounceUQFFCalculator:
     """
-    CP4 Entry #242 — PAPER_658
+    CP4 Entry #242 ï¿½ PAPER_658
     LQG Black Hole Bounce with UQFF Vacuum Density Elevation.
 
     Implements Loop Quantum Gravity (LQG) bounce cosmology modified by the
@@ -18559,7 +18560,7 @@ class BlackHoleBounceUQFFCalculator:
     the primordial BH lifetime by the same factor.
 
     Core Equations:
-      LQC Friedmann:  H² = (8Ï€G/3)Î±(1-Î±/Î±_c) - kc²/a²
+      LQC Friedmann:  Hï¿½ = (8Ï€G/3)Î±(1-Î±/Î±_c) - kcï¿½/aï¿½
       Near-bounce:    a(t) â‰ˆ a_min Â· cosh(t/t_Pl)
       UQFF scale:     a_UQFF = a_min Â· cosh(t/t_Pl) Â· cbrt(1 + f_TRZ Â· Î±_UA/Î±_SCm)
       UQFF rho_c:     Î±_c,UQFF = Î±_c Â· (1 + Î±_UA/Î±_SCm)
@@ -18569,7 +18570,7 @@ class BlackHoleBounceUQFFCalculator:
       rho_UA  = 7.09e-36 J/m3
       rho_SCm = 7.09e-37 J/m3
       f_TRZ   = 0.1
-      kappa   = 0.0005 day—¹
+      kappa   = 0.0005 dayï¿½ï¿½
       [SSq]   = 0.57
 
     Numerical Results:
@@ -18671,19 +18672,19 @@ class BlackHoleBounceUQFFCalculator:
 
 
 # -----------------------------------------------------------------------------
-# CP4 ENTRY #243 — PAPER_659  (Session 172, April 2, 2026)
+# CP4 ENTRY #243 ï¿½ PAPER_659  (Session 172, April 2, 2026)
 # BlackToWhiteHoleUQFFCalculator
 # UQFF-driven Black-to-White Hole Transition: Theta_trans criterion.
 # Theta_trans = P_trans . Phi_trans . S_Um > 1 => white hole formed.
 # Numerical: Sgr A* (M=4.3e6 Msun) => Theta_trans ~ 2.7, P(Theta>1) ~ 99%.
-# Source: grok_share_fc21e30c24b4.txt — "BlackToWhiteHoleTransition" class
+# Source: grok_share_fc21e30c24b4.txt ï¿½ "BlackToWhiteHoleTransition" class
 # C++ Module: BlackToWhiteHoleUQFF.h / BlackToWhiteHoleUQFF.cpp
 # -----------------------------------------------------------------------------
 import math as _math_cp4_243
 
 class BlackToWhiteHoleUQFFCalculator:
     """
-    CP4 Entry #243 — PAPER_659
+    CP4 Entry #243 ï¿½ PAPER_659
     UQFF Black-to-White Hole Transition Module.
 
     In standard GR a black hole is a stable one-way membrane.  The UQFF
@@ -23883,6 +23884,184 @@ class EighteenAstroSystemsMUGECalculator(object):
             "paper": "PAPER_733",
             "cp4_index": 317,
         }
+
+    def self_update(self): pass
+    def self_expand(self): pass
+
+
+# â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+# CP4 #318 â€” PAPER_734: LENR K_n Three-Scenario Calibration Constants
+# â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+class LENRKnScenarioCalibrationCalculator:
+    """CP4 #318 â€” PAPER_734: K_n form LENR Three-Scenario Calibration Constants.
+
+    From thread_05June2025.txt â€” K_n_Neutron_Production_Calibration_Constant_19April2025.docx
+
+    Calibrated eta equation (K_n document form, distinct from PAPER_471 K_eta target form):
+        eta = k_eta * exp(-[SSq]*n/26) * exp(-(pi-t)*Um/rho_UA,[UA])
+
+    Three scenarios and their k_eta calibration multipliers:
+    - Metallic hydride cells :  k_eta = 2.75e8   cm^-2*s^-1  (E_field ~ 2e11 V/m)
+    - Exploding wire devices  :  k_eta ~ 191       cm^-2*s^-1  (E_field ~ 2.88e13 V/m)
+    - Solar corona LENR       :  k_eta = 6.06e-6  cm^-2*s^-1  (E_field ~ 1.2e-3 V/m)
+
+    Solar corona also yields transmutation calibration constant:
+        k_trans = 5.26e44  (6Li + 2n -> 2*4He + e- + nu_bar + 26.9 MeV channel)
+
+    Note: PAPER_471 K_eta are *target eta values* (1e13, 1e8, 7e-3 cm^-2*s^-1).
+          PAPER_734 k_eta are *multiplicative calibration constants* - different functional form.
+
+    Source   : thread_05June2025.txt line 44; K_n_Neutron_Production docx (19 April 2025)
+    Session  : 179 Part 3
+    """
+
+    PAPER = 734
+    CP4_INDEX = 318
+
+    SCENARIOS = {
+        "metallic_hydride": {
+            "k_eta":       2.75e8,
+            "E_field_Vm":  2.00e11,
+            "eta_target":  1.00e13,
+            "description": "Palladium/Nickel metallic hydride electrolytic cells",
+        },
+        "exploding_wire": {
+            "k_eta":       191.0,
+            "E_field_Vm":  2.88e13,
+            "eta_target":  1.00e8,
+            "description": "High-current pulsed exploding wire discharges",
+        },
+        "solar_corona": {
+            "k_eta":       6.06e-6,
+            "E_field_Vm":  1.20e-3,
+            "eta_target":  7.00e-3,
+            "k_trans":     5.26e44,
+            "channel":     "6Li + 2n -> 2*4He + e- + nu_bar + 26.9 MeV",
+            "description": "Solar corona LENR (low-energy nuclear transmutation)",
+        },
+    }
+
+    SSQ    = 0.57
+    RHO_UA = 7.09e-36
+
+    def compute(self, scenario: str = "metallic_hydride",
+                t: float = 0.0, n: int = 1) -> dict:
+        import math
+        sc = self.SCENARIOS.get(scenario, self.SCENARIOS["metallic_hydride"])
+        k_eta    = sc["k_eta"]
+        exp_ssq  = math.exp(-self.SSQ * n / 26.0)
+        Um_proxy = 1.0e-113
+        exp_pi_t = math.exp(-(math.pi - t) * Um_proxy / self.RHO_UA)
+        eta = k_eta * exp_ssq * exp_pi_t
+        result = {
+            "paper":      self.PAPER,
+            "cp4_index":  self.CP4_INDEX,
+            "scenario":   scenario,
+            "k_eta":      k_eta,
+            "n":          n,
+            "t":          t,
+            "exp_ssq":    exp_ssq,
+            "exp_pi_t":   exp_pi_t,
+            "eta_cm2s":   eta,
+            "eta_target": sc["eta_target"],
+            "E_field_Vm": sc.get("E_field_Vm"),
+            "primary_equation": (
+                "eta = k_eta * exp(-[SSq]*n/26) * exp(-(pi-t)*Um/rho_UA)"
+            ),
+            "note": "K_n document form calibration multiplier, NOT target eta (cf. PAPER_471)",
+        }
+        if "k_trans" in sc:
+            result["k_trans"] = sc["k_trans"]
+            result["channel"] = sc["channel"]
+        return result
+
+    def compare_scenarios(self) -> list:
+        return [{"scenario": s, **v} for s, v in self.SCENARIOS.items()]
+
+    def self_update(self): pass
+    def self_expand(self): pass
+
+
+# â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+# CP4 #319 â€” PAPER_735: U_g2 DPM Electron Shell Energy â€” Eshell = c*nu_res*h(fSCm)*Ggeo
+# â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+class Ug2ElectronShellEnergyCalculator:
+    """CP4 #319 â€” PAPER_735: U_g2 DPM Electron Shell Energy.
+
+    First explicit UQFF U_g2 equation for electron shell energy:
+        Eshell = c * nu_res * h(fSCm) * Ggeo
+
+    Variables:
+        c       = 2.998e8 m/s           (speed of light)
+        nu_res  ~ 1e12 Hz (THz)         (resonance frequency from U_g3 tagging)
+        h(fSCm) = fSCm * k_h  [eV]     (SCm-proportional energy; k_h calibrated to Bohr)
+        Ggeo    = sin(theta)            (spherical orbital geometry factor)
+        fSCm    = Z / Zmax              (DPM SCm fraction, Zmax = 1000)
+
+    Calibrated to hydrogen 1s ground state:
+        Z=1, Zmax=1000 -> fSCm = 0.001
+        theta = pi/2 -> Ggeo = 1
+        h(0.001) = 13.6 eV  ->  k_h = 13600 eV
+        Eshell(H, 1s) = 13.6 eV  [100% accuracy]
+
+    ACP context: U_g2 governs Step 5 of the 26-state Atomic Creation Process.
+    Complements HydrogenResonanceShellCalculator (CP2, temporal oscillation form).
+
+    Source   : thread_05June2025.txt line 38; June 5, 2025 Grok teaching session
+    Session  : 179 Part 3
+    """
+
+    PAPER     = 735
+    CP4_INDEX = 319
+
+    C         = 2.998e8
+    ZMAX      = 1000.0
+    K_H_EV    = 13600.0
+    NU_RES_HZ = 1.0e12
+
+    def compute(self, Z: int = 1, theta: float = 1.5707963,
+                nu_res: float = None) -> dict:
+        import math
+        if nu_res is None:
+            nu_res = self.NU_RES_HZ
+        f_SCm      = float(Z) / self.ZMAX
+        h_fSCm     = f_SCm * self.K_H_EV
+        G_geo      = math.sin(theta)
+        E_shell_eV = h_fSCm * G_geo
+        E_shell_raw = self.C * nu_res * h_fSCm * G_geo
+        return {
+            "paper":            self.PAPER,
+            "cp4_index":        self.CP4_INDEX,
+            "Z":                Z,
+            "f_SCm":            f_SCm,
+            "nu_res_Hz":        nu_res,
+            "h_fSCm_eV":        h_fSCm,
+            "G_geo":            G_geo,
+            "theta_rad":        theta,
+            "E_shell_eV":       E_shell_eV,
+            "E_shell_raw":      E_shell_raw,
+            "primary_equation": "Eshell = c * nu_res * h(fSCm) * Ggeo",
+            "variables": {
+                "h_formula":    "h(fSCm) = fSCm * k_h  [eV]",
+                "Ggeo_formula": "Ggeo = sin(theta)",
+                "fSCm_formula": "fSCm = Z / Zmax",
+            },
+            "note": (
+                "U_g2 DPM electron shell energy; calibrated to 13.6 eV at Z=1, theta=pi/2. "
+                "Complements HydrogenResonanceShellCalculator (CP2, temporal form). "
+                "nu_res from U_g3 THz tagging."
+            ),
+        }
+
+    def scan_elements(self, Z_range: range = None) -> list:
+        import math
+        if Z_range is None:
+            Z_range = range(1, 119)
+        return [
+            {"Z": Z, "E_shell_eV": self.compute(Z=Z, theta=math.pi / 2)["E_shell_eV"],
+             "f_SCm": float(Z) / self.ZMAX}
+            for Z in Z_range
+        ]
 
     def self_update(self): pass
     def self_expand(self): pass
