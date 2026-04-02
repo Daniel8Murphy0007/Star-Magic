@@ -52,6 +52,9 @@ cls_map = [
     (730, "UQFFKnowledgeBaseKB16"),
     # Session 177: PAPER_731
     (731, "NGC1316MergerEvolution"),
+    # Session 178: PAPER_732-733
+    (732, "TenAstroSystemsMUGE"),
+    (733, "EighteenAstroSystemsMUGE"),
 ]
 
 targets = (
