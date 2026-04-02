@@ -34,6 +34,22 @@ cls_map = [
     (713, "UQFFKnowledgeBaseKB19"),
     (714, "UQFFKnowledgeBaseKB18"),
     (715, "UQFFKnowledgeBaseKB17"),
+    # Session 176: PAPER_716-730
+    (716, "UQFFKnowledgeBaseKB1"),
+    (717, "UQFFKnowledgeBaseKB2"),
+    (718, "UQFFKnowledgeBaseKB3"),
+    (719, "UQFFKnowledgeBaseKB4"),
+    (720, "UQFFKnowledgeBaseKB5"),
+    (721, "UQFFKnowledgeBaseKB6"),
+    (722, "UQFFKnowledgeBaseKB8"),
+    (723, "UQFFKnowledgeBaseKB9"),
+    (724, "UQFFKnowledgeBaseKB10"),
+    (725, "UQFFKnowledgeBaseKB11"),
+    (726, "UQFFKnowledgeBaseKB12"),
+    (727, "UQFFKnowledgeBaseKB13"),
+    (728, "UQFFKnowledgeBaseKB14"),
+    (729, "UQFFKnowledgeBaseKB15"),
+    (730, "UQFFKnowledgeBaseKB16"),
 ]
 
 targets = (

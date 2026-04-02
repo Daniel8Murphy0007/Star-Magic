@@ -22829,3 +22829,745 @@ class UQFFKnowledgeBaseKB17(object):
     def self_update(self): pass
     def self_expand(self): pass
 
+
+
+class UQFFKnowledgeBaseKB2(object):
+    # PAPER_717: Red Dwarf Compression_E hydrogen pages 85-88 26-level quantum wave Earth-Moon tidal E_space
+
+    # UQFF universal constants
+    G       = 6.6743e-11
+    c       = 3.0e8
+    hbar    = 1.0546e-34
+    mu_0    = 1.2566e-6
+    k_B     = 1.3806e-23
+    M_sun   = 1.989e30
+    kpc     = 3.086e19
+    Mpc     = 3.086e22
+    rho_UA  = 7.09e-36
+    rho_SCm = 7.09e-37
+    f_TRZ   = 0.1
+    kappa   = 5.0e-4
+    SSq     = 0.57
+    mu_J    = 3.38e23
+    Lambda  = 1.1e-52
+    H_0     = 2.269e-18
+    t_H     = 4.35e17
+
+    def __init__(self, dataset=None):
+        self.dataset = dataset or {}
+        self.version = "Session176"
+
+    def compute(self, dataset=None):
+        d = dataset or self.dataset
+        return {
+            "paper":     "PAPER_717",
+            "cp4_entry": 301,
+            "class":     "UQFFKnowledgeBaseKB2",
+            "domain":    "Red Dwarf Compression_E hydrogen pages 85-88 26-level quantum wave Earth-Moon tidal E_space",
+            "equations": self._primary_equations(d),
+        }
+
+    def _primary_equations(self, d):
+        import math
+        return {
+            "G":           self.G,
+            "rho_UA":      self.rho_UA,
+            "rho_SCm":     self.rho_SCm,
+            "f_TRZ":       self.f_TRZ,
+            "SSq":         self.SSq,
+            "UQFF_factor": 1.0 + self.rho_SCm / self.rho_UA,
+            "E_react_0":   1e46 * math.exp(-self.kappa * d.get("t", 0.0)),
+        }
+
+    def self_update(self): pass
+    def self_expand(self): pass
+
+
+
+class UQFFKnowledgeBaseKB3(object):
+    # PAPER_718: Red Dwarf Compression_C LENR Higgs Pi Phi NGC 346 buoyancy neutron production rate
+
+    # UQFF universal constants
+    G       = 6.6743e-11
+    c       = 3.0e8
+    hbar    = 1.0546e-34
+    mu_0    = 1.2566e-6
+    k_B     = 1.3806e-23
+    M_sun   = 1.989e30
+    kpc     = 3.086e19
+    Mpc     = 3.086e22
+    rho_UA  = 7.09e-36
+    rho_SCm = 7.09e-37
+    f_TRZ   = 0.1
+    kappa   = 5.0e-4
+    SSq     = 0.57
+    mu_J    = 3.38e23
+    Lambda  = 1.1e-52
+    H_0     = 2.269e-18
+    t_H     = 4.35e17
+
+    def __init__(self, dataset=None):
+        self.dataset = dataset or {}
+        self.version = "Session176"
+
+    def compute(self, dataset=None):
+        d = dataset or self.dataset
+        return {
+            "paper":     "PAPER_718",
+            "cp4_entry": 302,
+            "class":     "UQFFKnowledgeBaseKB3",
+            "domain":    "Red Dwarf Compression_C LENR Higgs Pi Phi NGC 346 buoyancy neutron production rate",
+            "equations": self._primary_equations(d),
+        }
+
+    def _primary_equations(self, d):
+        import math
+        return {
+            "G":           self.G,
+            "rho_UA":      self.rho_UA,
+            "rho_SCm":     self.rho_SCm,
+            "f_TRZ":       self.f_TRZ,
+            "SSq":         self.SSq,
+            "UQFF_factor": 1.0 + self.rho_SCm / self.rho_UA,
+            "E_react_0":   1e46 * math.exp(-self.kappa * d.get("t", 0.0)),
+        }
+
+    def self_update(self): pass
+    def self_expand(self): pass
+
+
+
+class UQFFKnowledgeBaseKB4(object):
+    # PAPER_719: Red Dwarf Compression_B Drawing 32 nebular BH Drawing 33 shock star formation U_g4
+
+    # UQFF universal constants
+    G       = 6.6743e-11
+    c       = 3.0e8
+    hbar    = 1.0546e-34
+    mu_0    = 1.2566e-6
+    k_B     = 1.3806e-23
+    M_sun   = 1.989e30
+    kpc     = 3.086e19
+    Mpc     = 3.086e22
+    rho_UA  = 7.09e-36
+    rho_SCm = 7.09e-37
+    f_TRZ   = 0.1
+    kappa   = 5.0e-4
+    SSq     = 0.57
+    mu_J    = 3.38e23
+    Lambda  = 1.1e-52
+    H_0     = 2.269e-18
+    t_H     = 4.35e17
+
+    def __init__(self, dataset=None):
+        self.dataset = dataset or {}
+        self.version = "Session176"
+
+    def compute(self, dataset=None):
+        d = dataset or self.dataset
+        return {
+            "paper":     "PAPER_719",
+            "cp4_entry": 303,
+            "class":     "UQFFKnowledgeBaseKB4",
+            "domain":    "Red Dwarf Compression_B Drawing 32 nebular BH Drawing 33 shock star formation U_g4",
+            "equations": self._primary_equations(d),
+        }
+
+    def _primary_equations(self, d):
+        import math
+        return {
+            "G":           self.G,
+            "rho_UA":      self.rho_UA,
+            "rho_SCm":     self.rho_SCm,
+            "f_TRZ":       self.f_TRZ,
+            "SSq":         self.SSq,
+            "UQFF_factor": 1.0 + self.rho_SCm / self.rho_UA,
+            "E_react_0":   1e46 * math.exp(-self.kappa * d.get("t", 0.0)),
+        }
+
+    def self_update(self): pass
+    def self_expand(self): pass
+
+
+
+class UQFFKnowledgeBaseKB5(object):
+    # PAPER_720: Doc 43 Universal Permanence AGN feedback Final Parsec SMBH binary non-local jump
+
+    # UQFF universal constants
+    G       = 6.6743e-11
+    c       = 3.0e8
+    hbar    = 1.0546e-34
+    mu_0    = 1.2566e-6
+    k_B     = 1.3806e-23
+    M_sun   = 1.989e30
+    kpc     = 3.086e19
+    Mpc     = 3.086e22
+    rho_UA  = 7.09e-36
+    rho_SCm = 7.09e-37
+    f_TRZ   = 0.1
+    kappa   = 5.0e-4
+    SSq     = 0.57
+    mu_J    = 3.38e23
+    Lambda  = 1.1e-52
+    H_0     = 2.269e-18
+    t_H     = 4.35e17
+
+    def __init__(self, dataset=None):
+        self.dataset = dataset or {}
+        self.version = "Session176"
+
+    def compute(self, dataset=None):
+        d = dataset or self.dataset
+        return {
+            "paper":     "PAPER_720",
+            "cp4_entry": 304,
+            "class":     "UQFFKnowledgeBaseKB5",
+            "domain":    "Doc 43 Universal Permanence AGN feedback Final Parsec SMBH binary non-local jump",
+            "equations": self._primary_equations(d),
+        }
+
+    def _primary_equations(self, d):
+        import math
+        return {
+            "G":           self.G,
+            "rho_UA":      self.rho_UA,
+            "rho_SCm":     self.rho_SCm,
+            "f_TRZ":       self.f_TRZ,
+            "SSq":         self.SSq,
+            "UQFF_factor": 1.0 + self.rho_SCm / self.rho_UA,
+            "E_react_0":   1e46 * math.exp(-self.kappa * d.get("t", 0.0)),
+        }
+
+    def self_update(self): pass
+    def self_expand(self): pass
+
+
+
+class UQFFKnowledgeBaseKB6(object):
+    # PAPER_721: quantum variables r_j d_g F_U f_feedback Omega_g galactic spin magnetic string
+
+    # UQFF universal constants
+    G       = 6.6743e-11
+    c       = 3.0e8
+    hbar    = 1.0546e-34
+    mu_0    = 1.2566e-6
+    k_B     = 1.3806e-23
+    M_sun   = 1.989e30
+    kpc     = 3.086e19
+    Mpc     = 3.086e22
+    rho_UA  = 7.09e-36
+    rho_SCm = 7.09e-37
+    f_TRZ   = 0.1
+    kappa   = 5.0e-4
+    SSq     = 0.57
+    mu_J    = 3.38e23
+    Lambda  = 1.1e-52
+    H_0     = 2.269e-18
+    t_H     = 4.35e17
+
+    def __init__(self, dataset=None):
+        self.dataset = dataset or {}
+        self.version = "Session176"
+
+    def compute(self, dataset=None):
+        d = dataset or self.dataset
+        return {
+            "paper":     "PAPER_721",
+            "cp4_entry": 305,
+            "class":     "UQFFKnowledgeBaseKB6",
+            "domain":    "quantum variables r_j d_g F_U f_feedback Omega_g galactic spin magnetic string",
+            "equations": self._primary_equations(d),
+        }
+
+    def _primary_equations(self, d):
+        import math
+        return {
+            "G":           self.G,
+            "rho_UA":      self.rho_UA,
+            "rho_SCm":     self.rho_SCm,
+            "f_TRZ":       self.f_TRZ,
+            "SSq":         self.SSq,
+            "UQFF_factor": 1.0 + self.rho_SCm / self.rho_UA,
+            "E_react_0":   1e46 * math.exp(-self.kappa * d.get("t", 0.0)),
+        }
+
+    def self_update(self): pass
+    def self_expand(self): pass
+
+
+
+class UQFFKnowledgeBaseKB8(object):
+    # PAPER_722: quantum variables M_bh mu_j P_core t_n pi SMBH black hole quantum encoding
+
+    # UQFF universal constants
+    G       = 6.6743e-11
+    c       = 3.0e8
+    hbar    = 1.0546e-34
+    mu_0    = 1.2566e-6
+    k_B     = 1.3806e-23
+    M_sun   = 1.989e30
+    kpc     = 3.086e19
+    Mpc     = 3.086e22
+    rho_UA  = 7.09e-36
+    rho_SCm = 7.09e-37
+    f_TRZ   = 0.1
+    kappa   = 5.0e-4
+    SSq     = 0.57
+    mu_J    = 3.38e23
+    Lambda  = 1.1e-52
+    H_0     = 2.269e-18
+    t_H     = 4.35e17
+
+    def __init__(self, dataset=None):
+        self.dataset = dataset or {}
+        self.version = "Session176"
+
+    def compute(self, dataset=None):
+        d = dataset or self.dataset
+        return {
+            "paper":     "PAPER_722",
+            "cp4_entry": 306,
+            "class":     "UQFFKnowledgeBaseKB8",
+            "domain":    "quantum variables M_bh mu_j P_core t_n pi SMBH black hole quantum encoding",
+            "equations": self._primary_equations(d),
+        }
+
+    def _primary_equations(self, d):
+        import math
+        return {
+            "G":           self.G,
+            "rho_UA":      self.rho_UA,
+            "rho_SCm":     self.rho_SCm,
+            "f_TRZ":       self.f_TRZ,
+            "SSq":         self.SSq,
+            "UQFF_factor": 1.0 + self.rho_SCm / self.rho_UA,
+            "E_react_0":   1e46 * math.exp(-self.kappa * d.get("t", 0.0)),
+        }
+
+    def self_update(self): pass
+    def self_expand(self): pass
+
+
+
+class UQFFKnowledgeBaseKB9(object):
+    # PAPER_723: quantum variables gamma E_react f_quasi R_b buoyancy boundary decay rate
+
+    # UQFF universal constants
+    G       = 6.6743e-11
+    c       = 3.0e8
+    hbar    = 1.0546e-34
+    mu_0    = 1.2566e-6
+    k_B     = 1.3806e-23
+    M_sun   = 1.989e30
+    kpc     = 3.086e19
+    Mpc     = 3.086e22
+    rho_UA  = 7.09e-36
+    rho_SCm = 7.09e-37
+    f_TRZ   = 0.1
+    kappa   = 5.0e-4
+    SSq     = 0.57
+    mu_J    = 3.38e23
+    Lambda  = 1.1e-52
+    H_0     = 2.269e-18
+    t_H     = 4.35e17
+
+    def __init__(self, dataset=None):
+        self.dataset = dataset or {}
+        self.version = "Session176"
+
+    def compute(self, dataset=None):
+        d = dataset or self.dataset
+        return {
+            "paper":     "PAPER_723",
+            "cp4_entry": 307,
+            "class":     "UQFFKnowledgeBaseKB9",
+            "domain":    "quantum variables gamma E_react f_quasi R_b buoyancy boundary decay rate",
+            "equations": self._primary_equations(d),
+        }
+
+    def _primary_equations(self, d):
+        import math
+        return {
+            "G":           self.G,
+            "rho_UA":      self.rho_UA,
+            "rho_SCm":     self.rho_SCm,
+            "f_TRZ":       self.f_TRZ,
+            "SSq":         self.SSq,
+            "UQFF_factor": 1.0 + self.rho_SCm / self.rho_UA,
+            "E_react_0":   1e46 * math.exp(-self.kappa * d.get("t", 0.0)),
+        }
+
+    def self_update(self): pass
+    def self_expand(self): pass
+
+
+
+class UQFFKnowledgeBaseKB10(object):
+    # PAPER_724: quantum variables delta_sw kappa P_SCm v_sw omega_c THz superwave solar wind
+
+    # UQFF universal constants
+    G       = 6.6743e-11
+    c       = 3.0e8
+    hbar    = 1.0546e-34
+    mu_0    = 1.2566e-6
+    k_B     = 1.3806e-23
+    M_sun   = 1.989e30
+    kpc     = 3.086e19
+    Mpc     = 3.086e22
+    rho_UA  = 7.09e-36
+    rho_SCm = 7.09e-37
+    f_TRZ   = 0.1
+    kappa   = 5.0e-4
+    SSq     = 0.57
+    mu_J    = 3.38e23
+    Lambda  = 1.1e-52
+    H_0     = 2.269e-18
+    t_H     = 4.35e17
+
+    def __init__(self, dataset=None):
+        self.dataset = dataset or {}
+        self.version = "Session176"
+
+    def compute(self, dataset=None):
+        d = dataset or self.dataset
+        return {
+            "paper":     "PAPER_724",
+            "cp4_entry": 308,
+            "class":     "UQFFKnowledgeBaseKB10",
+            "domain":    "quantum variables delta_sw kappa P_SCm v_sw omega_c THz superwave solar wind",
+            "equations": self._primary_equations(d),
+        }
+
+    def _primary_equations(self, d):
+        import math
+        return {
+            "G":           self.G,
+            "rho_UA":      self.rho_UA,
+            "rho_SCm":     self.rho_SCm,
+            "f_TRZ":       self.f_TRZ,
+            "SSq":         self.SSq,
+            "UQFF_factor": 1.0 + self.rho_SCm / self.rho_UA,
+            "E_react_0":   1e46 * math.exp(-self.kappa * d.get("t", 0.0)),
+        }
+
+    def self_update(self): pass
+    def self_expand(self): pass
+
+
+
+class UQFFKnowledgeBaseKB11(object):
+    # PAPER_725: quantum variables S T_s_munu M_s omega_s B_s stellar spin stress-energy tensor
+
+    # UQFF universal constants
+    G       = 6.6743e-11
+    c       = 3.0e8
+    hbar    = 1.0546e-34
+    mu_0    = 1.2566e-6
+    k_B     = 1.3806e-23
+    M_sun   = 1.989e30
+    kpc     = 3.086e19
+    Mpc     = 3.086e22
+    rho_UA  = 7.09e-36
+    rho_SCm = 7.09e-37
+    f_TRZ   = 0.1
+    kappa   = 5.0e-4
+    SSq     = 0.57
+    mu_J    = 3.38e23
+    Lambda  = 1.1e-52
+    H_0     = 2.269e-18
+    t_H     = 4.35e17
+
+    def __init__(self, dataset=None):
+        self.dataset = dataset or {}
+        self.version = "Session176"
+
+    def compute(self, dataset=None):
+        d = dataset or self.dataset
+        return {
+            "paper":     "PAPER_725",
+            "cp4_entry": 309,
+            "class":     "UQFFKnowledgeBaseKB11",
+            "domain":    "quantum variables S T_s_munu M_s omega_s B_s stellar spin stress-energy tensor",
+            "equations": self._primary_equations(d),
+        }
+
+    def _primary_equations(self, d):
+        import math
+        return {
+            "G":           self.G,
+            "rho_UA":      self.rho_UA,
+            "rho_SCm":     self.rho_SCm,
+            "f_TRZ":       self.f_TRZ,
+            "SSq":         self.SSq,
+            "UQFF_factor": 1.0 + self.rho_SCm / self.rho_UA,
+            "E_react_0":   1e46 * math.exp(-self.kappa * d.get("t", 0.0)),
+        }
+
+    def self_update(self): pass
+    def self_expand(self): pass
+
+
+
+class UQFFKnowledgeBaseKB12(object):
+    # PAPER_726: quantum variables delta_def f_TRZ T_s phi_j TRZ negentropic metric deformation
+
+    # UQFF universal constants
+    G       = 6.6743e-11
+    c       = 3.0e8
+    hbar    = 1.0546e-34
+    mu_0    = 1.2566e-6
+    k_B     = 1.3806e-23
+    M_sun   = 1.989e30
+    kpc     = 3.086e19
+    Mpc     = 3.086e22
+    rho_UA  = 7.09e-36
+    rho_SCm = 7.09e-37
+    f_TRZ   = 0.1
+    kappa   = 5.0e-4
+    SSq     = 0.57
+    mu_J    = 3.38e23
+    Lambda  = 1.1e-52
+    H_0     = 2.269e-18
+    t_H     = 4.35e17
+
+    def __init__(self, dataset=None):
+        self.dataset = dataset or {}
+        self.version = "Session176"
+
+    def compute(self, dataset=None):
+        d = dataset or self.dataset
+        return {
+            "paper":     "PAPER_726",
+            "cp4_entry": 310,
+            "class":     "UQFFKnowledgeBaseKB12",
+            "domain":    "quantum variables delta_def f_TRZ T_s phi_j TRZ negentropic metric deformation",
+            "equations": self._primary_equations(d),
+        }
+
+    def _primary_equations(self, d):
+        import math
+        return {
+            "G":           self.G,
+            "rho_UA":      self.rho_UA,
+            "rho_SCm":     self.rho_SCm,
+            "f_TRZ":       self.f_TRZ,
+            "SSq":         self.SSq,
+            "UQFF_factor": 1.0 + self.rho_SCm / self.rho_UA,
+            "E_react_0":   1e46 * math.exp(-self.kappa * d.get("t", 0.0)),
+        }
+
+    def self_update(self): pass
+    def self_expand(self): pass
+
+
+
+class UQFFKnowledgeBaseKB13(object):
+    # PAPER_727: quantum variables rho_vac_UA rho_vac_Ui v_SCm rho_vac_SCm vacuum energy densities
+
+    # UQFF universal constants
+    G       = 6.6743e-11
+    c       = 3.0e8
+    hbar    = 1.0546e-34
+    mu_0    = 1.2566e-6
+    k_B     = 1.3806e-23
+    M_sun   = 1.989e30
+    kpc     = 3.086e19
+    Mpc     = 3.086e22
+    rho_UA  = 7.09e-36
+    rho_SCm = 7.09e-37
+    f_TRZ   = 0.1
+    kappa   = 5.0e-4
+    SSq     = 0.57
+    mu_J    = 3.38e23
+    Lambda  = 1.1e-52
+    H_0     = 2.269e-18
+    t_H     = 4.35e17
+
+    def __init__(self, dataset=None):
+        self.dataset = dataset or {}
+        self.version = "Session176"
+
+    def compute(self, dataset=None):
+        d = dataset or self.dataset
+        return {
+            "paper":     "PAPER_727",
+            "cp4_entry": 311,
+            "class":     "UQFFKnowledgeBaseKB13",
+            "domain":    "quantum variables rho_vac_UA rho_vac_Ui v_SCm rho_vac_SCm vacuum energy densities",
+            "equations": self._primary_equations(d),
+        }
+
+    def _primary_equations(self, d):
+        import math
+        return {
+            "G":           self.G,
+            "rho_UA":      self.rho_UA,
+            "rho_SCm":     self.rho_SCm,
+            "f_TRZ":       self.f_TRZ,
+            "SSq":         self.SSq,
+            "UQFF_factor": 1.0 + self.rho_SCm / self.rho_UA,
+            "E_react_0":   1e46 * math.exp(-self.kappa * d.get("t", 0.0)),
+        }
+
+    def self_update(self): pass
+    def self_expand(self): pass
+
+
+
+class UQFFKnowledgeBaseKB14(object):
+    # PAPER_728: THz signals 1-10 q-scope ACE DCE reversing flow f_TRZ Ug1 thread Earth core resonance
+
+    # UQFF universal constants
+    G       = 6.6743e-11
+    c       = 3.0e8
+    hbar    = 1.0546e-34
+    mu_0    = 1.2566e-6
+    k_B     = 1.3806e-23
+    M_sun   = 1.989e30
+    kpc     = 3.086e19
+    Mpc     = 3.086e22
+    rho_UA  = 7.09e-36
+    rho_SCm = 7.09e-37
+    f_TRZ   = 0.1
+    kappa   = 5.0e-4
+    SSq     = 0.57
+    mu_J    = 3.38e23
+    Lambda  = 1.1e-52
+    H_0     = 2.269e-18
+    t_H     = 4.35e17
+
+    def __init__(self, dataset=None):
+        self.dataset = dataset or {}
+        self.version = "Session176"
+
+    def compute(self, dataset=None):
+        d = dataset or self.dataset
+        return {
+            "paper":     "PAPER_728",
+            "cp4_entry": 312,
+            "class":     "UQFFKnowledgeBaseKB14",
+            "domain":    "THz signals 1-10 q-scope ACE DCE reversing flow f_TRZ Ug1 thread Earth core resonance",
+            "equations": self._primary_equations(d),
+        }
+
+    def _primary_equations(self, d):
+        import math
+        return {
+            "G":           self.G,
+            "rho_UA":      self.rho_UA,
+            "rho_SCm":     self.rho_SCm,
+            "f_TRZ":       self.f_TRZ,
+            "SSq":         self.SSq,
+            "UQFF_factor": 1.0 + self.rho_SCm / self.rho_UA,
+            "E_react_0":   1e46 * math.exp(-self.kappa * d.get("t", 0.0)),
+        }
+
+    def self_update(self): pass
+    def self_expand(self): pass
+
+
+
+class UQFFKnowledgeBaseKB15(object):
+    # PAPER_729: THz signals 11-20 q-scope ACE DCE reversing flow cyclic inversion 1.246 THz
+
+    # UQFF universal constants
+    G       = 6.6743e-11
+    c       = 3.0e8
+    hbar    = 1.0546e-34
+    mu_0    = 1.2566e-6
+    k_B     = 1.3806e-23
+    M_sun   = 1.989e30
+    kpc     = 3.086e19
+    Mpc     = 3.086e22
+    rho_UA  = 7.09e-36
+    rho_SCm = 7.09e-37
+    f_TRZ   = 0.1
+    kappa   = 5.0e-4
+    SSq     = 0.57
+    mu_J    = 3.38e23
+    Lambda  = 1.1e-52
+    H_0     = 2.269e-18
+    t_H     = 4.35e17
+
+    def __init__(self, dataset=None):
+        self.dataset = dataset or {}
+        self.version = "Session176"
+
+    def compute(self, dataset=None):
+        d = dataset or self.dataset
+        return {
+            "paper":     "PAPER_729",
+            "cp4_entry": 313,
+            "class":     "UQFFKnowledgeBaseKB15",
+            "domain":    "THz signals 11-20 q-scope ACE DCE reversing flow cyclic inversion 1.246 THz",
+            "equations": self._primary_equations(d),
+        }
+
+    def _primary_equations(self, d):
+        import math
+        return {
+            "G":           self.G,
+            "rho_UA":      self.rho_UA,
+            "rho_SCm":     self.rho_SCm,
+            "f_TRZ":       self.f_TRZ,
+            "SSq":         self.SSq,
+            "UQFF_factor": 1.0 + self.rho_SCm / self.rho_UA,
+            "E_react_0":   1e46 * math.exp(-self.kappa * d.get("t", 0.0)),
+        }
+
+    def self_update(self): pass
+    def self_expand(self): pass
+
+
+
+class UQFFKnowledgeBaseKB16(object):
+    # PAPER_730: THz signals 21-30 q-scope 1.246 THz Earth core resonance U_bi buoyancy 30-signal set
+
+    # UQFF universal constants
+    G       = 6.6743e-11
+    c       = 3.0e8
+    hbar    = 1.0546e-34
+    mu_0    = 1.2566e-6
+    k_B     = 1.3806e-23
+    M_sun   = 1.989e30
+    kpc     = 3.086e19
+    Mpc     = 3.086e22
+    rho_UA  = 7.09e-36
+    rho_SCm = 7.09e-37
+    f_TRZ   = 0.1
+    kappa   = 5.0e-4
+    SSq     = 0.57
+    mu_J    = 3.38e23
+    Lambda  = 1.1e-52
+    H_0     = 2.269e-18
+    t_H     = 4.35e17
+
+    def __init__(self, dataset=None):
+        self.dataset = dataset or {}
+        self.version = "Session176"
+
+    def compute(self, dataset=None):
+        d = dataset or self.dataset
+        return {
+            "paper":     "PAPER_730",
+            "cp4_entry": 314,
+            "class":     "UQFFKnowledgeBaseKB16",
+            "domain":    "THz signals 21-30 q-scope 1.246 THz Earth core resonance U_bi buoyancy 30-signal set",
+            "equations": self._primary_equations(d),
+        }
+
+    def _primary_equations(self, d):
+        import math
+        return {
+            "G":           self.G,
+            "rho_UA":      self.rho_UA,
+            "rho_SCm":     self.rho_SCm,
+            "f_TRZ":       self.f_TRZ,
+            "SSq":         self.SSq,
+            "UQFF_factor": 1.0 + self.rho_SCm / self.rho_UA,
+            "E_react_0":   1e46 * math.exp(-self.kappa * d.get("t", 0.0)),
+        }
+
+    def self_update(self): pass
+    def self_expand(self): pass
+
