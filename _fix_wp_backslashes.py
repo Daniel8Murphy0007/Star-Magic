@@ -50,6 +50,8 @@ cls_map = [
     (728, "UQFFKnowledgeBaseKB14"),
     (729, "UQFFKnowledgeBaseKB15"),
     (730, "UQFFKnowledgeBaseKB16"),
+    # Session 177: PAPER_731
+    (731, "NGC1316MergerEvolution"),
 ]
 
 targets = (
