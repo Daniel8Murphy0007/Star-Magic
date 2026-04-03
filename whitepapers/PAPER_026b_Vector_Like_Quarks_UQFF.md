@@ -258,7 +258,7 @@ The ATLAS Run 2 VLQ search (arXiv:2506.15515) constrains the mixing coupling ? ?
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
-| κ | 5.0e-4 day⁻¹ | UQFF exponential decay rate |
+| κ | 5.0 × 10⁻⁴ day⁻¹ | UQFF exponential decay rate |
 | [SSq] | 0.57 | Universal Quantized Factor |
 | β_i | 0.60–0.61 | Buoyancy coupling coefficient |
 | k₁ | 1.5 | Ug1 DPM-dipole coupling |
@@ -287,9 +287,7 @@ $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}igl[\l
 
 ### A.3 Um Heaviside Phase-Transition Amplifier (PAPER_421)
 
-$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} 	imes igl(1 + 10^{13}\,\Theta(
-ho_{SCm} - 
-ho_c)igr) 	imes igl(1 + A_q\cos(\Delta\omega\,t)igr)$$
+$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} 	imes igl(1 + 10^{13}\,\Theta(ho_{SCm} - ho_c)igr) 	imes igl(1 + A_q\cos(\Delta\omega\,t)igr)$$
 
 | Symbol | Value | Description |
 |--------|-------|-------------|

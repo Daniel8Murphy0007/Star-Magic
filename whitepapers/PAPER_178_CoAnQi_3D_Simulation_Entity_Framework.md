@@ -1,9 +1,4 @@
 ﻿# PAPER_178: CoAnQi 3D Simulation Entity Framework
-
-## Abstract
-
-This paper presents a UQFF analysis of astrophysical observables, deriving compressed field equations and observational predictions within the Star-Magic/UQFF framework.
-
 ## OBJ I/O, Skeletal Animation, and Procedural Landscape
 ## Whitepaper §2.4-J | Thread 381a8fe7 | Session 48
 
@@ -246,6 +241,3 @@ class MainWindow(QMainWindow):
 - CoAnQiNode.py (thread 381a8fe7)
 - PAPER_169 (CoAnQi architecture placing 3D in tier context)
 - PAPER_177 (FluidSolver that runs inside SimulationEntity context)
-
-
-> **Key UQFF calibrated constants:** κ = 5.0e-4 day⁻¹; [SSq] = 5.7e-1; H_SCm ≈ 9.9e-1; U_UA ≈ 1.0e-4; k_η = 1.0e-113; β_i ≈ 6.0e-1; G = 6.674e-11 N·m²/kg²

@@ -120,7 +120,7 @@ Each of the 26 states i contributes 4 cosine resonance components:
 
 | Sub-term | Physical Origin | Frequency Scale |
 |----------|----------------|----------------|
-| R_U_g1,i · cos(?_U_g1,i t) | Magnetic dipole resonance | f_super = 1.411e16 Hz at i=1 |
+| R_U_g1,i · cos(?_U_g1,i t) | Magnetic dipole resonance | f_super = 1.411×10¹6 Hz at i=1 |
 | R_U_g2,i · cos(?_U_g2,i t) | Charge-reactivity resonance | f_react = 10¹° Hz at i=1 |
 | R_U_g3,i · cos(?_U_g3,i t) | String rotation resonance | f_THz = 10¹² Hz at i=1 |
 | R_U_g4i,i · cos(?_U_g4i,i t) | Vacuum concentration resonance | f_quantum = 1.445×10?¹7 Hz at i=1 |

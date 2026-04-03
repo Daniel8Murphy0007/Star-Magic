@@ -12,9 +12,6 @@
 
 ## Abstract
 
-> **Key UQFF calibrated constants:** κ = 5.0e-4 day⁻¹; [SSq] = 5.7e-1; H_SCm ≈ 9.9e-1; U_UA ≈ 1.0e-4; k_η = 1.0e-113; β_i ≈ 6.0e-1; G = 6.674e-11 N·m²/kg²
-
-
 This paper documents the UQFF Learning Assessment Evolution_B module, the ninth in a series of 500+ UQFF code files. Unlike all preceding modules (which target specific astrophysical objects), this is the first **framework-level meta-assessment calculator** in the CP1/CP2/CP3 pipeline. It computes a structured advancement score aggregating three orthogonal metrics: physical regime diversity, dynamical term novelty, and framework scalability. The advancement formula is:
 
 $$\text{advancement} = \frac{\text{diversity\_score} + \text{dynamic\_score} + \text{scalability\_score}}{3.0} \times 100\%$$

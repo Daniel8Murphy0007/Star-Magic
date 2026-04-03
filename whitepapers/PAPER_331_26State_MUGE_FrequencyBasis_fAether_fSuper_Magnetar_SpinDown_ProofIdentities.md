@@ -39,7 +39,7 @@ Each state i contributes 7 frequency-weighted accelerations:
 |---------|--------|-----------------|------|----------------|
 | DPM | a_DPM,i | f_DPM = 1.863×10?84/2p | m/s²/state | Dark Photon Momentum baseline |
 | THz | a_THz,i | f_THz = 10¹² | Hz | Terahertz vacuum resonance |
-| Super | a_super,i | f_super = 1.411e16 | Hz | Superconductive Cooper pair |
+| Super | a_super,i | f_super = 1.411×10¹6 | Hz | Superconductive Cooper pair |
 | Fluid | a_fluid,i | f_fluid = 1.269×10?¹4 (magnetar) | Hz | Fluid/turbulent gravity |
 |       |          | = 3.465×10?8 (Sgr A*) | Hz | |
 | Aether | a_aether,i | f_aether = 1.576×10?³5 | Hz | Aether vacuum (replaces ?) |
@@ -87,7 +87,7 @@ For SGR1745-2900: P = 3.76 s, f_react = 10¹° Hz:
 v_orb = v(GM / r) · f_res
 ```
 
-For Sgr A*: M = 4×106 M_sun, r_accretion ~ 9.46e14 m:
+For Sgr A*: M = 4×106 M_sun, r_accretion ~ 9.46×10¹4 m:
 ```
 v_Kep = v(G?/r) ~ 5.0×106 m/s   [JWST/Chandra observed: ~5e6 m/s ?]
 ? f_res sets the resonant scale for orbital quantization
@@ -132,7 +132,7 @@ t_erosion = r / v_evap · f_res
 ```
 
 Pillars of Creation:
-- r ~ 4 ly = 3.78e16 m, v_evap ~ 10³ m/s
+- r ~ 4 ly = 3.78×10¹6 m, v_evap ~ 10³ m/s
 - t_erosion ~ t_photo-evap ~ 20 kyr ? f_res ˜ (r/v_evap)/t
 
 ---
@@ -149,7 +149,7 @@ f_TRZ     = ~10?6 Hz          [time-reversal zone: f ˜ 1/t_outburst]
 f_DPM     = 1.863×10?84/2p   [dark photon momentum: ultralow seeding frequency]
 f_react   = 10¹° Hz            [reactive coupling: magnetar ?? calibration]
 f_THz     = 10¹²  Hz           [THz vacuum resonance: Cooper gap scale]
-f_super   = 1.411e16 Hz     [superconductive: Bloch oscillation scale]
+f_super   = 1.411×10¹6 Hz     [superconductive: Bloch oscillation scale]
 ```
 
 ### 4.1 f_aether as Cosmological Constant Replacement

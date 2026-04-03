@@ -16,9 +16,6 @@ $$
 
 ## Abstract
 
-> **Key UQFF calibrated constants:** κ = 5.0e-4 day⁻¹; [SSq] = 5.7e-1; H_SCm ≈ 9.9e-1; U_UA ≈ 1.0e-4; k_η = 1.0e-113; β_i ≈ 6.0e-1; G = 6.674e-11 N·m²/kg²
-
-
 Gravity in the MUGE framework is not a static field — it supports oscillatory modes that arise from the interference of inward- and outward-propagating gravitational perturbations. This paper establishes the **dual-mode oscillatory gravity sub-term** (`g_osc`), which is the superposition of two distinct wave modes: a standing wave and a Hubble-normalised traveling wave.
 
 Mode 1 (standing wave): `g_osc1 = 2A·cos(kx)·cos(?t)` — the classic interference pattern of two equal-amplitude counter-propagating waves. Mode 2 (traveling wave): `g_osc2 = (2p/T_H_gyr)·A·cos(kx - ?t)` — a unidirectional propagating disturbance whose amplitude is suppressed by the inverse Hubble time in gigayears, `(2p/T_H_gyr)`, connecting gravitational oscillations to the cosmological expansion rate.

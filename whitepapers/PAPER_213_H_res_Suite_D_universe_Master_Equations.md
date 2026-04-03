@@ -76,8 +76,8 @@ Numerically for 56Fe (most stable nucleus):
         ˜ 2.7 N/m
   I = (2/5) × 55.85 × 1.66×10?²7 × (5×10?¹5)²
     ˜ 9.3×10?55 kg·m²
-  ?_res ˜ v(2.7/9.3×10?55) ˜ v(2.9×1054) ˜ 1.7e27 rad/s
-  Note: This is the nuclear ground-state resonance; f = ?/2p ˜ 2.7e26 Hz
+  ?_res ˜ v(2.7/9.3×10?55) ˜ v(2.9×1054) ˜ 1.7×10²7 rad/s
+  Note: This is the nuclear ground-state resonance; f = ?/2p ˜ 2.7×10²6 Hz
 ```
 
 ### Sub-Equation 3: Resonance Phase f_res
@@ -120,7 +120,7 @@ where:
 
 For neutron star crust:
   T_cc ˜ 108–10? K  (neutron Cooper pair critical temperature)
-  B_c2 ˜ B_crit = 4.4e13 T  (QED critical field)
+  B_c2 ˜ B_crit = 4.4×10¹³ T  (QED critical field)
   T_NS ˜ 108 K ? tanh(1) ˜ 0.76
   B_magnetar ˜ 10¹5 T >> B_c2 ? (1 - (B/B_c2)²) ? negative ? [SCm] < 0
   ? Superconduction suppressed above B_c2 ? UQFF predicts reversed buoyancy
@@ -242,7 +242,7 @@ h quantum correction to D_universe:
   uncertainty: v(?x?p) ~ h (minimum uncertainty)
   ? (h/h) × (2p/t_Hubble)/(c·H0) = (2p/t_Hubble²) × small
   
-  Numerically: 2p/(4.35e17 s)² × 1/(c·H0)
+  Numerically: 2p/(4.35×10¹7 s)² × 1/(c·H0)
   = 1.44×10?¹7 / (3×108 × 2.18×10?¹8) ˜ 1.44×10?¹7 / 6.54×10?¹° ˜ 2.2×10?8
 
   ?D_u = 2.2×10?8 × 93 Gly ˜ 2000 ly correction

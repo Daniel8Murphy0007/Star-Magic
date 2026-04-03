@@ -16,9 +16,6 @@ $$
 
 ## Abstract
 
-> **Key UQFF calibrated constants:** κ = 5.0e-4 day⁻¹; [SSq] = 5.7e-1; H_SCm ≈ 9.9e-1; U_UA ≈ 1.0e-4; k_η = 1.0e-113; β_i ≈ 6.0e-1; G = 6.674e-11 N·m²/kg²
-
-
 This paper documents the complete software architecture of the S-C (Scientific Calculator) Iteration 40, a standalone Qt5-based multi-modal scientific computing environment. The architecture integrates 50+ external libraries spanning: ANTLR4 grammar parsing, SymEngine computer algebra, Eigen linear algebra, TFLite/libtorch machine learning, libsnark zero-knowledge proofs, MPI distributed computing, Qiskit/Cirq quantum simulation, LLVM JIT compilation, Lua scripting, pybind11 Python embedding, VTK 3D visualization, libgit2 version control, pocketsphinx voice recognition, and blockchain transaction support. This represents the most technologically complex component of the Star-Magic ecosystem and constitutes a novel reference implementation for multi-paradigm scientific computing in C++/Qt5.
 
 ---

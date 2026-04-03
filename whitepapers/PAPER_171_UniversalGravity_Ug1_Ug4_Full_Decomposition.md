@@ -1,9 +1,4 @@
 ﻿# PAPER_171: Universal Gravity Ug1–Ug4 Full Decomposition
-
-## Abstract
-
-This paper presents a UQFF analysis of astrophysical observables, deriving compressed field equations and observational predictions within the Star-Magic/UQFF framework.
-
 ## DPM, Heliosphere, Magnetic String Disk, and Star–Black Hole Interaction
 ## Whitepaper §2.4-C | Thread 381a8fe7 | Session 48
 

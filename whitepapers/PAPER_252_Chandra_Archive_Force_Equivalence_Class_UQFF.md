@@ -18,7 +18,7 @@ $$
 
 The Chandra X-ray Observatory has been operational since 1999, accumulating a 25-year archive of multi-epoch observations spanning some of the most physically diverse astrophysical environments in the local Universe. This paper presents the UQFF integral for a composite Chandra dataset encompassing SN 1987A, Eta Carinae, and the Helix Nebula — three systems spanning 4 orders of magnitude in X-ray luminosity (L_X ? [10³¹, 10³5] W), 3 orders in gas temperature (T ? [104, 106] K), and 3 orders in gas density (? ? [10?²³, 10?²°] kg/m³).
 
-The key **uniquely rare discovery** of this paper is the **Force Equivalence Class**: despite the extreme diversity of physical parameters across these three systems, all share ?0 ˜ 10?¹² rad/s and all produce F_U_Bi ˜ +2.11e2°8 N. The averaged Chandra composite also reproduces this class member, demonstrating that the equivalence is robust to dataset averaging across physically heterogeneous systems.
+The key **uniquely rare discovery** of this paper is the **Force Equivalence Class**: despite the extreme diversity of physical parameters across these three systems, all share ?0 ˜ 10?¹² rad/s and all produce F_U_Bi ˜ +2.11 × 10²°8 N. The averaged Chandra composite also reproduces this class member, demonstrating that the equivalence is robust to dataset averaging across physically heterogeneous systems.
 
 This confirms the Force Equivalence Class established in PAPER_250 (SN 1006) and PAPER_251 (Eta Carinae): **?0 alone gates the UQFF buoyancy sector.** Mass, luminosity, temperature, density, and age are all irrelevant to F_U_Bi within an equivalence class. The class is fully characterised by its frequency — a new conservation law unique to UQFF physics.
 
@@ -34,7 +34,7 @@ This confirms the Force Equivalence Class established in PAPER_250 (SN 1006) and
 | **Composite average** | 10³³ (geometric mean) | ~105 | ~10?²¹ | ~3 Myr |
 
 Shared parameter: **?0 = 10?¹² rad/s** for all three systems (canonical low-frequency class).
-Composite time baseline: archive span 1999–2023 CE ? t = 3.156e14 s (~10 Myr equivalent).
+Composite time baseline: archive span 1999–2023 CE ? t = 3.156 × 10¹4 s (~10 Myr equivalent).
 
 ---
 
@@ -45,17 +45,17 @@ Composite time baseline: archive span 1999–2023 CE ? t = 3.156e14 s (~10 Myr e
 The dominant F_U_Bi integrand term F_LENR:
 ```
 F_LENR = k_LENR × (?_LENR / ?0)²  [independent of L_X, M, T, ?]
-       = 6.17e3? N   for all three systems
+       = 6.17 × 10³? N   for all three systems
 ```
 
 The corresponding F_DE = k_DE × L_X varies from 10 N (Helix) to 105 N (Eta Car) — a 4-decade range. Yet the F_LENR/F_DE ratio ranges from 6×10³4 to 6×10³8, confirming F_DE is negligible in all cases.
 
 **Equivalence demonstration:**
 ```
-F_U_Bi(SN 1987A,  L_X=10³¹) ˜ +2.11e2°8 N
-F_U_Bi(Eta Car,   L_X=10³5) ˜ +2.11e2°8 N
-F_U_Bi(Helix,     L_X=10³¹) ˜ +2.11e2°8 N
-F_U_Bi(composite, L_X=10³³) ˜ +2.11e2°8 N   [averaging preserves class]
+F_U_Bi(SN 1987A,  L_X=10³¹) ˜ +2.11×10²°8 N
+F_U_Bi(Eta Car,   L_X=10³5) ˜ +2.11×10²°8 N
+F_U_Bi(Helix,     L_X=10³¹) ˜ +2.11×10²°8 N
+F_U_Bi(composite, L_X=10³³) ˜ +2.11×10²°8 N   [averaging preserves class]
 ```
 
 ### 2.2 Equivalence Class Formal Definition
@@ -67,7 +67,7 @@ F[system] = F_U_Bi(M, r, L_X, B0, ?, T, t | ?0)
 
 **Equivalence Class [?0]:** Two systems S1 and S2 belong to the same UQFF equivalence class if and only if `?0(S1) = ?0(S2)`, in which case `F[S1] = F[S2]` regardless of all other parameters.
 
-For the ?0 = 10?¹² class: `F = +2.11e2°8 N`. This is a conserved quantity of the buoyancy sector in UQFF.
+For the ?0 = 10?¹² class: `F = +2.11 × 10²°8 N`. This is a conserved quantity of the buoyancy sector in UQFF.
 
 ### 2.3 Averaging Robustness
 
@@ -90,7 +90,7 @@ oscillates at ?_act = 2p × 300 Hz — sub-microsecond period. For any astrophys
 
 ## 3. Force Equivalence Conservation Theorem
 
-**Theorem (UQFF Force Equivalence Class):** The F_U_Bi buoyancy force functional defines equivalence classes on the space of astrophysical systems. Within each class, F_U_Bi is a conserved topological invariant determined solely by ?0. The ?0 = 10?¹² class has invariant value +2.11e2°8 N, confirmed by five independent systems across 4 decades in luminosity, 3 decades in density, and 4 decades in age.
+**Theorem (UQFF Force Equivalence Class):** The F_U_Bi buoyancy force functional defines equivalence classes on the space of astrophysical systems. Within each class, F_U_Bi is a conserved topological invariant determined solely by ?0. The ?0 = 10?¹² class has invariant value +2.11 × 10²°8 N, confirmed by five independent systems across 4 decades in luminosity, 3 decades in density, and 4 decades in age.
 
 **Corollary (Averaging Preservation):** The force equivalence class is preserved under dataset averaging. Any weighted average of systems within a class produces a composite system also in the same class.
 
@@ -98,7 +98,7 @@ oscillates at ?_act = 2p × 300 Hz — sub-microsecond period. For any astrophys
 
 ## 4. Observational Predictions / Validation
 
-- **Chandra survey prediction:** Any Chandra-detected source with characteristic frequency ?0 ˜ 10?¹² rad/s (identifiable from its orbital period, rotation period, or resonance features) should yield F_U_Bi ˜ +2.11e2°8 N. This provides a falsifiable prediction testable against the full Chandra Source Catalog (~300,000 sources).
+- **Chandra survey prediction:** Any Chandra-detected source with characteristic frequency ?0 ˜ 10?¹² rad/s (identifiable from its orbital period, rotation period, or resonance features) should yield F_U_Bi ˜ +2.11 × 10²°8 N. This provides a falsifiable prediction testable against the full Chandra Source Catalog (~300,000 sources).
 - **L_X sensitivity test:** Vary L_X from 10²8 to 10³8 W at fixed ?0 = 10?¹². UQFF predicts F_U_Bi constant across this 10-decade range — a direct test of LENR dominance.
 - **Temperature/density probe:** UQFF predicts that varying T, ? while holding ?0 fixed produces no change in F_U_Bi. Chandra multi-temperature spectral fits combined with UQFF processing can validate this within a single source's multi-epoch data.
 

@@ -84,7 +84,7 @@ UQFF BTFR: v_flat ? (G·M_b·k_UA·[UA])^{1/4}  — identical structure to MOND
 Observed phenomenon:
   Bullet Cluster: hot gas (baryonic) separated from mass (lensing map)
   Mass from lensing: M_lensing ˜ 3×10¹4 M_?
-  Baryon mass (gas + stars): M_b ˜ 1.5e14 M_?
+  Baryon mass (gas + stars): M_b ˜ 1.5×10¹4 M_?
   Discrepancy: M_lensing/M_b ˜ 2×  (factor 2 missing mass)
 
 MOND prediction for Bullet Cluster:
@@ -111,7 +111,7 @@ F_UBii,vir:
 
 Effective UQFF mass for clusters:
   M_eff = M_visible + ?M_UBii,vir + ?M_UBii,ps
-  For Bullet Cluster: ?M_UBii ˜ 1.5e14 M_? ? M_eff ˜ 3×10¹4 M_? ?
+  For Bullet Cluster: ?M_UBii ˜ 1.5×10¹4 M_? ? M_eff ˜ 3×10¹4 M_? ?
 
 UQFF cluster fit: ?²/N ˜ 1.5 (good)
 Comparison: MOND ?²/N ˜ 3–10, CDM ?²/N ˜ 1.2–2.0

@@ -55,7 +55,7 @@ f_res = (E_bind / h) · (A_H / A) · (1 + S_shell)
 | A_H/A | hydrogen mass ratio | Inverse mass scaling |
 | S_shell | 0.1·(Z_magic + N_magic) | Shell correction |
 
-At Z=1, A=1 (hydrogen): f_res = E_bind/h ˜ 2.23 MeV/(h) ˜ 5.40e2° Hz × S_shell_H
+At Z=1, A=1 (hydrogen): f_res = E_bind/h ˜ 2.23 MeV/(h) ˜ 5.40×10²° Hz × S_shell_H
 
 **Dipole-Dipole Coupling U_dp (NEW — not in PAPER_328):**
 ```

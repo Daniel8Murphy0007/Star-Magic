@@ -1,9 +1,4 @@
 ﻿# PAPER_173: Modular Compressed MUGE — 9-Term Mathematical Decomposition
-
-## Abstract
-
-This paper presents a UQFF analysis of astrophysical observables, deriving compressed field equations and observational predictions within the Star-Magic/UQFF framework.
-
 ## Whitepaper §2.4-E | Thread 381a8fe7 | Session 48
 
 ### Abstract

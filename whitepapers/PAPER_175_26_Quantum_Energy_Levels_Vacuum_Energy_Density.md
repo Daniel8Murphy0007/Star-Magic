@@ -1,9 +1,4 @@
 ﻿# PAPER_175: 26 Quantum Energy Levels and Vacuum Energy Density ?_vac
-
-## Abstract
-
-This paper presents a UQFF analysis of astrophysical observables, deriving compressed field equations and observational predictions within the Star-Magic/UQFF framework.
-
 ## Whitepaper §2.4-G | Thread 381a8fe7 | Session 48
 
 ### Abstract
@@ -149,6 +144,3 @@ integration — consistent with the S? notation in the F_U equation.
 - main.cpp: rho_v = 6e-27 constant
 - PAPER_171 (Ug4 uses ?_vac_SCm)
 - PAPER_176 (SCm properties that generate ?_vac)
-
-
-> **Key UQFF calibrated constants:** κ = 5.0e-4 day⁻¹; [SSq] = 5.7e-1; H_SCm ≈ 9.9e-1; U_UA ≈ 1.0e-4; k_η = 1.0e-113; β_i ≈ 6.0e-1; G = 6.674e-11 N·m²/kg²

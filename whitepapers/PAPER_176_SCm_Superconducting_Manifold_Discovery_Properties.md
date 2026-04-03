@@ -1,9 +1,4 @@
 ﻿# PAPER_176: SCm — Superconducting Manifold Discovery, Properties, and Cosmic Role
-
-## Abstract
-
-This paper presents a UQFF analysis of astrophysical observables, deriving compressed field equations and observational predictions within the Star-Magic/UQFF framework.
-
 ## Whitepaper §2.4-H | Thread 381a8fe7 | Session 48
 
 ### Abstract

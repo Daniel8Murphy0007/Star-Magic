@@ -1,9 +1,4 @@
 ﻿# PAPER_174: Modular Resonance MUGE — 13-Term + Wormhole 14th Term
-
-## Abstract
-
-This paper presents a UQFF analysis of astrophysical observables, deriving compressed field equations and observational predictions within the Star-Magic/UQFF framework.
-
 ## aDPM Chain and Resonance Frequency Decomposition
 ## Whitepaper §2.4-F | Thread 381a8fe7 | Session 48
 

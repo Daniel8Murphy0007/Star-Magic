@@ -16,9 +16,6 @@ $$
 
 ## Abstract
 
-> **Key UQFF calibrated constants:** κ = 5.0e-4 day⁻¹; [SSq] = 5.7e-1; H_SCm ≈ 9.9e-1; U_UA ≈ 1.0e-4; k_η = 1.0e-113; β_i ≈ 6.0e-1; G = 6.674e-11 N·m²/kg²
-
-
 This paper presents a 4-qubit quantum entanglement chain simulation from the grok_share_7514fe.txt session, modeling microscopic quantum correlations analogous to superfluid vortex avalanche cascades in magnetars. Using QuTiP (Quantum Toolbox in Python), a CNOT entanglement gate propagates through a 4-qubit register initialized in the computational basis |0000?. The von Neumann entanglement entropy S_VN rises monotonically from 0 to approximately 2 bits as the avalanche cascade spreads entanglement through the system. This model connects UQFF's F_UBii,ent (AdS/CFT entanglement) and F_UBii,ent_dec (decoherence) variants to macroscopic glitch dynamics.
 
 

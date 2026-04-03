@@ -16,9 +16,6 @@ $$
 
 ## Abstract
 
-> **Key UQFF calibrated constants:** κ = 5.0e-4 day⁻¹; [SSq] = 5.7e-1; H_SCm ≈ 9.9e-1; U_UA ≈ 1.0e-4; k_η = 1.0e-113; β_i ≈ 6.0e-1; G = 6.674e-11 N·m²/kg²
-
-
 This paper applies the UQFF buoyancy framework to the complete gravitational wave (GW) physics chain: inspiral chirp mass, quasi-normal mode (QNM) ringdown, Blandford-Znajek (BZ) jet power extraction, post-Keplerian orbital decay, periastron advance, and kilonova optical/IR transient. The F_UBii/Um framework unifies these into a single UQFF operator chain: inspiral ? plunge ? ringdown ? jet ? remnant (kilonova). Numerical coefficients from LIGO GWTC-4.0 and EHT observations calibrate the constants.
 
 
