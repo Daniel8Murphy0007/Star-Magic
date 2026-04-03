@@ -20,13 +20,13 @@ import os, sys, glob, subprocess, time, concurrent.futures, re, tempfile
 WHITEPAPER_DIR = "whitepapers"
 PDF_DIR        = "pdf"
 HEADER_FILE    = "pdf_header.tex"
-WORKERS        = 6
+WORKERS        = 2
 TIMEOUT_SEC    = 180
 
 BASE_CMD = [
     "pandoc",
     "--pdf-engine=xelatex",
-    "-V", "geometry:margin=1in",
+    "-V", "geometry:a4paper,top=0.75in,bottom=0.75in,left=0.75in,right=0.75in",
     "-V", "fontsize=11pt",
     "-V", "documentclass=article",
     "-H", HEADER_FILE,
@@ -119,7 +119,8 @@ def generate_pdf(md_path):
             return (paper_num(fname), fname, True, f"{os.path.getsize(pdf_path)//1024}KB (xelatex-agg)", None)
         # pdflatex fallback
         cmd2 = ["pandoc", "--pdf-engine=pdflatex",
-                "-V", "geometry:margin=1in", "-V", "fontsize=11pt",
+                "-V", "geometry:a4paper,top=0.75in,bottom=0.75in,left=0.75in,right=0.75in",
+                "-V", "fontsize=11pt",
                 "-V", "documentclass=article",
                 "--pdf-engine-opt=-interaction=nonstopmode",
                 "--from=markdown-yaml_metadata_block-raw_tex+smart",
