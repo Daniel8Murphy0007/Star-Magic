@@ -1,14 +1,15 @@
+# PAPER_064: The Four UQFF Operational Modes: Compressed, Resonant, Buoyant, and Superconductive – Theoretical Basis, Implementation, and Batch 23 Validation
 
-**Title:** The Four UQFF Operational Modes: Compressed, Resonant, Buoyant, and Superconductive � Theoretical Basis, Implementation, and Batch 23 Validation
+
+**Title:** The Four UQFF Operational Modes: Compressed, Resonant, Buoyant, and Superconductive – Theoretical Basis, Implementation, and Batch 23 Validation
 
 **Author:** Daniel T. Murphy  
 **Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57)  
 **Date:** March 7, 2026  
 **Source Data:** MAIN_1_CoAnQi.cpp Batch 23 (Jan 28, 2026), 446 registered modules, source134.cpp  
 **Index Slot:** �1.8 Alpha Multiplicity & BEC Nuclear Physics,  
-    $n = [int]# PAPER #64 � 4 UQFF Operational Modes: Compressed, Resonant, Buoyant, Superconductive
 
-**Title:** The Four UQFF Operational Modes: Compressed, Resonant, Buoyant, and Superconductive � Theoretical Basis, Implementation, and Batch 23 Validation
+**Title:** The Four UQFF Operational Modes: Compressed, Resonant, Buoyant, and Superconductive – Theoretical Basis, Implementation, and Batch 23 Validation
 
 **Author:** Daniel T. Murphy  
 **Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57)  
@@ -24,7 +25,7 @@ The UQFF implements four mutually complementary operational modes for computing 
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0�10?4 day?�, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -69,17 +70,17 @@ $$g_{\rm Resonant} = \cos(\omega t) \times 10^{-5}$$
 
 | Parameter | Value |
 |-----------|-------|
-| Scaling factor | 10?5 |
+| Scaling factor | 10⁻5 |
 | Physical origin | Periodic vacuum field oscillation |
 | Applies to | Pulsars, magnetars, oscillating AGN, dark matter halos |
 | Frequency ? | System-specific (Hz to THz range) |
 
-**Physical interpretation**: The vacuum field oscillates at frequency ?, creating time-varying gravitational enhancement and reduction. In neutron stars and pulsars, ? is the spin frequency � UQFF predicts the gravity measured during emission pulses (?�t = 0 ? g_R = 10?5 maximum) differs from inter-pulse gravity (?�t = p/2 ? g_R = 0 minimum).
+**Physical interpretation**: The vacuum field oscillates at frequency ?, creating time-varying gravitational enhancement and reduction. In neutron stars and pulsars, ? is the spin frequency – UQFF predicts the gravity measured during emission pulses (?�t = 0 ? g_R = 10⁻5 maximum) differs from inter-pulse gravity (?�t = p/2 ? g_R = 0 minimum).
 
 **Example (PSRB0531+21, Crab Pulsar):**
 - ? = 190 rad/s
-- g_Resonant(t=pulse) = cos(0) � 10?5 = **10?5** (maximum enhancement)
-- g_Resonant(t=off) = cos(p/2) � 10?5 = 0 (no vacuum oscillation contribution)
+- g_Resonant(t=pulse) = cos(0) � 10⁻5 = **10?5** (maximum enhancement)
+- g_Resonant(t=off) = cos(p/2) � 10⁻5 = 0 (no vacuum oscillation contribution)
 
 ---
 
@@ -94,9 +95,9 @@ $$g_{\rm Buoyant} = \rho_{\rm vac,[UA]} \times 10^{55}$$
 | Scaling factor | 1055 |
 | Physical origin | Vacuum buoyancy: dark energy opposes matter compression |
 | Applies to | Galaxy clusters, cosmological voids, BEC nuclear states |
-| ?_vac,[UA] | [UA] vacuum energy density: 7.09�10?�6 kg/m� |
+| ?_vac,[UA] | [UA] vacuum energy density: 7.09×10?�6 kg/m� |
 
-**Physical interpretation**: The UQFF vacuum density ?_vac = 7.09�10?�6 kg/m� (calibrated from galaxy rotation curves) exerts a buoyant force on matter in analogy to Archimedes' principle. At astrophysical scales, **negative buoyancy** (g_B < g_gravity) stabilizes rotating systems by reducing net infall acceleration.
+**Physical interpretation**: The UQFF vacuum density ?_vac = 7.09×10?�6 kg/m� (calibrated from galaxy rotation curves) exerts a buoyant force on matter in analogy to Archimedes' principle. At astrophysical scales, **negative buoyancy** (g_B < g_gravity) stabilizes rotating systems by reducing net infall acceleration.
 
 **Computed value (reference):**
 
@@ -134,7 +135,7 @@ $$g_{\rm Superconductive} = 10^{46} \times 10^{-30} = 10^{16} \text{ J/kg}$$
 | Mode | Formula | Domain | Key Scale |
 |------|---------|--------|-----------|
 | Compressed | (M/r) � 10?�� | Dense matter | 10?�� |
-| Resonant | cos(?t) � 10?5 | Oscillating sources | 10?5 |
+| Resonant | cos(?t) � 10⁻5 | Oscillating sources | 10⁻5 |
 | Buoyant | ?_vac � 1055 | Vacuum/large scale | 1055 |
 | Superconductive | E_react � 10?�� | BEC/cryogenic states | 10?�� |
 
@@ -148,7 +149,7 @@ $$g_{\rm Superconductive} = 10^{46} \times 10^{-30} = 10^{16} \text{ J/kg}$$
 | Galaxy cluster | Buoyant | Compressed |
 | AGN + accretion disk | Resonant | Superconductive |
 | LENR metallic hydride | Superconductive | Resonant |
-| Cosmological void | Buoyant | � |
+| Cosmological void | Buoyant | – |
 | Merger remnant (GW) | Resonant | Compressed |
 
 ---
@@ -161,13 +162,13 @@ From MAIN_1_CoAnQi.cpp Batch 23 commit (13 UQFF Operational Modes):
 
 | System | Mode | Gaia DR4 | LIGO GWTC-4.0 |
 |--------|------|----------|----------------|
-| ? calibration (�1.8 anchor) | All 4 | � | � |
-| [SSq] = 0.57 (�1.8 anchor) | All 4 | � | � |
-| Gaia DR4 proper motion systems | Compressed + Resonant | ? | � |
-| LIGO GWTC-4.0 ringdown | Resonant + Superconductive | � | ? |
-| BEC Integration (Hoyle/Ca) | Superconductive | � | � |
-| F_U_Bi_i Integral (52-sys) | All 4 | � | � |
-| Widom-Larsen LENR | Superconductive | � | � |
+| ? calibration (�1.8 anchor) | All 4 | – | � |
+| [SSq] = 0.57 (�1.8 anchor) | All 4 | – | � |
+| Gaia DR4 proper motion systems | Compressed + Resonant | ? | – |
+| LIGO GWTC-4.0 ringdown | Resonant + Superconductive | – | ? |
+| BEC Integration (Hoyle/Ca) | Superconductive | – | � |
+| F_U_Bi_i Integral (52-sys) | All 4 | – | � |
+| Widom-Larsen LENR | Superconductive | – | � |
 
 **Gaia DR4 validation**: Proper motions of stars in 5 nearby galaxies (d < 10 Mpc) match UQFF Compressed mode predictions within 7% (vs. 12% for pure Newtonian with dark matter halo).
 
@@ -205,7 +206,7 @@ Where:
 - aC = ? = 0.0005/day (Compressed weighting via daily decay)
 - aR = [SSq] = 0.57 (Resonant weighting via vacuum saturation)
 - aB = [UA] = 0.0001 (Buoyant weighting)
-- aS = [SCm] � 0.99 (Superconductive weighting, near-unity)
+- aS = [SCm] ≈ 0.99 (Superconductive weighting, near-unity)
 
 ### PhysicsTerm Registry Integration
 
@@ -239,8 +240,8 @@ For Abell2256 (calibration check):
 | Mode | g_mode | Deviation from g_UQFF |
 |------|--------|----------------------|
 | Compressed | 10�� m/s� | 0.0% (anchor) |
-| Resonant | 10?5 | normalized unit |
-| Buoyant | 7.09�10�? | volume-normalized |
+| Resonant | 10⁻5 | normalized unit |
+| Buoyant | 7.09×10�? | volume-normalized |
 | Superconductive | 10�6 | energy-normalized |
 | **Combined g_UQFF** | **S a_i � g_i** | within 3% s |
 
@@ -263,9 +264,9 @@ For Abell2256 (calibration check):
 | Mode | Scaling | Calibration Anchor | Primary Domain |
 |------|---------|-------------------|----------------|
 | Compressed | 10?�� | ? = 0.0005/day | Dense matter |
-| Resonant | 10?5 | [SSq] = 0.57 | Oscillating sources |
+| Resonant | 10⁻5 | [SSq] = 0.57 | Oscillating sources |
 | Buoyant | 1055 | [UA] = 0.0001 | Large-scale structure |
-| Superconductive | 10?�� | [SCm] � 0.99 | BEC / cryogenic states |
+| Superconductive | 10?�� | [SCm] ≈ 0.99 | BEC / cryogenic states |
 | **Validated** | Batch 23 | Jan 28, 2026 | Gaia DR4 + LIGO GWTC-4.0 |
 
 *Source: MAIN_1_CoAnQi.cpp Batch 23 (Jan 28, 2026), 446 registered modules | ? = 0.0005/day | [SSq] = 0.57*
@@ -294,7 +295,7 @@ For Abell2256 (calibration check):
 
 ### A.2 F_U Master Equation (Complete — 4 terms)
 
-$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}igl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}igr]$$
+$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}\bigr]$$
 
 | Term | Description | Implementation |
 |------|-------------|----------------|
@@ -311,9 +312,7 @@ $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}igl[\l
 
 ### A.3 Um Heaviside Phase-Transition Amplifier (PAPER_421)
 
-$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} 	imes igl(1 + 10^{13}\,\Theta(
-ho_{SCm} - 
-ho_c)igr) 	imes igl(1 + A_q\cos(\Delta\omega\,t)igr)$$
+$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rho_{SCm} - \rho_c)\bigr) \times \bigl(1 + A_q\cos(\Delta\omega\,t)\bigr)$$
 
 | Symbol | Value | Description |
 |--------|-------|-------------|

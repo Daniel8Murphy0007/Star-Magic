@@ -1,4 +1,4 @@
-﻿# PAPER_262: Galaxy NGC 2525 — SN Type Ia Negative-Mass-Loss Gravitational Sign Reversal: A New UQFF Mechanism Distinct from Buoyancy-Inversion
+# PAPER_262: Galaxy NGC 2525 — SN Type Ia Negative-Mass-Loss Gravitational Sign Reversal: A New UQFF Mechanism Distinct from Buoyancy-Inversion
 
 **Author:** Daniel T. Murphy (daniel.murphy00@gmail.com)  
 **Framework:** UQFF v4.21 — Star-Magic Physics  

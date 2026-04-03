@@ -1,4 +1,4 @@
-﻿# PAPER_213: H_res Suite and D_universe Master Equations
+# PAPER_213: H_res Suite and D_universe Master Equations
 
 **Version:** 1.0  
 **Date:** March 13, 2026  
@@ -20,7 +20,7 @@ Two master equations from the UQFF framework are formally derived and documented
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -75,8 +75,8 @@ Numerically for 56Fe (most stable nucleus):
   k_nuc = (6.67×10?¹¹ × 1.67×10?²7 × 1.67×10?²7 × 26 × 30)/(1.2×10?¹5)³
         ˜ 2.7 N/m
   I = (2/5) × 55.85 × 1.66×10?²7 × (5×10?¹5)²
-    ˜ 9.3×10?55 kg·m²
-  ?_res ˜ v(2.7/9.3×10?55) ˜ v(2.9×1054) ˜ 1.7×10²7 rad/s
+    ˜ 9.3×10⁻55 kg·m²
+  ?_res ˜ v(2.7/9.3×10⁻55) ˜ v(2.9×1054) ˜ 1.7×10²7 rad/s
   Note: This is the nuclear ground-state resonance; f = ?/2p ˜ 2.7×10²6 Hz
 ```
 
@@ -88,8 +88,8 @@ where:
   G_decay = nuclear width (1/lifetime)
   ?_drive = external driving frequency (gravitational wave, flare QPO)
 
-For SGR A* f_TRZ = 5.95×10?4 Hz:
-  ?_drive = 2p × 5.95×10?4 ˜ 3.74×10?³ rad/s
+For SGR A* f_TRZ = 5.95×10⁻4 Hz:
+  ?_drive = 2p × 5.95×10⁻4 ˜ 3.74×10?³ rad/s
   ?_res >> ?_drive ? f_res ˜ 0 (drives well below nuclear resonance)
   ? H_res phase contribution is essentially static for gravitational applications
 ```
@@ -141,7 +141,7 @@ Numerically:
 For 56Fe (Z=26, N=30, A=56):
   r_nuc = 1.2×56^{1/3}×10?¹5 = 1.2×3.83×10?¹5 = 4.6×10?¹5 m
   k_nuc = (6.674×10?¹¹ × 1.673×10?²7 × 1.675×10?²7)/(4.6×10?¹5)² × 26×30/56
-        = 3.13×10?64 / 2.12×10?²? × 13.9
+        = 3.13×10⁻64 / 2.12×10?²? × 13.9
         = 2.1×10?³6 m/s² per unit coupling
 ```
 
@@ -243,9 +243,9 @@ h quantum correction to D_universe:
   ? (h/h) × (2p/t_Hubble)/(c·H0) = (2p/t_Hubble²) × small
   
   Numerically: 2p/(4.35×10¹7 s)² × 1/(c·H0)
-  = 1.44×10?¹7 / (3×108 × 2.18×10?¹8) ˜ 1.44×10?¹7 / 6.54×10?¹° ˜ 2.2×10?8
+  = 1.44×10?¹7 / (3×108 × 2.18×10?¹8) ˜ 1.44×10?¹7 / 6.54×10?¹° ˜ 2.2×10⁻8
 
-  ?D_u = 2.2×10?8 × 93 Gly ˜ 2000 ly correction
+  ?D_u = 2.2×10⁻8 × 93 Gly ˜ 2000 ly correction
   (comparable to resolution limit of future cosmological surveys)
 ```
 
@@ -258,7 +258,7 @@ Planck 2018 constraint: |O_k| < 0.002
 
 UQFF does not predict non-zero O_k independently;
 however, LQC bounce may generate small O_k:
-  |O_k|_LQC ˜ (H_bounce × ?_LQC)/(H0²) ~ 10?6
+  |O_k|_LQC ˜ (H_bounce × ?_LQC)/(H0²) ~ 10⁻6
   ? Negligible contribution at present epoch
 ```
 

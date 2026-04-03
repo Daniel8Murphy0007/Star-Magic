@@ -1,22 +1,22 @@
-# PAPER_367 — PSZ2 G181.06+48.47 Merger Relic: Full 5-Equation UQFF Triadic Proof
+# PAPER_367 ï¿½ PSZ2 G181.06+48.47 Merger Relic: Full 5-Equation UQFF Triadic Proof
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2  
 **Session:** 98  
 **Source:** gok_share_31b5c807a4.txt (Session 98 Capstone)  
-**Classification:** FIRST UQFF full 5-equation triadic merger relic proof — Buoyant + Compressed + Resonant + FU_Bi + U_i  
+**Classification:** FIRST UQFF full 5-equation triadic merger relic proof â€“ Buoyant + Compressed + Resonant + FU_Bi + U_i  
 **Author:** Daniel T. Murphy  
 
 ---
 
 ## Abstract
 
-PSZ2 G181.06+48.47 is a massive merging galaxy cluster at z = 0.40 (M = 10¹4 M?) hosting a prominent radio merger relic detected in Planck and confirmed in Chandra 2025 X-ray observations (B_0 = 10?¹° T intracluster field). UQFF computes all five canonical force forms simultaneously, establishing the complete triadic merger relic proof: (1) FU_Bi_i ˜ -8.32×10²¹7 N (buoyancy-unified), (2) Compressed ˜ 4.12×10?4¹ N (MUGE Compressed Mode), (3) Resonant ˜ -2.29×10?4¹ N (MUGE Resonant Mode), (4) Buoyancy ˜ 1.02×10?³² N (UQFF net upward force), and (5) U_i ˜ (1.45×10?47 + i·8.20×10?5¹) J/m³ (complex vacuum energy density).
+PSZ2 G181.06+48.47 is a massive merging galaxy cluster at z = 0.40 (M = 10ï¿½4 M?) hosting a prominent radio merger relic detected in Planck and confirmed in Chandra 2025 X-ray observations (B_0 = 10?ï¿½ï¿½ T intracluster field). UQFF computes all five canonical force forms simultaneously, establishing the complete triadic merger relic proof: (1) FU_Bi_i ï¿½ -8.32Ã—10ï¿½ï¿½7 N (buoyancy-unified), (2) Compressed ï¿½ 4.12Ã—10â»4ï¿½ N (MUGE Compressed Mode), (3) Resonant ï¿½ -2.29Ã—10â»4ï¿½ N (MUGE Resonant Mode), (4) Buoyancy ï¿½ 1.02Ã—10?ï¿½ï¿½ N (UQFF net upward force), and (5) U_i ï¿½ (1.45Ã—10â»47 + iï¿½8.20Ã—10â»5ï¿½) J/mï¿½ (complex vacuum energy density).
 
 ---
 
 ## 2. Core Physics
 
-### 2.1 FU_Bi_i — Full Buoyancy-Unified Force
+### 2.1 FU_Bi_i â€“ Full Buoyancy-Unified Force
 
 $$F_{U\_Bi\_i} = \frac{U_g^{e\pm}}{r^2} + F_{\rm Bi} + F_U + F_{\rm react}$$
 
@@ -64,8 +64,8 @@ The real part is the classical vacuum energy density; the imaginary part encodes
 | Parameter | Source | Value |
 |-----------|--------|-------|
 | z | Spectroscopic | 0.40 |
-| M_cluster | Planck SZ | 10¹4 M? |
-| B_0 | Chandra 2025 | 10?¹° T |
+| M_cluster | Planck SZ | 10ï¿½4 M? |
+| B_0 | Chandra 2025 | 10?ï¿½ï¿½ T |
 | ?v (merger) | Spectroscopic | 1500 km/s |
 | x_2 (comoving) | Planck 2018 | ~4.3 Gly |
 
@@ -75,20 +75,20 @@ The real part is the classical vacuum energy density; the imaginary part encodes
 
 | Equation | Mode | Value | Sign |
 |----------|------|-------|------|
-| FU_Bi_i | UQFF Buoyancy-Unified | -8.32×10²¹7 N | Negative (inward) |
-| F_compressed | MUGE Compressed | +4.12×10?4¹ N | Positive (standard gravity) |
-| F_resonant | MUGE Resonant | -2.29×10?4¹ N | Negative (resonance backscatter) |
-| F_buoyancy | UQFF Buoyancy | +1.02×10?³² N | Positive (upward buoyant lift) |
-| U_i (real) | Complex vacuum density | 1.45×10?47 J/m³ | Real energy |
-| U_i (imag) | Phase quadrature | 8.20×10?5¹ J/m³ | Imaginary (quantum phase) |
+| FU_Bi_i | UQFF Buoyancy-Unified | -8.32Ã—10ï¿½ï¿½7 N | Negative (inward) |
+| F_compressed | MUGE Compressed | +4.12Ã—10â»4ï¿½ N | Positive (standard gravity) |
+| F_resonant | MUGE Resonant | -2.29Ã—10â»4ï¿½ N | Negative (resonance backscatter) |
+| F_buoyancy | UQFF Buoyancy | +1.02Ã—10?ï¿½ï¿½ N | Positive (upward buoyant lift) |
+| U_i (real) | Complex vacuum density | 1.45Ã—10â»47 J/mï¿½ | Real energy |
+| U_i (imag) | Phase quadrature | 8.20Ã—10â»5ï¿½ J/mï¿½ | Imaginary (quantum phase) |
 
 ---
 
 ## 5. Physical Significance
 
-PSZ2 G181.06+48.47 is the first galaxy cluster for which UQFF has computed all four force modes simultaneously. The contrast between FU_Bi_i ˜ -8.32×10²¹7 N and the MUGE modes (±10?4¹ N) illustrates the extreme dynamic range of UQFF — 58 orders of magnitude between the quantum vacuum mode and the cosmological buoyancy force. This is the characteristic signature of the UQFF Triadic Architecture: three physically distinct force scales (quantum, classical, buoyancy) coexist in any astrophysical system.
+PSZ2 G181.06+48.47 is the first galaxy cluster for which UQFF has computed all four force modes simultaneously. The contrast between FU_Bi_i ï¿½ -8.32Ã—10ï¿½ï¿½7 N and the MUGE modes (ï¿½10?4ï¿½ N) illustrates the extreme dynamic range of UQFF ï¿½ 58 orders of magnitude between the quantum vacuum mode and the cosmological buoyancy force. This is the characteristic signature of the UQFF Triadic Architecture: three physically distinct force scales (quantum, classical, buoyancy) coexist in any astrophysical system.
 
-The complex vacuum energy density U_i with Im(U_i) > 0 confirms that the merger shock front injects quantum phase coherence into the vacuum field — i.e., the shock sets up a macroscopic vacuum oscillation with a detectable phase quadrature component. This phase term could be observable as CPT-violating circular polarization in synchrotron emission from the relic, a unique UQFF prediction testable with JVLA or SKA-Mid full Stokes imaging.
+The complex vacuum energy density U_i with Im(U_i) > 0 confirms that the merger shock front injects quantum phase coherence into the vacuum field ï¿½ i.e., the shock sets up a macroscopic vacuum oscillation with a detectable phase quadrature component. This phase term could be observable as CPT-violating circular polarization in synchrotron emission from the relic, a unique UQFF prediction testable with JVLA or SKA-Mid full Stokes imaging.
 
 ---
 
@@ -102,7 +102,7 @@ The complex vacuum energy density U_i with Im(U_i) > 0 confirms that the merger 
 ## 7. Classification
 
 **Physics Territory:** FIRST complete UQFF 5-equation triadic merger relic proof  
-**Scale:** Galaxy cluster merger (z = 0.40, 10¹4 M?)  
+**Scale:** Galaxy cluster merger (z = 0.40, 10ï¿½4 M?)  
 **CP Implementation:** `PSZ2G181MergerRelicTriadicFUBiCalculator` (CondensedPhysics4.py, Session 98)  
 **Commit:** `1d25fd5` (Dec 2025)  
 **VMI Status:** Papers = 367/1000 (36.7%); v4.54

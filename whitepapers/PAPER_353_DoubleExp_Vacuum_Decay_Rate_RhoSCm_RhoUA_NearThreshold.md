@@ -1,4 +1,4 @@
-﻿# PAPER_353 — Double-Exponential Vacuum Decay Rate: ρ_SCm/ρ_UA Ratio with Near-Threshold Behavior
+# PAPER_353 — Double-Exponential Vacuum Decay Rate: ρ_SCm/ρ_UA Ratio with Near-Threshold Behavior
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2  
 **Session:** 96  

@@ -1,4 +1,4 @@
-﻿# PAPER_311: NGC 6302 Bipolar Planetary Nebula — UQFF Wind Shock Gravitational Dominance
+# PAPER_311: NGC 6302 Bipolar Planetary Nebula — UQFF Wind Shock Gravitational Dominance
 
 **Subtitle:** FIRST UQFF Bipolar PN Wind Shock Analysis — η_wind = 7.127×10⁵; KE/grav_well = 3.564×10⁵
 

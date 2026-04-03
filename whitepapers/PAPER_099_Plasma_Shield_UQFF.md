@@ -1,3 +1,5 @@
+# PAPER_099: Plasma Shield-Capture Physics: UQFF Electromagnetic Trapping of Plasma via Ug2 Charge-Reactivity
+
 
 **Title:** Plasma Shield-Capture Physics: UQFF Electromagnetic Trapping of Plasma via Ug2 Charge-Reactivity
 
@@ -6,7 +8,6 @@
 **Date:** March 7, 2026  
 **Source Data:** validate_drawings_models.py (PLASMA_SHIELD_MODEL), Drawings 21, 28, 29  
 **Index Slot:** �1.13 Multi-Physics Models,  
-    $n = [int]# PAPER #99 � Plasma Shield Physics: UQFF Electromagnetic Analysis
 
 **Title:** Plasma Shield-Capture Physics: UQFF Electromagnetic Trapping of Plasma via Ug2 Charge-Reactivity
 
@@ -24,7 +25,7 @@ Drawings 21, 28, and 29 depict a plasma shield-capture mechanism: the UQFF Ug2 c
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0�10?4 day?�, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -35,8 +36,8 @@ Drawing 21 shows three distinct zones:
 | Zone | r range | UQFF Dominant | Effect |
 |------|---------|--------------|--------|
 | Inner Shield | r_ISCO to 2�r_ISCO | Ug2 maximum | Plasma trapping |
-| Accretion Flow | 2�10 r_ISCO | Ug4, Um | Standard accretion |
-| Outer Capture | 10�100 r_ISCO | Ug3, [SCm] | Plasma channeling |
+| Accretion Flow | 2×10 r_ISCO | Ug4, Um | Standard accretion |
+| Outer Capture | 10×100 r_ISCO | Ug3, [SCm] | Plasma channeling |
 
 ---
 
@@ -54,7 +55,7 @@ $$\Delta U_{g2} = U_{g2}(r_{\rm ISCO}) - U_{g2}(r_{\rm shield}) = \frac{q_{\rm e
 
 $$= \frac{q_{\rm eff}^2 [{\rm SSq}]^{1/2}}{8\pi\epsilon_0 r_{\rm ISCO}}$$
 
-For r_ISCO = 6 GM/c� = 7.14 � 10�� m (for Sgr A* spin a=0):
+For r_ISCO = 6 GM/c� = 7.14 × 10�� m (for Sgr A* spin a=0):
 
 $$\Delta U_{g2} \approx n_e k_B T_{\rm plasma} \times 0.57^{1/2} = n_e k_B T_{\rm plasma} \times 0.755$$
 
@@ -68,7 +69,7 @@ Drawing 28 shows shield inflation/deflation cycle with period P_shield:
 
 $$P_{\rm shield} = P_{\rm orbital}(r_{\rm ISCO}) \times \frac{1}{\kappa} = P_{\rm ISCO} \times 2000 \text{ days}$$
 
-For Sgr A* (P_ISCO � 27 min): P_shield � 2000 � 27 min = 37.5 yr (consistent with ~40 yr quasi-periodic X-ray variations observed in Sgr A* region).
+For Sgr A* (P_ISCO � 27 min): P_shield � 2000 × 27 min = 37.5 yr (consistent with ~40 yr quasi-periodic X-ray variations observed in Sgr A* region).
 
 ---
 
@@ -91,7 +92,7 @@ $$L_X^{\rm UQFF} = 4\pi r_{\rm shield}^2 \sigma T_{\rm shield}^4 \times [{\rm SC
 | Test | Expected | UQFF | Pass |
 |------|---------|------|------|
 | Trapping radius | ~1�2 r_ISCO | 1.0�2.0 r_ISCO (T < T_crit) | ? |
-| E_peak (spectral) | 1�10 keV | 2.53 keV | ? |
+| E_peak (spectral) | 1×10 keV | 2.53 keV | ? |
 | Shield lifetime | ~years�decades | P_ISCO/? � 37.5 yr | ? |
 | L_X budget | Sub-Eddington | L_Edd � [SCm] = 0.99 L_Edd | ? |
 | Hard X-ray deficit | Known AGN issue | Resolved by trapping | ? |
@@ -130,7 +131,7 @@ The UQFF Plasma Shield model (Drawings 21, 28, 29) provides a physical mechanism
 
 ### A.2 F_U Master Equation (Complete — 4 terms)
 
-$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}igl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}igr]$$
+$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}\bigr]$$
 
 | Term | Description | Implementation |
 |------|-------------|----------------|
@@ -147,9 +148,7 @@ $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}igl[\l
 
 ### A.3 Um Heaviside Phase-Transition Amplifier (PAPER_421)
 
-$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} 	imes igl(1 + 10^{13}\,\Theta(
-ho_{SCm} - 
-ho_c)igr) 	imes igl(1 + A_q\cos(\Delta\omega\,t)igr)$$
+$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rho_{SCm} - \rho_c)\bigr) \times \bigl(1 + A_q\cos(\Delta\omega\,t)\bigr)$$
 
 | Symbol | Value | Description |
 |--------|-------|-------------|

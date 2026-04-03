@@ -1,8 +1,10 @@
+# PAPER_108: Empirical Proof EP-10: IceCube Neutrino Spectral Energy Distribution Below 0.1 PeV – UQFF κ_i = 0.61 Confirmation via pp and p? Flux Analysis
 
-**Title:** Empirical Proof EP-10: IceCube Neutrino Spectral Energy Distribution Below 0.1 PeV � UQFF �_i = 0.61 Confirmation via pp and p? Flux Analysis
+
+**Title:** Empirical Proof EP-10: IceCube Neutrino Spectral Energy Distribution Below 0.1 PeV – UQFF κ_i = 0.61 Confirmation via pp and p? Flux Analysis
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57, �_i = 0.61)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57, κ_i = 0.61)  
 **Date:** March 9, 2026  
 **Domain:** �1.15 Empirical Proof Compendium  
 **Source Thread:** `grok_share_2fe4fa3e_conversation.txt` (EP-10, April�Sept 2025)  
@@ -16,8 +18,8 @@
 Empirical Proof EP-10 validates the UQFF spectral energy distribution (SED) model
 against IceCube's measured astrophysical neutrino background below 0.1 PeV, where
 both hadronic (pp) and photohadronic (p?) processes contribute. The UQFF SED
-formula F_? = E_? � n(p) � (�_i - �0)� reproduces the IceCube sub-PeV flux
-normalization and spectral slope with �_i = 0.61, confirming this calibration
+formula F_? = E_? � n(p) � (κ_i - �0)� reproduces the IceCube sub-PeV flux
+normalization and spectral slope with κ_i = 0.61, confirming this calibration
 constant to �3% against an independent multi-year IceCube dataset. The TRZ
 (Topological Resonance Zone) enhancement of +1.0% in the UQFF SED spectrum
 relative to the standard pion-decay neutrino model is within IceCube's systematic
@@ -26,7 +28,7 @@ achieves 4/4 PASS on all spectral tests.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0�10?4 day?�, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -39,9 +41,9 @@ astrophysical neutrino background. At sub-PeV energies (E_? < 10�4 eV):
 
 | Observable | IceCube Value | Reference |
 |-----------|--------------|-----------|
-| Spectral index G | 2.37 � 0.09 | IceCube 2022 |
-| Flux normalization F0 at 100 TeV | 1.44 � 10?�8 GeV?�cm?�s?�sr?� | IceCube 2022 |
-| Energy range (sub-PeV) | 10 TeV � 0.1 PeV | Shower + track events |
+| Spectral index G | 2.37 × 0.09 | IceCube 2022 |
+| Flux normalization F0 at 100 TeV | 1.44 × 10?�8 GeV?�cm?�s⁻¹sr?� | IceCube 2022 |
+| Energy range (sub-PeV) | 10 TeV ≈ 0.1 PeV | Shower + track events |
 | Best-fit single power law | E?���7 | IceCube HESE |
 | pp vs p? fraction | pp dominant at E < 0.1 PeV | Multimessenger inference |
 
@@ -68,15 +70,15 @@ The UQFF Spectral Energy Distribution formula for astrophysical neutrinos is:
 $$F_\nu(E_\nu) = E_\nu \cdot n(p) \cdot (\beta_i - \beta_0)^2$$
 
 Where:
-- $F_\nu$ = neutrino flux (GeV cm?� s?� sr?�)
+- $F_\nu$ = neutrino flux (GeV cm?� s⁻¹ sr?�)
 - $E_\nu$ = neutrino energy (GeV)
 - $n(p)$ = proton / cosmic-ray number density in source region (cm?�)
 - $\beta_i$ = UQFF calibrated coupling constant = **0.61**
 - $\beta_0$ = baseline relativistic velocity threshold (process-dependent)
 
-### 2.2 �_i Physical Interpretation
+### 2.2 κ_i Physical Interpretation
 
-In UQFF, �_i parameterizes the fractional buoyancy-field coupling of the neutrino
+In UQFF, κ_i parameterizes the fractional buoyancy-field coupling of the neutrino
 production environment:
 
 $$\beta_i = \frac{v_{particle}}{c} \Big|_{F_{Ubi} \text{ onset}}$$
@@ -86,7 +88,7 @@ the threshold velocity is:
 
 $$\beta_0 = 1 - \frac{m_\pi c^2}{2 E_p} = 1 - \frac{0.135}{2 \times 1.0} \approx 0.9325 \text{ at } E_p = 1 \text{ GeV}$$
 
-The difference (�_i - �0)� represents the squared buoyancy-coupling deviation
+The difference (κ_i - �0)� represents the squared buoyancy-coupling deviation
 from the pion threshold, which enters as a modification to the standard pion-decay
 neutrino spectrum slope.
 
@@ -110,20 +112,20 @@ is the same TRZ factor confirmed in PAPER_088 (Neutrino SED TRZ +1.0%).
 
 Setting $n(p) = 10^{-3}$ cm?� (typical AGN corona / star-forming galaxy ISM):
 
-At E_? = 100 TeV = 105 GeV and using �_i = 0.61:
+At E_? = 100 TeV = 105 GeV and using κ_i = 0.61:
 
 $$F_\nu = 10^5 \times 10^{-3} \times (0.61 - 0.5)^2 = 10^2 \times 0.0121 = 1.21 \text{ (normalized)}$$
 
-Against IceCube normalization F0 = 1.44 � 10?�8, with the overall scale factor
+Against IceCube normalization F0 = 1.44 × 10?�8, with the overall scale factor
 absorbed into n(p) � units conversion, the spectral **shape** (index and curvature)
 is the key validation target.
 
 ### 3.2 Spectral Index Comparison
 
-| Quantity | Standard Model | UQFF (�_i = 0.61) | IceCube Measured | Match |
+| Quantity | Standard Model | UQFF (κ_i = 0.61) | IceCube Measured | Match |
 |----------|---------------|-------------------|-----------------|-------|
-| Spectral index G | 2.0 (pp), 2.5 (p?) | 2.37 (combined) | 2.37 � 0.09 | ? |
-| Sub-PeV normalization | F0 = 1.44e-18 | F0 � 1.01 (TRZ) | 1.44e-18 | ? |
+| Spectral index G | 2.0 (pp), 2.5 (p?) | 2.37 (combined) | 2.37 × 0.09 | ? |
+| Sub-PeV normalization | F0 = 1.44e-18 | F0 × 1.01 (TRZ) | 1.44e-18 | ? |
 | pp fraction at E < 0.1 PeV | ~70�80% | ~75% ([SSq] mixing) | ~70�80% | ? |
 | p? fraction at E > 0.1 PeV | ~30�40% | ~35% | ~30�40% | ? |
 
@@ -136,26 +138,26 @@ Confirmed: 75.5% pp fraction at sub-PeV, matching IceCube inference to within 2s
 ### 3.3 neutrino_sed_calculator.py Test Results
 
 ```
-Test 1: Spectral index reproduction (�_i=0.61) .............. PASS
+Test 1: Spectral index reproduction (κ_i=0.61) .............. PASS
 Test 2: TRZ enhancement +1.0% within IceCube syst. error .... PASS
 Test 3: pp/p? mixing fraction [SSq]=0.57 ..................... PASS
-Test 4: �_i calibration consistency �3% ..................... PASS
+Test 4: κ_i calibration consistency �3% ..................... PASS
 ALL 4/4 TESTS PASSED
 ```
 
 ---
 
-## 4. �_i = 0.61: Independent Calibration Chain
+## 4. κ_i = 0.61: Independent Calibration Chain
 
-The �_i = 0.61 constant appears independently confirmed in three contexts:
+The κ_i = 0.61 constant appears independently confirmed in three contexts:
 
-| Dataset | System | �_i Confirmation |
+| Dataset | System | κ_i Confirmation |
 |---------|--------|-----------------|
-| IceCube sub-PeV SED (EP-10) | Diffuse neutrino background | �_i = 0.61 � 0.02 (3% error) |
-| F_U_Bi_i Integral (PAPER_063) | 52-system bootstrap | �_i = 0.61 � 0.005 (MCMC) |
-| GW170817 BNS merger (EP-11) | r-process outflow velocity | �_i = 0.61 (v_ej ~ 0.1c, relativistic factor) |
+| IceCube sub-PeV SED (EP-10) | Diffuse neutrino background | κ_i = 0.61 × 0.02 (3% error) |
+| F_U_Bi_i Integral (PAPER_063) | 52-system bootstrap | κ_i = 0.61 × 0.005 (MCMC) |
+| GW170817 BNS merger (EP-11) | r-process outflow velocity | κ_i = 0.61 (v_ej ~ 0.1c, relativistic factor) |
 
-The tri-source confirmation of �_i = 0.61 constitutes a **cross-validation across
+The tri-source confirmation of κ_i = 0.61 constitutes a **cross-validation across
 three independent physics domains**: (1) high-energy astrophysical neutrinos,
 (2) multi-system UQFF F-integral statistics, and (3) gravitational wave ejecta.
 
@@ -170,7 +172,7 @@ three independent physics domains**: (1) high-energy astrophysical neutrinos,
 | 3 | $f_{TRZ} = 0.01$ | +1.0% flux enhancement | TRZ sub-PeV correction |
 | 4 | $f_{pp} = 1 - [\text{SSq}] \times f_{p\gamma}$ | 0.755 (75.5% pp) | pp/p? mixing via [SSq] |
 | 5 | $(\beta_i - \beta_0)^2 \big|_{\beta_i=0.61}$ | 0.0122 at �0=0.5 | Buoyancy coupling squared |
-| 6 | �_i MCMC posterior | 0.61 � 0.005 (3-sigma) | Cross-validated with PAPER_063 |
+| 6 | κ_i MCMC posterior | 0.61 × 0.005 (3-sigma) | Cross-validated with PAPER_063 |
 
 ---
 
@@ -179,15 +181,15 @@ three independent physics domains**: (1) high-energy astrophysical neutrinos,
 Empirical Proof EP-10 demonstrates through IceCube's sub-PeV astrophysical
 neutrino SED that:
 
-1. **�_i = 0.61** is confirmed to �3% as the UQFF buoyancy coupling constant
+1. **κ_i = 0.61** is confirmed to �3% as the UQFF buoyancy coupling constant
    for relativistic particle production contexts
 2. **TRZ enhancement = +1.0%** at sub-PeV energies matches within IceCube
    systematic uncertainty, consistent with PAPER_088
 3. **[SSq] = 0.57** correctly predicts the 75.5% pp/p? fraction at sub-PeV
    energies, matching IceCube multi-messenger inference
 4. The UQFF SED formula (neutrino_sed_calculator.py, 4/4 PASS) reproduces both
-   the spectral index G = 2.37 and the normalization F0 = 1.44 � 10?�8
-5. �_i = 0.61 is now triple-confirmed: IceCube SED (EP-10), F_U_Bi_i 52-system
+   the spectral index G = 2.37 and the normalization F0 = 1.44 × 10?�8
+5. κ_i = 0.61 is now triple-confirmed: IceCube SED (EP-10), F_U_Bi_i 52-system
    MCMC (PAPER_063), and GW170817 r-process ejecta velocity (EP-11)
 
 ---
@@ -202,12 +204,12 @@ neutrino SED that:
 6. Murphy D.T. (2026). *Neutrino SED: UQFF Emission Model*. PAPER_088.
 7. Murphy D.T. (2026). *F_U_Bi_i Integral: Complete Derivation*. PAPER_063.
 8. `neutrino_sed_calculator.py` � Star-Magic codebase, 4/4 PASS.
-.Groups[1].Value  � Empirical Proof EP-10: IceCube Sub-PeV Neutrino SED � UQFF �_i Calibration
+.Groups[1].Value  � Empirical Proof EP-10: IceCube Sub-PeV Neutrino SED – UQFF κ_i Calibration
 
-**Title:** Empirical Proof EP-10: IceCube Neutrino Spectral Energy Distribution Below 0.1 PeV � UQFF �_i = 0.61 Confirmation via pp and p? Flux Analysis
+**Title:** Empirical Proof EP-10: IceCube Neutrino Spectral Energy Distribution Below 0.1 PeV – UQFF κ_i = 0.61 Confirmation via pp and p? Flux Analysis
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57, �_i = 0.61)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57, κ_i = 0.61)  
 **Date:** March 9, 2026  
 **Domain:** �1.15 Empirical Proof Compendium  
 **Source Thread:** `grok_share_2fe4fa3e_conversation.txt` (EP-10, April�Sept 2025)  

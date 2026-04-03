@@ -1,4 +1,4 @@
-# PAPER_368 ó Ug4 Vacuum Energy ?CDM Galactic Black Hole Coupling
+# PAPER_368 ÔøΩ Ug4 Vacuum Energy ?CDM Galactic Black Hole Coupling
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2  
 **Session:** 100  
@@ -7,20 +7,20 @@
 **Author:** Daniel T. Murphy  
 
 
-<!-- UQFF constants: ? = 5.0e-4 day?π, [SSq] = 0.57, M_UQFF = 1.43e1 TeV -->
+<!-- UQFF constants: ? = 5.0e-4 day‚Åª¬π, [SSq] = 0.57, M_UQFF = 1.43e1 TeV -->
 ---
 
 ## Abstract
 
-This paper presents a new explicit form for the fourth Universal Gravity component Ug4 in the Unified Quantum Field Framework (UQFF). Unlike the prior Ug4 implementation (Thread f3c55f52, which uses the vacuum energy in J/m≥ with a [SCm] multiplier and a quantum-scale coupling constant k4=10?4∞), this form directly couples the cosmologically-measured ?CDM dark-energy mass density ?_v = 6◊10?≤7 kg/m≥ to the galactic black hole mass-distance ratio Mbh/dg. The coupling constant k4=2.0 and concentration factor C_conc characterise this new form. A time-decay exp(-at) and UQFF harmonic cos(ptn) modulate the coupling, with an AGN feedback enhancement factor (1+f_feedback). Numerical evaluation gives Ug4(t=0, tn=0) ò 4.22◊10?π∞ m/s≤, comparable to galactic-scale gravitational accelerations.
+This paper presents a new explicit form for the fourth Universal Gravity component Ug4 in the Unified Quantum Field Framework (UQFF). Unlike the prior Ug4 implementation (Thread f3c55f52, which uses the vacuum energy in J/mÔøΩ with a [SCm] multiplier and a quantum-scale coupling constant k4=10?4ÔøΩ), this form directly couples the cosmologically-measured ?CDM dark-energy mass density ?_v = 6√ó10?ÔøΩ7 kg/mÔøΩ to the galactic black hole mass-distance ratio Mbh/dg. The coupling constant k4=2.0 and concentration factor C_conc characterise this new form. A time-decay exp(-at) and UQFF harmonic cos(ptn) modulate the coupling, with an AGN feedback enhancement factor (1+f_feedback). Numerical evaluation gives Ug4(t=0, tn=0) ÔøΩ 4.22√ó10?ÔøΩÔøΩ m/sÔøΩ, comparable to galactic-scale gravitational accelerations.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0◊10?4 day?π, [SSq] = 0.57) uniquely enabling this analysis ó establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0√ó10‚Åª4 day‚Åª¬π, [SSq] = 0.57) uniquely enabling this analysis ÔøΩ establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
-## 2. Core Equation ó PAPER_368
+## 2. Core Equation ‚Äì PAPER_368
 
 ### 2.1 Ug4 Vacuum Energy ?CDM Form
 
@@ -28,13 +28,13 @@ $$U_{g4} = k_4 \cdot \rho_v \cdot C_{\rm conc} \cdot \frac{M_{\rm bh}}{d_g} \cdo
 
 | Parameter | Symbol | Value | Units | Source |
 |-----------|--------|-------|-------|--------|
-| Vacuum coupling | $k_4$ | 2.0 | ó | Star Magic 09Sept2025 |
-| ?CDM dark energy density | $\rho_v$ | 6◊10?≤7 | kg/m≥ | ?CDM Planck 2018 |
-| Vacuum concentration | $C_{\rm conc}$ | 1.0 | ó | Star Magic 09Sept2025 |
-| Galactic centre BH mass | $M_{\rm bh}$ | 8.15◊10≥6 | kg | EHT Collaboration (2022) |
-| Distance to galactic centre | $d_g$ | 2.55◊10≤∞ | m | GRAVITY Collaboration |
-| Time decay rate | $\alpha$ | 0.001 | day?π | Star Magic 09Sept2025 |
-| AGN feedback factor | $f_{\rm feedback}$ | 0.1 | ó | Star Magic 09Sept2025 |
+| Vacuum coupling | $k_4$ | 2.0 | ‚Äì | Star Magic 09Sept2025 |
+| ?CDM dark energy density | $\rho_v$ | 6√ó10?ÔøΩ7 | kg/mÔøΩ | ?CDM Planck 2018 |
+| Vacuum concentration | $C_{\rm conc}$ | 1.0 | ‚Äì | Star Magic 09Sept2025 |
+| Galactic centre BH mass | $M_{\rm bh}$ | 8.15√ó10ÔøΩ6 | kg | EHT Collaboration (2022) |
+| Distance to galactic centre | $d_g$ | 2.55√ó10ÔøΩÔøΩ | m | GRAVITY Collaboration |
+| Time decay rate | $\alpha$ | 0.001 | day‚Åª¬π | Star Magic 09Sept2025 |
+| AGN feedback factor | $f_{\rm feedback}$ | 0.1 | ‚Äì | Star Magic 09Sept2025 |
 
 ### 2.2 Numerical Evaluation
 
@@ -46,7 +46,7 @@ $$= 2.0 \times 6 \times 10^{-27} \times 3.196 \times 10^{16} \times 1.1$$
 
 $$\boxed{U_{g4}(t=0) \approx 4.22 \times 10^{-10}\ \mathrm{m/s}^2}$$
 
-This is consistent with galactic-scale gravitational acceleration magnitudes (~10?π∞ m/s≤), implying Ug4 contributes at the galactic fringe level ó a scale relevant to rotation curve anomalies (MOND territory).
+This is consistent with galactic-scale gravitational acceleration magnitudes (~10?ÔøΩÔøΩ m/sÔøΩ), implying Ug4 contributes at the galactic fringe level ÔøΩ a scale relevant to rotation curve anomalies (MOND territory).
 
 ---
 
@@ -56,11 +56,11 @@ This form is **physically distinct** from all prior Ug4 implementations in the U
 
 | Property | This form (PAPER_368) | Prior form (f3c55f52) | Notes |
 |----------|----------------------|-----------------------|-------|
-| Coupling k4 | **2.0** | 1◊10?4∞ | 40 orders of magnitude difference |
-| ? units | **kg/m≥** (mass density) | J/m≥ (energy density) | Different physical quantity |
-| ? value | **6◊10?≤7** (?CDM ?_DE) | 1◊10?? | Different measurement basis |
+| Coupling k4 | **2.0** | 1√ó10‚Åª4ÔøΩ | 40 orders of magnitude difference |
+| ? units | **kg/mÔøΩ** (mass density) | J/mÔøΩ (energy density) | Different physical quantity |
+| ? value | **6√ó10?ÔøΩ7** (?CDM ?_DE) | 1√ó10?? | Different measurement basis |
 | Multiplier | **C_concentration** | [SCm] | Concentration vs SCm density |
-| c decay a | **day?π** | s?π | Different timescale |
+| c decay a | **day‚Åª¬π** | s‚Åª¬π | Different timescale |
 | Foundation | **?CDM observational** | Feedback Factor Framework | Different theoretical basis |
 
 ---
@@ -77,11 +77,11 @@ This equals ?_v used here. UQFF proposes this pervasive vacuum background couple
 
 ### 4.2 Galactic Centre Coupling Geometry
 
-The factor Mbh/dg (units: kg/m) represents the mass-distance ratio of the coherent vacuum coupling to SgrA*. This is geometrically distinct from the standard gravitational 1/r≤ law (which uses G∑M/r≤). The linear 1/dg dependence suggests a long-range vacuum polarisation effect extending beyond the standard gravitational horizon.
+The factor Mbh/dg (units: kg/m) represents the mass-distance ratio of the coherent vacuum coupling to SgrA*. This is geometrically distinct from the standard gravitational 1/rÔøΩ law (which uses GÔøΩM/rÔøΩ). The linear 1/dg dependence suggests a long-range vacuum polarisation effect extending beyond the standard gravitational horizon.
 
 ### 4.3 Time Modulation
 
-The exp(-at)∑cos(ptn) modulation arises from UQFF's universal time-oscillator framework. The a=0.001 day?π decay corresponds to a half-life of ~693 days (~1.9 years), comparable to solar cycle modulation.
+The exp(-at)ÔøΩcos(ptn) modulation arises from UQFF's universal time-oscillator framework. The a=0.001 day‚Åª¬π decay corresponds to a half-life of ~693 days (~1.9 years), comparable to solar cycle modulation.
 
 ### 4.4 AGN Feedback Enhancement
 
@@ -93,37 +93,37 @@ The (1+f_feedback) factor with f_feedback=0.1 represents a 10% enhancement from 
 
 ### 5.1 ?CDM Consistency
 
-?_v = 6◊10?≤7 kg/m≥ is consistent with:
-- Planck 2018 CMB constraint: ?_? = 5.9◊10?≤7 kg/m≥
+?_v = 6√ó10?ÔøΩ7 kg/mÔøΩ is consistent with:
+- Planck 2018 CMB constraint: ?_? = 5.9√ó10?ÔøΩ7 kg/mÔøΩ
 - JWST deep field photometric dark energy density estimates
 - Standard ?CDM O? = 0.685, H0 = 67.4 km/s/Mpc
 
 ### 5.2 Galactic Scale Gravitational Acceleration
 
-At galactic fringe: g_gal ~ G∑M_milkyway/r_gal≤ ~ 10?π∞ m/s≤.  
-Ug4(t=0) ò 4.22◊10?π∞ m/s≤ ó same order. This supports interpretation as a vacuum-mediated galactic background acceleration.
+At galactic fringe: g_gal ~ GÔøΩM_milkyway/r_galÔøΩ ~ 10?ÔøΩÔøΩ m/sÔøΩ.  
+Ug4(t=0) ÔøΩ 4.22√ó10?ÔøΩÔøΩ m/sÔøΩ ÔøΩ same order. This supports interpretation as a vacuum-mediated galactic background acceleration.
 
 ### 5.3 Physical Units Check
 
 $$[U_{g4}] = \left[\frac{\text{kg}}{\text{m}^3}\right] \cdot \left[\frac{\text{kg}}{\text{m}}\right] \cdot [k_4]$$
 
-For [k4] = m4 s?≤ kg?≤, $[U_{g4}]$ = m/s≤. ? (k4 absorbs unit conversion)
+For [k4] = m4 s‚Åª¬π kg?ÔøΩ, $[U_{g4}]$ = m/sÔøΩ. ? (k4 absorbs unit conversion)
 
 ---
 
 ## 6. Deduplication Note
 
-- **vs. PAPER_296 (? term, Universe module):** PAPER_296 uses a_? = ?c≤/3 (cosmological constant as acceleration). This form uses ?_v (mass density) ◊ Mbh/dg ó different geometry and source.
-- **vs. Ug4VacuumMediatedCalculator (f3c55f52):** Physically distinct ó see Section 3. Different k4, different ? units, different multiplier.
-- **vs. PSZ2/ASASSN Ug4 terms:** Those use G∑M/r≤ Newton base with Ug4 prefix ó fundamentally different structure.
+- **vs. PAPER_296 (? term, Universe module):** PAPER_296 uses a_? = ?cÔøΩ/3 (cosmological constant as acceleration). This form uses ?_v (mass density) ÔøΩ Mbh/dg ÔøΩ different geometry and source.
+- **vs. Ug4VacuumMediatedCalculator (f3c55f52):** Physically distinct ÔøΩ see Section 3. Different k4, different ? units, different multiplier.
+- **vs. PSZ2/ASASSN Ug4 terms:** Those use GÔøΩM/rÔøΩ Newton base with Ug4 prefix ÔøΩ fundamentally different structure.
 
 ---
 
 ## 7. Classification
 
 **Physics Territory:** FIRST explicit ?CDM ?_DE coupling to galactic BH/distance ratio as UQFF Ug4 gravity  
-**Scale:** Solar System ? Galactic (coupling range: d_g=2.55◊10≤∞ m, ~8.5 kpc)  
+**Scale:** Solar System ? Galactic (coupling range: d_g=2.55√ó10ÔøΩÔøΩ m, ~8.5 kpc)  
 **CP3 Implementation:** `Ug4VacuumEnergyLambdaCDMGalacticBHCouplingCalculator` (CondensedPhysics3.py, Session 100)  
 **CP2 Implementation:** `StarMagic09SeptUQFFMultiBodyNSCalculator` (CondensedPhysics2.py, Session 100)  
-**C++ Implementation:** `STAR_MAGIC_09SEPT_UQFF_MODULE.cpp` ó `compute_Ug4(t, tn)`  
+**C++ Implementation:** `STAR_MAGIC_09SEPT_UQFF_MODULE.cpp` ÔøΩ `compute_Ug4(t, tn)`  
 **WOLFRAM_TERM:** `STARMAG_UG4_VACUUM`

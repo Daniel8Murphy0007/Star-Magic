@@ -1,4 +1,4 @@
-﻿# PAPER_319: Compact HII SFR Gravitational Binding Phase Transition
+# PAPER_319: Compact HII SFR Gravitational Binding Phase Transition
 ## t_cross = 67,730 yr | sSFR = 5×10⁻⁴ yr⁻¹ (50× Lagoon) | m_factor(t_age) = 151
 ### FIRST UQFF Compact HII Region SFR Runaway Gravitational Binding Phase Transition
 

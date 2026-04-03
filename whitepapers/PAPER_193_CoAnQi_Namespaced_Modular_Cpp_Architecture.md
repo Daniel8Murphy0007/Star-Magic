@@ -14,7 +14,7 @@ This paper documents the full namespace hierarchical decomposition of the CoAnQi
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0◊10?4 day?π, [SSq] = 0.57) uniquely enabling this analysis ó establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0√ó10‚Åª4 day‚Åª¬π, [SSq] = 0.57) uniquely enabling this analysis ÔøΩ establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 

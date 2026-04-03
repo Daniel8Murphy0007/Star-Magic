@@ -1,4 +1,4 @@
-﻿# PAPER_194: Complete Assimp LoadOBJ and VTK ExportToSTL Implementation
+# PAPER_194: Complete Assimp LoadOBJ and VTK ExportToSTL Implementation
 
 **Version:** 1.0  
 **Date:** March 13, 2026  
@@ -20,7 +20,7 @@ This paper provides complete reference implementations for 3D mesh I/O in the Co
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 

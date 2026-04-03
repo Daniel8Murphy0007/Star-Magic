@@ -1,4 +1,4 @@
-# PAPER_352 — R Aquarii Symbiotic Binary: F_U_Bi_i with Kepler 44-Year Orbital Period
+# PAPER_352 ï¿½ R Aquarii Symbiotic Binary: F_U_Bi_i with Kepler 44-Year Orbital Period
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2  
 **Session:** 96  
@@ -10,7 +10,7 @@
 
 ## Abstract
 
-R Aquarii is the nearest symbiotic nova system, consisting of a Mira Pulsating Giant and a white dwarf companion in a 44-year orbit. UQFF buoyancy-unified force F_U_Bi_i ˜ -2.09×10²¹² N is calculated at the binary orbital radius derived from Kepler's third law: a_orb = (GM·P²/4p²)^(1/3). HST 2025 near-UV imaging of the expanding jet system (launched ~10³ yr ago) provides the observational anchor. The UQFF Kozima LENR coupling is relevant at the mass transfer interface between the giant's wind and the WD accretion disk.
+R Aquarii is the nearest symbiotic nova system, consisting of a Mira Pulsating Giant and a white dwarf companion in a 44-year orbit. UQFF buoyancy-unified force F_U_Bi_i ï¿½ -2.09Ã—10ï¿½ï¿½ï¿½ N is calculated at the binary orbital radius derived from Kepler's third law: a_orb = (GMï¿½Pï¿½/4pï¿½)^(1/3). HST 2025 near-UV imaging of the expanding jet system (launched ~10ï¿½ yr ago) provides the observational anchor. The UQFF Kozima LENR coupling is relevant at the mass transfer interface between the giant's wind and the WD accretion disk.
 
 ---
 
@@ -26,7 +26,7 @@ $$F_{U\_Bi\_i} \approx -2.09 \times 10^{212}\ \mathrm{N}$$
 
 $$a_{\rm orb} = \left(\frac{G M_{\rm total} P_{\rm orb}^2}{4\pi^2}\right)^{1/3}$$
 
-with P_orb = 44 yr = 1.388×10? s and M_total ˜ M_Mira + M_WD ˜ 2 M?:
+with P_orb = 44 yr = 1.388Ã—10? s and M_total â€“ M_Mira + M_WD ï¿½ 2 M?:
 $$a_{\rm orb} = \left(\frac{6.674\times 10^{-11} \times 4\times 10^{30} \times (1.388\times 10^9)^2}{4\pi^2}\right)^{1/3} \approx 1.0 \times 10^{13}\ \mathrm{m} \approx 70\ \mathrm{AU}$$
 
 ### 2.3 Mass Transfer and LENR Coupling
@@ -54,16 +54,16 @@ $$L_{\rm jet} = v_{\rm jet} \cdot \tau_{\rm jet} \approx 6.3 \times 10^{15}\ \ma
 |----------|---------|-------|
 | P_orb | Spectroscopic | 44 yr |
 | a_orb | Kepler 3rd law | ~70 AU |
-| F_U_Bi_i | UQFF | -2.09×10²¹² N |
+| F_U_Bi_i | UQFF | -2.09Ã—10ï¿½ï¿½ï¿½ N |
 | M_total | Mira + WD | ~2 M? |
 | v_jet | HST proper motion | ~200 km/s |
-| t_jet | Jet age | ~10³ yr |
+| t_jet | Jet age | ~10ï¿½ yr |
 
 ---
 
 ## 4. Physical Significance
 
-R Aquarii provides UQFF calibration at the symbiotic nova (compact binary) scale — intermediate between individual stellar objects (PAPER_351 TDE) and galactic nuclei. The 44-year orbital period sets the longest UQFF binary activation period in the dataset (vs. PAPER_347 Cen A 12.5-yr AGN cycle). The Kozima LENR coupling at the mass transfer interface raises the testable prediction that R Aquarii's nova outburst energetics deviate from standard accretion models by an LENR fraction, detectable in nuclear gamma-ray emission (e.g., INTEGRAL 511 keV line observations).
+R Aquarii provides UQFF calibration at the symbiotic nova (compact binary) scale ï¿½ intermediate between individual stellar objects (PAPER_351 TDE) and galactic nuclei. The 44-year orbital period sets the longest UQFF binary activation period in the dataset (vs. PAPER_347 Cen A 12.5-yr AGN cycle). The Kozima LENR coupling at the mass transfer interface raises the testable prediction that R Aquarii's nova outburst energetics deviate from standard accretion models by an LENR fraction, detectable in nuclear gamma-ray emission (e.g., INTEGRAL 511 keV line observations).
 
 ---
 
@@ -81,4 +81,4 @@ R Aquarii provides UQFF calibration at the symbiotic nova (compact binary) scale
 **CP Implementation:** `RAquariiSymbioticBinaryFUBiCalculator` (CondensedPhysics3.py, Session 96)
 
 
-**UQFF computed:** Canonical UQFF buoyancy parameter U_bi = ?×[SSq]×GM/r² = 5.0e-4×0.57×6.67e-11×M/r²; for solar parameters: U_bi,Sun = 5.7e-4×6.67e-11×1.99e30/(6.96e8)² = 1.47e+2 m/s².
+**UQFF computed:** Canonical UQFF buoyancy parameter U_bi = ?ï¿½[SSq]ï¿½GM/rÎº = 5.0e-4ï¿½0.57ï¿½6.67e-11ï¿½M/rï¿½; for solar parameters: U_bi,Sun = 5.7e-4ï¿½6.67e-11ï¿½1.99e30/(6.96e8)ï¿½ = 1.47e+2 m/sï¿½.

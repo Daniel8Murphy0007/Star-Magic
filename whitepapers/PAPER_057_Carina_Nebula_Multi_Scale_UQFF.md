@@ -1,5 +1,7 @@
+# PAPER_057: The Carina Nebula Complex: Multi-Scale UQFF Validation Across Three Spatial Orders – NGC 3372 (Full Nebula), AG Carinae (Luminous Blue Variable), and Mystic Mountain (Protostellar Pillar)
 
-**Title:** The Carina Nebula Complex: Multi-Scale UQFF Validation Across Three Spatial Orders � NGC 3372 (Full Nebula), AG Carinae (Luminous Blue Variable), and Mystic Mountain (Protostellar Pillar)
+
+**Title:** The Carina Nebula Complex: Multi-Scale UQFF Validation Across Three Spatial Orders – NGC 3372 (Full Nebula), AG Carinae (Luminous Blue Variable), and Mystic Mountain (Protostellar Pillar)
 
 **Author:** Daniel T. Murphy  
 **Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57)  
@@ -7,9 +9,8 @@
 **Validator:** `validate_all_models.py` � NGC3372Model: **4/4 PASS** ? | AGCarinaeModel: **4/4 PASS** ? | MysticMountainModel: **4/4 PASS** ?  
 **Source Module:** `CondensedPhysics.py`, `validate_all_models.py`  
 **Index Slot:** �1.7 arXiv Cross-Validation Framework,  
-    $n = [int]# PAPER #57 � Carina Nebula Complex: Multi-Scale UQFF Validation
 
-**Title:** The Carina Nebula Complex: Multi-Scale UQFF Validation Across Three Spatial Orders � NGC 3372 (Full Nebula), AG Carinae (Luminous Blue Variable), and Mystic Mountain (Protostellar Pillar)
+**Title:** The Carina Nebula Complex: Multi-Scale UQFF Validation Across Three Spatial Orders – NGC 3372 (Full Nebula), AG Carinae (Luminous Blue Variable), and Mystic Mountain (Protostellar Pillar)
 
 **Author:** Daniel T. Murphy  
 **Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57)  
@@ -21,14 +22,14 @@
 ---
 
 
-<!-- UQFF constants: ? = 5.0e-4 day?�, [SSq] = 0.57, M_UQFF = 1.43e1 TeV -->
+<!-- UQFF constants: ? = 5.0e-4 day⁻¹, [SSq] = 0.57, M_UQFF = 1.43e1 TeV -->
 ## Abstract
 
-The Carina Nebula star-forming complex (at ~2.3 kpc) is one of the most massive and energetically rich Galactic HII regions. This paper presents a **multi-scale UQFF validation** covering three distinct spatial objects within or associated with the Carina complex: (1) NGC 3372, the full ~300 light-year HII nebula; (2) AG Carinae (AG Car), a Luminous Blue Variable at ~6 kpc; and (3) Mystic Mountain, the iconic 3-light-year Bok globule pillar. All three models use standard g_compressed = 1.0533�10?� (no enhancement), confirming that none are in the compressed/energized classes of mergers, fast winds, or shocks. The three g_grav values span 12.5� from 2.6550�10?�� (single LBV) to 3.3188�10?�� (full nebula), demonstrating the UQFF's consistent mass-dependent scaling. Total: **12/12 PASS**.
+The Carina Nebula star-forming complex (at ~2.3 kpc) is one of the most massive and energetically rich Galactic HII regions. This paper presents a **multi-scale UQFF validation** covering three distinct spatial objects within or associated with the Carina complex: (1) NGC 3372, the full ~300 light-year HII nebula; (2) AG Carinae (AG Car), a Luminous Blue Variable at ~6 kpc; and (3) Mystic Mountain, the iconic 3-light-year Bok globule pillar. All three models use standard g_compressed = 1.0533×10?� (no enhancement), confirming that none are in the compressed/energized classes of mergers, fast winds, or shocks. The three g_grav values span 12.5� from 2.6550×10?�� (single LBV) to 3.3188×10?�� (full nebula), demonstrating the UQFF's consistent mass-dependent scaling. Total: **12/12 PASS**.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0�10?4 day?�, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -55,27 +56,27 @@ All three exist within a single coherent astrophysical environment in the Carina
 | Distance | 2.3 kpc |
 | Extent | ~300 ly |
 | Mass | ~105 M? (stellar + gas) |
-| Ionization source | ? Carinae (150 M?, L = 5�106 L?), clusters Tr 14, Tr 16 |
+| Ionization source | ? Carinae (150 M?, L = 5×106 L?), clusters Tr 14, Tr 16 |
 | Special feature | ? Car: most luminous known star in Milky Way |
 
 ### Test Results
 
 | Test | Quantity | Value | Status |
 |------|----------|-------|--------|
-| 1 | g_grav | **3.3188�10?��** m/s� | ? |
+| 1 | g_grav | **3.3188×10?��** m/s� | ? |
 | 2 | Hubble factor | **1.0001** | ? |
-| 3 | g_compressed | **1.0533�10?�** (standard) | ? |
-| 4 | R_amplitude | **1.1586�10?�** (standard) | ? |
+| 3 | g_compressed | **1.0533×10?�** (standard) | ? |
+| 4 | R_amplitude | **1.1586×10?�** (standard) | ? |
 
 **4/4 PASS ?**
 
 ### Analysis
 
-g_grav = 3.3188�10?�� is one of the highest values in the suite (second only to M42 = 6.6�10?��). The ratio g(Carina)/g(M42):
+g_grav = 3.3188×10?�� is one of the highest values in the suite (second only to M42 = 6.6×10?��). The ratio g(Carina)/g(M42):
 
 $$\frac{g_{\rm Carina}}{g_{\rm M42}} = \frac{3.32 \times 10^{-10}}{6.64 \times 10^{-10}} = 0.50$$
 
-Distance factor: M42 at 410 pc, Carina at 2300 pc ? (2300/410)� = 31.5� farther, but Carina has ~100� more mass, giving a net factor 100/31.5 � 3.2� more g expected ? roughly consistent with the ~2.0 ratio (noting simplified analysis).
+Distance factor: M42 at 410 pc, Carina at 2300 pc ? (2300/410)� = 31.5� farther, but Carina has ~100� more mass, giving a net factor 100/31.5 × 3.2� more g expected ? roughly consistent with the ~2.0 ratio (noting simplified analysis).
 
 The Hubble factor 1.0001 (essentially 1.0000) confirms Carina is a strictly local Galactic system.
 
@@ -83,7 +84,7 @@ Standard g_compressed and R_amplitude indicate the Carina Nebula is in the "stan
 
 ---
 
-## 3. Model 2: AG Carinae � Luminous Blue Variable
+## 3. Model 2: AG Carinae – Luminous Blue Variable
 
 ### System Parameters
 | Parameter | Value |
@@ -91,19 +92,19 @@ Standard g_compressed and R_amplitude indicate the Carina Nebula is in the "stan
 | Full name | AG Carinae (AG Car, V Sge) |
 | Type | Luminous Blue Variable (LBV) � the brightest class of known stars |
 | Distance | ~6 kpc |
-| Luminosity | ~106�106�5 L? |
+| Luminosity | ~106×106�5 L? |
 | Mass | ~65�75 M? |
-| Ejection nebula | ~3�5 ly diameter, M_neb � 0.3�1.5 M? |
+| Ejection nebula | ~3�5 ly diameter, M_neb ≈ 0.3�1.5 M? |
 | Note | AG Car is a different object from ? Carinae despite the constellation association |
 
 ### Test Results
 
 | Test | Quantity | Value | Status |
 |------|----------|-------|--------|
-| 1 | g_grav | **2.6550�10?��** m/s� | ? |
+| 1 | g_grav | **2.6550×10?��** m/s� | ? |
 | 2 | Hubble factor | **1.0003** | ? |
-| 3 | g_compressed | **1.0533�10?�** (standard) | ? |
-| 4 | R_amplitude | **1.1586�10?�** (standard) | ? |
+| 3 | g_compressed | **1.0533×10?�** (standard) | ? |
+| 4 | R_amplitude | **1.1586×10?�** (standard) | ? |
 
 **4/4 PASS ?**
 
@@ -116,7 +117,7 @@ $$\frac{g_{\rm NGC3372}}{g_{\rm AGCar}} = \frac{3.3188 \times 10^{-10}}{2.6550 \
 This 12.5-fold difference reflects:
 - Mass: NGC3372 ~105 M? vs. AG Car ~65 M? ? 1538� mass ratio
 - Distance: NGC3372 at 2300 pc vs. AG Car at 6000 pc ? (6000/2300)� = 6.8� farther
-- Net: 1538/6.8 � 226� expected, but UQFF measures 12.5� � the UQFF g_grav is capturing a different effective mass (the local dynamical mass contribution, not total system mass), which is appropriate for the stellar-wind-dominated sub-parsec scale.
+- Net: 1538/6.8 × 226� expected, but UQFF measures 12.5� � the UQFF g_grav is capturing a different effective mass (the local dynamical mass contribution, not total system mass), which is appropriate for the stellar-wind-dominated sub-parsec scale.
 
 **Hubble factor 1.0003** is the second-highest Hubble factor in the suite (behind NGC2841 at 1.7154), reflecting AG Car's greater distance at 6 kpc compared to most Galactic-neighborhood objects. The tiny cosmological correction of 0.03% is consistent with a Galactic object.
 
@@ -124,7 +125,7 @@ The AG Car standard g_compressed (1�) confirms LBVs, despite their violent eru
 
 ---
 
-## 4. Model 3: Mystic Mountain � Protostellar Pillar
+## 4. Model 3: Mystic Mountain – Protostellar Pillar
 
 ### System Parameters
 | Parameter | Value |
@@ -140,16 +141,16 @@ The AG Car standard g_compressed (1�) confirms LBVs, despite their violent eru
 
 | Test | Quantity | Value | Status |
 |------|----------|-------|--------|
-| 1 | g_grav | **1.3275�10?��** m/s� | ? |
+| 1 | g_grav | **1.3275×10?��** m/s� | ? |
 | 2 | Hubble factor | **1.0001** | ? |
-| 3 | g_compressed | **1.0533�10?�** (standard) | ? |
-| 4 | R_amplitude | **1.1586�10?�** (standard) | ? |
+| 3 | g_compressed | **1.0533×10?�** (standard) | ? |
+| 4 | R_amplitude | **1.1586×10?�** (standard) | ? |
 
 **4/4 PASS ?**
 
 ### Analysis
 
-Mystic Mountain's g_grav = 1.3275�10?�� is exactly:
+Mystic Mountain's g_grav = 1.3275×10?�� is exactly:
 $$g_{\rm MysticMtn} = \frac{1}{10} \times g_{\rm NGC3372}$$ (within ~0.5%)
 
 This is expected: the pillar contains ~250 M? vs. NGC3372's ~105 M? at the same distance (2.3 kpc), giving a mass ratio of 400:1 ? g ratio of 400:1 vs. observed 2.5:1. Again, the UQFF g_grav parameter captures the local dynamical mass contribution rather than total enclosed stellar mass, appropriate for the sub-parsec, thermally-confined scale of a Bok globule pillar.
@@ -164,15 +165,15 @@ The **standard g_compressed** (no enhancement) is physically significant: Mystic
 
 | Object | Scale | g_grav | Ratio to NGC3372 | Hubble |
 |--------|-------|--------|----------------|--------|
-| NGC 3372 | ~300 ly | 3.3188�10?�� | 1.0 (reference) | 1.0001 |
-| Mystic Mountain | ~3 ly | 1.3275�10?�� | 0.40 | 1.0001 |
-| AG Carinae | ~3 ly (at 6 kpc) | 2.6550�10?�� | 0.08 | 1.0003 |
+| NGC 3372 | ~300 ly | 3.3188×10?�� | 1.0 (reference) | 1.0001 |
+| Mystic Mountain | ~3 ly | 1.3275×10?�� | 0.40 | 1.0001 |
+| AG Carinae | ~3 ly (at 6 kpc) | 2.6550×10?�� | 0.08 | 1.0003 |
 
-The 12.5� range in g_grav (2.66�10?�� to 3.32�10?��) is fully explained by mass and distance differences across the spatial hierarchy.
+The 12.5� range in g_grav (2.66×10?�� to 3.32×10?��) is fully explained by mass and distance differences across the spatial hierarchy.
 
 All three share:
-- Standard g_compressed = 1.0533�10?�
-- Standard R_amplitude = 1.1586�10?�
+- Standard g_compressed = 1.0533×10?�
+- Standard R_amplitude = 1.1586×10?�
 
 This universality of the compression class across three very different spatial scales validates the UQFF prediction that the compression enhancement is a **dynamical state variable** (merger, fast wind), not a simple mass or distance scaling.
 
@@ -187,26 +188,26 @@ This universality of the compression class across three very different spatial s
 ### NGC3372 (4/4 PASS)
 | # | Test | Result | ?/? |
 |---|------|--------|-----|
-| 1 | g_grav = 3.3188�10?�� | 3.3188�10?�� | ? |
+| 1 | g_grav = 3.3188×10?�� | 3.3188×10?�� | ? |
 | 2 | Hubble = 1.0001 | 1.0001 | ? |
-| 3 | g_comp = 1.0533�10?� | 1.0533�10?� | ? |
-| 4 | R_amp = 1.1586�10?� | 1.1586�10?� | ? |
+| 3 | g_comp = 1.0533×10?� | 1.0533×10?� | ? |
+| 4 | R_amp = 1.1586×10?� | 1.1586×10?� | ? |
 
 ### AGCarinae (4/4 PASS)
 | # | Test | Result | ?/? |
 |---|------|--------|-----|
-| 1 | g_grav = 2.6550�10?�� | 2.6550�10?�� | ? |
+| 1 | g_grav = 2.6550×10?�� | 2.6550×10?�� | ? |
 | 2 | Hubble = 1.0003 | 1.0003 | ? |
-| 3 | g_comp = 1.0533�10?� | 1.0533�10?� | ? |
-| 4 | R_amp = 1.1586�10?� | 1.1586�10?� | ? |
+| 3 | g_comp = 1.0533×10?� | 1.0533×10?� | ? |
+| 4 | R_amp = 1.1586×10?� | 1.1586×10?� | ? |
 
 ### MysticMountain (4/4 PASS)
 | # | Test | Result | ?/? |
 |---|------|--------|-----|
-| 1 | g_grav = 1.3275�10?�� | 1.3275�10?�� | ? |
+| 1 | g_grav = 1.3275×10?�� | 1.3275×10?�� | ? |
 | 2 | Hubble = 1.0001 | 1.0001 | ? |
-| 3 | g_comp = 1.0533�10?� | 1.0533�10?� | ? |
-| 4 | R_amp = 1.1586�10?� | 1.1586�10?� | ? |
+| 3 | g_comp = 1.0533×10?� | 1.0533×10?� | ? |
+| 4 | R_amp = 1.1586×10?� | 1.1586×10?� | ? |
 
 **Total: 12/12 PASS (100%)**
 
@@ -216,9 +217,9 @@ This universality of the compression class across three very different spatial s
 
 1. **Multi-scale consistency**: The UQFF framework accurately predicts g_grav across three orders of spatial scale within the Carina complex (300 ly HII region ? 3 ly pillar ? LBV star envelope)
 2. **Hubble factor**: The 0.0001�0.0003 range of Hubble corrections across 2.3�6 kpc is physically motivated and consistent
-3. **Compression universality**: All three objects share g_compressed = 1.0533�10?� (standard class), validating that compression enhancement is a dynamical state marker, not a size or mass proxy
+3. **Compression universality**: All three objects share g_compressed = 1.0533×10?� (standard class), validating that compression enhancement is a dynamical state marker, not a size or mass proxy
 4. **Erosion vs. compression**: Mystic Mountain (eroded externally) and NGC3372 (distributed ionization) both show standard compression; the UQFF correctly distinguishes passive and active environments
-5. **LBV distinctness**: AG Car's lower Hubble-corrected distance and single-star mass scale produce a distinct, consistent g_grav (2.66�10?��) without requiring any special parameter tuning
+5. **LBV distinctness**: AG Car's lower Hubble-corrected distance and single-star mass scale produce a distinct, consistent g_grav (2.66×10?��) without requiring any special parameter tuning
 
 *Validator: `validate_all_models.py` NGC3372Model + AGCarinaeModel + MysticMountainModel � 12/12 PASS ? | ? = 0.0005/day | [SSq] = 0.57*
 
@@ -246,7 +247,7 @@ This universality of the compression class across three very different spatial s
 
 ### A.2 F_U Master Equation (Complete — 4 terms)
 
-$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}igl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}igr]$$
+$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}\bigr]$$
 
 | Term | Description | Implementation |
 |------|-------------|----------------|
@@ -263,9 +264,7 @@ $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}igl[\l
 
 ### A.3 Um Heaviside Phase-Transition Amplifier (PAPER_421)
 
-$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} 	imes igl(1 + 10^{13}\,\Theta(
-ho_{SCm} - 
-ho_c)igr) 	imes igl(1 + A_q\cos(\Delta\omega\,t)igr)$$
+$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rho_{SCm} - \rho_c)\bigr) \times \bigl(1 + A_q\cos(\Delta\omega\,t)\bigr)$$
 
 | Symbol | Value | Description |
 |--------|-------|-------------|

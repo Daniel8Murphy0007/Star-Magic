@@ -1,4 +1,4 @@
-﻿# PAPER_215: Cosmic Rays, WHIM, Fermi Acceleration, and CR Knee in UQFF
+# PAPER_215: Cosmic Rays, WHIM, Fermi Acceleration, and CR Knee in UQFF
 
 **Version:** 1.0  
 **Date:** March 13, 2026  
@@ -20,7 +20,7 @@ The UQFF treatment of high-energy cosmic ray (CR) physics is presented, encompas
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -46,7 +46,7 @@ UQFF F_UBii,cr:
   E_CR,total = energy density of cosmic rays: u_CR ˜ 1 eV/cm³ (local ISM)
 
 Numerical:
-  u_CR = 1 eV/cm³ = 1.6×10?¹? J / 10?6 m³ = 1.6×10?¹³ J/m³
+  u_CR = 1 eV/cm³ = 1.6×10?¹? J / 10⁻6 m³ = 1.6×10?¹³ J/m³
   F_rel = 1  (placeholder — set by system)
   E_LEP = 511 keV = 8.19×10?¹4 J  (electron rest mass)
   Q_wave = 6.33×104 J/m³
@@ -115,7 +115,7 @@ For typical Galactic SNR:
 
     E_max = 1 × 1.6×10?¹? × 3×10?¹° × 107 × 3.09×10¹7
           = 1.6×10?¹? × 9.27×10¹4
-          = 1.48×10?4 J = 1.48×10?4/(1.6×10?¹?) eV
+          = 1.48×10⁻4 J = 1.48×10⁻4/(1.6×10?¹?) eV
           = 9.25×10¹4 eV ˜ 10¹5 eV = 1 PeV
 
     For iron (Z=26): E_max,Fe = 26 × 10¹5 eV = 2.6×10¹6 eV
@@ -179,7 +179,7 @@ Alfvén wave acceleration in WHIM:
   v_A,WHIM = B_WHIM/v(4p·?_WHIM)
   B_WHIM ~ 1–100 nG (poorly constrained, model-dependent)
   For B=10 nG, ?_WHIM = 10?²7 kg/m³:
-    v_A = 10?¹7 / v(4p·10?²7) ˜ 10?¹7 / v(1.26×10?²6) ˜ 10?¹7 / 3.55×10?¹³ ˜ 2.8×10?5 m/s
+    v_A = 10?¹7 / v(4p·10?²7) ˜ 10?¹7 / v(1.26×10?²6) ˜ 10?¹7 / 3.55×10?¹³ ˜ 2.8×10⁻5 m/s
     (far sub-Alfvénic — thermal velocity dominates)
   ? Fermi-II suppressed in WHIM; DSA at WHIM shocks dominates
 ```
@@ -198,7 +198,7 @@ Small-scale dynamo (Kazantsev 1968):
 For WHIM filaments (from grok_share_7514fe.txt lines 6360–6380):
   v_turb ~ 100 km/s (filament turbulence)
   l_turb ~ 100 kpc (driving scale)
-  ?_dynamo ~ 100 km/s / (100 kpc) = 105 / (3.09×10²¹) ˜ 3.2×10?¹7 s?¹
+  ?_dynamo ~ 100 km/s / (100 kpc) = 105 / (3.09×10²¹) ˜ 3.2×10?¹7 s⁻¹
   Saturation timescale: t_sat ˜ ln(B_sat/B_seed)/? ~ 1 Gyr (produces µG-level B)
 
 UQFF coupling to Kazantsev dynamo:

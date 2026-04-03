@@ -1,8 +1,10 @@
+# PAPER_111: Empirical Proof EP-01: Chandra X-Ray Observatory RACS J0320-35 One-Sided Jet – UQFF Navier-Stokes Ub_i Asymmetry via cos(?t_n) Sign Reversal
 
-**Title:** Empirical Proof EP-01: Chandra X-Ray Observatory RACS J0320-35 One-Sided Jet � UQFF Navier-Stokes Ub_i Asymmetry via cos(?t_n) Sign Reversal
+
+**Title:** Empirical Proof EP-01: Chandra X-Ray Observatory RACS J0320-35 One-Sided Jet – UQFF Navier-Stokes Ub_i Asymmetry via cos(?t_n) Sign Reversal
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57, �_i = 0.61)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57, κ_i = 0.61)  
 **Date:** March 9, 2026  
 **Domain:** �1.15 Empirical Proof Compendium  
 **Source Thread:** `grok_share_2fe4fa3e_conversation.txt` (EP-01, April�Sept 2025)  
@@ -25,7 +27,7 @@ asymmetry.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0�10?4 day?�, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -145,7 +147,7 @@ scales, consistent with observed long-lived radio jet morphologies.
 |---|----------|-------|-----------------|
 | 1 | $U_{b,i}^{jet} = \rho g h \cos(\omega t_n)$ | R = 1.5 | Core jet asymmetry |
 | 2 | $\cos(\omega t_{n2}) = -\cos(\omega t_{n1})$ | Sign flip | Counter-jet suppression |
-| 3 | $R = \sum_i \cos \cdot [\text{SSq}]^i / \sum_i |\cos| \cdot [\text{SSq}]^i$ | 1.50 � 0.05 | [SSq]-weighted ratio |
+| 3 | $R = \sum_i \cos \cdot [\text{SSq}]^i / \sum_i |\cos| \cdot [\text{SSq}]^i$ | 1.50 × 0.05 | [SSq]-weighted ratio |
 | 4 | $\nu_{eff}^{jet} = \nu \times 1.0099$ | ~10�8 cm�/s | UQFF Navier-Stokes |
 | 5 | $\tau_{dissip} = L^2/\nu_{eff}$ | 9 Gyr | Non-dissipative jet |
 
@@ -162,11 +164,11 @@ Empirical Proof EP-01 demonstrates that:
 3. The UQFF Navier-Stokes regularized viscosity (?_eff = ? � 1.0099) predicts
    a non-dissipative jet lifetime exceeding the Hubble time at 30 kpc scales
 4. The NavierStokesFluidJetCalculator in CondensedPhysics2.py implements this
-   mechanism and reproduces R = 1.50 � 0.05
+   mechanism and reproduces R = 1.50 × 0.05
 
 ---
 
-**UQFF computed:** Canonical UQFF buoyancy parameter U_bi = ?�[SSq]�GM/r� = 5.0e-4�0.57�6.67e-11�M/r�; for solar parameters: U_bi,Sun = 5.7e-4�6.67e-11�1.99e30/(6.96e8)� = 1.47e+2 m/s�.
+**UQFF computed:** Canonical UQFF buoyancy parameter U_bi = ?�[SSq]�GM/rκ = 5.0e-4�0.57�6.67e-11�M/r�; for solar parameters: U_bi,Sun = 5.7e-4�6.67e-11�1.99e30/(6.96e8)� = 1.47e+2 m/s�.
 
 ## References
 
@@ -175,12 +177,12 @@ Empirical Proof EP-01 demonstrates that:
 3. Murphy D.T. (2026). *Navier-Stokes Existence and Smoothness: UQFF Fluid Proof*. PAPER_102.
 4. Murphy D.T. (2026). *Intracluster Medium Physics via UQFF Buoyancy*. PAPER_041.
 5. Murphy D.T. (2026). *AGN Systems: Sgr A*, M87*, Centaurus A, NGC 1365*. PAPER_067.
-.Groups[1].Value  � Empirical Proof EP-01: Chandra RACS J0320-35 Jet Asymmetry � Navier-Stokes Ub_i
+.Groups[1].Value  � Empirical Proof EP-01: Chandra RACS J0320-35 Jet Asymmetry – Navier-Stokes Ub_i
 
-**Title:** Empirical Proof EP-01: Chandra X-Ray Observatory RACS J0320-35 One-Sided Jet � UQFF Navier-Stokes Ub_i Asymmetry via cos(?t_n) Sign Reversal
+**Title:** Empirical Proof EP-01: Chandra X-Ray Observatory RACS J0320-35 One-Sided Jet – UQFF Navier-Stokes Ub_i Asymmetry via cos(?t_n) Sign Reversal
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57, �_i = 0.61)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57, κ_i = 0.61)  
 **Date:** March 9, 2026  
 **Domain:** �1.15 Empirical Proof Compendium  
 **Source Thread:** `grok_share_2fe4fa3e_conversation.txt` (EP-01, April�Sept 2025)  

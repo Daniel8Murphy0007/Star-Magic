@@ -1,4 +1,4 @@
-﻿# PAPER_252: Chandra Archive Multi-System Composite F_U_Bi_i — Force Equivalence Class Confirmation
+# PAPER_252: Chandra Archive Multi-System Composite F_U_Bi_i — Force Equivalence Class Confirmation
 
 **Author:** Daniel T. Murphy (daniel.murphy00@gmail.com)
 **Framework:** UQFF v4.27 — Star-Magic Physics

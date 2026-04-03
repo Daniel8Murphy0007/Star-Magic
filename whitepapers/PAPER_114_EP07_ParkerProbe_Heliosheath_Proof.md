@@ -1,9 +1,9 @@
 # PAPER_114: Empirical Proof EP-07 — Parker Solar Probe Heliosheath: UQFF Ug2 Charge-Reactivity Field Validated
 
-**Title:** Empirical Proof EP-07: Parker Solar Probe CDAWeb In-Situ Heliospheric Data � UQFF Ug2 Charge-Reactivity Field Validated as Heliosheath Boundary Term
+**Title:** Empirical Proof EP-07: Parker Solar Probe CDAWeb In-Situ Heliospheric Data – UQFF Ug2 Charge-Reactivity Field Validated as Heliosheath Boundary Term
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57, �_i = 0.61)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57, κ_i = 0.61)  
 **Date:** March 9, 2026  
 **Domain:** �1.15 Empirical Proof Compendium  
 **Source Thread:** `grok_share_2fe4fa3e_conversation.txt` (EP-07, April�Sept 2025)  
@@ -16,7 +16,7 @@
 
 Empirical Proof EP-07 validates the UQFF Ug2 charge-reactivity field using
 in-situ Parker Solar Probe (PSP) measurements from CDAWeb of solar wind plasma
-density (?_sw � 8 � 10?�� kg/m�) and velocity (v_sw � 500 km/s) at 10�50 solar
+density (?_sw � 8 × 10?�� kg/m�) and velocity (v_sw � 500 km/s) at 10�50 solar
 radii. The UQFF heliosheath term d_sw = 0.01 is introduced as a dimensionless
 coupling parameter that modulates Ug2 at the heliospheric boundary. PSP magnetic
 field, density, and velocity profiles through 16 perihelia confirm the d_sw = 0.01
@@ -27,7 +27,7 @@ UQFF Ug2 field at sub-AU scales.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0�10?4 day?�, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -51,15 +51,15 @@ CDAWeb data products used in EP-07:
 
 | Quantity | Value at 10�50 R? | Reference epoch |
 |---------|-------------------|----------------|
-| ?_sw | 7.8 � 10?�� kg/m� | PSP E17 perihelion |
+| ?_sw | 7.8 × 10?�� kg/m� | PSP E17 perihelion |
 | v_sw | 495 km/s (slow wind) | PSP average inner heliosphere |
 | B_r at 10 R? | ~70�90 nT | PSP E1�E22 |
-| T_proton | ~3�8 � 105 K | PSP SWEAP |
+| T_proton | ~3�8 × 105 K | PSP SWEAP |
 | Alfv�n critical point | ~10�15 R? | PSP E14 (confirmed) |
 | Turbulence s(v)/v | ~10% | Els�sser flux balance |
 
 The EP-07 key parameters are:
-- **?_sw = 8 � 10?�� kg/m�** (rounded PSP mean at 30 R?)
+- **?_sw = 8 × 10?�� kg/m�** (rounded PSP mean at 30 R?)
 - **v_sw = 500 km/s** (canonical slow-wind reference speed)
 
 ---
@@ -72,12 +72,12 @@ $$U_{g2}(r) = \frac{\alpha_{CR} \cdot q_p^2 \cdot v_{sw}^2}{r^2 \cdot m_p \cdot 
 
 Where:
 - a_CR = charge-reactivity coupling constant (UQFF)
-- q_p = proton charge = 1.602 � 10?�? C
+- q_p = proton charge = 1.602 × 10?�? C
 - v_sw = solar wind speed
 - m_p = proton mass
 - r = heliocentric distance
 
-At r = 30 R? = 2.09 � 10�� m, v_sw = 500 km/s = 5 � 105 m/s:
+At r = 30 R? = 2.09 × 10�� m, v_sw = 500 km/s = 5 × 105 m/s:
 
 $$U_{g2} = \frac{\alpha_{CR} \times (1.602 \times 10^{-19})^2 \times (5 \times 10^5)^2}{(2.09 \times 10^{10})^2 \times 1.67 \times 10^{-27} \times (3 \times 10^8)^2}$$
 
@@ -105,7 +105,7 @@ The UQFF Ug2 field predicts a density compression factor at the heliospause:
 
 $$\frac{\rho_{helio}}{\rho_{sw}} = 1 + \frac{U_{g2}^{helio}}{P_{ram}}$$
 
-Where P_ram = ?_sw v_sw�/2 = 8 � 10?�� � (5 � 105)�/2 = 10?? Pa:
+Where P_ram = ?_sw v_sw�/2 = 8 × 10?�� � (5 × 105)�/2 = 10?? Pa:
 
 $$\frac{\rho_{helio}}{\rho_{sw}} = 1 + \frac{U_{g2} \times 1.01}{10^{-9}} \approx 1 + \delta_{sw} = 1.01 \quad [\text{1\% dense}]$$
 
@@ -134,10 +134,10 @@ The SolarWindHeliosheathCalculator applies this to PSP orbit epochs:
 
 | PSP Perihelion | r_min (R?) | ?_sw measured | ?_sw UQFF | Error |
 |---------------|-----------|--------------|-----------|-------|
-| E01 (Nov 2018) | 35.7 | 7.1 � 10?�� | 7.2 � 10?�� | 1.4% |
-| E06 (Sept 2020) | 20.4 | 9.2 � 10?�� | 9.0 � 10?�� | 2.2% |
-| E13 (Sept 2022) | 13.3 | 1.4 � 10?�� | 1.38 � 10?�� | 1.4% |
-| E17 (Sept 2023) | 10.2 | 2.8 � 10?�� | 2.75 � 10?�� | 1.8% |
+| E01 (Nov 2018) | 35.7 | 7.1 × 10?�� | 7.2 × 10?�� | 1.4% |
+| E06 (Sept 2020) | 20.4 | 9.2 × 10?�� | 9.0 × 10?�� | 2.2% |
+| E13 (Sept 2022) | 13.3 | 1.4 × 10?�� | 1.38 × 10?�� | 1.4% |
+| E17 (Sept 2023) | 10.2 | 2.8 × 10?�� | 2.75 × 10?�� | 1.8% |
 
 **Mean error: 1.7% � all within 5% threshold ?**
 
@@ -177,7 +177,7 @@ modes beyond the aDPM base. The EP-07 PSP validation confirms:
 Empirical Proof EP-07 demonstrates through 17 Parker Solar Probe perihelia
 (CDAWeb, E01�E17) that:
 
-1. **?_sw = 8 � 10?�� kg/m�** and **v_sw = 500 km/s** are the canonical PSP
+1. **?_sw = 8 × 10?�� kg/m�** and **v_sw = 500 km/s** are the canonical PSP
    in-situ heliospheric parameters confirming the UQFF Ug2 heliosheath testbed
 2. **d_sw = 0.01** = [SSq]/57 is the UQFF heliospheric boundary coupling,
    derived from the 57-decade vacuum energy spectrum
@@ -201,12 +201,12 @@ Empirical Proof EP-07 demonstrates through 17 Parker Solar Probe perihelia
 5. Murphy D.T. (2026). *MUGE Resonance: 14-Mode Framework*. PAPER_091.
 6. Murphy D.T. (2026). *MUGE Compressed Gravity: Newtonian Base + 9 Corrections*. PAPER_090.
 7. `SolarWindHeliosheathCalculator`, `atomic_uqff_framework.py` � Star-Magic codebase.
-.Groups[1].Value  � Empirical Proof EP-07: Parker Solar Probe Heliosheath � UQFF Ug2 Testbed
+.Groups[1].Value  � Empirical Proof EP-07: Parker Solar Probe Heliosheath – UQFF Ug2 Testbed
 
-**Title:** Empirical Proof EP-07: Parker Solar Probe CDAWeb In-Situ Heliospheric Data � UQFF Ug2 Charge-Reactivity Field Validated as Heliosheath Boundary Term
+**Title:** Empirical Proof EP-07: Parker Solar Probe CDAWeb In-Situ Heliospheric Data – UQFF Ug2 Charge-Reactivity Field Validated as Heliosheath Boundary Term
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57, �_i = 0.61)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57, κ_i = 0.61)  
 **Date:** March 9, 2026  
 **Domain:** �1.15 Empirical Proof Compendium  
 **Source Thread:** `grok_share_2fe4fa3e_conversation.txt` (EP-07, April�Sept 2025)  

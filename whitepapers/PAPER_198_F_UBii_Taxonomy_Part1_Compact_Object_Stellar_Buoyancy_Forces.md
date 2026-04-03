@@ -1,4 +1,4 @@
-﻿# PAPER_198: F_UBii Taxonomy Part 1 — Compact Object and Stellar Physics Buoyancy Forces
+# PAPER_198: F_UBii Taxonomy Part 1 — Compact Object and Stellar Physics Buoyancy Forces
 
 **Version:** 1.0  
 **Date:** March 13, 2026  
@@ -13,7 +13,7 @@ $$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b_i}, \quad \kappa = 5.0\tim
 $$
 M_J^\text{UQFF} = M_J^\text{Jeans}\cdot\Bigl(1 - [SSq]\cdot\frac{B^2}{8\pi\rho c_s^2}\Bigr), \quad [SSq] = 0.57
 $$
-<!-- ? = 5.0e-4 day?¹, [SSq] = 0.57, ß_i = 6.1e-1 -->
+<!-- ? = 5.0e-4 day⁻¹, [SSq] = 0.57, ß_i = 6.1e-1 -->
 
 ## Abstract
 
@@ -21,7 +21,7 @@ The UQFF buoyancy force F_UBii is applied across all major astrophysical phenome
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 

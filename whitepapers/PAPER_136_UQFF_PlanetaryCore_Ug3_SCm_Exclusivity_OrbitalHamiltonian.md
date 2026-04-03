@@ -1,4 +1,5 @@
-﻿#  "PAPER_{0:D3}" -f [int]# PAPER #136 — UQFF Planetary Core Ug3 SCm Exclusivity and Orbital Quantum Hamiltonian
+# PAPER_136: UQFF Compressed Mode Planetary Core — Ug3 SCm Exclusivity (P_SCm = 10⁻³) and Quantum Orbital Stability Hamiltonian: H = H_Ug3 + H_SCm + H_UA
+
 
 **Title:** UQFF Compressed Mode Planetary Core — Ug3 SCm Exclusivity (P_SCm = 10⁻³) and Quantum Orbital Stability Hamiltonian: H = H_Ug3 + H_SCm + H_UA
 

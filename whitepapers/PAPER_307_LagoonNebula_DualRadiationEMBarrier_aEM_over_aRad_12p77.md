@@ -1,10 +1,10 @@
-# PAPER_307 ó Lagoon Nebula Dual Radiation-EM Barrier: a_EM/a_rad = 12.77
+# PAPER_307 ÔøΩ Lagoon Nebula Dual Radiation-EM Barrier: a_EM/a_rad = 12.77
 
 
-<!-- UQFF constants: ? = 5.0e-4 day?π, [SSq] = 0.57, M_UQFF = 1.43e1 TeV -->
+<!-- UQFF constants: ? = 5.0e-4 day‚Åª¬π, [SSq] = 0.57, M_UQFF = 1.43e1 TeV -->
 ## Abstract
 
-The Lagoon Nebula (M8/NGC 6523) UQFF 2.0 analysis discovers a **Dual Radiation-EM Barrier**: both the turbulent electromagnetic acceleration (a_EM) and radiation pressure acceleration (a_rad) independently exceed the nebula's self-gravity (g_base) ó simultaneously ó by 19 and 18 orders of magnitude respectively. Furthermore, the EM acceleration leads the radiation barrier by a factor of **a_EM/a_rad = 12.77**. This is the **FIRST UQFF dual-barrier H II module** across all 29 C++ UQFF modules. The dual barrier explains the Lagoon Nebula's extended H II morphology by preventing gravitational collapse through two independent non-gravitational channels.
+The Lagoon Nebula (M8/NGC 6523) UQFF 2.0 analysis discovers a **Dual Radiation-EM Barrier**: both the turbulent electromagnetic acceleration (a_EM) and radiation pressure acceleration (a_rad) independently exceed the nebula's self-gravity (g_base) ÔøΩ simultaneously ÔøΩ by 19 and 18 orders of magnitude respectively. Furthermore, the EM acceleration leads the radiation barrier by a factor of **a_EM/a_rad = 12.77**. This is the **FIRST UQFF dual-barrier H II module** across all 29 C++ UQFF modules. The dual barrier explains the Lagoon Nebula's extended H II morphology by preventing gravitational collapse through two independent non-gravitational channels.
 
 ---
 
@@ -12,12 +12,12 @@ The Lagoon Nebula (M8/NGC 6523) UQFF 2.0 analysis discovers a **Dual Radiation-E
 
 | Parameter | Value | Description |
 |-----------|-------|-------------|
-| q | 1.602◊10?π? C | Proton charge |
-| v_gas | 1◊105 m/s | Turbulent gas velocity |
-| B | 1◊10?5 T | Nebula magnetic field |
-| m_H | 1.6726◊10?≤7 kg | Hydrogen atom mass |
-| a_rad | 7.51◊106 m/s≤ | Radiation pressure acceleration (PAPER_306) |
-| g_base | 4.91◊10?π≤ m/s≤ | Self-gravity |
+| q | 1.602√ó10?ÔøΩ? C | Proton charge |
+| v_gas | 1√ó105 m/s | Turbulent gas velocity |
+| B | 1√ó10‚Åª5 T | Nebula magnetic field |
+| m_H | 1.6726√ó10?ÔøΩ7 kg | Hydrogen atom mass |
+| a_rad | 7.51√ó106 m/sÔøΩ | Radiation pressure acceleration (PAPER_306) |
+| g_base | 4.91√ó10?ÔøΩÔøΩ m/sÔøΩ | Self-gravity |
 
 ---
 
@@ -41,7 +41,7 @@ EM turbulence exceeds self-gravity by **19 orders of magnitude**.
 
 $$\frac{a_\text{EM}}{a_\text{rad}} = \frac{9.59\times10^7}{7.51\times10^6} = \mathbf{12.77}$$
 
-The electromagnetic barrier **leads** the radiation barrier by 12.77◊.
+The electromagnetic barrier **leads** the radiation barrier by 12.77ÔøΩ.
 
 ---
 
@@ -51,11 +51,11 @@ The Lagoon Nebula operates with two independent non-gravitational barriers, both
 
 | Barrier | Acceleration | ? (ratio to g_base) | Physical Origin |
 |---------|-------------|---------------------|-----------------|
-| EM turbulence | a_EM = 9.59◊107 m/s≤ | ?_EM = 1.96◊10π? | Lorentz force on turbulent ions |
-| Radiation pressure | a_rad = 7.51◊106 m/s≤ | ?_rad = 1.53◊10π8 | Herschel 36 O7V photon pressure |
-| **Self-gravity** | g_base = 4.91◊10?π≤ m/s≤ | 1.0 (reference) | G∑M/r≤ |
+| EM turbulence | a_EM = 9.59√ó107 m/sÔøΩ | ?_EM = 1.96√ó10ÔøΩ? | Lorentz force on turbulent ions |
+| Radiation pressure | a_rad = 7.51√ó106 m/sÔøΩ | ?_rad = 1.53√ó10ÔøΩ8 | Herschel 36 O7V photon pressure |
+| **Self-gravity** | g_base = 4.91√ó10?ÔøΩÔøΩ m/sÔøΩ | 1.0 (reference) | GÔøΩM/rÔøΩ |
 
-Both barriers independently exceed g_base. EM leads radiation by 12.77◊.
+Both barriers independently exceed g_base. EM leads radiation by 12.77ÔøΩ.
 
 ---
 
@@ -65,18 +65,18 @@ Both barriers independently exceed g_base. EM leads radiation by 12.77◊.
 
 The dual barrier mechanism explains multiple observed features of M8:
 
-1. **Extended ionized zone**: EM acceleration prevents gas compression ? larger Strˆmgren radius
-2. **Sub-virial turbulence**: v_gas = 1◊105 m/s is sub-virial yet produces a_EM >> g_base, sustaining the nebula against collapse without requiring supersonic turbulence
-3. **Magnetic morphology**: B = 1◊10?5 T (typical H II field) contributes via Lorentz force to keep the extended zone dynamically supported
+1. **Extended ionized zone**: EM acceleration prevents gas compression ? larger StrÔøΩmgren radius
+2. **Sub-virial turbulence**: v_gas = 1√ó105 m/s is sub-virial yet produces a_EM >> g_base, sustaining the nebula against collapse without requiring supersonic turbulence
+3. **Magnetic morphology**: B = 1√ó10‚Åª5 T (typical H II field) contributes via Lorentz force to keep the extended zone dynamically supported
 
-### Differentiation from PAPER_299 (Hydrogen PToE ?_EM = 9.65◊10≤?)
+### Differentiation from PAPER_299 (Hydrogen PToE ?_EM = 9.65√ó10ÔøΩ?)
 
-PAPER_299 (Session 86) computed ?_EM = 9.65◊10≤? for an **electron orbital** in a hydrogen atom. PAPER_307 computes **bulk turbulent gas** EM acceleration:
+PAPER_299 (Session 86) computed ?_EM = 9.65√ó10ÔøΩ? for an **electron orbital** in a hydrogen atom. PAPER_307 computes **bulk turbulent gas** EM acceleration:
 
 | Regime | System | a_EM | ?_EM | Physical context |
 |--------|--------|------|------|-----------------|
-| PAPER_299 | H atom (PToE) | ~10≤≤ m/s≤ | 9.65◊10≤? | Electron orbital Lorentz |
-| PAPER_307 | M8 Lagoon | 9.59◊107 m/s≤ | **1.96◊10π?** | Bulk turbulent gas Lorentz |
+| PAPER_299 | H atom (PToE) | ~10ÔøΩÔøΩ m/sÔøΩ | 9.65√ó10ÔøΩ? | Electron orbital Lorentz |
+| PAPER_307 | M8 Lagoon | 9.59√ó107 m/sÔøΩ | **1.96√ó10ÔøΩ?** | Bulk turbulent gas Lorentz |
 
 The physical mechanisms are distinct: orbital (quantum EM) vs. turbulent bulk (MHD EM).
 
@@ -95,13 +95,13 @@ This is the FIRST UQFF module where **both** a_EM AND a_rad independently exceed
 $$g_\text{Lagoon}(t) = \underbrace{\frac{G M(t)}{r^2}}_{\text{base}} \cdot (1+H_z t)(1-B/B_c)(1+f_\text{TRZ})$$
 $$+ U_{g,\text{sum}} + \frac{\Lambda c^2}{3} + \frac{\hbar}{m_H \Delta x^2} + \underbrace{a_\text{EM}}_{\text{P307}} + g_\text{fluid} + g_\text{osc} + g_\text{DM} - \underbrace{a_\text{rad}}_{\text{P306}}$$
 
-The net non-gravitational contribution: a_EM - a_rad = 9.59◊107 - 7.51◊106 = **8.84◊107 m/s≤** (EM dominates, net outward support).
+The net non-gravitational contribution: a_EM - a_rad = 9.59√ó107 - 7.51√ó106 = **8.84√ó107 m/sÔøΩ** (EM dominates, net outward support).
 
 ---
 
 ## UQFF Module
 
-- **Module:** LAGOON_UQFF_MODULE.cpp (Session 87 ó UQFF 2.0)
+- **Module:** LAGOON_UQFF_MODULE.cpp (Session 87 ÔøΩ UQFF 2.0)
 - **Wolfram Token:** `LAGOON_EM_TURB`
 - **Session:** 87 | **29th C++ module** | FIRST H II Region
 - **Papers:** PAPER_305, PAPER_306, PAPER_307 (this)
@@ -110,7 +110,7 @@ The net non-gravitational contribution: a_EM - a_rad = 9.59◊107 - 7.51◊106 = **8
 
 ---
 
-*Computed values: a_EM=9.59◊107 m/s≤, ?_EM=1.96◊10π?, a_rad=7.51◊106 m/s≤, ?_rad=1.53◊10π8, a_EM/a_rad=12.77, net=(a_EM-a_rad)=8.84◊107 m/s≤*
+*Computed values: a_EM=9.59√ó107 m/sÔøΩ, ?_EM=1.96√ó10ÔøΩ?, a_rad=7.51√ó106 m/sÔøΩ, ?_rad=1.53√ó10ÔøΩ8, a_EM/a_rad=12.77, net=(a_EM-a_rad)=8.84√ó107 m/sÔøΩ*
 
 
 **Testable Prediction:** This UQFF result is directly testable with JWST NIRSpec/MIRI (testable at 3s within Cycle 4, 2026); the UQFF deviation from standard predictions exceeds the measurement noise floor by = 3s, providing a clear discriminant for the UQFF buoyancy-gravity framework in future observations.

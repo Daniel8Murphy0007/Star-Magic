@@ -1,3 +1,5 @@
+# PAPER_094: SGR1745-2900 Magnetar UQFF Calibration: Determining ? = 0.0005/day and [SSq] = 0.57 from Magnetar Physics
+
 
 **Title:** SGR1745-2900 Magnetar UQFF Calibration: Determining ? = 0.0005/day and [SSq] = 0.57 from Magnetar Physics
 
@@ -6,7 +8,6 @@
 **Date:** March 7, 2026  
 **Source Data:** validate_uqff_muge.py (Magnetar system), source4.cpp (sgr1745_SOURCE4), ? calibration (Batch 23)  
 **Index Slot:** �1.12 UQFF Master Calculators,  
-    $n = [int]# PAPER #94 � Magnetar SGR1745: UQFF ? and [SSq] Calibration
 
 **Title:** SGR1745-2900 Magnetar UQFF Calibration: Determining ? = 0.0005/day and [SSq] = 0.57 from Magnetar Physics
 
@@ -20,11 +21,11 @@
 
 ## Abstract
 
-SGR1745-2900 (hereafter SGR1745) is a magnetar located at angular separation from Sgr A* of ~2.4 arcsec (~0.3 pc), making it the closest known magnetar to any SMBH. Its extreme magnetic field B ~ 2 � 10�4 T (2.3 � B_crit) and spin-down rate ?P^{-1} provide the observational anchors for calibrating two fundamental UQFF constants: ? = 0.0005/day (temporal decay parameter) and [SSq] = 0.57 (squared-state density term). Batch 23 of MAIN_1_CoAnQi.cpp implements the ? calibration procedure.
+SGR1745-2900 (hereafter SGR1745) is a magnetar located at angular separation from Sgr A* of ~2.4 arcsec (~0.3 pc), making it the closest known magnetar to any SMBH. Its extreme magnetic field B ~ 2 × 10�4 T (2.3 � B_crit) and spin-down rate ?P^{-1} provide the observational anchors for calibrating two fundamental UQFF constants: ? = 0.0005/day (temporal decay parameter) and [SSq] = 0.57 (squared-state density term). Batch 23 of MAIN_1_CoAnQi.cpp implements the ? calibration procedure.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0�10?4 day?�, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -33,8 +34,8 @@ SGR1745-2900 (hereafter SGR1745) is a magnetar located at angular separation fro
 | Parameter | Value | Source |
 |-----------|-------|--------|
 | Period P | 3.76 s | XMM-Newton, Chandra |
-| Period derivative ? | 6.61 � 10?�� s/s | Long-term timing |
-| Derived B | 1.4 � 10�4 T | B = 3.2�10�?v(P?) |
+| Period derivative ? | 6.61 × 10?�� s/s | Long-term timing |
+| Derived B | 1.4 × 10�4 T | B = 3.2×10�?v(P?) |
 | Characteristic age | ~9,000 yr | P/(2?) |
 | Distance | ~8.3 kpc | Near Sgr A* complex |
 | Separation from Sgr A* | ~0.3 pc | Near SMBH influence |
@@ -45,10 +46,10 @@ SGR1745-2900 (hereafter SGR1745) is a magnetar located at angular separation fro
 
 From `UQFFConstantsDatabase`:
 ```
-B_CRIT_MAGNETAR: 4.4 � 10�� T  (= �0 m?�c�/(e�?�))
+B_CRIT_MAGNETAR: 4.4 × 10�� T  (= �0 m?�c�/(e�?�))
 ```
 
-SGR1745 field: B/B_crit = 1.4 � 10�4 / 4.4 � 10�� = **3.18 � B_crit** (super-critical).
+SGR1745 field: B/B_crit = 1.4 × 10�4 / 4.4 × 10�� = **3.18 � B_crit** (super-critical).
 
 ---
 
@@ -70,7 +71,7 @@ The calibrated UQFF value ? = 0.0005/day was set by:
 
 $$\kappa = \frac{N_{\rm burst}}{t_{\rm active}} = \frac{\text{outburst rate}}{\text{active window}}$$
 
-For SGR1745 2013 outburst: N_burst � 600 bursts over 1200 days active ? ? = 600/1200 � 10?� = **0.0005/day** ?
+For SGR1745 2013 outburst: N_burst � 600 bursts over 1200 days active ? ? = 600/1200 × 10?� = **0.0005/day** ?
 
 ---
 
@@ -96,17 +97,17 @@ $$[{\rm SSq}] = 0.755^2 = \mathbf{0.57}$$
 
 From `validate_uqff_muge.py` (Magnetar system):
 
-| Term | at r_surface = 1.2�104 m | Notes |
+| Term | at r_surface = 1.2×104 m | Notes |
 |------|--------------------------|-------|
-| base_gravity | 1.74 � 10�� m/s� | GR-modified NS gravity |
-| sum_Ug | +8.7 � 108 m/s� | Ug1 dominant (B-field) |
-| U_i | +2.1 � 107 m/s� | |
+| base_gravity | 1.74 × 10�� m/s� | GR-modified NS gravity |
+| sum_Ug | +8.7 × 108 m/s� | Ug1 dominant (B-field) |
+| U_i | +2.1 × 107 m/s� | |
 | cosmological | negligible | |
-| quantum | +3 � 10?�8 m/s� | |
-| fluid | +1.2 � 10? m/s� | Magnetosphere plasma |
+| quantum | +3 × 10?�8 m/s� | |
+| fluid | +1.2 × 10? m/s� | Magnetosphere plasma |
 | dark_matter | negligible | |
 | coherence | Gaussian peak | near surface |
-| **g_total** | **1.75 � 10�� m/s�** | |
+| **g_total** | **1.75 × 10�� m/s�** | |
 
 No NaN/Inf � **PASS**. Ug1 (B-field gravity) contribution at 0.05% level � consistent with spin-down.
 
@@ -158,7 +159,7 @@ Negligible compared to magnetar surface Ug4. Confirms Ug4 ? r^{-6}: falls off st
 
 ### A.2 F_U Master Equation (Complete — 4 terms)
 
-$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}igl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}igr]$$
+$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}\bigr]$$
 
 | Term | Description | Implementation |
 |------|-------------|----------------|
@@ -175,9 +176,7 @@ $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}igl[\l
 
 ### A.3 Um Heaviside Phase-Transition Amplifier (PAPER_421)
 
-$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} 	imes igl(1 + 10^{13}\,\Theta(
-ho_{SCm} - 
-ho_c)igr) 	imes igl(1 + A_q\cos(\Delta\omega\,t)igr)$$
+$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rho_{SCm} - \rho_c)\bigr) \times \bigl(1 + A_q\cos(\Delta\omega\,t)\bigr)$$
 
 | Symbol | Value | Description |
 |--------|-------|-------------|

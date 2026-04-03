@@ -1,4 +1,4 @@
-﻿# PAPER_216: Triadic UQFF Numerical Validation Suite — Westerlund 2 and Pillars of Creation
+# PAPER_216: Triadic UQFF Numerical Validation Suite — Westerlund 2 and Pillars of Creation
 
 **Author:** Daniel T. Murphy (daniel.murphy00@gmail.com)  
 **Framework:** UQFF v4.3 — Star-Magic Physics  
@@ -13,7 +13,7 @@ $$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b_i}, \quad \kappa = 5.0\tim
 $$
 M_J^\text{UQFF} = M_J^\text{Jeans}\cdot\Bigl(1 - [SSq]\cdot\frac{B^2}{8\pi\rho c_s^2}\Bigr), \quad [SSq] = 0.57
 $$
-<!-- ? = 5.0e-4 day?¹, [SSq] = 0.57, ß_i = 6.1e-1 -->
+<!-- ? = 5.0e-4 day⁻¹, [SSq] = 0.57, ß_i = 6.1e-1 -->
 
 ## Abstract
 
@@ -21,7 +21,7 @@ This paper presents complete numerical validation of the Triadic UQFF framework 
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -83,16 +83,16 @@ FU_g1 = [ 1·(0.999·0.001·1)² / (1.89×10¹6)² · 1
          + 0.1 · 0.999·0.001 / (1.89×10¹6)² · 1 ]
        · (1 + H(z)·t)_corr  ·  (SSq_correction)
 
-FU_g1 ˜ (2.79×10?45 + 2.79×10?4°) · 0.8701 ˜ 2.43×10?4° N
+FU_g1 ˜ (2.79×10⁻45 + 2.79×10⁻4°) · 0.8701 ˜ 2.43×10⁻4° N
 ```
 
 ### 2.2 Resonance UQFF (R(t))
 
 ```
-R(t) = 0.1 · (2.79×10?45 + 2.79×10?4°) · 0.8701
+R(t) = 0.1 · (2.79×10⁻45 + 2.79×10⁻4°) · 0.8701
       · cos(1.989×10?¹³ · 6.307×10¹³)
 
-R(t) ˜ 0.1 · 2.79×10?4° · 0.8701 · (-0.9455) ˜ -2.29×10?4¹ N
+R(t) ˜ 0.1 · 2.79×10⁻4° · 0.8701 · (-0.9455) ˜ -2.29×10⁻4¹ N
 ```
 
 ### 2.3 Buoyancy UQFF (FU_Bi) — Westerlund 2
@@ -108,10 +108,10 @@ FU_Bi ˜ 6.14×10?³² N  (document reference, with decay factor absorbed in f_U
 
 | Mode | Value | Units |
 |------|-------|-------|
-| FU_g1 | 2.43×10?4° | N |
-| R(t) | -2.29×10?4¹ | N |
+| FU_g1 | 2.43×10⁻4° | N |
+| R(t) | -2.29×10⁻4¹ | N |
 | FU_Bi | ~6.14×10?³² | N |
-| f_z,CGM | ~1.46×10?7³ | (dimensionless) |
+| f_z,CGM | ~1.46×10⁻7³ | (dimensionless) |
 
 ---
 
@@ -126,16 +126,16 @@ FU_g1 = [ 1·(0.999·0.001·1)² / (4.73×10¹6)² · 1
          + 0.1 · 0.999·0.001 / (4.73×10¹6)² · 1 ]
        · 1.0002147 · 0.8872
 
-FU_g1 ˜ (4.45×10?46 + 4.45×10?4¹) · 0.8872 ˜ 3.95×10?4¹ N
+FU_g1 ˜ (4.45×10⁻46 + 4.45×10⁻4¹) · 0.8872 ˜ 3.95×10⁻4¹ N
 ```
 
 ### 3.2 Resonance UQFF (R(t))
 
 ```
-R(t) = 0.03 · (4.45×10?46 + 4.45×10?4¹) · 0.8872
+R(t) = 0.03 · (4.45×10⁻46 + 4.45×10⁻4¹) · 0.8872
       · cos(1.989×10?¹³ · 4.705×10¹³)
 
-R(t) ˜ 0.03 · 4.45×10?4¹ · 0.8872 · (-0.9455) ˜ -1.12×10?4² N
+R(t) ˜ 0.03 · 4.45×10⁻4¹ · 0.8872 · (-0.9455) ˜ -1.12×10⁻4² N
 ```
 
 ### 3.3 Buoyancy UQFF (FU_Bi) — Pillars of Creation
@@ -150,10 +150,10 @@ FU_Bi ˜ 9.79×10?³³ N  (document reference)
 
 | Mode | Value | Units |
 |------|-------|-------|
-| FU_g1 | 3.95×10?4¹ | N |
-| R(t) | -1.12×10?4² | N |
+| FU_g1 | 3.95×10⁻4¹ | N |
+| R(t) | -1.12×10⁻4² | N |
 | FU_Bi | ~9.79×10?³³ | N |
-| f_z,CGM | ~1.46×10?7³ | (dimensionless) |
+| f_z,CGM | ~1.46×10⁻7³ | (dimensionless) |
 
 ---
 
@@ -179,7 +179,7 @@ The `?k_? = 7.25×108` value is calibrated for hydride-like nuclear binding ener
 
 ### 4.3 CGM Metallicity Update
 
-The SSq-updated CGM metallicity: f_z,CGM ˜ 1.46×10?7³  
+The SSq-updated CGM metallicity: f_z,CGM ˜ 1.46×10⁻7³  
 Represents the fraction of metals in the circumgalactic medium, corrected for vacuum entanglement:
 ```
 f_z,CGM = [SSq]^26 · exp(-[SSq]·n/26) · VDS
@@ -196,7 +196,7 @@ The following CP3 calculators implement this validation:
 |-----------|-------------|
 | `UQFFBuoyancyMasterIntegralCalculator` | Full FU_Bi with H_k(geom) + e^{-(p-t_n)} |
 | `TriadicSSqFeedbackEnhancedCalculator` | FU_g1 and R(t) SSq corrections (Session 52) |
-| `UQFFCGMSSqMetallicityCalculator` | f_z,CGM ˜ 1.46×10?7³ (Session 54) |
+| `UQFFCGMSSqMetallicityCalculator` | f_z,CGM ˜ 1.46×10⁻7³ (Session 54) |
 | `DPMHarmonicBuoyancySeriesCalculator` | H_m harmonic series + VDS (Session 52) |
 
 ---

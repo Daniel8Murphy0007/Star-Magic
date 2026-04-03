@@ -14,7 +14,7 @@ The UQFF Source10 Catalogue encodes two star-formation force channels whose maxi
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0Ã—10â»4 dayâ»Â¹, [SSq] = 0.57) uniquely enabling this analysis ï¿½ establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -187,7 +187,7 @@ Any system with higher metallicity (lower H_abundance) will have a proportionall
 
 ---
 
-**UQFF computed:** UQFF magnetic Jeans correction factor [SSq]×B²/(8p×?×c_s²) = 5.7e-1 × 1.3e-9 = 7.4e-10; Jeans mass deviation from standard = 7.4e-10 × M_J.
+**UQFF computed:** UQFF magnetic Jeans correction factor [SSq]ï¿½Bï¿½/(8pï¿½?ï¿½c_sï¿½) = 5.7e-1 Ã— 1.3e-9 = 7.4e-10; Jeans mass deviation from standard = 7.4e-10 ï¿½ M_J.
 
 ## References
 

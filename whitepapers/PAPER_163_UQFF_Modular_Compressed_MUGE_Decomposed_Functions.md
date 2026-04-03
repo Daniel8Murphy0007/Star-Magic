@@ -15,7 +15,7 @@ and parameter dependencies.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0Ã—10â»4 dayâ»Â¹, [SSq] = 0.57) uniquely enabling this analysis ï¿½ establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 

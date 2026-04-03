@@ -1,4 +1,4 @@
-﻿# PAPER_261: NGC 3603 — Dual-Dynamic Feedback Equilibrium Timescale and Scale-Invariant Feedback Theorem in Young Massive Star Clusters
+# PAPER_261: NGC 3603 — Dual-Dynamic Feedback Equilibrium Timescale and Scale-Invariant Feedback Theorem in Young Massive Star Clusters
 
 **Author:** Daniel T. Murphy (daniel.murphy00@gmail.com)  
 **Framework:** UQFF v4.22 — Star-Magic Physics  

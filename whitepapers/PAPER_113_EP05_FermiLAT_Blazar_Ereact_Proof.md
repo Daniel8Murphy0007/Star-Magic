@@ -1,8 +1,10 @@
+# PAPER_113: Empirical Proof EP-05: Fermi-LAT 4th LAC Blazar Catalog – UQFF E_react = 1046 e^(-?t) Decay Function Confirms ? = 0.0005/day
 
-**Title:** Empirical Proof EP-05: Fermi-LAT 4th LAC Blazar Catalog � UQFF E_react = 1046 e^(-?t) Decay Function Confirms ? = 0.0005/day
+
+**Title:** Empirical Proof EP-05: Fermi-LAT 4th LAC Blazar Catalog – UQFF E_react = 1046 e^(-?t) Decay Function Confirms ? = 0.0005/day
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57, �_i = 0.61)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57, κ_i = 0.61)  
 **Date:** March 9, 2026  
 **Domain:** �1.15 Empirical Proof Compendium  
 **Source Thread:** `grok_share_2fe4fa3e_conversation.txt` (EP-05, April�Sept 2025)  
@@ -26,7 +28,7 @@ wave or nuclear physics data.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0�10?4 day?�, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -41,7 +43,7 @@ wave or nuclear physics data.
 | Flat Spectrum Radio Quasars (FSRQs) | 775 (20.7%) |
 | Not classified | 1,537 (41.1%) |
 | Redshift range | z = 0.003�6.0 |
-| Luminosity range L_? | 10�?�1047 W (1046�1054 erg/s) |
+| Luminosity range L_? | 10�?�1047 W (1046×1054 erg/s) |
 | Energy range | 0.1�300 GeV (Fermi-LAT) |
 | Time baseline | 12 years (2008�2020) |
 
@@ -87,7 +89,7 @@ Using H0 = 67.4 km/s/Mpc, O_M = 0.315, O_? = 0.685:
 
 | z | t_lookback (Gyr) | t (days) | e^(-?t) |
 |---|----------|---------|---------|
-| 0.1 | 1.30 | 4.75 � 108 | e^(-237,500) � 0 |
+| 0.1 | 1.30 | 4.75 × 108 | e^(-237,500) � 0 |
 
 Wait � at ? = 0.0005/day and t ~ 108 days, e^(-?t) ? 0. This means the UQFF
 E_react decay applies to the **blazar duty cycle phase**, not the full cosmic
@@ -128,7 +130,7 @@ cumulative decay matches the observed (1+z)^3.5 FSRQ evolution when:
 $$N_{cycles}(z) \times \kappa \times t_{active} \approx 3.5 \times \ln(1+z)$$
 
 At z = 1: 3.5 � ln(2) = 2.42; with t_active = 2,000 days and ? = 0.0005:
-N_cycles � 2.42 / (0.0005 � 2000) = **2.42 cycles per e-fold** ? reasonable
+N_cycles � 2.42 / (0.0005 × 2000) = **2.42 cycles per e-fold** ? reasonable
 for FSRQ AGN activity cycles over 5 Gyr (z=0 to z=1).
 
 ---
@@ -144,9 +146,9 @@ for FSRQ AGN activity cycles over 5 Gyr (z=0 to z=1).
 | 104��104� | 687 | 672 | 2.2% |
 | 104��104� | 1,018 | 998 | 2.0% |
 | 104��1044 | 863 | 845 | 2.1% |
-| 1044�1045 | 489 | 501 | 2.5% |
-| 1045�1046 | 213 | 222 | 4.2% |
-| 1046�1047 | 72 | 75 | 4.2% |
+| 1044×1045 | 489 | 501 | 2.5% |
+| 1045×1046 | 213 | 222 | 4.2% |
+| 1046×1047 | 72 | 75 | 4.2% |
 | **Total** | **3,743** | **3,704** | **1.0%** |
 
 All bins within �5% � **4LAC coverage confirmed across full luminosity range ?**
@@ -183,7 +185,7 @@ $$\bar{\kappa}_{AGN} = 0.000497 \text{ day}^{-1} \approx 0.0005 \text{ day}^{-1}
 | 2 | $L_\gamma(t) = \eta_\gamma \kappa \times 10^{46} e^{-\kappa t}$ | Observed ?-ray power | Luminosity from E_react |
 | 3 | $e^{-\kappa \times 2000} = 0.368$ | 36.8% after 2000 days | Flare decay fraction |
 | 4 | 4LAC total: 3,743 vs UQFF 3,704 | 1.0% population error | Full catalog coverage |
-| 5 | $\bar\kappa_{AGN} = 0.000497$ day?� | 0.5% from 0.0005 | ? independently confirmed |
+| 5 | $\bar\kappa_{AGN} = 0.000497$ day⁻¹ | 0.5% from 0.0005 | ? independently confirmed |
 | 6 | FSRQ evolution $(1+z)^{3.5}$ via N_cycles | 2.42 cycles/e-fold | z-evolution reproduced |
 
 ---
@@ -194,7 +196,7 @@ Empirical Proof EP-05 demonstrates through the Fermi-LAT 4LAC-DR3 blazar catalog
 (3,743 blazars, z = 0�6) that:
 
 1. **? = 0.0005/day** is independently confirmed from blazar population statistics
-   (mean ?�_AGN = 0.000497 day?�, �5% agreement)
+   (mean ?κ_AGN = 0.000497 day⁻¹, �5% agreement)
 2. The UQFF E_react = 1046 � e^(-?t) decay function reproduces the observed
    blazar luminosity distribution across 8 luminosity decades (1.0% total error)
 3. Individual FSRQ flare decay timescales (CTA 102, 3C 279) are consistent with
@@ -205,7 +207,7 @@ Empirical Proof EP-05 demonstrates through the Fermi-LAT 4LAC-DR3 blazar catalog
 
 ---
 
-**UQFF computed:** Canonical UQFF buoyancy parameter U_bi = ?�[SSq]�GM/r� = 5.0e-4�0.57�6.67e-11�M/r�; for solar parameters: U_bi,Sun = 5.7e-4�6.67e-11�1.99e30/(6.96e8)� = 1.47e+2 m/s�.
+**UQFF computed:** Canonical UQFF buoyancy parameter U_bi = ?�[SSq]�GM/rκ = 5.0e-4�0.57�6.67e-11�M/r�; for solar parameters: U_bi,Sun = 5.7e-4�6.67e-11�1.99e30/(6.96e8)� = 1.47e+2 m/s�.
 
 ## References
 
@@ -218,10 +220,10 @@ Empirical Proof EP-05 demonstrates through the Fermi-LAT 4LAC-DR3 blazar catalog
 7. `FermiLATBlazarEreactCalculator` � CondensedPhysics2.py.
 .Groups[1].Value  � Empirical Proof EP-05: Fermi-LAT 4LAC Blazar Luminosity � ? = 0.0005/day Confirmation
 
-**Title:** Empirical Proof EP-05: Fermi-LAT 4th LAC Blazar Catalog � UQFF E_react = 1046 e^(-?t) Decay Function Confirms ? = 0.0005/day
+**Title:** Empirical Proof EP-05: Fermi-LAT 4th LAC Blazar Catalog – UQFF E_react = 1046 e^(-?t) Decay Function Confirms ? = 0.0005/day
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57, �_i = 0.61)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57, κ_i = 0.61)  
 **Date:** March 9, 2026  
 **Domain:** �1.15 Empirical Proof Compendium  
 **Source Thread:** `grok_share_2fe4fa3e_conversation.txt` (EP-05, April�Sept 2025)  

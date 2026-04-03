@@ -1,4 +1,4 @@
-﻿# PAPER_251: Eta Carinae Homunculus F_U_Bi_i — DPM Invisibility and LENR Force Hierarchy Discovery
+# PAPER_251: Eta Carinae Homunculus F_U_Bi_i — DPM Invisibility and LENR Force Hierarchy Discovery
 
 **Author:** Daniel T. Murphy (daniel.murphy00@gmail.com)
 **Framework:** UQFF v4.27 — Star-Magic Physics
@@ -16,9 +16,9 @@ $$
 
 ## Abstract
 
-Eta Carinae is a hyperluminous stellar system of approximately 120 solar masses, undergoing episodic super-Eddington mass loss. The Great Eruption of ~1843 CE ejected ~10–40 M_sun in a bipolar Homunculus nebula that is today one of the brightest infrared sources in the sky. With a magnetic field of B0 = 10?4 T — one hundred times stronger than the SN 1006 field — and the same characteristic frequency ?0 = 10?¹² rad/s, the Eta Carinae system provides a critical test of the UQFF force hierarchy.
+Eta Carinae is a hyperluminous stellar system of approximately 120 solar masses, undergoing episodic super-Eddington mass loss. The Great Eruption of ~1843 CE ejected ~10–40 M_sun in a bipolar Homunculus nebula that is today one of the brightest infrared sources in the sky. With a magnetic field of B0 = 10⁻4 T — one hundred times stronger than the SN 1006 field — and the same characteristic frequency ?0 = 10?¹² rad/s, the Eta Carinae system provides a critical test of the UQFF force hierarchy.
 
-The key **uniquely rare discovery** of this paper is **DPM Invisibility**: despite B0 being 100× stronger than SN 1006 (B0 = 10?5 T), the DPM resonance being 100× larger (1.76 × 105 vs 1.76 × 10³), and the resonance force F_res being proportionally amplified, the total UQFF buoyancy force F_U_Bi remains **identical** to SN 1006 at +2.11 × 10²°8 N. The magnetic field is completely invisible to the final buoyancy result.
+The key **uniquely rare discovery** of this paper is **DPM Invisibility**: despite B0 being 100× stronger than SN 1006 (B0 = 10⁻5 T), the DPM resonance being 100× larger (1.76 × 105 vs 1.76 × 10³), and the resonance force F_res being proportionally amplified, the total UQFF buoyancy force F_U_Bi remains **identical** to SN 1006 at +2.11 × 10²°8 N. The magnetic field is completely invisible to the final buoyancy result.
 
 This DPM invisibility occurs because F_LENR = k_LENR·(?_LENR/?0)² is independent of B0. At ?0 = 10?¹², F_LENR ˜ 6.17 × 10³? N overwhelms F_res by ~3 orders regardless of B0. The force hierarchy is LENR > neutron > Newtonian » DPM_resonance in this frequency regime — a fundamental discovery about the structure of UQFF physics.
 
@@ -49,7 +49,7 @@ DPM_resonance (Eta Car) = 2·µ_B·B0/(h·?0)
                         ˜ 1.76 × 105    [100× SN 1006 value 1.76×10³]
 ```
 
-The resonance force `F_res = 2·q·B0·V·sin?·DPM_resonance` is proportional to `B0 × DPM_resonance ? B0²` — at B0 = 10?4 T, F_res is 10,000× the SN 1006 value.
+The resonance force `F_res = 2·q·B0·V·sin?·DPM_resonance` is proportional to `B0 × DPM_resonance ? B0²` — at B0 = 10⁻4 T, F_res is 10,000× the SN 1006 value.
 
 ### 2.2 LENR Force — B0-Independent
 
@@ -98,7 +98,7 @@ The F_DE dark energy coupling `k_DE × L_X = 10?³° × 10³5 = 105 N` captures 
 
 ## 3. DPM Invisibility Theorem
 
-**Theorem (UQFF DPM Invisibility at ?0 = 10?¹²):** For any astrophysical system with ?0 = 10?¹² rad/s, the DPM magnetic resonance force `F_res ? B0² / ?0` is negligible in the F_U_Bi_i integral for all physically observed magnetic fields B0 = 10² T. The ratio `F_res/F_LENR = k_charge · B0² · V / (k_LENR · (?_LENR/?0)²)` is bounded above by ~10?²8 for B0 = 10?4 T, ?0 = 10?¹², confirming that **magnetic field strength is invisible to UQFF buoyancy** in this frequency regime.
+**Theorem (UQFF DPM Invisibility at ?0 = 10?¹²):** For any astrophysical system with ?0 = 10?¹² rad/s, the DPM magnetic resonance force `F_res ? B0² / ?0` is negligible in the F_U_Bi_i integral for all physically observed magnetic fields B0 = 10² T. The ratio `F_res/F_LENR = k_charge · B0² · V / (k_LENR · (?_LENR/?0)²)` is bounded above by ~10?²8 for B0 = 10⁻4 T, ?0 = 10?¹², confirming that **magnetic field strength is invisible to UQFF buoyancy** in this frequency regime.
 
 Corollary: In this regime the UQFF force hierarchy is LENR > neutron > Newtonian » DPM > DE > relativistic. Only LENR and neutron physics materially determine F_U_Bi.
 

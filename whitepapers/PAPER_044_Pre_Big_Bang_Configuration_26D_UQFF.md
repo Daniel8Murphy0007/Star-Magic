@@ -1,3 +1,5 @@
+# PAPER_044: The Pre-Big Bang 26-Center DPM Manifold: Quantum Numbers, Primordial Energy, and the Inflation Trigger
+
 
 **Title:** The Pre-Big Bang 26-Center DPM Manifold: Quantum Numbers, Primordial Energy, and the Inflation Trigger
 
@@ -8,7 +10,6 @@
 **Validator:** `test_phase2_validation.py` Test Suite 2 (DPM Cosmology): 12/12 PASS ?  
 **Source Module:** `DPMCosmologyModule.py` (565 lines)  
 **Index Slot:** �1.6 26-Dimensional Energy Structure,  
-    $n = [int]# PAPER #44 � Pre-Big Bang Configuration in 26D UQFF
 
 **Title:** The Pre-Big Bang 26-Center DPM Manifold: Quantum Numbers, Primordial Energy, and the Inflation Trigger
 
@@ -28,7 +29,7 @@ Before the Big Bang, the UQFF framework posits a pre-inflationary manifold consi
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0�10?4 day?�, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -92,20 +93,20 @@ $$r_i = 10^{-35} \times 10^{i/3} \text{ m} = 10^{-35 + i/3} \text{ m}$$
 
 | Center | r_i (m) | Comparison |
 |--------|---------|-----------|
-| 1 | 2.15�10?�5 | ~Planck length l_P = 1.616�10?�5 |
-| 7 | 4.64�10?�� | ~10 � Planck |
-| 13 | 1.00�10?�� | sub-nuclear |
-| 20 | 4.64�10?�? | |
-| 26 | 4.64�10?�7 | ~nuclear scale |
+| 1 | 2.15×10?�5 | ~Planck length l_P = 1.616×10?�5 |
+| 7 | 4.64×10?�� | ~10 � Planck |
+| 13 | 1.00×10?�� | sub-nuclear |
+| 20 | 4.64×10?�? | |
+| 26 | 4.64×10?�7 | ~nuclear scale |
 
 ### 2.2 Center Energies
 
 Each center's total energy:
 $$E_{\rm center,i} = E_{{\rm DPM},i} \times V_i = \rho_{\rm SCm} \times i^2 \times \frac{4}{3}\pi r_i^3$$
 
-For center 1: E_center,1 = 10?8 � 1 � (4/3)p(2.15�10?�5)� = 10?8 � 4.19�10?��4 = 4.19�10?��� J
+For center 1: E_center,1 = 10⁻8 × 1 � (4/3)p(2.15×10?�5)� = 10⁻8 × 4.19×10?��4 = 4.19×10?��� J
 
-For center 26: E_center,26 = 10?8 � 676 � (4/3)p(4.64�10?�7)� = 6.76�10?6 � 4.18�10?7? = 2.83�10?84 J
+For center 26: E_center,26 = 10⁻8 × 676 � (4/3)p(4.64×10?�7)� = 6.76×10⁻6 × 4.18×10⁻7? = 2.83×10⁻84 J
 
 **Validator confirms: DPM Center 1 Energy ? PASS ?**
 **Validator confirms: Total Pre-Inflationary Energy ? PASS ?**
@@ -133,7 +134,7 @@ This sum drives the exponential expansion of the universe from Planck-scale cent
 For centers i and j separated by angle ?_ij in the pre-inflationary manifold:
 $$d_{ij} = \sqrt{r_i^2 + r_j^2 - 2r_i r_j \cos\theta_{ij}}$$
 
-Adjacent centers (i, j = i+1, ? � 2p/26 � 13.8�):
+Adjacent centers (i, j = i+1, ? � 2p/26 × 13.8�):
 - d_adjacent = |r_{i+1} - r_i| � ~1/cos... (small angle limit)
 - For centers 10,11: d = v((r10� + r11�) - 2�r10�r11�cos(13.8�))
 
@@ -211,7 +212,7 @@ All 12 DPM Cosmology tests in `test_phase2_validation.py` pass. The UQFF pre-Big
 
 ### A.2 F_U Master Equation (Complete — 4 terms)
 
-$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}igl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}igr]$$
+$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}\bigr]$$
 
 | Term | Description | Implementation |
 |------|-------------|----------------|
@@ -228,9 +229,7 @@ $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}igl[\l
 
 ### A.3 Um Heaviside Phase-Transition Amplifier (PAPER_421)
 
-$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} 	imes igl(1 + 10^{13}\,\Theta(
-ho_{SCm} - 
-ho_c)igr) 	imes igl(1 + A_q\cos(\Delta\omega\,t)igr)$$
+$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rho_{SCm} - \rho_c)\bigr) \times \bigl(1 + A_q\cos(\Delta\omega\,t)\bigr)$$
 
 | Symbol | Value | Description |
 |--------|-------|-------------|

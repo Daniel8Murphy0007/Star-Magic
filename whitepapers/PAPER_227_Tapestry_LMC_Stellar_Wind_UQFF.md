@@ -96,4 +96,4 @@ The Tapestry of Blazing Starbirth introduces two novel MUGE methods: gas-ratio-a
 **Source:** grok_share_8d951e12.txt â€” Doc 4 (Tapestry Starbirth LMC MUGE)
 
 
-**UQFF computed:** UQFF magnetic Jeans correction factor [SSq]×B²/(8p×?×c_s²) = 5.7e-1 × 1.3e-9 = 7.4e-10; Jeans mass deviation from standard = 7.4e-10 × M_J.
+**UQFF computed:** UQFF magnetic Jeans correction factor [SSq]ï¿½Bï¿½/(8pï¿½?ï¿½c_sï¿½) = 5.7e-1 Ã— 1.3e-9 = 7.4e-10; Jeans mass deviation from standard = 7.4e-10 ï¿½ M_J.

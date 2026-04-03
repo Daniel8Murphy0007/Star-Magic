@@ -1,12 +1,12 @@
-# PAPER #91 — MUGE Resonance: 14-Mode Gravity Framework
+# PAPER #91 ï¿½ MUGE Resonance: 14-Mode Gravity Framework
 
 **Title:** MUGE Resonance Gravity: 14-Mode Framework from aDPM Base Through Wormhole Metric
 
 **Author:** Daniel T. Murphy  
-**Framework:** MUGE Resonance, UQFF Star-Magic ([SSq] = 0.57, [SCm] ˜ 0.99)  
+**Framework:** MUGE Resonance, UQFF Star-Magic ([SSq] = 0.57, [SCm] â‰ˆ 0.99)  
 **Date:** March 7, 2026  
 **Source Data:** validate_uqff_muge.py, source4.cpp (14 Resonance functions), compute_resonance_MUGE_SOURCE4  
-**Index Slot:** §1.12 UQFF Master Calculators, Paper #91  
+**Index Slot:** ï¿½1.12 UQFF Master Calculators, Paper #91  
 
 ---
 
@@ -16,7 +16,7 @@ MUGE Resonance extends compressed gravity with 14 mode-specific corrections, beg
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0Ã—10â»4 dayâ»Â¹, [SSq] = 0.57) uniquely enabling this analysis ï¿½ establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -54,7 +54,7 @@ For bound circular orbital: v = (GM/r)^{1/2}, giving:
 
 $$g_{\rm aDPM}(r) = g_{\rm Newton}(r) \cdot \left(1 - 2\sqrt{R_S/r}\right)^{1/2}$$
 
-? At r = 10 R_S: correction = -6.3±0.1% (sub-GR post-Newtonian)
+? At r = 10 R_S: correction = -6.3ï¿½0.1% (sub-GR post-Newtonian)
 
 ---
 
@@ -84,7 +84,7 @@ The Toroidal Resonance Zone mode:
 
 $$\delta_{\rm TRZ}(r) = f_{\rm TRZ} \cdot g_{\rm aDPM}(r) = 0.01 \times g_{\rm aDPM}(r)$$
 
-This is the same f_TRZ = 0.01 that modifies Hawking temperature (Paper #81) — a universal UQFF factor. At the horizon scale, d_TRZ = 0.01 × ?g provides a 1% enhancement observable in precision pulsar timing.
+This is the same f_TRZ = 0.01 that modifies Hawking temperature (Paper #81) ï¿½ a universal UQFF factor. At the horizon scale, d_TRZ = 0.01 ï¿½ ?g provides a 1% enhancement observable in precision pulsar timing.
 
 ---
 
@@ -94,7 +94,7 @@ The wormhole mode uses Ellis drainhole metric:
 
 $$\delta_{\rm WH}(r) = g_{\rm aDPM}(r) \cdot \exp\left(-\frac{r^2}{l_{\rm WH}^2}\right)$$
 
-Where l_WH = Planck-scale wormhole throat. For r >> l_WH: d_WH ˜ 0 (undetectable). For Planck-regime: d_WH ˜ g_aDPM (full wormhole topology correction).
+Where l_WH = Planck-scale wormhole throat. For r >> l_WH: d_WH ï¿½ 0 (undetectable). For Planck-regime: d_WH ï¿½ g_aDPM (full wormhole topology correction).
 
 ---
 
@@ -102,13 +102,13 @@ Where l_WH = Planck-scale wormhole throat. For r >> l_WH: d_WH ˜ 0 (undetectable
 
 All 14 resonance modes computed for all 5 systems:
 
-| System | g_total^Res (m/s²) | All modes finite | aDPM correction |
+| System | g_total^Res (m/sï¿½) | All modes finite | aDPM correction |
 |--------|-----------------|-----------------|----------------|
 | Sgr A* (r_horizon) | 238.4 | ? | -1.7% |
 | M87* (r_horizon) | 2261 | ? | -1.9% |
 | Sun (surface) | 273.8 | ? | -0.003% |
-| NeutronStar (surface) | 1.63×10¹² | ? | -5.1% |
-| Magnetar (surface) | 1.75×10¹² | ? | -5.2% |
+| NeutronStar (surface) | 1.63Ã—10ï¿½ï¿½ | ? | -5.1% |
+| Magnetar (surface) | 1.75Ã—10ï¿½ï¿½ | ? | -5.2% |
 
 ---
 
@@ -119,7 +119,7 @@ All 14 resonance modes computed for all 5 systems:
 | Terms | 10 (static corrections) | 14 (frequency-dependent) |
 | Primary physics | Multi-scale corrections | Oscillation modes |
 | Stable results | Always | When ?_k bounded |
-| Dominant regime | Galaxy–cosmological | Near-compact object |
+| Dominant regime | Galaxyï¿½cosmological | Near-compact object |
 | TRZ included | No (Compressed uses d_Ug4 only) | Yes (explicit fTRZ mode) |
 | Wormhole | No | Yes (Planck-scale) |
 
@@ -129,13 +129,13 @@ All 14 resonance modes computed for all 5 systems:
 
 The MUGE Resonance 14-mode framework provides the most complete gravity description for compact object environments, combining the 5-frequency resonance from source27/28 with TRZ, aDPM Doppler correction, and Planck-scale wormhole topology. All 14 modes are finite for 5 astrophysical systems.
 
-*Source: validate_uqff_muge.py | source4.cpp compute_resonance_MUGE_SOURCE4 | 14 modes × 5 systems all finite*
+*Source: validate_uqff_muge.py | source4.cpp compute_resonance_MUGE_SOURCE4 | 14 modes ï¿½ 5 systems all finite*
 
 ---
 *See also: PAPER_090 | Part of the Star-Magic UQFF Whitepaper Series.*
 
 
-**UQFF computed:** MUGE buoyancy ratio U_bi/F_U = [SSq]×?×r²/GM = 5.7e-1×5.0e-4 = 2.85e-4; compressed MUGE baseline g = 5.4e-7 m/s² at r_ISCO.
+**UQFF computed:** MUGE buoyancy ratio U_bi/F_U = [SSq]ï¿½?ï¿½rï¿½/GM = 5.7e-1ï¿½5.0e-4 = 2.85e-4; compressed MUGE baseline g = 5.4e-7 m/sï¿½ at r_ISCO.
 ---
 
 ## Appendix: UQFF Production Framework Reference (v4.75+)
@@ -160,7 +160,7 @@ The MUGE Resonance 14-mode framework provides the most complete gravity descript
 
 ### A.2 F_U Master Equation (Complete â€” 4 terms)
 
-$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}igl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}igr]$$
+$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}\bigr]$$
 
 | Term | Description | Implementation |
 |------|-------------|----------------|
@@ -177,7 +177,7 @@ $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}igl[\l
 
 ### A.3 Um Heaviside Phase-Transition Amplifier (PAPER_421)
 
-$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} 	imes igl(1 + 10^{13}\,\Theta(ho_{SCm} - ho_c)igr) 	imes igl(1 + A_q\cos(\Delta\omega\,t)igr)$$
+$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rho_{SCm} - \rho_c)\bigr) \times \bigl(1 + A_q\cos(\Delta\omega\,t)\bigr)$$
 
 | Symbol | Value | Description |
 |--------|-------|-------------|

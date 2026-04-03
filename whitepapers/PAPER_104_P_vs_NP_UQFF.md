@@ -1,4 +1,5 @@
-﻿#  "PAPER_{0:D3}" -f [int]# PAPER #104 — P vs NP: UQFF Computational Complexity Framework
+# PAPER_104: P vs NP and the UQFF: 26-Dimensional Quantum Algorithms and Computational Complexity Beyond Classical Bounds
+
 
 **Title:** P vs NP and the UQFF: 26-Dimensional Quantum Algorithms and Computational Complexity Beyond Classical Bounds
 
@@ -6,7 +7,6 @@
 **Framework:** UQFF Star-Magic (26D framework, [UA] = 0.0001)  
 **Date:** March 7, 2026  
 **Index Slot:** §1.13 Multi-Physics Models,  
-    $n = [int]# PAPER #104 — P vs NP: UQFF Computational Complexity Framework
 
 **Title:** P vs NP and the UQFF: 26-Dimensional Quantum Algorithms and Computational Complexity Beyond Classical Bounds
 

@@ -1,4 +1,5 @@
-﻿#  "PAPER_{0:D3}" -f [int]# PAPER #36 — F_UBii Buoyancy Force: Proof Variant 1 (Archimedes-UQFF)
+# PAPER_036: The Unified Quantum Buoyancy Force F_UBii: Derivation from Archimedes' Principle to the UQFF Virial X-Ray Cluster Framework
+
 
 **Title:** The Unified Quantum Buoyancy Force F_UBii: Derivation from Archimedes' Principle to the UQFF Virial X-Ray Cluster Framework
 
@@ -9,7 +10,6 @@
 **Validator:** `BuoyancyProofVariants.py` — All 17 variants operational ✓  
 **Variant:** virx (Virial X-ray Cluster Buoyancy)  
 **Index Slot:** §1.5 Buoyancy Proofs,  
-    $n = [int]# PAPER #36 — F_UBii Buoyancy Force: Proof Variant 1 (Archimedes-UQFF)
 
 **Title:** The Unified Quantum Buoyancy Force F_UBii: Derivation from Archimedes' Principle to the UQFF Virial X-Ray Cluster Framework
 
@@ -231,7 +231,7 @@ F_UBii_virx = -2.024e60 N  ← BuoyancyProofVariants.py confirmed ✓
 
 ### A.2 F_U Master Equation (Complete — 4 terms)
 
-$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}igl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}igr]$$
+$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}\bigr]$$
 
 | Term | Description | Implementation |
 |------|-------------|----------------|
@@ -248,9 +248,7 @@ $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}igl[\l
 
 ### A.3 Um Heaviside Phase-Transition Amplifier (PAPER_421)
 
-$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} 	imes igl(1 + 10^{13}\,\Theta(
-ho_{SCm} - 
-ho_c)igr) 	imes igl(1 + A_q\cos(\Delta\omega\,t)igr)$$
+$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rho_{SCm} - \rho_c)\bigr) \times \bigl(1 + A_q\cos(\Delta\omega\,t)\bigr)$$
 
 | Symbol | Value | Description |
 |--------|-------|-------------|

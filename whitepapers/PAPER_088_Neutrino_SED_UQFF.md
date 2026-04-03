@@ -1,17 +1,18 @@
+# PAPER_088: Neutrino Spectral Energy Distribution from Sgr A*: UQFF Multi-Flavor Emission Framework
+
 
 **Title:** Neutrino Spectral Energy Distribution from Sgr A*: UQFF Multi-Flavor Emission Framework
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57, [SCm] � 0.99)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57, [SCm] ≈ 0.99)  
 **Date:** March 7, 2026  
 **Source Data:** MAIN_1_CoAnQi.cpp Batch 21 (NeutrinoSEDModule), validate_phase3.py  
 **Index Slot:** �1.11 Black Hole Physics & Hawking Radiation,  
-    $n = [int]# PAPER #88 � Neutrino SED: UQFF Emission Model
 
 **Title:** Neutrino Spectral Energy Distribution from Sgr A*: UQFF Multi-Flavor Emission Framework
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57, [SCm] � 0.99)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57, [SCm] ≈ 0.99)  
 **Date:** March 7, 2026  
 **Source Data:** MAIN_1_CoAnQi.cpp Batch 21 (NeutrinoSEDModule), validate_phase3.py  
 **Index Slot:** �1.11 Black Hole Physics & Hawking Radiation, PAPER_088  
@@ -24,7 +25,7 @@ The neutrino spectral energy distribution (SED) from a black hole system � par
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0�10?4 day?�, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -36,7 +37,7 @@ Three UQFF neutrino production channels:
 |---------|----------|-------------|-------------------|
 | Hawking emission | T_UQFF = 0.99 T_H | E_? � T_H ~ 10?�4 K (negligible) | Sub-dominant |
 | Corona pp/p? | Ug4 AGN feedback | 1 TeV � 10 PeV | Dominant |
-| TRZ vacuum | f_TRZ = 0.01 | 0.1�100 PeV | 1% enhancement |
+| TRZ vacuum | f_TRZ = 0.01 | 0.1×100 PeV | 1% enhancement |
 
 For stellar and SMBH systems, **Hawking neutrinos are negligible** (T_H ~ 10?�4 K ? E_? ~ k_B T_H << 1 eV). The interesting band is TeV�PeV cosmic neutrinos from AGN corona interactions.
 
@@ -60,7 +61,7 @@ $$\Phi_\nu^{\rm UQFF}(E_\nu) = \Phi_\nu^{\rm SM}(E_\nu) \times (1 + f_{\rm TRZ})
 
 ### 2.3 Ug4-Mediated Enhancement
 
-The Ug4 energy density (3.352941 � 10�� J/m� baseline) additionally contributes to pion production:
+The Ug4 energy density (3.352941 × 10�� J/m� baseline) additionally contributes to pion production:
 
 $$\Delta \Phi_\nu^{Ug4}(E_\nu) = f_{Ug4} \cdot \Phi_\nu^{\rm SM} \cdot \frac{U_{g4}}{U_{g4,\rm ref}}$$
 
@@ -111,7 +112,7 @@ double NeutrinoSEDUQFFTerm::compute() const {
 
 ## 6. IceCube-Gen2 Detectability
 
-Current IceCube sensitivity: F_3s � 10?�� TeV cm?� s?� sr?� for Sgr A* point source.
+Current IceCube sensitivity: F_3s � 10?�� TeV cm?� s⁻¹ sr?� for Sgr A* point source.
 
 UQFF prediction: ? = 0.3% excess above SM corona prediction.
 
@@ -155,7 +156,7 @@ UQFF prediction: ? = 0.3% excess above SM corona prediction.
 
 ### A.2 F_U Master Equation (Complete — 4 terms)
 
-$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}igl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}igr]$$
+$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}\bigr]$$
 
 | Term | Description | Implementation |
 |------|-------------|----------------|
@@ -172,9 +173,7 @@ $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}igl[\l
 
 ### A.3 Um Heaviside Phase-Transition Amplifier (PAPER_421)
 
-$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} 	imes igl(1 + 10^{13}\,\Theta(
-ho_{SCm} - 
-ho_c)igr) 	imes igl(1 + A_q\cos(\Delta\omega\,t)igr)$$
+$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rho_{SCm} - \rho_c)\bigr) \times \bigl(1 + A_q\cos(\Delta\omega\,t)\bigr)$$
 
 | Symbol | Value | Description |
 |--------|-------|-------------|

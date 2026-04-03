@@ -1,4 +1,4 @@
-﻿# PAPER_025b: Neutrino Polarizability — UQFF Quantum Field Contributions
+# PAPER_025b: Neutrino Polarizability — UQFF Quantum Field Contributions
 
 **Authors:** Daniel Murphy & UQFF Research Collective  
 **Date:** 2026-03-07  
@@ -20,7 +20,7 @@ Neutrino electromagnetic polarizability — the induced dipole moment of a neutr
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -111,7 +111,7 @@ d?r²_??_UQFF = 6 × d?_UQFF/dq²|_{q²=0}
               ˜ 6 × 0.325 × a_string / (4p M_string²)
 ```
 
-For M_string ~ M_Planck (natural UQFF scale), d?r²_??_UQFF ~ 10?65 cm², negligible. For M_string ~ M_s3 = 20,351 GeV (UQFF seesaw scale):
+For M_string ~ M_Planck (natural UQFF scale), d?r²_??_UQFF ~ 10⁻65 cm², negligible. For M_string ~ M_s3 = 20,351 GeV (UQFF seesaw scale):
 
 ```
 d?r²_??_UQFF ˜ 0.325 × 10?³ / (4p × (20351)²) GeV?² 
@@ -153,7 +153,7 @@ where a(x,t) is the axion-like field. In UQFF, the string rotation field ß_i pl
 ```
 g_UQFF-nucleon ˜ ß_string × (m_N / M_string) × [SSq]
                ˜ 0.37 × (0.938 GeV / 20351 GeV) × 0.57
-               ˜ 9.7 × 10?6
+               ˜ 9.7 × 10⁻6
 ```
 
 The comagnetometer constraint from 2506.15046 on the exotic spin coupling:
@@ -169,7 +169,7 @@ Combining the comagnetometer constraint on the vacuum spin coupling with the UQF
 
 ```
 a_?,UQFF < (g_UQFF-neutrino / g_UQFF-nucleon) × g_limit × r_effective
-          < 10?5 × (comagnetometer bound) × (r_? / r_N)
+          < 10⁻5 × (comagnetometer bound) × (r_? / r_N)
           < 10?³² cm³
 ```
 
@@ -244,7 +244,7 @@ This 40% enhancement in neutrino polarizability would appear as an excess in CE?
 
 4. **0?ßß rate:** m_ßß = 12.3 meV is within CUPID-1T sensitivity range (2035 target).
 
-5. **Comagnetometer:** UQFF string field coupling g_UQFF-nucleon ˜ 10?5 is detectable by next-generation comagnetometer experiments improving on arXiv:2506.15046 by 2 orders of magnitude.
+5. **Comagnetometer:** UQFF string field coupling g_UQFF-nucleon ˜ 10⁻5 is detectable by next-generation comagnetometer experiments improving on arXiv:2506.15046 by 2 orders of magnitude.
 
 ---
 
@@ -295,7 +295,7 @@ The UQFF framework contributes to neutrino polarizability through two channels: 
 
 ### A.2 F_U Master Equation (Complete — 4 terms)
 
-$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}igl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}igr]$$
+$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}\bigr]$$
 
 | Term | Description | Implementation |
 |------|-------------|----------------|
@@ -312,7 +312,7 @@ $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}igl[\l
 
 ### A.3 Um Heaviside Phase-Transition Amplifier (PAPER_421)
 
-$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} 	imes igl(1 + 10^{13}\,\Theta(ho_{SCm} - ho_c)igr) 	imes igl(1 + A_q\cos(\Delta\omega\,t)igr)$$
+$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rho_{SCm} - \rho_c)\bigr) \times \bigl(1 + A_q\cos(\Delta\omega\,t)\bigr)$$
 
 | Symbol | Value | Description |
 |--------|-------|-------------|

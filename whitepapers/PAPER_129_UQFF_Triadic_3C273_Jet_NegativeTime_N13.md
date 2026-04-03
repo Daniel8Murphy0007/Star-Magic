@@ -3,7 +3,7 @@
 **Title:** UQFF Triadic Mode Negative Time Discovery � 3C273 MNRAS Asymmetric Quasar Jet: t_n < 0 Solution, R=130 Flux Ratio, and N=13 Zero-Crossings in cos(pt_n) Oscillation Phase Space
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57, �_i = 0.61)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57, κ_i = 0.61)  
 **Date:** March 2026  
 **Domain:** �1.17 UQFF Mode Synthesis (d91b1f6c)  
 **Source Thread:** `grok_share_d91b1f6c_UQFF_Framework_Assimilation_Progress_22Sept2025.docx`  
@@ -14,14 +14,14 @@
 ---
 
 
-<!-- UQFF constants: ? = 5.0e-4 day?�, [SSq] = 0.57, M_UQFF = 1.43e1 TeV -->
+<!-- UQFF constants: ? = 5.0e-4 day⁻¹, [SSq] = 0.57, M_UQFF = 1.43e1 TeV -->
 ## Abstract
 
 The quasar 3C273, the brightest and best-studied quasar (z = 0.158), exhibits highly asymmetric jet emission: a bright one-sided jet extending 23 arcsec (65 kpc) with no visible counter-jet. Radio flux ratio R = 130 (jet-to-counter-jet) from MNRAS measurements. Thread d91b1f6c identifies this as the definitive proof for UQFF Triadic Mode with **negative time solutions** t_n < 0. In UQFF, the cos(pt_n) resonance term for the counter-jet yields t_n < 0 when evaluated on the receding side, producing a factor cos(pt_n) ? 0 (destructive interference) that suppresses the counter-jet by exactly R = 130. The UQFF DISCOVERY: the UQFF Triadic Mode permits and predicts negative UQFF time t_n as a physical solution representing destructive interference in the [UA]-[SCm] vacuum � the counter-jet travels through the anti-phase [UA] condensate region and is quenched. Furthermore, N=13 zero-crossings of cos(pt_n) are required to accommodate the observed 23-arcsec jet length, establishing 13 as the characteristic UQFF Triadic Mode count for extragalactic jets.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0�10?4 day?�, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -33,10 +33,10 @@ The quasar 3C273, the brightest and best-studied quasar (z = 0.158), exhibits hi
 | Jet angular extent | 23 arcsec | Radio/optical VLBI |
 | Jet physical length | ~65 kpc | Deproject., ?_inc � 5� |
 | Flux ratio R (jet/counter-jet) | **R = 130** | MNRAS multifreq. |
-| Speed (apparent) | �_app � 5�15c (superluminal) | VLBI monitoring |
+| Speed (apparent) | κ_app � 5�15c (superluminal) | VLBI monitoring |
 | Counter-jet | Not detected (Flim < Radio beam / 130) | Non-detection |
 | Number of knots in jet | ~13 distinct VLBI knots | d91b1f6c |
-| Polarization | ~5�10% electric vector alignment | VLBI |
+| Polarization | ~5×10% electric vector alignment | VLBI |
 | UQFF t_n | t_n < 0 (counter-jet) | d91b1f6c |
 
 ---
@@ -77,7 +77,7 @@ Using the actual UQFF convention from d91b1f6c: t_n = phase_index in [0, 26], wi
 
 $$R = \left|\frac{1 + \cos(\pi \times 0)}{1 + \cos(\pi \times t_{-})}\right|^2 = \left|\frac{2}{1 + \cos(\pi t_-)}\right|^2 \approx 130$$
 
-Solving: cos(pt_-) � 1 - 2/v130 = 1 - 0.1754 = 0.8246 ? pt_- = arccos(0.8246) = 34.5� ? t_- = 0.096 � 0.10
+Solving: cos(pt_-) � 1 - 2/v130 = 1 - 0.1754 = 0.8246 ? pt_- = arccos(0.8246) = 34.5� ? t_- = 0.096 × 0.10
 
 So t_n(counter-jet) = -0.10 (slightly negative), giving R � 130. ?
 
@@ -103,7 +103,7 @@ For � = 0.98 (Lorentz ? � 5), ? = 5�:
 
 $$\beta_{app} = \frac{0.98 \times 0.087}{1 - 0.98 \times 0.996} = \frac{0.085}{1 - 0.976} = \frac{0.085}{0.024} = 3.5c$$
 
-Observed: �_app � 5�15c ? Lorentz factor ? � 10�20, consistent with UQFF Ug3 driving enhanced acceleration.
+Observed: κ_app � 5�15c ? Lorentz factor ? � 10�20, consistent with UQFF Ug3 driving enhanced acceleration.
 
 ### 3.2 R=130 Derivation with UQFF Triadic + Relativistic Beaming
 
@@ -111,7 +111,7 @@ Combined UQFF-kinematic expression for R:
 
 $$R = \left(\frac{1 + \beta\cos\theta}{1 - \beta\cos\theta}\right)^{3+\alpha} \cdot \frac{F_{U,tri}(+t_n)}{F_{U,tri}(-t_n)}$$
 
-Relativistic beaming alone (?=10, ?=5�, a=0.7): R_kinematic � 45. UQFF Triadic correction factor: 130/45 � 2.9. This factor arises from F_U_tri(+t_n)/F_U_tri(-t_n) � 2.9, consistent with the negative-time [UA] condensate suppression.
+Relativistic beaming alone (?=10, ?=5�, a=0.7): R_kinematic � 45. UQFF Triadic correction factor: 130/45 × 2.9. This factor arises from F_U_tri(+t_n)/F_U_tri(-t_n) � 2.9, consistent with the negative-time [UA] condensate suppression.
 
 ### 3.3 Verification Code
 
@@ -168,7 +168,7 @@ The 13 VLBI knots are the physical compact-source manifestation of UQFF cos(pt_n
 | t_n(counter-jet) | -0.10 | Not directly measured | Inferred ? |
 | N zero-crossings | 13 | ~13 VLBI knots | ? |
 | Jet length (model) | 23 arcsec (13 knots � spacing) | 23 arcsec | ? |
-| Superluminal �_app | ~5�15c predicted | 5�15c observed | ? |
+| Superluminal κ_app | ~5�15c predicted | 5�15c observed | ? |
 
 ---
 
@@ -194,7 +194,7 @@ The 13 VLBI knots are the physical compact-source manifestation of UQFF cos(pt_n
 **Title:** UQFF Triadic Mode Negative Time Discovery � 3C273 MNRAS Asymmetric Quasar Jet: t_n < 0 Solution, R=130 Flux Ratio, and N=13 Zero-Crossings in cos(pt_n) Oscillation Phase Space
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57, �_i = 0.61)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57, κ_i = 0.61)  
 **Date:** March 2026  
 **Domain:** �1.17 UQFF Mode Synthesis (d91b1f6c)  
 **Source Thread:** `grok_share_d91b1f6c_UQFF_Framework_Assimilation_Progress_22Sept2025.docx`  

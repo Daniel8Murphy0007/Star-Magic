@@ -1,4 +1,4 @@
-﻿# PAPER_310 — Dark Matter / Visible Mass Partition Rotation Curve Excess
+# PAPER_310 — Dark Matter / Visible Mass Partition Rotation Curve Excess
 ## η_DM/vis = 5.667 | v_excess = 67.1% above Keplerian | g_DM = 5.667 × g_vis
 
 **Session 88** | 30th C++ UQFF module | FIRST Spiral+SN Ia UQFF 2.0  

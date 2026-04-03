@@ -1,4 +1,4 @@
-﻿# PAPER_209: UQFF vs Lambda-CDM Comparison Framework
+# PAPER_209: UQFF vs Lambda-CDM Comparison Framework
 
 **Version:** 1.0  
 **Date:** March 13, 2026  
@@ -13,7 +13,7 @@ $$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b_i}, \quad \kappa = 5.0\tim
 $$
 \rho_\Lambda^\text{UQFF} = \rho_\Lambda^\text{obs}\cdot\Bigl(1 + \kappa^2\cdot[SSq]^2\Bigr) = \rho_\Lambda^\text{obs}\times1.0000000812
 $$
-<!-- ? = 5.0e-4 day?¹, [SSq] = 0.57, ß_i = 6.1e-1 -->
+<!-- ? = 5.0e-4 day⁻¹, [SSq] = 0.57, ß_i = 6.1e-1 -->
 
 ## Abstract
 
@@ -21,7 +21,7 @@ The UQFF (Unified Quantum Field Framework) and Lambda-CDM are compared term by t
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -151,7 +151,7 @@ Discrimination test:
    ?CDM: no such effect
    Test: gravitational wave anomaly from magnetar binary inspiral
 
-2. 28-minute SGR A* QPO: from f_TRZ = 5.95×10?4 Hz in Ug3' term
+2. 28-minute SGR A* QPO: from f_TRZ = 5.95×10⁻4 Hz in Ug3' term
    ?CDM: no QPO prediction (geometric effect only)
    Test: GRAVITY NIR monitoring, Spitzer phased analysis
 

@@ -1,8 +1,10 @@
+# PAPER_112: Empirical Proof EP-02: Particle Data Group 2025 Mass Table Cross-Correlation with UQFF 26-Level Energy Ladder E_n = 10^(n-20) J
+
 
 **Title:** Empirical Proof EP-02: Particle Data Group 2025 Mass Table Cross-Correlation with UQFF 26-Level Energy Ladder E_n = 10^(n-20) J
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57, �_i = 0.61)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57, κ_i = 0.61)  
 **Date:** March 9, 2026  
 **Domain:** �1.15 Empirical Proof Compendium  
 **Source Thread:** `grok_share_2fe4fa3e_conversation.txt` (EP-02, April�Sept 2025)  
@@ -15,10 +17,10 @@
 
 Empirical Proof EP-02 cross-correlates the complete PDG 2025 particle mass table
 against the UQFF 26-level energy ladder E_n = 10^(n-20) J (n = 1 to 26, spanning
-10?�? J to 106 J). The correlation coefficient R� � 0.95 confirms that particle
+10?�? J to 106 J). The correlation coefficient R� ≈ 0.95 confirms that particle
 rest masses cluster at discrete UQFF energy levels, with n = 8 corresponding to
 nuclear / MeV-scale masses and n = 12 corresponding to the Higgs boson (125 GeV
-= 2.0 � 10?8 J ? Level 12). The PDG 2025 mass table provides 241 entries spanning
+= 2.0 × 10⁻8 J ? Level 12). The PDG 2025 mass table provides 241 entries spanning
 12 orders of magnitude in rest-mass energy, and 218/241 (90.5%) fall within �25%
 of a UQFF energy level, confirming the ladder as a structural feature of the mass
 spectrum rather than coincidence. This proof unifies the BSM domain (�1.4) and the
@@ -26,7 +28,7 @@ spectrum rather than coincidence. This proof unifies the BSM domain (�1.4) and
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0�10?4 day?�, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -51,8 +53,8 @@ $$E_n = 10^{n-20} \text{ J} \quad n = 1, 2, \ldots, 26$$
 | 9 | 10?�� | 62.4 MeV | Pion (139.6 MeV ~ n=8.5) |
 | 10 | 10?�� | 0.624 GeV | Proton (938 MeV ~ n=9.5) |
 | 11 | 10?? | 6.24 GeV | C quark / B quark range |
-| 12 | 10?8 | 62.4 GeV | W/Z bosons (~80/91 GeV) |
-| 13 | 10?7 | 624 GeV | TeV-scale BSM (UQFF Level 13) |
+| 12 | 10⁻8 | 62.4 GeV | W/Z bosons (~80/91 GeV) |
+| 13 | 10⁻7 | 624 GeV | TeV-scale BSM (UQFF Level 13) |
 | 14�26 | ... | ... | Macro to cosmological |
 
 ### 1.2 Higgs at Level 12
@@ -70,7 +72,7 @@ The UQFF prediction: *Higgs mass is determined by the n = 12 energy level bounda
 ### 2.1 Data Source
 
 Particle Data Group (2024). *Review of Particle Physics*. Phys. Rev. D 110, 030001.
-241 particles/resonances with established masses, 10?�6 J to 10?7 J range.
+241 particles/resonances with established masses, 10?�6 J to 10⁻7 J range.
 
 ### 2.2 Level Assignment and Correlation
 
@@ -82,20 +84,20 @@ $$n_{particle} = \log_{10}(E_{rest}/\text{J}) + 20$$
 
 | Particle | Mass | E_rest (J) | n_UQFF | Nearest Level | ?n |
 |---------|------|-----------|--------|--------------|-----|
-| Electron | 0.511 MeV | 8.19 � 10?�4 | 6.91 | 7 | 0.09 |
-| Muon | 105.7 MeV | 1.69 � 10?�� | 8.23 | 8 | 0.23 |
-| Tau | 1776.9 MeV | 2.85 � 10?�� | 9.45 | 9�10 | 0.45 |
-| Pion p� | 134.98 MeV | 2.16 � 10?�� | 8.33 | 8 | 0.33 |
-| Proton | 938.3 MeV | 1.503 � 10?�� | 9.18 | 9 | 0.18 |
-| Neutron | 939.6 MeV | 1.505 � 10?�� | 9.18 | 9 | 0.18 |
-| He-4 nucleus | 3727 MeV | 5.97 � 10?�� | 9.78 | 10 | 0.22 |
-| Kaon K� | 493.7 MeV | 7.91 � 10?�� | 8.90 | 9 | 0.10 |
-| Charm quark (c) | 1.27 GeV | 2.04 � 10?�� | 9.31 | 9 | 0.31 |
-| Bottom quark (b) | 4.18 GeV | 6.70 � 10?�� | 9.83 | 10 | 0.17 |
-| Top quark (t) | 172.7 GeV | 2.77 � 10?8 | 12.44 | 12 | 0.44 |
-| W boson | 80.38 GeV | 1.29 � 10?8 | 12.11 | 12 | 0.11 |
-| Z boson | 91.19 GeV | 1.46 � 10?8 | 12.16 | 12 | 0.16 |
-| Higgs | 125.25 GeV | 2.01 � 10?8 | 12.30 | 12 | 0.30 |
+| Electron | 0.511 MeV | 8.19 × 10?�4 | 6.91 | 7 | 0.09 |
+| Muon | 105.7 MeV | 1.69 × 10?�� | 8.23 | 8 | 0.23 |
+| Tau | 1776.9 MeV | 2.85 × 10?�� | 9.45 | 9×10 | 0.45 |
+| Pion p� | 134.98 MeV | 2.16 × 10?�� | 8.33 | 8 | 0.33 |
+| Proton | 938.3 MeV | 1.503 × 10?�� | 9.18 | 9 | 0.18 |
+| Neutron | 939.6 MeV | 1.505 × 10?�� | 9.18 | 9 | 0.18 |
+| He-4 nucleus | 3727 MeV | 5.97 × 10?�� | 9.78 | 10 | 0.22 |
+| Kaon K� | 493.7 MeV | 7.91 × 10?�� | 8.90 | 9 | 0.10 |
+| Charm quark (c) | 1.27 GeV | 2.04 × 10?�� | 9.31 | 9 | 0.31 |
+| Bottom quark (b) | 4.18 GeV | 6.70 × 10?�� | 9.83 | 10 | 0.17 |
+| Top quark (t) | 172.7 GeV | 2.77 × 10⁻8 | 12.44 | 12 | 0.44 |
+| W boson | 80.38 GeV | 1.29 × 10⁻8 | 12.11 | 12 | 0.11 |
+| Z boson | 91.19 GeV | 1.46 × 10⁻8 | 12.16 | 12 | 0.16 |
+| Higgs | 125.25 GeV | 2.01 × 10⁻8 | 12.30 | 12 | 0.30 |
 
 ### 2.3 Statistical Summary
 
@@ -144,10 +146,10 @@ The identification of n = 8 as the "nuclear binding" level is confirmed by:
 
 | System | Binding energy (J) | n_UQFF | |
 |--------|-------------------|--------|--|
-| Deuterium | 3.56 � 10?�� | 7.55 | ~8 |
-| He-4 binding | 4.54 � 10?�� | 8.66 | 8�9 |
-| Fe-56 binding/nucleon | 1.41 � 10?�� | 8.15 | **8** |
-| Pb-208 binding/nucleon | 1.36 � 10?�� | 8.13 | **8** |
+| Deuterium | 3.56 × 10?�� | 7.55 | ~8 |
+| He-4 binding | 4.54 × 10?�� | 8.66 | 8�9 |
+| Fe-56 binding/nucleon | 1.41 × 10?�� | 8.15 | **8** |
+| Pb-208 binding/nucleon | 1.36 × 10?�� | 8.13 | **8** |
 | Average nuclear BE/A | ~10?�� | **8.0** | Level 8 anchor |
 
 The Fe-56 maximum binding energy per nucleon (most stable nucleus) falls at
@@ -188,7 +190,7 @@ that:
 
 ---
 
-**UQFF computed:** Canonical UQFF buoyancy parameter U_bi = ?�[SSq]�GM/r� = 5.0e-4�0.57�6.67e-11�M/r�; for solar parameters: U_bi,Sun = 5.7e-4�6.67e-11�1.99e30/(6.96e8)� = 1.47e+2 m/s�.
+**UQFF computed:** Canonical UQFF buoyancy parameter U_bi = ?�[SSq]�GM/rκ = 5.0e-4�0.57�6.67e-11�M/r�; for solar parameters: U_bi,Sun = 5.7e-4�6.67e-11�1.99e30/(6.96e8)� = 1.47e+2 m/s�.
 
 ## References
 
@@ -199,12 +201,12 @@ that:
 5. Murphy D.T. (2026). *New Physics at TeV Scale: UQFF Predictions*. PAPER_029.
 6. Murphy D.T. (2026). *BSM Scalar Sectors in UQFF*. PAPER_032.
 7. `EnergyLadderParticleCalculator` � CondensedPhysics2.py.
-.Groups[1].Value  � Empirical Proof EP-02: PDG 2025 Particle Masses � UQFF E_n = E_0 � 10^n Energy Ladder
+.Groups[1].Value  � Empirical Proof EP-02: PDG 2025 Particle Masses – UQFF E_n = E_0 × 10^n Energy Ladder
 
 **Title:** Empirical Proof EP-02: Particle Data Group 2025 Mass Table Cross-Correlation with UQFF 26-Level Energy Ladder E_n = 10^(n-20) J
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57, �_i = 0.61)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57, κ_i = 0.61)  
 **Date:** March 9, 2026  
 **Domain:** �1.15 Empirical Proof Compendium  
 **Source Thread:** `grok_share_2fe4fa3e_conversation.txt` (EP-02, April�Sept 2025)  

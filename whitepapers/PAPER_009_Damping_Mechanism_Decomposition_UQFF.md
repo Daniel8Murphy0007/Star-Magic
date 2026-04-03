@@ -3,17 +3,17 @@
 **Author:** Daniel T. Murphy  
 **Date:** March 5, 2026  
 **Session:** Phase 1 (Sessions 1�43)  
-**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57, �_i = 0.61)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57, κ_i = 0.61)  
 **Source:** `source27.cpp` (SOURCE27 namespace), `MAIN_1_CoAnQi.cpp`  
 **Cross-links:** PAPER_001 (GW170817 Damping), PAPER_003 (GW150914 BBH), PAPER_013 (Magnetar Spin-Down)
 
 ## Abstract
 
-The Unified Quantum Field Framework (UQFF) predicts gravitational wave strain damping via four distinct vacuum structure mechanisms: Aether coupling, Superconducting Manifold (SCm), Topological Resonance Zones (TRZ), and String sector dissipation. We decompose these contributions across binary neutron star (BNS) and binary black hole (BBH) systems, analyzing frequency dependence, magnetic field activation thresholds, and system-specific behavior. For GW170817, we find D_total = 0.333 with dominant String damping (D_String = 0.37, 63% reduction) and secondary TRZ effects (D_TRZ = 0.9, 10% reduction). SCm remains dormant (D_SCm = 1.0) for typical NS B-fields but activates dramatically at B > 3 � 10�� G, producing 99% suppression. BBH systems (GW150914) show weaker total damping (D_total = 0.81) due to absence of SCm and reduced String coupling. Frequency-dependent analysis reveals TRZ resonances near 100 Hz and String sector dominance above 200 Hz.
+The Unified Quantum Field Framework (UQFF) predicts gravitational wave strain damping via four distinct vacuum structure mechanisms: Aether coupling, Superconducting Manifold (SCm), Topological Resonance Zones (TRZ), and String sector dissipation. We decompose these contributions across binary neutron star (BNS) and binary black hole (BBH) systems, analyzing frequency dependence, magnetic field activation thresholds, and system-specific behavior. For GW170817, we find D_total = 0.333 with dominant String damping (D_String = 0.37, 63% reduction) and secondary TRZ effects (D_TRZ = 0.9, 10% reduction). SCm remains dormant (D_SCm = 1.0) for typical NS B-fields but activates dramatically at B > 3 × 10�� G, producing 99% suppression. BBH systems (GW150914) show weaker total damping (D_total = 0.81) due to absence of SCm and reduced String coupling. Frequency-dependent analysis reveals TRZ resonances near 100 Hz and String sector dominance above 200 Hz.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0�10?4 day?�, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -64,7 +64,7 @@ Vacuum aether (Lorentz-violating background field) couples to gravitational wave
 **D_Aether = exp(-? r / c)**
 
 where:
-- ? = 0.0005 day?� (UQFF calibration constant)
+- ? = 0.0005 day⁻¹ (UQFF calibration constant)
 - r = source distance
 - c = speed of light
 
@@ -74,9 +74,9 @@ For typical GW sources:
 
 | Source | Distance | ?r/c | D_Aether |
 |--------|----------|------|----------|
-| GW170817 | 40 Mpc | 2.3 � 10?? | 1.000000 |
-| GW190425 | 159 Mpc | 9.2 � 10?? | 1.000000 |
-| GW150914 | 410 Mpc | 2.4 � 10?8 | 0.999999 |
+| GW170817 | 40 Mpc | 2.3 × 10?? | 1.000000 |
+| GW190425 | 159 Mpc | 9.2 × 10?? | 1.000000 |
+| GW150914 | 410 Mpc | 2.4 × 10⁻8 | 0.999999 |
 
 **Conclusion:** Aether damping is **negligible** (D � 1) for all observed GW events.
 
@@ -84,7 +84,7 @@ For typical GW sources:
 
 Aether damping becomes significant (D < 0.99) only at:
 
-**r > c / ? = 5.2 � 10? Mpc = 17 Gpc**
+**r > c / ? = 5.2 × 10? Mpc = 17 Gpc**
 
 This is **beyond the observable universe** (z ~ 10, D_L ~ 30 Gpc for cosmology).
 
@@ -100,21 +100,21 @@ Strong magnetic fields induce Cooper pairing in neutron star cores, creating sup
 
 **D_SCm(B) = 1 - exp[-(B_crit / B)�]**
 
-where B_crit = 4.4 � 10�� T.
+where B_crit = 4.4 × 10�� T.
 
 ### 3.2 Activation Threshold
 
 | B-field | Type | B/B_crit | D_SCm | Activation |
 |---------|------|----------|-------|------------|
-| 108 G | Normal pulsar | 2.3 � 10?6 | 1.000000 | ? Dormant |
-| 10�� G | Recycled pulsar | 2.3 � 10?4 | 1.000000 | ? Dormant |
+| 108 G | Normal pulsar | 2.3 × 10⁻6 | 1.000000 | ? Dormant |
+| 10�� G | Recycled pulsar | 2.3 × 10⁻4 | 1.000000 | ? Dormant |
 | 10�� G | High-B pulsar | 0.023 | 1.000000 | ? Dormant |
 | 10�� G | Magnetar | 0.23 | 0.999 | ?? Weak (0.1%) |
-| 3 � 10�� G | Strong magnetar | 0.68 | 0.999 | ?? Weak (0.1%) |
+| 3 × 10�� G | Strong magnetar | 0.68 | 0.999 | ?? Weak (0.1%) |
 | 10�4 G | Hyper-magnetar | 2.3 | 0.010 | ? **Strong (99%)** |
 | 10�5 G | Theoretical max | 23 | 0.000 | ? **Full (100%)** |
 
-**Critical Result:** SCm activates sharply at **B ~ 3-5 � 10�� G**.
+**Critical Result:** SCm activates sharply at **B ~ 3-5 × 10�� G**.
 
 ### 3.3 Observed Systems
 
@@ -133,7 +133,7 @@ where B_crit = 4.4 � 10�� T.
 
 Magnetar-BNS merger (e.g., SGR 1806-20 with B ~ 10�5 G):
 - **Predicted D_SCm ? 0**
-- **Total damping D_total = 0.37 � 0.9 � 0 = 0** (signal invisible!)
+- **Total damping D_total = 0.37 × 0.9 × 0 = 0** (signal invisible!)
 - **Detection:** Only via EM counterpart (kilonova, GRB)
 
 ---
@@ -258,7 +258,7 @@ where � ~ 0.5.
 - D_String = 0.370
 
 **Combined:**
-**D_total = 1.0 � 1.0 � 0.9 � 0.37 = 0.333**
+**D_total = 1.0 × 1.0 × 0.9 × 0.37 = 0.333**
 
 **Contributions:**
 - Aether: 0% reduction
@@ -278,7 +278,7 @@ where � ~ 0.5.
 - D_String = 0.620
 
 **Combined:**
-**D_total = 1.0 � 1.0 � 0.9 � 0.62 = 0.558**
+**D_total = 1.0 × 1.0 × 0.9 × 0.62 = 0.558**
 
 **Contributions:**
 - TRZ: 10% reduction
@@ -296,11 +296,11 @@ where � ~ 0.5.
 - D_String = 1.000 (weak for pure BH)
 
 **Combined:**
-**D_total = 1.0 � 0.9 � 1.0 = 0.900**
+**D_total = 1.0 × 0.9 × 1.0 = 0.900**
 
 **But observed D_total = 0.810, suggesting additional B_factor = 0.9:**
 
-**D_total = 1.0 � 0.9 � 0.9 = 0.810** ?
+**D_total = 1.0 × 0.9 × 0.9 = 0.810** ?
 
 **Contributions:**
 - TRZ: 10% reduction
@@ -377,7 +377,7 @@ where � ~ 0.5.
 
 If magnetar (B > 10�4 G) merges with normal NS:
 - **D_SCm ? 0** (full suppression)
-- **D_total = 0.37 � 0 � 0.9 = 0** (signal invisible)
+- **D_total = 0.37 × 0 ≈ 0.9 = 0** (signal invisible)
 
 **Detection strategy:**
 - No GW detection despite nearby distance
@@ -407,7 +407,7 @@ We have decomposed UQFF damping mechanisms across BNS and BBH systems. Key findi
 
 1. **String sector dominates BNS damping** (63% for GW170817, 38% for GW190425)
 2. **TRZ provides universal 10% damping** with resonance at f ~ 100 Hz
-3. **SCm activates sharply at B > 3 � 10�� G**, producing 99% suppression
+3. **SCm activates sharply at B > 3 × 10�� G**, producing 99% suppression
 4. **Aether negligible** for all observed GW sources
 5. **Matter enhances String coupling** by factor ~3 (BNS vs BBH)
 6. **Frequency dependence:** Stronger damping at high-f (String) with mid-f resonance (TRZ)
@@ -451,7 +451,7 @@ UQFF amplitude damping is decomposed into four independent vacuum channels: Aeth
 **Author:** Daniel T. Murphy  
 **Date:** March 5, 2026  
 **Session:** Phase 1 (Sessions 1�43)  
-**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57, �_i = 0.61)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57, κ_i = 0.61)  
 **Source:** `source27.cpp` (SOURCE27 namespace), `MAIN_1_CoAnQi.cpp`  
 **Cross-links:** PAPER_001 (GW170817 Damping), PAPER_003 (GW150914 BBH), PAPER_013 (Magnetar Spin-Down)
 
@@ -479,7 +479,7 @@ UQFF amplitude damping is decomposed into four independent vacuum channels: Aeth
 
 ### A.2 F_U Master Equation (Complete — 4 terms)
 
-$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}igl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}igr]$$
+$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}\bigr]$$
 
 | Term | Description | Implementation |
 |------|-------------|----------------|
@@ -496,9 +496,7 @@ $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}igl[\l
 
 ### A.3 Um Heaviside Phase-Transition Amplifier (PAPER_421)
 
-$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} 	imes igl(1 + 10^{13}\,\Theta(
-ho_{SCm} - 
-ho_c)igr) 	imes igl(1 + A_q\cos(\Delta\omega\,t)igr)$$
+$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rho_{SCm} - \rho_c)\bigr) \times \bigl(1 + A_q\cos(\Delta\omega\,t)\bigr)$$
 
 | Symbol | Value | Description |
 |--------|-------|-------------|

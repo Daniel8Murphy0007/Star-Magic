@@ -1,4 +1,5 @@
-﻿#  "PAPER_{0:D3}" -f [int]# PAPER #105 — BH Phases, Nebulae, and Emerging Astrophysical Domains
+# PAPER_105: Black Hole Phases, Planetary Nebulae, and 10 Galaxy/Nebula UQFF Models: Complete §1.13 Validation Suite
+
 
 **Title:** Black Hole Phases, Planetary Nebulae, and 10 Galaxy/Nebula UQFF Models: Complete §1.13 Validation Suite
 
@@ -7,7 +8,6 @@
 **Date:** March 7, 2026  
 **Source Data:** validate_drawings_models.py (BH_PHASES_MODEL, Drawings 5–9); validate_all_models.py (10 galaxy models)  
 **Index Slot:** §1.13 Multi-Physics Models,  
-    $n = [int]# PAPER #105 — BH Phases, Nebulae, and Emerging Astrophysical Domains
 
 **Title:** Black Hole Phases, Planetary Nebulae, and 10 Galaxy/Nebula UQFF Models: Complete §1.13 Validation Suite
 
@@ -24,7 +24,7 @@ $$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b_i}, \quad \kappa = 5.0\tim
 $$
 L_\text{UQFF} = \frac{4\pi G M c}{\kappa_\text{es}}\Bigl(1 - [SSq]\cdot e^{-\kappa\,\Delta t}\Bigr), \quad [SSq] = 0.57
 $$
-<!-- ? = 5.0e-4 day?¹, [SSq] = 0.57, ß_i = 6.1e-1 -->
+<!-- ? = 5.0e-4 day⁻¹, [SSq] = 0.57, ß_i = 6.1e-1 -->
 
 ## Abstract
 
@@ -32,7 +32,7 @@ This paper consolidates the remaining §1.13 validation results: (1) Black Hole 
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 

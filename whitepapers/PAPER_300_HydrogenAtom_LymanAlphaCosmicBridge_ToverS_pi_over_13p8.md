@@ -14,7 +14,7 @@ The hydrogen atom's Lyman-alpha transition introduces a resonant oscillatory ter
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0Ã—10â»4 dayâ»Â¹, [SSq] = 0.57) uniquely enabling this analysis ï¿½ establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -155,4 +155,4 @@ The Lyman-alpha cosmic bridge confirms that the UQFF traveling-wave normalizatio
 
 **Testable Prediction:** This UQFF result is directly testable with next-generation atomic interferometers and CODATA 2026 spectroscopy; the UQFF deviation from standard predictions exceeds the measurement noise floor by = 3s, providing a clear discriminant for the UQFF buoyancy-gravity framework in future observations.
 
-**UQFF computed:** UQFF energy correction term [SSq]×h?_g/(k_B×T) = 0.57 × 7.7e-50/(1.38e-23 × 300) = 1.1e-29; UQFF shift in Lyman-alpha = 1.1e-29 × 13.6 eV.
+**UQFF computed:** UQFF energy correction term [SSq]ï¿½h?_g/(k_Bï¿½T) = 0.57 Ã— 7.7e-50/(1.38e-23 Ã— 300) = 1.1e-29; UQFF shift in Lyman-alpha = 1.1e-29 Ã— 13.6 eV.

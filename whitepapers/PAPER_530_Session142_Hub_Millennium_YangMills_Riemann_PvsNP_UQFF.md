@@ -157,7 +157,7 @@ result = calc.compute(dataset={'E': 1e10, 'F': 1e19, 'Z': 0.570})
 
 ---
 
-## �10 � Extended Comparative Analysis
+## ×10 � Extended Comparative Analysis
 
 ### Session 142 in the Full Millennium Timeline
 
@@ -172,7 +172,7 @@ individual topic in depth: PAPER_543 (NS alone), PAPER_544 (YM alone), PAPER_540
 |--------|---------|-----------------|-------|
 | Session 142 3D-IPO | $t_1^\text{UQFF} = (2\pi/\ln 26) \cdot Z_{26}$ | 14.28 | 1.03% |
 | Session 144 DPM | $(2\pi \cdot 13/\ln 26) \cdot Z_{26}$ | 14.29 | 1.10% |
-| True | LMFDB | 14.1347 | � |
+| True | LMFDB | 14.1347 | – |
 
 Both UQFF approaches achieve sub-2% accuracy with zero fitted parameters � a
 non-trivial result given that $\ln 26$ and $Z_{26}$ arise from the 26D manifold

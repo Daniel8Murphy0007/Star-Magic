@@ -1,4 +1,4 @@
-﻿# PAPER_269: Supernova Ram Pressure Degeneracy Point — Kinematic Invariant in NGC 1792 Starburst Gravity
+# PAPER_269: Supernova Ram Pressure Degeneracy Point — Kinematic Invariant in NGC 1792 Starburst Gravity
 
 **Authors:** Daniel T. Murphy  
 **Date:** March 2026  

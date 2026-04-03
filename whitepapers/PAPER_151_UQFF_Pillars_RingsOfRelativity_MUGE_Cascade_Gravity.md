@@ -1,4 +1,5 @@
-﻿#  "PAPER_{0:D3}" -f [int]# PAPER #151 — UQFF Pillars of Creation and Rings of Relativity: MUGE Cascade Gravity Sequence
+# PAPER_151: UQFF Star-Magic Pillars of Creation and Rings of Relativity Gravitational Lens — MUGE 12-Term Cascade Sequence: g=2.001e26 and g=5.005e25 m/s^2
+
 
 **Title:** UQFF Star-Magic Pillars of Creation and Rings of Relativity Gravitational Lens — MUGE 12-Term Cascade Sequence: g=2.001e26 and g=5.005e25 m/s^2
 

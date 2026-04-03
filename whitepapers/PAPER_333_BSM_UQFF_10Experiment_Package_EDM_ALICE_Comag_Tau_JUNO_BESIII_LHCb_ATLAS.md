@@ -1,4 +1,4 @@
-﻿# PAPER_333 — BSM-UQFF Multi-Experiment Coupling Package: EDM, ALICE, Comagnetometer, Tau Dipole, JUNO, BESIII, LHCb, ATLAS, ECFA, and NOMAD
+# PAPER_333 — BSM-UQFF Multi-Experiment Coupling Package: EDM, ALICE, Comagnetometer, Tau Dipole, JUNO, BESIII, LHCb, ATLAS, ECFA, and NOMAD
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2  
 **Session:** 95  
@@ -16,7 +16,7 @@ $$
 
 ## Abstract
 
-This paper maps ten accelerator and detector experiments to UQFF variables, establishing a unified BSM (Beyond Standard Model)–UQFF coupling framework. Each experiment constrains or calibrates a specific UQFF parameter. The package includes: (1) an explicit EDM SO(10) force term added to F_U, (2) ALICE multiplicity scaling with [SSq] at level n=18, (3) comagnetometer axion coupling through the Um bilinear, (4) tau dipole connection to µ_j cos(pt_n), (5) JUNO PMT identification of SC_m?Qs=0, (6) BESIII DCS mapping to ? flux, (7) LHCb LFV boundary revealing Um reversal at t_n<0, (8) ATLAS vector-like quarks fixing SC_m at heavy n=18, (9) ECFA Higgs/EW establishing ?_Higgs=1 at level 18, and (10) NOMAD monophoton connecting [SSq] at n=13. The g-2 fit yields a=4.74×10?5, b=9.96, ?_Higgs=47.34, t_dev=5×10?8.
+This paper maps ten accelerator and detector experiments to UQFF variables, establishing a unified BSM (Beyond Standard Model)–UQFF coupling framework. Each experiment constrains or calibrates a specific UQFF parameter. The package includes: (1) an explicit EDM SO(10) force term added to F_U, (2) ALICE multiplicity scaling with [SSq] at level n=18, (3) comagnetometer axion coupling through the Um bilinear, (4) tau dipole connection to µ_j cos(pt_n), (5) JUNO PMT identification of SC_m?Qs=0, (6) BESIII DCS mapping to ? flux, (7) LHCb LFV boundary revealing Um reversal at t_n<0, (8) ATLAS vector-like quarks fixing SC_m at heavy n=18, (9) ECFA Higgs/EW establishing ?_Higgs=1 at level 18, and (10) NOMAD monophoton connecting [SSq] at n=13. The g-2 fit yields a=4.74×10⁻5, b=9.96, ?_Higgs=47.34, t_dev=5×10⁻8.
 
 ---
 
@@ -112,11 +112,11 @@ Q_s = 0 in SC_m   [JUNO DCR gain-10^7 spikes ? Qs=0 identification]
 
 ### 2.6 Experiment 6 — BESIII (Beijing Electron-Positron Collider II)
 
-**Observable:** Double-Cabibbo-Suppressed (DCS) decay branching ratio BR ~ 10?4
+**Observable:** Double-Cabibbo-Suppressed (DCS) decay branching ratio BR ~ 10⁻4
 
 **UQFF connection:**
 ```
-BR_DCS ~ 10?4 ? ? ~ 10¹³ cm?²/s   [light quark sector flux calibration]
+BR_DCS ~ 10⁻4 ? ? ~ 10¹³ cm?²/s   [light quark sector flux calibration]
 ```
 
 | Parameter | Value | Description |
@@ -128,20 +128,20 @@ BR_DCS ~ 10?4 ? ? ~ 10¹³ cm?²/s   [light quark sector flux calibration]
 
 ### 2.7 Experiment 7 — LHCb (Lepton Flavor Violation)
 
-**Observable:** Lepton flavor violating decay BR < 10?6
+**Observable:** Lepton flavor violating decay BR < 10⁻6
 
 **UQFF connection:**
 ```
-BR_LFV < 10?6 ? t_n < 0   [Um reversal trigger; negative time-zone boundary]
+BR_LFV < 10⁻6 ? t_n < 0   [Um reversal trigger; negative time-zone boundary]
 ```
 
 | Parameter | Value | Description |
 |-----------|-------|-------------|
-| BR_LFV | < 10?6 | LFV branching ratio upper limit |
+| BR_LFV | < 10⁻6 | LFV branching ratio upper limit |
 | t_n | < 0 | Negative time zone (T-reversal) |
 | Um reversal | (1-e^{-?t}cos(pt_n))?flip | Signal of time-zone crossing |
 
-**Physical significance:** LFV requires lepton number violation, which in UQFF occurs when t_n < 0 triggers a sign flip in the Um bilinear. The BR < 10?6 limit constrains the frequency of t_n < 0 events in the integration path.
+**Physical significance:** LFV requires lepton number violation, which in UQFF occurs when t_n < 0 triggers a sign flip in the Um bilinear. The BR < 10⁻6 limit constrains the frequency of t_n < 0 events in the integration path.
 
 ### 2.8 Experiment 8 — ATLAS (Vector-Like Quarks)
 
@@ -177,10 +177,10 @@ BR_LFV < 10?6 ? t_n < 0   [Um reversal trigger; negative time-zone boundary]
 
 **g-2 Fit Parameters (code_execution verified):**
 ```
-a = 4.74×10?5
+a = 4.74×10⁻5
 b = 9.96
 ?_Higgs = 47.34
-t_dev = 5×10?8 at r = 0.3 fm  (<5% error vs. Super Tau-Charm limits)
+t_dev = 5×10⁻8 at r = 0.3 fm  (<5% error vs. Super Tau-Charm limits)
 ```
 
 ### 2.10 Experiment 10 — NOMAD (Near Oscillation Magnetic Axial Detector)

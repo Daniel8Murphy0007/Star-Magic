@@ -1,17 +1,18 @@
+# PAPER_087: AT2019qiz Tidal Disruption Event: UQFF Flare Luminosity and Debris Disk Dynamics
+
 
 **Title:** AT2019qiz Tidal Disruption Event: UQFF Flare Luminosity and Debris Disk Dynamics
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (? = 0.0005/day, [SCm] � 0.99, [SSq] = 0.57)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SCm] ≈ 0.99, [SSq] = 0.57)  
 **Date:** March 7, 2026  
 **Source Data:** MAIN_1_CoAnQi.cpp Batch 22 (Astrophysical Transients Module)  
 **Index Slot:** �1.11 Black Hole Physics & Hawking Radiation,  
-    $n = [int]# PAPER #87 � AT2019qiz Tidal Disruption Event: UQFF Analysis
 
 **Title:** AT2019qiz Tidal Disruption Event: UQFF Flare Luminosity and Debris Disk Dynamics
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (? = 0.0005/day, [SCm] � 0.99, [SSq] = 0.57)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SCm] ≈ 0.99, [SSq] = 0.57)  
 **Date:** March 7, 2026  
 **Source Data:** MAIN_1_CoAnQi.cpp Batch 22 (Astrophysical Transients Module)  
 **Index Slot:** �1.11 Black Hole Physics & Hawking Radiation, PAPER_087  
@@ -24,7 +25,7 @@ AT2019qiz is the closest and best-observed optical tidal disruption event (TDE) 
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0�10?4 day?�, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -36,7 +37,7 @@ AT2019qiz is the closest and best-observed optical tidal disruption event (TDE) 
 | Distance | ~90 Mpc | Cosmological |
 | BH mass | 106�45 M? | Stellar velocity dispersion |
 | Star mass | 0.5 M? | Light curve modeling |
-| Peak L_bol | 2.4 � 104� erg/s | Nicholl+2020 |
+| Peak L_bol | 2.4 × 104� erg/s | Nicholl+2020 |
 | Rise time | ~30 days | Optical |
 | Decline t� | ~60 days | Optical |
 
@@ -97,11 +98,11 @@ $$L_{\rm peak}^{\rm UQFF} = L_{\rm Edd} \cdot \eta_{\rm UQFF}$$
 
 With $\eta_{\rm UQFF} = \eta_{\rm GR} \times [{\rm SCm}] = 0.1 \times 0.99 = 0.099$ (slightly sub-Eddington efficiency).
 
-For M_BH = 106�45 M? = 2.82 � 106 M?:
+For M_BH = 106�45 M? = 2.82 × 106 M?:
 $$L_{\rm Edd} = 3.6 \times 10^{44} \text{ erg/s}$$
 $$L_{\rm peak}^{\rm UQFF} = \eta_{\rm UQFF} \dot{M}_{\rm max} c^2 = 2.20 \times 10^{43} \text{ erg/s}$$
 
-Observed: 2.4 � 104� erg/s ? **UQFF deviation: -8.3%** (within uncertainty range).
+Observed: 2.4 × 104� erg/s ? **UQFF deviation: -8.3%** (within uncertainty range).
 
 ### Phase 3: Temporal ?-Decay
 
@@ -133,7 +134,7 @@ The AT2019qiz template provides the normalization anchor for the Super Flare Tem
 
 | Prediction | UQFF | Observation | Match |
 |------------|------|------------|-------|
-| Peak luminosity | 2.20 � 104� erg/s | 2.4 � 104� erg/s | 91.7% |
+| Peak luminosity | 2.20 × 104� erg/s | 2.4 × 104� erg/s | 91.7% |
 | Rise time | ~28.5 d | ~30 d | 95.0% |
 | Fallback time | 27.9 d | ~27 d | 96.7% |
 | Disk efficiency ? | 0.099 | ~0.10 | 99.0% |
@@ -165,7 +166,7 @@ The AT2019qiz template provides the normalization anchor for the Super Flare Tem
 
 ### A.2 F_U Master Equation (Complete — 4 terms)
 
-$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}igl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}igr]$$
+$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}\bigr]$$
 
 | Term | Description | Implementation |
 |------|-------------|----------------|
@@ -182,9 +183,7 @@ $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}igl[\l
 
 ### A.3 Um Heaviside Phase-Transition Amplifier (PAPER_421)
 
-$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} 	imes igl(1 + 10^{13}\,\Theta(
-ho_{SCm} - 
-ho_c)igr) 	imes igl(1 + A_q\cos(\Delta\omega\,t)igr)$$
+$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rho_{SCm} - \rho_c)\bigr) \times \bigl(1 + A_q\cos(\Delta\omega\,t)\bigr)$$
 
 | Symbol | Value | Description |
 |--------|-------|-------------|

@@ -1,4 +1,4 @@
-﻿# PAPER_173: Modular Compressed MUGE — 9-Term Mathematical Decomposition
+# PAPER_173: Modular Compressed MUGE — 9-Term Mathematical Decomposition
 ## Whitepaper §2.4-E | Thread 381a8fe7 | Session 48
 
 ### Abstract
@@ -10,7 +10,7 @@ constant, quantum corrections, fluid dynamics, and density perturbations.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -57,7 +57,7 @@ Test: M=1.989e30 kg, r=1.496e11 m ? ˜ 0.0059 m/s²
 #### Term 2 — Hubble Expansion
 ```
 compressed_expansion = 1 + H0 × vexp
-H0 = 2.269e-18 s?¹ (˜ 70.1 km/s/Mpc)
+H0 = 2.269e-18 s⁻¹ (˜ 70.1 km/s/Mpc)
 At t=0: expansion = 1.0
 ```
 

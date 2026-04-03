@@ -1,4 +1,4 @@
-﻿# PAPER_277 — UQFF Gravitational Recession Damping Factor κ_recession for Positive Redshift
+# PAPER_277 — UQFF Gravitational Recession Damping Factor κ_recession for Positive Redshift
 
 **Author:** Daniel T. Murphy
 **Module:** SOMBRERO_UQFF_MODULE.cpp (UQFF 2.0)

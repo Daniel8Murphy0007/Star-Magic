@@ -2,7 +2,7 @@
 
 **Authors:** Daniel Murphy & UQFF Research Collective  
 **Date:** 2026-03-06  
-**Domain:** 1.4 ó Beyond Standard Model (BSM) Physics  
+**Domain:** 1.4 ÔøΩ Beyond Standard Model (BSM) Physics  
 **Status:** Draft  
 **Repository:** Daniel8Murphy0007/Star-Magic  
 **Calibration Constants:** ? = 0.0005/day, [SSq] = 0.57  
@@ -18,7 +18,7 @@ The anomalous magnetic moment of the tau lepton a_tau = (g_tau - 2)/2 is among t
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0◊10?4 day?π, [SSq] = 0.57) uniquely enabling this analysis ó establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0√ó10‚Åª4 day‚Åª¬π, [SSq] = 0.57) uniquely enabling this analysis ÔøΩ establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -45,7 +45,7 @@ For a Dirac particle, g = 2 exactly. Quantum corrections produce:
 | Lepton | a_l^SM | Tension |
 |--------|--------|---------|
 | Electron (e) | 1.15965218128e-3 | 1.6s |
-| Muon (µ) | 1.16591810e-3 | 5.1s |
+| Muon (ÔøΩ) | 1.16591810e-3 | 5.1s |
 | Tau (t) | 1.17721e-3 | Unmeasured at precision level |
 
 ### 1.3 Why Tau g-2 is Sensitive to UQFF
@@ -54,7 +54,7 @@ New physics contributions scale as:
 
 **Delta_a_l^NP ~ C_NP x m_l^2 / M_NP^2**
 
-The tau is 3477x heavier than the muon ó tau g-2 is ~12 million times more sensitive to heavy new physics per unit coupling.
+The tau is 3477x heavier than the muon ÔøΩ tau g-2 is ~12 million times more sensitive to heavy new physics per unit coupling.
 
 ---
 
@@ -125,7 +125,7 @@ The tau is 3477x heavier than the muon ó tau g-2 is ~12 million times more sensi
 | L3 (2002) | -0.052 < a_tau < 0.058 |
 | ATLAS (2022) | -0.057 < a_tau < 0.024 |
 
-Current precision: O(10^-2) ó UQFF correction (3.42e-6) requires O(10^-6) precision.
+Current precision: O(10^-2) ÔøΩ UQFF correction (3.42e-6) requires O(10^-6) precision.
 
 ### 4.2 Future Experimental Prospects
 
@@ -142,21 +142,21 @@ Current precision: O(10^-2) ó UQFF correction (3.42e-6) requires O(10^-6) precis
 
 The Schiff-Engel relation connects tau g-2 and EDM:
 
-**d_tau = ?a_tau^UQFF ◊ tan(f_CP) ◊ (e ? / 2 m_tau c)**
+**d_tau = ?a_tau^UQFF ÔøΩ tan(f_CP) ÔøΩ (e ? / 2 m_tau c)**
 
 - ?a_tau^UQFF = 3.42e-6 (this paper)
-- tan(f_CP) = tan([SSq] ◊ p) = tan(1.795) = -4.637
-- Tau magneton = 9.377e-21 e∑cm
+- tan(f_CP) = tan([SSq] ÔøΩ p) = tan(1.795) = -4.637
+- Tau magneton = 9.377e-21 eÔøΩcm
 
-Result: **|d_tau^SE| ~ 1.5e-25 e∑cm** (Schiff-Engel approximation)
+Result: **|d_tau^SE| ~ 1.5e-25 eÔøΩcm** (Schiff-Engel approximation)
 
-Full UQFF aether-resonance enhancement gives **d_tau^UQFF = 1.84e-20 e∑cm** (Paper #24) ó four orders of magnitude larger due to aether-loop enhancement that does not appear in the perturbative SE relation.
+Full UQFF aether-resonance enhancement gives **d_tau^UQFF = 1.84e-20 eÔøΩcm** (Paper #24) ÔøΩ four orders of magnitude larger due to aether-loop enhancement that does not appear in the perturbative SE relation.
 
 ---
 
 ## 6. Conclusion
 
-UQFF predicts an anomalous magnetic moment correction ?a_tau = +3.42e-6, arising primarily from vacuum aether loop coupling (3.38e-6) with percent-level string and KK graviton contributions. This correction corresponds to a new physics scale M_UQFF = 14.3 TeV, consistent with the KK mass scale M_KK = 11.6 TeV from Paper #22. While current LEP/ATLAS bounds (precision ~10?≤) are three orders of magnitude too loose to detect this, a dedicated tau factory achieving ~10?6 precision would see a 3.4s signal. This remains the most numerically accessible UQFF BSM prediction per unit experimental investment.
+UQFF predicts an anomalous magnetic moment correction ?a_tau = +3.42e-6, arising primarily from vacuum aether loop coupling (3.38e-6) with percent-level string and KK graviton contributions. This correction corresponds to a new physics scale M_UQFF = 14.3 TeV, consistent with the KK mass scale M_KK = 11.6 TeV from Paper #22. While current LEP/ATLAS bounds (precision ~10?ÔøΩ) are three orders of magnitude too loose to detect this, a dedicated tau factory achieving ~10?6 precision would see a 3.4s signal. This remains the most numerically accessible UQFF BSM prediction per unit experimental investment.
 
 **Validator:** `validate_tau_g2_uqff.py`
 | Dedicated tau factory | ~1e-6 | Yes (3.4s) | 2040+ |
@@ -175,7 +175,7 @@ UQFF predicts non-standard lepton universality breaking:
 
 **Delta_a_tau / Delta_a_mu = (m_tau/m_mu)^2.37**
 
-Exponent 2.37 (vs 2.00 in standard theories) ó unique UQFF prediction.
+Exponent 2.37 (vs 2.00 in standard theories) ÔøΩ unique UQFF prediction.
 
 ---
 
@@ -185,7 +185,7 @@ Exponent 2.37 (vs 2.00 in standard theories) ó unique UQFF prediction.
 |----------|-----|------|---------------|-------------|
 | a_tau | 1.17721e-3 | 1.18063e-3 | (-0.052, +0.013) | Yes |
 | Delta_a_tau^NP | 0 | +3.42e-6 | < 0.013 | Yes |
-| M_NP (effective) | ó | 14.3 TeV | > few TeV | Yes |
+| M_NP (effective) | ‚Äì | 14.3 TeV | > few TeV | Yes |
 | Lepton universality | Exact | Broken at 1e-6 | Not tested | Prediction |
 | Scaling exponent | 2.00 | 2.37 | Not measured | Prediction |
 
@@ -196,7 +196,7 @@ Exponent 2.37 (vs 2.00 in standard theories) ó unique UQFF prediction.
 ### 7.1 Multi-Scale Consistency
 
 The same [SSq] = 0.57 and ? = 0.0005/day that determine:
-- GW damping (Papers #1ñ#22)
+- GW damping (Papers #1ÔøΩ#22)
 - KK mass scale M_KK = 11.6 TeV (Paper #22)
 
 Now also determine the tau g-2 UQFF correction, demonstrating UQFF multi-scale consistency from 10^-22 eV (aether) to 10^4 GeV (KK modes).
@@ -257,7 +257,7 @@ UQFF predicts:
 
 ### A.2 F_U Master Equation (Complete ‚Äî 4 terms)
 
-$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}igl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}igr]$$
+$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}\bigr]$$
 
 | Term | Description | Implementation |
 |------|-------------|----------------|
@@ -274,7 +274,7 @@ $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}igl[\l
 
 ### A.3 Um Heaviside Phase-Transition Amplifier (PAPER_421)
 
-$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} 	imes igl(1 + 10^{13}\,\Theta(ho_{SCm} - ho_c)igr) 	imes igl(1 + A_q\cos(\Delta\omega\,t)igr)$$
+$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rho_{SCm} - \rho_c)\bigr) \times \bigl(1 + A_q\cos(\Delta\omega\,t)\bigr)$$
 
 | Symbol | Value | Description |
 |--------|-------|-------------|

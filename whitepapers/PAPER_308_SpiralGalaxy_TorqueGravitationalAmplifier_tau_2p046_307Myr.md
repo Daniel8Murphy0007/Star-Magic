@@ -1,4 +1,4 @@
-﻿# PAPER_308 — Spiral Arm Torque Gravitational Amplifier
+# PAPER_308 — Spiral Arm Torque Gravitational Amplifier
 ## τ_spiral(10 Gyr) = 2.046 | T_pattern = 307 Myr | dτ/dt = 2.741 × H₀_SH0ES
 
 **Session 88** | 30th C++ UQFF module | FIRST Spiral+SN Ia UQFF 2.0  

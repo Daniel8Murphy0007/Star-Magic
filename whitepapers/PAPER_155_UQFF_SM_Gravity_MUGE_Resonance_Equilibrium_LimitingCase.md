@@ -1,3 +1,5 @@
+# PAPER_155: UQFF Star-Magic Standard Model Gravity as MUGE Resonance Equilibrium � lim(fTRZ?0)[g_UQFF] = GM/r� and the Emergence of Newtonian Gravity
+
 
 **Title:** UQFF Star-Magic Standard Model Gravity as MUGE Resonance Equilibrium � lim(fTRZ?0)[g_UQFF] = GM/r� and the Emergence of Newtonian Gravity
 
@@ -14,7 +16,7 @@
 
 ## Abstract
 
-The Standard Model of gravity � Newtonian $g = GM/r^2$ at leading order, with General Relativistic corrections at higher order � must emerge from the UQFF MUGE 12-Term Resonance equation as a limiting case for the framework to be internally consistent. This paper proves analytically that $\lim_{f_{TRZ} \to 0} g_{MUGE} = GM/r^2$ in the appropriate limit, characterising all necessary conditions on the remaining MUGE terms. The proof requires: (1) fTRZ ? 0 (topological resonance suppressed), (2) B ? 0 (magnetic field negligible), (3) ?_SCm ? ?_baryon (SCm density reduces to baryonic matter), (4) t ? 0 (early-time/no-decay limit). Under these four conditions, the dominant surviving MUGE term is Ug4i (vacuum concentration), which reduces to the Newtonian gravitational acceleration exactly. The paper further characterises the magnitude of UQFF corrections to Standard Model gravity as a function of fTRZ and shows that the MUGE framework is consistent with all solar system gravitational tests both at leading order and at first post-Newtonian correction.
+The Standard Model of gravity – Newtonian $g = GM/r^2$ at leading order, with General Relativistic corrections at higher order � must emerge from the UQFF MUGE 12-Term Resonance equation as a limiting case for the framework to be internally consistent. This paper proves analytically that $\lim_{f_{TRZ} \to 0} g_{MUGE} = GM/r^2$ in the appropriate limit, characterising all necessary conditions on the remaining MUGE terms. The proof requires: (1) fTRZ ? 0 (topological resonance suppressed), (2) B ? 0 (magnetic field negligible), (3) ?_SCm ? ?_baryon (SCm density reduces to baryonic matter), (4) t ? 0 (early-time/no-decay limit). Under these four conditions, the dominant surviving MUGE term is Ug4i (vacuum concentration), which reduces to the Newtonian gravitational acceleration exactly. The paper further characterises the magnitude of UQFF corrections to Standard Model gravity as a function of fTRZ and shows that the MUGE framework is consistent with all solar system gravitational tests both at leading order and at first post-Newtonian correction.
 
 ---
 
@@ -84,7 +86,7 @@ As ?_SCm ? ?_b (baryonic matter), v_SCm ? v_thermal. For typical stellar environ
 
 $$a_{aether\_res} = \gamma \cdot \rho_{SCm} \cdot v_{SCm} \cdot c$$
 
-As ?_SCm ? ?_b and v_SCm ? v_thermal: $a_{aether\_res} \to \gamma \cdot \rho_b \cdot v_{th} \cdot c$. With ?=5�10^-5 and v_th/c ~ 10^-3:
+As ?_SCm ? ?_b and v_SCm ? v_thermal: $a_{aether\_res} \to \gamma \cdot \rho_b \cdot v_{th} \cdot c$. With ?=5×10^-5 and v_th/c ~ 10^-3:
 
 $$a_{aether\_res, SM} = 5 \times 10^{-5} \times \rho_b \times v_{th} \cdot c \approx 5 \times 10^{-5} \times 10^3 \times 3 \times 10^5 \times 3 \times 10^8 = 4.5 \times 10^{12} \text{ m/s}^2$$
 
@@ -96,11 +98,11 @@ Still large � but this term is the **UQFF correction to GR** in neutron-star r
 
 $$a_{aether\_res, solar} \approx 5 \times 10^{-5} \times 10^{-20} \times 10^2 \times 3 \times 10^8 = 1.5 \times 10^{-9} \text{ m/s}^2$$
 
-Comparable to the Pioneer anomaly acceleration (~8.74�10^-10 m/s^2). This is a UQFF prediction: the residual aether resonance in the outer solar system contributes to the Pioneer anomaly at the 10^-9 m/s^2 level. ? (consistent with observation)
+Comparable to the Pioneer anomaly acceleration (~8.74×10^-10 m/s^2). This is a UQFF prediction: the residual aether resonance in the outer solar system contributes to the Pioneer anomaly at the 10^-9 m/s^2 level. ? (consistent with observation)
 
 For the SM limit proof, we take B ? 0 strictly: $a_{aether\_res} \to 0$. ?
 
-**Term 6: Ug4i � THE SURVIVING TERM**
+**Term 6: Ug4i – THE SURVIVING TERM**
 
 $$U_{g4i} = \kappa \cdot \frac{G \cdot M_{sys}}{r^2} \cdot \frac{1}{\kappa t} \cdot (1 - e^{-\kappa t})$$
 
@@ -144,9 +146,9 @@ The dominant correction terms with numerical values at Earth's surface:
 
 | Correction | Formula | Value at Earth | Status |
 |------------|---------|----------------|--------|
-| Vacuum decay | -� ?t � GM/r� | -0.5 � ?t � 9.8 m/s� | Sub-ppb (?t_Earth = 0.001 for 6 yr lifetime test) |
-| Residual aether | aaether_res (B ~ 5�10^-5 T) | ~10^-6 m/s^2 | Below precision |
-| Hubble coupling | k4 H0 c | 1.3�10^-9 m/s^2 | Pioneer-anomaly scale |
+| Vacuum decay | -� ?t – GM/r� | -0.5 � ?t � 9.8 m/s� | Sub-ppb (?t_Earth = 0.001 for 6 yr lifetime test) |
+| Residual aether | aaether_res (B ~ 5×10^-5 T) | ~10^-6 m/s^2 | Below precision |
+| Hubble coupling | k4 H0 c | 1.3×10^-9 m/s^2 | Pioneer-anomaly scale |
 | Topology constant | fTRZ = 0.1 | 0.1 m/s^2 (global) | Normalisation scale |
 
 ### 3.2 Pioneer Anomaly Connection
@@ -155,7 +157,7 @@ The residual UQFF acceleration at outer solar system:
 
 $$a_{UQFF,Pioneer} = \frac{GM_\odot}{r^2}\cdot\frac{\kappa t}{2} + k_4 H_0 c \sim 10^{-9} \text{ m/s}^2$$
 
-For Pioneer at r ~ 70 AU = 1.05�10^13 m, t ~ 30 years = 10,950 days:
+For Pioneer at r ~ 70 AU = 1.05×10^13 m, t ~ 30 years = 10,950 days:
 
 $$\frac{GM_\odot}{r^2} \cdot \frac{\kappa t}{2} = \frac{1.33 \times 10^{20}}{(1.05 \times 10^{13})^2} \times \frac{5 \times 10^{-4} \times 10950}{2} = 1.21 \times 10^{-7} \times 2.74 = 3.3 \times 10^{-7} \text{ m/s}^2$$
 
@@ -183,7 +185,7 @@ The UQFF correction at $r = r_s$:
 
 $$\frac{\kappa t_{BH}}{2} = \frac{5 \times 10^{-4} \times t_{BH}}{2}$$
 
-For Sgr A* (age ~4 Gyr = 1.46�10^6 days): $\kappa t / 2 = 365$. This is the large GR-like correction at the Schwarzschild radius scale � the UQFF vacuum decay term naturally generates a large post-Newtonian correction at the event horizon, consistent with the known $GM/(rc^2)$ GR term.
+For Sgr A* (age ~4 Gyr = 1.46×10^6 days): $\kappa t / 2 = 365$. This is the large GR-like correction at the Schwarzschild radius scale � the UQFF vacuum decay term naturally generates a large post-Newtonian correction at the event horizon, consistent with the known $GM/(rc^2)$ GR term.
 
 ---
 
@@ -191,7 +193,7 @@ For Sgr A* (age ~4 Gyr = 1.46�10^6 days): $\kappa t / 2 = 365$. This is the la
 
 ### 4.1 Planetary Precessions
 
-Mercury's perihelion precession (GR prediction: 43 arcsec/century, observed: 43.1 � 0.5):
+Mercury's perihelion precession (GR prediction: 43 arcsec/century, observed: 43.1 × 0.5):
 
 UQFF correction to Mercury's orbit:
 
@@ -209,7 +211,7 @@ This is well below the measurement precision of Mercury's perihelion precession 
 
 The LLR-measured lunar acceleration (Earth-Moon distance stability): non-GR corrections < 10^-13.
 
-UQFF correction at Moon (r = 3.84�10^8 m):
+UQFF correction at Moon (r = 3.84×10^8 m):
 
 $$\delta a_{Moon} = f_{TRZ} \cdot \frac{1}{r^2}\big|_{normalised} + a_{aether, Moon} \approx 10^{-18} + 10^{-15} \text{ m/s}^2$$
 
@@ -262,10 +264,10 @@ The phase diagram clearly shows the SM limit is an excellent approximation in ex
 | SM limit condition | fTRZ?0, B?0, ?_SCm??_b, ?t?0 | Four conditions |
 | Surviving SM term | Ug4i = GM/r� | At ?t?0 |
 | Pioneer-scale correction | ~10^-9 m/s^2 | aaether at outer solar system |
-| Mercury precession correction | 5�10^-8 fractional | Below all tests ? |
+| Mercury precession correction | 5×10^-8 fractional | Below all tests ? |
 | GW speed | c (exact) | fTRZ self-cancels |
 | UQFF valid for NSs? | No (SM fails, MUGE active) | B~10^8 T |
-| UQFF valid for AGN? | Yes (MUGE dominant) | � |
+| UQFF valid for AGN? | Yes (MUGE dominant) | – |
 
 ---
 
@@ -284,7 +286,7 @@ The phase diagram clearly shows the SM limit is an excellent approximation in ex
 ## References
 
 - Einstein A. (1915), Preuss. Akad. Wiss. � General Relativity field equations
-- Newton I. (1687), Principia Mathematica � Universal Gravitation
+- Newton I. (1687), Principia Mathematica – Universal Gravitation
 - LIGO/Virgo/Fermi (2017), ApJL 848 L12 � v_GW = c constraint (GW170817)
 - Anderson J.D. et al. (2002), Phys. Rev. D 65, 082004 � Pioneer anomaly measurement
 - Murphy D.T. (2026), PAPER_145 � MUGE Cycle 3 master equation

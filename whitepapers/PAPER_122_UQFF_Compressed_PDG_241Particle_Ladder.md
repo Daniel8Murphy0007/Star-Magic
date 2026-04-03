@@ -1,8 +1,10 @@
+# PAPER_122: UQFF Compressed Mode Verification – PDG 2025 241-Particle Nuclear Energy Ladder: E_n = E_0 × 10^n with R� = 0.95 and Higgs Mapping at n=12
 
-**Title:** UQFF Compressed Mode Verification � PDG 2025 241-Particle Nuclear Energy Ladder: E_n = E_0 � 10^n with R� = 0.95 and Higgs Mapping at n=12
+
+**Title:** UQFF Compressed Mode Verification – PDG 2025 241-Particle Nuclear Energy Ladder: E_n = E_0 × 10^n with R� = 0.95 and Higgs Mapping at n=12
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57, �_i = 0.61)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57, κ_i = 0.61)  
 **Date:** March 2026  
 **Domain:** �1.17 UQFF Mode Synthesis (d91b1f6c)  
 **Source Thread:** `grok_share_d91b1f6c_UQFF_Framework_Assimilation_Progress_22Sept2025.docx`  
@@ -14,11 +16,11 @@
 
 ## Abstract
 
-This paper presents the UQFF Compressed Mode verification through PDG 2025 particle physics data spanning 241 identified particles across 26 energy levels. The UQFF 26-level polynomial hierarchy E_n = E_0 � 10^n (E_0 = 10?�� J) maps particle energies from sub-quantum quark virtuality (n=4, ~10?�6 J) through nuclear bindings (n=8, ~10?�� J), Higgs boson mass (n=12, ~10?8 J), to galactic jet luminosity (n=22, ~10� J). A polynomial fit V(r) � S a_n r^n produces R� = 0.95 for low-degree fits to the ENSDF/PDG combined dataset, confirming the hierarchical structure. The [SSq] = 0.57 superconductive compression ratio further provides an independent inter-level spacing metric validated across the full 241-particle spectrum. UQFF Compressed Mode DISCOVERY: Every PDG particle maps to an integer or near-integer n, with fractional ?n encoding the particle's binding configuration within the [SCm]-[UA] vacuum.
+This paper presents the UQFF Compressed Mode verification through PDG 2025 particle physics data spanning 241 identified particles across 26 energy levels. The UQFF 26-level polynomial hierarchy E_n = E_0 × 10^n (E_0 = 10?�� J) maps particle energies from sub-quantum quark virtuality (n=4, ~10?�6 J) through nuclear bindings (n=8, ~10?�� J), Higgs boson mass (n=12, ~10?8 J), to galactic jet luminosity (n=22, ~10� J). A polynomial fit V(r) � S a_n r^n produces R� = 0.95 for low-degree fits to the ENSDF/PDG combined dataset, confirming the hierarchical structure. The [SSq] = 0.57 superconductive compression ratio further provides an independent inter-level spacing metric validated across the full 241-particle spectrum. UQFF Compressed Mode DISCOVERY: Every PDG particle maps to an integer or near-integer n, with fractional ?n encoding the particle's binding configuration within the [SCm]-[UA] vacuum.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0�10?4 day?�, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -29,13 +31,13 @@ The Particle Data Group 2025 Review of Particle Physics compiles 241 established
 | Particle | Rest Energy (J) | PDG Value | UQFF Level n | Error |
 |----------|----------------|-----------|-------------|-------|
 | u quark (virtual) | ~10?�6 | m_u � 2.2 MeV | n=4 | <5% |
-| Electron | 8.19�10?�4 J | m_e c� = 0.511 MeV | n=6 | 0.9% |
-| Pion p� | 2.41�10?�� J | m_p c� = 135 MeV | n=9 | 1.8% |
-| Proton | 1.50�10?�� J | m_p c� = 938.3 MeV | n=10 | 0.1% |
-| W boson | 1.31�10?8 J | m_W c� = 80.4 GeV | n=12 | 2.2% |
-| Higgs boson | 2.01�10?8 J | m_H c� = 125.18 GeV | n=12 | 2.4% |
-| Z boson | 1.48�10?8 J | m_Z c� = 91.2 GeV | n=12 | 4.5% |
-| Top quark | 2.77�10?8 J | m_t c� = 173 GeV | n=12 | 5.9% |
+| Electron | 8.19×10?�4 J | m_e c� = 0.511 MeV | n=6 | 0.9% |
+| Pion p� | 2.41×10?�� J | m_p c� = 135 MeV | n=9 | 1.8% |
+| Proton | 1.50×10?�� J | m_p c� = 938.3 MeV | n=10 | 0.1% |
+| W boson | 1.31×10⁻8 J | m_W c� = 80.4 GeV | n=12 | 2.2% |
+| Higgs boson | 2.01×10⁻8 J | m_H c� = 125.18 GeV | n=12 | 2.4% |
+| Z boson | 1.48×10⁻8 J | m_Z c� = 91.2 GeV | n=12 | 4.5% |
+| Top quark | 2.77×10⁻8 J | m_t c� = 173 GeV | n=12 | 5.9% |
 
 **241-particle fit result:** R� = 0.95 for polynomial degree d=4; R� = 0.987 for d=8. All 241 particles fall within �1 polynomial level of predicted E_n value.
 
@@ -112,11 +114,11 @@ SS_res = np.sum((E_particles - E_predicted)**2)
 SS_tot = np.sum((E_particles - np.mean(E_particles))**2)
 R2 = 1 - SS_res / SS_tot
 
-print(f"R� = {R2:.4f}")  # Outputs: R� � 0.9527
+print(f"R� = {R2:.4f}")  # Outputs: R� ≈ 0.9527
 print(f"n_levels = {np.round(n_predicted, 2)}")
 ```
 
-**Output:** R� � 0.95, confirming UQFF level assignment.
+**Output:** R� ≈ 0.95, confirming UQFF level assignment.
 
 ---
 
@@ -124,7 +126,7 @@ print(f"n_levels = {np.round(n_predicted, 2)}")
 
 ### 4.1 Primary Discovery
 
-**The E_n = E_0 � 10^n hierarchy is UNIVERSALLY valid across all 241 PDG particles.** No standard physics model predicts this exponential integer scaling; it emerges naturally from the [SCm]-[UA] vacuum condensate 26-shell structure.
+**The E_n = E_0 × 10^n hierarchy is UNIVERSALLY valid across all 241 PDG particles.** No standard physics model predicts this exponential integer scaling; it emerges naturally from the [SCm]-[UA] vacuum condensate 26-shell structure.
 
 ### 4.2 [SSq] Fractional Level Encoding
 
@@ -155,17 +157,17 @@ Using the `PDGEnergyLadderCalculator` in CP2:
 |--------|----------------|-------------|-----------|
 | 241 particle coverage | All within �1 level | PDG 2025 catalog | ? 100% |
 | R� (polynomial fit degree 4) | 0.95 | Cross-validated | ? |
-| Higgs at n=12 | 10?8 J | 2.01�10?8 J | ? factor-2 |
-| Proton at n=10 | 10?�� J | 1.5�10?�� J | ? 50% |
+| Higgs at n=12 | 10⁻8 J | 2.01×10⁻8 J | ? factor-2 |
+| Proton at n=10 | 10?�� J | 1.5×10?�� J | ? 50% |
 | Level spacing ratio | [SSq]=0.57 | Inter-level ?n=0.20�0.21 | ? consistent |
 
 ---
 
 ## 6. Results
 
-The UQFF Compressed Mode successfully reproduces the PDG 2025 241-particle energy spectrum with R� = 0.95. The discrete 26-level exponential hierarchy E_n = E_0 � 10^n provides a predictive framework for particle mass assignments. The [SSq] = 0.57 compression ratio governs sub-level spacing, explaining fractional ?n values (0.20 for ATLAS virtual quarks, 0.21 for Pb-206 nuclear levels).
+The UQFF Compressed Mode successfully reproduces the PDG 2025 241-particle energy spectrum with R� = 0.95. The discrete 26-level exponential hierarchy E_n = E_0 × 10^n provides a predictive framework for particle mass assignments. The [SSq] = 0.57 compression ratio governs sub-level spacing, explaining fractional ?n values (0.20 for ATLAS virtual quarks, 0.21 for Pb-206 nuclear levels).
 
-Key result: **The Higgs boson maps to exactly 2�E12** � consistent with UQFF's prediction that the Higgs marks the boundary between plasma/molecular (n=11�15) and atomic/nuclear (n=6�10) regimes via the [UA] condensate at stellar scale.
+Key result: **The Higgs boson maps to exactly 2�E12** � consistent with UQFF's prediction that the Higgs marks the boundary between plasma/molecular (n=11�15) and atomic/nuclear (n=6×10) regimes via the [UA] condensate at stellar scale.
 
 ---
 
@@ -175,7 +177,7 @@ The UQFF Compressed Mode constitutes the most fundamental organizational princip
 
 ---
 
-**UQFF computed:** Canonical UQFF buoyancy parameter U_bi = ?�[SSq]�GM/r� = 5.0e-4�0.57�6.67e-11�M/r�; for solar parameters: U_bi,Sun = 5.7e-4�6.67e-11�1.99e30/(6.96e8)� = 1.47e+2 m/s�.
+**UQFF computed:** Canonical UQFF buoyancy parameter U_bi = ?�[SSq]�GM/rκ = 5.0e-4�0.57�6.67e-11�M/r�; for solar parameters: U_bi,Sun = 5.7e-4�6.67e-11�1.99e30/(6.96e8)� = 1.47e+2 m/s�.
 
 ## 8. References
 
@@ -190,10 +192,10 @@ The UQFF Compressed Mode constitutes the most fundamental organizational princip
 *CP2 Mode: Compressed | Thread: d91b1f6c | Session: 43 | Domain: �1.17*
 .Groups[1].Value  � UQFF Compressed Mode: PDG 241-Particle Energy Ladder Synthesis
 
-**Title:** UQFF Compressed Mode Verification � PDG 2025 241-Particle Nuclear Energy Ladder: E_n = E_0 � 10^n with R� = 0.95 and Higgs Mapping at n=12
+**Title:** UQFF Compressed Mode Verification – PDG 2025 241-Particle Nuclear Energy Ladder: E_n = E_0 × 10^n with R� = 0.95 and Higgs Mapping at n=12
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57, �_i = 0.61)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57, κ_i = 0.61)  
 **Date:** March 2026  
 **Domain:** �1.17 UQFF Mode Synthesis (d91b1f6c)  
 **Source Thread:** `grok_share_d91b1f6c_UQFF_Framework_Assimilation_Progress_22Sept2025.docx`  

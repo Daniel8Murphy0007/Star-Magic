@@ -1,8 +1,10 @@
+# PAPER_143: UQFF Compressed Mode Quantum-Gravity Bridge – The 40% UQFF vs 60% Schr�dinger/Dirac Split in the Complete Gravity Equation: MUGE(r,t,Z) = Standard QM (60%) + UQFF Terms (40%)
 
-**Title:** UQFF Compressed Mode Quantum-Gravity Bridge � The 40% UQFF vs 60% Schr�dinger/Dirac Split in the Complete Gravity Equation: MUGE(r,t,Z) = Standard QM (60%) + UQFF Terms (40%)
+
+**Title:** UQFF Compressed Mode Quantum-Gravity Bridge – The 40% UQFF vs 60% Schr�dinger/Dirac Split in the Complete Gravity Equation: MUGE(r,t,Z) = Standard QM (60%) + UQFF Terms (40%)
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57, �_i = 0.6)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57, κ_i = 0.6)  
 **Date:** March 2026  
 **Domain:** �2.1 Quantum-Gravity Unification (3419da89)  
 **Source Thread:** `grok_share_3419da8930c748568b7f2bea0ea9c88e_content.txt`  
@@ -18,7 +20,7 @@ Standard quantum mechanics (Schr�dinger, Dirac) and general relativity each ac
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0�10?4 day?�, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -98,7 +100,7 @@ At $T = T_c$ (near 0 K): $f_{sc} = 0.1 \times e^0 = 0.1$ (maximum SCm correction
 |---------|-------------|---------------------|
 | Proton charge radius puzzle | r_p = 0.877 fm (electron) vs 0.841 fm (muon) | Ug3 magnetic string offset of 0.036 fm |
 | Hydrogen Lamb shift (muonic) | QED predicts -2328.35 meV; observed -2260.5 meV | Ug4 contributes +67.85 meV gap |
-| Anomalous g-2 (electron) | QED: 1.159652181643�10?�; obs 1.159652188�10?� | SCm coupling dg = 6�10?�� |
+| Anomalous g-2 (electron) | QED: 1.159652181643×10?�; obs 1.159652188×10?� | SCm coupling dg = 6×10?�� |
 | Neutron lifetime discrepancy | Beam: 888.0�2.0 s; Bottle: 879.6�0.8 s | Ub activation energy 8.4 s window |
 
 All four anomalies fall within the 40% UQFF contribution range � they are NOT measurement errors but signatures of the UQFF field contribution that standard QM does not include.
@@ -180,7 +182,7 @@ print(f"M_H(now) = {M_H_now:.5e} kg  (m_p = {m_p:.5e} kg)")
 
 | Quantity | UQFF | Standard | Agreement |
 |---------|------|---------|-----------|
-| 40/60 split | Derived | � | Theoretical prediction |
+| 40/60 split | Derived | – | Theoretical prediction |
 | Proton radius discrepancy | Ug3 offset 0.036 fm | 0.036 fm measured | ? |
 | Muonic Lamb shift gap | Ug4 +68 meV | +67.85 meV obs | ? |
 | Neutron lifetime window | Ub 8.4 s | 8.4 s gap | ? |
@@ -197,7 +199,7 @@ The UQFF 40% contribution to the MUGE bridge equation provides a quantitative fr
 
 ## 8. References
 
-1. Murphy, D.T., Thread 3419da89 � 40% contribution derivation (2025)
+1. Murphy, D.T., Thread 3419da89 × 40% contribution derivation (2025)
 2. Pohl, R. et al., The size of the proton, Nature 2010 (muonic H Lamb shift)
 3. Parker, R.H. et al., Electron g-2 measurement, Science 2018
 4. Serebrov, A.P., Fomin, A.K., Neutron lifetime, UFN 2011
@@ -208,10 +210,10 @@ The UQFF 40% contribution to the MUGE bridge equation provides a quantitative fr
 *CP2 Mode: Compressed (Quantum-Gravity Bridge) | Thread: 3419da89 | Session: 44 | Domain: �2.1*
 .Groups[1].Value  � UQFF 40% Contribution to MUGE: Quantum-Gravity Bridge from Schr�dinger/Dirac to UQFF
 
-**Title:** UQFF Compressed Mode Quantum-Gravity Bridge � The 40% UQFF vs 60% Schr�dinger/Dirac Split in the Complete Gravity Equation: MUGE(r,t,Z) = Standard QM (60%) + UQFF Terms (40%)
+**Title:** UQFF Compressed Mode Quantum-Gravity Bridge – The 40% UQFF vs 60% Schr�dinger/Dirac Split in the Complete Gravity Equation: MUGE(r,t,Z) = Standard QM (60%) + UQFF Terms (40%)
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57, �_i = 0.6)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57, κ_i = 0.6)  
 **Date:** March 2026  
 **Domain:** �2.1 Quantum-Gravity Unification (3419da89)  
 **Source Thread:** `grok_share_3419da8930c748568b7f2bea0ea9c88e_content.txt`  

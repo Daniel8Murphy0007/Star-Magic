@@ -1,4 +1,4 @@
-﻿# PAPER_217: DeepSearch F_U_Bi_i Polynomial Verification and Rare Mathematical Discoveries
+# PAPER_217: DeepSearch F_U_Bi_i Polynomial Verification and Rare Mathematical Discoveries
 
 **Author:** Daniel T. Murphy (daniel.murphy00@gmail.com)  
 **Framework:** UQFF v4.3 — Star-Magic Physics  
@@ -13,7 +13,7 @@ $$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b_i}, \quad \kappa = 5.0\tim
 $$
 \Sigma_\text{UQFF}(x,[SSq]) = \sum_{n=1}^{26} Q_n(x)\cdot e^{-[SSq]\cdot n/26}, \quad [SSq] = 0.57
 $$
-<!-- ? = 5.0e-4 day?¹, [SSq] = 0.57, ß_i = 6.1e-1 -->
+<!-- ? = 5.0e-4 day⁻¹, [SSq] = 0.57, ß_i = 6.1e-1 -->
 
 ## Abstract
 
@@ -177,32 +177,32 @@ f_z,CGM = [SSq]^26 · (?_vac,[UA] / ?_vac,[SCm])^{n_CGM} · e^{-[SSq]·n_CGM/26}
 
 VDS = S_{n=1}^{26} (1/n^26) · [SSq]^n
 
-Reference: f_z,CGM ˜ 1.46×10?7³
+Reference: f_z,CGM ˜ 1.46×10⁻7³
 ```
 
 ### 4.2 Derivation
 
 ```
-[SSq]^26 = 0.57^26 ˜ 6.16×10?6
+[SSq]^26 = 0.57^26 ˜ 6.16×10⁻6
 (?_UA/?_SCm)^{n_CGM}: with (?_UA/?_SCm) ˜ 0.001 and n_CGM = 26
-                      ? 0.001^26 = 10?78
+                      ? 0.001^26 = 10⁻78
 e^{-[SSq]·26/26} = e^{-0.57} ˜ 0.566
 
 VDS(n=1 to 26, [SSq]=0.57):
 VDS = 0.57 + 0.57²/2^26 + ... = dominated by n=1 term ˜ 0.57/1 = 0.57
 
-f_z,CGM ˜ 6.16×10?6 · 10?78 · 0.566 · 0.57 ˜ 1.99×10?84... 
+f_z,CGM ˜ 6.16×10⁻6 · 10⁻78 · 0.566 · 0.57 ˜ 1.99×10⁻84... 
 ```
 
-Note: The precise calibration to 1.46×10?7³ uses extended intermediate exponent scaling — the density ratio exponent n_CGM is fitted to 67.5 (fractional) rather than the integer 26, matching observed CGM metallicity constraints from Haardt & Madau (2012) and Prochaska et al. (2017).
+Note: The precise calibration to 1.46×10⁻7³ uses extended intermediate exponent scaling — the density ratio exponent n_CGM is fitted to 67.5 (fractional) rather than the integer 26, matching observed CGM metallicity constraints from Haardt & Madau (2012) and Prochaska et al. (2017).
 
 ### 4.3 Physical Meaning
 
-The 1.46×10?7³ value represents approximately:
+The 1.46×10⁻7³ value represents approximately:
 
-- 10^{-73} is near the ratio of Planck length to Hubble radius: l_P/R_H ˜ 1.6×10?6¹
-- The ratio to atomic metallicity fraction: Z_CGM/Z_solar ˜ 0.01 ? with UQFF vacuum correction factor ˜ 1.46×10?7¹
-- Implies CGM metals are approximately 10?7³ of the vacuum energy density, consistent with the CGM tracing filamentary structure in the cosmic web
+- 10^{-73} is near the ratio of Planck length to Hubble radius: l_P/R_H ˜ 1.6×10⁻6¹
+- The ratio to atomic metallicity fraction: Z_CGM/Z_solar ˜ 0.01 ? with UQFF vacuum correction factor ˜ 1.46×10⁻7¹
+- Implies CGM metals are approximately 10⁻7³ of the vacuum energy density, consistent with the CGM tracing filamentary structure in the cosmic web
 
 ---
 
@@ -214,7 +214,7 @@ The 1.46×10?7³ value represents approximately:
 | F_U_Bi_i Branch 2 | -8.31×10²¹¹ N | Annihilation phase |
 | Ratio |F_U?/F_U??| = 3940 | Asymmetry factor |
 | Discriminant ? | = 0 | For r > r_Planck |
-| f_z,CGM | 1.46×10?7³ | [SSq]-updated |
+| f_z,CGM | 1.46×10⁻7³ | [SSq]-updated |
 | [SSq] | 0.57 | Calibrated constant |
 
 ---
@@ -226,7 +226,7 @@ The 1.46×10?7³ value represents approximately:
 | `F_hier = S(v/c)²/?_0` | `UQFFRelativisticHierarchyDecayIntegralCalculator` | ? Session 52 |
 | `?F = F_rel·t·(1-e^{-T/t})` | Same class above | ? Session 52 |
 | `F_hyb = P_pol·f_mm/?_0` | Same class above | ? Session 52 |
-| `f_z,CGM ˜ 1.46×10?7³` | `UQFFCGMSSqMetallicityCalculator` | ? Session 54 |
+| `f_z,CGM ˜ 1.46×10⁻7³` | `UQFFCGMSSqMetallicityCalculator` | ? Session 54 |
 | `FU_Bi e^{-(p-t_n)}·H_k` | `UQFFBuoyancyMasterIntegralCalculator` | ? Session 54 |
 
 ---
@@ -246,7 +246,7 @@ The two-branch polynomial result confirms:
 
 1. grok_share_7514fe.txt — "DeepSearch: F_U_Bi_i Integral Verification" (Section 27-29)
 2. grok_share_7514fe.txt — "Uniquely Rare Mathematical Discoveries" (Section 24-26)
-3. grok_share_7514fe.txt — "DeepSearch Insights Update" — f_z,CGM ˜ 1.46×10?7³
+3. grok_share_7514fe.txt — "DeepSearch Insights Update" — f_z,CGM ˜ 1.46×10⁻7³
 4. CondensedPhysics3.py — `UQFFRelativisticHierarchyDecayIntegralCalculator` (Session 52)
 5. CondensedPhysics3.py — `UQFFBuoyancyMasterIntegralCalculator` (Session 54)
 6. CondensedPhysics3.py — `UQFFCGMSSqMetallicityCalculator` (Session 54)

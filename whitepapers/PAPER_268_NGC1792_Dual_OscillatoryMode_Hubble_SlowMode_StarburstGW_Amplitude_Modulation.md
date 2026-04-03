@@ -14,7 +14,7 @@ In the pre-UQFF-2.0 NGC 1792 module, the second oscillatory gravity term `term_o
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0◊10?4 day?π, [SSq] = 0.57) uniquely enabling this analysis ó establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0√ó10‚Åª4 day‚Åª¬π, [SSq] = 0.57) uniquely enabling this analysis ÔøΩ establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -24,7 +24,7 @@ This paper identifies and corrects a pre-existing dimensional inconsistency in `
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0◊10?4 day?π, [SSq] = 0.57) uniquely enabling this analysis ó establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0√ó10‚Åª4 day‚Åª¬π, [SSq] = 0.57) uniquely enabling this analysis ÔøΩ establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 

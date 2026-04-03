@@ -1,4 +1,4 @@
-﻿# PAPER_205: Ramanujan Polynomials Q_n(x) and UQFF 26-State Summations
+# PAPER_205: Ramanujan Polynomials Q_n(x) and UQFF 26-State Summations
 
 **Version:** 1.0  
 **Date:** March 13, 2026  

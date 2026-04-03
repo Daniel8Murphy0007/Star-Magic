@@ -1,3 +1,5 @@
+# PAPER_096: Fast Radio Burst Physical Origin: UQFF Coherent Ug1 Dipole Emission from Magnetar Toroidal Resonance
+
 
 **Title:** Fast Radio Burst Physical Origin: UQFF Coherent Ug1 Dipole Emission from Magnetar Toroidal Resonance
 
@@ -6,7 +8,6 @@
 **Date:** March 7, 2026  
 **Source Data:** validate_drawings_models.py (FRB_MODEL), Drawing 1 schematics, CHIME/FRB catalog  
 **Index Slot:** �1.13 Multi-Physics Models  
-    $n = [int]# PAPER #96 � Fast Radio Burst Origin: UQFF Coherent Emission Model
 
 **Title:** Fast Radio Burst Physical Origin: UQFF Coherent Ug1 Dipole Emission from Magnetar Toroidal Resonance
 
@@ -24,7 +25,7 @@ Fast Radio Bursts (FRBs) are millisecond-duration, extragalactic radio transient
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0�10?4 day?�, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -36,7 +37,7 @@ $$E_{\rm FRB} = f_{\rm TRZ} \times U_{g1} \times V_{\rm TRZ}$$
 
 Where V_TRZ = toroidal volume at r_TRZ � 1.5 r_NS.
 
-For a typical magnetar (B = 2 � 10�4 T, R = 1.2 � 104 m):
+For a typical magnetar (B = 2 × 10�4 T, R = 1.2 × 104 m):
 
 $$U_{g1} = \frac{B^2}{2\mu_0} = \frac{(2 \times 10^{14})^2}{2 \times 4\pi \times 10^{-7}} = 1.59 \times 10^{31} \text{ J/m}^3$$
 
@@ -44,7 +45,7 @@ $$V_{\rm TRZ} = \frac{4\pi}{3}\left[(1.5 R)^3 - R^3\right] = 0.875 \times \frac{
 
 $$E_{\rm FRB} = 0.01 \times 1.59 \times 10^{31} \times 7.82 \times 10^{12} = 1.24 \times 10^{42} \text{ J} = 1.24 \times 10^{49} \text{ erg}$$
 
-Observed CHIME FRB energies: 104��104� erg ? **UQFF in range by factor ~10, broadly consistent.** (FRB beam factor ~1�10% of hemisphere reduces effective energy ? 1047 erg total, 104� erg observed.)
+Observed CHIME FRB energies: 104��104� erg ? **UQFF in range by factor ~10, broadly consistent.** (FRB beam factor ~1×10% of hemisphere reduces effective energy ? 1047 erg total, 104� erg observed.)
 
 ---
 
@@ -56,7 +57,7 @@ $$\Delta t_{\rm FRB} = \frac{r_{\rm TRZ}}{c} \cdot [{\rm SCm}]^{-1}$$
 
 $$= \frac{1.5 \times 1.2 \times 10^4}{3 \times 10^8 \times 0.99} \approx 6 \times 10^{-5} \text{ s} = 60 \, \mu\text{s}$$
 
-Observed: 1�100 ms. Factor ~10�1000 discrepancy ? TRZ collapse may span multiple NS radii (r_TRZ up to 10 R_NS for the most energetic FRBs). Scaling: ?t ? r_TRZ/c ? **3-order-of-magnitude range covered.**
+Observed: 1×100 ms. Factor ~10×1000 discrepancy ? TRZ collapse may span multiple NS radii (r_TRZ up to 10 R_NS for the most energetic FRBs). Scaling: ?t ? r_TRZ/c ? **3-order-of-magnitude range covered.**
 
 ---
 
@@ -124,7 +125,7 @@ The UQFF FRB model (Drawing 1, FRB_MODEL) provides a physically motivated origin
 
 ### A.2 F_U Master Equation (Complete — 4 terms)
 
-$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}igl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}igr]$$
+$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}\bigr]$$
 
 | Term | Description | Implementation |
 |------|-------------|----------------|
@@ -141,9 +142,7 @@ $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}igl[\l
 
 ### A.3 Um Heaviside Phase-Transition Amplifier (PAPER_421)
 
-$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} 	imes igl(1 + 10^{13}\,\Theta(
-ho_{SCm} - 
-ho_c)igr) 	imes igl(1 + A_q\cos(\Delta\omega\,t)igr)$$
+$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rho_{SCm} - \rho_c)\bigr) \times \bigl(1 + A_q\cos(\Delta\omega\,t)\bigr)$$
 
 | Symbol | Value | Description |
 |--------|-------|-------------|

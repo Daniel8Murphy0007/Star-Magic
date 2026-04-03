@@ -1,4 +1,4 @@
-﻿# PAPER_253: Sgr A* Galactic Center Negative Buoyancy Inversion — ?0 Critical Frequency and Fermi Bubble Link
+# PAPER_253: Sgr A* Galactic Center Negative Buoyancy Inversion — ?0 Critical Frequency and Fermi Bubble Link
 
 **Author:** Daniel T. Murphy (daniel.murphy00@gmail.com)
 **Framework:** UQFF v4.27 — Star-Magic Physics
@@ -31,7 +31,7 @@ This is the **first negative buoyancy result in UQFF** and a uniquely rare mathe
 | Black hole mass | M_BH | 4.1 × 106 M_sun = 7.956 × 10³6 kg | kg | GRAVITY collaboration 2020 |
 | Probe radius | r | 6.17 × 10¹8 | m (~200 ly) | GC thermal region |
 | X-ray luminosity | L_X | 10³³ | W | Chandra 2023 |
-| Magnetic field | B0 | 10?5 | T | GC interstellar |
+| Magnetic field | B0 | 10⁻5 | T | GC interstellar |
 | **Critical frequency** | **?0** | **10?¹5 rad/s** | **rad/s** | **3 orders below SNR class** |
 | Gas outflow velocity | v_gas | 1,000 km/s = 106 | m/s | ALMA/Fermi Bubble |
 
@@ -59,7 +59,7 @@ The relativistic coherence term (LEP 1998 anchor at E_cm = 189 GeV):
 F_rel = k_rel × (E_cm_astro_eff / E_cm_LEP)² = 4.30 × 10³³ N
 ```
 
-F_rel is constant across all systems (independent of ?0). At ?0 = 10?¹², F_rel/F_LENR ˜ 10?7 — negligible. At ?0 = 10?¹5, F_rel/F_LENR ˜ 10?¹³ — still formally small, but its absolute magnitude (4.30 × 10³³ N) becomes significant relative to the vacuum-corrected integrand through the quadratic root evaluation.
+F_rel is constant across all systems (independent of ?0). At ?0 = 10?¹², F_rel/F_LENR ˜ 10⁻7 — negligible. At ?0 = 10?¹5, F_rel/F_LENR ˜ 10?¹³ — still formally small, but its absolute magnitude (4.30 × 10³³ N) becomes significant relative to the vacuum-corrected integrand through the quadratic root evaluation.
 
 ### 2.3 Critical Frequency Derivation
 

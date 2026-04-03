@@ -1,3 +1,5 @@
+# PAPER_077: LIGO-Virgo GWTC-4.0 Gravitational Wave Catalog: UQFF Waveform and Ringdown Cross-Validation
+
 
 **Title:** LIGO-Virgo GWTC-4.0 Gravitational Wave Catalog: UQFF Waveform and Ringdown Cross-Validation
 
@@ -6,7 +8,6 @@
 **Date:** March 7, 2026  
 **Source Data:** QCalc_validation.py (DataSourceURLs: LIGO_GWOSC, LIGO_GWTC4), validate_hawking_temperature.py (Batch 23 GWTC-4.0 ringdown validation)  
 **Index Slot:** �1.10 Database Integration & Multi-Wavelength Astrophysics,  
-    $n = [int]# PAPER #77 � Gravitational Wave Sources: LIGO GWTC-4 + UQFF Cross-Validation
 
 **Title:** LIGO-Virgo GWTC-4.0 Gravitational Wave Catalog: UQFF Waveform and Ringdown Cross-Validation
 
@@ -20,11 +21,11 @@
 
 ## Abstract
 
-The LIGO-Virgo GWTC-4.0 catalog (expected ~200 events through O4) provides chirp masses, mass ratios, spin parameters, and post-merger ringdown frequencies for compact binary coalescences. The UQFF Resonant mode predicts ringdown frequencies ?_UQFF = ?_ringdown via the cos(?t) � 10?5 coupling � validated at 0.5% precision in Batch 23. The UQFF also provides a modified gravitational wave luminosity distance through the Buoyant vacuum correction. This paper cross-validates UQFF predictions against the full GWTC-4.0 catalog using the QCalc_validation.py LIGO GWOSC API endpoints.
+The LIGO-Virgo GWTC-4.0 catalog (expected ~200 events through O4) provides chirp masses, mass ratios, spin parameters, and post-merger ringdown frequencies for compact binary coalescences. The UQFF Resonant mode predicts ringdown frequencies ?_UQFF = ?_ringdown via the cos(?t) � 10⁻5 coupling � validated at 0.5% precision in Batch 23. The UQFF also provides a modified gravitational wave luminosity distance through the Buoyant vacuum correction. This paper cross-validates UQFF predictions against the full GWTC-4.0 catalog using the QCalc_validation.py LIGO GWOSC API endpoints.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0�10?4 day?�, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -128,7 +129,7 @@ From Batch 23 (Jan 28, 2026) � 3 GWTC-4.0 events validated:
 
 ### A.2 F_U Master Equation (Complete — 4 terms)
 
-$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}igl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}igr]$$
+$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}\bigr]$$
 
 | Term | Description | Implementation |
 |------|-------------|----------------|
@@ -145,9 +146,7 @@ $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}igl[\l
 
 ### A.3 Um Heaviside Phase-Transition Amplifier (PAPER_421)
 
-$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} 	imes igl(1 + 10^{13}\,\Theta(
-ho_{SCm} - 
-ho_c)igr) 	imes igl(1 + A_q\cos(\Delta\omega\,t)igr)$$
+$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rho_{SCm} - \rho_c)\bigr) \times \bigl(1 + A_q\cos(\Delta\omega\,t)\bigr)$$
 
 | Symbol | Value | Description |
 |--------|-------|-------------|

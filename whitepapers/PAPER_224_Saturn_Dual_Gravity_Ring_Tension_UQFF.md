@@ -1,4 +1,4 @@
-﻿# PAPER_224: Saturn UQFF — Dual-Source Gravity and Ring Tidal Tension T_ring
+# PAPER_224: Saturn UQFF — Dual-Source Gravity and Ring Tidal Tension T_ring
 
 **Author:** Daniel T. Murphy (daniel.murphy00@gmail.com)  
 **Framework:** UQFF v4.3 — Star-Magic Physics  
@@ -16,11 +16,11 @@ $$
 
 ## Abstract
 
-Saturn presents a unique UQFF configuration with two explicit gravitational sources summed with **asymmetric modifiers**: solar heliocentric gravity carries the `(1+H(z)·t)` expansion term, while Saturn's self-gravity carries the `(1-B/B_crit)` magnetic suppression — and neither term receives the modifier of the other. Additionally, the ring tidal tension T_ring ˜ 2.043×10?7 m/s² and solar wind ram pressure F_wind_solar appear as additive corrections. This is the only UQFF document among all 29 that uses two independent gravitational potentials with DIFFERENT UQFF modifiers on each, representing a multi-body hierarchical gravity structure. We derive the dual-source formulation, prove the asymmetric modifier assignment from physical first principles, and validate the T_ring value against the CP1 benchmark.
+Saturn presents a unique UQFF configuration with two explicit gravitational sources summed with **asymmetric modifiers**: solar heliocentric gravity carries the `(1+H(z)·t)` expansion term, while Saturn's self-gravity carries the `(1-B/B_crit)` magnetic suppression — and neither term receives the modifier of the other. Additionally, the ring tidal tension T_ring ˜ 2.043×10⁻7 m/s² and solar wind ram pressure F_wind_solar appear as additive corrections. This is the only UQFF document among all 29 that uses two independent gravitational potentials with DIFFERENT UQFF modifiers on each, representing a multi-body hierarchical gravity structure. We derive the dual-source formulation, prove the asymmetric modifier assignment from physical first principles, and validate the T_ring value against the CP1 benchmark.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -83,13 +83,13 @@ T_ring = 2 · G · M_Saturn · ?r / r_ring³
        = 2 · 6.674e-11 · 5.683e26 · ?r / (1.08e8)³
 ```
 
-The CP1 benchmark value T_ring = 2.043×10?7 m/s² corresponds to ?r ˜ 10 km (typical ring particle orbital spacing).
+The CP1 benchmark value T_ring = 2.043×10⁻7 m/s² corresponds to ?r ˜ 10 km (typical ring particle orbital spacing).
 
 ### 3.2 Significance
 
 T_ring is what keeps ring particles in distinct orbital shells rather than diffusing vertically. When T_ring > self-gravity of ring particles, rings remain thin and flat — consistent with Saturn's rings being only ~10 m thick despite extending to 280,000 km radius.
 
-For T_ring = 2.043×10?7 m/s² and ring particle radius ˜ 1 cm, 1 m:
+For T_ring = 2.043×10⁻7 m/s² and ring particle radius ˜ 1 cm, 1 m:
 - Self-gravity of 1 m particle: g_particle = G·M_particle/r² ˜ 10?¹° m/s²
 - T_ring/g_particle ˜ 2000:1 ? **tidal force completely dominates particle self-gravity**
 
@@ -104,7 +104,7 @@ Parameters (Saturn, current epoch):
 - r_orbit = 1.426×10¹² m (9.54 AU)
 - M_Saturn = 5.683×10²6 kg  
 - r = 6.0268×107 m (equatorial radius)
-- B = 20 µT = 2×10?5 T; B_crit = 4.4×10¹³ T ? B/B_crit = 4.5×10?¹? ˜ 0
+- B = 20 µT = 2×10⁻5 T; B_crit = 4.4×10¹³ T ? B/B_crit = 4.5×10?¹? ˜ 0
 
 ```
 g_sun = G·M_Sun/r_orbit² · (1+H·t) = 6.674e-11·1.989e30/(1.426e12)² · 1.000
@@ -113,14 +113,14 @@ g_sun = G·M_Sun/r_orbit² · (1+H·t) = 6.674e-11·1.989e30/(1.426e12)² · 1.0
 g_saturn = G·M_Saturn/r² · (1-B/B_crit) ˜ G·M_Saturn/r² 
          ˜ 10.44 m/s²   [Saturn surface gravity ~ 10.44 m/s²]
 
-T_ring = 2.043×10?7 m/s²   [CP1 benchmark]
+T_ring = 2.043×10⁻7 m/s²   [CP1 benchmark]
 
 F_wind_solar = ?_sw · v_sw² ˜ 5e-26 · (4e5)² ˜ 8×10?¹5 m/s²
 
 g_total ˜ 10.44 + 6.53e-3 + 2.04e-7 + small  ˜ 10.446 m/s²
 ```
 
-Saturn surface gravity dominated by planetary self-gravity as expected. The solar term is a 0.06% correction; T_ring is a 2×10?6% correction — but they are physically essential for describing ring dynamics and orbital stability.
+Saturn surface gravity dominated by planetary self-gravity as expected. The solar term is a 0.06% correction; T_ring is a 2×10⁻6% correction — but they are physically essential for describing ring dynamics and orbital stability.
 
 ---
 
@@ -152,7 +152,7 @@ The closest analogues (Magnetar SGR1745, NGC2525, NGC1275) all have an ADDITIVE 
 1. grok_share_7514fe.txt — Document 22: Saturn g_Saturn equation
 2. Esposito (2002) — "Planetary Rings", ARAA 40 — ring tidal structure
 3. Dougherty et al. (2005) — Cassini magnetometry, Saturn B = 20 µT
-4. CP1 CondensedPhysics.py — Saturn benchmark T_ring = 2.043×10?7 m/s²
+4. CP1 CondensedPhysics.py — Saturn benchmark T_ring = 2.043×10⁻7 m/s²
 5. CondensedPhysics3.py — `SaturnDualGravityRingTensionCalculator` (Session 56)
 
 ---

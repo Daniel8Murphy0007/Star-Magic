@@ -1,4 +1,4 @@
-# PAPER_314 — NGC6302 Bipolar PN Lobe DPM Macro-Antenna Force: F_DPM = 1.267×105° N (13-Order PN-to-Compact Amplification)
+# PAPER_314 ï¿½ NGC6302 Bipolar PN Lobe DPM Macro-Antenna Force: F_DPM = 1.267Ã—105ï¿½ N (13-Order PN-to-Compact Amplification)
 
 **UQFF Session:** 90 | **Module:** NGC6302_RESONANCE_UQFF_MODULE.cpp  
 **WOLFRAM_TERM:** NGC6302_RES_DPM_LOBE  
@@ -10,25 +10,25 @@
 
 ## Abstract
 
-This paper presents UQFF derivations and numerical results for: PAPER_314 — NGC6302 Bipolar PN Lobe DPM Macro-Antenna Force: F_DPM = 1.267×105° N (13-Order PN-to-Compact Amplification). Calibration constants: $\kappa$ = 0.0005/day, [SSq] = 0.57. Results validated against observational data and prior UQFF whitepaper series.
+This paper presents UQFF derivations and numerical results for: PAPER_314 ï¿½ NGC6302 Bipolar PN Lobe DPM Macro-Antenna Force: F_DPM = 1.267Ã—105ï¿½ N (13-Order PN-to-Compact Amplification). Calibration constants: $\kappa$ = 0.0005/day, [SSq] = 0.57. Results validated against observational data and prior UQFF whitepaper series.
 
-## System: NGC 6302 "Bug Nebula" — Bipolar PN Resonance Channel
+## System: NGC 6302 "Bug Nebula" ï¿½ Bipolar PN Resonance Channel
 
 | Parameter | Value | Notes |
 |-----------|-------|-------|
-| r (lobe half-span) | 1.42 × 10¹6 m | ~1.5 ly |
-| A_area (lobe cross-section) | p r² = 6.333 × 10³² m² | DPM antenna area |
-| I_wind (wind current proxy) | 1 × 10²° A | bipolar wind driven |
-| ?1 - ?2 = ?? | 2 × 10?³ rad/s | DPM frequency spread |
-| f_DPM | 1 × 10¹² Hz | wind-aligned, 1e12 class |
-| E_vac_neb | 7.09 × 10?³6 J/m³ | plasmotic vacuum |
-| V_sys | (4/3)p r³ = 1.199 × 104? m³ | lobe sphere |
+| r (lobe half-span) | 1.42 Ã— 10ï¿½6 m | ~1.5 ly |
+| A_area (lobe cross-section) | p rï¿½ = 6.333 Ã— 10ï¿½ï¿½ mï¿½ | DPM antenna area |
+| I_wind (wind current proxy) | 1 Ã— 10ï¿½ï¿½ A | bipolar wind driven |
+| ?1 - ?2 = ?? | 2 Ã— 10?ï¿½ rad/s | DPM frequency spread |
+| f_DPM | 1 Ã— 10ï¿½ï¿½ Hz | wind-aligned, 1e12 class |
+| E_vac_neb | 7.09 Ã— 10?ï¿½6 J/mï¿½ | plasmotic vacuum |
+| V_sys | (4/3)p rï¿½ = 1.199 Ã— 104? mï¿½ | lobe sphere |
 
 ---
 
 ## Unique Physics: DPM Lobe Macro-Antenna Force
 
-### F_DPM — PN Lobe Scale
+### F_DPM â€“ PN Lobe Scale
 
 $$F_{\text{DPM}} = I_{\text{wind}} \times A_{\text{area}} \times \Delta\omega$$
 
@@ -36,7 +36,7 @@ $$F_{\text{DPM}} = 1 \times 10^{20}\ \text{A} \times 6.333 \times 10^{32}\ \text
 
 $$\boxed{F_{\text{DPM}} = 1.267 \times 10^{50}\ \text{N}}$$
 
-### a_DPM — Seed Resonance Acceleration
+### a_DPM â€“ Seed Resonance Acceleration
 
 $$a_{\text{DPM}} = \frac{F_{\text{DPM}} \times f_{\text{DPM}} \times E_{\text{vac,neb}}}{c \times V_{\text{sys}}}$$
 
@@ -56,7 +56,7 @@ This 13-order amplification arises directly from the lobe cross-section:
 
 $$A_{\text{area,PN}} = \pi (1.42 \times 10^{16})^2 = 6.333 \times 10^{32}\ \text{m}^2$$
 
-versus compact object area (~p×(106)² ˜ 3.14×10¹² m²): ratio ˜ 2×10²° in area but partially offset by V_sys (ratio ˜ 10³°) and the velocity spread ??, giving net 13 orders.
+versus compact object area (~pï¿½(106)ï¿½ ï¿½ 3.14Ã—10ï¿½ï¿½ mï¿½): ratio ï¿½ 2Ã—10ï¿½ï¿½ in area but partially offset by V_sys (ratio ï¿½ 10ï¿½ï¿½) and the velocity spread ??, giving net 13 orders.
 
 ---
 
@@ -64,15 +64,15 @@ versus compact object area (~p×(106)² ˜ 3.14×10¹² m²): ratio ˜ 2×10²° in area bu
 
 The NGC 6302 bipolar lobe structure (r ~ 1.5 ly) acts as a **macroscopic DPM resonance antenna** with cross-section 26 orders of magnitude larger than neutron-star-scale compact objects. The I_wind current proxy (1e20 A, driven by the 100 km/s fast wind from the central WD) interacts with this area at DPM frequency f_DPM = 1e12 Hz to produce an unprecedented lobe-scale DPM force.
 
-The seed a_DPM = 2.497×10?³¹ m/s² then cascades through the THz and VacDiff resonance pipelines (see PAPER_315 and PAPER_316) to produce dominant terms many orders larger.
+The seed a_DPM = 2.497Ã—10?ï¿½ï¿½ m/sï¿½ then cascades through the THz and VacDiff resonance pipelines (see PAPER_315 and PAPER_316) to produce dominant terms many orders larger.
 
 ---
 
 ## UQFF First Claims
 
-- **FIRST UQFF DPM force at planetary nebula lobe scale** (r ~ ly, F_DPM ~ 105° N)
+- **FIRST UQFF DPM force at planetary nebula lobe scale** (r ~ ly, F_DPM ~ 105ï¿½ N)
 - **FIRST 13-order DPM amplification** between compact (PAPER_293) and extended PN geometry
-- Establishes **DPM macro-antenna scaling law**: F_DPM ? A_area ? r² at fixed I_wind, ??
+- Establishes **DPM macro-antenna scaling law**: F_DPM ? A_area ? rï¿½ at fixed I_wind, ??
 
 ---
 
@@ -80,11 +80,11 @@ The seed a_DPM = 2.497×10?³¹ m/s² then cascades through the THz and VacDiff reso
 
 | System | r (m) | F_DPM (N) | Source |
 |--------|-------|-----------|--------|
-| Compact (systems 18-24) | ~1×106 | 6.284×10³6 | PAPER_293 |
-| NGC 6302 PN lobe (this) | 1.42×10¹6 | **1.267×105°** | **PAPER_314** |
-| Ratio (PN/compact) | — | **2.017×10¹³** | — |
+| Compact (systems 18-24) | ~1Ã—106 | 6.284Ã—10ï¿½6 | PAPER_293 |
+| NGC 6302 PN lobe (this) | 1.42Ã—10ï¿½6 | **1.267Ã—105ï¿½** | **PAPER_314** |
+| Ratio (PN/compact) | â€“ | **2.017Ã—10ï¿½ï¿½** | â€“ |
 
 
 **Standard Model Comparison:** Observed astrophysical data from arXiv-published surveys, SIMBAD/NED catalogs, and standard GR calculations provide the quantitative baseline; UQFF deviations are within current observational uncertainty and predict measurable signatures at future facilities.
 
-**UQFF computed:** MUGE buoyancy ratio U_bi/F_U = [SSq]×?×r²/GM = 5.7e-1×5.0e-4 = 2.85e-4; compressed MUGE baseline g = 5.4e-7 m/s² at r_ISCO.
+**UQFF computed:** MUGE buoyancy ratio U_bi/F_U = [SSq]ï¿½?ï¿½rï¿½/GM = 5.7e-1ï¿½5.0e-4 = 2.85e-4; compressed MUGE baseline g = 5.4e-7 m/sï¿½ at r_ISCO.

@@ -1,4 +1,4 @@
-﻿# PAPER_176: SCm — Superconducting Manifold Discovery, Properties, and Cosmic Role
+# PAPER_176: SCm — Superconducting Manifold Discovery, Properties, and Cosmic Role
 ## Whitepaper §2.4-H | Thread 381a8fe7 | Session 48
 
 ### Abstract

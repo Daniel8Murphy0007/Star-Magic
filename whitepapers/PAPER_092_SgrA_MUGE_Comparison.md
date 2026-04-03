@@ -1,4 +1,4 @@
-﻿# PAPER #92 — Sgr A* SMBH: MUGE vs Newtonian Gravity Comparison
+# PAPER #92 — Sgr A* SMBH: MUGE vs Newtonian Gravity Comparison
 
 **Title:** Sagittarius A* SMBH Gravitational Field: 8-Term MUGE Decomposition and Quantum Coherence Peak at Horizon
 
@@ -42,7 +42,7 @@ From `validate_uqff_muge.py`:
 | sum_Ug (Ug1+Ug2+Ug3+Ug4) | 0.40 | 0.17% |
 | U_i (UQFF integral) | 0.015 | 0.006% |
 | cosmological (?) | -5.8 × 10?²6 | –2.5 × 10?²6% |
-| quantum (? correction) | +3.1 × 10?47 | negligible |
+| quantum (? correction) | +3.1 × 10⁻47 | negligible |
 | fluid (Navier-Stokes) | +7.5 × 10?¹? | negligible |
 | dark_matter (DM halo) | +0.00061 | 0.00026% |
 | coherence (Gaussian peak) | **anomalously high** | **see below** |
@@ -92,7 +92,7 @@ From validator: `assert coh_at_horizon > coh_far * 1e6` — **PASS**.
 |-------|----------------|--------------|------|
 | 1.27×10¹° | 234.1 | 234.5 | +0.17 |
 | 1×10¹² | 2.18×10?² | 2.19×10?² | +0.13 |
-| 1×10¹5 | 2.18×10?8 | 2.18×10?8 | +0.04 |
+| 1×10¹5 | 2.18×10⁻8 | 2.18×10⁻8 | +0.04 |
 | 1×10²° | 2.18×10?¹8 | 2.19×10?¹8 | +0.02 |
 | 3×10²° (8.5 kpc) | 2.42×10?¹? | 2.79×10?¹? | +15.3 (DM) |
 
@@ -148,7 +148,7 @@ The quantum coherence Gaussian serves as an **information anchor** at the horizo
 
 ### A.2 F_U Master Equation (Complete — 4 terms)
 
-$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}igl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}igr]$$
+$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}\bigr]$$
 
 | Term | Description | Implementation |
 |------|-------------|----------------|
@@ -165,7 +165,7 @@ $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}igl[\l
 
 ### A.3 Um Heaviside Phase-Transition Amplifier (PAPER_421)
 
-$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} 	imes igl(1 + 10^{13}\,\Theta(ho_{SCm} - ho_c)igr) 	imes igl(1 + A_q\cos(\Delta\omega\,t)igr)$$
+$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rho_{SCm} - \rho_c)\bigr) \times \bigl(1 + A_q\cos(\Delta\omega\,t)\bigr)$$
 
 | Symbol | Value | Description |
 |--------|-------|-------------|

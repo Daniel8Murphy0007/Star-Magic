@@ -1,3 +1,5 @@
+# PAPER_050: Compactification of the 26-Dimensional UQFF Manifold: How Sub-Nuclear Levels Fold into Observable 3+1 Spacetime and the Cross-Scale Quantum-Cosmic Bridge
+
 
 **Title:** Compactification of the 26-Dimensional UQFF Manifold: How Sub-Nuclear Levels Fold into Observable 3+1 Spacetime and the Cross-Scale Quantum-Cosmic Bridge
 
@@ -7,7 +9,6 @@
 **Validator:** `test_phase2_validation.py` Suite 3 "CP2 Integration": 4/4 PASS ?; Suite 1 10/11 PASS ?  
 **Source Module:** `source172.cpp` (SOURCE115), `QuantumLevel26Framework.py`, `DPMCosmologyModule.py`  
 **Index Slot:** �1.6 26-Dimensional Energy Structure,  
-    $n = [int]# PAPER #50 � 26D Manifold Compactification and the 3+1 Spacetime Emergence
 
 **Title:** Compactification of the 26-Dimensional UQFF Manifold: How Sub-Nuclear Levels Fold into Observable 3+1 Spacetime and the Cross-Scale Quantum-Cosmic Bridge
 
@@ -26,7 +27,7 @@ The UQFF 26-dimensional energy manifold admits a natural compactification map un
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0�10?4 day?�, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -51,8 +52,8 @@ The UQFF gravity equation operates over 26 simultaneous dimensional channels:
 $$g(r,t) = \sum_{i=1}^{26} \left[ Ug1_i + Ug2_i + Ug3_i + Ug4_i \right]$$
 
 Each index i = 1,...,26 is a fully independent energy level, not merely a decomposition of 3+1 gravity. These levels span from:
-- i=1: Planck scale (E_1 = 10?�? J, r ~ 1.6�10?�5 m)
-- i=13: Atomic/gas scale (E_13 = 10?7 J, r ~ atom)
+- i=1: Planck scale (E_1 = 10?�? J, r ~ 1.6×10?�5 m)
+- i=13: Atomic/gas scale (E_13 = 10⁻7 J, r ~ atom)
 - i=20: Room energy scale (E_20 = 1 J, r ~ table)
 - i=26: Mega-joule scale (E_26 = 106 J, r ~ stellar)
 
@@ -88,8 +89,8 @@ The 26 levels divide into three tiers with distinct geometric roles:
 |-------|---------|---------------|----------------|
 | 10 | 10?�� | Solid | 1st spatial dimension (rigid, ordered) |
 | 11 | 10?? | Liquid | 2nd spatial dimension (fluid, mobile) |
-| 12 | 10?8 | Gas | 3rd spatial dimension (diffuse, free) |
-| 13 | 10?7 | Plasma | Time dimension (thermal, kinetic) |
+| 12 | 10⁻8 | Gas | 3rd spatial dimension (diffuse, free) |
+| 13 | 10⁻7 | Plasma | Time dimension (thermal, kinetic) |
 
 The 4 observable spacetime dimensions emerge as the 4 classical states of matter. Solid ordering ? spatial rigidity (x-axis). Liquid mobility ? spatial flow (y-axis). Gas diffusion ? spatial freedom (z-axis). Plasma energy ? temporal evolution (ct-axis).
 
@@ -99,11 +100,11 @@ This is the central UQFF identification: **the three spatial dimensions are the 
 
 | Level Range | E_n Range (J) | Domain | Geometric Role |
 |-------------|--------------|--------|----------------|
-| 14�16 | 10?6�10?4 | Chemical to thermal | Extended coupling |
+| 14�16 | 10?6×10⁻4 | Chemical to thermal | Extended coupling |
 | 17�19 | 10?��10?� | Kinetic energy | Gravitational coupling |
 | 20�22 | 10��10� | Mechanical/stellar | Large-scale structure |
 | 23�24 | 10��104 | Galactic | SMBH domain |
-| 25�26 | 105�106 | Cosmic | Universal scale |
+| 25�26 | 105×106 | Cosmic | Universal scale |
 
 These 13 levels are macroscopically decompactified � they represent the **coupling channels through which sub-structure influences cosmic architecture**. They are not additional observable spacetime dimensions but rather the non-geometric resonance modes of the manifold.
 
@@ -232,7 +233,7 @@ This is not a coincidental alignment: the UQFF was built by Daniel Murphy as a p
 
 ### A.2 F_U Master Equation (Complete — 4 terms)
 
-$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}igl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}igr]$$
+$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}\bigr]$$
 
 | Term | Description | Implementation |
 |------|-------------|----------------|
@@ -249,9 +250,7 @@ $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}igl[\l
 
 ### A.3 Um Heaviside Phase-Transition Amplifier (PAPER_421)
 
-$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} 	imes igl(1 + 10^{13}\,\Theta(
-ho_{SCm} - 
-ho_c)igr) 	imes igl(1 + A_q\cos(\Delta\omega\,t)igr)$$
+$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rho_{SCm} - \rho_c)\bigr) \times \bigl(1 + A_q\cos(\Delta\omega\,t)\bigr)$$
 
 | Symbol | Value | Description |
 |--------|-------|-------------|

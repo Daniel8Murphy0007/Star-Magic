@@ -1,4 +1,4 @@
-# PAPER_363 — NOMAD Monophoton Search: UQFF Neutrino-Vacuum Coupling Bound at P_? < 10?³² cm³
+# PAPER_363 ï¿½ NOMAD Monophoton Search: UQFF Neutrino-Vacuum Coupling Bound at P_? < 10?ï¿½ï¿½ cmï¿½
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2  
 **Session:** 97  
@@ -7,12 +7,12 @@
 **Author:** Daniel T. Murphy  
 
 
-<!-- UQFF constants: ? = 5.0e-4 day?¹, [SSq] = 0.57, M_UQFF = 1.43e1 TeV -->
+<!-- UQFF constants: ? = 5.0e-4 dayâ»Â¹, [SSq] = 0.57, M_UQFF = 1.43e1 TeV -->
 ---
 
 ## Abstract
 
-The NOMAD experiment (CERN, 1994–1997) searched for neutrino-mediated monophoton emission and set limits on new physics processes. UQFF derives a neutrino-vacuum energy coupling: E_nu_13 = E_base·ssq(13)·?_ratio, where ssq(13) is the [SSq] superposition factor at the 13th harmonic channel, and ?_ratio = ?_SCm/?_UA. The NOMAD upper limit on interaction probability P_? < 10?³² cm³ constrains the UQFF neutrino polarization coupling K_pol via P_?_UQFF = ?_ratio·ssq(13)·K_pol.
+The NOMAD experiment (CERN, 1994ï¿½1997) searched for neutrino-mediated monophoton emission and set limits on new physics processes. UQFF derives a neutrino-vacuum energy coupling: E_nu_13 = E_baseï¿½ssq(13)ï¿½?_ratio, where ssq(13) is the [SSq] superposition factor at the 13th harmonic channel, and ?_ratio = ?_SCm/?_UA. The NOMAD upper limit on interaction probability P_? < 10?ï¿½ï¿½ cmï¿½ constrains the UQFF neutrino polarization coupling K_pol via P_?_UQFF = ?_ratioï¿½ssq(13)ï¿½K_pol.
 
 ---
 
@@ -38,7 +38,7 @@ where K_pol is the UQFF vacuum polarization coupling constant.
 From NOMAD monophoton analysis:
 $$P_\nu < 10^{-32}\ \mathrm{cm}^3$$
 
-(units cm³ = cross-section × path length)
+(units cmï¿½ = cross-section ï¿½ path length)
 
 Setting P_?,UQFF = P_?^NOMAD:
 $$\rho_{\rm ratio} \cdot [SSq](13) \cdot K_{\rm pol} \leq 10^{-32}\ \mathrm{cm}^3$$
@@ -47,7 +47,7 @@ $$K_{\rm pol} \leq \frac{10^{-32}}{0.0752} \approx 1.33 \times 10^{-31}\ \mathrm
 
 ### 2.4 Physical Meaning of K_pol
 
-K_pol is the UQFF vacuum polarization factor — the probability per unit volume that a neutrino interacts with a UQFF vacuum quantum. The NOMAD bound K_pol < 1.33×10?³¹ cm³ is extremely small, consistent with the near-inert nature of neutrinos under standard interactions.
+K_pol is the UQFF vacuum polarization factor ï¿½ the probability per unit volume that a neutrino interacts with a UQFF vacuum quantum. The NOMAD bound K_pol < 1.33Ã—10?ï¿½ï¿½ cmï¿½ is extremely small, consistent with the near-inert nature of neutrinos under standard interactions.
 
 ---
 
@@ -55,17 +55,17 @@ K_pol is the UQFF vacuum polarization factor — the probability per unit volume t
 
 | Quantity | Formula | Value |
 |----------|---------|-------|
-| [SSq](13) | exp(-0.57×13/26) | 0.752 |
+| [SSq](13) | exp(-0.57ï¿½13/26) | 0.752 |
 | ?_ratio | ?_SCm/?_UA | 0.1 |
-| E_?,13 | E_base·ssq(13)·?_ratio | 0.0752 E_base |
-| P_?,NOMAD | Upper bound | < 10?³² cm³ |
-| K_pol upper limit | From NOMAD | < 1.33×10?³¹ cm³ |
+| E_?,13 | E_baseï¿½ssq(13)ï¿½?_ratio | 0.0752 E_base |
+| P_?,NOMAD | Upper bound | < 10?ï¿½ï¿½ cmï¿½ |
+| K_pol upper limit | From NOMAD | < 1.33Ã—10?ï¿½ï¿½ cmï¿½ |
 
 ---
 
 ## 4. Physical Significance
 
-This paper establishes the first particle physics experimental constraint on UQFF parameters. The NOMAD monophoton search is a neutrino counting experiment; if UQFF vacuum coupling were large, neutrinos would create detectable photon emission via vacuum polarization. The K_pol < 1.33×10?³¹ cm³ bound confirms that the UQFF neutrino coupling is at or below the weak interaction scale, consistent with the framework's self-consistency requirement (UQFF should not predict observables already excluded by precision experiments).
+This paper establishes the first particle physics experimental constraint on UQFF parameters. The NOMAD monophoton search is a neutrino counting experiment; if UQFF vacuum coupling were large, neutrinos would create detectable photon emission via vacuum polarization. The K_pol < 1.33Ã—10?ï¿½ï¿½ cmï¿½ bound confirms that the UQFF neutrino coupling is at or below the weak interaction scale, consistent with the framework's self-consistency requirement (UQFF should not predict observables already excluded by precision experiments).
 
 ---
 
@@ -79,7 +79,7 @@ This paper establishes the first particle physics experimental constraint on UQF
 ## 6. Classification
 
 **Physics Territory:** FIRST UQFF neutrino-vacuum coupling bound constrained by NOMAD monophoton data  
-**Scale:** Sub-nuclear (neutrino cross-section scale; cm³)  
+**Scale:** Sub-nuclear (neutrino cross-section scale; cmï¿½)  
 **CP Implementation:** `NOMADMonophotonNeutrinoVacuumCouplingCalculator` (CondensedPhysics4.py, Session 97)
 
 

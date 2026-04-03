@@ -1,4 +1,4 @@
-﻿# PAPER_365 — Magnetar Magnetic Energy and Outburst Timescale: M_mag = 2.01×10³⁷ J and τ = 12.7 yr
+# PAPER_365 — Magnetar Magnetic Energy and Outburst Timescale: M_mag = 2.01×10³⁷ J and τ = 12.7 yr
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2  
 **Session:** 97  

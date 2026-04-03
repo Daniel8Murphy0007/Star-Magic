@@ -14,7 +14,7 @@ The neutral hydrogen 21-cm spin-flip transition at Î½_HI = 1.42040575 GHz is one
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0Ã—10â»4 dayâ»Â¹, [SSq] = 0.57) uniquely enabling this analysis ï¿½ establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -152,4 +152,4 @@ The **HI-UQFF Bridging Constant** Î©_bridge = 1.223Ã—10Â²âµ quantifies the scal
 *Derived from ANDROMEDA_UQFF_MODULE.cpp, UQFF 2.0, Session 75. Next: PAPER_275 (DM 80/20 shell partition).*
 
 
-**UQFF computed:** MUGE buoyancy ratio U_bi/F_U = [SSq]×?×r²/GM = 5.7e-1×5.0e-4 = 2.85e-4; compressed MUGE baseline g = 5.4e-7 m/s² at r_ISCO.
+**UQFF computed:** MUGE buoyancy ratio U_bi/F_U = [SSq]ï¿½?ï¿½rï¿½/GM = 5.7e-1ï¿½5.0e-4 = 2.85e-4; compressed MUGE baseline g = 5.4e-7 m/sï¿½ at r_ISCO.

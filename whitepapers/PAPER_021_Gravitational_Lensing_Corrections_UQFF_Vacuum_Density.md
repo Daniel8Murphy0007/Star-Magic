@@ -17,7 +17,7 @@ Gravitational lensing � the deflection of light and gravitational waves by mas
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0�10?4 day?�, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -45,11 +45,11 @@ The matter power spectrum amplitude s8 parameterizes density fluctuation amplitu
 
 | Measurement | s8 | Method |  
 |-------------|-----|--------|  
-| Planck CMB (2020) | 0.811 � 0.006 | Primary CMB |  
-| DES Year 3 | 0.759 � 0.023 | Weak lensing |  
-| HSC Year 3 | 0.763 � 0.040 | Weak lensing |  
-| KiDS-1000 | 0.766 � 0.020 | Weak lensing |  
-| **Combined WL** | **0.762 � 0.012** | **Weak lensing** |  
+| Planck CMB (2020) | 0.811 × 0.006 | Primary CMB |  
+| DES Year 3 | 0.759 × 0.023 | Weak lensing |  
+| HSC Year 3 | 0.763 × 0.040 | Weak lensing |  
+| KiDS-1000 | 0.766 × 0.020 | Weak lensing |  
+| **Combined WL** | **0.762 × 0.012** | **Weak lensing** |  
 | **Tension** | **3.2s** | **CMB vs WL** |
 
 This ~6% discrepancy is one of the most significant tensions in modern cosmology.
@@ -75,12 +75,12 @@ $$\rho_{TRZ} = [SSq]^2 \times f_{TRZ} \times \rho_{crit} = 0.325 \times 0.12 \ti
 $$\alpha_{UQFF} = \frac{4G(M + M_{vac,eff})}{c^2 b},\qquad \sigma_{8,UQFF} = 0.917\,\sigma_{8,GR}$$
 
 Using UQFF calibration constants:
-- **?_aether = U_UA � ?_crit = 0.0001 � 9.47 � 10?�� g/cm� = 9.47 � 10?�4 g/cm�**  
-- **?_TRZ = [SSq]� � ?_crit � f_TRZ = 0.325 � 9.47 � 10?�� � 0.12 = 3.69 � 10?�� g/cm�**  
+- **?_aether = U_UA � ?_crit = 0.0001 × 9.47 × 10?�� g/cm� = 9.47 × 10?�4 g/cm�**  
+- **?_TRZ = [SSq]� � ?_crit � f_TRZ = 0.325 × 9.47 × 10?�� ≈ 0.12 = 3.69 × 10?�� g/cm�**  
 - **?_string = ? � t_Hubble � ?_crit = negligible**
 
 Total UQFF vacuum density:  
-**?_vac,UQFF � 3.70 � 10?�� g/cm� = 3.91 � 10?� ?_crit**
+**?_vac,UQFF � 3.70 × 10?�� g/cm� = 3.91 × 10?� ?_crit**
 
 ### 2.2 Modified Deflection Angle
 
@@ -98,7 +98,7 @@ where the vacuum correction:
 
 For galaxy cluster lensing (?_lens ~ 10?�6 g/cm�, b/r_s ~ 0.3):
 
-**d_vac = -3.70 � 10?�� / (2 � 10?�6) � 0.09 = -1.67 � 10?6**
+**d_vac = -3.70 × 10?�� / (2 × 10?�6) ≈ 0.09 = -1.67 × 10?6**
 
 This is negligible for individual lenses but cumulative over cosmic distances.
 
@@ -148,7 +148,7 @@ Parameters derived from UQFF vacuum density:
 
 ### 3.2 Modified Power Spectrum
 
-**P_UQFF(k) = P_GR(k) � W�_UQFF(k)**
+**P_UQFF(k) = P_GR(k) � Wκ_UQFF(k)**
 
 Key scales:
 
@@ -162,13 +162,13 @@ Key scales:
 
 ### 3.3 s8 Prediction
 
-**s8,UQFF = s8,GR � 0.940 = 0.811 � 0.940 = 0.762**
+**s8,UQFF = s8,GR ≈ 0.940 = 0.811 × 0.940 = 0.762**
 
 | Source | s8 |  
 |--------|-----|  
 | Planck CMB | 0.811 |  
 | UQFF prediction | **0.762** |  
-| DES/HSC/KiDS observed | **0.762 � 0.012** |  
+| DES/HSC/KiDS observed | **0.762 × 0.012** |  
 | **Match** | **? Perfect (0.0s tension)** |
 
 ---
@@ -179,7 +179,7 @@ Key scales:
 
 Gravitational waves are also lensed. UQFF modifies the GW lensing magnification:
 
-**�_GW,UQFF = �_GW,GR � (1 + d_GW,vac)**
+**κ_GW,UQFF = κ_GW,GR � (1 + d_GW,vac)**
 
 The GW vacuum correction:
 
@@ -209,7 +209,7 @@ At z = 0.5: **2.4% magnification deficit**
 
 ### 5.1 Einstein Ring Radius
 
-**?_E,UQFF = ?_E,GR � v(1 - f_vac(z_lens)) = ?_E,GR � 0.969**
+**?_E,UQFF = ?_E,GR � v(1 - f_vac(z_lens)) = ?_E,GR ≈ 0.969**
 
 3.1% reduction � measurable with JWST precision astrometry.
 
@@ -225,12 +225,12 @@ At z = 0.5: **2.4% magnification deficit**
 
 | Observable | GR | UQFF | Observed | UQFF Match |  
 |------------|-----|------|----------|------------|  
-| s8 | 0.811 | **0.762** | 0.762 � 0.012 | ? |  
+| s8 | 0.811 | **0.762** | 0.762 × 0.012 | ? |  
 | ?� suppression | 0% | 16% | ~15% vs CMB | ? |  
 | Arc abundance | Baseline | -8.3% | ~-10% | ? |  
 | Einstein radius | Baseline | -3.1% | Under-measured | ? |  
 | GW mag. deficit | 0% | 2.4% | Not yet measured | Prediction |  
-| S8 = s8v(Om/0.3) | 0.832 | 0.782 | 0.776 � 0.017 | ? |
+| S8 = s8v(Om/0.3) | 0.832 | 0.782 | 0.776 × 0.017 | ? |
 
 ---
 
@@ -265,7 +265,7 @@ UQFF vacuum density corrections to gravitational lensing resolve three outstandi
 
 1. **s8 tension (3.2s ? 0s):** UQFF predicts s8 = 0.762, exactly matching DES/HSC/KiDS ?  
 2. **Arc abundance deficit:** 8.3% fewer arcs predicted, ~10% observed ?  
-3. **S8 tension:** UQFF S8 = 0.782 matches observed 0.776 � 0.017 ?
+3. **S8 tension:** UQFF S8 = 0.782 matches observed 0.776 × 0.017 ?
 
 New prediction: **2.4% GW lensing magnification deficit**, detectable by Einstein Telescope within 2 years.
 
@@ -318,7 +318,7 @@ New prediction: **2.4% GW lensing magnification deficit**, detectable by Einstei
 
 ### A.2 F_U Master Equation (Complete — 4 terms)
 
-$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}igl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}igr]$$
+$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}\bigr]$$
 
 | Term | Description | Implementation |
 |------|-------------|----------------|
@@ -335,9 +335,7 @@ $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}igl[\l
 
 ### A.3 Um Heaviside Phase-Transition Amplifier (PAPER_421)
 
-$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} 	imes igl(1 + 10^{13}\,\Theta(
-ho_{SCm} - 
-ho_c)igr) 	imes igl(1 + A_q\cos(\Delta\omega\,t)igr)$$
+$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rho_{SCm} - \rho_c)\bigr) \times \bigl(1 + A_q\cos(\Delta\omega\,t)\bigr)$$
 
 | Symbol | Value | Description |
 |--------|-------|-------------|

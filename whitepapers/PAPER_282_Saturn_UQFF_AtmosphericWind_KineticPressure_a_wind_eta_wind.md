@@ -1,4 +1,4 @@
-﻿# PAPER_282: Saturn UQFF Atmospheric Wind Kinetic Pressure Term — a_wind, η_wind
+# PAPER_282: Saturn UQFF Atmospheric Wind Kinetic Pressure Term — a_wind, η_wind
 
 **Session:** 78  
 **Module:** SATURN_UQFF_MODULE.cpp (21st C++ module)  

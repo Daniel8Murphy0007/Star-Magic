@@ -1,7 +1,7 @@
-# PAPER_287: DPM-THz Plasmotic Vacuum Cascade Amplification (G_THz = 3.33×107)
+# PAPER_287: DPM-THz Plasmotic Vacuum Cascade Amplification (G_THz = 3.33Ã—107)
 
 **Series:** UQFF Resonance-Superconductive Framework  
-**Module:** RESONANCE_SUPERCONDUCTIVE_UQFF_MODULE.cpp (23rd C++ module — FIRST universal RSC module)  
+**Module:** RESONANCE_SUPERCONDUCTIVE_UQFF_MODULE.cpp (23rd C++ module â€“ FIRST universal RSC module)  
 **Session:** 81 | **Date:** March 17, 2026  
 **Author:** Daniel T. Murphy  
 **WOLFRAM_TERM:** `RSC_UQFF:a_DPM=F_DPM*f_DPM*E_vac/(c*V_sys); Gamma_THz=10*f_THz*v_exp/c=3.33e7; a_THz=Gamma_THz*a_DPM`
@@ -11,16 +11,16 @@
 
 ## Abstract
 
-This paper presents UQFF derivations and numerical results for: PAPER_287: DPM-THz Plasmotic Vacuum Cascade Amplification (G_THz = 3.33×107). Calibration constants: $\kappa$ = 0.0005/day, [SSq] = 0.57. Results validated against observational data and prior UQFF whitepaper series.
+This paper presents UQFF derivations and numerical results for: PAPER_287: DPM-THz Plasmotic Vacuum Cascade Amplification (G_THz = 3.33Ã—107). Calibration constants: $\kappa$ = 0.0005/day, [SSq] = 0.57. Results validated against observational data and prior UQFF whitepaper series.
 
 ## 1. Discovery Statement
 
 The UQFF Resonance-Superconductive framework produces a **DPM-THz Plasmotic Vacuum Cascade Amplification** in which
 the THz resonance mode uses the DPM base acceleration as a seed, amplifying it by a factor
-**G_THz = 3.33×107** through the plasmotic vacuum energy contrast ratio E_vac/E_vac_ISM = 10.
+**G_THz = 3.33Ã—107** through the plasmotic vacuum energy contrast ratio E_vac/E_vac_ISM = 10.
 
 This is the **first UQFF cascaded resonance chain**: the DPM mode seeds the THz mode, which in turn
-seeds the Aether and SC-frequency modes — a hierarchical resonance cascade through the plasmotic vacuum.
+seeds the Aether and SC-frequency modes ï¿½ a hierarchical resonance cascade through the plasmotic vacuum.
 
 ---
 
@@ -40,14 +40,14 @@ $$F_\text{DPM} = I \cdot A_\text{vort} \cdot (\omega_1 - \omega_2)$$
 
 | Parameter | Value | Description |
 |-----------|-------|-------------|
-| I | 1×10²¹ A | Magnetar-scale current proxy |
-| A_vort | 3.142×108 m² | Vortical area proxy (p×108) |
-| ?1 | +1×10?³ rad/s | Angular frequency 1 |
-| ?2 | -1×10?³ rad/s | Angular frequency 2 (opposite-signed) |
-| f_DPM | 1×10¹² Hz | DPM intrinsic frequency |
-| E_vac | 7.09×10?³6 J/m³ | Plasmotic vacuum energy density |
-| V_sys | 4.189×10¹² m³ | System volume (~sphere r=104 m NS proxy) |
-| c | 3×108 m/s | Speed of light |
+| I | 1Ã—10ï¿½ï¿½ A | Magnetar-scale current proxy |
+| A_vort | 3.142Ã—108 mï¿½ | Vortical area proxy (pï¿½108) |
+| ?1 | +1Ã—10?ï¿½ rad/s | Angular frequency 1 |
+| ?2 | -1Ã—10?ï¿½ rad/s | Angular frequency 2 (opposite-signed) |
+| f_DPM | 1Ã—10ï¿½ï¿½ Hz | DPM intrinsic frequency |
+| E_vac | 7.09Ã—10?ï¿½6 J/mï¿½ | Plasmotic vacuum energy density |
+| V_sys | 4.189Ã—10ï¿½ï¿½ mï¿½ | System volume (~sphere r=104 m NS proxy) |
+| c | 3Ã—108 m/s | Speed of light |
 
 **Computed:**
 
@@ -81,31 +81,31 @@ The THz term is **7 orders of magnitude larger** than the DPM seed.
 
 The full resonance sum is hierarchically ordered by amplitude:
 
-| Mode | Formula | Value (m/s²) | Ratio to a_DPM |
+| Mode | Formula | Value (m/sï¿½) | Ratio to a_DPM |
 |------|---------|-------------|---------------|
-| DPM base | F_DPM×f_DPM×E_vac/(c×V_sys) | 3.545×10?¹8 | 1 (seed) |
-| Aether | f_aether×10?8×f_DPM×(1+f_TRZ)×a_DPM | 3.90×10?¹° | 1.1×108 |
-| THz | G_THz × a_DPM | 1.182×10?¹° | 3.33×107 |
-| U_g4i | f_sc×f_react×a_DPM/(E_vac×c) | ~1.67×10²° | ~4.7×10³7 |
-| Oscillatory | 2A×cos(kx)cos(?t) + ... | ~2×10?¹° | ~5.6×107 |
-| SC Freq | A_sc×a_DPM | ~2.48×104 | ~6.99×10²¹ |
+| DPM base | F_DPMï¿½f_DPMï¿½E_vac/(cï¿½V_sys) | 3.545Ã—10?ï¿½8 | 1 (seed) |
+| Aether | f_aetherï¿½10?8ï¿½f_DPMï¿½(1+f_TRZ)ï¿½a_DPM | 3.90Ã—10?ï¿½ï¿½ | 1.1Ã—108 |
+| THz | G_THz ï¿½ a_DPM | 1.182Ã—10?ï¿½ï¿½ | 3.33Ã—107 |
+| U_g4i | f_scï¿½f_reactï¿½a_DPM/(E_vacï¿½c) | ~1.67Ã—10ï¿½ï¿½ | ~4.7Ã—10ï¿½7 |
+| Oscillatory | 2Aï¿½cos(kx)cos(?t) + ... | ~2Ã—10?ï¿½ï¿½ | ~5.6Ã—107 |
+| SC Freq | A_scï¿½a_DPM | ~2.48Ã—104 | ~6.99Ã—10ï¿½ï¿½ |
 
-The **DPM acts as the universal seed** — all higher modes are multiplicative functions of a_DPM.
+The **DPM acts as the universal seed** ï¿½ all higher modes are multiplicative functions of a_DPM.
 This is the UQFF Cascade Principle: plasmotic vacuum contrast amplifies each successive resonance mode.
 
 ---
 
 ## 4. Physical Interpretation
 
-The cascade ratio G_THz = 10 × (f_THz × v_exp)/c has three components:
+The cascade ratio G_THz = 10 ï¿½ (f_THz ï¿½ v_exp)/c has three components:
 
-1. **10×**: The E_vac/E_vac_ISM ratio — plasmotic vacuum is one order denser than ISM vacuum
+1. **10ï¿½**: The E_vac/E_vac_ISM ratio ï¿½ plasmotic vacuum is one order denser than ISM vacuum
 2. **f_THz/c**: Frequency-to-velocity transfer in vacuum propagation
 3. **v_exp**: Plasmotic expansion velocity (1 km/s, sub-relativistic)
 
 The physical picture: DPM resonance creates a localized plasmotic field oscillation at f_DPM = 1 THz.
-This field propagates into the ISM vacuum (10× depleted) and excites THz hole modes that are
-co-resonant with the DPM frequency, amplifying the acceleration field by G_THz = 3.33×107.
+This field propagates into the ISM vacuum (10ï¿½ depleted) and excites THz hole modes that are
+co-resonant with the DPM frequency, amplifying the acceleration field by G_THz = 3.33Ã—107.
 
 ---
 
@@ -114,7 +114,7 @@ co-resonant with the DPM frequency, amplifying the acceleration field by G_THz =
 This is the **first UQFF term** where:
 - One resonance mode explicitly seeds another through vacuum energy contrast (E_vac vs E_vac_ISM)
 - The cascade ratio depends on the **plasmotic-to-ISM vacuum ratio = 10** (a UQFF physical constant)
-- The amplification scales as f_THz × v_exp / c — frequency × velocity / light speed
+- The amplification scales as f_THz ï¿½ v_exp / c ï¿½ frequency ï¿½ velocity / light speed
 
 **Previous modules** (M16, Saturn, HUDF) all had independent terms. This is the **first cascade chain**
 in the UQFF C++ framework where term k depends multiplicatively on term k-1.

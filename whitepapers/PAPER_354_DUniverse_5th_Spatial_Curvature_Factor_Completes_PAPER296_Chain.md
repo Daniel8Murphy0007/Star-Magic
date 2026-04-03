@@ -1,4 +1,4 @@
-﻿# PAPER_354 — D_Universe 5th Factor: Spatial Curvature Completion of the 4-Factor Chain (PAPER_296)
+# PAPER_354 — D_Universe 5th Factor: Spatial Curvature Completion of the 4-Factor Chain (PAPER_296)
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2  
 **Session:** 96  

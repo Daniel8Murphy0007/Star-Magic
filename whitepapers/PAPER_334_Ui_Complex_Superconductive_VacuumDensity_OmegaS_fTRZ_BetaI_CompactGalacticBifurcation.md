@@ -1,4 +1,4 @@
-﻿# PAPER_334 — U_i Complex-Valued Superconductive Vacuum Density: ?_s, f_TRZ, ß_i and Compact/Galactic Class Bifurcation
+# PAPER_334 — U_i Complex-Valued Superconductive Vacuum Density: ?_s, f_TRZ, ß_i and Compact/Galactic Class Bifurcation
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2  
 **Session:** 95  
@@ -35,7 +35,7 @@ U_i = ?_i · ( ?_vac,[SCm] / ?_vac,[UA] · ?_s(t) · cos(pt_n) · (1 + f_TRZ) )
 | ?_i | 1 (calibrated) | UQFF superconductive coupling length |
 | ?_vac,[SCm] | ~10?³° × f_SCm kg/m³ | Superconductive vacuum density |
 | ?_vac,[UA] | ~10?³° kg/m³ | Aether vacuum density |
-| ?_s(t) | 2.5×10?6 rad/s | Superconductive oscillation frequency |
+| ?_s(t) | 2.5×10⁻6 rad/s | Superconductive oscillation frequency |
 | cos(pt_n) | time-modulation | UQFF temporal coupling factor |
 | f_TRZ | 0.1 | Time-reversal zone coupling factor |
 | ß_i | 0.6 | Imaginary buoyancy coupling coefficient |
@@ -48,7 +48,7 @@ U_i = ?_i · (?_vac,[SCm] / ?_vac,[UA]) · ?_s · cos(pt_n) · (1 + f_TRZ)
 
 with complex parameters:
   ?_vac,A = (1×10?³° + i·1×10?³¹) kg/m³     [vacuum density complex]
-  V_infl,[UA] = (1×10?6 + i·1×10?7) m³       [inflation volume complex]
+  V_infl,[UA] = (1×10⁻6 + i·1×10⁻7) m³       [inflation volume complex]
   a_universal = (1×10¹² + i·1×10¹¹) m/s²      [universal acceleration complex]
 ```
 
@@ -63,7 +63,7 @@ This is the FIRST UQFF result showing explicit bifurcation in a vacuum density p
 Systems: Vela Pulsar (PSR J0835-4510), Crab Nebula M1, Jupiter Aurorae, Lagoon Nebula M8, R Aquarii
 
 ```
-U_i (compact) ˜ (1.38×10?47 + i·7.80×10?5¹) J/m³
+U_i (compact) ˜ (1.38×10⁻47 + i·7.80×10⁻5¹) J/m³
 ```
 
 **Parameters:**
@@ -78,14 +78,14 @@ U_i (compact) ˜ (1.38×10?47 + i·7.80×10?5¹) J/m³
 U_i = 1 × 0.001 × 2.5e-6 × cos(pt_n) × 1.1
     ˜ 2.75×10?? × cos(pt_n) [real part driver]
 ```
-At resolved scale of phase integration ? (1.38×10?47 J/m³) real component.
+At resolved scale of phase integration ? (1.38×10⁻47 J/m³) real component.
 
 ### 3.2 Galactic Scale Class
 
 Systems: NGC 1365, ESO 137-001, Abell 2256, IC 2163, NGC 2207, Centaurus A, Sgr A*, M87
 
 ```
-U_i (galactic) ˜ (1.45×10?47 + i·8.20×10?5¹) J/m³
+U_i (galactic) ˜ (1.45×10⁻47 + i·8.20×10⁻5¹) J/m³
 ```
 
 **Parameters:**
@@ -96,7 +96,7 @@ U_i (galactic) ˜ (1.45×10?47 + i·8.20×10?5¹) J/m³
 **Derivation:** At galactic scales, accumulated SC states across 26 levels increase the effective ?_vac,[SCm] slightly:
 ```
 ?_vac,[SCm,gal]/?_vac,[UA,gal] = 0.001 × enhancement_factor ˜ 0.001 × 1.05
-U_i,gal ˜ U_i,compact × 1.05 ? 1.45×10?47 J/m³  [5% enhancement]
+U_i,gal ˜ U_i,compact × 1.05 ? 1.45×10⁻47 J/m³  [5% enhancement]
 ```
 
 ### 3.3 Bifurcation Ratio
@@ -114,14 +114,14 @@ The bifurcation ratio is **1.051** for both real and imaginary components — su
 
 ### 4.1 Source of Imaginary Part
 
-The imaginary parts (7.80×10?5¹ and 8.20×10?5¹ J/m³) arise from:
+The imaginary parts (7.80×10⁻5¹ and 8.20×10⁻5¹ J/m³) arise from:
 1. Complex ?_vac,A = (1×10?³° + i·1×10?³¹) kg/m³ ? Im(?_vac) = 10?³¹
-2. Complex V_infl,[UA] = (1×10?6 + i·1×10?7) m³ ? Im(V)/Re(V) = 0.1
+2. Complex V_infl,[UA] = (1×10⁻6 + i·1×10⁻7) m³ ? Im(V)/Re(V) = 0.1
 3. Combined: Im(U_i) = ß_i × Re(U_i) × Im_factor
 
 ```
 ß_i = 0.6 (imaginary buoyancy coupling)
-Im(U_i) / Re(U_i) = ß_i × [Im(?_vac)/Re(?_vac)] = 0.6 × 0.1 = 0.06... ? residual ~5.65×10?4
+Im(U_i) / Re(U_i) = ß_i × [Im(?_vac)/Re(?_vac)] = 0.6 × 0.1 = 0.06... ? residual ~5.65×10⁻4
 ```
 
 ### 4.2 Physical Interpretation
@@ -145,10 +145,10 @@ The U_i complex value at each level feeds into the superconductive buoyancy calc
 
 ## 6. Relationship to ?_s Calibration
 
-The superconductive oscillation `?_s(t) = 2.5×10?6 rad/s` corresponds to:
+The superconductive oscillation `?_s(t) = 2.5×10⁻6 rad/s` corresponds to:
 ```
 T_s = 2p/?_s = 2.513×106 s ˜ 29.1 days (monthly oscillation)
-f_s = ?_s/(2p) = 3.98×10?7 Hz
+f_s = ?_s/(2p) = 3.98×10⁻7 Hz
 ```
 
 This ~29-day period connects to:
@@ -162,7 +162,7 @@ This ~29-day period connects to:
 
 1. **FIRST explicit U_i complex-valued superconductive vacuum density equation** — full `?_i(?_vac,[SCm]/?_vac,[UA]·?_s·cos(pt_n)·(1+f_TRZ))` formulation
 2. **FIRST compact/galactic scale bifurcation** — 1.051 ratio; same for real and imaginary
-3. **FIRST ?_s = 2.5×10?6 rad/s calibration** — ~29-day superconductive oscillation period
+3. **FIRST ?_s = 2.5×10⁻6 rad/s calibration** — ~29-day superconductive oscillation period
 4. **FIRST f_TRZ = 0.1 explicit calibration** in U_i context
 5. **FIRST complex parameter set** for V_infl,[UA], ?_vac,A, a_universal all complex-valued
 
@@ -174,16 +174,16 @@ This ~29-day period connects to:
 U_i = ?_i · (?_vac,[SCm]/?_vac,[UA]) · ?_s(t) · cos(pt_n) · (1+f_TRZ)
 
 ?_i = 1 (calibrated)
-?_s = 2.5×10?6 rad/s  ? T_s ˜ 29 days
+?_s = 2.5×10⁻6 rad/s  ? T_s ˜ 29 days
 f_TRZ = 0.1
 ß_i = 0.6  [imaginary buoyancy coupling]
 
 ?_vac,A = (1×10?³° + i·1×10?³¹) kg/m³      [complex vacuum density]
-V_infl,[UA] = (1×10?6 + i·1×10?7) m³       [complex inflation volume]
+V_infl,[UA] = (1×10⁻6 + i·1×10⁻7) m³       [complex inflation volume]
 a_universal = (1×10¹² + i·1×10¹¹) m/s²      [complex universal acceleration]
 
-U_i (compact)  ˜ (1.38×10?47 + i·7.80×10?5¹) J/m³
-U_i (galactic) ˜ (1.45×10?47 + i·8.20×10?5¹) J/m³
+U_i (compact)  ˜ (1.38×10⁻47 + i·7.80×10⁻5¹) J/m³
+U_i (galactic) ˜ (1.45×10⁻47 + i·8.20×10⁻5¹) J/m³
 Bifurcation ratio: 1.051 (real and imaginary identical)
 ```
 

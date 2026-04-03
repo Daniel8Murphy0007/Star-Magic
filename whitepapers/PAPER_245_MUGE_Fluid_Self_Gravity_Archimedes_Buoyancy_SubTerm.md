@@ -1,4 +1,4 @@
-﻿# PAPER_245: MUGE Fluid Self-Gravity Archimedes Buoyancy Sub-Term — Universal Gravitational Buoyancy
+# PAPER_245: MUGE Fluid Self-Gravity Archimedes Buoyancy Sub-Term — Universal Gravitational Buoyancy
 
 **Author:** Daniel T. Murphy (daniel.murphy00@gmail.com)
 **Framework:** UQFF v4.27 — Star-Magic Physics
@@ -24,7 +24,7 @@ Like `g_Q` (PAPER_244), this term appears universally across MUGE modules as a s
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -124,7 +124,7 @@ This theorem establishes that fluid self-gravity provides a **radial amplificati
 ## 4. Observational Predictions / Validation
 
 - **Galaxy cluster ICM:** Fluid self-gravity in the ICM at r ~ Mpc contributes ~1% of the total MUGE gravity, testable via Sunyaev-Zel'dovich effect pressure profiles (Planck/SPT data).
-- **Proto-stellar disks:** At r ~ 100 AU with ?_disk ~ 10?¹4 kg/m³, `g_fluid ~ 10?8 m/s²` — comparable to stellar surface gravity at that distance. This modifies the standard disk self-gravity criterion (Toomre Q parameter).
+- **Proto-stellar disks:** At r ~ 100 AU with ?_disk ~ 10?¹4 kg/m³, `g_fluid ~ 10⁻8 m/s²` — comparable to stellar surface gravity at that distance. This modifies the standard disk self-gravity criterion (Toomre Q parameter).
 - **Crossover radius in molecular clouds:** r_c predictions in the range 0.1–1 pc for dense cores (? ~ 10?¹7 kg/m³) are testable with ALMA high-resolution density maps.
 
 ---

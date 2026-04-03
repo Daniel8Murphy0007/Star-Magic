@@ -2,7 +2,7 @@
 
 **Authors:** Daniel Murphy & UQFF Research Collective
 **Date:** 2026-03-06
-**Domain:** 1.4 ó Beyond Standard Model (BSM) Physics
+**Domain:** 1.4 ÔøΩ Beyond Standard Model (BSM) Physics
 **Status:** Draft
 **Calibration Constants:** ? = 0.0005/day, [SSq] = 0.57
 **Validation File:** validate_dm_direct_uqff.py
@@ -12,11 +12,11 @@
 
 ## Abstract
 
-Direct detection experiments (LUX-ZEPLIN, XENONnT, PandaX-4T) report persistent null results. The Unified Quantum Field Framework (UQFF) predicts two DM candidates derived from ? = 0.0005/day and [SSq] = 0.57 with zero free parameters: (1) the ultra-light Aether Condensate Particle (ACP) with M_ACP = 3.81e-24 eV/c≤ ó fuzzy dark matter with de Broglie wavelength ?_dB = 2.3 kpc; and (2) a heavy partner ACP2 with M_ACP2 = M_KK ◊ [SSq]≤ = 3.77 TeV. ACP2 scatters off nuclei via KK graviton exchange with s_SI = 3.2e-52 cm≤ ó 10,000◊ below current LZ sensitivity ó naturally explaining all null results. UQFF predicts DM self-interaction s/M = 0.57 cm≤/g, consistent with Bullet Cluster constraints, and total relic density O_DM h≤ = 0.1200 matching Planck 2020.
+Direct detection experiments (LUX-ZEPLIN, XENONnT, PandaX-4T) report persistent null results. The Unified Quantum Field Framework (UQFF) predicts two DM candidates derived from ? = 0.0005/day and [SSq] = 0.57 with zero free parameters: (1) the ultra-light Aether Condensate Particle (ACP) with M_ACP = 3.81e-24 eV/cÔøΩ ÔøΩ fuzzy dark matter with de Broglie wavelength ?_dB = 2.3 kpc; and (2) a heavy partner ACP2 with M_ACP2 = M_KK ÔøΩ [SSq]ÔøΩ = 3.77 TeV. ACP2 scatters off nuclei via KK graviton exchange with s_SI = 3.2e-52 cmÔøΩ ÔøΩ 10,000ÔøΩ below current LZ sensitivity ÔøΩ naturally explaining all null results. UQFF predicts DM self-interaction s/M = 0.57 cmÔøΩ/g, consistent with Bullet Cluster constraints, and total relic density O_DM hÔøΩ = 0.1200 matching Planck 2020.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0◊10?4 day?π, [SSq] = 0.57) uniquely enabling this analysis ó establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0√ó10‚Åª4 day‚Åª¬π, [SSq] = 0.57) uniquely enabling this analysis ÔøΩ establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -26,16 +26,16 @@ Direct detection experiments (LUX-ZEPLIN, XENONnT, PandaX-4T) report persistent 
 
 | Experiment | Limit s_SI (30 GeV) | Year |
 |------------|----------------------|------|
-| LUX-ZEPLIN | < 9.2e-48 cm≤ | 2023 |
-| XENONnT | < 1.4e-47 cm≤ | 2023 |
-| PandaX-4T | < 3.8e-47 cm≤ | 2023 |
+| LUX-ZEPLIN | < 9.2e-48 cmÔøΩ | 2023 |
+| XENONnT | < 1.4e-47 cmÔøΩ | 2023 |
+| PandaX-4T | < 3.8e-47 cmÔøΩ | 2023 |
 
 All null. Standard WIMPs severely constrained.
 
 ### 1.2 UQFF DM Candidates
 
-1. ACP (ultra-light): M_ACP = 3.81e-24 eV ó fuzzy DM, 98.8% of total DM
-2. ACP2 (heavy): M_ACP2 = 3.77 TeV ó KK graviton portal, 1.2% of total DM
+1. ACP (ultra-light): M_ACP = 3.81e-24 eV ÔøΩ fuzzy DM, 98.8% of total DM
+2. ACP2 (heavy): M_ACP2 = 3.77 TeV ‚Äì KK graviton portal, 1.2% of total DM
 
 ---
 
@@ -43,19 +43,19 @@ All null. Standard WIMPs severely constrained.
 
 ### 2.1 Ultra-Light ACP
 
-M_ACP = ? ◊ hbar / c≤ = (5.787e-9 s?π ◊ 1.055e-34 J∑s) / (8.988e16 m≤/s≤) = 3.81e-24 eV/c≤
+M_ACP = ? ÔøΩ hbar / cÔøΩ = (5.787e-9 s‚Åª¬π ÔøΩ 1.055e-34 JÔøΩs) / (8.988e16 mÔøΩ/sÔøΩ) = 3.81e-24 eV/cÔøΩ
 
 De Broglie wavelength at v = 220 km/s: ?_dB = 2.29 kpc
 
-Suppresses structure below 2.3 kpc ó consistent with galaxy core profiles and missing satellite solution.
+Suppresses structure below 2.3 kpc ÔøΩ consistent with galaxy core profiles and missing satellite solution.
 
 ### 2.2 Heavy ACP2
 
-$$M_{ACP} = \kappa \frac{\hbar}{c^2} = \frac{5.787\times10^{-9}\,\text{s}^{-1} \times 1.055\times10^{-34}\,\text{J∑s}}{8.988\times10^{16}\,\text{m}^2/\text{s}^2} = 3.81\times10^{-24}\,\text{eV}/c^2$$
+$$M_{ACP} = \kappa \frac{\hbar}{c^2} = \frac{5.787\times10^{-9}\,\text{s}^{-1} \times 1.055\times10^{-34}\,\text{JÔøΩs}}{8.988\times10^{16}\,\text{m}^2/\text{s}^2} = 3.81\times10^{-24}\,\text{eV}/c^2$$
 
 $$M_{ACP2} = M_{KK} \times [SSq]^2 = 1.16\times10^{4}\,\text{GeV} \times 0.325 = 3.77\times10^{0}\,\text{TeV}$$
 
-M_ACP2 = M_KK ◊ [SSq]≤ = 11,600 GeV ◊ 0.325 = 3,770 GeV = 3.77 TeV
+M_ACP2 = M_KK ÔøΩ [SSq]ÔøΩ = 11,600 GeV ‚âà 0.325 = 3,770 GeV = 3.77 TeV
 
 Above LHC direct production threshold. Accessible at FCC-hh (100 TeV).
 
@@ -63,16 +63,16 @@ Above LHC direct production threshold. Accessible at FCC-hh (100 TeV).
 
 ## 3. ACP Fuzzy Dark Matter
 
-Density profile: ?(r) = ?_0 ◊ sech≤(r / r_core)
+Density profile: ?(r) = ?_0 ÔøΩ sechÔøΩ(r / r_core)
 
-Core radius: r_core = 258 pc (consistent with observed dwarf galaxy cores 100ñ500 pc)
+Core radius: r_core = 258 pc (consistent with observed dwarf galaxy cores 100ÔøΩ500 pc)
 Soliton mass: M_soliton ~ 108 M_sun
 
 ACP detection channels:
 - Pulsar timing gravitational effects (Paper #19)
 - Galaxy morphology core-cusp resolution
 - CMB small-scale power suppression k > 10 h/Mpc
-NOT via nuclear recoil ó coherent field, no particle-like scattering
+NOT via nuclear recoil ÔøΩ coherent field, no particle-like scattering
 
 ---
 
@@ -80,7 +80,7 @@ NOT via nuclear recoil ó coherent field, no particle-like scattering
 
 ### 4.1 KK Graviton Portal Cross Section
 
-s_SI = [SSq]^4 ◊ G_N≤ ◊ M_ACP2≤ ◊ m_N≤ / (p ◊ v4)
+s_SI = [SSq]^4 ÔøΩ G_NÔøΩ ÔøΩ M_ACP2ÔøΩ ÔøΩ m_NÔøΩ / (p ÔøΩ v4)
 
 - [SSq]^4 = 0.57^4 = 0.1056
 - G_N = 6.674e-39 GeV^-2
@@ -88,29 +88,29 @@ s_SI = [SSq]^4 ◊ G_N≤ ◊ M_ACP2≤ ◊ m_N≤ / (p ◊ v4)
 - m_N = 0.939 GeV
 - v = 7.33e-4 c (220 km/s)
 
-Result: s_SI = 3.2 ◊ 10?5≤ cm≤
+Result: s_SI = 3.2 √ó 10?5ÔøΩ cmÔøΩ
 
 ### 4.2 Comparison with Experimental Limits
 
-| M_DM (GeV) | LZ Limit (cm≤) | UQFF s (cm≤) | Below by |
+| M_DM (GeV) | LZ Limit (cmÔøΩ) | UQFF s (cmÔøΩ) | Below by |
 |------------|----------------|--------------|----------|
-| 1,000 | 3.5e-48 | 3.2e-52 | 104◊ |
-| 3,770 | 8.2e-48 | 3.2e-52 | 104◊ |
-| 10,000 | 2.1e-47 | 3.2e-52 | 105◊ |
+| 1,000 | 3.5e-48 | 3.2e-52 | 104ÔøΩ |
+| 3,770 | 8.2e-48 | 3.2e-52 | 104ÔøΩ |
+| 10,000 | 2.1e-47 | 3.2e-52 | 105ÔøΩ |
 
-ACP2 is 10,000◊ below current LZ and 10,000◊ below neutrino floor. All null results explained. ?
+ACP2 is 10,000ÔøΩ below current LZ and 10,000ÔøΩ below neutrino floor. All null results explained. ?
 
 ---
 
 ## 5. DM Self-Interaction
 
-s_self / M = [SSq] = 0.57 cm≤/g
+s_self / M = [SSq] = 0.57 cmÔøΩ/g
 
-| Observation | Constraint (cm≤/g) | UQFF | Consistent? |
+| Observation | Constraint (cmÔøΩ/g) | UQFF | Consistent? |
 |-------------|-------------------|------|-------------|
 | Bullet Cluster | < 1.25 | 0.57 | Yes ? |
 | Galaxy clusters | < 0.47 | 0.57 | Marginal |
-| Dwarf galaxies | 0.1ñ10 | 0.57 | Yes ? |
+| Dwarf galaxies | 0.1√ó10 | 0.57 | Yes ? |
 | Strong lensing | < 1.0 | 0.57 | Yes ? |
 
 ---
@@ -123,14 +123,14 @@ ACP2 produced by gravitational production during inflation (not thermal freeze-o
 |-----------|------|---------|
 | ACP (ultra-light) | 3.81e-24 eV | 98.8% |
 | ACP2 (heavy) | 3.77 TeV | 1.2% |
-| Total O_DM h≤ | ó | **0.1200** ? |
+| Total O_DM hÔøΩ | ‚Äì | **0.1200** ? |
 
-Matches Planck 2020: O_DM h≤ = 0.1200 ± 0.0012.
+Matches Planck 2020: O_DM hÔøΩ = 0.1200 √ó 0.0012.
 
 ACP relic abundance from gravitational production during reheating:
-**O_ACP h≤ ò (1/?_crit) ◊ (m_ACP ◊ T_RH≥) / H_inf**
+**O_ACP hÔøΩ ÔøΩ (1/?_crit) ÔøΩ (m_ACP ‚Äì T_RHÔøΩ) / H_inf**
 
-With T_RH = 10? GeV (typical inflation model), the ratio ?/H_inf naturally yields O_ACP h≤ ~ 0.128 ◊ [SSq] = 0.073 (ACP) plus 0.047 (ACP2) = 0.120 total. No fine-tuning required.
+With T_RH = 10? GeV (typical inflation model), the ratio ?/H_inf naturally yields O_ACP hÔøΩ ~ 0.128 ÔøΩ [SSq] = 0.073 (ACP) plus 0.047 (ACP2) = 0.120 total. No fine-tuning required.
 
 ---
 
@@ -138,24 +138,24 @@ With T_RH = 10? GeV (typical inflation model), the ratio ?/H_inf naturally yield
 
 | Observable | UQFF Prediction | Test |
 |-----------|----------------|------|
-| Direct detection (LZ) | s_SI = 3.2e-52 cm≤ | Null result ? confirmed |
+| Direct detection (LZ) | s_SI = 3.2e-52 cmÔøΩ | Null result ? confirmed |
 | Galactic halo core | r_core = 258 pc | Dwarf galaxy morphology |
 | Small-scale suppression | k > 10 h/Mpc | CMB lensing power spectrum |
 | FCC-hh collider | ACP2 at 3.77 TeV | Production threshold scan |
-| DM self-interaction | s/M = 0.57 cm≤/g | Cluster mergers (Bullet-like) |
+| DM self-interaction | s/M = 0.57 cmÔøΩ/g | Cluster mergers (Bullet-like) |
 | Pulsar timing | ACP oscillations | Period-dependent residuals (Paper #19) |
 
 ---
 
 ## 8. Conclusion
 
-UQFF predicts two dark matter candidates entirely fixed by the calibration constants ? = 0.0005/day and [SSq] = 0.57: (1) Ultra-light ACP (3.81e-24 eV) constituting 98.8% of DM as fuzzy dark matter with ?_dB = 2.3 kpc de Broglie wavelength ó solving the core-cusp problem and small-scale structure anomalies; (2) Heavy ACP2 (3.77 TeV) with KK-graviton-mediated SI cross section s = 3.2e-52 cm≤ ó 10,000◊ below current LZ sensitivity, naturally explaining all null direct detection results without fine-tuning. The total relic density O_DM h≤ = 0.1200 matches Planck 2020 exactly. Both candidates are testable: ACP via dwarf galaxy morphology and CMB small-scale power; ACP2 via FCC-hh production and future direct detection experiments below the neutrino floor.
+UQFF predicts two dark matter candidates entirely fixed by the calibration constants ? = 0.0005/day and [SSq] = 0.57: (1) Ultra-light ACP (3.81e-24 eV) constituting 98.8% of DM as fuzzy dark matter with ?_dB = 2.3 kpc de Broglie wavelength ÔøΩ solving the core-cusp problem and small-scale structure anomalies; (2) Heavy ACP2 (3.77 TeV) with KK-graviton-mediated SI cross section s = 3.2e-52 cmÔøΩ ÔøΩ 10,000ÔøΩ below current LZ sensitivity, naturally explaining all null direct detection results without fine-tuning. The total relic density O_DM hÔøΩ = 0.1200 matches Planck 2020 exactly. Both candidates are testable: ACP via dwarf galaxy morphology and CMB small-scale power; ACP2 via FCC-hh production and future direct detection experiments below the neutrino floor.
 
 **Validator:** `validate_dm_direct_uqff.py`
 | ACP2 (heavy) | 3.77 TeV | 1.2% |
-| Total O_DM h≤ | ó | 0.1200 ? |
+| Total O_DM hÔøΩ | ‚Äì | 0.1200 ? |
 
-Matches Planck 2020: O_DM h≤ = 0.1200 ± 0.0012
+Matches Planck 2020: O_DM hÔøΩ = 0.1200 √ó 0.0012
 
 ---
 
@@ -165,10 +165,10 @@ Matches Planck 2020: O_DM h≤ = 0.1200 ± 0.0012
 |------------|-----------------|----------|----------|
 | Fuzzy DM core | r_core = 258 pc | Gaia DR4 | 2030 |
 | Soliton mass | ~108 M_sun | SKA | 2030 |
-| Self-interaction | s/M = 0.57 cm≤/g | Euclid | 2030 |
+| Self-interaction | s/M = 0.57 cmÔøΩ/g | Euclid | 2030 |
 | Subhalo suppression | k_cut = 1/?_dB | 21-cm surveys | 2030 |
 | ACP2 production | M = 3.77 TeV | FCC-hh | 2050 |
-| Direct detection | s = 3.2e-52 cm≤ | Quantum sensing | 2040+ |
+| Direct detection | s = 3.2e-52 cmÔøΩ | Quantum sensing | 2040+ |
 
 ---
 
@@ -176,10 +176,10 @@ Matches Planck 2020: O_DM h≤ = 0.1200 ± 0.0012
 
 | Property | WIMP | UQFF DM |
 |---------|------|---------|
-| Mass | 10ñ1000 GeV | 3.81e-24 eV + 3.77 TeV |
+| Mass | 10√ó1000 GeV | 3.81e-24 eV + 3.77 TeV |
 | Interaction | Weak force | KK graviton |
-| Direct detection | Expected | 104◊ below floor |
-| Self-interaction | Negligible | 0.57 cm≤/g |
+| Direct detection | Expected | 104ÔøΩ below floor |
+| Self-interaction | Negligible | 0.57 cmÔøΩ/g |
 | Small-scale structure | Overproduces | Suppressed by fuzzy DM |
 
 ---
@@ -189,11 +189,11 @@ Matches Planck 2020: O_DM h≤ = 0.1200 ± 0.0012
 UQFF predicts two DM candidates from ? = 0.0005/day and [SSq] = 0.57:
 
 1. Ultra-light ACP: M = 3.81e-24 eV, ?_dB = 2.3 kpc, 98.8% of DM ?
-2. Heavy ACP2: M = 3.77 TeV, s_SI = 3.2e-52 cm≤, 1.2% of DM ?
+2. Heavy ACP2: M = 3.77 TeV, s_SI = 3.2e-52 cmÔøΩ, 1.2% of DM ?
 
-- Null direct detection explained: 104◊ below LZ/XENONnT/PandaX ?
-- Correct relic density O_DM h≤ = 0.1200 ?
-- Self-interaction s/M = 0.57 cm≤/g consistent with Bullet Cluster ?
+- Null direct detection explained: 104ÔøΩ below LZ/XENONnT/PandaX ?
+- Correct relic density O_DM hÔøΩ = 0.1200 ?
+- Self-interaction s/M = 0.57 cmÔøΩ/g consistent with Bullet Cluster ?
 - Fuzzy DM core r_core = 258 pc resolves core-cusp problem ?
 - Zero free parameters ?
 
@@ -237,7 +237,7 @@ UQFF predicts two DM candidates from ? = 0.0005/day and [SSq] = 0.57:
 
 ### A.2 F_U Master Equation (Complete ‚Äî 4 terms)
 
-$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}igl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}igr]$$
+$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}\bigr]$$
 
 | Term | Description | Implementation |
 |------|-------------|----------------|
@@ -254,7 +254,7 @@ $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}igl[\l
 
 ### A.3 Um Heaviside Phase-Transition Amplifier (PAPER_421)
 
-$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} 	imes igl(1 + 10^{13}\,\Theta(ho_{SCm} - ho_c)igr) 	imes igl(1 + A_q\cos(\Delta\omega\,t)igr)$$
+$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rho_{SCm} - \rho_c)\bigr) \times \bigl(1 + A_q\cos(\Delta\omega\,t)\bigr)$$
 
 | Symbol | Value | Description |
 |--------|-------|-------------|

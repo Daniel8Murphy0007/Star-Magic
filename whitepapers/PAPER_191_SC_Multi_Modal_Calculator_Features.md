@@ -1,4 +1,4 @@
-﻿# PAPER_191: S-C Multi-Modal Calculator Features — VR/AR, Voice, Blockchain, IoT, Haptics, ML Autocomplete
+# PAPER_191: S-C Multi-Modal Calculator Features — VR/AR, Voice, Blockchain, IoT, Haptics, ML Autocomplete
 
 **Version:** 1.0  
 **Date:** March 13, 2026  
@@ -20,7 +20,7 @@ This paper catalogs the eight multi-modal feature systems of the S-C Scientific 
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 

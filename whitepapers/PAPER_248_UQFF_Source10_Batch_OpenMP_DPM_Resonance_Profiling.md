@@ -1,4 +1,4 @@
-﻿# PAPER_248: UQFF Source10 Batch OpenMP Profiling — DPM Resonance Calibration and Parallel Architecture
+# PAPER_248: UQFF Source10 Batch OpenMP Profiling — DPM Resonance Calibration and Parallel Architecture
 
 **Author:** Daniel T. Murphy (daniel.murphy00@gmail.com)
 **Framework:** UQFF v4.27 — Star-Magic Physics
@@ -18,13 +18,13 @@ $$
 
 UQFF Source10 represents the third-generation implementation of the core F_U_Bi_i integral calculator, incorporating three major engineering upgrades over the baseline Source10 module: (1) reproducible stochastic sampling via the Mersenne Twister (mt19937) random number generator, (2) a configurable `scaling_factors` map enabling per-system parameter overrides at runtime, and (3) a `batch_compute_F_U_Bi_i()` function with OpenMP parallelisation across system ensembles, instrumented with `chrono::high_resolution_clock` profiling.
 
-The central physics result is the 26-layer UQFF gravity sum `g_UQFF = S??1²6(Ug1? + Ug2? + Ug3? + Ug4?) + ?c²/3 + g_Q`, with the DPM resonance term calibrated to the Eta Carinae system: `DPM_resonance = g_H · µ_B · B0 / (h · ?0) × 2.82×10?56`. This empirical calibration constant (adj_factor = 2.82×10?56) was derived by matching the UQFF integral output to the observed Eta Carinae X-ray luminosity and outflow velocity, establishing it as a benchmark anchor for all DPM resonance calculations in the framework.
+The central physics result is the 26-layer UQFF gravity sum `g_UQFF = S??1²6(Ug1? + Ug2? + Ug3? + Ug4?) + ?c²/3 + g_Q`, with the DPM resonance term calibrated to the Eta Carinae system: `DPM_resonance = g_H · µ_B · B0 / (h · ?0) × 2.82×10⁻56`. This empirical calibration constant (adj_factor = 2.82×10⁻56) was derived by matching the UQFF integral output to the observed Eta Carinae X-ray luminosity and outflow velocity, establishing it as a benchmark anchor for all DPM resonance calculations in the framework.
 
 The F_U_Bi_i integrand combines LENR, dark energy, neutron, relativistic, activation, and vacuum-field forces in a single quadrature, producing the buoyancy force integral that distinguishes UQFF from purely Newtonian or GR-based frameworks.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -32,10 +32,10 @@ The F_U_Bi_i integrand combines LENR, dark energy, neutron, relativistic, activa
 
 | Parameter | Symbol | Value | Units | Meaning |
 |-----------|--------|-------|-------|---------|
-| Eta Carinae calibration | adj_factor | 2.82 × 10?56 | dimensionless | DPM resonance anchor |
+| Eta Carinae calibration | adj_factor | 2.82 × 10⁻56 | dimensionless | DPM resonance anchor |
 | Grok hydrogen scale | g_H | 1.252 × 1046 | dimensionless | Hydrogen energy scale parameter |
 | Bohr magneton | µ_B | 9.274 × 10?²4 | J/T | Magnetic moment quantum |
-| Applied B field | B0 | 1 × 10?4 | T | Eta Carinae surface field |
+| Applied B field | B0 | 1 × 10⁻4 | T | Eta Carinae surface field |
 | Reduced Planck | h | 1.0546 × 10?³4 | J·s | Quantum of action |
 | Resonance frequency | ?0 | 1 × 10?¹² | rad/s | System characteristic frequency |
 
@@ -72,7 +72,7 @@ g_UQFF = S??1²6 (Ug1? + Ug2? + Ug3? + Ug4?) + ?c²/3 + g_Q
 
 The **DPM (Distributed Plasma/Phonon Magnon) resonance term** was originally formulated by Colman and Gillespie in the context of 300 Hz activation frequencies in condensed matter. In UQFF the resonance is elevated to astrophysical scales via the parameter ?0 — the characteristic frequency of the gravitating system.
 
-The Eta Carinae calibration establishes the empirical constant `adj_factor = 2.82×10?56`: this value was obtained by requiring the UQFF total F_U_Bi_i computation to reproduce the Eta Carinae X-ray luminosity within observational uncertainties (L_X ˜ 10³5 W, Chandra 2023). All other UQFF systems then use this same adj_factor, making Eta Carinae the **DPM anchor** of the entire framework.
+The Eta Carinae calibration establishes the empirical constant `adj_factor = 2.82×10⁻56`: this value was obtained by requiring the UQFF total F_U_Bi_i computation to reproduce the Eta Carinae X-ray luminosity within observational uncertainties (L_X ˜ 10³5 W, Chandra 2023). All other UQFF systems then use this same adj_factor, making Eta Carinae the **DPM anchor** of the entire framework.
 
 At ?0 = 10?¹² rad/s: `DPM_resonance ˜ 1.76 × 105` (PAPER_251 value). At ?0 = 10?¹5 rad/s (Sgr A*): `DPM_resonance ˜ 1.76 × 108`. The resonance scales inversely with ?0 — lower frequency systems exhibit dramatically higher DPM coupling.
 
@@ -127,7 +127,7 @@ For batch computation across N systems × 26 layers × 4 sub-terms: total operat
 
 ## 4. Observational Predictions / Validation
 
-- **DPM calibration robustness:** adj_factor = 2.82×10?56 was derived from Eta Carinae (L_X = 10³5 W). PAPER_251's DPM invisibility discovery (B0 = 10?4 T yields same F_U_Bi as B0 = 10?5 T) validates that the calibration is insensitive to magnetic field: the adj_factor is a fundamental coupling constant, not a field-dependent fit.
+- **DPM calibration robustness:** adj_factor = 2.82×10⁻56 was derived from Eta Carinae (L_X = 10³5 W). PAPER_251's DPM invisibility discovery (B0 = 10⁻4 T yields same F_U_Bi as B0 = 10⁻5 T) validates that the calibration is insensitive to magnetic field: the adj_factor is a fundamental coupling constant, not a field-dependent fit.
 - **OpenMP scaling benchmark:** Linear speedup up to 8 threads confirmed for N = 100–1000 systems; super-linear speedup for N < 50 due to cache effects.
 - **mt19937 reproducibility:** Identical random seeds produce identical integration paths — essential for bit-reproducible UQFF ensemble results across different runs and machines.
 

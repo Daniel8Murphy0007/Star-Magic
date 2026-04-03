@@ -1,4 +1,4 @@
-﻿# PAPER_312: NGC 6302 Central Star UV Radiation Pressure — UQFF Photoionization Gravitational Signature
+# PAPER_312: NGC 6302 Central Star UV Radiation Pressure — UQFF Photoionization Gravitational Signature
 
 **Subtitle:** FIRST UQFF Hot-WD UV Radiation Parameter — η_rad = 1.913×10²⁰; a_rad = 5.672×10⁸ m/s²
 

@@ -1,4 +1,4 @@
-﻿# PAPER_246: MUGE Dual-Mode Oscillatory Gravity — Standing Wave and Hubble-Normalised Traveling Wave
+# PAPER_246: MUGE Dual-Mode Oscillatory Gravity — Standing Wave and Hubble-Normalised Traveling Wave
 
 **Author:** Daniel T. Murphy (daniel.murphy00@gmail.com)
 **Framework:** UQFF v4.27 — Star-Magic Physics
@@ -24,7 +24,7 @@ The key resonance condition — `?_local = 2p/t_Hubble` — places the system at
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 

@@ -1,4 +1,4 @@
-﻿# PAPER_241: UQFF Validation Cross-Reference Report â€” 92.53% ArXiv Alignment, 93.3% Experimental Pass Rate
+# PAPER_241: UQFF Validation Cross-Reference Report â€” 92.53% ArXiv Alignment, 93.3% Experimental Pass Rate
 
 **Author:** Daniel T. Murphy
 **Framework:** UQFF v4.9 (Star-Magic)

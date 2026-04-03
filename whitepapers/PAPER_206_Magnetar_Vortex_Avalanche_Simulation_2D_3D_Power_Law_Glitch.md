@@ -1,4 +1,4 @@
-﻿# PAPER_206: Magnetar Vortex Avalanche Simulation — 2D/3D Power-Law and Glitch Dynamics
+# PAPER_206: Magnetar Vortex Avalanche Simulation — 2D/3D Power-Law and Glitch Dynamics
 
 **Version:** 1.0  
 **Date:** March 13, 2026  
@@ -13,7 +13,7 @@ $$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b_i}, \quad \kappa = 5.0\tim
 $$
 L_\text{UQFF} = \frac{4\pi G M c}{\kappa_\text{es}}\Bigl(1 - [SSq]\cdot e^{-\kappa\,\Delta t}\Bigr), \quad [SSq] = 0.57
 $$
-<!-- ? = 5.0e-4 day?¹, [SSq] = 0.57, ß_i = 6.1e-1 -->
+<!-- ? = 5.0e-4 day⁻¹, [SSq] = 0.57, ß_i = 6.1e-1 -->
 
 ## Abstract
 
@@ -21,7 +21,7 @@ Magnetar glitches arise from sudden collective unpinning of superfluid vortices 
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -40,7 +40,7 @@ Vortex pinning: vortices pinned to nuclear lattice until
   v_L = differential velocity (crustal lag vs superfluid)
 
 Glitch: sudden unpinning ? angular momentum transfer
-  ?O/O ˜ 10?6 to 10?? (observed range)
+  ?O/O ˜ 10⁻6 to 10?? (observed range)
   Rise time < 1 hour (SGR 1833-0832, Crab pulsar)
   Decay: exponential relaxation t_q ˜ days–weeks
 ```
@@ -115,8 +115,8 @@ Physical SOC condition:
   Stress accumulation rate ˜ unpinning release rate (in steady state)
 
 Comparison to observations:
-  Vela pulsar: 17 glitches, ??O/O? ˜ 2×10?6, large infrequent events
-  Crab pulsar: frequent small glitches, ?O/O ˜ 10?8
+  Vela pulsar: 17 glitches, ??O/O? ˜ 2×10⁻6, large infrequent events
+  Crab pulsar: frequent small glitches, ?O/O ˜ 10⁻8
   2D simulation a=1.6 consistent with Vela-type (large-event dominated)
   SOC: a < 2 ? mean dominated by largest events ?
 
@@ -163,7 +163,7 @@ From PAPER_196 (resonance UQFF):
 Predictions:
   Anti-glitch periods: when R(t) < 0 for all layers simultaneously
   Requires 26-way phase alignment: P_anti = probability all cos < 0
-  ? P_anti ˜ (1/2)^{26} ˜ 10?8 per glitch cycle (rare but non-zero)
+  ? P_anti ˜ (1/2)^{26} ˜ 10⁻8 per glitch cycle (rare but non-zero)
 ```
 
 ---

@@ -1,4 +1,4 @@
-﻿# PAPER_196: Triadic Master Equation System — Compressed, Resonance, and Buoyancy UQFF
+# PAPER_196: Triadic Master Equation System — Compressed, Resonance, and Buoyancy UQFF
 
 **Version:** 1.0  
 **Date:** March 13, 2026  
@@ -13,15 +13,15 @@ $$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b_i}, \quad \kappa = 5.0\tim
 $$
 g_\text{UQFF}(r) = g_\text{MUGE}(r)\cdot\Bigl(1 - [SSq]\cdot U_{b_i}\,/\,F_U(r,t)\Bigr), \quad [SSq] = 0.57
 $$
-<!-- ? = 5.0e-4 day?¹, [SSq] = 0.57, ß_i = 6.1e-1 -->
+<!-- ? = 5.0e-4 day⁻¹, [SSq] = 0.57, ß_i = 6.1e-1 -->
 
 ## Abstract
 
-This paper formalizes the Triadic Master Equation System: three simultaneous UQFF equations that together fully characterize any astrophysical system across compressed gravitational, resonance, and buoyancy dimensions. Derived from the Sept 22, 2025 PDF analyses and applied to Westerlund 2 and Pillars of Creation, the triadic form achieves 90.97% unification of 47-system variants. Explicit numerical solutions are provided: FU_g1 ˜ 2.43×10?4° N, R(t) ˜ -2.29×10?4¹ N, FU_Bi ˜ 6.14×10?³² N for Westerlund 2.
+This paper formalizes the Triadic Master Equation System: three simultaneous UQFF equations that together fully characterize any astrophysical system across compressed gravitational, resonance, and buoyancy dimensions. Derived from the Sept 22, 2025 PDF analyses and applied to Westerlund 2 and Pillars of Creation, the triadic form achieves 90.97% unification of 47-system variants. Explicit numerical solutions are provided: FU_g1 ˜ 2.43×10⁻4° N, R(t) ˜ -2.29×10⁻4¹ N, FU_Bi ˜ 6.14×10?³² N for Westerlund 2.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -56,8 +56,8 @@ where:
   [SSq] = log(?_vac,[SCm]/?_vac,[UA']) · n · e^{-(p-t_n)}
 ```
 
-**Westerlund 2 solution:** FU_g1 ˜ 2.43×10?4° N (drives stellar collapse)  
-**Pillars of Creation solution:** FU_g1 ˜ 3.95×10?4¹ N
+**Westerlund 2 solution:** FU_g1 ˜ 2.43×10⁻4° N (drives stellar collapse)  
+**Pillars of Creation solution:** FU_g1 ˜ 3.95×10⁻4¹ N
 
 ---
 
@@ -76,8 +76,8 @@ where:
   ?_{Ug2,i} = 2p/(T_wind/i) · (1 + [SSq])
 ```
 
-**Westerlund 2 solution:** R(t) ˜ -2.29×10?4¹ N  
-**Pillars of Creation solution:** R(t) ˜ -1.12×10?4² N
+**Westerlund 2 solution:** R(t) ˜ -2.29×10⁻4¹ N  
+**Pillars of Creation solution:** R(t) ˜ -1.12×10⁻4² N
 
 Negative R(t) terms (cos(?t) < 0) predict anti-glitches via buoyancy countering.
 
@@ -109,7 +109,7 @@ Um = S_j [µ_j(t, ?_vac,[SCm]) / r_j · (1 - e^{-?t} · cos(pt_n)) · ?^j]
      · P_SCm · E_react
      · (1 + 10^{13} · f_Heaviside) · (1 + f_quasi) · e^{-[SSq]}
 ```
-**Numerical value:** Um ˜ 3.78×10?6 J/m³
+**Numerical value:** Um ˜ 3.78×10⁻6 J/m³
 
 ### 5.2 Pseudo-Monopole States
 ```

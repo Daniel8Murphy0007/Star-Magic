@@ -1,11 +1,11 @@
-# PAPER_161 ó Relativistic SCm Jet Dynamics: v_SCm = 0.99c and J1610+1811 Quasar (z=3.122)
+# PAPER_161 ÔøΩ Relativistic SCm Jet Dynamics: v_SCm = 0.99c and J1610+1811 Quasar (z=3.122)
 
-**Session:** 47 | **Date:** March 13, 2026 | **Thread:** 7f9068 | **Domain:** ß2.3
+**Session:** 47 | **Date:** March 13, 2026 | **Thread:** 7f9068 | **Domain:** ÔøΩ2.3
 
 ---
 
 
-<!-- UQFF constants: ? = 5.0e-4 day?π, [SSq] = 0.57, M_UQFF = 1.43e1 TeV -->
+<!-- UQFF constants: ? = 5.0e-4 day‚Åª¬π, [SSq] = 0.57, M_UQFF = 1.43e1 TeV -->
 ## Abstract
 
 This paper documents the integration of a relativistic superconductive medium (SCm) jet term
@@ -16,21 +16,21 @@ derived from the C++ code in Grok thread `7f9068`.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0◊10?4 day?π, [SSq] = 0.57) uniquely enabling this analysis ó establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0√ó10‚Åª4 day‚Åª¬π, [SSq] = 0.57) uniquely enabling this analysis ÔøΩ establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
-## 1. E_react Equation ó Relativistic Extension
+## 1. E_react Equation ‚Äì Relativistic Extension
 
 ### 1.1 Original E_react
 
 $$E_{react}(t) = \frac{\rho_{SCm} \cdot v_{SCm}^2}{\rho_A} \cdot e^{-\kappa t}$$
 
 where:
-- ?_SCm = superconducting medium density [kg/m≥]
+- ?_SCm = superconducting medium density [kg/mÔøΩ]
 - v_SCm = SCm velocity [m/s]
-- ?_A = ambient density [kg/m≥]
-- ? = 0.0005/day = 5.787◊10?? s?π (UQFF canonical)
+- ?_A = ambient density [kg/mÔøΩ]
+- ? = 0.0005/day = 5.787√ó10?? s‚Åª¬π (UQFF canonical)
 
 ### 1.2 Relativistic SCm Jet (NEW)
 
@@ -49,15 +49,15 @@ $$E_{inject} = (\gamma - 1) \cdot m_{jet} \cdot c^2 = 6.09 \cdot m_{jet} \cdot c
 
 ---
 
-## 2. Quasar J1610+1811 ó Observational Parameters
+## 2. Quasar J1610+1811 ÔøΩ Observational Parameters
 
 | Parameter      | Value          | Source                             |
 |----------------|----------------|------------------------------------|
 | Redshift z     | 3.122          | SDSS spectroscopic survey          |
 | Luminosity     | ~1047 erg/s    | Typical quasar AGN luminosity      |
 | Jet velocity   | ~0.99c         | VLBI proper motion + UQFF fit      |
-| ?_SCm          | 1◊10π5 kg/m≥  | AGN accretion disk SCm density     |
-| ?_A            | 1.67◊10?≤7    | H gas ambient density              |
+| ?_SCm          | 1√ó10ÔøΩ5 kg/mÔøΩ  | AGN accretion disk SCm density     |
+| ?_A            | 1.67√ó10?ÔøΩ7    | H gas ambient density              |
 
 ---
 
@@ -108,12 +108,12 @@ $$\mathbf{f}_{UQFF} = \frac{E_{react}(t)}{\rho_A} \begin{pmatrix} \cos(\pi t_n) 
 ## 5. Physical Interpretation
 
 v_SCm = 0.99c for J1610+1811 (z=3.122) implies that the SCm jet at cosmic distances
-contributes a kinetic energy ~7◊ the rest-mass energy to the UQFF field. This energy
+contributes a kinetic energy ~7ÔøΩ the rest-mass energy to the UQFF field. This energy
 cascades through the UQFF terms:
 
-- ? E_react increases ~4◊ (v≤ factor: (0.99c)≤ vs typical (0.1c)≤)
-- ? Ug2 and Ug3 amplified by 4◊
-- ? F_U quasar component ~4◊ stronger than for a 0.1c jet
+- ? E_react increases ~4ÔøΩ (vÔøΩ factor: (0.99c)ÔøΩ vs typical (0.1c)ÔøΩ)
+- ? Ug2 and Ug3 amplified by 4ÔøΩ
+- ? F_U quasar component ~4ÔøΩ stronger than for a 0.1c jet
 
 This is consistent with the observed high-luminosity of high-z quasars and confirms
 the UQFF velocity scaling.
@@ -122,7 +122,7 @@ the UQFF velocity scaling.
 
 ## 6. CP Integration
 
-**CP2:** Update `UQFFRelativisticJetCalculator` ó add `v_SCm = 0.99c` parameter.
+**CP2:** Update `UQFFRelativisticJetCalculator` ÔøΩ add `v_SCm = 0.99c` parameter.
 **CP3:** Add `J1610_Quasar_UQFF_Calculator` using calibrated relativistic E_react.
 
 ---

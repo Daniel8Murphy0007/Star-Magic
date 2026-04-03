@@ -1,4 +1,5 @@
-﻿#  "PAPER_{0:D3}" -f [int]# PAPER #53 — NGC2264 Star Formation: UQFF Model Validation
+# PAPER_053: NGC 2264 Cone Nebula Star-Forming Region: 8-Test UQFF Validation of Compressed Gravity, Electromagnetic Dominance, and Star Formation Rate
+
 
 **Title:** NGC 2264 Cone Nebula Star-Forming Region: 8-Test UQFF Validation of Compressed Gravity, Electromagnetic Dominance, and Star Formation Rate
 
@@ -8,7 +9,6 @@
 **Validator:** `validate_all_models.py` — NGC2264Model: **8/8 PASS** ✓  
 **Source Module:** `CondensedPhysics.py` (NGC2264Model), `validate_all_models.py`  
 **Index Slot:** §1.7 arXiv Cross-Validation Framework,  
-    $n = [int]# PAPER #53 — NGC2264 Star Formation: UQFF Model Validation
 
 **Title:** NGC 2264 Cone Nebula Star-Forming Region: 8-Test UQFF Validation of Compressed Gravity, Electromagnetic Dominance, and Star Formation Rate
 
@@ -194,7 +194,7 @@ The NGC2264 system demonstrates the UQFF star-forming regime:
 
 ### A.2 F_U Master Equation (Complete — 4 terms)
 
-$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}igl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}igr]$$
+$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}\bigr]$$
 
 | Term | Description | Implementation |
 |------|-------------|----------------|
@@ -211,9 +211,7 @@ $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}igl[\l
 
 ### A.3 Um Heaviside Phase-Transition Amplifier (PAPER_421)
 
-$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} 	imes igl(1 + 10^{13}\,\Theta(
-ho_{SCm} - 
-ho_c)igr) 	imes igl(1 + A_q\cos(\Delta\omega\,t)igr)$$
+$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rho_{SCm} - \rho_c)\bigr) \times \bigl(1 + A_q\cos(\Delta\omega\,t)\bigr)$$
 
 | Symbol | Value | Description |
 |--------|-------|-------------|

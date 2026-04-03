@@ -1,4 +1,4 @@
-﻿# PAPER_273: Blueshift UQFF Gravitational Approach Amplifier — κ_approach = 1/(1+z) for Negative Redshift Systems
+# PAPER_273: Blueshift UQFF Gravitational Approach Amplifier — κ_approach = 1/(1+z) for Negative Redshift Systems
 
 **Authors:** Daniel T. Murphy  
 **Date:** March 2026  

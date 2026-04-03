@@ -1,3 +1,5 @@
+# PAPER_075: X-Ray Binary Field Analysis: Chandra Source Catalog vs UQFF Magnetic Buoyancy Predictions
+
 
 **Title:** X-Ray Binary Field Analysis: Chandra Source Catalog vs UQFF Magnetic Buoyancy Predictions
 
@@ -6,7 +8,6 @@
 **Date:** March 7, 2026  
 **Source Data:** QCalc_validation.py (DataSourceURLs: CHANDRA_DATA, CHANDRA_CATALOG, HEASARC_XRAY)  
 **Index Slot:** �1.10 Database Integration & Multi-Wavelength Astrophysics,  
-    $n = [int]# PAPER #75 � X-Ray Binaries: Chandra + UQFF Field Analysis
 
 **Title:** X-Ray Binary Field Analysis: Chandra Source Catalog vs UQFF Magnetic Buoyancy Predictions
 
@@ -19,14 +20,14 @@
 ---
 
 
-<!-- UQFF constants: ? = 5.0e-4 day?�, [SSq] = 0.57, M_UQFF = 1.43e1 TeV -->
+<!-- UQFF constants: ? = 5.0e-4 day⁻¹, [SSq] = 0.57, M_UQFF = 1.43e1 TeV -->
 ## Abstract
 
-X-ray binaries (XRBs) are systems where a compact object (neutron star or black hole) accretes from a companion star, producing luminous X-ray emission. The Chandra X-ray Observatory (CXC) Source Catalog (CSC2.0) contains ~300,000 X-ray sources with precise positions, fluxes, and spectral parameters. The UQFF predicts X-ray luminosity through the Superconductive mode: L_X = E_react � M_dot � ?_UQFF, where ?_UQFF is enhanced over standard accretion efficiency by the [SCm] vacuum coupling. This paper validates UQFF XRB predictions against Chandra CSC2 data and the HEASARC X-ray bright source catalog.
+X-ray binaries (XRBs) are systems where a compact object (neutron star or black hole) accretes from a companion star, producing luminous X-ray emission. The Chandra X-ray Observatory (CXC) Source Catalog (CSC2.0) contains ~300,000 X-ray sources with precise positions, fluxes, and spectral parameters. The UQFF predicts X-ray luminosity through the Superconductive mode: L_X = E_react – M_dot � ?_UQFF, where ?_UQFF is enhanced over standard accretion efficiency by the [SCm] vacuum coupling. This paper validates UQFF XRB predictions against Chandra CSC2 data and the HEASARC X-ray bright source catalog.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0�10?4 day?�, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -56,7 +57,7 @@ $$\eta_{\rm Eddington} = 0.1 \times \frac{L_X}{L_{\rm Edd}}$$
 ### UQFF-Enhanced Efficiency
 $$\eta_{\rm UQFF} = \eta_{\rm Edd} \times (1 + [SCm]) = \eta_{\rm Edd} \times 1.99$$
 
-Where [SCm] � 0.99 (superconductive vacuum coupling, Batch 23).
+Where [SCm] ≈ 0.99 (superconductive vacuum coupling, Batch 23).
 
 This UQFF enhancement predicts X-ray luminosities ~2� higher than the Eddington limit in strongly magnetized systems � consistent with **ultra-luminous X-ray sources (ULX)** observed by Chandra.
 
@@ -66,11 +67,11 @@ This UQFF enhancement predicts X-ray luminosities ~2� higher than the Eddingto
 
 | Source | Type | d (kpc) | L_X_obs (L?) | L_X_Edd (L?) | L_X_UQFF (L?) | L_obs/L_UQFF |
 |--------|------|---------|--------------|---------------|----------------|--------------|
-| Cygnus X-1 | BH-HMXB | 1.86 | 2.5�10�7 | 2.0�10�8 | 2.8�10�7 | 0.89 |
-| Her X-1 | NS-LMXB | 6.6 | 1.0�10�7 | 1.3�10�8 | 1.3�10�7 | 0.77 |
-| Sco X-1 | NS-LMXB | 2.8 | 2.3�10�8 | 1.8�10�8 | 2.0�10�8 | 1.15 |
-| GRS 1915+105 | BH | 8.6 | 6.0�10�8 | 7.4�10�8 | 7.5�10�8 | 0.80 |
-| X-1 ULX (NGC 5907) | NS-ULX | 17,000 | 1.0�104� | 2.0�10�? | 4.0�10�? | 25� |
+| Cygnus X-1 | BH-HMXB | 1.86 | 2.5×10�7 | 2.0×10�8 | 2.8×10�7 | 0.89 |
+| Her X-1 | NS-LMXB | 6.6 | 1.0×10�7 | 1.3×10�8 | 1.3×10�7 | 0.77 |
+| Sco X-1 | NS-LMXB | 2.8 | 2.3×10�8 | 1.8×10�8 | 2.0×10�8 | 1.15 |
+| GRS 1915+105 | BH | 8.6 | 6.0×10�8 | 7.4×10�8 | 7.5×10�8 | 0.80 |
+| X-1 ULX (NGC 5907) | NS-ULX | 17,000 | 1.0×104� | 2.0×10�? | 4.0×10�? | 25� |
 
 The NGC 5907 X-1 ULX line shows that even the UQFF 2� enhancement cannot fully explain super-Eddington ULX emission � these systems require additional geometric beaming or magnetic field confinement beyond the basic UQFF Superconductive mode.
 
@@ -98,7 +99,7 @@ $$\Delta HR_{\rm UQFF} = [UA] \times \frac{n_{\rm vac}}{n_{\rm ISM}} \times HR_{
 |-------------|--------------------|-----------------|--------------------|
 | Accretion efficiency | 10% | ~20% ([SCm]�Edd) | Compatible with ULX |
 | Hardness ratio | Standard | +[UA] correction (negligible) | Unmodified |
-| ULX luminosity | 1�10� Edd | 2� Edd + beaming | Requires beaming |
+| ULX luminosity | 1×10� Edd | 2� Edd + beaming | Requires beaming |
 | Typical XRB L_X | Eddington | �15�25% | < 2s agreement |
 
 *Source: QCalc_validation.py CHANDRA_DATA + HEASARC_XRAY endpoints | ? = 0.0005/day | [SSq] = 0.57*
@@ -127,7 +128,7 @@ $$\Delta HR_{\rm UQFF} = [UA] \times \frac{n_{\rm vac}}{n_{\rm ISM}} \times HR_{
 
 ### A.2 F_U Master Equation (Complete — 4 terms)
 
-$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}igl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}igr]$$
+$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}\bigr]$$
 
 | Term | Description | Implementation |
 |------|-------------|----------------|
@@ -144,9 +145,7 @@ $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}igl[\l
 
 ### A.3 Um Heaviside Phase-Transition Amplifier (PAPER_421)
 
-$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} 	imes igl(1 + 10^{13}\,\Theta(
-ho_{SCm} - 
-ho_c)igr) 	imes igl(1 + A_q\cos(\Delta\omega\,t)igr)$$
+$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rho_{SCm} - \rho_c)\bigr) \times \bigl(1 + A_q\cos(\Delta\omega\,t)\bigr)$$
 
 | Symbol | Value | Description |
 |--------|-------|-------------|

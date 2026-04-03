@@ -1,4 +1,4 @@
-﻿# PAPER_219: M16 Eagle Nebula UQFF — Star Formation Rate Enhancement and Radiation Subtraction
+# PAPER_219: M16 Eagle Nebula UQFF — Star Formation Rate Enhancement and Radiation Subtraction
 
 **Author:** Daniel T. Murphy (daniel.murphy00@gmail.com)  
 **Framework:** UQFF v4.3 — Star-Magic Physics  
@@ -92,10 +92,10 @@ g_M16 = g_base · (1+M_sf) - E_rad
 
 g_base = G·M/r² · (1+H(z)·t) · (1-B/B_crit)
        ˜ 6.67e-11 · 2.19e33 / (5.4e16)² · 1.000072 · 0.9999977
-       ˜ 5.00×10?5° m/s²
+       ˜ 5.00×10⁻5° m/s²
 
-g_M16 = 5.00×10?5° · 1.08 - 2.71×10?²²
-      ˜ 5.40×10?5° - 2.71×10?²² m/s²
+g_M16 = 5.00×10⁻5° · 1.08 - 2.71×10?²²
+      ˜ 5.40×10⁻5° - 2.71×10?²² m/s²
 ```
 
 **Note:** At the pillar tip scale (r ˜ 5.4×10¹6 m), E_rad >> g_base by ~28 orders of magnitude. This means radiation pressure UTTERLY DOMINATES the gravitational term at the pillar tip scale — consistent with photoevaporation of the EGGs (Evaporating Gaseous Globules) observed by the Hubble Space Telescope.
@@ -124,7 +124,7 @@ r_photev = v(L_UV · r² / (4p·c·(G·M/r²))) ...
          ? E_rad = G·M/r² when r² ˜ L_UV/(4p·c·G·M/r)
 ```
 
-For M16: r_photev ˜ any r > 10?5 m (radiation always dominates at nebular scales). This is ALREADY implied in the UQFF framework: the `-E_rad` term drives net negative gravity throughout M16, except in the dense pillar cores where self-gravity (`(M_vis+M_DM)·(d?/? + 3GM/r³)`) provides resistance.
+For M16: r_photev ˜ any r > 10⁻5 m (radiation always dominates at nebular scales). This is ALREADY implied in the UQFF framework: the `-E_rad` term drives net negative gravity throughout M16, except in the dense pillar cores where self-gravity (`(M_vis+M_DM)·(d?/? + 3GM/r³)`) provides resistance.
 
 ---
 

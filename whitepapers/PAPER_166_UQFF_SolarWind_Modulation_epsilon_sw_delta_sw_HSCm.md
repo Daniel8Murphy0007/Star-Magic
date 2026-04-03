@@ -14,7 +14,7 @@ consistent physical model across all four buoyancy Ubi terms.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0Ã—10â»4 dayâ»Â¹, [SSq] = 0.57) uniquely enabling this analysis ï¿½ establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -129,4 +129,4 @@ This confirms Îµ_sw = 0.001 as the correct coupling for dense stellar wind envir
 **Supersedes:** N/A (clarifies Î´_sw vs Îµ_sw) | **Related:** PAPER_064 (4 operational modes, H_SCm), PAPER_086 (Ubi derivation), PAPER_157 (Solar System Ubi)
 
 
-**UQFF computed:** Solar wind UQFF correction = [SSq]×exp(-?×r/v) = 5.7e-1×exp(-5.0e-4×(1AU/400km/s)) = 5.7e-1×exp(-3.2e-3) ˜ 5.7e-1; dominant at r < 1AU.
+**UQFF computed:** Solar wind UQFF correction = [SSq]ï¿½exp(-?ï¿½r/v) = 5.7e-1ï¿½exp(-5.0e-4ï¿½(1AU/400km/s)) = 5.7e-1ï¿½exp(-3.2e-3) ï¿½ 5.7e-1; dominant at r < 1AU.

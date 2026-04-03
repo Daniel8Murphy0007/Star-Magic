@@ -1,4 +1,4 @@
-﻿# PAPER_317: Orion M42 Trapezium Wind Ram Pressure Dominance
+# PAPER_317: Orion M42 Trapezium Wind Ram Pressure Dominance
 ## η_wind = 28.47 | t_erosion = 467 kyr | a_wind = 5.424×10⁻¹⁰ m/s²
 ### FIRST UQFF HII Region Ram Pressure Dominance Ratio
 

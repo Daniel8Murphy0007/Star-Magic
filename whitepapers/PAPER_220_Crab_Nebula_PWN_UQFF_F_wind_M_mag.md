@@ -1,4 +1,4 @@
-﻿# PAPER_220: Crab Nebula Pulsar Wind Nebula UQFF — F_wind and M_mag in Expanding PWN
+# PAPER_220: Crab Nebula Pulsar Wind Nebula UQFF — F_wind and M_mag in Expanding PWN
 
 **Author:** Daniel T. Murphy (daniel.murphy00@gmail.com)  
 **Framework:** UQFF v4.3 — Star-Magic Physics  
@@ -20,7 +20,7 @@ The Crab Nebula (M1) PWN equation introduces two additive UQFF terms unique to t
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -80,7 +80,7 @@ Spindown luminosity:
 ```
 E_sd = -4p² · I · ? / P³
       = 4p² · 10³8 · 4.21×10?¹³ / (33.5×10?³)³
-      = 4p² · 10³8 · 4.21×10?¹³ / (3.76×10?5)
+      = 4p² · 10³8 · 4.21×10?¹³ / (3.76×10⁻5)
       ˜ 4.6×10³¹ W
 ```
 
@@ -128,7 +128,7 @@ Pulsar radius R_ns ˜ 10 km = 104 m.
 Magnetic dipole moment:
 ```
 m = (4p/µ0) · B_s · R_ns³
-  = 4p/(4p×10?7) · 3.8×108 · (104)³
+  = 4p/(4p×10⁻7) · 3.8×108 · (104)³
   = 107 · 3.8×108 · 10¹²
   = 3.8×10²7 A·m²
 ```
@@ -141,8 +141,8 @@ M_mag(r) = µ0 · m / (4p · r³)
 
 At r = 9.46×10¹5 m:
 ```
-M_mag = 4p×10?7 · 3.8×10²7 / (4p · (9.46×10¹5)³)
-      = 10?7 · 3.8×10²7 / (8.47×1047)
+M_mag = 4p×10⁻7 · 3.8×10²7 / (4p · (9.46×10¹5)³)
+      = 10⁻7 · 3.8×10²7 / (8.47×1047)
       ˜ 4.49×10?²8 T²·m or equivalent normalized acceleration
 ```
 

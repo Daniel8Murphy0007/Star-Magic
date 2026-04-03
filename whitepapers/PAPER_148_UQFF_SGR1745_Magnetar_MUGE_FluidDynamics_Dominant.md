@@ -1,4 +1,5 @@
-﻿#  "PAPER_{0:D3}" -f [int]# PAPER #148 — UQFF SGR1745-2900 Magnetar: MUGE Fluid Dynamics Dominant Configuration
+# PAPER_148: UQFF Star-Magic SGR1745-2900 Magnetar — MUGE 12-Term Resonance Validation: afluid_freq Dominance, g=1.773e-9 m/s^2, and Extreme-B SCm Fluid Dynamics
+
 
 **Title:** UQFF Star-Magic SGR1745-2900 Magnetar — MUGE 12-Term Resonance Validation: afluid_freq Dominance, g=1.773e-9 m/s^2, and Extreme-B SCm Fluid Dynamics
 

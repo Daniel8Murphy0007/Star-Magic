@@ -48,3 +48,122 @@
 \newunicodechar{₉}{\textsubscript{9}}
 \newunicodechar{ᵢ}{\textsubscript{i}}          % U+1D62 subscript i
 \newunicodechar{ₙ}{\textsubscript{n}}          % U+2099 subscript n
+% Superscript 1, 2, 3 (Latin-1 Supplement — explicit for safety)
+\newunicodechar{¹}{\textsuperscript{1}}        % U+00B9
+\newunicodechar{²}{\textsuperscript{2}}        % U+00B2
+\newunicodechar{³}{\textsuperscript{3}}        % U+00B3
+% ── Latin-1 Supplement symbols ──────────────────────────────────────────────
+\newunicodechar{×}{\texttimes}                 % U+00D7 multiplication sign
+\newunicodechar{÷}{\textdiv}                   % U+00F7 division sign
+\newunicodechar{±}{\ensuremath{\pm}}           % U+00B1 plus-minus
+\newunicodechar{°}{\textdegree}                % U+00B0 degree sign
+\newunicodechar{·}{\textperiodcentered}        % U+00B7 middle dot
+\newunicodechar{§}{\S}                         % U+00A7 section sign
+\newunicodechar{µ}{\textmu}                    % U+00B5 micro sign
+\newunicodechar{¼}{\textonequarter}            % U+00BC
+\newunicodechar{½}{\textonehalf}               % U+00BD
+\newunicodechar{¾}{\textthreequarters}         % U+00BE
+% ── General punctuation / typography ────────────────────────────────────────
+\newunicodechar{—}{\textemdash}                % U+2014 em dash
+\newunicodechar{–}{\textendash}                % U+2013 en dash
+\newunicodechar{…}{\ldots}                     % U+2026 horizontal ellipsis
+\newunicodechar{˜}{\textasciitilde}            % U+02DC small tilde
+% Smart quotes and guillemets handled natively by XeLaTeX + DejaVu Serif
+% (no \newunicodechar needed for these — they render correctly without mapping)
+\newunicodechar{«}{\guillemotleft}             % U+00AB left guillemet
+\newunicodechar{»}{\guillemotright}            % U+00BB right guillemet
+\newunicodechar{†}{\textdagger}                % U+2020 dagger
+\newunicodechar{‡}{\textdaggerdbl}             % U+2021 double dagger
+% ── Mathematical operators (text + math mode) ───────────────────────────────
+\newunicodechar{−}{\ensuremath{-}}             % U+2212 minus sign
+\newunicodechar{→}{\ensuremath{\rightarrow}}   % U+2192 rightward arrow
+\newunicodechar{←}{\ensuremath{\leftarrow}}    % U+2190 leftward arrow
+\newunicodechar{↑}{\ensuremath{\uparrow}}      % U+2191 upward arrow
+\newunicodechar{↓}{\ensuremath{\downarrow}}    % U+2193 downward arrow
+\newunicodechar{↔}{\ensuremath{\leftrightarrow}} % U+2194
+\newunicodechar{⇒}{\ensuremath{\Rightarrow}}   % U+21D2
+\newunicodechar{⇐}{\ensuremath{\Leftarrow}}    % U+21D0
+\newunicodechar{⇔}{\ensuremath{\Leftrightarrow}} % U+21D4
+\newunicodechar{≈}{\ensuremath{\approx}}       % U+2248 approximately equal
+\newunicodechar{≡}{\ensuremath{\equiv}}        % U+2261 identical/equivalent
+\newunicodechar{≠}{\ensuremath{\neq}}          % U+2260 not equal
+\newunicodechar{≤}{\ensuremath{\leq}}          % U+2264 less-or-equal
+\newunicodechar{≥}{\ensuremath{\geq}}          % U+2265 greater-or-equal
+\newunicodechar{≪}{\ensuremath{\ll}}           % U+226A much less than
+\newunicodechar{≫}{\ensuremath{\gg}}           % U+226B much greater than
+\newunicodechar{∝}{\ensuremath{\propto}}       % U+221D proportional to
+\newunicodechar{∞}{\ensuremath{\infty}}        % U+221E infinity
+\newunicodechar{√}{\ensuremath{\sqrt{}}}       % U+221A square root
+\newunicodechar{∇}{\ensuremath{\nabla}}        % U+2207 nabla/del
+\newunicodechar{∂}{\ensuremath{\partial}}      % U+2202 partial derivative
+\newunicodechar{∫}{\ensuremath{\int}}          % U+222B integral
+\newunicodechar{∑}{\ensuremath{\sum}}          % U+2211 summation (text mode)
+\newunicodechar{∏}{\ensuremath{\prod}}         % U+220F product
+\newunicodechar{∈}{\ensuremath{\in}}           % U+2208 element of
+\newunicodechar{∉}{\ensuremath{\notin}}        % U+2209
+\newunicodechar{⊂}{\ensuremath{\subset}}       % U+2282
+\newunicodechar{⊃}{\ensuremath{\supset}}       % U+2283
+\newunicodechar{⊆}{\ensuremath{\subseteq}}     % U+2286
+\newunicodechar{∩}{\ensuremath{\cap}}          % U+2229 intersection
+\newunicodechar{∪}{\ensuremath{\cup}}          % U+222A union
+\newunicodechar{∀}{\ensuremath{\forall}}       % U+2200 for all
+\newunicodechar{∃}{\ensuremath{\exists}}       % U+2203 there exists
+\newunicodechar{∅}{\ensuremath{\emptyset}}     % U+2205 empty set
+\newunicodechar{∼}{\ensuremath{\sim}}          % U+223C tilde operator
+\newunicodechar{≃}{\ensuremath{\simeq}}        % U+2243 simeq
+\newunicodechar{≅}{\ensuremath{\cong}}         % U+2245 asymptotically equal
+\newunicodechar{⟨}{\ensuremath{\langle}}       % U+27E8 math left angle bracket
+\newunicodechar{⟩}{\ensuremath{\rangle}}       % U+27E9 math right angle bracket
+\newunicodechar{〈}{\ensuremath{\langle}}       % U+3008 CJK left angle bracket
+\newunicodechar{〉}{\ensuremath{\rangle}}       % U+3009 CJK right angle bracket
+% ── Greek letters (explicit fallbacks for text-mode Greek) ──────────────────
+\newunicodechar{α}{\ensuremath{\alpha}}        % U+03B1
+\newunicodechar{β}{\ensuremath{\beta}}         % U+03B2
+\newunicodechar{γ}{\ensuremath{\gamma}}        % U+03B3
+\newunicodechar{δ}{\ensuremath{\delta}}        % U+03B4
+\newunicodechar{ε}{\ensuremath{\varepsilon}}   % U+03B5
+\newunicodechar{ζ}{\ensuremath{\zeta}}         % U+03B6
+\newunicodechar{η}{\ensuremath{\eta}}          % U+03B7
+\newunicodechar{θ}{\ensuremath{\theta}}        % U+03B8
+\newunicodechar{ι}{\ensuremath{\iota}}         % U+03B9
+\newunicodechar{κ}{\ensuremath{\kappa}}        % U+03BA
+\newunicodechar{λ}{\ensuremath{\lambda}}       % U+03BB
+\newunicodechar{μ}{\ensuremath{\mu}}           % U+03BC
+\newunicodechar{ν}{\ensuremath{\nu}}           % U+03BD
+\newunicodechar{ξ}{\ensuremath{\xi}}           % U+03BE
+\newunicodechar{π}{\ensuremath{\pi}}           % U+03C0
+\newunicodechar{ρ}{\ensuremath{\rho}}          % U+03C1
+\newunicodechar{σ}{\ensuremath{\sigma}}        % U+03C3
+\newunicodechar{τ}{\ensuremath{\tau}}          % U+03C4
+\newunicodechar{υ}{\ensuremath{\upsilon}}      % U+03C5
+\newunicodechar{φ}{\ensuremath{\varphi}}       % U+03C6
+\newunicodechar{χ}{\ensuremath{\chi}}          % U+03C7
+\newunicodechar{ψ}{\ensuremath{\psi}}          % U+03C8
+\newunicodechar{ω}{\ensuremath{\omega}}        % U+03C9
+\newunicodechar{Γ}{\ensuremath{\Gamma}}        % U+0393
+\newunicodechar{Δ}{\ensuremath{\Delta}}        % U+0394
+\newunicodechar{Θ}{\ensuremath{\Theta}}        % U+0398
+\newunicodechar{Λ}{\ensuremath{\Lambda}}       % U+039B
+\newunicodechar{Ξ}{\ensuremath{\Xi}}           % U+039E
+\newunicodechar{Π}{\ensuremath{\Pi}}           % U+03A0
+\newunicodechar{Σ}{\ensuremath{\Sigma}}        % U+03A3
+\newunicodechar{Υ}{\ensuremath{\Upsilon}}      % U+03A5
+\newunicodechar{Φ}{\ensuremath{\Phi}}          % U+03A6
+\newunicodechar{Ψ}{\ensuremath{\Psi}}          % U+03A8
+\newunicodechar{Ω}{\ensuremath{\Omega}}        % U+03A9
+% ── Extra symbols ───────────────────────────────────────────────────────────
+\newunicodechar{✅}{{\symbolfont ✅}}           % U+2705 green check (DejaVu Sans)
+\newunicodechar{❌}{{\symbolfont ✗}}           % U+274C red X (DejaVu Sans)
+\newunicodechar{•}{\textbullet}                % U+2022 bullet
+\newunicodechar{‰}{\textperthousand}           % U+2030 per mille
+\newunicodechar{™}{\texttrademark}             % U+2122 trademark
+\newunicodechar{©}{\textcopyright}             % U+00A9 copyright
+\newunicodechar{®}{\textregistered}            % U+00AE registered
+\newunicodechar{ℏ}{\ensuremath{\hbar}}         % U+210F h-bar
+\newunicodechar{ℓ}{\ensuremath{\ell}}          % U+2113 script l
+\newunicodechar{ℝ}{\ensuremath{\mathbb{R}}}    % U+211D real numbers
+\newunicodechar{ℂ}{\ensuremath{\mathbb{C}}}    % U+2102 complex numbers
+\newunicodechar{ℕ}{\ensuremath{\mathbb{N}}}    % U+2115 natural numbers
+\newunicodechar{ℤ}{\ensuremath{\mathbb{Z}}}    % U+2124 integers
+\newunicodechar{⊕}{\ensuremath{\oplus}}        % U+2295 direct sum / Earth
+\newunicodechar{⊗}{\ensuremath{\otimes}}       % U+2297 tensor product

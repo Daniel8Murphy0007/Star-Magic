@@ -1,4 +1,4 @@
-﻿# PAPER_228: Westerlund 2 Super Star Cluster â€” MUGE with High-Density OB-Supergiant Wind Feedback (10Ã— LMC)
+# PAPER_228: Westerlund 2 Super Star Cluster â€” MUGE with High-Density OB-Supergiant Wind Feedback (10Ã— LMC)
 
 **Author:** Daniel T. Murphy
 **Framework:** UQFF v4.8 (Star-Magic)

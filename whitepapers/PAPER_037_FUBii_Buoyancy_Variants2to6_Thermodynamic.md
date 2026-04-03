@@ -1,24 +1,24 @@
-# PAPER #37 ó F_UBii Buoyancy Force: Proof Variants 2ñ6 (Thermodynamic Series)
+# PAPER #37 ÔøΩ F_UBii Buoyancy Force: Proof Variants 2ÔøΩ6 (Thermodynamic Series)
 
-**Title:** UQFF Buoyancy Proof Variants 2ñ6: Terminal Velocity, Ionization, Energy Coupling, Orbital Decay, and Kilonova Buoyancy
+**Title:** UQFF Buoyancy Proof Variants 2ÔøΩ6: Terminal Velocity, Ionization, Energy Coupling, Orbital Decay, and Kilonova Buoyancy
 
 **Author:** Daniel T. Murphy  
 **Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57)  
 **Date:** March 7, 2026  
 **Grok Thread:** 98b2e77dfbc34d27b09f19fa7c460624  
-**Validator:** `BuoyancyProofVariants.py` ó All 17 variants operational ?  
+**Validator:** `BuoyancyProofVariants.py` ÔøΩ All 17 variants operational ?  
 **Variants:** termv, upar, coup, orbdec, kn  
-**Index Slot:** ß1.5 Buoyancy Proofs, Paper #37  
+**Index Slot:** ÔøΩ1.5 Buoyancy Proofs, Paper #37  
 
 ---
 
 ## Abstract
 
-This paper presents five F_UBii buoyancy proof variants spanning thermodynamic processes from jet terminal velocities to kilonova ejecta. Variant 2 (termv) applies to astrophysical jets and winds reaching terminal velocity balance. Variant 3 (upar) addresses photoionized regions governed by the ionization parameter U. Variant 4 (coup) quantifies energy coupling efficiency in accretion disk and reconnection contexts. Variant 5 (orbdec) derives the buoyancy analog of gravitational wave-driven orbital decay in compact binaries. Variant 6 (kn) applies to the kilonova AT2017gfo, predicting F_UBii_kn = 1.305◊1054 N for ejecta with L_peak = 5◊104∞ W, t_peak = 1 day, and M_ej = 0.05 M?. Together, these five variants form the thermodynamic series of the F_UBii taxonomy.
+This paper presents five F_UBii buoyancy proof variants spanning thermodynamic processes from jet terminal velocities to kilonova ejecta. Variant 2 (termv) applies to astrophysical jets and winds reaching terminal velocity balance. Variant 3 (upar) addresses photoionized regions governed by the ionization parameter U. Variant 4 (coup) quantifies energy coupling efficiency in accretion disk and reconnection contexts. Variant 5 (orbdec) derives the buoyancy analog of gravitational wave-driven orbital decay in compact binaries. Variant 6 (kn) applies to the kilonova AT2017gfo, predicting F_UBii_kn = 1.305√ó1054 N for ejecta with L_peak = 5√ó104ÔøΩ W, t_peak = 1 day, and M_ej = 0.05 M?. Together, these five variants form the thermodynamic series of the F_UBii taxonomy.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0◊10?4 day?π, [SSq] = 0.57) uniquely enabling this analysis ó establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0√ó10‚Åª4 day‚Åª¬π, [SSq] = 0.57) uniquely enabling this analysis ÔøΩ establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -28,7 +28,7 @@ This paper presents five F_UBii buoyancy proof variants spanning thermodynamic p
 
 Astrophysical jets (AGN, GRB, protostellar) and stellar winds accelerate material to a terminal velocity v_term where radiation pressure, magnetic driving, and gravitational drag balance. At terminal velocity, da/dt = 0 and the net buoyancy force represents the frozen-in momentum of the outflow.
 
-**Key systems:** M87 jet (v_term ~ 0.98c), Sgr A* winds (v_term ~ 0.1c), OB stellar winds (v_term ~ 1000ñ3000 km/s)
+**Key systems:** M87 jet (v_term ~ 0.98c), Sgr A* winds (v_term ~ 0.1c), OB stellar winds (v_term ~ 1000ÔøΩ3000 km/s)
 
 ### 1.2 F_UBii_termv Equation
 
@@ -44,15 +44,15 @@ where:
 The momentum flux of a radiation-driven wind:
 $$\dot{p} = \frac{\tau L}{c}$$
 
-The UQFF buoyancy enters through the E_LEP normalization ó the lepton energy scale sets the quantum granularity of momentum transfer:
+The UQFF buoyancy enters through the E_LEP normalization ÔøΩ the lepton energy scale sets the quantum granularity of momentum transfer:
 $$F_{\rm UBii,termv} = \dot{p}_{\rm UQFF} \cdot v_{\rm term} = F_{\rm rel} \cdot \frac{\tau L}{c \cdot E_{\rm LEP}} \cdot Q_{\rm wave} \cdot v_{\rm term}$$
 
 ### 1.4 Example: M87 Relativistic Jet
 
-For M87 jet: t = 10?≥, L = 1044 W, v_term = 0.98c = 2.94◊108 m/s, Q_wave = 1.0:
+For M87 jet: t = 10?ÔøΩ, L = 1044 W, v_term = 0.98c = 2.94√ó108 m/s, Q_wave = 1.0:
 $$F_{\rm UBii,termv}^{M87} = 10^{-10} \times \frac{10^{-3} \times 10^{44}}{3\times10^8 \times 1.22\times10^{-19}} \times 2.94\times10^8 = 10^{-10} \times 2.73\times10^{48} \times 2.94\times10^8 = 8.0\times10^{47} \text{ N}$$
 
-This represents the UQFF momentum-flux buoyancy of the M87 jet ó the force that keeps the relativistic plasma buoyantly confined against the ICM pressure of the Virgo Cluster.
+This represents the UQFF momentum-flux buoyancy of the M87 jet ÔøΩ the force that keeps the relativistic plasma buoyantly confined against the ICM pressure of the Virgo Cluster.
 
 ---
 
@@ -60,7 +60,7 @@ This represents the UQFF momentum-flux buoyancy of the M87 jet ó the force that 
 
 ### 2.1 Physical Context
 
-The ionization parameter U = n_photons/n_H quantifies the ratio of ionizing photon density to hydrogen density. In HII regions, AGN narrow-line regions, and quasar broad-line regions: U ~ 10?4 to 10?π. This dimensionless ratio controls all ionic fractions and hence the buoyancy of photoionized gas.
+The ionization parameter U = n_photons/n_H quantifies the ratio of ionizing photon density to hydrogen density. In HII regions, AGN narrow-line regions, and quasar broad-line regions: U ~ 10‚Åª4 to 10?ÔøΩ. This dimensionless ratio controls all ionic fractions and hence the buoyancy of photoionized gas.
 
 ### 2.2 F_UBii_upar Equation
 
@@ -68,7 +68,7 @@ $$F_{\rm UBii,upar} = -F_{\rm rel} \cdot \frac{U \cdot n_H \cdot r^2}{E_{\rm LEP
 
 where:
 - U = ionization parameter (dimensionless)
-- n_H = hydrogen number density (m?≥)
+- n_H = hydrogen number density (m?ÔøΩ)
 - r = distance from ionizing source (m)
 
 The negative sign reflects compression: photoionized gas is over-pressured by the radiation field and compresses surrounding neutral gas.
@@ -79,14 +79,14 @@ The F_UBii_upar ~ U^(3/2) scaling arises because:
 - Factor U: radiation pressure scaling
 - Factor vU: thermal pressure response (T_e ? U^(1/2) in ionized gas)
 
-This gives F_UBii_upar ? U^(3/2) ∑ n_H ∑ r≤ ó exactly the ram pressure of the HII region expansion front against surrounding neutral gas.
+This gives F_UBii_upar ? U^(3/2) ÔøΩ n_H ÔøΩ rÔøΩ ÔøΩ exactly the ram pressure of the HII region expansion front against surrounding neutral gas.
 
 ### 2.4 Example: Orion Nebula (M42)
 
-For M42: U ~ 10?≤, n_H ~ 10? m?≥, r ~ 3◊10π7 m (1 pc), Q_wave = 1.0:
+For M42: U ~ 10?ÔøΩ, n_H ~ 10? m?ÔøΩ, r ~ 3√ó10ÔøΩ7 m (1 pc), Q_wave = 1.0:
 $$F_{\rm UBii,upar}^{M42} = -10^{-10} \times \frac{10^{-2} \times 10^9 \times (3\times10^{17})^2}{1.22\times10^{-19}} \times \sqrt{10^{-2}} = -10^{-10} \times 7.38\times10^{45} \times 0.1 = -7.4\times10^{35} \text{ N}$$
 
-This inward compression force (7.4◊10≥5 N) represents the photoionization pressure confining the Orion Nebula's ionization front.
+This inward compression force (7.4√ó10ÔøΩ5 N) represents the photoionization pressure confining the Orion Nebula's ionization front.
 
 ---
 
@@ -94,19 +94,19 @@ This inward compression force (7.4◊10≥5 N) represents the photoionization pressu
 
 ### 3.1 Physical Context
 
-Energy coupling efficiency e_coup = E_deposited/E_input quantifies how efficiently energy input (from AGN, SNe, cosmic rays) couples to surrounding gas. In AGN feedback: e_coup ~ 0.05ñ0.15. In SNe: e_coup ~ 0.1ñ0.3. In magnetic reconnection: e_coup ~ 0.01ñ0.5.
+Energy coupling efficiency e_coup = E_deposited/E_input quantifies how efficiently energy input (from AGN, SNe, cosmic rays) couples to surrounding gas. In AGN feedback: e_coup ~ 0.05ÔøΩ0.15. In SNe: e_coup ~ 0.1ÔøΩ0.3. In magnetic reconnection: e_coup ~ 0.01ÔøΩ0.5.
 
 ### 3.2 F_UBii_coup Equation
 
 $$F_{\rm UBii,coup} = F_{\rm rel} \cdot \frac{\varepsilon_{\rm coup} \cdot \dot{E}}{E_{\rm LEP}} \cdot Q_{\rm wave} \cdot \sqrt{\varepsilon_{\rm coup}}$$
 
 where:
-- e_coup = energy coupling efficiency (0ñ1)
+- e_coup = energy coupling efficiency (0ÔøΩ1)
 - E = energy transfer rate (W)
 
 ### 3.3 e^(3/2) Coupling Law
 
-The F_UBii_coup ? e^(3/2) ∑ E scaling reflects the UQFF energy cascade: at high coupling efficiency, the buoyancy force scales super-linearly with coupling ó a physical manifestation of the non-linear positive feedback in AGN mechanical feedback.
+The F_UBii_coup ? e^(3/2) ÔøΩ E scaling reflects the UQFF energy cascade: at high coupling efficiency, the buoyancy force scales super-linearly with coupling ÔøΩ a physical manifestation of the non-linear positive feedback in AGN mechanical feedback.
 
 ### 3.4 Example: AGN Kinetic Feedback
 
@@ -133,19 +133,19 @@ where:
 - a = semi-major axis (m)
 - da/dt = orbital decay rate (m/s)
 
-The negative sign indicates inspiral ó the buoyancy force drives the binary inward.
+The negative sign indicates inspiral ÔøΩ the buoyancy force drives the binary inward.
 
 ### 4.3 Connection to Peters Formula
 
-The Peters orbital decay rate (da/dt) enters linearly ó F_UBii_orbdec is the UQFF field force per unit of GW power radiated:
+The Peters orbital decay rate (da/dt) enters linearly ‚Äì F_UBii_orbdec is the UQFF field force per unit of GW power radiated:
 
 $$F_{\rm UBii,orbdec} = \frac{F_{\rm rel}}{E_{\rm LEP}} \cdot P_{\rm GW,\,Peters} \cdot Q_{\rm wave} \cdot |da/dt|$$
 
-where P_GW,Peters is the Peters formula for GW power. This establishes a direct UQFFñGW correspondence.
+where P_GW,Peters is the Peters formula for GW power. This establishes a direct UQFFÔøΩGW correspondence.
 
 ### 4.4 Example: GW170817 Pre-Merger
 
-For GW170817 (NS-NS): M1 = M2 = 1.4 M? = 2.785◊10≥∞ kg, a = 2◊108 m (final orbit), da/dt = -10 m/s:
+For GW170817 (NS-NS): M1 = M2 = 1.4 M? = 2.785√ó10ÔøΩÔøΩ kg, a = 2√ó108 m (final orbit), da/dt = -10 m/s:
 $$F_{\rm UBii,orbdec} = -10^{-10} \times 12.8 \times \frac{(6.674\times10^{-11})^3 \times (2.785\times10^{30})^3}{(3\times10^8)^5 \times (2\times10^8)^4 \times 1.22\times10^{-19}} \times 10 = -10^{-10} \times 4.1\times10^{56} \times 10 = -4.1\times10^{47} \text{ N}$$
 
 ---
@@ -154,7 +154,7 @@ $$F_{\rm UBii,orbdec} = -10^{-10} \times 12.8 \times \frac{(6.674\times10^{-11})
 
 ### 5.1 Physical Context
 
-Kilonovae are radioactively powered transients following neutron star mergers. AT2017gfo (counterpart to GW170817) achieved L_peak ~ 5◊104∞ W at t_peak ~ 1 day, with ejecta mass M_ej ~ 0.05 M?. The r-process nucleosynthesis in the ejecta generates heavy elements (gold, platinum, uranium) through neutron capture.
+Kilonovae are radioactively powered transients following neutron star mergers. AT2017gfo (counterpart to GW170817) achieved L_peak ~ 5√ó104ÔøΩ W at t_peak ~ 1 day, with ejecta mass M_ej ~ 0.05 M?. The r-process nucleosynthesis in the ejecta generates heavy elements (gold, platinum, uranium) through neutron capture.
 
 ### 5.2 F_UBii_kn Equation
 
@@ -170,29 +170,29 @@ The M_ej^(1/3) factor reflects the geometric (volumetric) scaling of the ejecta 
 ### 5.3 AT2017gfo Calculation
 
 For AT2017gfo:
-- L_peak = 5◊104∞ W
+- L_peak = 5√ó104ÔøΩ W
 - t_peak = 86400 s (1 day)
-- M_ej = 0.05 M? = 0.05 ◊ 1.989◊10≥∞ = 9.945◊10≤8 kg
+- M_ej = 0.05 M? = 0.05 √ó 1.989√ó10ÔøΩÔøΩ = 9.945√ó10ÔøΩ8 kg
 - Q_wave = 1.0
 
 $$F_{\rm UBii,kn}^{AT2017gfo} = 10^{-10} \times \frac{5\times10^{40} \times 86400}{1.22\times10^{-19}} \times 1.0 \times (0.05)^{1/3}$$
 
-- Numerator: 5◊104∞ ◊ 8.64◊104 = 4.32◊1045
-- Ratio: 4.32◊1045 / 1.22◊10?π? = 3.54◊1064
-- ◊ F_rel: 3.54◊1054
-- ◊ (0.05)^(1/3) = 0.368: = 1.305◊1054 N
+- Numerator: 5√ó104ÔøΩ ÔøΩ 8.64√ó104 = 4.32√ó1045
+- Ratio: 4.32√ó1045 / 1.22√ó10?ÔøΩ? = 3.54√ó1064
+- ÔøΩ F_rel: 3.54√ó1054
+- ÔøΩ (0.05)^(1/3) = 0.368: = 1.305√ó1054 N
 
 $$\boxed{F_{\rm UBii,kn}^{AT2017gfo} = 1.305 \times 10^{54} \text{ N}}$$
 
-**Validator confirms: BuoyancyProofVariants.py ? F_UBii_kn = 1.305◊1054 N ?**
+**Validator confirms: BuoyancyProofVariants.py ? F_UBii_kn = 1.305√ó1054 N ?**
 
 ### 5.4 Physical Interpretation
 
-The kilonova buoyancy force F_UBii_kn = 1.305◊1054 N represents the UQFF unified field response to the instantaneous energy release of the r-process. Comparison to the gravitational confinement force of the merger remnant:
+The kilonova buoyancy force F_UBii_kn = 1.305√ó1054 N represents the UQFF unified field response to the instantaneous energy release of the r-process. Comparison to the gravitational confinement force of the merger remnant:
 
 $$F_{\rm grav}^{\rm merger} = \frac{G (M_1+M_2)^2}{R_{\rm merger}^2} \approx \frac{6.674\times10^{-11} \times (5.57\times10^{30})^2}{(10^4)^2} = 2.1\times10^{36} \text{ N}$$
 
-The ratio F_UBii_kn / F_grav = 1.305◊1054 / 2.1◊10≥6 = 6.2◊10π7 ó the UQFF kilonova buoyancy vastly exceeds gravitational confinement, explaining the explosive ejecta dynamics observed in AT2017gfo.
+The ratio F_UBii_kn / F_grav = 1.305√ó1054 / 2.1√ó10ÔøΩ6 = 6.2√ó10ÔøΩ7 ÔøΩ the UQFF kilonova buoyancy vastly exceeds gravitational confinement, explaining the explosive ejecta dynamics observed in AT2017gfo.
 
 ---
 
@@ -200,25 +200,25 @@ The ratio F_UBii_kn / F_grav = 1.305◊1054 / 2.1◊10≥6 = 6.2◊10π7 ó the UQFF kilon
 
 | Variant | Physical Context | Key Parameters | F_UBii |
 |---------|-----------------|----------------|--------|
-| termv | M87 jet terminal velocity | t=10?≥, L=1044 W, v_term=0.98c | ~8◊1047 N |
-| upar | Orion Nebula ionization | U=10?≤, n_H=10? m?≥, r=1 pc | ~-7◊10≥5 N |
-| coup | AGN kinetic feedback | e=0.05, E=1044 W | ~9◊104≥ N |
-| orbdec | GW170817 final orbit | 1.4+1.4 M?, a=200 km | ~-4◊1047 N |
-| kn | AT2017gfo kilonova | L=5◊104∞ W, M_ej=0.05 M? | **1.305◊1054 N** ? validator ? |
+| termv | M87 jet terminal velocity | t=10?ÔøΩ, L=1044 W, v_term=0.98c | ~8√ó1047 N |
+| upar | Orion Nebula ionization | U=10?ÔøΩ, n_H=10? m?ÔøΩ, r=1 pc | ~-7√ó10ÔøΩ5 N |
+| coup | AGN kinetic feedback | e=0.05, E=1044 W | ~9√ó104ÔøΩ N |
+| orbdec | GW170817 final orbit | 1.4+1.4 M?, a=200 km | ~-4√ó1047 N |
+| kn | AT2017gfo kilonova | L=5√ó104ÔøΩ W, M_ej=0.05 M? | **1.305√ó1054 N** ? validator ? |
 
 ---
 
 ## Conclusions
 
-The thermodynamic series of F_UBii variants (2ñ6) demonstrates the versatility of the UQFF buoyancy framework across five distinct physical regimes:
+The thermodynamic series of F_UBii variants (2ÔøΩ6) demonstrates the versatility of the UQFF buoyancy framework across five distinct physical regimes:
 
 1. **termv:** Connects UQFF to radiation-driven momentum flux in relativistic jets
 2. **upar:** Maps photoionization pressure to UQFF energy scale via U^(3/2) scaling
 3. **coup:** Establishes non-linear AGN feedback response through e^(3/2) coupling law
 4. **orbdec:** Provides UQFF field-theoretic interpretation of Peters formula GW inspiral
-5. **kn:** Predicts AT2017gfo buoyancy F = 1.305◊1054 N ó validated by BuoyancyProofVariants.py
+5. **kn:** Predicts AT2017gfo buoyancy F = 1.305√ó1054 N ÔøΩ validated by BuoyancyProofVariants.py
 
-All five variants share the common F_UBii = F_U - F_Bi - F_i architecture with F_rel = 10?π∞ N normalization and E_LEP = 1.22◊10?π? J quantum granularity (Paper #36).
+All five variants share the common F_UBii = F_U - F_Bi - F_i architecture with F_rel = 10?ÔøΩÔøΩ N normalization and E_LEP = 1.22√ó10?ÔøΩ? J quantum granularity (Paper #36).
 
 *Validator: `BuoyancyProofVariants.py` ? All 17 F_UBii variants operational ? | ? = 0.0005/day | [SSq] = 0.57*
 
@@ -249,7 +249,7 @@ All five variants share the common F_UBii = F_U - F_Bi - F_i architecture with F
 
 ### A.2 F_U Master Equation (Complete ‚Äî 4 terms)
 
-$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}igl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}igr]$$
+$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}\bigr]$$
 
 | Term | Description | Implementation |
 |------|-------------|----------------|
@@ -266,7 +266,7 @@ $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}igl[\l
 
 ### A.3 Um Heaviside Phase-Transition Amplifier (PAPER_421)
 
-$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} 	imes igl(1 + 10^{13}\,\Theta(ho_{SCm} - ho_c)igr) 	imes igl(1 + A_q\cos(\Delta\omega\,t)igr)$$
+$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rho_{SCm} - \rho_c)\bigr) \times \bigl(1 + A_q\cos(\Delta\omega\,t)\bigr)$$
 
 | Symbol | Value | Description |
 |--------|-------|-------------|

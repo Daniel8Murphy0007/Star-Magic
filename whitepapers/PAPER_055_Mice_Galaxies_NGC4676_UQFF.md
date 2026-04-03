@@ -1,5 +1,7 @@
+# PAPER_055: NGC 4676 "The Mice": UQFF Compressed Gravity Enhancement During Galaxy Merger – High-Velocity Tidal Bridge and 10� Compression Factor
 
-**Title:** NGC 4676 "The Mice": UQFF Compressed Gravity Enhancement During Galaxy Merger � High-Velocity Tidal Bridge and 10� Compression Factor
+
+**Title:** NGC 4676 "The Mice": UQFF Compressed Gravity Enhancement During Galaxy Merger – High-Velocity Tidal Bridge and 10� Compression Factor
 
 **Author:** Daniel T. Murphy  
 **Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57)  
@@ -7,9 +9,8 @@
 **Validator:** `validate_all_models.py` � NGC4676Model: **4/4 PASS** ?  
 **Source Module:** `CondensedPhysics.py` (NGC4676Model), `validate_all_models.py`  
 **Index Slot:** �1.7 arXiv Cross-Validation Framework,  
-    $n = [int]# PAPER #55 � Mice Galaxies (NGC 4676): Merger Dynamics in UQFF
 
-**Title:** NGC 4676 "The Mice": UQFF Compressed Gravity Enhancement During Galaxy Merger � High-Velocity Tidal Bridge and 10� Compression Factor
+**Title:** NGC 4676 "The Mice": UQFF Compressed Gravity Enhancement During Galaxy Merger – High-Velocity Tidal Bridge and 10� Compression Factor
 
 **Author:** Daniel T. Murphy  
 **Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57)  
@@ -22,11 +23,11 @@
 
 ## Abstract
 
-NGC 4676 (A and B), "The Mice," are two colliding spiral galaxies at ~87 Mpc undergoing first pericenter passage. The UQFF model reveals a 10� enhancement of both g_compressed and R_amplitude compared to isolated spirals, directly attributable to the violent compression of the inter-galactic [SCm] medium during the collision. The gravitational field g_grav = 2.9500�10?�� m/s� is the highest among the interacting-galaxy subset. All 4 tests pass.
+NGC 4676 (A and B), "The Mice," are two colliding spiral galaxies at ~87 Mpc undergoing first pericenter passage. The UQFF model reveals a 10� enhancement of both g_compressed and R_amplitude compared to isolated spirals, directly attributable to the violent compression of the inter-galactic [SCm] medium during the collision. The gravitational field g_grav = 2.9500×10?�� m/s� is the highest among the interacting-galaxy subset. All 4 tests pass.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0�10?4 day?�, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -36,10 +37,10 @@ NGC 4676 (A and B), "The Mice," are two colliding spiral galaxies at ~87 Mpc und
 |-----------|-------|
 | Names | NGC 4676A + NGC 4676B (Arp 242) |
 | Classification | The Mice (paired spirals, Coma constellation) |
-| Distance | ~87 Mpc (z � 0.0220) |
+| Distance | ~87 Mpc (z ≈ 0.0220) |
 | Separation | ~50 kpc (current projected) |
 | Tidal tails | ~160 kpc each (two symmetric tails) |
-| Combined mass | ~2�10�� M? |
+| Combined mass | ~2×10�� M? |
 | Stage | First pericenter passage (~160 Myr ago) |
 | Merger completion | ~2�3 Gyr from now |
 
@@ -48,15 +49,15 @@ NGC 4676 (A and B), "The Mice," are two colliding spiral galaxies at ~87 Mpc und
 ## 2. The 10� Compression Enhancement
 
 The NGC4676 UQFF model produces:
-- g_compressed = **1.0533�10?�** (10� larger than the standard 1.0533�10?�)
-- R_amplitude = **1.1586�10?�** (10� larger than the standard 1.1586�10?�)
+- g_compressed = **1.0533×10?�** (10� larger than the standard 1.0533×10?�)
+- R_amplitude = **1.1586×10?�** (10� larger than the standard 1.1586×10?�)
 
 This 10� enhancement is the UQFF signature of a **major merger event**. In the 26-layer compressed gravity framework:
 $$g_{\rm compressed}^{\rm merger} = g_{\rm compressed}^{\rm isolated} \times \left(1 + \frac{\Delta M_{\rm overlap}}{M_{\rm total}}\right)^n$$
 
-where ? M_overlap is the mass in the overlapping region and n � 2.3 for head-on collisions. For The Mice, with ~30% mass overlap during pericenter: (1 + 0.3)^2.3 � 1.7. The remaining factor ~6� arises from the [SCm] compression: as the two galactic [SCm] halos merge, the [SCm] density in the interaction zone spikes, boosting the buoyancy compression.
+where ? M_overlap is the mass in the overlapping region and n � 2.3 for head-on collisions. For The Mice, with ~30% mass overlap during pericenter: (1 + 0.3)^2.3 × 1.7. The remaining factor ~6� arises from the [SCm] compression: as the two galactic [SCm] halos merge, the [SCm] density in the interaction zone spikes, boosting the buoyancy compression.
 
-Combined: 1.7 � ~6 � 10� ? consistent with the observed 10� g_compressed enhancement.
+Combined: 1.7 � ~6 × 10� ? consistent with the observed 10� g_compressed enhancement.
 
 ---
 
@@ -65,25 +66,25 @@ Combined: 1.7 � ~6 � 10� ? consistent with the observed 10� g_compressed
 ### Test 1: Gravitational Field g_grav
 
 The combined gravitational field of two merging galaxies at their mutual center of mass:
-- g_grav = **2.9500�10?��** m/s� (2� that of NGC3372 Carina, 37.5� that of UGC10214)
+- g_grav = **2.9500×10?��** m/s� (2� that of NGC3372 Carina, 37.5� that of UGC10214)
 - Physical basis: Two galaxies at 50 kpc separation and 87 Mpc distance produce a higher effective g_grav than any single system in the suite, except M42 (which is much more concentrated)
 - **PASS ?**
 
 ### Test 2: Hubble Factor
 
-- Hubble = 1.0002 (z � 0.022, modest cosmological correction)
+- Hubble = 1.0002 (z ≈ 0.022, modest cosmological correction)
 - Matches local-universe result expected for ~87 Mpc distance
 - **PASS ?**
 
 ### Test 3: Compressed Gravity g_compressed
 
-- g_compressed = **1.0533�10?�** (10� standard)
+- g_compressed = **1.0533×10?�** (10� standard)
 - The compression enhancement signature of the collision
 - **PASS ?**
 
 ### Test 4: Resonance Amplitude R
 
-- R_amplitude = **1.1586�10?�** (10� standard)
+- R_amplitude = **1.1586×10?�** (10� standard)
 - Enhanced inter-galaxy MHD and acoustic resonance in the collisional plasma
 - **PASS ?**
 
@@ -94,9 +95,9 @@ The combined gravitational field of two merging galaxies at their mutual center 
 | Feature | UGC10214 (Tadpole) | NGC4676 (Mice) |
 |---------|-------------------|---------------|
 | Interaction type | Minor merger (small companion) | Major merger (equal-mass) |
-| g_grav | 7.86�10?�� | **2.95�10?��** (37.5� larger) |
-| g_compressed | 1.0533�10?� | **1.0533�10?�** (10� larger) |
-| R_amplitude | 1.1586�10?� | **1.1586�10?�** (10� larger) |
+| g_grav | 7.86×10?�� | **2.95×10?��** (37.5� larger) |
+| g_compressed | 1.0533×10?� | **1.0533×10?�** (10� larger) |
+| R_amplitude | 1.1586×10?� | **1.1586×10?�** (10� larger) |
 | Tail structure | One-sided 280 kpc tail | Two symmetric 160 kpc tails |
 | UQFF dominance | Ug3 torque | [SCm] compression |
 
@@ -125,10 +126,10 @@ The UQFF model captures the snapshot at t � -160 Myr (post-pericenter relaxati
 
 | Test | Quantity | Value | Status |
 |------|----------|-------|--------|
-| 1 | g_grav | 2.9500�10?�� m/s� | ? |
+| 1 | g_grav | 2.9500×10?�� m/s� | ? |
 | 2 | Hubble factor | 1.0002 | ? |
-| 3 | g_compressed | 1.0533�10?� (10�) | ? |
-| 4 | R_amplitude | 1.1586�10?� (10�) | ? |
+| 3 | g_compressed | 1.0533×10?� (10�) | ? |
+| 4 | R_amplitude | 1.1586×10?� (10�) | ? |
 
 **4/4 PASS (100%)**
 
@@ -137,7 +138,7 @@ The UQFF model captures the snapshot at t � -160 Myr (post-pericenter relaxati
 ## Conclusions
 
 1. NGC4676 shows a 10� enhancement in UQFF compressed gravity and resonance amplitude, the signature of a major galaxy merger
-2. The 2.95�10?�� m/s� gravitational field is the second-highest in the validation suite (after M42)
+2. The 2.95×10?�� m/s� gravitational field is the second-highest in the validation suite (after M42)
 3. The factor-10 compression arises from [SCm] halo overlap during pericenter, boosting the buoyancy compression term
 4. UQFF distinguishes minor mergers (Ug3-dominated, one-sided tails) from major mergers ([SCm]-dominated, symmetric double tails) � a key prediction testable with IFU spectroscopy of merger shock zones
 
@@ -167,7 +168,7 @@ The UQFF model captures the snapshot at t � -160 Myr (post-pericenter relaxati
 
 ### A.2 F_U Master Equation (Complete — 4 terms)
 
-$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}igl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}igr]$$
+$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}\bigr]$$
 
 | Term | Description | Implementation |
 |------|-------------|----------------|
@@ -184,9 +185,7 @@ $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}igl[\l
 
 ### A.3 Um Heaviside Phase-Transition Amplifier (PAPER_421)
 
-$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} 	imes igl(1 + 10^{13}\,\Theta(
-ho_{SCm} - 
-ho_c)igr) 	imes igl(1 + A_q\cos(\Delta\omega\,t)igr)$$
+$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rho_{SCm} - \rho_c)\bigr) \times \bigl(1 + A_q\cos(\Delta\omega\,t)\bigr)$$
 
 | Symbol | Value | Description |
 |--------|-------|-------------|

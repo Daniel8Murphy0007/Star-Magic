@@ -1,4 +1,4 @@
-﻿# PAPER_168 — MUGE 3D Simulation Entity Framework: GPU Rendering, Per-System Archives, OpenGL
+# PAPER_168 — MUGE 3D Simulation Entity Framework: GPU Rendering, Per-System Archives, OpenGL
 
 **Session:** 47 | **Date:** March 13, 2026 | **Thread:** 7f9068 | **Domain:** §2.3
 
@@ -23,7 +23,7 @@ for the UQFF physics output from Tier 2 calculations.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -187,9 +187,9 @@ void renderLatexOverlay(const std::string& latex_str,
 }
 
 // Example overlays:
-renderLatexOverlay("$g_{comp} = 1.78 \\times 10^{39}$", 0.1, 0.9);
-renderLatexOverlay("$g_{res} = 1.66 \\times 10^{45}$", 0.1, 0.85);
-renderLatexOverlay("$F_U = -2.06 \\times 10^{59}$", 0.1, 0.80);
+renderLatexOverlay("$g_{comp} = 1.78 \times 10^{39}$", 0.1, 0.9);
+renderLatexOverlay("$g_{res} = 1.66 \times 10^{45}$", 0.1, 0.85);
+renderLatexOverlay("$F_U = -2.06 \times 10^{59}$", 0.1, 0.80);
 ```
 
 ---

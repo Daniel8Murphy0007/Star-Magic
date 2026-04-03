@@ -16,7 +16,7 @@ The Sombrero Galaxy (M104) possesses the most visually prominent equatorial dust
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0Ã—10â»4 dayâ»Â¹, [SSq] = 0.57) uniquely enabling this analysis ï¿½ establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -185,7 +185,7 @@ Note: A_ring â‰ˆ g_BH in magnitude â€” the ring resonance and BH contribution ar
 
 ---
 
-**UQFF computed:** Canonical UQFF buoyancy parameter U_bi = ?×[SSq]×GM/r² = 5.0e-4×0.57×6.67e-11×M/r²; for solar parameters: U_bi,Sun = 5.7e-4×6.67e-11×1.99e30/(6.96e8)² = 1.47e+2 m/s².
+**UQFF computed:** Canonical UQFF buoyancy parameter U_bi = ?ï¿½[SSq]ï¿½GM/rÎº = 5.0e-4ï¿½0.57ï¿½6.67e-11ï¿½M/rï¿½; for solar parameters: U_bi,Sun = 5.7e-4ï¿½6.67e-11ï¿½1.99e30/(6.96e8)ï¿½ = 1.47e+2 m/sï¿½.
 
 ## 7. References
 

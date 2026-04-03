@@ -3,7 +3,7 @@
 **Author:** Daniel T. Murphy  
 **Date:** March 5, 2026  
 **Session:** Phase 1 (Sessions 1�43)  
-**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57, �_i = 0.61)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57, κ_i = 0.61)  
 **Source:** `source27.cpp` (SOURCE27 namespace), `MAIN_1_CoAnQi.cpp`  
 **Cross-links:** PAPER_001 (GW170817 Damping), PAPER_002 (GW190425 Mass Gap), PAPER_010 (Post-Merger Oscillations)
 
@@ -13,7 +13,7 @@ Binary neutron star (BNS) mergers provide unique constraints on the neutron star
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0�10?4 day?�, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -82,12 +82,12 @@ UQFF introduces magnetic field-dependent suppression:
 
 **f_SCm(B) = 1 - exp[-(B_crit / B)�]**
 
-where B_crit = 4.4 � 10�� T.
+where B_crit = 4.4 × 10�� T.
 
 **Regimes:**
 - **B < 10�� G:** f_SCm � 1 (no suppression)
-- **B ~ 10�� G:** f_SCm � 0.999 (1% suppression)
-- **B ~ 10�4 G:** f_SCm � 0.01 (99% suppression)
+- **B ~ 10�� G:** f_SCm ≈ 0.999 (1% suppression)
+- **B ~ 10�4 G:** f_SCm ≈ 0.01 (99% suppression)
 - **B > 10�5 G:** f_SCm ? 0 (full suppression)
 
 ### 2.3 Physical Interpretation
@@ -107,8 +107,8 @@ SCm suppression arises from Cooper pair formation in the NS core:
 |-----------|-------|--------|
 | Chirp Mass M | 1.188 M? | LIGO/Virgo |
 | Component Masses | m1 = 1.46 M?, m2 = 1.27 M? | Posterior median |
-| B_NS (typical) | 1.0 � 108 G | Pulsar surveys |
-| B_NS (magnetar) | 1.0 � 10�4 G | SGR 1806-20 |
+| B_NS (typical) | 1.0 × 108 G | Pulsar surveys |
+| B_NS (magnetar) | 1.0 × 10�4 G | SGR 1806-20 |
 
 ### 3.2 GR Tidal Deformability
 
@@ -217,7 +217,7 @@ GW170817 constraint ?~ = 190�600 implies R_1.4 = 10.5�13.5 km. Under UQFF, t
 
 ## 7. Conclusion
 
-UQFF modifies tidal deformability through two channels: (1) SCm suppression of ? for B > B_crit (magnetar merger scenario), and (2) amplitude damping of the tidal contribution to the waveform phase (factor D�_total = 0.111). For normal NS fields B � B_crit, UQFF is transparent to the Love number measurement. For mass-gap or extreme-field scenarios, effective ?~ ? 0, mimicking BH tidal suppressions. This prediction is testable in O5/next-generation detectors targeting mass-gap BNS events, and cross-checkable against NICER and X-ray spectroscopy M-R constraints.
+UQFF modifies tidal deformability through two channels: (1) SCm suppression of ? for B > B_crit (magnetar merger scenario), and (2) amplitude damping of the tidal contribution to the waveform phase (factor Dκ_total = 0.111). For normal NS fields B – B_crit, UQFF is transparent to the Love number measurement. For mass-gap or extreme-field scenarios, effective ?~ ? 0, mimicking BH tidal suppressions. This prediction is testable in O5/next-generation detectors targeting mass-gap BNS events, and cross-checkable against NICER and X-ray spectroscopy M-R constraints.
 
 **Validator:** `validate_gw170817.py` (tidal deformability analysis; see source27.cpp tidal Love functions)
 - **R_1.4 = 11.0-13.5 km** (for M = 1.4 M?)
@@ -261,7 +261,7 @@ Combined with ? constraint from GW170817:
 Einstein Telescope and Cosmic Explorer will measure ? with precision:
 - **s(?) ~ 5-10** (vs current s(?) ~ 100)
 - Enable NS vs BH discrimination at 2.5 M?
-- Detect SCm suppression if B > 5 � 10�� G
+- Detect SCm suppression if B > 5 × 10�� G
 
 ### 6.2 Magnetar-BNS Mergers
 
@@ -318,7 +318,7 @@ The absence of ? suppression in GW170817 confirms normal NS B-fields, validating
 **Author:** Daniel T. Murphy  
 **Date:** March 5, 2026  
 **Session:** Phase 1 (Sessions 1�43)  
-**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57, �_i = 0.61)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57, κ_i = 0.61)  
 **Source:** `source27.cpp` (SOURCE27 namespace), `MAIN_1_CoAnQi.cpp`  
 **Cross-links:** PAPER_001 (GW170817 Damping), PAPER_002 (GW190425 Mass Gap), PAPER_010 (Post-Merger Oscillations)
 
@@ -346,7 +346,7 @@ The absence of ? suppression in GW170817 confirms normal NS B-fields, validating
 
 ### A.2 F_U Master Equation (Complete — 4 terms)
 
-$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}igl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}igr]$$
+$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}\bigr]$$
 
 | Term | Description | Implementation |
 |------|-------------|----------------|
@@ -363,9 +363,7 @@ $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}igl[\l
 
 ### A.3 Um Heaviside Phase-Transition Amplifier (PAPER_421)
 
-$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} 	imes igl(1 + 10^{13}\,\Theta(
-ho_{SCm} - 
-ho_c)igr) 	imes igl(1 + A_q\cos(\Delta\omega\,t)igr)$$
+$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rho_{SCm} - \rho_c)\bigr) \times \bigl(1 + A_q\cos(\Delta\omega\,t)\bigr)$$
 
 | Symbol | Value | Description |
 |--------|-------|-------------|

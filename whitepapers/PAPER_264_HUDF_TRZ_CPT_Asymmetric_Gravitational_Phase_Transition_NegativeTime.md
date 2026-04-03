@@ -1,4 +1,4 @@
-﻿# PAPER_264: HUDF Time-Reversal Zeroing (TRZ) Factor — CPT-Asymmetric UQFF Gravity at Cosmic Redshift z=3.5
+# PAPER_264: HUDF Time-Reversal Zeroing (TRZ) Factor — CPT-Asymmetric UQFF Gravity at Cosmic Redshift z=3.5
 
 **Author:** Daniel T. Murphy (daniel.murphy00@gmail.com)
 **Framework:** UQFF v4.27 — Star-Magic Physics

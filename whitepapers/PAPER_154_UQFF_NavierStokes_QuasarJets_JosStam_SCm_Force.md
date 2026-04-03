@@ -1,5 +1,7 @@
+# PAPER_154: UQFF Star-Magic Navier-Stokes Quasar Jet Equation – Jos Stam Stable Fluids Solver with SCm Force Integration: du/dt + f_jet = v_SCm/10 and the Millennium Bridge
 
-**Title:** UQFF Star-Magic Navier-Stokes Quasar Jet Equation � Jos Stam Stable Fluids Solver with SCm Force Integration: du/dt + f_jet = v_SCm/10 and the Millennium Bridge
+
+**Title:** UQFF Star-Magic Navier-Stokes Quasar Jet Equation – Jos Stam Stable Fluids Solver with SCm Force Integration: du/dt + f_jet = v_SCm/10 and the Millennium Bridge
 
 **Author:** Daniel T. Murphy  
 **Framework:** UQFF Star-Magic (kappa=0.0005/day, [SSq]=0.57, fTRZ=0.1)  
@@ -22,7 +24,7 @@ where $f_{jet} = v_{SCm}/10 = 10^7$ m/s is the SCm-driven jet force (v_SCm = 10^
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0�10?4 day?�, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -82,7 +84,7 @@ $$f_{SCm,vol} = \sigma_{SCm} = \rho_{SCm} \cdot v_{SCm} \cdot \frac{v_{SCm}}{\la
 
 $$f_{jet} = \frac{f_{SCm,vol}}{\rho_{jet} \cdot v_{jet}^2 / L_{jet}} \cdot v_{SCm} \cdot f_{TRZ}$$
 
-With $\rho_{jet} = 10^{-3}$ kg/m� (AGN jet plasma), $v_{jet} = 0.99c \approx 3�10^8$ m/s, $L_{jet} = 1$ kpc = $3�10^{19}$ m:
+With $\rho_{jet} = 10^{-3}$ kg/m� (AGN jet plasma), $v_{jet} = 0.99c \approx 3×10^8$ m/s, $L_{jet} = 1$ kpc = $3×10^{19}$ m:
 
 $$f_{jet} = \frac{10^{46}}{10^{-3} \times (3 \times 10^8)^2 / (3 \times 10^{19})} \times 10^8 \times 0.1$$
 
@@ -158,7 +160,7 @@ This is the **UQFF bridge to the Millennium Prize** for Navier-Stokes: the SCm p
 | Jet length | ~5 kpc |
 | Jet velocity | ~0.99c |
 | Knot structure | HST-1 bright knot at 0.86 arcsec |
-| UQFF MUGE at M87* | 1.29�10^20 m/s^2 (from PAPER_067) |
+| UQFF MUGE at M87* | 1.29×10^20 m/s^2 (from PAPER_067) |
 | SCm jet force f_jet | 10^7 m/s (UQFF prediction) |
 | Observed jet velocity oscillation | Yes (quasi-periodic knot ejection ~12 yr) |
 
@@ -176,11 +178,11 @@ $$f_{jet}(t) = \frac{v_{SCm}}{10} \cdot (1 + A \cdot \cos(2\pi f_{TRZ} \kappa t)
 |-----------|-------|
 | Jet length | ~30 kpc (inner jet) |
 | Jet velocity | ~0.5c |
-| UQFF Um (magnetic energy flux) | 9.94�10^45 J/m (PAPER_067) |
+| UQFF Um (magnetic energy flux) | 9.94×10^45 J/m (PAPER_067) |
 | SCm f_jet | 10^7 m/s |
-| Ratio v_jet / f_jet | ~1.5�10^7 |
+| Ratio v_jet / f_jet | ~1.5×10^7 |
 
-The observed CenA jet velocity (~0.5c = 1.5�10^8 m/s) is related to f_jet by:
+The observed CenA jet velocity (~0.5c = 1.5×10^8 m/s) is related to f_jet by:
 
 $$v_{jet,obs} = 15 \cdot f_{jet} = 15 \times 10^7 = 1.5 \times 10^8 \text{ m/s}$$
 
@@ -191,7 +193,7 @@ This factor of 15 represents the cumulative amplification of the SCm force over 
 | Parameter | Value |
 |-----------|-------|
 | System | SGR1745-2900 magnetar |
-| MUGE g | 1.773�10^-9 m/s^2 |
+| MUGE g | 1.773×10^-9 m/s^2 |
 | SCm f_jet at SGR | v_SCm/10 � (B_SGR/B_ref)� |
 | B_SGR | ~10^11 T |
 | f_jet,SGR | 10^7 � (10^11/10^12)� = 10^5 m/s |
@@ -246,12 +248,12 @@ This is the **UQFF Complete Quasar Jet Equation** � a single equation governin
 |----------|-------|-------|
 | SCm jet force f_jet | v_SCm/10 = 10^7 | m/s |
 | fTRZ coupling factor | 0.1 = 1/10 | dimensionless |
-| Energy bound (Gr�nwall) | E(t) < E_0 � e^(f_jet � t) | � |
-| SCm viscosity contribution | 3.33�10^-8 | m�/s |
-| AGN jet Re (UQFF) | ~8.7�10^33 | dimensionless |
+| Energy bound (Gr�nwall) | E(t) < E_0 � e^(f_jet � t) | – |
+| SCm viscosity contribution | 3.33×10^-8 | m�/s |
+| AGN jet Re (UQFF) | ~8.7×10^33 | dimensionless |
 | M87 jet oscillation period (UQFF) | ~55 years | yr |
-| CenA jet velocity | 15 � f_jet = 1.5�10^8 | m/s |
-| Millennium bridge | SCm bound prevents finite-time blow-up | � |
+| CenA jet velocity | 15 � f_jet = 1.5×10^8 | m/s |
+| Millennium bridge | SCm bound prevents finite-time blow-up | – |
 
 ---
 
@@ -269,7 +271,7 @@ This is the **UQFF Complete Quasar Jet Equation** � a single equation governin
 
 ## References
 
-- Stam J. (1999), "Stable Fluids," SIGGRAPH 99 Proceedings � Unconditional stability
+- Stam J. (1999), "Stable Fluids," SIGGRAPH 99 Proceedings – Unconditional stability
 - Clay Mathematics Institute (2000), "Navier-Stokes Existence and Smoothness" � Millennium Prize statement
 - Murphy D.T. (2026), PAPER_145 � MUGE Cycle 3 architecture + 12-term equation
 - Murphy D.T. (2026), PAPER_067 � AGN systems UQFF (M87*, CenA)
@@ -279,7 +281,7 @@ This is the **UQFF Complete Quasar Jet Equation** � a single equation governin
 - Bridle A.H. & Perley R.A. (1984), ARA&A 22, 319 � Radio jet surveys (M87, CenA)
 .Groups[1].Value  � UQFF Navier-Stokes Quasar Jets: Jos Stam Stable Fluids + SCm Force Integration
 
-**Title:** UQFF Star-Magic Navier-Stokes Quasar Jet Equation � Jos Stam Stable Fluids Solver with SCm Force Integration: du/dt + f_jet = v_SCm/10 and the Millennium Bridge
+**Title:** UQFF Star-Magic Navier-Stokes Quasar Jet Equation – Jos Stam Stable Fluids Solver with SCm Force Integration: du/dt + f_jet = v_SCm/10 and the Millennium Bridge
 
 **Author:** Daniel T. Murphy  
 **Framework:** UQFF Star-Magic (kappa=0.0005/day, [SSq]=0.57, fTRZ=0.1)  

@@ -1,4 +1,4 @@
-﻿# PAPER_369 — Navier-Stokes Stable Fluids UQFF Quasar Jet Integration
+# PAPER_369 — Navier-Stokes Stable Fluids UQFF Quasar Jet Integration
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2  
 **Session:** 100  

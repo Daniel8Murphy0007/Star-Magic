@@ -1,8 +1,10 @@
+# PAPER_135: UQFF Superconductive Mode Quasar Jet Dynamics – Unequal Opposing Jet Lengths as Direct Consequence of cos(pt_n) Temporal Asymmetry: v_SCm = 108 m/s Speed Limit and Navier-Stokes Millennium Problem Connection
 
-**Title:** UQFF Superconductive Mode Quasar Jet Dynamics � Unequal Opposing Jet Lengths as Direct Consequence of cos(pt_n) Temporal Asymmetry: v_SCm = 108 m/s Speed Limit and Navier-Stokes Millennium Problem Connection
+
+**Title:** UQFF Superconductive Mode Quasar Jet Dynamics – Unequal Opposing Jet Lengths as Direct Consequence of cos(pt_n) Temporal Asymmetry: v_SCm = 108 m/s Speed Limit and Navier-Stokes Millennium Problem Connection
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57, �_i = 0.6)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57, κ_i = 0.6)  
 **Date:** March 2026  
 **Domain:** �2.1 Quasar Jet Dynamics / Millennium Problems (3419da89)  
 **Source Thread:** `grok_share_3419da8930c748568b7f2bea0ea9c88e_content.txt`  
@@ -18,7 +20,7 @@ Relativistic jets from active galactic nuclei (AGN) and quasars routinely exhibi
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0�10?4 day?�, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -28,7 +30,7 @@ Relativistic jets from active galactic nuclei (AGN) and quasars routinely exhibi
 |--------|-------------|-------------|-------|-----------|
 | Cygnus A | ~60 kpc | ~45 kpc | 1.33 | VLA radio maps |
 | 3C 273 | ~57 kpc (optical) | Counter-jet invisible | >10 | HST/VLBI |
-| M87 | ~1.5 kpc (inner) | Counter-jet very faint | ~5�10 | EHT 2019 |
+| M87 | ~1.5 kpc (inner) | Counter-jet very faint | ~5×10 | EHT 2019 |
 | PKS 0637�752 | ~300 kpc | ~50 kpc | 6 | VLBI |
 
 Standard explanation (Doppler beaming ratio):
@@ -165,7 +167,7 @@ print(f"Decay at t=1000 yr = {np.exp(-alpha * 1000*365.25):.4f}")
 
 | Prediction | UQFF | Observed | Agreement |
 |-----------|------|---------|-----------|
-| Jet asymmetry mechanism | cos(pt_n) temporal asymmetry | Ratio 1.3�10� observed | ? (order of magnitude) |
+| Jet asymmetry mechanism | cos(pt_n) temporal asymmetry | Ratio 1.3×10� observed | ? (order of magnitude) |
 | Cygnus A ?L | ~37 kpc predicted | ~15 kpc observed | ? same order |
 | v_SCm cap | 108 m/s (trapped SCm) | AGN jet speeds ~0.3�0.99c | Consistent for bulk |
 | F_SCm smoothness | Globally bounded (e^{-at}) | No jet blow-up observed | ? |
@@ -192,10 +194,10 @@ UQFF resolves the quasar jet asymmetry mystery: opposing jets are unequal becaus
 *CP2 Mode: Superconductive/Resonant | Thread: 3419da89 | Session: 44 | Domain: �2.1*
 .Groups[1].Value  � UQFF Quasar Jets: Negative Time cos(pt_n) Asymmetry and Navier-Stokes Millennium
 
-**Title:** UQFF Superconductive Mode Quasar Jet Dynamics � Unequal Opposing Jet Lengths as Direct Consequence of cos(pt_n) Temporal Asymmetry: v_SCm = 108 m/s Speed Limit and Navier-Stokes Millennium Problem Connection
+**Title:** UQFF Superconductive Mode Quasar Jet Dynamics – Unequal Opposing Jet Lengths as Direct Consequence of cos(pt_n) Temporal Asymmetry: v_SCm = 108 m/s Speed Limit and Navier-Stokes Millennium Problem Connection
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57, �_i = 0.6)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57, κ_i = 0.6)  
 **Date:** March 2026  
 **Domain:** �2.1 Quasar Jet Dynamics / Millennium Problems (3419da89)  
 **Source Thread:** `grok_share_3419da8930c748568b7f2bea0ea9c88e_content.txt`  

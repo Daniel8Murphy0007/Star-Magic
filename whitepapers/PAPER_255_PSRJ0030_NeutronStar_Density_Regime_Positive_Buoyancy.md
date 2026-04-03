@@ -1,4 +1,4 @@
-﻿# PAPER_255: PSR J0030+0451 Isolated Neutron Star — Density Regime Positive Buoyancy and F_neutron Dominance
+# PAPER_255: PSR J0030+0451 Isolated Neutron Star — Density Regime Positive Buoyancy and F_neutron Dominance
 
 **Author:** Daniel T. Murphy (daniel.murphy00@gmail.com)
 **Framework:** UQFF v4.27 — Star-Magic Physics
@@ -18,7 +18,7 @@ $$
 
 PSR J0030+0451 is an isolated millisecond pulsar at ~1,100 light-years, with a mass of approximately 1.4 M_sun confined to a radius of ~10 km (r = 104 m) — the compact geometry of a neutron star. This system is the **first isolated pulsar class** in the CP3 calculator, and it introduces a new UQFF regime defined by the neutron-star-density cross-section parameter `s_n ˜ 10³?`, representing the degenerate nuclear density of neutron star matter.
 
-In the ISM systems of PAPER_250–254, s_n ˜ 10?4 yields F_neutron = k_neutron × s_n = 106 N. For PSR J0030 at s_n = 10³?, F_neutron = 10¹° × 10³? = **104? N** — a difference of 53 orders of magnitude. This neutron force is the dominant UQFF term by far.
+In the ISM systems of PAPER_250–254, s_n ˜ 10⁻4 yields F_neutron = k_neutron × s_n = 106 N. For PSR J0030 at s_n = 10³?, F_neutron = 10¹° × 10³? = **104? N** — a difference of 53 orders of magnitude. This neutron force is the dominant UQFF term by far.
 
 The key **uniquely rare discovery** of this paper is that despite this 53-order amplification of F_neutron, and despite the compact scale (r = 104 m vs r = 6.17 × 10¹6 m for the SNRs), PSR J0030 is a **positive buoyancy** system: F_U_Bi ˜ +2.53 × 10²°8 N. The compact-scale geometry at ?0 = 10?¹² preserves the positive sign. The equivalence class extends across 14 orders of magnitude in radius and 53 orders in s_n.
 
@@ -79,7 +79,7 @@ The quadratic discriminant `b² - 4ac` with `a = 1.86×106`, `b = 4.72×10?³`, 
 
 The s_n parameter spans:
 ```
-s_n (ISM/SNR systems):  ˜ 10?4 ? F_neutron = 106 N  [PAPER_250–254]
+s_n (ISM/SNR systems):  ˜ 10⁻4 ? F_neutron = 106 N  [PAPER_250–254]
 s_n (PSR J0030):        ˜ 10³? ? F_neutron = 104? N [this paper]
 ```
 
@@ -107,7 +107,7 @@ This is an astronomically large DPM resonance, yet it is still invisible relativ
 
 PSR J0030+0451 is an ALMA Cycle 12 proposal target. Observable UQFF signatures include:
 
-- **Isotopic anomaly:** LENR neutron-capture at F_neutron = 104? N (53 orders above ISM) predicts elevated ²H/¹H > 10?5 and ¹³C/¹²C > 0.01 in the pulsar wind nebula — detectable with ALMA Band 6 at 230 GHz.
+- **Isotopic anomaly:** LENR neutron-capture at F_neutron = 104? N (53 orders above ISM) predicts elevated ²H/¹H > 10⁻5 and ¹³C/¹²C > 0.01 in the pulsar wind nebula — detectable with ALMA Band 6 at 230 GHz.
 - **EHT polarimetry:** The extreme DPM_resonance ˜ 1.76 × 10³¹ at B0 = 108 T predicts distinctive helical B-field structure in the pulsar wind, detectable with EHT 20 µas resolution at 230 GHz.
 - **NICER hotspot:** PSR J0030+0451 hotspot morphology constrains the NS mass-radius relation; UQFF predicts F_U_Bi positive — consistent with a gravitationally stable bound NS (no anomalous mass loss or unbinding).
 

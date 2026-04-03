@@ -1,4 +1,4 @@
-﻿# PAPER_364 — ALICE Multiplicity Centrality: ρ_vac Ratio at Channel 18 and k_η Derivation
+# PAPER_364 — ALICE Multiplicity Centrality: ρ_vac Ratio at Channel 18 and k_η Derivation
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2  
 **Session:** 97  

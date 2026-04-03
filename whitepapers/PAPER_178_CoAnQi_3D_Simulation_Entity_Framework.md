@@ -1,4 +1,4 @@
-﻿# PAPER_178: CoAnQi 3D Simulation Entity Framework
+# PAPER_178: CoAnQi 3D Simulation Entity Framework
 ## OBJ I/O, Skeletal Animation, and Procedural Landscape
 ## Whitepaper §2.4-J | Thread 381a8fe7 | Session 48
 
@@ -13,7 +13,7 @@ ModelLoader.h through CoAnQiNode.py.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 

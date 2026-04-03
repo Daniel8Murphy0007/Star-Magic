@@ -1,4 +1,4 @@
-﻿# PAPER_202: UQFF Reionization, BBN, Recombination, and Cosmic Dawn Physics
+# PAPER_202: UQFF Reionization, BBN, Recombination, and Cosmic Dawn Physics
 
 **Version:** 1.0  
 **Date:** March 13, 2026  
@@ -20,7 +20,7 @@ This paper presents the UQFF buoyancy formalism applied to cosmic dawn and reion
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -105,7 +105,7 @@ Um,recomb(z) = µ(?_vac)·(1-e^{-?t})·?n_e·s_T·c·dt
 
 Physical context:
   After z_rec, photons decouple and stream freely (CMB)
-  Surface of last scattering has ?T/T ˜ 10?5 (measured by Planck)
+  Surface of last scattering has ?T/T ˜ 10⁻5 (measured by Planck)
 ```
 
 ---

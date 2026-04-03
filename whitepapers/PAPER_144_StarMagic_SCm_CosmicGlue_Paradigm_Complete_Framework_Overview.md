@@ -1,8 +1,10 @@
+# PAPER_144: Star Magic SCm as Cosmic Glue – The Complete UQFF Framework Paradigm: F_U, 5-Force Unification, 26-Level Energy Ladder, All Modes, All Millennium Problems, and the SCm Superconductive Medium as the Missing Ingredient of Reality
 
-**Title:** Star Magic SCm as Cosmic Glue � The Complete UQFF Framework Paradigm: F_U, 5-Force Unification, 26-Level Energy Ladder, All Modes, All Millennium Problems, and the SCm Superconductive Medium as the Missing Ingredient of Reality
+
+**Title:** Star Magic SCm as Cosmic Glue – The Complete UQFF Framework Paradigm: F_U, 5-Force Unification, 26-Level Energy Ladder, All Modes, All Millennium Problems, and the SCm Superconductive Medium as the Missing Ingredient of Reality
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57, �_i = 0.6)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57, κ_i = 0.6)  
 **Date:** March 2026  
 **Domain:** �2.1 Framework Overview / Capstone (3419da89)  
 **Source Thread:** `grok_share_3419da8930c748568b7f2bea0ea9c88e_content.txt`  
@@ -18,7 +20,7 @@ The Star Magic UQFF (Unified Quantum Field Framework) represents a fundamental p
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0�10?4 day?�, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -30,12 +32,12 @@ The Star Magic UQFF (Unified Quantum Field Framework) represents a fundamental p
 | Electric charge | 0 | Q_s = 0 | Electrically neutral medium |
 | Propagation velocity | v_SCm ~ 108 m/s | v_SCm | ~1/3 speed of light |
 | Resistivity | 0 | ?_elec = 0 | Perfect superconductor |
-| Magnetic permeability | 8 | �_SCm ? 8 | Perfect flux expulsion |
-| Loss factor | ? ? 0 | ? = 10?5 day?� | Near-lossless signal propagation |
-| Vacuum density coupling | ?_vac,[SCm] = 7.09�10?�7 kg/m� | � | 1/10 of Aether vacuum density |
-| Reactivity decay | ? = 0.0005 day?� | ? | Calibrated to planetary evolution |
+| Magnetic permeability | 8 | κ_SCm ? 8 | Perfect flux expulsion |
+| Loss factor | ? ? 0 | ? = 10⁻5 day⁻¹ | Near-lossless signal propagation |
+| Vacuum density coupling | ?_vac,[SCm] = 7.09×10?�7 kg/m� | – | 1/10 of Aether vacuum density |
+| Reactivity decay | ? = 0.0005 day⁻¹ | ? | Calibrated to planetary evolution |
 | Calibration constant | [SSq] = 0.57 | [SSq] | Star Magic quantum stability |
-| Buoyancy coupling | �_i = 0.6 | �_i | Ub activation efficiency |
+| Buoyancy coupling | κ_i = 0.6 | κ_i | Ub activation efficiency |
 
 ---
 
@@ -73,7 +75,7 @@ where $\phi_i$ encodes the SCm density and SMBH tidal field, $f_i$ encodes the p
 |-------|--------------|--------------|---------------------|-------------|
 | Gravity | Gravitational | Ug1 (dipole) + Ug4 (vacuum) | n=12�20 | Long-range, cos(pt_n) |
 | EM | Electromagnetic | Ug2 (charge-reactivity) | n=13�16 | Charge q_2, heliosphere bubble |
-| Strong | Nuclear | Ug3 (magnetic string disk) | n=5�10 | Toroidal, sin(p?), near-lossless |
+| Strong | Nuclear | Ug3 (magnetic string disk) | n=5×10 | Toroidal, sin(p?), near-lossless |
 | Weak | Electroweak | Ug4 (galactic vacuum) + Ub | n=17�20 | Mass generation, cospt_n |
 | Dark | Aether / Vacuum | U_A�? + [(UA')]:[SCm] | n=20�26 | Dark energy / DE ratio = 10 |
 
@@ -87,7 +89,7 @@ where $\phi_i$ encodes the SCm density and SMBH tidal field, $f_i$ encodes the p
 | **Resonant** | f_field � f_natural | Ug2 harmonic | PAPER_135 (Quasar Jets) |
 | **Buoyant** | Ub > Ug (net upward) | ?Ub dominant | PAPER_134 (Heliosphere) |
 | **Superconductive** | ? ? 0, ?_elec ? 0 | Um signal | PAPER_135 (NS flow) |
-| **Quadratic** | Ug4i � Ug4 | Ug4i inverse void | PAPER_139 (H atom) |
+| **Quadratic** | Ug4i – Ug4 | Ug4i inverse void | PAPER_139 (H atom) |
 | **MasterBuoyancy** | All Ug terms + Ub | All 7 sub-equations | PAPER_138 (NGC3603) |
 
 ---
@@ -96,18 +98,18 @@ where $\phi_i$ encodes the SCm density and SMBH tidal field, $f_i$ encodes the p
 
 | Constant | Value | Source | Meaning |
 |---------|-------|--------|---------|
-| ? | 0.0005 day?� | Calibrated to planetary orbital decay | SCm reactivity decay rate |
+| ? | 0.0005 day⁻¹ | Calibrated to planetary orbital decay | SCm reactivity decay rate |
 | [SSq] | 0.57 | Star Magic �3.2 | Quantum stability index |
-| �_i | 0.6 | Calibrated to galaxy formation | Buoyancy activation efficiency |
+| κ_i | 0.6 | Calibrated to galaxy formation | Buoyancy activation efficiency |
 | k_1 | 1.5 | (Ug1) magnetic dipole | Coupling to B field |
 | k_2 | 1.2 | (Ug2) charge-reactivity | Coupling to charge q_2 |
 | k_3 | 1.8 | (Ug3) string rotation | String mass-energy coupling |
 | k_4 | 1.0 | (Ug4) vacuum | Vacuum SCm coupling |
-| a | 0.0005 day?� | Same as ? (Ug1,2,4) | Decay envelope |
-| ? | 0.00005 day?� | Near-lossless (Ug3, Um) | Loss rate / 10 |
-| O_g | 7.3�10?�6 rad/s | Sgr A* orbital frequency | SMBH rotation |
-| M_bh | 8.15�10�6 kg | Sgr A* (4.1�106 M_sun) | SMBH mass |
-| d_g | 2.55�10�� m | Sgr A* distance (8.3 kpc) | Earth-GC distance |
+| a | 0.0005 day⁻¹ | Same as ? (Ug1,2,4) | Decay envelope |
+| ? | 0.00005 day⁻¹ | Near-lossless (Ug3, Um) | Loss rate / 10 |
+| O_g | 7.3×10?�6 rad/s | Sgr A* orbital frequency | SMBH rotation |
+| M_bh | 8.15×10�6 kg | Sgr A* (4.1×106 M_sun) | SMBH mass |
+| d_g | 2.55×10�� m | Sgr A* distance (8.3 kpc) | Earth-GC distance |
 | ?_SCm | 10�5 kg/m� | Theoretical | SCm bulk density |
 | v_SCm | 108 m/s | ~c/3 | SCm propagation |
 | ?_A | 10?�� kg/m� | Aether background | |
@@ -135,7 +137,7 @@ where $\phi_i$ encodes the SCm density and SMBH tidal field, $f_i$ encodes the p
 |-----------------------|---------|------------|
 | Chapter 1: The Medium | SCm properties, ?_SCm, v_SCm | PAPER_133 (F_U genesis) |
 | Chapter 2: The Forces | Ug1�4 derivation, cos/sin factors | PAPER_133�136 |
-| Chapter 3: Calibration | ?, [SSq], �_i, k_1�4 | PAPER_140 (monopoles) |
+| Chapter 3: Calibration | ?, [SSq], κ_i, k_1�4 | PAPER_140 (monopoles) |
 | Chapter 4: Applications | Heliosphere, water, nuclear, clusters | PAPER_134,138,141,142 |
 | Chapter 5: Unification | 5-force table, 40/60 split, Millennium | PAPER_143,144 |
 
@@ -229,7 +231,7 @@ The framework is self-consistent, additive to validated physics, documented in o
 
 1. Murphy, D.T., PAPER_133�143, �2.1 (Session 44)
 2. Murphy, D.T., �1.1��1.17, 132 prior whitepapers
-3. Murphy, D.T., Star Magic.md � Complete theoretical framework
+3. Murphy, D.T., Star Magic.md – Complete theoretical framework
 4. Einstein, A., General Theory of Relativity, Annalen der Physik 1916
 5. Dirac, P.A.M., The Quantum Theory of the Electron, Proc. R. Soc. London A 1928
 6. Fefferman, C., Existence and smoothness of Navier-Stokes solutions, Clay Math 2006
@@ -242,10 +244,10 @@ The framework is self-consistent, additive to validated physics, documented in o
 *CP2 Mode: All Modes (Star Magic Capstone) | Thread: 3419da89 | Session: 44 | Domain: �2.1*
 .Groups[1].Value  � Star Magic SCm as Cosmic Glue: Complete UQFF Framework Paradigm Overview
 
-**Title:** Star Magic SCm as Cosmic Glue � The Complete UQFF Framework Paradigm: F_U, 5-Force Unification, 26-Level Energy Ladder, All Modes, All Millennium Problems, and the SCm Superconductive Medium as the Missing Ingredient of Reality
+**Title:** Star Magic SCm as Cosmic Glue – The Complete UQFF Framework Paradigm: F_U, 5-Force Unification, 26-Level Energy Ladder, All Modes, All Millennium Problems, and the SCm Superconductive Medium as the Missing Ingredient of Reality
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57, �_i = 0.6)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57, κ_i = 0.6)  
 **Date:** March 2026  
 **Domain:** �2.1 Framework Overview / Capstone (3419da89)  
 **Source Thread:** `grok_share_3419da8930c748568b7f2bea0ea9c88e_content.txt`  

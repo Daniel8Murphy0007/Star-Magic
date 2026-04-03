@@ -238,7 +238,7 @@ field configurations, establishing Δ > 0 from vacuum topology rather than pertu
 - Wolfram, S. (2002). *A New Kind of Science*. Wolfram Media.
 - Burnside, W. (1897). *Theory of Groups of Finite Order*. Cambridge.
 - Cheeger, J. (1970). *Problems in Analysis*. Princeton Univ. Press.
-- FLAG Collaboration (2023). *Lattice QCD � Glueball mass spectrum.*
+- FLAG Collaboration (2023). *Lattice QCD – Glueball mass spectrum.*
 - Erlich, J. et al. (2005). *AdS/QCD*. Phys. Rev. Lett. 95, 261602.
 - Murphy, D. T. (2026). *PAPER_429 � Three UQFF Number Systems*, Star Magic Repository.
 - Murphy, D. T. (2026). *PAPER_543 � NS Discrete Hypergraph Regularity*, Star Magic Repository.

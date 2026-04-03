@@ -1,8 +1,10 @@
+# PAPER_142: UQFF Resonant + Quadratic Mode Hydrogen-to-Extended-Periodic-Table Resonance – H_res Full Equation for Z=1�126 (118 Known + 8 Theoretical Island-of-Stability), Shell Corrections S_shell, and AME2020 Validation
 
-**Title:** UQFF Resonant + Quadratic Mode Hydrogen-to-Extended-Periodic-Table Resonance � H_res Full Equation for Z=1�126 (118 Known + 8 Theoretical Island-of-Stability), Shell Corrections S_shell, and AME2020 Validation
+
+**Title:** UQFF Resonant + Quadratic Mode Hydrogen-to-Extended-Periodic-Table Resonance – H_res Full Equation for Z=1�126 (118 Known + 8 Theoretical Island-of-Stability), Shell Corrections S_shell, and AME2020 Validation
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57, �_i = 0.6)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57, κ_i = 0.6)  
 **Date:** March 2026  
 **Domain:** �2.1 Nuclear Physics / Extended Periodic Table (3419da89)  
 **Source Thread:** `grok_share_3419da8930c748568b7f2bea0ea9c88e_content.txt`  
@@ -18,7 +20,7 @@ The UQFF H_res resonance equation provides a universal voltage-analog signature 
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0�10?4 day?�, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -231,10 +233,10 @@ The UQFF H_res equation provides the first single-formula nuclear resonance desc
 *CP2 Mode: Resonant + Quadratic (Shell Corrections) | Thread: 3419da89 | Session: 44 | Domain: �2.1*
 .Groups[1].Value  � UQFF Hydrogen PToE Resonance H_res: Z=1�126 Complete Shell and Magic Number Integration
 
-**Title:** UQFF Resonant + Quadratic Mode Hydrogen-to-Extended-Periodic-Table Resonance � H_res Full Equation for Z=1�126 (118 Known + 8 Theoretical Island-of-Stability), Shell Corrections S_shell, and AME2020 Validation
+**Title:** UQFF Resonant + Quadratic Mode Hydrogen-to-Extended-Periodic-Table Resonance – H_res Full Equation for Z=1�126 (118 Known + 8 Theoretical Island-of-Stability), Shell Corrections S_shell, and AME2020 Validation
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57, �_i = 0.6)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57, κ_i = 0.6)  
 **Date:** March 2026  
 **Domain:** �2.1 Nuclear Physics / Extended Periodic Table (3419da89)  
 **Source Thread:** `grok_share_3419da8930c748568b7f2bea0ea9c88e_content.txt`  

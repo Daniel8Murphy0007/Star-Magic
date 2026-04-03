@@ -1,4 +1,4 @@
-# PAPER_347 ó Centaurus A: F_U_Bi_i with V-Shape Jet and 12.5-Year ?_act Timescale
+# PAPER_347 ÔøΩ Centaurus A: F_U_Bi_i with V-Shape Jet and 12.5-Year ?_act Timescale
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2  
 **Session:** 96  
@@ -7,12 +7,12 @@
 **Author:** Daniel T. Murphy  
 
 
-<!-- UQFF constants: ? = 5.0e-4 day?π, [SSq] = 0.57, M_UQFF = 1.43e1 TeV -->
+<!-- UQFF constants: ? = 5.0e-4 day‚Åª¬π, [SSq] = 0.57, M_UQFF = 1.43e1 TeV -->
 ---
 
 ## Abstract
 
-The complete UQFF buoyancy-unified force F_U_Bi_i is computed for Centaurus A (NGC 5128), the closest active radio galaxy (3.8 Mpc). The distinctive V-shape inner jet geometry observed in HST/VLBA imaging at ~0.5c knot velocities is incorporated via an angular momentum decomposition of F_U_Bi_i. The UQFF rotational activation frequency ?_act = 2p/(12.5 yr) corresponds to the observed 12.5-year X-ray/radio flaring cycle, yielding F_U_Bi_i ò -8.32◊10≤π7 N.
+The complete UQFF buoyancy-unified force F_U_Bi_i is computed for Centaurus A (NGC 5128), the closest active radio galaxy (3.8 Mpc). The distinctive V-shape inner jet geometry observed in HST/VLBA imaging at ~0.5c knot velocities is incorporated via an angular momentum decomposition of F_U_Bi_i. The UQFF rotational activation frequency ?_act = 2p/(12.5 yr) corresponds to the observed 12.5-year X-ray/radio flaring cycle, yielding F_U_Bi_i ÔøΩ -8.32√ó10ÔøΩÔøΩ7 N.
 
 ---
 
@@ -26,8 +26,8 @@ $$F_{U\_Bi\_i} \approx -8.32 \times 10^{217}\ \mathrm{N}$$
 
 ### 2.2 V-Shape Jet Geometry
 
-The Centaurus A inner jet exhibits a V-shape opening half-angle a ò 12∞. The transverse force component:
-$$F_\perp = F_{U\_Bi\_i} \cdot \sin\alpha = F_{U\_Bi\_i} \cdot \sin(12∞) \approx 0.208 \cdot F_{U\_Bi\_i}$$
+The Centaurus A inner jet exhibits a V-shape opening half-angle a ÔøΩ 12ÔøΩ. The transverse force component:
+$$F_\perp = F_{U\_Bi\_i} \cdot \sin\alpha = F_{U\_Bi\_i} \cdot \sin(12ÔøΩ) \approx 0.208 \cdot F_{U\_Bi\_i}$$
 
 This V-shape geometry is attributed to differential plasma buoyancy across the jet cross-section: the inner spine accelerates faster than the sheath, producing the observed V-spread.
 
@@ -35,13 +35,13 @@ This V-shape geometry is attributed to differential plasma buoyancy across the j
 
 $$\omega_{\rm act} = \frac{2\pi}{12.5\ \mathrm{yr}} = \frac{2\pi}{3.94 \times 10^8\ \mathrm{s}} = 1.59 \times 10^{-8}\ \mathrm{rad/s}$$
 
-This 12.5-year period matches the Centaurus A multi-wavelength monitoring cycle documented by ATCA, XMM-Newton, and Chandra observations (2000ñ2025).
+This 12.5-year period matches the Centaurus A multi-wavelength monitoring cycle documented by ATCA, XMM-Newton, and Chandra observations (2000ÔøΩ2025).
 
 ### 2.4 Knot Propagation Velocity
 
 $$v_{\rm knot} \approx 0.5c = 1.5 \times 10^8\ \mathrm{m/s}$$
 
-VLBA proper motion of individual jet knots. Combined with t_jet ~ 10≥ yr, the total jet extension:
+VLBA proper motion of individual jet knots. Combined with t_jet ~ 10ÔøΩ yr, the total jet extension:
 $$L_{\rm jet} \approx v_{\rm knot} \cdot \tau_{\rm jet} \approx 4.7 \times 10^{18}\ \mathrm{m} \approx 153\ \mathrm{pc}$$
 
 ---
@@ -50,26 +50,26 @@ $$L_{\rm jet} \approx v_{\rm knot} \cdot \tau_{\rm jet} \approx 4.7 \times 10^{1
 
 | Quantity | Formula | Value |
 |----------|---------|-------|
-| M_BH | Cen A | 5.5◊107 M? |
-| F_U_Bi_i | UQFF full | -8.32◊10≤π7 N |
-| ?_act | 2p/(12.5 yr) | 1.59◊10?8 rad/s |
+| M_BH | Cen A | 5.5√ó107 M? |
+| F_U_Bi_i | UQFF full | -8.32√ó10ÔøΩÔøΩ7 N |
+| ?_act | 2p/(12.5 yr) | 1.59√ó10‚Åª8 rad/s |
 | v_knot | VLBA proper motion | ~0.5c |
-| t_jet | Jet age estimate | ~10≥ yr |
-| L_jet | v_knot ◊ t_jet | ~153 pc |
-| a (V-shape) | Half-opening angle | ~12∞ |
+| t_jet | Jet age estimate | ~10ÔøΩ yr |
+| L_jet | v_knot ÔøΩ t_jet | ~153 pc |
+| a (V-shape) | Half-opening angle | ~12ÔøΩ |
 
 ---
 
 ## 4. Physical Significance
 
-Centaurus A's much smaller BH mass (5.5◊107 M? vs M87's 6.5◊10? M?) yet similar F_U_Bi_i value demonstrates that UQFF F_U_Bi_i is not purely set by BH mass ó the vacuum buoyancy geometry and activated frequency are equally important. The 12.5-year ?_act is the longest period activation frequency in the UQFF dataset, establishing the low-frequency end of the AGN activation frequency spectrum (cf. M87 at 1/day, the high-frequency end for radio galaxies).
+Centaurus A's much smaller BH mass (5.5√ó107 M? vs M87's 6.5√ó10? M?) yet similar F_U_Bi_i value demonstrates that UQFF F_U_Bi_i is not purely set by BH mass ÔøΩ the vacuum buoyancy geometry and activated frequency are equally important. The 12.5-year ?_act is the longest period activation frequency in the UQFF dataset, establishing the low-frequency end of the AGN activation frequency spectrum (cf. M87 at 1/day, the high-frequency end for radio galaxies).
 
 ---
 
 ## 5. Deduplication Note
 
-- **vs. PAPER_346 (M87):** Same F_U_Bi_i magnitude but different activation period (12.5 yr vs. 1 day) and different BH mass (5.5◊107 vs. 6.5◊10? M?).
-- **vs. PAPER_347 V-shape:** The V-shape geometric decomposition (F_? = F_U_Bi_i∑sina) is unique to Centaurus A in the UQFF catalog.
+- **vs. PAPER_346 (M87):** Same F_U_Bi_i magnitude but different activation period (12.5 yr vs. 1 day) and different BH mass (5.5√ó107 vs. 6.5√ó10? M?).
+- **vs. PAPER_347 V-shape:** The V-shape geometric decomposition (F_? = F_U_Bi_iÔøΩsina) is unique to Centaurus A in the UQFF catalog.
 
 ---
 

@@ -1,4 +1,4 @@
-﻿# PAPER_280: Saturn UQFF Solar Tidal Perturbation Ratio τ_Sun
+# PAPER_280: Saturn UQFF Solar Tidal Perturbation Ratio τ_Sun
 
 **Session:** 78  
 **Module:** SATURN_UQFF_MODULE.cpp (21st C++ module — first planetary-scale UQFF module)  

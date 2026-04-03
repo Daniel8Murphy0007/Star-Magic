@@ -1,4 +1,4 @@
-﻿# PAPER_186: Solar System Canonical Body Reference — Four-Body Parameterization
+# PAPER_186: Solar System Canonical Body Reference — Four-Body Parameterization
 
 **Version:** 1.0  
 **Date:** March 13, 2026  
@@ -20,7 +20,7 @@ This paper documents the canonical parameter set for the four Solar System bodie
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -91,7 +91,7 @@ CelestialBody earth = {
     6.371e6,             // Rs: 6.371 × 106 m (mean radius)
     1e7,                 // Rb: 107 m (Van Allen belt inner edge)
     288.0,               // Ts_surface: 288 K (global mean surface temperature)
-    7.292e-5,            // omega_s: 7.292 × 10?5 rad/s (1 sidereal day)
+    7.292e-5,            // omega_s: 7.292 × 10⁻5 rad/s (1 sidereal day)
     3e-5,                // Bs_avg: 30 µT (Earth's mean field ~50 µT dipole/2)
     1e12,                // SCm_density: 10¹² kg/m³ (UQFF calibrated for rocky planet)
     1e-12,               // QUA: 10?¹² C
@@ -122,7 +122,7 @@ CelestialBody jupiter = {
     6.9911e7,            // Rs: 6.9911 × 107 m (equatorial)
     1e8,                 // Rb: 108 m (magnetosphere inner edge)
     165.0,               // Ts_surface: 165 K (cloud-top effective temperature)
-    1.76e-4,             // omega_s: 1.76 × 10?4 rad/s (9.93-hour rotation)
+    1.76e-4,             // omega_s: 1.76 × 10⁻4 rad/s (9.93-hour rotation)
     4e-4,                // Bs_avg: 400 µT (Jovian dipole ~420 µT equatorial)
     1e13,                // SCm_density: 10¹³ kg/m³ (metallic hydrogen mantle)
     1e-11,               // QUA: 10?¹¹ C (stormy ionosphere)
@@ -149,7 +149,7 @@ CelestialBody neptune = {
     2.4622e7,            // Rs: 2.4622 × 107 m (equatorial)
     5e7,                 // Rb: 5 × 107 m (magnetospheric inner boundary)
     72.0,                // Ts_surface: 72 K (effective temperature)
-    1.08e-4,             // omega_s: 1.08 × 10?4 rad/s (16.11-hour rotation)
+    1.08e-4,             // omega_s: 1.08 × 10⁻4 rad/s (16.11-hour rotation)
     1e-4,                // Bs_avg: 100 µT (highly tilted dipole ~14–16 µT at 1 R_N)
     1e11,                // SCm_density: 10¹¹ kg/m³ (ice giant, water/ammonia mantle)
     1e-13,               // QUA: 10?¹³ C

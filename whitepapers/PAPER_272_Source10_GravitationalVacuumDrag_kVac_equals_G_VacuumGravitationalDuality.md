@@ -14,7 +14,7 @@ The UQFF Source10 Catalogue introduces a vacuum repulsion force `F_vac_rep = k_v
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0Ã—10â»4 dayâ»Â¹, [SSq] = 0.57) uniquely enabling this analysis ï¿½ establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -200,7 +200,7 @@ This is significantly below the Pioneer anomaly (~8.74Ã—10â»Â¹â° m/sÂ²) and cu
 
 ---
 
-**UQFF computed:** UQFF vacuum correction factor ?²×[SSq]² = (5.0e-4)² × 0.57² = 8.1e-8; predicted ? deviation = 8.1e-8 × ?_?_obs.
+**UQFF computed:** UQFF vacuum correction factor ?ï¿½ï¿½[SSq]ï¿½ = (5.0e-4)ï¿½ â‰ˆ 0.57ï¿½ = 8.1e-8; predicted ? deviation = 8.1e-8 ï¿½ ?_?_obs.
 
 ## References
 

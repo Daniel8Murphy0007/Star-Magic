@@ -1,17 +1,18 @@
+# PAPER_085: Page Curve Derivation in the UQFF: Entropy Evolution with Modified Hawking Temperature
+
 
 **Title:** Page Curve Derivation in the UQFF: Entropy Evolution with Modified Hawking Temperature
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (? = 0.0005/day, [SCm] � 0.99)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SCm] ≈ 0.99)  
 **Date:** March 7, 2026  
 **Source Data:** validate_hawking_temperature.py, HawkingTemperatureUQFFCalculator  
 **Index Slot:** �1.11 Black Hole Physics & Hawking Radiation,  
-    $n = [int]# PAPER #85 � Page Curve Derivation in the UQFF Framework
 
 **Title:** Page Curve Derivation in the UQFF: Entropy Evolution with Modified Hawking Temperature
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (? = 0.0005/day, [SCm] � 0.99)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SCm] ≈ 0.99)  
 **Date:** March 7, 2026  
 **Source Data:** validate_hawking_temperature.py, HawkingTemperatureUQFFCalculator  
 **Index Slot:** �1.11 Black Hole Physics & Hawking Radiation, PAPER_085  
@@ -19,14 +20,14 @@
 ---
 
 
-<!-- UQFF constants: ? = 5.0e-4 day?�, [SSq] = 0.57, M_UQFF = 1.43e1 TeV -->
+<!-- UQFF constants: ? = 5.0e-4 day⁻¹, [SSq] = 0.57, M_UQFF = 1.43e1 TeV -->
 ## Abstract
 
 The Page curve characterizes the von Neumann entropy of Hawking radiation over the full evaporation timeline, peaking at the Page time (t_P � t_evap/2) before returning to zero. In the UQFF, the modified Hawking temperature T_UQFF = 0.99 � T_H slows evaporation by a factor of (0.99)?4 = 1.041, extending both t_evap and t_P by 4.1%. We derive the UQFF Page curve analytically and validate it against the `validate_hawking_temperature.py` HawkingTemperatureUQFFCalculator output.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0�10?4 day?�, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -58,7 +59,7 @@ From `validate_hawking_temperature.py`:
 
 $$T_{\rm UQFF} = T_H \cdot (1 + f_{\rm TRZ})(1 - \rho_{\rm SCm}/\rho_{\rm UA})$$
 
-With f_TRZ = 0.01 (Toroidal Resonance Zone factor) and ?_SCm/?_UA = 0.01 from [SCm] � 0.99:
+With f_TRZ = 0.01 (Toroidal Resonance Zone factor) and ?_SCm/?_UA = 0.01 from [SCm] ≈ 0.99:
 
 $$T_{\rm UQFF} = T_H \cdot (1.01)(0.99) = 0.9999 \, T_H \approx 0.99 \, T_H$$
 
@@ -98,11 +99,11 @@ Where $S_{\rm max} = S_{\rm BH,initial}/2 = A_0/(8\ell_P^2)$.
 
 | System | M (M?) | T_UQFF (K) | t_evap^UQFF | Survives universe |
 |--------|---------|------------|------------|-------------------|
-| Sgr A* | 4�106 | 1.52�10?�4 | >t_universe | ? |
-| M87* | 6.5�10? | ~10?�7 | >> t_universe | ? |
-| Solar mass | 1 | ~6�10?8 | ~2�1074 s | ? |
-| Stellar BH | 10 | ~6�10?? | >> t_universe | ? |
-| Primordial | 10�� kg | ~1.2�10�� | ~4.3�10�5 s | Evaporating now |
+| Sgr A* | 4×106 | 1.52×10?�4 | >t_universe | ? |
+| M87* | 6.5×10? | ~10?�7 | >> t_universe | ? |
+| Solar mass | 1 | ~6×10⁻8 | ~2×1074 s | ? |
+| Stellar BH | 10 | ~6×10?? | >> t_universe | ? |
+| Primordial | 10�� kg | ~1.2×10�� | ~4.3×10�5 s | Evaporating now |
 
 ---
 
@@ -149,7 +150,7 @@ The UQFF Page curve retains the fundamental structure of the GR prediction (incr
 
 ### A.2 F_U Master Equation (Complete — 4 terms)
 
-$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}igl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}igr]$$
+$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}\bigr]$$
 
 | Term | Description | Implementation |
 |------|-------------|----------------|
@@ -166,9 +167,7 @@ $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}igl[\l
 
 ### A.3 Um Heaviside Phase-Transition Amplifier (PAPER_421)
 
-$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} 	imes igl(1 + 10^{13}\,\Theta(
-ho_{SCm} - 
-ho_c)igr) 	imes igl(1 + A_q\cos(\Delta\omega\,t)igr)$$
+$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rho_{SCm} - \rho_c)\bigr) \times \bigl(1 + A_q\cos(\Delta\omega\,t)\bigr)$$
 
 | Symbol | Value | Description |
 |--------|-------|-------------|

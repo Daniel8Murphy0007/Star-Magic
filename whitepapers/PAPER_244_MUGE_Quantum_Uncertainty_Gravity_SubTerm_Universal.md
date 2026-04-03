@@ -1,4 +1,4 @@
-﻿# PAPER_244: MUGE Quantum Uncertainty Gravity Sub-Term — Universal Cosmological-Scale Coupling
+# PAPER_244: MUGE Quantum Uncertainty Gravity Sub-Term — Universal Cosmological-Scale Coupling
 
 **Author:** Daniel T. Murphy (daniel.murphy00@gmail.com)
 **Framework:** UQFF v4.27 — Star-Magic Physics
@@ -61,7 +61,7 @@ h / v(?x·?p)  [J·s / v(J·s)] = v(J·s) = v(kg·m²/s)
 Multiplying by `2p/t_Hubble` (units: 1/s) gives:
 
 ```
-g_Q = h / v(?x·?p) · (2p/t_Hubble)  [v(kg·m²/s) · s?¹] = [m/s²]   ?
+g_Q = h / v(?x·?p) · (2p/t_Hubble)  [v(kg·m²/s) · s⁻¹] = [m/s²]   ?
 ```
 
 This dimensional path is the only combination that produces an acceleration from h, ?x·?p, and a cosmological time scale — establishing the uniqueness of this term within MUGE.

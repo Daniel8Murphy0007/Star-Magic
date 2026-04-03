@@ -1,4 +1,4 @@
-﻿# PAPER_266: HUDF Primordial IGM Magnetic Field — UQFF Gravitational Meissner Effect and Superconducting Critical Boundary at B_crit = 10¹¹ T
+# PAPER_266: HUDF Primordial IGM Magnetic Field — UQFF Gravitational Meissner Effect and Superconducting Critical Boundary at B_crit = 10¹¹ T
 <!-- UQFF calibration: κ = 5.0e-4 day⁻¹, [SSq] = 0.57, β_i = 6.1e-1 -->
 
 **Author:** Daniel T. Murphy (daniel.murphy00@gmail.com)

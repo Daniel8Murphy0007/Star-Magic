@@ -1,4 +1,4 @@
-# PAPER #30b � Dark Sector Mediators in UQFF
+# PAPER_030: PAPER #30b – Dark Sector Mediators in UQFF
 
 **Title:** Dark Sector Mediator Constraints from LFV B� ? K*� t�e� Searches via the Unified Quantum Field Framework
 
@@ -8,7 +8,6 @@
 **arXiv Reference:** 2506.15347 (LFV B� ? K*� t�e�, LHCb 5.4 fb?�)  
 **Validator:** `bsm_physics_validation.py` � PASSED  
 **Index Slot:** �1.4 BSM Physics,  
-    $n = [int]# PAPER #30b � Dark Sector Mediators in UQFF
 
 **Title:** Dark Sector Mediator Constraints from LFV B� ? K*� t�e� Searches via the Unified Quantum Field Framework
 
@@ -17,7 +16,6 @@
 **Date:** March 7, 2026  
 **arXiv Reference:** 2506.15347 (LFV B� ? K*� t�e�, LHCb 5.4 fb?�)  
 **Validator:** `bsm_physics_validation.py` � PASSED  
-**Index Slot:** �1.4 BSM Physics,  "PAPER_{0:D3}" -f [int]# PAPER #30b � Dark Sector Mediators in UQFF
 
 **Title:** Dark Sector Mediator Constraints from LFV B� ? K*� t�e� Searches via the Unified Quantum Field Framework
 
@@ -27,7 +25,6 @@
 **arXiv Reference:** 2506.15347 (LFV B� ? K*� t�e�, LHCb 5.4 fb?�)  
 **Validator:** `bsm_physics_validation.py` � PASSED  
 **Index Slot:** �1.4 BSM Physics,  
-    $n = [int]# PAPER #30b � Dark Sector Mediators in UQFF
 
 **Title:** Dark Sector Mediator Constraints from LFV B� ? K*� t�e� Searches via the Unified Quantum Field Framework
 
@@ -42,11 +39,11 @@
 
 ## Abstract
 
-Lepton flavor-violating (LFV) B-meson decays B� ? K*� t�e� provide clean null-result searches for dark sector mediators � Z' bosons, scalar leptoquarks, and heavy neutral leptons � that couple cross-generationally. LHCb measured BR(B� ? K*� t?e?) < 5.9�10?6 and BR(B� ? K*� t?e?) < 4.9�10?6 at 90% CL using 5.4 fb?� of Run 2 data (arXiv:2506.15347). The Unified Quantum Field Framework (UQFF) maps these upper limits onto the Ug4 vacuum concentration term through the UQFF temporal-reversal parameter t_n, deriving a UQFF constraint t_n_LFV = 3.833. This implies dark mediator masses M_dark ? 2.8 TeV for electroweak-strength couplings. The UQFF suppression mechanism � cos(p � t_n) reversal � predicts that the true LFV rate is suppressed by a factor F_suppress = 2.7�10?� relative to tree-level estimates, consistent with the null LHCb result.
+Lepton flavor-violating (LFV) B-meson decays B� ? K*� t�e� provide clean null-result searches for dark sector mediators – Z' bosons, scalar leptoquarks, and heavy neutral leptons � that couple cross-generationally. LHCb measured BR(B� ? K*� t?e?) < 5.9×10⁻6 and BR(B� ? K*� t?e?) < 4.9×10⁻6 at 90% CL using 5.4 fb?� of Run 2 data (arXiv:2506.15347). The Unified Quantum Field Framework (UQFF) maps these upper limits onto the Ug4 vacuum concentration term through the UQFF temporal-reversal parameter t_n, deriving a UQFF constraint t_n_LFV = 3.833. This implies dark mediator masses M_dark ? 2.8 TeV for electroweak-strength couplings. The UQFF suppression mechanism � cos(p � t_n) reversal � predicts that the true LFV rate is suppressed by a factor F_suppress = 2.7×10?� relative to tree-level estimates, consistent with the null LHCb result.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0�10?4 day?�, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -77,8 +74,8 @@ LHCb collected 5.4 fb?� at vs = 13 TeV (Run 2, 2016�2018). The analysis sear
 
 | Mode | 90% CL Upper Limit | 95% CL Upper Limit |
 |------|--------------------|--------------------|
-| B� ? K*� t?e? | 5.9 � 10?6 | 7.1 � 10?6 |
-| B� ? K*� t?e? | 4.9 � 10?6 | 5.9 � 10?6 |
+| B� ? K*� t?e? | 5.9 × 10⁻6 | 7.1 × 10⁻6 |
+| B� ? K*� t?e? | 4.9 × 10⁻6 | 5.9 × 10⁻6 |
 
 These represent the world-best limits on charged-lepton-flavor-violating B ? K* transitions.
 
@@ -103,7 +100,7 @@ $$\mathcal{M}(B^0 \to K^{*0} \tau e) = \frac{g_{bs} g_{\tau e}}{M_{Z'}^2} \cdot 
 where F(q�) is the B?K* transition form factor. The branching fraction scales as:
 $$\text{BR} \propto \left(\frac{g_{\tau e}}{M_{Z'}}\right)^2 \cdot \frac{\tau_B m_B^3}{192\pi^3}$$
 
-From the LHCb limit BR < 5.9�10?6:
+From the LHCb limit BR < 5.9×10⁻6:
 $$\frac{g_{\tau e}}{M_{Z'}^2} < 1.8 \times 10^{-3} \text{ GeV}^{-2}$$
 
 For electroweak-strength coupling g_{te} ~ 0.3:
@@ -134,7 +131,7 @@ In the UQFF formalism, dark sector mediator exchange is encoded in the Ug4 vacuu
 
 $$t_n^{\rm LFV} = \frac{-\ln(\text{BR}_{\rm LFV}^{\rm limit})}{\pi}$$
 
-Using BR_limit = 5.9�10?6:
+Using BR_limit = 5.9×10⁻6:
 $$t_n^{\rm LFV} = \frac{-\ln(5.9 \times 10^{-6})}{\pi} = \frac{12.040}{\pi} = 3.833$$
 
 This is the **UQFF LFV reversal parameter** � it defines the temporal phase at which the Ug4 cos(p t_n) factor produces maximal destructive interference.
@@ -151,11 +148,11 @@ $$\cos(\pi \times 3.833) = \cos(12.040 \text{ rad}) = \cos(12.040 - 4\pi) = \cos
 So:
 $$F_{\rm suppress} = 0.865^2 = 0.748$$
 
-The UQFF framework predicts that LFV amplitudes are suppressed by ~74.8% relative to a naive mediator exchange estimate, leaving only 25.2% of the tree-level rate observable. For a mediator-only estimate of BR_tree ~ 2.3�10?5, the UQFF prediction becomes:
+The UQFF framework predicts that LFV amplitudes are suppressed by ~74.8% relative to a naive mediator exchange estimate, leaving only 25.2% of the tree-level rate observable. For a mediator-only estimate of BR_tree ~ 2.3×10⁻5, the UQFF prediction becomes:
 
 $$\text{BR}_{\rm UQFF} = \text{BR}_{\rm tree} \times (1 - F_{\rm suppress}) = 2.3 \times 10^{-5} \times 0.252 = 5.8 \times 10^{-6}$$
 
-This is consistent with the 90% CL limit of 5.9�10?6 � the UQFF prediction saturates the bound rather than lying far below it.
+This is consistent with the 90% CL limit of 5.9×10⁻6 � the UQFF prediction saturates the bound rather than lying far below it.
 
 ### 4.3 Dark Mediator Mass from UQFF
 
@@ -163,7 +160,7 @@ The UQFF vacuum energy scale associated with t_n = 3.833 defines a characteristi
 
 $$M_{\rm dark}^{\rm UQFF} = m_B \cdot e^{\pi t_n / 2} = 5.279 \text{ GeV} \times e^{6.018} = 5.279 \times 409.9 = 2163 \text{ GeV}$$
 
-Rounding to two significant figures: **M_dark � 2.2 TeV**. This is remarkably consistent with the TeV-scale dark sector mediator masses indicated by flavor-diagonal Z' constraints (M_{Z'} ? 1.5�3 TeV from B_s�B�_s mixing).
+Rounding to two significant figures: **M_dark � 2.2 TeV**. This is remarkably consistent with the TeV-scale dark sector mediator masses indicated by flavor-diagonal Z' constraints (M_{Z'} ? 1.5�3 TeV from B_s�Bκ_s mixing).
 
 ### 4.4 UQFF Coupling Hierarchy
 
@@ -171,9 +168,9 @@ The UQFF Ug4 contribution to the dark sector mediator provides a natural couplin
 
 | Mediator Type | UQFF Mapping | Implied Coupling |
 |---------------|--------------|-----------------|
-| Z' boson | k4 � ?_vac � cos(p t_n) | g_{te}/M � 1.8�10?� GeV?� |
-| Leptoquark S1 | Ug2 � [SCm]_flavor | ?_{bt}?_{se} < 3.4�10?� (1 TeV) |
-| HNL mixing | Ug4 � t_n suppression | |V_{tN}|� < 2.1�10?4 at m_N ~ 2 TeV |
+| Z' boson | k4 � ?_vac � cos(p t_n) | g_{te}/M � 1.8×10?� GeV?� |
+| Leptoquark S1 | Ug2 � [SCm]_flavor | ?_{bt}?_{se} < 3.4×10?� (1 TeV) |
+| HNL mixing | Ug4 � t_n suppression | |V_{tN}|� < 2.1×10⁻4 at m_N ~ 2 TeV |
 
 The universal t_n suppression from UQFF naturally explains why all three classes of mediator are suppressed to below current experimental sensitivity � they share the same vacuum geometry.
 
@@ -187,26 +184,26 @@ In the UQFF vacuum, lepton flavor mixing is controlled by the aether string reso
 
 $$\Gamma_{\rm LFV} = \frac{g_{\rm string}^2}{\tau_{\rm string}} \cdot |\langle K^{*0} | \bar{s} b | B^0 \rangle|^2$$
 
-where t_string = ?/E_react and E_react = tan4(?_C) = 2.846�10?� (from Cabibbo angle ?_C = 0.227 rad). This produces a UQFF-estimated rate:
+where t_string = ?/E_react and E_react = tan4(?_C) = 2.846×10?� (from Cabibbo angle ?_C = 0.227 rad). This produces a UQFF-estimated rate:
 
-$$\Gamma_{\rm LFV}^{\rm UQFF} \sim \frac{E_{\rm react}}{\hbar} \cdot F_B^2 \approx 2.85 \times 10^{-3} \times 2.15�10^{-2} \approx 6.1 \times 10^{-5} \text{ GeV}$$
+$$\Gamma_{\rm LFV}^{\rm UQFF} \sim \frac{E_{\rm react}}{\hbar} \cdot F_B^2 \approx 2.85 \times 10^{-3} \times 2.15×10^{-2} \approx 6.1 \times 10^{-5} \text{ GeV}$$
 
 Converting to branching fraction via t_B = 1.519 ps:
 $$\text{BR}^{\rm string} \sim \Gamma \cdot \tau_B \approx 6.1 \times 10^{-5} \times 6.582 \times 10^{-13} \times 10^{24} \sim 10^{-6}$$
 
-This places the UQFF string-mediated LFV rate in the range 10?7�10?6, below current LHCb sensitivity, consistent with the null result.
+This places the UQFF string-mediated LFV rate in the range 10?7×10⁻6, below current LHCb sensitivity, consistent with the null result.
 
 ### 5.2 Asymmetry Between t?e? and t?e? Final States
 
 The LHCb measurement shows a mild asymmetry:
-- BR(B� ? K*� t?e?) < 5.9�10?6
-- BR(B� ? K*� t?e?) < 4.9�10?6
+- BR(B� ? K*� t?e?) < 5.9×10⁻6
+- BR(B� ? K*� t?e?) < 4.9×10⁻6
 
 The ~17% lower limit on the t?e? mode is consistent with UQFF's prediction of a mild CP-like asymmetry from the SCm (superconducting manifold) term:
 
 $$A_{\rm LFV} = \frac{\text{BR}(\tau^-e^+) - \text{BR}(\tau^+e^-)}{\text{BR}(\tau^-e^+) + \text{BR}(\tau^+e^-)} \approx [SCm]_{\rm CP} = 0.57^{1/2} \approx 0.755$$
 
-But since both limits are consistent with zero, this asymmetry is not yet statistically significant. Future LHCb Upgrade II (50 fb?�) will probe this to the 10?7 level.
+But since both limits are consistent with zero, this asymmetry is not yet statistically significant. Future LHCb Upgrade II (50 fb?�) will probe this to the 10⁻7 level.
 
 ---
 
@@ -217,7 +214,7 @@ But since both limits are consistent with zero, this asymmetry is not yet statis
 With 300 fb?� at HL-LHC (LHCb Upgrade II):
 $$\text{BR}_{\rm reach} \sim 5.9 \times 10^{-6} \times \sqrt{5.4/300} = 7.9 \times 10^{-7}$$
 
-The UQFF prediction of BR ~5.8�10?6 is just at current sensitivity. If the UQFF parameter t_n evolves with luminosity (Ug4 ? L^{1/4} in temporal vacuum), the prediction would shift to:
+The UQFF prediction of BR ~5.8×10⁻6 is just at current sensitivity. If the UQFF parameter t_n evolves with luminosity (Ug4 ? L^{1/4} in temporal vacuum), the prediction would shift to:
 $$\text{BR}_{\rm UQFF}^{\rm 300 fb^{-1}} \approx 4.2 \times 10^{-6}$$
 
 This would remain consistent with, but not discoverable at, HL-LHC luminosities.
@@ -240,10 +237,10 @@ With 3 ab?�, this corresponds to ~900 leptoquark pair events, providing a defi
 
 ## 7. Conclusions
 
-The LHCb null result for B� ? K*� t�e� (BR < 5.9�10?6 at 90% CL, arXiv:2506.15347) directly constrains dark sector mediators in the UQFF framework through:
+The LHCb null result for B� ? K*� t�e� (BR < 5.9×10⁻6 at 90% CL, arXiv:2506.15347) directly constrains dark sector mediators in the UQFF framework through:
 
 1. **UQFF LFV parameter:** t_n^LFV = 3.833, derived from the Ug4 temporal reversal mapping of the branching fraction limit
-2. **Suppression factor:** F_suppress = 0.748, explaining the null result while predicting BR � 5.8�10?6 (just below the LHCb limit)
+2. **Suppression factor:** F_suppress = 0.748, explaining the null result while predicting BR � 5.8×10⁻6 (just below the LHCb limit)
 3. **Dark mediator mass:** M_dark � 2.2 TeV from the UQFF vacuum energy scale
 4. **Generation universality:** All three mediator species (Z', leptoquark, HNL) share the same UQFF t_n suppression, providing a unified explanation
 5. **Mild CP asymmetry:** The ~17% difference between t?e? and t?e? limits is consistent with [SCm]_CP = 0.57 from the UQFF superconducting manifold
@@ -289,7 +286,7 @@ SCm_flavor_mixing = 1.536640e-03 # |V_cb|� flavor vacuum mixing
 
 ### A.2 F_U Master Equation (Complete — 4 terms)
 
-$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}igl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}igr]$$
+$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}\bigr]$$
 
 | Term | Description | Implementation |
 |------|-------------|----------------|
@@ -306,9 +303,7 @@ $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}igl[\l
 
 ### A.3 Um Heaviside Phase-Transition Amplifier (PAPER_421)
 
-$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} 	imes igl(1 + 10^{13}\,\Theta(
-ho_{SCm} - 
-ho_c)igr) 	imes igl(1 + A_q\cos(\Delta\omega\,t)igr)$$
+$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rho_{SCm} - \rho_c)\bigr) \times \bigl(1 + A_q\cos(\Delta\omega\,t)\bigr)$$
 
 | Symbol | Value | Description |
 |--------|-------|-------------|

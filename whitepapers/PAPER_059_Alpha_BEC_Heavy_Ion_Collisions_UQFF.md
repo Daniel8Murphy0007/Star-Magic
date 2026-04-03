@@ -1,3 +1,5 @@
+# PAPER_059: Alpha-Conjugate Nuclear Collisions at 35 MeV/nucleon: Bose-Einstein Condensate Signatures and UQFF Buoyancy Interpretation
+
 
 **Title:** Alpha-Conjugate Nuclear Collisions at 35 MeV/nucleon: Bose-Einstein Condensate Signatures and UQFF Buoyancy Interpretation
 
@@ -7,7 +9,6 @@
 **Validator:** `bose_occupancy_validation.py`, `alpha_clustering_lenr_module.py`  
 **Source Data:** Schmidt et al. (2016) DOI:10.1393/ncc/i2016-16394-6, NIMROD-ISiS Detector Array  
 **Index Slot:** �1.8 Alpha Multiplicity & BEC Nuclear Physics,  
-    $n = [int]# PAPER #59 � Alpha Particle BEC in Heavy-Ion Collisions: UQFF Analysis
 
 **Title:** Alpha-Conjugate Nuclear Collisions at 35 MeV/nucleon: Bose-Einstein Condensate Signatures and UQFF Buoyancy Interpretation
 
@@ -22,11 +23,11 @@
 
 ## Abstract
 
-Alpha-conjugate nuclei (A = 4n: ��C, �8Si, 4�Ca) exhibit near-complete disassembly into alpha particles at mid-peripheral impact parameters in heavy-ion collisions at ~35 MeV/nucleon. Analysis of 4�Ca + 4�Ca collisions using the TAMU NIMROD-ISiS detector array reveals ~85% alpha-like fragment yields � consistent with transient Bose-Einstein condensate formation at nuclear temperatures T ~ 5 MeV. The UQFF framework interprets these clustering events via a negative buoyancy force (F_U_Bi_i = -4.8�106 N at nuclear scale), which stabilizes the alpha-conjugate clustering against thermal disassembly. The Ikeda diagram predicts 10 primary exit channels for 4�Ca; the UQFF successfully maps these using 26-layer field theory.
+Alpha-conjugate nuclei (A = 4n: ��C, �8Si, 4�Ca) exhibit near-complete disassembly into alpha particles at mid-peripheral impact parameters in heavy-ion collisions at ~35 MeV/nucleon. Analysis of 4�Ca + 4�Ca collisions using the TAMU NIMROD-ISiS detector array reveals ~85% alpha-like fragment yields � consistent with transient Bose-Einstein condensate formation at nuclear temperatures T ~ 5 MeV. The UQFF framework interprets these clustering events via a negative buoyancy force (F_U_Bi_i = -4.8×106 N at nuclear scale), which stabilizes the alpha-conjugate clustering against thermal disassembly. The Ikeda diagram predicts 10 primary exit channels for 4�Ca; the UQFF successfully maps these using 26-layer field theory.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0�10?4 day?�, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -43,7 +44,7 @@ Alpha-conjugate nuclei (A = 4n: ��C, �8Si, 4�Ca) exhibit near-complete d
 | Impact parameter | 5.0 fm (mid-peripheral) |
 | Detector | NIMROD-ISiS array, TAMU Cyclotron |
 
-This collision system is alpha-conjugate: 40 = 10 � 4, so 4�Ca has the maximum alpha-clustering potential.
+This collision system is alpha-conjugate: 40 = 10 × 4, so 4�Ca has the maximum alpha-clustering potential.
 
 ---
 
@@ -176,7 +177,7 @@ The ~106 N coherence force on neutron star surfaces reproduces the stabilization
 
 ### A.2 F_U Master Equation (Complete — 4 terms)
 
-$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}igl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}igr]$$
+$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}\bigr]$$
 
 | Term | Description | Implementation |
 |------|-------------|----------------|
@@ -193,9 +194,7 @@ $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}igl[\l
 
 ### A.3 Um Heaviside Phase-Transition Amplifier (PAPER_421)
 
-$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} 	imes igl(1 + 10^{13}\,\Theta(
-ho_{SCm} - 
-ho_c)igr) 	imes igl(1 + A_q\cos(\Delta\omega\,t)igr)$$
+$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rho_{SCm} - \rho_c)\bigr) \times \bigl(1 + A_q\cos(\Delta\omega\,t)\bigr)$$
 
 | Symbol | Value | Description |
 |--------|-------|-------------|

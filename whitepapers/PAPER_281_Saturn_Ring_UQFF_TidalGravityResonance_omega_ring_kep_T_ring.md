@@ -1,4 +1,4 @@
-﻿# PAPER_281: Saturn Ring UQFF Tidal Gravity Resonance — ω_ring_kep, T_ring = 11.78 h, g_ring_tidal
+# PAPER_281: Saturn Ring UQFF Tidal Gravity Resonance — ω_ring_kep, T_ring = 11.78 h, g_ring_tidal
 
 **Session:** 78  
 **Module:** SATURN_UQFF_MODULE.cpp (21st C++ module)  

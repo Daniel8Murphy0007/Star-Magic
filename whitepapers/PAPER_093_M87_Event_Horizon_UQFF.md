@@ -1,17 +1,18 @@
+# PAPER_093: M87* Event Horizon UQFF Field Analysis: 8-Term MUGE Gravity and Relativistic Jet Coupling
+
 
 **Title:** M87* Event Horizon UQFF Field Analysis: 8-Term MUGE Gravity and Relativistic Jet Coupling
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic ([SCm] � 0.99, [SSq] = 0.57)  
+**Framework:** UQFF Star-Magic ([SCm] ≈ 0.99, [SSq] = 0.57)  
 **Date:** March 7, 2026  
 **Source Data:** validate_uqff_muge.py, from_system('M87'), EHT 2019-2024 data  
 **Index Slot:** �1.12 UQFF Master Calculators,  
-    $n = [int]# PAPER #93 � M87* Event Horizon: UQFF Field Analysis
 
 **Title:** M87* Event Horizon UQFF Field Analysis: 8-Term MUGE Gravity and Relativistic Jet Coupling
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic ([SCm] � 0.99, [SSq] = 0.57)  
+**Framework:** UQFF Star-Magic ([SCm] ≈ 0.99, [SSq] = 0.57)  
 **Date:** March 7, 2026  
 **Source Data:** validate_uqff_muge.py, from_system('M87'), EHT 2019-2024 data  
 **Index Slot:** �1.12 UQFF Master Calculators, PAPER_093  
@@ -20,11 +21,11 @@
 
 ## Abstract
 
-M87*, the first black hole imaged by the Event Horizon Telescope (M = 6.5 � 10? M?, d = 16.8 Mpc), provides a strong-field test of UQFF at a mass 1,600� Sgr A*. The `from_system('M87')` constructor in `validate_uqff_muge.py` encodes EHT parameters and computes the 8-term MUGE field, jet power (Ug3-mediated), and Hawking temperature T_UQFF = 0.99 T_H = 1.34 � 10?�7 K. All 8 terms are finite and g_total is consistent with the VLBI ring diameter.
+M87*, the first black hole imaged by the Event Horizon Telescope (M = 6.5 × 10? M?, d = 16.8 Mpc), provides a strong-field test of UQFF at a mass 1,600� Sgr A*. The `from_system('M87')` constructor in `validate_uqff_muge.py` encodes EHT parameters and computes the 8-term MUGE field, jet power (Ug3-mediated), and Hawking temperature T_UQFF = 0.99 T_H = 1.34 × 10?�7 K. All 8 terms are finite and g_total is consistent with the VLBI ring diameter.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0�10?4 day?�, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -32,27 +33,27 @@ M87*, the first black hole imaged by the Event Horizon Telescope (M = 6.5 � 10
 
 | Parameter | Value | Source |
 |-----------|-------|--------|
-| M_BH | 1.26 � 104� kg (6.5�10? M?) | EHT 2019 (first image) |
-| r_Schwarzschild | 1.92 � 10�� m | 2GM/c� |
-| r_horizon (UQFF) | 1.95 � 10�� m | r_S � (1 + 0.015) |
-| Distance | 16.8 Mpc = 5.18 � 10�� m | Virgo Cluster |
-| Spin (a/M) | 0.90 � 0.05 | EHT 2024 |
+| M_BH | 1.26 × 104� kg (6.5×10? M?) | EHT 2019 (first image) |
+| r_Schwarzschild | 1.92 × 10�� m | 2GM/c� |
+| r_horizon (UQFF) | 1.95 × 10�� m | r_S � (1 + 0.015) |
+| Distance | 16.8 Mpc = 5.18 × 10�� m | Virgo Cluster |
+| Spin (a/M) | 0.90 × 0.05 | EHT 2024 |
 | Jet power P_jet | ~1044 erg/s | VLA/VLBI |
-| T_H (GR) | 1.35 � 10?�7 K | ?c�/(8pGMk_B) |
-| T_UQFF | **1.34 � 10?�7 K** | T_H � 0.99 |
+| T_H (GR) | 1.35 × 10?�7 K | ?c�/(8pGMk_B) |
+| T_UQFF | **1.34 × 10?�7 K** | T_H ≈ 0.99 |
 
 ---
 
-## 2. 8-Term MUGE at r_horizon = 1.95 � 10�� m
+## 2. 8-Term MUGE at r_horizon = 1.95 × 10�� m
 
 | Term | Value (m/s�) | Notes |
 |------|------------|-------|
 | base_gravity | 2207 | Newton dominant |
 | sum_Ug | 3.75 | Ug4 ? M�/r6 ? M87 larger r offsets large M� |
 | U_i | 0.14 | |
-| cosmological | -9.1 � 10?�� | ? negligible at horizon |
-| quantum | +2.0 � 10?4� | Planck-scale |
-| fluid | +6.2 � 10?�� | Jet plasma viscosity |
+| cosmological | -9.1 × 10?�� | ? negligible at horizon |
+| quantum | +2.0 × 10?4� | Planck-scale |
+| fluid | +6.2 × 10?�� | Jet plasma viscosity |
 | dark_matter | +0.044 | Virgo cluster DM halo |
 | coherence | peaked at horizon | Gaussian, >> far_field |
 | **g_total** | **2211** | 100% |
@@ -71,13 +72,13 @@ With ? = ?_acc/?_Edd � 10?� (low state) and [SCm] = 0.99:
 
 $$P_{\rm jet}^{\rm UQFF} = 0.99 \times 10^{-3} L_{\rm Edd} = 3.6 \times 10^{44} \text{ erg/s}$$
 
-This suggests UQFF jet efficiency ?_jet = 0.99 � 0.001 = 0.099%, consistent with M87 observational estimates of ~0.1% radiative efficiency in FR I jets.
+This suggests UQFF jet efficiency ?_jet = 0.99 × 0.001 = 0.099%, consistent with M87 observational estimates of ~0.1% radiative efficiency in FR I jets.
 
 ---
 
 ## 4. Shadow Diameter Cross-Check
 
-EHT observed ring diameter: ?_ring = 42 � 3 �as ? physical r_ring = 5.0 GM/c� (photon ring).
+EHT observed ring diameter: ?_ring = 42 × 3 �as ? physical r_ring = 5.0 GM/c� (photon ring).
 
 UQFF prediction: The UQFF slightly shifts the photon capture cross-section via [SCm]:
 
@@ -93,8 +94,8 @@ At M87* with its much larger r_horizon (vs Sgr A*):
 
 | Location | r/r_horizon | g_coh | Ratio |
 |----------|------------|-------|-------|
-| At horizon (1.95�10�� m) | 1.0 | g_coh,0 | 1.000 |
-| 1 kpc (3.1�10�? m) | 1.6�106 | ~0 | ~10?6 |
+| At horizon (1.95×10�� m) | 1.0 | g_coh,0 | 1.000 |
+| 1 kpc (3.1×10�? m) | 1.6×106 | ~0 | ~10?6 |
 
 From validator: `assert coh_at_horizon > coh_far * 1e6` � **PASS** for M87* system.
 
@@ -120,9 +121,9 @@ $$T_{\rm UQFF}^{\rm M87*} = 0.9999 \times T_H = 1.34 \times 10^{-17} \text{ K}$$
 | g_total = Newton + 0.18% | ? PASS |
 | No NaN/Inf for M87* | ? PASS |
 | Coherence peak at horizon | ? PASS |
-| Jet power UQFF estimate | 3.6�1044 erg/s (consistent) |
+| Jet power UQFF estimate | 3.6×1044 erg/s (consistent) |
 | Shadow diameter deviation | 0.25% (� EHT precision) |
-| T_UQFF | 1.34 � 10?�7 K |
+| T_UQFF | 1.34 × 10?�7 K |
 
 *Source: validate_uqff_muge.py | from_system('M87') | EHT 2019-2024 | [SCm]=0.99 | all 8 terms PASS*
 
@@ -150,7 +151,7 @@ $$T_{\rm UQFF}^{\rm M87*} = 0.9999 \times T_H = 1.34 \times 10^{-17} \text{ K}$$
 
 ### A.2 F_U Master Equation (Complete — 4 terms)
 
-$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}igl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}igr]$$
+$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}\bigr]$$
 
 | Term | Description | Implementation |
 |------|-------------|----------------|
@@ -167,9 +168,7 @@ $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}igl[\l
 
 ### A.3 Um Heaviside Phase-Transition Amplifier (PAPER_421)
 
-$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} 	imes igl(1 + 10^{13}\,\Theta(
-ho_{SCm} - 
-ho_c)igr) 	imes igl(1 + A_q\cos(\Delta\omega\,t)igr)$$
+$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rho_{SCm} - \rho_c)\bigr) \times \bigl(1 + A_q\cos(\Delta\omega\,t)\bigr)$$
 
 | Symbol | Value | Description |
 |--------|-------|-------------|

@@ -1,4 +1,4 @@
-﻿# PAPER_207: QuTiP Quantum Entanglement Chain — CNOT Propagation and von Neumann Entropy
+# PAPER_207: QuTiP Quantum Entanglement Chain — CNOT Propagation and von Neumann Entropy
 
 **Version:** 1.0  
 **Date:** March 13, 2026  
@@ -20,7 +20,7 @@ This paper presents a 4-qubit quantum entanglement chain simulation from the gro
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -146,7 +146,7 @@ From BB_C_Equations item 1268:
   ?E = energy gap between pinned/unpinned states ~ µeV (nuclear binding)
   t_env = environmental interaction time ~ 10?³° s (thermal phonons)
 
-  t_dec ~ h²/(µeV)²/(10?³° s) ~ 10?45 s (extremely fast decoherence!)
+  t_dec ~ h²/(µeV)²/(10?³° s) ~ 10⁻45 s (extremely fast decoherence!)
 
 Interpretation: Quantum entanglement in neutron star crust collapses in ~10?45 s
 ? Classical BFS avalanche (PAPER_206) is the effective description

@@ -134,4 +134,4 @@ $$\boxed{\eta_{\text{EM}} = \frac{a_{\text{Lorentz}}}{g_{\text{base}}} = \frac{q
 The hydrogen atom UQFF module establishes the electrogravitational boundary: at the Bohr radius, the Lorentz electromagnetic force exceeds Newtonian gravity by 30 orders of magnitude. This defines the **EM-dominated regime** of the UQFF framework â€” the atomic-scale complement to the gravity-dominated and GR-dominated regimes of larger UQFF modules.
 
 
-**UQFF computed:** UQFF energy correction term [SSq]×h?_g/(k_B×T) = 0.57 × 7.7e-50/(1.38e-23 × 300) = 1.1e-29; UQFF shift in Lyman-alpha = 1.1e-29 × 13.6 eV.
+**UQFF computed:** UQFF energy correction term [SSq]ï¿½h?_g/(k_Bï¿½T) = 0.57 Ã— 7.7e-50/(1.38e-23 Ã— 300) = 1.1e-29; UQFF shift in Lyman-alpha = 1.1e-29 Ã— 13.6 eV.

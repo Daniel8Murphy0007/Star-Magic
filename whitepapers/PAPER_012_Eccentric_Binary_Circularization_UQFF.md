@@ -3,17 +3,17 @@
 **Author:** Daniel T. Murphy  
 **Date:** March 5, 2026  
 **Session:** Phase 1 (Sessions 1�43)  
-**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57, �_i = 0.61)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57, κ_i = 0.61)  
 **Source:** `source27.cpp` (SOURCE27 namespace), `MAIN_1_CoAnQi.cpp`  
 **Cross-links:** PAPER_001 (GW170817 Damping), PAPER_003 (GW150914 BBH), PAPER_008 (Waveform Phase Evolution)
 
 ## Abstract
 
-Gravitational wave emission drives orbital circularization in compact binaries. We analyze eccentricity evolution in the Unified Quantum Field Framework (UQFF), where reduced energy loss (D�_total < 1) slows circularization timescales. For typical BNS systems entering LIGO band with e0 = 0.01, UQFF predicts residual eccentricity e_f = 0.003 at merger (vs e_f < 10?4 in GR), producing observable harmonic structure in the frequency spectrum. Young compact binaries (age < 107 yr) retain higher eccentricities under UQFF, increasing detection rates for eccentric mergers by factor ~3. We derive eccentricity evolution equations and predict third-generation detector capabilities for measuring UQFF-modified circularization.
+Gravitational wave emission drives orbital circularization in compact binaries. We analyze eccentricity evolution in the Unified Quantum Field Framework (UQFF), where reduced energy loss (Dκ_total < 1) slows circularization timescales. For typical BNS systems entering LIGO band with e0 = 0.01, UQFF predicts residual eccentricity e_f = 0.003 at merger (vs e_f < 10⁻4 in GR), producing observable harmonic structure in the frequency spectrum. Young compact binaries (age < 107 yr) retain higher eccentricities under UQFF, increasing detection rates for eccentric mergers by factor ~3. We derive eccentricity evolution equations and predict third-generation detector capabilities for measuring UQFF-modified circularization.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0�10?4 day?�, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -30,7 +30,7 @@ Gravitational wave emission circularizes orbits:
 
 ### 1.2 GR Circularization Timescale
 
-**t_circ = e / |de/dt| ? a4 / (e � M�)**
+**t_circ = e / |de/dt| ? a4 / (e – M�)**
 
 For typical BNS (a = 10 R?, e = 0.1, M = 2.7 M?):
 **t_circ ~ 106 years**
@@ -59,7 +59,7 @@ $$\tau_{circ,UQFF} = \frac{\tau_{circ,GR}}{D^2_{total}} = \frac{\tau_{circ,GR}}{
 
 ### 3.1 Peters Equation (Modified)
 
-**de/dt = -(304/15) (G�/c5) (m1m2M_tot)/(a4(1-e�)^(5/2)) � e � (1 + 121/304 e�) � D�_total**
+**de/dt = -(304/15) (G�/c5) (m1m2M_tot)/(a4(1-e�)^(5/2)) � e � (1 + 121/304 e�) � Dκ_total**
 
 For small e:
 **e(t) � e0 exp(-t / t_circ,UQFF)**
@@ -67,7 +67,7 @@ For small e:
 ### 3.2 Residual Eccentricity at LIGO Band
 
 Starting with e0 = 0.01 at wide separation:
-- **GR:** e_10Hz < 10?4
+- **GR:** e_10Hz < 10⁻4
 - **UQFF:** e_10Hz ~ 0.003 (30� higher)
 
 ### 3.3 Observable Signatures
@@ -90,13 +90,13 @@ Longer circularization time ? more young systems retain e:
 |-----|------|--------|------------------|
 | 106 yr | 0.1 ? 0.01 | 0.1 ? 0.09 | No (outside band) |
 | 107 yr | 0.01 ? 10?� | 0.09 ? 0.03 | UQFF yes, GR no |
-| 108 yr | 10?� ? 10?4 | 0.03 ? 0.003 | Both yes |
+| 108 yr | 10?� ? 10⁻4 | 0.03 ? 0.003 | Both yes |
 
 **Effect:** UQFF increases population of detectable eccentric binaries.
 
 ### 4.2 Rate Enhancement
 
-If 30% of binaries are age < 5 � 107 yr:
+If 30% of binaries are age < 5 × 107 yr:
 - **GR:** Only 10% retain e > 10?�
 - **UQFF:** 30% retain e > 10?�
 
@@ -117,7 +117,7 @@ Amplitude scaling:
 At e = 0.003:
 - **A1 (fundamental):** 1.0
 - **A2 (2nd harmonic):** 0.003
-- **A3 (3rd harmonic):** 9 � 10?6
+- **A3 (3rd harmonic):** 9 × 10⁻6
 
 ### 5.2 Detection Strategy
 
@@ -142,7 +142,7 @@ Einstein Telescope / Cosmic Explorer:
 
 ## 7. Conclusion
 
-UQFF reduces GW energy loss by factor D�_total = 0.111 for BNS (0.333�), extending circularization timescales by 9� over standard GR. This retains residual eccentricity e ~ 0.003 at LIGO frequency band entry (vs e < 10?4 in GR), producing observable harmonic structure in matched-filter searches. The resulting 3� increase in the eccentric merger detection rate is a direct, falsifiable prediction of UQFF vacuum damping accessible with third-generation detectors.
+UQFF reduces GW energy loss by factor Dκ_total = 0.111 for BNS (0.333�), extending circularization timescales by 9� over standard GR. This retains residual eccentricity e ~ 0.003 at LIGO frequency band entry (vs e < 10⁻4 in GR), producing observable harmonic structure in matched-filter searches. The resulting 3� increase in the eccentric merger detection rate is a direct, falsifiable prediction of UQFF vacuum damping accessible with third-generation detectors.
 
 **Validator:** `validate_eccentric_binary.py` (see `source27.cpp` Eccentric BNS module)
 
@@ -150,7 +150,7 @@ UQFF reduces GW energy loss by factor D�_total = 0.111 for BNS (0.333�), ext
 
 Circular templates on eccentric signals:
 - **Mismatch M ? e�**
-- For e = 0.003: M ~ 10?5 (negligible)
+- For e = 0.003: M ~ 10⁻5 (negligible)
 
 **Conclusion:** Current templates adequate for UQFF residual eccentricity.
 
@@ -203,7 +203,7 @@ Search for systems with:
 ## 8. Conclusion
 
 Key findings:
-1. **Circularization timescale:** 9� longer (106 ? 9�106 yr for BNS)
+1. **Circularization timescale:** 9� longer (106 ? 9×106 yr for BNS)
 2. **Residual eccentricity:** e ~ 0.003 at LIGO band (30� higher than GR)
 3. **Detection rate:** 3� more eccentric mergers
 4. **Dynamical channels:** Globular cluster captures remain eccentric
@@ -220,7 +220,7 @@ Third-generation detectors will measure eccentricity distribution, testing UQFF 
 **Author:** Daniel T. Murphy  
 **Date:** March 5, 2026  
 **Session:** Phase 1 (Sessions 1�43)  
-**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57, �_i = 0.61)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57, κ_i = 0.61)  
 **Source:** `source27.cpp` (SOURCE27 namespace), `MAIN_1_CoAnQi.cpp`  
 **Cross-links:** PAPER_001 (GW170817 Damping), PAPER_003 (GW150914 BBH), PAPER_008 (Waveform Phase Evolution)
 
@@ -248,7 +248,7 @@ Third-generation detectors will measure eccentricity distribution, testing UQFF 
 
 ### A.2 F_U Master Equation (Complete — 4 terms)
 
-$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}igl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}igr]$$
+$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}\bigr]$$
 
 | Term | Description | Implementation |
 |------|-------------|----------------|
@@ -265,9 +265,7 @@ $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}igl[\l
 
 ### A.3 Um Heaviside Phase-Transition Amplifier (PAPER_421)
 
-$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} 	imes igl(1 + 10^{13}\,\Theta(
-ho_{SCm} - 
-ho_c)igr) 	imes igl(1 + A_q\cos(\Delta\omega\,t)igr)$$
+$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rho_{SCm} - \rho_c)\bigr) \times \bigl(1 + A_q\cos(\Delta\omega\,t)\bigr)$$
 
 | Symbol | Value | Description |
 |--------|-------|-------------|

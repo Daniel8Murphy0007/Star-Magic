@@ -1,4 +1,4 @@
-﻿# PAPER_015b: Multi-Band Gravitational Wave Astronomy: LISA+LIGO Synergy Under UQFF
+# PAPER_015: PAPER_015b: Multi-Band Gravitational Wave Astronomy: LISA+LIGO Synergy Under UQFF
 
 **Authors:** Daniel Murphy & UQFF Research Collective  
 **Date:** 2026-03-07  
@@ -12,7 +12,7 @@ $$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b_i}, \quad \kappa = 5.0\tim
 $$
 h_\text{UQFF}(t) = h_\text{GR}(t)\cdot\bigl(1 - U_{b_i}/F_U\bigr)\cdot e^{-\kappa t}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1}
 $$
-<!-- ? = 5.0e-4 day?¹, [SSq] = 0.57, ß_i = 6.1e-1 -->
+<!-- ? = 5.0e-4 day⁻¹, [SSq] = 0.57, ß_i = 6.1e-1 -->
 
 ## Abstract
 
@@ -20,7 +20,7 @@ We quantify the impact of UQFF vacuum damping on multi-band gravitational wave d
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -107,7 +107,6 @@ V(UQFF) / V(GR) = D³ = 0.622³ = 0.241 ˜ 0.24
 | SMBH (LISA) | ~30 | ~7.2* | 24% |
 
 *UQFF rate at deep cosmological z may differ due to z-dependent Aether compensation; see  
-    $n = [int]# PAPER_015b: Multi-Band Gravitational Wave Astronomy: LISA+LIGO Synergy Under UQFF
 
 **Authors:** Daniel Murphy & UQFF Research Collective  
 **Date:** 2026-03-07  
@@ -138,7 +137,7 @@ V(UQFF) / V(GR) = D³ = 0.622³ = 0.241 ˜ 0.24
 
 ### A.2 F_U Master Equation (Complete — 4 terms)
 
-$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}igl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}igr]$$
+$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}\bigr]$$
 
 | Term | Description | Implementation |
 |------|-------------|----------------|
@@ -155,9 +154,7 @@ $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}igl[\l
 
 ### A.3 Um Heaviside Phase-Transition Amplifier (PAPER_421)
 
-$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} 	imes igl(1 + 10^{13}\,\Theta(
-ho_{SCm} - 
-ho_c)igr) 	imes igl(1 + A_q\cos(\Delta\omega\,t)igr)$$
+$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rho_{SCm} - \rho_c)\bigr) \times \bigl(1 + A_q\cos(\Delta\omega\,t)\bigr)$$
 
 | Symbol | Value | Description |
 |--------|-------|-------------|

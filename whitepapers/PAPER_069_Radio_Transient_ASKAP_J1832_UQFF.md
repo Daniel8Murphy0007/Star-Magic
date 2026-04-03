@@ -1,3 +1,5 @@
+# PAPER_069: Long-Period Radio Transient ASKAP J1832-0911: UQFF Numeric Stability Analysis and F_U_Bi_i Field Derivation
+
 
 **Title:** Long-Period Radio Transient ASKAP J1832-0911: UQFF Numeric Stability Analysis and F_U_Bi_i Field Derivation
 
@@ -6,7 +8,6 @@
 **Date:** March 7, 2026  
 **Source Data:** `uqff_validation_test.py` ASKAP_J1832-0911 system, Chandra + ASKAP May 2025 data  
 **Index Slot:** �1.9 Automated 121-System Validation,  
-    $n = [int]# PAPER #69 � Radio Transient Stability in UQFF: ASKAP J1832-0911
 
 **Title:** Long-Period Radio Transient ASKAP J1832-0911: UQFF Numeric Stability Analysis and F_U_Bi_i Field Derivation
 
@@ -20,11 +21,11 @@
 
 ## Abstract
 
-ASKAP J1832-0911 is a Long Period Transient (LPT) with a 44-minute emission cycle discovered by ASKAP in 2023 (Hurley-Walker et al. 2023) and followed up with Chandra X-ray Observatory in 2025. Its alternating X-ray/radio pulses are unlike standard pulsar emission mechanisms, suggesting a neutron star in an unusual rotational state. The UQFF analyzes ASKAP J1832-0911 via the F_U_Bi_i integral, finding a LENR-dominated field of F_U_Bi_i � -1.47�10�?� N. Monte Carlo numeric stability (n=100, �10% parameter noise) confirms a stability index of 0.97, validating the UQFF equation set for LPT systems.
+ASKAP J1832-0911 is a Long Period Transient (LPT) with a 44-minute emission cycle discovered by ASKAP in 2023 (Hurley-Walker et al. 2023) and followed up with Chandra X-ray Observatory in 2025. Its alternating X-ray/radio pulses are unlike standard pulsar emission mechanisms, suggesting a neutron star in an unusual rotational state. The UQFF analyzes ASKAP J1832-0911 via the F_U_Bi_i integral, finding a LENR-dominated field of F_U_Bi_i � -1.47×10�?� N. Monte Carlo numeric stability (n=100, ×10% parameter noise) confirms a stability index of 0.97, validating the UQFF equation set for LPT systems.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0�10?4 day?�, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -32,14 +33,14 @@ ASKAP J1832-0911 is a Long Period Transient (LPT) with a 44-minute emission cycl
 
 | Parameter | Symbol | Value | Source |
 |-----------|--------|-------|--------|
-| Mass | M | 2.785�10�� kg (1.4 M?) | NS canonical |
-| Distance | r | 4.63�10�6 m (~15,000 ly) | ASKAP parallax |
+| Mass | M | 2.785×10�� kg (1.4 M?) | NS canonical |
+| Distance | r | 4.63×10�6 m (~15,000 ly) | ASKAP parallax |
 | X-ray luminosity | L_X | 10�� W | Chandra 2025 |
 | Magnetic field (surface) | B0 | 10�� T (magnetar-class) | Inferred |
 | Temperature | T | 107 K | Chandra X-ray |
 | Period | P | 2640 s (44 min) | ASKAP direct |
-| Angular frequency | ?0 | 2.380�10?� rad/s | 2p/2640 |
-| Data source | � | Chandra + ASKAP (May 2025) | � |
+| Angular frequency | ?0 | 2.380×10?� rad/s | 2p/2640 |
+| Data source | – | Chandra + ASKAP (May 2025) | – |
 
 ---
 
@@ -51,17 +52,17 @@ $$F_{U,Bi,i} = -F_0 + p + g + Ug_1 + Ug_2 + Ug_3 + Ug_4 + U_m + \int \mathcal{I}
 
 | Component | Formula | Value (N) |
 |-----------|---------|---------|
-| Base force constant | - F0 = -1.83�107� | -1.83�107� |
-| Momentum | (m_e c�/r�) � 0.93 � cos(p/4) | 2.52�10?47 |
-| Gravity | GM/r� | 8.67�10?�4 |
-| Ug1 (dipole) | (GM/r�)(1+d)(�0B0�/8p) | **4.34�10�** |
-| Ug2 (bubble) | (GM/r�)(Q_A+Q_UA)�H_SCm | 9.64�10?�5 |
+| Base force constant | - F0 = -1.83×107� | -1.83×107� |
+| Momentum | (m_e c�/r�) ≈ 0.93 � cos(p/4) | 2.52×10⁻47 |
+| Gravity | GM/r� | 8.67×10?�4 |
+| Ug1 (dipole) | (GM/r�)(1+d)(�0B0�/8p) | **4.34×10�** |
+| Ug2 (bubble) | (GM/r�)(Q_A+Q_UA)�H_SCm | 9.64×10?�5 |
 | Ug3 (string) | (c/r)�?_s�sin(?)�B0 | ~10?�� |
 | Ug4 (vacuum BH) | k4�?_SCm�(M_BH/d_g)�e^{-?} | ~10?5� |
-| Um (magnetism) | (�_j/r)�(1-e^{-?t})�E_react | 3.65�1045 |
-| **LENR resonance** | k_LENR�(?_LENR/?0)� | **1.09�10��** |
-| **Integral term** | LENR � x2 | **-1.47�10�?�** |
-| **F_U_Bi_i (total)** | | **� -1.47�10�?�** |
+| Um (magnetism) | (κ_j/r)�(1-e^{-?t})�E_react | 3.65×1045 |
+| **LENR resonance** | k_LENR�(?_LENR/?0)� | **1.09×10��** |
+| **Integral term** | LENR � x2 | **-1.47×10�?�** |
+| **F_U_Bi_i (total)** | | **� -1.47×10�?�** |
 
 ### LENR Resonance Dominance
 
@@ -69,7 +70,7 @@ $$\text{LENR} = k_{\rm LENR} \times \left(\frac{\omega_{\rm LENR}}{\omega_0}\rig
 
 $$\text{Integral} = 1.09 \times 10^{21} \times (-1.35 \times 10^{172}) = -1.47 \times 10^{193}$$
 
-The LENR term (1.09�10��) dominates all other integrand terms by >107; the integral term dominates F_U_Bi_i by >10��� over F0.
+The LENR term (1.09×10��) dominates all other integrand terms by >107; the integral term dominates F_U_Bi_i by >10��� over F0.
 
 ---
 
@@ -84,8 +85,8 @@ The 44-minute period is far longer than standard pulsar periods (ms to seconds),
 
 **UQFF interpretation:**
 
-The UQFF LENR term scales as (?_LENR/?0)�. For ?0 = 2.38�10?� rad/s (44 min):
-- LENR = 1.09�10�� � 106� larger than for a typical 1-second pulsar
+The UQFF LENR term scales as (?_LENR/?0)�. For ?0 = 2.38×10?� rad/s (44 min):
+- LENR = 1.09×10�� � 106� larger than for a typical 1-second pulsar
 - This means the UQFF vacuum resonance is 106-fold stronger for this slow system
 
 **UQFF prediction for LPT period selection:**
@@ -98,12 +99,12 @@ But actual P = 2640 s << 106 s ? LPT is in an intermediate regime where UQFF res
 
 ## 4. Monte Carlo Numeric Stability
 
-Protocol: n = 100 trials, �10% Gaussian noise applied to M, r, L_X, B0.
+Protocol: n = 100 trials, ×10% Gaussian noise applied to M, r, L_X, B0.
 
 | Metric | Value |
 |--------|-------|
-| Mean F_U_Bi_i | -1.47�10�?� N |
-| Std Dev | ~4.4�10�?� N |
+| Mean F_U_Bi_i | -1.47×10�?� N |
+| Std Dev | ~4.4×10�?� N |
 | Stability index | **0.970** |
 | Valid samples | 100/100 |
 | Status | **? STABLE** |
@@ -124,7 +125,7 @@ ASKAP J1832-0911 alternates between X-ray (Chandra) and radio (ASKAP) pulses on 
 Threshold:
 $$E_{\rm threshold} = E_{\rm react,0} \times e^{-\kappa \times t_{\rm transition}} \Rightarrow t_{\rm transition} = \frac{\ln(E_0/E_{\rm thresh})}{\kappa} = \frac{\ln(10^{46}/10^{40})}{0.0005} = \frac{13.8}{0.0005} = 27600 \text{ days}$$
 
-On 44-minute timescales, the ?-decay is negligible (??t � 2�10?5) � the alternation is driven by the phase of the Resonant mode cos(?0t), which switches sign at t = p/?0 = 1320 s � 22 min (half-period). This gives alternating X-ray (expansion phase) and radio (compression phase) at the 22-minute half-cycle � fully consistent with the observed 44-minute full cycle.
+On 44-minute timescales, the ?-decay is negligible (??t � 2×10⁻5) � the alternation is driven by the phase of the Resonant mode cos(?0t), which switches sign at t = p/?0 = 1320 s � 22 min (half-period). This gives alternating X-ray (expansion phase) and radio (compression phase) at the 22-minute half-cycle � fully consistent with the observed 44-minute full cycle.
 
 ---
 
@@ -133,9 +134,9 @@ On 44-minute timescales, the ?-decay is negligible (??t � 2�10?5) � the al
 | Quantity | Value |
 |---------|-------|
 | Period | 44 min (2640 s) |
-| ?0 | 2.38�10?� rad/s |
-| LENR resonance | 1.09�10�� |
-| F_U_Bi_i | **-1.47�10�?� N** |
+| ?0 | 2.38×10?� rad/s |
+| LENR resonance | 1.09×10�� |
+| F_U_Bi_i | **-1.47×10�?� N** |
 | Stability | **0.970 (STABLE)** |
 | X-ray/radio alternation | UQFF Compressed?Resonant mode switching at ?0 half-period |
 
@@ -165,7 +166,7 @@ On 44-minute timescales, the ?-decay is negligible (??t � 2�10?5) � the al
 
 ### A.2 F_U Master Equation (Complete — 4 terms)
 
-$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}igl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}igr]$$
+$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}\bigr]$$
 
 | Term | Description | Implementation |
 |------|-------------|----------------|
@@ -182,9 +183,7 @@ $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}igl[\l
 
 ### A.3 Um Heaviside Phase-Transition Amplifier (PAPER_421)
 
-$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} 	imes igl(1 + 10^{13}\,\Theta(
-ho_{SCm} - 
-ho_c)igr) 	imes igl(1 + A_q\cos(\Delta\omega\,t)igr)$$
+$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rho_{SCm} - \rho_c)\bigr) \times \bigl(1 + A_q\cos(\Delta\omega\,t)\bigr)$$
 
 | Symbol | Value | Description |
 |--------|-------|-------------|

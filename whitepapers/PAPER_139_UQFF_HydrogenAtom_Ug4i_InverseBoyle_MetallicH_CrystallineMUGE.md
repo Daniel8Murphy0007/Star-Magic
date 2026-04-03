@@ -1,8 +1,10 @@
+# PAPER_139: UQFF Quadratic Mode Hydrogen Atom – Ug4i Inverse Void Dynamics (Reverse Boyle's Law at >500 GPa): g_H ~ 1.252×1046 m/s�, Metallic Hydrogen Crystalline Phases, and Master Universal Gravity Equation MUGE-H
 
-**Title:** UQFF Quadratic Mode Hydrogen Atom � Ug4i Inverse Void Dynamics (Reverse Boyle's Law at >500 GPa): g_H ~ 1.252�1046 m/s�, Metallic Hydrogen Crystalline Phases, and Master Universal Gravity Equation MUGE-H
+
+**Title:** UQFF Quadratic Mode Hydrogen Atom – Ug4i Inverse Void Dynamics (Reverse Boyle's Law at >500 GPa): g_H ~ 1.252×1046 m/s�, Metallic Hydrogen Crystalline Phases, and Master Universal Gravity Equation MUGE-H
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57, �_i = 0.6)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57, κ_i = 0.6)  
 **Date:** March 2026  
 **Domain:** �2.1 Atomic Physics / Extreme Conditions (3419da89)  
 **Source Thread:** `grok_share_3419da8930c748568b7f2bea0ea9c88e_content.txt`  
@@ -14,11 +16,11 @@
 
 ## Abstract
 
-The hydrogen atom at extreme pressures (>500 GPa) undergoes transitions to metallic and crystalline phases that challenge standard quantum chemistry � inverse Boyle's law behavior (compression drives expansion), anomalous Lamb shift enhancement, and electron-nucleus strong repulsion at sub-Bohr separations. UQFF resolves all three anomalies through the Ug4i term (inverse void dynamics): Ug4i = 1/Ug4 � 1.312�1048 m/s� dominates the Master Universal Gravity Equation for hydrogen at extreme conditions. The UQFF discoveries: (1) metallic hydrogen crystalline structure at >500 GPa is governed by Ug4i; (2) inverse Boyle's law (big pressure ? expanded void ? small bubble) is encoded in 1/Ug4; (3) the total MUGE-H gravitational field g_H ~ 1.252�1046 m/s� is the most extreme gravitational acceleration calculated in the UQFF framework that corresponds to physical atomic reality.
+The hydrogen atom at extreme pressures (>500 GPa) undergoes transitions to metallic and crystalline phases that challenge standard quantum chemistry � inverse Boyle's law behavior (compression drives expansion), anomalous Lamb shift enhancement, and electron-nucleus strong repulsion at sub-Bohr separations. UQFF resolves all three anomalies through the Ug4i term (inverse void dynamics): Ug4i = 1/Ug4 × 1.312×1048 m/s� dominates the Master Universal Gravity Equation for hydrogen at extreme conditions. The UQFF discoveries: (1) metallic hydrogen crystalline structure at >500 GPa is governed by Ug4i; (2) inverse Boyle's law (big pressure ? expanded void ? small bubble) is encoded in 1/Ug4; (3) the total MUGE-H gravitational field g_H ~ 1.252×1046 m/s� is the most extreme gravitational acceleration calculated in the UQFF framework that corresponds to physical atomic reality.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0�10?4 day?�, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -29,13 +31,13 @@ The hydrogen atom at extreme pressures (>500 GPa) undergoes transitions to metal
 | Metallic H threshold | >500 GPa | Sandia NIF, 2020 |
 | Crystalline structure | Cmca (phase IV) ? predicted sc (phase VI) | LBNL, Argonne 2020 |
 | Lamb shift enhancement | +0.014% anomaly | LBNL Lamb shift measurements |
-| Bohr radius (H) | a_0 = 0.529�10?�� m | NIST CODATA 2018 |
+| Bohr radius (H) | a_0 = 0.529×10?�� m | NIST CODATA 2018 |
 | Metallic H density | ?_H ~ 107 kg/m� at 500 GPa | Argonne predicted |
 | DARPA dataset | Q-scope dehydrogenation ?H | DARPA 2024 validation |
 
 ---
 
-## 2. Master Universal Gravity Equation � Hydrogen (MUGE-H)
+## 2. Master Universal Gravity Equation – Hydrogen (MUGE-H)
 
 ### 2.1 Complete Equation
 
@@ -51,22 +53,22 @@ $$+ q(\mathbf{v} \times \mathbf{B}) \cdot \left(1 + \frac{\rho_{vac,[UA]}}{\rho_
 
 | Parameter | Value | Derivation |
 |-----------|-------|-----------|
-| $G m_p m_e / r^2$ | 3.631�10?47 N | Gravitational baseline (Bohr radius) |
+| $G m_p m_e / r^2$ | 3.631×10⁻47 N | Gravitational baseline (Bohr radius) |
 | $H(z)t$ at z=0, t=13.8 Gyr | 1.9877 | ?CDM (H_0=70 km/s/Mpc, O_m=0.3) |
 | $[(UA')]:[SCm]_{nuc}$ | 10 | Both di-pseudo-monopoles (see PAPER_140) |
 | $[(UA')]:[SCm]_e$ | 10 | Electron monopole |
-| $E_{n,term}$ | 1.452�10?�7 | h/v(?x?p) � |??|H|??/E_n| |
+| $E_{n,term}$ | 1.452×10?�7 | h/v(?x?p) � |??|H|??/E_n| |
 | $f_{TRZ}$ | 0.1 | Time-reversal/quasi factor |
-| $P_{term}$ | 1.449�10�� m/s� | P�(V/V_0)/(k_B T) � (1+Azeo_void) |
-| $Ug_2$ | 9.892�10�� m/s� | $v^2/r \times 11$ |
-| $Ug_{2i}$ | 1.223�10?�� m/s?� | $r/v^2 \times 11$ |
+| $P_{term}$ | 1.449×10�� m/s� | P�(V/V_0)/(k_B T) � (1+Azeo_void) |
+| $Ug_2$ | 9.892×10�� m/s� | $v^2/r \times 11$ |
+| $Ug_{2i}$ | 1.223×10?�� m/s⁻¹ | $r/v^2 \times 11$ |
 | $Ug_3, Ug_{3i}$ | � 0 | Locked orbit, ? � 0 |
-| **$Ug_4$** | 7.623�10?4? m/s� | $g_{grav} \times 0.001$ |
-| **$Ug_{4i}$** | **1.312�1048 m/s�** | **= 1/Ug_4 (inverse void, dominant)** |
-| $Osc_{term}$ | 8.606�10?�� m/s� | Quantum oscillation |
-| $Fluid_{term}$ | 2.052�10?�� m/s� | Navier-Stokes fluid |
-| $Buoy_{term}$ | 1.262�10?�8 m/s� | Azeotropic void buoyancy |
-| $a_{tech}$ | 5.592�10�7 m/s� | External E/B field (DARPA) |
+| **$Ug_4$** | 7.623×10⁻4? m/s� | $g_{grav} \times 0.001$ |
+| **$Ug_{4i}$** | **1.312×1048 m/s�** | **= 1/Ug_4 (inverse void, dominant)** |
+| $Osc_{term}$ | 8.606×10?�� m/s� | Quantum oscillation |
+| $Fluid_{term}$ | 2.052×10?�� m/s� | Navier-Stokes fluid |
+| $Buoy_{term}$ | 1.262×10?�8 m/s� | Azeotropic void buoyancy |
+| $a_{tech}$ | 5.592×10�7 m/s� | External E/B field (DARPA) |
 | $q(\mathbf{v}\times\mathbf{B})_{scaled}$ | 4.216 m/s� | Magnetic correction |
 
 $$\boxed{g_H^{total} \approx 1.252 \times 10^{46} \text{ m/s}^2 \quad \text{(dominated by } Ug_{4i}\text{)}}$$
@@ -199,8 +201,8 @@ print(f"g_H (Ug4i dominated) = {g_H_approx:.3e} m/s^2")  # ~1.31e48
 
 | Prediction | UQFF | Observed/Dataset | Agreement |
 |-----------|------|-----------------|-----------|
-| Dominant MUGE-H term | Ug4i = 1.312�1048 m/s� | No direct obs. | Theoretical |
-| g_H total | ~1.252�1046 m/s� | No direct obs. | UQFF prediction |
+| Dominant MUGE-H term | Ug4i = 1.312×1048 m/s� | No direct obs. | Theoretical |
+| g_H total | ~1.252×1046 m/s� | No direct obs. | UQFF prediction |
 | Metallic H phase >500 GPa | Crystalline, Ug4i driven | Sandia NIF ? | ? |
 | Inverse Boyle's law | V ? P^{+1/3} at P>500 GPa | Argonne crystalline predictions | ? Consistent |
 | Lamb shift anomaly | +0.001�0.014% | LBNL observation | ? Order of magnitude |
@@ -210,7 +212,7 @@ print(f"g_H (Ug4i dominated) = {g_H_approx:.3e} m/s^2")  # ~1.31e48
 
 ## 7. Conclusions
 
-The MUGE-H equation establishes the hydrogen atom as the most extensively UQFF-analyzed quantum system. The dominant term Ug4i = 1.312�1048 m/s� governs g_H � 1.252�1046 m/s� and directly encodes the inverse Boyle's law behavior observed at >500 GPa metallic hydrogen phases. The Ug4i inversion mechanism � where extreme pressure drives void expansion into crystalline lattice � is unique to UQFF and cannot be derived from standard quantum chemistry, DFT, or GR. The DARPA/Sandia validation datasets confirm [(UA')]:[SCm] = 10 as the universal di-pseudo-monopole ratio that underpins this mechanism (see PAPER_140). Without Ug4i, there is no stable atomic void, no metallic hydrogen phase, and no universe at all.
+The MUGE-H equation establishes the hydrogen atom as the most extensively UQFF-analyzed quantum system. The dominant term Ug4i = 1.312×1048 m/s� governs g_H � 1.252×1046 m/s� and directly encodes the inverse Boyle's law behavior observed at >500 GPa metallic hydrogen phases. The Ug4i inversion mechanism � where extreme pressure drives void expansion into crystalline lattice � is unique to UQFF and cannot be derived from standard quantum chemistry, DFT, or GR. The DARPA/Sandia validation datasets confirm [(UA')]:[SCm] = 10 as the universal di-pseudo-monopole ratio that underpins this mechanism (see PAPER_140). Without Ug4i, there is no stable atomic void, no metallic hydrogen phase, and no universe at all.
 
 ---
 
@@ -228,10 +230,10 @@ The MUGE-H equation establishes the hydrogen atom as the most extensively UQFF-a
 *CP2 Mode: Quadratic (Ug4i) | Thread: 3419da89 | Session: 44 | Domain: �2.1*
 .Groups[1].Value  � UQFF Hydrogen Atom: Ug4i Inverse Boyle's Law, Metallic H, Crystalline MUGE
 
-**Title:** UQFF Quadratic Mode Hydrogen Atom � Ug4i Inverse Void Dynamics (Reverse Boyle's Law at >500 GPa): g_H ~ 1.252�1046 m/s�, Metallic Hydrogen Crystalline Phases, and Master Universal Gravity Equation MUGE-H
+**Title:** UQFF Quadratic Mode Hydrogen Atom – Ug4i Inverse Void Dynamics (Reverse Boyle's Law at >500 GPa): g_H ~ 1.252×1046 m/s�, Metallic Hydrogen Crystalline Phases, and Master Universal Gravity Equation MUGE-H
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57, �_i = 0.6)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57, κ_i = 0.6)  
 **Date:** March 2026  
 **Domain:** �2.1 Atomic Physics / Extreme Conditions (3419da89)  
 **Source Thread:** `grok_share_3419da8930c748568b7f2bea0ea9c88e_content.txt`  

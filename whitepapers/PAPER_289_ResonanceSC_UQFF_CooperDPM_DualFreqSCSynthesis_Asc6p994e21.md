@@ -1,4 +1,4 @@
-﻿# PAPER_289: Cooper-DPM Dual-Frequency SC Synthesis — ħ×f_super×f_DPM Triple-Mode Quantum Product (A_sc = 6.994×10²¹)
+# PAPER_289: Cooper-DPM Dual-Frequency SC Synthesis — ħ×f_super×f_DPM Triple-Mode Quantum Product (A_sc = 6.994×10²¹)
 
 **Series:** UQFF Resonance-Superconductive Framework  
 **Module:** RESONANCE_SUPERCONDUCTIVE_UQFF_MODULE.cpp (23rd C++ module — FIRST universal RSC module)  

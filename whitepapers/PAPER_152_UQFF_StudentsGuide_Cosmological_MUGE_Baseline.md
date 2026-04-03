@@ -1,5 +1,7 @@
+# PAPER_152: UQFF Star-Magic Student's Guide to the Universe – Cosmological Scale MUGE 12-Term Resonance Baseline: g = 3.958×10^14 m/s^2
 
-**Title:** UQFF Star-Magic Student's Guide to the Universe � Cosmological Scale MUGE 12-Term Resonance Baseline: g = 3.958�10^14 m/s^2
+
+**Title:** UQFF Star-Magic Student's Guide to the Universe – Cosmological Scale MUGE 12-Term Resonance Baseline: g = 3.958×10^14 m/s^2
 
 **Author:** Daniel T. Murphy  
 **Framework:** UQFF Star-Magic (kappa=0.0005/day, [SSq]=0.57, fTRZ=0.1)  
@@ -14,17 +16,17 @@
 
 ## Abstract
 
-The "Student's Guide to the Universe" system in the UQFF SOURCE4 namespace represents the cosmological-scale baseline calculation � the lowest-g terminus of the 7-system MUGE cascade sequence. At this scale, the MUGE 12-Term Resonance equation yields g � 3.958�10^14 m/s^2, a value ~10^11 lower than the Rings of Relativity (5.005�10^25) and ~10^15 lower than Sagittarius A* (4.105�10^29). This extreme dynamic range � spanning 15 decades from Sgr A* to cosmological baseline � demonstrates the UQFF MUGE framework's validity across all astrophysical environments without re-parameterisation. The cosmological baseline is governed by the Hubble-coupled Osc_term and aexp_freq, with afluid_freq playing a secondary coupled role. The fTRZ = 0.1 topological resonance constant provides the connecting thread linking local strong-field regimes to the cosmological metric. This paper derives the full MUGE decomposition for the cosmological system, identifies the dominant cosmological-scale terms, and interprets the result in the context of the Friedmann�Lema�tre�Robertson�Walker (FLRW) cosmology.
+The "Student's Guide to the Universe" system in the UQFF SOURCE4 namespace represents the cosmological-scale baseline calculation � the lowest-g terminus of the 7-system MUGE cascade sequence. At this scale, the MUGE 12-Term Resonance equation yields g � 3.958×10^14 m/s^2, a value ~10^11 lower than the Rings of Relativity (5.005×10^25) and ~10^15 lower than Sagittarius A* (4.105×10^29). This extreme dynamic range � spanning 15 decades from Sgr A* to cosmological baseline � demonstrates the UQFF MUGE framework's validity across all astrophysical environments without re-parameterisation. The cosmological baseline is governed by the Hubble-coupled Osc_term and aexp_freq, with afluid_freq playing a secondary coupled role. The fTRZ = 0.1 topological resonance constant provides the connecting thread linking local strong-field regimes to the cosmological metric. This paper derives the full MUGE decomposition for the cosmological system, identifies the dominant cosmological-scale terms, and interprets the result in the context of the Friedmann�Lema�tre�Robertson�Walker (FLRW) cosmology.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0�10?4 day?�, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
 ## 1. The Student's Guide Universe System
 
-The "Student's Guide Universe" designation in SOURCE4 encapsulates the representative cosmological-scale parameters used to compute a MUGE gravity value at the scales relevant to introductory cosmology education � Hubble expansion, dark energy dominance, and CMB-calibrated matter density.
+The "Student's Guide Universe" designation in SOURCE4 encapsulates the representative cosmological-scale parameters used to compute a MUGE gravity value at the scales relevant to introductory cosmology education – Hubble expansion, dark energy dominance, and CMB-calibrated matter density.
 
 ### 1.1 System Parameters
 
@@ -35,9 +37,9 @@ The "Student's Guide Universe" designation in SOURCE4 encapsulates the represent
 | Age of universe | t_U = 13.8 Gyr | WMAP/Planck |
 | Matter density | Omega_m = 0.315 | Planck 2018 |
 | Dark energy density | Omega_Lambda = 0.685 | Planck 2018 |
-| Vacuum energy density | rho_vac ~ 7.09�10^-37 J/m^3 | UQFF ISM/cosmological baseline |
+| Vacuum energy density | rho_vac ~ 7.09×10^-37 J/m^3 | UQFF ISM/cosmological baseline |
 | Cosmic B-field | B ~ 1 nG (cosmological) | Blasi et al. 1999, 10^-9 T |
-| SCm density | rho_SCm ~ 1�10^15 kg/m^3 (local thread density) | UQFF canonical |
+| SCm density | rho_SCm ~ 1×10^15 kg/m^3 (local thread density) | UQFF canonical |
 | Characteristic radius | r ~ 4.4 Gpc (comoving radius) | Hubble volume |
 | fTRZ | 0.1 | UQFF topological resonance constant |
 
@@ -50,7 +52,7 @@ In UQFF, the cosmological regime is not an extrapolation � it is a native oper
 3. **Cosmological fluid dynamics** via afluid_freq at nG B-field magnitude
 4. **DPM vortex baseline** via aDPM at cosmological omega_i values
 
-The resulting g � 3.958�10^14 m/s^2 represents the UQFF "floor" for the 7-system suite � the cosmological effective gravity felt by structure at the Hubble scale through cumulative MUGE resonance.
+The resulting g � 3.958×10^14 m/s^2 represents the UQFF "floor" for the 7-system suite � the cosmological effective gravity felt by structure at the Hubble scale through cumulative MUGE resonance.
 
 ---
 
@@ -64,12 +66,12 @@ $$g(r,t) = a_{DPM} + a_{THz} + a_{vac\_diff} + a_{super\_freq} + a_{aether\_res}
 
 **Calibrated Constants (Thread-Confirmed):**
 - ? = 0.0005/day, a = 0.001, ? = 0.00005
-- �_i = 0.6, k1=1.5, k2=1.2, k3=1.8, k4=2.0
-- ?_SCm = 1�10^15 kg/m�, v_SCm = 1�10^8 m/s
-- f_DPM = f_THz = 1�10^12 Hz
-- Evac_neb = 7.09�10^-36 J/m�, Evac_ISM = 7.09�10^-37 J/m�
-- ?Evac = 6.381�10^-36 J/m�, F_super = 6.287�10^-19
-- [(UA')]:[SCm] = 10, ?_i = 1�10^-8 rad/s, f_TRZ = 0.1
+- κ_i = 0.6, k1=1.5, k2=1.2, k3=1.8, k4=2.0
+- ?_SCm = 1×10^15 kg/m�, v_SCm = 1×10^8 m/s
+- f_DPM = f_THz = 1×10^12 Hz
+- Evac_neb = 7.09×10^-36 J/m�, Evac_ISM = 7.09×10^-37 J/m�
+- ?Evac = 6.381×10^-36 J/m�, F_super = 6.287×10^-19
+- [(UA')]:[SCm] = 10, ?_i = 1×10^-8 rad/s, f_TRZ = 0.1
 
 **Term 1: aDPM (DPM Vortical Driver)**
 
@@ -113,7 +115,7 @@ $$a_{aether\_res} = 5 \times 10^{-5} \times 10^{15} \times 10^8 \times 3 \times 
 
 $$U_{g4i} = \kappa \cdot \frac{\rho_{vac} \cdot V_{sys}}{t \cdot r^2}$$
 
-At cosmological scale with t = 13.8 Gyr = 4.35�10^17 s:
+At cosmological scale with t = 13.8 Gyr = 4.35×10^17 s:
 
 $$U_{g4i} \approx 3.0 \times 10^{-4} \text{ m/s}^2$$
 
@@ -131,11 +133,11 @@ $$a_{Aether\_freq} = k_2 \cdot \kappa \cdot c \cdot \omega_i$$
 
 $$a_{Aether\_freq} = 1.2 \times 5 \times 10^{-4} \times 3 \times 10^8 \times 10^{-8} = 1.8 \times 10^{-3} \text{ m/s}^2$$
 
-**Term 9: afluid_freq (Fluid Frequency � Cosmological B-field)**
+**Term 9: afluid_freq (Fluid Frequency – Cosmological B-field)**
 
 $$a_{fluid\_freq} = k_3 \cdot \frac{B^2}{4\pi\rho_{SCm}} \cdot \frac{1}{r}$$
 
-At B = 1 nG = 10^-9 T, r = 4.4 Gpc = 1.36�10^26 m:
+At B = 1 nG = 10^-9 T, r = 4.4 Gpc = 1.36×10^26 m:
 
 $$a_{fluid\_freq} = 1.8 \times \frac{(10^{-9})^2}{4\pi \times 10^{15}} \times \frac{1}{1.36 \times 10^{26}} \approx 1.06 \times 10^{-62} \text{ m/s}^2$$
 
@@ -151,7 +153,7 @@ $$Osc_{term} = 7.09 \times 10^{-37} \times \cos(2\pi \times 0.1 \times 6.9) = 7.
 
 $$= 7.09 \times 10^{-37} \times (-0.368) \approx -2.61 \times 10^{-37} \text{ m/s}^2$$
 
-**Term 11: aexp_freq (Expansion Frequency � Hubble coupling)**
+**Term 11: aexp_freq (Expansion Frequency – Hubble coupling)**
 
 $$a_{exp\_freq} = k_4 \cdot H_0 \cdot c$$
 
@@ -165,11 +167,11 @@ $$f_{TRZ} = 0.1 \text{ m/s}^2 \text{ (dimensionless coupling constant contribute
 
 | Term | Value (m/s^2) | Dominant? |
 |------|--------------|-----------|
-| aDPM | ~3.2�10^13 | Yes � DPM cosmological driver |
-| asuper_freq | ~6.3�10^24 | Yes � SCm frequency baseline |
-| aaether_res | ~1.5�10^27 | Yes � primary |
-| Osc_term | ~-2.6�10^-37 | No (suppressed) |
-| aexp_freq | ~1.3�10^-9 | No (Hubble scale small) |
+| aDPM | ~3.2×10^13 | Yes – DPM cosmological driver |
+| asuper_freq | ~6.3×10^24 | Yes – SCm frequency baseline |
+| aaether_res | ~1.5×10^27 | Yes � primary |
+| Osc_term | ~-2.6×10^-37 | No (suppressed) |
+| aexp_freq | ~1.3×10^-9 | No (Hubble scale small) |
 | fTRZ | 0.1 | Reference constant |
 | Others | < 10^-2 | Negligible |
 
@@ -185,13 +187,13 @@ This value is set by the balance between the aaether_res baseline and the aDPM c
 
 | System | g_MUGE (m/s^2) | Dominant Term | Cascade Factor |
 |--------|---------------|---------------|----------------|
-| SGR1745-2900 (magnetar) | 1.773�10^-9 | afluid_freq (B~10^11 T, local) | � |
-| Sagittarius A* (SMBH) | 4.105�10^29 | aDPM (extreme SMBH vortex) | �10^38 up |
-| Tapestry / Westerlund 2 | 1.001�10^27 | afluid_freq (SFR, B~1 mG) | ~�4�10^-3 from Sgr A* |
-| Pillars of Creation | 2.001�10^26 | afluid_freq (partial SCm) | ~�5 drop |
-| Rings of Relativity | 5.005�10^25 | afluid_freq (lensing geometry) | ~�4 drop |
-| Student's Guide Universe | 3.958�10^14 | aaether_res + aDPM cosm. | ~�10^11 drop |
-| SGR1745 (revisited, low-B) | 1.773�10^-9 | afluid_freq (neutron star surf.) | ~�10^23 drop |
+| SGR1745-2900 (magnetar) | 1.773×10^-9 | afluid_freq (B~10^11 T, local) | – |
+| Sagittarius A* (SMBH) | 4.105×10^29 | aDPM (extreme SMBH vortex) | ×10^38 up |
+| Tapestry / Westerlund 2 | 1.001×10^27 | afluid_freq (SFR, B~1 mG) | ~�4×10^-3 from Sgr A* |
+| Pillars of Creation | 2.001×10^26 | afluid_freq (partial SCm) | ~�5 drop |
+| Rings of Relativity | 5.005×10^25 | afluid_freq (lensing geometry) | ~�4 drop |
+| Student's Guide Universe | 3.958×10^14 | aaether_res + aDPM cosm. | ~�10^11 drop |
+| SGR1745 (revisited, low-B) | 1.773×10^-9 | afluid_freq (neutron star surf.) | ~�10^23 drop |
 
 The 7-system suite spans **38 decades** of gravitational acceleration � from 10^-9 to 10^29 m/s^2 � without a single parameter change to the MUGE master equation. This is the fundamental evidence for UQFF universality.
 
@@ -204,12 +206,12 @@ The 7-system suite spans **38 decades** of gravitational acceleration � from 1
 In ?CDM, the effective gravitational acceleration at the Hubble scale is set by:
 $$g_{?CDM} = \frac{GM_{universe}}{R_H^2} \approx \frac{6.67 \times 10^{-11} \times 10^{53}}{(4.4 \times 10^{26})^2} \approx 3.4 \times 10^{-12} \text{ m/s}^2$$
 
-This is the Newtonian/GR result at the Hubble radius. The UQFF MUGE result (3.958�10^14) is dramatically larger � but this comparison is inappropriate. The UQFF g_MUGE is not a Newtonian surface gravity; it is the total resonance amplitude of the MUGE field integrated over the vacuum energy structure of the cosmos. It encodes:
+This is the Newtonian/GR result at the Hubble radius. The UQFF MUGE result (3.958×10^14) is dramatically larger � but this comparison is inappropriate. The UQFF g_MUGE is not a Newtonian surface gravity; it is the total resonance amplitude of the MUGE field integrated over the vacuum energy structure of the cosmos. It encodes:
 1. The SCm aether resonance at cosmic scales
 2. The DPM vortical driver at cosmological angular frequency
 3. The residual superconductive frequency baseline
 
-The 3.958�10^14 value is thus the UQFF "cosmological resonance floor" � comparable to a cosmological-scale Ug field integral, not to a point-mass Newtonian calculation.
+The 3.958×10^14 value is thus the UQFF "cosmological resonance floor" � comparable to a cosmological-scale Ug field integral, not to a point-mass Newtonian calculation.
 
 ### 4.2 Connection to CMB and Baryon Acoustic Oscillations
 
@@ -245,7 +247,7 @@ This ~8% residual factor connects the UQFF vacuum concentration term to the obse
 
 ## 6. Student's Guide Context
 
-The "Student's Guide Universe" system in SOURCE4 was named to represent the reference parameters a physics student would use when first computing cosmological gravity: H_0 = 67.4, O_m = 0.315, t_U = 13.8 Gyr. The UQFF result g = 3.958�10^14 m/s^2 represents what the UQFF field registers at the Hubble scale � a quantity that has no direct observational counterpart yet but will become testable via future 21-cm cosmological surveys that can map the MUGE resonance pattern in the large-scale structure distribution.
+The "Student's Guide Universe" system in SOURCE4 was named to represent the reference parameters a physics student would use when first computing cosmological gravity: H_0 = 67.4, O_m = 0.315, t_U = 13.8 Gyr. The UQFF result g = 3.958×10^14 m/s^2 represents what the UQFF field registers at the Hubble scale � a quantity that has no direct observational counterpart yet but will become testable via future 21-cm cosmological surveys that can map the MUGE resonance pattern in the large-scale structure distribution.
 
 ---
 
@@ -253,21 +255,21 @@ The "Student's Guide Universe" system in SOURCE4 was named to represent the refe
 
 | Quantity | Value | Units |
 |----------|-------|-------|
-| g_MUGE (Student's Guide Universe) | 3.958�10^14 | m/s^2 |
-| Dominant terms | aaether_res, aDPM_cosm | � |
+| g_MUGE (Student's Guide Universe) | 3.958×10^14 | m/s^2 |
+| Dominant terms | aaether_res, aDPM_cosm | – |
 | fTRZ contribution | 0.1 (constant floor) | dimensionless |
-| Osc_term phase | cos(4.335 rad) = -0.368 | � |
-| aexp_freq (Hubble coupling) | 1.308�10^-9 | m/s^2 |
-| Cascade ratio: Sgr A* / Student | ~10^15 | � |
-| Full suite dynamic range | 38 decades | � |
-| UQFF O_m analogue | e^{-?t} � 0.08 (at t_U) | � |
-| MUGE vs ?CDM Newtonian at R_H | 3.958�10^14 vs 3.4�10^-12 | m/s^2 |
+| Osc_term phase | cos(4.335 rad) = -0.368 | – |
+| aexp_freq (Hubble coupling) | 1.308×10^-9 | m/s^2 |
+| Cascade ratio: Sgr A* / Student | ~10^15 | – |
+| Full suite dynamic range | 38 decades | – |
+| UQFF O_m analogue | e^{-?t} ≈ 0.08 (at t_U) | – |
+| MUGE vs ?CDM Newtonian at R_H | 3.958×10^14 vs 3.4×10^-12 | m/s^2 |
 
 ---
 
 ## 8. Conclusions
 
-1. The UQFF MUGE 12-Term Resonance framework produces g = 3.958�10^14 m/s^2 for the cosmological-scale "Student's Guide Universe" system � the lowest-g terminus of the 7-system cascade suite.
+1. The UQFF MUGE 12-Term Resonance framework produces g = 3.958×10^14 m/s^2 for the cosmological-scale "Student's Guide Universe" system � the lowest-g terminus of the 7-system cascade suite.
 2. The dominant terms at cosmological scale are the aether resonance (aaether_res) and the DPM cosmological vortex driver (aDPM), not afluid_freq (which requires mG-scale B-fields to dominate).
 3. The fTRZ = 0.1 constant suppresses the Hubble expansion term in a manner analogous to the cosmological constant ? in ?CDM.
 4. The 7-system suite spans 38 decades of g with zero free-parameter tuning � the strongest evidence to date for the universality of the UQFF MUGE equation.
@@ -288,7 +290,7 @@ The "Student's Guide Universe" system in SOURCE4 was named to represent the refe
 - Blasi P. & De Marco D. (1999), Astropart. Phys. 12, 169 � Cosmological B-field 1 nG bound
 .Groups[1].Value  � UQFF Student's Guide Universe: Cosmological MUGE Baseline
 
-**Title:** UQFF Star-Magic Student's Guide to the Universe � Cosmological Scale MUGE 12-Term Resonance Baseline: g = 3.958�10^14 m/s^2
+**Title:** UQFF Star-Magic Student's Guide to the Universe – Cosmological Scale MUGE 12-Term Resonance Baseline: g = 3.958×10^14 m/s^2
 
 **Author:** Daniel T. Murphy  
 **Framework:** UQFF Star-Magic (kappa=0.0005/day, [SSq]=0.57, fTRZ=0.1)  

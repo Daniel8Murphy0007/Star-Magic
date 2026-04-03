@@ -1,4 +1,4 @@
-﻿# PAPER_357 — TOI-1227b: Young Neptune Exoplanet with Tidal Gravity and Disk-UQFF Coupling
+# PAPER_357 — TOI-1227b: Young Neptune Exoplanet with Tidal Gravity and Disk-UQFF Coupling
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2  
 **Session:** 97  

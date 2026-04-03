@@ -1,4 +1,4 @@
-﻿# PAPER_179: Star Magic 5-Chapter Theory — DPM and Universal Field Taxonomy
+# PAPER_179: Star Magic 5-Chapter Theory — DPM and Universal Field Taxonomy
 ## Whitepaper §2.4-K | Thread 381a8fe7 | Session 48
 
 ### Abstract
@@ -12,7 +12,7 @@ the theoretical content and provides a formal treatment of the DPM.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 

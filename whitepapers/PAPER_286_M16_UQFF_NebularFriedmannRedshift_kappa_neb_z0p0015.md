@@ -1,4 +1,4 @@
-﻿# PAPER_286: M16 Eagle Nebula UQFF — Nebular Friedmann Redshift Parameter κ_neb
+# PAPER_286: M16 Eagle Nebula UQFF — Nebular Friedmann Redshift Parameter κ_neb
 ## First UQFF Nebular Module with z > 0: H(z=0.0015) = 70.047 km/s/Mpc
 
 **Classification:** UQFF 2.0 Gravitational Physics — Nebular Cosmological Coupling  

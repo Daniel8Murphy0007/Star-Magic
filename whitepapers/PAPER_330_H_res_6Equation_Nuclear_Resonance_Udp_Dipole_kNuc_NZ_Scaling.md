@@ -1,4 +1,4 @@
-﻿# PAPER_330 — H_res Complete 6-Equation Nuclear Resonance Sub-System with U_dp Dipole Coupling and k_nuc N/Z Ratio Scaling
+# PAPER_330 — H_res Complete 6-Equation Nuclear Resonance Sub-System with U_dp Dipole Coupling and k_nuc N/Z Ratio Scaling
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2  
 **Session:** 95  

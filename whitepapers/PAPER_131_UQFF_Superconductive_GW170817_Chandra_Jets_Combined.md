@@ -1,4 +1,5 @@
-﻿#  "PAPER_{0:D3}" -f [int]# PAPER #131 — UQFF Superconductive Merger: GW170817 + Chandra Jets Combined
+# PAPER_131: UQFF Superconductive Mode Dual Synthesis — GW170817 LIGO Kilonova Y_e ≈ 0.1 r-Process and Chandra RACS J0320-35 NS Jet SCm Ignition: Ub_i cos(πt_n) Asymmetry at R = 1.5
+
 
 **Title:** UQFF Superconductive Mode Dual Synthesis — GW170817 LIGO Kilonova Y_e ≈ 0.1 r-Process and Chandra RACS J0320-35 NS Jet SCm Ignition: Ub_i cos(πt_n) Asymmetry at R = 1.5
 

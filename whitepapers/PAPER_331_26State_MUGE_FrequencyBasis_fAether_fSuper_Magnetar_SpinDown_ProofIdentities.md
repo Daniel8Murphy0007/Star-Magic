@@ -1,4 +1,4 @@
-﻿# PAPER_331 — 26-State MUGE Frequency-Basis Representation with Calibrated 7-Frequency Set and 6 Proof Identities
+# PAPER_331 — 26-State MUGE Frequency-Basis Representation with Calibrated 7-Frequency Set and 6 Proof Identities
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2  
 **Session:** 95  
@@ -37,17 +37,17 @@ Each state i contributes 7 frequency-weighted accelerations:
 
 | Channel | Symbol | Calibrated Value | Unit | Physical Origin |
 |---------|--------|-----------------|------|----------------|
-| DPM | a_DPM,i | f_DPM = 1.863×10?84/2p | m/s²/state | Dark Photon Momentum baseline |
+| DPM | a_DPM,i | f_DPM = 1.863×10⁻84/2p | m/s²/state | Dark Photon Momentum baseline |
 | THz | a_THz,i | f_THz = 10¹² | Hz | Terahertz vacuum resonance |
 | Super | a_super,i | f_super = 1.411×10¹6 | Hz | Superconductive Cooper pair |
 | Fluid | a_fluid,i | f_fluid = 1.269×10?¹4 (magnetar) | Hz | Fluid/turbulent gravity |
-|       |          | = 3.465×10?8 (Sgr A*) | Hz | |
+|       |          | = 3.465×10⁻8 (Sgr A*) | Hz | |
 | Aether | a_aether,i | f_aether = 1.576×10?³5 | Hz | Aether vacuum (replaces ?) |
 | Quantum | a_quantum,i | f_quantum = 1.445×10?¹7 | Hz | Quantum gravity oscillation |
 | React | a_react,i | f_react = 10¹° | Hz | U_g4i reactive coupling |
 
 **Additionally:** f_TRZ = ~10?6 Hz (SGR outburst time-reversal zone frequency)  
-**Additionally:** f_flare = 5.56×10?4 Hz (Sgr A* mid-IR every ~30 min = 1/1800 s)
+**Additionally:** f_flare = 5.56×10⁻4 Hz (Sgr A* mid-IR every ~30 min = 1/1800 s)
 
 ### 2.3 Global Modulation
 
@@ -56,7 +56,7 @@ Modulation = f_TRZ · (?_vac,[UA] / ?_vac,[SCm]) · exp(-[SSq]·n/26)
 ```
 
 For calibrated values:
-- f_TRZ ˜ 10?6 Hz (outburst scale)
+- f_TRZ ˜ 10⁻6 Hz (outburst scale)
 - ?_vac,[UA] ˜ 10?³° kg/m³ (aether vacuum)
 - ?_vac,[SCm] ˜ 10?³° × f_SCm (fraction)
 - ?_ratio = ?_vac,[UA]/?_vac,[SCm] ~ 10³ (f_SCm=0.001 ? ratio=1000)
@@ -146,7 +146,7 @@ f_aether  = 1.576×10?³5 Hz   [cosmological vacuum: f ˜ H0/6; replaces ?]
 f_fluid   = 1.269×10?¹4 Hz   [fluid gravity: f ˜ 1/t_Hubble]
 f_quantum = 1.445×10?¹7 Hz   [quantum oscillation: f ˜ E_Planck/h ... scaled]
 f_TRZ     = ~10?6 Hz          [time-reversal zone: f ˜ 1/t_outburst]
-f_DPM     = 1.863×10?84/2p   [dark photon momentum: ultralow seeding frequency]
+f_DPM     = 1.863×10⁻84/2p   [dark photon momentum: ultralow seeding frequency]
 f_react   = 10¹° Hz            [reactive coupling: magnetar ?? calibration]
 f_THz     = 10¹²  Hz           [THz vacuum resonance: Cooper gap scale]
 f_super   = 1.411×10¹6 Hz     [superconductive: Bloch oscillation scale]
@@ -182,7 +182,7 @@ def phase_model(phases, sep):
 # Confirms cos(pt_n) normalization at phase sep=0.3
 ```
 ? `cos(pt_n / 0.3) ~ 0.4 amplitude in MUGE frequency modulation`
-? `t_glitch_recovery ~ P/?? ~ 3.76/(4.23×108) ~ 10?8 s ... × t_0 ~10¹¹ s`
+? `t_glitch_recovery ~ P/?? ~ 3.76/(4.23×108) ~ 10⁻8 s ... × t_0 ~10¹¹ s`
 
 ---
 

@@ -1,4 +1,4 @@
-﻿# PAPER_370 — Multi-Body Solar CelestialBody Pcore Planetary Scaling Law
+# PAPER_370 — Multi-Body Solar CelestialBody Pcore Planetary Scaling Law
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2  
 **Session:** 100  

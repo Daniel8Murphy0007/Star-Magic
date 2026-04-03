@@ -1,3 +1,5 @@
+# PAPER_153: UQFF Star-Magic Morris-Thorne Wormhole Metric � fTRZ Throat Geometry and Geodesic Structure in the MUGE 12-Term Resonance Framework
+
 
 **Title:** UQFF Star-Magic Morris-Thorne Wormhole Metric � fTRZ Throat Geometry and Geodesic Structure in the MUGE 12-Term Resonance Framework
 
@@ -18,7 +20,7 @@ The Morris-Thorne traversable wormhole metric provides one of general relativity
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0�10?4 day?�, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -135,7 +137,7 @@ The dominant term at the ultra-dense throat is aaether_res (SCm velocity dominat
 
 $$a_{aether\_res, throat} = \gamma \cdot \rho_{SCm} \cdot v_{SCm} \cdot c = 5 \times 10^{-5} \times 10^{15} \times 10^8 \times 3 \times 10^8 = 1.5 \times 10^{27} \text{ m/s}^2$$
 
-This is comparable to the Sgr A* MUGE value (4.105�10^29) � consistent with the extreme spacetime curvature at a macroscopic wormhole throat.
+This is comparable to the Sgr A* MUGE value (4.105×10^29) � consistent with the extreme spacetime curvature at a macroscopic wormhole throat.
 
 The fTRZ contribution at the throat directly:
 
@@ -163,7 +165,7 @@ With $f_{TRZ} = 0.1$ and $e^{-\kappa t} \approx 0.08$ (at cosmological time):
 
 $$\rho_{exotic,UQFF} = 10^{31} \times 0.9 \times 0.08 \approx 7.2 \times 10^{29} \text{ J/m}^3$$
 
-The **UQFF framework reduces the exotic matter requirement by ~93%** relative to GR alone, with the remaining 7.2�10^29 J/m� provided by the SCm energy density (?_SCm�v_SCm� = 10^31 J/m� > required).
+The **UQFF framework reduces the exotic matter requirement by ~93%** relative to GR alone, with the remaining 7.2×10^29 J/m� provided by the SCm energy density (?_SCm�v_SCm� = 10^31 J/m� > required).
 
 This demonstrates that **UQFF wormholes are energetically self-consistent** � the SCm density exceeds the reduced exotic requirement by more than 10�.
 
@@ -180,7 +182,7 @@ is precisely the normalised wormhole throat resonance contribution � the dimen
 The topological interpretation:
 - $f_{TRZ} = 0.1$ ? the throat contributes 10% of the MUGE field energy as a topology term
 - $(1 - f_{TRZ}) = 0.9$ ? 90% of the MUGE field is resonance-mediated (non-topological)
-- This 90/10 split mirrors the O_?/O_m ratio in ?CDM (0.685/0.315 � 2.2) at the order-of-magnitude level
+- This 90/10 split mirrors the O_?/O_m ratio in ?CDM (0.685/0.315 × 2.2) at the order-of-magnitude level
 
 ---
 
@@ -191,17 +193,17 @@ The topological interpretation:
 | Prediction | UQFF Value | Observable |
 |-----------|-----------|-----------|
 | Throat radius | r_0 = 2.32 mm | � (hypothetical) |
-| Throat MUGE field | ~1.5�10^27 m/s^2 | � (gravitational lensing pattern) |
-| Transit time at light speed | ~7.7 ps | � |
-| Exotic matter reduction | 93% vs GR | � |
+| Throat MUGE field | ~1.5×10^27 m/s^2 | � (gravitational lensing pattern) |
+| Transit time at light speed | ~7.7 ps | – |
+| Exotic matter reduction | 93% vs GR | – |
 | fTRZ geometry signature | 10% topology coupling | Lensing ring asymmetry |
-| Shape function decay rate | ? = 5�10^-4/day ? spatial | exponential falloff |
+| Shape function decay rate | ? = 5×10^-4/day ? spatial | exponential falloff |
 
 ### 6.2 Connection to Einstein Ring Lensing
 
 The Rings of Relativity system (PAPER_151) is an Einstein ring � a near-zero-tidal-force perfect alignment geometry analogous to the zero-tidal-force condition in MT wormholes ($\Phi = 0$). The UQFF connection:
 
-The lensing ring geometry satisfies the same mathematical condition as the MT metric ($e^{2\Phi} = $ const) when the MUGE field at the lens plane activates the fTRZ term. The Rings of Relativity MUGE value g = 5.005�10^25 m/s^2 can be interpreted as the UQFF field of a "macroscopic lensing throat" at the Einstein ring � a topologically non-trivial gravitational geometry where the lens bends light through exactly 360� (complete ring), the UQFF analogue of a wormhole mouth.
+The lensing ring geometry satisfies the same mathematical condition as the MT metric ($e^{2\Phi} = $ const) when the MUGE field at the lens plane activates the fTRZ term. The Rings of Relativity MUGE value g = 5.005×10^25 m/s^2 can be interpreted as the UQFF field of a "macroscopic lensing throat" at the Einstein ring � a topologically non-trivial gravitational geometry where the lens bends light through exactly 360� (complete ring), the UQFF analogue of a wormhole mouth.
 
 ---
 
@@ -210,28 +212,28 @@ The lensing ring geometry satisfies the same mathematical condition as the MT me
 | Quantity | Value | Units |
 |----------|-------|-------|
 | UQFF wormhole throat radius | 2.32 mm | m |
-| Throat equilibrium condition | ?_SCm�v�_SCm = c�/(8pGr0�) | � |
-| fTRZ shape function contribution | 10% (exponentially localised) | � |
-| UQFF exotic matter requirement | 7.2�10^29 | J/m� |
+| Throat equilibrium condition | ?_SCm�vκ_SCm = c�/(8pGr0�) | – |
+| fTRZ shape function contribution | 10% (exponentially localised) | – |
+| UQFF exotic matter requirement | 7.2×10^29 | J/m� |
 | SCm local energy density | 10^31 | J/m� |
-| Exotic matter self-sufficiency | SCm > required by 14� | � |
+| Exotic matter self-sufficiency | SCm > required by 14� | – |
 | Transit time (at c) | 7.7 ps | s |
-| MUGE at throat | ~1.5�10^27 | m/s^2 |
-| fTRZ topology/metric coupling | 10% / 90% topology/resonance | � |
+| MUGE at throat | ~1.5×10^27 | m/s^2 |
+| fTRZ topology/metric coupling | 10% / 90% topology/resonance | – |
 
 ---
 
 ## 8. Conclusions
 
 1. The UQFF Morris-Thorne wormhole metric incorporates f_TRZ = 0.1 as a shape function correction that adds a physically motivated exponentially-localised vacuum concentration component to the standard MT shape function.
-2. The equilibrium throat radius predicted by UQFF is r_0 � 2.32 mm � set entirely by the SCm energy density parameters (?_SCm, v_SCm) with no free parameters.
+2. The equilibrium throat radius predicted by UQFF is r_0 × 2.32 mm � set entirely by the SCm energy density parameters (?_SCm, v_SCm) with no free parameters.
 3. The UQFF framework reduces the exotic matter requirement by 93% relative to GR, and the remainder is fully supplied by the SCm energy density.
 4. The fTRZ = 0.1 term in the MUGE master equation has a direct topological interpretation as the 10% coupling between spacetime topology and the resonance gravity field.
-5. The Rings of Relativity Einstein ring (PAPER_151) represents the UQFF cosmological analogue of a wormhole throat, and the g_MUGE = 5.005�10^25 m/s^2 result is the far-field signature of this topology.
+5. The Rings of Relativity Einstein ring (PAPER_151) represents the UQFF cosmological analogue of a wormhole throat, and the g_MUGE = 5.005×10^25 m/s^2 result is the far-field signature of this topology.
 
 ---
 
-**UQFF computed:** Canonical UQFF buoyancy parameter U_bi = ?�[SSq]�GM/r� = 5.0e-4�0.57�6.67e-11�M/r�; for solar parameters: U_bi,Sun = 5.7e-4�6.67e-11�1.99e30/(6.96e8)� = 1.47e+2 m/s�.
+**UQFF computed:** Canonical UQFF buoyancy parameter U_bi = ?�[SSq]�GM/rκ = 5.0e-4�0.57�6.67e-11�M/r�; for solar parameters: U_bi,Sun = 5.7e-4�6.67e-11�1.99e30/(6.96e8)� = 1.47e+2 m/s�.
 
 ## References
 

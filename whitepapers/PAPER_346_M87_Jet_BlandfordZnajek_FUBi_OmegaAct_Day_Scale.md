@@ -1,4 +1,4 @@
-﻿# PAPER_346 — M87 Jet Blandford-Znajek Model: Full F_U_Bi_i Calculation
+# PAPER_346 — M87 Jet Blandford-Znajek Model: Full F_U_Bi_i Calculation
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2  
 **Session:** 96  

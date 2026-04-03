@@ -3,7 +3,7 @@
 **Author:** Daniel T. Murphy  
 **Date:** March 5, 2026  
 **Session:** Phase 1 (Sessions 1�43)  
-**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57, �_i = 0.61)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57, κ_i = 0.61)  
 **Source:** `source27.cpp` (SOURCE27 namespace), `MAIN_1_CoAnQi.cpp`  
 **Cross-links:** PAPER_001 (GW170817 Damping), PAPER_007 (Tidal Deformability), PAPER_009 (Damping Decomposition)
 
@@ -13,7 +13,7 @@ Matched filtering of gravitational wave signals requires accurate waveform templ
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0�10?4 day?�, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -67,13 +67,13 @@ UQFF introduces a correction:
 
 UQFF damping reduces radiated power:
 
-**P_UQFF = D�_total � P_GR**
+**P_UQFF = Dκ_total – P_GR**
 
 where D_total = 0.333 for BNS, 0.81 for BBH.
 
 Lower power extends inspiral timescale:
 
-**t_UQFF = t_GR / D�_total**
+**t_UQFF = t_GR / Dκ_total**
 
 For D_total = 0.333:
 - **t_UQFF = 9� t_GR**
@@ -92,7 +92,7 @@ Frequency evolution is governed by:
 
 UQFF modifies this:
 
-**df/dt|_UQFF = D�_total � df/dt|_GR**
+**df/dt|_UQFF = Dκ_total � df/dt|_GR**
 
 Integrating over frequency range f_min ? f_max:
 
@@ -100,7 +100,7 @@ Integrating over frequency range f_min ? f_max:
 
 For D_total = 0.333:
 
-**?f(f) � (1 - 1/D�_total) � f_GR(f)**
+**?f(f) � (1 - 1/Dκ_total) � f_GR(f)**
 **?f(f) � 8 � f_GR(f)**
 
 ### 2.3 Mismatch Metric
@@ -153,7 +153,7 @@ Converting to cycles:
 
 For 367-cycle phase lag:
 
-**?f = 367 � 2p = 2305 rad**
+**?f = 367 × 2p = 2305 rad**
 
 **M � 1** (complete mismatch)
 
@@ -170,8 +170,8 @@ Validation output confirms:
 From `validate_gw170817_chirp.py`:
 - **Duration:** 0.2 seconds (35-300 Hz)
 - **GW cycles:** ~7 cycles
-- **Peak GR strain:** 2.81 � 10?��
-- **Peak UQFF strain:** 9.43 � 10?��
+- **Peak GR strain:** 2.81 × 10?��
+- **Peak UQFF strain:** 9.43 × 10?��
 
 ### 4.2 Phase Evolution
 
@@ -285,10 +285,10 @@ Phase evolution determines chirp mass:
 
 UQFF phase lag shifts estimated M:
 
-**?M / M � (3/5) � (?f / f) � (3/5) � 0.10 = 6%**
+**?M / M � (3/5) � (?f / f) � (3/5) ≈ 0.10 = 6%**
 
 For GW170817 (M = 1.188 M?):
-**?M � 0.07 M?**
+**?M ≈ 0.07 M?**
 
 ### 7.2 Distance Bias
 
@@ -386,7 +386,7 @@ For GW170817 (M = 1.188 M?, f = 23-300 Hz, D = 0.333):
 
 **?f(300 Hz) - ?f(23 Hz) = 2310.8 rad = 367.8 cycles** ?
 
-This validates the phase lag result quoted throughout the domain �1.1 papers. The 2310.8 rad total phase lag accumulated over the BNS inspiral band is entirely due to UQFF reducing the energy loss rate (D�_total = 0.111), which shifts orbital frequency evolution. This is a large, unambiguous signature � not a small correction.
+This validates the phase lag result quoted throughout the domain �1.1 papers. The 2310.8 rad total phase lag accumulated over the BNS inspiral band is entirely due to UQFF reducing the energy loss rate (Dκ_total = 0.111), which shifts orbital frequency evolution. This is a large, unambiguous signature � not a small correction.
 
 ---
 
@@ -396,10 +396,10 @@ This validates the phase lag result quoted throughout the domain �1.1 papers. 
 
 The fractional mismatch between UQFF waveform and best-fit GR template:
 
-**M = 1 - ?h_UQFF | h_GR? / (||h_UQFF|| � ||h_GR||)**
+**M = 1 - ?h_UQFF | h_GR? / (||h_UQFF|| – ||h_GR||)**
 
 For D_total = 0.333:
-**M � 0.44** (44% mismatch)
+**M ≈ 0.44** (44% mismatch)
 
 This level of mismatch is detectable in LIGO O4 for events with SNR > 20.
 
@@ -412,7 +412,7 @@ GR-based parameter estimation applied to a UQFF signal would:
 
 ### 7.3 Test on Population
 
-For a population of 50+ O4/O5 BNS events, the distribution of template mismatches should cluster around M � 0.44 if UQFF is correct, vs M � 0 if GR is correct. This is the most direct test of UQFF waveform physics.
+For a population of 50+ O4/O5 BNS events, the distribution of template mismatches should cluster around M ≈ 0.44 if UQFF is correct, vs M � 0 if GR is correct. This is the most direct test of UQFF waveform physics.
 
 ---
 
@@ -425,7 +425,7 @@ UQFF introduces a two-component waveform modification: (1) a 66.7% amplitude sup
 **Author:** Daniel T. Murphy  
 **Date:** March 5, 2026  
 **Session:** Phase 1 (Sessions 1�43)  
-**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57, �_i = 0.61)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57, κ_i = 0.61)  
 **Source:** `source27.cpp` (SOURCE27 namespace), `MAIN_1_CoAnQi.cpp`  
 **Cross-links:** PAPER_001 (GW170817 Damping), PAPER_007 (Tidal Deformability), PAPER_009 (Damping Decomposition)
 
@@ -453,7 +453,7 @@ UQFF introduces a two-component waveform modification: (1) a 66.7% amplitude sup
 
 ### A.2 F_U Master Equation (Complete — 4 terms)
 
-$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}igl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}igr]$$
+$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}\bigr]$$
 
 | Term | Description | Implementation |
 |------|-------------|----------------|
@@ -470,9 +470,7 @@ $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}igl[\l
 
 ### A.3 Um Heaviside Phase-Transition Amplifier (PAPER_421)
 
-$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} 	imes igl(1 + 10^{13}\,\Theta(
-ho_{SCm} - 
-ho_c)igr) 	imes igl(1 + A_q\cos(\Delta\omega\,t)igr)$$
+$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rho_{SCm} - \rho_c)\bigr) \times \bigl(1 + A_q\cos(\Delta\omega\,t)\bigr)$$
 
 | Symbol | Value | Description |
 |--------|-------|-------------|

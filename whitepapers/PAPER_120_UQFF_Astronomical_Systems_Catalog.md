@@ -1,4 +1,5 @@
-﻿#  "PAPER_{0:D3}" -f [int]# PAPER #120 — UQFF Astronomical Systems Catalog: 24-System Parameter Reference
+# PAPER_120: Complete Catalog of Astronomical Systems Used in UQFF Calculations — Parameters, Verification Sources, and Equation Assignments
+
 
 **Title:** Complete Catalog of Astronomical Systems Used in UQFF Calculations — Parameters, Verification Sources, and Equation Assignments
 
@@ -22,7 +23,7 @@ The UQFF framework has been validated and applied across 24 unique astrophysical
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -145,7 +146,7 @@ The UQFF framework has been validated and applied across 24 unique astrophysical
 |-----------|-------|--------|
 | Sample size | 3,743 sources (4LAC-DR3) | Fermi HEASARC |
 | Luminosity range | $10^{39}$–$10^{47}$ W | 4LAC-DR3 |
-| $\kappa$ (measured) | $0.000497\pm 5\%$ day?¹ | EP-05 PAPER_113 |
+| $\kappa$ (measured) | $0.000497\pm 5\%$ day⁻¹ | EP-05 PAPER_113 |
 | 8-bin $\kappa$ error | All $< 5\%$ | EP-05 |
 | $E_{react}$ range | $10^{39}$–$10^{47}$ W/m³ (8 L bins) | EP-05 |
 

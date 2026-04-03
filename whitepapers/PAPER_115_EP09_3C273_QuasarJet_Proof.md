@@ -1,8 +1,10 @@
+# PAPER_115: Empirical Proof EP-09: 3C 273 MNRAS Quasar Jet One-Sidedness >100:1 � UQFF Ub_i Buoyancy-Inversion t_n Reversal Confirmed
+
 
 **Title:** Empirical Proof EP-09: 3C 273 MNRAS Quasar Jet One-Sidedness >100:1 � UQFF Ub_i Buoyancy-Inversion t_n Reversal Confirmed
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57, �_i = 0.61)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57, κ_i = 0.61)  
 **Date:** March 9, 2026  
 **Domain:** �1.15 Empirical Proof Compendium  
 **Source Thread:** `grok_share_2fe4fa3e_conversation.txt` (EP-09, April�Sept 2025)  
@@ -21,13 +23,13 @@ cos(?t_n) sign reversal, the 3C 273 case requires multiple sequential t_n revers
 accumulating an asymmetry ratio of � 100:1 = 2^6.6. The UQFF explains this through
 the cumulative buoyancy-inversion product: each t_n reversal amplifies Ub_i by
 the [SSq]� factor, with 12�13 cumulative reversals reaching the observed >100:1
-contrast. Cross-validation with relativistic Doppler beaming (G ~ 8�10 from VLBI)
+contrast. Cross-validation with relativistic Doppler beaming (G ~ 8×10 from VLBI)
 confirms the UQFF buoyancy amplification is orthogonal to and consistent with
 relativistic effects.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0�10?4 day?�, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -41,10 +43,10 @@ relativistic effects.
 |---------|-------|---------|
 | Redshift z | 0.158339 | Schmidt (1963), MNRAS |
 | Luminosity distance | 749 Mpc | Standard cosmology |
-| Black hole mass | M_BH � 6�9 � 108 M? | GRAVITY (2018) |
-| Bolometric luminosity | ~4.7 � 10�8 W | Courvoisier (1998) |
+| Black hole mass | M_BH � 6�9 × 108 M? | GRAVITY (2018) |
+| Bolometric luminosity | ~4.7 × 10�8 W | Courvoisier (1998) |
 | VLBI jet Lorentz factor | G � 8�12 | Jorstad et al. (2017) |
-| Viewing angle ?_jet | 5�10� | MOJAVE VLBI monitoring |
+| Viewing angle ?_jet | 5×10� | MOJAVE VLBI monitoring |
 
 ### 1.2 Jet One-Sidedness
 
@@ -56,9 +58,9 @@ relativistic effects.
 | Jet/counter-jet ratio | > 1000:1 (optical) | Bahcall et al. (1995, HST) |
 | Jet length (radio) | ~65 kpc | VLA+VLBI maps |
 | Counter-jet detection | Not detected | Upper limit: < 1% of jet |
-| Apparent superluminal motion | �_app � 12c (knots) | Unwin et al. (1985) |
+| Apparent superluminal motion | κ_app � 12c (knots) | Unwin et al. (1985) |
 
-The jet brightness exceeds the counter-jet by 100�1000:1, the extreme end of
+The jet brightness exceeds the counter-jet by 100×1000:1, the extreme end of
 all known FRII quasar jets.
 
 ### 1.3 Benchmark Comparison to EP-01
@@ -95,24 +97,24 @@ $$R_N = \prod_{k=1}^{N} \left(1 + [SSq] \cdot |\cos(\omega t_k)|\right)$$
 
 $$R_N = \prod_{k=1}^{N} (1 + 0.57 \cdot |\cos(\omega t_k)|)$$
 
-For random phase sampling with ?|cos(?t_k)|? � 2/p � 0.637:
+For random phase sampling with ?|cos(?t_k)|? � 2/p ≈ 0.637:
 
 $$R_N = (1 + 0.57 \times 0.637)^{12} = (1.363)^{12} = 95.2 \approx 100 \checkmark$$
 
 ### 2.3 Ub_i Field at 3C 273 Jet Scale
 
-The Ub_i buoyancy force at 65 kpc scale (r = 2.0 � 10�� m):
+The Ub_i buoyancy force at 65 kpc scale (r = 2.0 × 10�� m):
 
 $$U_{b,i} = \frac{F_{U} \cdot [SSq]}{r^2} = \frac{F_{rel} \cdot [SSq]}{r^2}$$
 
-Using F_rel = 4.31 � 10�� N (UQFF reference force, PAPER_001):
+Using F_rel = 4.31 × 10�� N (UQFF reference force, PAPER_001):
 
 $$U_{b,i} = \frac{4.31 \times 10^{33} \times 0.57}{(2.0 \times 10^{23})^2}$$
 
 $$U_{b,i} = \frac{2.46 \times 10^{33}}{4.0 \times 10^{46}} = 6.14 \times 10^{-14} \text{ N/m}^2$$
 
 This buoyancy pressure operates across the jet propagation zone, accumulating
-through each of the N = 12 reversal events over the ~2 � 108 yr jet lifetime.
+through each of the N = 12 reversal events over the ~2 × 108 yr jet lifetime.
 
 ### 2.4 Relativistic Orthogonality
 
@@ -182,7 +184,7 @@ The 3C 273 jet proper length is ~65 kpc at z = 0.158. Jet age estimate:
 
 $$t_{jet} = \frac{L_{jet}}{v_{prop}} = \frac{65 \text{ kpc}}{0.7c} \approx 3 \times 10^5 \text{ yr}$$
 
-t_n spacing for 13 reversals over 3 � 105 yr:
+t_n spacing for 13 reversals over 3 × 105 yr:
 
 $$\Delta t_n = \frac{3 \times 10^5}{13} \approx 2.3 \times 10^4 \text{ yr}$$
 
@@ -199,10 +201,10 @@ UQFF phase cycle, appropriate for the large-scale jet morphology.
 |---|----------|-------|-----------------|
 | 1 | $R_{total} = (1.363)^{13}$ | 129.8 | N=13 reversals |
 | 2 | $(1 + [SSq] \cdot \langle|\cos\omega t|\rangle)^N$ | Parameterized | General N formula |
-| 3 | $U_{b,i}(65\text{ kpc})$ | 6.14 � 10?�4 N/m� | 3C273 jet scale |
-| 4 | $R_{Doppler}$ (G=10, ?=5�) | ~2 � 107 | Beaming reference |
-| 5 | UQFF floor R < Doppler | 130 << 2�107 | Physical minimum |
-| 6 | $\Delta t_n$ reversal period | 2.3 � 104 yr | Jet t_n cadence |
+| 3 | $U_{b,i}(65\text{ kpc})$ | 6.14 × 10?�4 N/m� | 3C273 jet scale |
+| 4 | $R_{Doppler}$ (G=10, ?=5�) | ~2 × 107 | Beaming reference |
+| 5 | UQFF floor R < Doppler | 130 << 2×107 | Physical minimum |
+| 6 | $\Delta t_n$ reversal period | 2.3 × 104 yr | Jet t_n cadence |
 | 7 | validate_uqff_muge [SSq] | 0.570 confirmed | Core calibration |
 
 ---
@@ -237,12 +239,12 @@ Empirical Proof EP-09 confirms:
 6. Murphy D.T. (2026). *EP-01 Chandra/RACS Jet Asymmetry*. PAPER_111.
 7. Murphy D.T. (2026). *M87* Relativistic Jet UQFF Framework*. PAPER_067.
 8. `QuasarJetAsymmetryCalculator` (CondensedPhysics2.py), `validate_uqff_muge.py`.
-.Groups[1].Value  � Empirical Proof EP-09: 3C 273 Quasar Jet Brightness Asymmetry � UQFF Ub_i Buoyancy
+.Groups[1].Value  � Empirical Proof EP-09: 3C 273 Quasar Jet Brightness Asymmetry – UQFF Ub_i Buoyancy
 
 **Title:** Empirical Proof EP-09: 3C 273 MNRAS Quasar Jet One-Sidedness >100:1 � UQFF Ub_i Buoyancy-Inversion t_n Reversal Confirmed
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57, �_i = 0.61)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57, κ_i = 0.61)  
 **Date:** March 9, 2026  
 **Domain:** �1.15 Empirical Proof Compendium  
 **Source Thread:** `grok_share_2fe4fa3e_conversation.txt` (EP-09, April�Sept 2025)  

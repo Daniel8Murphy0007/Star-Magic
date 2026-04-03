@@ -1,3 +1,5 @@
+# PAPER_098: Big Bang Origin in UQFF: Pre-Inflationary Vacuum State and the Cosmic Quantum Egg Configuration
+
 
 **Title:** Big Bang Origin in UQFF: Pre-Inflationary Vacuum State and the Cosmic Quantum Egg Configuration
 
@@ -6,7 +8,6 @@
 **Date:** March 7, 2026  
 **Source Data:** validate_drawings_models.py (BIG_BANG_MODEL), Drawings 14 and 20, CMB Planck 2018  
 **Index Slot:** �1.13 Multi-Physics Models,  
-    $n = [int]# PAPER #98 � Big Bang Origin: UQFF Pre-Inflationary Configuration
 
 **Title:** Big Bang Origin in UQFF: Pre-Inflationary Vacuum State and the Cosmic Quantum Egg Configuration
 
@@ -64,7 +65,7 @@ The UQFF predicts a slight modification to the CMB temperature via [SCm]:
 
 $$T_{\rm CMB}^{\rm UQFF}(z) = T_{\rm CMB}^{\rm GR}(z) \times \sqrt{[{\rm SCm}]} = T_0 (1+z) \times 0.995$$
 
-At z=0: T_CMB^UQFF = 2.725 � 0.995 = **2.711 K** vs observed 2.7255 K ? 0.52% deviation.
+At z=0: T_CMB^UQFF = 2.725 × 0.995 = **2.711 K** vs observed 2.7255 K ? 0.52% deviation.
 
 The [SCm] factor arises from vacuum superconductive coupling to photons at horizon scales (*not* affecting photon-electron scattering at last scattering surface).
 
@@ -78,17 +79,17 @@ $$H_0^{\rm UQFF} = H_0^{\rm GR} \times (1 + \kappa \cdot t_{\rm age}) = H_0^{\rm
 
 This would give an astronomically large correction � which is unphysical. Physical interpretation: ? = 0.0005/day applies to UQFF *field* terms, not to the cosmological scale factor. At cosmic timescales, the relevant parameter is ?_cosm << ? (the cosmological coherence decay).
 
-Result: H0^UQFF � H0^GR (cosmological ? negligible) � **consistent with CMB constraint H0 = 67.4 km/s/Mpc**.
+Result: H0^UQFF – H0^GR (cosmological ? negligible) � **consistent with CMB constraint H0 = 67.4 km/s/Mpc**.
 
 ---
 
 ## 5. Baryon Asymmetry
 
-UQFF Drawing 14 proposes that the baryon asymmetry ?_b = (n_b - n_b�)/n_? = 6 � 10?�� arises via CP-violating term in the Ug2 charge-reactivity:
+UQFF Drawing 14 proposes that the baryon asymmetry ?_b = (n_b - n_b�)/n_? = 6 × 10?�� arises via CP-violating term in the Ug2 charge-reactivity:
 
 $$\eta_b = f_{\rm CP}^{\rm UQFF} \times [{\rm UA}] = \epsilon_{\rm CP} \times 0.0001$$
 
-For e_CP = 6 � 10?6 (typical MSSM): ?_b = 6 � 10?�� ?
+For e_CP = 6 × 10⁻6 (typical MSSM): ?_b = 6 × 10?�� ?
 
 ---
 
@@ -99,7 +100,7 @@ For e_CP = 6 � 10?6 (typical MSSM): ?_b = 6 � 10?�� ?
 | Scale factor a(t) shape | Power law | Power law + ?_cosm correction | ? |
 | CMB T0 | 2.7255 K | 2.711 K (0.52% low) | ? |
 | H0 | 67-73 km/s/Mpc | GR-concordant | ? |
-| Baryon asymmetry ?_b | ~6 � 10?�� | f_CP � [UA] | ? |
+| Baryon asymmetry ?_b | ~6 × 10?�� | f_CP � [UA] | ? |
 
 **All 4 tests PASS.**
 
@@ -135,7 +136,7 @@ The UQFF Big Bang model (Drawings 14, 20) provides a pre-inflationary Cosmic Qua
 
 ### A.2 F_U Master Equation (Complete — 4 terms)
 
-$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}igl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}igr]$$
+$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}\bigr]$$
 
 | Term | Description | Implementation |
 |------|-------------|----------------|
@@ -152,9 +153,7 @@ $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}igl[\l
 
 ### A.3 Um Heaviside Phase-Transition Amplifier (PAPER_421)
 
-$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} 	imes igl(1 + 10^{13}\,\Theta(
-ho_{SCm} - 
-ho_c)igr) 	imes igl(1 + A_q\cos(\Delta\omega\,t)igr)$$
+$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rho_{SCm} - \rho_c)\bigr) \times \bigl(1 + A_q\cos(\Delta\omega\,t)\bigr)$$
 
 | Symbol | Value | Description |
 |--------|-------|-------------|

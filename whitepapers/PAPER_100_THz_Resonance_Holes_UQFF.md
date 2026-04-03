@@ -1,3 +1,5 @@
+# PAPER_100: Terahertz Resonance Holes in UQFF Vacuum: Physical Mechanism and Laboratory Predictions
+
 
 **Title:** Terahertz Resonance Holes in UQFF Vacuum: Physical Mechanism and Laboratory Predictions
 
@@ -6,7 +8,6 @@
 **Date:** March 7, 2026  
 **Source Data:** validate_drawings_models.py (THZ_HOLES_MODEL), Drawing 24, MUGE Resonance aTHz mode  
 **Index Slot:** �1.13 Multi-Physics Models,  
-    $n = [int]# PAPER #100 � THz Resonance Holes: UQFF Vacuum Structure
 
 **Title:** Terahertz Resonance Holes in UQFF Vacuum: Physical Mechanism and Laboratory Predictions
 
@@ -24,7 +25,7 @@ Drawing 24 depicts "terahertz resonance holes" � regions of anomalously low va
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0�10?4 day?�, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -50,7 +51,7 @@ $$\nu_{\rm THz,hole} = \frac{[{\rm SSq}]^{1/2} c}{2\pi r_{\rm vac,0}} = \frac{0.
 
 $$= \frac{2.265 \times 10^8}{3.626 \times 10^{-2}} \approx 6.24 \times 10^9 \text{ Hz} \times 10^3 = \textbf{6.24 THz}$$
 
-Where r_vac,0 = 5.77 � 10?� m is the UQFF vacuum coherence length at [SCm] = 0.99.
+Where r_vac,0 = 5.77 × 10?� m is the UQFF vacuum coherence length at [SCm] = 0.99.
 
 ---
 

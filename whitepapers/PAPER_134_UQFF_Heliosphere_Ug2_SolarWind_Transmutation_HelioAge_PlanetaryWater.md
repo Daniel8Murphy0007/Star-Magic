@@ -1,8 +1,10 @@
+# PAPER_134: UQFF Buoyant Mode Heliosphere – Ug2 Outer Field Bubble Transmutes Solar Winds into Hydrogen Complexes: Heliosphere Thickness ? Stellar Age, Planetary Liquid Volume Scaling Law
 
-**Title:** UQFF Buoyant Mode Heliosphere � Ug2 Outer Field Bubble Transmutes Solar Winds into Hydrogen Complexes: Heliosphere Thickness ? Stellar Age, Planetary Liquid Volume Scaling Law
+
+**Title:** UQFF Buoyant Mode Heliosphere – Ug2 Outer Field Bubble Transmutes Solar Winds into Hydrogen Complexes: Heliosphere Thickness ? Stellar Age, Planetary Liquid Volume Scaling Law
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57, �_i = 0.6)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57, κ_i = 0.6)  
 **Date:** March 2026  
 **Domain:** �2.1 Solar Physics / Heliosphere (3419da89)  
 **Source Thread:** `grok_share_3419da8930c748568b7f2bea0ea9c88e_content.txt`  
@@ -18,7 +20,7 @@ The solar heliosphere � the magnetized bubble enclosing the Solar System to ~1
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0�10?4 day?�, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -26,18 +28,18 @@ The solar heliosphere � the magnetized bubble enclosing the Solar System to ~1
 
 | Body | Liquid Volume (km�) | Notes |
 |------|--------------------|----|
-| Earth | ~1.335�10? | Oceans + subsurface |
-| Europa (Jupiter moon) | ~3�10�� | Subsurface ocean |
-| Ganymede | ~3.5�10�� | Brimstone + subsurface |
-| Enceladus | ~2�107 | Subsurface ocean |
-| Titan | ~1.2�107 | Hydrocarbon seas |
-| Sun (photosphere) | � | Heliosphere anchor |
+| Earth | ~1.335×10? | Oceans + subsurface |
+| Europa (Jupiter moon) | ~3×10�� | Subsurface ocean |
+| Ganymede | ~3.5×10�� | Brimstone + subsurface |
+| Enceladus | ~2×107 | Subsurface ocean |
+| Titan | ~1.2×107 | Hydrocarbon seas |
+| Sun (photosphere) | – | Heliosphere anchor |
 
 | Parameter | Value | Source |
 |-----------|-------|------|
-| Heliosphere radius R_b | 1.496�10�� m (~100 AU) | SOHO/Voyager |
-| Solar wind velocity v_sw | 5�105 m/s | SOHO/SDO |
-| Solar wind density ?_sw | 8�10?�� kg/m� | SOHO/SDO |
+| Heliosphere radius R_b | 1.496×10�� m (~100 AU) | SOHO/Voyager |
+| Solar wind velocity v_sw | 5×105 m/s | SOHO/SDO |
+| Solar wind density ?_sw | 8×10?�� kg/m� | SOHO/SDO |
 | Heliosphere thickness | ~10�30 AU (termination zone) | Voyager 1 & 2 |
 
 ---
@@ -95,7 +97,7 @@ $$F_{trans} = Ug_2 \cdot Q_{UA} \cdot e^{-\alpha t} \cos(\pi t_n)$$
 
 The cos(pt_n) term captures the bidirectional SCm-driven flux: during the positive phase, incoming LISM material is captured and bound to the heliosphere shell by magnetic adhesion to the Ug2 field lines. During the negative phase (t_n < 0), previously bound hydrogen complexes are re-excited into higher Ug2 nodes.
 
-Net effect: a hydrogen-complex layer builds up at r � R_b with:
+Net effect: a hydrogen-complex layer builds up at r – R_b with:
 
 $$\rho_{wall}(t) = \rho_{LISM} \cdot e^{+\alpha t} \quad \text{(accumulates over stellar age)}$$
 
@@ -130,7 +132,7 @@ For Earth: $V_{liquid,\oplus} = k_{liquid} \times 6.67 \times 10^{21} \text{ kg}
 ## 4. Calibration: k_2 = 1.2
 
 The factor k_2 = 1.2 is calibrated from three independent constraints:
-1. **Inner heliosphere:** solar wind ram pressure measured by ACE/WIND: P_ram = 2�10?? Pa
+1. **Inner heliosphere:** solar wind ram pressure measured by ACE/WIND: P_ram = 2×10?? Pa
 2. **Termination shock:** Voyager 1 at 94 AU, Voyager 2 at 84 AU
 3. **Hydrogen wall:** Lyman-alpha excess consistent with ?_wall ? e^{at}
 
@@ -172,17 +174,17 @@ print(f"Transmutation force (cos phase) = {F_trans:.3e}")
 
 | Prediction | UQFF | Observed | Agreement |
 |-----------|------|---------|-----------|
-| Ug2 (solar) | 1.18�105� e^{-at} | Dominant F_U term | ? |
+| Ug2 (solar) | 1.18×105� e^{-at} | Dominant F_U term | ? |
 | Heliosphere ? stellar age | ?R_b ? e^{at*} | Hydrogen wall growing | ? Consistent |
 | Hydrogen wall | ?_wall ? e^{at} | Lyman-a backscatter (Voyager) | ? |
-| Earth liquid V | ~1.34�10�8 m� | 1.335�10? km� ? | ? |
+| Earth liquid V | ~1.34×10�8 m� | 1.335×10? km� ? | ? |
 | k_2 calibration | 1.2 | SOHO/SDO/ACE | ? |
 
 ---
 
 ## 7. Conclusions
 
-Ug2 is the dominant term in the solar F_U (1.18�105� e^{-0.0005t} N/m�) and governs heliosphere formation via magnetic transmutation � not merely ram-pressure equilibrium. The hydrogen wall grows with stellar age as e^{at}, and planetary liquid volumes scale with Ug2 capture efficiency. The calibrated value k_2 = 1.2 is consistent across SOHO/SDO, ACE, Voyager, and Lyman-a datasets. This establishes a universal stellar-age ? heliosphere thickness ? planetary water law, with implications for biosignature searches in exoplanetary systems.
+Ug2 is the dominant term in the solar F_U (1.18×105� e^{-0.0005t} N/m�) and governs heliosphere formation via magnetic transmutation � not merely ram-pressure equilibrium. The hydrogen wall grows with stellar age as e^{at}, and planetary liquid volumes scale with Ug2 capture efficiency. The calibrated value k_2 = 1.2 is consistent across SOHO/SDO, ACE, Voyager, and Lyman-a datasets. This establishes a universal stellar-age ? heliosphere thickness ? planetary water law, with implications for biosignature searches in exoplanetary systems.
 
 ---
 
@@ -199,10 +201,10 @@ Ug2 is the dominant term in the solar F_U (1.18�105� e^{-0.0005t} N/m�) an
 *CP2 Mode: Buoyant (Ug2) | Thread: 3419da89 | Session: 44 | Domain: �2.1*
 .Groups[1].Value  � UQFF Heliosphere Ug2: Solar Wind Transmutation, Stellar Age, Planetary Water
 
-**Title:** UQFF Buoyant Mode Heliosphere � Ug2 Outer Field Bubble Transmutes Solar Winds into Hydrogen Complexes: Heliosphere Thickness ? Stellar Age, Planetary Liquid Volume Scaling Law
+**Title:** UQFF Buoyant Mode Heliosphere – Ug2 Outer Field Bubble Transmutes Solar Winds into Hydrogen Complexes: Heliosphere Thickness ? Stellar Age, Planetary Liquid Volume Scaling Law
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57, �_i = 0.6)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57, κ_i = 0.6)  
 **Date:** March 2026  
 **Domain:** �2.1 Solar Physics / Heliosphere (3419da89)  
 **Source Thread:** `grok_share_3419da8930c748568b7f2bea0ea9c88e_content.txt`  

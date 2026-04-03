@@ -1,4 +1,4 @@
-﻿# PAPER #35b — Higgs CP Violation: UQFF Phase Predictions
+# PAPER_035: Higgs CP Violation: UQFF Phase Predictions
 
 **Title:** CP Violation in the Higgs Sector: UQFF cos(π t_n) Temporal Reversal as the Source of A_CP and Higgs Width Enhancement
 
@@ -10,7 +10,6 @@
   - arXiv:2508.08370 (CERN Theoretical Higgs Width, Γ_H < 3.6 GeV at 95% CL)  
 **Validator:** `test_priority3_cern_validation.py` — 7/7 PASSED (100% and 96.88% alignment)  
 **Index Slot:** §1.4 BSM Physics,  
-    $n = [int]# PAPER #35b — Higgs CP Violation: UQFF Phase Predictions
 
 **Title:** CP Violation in the Higgs Sector: UQFF cos(π t_n) Temporal Reversal as the Source of A_CP and Higgs Width Enhancement
 
@@ -21,7 +20,6 @@
   - CMS-HIG-24-009 (CMS CP Violation in Higgs Sector, A_CP = 0.507 ± 0.064)  
   - arXiv:2508.08370 (CERN Theoretical Higgs Width, Γ_H < 3.6 GeV at 95% CL)  
 **Validator:** `test_priority3_cern_validation.py` — 7/7 PASSED (100% and 96.88% alignment)  
-**Index Slot:** §1.4 BSM Physics,  "PAPER_{0:D3}" -f [int]# PAPER #35b — Higgs CP Violation: UQFF Phase Predictions
 
 **Title:** CP Violation in the Higgs Sector: UQFF cos(π t_n) Temporal Reversal as the Source of A_CP and Higgs Width Enhancement
 
@@ -33,7 +31,6 @@
   - arXiv:2508.08370 (CERN Theoretical Higgs Width, Γ_H < 3.6 GeV at 95% CL)  
 **Validator:** `test_priority3_cern_validation.py` — 7/7 PASSED (100% and 96.88% alignment)  
 **Index Slot:** §1.4 BSM Physics,  
-    $n = [int]# PAPER #35b — Higgs CP Violation: UQFF Phase Predictions
 
 **Title:** CP Violation in the Higgs Sector: UQFF cos(π t_n) Temporal Reversal as the Source of A_CP and Higgs Width Enhancement
 
@@ -326,7 +323,7 @@ phi_CP_UQFF         = 63.5°     # full CP phase
 
 ### A.2 F_U Master Equation (Complete — 4 terms)
 
-$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}igl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}igr]$$
+$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}\bigr]$$
 
 | Term | Description | Implementation |
 |------|-------------|----------------|
@@ -343,9 +340,7 @@ $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}igl[\l
 
 ### A.3 Um Heaviside Phase-Transition Amplifier (PAPER_421)
 
-$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} 	imes igl(1 + 10^{13}\,\Theta(
-ho_{SCm} - 
-ho_c)igr) 	imes igl(1 + A_q\cos(\Delta\omega\,t)igr)$$
+$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rho_{SCm} - \rho_c)\bigr) \times \bigl(1 + A_q\cos(\Delta\omega\,t)\bigr)$$
 
 | Symbol | Value | Description |
 |--------|-------|-------------|

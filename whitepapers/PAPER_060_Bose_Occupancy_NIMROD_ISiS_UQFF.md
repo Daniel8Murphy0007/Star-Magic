@@ -1,3 +1,5 @@
+# PAPER_060: NIMROD-ISiS Alpha Multiplicity Distributions: UQFF Bose-Einstein Occupancy N_B = 1/(exp(?E/kT)-1) Fit and Threshold Calibration
+
 
 **Title:** NIMROD-ISiS Alpha Multiplicity Distributions: UQFF Bose-Einstein Occupancy N_B = 1/(exp(?E/kT)-1) Fit and Threshold Calibration
 
@@ -7,7 +9,6 @@
 **Validator:** `bose_occupancy_validation.py` � **ALL CHECKS PASS** ?  
 **Source Data:** NIMROD-ISiS data, 40Ca + 40Ca collisions, TAMU Cyclotron  
 **Index Slot:** �1.8 Alpha Multiplicity & BEC Nuclear Physics,  
-    $n = [int]# PAPER #60 � Bose-Einstein Occupancy: NIMROD-ISiS vs UQFF Predictions
 
 **Title:** NIMROD-ISiS Alpha Multiplicity Distributions: UQFF Bose-Einstein Occupancy N_B = 1/(exp(?E/kT)-1) Fit and Threshold Calibration
 
@@ -21,14 +22,14 @@
 ---
 
 
-<!-- UQFF constants: ? = 5.0e-4 day?�, [SSq] = 0.57, M_UQFF = 1.43e1 TeV -->
+<!-- UQFF constants: ? = 5.0e-4 day⁻¹, [SSq] = 0.57, M_UQFF = 1.43e1 TeV -->
 ## Abstract
 
-The UQFF framework applies the Bose-Einstein occupancy distribution to nuclear alpha-particle multiplicities, extracting the ensemble temperature from high-multiplicity events in 4�Ca + 4�Ca collisions at 35 MeV/nucleon (NIMROD-ISiS dataset). The Bose formula N_B = 1/(exp(?E/kT) - 1) is fitted to the multiplicity-vs-energy data, yielding kT_fit = 4.63 � 0.17 MeV vs. T_true = 5.0 MeV (7.4% error). At T = 5 MeV, the threshold energy for N_B = 10 is ?E_BEC = 0.477 MeV � the UQFF T_BEC calibration constant directly confirmed. The ?�/dof = 0.051 confirms excellent fit quality. An [SSq]-weighted BEC suppression table quantifies the 26-level decay of N_B condensation probability.
+The UQFF framework applies the Bose-Einstein occupancy distribution to nuclear alpha-particle multiplicities, extracting the ensemble temperature from high-multiplicity events in 4�Ca + 4�Ca collisions at 35 MeV/nucleon (NIMROD-ISiS dataset). The Bose formula N_B = 1/(exp(?E/kT) - 1) is fitted to the multiplicity-vs-energy data, yielding kT_fit = 4.63 × 0.17 MeV vs. T_true = 5.0 MeV (7.4% error). At T = 5 MeV, the threshold energy for N_B = 10 is ?E_BEC = 0.477 MeV � the UQFF T_BEC calibration constant directly confirmed. The ?�/dof = 0.051 confirms excellent fit quality. An [SSq]-weighted BEC suppression table quantifies the 26-level decay of N_B condensation probability.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0�10?4 day?�, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -68,7 +69,7 @@ This is the standard Bose-Einstein distribution evaluated at the chemical potent
 
 | Parameter | Value |
 |-----------|-------|
-| Fitted kT | **4.63 � 0.17 MeV** |
+| Fitted kT | **4.63 × 0.17 MeV** |
 | True kT | 5.00 MeV |
 | Fit error | 7.43% |
 | ?�/dof | **0.0509** |
@@ -146,9 +147,9 @@ The [SSq] = 0.57 suppression means only **60.65%** of level-26 quantum states su
 
 The alpha cluster condensate at T ~ 5 MeV and ?E ~ 0.477 MeV maps directly to:
 
-- **Hoyle state of ��C** (7.65 MeV above ground, 3a condensate): This is the N_B = 3 system, corresponding to ?E = kT � ln(1 + 1/3) = 5.0 � 0.288 = 1.44 MeV above threshold
+- **Hoyle state of ��C** (7.65 MeV above ground, 3a condensate): This is the N_B = 3 system, corresponding to ?E = kT � ln(1 + 1/3) = 5.0 × 0.288 = 1.44 MeV above threshold
 - **4�Ca near-threshold** (full 10a condensate): This paper's primary case, ?E = 0.477 MeV
-- **Extension to �6O** (4a, N_B = 4): ?E = kT � ln(1 + 1/4) = 5.0 � 0.223 = 1.12 MeV
+- **Extension to �6O** (4a, N_B = 4): ?E = kT � ln(1 + 1/4) = 5.0 × 0.223 = 1.12 MeV
 
 The UQFF successfully maps all three cases with a single T_BEC = 5 MeV parameter.
 
@@ -192,7 +193,7 @@ The UQFF successfully maps all three cases with a single T_BEC = 5 MeV parameter
 
 ### A.2 F_U Master Equation (Complete — 4 terms)
 
-$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}igl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}igr]$$
+$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}\bigr]$$
 
 | Term | Description | Implementation |
 |------|-------------|----------------|
@@ -209,9 +210,7 @@ $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}igl[\l
 
 ### A.3 Um Heaviside Phase-Transition Amplifier (PAPER_421)
 
-$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} 	imes igl(1 + 10^{13}\,\Theta(
-ho_{SCm} - 
-ho_c)igr) 	imes igl(1 + A_q\cos(\Delta\omega\,t)igr)$$
+$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rho_{SCm} - \rho_c)\bigr) \times \bigl(1 + A_q\cos(\Delta\omega\,t)\bigr)$$
 
 | Symbol | Value | Description |
 |--------|-------|-------------|

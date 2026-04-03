@@ -1,4 +1,4 @@
-﻿# PAPER_257: Cassiopeia A SNR Neutron Star â€” Force Equivalence Class Extension Across 53 Orders in Ïƒ_n and 14 Orders in r
+# PAPER_257: Cassiopeia A SNR Neutron Star â€” Force Equivalence Class Extension Across 53 Orders in Ïƒ_n and 14 Orders in r
 
 **Author:** Daniel T. Murphy (daniel.murphy00@gmail.com)
 **Framework:** UQFF v4.27 â€” Star-Magic Physics

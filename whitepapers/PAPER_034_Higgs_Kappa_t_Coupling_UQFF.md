@@ -1,4 +1,4 @@
-﻿# PAPER #34b — Higgs κ_t Coupling: UQFF vs CERN HL-LHC Data
+# PAPER_034: Higgs κ_t Coupling: UQFF vs CERN HL-LHC Data
 
 **Title:** Top-Higgs Yukawa Coupling κ_t at ATLAS and the UQFF UH-Level-18 Field: Predictions for the HL-LHC Era
 
@@ -9,7 +9,6 @@
 **Supporting CERN:** CERN-PH-EP-2025-082 (Charm Quark Yukawa κ_c limit, ~47)  
 **Validator:** `test_priority3_cern_validation.py` — 7/7 PASSED (95.83% alignment)  
 **Index Slot:** §1.4 BSM Physics,  
-    $n = [int]# PAPER #34b — Higgs κ_t Coupling: UQFF vs CERN HL-LHC Data
 
 **Title:** Top-Higgs Yukawa Coupling κ_t at ATLAS and the UQFF UH-Level-18 Field: Predictions for the HL-LHC Era
 
@@ -19,7 +18,6 @@
 **CERN Reference:** ATL-PHYS-PROC-2025-051 (ATLAS Higgs tH Production Searches, 2025)  
 **Supporting CERN:** CERN-PH-EP-2025-082 (Charm Quark Yukawa κ_c limit, ~47)  
 **Validator:** `test_priority3_cern_validation.py` — 7/7 PASSED (95.83% alignment)  
-**Index Slot:** §1.4 BSM Physics,  "PAPER_{0:D3}" -f [int]# PAPER #34b — Higgs κ_t Coupling: UQFF vs CERN HL-LHC Data
 
 **Title:** Top-Higgs Yukawa Coupling κ_t at ATLAS and the UQFF UH-Level-18 Field: Predictions for the HL-LHC Era
 
@@ -30,7 +28,6 @@
 **Supporting CERN:** CERN-PH-EP-2025-082 (Charm Quark Yukawa κ_c limit, ~47)  
 **Validator:** `test_priority3_cern_validation.py` — 7/7 PASSED (95.83% alignment)  
 **Index Slot:** §1.4 BSM Physics,  
-    $n = [int]# PAPER #34b — Higgs κ_t Coupling: UQFF vs CERN HL-LHC Data
 
 **Title:** Top-Higgs Yukawa Coupling κ_t at ATLAS and the UQFF UH-Level-18 Field: Predictions for the HL-LHC Era
 
@@ -295,7 +292,7 @@ k_eta_VLQ     = 0.1369      # κ_avg² = 0.37²
 
 ### A.2 F_U Master Equation (Complete — 4 terms)
 
-$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}igl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}igr]$$
+$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}\bigr]$$
 
 | Term | Description | Implementation |
 |------|-------------|----------------|
@@ -312,9 +309,7 @@ $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}igl[\l
 
 ### A.3 Um Heaviside Phase-Transition Amplifier (PAPER_421)
 
-$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} 	imes igl(1 + 10^{13}\,\Theta(
-ho_{SCm} - 
-ho_c)igr) 	imes igl(1 + A_q\cos(\Delta\omega\,t)igr)$$
+$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rho_{SCm} - \rho_c)\bigr) \times \bigl(1 + A_q\cos(\Delta\omega\,t)\bigr)$$
 
 | Symbol | Value | Description |
 |--------|-------|-------------|

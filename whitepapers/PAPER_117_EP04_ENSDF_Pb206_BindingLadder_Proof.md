@@ -1,8 +1,10 @@
+# PAPER_117: Empirical Proof EP-04: ENSDF/NNDC Pb-206 Nuclear Excitation Spectrum – UQFF Energy Ladder Nuclear Level n=8 and Magic Number Z=82 Signature Confirmed
 
-**Title:** Empirical Proof EP-04: ENSDF/NNDC Pb-206 Nuclear Excitation Spectrum � UQFF Energy Ladder Nuclear Level n=8 and Magic Number Z=82 Signature Confirmed
+
+**Title:** Empirical Proof EP-04: ENSDF/NNDC Pb-206 Nuclear Excitation Spectrum – UQFF Energy Ladder Nuclear Level n=8 and Magic Number Z=82 Signature Confirmed
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57, �_i = 0.61)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57, κ_i = 0.61)  
 **Date:** March 9, 2026  
 **Domain:** �1.15 Empirical Proof Compendium  
 **Source Thread:** `grok_share_2fe4fa3e_conversation.txt` (EP-04, April�Sept 2025)  
@@ -19,14 +21,14 @@ Center (NNDC) nuclear level listings for ��6Pb. Lead-206 is chosen as the te
 nucleus because it is a doubly-magic-adjacent isotope (Z=82 proton magic, N=124)
 with an exceptionally well-measured excitation spectrum. The UQFF ladder level
 n = 8 predicts E8 = 10?�� J = 6.242 MeV. The Pb-206 10 MeV nuclear level
-(1.602 � 10?�� J) falls at n = 8.205 � within ?n = 0.205 of n = 8 (threshold ?n < 0.5).
-Additionally, the neutron separation energy S_n = 7.367 MeV = 1.180 � 10?�� J
-satisfies: S_n/(E8) = 1.180 � 2 � [SSq] = 2 � 0.57 = 1.14 (within 3.5%), providing
+(1.602 × 10?�� J) falls at n = 8.205 � within ?n = 0.205 of n = 8 (threshold ?n < 0.5).
+Additionally, the neutron separation energy S_n = 7.367 MeV = 1.180 × 10?�� J
+satisfies: S_n/(E8) = 1.180 × 2 � [SSq] = 2 × 0.57 = 1.14 (within 3.5%), providing
 a second independent confirmation of [SSq] = 0.57 at the nuclear scale.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0�10?4 day?�, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -49,18 +51,18 @@ Pb-206 has exceptional properties for UQFF testing:
 Pb (Z=82) is the n = 8 ladder test nucleus because:
 1. Z = 82 = 10^1.914 ? related to n � 2 sub-ladder (proton number)  
 2. A = 206 corresponds to 10 MeV nuclear scale ? n = 8 energy ladder
-3. The 10 MeV continuum threshold of Pb-206 = 10 � 106 eV � 1.602 � 10?�? J/eV = 1.602 � 10?�� J
+3. The 10 MeV continuum threshold of Pb-206 = 10 × 106 eV � 1.602 × 10?�? J/eV = 1.602 × 10?�� J
 
 ### 1.2 Key ENSDF Levels Used in EP-04
 
 | Level | E (MeV) | E (J) | UQFF n | Jp |
 |-------|---------|-------|--------|-----|
 | Ground state | 0.000 | 0 | N/A | 0? |
-| 1st excited | 0.803 | 1.286 � 10?�� | 6.91 | 2? |
-| 2nd excited | 1.162 | 1.861 � 10?�� | 7.07 | 4? |
-| 10 MeV continuum | 10.000 | 1.602 � 10?�� | **8.205** | continuum |
-| Neutron separation | 7.367 | 1.180 � 10?�� | 7.972 | threshold |
-| Total binding E | 1,622.3 | 2.599 � 10?�� | 10.215 | bound |
+| 1st excited | 0.803 | 1.286 × 10?�� | 6.91 | 2? |
+| 2nd excited | 1.162 | 1.861 × 10?�� | 7.07 | 4? |
+| 10 MeV continuum | 10.000 | 1.602 × 10?�� | **8.205** | continuum |
+| Neutron separation | 7.367 | 1.180 × 10?�� | 7.972 | threshold |
+| Total binding E | 1,622.3 | 2.599 × 10?�� | 10.215 | bound |
 
 ---
 
@@ -132,7 +134,7 @@ domain) maps directly onto nuclear shell closure at Z = 82 = 10^1.914.
 ## 4. NuclearBindingLadderValidator Results
 
 ```python
-# CondensedPhysics2.py � NuclearBindingLadderValidator
+# CondensedPhysics2.py – NuclearBindingLadderValidator
 validator = NuclearBindingLadderValidator()
 results = validator.validate_ep04()
 ssq_check = validator.compute_ssq_binding_ratio()
@@ -152,7 +154,7 @@ ssq_check = validator.compute_ssq_binding_ratio()
 
 ```
 measured_ratio:    1.1800  (S_n / E_8)
-predicted_2xSSq:   1.1400  (2 � 0.57)
+predicted_2xSSq:   1.1400  (2 × 0.57)
 error_pct:         3.51%   (< 10% threshold)
 pass:              ? PASS
 ```
@@ -171,7 +173,7 @@ magic_number_Z82_confirmed: True  (?n = 0.205 for 10 MeV level) ?
 |---|----------|-------|-----------------|
 | 1 | $E_8 = 10^{-12}$ J | 6.242 MeV | UQFF nuclear level |
 | 2 | $n_{10MeV} = 8.205$ | ?n = 0.205 | 10 MeV ? n=8 |
-| 3 | $S_n = 7.367$ MeV | 1.180 � 10?�� J | Pb-206 neutron separation |
+| 3 | $S_n = 7.367$ MeV | 1.180 × 10?�� J | Pb-206 neutron separation |
 | 4 | $S_n / E_8 = 1.180$ | � 2�[SSq] = 1.14 | 3.5% error |
 | 5 | $Z_{Pb} = 82 = 10^{1.914}$ | n=2 sub-ladder | Magic number |
 | 6 | $\text{Binding}_T = 2.599 \times 10^{-10}$ J | n=10.215 | Total BE ? hadronic n=10 |
@@ -186,8 +188,8 @@ magic_number_Z82_confirmed: True  (?n = 0.205 for 10 MeV level) ?
 | PAPER_116 | EP-03 | Quark virtual | 4 | ?n = 0.204 |
 | PAPER_117 | EP-04 | Nuclear MeV | 8 | ?n = 0.205 |
 | PAPER_112 | EP-02 | PDG particles | 8�14 | R�=0.95 (241 particles) |
-| (future) | � | EW bosons | 12 | W=12.11, Z=12.16 |
-| (future) | � | Compositeness | 14 | ?>30 TeV = n=14.7 |
+| (future) | – | EW bosons | 12 | W=12.11, Z=12.16 |
+| (future) | – | Compositeness | 14 | ?>30 TeV = n=14.7 |
 
 The UQFF ladder provides a unified framework from sub-hadronic virtual quark
 exchange (n=4) through nuclear (n=8), hadronic (n=10), and electroweak (n=12)
@@ -204,7 +206,7 @@ Empirical Proof EP-04 confirms:
 2. The neutron separation energy **S_n = 7.367 MeV � 2 � [SSq] � E8** with
    3.5% precision, providing nuclear-physics confirmation of [SSq] = 0.57
 3. The **Z = 82 Pb magic number** is consistent with the n = 2 sub-ladder
-   proton-counting resonance, where Z_magic(Pb) = 10^1.914 � 10^2
+   proton-counting resonance, where Z_magic(Pb) = 10^1.914 × 10^2
 4. The total binding energy 1,622.3 MeV ? n = 10.215 confirms continuity
    from the nuclear ladder (n=8) to the hadronic ladder (n=10)
 5. Taken with EP-03 (PAPER_116), EP-04 validates the UQFF ladder across both
@@ -212,7 +214,7 @@ Empirical Proof EP-04 confirms:
 
 ---
 
-**UQFF computed:** Canonical UQFF buoyancy parameter U_bi = ?�[SSq]�GM/r� = 5.0e-4�0.57�6.67e-11�M/r�; for solar parameters: U_bi,Sun = 5.7e-4�6.67e-11�1.99e30/(6.96e8)� = 1.47e+2 m/s�.
+**UQFF computed:** Canonical UQFF buoyancy parameter U_bi = ?�[SSq]�GM/rκ = 5.0e-4�0.57�6.67e-11�M/r�; for solar parameters: U_bi,Sun = 5.7e-4�6.67e-11�1.99e30/(6.96e8)� = 1.47e+2 m/s�.
 
 ## References
 
@@ -222,12 +224,12 @@ Empirical Proof EP-04 confirms:
 4. Murphy D.T. (2026). *EP-03 LHC Virtual Quark UQFF Ladder n=4*. PAPER_116.
 5. Murphy D.T. (2026). *EP-02 PDG 2025 Energy Ladder Proof*. PAPER_112.
 6. `NuclearBindingLadderValidator` (CondensedPhysics2.py) � Star-Magic codebase.
-.Groups[1].Value  � Empirical Proof EP-04: ENSDF Pb-206 Nuclear Level Data � UQFF Energy Ladder n=8 Confirmed
+.Groups[1].Value  � Empirical Proof EP-04: ENSDF Pb-206 Nuclear Level Data – UQFF Energy Ladder n=8 Confirmed
 
-**Title:** Empirical Proof EP-04: ENSDF/NNDC Pb-206 Nuclear Excitation Spectrum � UQFF Energy Ladder Nuclear Level n=8 and Magic Number Z=82 Signature Confirmed
+**Title:** Empirical Proof EP-04: ENSDF/NNDC Pb-206 Nuclear Excitation Spectrum – UQFF Energy Ladder Nuclear Level n=8 and Magic Number Z=82 Signature Confirmed
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57, �_i = 0.61)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57, κ_i = 0.61)  
 **Date:** March 9, 2026  
 **Domain:** �1.15 Empirical Proof Compendium  
 **Source Thread:** `grok_share_2fe4fa3e_conversation.txt` (EP-04, April�Sept 2025)  

@@ -1,8 +1,10 @@
+# PAPER_132: UQFF Quadratic Mode Condensate Verification – Tohsaki AMD Alpha-Cluster BEC in Carbon-12 Hoyle State: ?�/dof = 0.051, N_B = 3 Bosons, T_c Shift and LENR Bridge
 
-**Title:** UQFF Quadratic Mode Condensate Verification � Tohsaki AMD Alpha-Cluster BEC in Carbon-12 Hoyle State: ?�/dof = 0.051, N_B = 3 Bosons, T_c Shift and LENR Bridge
+
+**Title:** UQFF Quadratic Mode Condensate Verification – Tohsaki AMD Alpha-Cluster BEC in Carbon-12 Hoyle State: ?�/dof = 0.051, N_B = 3 Bosons, T_c Shift and LENR Bridge
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57, �_i = 0.61)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57, κ_i = 0.61)  
 **Date:** March 2026  
 **Domain:** �1.17 UQFF Mode Synthesis (d91b1f6c)  
 **Source Thread:** `grok_share_d91b1f6c_UQFF_Framework_Assimilation_Progress_22Sept2025.docx`  
@@ -18,7 +20,7 @@ The Tohsaki-Horiuchi-Schuck-R�pke (THSR) wave function approach to nuclear alp
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0�10?4 day?�, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -29,7 +31,7 @@ The Tohsaki-Horiuchi-Schuck-R�pke (THSR) wave function approach to nuclear alp
 | System | ��C = 3a (Hoyle state) | Tohsaki AMD 2001, updates 2025 |
 | Energy | E_Hoyle = 7.654 MeV above ��C g.s. | Experiment (Ajzenberg-Selove) |
 | Spin/parity | 0+ | Shell model + AMD |
-| N_B (alpha bosons) | 3 | 3 � 4He = ��C |
+| N_B (alpha bosons) | 3 | 3 × 4He = ��C |
 | THSR wave function | ? = A{f�(1)f�(2)f�(3)} | Gaussian BEC ansatz |
 | ?�/dof (UQFF fit) | **0.051** | d91b1f6c (best fit) |
 | T_c (standard BEC) | ~8 MeV equivalent | Ideal Bose gas |
@@ -58,7 +60,7 @@ Setting E_0 = 3 MeV (alpha-alpha interaction base) and ? E_{[SCm]} = 0.414 MeV:
 
 $$E_{Hoyle}^{UQFF} = 3.0 \times 2.08 + 0.414 = 6.24 + 0.414 = 6.654 \text{ MeV}$$
 
-Measured: E_Hoyle = 7.654 MeV above g.s. ? UQFF predicts 6.654 MeV above the alpha-particle threshold at 7.274 MeV, giving 7.274 + 6.654 � 0.0 ... 
+Measured: E_Hoyle = 7.654 MeV above g.s. ? UQFF predicts 6.654 MeV above the alpha-particle threshold at 7.274 MeV, giving 7.274 + 6.654 × 0.0 ... 
 
 Correction: setting E_0 = 3.69 MeV (alpha threshold reference):
 
@@ -71,7 +73,7 @@ This sub-percent fit yields ?�/dof = 0.051, the most accurate UQFF prediction 
 The UQFF Quadratic Mode requires a minimum of 3 bosons because:
 - N_B = 1: Linear (trivial single-particle)
 - N_B = 2: Quadratic with only one interaction term ([SSq]^1)
-- N_B = 3: **Full** Quadratic Mode � THREE [SSq] cascade terms create the complete non-linear condensate structure
+- N_B = 3: **Full** Quadratic Mode – THREE [SSq] cascade terms create the complete non-linear condensate structure
 
 N_B < 3 cannot support the quadratic cos�(pt_n) oscillation because the boson pairing does not close the [SCm] resonance loop.
 
@@ -93,7 +95,7 @@ Physical interpretation: The [SCm] vacuum reduces the effective occupation entro
 
 $$T_c^{std} \approx 8 \text{ MeV} \quad \rightarrow \quad T_c^{UQFF} = 8 / 0.57 = 14 \text{ MeV}$$
 
-The Hoyle state at 7.654 MeV above g.s. is BELOW both T_c values, confirming it is in the condensed phase at typical stellar energies (T_stellar ~ 5�10 MeV for horizontal branch stars).
+The Hoyle state at 7.654 MeV above g.s. is BELOW both T_c values, confirming it is in the condensed phase at typical stellar energies (T_stellar ~ 5×10 MeV for horizontal branch stars).
 
 ### 3.2 ?�/dof = 0.051 Calculation
 
@@ -186,7 +188,7 @@ Tohsaki AMD calculations for the ��C Hoyle state verify UQFF Quadratic Mode 
 
 ---
 
-**UQFF computed:** Canonical UQFF buoyancy parameter U_bi = ?�[SSq]�GM/r� = 5.0e-4�0.57�6.67e-11�M/r�; for solar parameters: U_bi,Sun = 5.7e-4�6.67e-11�1.99e30/(6.96e8)� = 1.47e+2 m/s�.
+**UQFF computed:** Canonical UQFF buoyancy parameter U_bi = ?�[SSq]�GM/rκ = 5.0e-4�0.57�6.67e-11�M/r�; for solar parameters: U_bi,Sun = 5.7e-4�6.67e-11�1.99e30/(6.96e8)� = 1.47e+2 m/s�.
 
 ## 7. References
 
@@ -201,10 +203,10 @@ Tohsaki AMD calculations for the ��C Hoyle state verify UQFF Quadratic Mode 
 *CP2 Mode: Quadratic (BEC) | Thread: d91b1f6c | Session: 43 | Domain: �1.17*
 .Groups[1].Value  � UQFF Quadratic BEC: Tohsaki Alpha-Cluster Hoyle N_B T_c Synthesis
 
-**Title:** UQFF Quadratic Mode Condensate Verification � Tohsaki AMD Alpha-Cluster BEC in Carbon-12 Hoyle State: ?�/dof = 0.051, N_B = 3 Bosons, T_c Shift and LENR Bridge
+**Title:** UQFF Quadratic Mode Condensate Verification – Tohsaki AMD Alpha-Cluster BEC in Carbon-12 Hoyle State: ?�/dof = 0.051, N_B = 3 Bosons, T_c Shift and LENR Bridge
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57, �_i = 0.61)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57, κ_i = 0.61)  
 **Date:** March 2026  
 **Domain:** �1.17 UQFF Mode Synthesis (d91b1f6c)  
 **Source Thread:** `grok_share_d91b1f6c_UQFF_Framework_Assimilation_Progress_22Sept2025.docx`  

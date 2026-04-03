@@ -1,4 +1,4 @@
-﻿# PAPER_210: UQFF vs MOND Comparison Framework
+# PAPER_210: UQFF vs MOND Comparison Framework
 
 **Version:** 1.0  
 **Date:** March 13, 2026  

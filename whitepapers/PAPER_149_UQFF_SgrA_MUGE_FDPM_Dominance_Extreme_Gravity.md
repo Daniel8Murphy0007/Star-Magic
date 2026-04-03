@@ -1,4 +1,5 @@
-﻿#  "PAPER_{0:D3}" -f [int]# PAPER #149 — UQFF Sagittarius A*: MUGE FDPM Dominance and Extreme Gravity
+# PAPER_149: UQFF Star-Magic Sagittarius A* — MUGE 12-Term Resonance at the Galactic SMBH: aDPM Dominance, g=4.105e29 m/s^2, and FDPM Vortex Amplification
+
 
 **Title:** UQFF Star-Magic Sagittarius A* — MUGE 12-Term Resonance at the Galactic SMBH: aDPM Dominance, g=4.105e29 m/s^2, and FDPM Vortex Amplification
 
@@ -25,7 +26,7 @@ Sagittarius A* (Sgr A*) is the supermassive black hole (SMBH) at the Milky Way's
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 

@@ -1,3 +1,5 @@
+# PAPER_083: Primordial Black Hole Mass Distribution: UQFF Corrections to Formation Thresholds and Present-Day Density
+
 
 **Title:** Primordial Black Hole Mass Distribution: UQFF Corrections to Formation Thresholds and Present-Day Density
 
@@ -6,7 +8,6 @@
 **Date:** March 7, 2026  
 **Source Data:** validate_hawking_temperature.py (primordial BH test, Test 2), validate_phase3.py  
 **Index Slot:** �1.11 Black Hole Physics & Hawking Radiation,  
-    $n = [int]# PAPER #83 � Primordial Black Hole Mass Distribution via UQFF
 
 **Title:** Primordial Black Hole Mass Distribution: UQFF Corrections to Formation Thresholds and Present-Day Density
 
@@ -20,11 +21,11 @@
 
 ## Abstract
 
-Primordial black holes (PBHs) form during radiation domination from density perturbations exceeding dc ~ 0.45. The UQFF modifies the critical density threshold dc_UQFF through the Buoyant vacuum pressure correction and extends PBH survival above the GR threshold mass M_threshold by 3.5%. The evaporation temperature of surviving PBHs is T_UQFF = 0.99 � T_H, slightly reducing their current gamma-ray flux. PBHs with M ~ 10�5�10�7 g may constitute part of dark matter � the UQFF predicts the dark matter fraction f_PBH is unaffected (the 3.5% mass threshold shift does not move PBHs into or out of the observationally allowed window).
+Primordial black holes (PBHs) form during radiation domination from density perturbations exceeding dc ~ 0.45. The UQFF modifies the critical density threshold dc_UQFF through the Buoyant vacuum pressure correction and extends PBH survival above the GR threshold mass M_threshold by 3.5%. The evaporation temperature of surviving PBHs is T_UQFF = 0.99 � T_H, slightly reducing their current gamma-ray flux. PBHs with M ~ 10�5×10�7 g may constitute part of dark matter � the UQFF predicts the dark matter fraction f_PBH is unaffected (the 3.5% mass threshold shift does not move PBHs into or out of the observationally allowed window).
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0�10?4 day?�, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -43,7 +44,7 @@ The fractional correction:
 
 $$\delta_c^{\rm UQFF} = \delta_c \times \left(1 - \frac{P_{\rm vacuum}}{P_{\rm rad}}\right) = 0.45 \times (1 - [UA] \times z_{\rm formation}^{-4})$$
 
-At z_formation = 106 (typical PBH epoch): P_vacuum/P_rad = 0.0001 � 10?�4 ? negligible.
+At z_formation = 106 (typical PBH epoch): P_vacuum/P_rad = 0.0001 × 10?�4 ? negligible.
 
 **UQFF dc = 0.45 (unchanged from GR)** � the formation threshold is not perturbed.
 
@@ -57,7 +58,7 @@ $$M_{\rm threshold}^{\rm GR} = 5.70 \times 10^{11} \text{ kg} \quad (t_{\rm evap
 ### UQFF Threshold
 $$M_{\rm threshold}^{\rm UQFF} = M_{\rm threshold}^{\rm GR} \times (T_{\rm UQFF}/T_H)^{-4/3} = 5.70 \times 10^{11} \times 0.99^{-4/3} = 5.73 \times 10^{11} \text{ kg}$$
 
-**UQFF threshold: 5.73�10�� kg (vs GR 5.70�10�� kg)** � 0.5% increase.
+**UQFF threshold: 5.73×10�� kg (vs GR 5.70×10�� kg)** ≈ 0.5% increase.
 
 ---
 
@@ -77,7 +78,7 @@ $$E_{\rm peak}^{\rm UQFF} = 2.82 k_B T_{\rm UQFF} = 2.82 k_B \times 0.99 T_H = 0
 
 ## 4. PBH dark matter fraction f_PBH
 
-For M_PBH in the asteroid belt window (10�5�10�7 g, avoiding microlensing and CMB):
+For M_PBH in the asteroid belt window (10�5×10�7 g, avoiding microlensing and CMB):
 
 $$f_{\rm PBH}^{\rm UQFF} = f_{\rm PBH}^{\rm GR} \times \frac{M_{\rm threshold}^{\rm UQFF}}{M_{\rm threshold}^{\rm GR}} \times \frac{T_{\rm UQFF}^4}{T_H^4}$$
 
@@ -92,7 +93,7 @@ $$= f_{\rm PBH} \times 1.005 \times 0.96 = f_{\rm PBH} \times 0.965$$
 | PBH Property | Standard GR | UQFF | Change |
 |-------------|------------|------|--------|
 | Formation threshold dc | 0.45 | 0.45 (unchanged) | < 10?�4 |
-| Survival mass threshold | 5.70�10�� kg | 5.73�10�� kg | +0.5% |
+| Survival mass threshold | 5.70×10�� kg | 5.73×10�� kg | +0.5% |
 | Peak emission energy | E_peak | 0.99 E_peak | -1% |
 | f_PBH (dark matter) | f | 0.965f | -3.5% |
 | Fermi-LAT constraints | Not violated | Not violated | Compatible |
@@ -123,7 +124,7 @@ $$= f_{\rm PBH} \times 1.005 \times 0.96 = f_{\rm PBH} \times 0.965$$
 
 ### A.2 F_U Master Equation (Complete — 4 terms)
 
-$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}igl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}igr]$$
+$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}\bigr]$$
 
 | Term | Description | Implementation |
 |------|-------------|----------------|
@@ -140,9 +141,7 @@ $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}igl[\l
 
 ### A.3 Um Heaviside Phase-Transition Amplifier (PAPER_421)
 
-$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} 	imes igl(1 + 10^{13}\,\Theta(
-ho_{SCm} - 
-ho_c)igr) 	imes igl(1 + A_q\cos(\Delta\omega\,t)igr)$$
+$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rho_{SCm} - \rho_c)\bigr) \times \bigl(1 + A_q\cos(\Delta\omega\,t)\bigr)$$
 
 | Symbol | Value | Description |
 |--------|-------|-------------|

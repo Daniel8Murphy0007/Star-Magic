@@ -1,4 +1,4 @@
-﻿# PAPER_247: MUGE Merger Interaction Modulation — Tidal Gravity Boost with Exponential Decay
+# PAPER_247: MUGE Merger Interaction Modulation — Tidal Gravity Boost with Exponential Decay
 
 **Author:** Daniel T. Murphy (daniel.murphy00@gmail.com)
 **Framework:** UQFF v4.27 — Star-Magic Physics

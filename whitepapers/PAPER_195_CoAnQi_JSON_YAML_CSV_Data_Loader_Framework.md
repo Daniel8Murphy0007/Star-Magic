@@ -1,4 +1,4 @@
-﻿# PAPER_195: CoAnQi Universal JSON/YAML/CSV Data Loader Framework
+# PAPER_195: CoAnQi Universal JSON/YAML/CSV Data Loader Framework
 
 **Version:** 1.0  
 **Date:** March 13, 2026  

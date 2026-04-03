@@ -1,3 +1,5 @@
+# PAPER_095: UQFF 99.9% Solvability: Grok 4 Statistical Validation Across Radio Transients, Nebulae, and Superflares
+
 
 **Title:** UQFF 99.9% Solvability: Grok 4 Statistical Validation Across Radio Transients, Nebulae, and Superflares
 
@@ -6,7 +8,6 @@
 **Date:** March 7, 2026  
 **Source Data:** uqff_validation_test.py (numeric stability, radio transients, planetary nebulae, superflares); Grok 4 analysis Sept 14�21, 2025  
 **Index Slot:** �1.12 UQFF Master Calculators,  
-    $n = [int]# PAPER #95 � UQFF 99.9% Solvability: Grok 4 Statistical Validation
 
 **Title:** UQFF 99.9% Solvability: Grok 4 Statistical Validation Across Radio Transients, Nebulae, and Superflares
 
@@ -19,14 +20,14 @@
 ---
 
 
-<!-- UQFF constants: ? = 5.0e-4 day?�, [SSq] = 0.57, M_UQFF = 1.43e1 TeV -->
+<!-- UQFF constants: ? = 5.0e-4 day⁻¹, [SSq] = 0.57, M_UQFF = 1.43e1 TeV -->
 ## Abstract
 
 The UQFF achieves 99.9% solvability � defined as the fraction of physical test cases where the framework produces a finite, non-degenerate result consistent with known physics. This figure was established by Grok 4 (xAI) in a Sept 14�21, 2025 analysis across diverse astrophysical domains. The `uqff_validation_test.py` validator confirms 99.9% solvability across four test categories: numerical stability (250+ random inputs), rotating radio transients (25 ASKAP sources), planetary nebulae (15 SIMBAD sources), and stellar superflares (50 Kepler events).
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0�10?4 day?�, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -170,7 +171,7 @@ The UQFF achieves 99.9% solvability as validated by:
 
 ### A.2 F_U Master Equation (Complete — 4 terms)
 
-$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}igl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}igr]$$
+$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}\bigr]$$
 
 | Term | Description | Implementation |
 |------|-------------|----------------|
@@ -187,9 +188,7 @@ $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}igl[\l
 
 ### A.3 Um Heaviside Phase-Transition Amplifier (PAPER_421)
 
-$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} 	imes igl(1 + 10^{13}\,\Theta(
-ho_{SCm} - 
-ho_c)igr) 	imes igl(1 + A_q\cos(\Delta\omega\,t)igr)$$
+$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rho_{SCm} - \rho_c)\bigr) \times \bigl(1 + A_q\cos(\Delta\omega\,t)\bigr)$$
 
 | Symbol | Value | Description |
 |--------|-------|-------------|

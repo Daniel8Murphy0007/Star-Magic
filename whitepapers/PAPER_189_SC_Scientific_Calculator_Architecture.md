@@ -1,4 +1,4 @@
-﻿# PAPER_189: S-C Scientific Calculator Architecture — Qt5/ANTLR4/SymEngine/Units Stack
+# PAPER_189: S-C Scientific Calculator Architecture — Qt5/ANTLR4/SymEngine/Units Stack
 
 **Version:** 1.0  
 **Date:** March 13, 2026  

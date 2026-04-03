@@ -1,3 +1,5 @@
+# PAPER_065: Automated UQFF Validation Across 121 Astrophysical Systems: Statistical Summary, Pass Rate Analysis, and Numeric Stability Assessment
+
 
 **Title:** Automated UQFF Validation Across 121 Astrophysical Systems: Statistical Summary, Pass Rate Analysis, and Numeric Stability Assessment
 
@@ -6,7 +8,6 @@
 **Date:** March 7, 2026  
 **Source Data:** `run_121_system_validation.py`, `experimental_validation_system.py`, `uqff_validation_test.py`, `debug_validation.py`, `MAIN_1_CoAnQi_integration_status.json`  
 **Index Slot:** �1.9 Automated 121-System Validation,  
-    $n = [int]# PAPER #65 � 121-System UQFF Validation: Statistical Summary
 
 **Title:** Automated UQFF Validation Across 121 Astrophysical Systems: Statistical Summary, Pass Rate Analysis, and Numeric Stability Assessment
 
@@ -24,7 +25,7 @@ The UQFF validation suite tests 121 astrophysical systems spanning neutron stars
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0�10?4 day?�, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -36,7 +37,7 @@ The UQFF validation suite tests 121 astrophysical systems spanning neutron stars
 |------|-------|---------|--------|
 | `run_121_system_validation.py` | Full suite | 121 | MAIN_1_CoAnQi.exe Option 2 (parallel) |
 | `experimental_validation_system.py` | Lab + astro | 17 tests | UQFF vs ground-truth measurements |
-| `uqff_validation_test.py` | 5 systems | 5 � 100 MC | Monte Carlo numeric stability |
+| `uqff_validation_test.py` | 5 systems | 5 × 100 MC | Monte Carlo numeric stability |
 | `debug_validation.py` | Gravity modes | 3 modes � 3 | Compressed/Resonant/MasterBuoyant |
 
 ### System Registry
@@ -92,16 +93,16 @@ The UQFF validation suite tests 121 astrophysical systems spanning neutron stars
 |---------|-----------|-----------|---------|------|--------|
 | RDR-001 | TRZ Factor | 0.100 | 0.098 | 2.00% | ? |
 | RDR-002 | COP | 1.15 | 1.12 | 2.61% | ? |
-| RDR-003 | Plasma T (K) | 3.0�106 | 2.87�106 | 4.33% | ? |
+| RDR-003 | Plasma T (K) | 3.0×106 | 2.87×106 | 4.33% | ? |
 | RDR-004 | Net Energy (%) | 15.0 | 12.3 | 18.0% | ?? |
 | QSC-001 | THz frequency | 1.20 THz | 1.18 THz | 1.67% | ? |
 | QSC-002 | Amplitude dA | 5.2 V | 5.205 V | 0.10% | ? |
-| QSC-003 | Signal count | 847 | � | � | ? |
+| QSC-003 | Signal count | 847 | – | � | ? |
 | QSC-004 | 2nd harmonic | 2.40 THz | 2.36 THz | 1.67% | ? |
 | GC-M13-001 | M13 v_disp | 12.3 km/s | 12.1 km/s | 1.63% | ? |
 | GC-M13-002 | M13 f_Z | 0.89 | 0.87 | 2.25% | ? |
 | GC-OMEGA-001 | ? Cen v_disp | 18.7 km/s | 18.2 km/s | 2.75% | ? |
-| GC-OMEGA-002 | ? Cen M_BH | 4.2�104 M? | 4.0�104 M? | 5.00% | ? |
+| GC-OMEGA-002 | ? Cen M_BH | 4.2×104 M? | 4.0×104 M? | 5.00% | ? |
 | 26D-L13-001 | Layer 13 [SCm] | 7.09e-37 J/m� | 6.95e-37 J/m� | 2.01% | ? |
 | 26D-L18-001 | Higgs mass | 125.09 GeV | 125.35 GeV | 0.21% | ? |
 | 26D-L26-001 | Layer 26 ? | 5.4e-10 J/m� | 5.96e-10 J/m� | 9.40% | ? |
@@ -114,17 +115,17 @@ The UQFF validation suite tests 121 astrophysical systems spanning neutron stars
 
 ### Test Protocol
 
-Each system undergoes 100 Monte Carlo trials with �10% Gaussian noise on M, r, L_X, B0. The stability index is defined as:
+Each system undergoes 100 Monte Carlo trials with ×10% Gaussian noise on M, r, L_X, B0. The stability index is defined as:
 
 $$\text{Stability} = 1 - \frac{\sigma_{F}}{|\mu_{F}|}$$
 
 | System | Mean F_U_Bi_i (N) | Std Dev | Stability | Valid/100 | Status |
 |--------|------------------|---------|-----------|-----------|--------|
-| ASKAP J1832-0911 | -1.47�10�?� | ~4.4�10�?� | **~0.97** | 100 | ? STABLE |
-| Helix Nebula | -2.30�10�?4 | ~6.9�10�?� | **~0.97** | 100 | ? STABLE |
-| R Aquarii | -8.32�10��� | ~2.5�10��� | **~0.97** | 100 | ? STABLE |
-| PN Archive | -8.32�10��� | ~2.5�10��� | **~0.97** | 100 | ? STABLE |
-| Super Flares | -2.73�10�?� | ~8.2�10�?� | **~0.97** | 100 | ? STABLE |
+| ASKAP J1832-0911 | -1.47×10�?� | ~4.4×10�?� | **~0.97** | 100 | ? STABLE |
+| Helix Nebula | -2.30×10�?4 | ~6.9×10�?� | **~0.97** | 100 | ? STABLE |
+| R Aquarii | -8.32×10��� | ~2.5×10��� | **~0.97** | 100 | ? STABLE |
+| PN Archive | -8.32×10��� | ~2.5×10��� | **~0.97** | 100 | ? STABLE |
+| Super Flares | -2.73×10�?� | ~8.2×10�?� | **~0.97** | 100 | ? STABLE |
 
 **All 5 systems: STABLE (stability > 0.97)**
 
@@ -138,16 +139,16 @@ The high stability reflects the dominance of the LENR resonance term in F_U_Bi_i
 
 | Test | System | g_UQFF | Expected Range | Status |
 |------|--------|--------|--------------|--------|
-| Solar | M_sun at 1 AU | 5.93�10?� m/s� | 4�10?� to 8�10?� | ? |
-| Galactic | 10 kpc | 1.39�10?? m/s� | 10?�� to 10?? | ? |
-| Time-varying | M_sun at AU, t=10�� yr | dg > 10?�� | � | ? |
+| Solar | M_sun at 1 AU | 5.93×10?� m/s� | 4×10?� to 8×10?� | ? |
+| Galactic | 10 kpc | 1.39×10?? m/s� | 10?�� to 10?? | ? |
+| Time-varying | M_sun at AU, t=10�� yr | dg > 10?�� | – | ? |
 
 ### UQFF_MasterBuoyant: F = M � (Ug_i - Ub_i + Ui_i)
 
 | Test | System | F (N) | Status |
 |------|--------|--------|--------|
 | Galactic | 10�� M_sun galaxy | < 0 (binding) | ? |
-| Volume breathing | t=10? yr change | dF/F > 10?6 | ? |
+| Volume breathing | t=10? yr change | dF/F > 10⁻6 | ? |
 | Magnitude | |F| | 10�� < |F| < 105� ? |
 
 ---
@@ -191,7 +192,7 @@ The high stability reflects the dominance of the LENR resonance term in F_U_Bi_i
 
 ### A.2 F_U Master Equation (Complete — 4 terms)
 
-$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}igl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}igr]$$
+$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}\bigr]$$
 
 | Term | Description | Implementation |
 |------|-------------|----------------|
@@ -208,9 +209,7 @@ $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}igl[\l
 
 ### A.3 Um Heaviside Phase-Transition Amplifier (PAPER_421)
 
-$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} 	imes igl(1 + 10^{13}\,\Theta(
-ho_{SCm} - 
-ho_c)igr) 	imes igl(1 + A_q\cos(\Delta\omega\,t)igr)$$
+$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rho_{SCm} - \rho_c)\bigr) \times \bigl(1 + A_q\cos(\Delta\omega\,t)\bigr)$$
 
 | Symbol | Value | Description |
 |--------|-------|-------------|

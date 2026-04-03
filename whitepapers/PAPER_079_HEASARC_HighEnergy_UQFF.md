@@ -1,3 +1,5 @@
+# PAPER_079: HEASARC Multi-Mission High-Energy Source Catalog: UQFF Field Predictions for X-Ray, UV, and Magnetar Sources
+
 
 **Title:** HEASARC Multi-Mission High-Energy Source Catalog: UQFF Field Predictions for X-Ray, UV, and Magnetar Sources
 
@@ -6,7 +8,6 @@
 **Date:** March 7, 2026  
 **Source Data:** QCalc_validation.py (DataSourceURLs: HEASARC_BASE, HEASARC_TAP, HEASARC_MAGNETAR)  
 **Index Slot:** �1.10 Database Integration & Multi-Wavelength Astrophysics,  
-    $n = [int]# PAPER #79 � HEASARC High-Energy Source Catalog: UQFF Predictions
 
 **Title:** HEASARC Multi-Mission High-Energy Source Catalog: UQFF Field Predictions for X-Ray, UV, and Magnetar Sources
 
@@ -19,14 +20,14 @@
 ---
 
 
-<!-- UQFF constants: ? = 5.0e-4 day?�, [SSq] = 0.57, M_UQFF = 1.43e1 TeV -->
+<!-- UQFF constants: ? = 5.0e-4 day⁻¹, [SSq] = 0.57, M_UQFF = 1.43e1 TeV -->
 ## Abstract
 
 The NASA High Energy Astrophysics Science Archive Research Center (HEASARC) provides access to 1000+ missions' archived data including ROSAT, Swift, XMM-Newton, NuSTAR, and dedicated magnetar catalogs. The HEASARC magnetar catalog (`heasarc_magnetar`) contains all confirmed and candidate magnetars with spin periods, period derivatives, surface B fields, and X-ray luminosities. The UQFF was calibrated against SGR1745 (HEASARC magnetar entry) with ? = 0.0005/day. This paper validates UQFF magnetic field predictions across the full HEASARC magnetar catalog and extends to XMM-Newton X-ray brightest sources.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0�10?4 day?�, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -47,9 +48,9 @@ The UQFF Superconductive mode predicts the magnetar surface B field via:
 $$B_{\rm UQFF} = B_{\rm standard} \times (1 + [SCm] \times H_{\rm SCm})$$
 
 Where:
-- B_standard = P�^{-1/2} � 3.2�10�? G (spin-down formula)
+- B_standard = P�^{-1/2} � 3.2×10�? G (spin-down formula)
 - [SCm] = 0.99 vacuum superconductive coupling
-- H_SCm � 0.99 (magnetic saturation factor)
+- H_SCm ≈ 0.99 (magnetic saturation factor)
 
 $$B_{\rm UQFF} = B_{\rm standard} \times (1 + 0.99 \times 0.99) = B_{\rm standard} \times 1.98$$
 
@@ -57,11 +58,11 @@ $$B_{\rm UQFF} = B_{\rm standard} \times (1 + 0.99 \times 0.99) = B_{\rm standar
 
 | Magnetar | P (s) | ? (s/s) | B_standard (G) | B_UQFF (G) | B_observed (G) | Ratio |
 |----------|-------|---------|----------------|------------|----------------|-------|
-| SGR 1806-20 | 7.6 | 7.5�10?�� | 2.0�10�5 | 4.0�10�5 | 2.0�10�5 | 2.0 |
-| SGR 1745-2900 | 3.8 | 6.6�10?�� | 2.3�10�4 | 4.6�10�4 | 2.3�10�4 | 2.0 |
-| 1E 2259+586 | 6.98 | 4.8�10?�� | 5.9�10�� | 1.2�10�4 | 5.9�10�� | 2.0 |
-| XTE J1810-197 | 5.54 | 7.7�10?�� | 2.1�10�4 | 4.2�10�4 | 2.1�10�4 | 2.0 |
-| Swift J1818.0-1607 | 1.36 | 1.6�10?8 | 4.7�10�5 | 9.4�10�5 | 3.5�10�5 | 2.7 |
+| SGR 1806-20 | 7.6 | 7.5×10?�� | 2.0×10�5 | 4.0×10�5 | 2.0×10�5 | 2.0 |
+| SGR 1745-2900 | 3.8 | 6.6×10?�� | 2.3×10�4 | 4.6×10�4 | 2.3×10�4 | 2.0 |
+| 1E 2259+586 | 6.98 | 4.8×10?�� | 5.9×10�� | 1.2×10�4 | 5.9×10�� | 2.0 |
+| XTE J1810-197 | 5.54 | 7.7×10?�� | 2.1×10�4 | 4.2×10�4 | 2.1×10�4 | 2.0 |
+| Swift J1818.0-1607 | 1.36 | 1.6×10⁻8 | 4.7×10�5 | 9.4×10�5 | 3.5×10�5 | 2.7 |
 
 **Interpretation**: The UQFF predicts a systematic 2� enhancement of B over the spin-down estimate for standard magnetars. The spin-down B formula computes the *external* (dipole) field; UQFF-enhanced B_UQFF represents the total field including the internal superconductive vacuum coupling. For Swift J1818 (youngest magnetar, t~240 yr), the 2.7� ratio suggests the [SCm] coupling is stronger during the magnetar's active phase.
 
@@ -73,7 +74,7 @@ HEASARC also provides XMM-Newton catalog access (`heasarc_xmm_source`). UQFF ext
 
 $$k_B T_{\rm UQFF} = k_B T_{\rm standard} \times \left(1 + \frac{F_{U,Bi,i}}{M \cdot g}\right)$$
 
-The F_U_Bi_i / (Mg) ratio for typical clusters ~ 10?4 ? temperature enhancement = 0.01% ? undetectable in XMM spectral fits.
+The F_U_Bi_i / (Mg) ratio for typical clusters ~ 10⁻4 ? temperature enhancement = 0.01% ? undetectable in XMM spectral fits.
 
 ---
 
@@ -111,7 +112,7 @@ The F_U_Bi_i / (Mg) ratio for typical clusters ~ 10?4 ? temperature enhancement 
 
 ### A.2 F_U Master Equation (Complete — 4 terms)
 
-$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}igl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}igr]$$
+$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}\bigr]$$
 
 | Term | Description | Implementation |
 |------|-------------|----------------|
@@ -128,9 +129,7 @@ $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}igl[\l
 
 ### A.3 Um Heaviside Phase-Transition Amplifier (PAPER_421)
 
-$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} 	imes igl(1 + 10^{13}\,\Theta(
-ho_{SCm} - 
-ho_c)igr) 	imes igl(1 + A_q\cos(\Delta\omega\,t)igr)$$
+$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rho_{SCm} - \rho_c)\bigr) \times \bigl(1 + A_q\cos(\Delta\omega\,t)\bigr)$$
 
 | Symbol | Value | Description |
 |--------|-------|-------------|

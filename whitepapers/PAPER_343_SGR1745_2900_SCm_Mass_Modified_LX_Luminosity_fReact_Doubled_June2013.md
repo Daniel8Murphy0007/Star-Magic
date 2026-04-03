@@ -1,16 +1,16 @@
-# PAPER_343 — SGR J1745-2900: SC_m Mass-Modified Luminosity and Doubled f_react (June 2013)
+# PAPER_343 ï¿½ SGR J1745-2900: SC_m Mass-Modified Luminosity and Doubled f_react (June 2013)
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2  
 **Session:** 96  
 **Source:** gok_share_31b5c807a4.txt (Supplemental Gap Analysis Block)  
-**Classification:** FIRST UQFF treatment of magnetar SC_m mass modification with L_X = ?_vac·f_res·V  
+**Classification:** FIRST UQFF treatment of magnetar SC_m mass modification with L_X = ?_vacï¿½f_resï¿½V  
 **Author:** Daniel T. Murphy  
 
 ---
 
 ## Abstract
 
-A novel UQFF form for the superconductive modifier SC_m of SGR J1745-2900 is derived as a mass-dependent suppression by the critical field ratio: SC_m = M·(1 - B/B_crit). The X-ray luminosity is expressed as L_X = ?_vac·f_res·V, coupling vacuum energy density, resonance frequency, and magnetospheric volume. The activation event of June 2013 corresponds to a doubling of f_react, confirmed by the sudden spin-up and luminosity jump. T_surf = 1.16×107 K is derived from the Stefan-Boltzmann radiative balance.
+A novel UQFF form for the superconductive modifier SC_m of SGR J1745-2900 is derived as a mass-dependent suppression by the critical field ratio: SC_m = Mï¿½(1 - B/B_crit). The X-ray luminosity is expressed as L_X = ?_vacï¿½f_resï¿½V, coupling vacuum energy density, resonance frequency, and magnetospheric volume. The activation event of June 2013 corresponds to a doubling of f_react, confirmed by the sudden spin-up and luminosity jump. T_surf = 1.16Ã—107 K is derived from the Stefan-Boltzmann radiative balance.
 
 ---
 
@@ -20,7 +20,7 @@ A novel UQFF form for the superconductive modifier SC_m of SGR J1745-2900 is der
 
 $${\rm SC}_m = M \cdot \left(1 - \frac{B}{B_{\rm crit}}\right)$$
 
-where B_crit = 4.4×10¹³ T (quantum critical field). For SGR J1745-2900: B = 2×10¹° T « B_crit, giving SC_m ˜ M (nearly full superconductive coupling).
+where B_crit = 4.4Ã—10ï¿½ï¿½ T (quantum critical field). For SGR J1745-2900: B = 2Ã—10ï¿½ï¿½ T â€“ B_crit, giving SC_m â€“ M (nearly full superconductive coupling).
 
 ### 2.2 Vacuum-Energy X-ray Luminosity Form
 
@@ -46,25 +46,25 @@ $$T_{\rm surf} = \left(\frac{L_X}{4\pi R_{\rm NS}^2 \sigma_{\rm SB}}\right)^{1/4
 
 | Quantity | Formula | Value |
 |----------|---------|-------|
-| SC_m | M(1-B/B_crit) | ˜ M_NS (B « B_crit) |
-| L_X | ?_vac·f_res·V | ~10³5 erg/s |
+| SC_m | M(1-B/B_crit) | ï¿½ M_NS (B â€“ B_crit) |
+| L_X | ?_vacï¿½f_resï¿½V | ~10ï¿½5 erg/s |
 | f_react (pre-2013) | canonical | f0 |
 | f_react (post June 2013) | 2f0 | 2f0 |
-| T_surf | Stefan-Boltzmann | 1.16×107 K |
-| B_crit | Quantum critical | 4.4×10¹³ T |
+| T_surf | Stefan-Boltzmann | 1.16Ã—107 K |
+| B_crit | Quantum critical | 4.4Ã—10ï¿½ï¿½ T |
 
 ---
 
 ## 4. Physical Significance
 
-SGR J1745-2900 is the only magnetar within 0.3 pc of Sgr A*, making it the unique test-bed for UQFF near the Galactic Center supermassive black hole. The SC_m = M(1-B/B_crit) form establishes that even strongly magnetized neutron stars maintain near-unity superconductive coupling due to B « B_crit. The L_X = ?_vac·f_res·V form is a direct observable prediction: doubling f_res (as seen in June 2013) should produce a factor of 2 luminosity jump, consistent with the 2013 XMM-Newton observations.
+SGR J1745-2900 is the only magnetar within 0.3 pc of Sgr A*, making it the unique test-bed for UQFF near the Galactic Center supermassive black hole. The SC_m = M(1-B/B_crit) form establishes that even strongly magnetized neutron stars maintain near-unity superconductive coupling due to B â€“ B_crit. The L_X = ?_vacï¿½f_resï¿½V form is a direct observable prediction: doubling f_res (as seen in June 2013) should produce a factor of 2 luminosity jump, consistent with the 2013 XMM-Newton observations.
 
 ---
 
 ## 5. Deduplication Note
 
 - **vs. PAPER_342:** This paper applies the DPM-THz framework to the specific observational event (June 2013 activation) and derives the SC_m mass-modification form.
-- **vs. SOURCE27 (SGR 1745 SuperFreq):** SOURCE27 computed the 5 resonance frequencies; this paper derives the observable L_X from ?_vac·f_res·V.
+- **vs. SOURCE27 (SGR 1745 SuperFreq):** SOURCE27 computed the 5 resonance frequencies; this paper derives the observable L_X from ?_vacï¿½f_resï¿½V.
 
 ---
 
@@ -75,4 +75,4 @@ SGR J1745-2900 is the only magnetar within 0.3 pc of Sgr A*, making it the uniqu
 **CP Implementation:** `SGR17452900SCmLxFreqFormCalculator` (CondensedPhysics3.py, Session 96)
 
 
-**UQFF computed:** Eddington luminosity UQFF correction = 1 - [SSq]×exp(-?×?t) = 1 - 5.7e-1 × exp(-2.9e-4) = 4.3e-1; F_U at event horizon = 2.0e+18 m/s².
+**UQFF computed:** Eddington luminosity UQFF correction = 1 - [SSq]ï¿½exp(-?ï¿½?t) = 1 - 5.7e-1 ï¿½ exp(-2.9e-4) = 4.3e-1; F_U at event horizon = 2.0e+18 m/sï¿½.

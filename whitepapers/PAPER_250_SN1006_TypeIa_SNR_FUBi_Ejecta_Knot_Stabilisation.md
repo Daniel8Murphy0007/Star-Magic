@@ -1,4 +1,4 @@
-﻿# PAPER_250: SN 1006 Type Ia SNR F_U_Bi_i — Ejecta Knot Stabilisation and Force Equivalence Class Founding Member
+# PAPER_250: SN 1006 Type Ia SNR F_U_Bi_i — Ejecta Knot Stabilisation and Force Equivalence Class Founding Member
 
 **Author:** Daniel T. Murphy (daniel.murphy00@gmail.com)
 **Framework:** UQFF v4.27 — Star-Magic Physics
@@ -37,7 +37,7 @@ Three physically distinct phenomena are discoverable from this system:
 | Ejecta mass | M | ~1 M_sun = 1.989 × 10³¹ | kg | Type Ia model |
 | Remnant radius | r | 6.17 × 10¹6 | m (~20 ly) | Chandra imaging |
 | X-ray luminosity | L_X | 10³² | W | Chandra 2023 |
-| Magnetic field | B0 | 10?5 | T | Shocked shell |
+| Magnetic field | B0 | 10⁻5 | T | Shocked shell |
 | System frequency | ?0 | 10?¹² | rad/s | UQFF canonical |
 | Ejecta knot velocity | v_knot | 3,000 km/s = 3 × 106 | m/s | Chandra/JWST 2023 |
 | Gas temperature | T_gas | 106 | K | X-ray spectroscopy |
@@ -79,7 +79,7 @@ E_knot = 0.5 × ?_gas × v_knot²
 
 For coherent knot structures to persist over 1,019 years against diffusion and ISM ram pressure, the UQFF stabilising force must balance the ram pressure `?_ISM × v_knot²`. The neutron drop term:
 ```
-F_neutron = k_neutron × s_n = 10¹° × 10?4 = 106 N
+F_neutron = k_neutron × s_n = 10¹° × 10⁻4 = 106 N
 ```
 
 provides this coherence through Kozima-model neutron capture phonon coupling at the knot boundary. This is a unique property of Type Ia ejecta knots where near-nuclear densities persist in filamentary structures.

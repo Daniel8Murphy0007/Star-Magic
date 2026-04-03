@@ -1,4 +1,4 @@
-﻿# PAPER_167 — GW231123: 225 M_sol BH Merger, UQFF Ug4 Feedback, and Yang-Mills Mass Gap
+# PAPER_167 — GW231123: 225 M_sol BH Merger, UQFF Ug4 Feedback, and Yang-Mills Mass Gap
 
 **Session:** 47 | **Date:** March 13, 2026 | **Thread:** 7f9068 | **Domain:** §2.3
 

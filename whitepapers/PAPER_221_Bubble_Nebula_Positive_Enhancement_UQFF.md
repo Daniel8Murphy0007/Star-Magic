@@ -1,4 +1,4 @@
-﻿# PAPER_221: Bubble Nebula UQFF — (1+E(t)) Positive Shell Expansion Enhancement
+# PAPER_221: Bubble Nebula UQFF — (1+E(t)) Positive Shell Expansion Enhancement
 
 **Author:** Daniel T. Murphy (daniel.murphy00@gmail.com)  
 **Framework:** UQFF v4.3 — Star-Magic Physics  
@@ -20,7 +20,7 @@ The Bubble Nebula (NGC 7635) introduces the first POSITIVE irradiation enhanceme
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -59,7 +59,7 @@ E(t) = P_wind / P_gravity = (?_wind · v_wind² · r²) / (G · M · ?_shell)
 
 For BD+60°2522 (the O6-type central star):
 - v_wind ˜ 1500 km/s = 1.5×106 m/s
-- Stellar mass-loss rate ? ˜ 4×10?7 M?/yr
+- Stellar mass-loss rate ? ˜ 4×10⁻7 M?/yr
 
 The wind inflates a bubble by pushing material OUTWARD. However, the swept-up shell at radius r experiences:
 1. **Inward:** gravity G·M/r²  

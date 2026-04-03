@@ -1,4 +1,4 @@
-﻿# PAPER_221: Bubble Nebula UQFF — (1+E(t)) Positive Shell Expansion Enhancement
+# PAPER_221: Bubble Nebula UQFF — (1+E(t)) Positive Shell Expansion Enhancement
 
 **Author:** Daniel T. Murphy (daniel.murphy00@gmail.com)  
 **Framework:** UQFF v4.3 — Star-Magic Physics  
@@ -20,7 +20,7 @@ The Bubble Nebula (NGC 7635) introduces `(1+E(t))` — a POSITIVE shell expansio
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -60,7 +60,7 @@ E(t) = P_wind(r, t) / P_gravity(r)
 ```
 
 Parameters for NGC 7635:
-- BD+60°2522: O6.5 star, mass-loss rate ? ˜ 3×10?6 M?/yr
+- BD+60°2522: O6.5 star, mass-loss rate ? ˜ 3×10⁻6 M?/yr
 - v_wind ˜ 1500 km/s (characteristic O-type stellar wind)
 - r_bubble ˜ 3 ly ˜ 2.84×10¹6 m (bubble shell radius)
 
@@ -88,7 +88,7 @@ When E(t) > 0: compressed shell has HIGHER effective gravity than without wind. 
 ```
 g_base = G·M/r² · (1+H·t) · (1-B/B_crit)
        ˜ 6.674e-11 · 1.5e31 / (2.84e16)² · 1.000 · 0.9999
-       ˜ 1.23×10?5² m/s²
+       ˜ 1.23×10⁻5² m/s²
 
 g_shell = g_base · (1+0.05) = g_base · 1.05
 ? 5% enhancement over purely Newtonian value

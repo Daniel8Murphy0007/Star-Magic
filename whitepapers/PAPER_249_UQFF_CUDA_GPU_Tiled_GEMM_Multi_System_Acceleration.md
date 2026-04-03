@@ -1,4 +1,4 @@
-﻿# PAPER_249: UQFF CUDA GPU Tiled GEMM — Multi-System 26-Layer Acceleration
+# PAPER_249: UQFF CUDA GPU Tiled GEMM — Multi-System 26-Layer Acceleration
 
 **Author:** Daniel T. Murphy (daniel.murphy00@gmail.com)
 **Framework:** UQFF v4.27 — Star-Magic Physics
@@ -22,7 +22,7 @@ The canonical hardware target is the NVIDIA H100 SXM: 132 streaming multiprocess
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 

@@ -1,4 +1,4 @@
-﻿# PAPER #32b — BSM Scalar Sectors in UQFF
+# PAPER_032: BSM Scalar Sectors in UQFF
 
 **Title:** Extended Higgs Scalar Sectors Implied by Vector-Like Quark Production: UQFF Ug2 Charge-Reactivity Analysis
 
@@ -8,7 +8,6 @@
 **arXiv Reference:** 2506.15515 (ATLAS VLQ κ ∈ [0.22, 0.52], m = 1150–2600 GeV)  
 **Validator:** `bsm_physics_validation.py` — PASSED  
 **Index Slot:** §1.4 BSM Physics,  
-    $n = [int]# PAPER #32b — BSM Scalar Sectors in UQFF
 
 **Title:** Extended Higgs Scalar Sectors Implied by Vector-Like Quark Production: UQFF Ug2 Charge-Reactivity Analysis
 
@@ -17,7 +16,6 @@
 **Date:** March 7, 2026  
 **arXiv Reference:** 2506.15515 (ATLAS VLQ κ ∈ [0.22, 0.52], m = 1150–2600 GeV)  
 **Validator:** `bsm_physics_validation.py` — PASSED  
-**Index Slot:** §1.4 BSM Physics,  "PAPER_{0:D3}" -f [int]# PAPER #32b — BSM Scalar Sectors in UQFF
 
 **Title:** Extended Higgs Scalar Sectors Implied by Vector-Like Quark Production: UQFF Ug2 Charge-Reactivity Analysis
 
@@ -27,7 +25,6 @@
 **arXiv Reference:** 2506.15515 (ATLAS VLQ κ ∈ [0.22, 0.52], m = 1150–2600 GeV)  
 **Validator:** `bsm_physics_validation.py` — PASSED  
 **Index Slot:** §1.4 BSM Physics,  
-    $n = [int]# PAPER #32b — BSM Scalar Sectors in UQFF
 
 **Title:** Extended Higgs Scalar Sectors Implied by Vector-Like Quark Production: UQFF Ug2 Charge-Reactivity Analysis
 
@@ -297,7 +294,7 @@ tan_beta_2HDM   ≈ 2.70      # 2HDM parameter from 1/√k_η
 
 ### A.2 F_U Master Equation (Complete — 4 terms)
 
-$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}igl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}igr]$$
+$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}\bigr]$$
 
 | Term | Description | Implementation |
 |------|-------------|----------------|
@@ -314,9 +311,7 @@ $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}igl[\l
 
 ### A.3 Um Heaviside Phase-Transition Amplifier (PAPER_421)
 
-$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} 	imes igl(1 + 10^{13}\,\Theta(
-ho_{SCm} - 
-ho_c)igr) 	imes igl(1 + A_q\cos(\Delta\omega\,t)igr)$$
+$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rho_{SCm} - \rho_c)\bigr) \times \bigl(1 + A_q\cos(\Delta\omega\,t)\bigr)$$
 
 | Symbol | Value | Description |
 |--------|-------|-------------|

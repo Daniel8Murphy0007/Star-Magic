@@ -1,4 +1,4 @@
-﻿# PAPER_283: Saturn UQFF Solar Tidal Hubble Expansion Coupling
+# PAPER_283: Saturn UQFF Solar Tidal Hubble Expansion Coupling
 ## g_ST_HE = g_Sun_tidal × (1 + H₀ × t); hubble_tidal_factor(4.5 Gyr) = 1.3222; Δg = 2.09×10⁻⁵ m/s²
 ### First UQFF Solar-Tidal-Hubble Coupling Term — Planetary-Stellar-Cosmological Three-Body Channel
 

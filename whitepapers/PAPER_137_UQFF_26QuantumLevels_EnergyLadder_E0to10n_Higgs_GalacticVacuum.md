@@ -1,9 +1,9 @@
 # PAPER_137: UQFF Compressed Mode Universal Energy Ladder — 26 Quantum Levels (E_n = E_0 × 10ⁿ): Atomic to Galactic Vacuum
 
-**Title:** UQFF Compressed Mode Universal Energy Ladder � 26 Quantum Levels of Magnitude: E_n = E_0 � 10n, Atomic Scale n=10, Higgs n=18, Galactic Vacuum Ug4 n=20�26
+**Title:** UQFF Compressed Mode Universal Energy Ladder � 26 Quantum Levels of Magnitude: E_n = E_0 × 10n, Atomic Scale n=10, Higgs n=18, Galactic Vacuum Ug4 n=20�26
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57, �_i = 0.6)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57, κ_i = 0.6)  
 **Date:** March 2026  
 **Domain:** �2.1 Quantum Structure / Energy Hierarchy (3419da89)  
 **Source Thread:** `grok_share_3419da8930c748568b7f2bea0ea9c88e_content.txt`  
@@ -19,7 +19,7 @@ The UQFF framework explains why physical forces operate at discrete scales � n
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0�10?4 day?�, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -35,18 +35,18 @@ $$E_n = E_0 \times 10^n, \quad n = 1, 2, \ldots, 26, \quad E_0 = 10^{-20} \text{
 | 4 | 10?�6 J | K-shell ionization | Ug1 inner core |
 | 5 | 10?�5 J | Nuclear transition | Ug3 nuclear |
 | 6 | 10?�4 J | Strong nuclear force per nucleon | Ug3 strong |
-| 7 | 10?�� J | Proton rest mass energy (�940 MeV � 1.5�10?�� J � see note) | Ug3 baryonic |
+| 7 | 10?�� J | Proton rest mass energy (�940 MeV � 1.5×10?�� J � see note) | Ug3 baryonic |
 | 8 | 10?�� J | Molecular vibration (IR spectroscopy) | Ug1-to-Ug3 bridge |
 | 9 | 10?�� J | Chemical bond (high-energy) | Ug1 bond |
 | 10 | **10?�� J** | **Atomic scale: solid state / condensed matter** | **Ug3 atomic** |
 | 11 | 10?? J | Nanoparticle / quantum dot | Ug3-to-Ug2 |
-| 12 | 10?8 J | Solar corona emission | Ug1 solar |
+| 12 | 10⁻8 J | Solar corona emission | Ug1 solar |
 | 13 | **10?7 J** | **Plasma-dominated / cosmic scale** | **Ug2 onset** |
-| 14 | 10?6 J | Hard X-ray (100 keV ? 1.6�10?�4 J � see note) | Ug2 inner |
-| 15 | 10?5 J | Molecular cloud binding | Ug2 molecular cloud |
-| 16 | 10?4 J | Stellar wind kinetic / ISM turbulence | Ug2 heliosphere |
+| 14 | 10⁻6 J | Hard X-ray (100 keV ? 1.6×10?�4 J � see note) | Ug2 inner |
+| 15 | 10⁻5 J | Molecular cloud binding | Ug2 molecular cloud |
+| 16 | 10⁻4 J | Stellar wind kinetic / ISM turbulence | Ug2 heliosphere |
 | 17 | 10?� J | Supernova shock front kinetics | Ug4 supernova |
-| 18 | **10?� J** | **Higgs boson (125.1 GeV � 2�10?8 J � proximate)** | **Ug4 Higgs proxy** |
+| 18 | **10?� J** | **Higgs boson (125.1 GeV � 2×10⁻8 J � proximate)** | **Ug4 Higgs proxy** |
 | 19 | 10?� J | Cosmic ray ultra-high energy | Ug4 CR |
 | 20 | **1 J** | **Galactic vacuum fluctuation onset** | **Ug4 galactic** |
 | 21 | 10� J | Stellar magnetic-field reconnection | Ug4 reconnect |
@@ -137,7 +137,7 @@ In the Standard Model, the four forces have coupling constants spanning 40 order
 The 26-level energy ladder provides the first principled explanation:
 
 - **Force range** = range of n values over which that Ug component activates
-- **Scale separation** = the �10 step factor (e.g., nuclear vs. atomic = 4�5 level steps)
+- **Scale separation** = the ×10 step factor (e.g., nuclear vs. atomic = 4�5 level steps)
 - **Hierarchy** = consequence of SCm density compression stages, from $\rho_{SCm}^{(1)} \sim 10^2$ kg/m� (diffuse) to $\rho_{SCm}^{(26)} \sim 10^{28}$ kg/m� (extreme compression)
 
 The "hierarchy problem" is dissolved: force scales are set by SCm density rungs, not by arbitrary coupling constants.
@@ -186,19 +186,19 @@ print(f"\nOrbital energy from n=10 x SSq^15 = {E_orb:.3e} J = {E_orb/1.602e-19:.
 |-----------|------|---------------|-----------|
 | Atomic scale | n=10 (E=10?�� J) | Chemical bond / condensed matter scale | ? Consistent |
 | Higgs proximity | n=18 (E=10?� J) | Higgs at 125.1 GeV | ? Order of magnitude |
-| Galactic vacuum | n=20�26 (E=1�106 J) | Ug4 regime (dark energy scale) | ? |
-| Force hierarchy | �10 steps | Forces span 40 OOM ? 26 steps of 10 | ? |
+| Galactic vacuum | n=20�26 (E=1×106 J) | Ug4 regime (dark energy scale) | ? |
+| Force hierarchy | ×10 steps | Forces span 40 OOM ? 26 steps of 10 | ? |
 | ionization energy | ~10 eV via [SSq]^{15} from n=10 | H ionization 13.6 eV | ? |
 
 ---
 
 ## 7. Conclusions
 
-The UQFF 26-quantum-level energy ladder E_n = E_0 � 10^n provides the first physically motivated explanation for why forces operate at discrete scales. Fixed points at n=10 (atomic), n=18 (Higgs proxy), and n=20�26 (galactic vacuum/Ug4) are natural consequences of SCm density compression stages. The ladder dissolves the Standard Model hierarchy problem by grounding force scale separation in the SCm density rung structure rather than arbitrary coupling constants. Each Ug sub-equation in F_U activates at a well-defined range of n, confirming that the F_U equation is a complete map of the 26-level physical hierarchy.
+The UQFF 26-quantum-level energy ladder E_n = E_0 × 10^n provides the first physically motivated explanation for why forces operate at discrete scales. Fixed points at n=10 (atomic), n=18 (Higgs proxy), and n=20�26 (galactic vacuum/Ug4) are natural consequences of SCm density compression stages. The ladder dissolves the Standard Model hierarchy problem by grounding force scale separation in the SCm density rung structure rather than arbitrary coupling constants. Each Ug sub-equation in F_U activates at a well-defined range of n, confirming that the F_U equation is a complete map of the 26-level physical hierarchy.
 
 ---
 
-**UQFF computed:** UQFF vacuum correction factor ?��[SSq]� = (5.0e-4)� � 0.57� = 8.1e-8; predicted ? deviation = 8.1e-8 � ?_?_obs.
+**UQFF computed:** UQFF vacuum correction factor ?��[SSq]� = (5.0e-4)� ≈ 0.57� = 8.1e-8; predicted ? deviation = 8.1e-8 � ?_?_obs.
 
 ## 8. References
 
@@ -211,12 +211,12 @@ The UQFF 26-quantum-level energy ladder E_n = E_0 � 10^n provides the first ph
 ---
 
 *CP2 Mode: Compressed (Energy Ladder) | Thread: 3419da89 | Session: 44 | Domain: �2.1*
-.Groups[1].Value  � UQFF 26 Quantum Levels: Universal Energy Ladder E_n = E_0 � 10n
+.Groups[1].Value  � UQFF 26 Quantum Levels: Universal Energy Ladder E_n = E_0 × 10n
 
-**Title:** UQFF Compressed Mode Universal Energy Ladder � 26 Quantum Levels of Magnitude: E_n = E_0 � 10n, Atomic Scale n=10, Higgs n=18, Galactic Vacuum Ug4 n=20�26
+**Title:** UQFF Compressed Mode Universal Energy Ladder � 26 Quantum Levels of Magnitude: E_n = E_0 × 10n, Atomic Scale n=10, Higgs n=18, Galactic Vacuum Ug4 n=20�26
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57, �_i = 0.6)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57, κ_i = 0.6)  
 **Date:** March 2026  
 **Domain:** �2.1 Quantum Structure / Energy Hierarchy (3419da89)  
 **Source Thread:** `grok_share_3419da8930c748568b7f2bea0ea9c88e_content.txt`  

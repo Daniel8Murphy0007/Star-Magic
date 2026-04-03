@@ -1,4 +1,4 @@
-# PAPER_341 ó UQFF 3-Variable Calibration Meta-Framework: ?, H_SCm, U_UA Residuals
+# PAPER_341 ÔøΩ UQFF 3-Variable Calibration Meta-Framework: ?, H_SCm, U_UA Residuals
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2  
 **Session:** 96  
@@ -7,16 +7,16 @@
 **Author:** Daniel T. Murphy  
 
 
-<!-- UQFF constants: ? = 5.0e-4 day?π, [SSq] = 0.57, M_UQFF = 1.43e1 TeV -->
+<!-- UQFF constants: ? = 5.0e-4 day‚Åª¬π, [SSq] = 0.57, M_UQFF = 1.43e1 TeV -->
 ---
 
 ## Abstract
 
-A formal residual calibration framework is established for the three core UQFF tuning variables: ? (decay constant), H_SCm (heliospheric superconductive modifier), and U_UA (aether buoyancy coupling). Twelve observational constraints are reduced to three primary residuals via MCMC fits to quasar variability (?), Parker Solar Probe perihelion measurements (H_SCm), and Gaia DR4 spin-orbit data (U_UA). The calibrated values are: ? = 0.0005 day?π, H_SCm = 0.99, U_UA = 1◊10?4.
+A formal residual calibration framework is established for the three core UQFF tuning variables: ? (decay constant), H_SCm (heliospheric superconductive modifier), and U_UA (aether buoyancy coupling). Twelve observational constraints are reduced to three primary residuals via MCMC fits to quasar variability (?), Parker Solar Probe perihelion measurements (H_SCm), and Gaia DR4 spin-orbit data (U_UA). The calibrated values are: ? = 0.0005 day‚Åª¬π, H_SCm = 0.99, U_UA = 1√ó10‚Åª4.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0◊10?4 day?π, [SSq] = 0.57) uniquely enabling this analysis ó establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0√ó10‚Åª4 day‚Åª¬π, [SSq] = 0.57) uniquely enabling this analysis ÔøΩ establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -64,9 +64,9 @@ $$\Delta U_{\rm UA} = (U_{\rm UA}^{\rm fit} - 10^{-4}) / 10^{-4}$$
 
 | Variable | Canonical Value | Constraint Source | Residual Method |
 |----------|----------------|-------------------|-----------------|
-| ? | 0.0005 day?π | MCMC quasar t ~ 2000 days | Likelihood fit |
+| ? | 0.0005 day‚Åª¬π | MCMC quasar t ~ 2000 days | Likelihood fit |
 | H_SCm | 0.99 | Parker Solar Probe 2025 | d = 1-H_SCm |
-| U_UA | 1◊10?4 | Gaia DR4 spin-orbit | f_Ub scale match |
+| U_UA | 1√ó10‚Åª4 | Gaia DR4 spin-orbit | f_Ub scale match |
 
 ---
 

@@ -1,4 +1,4 @@
-﻿# PAPER_199: F_UBii Taxonomy Part 2 — Cosmological and Dark Sector Buoyancy Forces
+# PAPER_199: F_UBii Taxonomy Part 2 — Cosmological and Dark Sector Buoyancy Forces
 
 **Version:** 1.0  
 **Date:** March 13, 2026  
@@ -13,7 +13,7 @@ $$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b_i}, \quad \kappa = 5.0\tim
 $$
 \rho_\Lambda^\text{UQFF} = \rho_\Lambda^\text{obs}\cdot\Bigl(1 + \kappa^2\cdot[SSq]^2\Bigr) = \rho_\Lambda^\text{obs}\times1.0000000812
 $$
-<!-- ? = 5.0e-4 day?¹, [SSq] = 0.57, ß_i = 6.1e-1 -->
+<!-- ? = 5.0e-4 day⁻¹, [SSq] = 0.57, ß_i = 6.1e-1 -->
 
 ## Abstract
 
@@ -21,7 +21,7 @@ This paper catalogs the second major group of F_UBii variants from the BB_C_Equa
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -90,7 +90,7 @@ F_UBii,lqcf = F_rel × (H² = 8pG?/3·(1-?/?_crit) / E_LEP) × Q_wave
 
 ### 2.3 LQC Bounce Timescale Buoyancy
 ```
-F_UBii,bounc = F_rel × (t_b ˜ v(3/(8pG?_crit)) ˜ t_Pl ˜ 10?4³ s / E_LEP)
+F_UBii,bounc = F_rel × (t_b ˜ v(3/(8pG?_crit)) ˜ t_Pl ˜ 10⁻4³ s / E_LEP)
                × Q_wave × [H˜0 at bounce, duration ˜ 1/?_bounce]
 
   Source: BB_C_Equations item 1257, post-1608

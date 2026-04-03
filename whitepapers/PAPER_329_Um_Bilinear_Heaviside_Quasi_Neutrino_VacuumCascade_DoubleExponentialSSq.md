@@ -1,4 +1,4 @@
-﻿# PAPER_329 — Um Bilinear Heaviside/Quasi Architecture + Vacuum Neutrino Energy Cascade with Nested Double-Exponential [SSq] Decay
+# PAPER_329 — Um Bilinear Heaviside/Quasi Architecture + Vacuum Neutrino Energy Cascade with Nested Double-Exponential [SSq] Decay
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2  
 **Session:** 95  
@@ -37,7 +37,7 @@ Um = ?_j [ µ_j(t, ?_vac,[SCm]) / r_j
 |--------|-------|-------------|
 | µ_j | dynamic | Magnetic moment per state j (function of t and ?_vac,[SCm]) |
 | r_j | system-dependent | Distance per state j |
-| ? | 5×10?5 day?¹ | Temporal decay constant |
+| ? | 5×10⁻5 day⁻¹ | Temporal decay constant |
 | t_n | t/(p·t_n) | Normalized time coordinate |
 | ? | ~0.8 (provisional; ˜sin(pt_n)) | Phase coupling constant; d_n = ?(2pn/6) |
 | P_SCm | [0,1] | Superconductive probability per state |
@@ -117,7 +117,7 @@ From the full UQFF variable calibration table (230 unique; 60 partial):
 
 | Variable | Status | Current Value |
 |----------|--------|---------------|
-| ? | Calibrated | 5×10?5 day?¹ (magnetar spin-down) |
+| ? | Calibrated | 5×10⁻5 day⁻¹ (magnetar spin-down) |
 | ? | Provisional | ~0.8 ˜ sin(pt_n) from image analysis |
 | [SSq] | Calibrated | 0.507 (Sep/2025 datasets) |
 | f_Heaviside | Defined | H(s_n - s_crit), s_crit ~10³8 kg/m³ |

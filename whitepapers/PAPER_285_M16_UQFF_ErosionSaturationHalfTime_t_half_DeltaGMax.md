@@ -1,4 +1,4 @@
-﻿# PAPER_285: M16 Eagle Nebula UQFF — Erosion Saturation Half-Time and ΔgMax
+# PAPER_285: M16 Eagle Nebula UQFF — Erosion Saturation Half-Time and ΔgMax
 ## Photoevaporation Asymptotic Saturation: t_half = τ·ln2 = 2.079 Myr
 
 **Classification:** UQFF 2.0 Gravitational Physics — Nebular Erosion Dynamics  

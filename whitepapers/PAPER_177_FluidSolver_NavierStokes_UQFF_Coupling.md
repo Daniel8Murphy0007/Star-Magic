@@ -1,4 +1,4 @@
-﻿# PAPER_177: FluidSolver Navier-Stokes + UQFF Coupling — Quasar Jet Dynamics
+# PAPER_177: FluidSolver Navier-Stokes + UQFF Coupling — Quasar Jet Dynamics
 ## Whitepaper §2.4-I | Thread 381a8fe7 | Session 48
 
 ### Abstract
@@ -10,7 +10,7 @@ boundary conditions, UQFF coupling interface, and jet injection mechanism.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 

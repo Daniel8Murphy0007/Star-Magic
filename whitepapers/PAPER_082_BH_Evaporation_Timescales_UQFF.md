@@ -1,3 +1,5 @@
+# PAPER_082: UQFF-Corrected Black Hole Evaporation Timescales: Stellar Mass Through Primordial Black Holes
+
 
 **Title:** UQFF-Corrected Black Hole Evaporation Timescales: Stellar Mass Through Primordial Black Holes
 
@@ -6,7 +8,6 @@
 **Date:** March 7, 2026  
 **Source Data:** validate_hawking_temperature.py (Tests 2, 6), CondensedPhysics.py simulate_evaporation()  
 **Index Slot:** �1.11 Black Hole Physics & Hawking Radiation,  
-    $n = [int]# PAPER #82 � Black Hole Evaporation Timescales: UQFF Corrections
 
 **Title:** UQFF-Corrected Black Hole Evaporation Timescales: Stellar Mass Through Primordial Black Holes
 
@@ -24,7 +25,7 @@ Black hole evaporation timescales are computed via the Stefan-Boltzmann law appl
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0�10?4 day?�, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -46,11 +47,11 @@ $$t_{\rm evap}^{\rm UQFF} = \frac{t_{\rm evap}^{\rm GR}}{(T_{\rm UQFF}/T_H)^4} =
 
 | System | M0 | t_evap_GR | t_evap_UQFF | Survives Universe |
 |--------|-----|-----------|-------------|-------------------|
-| Sgr A* | 4�106 M? | 8.7�108� s | 9.1�108� s | ? Yes |
-| M87* | 6.5�10? M? | 3.8�10?5 s | 4.0�10?5 s | ? Yes |
-| Stellar BH | 10 M? | 2.1�1074 s | 2.2�1074 s | ? Yes |
-| Primordial BH | 5.7�10�� kg | 4.35�10�7 s = t_U | 4.52�10�7 s | Borderline |
-| Primordial BH | 1�10�� kg | 2.3�10�� s (73 kyr) | 2.4�10�� s | ? Evaporated |
+| Sgr A* | 4×106 M? | 8.7×108� s | 9.1×108� s | ? Yes |
+| M87* | 6.5×10? M? | 3.8×10⁻5 s | 4.0×10⁻5 s | ? Yes |
+| Stellar BH | 10 M? | 2.1×1074 s | 2.2×1074 s | ? Yes |
+| Primordial BH | 5.7×10�� kg | 4.35×10�7 s = t_U | 4.52×10�7 s | Borderline |
+| Primordial BH | 1×10�� kg | 2.3×10�� s (73 kyr) | 2.4×10�� s | ? Evaporated |
 
 The validate_hawking_temperature.py Test 2 confirms:
 - Stellar BH (10 M?): `survives_universe = True` ?
@@ -66,9 +67,9 @@ $$\frac{dM}{dt} = -\frac{k_{\rm UQFF}}{M^2}, \quad k_{\rm UQFF} = \frac{\hbar c^
 
 With T_UQFF/T_H = 0.99: k_UQFF = 0.96 � k_GR
 
-At t = 100 � 10�� s = 10�� s:
-- M_final � M_initial � (1 - t/t_evap)^{1/3} = 10�� � (1 - 10��/2.4�10��)^{1/3}
-- M_final � 10�� � 0.583^{1/3} � 8.35�10? kg
+At t = 100 × 10�� s = 10�� s:
+- M_final – M_initial � (1 - t/t_evap)^{1/3} = 10�� � (1 - 10��/2.4×10��)^{1/3}
+- M_final � 10�� ≈ 0.583^{1/3} � 8.35×10? kg
 - Mass lost fraction � **16.5%** over first 10�� s
 
 Arrays `times[]`, `masses[]`, `temperatures_H[]` all have matching lengths (validate Test 6). ?
@@ -81,7 +82,7 @@ The UQFF modifies the mass loss rate through the vacuum buoyancy correction. Dur
 
 $$\frac{dM_{\rm UQFF}}{dt} = -\frac{k_{\rm UQFF}}{M^2} + \frac{g_{\rm Buoyant} \times V_{\rm BH}}{c^2}$$
 
-The buoyancy term: g_Buoyant � V_BH / c� = ?_vac � 1055 � (4/3)p r_S� / c� ~ 10?8� kg/s ? negligible vs the thermal term at all masses above Planck mass.
+The buoyancy term: g_Buoyant – V_BH / c� = ?_vac � 1055 � (4/3)p r_S� / c� ~ 10?8� kg/s ? negligible vs the thermal term at all masses above Planck mass.
 
 ---
 
@@ -92,7 +93,7 @@ The buoyancy term: g_Buoyant � V_BH / c� = ?_vac � 1055 � (4/3)p r_S� 
 | Evaporation factor | k_GR | 0.96 � k_GR | -4% |
 | Timescale t_evap | t_GR | 1.041 � t_GR | +4.1% |
 | Stellar BH survival | Yes | Yes | Unchanged |
-| Primordial threshold mass | 5.7�10�� kg | 5.5�10�� kg | -3.5% |
+| Primordial threshold mass | 5.7×10�� kg | 5.5×10�� kg | -3.5% |
 | Test 2 | `survives = True` | Confirmed | ? PASS |
 
 *Source: validate_hawking_temperature.py Tests 2+6, simulate_evaporation() | ? = 0.0005/day | [SSq] = 0.57*
@@ -121,7 +122,7 @@ The buoyancy term: g_Buoyant � V_BH / c� = ?_vac � 1055 � (4/3)p r_S� 
 
 ### A.2 F_U Master Equation (Complete — 4 terms)
 
-$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}igl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}igr]$$
+$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}\bigr]$$
 
 | Term | Description | Implementation |
 |------|-------------|----------------|
@@ -138,9 +139,7 @@ $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}igl[\l
 
 ### A.3 Um Heaviside Phase-Transition Amplifier (PAPER_421)
 
-$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} 	imes igl(1 + 10^{13}\,\Theta(
-ho_{SCm} - 
-ho_c)igr) 	imes igl(1 + A_q\cos(\Delta\omega\,t)igr)$$
+$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rho_{SCm} - \rho_c)\bigr) \times \bigl(1 + A_q\cos(\Delta\omega\,t)\bigr)$$
 
 | Symbol | Value | Description |
 |--------|-------|-------------|

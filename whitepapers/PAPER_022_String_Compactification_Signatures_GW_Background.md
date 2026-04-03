@@ -13,11 +13,11 @@
 
 ## Abstract
 
-String theory predicts that extra spatial dimensions are compactified at scales near the string length L_s ~ 10?�4 m, leaving observable imprints on gravitational wave propagation through Kaluza-Klein (KK) mode excitation and string sector energy dissipation. Within the Unified Quantum Field Framework (UQFF), the string sector damping factor D_String = 0.37 (BNS) and D_String = 0.82 (BBH) arise directly from compactification geometry and the string sector coupling [SSq] = 0.57. We derive the full Kaluza-Klein tower contribution to GW strain, calculate the compactification scale from UQFF calibration constants, and predict spectral features in the stochastic GW background arising from KK mode resonances at f ~ 10?4 Hz (LISA band) and f ~ 10� Hz (LIGO band). The compactification radius R_c = 1.7 � 10?�� m is derived from [SSq] = 0.57, corresponding to a KK mass scale M_KK = 11.6 TeV � consistent with LHC non-observation of extra dimensions. Cosmic string network contributions to the SGWB are also calculated, predicting a distinctive spectral break at f ~ 10?8 Hz detectable by PTA+LISA combined observations.
+String theory predicts that extra spatial dimensions are compactified at scales near the string length L_s ~ 10?�4 m, leaving observable imprints on gravitational wave propagation through Kaluza-Klein (KK) mode excitation and string sector energy dissipation. Within the Unified Quantum Field Framework (UQFF), the string sector damping factor D_String = 0.37 (BNS) and D_String = 0.82 (BBH) arise directly from compactification geometry and the string sector coupling [SSq] = 0.57. We derive the full Kaluza-Klein tower contribution to GW strain, calculate the compactification scale from UQFF calibration constants, and predict spectral features in the stochastic GW background arising from KK mode resonances at f ~ 10⁻4 Hz (LISA band) and f ~ 10� Hz (LIGO band). The compactification radius R_c = 1.7 × 10?�� m is derived from [SSq] = 0.57, corresponding to a KK mass scale M_KK = 11.6 TeV � consistent with LHC non-observation of extra dimensions. Cosmic string network contributions to the SGWB are also calculated, predicting a distinctive spectral break at f ~ 10⁻8 Hz detectable by PTA+LISA combined observations.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0�10?4 day?�, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -87,18 +87,18 @@ At LIGO frequencies (f ~ 100 Hz):
 
 | KK Mode n | M_KK,n (TeV) | f_res,n (Hz) | Detector |
 |-----------|-------------|--------------|----------|
-| 1 | 11.6 | 1.0 x 10?4 | LISA |
-| 2 | 23.2 | 2.0 x 10?4 | LISA |
+| 1 | 11.6 | 1.0 x 10⁻4 | LISA |
+| 2 | 23.2 | 2.0 x 10⁻4 | LISA |
 | 10 | 116 | 1.0 x 10?� | LISA |
 | 106 | 1.16 x 107 | 100 | LIGO |
 
 ### 3.2 SGWB Spectral Shape
 
-**Omega_GW,UQFF(f) = Omega_0 x (f/f_ref)^(2/3) x D�_String(f) + Omega_KK,peak x exp[-(log f/f_KK,res)�/2sigma�_KK]**
+**Omega_GW,UQFF(f) = Omega_0 x (f/f_ref)^(2/3) x Dκ_String(f) + Omega_KK,peak x exp[-(log f/f_KK,res)�/2sigmaκ_KK]**
 
 Parameters:
 - Omega_0 = 10??
-- f_KK,res = 10?4 Hz (LISA band)
+- f_KK,res = 10⁻4 Hz (LISA band)
 - Omega_KK,peak = [SSq]� x Omega_0 = 3.25 x 10?��
 - sigma_KK = 0.5
 
@@ -106,12 +106,12 @@ Parameters:
 
 | Frequency Range | Dominant Source | Spectral Index |
 |----------------|-----------------|----------------|
-| f < 10?8 Hz | PTA SGWB + UQFF amplification | -2/3 |
-| 10?8 � 10?4 Hz | UQFF transition region | -1/2 |
-| f ~ 10?4 Hz | KK resonance peak | +2 (rising) |
-| f > 10?4 Hz | Standard SGWB + KK damping | -2/3 |
+| f < 10⁻8 Hz | PTA SGWB + UQFF amplification | -2/3 |
+| 10⁻8 × 10⁻4 Hz | UQFF transition region | -1/2 |
+| f ~ 10⁻4 Hz | KK resonance peak | +2 (rising) |
+| f > 10⁻4 Hz | Standard SGWB + KK damping | -2/3 |
 
-**Spectral break at f ~ 10?8 Hz (PTA-LISA overlap) is a unique UQFF signature.**
+**Spectral break at f ~ 10⁻8 Hz (PTA-LISA overlap) is a unique UQFF signature.**
 
 ---
 
@@ -158,9 +158,9 @@ All LHC limits satisfied. KK modes just beyond current LHC reach � testable at
 
 | Observable | UQFF Prediction | Detector | Timeline |
 |------------|-----------------|----------|----------|
-| KK resonance in SGWB at 10?4 Hz | Omega_KK = 3.25 x 10?�� | LISA | 2035 |
+| KK resonance in SGWB at 10⁻4 Hz | Omega_KK = 3.25 x 10?�� | LISA | 2035 |
 | Breathing mode h_b ~ 3x10?�� | 32.5% of h+ | Einstein Telescope | 2035 |
-| Spectral break at 10?8 Hz | Slope change ~0.17 | SKA+LISA | 2030 |
+| Spectral break at 10⁻8 Hz | Slope change ~0.17 | SKA+LISA | 2030 |
 | PTA breathing mode | 32.5% HD contamination | SKA | 2030 |
 | KK graviton at FCC-hh | M_KK = 11.6 TeV | FCC-hh | 2050 |
 | D_String (BNS) = 0.37 | Confirmed Papers #1,#4,#7 | LIGO/Virgo | NOW |
@@ -176,7 +176,7 @@ The string sector coupling [SSq] = 0.57 simultaneously determines:
 - D_String = 0.82 for BBH mergers (Papers #3, #5, #12)
 - M_KK = 11.6 TeV (this paper)
 - R_c = 1.70 x 10?�� m (compactification radius)
-- KK resonance at f ~ 10?4 Hz (LISA prediction)
+- KK resonance at f ~ 10⁻4 Hz (LISA prediction)
 
 ### 7.2 26-Dimensional Framework Connection
 
@@ -189,8 +189,8 @@ The bosonic string requires 26 dimensions. With 4 observed spacetime dimensions,
 String compactification leaves observable signatures in the gravitational wave background:
 
 1. **Virtual KK exchange:** Produces D_String damping factors (0.37 BNS, 0.82 BBH) validated in Papers #1�#18
-2. **KK resonance in SGWB:** Spectral peak at f ~ 10?4 Hz, Omega_KK = 3.25 x 10?�� � LISA 2035
-3. **Extra GW polarization modes:** Breathing mode at 32.5% of tensor amplitude � Einstein Telescope + SKA
+2. **KK resonance in SGWB:** Spectral peak at f ~ 10⁻4 Hz, Omega_KK = 3.25 x 10?�� � LISA 2035
+3. **Extra GW polarization modes:** Breathing mode at 32.5% of tensor amplitude – Einstein Telescope + SKA
 
 R_c = 1.70 x 10?�� m and M_KK = 11.6 TeV derived from [SSq] = 0.57. All LHC limits satisfied.
 
@@ -245,7 +245,7 @@ R_c = 1.70 x 10?�� m and M_KK = 11.6 TeV derived from [SSq] = 0.57. All LHC 
 
 ### A.2 F_U Master Equation (Complete — 4 terms)
 
-$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}igl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}igr]$$
+$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}\bigr]$$
 
 | Term | Description | Implementation |
 |------|-------------|----------------|
@@ -262,9 +262,7 @@ $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}igl[\l
 
 ### A.3 Um Heaviside Phase-Transition Amplifier (PAPER_421)
 
-$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} 	imes igl(1 + 10^{13}\,\Theta(
-ho_{SCm} - 
-ho_c)igr) 	imes igl(1 + A_q\cos(\Delta\omega\,t)igr)$$
+$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rho_{SCm} - \rho_c)\bigr) \times \bigl(1 + A_q\cos(\Delta\omega\,t)\bigr)$$
 
 | Symbol | Value | Description |
 |--------|-------|-------------|

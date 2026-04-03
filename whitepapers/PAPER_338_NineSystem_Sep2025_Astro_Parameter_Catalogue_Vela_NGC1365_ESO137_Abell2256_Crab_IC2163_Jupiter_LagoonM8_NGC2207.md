@@ -1,4 +1,4 @@
-﻿# PAPER_338 — Nine-System September 2025 Astrophysical Parameter Catalogue: Vela, NGC 1365, ESO 137-001, Abell 2256, Crab Nebula, IC 2163, Jupiter, Lagoon M8, NGC 2207
+# PAPER_338 — Nine-System September 2025 Astrophysical Parameter Catalogue: Vela, NGC 1365, ESO 137-001, Abell 2256, Crab Nebula, IC 2163, Jupiter, Lagoon M8, NGC 2207
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2  
 **Session:** 95  
@@ -20,7 +20,7 @@ Nine astrophysical systems were processed from September 2025 detailed documents
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -32,20 +32,20 @@ Nine astrophysical systems were processed from September 2025 detailed documents
 ```
 x_2 (separation) = 10 kly
 UQFF F_U_Bi_i ˜ -2.09×10²¹² N  (leading-term compact)
-g_Compressed  ˜  3.95×10?4¹ N
-R(t)          ˜ -1.12×10?4² N
+g_Compressed  ˜  3.95×10⁻4¹ N
+R(t)          ˜ -1.12×10⁻4² N
 F_U_Bi        ˜  9.79×10?³³ N
-U_i           ˜  1.38×10?47 + i·7.80×10?5¹  J/m³
+U_i           ˜  1.38×10⁻47 + i·7.80×10⁻5¹  J/m³
 ```
 
 **Galactic/Cluster Class (GC):** AGN, ICM/Radio-relic clusters, Interacting spirals, Galaxy clusters
 ```
 x_2 (separation) = 60 Mly
 UQFF F_U_Bi_i ˜ -8.32×10²¹7 N  (leading-term galactic)
-g_Compressed  ˜  4.12×10?4¹ N
-R(t)          ˜ -2.29×10?4¹ N
+g_Compressed  ˜  4.12×10⁻4¹ N
+R(t)          ˜ -2.29×10⁻4¹ N
 F_U_Bi        ˜  1.02×10?³² N
-U_i           ˜  1.45×10?47 + i·8.20×10?5¹  J/m³
+U_i           ˜  1.45×10⁻47 + i·8.20×10⁻5¹  J/m³
 ```
 
 Note: Jupiter is at Solar system scale (7.15×107 m radius) ? Compact class applies.
@@ -71,10 +71,10 @@ Note: Jupiter is at Solar system scale (7.15×107 m radius) ? Compact class appl
 **Five UQFF Equations:**
 ```
 F_U_Bi_i = -2.09×10²¹² N   [Compact CC; PAPER_332 12-term]
-g_Comp   =  3.95×10?4¹ N   [PAPER_336 6-term all-forces]
-R(t)     = -1.12×10?4² N   [PAPER_336 26×4 cosine]
+g_Comp   =  3.95×10⁻4¹ N   [PAPER_336 6-term all-forces]
+R(t)     = -1.12×10⁻4² N   [PAPER_336 26×4 cosine]
 F_U_Bi   =  9.79×10?³³ N   [PAPER_335 buoyancy kernel]
-U_i      =  1.38×10?47 + i·7.80×10?5¹  J/m³  [PAPER_334]
+U_i      =  1.38×10⁻47 + i·7.80×10⁻5¹  J/m³  [PAPER_334]
 ```
 
 ---
@@ -95,10 +95,10 @@ U_i      =  1.38×10?47 + i·7.80×10?5¹  J/m³  [PAPER_334]
 **Five UQFF Equations:**
 ```
 F_U_Bi_i = -8.32×10²¹7 N   [Galactic GC]
-g_Comp   =  4.12×10?4¹ N
-R(t)     = -2.29×10?4¹ N
+g_Comp   =  4.12×10⁻4¹ N
+R(t)     = -2.29×10⁻4¹ N
 F_U_Bi   =  1.02×10?³² N
-U_i      =  1.45×10?47 + i·8.20×10?5¹  J/m³
+U_i      =  1.45×10⁻47 + i·8.20×10⁻5¹  J/m³
 ```
 
 ---
@@ -118,10 +118,10 @@ U_i      =  1.45×10?47 + i·8.20×10?5¹  J/m³
 **Five UQFF Equations:**
 ```
 F_U_Bi_i = -8.32×10²¹7 N
-g_Comp   =  4.12×10?4¹ N
-R(t)     = -2.29×10?4¹ N
+g_Comp   =  4.12×10⁻4¹ N
+R(t)     = -2.29×10⁻4¹ N
 F_U_Bi   =  1.02×10?³² N
-U_i      =  1.45×10?47 + i·8.20×10?5¹  J/m³
+U_i      =  1.45×10⁻47 + i·8.20×10⁻5¹  J/m³
 ```
 
 ---
@@ -142,10 +142,10 @@ U_i      =  1.45×10?47 + i·8.20×10?5¹  J/m³
 **Five UQFF Equations:**
 ```
 F_U_Bi_i = -8.32×10²¹7 N   [Cluster scale ? same GC class]
-g_Comp   =  4.12×10?4¹ N
-R(t)     = -2.29×10?4¹ N
+g_Comp   =  4.12×10⁻4¹ N
+R(t)     = -2.29×10⁻4¹ N
 F_U_Bi   =  1.02×10?³² N
-U_i      =  1.45×10?47 + i·8.20×10?5¹  J/m³
+U_i      =  1.45×10⁻47 + i·8.20×10⁻5¹  J/m³
 ```
 
 ---
@@ -166,10 +166,10 @@ U_i      =  1.45×10?47 + i·8.20×10?5¹  J/m³
 **Five UQFF Equations:**
 ```
 F_U_Bi_i = -2.09×10²¹² N
-g_Comp   =  3.95×10?4¹ N
-R(t)     = -1.12×10?4² N
+g_Comp   =  3.95×10⁻4¹ N
+R(t)     = -1.12×10⁻4² N
 F_U_Bi   =  9.79×10?³³ N
-U_i      =  1.38×10?47 + i·7.80×10?5¹  J/m³
+U_i      =  1.38×10⁻47 + i·7.80×10⁻5¹  J/m³
 ```
 
 ---
@@ -189,10 +189,10 @@ U_i      =  1.38×10?47 + i·7.80×10?5¹  J/m³
 **Five UQFF Equations:**
 ```
 F_U_Bi_i = -8.32×10²¹7 N
-g_Comp   =  4.12×10?4¹ N
-R(t)     = -2.29×10?4¹ N
+g_Comp   =  4.12×10⁻4¹ N
+R(t)     = -2.29×10⁻4¹ N
 F_U_Bi   =  1.02×10?³² N
-U_i      =  1.45×10?47 + i·8.20×10?5¹  J/m³
+U_i      =  1.45×10⁻47 + i·8.20×10⁻5¹  J/m³
 ```
 
 ---
@@ -213,10 +213,10 @@ U_i      =  1.45×10?47 + i·8.20×10?5¹  J/m³
 **Five UQFF Equations:**
 ```
 F_U_Bi_i = -2.09×10²¹² N   [Compact class by x_2 << parsec]
-g_Comp   =  3.95×10?4¹ N
-R(t)     = -1.12×10?4² N
+g_Comp   =  3.95×10⁻4¹ N
+R(t)     = -1.12×10⁻4² N
 F_U_Bi   =  9.79×10?³³ N
-U_i      =  1.38×10?47 + i·7.80×10?5¹  J/m³
+U_i      =  1.38×10⁻47 + i·7.80×10⁻5¹  J/m³
 ```
 
 ---
@@ -237,10 +237,10 @@ U_i      =  1.38×10?47 + i·7.80×10?5¹  J/m³
 **Five UQFF Equations:**
 ```
 F_U_Bi_i = -2.09×10²¹² N
-g_Comp   =  3.95×10?4¹ N
-R(t)     = -1.12×10?4² N
+g_Comp   =  3.95×10⁻4¹ N
+R(t)     = -1.12×10⁻4² N
 F_U_Bi   =  9.79×10?³³ N
-U_i      =  1.38×10?47 + i·7.80×10?5¹  J/m³
+U_i      =  1.38×10⁻47 + i·7.80×10⁻5¹  J/m³
 ```
 
 ---
@@ -260,10 +260,10 @@ U_i      =  1.38×10?47 + i·7.80×10?5¹  J/m³
 **Five UQFF Equations:**
 ```
 F_U_Bi_i = -8.32×10²¹7 N
-g_Comp   =  4.12×10?4¹ N
-R(t)     = -2.29×10?4¹ N
+g_Comp   =  4.12×10⁻4¹ N
+R(t)     = -2.29×10⁻4¹ N
 F_U_Bi   =  1.02×10?³² N
-U_i      =  1.45×10?47 + i·8.20×10?5¹  J/m³
+U_i      =  1.45×10⁻47 + i·8.20×10⁻5¹  J/m³
 ```
 
 ---

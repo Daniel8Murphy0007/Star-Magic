@@ -1,4 +1,4 @@
-﻿# PAPER_172: F_U Complete Unified Field Assembly
+# PAPER_172: F_U Complete Unified Field Assembly
 ## A_Î¼Î½ Tensor, Buoyancy, and Full FU Summation
 ## Whitepaper Â§2.4-D | Thread 381a8fe7 | Session 48
 
@@ -10,7 +10,7 @@ This paper documents the complete assembly as implemented in `main.cpp`.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 

@@ -15,7 +15,7 @@ F_U(Jupiter) = âˆ’2.064 Ã— 10âµâ´, F_U(Neptune) = âˆ’2.064 Ã— 10âµÂ². All 27 
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0Ã—10â»4 dayâ»Â¹, [SSq] = 0.57) uniquely enabling this analysis ï¿½ establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -130,4 +130,4 @@ All 27 unit tests PASS (C++ execution, Grok thread 7f9068):
 **Supersedes:** N/A (new content) | **Related:** PAPER_094 (SGR1745 calibration), PAPER_063 (F_U_Bi_i Integral)
 
 
-**UQFF computed:** Solar wind UQFF correction = [SSq]×exp(-?×r/v) = 5.7e-1×exp(-5.0e-4×(1AU/400km/s)) = 5.7e-1×exp(-3.2e-3) ˜ 5.7e-1; dominant at r < 1AU.
+**UQFF computed:** Solar wind UQFF correction = [SSq]ï¿½exp(-?ï¿½r/v) = 5.7e-1ï¿½exp(-5.0e-4ï¿½(1AU/400km/s)) = 5.7e-1ï¿½exp(-3.2e-3) ï¿½ 5.7e-1; dominant at r < 1AU.

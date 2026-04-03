@@ -1,4 +1,4 @@
-﻿# PAPER_349 — SPT-CL J2215: Highest F_U_Bi_i in UQFF Dataset — Cool Core Starburst at z=1.16
+# PAPER_349 — SPT-CL J2215: Highest F_U_Bi_i in UQFF Dataset — Cool Core Starburst at z=1.16
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2  
 **Session:** 96  

@@ -1,4 +1,4 @@
-﻿# PAPER_218: NGC 3603 Stellar Pressure Dispersal — UQFF (1-P(t)) Compressed Framework
+# PAPER_218: NGC 3603 Stellar Pressure Dispersal — UQFF (1-P(t)) Compressed Framework
 
 **Author:** Daniel T. Murphy (daniel.murphy00@gmail.com)  
 **Framework:** UQFF v4.3 — Star-Magic Physics  
@@ -50,7 +50,7 @@ P(t) = rate of natal cloud dispersal by stellar UV + wind pressure
 
 P(t) encodes the fraction of molecular cloud mass that has been pressure-dispersed by the cluster's massive stars. For NGC 3603 (the most luminous OB cluster in the Milky Way):
 
-- Total ionizing photon flux: Q(H°) ˜ 10^{51} s?¹
+- Total ionizing photon flux: Q(H°) ˜ 10^{51} s⁻¹
 - Combined stellar wind mechanical luminosity: L_wind ˜ 10^{38} erg/s
 - Natal cloud mass dispersal timescale: t_disp ˜ 1-3 Myr
 
@@ -111,12 +111,12 @@ Where `H(t,z) = H_0·v(0.3·(1+z)³ + 0.7)` and `F_env(t)` captures stellar evol
 g_base = G·M/r² · (1+H_0·t) · (1-B/B_crit) · (1-P)
        = 6.67e-11 · 3.18e34 / (5e18)² · 1.000067 · 0.9999977 · 0.85
 
-g_base ˜ 8.52×10?5² m/s²  (gravitational acceleration at 163 pc)
+g_base ˜ 8.52×10⁻5² m/s²  (gravitational acceleration at 163 pc)
 
 ?·v_wind² = 1.67×10?²¹ · (2×106)²
            = 6.68×10?? Pa  (ram pressure)
 
-Net g_NGC3603 ˜ g_base + F_wind_ram/r ˜ 8.52×10?5²  (gravity dominated at this scale)
+Net g_NGC3603 ˜ g_base + F_wind_ram/r ˜ 8.52×10⁻5²  (gravity dominated at this scale)
 ```
 
 The key result is the **5% reduction** from P(t)=0.15 relative to an unpressurized cluster — observable as suppressed star formation efficiency e_SFE ˜ 30% (vs. typical 10% for unpressurized regions).
@@ -156,7 +156,7 @@ This is consistent with the observed star formation efficiency of 30–35% in NG
 1. grok_share_7514fe.txt — Document 11: NGC 3603 g_NGC3603 equation
 2. Harayama et al. (2008) — NGC 3603 stellar mass function, M_total = 1.6×104 M?
 3. Portegies Zwart et al. (2010) — Young massive star clusters: pressure-driven dispersal
-4. Crowther et al. (2016) — R136 cluster: winds Q(H°) = 105¹ s?¹
+4. Crowther et al. (2016) — R136 cluster: winds Q(H°) = 105¹ s⁻¹
 5. CondensedPhysics3.py — `NGC3603StellarPressureModulationCalculator` (Session 55)
 
 ---

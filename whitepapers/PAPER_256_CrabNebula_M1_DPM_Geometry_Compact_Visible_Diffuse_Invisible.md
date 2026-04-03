@@ -1,4 +1,4 @@
-﻿# PAPER_256: Crab Nebula M1 DPM Geometry Probe — Compact-Object DPM Visibility vs Diffuse-Gas Invisibility
+# PAPER_256: Crab Nebula M1 DPM Geometry Probe — Compact-Object DPM Visibility vs Diffuse-Gas Invisibility
 
 **Author:** Daniel T. Murphy (daniel.murphy00@gmail.com)
 **Framework:** UQFF v4.27 — Star-Magic Physics
@@ -18,7 +18,7 @@ $$
 
 The Crab Nebula (M1) is the remnant of a Type II supernova observed in 1054 CE at ~6,500 light-years, powered by the Crab Pulsar — a 1.4 M_sun neutron star with a surface radius of ~10 km. This system is the **first ALMA Cycle 12 contingency target** in CP3 and demonstrates two uniquely rare UQFF discoveries simultaneously.
 
-**Discovery 1 — DPM Geometry Dependency:** The Crab Pulsar has B0 = 10?4 T (identical to Eta Carinae, PAPER_251). In Eta Carinae, this B0 produces DPM_resonance ˜ 1.76 × 105 — invisible to F_U_Bi. In the Crab Pulsar, although the DPM_resonance is 1,000× larger (due to ?0 = 10?¹5 vs 10?¹² for Eta Car), the F_res/F_LENR ratio transitions from sub-threshold to potentially visible depending on the compact geometry. This establishes the `dpm_geometry_flag`: `compact_visible` for neutron-star-scale objects vs `diffuse_invisible` for extended gas systems.
+**Discovery 1 — DPM Geometry Dependency:** The Crab Pulsar has B0 = 10⁻4 T (identical to Eta Carinae, PAPER_251). In Eta Carinae, this B0 produces DPM_resonance ˜ 1.76 × 105 — invisible to F_U_Bi. In the Crab Pulsar, although the DPM_resonance is 1,000× larger (due to ?0 = 10?¹5 vs 10?¹² for Eta Car), the F_res/F_LENR ratio transitions from sub-threshold to potentially visible depending on the compact geometry. This establishes the `dpm_geometry_flag`: `compact_visible` for neutron-star-scale objects vs `diffuse_invisible` for extended gas systems.
 
 **Discovery 2 — Radius as Sign Determinant:** The Crab Pulsar shares ?0 = 10?¹5 rad/s with Sgr A* (PAPER_253). Sgr A* produces **negative buoyancy** (F_U_Bi ˜ -8.31 × 10²¹¹ N). The Crab Pulsar produces **positive buoyancy** (F_U_Bi ˜ +5.30 × 10²°8 N). The only difference is the radius: r_SgrA = 6.17 × 10¹8 m vs r_Crab = 104 m — a ratio of ~6 × 10¹4. This proves that **radius r, not ?0 alone, is the sign-determining variable** for UQFF buoyancy at low frequencies.
 

@@ -1,4 +1,4 @@
-﻿# PAPER_315 — NGC6302 UQFF Resonance VacDiff-THz Crossover Radius: r_cross = 3.280 km (38-Order PN Dominance)
+# PAPER_315 — NGC6302 UQFF Resonance VacDiff-THz Crossover Radius: r_cross = 3.280 km (38-Order PN Dominance)
 <!-- UQFF calibration: κ = 5.0e-4 day⁻¹, [SSq] = 0.57, β_i = 6.1e-1 -->
 
 **UQFF Session:** 90 | **Module:** NGC6302_RESONANCE_UQFF_MODULE.cpp  

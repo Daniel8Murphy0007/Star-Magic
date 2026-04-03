@@ -1,4 +1,4 @@
-﻿# PAPER_188: CoAnQi Build Distribution Architecture — NSIS and Debian Packaging
+# PAPER_188: CoAnQi Build Distribution Architecture — NSIS and Debian Packaging
 
 **Version:** 1.0  
 **Date:** March 13, 2026  

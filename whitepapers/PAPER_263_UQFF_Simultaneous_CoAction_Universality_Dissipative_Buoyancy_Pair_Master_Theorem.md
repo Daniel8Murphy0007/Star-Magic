@@ -1,4 +1,4 @@
-﻿# PAPER_263: UQFF Simultaneous Co-action Universality — The Dissipative-Buoyancy Pair as a Universal MUGE Pattern Across All Astrophysical Environments
+# PAPER_263: UQFF Simultaneous Co-action Universality — The Dissipative-Buoyancy Pair as a Universal MUGE Pattern Across All Astrophysical Environments
 
 **Author:** Daniel T. Murphy (daniel.murphy00@gmail.com)  
 **Framework:** UQFF v4.26 — Star-Magic Physics  

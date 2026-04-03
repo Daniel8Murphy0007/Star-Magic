@@ -1,4 +1,4 @@
-﻿# PAPER_169: CoAnQi Architecture — Multi-Tier UQFF+3D+Plugin System
+# PAPER_169: CoAnQi Architecture — Multi-Tier UQFF+3D+Plugin System
 ## Whitepaper §2.4-A | Thread 381a8fe7 | Session 48
 
 ### Abstract

@@ -1,3 +1,5 @@
+# PAPER_073: GAIA DR4 Astrometric Cross-Validation of UQFF Stellar Gravity Predictions
+
 
 **Title:** GAIA DR4 Astrometric Cross-Validation of UQFF Stellar Gravity Predictions
 
@@ -6,7 +8,6 @@
 **Date:** March 7, 2026  
 **Source Data:** QCalc_validation.py (DataSourceURLs: GAIA_DR4), validate_phase3.py  
 **Index Slot:** �1.10 Database Integration & Multi-Wavelength Astrophysics,  
-    $n = [int]# PAPER #73 � Stellar Parameter Validation: GAIA DR4 vs UQFF
 
 **Title:** GAIA DR4 Astrometric Cross-Validation of UQFF Stellar Gravity Predictions
 
@@ -24,7 +25,7 @@ The GAIA DR4 mission (anticipated 2026) provides the highest-precision stellar a
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0�10?4 day?�, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -59,11 +60,11 @@ $$g_{\rm UQFF}^{(C)} = \frac{M_\star}{R_\star} \times 10^{-10}$$
 
 | Star Type | M/M? | R/R? | g_Newton (m/s�) | g_UQFF_C (m/s�) | UQFF/Newton |
 |-----------|------|------|-----------------|------------------|-------------|
-| Sun (G2V) | 1.00 | 1.00 | 274 | 281 � 10?�� | calibration |
-| Sirius A (A1V) | 2.06 | 1.71 | 367 | 373 � 10?�� | 1.016 |
-| Betelgeuse (M2I) | 11.6 | 764 | 0.00053 | 0.00054 � 10?�� | 1.019 |
-| White dwarf (0.6 M?) | 0.60 | 0.012 | 3.51�108 | 3.57�10?� | 1.017 |
-| Brown dwarf (0.07 M?) | 0.07 | 0.10 | 193 | 197 � 10?�� | 1.021 |
+| Sun (G2V) | 1.00 | 1.00 | 274 | 281 × 10?�� | calibration |
+| Sirius A (A1V) | 2.06 | 1.71 | 367 | 373 × 10?�� | 1.016 |
+| Betelgeuse (M2I) | 11.6 | 764 | 0.00053 | 0.00054 × 10?�� | 1.019 |
+| White dwarf (0.6 M?) | 0.60 | 0.012 | 3.51×108 | 3.57×10?� | 1.017 |
+| Brown dwarf (0.07 M?) | 0.07 | 0.10 | 193 | 197 × 10?�� | 1.021 |
 
 The systematic UQFF/Newton offset of ~1.019 is the [SSq] = 0.57 vacuum saturation correction operating on the Compressed mode scaling factor.
 
@@ -75,7 +76,7 @@ GAIA proper motions provide independent stellar velocity measurements. The UQFF 
 
 $$v_{\rm osc} = \frac{g_R}{\omega_\star} = \frac{\cos(\omega_\star t) \times 10^{-5}}{\omega_\star}$$
 
-For solar-type stars (?_? = 2.87�10?6 rad/s): v_osc = 3.48�10?�� m/s � negligible vs thermal velocities (km/s). GAIA proper motion precision (~1�10 �as/yr = 0.1�1 mm/s at d=10 pc) does not constrain this term, as expected.
+For solar-type stars (?_? = 2.87×10⁻6 rad/s): v_osc = 3.48×10?�� m/s � negligible vs thermal velocities (km/s). GAIA proper motion precision (~1×10 �as/yr = 0.1�1 mm/s at d=10 pc) does not constrain this term, as expected.
 
 ---
 
@@ -89,7 +90,7 @@ Where 0.034 = UQFF correction factor calibrated from Batch 23.
 
 For Solar analogs (logg � 4.44):
 - GAIA DR4 GSP-Phot uncertainty: �0.1�0.3 dex
-- UQFF correction: +0.015 dex ([SSq] � 0.034 � log_e)
+- UQFF correction: +0.015 dex ([SSq] ≈ 0.034 � log_e)
 - Within GAIA precision: **agreement confirmed** (correction < 1s)
 
 ---
@@ -98,10 +99,10 @@ For Solar analogs (logg � 4.44):
 
 | Validation Check | GAIA DR4 Constraint | UQFF Prediction | Status |
 |-----------------|---------------------|-----------------|--------|
-| Solar log g | 4.438 � 0.003 | 4.453 (?+0.015) | Within 5s |
+| Solar log g | 4.438 × 0.003 | 4.453 (?+0.015) | Within 5s |
 | White dwarf log g | 7.9�8.4 | +0.015 correction | Compatible |
-| UQFF/Newton ratio | � | 1.019 (�[SSq]) | Self-consistent |
-| Proper motion UQFF osc | � | <mm/s (negligible) | Not constrained |
+| UQFF/Newton ratio | – | 1.019 (�[SSq]) | Self-consistent |
+| Proper motion UQFF osc | – | <mm/s (negligible) | Not constrained |
 
 *Source: QCalc_validation.py GAIA_TAP endpoint | ? = 0.0005/day | [SSq] = 0.57*
 
@@ -129,7 +130,7 @@ For Solar analogs (logg � 4.44):
 
 ### A.2 F_U Master Equation (Complete — 4 terms)
 
-$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}igl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}igr]$$
+$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}\bigr]$$
 
 | Term | Description | Implementation |
 |------|-------------|----------------|
@@ -146,9 +147,7 @@ $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}igl[\l
 
 ### A.3 Um Heaviside Phase-Transition Amplifier (PAPER_421)
 
-$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} 	imes igl(1 + 10^{13}\,\Theta(
-ho_{SCm} - 
-ho_c)igr) 	imes igl(1 + A_q\cos(\Delta\omega\,t)igr)$$
+$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rho_{SCm} - \rho_c)\bigr) \times \bigl(1 + A_q\cos(\Delta\omega\,t)\bigr)$$
 
 | Symbol | Value | Description |
 |--------|-------|-------------|

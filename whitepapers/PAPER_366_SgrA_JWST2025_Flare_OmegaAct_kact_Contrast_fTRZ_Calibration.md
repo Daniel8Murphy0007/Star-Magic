@@ -1,4 +1,4 @@
-﻿# PAPER_366 — Sgr A* JWST 2025 NIR Flare: ω_act Derivation from k_act Contrast Amplitude
+# PAPER_366 — Sgr A* JWST 2025 NIR Flare: ω_act Derivation from k_act Contrast Amplitude
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2  
 **Session:** 97  

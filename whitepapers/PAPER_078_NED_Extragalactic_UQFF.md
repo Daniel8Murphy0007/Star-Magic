@@ -1,3 +1,5 @@
+# PAPER_078: NED Multi-Wavelength Extragalactic Physics: AGN Luminosity Functions and UQFF Buoyancy-Modified Hubble Tension Analysis
+
 
 **Title:** NED Multi-Wavelength Extragalactic Physics: AGN Luminosity Functions and UQFF Buoyancy-Modified Hubble Tension Analysis
 
@@ -6,7 +8,6 @@
 **Date:** March 7, 2026  
 **Source Data:** QCalc_validation.py (DataSourceURLs: NED_BASE, NED_API, QUASAR_SDSS)  
 **Index Slot:** �1.10 Database Integration & Multi-Wavelength Astrophysics,  
-    $n = [int]# PAPER #78 � Extragalactic Physics: NED Multi-Wavelength + UQFF
 
 **Title:** NED Multi-Wavelength Extragalactic Physics: AGN Luminosity Functions and UQFF Buoyancy-Modified Hubble Tension Analysis
 
@@ -19,14 +20,14 @@
 ---
 
 
-<!-- UQFF constants: ? = 5.0e-4 day?�, [SSq] = 0.57, M_UQFF = 1.43e1 TeV -->
+<!-- UQFF constants: ? = 5.0e-4 day⁻¹, [SSq] = 0.57, M_UQFF = 1.43e1 TeV -->
 ## Abstract
 
 The NED (NASA/IPAC Extragalactic Database) multi-wavelength catalog covers UV through radio for >1 billion extragalactic objects. Key physics tests for UQFF: (1) AGN luminosity functions comparing UQFF-enhanced accretion vs standard models, (2) the Hubble tension (H0 = 67�73 km/s/Mpc) examined through the UQFF Buoyant vacuum correction, and (3) quasar absorption line systems (DLA/LLS) testing the UQFF vacuum density at cosmological redshifts.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0�10?4 day?�, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -36,9 +37,9 @@ The NED (NASA/IPAC Extragalactic Database) multi-wavelength catalog covers UV th
 
 | Measurement | H0 (km/s/Mpc) | Method |
 |-------------|---------------|--------|
-| Planck 2018 (CMB) | 67.4 � 0.5 | Early universe |
-| SH0ES 2023 (Cepheids) | 73.0 � 1.0 | Distance ladder |
-| Tension | 4.2s | � |
+| Planck 2018 (CMB) | 67.4 × 0.5 | Early universe |
+| SH0ES 2023 (Cepheids) | 73.0 × 1.0 | Distance ladder |
+| Tension | 4.2s | – |
 
 ### UQFF Buoyant Correction to H0
 
@@ -75,7 +76,7 @@ NED quasar catalog comparison:
 
 ## 3. Quasar Absorption Line Systems
 
-DLA (Damped Lyman-a) systems contain high column density neutral hydrogen (N_HI > 2�10�� cm?�). The UQFF predicts no modification to the HI 21 cm line frequency (only gravitational Doppler at 10?�� level). NED DLA catalog: UQFF-consistent.
+DLA (Damped Lyman-a) systems contain high column density neutral hydrogen (N_HI > 2×10�� cm?�). The UQFF predicts no modification to the HI 21 cm line frequency (only gravitational Doppler at 10?�� level). NED DLA catalog: UQFF-consistent.
 
 ---
 
@@ -113,7 +114,7 @@ DLA (Damped Lyman-a) systems contain high column density neutral hydrogen (N_HI 
 
 ### A.2 F_U Master Equation (Complete — 4 terms)
 
-$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}igl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}igr]$$
+$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}\bigr]$$
 
 | Term | Description | Implementation |
 |------|-------------|----------------|
@@ -130,9 +131,7 @@ $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}igl[\l
 
 ### A.3 Um Heaviside Phase-Transition Amplifier (PAPER_421)
 
-$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} 	imes igl(1 + 10^{13}\,\Theta(
-ho_{SCm} - 
-ho_c)igr) 	imes igl(1 + A_q\cos(\Delta\omega\,t)igr)$$
+$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rho_{SCm} - \rho_c)\bigr) \times \bigl(1 + A_q\cos(\Delta\omega\,t)\bigr)$$
 
 | Symbol | Value | Description |
 |--------|-------|-------------|

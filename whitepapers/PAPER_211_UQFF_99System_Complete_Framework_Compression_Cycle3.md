@@ -1,4 +1,4 @@
-﻿# PAPER_211: UQFF 99-System Complete Framework and Compression Cycle 3
+# PAPER_211: UQFF 99-System Complete Framework and Compression Cycle 3
 
 **Version:** 1.0  
 **Date:** March 13, 2026  
@@ -20,7 +20,7 @@ This paper documents the 99-system UQFF framework as established in the Sept 14,
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 

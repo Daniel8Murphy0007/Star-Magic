@@ -14,7 +14,7 @@ In the UQFF 2.0 upgraded model of NGC 1792 (z = 0.0095, Mâ‚€ = 1Ã—10Â¹â° Mâ˜‰, 
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0Ã—10â»4 dayâ»Â¹, [SSq] = 0.57) uniquely enabling this analysis ï¿½ establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -156,7 +156,7 @@ The Fornax Cluster (M_Fornax = 7Ã—10Â¹Â³ Mâ˜‰, r_Fornax â‰ˆ 20 Mpc) as the Tier 
 
 ---
 
-**UQFF computed:** UQFF magnetic Jeans correction factor [SSq]×B²/(8p×?×c_s²) = 5.7e-1 × 1.3e-9 = 7.4e-10; Jeans mass deviation from standard = 7.4e-10 × M_J.
+**UQFF computed:** UQFF magnetic Jeans correction factor [SSq]ï¿½Bï¿½/(8pï¿½?ï¿½c_sï¿½) = 5.7e-1 Ã— 1.3e-9 = 7.4e-10; Jeans mass deviation from standard = 7.4e-10 ï¿½ M_J.
 
 ## References
 

@@ -1,4 +1,4 @@
-﻿# PAPER_332 — F_U_Bi_i Complete 12-Term Explicit Integrand: k_act, k_DE, Zeeman Coupling, k_neutron, k_rel, F_Sweet,vac, and F_Kozima Neutron Drop
+# PAPER_332 — F_U_Bi_i Complete 12-Term Explicit Integrand: k_act, k_DE, Zeeman Coupling, k_neutron, k_rel, F_Sweet,vac, and F_Kozima Neutron Drop
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2  
 **Session:** 95  
@@ -65,7 +65,7 @@ F_U_Bi_i = ?_0^{x_2} [ -F_0
 ```
 - Standard Newtonian gravity modified by DPM factor
 - DPM_gravity ˜ f_UA' × f_SCm × REB (Resonant Energy Bridge factor)
-- For Cen A: G×1.1e38 kg/r² ˜ 7.33×10?4¹ m/s²
+- For Cen A: G×1.1e38 kg/r² ˜ 7.33×10⁻4¹ m/s²
 
 ### Term 4: DPM Vacuum Stability
 ```
@@ -92,7 +92,7 @@ k_act · cos(?_act · t)
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
-| k_act | 10?5 | Activity coupling amplitude (calibrated from Chandra) |
+| k_act | 10⁻5 | Activity coupling amplitude (calibrated from Chandra) |
 | ?_act | 2p/(12.5 yr) for Cen A | Activity angular frequency |
 |       | ~2p/days for Sgr A* JWST mid-IR | |
 |       | ~2p/weeks for M87 jet variable | |
@@ -132,7 +132,7 @@ Integrated over x_2: contribution ~104³ N for galactic-class systems
 | Symbol | Value | Description |
 |--------|-------|-------------|
 | q | 1.6×10?¹? C | Electric charge |
-| B0 | 1 G = 10?4 T (Cen A); 4.2 G (Jupiter); 1–30 G (Crab) | Magnetic field |
+| B0 | 1 G = 10⁻4 T (Cen A); 4.2 G (Jupiter); 1–30 G (Crab) | Magnetic field |
 | V | 10?³ m³ | Reference volume element |
 | sin ? | sinusoidal along integration path | Angular factor |
 | g | g-factor (˜2) | Electron g-factor |
@@ -152,7 +152,7 @@ Result: term_mag ~ 10?²° N (subdominant for galactic fields, dominant for magn
 **Physical significance:**
 - Encodes full Zeeman coupling of charged particles to the vacuum magnetic field
 - At magnetar B0 = 4.4×10¹³ T (B_crit): term_mag becomes dominant
-- Connects to g-2 measurement: `a = (g-2)/2 = 4.74×10?5` from g-2 fit
+- Connects to g-2 measurement: `a = (g-2)/2 = 4.74×10⁻5` from g-2 fit
 
 ### Term 9: Neutron Cross-Section Coupling (NEW)
 ```

@@ -1,4 +1,4 @@
-﻿# PAPER_360 — J1610+1811 High-z Quasar Jet at z=6.5: Relativistic Lorentz Factor k_rel Coupling
+# PAPER_360 — J1610+1811 High-z Quasar Jet at z=6.5: Relativistic Lorentz Factor k_rel Coupling
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2  
 **Session:** 97  

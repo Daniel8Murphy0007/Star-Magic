@@ -14,7 +14,7 @@ The Compressed Cooper Super-Seeding term a_super is placed in the COMPRESSED cha
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0Ã—10â»4 dayâ»Â¹, [SSq] = 0.57) uniquely enabling this analysis ï¿½ establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -178,4 +178,4 @@ a_super=(hbar*f_super*f_DPM/(E_vac*c))*a_DPM=A_sc*a_DPM;A_sc prop f_DPM;a_super 
 - **Companion papers:** PAPER_293 (dual-channel architecture), PAPER_294 (Ä§-denominator VDH)
 
 
-**UQFF computed:** MUGE buoyancy ratio U_bi/F_U = [SSq]×?×r²/GM = 5.7e-1×5.0e-4 = 2.85e-4; compressed MUGE baseline g = 5.4e-7 m/s² at r_ISCO.
+**UQFF computed:** MUGE buoyancy ratio U_bi/F_U = [SSq]ï¿½?ï¿½rï¿½/GM = 5.7e-1ï¿½5.0e-4 = 2.85e-4; compressed MUGE baseline g = 5.4e-7 m/sï¿½ at r_ISCO.

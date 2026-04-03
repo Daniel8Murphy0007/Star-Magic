@@ -1,4 +1,4 @@
-﻿# PAPER_214: MHD Clusters, Jets, and Accretion in the UQFF Framework
+# PAPER_214: MHD Clusters, Jets, and Accretion in the UQFF Framework
 
 **Version:** 1.0  
 **Date:** March 13, 2026  
@@ -20,7 +20,7 @@ The MHD (magnetohydrodynamic) cluster sector of UQFF is documented based on the 
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -75,7 +75,7 @@ UQFF F_UBii,angmom:
 ```
 Alfvén velocity:
   v_A = B / v(4p·?)   (Alfvén speed in Gaussian units)
-  v_A = B / v(µ0·?)   (SI: µ0 = 4p×10?7 H/m)
+  v_A = B / v(µ0·?)   (SI: µ0 = 4p×10⁻7 H/m)
 
 Magnetic energy density:
   u_B = B²/(8p)   [Gaussian]  =  B²/(2µ0)   [SI]
@@ -86,7 +86,7 @@ Alfvénic Mach number:
 For Perseus cluster (Perseus cooling core):
   B_Perseus ˜ 5–30 µG (Chandra X-ray inferences)
   ?_ICM ˜ 10?²6 kg/m³  (central ICM density)
-  v_A = 30×10?¹° / v(4p×10?7 × 10?²6)
+  v_A = 30×10?¹° / v(4p×10⁻7 × 10?²6)
       = 3×10?? / 3.54×10?¹7 ˜ 8.5×107 m/s = 85 km/s
 
 UQFF disk MHD enters as buoyancy:

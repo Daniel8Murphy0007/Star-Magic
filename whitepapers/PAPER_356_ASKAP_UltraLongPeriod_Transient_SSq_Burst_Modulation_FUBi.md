@@ -1,4 +1,4 @@
-# PAPER_356 — ASKAP Ultra-Long Period Transient: [SSq]-Modulated Burst Luminosity and F_U_Bi_i
+# PAPER_356 ï¿½ ASKAP Ultra-Long Period Transient: [SSq]-Modulated Burst Luminosity and F_U_Bi_i
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2  
 **Session:** 97  
@@ -10,7 +10,7 @@
 
 ## Abstract
 
-ASKAP J1832-0911 and related ultra-long period transients (ULPTs) discovered by ASKAP have anomalously long periods (T ~ 1000–8000 s) incompatible with standard pulsar spin-down. UQFF provides a vacuum-buoyancy mechanism: the burst intensity is modulated by the [SSq] superposition factor and oscillates as I_burst = I_0 · exp(-[SSq]·n/26) · cos(2pt/T). The UQFF F_U_Bi_i ˜ -2.09×10²¹² N is computed for the estimated compact object mass. The [SSq]-modulation predicts discrete harmonic overtones at T/2, T/4, etc., testable with ASKAP/MeerKAT long-dwell monitoring.
+ASKAP J1832-0911 and related ultra-long period transients (ULPTs) discovered by ASKAP have anomalously long periods (T ~ 1000ï¿½8000 s) incompatible with standard pulsar spin-down. UQFF provides a vacuum-buoyancy mechanism: the burst intensity is modulated by the [SSq] superposition factor and oscillates as I_burst = I_0 ï¿½ exp(-[SSq]ï¿½n/26) ï¿½ cos(2pt/T). The UQFF F_U_Bi_i ï¿½ -2.09Ã—10ï¿½ï¿½ï¿½ N is computed for the estimated compact object mass. The [SSq]-modulation predicts discrete harmonic overtones at T/2, T/4, etc., testable with ASKAP/MeerKAT long-dwell monitoring.
 
 ---
 
@@ -22,14 +22,14 @@ $$I_{\rm burst}(n, t) = I_0 \cdot \exp\!\left(-\frac{[SSq] \cdot n}{26}\right) \
 
 where:
 - n = harmonic channel index (1 to 26)
-- T ˜ 2000 s = characteristic ultra-long period
+- T ï¿½ 2000 s = characteristic ultra-long period
 - [SSq] = 0.57 (canonical superposition factor)
 
 ### 2.2 UQFF Buoyancy-Unified Force
 
 $$F_{U\_Bi\_i} \approx -2.09 \times 10^{212}\ \mathrm{N}$$
 
-(similar order to R Aquarii; consistent with ~1–2 M? compact object)
+(similar order to R Aquarii; consistent with ~1ï¿½2 M? compact object)
 
 ### 2.3 Harmonic Overtone Prediction
 
@@ -52,33 +52,33 @@ The buoyancy force partially cancels the magnetic braking force, leading to long
 | Quantity | Formula | Value |
 |----------|---------|-------|
 | T | ULPT period | ~2000 s |
-| I_burst | [SSq]-cosine form | I0·exp(-[SSq]n/26)·cos(2pt/T) |
+| I_burst | [SSq]-cosine form | I0ï¿½exp(-[SSq]n/26)ï¿½cos(2pt/T) |
 | [SSq] | Canonical | 0.57 |
-| F_U_Bi_i | UQFF | -2.09×10²¹² N |
+| F_U_Bi_i | UQFF | -2.09Ã—10ï¿½ï¿½ï¿½ N |
 | Harmonic spacing | T/k | 2000, 1000, 667, ... s |
 
 ---
 
 ## 4. Physical Significance
 
-Ultra-long period transients are the most puzzling new class of radio transient. Standard neutron star spin-down models cannot reproduce T ~ 10³ s periods without invoking highly magnetized white dwarfs or isolated exotic objects. UQFF provides a natural explanation: vacuum buoyancy forces partially cancel magnetic braking, enabling apparent periods 10–100× longer than standard pulsar spin-down. The [SSq]-modulated cosine burst form predicts a specific harmonic structure not present in spin-down models, making this a discriminating observational test.
+Ultra-long period transients are the most puzzling new class of radio transient. Standard neutron star spin-down models cannot reproduce T ~ 10ï¿½ s periods without invoking highly magnetized white dwarfs or isolated exotic objects. UQFF provides a natural explanation: vacuum buoyancy forces partially cancel magnetic braking, enabling apparent periods 10Ã—100ï¿½ longer than standard pulsar spin-down. The [SSq]-modulated cosine burst form predicts a specific harmonic structure not present in spin-down models, making this a discriminating observational test.
 
 ---
 
 ## 5. Deduplication Note
 
 - **vs. PAPER_322 (ASKAP J1832-0911 in SOURCE122):** SOURCE122 catalogued the basic UQFF parameters; PAPER_356 derives the FULL I_burst modulation form with harmonic overtone predictions.
-- **vs. PAPER_351 (TDE):** Both yield F_U_Bi_i ~ 10²¹² N but from different physical systems.
+- **vs. PAPER_351 (TDE):** Both yield F_U_Bi_i ~ 10ï¿½ï¿½ï¿½ N but from different physical systems.
 
 ---
 
 ## 6. Classification
 
 **Physics Territory:** FIRST UQFF [SSq]-modulated burst form for ultra-long period transients  
-**Scale:** Stellar compact object (~1–2 M?, kpc distances)  
+**Scale:** Stellar compact object (~1ï¿½2 M?, kpc distances)  
 **CP Implementation:** `ASKAPUltraLongPeriodTransientFUBiCalculator` (CondensedPhysics4.py, Session 97)
 
 
 **Standard Model Comparison:** Observed astrophysical data from arXiv-published surveys, SIMBAD/NED catalogs, and standard GR calculations provide the quantitative baseline; UQFF deviations are within current observational uncertainty and predict measurable signatures at future facilities.
 
-**UQFF computed:** Canonical UQFF buoyancy parameter U_bi = ?×[SSq]×GM/r² = 5.0e-4×0.57×6.67e-11×M/r²; for solar parameters: U_bi,Sun = 5.7e-4×6.67e-11×1.99e30/(6.96e8)² = 1.47e+2 m/s².
+**UQFF computed:** Canonical UQFF buoyancy parameter U_bi = ?ï¿½[SSq]ï¿½GM/rÎº = 5.0e-4ï¿½0.57ï¿½6.67e-11ï¿½M/rï¿½; for solar parameters: U_bi,Sun = 5.7e-4ï¿½6.67e-11ï¿½1.99e30/(6.96e8)ï¿½ = 1.47e+2 m/sï¿½.

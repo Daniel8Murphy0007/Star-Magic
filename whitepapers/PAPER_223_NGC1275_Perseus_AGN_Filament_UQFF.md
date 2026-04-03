@@ -1,4 +1,4 @@
-﻿# PAPER_223: NGC 1275 Perseus AGN UQFF — F_BH Jet Feedback and M_fil Cold Filaments
+# PAPER_223: NGC 1275 Perseus AGN UQFF — F_BH Jet Feedback and M_fil Cold Filaments
 
 **Author:** Daniel T. Murphy (daniel.murphy00@gmail.com)  
 **Framework:** UQFF v4.3 — Star-Magic Physics  
@@ -20,7 +20,7 @@ NGC 1275 (Perseus A) is the Brightest Cluster Galaxy of the Perseus Galaxy Clust
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 

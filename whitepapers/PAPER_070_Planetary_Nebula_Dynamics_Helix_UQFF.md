@@ -1,3 +1,5 @@
+# PAPER_070: Planetary Nebula Shell Dynamics in the UQFF: Helix Nebula (NGC 7293) Destroyed Planet Theory and Generic PN Archive Analysis
+
 
 **Title:** Planetary Nebula Shell Dynamics in the UQFF: Helix Nebula (NGC 7293) Destroyed Planet Theory and Generic PN Archive Analysis
 
@@ -6,7 +8,6 @@
 **Date:** March 7, 2026  
 **Source Data:** `uqff_validation_test.py` Helix_Nebula + Planetary_Nebula_Archive systems, Chandra + Hubble + Spitzer + GALEX data  
 **Index Slot:** �1.9 Automated 121-System Validation,  
-    $n = [int]# PAPER #70 � Planetary Nebula Dynamics: Helix Nebula and PN Archive UQFF Analysis
 
 **Title:** Planetary Nebula Shell Dynamics in the UQFF: Helix Nebula (NGC 7293) Destroyed Planet Theory and Generic PN Archive Analysis
 
@@ -24,7 +25,7 @@ Planetary nebulae (PNe) are shells ejected by low- to intermediate-mass stars (0
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0�10?4 day?�, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -32,13 +33,13 @@ Planetary nebulae (PNe) are shells ejected by low- to intermediate-mass stars (0
 
 | Parameter | Helix Nebula | PN Archive |
 |-----------|-------------|-----------|
-| Central star M | 1.27�10�� kg (0.64 M? WD) | 2.0�10�� kg (1.0 M? WD) |
-| Shell radius r | 6.15�10�8 m (~0.65 ly, 200 pc) | 9.46�10�5 m (~1 ly shell) |
+| Central star M | 1.27×10�� kg (0.64 M? WD) | 2.0×10�� kg (1.0 M? WD) |
+| Shell radius r | 6.15×10�8 m (~0.65 ly, 200 pc) | 9.46×10�5 m (~1 ly shell) |
 | L_X | 10�� W | 10�� W |
 | B0 | 10� T (WD surface) | 10� T (typical PN) |
-| T | 105 K | 5�104 K |
+| T | 105 K | 5×104 K |
 | Period | 2.9 hr = 10440 s | 106 s (~10-day expansion) |
-| ?0 | 6.02�10?4 rad/s | 1.0�10?8 rad/s |
+| ?0 | 6.02×10⁻4 rad/s | 1.0×10⁻8 rad/s |
 | Data source | Chandra + Hubble + Spitzer + GALEX (Mar 2025) | Chandra PN Gallery (Dec 2021) |
 
 ---
@@ -55,13 +56,13 @@ $$\text{LENR}_{\rm Helix} = 10^{-10} \times \left(\frac{7.854 \times 10^{12}}{6.
 
 | Term | Value (N) |
 |------|---------|
-| -F0 | -1.83�107� |
+| -F0 | -1.83×107� |
 | Momentum | ~10?48 |
-| Gravity | ~3.48�10?�5 |
-| Ug1 (WD, B0=10� T) | (GM/r�) � (�0�106/8p) = ~3.48e-15 � 5�10?� = 1.74�10?�6 |
-| Um | (3.38�10��/6.15�10�8) � 5�10?5 � 1046 = 2.75�104� |
-| **Integral** | 1.70�10�� � (-1.35�10�7�) = **-2.30�10�?4** |
-| **F_U_Bi_i** | **� -2.30�10�?4** |
+| Gravity | ~3.48×10?�5 |
+| Ug1 (WD, B0=10� T) | (GM/r�) � (�0×106/8p) = ~3.48e-15 × 5×10?� = 1.74×10?�6 |
+| Um | (3.38×10��/6.15×10�8) � 5×10⁻5 × 1046 = 2.75×104� |
+| **Integral** | 1.70×10�� � (-1.35×10�7�) = **-2.30×10�?4** |
+| **F_U_Bi_i** | **� -2.30×10�?4** |
 
 ---
 
@@ -84,7 +85,7 @@ The PN Archive's much smaller ?0 (10-day expansion vs 2.9-hr WD rotation) gives 
 Chandra observations (2025) of NGC 7293's white dwarf show 2.9-hour X-ray variability consistent with orbital debris from a tidally disrupted planet (or asteroid belt).
 
 **UQFF mechanism:**
-The UQFF Resonant mode at ?0 = 6.02�10?4 rad/s (2.9-hour period) creates a periodic vacuum field oscillation:
+The UQFF Resonant mode at ?0 = 6.02×10⁻4 rad/s (2.9-hour period) creates a periodic vacuum field oscillation:
 $$g_{\rm Resonant}(t) = \cos(\omega_0 t) \times 10^{-5}$$
 
 At angular frequency matching a planetary orbital period around the WD:
@@ -104,10 +105,10 @@ In standard theory, PN shell expansion is driven by radiation pressure and fast 
 
 $$g_{\rm Buoyant} = \rho_{\rm vac,[UA]} \times 10^{55} = 7.09 \times 10^{-36} \times 10^{55} = 7.09 \times 10^{19} \text{ m/s}^2$$
 
-At the nebular shell radius (r ~ 6.15�10�8 m), the outward vacuum buoyancy per unit volume:
+At the nebular shell radius (r ~ 6.15×10�8 m), the outward vacuum buoyancy per unit volume:
 $$F_{\rm outward}/V = \rho_{\rm shell} \times g_{\rm Buoyant} \approx 10^{-20} \times 7.09 \times 10^{19} = 0.709 \text{ N/m}^3$$
 
-Standard radiation pressure at this radius: F_rad/V = L_X/(4pr�c) = 10��/(4p�(6.15e18)��3e8) = 10��/1.43e48 = 7�10?�? N/m�. The UQFF buoyancy force is comparable to radiation pressure at the shell boundary, contributing ~50% of the total shell acceleration ? consistent with observed PN expansion at 20�30 km/s.
+Standard radiation pressure at this radius: F_rad/V = L_X/(4pr�c) = 10��/(4p�(6.15e18)��3e8) = 10��/1.43e48 = 7×10?�? N/m�. The UQFF buoyancy force is comparable to radiation pressure at the shell boundary, contributing ~50% of the total shell acceleration ? consistent with observed PN expansion at 20�30 km/s.
 
 ---
 
@@ -119,7 +120,7 @@ Standard radiation pressure at this radius: F_rad/V = L_X/(4pr�c) = 10��/(
 | PN Archive | **0.970** | 100 | ? STABLE |
 
 Helix: LENR depends on ?0 = 2p/10440 (fixed, not noised) ? high stability  
-PN Archive: LENR dominates at 6.17�10�� with ?0 = 10?8 fixed ? nearly perfect stability
+PN Archive: LENR dominates at 6.17×10�� with ?0 = 10⁻8 fixed ? nearly perfect stability
 
 ---
 
@@ -127,8 +128,8 @@ PN Archive: LENR dominates at 6.17�10�� with ?0 = 10?8 fixed ? nearly perf
 
 | System | F_U_Bi_i (N) | LENR | Stability | Key Physics |
 |--------|------------|------|-----------|------------|
-| Helix Nebula | -2.30�10�?4 | 1.70�10�� | 0.971 ? | WD planet destruction, 2.9-hr resonance |
-| PN Archive | -8.33�10��� | 6.17�10�� | 0.970 ? | Shell expansion, 10-day acoustic mode |
+| Helix Nebula | -2.30×10�?4 | 1.70×10�� | 0.971 ? | WD planet destruction, 2.9-hr resonance |
+| PN Archive | -8.33×10��� | 6.17×10�� | 0.970 ? | Shell expansion, 10-day acoustic mode |
 
 *Source: uqff_validation_test.py, Chandra + Hubble + Spitzer + GALEX (Mar/Dec 2025) | ? = 0.0005/day | [SSq] = 0.57*
 
@@ -156,7 +157,7 @@ PN Archive: LENR dominates at 6.17�10�� with ?0 = 10?8 fixed ? nearly perf
 
 ### A.2 F_U Master Equation (Complete — 4 terms)
 
-$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}igl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}igr]$$
+$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}\bigr]$$
 
 | Term | Description | Implementation |
 |------|-------------|----------------|
@@ -173,9 +174,7 @@ $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}igl[\l
 
 ### A.3 Um Heaviside Phase-Transition Amplifier (PAPER_421)
 
-$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} 	imes igl(1 + 10^{13}\,\Theta(
-ho_{SCm} - 
-ho_c)igr) 	imes igl(1 + A_q\cos(\Delta\omega\,t)igr)$$
+$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rho_{SCm} - \rho_c)\bigr) \times \bigl(1 + A_q\cos(\Delta\omega\,t)\bigr)$$
 
 | Symbol | Value | Description |
 |--------|-------|-------------|

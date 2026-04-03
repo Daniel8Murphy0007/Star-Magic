@@ -1,4 +1,4 @@
-﻿# PAPER_175: 26 Quantum Energy Levels and Vacuum Energy Density ?_vac
+# PAPER_175: 26 Quantum Energy Levels and Vacuum Energy Density ?_vac
 ## Whitepaper §2.4-G | Thread 381a8fe7 | Session 48
 
 ### Abstract
@@ -11,7 +11,7 @@ formulation extracted from the Star Magic theoretical chapters.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 

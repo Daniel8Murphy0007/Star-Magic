@@ -15,7 +15,7 @@ for PAPER_157's per-body Ï‰_c parameters.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0Ã—10â»4 dayâ»Â¹, [SSq] = 0.57) uniquely enabling this analysis ï¿½ establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -117,4 +117,4 @@ modulation should correlate with:
 **Supersedes:** N/A (extends static B_s) | **Related:** PAPER_157 (per-body Ï‰_c usage), PAPER_027 (5-freq resonance including solar), PAPER_086 (Ug1 derivation)
 
 
-**UQFF computed:** Solar wind UQFF correction = [SSq]×exp(-?×r/v) = 5.7e-1×exp(-5.0e-4×(1AU/400km/s)) = 5.7e-1×exp(-3.2e-3) ˜ 5.7e-1; dominant at r < 1AU.
+**UQFF computed:** Solar wind UQFF correction = [SSq]ï¿½exp(-?ï¿½r/v) = 5.7e-1ï¿½exp(-5.0e-4ï¿½(1AU/400km/s)) = 5.7e-1ï¿½exp(-3.2e-3) ï¿½ 5.7e-1; dominant at r < 1AU.

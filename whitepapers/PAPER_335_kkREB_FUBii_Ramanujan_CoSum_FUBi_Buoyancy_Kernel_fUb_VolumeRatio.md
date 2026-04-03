@@ -1,4 +1,4 @@
-﻿# PAPER_335 — k^k REB-Coupled F_U_Bi_i Triadic Ramanujan Form and F_U_Bi Explicit Buoyancy Kernel with f_Ub Volume Ratio
+# PAPER_335 — k^k REB-Coupled F_U_Bi_i Triadic Ramanujan Form and F_U_Bi Explicit Buoyancy Kernel with f_Ub Volume Ratio
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2  
 **Session:** 95  
@@ -13,7 +13,7 @@ $$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b_i}, \quad \kappa = 5.0\tim
 $$
 \Sigma_\text{UQFF}(x,[SSq]) = \sum_{n=1}^{26} Q_n(x)\cdot e^{-[SSq]\cdot n/26}, \quad [SSq] = 0.57
 $$
-<!-- ? = 5.0e-4 day?¹, [SSq] = 0.57, ß_i = 6.1e-1 -->
+<!-- ? = 5.0e-4 day⁻¹, [SSq] = 0.57, ß_i = 6.1e-1 -->
 
 ## Abstract
 
@@ -46,7 +46,7 @@ F_U_Bi_i = ?_{k=1}^{N} [ k^k
 | ?_THz | 10¹² Hz | THz vacuum frequency |
 | ?_vac,[SCm] | ~10?³° × f_SCm kg/m³ | Superconductive vacuum density |
 | M_BH | system black hole mass | Driving BH/NS mass |
-| a | 5×10?5 day?¹ = ? | Same decay constant as Um (PAPER_329) |
+| a | 5×10⁻5 day⁻¹ = ? | Same decay constant as Um (PAPER_329) |
 | f_feedback | 0 (standard) | AGN feedback modifier |
 
 ### 2.3 Ramanujan co-Sum Mathematical Significance
@@ -72,8 +72,8 @@ The product `(f_UA'1 · f_SCm1 · REB1) · (f_UA'2 · f_SCm2 · REB2)` is a **bi
 - Cross-coupling: REB1 × REB2 (resonant energy bridge pair)
 - Division by r²: gravity scaling with distance squared
 
-For calibrated values: f_UA'=0.999, f_SCm=0.001 ? product = 9.99×10?4
-With REB1/REB2 ~ 1 (unit resonant coupling): bilinear = 9.99×10?7 per state pair
+For calibrated values: f_UA'=0.999, f_SCm=0.001 ? product = 9.99×10⁻4
+With REB1/REB2 ~ 1 (unit resonant coupling): bilinear = 9.99×10⁻7 per state pair
 
 ### 2.5 Compact/Galactic Results (Vela/Crab vs. NGC 1365)
 
@@ -164,7 +164,7 @@ F_U_Bi = ?_{k=1}^{N} [k_Ub,k·f_UA'·f_SCm·REB/r²·H_k(?_THz,U_b,geometry_k)·
 
 f_Ub = k_Ub·?k_?·(?_vac,[UA]/?_vac,[SCm])·(V_little/V_big) ~ 0.1
 
-f_UA' = 0.999  [calibrated]; f_SCm = 0.001  [calibrated]; a = 5×10?5 day?¹
+f_UA' = 0.999  [calibrated]; f_SCm = 0.001  [calibrated]; a = 5×10⁻5 day⁻¹
 
 [compact]  F_U_Bi_i ˜ -2.09×10²¹² N; F_U_Bi ˜ +9.79×10?³³ N
 [galactic] F_U_Bi_i ˜ -8.32×10²¹7 N

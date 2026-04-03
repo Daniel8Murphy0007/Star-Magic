@@ -1,4 +1,4 @@
-﻿# PAPER_336 — g_Compressed Complete All-Forces Equation and R(t) 26-Component 4-Subterm Resonant Decomposition
+# PAPER_336 — g_Compressed Complete All-Forces Equation and R(t) 26-Component 4-Subterm Resonant Decomposition
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2  
 **Session:** 95  
@@ -20,7 +20,7 @@ This paper presents two companion equations from the nine-system September 2025 
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -56,7 +56,7 @@ Same 26-state structure but with prime notation indicating compression (paramete
 
 **Term 3: Cosmological Constant**
 ```
-? c² / 3 = (1.1×10?5² m?²) × (3×108 m/s)² / 3 = 3.30×10?³6 m/s²
+? c² / 3 = (1.1×10⁻5² m?²) × (3×108 m/s)² / 3 = 3.30×10?³6 m/s²
 ```
 (Same as PAPER_296 for reference)
 
@@ -95,11 +95,11 @@ Same 26-state structure but with prime notation indicating compression (paramete
 
 | System | g_Compressed (N) | Dominant Terms |
 |--------|-----------------|----------------|
-| Vela (compact) | ~3.95×10?4¹ | Term 1 × Hubble + Term 4 |
-| Crab (compact) | ~3.95×10?4¹ | Term 1 + Term 3 |
-| NGC 1365 (galactic) | ~4.12×10?4¹ | Term 6 (DM) + Term 1 |
-| Abell 2256 (cluster) | ~4.12×10?4¹ | Term 6 (DM dominant) |
-| Jupiter | ~3.95×10?4¹ | Term 1 (giant planet regime) |
+| Vela (compact) | ~3.95×10⁻4¹ | Term 1 × Hubble + Term 4 |
+| Crab (compact) | ~3.95×10⁻4¹ | Term 1 + Term 3 |
+| NGC 1365 (galactic) | ~4.12×10⁻4¹ | Term 6 (DM) + Term 1 |
+| Abell 2256 (cluster) | ~4.12×10⁻4¹ | Term 6 (DM dominant) |
+| Jupiter | ~3.95×10⁻4¹ | Term 1 (giant planet regime) |
 
 ---
 
@@ -140,9 +140,9 @@ Each of the 26 states i contributes 4 cosine resonance components:
 
 | System | R(t) (N) | Dominant Sub-term |
 |--------|----------|------------------|
-| Vela/Crab (compact) | -1.12×10?4² | R_U_g3 THz (f_THz=10¹² blob velocities 0.3-0.7c) |
-| NGC 1365/ESO 137-001 | -2.29×10?4¹ | R_U_g1 magnetic dipole (Seyfert AGN) |
-| Jupiter/Lagoon | -1.12×10?4² | R_U_g2 charge-reactivity (H3+/ionized plasma) |
+| Vela/Crab (compact) | -1.12×10⁻4² | R_U_g3 THz (f_THz=10¹² blob velocities 0.3-0.7c) |
+| NGC 1365/ESO 137-001 | -2.29×10⁻4¹ | R_U_g1 magnetic dipole (Seyfert AGN) |
+| Jupiter/Lagoon | -1.12×10⁻4² | R_U_g2 charge-reactivity (H3+/ionized plasma) |
 
 ### 3.5 Vela Frequency Assignment
 
@@ -196,8 +196,8 @@ R(t) = ?_{i=1}^{26} [R_Ug1,i cos(?_Ug1,i t)       [magnetic dipole]
                      + R_Ug3,i cos(?_Ug3,i t)       [string rotation ? THz]
                      + R_Ug4i,i cos(?_Ug4i,i t)]    [vacuum concentration]
 
-[compact]  g_Compressed ˜ 3.95×10?4¹ N; R(t) ˜ -1.12×10?4² N
-[galactic] g_Compressed ˜ 4.12×10?4¹ N; R(t) ˜ -2.29×10?4¹ N
+[compact]  g_Compressed ˜ 3.95×10⁻4¹ N; R(t) ˜ -1.12×10⁻4² N
+[galactic] g_Compressed ˜ 4.12×10⁻4¹ N; R(t) ˜ -2.29×10⁻4¹ N
 ```
 
 ---

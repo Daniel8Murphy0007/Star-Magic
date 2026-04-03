@@ -1,4 +1,4 @@
-﻿# PAPER_265: HUDF Dual-Channel Interaction Cascade Buoyancy — Quadratic I(t) Amplification at Cosmic Merger Peak
+# PAPER_265: HUDF Dual-Channel Interaction Cascade Buoyancy — Quadratic I(t) Amplification at Cosmic Merger Peak
 
 **Author:** Daniel T. Murphy (daniel.murphy00@gmail.com)
 **Framework:** UQFF v4.27 — Star-Magic Physics

@@ -1,4 +1,4 @@
-﻿# PAPER_348 — Stephan's Quintet Shock Ridge: F_U_Bi_i with KE Density and LENR Energy Coupling
+# PAPER_348 — Stephan's Quintet Shock Ridge: F_U_Bi_i with KE Density and LENR Energy Coupling
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2  
 **Session:** 96  

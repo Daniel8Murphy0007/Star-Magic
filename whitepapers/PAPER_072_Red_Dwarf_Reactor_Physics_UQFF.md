@@ -12,11 +12,11 @@
 
 ## Abstract
 
-The Red Dwarf Reactor (RDR) is a UQFF-derived energy conversion system that uses time-reversal zone (TRZ) physics � a quantum vacuum boundary phenomenon theorized by Bearden (2000) � to achieve a coefficient of performance (COP) greater than 1. When the UQFF coherence factor [SSq] = 0.57 is active and the R_SCm superconducting mirror Heaviside term provides a 10��� enhancement, the system extracts additional vacuum energy through the UQFF F-Bi coupling, predicting TRZ factor f_TRZ = 0.10, COP = 1.15, and plasma temperature T_plasma = 3.0�106 K. Batch #33 of the experimental_validation_system.py validation suite confirms all four RDR test targets within acceptable thresholds (mean deviation 6.7%, all = 20%).
+The Red Dwarf Reactor (RDR) is a UQFF-derived energy conversion system that uses time-reversal zone (TRZ) physics � a quantum vacuum boundary phenomenon theorized by Bearden (2000) � to achieve a coefficient of performance (COP) greater than 1. When the UQFF coherence factor [SSq] = 0.57 is active and the R_SCm superconducting mirror Heaviside term provides a 10��� enhancement, the system extracts additional vacuum energy through the UQFF F-Bi coupling, predicting TRZ factor f_TRZ = 0.10, COP = 1.15, and plasma temperature T_plasma = 3.0×106 K. Batch #33 of the experimental_validation_system.py validation suite confirms all four RDR test targets within acceptable thresholds (mean deviation 6.7%, all = 20%).
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0�10?4 day?�, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -44,7 +44,7 @@ The **tolerance** represents acceptable fractional deviation |predicted-measured
 |---------|---------|-----------|---------|-------------------|--------|
 | RDR-001 | TRZ factor f_TRZ | 0.100 | 0.098 | **2.00%** | ? PASS |
 | RDR-002 | Coefficient of Performance | 1.15 | 1.12 | **2.61%** | ? PASS |
-| RDR-003 | Plasma temperature T_plasma | 3.0�106 K | 2.87�106 K | **4.33%** | ? PASS |
+| RDR-003 | Plasma temperature T_plasma | 3.0×106 K | 2.87×106 K | **4.33%** | ? PASS |
 | RDR-004 | Net energy over-unity | 15.0% | 12.3% | **18.0%** | ?? ACCEPTABLE |
 
 **Mean deviation (all 4 tests): 6.7%**  
@@ -61,7 +61,7 @@ UQFF time-reversal zone theory extends Bearden (2000) with the additional vacuum
 
 $$f_{\rm TRZ} = \frac{[SSq] \times \kappa}{H_0} = \frac{0.57 \times 5 \times 10^{-4} \text{ day}^{-1}}{2.26 \times 10^{-18} \text{ s}^{-1}}$$
 
-Converting ? to s?�: $\kappa = 5 \times 10^{-4}/(86400 \text{ s}) = 5.79 \times 10^{-9} \text{ s}^{-1}$
+Converting ? to s⁻¹: $\kappa = 5 \times 10^{-4}/(86400 \text{ s}) = 5.79 \times 10^{-9} \text{ s}^{-1}$
 
 $$f_{\rm TRZ} = \frac{0.57 \times 5.79 \times 10^{-9}}{2.26 \times 10^{-18}} \times \epsilon_{\rm coupling} = 10\% \text{ effective TRZ fraction}$$
 
@@ -113,7 +113,7 @@ $$\eta_{\rm measured} = 0.15 - 0.015 - 0.007 - 0.005 = 0.123 \text{ (12.3\%)}$$
 
 **Measured: 12.3% ? 18.0% deviation from predicted 15%** ? ?? ACCEPTABLE (tolerance 20%)
 
-The 18% deviation is the largest in the RDR suite but still within the accepted 20% tolerance for this physically complex multi-mode system. Future refinements to the R_SCm coupling constant (currently e_SCm � 0.87) targeting e_SCm = 1.0 could push measured ?_net to 14-15%.
+The 18% deviation is the largest in the RDR suite but still within the accepted 20% tolerance for this physically complex multi-mode system. Future refinements to the R_SCm coupling constant (currently e_SCm ≈ 0.87) targeting e_SCm = 1.0 could push measured ?_net to 14-15%.
 
 ---
 
@@ -123,7 +123,7 @@ The central amplification mechanism is the R_SCm superconducting mirror Heavisid
 
 $$R_{\rm SCm}(\omega) = H(\omega - \omega_{\rm SCm}) \times 10^{13}$$
 
-This represents a Heaviside unit step at ?_SCm = 2p � 1.25 THz, corresponding to the Q-scope THz frequency (validated in QSC-001: f_THz = 1.18 THz ? 98.3% of ?_SCm activation ? 0.983 � 10�� effective enhancement).
+This represents a Heaviside unit step at ?_SCm = 2p � 1.25 THz, corresponding to the Q-scope THz frequency (validated in QSC-001: f_THz = 1.18 THz ? 98.3% of ?_SCm activation ? 0.983 × 10�� effective enhancement).
 
 In the energy context:
 $$W_{\rm vacuum} = W_0 \times R_{\rm SCm} = W_0 \times 10^{13}$$
@@ -138,7 +138,7 @@ The experimental validation confirms sustained over-unity operation (COP > 1.0) 
 
 **Key stability metrics:**
 - TRZ factor stability over 10 hours: �0.002 (2% variation from mean 0.098)
-- Plasma temperature drift: �0.05�106 K over run duration
+- Plasma temperature drift: �0.05×106 K over run duration
 - COP maintained: 1.11�1.13 (mean 1.12)
 
 The temporal stability demonstrates that the R_SCm Heaviside function is persistent under continuous operation, contradicting earlier concerns that quantum vacuum coupling would degrade over extended timescales. The UQFF [SSq] = 0.57 coherence factor maintains vacuum field alignment with the plasma geometry throughout the 10-hour test window.
@@ -165,7 +165,7 @@ The "Red Dwarf Reactor" designation reflects the UQFF theoretical prediction tha
 
 | Quantity | Lab RDR | Red Dwarf star (M* = 0.2 M?) |
 |---------|---------|--------------------------|
-| T_plasma | 3.0 MK | 5�10 MK (core) |
+| T_plasma | 3.0 MK | 5×10 MK (core) |
 | COP | 1.15 | ~1.10 (estimated e = 0.96 star efficiency) |
 | Duration | > 10 hr (lab) | 10���10�� yr |
 | TRZ fraction | 9.8% | ~8�12% (radiative zone) |
@@ -182,7 +182,7 @@ The million-year stability of red dwarf combustion is attributed in the UQFF fra
 | COP | 1.15 | 1.12 | 2.6% | ? PASS |
 | T_plasma | 3.00 MK | 2.87 MK | 4.3% | ? PASS |
 | Net energy over-unity | 15.0% | 12.3% | 18.0% | ?? ACCEPTABLE |
-| **All 4 within 20% tolerance** | � | � | � | ? |
+| **All 4 within 20% tolerance** | – | � | – | ? |
 
 **Overall RDR assessment: 3 PASS + 1 ACCEPTABLE = 4/4 (100%) within tolerance**  
 **Mean deviation: 6.7% (well below maximum 20%)**  

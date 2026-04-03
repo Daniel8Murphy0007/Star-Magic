@@ -1,8 +1,10 @@
+# PAPER_107: Empirical Proof EP-12: Tohsaki�Funaki AMD Alpha-BEC Nuclear Condensate – UQFF N_B Calibration at T = 5 MeV
 
-**Title:** Empirical Proof EP-12: Tohsaki�Funaki AMD Alpha-BEC Nuclear Condensate � UQFF N_B Calibration at T = 5 MeV
+
+**Title:** Empirical Proof EP-12: Tohsaki�Funaki AMD Alpha-BEC Nuclear Condensate – UQFF N_B Calibration at T = 5 MeV
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57, �_i = 0.61)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57, κ_i = 0.61)  
 **Date:** March 9, 2026  
 **Domain:** �1.15 Empirical Proof Compendium  
 **Source Thread:** `grok_share_2fe4fa3e_conversation.txt` (EP-12, April�Sept 2025)  
@@ -14,7 +16,7 @@
 ## Abstract
 
 Empirical Proof EP-12 demonstrates that UQFF's Bose�Einstein nuclear occupancy
-formula � N_B = 1/(exp(?E/kT) - 1) � reproduces the experimentally measured
+formula – N_B = 1/(exp(?E/kT) - 1) � reproduces the experimentally measured
 alpha-particle multiplicity distributions from the Tohsaki�Funaki antisymmetrized
 molecular dynamics (AMD) calculations and the NIMROD-ISiS 4�Ca+4�Ca collision
 dataset at the TAMU Cyclotron, 35 MeV/nucleon. The calibrated result N_B = 1.46
@@ -27,7 +29,7 @@ and independently validates the core [SSq] calibration constant.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0�10?4 day?�, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -112,11 +114,11 @@ using the N_B formula with kT_fit as the free parameter:
 | Quantity | UQFF Prediction | NIMROD-ISiS Data | Error |
 |----------|----------------|-----------------|-------|
 | kT_fit | 4.628 MeV | 5.0 MeV (nominal) | 7.4% |
-| ?�/dof | 0.051 | � | Excellent fit |
+| ?�/dof | 0.051 | – | Excellent fit |
 | ?E_BEC (N_B = 10) | 0.477 MeV | 0.476 MeV | 0.2% |
 | N_B at T = 5 MeV | 10.000 | 10.0 (calibration) | 0.0% |
 
-**Verdict: ALL CHECKS PASS ?** � ?�/dof = 0.051 � 1, confirming the model is
+**Verdict: ALL CHECKS PASS ?** � ?�/dof = 0.051 × 1, confirming the model is
 not over-fit and the Bose-Einstein formula describes the data precisely.
 
 ### 3.2 [SSq]-Weighted 26-Level BEC Suppression Table
@@ -128,7 +130,7 @@ $$N_B^{(i)} = N_B \times \frac{[\text{SSq}]}{(i/26)^{0.5}} \quad \text{for level
 | Level Range | N_B Suppression Factor | Physical Domain |
 |-------------|----------------------|----------------|
 | 1�5 (10?�?�10?�5 J) | 0.57�0.81 | Sub-nuclear QCD scale |
-| 6�10 (10?�4�10?�� J) | 0.82�0.91 | Nuclear / atomic |
+| 6×10 (10?�4×10?�� J) | 0.82�0.91 | Nuclear / atomic |
 | 11�13 (level 11�13) | 0.93�0.96 | Mesoscopic BEC |
 | 14�18 | 0.95�0.98 | Macro condensates |
 | 19�26 (?106 J) | 0.99�1.00 | Classical limit |
@@ -162,7 +164,7 @@ The BEC-to-LENR chain in UQFF proceeds as:
 
 1. Alpha-BEC condenses: N_B = 10 at ?E_BEC = 0.477 MeV threshold (EP-12)
 2. Heavy-electron formation: m* = 3.0 m_e (Widom-Larsen enhancement)
-3. Neutron flux: ? = 3 � 10�� cm?�/s (PAPER_062)
+3. Neutron flux: ? = 3 × 10�� cm?�/s (PAPER_062)
 4. Li?He Q-value: Q = 26.9 MeV released per reaction
 5. LENR suppression factor: k_? = 10?��� (UQFF exponential damping)
 
@@ -193,7 +195,7 @@ at multiples of Q_alpha = 7.07 MeV:
 | 6a (�4Mg) | 28.48 | 0.77 | Classic |
 | 7a (�8Si) | 32.00 | 0.72 | Classic |
 | 8a (��S) | 35.69 | 0.67 | Classic |
-| 9a (�6Ar) | 40.24 | 0.62 | ~�_i = 0.61 boundary |
+| 9a (�6Ar) | 40.24 | 0.62 | ~κ_i = 0.61 boundary |
 | 10a (4�Ca) | 44.72 | ~0.57 | =[SSq] boundary |
 
 The 10a channel for 4�Ca falls precisely at N_B = [SSq] = 0.57 � the UQFF
@@ -213,7 +215,7 @@ that EP-12 identifies as a fundamental UQFF calibration point.
 | 4 | $\chi^2/dof = \sum(N_{data}-N_B)^2/(N_{data}\cdot dof)$ | 0.051 | Fit quality metric |
 | 5 | $\Phi_{BEC} = [\text{SSq}] = 0.57$ | 0.57 | UQFF suppression constant |
 | 6 | 10a Ikeda boundary | N_B = 0.57 = [SSq] | Cluster condensation link |
-| 7 | $E_{LENR} = Q \cdot \eta \cdot A \cdot \Phi_{BEC}$ | 4.60�10�4 MeV/s/cm� | LENR energy release |
+| 7 | $E_{LENR} = Q \cdot \eta \cdot A \cdot \Phi_{BEC}$ | 4.60×10�4 MeV/s/cm� | LENR energy release |
 | 8 | kT_fit (NIMROD-ISiS) | 4.628 MeV �0.167 | 7.4% error PASS |
 
 ---
@@ -235,14 +237,14 @@ dataset (4�Ca + 4�Ca, TAMU) and the Tohsaki-Funaki AMD framework that:
    is within the UQFF systematic uncertainty budget
 
 This proof independently anchors three UQFF constants simultaneously ([SSq],
-�_i via thermal-to-� bridge at Level 9, and the condensation threshold
+κ_i via thermal-to-� bridge at Level 9, and the condensation threshold
 ?E_BEC ? ?E_BEC/kT_char = 0.477/5.0 = 0.0954 � ?/day � time). The 10a
 Ikeda-to-[SSq] coincidence is a non-trivial structural result of the UQFF
 26-level energy framework.
 
 ---
 
-**UQFF computed:** Canonical UQFF buoyancy parameter U_bi = ?�[SSq]�GM/r� = 5.0e-4�0.57�6.67e-11�M/r�; for solar parameters: U_bi,Sun = 5.7e-4�6.67e-11�1.99e30/(6.96e8)� = 1.47e+2 m/s�.
+**UQFF computed:** Canonical UQFF buoyancy parameter U_bi = ?�[SSq]�GM/rκ = 5.0e-4�0.57�6.67e-11�M/r�; for solar parameters: U_bi,Sun = 5.7e-4�6.67e-11�1.99e30/(6.96e8)� = 1.47e+2 m/s�.
 
 ## References
 
@@ -258,10 +260,10 @@ Ikeda-to-[SSq] coincidence is a non-trivial structural result of the UQFF
 10. `bose_occupancy_validation.py` � Star-Magic codebase, ?�/dof=0.051, ALL PASS.
 .Groups[1].Value  � Empirical Proof EP-12: Bose�Einstein Nuclear BEC via UQFF
 
-**Title:** Empirical Proof EP-12: Tohsaki�Funaki AMD Alpha-BEC Nuclear Condensate � UQFF N_B Calibration at T = 5 MeV
+**Title:** Empirical Proof EP-12: Tohsaki�Funaki AMD Alpha-BEC Nuclear Condensate – UQFF N_B Calibration at T = 5 MeV
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57, �_i = 0.61)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57, κ_i = 0.61)  
 **Date:** March 9, 2026  
 **Domain:** �1.15 Empirical Proof Compendium  
 **Source Thread:** `grok_share_2fe4fa3e_conversation.txt` (EP-12, April�Sept 2025)  

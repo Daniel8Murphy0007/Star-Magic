@@ -157,7 +157,7 @@ result = calc.compute()
 
 ---
 
-## �10 � Extended Comparative Analysis
+## ×10 � Extended Comparative Analysis
 
 ### DPM Hub in Context: Session 144 vs Session 142
 

@@ -1,4 +1,4 @@
-# PAPER #90 — MUGE Compressed Gravity: Newtonian Base + 9 Corrections
+# PAPER #90 ï¿½ MUGE Compressed Gravity: Newtonian Base + 9 Corrections
 
 **Title:** MUGE Compressed Gravity: A 10-Term Framework Correcting Newtonian Gravity at Galaxy-to-Cosmological Scales
 
@@ -6,7 +6,7 @@
 **Framework:** MUGE (Multi-Unit Gravity Expression), UQFF Star-Magic  
 **Date:** March 7, 2026  
 **Source Data:** validate_uqff_muge.py, source4.cpp (10 Compressed functions), compute_compressed_MUGE_SOURCE4  
-**Index Slot:** §1.12 UQFF Master Calculators, Paper #90  
+**Index Slot:** ï¿½1.12 UQFF Master Calculators, Paper #90  
 
 ---
 
@@ -26,46 +26,46 @@ $$g_{\rm MUGE}^{\rm Comp}(r) = g_{\rm Newton} + \sum_{k=1}^{9} \delta_k(r)$$
 
 | Term # | Symbol | Formula | Physics |
 |--------|--------|---------|---------|
-| 0 | g_Newton | GM/r² | Base Newtonian gravity |
-| 1 | d_Expansion | H0²r/6 | Hubble flow correction |
-| 2 | d_Super | -B²/(4p? r²) | Magnetic field suppression |
-| 3 | d_Envelope | g_N × ?_env/?_crit | Gas envelope contribution |
-| 4 | d_Ug_sum | SUgk/(? r³) | UQFF Ug1+Ug2+Ug3+Ug4 sum |
-| 5 | d_Cosm | ?c²r/3 | Cosmological constant (dark energy) |
-| 6 | d_Quantum | ?²/(M²r5) | Quantum gravity correction |
-| 7 | d_Fluid | ??²v/(? r) | Navier-Stokes viscosity term |
-| 8 | d_Perturbation | d_DM × g_N | Dark matter perturbation |
+| 0 | g_Newton | GM/rï¿½ | Base Newtonian gravity |
+| 1 | d_Expansion | H0ï¿½r/6 | Hubble flow correction |
+| 2 | d_Super | -Bï¿½/(4p? rï¿½) | Magnetic field suppression |
+| 3 | d_Envelope | g_N ï¿½ ?_env/?_crit | Gas envelope contribution |
+| 4 | d_Ug_sum | SUgk/(? rï¿½) | UQFF Ug1+Ug2+Ug3+Ug4 sum |
+| 5 | d_Cosm | ?cï¿½r/3 | Cosmological constant (dark energy) |
+| 6 | d_Quantum | ?ï¿½/(Mï¿½r5) | Quantum gravity correction |
+| 7 | d_Fluid | ??ï¿½v/(? r) | Navier-Stokes viscosity term |
+| 8 | d_Perturbation | d_DM ï¿½ g_N | Dark matter perturbation |
 
 ---
 
-## 2. Term-by-Term Magnitudes at Sgr A* r_horizon = 1.27 × 10¹° m
+## 2. Term-by-Term Magnitudes at Sgr A* r_horizon = 1.27 Ã— 10ï¿½ï¿½ m
 
 | Term | Value at r_horizon | Relative to g_N |
 |------|------------------|----------------|
-| g_Newton | 2.34 × 10² m/s² | 1.000 |
-| d_Expansion | 7.8 × 10?³4 m/s² | 3.3 × 10?³6 |
-| d_Super | -1.2 × 10?¹² m/s² | -5.1 × 10?¹5 |
-| d_Envelope | +8.5 × 10?8 m/s² | +3.6 × 10?¹° |
-| d_Ug_sum | +1.4 × 10?6 m/s² | +6.0 × 10?? |
-| d_Cosm | -6.5 × 10?²6 m/s² | -2.8 × 10?²8 |
-| d_Quantum | +3.2 × 10?47 m/s² | +1.4 × 10?4? |
-| d_Fluid | +7.6 × 10?¹? m/s² | +3.2 × 10?²¹ |
-| d_Perturbation | +4.7 × 10?4 m/s² | +2.0 × 10?6 |
-| **g_total** | **2.340 × 10² m/s²** | **1.000002** |
+| g_Newton | 2.34 Ã— 10ï¿½ m/sï¿½ | 1.000 |
+| d_Expansion | 7.8 Ã— 10?ï¿½4 m/sï¿½ | 3.3 Ã— 10?ï¿½6 |
+| d_Super | -1.2 Ã— 10?ï¿½ï¿½ m/sï¿½ | -5.1 Ã— 10?ï¿½5 |
+| d_Envelope | +8.5 Ã— 10â»8 m/sï¿½ | +3.6 Ã— 10?ï¿½ï¿½ |
+| d_Ug_sum | +1.4 Ã— 10â»6 m/sï¿½ | +6.0 Ã— 10?? |
+| d_Cosm | -6.5 Ã— 10?ï¿½6 m/sï¿½ | -2.8 Ã— 10?ï¿½8 |
+| d_Quantum | +3.2 Ã— 10â»47 m/sï¿½ | +1.4 Ã— 10?4? |
+| d_Fluid | +7.6 Ã— 10?ï¿½? m/sï¿½ | +3.2 Ã— 10?ï¿½ï¿½ |
+| d_Perturbation | +4.7 Ã— 10â»4 m/sï¿½ | +2.0 Ã— 10â»6 |
+| **g_total** | **2.340 Ã— 10ï¿½ m/sï¿½** | **1.000002** |
 
-**No NaN/Inf — PASS.** Total correction relative to Newton: < 5 ppm at r_horizon.
+**No NaN/Inf â€“ PASS.** Total correction relative to Newton: < 5 ppm at r_horizon.
 
 ---
 
 ## 3. Dominant Corrections by Scale
 
-### Galactic Scale (r ~ kpc = 3 × 10¹? m)
+### Galactic Scale (r ~ kpc = 3 Ã— 10ï¿½? m)
 
 At galactic radius r = 1 kpc from Sgr A*:
 
 | Dominant corrections | Relative magnitude |
 |---------------------|-----------------|
-| d_DM Perturbation | ~10?¹ (DM halo) |
+| d_DM Perturbation | ~10?ï¿½ (DM halo) |
 | d_Expansion | ~10?5 (sub-dominant at kpc) |
 | d_Ug_sum | ~10?7 |
 
@@ -75,8 +75,8 @@ At galactic radius r = 1 kpc from Sgr A*:
 
 | Dominant corrections | Relative magnitude |
 |---------------------|-----------------|
-| d_Expansion | ~10?¹ (Hubble flow) |
-| d_Cosm | ~10?¹ (dark energy) |
+| d_Expansion | ~10?ï¿½ (Hubble flow) |
+| d_Cosm | ~10?ï¿½ (dark energy) |
 
 ? Expansion and ? dominate at Gpc. MUGE compressed ? ?CDM-concordant.
 
@@ -86,13 +86,13 @@ At galactic radius r = 1 kpc from Sgr A*:
 
 All 5 systems from validator, all 10 MUGE terms verified finite:
 
-| System | M (kg) | r_test (m) | g_MUGE (m/s²) | NaN/Inf |
+| System | M (kg) | r_test (m) | g_MUGE (m/sï¿½) | NaN/Inf |
 |--------|--------|-----------|-------------|--------|
-| Sgr A* | 8.0×10³6 | 1.27×10¹° | 234.3 | None |
-| M87* | 1.26×104° | 1.95×10¹³ | 2.21×10³ | None |
-| Sun | 1.99×10³° | 6.96×108 | 274.3 | None |
-| NeutronStar | 2.8×10³° | 1.2×104 | 1.62×10¹² | None |
-| Magnetar | 3.0×10³° | 1.2×104 | 1.74×10¹² | None |
+| Sgr A* | 8.0Ã—10ï¿½6 | 1.27Ã—10ï¿½ï¿½ | 234.3 | None |
+| M87* | 1.26Ã—104ï¿½ | 1.95Ã—10ï¿½ï¿½ | 2.21Ã—10ï¿½ | None |
+| Sun | 1.99Ã—10ï¿½ï¿½ | 6.96Ã—108 | 274.3 | None |
+| NeutronStar | 2.8Ã—10ï¿½ï¿½ | 1.2Ã—104 | 1.62Ã—10ï¿½ï¿½ | None |
+| Magnetar | 3.0Ã—10ï¿½ï¿½ | 1.2Ã—104 | 1.74Ã—10ï¿½ï¿½ | None |
 
 ---
 
@@ -110,18 +110,18 @@ Where d_Ug includes all 4 Ugk terms evaluated in the UQFF framework (not just th
 
 | Scale | Dominant correction(s) | MUGE expansion |
 |-------|----------------------|---------------|
-| Near-horizon | d_Ug_sum + d_Perturbation | UQFF » GR |
-| Galactic (kpc) | d_DM (×0.1 g_N) | Dark matter-driven |
+| Near-horizon | d_Ug_sum + d_Perturbation | UQFF â€“ GR |
+| Galactic (kpc) | d_DM (ï¿½0.1 g_N) | Dark matter-driven |
 | Cosmological (Gpc) | d_Expansion + d_Cosm | ?CDM-concordant |
 | All scales | No NaN/Inf (5 systems) | Numerically stable |
 
-*Source: validate_uqff_muge.py | source4.cpp compute_compressed_MUGE_SOURCE4 | 5 systems × 10 terms all finite*
+*Source: validate_uqff_muge.py | source4.cpp compute_compressed_MUGE_SOURCE4 | 5 systems ï¿½ 10 terms all finite*
 
 ---
 *See also: PAPER_089 | Part of the Star-Magic UQFF Whitepaper Series.*
 
 
-**UQFF computed:** MUGE buoyancy ratio U_bi/F_U = [SSq]×?×r²/GM = 5.7e-1×5.0e-4 = 2.85e-4; compressed MUGE baseline g = 5.4e-7 m/s² at r_ISCO.
+**UQFF computed:** MUGE buoyancy ratio U_bi/F_U = [SSq]ï¿½?ï¿½rï¿½/GM = 5.7e-1ï¿½5.0e-4 = 2.85e-4; compressed MUGE baseline g = 5.4e-7 m/sï¿½ at r_ISCO.
 ---
 
 ## Appendix: UQFF Production Framework Reference (v4.75+)
@@ -146,7 +146,7 @@ Where d_Ug includes all 4 Ugk terms evaluated in the UQFF framework (not just th
 
 ### A.2 F_U Master Equation (Complete â€” 4 terms)
 
-$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}igl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}igr]$$
+$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}\bigr]$$
 
 | Term | Description | Implementation |
 |------|-------------|----------------|
@@ -163,7 +163,7 @@ $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}igl[\l
 
 ### A.3 Um Heaviside Phase-Transition Amplifier (PAPER_421)
 
-$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} 	imes igl(1 + 10^{13}\,\Theta(ho_{SCm} - ho_c)igr) 	imes igl(1 + A_q\cos(\Delta\omega\,t)igr)$$
+$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rho_{SCm} - \rho_c)\bigr) \times \bigl(1 + A_q\cos(\Delta\omega\,t)\bigr)$$
 
 | Symbol | Value | Description |
 |--------|-------|-------------|

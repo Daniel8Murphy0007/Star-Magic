@@ -1,4 +1,5 @@
-﻿#  "PAPER_{0:D3}" -f [int]# PAPER #150 — UQFF Tapestry and Westerlund 2: MUGE Star Formation Resonance at g~10^27 m/s^2
+# PAPER_150: UQFF Star-Magic Tapestry Blazing Starbirth and Westerlund 2 Star Cluster — MUGE 12-Term Resonance at Star Formation Sites: afluid_freq Dominant, g~1.001e27 m/s^2, and SCm Star-Birth Feedback
+
 
 **Title:** UQFF Star-Magic Tapestry Blazing Starbirth and Westerlund 2 Star Cluster — MUGE 12-Term Resonance at Star Formation Sites: afluid_freq Dominant, g~1.001e27 m/s^2, and SCm Star-Birth Feedback
 

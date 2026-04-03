@@ -1,4 +1,4 @@
-# PAPER_361 — Bubble Nebula (NGC 7635): Positive Expansion E(t) Form in UQFF — Stellar Wind Bubble
+# PAPER_361 ï¿½ Bubble Nebula (NGC 7635): Positive Expansion E(t) Form in UQFF â€“ Stellar Wind Bubble
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2  
 **Session:** 97  
@@ -10,7 +10,7 @@
 
 ## Abstract
 
-The Bubble Nebula (NGC 7635) is a stellar wind bubble blown by the massive O-star BD+60°2522 (v_wind ˜ 1.8×106 m/s) into the surrounding molecular cloud. UQFF introduces a POSITIVE expansion energy term E(t) > 0 for bubble systems, contrasting the negative E(t) erosion of filament systems (PAPER_359). The bubble's gravitational acceleration includes Hubble modulation and superconductive modification: g_bubble = GM/r²·(1+H0t)·SC_m·(1+E_t). This provides the canonical example of the positive-E(t) UQFF class.
+The Bubble Nebula (NGC 7635) is a stellar wind bubble blown by the massive O-star BD+60ï¿½2522 (v_wind ï¿½ 1.8Ã—106 m/s) into the surrounding molecular cloud. UQFF introduces a POSITIVE expansion energy term E(t) > 0 for bubble systems, contrasting the negative E(t) erosion of filament systems (PAPER_359). The bubble's gravitational acceleration includes Hubble modulation and superconductive modification: g_bubble = GM/rï¿½ï¿½(1+H0t)ï¿½SC_mï¿½(1+E_t). This provides the canonical example of the positive-E(t) UQFF class.
 
 ---
 
@@ -35,7 +35,7 @@ For positive E_t, the vacuum energy is *enhanced* within the expanding bubble in
 
 $$v_{\rm wind} = 1.8 \times 10^6\ \mathrm{m/s} \approx 6\times 10^{-3} c$$
 
-This is the wind velocity of BD+60°2522. The bubble expansion radius at age t:
+This is the wind velocity of BD+60ï¿½2522. The bubble expansion radius at age t:
 $$R_{\rm bubble}(t) \approx \left(\frac{L_{\rm wind}}{4\pi \rho_{\rm ISM} c_s^5}\right)^{1/5} t^{3/5} \cdot (1 + E_t)$$
 
 The UQFF correction multiplies the Weaver et al. (1977) analytic bubble radius by (1 + E_t).
@@ -46,7 +46,7 @@ The UQFF correction multiplies the Weaver et al. (1977) analytic bubble radius b
 |---------|---------------------|---------------------|
 | E(t) sign | POSITIVE | NEGATIVE |
 | Physical process | Expanding wind bubble | Eroding magnetic filament |
-| g/F modification | g × (1 + E_t) > g | F × (1 + E_t) < F |
+| g/F modification | g ï¿½ (1 + E_t) > g | F ï¿½ (1 + E_t) < F |
 
 ---
 
@@ -54,9 +54,9 @@ The UQFF correction multiplies the Weaver et al. (1977) analytic bubble radius b
 
 | Quantity | Formula | Value |
 |----------|---------|-------|
-| v_wind | Spectroscopic | 1.8×106 m/s |
+| v_wind | Spectroscopic | 1.8Ã—106 m/s |
 | E_t sign | Expansion | POSITIVE |
-| g_bubble | GM/r²·(1+H0t)·SC_m·(1+E_t) | Enhanced |
+| g_bubble | GM/rï¿½ï¿½(1+H0t)ï¿½SC_mï¿½(1+E_t) | Enhanced |
 | (1+H0t) | 105 yr age | 1.0000023 |
 | Distance | NGC 7635 | ~3.3 kpc |
 
@@ -72,7 +72,7 @@ The contrast between PAPER_359 (negative E_t filaments) and PAPER_361 (positive 
 
 ## 5. Deduplication Note
 
-- **vs. PAPER_359 (G359 filament):** Direct contrast — positive vs. negative E(t). Key architectural paper in the UQFF E(t) taxonomy.
+- **vs. PAPER_359 (G359 filament):** Direct contrast ï¿½ positive vs. negative E(t). Key architectural paper in the UQFF E(t) taxonomy.
 - **vs. PN Template (PAPER_322 Helix Nebula in SOURCE122):** Helix Nebula is a planetary nebula (low mass progenitor); Bubble Nebula is a massive stellar wind. Different progenitor class, similar physical mechanism.
 
 ---
@@ -86,4 +86,4 @@ The contrast between PAPER_359 (negative E_t filaments) and PAPER_361 (positive 
 
 **Testable Prediction:** This UQFF result is directly testable with JWST NIRSpec/MIRI (testable at 3s within Cycle 4, 2026); the UQFF deviation from standard predictions exceeds the measurement noise floor by = 3s, providing a clear discriminant for the UQFF buoyancy-gravity framework in future observations.
 
-**UQFF computed:** UQFF magnetic Jeans correction factor [SSq]×B²/(8p×?×c_s²) = 5.7e-1 × 1.3e-9 = 7.4e-10; Jeans mass deviation from standard = 7.4e-10 × M_J.
+**UQFF computed:** UQFF magnetic Jeans correction factor [SSq]ï¿½Bï¿½/(8pï¿½?ï¿½c_sï¿½) = 5.7e-1 Ã— 1.3e-9 = 7.4e-10; Jeans mass deviation from standard = 7.4e-10 ï¿½ M_J.

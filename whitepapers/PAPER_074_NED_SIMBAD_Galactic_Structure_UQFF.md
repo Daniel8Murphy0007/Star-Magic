@@ -1,3 +1,5 @@
+# PAPER_074: Galactic Structure Cross-Validation: NED and SIMBAD Multi-Object Queries vs UQFF Predicted Velocity Dispersions and Mass Profiles
+
 
 **Title:** Galactic Structure Cross-Validation: NED and SIMBAD Multi-Object Queries vs UQFF Predicted Velocity Dispersions and Mass Profiles
 
@@ -6,7 +8,6 @@
 **Date:** March 7, 2026  
 **Source Data:** QCalc_validation.py (DataSourceURLs: NED_BASE, SIMBAD_BASE, SIMBAD_API)  
 **Index Slot:** �1.10 Database Integration & Multi-Wavelength Astrophysics,  
-    $n = [int]# PAPER #74 � Galactic Structure: NED + SIMBAD + UQFF Cross-Validation
 
 **Title:** Galactic Structure Cross-Validation: NED and SIMBAD Multi-Object Queries vs UQFF Predicted Velocity Dispersions and Mass Profiles
 
@@ -20,11 +21,11 @@
 
 ## Abstract
 
-The NASA/IPAC Extragalactic Database (NED) and the SIMBAD Astronomical Database (CDS, Strasbourg) together provide the most comprehensive cross-matched multi-wavelength galaxy catalog available. The UQFF predicts galactic velocity dispersions via the buoyancy-modified gravity field: s� = (G � M_gal/r_eff) � (1 + F_UBii/F_Newton). This paper validates UQFF predictions against NED redshift surveys and SIMBAD spectroscopic data for 6 galaxy categories. The QCalc_validation.py implements the NED_API (ned.ipac.caltech.edu) and SIMBAD_API (simbad.u-strasbg.fr) query endpoints.
+The NASA/IPAC Extragalactic Database (NED) and the SIMBAD Astronomical Database (CDS, Strasbourg) together provide the most comprehensive cross-matched multi-wavelength galaxy catalog available. The UQFF predicts galactic velocity dispersions via the buoyancy-modified gravity field: s� = (G – M_gal/r_eff) � (1 + F_UBii/F_Newton). This paper validates UQFF predictions against NED redshift surveys and SIMBAD spectroscopic data for 6 galaxy categories. The QCalc_validation.py implements the NED_API (ned.ipac.caltech.edu) and SIMBAD_API (simbad.u-strasbg.fr) query endpoints.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0�10?4 day?�, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -75,14 +76,14 @@ $$\sigma_{\rm UQFF}^2 = \sigma_{\rm Newton}^2 \times \left(1 + \frac{F_{U,Bi,i}}
 
 | Galaxy | Type | s_Newton (km/s) | s_UQFF (km/s) | NED s_obs (km/s) | Match |
 |--------|------|-----------------|----------------|-------------------|-------|
-| M87 (NGC 4486) | E0 | 342 | 348 | 324 � 12 | < 2s |
-| Virgo A | E0 | 334 | 340 | 314 � 10 | < 3s |
-| M81 | Sab | 156 | 159 | 143 � 7 | < 2.5s |
-| Milky Way | SBbc | 105 | 107 | 100 � 6 | < 1.3s |
-| M51 (Whirlpool) | Sbc | 88 | 90 | 85 � 8 | < 1s |
-| NGC 1277 (compact) | S0 | 360 | 367 | 333 � 18 | < 2s |
+| M87 (NGC 4486) | E0 | 342 | 348 | 324 × 12 | < 2s |
+| Virgo A | E0 | 334 | 340 | 314 × 10 | < 3s |
+| M81 | Sab | 156 | 159 | 143 × 7 | < 2.5s |
+| Milky Way | SBbc | 105 | 107 | 100 × 6 | < 1.3s |
+| M51 (Whirlpool) | Sbc | 88 | 90 | 85 × 8 | < 1s |
+| NGC 1277 (compact) | S0 | 360 | 367 | 333 × 18 | < 2s |
 
-Average UQFF enhancement: s_UQFF/s_Newton = **1.018** (= [SSq] � 0.032 correction factor).
+Average UQFF enhancement: s_UQFF/s_Newton = **1.018** (= [SSq] ≈ 0.032 correction factor).
 
 ---
 
@@ -102,10 +103,10 @@ When SIMBAD + NED + GAIA data are combined for the same galaxy:
 
 | Parameter | SIMBAD | NED | GAIA | UQFF |
 |-----------|--------|-----|------|------|
-| Redshift z | ? | ? | � | Hubble standard |
-| s_los (km/s) | ? | ? | � | +1.018� |
-| Photometric M_star | � | ? | ? | Input |
-| Proper motion | � | � | ? | +d� (negligible) |
+| Redshift z | ? | ? | – | Hubble standard |
+| s_los (km/s) | ? | ? | – | +1.018� |
+| Photometric M_star | – | ? | ? | Input |
+| Proper motion | – | � | ? | +d� (negligible) |
 
 ---
 
@@ -143,7 +144,7 @@ When SIMBAD + NED + GAIA data are combined for the same galaxy:
 
 ### A.2 F_U Master Equation (Complete — 4 terms)
 
-$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}igl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}igr]$$
+$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}\bigr]$$
 
 | Term | Description | Implementation |
 |------|-------------|----------------|
@@ -160,9 +161,7 @@ $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}igl[\l
 
 ### A.3 Um Heaviside Phase-Transition Amplifier (PAPER_421)
 
-$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} 	imes igl(1 + 10^{13}\,\Theta(
-ho_{SCm} - 
-ho_c)igr) 	imes igl(1 + A_q\cos(\Delta\omega\,t)igr)$$
+$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rho_{SCm} - \rho_c)\bigr) \times \bigl(1 + A_q\cos(\Delta\omega\,t)\bigr)$$
 
 | Symbol | Value | Description |
 |--------|-------|-------------|

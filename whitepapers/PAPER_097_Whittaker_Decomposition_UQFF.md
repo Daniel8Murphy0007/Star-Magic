@@ -1,3 +1,5 @@
+# PAPER_097: Whittaker Decomposition in UQFF Spacetime: Separating Scalar Fields via 26-Layer Basis Functions
+
 
 **Title:** Whittaker Decomposition in UQFF Spacetime: Separating Scalar Fields via 26-Layer Basis Functions
 
@@ -6,7 +8,6 @@
 **Date:** March 7, 2026  
 **Source Data:** validate_drawings_models.py (WHITTAKER_MODEL), Drawing 30  
 **Index Slot:** �1.13 Multi-Physics Models,  
-    $n = [int]# PAPER #97 � Whittaker Decomposition in UQFF Spacetime
 
 **Title:** Whittaker Decomposition in UQFF Spacetime: Separating Scalar Fields via 26-Layer Basis Functions
 
@@ -24,7 +25,7 @@ The Whittaker decomposition (Whittaker 1903; Bateman 1904) separates any source-
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0�10?4 day?�, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -70,7 +71,7 @@ $$\sum_{k=1}^{26} (\phi_k + \chi_k) = F_U$$
 
 $$\epsilon = \left\|F_U - \sum_k (\phi_k + \chi_k)\right\| < 10^{-10}$$
 
-**PASS** (e = 6.3 � 10?�� in all 3 test systems).
+**PASS** (e = 6.3 × 10?�� in all 3 test systems).
 
 ### Orthogonality
 
@@ -95,9 +96,9 @@ This separation is physically meaningful: an infalling observer at the horizon c
 
 | System | e(completeness) | Orthogonality | PASS |
 |--------|----------------|--------------|------|
-| Sgr A* | 5.1 � 10?�� | ? | ? |
-| M87* | 6.8 � 10?�� | ? | ? |
-| Sun | 3.2 � 10?�� | ? | ? |
+| Sgr A* | 5.1 × 10?�� | ? | ? |
+| M87* | 6.8 × 10?�� | ? | ? |
+| Sun | 3.2 × 10?�� | ? | ? |
 
 ---
 
@@ -136,7 +137,7 @@ This separation is physically meaningful: an infalling observer at the horizon c
 
 ### A.2 F_U Master Equation (Complete — 4 terms)
 
-$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}igl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}igr]$$
+$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}\bigr]$$
 
 | Term | Description | Implementation |
 |------|-------------|----------------|
@@ -153,9 +154,7 @@ $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}igl[\l
 
 ### A.3 Um Heaviside Phase-Transition Amplifier (PAPER_421)
 
-$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} 	imes igl(1 + 10^{13}\,\Theta(
-ho_{SCm} - 
-ho_c)igr) 	imes igl(1 + A_q\cos(\Delta\omega\,t)igr)$$
+$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rho_{SCm} - \rho_c)\bigr) \times \bigl(1 + A_q\cos(\Delta\omega\,t)\bigr)$$
 
 | Symbol | Value | Description |
 |--------|-------|-------------|

@@ -1,4 +1,4 @@
-# PAPER #89 ó UQFF Master Equation: Complete Derivation
+# PAPER #89 ÔøΩ UQFF Master Equation: Complete Derivation
 
 **Title:** The UQFF Master Equation: Analytic Derivation and Implementation across 8 Calculator Architectures
 
@@ -6,7 +6,7 @@
 **Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57)  
 **Date:** March 7, 2026  
 **Source Data:** validate_uqff_calculators.py, QCalc.UnifiedFieldSolver, 8 calculator classes  
-**Index Slot:** ß1.12 UQFF Master Calculators, Paper #89  
+**Index Slot:** ÔøΩ1.12 UQFF Master Calculators, Paper #89  
 
 ---
 
@@ -16,7 +16,7 @@ The Unified Quantum Field Framework master equation F_U_Bi_i unifies gravity, el
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0◊10?4 day?π, [SSq] = 0.57) uniquely enabling this analysis ó establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0√ó10‚Åª4 day‚Åª¬π, [SSq] = 0.57) uniquely enabling this analysis ÔøΩ establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -58,7 +58,7 @@ Where $\vec{R}$ is the radial coupling vector.
 
 $$F_{\rm Base}(r,t) = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_m$$
 
-Self-validation: checks all terms finite, Ug1ñUg4 > 0, Um > 0.
+Self-validation: checks all terms finite, Ug1ÔøΩUg4 > 0, Um > 0.
 
 ### 3.2 UQFF_CompressedCalculator
 
@@ -82,7 +82,7 @@ Self-validation: F_SC/F_Base ? (0.98, 1.00).
 
 $$F_{\rm Tri}(r,t) = \sum_{i=1}^{3} \left(F_{\rm Base}^{(i)} \cdot \cos\left(\frac{2\pi (i-1)}{3}\right)\right)$$
 
-Triadic phase: 120∞ symmetry. Self-validation: F_Tri^(120∞) = F_Tri^(0∞) within 10?6.
+Triadic phase: 120ÔøΩ symmetry. Self-validation: F_Tri^(120ÔøΩ) = F_Tri^(0ÔøΩ) within 10?6.
 
 ### 3.5 UQFF_BuoyantCalculator
 
@@ -114,7 +114,7 @@ $$F_{\rm Res}(r,t) = F_{\rm Base}(r,t) \cdot \left[1 + \sum_{n=1}^{5} a_n \cos(n
 
 $$F_{\rm Quad}(r,t) = F_{\rm Base}(r,t) \left[1 + \beta_i \left(\frac{r_P}{r}\right)^2\right]$$
 
-With ﬂ_i ò 0.603 (calibrated constant, Batch 23). Post-GR quadratic corrections.
+With Œ∫_i ‚âà 0.603 (calibrated constant, Batch 23). Post-GR quadratic corrections.
 
 ---
 
@@ -150,11 +150,11 @@ All 8 calculators pass `self_validate()` on 5 standard systems (SgrA*, M87, Sun,
 | UQFF_BaseCalculator | PASS | All terms finite |
 | UQFF_CompressedCalculator | PASS | MUGE compressed valid |
 | UQFF_SuperconductiveCalculator | PASS | F_SC/F_Base ? (0.98,1.00) |
-| UQFF_TriadicCalculator | PASS | 120∞ symmetry ±10?6 |
+| UQFF_TriadicCalculator | PASS | 120ÔøΩ symmetry √ó10‚Åª6 |
 | UQFF_BuoyantCalculator | PASS | Buoyancy < 1% correction |
 | UQFF_MasterBuoyantCalculator | PASS | Full integration consistent |
 | UQFF_ResonantCalculator | PASS | All 5 frequencies finite |
-| UQFF_QuadraticCalculator | PASS | ﬂ_i correction < 5% at r=r_Sch |
+| UQFF_QuadraticCalculator | PASS | Œ∫_i correction < 5% at r=r_Sch |
 
 ---
 
@@ -168,7 +168,7 @@ The UQFF master equation admits 8 specializations covering all astrophysical reg
 *See also: PAPER_088 | Part of the Star-Magic UQFF Whitepaper Series.*
 
 
-**UQFF computed:** Canonical UQFF buoyancy parameter U_bi = ?◊[SSq]◊GM/r≤ = 5.0e-4◊0.57◊6.67e-11◊M/r≤; for solar parameters: U_bi,Sun = 5.7e-4◊6.67e-11◊1.99e30/(6.96e8)≤ = 1.47e+2 m/s≤.
+**UQFF computed:** Canonical UQFF buoyancy parameter U_bi = ?ÔøΩ[SSq]ÔøΩGM/rŒ∫ = 5.0e-4ÔøΩ0.57ÔøΩ6.67e-11ÔøΩM/rÔøΩ; for solar parameters: U_bi,Sun = 5.7e-4ÔøΩ6.67e-11ÔøΩ1.99e30/(6.96e8)ÔøΩ = 1.47e+2 m/sÔøΩ.
 ---
 
 ## Appendix: UQFF Production Framework Reference (v4.75+)
@@ -193,7 +193,7 @@ The UQFF master equation admits 8 specializations covering all astrophysical reg
 
 ### A.2 F_U Master Equation (Complete ‚Äî 4 terms)
 
-$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}igl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}igr]$$
+$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}\bigr]$$
 
 | Term | Description | Implementation |
 |------|-------------|----------------|
@@ -210,7 +210,7 @@ $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}igl[\l
 
 ### A.3 Um Heaviside Phase-Transition Amplifier (PAPER_421)
 
-$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} 	imes igl(1 + 10^{13}\,\Theta(ho_{SCm} - ho_c)igr) 	imes igl(1 + A_q\cos(\Delta\omega\,t)igr)$$
+$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rho_{SCm} - \rho_c)\bigr) \times \bigl(1 + A_q\cos(\Delta\omega\,t)\bigr)$$
 
 | Symbol | Value | Description |
 |--------|-------|-------------|

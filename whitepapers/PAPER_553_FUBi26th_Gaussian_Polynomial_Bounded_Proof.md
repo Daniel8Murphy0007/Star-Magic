@@ -139,7 +139,7 @@ This paper completes the set of four 26th-order proofs for Session 147, alongsid
 
 ---
 
-## �10 � FUBi26 as the Convergence Foundation
+## ×10 � FUBi26 as the Convergence Foundation
 
 ### Why FUBi26 Underpins All Six UQFF Proofs
 

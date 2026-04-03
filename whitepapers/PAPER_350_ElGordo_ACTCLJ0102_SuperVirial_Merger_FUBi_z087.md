@@ -1,4 +1,4 @@
-﻿# PAPER_350 — El Gordo (ACT-CL J0102-4915): Most Massive z>0.5 Cluster — Super-Virial Merger F_U_Bi_i
+# PAPER_350 — El Gordo (ACT-CL J0102-4915): Most Massive z>0.5 Cluster — Super-Virial Merger F_U_Bi_i
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2  
 **Session:** 96  

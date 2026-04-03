@@ -1,3 +1,5 @@
+# PAPER_045: Solid ? Liquid ? Gas ? Plasma: UQFF 26-Level Quantum Phase Transitions at Levels 10�13
+
 
 **Title:** Solid ? Liquid ? Gas ? Plasma: UQFF 26-Level Quantum Phase Transitions at Levels 10�13
 
@@ -8,7 +10,6 @@
 **Validator:** `test_phase2_validation.py` Test Suite 1 (Quantum Level 26 Framework): 10/11 PASS ?  
 **Source Modules:** `QuantumLevel26Framework.py`, `PhaseTransitionCalculator`, `CrossScaleCouplingCalculator`  
 **Index Slot:** �1.6 26-Dimensional Energy Structure,  
-    $n = [int]# PAPER #45 � Quantum Phase Transitions in UQFF 26D Framework
 
 **Title:** Solid ? Liquid ? Gas ? Plasma: UQFF 26-Level Quantum Phase Transitions at Levels 10�13
 
@@ -28,7 +29,7 @@ The four canonical states of matter � solid, liquid, gas, and plasma � corre
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0�10?4 day?�, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -40,10 +41,10 @@ The UQFF 26-level framework makes the following canonical assignments:
 
 | Level | Phase | ?_n = ?_SCm � n� (J/m�) | E_n (J) | Scale (m) | ?_i |
 |-------|-------|------------------------|---------|-----------|-----|
-| 10 | **SOLID** (protons, rigid lattices) | 1.00�10?6 | 10?�� | 10?? | 0.75 |
-| 11 | **LIQUID** (electron clouds, flow) | 1.21�10?6 | 10?? | 10?8 | 0.70 |
-| 12 | **GAS** (atomic spacing, kinetic) | 1.44�10?6 | 10?8 | 10?7 | 0.65 |
-| 13 | **PLASMA** (ionized, collective) | 1.69�10?6 | 10?7 | 10?6 | 0.60 |
+| 10 | **SOLID** (protons, rigid lattices) | 1.00×10⁻6 | 10?�� | 10?? | 0.75 |
+| 11 | **LIQUID** (electron clouds, flow) | 1.21×10⁻6 | 10?? | 10⁻8 | 0.70 |
+| 12 | **GAS** (atomic spacing, kinetic) | 1.44×10⁻6 | 10⁻8 | 10⁻7 | 0.65 |
+| 13 | **PLASMA** (ionized, collective) | 1.69×10⁻6 | 10⁻7 | 10⁻6 | 0.60 |
 
 The energy density difference between adjacent phases gives the UQFF phase transition energy:
 $$\Delta \rho_{n \to n+1} = \rho_{\rm SCm} \times [(n+1)^2 - n^2] = \rho_{\rm SCm} \times (2n+1)$$
@@ -51,11 +52,11 @@ $$\Delta \rho_{n \to n+1} = \rho_{\rm SCm} \times [(n+1)^2 - n^2] = \rho_{\rm SC
 ### 1.2 Phase Transition Energies
 
 For each classical transition:
-- **10?11 (Solid?Liquid / melting):** ?? = 10?8 � (2�10+1) = 10?8 � 21 = 2.1�10?7 J/m�
-- **11?12 (Liquid?Gas / vaporization):** ?? = 10?8 � 23 = 2.3�10?7 J/m�
-- **12?13 (Gas?Plasma / ionization):** ?? = 10?8 � 25 = 2.5�10?7 J/m�
+- **10?11 (Solid?Liquid / melting):** ?? = 10⁻8 � (2×10+1) = 10⁻8 × 21 = 2.1×10⁻7 J/m�
+- **11?12 (Liquid?Gas / vaporization):** ?? = 10⁻8 × 23 = 2.3×10⁻7 J/m�
+- **12?13 (Gas?Plasma / ionization):** ?? = 10⁻8 × 25 = 2.5×10⁻7 J/m�
 
-The vaporization transition (11?12) has higher energy density than melting (10?11) by a factor of 23/21 = 1.095 � consistent with the observation that latent heat of vaporization is typically larger than latent heat of fusion for most substances (water: L_vap/L_fus = 2260/334 � 6.8, though the UQFF energy density ratio is a universal scale parameter, not material-specific).
+The vaporization transition (11?12) has higher energy density than melting (10?11) by a factor of 23/21 = 1.095 � consistent with the observation that latent heat of vaporization is typically larger than latent heat of fusion for most substances (water: L_vap/L_fus = 2260/334 × 6.8, though the UQFF energy density ratio is a universal scale parameter, not material-specific).
 
 **Validator confirms: Level 10 (Solids) Energy Density ? PASS ?**
 **Validator confirms: Level 13 (Plasma) Energy Density ? PASS ?**
@@ -137,11 +138,11 @@ The consistent decrease in ?_i by 0.05 per level (from 0.75 to 0.60) reflects **
 
 ## 6. Level 10 Physical Context: Proton Scale
 
-The assignment of Level 10 to solids at scale 10?? m (nanometer) and energy density 10?6 J/m� is anchored in proton physics:
-- Proton mass: m_p = 1.6726�10?�7 kg
-- Proton rest energy density at nuclear density (?_nuc ~ 2.3�10�7 kg/m�):
-  E_nuc = ?_nuc � c� = 2.3�10�7 � 9�10�6 = 2.07�10�4 J/m�
-- Level 10 UQFF: ?10 = 10?6 J/m� (macroscopic solid energy density, not nuclear!)
+The assignment of Level 10 to solids at scale 10?? m (nanometer) and energy density 10⁻6 J/m� is anchored in proton physics:
+- Proton mass: m_p = 1.6726×10?�7 kg
+- Proton rest energy density at nuclear density (?_nuc ~ 2.3×10�7 kg/m�):
+  E_nuc = ?_nuc � c� = 2.3×10�7 × 9×10�6 = 2.07×10�4 J/m�
+- Level 10 UQFF: ?10 = 10⁻6 J/m� (macroscopic solid energy density, not nuclear!)
 
 The level 10 energy density corresponds to macroscopic solid-state physics (~kT at room temperature per molecular bond volume). This is consistent with the level 10 scale being 10?? m (nanometer = bond length scale), not the 10?�5 m nuclear scale which appears at level 4.
 
@@ -162,7 +163,7 @@ The `get_level_info(10)` call returns complete metadata:
 
 The UQFF Phase Transition framework (Levels 10�13) provides:
 1. **Energy density ordering**: ?10 < ?11 < ?12 < ?13 � each phase has strictly higher energy density, consistent with thermodynamics (entropy increases through transitions)
-2. **Phase transition energies**: ?? = ?_SCm � (2n+1), giving 2.1, 2.3, 2.5 � 10?7 J/m� for melting, vaporization, ionization respectively
+2. **Phase transition energies**: ?? = ?_SCm � (2n+1), giving 2.1, 2.3, 2.5 × 10⁻7 J/m� for melting, vaporization, ionization respectively
 3. **Cross-scale coupling**: Adjacent (0.477) to distant (0.0144) � establishing that quantum mechanics (Level 10) retains non-trivial coupling to cosmological scales (Level 26)
 4. **One correctable failure**: Scale lookup boundary condition (strict vs non-strict inequality)
 
@@ -192,7 +193,7 @@ The UQFF Phase Transition framework (Levels 10�13) provides:
 
 ### A.2 F_U Master Equation (Complete — 4 terms)
 
-$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}igl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}igr]$$
+$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}\bigr]$$
 
 | Term | Description | Implementation |
 |------|-------------|----------------|
@@ -209,9 +210,7 @@ $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}igl[\l
 
 ### A.3 Um Heaviside Phase-Transition Amplifier (PAPER_421)
 
-$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} 	imes igl(1 + 10^{13}\,\Theta(
-ho_{SCm} - 
-ho_c)igr) 	imes igl(1 + A_q\cos(\Delta\omega\,t)igr)$$
+$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rho_{SCm} - \rho_c)\bigr) \times \bigl(1 + A_q\cos(\Delta\omega\,t)\bigr)$$
 
 | Symbol | Value | Description |
 |--------|-------|-------------|

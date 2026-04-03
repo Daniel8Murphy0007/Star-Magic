@@ -1,4 +1,4 @@
-﻿# PAPER_016b: White Dwarf Binary Foreground Reduction via UQFF
+# PAPER_016: PAPER_016b: White Dwarf Binary Foreground Reduction via UQFF
 
 **Authors:** Daniel Murphy & UQFF Research Collective  
 **Date:** 2026-03-07  
@@ -15,11 +15,11 @@ $$
 
 ## Abstract
 
-The stochastic foreground from millions of unresolved white dwarf (WD) binaries in the Milky Way constitutes the dominant confusion noise for LISA in the 0.1–10 mHz band. We compute the UQFF prediction for this foreground, finding a 61.4% reduction: P_GR = 4.31 × 10?4¹ versus P_UQFF = 1.67 × 10?4¹ in strain power spectral density. This reduced foreground is counterintuitive but beneficial: LISA sensitivity to cosmological sources *improves* in UQFF relative to GR. Additionally, UQFF shifts approximately 104 WD binaries above the individually-resolvable threshold (GR: 10,000 ? UQFF threshold: 6,216 detected but individually resolved). The net effect is a LISA sensitivity improvement to high-redshift sources by factor ~1.6 in SNR, complementing the detection horizon reduction described in Papers #13–15.
+The stochastic foreground from millions of unresolved white dwarf (WD) binaries in the Milky Way constitutes the dominant confusion noise for LISA in the 0.1–10 mHz band. We compute the UQFF prediction for this foreground, finding a 61.4% reduction: P_GR = 4.31 × 10⁻4¹ versus P_UQFF = 1.67 × 10⁻4¹ in strain power spectral density. This reduced foreground is counterintuitive but beneficial: LISA sensitivity to cosmological sources *improves* in UQFF relative to GR. Additionally, UQFF shifts approximately 104 WD binaries above the individually-resolvable threshold (GR: 10,000 ? UQFF threshold: 6,216 detected but individually resolved). The net effect is a LISA sensitivity improvement to high-redshift sources by factor ~1.6 in SNR, complementing the detection horizon reduction described in Papers #13–15.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -66,8 +66,8 @@ where the sum is over all systems contributing to frequency bin f, and ?f is the
 
 | Model | Strain PSD P(f) at reference frequency | Reduction |
 |-------|----------------------------------------|-----------|
-| Standard GR | P_GR = 4.31 × 10?4¹ | — |
-| UQFF | P_UQFF = 1.67 × 10?4¹ | 61.4% |
+| Standard GR | P_GR = 4.31 × 10⁻4¹ | — |
+| UQFF | P_UQFF = 1.67 × 10⁻4¹ | 61.4% |
 
 The 61.4% foreground reduction is larger than the simple D² factor (D² = 0.333² = 0.111 would give 88.9% reduction) because the local WD damping uses D_local ˜ 0.62 (the z ˜ 0 intermediate regime) rather than D = 0.333.
 
@@ -121,7 +121,6 @@ SNR(UQFF, high-z) / SNR(GR, high-z) = D_cosmo(z>3) / D_local ~ 0.33/0.62 ~ 0.53
 ```
 
 At high z, the signal is more suppressed than the local noise, reducing LISA sensitivity to the most distant SMBH mergers. This is consistent with the detection volume ratio of 52% computed in  
-    $n = [int]# PAPER_016b: White Dwarf Binary Foreground Reduction via UQFF
 
 **Authors:** Daniel Murphy & UQFF Research Collective  
 **Date:** 2026-03-07  
@@ -152,7 +151,7 @@ At high z, the signal is more suppressed than the local noise, reducing LISA sen
 
 ### A.2 F_U Master Equation (Complete — 4 terms)
 
-$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}igl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}igr]$$
+$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}\bigr]$$
 
 | Term | Description | Implementation |
 |------|-------------|----------------|
@@ -169,9 +168,7 @@ $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}igl[\l
 
 ### A.3 Um Heaviside Phase-Transition Amplifier (PAPER_421)
 
-$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} 	imes igl(1 + 10^{13}\,\Theta(
-ho_{SCm} - 
-ho_c)igr) 	imes igl(1 + A_q\cos(\Delta\omega\,t)igr)$$
+$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rho_{SCm} - \rho_c)\bigr) \times \bigl(1 + A_q\cos(\Delta\omega\,t)\bigr)$$
 
 | Symbol | Value | Description |
 |--------|-------|-------------|

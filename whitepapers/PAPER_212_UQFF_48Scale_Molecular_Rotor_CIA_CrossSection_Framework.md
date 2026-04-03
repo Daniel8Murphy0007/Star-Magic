@@ -1,4 +1,4 @@
-﻿# PAPER_212: UQFF 48-Scale Molecular Rotor and CIA Cross-Section Framework
+# PAPER_212: UQFF 48-Scale Molecular Rotor and CIA Cross-Section Framework
 
 **Version:** 1.0  
 **Date:** March 13, 2026  
@@ -20,7 +20,7 @@ The UQFF framework spans 48 distinct physical scales from molecular rotational t
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -57,7 +57,7 @@ Scale-bridging principle:
 | 7 | Neutron Cooper pair | ? ~ 10 fm | NS superfluid | ?_pair, d_pair | 10?¹4 m |
 | 8 | Atomic size | r_atom ~ 1 Å | Molecular/atomic | H_res, S_shell | 10?¹° m |
 | 9 | Molecular rotor | t_rot ~ 10?³4 N·m | Gas opacity | k_?, CIA | 10?¹° m |
-| 10 | Dust grain | d ~ 0.1 µm | Dust optics | F_UBii,photoevap | 10?7 m |
+| 10 | Dust grain | d ~ 0.1 µm | Dust optics | F_UBii,photoevap | 10⁻7 m |
 | 11 | Photon mean free path | ?_mfp (stellar) ~ 1 cm | Stellar interior | Ug3' (radiation) | 10?² m |
 | 12 | Neutron star surface | R_NS ~ 10 km | Magnetar | F_UBii,tov | 104 m |
 | 13 | NS crust depth | d_crust ~ 1 km | NS vortex lattice | F_UBii,glitch | 10³ m |
@@ -212,7 +212,7 @@ This is the smallest physical UQFF scale:
 | H2 rotor : D_universe | t_rot ~ 10?³4 N·m | D_u ~ 10²7 m | 106¹ |
 | Nuclear : Hubble radius | r_nuc ~ 10?¹5 m | r_H ~ 10²6 m | 104¹ |
 | k_? : G | 10?¹¹³ | 6.67×10?¹¹ | 10?¹°³ |
-| h : E_Hubble | 10?³4 J·s | H0?¹ ~ 4×10¹7 s | h/H0 ~ 2.5×10?5² J·s² |
+| h : E_Hubble | 10?³4 J·s | H0?¹ ~ 4×10¹7 s | h/H0 ~ 2.5×10⁻5² J·s² |
 
 ---
 

@@ -124,7 +124,7 @@ The UQFF Ï€-cycle factor $\cos(\pi t_n)$ encodes the prime distribution through 
 
 ---
 
-**UQFF computed:** Canonical UQFF buoyancy parameter U_bi = ?×[SSq]×GM/r² = 5.0e-4×0.57×6.67e-11×M/r²; for solar parameters: U_bi,Sun = 5.7e-4×6.67e-11×1.99e30/(6.96e8)² = 1.47e+2 m/s².
+**UQFF computed:** Canonical UQFF buoyancy parameter U_bi = ?ï¿½[SSq]ï¿½GM/rÎº = 5.0e-4ï¿½0.57ï¿½6.67e-11ï¿½M/rï¿½; for solar parameters: U_bi,Sun = 5.7e-4ï¿½6.67e-11ï¿½1.99e30/(6.96e8)ï¿½ = 1.47e+2 m/sï¿½.
 
 ## References
 

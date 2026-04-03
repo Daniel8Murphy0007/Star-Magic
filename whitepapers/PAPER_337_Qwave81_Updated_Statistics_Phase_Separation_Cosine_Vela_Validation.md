@@ -1,4 +1,4 @@
-﻿# PAPER_337 — Q_wave_81 Updated Statistics and Phase Separation Validation Model (Vela Pulsar)
+# PAPER_337 — Q_wave_81 Updated Statistics and Phase Separation Validation Model (Vela Pulsar)
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2  
 **Session:** 95  
@@ -20,7 +20,7 @@ This paper extends the Q_wave_47 wave-function amplitude statistics (PAPER_327, 
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -160,7 +160,7 @@ P = 0.08927 s
 ?? = -?/P² = -1.57×10?¹¹ Hz/s (corrected)
 
 t_glitch ~ P / |??| = P × P² / ? = P³/?
-         = (0.08927)³ / (1.25×10?¹³ = 7.11×10?4 / 1.25×10?¹³ = 5.69×10? s
+         = (0.08927)³ / (1.25×10?¹³ = 7.11×10⁻4 / 1.25×10?¹³ = 5.69×10? s
          ~ 10¹° s (order of magnitude)
 ```
 

@@ -1,4 +1,4 @@
-﻿# PAPER_201: UQFF Gravitational Waves — Chirp Mass, QNM, BZ, Orbital Decay, and Kilonova
+# PAPER_201: UQFF Gravitational Waves — Chirp Mass, QNM, BZ, Orbital Decay, and Kilonova
 
 **Version:** 1.0  
 **Date:** March 13, 2026  
@@ -20,7 +20,7 @@ This paper applies the UQFF buoyancy framework to the complete gravitational wav
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 

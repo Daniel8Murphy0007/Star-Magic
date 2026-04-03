@@ -1,4 +1,4 @@
-﻿# PAPER_328 — Nuclear α-BEC LENR Enhancement: Bose-Einstein α-Clustering at T_BEC = 14.52 MeV  
+# PAPER_328 — Nuclear α-BEC LENR Enhancement: Bose-Einstein α-Clustering at T_BEC = 14.52 MeV  
 ## N_B Formula, δ_pair = 0.1 Pairing Correction, and H₂O–H₂ Rotor Cross-Section Coupling
 
 **Session:** 94  

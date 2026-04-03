@@ -1,4 +1,5 @@
-﻿#  "PAPER_{0:D3}" -f [int]# PAPER #147 — UQFF FDPM Vortical Resonance: DPM Driver Equation and Aether Coupling
+# PAPER_147: UQFF Star-Magic FDPM Vortical Resonance — First-Principles Derivation of the DPM Driver FDPM=I*A*(omega1-omega2) and Its Cascade into aDPM, aTHz, and avac_diff
+
 
 **Title:** UQFF Star-Magic FDPM Vortical Resonance — First-Principles Derivation of the DPM Driver FDPM=I*A*(omega1-omega2) and Its Cascade into aDPM, aTHz, and avac_diff
 
@@ -25,7 +26,7 @@ The Dynamic Polarized Medium (DPM) particle is the fundamental driver of the MUG
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 

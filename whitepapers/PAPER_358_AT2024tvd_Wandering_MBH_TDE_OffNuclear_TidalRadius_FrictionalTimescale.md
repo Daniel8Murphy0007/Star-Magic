@@ -1,4 +1,4 @@
-﻿# PAPER_358 — AT2024tvd Wandering Massive Black Hole TDE: Off-Nuclear Disruption Physics
+# PAPER_358 — AT2024tvd Wandering Massive Black Hole TDE: Off-Nuclear Disruption Physics
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2  
 **Session:** 97  

@@ -1,4 +1,4 @@
-﻿# PAPER_171: Universal Gravity Ug1–Ug4 Full Decomposition
+# PAPER_171: Universal Gravity Ug1–Ug4 Full Decomposition
 ## DPM, Heliosphere, Magnetic String Disk, and Star–Black Hole Interaction
 ## Whitepaper §2.4-C | Thread 381a8fe7 | Session 48
 
@@ -11,7 +11,7 @@ and `main.cpp`, including all helper functions and calibrated constants.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 

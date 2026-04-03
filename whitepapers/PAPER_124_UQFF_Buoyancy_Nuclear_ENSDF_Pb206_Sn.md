@@ -1,8 +1,10 @@
+# PAPER_124: UQFF Buoyancy Mode Nuclear Verification – ENSDF Pb-206 Neutron Separation Energy S_n = 2�[SSq]�E8 at Doubly-Magic n=8 Shell Closure with ?n = 0.21 Binding Signature
 
-**Title:** UQFF Buoyancy Mode Nuclear Verification � ENSDF Pb-206 Neutron Separation Energy S_n = 2�[SSq]�E8 at Doubly-Magic n=8 Shell Closure with ?n = 0.21 Binding Signature
+
+**Title:** UQFF Buoyancy Mode Nuclear Verification – ENSDF Pb-206 Neutron Separation Energy S_n = 2�[SSq]�E8 at Doubly-Magic n=8 Shell Closure with ?n = 0.21 Binding Signature
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57, �_i = 0.61)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57, κ_i = 0.61)  
 **Date:** March 2026  
 **Domain:** �1.17 UQFF Mode Synthesis (d91b1f6c)  
 **Source Thread:** `grok_share_d91b1f6c_UQFF_Framework_Assimilation_Progress_22Sept2025.docx`  
@@ -14,11 +16,11 @@
 
 ## Abstract
 
-The ENSDF/NNDC 2025 nuclear data for lead-206 (Pb-206, Z=82, N=124) provides the definitive verification of UQFF Buoyancy Mode at the nuclear scale. At the n=8 UQFF level (E8 = 10?�� J, the nuclear binding regime), the doubly-magic shell closure in Pb-208 drives an anomalously high neutron separation energy S_n. Thread d91b1f6c identifies the UQFF formula: S_n = 2�[SSq]�E8, yielding S_n = 2 � 0.57 � 10?�� = 1.14�10?�� J = 7.12 MeV. The measured ENSDF value is S_n(Pb-207) = 6.74 MeV, within 5.5% of UQFF prediction. The Buoyancy Opposition term Ub_i at the nuclear scale manifests as neutron excess buoyancy: neutrons beyond N=126 are "buoyed up" by the [UA] vacuum condensate above the [SCm] nuclear floor, experiencing reduced binding (S_n drops sharply past N=126). The fractional level ?n = 0.21 encodes the nuclear [SCm] medium enhancement over vacuum, consistent with ATLAS virtual quarks' ?n = 0.20.
+The ENSDF/NNDC 2025 nuclear data for lead-206 (Pb-206, Z=82, N=124) provides the definitive verification of UQFF Buoyancy Mode at the nuclear scale. At the n=8 UQFF level (E8 = 10?�� J, the nuclear binding regime), the doubly-magic shell closure in Pb-208 drives an anomalously high neutron separation energy S_n. Thread d91b1f6c identifies the UQFF formula: S_n = 2�[SSq]�E8, yielding S_n = 2 × 0.57 × 10?�� = 1.14×10?�� J = 7.12 MeV. The measured ENSDF value is S_n(Pb-207) = 6.74 MeV, within 5.5% of UQFF prediction. The Buoyancy Opposition term Ub_i at the nuclear scale manifests as neutron excess buoyancy: neutrons beyond N=126 are "buoyed up" by the [UA] vacuum condensate above the [SCm] nuclear floor, experiencing reduced binding (S_n drops sharply past N=126). The fractional level ?n = 0.21 encodes the nuclear [SCm] medium enhancement over vacuum, consistent with ATLAS virtual quarks' ?n = 0.20.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0�10?4 day?�, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -48,7 +50,7 @@ $$U_{b,i} = -\beta_i \cdot U_{g,i} \cdot \omega_g \cdot \frac{M_{bh}}{d_g}(1 + \
 
 At nuclear scales, the relevant quantities collapse to:
 - U_{g,i} ? nuclear potential well depth (~40 MeV)
-- �_i = 0.61 (universal UQFF buoyancy coupling)
+- κ_i = 0.61 (universal UQFF buoyancy coupling)
 - [UA] ? nuclear [UA] condensate density
 
 The Buoyancy Opposition emerges as the binding reduction beyond magic numbers: neutrons above N=126 experience Ub_i > 0 (opposing binding), causing S_n to drop.
@@ -59,7 +61,7 @@ The neutron separation energy at the n=8 level is predicted by:
 
 $$S_n = 2 \cdot [SSq] \cdot E_8 = 2 \times 0.57 \times 10^{-12} \text{ J}$$
 
-Converting: 1.14�10?�� J = 1.14�10?�� / (1.602�10?�� MeV/J) = **7.12 MeV**
+Converting: 1.14×10?�� J = 1.14×10?�� / (1.602×10?�� MeV/J) = **7.12 MeV**
 
 ENSDF measured values:
 - Pb-207 S_n = 6.74 MeV (N=125, approaching magic N=126): **5.5% below UQFF**
@@ -178,10 +180,10 @@ ENSDF Pb-206 neutron separation energies verify UQFF Buoyancy Mode at the nuclea
 *CP2 Mode: Buoyancy (Nuclear) | Thread: d91b1f6c | Session: 43 | Domain: �1.17*
 .Groups[1].Value  � UQFF Buoyancy Nuclear: ENSDF Pb-206 Separation Energy S_n Ladder
 
-**Title:** UQFF Buoyancy Mode Nuclear Verification � ENSDF Pb-206 Neutron Separation Energy S_n = 2�[SSq]�E8 at Doubly-Magic n=8 Shell Closure with ?n = 0.21 Binding Signature
+**Title:** UQFF Buoyancy Mode Nuclear Verification – ENSDF Pb-206 Neutron Separation Energy S_n = 2�[SSq]�E8 at Doubly-Magic n=8 Shell Closure with ?n = 0.21 Binding Signature
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57, �_i = 0.61)  
+**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57, κ_i = 0.61)  
 **Date:** March 2026  
 **Domain:** �1.17 UQFF Mode Synthesis (d91b1f6c)  
 **Source Thread:** `grok_share_d91b1f6c_UQFF_Framework_Assimilation_Progress_22Sept2025.docx`  

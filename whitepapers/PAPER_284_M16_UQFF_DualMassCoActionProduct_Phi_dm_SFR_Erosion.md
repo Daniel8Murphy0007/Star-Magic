@@ -1,4 +1,4 @@
-﻿# PAPER_284: M16 Eagle Nebula UQFF — Dual Mass Co-Action Product (Φ_dm)
+# PAPER_284: M16 Eagle Nebula UQFF — Dual Mass Co-Action Product (Φ_dm)
 ## SFR Growth × Photoevaporation Erosion Multiplicative Coupling
 
 **Classification:** UQFF 2.0 Gravitational Physics — Nebular Mass Dynamics  

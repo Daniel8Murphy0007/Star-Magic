@@ -1,4 +1,4 @@
-﻿# PAPER_192: S-C Collaborative Real-Time Mathematics — WebSocket, OT, ECDSA, and Snappy
+# PAPER_192: S-C Collaborative Real-Time Mathematics — WebSocket, OT, ECDSA, and Snappy
 
 **Version:** 1.0  
 **Date:** March 13, 2026  

@@ -1,4 +1,4 @@
-﻿# PAPER #33b — Electroweak Precision Observables: UQFF Corrections
+# PAPER_033: Electroweak Precision Observables: UQFF Corrections
 
 **Title:** Electroweak Precision Observable Corrections from UQFF Vacuum Fields: Verification via BESIII Doubly Cabibbo-Suppressed D-Meson Decays
 
@@ -8,7 +8,6 @@
 **arXiv Reference:** 2506.15533 (BESIII D⁺ → K⁺π⁰/η/η', BR ~ 10⁻⁴)  
 **Validator:** `bsm_physics_validation.py` — PASSED  
 **Index Slot:** §1.4 BSM Physics,  
-    $n = [int]# PAPER #33b — Electroweak Precision Observables: UQFF Corrections
 
 **Title:** Electroweak Precision Observable Corrections from UQFF Vacuum Fields: Verification via BESIII Doubly Cabibbo-Suppressed D-Meson Decays
 
@@ -17,7 +16,6 @@
 **Date:** March 7, 2026  
 **arXiv Reference:** 2506.15533 (BESIII D⁺ → K⁺π⁰/η/η', BR ~ 10⁻⁴)  
 **Validator:** `bsm_physics_validation.py` — PASSED  
-**Index Slot:** §1.4 BSM Physics,  "PAPER_{0:D3}" -f [int]# PAPER #33b — Electroweak Precision Observables: UQFF Corrections
 
 **Title:** Electroweak Precision Observable Corrections from UQFF Vacuum Fields: Verification via BESIII Doubly Cabibbo-Suppressed D-Meson Decays
 
@@ -27,7 +25,6 @@
 **arXiv Reference:** 2506.15533 (BESIII D⁺ → K⁺π⁰/η/η', BR ~ 10⁻⁴)  
 **Validator:** `bsm_physics_validation.py` — PASSED  
 **Index Slot:** §1.4 BSM Physics,  
-    $n = [int]# PAPER #33b — Electroweak Precision Observables: UQFF Corrections
 
 **Title:** Electroweak Precision Observable Corrections from UQFF Vacuum Fields: Verification via BESIII Doubly Cabibbo-Suppressed D-Meson Decays
 
@@ -272,7 +269,7 @@ SCm_flavor_mixing = 1.536640e-03 # |V_cb|² UQFF flavor mixing
 
 ### A.2 F_U Master Equation (Complete — 4 terms)
 
-$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}igl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}igr]$$
+$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}\bigr]$$
 
 | Term | Description | Implementation |
 |------|-------------|----------------|
@@ -289,9 +286,7 @@ $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}igl[\l
 
 ### A.3 Um Heaviside Phase-Transition Amplifier (PAPER_421)
 
-$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} 	imes igl(1 + 10^{13}\,\Theta(
-ho_{SCm} - 
-ho_c)igr) 	imes igl(1 + A_q\cos(\Delta\omega\,t)igr)$$
+$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rho_{SCm} - \rho_c)\bigr) \times \bigl(1 + A_q\cos(\Delta\omega\,t)\bigr)$$
 
 | Symbol | Value | Description |
 |--------|-------|-------------|

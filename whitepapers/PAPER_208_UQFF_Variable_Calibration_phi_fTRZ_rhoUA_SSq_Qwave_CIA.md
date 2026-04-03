@@ -1,4 +1,4 @@
-﻿# PAPER_208: UQFF Variable Calibration — ?, f_TRZ, ?_vac,[UA], [SSq], Q_wave, and CIA Cross-Section
+# PAPER_208: UQFF Variable Calibration — ?, f_TRZ, ?_vac,[UA], [SSq], Q_wave, and CIA Cross-Section
 
 **Version:** 1.0  
 **Date:** March 13, 2026  
@@ -13,15 +13,15 @@ $$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b_i}, \quad \kappa = 5.0\tim
 $$
 U_{b_i}(r) = \kappa\cdot[SSq]\cdot\frac{GM}{r^2}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57,\; \beta_i = 0.61
 $$
-<!-- ? = 5.0e-4 day?¹, [SSq] = 0.57, ß_i = 6.1e-1 -->
+<!-- ? = 5.0e-4 day⁻¹, [SSq] = 0.57, ß_i = 6.1e-1 -->
 
 ## Abstract
 
-This paper consolidates the calibration status for all primary UQFF framework variables as extracted from the Sept 22, 2025 PDF analysis session. Six variables are explicitly calibrated: the UQFF phase ? ˜ 0.81 (from SymPy), the SGR A* THz resonance frequency f_TRZ ˜ 5.95×10?4 Hz (28-minute cycle), the vacuum aether density ?_vac,[UA] ˜ 10?¹5 kg/m³ (astrophysical calibration), the quantum-state suppression factor [SSq] = 0.57 (empirical), the quantum wave standard deviation Q_wave = 6.33–6.35×104 J/m³ (47-system calibration), and a CIA collision-induced absorption cross-section refit to H2O-H2 data yielding b = 0.004997 and s(?j=2, E=400 cm?¹) = 11.65 Å².
+This paper consolidates the calibration status for all primary UQFF framework variables as extracted from the Sept 22, 2025 PDF analysis session. Six variables are explicitly calibrated: the UQFF phase ? ˜ 0.81 (from SymPy), the SGR A* THz resonance frequency f_TRZ ˜ 5.95×10⁻4 Hz (28-minute cycle), the vacuum aether density ?_vac,[UA] ˜ 10?¹5 kg/m³ (astrophysical calibration), the quantum-state suppression factor [SSq] = 0.57 (empirical), the quantum wave standard deviation Q_wave = 6.33–6.35×104 J/m³ (47-system calibration), and a CIA collision-induced absorption cross-section refit to H2O-H2 data yielding b = 0.004997 and s(?j=2, E=400 cm?¹) = 11.65 Å².
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -33,7 +33,7 @@ Definition:
 
 where:
   t_n = t/t_Hubble · (1 + H(z)·t0)    (normalized cosmic time)
-  f_flare = flare frequency of system (e.g., SGR A* f_flare ˜ 1/28 min = 5.95×10?4 Hz)
+  f_flare = flare frequency of system (e.g., SGR A* f_flare ˜ 1/28 min = 5.95×10⁻4 Hz)
 
 Calibrated value: ? ˜ 0.81 ± 0.01
 
@@ -60,7 +60,7 @@ Recommended usage: ? = 0.81 ± 0.01 for redshift z ˜ 0–2 calculations
 ## 2. SGR A* THz Resonance Frequency f_TRZ
 
 ```
-f_TRZ = 5.95×10?4 Hz   (corresponding to T = 1/f_TRZ ˜ 1680 s ˜ 28 minutes)
+f_TRZ = 5.95×10⁻4 Hz   (corresponding to T = 1/f_TRZ ˜ 1680 s ˜ 28 minutes)
 
 Physical origin:
   SGR A* near-infrared/X-ray quasi-periodic oscillations (QPOs)
@@ -76,7 +76,7 @@ UQFF application:
 Calibration constraint:
   If ??_glitch/? = F_UBii,glitch/F_grav ? relates UQFF to timing residuals
   For SGR A* orbit: T_ISCO ˜ 30 min (Kerr metric, a ˜ 0.94)
-  f_TRZ ˜ 1/T_ISCO ˜ 5.6×10?4 Hz (consistent with 5.95×10?4 within 6%)
+  f_TRZ ˜ 1/T_ISCO ˜ 5.6×10⁻4 Hz (consistent with 5.95×10⁻4 within 6%)
 ```
 
 ---
@@ -227,7 +227,7 @@ From UQFF Framework Assimilation (3rd PDF, lines 1640–1715):
 | [SSq] | 0.57 | Q_wave std backsolve | Self-consistent |
 | Q_wave | 6.33×104 J/m³ | Chandra X-ray (clusters) | <2% |
 | ? | 0.81 ± 0.01 | SGR A* NIR periodic | ~6% (f_TRZ) |
-| f_TRZ | 5.95×10?4 Hz | GRAVITY/Spitzer 28 min | <6% |
+| f_TRZ | 5.95×10⁻4 Hz | GRAVITY/Spitzer 28 min | <6% |
 | ?_vac,[UA] | 10?¹5 kg/m³ | MW spiral arm calibration | ~10% (indirect) |
 | CIA b | 0.004997 Å²·cm | arXiv:2506.09257 | Direct fit |
 | ?k_? | 7.25×108×k_?,base | CIA s update | Derived |

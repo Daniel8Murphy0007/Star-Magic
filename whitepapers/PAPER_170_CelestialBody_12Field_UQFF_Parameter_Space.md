@@ -1,4 +1,4 @@
-﻿# PAPER_170: CelestialBody 12-Field UQFF Parameter Space
+# PAPER_170: CelestialBody 12-Field UQFF Parameter Space
 ## Whitepaper §2.4-B | Thread 381a8fe7 | Session 48
 
 ### Abstract

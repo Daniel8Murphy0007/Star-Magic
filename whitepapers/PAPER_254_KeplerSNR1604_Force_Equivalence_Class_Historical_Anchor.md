@@ -1,4 +1,4 @@
-﻿# PAPER_254: Kepler's Supernova Remnant 1604 CE — Force Equivalence Class Historical Anchor
+# PAPER_254: Kepler's Supernova Remnant 1604 CE — Force Equivalence Class Historical Anchor
 
 **Author:** Daniel T. Murphy (daniel.murphy00@gmail.com)
 **Framework:** UQFF v4.27 — Star-Magic Physics
@@ -24,7 +24,7 @@ The paper also demonstrates a key quantitative result: `F_LENR/F_DE = 6.17 × 10
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 

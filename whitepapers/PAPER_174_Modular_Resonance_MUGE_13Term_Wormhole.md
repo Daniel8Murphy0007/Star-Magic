@@ -1,4 +1,4 @@
-﻿# PAPER_174: Modular Resonance MUGE — 13-Term + Wormhole 14th Term
+# PAPER_174: Modular Resonance MUGE — 13-Term + Wormhole 14th Term
 ## aDPM Chain and Resonance Frequency Decomposition
 ## Whitepaper §2.4-F | Thread 381a8fe7 | Session 48
 
@@ -11,7 +11,7 @@ calibrated expected values from the unit test suite.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 

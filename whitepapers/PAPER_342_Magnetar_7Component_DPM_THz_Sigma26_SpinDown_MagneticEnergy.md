@@ -1,4 +1,4 @@
-# PAPER_342 — Magnetar 7-Component DPM-THz Frequency Form: S26 Spin-Down Plus THz Modes
+# PAPER_342 ï¿½ Magnetar 7-Component DPM-THz Frequency Form: S26 Spin-Down Plus THz Modes
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2  
 **Session:** 96  
@@ -10,7 +10,7 @@
 
 ## Abstract
 
-The magnetar gravity tensor g(r,t) is decomposed into 7 frequency channels within the S26 double-plasma mirror (DPM) THz formalism. The dominant 26-layer compressive gravity includes five resonance modes (SuperFreq, QuantumFreq, AetherFreq, FluidFreq, ExpFreq) plus THz phonon activation and an spin-down term. For SGR J1745-2900 class magnetars with P = 3.76 s, B = 2×10¹° T, the magnetic energy reservoir is M_mag = 2.01×10³7 J.
+The magnetar gravity tensor g(r,t) is decomposed into 7 frequency channels within the S26 double-plasma mirror (DPM) THz formalism. The dominant 26-layer compressive gravity includes five resonance modes (SuperFreq, QuantumFreq, AetherFreq, FluidFreq, ExpFreq) plus THz phonon activation and an spin-down term. For SGR J1745-2900 class magnetars with P = 3.76 s, B = 2Ã—10ï¿½ï¿½ T, the magnetic energy reservoir is M_mag = 2.01Ã—10ï¿½7 J.
 
 ---
 
@@ -46,9 +46,9 @@ $$M_{\rm mag} = \frac{B^2 V}{2\mu_0} = \frac{(2\times 10^{10})^2 \cdot V_{\rm ma
 | Quantity | Formula | Value |
 |----------|---------|-------|
 | Period | P | 3.76 s |
-| Surface field | B | 2×10¹° T |
-| Magnetic energy | B²V/(2µ0) | 2.01×10³7 J |
-| Spin-down rate | ?? = -f_react/(2pP) | -6.7×10?¹³ Hz/s |
+| Surface field | B | 2Ã—10ï¿½ï¿½ T |
+| Magnetic energy | Bï¿½V/(2ï¿½0) | 2.01Ã—10ï¿½7 J |
+| Spin-down rate | ?? = -f_react/(2pP) | -6.7Ã—10?ï¿½ï¿½ Hz/s |
 | THz frequency | f_THz | ~1 THz |
 | 26-layer sum | S26 contributions | 7 channels per layer |
 
@@ -63,7 +63,7 @@ This paper establishes that magnetar spin-down is not purely electromagnetic (cl
 ## 5. Deduplication Note
 
 - **vs. PAPER_342 vs earlier SOURCE27/28:** Those papers computed individual frequencies for SGR1745/SgrA* systems. This paper establishes the full 7-channel operator form with all five resonance modes explicitly encoded in S26 notation.
-- **vs. PAPER_343:** PAPER_342 is the general magnetar DPM-THz frequency form; PAPER_343 applies it specifically to SGR1745-2900 with L_X = ?_vac·f_res·V.
+- **vs. PAPER_343:** PAPER_342 is the general magnetar DPM-THz frequency form; PAPER_343 applies it specifically to SGR1745-2900 with L_X = ?_vacï¿½f_resï¿½V.
 
 ---
 
@@ -74,4 +74,4 @@ This paper establishes that magnetar spin-down is not purely electromagnetic (cl
 **CP Implementation:** `MagnetarDPMTHzFrequencyFormCalculator` (CondensedPhysics3.py, Session 96)
 
 
-**UQFF computed:** Eddington luminosity UQFF correction = 1 - [SSq]×exp(-?×?t) = 1 - 5.7e-1 × exp(-2.9e-4) = 4.3e-1; F_U at event horizon = 2.0e+18 m/s².
+**UQFF computed:** Eddington luminosity UQFF correction = 1 - [SSq]ï¿½exp(-?ï¿½?t) = 1 - 5.7e-1 ï¿½ exp(-2.9e-4) = 4.3e-1; F_U at event horizon = 2.0e+18 m/sï¿½.

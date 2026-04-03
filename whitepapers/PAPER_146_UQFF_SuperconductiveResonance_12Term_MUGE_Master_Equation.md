@@ -1,4 +1,5 @@
-﻿#  "PAPER_{0:D3}" -f [int]# PAPER #146 — UQFF Superconductive Resonance 12-Term MUGE Master Equation
+# PAPER_146: UQFF Star-Magic Superconductive Resonance — First-Principles Derivation of All 12 MUGE Resonance Terms: aDPM through fTRZ
+
 
 **Title:** UQFF Star-Magic Superconductive Resonance — First-Principles Derivation of All 12 MUGE Resonance Terms: aDPM through fTRZ
 
@@ -25,7 +26,7 @@ This paper derives all 12 terms of the MUGE Resonance Master equation from first
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 

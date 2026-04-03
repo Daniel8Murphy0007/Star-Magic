@@ -1,4 +1,4 @@
-﻿# PAPER_200: Um Universal Magnetism Taxonomy — Complete Variant Catalogue
+# PAPER_200: Um Universal Magnetism Taxonomy — Complete Variant Catalogue
 
 **Version:** 1.0  
 **Date:** March 13, 2026  
@@ -13,7 +13,7 @@ $$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b_i}, \quad \kappa = 5.0\tim
 $$
 L_\text{UQFF} = \frac{4\pi G M c}{\kappa_\text{es}}\Bigl(1 - [SSq]\cdot e^{-\kappa\,\Delta t}\Bigr), \quad [SSq] = 0.57
 $$
-<!-- ? = 5.0e-4 day?¹, [SSq] = 0.57, ß_i = 6.1e-1 -->
+<!-- ? = 5.0e-4 day⁻¹, [SSq] = 0.57, ß_i = 6.1e-1 -->
 
 ## Abstract
 
@@ -21,7 +21,7 @@ Universal Magnetism (Um) in UQFF is a general magnetic energy density operator t
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10?4 day?¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
