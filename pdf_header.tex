@@ -15,3 +15,36 @@
 \usepackage{geometry}
 \geometry{a4paper,top=0.75in,bottom=0.75in,left=0.75in,right=0.75in}
 \setcounter{secnumdepth}{0}
+% ── Unicode glyph fallbacks for chars absent from DejaVu Serif ──────────────
+% DejaVu Sans covers U+2713 (✓); math mode covers ⊙ and \checkmark.
+% The super/subscript blocks (U+2070-209F, U+1D00-1DBF) are not reliably
+% present in DejaVu Serif — map them to \textsuperscript / \textsubscript.
+\usepackage{newunicodechar}
+\newfontfamily\symbolfont{DejaVu Sans}
+% Astronomical / scientific symbols
+\newunicodechar{☉}{\ensuremath{\odot}}          % U+2609 Sun → math odot
+\newunicodechar{✓}{{\symbolfont ✓}}             % U+2713 checkmark → DejaVu Sans
+\newunicodechar{✗}{{\symbolfont ✗}}             % U+2717 ballot x → DejaVu Sans
+% Superscript digits / signs (U+2070-U+207F)
+\newunicodechar{⁰}{\textsuperscript{0}}
+\newunicodechar{⁴}{\textsuperscript{4}}
+\newunicodechar{⁵}{\textsuperscript{5}}
+\newunicodechar{⁶}{\textsuperscript{6}}
+\newunicodechar{⁷}{\textsuperscript{7}}
+\newunicodechar{⁸}{\textsuperscript{8}}
+\newunicodechar{⁹}{\textsuperscript{9}}
+\newunicodechar{⁻}{\textsuperscript{-}}
+\newunicodechar{⁺}{\textsuperscript{+}}
+% Subscript digits / letters (U+2080-U+209F, U+1D62)
+\newunicodechar{₀}{\textsubscript{0}}
+\newunicodechar{₁}{\textsubscript{1}}
+\newunicodechar{₂}{\textsubscript{2}}
+\newunicodechar{₃}{\textsubscript{3}}
+\newunicodechar{₄}{\textsubscript{4}}
+\newunicodechar{₅}{\textsubscript{5}}
+\newunicodechar{₆}{\textsubscript{6}}
+\newunicodechar{₇}{\textsubscript{7}}
+\newunicodechar{₈}{\textsubscript{8}}
+\newunicodechar{₉}{\textsubscript{9}}
+\newunicodechar{ᵢ}{\textsubscript{i}}          % U+1D62 subscript i
+\newunicodechar{ₙ}{\textsubscript{n}}          % U+2099 subscript n
