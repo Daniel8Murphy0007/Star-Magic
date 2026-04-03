@@ -105,7 +105,7 @@ For k=15: $E_{orb} \approx 1.6 \times 10^{-18}$ J � 10 eV ? (ionization energy
 
 ### 3.2 Higgs Boson: n = 18 ? E_18 = 10?� J
 
-$$E_{18} = 10^{-2} \text{ J} = 62.4 \text{ MeV} \quad \text{(within factor 2 of Higgs at 125.1 GeV � 10^{10} ? normalized)}$$
+$$E_{18} = 10^{-2} \text{ J} = 62.4 \text{ MeV} \quad \text{(within factor 2 of Higgs:} \sim 10^{10} \text{ normalized)}$$
 
 UQFF interpretation: the Higgs mass at n=18 represents the scale at which SCm density first achieves full quantum field coherence (Ug4 near-activation). The mass gap problem (Yang-Mills Millennium) is related to the n=17?18 threshold, where the SCm-vacuum condensate achieves mass generation.
 

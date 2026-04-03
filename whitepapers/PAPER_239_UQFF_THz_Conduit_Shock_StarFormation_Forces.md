@@ -72,7 +72,7 @@ The total star-formation coupling force at a given point:
 $$F_{\rm SF} = F_{\rm thz\_shock} + F_{\rm conduit}$$
 
 **Ratio:**
-$$\frac{F_{\rm thz\_shock}}{F_{\rm conduit}} = \frac{k_{\rm thz}}{k_{\rm conduit}}\cdot\left(\frac{\omega_{\rm thz}}{\omega_0}\right)^2}$$
+$$\frac{F_{\rm thz\_shock}}{F_{\rm conduit}} = \frac{k_{\rm thz}}{k_{\rm conduit}}\cdot\left(\frac{\omega_{\rm thz}}{\omega_0}\right)^2$$
 
 At default values: $\approx \frac{1.38\times10^{-23}}{8.99\times10^9}\times 14400 \approx 2.21\times10^{-17}$
 

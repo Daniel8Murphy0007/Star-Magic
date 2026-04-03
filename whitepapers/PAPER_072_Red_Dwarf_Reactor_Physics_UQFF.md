@@ -110,14 +110,14 @@ Residual discrepancy: plasma confinement efficiency (2.87/3.0 = 95.7%) consisten
 
 ### 2.4 Net Energy Over-Unity
 
-$$\eta_{\rm net} = \frac{W_{\rm out} - W_{\rm in}}{W_{\rm in}} = \text{COP} - 1 = 0.15 \text{ (15%)}$$
+$$\eta_{\rm net} = \frac{W_{\rm out} - W_{\rm in}}{W_{\rm in}} = \text{COP} - 1 = 0.15 \text{ (15\%)}$$
 
 In practice, parasitic losses reduce the net gain:
 - Plasma confinement wall heating: ~1.5% loss
 - TRZ boundary reflection: ~0.7% loss  
 - Measurement overhead (Q-scope extraction): ~0.5% loss
 
-$$\eta_{\rm measured} = 0.15 - 0.015 - 0.007 - 0.005 = 0.123 \text{ (12.3%)}$$
+$$\eta_{\rm measured} = 0.15 - 0.015 - 0.007 - 0.005 = 0.123 \text{ (12.3\%)}$$
 
 **Measured: 12.3% ? 18.0% deviation from predicted 15%** ? ?? ACCEPTABLE (tolerance 20%)
 
@@ -223,7 +223,7 @@ The million-year stability of red dwarf combustion is attributed in the UQFF fra
 
 ### A.2 F_U Master Equation (Complete — 4 terms)
 
-$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}igl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}igr]$$
+$$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}\bigr]$$
 
 | Term | Description | Implementation |
 |------|-------------|----------------|
@@ -240,9 +240,7 @@ $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}igl[\l
 
 ### A.3 Um Heaviside Phase-Transition Amplifier (PAPER_421)
 
-$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} 	imes igl(1 + 10^{13}\,\Theta(
-ho_{SCm} - 
-ho_c)igr) 	imes igl(1 + A_q\cos(\Delta\omega\,t)igr)$$
+$$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rho_{SCm} - \rho_c)\bigr) \times \bigl(1 + A_q\cos(\Delta\omega\,t)\bigr)$$
 
 | Symbol | Value | Description |
 |--------|-------|-------------|

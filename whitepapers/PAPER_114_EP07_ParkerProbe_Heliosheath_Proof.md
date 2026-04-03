@@ -106,7 +106,7 @@ $$\frac{\rho_{helio}}{\rho_{sw}} = 1 + \frac{U_{g2}^{helio}}{P_{ram}}$$
 
 Where P_ram = ?_sw v_sw�/2 = 8 � 10?�� � (5 � 105)�/2 = 10?? Pa:
 
-$$\frac{\rho_{helio}}{\rho_{sw}} = 1 + \frac{U_{g2} \times 1.01}{10^{-9}} \approx 1 + \delta_{sw} = 1.01 \quad [\text{1% dense}]$$
+$$\frac{\rho_{helio}}{\rho_{sw}} = 1 + \frac{U_{g2} \times 1.01}{10^{-9}} \approx 1 + \delta_{sw} = 1.01 \quad [\text{1\% dense}]$$
 
 This 1% density enhancement at the heliospheric boundary is consistent with
 Voyager 1/2 measurements showing ~3�4� compression at the termination shock �

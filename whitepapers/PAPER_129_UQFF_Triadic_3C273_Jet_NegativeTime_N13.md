@@ -60,7 +60,8 @@ $$R = \frac{F_{U,tri}(t_n > 0)}{F_{U,tri}(t_n < 0)}$$
 
 For t_n = +0.5 (jet) and t_n = -0.5 (counter-jet):
 
-$$\cos(\pi \times 0.5) = \cos(\pi/2) = 0 \quad [\text{wrong � use t_n/3 form}]$$
+$$\cos(\pi \times 0.5) = \cos(\pi/2) = 0 \quad [\text{incorrect -- use } t_n/3 \text{ form}]$$
+
 
 Using the correct Triadic form with t_n = +0.5 (jet) and t_n = -0.5 (counter-jet):
 
