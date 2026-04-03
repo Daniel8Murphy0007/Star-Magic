@@ -1,3 +1,4 @@
+# PAPER_129: UQFF Triadic Mode Negative Time Discovery — 3C273 Asymmetric Quasar Jet: t_n < 0, R=130, N=13 Zero-Crossings
 
 **Title:** UQFF Triadic Mode Negative Time Discovery � 3C273 MNRAS Asymmetric Quasar Jet: t_n < 0 Solution, R=130 Flux Ratio, and N=13 Zero-Crossings in cos(pt_n) Oscillation Phase Space
 

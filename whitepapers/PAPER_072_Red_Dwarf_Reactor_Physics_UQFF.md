@@ -1,12 +1,4 @@
-
-**Title:** Red Dwarf Reactor (RDR) Physics in the UQFF: Time-Reversal Zone (TRZ) Factor Validation, Coefficient of Performance > 1, and Plasma Temperature Agreement
-
-**Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57)  
-**Date:** March 7, 2026  
-**Source Data:** `experimental_validation_system.py` Red Dwarf Reactor (Batch #33), TRZ oscilloscope test series  
-**Index Slot:** �1.9 Automated 121-System Validation,  
-    $n = [int]# PAPER #72 � Red Dwarf Reactor Physics: UQFF Experimental Validation (Batch #33)
+# PAPER_072: Red Dwarf Reactor (RDR) Physics — UQFF TRZ Factor Validation, COP > 1, and Plasma Temperature Agreement
 
 **Title:** Red Dwarf Reactor (RDR) Physics in the UQFF: Time-Reversal Zone (TRZ) Factor Validation, Coefficient of Performance > 1, and Plasma Temperature Agreement
 

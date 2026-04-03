@@ -1,3 +1,4 @@
+# PAPER_114: Empirical Proof EP-07 — Parker Solar Probe Heliosheath: UQFF Ug2 Charge-Reactivity Field Validated
 
 **Title:** Empirical Proof EP-07: Parker Solar Probe CDAWeb In-Situ Heliospheric Data � UQFF Ug2 Charge-Reactivity Field Validated as Heliosheath Boundary Term
 
