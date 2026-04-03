@@ -1,0 +1,119 @@
+# PAPER_762: NGC 1792 The Stellar Forge — UQFF Starburst Galaxy Evolution
+
+**Author:** Daniel T. Murphy  
+**Framework:** UQFF (Universal Quantum Field Superconductive Framework)  
+**Session:** 181 | v5.40  
+**Date:** 2026  
+**CP4 Class:** #346 — NGC1792StellarForgeUQFFCalculator  
+
+---
+
+## Abstract
+
+NGC 1792 ("The Stellar Forge") is a starburst spiral galaxy located ~42 million light-years away in Columba, forming stars over 10× faster than the Milky Way at ~10 M☉/yr. This paper derives the Master Universal Gravity UQFF equation governing its starburst-driven evolution, incorporating stellar mass growth, supernova feedback suppression, cosmic expansion, and Aether electromagnetic effects. The result g_NGC1792 ≈ 1.053×10⁻² m/s² is dominated by the [UA]/[SCm] electromagnetic Aether term.
+
+---
+
+## 1. Introduction
+
+NGC 1792 is a classic starburst spiral galaxy with a bright orange core of older stars surrounded by blue young star-forming regions. Its high SFR (~10 M☉/yr) is driven by a large gas reservoir, potentially triggered by past tidal interactions. Supernova feedback from rapid star formation injects energy into the ISM, regulating further star formation over ~100 Myr timescales. The UQFF framework captures these dynamics through non-standard Aether and superconductive magnetism terms.
+
+---
+
+## 2. Master UQFF Gravity Equation
+
+```
+g_NGC1792(r, t) = (G * M) / r² * (1 + H(z)*t) * (1 + M_sf(t)) * (1 - F_sn(t)) * (1 + f_TRZ)
+                + q*(v × B) * (1 + ρ_vac,[UA] / ρ_vac,[SCm]) * 10⁻¹²
+```
+
+### 2.1 Parameters
+
+| Parameter | Symbol | Value | Source |
+|-----------|--------|-------|--------|
+| Galaxy mass | M | 10¹⁰ M☉ = 1.989×10⁴⁰ kg | Hubble |
+| Galaxy radius (½ diam.) | r | 3.78×10²⁰ m (~40 kly) | Hubble |
+| Redshift | z | 0.0095 | Distance calc |
+| Starburst duration | t | 100×10⁶ yr = 3.156×10¹⁵ s | Labs |
+| Star formation rate | SFR | 10 M☉/yr | Hubble |
+| Feedback amplitude | F₀ | 0.05 | Labs estimate |
+| Feedback timescale | τ_sn | 100×10⁶ yr = 3.156×10¹⁵ s | Labs |
+| Orbital velocity | v | 10⁶ m/s | ISM |
+| Galactic B field | B | 10⁻⁵ T | Labs |
+| ρ_vac,[UA] | — | 7.09×10⁻³⁶ J/m³ | UQFF |
+| ρ_vac,[SCm] | — | 7.09×10⁻³⁷ J/m³ | UQFF |
+| f_TRZ | — | 0.1 | UQFF |
+
+---
+
+## 3. Long-Form Derivation
+
+### Step 1: Base Gravitational Term
+```
+g_grav = (6.6743e-11 × 1.989e40) / (3.78e20)²
+       = 1.328e30 / 1.429e41 = 9.293e-12 m/s²
+```
+
+### Step 2: Starburst Mass Growth
+```
+M_sf(t) = SFR × t / M_0 = 10 × 100e6 / 10^10 = 0.1
+1 + M_sf(t) = 1.1
+```
+
+### Step 3: Supernova Feedback Adjustment
+```
+t / τ_sn = 3.156e15 / 3.156e15 = 1
+F_sn(t) = 0.05 × (1 - exp(-1)) = 0.05 × 0.6321 = 0.031605
+1 - F_sn(t) = 0.968395
+```
+
+### Step 4: Cosmic Expansion
+```
+H(z) = 70 × sqrt(0.3 × (1.0095)³ + 0.7) = 70 × sqrt(1.00861) = 70.301 km/s/Mpc
+H(z) = 70.301e3 / 3.086e22 = 2.278e-18 s⁻¹
+H(z) × t = 2.278e-18 × 3.156e15 = 7.189e-3
+1 + H(z) × t = 1.007189
+```
+
+### Step 5: Time-Reversal Correction
+```
+1 + f_TRZ = 1.1
+```
+
+### Step 6: Electromagnetic [UA] Term
+```
+q × (v × B) = 1.602e-19 × 1e6 × 1e-5 = 1.602e-18 N
+a = 1.602e-18 / 1.673e-27 = 9.575e8 m/s²
+(1 + ρ_vac,[UA]/ρ_vac,[SCm]) = 11
+Total = 9.575e8 × 11 × 10⁻¹² = 1.053e-2 m/s²
+```
+
+### Step 7: Final Solution
+```
+g_NGC1792 = (9.293e-12) × (1.007189) × (1.1) × (0.968395) × (1.1) + 1.053e-2
+          = 1.097e-11 + 1.053e-2
+          ≈ 1.053e-2 m/s²
+```
+
+---
+
+## 4. Physical Interpretation
+
+The starburst phase dominates NGC 1792's evolution. The supernova feedback term (1 − F_sn = 0.968) captures feedback self-regulation, while the mass growth term (1 + M_sf = 1.1) reflects the 10% gas-to-star conversion rate over 100 Myr. The Aether [UA] electromagnetic term (1.053×10⁻² m/s²) exceeds classical gravity by ~6 orders of magnitude under UQFF, revealing non-standard vacuum energy as a primary driver.
+
+---
+
+## 5. UQFF Framework Advancement
+
+- First UQFF application to a spiral starburst galaxy at 42 Mly
+- Supernova feedback modeled as a damping term on effective buoyancy
+- Starburst star formation mass growth incorporated as additive UQFF correction
+- Demonstrates UQFF scalability to galaxy-scale starburst environments
+
+---
+
+## 6. Conclusions
+
+The Master UQFF gravity equation for NGC 1792 yields g_NGC1792 ≈ 1.053×10⁻² m/s², confirming the Aether electromagnetic term dominates starburst galaxy dynamics under UQFF. The result encodes the balance between starburst mass growth and supernova feedback suppression over a 100 Myr evolutionary timescale.
+
+*PAPER_762, CP4 class #346. v5.40.*
