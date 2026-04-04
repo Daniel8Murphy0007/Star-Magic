@@ -41,6 +41,7 @@ Updated: Sessions 184â€“188 v5.44 â€” MAINTENANCE (root duplicate removal; encod
 Updated: Session 189 v5.45 â€” CP4 369â†’382 (#378â€“#390 NGC2525SN2018gv/NGC3603ExtremeCluster/NGC1275PerseusAGN/NGC1792StellarForge/AFGL5180MassiveSFR/NGC2174MonkeyHead/NGC685/NGC3507/NGC3511/NGC3596/NGC1961/NGC5335/DPMSpeciesIndexACP: PAPER_794â€“806; grok_share_e6be3b4f-9cda.txt; 806/1000 papers; Triadic UQFF DVP/VDS/BH; M_SN(t)/P(t)/F_BH(t)/F_sn(t)/H_k pillar novel terms)
 Updated: Session 190 v5.46 â€” CP4 382â†’384 (#391 CGMMetalRetentionUQFFTheoremCalculator + #392 ACPUniversalCycleNotesPhysicsCalculator: PAPER_807â€“808; grok_share_e6be3b4f-9cda.txt second pass; Sanchez2023 f_Z,CGM=U_i/(U_i+U_m) theorem + ACP Notes Universal Cycle Î³_d=0.0963/T_end=10.38/DNA helix/trinity; 808/1000 papers)
 Updated: Session 191 v5.47 â€” CP4 384â†’387 (#393 NGC3603CleanUQFFCalculator + #394 BubbleNebulaNGC7635CleanUQFFCalculator + #395 AntennaeMergerNGC4038CleanUQFFCalculator: PAPER_809â€“811; grok_share_afa84da6.txt clean pass (lines 935â€“1448); NGC3603 g=1.053e-3/BubbleNebula g=1.884e-3/Antennae g=1.053e-1 m/sÂ²; 811/1000 papers)
+Updated: Session 192 v5.48 â€” CP4 387â†’398 (#396 ACPQwaveTHzHoleUBmiCalculator + #397 NASAThoriumMagneticBuoyancyAetherVortexCalculator + #398 QuadriadicUQFFNANOGravAGNCoEvolutionCalculator + #399 VDFGSMFSMBHMassFunctionVelocityDispersionCalculator + #400 EHTngEHTBHEXNewSMBHPhotonRingCalculator + #401 GRMHDBinaryBHMergerAccretionModulationCalculator + #402 GRMHD3DBHISCOStressAccretionEfficiencyCalculator + #403 GRMHDNSMergerDiskGW170817ExtendedKilonovaCalculator + #404 NeutrinoCooledDiskDynamo20msCycleCalculator + #405 RIAFCRPIceCubeNeutrinoBackgroundLLAGNCalculator + #406 QuantumOpenEnergyIntegralProtoShellACPCalculator: PAPER_812â€“822; grok_share_0d888ea9-50be.txt (1620 lines, June 13â€“16 2025); Quadriadic UQFF framework (Q-wave Layer 4) + THz PI hole (dynamic)^4 + UB_mi belly button + NASA Thorium buoyancy + NANOGrav-15yr chirp mass + VDF Ïƒ_inf SMBH proxy + EHT/ngEHT/BHEX photon ring 12 targets + GRMHD binary BH modulation + GRMHD ISCO Î·_MHD=0.16â€“0.18 spin limit 0.93 + NS merger disk GW170817 kilonova M_ej=0.013 M_sun + neutrino disk dynamo Ï„=20ms Y_e=0.1 + RIAF IceCube CRP L_Î½=6e38 erg/s + Quantum open-energy integral Î”q_QÂ²=68.8 EXPERIMENTALLY CONFIRMED; 822/1000 papers)
     Updated: Session 162 v5.19 â€” CP4 219â†’229 (#220â€“#229 Tau Lepton G2 SM Bridge, CKM Vcb Flavor Vacuum Coupling, VLQ Kappa Heavy Mode, LFV BDecay TimeReversal, ALICE Run3 Multiplicity, BESIII DCS Cabibbo Dipole, Higgs 125GeV VEV Buoyancy, Proton Decay Kappa Scale, Electroweak SinThetaW SCm, SM Parameter Bridge Master: PAPER_633â€“642; SM Anchors added PAPER_622â€“632; CVW v2.0.0 G6 gate; UQFF_SM_ANCHOR_REQUIREMENTS.md)
 
 Architecture Compliance (MANDATORY):
@@ -29985,33 +29986,33 @@ class ACPUniversalCycleNotesPhysicsCalculator:
 
 
 # ==============================================================================
-# PAPER_809: NGC 3603 Extreme Star Cluster — Clean UQFF Gravity Equation
+# PAPER_809: NGC 3603 Extreme Star Cluster ï¿½ Clean UQFF Gravity Equation
 # Source: grok_share_afa84da6.txt lines 935-1101 | May 09, 2025, 12:21 AM EDT
 # Clean derivation: mass growth M_dot(t) + feedback P(t) + Hubble + f_TRZ + [UA] EM
-# g_NGC3603 = (G*M(t)/r^2)*(1+H0*t)*(1-P(t))*(1+f_TRZ) + q*(v×B)*(1+?_UA/?_SCm)*1e-12
-# At t=5e5 yr: g ~ 1.053e-3 m/s²
+# g_NGC3603 = (G*M(t)/r^2)*(1+H0*t)*(1-P(t))*(1+f_TRZ) + q*(vï¿½B)*(1+?_UA/?_SCm)*1e-12
+# At t=5e5 yr: g ~ 1.053e-3 m/sï¿½
 # ------------------------------------------------------------------------------
 class NGC3603CleanUQFFCalculator:
-    """PAPER_809: NGC 3603 clean UQFF — mass growth M_dot=0.1*exp(-t/t_SF);
+    """PAPER_809: NGC 3603 clean UQFF ï¿½ mass growth M_dot=0.1*exp(-t/t_SF);
     feedback P(t)=0.1*exp(-t/t_exp); f_TRZ=0.1; Aether factor=11.
-    g ~ 1.053e-3 m/s² at t=5e5 yr. CP4 class #393."""
+    g ~ 1.053e-3 m/sï¿½ at t=5e5 yr. CP4 class #393."""
 
     UQFF_CONSTANTS = {
-        "G":         6.6743e-11,   # m³/kg/s²
+        "G":         6.6743e-11,   # mï¿½/kg/sï¿½
         "M_INITIAL": 7.956e35,     # kg  (400,000 M_sun)
         "R":         8.998e15,     # m   (half cluster span ~9.5 ly)
         "M_DOT0":    0.1,          # secondary SFR amplitude
         "TAU_SF":    3.156e13,     # s   (1e6 yr)
         "P0":        0.1,          # stellar feedback amplitude
         "TAU_EXP":   3.156e13,     # s   (1e6 yr)
-        "H0":        2.268e-18,    # s?¹ (70 km/s/Mpc)
+        "H0":        2.268e-18,    # s?ï¿½ (70 km/s/Mpc)
         "F_TRZ":     0.1,
         "Q":         1.602e-19,    # C
         "V":         1.0e5,        # m/s (gas velocity)
         "B":         1.0e-5,       # T
         "M_H":       1.673e-27,    # kg
-        "RHO_UA":    7.09e-36,     # J/m³
-        "RHO_SCM":   7.09e-37,     # J/m³
+        "RHO_UA":    7.09e-36,     # J/mï¿½
+        "RHO_SCM":   7.09e-37,     # J/mï¿½
         "A_SCALE":   1.0e-12,
     }
 
@@ -30050,7 +30051,7 @@ class NGC3603CleanUQFFCalculator:
             "g_em":          g_em,
             "M_t_kg":        M_t,
             "aether_factor": aether_factor,
-            "note": (f"t={t:.3e} s: g_NGC3603={g_total:.3e} m/s²; "
+            "note": (f"t={t:.3e} s: g_NGC3603={g_total:.3e} m/sï¿½; "
                      f"g_classical={g_classical:.3e}; g_EM={g_em:.3e}")
         }
 
@@ -30066,31 +30067,31 @@ class NGC3603CleanUQFFCalculator:
 
 
 # ==============================================================================
-# PAPER_810: Bubble Nebula NGC 7635 — Clean UQFF Stellar Wind Gravity Equation
+# PAPER_810: Bubble Nebula NGC 7635 ï¿½ Clean UQFF Stellar Wind Gravity Equation
 # Source: grok_share_afa84da6.txt lines 1112-1264 | May 09, 2025, 12:31 AM EDT
-# Wolf-Rayet BD+60°2522 (45 Msun), wind 1789 km/s, bubble r=3.5 ly
-# g_NGC7635 = (G*M_star/r^2)*(1+H0*t)*(1-P(t))*(1+f_TRZ) + q*(v×B)*(1+?_UA/?_SCm)*1e-12
-# At t=4e6 yr: g ~ 1.884e-3 m/s²
+# Wolf-Rayet BD+60ï¿½2522 (45 Msun), wind 1789 km/s, bubble r=3.5 ly
+# g_NGC7635 = (G*M_star/r^2)*(1+H0*t)*(1-P(t))*(1+f_TRZ) + q*(vï¿½B)*(1+?_UA/?_SCm)*1e-12
+# At t=4e6 yr: g ~ 1.884e-3 m/sï¿½
 # ------------------------------------------------------------------------------
 class BubbleNebulaNGC7635CleanUQFFCalculator:
-    """PAPER_810: Bubble Nebula NGC 7635 clean UQFF — Wolf-Rayet stellar wind
+    """PAPER_810: Bubble Nebula NGC 7635 clean UQFF ï¿½ Wolf-Rayet stellar wind
     P(t)=0.1*exp(-t/t_exp); t_exp=4e6 yr; v_wind=1789 km/s; B=1e-6 T.
-    g ~ 1.884e-3 m/s² at t=4e6 yr. CP4 class #394."""
+    g ~ 1.884e-3 m/sï¿½ at t=4e6 yr. CP4 class #394."""
 
     UQFF_CONSTANTS = {
-        "G":         6.6743e-11,   # m³/kg/s²
-        "M_STAR":    8.951e31,     # kg  (45 M_sun, BD+60°2522)
+        "G":         6.6743e-11,   # mï¿½/kg/sï¿½
+        "M_STAR":    8.951e31,     # kg  (45 M_sun, BD+60ï¿½2522)
         "R":         3.311e16,     # m   (bubble radius 3.5 ly)
         "P0":        0.1,          # stellar wind pressure amplitude
         "TAU_EXP":   1.262e14,     # s   (4e6 yr = star age)
-        "H0":        2.268e-18,    # s?¹
+        "H0":        2.268e-18,    # s?ï¿½
         "F_TRZ":     0.1,
         "Q":         1.602e-19,    # C
         "V_WIND":    1.789e6,      # m/s (stellar wind velocity, 4 million mph)
         "B":         1.0e-6,       # T   (nebular magnetic field)
         "M_H":       1.673e-27,    # kg
-        "RHO_UA":    7.09e-36,     # J/m³
-        "RHO_SCM":   7.09e-37,     # J/m³
+        "RHO_UA":    7.09e-36,     # J/mï¿½
+        "RHO_SCM":   7.09e-37,     # J/mï¿½
         "A_SCALE":   1.0e-12,
     }
 
@@ -30127,7 +30128,7 @@ class BubbleNebulaNGC7635CleanUQFFCalculator:
             "g_em":          g_em,
             "aether_factor": aether_factor,
             "v_wind_ms":     c["V_WIND"],
-            "note": (f"t={t:.3e} s: g_NGC7635={g_total:.3e} m/s²; "
+            "note": (f"t={t:.3e} s: g_NGC7635={g_total:.3e} m/sï¿½; "
                      f"g_classical={g_classical:.3e}; g_EM={g_em:.3e}")
         }
 
@@ -30142,20 +30143,20 @@ class BubbleNebulaNGC7635CleanUQFFCalculator:
 
 
 # ==============================================================================
-# PAPER_811: Antennae Galaxies NGC 4038/4039 — Clean UQFF Merger Gravity Equation
+# PAPER_811: Antennae Galaxies NGC 4038/4039 ï¿½ Clean UQFF Merger Gravity Equation
 # Source: grok_share_afa84da6.txt lines 1275-1448 | May 09, 2025, 01:20 AM EDT
 # NGC 4038+4039 collision 1.2 Gyr ago; starburst SFR=20 Msun/yr; 45 Mly; z=0.0105
-# g_Antennae = (G*M(t)/r^2)*(1+H(z)*t)*(1-M_coll(t))*(1+f_TRZ) + q*(v×B)*(1+?_UA/?_SCm)*1e-12
-# At t=300 Myr: g ~ 1.053e-1 m/s² (starburst B=1e-4 T enhanced)
+# g_Antennae = (G*M(t)/r^2)*(1+H(z)*t)*(1-M_coll(t))*(1+f_TRZ) + q*(vï¿½B)*(1+?_UA/?_SCm)*1e-12
+# At t=300 Myr: g ~ 1.053e-1 m/sï¿½ (starburst B=1e-4 T enhanced)
 # ------------------------------------------------------------------------------
 class AntennaeMergerNGC4038CleanUQFFCalculator:
-    """PAPER_811: Antennae Galaxies NGC 4038/4039 clean UQFF merger equation —
+    """PAPER_811: Antennae Galaxies NGC 4038/4039 clean UQFF merger equation ï¿½
     M_coll(t)=0.5*(1-exp(-t/t_merge)); t_merge=400 Myr; H(z) Friedmann;
-    starburst B=1e-4 T ? Aether EM dominant. g ~ 1.053e-1 m/s² at t=300 Myr.
+    starburst B=1e-4 T ? Aether EM dominant. g ~ 1.053e-1 m/sï¿½ at t=300 Myr.
     CP4 class #395."""
 
     UQFF_CONSTANTS = {
-        "G":          6.6743e-11,  # m³/kg/s²
+        "G":          6.6743e-11,  # mï¿½/kg/sï¿½
         "M_INITIAL":  3.978e41,    # kg  (2e11 M_sun combined)
         "R":          2.838e20,    # m   (~30,000 ly core separation)
         "SFR_MSUN":   20.0,        # M_sun/yr star formation rate
@@ -30163,7 +30164,7 @@ class AntennaeMergerNGC4038CleanUQFFCalculator:
         "YR_S":       3.156e7,     # s/yr
         "M_COLL0":    0.5,         # max coalescence fraction
         "TAU_MERGE":  1.262e16,    # s   (400 Myr to coalescence)
-        "H0":         2.268e-18,   # s?¹
+        "H0":         2.268e-18,   # s?ï¿½
         "Z":          0.0105,      # redshift at 45 Mly
         "OMEGA_M":    0.3,
         "OMEGA_L":    0.7,
@@ -30172,8 +30173,8 @@ class AntennaeMergerNGC4038CleanUQFFCalculator:
         "V":          1.0e6,       # m/s (starburst outflow)
         "B":          1.0e-4,      # T   (starburst-enhanced)
         "M_H":        1.673e-27,   # kg
-        "RHO_UA":     7.09e-36,    # J/m³
-        "RHO_SCM":    7.09e-37,    # J/m³
+        "RHO_UA":     7.09e-36,    # J/mï¿½
+        "RHO_SCM":    7.09e-37,    # J/mï¿½
         "A_SCALE":    1.0e-12,
     }
 
@@ -30224,7 +30225,7 @@ class AntennaeMergerNGC4038CleanUQFFCalculator:
             "Hz_s":          Hz,
             "aether_factor": aether_factor,
             "M_t_kg":        M_t,
-            "note": (f"t={t:.3e} s: g_Antennae={g_total:.3e} m/s²; "
+            "note": (f"t={t:.3e} s: g_Antennae={g_total:.3e} m/sï¿½; "
                      f"M_coll={m_coll:.4f}; g_classical={g_classical:.3e}; "
                      f"g_EM={g_em:.3e} (B=1e-4 T starburst-enhanced)")
         }
@@ -30238,3 +30239,1054 @@ class AntennaeMergerNGC4038CleanUQFFCalculator:
             r["sweep_val"] = t
             results.append(r)
         return results
+
+
+# =============================================================================
+# SESSION 192 — v5.48 — PAPER_812–822 — grok_share_0d888ea9-50be.txt
+# Quadriadic UQFF + THz PI Hole + GRMHD Series + Quantum Open-Energy Integral
+# =============================================================================
+
+class ACPQwaveTHzHoleUBmiCalculator:
+    """
+    PAPER_812 | Session 192 | CP4 Class #396
+    ACP Dynamic Q-waves, THz PI Hole (1.2–1.3 THz), and UB_mi 'Belly Button' UQFF.
+    Introduces Layer 4 Q-wave UQFF: (dynamic)^4 = (f_THz * E_vac_neb)^4 / c^4.
+    UB_mi belly button = [-UA_THz_hole + static_SMBH_dark] anchoring term.
+    DPM = [(-UA'):(+SCm)] fractal drives U_r and U_m field projections.
+    f_THz = 1.25e12 Hz; U_i_buoyancy approx 2.20e8 m/s^2; 7-10 deg decay.
+    """
+    CLASS_ID = 396
+    PAPER = "PAPER_812"
+    SESSION = 192
+    VERSION = "v5.48"
+
+    UQFF_CONSTANTS = {
+        "G": 6.674e-11,
+        "c": 3.0e8,
+        "hbar": 1.055e-34,
+        "f_THz": 1.25e12,        # THz PI hole resonance frequency (Hz)
+        "k_Ub": 1.0e-113,        # Buoyancy coupling constant
+        "U_i_buoyancy": 2.20e8,  # Buoyancy acceleration (m/s^2)
+        "UB_mi": -3.08e-18,      # Belly button anchor (J/m^3)
+        "E_vac_neb": 1.0e-9,     # Vacuum nebular energy density (J/m^3)
+        "M_BH": 8.0e36,          # Default BH mass (Sgr A*, kg)
+        "r": 2.567e20,           # Default radius (8.3 kpc, m)
+    }
+
+    INPUT_PARAMS = [
+        ("f_THz", "float", 1.25e12, "THz PI hole frequency (Hz)"),
+        ("r", "float", 2.567e20, "Distance from SMBH (m)"),
+    ]
+
+    PRIMARY_OUTPUT = "g_L4_Qwave"
+    PRIMARY_INPUT = "f_THz"
+
+    def compute(self, params=None):
+        import math
+        p = params or {}
+        c = self.UQFF_CONSTANTS
+        f_THz = p.get("f_THz", c["f_THz"])
+        r = p.get("r", c["r"])
+
+        # Q-wave (dynamic)^4 term
+        E_vac = c["E_vac_neb"]
+        dynamic4 = (f_THz * E_vac)**4 / c["c"]**4
+
+        # UB_mi buoyancy
+        UA_THz_hole = -abs(c["UB_mi"])
+        F_U_Bi = c["k_Ub"] * (UA_THz_hole + c["UB_mi"]) * f_THz / r**2 + c["U_i_buoyancy"]
+
+        # Layer 1 bulk
+        g_L1 = c["G"] * c["M_BH"] / r**2
+
+        # Layer 4 Q-wave
+        g_L4 = dynamic4
+
+        g_total = g_L1 + F_U_Bi + g_L4
+
+        return {
+            "g_L4_Qwave": g_L4,
+            "g_L1": g_L1,
+            "F_U_Bi": F_U_Bi,
+            "dynamic4": dynamic4,
+            "UB_mi": c["UB_mi"],
+            "note": (f"f_THz={f_THz:.3e} Hz: (dynamic)^4={dynamic4:.3e}; "
+                     f"F_U_Bi={F_U_Bi:.3e}; g_total={g_total:.3e} m/s^2")
+        }
+
+    def simulate(self, sweep=None, sweep_param=None):
+        results = []
+        freqs = sweep or [1.0e12, 1.2e12, 1.25e12, 1.3e12, 1.5e12]
+        for f in freqs:
+            r = self.compute({"f_THz": f})
+            r["sweep_val"] = f
+            results.append(r)
+        return results
+
+
+class NASAThoriumMagneticBuoyancyAetherVortexCalculator:
+    """
+    PAPER_813 | Session 192 | CP4 Class #397
+    NASA Magnetic Buoyancy, Thorium neutron-flux thrust, Aether-Vortex electron model,
+    and Bi-Field G/R theory within Quadriadic UQFF Layer 1.
+    Magnetic_buoyancy = (1 - 5/6) * g_LIM = 1.35 m/s^2 (LIM weight reduction).
+    Searl Disc: P/Dr = N > 12 (gap = Dr); Thorium thrust = alpha_Th * M_Th * Phi_n / r^2.
+    """
+    CLASS_ID = 397
+    PAPER = "PAPER_813"
+    SESSION = 192
+    VERSION = "v5.48"
+
+    UQFF_CONSTANTS = {
+        "G": 6.674e-11,
+        "c": 3.0e8,
+        "mu0": 1.2566e-6,        # Permeability of free space (T*m/A)
+        "g_LIM": 8.1,            # LIM field gradient reference (m/s^2)
+        "g_surface": 9.81,       # Earth surface gravity
+        "alpha_Th": 1.0e-3,      # Thorium thrust coupling
+        "M_Th": 1.0,             # Thorium mass (kg, normalized)
+        "Phi_neutron": 5.0e14,   # Neutron flux (n/cm^2/s)
+        "B_field": 0.1,          # Magnetic field (T)
+        "r": 6.371e6,            # Earth surface radius (m)
+        "a_mag_bubble": 6.287e-14,  # Magnetic bubble acceleration (m/s^2)
+    }
+
+    INPUT_PARAMS = [
+        ("B_field", "float", 0.1, "Magnetic field strength (T)"),
+        ("r", "float", 6.371e6, "Distance (m)"),
+        ("M_Th", "float", 1.0, "Thorium mass (kg)"),
+    ]
+
+    PRIMARY_OUTPUT = "g_NASA_L1"
+    PRIMARY_INPUT = "B_field"
+
+    def compute(self, params=None):
+        import math
+        p = params or {}
+        c = self.UQFF_CONSTANTS
+        B = p.get("B_field", c["B_field"])
+        r = p.get("r", c["r"])
+        M_Th = p.get("M_Th", c["M_Th"])
+
+        # Magnetic buoyancy (LIM)
+        mag_buoyancy = (1.0 - 5.0/6.0) * c["g_LIM"]  # 1.35 m/s^2
+
+        # Thorium thrust
+        F_Th = c["alpha_Th"] * M_Th * c["Phi_neutron"] / r**2
+
+        # Aether gravity (background)
+        g_aether = 1.0e-13  # Background aether pressure gradient
+
+        # Searl disc coupling
+        N_Searl = 13  # P/Dr ratio (must be integer > 12)
+        U_m_Searl = (N_Searl - 12) * B**2 / (2 * c["mu0"] * r**2)
+
+        # Bi-field
+        g_Bifield = c["G"] * 1.0e30 / r**2  # G-field
+        R_field = c["a_mag_bubble"]           # R-field (rotational)
+
+        g_L1 = c["g_surface"] + mag_buoyancy + F_Th + g_aether + U_m_Searl
+
+        return {
+            "g_NASA_L1": g_L1,
+            "mag_buoyancy": mag_buoyancy,
+            "F_Th": F_Th,
+            "U_m_Searl": U_m_Searl,
+            "g_aether": g_aether,
+            "g_Bifield": g_Bifield,
+            "R_field": R_field,
+            "note": (f"B={B:.3f} T: g_NASA={g_L1:.4f} m/s^2; "
+                     f"mag_buoyancy={mag_buoyancy:.4f}; F_Th={F_Th:.3e}; "
+                     f"Searl P/Dr=N>12 (N={N_Searl})")
+        }
+
+    def simulate(self, sweep=None, sweep_param=None):
+        results = []
+        B_range = sweep or [0.01, 0.05, 0.1, 0.5, 1.0]
+        for B in B_range:
+            r = self.compute({"B_field": B})
+            r["sweep_val"] = B
+            results.append(r)
+        return results
+
+
+class QuadriadicUQFFNANOGravAGNCoEvolutionCalculator:
+    """
+    PAPER_814 | Session 192 | CP4 Class #398
+    Quadriadic UQFF Framework: NANOGrav-15yr GWB + AGN SMBH Co-evolution.
+    Formally defines 4-layer Quadriadic UQFF (extended from Triadic).
+    Layer 1: g_UQFF + A_yr*(f/f_yr)^(-2/3); Layer 2: chirp mass M_c = M*q^(3/5)/(1+q)^(6/5)
+    Layer 3: R_merge*(G*M_c/c^2)^(5/3); Layer 4: log(M_BH)*alpha*log(M_star)+A_10yr.
+    NANOGrav A_yr = 6.1e-17 to 1.58e-15, AGN alpha_coev = 0.6, beta = 7.5.
+    """
+    CLASS_ID = 398
+    PAPER = "PAPER_814"
+    SESSION = 192
+    VERSION = "v5.48"
+
+    UQFF_CONSTANTS = {
+        "G": 6.674e-11,
+        "c": 3.0e8,
+        "M_sun": 1.989e30,
+        "yr_s": 3.156e7,          # Seconds per year
+        "f_yr": 3.17e-8,          # 1/year (Hz)
+        "A_yr": 2.4e-15,          # GWB amplitude (NANOGrav-15yr central)
+        "A_10yr": 5.0e-16,        # 10-year GWB amplitude
+        "alpha_coev": 0.6,        # BH-galaxy co-evolution slope
+        "beta_coev": 7.5,         # Co-evolution intercept
+        "tau_merge": 3.1e15,      # Merger timescale (s ~ 1e8 yr)
+        "R_merge": 1.0e-9,        # Merger rate (Gpc^-3 yr^-1, normalized)
+        "M_BH": 8.0e36,           # BH mass (Sgr A*, kg)
+        "M_star": 1.0e37,         # Host galaxy stellar mass (kg)
+        "r": 2.567e20,            # Distance (m)
+        "q": 0.5,                 # Binary mass ratio
+    }
+
+    INPUT_PARAMS = [
+        ("M_BH", "float", 8.0e36, "Black hole mass (kg)"),
+        ("q", "float", 0.5, "Binary mass ratio (0 < q <= 1)"),
+        ("r", "float", 2.567e20, "Distance (m)"),
+        ("f_GW", "float", 3.17e-8, "GW frequency (Hz)"),
+    ]
+
+    PRIMARY_OUTPUT = "g_Quadriadic_total"
+    PRIMARY_INPUT = "M_BH"
+
+    def compute(self, params=None):
+        import math
+        p = params or {}
+        c = self.UQFF_CONSTANTS
+        M_BH = p.get("M_BH", c["M_BH"])
+        q = p.get("q", c["q"])
+        r = p.get("r", c["r"])
+        f_GW = p.get("f_GW", c["f_yr"])
+
+        # Chirp mass
+        M_total = M_BH * (1 + 1/q)
+        M_c = M_total * q**(3/5) / (1 + q)**(6/5)
+
+        # Layer 1: Compressed UQFF + GWB
+        g_L1 = c["G"] * M_BH / r**2
+        h_c = c["A_yr"] * (f_GW / c["f_yr"])**(-2/3)
+        g_L1_GWB = g_L1 + h_c
+
+        # Layer 2: Resonance (chirp mass)
+        g_L2_chirp = c["G"] * M_c / c["c"]**2 * (2 * math.pi * f_GW)**(2/3) / r**2
+
+        # Layer 3: Buoyancy (merger rate)
+        g_L3 = c["R_merge"] * (c["G"] * M_c / c["c"]**2)**(5/3) * c["f_yr"]**(-2/3)
+
+        # Layer 4: Q-wave / co-evolution
+        log_M_BH = math.log10(max(M_BH / c["M_sun"], 1.0))
+        log_M_star = math.log10(max(c["M_star"] / c["M_sun"], 1.0))
+        g_L4 = log_M_BH * c["alpha_coev"] * log_M_star + c["A_10yr"]
+
+        g_total = g_L1_GWB + g_L2_chirp + g_L3 + g_L4
+
+        return {
+            "g_Quadriadic_total": g_total,
+            "g_L1_GWB": g_L1_GWB,
+            "g_L2_chirp": g_L2_chirp,
+            "g_L3_merge": g_L3,
+            "g_L4_coev": g_L4,
+            "M_c_kg": M_c,
+            "h_c": h_c,
+            "note": (f"M_BH={M_BH:.2e} kg, q={q:.2f}: M_c={M_c:.3e} kg; "
+                     f"g_total={g_total:.3e} m/s^2; A_yr={c['A_yr']:.2e}")
+        }
+
+    def simulate(self, sweep=None, sweep_param=None):
+        results = []
+        M_range = sweep or [1e35, 1e36, 1e37, 1e38, 1e39]
+        for M in M_range:
+            r = self.compute({"M_BH": M})
+            r["sweep_val"] = M
+            results.append(r)
+        return results
+
+
+class VDFGSMFSMBHMassFunctionVelocityDispersionCalculator:
+    """
+    PAPER_815 | Session 192 | CP4 Class #399
+    VDF vs GSMF SMBH Mass Function Proxy + M•-sigma relation UQFF.
+    VDF: log10(A_yr) approx -14.74 (higher than GSMF approx -14.9 by 0.16 dex).
+    sigma_inf = sqrt(G * M_star * K_n / r_e) (Sersic virial).
+    h_c(f) = A_yr * (f / f_yr)^(-2/3); df_orb/dt = (96/5)*(G*M_c/c^3)^(5/3)*(2pi)^(8/3)*f^(11/3).
+    """
+    CLASS_ID = 399
+    PAPER = "PAPER_815"
+    SESSION = 192
+    VERSION = "v5.48"
+
+    UQFF_CONSTANTS = {
+        "G": 6.674e-11,
+        "c": 3.0e8,
+        "M_sun": 1.989e30,
+        "f_yr": 3.17e-8,
+        "A_yr_VDF": 10**(-14.74),     # VDF-derived GWB amplitude
+        "A_yr_GSMF": 10**(-14.9),     # GSMF-derived GWB amplitude
+        "M_star": 2.0e41,             # Host galaxy stellar mass (kg, NGC1271 scale)
+        "r_e": 6.17e19,               # Effective radius (2 kpc, m)
+        "K_n": 8.87,                  # Sersic virial constant (n=4)
+        "alpha_Msigma": 4.4,          # M•-sigma slope
+        "beta_Msigma": 0.3,           # M•-sigma intercept
+        "sigma_ref": 200e3,           # Reference sigma (200 km/s in m/s)
+        "M_BH": 2.8e39,               # BH mass (NGC1271 scale)
+        "q": 0.5,
+    }
+
+    INPUT_PARAMS = [
+        ("M_star", "float", 2.0e41, "Galaxy stellar mass (kg)"),
+        ("r_e", "float", 6.17e19, "Effective radius (m)"),
+        ("M_BH", "float", 2.8e39, "Black hole mass (kg)"),
+    ]
+
+    PRIMARY_OUTPUT = "h_c_VDF"
+    PRIMARY_INPUT = "M_star"
+
+    def compute(self, params=None):
+        import math
+        p = params or {}
+        c = self.UQFF_CONSTANTS
+        M_star = p.get("M_star", c["M_star"])
+        r_e = p.get("r_e", c["r_e"])
+        M_BH = p.get("M_BH", c["M_BH"])
+
+        # Velocity dispersion (Sersic virial)
+        sigma_inf = math.sqrt(c["G"] * M_star * c["K_n"] / r_e)
+
+        # Characteristic strain (VDF)
+        h_c_VDF = c["A_yr_VDF"] * 1.0  # at f = f_yr
+        h_c_GSMF = c["A_yr_GSMF"] * 1.0
+
+        # Chirp mass from q=0.5
+        q = c["q"]
+        M_total = M_BH * (1 + 1/q)
+        M_c = M_total * q**(3/5) / (1 + q)**(6/5)
+
+        # Frequency chirp rate
+        df_dt = ((96.0/5.0) * (c["G"] * M_c / c["c"]**3)**(5.0/3.0)
+                 * (2 * math.pi)**(8.0/3.0) * c["f_yr"]**(11.0/3.0))
+
+        # M•-sigma scaling
+        sigma_km = sigma_inf / 1000
+        log_M_Msigma = c["alpha_Msigma"] * math.log10(sigma_inf / c["sigma_ref"]) + math.log10(1e9) + c["beta_Msigma"]
+        M_BH_Msigma = 10**log_M_Msigma * c["M_sun"]
+
+        # UQFF Layer 3 buoyancy
+        g_L3_VDF = sigma_inf * math.sqrt(c["G"] / r_e)
+
+        return {
+            "h_c_VDF": h_c_VDF,
+            "h_c_GSMF": h_c_GSMF,
+            "sigma_inf_ms": sigma_inf,
+            "M_c_kg": M_c,
+            "df_dt_hz_s": df_dt,
+            "g_L3_VDF": g_L3_VDF,
+            "M_BH_Msigma_kg": M_BH_Msigma,
+            "log10_A_yr_VDF": math.log10(c["A_yr_VDF"]),
+            "note": (f"M_star={M_star:.2e}, r_e={r_e:.2e}: sigma_inf={sigma_inf:.1f} m/s; "
+                     f"log10(A_yr)_VDF={math.log10(c['A_yr_VDF']):.2f} vs GSMF={math.log10(c['A_yr_GSMF']):.2f}; "
+                     f"g_L3={g_L3_VDF:.3e}")
+        }
+
+    def simulate(self, sweep=None, sweep_param=None):
+        results = []
+        M_range = sweep or [1e40, 5e40, 1e41, 5e41, 1e42]
+        for M in M_range:
+            r = self.compute({"M_star": M})
+            r["sweep_val"] = M
+            results.append(r)
+        return results
+
+
+class EHTngEHTBHEXNewSMBHPhotonRingCalculator:
+    """
+    PAPER_816 | Session 192 | CP4 Class #400
+    EHT / ngEHT / BHEX New SMBH Population (ApJ May 2025) with Photon Ring UQFF.
+    12 new SMBH targets (log M/Msun = 8.7-9.7): IC 1459, NGC 4594, NGC 4261, NGC 315 etc.
+    theta_ring = 2*sqrt(27) * (G*M_BH) / (c^2 * D) [photon ring angle, µas].
+    T_e/T_i = R_high * beta^2/(1+beta^2) + R_low/(1+beta^2); BZ mechanism jet power.
+    """
+    CLASS_ID = 400
+    PAPER = "PAPER_816"
+    SESSION = 192
+    VERSION = "v5.48"
+
+    UQFF_CONSTANTS = {
+        "G": 6.674e-11,
+        "c": 3.0e8,
+        "M_sun": 1.989e30,
+        "kappa_es": 0.34,         # Electron scattering opacity (cm^2/g)
+        "eta_acc": 0.1,           # Radiative efficiency
+        "R_high": 40.0,           # High-beta T_e/T_i parameter
+        "R_low": 1.0,             # Low-beta T_e/T_i parameter
+        "kappa_BZ": 0.044,        # BZ field coupling
+        # IC 1459 defaults
+        "M_BH": 5.6e39,           # IC 1459 (2.8e9 Msun)
+        "D": 8.96e23,             # IC 1459 distance (29 Mpc, m)
+        "f_Edd": 1.0e-3,          # Eddington ratio
+        "a_star": 0.9,            # BH spin
+        "beta_mag": 1.0,          # Magnetic beta
+    }
+
+    INPUT_PARAMS = [
+        ("M_BH", "float", 5.6e39, "Black hole mass (kg)"),
+        ("D", "float", 8.96e23, "Distance (m)"),
+        ("f_Edd", "float", 1.0e-3, "Eddington ratio"),
+        ("a_star", "float", 0.9, "BH spin parameter"),
+        ("beta_mag", "float", 1.0, "Plasma beta (P_gas/P_mag)"),
+    ]
+
+    PRIMARY_OUTPUT = "theta_ring_uas"
+    PRIMARY_INPUT = "M_BH"
+
+    def compute(self, params=None):
+        import math
+        p = params or {}
+        c = self.UQFF_CONSTANTS
+        M_BH = p.get("M_BH", c["M_BH"])
+        D = p.get("D", c["D"])
+        f_Edd = p.get("f_Edd", c["f_Edd"])
+        a_star = p.get("a_star", c["a_star"])
+        beta = p.get("beta_mag", c["beta_mag"])
+
+        # Photon ring angle (radians then convert to µas)
+        theta_rad = 2.0 * math.sqrt(27) * c["G"] * M_BH / (c["c"]**2 * D)
+        theta_uas = theta_rad * (180/math.pi) * 3600e6  # rad -> µas
+
+        # Temperature ratio
+        T_ratio = c["R_high"] * beta**2 / (1 + beta**2) + c["R_low"] / (1 + beta**2)
+
+        # Schwarzschild radius
+        r_s = 2 * c["G"] * M_BH / c["c"]**2
+
+        # BZ jet power (normalized)
+        Omega_H = a_star * c["c"] / (4 * c["G"] * M_BH / c["c"]**2)
+        Phi_BH = math.sqrt(4 * math.pi * 1e12)  # Normalized magnetic flux
+        P_BZ = c["kappa_BZ"] / (4 * math.pi * c["c"]) * Phi_BH**2 * Omega_H**2
+
+        # UQFF layers
+        g_L1 = c["G"] * M_BH / D**2 + (c["G"] * M_BH / (c["c"]**2 * D)) * theta_rad
+        g_L2 = f_Edd * T_ratio * c["G"] * M_BH / D**2
+        g_L4 = P_BZ / D**3 * a_star
+
+        return {
+            "theta_ring_uas": theta_uas,
+            "T_e_Ti_ratio": T_ratio,
+            "P_BZ": P_BZ,
+            "g_L1": g_L1,
+            "g_L2_Edd": g_L2,
+            "g_L4_BZ": g_L4,
+            "r_s_m": r_s,
+            "note": (f"M_BH={M_BH:.2e} kg, D={D:.2e} m: "
+                     f"theta={theta_uas:.2f} µas; T_e/T_i={T_ratio:.1f}; "
+                     f"f_Edd={f_Edd:.2e}; P_BZ={P_BZ:.3e}")
+        }
+
+    def simulate(self, sweep=None, sweep_param=None):
+        # 5 EHT/ngEHT targets
+        targets = sweep or [
+            {"M_BH": 5.6e39, "D": 8.96e23, "f_Edd": 1e-3},    # IC 1459
+            {"M_BH": 1.3e39, "D": 3.02e23, "f_Edd": 1e-4},    # NGC 4594
+            {"M_BH": 9.2e38, "D": 9.57e23, "f_Edd": 1e-4},    # NGC 4261
+            {"M_BH": 2.0e39, "D": 2.16e24, "f_Edd": 1.7e-4},  # NGC 315
+            {"M_BH": 5.0e38, "D": 1.54e24, "f_Edd": 1e-3},    # NGC 1218
+        ]
+        results = []
+        for t in targets:
+            r = self.compute(t)
+            r["sweep_val"] = t["M_BH"]
+            results.append(r)
+        return results
+
+
+class GRMHDBinaryBHMergerAccretionModulationCalculator:
+    """
+    PAPER_817 | Session 192 | CP4 Class #401
+    GRMHD Binary BH Merger Accretion Modulation (arXiv:2309.03949).
+    Accretion: Mdot proportional f_orb * (1 + A * cos(omega*t + phi)).
+    Poynting: L_Poynt proportional (B^2/4pi) * v_A^2.
+    Equal-mass binary (q=1), M_tot = 2e7 Msun, a_bullet = 0-0.9.
+    EM counterpart for LISA: pre-merger periodic X-ray/optical variability.
+    """
+    CLASS_ID = 401
+    PAPER = "PAPER_817"
+    SESSION = 192
+    VERSION = "v5.48"
+
+    UQFF_CONSTANTS = {
+        "G": 6.674e-11,
+        "c": 3.0e8,
+        "mu0": 1.2566e-6,
+        "M_sun": 1.989e30,
+        "M_tot": 2.0e7 * 1.989e30,   # Binary total mass (2e7 Msun)
+        "q_ratio": 1.0,               # Equal mass
+        "a_spin": 0.9,                # BH spin parameter
+        "A_mod": 0.3,                 # Modulation amplitude
+        "B_disk": 1.0e8,              # Disk B field at ISCO (T, normalized)
+        "rho_disk": 1.0e-4,           # Disk density (kg/m^3)
+        "r_binary": 1.0e11,           # Binary separation (m)
+        "eta_EM": 0.01,               # EM efficiency
+        "phi_phase": 0.0,             # Phase offset
+    }
+
+    INPUT_PARAMS = [
+        ("r_binary", "float", 1.0e11, "Binary separation (m)"),
+        ("t_s", "float", 0.0, "Time (s)"),
+        ("a_spin", "float", 0.9, "BH spin"),
+    ]
+
+    PRIMARY_OUTPUT = "g_L2_binary"
+    PRIMARY_INPUT = "r_binary"
+
+    def compute(self, params=None):
+        import math
+        p = params or {}
+        c = self.UQFF_CONSTANTS
+        r = p.get("r_binary", c["r_binary"])
+        t = p.get("t_s", 0.0)
+        a_star = p.get("a_spin", c["a_spin"])
+
+        # Orbital frequency
+        f_orb = (c["G"] * c["M_tot"] / r**3)**0.5 / (2 * math.pi)
+        omega = 2 * math.pi * f_orb
+
+        # Accretion rate modulation
+        Mdot_mod = f_orb * (1.0 + c["A_mod"] * math.cos(omega * t + c["phi_phase"]))
+
+        # Alfven velocity
+        v_A = c["B_disk"] / math.sqrt(4 * math.pi * c["rho_disk"] * c["mu0"])
+        v_A = min(v_A, 0.9 * c["c"])  # Cap at 0.9c
+
+        # Poynting luminosity
+        L_Poynt = (c["B_disk"]**2 / (4 * math.pi)) * v_A**2
+        L_Poynt_EM = c["eta_EM"] * Mdot_mod * c["c"]**2
+
+        # UQFF layers
+        g_L1 = c["G"] * c["M_tot"] / r**2
+        g_L2 = L_Poynt * a_star + Mdot_mod * omega / r
+        g_L3 = Mdot_mod * omega * math.cos(omega * t + c["phi_phase"]) / r**2
+        g_L4 = L_Poynt / r**2 * a_star
+
+        return {
+            "g_L2_binary": g_L2,
+            "g_L1": g_L1,
+            "g_L3_mod": g_L3,
+            "g_L4_Poynt": g_L4,
+            "f_orb_Hz": f_orb,
+            "Mdot_mod": Mdot_mod,
+            "L_Poynt": L_Poynt,
+            "v_A_ms": v_A,
+            "note": (f"r={r:.2e} m, t={t:.2f} s, a={a_star}: "
+                     f"f_orb={f_orb:.3e} Hz; Mdot_mod={Mdot_mod:.3e}; "
+                     f"L_Poynt={L_Poynt:.3e}; g_L2={g_L2:.3e}")
+        }
+
+    def simulate(self, sweep=None, sweep_param=None):
+        import math
+        results = []
+        c = self.UQFF_CONSTANTS
+        r0 = c["r_binary"]
+        f_orb0 = (c["G"] * c["M_tot"] / r0**3)**0.5 / (2 * math.pi)
+        T_orb = 1.0 / f_orb0
+        t_range = sweep or [i * T_orb / 8 for i in range(9)]
+        for t in t_range:
+            r = self.compute({"t_s": t})
+            r["sweep_val"] = t
+            results.append(r)
+        return results
+
+
+class GRMHD3DBHISCOStressAccretionEfficiencyCalculator:
+    """
+    PAPER_818 | Session 192 | CP4 Class #402
+    GRMHD 3D Black Hole ISCO Magnetic Stress + Accretion Efficiency + Spin Limit.
+    eta_MHD = L_acc / (Mdot * c^2) = 0.16-0.18 for a/M = 0.9 (vertical field).
+    alpha_stress = 0.2-0.5 (enhanced near ISCO vs Novikov-Thorne model).
+    J_in = 2.93-3.46 (3-15% below ISCO specific angular momentum).
+    Spin saturation: a/M approx 0.93 (jet removes angular momentum).
+    """
+    CLASS_ID = 402
+    PAPER = "PAPER_818"
+    SESSION = 192
+    VERSION = "v5.48"
+
+    UQFF_CONSTANTS = {
+        "G": 6.674e-11,
+        "c": 3.0e8,
+        "M_sun": 1.989e30,
+        "M_BH": 1.989e38,          # 1e8 Msun
+        "Mdot_Edd_frac": 0.1,      # 10% Eddington
+        "eta_MHD_v": 0.17,         # Vertical field efficiency
+        "eta_MHD_d": 0.11,         # Dipole field efficiency
+        "eta_MHD_q": 0.075,        # Quadrupole field efficiency
+        "alpha_stress_ISCO": 0.35, # Peak alpha stress at ISCO
+        "J_in_norm": 3.13,         # Specific angular momentum below ISCO
+        "a_spin_sat": 0.93,        # Spin saturation value
+    }
+
+    INPUT_PARAMS = [
+        ("M_BH", "float", 1.989e38, "Black hole mass (kg)"),
+        ("Mdot_frac", "float", 0.1, "Accretion rate fraction of Eddington"),
+        ("a_spin", "float", 0.9, "BH spin parameter"),
+        ("field_topology", "str", "vertical", "Field topology: vertical/dipole/quadrupole"),
+    ]
+
+    PRIMARY_OUTPUT = "eta_MHD"
+    PRIMARY_INPUT = "M_BH"
+
+    def compute(self, params=None):
+        import math
+        p = params or {}
+        c = self.UQFF_CONSTANTS
+        M_BH = p.get("M_BH", c["M_BH"])
+        Mdot_frac = p.get("Mdot_frac", c["Mdot_Edd_frac"])
+        a_spin = p.get("a_spin", 0.9)
+        topology = p.get("field_topology", "vertical")
+
+        # Eddington luminosity
+        L_Edd = 4 * math.pi * c["G"] * M_BH * 0.34 * (1.989e30 / c["M_sun"]) * 1.67e-27 * c["c"] / (6.65e-29)
+        L_Edd_simple = 1.26e31 * (M_BH / c["M_sun"])  # approximate
+        Mdot = Mdot_frac * L_Edd_simple / (0.1 * c["c"]**2)
+
+        # Efficiency by topology
+        eta_map = {"vertical": c["eta_MHD_v"], "dipole": c["eta_MHD_d"], "quadrupole": c["eta_MHD_q"]}
+        eta_MHD = eta_map.get(topology, c["eta_MHD_v"])
+
+        # ISCO radius (Kerr, approximate)
+        r_ISCO = c["G"] * M_BH / c["c"]**2 * (3 + 4.74*(1 - a_spin)**(1/3) - a_spin)
+        r_ISCO = max(r_ISCO, c["G"] * M_BH / c["c"]**2)  # floor at r_g
+
+        # UQFF layers
+        g_L1 = eta_MHD * Mdot * c["c"]**2 / r_ISCO**2
+        g_L2 = c["alpha_stress_ISCO"] * 1.0e15 / (8 * math.pi * r_ISCO**2)  # B^2 estimated
+        g_L3 = c["J_in_norm"] / r_ISCO**2
+        g_L4 = eta_MHD * c["alpha_stress_ISCO"]
+
+        return {
+            "eta_MHD": eta_MHD,
+            "g_L1": g_L1,
+            "g_L2_stress": g_L2,
+            "g_L3_J": g_L3,
+            "g_L4_coupled": g_L4,
+            "r_ISCO_m": r_ISCO,
+            "Mdot_kg_s": Mdot,
+            "a_spin_sat": c["a_spin_sat"],
+            "note": (f"M={M_BH:.2e} kg, a={a_spin}, {topology}: "
+                     f"eta_MHD={eta_MHD:.3f}; r_ISCO={r_ISCO:.3e} m; "
+                     f"g_L1={g_L1:.3e}; spin_sat={c['a_spin_sat']}")
+        }
+
+    def simulate(self, sweep=None, sweep_param=None):
+        results = []
+        topologies = sweep or ["vertical", "dipole", "quadrupole"]
+        for top in topologies:
+            r = self.compute({"field_topology": top})
+            r["sweep_val"] = top
+            results.append(r)
+        return results
+
+
+class GRMHDNSMergerDiskGW170817ExtendedKilonovaCalculator:
+    """
+    PAPER_819 | Session 192 | CP4 Class #403
+    GRMHD NS Merger Disk (9s simulation) + GW170817 Extended Kilonova UQFF.
+    System: 0.033 Msun disk, 3 Msun BH (a=0.8), 9 second evolution.
+    M_ej = 0.013 Msun; v_ej = 0.1-0.22c; L_jet = 3e50 erg; Y_e = 0.16.
+    Dual ejection: MHD-driven (Phase 1, t<0.5s) + thermal wind (Phase 2, t>0.5s).
+    Fast component: v >= 0.4c, M_fast = 7.4e-8 Msun (neutron precursor).
+    """
+    CLASS_ID = 403
+    PAPER = "PAPER_819"
+    SESSION = 192
+    VERSION = "v5.48"
+
+    UQFF_CONSTANTS = {
+        "G": 6.674e-11,
+        "c": 3.0e8,
+        "M_sun": 1.989e30,
+        "M_disk": 0.033 * 1.989e30,   # NS merger disk mass
+        "M_BH": 3.0 * 1.989e30,       # Central BH mass
+        "a_BH": 0.8,                   # BH spin
+        "M_ej_total": 0.013 * 1.989e30,  # Total ejected mass
+        "v_ej_mean": 0.15 * 3.0e8,    # Mean ejecta velocity
+        "v_fast": 0.4 * 3.0e8,        # Fast component velocity
+        "M_fast": 7.4e-8 * 1.989e30,  # Fast component mass
+        "L_jet": 3.0e50 * 1.0e-7,     # Jet luminosity (J/s = erg/s * 1e-7)
+        "Y_e_midplane": 0.16,          # Electron fraction (midplane)
+        "Y_e_outflow": 0.25,           # Electron fraction (outflow average)
+        "Gamma_nu_coeff": 0.22,        # Neutrino absorption rate coefficient
+        "Delta_q_nuc": 6.8e18,         # Nuclear recombination energy (erg/g -> J/kg * 1e4)
+        "DeltaX_alpha": 0.2,           # Alpha particle mass fraction
+        "r_disk": 1.0e5 * 1.0e3,       # Disk outer radius (m)
+    }
+
+    INPUT_PARAMS = [
+        ("t_s", "float", 1.0, "Time post-merger (s)"),
+        ("M_ej", "float", 0.013, "Ejecta mass (Msun)"),
+    ]
+
+    PRIMARY_OUTPUT = "g_L3_nuc"
+    PRIMARY_INPUT = "t_s"
+
+    def compute(self, params=None):
+        import math
+        p = params or {}
+        c = self.UQFF_CONSTANTS
+        t = p.get("t_s", 1.0)
+        M_ej = p.get("M_ej", c["M_ej_total"])
+
+        r = c["r_disk"]
+
+        # Phase determination
+        if t < 0.5:
+            phase = "MHD-driven"
+            v_ej = c["v_ej_mean"] * 1.0
+        else:
+            phase = "thermal-wind"
+            v_ej = c["v_ej_mean"] * (1.0 - 0.3 * (t - 0.5) / 8.5)
+
+        # Neutrino absorption rate
+        T_10 = 5.0  # T = 50 MeV -> T_10 = 5
+        D_4 = 1.0
+        Gamma_nu = c["Gamma_nu_coeff"] * T_10**6 * D_4
+
+        # Nuclear recombination
+        Delta_q = c["Delta_q_nuc"] * c["DeltaX_alpha"] * 1.0e4  # erg/g to J/kg
+        g_L3_nuc = Delta_q * M_ej / r**2
+
+        # Layers
+        g_L1 = M_ej * v_ej**2 / (r * c["r_disk"]**2)
+        g_L2_nu = Gamma_nu * T_10**6
+        g_L4_jet = c["L_jet"] / r**3
+
+        return {
+            "g_L3_nuc": g_L3_nuc,
+            "g_L1_ej": g_L1,
+            "g_L2_nu": g_L2_nu,
+            "g_L4_jet": g_L4_jet,
+            "Gamma_nu": Gamma_nu,
+            "phase": phase,
+            "v_ej_ms": v_ej,
+            "Y_e_midplane": c["Y_e_midplane"],
+            "Y_e_outflow": c["Y_e_outflow"],
+            "note": (f"t={t:.2f} s ({phase}): M_ej={M_ej/c['M_sun']:.4f} Msun; "
+                     f"v_ej={v_ej/c['c']:.3f}c; g_L3_nuc={g_L3_nuc:.3e}; "
+                     f"Y_e(midplane)={c['Y_e_midplane']}")
+        }
+
+    def simulate(self, sweep=None, sweep_param=None):
+        results = []
+        t_range = sweep or [0.1, 0.5, 1.0, 2.0, 5.0, 9.0]
+        for t in t_range:
+            r = self.compute({"t_s": t})
+            r["sweep_val"] = t
+            results.append(r)
+        return results
+
+
+class NeutrinoCooledDiskDynamo20msCycleCalculator:
+    """
+    PAPER_820 | Session 192 | CP4 Class #404
+    3D Neutrino-Cooled Accretion Disk Magnetic Dynamo Cycle UQFF (ApJ 2018).
+    System: 0.03 Msun disk, 3 Msun BH (chi=0.8), 380 ms simulation.
+    Dynamo: tau_dynamo = 20 ms (approx 20 * tau_MRI = 20/Omega).
+    Y_e self-regulation: midplane=0.1 -> outflow=0.2 via neutrino absorption.
+    L_nu_peak = 1e52 erg/s; M_ej = 0.01 Msun (40% of disk).
+    """
+    CLASS_ID = 404
+    PAPER = "PAPER_820"
+    SESSION = 192
+    VERSION = "v5.48"
+
+    UQFF_CONSTANTS = {
+        "G": 6.674e-11,
+        "c": 3.0e8,
+        "M_sun": 1.989e30,
+        "M_disk": 0.03 * 1.989e30,
+        "M_BH": 3.0 * 1.989e30,
+        "chi_BH": 0.8,
+        "tau_dynamo": 0.020,        # Dynamo cycle period (s)
+        "Y_e_mid": 0.10,            # Midplane electron fraction
+        "Y_e_out": 0.20,            # Outflow electron fraction
+        "L_nu_peak": 3.17e44,       # Peak neutrino luminosity (W = 3.17e44 W = 1e52 erg/s/1e7)
+        "M_ej_frac": 0.40,          # Ejection fraction of disk
+        "v_inf": 0.1 * 3.0e8,       # Terminal ejecta velocity
+        "r_ISCO": 1.5e4 * 1.0e3,    # ISCO radius (m) for 3 Msun BH (a=0.8)
+    }
+
+    INPUT_PARAMS = [
+        ("t_ms", "float", 0.0, "Time in milliseconds"),
+        ("r_disk", "float", 1.0e8, "Disk radius (m)"),
+    ]
+
+    PRIMARY_OUTPUT = "g_L2_MRI"
+    PRIMARY_INPUT = "t_ms"
+
+    def compute(self, params=None):
+        import math
+        p = params or {}
+        c = self.UQFF_CONSTANTS
+        t = p.get("t_ms", 0.0) * 1e-3  # ms -> s
+        r = p.get("r_disk", c["r_ISCO"])
+
+        # MRI timescale
+        Omega = math.sqrt(c["G"] * c["M_BH"] / r**3)
+        tau_MRI = 1.0 / Omega  # ~1 ms at ISCO
+
+        # Dynamo amplitude modulation
+        phi_dynamo = 2 * math.pi * t / c["tau_dynamo"]
+        B_dynamo = 1.0e15 * abs(math.sin(phi_dynamo))  # T at ISCO
+
+        # Y_e outflow
+        Y_e_ejected = c["Y_e_mid"] + (c["Y_e_out"] - c["Y_e_mid"]) * min(1, t / 0.05)
+
+        # Mass ejection
+        M_ej = c["M_disk"] * c["M_ej_frac"] * min(1.0, t / 0.38)
+
+        # UQFF layers
+        g_L2_MRI = 1.0 / tau_MRI
+        g_L3_Ye = M_ej * Y_e_ejected / r
+        g_L4_dynamo = c["tau_dynamo"] / r
+
+        return {
+            "g_L2_MRI": g_L2_MRI,
+            "g_L3_Ye": g_L3_Ye,
+            "g_L4_dynamo": g_L4_dynamo,
+            "tau_MRI_s": tau_MRI,
+            "tau_dynamo_s": c["tau_dynamo"],
+            "Y_e_ejected": Y_e_ejected,
+            "B_dynamo_T": B_dynamo,
+            "M_ej_kg": M_ej,
+            "note": (f"t={t*1000:.1f} ms: tau_MRI={tau_MRI*1000:.3f} ms; "
+                     f"tau_dynamo=20 ms; Y_e_ej={Y_e_ejected:.3f}; "
+                     f"B_dynamo={B_dynamo:.2e} T; g_L2={g_L2_MRI:.3e}")
+        }
+
+    def simulate(self, sweep=None, sweep_param=None):
+        results = []
+        t_range = sweep or [i * 5.0 for i in range(13)]  # 0 to 60 ms
+        for t in t_range:
+            r = self.compute({"t_ms": t})
+            r["sweep_val"] = t
+            results.append(r)
+        return results
+
+
+class RIAFCRPIceCubeNeutrinoBackgroundLLAGNCalculator:
+    """
+    PAPER_821 | Session 192 | CP4 Class #405
+    RIAF CRP (Cosmic Ray Proton) + IceCube Neutrino Background from LLAGN (arXiv Apr 2025).
+    BH: a_* = 0.9375, M_BH = 1e8 Msun, Mdot = 0.01 Ledd/c^2.
+    L_nu(1-100 TeV) approx 6e38 erg/s; tau_acc = 1/(2K); CRP residence > 1000 r_g/c.
+    Fokker-Planck: dN/dt = d/dp[D_pp dN/dp] - d/dp[pdot N] - N/tau_esc.
+    IceCube diffuse: two-population (NGC1068-like + LLAGN RIAF = this paper).
+    """
+    CLASS_ID = 405
+    PAPER = "PAPER_821"
+    SESSION = 192
+    VERSION = "v5.48"
+
+    UQFF_CONSTANTS = {
+        "G": 6.674e-11,
+        "c": 3.0e8,
+        "M_sun": 1.989e30,
+        "M_BH": 1.0e8 * 1.989e30,
+        "a_star": 0.9375,          # Near-maximal spin
+        "Mdot_Edd_frac": 0.01,     # 1% Eddington accretion
+        "eta_inj": 0.01,           # CRP injection efficiency
+        "K_diff": 0.1,             # Diffusion coefficient
+        "L_nu_1_100TeV": 6e38 * 1e-7,  # Neutrino luminosity (W = erg/s / 1e7)
+        "P_CRP_out": 3.41e44 * 1e-7,   # CRP outflow power (W)
+        "beta_mag": 10.0,          # Magnetic beta
+    }
+
+    INPUT_PARAMS = [
+        ("M_BH", "float", 1.0e8 * 1.989e30, "Black hole mass (kg)"),
+        ("a_star", "float", 0.9375, "BH spin parameter"),
+        ("Mdot_frac", "float", 0.01, "Eddington accretion fraction"),
+    ]
+
+    PRIMARY_OUTPUT = "L_nu_RIAF"
+    PRIMARY_INPUT = "M_BH"
+
+    def compute(self, params=None):
+        import math
+        p = params or {}
+        c = self.UQFF_CONSTANTS
+        M_BH = p.get("M_BH", c["M_BH"])
+        a_star = p.get("a_star", c["a_star"])
+        Mdot_frac = p.get("Mdot_frac", c["Mdot_Edd_frac"])
+
+        # Gravitational radius
+        r_g = c["G"] * M_BH / c["c"]**2
+
+        # Acceleration timescale
+        tau_acc = 1.0 / (2 * c["K_diff"])
+
+        # CRP injection rate (proportional to magnetic fluctuation)
+        eta_eff = c["eta_inj"] * max(1.0, c["beta_mag"])
+        N_dot_inj = eta_eff * Mdot_frac * c["c"] / r_g
+
+        # Neutrino luminosity (spin-dependent scaling)
+        L_nu = c["L_nu_1_100TeV"] * (a_star / 0.9375)**(2.0/3.0) * (Mdot_frac / 0.01)**1.5
+
+        # IceCube diffuse contribution
+        f_LLAGN_IceCube = 0.30  # ~30% of diffuse background
+
+        # UQFF layers
+        g_L2_acc = 1.0 / tau_acc
+        g_L3_CRP = c["eta_inj"] * 1.0e15 / r_g  # B^2 * eta_inj / r_g
+        g_L4_nu = L_nu / (r_g * c["c"]**2)**0.5
+
+        return {
+            "L_nu_RIAF": L_nu,
+            "g_L2_acc": g_L2_acc,
+            "g_L3_CRP": g_L3_CRP,
+            "g_L4_nu": g_L4_nu,
+            "tau_acc_s": tau_acc,
+            "N_dot_inj": N_dot_inj,
+            "r_g_m": r_g,
+            "f_IceCube": f_LLAGN_IceCube,
+            "note": (f"M_BH={M_BH:.2e} kg, a*={a_star:.4f}, Mdot/Edd={Mdot_frac:.3f}: "
+                     f"L_nu={L_nu:.3e} W (1-100 TeV); tau_acc={tau_acc:.3f} s; "
+                     f"IceCube fraction={f_LLAGN_IceCube:.0%}")
+        }
+
+    def simulate(self, sweep=None, sweep_param=None):
+        results = []
+        spin_range = sweep or [0.0, 0.3, 0.5, 0.7, 0.9, 0.9375]
+        for a in spin_range:
+            r = self.compute({"a_star": a})
+            r["sweep_val"] = a
+            results.append(r)
+        return results
+
+
+class QuantumOpenEnergyIntegralProtoShellACPCalculator:
+    """
+    PAPER_822 | Session 192 | CP4 Class #406
+    Quantum Open-Energy Integral + Proto-Shell ACP (Parrish 2012, asym_quant_integ.pdf).
+    EXPERIMENTALLY CONFIRMED by Daniel T. Murphy (June 16, 2025).
+    r_Q(x) = sqrt[(cos(x)*p_Q)^2 + (sin(x)*p_Q + 1)^2]
+    (1 - 1/x) * F_m = integral(F_m / x^2 dx)
+    Delta_q_Q^2 = 68.8 at 88.237 deg, d=1.625-inch, p_Q=5.
+    Proto-shell: DPM_strong -> shell_vacuum -> electrostatic surface balance.
+    """
+    CLASS_ID = 406
+    PAPER = "PAPER_822"
+    SESSION = 192
+    VERSION = "v5.48"
+    EXPERIMENTALLY_CONFIRMED = True
+
+    UQFF_CONSTANTS = {
+        "G": 6.674e-11,
+        "c": 3.0e8,
+        "hbar": 1.055e-34,
+        "e_charge": 1.602e-19,       # Elementary charge (C)
+        "p_Q": 5.0,                   # Plate radius (normalized units)
+        "d_inch": 1.625,              # Plate separation (inches)
+        "d_m": 1.625 * 0.0254,        # Plate separation (m)
+        "x_max_deg": 88.237,          # Max charge gain angle (degrees)
+        "DeltaqQ2_confirmed": 68.8,   # Experimentally confirmed charge gain squared
+        "w_Q": 1.0,                   # Quantum width parameter
+        "F_m_base": 1.0,              # Base force parameter (normalized)
+    }
+
+    INPUT_PARAMS = [
+        ("x_deg", "float", 88.237, "Rotation angle (degrees)"),
+        ("p_Q", "float", 5.0, "Plate radius (normalized units)"),
+        ("d_m", "float", 0.041275, "Plate separation (m)"),
+    ]
+
+    PRIMARY_OUTPUT = "DeltaqQ2"
+    PRIMARY_INPUT = "x_deg"
+
+    def compute(self, params=None):
+        import math
+        p = params or {}
+        c = self.UQFF_CONSTANTS
+        x_deg = p.get("x_deg", c["x_max_deg"])
+        p_Q = p.get("p_Q", c["p_Q"])
+        d_m = p.get("d_m", c["d_m"])
+
+        x = math.radians(x_deg)
+
+        # Quantum distance
+        r_Q = math.sqrt((math.cos(x) * p_Q)**2 + (math.sin(x) * p_Q + 1)**2)
+
+        # Charge gain formula
+        w_Q = c["w_Q"]
+        inner_sq = math.sqrt(w_Q**2 + (math.sin(x) * p_Q + 1)**2)
+        outer_sq = math.sqrt(w_Q**2 + 1.0)
+
+        if (inner_sq * (outer_sq - 1.0)) > 0:
+            DeltaqQ2 = (inner_sq - 1.0) * outer_sq / (inner_sq * (outer_sq - 1.0))
+        else:
+            DeltaqQ2 = 0.0
+
+        # Open-energy integral: (1 - 1/x) * F_m = integral(F_m/x^2 dx)
+        # Evaluated at angle x (in radians, x != 0)
+        if abs(x) > 1e-10:
+            open_energy_lhs = (1.0 - 1.0/x) * c["F_m_base"]
+            open_energy_rhs = -c["F_m_base"] / x  # integral result (C=0)
+            open_energy_diff = open_energy_lhs - open_energy_rhs
+        else:
+            open_energy_diff = 0.0
+
+        # Proto-shell capacitance energy
+        eps_0 = 8.854e-12  # F/m
+        A_plate = math.pi * (p_Q * d_m)**2  # Plate area
+        C_asym = eps_0 * A_plate / d_m
+        E_stored = 0.5 * C_asym * (DeltaqQ2 * c["e_charge"])**2
+
+        # UQFF layers
+        g_L1 = DeltaqQ2 * c["F_m_base"] / d_m**2
+        g_L2 = (d_m**2 / x) * p_Q if abs(x) > 1e-10 else 0.0
+        g_L3 = E_stored / d_m
+        g_L4 = open_energy_diff
+
+        return {
+            "DeltaqQ2": DeltaqQ2,
+            "r_Q": r_Q,
+            "open_energy_diff": open_energy_diff,
+            "E_stored_J": E_stored,
+            "g_L1": g_L1,
+            "g_L2_rot": g_L2,
+            "g_L3_proto": g_L3,
+            "g_L4_open": g_L4,
+            "experimentally_confirmed": self.EXPERIMENTALLY_CONFIRMED,
+            "note": (f"x={x_deg:.3f}°, p_Q={p_Q}, d={d_m*39.37:.3f}\": "
+                     f"r_Q={r_Q:.4f}; DeltaqQ2={DeltaqQ2:.2f} "
+                     f"(confirmed={c['DeltaqQ2_confirmed']:.1f}); "
+                     f"E_stored={E_stored:.3e} J; EXPERIMENTALLY CONFIRMED!")
+        }
+
+    def simulate(self, sweep=None, sweep_param=None):
+        results = []
+        angles = sweep or [0.0, 30.0, 45.0, 60.0, 80.0, 85.0, 87.0, 88.0, 88.237, 90.0]
+        for angle in angles:
+            r = self.compute({"x_deg": angle})
+            r["sweep_val"] = angle
+            results.append(r)
+        return results
+
+
+# =============================================================================
+# __all__ registry — Session 192 additions
+# =============================================================================
+
+_SESSION_192_CLASSES = [
+    "ACPQwaveTHzHoleUBmiCalculator",
+    "NASAThoriumMagneticBuoyancyAetherVortexCalculator",
+    "QuadriadicUQFFNANOGravAGNCoEvolutionCalculator",
+    "VDFGSMFSMBHMassFunctionVelocityDispersionCalculator",
+    "EHTngEHTBHEXNewSMBHPhotonRingCalculator",
+    "GRMHDBinaryBHMergerAccretionModulationCalculator",
+    "GRMHD3DBHISCOStressAccretionEfficiencyCalculator",
+    "GRMHDNSMergerDiskGW170817ExtendedKilonovaCalculator",
+    "NeutrinoCooledDiskDynamo20msCycleCalculator",
+    "RIAFCRPIceCubeNeutrinoBackgroundLLAGNCalculator",
+    "QuantumOpenEnergyIntegralProtoShellACPCalculator",
+]

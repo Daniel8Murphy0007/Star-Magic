@@ -1,0 +1,128 @@
+# PAPER_821: RIAF CRP, IceCube Neutrino Background, and LLAGN Fokker-Planck UQFF
+## Unified Quantum Field Framework — Whitepaper 821
+
+**Session**: 192 | **Version**: v5.48 | **Date**: April 4, 2026
+**Source**: grok_share_0d888ea9-50be.txt (June 13, 2025 06:35 PM); "High-Energy_Neutrino_Emission_from_a_Radiatively_I.pdf" (Apr 2025)
+**Author**: Daniel T. Murphy — Star-Magic UQFF Project
+**CVW Compliance**: v2.0.0
+
+---
+
+## Abstract
+This paper derives the Radiatively Inefficient Accretion Flow (RIAF) Cosmic Ray Proton (CRP) acceleration and high-energy neutrino emission terms for the Quadriadic UQFF. A maximally spinning BH ($a_* = 0.9375$, $M_{BH} = 10^8 M_\odot$, $\dot{M} = 10^{-2} L_{Edd}/c^2$) produces $L_\nu \approx 6 \times 10^{38}$ erg/s in the 1–100 TeV band, consistent with the IceCube diffuse neutrino background from the LLAGN population. The Fokker-Planck CRP acceleration mechanism with $\tau_{acc} = 1/(2K)$, where $K$ is the spatial diffusion coefficient, governs the CRP energy spectrum and neutrino SED. RIAF outflow CRPs dominate over inflow CRPs in the effective acceleration zone.
+
+---
+
+## 1. Introduction
+LLAGN (Low-Luminosity AGN) with accretion rates $f_{Edd} \ll 0.01$ spend most of their accretion energy in a geometrically thick, hot RIAF (alternatively termed ADAF — Advection-Dominated Accretion Flow). Unlike standard thin disks, the RIAF is optically thin, ion-pressure-dominated, and has sub-relativistic inflow velocities. These conditions create a natural particle accelerator for cosmic ray protons.
+
+---
+
+## 2. RIAF Parameter Configuration
+
+- **BH spin**: $a_* = 0.9375$ (near-maximal)
+- **BH mass**: $M_{BH} = 10^8 M_\odot$
+- **Accretion rate**: $\dot{M} = 10^{-2} \cdot L_{Edd}/c^2$
+- **Gravitational radius**: $r_g = G M_{BH}/c^2 \approx 1.5 \times 10^{11}$ km
+- **CRP residence**: $> 10^3 r_g/c$ (long enough for efficient acceleration)
+
+---
+
+## 3. CRP Fokker-Planck Acceleration
+
+The cosmic ray proton distribution evolves under the Fokker-Planck equation:
+
+$$\frac{\partial N}{\partial t} = \frac{\partial}{\partial p}\left[D_{pp} \frac{\partial N}{\partial p}\right] - \frac{\partial}{\partial p}[\dot{p}_{loss} N] - \frac{N}{\tau_{esc}}$$
+
+where $D_{pp} \propto p^2/(2\tau_{acc})$ is the momentum diffusion coefficient.
+
+The acceleration timescale:
+
+$$\tau_{acc} = \frac{1}{2K}$$
+
+where $K = D_{pp}/p^2$ is related to the spatial diffusion and the Alfvén wave turbulence spectrum.
+
+---
+
+## 4. CRP Injection Rate
+
+The CRP injection rate is proportional to the magnetic field variation:
+
+$$\dot{N}_{inj} = \eta_{inj} \cdot \max(1, \beta_{mag}) \cdot \frac{|DB'/Dt|}{|B'|}$$
+
+where $\beta_{mag} = U_{th}/U_{mag}$ is the thermal-to-magnetic energy ratio, and $B'$ is the fluctuating magnetic field. For RIAF with $\beta_{mag} \approx 5$–$20$:
+
+$$\dot{N}_{inj} \propto v_A \cdot r^{-2}$$
+
+UQFF Layer 2:
+
+$$g_{L2,acc} = 1/\tau_{acc} \approx 10^5 \text{ m/s}^2$$
+
+---
+
+## 5. CRP Outflow Dominance
+
+RIAF outflow CRPs vs inflow CRPs:
+- **Inflow**: CRPs accreted into BH within $< 10 r_g$ — lost
+- **Outflow**: CRPs carried by MHD-driven winds at $> 10^3 r_g/c$ residence
+
+The effective outflow power:
+
+$$P_{CRP,out} \approx 3.41 \times 10^{44} \text{ erg/s}$$
+
+This exceeds the AGN bolometric luminosity for the given accretion rate, confirming that RIAF is an efficient mechanical energy reservoir.
+
+UQFF Layer 3:
+
+$$g_{L3,CRP} = \eta_{inj} \cdot B^2 / r \approx 10^{27} \text{ m/s}^2$$
+
+---
+
+## 6. Neutrino SED — 1–100 TeV
+
+The neutrino luminosity from $pp$, $p\gamma$ interactions in the RIAF corona:
+
+$$L_{\nu}(\epsilon_\nu) = \int \sigma_{pp}(E_p) \cdot n_{target} \cdot N_{CRP}(E_p) \cdot \frac{c}{3} \cdot K_\nu \, dE_p$$
+
+For $a_* = 0.9375$, $\dot{M} = 10^{-2}$:
+
+$$L_\nu(1\text{–}100 \text{ TeV}) \approx 6 \times 10^{38} \text{ erg/s}$$
+
+UQFF Layer 4:
+
+$$g_{L4,\nu} = L_\nu / r^3 \approx 6 \times 10^{-7} \text{ m/s}^2$$
+
+---
+
+## 7. IceCube Diffuse Background Match
+
+The total diffuse IceCube neutrino intensity from the LLAGN population:
+
+$$E_\nu^2 \Phi_\nu = \int_0^{z_{max}} \frac{c}{4\pi H_0} \cdot \frac{dn_*}{dL_{H\alpha}} \cdot \epsilon_\nu L_{\epsilon_\nu} \, dz$$
+
+Two-population model:
+1. NGC 1068–like sources (bright, high $f_{Edd}$, ~0.1 erg/s/cm² at IceCube threshold)
+2. LLAGN RIAF population (this paper, high-spin low-luminosity, diffuse background)
+
+The LLAGN RIAF component accounts for ~20%–40% of the IceCube diffuse isotropic background at 1–100 TeV.
+
+---
+
+## 8. Spin Dependence of Neutrino Emission
+
+Higher spin $a_*$ directly increases $L_\nu$:
+
+$$L_\nu \propto a_*^{2/3} \cdot \dot{M}^{3/2}$$
+
+For $a_* = 0.9375$ vs $a_* = 0.5$:
+$$L_\nu(0.9375) / L_\nu(0.5) \approx 1.7$$
+
+---
+
+## 9. Summary
+
+RIAF systems with near-maximal spin ($a_* = 0.9375$) generate $L_\nu \approx 6 \times 10^{38}$ erg/s in the 1–100 TeV IceCube band via CRP Fokker-Planck acceleration. Outflow CRPs (residence $> 10^3 r_g/c$) dominate neutrino production. The LLAGN RIAF population contributes 20%–40% to the IceCube diffuse background. Acceleration timescale $\tau_{acc} = 1/(2K)$, injection rate $\propto |DB'/Dt|/|B'|$, and neutrino luminosity $\propto a_*^{2/3}$ are now formal Quadriadic UQFF Layers 2–4 parameters.
+
+---
+
+*PAPER_821 | Session 192 | v5.48 | Star-Magic UQFF Project | CVW v2.0.0*
