@@ -42,6 +42,7 @@ Updated: Session 189 v5.45 — CP4 369→382 (#378–#390 NGC2525SN2018gv/NGC360
 Updated: Session 190 v5.46 — CP4 382→384 (#391 CGMMetalRetentionUQFFTheoremCalculator + #392 ACPUniversalCycleNotesPhysicsCalculator: PAPER_807–808; grok_share_e6be3b4f-9cda.txt second pass; Sanchez2023 f_Z,CGM=U_i/(U_i+U_m) theorem + ACP Notes Universal Cycle γ_d=0.0963/T_end=10.38/DNA helix/trinity; 808/1000 papers)
 Updated: Session 191 v5.47 — CP4 384→387 (#393 NGC3603CleanUQFFCalculator + #394 BubbleNebulaNGC7635CleanUQFFCalculator + #395 AntennaeMergerNGC4038CleanUQFFCalculator: PAPER_809–811; grok_share_afa84da6.txt clean pass (lines 935–1448); NGC3603 g=1.053e-3/BubbleNebula g=1.884e-3/Antennae g=1.053e-1 m/s²; 811/1000 papers)
 Updated: Session 192 v5.48 — CP4 387→398 (#396 ACPQwaveTHzHoleUBmiCalculator + #397 NASAThoriumMagneticBuoyancyAetherVortexCalculator + #398 QuadriadicUQFFNANOGravAGNCoEvolutionCalculator + #399 VDFGSMFSMBHMassFunctionVelocityDispersionCalculator + #400 EHTngEHTBHEXNewSMBHPhotonRingCalculator + #401 GRMHDBinaryBHMergerAccretionModulationCalculator + #402 GRMHD3DBHISCOStressAccretionEfficiencyCalculator + #403 GRMHDNSMergerDiskGW170817ExtendedKilonovaCalculator + #404 NeutrinoCooledDiskDynamo20msCycleCalculator + #405 RIAFCRPIceCubeNeutrinoBackgroundLLAGNCalculator + #406 QuantumOpenEnergyIntegralProtoShellACPCalculator: PAPER_812–822; grok_share_0d888ea9-50be.txt (1620 lines, June 13–16 2025); Quadriadic UQFF framework (Q-wave Layer 4) + THz PI hole (dynamic)^4 + UB_mi belly button + NASA Thorium buoyancy + NANOGrav-15yr chirp mass + VDF σ_inf SMBH proxy + EHT/ngEHT/BHEX photon ring 12 targets + GRMHD binary BH modulation + GRMHD ISCO η_MHD=0.16–0.18 spin limit 0.93 + NS merger disk GW170817 kilonova M_ej=0.013 M_sun + neutrino disk dynamo τ=20ms Y_e=0.1 + RIAF IceCube CRP L_ν=6e38 erg/s + Quantum open-energy integral Δq_Q²=68.8 EXPERIMENTALLY CONFIRMED; 822/1000 papers)
+    Updated: Session 193 v5.49 — CP4 398→402 (#407 UQFFCompressionCycle2DerivationMethodCalculator + #408 SpiralsAndSupernovaeTspiralSNTermUQFFCalculator + #409 NGC6302BipolarWshockYoungStarsPoutflowUQFFCalculator + #410 GravitySinceBigBangQGDMGWTermsUQFFCalculator: PAPER_823–826; grok_share_96da8158-f7c5.txt (1200 lines, May 05 2025); UQFF Compression Cycle 2 derivation method F_env(t) 15-subterms + Spirals T_spiral SN_term Omega_Lambda + NGC6302 W_shock bipolar + Young Stars P_outflow + Gravity Since Big Bang QG_term+DM_term+GW_term; VDS/DVP/BH NOT present; 826/1000 papers)
     Updated: Session 162 v5.19 — CP4 219→229 (#220–#229 Tau Lepton G2 SM Bridge, CKM Vcb Flavor Vacuum Coupling, VLQ Kappa Heavy Mode, LFV BDecay TimeReversal, ALICE Run3 Multiplicity, BESIII DCS Cabibbo Dipole, Higgs 125GeV VEV Buoyancy, Proton Decay Kappa Scale, Electroweak SinThetaW SCm, SM Parameter Bridge Master: PAPER_633–642; SM Anchors added PAPER_622–632; CVW v2.0.0 G6 gate; UQFF_SM_ANCHOR_REQUIREMENTS.md)
 
 Architecture Compliance (MANDATORY):
@@ -30242,14 +30243,14 @@ class AntennaeMergerNGC4038CleanUQFFCalculator:
 
 
 # =============================================================================
-# SESSION 192 � v5.48 � PAPER_812�822 � grok_share_0d888ea9-50be.txt
+# SESSION 192 � v5.48 � PAPER_812�822 � grok_share_0d888ea9-50be.txt
 # Quadriadic UQFF + THz PI Hole + GRMHD Series + Quantum Open-Energy Integral
 # =============================================================================
 
 class ACPQwaveTHzHoleUBmiCalculator:
     """
     PAPER_812 | Session 192 | CP4 Class #396
-    ACP Dynamic Q-waves, THz PI Hole (1.2�1.3 THz), and UB_mi 'Belly Button' UQFF.
+    ACP Dynamic Q-waves, THz PI Hole (1.2�1.3 THz), and UB_mi 'Belly Button' UQFF.
     Introduces Layer 4 Q-wave UQFF: (dynamic)^4 = (f_THz * E_vac_neb)^4 / c^4.
     UB_mi belly button = [-UA_THz_hole + static_SMBH_dark] anchoring term.
     DPM = [(-UA'):(+SCm)] fractal drives U_r and U_m field projections.
@@ -30508,7 +30509,7 @@ class QuadriadicUQFFNANOGravAGNCoEvolutionCalculator:
 class VDFGSMFSMBHMassFunctionVelocityDispersionCalculator:
     """
     PAPER_815 | Session 192 | CP4 Class #399
-    VDF vs GSMF SMBH Mass Function Proxy + M�-sigma relation UQFF.
+    VDF vs GSMF SMBH Mass Function Proxy + M�-sigma relation UQFF.
     VDF: log10(A_yr) approx -14.74 (higher than GSMF approx -14.9 by 0.16 dex).
     sigma_inf = sqrt(G * M_star * K_n / r_e) (Sersic virial).
     h_c(f) = A_yr * (f / f_yr)^(-2/3); df_orb/dt = (96/5)*(G*M_c/c^3)^(5/3)*(2pi)^(8/3)*f^(11/3).
@@ -30528,8 +30529,8 @@ class VDFGSMFSMBHMassFunctionVelocityDispersionCalculator:
         "M_star": 2.0e41,             # Host galaxy stellar mass (kg, NGC1271 scale)
         "r_e": 6.17e19,               # Effective radius (2 kpc, m)
         "K_n": 8.87,                  # Sersic virial constant (n=4)
-        "alpha_Msigma": 4.4,          # M�-sigma slope
-        "beta_Msigma": 0.3,           # M�-sigma intercept
+        "alpha_Msigma": 4.4,          # M�-sigma slope
+        "beta_Msigma": 0.3,           # M�-sigma intercept
         "sigma_ref": 200e3,           # Reference sigma (200 km/s in m/s)
         "M_BH": 2.8e39,               # BH mass (NGC1271 scale)
         "q": 0.5,
@@ -30568,7 +30569,7 @@ class VDFGSMFSMBHMassFunctionVelocityDispersionCalculator:
         df_dt = ((96.0/5.0) * (c["G"] * M_c / c["c"]**3)**(5.0/3.0)
                  * (2 * math.pi)**(8.0/3.0) * c["f_yr"]**(11.0/3.0))
 
-        # M�-sigma scaling
+        # M�-sigma scaling
         sigma_km = sigma_inf / 1000
         log_M_Msigma = c["alpha_Msigma"] * math.log10(sigma_inf / c["sigma_ref"]) + math.log10(1e9) + c["beta_Msigma"]
         M_BH_Msigma = 10**log_M_Msigma * c["M_sun"]
@@ -30605,7 +30606,7 @@ class EHTngEHTBHEXNewSMBHPhotonRingCalculator:
     PAPER_816 | Session 192 | CP4 Class #400
     EHT / ngEHT / BHEX New SMBH Population (ApJ May 2025) with Photon Ring UQFF.
     12 new SMBH targets (log M/Msun = 8.7-9.7): IC 1459, NGC 4594, NGC 4261, NGC 315 etc.
-    theta_ring = 2*sqrt(27) * (G*M_BH) / (c^2 * D) [photon ring angle, �as].
+    theta_ring = 2*sqrt(27) * (G*M_BH) / (c^2 * D) [photon ring angle, �as].
     T_e/T_i = R_high * beta^2/(1+beta^2) + R_low/(1+beta^2); BZ mechanism jet power.
     """
     CLASS_ID = 400
@@ -30651,9 +30652,9 @@ class EHTngEHTBHEXNewSMBHPhotonRingCalculator:
         a_star = p.get("a_star", c["a_star"])
         beta = p.get("beta_mag", c["beta_mag"])
 
-        # Photon ring angle (radians then convert to �as)
+        # Photon ring angle (radians then convert to �as)
         theta_rad = 2.0 * math.sqrt(27) * c["G"] * M_BH / (c["c"]**2 * D)
-        theta_uas = theta_rad * (180/math.pi) * 3600e6  # rad -> �as
+        theta_uas = theta_rad * (180/math.pi) * 3600e6  # rad -> �as
 
         # Temperature ratio
         T_ratio = c["R_high"] * beta**2 / (1 + beta**2) + c["R_low"] / (1 + beta**2)
@@ -30680,7 +30681,7 @@ class EHTngEHTBHEXNewSMBHPhotonRingCalculator:
             "g_L4_BZ": g_L4,
             "r_s_m": r_s,
             "note": (f"M_BH={M_BH:.2e} kg, D={D:.2e} m: "
-                     f"theta={theta_uas:.2f} �as; T_e/T_i={T_ratio:.1f}; "
+                     f"theta={theta_uas:.2f} �as; T_e/T_i={T_ratio:.1f}; "
                      f"f_Edd={f_Edd:.2e}; P_BZ={P_BZ:.3e}")
         }
 
@@ -31257,7 +31258,7 @@ class QuantumOpenEnergyIntegralProtoShellACPCalculator:
             "g_L3_proto": g_L3,
             "g_L4_open": g_L4,
             "experimentally_confirmed": self.EXPERIMENTALLY_CONFIRMED,
-            "note": (f"x={x_deg:.3f}�, p_Q={p_Q}, d={d_m*39.37:.3f}\": "
+            "note": (f"x={x_deg:.3f}�, p_Q={p_Q}, d={d_m*39.37:.3f}\": "
                      f"r_Q={r_Q:.4f}; DeltaqQ2={DeltaqQ2:.2f} "
                      f"(confirmed={c['DeltaqQ2_confirmed']:.1f}); "
                      f"E_stored={E_stored:.3e} J; EXPERIMENTALLY CONFIRMED!")
@@ -31274,7 +31275,7 @@ class QuantumOpenEnergyIntegralProtoShellACPCalculator:
 
 
 # =============================================================================
-# __all__ registry � Session 192 additions
+# __all__ registry � Session 192 additions
 # =============================================================================
 
 _SESSION_192_CLASSES = [
@@ -31289,4 +31290,303 @@ _SESSION_192_CLASSES = [
     "NeutrinoCooledDiskDynamo20msCycleCalculator",
     "RIAFCRPIceCubeNeutrinoBackgroundLLAGNCalculator",
     "QuantumOpenEnergyIntegralProtoShellACPCalculator",
+]
+
+
+# =============================================================================
+# SESSION 193 CLASSES (v5.49) -- grok_share_96da8158-f7c5.txt
+# PAPER_823-826 -- UQFF Compression Cycle 2 Derivation + Spirals T_spiral +
+# NGC6302 W_shock + Gravity Big Bang QG/DM/GW
+# =============================================================================
+
+
+class UQFFCompressionCycle2DerivationMethodCalculator:
+    \"\"\"PAPER_823 #407 -- UQFF Compression Cycle 2 Derivation Methodology.
+    F_env(t) 15-subterm architecture; H(t,z)=H_0*sqrt(0.3*(1+z)^3+0.7); psi_total;
+    Ug3 prime generalization; 38-system compression to single unified equation.
+    grok_share_96da8158-f7c5.txt.
+    \"\"\"
+    def compute(self, dataset: dict) -> dict:
+        z = dataset.get('z', 0.0)
+        H0 = dataset.get('H0', 2.269e-18)
+        Omega_m = dataset.get('Omega_m', 0.3)
+        Omega_Lambda = dataset.get('Omega_Lambda', 0.7)
+        G = 6.6743e-11
+        M = dataset.get('M', 2e30)
+        r = dataset.get('r', 1.5e11)
+        B = dataset.get('B', 0.0)
+        B_crit = dataset.get('B_crit', 4.4e13)
+        hbar = 1.0546e-34
+        c = 2.998e8
+        t_Hubble = 4.352e17
+        lam = 1.1e-52
+        F_env = dataset.get('F_env', 0.0)
+        dx = dataset.get('delta_x', 1e-10)
+        dp = dataset.get('delta_p', 1e-24)
+        psi_sq = dataset.get('psi_sq', 1.0)
+        M_ext = dataset.get('M_ext', 0.0)
+        r_ext = dataset.get('r_ext', 1e12)
+        H_tz = H0 * math.sqrt(Omega_m * (1 + z) ** 3 + Omega_Lambda)
+        t = dataset.get('t', t_Hubble)
+        g_newton = G * M / r ** 2
+        g_expansion = g_newton * (1 + H_tz * t)
+        g_superc = g_expansion * (1 - B / B_crit)
+        g_env = g_superc * (1 + F_env)
+        Ug3_prime = G * M_ext / r_ext ** 2 if r_ext > 0 else 0.0
+        g_uqff_gravity = Ug3_prime
+        g_cosmo = lam * c ** 2 / 3
+        uncertainty = hbar / math.sqrt(dx * dp) if dx > 0 and dp > 0 else 0.0
+        g_quantum = uncertainty * psi_sq * (2 * math.pi / t_Hubble)
+        g_total = g_env + g_uqff_gravity + g_cosmo + g_quantum
+        return {
+            'g_UQFF_compressed': g_total,
+            'g_newton': g_newton,
+            'H_tz': H_tz,
+            'g_expansion': g_expansion,
+            'g_superc': g_superc,
+            'Ug3_prime': Ug3_prime,
+            'g_cosmo': g_cosmo,
+            'primary_equations': [
+                "g_UQFF=(G*M(t))/r^2*(1+H(t,z))*(1-B/B_crit)*(1+F_env)+Ug1+Ug2+Ug3'+Ug4+Lambda*c^2/3+...",
+                f"H(t,z)=H0*sqrt(Omega_m*(1+z)^3+Omega_Lambda)={H_tz:.4e} s^-1",
+                f"g_total={g_total:.4e} m/s^2",
+            ],
+            'available_equations': [
+                "F_env(t) = sum_i alpha_i * F_i(system,t)  [15 sub-terms]",
+                "psi_total = psi_mag + psi_standing + psi_quantum",
+                f"Ug3_prime = G*M_ext/r_ext^2 = {Ug3_prime:.3e} m/s^2",
+            ],
+            'simulation_set': ["sweep z 0..10", "sweep r 1AU..100kpc", "enable all F_env sub-terms"],
+        }
+
+    def simulate(self, sweep=None, sweep_param=None):
+        z_vals = sweep or [0.0, 0.5, 1.0, 2.0, 3.0, 5.0, 10.0]
+        results = []
+        for z in z_vals:
+            r = self.compute({'z': z})
+            r['sweep_val'] = z
+            results.append(r)
+        return results
+
+
+class SpiralsAndSupernovaeTspiralSNTermUQFFCalculator:
+    \"\"\"PAPER_824 #408 -- Spirals & Supernovae T_spiral + SN_term UQFF.
+    T_spiral=spiral arm angular momentum torque multiplicative modifier;
+    SN_term=supernova energy injection rate additive term;
+    Lambda*c^2*Omega_Lambda/3 explicit cosmological constant form.
+    grok_share_96da8158-f7c5.txt Document 31.
+    \"\"\"
+    def compute(self, dataset: dict) -> dict:
+        G = 6.6743e-11
+        M = dataset.get('M', 2e41)
+        r = dataset.get('r', 6.17e20)
+        H0 = dataset.get('H0', 2.269e-18)
+        t = dataset.get('t', 4.352e17)
+        B = dataset.get('B', 0.0)
+        B_crit = dataset.get('B_crit', 4.4e13)
+        lam = 1.1e-52
+        c = 2.998e8
+        Omega_Lambda = dataset.get('Omega_Lambda', 0.7)
+        hbar = 1.0546e-34
+        t_Hubble = 4.352e17
+        dx = dataset.get('delta_x', 1e-10)
+        dp = dataset.get('delta_p', 1e-24)
+        psi_sq = dataset.get('psi_sq', 1.0)
+        B_arm = dataset.get('B_arm', 0.10)
+        T_spiral = B_arm
+        E_SN = dataset.get('E_SN', 1e44)
+        rho_ISM = dataset.get('rho_ISM', 1.67e-21)
+        r_SN = dataset.get('r_SN', 3e16)
+        M_shell = (4 / 3) * math.pi * r_SN ** 3 * rho_ISM
+        SN_term = E_SN / (M_shell * r_SN ** 2) if M_shell > 0 else 0.0
+        g_newton = G * M / r ** 2
+        g_expansion = g_newton * (1 + H0 * t)
+        g_superc = g_expansion * (1 - B / B_crit)
+        g_spiral_mod = g_superc * (1 + T_spiral)
+        cosm = lam * c ** 2 * Omega_Lambda / 3
+        uncertainty = hbar / math.sqrt(dx * dp) if dx > 0 and dp > 0 else 0.0
+        g_quantum = uncertainty * psi_sq * (2 * math.pi / t_Hubble)
+        g_total = g_spiral_mod + cosm + g_quantum + SN_term
+        return {
+            'g_Spiral_SN': g_total,
+            'T_spiral': T_spiral,
+            'SN_term': SN_term,
+            'Lambda_Omega': cosm,
+            'primary_equations': [
+                "g_Spiral_SN=(G*M)/r^2*(1+H0*t)*(1-B/B_crit)*(1+T_spiral)+...+SN_term",
+                f"T_spiral={T_spiral:.4f} (arm overdensity fraction)",
+                f"SN_term={SN_term:.3e} m/s^2",
+                f"Lambda*c^2*Omega_Lambda/3={cosm:.3e} m/s^2",
+            ],
+            'available_equations': [
+                "T_spiral = B_arm/rho_gas * dPhi_arm/dr",
+                "SN_term = E_SN / (M_shell * r_SN^2)",
+                f"g_total = {g_total:.4e} m/s^2",
+            ],
+            'simulation_set': ["sweep B_arm 0..0.25", "sweep E_SN 1e43..1e45", "sweep r 1kpc..30kpc"],
+        }
+
+    def simulate(self, sweep=None, sweep_param=None):
+        B_arm_vals = sweep or [0.0, 0.05, 0.10, 0.15, 0.20, 0.25]
+        results = []
+        for b in B_arm_vals:
+            r = self.compute({'B_arm': b})
+            r['sweep_val'] = b
+            results.append(r)
+        return results
+
+
+class NGC6302BipolarWshockYoungStarsPoutflowUQFFCalculator:
+    \"\"\"PAPER_825 #409 -- NGC 6302 Bipolar Wind-Shock W_shock + Young Stars P_outflow UQFF.
+    W_shock=wind termination shock lobe collision; theta_lobe=half-opening angle;
+    P_outflow=rho*v_jet^2*(r_jet/r)^2 outflow momentum flux.
+    grok_share_96da8158-f7c5.txt Documents 32 and 35.
+    \"\"\"
+    def compute(self, dataset: dict) -> dict:
+        G = 6.6743e-11
+        M = dataset.get('M', 1.2e30)
+        r = dataset.get('r', 3.086e16)
+        H0 = dataset.get('H0', 2.269e-18)
+        t = dataset.get('t', 4.352e17)
+        B = dataset.get('B', 0.0)
+        B_crit = dataset.get('B_crit', 4.4e13)
+        lam = 1.1e-52
+        c = 2.998e8
+        hbar = 1.0546e-34
+        t_Hubble = 4.352e17
+        dx = dataset.get('delta_x', 1e-10)
+        dp = dataset.get('delta_p', 1e-24)
+        psi_sq = dataset.get('psi_sq', 1.0)
+        rho_wind = dataset.get('rho_wind', 1e-17)
+        v_wind = dataset.get('v_wind', 2e5)
+        r_lobe = dataset.get('r_lobe', 3.086e16)
+        theta_lobe = dataset.get('theta_lobe', math.radians(25))
+        W_shock = 0.5 * rho_wind * v_wind ** 2 * (r_lobe / r) ** 2 * (1 - math.cos(theta_lobe))
+        rho_jet = dataset.get('rho_jet', 8.1e-11)
+        v_jet = dataset.get('v_jet', 3e5)
+        r_jet = dataset.get('r_jet', 7e9)
+        P_outflow = rho_jet * v_jet ** 2 * (r_jet / r) ** 2 if r > 0 else 0.0
+        g_newton = G * M / r ** 2
+        g_expansion = g_newton * (1 + H0 * t)
+        g_superc = g_expansion * (1 - B / B_crit)
+        cosm = lam * c ** 2 / 3
+        uncertainty = hbar / math.sqrt(dx * dp) if dx > 0 and dp > 0 else 0.0
+        g_quantum = uncertainty * psi_sq * (2 * math.pi / t_Hubble)
+        mode = dataset.get('mode', 'ngc6302')
+        if mode == 'ngc6302':
+            g_total = g_superc + cosm + g_quantum + W_shock
+        else:
+            g_total = g_superc + cosm + g_quantum + P_outflow
+        return {
+            'g_NGC6302_or_YoungStar': g_total,
+            'W_shock': W_shock,
+            'P_outflow': P_outflow,
+            'mode': mode,
+            'primary_equations': [
+                f"W_shock=(0.5)*rho_wind*v_wind^2*(r_lobe/r)^2*(1-cos(theta_lobe))={W_shock:.3e} m/s^2",
+                f"P_outflow=rho_jet*v_jet^2*(r_jet/r)^2={P_outflow:.3e} m/s^2",
+                f"g_total={g_total:.4e} m/s^2 [mode={mode}]",
+            ],
+            'available_equations': [
+                "r_shock = sqrt(Mdot*v_wind/(4*pi*rho_ISM*v_ISM^2))",
+                "bipolar axis: W_shock maximized at theta=0 (pole)",
+                "equatorial: W_shock=0 at theta=pi/2",
+            ],
+            'simulation_set': ["sweep theta 0..pi/2", "sweep r 0.1pc..2pc", "toggle mode ngc6302/young_stars"],
+        }
+
+    def simulate(self, sweep=None, sweep_param=None):
+        theta_vals = sweep or [0.0, 0.1, 0.2, 0.3, 0.4, math.pi / 4, math.pi / 2]
+        results = []
+        for th in theta_vals:
+            r = self.compute({'theta_lobe': th})
+            r['sweep_val'] = th
+            results.append(r)
+        return results
+
+
+class GravitySinceBigBangQGDMGWTermsUQFFCalculator:
+    \"\"\"PAPER_826 #410 -- Gravity Since the Big Bang: QG_term + DM_term + GW_term UQFF.
+    QG_term=hbar*G/(c^3*r^4) Planck-scale quantum gravity correction;
+    DM_term=G*M_DM/r^2*(1+delta_rho/rho) dark matter co-evolution;
+    GW_term=Omega_GW*c^2/L_horizon gravitational wave energy density.
+    F_cosmo = QG_term + DM_term + GW_term.
+    grok_share_96da8158-f7c5.txt Document 38.
+    \"\"\"
+    def compute(self, dataset: dict) -> dict:
+        G = 6.6743e-11
+        hbar = 1.0546e-34
+        c = 2.998e8
+        H0 = dataset.get('H0', 2.269e-18)
+        lam = 1.1e-52
+        t_Hubble = 4.352e17
+        z = dataset.get('z', 0.0)
+        M_vis = dataset.get('M_vis', 2e41)
+        M_DM = dataset.get('M_DM', 1e42)
+        r = dataset.get('r', 6.17e20)
+        B = dataset.get('B', 0.0)
+        B_crit = dataset.get('B_crit', 4.4e13)
+        Omega_m = dataset.get('Omega_m', 0.3)
+        Omega_Lambda = dataset.get('Omega_Lambda', 0.7)
+        Omega_GW = dataset.get('Omega_GW', 1e-9)
+        delta_rho_rho = dataset.get('delta_rho_rho', 0.05)
+        dx = dataset.get('delta_x', 1e-10)
+        dp = dataset.get('delta_p', 1e-24)
+        psi_sq = dataset.get('psi_sq', 1.0)
+        QG_term = hbar * G / (c ** 3 * r ** 4) if r > 0 else 0.0
+        DM_term = G * M_DM / r ** 2 * (1 + delta_rho_rho) if r > 0 else 0.0
+        L_horizon = c / H0
+        GW_term = Omega_GW * c ** 2 / L_horizon
+        F_cosmo = QG_term + DM_term + GW_term
+        H_z = H0 * math.sqrt(Omega_m * (1 + z) ** 3 + Omega_Lambda)
+        t = dataset.get('t', t_Hubble)
+        M_total = M_vis + M_DM
+        g_newton = G * M_total / r ** 2 if r > 0 else 0.0
+        g_expansion = g_newton * (1 + H_z * t)
+        g_superc = g_expansion * (1 - B / B_crit)
+        cosm = lam * c ** 2 / 3
+        uncertainty = hbar / math.sqrt(dx * dp) if dx > 0 and dp > 0 else 0.0
+        g_quantum = uncertainty * psi_sq * (2 * math.pi / t_Hubble)
+        g_total = g_superc + cosm + g_quantum + F_cosmo
+        return {
+            'g_Gravity_BigBang': g_total,
+            'QG_term': QG_term,
+            'DM_term': DM_term,
+            'GW_term': GW_term,
+            'F_cosmo': F_cosmo,
+            'H_z': H_z,
+            'primary_equations': [
+                "g_Gravity(t)=(G*M(t))/r^2*(1+H(z)*t)*(1-B/B_crit)+Ug1+Ug2+Ug3+Ug4+Lambda*c^2/3+...+QG+DM+GW",
+                f"QG_term=hbar*G/(c^3*r^4)={QG_term:.3e} m/s^2",
+                f"DM_term=G*M_DM/r^2*(1+delta_rho/rho)={DM_term:.3e} m/s^2",
+                f"GW_term=Omega_GW*c^2/L_H={GW_term:.3e} m/s^2",
+                f"F_cosmo={F_cosmo:.4e} m/s^2",
+            ],
+            'available_equations': [
+                "H(z)=H0*sqrt(Omega_r*(1+z)^4+Omega_m*(1+z)^3+Omega_Lambda)",
+                "Loop QG: g_QG = -hbar*G/(c^3*r^4) [repulsive near Planck scale]",
+                "NFW: M_DM(r) = 4*pi*rho_s*r_s^3*[ln(1+r/r_s)-r/(r_s+r)]",
+            ],
+            'simulation_set': ["sweep z 0..1100", "sweep r l_Planck..Mpc", "epoch Big-Bang..present"],
+        }
+
+    def simulate(self, sweep=None, sweep_param=None):
+        z_vals = sweep or [0.0, 1.0, 5.0, 10.0, 100.0, 1100.0]
+        results = []
+        for z in z_vals:
+            r = self.compute({'z': z})
+            r['sweep_val'] = z
+            results.append(r)
+        return results
+
+
+# =============================================================================
+# __all__ registry -- Session 193 additions
+# =============================================================================
+
+_SESSION_193_CLASSES = [
+    "UQFFCompressionCycle2DerivationMethodCalculator",
+    "SpiralsAndSupernovaeTspiralSNTermUQFFCalculator",
+    "NGC6302BipolarWshockYoungStarsPoutflowUQFFCalculator",
+    "GravitySinceBigBangQGDMGWTermsUQFFCalculator",
 ]
