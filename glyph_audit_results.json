@@ -1,0 +1,6007 @@
+{
+  "1": {
+    "BARE_QMARK": 1,
+    "SUPERSCRIPT_U": 95,
+    "SUBSCRIPT_U": 10,
+    "SOLAR": 4,
+    "CHECKMARK": 8,
+    "MATH_UNICODE": 5,
+    "GREEK_TEXT": 25,
+    "LATIN_SUPP": 32,
+    "DASHES_QUOTES": 21,
+    "CTRL_IN_TEXT": 2
+  },
+  "2": {
+    "UFFFD": 3,
+    "BARE_QMARK": 2,
+    "SUPERSCRIPT_U": 57,
+    "SUBSCRIPT_U": 10,
+    "SOLAR": 15,
+    "MATH_UNICODE": 15,
+    "GREEK_TEXT": 13,
+    "LATIN_SUPP": 18,
+    "DASHES_QUOTES": 14
+  },
+  "3": {
+    "UFFFD": 3,
+    "BARE_QMARK": 1,
+    "SUPERSCRIPT_U": 56,
+    "SUBSCRIPT_U": 12,
+    "SOLAR": 5,
+    "MATH_UNICODE": 11,
+    "GREEK_TEXT": 18,
+    "LATIN_SUPP": 37,
+    "DASHES_QUOTES": 11
+  },
+  "4": {
+    "UFFFD": 3,
+    "BARE_QMARK": 1,
+    "SUPERSCRIPT_U": 74,
+    "SUBSCRIPT_U": 10,
+    "SOLAR": 3,
+    "MATH_UNICODE": 9,
+    "GREEK_TEXT": 18,
+    "LATIN_SUPP": 26,
+    "DASHES_QUOTES": 15
+  },
+  "5": {
+    "UFFFD": 3,
+    "BARE_QMARK": 2,
+    "SUPERSCRIPT_U": 72,
+    "SUBSCRIPT_U": 18,
+    "SOLAR": 16,
+    "MATH_UNICODE": 12,
+    "GREEK_TEXT": 28,
+    "LATIN_SUPP": 25,
+    "DASHES_QUOTES": 10
+  },
+  "6": {
+    "UFFFD": 3,
+    "BARE_QMARK": 1,
+    "SUPERSCRIPT_U": 79,
+    "SUBSCRIPT_U": 10,
+    "SOLAR": 4,
+    "MATH_UNICODE": 9,
+    "GREEK_TEXT": 21,
+    "LATIN_SUPP": 29,
+    "DASHES_QUOTES": 12
+  },
+  "7": {
+    "UFFFD": 68,
+    "BARE_QMARK": 107,
+    "SUPERSCRIPT_U": 34,
+    "SUBSCRIPT_U": 10,
+    "MATH_UNICODE": 1,
+    "GREEK_TEXT": 12,
+    "LATIN_SUPP": 7,
+    "DASHES_QUOTES": 2
+  },
+  "8": {
+    "BARE_QMARK": 8,
+    "SUPERSCRIPT_U": 40,
+    "SUBSCRIPT_U": 10,
+    "MATH_UNICODE": 1,
+    "GREEK_TEXT": 12,
+    "LATIN_SUPP": 20,
+    "DASHES_QUOTES": 15,
+    "NO_H1": 1
+  },
+  "9": {
+    "BARE_QMARK": 14,
+    "SUPERSCRIPT_U": 55,
+    "SUBSCRIPT_U": 10,
+    "MATH_UNICODE": 1,
+    "GREEK_TEXT": 12,
+    "LATIN_SUPP": 35,
+    "DASHES_QUOTES": 9,
+    "NO_H1": 1
+  },
+  "10": {
+    "BARE_QMARK": 7,
+    "SUPERSCRIPT_U": 60,
+    "SUBSCRIPT_U": 10,
+    "MATH_UNICODE": 1,
+    "GREEK_TEXT": 12,
+    "LATIN_SUPP": 38,
+    "DASHES_QUOTES": 10,
+    "NO_H1": 1
+  },
+  "11": {
+    "BARE_QMARK": 26,
+    "SUPERSCRIPT_U": 50,
+    "SUBSCRIPT_U": 10,
+    "MATH_UNICODE": 1,
+    "GREEK_TEXT": 12,
+    "LATIN_SUPP": 45,
+    "DASHES_QUOTES": 10,
+    "NO_H1": 1
+  },
+  "12": {
+    "BARE_QMARK": 11,
+    "SUPERSCRIPT_U": 41,
+    "SUBSCRIPT_U": 10,
+    "MATH_UNICODE": 1,
+    "GREEK_TEXT": 12,
+    "LATIN_SUPP": 28,
+    "DASHES_QUOTES": 11,
+    "NO_H1": 1
+  },
+  "13": {
+    "BARE_QMARK": 18,
+    "SUPERSCRIPT_U": 44,
+    "SUBSCRIPT_U": 10,
+    "MATH_UNICODE": 1,
+    "GREEK_TEXT": 12,
+    "LATIN_SUPP": 27,
+    "DASHES_QUOTES": 13,
+    "NO_H1": 1
+  },
+  "14": {
+    "BARE_QMARK": 11,
+    "SUPERSCRIPT_U": 42,
+    "SUBSCRIPT_U": 10,
+    "MATH_UNICODE": 1,
+    "GREEK_TEXT": 12,
+    "LATIN_SUPP": 24,
+    "DASHES_QUOTES": 13,
+    "NO_H1": 1
+  },
+  "15": {
+    "BARE_QMARK": 7,
+    "SUPERSCRIPT_U": 42,
+    "SUBSCRIPT_U": 10,
+    "MATH_UNICODE": 1,
+    "GREEK_TEXT": 12,
+    "LATIN_SUPP": 13,
+    "DASHES_QUOTES": 8,
+    "NO_H1": 1
+  },
+  "16": {
+    "BARE_QMARK": 6,
+    "SUPERSCRIPT_U": 47,
+    "SUBSCRIPT_U": 10,
+    "MATH_UNICODE": 1,
+    "GREEK_TEXT": 12,
+    "LATIN_SUPP": 24,
+    "DASHES_QUOTES": 11,
+    "NO_H1": 1
+  },
+  "17": {
+    "UFFFD": 3,
+    "BARE_QMARK": 1,
+    "SUPERSCRIPT_U": 52,
+    "SUBSCRIPT_U": 10,
+    "SOLAR": 4,
+    "MATH_UNICODE": 11,
+    "GREEK_TEXT": 22,
+    "LATIN_SUPP": 21,
+    "DASHES_QUOTES": 13
+  },
+  "18": {
+    "UFFFD": 3,
+    "BARE_QMARK": 2,
+    "SUPERSCRIPT_U": 53,
+    "SUBSCRIPT_U": 11,
+    "MATH_UNICODE": 11,
+    "GREEK_TEXT": 25,
+    "LATIN_SUPP": 22,
+    "DASHES_QUOTES": 13
+  },
+  "19": {
+    "SUPERSCRIPT_U": 166,
+    "SUBSCRIPT_U": 15,
+    "SOLAR": 6,
+    "MATH_UNICODE": 81,
+    "GREEK_TEXT": 81,
+    "LATIN_SUPP": 91,
+    "DASHES_QUOTES": 56,
+    "NO_H1": 1
+  },
+  "20": {
+    "UFFFD": 192,
+    "BARE_QMARK": 62,
+    "SUPERSCRIPT_U": 34,
+    "SUBSCRIPT_U": 10,
+    "MATH_UNICODE": 1,
+    "GREEK_TEXT": 12,
+    "LATIN_SUPP": 7,
+    "DASHES_QUOTES": 2
+  },
+  "21": {
+    "UFFFD": 94,
+    "BARE_QMARK": 60,
+    "SUPERSCRIPT_U": 34,
+    "SUBSCRIPT_U": 10,
+    "MATH_UNICODE": 1,
+    "GREEK_TEXT": 12,
+    "LATIN_SUPP": 7,
+    "DASHES_QUOTES": 2
+  },
+  "22": {
+    "UFFFD": 54,
+    "BARE_QMARK": 6,
+    "SUPERSCRIPT_U": 34,
+    "SUBSCRIPT_U": 10,
+    "MATH_UNICODE": 1,
+    "GREEK_TEXT": 12,
+    "LATIN_SUPP": 7,
+    "DASHES_QUOTES": 2
+  },
+  "23": {
+    "UFFFD": 18,
+    "BARE_QMARK": 15,
+    "SUPERSCRIPT_U": 34,
+    "SUBSCRIPT_U": 10,
+    "MATH_UNICODE": 1,
+    "GREEK_TEXT": 12,
+    "LATIN_SUPP": 7,
+    "DASHES_QUOTES": 2
+  },
+  "24": {
+    "BARE_QMARK": 1,
+    "SUPERSCRIPT_U": 34,
+    "SUBSCRIPT_U": 10,
+    "MATH_UNICODE": 6,
+    "GREEK_TEXT": 64,
+    "LATIN_SUPP": 44,
+    "DASHES_QUOTES": 11,
+    "NO_H1": 1
+  },
+  "25": {
+    "BARE_QMARK": 59,
+    "SUPERSCRIPT_U": 128,
+    "SUBSCRIPT_U": 10,
+    "MATH_UNICODE": 1,
+    "GREEK_TEXT": 12,
+    "LATIN_SUPP": 68,
+    "DASHES_QUOTES": 18,
+    "NO_H1": 1
+  },
+  "26": {
+    "BARE_QMARK": 47,
+    "SUPERSCRIPT_U": 52,
+    "SUBSCRIPT_U": 10,
+    "MATH_UNICODE": 1,
+    "GREEK_TEXT": 12,
+    "LATIN_SUPP": 29,
+    "DASHES_QUOTES": 28,
+    "NO_H1": 1
+  },
+  "27": {
+    "SUPERSCRIPT_U": 358,
+    "SUBSCRIPT_U": 10,
+    "MATH_UNICODE": 132,
+    "GREEK_TEXT": 154,
+    "LATIN_SUPP": 118,
+    "DASHES_QUOTES": 53,
+    "NO_H1": 1
+  },
+  "28": {
+    "UFFFD": 3,
+    "BARE_QMARK": 1,
+    "SUPERSCRIPT_U": 406,
+    "SUBSCRIPT_U": 16,
+    "MATH_UNICODE": 94,
+    "GREEK_TEXT": 152,
+    "LATIN_SUPP": 205,
+    "DASHES_QUOTES": 45
+  },
+  "29": {
+    "UFFFD": 153,
+    "BARE_QMARK": 101,
+    "SUPERSCRIPT_U": 34,
+    "SUBSCRIPT_U": 10,
+    "MATH_UNICODE": 1,
+    "GREEK_TEXT": 12,
+    "LATIN_SUPP": 7,
+    "DASHES_QUOTES": 2
+  },
+  "30": {
+    "UFFFD": 158,
+    "BARE_QMARK": 69,
+    "SUPERSCRIPT_U": 34,
+    "SUBSCRIPT_U": 10,
+    "MATH_UNICODE": 1,
+    "GREEK_TEXT": 12,
+    "LATIN_SUPP": 7,
+    "DASHES_QUOTES": 2
+  },
+  "31": {
+    "UFFFD": 122,
+    "BARE_QMARK": 51,
+    "SUPERSCRIPT_U": 34,
+    "SUBSCRIPT_U": 10,
+    "MATH_UNICODE": 1,
+    "GREEK_TEXT": 12,
+    "LATIN_SUPP": 7,
+    "DASHES_QUOTES": 2
+  },
+  "32": {
+    "SUPERSCRIPT_U": 99,
+    "SUBSCRIPT_U": 12,
+    "MATH_UNICODE": 35,
+    "GREEK_TEXT": 85,
+    "LATIN_SUPP": 14,
+    "DASHES_QUOTES": 33,
+    "NO_H1": 1
+  },
+  "33": {
+    "SUPERSCRIPT_U": 166,
+    "SUBSCRIPT_U": 17,
+    "MATH_UNICODE": 23,
+    "GREEK_TEXT": 107,
+    "LATIN_SUPP": 46,
+    "DASHES_QUOTES": 21,
+    "NO_H1": 1
+  },
+  "34": {
+    "SUPERSCRIPT_U": 87,
+    "SUBSCRIPT_U": 12,
+    "MATH_UNICODE": 31,
+    "GREEK_TEXT": 138,
+    "LATIN_SUPP": 41,
+    "DASHES_QUOTES": 24,
+    "NO_H1": 1
+  },
+  "35": {
+    "BARE_QMARK": 1,
+    "SUPERSCRIPT_U": 55,
+    "SUBSCRIPT_U": 10,
+    "MATH_UNICODE": 24,
+    "GREEK_TEXT": 91,
+    "LATIN_SUPP": 49,
+    "DASHES_QUOTES": 27,
+    "NO_H1": 1
+  },
+  "36": {
+    "SUPERSCRIPT_U": 108,
+    "SUBSCRIPT_U": 10,
+    "CHECKMARK": 5,
+    "MATH_UNICODE": 19,
+    "GREEK_TEXT": 32,
+    "LATIN_SUPP": 47,
+    "DASHES_QUOTES": 20,
+    "NO_H1": 1
+  },
+  "37": {
+    "UFFFD": 91,
+    "BARE_QMARK": 21,
+    "SUPERSCRIPT_U": 34,
+    "SUBSCRIPT_U": 10,
+    "MATH_UNICODE": 1,
+    "GREEK_TEXT": 12,
+    "LATIN_SUPP": 7,
+    "DASHES_QUOTES": 2
+  },
+  "38": {
+    "UFFFD": 119,
+    "BARE_QMARK": 20,
+    "SUPERSCRIPT_U": 34,
+    "SUBSCRIPT_U": 10,
+    "MATH_UNICODE": 1,
+    "GREEK_TEXT": 12,
+    "LATIN_SUPP": 7,
+    "DASHES_QUOTES": 2,
+    "NO_H1": 1
+  },
+  "39": {
+    "UFFFD": 243,
+    "BARE_QMARK": 49,
+    "SUPERSCRIPT_U": 34,
+    "SUBSCRIPT_U": 10,
+    "MATH_UNICODE": 1,
+    "GREEK_TEXT": 12,
+    "LATIN_SUPP": 7,
+    "DASHES_QUOTES": 2
+  },
+  "40": {
+    "UFFFD": 220,
+    "BARE_QMARK": 28,
+    "SUPERSCRIPT_U": 34,
+    "SUBSCRIPT_U": 10,
+    "MATH_UNICODE": 1,
+    "GREEK_TEXT": 12,
+    "LATIN_SUPP": 7,
+    "DASHES_QUOTES": 2,
+    "NO_H1": 1
+  },
+  "41": {
+    "UFFFD": 108,
+    "BARE_QMARK": 23,
+    "SUPERSCRIPT_U": 34,
+    "SUBSCRIPT_U": 10,
+    "MATH_UNICODE": 1,
+    "GREEK_TEXT": 12,
+    "LATIN_SUPP": 7,
+    "DASHES_QUOTES": 2,
+    "NO_H1": 1
+  },
+  "42": {
+    "UFFFD": 192,
+    "BARE_QMARK": 62,
+    "SUPERSCRIPT_U": 34,
+    "SUBSCRIPT_U": 10,
+    "MATH_UNICODE": 1,
+    "GREEK_TEXT": 12,
+    "LATIN_SUPP": 7,
+    "DASHES_QUOTES": 2
+  },
+  "43": {
+    "UFFFD": 139,
+    "BARE_QMARK": 36,
+    "SUPERSCRIPT_U": 34,
+    "SUBSCRIPT_U": 10,
+    "MATH_UNICODE": 1,
+    "GREEK_TEXT": 12,
+    "LATIN_SUPP": 7,
+    "DASHES_QUOTES": 2,
+    "NO_H1": 1
+  },
+  "44": {
+    "UFFFD": 75,
+    "BARE_QMARK": 31,
+    "SUPERSCRIPT_U": 34,
+    "SUBSCRIPT_U": 10,
+    "MATH_UNICODE": 1,
+    "GREEK_TEXT": 12,
+    "LATIN_SUPP": 7,
+    "DASHES_QUOTES": 2,
+    "NO_H1": 1
+  },
+  "45": {
+    "UFFFD": 62,
+    "BARE_QMARK": 53,
+    "SUPERSCRIPT_U": 34,
+    "SUBSCRIPT_U": 10,
+    "MATH_UNICODE": 1,
+    "GREEK_TEXT": 12,
+    "LATIN_SUPP": 7,
+    "DASHES_QUOTES": 2,
+    "NO_H1": 1
+  },
+  "46": {
+    "UFFFD": 94,
+    "BARE_QMARK": 54,
+    "SUPERSCRIPT_U": 34,
+    "SUBSCRIPT_U": 10,
+    "MATH_UNICODE": 1,
+    "GREEK_TEXT": 12,
+    "LATIN_SUPP": 7,
+    "DASHES_QUOTES": 2,
+    "NO_H1": 1
+  },
+  "47": {
+    "UFFFD": 63,
+    "BARE_QMARK": 24,
+    "SUPERSCRIPT_U": 34,
+    "SUBSCRIPT_U": 10,
+    "MATH_UNICODE": 1,
+    "GREEK_TEXT": 12,
+    "LATIN_SUPP": 7,
+    "DASHES_QUOTES": 2,
+    "NO_H1": 1
+  },
+  "48": {
+    "UFFFD": 178,
+    "BARE_QMARK": 45,
+    "SUPERSCRIPT_U": 34,
+    "SUBSCRIPT_U": 10,
+    "MATH_UNICODE": 1,
+    "GREEK_TEXT": 12,
+    "LATIN_SUPP": 7,
+    "DASHES_QUOTES": 2,
+    "NO_H1": 1
+  },
+  "49": {
+    "UFFFD": 162,
+    "BARE_QMARK": 35,
+    "SUPERSCRIPT_U": 34,
+    "SUBSCRIPT_U": 10,
+    "MATH_UNICODE": 1,
+    "GREEK_TEXT": 12,
+    "LATIN_SUPP": 7,
+    "DASHES_QUOTES": 2,
+    "NO_H1": 1
+  },
+  "50": {
+    "UFFFD": 88,
+    "BARE_QMARK": 35,
+    "SUPERSCRIPT_U": 37,
+    "SUBSCRIPT_U": 10,
+    "MATH_UNICODE": 2,
+    "GREEK_TEXT": 12,
+    "LATIN_SUPP": 7,
+    "DASHES_QUOTES": 2,
+    "NO_H1": 1
+  },
+  "51": {
+    "UFFFD": 103,
+    "BARE_QMARK": 40,
+    "SUPERSCRIPT_U": 34,
+    "SUBSCRIPT_U": 10,
+    "MATH_UNICODE": 1,
+    "GREEK_TEXT": 12,
+    "LATIN_SUPP": 7,
+    "DASHES_QUOTES": 2,
+    "NO_H1": 1
+  },
+  "52": {
+    "UFFFD": 122,
+    "BARE_QMARK": 39,
+    "SUPERSCRIPT_U": 34,
+    "SUBSCRIPT_U": 10,
+    "MATH_UNICODE": 1,
+    "GREEK_TEXT": 12,
+    "LATIN_SUPP": 7,
+    "DASHES_QUOTES": 2,
+    "NO_H1": 1
+  },
+  "53": {
+    "SUPERSCRIPT_U": 90,
+    "SUBSCRIPT_U": 11,
+    "SOLAR": 9,
+    "CHECKMARK": 3,
+    "MATH_UNICODE": 4,
+    "GREEK_TEXT": 18,
+    "LATIN_SUPP": 30,
+    "DASHES_QUOTES": 10,
+    "NO_H1": 1
+  },
+  "54": {
+    "UFFFD": 45,
+    "BARE_QMARK": 21,
+    "SUPERSCRIPT_U": 34,
+    "SUBSCRIPT_U": 10,
+    "MATH_UNICODE": 1,
+    "GREEK_TEXT": 12,
+    "LATIN_SUPP": 7,
+    "DASHES_QUOTES": 2,
+    "NO_H1": 1
+  },
+  "55": {
+    "UFFFD": 94,
+    "BARE_QMARK": 21,
+    "SUPERSCRIPT_U": 34,
+    "SUBSCRIPT_U": 10,
+    "MATH_UNICODE": 1,
+    "GREEK_TEXT": 12,
+    "LATIN_SUPP": 7,
+    "DASHES_QUOTES": 2,
+    "NO_H1": 1
+  },
+  "56": {
+    "UFFFD": 127,
+    "BARE_QMARK": 21,
+    "SUPERSCRIPT_U": 34,
+    "SUBSCRIPT_U": 10,
+    "MATH_UNICODE": 1,
+    "GREEK_TEXT": 12,
+    "LATIN_SUPP": 7,
+    "DASHES_QUOTES": 2,
+    "NO_H1": 1
+  },
+  "57": {
+    "UFFFD": 155,
+    "BARE_QMARK": 69,
+    "SUPERSCRIPT_U": 34,
+    "SUBSCRIPT_U": 10,
+    "MATH_UNICODE": 1,
+    "GREEK_TEXT": 12,
+    "LATIN_SUPP": 7,
+    "DASHES_QUOTES": 2,
+    "NO_H1": 1
+  },
+  "58": {
+    "UFFFD": 113,
+    "BARE_QMARK": 30,
+    "SUPERSCRIPT_U": 34,
+    "SUBSCRIPT_U": 10,
+    "MATH_UNICODE": 1,
+    "GREEK_TEXT": 12,
+    "LATIN_SUPP": 7,
+    "DASHES_QUOTES": 2
+  },
+  "59": {
+    "UFFFD": 42,
+    "BARE_QMARK": 11,
+    "SUPERSCRIPT_U": 34,
+    "SUBSCRIPT_U": 10,
+    "MATH_UNICODE": 1,
+    "GREEK_TEXT": 12,
+    "LATIN_SUPP": 7,
+    "DASHES_QUOTES": 2,
+    "NO_H1": 1
+  },
+  "60": {
+    "UFFFD": 37,
+    "BARE_QMARK": 36,
+    "SUPERSCRIPT_U": 34,
+    "SUBSCRIPT_U": 10,
+    "MATH_UNICODE": 1,
+    "GREEK_TEXT": 12,
+    "LATIN_SUPP": 7,
+    "DASHES_QUOTES": 2,
+    "NO_H1": 1
+  },
+  "61": {
+    "UFFFD": 51,
+    "BARE_QMARK": 12,
+    "SUPERSCRIPT_U": 34,
+    "SUBSCRIPT_U": 10,
+    "MATH_UNICODE": 1,
+    "GREEK_TEXT": 12,
+    "LATIN_SUPP": 7,
+    "DASHES_QUOTES": 2
+  },
+  "62": {
+    "UFFFD": 107,
+    "BARE_QMARK": 43,
+    "SUPERSCRIPT_U": 34,
+    "SUBSCRIPT_U": 10,
+    "MATH_UNICODE": 1,
+    "GREEK_TEXT": 12,
+    "LATIN_SUPP": 7,
+    "DASHES_QUOTES": 2,
+    "NO_H1": 1
+  },
+  "63": {
+    "UFFFD": 81,
+    "BARE_QMARK": 15,
+    "SUPERSCRIPT_U": 34,
+    "SUBSCRIPT_U": 10,
+    "MATH_UNICODE": 1,
+    "GREEK_TEXT": 12,
+    "LATIN_SUPP": 7,
+    "DASHES_QUOTES": 2,
+    "NO_H1": 1
+  },
+  "64": {
+    "UFFFD": 93,
+    "BARE_QMARK": 25,
+    "SUPERSCRIPT_U": 34,
+    "SUBSCRIPT_U": 10,
+    "MATH_UNICODE": 1,
+    "GREEK_TEXT": 12,
+    "LATIN_SUPP": 7,
+    "DASHES_QUOTES": 2,
+    "NO_H1": 1
+  },
+  "65": {
+    "UFFFD": 80,
+    "BARE_QMARK": 42,
+    "SUPERSCRIPT_U": 34,
+    "SUBSCRIPT_U": 10,
+    "MATH_UNICODE": 1,
+    "GREEK_TEXT": 12,
+    "LATIN_SUPP": 7,
+    "DASHES_QUOTES": 2,
+    "NO_H1": 1
+  },
+  "66": {
+    "UFFFD": 196,
+    "BARE_QMARK": 20,
+    "SUPERSCRIPT_U": 34,
+    "SUBSCRIPT_U": 10,
+    "MATH_UNICODE": 1,
+    "GREEK_TEXT": 12,
+    "LATIN_SUPP": 7,
+    "DASHES_QUOTES": 2
+  },
+  "67": {
+    "UFFFD": 162,
+    "BARE_QMARK": 25,
+    "SUPERSCRIPT_U": 34,
+    "SUBSCRIPT_U": 10,
+    "MATH_UNICODE": 1,
+    "GREEK_TEXT": 12,
+    "LATIN_SUPP": 7,
+    "DASHES_QUOTES": 2,
+    "NO_H1": 1
+  },
+  "68": {
+    "UFFFD": 46,
+    "BARE_QMARK": 23,
+    "SUPERSCRIPT_U": 34,
+    "SUBSCRIPT_U": 10,
+    "MATH_UNICODE": 1,
+    "GREEK_TEXT": 12,
+    "LATIN_SUPP": 7,
+    "DASHES_QUOTES": 2,
+    "NO_H1": 1
+  },
+  "69": {
+    "UFFFD": 116,
+    "BARE_QMARK": 17,
+    "SUPERSCRIPT_U": 34,
+    "SUBSCRIPT_U": 10,
+    "MATH_UNICODE": 1,
+    "GREEK_TEXT": 12,
+    "LATIN_SUPP": 7,
+    "DASHES_QUOTES": 2,
+    "NO_H1": 1
+  },
+  "70": {
+    "UFFFD": 93,
+    "BARE_QMARK": 14,
+    "SUPERSCRIPT_U": 34,
+    "SUBSCRIPT_U": 10,
+    "MATH_UNICODE": 1,
+    "GREEK_TEXT": 12,
+    "LATIN_SUPP": 7,
+    "DASHES_QUOTES": 2,
+    "NO_H1": 1
+  },
+  "71": {
+    "UFFFD": 141,
+    "BARE_QMARK": 17,
+    "SUPERSCRIPT_U": 34,
+    "SUBSCRIPT_U": 10,
+    "MATH_UNICODE": 1,
+    "GREEK_TEXT": 12,
+    "LATIN_SUPP": 7,
+    "DASHES_QUOTES": 2,
+    "NO_H1": 1
+  },
+  "72": {
+    "UFFFD": 51,
+    "BARE_QMARK": 37,
+    "SUPERSCRIPT_U": 34,
+    "SUBSCRIPT_U": 10,
+    "MATH_UNICODE": 1,
+    "GREEK_TEXT": 12,
+    "LATIN_SUPP": 7,
+    "DASHES_QUOTES": 3
+  },
+  "73": {
+    "UFFFD": 44,
+    "BARE_QMARK": 10,
+    "SUPERSCRIPT_U": 34,
+    "SUBSCRIPT_U": 10,
+    "MATH_UNICODE": 1,
+    "GREEK_TEXT": 12,
+    "LATIN_SUPP": 7,
+    "DASHES_QUOTES": 2,
+    "NO_H1": 1
+  },
+  "74": {
+    "UFFFD": 27,
+    "BARE_QMARK": 11,
+    "SUPERSCRIPT_U": 34,
+    "SUBSCRIPT_U": 10,
+    "MATH_UNICODE": 1,
+    "GREEK_TEXT": 12,
+    "LATIN_SUPP": 7,
+    "DASHES_QUOTES": 2,
+    "NO_H1": 1
+  },
+  "75": {
+    "UFFFD": 52,
+    "BARE_QMARK": 13,
+    "SUPERSCRIPT_U": 34,
+    "SUBSCRIPT_U": 10,
+    "MATH_UNICODE": 1,
+    "GREEK_TEXT": 12,
+    "LATIN_SUPP": 7,
+    "DASHES_QUOTES": 2,
+    "NO_H1": 1
+  },
+  "76": {
+    "UFFFD": 19,
+    "BARE_QMARK": 10,
+    "SUPERSCRIPT_U": 34,
+    "SUBSCRIPT_U": 10,
+    "MATH_UNICODE": 1,
+    "GREEK_TEXT": 12,
+    "LATIN_SUPP": 7,
+    "DASHES_QUOTES": 2,
+    "NO_H1": 1
+  },
+  "77": {
+    "UFFFD": 14,
+    "BARE_QMARK": 20,
+    "SUPERSCRIPT_U": 34,
+    "SUBSCRIPT_U": 10,
+    "MATH_UNICODE": 1,
+    "GREEK_TEXT": 12,
+    "LATIN_SUPP": 7,
+    "DASHES_QUOTES": 2,
+    "NO_H1": 1
+  },
+  "78": {
+    "UFFFD": 24,
+    "BARE_QMARK": 9,
+    "SUPERSCRIPT_U": 34,
+    "SUBSCRIPT_U": 10,
+    "MATH_UNICODE": 1,
+    "GREEK_TEXT": 12,
+    "LATIN_SUPP": 7,
+    "DASHES_QUOTES": 2,
+    "NO_H1": 1
+  },
+  "79": {
+    "UFFFD": 61,
+    "BARE_QMARK": 10,
+    "SUPERSCRIPT_U": 34,
+    "SUBSCRIPT_U": 10,
+    "MATH_UNICODE": 1,
+    "GREEK_TEXT": 12,
+    "LATIN_SUPP": 7,
+    "DASHES_QUOTES": 2,
+    "NO_H1": 1
+  },
+  "80": {
+    "UFFFD": 26,
+    "BARE_QMARK": 7,
+    "SUPERSCRIPT_U": 34,
+    "SUBSCRIPT_U": 10,
+    "MATH_UNICODE": 1,
+    "GREEK_TEXT": 12,
+    "LATIN_SUPP": 7,
+    "DASHES_QUOTES": 2,
+    "NO_H1": 1
+  },
+  "81": {
+    "UFFFD": 63,
+    "BARE_QMARK": 36,
+    "SUPERSCRIPT_U": 34,
+    "SUBSCRIPT_U": 10,
+    "MATH_UNICODE": 1,
+    "GREEK_TEXT": 12,
+    "LATIN_SUPP": 7,
+    "DASHES_QUOTES": 2,
+    "NO_H1": 1
+  },
+  "82": {
+    "UFFFD": 83,
+    "BARE_QMARK": 21,
+    "SUPERSCRIPT_U": 34,
+    "SUBSCRIPT_U": 10,
+    "MATH_UNICODE": 1,
+    "GREEK_TEXT": 12,
+    "LATIN_SUPP": 7,
+    "DASHES_QUOTES": 2,
+    "NO_H1": 1
+  },
+  "83": {
+    "UFFFD": 33,
+    "BARE_QMARK": 5,
+    "SUPERSCRIPT_U": 34,
+    "SUBSCRIPT_U": 10,
+    "MATH_UNICODE": 1,
+    "GREEK_TEXT": 12,
+    "LATIN_SUPP": 7,
+    "DASHES_QUOTES": 2,
+    "NO_H1": 1
+  },
+  "84": {
+    "UFFFD": 23,
+    "BARE_QMARK": 9,
+    "SUPERSCRIPT_U": 34,
+    "SUBSCRIPT_U": 10,
+    "MATH_UNICODE": 1,
+    "GREEK_TEXT": 12,
+    "LATIN_SUPP": 7,
+    "DASHES_QUOTES": 2,
+    "NO_H1": 1
+  },
+  "85": {
+    "UFFFD": 37,
+    "BARE_QMARK": 13,
+    "SUPERSCRIPT_U": 34,
+    "SUBSCRIPT_U": 10,
+    "MATH_UNICODE": 1,
+    "GREEK_TEXT": 12,
+    "LATIN_SUPP": 7,
+    "DASHES_QUOTES": 2,
+    "NO_H1": 1
+  },
+  "86": {
+    "UFFFD": 71,
+    "BARE_QMARK": 13,
+    "SUPERSCRIPT_U": 34,
+    "SUBSCRIPT_U": 10,
+    "MATH_UNICODE": 1,
+    "GREEK_TEXT": 12,
+    "LATIN_SUPP": 7,
+    "DASHES_QUOTES": 2,
+    "NO_H1": 1
+  },
+  "87": {
+    "UFFFD": 27,
+    "BARE_QMARK": 21,
+    "SUPERSCRIPT_U": 34,
+    "SUBSCRIPT_U": 10,
+    "MATH_UNICODE": 1,
+    "GREEK_TEXT": 12,
+    "LATIN_SUPP": 7,
+    "DASHES_QUOTES": 2,
+    "NO_H1": 1
+  },
+  "88": {
+    "UFFFD": 33,
+    "BARE_QMARK": 20,
+    "SUPERSCRIPT_U": 34,
+    "SUBSCRIPT_U": 10,
+    "MATH_UNICODE": 1,
+    "GREEK_TEXT": 12,
+    "LATIN_SUPP": 7,
+    "DASHES_QUOTES": 2,
+    "NO_H1": 1
+  },
+  "89": {
+    "UFFFD": 25,
+    "BARE_QMARK": 6,
+    "SUPERSCRIPT_U": 34,
+    "SUBSCRIPT_U": 10,
+    "MATH_UNICODE": 1,
+    "GREEK_TEXT": 12,
+    "LATIN_SUPP": 7,
+    "DASHES_QUOTES": 2
+  },
+  "90": {
+    "UFFFD": 103,
+    "BARE_QMARK": 17,
+    "SUPERSCRIPT_U": 34,
+    "SUBSCRIPT_U": 10,
+    "MATH_UNICODE": 1,
+    "GREEK_TEXT": 12,
+    "LATIN_SUPP": 7,
+    "DASHES_QUOTES": 2
+  },
+  "91": {
+    "UFFFD": 25,
+    "BARE_QMARK": 9,
+    "SUPERSCRIPT_U": 34,
+    "SUBSCRIPT_U": 10,
+    "MATH_UNICODE": 1,
+    "GREEK_TEXT": 12,
+    "LATIN_SUPP": 7,
+    "DASHES_QUOTES": 2
+  },
+  "92": {
+    "BARE_QMARK": 15,
+    "SUPERSCRIPT_U": 67,
+    "SUBSCRIPT_U": 10,
+    "MATH_UNICODE": 1,
+    "GREEK_TEXT": 12,
+    "LATIN_SUPP": 55,
+    "DASHES_QUOTES": 6,
+    "NO_H1": 1
+  },
+  "93": {
+    "UFFFD": 70,
+    "BARE_QMARK": 24,
+    "SUPERSCRIPT_U": 34,
+    "SUBSCRIPT_U": 10,
+    "MATH_UNICODE": 1,
+    "GREEK_TEXT": 12,
+    "LATIN_SUPP": 7,
+    "DASHES_QUOTES": 2,
+    "NO_H1": 1
+  },
+  "94": {
+    "UFFFD": 53,
+    "BARE_QMARK": 28,
+    "SUPERSCRIPT_U": 34,
+    "SUBSCRIPT_U": 10,
+    "MATH_UNICODE": 1,
+    "GREEK_TEXT": 12,
+    "LATIN_SUPP": 7,
+    "DASHES_QUOTES": 2,
+    "NO_H1": 1
+  },
+  "95": {
+    "UFFFD": 31,
+    "BARE_QMARK": 11,
+    "SUPERSCRIPT_U": 34,
+    "SUBSCRIPT_U": 10,
+    "MATH_UNICODE": 1,
+    "GREEK_TEXT": 12,
+    "LATIN_SUPP": 7,
+    "DASHES_QUOTES": 2,
+    "NO_H1": 1
+  },
+  "96": {
+    "UFFFD": 27,
+    "BARE_QMARK": 14,
+    "SUPERSCRIPT_U": 34,
+    "SUBSCRIPT_U": 10,
+    "MATH_UNICODE": 1,
+    "GREEK_TEXT": 12,
+    "LATIN_SUPP": 7,
+    "DASHES_QUOTES": 2,
+    "NO_H1": 1
+  },
+  "97": {
+    "UFFFD": 27,
+    "BARE_QMARK": 19,
+    "SUPERSCRIPT_U": 34,
+    "SUBSCRIPT_U": 10,
+    "MATH_UNICODE": 1,
+    "GREEK_TEXT": 12,
+    "LATIN_SUPP": 7,
+    "DASHES_QUOTES": 2,
+    "NO_H1": 1
+  },
+  "98": {
+    "UFFFD": 22,
+    "BARE_QMARK": 19,
+    "SUPERSCRIPT_U": 34,
+    "SUBSCRIPT_U": 10,
+    "MATH_UNICODE": 1,
+    "GREEK_TEXT": 12,
+    "LATIN_SUPP": 7,
+    "DASHES_QUOTES": 2,
+    "NO_H1": 1
+  },
+  "99": {
+    "UFFFD": 24,
+    "BARE_QMARK": 10,
+    "SUPERSCRIPT_U": 34,
+    "SUBSCRIPT_U": 10,
+    "MATH_UNICODE": 1,
+    "GREEK_TEXT": 12,
+    "LATIN_SUPP": 7,
+    "DASHES_QUOTES": 2,
+    "NO_H1": 1
+  },
+  "100": {
+    "UFFFD": 22,
+    "BARE_QMARK": 13,
+    "NO_H1": 1
+  },
+  "101": {
+    "UFFFD": 20,
+    "BARE_QMARK": 10,
+    "NO_H1": 1
+  },
+  "102": {
+    "UFFFD": 17,
+    "BARE_QMARK": 19,
+    "NO_H1": 1
+  },
+  "103": {
+    "UFFFD": 19,
+    "BARE_QMARK": 27,
+    "NO_H1": 1
+  },
+  "104": {
+    "SUPERSCRIPT_U": 9,
+    "MATH_UNICODE": 12,
+    "GREEK_TEXT": 1,
+    "LATIN_SUPP": 1,
+    "DASHES_QUOTES": 11,
+    "NO_H1": 1
+  },
+  "105": {
+    "BARE_QMARK": 25,
+    "SUPERSCRIPT_U": 2,
+    "LATIN_SUPP": 6,
+    "DASHES_QUOTES": 11,
+    "NO_H1": 1
+  },
+  "106": {
+    "BARE_QMARK": 84,
+    "SUPERSCRIPT_U": 8,
+    "LATIN_SUPP": 36,
+    "DASHES_QUOTES": 5,
+    "NO_H1": 1
+  },
+  "107": {
+    "UFFFD": 128,
+    "BARE_QMARK": 30,
+    "NO_H1": 1
+  },
+  "108": {
+    "UFFFD": 87,
+    "BARE_QMARK": 25,
+    "NO_H1": 1
+  },
+  "109": {
+    "UFFFD": 109,
+    "BARE_QMARK": 23,
+    "NO_H1": 1
+  },
+  "110": {
+    "UFFFD": 99,
+    "BARE_QMARK": 16,
+    "NO_H1": 1
+  },
+  "111": {
+    "UFFFD": 53,
+    "BARE_QMARK": 16,
+    "NO_H1": 1
+  },
+  "112": {
+    "UFFFD": 128,
+    "BARE_QMARK": 11,
+    "NO_H1": 1
+  },
+  "113": {
+    "UFFFD": 89,
+    "BARE_QMARK": 43,
+    "NO_H1": 1
+  },
+  "114": {
+    "UFFFD": 97,
+    "BARE_QMARK": 21,
+    "DASHES_QUOTES": 1
+  },
+  "115": {
+    "UFFFD": 70,
+    "BARE_QMARK": 22,
+    "NO_H1": 1
+  },
+  "116": {
+    "UFFFD": 69,
+    "BARE_QMARK": 32,
+    "NO_H1": 1
+  },
+  "117": {
+    "UFFFD": 89,
+    "BARE_QMARK": 40,
+    "NO_H1": 1
+  },
+  "118": {
+    "BARE_QMARK": 1,
+    "SUPERSCRIPT_U": 136,
+    "SUBSCRIPT_U": 4,
+    "CHECKMARK": 1,
+    "MATH_UNICODE": 13,
+    "GREEK_TEXT": 52,
+    "LATIN_SUPP": 49,
+    "DASHES_QUOTES": 18,
+    "NO_H1": 1
+  },
+  "119": {
+    "UFFFD": 108,
+    "BARE_QMARK": 8,
+    "NO_H1": 1
+  },
+  "120": {
+    "BARE_QMARK": 10,
+    "SUPERSCRIPT_U": 24,
+    "LATIN_SUPP": 5,
+    "DASHES_QUOTES": 32,
+    "NO_H1": 1
+  },
+  "121": {
+    "UFFFD": 218,
+    "BARE_QMARK": 72,
+    "NO_H1": 1
+  },
+  "122": {
+    "UFFFD": 94,
+    "BARE_QMARK": 16,
+    "NO_H1": 1
+  },
+  "123": {
+    "UFFFD": 63,
+    "BARE_QMARK": 33,
+    "NO_H1": 1
+  },
+  "124": {
+    "UFFFD": 54,
+    "BARE_QMARK": 18,
+    "NO_H1": 1
+  },
+  "125": {
+    "UFFFD": 84,
+    "BARE_QMARK": 46,
+    "NO_H1": 1
+  },
+  "126": {
+    "UFFFD": 73,
+    "BARE_QMARK": 24,
+    "NO_H1": 1
+  },
+  "127": {
+    "UFFFD": 84,
+    "BARE_QMARK": 19,
+    "NO_H1": 1
+  },
+  "128": {
+    "UFFFD": 98,
+    "BARE_QMARK": 67,
+    "NO_H1": 1
+  },
+  "129": {
+    "UFFFD": 53,
+    "BARE_QMARK": 19,
+    "DASHES_QUOTES": 1
+  },
+  "130": {
+    "UFFFD": 99,
+    "BARE_QMARK": 34,
+    "NO_H1": 1
+  },
+  "131": {
+    "SUPERSCRIPT_U": 31,
+    "CHECKMARK": 5,
+    "MATH_UNICODE": 32,
+    "GREEK_TEXT": 20,
+    "LATIN_SUPP": 13,
+    "DASHES_QUOTES": 8,
+    "NO_H1": 1
+  },
+  "132": {
+    "UFFFD": 83,
+    "BARE_QMARK": 25,
+    "NO_H1": 1
+  },
+  "133": {
+    "UFFFD": 72,
+    "BARE_QMARK": 20,
+    "NO_H1": 1
+  },
+  "134": {
+    "UFFFD": 54,
+    "BARE_QMARK": 29,
+    "NO_H1": 1
+  },
+  "135": {
+    "UFFFD": 26,
+    "BARE_QMARK": 13,
+    "NO_H1": 1
+  },
+  "136": {
+    "SUPERSCRIPT_U": 25,
+    "CHECKMARK": 5,
+    "MATH_UNICODE": 4,
+    "GREEK_TEXT": 15,
+    "LATIN_SUPP": 4,
+    "DASHES_QUOTES": 11,
+    "NO_H1": 1
+  },
+  "137": {
+    "UFFFD": 91,
+    "BARE_QMARK": 24,
+    "SUPERSCRIPT_U": 1,
+    "LATIN_SUPP": 1,
+    "DASHES_QUOTES": 1
+  },
+  "138": {
+    "UFFFD": 43,
+    "BARE_QMARK": 14,
+    "NO_H1": 1
+  },
+  "139": {
+    "UFFFD": 86,
+    "BARE_QMARK": 21,
+    "NO_H1": 1
+  },
+  "140": {
+    "UFFFD": 55,
+    "BARE_QMARK": 30,
+    "NO_H1": 1
+  },
+  "141": {
+    "UFFFD": 71,
+    "BARE_QMARK": 16,
+    "NO_H1": 1
+  },
+  "142": {
+    "UFFFD": 42,
+    "BARE_QMARK": 18,
+    "NO_H1": 1
+  },
+  "143": {
+    "UFFFD": 44,
+    "BARE_QMARK": 12,
+    "NO_H1": 1
+  },
+  "144": {
+    "UFFFD": 100,
+    "BARE_QMARK": 34,
+    "NO_H1": 1
+  },
+  "145": {
+    "DASHES_QUOTES": 13,
+    "NO_H1": 1
+  },
+  "146": {
+    "BARE_QMARK": 2,
+    "SUPERSCRIPT_U": 1,
+    "LATIN_SUPP": 1,
+    "DASHES_QUOTES": 27,
+    "NO_H1": 1
+  },
+  "147": {
+    "BARE_QMARK": 1,
+    "SUPERSCRIPT_U": 1,
+    "LATIN_SUPP": 1,
+    "DASHES_QUOTES": 15,
+    "NO_H1": 1
+  },
+  "148": {
+    "LATIN_SUPP": 14,
+    "DASHES_QUOTES": 20,
+    "NO_H1": 1
+  },
+  "149": {
+    "BARE_QMARK": 1,
+    "SUPERSCRIPT_U": 1,
+    "LATIN_SUPP": 14,
+    "DASHES_QUOTES": 23,
+    "NO_H1": 1
+  },
+  "150": {
+    "LATIN_SUPP": 4,
+    "DASHES_QUOTES": 19,
+    "NO_H1": 1
+  },
+  "151": {
+    "BARE_QMARK": 2,
+    "LATIN_SUPP": 7,
+    "DASHES_QUOTES": 24,
+    "NO_H1": 1
+  },
+  "152": {
+    "UFFFD": 107,
+    "BARE_QMARK": 20,
+    "NO_H1": 1
+  },
+  "153": {
+    "UFFFD": 73,
+    "BARE_QMARK": 13,
+    "NO_H1": 1
+  },
+  "154": {
+    "UFFFD": 55,
+    "BARE_QMARK": 1,
+    "NO_H1": 1
+  },
+  "155": {
+    "UFFFD": 67,
+    "BARE_QMARK": 84,
+    "NO_H1": 1
+  },
+  "156": {
+    "UFFFD": 96,
+    "BARE_QMARK": 34,
+    "NO_H1": 1
+  },
+  "157": {
+    "UFFFD": 9,
+    "BARE_QMARK": 1,
+    "SUPERSCRIPT_U": 90,
+    "MATH_UNICODE": 8,
+    "GREEK_TEXT": 12,
+    "LATIN_SUPP": 52,
+    "DASHES_QUOTES": 2
+  },
+  "158": {
+    "UFFFD": 5,
+    "SUPERSCRIPT_U": 69,
+    "MATH_UNICODE": 22,
+    "GREEK_TEXT": 12,
+    "LATIN_SUPP": 28,
+    "DASHES_QUOTES": 2
+  },
+  "159": {
+    "UFFFD": 3,
+    "BARE_QMARK": 1,
+    "SUPERSCRIPT_U": 16,
+    "MATH_UNICODE": 1,
+    "LATIN_SUPP": 4,
+    "DASHES_QUOTES": 5
+  },
+  "160": {
+    "UFFFD": 4,
+    "SUPERSCRIPT_U": 25,
+    "MATH_UNICODE": 1,
+    "GREEK_TEXT": 13,
+    "LATIN_SUPP": 8,
+    "DASHES_QUOTES": 5
+  },
+  "161": {
+    "UFFFD": 25,
+    "BARE_QMARK": 16
+  },
+  "162": {
+    "UFFFD": 9,
+    "BARE_QMARK": 1,
+    "SUPERSCRIPT_U": 13,
+    "MATH_UNICODE": 1,
+    "GREEK_TEXT": 22,
+    "LATIN_SUPP": 20,
+    "DASHES_QUOTES": 2
+  },
+  "163": {
+    "UFFFD": 3,
+    "BARE_QMARK": 1,
+    "SUPERSCRIPT_U": 4,
+    "GREEK_TEXT": 5,
+    "LATIN_SUPP": 2,
+    "DASHES_QUOTES": 1
+  },
+  "164": {
+    "SUPERSCRIPT_U": 18,
+    "MATH_UNICODE": 7,
+    "GREEK_TEXT": 17,
+    "LATIN_SUPP": 14,
+    "DASHES_QUOTES": 7
+  },
+  "165": {
+    "UFFFD": 3,
+    "BARE_QMARK": 1,
+    "SUPERSCRIPT_U": 27,
+    "SUBSCRIPT_U": 2,
+    "MATH_UNICODE": 1,
+    "GREEK_TEXT": 27,
+    "LATIN_SUPP": 13,
+    "DASHES_QUOTES": 3
+  },
+  "166": {
+    "UFFFD": 9,
+    "BARE_QMARK": 1,
+    "SUPERSCRIPT_U": 51,
+    "MATH_UNICODE": 5,
+    "GREEK_TEXT": 28,
+    "LATIN_SUPP": 23,
+    "DASHES_QUOTES": 4
+  },
+  "167": {
+    "SUPERSCRIPT_U": 23,
+    "MATH_UNICODE": 5,
+    "GREEK_TEXT": 11,
+    "LATIN_SUPP": 13,
+    "DASHES_QUOTES": 7,
+    "NO_H1": 1
+  },
+  "168": {
+    "BARE_QMARK": 14,
+    "SUPERSCRIPT_U": 1,
+    "LATIN_SUPP": 2,
+    "DASHES_QUOTES": 3,
+    "NO_H1": 1
+  },
+  "169": {
+    "MATH_UNICODE": 9,
+    "GREEK_TEXT": 1,
+    "LATIN_SUPP": 1,
+    "DASHES_QUOTES": 21,
+    "NO_H1": 1
+  },
+  "170": {
+    "BARE_QMARK": 5,
+    "SUPERSCRIPT_U": 2,
+    "LATIN_SUPP": 14,
+    "DASHES_QUOTES": 8,
+    "NO_H1": 1
+  },
+  "171": {
+    "BARE_QMARK": 35,
+    "SUPERSCRIPT_U": 7,
+    "LATIN_SUPP": 52,
+    "DASHES_QUOTES": 18,
+    "NO_H1": 1
+  },
+  "172": {
+    "BARE_QMARK": 1,
+    "SUPERSCRIPT_U": 4,
+    "LATIN_SUPP": 10,
+    "DASHES_QUOTES": 43,
+    "NO_H1": 1
+  },
+  "173": {
+    "BARE_QMARK": 18,
+    "SUPERSCRIPT_U": 14,
+    "LATIN_SUPP": 30,
+    "DASHES_QUOTES": 13,
+    "NO_H1": 1
+  },
+  "174": {
+    "BARE_QMARK": 7,
+    "SUPERSCRIPT_U": 3,
+    "LATIN_SUPP": 34,
+    "DASHES_QUOTES": 10,
+    "NO_H1": 1
+  },
+  "175": {
+    "BARE_QMARK": 26,
+    "SUPERSCRIPT_U": 5,
+    "LATIN_SUPP": 12,
+    "DASHES_QUOTES": 17,
+    "NO_H1": 1
+  },
+  "176": {
+    "BARE_QMARK": 15,
+    "SUPERSCRIPT_U": 4,
+    "LATIN_SUPP": 11,
+    "DASHES_QUOTES": 10,
+    "NO_H1": 1
+  },
+  "177": {
+    "BARE_QMARK": 1,
+    "SUPERSCRIPT_U": 5,
+    "LATIN_SUPP": 8,
+    "DASHES_QUOTES": 8,
+    "NO_H1": 1
+  },
+  "178": {
+    "BARE_QMARK": 6,
+    "SUPERSCRIPT_U": 1,
+    "LATIN_SUPP": 1,
+    "DASHES_QUOTES": 4,
+    "NO_H1": 1
+  },
+  "179": {
+    "BARE_QMARK": 32,
+    "SUPERSCRIPT_U": 3,
+    "LATIN_SUPP": 21,
+    "DASHES_QUOTES": 25,
+    "NO_H1": 1
+  },
+  "180": {
+    "BARE_QMARK": 11,
+    "SUPERSCRIPT_U": 9,
+    "LATIN_SUPP": 55,
+    "DASHES_QUOTES": 12,
+    "NO_H1": 1
+  },
+  "181": {
+    "UFFFD": 10,
+    "BARE_QMARK": 1,
+    "DASHES_QUOTES": 6
+  },
+  "182": {
+    "UFFFD": 3,
+    "BARE_QMARK": 1,
+    "SUPERSCRIPT_U": 25,
+    "MATH_UNICODE": 3,
+    "GREEK_TEXT": 10,
+    "LATIN_SUPP": 2,
+    "DASHES_QUOTES": 6
+  },
+  "183": {
+    "UFFFD": 14,
+    "BARE_QMARK": 2,
+    "SUPERSCRIPT_U": 8,
+    "MATH_UNICODE": 5,
+    "GREEK_TEXT": 3,
+    "DASHES_QUOTES": 10
+  },
+  "184": {
+    "UFFFD": 4,
+    "SUPERSCRIPT_U": 7,
+    "MATH_UNICODE": 2,
+    "LATIN_SUPP": 1,
+    "DASHES_QUOTES": 5
+  },
+  "185": {
+    "UFFFD": 11,
+    "BARE_QMARK": 1,
+    "MATH_UNICODE": 2,
+    "GREEK_TEXT": 11,
+    "DASHES_QUOTES": 10
+  },
+  "186": {
+    "BARE_QMARK": 1,
+    "SUPERSCRIPT_U": 32,
+    "LATIN_SUPP": 18,
+    "DASHES_QUOTES": 9,
+    "NO_H1": 1
+  },
+  "187": {
+    "SUPERSCRIPT_U": 56,
+    "MATH_UNICODE": 8,
+    "GREEK_TEXT": 4,
+    "LATIN_SUPP": 12,
+    "DASHES_QUOTES": 8
+  },
+  "188": {
+    "MATH_UNICODE": 12,
+    "DASHES_QUOTES": 6,
+    "NO_H1": 1
+  },
+  "189": {
+    "BARE_QMARK": 63,
+    "SUPERSCRIPT_U": 4,
+    "LATIN_SUPP": 5,
+    "DASHES_QUOTES": 25,
+    "NO_H1": 1
+  },
+  "190": {
+    "UFFFD": 14,
+    "BARE_QMARK": 2,
+    "MATH_UNICODE": 21,
+    "DASHES_QUOTES": 15
+  },
+  "191": {
+    "BARE_QMARK": 9,
+    "SUPERSCRIPT_U": 1,
+    "LATIN_SUPP": 2,
+    "DASHES_QUOTES": 12,
+    "NO_H1": 1
+  },
+  "192": {
+    "BARE_QMARK": 6,
+    "DASHES_QUOTES": 9,
+    "NO_H1": 1
+  },
+  "193": {
+    "UFFFD": 3,
+    "BARE_QMARK": 1,
+    "SUPERSCRIPT_U": 11,
+    "MATH_UNICODE": 7,
+    "GREEK_TEXT": 2,
+    "LATIN_SUPP": 3,
+    "DASHES_QUOTES": 11
+  },
+  "194": {
+    "BARE_QMARK": 34,
+    "SUPERSCRIPT_U": 1,
+    "LATIN_SUPP": 1,
+    "DASHES_QUOTES": 10,
+    "NO_H1": 1
+  },
+  "195": {
+    "SUPERSCRIPT_U": 1,
+    "MATH_UNICODE": 2,
+    "GREEK_TEXT": 2,
+    "DASHES_QUOTES": 22,
+    "NO_H1": 1
+  },
+  "196": {
+    "BARE_QMARK": 49,
+    "SUPERSCRIPT_U": 29,
+    "LATIN_SUPP": 105,
+    "DASHES_QUOTES": 8,
+    "NO_H1": 1
+  },
+  "197": {
+    "BARE_QMARK": 15,
+    "SUPERSCRIPT_U": 31,
+    "LATIN_SUPP": 46,
+    "DASHES_QUOTES": 10,
+    "NO_H1": 1
+  },
+  "198": {
+    "BARE_QMARK": 38,
+    "SUPERSCRIPT_U": 47,
+    "LATIN_SUPP": 126,
+    "DASHES_QUOTES": 11,
+    "NO_H1": 1
+  },
+  "199": {
+    "BARE_QMARK": 48,
+    "SUPERSCRIPT_U": 49,
+    "LATIN_SUPP": 115,
+    "DASHES_QUOTES": 8,
+    "NO_H1": 1
+  },
+  "200": {
+    "BARE_QMARK": 76,
+    "SUPERSCRIPT_U": 64,
+    "MATH_UNICODE": 4,
+    "GREEK_TEXT": 8,
+    "LATIN_SUPP": 73,
+    "DASHES_QUOTES": 11,
+    "NO_H1": 1
+  },
+  "201": {
+    "BARE_QMARK": 53,
+    "SUPERSCRIPT_U": 46,
+    "LATIN_SUPP": 82,
+    "DASHES_QUOTES": 11,
+    "NO_H1": 1
+  },
+  "202": {
+    "BARE_QMARK": 93,
+    "SUPERSCRIPT_U": 46,
+    "LATIN_SUPP": 113,
+    "DASHES_QUOTES": 20,
+    "NO_H1": 1
+  },
+  "203": {
+    "BARE_QMARK": 56,
+    "SUPERSCRIPT_U": 31,
+    "LATIN_SUPP": 66,
+    "DASHES_QUOTES": 11,
+    "NO_H1": 1
+  },
+  "204": {
+    "BARE_QMARK": 58,
+    "SUPERSCRIPT_U": 40,
+    "LATIN_SUPP": 85,
+    "DASHES_QUOTES": 11,
+    "NO_H1": 1
+  },
+  "205": {
+    "SUPERSCRIPT_U": 25,
+    "SUBSCRIPT_U": 1,
+    "CHECKMARK": 1,
+    "MATH_UNICODE": 67,
+    "GREEK_TEXT": 39,
+    "LATIN_SUPP": 66,
+    "DASHES_QUOTES": 8,
+    "NO_H1": 1
+  },
+  "206": {
+    "BARE_QMARK": 37,
+    "SUPERSCRIPT_U": 2,
+    "LATIN_SUPP": 32,
+    "DASHES_QUOTES": 13,
+    "NO_H1": 1
+  },
+  "207": {
+    "BARE_QMARK": 66,
+    "SUPERSCRIPT_U": 20,
+    "LATIN_SUPP": 26,
+    "DASHES_QUOTES": 5,
+    "NO_H1": 1
+  },
+  "208": {
+    "BARE_QMARK": 79,
+    "SUPERSCRIPT_U": 55,
+    "LATIN_SUPP": 57,
+    "DASHES_QUOTES": 12,
+    "NO_H1": 1
+  },
+  "209": {
+    "BARE_QMARK": 55,
+    "SUPERSCRIPT_U": 26,
+    "LATIN_SUPP": 42,
+    "DASHES_QUOTES": 10,
+    "NO_H1": 1
+  },
+  "210": {
+    "BARE_QMARK": 82,
+    "SUPERSCRIPT_U": 46,
+    "LATIN_SUPP": 77,
+    "DASHES_QUOTES": 11,
+    "NO_H1": 1
+  },
+  "211": {
+    "BARE_QMARK": 25,
+    "SUPERSCRIPT_U": 19,
+    "LATIN_SUPP": 44,
+    "DASHES_QUOTES": 42,
+    "NO_H1": 1
+  },
+  "212": {
+    "BARE_QMARK": 57,
+    "SUPERSCRIPT_U": 112,
+    "LATIN_SUPP": 39,
+    "DASHES_QUOTES": 17,
+    "NO_H1": 1
+  },
+  "213": {
+    "BARE_QMARK": 72,
+    "SUPERSCRIPT_U": 70,
+    "LATIN_SUPP": 127,
+    "DASHES_QUOTES": 5,
+    "NO_H1": 1
+  },
+  "214": {
+    "BARE_QMARK": 35,
+    "SUPERSCRIPT_U": 37,
+    "LATIN_SUPP": 76,
+    "DASHES_QUOTES": 9,
+    "NO_H1": 1
+  },
+  "215": {
+    "BARE_QMARK": 62,
+    "SUPERSCRIPT_U": 81,
+    "LATIN_SUPP": 117,
+    "DASHES_QUOTES": 17,
+    "NO_H1": 1
+  },
+  "216": {
+    "BARE_QMARK": 33,
+    "SUPERSCRIPT_U": 55,
+    "LATIN_SUPP": 154,
+    "DASHES_QUOTES": 20,
+    "NO_H1": 1
+  },
+  "217": {
+    "BARE_QMARK": 46,
+    "SUPERSCRIPT_U": 47,
+    "LATIN_SUPP": 86,
+    "DASHES_QUOTES": 22,
+    "NO_H1": 1
+  },
+  "218": {
+    "BARE_QMARK": 21,
+    "SUPERSCRIPT_U": 26,
+    "LATIN_SUPP": 64,
+    "DASHES_QUOTES": 17,
+    "NO_H1": 1
+  },
+  "219": {
+    "BARE_QMARK": 7,
+    "SUPERSCRIPT_U": 35,
+    "LATIN_SUPP": 71,
+    "DASHES_QUOTES": 21,
+    "NO_H1": 1
+  },
+  "220": {
+    "BARE_QMARK": 15,
+    "SUPERSCRIPT_U": 93,
+    "LATIN_SUPP": 115,
+    "DASHES_QUOTES": 20,
+    "NO_H1": 1
+  },
+  "221": {
+    "BARE_QMARK": 9,
+    "SUPERSCRIPT_U": 12,
+    "LATIN_SUPP": 29,
+    "DASHES_QUOTES": 16,
+    "NO_H1": 1
+  },
+  "222": {
+    "BARE_QMARK": 1,
+    "SUPERSCRIPT_U": 21,
+    "LATIN_SUPP": 20,
+    "DASHES_QUOTES": 29,
+    "NO_H1": 1
+  },
+  "223": {
+    "BARE_QMARK": 14,
+    "SUPERSCRIPT_U": 19,
+    "LATIN_SUPP": 23,
+    "DASHES_QUOTES": 25,
+    "NO_H1": 1
+  },
+  "224": {
+    "BARE_QMARK": 12,
+    "SUPERSCRIPT_U": 42,
+    "LATIN_SUPP": 60,
+    "DASHES_QUOTES": 22,
+    "NO_H1": 1
+  },
+  "225": {
+    "UFFFD": 11,
+    "BARE_QMARK": 1,
+    "SUPERSCRIPT_U": 1,
+    "MATH_UNICODE": 2,
+    "GREEK_TEXT": 2,
+    "LATIN_SUPP": 2,
+    "DASHES_QUOTES": 46
+  },
+  "226": {
+    "UFFFD": 4,
+    "SUPERSCRIPT_U": 2,
+    "DASHES_QUOTES": 7
+  },
+  "227": {
+    "UFFFD": 7,
+    "SUPERSCRIPT_U": 6,
+    "LATIN_SUPP": 2,
+    "DASHES_QUOTES": 7
+  },
+  "228": {
+    "SUPERSCRIPT_U": 9,
+    "LATIN_SUPP": 3,
+    "DASHES_QUOTES": 10,
+    "NO_H1": 1
+  },
+  "229": {
+    "UFFFD": 5,
+    "MATH_UNICODE": 8,
+    "DASHES_QUOTES": 7
+  },
+  "230": {
+    "UFFFD": 5,
+    "DASHES_QUOTES": 11
+  },
+  "231": {
+    "UFFFD": 5,
+    "LATIN_SUPP": 3,
+    "DASHES_QUOTES": 11
+  },
+  "232": {
+    "UFFFD": 5,
+    "SUPERSCRIPT_U": 2,
+    "DASHES_QUOTES": 10
+  },
+  "233": {
+    "UFFFD": 4,
+    "SUPERSCRIPT_U": 1,
+    "DASHES_QUOTES": 8
+  },
+  "234": {
+    "UFFFD": 4,
+    "MATH_UNICODE": 6,
+    "LATIN_SUPP": 6,
+    "DASHES_QUOTES": 7
+  },
+  "235": {
+    "DASHES_QUOTES": 10
+  },
+  "236": {
+    "SUPERSCRIPT_U": 3,
+    "MATH_UNICODE": 2,
+    "LATIN_SUPP": 2,
+    "DASHES_QUOTES": 17
+  },
+  "237": {
+    "GREEK_TEXT": 1,
+    "DASHES_QUOTES": 16
+  },
+  "238": {
+    "SUPERSCRIPT_U": 9,
+    "GREEK_TEXT": 1,
+    "LATIN_SUPP": 3,
+    "DASHES_QUOTES": 15
+  },
+  "239": {
+    "SUPERSCRIPT_U": 10,
+    "SUBSCRIPT_U": 6,
+    "MATH_UNICODE": 5,
+    "LATIN_SUPP": 1,
+    "DASHES_QUOTES": 22
+  },
+  "240": {
+    "SUPERSCRIPT_U": 5,
+    "GREEK_TEXT": 1,
+    "LATIN_SUPP": 4,
+    "DASHES_QUOTES": 20
+  },
+  "241": {
+    "DASHES_QUOTES": 17,
+    "NO_H1": 1
+  },
+  "242": {
+    "SUPERSCRIPT_U": 3,
+    "GREEK_TEXT": 1,
+    "DASHES_QUOTES": 15,
+    "NO_H1": 1
+  },
+  "243": {
+    "SUPERSCRIPT_U": 7,
+    "SUBSCRIPT_U": 3,
+    "GREEK_TEXT": 3,
+    "DASHES_QUOTES": 26,
+    "NO_H1": 1
+  },
+  "244": {
+    "BARE_QMARK": 21,
+    "SUPERSCRIPT_U": 19,
+    "LATIN_SUPP": 56,
+    "DASHES_QUOTES": 15,
+    "NO_H1": 1
+  },
+  "245": {
+    "BARE_QMARK": 38,
+    "SUPERSCRIPT_U": 43,
+    "LATIN_SUPP": 60,
+    "DASHES_QUOTES": 16,
+    "NO_H1": 1
+  },
+  "246": {
+    "BARE_QMARK": 33,
+    "SUPERSCRIPT_U": 5,
+    "LATIN_SUPP": 27,
+    "DASHES_QUOTES": 23,
+    "NO_H1": 1
+  },
+  "247": {
+    "BARE_QMARK": 8,
+    "SUPERSCRIPT_U": 9,
+    "LATIN_SUPP": 43,
+    "DASHES_QUOTES": 17,
+    "NO_H1": 1
+  },
+  "248": {
+    "BARE_QMARK": 20,
+    "SUPERSCRIPT_U": 26,
+    "LATIN_SUPP": 52,
+    "DASHES_QUOTES": 14,
+    "NO_H1": 1
+  },
+  "249": {
+    "BARE_QMARK": 6,
+    "SUPERSCRIPT_U": 7,
+    "LATIN_SUPP": 39,
+    "DASHES_QUOTES": 19,
+    "NO_H1": 1
+  },
+  "250": {
+    "BARE_QMARK": 12,
+    "SUPERSCRIPT_U": 62,
+    "LATIN_SUPP": 59,
+    "DASHES_QUOTES": 12,
+    "NO_H1": 1
+  },
+  "251": {
+    "BARE_QMARK": 15,
+    "SUPERSCRIPT_U": 56,
+    "LATIN_SUPP": 51,
+    "DASHES_QUOTES": 17,
+    "NO_H1": 1
+  },
+  "252": {
+    "BARE_QMARK": 14,
+    "SUPERSCRIPT_U": 66,
+    "LATIN_SUPP": 31,
+    "DASHES_QUOTES": 15,
+    "NO_H1": 1
+  },
+  "253": {
+    "BARE_QMARK": 13,
+    "SUPERSCRIPT_U": 76,
+    "LATIN_SUPP": 47,
+    "DASHES_QUOTES": 16,
+    "NO_H1": 1
+  },
+  "254": {
+    "BARE_QMARK": 9,
+    "SUPERSCRIPT_U": 71,
+    "LATIN_SUPP": 39,
+    "DASHES_QUOTES": 18,
+    "NO_H1": 1
+  },
+  "255": {
+    "BARE_QMARK": 19,
+    "SUPERSCRIPT_U": 54,
+    "LATIN_SUPP": 37,
+    "DASHES_QUOTES": 17,
+    "NO_H1": 1
+  },
+  "256": {
+    "BARE_QMARK": 11,
+    "SUPERSCRIPT_U": 53,
+    "LATIN_SUPP": 40,
+    "DASHES_QUOTES": 19,
+    "NO_H1": 1
+  },
+  "257": {
+    "SUPERSCRIPT_U": 82,
+    "LATIN_SUPP": 15,
+    "DASHES_QUOTES": 51,
+    "NO_H1": 1
+  },
+  "258": {
+    "UFFFD": 11,
+    "BARE_QMARK": 1,
+    "SUPERSCRIPT_U": 73,
+    "SUBSCRIPT_U": 5,
+    "MATH_UNICODE": 9,
+    "GREEK_TEXT": 7,
+    "LATIN_SUPP": 12,
+    "DASHES_QUOTES": 18
+  },
+  "259": {
+    "UFFFD": 4,
+    "SUPERSCRIPT_U": 58,
+    "SUBSCRIPT_U": 3,
+    "MATH_UNICODE": 27,
+    "GREEK_TEXT": 46,
+    "LATIN_SUPP": 52,
+    "DASHES_QUOTES": 31
+  },
+  "260": {
+    "UFFFD": 132,
+    "BARE_QMARK": 27
+  },
+  "261": {
+    "SUPERSCRIPT_U": 70,
+    "SUBSCRIPT_U": 8,
+    "MATH_UNICODE": 27,
+    "GREEK_TEXT": 69,
+    "LATIN_SUPP": 58,
+    "DASHES_QUOTES": 39,
+    "NO_H1": 1
+  },
+  "262": {
+    "BARE_QMARK": 1,
+    "SUPERSCRIPT_U": 66,
+    "SUBSCRIPT_U": 8,
+    "MATH_UNICODE": 25,
+    "GREEK_TEXT": 35,
+    "LATIN_SUPP": 45,
+    "DASHES_QUOTES": 35,
+    "NO_H1": 1
+  },
+  "263": {
+    "SUPERSCRIPT_U": 32,
+    "SUBSCRIPT_U": 7,
+    "MATH_UNICODE": 21,
+    "GREEK_TEXT": 57,
+    "LATIN_SUPP": 30,
+    "DASHES_QUOTES": 44,
+    "NO_H1": 1
+  },
+  "264": {
+    "SUPERSCRIPT_U": 18,
+    "SUBSCRIPT_U": 2,
+    "MATH_UNICODE": 4,
+    "GREEK_TEXT": 1,
+    "LATIN_SUPP": 3,
+    "DASHES_QUOTES": 14,
+    "NO_H1": 1
+  },
+  "265": {
+    "SUPERSCRIPT_U": 60,
+    "SUBSCRIPT_U": 14,
+    "MATH_UNICODE": 17,
+    "GREEK_TEXT": 11,
+    "LATIN_SUPP": 18,
+    "DASHES_QUOTES": 14,
+    "NO_H1": 1
+  },
+  "266": {
+    "SUPERSCRIPT_U": 108,
+    "SUBSCRIPT_U": 3,
+    "MATH_UNICODE": 31,
+    "GREEK_TEXT": 9,
+    "LATIN_SUPP": 10,
+    "DASHES_QUOTES": 18,
+    "NO_H1": 1
+  },
+  "267": {
+    "UFFFD": 10,
+    "BARE_QMARK": 1,
+    "SUPERSCRIPT_U": 75,
+    "SUBSCRIPT_U": 5,
+    "SOLAR": 7,
+    "MATH_UNICODE": 9,
+    "GREEK_TEXT": 16,
+    "LATIN_SUPP": 23,
+    "DASHES_QUOTES": 12
+  },
+  "268": {
+    "UFFFD": 6,
+    "BARE_QMARK": 2,
+    "SUPERSCRIPT_U": 64,
+    "SUBSCRIPT_U": 2,
+    "SOLAR": 1,
+    "MATH_UNICODE": 16,
+    "GREEK_TEXT": 42,
+    "LATIN_SUPP": 35,
+    "DASHES_QUOTES": 13
+  },
+  "269": {
+    "SUPERSCRIPT_U": 110,
+    "SUBSCRIPT_U": 3,
+    "SOLAR": 3,
+    "MATH_UNICODE": 6,
+    "GREEK_TEXT": 36,
+    "LATIN_SUPP": 23,
+    "DASHES_QUOTES": 15,
+    "NO_H1": 1
+  },
+  "270": {
+    "UFFFD": 3,
+    "BARE_QMARK": 1,
+    "SUPERSCRIPT_U": 135,
+    "SUBSCRIPT_U": 16,
+    "SOLAR": 1,
+    "MATH_UNICODE": 6,
+    "GREEK_TEXT": 17,
+    "LATIN_SUPP": 62,
+    "DASHES_QUOTES": 10
+  },
+  "271": {
+    "UFFFD": 10,
+    "BARE_QMARK": 2,
+    "SUPERSCRIPT_U": 54,
+    "SUBSCRIPT_U": 15,
+    "MATH_UNICODE": 23,
+    "GREEK_TEXT": 28,
+    "LATIN_SUPP": 16,
+    "DASHES_QUOTES": 15
+  },
+  "272": {
+    "UFFFD": 10,
+    "BARE_QMARK": 5,
+    "SUPERSCRIPT_U": 124,
+    "SUBSCRIPT_U": 1,
+    "CHECKMARK": 1,
+    "MATH_UNICODE": 10,
+    "GREEK_TEXT": 31,
+    "LATIN_SUPP": 56,
+    "DASHES_QUOTES": 17
+  },
+  "273": {
+    "SUPERSCRIPT_U": 17,
+    "MATH_UNICODE": 39,
+    "GREEK_TEXT": 16,
+    "LATIN_SUPP": 12,
+    "DASHES_QUOTES": 9,
+    "NO_H1": 1
+  },
+  "274": {
+    "UFFFD": 8,
+    "BARE_QMARK": 2,
+    "SUPERSCRIPT_U": 45,
+    "MATH_UNICODE": 5,
+    "GREEK_TEXT": 37,
+    "LATIN_SUPP": 24,
+    "DASHES_QUOTES": 9
+  },
+  "275": {
+    "UFFFD": 59,
+    "BARE_QMARK": 26
+  },
+  "276": {
+    "UFFFD": 637,
+    "BARE_QMARK": 64
+  },
+  "277": {
+    "SUPERSCRIPT_U": 14,
+    "MATH_UNICODE": 24,
+    "GREEK_TEXT": 20,
+    "LATIN_SUPP": 6,
+    "DASHES_QUOTES": 14,
+    "NO_H1": 1
+  },
+  "278": {
+    "UFFFD": 14,
+    "BARE_QMARK": 2,
+    "SUPERSCRIPT_U": 56,
+    "MATH_UNICODE": 8,
+    "GREEK_TEXT": 19,
+    "LATIN_SUPP": 38,
+    "DASHES_QUOTES": 17
+  },
+  "279": {
+    "UFFFD": 3,
+    "BARE_QMARK": 1,
+    "SUPERSCRIPT_U": 81,
+    "CHECKMARK": 1,
+    "MATH_UNICODE": 9,
+    "GREEK_TEXT": 27,
+    "LATIN_SUPP": 42,
+    "DASHES_QUOTES": 10
+  },
+  "280": {
+    "SUPERSCRIPT_U": 46,
+    "GREEK_TEXT": 9,
+    "LATIN_SUPP": 22,
+    "DASHES_QUOTES": 9,
+    "NO_H1": 1
+  },
+  "281": {
+    "SUPERSCRIPT_U": 30,
+    "MATH_UNICODE": 1,
+    "GREEK_TEXT": 7,
+    "LATIN_SUPP": 26,
+    "DASHES_QUOTES": 8,
+    "NO_H1": 1
+  },
+  "282": {
+    "SUPERSCRIPT_U": 47,
+    "MATH_UNICODE": 4,
+    "GREEK_TEXT": 9,
+    "LATIN_SUPP": 29,
+    "DASHES_QUOTES": 13,
+    "NO_H1": 1
+  },
+  "283": {
+    "BARE_QMARK": 1,
+    "SUPERSCRIPT_U": 42,
+    "SUBSCRIPT_U": 5,
+    "MATH_UNICODE": 1,
+    "GREEK_TEXT": 9,
+    "LATIN_SUPP": 30,
+    "DASHES_QUOTES": 10,
+    "NO_H1": 1
+  },
+  "284": {
+    "SUPERSCRIPT_U": 36,
+    "SUBSCRIPT_U": 6,
+    "SOLAR": 5,
+    "MATH_UNICODE": 9,
+    "GREEK_TEXT": 11,
+    "LATIN_SUPP": 24,
+    "DASHES_QUOTES": 10,
+    "NO_H1": 1
+  },
+  "285": {
+    "SUPERSCRIPT_U": 31,
+    "SUBSCRIPT_U": 6,
+    "MATH_UNICODE": 8,
+    "GREEK_TEXT": 14,
+    "LATIN_SUPP": 14,
+    "DASHES_QUOTES": 8,
+    "NO_H1": 1
+  },
+  "286": {
+    "SUPERSCRIPT_U": 15,
+    "SUBSCRIPT_U": 1,
+    "MATH_UNICODE": 6,
+    "GREEK_TEXT": 18,
+    "LATIN_SUPP": 7,
+    "DASHES_QUOTES": 9,
+    "NO_H1": 1
+  },
+  "287": {
+    "UFFFD": 73
+  },
+  "288": {
+    "BARE_QMARK": 1,
+    "SUPERSCRIPT_U": 50,
+    "MATH_UNICODE": 3,
+    "GREEK_TEXT": 26,
+    "LATIN_SUPP": 14,
+    "DASHES_QUOTES": 5,
+    "NO_H1": 1
+  },
+  "289": {
+    "SUPERSCRIPT_U": 58,
+    "MATH_UNICODE": 5,
+    "GREEK_TEXT": 1,
+    "LATIN_SUPP": 37,
+    "DASHES_QUOTES": 6,
+    "NO_H1": 1
+  },
+  "290": {
+    "SUPERSCRIPT_U": 114,
+    "SUBSCRIPT_U": 3,
+    "MATH_UNICODE": 8,
+    "GREEK_TEXT": 7,
+    "LATIN_SUPP": 47,
+    "DASHES_QUOTES": 8
+  },
+  "291": {
+    "SUPERSCRIPT_U": 83,
+    "SUBSCRIPT_U": 2,
+    "MATH_UNICODE": 4,
+    "LATIN_SUPP": 32,
+    "DASHES_QUOTES": 10
+  },
+  "292": {
+    "SUPERSCRIPT_U": 45,
+    "SUBSCRIPT_U": 2,
+    "MATH_UNICODE": 4,
+    "GREEK_TEXT": 9,
+    "LATIN_SUPP": 17,
+    "DASHES_QUOTES": 12
+  },
+  "293": {
+    "SUPERSCRIPT_U": 84,
+    "SUBSCRIPT_U": 3,
+    "MATH_UNICODE": 9,
+    "GREEK_TEXT": 17,
+    "LATIN_SUPP": 55,
+    "DASHES_QUOTES": 5
+  },
+  "294": {
+    "UFFFD": 5,
+    "SUPERSCRIPT_U": 105,
+    "SUBSCRIPT_U": 11,
+    "MATH_UNICODE": 3,
+    "GREEK_TEXT": 2,
+    "LATIN_SUPP": 53,
+    "DASHES_QUOTES": 6
+  },
+  "295": {
+    "UFFFD": 8,
+    "BARE_QMARK": 2,
+    "SUPERSCRIPT_U": 134,
+    "CHECKMARK": 2,
+    "MATH_UNICODE": 5,
+    "GREEK_TEXT": 7,
+    "LATIN_SUPP": 60,
+    "DASHES_QUOTES": 13
+  },
+  "296": {
+    "SUPERSCRIPT_U": 71,
+    "SUBSCRIPT_U": 2,
+    "MATH_UNICODE": 2,
+    "GREEK_TEXT": 34,
+    "LATIN_SUPP": 25,
+    "DASHES_QUOTES": 12
+  },
+  "297": {
+    "UFFFD": 11,
+    "BARE_QMARK": 1,
+    "SUPERSCRIPT_U": 51,
+    "SUBSCRIPT_U": 5,
+    "MATH_UNICODE": 5,
+    "GREEK_TEXT": 17,
+    "LATIN_SUPP": 24,
+    "DASHES_QUOTES": 12
+  },
+  "298": {
+    "SUPERSCRIPT_U": 75,
+    "MATH_UNICODE": 6,
+    "GREEK_TEXT": 36,
+    "LATIN_SUPP": 37,
+    "DASHES_QUOTES": 11
+  },
+  "299": {
+    "UFFFD": 5,
+    "BARE_QMARK": 1,
+    "SUPERSCRIPT_U": 105,
+    "MATH_UNICODE": 2,
+    "GREEK_TEXT": 13,
+    "LATIN_SUPP": 37,
+    "DASHES_QUOTES": 16
+  },
+  "300": {
+    "UFFFD": 8,
+    "BARE_QMARK": 2,
+    "SUPERSCRIPT_U": 87,
+    "SUBSCRIPT_U": 3,
+    "GREEK_TEXT": 55,
+    "LATIN_SUPP": 27,
+    "DASHES_QUOTES": 15
+  },
+  "301": {
+    "SUPERSCRIPT_U": 148,
+    "SUBSCRIPT_U": 2,
+    "MATH_UNICODE": 5,
+    "GREEK_TEXT": 31,
+    "LATIN_SUPP": 46,
+    "DASHES_QUOTES": 22
+  },
+  "302": {
+    "UFFFD": 5,
+    "SUPERSCRIPT_U": 102,
+    "MATH_UNICODE": 3,
+    "GREEK_TEXT": 13,
+    "LATIN_SUPP": 45,
+    "DASHES_QUOTES": 17
+  },
+  "303": {
+    "UFFFD": 5,
+    "SUPERSCRIPT_U": 85,
+    "MATH_UNICODE": 4,
+    "GREEK_TEXT": 22,
+    "LATIN_SUPP": 42,
+    "DASHES_QUOTES": 18
+  },
+  "304": {
+    "SUPERSCRIPT_U": 113,
+    "MATH_UNICODE": 9,
+    "GREEK_TEXT": 30,
+    "LATIN_SUPP": 43,
+    "DASHES_QUOTES": 18
+  },
+  "305": {
+    "BARE_QMARK": 1,
+    "SUPERSCRIPT_U": 11,
+    "MATH_UNICODE": 1,
+    "GREEK_TEXT": 6,
+    "LATIN_SUPP": 10,
+    "DASHES_QUOTES": 5
+  },
+  "306": {
+    "SUPERSCRIPT_U": 42,
+    "GREEK_TEXT": 8,
+    "LATIN_SUPP": 15,
+    "DASHES_QUOTES": 3
+  },
+  "307": {
+    "UFFFD": 63,
+    "BARE_QMARK": 16
+  },
+  "308": {
+    "SUPERSCRIPT_U": 53,
+    "SUBSCRIPT_U": 6,
+    "MATH_UNICODE": 3,
+    "GREEK_TEXT": 16,
+    "LATIN_SUPP": 29,
+    "DASHES_QUOTES": 10,
+    "NO_H1": 1
+  },
+  "309": {
+    "UFFFD": 55,
+    "BARE_QMARK": 14
+  },
+  "310": {
+    "SUPERSCRIPT_U": 45,
+    "CHECKMARK": 4,
+    "MATH_UNICODE": 1,
+    "GREEK_TEXT": 8,
+    "LATIN_SUPP": 28,
+    "DASHES_QUOTES": 15,
+    "NO_H1": 1
+  },
+  "311": {
+    "SUPERSCRIPT_U": 34,
+    "MATH_UNICODE": 3,
+    "GREEK_TEXT": 4,
+    "LATIN_SUPP": 16,
+    "DASHES_QUOTES": 3,
+    "NO_H1": 1
+  },
+  "312": {
+    "SUPERSCRIPT_U": 35,
+    "MATH_UNICODE": 1,
+    "GREEK_TEXT": 5,
+    "LATIN_SUPP": 14,
+    "DASHES_QUOTES": 8,
+    "NO_H1": 1
+  },
+  "313": {
+    "SUPERSCRIPT_U": 39,
+    "SUBSCRIPT_U": 2,
+    "GREEK_TEXT": 19,
+    "LATIN_SUPP": 19,
+    "DASHES_QUOTES": 4,
+    "NO_H1": 1
+  },
+  "314": {
+    "UFFFD": 67,
+    "BARE_QMARK": 6
+  },
+  "315": {
+    "SUPERSCRIPT_U": 15,
+    "MATH_UNICODE": 2,
+    "GREEK_TEXT": 5,
+    "LATIN_SUPP": 6,
+    "DASHES_QUOTES": 6,
+    "NO_H1": 1
+  },
+  "316": {
+    "UFFFD": 63,
+    "BARE_QMARK": 8
+  },
+  "317": {
+    "SUPERSCRIPT_U": 45,
+    "GREEK_TEXT": 9,
+    "LATIN_SUPP": 16,
+    "DASHES_QUOTES": 7,
+    "NO_H1": 1
+  },
+  "318": {
+    "SUPERSCRIPT_U": 57,
+    "CHECKMARK": 1,
+    "MATH_UNICODE": 6,
+    "GREEK_TEXT": 14,
+    "LATIN_SUPP": 26,
+    "DASHES_QUOTES": 6
+  },
+  "319": {
+    "SUPERSCRIPT_U": 56,
+    "MATH_UNICODE": 1,
+    "GREEK_TEXT": 5,
+    "LATIN_SUPP": 26,
+    "DASHES_QUOTES": 5,
+    "NO_H1": 1
+  },
+  "320": {
+    "SUPERSCRIPT_U": 43,
+    "MATH_UNICODE": 1,
+    "GREEK_TEXT": 3,
+    "LATIN_SUPP": 13,
+    "DASHES_QUOTES": 11
+  },
+  "321": {
+    "UFFFD": 5,
+    "SUPERSCRIPT_U": 13,
+    "GREEK_TEXT": 1,
+    "LATIN_SUPP": 6,
+    "DASHES_QUOTES": 2
+  },
+  "322": {
+    "UFFFD": 5,
+    "SUPERSCRIPT_U": 42,
+    "MATH_UNICODE": 1,
+    "GREEK_TEXT": 2,
+    "LATIN_SUPP": 31,
+    "DASHES_QUOTES": 5
+  },
+  "323": {
+    "SUPERSCRIPT_U": 17,
+    "MATH_UNICODE": 2,
+    "GREEK_TEXT": 1,
+    "LATIN_SUPP": 12,
+    "DASHES_QUOTES": 11
+  },
+  "324": {
+    "UFFFD": 3,
+    "BARE_QMARK": 1,
+    "SUPERSCRIPT_U": 47,
+    "MATH_UNICODE": 4,
+    "GREEK_TEXT": 1,
+    "LATIN_SUPP": 20,
+    "DASHES_QUOTES": 7
+  },
+  "325": {
+    "UFFFD": 59,
+    "BARE_QMARK": 13
+  },
+  "326": {
+    "UFFFD": 11,
+    "BARE_QMARK": 1,
+    "SUPERSCRIPT_U": 74,
+    "MATH_UNICODE": 4,
+    "GREEK_TEXT": 7,
+    "LATIN_SUPP": 15,
+    "DASHES_QUOTES": 28
+  },
+  "327": {
+    "SUPERSCRIPT_U": 69,
+    "SUBSCRIPT_U": 1,
+    "MATH_UNICODE": 2,
+    "GREEK_TEXT": 8,
+    "LATIN_SUPP": 19,
+    "DASHES_QUOTES": 22
+  },
+  "328": {
+    "SUPERSCRIPT_U": 41,
+    "SUBSCRIPT_U": 14,
+    "MATH_UNICODE": 1,
+    "GREEK_TEXT": 46,
+    "LATIN_SUPP": 9,
+    "DASHES_QUOTES": 28,
+    "NO_H1": 1
+  },
+  "329": {
+    "BARE_QMARK": 52,
+    "SUPERSCRIPT_U": 14,
+    "LATIN_SUPP": 50,
+    "DASHES_QUOTES": 11,
+    "NO_H1": 1
+  },
+  "330": {
+    "BARE_QMARK": 10,
+    "SUPERSCRIPT_U": 6,
+    "LATIN_SUPP": 86,
+    "DASHES_QUOTES": 10,
+    "NO_H1": 1
+  },
+  "331": {
+    "BARE_QMARK": 40,
+    "SUPERSCRIPT_U": 38,
+    "LATIN_SUPP": 69,
+    "DASHES_QUOTES": 8,
+    "NO_H1": 1
+  },
+  "332": {
+    "BARE_QMARK": 53,
+    "SUPERSCRIPT_U": 110,
+    "LATIN_SUPP": 82,
+    "DASHES_QUOTES": 21,
+    "NO_H1": 1
+  },
+  "333": {
+    "BARE_QMARK": 58,
+    "SUPERSCRIPT_U": 23,
+    "LATIN_SUPP": 44,
+    "DASHES_QUOTES": 22,
+    "NO_H1": 1
+  },
+  "334": {
+    "BARE_QMARK": 59,
+    "SUPERSCRIPT_U": 53,
+    "LATIN_SUPP": 90,
+    "DASHES_QUOTES": 9,
+    "NO_H1": 1
+  },
+  "335": {
+    "BARE_QMARK": 45,
+    "SUPERSCRIPT_U": 33,
+    "LATIN_SUPP": 75,
+    "DASHES_QUOTES": 10,
+    "NO_H1": 1
+  },
+  "336": {
+    "BARE_QMARK": 53,
+    "SUPERSCRIPT_U": 46,
+    "LATIN_SUPP": 76,
+    "DASHES_QUOTES": 16,
+    "NO_H1": 1
+  },
+  "337": {
+    "BARE_QMARK": 30,
+    "SUPERSCRIPT_U": 51,
+    "LATIN_SUPP": 49,
+    "DASHES_QUOTES": 21,
+    "NO_H1": 1
+  },
+  "338": {
+    "BARE_QMARK": 9,
+    "SUPERSCRIPT_U": 105,
+    "LATIN_SUPP": 91,
+    "DASHES_QUOTES": 40,
+    "NO_H1": 1
+  },
+  "339": {
+    "UFFFD": 42,
+    "BARE_QMARK": 4
+  },
+  "340": {
+    "UFFFD": 40,
+    "BARE_QMARK": 8
+  },
+  "341": {
+    "UFFFD": 9,
+    "BARE_QMARK": 9
+  },
+  "342": {
+    "UFFFD": 22,
+    "BARE_QMARK": 2
+  },
+  "343": {
+    "UFFFD": 33,
+    "BARE_QMARK": 8
+  },
+  "344": {
+    "UFFFD": 28,
+    "BARE_QMARK": 8
+  },
+  "345": {
+    "UFFFD": 31,
+    "BARE_QMARK": 15
+  },
+  "346": {
+    "SUPERSCRIPT_U": 34,
+    "SOLAR": 4,
+    "MATH_UNICODE": 7,
+    "GREEK_TEXT": 11,
+    "LATIN_SUPP": 9,
+    "DASHES_QUOTES": 2,
+    "NO_H1": 1
+  },
+  "347": {
+    "UFFFD": 25,
+    "BARE_QMARK": 12
+  },
+  "348": {
+    "SUPERSCRIPT_U": 26,
+    "MATH_UNICODE": 7,
+    "GREEK_TEXT": 7,
+    "LATIN_SUPP": 8,
+    "DASHES_QUOTES": 3,
+    "NO_H1": 1
+  },
+  "349": {
+    "SUPERSCRIPT_U": 23,
+    "SOLAR": 6,
+    "MATH_UNICODE": 8,
+    "GREEK_TEXT": 4,
+    "LATIN_SUPP": 11,
+    "DASHES_QUOTES": 7,
+    "NO_H1": 1
+  },
+  "350": {
+    "SUPERSCRIPT_U": 23,
+    "SOLAR": 3,
+    "MATH_UNICODE": 10,
+    "GREEK_TEXT": 10,
+    "LATIN_SUPP": 10,
+    "DASHES_QUOTES": 7,
+    "NO_H1": 1
+  },
+  "351": {
+    "UFFFD": 32,
+    "BARE_QMARK": 13
+  },
+  "352": {
+    "UFFFD": 30,
+    "BARE_QMARK": 3
+  },
+  "353": {
+    "SUPERSCRIPT_U": 2,
+    "MATH_UNICODE": 14,
+    "GREEK_TEXT": 29,
+    "LATIN_SUPP": 6,
+    "DASHES_QUOTES": 3,
+    "NO_H1": 1
+  },
+  "354": {
+    "SUPERSCRIPT_U": 17,
+    "MATH_UNICODE": 1,
+    "GREEK_TEXT": 2,
+    "LATIN_SUPP": 17,
+    "DASHES_QUOTES": 3,
+    "NO_H1": 1
+  },
+  "355": {
+    "UFFFD": 27,
+    "BARE_QMARK": 4
+  },
+  "356": {
+    "UFFFD": 36,
+    "BARE_QMARK": 3
+  },
+  "357": {
+    "SUPERSCRIPT_U": 17,
+    "SUBSCRIPT_U": 4,
+    "SOLAR": 1,
+    "MATH_UNICODE": 1,
+    "GREEK_TEXT": 5,
+    "LATIN_SUPP": 9,
+    "DASHES_QUOTES": 2,
+    "NO_H1": 1
+  },
+  "358": {
+    "SUPERSCRIPT_U": 14,
+    "SOLAR": 2,
+    "MATH_UNICODE": 1,
+    "GREEK_TEXT": 1,
+    "LATIN_SUPP": 4,
+    "DASHES_QUOTES": 7,
+    "NO_H1": 1
+  },
+  "359": {
+    "UFFFD": 23
+  },
+  "360": {
+    "SUPERSCRIPT_U": 19,
+    "SUBSCRIPT_U": 1,
+    "MATH_UNICODE": 6,
+    "GREEK_TEXT": 14,
+    "LATIN_SUPP": 7,
+    "DASHES_QUOTES": 5,
+    "NO_H1": 1
+  },
+  "361": {
+    "UFFFD": 25,
+    "BARE_QMARK": 4
+  },
+  "362": {
+    "UFFFD": 25,
+    "BARE_QMARK": 1
+  },
+  "363": {
+    "UFFFD": 35,
+    "BARE_QMARK": 17
+  },
+  "364": {
+    "SUPERSCRIPT_U": 4,
+    "SUBSCRIPT_U": 2,
+    "MATH_UNICODE": 9,
+    "GREEK_TEXT": 22,
+    "LATIN_SUPP": 4,
+    "DASHES_QUOTES": 3,
+    "NO_H1": 1
+  },
+  "365": {
+    "SUPERSCRIPT_U": 36,
+    "SUBSCRIPT_U": 3,
+    "MATH_UNICODE": 5,
+    "GREEK_TEXT": 23,
+    "LATIN_SUPP": 16,
+    "DASHES_QUOTES": 3,
+    "NO_H1": 1
+  },
+  "366": {
+    "SUPERSCRIPT_U": 19,
+    "MATH_UNICODE": 1,
+    "GREEK_TEXT": 14,
+    "LATIN_SUPP": 8,
+    "DASHES_QUOTES": 3,
+    "NO_H1": 1
+  },
+  "367": {
+    "UFFFD": 53,
+    "BARE_QMARK": 6
+  },
+  "368": {
+    "UFFFD": 77,
+    "BARE_QMARK": 30
+  },
+  "369": {
+    "SUPERSCRIPT_U": 20,
+    "CHECKMARK": 1,
+    "MATH_UNICODE": 10,
+    "GREEK_TEXT": 7,
+    "LATIN_SUPP": 7,
+    "DASHES_QUOTES": 10,
+    "NO_H1": 1
+  },
+  "370": {
+    "BARE_QMARK": 1,
+    "SUPERSCRIPT_U": 99,
+    "SUBSCRIPT_U": 2,
+    "MATH_UNICODE": 1,
+    "GREEK_TEXT": 18,
+    "LATIN_SUPP": 20,
+    "DASHES_QUOTES": 11,
+    "NO_H1": 1
+  },
+  "371": {
+    "SUPERSCRIPT_U": 55,
+    "GREEK_TEXT": 2,
+    "LATIN_SUPP": 20,
+    "DASHES_QUOTES": 12
+  },
+  "372": {
+    "SUPERSCRIPT_U": 66,
+    "SUBSCRIPT_U": 1,
+    "MATH_UNICODE": 1,
+    "GREEK_TEXT": 2,
+    "LATIN_SUPP": 27,
+    "DASHES_QUOTES": 3
+  },
+  "373": {
+    "SUPERSCRIPT_U": 10,
+    "MATH_UNICODE": 5,
+    "GREEK_TEXT": 6,
+    "LATIN_SUPP": 5,
+    "DASHES_QUOTES": 4
+  },
+  "374": {
+    "SUPERSCRIPT_U": 18,
+    "SUBSCRIPT_U": 3,
+    "MATH_UNICODE": 16,
+    "GREEK_TEXT": 2,
+    "LATIN_SUPP": 6,
+    "DASHES_QUOTES": 5
+  },
+  "375": {
+    "SUPERSCRIPT_U": 9,
+    "MATH_UNICODE": 5,
+    "GREEK_TEXT": 6,
+    "LATIN_SUPP": 3,
+    "DASHES_QUOTES": 10
+  },
+  "376": {
+    "SUPERSCRIPT_U": 61,
+    "SUBSCRIPT_U": 4,
+    "CHECKMARK": 5,
+    "MATH_UNICODE": 41,
+    "GREEK_TEXT": 28,
+    "LATIN_SUPP": 56,
+    "DASHES_QUOTES": 5
+  },
+  "377": {
+    "SUPERSCRIPT_U": 27,
+    "MATH_UNICODE": 15,
+    "GREEK_TEXT": 3,
+    "LATIN_SUPP": 9,
+    "DASHES_QUOTES": 13
+  },
+  "378": {
+    "SUPERSCRIPT_U": 9,
+    "GREEK_TEXT": 4,
+    "LATIN_SUPP": 5,
+    "DASHES_QUOTES": 13
+  },
+  "379": {
+    "SUPERSCRIPT_U": 94,
+    "SUBSCRIPT_U": 4,
+    "MATH_UNICODE": 12,
+    "GREEK_TEXT": 11,
+    "LATIN_SUPP": 17,
+    "DASHES_QUOTES": 14
+  },
+  "380": {
+    "BARE_QMARK": 1,
+    "SUPERSCRIPT_U": 2,
+    "MATH_UNICODE": 4,
+    "GREEK_TEXT": 3,
+    "LATIN_SUPP": 1,
+    "DASHES_QUOTES": 20
+  },
+  "381": {
+    "SUPERSCRIPT_U": 21,
+    "MATH_UNICODE": 7,
+    "GREEK_TEXT": 5,
+    "LATIN_SUPP": 11,
+    "DASHES_QUOTES": 15
+  },
+  "382": {
+    "SUPERSCRIPT_U": 112,
+    "CHECKMARK": 12,
+    "MATH_UNICODE": 14,
+    "LATIN_SUPP": 28,
+    "DASHES_QUOTES": 20
+  },
+  "383": {
+    "SUPERSCRIPT_U": 16,
+    "MATH_UNICODE": 19,
+    "GREEK_TEXT": 2,
+    "LATIN_SUPP": 4,
+    "DASHES_QUOTES": 19
+  },
+  "384": {
+    "SUPERSCRIPT_U": 46,
+    "MATH_UNICODE": 5,
+    "GREEK_TEXT": 1,
+    "LATIN_SUPP": 8,
+    "DASHES_QUOTES": 18
+  },
+  "385": {
+    "SUPERSCRIPT_U": 320,
+    "SUBSCRIPT_U": 16,
+    "GREEK_TEXT": 32,
+    "LATIN_SUPP": 123,
+    "DASHES_QUOTES": 21
+  },
+  "386": {
+    "SUPERSCRIPT_U": 33,
+    "SUBSCRIPT_U": 1,
+    "MATH_UNICODE": 4,
+    "GREEK_TEXT": 10,
+    "LATIN_SUPP": 4,
+    "DASHES_QUOTES": 29
+  },
+  "387": {
+    "SUPERSCRIPT_U": 32,
+    "MATH_UNICODE": 3,
+    "GREEK_TEXT": 10,
+    "LATIN_SUPP": 17,
+    "DASHES_QUOTES": 7
+  },
+  "388": {
+    "SUPERSCRIPT_U": 8,
+    "MATH_UNICODE": 1,
+    "GREEK_TEXT": 4,
+    "LATIN_SUPP": 4,
+    "DASHES_QUOTES": 7
+  },
+  "389": {
+    "SUPERSCRIPT_U": 1,
+    "MATH_UNICODE": 6,
+    "GREEK_TEXT": 30,
+    "LATIN_SUPP": 7,
+    "DASHES_QUOTES": 5
+  },
+  "390": {
+    "SUPERSCRIPT_U": 27,
+    "SUBSCRIPT_U": 2,
+    "MATH_UNICODE": 2,
+    "GREEK_TEXT": 25,
+    "LATIN_SUPP": 18,
+    "DASHES_QUOTES": 12
+  },
+  "391": {
+    "SUPERSCRIPT_U": 8,
+    "MATH_UNICODE": 10,
+    "GREEK_TEXT": 12,
+    "LATIN_SUPP": 2,
+    "DASHES_QUOTES": 4
+  },
+  "392": {
+    "SUPERSCRIPT_U": 12,
+    "CHECKMARK": 5,
+    "MATH_UNICODE": 9,
+    "GREEK_TEXT": 11,
+    "LATIN_SUPP": 10,
+    "DASHES_QUOTES": 6
+  },
+  "393": {
+    "SUPERSCRIPT_U": 13,
+    "MATH_UNICODE": 3,
+    "GREEK_TEXT": 9,
+    "LATIN_SUPP": 4,
+    "DASHES_QUOTES": 6
+  },
+  "394": {
+    "SUPERSCRIPT_U": 5,
+    "CHECKMARK": 1,
+    "MATH_UNICODE": 3,
+    "GREEK_TEXT": 3,
+    "LATIN_SUPP": 1,
+    "DASHES_QUOTES": 6
+  },
+  "395": {
+    "SUPERSCRIPT_U": 19,
+    "MATH_UNICODE": 4,
+    "GREEK_TEXT": 1,
+    "LATIN_SUPP": 3,
+    "DASHES_QUOTES": 3
+  },
+  "396": {
+    "SUPERSCRIPT_U": 4,
+    "MATH_UNICODE": 7,
+    "GREEK_TEXT": 18,
+    "LATIN_SUPP": 4,
+    "DASHES_QUOTES": 4
+  },
+  "397": {
+    "SUPERSCRIPT_U": 6,
+    "CHECKMARK": 4,
+    "MATH_UNICODE": 18,
+    "GREEK_TEXT": 7,
+    "LATIN_SUPP": 3,
+    "DASHES_QUOTES": 6
+  },
+  "398": {
+    "SUPERSCRIPT_U": 4,
+    "MATH_UNICODE": 4,
+    "GREEK_TEXT": 17,
+    "LATIN_SUPP": 1,
+    "DASHES_QUOTES": 16
+  },
+  "399": {
+    "SUPERSCRIPT_U": 21,
+    "MATH_UNICODE": 4,
+    "GREEK_TEXT": 3,
+    "LATIN_SUPP": 4,
+    "DASHES_QUOTES": 8
+  },
+  "400": {
+    "BARE_QMARK": 1,
+    "SUPERSCRIPT_U": 14,
+    "SUBSCRIPT_U": 3,
+    "MATH_UNICODE": 12,
+    "GREEK_TEXT": 10,
+    "LATIN_SUPP": 7,
+    "DASHES_QUOTES": 6
+  },
+  "401": {
+    "SUPERSCRIPT_U": 13,
+    "SUBSCRIPT_U": 3,
+    "MATH_UNICODE": 12,
+    "GREEK_TEXT": 13,
+    "LATIN_SUPP": 10,
+    "DASHES_QUOTES": 15
+  },
+  "402": {
+    "SUPERSCRIPT_U": 16,
+    "SUBSCRIPT_U": 3,
+    "MATH_UNICODE": 12,
+    "GREEK_TEXT": 15,
+    "LATIN_SUPP": 7,
+    "DASHES_QUOTES": 10
+  },
+  "403": {
+    "SUPERSCRIPT_U": 19,
+    "SUBSCRIPT_U": 3,
+    "MATH_UNICODE": 12,
+    "GREEK_TEXT": 14,
+    "LATIN_SUPP": 7,
+    "DASHES_QUOTES": 9
+  },
+  "404": {
+    "SUPERSCRIPT_U": 14,
+    "SUBSCRIPT_U": 3,
+    "MATH_UNICODE": 11,
+    "GREEK_TEXT": 11,
+    "LATIN_SUPP": 8,
+    "DASHES_QUOTES": 11
+  },
+  "405": {
+    "SUPERSCRIPT_U": 21,
+    "SUBSCRIPT_U": 10,
+    "MATH_UNICODE": 17,
+    "GREEK_TEXT": 15,
+    "LATIN_SUPP": 6,
+    "DASHES_QUOTES": 10
+  },
+  "406": {
+    "SUPERSCRIPT_U": 15,
+    "SUBSCRIPT_U": 3,
+    "MATH_UNICODE": 16,
+    "GREEK_TEXT": 13,
+    "LATIN_SUPP": 12,
+    "DASHES_QUOTES": 10
+  },
+  "407": {
+    "SUPERSCRIPT_U": 22,
+    "SUBSCRIPT_U": 3,
+    "CHECKMARK": 2,
+    "MATH_UNICODE": 17,
+    "GREEK_TEXT": 12,
+    "LATIN_SUPP": 7,
+    "DASHES_QUOTES": 12
+  },
+  "408": {
+    "SUPERSCRIPT_U": 19,
+    "SUBSCRIPT_U": 3,
+    "MATH_UNICODE": 11,
+    "GREEK_TEXT": 9,
+    "LATIN_SUPP": 6,
+    "DASHES_QUOTES": 15
+  },
+  "409": {
+    "SUPERSCRIPT_U": 14,
+    "SUBSCRIPT_U": 3,
+    "MATH_UNICODE": 11,
+    "GREEK_TEXT": 9,
+    "LATIN_SUPP": 6,
+    "DASHES_QUOTES": 27
+  },
+  "410": {
+    "SUPERSCRIPT_U": 19,
+    "SUBSCRIPT_U": 3,
+    "MATH_UNICODE": 11,
+    "GREEK_TEXT": 10,
+    "LATIN_SUPP": 7,
+    "DASHES_QUOTES": 27
+  },
+  "411": {
+    "SUPERSCRIPT_U": 15,
+    "SUBSCRIPT_U": 3,
+    "MATH_UNICODE": 18,
+    "GREEK_TEXT": 13,
+    "LATIN_SUPP": 11,
+    "DASHES_QUOTES": 14
+  },
+  "412": {
+    "SUPERSCRIPT_U": 22,
+    "SUBSCRIPT_U": 5,
+    "MATH_UNICODE": 12,
+    "GREEK_TEXT": 9,
+    "LATIN_SUPP": 8,
+    "DASHES_QUOTES": 18
+  },
+  "413": {
+    "SUPERSCRIPT_U": 19,
+    "SUBSCRIPT_U": 3,
+    "MATH_UNICODE": 11,
+    "GREEK_TEXT": 9,
+    "LATIN_SUPP": 12,
+    "DASHES_QUOTES": 12
+  },
+  "414": {
+    "SUPERSCRIPT_U": 17,
+    "SUBSCRIPT_U": 3,
+    "MATH_UNICODE": 11,
+    "GREEK_TEXT": 12,
+    "LATIN_SUPP": 7,
+    "DASHES_QUOTES": 9
+  },
+  "415": {
+    "SUPERSCRIPT_U": 20,
+    "SUBSCRIPT_U": 3,
+    "MATH_UNICODE": 12,
+    "GREEK_TEXT": 9,
+    "LATIN_SUPP": 7,
+    "DASHES_QUOTES": 9
+  },
+  "416": {
+    "SUPERSCRIPT_U": 15,
+    "SUBSCRIPT_U": 3,
+    "MATH_UNICODE": 13,
+    "GREEK_TEXT": 12,
+    "LATIN_SUPP": 6,
+    "DASHES_QUOTES": 14
+  },
+  "417": {
+    "SUPERSCRIPT_U": 13,
+    "SUBSCRIPT_U": 3,
+    "MATH_UNICODE": 20,
+    "GREEK_TEXT": 21,
+    "LATIN_SUPP": 6,
+    "DASHES_QUOTES": 12
+  },
+  "418": {
+    "SUPERSCRIPT_U": 17,
+    "SUBSCRIPT_U": 3,
+    "MATH_UNICODE": 11,
+    "GREEK_TEXT": 10,
+    "LATIN_SUPP": 6,
+    "DASHES_QUOTES": 8
+  },
+  "419": {
+    "SUPERSCRIPT_U": 16,
+    "SUBSCRIPT_U": 3,
+    "MATH_UNICODE": 12,
+    "GREEK_TEXT": 9,
+    "LATIN_SUPP": 6,
+    "DASHES_QUOTES": 10
+  },
+  "420": {
+    "SUPERSCRIPT_U": 13,
+    "SUBSCRIPT_U": 3,
+    "MATH_UNICODE": 13,
+    "GREEK_TEXT": 28,
+    "LATIN_SUPP": 8,
+    "DASHES_QUOTES": 23
+  },
+  "421": {
+    "SUPERSCRIPT_U": 34,
+    "SUBSCRIPT_U": 3,
+    "MATH_UNICODE": 16,
+    "GREEK_TEXT": 12,
+    "LATIN_SUPP": 14,
+    "DASHES_QUOTES": 20
+  },
+  "422": {
+    "SUPERSCRIPT_U": 12,
+    "MATH_UNICODE": 7,
+    "GREEK_TEXT": 11,
+    "LATIN_SUPP": 6,
+    "DASHES_QUOTES": 47
+  },
+  "423": {
+    "BARE_QMARK": 1,
+    "SUPERSCRIPT_U": 14,
+    "MATH_UNICODE": 6,
+    "GREEK_TEXT": 12,
+    "LATIN_SUPP": 9,
+    "DASHES_QUOTES": 23
+  },
+  "424": {
+    "SUPERSCRIPT_U": 4,
+    "MATH_UNICODE": 3,
+    "GREEK_TEXT": 10,
+    "LATIN_SUPP": 5,
+    "DASHES_QUOTES": 22
+  },
+  "425": {
+    "SUPERSCRIPT_U": 4,
+    "MATH_UNICODE": 9,
+    "GREEK_TEXT": 12,
+    "LATIN_SUPP": 4,
+    "DASHES_QUOTES": 14
+  },
+  "426": {
+    "SUPERSCRIPT_U": 4,
+    "MATH_UNICODE": 8,
+    "GREEK_TEXT": 13,
+    "LATIN_SUPP": 5,
+    "DASHES_QUOTES": 19
+  },
+  "427": {
+    "SUPERSCRIPT_U": 4,
+    "MATH_UNICODE": 8,
+    "GREEK_TEXT": 11,
+    "LATIN_SUPP": 6,
+    "DASHES_QUOTES": 11
+  },
+  "428": {
+    "SUPERSCRIPT_U": 4,
+    "MATH_UNICODE": 10,
+    "GREEK_TEXT": 10,
+    "LATIN_SUPP": 5,
+    "DASHES_QUOTES": 19
+  },
+  "429": {
+    "SUPERSCRIPT_U": 4,
+    "MATH_UNICODE": 10,
+    "GREEK_TEXT": 11,
+    "LATIN_SUPP": 6,
+    "DASHES_QUOTES": 18
+  },
+  "430": {
+    "SUPERSCRIPT_U": 24,
+    "CHECKMARK": 2,
+    "MATH_UNICODE": 4,
+    "GREEK_TEXT": 9,
+    "LATIN_SUPP": 4,
+    "DASHES_QUOTES": 22
+  },
+  "431": {
+    "SUPERSCRIPT_U": 12,
+    "SUBSCRIPT_U": 2,
+    "CHECKMARK": 2,
+    "MATH_UNICODE": 5,
+    "GREEK_TEXT": 8,
+    "LATIN_SUPP": 1,
+    "DASHES_QUOTES": 24
+  },
+  "432": {
+    "SUPERSCRIPT_U": 11,
+    "CHECKMARK": 2,
+    "MATH_UNICODE": 4,
+    "GREEK_TEXT": 8,
+    "LATIN_SUPP": 11,
+    "DASHES_QUOTES": 22
+  },
+  "433": {
+    "SUPERSCRIPT_U": 8,
+    "SOLAR": 1,
+    "CHECKMARK": 2,
+    "MATH_UNICODE": 4,
+    "GREEK_TEXT": 7,
+    "LATIN_SUPP": 2,
+    "DASHES_QUOTES": 20
+  },
+  "434": {
+    "SUPERSCRIPT_U": 13,
+    "SUBSCRIPT_U": 2,
+    "SOLAR": 2,
+    "CHECKMARK": 2,
+    "MATH_UNICODE": 4,
+    "GREEK_TEXT": 10,
+    "LATIN_SUPP": 2,
+    "DASHES_QUOTES": 26
+  },
+  "435": {
+    "SUPERSCRIPT_U": 13,
+    "SUBSCRIPT_U": 2,
+    "SOLAR": 3,
+    "CHECKMARK": 2,
+    "MATH_UNICODE": 5,
+    "GREEK_TEXT": 9,
+    "LATIN_SUPP": 2,
+    "DASHES_QUOTES": 26
+  },
+  "436": {
+    "SUPERSCRIPT_U": 11,
+    "CHECKMARK": 2,
+    "MATH_UNICODE": 4,
+    "GREEK_TEXT": 10,
+    "LATIN_SUPP": 1,
+    "DASHES_QUOTES": 24
+  },
+  "437": {
+    "BARE_QMARK": 3,
+    "SUPERSCRIPT_U": 10,
+    "SUBSCRIPT_U": 1,
+    "CHECKMARK": 1,
+    "MATH_UNICODE": 3,
+    "GREEK_TEXT": 9,
+    "LATIN_SUPP": 8,
+    "DASHES_QUOTES": 14
+  },
+  "438": {
+    "SUPERSCRIPT_U": 10,
+    "CHECKMARK": 2,
+    "MATH_UNICODE": 4,
+    "GREEK_TEXT": 8,
+    "LATIN_SUPP": 1,
+    "DASHES_QUOTES": 26
+  },
+  "439": {
+    "SUPERSCRIPT_U": 12,
+    "SUBSCRIPT_U": 1,
+    "CHECKMARK": 2,
+    "MATH_UNICODE": 4,
+    "GREEK_TEXT": 8,
+    "LATIN_SUPP": 1,
+    "DASHES_QUOTES": 22
+  },
+  "440": {
+    "SUPERSCRIPT_U": 11,
+    "SUBSCRIPT_U": 1,
+    "CHECKMARK": 2,
+    "MATH_UNICODE": 4,
+    "GREEK_TEXT": 8,
+    "LATIN_SUPP": 4,
+    "DASHES_QUOTES": 18
+  },
+  "441": {
+    "SUPERSCRIPT_U": 9,
+    "SOLAR": 1,
+    "CHECKMARK": 2,
+    "MATH_UNICODE": 5,
+    "GREEK_TEXT": 8,
+    "LATIN_SUPP": 3,
+    "DASHES_QUOTES": 18
+  },
+  "442": {
+    "SUPERSCRIPT_U": 15,
+    "SUBSCRIPT_U": 2,
+    "CHECKMARK": 2,
+    "MATH_UNICODE": 5,
+    "GREEK_TEXT": 12,
+    "LATIN_SUPP": 6,
+    "DASHES_QUOTES": 23
+  },
+  "443": {
+    "SUPERSCRIPT_U": 15,
+    "CHECKMARK": 2,
+    "MATH_UNICODE": 4,
+    "GREEK_TEXT": 7,
+    "LATIN_SUPP": 2,
+    "DASHES_QUOTES": 21
+  },
+  "444": {
+    "SUPERSCRIPT_U": 19,
+    "CHECKMARK": 2,
+    "MATH_UNICODE": 4,
+    "GREEK_TEXT": 12,
+    "LATIN_SUPP": 3,
+    "DASHES_QUOTES": 27
+  },
+  "445": {
+    "SUPERSCRIPT_U": 14,
+    "SOLAR": 2,
+    "CHECKMARK": 2,
+    "MATH_UNICODE": 5,
+    "GREEK_TEXT": 10,
+    "LATIN_SUPP": 2,
+    "DASHES_QUOTES": 22
+  },
+  "446": {
+    "SUPERSCRIPT_U": 43,
+    "SUBSCRIPT_U": 3,
+    "CHECKMARK": 1,
+    "MATH_UNICODE": 6,
+    "GREEK_TEXT": 8,
+    "LATIN_SUPP": 9,
+    "DASHES_QUOTES": 29
+  },
+  "447": {
+    "SUPERSCRIPT_U": 91,
+    "SOLAR": 4,
+    "CHECKMARK": 2,
+    "MATH_UNICODE": 5,
+    "GREEK_TEXT": 19,
+    "LATIN_SUPP": 31,
+    "DASHES_QUOTES": 10
+  },
+  "448": {
+    "SUPERSCRIPT_U": 20,
+    "SUBSCRIPT_U": 2,
+    "SOLAR": 5,
+    "CHECKMARK": 2,
+    "MATH_UNICODE": 14,
+    "GREEK_TEXT": 9,
+    "LATIN_SUPP": 8,
+    "DASHES_QUOTES": 16
+  },
+  "449": {
+    "SUPERSCRIPT_U": 70,
+    "SOLAR": 2,
+    "CHECKMARK": 2,
+    "MATH_UNICODE": 11,
+    "GREEK_TEXT": 16,
+    "LATIN_SUPP": 31,
+    "DASHES_QUOTES": 10
+  },
+  "450": {
+    "SUPERSCRIPT_U": 74,
+    "SUBSCRIPT_U": 1,
+    "SOLAR": 6,
+    "CHECKMARK": 2,
+    "MATH_UNICODE": 6,
+    "GREEK_TEXT": 13,
+    "LATIN_SUPP": 30,
+    "DASHES_QUOTES": 14
+  },
+  "451": {
+    "SUPERSCRIPT_U": 76,
+    "SUBSCRIPT_U": 3,
+    "CHECKMARK": 1,
+    "MATH_UNICODE": 16,
+    "GREEK_TEXT": 19,
+    "LATIN_SUPP": 28,
+    "DASHES_QUOTES": 12
+  },
+  "452": {
+    "SUPERSCRIPT_U": 96,
+    "SOLAR": 5,
+    "CHECKMARK": 2,
+    "MATH_UNICODE": 8,
+    "GREEK_TEXT": 11,
+    "LATIN_SUPP": 37,
+    "DASHES_QUOTES": 13
+  },
+  "453": {
+    "SUPERSCRIPT_U": 64,
+    "SUBSCRIPT_U": 5,
+    "SOLAR": 1,
+    "CHECKMARK": 2,
+    "MATH_UNICODE": 8,
+    "GREEK_TEXT": 15,
+    "LATIN_SUPP": 26,
+    "DASHES_QUOTES": 19
+  },
+  "454": {
+    "SUPERSCRIPT_U": 119,
+    "SUBSCRIPT_U": 4,
+    "CHECKMARK": 2,
+    "MATH_UNICODE": 9,
+    "GREEK_TEXT": 8,
+    "LATIN_SUPP": 45,
+    "DASHES_QUOTES": 13
+  },
+  "455": {
+    "SUPERSCRIPT_U": 109,
+    "CHECKMARK": 2,
+    "MATH_UNICODE": 12,
+    "GREEK_TEXT": 12,
+    "LATIN_SUPP": 40,
+    "DASHES_QUOTES": 17
+  },
+  "456": {
+    "SUPERSCRIPT_U": 66,
+    "SUBSCRIPT_U": 6,
+    "CHECKMARK": 2,
+    "MATH_UNICODE": 17,
+    "GREEK_TEXT": 30,
+    "LATIN_SUPP": 27,
+    "DASHES_QUOTES": 13
+  },
+  "457": {
+    "BARE_QMARK": 1,
+    "SUPERSCRIPT_U": 52,
+    "SUBSCRIPT_U": 7,
+    "SOLAR": 2,
+    "CHECKMARK": 1,
+    "MATH_UNICODE": 12,
+    "GREEK_TEXT": 20,
+    "LATIN_SUPP": 24,
+    "DASHES_QUOTES": 21
+  },
+  "458": {
+    "SUPERSCRIPT_U": 79,
+    "SUBSCRIPT_U": 3,
+    "CHECKMARK": 2,
+    "MATH_UNICODE": 10,
+    "GREEK_TEXT": 20,
+    "LATIN_SUPP": 33,
+    "DASHES_QUOTES": 14
+  },
+  "459": {
+    "SUPERSCRIPT_U": 54,
+    "SUBSCRIPT_U": 3,
+    "SOLAR": 2,
+    "CHECKMARK": 2,
+    "MATH_UNICODE": 16,
+    "GREEK_TEXT": 15,
+    "LATIN_SUPP": 12,
+    "DASHES_QUOTES": 27
+  },
+  "460": {
+    "SUPERSCRIPT_U": 34,
+    "SUBSCRIPT_U": 1,
+    "CHECKMARK": 2,
+    "MATH_UNICODE": 12,
+    "GREEK_TEXT": 14,
+    "LATIN_SUPP": 7,
+    "DASHES_QUOTES": 18
+  },
+  "461": {
+    "SUPERSCRIPT_U": 45,
+    "CHECKMARK": 1,
+    "MATH_UNICODE": 17,
+    "GREEK_TEXT": 25,
+    "LATIN_SUPP": 11,
+    "DASHES_QUOTES": 13
+  },
+  "462": {
+    "SUPERSCRIPT_U": 59,
+    "SUBSCRIPT_U": 1,
+    "CHECKMARK": 5,
+    "MATH_UNICODE": 7,
+    "GREEK_TEXT": 13,
+    "LATIN_SUPP": 9,
+    "DASHES_QUOTES": 21
+  },
+  "463": {
+    "SUPERSCRIPT_U": 105,
+    "SUBSCRIPT_U": 6,
+    "CHECKMARK": 3,
+    "MATH_UNICODE": 12,
+    "GREEK_TEXT": 11,
+    "LATIN_SUPP": 42,
+    "DASHES_QUOTES": 17
+  },
+  "464": {
+    "SUPERSCRIPT_U": 34,
+    "SOLAR": 6,
+    "CHECKMARK": 2,
+    "MATH_UNICODE": 6,
+    "GREEK_TEXT": 12,
+    "LATIN_SUPP": 13,
+    "DASHES_QUOTES": 14
+  },
+  "465": {
+    "SUPERSCRIPT_U": 51,
+    "SOLAR": 5,
+    "CHECKMARK": 2,
+    "MATH_UNICODE": 5,
+    "GREEK_TEXT": 13,
+    "LATIN_SUPP": 20,
+    "DASHES_QUOTES": 18
+  },
+  "466": {
+    "SUPERSCRIPT_U": 60,
+    "SUBSCRIPT_U": 1,
+    "SOLAR": 1,
+    "CHECKMARK": 2,
+    "MATH_UNICODE": 7,
+    "GREEK_TEXT": 15,
+    "LATIN_SUPP": 19,
+    "DASHES_QUOTES": 15
+  },
+  "467": {
+    "SUPERSCRIPT_U": 31,
+    "SOLAR": 3,
+    "CHECKMARK": 2,
+    "MATH_UNICODE": 6,
+    "GREEK_TEXT": 11,
+    "LATIN_SUPP": 11,
+    "DASHES_QUOTES": 17
+  },
+  "468": {
+    "SUPERSCRIPT_U": 41,
+    "SOLAR": 6,
+    "CHECKMARK": 2,
+    "MATH_UNICODE": 5,
+    "GREEK_TEXT": 8,
+    "LATIN_SUPP": 15,
+    "DASHES_QUOTES": 19
+  },
+  "469": {
+    "SUPERSCRIPT_U": 28,
+    "SOLAR": 2,
+    "CHECKMARK": 2,
+    "MATH_UNICODE": 11,
+    "GREEK_TEXT": 10,
+    "LATIN_SUPP": 10,
+    "DASHES_QUOTES": 14
+  },
+  "470": {
+    "SUPERSCRIPT_U": 38,
+    "SOLAR": 2,
+    "CHECKMARK": 2,
+    "MATH_UNICODE": 8,
+    "GREEK_TEXT": 41,
+    "LATIN_SUPP": 9,
+    "DASHES_QUOTES": 25
+  },
+  "471": {
+    "SUPERSCRIPT_U": 71,
+    "CHECKMARK": 1,
+    "MATH_UNICODE": 22,
+    "GREEK_TEXT": 39,
+    "LATIN_SUPP": 24,
+    "DASHES_QUOTES": 15
+  },
+  "472": {
+    "SUPERSCRIPT_U": 78,
+    "SUBSCRIPT_U": 5,
+    "SOLAR": 4,
+    "CHECKMARK": 2,
+    "MATH_UNICODE": 21,
+    "GREEK_TEXT": 19,
+    "LATIN_SUPP": 21,
+    "DASHES_QUOTES": 12
+  },
+  "473": {
+    "SUPERSCRIPT_U": 29,
+    "SOLAR": 1,
+    "CHECKMARK": 2,
+    "MATH_UNICODE": 11,
+    "GREEK_TEXT": 26,
+    "LATIN_SUPP": 10,
+    "DASHES_QUOTES": 11
+  },
+  "474": {
+    "SUPERSCRIPT_U": 47,
+    "SUBSCRIPT_U": 1,
+    "SOLAR": 6,
+    "CHECKMARK": 2,
+    "MATH_UNICODE": 17,
+    "GREEK_TEXT": 14,
+    "LATIN_SUPP": 18,
+    "DASHES_QUOTES": 10
+  },
+  "475": {
+    "SUPERSCRIPT_U": 109,
+    "SUBSCRIPT_U": 19,
+    "CHECKMARK": 2,
+    "MATH_UNICODE": 22,
+    "GREEK_TEXT": 77,
+    "LATIN_SUPP": 22,
+    "DASHES_QUOTES": 8
+  },
+  "476": {
+    "BARE_QMARK": 1,
+    "SUPERSCRIPT_U": 43,
+    "SUBSCRIPT_U": 3,
+    "CHECKMARK": 1,
+    "MATH_UNICODE": 22,
+    "GREEK_TEXT": 26,
+    "LATIN_SUPP": 9,
+    "DASHES_QUOTES": 12
+  },
+  "477": {
+    "SUPERSCRIPT_U": 35,
+    "SUBSCRIPT_U": 1,
+    "SOLAR": 2,
+    "CHECKMARK": 2,
+    "MATH_UNICODE": 22,
+    "GREEK_TEXT": 47,
+    "LATIN_SUPP": 5,
+    "DASHES_QUOTES": 18
+  },
+  "478": {
+    "SUPERSCRIPT_U": 51,
+    "CHECKMARK": 1,
+    "MATH_UNICODE": 19,
+    "GREEK_TEXT": 71,
+    "LATIN_SUPP": 3,
+    "DASHES_QUOTES": 8
+  },
+  "479": {
+    "SUPERSCRIPT_U": 107,
+    "SUBSCRIPT_U": 9,
+    "SOLAR": 2,
+    "CHECKMARK": 1,
+    "MATH_UNICODE": 4,
+    "GREEK_TEXT": 15,
+    "LATIN_SUPP": 24,
+    "DASHES_QUOTES": 31
+  },
+  "480": {
+    "SUPERSCRIPT_U": 43,
+    "SUBSCRIPT_U": 2,
+    "SOLAR": 1,
+    "CHECKMARK": 1,
+    "MATH_UNICODE": 4,
+    "GREEK_TEXT": 26,
+    "LATIN_SUPP": 13,
+    "DASHES_QUOTES": 29
+  },
+  "481": {
+    "SUPERSCRIPT_U": 16,
+    "CHECKMARK": 1,
+    "MATH_UNICODE": 6,
+    "GREEK_TEXT": 8,
+    "LATIN_SUPP": 3,
+    "DASHES_QUOTES": 26
+  },
+  "482": {
+    "SUPERSCRIPT_U": 9,
+    "CHECKMARK": 2,
+    "MATH_UNICODE": 10,
+    "GREEK_TEXT": 10,
+    "LATIN_SUPP": 3,
+    "DASHES_QUOTES": 15
+  },
+  "483": {
+    "SUPERSCRIPT_U": 9,
+    "CHECKMARK": 1,
+    "MATH_UNICODE": 11,
+    "GREEK_TEXT": 8,
+    "LATIN_SUPP": 1,
+    "DASHES_QUOTES": 28
+  },
+  "484": {
+    "SUPERSCRIPT_U": 33,
+    "SOLAR": 1,
+    "CHECKMARK": 1,
+    "MATH_UNICODE": 6,
+    "GREEK_TEXT": 11,
+    "LATIN_SUPP": 9,
+    "DASHES_QUOTES": 5
+  },
+  "485": {
+    "SUPERSCRIPT_U": 34,
+    "CHECKMARK": 1,
+    "MATH_UNICODE": 3,
+    "GREEK_TEXT": 10,
+    "LATIN_SUPP": 13,
+    "DASHES_QUOTES": 5
+  },
+  "486": {
+    "SUPERSCRIPT_U": 10,
+    "CHECKMARK": 1,
+    "MATH_UNICODE": 4,
+    "GREEK_TEXT": 8,
+    "LATIN_SUPP": 2,
+    "DASHES_QUOTES": 10
+  },
+  "487": {
+    "SUPERSCRIPT_U": 23,
+    "SOLAR": 1,
+    "CHECKMARK": 1,
+    "MATH_UNICODE": 6,
+    "GREEK_TEXT": 9,
+    "LATIN_SUPP": 6,
+    "DASHES_QUOTES": 4
+  },
+  "488": {
+    "SUPERSCRIPT_U": 24,
+    "SOLAR": 2,
+    "CHECKMARK": 1,
+    "MATH_UNICODE": 4,
+    "GREEK_TEXT": 8,
+    "LATIN_SUPP": 7,
+    "DASHES_QUOTES": 15
+  },
+  "489": {
+    "SUPERSCRIPT_U": 23,
+    "CHECKMARK": 1,
+    "MATH_UNICODE": 8,
+    "GREEK_TEXT": 8,
+    "LATIN_SUPP": 7,
+    "DASHES_QUOTES": 7
+  },
+  "490": {
+    "SUPERSCRIPT_U": 9,
+    "CHECKMARK": 1,
+    "MATH_UNICODE": 3,
+    "GREEK_TEXT": 8,
+    "LATIN_SUPP": 1,
+    "DASHES_QUOTES": 13
+  },
+  "491": {
+    "SUPERSCRIPT_U": 10,
+    "SUBSCRIPT_U": 3,
+    "CHECKMARK": 1,
+    "MATH_UNICODE": 5,
+    "GREEK_TEXT": 13,
+    "LATIN_SUPP": 6,
+    "DASHES_QUOTES": 16
+  },
+  "492": {
+    "SUPERSCRIPT_U": 10,
+    "CHECKMARK": 2,
+    "MATH_UNICODE": 9,
+    "GREEK_TEXT": 10,
+    "LATIN_SUPP": 3,
+    "DASHES_QUOTES": 10
+  },
+  "493": {
+    "SUPERSCRIPT_U": 12,
+    "CHECKMARK": 1,
+    "MATH_UNICODE": 3,
+    "GREEK_TEXT": 8,
+    "LATIN_SUPP": 1,
+    "DASHES_QUOTES": 18
+  },
+  "494": {
+    "SUPERSCRIPT_U": 5,
+    "MATH_UNICODE": 3,
+    "GREEK_TEXT": 10,
+    "LATIN_SUPP": 4,
+    "DASHES_QUOTES": 13
+  },
+  "496": {
+    "SUPERSCRIPT_U": 9,
+    "CHECKMARK": 1,
+    "MATH_UNICODE": 6,
+    "GREEK_TEXT": 8,
+    "LATIN_SUPP": 1,
+    "DASHES_QUOTES": 9
+  },
+  "497": {
+    "SUPERSCRIPT_U": 10,
+    "CHECKMARK": 1,
+    "MATH_UNICODE": 10,
+    "GREEK_TEXT": 9,
+    "LATIN_SUPP": 2,
+    "DASHES_QUOTES": 9
+  },
+  "498": {
+    "SUPERSCRIPT_U": 9,
+    "CHECKMARK": 1,
+    "MATH_UNICODE": 13,
+    "GREEK_TEXT": 13,
+    "LATIN_SUPP": 1,
+    "DASHES_QUOTES": 8
+  },
+  "499": {
+    "SUPERSCRIPT_U": 7,
+    "CHECKMARK": 2,
+    "MATH_UNICODE": 2,
+    "GREEK_TEXT": 7,
+    "LATIN_SUPP": 1,
+    "DASHES_QUOTES": 10
+  },
+  "500": {
+    "SUPERSCRIPT_U": 8,
+    "CHECKMARK": 2,
+    "MATH_UNICODE": 14,
+    "GREEK_TEXT": 11,
+    "LATIN_SUPP": 3,
+    "DASHES_QUOTES": 11
+  },
+  "501": {
+    "SUPERSCRIPT_U": 10,
+    "CHECKMARK": 1,
+    "MATH_UNICODE": 6,
+    "GREEK_TEXT": 8,
+    "LATIN_SUPP": 1,
+    "DASHES_QUOTES": 6
+  },
+  "502": {
+    "SUPERSCRIPT_U": 9,
+    "CHECKMARK": 1,
+    "MATH_UNICODE": 16,
+    "GREEK_TEXT": 10,
+    "LATIN_SUPP": 1,
+    "DASHES_QUOTES": 13
+  },
+  "503": {
+    "SUPERSCRIPT_U": 2,
+    "CHECKMARK": 2,
+    "MATH_UNICODE": 6,
+    "GREEK_TEXT": 15,
+    "DASHES_QUOTES": 6
+  },
+  "504": {
+    "SUPERSCRIPT_U": 5,
+    "CHECKMARK": 3,
+    "MATH_UNICODE": 10,
+    "GREEK_TEXT": 10,
+    "LATIN_SUPP": 3,
+    "DASHES_QUOTES": 16
+  },
+  "505": {
+    "SUPERSCRIPT_U": 9,
+    "CHECKMARK": 1,
+    "MATH_UNICODE": 23,
+    "GREEK_TEXT": 8,
+    "LATIN_SUPP": 2,
+    "DASHES_QUOTES": 18
+  },
+  "506": {
+    "SUPERSCRIPT_U": 4,
+    "SUBSCRIPT_U": 1,
+    "CHECKMARK": 2,
+    "MATH_UNICODE": 7,
+    "GREEK_TEXT": 31,
+    "LATIN_SUPP": 27,
+    "DASHES_QUOTES": 8
+  },
+  "507": {
+    "SUPERSCRIPT_U": 6,
+    "SUBSCRIPT_U": 3,
+    "CHECKMARK": 2,
+    "MATH_UNICODE": 25,
+    "GREEK_TEXT": 12,
+    "DASHES_QUOTES": 10
+  },
+  "508": {
+    "SUPERSCRIPT_U": 6,
+    "SUBSCRIPT_U": 1,
+    "CHECKMARK": 2,
+    "MATH_UNICODE": 25,
+    "GREEK_TEXT": 21,
+    "LATIN_SUPP": 18,
+    "DASHES_QUOTES": 11
+  },
+  "509": {
+    "SUPERSCRIPT_U": 2,
+    "CHECKMARK": 2,
+    "MATH_UNICODE": 2,
+    "GREEK_TEXT": 17,
+    "LATIN_SUPP": 2,
+    "DASHES_QUOTES": 11
+  },
+  "510": {
+    "SUPERSCRIPT_U": 21,
+    "SUBSCRIPT_U": 2,
+    "SOLAR": 9,
+    "CHECKMARK": 3,
+    "MATH_UNICODE": 7,
+    "GREEK_TEXT": 10,
+    "LATIN_SUPP": 7,
+    "DASHES_QUOTES": 7
+  },
+  "511": {
+    "SUPERSCRIPT_U": 7,
+    "SOLAR": 3,
+    "CHECKMARK": 2,
+    "MATH_UNICODE": 4,
+    "GREEK_TEXT": 13,
+    "LATIN_SUPP": 4,
+    "DASHES_QUOTES": 3
+  },
+  "512": {
+    "SUPERSCRIPT_U": 10,
+    "SUBSCRIPT_U": 2,
+    "SOLAR": 6,
+    "CHECKMARK": 2,
+    "MATH_UNICODE": 12,
+    "GREEK_TEXT": 9,
+    "LATIN_SUPP": 2,
+    "DASHES_QUOTES": 7
+  },
+  "513": {
+    "SUPERSCRIPT_U": 7,
+    "SOLAR": 4,
+    "CHECKMARK": 2,
+    "MATH_UNICODE": 13,
+    "GREEK_TEXT": 10,
+    "LATIN_SUPP": 2,
+    "DASHES_QUOTES": 6
+  },
+  "514": {
+    "SUPERSCRIPT_U": 4,
+    "SUBSCRIPT_U": 1,
+    "SOLAR": 2,
+    "CHECKMARK": 2,
+    "MATH_UNICODE": 4,
+    "GREEK_TEXT": 27,
+    "LATIN_SUPP": 4,
+    "DASHES_QUOTES": 4
+  },
+  "515": {
+    "SUPERSCRIPT_U": 4,
+    "SOLAR": 1,
+    "CHECKMARK": 2,
+    "MATH_UNICODE": 7,
+    "GREEK_TEXT": 20,
+    "LATIN_SUPP": 5,
+    "DASHES_QUOTES": 6
+  },
+  "516": {
+    "SUPERSCRIPT_U": 9,
+    "CHECKMARK": 1,
+    "MATH_UNICODE": 9,
+    "GREEK_TEXT": 8,
+    "LATIN_SUPP": 1,
+    "DASHES_QUOTES": 24
+  },
+  "517": {
+    "SUPERSCRIPT_U": 9,
+    "CHECKMARK": 1,
+    "MATH_UNICODE": 3,
+    "GREEK_TEXT": 8,
+    "LATIN_SUPP": 1,
+    "DASHES_QUOTES": 17
+  },
+  "518": {
+    "SUPERSCRIPT_U": 9,
+    "CHECKMARK": 1,
+    "MATH_UNICODE": 4,
+    "GREEK_TEXT": 8,
+    "LATIN_SUPP": 1,
+    "DASHES_QUOTES": 20
+  },
+  "519": {
+    "SUPERSCRIPT_U": 9,
+    "CHECKMARK": 1,
+    "MATH_UNICODE": 3,
+    "GREEK_TEXT": 8,
+    "LATIN_SUPP": 1,
+    "DASHES_QUOTES": 16
+  },
+  "520": {
+    "SUPERSCRIPT_U": 9,
+    "CHECKMARK": 1,
+    "MATH_UNICODE": 11,
+    "GREEK_TEXT": 8,
+    "LATIN_SUPP": 2,
+    "DASHES_QUOTES": 23
+  },
+  "521": {
+    "SUPERSCRIPT_U": 9,
+    "CHECKMARK": 2,
+    "MATH_UNICODE": 5,
+    "GREEK_TEXT": 11,
+    "LATIN_SUPP": 1,
+    "DASHES_QUOTES": 15
+  },
+  "522": {
+    "SUPERSCRIPT_U": 9,
+    "CHECKMARK": 2,
+    "MATH_UNICODE": 5,
+    "GREEK_TEXT": 11,
+    "LATIN_SUPP": 2,
+    "DASHES_QUOTES": 18
+  },
+  "523": {
+    "SUPERSCRIPT_U": 9,
+    "CHECKMARK": 1,
+    "MATH_UNICODE": 3,
+    "GREEK_TEXT": 11,
+    "LATIN_SUPP": 2,
+    "DASHES_QUOTES": 16
+  },
+  "524": {
+    "SUPERSCRIPT_U": 4,
+    "SOLAR": 1,
+    "CHECKMARK": 3,
+    "MATH_UNICODE": 5,
+    "GREEK_TEXT": 7,
+    "LATIN_SUPP": 1,
+    "DASHES_QUOTES": 12
+  },
+  "525": {
+    "SUPERSCRIPT_U": 4,
+    "SOLAR": 1,
+    "CHECKMARK": 2,
+    "MATH_UNICODE": 6,
+    "GREEK_TEXT": 8,
+    "LATIN_SUPP": 2,
+    "DASHES_QUOTES": 28
+  },
+  "526": {
+    "SUPERSCRIPT_U": 17,
+    "SUBSCRIPT_U": 8,
+    "CHECKMARK": 1,
+    "MATH_UNICODE": 4,
+    "GREEK_TEXT": 14,
+    "LATIN_SUPP": 1,
+    "DASHES_QUOTES": 18
+  },
+  "527": {
+    "SUPERSCRIPT_U": 9,
+    "CHECKMARK": 1,
+    "MATH_UNICODE": 4,
+    "GREEK_TEXT": 8,
+    "LATIN_SUPP": 2,
+    "DASHES_QUOTES": 17
+  },
+  "528": {
+    "SUPERSCRIPT_U": 10,
+    "CHECKMARK": 1,
+    "MATH_UNICODE": 4,
+    "GREEK_TEXT": 10,
+    "LATIN_SUPP": 1,
+    "DASHES_QUOTES": 19
+  },
+  "529": {
+    "SUPERSCRIPT_U": 11,
+    "CHECKMARK": 2,
+    "MATH_UNICODE": 5,
+    "GREEK_TEXT": 11,
+    "LATIN_SUPP": 4,
+    "DASHES_QUOTES": 26
+  },
+  "530": {
+    "UFFFD": 11,
+    "BARE_QMARK": 1,
+    "SUPERSCRIPT_U": 9,
+    "CHECKMARK": 1,
+    "MATH_UNICODE": 5,
+    "GREEK_TEXT": 9,
+    "LATIN_SUPP": 1,
+    "DASHES_QUOTES": 24
+  },
+  "531": {
+    "SUPERSCRIPT_U": 11,
+    "CHECKMARK": 2,
+    "MATH_UNICODE": 6,
+    "GREEK_TEXT": 11,
+    "LATIN_SUPP": 4,
+    "DASHES_QUOTES": 25
+  },
+  "532": {
+    "SUPERSCRIPT_U": 9,
+    "CHECKMARK": 1,
+    "MATH_UNICODE": 4,
+    "GREEK_TEXT": 8,
+    "LATIN_SUPP": 1,
+    "DASHES_QUOTES": 24
+  },
+  "533": {
+    "SUPERSCRIPT_U": 4,
+    "SOLAR": 1,
+    "CHECKMARK": 2,
+    "MATH_UNICODE": 4,
+    "GREEK_TEXT": 7,
+    "LATIN_SUPP": 1,
+    "DASHES_QUOTES": 28
+  },
+  "534": {
+    "SUPERSCRIPT_U": 9,
+    "CHECKMARK": 1,
+    "MATH_UNICODE": 3,
+    "GREEK_TEXT": 8,
+    "LATIN_SUPP": 1,
+    "DASHES_QUOTES": 22
+  },
+  "535": {
+    "SUPERSCRIPT_U": 9,
+    "CHECKMARK": 1,
+    "MATH_UNICODE": 3,
+    "GREEK_TEXT": 8,
+    "LATIN_SUPP": 1,
+    "DASHES_QUOTES": 26
+  },
+  "536": {
+    "SUPERSCRIPT_U": 4,
+    "SOLAR": 1,
+    "CHECKMARK": 2,
+    "MATH_UNICODE": 5,
+    "GREEK_TEXT": 7,
+    "LATIN_SUPP": 1,
+    "DASHES_QUOTES": 21
+  },
+  "537": {
+    "SUPERSCRIPT_U": 13,
+    "SUBSCRIPT_U": 9,
+    "SOLAR": 1,
+    "CHECKMARK": 2,
+    "MATH_UNICODE": 4,
+    "GREEK_TEXT": 7,
+    "LATIN_SUPP": 1,
+    "DASHES_QUOTES": 26
+  },
+  "538": {
+    "SUPERSCRIPT_U": 9,
+    "CHECKMARK": 1,
+    "MATH_UNICODE": 3,
+    "GREEK_TEXT": 8,
+    "LATIN_SUPP": 5,
+    "DASHES_QUOTES": 25
+  },
+  "539": {
+    "SUPERSCRIPT_U": 10,
+    "CHECKMARK": 1,
+    "MATH_UNICODE": 11,
+    "GREEK_TEXT": 8,
+    "LATIN_SUPP": 1,
+    "DASHES_QUOTES": 21
+  },
+  "540": {
+    "UFFFD": 10,
+    "BARE_QMARK": 2,
+    "SUPERSCRIPT_U": 24,
+    "SUBSCRIPT_U": 4,
+    "CHECKMARK": 3,
+    "MATH_UNICODE": 13,
+    "GREEK_TEXT": 16,
+    "LATIN_SUPP": 3,
+    "DASHES_QUOTES": 24
+  },
+  "541": {
+    "SUPERSCRIPT_U": 5,
+    "SUBSCRIPT_U": 1,
+    "SOLAR": 1,
+    "CHECKMARK": 2,
+    "MATH_UNICODE": 7,
+    "GREEK_TEXT": 11,
+    "LATIN_SUPP": 3,
+    "DASHES_QUOTES": 12
+  },
+  "542": {
+    "SUPERSCRIPT_U": 12,
+    "SUBSCRIPT_U": 2,
+    "SOLAR": 1,
+    "CHECKMARK": 2,
+    "MATH_UNICODE": 4,
+    "GREEK_TEXT": 11,
+    "LATIN_SUPP": 3,
+    "DASHES_QUOTES": 8
+  },
+  "543": {
+    "UFFFD": 8,
+    "BARE_QMARK": 7,
+    "SUPERSCRIPT_U": 9,
+    "CHECKMARK": 2,
+    "MATH_UNICODE": 12,
+    "GREEK_TEXT": 12,
+    "LATIN_SUPP": 1,
+    "DASHES_QUOTES": 15
+  },
+  "544": {
+    "UFFFD": 12,
+    "BARE_QMARK": 6,
+    "SUPERSCRIPT_U": 16,
+    "SUBSCRIPT_U": 1,
+    "CHECKMARK": 3,
+    "MATH_UNICODE": 16,
+    "GREEK_TEXT": 16,
+    "LATIN_SUPP": 3,
+    "DASHES_QUOTES": 8
+  },
+  "545": {
+    "SUPERSCRIPT_U": 4,
+    "SOLAR": 1,
+    "CHECKMARK": 2,
+    "MATH_UNICODE": 6,
+    "GREEK_TEXT": 7,
+    "LATIN_SUPP": 2,
+    "DASHES_QUOTES": 18
+  },
+  "546": {
+    "SUPERSCRIPT_U": 9,
+    "CHECKMARK": 1,
+    "MATH_UNICODE": 3,
+    "GREEK_TEXT": 13,
+    "LATIN_SUPP": 5,
+    "DASHES_QUOTES": 12
+  },
+  "547": {
+    "SUPERSCRIPT_U": 9,
+    "CHECKMARK": 1,
+    "MATH_UNICODE": 3,
+    "GREEK_TEXT": 12,
+    "LATIN_SUPP": 3,
+    "DASHES_QUOTES": 5
+  },
+  "548": {
+    "SUPERSCRIPT_U": 9,
+    "CHECKMARK": 1,
+    "MATH_UNICODE": 8,
+    "GREEK_TEXT": 11,
+    "LATIN_SUPP": 3,
+    "DASHES_QUOTES": 14
+  },
+  "549": {
+    "SUPERSCRIPT_U": 4,
+    "SOLAR": 1,
+    "CHECKMARK": 2,
+    "MATH_UNICODE": 6,
+    "GREEK_TEXT": 10,
+    "LATIN_SUPP": 4,
+    "DASHES_QUOTES": 13
+  },
+  "550": {
+    "SUPERSCRIPT_U": 9,
+    "CHECKMARK": 3,
+    "MATH_UNICODE": 7,
+    "GREEK_TEXT": 8,
+    "LATIN_SUPP": 3,
+    "DASHES_QUOTES": 12
+  },
+  "551": {
+    "SUPERSCRIPT_U": 9,
+    "CHECKMARK": 1,
+    "MATH_UNICODE": 4,
+    "GREEK_TEXT": 8,
+    "LATIN_SUPP": 3,
+    "DASHES_QUOTES": 14
+  },
+  "552": {
+    "SUPERSCRIPT_U": 16,
+    "SUBSCRIPT_U": 1,
+    "CHECKMARK": 4,
+    "MATH_UNICODE": 13,
+    "GREEK_TEXT": 15,
+    "LATIN_SUPP": 5,
+    "DASHES_QUOTES": 18
+  },
+  "553": {
+    "UFFFD": 12,
+    "BARE_QMARK": 1,
+    "SUPERSCRIPT_U": 10,
+    "CHECKMARK": 2,
+    "MATH_UNICODE": 8,
+    "GREEK_TEXT": 9,
+    "LATIN_SUPP": 3,
+    "DASHES_QUOTES": 32
+  },
+  "554": {
+    "SUPERSCRIPT_U": 17,
+    "CHECKMARK": 3,
+    "MATH_UNICODE": 6,
+    "GREEK_TEXT": 10,
+    "LATIN_SUPP": 4,
+    "DASHES_QUOTES": 14
+  },
+  "555": {
+    "SUPERSCRIPT_U": 17,
+    "CHECKMARK": 3,
+    "MATH_UNICODE": 6,
+    "GREEK_TEXT": 10,
+    "LATIN_SUPP": 4,
+    "DASHES_QUOTES": 9
+  },
+  "556": {
+    "SUPERSCRIPT_U": 17,
+    "CHECKMARK": 3,
+    "MATH_UNICODE": 8,
+    "GREEK_TEXT": 10,
+    "LATIN_SUPP": 4,
+    "DASHES_QUOTES": 17
+  },
+  "557": {
+    "SUPERSCRIPT_U": 22,
+    "SUBSCRIPT_U": 3,
+    "CHECKMARK": 3,
+    "MATH_UNICODE": 9,
+    "GREEK_TEXT": 15,
+    "LATIN_SUPP": 5,
+    "DASHES_QUOTES": 14
+  },
+  "558": {
+    "BARE_QMARK": 2,
+    "SUPERSCRIPT_U": 17,
+    "CHECKMARK": 3,
+    "MATH_UNICODE": 6,
+    "GREEK_TEXT": 10,
+    "LATIN_SUPP": 4,
+    "DASHES_QUOTES": 24
+  },
+  "559": {
+    "SUPERSCRIPT_U": 17,
+    "CHECKMARK": 3,
+    "MATH_UNICODE": 6,
+    "GREEK_TEXT": 10,
+    "LATIN_SUPP": 4,
+    "DASHES_QUOTES": 19
+  },
+  "560": {
+    "SUPERSCRIPT_U": 17,
+    "CHECKMARK": 3,
+    "MATH_UNICODE": 6,
+    "GREEK_TEXT": 10,
+    "LATIN_SUPP": 6,
+    "DASHES_QUOTES": 17
+  },
+  "561": {
+    "SUPERSCRIPT_U": 17,
+    "CHECKMARK": 3,
+    "MATH_UNICODE": 6,
+    "GREEK_TEXT": 10,
+    "LATIN_SUPP": 5,
+    "DASHES_QUOTES": 18
+  },
+  "562": {
+    "SUPERSCRIPT_U": 17,
+    "CHECKMARK": 3,
+    "MATH_UNICODE": 6,
+    "GREEK_TEXT": 10,
+    "LATIN_SUPP": 5,
+    "DASHES_QUOTES": 18
+  },
+  "563": {
+    "BARE_QMARK": 1,
+    "SUPERSCRIPT_U": 21,
+    "SUBSCRIPT_U": 6,
+    "CHECKMARK": 2,
+    "MATH_UNICODE": 27,
+    "GREEK_TEXT": 14,
+    "LATIN_SUPP": 6,
+    "DASHES_QUOTES": 25
+  },
+  "564": {
+    "SUPERSCRIPT_U": 16,
+    "CHECKMARK": 4,
+    "MATH_UNICODE": 4,
+    "GREEK_TEXT": 5,
+    "LATIN_SUPP": 2,
+    "DASHES_QUOTES": 8
+  },
+  "565": {
+    "SUPERSCRIPT_U": 19,
+    "CHECKMARK": 4,
+    "MATH_UNICODE": 4,
+    "GREEK_TEXT": 5,
+    "LATIN_SUPP": 2,
+    "DASHES_QUOTES": 17
+  },
+  "566": {
+    "SUPERSCRIPT_U": 20,
+    "CHECKMARK": 12,
+    "MATH_UNICODE": 4,
+    "GREEK_TEXT": 5,
+    "LATIN_SUPP": 4,
+    "DASHES_QUOTES": 21
+  },
+  "567": {
+    "SUPERSCRIPT_U": 15,
+    "CHECKMARK": 4,
+    "MATH_UNICODE": 4,
+    "GREEK_TEXT": 5,
+    "LATIN_SUPP": 2,
+    "DASHES_QUOTES": 16
+  },
+  "568": {
+    "SUPERSCRIPT_U": 15,
+    "CHECKMARK": 4,
+    "MATH_UNICODE": 6,
+    "GREEK_TEXT": 9,
+    "LATIN_SUPP": 2,
+    "DASHES_QUOTES": 18
+  },
+  "569": {
+    "SUPERSCRIPT_U": 23,
+    "CHECKMARK": 5,
+    "MATH_UNICODE": 4,
+    "GREEK_TEXT": 5,
+    "LATIN_SUPP": 2,
+    "DASHES_QUOTES": 20
+  },
+  "570": {
+    "SUPERSCRIPT_U": 16,
+    "CHECKMARK": 4,
+    "MATH_UNICODE": 4,
+    "GREEK_TEXT": 5,
+    "LATIN_SUPP": 2,
+    "DASHES_QUOTES": 18
+  },
+  "571": {
+    "SUPERSCRIPT_U": 15,
+    "CHECKMARK": 4,
+    "MATH_UNICODE": 4,
+    "GREEK_TEXT": 5,
+    "LATIN_SUPP": 2,
+    "DASHES_QUOTES": 18
+  },
+  "572": {
+    "SUPERSCRIPT_U": 22,
+    "CHECKMARK": 5,
+    "MATH_UNICODE": 5,
+    "GREEK_TEXT": 5,
+    "LATIN_SUPP": 2,
+    "DASHES_QUOTES": 27
+  },
+  "573": {
+    "SUPERSCRIPT_U": 8,
+    "CHECKMARK": 2,
+    "MATH_UNICODE": 12,
+    "GREEK_TEXT": 10,
+    "LATIN_SUPP": 3,
+    "DASHES_QUOTES": 14
+  },
+  "574": {
+    "SUPERSCRIPT_U": 8,
+    "CHECKMARK": 2,
+    "MATH_UNICODE": 14,
+    "GREEK_TEXT": 10,
+    "LATIN_SUPP": 3,
+    "DASHES_QUOTES": 18
+  },
+  "575": {
+    "SUPERSCRIPT_U": 8,
+    "CHECKMARK": 3,
+    "MATH_UNICODE": 12,
+    "GREEK_TEXT": 10,
+    "LATIN_SUPP": 3,
+    "DASHES_QUOTES": 11
+  },
+  "576": {
+    "SUPERSCRIPT_U": 8,
+    "CHECKMARK": 2,
+    "MATH_UNICODE": 20,
+    "GREEK_TEXT": 10,
+    "LATIN_SUPP": 3,
+    "DASHES_QUOTES": 15
+  },
+  "577": {
+    "SUPERSCRIPT_U": 9,
+    "CHECKMARK": 3,
+    "MATH_UNICODE": 16,
+    "GREEK_TEXT": 10,
+    "LATIN_SUPP": 3,
+    "DASHES_QUOTES": 15
+  },
+  "578": {
+    "SUPERSCRIPT_U": 9,
+    "CHECKMARK": 6,
+    "MATH_UNICODE": 7,
+    "GREEK_TEXT": 8,
+    "LATIN_SUPP": 4,
+    "DASHES_QUOTES": 5
+  },
+  "579": {
+    "SUPERSCRIPT_U": 12,
+    "CHECKMARK": 3,
+    "MATH_UNICODE": 3,
+    "GREEK_TEXT": 9,
+    "LATIN_SUPP": 1,
+    "DASHES_QUOTES": 19
+  },
+  "580": {
+    "SUPERSCRIPT_U": 16,
+    "SOLAR": 2,
+    "CHECKMARK": 3,
+    "MATH_UNICODE": 4,
+    "GREEK_TEXT": 14,
+    "LATIN_SUPP": 6,
+    "DASHES_QUOTES": 16
+  },
+  "581": {
+    "SUPERSCRIPT_U": 16,
+    "SOLAR": 2,
+    "CHECKMARK": 3,
+    "MATH_UNICODE": 5,
+    "GREEK_TEXT": 17,
+    "LATIN_SUPP": 10,
+    "DASHES_QUOTES": 16
+  },
+  "582": {
+    "SUPERSCRIPT_U": 16,
+    "SOLAR": 2,
+    "CHECKMARK": 3,
+    "MATH_UNICODE": 3,
+    "GREEK_TEXT": 9,
+    "LATIN_SUPP": 9,
+    "DASHES_QUOTES": 14
+  },
+  "583": {
+    "SUPERSCRIPT_U": 9,
+    "CHECKMARK": 1,
+    "MATH_UNICODE": 3,
+    "GREEK_TEXT": 8,
+    "LATIN_SUPP": 4,
+    "DASHES_QUOTES": 12
+  },
+  "584": {
+    "SUPERSCRIPT_U": 8,
+    "CHECKMARK": 2,
+    "MATH_UNICODE": 5,
+    "GREEK_TEXT": 11,
+    "LATIN_SUPP": 3,
+    "DASHES_QUOTES": 8
+  },
+  "585": {
+    "SUPERSCRIPT_U": 8,
+    "CHECKMARK": 2,
+    "MATH_UNICODE": 5,
+    "GREEK_TEXT": 11,
+    "LATIN_SUPP": 2,
+    "DASHES_QUOTES": 6
+  },
+  "586": {
+    "SUPERSCRIPT_U": 8,
+    "SUBSCRIPT_U": 3,
+    "CHECKMARK": 1,
+    "MATH_UNICODE": 5,
+    "GREEK_TEXT": 16,
+    "LATIN_SUPP": 6,
+    "DASHES_QUOTES": 7
+  },
+  "587": {
+    "SUPERSCRIPT_U": 9,
+    "SUBSCRIPT_U": 3,
+    "CHECKMARK": 1,
+    "MATH_UNICODE": 5,
+    "GREEK_TEXT": 13,
+    "LATIN_SUPP": 6,
+    "DASHES_QUOTES": 7
+  },
+  "588": {
+    "SUPERSCRIPT_U": 8,
+    "CHECKMARK": 2,
+    "MATH_UNICODE": 5,
+    "GREEK_TEXT": 11,
+    "LATIN_SUPP": 2,
+    "DASHES_QUOTES": 7
+  },
+  "589": {
+    "SUPERSCRIPT_U": 10,
+    "SUBSCRIPT_U": 3,
+    "CHECKMARK": 1,
+    "MATH_UNICODE": 5,
+    "GREEK_TEXT": 14,
+    "LATIN_SUPP": 6,
+    "DASHES_QUOTES": 9
+  },
+  "590": {
+    "SUPERSCRIPT_U": 2,
+    "CHECKMARK": 2,
+    "MATH_UNICODE": 3,
+    "GREEK_TEXT": 8,
+    "LATIN_SUPP": 7,
+    "DASHES_QUOTES": 6
+  },
+  "591": {
+    "SUPERSCRIPT_U": 4,
+    "SUBSCRIPT_U": 1,
+    "CHECKMARK": 2,
+    "MATH_UNICODE": 3,
+    "GREEK_TEXT": 12,
+    "DASHES_QUOTES": 6
+  },
+  "592": {
+    "SUPERSCRIPT_U": 2,
+    "CHECKMARK": 5,
+    "MATH_UNICODE": 1,
+    "GREEK_TEXT": 10,
+    "LATIN_SUPP": 1,
+    "DASHES_QUOTES": 10
+  },
+  "593": {
+    "SUPERSCRIPT_U": 11,
+    "CHECKMARK": 2,
+    "MATH_UNICODE": 2,
+    "GREEK_TEXT": 9,
+    "LATIN_SUPP": 1,
+    "DASHES_QUOTES": 12
+  },
+  "594": {
+    "SUPERSCRIPT_U": 6,
+    "CHECKMARK": 2,
+    "MATH_UNICODE": 5,
+    "GREEK_TEXT": 7,
+    "LATIN_SUPP": 1,
+    "DASHES_QUOTES": 13
+  },
+  "595": {
+    "SUPERSCRIPT_U": 6,
+    "CHECKMARK": 2,
+    "MATH_UNICODE": 5,
+    "GREEK_TEXT": 8,
+    "LATIN_SUPP": 1,
+    "DASHES_QUOTES": 9
+  },
+  "596": {
+    "SUPERSCRIPT_U": 17,
+    "CHECKMARK": 10,
+    "MATH_UNICODE": 6,
+    "GREEK_TEXT": 11,
+    "LATIN_SUPP": 4,
+    "DASHES_QUOTES": 7
+  },
+  "597": {
+    "SUPERSCRIPT_U": 9,
+    "CHECKMARK": 1,
+    "MATH_UNICODE": 3,
+    "GREEK_TEXT": 8,
+    "LATIN_SUPP": 1,
+    "DASHES_QUOTES": 10
+  },
+  "598": {
+    "SUPERSCRIPT_U": 6,
+    "CHECKMARK": 14,
+    "MATH_UNICODE": 4,
+    "GREEK_TEXT": 13,
+    "LATIN_SUPP": 1,
+    "DASHES_QUOTES": 31
+  },
+  "599": {
+    "SUPERSCRIPT_U": 22,
+    "SUBSCRIPT_U": 7,
+    "CHECKMARK": 1,
+    "MATH_UNICODE": 18,
+    "GREEK_TEXT": 19,
+    "LATIN_SUPP": 6,
+    "DASHES_QUOTES": 7
+  },
+  "600": {
+    "SUPERSCRIPT_U": 17,
+    "SUBSCRIPT_U": 9,
+    "CHECKMARK": 2,
+    "MATH_UNICODE": 16,
+    "GREEK_TEXT": 38,
+    "LATIN_SUPP": 2,
+    "DASHES_QUOTES": 7
+  },
+  "601": {
+    "SUPERSCRIPT_U": 28,
+    "SUBSCRIPT_U": 1,
+    "SOLAR": 1,
+    "CHECKMARK": 1,
+    "MATH_UNICODE": 9,
+    "GREEK_TEXT": 12,
+    "LATIN_SUPP": 2,
+    "DASHES_QUOTES": 13
+  },
+  "602": {
+    "SUPERSCRIPT_U": 24,
+    "SUBSCRIPT_U": 2,
+    "CHECKMARK": 2,
+    "MATH_UNICODE": 12,
+    "GREEK_TEXT": 28,
+    "LATIN_SUPP": 5,
+    "DASHES_QUOTES": 6
+  },
+  "603": {
+    "SUPERSCRIPT_U": 32,
+    "CHECKMARK": 2,
+    "MATH_UNICODE": 11,
+    "GREEK_TEXT": 8,
+    "LATIN_SUPP": 6,
+    "DASHES_QUOTES": 9
+  },
+  "604": {
+    "SUPERSCRIPT_U": 5,
+    "CHECKMARK": 2,
+    "MATH_UNICODE": 9,
+    "GREEK_TEXT": 8,
+    "LATIN_SUPP": 3,
+    "DASHES_QUOTES": 6
+  },
+  "605": {
+    "BARE_QMARK": 1,
+    "SUPERSCRIPT_U": 38,
+    "CHECKMARK": 1,
+    "MATH_UNICODE": 14,
+    "GREEK_TEXT": 9,
+    "LATIN_SUPP": 2,
+    "DASHES_QUOTES": 2
+  },
+  "606": {
+    "BARE_QMARK": 1,
+    "SUPERSCRIPT_U": 21,
+    "CHECKMARK": 3,
+    "MATH_UNICODE": 7,
+    "GREEK_TEXT": 10,
+    "LATIN_SUPP": 8,
+    "DASHES_QUOTES": 8
+  },
+  "607": {
+    "SUPERSCRIPT_U": 20,
+    "CHECKMARK": 3,
+    "MATH_UNICODE": 8,
+    "GREEK_TEXT": 10,
+    "LATIN_SUPP": 9,
+    "DASHES_QUOTES": 4
+  },
+  "608": {
+    "SUPERSCRIPT_U": 21,
+    "CHECKMARK": 3,
+    "MATH_UNICODE": 7,
+    "GREEK_TEXT": 10,
+    "LATIN_SUPP": 5,
+    "DASHES_QUOTES": 7
+  },
+  "609": {
+    "SUPERSCRIPT_U": 8,
+    "CHECKMARK": 7,
+    "MATH_UNICODE": 9,
+    "GREEK_TEXT": 19,
+    "LATIN_SUPP": 2,
+    "DASHES_QUOTES": 7
+  },
+  "610": {
+    "BARE_QMARK": 2,
+    "SUPERSCRIPT_U": 4,
+    "CHECKMARK": 2,
+    "MATH_UNICODE": 14,
+    "GREEK_TEXT": 7,
+    "LATIN_SUPP": 3,
+    "DASHES_QUOTES": 10
+  },
+  "611": {
+    "SUPERSCRIPT_U": 8,
+    "CHECKMARK": 10,
+    "MATH_UNICODE": 10,
+    "GREEK_TEXT": 23,
+    "LATIN_SUPP": 3,
+    "DASHES_QUOTES": 21
+  },
+  "612": {
+    "SUPERSCRIPT_U": 9,
+    "CHECKMARK": 2,
+    "MATH_UNICODE": 11,
+    "GREEK_TEXT": 7,
+    "LATIN_SUPP": 2,
+    "DASHES_QUOTES": 6
+  },
+  "613": {
+    "SUPERSCRIPT_U": 4,
+    "CHECKMARK": 1,
+    "MATH_UNICODE": 3,
+    "GREEK_TEXT": 10,
+    "LATIN_SUPP": 8,
+    "DASHES_QUOTES": 16
+  },
+  "614": {
+    "SUPERSCRIPT_U": 9,
+    "CHECKMARK": 1,
+    "MATH_UNICODE": 3,
+    "GREEK_TEXT": 8,
+    "LATIN_SUPP": 1,
+    "DASHES_QUOTES": 2
+  },
+  "615": {
+    "SUPERSCRIPT_U": 8,
+    "SUBSCRIPT_U": 3,
+    "CHECKMARK": 1,
+    "MATH_UNICODE": 7,
+    "GREEK_TEXT": 13,
+    "LATIN_SUPP": 6,
+    "DASHES_QUOTES": 7
+  },
+  "616": {
+    "SUPERSCRIPT_U": 9,
+    "CHECKMARK": 1,
+    "MATH_UNICODE": 3,
+    "GREEK_TEXT": 8,
+    "LATIN_SUPP": 1,
+    "DASHES_QUOTES": 3
+  },
+  "617": {
+    "SUPERSCRIPT_U": 8,
+    "SUBSCRIPT_U": 3,
+    "CHECKMARK": 1,
+    "MATH_UNICODE": 5,
+    "GREEK_TEXT": 16,
+    "LATIN_SUPP": 6,
+    "DASHES_QUOTES": 3
+  },
+  "618": {
+    "SUPERSCRIPT_U": 10,
+    "CHECKMARK": 1,
+    "MATH_UNICODE": 4,
+    "GREEK_TEXT": 8,
+    "LATIN_SUPP": 1,
+    "DASHES_QUOTES": 2
+  },
+  "619": {
+    "SUPERSCRIPT_U": 9,
+    "CHECKMARK": 1,
+    "MATH_UNICODE": 4,
+    "GREEK_TEXT": 8,
+    "LATIN_SUPP": 3,
+    "DASHES_QUOTES": 3
+  },
+  "620": {
+    "SUPERSCRIPT_U": 9,
+    "CHECKMARK": 1,
+    "MATH_UNICODE": 3,
+    "GREEK_TEXT": 18,
+    "LATIN_SUPP": 1,
+    "DASHES_QUOTES": 8
+  },
+  "621": {
+    "SUPERSCRIPT_U": 10,
+    "CHECKMARK": 1,
+    "MATH_UNICODE": 3,
+    "GREEK_TEXT": 8,
+    "LATIN_SUPP": 1,
+    "DASHES_QUOTES": 2
+  },
+  "622": {
+    "SUPERSCRIPT_U": 53,
+    "SUBSCRIPT_U": 6,
+    "CHECKMARK": 1,
+    "MATH_UNICODE": 55,
+    "GREEK_TEXT": 30,
+    "LATIN_SUPP": 25,
+    "DASHES_QUOTES": 13
+  },
+  "623": {
+    "SUPERSCRIPT_U": 20,
+    "SUBSCRIPT_U": 9,
+    "CHECKMARK": 2,
+    "MATH_UNICODE": 33,
+    "GREEK_TEXT": 14,
+    "LATIN_SUPP": 12,
+    "DASHES_QUOTES": 28
+  },
+  "624": {
+    "SUPERSCRIPT_U": 39,
+    "SUBSCRIPT_U": 2,
+    "CHECKMARK": 1,
+    "MATH_UNICODE": 32,
+    "GREEK_TEXT": 11,
+    "LATIN_SUPP": 10,
+    "DASHES_QUOTES": 26
+  },
+  "625": {
+    "SUPERSCRIPT_U": 25,
+    "MATH_UNICODE": 26,
+    "GREEK_TEXT": 25,
+    "LATIN_SUPP": 17,
+    "DASHES_QUOTES": 14
+  },
+  "626": {
+    "SUPERSCRIPT_U": 58,
+    "SUBSCRIPT_U": 5,
+    "SOLAR": 1,
+    "CHECKMARK": 4,
+    "MATH_UNICODE": 14,
+    "GREEK_TEXT": 12,
+    "LATIN_SUPP": 20,
+    "DASHES_QUOTES": 22
+  },
+  "627": {
+    "SUPERSCRIPT_U": 21,
+    "SUBSCRIPT_U": 5,
+    "SOLAR": 3,
+    "CHECKMARK": 3,
+    "MATH_UNICODE": 7,
+    "GREEK_TEXT": 19,
+    "LATIN_SUPP": 14,
+    "DASHES_QUOTES": 18
+  },
+  "628": {
+    "SUPERSCRIPT_U": 53,
+    "SOLAR": 2,
+    "CHECKMARK": 2,
+    "MATH_UNICODE": 33,
+    "GREEK_TEXT": 10,
+    "LATIN_SUPP": 12,
+    "DASHES_QUOTES": 15
+  },
+  "629": {
+    "SUPERSCRIPT_U": 77,
+    "SUBSCRIPT_U": 2,
+    "SOLAR": 2,
+    "CHECKMARK": 2,
+    "MATH_UNICODE": 39,
+    "GREEK_TEXT": 11,
+    "LATIN_SUPP": 16,
+    "DASHES_QUOTES": 9
+  },
+  "630": {
+    "SUPERSCRIPT_U": 45,
+    "SUBSCRIPT_U": 6,
+    "CHECKMARK": 6,
+    "MATH_UNICODE": 26,
+    "GREEK_TEXT": 13,
+    "LATIN_SUPP": 16,
+    "DASHES_QUOTES": 14
+  },
+  "631": {
+    "SUPERSCRIPT_U": 93,
+    "CHECKMARK": 4,
+    "MATH_UNICODE": 28,
+    "GREEK_TEXT": 10,
+    "LATIN_SUPP": 11,
+    "DASHES_QUOTES": 20
+  },
+  "632": {
+    "SUPERSCRIPT_U": 32,
+    "SUBSCRIPT_U": 4,
+    "CHECKMARK": 6,
+    "MATH_UNICODE": 8,
+    "GREEK_TEXT": 20,
+    "LATIN_SUPP": 10,
+    "DASHES_QUOTES": 11
+  },
+  "633": {
+    "SUPERSCRIPT_U": 18,
+    "CHECKMARK": 1,
+    "MATH_UNICODE": 1,
+    "GREEK_TEXT": 42,
+    "LATIN_SUPP": 2,
+    "DASHES_QUOTES": 8
+  },
+  "634": {
+    "SUPERSCRIPT_U": 14,
+    "CHECKMARK": 1,
+    "MATH_UNICODE": 11,
+    "GREEK_TEXT": 11,
+    "LATIN_SUPP": 9,
+    "DASHES_QUOTES": 8
+  },
+  "635": {
+    "SUPERSCRIPT_U": 9,
+    "CHECKMARK": 4,
+    "MATH_UNICODE": 8,
+    "GREEK_TEXT": 35,
+    "LATIN_SUPP": 11,
+    "DASHES_QUOTES": 7
+  },
+  "636": {
+    "SUPERSCRIPT_U": 55,
+    "CHECKMARK": 1,
+    "MATH_UNICODE": 8,
+    "GREEK_TEXT": 18,
+    "LATIN_SUPP": 1,
+    "DASHES_QUOTES": 7
+  },
+  "637": {
+    "SUPERSCRIPT_U": 4,
+    "CHECKMARK": 2,
+    "MATH_UNICODE": 20,
+    "GREEK_TEXT": 28,
+    "LATIN_SUPP": 10,
+    "DASHES_QUOTES": 8
+  },
+  "638": {
+    "SUPERSCRIPT_U": 16,
+    "MATH_UNICODE": 4,
+    "GREEK_TEXT": 18,
+    "LATIN_SUPP": 13,
+    "DASHES_QUOTES": 5
+  },
+  "639": {
+    "SUPERSCRIPT_U": 5,
+    "MATH_UNICODE": 2,
+    "GREEK_TEXT": 17,
+    "LATIN_SUPP": 5,
+    "DASHES_QUOTES": 8
+  },
+  "640": {
+    "SUPERSCRIPT_U": 24,
+    "CHECKMARK": 1,
+    "MATH_UNICODE": 2,
+    "GREEK_TEXT": 23,
+    "LATIN_SUPP": 7,
+    "DASHES_QUOTES": 9
+  },
+  "641": {
+    "SUPERSCRIPT_U": 25,
+    "CHECKMARK": 1,
+    "MATH_UNICODE": 6,
+    "GREEK_TEXT": 20,
+    "LATIN_SUPP": 13,
+    "DASHES_QUOTES": 8
+  },
+  "642": {
+    "SUPERSCRIPT_U": 42,
+    "CHECKMARK": 1,
+    "MATH_UNICODE": 10,
+    "GREEK_TEXT": 45,
+    "LATIN_SUPP": 10,
+    "DASHES_QUOTES": 14
+  },
+  "643": {
+    "SUPERSCRIPT_U": 115,
+    "SUBSCRIPT_U": 4,
+    "CHECKMARK": 6,
+    "MATH_UNICODE": 26,
+    "GREEK_TEXT": 26,
+    "LATIN_SUPP": 10,
+    "DASHES_QUOTES": 20
+  },
+  "644": {
+    "SUPERSCRIPT_U": 71,
+    "SUBSCRIPT_U": 18,
+    "CHECKMARK": 4,
+    "MATH_UNICODE": 29,
+    "GREEK_TEXT": 11,
+    "LATIN_SUPP": 2,
+    "DASHES_QUOTES": 10
+  },
+  "645": {
+    "SUPERSCRIPT_U": 55,
+    "SOLAR": 1,
+    "CHECKMARK": 3,
+    "MATH_UNICODE": 49,
+    "GREEK_TEXT": 27,
+    "LATIN_SUPP": 9,
+    "DASHES_QUOTES": 16
+  },
+  "646": {
+    "SUPERSCRIPT_U": 43,
+    "SUBSCRIPT_U": 2,
+    "MATH_UNICODE": 9,
+    "GREEK_TEXT": 30,
+    "LATIN_SUPP": 14,
+    "DASHES_QUOTES": 22
+  },
+  "647": {
+    "SUPERSCRIPT_U": 130,
+    "SUBSCRIPT_U": 1,
+    "MATH_UNICODE": 6,
+    "GREEK_TEXT": 26,
+    "LATIN_SUPP": 25,
+    "DASHES_QUOTES": 15
+  },
+  "648": {
+    "SUPERSCRIPT_U": 57,
+    "SUBSCRIPT_U": 4,
+    "MATH_UNICODE": 21,
+    "GREEK_TEXT": 10,
+    "LATIN_SUPP": 24,
+    "DASHES_QUOTES": 16
+  },
+  "649": {
+    "SUPERSCRIPT_U": 48,
+    "SUBSCRIPT_U": 32,
+    "MATH_UNICODE": 8,
+    "GREEK_TEXT": 13,
+    "LATIN_SUPP": 9,
+    "DASHES_QUOTES": 19
+  },
+  "650": {
+    "SUPERSCRIPT_U": 37,
+    "SUBSCRIPT_U": 4,
+    "MATH_UNICODE": 10,
+    "GREEK_TEXT": 36,
+    "LATIN_SUPP": 35,
+    "DASHES_QUOTES": 17
+  },
+  "651": {
+    "SUPERSCRIPT_U": 88,
+    "SUBSCRIPT_U": 2,
+    "MATH_UNICODE": 4,
+    "GREEK_TEXT": 13,
+    "LATIN_SUPP": 11,
+    "DASHES_QUOTES": 14
+  },
+  "652": {
+    "SUPERSCRIPT_U": 30,
+    "SUBSCRIPT_U": 8,
+    "CHECKMARK": 2,
+    "MATH_UNICODE": 8,
+    "GREEK_TEXT": 32,
+    "LATIN_SUPP": 13,
+    "DASHES_QUOTES": 16
+  },
+  "653": {
+    "SUPERSCRIPT_U": 37,
+    "CHECKMARK": 1,
+    "MATH_UNICODE": 8,
+    "GREEK_TEXT": 52,
+    "LATIN_SUPP": 16,
+    "DASHES_QUOTES": 22
+  },
+  "654": {
+    "SUPERSCRIPT_U": 53,
+    "SUBSCRIPT_U": 7,
+    "MATH_UNICODE": 9,
+    "GREEK_TEXT": 34,
+    "LATIN_SUPP": 18,
+    "DASHES_QUOTES": 13
+  },
+  "655": {
+    "SUPERSCRIPT_U": 43,
+    "SUBSCRIPT_U": 18,
+    "MATH_UNICODE": 5,
+    "GREEK_TEXT": 9,
+    "LATIN_SUPP": 5,
+    "DASHES_QUOTES": 25
+  },
+  "656": {
+    "SUPERSCRIPT_U": 6,
+    "MATH_UNICODE": 2,
+    "LATIN_SUPP": 8,
+    "DASHES_QUOTES": 19
+  },
+  "657": {
+    "SUPERSCRIPT_U": 18,
+    "MATH_UNICODE": 1,
+    "LATIN_SUPP": 7,
+    "DASHES_QUOTES": 18
+  },
+  "658": {
+    "SUPERSCRIPT_U": 56,
+    "MATH_UNICODE": 17,
+    "GREEK_TEXT": 39,
+    "LATIN_SUPP": 23,
+    "DASHES_QUOTES": 12
+  },
+  "659": {
+    "SUPERSCRIPT_U": 40,
+    "SOLAR": 2,
+    "MATH_UNICODE": 17,
+    "GREEK_TEXT": 29,
+    "LATIN_SUPP": 22,
+    "DASHES_QUOTES": 20
+  },
+  "660": {
+    "SUPERSCRIPT_U": 22,
+    "MATH_UNICODE": 4,
+    "GREEK_TEXT": 8,
+    "LATIN_SUPP": 14,
+    "DASHES_QUOTES": 13
+  },
+  "661": {
+    "SUPERSCRIPT_U": 20,
+    "MATH_UNICODE": 5,
+    "GREEK_TEXT": 13,
+    "LATIN_SUPP": 5,
+    "DASHES_QUOTES": 9
+  },
+  "662": {
+    "MATH_UNICODE": 1,
+    "GREEK_TEXT": 2,
+    "LATIN_SUPP": 1,
+    "DASHES_QUOTES": 6
+  },
+  "663": {
+    "MATH_UNICODE": 5,
+    "GREEK_TEXT": 7,
+    "DASHES_QUOTES": 4
+  },
+  "664": {
+    "SUPERSCRIPT_U": 2,
+    "MATH_UNICODE": 6,
+    "GREEK_TEXT": 4,
+    "LATIN_SUPP": 7,
+    "DASHES_QUOTES": 8
+  },
+  "665": {
+    "MATH_UNICODE": 3,
+    "GREEK_TEXT": 2,
+    "LATIN_SUPP": 2,
+    "DASHES_QUOTES": 6
+  },
+  "666": {
+    "SUPERSCRIPT_U": 6,
+    "SOLAR": 3,
+    "MATH_UNICODE": 2,
+    "LATIN_SUPP": 2,
+    "DASHES_QUOTES": 7
+  },
+  "667": {
+    "SUPERSCRIPT_U": 4,
+    "SOLAR": 1,
+    "MATH_UNICODE": 3,
+    "GREEK_TEXT": 4,
+    "LATIN_SUPP": 6,
+    "DASHES_QUOTES": 7
+  },
+  "668": {
+    "SUPERSCRIPT_U": 16,
+    "MATH_UNICODE": 10,
+    "GREEK_TEXT": 6,
+    "LATIN_SUPP": 7,
+    "DASHES_QUOTES": 3
+  },
+  "669": {
+    "SUPERSCRIPT_U": 3,
+    "SOLAR": 2,
+    "MATH_UNICODE": 1,
+    "GREEK_TEXT": 1,
+    "DASHES_QUOTES": 4
+  },
+  "670": {
+    "GREEK_TEXT": 1,
+    "DASHES_QUOTES": 3
+  },
+  "671": {
+    "SUPERSCRIPT_U": 4,
+    "SUBSCRIPT_U": 1,
+    "MATH_UNICODE": 1,
+    "LATIN_SUPP": 5,
+    "DASHES_QUOTES": 6
+  },
+  "672": {
+    "SUPERSCRIPT_U": 4,
+    "MATH_UNICODE": 1,
+    "GREEK_TEXT": 3,
+    "LATIN_SUPP": 6,
+    "DASHES_QUOTES": 4
+  },
+  "673": {
+    "SUPERSCRIPT_U": 6,
+    "MATH_UNICODE": 19,
+    "GREEK_TEXT": 3,
+    "DASHES_QUOTES": 6
+  },
+  "674": {
+    "SUPERSCRIPT_U": 6,
+    "LATIN_SUPP": 1,
+    "DASHES_QUOTES": 2
+  },
+  "675": {
+    "SUPERSCRIPT_U": 6,
+    "LATIN_SUPP": 1
+  },
+  "676": {
+    "SUPERSCRIPT_U": 6,
+    "LATIN_SUPP": 1
+  },
+  "677": {
+    "SUPERSCRIPT_U": 6,
+    "LATIN_SUPP": 1,
+    "DASHES_QUOTES": 1
+  },
+  "678": {
+    "SUPERSCRIPT_U": 6,
+    "LATIN_SUPP": 1,
+    "DASHES_QUOTES": 2
+  },
+  "679": {
+    "SUPERSCRIPT_U": 6,
+    "LATIN_SUPP": 1
+  },
+  "680": {
+    "SUPERSCRIPT_U": 6,
+    "LATIN_SUPP": 1
+  },
+  "681": {
+    "SUPERSCRIPT_U": 6,
+    "LATIN_SUPP": 1
+  },
+  "682": {
+    "SUPERSCRIPT_U": 6,
+    "LATIN_SUPP": 1
+  },
+  "683": {
+    "SUPERSCRIPT_U": 6,
+    "LATIN_SUPP": 1
+  },
+  "684": {
+    "SUPERSCRIPT_U": 6,
+    "LATIN_SUPP": 1
+  },
+  "685": {
+    "SUPERSCRIPT_U": 6,
+    "LATIN_SUPP": 1,
+    "DASHES_QUOTES": 2
+  },
+  "686": {
+    "SUPERSCRIPT_U": 6,
+    "LATIN_SUPP": 1
+  },
+  "687": {
+    "SUPERSCRIPT_U": 6,
+    "LATIN_SUPP": 1
+  },
+  "688": {
+    "SUPERSCRIPT_U": 4,
+    "DASHES_QUOTES": 1
+  },
+  "689": {
+    "DASHES_QUOTES": 2
+  },
+  "690": {
+    "DASHES_QUOTES": 1
+  },
+  "691": {
+    "DASHES_QUOTES": 2
+  },
+  "692": {
+    "DASHES_QUOTES": 1
+  },
+  "693": {
+    "LATIN_SUPP": 1,
+    "DASHES_QUOTES": 1
+  },
+  "694": {
+    "DASHES_QUOTES": 1
+  },
+  "695": {
+    "LATIN_SUPP": 1,
+    "DASHES_QUOTES": 1
+  },
+  "696": {
+    "DASHES_QUOTES": 1
+  },
+  "697": {
+    "DASHES_QUOTES": 1
+  },
+  "698": {
+    "DASHES_QUOTES": 1
+  },
+  "699": {
+    "SUPERSCRIPT_U": 1,
+    "DASHES_QUOTES": 2
+  },
+  "700": {
+    "DASHES_QUOTES": 1
+  },
+  "701": {
+    "SUPERSCRIPT_U": 2,
+    "LATIN_SUPP": 1,
+    "DASHES_QUOTES": 3
+  },
+  "702": {
+    "SUPERSCRIPT_U": 3
+  },
+  "704": {
+    "SUPERSCRIPT_U": 1
+  },
+  "708": {
+    "DASHES_QUOTES": 3
+  },
+  "714": {
+    "DASHES_QUOTES": 2
+  },
+  "715": {
+    "DASHES_QUOTES": 2
+  },
+  "716": {
+    "DASHES_QUOTES": 2
+  },
+  "719": {
+    "LATIN_SUPP": 3,
+    "DASHES_QUOTES": 2
+  },
+  "731": {
+    "DASHES_QUOTES": 5
+  },
+  "732": {
+    "SUPERSCRIPT_U": 3,
+    "DASHES_QUOTES": 5
+  },
+  "733": {
+    "SUPERSCRIPT_U": 1,
+    "DASHES_QUOTES": 11
+  },
+  "734": {
+    "SUPERSCRIPT_U": 18,
+    "MATH_UNICODE": 11,
+    "GREEK_TEXT": 26,
+    "LATIN_SUPP": 22,
+    "DASHES_QUOTES": 21
+  },
+  "735": {
+    "SUPERSCRIPT_U": 2,
+    "MATH_UNICODE": 5,
+    "GREEK_TEXT": 9,
+    "LATIN_SUPP": 8,
+    "DASHES_QUOTES": 15
+  },
+  "736": {
+    "SUPERSCRIPT_U": 8,
+    "MATH_UNICODE": 6,
+    "GREEK_TEXT": 34,
+    "LATIN_SUPP": 3,
+    "DASHES_QUOTES": 11
+  },
+  "737": {
+    "SUPERSCRIPT_U": 36,
+    "SOLAR": 10,
+    "MATH_UNICODE": 34,
+    "GREEK_TEXT": 13,
+    "LATIN_SUPP": 3,
+    "DASHES_QUOTES": 16
+  },
+  "738": {
+    "SUPERSCRIPT_U": 3,
+    "MATH_UNICODE": 19,
+    "GREEK_TEXT": 28,
+    "LATIN_SUPP": 6,
+    "DASHES_QUOTES": 13
+  },
+  "739": {
+    "SUPERSCRIPT_U": 49,
+    "MATH_UNICODE": 11,
+    "GREEK_TEXT": 36,
+    "LATIN_SUPP": 12,
+    "DASHES_QUOTES": 17
+  },
+  "740": {
+    "BARE_QMARK": 1,
+    "SUPERSCRIPT_U": 16,
+    "SUBSCRIPT_U": 1,
+    "MATH_UNICODE": 36,
+    "GREEK_TEXT": 48,
+    "LATIN_SUPP": 3,
+    "DASHES_QUOTES": 15
+  },
+  "741": {
+    "SUPERSCRIPT_U": 67,
+    "MATH_UNICODE": 13,
+    "GREEK_TEXT": 64,
+    "LATIN_SUPP": 82,
+    "DASHES_QUOTES": 7
+  },
+  "742": {
+    "SUPERSCRIPT_U": 53,
+    "SOLAR": 5,
+    "MATH_UNICODE": 26,
+    "GREEK_TEXT": 18,
+    "LATIN_SUPP": 45,
+    "DASHES_QUOTES": 4
+  },
+  "743": {
+    "SUPERSCRIPT_U": 79,
+    "MATH_UNICODE": 15,
+    "GREEK_TEXT": 19,
+    "LATIN_SUPP": 74,
+    "DASHES_QUOTES": 4
+  },
+  "744": {
+    "SUPERSCRIPT_U": 50,
+    "SOLAR": 7,
+    "MATH_UNICODE": 21,
+    "GREEK_TEXT": 15,
+    "LATIN_SUPP": 43,
+    "DASHES_QUOTES": 7
+  },
+  "745": {
+    "SUPERSCRIPT_U": 117,
+    "SOLAR": 1,
+    "MATH_UNICODE": 19,
+    "GREEK_TEXT": 19,
+    "LATIN_SUPP": 81,
+    "DASHES_QUOTES": 7
+  },
+  "746": {
+    "SUPERSCRIPT_U": 28,
+    "CHECKMARK": 3,
+    "MATH_UNICODE": 8,
+    "GREEK_TEXT": 18,
+    "LATIN_SUPP": 54,
+    "DASHES_QUOTES": 4
+  },
+  "747": {
+    "SUPERSCRIPT_U": 127,
+    "SUBSCRIPT_U": 1,
+    "MATH_UNICODE": 38,
+    "GREEK_TEXT": 22,
+    "LATIN_SUPP": 117,
+    "DASHES_QUOTES": 3
+  },
+  "748": {
+    "SUPERSCRIPT_U": 154,
+    "SOLAR": 1,
+    "MATH_UNICODE": 51,
+    "GREEK_TEXT": 92,
+    "LATIN_SUPP": 103,
+    "DASHES_QUOTES": 20
+  },
+  "749": {
+    "SUPERSCRIPT_U": 110,
+    "SOLAR": 1,
+    "MATH_UNICODE": 59,
+    "GREEK_TEXT": 83,
+    "LATIN_SUPP": 120,
+    "DASHES_QUOTES": 21
+  },
+  "750": {
+    "SUPERSCRIPT_U": 86,
+    "SOLAR": 15,
+    "MATH_UNICODE": 32,
+    "GREEK_TEXT": 31,
+    "LATIN_SUPP": 64,
+    "DASHES_QUOTES": 7
+  },
+  "751": {
+    "SUPERSCRIPT_U": 30,
+    "MATH_UNICODE": 8,
+    "GREEK_TEXT": 15,
+    "LATIN_SUPP": 22,
+    "DASHES_QUOTES": 9
+  },
+  "752": {
+    "SUPERSCRIPT_U": 63,
+    "SOLAR": 1,
+    "MATH_UNICODE": 12,
+    "GREEK_TEXT": 28,
+    "LATIN_SUPP": 51,
+    "DASHES_QUOTES": 9
+  },
+  "753": {
+    "SUPERSCRIPT_U": 68,
+    "SUBSCRIPT_U": 4,
+    "SOLAR": 2,
+    "MATH_UNICODE": 22,
+    "GREEK_TEXT": 21,
+    "LATIN_SUPP": 50,
+    "DASHES_QUOTES": 12
+  },
+  "754": {
+    "SUPERSCRIPT_U": 63,
+    "SUBSCRIPT_U": 4,
+    "SOLAR": 4,
+    "MATH_UNICODE": 16,
+    "GREEK_TEXT": 21,
+    "LATIN_SUPP": 58,
+    "DASHES_QUOTES": 9
+  },
+  "755": {
+    "SUPERSCRIPT_U": 87,
+    "SOLAR": 4,
+    "MATH_UNICODE": 11,
+    "GREEK_TEXT": 6,
+    "LATIN_SUPP": 54,
+    "DASHES_QUOTES": 7
+  },
+  "756": {
+    "SUPERSCRIPT_U": 85,
+    "SOLAR": 5,
+    "MATH_UNICODE": 10,
+    "GREEK_TEXT": 8,
+    "LATIN_SUPP": 42,
+    "DASHES_QUOTES": 9
+  },
+  "757": {
+    "SUPERSCRIPT_U": 53,
+    "SOLAR": 3,
+    "MATH_UNICODE": 25,
+    "GREEK_TEXT": 14,
+    "LATIN_SUPP": 48,
+    "DASHES_QUOTES": 10
+  },
+  "758": {
+    "SUPERSCRIPT_U": 67,
+    "SUBSCRIPT_U": 1,
+    "SOLAR": 2,
+    "MATH_UNICODE": 14,
+    "GREEK_TEXT": 10,
+    "LATIN_SUPP": 56,
+    "DASHES_QUOTES": 9
+  },
+  "759": {
+    "SUPERSCRIPT_U": 83,
+    "SUBSCRIPT_U": 1,
+    "SOLAR": 2,
+    "MATH_UNICODE": 23,
+    "GREEK_TEXT": 12,
+    "LATIN_SUPP": 56,
+    "DASHES_QUOTES": 9
+  },
+  "760": {
+    "SUPERSCRIPT_U": 84,
+    "SOLAR": 7,
+    "MATH_UNICODE": 27,
+    "GREEK_TEXT": 13,
+    "LATIN_SUPP": 74,
+    "DASHES_QUOTES": 12
+  },
+  "761": {
+    "SUPERSCRIPT_U": 45,
+    "SUBSCRIPT_U": 1,
+    "SOLAR": 2,
+    "MATH_UNICODE": 5,
+    "GREEK_TEXT": 8,
+    "LATIN_SUPP": 32,
+    "DASHES_QUOTES": 10
+  },
+  "762": {
+    "SUPERSCRIPT_U": 48,
+    "SUBSCRIPT_U": 1,
+    "SOLAR": 4,
+    "MATH_UNICODE": 4,
+    "GREEK_TEXT": 8,
+    "LATIN_SUPP": 34,
+    "DASHES_QUOTES": 5
+  },
+  "763": {
+    "SUPERSCRIPT_U": 76,
+    "SOLAR": 4,
+    "MATH_UNICODE": 2,
+    "GREEK_TEXT": 8,
+    "LATIN_SUPP": 36,
+    "DASHES_QUOTES": 7
+  },
+  "764": {
+    "SUPERSCRIPT_U": 67,
+    "MATH_UNICODE": 5,
+    "GREEK_TEXT": 8,
+    "LATIN_SUPP": 34,
+    "DASHES_QUOTES": 6
+  },
+  "765": {
+    "SUPERSCRIPT_U": 57,
+    "SUBSCRIPT_U": 2,
+    "SOLAR": 4,
+    "MATH_UNICODE": 3,
+    "GREEK_TEXT": 8,
+    "LATIN_SUPP": 39,
+    "DASHES_QUOTES": 7
+  },
+  "766": {
+    "SUPERSCRIPT_U": 67,
+    "SOLAR": 1,
+    "MATH_UNICODE": 4,
+    "GREEK_TEXT": 5,
+    "LATIN_SUPP": 34,
+    "DASHES_QUOTES": 5
+  },
+  "767": {
+    "SUPERSCRIPT_U": 48,
+    "SUBSCRIPT_U": 2,
+    "SOLAR": 8,
+    "MATH_UNICODE": 10,
+    "GREEK_TEXT": 3,
+    "LATIN_SUPP": 46,
+    "DASHES_QUOTES": 5
+  },
+  "768": {
+    "SUPERSCRIPT_U": 53,
+    "SUBSCRIPT_U": 5,
+    "SOLAR": 5,
+    "MATH_UNICODE": 10,
+    "GREEK_TEXT": 6,
+    "LATIN_SUPP": 54,
+    "DASHES_QUOTES": 10
+  },
+  "769": {
+    "SUPERSCRIPT_U": 67,
+    "SUBSCRIPT_U": 2,
+    "SOLAR": 2,
+    "MATH_UNICODE": 9,
+    "GREEK_TEXT": 7,
+    "LATIN_SUPP": 47,
+    "DASHES_QUOTES": 5
+  },
+  "770": {
+    "SUPERSCRIPT_U": 57,
+    "SOLAR": 3,
+    "MATH_UNICODE": 3,
+    "GREEK_TEXT": 6,
+    "LATIN_SUPP": 38,
+    "DASHES_QUOTES": 11
+  },
+  "771": {
+    "SUPERSCRIPT_U": 45,
+    "SUBSCRIPT_U": 2,
+    "SOLAR": 5,
+    "MATH_UNICODE": 9,
+    "GREEK_TEXT": 1,
+    "LATIN_SUPP": 44,
+    "DASHES_QUOTES": 9
+  },
+  "772": {
+    "SUPERSCRIPT_U": 39,
+    "SOLAR": 2,
+    "MATH_UNICODE": 10,
+    "LATIN_SUPP": 24,
+    "DASHES_QUOTES": 8
+  },
+  "773": {
+    "SUPERSCRIPT_U": 47,
+    "SUBSCRIPT_U": 1,
+    "SOLAR": 8,
+    "MATH_UNICODE": 6,
+    "LATIN_SUPP": 38,
+    "DASHES_QUOTES": 7
+  },
+  "774": {
+    "SUPERSCRIPT_U": 57,
+    "SUBSCRIPT_U": 1,
+    "SOLAR": 5,
+    "MATH_UNICODE": 7,
+    "LATIN_SUPP": 40,
+    "DASHES_QUOTES": 8
+  },
+  "775": {
+    "SUPERSCRIPT_U": 55,
+    "SUBSCRIPT_U": 1,
+    "SOLAR": 7,
+    "MATH_UNICODE": 6,
+    "LATIN_SUPP": 37,
+    "DASHES_QUOTES": 6
+  },
+  "776": {
+    "SUPERSCRIPT_U": 39,
+    "SUBSCRIPT_U": 1,
+    "SOLAR": 4,
+    "MATH_UNICODE": 6,
+    "GREEK_TEXT": 1,
+    "LATIN_SUPP": 34,
+    "DASHES_QUOTES": 7
+  },
+  "777": {
+    "SUPERSCRIPT_U": 47,
+    "SUBSCRIPT_U": 1,
+    "SOLAR": 7,
+    "MATH_UNICODE": 5,
+    "GREEK_TEXT": 1,
+    "LATIN_SUPP": 32,
+    "DASHES_QUOTES": 5
+  },
+  "778": {
+    "SUPERSCRIPT_U": 55,
+    "SUBSCRIPT_U": 3,
+    "SOLAR": 5,
+    "MATH_UNICODE": 7,
+    "GREEK_TEXT": 1,
+    "LATIN_SUPP": 36,
+    "DASHES_QUOTES": 10
+  },
+  "779": {
+    "SUPERSCRIPT_U": 39,
+    "SOLAR": 4,
+    "MATH_UNICODE": 6,
+    "GREEK_TEXT": 1,
+    "LATIN_SUPP": 29,
+    "DASHES_QUOTES": 7
+  },
+  "780": {
+    "SUPERSCRIPT_U": 57,
+    "SOLAR": 5,
+    "MATH_UNICODE": 7,
+    "GREEK_TEXT": 1,
+    "LATIN_SUPP": 47,
+    "DASHES_QUOTES": 9
+  },
+  "781": {
+    "SUPERSCRIPT_U": 33,
+    "SOLAR": 5,
+    "MATH_UNICODE": 5,
+    "LATIN_SUPP": 23,
+    "DASHES_QUOTES": 6
+  },
+  "782": {
+    "SUPERSCRIPT_U": 38,
+    "SOLAR": 3,
+    "MATH_UNICODE": 4,
+    "LATIN_SUPP": 29,
+    "DASHES_QUOTES": 6
+  },
+  "783": {
+    "SUPERSCRIPT_U": 31,
+    "SOLAR": 4,
+    "MATH_UNICODE": 4,
+    "LATIN_SUPP": 16,
+    "DASHES_QUOTES": 8
+  },
+  "784": {
+    "SUPERSCRIPT_U": 53,
+    "SOLAR": 3,
+    "MATH_UNICODE": 4,
+    "GREEK_TEXT": 1,
+    "LATIN_SUPP": 23,
+    "DASHES_QUOTES": 8
+  },
+  "785": {
+    "SUPERSCRIPT_U": 42,
+    "SOLAR": 2,
+    "MATH_UNICODE": 7,
+    "LATIN_SUPP": 37,
+    "DASHES_QUOTES": 5
+  },
+  "786": {
+    "SUPERSCRIPT_U": 36,
+    "SOLAR": 2,
+    "MATH_UNICODE": 5,
+    "GREEK_TEXT": 8,
+    "LATIN_SUPP": 30,
+    "DASHES_QUOTES": 10
+  },
+  "787": {
+    "SUPERSCRIPT_U": 39,
+    "SOLAR": 2,
+    "MATH_UNICODE": 3,
+    "GREEK_TEXT": 2,
+    "LATIN_SUPP": 14,
+    "DASHES_QUOTES": 8
+  },
+  "788": {
+    "SUPERSCRIPT_U": 47,
+    "SUBSCRIPT_U": 1,
+    "SOLAR": 5,
+    "MATH_UNICODE": 5,
+    "GREEK_TEXT": 1,
+    "LATIN_SUPP": 23,
+    "DASHES_QUOTES": 6
+  },
+  "789": {
+    "SUPERSCRIPT_U": 69,
+    "MATH_UNICODE": 1,
+    "GREEK_TEXT": 6,
+    "LATIN_SUPP": 44,
+    "DASHES_QUOTES": 8
+  },
+  "790": {
+    "SUPERSCRIPT_U": 45,
+    "SOLAR": 3,
+    "MATH_UNICODE": 4,
+    "GREEK_TEXT": 1,
+    "LATIN_SUPP": 18,
+    "DASHES_QUOTES": 6
+  },
+  "791": {
+    "SUPERSCRIPT_U": 38,
+    "SOLAR": 1,
+    "MATH_UNICODE": 2,
+    "GREEK_TEXT": 1,
+    "LATIN_SUPP": 23,
+    "DASHES_QUOTES": 9
+  },
+  "792": {
+    "SUPERSCRIPT_U": 51,
+    "SOLAR": 4,
+    "MATH_UNICODE": 3,
+    "GREEK_TEXT": 1,
+    "LATIN_SUPP": 17,
+    "DASHES_QUOTES": 8
+  },
+  "793": {
+    "SUPERSCRIPT_U": 41,
+    "SOLAR": 3,
+    "MATH_UNICODE": 3,
+    "GREEK_TEXT": 1,
+    "LATIN_SUPP": 20,
+    "DASHES_QUOTES": 12
+  }
+}
