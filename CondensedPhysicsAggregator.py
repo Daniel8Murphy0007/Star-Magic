@@ -11,8 +11,8 @@ ARCHITECTURE:
     CondensedPhysics.py      → Foundation (1,227 base classes, 168,803 lines)
     CondensedPhysics2.py     → Extension 1 (631 classes, 48,679+ lines: Orb Analysis 10/11+ + Grok thread extensions + Session 137 _84A767D3 + Session 138 SOURCE179 + Session 151 Millennium Prize)
     CondensedPhysics3.py     → Extension 2 (219 classes, 13,944 lines: 15+ categories, Sessions 41-96)
-    CondensedPhysics4.py     → Extension 3 (369 classes, Sessions 97-183, 2026-04-03)
-    Last updated: Session 183 v5.43 (2026-04-03) — PAPER_001–156 deduplicated (128 fixed, maintenance); Session 182: 808 PDFs standardized A4 595×842 (maintenance); Session 181: PAPER_751–793 (43 papers); CP4 #335–#377 (369 total); 793/1000 papers (79.3%)
+    CondensedPhysics4.py     → Extension 3 (369 classes, Sessions 97-188, 2026-04-03)
+    Last updated: Session 188 v5.44 (2026-04-03) — MAINTENANCE Sessions 184–187b: root duplicate removal + encoding fixes + pdf_header.tex glyph expansion (90+ \newunicodechar) + LaTeX error fixes + H1 heading fixes + deep glyph audit (770/805 papers) + corpus-wide UFFFD/bare-? repair (3,449+1,116 fixed) + orphan PDF rebuilds (PAPER_376/376b/495); 808/808 PDFs; 793/1000 papers (79.3%); CP4=369 (unchanged)
     CondensedPhysicsAggregator.py → This file (unified API, v3.2.0)
 
 USAGE:
