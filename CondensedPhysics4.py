@@ -40,6 +40,7 @@ Updated: Sessions 182â€“183 v5.43 â€” MAINTENANCE (PDF A4 standardization + PAPE
 Updated: Sessions 184â€“188 v5.44 â€” MAINTENANCE (root duplicate removal; encoding fixes; pdf_header.tex 90+ glyph mappings; LaTeX error fixes; H1 heading fixes; deep glyph audit+corpus repair; orphan PDF rebuilds; tracking sync; no new CP4 classes)
 Updated: Session 189 v5.45 â€” CP4 369â†’382 (#378â€“#390 NGC2525SN2018gv/NGC3603ExtremeCluster/NGC1275PerseusAGN/NGC1792StellarForge/AFGL5180MassiveSFR/NGC2174MonkeyHead/NGC685/NGC3507/NGC3511/NGC3596/NGC1961/NGC5335/DPMSpeciesIndexACP: PAPER_794â€“806; grok_share_e6be3b4f-9cda.txt; 806/1000 papers; Triadic UQFF DVP/VDS/BH; M_SN(t)/P(t)/F_BH(t)/F_sn(t)/H_k pillar novel terms)
 Updated: Session 190 v5.46 â€” CP4 382â†’384 (#391 CGMMetalRetentionUQFFTheoremCalculator + #392 ACPUniversalCycleNotesPhysicsCalculator: PAPER_807â€“808; grok_share_e6be3b4f-9cda.txt second pass; Sanchez2023 f_Z,CGM=U_i/(U_i+U_m) theorem + ACP Notes Universal Cycle Î³_d=0.0963/T_end=10.38/DNA helix/trinity; 808/1000 papers)
+Updated: Session 191 v5.47 â€” CP4 384â†’387 (#393 NGC3603CleanUQFFCalculator + #394 BubbleNebulaNGC7635CleanUQFFCalculator + #395 AntennaeMergerNGC4038CleanUQFFCalculator: PAPER_809â€“811; grok_share_afa84da6.txt clean pass (lines 935â€“1448); NGC3603 g=1.053e-3/BubbleNebula g=1.884e-3/Antennae g=1.053e-1 m/sÂ²; 811/1000 papers)
     Updated: Session 162 v5.19 â€” CP4 219â†’229 (#220â€“#229 Tau Lepton G2 SM Bridge, CKM Vcb Flavor Vacuum Coupling, VLQ Kappa Heavy Mode, LFV BDecay TimeReversal, ALICE Run3 Multiplicity, BESIII DCS Cabibbo Dipole, Higgs 125GeV VEV Buoyancy, Proton Decay Kappa Scale, Electroweak SinThetaW SCm, SM Parameter Bridge Master: PAPER_633â€“642; SM Anchors added PAPER_622â€“632; CVW v2.0.0 G6 gate; UQFF_SM_ANCHOR_REQUIREMENTS.md)
 
 Architecture Compliance (MANDATORY):
@@ -29978,6 +29979,262 @@ class ACPUniversalCycleNotesPhysicsCalculator:
         t_range = sweep or [i * 1.0 for i in range(67)]
         for t in t_range:
             r = self.compute({"t_norm": t, "n_shell": 13, "z_helix": 1.7e-9, "r_kpc": 1.0})
+            r["sweep_val"] = t
+            results.append(r)
+        return results
+
+
+# ==============================================================================
+# PAPER_809: NGC 3603 Extreme Star Cluster — Clean UQFF Gravity Equation
+# Source: grok_share_afa84da6.txt lines 935-1101 | May 09, 2025, 12:21 AM EDT
+# Clean derivation: mass growth M_dot(t) + feedback P(t) + Hubble + f_TRZ + [UA] EM
+# g_NGC3603 = (G*M(t)/r^2)*(1+H0*t)*(1-P(t))*(1+f_TRZ) + q*(v×B)*(1+?_UA/?_SCm)*1e-12
+# At t=5e5 yr: g ~ 1.053e-3 m/s²
+# ------------------------------------------------------------------------------
+class NGC3603CleanUQFFCalculator:
+    """PAPER_809: NGC 3603 clean UQFF — mass growth M_dot=0.1*exp(-t/t_SF);
+    feedback P(t)=0.1*exp(-t/t_exp); f_TRZ=0.1; Aether factor=11.
+    g ~ 1.053e-3 m/s² at t=5e5 yr. CP4 class #393."""
+
+    UQFF_CONSTANTS = {
+        "G":         6.6743e-11,   # m³/kg/s²
+        "M_INITIAL": 7.956e35,     # kg  (400,000 M_sun)
+        "R":         8.998e15,     # m   (half cluster span ~9.5 ly)
+        "M_DOT0":    0.1,          # secondary SFR amplitude
+        "TAU_SF":    3.156e13,     # s   (1e6 yr)
+        "P0":        0.1,          # stellar feedback amplitude
+        "TAU_EXP":   3.156e13,     # s   (1e6 yr)
+        "H0":        2.268e-18,    # s?¹ (70 km/s/Mpc)
+        "F_TRZ":     0.1,
+        "Q":         1.602e-19,    # C
+        "V":         1.0e5,        # m/s (gas velocity)
+        "B":         1.0e-5,       # T
+        "M_H":       1.673e-27,    # kg
+        "RHO_UA":    7.09e-36,     # J/m³
+        "RHO_SCM":   7.09e-37,     # J/m³
+        "A_SCALE":   1.0e-12,
+    }
+
+    PARAMETERS = [
+        ("t_s", "float", 1.578e13, "Cosmic time in seconds (default = 5e5 yr)"),
+    ]
+
+    PRIMARY_OUTPUT = "g_NGC3603"
+    PRIMARY_INPUT  = "t_s"
+
+    def compute(self, params=None):
+        import math
+        p = params or {}
+        t = p.get("t_s", 1.578e13)
+        c = self.UQFF_CONSTANTS
+
+        m_dot = c["M_DOT0"] * math.exp(-t / c["TAU_SF"])
+        M_t   = c["M_INITIAL"] * (1.0 + m_dot)
+        g_grav = c["G"] * M_t / c["R"]**2
+
+        hubble = 1.0 + c["H0"] * t
+        p_t    = 1.0 - c["P0"] * math.exp(-t / c["TAU_EXP"])
+        f_trz  = 1.0 + c["F_TRZ"]
+
+        g_classical = g_grav * hubble * p_t * f_trz
+
+        a_em = c["Q"] * c["V"] * c["B"] / c["M_H"]
+        aether_factor = 1.0 + c["RHO_UA"] / c["RHO_SCM"]  # = 11
+        g_em = a_em * aether_factor * c["A_SCALE"]
+
+        g_total = g_classical + g_em
+
+        return {
+            "g_NGC3603":     g_total,
+            "g_classical":   g_classical,
+            "g_em":          g_em,
+            "M_t_kg":        M_t,
+            "aether_factor": aether_factor,
+            "note": (f"t={t:.3e} s: g_NGC3603={g_total:.3e} m/s²; "
+                     f"g_classical={g_classical:.3e}; g_EM={g_em:.3e}")
+        }
+
+    def simulate(self, sweep=None, sweep_param=None):
+        import math
+        results = []
+        t_range = sweep or [i * 3.156e12 for i in range(1, 11)]
+        for t in t_range:
+            r = self.compute({"t_s": t})
+            r["sweep_val"] = t
+            results.append(r)
+        return results
+
+
+# ==============================================================================
+# PAPER_810: Bubble Nebula NGC 7635 — Clean UQFF Stellar Wind Gravity Equation
+# Source: grok_share_afa84da6.txt lines 1112-1264 | May 09, 2025, 12:31 AM EDT
+# Wolf-Rayet BD+60°2522 (45 Msun), wind 1789 km/s, bubble r=3.5 ly
+# g_NGC7635 = (G*M_star/r^2)*(1+H0*t)*(1-P(t))*(1+f_TRZ) + q*(v×B)*(1+?_UA/?_SCm)*1e-12
+# At t=4e6 yr: g ~ 1.884e-3 m/s²
+# ------------------------------------------------------------------------------
+class BubbleNebulaNGC7635CleanUQFFCalculator:
+    """PAPER_810: Bubble Nebula NGC 7635 clean UQFF — Wolf-Rayet stellar wind
+    P(t)=0.1*exp(-t/t_exp); t_exp=4e6 yr; v_wind=1789 km/s; B=1e-6 T.
+    g ~ 1.884e-3 m/s² at t=4e6 yr. CP4 class #394."""
+
+    UQFF_CONSTANTS = {
+        "G":         6.6743e-11,   # m³/kg/s²
+        "M_STAR":    8.951e31,     # kg  (45 M_sun, BD+60°2522)
+        "R":         3.311e16,     # m   (bubble radius 3.5 ly)
+        "P0":        0.1,          # stellar wind pressure amplitude
+        "TAU_EXP":   1.262e14,     # s   (4e6 yr = star age)
+        "H0":        2.268e-18,    # s?¹
+        "F_TRZ":     0.1,
+        "Q":         1.602e-19,    # C
+        "V_WIND":    1.789e6,      # m/s (stellar wind velocity, 4 million mph)
+        "B":         1.0e-6,       # T   (nebular magnetic field)
+        "M_H":       1.673e-27,    # kg
+        "RHO_UA":    7.09e-36,     # J/m³
+        "RHO_SCM":   7.09e-37,     # J/m³
+        "A_SCALE":   1.0e-12,
+    }
+
+    PARAMETERS = [
+        ("t_s", "float", 1.262e14, "Cosmic time in seconds (default = 4e6 yr)"),
+    ]
+
+    PRIMARY_OUTPUT = "g_NGC7635"
+    PRIMARY_INPUT  = "t_s"
+
+    def compute(self, params=None):
+        import math
+        p = params or {}
+        t = p.get("t_s", 1.262e14)
+        c = self.UQFF_CONSTANTS
+
+        g_grav = c["G"] * c["M_STAR"] / c["R"]**2
+
+        hubble = 1.0 + c["H0"] * t
+        p_t    = 1.0 - c["P0"] * math.exp(-t / c["TAU_EXP"])
+        f_trz  = 1.0 + c["F_TRZ"]
+
+        g_classical = g_grav * hubble * p_t * f_trz
+
+        a_em = c["Q"] * c["V_WIND"] * c["B"] / c["M_H"]
+        aether_factor = 1.0 + c["RHO_UA"] / c["RHO_SCM"]  # = 11
+        g_em = a_em * aether_factor * c["A_SCALE"]
+
+        g_total = g_classical + g_em
+
+        return {
+            "g_NGC7635":     g_total,
+            "g_classical":   g_classical,
+            "g_em":          g_em,
+            "aether_factor": aether_factor,
+            "v_wind_ms":     c["V_WIND"],
+            "note": (f"t={t:.3e} s: g_NGC7635={g_total:.3e} m/s²; "
+                     f"g_classical={g_classical:.3e}; g_EM={g_em:.3e}")
+        }
+
+    def simulate(self, sweep=None, sweep_param=None):
+        results = []
+        t_range = sweep or [i * 1.262e13 for i in range(1, 11)]
+        for t in t_range:
+            r = self.compute({"t_s": t})
+            r["sweep_val"] = t
+            results.append(r)
+        return results
+
+
+# ==============================================================================
+# PAPER_811: Antennae Galaxies NGC 4038/4039 — Clean UQFF Merger Gravity Equation
+# Source: grok_share_afa84da6.txt lines 1275-1448 | May 09, 2025, 01:20 AM EDT
+# NGC 4038+4039 collision 1.2 Gyr ago; starburst SFR=20 Msun/yr; 45 Mly; z=0.0105
+# g_Antennae = (G*M(t)/r^2)*(1+H(z)*t)*(1-M_coll(t))*(1+f_TRZ) + q*(v×B)*(1+?_UA/?_SCm)*1e-12
+# At t=300 Myr: g ~ 1.053e-1 m/s² (starburst B=1e-4 T enhanced)
+# ------------------------------------------------------------------------------
+class AntennaeMergerNGC4038CleanUQFFCalculator:
+    """PAPER_811: Antennae Galaxies NGC 4038/4039 clean UQFF merger equation —
+    M_coll(t)=0.5*(1-exp(-t/t_merge)); t_merge=400 Myr; H(z) Friedmann;
+    starburst B=1e-4 T ? Aether EM dominant. g ~ 1.053e-1 m/s² at t=300 Myr.
+    CP4 class #395."""
+
+    UQFF_CONSTANTS = {
+        "G":          6.6743e-11,  # m³/kg/s²
+        "M_INITIAL":  3.978e41,    # kg  (2e11 M_sun combined)
+        "R":          2.838e20,    # m   (~30,000 ly core separation)
+        "SFR_MSUN":   20.0,        # M_sun/yr star formation rate
+        "M_SUN":      1.989e30,    # kg
+        "YR_S":       3.156e7,     # s/yr
+        "M_COLL0":    0.5,         # max coalescence fraction
+        "TAU_MERGE":  1.262e16,    # s   (400 Myr to coalescence)
+        "H0":         2.268e-18,   # s?¹
+        "Z":          0.0105,      # redshift at 45 Mly
+        "OMEGA_M":    0.3,
+        "OMEGA_L":    0.7,
+        "F_TRZ":      0.1,
+        "Q":          1.602e-19,   # C
+        "V":          1.0e6,       # m/s (starburst outflow)
+        "B":          1.0e-4,      # T   (starburst-enhanced)
+        "M_H":        1.673e-27,   # kg
+        "RHO_UA":     7.09e-36,    # J/m³
+        "RHO_SCM":    7.09e-37,    # J/m³
+        "A_SCALE":    1.0e-12,
+    }
+
+    PARAMETERS = [
+        ("t_s", "float", 9.468e15, "Cosmic time in seconds (default = 300 Myr)"),
+    ]
+
+    PRIMARY_OUTPUT = "g_Antennae"
+    PRIMARY_INPUT  = "t_s"
+
+    def compute(self, params=None):
+        import math
+        p = params or {}
+        t = p.get("t_s", 9.468e15)
+        c = self.UQFF_CONSTANTS
+
+        # Mass growth via SFR
+        sfr_kg_per_s = c["SFR_MSUN"] * c["M_SUN"] / c["YR_S"]
+        M_t = c["M_INITIAL"] + sfr_kg_per_s * t
+        g_grav = c["G"] * M_t / c["R"]**2
+
+        # Redshift-corrected Hubble H(z)
+        z = c["Z"]
+        Hz = c["H0"] * math.sqrt(c["OMEGA_M"] * (1.0 + z)**3 + c["OMEGA_L"])
+        hubble = 1.0 + Hz * t
+
+        # Merger coalescence factor
+        m_coll = c["M_COLL0"] * (1.0 - math.exp(-t / c["TAU_MERGE"]))
+        coll_factor = 1.0 - m_coll
+
+        # Time-reversal
+        f_trz = 1.0 + c["F_TRZ"]
+
+        g_classical = g_grav * hubble * coll_factor * f_trz
+
+        # Starburst EM Aether correction (B = 1e-4 T, enhanced)
+        a_em = c["Q"] * c["V"] * c["B"] / c["M_H"]
+        aether_factor = 1.0 + c["RHO_UA"] / c["RHO_SCM"]  # = 11
+        g_em = a_em * aether_factor * c["A_SCALE"]
+
+        g_total = g_classical + g_em
+
+        return {
+            "g_Antennae":    g_total,
+            "g_classical":   g_classical,
+            "g_em":          g_em,
+            "M_coll":        m_coll,
+            "Hz_s":          Hz,
+            "aether_factor": aether_factor,
+            "M_t_kg":        M_t,
+            "note": (f"t={t:.3e} s: g_Antennae={g_total:.3e} m/s²; "
+                     f"M_coll={m_coll:.4f}; g_classical={g_classical:.3e}; "
+                     f"g_EM={g_em:.3e} (B=1e-4 T starburst-enhanced)")
+        }
+
+    def simulate(self, sweep=None, sweep_param=None):
+        import math
+        results = []
+        t_range = sweep or [i * 3.156e14 for i in range(1, 11)]  # 10 Myr steps
+        for t in t_range:
+            r = self.compute({"t_s": t})
             r["sweep_val"] = t
             results.append(r)
         return results
