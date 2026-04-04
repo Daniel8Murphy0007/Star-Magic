@@ -39,6 +39,7 @@ Updated: Session 181 v5.39–v5.42 — CP4 326→369 (#335–#377: PAPER_751–7
 Updated: Sessions 182–183 v5.43 — MAINTENANCE (PDF A4 standardization + PAPER_001–156 deduplication; no new CP4 classes)
 Updated: Sessions 184–188 v5.44 — MAINTENANCE (root duplicate removal; encoding fixes; pdf_header.tex 90+ glyph mappings; LaTeX error fixes; H1 heading fixes; deep glyph audit+corpus repair; orphan PDF rebuilds; tracking sync; no new CP4 classes)
 Updated: Session 189 v5.45 — CP4 369→382 (#378–#390 NGC2525SN2018gv/NGC3603ExtremeCluster/NGC1275PerseusAGN/NGC1792StellarForge/AFGL5180MassiveSFR/NGC2174MonkeyHead/NGC685/NGC3507/NGC3511/NGC3596/NGC1961/NGC5335/DPMSpeciesIndexACP: PAPER_794–806; grok_share_e6be3b4f-9cda.txt; 806/1000 papers; Triadic UQFF DVP/VDS/BH; M_SN(t)/P(t)/F_BH(t)/F_sn(t)/H_k pillar novel terms)
+Updated: Session 190 v5.46 — CP4 382→384 (#391 CGMMetalRetentionUQFFTheoremCalculator + #392 ACPUniversalCycleNotesPhysicsCalculator: PAPER_807–808; grok_share_e6be3b4f-9cda.txt second pass; Sanchez2023 f_Z,CGM=U_i/(U_i+U_m) theorem + ACP Notes Universal Cycle γ_d=0.0963/T_end=10.38/DNA helix/trinity; 808/1000 papers)
     Updated: Session 162 v5.19 — CP4 219→229 (#220–#229 Tau Lepton G2 SM Bridge, CKM Vcb Flavor Vacuum Coupling, VLQ Kappa Heavy Mode, LFV BDecay TimeReversal, ALICE Run3 Multiplicity, BESIII DCS Cabibbo Dipole, Higgs 125GeV VEV Buoyancy, Proton Decay Kappa Scale, Electroweak SinThetaW SCm, SM Parameter Bridge Master: PAPER_633–642; SM Anchors added PAPER_622–632; CVW v2.0.0 G6 gate; UQFF_SM_ANCHOR_REQUIREMENTS.md)
 
 Architecture Compliance (MANDATORY):
@@ -29667,4 +29668,316 @@ class DPMSpeciesIndexACPCreationScenarioCalculator:
         results = []
         for n in (sweep or range(1, 27)):
             r = self.compute({"n": n, "t_red": 0.0}); r["sweep_val"] = n; results.append(r)
+        return results
+
+
+# ──────────────────────────────────────────────────────────────────────────────
+# CP4 CLASS #391 — CGMMetalRetentionUQFFTheoremCalculator
+# PAPER_807: UQFF Derivation of CGM Metal Retention Coefficient f_Z,CGM
+# from the M–σ SMBH Mass Deviation (Sanchez et al. 2023, "The Scatter Matters")
+# f_Z,CGM = U_i/(U_i+U_m); ΔM_BH range → f_Z,CGM 0.10–0.89
+# M–σ: log M_BH = 0.309·log(σ/200)+4.38; k_galactic=2.59e-9; f_feedback=0.063
+# ──────────────────────────────────────────────────────────────────────────────
+class CGMMetalRetentionUQFFTheoremCalculator:
+    """PAPER_807: CGM Metal Retention Theorem — f_Z,CGM = U_i/(U_i+U_m).
+    Sanchez et al. 2023 M–σ deviation ΔM_BH drives under/over-massive SMBH
+    metal expulsion from CGM; f_Z,CGM range 0.10 (over) to 0.89 (under).
+    CP4 class #391."""
+
+    UQFF_CONSTANTS = {
+        "RHO_UA":       7.09e-36,   # J/m³
+        "RHO_SCM":      7.09e-37,   # J/m³
+        "SSQ":          0.570,
+        "F_FEEDBACK":   0.063,
+        "K_GALACTIC":   2.59e-9,
+        "K_ETA":        1e-113,
+        "H_SCM":        0.99,
+        "U_UA":         1e-4,
+    }
+
+    # M–σ calibration (Kormendy & Ho 2013)
+    MSIGMA_SLOPE     = 0.309
+    MSIGMA_INTERCEPT = 4.38    # log10(M_BH/M_sun) at sigma=200 km/s
+    SIGMA_REF        = 200.0   # km/s
+
+    # f_Z,CGM physical bounds from Sanchez et al. 2023 Figures 5–7
+    F_Z_CGM_OVER     = 0.10    # over-massive BH → metal expulsion
+    F_Z_CGM_BALANCED = 0.50    # on M–σ → balanced
+    F_Z_CGM_UNDER    = 0.89    # under-massive BH → metal retention
+
+    PARAMETERS = [
+        ("sigma_kms",    "float", 150.0,  "Bulge stellar velocity dispersion (km/s)"),
+        ("log_mbh",      "float",  8.0,   "log10(M_BH / M_sun)"),
+        ("B_gauss",      "float",  1e-5,  "Galactic magnetic field (T)"),
+        ("omega_s",      "float",  4.86e-15, "Stellar rotation frequency (rad/s)"),
+        ("t_gyr",        "float",  5.0,   "Galaxy age (Gyr)"),
+        ("delta_mbh_override", "float", None, "Force ΔM_BH value (None=compute from sigma/log_mbh)"),
+    ]
+
+    PRIMARY_OUTPUT = "f_Z_CGM"
+    PRIMARY_INPUT  = "log_mbh"
+
+    def msigma_logmbh(self, sigma_kms):
+        """M–σ prediction: log10(M_BH) from sigma (km/s)."""
+        import math
+        return self.MSIGMA_SLOPE * math.log10(sigma_kms / self.SIGMA_REF) + self.MSIGMA_INTERCEPT
+
+    def delta_mbh(self, sigma_kms, log_mbh):
+        """ΔM_BH = log10(M_BH) − M–σ prediction."""
+        return log_mbh - self.msigma_logmbh(sigma_kms)
+
+    def chi_agn(self, log_mbh):
+        """AGN feedback efficiency: χ = min[0.1, 0.002·(M_BH/10^9 M☉)^2]."""
+        mbh_norm = 10 ** (log_mbh - 9.0)
+        return min(0.1, 0.002 * mbh_norm ** 2)
+
+    def u_i(self, omega_s, b_over_bref=1.0):
+        """Repulsive DPM intelligent field energy density (J/m³)."""
+        c = self.UQFF_CONSTANTS
+        return (b_over_bref * c["RHO_SCM"] * c["RHO_UA"] * omega_s
+                * (1.0 + c["F_FEEDBACK"]) * c["K_GALACTIC"])
+
+    def u_m(self, B_T=1e-5, t_gyr=5.0, delta_mbh_val=0.0, chi=0.0):
+        """Universal magnetic force field energy density (J/m³)."""
+        import math
+        MU0 = 4 * math.pi * 1e-7
+        ratio = self.UQFF_CONSTANTS["RHO_UA"] / self.UQFF_CONSTANTS["RHO_SCM"]
+        alpha = 0.001   # temporal decay coefficient (day⁻¹)
+        t_days = t_gyr * 365.25e6
+        return (B_T**2 / (2 * MU0)) * ratio * math.exp(-alpha * t_days) * (1.0 + delta_mbh_val * chi)
+
+    def f_z_cgm_formula(self, u_i_val, u_m_val):
+        """CGM metal retention: f_Z,CGM = U_i / (U_i + U_m)."""
+        denom = u_i_val + u_m_val
+        if denom == 0:
+            return 0.5
+        return u_i_val / denom
+
+    def f_z_cgm_empirical(self, delta_mbh_val):
+        """Empirical f_Z,CGM from Sanchez2023 scatter curve via ΔM_BH."""
+        import math
+        if delta_mbh_val <= 0:
+            return self.F_Z_CGM_UNDER * math.exp(0.10 * delta_mbh_val)
+        else:
+            return self.F_Z_CGM_BALANCED * math.exp(-0.39 * delta_mbh_val)
+
+    def pseudo_monopole_shift(self, n):
+        """δ_n = φ·(2π)^(n/6); galactic pseudo-monopole state shift."""
+        import math
+        PHI = 1.6180339887
+        return PHI * (2 * math.pi) ** (n / 6.0)
+
+    def compute(self, params=None):
+        import math
+        p = params or {}
+        sigma   = p.get("sigma_kms",   150.0)
+        log_mbh = p.get("log_mbh",       8.0)
+        B_T     = p.get("B_gauss",      1e-5)
+        omega   = p.get("omega_s",      4.86e-15)
+        t_gyr   = p.get("t_gyr",         5.0)
+        dm_override = p.get("delta_mbh_override", None)
+
+        dm = dm_override if dm_override is not None else self.delta_mbh(sigma, log_mbh)
+        chi = self.chi_agn(log_mbh)
+
+        ui = self.u_i(omega)
+        um = self.u_m(B_T, t_gyr, dm, chi)
+
+        f_formula  = self.f_z_cgm_formula(ui, um)
+        f_empirical = self.f_z_cgm_empirical(dm)
+        dm_n = self.pseudo_monopole_shift(int(abs(dm * 6)) + 1)
+
+        regime = ("under-massive; metal retention" if dm < -0.05 else
+                  "over-massive; metal expulsion"  if dm > +0.05 else
+                  "on M-sigma; balanced")
+
+        return {
+            "sigma_kms":     sigma,
+            "log_mbh":       log_mbh,
+            "log_mbh_msigma": self.msigma_logmbh(sigma),
+            "delta_mbh":     dm,
+            "chi_agn":       chi,
+            "U_i":           ui,
+            "U_m":           um,
+            "f_Z_CGM_formula":   f_formula,
+            "f_Z_CGM_empirical": f_empirical,
+            "delta_n_pseudo":    dm_n,
+            "regime":        regime,
+            "f_feedback":    self.UQFF_CONSTANTS["F_FEEDBACK"],
+            "k_galactic":    self.UQFF_CONSTANTS["K_GALACTIC"],
+            "note": (f"ΔM_BH={dm:.3f}; f_Z,CGM={f_empirical:.3f}; "
+                     f"regime={regime}; Sanchez2023 140-galaxy M-sigma scatter curve"),
+        }
+
+    def simulate(self, sweep=None, sweep_param=None):
+        results = []
+        # Sweep ΔM_BH from −2 to +2 in 0.1 steps
+        dm_range = sweep or [i * 0.1 - 2.0 for i in range(41)]
+        for dm in dm_range:
+            r = self.compute({"delta_mbh_override": dm, "sigma_kms": 150.0, "log_mbh": 8.0})
+            r["sweep_val"] = dm
+            results.append(r)
+        return results
+
+
+# ──────────────────────────────────────────────────────────────────────────────
+# CP4 CLASS #392 — ACPUniversalCycleNotesPhysicsCalculator
+# PAPER_808: UQFF Universal Cycle and Proto-Nuclear Formation
+# Formalizes handwritten ACP observation notes (April 19, 2025, Pages 1–11)
+# gamma_d=0.0963; T_end=10.38; U_m DNA helix; universal trilogy; third decay
+# V_little/V_big=1/33; proto-nuclear shell; electron undulation via U_g2
+# ──────────────────────────────────────────────────────────────────────────────
+class ACPUniversalCycleNotesPhysicsCalculator:
+    """PAPER_808: ACP Notes – [SCm] decay rate 0.0963; T_end=10.38 normalized;
+    DNA U_m helix E=E0·sin(2πz/λ_DNA)·exp(-γ_d·t); universal trilogy
+    [UA]/[SCm]/[EM]=Father/Son/Holy Spirit; proto-nuclear shell strength;
+    third decay cycle T_third=2π/γ_d=65.25; Boyle vacuum 1/33. CP4 class #392."""
+
+    UQFF_CONSTANTS = {
+        "RHO_UA":      7.09e-36,   # J/m³
+        "RHO_SCM":     7.09e-37,   # J/m³
+        "SSQ":         0.570,
+        "GAMMA_D":     0.0963,     # [SCm] decay rate (normalized time)⁻¹
+        "T_END":       10.38,      # 1/gamma_d — universal end time (normalized)
+        "T_THIRD":     65.25,      # 2π/gamma_d — third decay cycle (normalized)
+        "BOYLE_R":     1.0/33.0,   # V_little/V_big compression ratio
+        "F_TRAP":      0.33,       # fraction of matter trapped at T_third
+        "LAMBDA_DNA":  3.4e-9,     # m — DNA base-pair U_m helix period
+        "K_EM":        0.325,      # [SSq]^2 — EM coupling constant
+        "H_SCM":       0.99,       # superconductive horizon factor
+    }
+
+    # Universal trilogy roles
+    TRILOGY = {
+        "UA":  "Father — repulsive vacuum source; all potential originates here",
+        "SCM": "Son    — attractive binding mediator; mediates and binds DPM pair",
+        "EM":  "Holy Spirit — transverse oscillation; carries information/light",
+    }
+
+    PARAMETERS = [
+        ("t_norm",     "float", 0.0,  "Normalized cosmic time (0=Big Bang, T_end=10.38)"),
+        ("n_shell",    "int",   1,    "Nuclear shell quantum number n (1–26)"),
+        ("z_helix",    "float", 0.0,  "Position along U_m helix axis (m)"),
+        ("r_kpc",      "float", 1.0,  "Radial distance from galactic center (kpc)"),
+        ("compute_mode", "str","full","Mode: 'full'|'decay'|'shell'|'helix'|'cycle'"),
+    ]
+
+    PRIMARY_OUTPUT = "rho_scm_t"
+    PRIMARY_INPUT  = "t_norm"
+
+    def rho_scm(self, t_norm):
+        """[SCm] density at normalized time t: ρ_SCm(t) = ρ_SCm(0)·exp(−γ_d·t)."""
+        import math
+        return self.UQFF_CONSTANTS["RHO_SCM"] * math.exp(-self.UQFF_CONSTANTS["GAMMA_D"] * t_norm)
+
+    def rho_shell(self, n):
+        """Proto-nuclear shell density: ρ_shell(n) = ρ_UA·(1−exp(−SSq·n/26))."""
+        import math
+        c = self.UQFF_CONSTANTS
+        return c["RHO_UA"] * (1.0 - math.exp(-c["SSQ"] * n / 26.0))
+
+    def e_flow_helix(self, z_m, t_norm, E0=1.0):
+        """U_m DNA helical energy flow: E₀·sin(2πz/λ_DNA)·exp(−γ_d·t)."""
+        import math
+        c = self.UQFF_CONSTANTS
+        return E0 * math.sin(2 * math.pi * z_m / c["LAMBDA_DNA"]) * math.exp(-c["GAMMA_D"] * t_norm)
+
+    def dpm_coupling(self):
+        """DPM trinity wavefunction squared: |Ψ_DPM|² = ρ_UA·ρ_SCm·SSq."""
+        c = self.UQFF_CONSTANTS
+        return c["RHO_UA"] * c["RHO_SCM"] * c["SSQ"]
+
+    def v_scm_contraction(self, r_kpc, v0_kms=100.0):
+        """[SCm] contraction velocity (km/s): −v0·(ρ_SCm/ρ_UA)·exp(−r/r_SCm_kpc)."""
+        import math
+        c = self.UQFF_CONSTANTS
+        ratio = c["RHO_SCM"] / c["RHO_UA"]   # = 0.1
+        r_SCm_kpc = 500.0
+        return -v0_kms * ratio * math.exp(-r_kpc / r_SCm_kpc)
+
+    def epsilon_electron(self, n, E_H_eV=13.6):
+        """Electron energy with U_g2 shell correction: ε_n(UQFF) ≈ −E_H/n²."""
+        c = self.UQFF_CONSTANTS
+        K_EM = c["K_EM"]
+        a0_m = 5.292e-11
+        r_n  = n**2 * a0_m
+        u_g2 = c["RHO_UA"] * (n / 26.0)**2 * K_EM
+        J_per_eV = 1.602e-19
+        correction = u_g2 * r_n**2 * J_per_eV / E_H_eV
+        return -E_H_eV / n**2 * (1.0 + correction)
+
+    def lambda_eff(self, t_norm):
+        """Effective cosmological constant: Λ(t) = Λ₀·exp(−γ_d·t)."""
+        import math
+        LAMBDA0 = 1.089e-52   # m⁻² (standard cosmological constant)
+        return LAMBDA0 * math.exp(-self.UQFF_CONSTANTS["GAMMA_D"] * t_norm)
+
+    def matter_trap_fraction(self, t_norm):
+        """Matter trapping fraction at cosmic time t near T_third."""
+        import math
+        c = self.UQFF_CONSTANTS
+        dt = t_norm - c["T_THIRD"]
+        return c["F_TRAP"] * (c["RHO_UA"] / c["RHO_SCM"]) * math.exp(c["GAMMA_D"] * dt)
+
+    def compute(self, params=None):
+        import math
+        p = params or {}
+        t    = p.get("t_norm",   0.0)
+        n    = p.get("n_shell",  1)
+        z    = p.get("z_helix",  0.0)
+        r    = p.get("r_kpc",    1.0)
+        mode = p.get("compute_mode", "full")
+
+        c = self.UQFF_CONSTANTS
+
+        rho_s    = self.rho_scm(t)
+        r_shell  = self.rho_shell(n)
+        e_helix  = self.e_flow_helix(z, t)
+        dpm_wfn  = self.dpm_coupling()
+        v_scm    = self.v_scm_contraction(r)
+        eps_e1   = self.epsilon_electron(1)
+        lambda_t = self.lambda_eff(t)
+        boyle    = c["BOYLE_R"]
+        t_end    = c["T_END"]
+        t_third  = c["T_THIRD"]
+        twist_deg = math.degrees(2 * math.pi * (c["RHO_SCM"] / c["RHO_UA"]))  # ≈36°
+
+        trap_frac = (self.matter_trap_fraction(t) if t >= t_third * 0.9 else 0.0)
+
+        result = {
+            "t_norm":          t,
+            "n_shell":         n,
+            "rho_scm_t":       rho_s,
+            "rho_shell_n":     r_shell,
+            "e_flow_helix":    e_helix,
+            "dpm_coupling_sq": dpm_wfn,
+            "v_scm_kms":       v_scm,
+            "epsilon_e1_eV":   eps_e1,
+            "lambda_eff":      lambda_t,
+            "V_little_Vbig":   boyle,
+            "T_end_normalized": t_end,
+            "T_third_normalized": t_third,
+            "uqff_DNA_twist_deg": twist_deg,
+            "matter_trap_frac": trap_frac,
+            "gamma_d":         c["GAMMA_D"],
+            "trilogy": {
+                "UA":  self.TRILOGY["UA"],
+                "SCM": self.TRILOGY["SCM"],
+                "EM":  self.TRILOGY["EM"],
+            },
+            "note": (f"t={t:.2f}: ρ_SCm={rho_s:.3e} J/m³; ρ_shell(n={n})={r_shell:.3e}; "
+                     f"v_SCm(r={r}kpc)={v_scm:.2f} km/s ≈ -10 km/s; "
+                     f"DNA twist≈{twist_deg:.1f}°; Boyle V_l/V_b=1/33; "
+                     f"T_end={t_end:.2f} → T_third={t_third:.2f}"),
+        }
+        return result
+
+    def simulate(self, sweep=None, sweep_param=None):
+        results = []
+        # Default: sweep normalized time from 0 to T_third
+        t_range = sweep or [i * 1.0 for i in range(67)]
+        for t in t_range:
+            r = self.compute({"t_norm": t, "n_shell": 13, "z_helix": 1.7e-9, "r_kpc": 1.0})
+            r["sweep_val"] = t
+            results.append(r)
         return results
