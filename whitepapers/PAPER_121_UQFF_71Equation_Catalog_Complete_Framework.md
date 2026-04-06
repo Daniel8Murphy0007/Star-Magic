@@ -184,7 +184,7 @@ $$E_{react} = \frac{\rho_{vac,[SCm]} v_{SCm}^2}{\rho_{vac,A}} e^{-\kappa t} = 10
 | 3 | ATLAS-CONF-2025-007 LHC | Compressed | Virtual quark n=4, δn=0.20 fractional level | PAPER_123 |
 | 4 | ENSDF Pb-206 NNDC 2025 | Buoyancy | n=8 binding; S_n=2·[SSq]·E8; δn=0.21 | PAPER_124 |
 | 5 | Fermi LAT 4LAC HEASARC | Superconductive | κ_obs=0.000497/day ≈ κ=0.0005/day calibration | PAPER_125 |
-| 6 | Gaia DR3/DR4 Sgr A* | Master Buoyancy | d_g=2.44×10²⁰ m, M_bh=4.3×10⁶ M_☉, 4.3% error | PAPER_126 |
+| 6 | Gaia DR3/DR4 Sgr A* | Master Buoyancy | d_g=2.44×10²⁰ m, M_bh=4.3×10⁶ M_Sun, 4.3% error | PAPER_126 |
 | 7 | Parker Solar Probe CDAWeb | Resonant | d_sw=0.01=[UA]·F_U heliosphere boundary | PAPER_127 |
 | 8 | JCAP dark matter density | Quadratic | ρ_DM=ρ_Λ·[SSq]²; N=3 hop chain; 12.8% error | PAPER_128 |
 | 9 | 3C273 MNRAS asymmetric jet | Triadic | t_n<0; R=130; N=13 reversal crossings | PAPER_129 |
