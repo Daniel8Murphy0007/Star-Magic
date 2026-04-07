@@ -1,4 +1,5 @@
 # PAPER_504: WOLFRAM_TERM Auto-Collection Framework
+**Author:** Daniel T. Murphy
 
 **Session:** 137 | **Source:** grok_share_84a767d3.txt (lines 1100–1500)
 **Date:** November 2025

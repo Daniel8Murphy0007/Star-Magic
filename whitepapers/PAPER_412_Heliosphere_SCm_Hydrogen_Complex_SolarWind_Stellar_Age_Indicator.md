@@ -1,4 +1,6 @@
 # PAPER_412 – Heliosphere Hydrogen Complex Formation: SCm-Mediated Solar Wind Transmutation as Stellar Age Indicator
+**Author:** Daniel T. Murphy
+**Date:** 2025
 
 **Source:** grok_share_755feea7.txt — "Star Magic" Chapter 4 & Ug2 Refined Sections  
 **Session:** 110 (grok_share_755feea7.txt analysis)  

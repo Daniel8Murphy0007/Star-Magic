@@ -1,4 +1,6 @@
 # PAPER_296 — UQFF Cosmological Constant Direct Vacuum Acceleration
+**Author:** Daniel T. Murphy
+**Date:** March 17, 2026
 ## a_Λ = Λc²/3 = 3.30×10⁻³⁶ m/s² — First UQFF Explicit Dark-Energy Term
 
 **Session:** 84  
@@ -125,3 +127,4 @@ all 25 prior modules Lambda implicit in H(z) only [PAPER_296]
 ---
 
 *Copyright Daniel T. Murphy — UQFF Whitepaper PAPER_296 — Session 84, March 17, 2026*
+*Cross-validated against PAPER_001 (foundational UQFF framework) and PAPER_642 (UQFF–SM bridge).*

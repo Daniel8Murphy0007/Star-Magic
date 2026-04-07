@@ -1,4 +1,6 @@
 # PAPER_479: UQFF Buoyancy Complex Arithmetic Module — 5-System Astrophysical Framework
+**Author:** Daniel T. Murphy
+**Date:** October 22, 2025
 
 ## Abstract
 

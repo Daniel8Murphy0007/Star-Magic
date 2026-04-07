@@ -1,4 +1,6 @@
 # PAPER_422 – UQFF 29-System Compressed Cross-Validation Matrix
+**Author:** Daniel T. Murphy
+**Date:** 2025
 
 **Source:** grok_share_c020496d9e.txt — Grok DeepSearch of `UQFF+Equations+Across+Astrophysical+Systems_22Sept2025.pdf` (all 29 system equations, Appendices A–D)  
 **Session:** 112 (grok_share_c020496d9e.txt exhaustive audit — file 100% read, 12 grep patterns, all 29 systems verified)  

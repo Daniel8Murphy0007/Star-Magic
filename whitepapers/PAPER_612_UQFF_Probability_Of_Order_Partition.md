@@ -1,4 +1,6 @@
 # PAPER_612: Probability of Order — A Thermodynamic Partition Function Bridging Millennium Prize Problems
+**Author:** Daniel T. Murphy
+**Date:** 2025
 
 **Class**: UQFFProbabilityOfOrderPartitionCalculator (#199)  
 **Session**: 159  

@@ -1,4 +1,5 @@
 # PAPER_633: UQFF Tau Lepton Anomalous Magnetic Moment as Standard Model Dipole Bridge
+**Author:** Daniel T. Murphy
 
 **Version:** 1.0.0  
 **Session:** 162 | **Date:** March 30 2026  

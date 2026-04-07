@@ -1,4 +1,6 @@
 # PAPER_490: Wolfram Field Unity — Hypergraph Spacetime, PI Infinity Decoder, and Sacred Time Constants
+**Author:** Daniel T. Murphy
+**Session:** 0
 **Whitepaper | Star-Magic Physics Suite v5.00**
 **Watermark:** Copyright — Daniel T. Murphy | Analyzed: Grok 3 | Date: November 17, 2025
 

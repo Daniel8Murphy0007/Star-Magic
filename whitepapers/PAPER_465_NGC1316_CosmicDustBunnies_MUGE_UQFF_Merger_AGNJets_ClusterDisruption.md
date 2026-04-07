@@ -1,4 +1,5 @@
 # PAPER_465 — NGC 1316 "Hubble Spies Cosmic Dust Bunnies": MUGE UQFF Merger History, AGN Jets, Star Cluster Disruption
+**Date:** 2025
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2 — Merger-Active Elliptical Galaxy
 **Session:** 120 (C++ module encoded) / Whitepapers created Session 122

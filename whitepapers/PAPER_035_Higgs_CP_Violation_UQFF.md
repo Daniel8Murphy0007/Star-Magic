@@ -1,4 +1,5 @@
 # PAPER_035: Higgs CP Violation: UQFF Phase Predictions
+**Session:** 0
 
 **Title:** CP Violation in the Higgs Sector: UQFF cos(π t_n) Temporal Reversal as the Source of A_CP and Higgs Width Enhancement
 

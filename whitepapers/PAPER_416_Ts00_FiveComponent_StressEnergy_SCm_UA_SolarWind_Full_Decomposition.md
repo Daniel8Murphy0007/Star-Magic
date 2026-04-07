@@ -1,4 +1,6 @@
 # PAPER_416 – T_s^μν Full Five-Component Stress-Energy Decomposition: SCm, UA, Solar Wind, Stellar, and Luminosity Terms
+**Author:** Daniel T. Murphy
+**Date:** 2025
 
 **Source:** grok_share_755feea7.txt — "Star Magic" Chapter 7 + compute_A_mu_nu sections  
 **Session:** 110 (grok_share_755feea7.txt analysis)  

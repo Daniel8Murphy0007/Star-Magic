@@ -1,4 +1,6 @@
 # PAPER_026b: Vector-Like Quarks — UQFF Mass Generation and LHC Constraints
+**Author:** Daniel T. Murphy
+**Session:** 0
 
 **Authors:** Daniel Murphy & UQFF Research Collective  
 **Date:** 2026-03-07  

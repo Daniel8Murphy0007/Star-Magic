@@ -1,4 +1,5 @@
 # PAPER_153: UQFF Star-Magic Morris-Thorne Wormhole Metric � fTRZ Throat Geometry and Geodesic Structure in the MUGE 12-Term Resonance Framework
+**Session:** 0
 
 
 **Title:** UQFF Star-Magic Morris-Thorne Wormhole Metric � fTRZ Throat Geometry and Geodesic Structure in the MUGE 12-Term Resonance Framework

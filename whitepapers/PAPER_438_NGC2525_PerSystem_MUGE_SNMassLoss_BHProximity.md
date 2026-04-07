@@ -1,4 +1,6 @@
 # PAPER_438 — Galaxy NGC 2525: Per-System MUGE with M_SN(t) Supernova Mass-Loss and g_BH Proximity
+**Author:** Daniel T. Murphy
+**Date:** 2025
 
 **Source:** grok_share_68eb34022.txt — Document 10: "Master Universal Gravity Equation_Galaxy NGC 2525 Evolution_03May2025.docx" (lines 3085–3429)
 **Session:** 119

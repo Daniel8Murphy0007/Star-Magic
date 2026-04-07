@@ -1,4 +1,6 @@
 # PAPER_583 — All Six UQFF Forms Solved Simultaneously for Universal Gravity
+**Author:** Daniel T. Murphy
+**Date:** 2025
 
 **CP4 Class:** `#170  UQFFSixFormSimultaneousSolverCalculator`
 **Session:** 157

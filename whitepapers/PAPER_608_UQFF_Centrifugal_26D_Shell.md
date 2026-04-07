@@ -1,4 +1,6 @@
 # PAPER_608: Centrifugal Force as Outward CCW DPM South-Pole 26D Shell Push
+**Author:** Daniel T. Murphy
+**Date:** 2025
 
 **Class**: UQFFCentrifugal26DShellCalculator (#195)  
 **Session**: 159  

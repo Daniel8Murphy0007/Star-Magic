@@ -1,4 +1,5 @@
 # PAPER_542 — UQFF Off-Diagonal Full Proplyd Fit: Orion 4-Telescope Eigenvalue Analysis
+**Session:** 0
 
 ## Abstract
 

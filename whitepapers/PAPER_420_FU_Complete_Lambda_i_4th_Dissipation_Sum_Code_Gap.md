@@ -1,4 +1,6 @@
 # PAPER_420 – F_U Complete: The λ_i 4th Dissipation Sum — Missing Term and Code Gap
+**Author:** Daniel T. Murphy
+**Date:** 2025
 
 **Source:** grok_share_755feea7.txt — Line 1938 (Unified Quantum Field Equation chapter) + Line 2301 (Refined F_U for Sun/Planets) + Line 2605 (LaTeX form)  
 **Session:** 111 (grok_share_755feea7.txt exhaustive re-analysis — file 100% read)  

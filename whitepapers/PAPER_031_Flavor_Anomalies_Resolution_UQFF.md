@@ -1,4 +1,5 @@
 # PAPER_031: PAPER #31b – Flavor Anomalies Resolution via UQFF
+**Session:** 0
 
 **Title:** Resolution of B-Physics Flavor Anomalies at Future e?e? Factories: UQFF Predictions for the ECFA Higgs Factory Program
 

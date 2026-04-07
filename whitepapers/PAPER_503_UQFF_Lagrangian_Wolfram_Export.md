@@ -1,4 +1,5 @@
 # PAPER_503: UQFF Full Lagrangian Wolfram Syntax Export
+**Author:** Daniel T. Murphy
 
 **Session:** 137 | **Source:** grok_share_84a767d3.txt (lines 700–1100)
 **Date:** November 2025

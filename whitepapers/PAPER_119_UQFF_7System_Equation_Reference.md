@@ -1,4 +1,5 @@
 # PAPER_119: UQFF General Equation Systems – Compressed, Resonant, Buoyancy, Superconductive, Triadic, Quadratic, and Master Buoyancy with Full Variable Equations
+**Session:** 0
 
 
 **Title:** UQFF General Equation Systems – Compressed, Resonant, Buoyancy, Superconductive, Triadic, Quadratic, and Master Buoyancy with Full Variable Equations

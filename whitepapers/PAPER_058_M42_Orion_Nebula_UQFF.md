@@ -1,3 +1,5 @@
+**Session:** 0
+
 # PAPER #58 � M42 Orion Nebula: Peak Gravitational Density in UQFF Suite
 
 **Title:** M42 Great Orion Nebula: The Highest g_grav Object in the UQFF Cross-Validation Suite – Proximity-Driven Gravitational Dominance and the Trapezium OB Cluster

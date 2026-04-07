@@ -1,4 +1,6 @@
 # PAPER_411 – Ug1: Di-Pseudo-Monopole (DPM) Internal Dipole — Solar Calibration and Defect Mechanism
+**Author:** Daniel T. Murphy
+**Date:** 2025
 
 **Source:** grok_share_755feea7.txt — "Star Magic" Chapter 1, Section Ug1, Solar Refinement  
 **Session:** 110 (grok_share_755feea7.txt analysis)  

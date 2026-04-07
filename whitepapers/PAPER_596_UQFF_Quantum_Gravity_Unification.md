@@ -1,4 +1,6 @@
 # PAPER_596 — Quantum Gravity Unification from UQFF 26D Framework
+**Author:** Daniel T. Murphy
+**Date:** 2025
 
 **CP4 Class:** `#183  UQFFQuantumGravityUnificationCalculator`
 **Session:** 157

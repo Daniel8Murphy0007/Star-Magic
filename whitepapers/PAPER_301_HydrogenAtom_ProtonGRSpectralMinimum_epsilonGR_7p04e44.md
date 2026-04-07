@@ -1,4 +1,6 @@
 # PAPER_301 — Hydrogen Atom Proton GR Spectral Minimum: ε_GR = 7.04×10⁻⁴⁴
+**Author:** Daniel T. Murphy
+**Date:** 2025
 
 **Session:** 85  
 **Module:** HYDROGEN_ATOM_UQFF_MODULE.cpp (27th C++ UQFF module — FIRST atomic-scale module)  

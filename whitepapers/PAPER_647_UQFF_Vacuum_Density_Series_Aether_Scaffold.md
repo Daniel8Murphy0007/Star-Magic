@@ -1,4 +1,5 @@
 # PAPER_647: UQFF Vacuum Density Series — Multi-Scale Aether Scaffold
+**Author:** Daniel T. Murphy
 
 **Version:** 1.0.0  
 **Session:** 168 | **Date:** March 31 2026  

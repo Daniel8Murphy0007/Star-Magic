@@ -1,4 +1,6 @@
 # PAPER_595 — UQFF Black Hole Bounds Applied to Sagittarius A*
+**Author:** Daniel T. Murphy
+**Date:** 2025
 
 **CP4 Class:** `#182  UQFFSgrAStarBoundApplicationCalculator`
 **Session:** 157

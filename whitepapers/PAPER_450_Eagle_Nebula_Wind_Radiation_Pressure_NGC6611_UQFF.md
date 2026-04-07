@@ -1,4 +1,5 @@
 # PAPER_450 — Eagle Nebula UQFF Wind + Radiation Pressure: NGC 6611 Radiation-Dominated Environment
+**Date:** 2025
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2  
 **Session:** 115 (v4.72) / Whitepapers created Session 121  

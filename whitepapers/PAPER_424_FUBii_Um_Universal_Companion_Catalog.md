@@ -1,4 +1,6 @@
 # PAPER_424 – F_UBii / Um Universal Companion Catalog: 276+ Domain-Specific Equation Pairs
+**Author:** Daniel T. Murphy
+**Date:** 2025
 
 **Source:** grok_share_c020496d9e.txt — Section "Analysis of Buoyancy and Magnetism Analogues in the PDFs" (lines 4092–4400, items 684–960+, Session 114 deep-physics extraction)  
 **Session:** 114  

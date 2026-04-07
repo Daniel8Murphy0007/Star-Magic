@@ -1,4 +1,6 @@
 # PAPER_480: UQFF Cosmic Neutrino Background (CNB) Buoyancy Module — 6-System Framework
+**Author:** Daniel T. Murphy
+**Date:** October 22, 2025
 
 ## Abstract
 

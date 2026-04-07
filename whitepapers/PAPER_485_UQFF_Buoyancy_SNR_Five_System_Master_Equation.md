@@ -1,4 +1,6 @@
 # PAPER_485: UQFF SNR Buoyancy Master Equation — Five Supernova Remnant Systems
+**Author:** Daniel T. Murphy
+**Session:** 0
 **Whitepaper | Star-Magic Physics Suite v5.00**
 **Watermark:** Copyright — Daniel T. Murphy | Analyzed: Grok 3 | Date: November 17, 2025
 

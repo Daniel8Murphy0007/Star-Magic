@@ -1,4 +1,5 @@
 # PAPER_449 — Young Stars Sculpt Gas with Powerful Outflows: UQFF Bipolar Jet Pressure Evolution
+**Date:** 2025
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2  
 **Session:** 115 (v4.72) / Whitepapers created Session 121  

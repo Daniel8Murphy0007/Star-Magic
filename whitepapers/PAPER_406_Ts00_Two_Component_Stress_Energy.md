@@ -1,4 +1,6 @@
 # PAPER_406 — Ts00: Two-Component Stress-Energy Decomposition
+**Author:** Daniel T. Murphy
+**Date:** 2025
 
 **Source:** grok_share_cfdcad2f5.txt, lines 277–1600 ("Star Magic_construction file_04Oct2025.docx" C++ implementation)  
 **Section:** C++ source — Aether metric tensor perturbation with explicit Ts00 decomposition  

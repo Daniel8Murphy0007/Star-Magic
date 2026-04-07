@@ -1,4 +1,5 @@
 # PAPER_508: Sacred Time Constants — Phase Modulation in 7-Frequency Co-Sum
+**Author:** Daniel T. Murphy
 
 **Session:** 137 | **Source:** grok_share_84a767d3.txt (lines 3900–4310)
 **Date:** December 2025 — source177_wolfram_field_unity.cpp (SacredTime namespace)

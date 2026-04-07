@@ -1,4 +1,6 @@
 # PAPER_408 — Resonance MUGE Complete 14-Term Sum with Wormhole as 14th Term
+**Author:** Daniel T. Murphy
+**Date:** 2025
 
 **Source:** grok_share_cfdcad2f5.txt, lines 277–1600 ("Star Magic_construction file_04Oct2025.docx" C++ implementation)  
 **Section:** C++ source — `compute_resonance_MUGE()` function with `compute_a_wormhole()` as 14th additive term  

@@ -1,4 +1,5 @@
 # PAPER_656: UQFF V838 Monocerotis Light Echo Master Equation
+**Session:** 0
 ## Hubble Dataset Analysis and Master Universal Gravity Equation for Light Echo Evolution
 
 **Author:** Daniel T. Murphy  

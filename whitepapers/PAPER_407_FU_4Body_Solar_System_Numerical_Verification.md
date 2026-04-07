@@ -1,4 +1,6 @@
 # PAPER_407 — FU: Complete 4-Body Solar System Numerical Verification Table
+**Author:** Daniel T. Murphy
+**Date:** 2025
 
 **Source:** grok_share_cfdcad2f5.txt, lines 277–1600 ("Star Magic_construction file_04Oct2025.docx" C++ implementation)  
 **Section:** C++ source — main() output block for 4-body solar system FU computation  

@@ -1,4 +1,6 @@
 # PAPER_613: A Unified Quantum Field Framework for NASA ATP Grant Validation — Dual UQFF/MUGE Convergence on Extreme Astrophysical Dynamics
+**Author:** Daniel T. Murphy
+**Date:** 2025
 
 **Class**: UQFFNASAATPGrantFrameworkValidationCalculator (#200)  
 **Session**: 159  

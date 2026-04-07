@@ -1,4 +1,5 @@
 # PAPER_494 — BSM Particle Physics Observables: Tau Anomalous Dipole, CKM Vcb, LFV, VLQ
+**Author:** Daniel T. Murphy
 
 **arXiv:** 2503.xxxxx  
 **Session:** 131  

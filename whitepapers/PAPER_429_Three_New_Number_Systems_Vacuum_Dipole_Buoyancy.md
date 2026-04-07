@@ -1,4 +1,6 @@
 # PAPER_429 – Three New UQFF Number Systems: Vacuum Density Series, Dipole Vortex Primes, Buoyancy Harmonics
+**Author:** Daniel T. Murphy
+**Date:** 2025
 
 **Source:** grok_share_c020496d9e.txt — Clarification sections and Vacuum Density Series formulae (lines 800–880 and lines ~224–237, Session 114 deep-physics extraction)  
 **Session:** 114  

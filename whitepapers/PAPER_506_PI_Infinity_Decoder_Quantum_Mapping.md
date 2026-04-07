@@ -1,4 +1,5 @@
 # PAPER_506: PI Infinity Decoder — Quantum State Phase Mapping
+**Author:** Daniel T. Murphy
 
 **Session:** 137 | **Source:** grok_share_84a767d3.txt (lines 3900–4310)
 **Date:** November 2025 — commit bc79f36 (PI_DIGITS_COUNT 312→728)

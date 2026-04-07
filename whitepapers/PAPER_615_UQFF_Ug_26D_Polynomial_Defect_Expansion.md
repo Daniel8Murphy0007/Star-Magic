@@ -1,4 +1,5 @@
 # PAPER_615: UQFF Ug 26D Polynomial Defect Expansion
+**Date:** 2025
 
 **Author:** Daniel T. Murphy  
 **Session:** 160  

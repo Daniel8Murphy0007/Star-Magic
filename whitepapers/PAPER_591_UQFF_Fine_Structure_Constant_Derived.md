@@ -1,4 +1,6 @@
 # PAPER_591 — Fine-Structure Constant $\alpha$ Derived from UQFF DPM Ratios
+**Author:** Daniel T. Murphy
+**Date:** 2025
 
 **CP4 Class:** `#178  UQFFFineStructureConstantDerivedCalculator`
 **Session:** 157

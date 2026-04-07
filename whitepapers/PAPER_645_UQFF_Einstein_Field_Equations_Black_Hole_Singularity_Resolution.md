@@ -1,4 +1,5 @@
 # PAPER_645: UQFF Applied to Einstein Field Equations and Black Hole Singularity Resolution
+**Author:** Daniel T. Murphy
 
 **Version:** 1.0.0  
 **Session:** 167 | **Date:** March 31 2026  

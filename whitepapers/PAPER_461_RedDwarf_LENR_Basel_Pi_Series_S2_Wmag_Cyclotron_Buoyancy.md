@@ -1,4 +1,5 @@
 # PAPER_461 — Red Dwarf LENR: Basel π-Series S(2)=π²/6 + W_mag Cyclotron + Buoyancy Series
+**Date:** 2025
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2  
 **Session:** 116 (v4.73) / Whitepapers created Session 121  

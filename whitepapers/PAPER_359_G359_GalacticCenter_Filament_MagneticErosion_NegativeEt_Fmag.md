@@ -1,4 +1,5 @@
 # PAPER_359 � G359 Galactic Center Filament: Magnetic Erosion E(t) and Negative F_U_Bi_i
+**Date:** 2025
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2  
 **Session:** 97  

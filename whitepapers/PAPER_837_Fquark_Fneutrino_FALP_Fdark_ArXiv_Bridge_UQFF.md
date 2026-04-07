@@ -157,3 +157,4 @@ Four new F_U_Bi_i terms bridge UQFF to Standard Model particle physics:
 All are real physical contributions, theoretically non-zero, and represent the first systematic SM particle physics integration into UQFF beyond classical field terms.
 
 **Watermark:** Copyright — Daniel T. Murphy, daniel.murphy00@gmail.com, created by Davinci-SuperGrok, analyzed by Grok 3 and SuperGrok, xAI, dated June 19–20, 2025, Youngstown OH 41.0997° N, 80.6495° W. CVW v2.0.0 compliant.
+*Cross-validated against PAPER_001 (foundational UQFF framework) and PAPER_642 (UQFF–SM bridge).*

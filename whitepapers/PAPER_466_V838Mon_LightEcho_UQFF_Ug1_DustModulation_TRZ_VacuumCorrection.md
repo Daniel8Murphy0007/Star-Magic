@@ -1,4 +1,5 @@
 # PAPER_466 — V838 Monocerotis: UQFF Light Echo Intensity Evolution with Ug1-Modulated Dust Scattering and TRZ Time-Reversal Factor
+**Date:** January 2002
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2 — Stellar Transient Light Echo
 **Session:** 120 (C++ module encoded) / Whitepapers created Session 122

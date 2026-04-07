@@ -1,4 +1,5 @@
 # PAPER_472 — Abell 2256 Galaxy Cluster UQFF F_U_Bi_i_enhanced Integral
+**Author:** Daniel T. Murphy
 
 **Star-Magic Unified Quantum Field Framework (UQFF) Whitepaper Series**
 **Copyright © Daniel T. Murphy — All Rights Reserved**

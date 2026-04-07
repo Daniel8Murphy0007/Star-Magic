@@ -1,4 +1,5 @@
 # PAPER_242 — Rings of Relativity: Einstein Ring Lensing Amplification in the Full MUGE
+**Date:** October 2025
 ## GAL-CLUS-022058s — Static Einstein-Ring Lensing Factor in the Master Universal Gravity Equation
 
 **Author:** Daniel T. Murphy  

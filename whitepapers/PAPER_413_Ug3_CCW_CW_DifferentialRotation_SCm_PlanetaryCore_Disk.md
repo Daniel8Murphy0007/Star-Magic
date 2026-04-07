@@ -1,4 +1,6 @@
 # PAPER_413 – Ug3 CCW/CW Differential Rotation: SCm Planetary Core Disk Penetration Framework
+**Author:** Daniel T. Murphy
+**Date:** 2025
 
 **Source:** grok_share_755feea7.txt — "Star Magic" Chapter 5 & CelestialBody compute_Ug3 sections  
 **Session:** 110 (grok_share_755feea7.txt analysis)  

@@ -1,4 +1,6 @@
 # PAPER_740 — Mass Without Weight: f_Ub Buoyancy Calibration and the UQFF Mass-as-Ratio Framework
+**Author:** Daniel T. Murphy
+**Date:** June 06, 2025
 
 **Title:** Mass Without Weight: The f_Ub Calibration Factor, Quantum-to-Mass Gradient, and the UQFF Mass-as-Ratio Framework Across All Scales  
 **Session:** 180 | **PAPER:** 740 | **CP4 class:** #324  

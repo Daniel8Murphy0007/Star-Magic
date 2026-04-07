@@ -1,4 +1,6 @@
 # PAPER_439 — NGC 3603 Extreme Star Cluster: Per-System MUGE with P(t) Cavity Pressure and Dual Wind
+**Author:** Daniel T. Murphy
+**Date:** 2025
 
 **Source:** grok_share_68eb34022.txt — Document 11: "Master Universal Gravity Equation_Extreme Star Cluster Bursts into Life_03May2025.docx" (lines 3430–3788)
 **Session:** 119

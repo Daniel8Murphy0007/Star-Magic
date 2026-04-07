@@ -1,4 +1,6 @@
 # PAPER_578 — UQFF_comp Eigenvalue Mass Gap & Quantum Gravity Linkage
+**Author:** Daniel T. Murphy
+**Date:** 2025
 
 **CP4 Class:** `#165  UQFFCompEigenvalueQuantumGravityLinkageCalculator`  
 **Session:** 154  

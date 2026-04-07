@@ -1,4 +1,5 @@
 # PAPER_120: Complete Catalog of Astronomical Systems Used in UQFF Calculations — Parameters, Verification Sources, and Equation Assignments
+**Session:** 0
 
 
 **Title:** Complete Catalog of Astronomical Systems Used in UQFF Calculations — Parameters, Verification Sources, and Equation Assignments

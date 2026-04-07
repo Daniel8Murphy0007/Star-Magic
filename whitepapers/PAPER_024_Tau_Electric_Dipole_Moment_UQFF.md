@@ -1,3 +1,6 @@
+**Author:** Daniel T. Murphy
+**Session:** 0
+
 # Paper #24: Tau Electric Dipole Moment via UQFF
 
 **Authors:** Daniel Murphy & UQFF Research Collective  

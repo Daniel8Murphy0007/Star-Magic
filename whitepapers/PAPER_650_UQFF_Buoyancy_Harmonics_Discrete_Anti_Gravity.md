@@ -1,4 +1,5 @@
 # PAPER_650: UQFF Buoyancy Harmonics — Discrete Anti-Gravity Resonance Bands
+**Author:** Daniel T. Murphy
 
 **Version:** 1.0.0  
 **Session:** 168 | **Date:** March 31 2026  

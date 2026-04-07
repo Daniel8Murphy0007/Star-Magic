@@ -1,4 +1,6 @@
 # PAPER_430 — SGR 0501+4516 Magnetar: First Complete Per-System MUGE Derivation
+**Author:** Daniel T. Murphy
+**Date:** 2025
 
 **Source:** grok_share_68eb34022.txt — Document 2: "Master Universal Gravity Equation_Magnetar_03May2025.docx" (lines 84–880; full analysis + C++ encoding of SGR 0501+4516 MUGE)
 **Session:** 119

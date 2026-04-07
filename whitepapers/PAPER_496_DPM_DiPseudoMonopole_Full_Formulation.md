@@ -1,4 +1,5 @@
 # PAPER_496 — Di-Pseudo-Monopole (DPM): Full UQFF Formulation
+**Author:** Daniel T. Murphy
 **arXiv:** 2503.xxxxx
 **Session:** 134
 **Version:** 1.0

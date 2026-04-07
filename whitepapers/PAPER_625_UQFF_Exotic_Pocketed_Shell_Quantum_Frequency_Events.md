@@ -1,4 +1,6 @@
 # PAPER_625 — UQFF Exotic Pocketed Shell Quantum Frequency Events
+**Author:** Daniel T. Murphy
+**Date:** 2025
 
 **Class:** `UQFFExoticPocketedShellQuantumFrequencyCalculator`  
 **Number:** #212  

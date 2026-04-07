@@ -1,4 +1,5 @@
 # PAPER_146: UQFF Star-Magic Superconductive Resonance — First-Principles Derivation of All 12 MUGE Resonance Terms: aDPM through fTRZ
+**Session:** 0
 
 
 **Title:** UQFF Star-Magic Superconductive Resonance — First-Principles Derivation of All 12 MUGE Resonance Terms: aDPM through fTRZ

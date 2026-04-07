@@ -1,4 +1,5 @@
 # PAPER_047: UQFF Nuclear Binding Energy: SEMF Enhancement by the 26-Level Polynomial, UA-SCm Coupling, and the Iron Peak Reference
+**Session:** 0
 
 
 **Title:** UQFF Nuclear Binding Energy: SEMF Enhancement by the 26-Level Polynomial, UA-SCm Coupling, and the Iron Peak Reference

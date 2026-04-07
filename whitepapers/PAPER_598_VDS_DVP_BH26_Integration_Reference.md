@@ -1,4 +1,6 @@
 # PAPER_598 — VDS / DVP / BH26 Integration Reference for Six-Form UQFF Synthesis
+**Author:** Daniel T. Murphy
+**Date:** 2025
 
 **CP4 Class:** `#185  UQFFVDSDVPBH26IntegrationReferenceCalculator`
 **Session:** 157

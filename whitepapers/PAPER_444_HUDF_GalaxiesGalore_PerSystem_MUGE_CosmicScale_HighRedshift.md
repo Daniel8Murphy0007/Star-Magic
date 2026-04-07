@@ -1,4 +1,6 @@
 # PAPER_444 — Hubble Ultra Deep Field "Galaxies Galore": Per-System MUGE at Cosmic Scale z=3.5
+**Author:** Daniel T. Murphy
+**Date:** 2025
 
 **Source:** grok_share_68eb34022.txt — Document 17: "Master Universal Gravity Equation_HUDF_Galaxies_Galore_03May2025.docx" (lines 5154–5538)
 **Session:** 119

@@ -1,4 +1,6 @@
 # PAPER_418 – F_U Sun: Complete SCm Solar Cycle Final Calibration with All Five Components
+**Author:** Daniel T. Murphy
+**Date:** 2025
 
 **Source:** grok_share_755feea7.txt — "Star Magic" Final Calibration Section + Full FU derivation  
 **Session:** 110 (grok_share_755feea7.txt analysis)  

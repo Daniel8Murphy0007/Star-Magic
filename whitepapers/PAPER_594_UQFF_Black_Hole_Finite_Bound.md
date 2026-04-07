@@ -1,4 +1,6 @@
 # PAPER_594 — Black Hole Finite Bound from UQFF 26! Factorial Barrier
+**Author:** Daniel T. Murphy
+**Date:** 2025
 
 **CP4 Class:** `#181  UQFFBlackHoleFiniteBoundCalculator`
 **Session:** 157

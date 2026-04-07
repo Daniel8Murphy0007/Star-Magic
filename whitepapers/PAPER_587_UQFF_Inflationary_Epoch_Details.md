@@ -1,4 +1,6 @@
 # PAPER_587 — Inflationary Epoch Details from UQFF Grinding
+**Author:** Daniel T. Murphy
+**Date:** 2025
 
 **CP4 Class:** `#174  UQFFInflationaryEpochDetailsCalculator`
 **Session:** 157

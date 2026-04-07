@@ -1,4 +1,6 @@
 # PAPER_629 — UQFF MS 0735.6+7421 Cluster AGN Jet Void Pocket
+**Author:** Daniel T. Murphy
+**Date:** December 2025
 
 **Class:** `UQFFMS073567421ClusterAGNJetVoidPocketCalculator`  
 **Number:** #216  

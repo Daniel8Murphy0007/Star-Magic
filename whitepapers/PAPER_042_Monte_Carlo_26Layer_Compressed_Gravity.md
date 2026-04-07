@@ -1,3 +1,5 @@
+**Session:** 0
+
 # PAPER #42 � Monte Carlo Stochastic Validation of the 26-Layer Compressed Gravity Framework
 
 **Title:** Monte Carlo Ensemble Validation of UQFF 26-Layer Compressed Gravity: Ug1 Formula, Layer Amplification, and Cross-Scale Consistency from Planck to Hubble Volume

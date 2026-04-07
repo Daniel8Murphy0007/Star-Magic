@@ -1,4 +1,5 @@
 # PAPER_640: UQFF Proton Decay κ Rate Scale Separation and Stability
+**Author:** Daniel T. Murphy
 
 **Version:** 1.0.0  
 **Session:** 162 | **Date:** March 30 2026  

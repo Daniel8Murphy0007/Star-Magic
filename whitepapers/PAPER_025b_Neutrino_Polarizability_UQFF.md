@@ -1,4 +1,6 @@
 # PAPER_025b: Neutrino Polarizability — UQFF Quantum Field Contributions
+**Author:** Daniel T. Murphy
+**Session:** 0
 
 **Authors:** Daniel Murphy & UQFF Research Collective  
 **Date:** 2026-03-07  

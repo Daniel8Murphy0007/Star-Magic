@@ -1,4 +1,6 @@
 # PAPER_579 — UQFF All Four Forms: Evolution Catalogue and Triadic Solution Set
+**Author:** Daniel T. Murphy
+**Date:** 2025
 
 **CP4 Class:** `#166  UQFFAllFormsEvolutionCatalogueCalculator`
 **Session:** 156

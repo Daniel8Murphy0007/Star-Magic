@@ -1,4 +1,6 @@
 # PAPER_425 – DPM Four-Component Correlation Within the F_U_Bi_i Master Integral
+**Author:** Daniel T. Murphy
+**Date:** 2025
 
 **Source:** grok_share_c020496d9e.txt — Section "DPM Creation Scenario Update" and F_U_Bi_i integral definition (lines 269–305, Session 114 deep-physics extraction)  
 **Session:** 114  

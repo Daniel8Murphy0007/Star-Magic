@@ -1,4 +1,5 @@
 # PAPER_460 — Nebular UQFF Drawing 32: LENR Catalyst + Higgs Scalar + DNA Energy Non-Local Term
+**Date:** 2025
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2  
 **Session:** 116 (v4.73) / Whitepapers created Session 121  

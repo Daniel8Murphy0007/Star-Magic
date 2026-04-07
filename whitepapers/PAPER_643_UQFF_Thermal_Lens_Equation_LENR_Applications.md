@@ -1,4 +1,5 @@
 # PAPER_643: UQFF Thermal Lens Equation and LENR Applications
+**Author:** Daniel T. Murphy
 
 **Version:** 1.0.0  
 **Session:** 167 | **Date:** March 31 2026  

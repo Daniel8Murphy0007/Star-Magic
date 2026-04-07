@@ -1,4 +1,5 @@
 # PAPER_499 — Higgs as Inertial Gradient Shift Marker: UQFF Reinterpretation
+**Author:** Daniel T. Murphy
 **arXiv:** 2503.xxxxx
 **Session:** 134
 **Version:** 1.0

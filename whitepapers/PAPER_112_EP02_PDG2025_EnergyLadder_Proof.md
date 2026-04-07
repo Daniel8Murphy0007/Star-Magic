@@ -1,4 +1,5 @@
 # PAPER_112: Empirical Proof EP-02: Particle Data Group 2025 Mass Table Cross-Correlation with UQFF 26-Level Energy Ladder E_n = 10^(n-20) J
+**Session:** 0
 
 
 **Title:** Empirical Proof EP-02: Particle Data Group 2025 Mass Table Cross-Correlation with UQFF 26-Level Energy Ladder E_n = 10^(n-20) J

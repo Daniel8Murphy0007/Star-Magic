@@ -1,4 +1,5 @@
 # PAPER_497 — 26D Downward Projection Framework: Energy Falls to Yield Mass
+**Author:** Daniel T. Murphy
 **arXiv:** 2503.xxxxx
 **Session:** 134
 **Version:** 1.0

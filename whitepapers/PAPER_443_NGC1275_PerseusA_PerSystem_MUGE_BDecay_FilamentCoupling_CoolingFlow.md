@@ -1,4 +1,6 @@
 # PAPER_443 — NGC 1275 Perseus A "Magnetic Monster": Per-System MUGE with B(t) Decay, Filament F(t), and Cooling Flow
+**Author:** Daniel T. Murphy
+**Date:** 2025
 
 **Source:** grok_share_68eb34022.txt — Document 16: "Master Universal Gravity Equation_NGC1275_Perseus_Magnetic_Monster_03May2025.docx" (lines 4820–5154)
 **Session:** 119

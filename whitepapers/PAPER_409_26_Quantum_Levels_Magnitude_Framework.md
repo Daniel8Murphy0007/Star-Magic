@@ -1,4 +1,6 @@
 # PAPER_409 — 26 Quantum Levels of Magnitude: Discrete Energy Scale Framework
+**Author:** Daniel T. Murphy
+**Date:** 2025
 
 **Source:** grok_share_755feea7.txt, lines 1800–2500 ("Star Magic - The Quest for Unity" book content)
 **Section:** Introduction and Core Concepts — Energy Level Hierarchy

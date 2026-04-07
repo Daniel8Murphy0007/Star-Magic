@@ -1,4 +1,6 @@
 # PAPER_410 – SCm: The Hidden Element — Undetectability, Zero Quantum Signature, and Quasar Ignition Mechanism
+**Author:** Daniel T. Murphy
+**Date:** 2025
 
 **Source:** grok_share_755feea7.txt — "Star Magic: The Quest for Unity" Chapter 2 & Refined F_U sections  
 **Session:** 110 (grok_share_755feea7.txt analysis)  

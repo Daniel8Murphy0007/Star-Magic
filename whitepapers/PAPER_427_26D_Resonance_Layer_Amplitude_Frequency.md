@@ -1,4 +1,6 @@
 # PAPER_427 – 26D Resonance Layer Amplitude and Frequency Correlation Table
+**Author:** Daniel T. Murphy
+**Date:** 2025
 
 **Source:** grok_share_c020496d9e.txt — 26-layer resonance framework (lines 168–237, Session 114 deep-physics extraction)  
 **Session:** 114  

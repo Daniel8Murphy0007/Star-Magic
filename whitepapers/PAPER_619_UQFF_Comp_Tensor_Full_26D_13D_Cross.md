@@ -1,4 +1,5 @@
 # PAPER_619: UQFF Comp Tensor Full 26D Diagonal and 13D Cross-Coupling
+**Date:** 2025
 
 **Author:** Daniel T. Murphy  
 **Session:** 160  

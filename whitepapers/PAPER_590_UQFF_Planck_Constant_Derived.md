@@ -1,4 +1,6 @@
 # PAPER_590 — Planck Constant $h$ Derived from UQFF Energy Gap
+**Author:** Daniel T. Murphy
+**Date:** 2025
 
 **CP4 Class:** `#177  UQFFPlanckConstantDerivedCalculator`
 **Session:** 157

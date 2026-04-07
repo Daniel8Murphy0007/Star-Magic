@@ -1,0 +1,77 @@
+{
+  "audit_date": "2026-04-07",
+  "total_papers": 877,
+  "total_pdfs": 877,
+  "papers_without_pdf": [],
+  "root_only_papers": [],
+  "duplicate_papers": [
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    25,
+    26,
+    221
+  ],
+  "gate_summary": {
+    "G1": {
+      "pass": 877,
+      "fail": 0
+    },
+    "G2": {
+      "pass": 877,
+      "fail": 0
+    },
+    "G3": {
+      "pass": 877,
+      "fail": 0
+    },
+    "G4": {
+      "pass": 877,
+      "fail": 0
+    },
+    "G5": {
+      "pass": 877,
+      "fail": 0
+    },
+    "G6": {
+      "pass": 877,
+      "fail": 0
+    }
+  },
+  "qs_summary": {
+    "Q1": {
+      "pass": 864,
+      "fail": 13
+    },
+    "Q2": {
+      "pass": 857,
+      "fail": 20
+    },
+    "Q3": {
+      "pass": 877,
+      "fail": 0
+    },
+    "Q4": {
+      "pass": 877,
+      "fail": 0
+    },
+    "Q5": {
+      "pass": 863,
+      "fail": 14
+    }
+  },
+  "size_distribution": {
+    "stub": 165,
+    "standard": 518,
+    "full": 186,
+    "flagship": 8
+  },
+  "multi_fail_papers": [],
+  "g6_fail_count": 0
+}

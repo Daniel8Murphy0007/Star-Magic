@@ -1,4 +1,5 @@
 # PAPER_502: WSTP Embedded Wolfram Kernel Bridge Architecture
+**Author:** Daniel T. Murphy
 
 **Session:** 137 | **Source:** grok_share_84a767d3.txt (lines 300–700, 2300–3600)
 **Date:** November 2025 (first working commit: 8ae9ffe)

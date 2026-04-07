@@ -1,3 +1,6 @@
+**Author:** Daniel T. Murphy
+**Session:** 0
+
 # Paper #26: Sterile Neutrino Mass Generation via UQFF
 
 **Authors:** Daniel Murphy & UQFF Research Collective  

@@ -1,4 +1,5 @@
 # PAPER_636: UQFF Lepton Flavor Violation B-Decay as Time-Reversal Constraint
+**Author:** Daniel T. Murphy
 
 **Version:** 1.0.0  
 **Session:** 162 | **Date:** March 30 2026  

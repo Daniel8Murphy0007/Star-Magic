@@ -1,4 +1,6 @@
 # PAPER_609: Riemann Hypothesis Encompassment via UQFF Tensor Eigenvalue Average
+**Author:** Daniel T. Murphy
+**Date:** 2026
 
 **Class**: UQFFRiemannHypothesisCriticalLineCalculator (#196)  
 **Session**: 159  

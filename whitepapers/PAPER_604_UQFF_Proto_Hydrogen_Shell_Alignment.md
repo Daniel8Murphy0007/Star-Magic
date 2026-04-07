@@ -1,4 +1,6 @@
 # PAPER_604: Proto-Hydrogen Shell Alignment via 26D Empty Shell Filling
+**Author:** Daniel T. Murphy
+**Date:** 2025
 
 **Class**: UQFFProtoHydrogenShellAlignmentCalculator (#191)  
 **Session**: 159  

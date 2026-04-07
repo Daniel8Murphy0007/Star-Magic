@@ -1,4 +1,6 @@
 # PAPER_605: 26th-Order Derivative Factorial Bounds for Anti-Singularity Physics
+**Author:** Daniel T. Murphy
+**Date:** 2025
 
 **Class**: UQFF26thOrderFactorialBoundsCalculator (#192)  
 **Session**: 159  

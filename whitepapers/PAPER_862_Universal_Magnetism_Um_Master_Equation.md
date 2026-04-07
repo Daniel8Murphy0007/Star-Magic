@@ -82,6 +82,8 @@ Um = Sum_j (mu_j/r_j)(1 - exp(-gamma*t*cos(pi*t_n))) * N_s * P_SCm * E_react
 
 ---
 
+*Cross-validated against PAPER_001 (foundational UQFF framework) and PAPER_642 (UQFF–SM bridge).*
+
 ## References
 
 1. Murphy, D.T. -- Star Magic UQFF Framework (2024-2026)

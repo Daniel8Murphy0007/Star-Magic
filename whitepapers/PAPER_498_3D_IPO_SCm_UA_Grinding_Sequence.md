@@ -1,4 +1,5 @@
 # PAPER_498 — 3D Intertwined Progression Overlay (3D-IPO) and SCm-UA Grinding Sequence
+**Author:** Daniel T. Murphy
 **arXiv:** 2503.xxxxx
 **Session:** 134
 **Version:** 1.0

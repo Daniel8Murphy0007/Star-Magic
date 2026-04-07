@@ -1,4 +1,6 @@
 # PAPER_434 — Westerlund 2: Per-System MUGE with τ=2 Myr Wind Evolution and M₀=30,000 M☉
+**Author:** Daniel T. Murphy
+**Date:** 2025
 
 **Source:** grok_share_68eb34022.txt — Document 6: "Master Universal Gravity Equation (UQFF & SM Integration)_Westerlund 2 Evolution_03May2025.docx" (lines 1963–2304)
 **Session:** 119

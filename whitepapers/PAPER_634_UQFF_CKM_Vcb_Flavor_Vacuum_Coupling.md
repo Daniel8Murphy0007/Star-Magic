@@ -1,4 +1,5 @@
 # PAPER_634: UQFF CKM |V_cb| Flavor Mixing as Vacuum Coupling Parameter
+**Author:** Daniel T. Murphy
 
 **Version:** 1.0.0  
 **Session:** 162 | **Date:** March 30 2026  

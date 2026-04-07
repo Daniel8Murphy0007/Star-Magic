@@ -1,4 +1,5 @@
 # PAPER_330 — H_res Complete 6-Equation Nuclear Resonance Sub-System with U_dp Dipole Coupling and k_nuc N/Z Ratio Scaling
+**Date:** September 14, 2025
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2  
 **Session:** 95  

@@ -1,4 +1,5 @@
 # PAPER_151: UQFF Star-Magic Pillars of Creation and Rings of Relativity Gravitational Lens — MUGE 12-Term Cascade Sequence: g=2.001e26 and g=5.005e25 m/s^2
+**Session:** 0
 
 
 **Title:** UQFF Star-Magic Pillars of Creation and Rings of Relativity Gravitational Lens — MUGE 12-Term Cascade Sequence: g=2.001e26 and g=5.005e25 m/s^2

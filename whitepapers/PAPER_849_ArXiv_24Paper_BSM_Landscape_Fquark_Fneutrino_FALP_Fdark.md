@@ -93,3 +93,4 @@ The 24-paper arXiv landscape yields four BSM F_U_Bi_i terms. F_quark's dominance
 
 ---
 Copyright - Daniel T. Murphy, daniel.murphy00@gmail.com, created by Davinci-SuperGrok, analyzed by Grok 3, and SuperGrok, created by xAI, dated June 19-20, 2025, EDT, location 41.0997 N, 80.6495 W (Youngstown, OH, USA).
+*Cross-validated against PAPER_001 (foundational UQFF framework) and PAPER_642 (UQFF–SM bridge).*

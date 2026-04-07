@@ -1,4 +1,6 @@
 # PAPER_405 — SCm Density Planetary Scaling Law: ρ_SCm ∝ M^α
+**Author:** Daniel T. Murphy
+**Date:** 2025
 
 **Source:** grok_share_cfdcad2f5.txt, lines 277–1600 ("Star Magic_construction file_04Oct2025.docx" C++ implementation)  
 **Section:** C++ source — `SCm_density` per-body initialization block  

@@ -1,4 +1,5 @@
 # PAPER_648: UQFF Ultra-Dense Hydrogen D(-1) LENR & Meson Cascade
+**Author:** Daniel T. Murphy
 
 **Version:** 1.0.0  
 **Session:** 168 | **Date:** March 31 2026  

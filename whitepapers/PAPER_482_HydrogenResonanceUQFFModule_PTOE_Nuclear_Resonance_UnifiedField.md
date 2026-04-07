@@ -1,4 +1,6 @@
 # PAPER_482 — HydrogenResonanceUQFFModule: PTOE Nuclear Resonance in Unified Quantum Field Framework
+**Author:** Daniel T. Murphy
+**Date:** March 23, 2026
 <!-- Session 126 | grok_share_bdfb3a05b06.txt | Quality Score: 5 -->
 
 ## Abstract

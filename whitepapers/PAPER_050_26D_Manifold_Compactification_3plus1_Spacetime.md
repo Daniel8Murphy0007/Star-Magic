@@ -1,4 +1,5 @@
 # PAPER_050: Compactification of the 26-Dimensional UQFF Manifold: How Sub-Nuclear Levels Fold into Observable 3+1 Spacetime and the Cross-Scale Quantum-Cosmic Bridge
+**Session:** 0
 
 
 **Title:** Compactification of the 26-Dimensional UQFF Manifold: How Sub-Nuclear Levels Fold into Observable 3+1 Spacetime and the Cross-Scale Quantum-Cosmic Bridge

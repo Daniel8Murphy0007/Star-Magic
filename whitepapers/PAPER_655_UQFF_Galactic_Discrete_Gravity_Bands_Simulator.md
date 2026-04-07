@@ -1,4 +1,5 @@
 # PAPER_655: UQFF Galactic Discrete Gravity Bands & Aether Field Simulator
+**Author:** Daniel T. Murphy
 
 **Version:** 1.0.0  
 **Session:** 168 | **Date:** March 31 2026  

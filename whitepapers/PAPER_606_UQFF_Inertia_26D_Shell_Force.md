@@ -1,4 +1,6 @@
 # PAPER_606: Inertia as a Pure 26D Shell Force — The DPM Reaction Velocity Projection
+**Author:** Daniel T. Murphy
+**Date:** 2025
 
 **Class**: UQFFInertia26DShellForceCalculator (#193)  
 **Session**: 159  

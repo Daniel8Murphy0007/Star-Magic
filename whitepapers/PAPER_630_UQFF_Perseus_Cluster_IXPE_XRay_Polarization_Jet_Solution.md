@@ -1,4 +1,6 @@
 # PAPER_630 — UQFF Perseus Cluster IXPE X-Ray Polarization Jet Solution
+**Author:** Daniel T. Murphy
+**Date:** December 2025
 
 **Class:** `UQFFPerseusClusterIXPEXRayPolarizationJetCalculator`  
 **Number:** #217  

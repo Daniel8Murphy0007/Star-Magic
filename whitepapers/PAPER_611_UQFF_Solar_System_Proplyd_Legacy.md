@@ -1,4 +1,6 @@
 # PAPER_611: Solar System as Evolved Proplyd Remnants — DPM Migration and Orbital Eccentricities
+**Author:** Daniel T. Murphy
+**Date:** 2025
 
 **Class**: UQFFSolarSystemProplydLegacyCalculator (#198)  
 **Session**: 159  

@@ -1,4 +1,5 @@
 # PAPER_635: UQFF Vector-Like Quarks and κ Heavy-Mode Excitations
+**Author:** Daniel T. Murphy
 
 **Version:** 1.0.0  
 **Session:** 162 | **Date:** March 30 2026  

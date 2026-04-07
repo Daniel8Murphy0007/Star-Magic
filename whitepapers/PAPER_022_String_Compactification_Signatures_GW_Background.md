@@ -1,4 +1,6 @@
 # PAPER_022: String Compactification Signatures in Gravitational Wave Background
+**Author:** Daniel T. Murphy
+**Session:** 0
 
 **Authors:** Daniel Murphy & UQFF Research Collective
 **Date:** 2026-03-06

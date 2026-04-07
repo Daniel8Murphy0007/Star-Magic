@@ -1,4 +1,5 @@
 # PAPER_477 — Buoyancy Coupling Constants β_i in the UQFF Framework
+**Author:** Daniel T. Murphy
 
 **Star-Magic Unified Quantum Field Framework (UQFF) Whitepaper Series**
 **Copyright © Daniel T. Murphy — All Rights Reserved**

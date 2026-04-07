@@ -1,4 +1,6 @@
 # PAPER_597 — Negative Time Derivation and Dual Existence in UQFF
+**Author:** Daniel T. Murphy
+**Date:** 2025
 
 **CP4 Class:** `#184  UQFFNegativeTimeDualExistenceCalculator`
 **Session:** 157

@@ -1,4 +1,6 @@
 # PAPER_386 — LaTeX Dual-Block Cohesive UQFF Master Equation & May-2025 Document Integration
+**Author:** Daniel T. Murphy
+**Date:** May 2025
 
 **Source:** grok_share_11254865.txt, lines ~8230–8800 (3-document analysis) + lines ~8600–8650 (LaTeX encoding)  
 **Section:** Grok's response to "Analyze/Update/validate/encode/Integrate" three May-2025 documents  

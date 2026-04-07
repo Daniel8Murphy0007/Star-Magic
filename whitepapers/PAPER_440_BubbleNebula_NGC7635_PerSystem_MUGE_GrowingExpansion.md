@@ -1,4 +1,6 @@
 # PAPER_440 — Bubble Nebula NGC 7635: Per-System MUGE with E(t) GROWING Expansion and Low-Mass Central Star
+**Author:** Daniel T. Murphy
+**Date:** 2025
 
 **Source:** grok_share_68eb34022.txt — Document 12: "Master Universal Gravity Equation_The Bubble Nebula Evolution_03May2025.docx" (lines 3788–4125)
 **Session:** 119

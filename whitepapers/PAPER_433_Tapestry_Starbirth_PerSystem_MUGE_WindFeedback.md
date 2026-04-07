@@ -1,4 +1,6 @@
 # PAPER_433 — Tapestry of Blazing Starbirth: Per-System MUGE with Stellar Wind Feedback M(t)
+**Author:** Daniel T. Murphy
+**Date:** 2025
 
 **Source:** grok_share_68eb34022.txt — Document 4: "Master Universal Gravity Equation (UQFF & SM Integration)_Tapestry of Blazing Starbirth Evolution_03May2025.docx" (lines 1619–1963)
 **Session:** 119

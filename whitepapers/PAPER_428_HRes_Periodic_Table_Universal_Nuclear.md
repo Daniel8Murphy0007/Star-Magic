@@ -1,4 +1,6 @@
 # PAPER_428 – H_res Periodic Table Universal Nuclear Correlation
+**Author:** Daniel T. Murphy
+**Date:** 2025
 
 **Source:** grok_share_c020496d9e.txt — Document 28 "HResonance" equations (lines 2010–2110 and 142–148, Session 114 deep-physics extraction)  
 **Session:** 114  

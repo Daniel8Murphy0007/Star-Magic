@@ -1,4 +1,5 @@
 # PAPER_639: UQFF Higgs Mass 125 GeV and VEV Buoyancy Coupling
+**Author:** Daniel T. Murphy
 
 **Version:** 1.0.0  
 **Session:** 162 | **Date:** March 30 2026  

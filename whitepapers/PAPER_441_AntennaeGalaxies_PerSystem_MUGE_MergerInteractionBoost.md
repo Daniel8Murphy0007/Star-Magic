@@ -1,4 +1,6 @@
 # PAPER_441 — Antennae Galaxies NGC 4038+4039: Per-System MUGE with I(t) Merger Interaction Boost
+**Author:** Daniel T. Murphy
+**Date:** 2025
 
 **Source:** grok_share_68eb34022.txt — Document 14: "Master Universal Gravity Equation_Antennae Galaxies Reloaded Evolution_03May2025.docx" (lines 4126–4487)
 **Session:** 119

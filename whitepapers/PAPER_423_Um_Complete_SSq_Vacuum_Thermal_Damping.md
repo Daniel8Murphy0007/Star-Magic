@@ -1,4 +1,6 @@
 # PAPER_423 – Um Complete Three-Modifier Formula: [SSq] Vacuum Thermal Damping Factor
+**Author:** Daniel T. Murphy
+**Date:** 2025
 
 **Source:** grok_share_c020496d9e.txt — Grok DeepSearch of `UQFF+Equations+Across+Astrophysical+Systems_22Sept2025.pdf` (Session 116 re-analysis: buoyancy mathematics scan, 12 patterns evaluated)  
 **Session:** 116  (grok_share_c020496d9e.txt systematic re-analysis — buoyancy patterns focus, 12 grep patterns, 1 new item identified)  

@@ -1,4 +1,6 @@
 # PAPER_404 — µ_s(t): SCm-Augmented Magnetic Dipole with ω_c Body-Specific Oscillation
+**Author:** Daniel T. Murphy
+**Date:** 2025
 
 **Source:** grok_share_cfdcad2f5.txt, lines 277–1600 ("Star Magic_construction file_04Oct2025.docx" C++ implementation)  
 **Section:** C++ source — `compute_magnetic_dipole()` function with SCm density direct contribution  

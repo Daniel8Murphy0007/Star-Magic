@@ -1,4 +1,5 @@
 # PAPER_468 — SMBH Binary Evolution: MUGE UQFF Frequency-Derived Gravitational Acceleration with DPM Core, THz Hole Pipeline, and Coalescence
+**Date:** 2025
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2 — Supermassive Black Hole Binary Dynamics
 **Session:** 120 (C++ module encoded) / Whitepapers created Session 122

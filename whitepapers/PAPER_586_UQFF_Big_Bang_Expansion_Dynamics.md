@@ -1,4 +1,6 @@
 # PAPER_586 — Big Bang Expansion Dynamics in UQFF Framework
+**Author:** Daniel T. Murphy
+**Date:** 2025
 
 **CP4 Class:** `#173  UQFFBigBangExpansionDynamicsCalculator`
 **Session:** 157

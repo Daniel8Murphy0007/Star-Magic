@@ -1,4 +1,6 @@
 # PAPER_421 – Um Full Formula: Heaviside Phase-Transition Amplifier (10¹³) and Quasi-Periodic Beating Modifier
+**Author:** Daniel T. Murphy
+**Date:** 2025
 
 **Source:** grok_share_755feea7.txt — Line 1963 (Um with full modifiers, Unified Quantum Field Equation chapter)  
 **Session:** 111 (grok_share_755feea7.txt exhaustive re-analysis — file 100% read)  

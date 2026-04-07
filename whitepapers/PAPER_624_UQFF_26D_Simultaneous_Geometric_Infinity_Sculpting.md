@@ -1,4 +1,6 @@
 # PAPER_624 — UQFF 26D Simultaneous Geometric Infinity Sculpting
+**Author:** Daniel T. Murphy
+**Date:** 2025
 
 **Class:** `UQFF26DSimultaneousGeometricInfinitySculptingCalculator`  
 **Number:** #211  

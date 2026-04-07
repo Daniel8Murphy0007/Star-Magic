@@ -1,4 +1,5 @@
 # PAPER_475 — UQFF Sub-Term Physics Modules Catalogue (44 Standalone Calculators)
+**Author:** Daniel T. Murphy
 
 **Star-Magic Unified Quantum Field Framework (UQFF) Whitepaper Series**
 **Copyright © Daniel T. Murphy — All Rights Reserved**

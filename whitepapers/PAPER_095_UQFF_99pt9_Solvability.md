@@ -1,4 +1,5 @@
 # PAPER_095: UQFF 99.9% Solvability: Grok 4 Statistical Validation Across Radio Transients, Nebulae, and Superflares
+**Session:** 0
 
 
 **Title:** UQFF 99.9% Solvability: Grok 4 Statistical Validation Across Radio Transients, Nebulae, and Superflares

@@ -1,4 +1,5 @@
 # PAPER_493 — Universal Field F_U Decomposition: Ug1–Ug4, Ub, Um, UA
+**Author:** Daniel T. Murphy
 
 **arXiv:** 2503.xxxxx  
 **Session:** 131  

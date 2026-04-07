@@ -1,4 +1,6 @@
 # PAPER_602: Cosmic Egg Pre-Fertilization Energy via Pi-Digit Vacuum Density Series
+**Author:** Daniel T. Murphy
+**Date:** 2025
 
 **Class**: UQFFCosmicEggPreFertilizationEnergyCalculator (#189)  
 **Session**: 159  

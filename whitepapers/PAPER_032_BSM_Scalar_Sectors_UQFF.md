@@ -1,4 +1,5 @@
 # PAPER_032: BSM Scalar Sectors in UQFF
+**Session:** 0
 
 **Title:** Extended Higgs Scalar Sectors Implied by Vector-Like Quark Production: UQFF Ug2 Charge-Reactivity Analysis
 

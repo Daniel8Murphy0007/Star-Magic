@@ -1,4 +1,6 @@
 # PAPER_400 — Ug2: Heliosphere Bubble Charge-Coupled E_react Form
+**Author:** Daniel T. Murphy
+**Date:** 2025
 
 **Source:** grok_share_cfdcad2f5.txt, lines 277–1600 ("Star Magic_construction file_04Oct2025.docx" C++ implementation)  
 **Section:** C++ source — `compute_Ug2()` function with solar wind modulation and E_react coupling  

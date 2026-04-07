@@ -1,4 +1,5 @@
 # PAPER_072: Red Dwarf Reactor (RDR) Physics — UQFF TRZ Factor Validation, COP > 1, and Plasma Temperature Agreement
+**Session:** 0
 
 **Title:** Red Dwarf Reactor (RDR) Physics in the UQFF: Time-Reversal Zone (TRZ) Factor Validation, Coefficient of Performance > 1, and Plasma Temperature Agreement
 

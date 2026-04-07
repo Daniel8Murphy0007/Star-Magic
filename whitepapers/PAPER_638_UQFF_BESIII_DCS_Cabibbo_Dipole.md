@@ -1,4 +1,5 @@
 # PAPER_638: UQFF BESIII Doubly Cabibbo Suppressed D+ Decay and Dipole Contribution
+**Author:** Daniel T. Murphy
 
 **Version:** 1.0.0  
 **Session:** 162 | **Date:** March 30 2026  

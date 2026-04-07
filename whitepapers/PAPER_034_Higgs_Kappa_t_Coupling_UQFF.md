@@ -1,4 +1,5 @@
 # PAPER_034: Higgs κ_t Coupling: UQFF vs CERN HL-LHC Data
+**Session:** 0
 
 **Title:** Top-Higgs Yukawa Coupling κ_t at ATLAS and the UQFF UH-Level-18 Field: Predictions for the HL-LHC Era
 

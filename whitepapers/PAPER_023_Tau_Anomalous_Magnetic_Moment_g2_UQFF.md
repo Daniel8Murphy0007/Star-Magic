@@ -1,3 +1,6 @@
+**Author:** Daniel T. Murphy
+**Session:** 0
+
 # Paper #23: Tau Anomalous Magnetic Moment (g-2) via UQFF
 
 **Authors:** Daniel Murphy & UQFF Research Collective  

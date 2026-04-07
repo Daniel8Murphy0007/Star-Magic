@@ -1,4 +1,5 @@
 # PAPER_448 — Multi-System UQFF Core Compression Framework: Unified F_env Architecture
+**Date:** 2025
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2  
 **Session:** 115 (v4.72) / Whitepapers created Session 121  

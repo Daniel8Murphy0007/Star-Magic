@@ -1,4 +1,6 @@
 # PAPER_431 — SGR 1745-2900 Complete Per-System MUGE: Black Hole Proximity + All-Channel Derivation
+**Author:** Daniel T. Murphy
+**Date:** 2025
 
 **Source:** grok_share_68eb34022.txt — Document 2a: "Master Universal Gravity Equation (UQFF & SM Integration)_SGR 1745 2900 Magnetar Evolution_03May2025.docx" (lines 882–1272)
 **Session:** 119

@@ -1,4 +1,6 @@
 # PAPER_426 – UA/SCm JWST/ALMA/CERN 2025 Four-Component Validation Table
+**Author:** Daniel T. Murphy
+**Date:** 2025
 
 **Source:** grok_share_c020496d9e.txt — Section "UQFF System Update, Validation, and Comparison" (lines 6464–6530, Session 114 deep-physics extraction)  
 **Session:** 114  

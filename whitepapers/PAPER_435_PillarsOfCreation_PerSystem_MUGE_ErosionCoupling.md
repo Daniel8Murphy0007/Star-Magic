@@ -1,4 +1,6 @@
 # PAPER_435 — Pillars of Creation: Per-System MUGE with E(t) Erosion Coupling and M₀=10,100 M☉
+**Author:** Daniel T. Murphy
+**Date:** 2025
 
 **Source:** grok_share_68eb34022.txt — Document 7: "Master Universal Gravity Equation_Pillars of Creation Evolution_03May2025.docx" (lines 2304–2659)
 **Session:** 119

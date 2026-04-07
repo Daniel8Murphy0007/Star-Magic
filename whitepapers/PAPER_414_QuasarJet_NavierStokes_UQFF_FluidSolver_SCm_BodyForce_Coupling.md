@@ -1,4 +1,6 @@
 # PAPER_414 – Quasar Jet Mechanism: Navier-Stokes UQFF Body Force Coupling via SCm Expulsion
+**Author:** Daniel T. Murphy
+**Date:** 2025
 
 **Source:** grok_share_755feea7.txt — "Star Magic" Chapter 6 + FluidSolver.cpp  
 **Session:** 110 (grok_share_755feea7.txt analysis)  

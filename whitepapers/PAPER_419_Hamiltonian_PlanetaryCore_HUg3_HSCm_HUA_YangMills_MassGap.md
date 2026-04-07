@@ -1,4 +1,6 @@
 # PAPER_419 – Hamiltonian Planetary Core Quantum Gravity: H_Ug3 + H_SCm + H_UA and Yang-Mills Mass Gap
+**Author:** Daniel T. Murphy
+**Date:** 2025
 
 **Source:** grok_share_755feea7.txt — "Star Magic" Chapter 9 + Hamiltonian derivation section  
 **Session:** 110 (grok_share_755feea7.txt analysis)  

@@ -1,4 +1,6 @@
 # PAPER_626 — UQFF M87 Jet 9D Hypergraph Pocket Shell Simulation
+**Author:** Daniel T. Murphy
+**Date:** Dec 2025
 
 **Class:** `UQFFM87JetNineDHypergraphPocketShellSimulationCalculator`  
 **Number:** #213  

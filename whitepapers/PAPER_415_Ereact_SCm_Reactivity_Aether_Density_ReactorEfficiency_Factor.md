@@ -1,4 +1,6 @@
 # PAPER_415 – E_react: SCm Reactivity Aether Density Reactor Efficiency Factor
+**Author:** Daniel T. Murphy
+**Date:** 2025
 
 **Source:** grok_share_755feea7.txt — "Star Magic" Chapter 3 + CelestialBody.cpp compute_Ereact  
 **Session:** 110 (grok_share_755feea7.txt analysis)  

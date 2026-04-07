@@ -1,4 +1,5 @@
 # PAPER_478 — Aether Coupling η and Background Aether Metric Perturbation
+**Author:** Daniel T. Murphy
 
 **Star-Magic Unified Quantum Field Framework (UQFF) Whitepaper Series**
 **Copyright © Daniel T. Murphy — All Rights Reserved**

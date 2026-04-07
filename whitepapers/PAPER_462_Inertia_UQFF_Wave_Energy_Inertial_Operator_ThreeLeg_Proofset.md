@@ -1,4 +1,5 @@
 # PAPER_462 — Inertia UQFF Wave Energy: Î Inertial Operator + Three-Leg Proofset
+**Date:** 2025
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2  
 **Session:** 116 (v4.73) / Whitepapers created Session 121  

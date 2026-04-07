@@ -1,4 +1,5 @@
 # PAPER_491 — MUGE Compressed Nine-Term Gravity Framework
+**Author:** Daniel T. Murphy
 
 **arXiv:** 2503.xxxxx  
 **Session:** 131  

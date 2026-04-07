@@ -1,4 +1,5 @@
 # PAPER_471 — LENR K_η Neutron Production Calibration Constant: Um-Mediated Rate η with Non-Local [SSq]^n 2^6 e^(−π−t) Term
+**Date:** 2025
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2 — LENR Calibration Physics
 **Session:** 120 (C++ module encoded) / Whitepapers created Session 122

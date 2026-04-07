@@ -1,4 +1,5 @@
 # PAPER_637: UQFF and ALICE Run 3 √s=13.6 TeV Multiplicity Vacuum Density Ratio
+**Author:** Daniel T. Murphy
 
 > **Key UQFF calibrated constants:** κ = 5.0e-4 day⁻¹; [SSq] = 5.7e-1; H_SCm ≈ 9.9e-1; U_UA ≈ 1.0e-4; k_η = 1.0e-113; β_i ≈ 6.0e-1; G = 6.674e-11 N·m²/kg²
 

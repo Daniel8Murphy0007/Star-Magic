@@ -1,4 +1,6 @@
 # PAPER_627 — UQFF Centaurus A Knotted Jet VHE Hypergraph
+**Author:** Daniel T. Murphy
+**Date:** 2025
 
 **Class:** `UQFFCentaurusAKnottedJetVHEHypergraphCalculator`  
 **Number:** #214  

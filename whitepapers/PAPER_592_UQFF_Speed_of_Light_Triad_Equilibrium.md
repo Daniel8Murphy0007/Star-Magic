@@ -1,4 +1,6 @@
 # PAPER_592 — Speed of Light $c$ Derived from Pre-Mass Triad Equilibrium
+**Author:** Daniel T. Murphy
+**Date:** 2025
 
 **CP4 Class:** `#179  UQFFSpeedOfLightTriadEquilibriumCalculator`
 **Session:** 157

@@ -1,4 +1,6 @@
 # PAPER_437 — UQFF Learning Assessment Evolution_B: Advancement Metric for Regime Diversity and Dynamic Term Inclusion
+**Author:** Daniel T. Murphy
+**Date:** 2025
 
 **Source:** grok_share_68eb34022.txt — Document 9: "Master Universal Gravity Equation_UQFF Learning Assessment Evolution_B_03May2025.docx" (lines 2993–3085)
 **Session:** 119

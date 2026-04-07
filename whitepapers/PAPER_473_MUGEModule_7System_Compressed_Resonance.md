@@ -1,4 +1,5 @@
 # PAPER_473 — MUGEModule: 7-System Multi-Gravity Equations (Compressed + Resonance)
+**Author:** Daniel T. Murphy
 
 **Star-Magic Unified Quantum Field Framework (UQFF) Whitepaper Series**
 **Copyright © Daniel T. Murphy — All Rights Reserved**

@@ -134,3 +134,4 @@ For N = 2 (HUDF dual-channel), the quadratic interaction enhancement is the mini
 ---
 
 *PAPER_265 | UQFF v4.27 | Star-Magic | Session 72g | March 2026*
+*Cross-validated against PAPER_001 (foundational UQFF framework) and PAPER_642 (UQFF–SM bridge).*

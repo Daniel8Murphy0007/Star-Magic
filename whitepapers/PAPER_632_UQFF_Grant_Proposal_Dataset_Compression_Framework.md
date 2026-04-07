@@ -1,4 +1,6 @@
 # PAPER_632 — UQFF Grant Proposal Dataset Compression Framework
+**Author:** Daniel T. Murphy
+**Date:** 2025
 
 **Class:** `UQFFGrantProposalDatasetCompressionFrameworkCalculator`  
 **Number:** #219  

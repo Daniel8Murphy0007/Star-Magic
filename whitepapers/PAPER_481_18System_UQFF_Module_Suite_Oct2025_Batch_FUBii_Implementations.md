@@ -1,4 +1,6 @@
 # PAPER_481 — 18-System UQFF Module Suite: F_U_Bi_i C++ Implementations for Astrophysical Systems (Oct 2025 Batch)
+**Author:** Daniel T. Murphy
+**Date:** Oct 2025
 <!-- Session 126 | grok_share_bdfb3a05b06.txt | Quality Score: 5 -->
 
 ## Abstract

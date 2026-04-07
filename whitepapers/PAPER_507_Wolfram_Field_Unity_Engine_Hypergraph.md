@@ -1,4 +1,5 @@
 # PAPER_507: Wolfram Field Unity Engine — Hypergraph Spacetime Evolution
+**Author:** Daniel T. Murphy
 
 **Session:** 137 | **Source:** grok_share_84a767d3.txt (lines 3800–4200)
 **Date:** December 2025 — commit df7e222 (final WSTP integration)

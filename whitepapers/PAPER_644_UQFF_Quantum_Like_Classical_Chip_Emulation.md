@@ -1,4 +1,5 @@
 # PAPER_644: UQFF Programmatic Innovation for Quantum-Like Classical Chip Emulation
+**Author:** Daniel T. Murphy
 
 **Version:** 1.0.0  
 **Session:** 167 | **Date:** March 31 2026  

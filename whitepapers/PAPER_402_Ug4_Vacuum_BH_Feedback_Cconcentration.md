@@ -1,4 +1,6 @@
 # PAPER_402 — Ug4: Vacuum-BH Feedback Coupling with f_feedback and C_concentration
+**Author:** Daniel T. Murphy
+**Date:** 2025
 
 **Source:** grok_share_cfdcad2f5.txt, lines 277–1600 ("Star Magic_construction file_04Oct2025.docx" C++ implementation)  
 **Section:** C++ source — `compute_Ug4()` function with AGN feedback and vacuum concentration  

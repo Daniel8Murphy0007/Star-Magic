@@ -1,4 +1,5 @@
 # PAPER_476 — DPM Pre-Big Bang 26-Sphere Birth Model
+**Author:** Daniel T. Murphy
 
 **Star-Magic Unified Quantum Field Framework (UQFF) Whitepaper Series**
 **Copyright © Daniel T. Murphy — All Rights Reserved**

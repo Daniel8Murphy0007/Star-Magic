@@ -1,4 +1,6 @@
 # PAPER_589 — Dark Energy from Pre-Mass Buoyant Voids in UQFF
+**Author:** Daniel T. Murphy
+**Date:** 2025
 
 **CP4 Class:** `#176  UQFFDarkEnergyVoidBuoyancyCalculator`
 **Session:** 157

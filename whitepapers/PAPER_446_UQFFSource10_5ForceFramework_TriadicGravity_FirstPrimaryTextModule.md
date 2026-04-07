@@ -1,4 +1,6 @@
 # PAPER_446 — UQFFSource10: First Primary Text Module — 5-Force Framework & 26-Layer Triadic g(r,t)
+**Author:** Daniel T. Murphy
+**Date:** 2025
 
 **Source:** grok_share_68eb34022.txt — Document 19: "Source10_Text Module_cpp_08Oct2025.docx" (lines 5900–7559)
 **Session:** 119

@@ -1,4 +1,6 @@
 # PAPER_445 — NGC 1792 "The Stellar Forge": Per-System MUGE with Starburst SFR Wind Dominance
+**Author:** Daniel T. Murphy
+**Date:** 2025
 
 **Source:** grok_share_68eb34022.txt — Document 18: "Master Universal Gravity Equation_NGC1792_Stellar_Forge_03May2025.docx" (lines 5538–5900)
 **Session:** 119

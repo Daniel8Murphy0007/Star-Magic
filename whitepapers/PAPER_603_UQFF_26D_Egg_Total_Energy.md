@@ -1,4 +1,6 @@
 # PAPER_603: 26-Dimensional Cosmic Egg Total Energy with Superconductive Layer Injection
+**Author:** Daniel T. Murphy
+**Date:** 2025
 
 **Class**: UQFF26DEggTotalEnergyCalculator (#190)  
 **Session**: 159  

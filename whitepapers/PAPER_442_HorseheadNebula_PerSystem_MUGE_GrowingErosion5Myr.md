@@ -1,4 +1,6 @@
 # PAPER_442 — Horsehead Nebula (Barnard 33): Per-System MUGE with Growing Erosion E(t) τ=5 Myr
+**Author:** Daniel T. Murphy
+**Date:** 2025
 
 **Source:** grok_share_68eb34022.txt — Document 15: "Master Universal Gravity Equation_Horsehead Nebula Reloaded Evolution_03May2025.docx" (lines 4487–4820)
 **Session:** 119

@@ -1,4 +1,5 @@
 # PAPER_617: UQFF SCm Laurent Series 26D Expansion
+**Date:** 2025
 
 **Author:** Daniel T. Murphy  
 **Session:** 160  

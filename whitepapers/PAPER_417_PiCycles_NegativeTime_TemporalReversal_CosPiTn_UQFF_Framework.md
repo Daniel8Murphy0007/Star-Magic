@@ -1,4 +1,6 @@
 # PAPER_417 – π Cycles and Negative Time: cos(πt_n) Temporal Reversal Framework in UQFF
+**Author:** Daniel T. Murphy
+**Date:** 2025
 
 **Source:** grok_share_755feea7.txt — "Star Magic" Chapter 8 + FU Temporal Modulation Sections  
 **Session:** 110 (grok_share_755feea7.txt analysis)  

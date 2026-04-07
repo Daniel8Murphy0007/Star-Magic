@@ -1,4 +1,5 @@
 # PAPER_505: MSVC Release-MaxCompress Build Profile
+**Author:** Daniel T. Murphy
 
 **Session:** 137 | **Source:** grok_share_84a767d3.txt (lines 1500–1900, 2700–2800)
 **Date:** November 2025 — verified commit 146a3c4

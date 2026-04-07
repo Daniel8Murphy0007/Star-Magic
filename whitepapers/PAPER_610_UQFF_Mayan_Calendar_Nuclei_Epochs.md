@@ -1,4 +1,6 @@
 # PAPER_610: Mayan Calendar Cosmological Epochs Mapped to Periodic Table Nuclei Formation
+**Author:** Daniel T. Murphy
+**Date:** 2025
 
 **Class**: UQFFMayanCalendarNucleiEpochCalculator (#197)  
 **Session**: 159  

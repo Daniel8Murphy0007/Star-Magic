@@ -1,4 +1,5 @@
 # PAPER_453 — Magnetar SGR 1745-2900 Dual-Mode UQFF: Compressed vs Frequency Resonance
+**Date:** 2025
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2  
 **Session:** 115 (v4.72) / Whitepapers created Session 121  

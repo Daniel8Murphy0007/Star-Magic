@@ -1,4 +1,6 @@
 # PAPER_436 — Rings of Relativity: Per-System MUGE with L(t) Lensing Amplification at z=0.5
+**Author:** Daniel T. Murphy
+**Date:** 2025
 
 **Source:** grok_share_68eb34022.txt — Document 8: "Master Universal Gravity Equation_Rings of Relativity Evolution_03May2025.docx" (lines 2660–2992)
 **Session:** 119

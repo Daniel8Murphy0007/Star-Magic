@@ -1,4 +1,5 @@
 # PAPER_620: UQFF 3D-IPO Degree-26 Tensor Product Overlay
+**Date:** 2025
 
 **Author:** Daniel T. Murphy  
 **Session:** 160  

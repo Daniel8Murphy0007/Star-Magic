@@ -1,4 +1,5 @@
 # PAPER_152: UQFF Star-Magic Student's Guide to the Universe – Cosmological Scale MUGE 12-Term Resonance Baseline: g = 3.958×10^14 m/s^2
+**Session:** 0
 
 
 **Title:** UQFF Star-Magic Student's Guide to the Universe – Cosmological Scale MUGE 12-Term Resonance Baseline: g = 3.958×10^14 m/s^2

@@ -1,4 +1,6 @@
 # PAPER_432 — Sagittarius A* SMBH: Per-System MUGE with M(t) Accretion and DM Precession
+**Author:** Daniel T. Murphy
+**Date:** 2025
 
 **Source:** grok_share_68eb34022.txt — Document 3: "Master Universal Gravity Equation_SMBH Sagittarius A Evolution_03May2025.docx" (lines 1272–1619)
 **Session:** 119

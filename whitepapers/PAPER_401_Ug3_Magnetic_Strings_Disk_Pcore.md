@@ -1,4 +1,6 @@
 # PAPER_401 — Ug3: Magnetic Strings Disk Pcore Coupled Form
+**Author:** Daniel T. Murphy
+**Date:** 2025
 
 **Source:** grok_share_cfdcad2f5.txt, lines 277–1600 ("Star Magic_construction file_04Oct2025.docx" C++ implementation)  
 **Section:** C++ source — `compute_Ug3()` function with Bj time-evolution, cos oscillation, and Pcore  

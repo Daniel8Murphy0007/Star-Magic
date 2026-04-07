@@ -1,4 +1,6 @@
 # PAPER_622 — UQFF Zero-Mass Aether Vacuum Gradient Reformulation
+**Author:** Daniel T. Murphy
+**Date:** 2025
 
 **Class:** `UQFFZeroMassAetherVacuumGradientReformulationCalculator`  
 **Number:** #209  

@@ -1,4 +1,6 @@
 # PAPER_631 — UQFF Multi-System Jet Hypergraph Comparison (5 Systems)
+**Author:** Daniel T. Murphy
+**Date:** 2025
 
 **Class:** `UQFFMultiSystemJetHypergraphComparisonCalculator`  
 **Number:** #218  

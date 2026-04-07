@@ -1,4 +1,5 @@
 # PAPER_470 — SMBH M-sigma UQFF: Bulge Velocity Dispersion, M-σ Relation, and Feedback Calibration via f_feedback = 0.063
+**Date:** 2025
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2 — Supermassive Black Hole–Galaxy Co-Evolution
 **Session:** 120 (C++ module encoded) / Whitepapers created Session 122

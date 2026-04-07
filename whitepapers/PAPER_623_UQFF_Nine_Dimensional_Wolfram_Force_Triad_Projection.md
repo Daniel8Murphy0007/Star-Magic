@@ -1,4 +1,6 @@
 # PAPER_623 — UQFF Nine-Dimensional Wolfram Force-Triad Projection
+**Author:** Daniel T. Murphy
+**Date:** 2025
 
 **Class:** `UQFFNineDimensionalWolframForceTroadProjectionCalculator`  
 **Number:** #210  

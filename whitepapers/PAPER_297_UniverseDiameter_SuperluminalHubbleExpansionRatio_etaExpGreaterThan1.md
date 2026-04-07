@@ -1,4 +1,6 @@
 # PAPER_297 — UQFF Superluminal Hubble Expansion Ratio η_exp = 3.328 > 1
+**Author:** Daniel T. Murphy
+**Date:** March 17, 2026
 ## First UQFF Module Where v_exp/c > 1 at System Boundary
 
 **Session:** 84  

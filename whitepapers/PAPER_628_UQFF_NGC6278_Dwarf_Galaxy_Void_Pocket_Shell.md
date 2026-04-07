@@ -1,4 +1,6 @@
 # PAPER_628 — UQFF NGC 6278 Dwarf Galaxy Void Pocket Shell
+**Author:** Daniel T. Murphy
+**Date:** December 2025
 
 **Class:** `UQFFNGC6278DwarfGalaxyVoidPocketShellCalculator`  
 **Number:** #215  

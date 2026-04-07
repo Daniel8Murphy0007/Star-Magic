@@ -1,4 +1,6 @@
 # PAPER_593 — Gravitational Constant $G$ Derived from Void Coupling
+**Author:** Daniel T. Murphy
+**Date:** 2025
 
 **CP4 Class:** `#180  UQFFGravitationalConstantVoidCouplingCalculator`
 **Session:** 157

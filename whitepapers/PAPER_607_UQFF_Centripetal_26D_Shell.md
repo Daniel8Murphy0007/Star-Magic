@@ -1,4 +1,6 @@
 # PAPER_607: Centripetal Force as Inward CW DPM North-Pole 26D Shell Coherence
+**Author:** Daniel T. Murphy
+**Date:** 2025
 
 **Class**: UQFFCentripetal26DShellCalculator (#194)  
 **Session**: 159  

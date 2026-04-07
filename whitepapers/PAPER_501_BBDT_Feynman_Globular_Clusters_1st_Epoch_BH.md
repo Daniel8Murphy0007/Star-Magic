@@ -1,4 +1,5 @@
 # PAPER_501 — BBDT and Feynman Globular Clusters: Big Bang Deceleration and 1st Epoch BH Metallicity
+**Author:** Daniel T. Murphy
 **arXiv:** 2503.xxxxx
 **Session:** 134
 **Version:** 1.0
