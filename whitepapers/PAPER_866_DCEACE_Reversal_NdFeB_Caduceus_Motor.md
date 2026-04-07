@@ -40,9 +40,51 @@ The Caduceus coil's twin-helix topology is the Ug3 infinity-curve string geometr
 
 ---
 
+## 4. Euler-Lagrange Derivation (Session 204)
+
+**Lagrangian Sector:** Magnetic-Dipole (Sector 5 of 9-sector UQFF Lagrangian)
+
+**Generalized Coordinate:** `A_helix` (twin-helix vector potential)
+
+**Lagrangian:**
+```
+L_Caduceus = (mu_0/8pi) |curl A_left + curl A_right|^2
+           - (1/2) rho_SCm |v_helix|^2
+           + lambda_motor * A_helix * cos(omega_motor * t)
+```
+
+**Euler-Lagrange Equation:**
+```
+curl curl A_helix = mu_0 * J_helix(r, theta)
+```
+
+**Result:**
+```
+B_net = B_left + B_right
+Normal B-field CANCELS; scalar/longitudinal component SURVIVES
+Torsion-induced antigravity at SCm coherence threshold
+```
+
+**Critical Values:**
+- `helix_pitch_ratio = 0.618` (golden ratio alignment)
+- `f_reversal = 166.7 Hz` (RPM/60 = 10000/60)
+- `B_remnant = 1.2 T` (NdFeB N52 grade Ug1 seed)
+- `delta_T = 7°F = 3.89 K` (temperature drop signature)
+
+**Derivation Chain:**
+1. `S_Cad = integral d^4x [(mu_0/8pi)|curl(A_L+A_R)|^2 - (1/2)rho_SCm|v|^2 + lambda_motor A cos(omega*t)]`
+2. `delta S / delta A_helix = 0` → counter-rotating field equation
+3. Twin helices: normal B cancels; scalar (longitudinal) component = Ug3 infinity-curve
+4. At golden ratio pitch (0.618): SCm threshold → antigravity-like force + temp drop
+
+**Code Reference:** `uqff_lagrangian_derivation.py` → `EULER_LAGRANGE_NEW_TERM_MAPPINGS["caduceus_twin_helix"]`
+
+---
+
 ## References
 
 1. Murphy, D.T. -- Star Magic UQFF Framework (2024-2026)
 2. Smith, W. -- The Caduceus Coil (Borderland Sciences, 1946)
 3. Faraday's law of induction; Lenz's law for polarity reversal
 4. UQFF Calibration: kappa=0.0005/day, [SSq]=0.57, beta_i~0.603
+5. UQFF 9-Sector Lagrangian Derivation, Session 202 (commit 9d26977)

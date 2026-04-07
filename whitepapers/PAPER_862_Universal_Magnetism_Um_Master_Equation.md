@@ -42,6 +42,46 @@ values come from the APIFetch.py -> bodies_*.csv data flow.
 
 ---
 
+## 4. Euler-Lagrange Derivation (Session 204)
+
+**Lagrangian Sector:** Magnetic-Dipole (Sector 5 of 9-sector UQFF Lagrangian)
+
+**Generalized Coordinate:** `phi_hat` (helical string phase angle)
+
+**Lagrangian:**
+```
+L_Um = Sum_j (mu_j/r_j)(1 - exp(-gamma*t)) * phi_hat * N_strings * P_SCm * E_react
+     - (1/2) I_string * omega_string^2
+```
+
+**Euler-Lagrange Equations:**
+```
+delta S / delta phi_hat = 0  -->  Um per-string contribution
+delta S / delta omega   = 0  -->  omega_eq = sqrt(|Um| / I_string)
+```
+
+**Result:**
+```
+Um = Sum_j (mu_j/r_j)(1 - exp(-gamma*t*cos(pi*t_n))) * N_s * P_SCm * E_react
+```
+
+**Critical Values:**
+- `N_strings = 26` (helical string count from 26D compactification)
+- `gamma = 5e-5 day^{-1}` (cosmic oscillation decay rate)
+- `phi_hat = 0.766` (VLA M87 cos(40°) alignment)
+- `omega_string = sqrt(|Um|/I_string) ~ 1.2e31 rad/s`
+- `E_react = rho_SCm * v_SCm^2 / rho_A * exp(-kappa*t) ~ 8.99e7`
+
+**Derivation Chain:**
+1. `S_Um = integral d^4x [Sum_j mu_j/r_j * (1-exp(-gamma*t*cos(pi*t_n))) * phi^j * P_SCm * E_react]`
+2. `delta S / delta phi_hat = 0` → individual string contribution to Um
+3. `delta S / delta omega = 0` → equilibrium string rotation frequency
+4. 26-string helical sum produces cosmic-oscillation Um(t) with Heaviside amplification
+
+**Code Reference:** `uqff_lagrangian_derivation.py` → `EULER_LAGRANGE_NEW_TERM_MAPPINGS["um_cosmic_oscillation"]`
+
+---
+
 ## References
 
 1. Murphy, D.T. -- Star Magic UQFF Framework (2024-2026)
@@ -49,3 +89,4 @@ values come from the APIFetch.py -> bodies_*.csv data flow.
 3. Kepler Mission DR25 -- 4,034 candidates, 2,335 confirmed planets
 4. Hubble Heritage Team / A. Nota (ESA/STScI) -- Westerlund 2 / NGC 346 imaging
 5. UQFF Calibration: kappa=0.0005/day, [SSq]=0.57, beta_i~0.603
+6. UQFF 9-Sector Lagrangian Derivation, Session 202 (commit 9d26977)

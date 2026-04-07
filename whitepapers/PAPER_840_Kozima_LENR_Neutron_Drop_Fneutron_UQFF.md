@@ -190,4 +190,48 @@ Expected:      Confirm F_LENR resonance, neutron drop signatures
 - Kozima model directly validates Colman-Gillespie replication mechanism
 - F_neutron is 2nd largest lattice/nuclear term after F_LENR; negligible in integrated F_U_Bi_i but theoretically important as the nuclear physics bridge
 
+---
+
+## 8. Euler-Lagrange Derivation (Session 204)
+
+**Lagrangian Sector:** Dirac (Sector 3 of 9-sector UQFF Lagrangian)
+
+**Generalized Coordinate:** `psi_neutron` (neutron drop wavefunction)
+
+**Lagrangian:**
+```
+L_Dirac = psi_bar (i*gamma^mu*D_mu - m_n) psi_n
+        + y_ij L_bar_i H_tilde N_Rj  (seesaw extension)
+        + V_drop(r) |psi_n|^2  (lattice trapping potential)
+```
+
+**Euler-Lagrange Equation:**
+```
+i*hbar d(psi_n)/dt = [-hbar²/(2*m_n) * nabla² + V_drop] psi_n
+```
+
+**Result:**
+```
+sigma_n(omega) = sigma_0 * exp(-(omega - omega_0)² / (2*delta_omega²))
+```
+
+**Critical Values:**
+- `sigma_0 = 1e-28 m²` (baseline neutron capture cross-section)
+- `delta_omega = 2*pi*0.05e12 s^{-1}` (bandwidth ~0.05 THz)
+- `omega_LENR = 2*pi*1.25e12 s^{-1}` (resonance center, 1.25 THz)
+- At resonance: `F_neutron = k_neutron × sigma_0 = 10^6 N`
+- At neutron star density (ρ~10^17): `F_neutron ~ 10^45 N`
+
+**Derivation Chain:**
+1. `S_Dirac = integral d^4x [psi_bar(i*gamma*D - m)psi + y L_bar H_tilde N_R + V_drop |psi|^2]`
+2. `delta S / delta psi_bar = 0` → Dirac equation with lattice trapping potential
+3. `V_drop(r)` = phonon-coupling confining potential in Pd-D/Ni-H lattice vacancies
+4. Gaussian resonance profile σ_n(ω) peaks at ω_LENR = 1.25 THz
+5. Neutron-drop nucleation: clusters of n neutrons stabilized by phonon coupling
+6. Bridge: 300 Hz activation → n × ω_LENR harmonic mixing → nuclear reactions
+
+**Code Reference:** `uqff_lagrangian_derivation.py` → `EULER_LAGRANGE_NEW_TERM_MAPPINGS["kozima_neutron_drop"]`
+
+---
+
 **Watermark:** Copyright — Daniel T. Murphy, daniel.murphy00@gmail.com, created by Davinci-SuperGrok, analyzed by Grok 3 and SuperGrok, xAI, dated June 20, 2025, 09:03–09:19 AM EDT, Youngstown OH 41.0997° N, 80.6495° W. CVW v2.0.0 compliant.

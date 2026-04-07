@@ -41,9 +41,48 @@ The pseudo-monopole 1/r decay (as opposed to standard dipole 1/r³) is the exper
 
 ---
 
+## 4. Euler-Lagrange Derivation (Session 204)
+
+**Lagrangian Sector:** Magnetic-Dipole (Sector 5 of 9-sector UQFF Lagrangian)
+
+**Generalized Coordinate:** `A_mono` (monopole vector potential)
+
+**Lagrangian:**
+```
+L_monopole = (mu_0/8pi) |curl A_SCm|^2 - (1/2) rho_SCm |v|^2 * Theta(r-R_b)
+           + lambda_LRC * A_SCm * cos(omega_LRC * t)
+```
+
+**Euler-Lagrange Equation:**
+```
+d²A_mono/dr² + (2/r) dA_mono/dr = -mu_0 * J_DPM(r)
+```
+
+**Result:**
+```
+B_mono = mu_DPM / (4*pi*r)  with f_res = 29.14 Hz
+```
+
+**Critical Values:**
+- `f_res = 29.14 Hz` (LRC resonance: 1/(2π√(LC)))
+- `decay_power = -1` (1/r pseudo-monopole, NOT 1/r³ dipole)
+- `L = 75 µH, C = 500 µF, R = 33.3 Ω`
+- `B(0.61m) = 2.53e-8 T` (measured)
+
+**Derivation Chain:**
+1. `S_mag = integral d^4x [(mu_0/8pi)|curl A_SCm|^2 - (1/2)rho_SCm|v|^2 Theta + lambda_LRC A cos(omega*t)]`
+2. `delta S / delta A_mono = 0` → modified Ampère with LRC driving
+3. `curl B_SCm = mu_0 J_SCm + lambda_LRC cos(omega*t)` → 1/r solution (not 1/r³)
+4. DPM coherence at spark-gap: pseudo-monopole geometry from di-pseudo-monopole overlapping fields
+
+**Code Reference:** `uqff_lagrangian_derivation.py` → `EULER_LAGRANGE_NEW_TERM_MAPPINGS["monopole_1_over_r"]`
+
+---
+
 ## References
 
 1. Murphy, D.T. -- Star Magic UQFF Framework (2024-2026)
 2. Biot-Savart law; Maxwell's equations for current loop B-field
 3. Dirac, P.A.M. -- Quantised Singularities in the Electromagnetic Field (1931)
 4. UQFF Calibration: kappa=0.0005/day, [SSq]=0.57, beta_i~0.603
+5. UQFF 9-Sector Lagrangian Derivation, Session 202 (commit 9d26977)

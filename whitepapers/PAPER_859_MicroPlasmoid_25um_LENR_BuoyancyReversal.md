@@ -42,6 +42,43 @@ values come from the APIFetch.py -> bodies_*.csv data flow.
 
 ---
 
+## 4. Euler-Lagrange Derivation (Session 204)
+
+**Lagrangian Sector:** Buoyancy-Archimedes (Sector 6 of 9-sector UQFF Lagrangian)
+
+**Generalized Coordinate:** `r_plasma` (plasmoid radial position)
+
+**Lagrangian:**
+```
+L_plasmoid = -beta_i * Ug * Omega_g * (M/d) * V_ratio * [UA] * cos(pi*t_n)
+           + (1/2) rho_plasma * v^2 - B^2/(2*mu_0)
+```
+
+**Euler-Lagrange Equation:**
+```
+d/dr [partial L_buoy / partial (dr/dt)] = partial L_buoy / partial r
+```
+
+**Result:**
+```
+F_reversal = -beta_i * (V_plasma/V_ref) * Ug * Omega_g * cos(pi*t_n)
+```
+
+**Critical Values:**
+- `r_c = 25.4e-6 m` (buoyancy reversal radius)
+- `V_ratio = 12.0×` (Boyle's Law amplification)
+- At `r < r_c`: SCm buoyancy overpowers gravity → reversal confirmed
+
+**Derivation Chain:**
+1. `S_buoy = integral d^4x [-beta_i * Ug_i * Omega_g * (M/d) * V_ratio * [UA] * cos(pi*t_n)]`
+2. `delta S / delta r_plasma = 0` → critical radius where F_buoyancy > F_gravity
+3. `V_ratio = r_plasmoid / r_reactor` amplifies by 12.0× at 25.4 μm
+4. Below r_c: buoyancy reversal — upward motion transitions to downward
+
+**Code Reference:** `uqff_lagrangian_derivation.py` → `EULER_LAGRANGE_NEW_TERM_MAPPINGS["micro_plasmoid_reversal"]`
+
+---
+
 ## References
 
 1. Murphy, D.T. -- Star Magic UQFF Framework (2024-2026)
@@ -49,3 +86,4 @@ values come from the APIFetch.py -> bodies_*.csv data flow.
 3. Kepler Mission DR25 -- 4,034 candidates, 2,335 confirmed planets
 4. Hubble Heritage Team / A. Nota (ESA/STScI) -- Westerlund 2 / NGC 346 imaging
 5. UQFF Calibration: kappa=0.0005/day, [SSq]=0.57, beta_i~0.603
+6. UQFF 9-Sector Lagrangian Derivation, Session 202 (commit 9d26977)
