@@ -1,0 +1,246 @@
+# PAPER_877: Three-Assumption UQFF Cosmogenesis Master Equation
+
+**Author:** Daniel T. Murphy -- Star Magic / UQFF Framework
+**Date:** 2026-04-07
+**Session:** 204
+**Source:** describe mass without using weight.txt (Session 200C)
+**Calculator:** ThreeAssumptionUQFFCosmogenesisCalc (CP4 #461)
+**CVW:** v2.0.0 compliant
+
+---
+
+## Abstract
+
+We present the complete three-assumption cosmogenesis model of the Unified Quantum Field Framework (UQFF). The three axioms are: (1) three reactive quantum fundamentals — electrostatic barrier, undifferentiated aether (UA), and superconducting matter (SCm) — form proto-nuclear shells via DPM; (2) proto-shells evolve through 6 Aetheric Capacitance Phenomenon (ACP) stages into proto-atoms, with proto-hydrogen ≡ proto-iron (SM_magnetic) and proto-helium ≡ proto-silicon (SM_non-magnetic); (3) four U_g forces (U_g1 = DPM, U_g2 = electron shells, U_g3 = U_i + U_m tagging, U_g4i = central control) govern all interactions. The 26 quantum atomic states exist before mass; the quantum-to-mass gradient occurs at 7-10 U_mag degrees.
+
+---
+
+## 1. Assumption 1: Three Reactive Quantum Fundamentals
+
+### 1.1 DPM Proportion Pair
+
+```
+f_UA' = (Z_max - Z) / Z_max     [undifferentiated aether fraction]
+f_SCm = Z / Z_max                [superconducting matter fraction]
+f_UA' + f_SCm = 1                [completeness axiom]
+R_EB = k_R · Z                   [electrostatic barrier reactivity]
+```
+
+### 1.2 Vacuum Density
+
+```
+ρ_vac = ρ_UA + ρ_SCm = 7.09×10⁻³⁶ + 7.09×10⁻³⁷ = 7.799×10⁻³⁶ kg/m³
+```
+
+### 1.3 Proto-Nuclear Shell Formation
+
+The three fundamentals — R_EB (electrostatic barrier), f_UA' (aether fraction), and f_SCm (superconducting fraction) — combine to form proto-nuclear shells. The DPM defines each nucleus completely: no additional parameters needed.
+
+---
+
+## 2. Assumption 2: ACP 6-Stage Evolution
+
+### Stage 1: Vacuum Density Initialization
+
+```
+V_proto = (4/3)πr³
+U_vac = ρ_vac · V_proto
+```
+
+### Stage 2: Repulsive U_i Creation
+
+```
+U_i = k · (ρ_SCm - ρ_UA/10) · ω · cos(πt)
+ω = 2πν_THz
+```
+
+The difference (ρ_SCm - ρ_UA/10) drives the initial repulsive force that prevents immediate gravitational collapse.
+
+### Stage 3: U_m String Winding (26 States)
+
+```
+U_m,i = U_i · μ_d · (1/r_i) · (1 - e^{-γt}) · cos(πt)     [i = 1...26]
+Ψ_proto = Σ_{i=1}^{26} U_m,i                                 [proto-wavefunction]
+```
+
+Each of the 26 quantum states contributes a string-winding term with r_i = r/i (decreasing radius) and exponential activation (1 - e^{-γt}).
+
+### Stage 4: Capacitance Cracking
+
+```
+C_vac = ρ_vac · r                [vacuum capacitance]
+ULF_i = ℏω/i                    [ultra-low frequency ripples at each state]
+E_crack = Σ_{i=1}^{26} ULF_i · C_vac
+```
+
+The ACP capacitance builds until ULF ripples crack the vacuum shell, initiating the EM bang.
+
+### Stage 5: Fragment Stabilization (Buoyancy Seed)
+
+```
+U_b,seed = 0.1 · (ℏc/r²) · f_SCm
+```
+
+Buoyancy forces stabilize the cracked fragments into proto-atoms.
+
+### Stage 6: Mass Emergence Check
+
+```
+U_mag,deg = arcsin(min(f_SCm / 4.4×10¹³, 1))     [degrees]
+Mass threshold: 7° ≤ U_mag,deg ≤ 10°
+```
+
+Mass emerges only when the magnetic degree reaches the 7-10° window. Below this: 26 quantum states exist without mass.
+
+### Proto-Atom Identities
+
+```
+Proto-hydrogen ≡ Proto-iron (Z_id = 26, SM_magnetic)
+Proto-helium   ≡ Proto-silicon (Z_id = 14, SM_non-magnetic)
+```
+
+### Evolution Flowchart
+
+```
+[SCm + UA + R_EB]            ← Three quantum fundamentals
+        │
+        ▼
+   DPM Formation              ← f_UA' + f_SCm = 1
+        │
+        ▼
+  Proto-Nuclear Shells         ← 26 quantum states
+        │
+        ▼
+   EM Bang (ACP Stage 4)      ← Capacitance cracking
+        │
+        ▼
+ 2 Expansion/Contraction       ← Cosmic oscillation
+   Cycles                      
+        │
+        ▼
+   Proto-Atoms                 ← Proto-H=Proto-Fe, Proto-He=Proto-Si
+        │
+        ▼
+  Mass Emergence               ← U_mag 7-10° threshold
+        │
+        ▼
+  Ug1 + Ug2 + Ug3 + Ug4      ← Four gravity forces
+  + Um (Heaviside 10¹³×)
+        │
+        ▼
+  Ub1 + Ub2 + Ub3 + Ub4      ← Four buoyancy forces
+        │
+        ▼
+  Observable Gravity           ← Central limit of 26-state sum
+```
+
+---
+
+## 3. Assumption 3: Four U_g Forces
+
+### 3.1 U_g1: DPM Summation
+
+```
+F_Ug1 = f_UA' · f_SCm · R_EB / r²
+```
+
+DPM-geometry driven gravitational force with inverse-square law.
+
+### 3.2 U_g2: Electron Shell Energy
+
+```
+E_Ug2 = c · ν · ℏ · f_SCm
+```
+
+Quantized electron shell energy proportional to THz frequency and SCm fraction.
+
+### 3.3 U_g3: Electron Tagging (U_i + U_m)
+
+```
+F_Ug3 = (U_i + Ψ_proto/26) / r²
+```
+
+Combined repulsive (U_i) and magnetic (U_m) forces tagged to electron motion.
+
+### 3.4 U_g4i: Central Control
+
+```
+E_Ug4i = f_SCm · ν · ρ_SCm
+```
+
+SCm-frequency modulated control field governing the vacuum concentration.
+
+---
+
+## 4. Key Results (Z = 1, Proto-Hydrogen)
+
+| Quantity | Value | Units |
+|----------|-------|-------|
+| f_UA' | 0.9999 | — |
+| f_SCm | 0.0001 | — |
+| ρ_vac | 7.799e-36 | kg/m³ |
+| U_vac | 3.267e-80 | J |
+| U_i (repulsive) | -4.261e-24 | J |
+| Ψ_proto (26-state sum) | ~1.0e+26 | (aggregate) |
+| E_crack | ~1.0e-06 | J |
+| U_b,seed | ~1.0e-01 | J |
+| F_Ug1 | ~1.0e+26 | N |
+| E_Ug2 | ~3.79e-18 | J |
+| F_Ug3 | ~6.30e-07 | N |
+| E_Ug4i | ~8.51e-37 | J |
+| Proto-identity | Proto-hydrogen ≡ Proto-iron | SM_magnetic |
+
+---
+
+## 5. UQFF Integration
+
+This calculator operates as a stateless physics calculator within the CondensedPhysics4.py
+(Phase 4) IPC chain. All parameters are received via the dataset dictionary from the
+source2.cpp principal GUI pipeline. No astronomical data is hardcoded; all system-specific
+values come from the APIFetch.py -> bodies_*.csv data flow.
+
+---
+
+## 6. SCm Superconductivity Axiom (Session 204)
+
+This paper IS the **SCm Superconductivity Axiom** in its most complete form — the three-assumption cosmogenesis model derived from the foundational principle that superconductivity precedes and governs all matter and gravity.
+
+### Four-Engine Architecture
+
+The standalone module `scm_superconductivity_axiom.py` encodes all three assumptions plus the U_m master equation:
+
+| Engine | Assumption Coverage |
+|--------|-------------------|
+| Engine 1 (U_m Derivation) | U_m fourth master equation with Heaviside 10¹³× amplifier |
+| Engine 2 (26-State Progression) | 26 quantum states of vacuum density + DPM mapping |
+| Engine 3 (Cosmogenesis) | **THIS PAPER** — all 3 assumptions + 6 ACP stages + flowchart |
+| Engine 4 (Lagrangian) | 9-sector L_UQFF mapping of SCm responses to forces |
+
+### Standalone Calculator
+
+```bash
+python scm_superconductivity_axiom.py        # Full report (Engine 3 = this paper)
+python scm_superconductivity_axiom.py --json  # Machine-readable
+```
+
+---
+
+## 7. Source Data
+
+- **File:** describe mass without using weight.txt (Session 200C)
+- **Session:** 200C (v5.61)
+- **VDS/DVP/BH:** PRESENT (all three: vacuum density series, dipole vortex primes via DPM, buoyancy harmonics via U_b seed)
+
+---
+
+## References
+
+1. Murphy, D.T. -- Star Magic UQFF Framework (2024-2026)
+2. PAPER_855 -- Pseudo-Monopole 26-State Vacuum Density Progression
+3. PAPER_856 -- Higgs Field UH Vacuum Excitation via UQFF
+4. PAPER_862 -- Universal Magnetism U_m Master Equation
+5. PAPER_870 -- DPM Extended Periodic Table Proportion Mapping
+6. PAPER_871 -- Universal Speed Range c²⁶·i⁻²⁶ Photon Deceleration
+7. PAPER_872 -- Proto-Iron / Proto-Silicon Nuclear Identity Mapping
+8. scm_superconductivity_axiom.py -- SCm Superconductivity Axiom Module (Session 204)
+9. UQFF Calibration: kappa=0.0005/day, [SSq]=0.57, beta_i~0.603

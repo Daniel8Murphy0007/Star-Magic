@@ -42,10 +42,42 @@ values come from the APIFetch.py -> bodies_*.csv data flow.
 
 ---
 
+## 4. SCm Superconductivity Axiom (Session 204)
+
+The Higgs vacuum excitation UH is derivable from the **SCm Superconductivity Axiom** — where SCm pseudo-monopole density at state n=1 seeds the Higgs field through:
+
+```
+UH(t,n) = λ_H · ρ_vac,[UA']:[SCm](n,t) · ω_H(t) · exp(−[SSq]·n/26) · exp(−(π−t)) · (1+f_quasi)
+k_Higgs = 125 GeV / UH   [scaling to observed Higgs mass]
+```
+
+The axiom module `scm_superconductivity_axiom.py` Engine 2 (PseudoMonopole26StateProgression) computes UH at state 1 and derives k_Higgs = 7.069e+26, connecting the SCm vacuum density to the observed 125 GeV Higgs mass through a single multiplicative scaling.
+
+### Connection to Four Engines
+
+| Engine | Connection to This Paper |
+|--------|-------------------------|
+| Engine 1 (U_m) | U_m Heaviside amplifier couples to UH during phase transitions |
+| Engine 2 (26-state) | UH derived from ρ_vac(n=1,t) pseudo-monopole density |
+| Engine 3 (Cosmogenesis) | Higgs field emerges after ACP Stage 4 (capacitance cracking) |
+| Engine 4 (Lagrangian) | Sector 4 (Scalar-Higgs-Vacuum): L_φ = |D_μφ_H|² − λ(φ²−v²/2)² + κ[SSq]φ₄² |
+
+### Standalone Calculator
+
+```bash
+python scm_superconductivity_axiom.py        # Full report (includes Higgs UH)
+python scm_superconductivity_axiom.py --json  # Machine-readable
+```
+
+**Sector mapping:** Sector 4 (Scalar-Higgs-Vacuum) — Higgs doublet + UQFF vacuum scalar φ₄ yield Ug4 and F_dark.
+
+---
+
 ## References
 
 1. Murphy, D.T. -- Star Magic UQFF Framework (2024-2026)
 2. Srivastava, Y.N., Widom, A., Larsen, L. -- Electroweak neutron production (LENR)
 3. Kepler Mission DR25 -- 4,034 candidates, 2,335 confirmed planets
-4. Hubble Heritage Team / A. Nota (ESA/STScI) -- Westerlund 2 / NGC 346 imaging
+4. Hubble Heritage Team / A. Nota (ESA/STScI) -- Westerlund 2 / NGC 346 imaging 
 5. UQFF Calibration: kappa=0.0005/day, [SSq]=0.57, beta_i~0.603
+6. scm_superconductivity_axiom.py -- SCm Superconductivity Axiom Module (Session 204)

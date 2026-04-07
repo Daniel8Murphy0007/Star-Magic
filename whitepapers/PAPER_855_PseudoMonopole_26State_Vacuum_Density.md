@@ -41,10 +41,54 @@ values come from the APIFetch.py -> bodies_*.csv data flow.
 
 ---
 
+## 4. SCm Superconductivity Axiom (Session 204)
+
+The 26-state pseudo-monopole progression is a direct mathematical anchor of the **SCm Superconductivity Axiom** — the foundational first principle that superconductivity (SCm) precedes and governs all matter and gravity.
+
+### Axiom Connection
+
+This paper's core equation:
+
+```
+ρ_vac(n,t) = ρ_base · r^n · exp(−[SSq]·n/26) · exp(−(π−t))
+δ_n = (2π)^{n/6}   [pseudo-monopole angular spacing]
+```
+
+is encoded in **Engine 2** (PseudoMonopole26StateProgression) of the standalone axiom module `scm_superconductivity_axiom.py`, which computes all 26 states with DPM identity mapping, Higgs excitation (PAPER_856), and universal speed range c²⁶·i⁻²⁶ (PAPER_871).
+
+### Key Results (Engine 2)
+
+| Quantity | Value |
+|----------|-------|
+| ρ(1) | 4.228e-26 J/m³ |
+| ρ(26) | 2.444e-51 J/m³ |
+| ρ(1)/ρ(26) suppression | 1.730e+25 |
+| v(n=1) → v(n=26) | c²⁶ → c | (photon deceleration) |
+| k_Higgs | 7.069e+26 |
+
+### Four-Engine Architecture
+
+1. **Engine 1:** U_m fourth master equation (Heaviside 10¹³× amplifier)
+2. **Engine 2:** 26-state pseudo-monopole progression ← **THIS PAPER**
+3. **Engine 3:** Three-assumption cosmogenesis flowchart
+4. **Engine 4:** 9-sector Lagrangian mapping of SCm responses
+
+### Standalone Calculator
+
+```bash
+python scm_superconductivity_axiom.py        # Full report
+python scm_superconductivity_axiom.py --json  # Machine-readable
+```
+
+**Sector mapping:** This paper maps to **Sector 9 (Kaluza-Klein-26D)** — the 26 quantum states of vacuum density correspond to the 26-dimensional KK tower in L_UQFF.
+
+---
+
 ## References
 
 1. Murphy, D.T. -- Star Magic UQFF Framework (2024-2026)
 2. Srivastava, Y.N., Widom, A., Larsen, L. -- Electroweak neutron production (LENR)
 3. Kepler Mission DR25 -- 4,034 candidates, 2,335 confirmed planets
-4. Hubble Heritage Team / A. Nota (ESA/STScI) -- Westerlund 2 / NGC 346 imaging
+4. Hubble Heritage Team / A. Nota (ESA/STScI) -- Westerlund 2 / NGC 346 imaging 
 5. UQFF Calibration: kappa=0.0005/day, [SSq]=0.57, beta_i~0.603
+6. scm_superconductivity_axiom.py -- SCm Superconductivity Axiom Module (Session 204)

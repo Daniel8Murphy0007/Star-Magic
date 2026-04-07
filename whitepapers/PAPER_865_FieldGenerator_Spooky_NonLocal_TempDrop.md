@@ -40,9 +40,40 @@ The spooky non-local effect (power absorbed without direct contact, temperature 
 
 ---
 
+## 4. SCm Superconductivity Axiom (Session 204)
+
+The spooky non-local effect (power absorption without direct contact + temperature drop at range) is a direct experimental signature of **SCm extra-gravitational responses** operating before gravity — specifically the **Aether resistance drag** response.
+
+### Axiom Mapping
+
+In the SCm Superconductivity Axiom module (`scm_superconductivity_axiom.py`), Engine 4 (SCmLagrangianMapping) maps this phenomenon to:
+
+- **Sector 7 (Aether-Tensor):**
+  ```
+  L_aether = ½η ρ_A v_UA² cos(πt_n) g^μν g_μν
+  δL/δv_UA = 0  →  F_aether = η ρ_A v_UA² cos(πt_n) Tr(g)
+  ```
+- **Force term:** F_aether_trace — conformal deformation of the metric through aether flow energy density with π-cycle modulation.
+
+### Why This Is NOT Post-Hoc
+
+The 24-inch generator producing 7°F temperature drop at 30.5 ft with 17 W input is predicted by the SCm axiom: aether resistance drag produces imaginary BSM forces and temperature drops at range. This is an **SCm response operating over relative time cycles before gravity condenses**.
+
+### Standalone Calculator
+
+```bash
+python scm_superconductivity_axiom.py        # Full report (Engine 4 maps all SCm responses)
+python scm_superconductivity_axiom.py --json  # Machine-readable
+```
+
+**Cross-references:** PAPER_876 (DPM coherent consciousness) uses the same Sector 7 + Sector 5 coupling for spooky action at a distance.
+
+---
+
 ## References
 
 1. Murphy, D.T. -- Star Magic UQFF Framework (2024-2026)
-2. Podkletnov, E. -- Weak gravitational shielding properties (Physica C, 1992)
+2. Podkletnov, E. -- Weak gravitational shielding properties (Physica C, 1992)  
 3. Poynting vector S = E×H for electromagnetic energy flux
 4. UQFF Calibration: kappa=0.0005/day, [SSq]=0.57, beta_i~0.603
+5. scm_superconductivity_axiom.py -- SCm Superconductivity Axiom Module (Session 204)
