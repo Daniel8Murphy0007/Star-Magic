@@ -894,6 +894,108 @@ class UQFFLagrangianDerivation:
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
+# §5b EULER—LAGRANGE MAPPINGS FOR PAPER_859–877 NEW TERMS (Session 204)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+EULER_LAGRANGE_NEW_TERM_MAPPINGS = {
+    # PAPER_859: Micro-plasmoid buoyancy reversal at 25.4 μm
+    # Maps to Sector 6 (Buoyancy-Archimedes): L_buoy contains F_buoyancy_SCm
+    # δL/δr_plasma = 0 → critical reversal radius r_c = 25.4e-6 m
+    # At r < r_c, V_ratio = 12.0× amplification of anti-gravitational Ubi
+    "micro_plasmoid_reversal": {
+        "sector": "Buoyancy-Archimedes",
+        "paper": "PAPER_859",
+        "field": "r_plasma",
+        "EL_equation": "d/dr [partial L_buoy / partial (dr/dt)] = partial L_buoy / partial r",
+        "result": "F_reversal = -beta_i * (V_plasma/V_ref) * Ug * Omega_g * cos(pi*t_n)",
+        "critical_value": {"r_c_m": 25.4e-6, "V_ratio": 12.0},
+    },
+
+    # PAPER_864: 1/r pseudo-monopole from DPM coherence
+    # Maps to Sector 5 (Magnetic-Dipole): L_mag contains Ug1
+    # δL_mag/δA_mono = 0 → B_mono(r) = mu_DPM / (4*pi*r) (1/r not 1/r^3)
+    # LRC spark-gap resonance at f_res = 29.14 Hz
+    "monopole_1_over_r": {
+        "sector": "Magnetic-Dipole",
+        "paper": "PAPER_864",
+        "field": "A_mono",
+        "EL_equation": "d²A_mono/dr² + (2/r) dA_mono/dr = -mu_0 J_DPM(r)",
+        "result": "B_mono = mu_DPM / (4*pi*r) with f_res = 29.14 Hz",
+        "critical_value": {"f_res_Hz": 29.14, "decay_power": -1},
+    },
+
+    # PAPER_862: Um cosmic oscillation via string rotation
+    # Maps to Sector 5 (Magnetic-Dipole): L_mag contains Um
+    # δL/δphi_hat = 0 → Um = Σ_j (mu_j/r_j)(1-e^{-γt}) * N * P * E
+    "um_cosmic_oscillation": {
+        "sector": "Magnetic-Dipole",
+        "paper": "PAPER_862",
+        "field": "phi_hat",
+        "EL_equation": "d/dt [partial L_Um / partial (dphi/dt)] = partial L_Um / partial phi",
+        "result": "Um = Sum_j (mu_j/r_j)(1-exp(-gamma*t*cos(pi*t_n))) * N_s * P_SCm * E_react",
+        "critical_value": {"N_strings": 26, "gamma": 5e-5},
+    },
+
+    # PAPER_877: Cosmogenesis three-assumptions → DPM proto-shell
+    # Maps to Sector 9 (Kaluza-Klein-26D): 26 compact dimensions unfold
+    # δL_KK/δR_n = 0 → V_proto(n) = hbar^2 n^2 / (2*m_proto*R_proto^2)
+    # Emergent gravity at state n=26, proto-H = proto-Fe identity
+    "cosmogenesis_proto_shell": {
+        "sector": "Kaluza-Klein-26D",
+        "paper": "PAPER_877",
+        "field": "R_n",
+        "EL_equation": "d²R_n/dt² + (n^2 hbar^2)/(m_p R_n^3) = -dV_eff/dR_n",
+        "result": "R_26 = equilibrium → emergent g = GM_proto/R_26^2",
+        "critical_value": {"n_states": 26, "proto_H_Fe_identity": True},
+    },
+
+    # PAPER_863: Water reactor Birkeland efficiency 283:1
+    # Maps to Sector 8 (LENR-Resonance): phonon resonance at 1.25 THz
+    "water_reactor_birkeland": {
+        "sector": "LENR-Resonance",
+        "paper": "PAPER_863",
+        "field": "phi_phonon",
+        "EL_equation": "d²phi/dt² + omega_LENR^2 phi = k_LENR * V_Birkeland",
+        "result": "COP = 283:1 from BSH harmonic convergence at f_phonon = 1.25 THz",
+        "critical_value": {"COP": 283, "f_phonon_THz": 1.25},
+    },
+
+    # PAPER_835: Colman-Gillespie catalytic fusion
+    # Maps to Sector 3 (Dirac) + Sector 8 (LENR-Resonance)
+    "colman_gillespie_catalytic": {
+        "sector": "LENR-Resonance",
+        "paper": "PAPER_835",
+        "field": "psi_catalyst",
+        "EL_equation": "delta S_LENR / delta psi = 0 with catalyst boundary conditions",
+        "result": "F_catalytic = k_act * sigma_CG * n_fuel * exp(-E_a/kT)",
+        "critical_value": {"Z_catalyst": 46},
+    },
+
+    # PAPER_840: Kozima neutron-drop nucleation
+    # Maps to Sector 3 (Dirac): neutron cross-section σ_n(ω)
+    "kozima_neutron_drop": {
+        "sector": "Dirac",
+        "paper": "PAPER_840",
+        "field": "psi_neutron",
+        "EL_equation": "i hbar d(psi_n)/dt = [-hbar^2/(2m_n) nabla^2 + V_drop] psi_n",
+        "result": "sigma_n(omega) = sigma_0 exp(-(omega-omega_0)^2 / (2 delta_omega^2))",
+        "critical_value": {"sigma_0_m2": 1e-28, "delta_omega_THz": 0.05},
+    },
+
+    # PAPER_866: Caduceus motor twin-helix
+    # Maps to Sector 5 (Magnetic-Dipole): helical B-field geometry
+    "caduceus_twin_helix": {
+        "sector": "Magnetic-Dipole",
+        "paper": "PAPER_866",
+        "field": "A_helix",
+        "EL_equation": "curl curl A_helix = mu_0 J_helix(r, theta)",
+        "result": "B_net = B_left + B_right with torsion-induced antigravity at SCm threshold",
+        "critical_value": {"helix_pitch_ratio": 0.618},
+    },
+}
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
 # §6  STANDALONE CLI
 # ═══════════════════════════════════════════════════════════════════════════════
 
