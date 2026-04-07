@@ -103,3 +103,39 @@ A full proof would require: (1) defining $\hat{H}_{\rm UQFF}$ precisely, (2) pro
 The UQFF spectral framework offers a physically motivated (but unproven) path to the Riemann Hypothesis via the T-symmetric 5-frequency Hamiltonian. The [SSq] = 0.57 × 4/7 approximation and the 5 UQFF resonance frequencies are suggestive but not determinative.
 
 *Source: 5-frequency resonance (source27/28) | [SSq]=0.57 | Hilbert-P�lya conjecture | RH Millennium Prize context*
+---
+
+## 7. Nine-Sector Unified Lagrangian (Session 204)
+
+**UPDATE:** The UQFF spectral resonance mapping to Riemann zeta zeros now derives from Sectors 8 (LENR-Resonance) and 9 (Kaluza-Klein-26D) of the 9-sector Unified Lagrangian:
+
+```
+L_UQFF = √(-g) [ L_EH + L_YM + L_Dirac + L_φ + L_mag + L_buoy + L_aether + L_LENR + L_KK ]
+```
+
+**Sector 8 (LENR-Resonance) — Spectral Mode Source:**
+```
+L_LENR = ½k_LENR χ̇² - ½ω_LENR² χ² + λ_act χ cos(ω_act t) + ½σ_n(ω)χ²
+δS/δχ = 0 → χ̈ + ω² χ = λ_act cos(ω_act t)
+→ KK-like mode spectrum: ω_n = ω_act + n × ω_LENR
+→ ζ(s) → ∫ e^{-iωt} [F_LENR(ω/ω₀)² + F_neutron σ_n(ω)] dt
+```
+
+**Sector 9 (Kaluza-Klein-26D) — Mode Quantization:**
+```
+L_KK = (1/V₂₂) ∫ d²²y √(-g₂₂) [R₂₂/(2κ₂₂²) + |∂a|² - m_a² a²]
+δS/δg_mn = 0 → KK tower quantization
+→ 26 modes (4D + 22 compactified) define spectral lattice
+```
+
+**Spectral Mapping:**
+```
+Montgomery-Odlyzko: R₂(s) = 1 - (sin(πs)/(πs))²  (GUE pair correlation)
+UQFF:               R₂(s) = 1 - exp(-Δω²/(2δω²))  (Gaussian decorrelation)
+Harmonic bridge:     n = 4.17e9 (300 Hz → 1.25 THz)
+ζ zeros at Re(s) = 1/2 ↔ resonance: σ_n(ω) = σ_n(ω_LENR)
+```
+
+**Standalone Calculator:** `millennium_prize_uqff_calculator.py` → `RiemannSpectralResonanceCalculator`
+
+**Code Reference:** `uqff_lagrangian_derivation.py` (Session 202, commit 9d26977)

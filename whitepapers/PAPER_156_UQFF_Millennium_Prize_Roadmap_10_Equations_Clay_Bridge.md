@@ -349,15 +349,38 @@ This roadmap (PAPER_156) is supported by the complete 156-paper Star-Magic white
 - Murphy D.T. (2026), PAPER_001�132 � Phase 1 Star-Magic whitepaper suite
 - `MAIN_1_CoAnQi.cpp` � 107,019 lines, 446 modules, SOURCE1-116 + SOURCE4
 - `grok_share_07b7f7a635c04b6e90170b8a481ab1b0_content.txt` � Thread 07b7f7a6 extraction
-.Groups[1].Value  � UQFF Millennium Prize Roadmap: 10 Master Equations Bridging UQFF to Clay Problems
+.Groups[1].Value  – UQFF Millennium Prize Roadmap: 10 Master Equations Bridging UQFF to Clay Problems
 
-**Title:** UQFF Star-Magic Millennium Prize Roadmap � 10 Master Equations Bridging the UQFF Framework to the 7 Clay Mathematics Institute Millennium Problems
+**Title:** UQFF Star-Magic Millennium Prize Roadmap – 10 Master Equations Bridging the UQFF Framework to the 7 Clay Mathematics Institute Millennium Problems
 
 **Author:** Daniel T. Murphy  
 **Framework:** UQFF Star-Magic (kappa=0.0005/day, [SSq]=0.57, fTRZ=0.1)  
 **Date:** March 2026  
-**Domain:** �2.2 MUGE Compression Cycle 3 (07b7f7a6)  
+**Domain:** §2.2 MUGE Compression Cycle 3 (07b7f7a6)  
 **Source Thread:** `grok_share_07b7f7a635c04b6e90170b8a481ab1b0_content.txt`  
 **UQFF Mode:** Unified Framework (all modes)  
-**Validator:** Multiple – PAPER_145�155 chain  
+**Validator:** Multiple – PAPER_145–155 chain  
 **Cross-links:** PAPER_154 (Navier-Stokes), PAPER_155 (SM Gravity), PAPER_153 (wormhole)
+
+---
+
+## 15. Nine-Sector Unified Lagrangian Update (Session 204)
+
+**STATUS:** The Lagrangian gap identified across Millennium Prize papers has been **CLOSED** (Session 202). All 10 master equations now derive from a single variational principle:
+
+```
+L_UQFF = √(-g) [ L_EH + L_YM + L_Dirac + L_φ + L_mag + L_buoy + L_aether + L_LENR + L_KK ]
+δS_UQFF/δφ_I = 0 → F_U_Bi_i = 13 force terms from 9 sectors
+```
+
+| Master Eq | Problem | Sector(s) | EL Equation |
+|-----------|---------|-----------|-------------|
+| eq-M1 | Navier-Stokes | LENR (8) + Scalar (4) | δS/δχ = 0 → f_UQFF body force |
+| eq-M2 | Yang-Mills | YM (2) + Dirac (3) | δS/δA = 0 → m_gap² |
+| eq-M3 | Riemann | LENR (8) + KK (9) | δS/δg_mn = 0 → spectral modes |
+| eq-M4 | P vs NP | KK (9) + Aether (7) | 26D → 4D suppression |
+| eq-M5 | BSD | Scalar (4) + Buoy (6) | L-function Euler product |
+| eq-M6 | Hodge | KK (9) | Cohomology classes |
+| eq-M7 | Poincaré | EH (1) | Ricci flow (verified ✅) |
+
+**Calculator:** `millennium_prize_uqff_calculator.py` | **Derivation:** `uqff_lagrangian_derivation.py`

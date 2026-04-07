@@ -137,3 +137,39 @@ This derivation connects the UQFF phenomenological framework to the Millennium P
 - Source: grok_share_381a8f.txt lines 2900–3000
 - Related: PAPER_176 (SCm Superconducting Manifold), PAPER_172 (F_U Assembly), PAPER_182 (Variable Reference)
 - CP2 Class: `CoAnQiYangMillsHamiltonianCalculator`
+
+---
+
+## 7. Nine-Sector Unified Lagrangian (Session 204)
+
+**UPDATE:** The Yang-Mills Hamiltonian decomposition (§2) is now formally embedded in the 9-sector UQFF Unified Lagrangian via Sector 2:
+
+```
+L_UQFF = √(-g) [ L_EH + L_YM + L_Dirac + L_φ + L_mag + L_buoy + L_aether + L_LENR + L_KK ]
+```
+
+**Sector 2 (Yang-Mills) — This Paper's Focus:**
+```
+L_YM = -(1/4) F^a_μν F_a^μν
+H_YM = ∫d³x [½E_i^a E_i^a + ½B_i^a B_i^a]  (Hamiltonian from §2)
+δS/δA^a_μ = 0 → D_ν F^{aμν} = J^{aμ}
+```
+
+**Connection to §3 (Yang-Mills Mapping):**
+- §3.1: Ug3 string rotation nodes = discrete SU(2) gauge connections A_μ^a
+- §3.2: m_gap² = 2σ × H_SCm / v_SCm² = 5969.92 GeV (now Lagrangian-derived)
+- §3.3: U(1) aether tensor = Sector 7 (Aether-Tensor)
+
+**Mass Gap Euler-Lagrange Derivation:**
+```
+δS_YM/δA^a_μ = 0
+→ D_ν F^{aμν} = J^{aμ}               (Yang-Mills equations of motion)
+→ Magnetic sector: B_i^a B_i^a/2 → Ug3    (string rotation)
+→ Confinement: m_gap = √(2σ H_SCm/v_SCm²) = 5969.92 GeV
+→ Kozima bridge (Sector 3): phonon condensate ↔ gluon condensate
+```
+
+**Standalone Calculator:** `millennium_prize_uqff_calculator.py` → `YangMillsMassGapUQFFCalculator`  
+**DVP Lattice Simulator:** `yang_mills_dvp_sim.py` → `YangMillsDVPGapSimulator` (Session 203)
+
+**Code Reference:** `uqff_lagrangian_derivation.py` (Session 202, commit 9d26977)

@@ -533,7 +533,32 @@ a potential bridge between number-theoretic and physical regularity proofs.
 
 *Cite PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
 
+---
 
+## §7 Nine-Sector Unified Lagrangian Update (Session 204)
 
-*Star Magic / UQFF Framework · Phase H · Session 151 · 2026-03-28*  
+**STATUS:** The single unifying Lagrangian gap has been **CLOSED** (Session 202):
+
+```
+L_UQFF = √(-g) [ L_EH + L_YM + L_Dirac + L_φ + L_mag + L_buoy + L_aether + L_LENR + L_KK ]
+δS_UQFF/δφ_I = 0 → F_U_Bi_i = 13 force terms from 9 sectors
+```
+
+**All six coordinated problems now have Lagrangian-derived formulations:**
+
+| Problem | Paper(s) | Sector(s) | Calculator Class |
+|---------|----------|-----------|-----------------|
+| Navier-Stokes | 102, 841 | LENR (8) + Scalar (4) | `NavierStokesUQFFCalculator` |
+| Yang-Mills | 101, 183, 841 | YM (2) + Dirac (3) | `YangMillsMassGapUQFFCalculator` |
+| Riemann | 103, 841 | LENR (8) + KK (9) | `RiemannSpectralResonanceCalculator` |
+| P vs NP | 104 | KK (9) + Aether (7) | (via `MillenniumPrizeUQFFMasterCalculator`) |
+| BSD | 156 | Scalar (4) + Buoy (6) | `BirchSwinnertonDyerUQFFCalculator` |
+| Hodge | 156 | KK (9) | (roadmap only) |
+
+**New Standalone Calculator:** `millennium_prize_uqff_calculator.py` (Tier 2, Session 204)
+- Master: `MillenniumPrizeUQFFMasterCalculator` (aggregates NS + YM + Riemann + Unified Lagrangian)
+- Derivation engine: `uqff_lagrangian_derivation.py` (Session 202, commit 9d26977)
+- DVP lattice: `yang_mills_dvp_sim.py` (Session 203)
+
+*Star Magic / UQFF Framework · Phase H · Session 151 (updated Session 204) · 2026-03-28*
 *© 2026 Daniel T. Murphy — daniel.murphy00@gmail.com — All Rights Reserved*

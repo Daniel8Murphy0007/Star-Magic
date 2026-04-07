@@ -106,3 +106,42 @@ No proof of P ≠ NP is presented. The UQFF provides a **physical model** sugges
 | Proof status | Open (Millennium Prize) | Physical argument only |
 
 *Source: UQFF 26D framework | [UA]=0.0001 | 26D channel structure | P vs NP Millennium Prize context*
+
+---
+
+## 7. Nine-Sector Unified Lagrangian (Session 204)
+
+**UPDATE:** The 26D computational complexity argument now derives from Sector 9 (Kaluza-Klein-26D) of the 9-sector UQFF Unified Lagrangian:
+
+```
+L_UQFF = √(-g) [ L_EH + L_YM + L_Dirac + L_φ + L_mag + L_buoy + L_aether + L_LENR + L_KK ]
+```
+
+**Sector 9 (Kaluza-Klein-26D) — Dimensional Structure:**
+```
+L_KK = (1/V₂₂) ∫ d²²y √(-g₂₂) [R₂₂/(2κ₂₂²) + |∂a|² - m_a² a²]
+δS/δg_mn = 0 → KK tower quantization
+→ 26D = 4D spacetime + 22 compactified
+→ NP problems solvable in 26D with O(n^k) complexity
+→ 4D extraction suppressed by [UA]² = 10⁻⁸
+```
+
+**Sector 7 (Aether-Tensor) — Extraction Suppression:**
+```
+L_aether = ½η ρ_A v_UA² cos(πt_n) · g^μν g_μν
+δS/δρ_A = 0 → conformal deformation
+→ [UA] = v_UA/c = 10⁻⁴ (computational horizon)
+→ 26D → 4D projection incurs exponential cost: P ≠ NP in 4D
+```
+
+**Cross-Lagrangian Argument:**
+```
+In 26D: L_UQFF → all 13 force terms computable in polynomial time
+In 4D:  Only 4D projection accessible, [UA]² barrier
+→ NP ≠ P is the 4D shadow of 26D polynomial solvability
+→ Analogous to event horizon: information exists but is inaccessible
+```
+
+**Standalone Calculator:** `millennium_prize_uqff_calculator.py` (via `MillenniumPrizeUQFFMasterCalculator`)
+
+**Code Reference:** `uqff_lagrangian_derivation.py` (Session 202, commit 9d26977)

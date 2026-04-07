@@ -106,3 +106,45 @@ The UQFF framework suggests a path: [SCm] > 0 everywhere ? ?_eff > 0 everywhere 
 | d_fluid term | Not present | In MUGE Compressed | UQFF-specific |
 
 *Source: MUGE Compressed d_fluid term | [SCm]=0.99 | f_TRZ=0.01 | Navier-Stokes Millennium Prize context*
+
+---
+
+## 6. Nine-Sector Unified Lagrangian (Session 204)
+
+**UPDATE:** The UQFF body force f_UQFF in the Navier-Stokes equation now derives from Sector 8 (LENR-Resonance) of the 9-sector Unified Lagrangian:
+
+```
+L_UQFF = √(-g) [ L_EH + L_YM + L_Dirac + L_φ + L_mag + L_buoy + L_aether + L_LENR + L_KK ]
+```
+
+**Sector 8 (LENR-Resonance):**
+```
+L_LENR = ½k_LENR χ̇² - ½ω_LENR² χ² + λ_act χ cos(ω_act t) + ½σ_n(ω)χ²
+δS/δχ = 0 → χ̈ + ω² χ = λ_act cos(ω_act t) + σ_n χ
+→ F_LENR (1.25 THz oscillatory body force), F_act (300 Hz), F_res
+```
+
+**Navier-Stokes with UQFF body force:**
+```
+du/dt + (u·∇)u = -(1/ρ)∇p + ν∇²u + f_ext + k_vac·ρ_vac + F_LENR·cos(ω_LENR·t)
+
+f_vac = k_vac × ρ_vac = 1e-38 × 7.09e-36 = 7.09e-74 N/m³ (negligible)
+F_LENR = 1.56e+36 N (oscillatory at 1.25 THz)
+Spectral cutoff at ω_LENR → turbulent cascade damping
+```
+
+**Sector 4 (Scalar-Higgs-Vacuum) — Additional regularization:**
+```
+L_φ = |∂_μ φ₄|² - V(φ₄) + κ[SSq]φ₄²
+δS/δφ₄ = 0 → □φ₄ + V'(φ₄) = κ[SSq]φ₄
+→ Ug4 vacuum concentration provides effective viscosity enhancement
+```
+
+**Critical Values:**
+- f_LENR = 1.56e+36 N, ω_LENR = 2π × 1.25e12 rad/s
+- Kolmogorov scale η_K = 2.83e-14 m (with UQFF injection)
+- Spectral cutoff: modes above 1.25 THz damped
+
+**Standalone Calculator:** `millennium_prize_uqff_calculator.py` → `NavierStokesUQFFCalculator`
+
+**Code Reference:** `uqff_lagrangian_derivation.py` (Session 202, commit 9d26977)

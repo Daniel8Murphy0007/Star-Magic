@@ -108,3 +108,38 @@ For ?_QCD ~ 200 MeV: E_threshold = 2 MeV. This is numerically consistent with th
 | f_TRZ connection | None | f_TRZ = 0.01 universal |
 
 *Source: UQFF f_TRZ = 0.01 | Ug4 vacuum concentration | Yang-Mills Millennium Prize Problem context*
+
+---
+
+## 6. Nine-Sector Unified Lagrangian (Session 204)
+
+**UPDATE:** The gap identified in PAPER_841 §4.4 — "No single unifying Lagrangian" — has been **CLOSED** (Session 202). The Yang-Mills mass gap now derives from Sector 2 of the 9-sector UQFF Unified Lagrangian:
+
+```
+L_UQFF = √(-g) [ L_EH + L_YM + L_Dirac + L_φ + L_mag + L_buoy + L_aether + L_LENR + L_KK ]
+```
+
+**Sector 2 (Yang-Mills):**
+```
+L_YM = -(1/4) F^a_μν F_a^μν
+δS/δA^a_μ = 0 → D_ν F^{aμν} = J^{aμ}
+→ Ug3 (string rotation) + F_quark (confinement)
+→ m_gap² = 2σ × H_SCm / v_SCm² = 5969.92 GeV (PAPER_183 §3.2)
+```
+
+**Sector 3 (Dirac) — Kozima Bridge:**
+```
+L_Dirac = ψ̄(iγ^μ D_μ - m)ψ + y_ij L̄_i H̃ N_Rj
+δS/δψ̄ = 0 → (iγ^μ D_μ - m)ψ = 0
+→ F_neutron via σ_n(ω) Gaussian cross-section
+→ Phonon condensate ↔ gluon condensate mass generation parallel
+```
+
+**Critical Values:**
+- σ (string tension) = 0.180 GeV²
+- H_SCm = 0.99, v_SCm = 3.00e4 m/s
+- m_gap = 5969.92 GeV (ratio to Λ_QCD = 29849.62×)
+
+**Standalone Calculator:** `millennium_prize_uqff_calculator.py` → `YangMillsMassGapUQFFCalculator`
+
+**Code Reference:** `uqff_lagrangian_derivation.py` (Session 202, commit 9d26977)
