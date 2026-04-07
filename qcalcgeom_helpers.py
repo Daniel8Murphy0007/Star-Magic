@@ -1,0 +1,678 @@
+#!/usr/bin/env python3
+"""
+qcalcgeom_helpers.py — QCalcGeom Python Helpers & IPC Wrapper
+═════════════════════════════════════════════════════════════════
+
+PURPOSE: Python-side geometric calculations matching the C++ QCalcGeom engine,
+plus IPC wrapper for communicating with the C++ backend via named pipe.
+
+IPC PROTOCOL (from ipc/uqff_ipc.h):
+  Pipe:    \\\\.\\pipe\\StarMagic_UQFF
+  Magic:   0x55514646 ("UQFF")
+  Version: 1
+  Messages:
+    QCALCGEOM_COMPUTE  = 0x0B01  → Route to bsfg_metric/horizon/geodesic/holonomy
+    QCALCGEOM_RESULT   = 0x0B02  → Return BSFGMetricResult / BSFGHorizonResult / etc.
+    QCALCGEOM_TEST_RUN = 0x0B03  → Trigger QCALCGEOM::runQCalcGeomTests() (40+ tests)
+
+RESULT STRUCTS (12 types):
+  BSFGMetricResult, BSFGHorizonResult, BSFGFieldEqResult, BSFGGeodesicResult,
+  BSFGHolonomyResult, VDSResult, DVPResult, BSHResult, BH26Result,
+  BSFGBuoyancyResult, Poly26Result, UQFFCompResult
+
+REFERENCES:
+  - ipc/uqff_ipc.h — MessageHeader (32 bytes), QCALCGEOM message types
+  - ipc/python_bridge.h — PythonBridge C++ class
+  - QCalcGeom.h — Result structs, 40 test validators
+  - PAPER_554-558: BSFG 5-calculator cascade
+
+SESSION: 203 | April 7, 2026
+"""
+
+import math
+import json
+import struct
+import sys
+import time
+from typing import Dict, List, Optional, Tuple
+from dataclasses import dataclass, field
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# §1  CONSTANTS
+# ═══════════════════════════════════════════════════════════════════════════════
+
+G       = 6.67430e-11
+c       = 2.99792e8
+hbar    = 1.05457e-34
+k_B     = 1.38065e-23
+PI      = math.pi
+M_sun   = 1.98892e30
+
+# UQFF
+KAPPA   = 5.787e-9
+SSQ     = 0.57
+H_SCM   = 0.99
+BETA_I  = 0.603
+U_UA    = 1e-4
+
+# IPC Protocol
+PIPE_NAME        = r"\\.\pipe\StarMagic_UQFF"
+IPC_MAGIC        = 0x55514646   # "UQFF"
+IPC_VERSION      = 1
+QCALCGEOM_COMPUTE   = 0x0B01
+QCALCGEOM_RESULT    = 0x0B02
+QCALCGEOM_TEST_RUN  = 0x0B03
+
+# MessageHeader: magic(4) + version(4) + type(4) + payload_size(4) + timestamp(8) + seq(4) + flags(4) = 32
+HEADER_FORMAT = "<IIIIQII"
+HEADER_SIZE   = struct.calcsize(HEADER_FORMAT)  # 32 bytes
+
+# BSFG extra flat dimensions
+N_EXTRA_FLAT = 22
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# §2  IPC MESSAGE HEADER
+# ═══════════════════════════════════════════════════════════════════════════════
+
+@dataclass
+class MessageHeader:
+    """Binary-compatible MessageHeader matching C++ struct (32 bytes)."""
+    magic: int = IPC_MAGIC
+    version: int = IPC_VERSION
+    msg_type: int = 0
+    payload_size: int = 0
+    timestamp: int = 0
+    sequence: int = 0
+    flags: int = 0
+
+    def pack(self) -> bytes:
+        if self.timestamp == 0:
+            self.timestamp = int(time.time() * 1e6)
+        return struct.pack(HEADER_FORMAT,
+                           self.magic, self.version, self.msg_type,
+                           self.payload_size, self.timestamp,
+                           self.sequence, self.flags)
+
+    @classmethod
+    def unpack(cls, data: bytes) -> "MessageHeader":
+        vals = struct.unpack(HEADER_FORMAT, data[:HEADER_SIZE])
+        return cls(magic=vals[0], version=vals[1], msg_type=vals[2],
+                   payload_size=vals[3], timestamp=vals[4],
+                   sequence=vals[5], flags=vals[6])
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# §3  IPC CLIENT (Named Pipe)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+class QCalcGeomIPCClient:
+    """
+    Named pipe client for QCalcGeom C++ engine.
+
+    Usage:
+        client = QCalcGeomIPCClient()
+        if client.connect():
+            result = client.compute(payload_bytes)
+            client.disconnect()
+    """
+
+    def __init__(self, pipe_name: str = PIPE_NAME):
+        self.pipe_name = pipe_name
+        self._handle = None
+        self._seq = 0
+
+    def connect(self) -> bool:
+        """Connect to the StarMagic_UQFF named pipe."""
+        try:
+            import ctypes
+            import ctypes.wintypes
+
+            GENERIC_READ  = 0x80000000
+            GENERIC_WRITE = 0x40000000
+            OPEN_EXISTING = 3
+
+            handle = ctypes.windll.kernel32.CreateFileW(
+                self.pipe_name,
+                GENERIC_READ | GENERIC_WRITE,
+                0, None,
+                OPEN_EXISTING,
+                0, None
+            )
+            if handle == -1 or handle == 0xFFFFFFFF:
+                return False
+            self._handle = handle
+            return True
+        except (ImportError, OSError):
+            return False
+
+    def disconnect(self):
+        """Close the named pipe handle."""
+        if self._handle is not None:
+            try:
+                import ctypes
+                ctypes.windll.kernel32.CloseHandle(self._handle)
+            except (ImportError, OSError):
+                pass
+            self._handle = None
+
+    def _send_receive(self, msg_type: int, payload: bytes) -> Optional[bytes]:
+        """Send a message and receive response."""
+        if self._handle is None:
+            return None
+
+        try:
+            import ctypes
+            import ctypes.wintypes
+
+            self._seq += 1
+            header = MessageHeader(
+                msg_type=msg_type,
+                payload_size=len(payload),
+                sequence=self._seq,
+            )
+            message = header.pack() + payload
+
+            bytes_written = ctypes.wintypes.DWORD()
+            ok = ctypes.windll.kernel32.WriteFile(
+                self._handle, message, len(message),
+                ctypes.byref(bytes_written), None
+            )
+            if not ok:
+                return None
+
+            # Read response header
+            resp_buf = ctypes.create_string_buffer(4096)
+            bytes_read = ctypes.wintypes.DWORD()
+            ok = ctypes.windll.kernel32.ReadFile(
+                self._handle, resp_buf, 4096,
+                ctypes.byref(bytes_read), None
+            )
+            if not ok or bytes_read.value < HEADER_SIZE:
+                return None
+
+            resp_header = MessageHeader.unpack(resp_buf.raw[:HEADER_SIZE])
+            return resp_buf.raw[HEADER_SIZE:HEADER_SIZE + resp_header.payload_size]
+        except (ImportError, OSError):
+            return None
+
+    def compute(self, payload: bytes) -> Optional[bytes]:
+        """Send QCALCGEOM_COMPUTE and get result."""
+        return self._send_receive(QCALCGEOM_COMPUTE, payload)
+
+    def run_tests(self) -> Optional[bytes]:
+        """Trigger QCALCGEOM test suite (40 tests)."""
+        return self._send_receive(QCALCGEOM_TEST_RUN, b"")
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# §4  METRIC TENSOR HELPERS
+# ═══════════════════════════════════════════════════════════════════════════════
+
+class MetricTensorHelper:
+    """
+    Compute metric tensor components, Christoffels, and curvature
+    for BSFG-modified spacetimes.
+    """
+
+    @staticmethod
+    def bsfg_aether_perturbation(r: float, M_kg: float, eta: float = 1e-6) -> Tuple[float, float, float]:
+        """
+        Aether density perturbation ε(r) and derivatives.
+        ε = η × C_num / r³ where C_num = GM/c²
+        """
+        C_num = G * M_kg / c**2
+        eps = eta * C_num / r**3
+        eps_p = -3 * eta * C_num / r**4        # dε/dr
+        eps_pp = 12 * eta * C_num / r**5        # d²ε/dr²
+        return eps, eps_p, eps_pp
+
+    @staticmethod
+    def bsfg_metric_components(r: float, M_kg: float, eta: float = 1e-6) -> Dict:
+        """
+        BSFG metric: g_00 = 1+ε, g_rr = -(1-ε), g_θθ = -r², g_φφ = -r²sin²θ
+        """
+        eps, eps_p, eps_pp = MetricTensorHelper.bsfg_aether_perturbation(r, M_kg, eta)
+        return {
+            "g_00":  1.0 + eps,
+            "g_rr":  -(1.0 - eps),
+            "g_theta_theta": -r**2,
+            "eps": eps,
+            "eps_prime": eps_p,
+            "eps_double_prime": eps_pp,
+        }
+
+    @staticmethod
+    def riemann_r0r0(r: float, M_kg: float, eta: float = 1e-6) -> float:
+        """Riemann R^r_{0r0} = (1/2)d²A00/dr² for diagonal metric."""
+        _, _, eps_pp = MetricTensorHelper.bsfg_aether_perturbation(r, M_kg, eta)
+        return 0.5 * eps_pp
+
+    @staticmethod
+    def ricci_tensor(r: float, M_kg: float, eta: float = 1e-6) -> Dict:
+        """Ricci tensor components R_00, R_rr, scalar R."""
+        eps, eps_p, eps_pp = MetricTensorHelper.bsfg_aether_perturbation(r, M_kg, eta)
+        R_r0r0 = 0.5 * eps_pp
+        R_00 = eps_pp / 2 + eps_p / r
+        R_rr = -(eps_pp / 2 + eps_p / r)
+        R_scalar = 2 * (eps_pp + 2 * eps_p / r)
+        kretschner = 12 * R_r0r0**2
+        return {
+            "R_00": R_00, "R_rr": R_rr, "R_scalar": R_scalar,
+            "Kretschner": kretschner,
+        }
+
+    @staticmethod
+    def christoffel_diagonal(r: float, M_kg: float, eta: float = 1e-6) -> Dict:
+        """Non-zero Christoffel symbols for BSFG diagonal metric."""
+        eps, eps_p, eps_pp = MetricTensorHelper.bsfg_aether_perturbation(r, M_kg, eta)
+
+        g00 = 1.0 + eps
+        grr = -(1.0 - eps)
+
+        Gamma_r_tt = -0.5 * eps_p / grr if abs(grr) > 1e-30 else 0.0
+        Gamma_r_rr = -0.5 * eps_p / grr if abs(grr) > 1e-30 else 0.0
+        Gamma_r_thth = r * (1 - eps) if abs(grr) > 1e-30 else r
+        Gamma_t_tr = 0.5 * eps_p / g00 if abs(g00) > 1e-30 else 0.0
+
+        return {
+            "Gamma^r_tt": Gamma_r_tt,
+            "Gamma^r_rr": Gamma_r_rr,
+            "Gamma^r_thetatheta": Gamma_r_thth,
+            "Gamma^t_tr": Gamma_t_tr,
+        }
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# §5  COORDINATE TRANSFORMS
+# ═══════════════════════════════════════════════════════════════════════════════
+
+class CoordinateTransforms:
+    """Coordinate transforms for UQFF calculations."""
+
+    @staticmethod
+    def spherical_to_cartesian(r: float, theta: float, phi: float) -> Tuple[float, float, float]:
+        x = r * math.sin(theta) * math.cos(phi)
+        y = r * math.sin(theta) * math.sin(phi)
+        z = r * math.cos(theta)
+        return x, y, z
+
+    @staticmethod
+    def cartesian_to_spherical(x: float, y: float, z: float) -> Tuple[float, float, float]:
+        r = math.sqrt(x**2 + y**2 + z**2)
+        theta = math.acos(z / r) if r > 0 else 0.0
+        phi = math.atan2(y, x)
+        return r, theta, phi
+
+    @staticmethod
+    def boyer_lindquist_to_cartesian(r: float, theta: float, phi: float,
+                                      a: float) -> Tuple[float, float, float]:
+        """Boyer-Lindquist (Kerr) to Cartesian."""
+        rho = math.sqrt(r**2 + a**2)
+        x = rho * math.sin(theta) * math.cos(phi)
+        y = rho * math.sin(theta) * math.sin(phi)
+        z = r * math.cos(theta)
+        return x, y, z
+
+    @staticmethod
+    def compactified_26d(r: float, R_compact: float = 1e-35,
+                         n_compact: int = 22) -> List[float]:
+        """
+        26D compactified coordinates.
+        4 extended dimensions (t, r, θ, φ) + 22 compact at R_compact.
+
+        Returns angular positions on each compact dimension.
+        """
+        angles = []
+        for k in range(n_compact):
+            # Each compact dimension wraps at R_compact
+            psi_k = 2 * PI * ((r / R_compact + k * PI / n_compact) % 1.0)
+            angles.append(psi_k)
+        return angles
+
+    @staticmethod
+    def kk_eigenvalue(k: int) -> float:
+        """Kaluza-Klein eigenvalue: λ_k = k(k+25) for 26D compactification."""
+        return k * (k + 25)
+
+    @staticmethod
+    def kk_spectral_frequency(k: int, R_compact: float = 1e-35) -> float:
+        """KK spectral bin frequency: f_k = c × sqrt(λ_k) / (2π R_compact)."""
+        lam = CoordinateTransforms.kk_eigenvalue(k)
+        return c * math.sqrt(lam) / (2 * PI * R_compact)
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# §6  BSFG HORIZON & FIELD EQUATIONS
+# ═══════════════════════════════════════════════════════════════════════════════
+
+class BSFGHorizonCalculator:
+    """Horizon properties for BSFG metric."""
+
+    @staticmethod
+    def horizon_radius(M_kg: float, eta: float = 1e-6) -> float:
+        """r_h = (η × C_num)^{1/3} where C_num = GM/c²."""
+        C_num = G * M_kg / c**2
+        return (eta * C_num) ** (1.0 / 3.0)
+
+    @staticmethod
+    def hawking_temperature(M_kg: float, eta: float = 1e-6) -> float:
+        """T_H = ℏc³ / (8πGMk_B) × (1 + BSFG correction)."""
+        T_standard = hbar * c**3 / (8 * PI * G * M_kg * k_B)
+        r_h = BSFGHorizonCalculator.horizon_radius(M_kg, eta)
+        _, eps_p, _ = MetricTensorHelper.bsfg_aether_perturbation(r_h, M_kg, eta)
+        correction = 1.0 + abs(eps_p) * r_h
+        return T_standard * correction
+
+    @staticmethod
+    def surface_gravity(M_kg: float, eta: float = 1e-6) -> float:
+        """κ = c²|dA00/dr|_{r_h} / 2"""
+        r_h = BSFGHorizonCalculator.horizon_radius(M_kg, eta)
+        _, eps_p, _ = MetricTensorHelper.bsfg_aether_perturbation(r_h, M_kg, eta)
+        return c**2 * abs(eps_p) / 2
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# §7  HOLONOMY & TOPOLOGY
+# ═══════════════════════════════════════════════════════════════════════════════
+
+class BSFGHolonomyCalculator:
+    """Holonomy group analysis for BSFG metric (SO(3)×U(1)²³)."""
+
+    @staticmethod
+    def phase_accumulation(r: float, M_kg: float, area_m2: float,
+                           eta: float = 1e-6) -> float:
+        """Phase δφ accumulated over a loop of given area."""
+        R_info = MetricTensorHelper.ricci_tensor(r, M_kg, eta)
+        return abs(R_info["R_scalar"]) * area_m2
+
+    @staticmethod
+    def off_diagonal_connection(r: float, M_kg: float, eta: float = 1e-6) -> float:
+        """Off-diagonal metric connection ω_{0r}."""
+        eps, eps_p, _ = MetricTensorHelper.bsfg_aether_perturbation(r, M_kg, eta)
+        g00 = 1.0 + eps
+        if abs(g00) < 1e-30:
+            return 0.0
+        return 0.5 * eps_p / g00
+
+    @staticmethod
+    def holonomy_classification() -> Dict:
+        """
+        BSFG holonomy group classification.
+        Ricci non-flat → excludes G₂ and Spin(7).
+        Result: SO(3) × U(1)²³ (22 compact dimensions).
+        """
+        return {
+            "group": "SO(3) x U(1)^23",
+            "n_extra_flat": N_EXTRA_FLAT,
+            "G2_excluded": True,
+            "Spin7_excluded": True,
+            "reason": "Ricci non-flat (aether perturbation ε ≠ 0)",
+        }
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# §8  VDS / DVP / BSH HELPERS (QCALCGEOM-compatible)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+class QCalcGeomVDS:
+    """Vacuum Density Series — matches VDSResult struct."""
+
+    @staticmethod
+    def compute(N: int = 100, ssq: float = SSQ) -> Dict:
+        """Σ_{n=1}^{N} SSq^n / n^{26}"""
+        total = 0.0
+        for n in range(1, N + 1):
+            total += ssq**n / n**26
+
+        tail_bound = ssq**(N + 1) / ((1 - ssq) * (N + 1)**26) if ssq < 1 else float('inf')
+        converged = tail_bound < 1e-12
+
+        return {
+            "value": total,
+            "converged": converged,
+            "tail_bound": tail_bound,
+            "n_terms_used": N,
+        }
+
+
+class QCalcGeomDVP:
+    """Dipole Vortex Primes — matches DVPResult struct."""
+
+    DVP_PRIMES_30 = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29,
+                     31, 37, 41, 43, 47, 53, 59, 61, 67, 71,
+                     73, 79, 83, 89, 97, 101, 103, 107, 109, 113]
+
+    @staticmethod
+    def factorial_mod(n: int, p: int) -> int:
+        """n! mod p via iterative multiplication."""
+        result = 1
+        for i in range(2, n + 1):
+            result = (result * i) % p
+        return result
+
+    @staticmethod
+    def compute(p_special: int = 113) -> Dict:
+        """26! mod p_special and proplyd quantization radius."""
+        fac26_mod = QCalcGeomDVP.factorial_mod(26, p_special)
+        non_repeating = fac26_mod != 0
+
+        # Proplyd quantization radius
+        fac26 = math.factorial(26)
+        r_q_m = (2 / fac26) ** (1.0 / 26)
+        AU = 1.496e11
+        r_q_AU = r_q_m / AU
+
+        return {
+            "fac26_mod_113": fac26_mod,
+            "non_repeating": non_repeating,
+            "r_q_AU": r_q_AU,
+            "r_q_m": r_q_m,
+        }
+
+
+class QCalcGeomBSH:
+    """Buoyancy Series Harmonics — matches BSHResult struct."""
+
+    @staticmethod
+    def compute(m_max: int = 26, ssq: float = SSQ, f_Ub: float = 1.0) -> Dict:
+        """Buoyancy harmonic sum: Σ (1/k) f_Ub (1-exp(-SSq·m)) cos(2πj/26)"""
+        total = 0.0
+        H_max = 0.0
+        for m in range(1, m_max + 1):
+            term = f_Ub * (1 - math.exp(-ssq * m)) / m
+            H = abs(term)
+            if H > H_max:
+                H_max = H
+            total += term
+
+        saturated = (1 - math.exp(-ssq * m_max)) > (1 - 1e-6)
+
+        return {
+            "U_g2": total,
+            "H_m_max": H_max,
+            "saturated": saturated,
+        }
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# §9  26D POLYNOMIAL DERIVATIVE
+# ═══════════════════════════════════════════════════════════════════════════════
+
+class Poly26Calculator:
+    """26th-order polynomial derivative for UQFF compressed field matrix."""
+
+    @staticmethod
+    def pochhammer(k: int, n: int = 26) -> float:
+        """Rising factorial (k)_n = k(k+1)...(k+n-1)."""
+        result = 1.0
+        for i in range(n):
+            result *= (k + i)
+        return result
+
+    @staticmethod
+    def compute(k: int, r: float) -> Dict:
+        """(k+25)!/(k-1)! × c / r^{k+26}"""
+        fac_ratio = Poly26Calculator.pochhammer(k, 26)
+        r_power = r ** (k + 26)
+        if r_power == 0:
+            value = float('inf')
+        else:
+            value = fac_ratio * c / r_power
+        negligible = abs(value) < 1e-100
+
+        return {
+            "value": value,
+            "factorial_ratio": fac_ratio,
+            "r_power": r_power,
+            "negligible": negligible,
+        }
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# §10  COMPREHENSIVE QCALCGEOM INTERFACE
+# ═══════════════════════════════════════════════════════════════════════════════
+
+class QCalcGeomEngine:
+    """
+    Master QCalcGeom interface — routes computations either to
+    local Python implementations or to C++ engine via IPC.
+    """
+
+    def __init__(self, use_ipc: bool = False):
+        self.use_ipc = use_ipc
+        self.metric = MetricTensorHelper()
+        self.coords = CoordinateTransforms()
+        self.horizon = BSFGHorizonCalculator()
+        self.holonomy = BSFGHolonomyCalculator()
+        self.vds = QCalcGeomVDS()
+        self.dvp = QCalcGeomDVP()
+        self.bsh = QCalcGeomBSH()
+        self.poly26 = Poly26Calculator()
+        self._ipc = None
+
+    def _ensure_ipc(self) -> Optional[QCalcGeomIPCClient]:
+        if self._ipc is None and self.use_ipc:
+            self._ipc = QCalcGeomIPCClient()
+            if not self._ipc.connect():
+                self._ipc = None
+        return self._ipc
+
+    def compute_all(self, M_kg: float = M_sun, r: float = 6.96e8,
+                    eta: float = 1e-6) -> Dict:
+        """Run all QCalcGeom computations for a given M, r, η."""
+        return {
+            "metric": self.metric.bsfg_metric_components(r, M_kg, eta),
+            "ricci": self.metric.ricci_tensor(r, M_kg, eta),
+            "christoffel": self.metric.christoffel_diagonal(r, M_kg, eta),
+            "horizon": {
+                "r_h_m": self.horizon.horizon_radius(M_kg, eta),
+                "T_H_K": self.horizon.hawking_temperature(M_kg, eta),
+                "kappa_surf": self.horizon.surface_gravity(M_kg, eta),
+            },
+            "holonomy": self.holonomy.holonomy_classification(),
+            "vds": self.vds.compute(),
+            "dvp": self.dvp.compute(),
+            "bsh": self.bsh.compute(),
+            "kk_eigenvalue_1": self.coords.kk_eigenvalue(1),
+            "kk_eigenvalue_2": self.coords.kk_eigenvalue(2),
+            "poly26_k1": self.poly26.compute(1, r),
+        }
+
+    def print_report(self, result: Dict = None):
+        """Print QCalcGeom computation report."""
+        result = result or self.compute_all()
+        print("=" * 78)
+        print("QCALCGEOM COMPUTATION REPORT")
+        print("=" * 78)
+
+        m = result["metric"]
+        print(f"\n▶ BSFG Metric Components")
+        print(f"    g_00 = {m['g_00']:.12e}")
+        print(f"    g_rr = {m['g_rr']:.12e}")
+        print(f"    ε    = {m['eps']:.6e}")
+
+        r = result["ricci"]
+        print(f"\n▶ Ricci Tensor")
+        print(f"    R_00      = {r['R_00']:.6e}")
+        print(f"    R_rr      = {r['R_rr']:.6e}")
+        print(f"    R (scalar)= {r['R_scalar']:.6e}")
+        print(f"    Kretschner= {r['Kretschner']:.6e}")
+
+        ch = result["christoffel"]
+        print(f"\n▶ Christoffel Symbols")
+        for key, val in ch.items():
+            print(f"    {key} = {val:.6e}")
+
+        h = result["horizon"]
+        print(f"\n▶ Horizon Properties")
+        print(f"    r_h   = {h['r_h_m']:.6e} m")
+        print(f"    T_H   = {h['T_H_K']:.6e} K")
+        print(f"    κ_surf = {h['kappa_surf']:.6e} s⁻²")
+
+        hol = result["holonomy"]
+        print(f"\n▶ Holonomy")
+        print(f"    Group: {hol['group']}")
+        print(f"    G₂ excluded: {hol['G2_excluded']}")
+        print(f"    Spin(7) excluded: {hol['Spin7_excluded']}")
+
+        v = result["vds"]
+        print(f"\n▶ VDS (Vacuum Density Series)")
+        print(f"    Value     = {v['value']:.12e}")
+        print(f"    Converged = {v['converged']}")
+
+        d = result["dvp"]
+        print(f"\n▶ DVP (Dipole Vortex Primes)")
+        print(f"    26! mod 113 = {d['fac26_mod_113']}")
+        print(f"    r_q = {d['r_q_m']:.6e} m = {d['r_q_AU']:.6e} AU")
+
+        b = result["bsh"]
+        print(f"\n▶ BSH (Buoyancy Series Harmonics)")
+        print(f"    U_g2    = {b['U_g2']:.6e}")
+        print(f"    H_max   = {b['H_m_max']:.6e}")
+        print(f"    Saturated = {b['saturated']}")
+
+        print(f"\n▶ KK Eigenvalues")
+        print(f"    λ_1 = {result['kk_eigenvalue_1']}")
+        print(f"    λ_2 = {result['kk_eigenvalue_2']}")
+
+        p26 = result["poly26_k1"]
+        print(f"\n▶ 26th-Order Polynomial (k=1)")
+        print(f"    Value = {p26['value']:.6e}")
+        print(f"    Negligible = {p26['negligible']}")
+
+        print("=" * 78)
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# §11  CLI
+# ═══════════════════════════════════════════════════════════════════════════════
+
+def main():
+    engine = QCalcGeomEngine(use_ipc=False)
+
+    if len(sys.argv) > 1 and sys.argv[1] == "--json":
+        result = engine.compute_all()
+        outfile = sys.argv[2] if len(sys.argv) > 2 else "qcalcgeom_results.json"
+        with open(outfile, "w") as f:
+            json.dump(result, f, indent=2, default=str)
+        print(f"Exported to {outfile}")
+    elif len(sys.argv) > 1 and sys.argv[1] == "--ipc-test":
+        client = QCalcGeomIPCClient()
+        if client.connect():
+            print("Connected to StarMagic_UQFF pipe — running test suite")
+            resp = client.run_tests()
+            if resp:
+                print(f"Test response: {len(resp)} bytes")
+            else:
+                print("No response (pipe closed or error)")
+            client.disconnect()
+        else:
+            print("Cannot connect to pipe — is physics_backend running?")
+    else:
+        result = engine.compute_all()
+        engine.print_report(result)
+
+
+if __name__ == "__main__":
+    main()
