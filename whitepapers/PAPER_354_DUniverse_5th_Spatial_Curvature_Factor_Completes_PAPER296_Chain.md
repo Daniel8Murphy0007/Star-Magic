@@ -155,6 +155,9 @@ The 5th factor completes the UQFF D_universe chain, which now accounts for: (1) 
 **Scale:** Cosmological (Hubble radius; universal)  
 **CP Implementation:** `DUniverseSpatialCurvatureFifthFactorCalculator` (CondensedPhysics3.py, Session 96)
 
+---
+
+
 ## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
