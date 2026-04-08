@@ -67,10 +67,10 @@
     }
   },
   "size_distribution": {
-    "stub": 165,
+    "stub": 164,
     "standard": 518,
     "full": 186,
-    "flagship": 8
+    "flagship": 9
   },
   "multi_fail_papers": [],
   "g6_fail_count": 0
