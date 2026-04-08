@@ -92,9 +92,10 @@ treatment, see PAPER_375.)
 
 ---
 
-*PAPER_372 | Session 101 | Star Magic UQFF Framework | ©2025 Daniel T. Murphy*
+*PAPER_372 \| Session 101 \| Star Magic UQFF Framework \| ©2025 Daniel T. Murphy*
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -123,6 +124,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

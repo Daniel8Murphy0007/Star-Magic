@@ -84,6 +84,7 @@ Together with PAPER_344 (which derives the same frequency from GW precession), t
 **CP Implementation:** `SgrAStarJWST2025FlareOmegaActDerivationCalculator` (CondensedPhysics4.py, Session 97)
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -112,6 +113,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

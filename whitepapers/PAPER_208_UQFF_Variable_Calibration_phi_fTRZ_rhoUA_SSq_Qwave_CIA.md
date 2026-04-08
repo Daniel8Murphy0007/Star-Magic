@@ -243,6 +243,7 @@ From UQFF Framework Assimilation (3rd PDF, lines 1640–1715):
 - GRAVITY Collaboration 2024: SGR A* near-infrared QPO 28 min
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -271,6 +272,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

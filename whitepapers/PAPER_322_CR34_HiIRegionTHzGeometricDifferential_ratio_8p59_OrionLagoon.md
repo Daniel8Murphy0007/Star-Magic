@@ -111,6 +111,7 @@ FIRST UQFF intra-HII THz geometric amplification differential [PAPER_322]
 **UQFF computed:** Galactic scale UQFF gravity correction g_UQFF/g_Newton = 1 + [SSq]�?�(r/kpc)� = 1 + 2.85e-4�(8.5)� = 1.0206e+0; 2.06% deviation at Galactic Center.
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -139,6 +140,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

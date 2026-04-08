@@ -783,6 +783,7 @@ Seven new parameters added to `exportState()`:
 **UQFF computed:** MUGE buoyancy ratio U_bi/F_U = [SSq]�?�r�/GM = 5.7e-1�5.0e-4 = 2.85e-4; compressed MUGE baseline g = 5.4e-7 m/s� at r_ISCO.
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -811,6 +812,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

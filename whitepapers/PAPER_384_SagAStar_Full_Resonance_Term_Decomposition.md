@@ -191,6 +191,7 @@ term the largest of any system in the canonical 7-system registry.
 *Source: grok_share_11254865.txt lines ~2960–2990 | Session 104 | First per-term decomposition for Sagittarius A* under both MUGE models*
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -219,6 +220,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

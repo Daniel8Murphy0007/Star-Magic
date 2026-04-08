@@ -253,6 +253,7 @@ The Pillars of Creation and Rings of Relativity occupy the middle-lower range of
 **Cross-links:** PAPER_150 (Tapestry/Westerlund, higher-g SFR regime), PAPER_152 (cosmological)
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -281,6 +282,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

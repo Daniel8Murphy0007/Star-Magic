@@ -176,6 +176,7 @@ verified across all four test bodies (Sun, Earth, Jupiter, Neptune) in the Grok 
 The formula enters $F_U$ as a third structural arm alongside the $U_{g,i}$ and $U_{bi}$ terms.
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -204,6 +205,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

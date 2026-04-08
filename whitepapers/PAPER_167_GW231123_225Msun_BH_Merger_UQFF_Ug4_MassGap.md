@@ -135,6 +135,7 @@ and $\omega_{GW,peak}$ is the peak GW frequency at merger (typically 100-200 Hz 
 **Supersedes:** N/A (new event analysis) | **Related:** PAPER_164 (Osc_term), PAPER_160 (Ug4 f_feedback), PAPER_113 (Yang-Mills §1.13), PAPER_163 (g_pert decomposition)
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -163,6 +164,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

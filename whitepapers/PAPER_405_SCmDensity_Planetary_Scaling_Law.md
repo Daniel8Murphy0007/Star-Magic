@@ -157,6 +157,7 @@ bodies[3].omega_c = 2*M_PI / (164.8 * 365.25 * 86400);  // Neptune: 164.8 yr
 ---
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -185,6 +186,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

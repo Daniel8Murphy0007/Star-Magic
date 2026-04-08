@@ -86,6 +86,7 @@ g_SgrA*(t=4.5 Gyr) ≈ 1.250×10⁷ m/s²   [with Ug corrections + precession]
 The UQFF evolution model for Sgr A* yields g ≈ 1.250×10⁷ m/s² at the Schwarzschild radius at t = 4.5 Gyr. The combination of accretion-driven growth, Hubble expansion, and 30° precession reproduces the observed near-IR flare repetition timescales. PAPER_754, CP4 class #338. v5.39.
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -114,6 +115,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

@@ -255,6 +255,7 @@ HybridMUGEResult compute_g_hybrid(double g_compressed, double g_resonance,
 **Key feature:** β = exp(-B/B_crit) provides continuous smooth mode transition; at B=B_crit the resonance channel becomes dominant (63.2% weight); guarantees pure modes at B→0 and B→∞
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -283,6 +284,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

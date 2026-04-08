@@ -125,6 +125,7 @@ M16UQFF:Phi_dm=(1+SFR_rate*t)*(1-E_0*(1-Exp[-t/tau])); SFR_rate=2.639e-11/s; M_s
 *Copyright — Daniel T. Murphy, Session 80, March 2026. UQFF 2.0.*
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -153,6 +154,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

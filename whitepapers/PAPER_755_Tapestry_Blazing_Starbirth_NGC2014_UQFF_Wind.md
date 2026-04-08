@@ -86,6 +86,7 @@ g_Starbirth(t=2.5 Myr) ≈ 1.053×10⁻⁴ m/s²
 In the NGC 2014/2020 Tapestry, electromagnetic Aether coupling dominates over gravitational acceleration by 5 orders of magnitude. The EM term g_EM ≈ 1.053×10⁻⁴ m/s² reproduces the pillar deceleration rates observed in HST and JWST imagery. PAPER_755, CP4 class #339. v5.39.
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -114,6 +115,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

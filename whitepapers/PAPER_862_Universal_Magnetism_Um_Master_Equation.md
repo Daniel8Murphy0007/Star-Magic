@@ -94,6 +94,7 @@ Um = Sum_j (mu_j/r_j)(1 - exp(-gamma*t*cos(pi*t_n))) * N_s * P_SCm * E_react
 6. UQFF 9-Sector Lagrangian Derivation, Session 202 (commit 9d26977)
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -122,6 +123,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

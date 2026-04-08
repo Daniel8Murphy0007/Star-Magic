@@ -93,6 +93,7 @@ The MHD Alfvén term in ORION_UQFF_MODULE.cpp shares the same WOLFRAM_TERM_ORION
 *Series first: FIRST UQFF sub-pc compact HII Trapezium OB cluster UV radiation dominance parameter. Establishes the SECOND entry in the UQFF OB-cluster radiation class (after Lagoon Nebula Session 87, PAPER_306).*
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -121,6 +122,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

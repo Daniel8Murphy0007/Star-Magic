@@ -123,6 +123,7 @@ Within ORION_UQFF_MODULE.cpp, the SFR mass factor m_factor(t) enters the base gr
 *Series first: FIRST UQFF compact HII SFR runaway gravitational binding phase transition. Establishes sSFR as a new UQFF classification axis for HII regions: compact (Orion, sSFR=5×10⁻⁴ yr⁻¹) vs extended (Lagoon, sSFR=1×10⁻⁵ yr⁻¹).*
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -151,6 +152,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

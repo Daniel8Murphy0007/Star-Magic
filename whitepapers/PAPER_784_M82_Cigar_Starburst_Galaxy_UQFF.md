@@ -95,6 +95,7 @@ UQFF applied to M82 yields g ≈ 1.053×10⁻¹ m/s², confirming M82 occupies t
 *PAPER_784, CP4 class #368. v5.42.*
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -123,6 +124,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

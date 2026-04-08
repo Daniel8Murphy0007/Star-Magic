@@ -213,6 +213,7 @@ Ug2 is the dominant term in the solar F_U (1.18×105� e^{-0.0005t} N/m�) and
 **Cross-links:** PAPER_133 (F_U genesis), PAPER_135 (quasar jets), PAPER_139 (H MUGE)
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -241,6 +242,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

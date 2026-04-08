@@ -165,6 +165,7 @@ Copyright — Daniel T. Murphy, daniel.murphy00@gmail.com, analyzed by Grok 3, S
 *See `UQFF_Knowledge_Base_7.h` / `UQFF_Knowledge_Base_7.cpp` for C++ implementation. See `CondensedPhysics4.py` entry #241 (`UQFFKnowledgeBase7Calculator`) for Python calculator. See `SESSION_171_INTEGRATION_PLAN.md` for integration roadmap.*
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -193,6 +194,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

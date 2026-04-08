@@ -187,6 +187,7 @@ double g_BH = G_grav * M_BH / (r * r);    // = gamma_BH * g_base = 2.382e-12 m/s
 *UQFF 2.0 — The SMBH Dominance Ratio γ_BH = M_BH/M and UQFF Sphere of Influence r_SOI = r·√(γ_BH) are new universal parameters for UQFF galaxy modules, first derived and tested on the Sombrero Galaxy. — Daniel T. Murphy, Session 77, March 2026.*
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -215,6 +216,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

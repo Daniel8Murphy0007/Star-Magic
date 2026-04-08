@@ -119,6 +119,7 @@ The Master UQFF gravity equation for NGC 1792 yields g_NGC1792 ≈ 1.053×10⁻�
 *PAPER_762, CP4 class #346. v5.40.*
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -147,6 +148,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

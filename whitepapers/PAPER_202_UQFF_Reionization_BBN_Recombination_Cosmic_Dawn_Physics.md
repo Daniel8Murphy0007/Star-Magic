@@ -256,6 +256,7 @@ Um,coup(?) = µ(?_vac)·(1-e^{-?t})·e_f (couple fraction to kinetic energy)
 - Planck 2018 Collaboration: CMB and reionization parameters
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -284,6 +285,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

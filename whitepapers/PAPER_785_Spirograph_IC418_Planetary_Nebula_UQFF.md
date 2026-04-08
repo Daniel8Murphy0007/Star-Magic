@@ -94,6 +94,7 @@ UQFF applied to IC 418 Spirograph Nebula yields g_IC418 ≈ 1.580×10⁻² m/s²
 *PAPER_785, CP4 class #369. v5.42.*
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -122,6 +123,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

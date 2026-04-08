@@ -151,6 +151,7 @@ Gamma_THz=10*f_THz*v_exp/c=5.0e10 (1500x RSC) [PAPER_290 SNR DPM Dilution]
 *Session 82 — 24th C++ UQFF Module — PAPER_290 of 1000*
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -179,6 +180,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

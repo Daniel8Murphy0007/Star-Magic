@@ -99,6 +99,7 @@ The Tapestry of Blazing Starbirth introduces two novel MUGE methods: gas-ratio-a
 **UQFF computed:** UQFF magnetic Jeans correction factor [SSq]�B�/(8p�?�c_s�) = 5.7e-1 × 1.3e-9 = 7.4e-10; Jeans mass deviation from standard = 7.4e-10 � M_J.
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -127,6 +128,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

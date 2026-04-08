@@ -303,6 +303,7 @@ The "Student's Guide Universe" system in SOURCE4 was named to represent the refe
 **Cross-links:** PAPER_151 (Pillars/Rings cascade terminus), PAPER_153 (exotic geometry extension)
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -331,6 +332,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

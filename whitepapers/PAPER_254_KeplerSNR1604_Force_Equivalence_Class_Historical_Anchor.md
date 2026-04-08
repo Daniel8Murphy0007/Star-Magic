@@ -133,9 +133,10 @@ The UQFF Force Equivalence Class is a **distance-independent conserved quantity*
 
 ---
 
-*PAPER_254 | UQFF v4.27 | Star-Magic | Session 72c | March 2026*
+*PAPER_254 \| UQFF v4.27 \| Star-Magic \| Session 72c \| March 2026*
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -164,6 +165,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

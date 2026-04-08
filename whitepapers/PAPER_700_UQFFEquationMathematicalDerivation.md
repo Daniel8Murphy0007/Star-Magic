@@ -37,6 +37,7 @@ $$U_i = \frac{\rho_{SCm}}{\rho_{UA}}\,\omega_i\cos(\pi t_n)(1+f_{TRZ})$$
 
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -65,6 +66,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

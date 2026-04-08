@@ -215,6 +215,7 @@ R(t) = ?_{i=1}^{26} [R_Ug1,i cos(?_Ug1,i t)       [magnetic dipole]
 **Copyright:** Daniel T. Murphy — Star-Magic UQFF Whitepaper Series
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -243,6 +244,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

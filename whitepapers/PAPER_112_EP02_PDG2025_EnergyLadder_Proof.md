@@ -215,6 +215,7 @@ that:
 **Cross-links:** �1.4 PAPER_023�035 (BSM), �1.6 PAPER_043�050 (26D Energy)
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -243,6 +244,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

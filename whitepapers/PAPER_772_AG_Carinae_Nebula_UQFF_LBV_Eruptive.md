@@ -101,6 +101,7 @@ UQFF applied to AG Carinae yields g_AGCar ≈ 1.053×10⁻² m/s², driven by th
 *PAPER_772, CP4 class #356. v5.41.*
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -129,6 +130,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

@@ -57,6 +57,7 @@ Spherical harmonics used: $|Y_{0,0}|^2 \approx 0.0796$, $|Y_{2,\pm2}|^2_{max} \a
 
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -85,6 +86,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

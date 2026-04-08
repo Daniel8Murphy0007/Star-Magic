@@ -94,6 +94,7 @@ UQFF applied to NGC 5866 yields g ≈ 1.053×10⁻³ m/s², consistent with quie
 *PAPER_783, CP4 class #367. v5.42.*
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -122,6 +123,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

@@ -130,6 +130,7 @@ The Master UQFF gravity equation for Saturn yields g_Saturn ≈ 10.44 m/s², con
 *PAPER_764, CP4 class #348. v5.40.*
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -158,6 +159,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

@@ -160,6 +160,7 @@ Morris-Thorne wormhole coupling (a_wormhole) as the 14th term.
 - Session 47 PAPER_165 (WormholeMUGE13thTerm — this paper extends it)
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -188,6 +189,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

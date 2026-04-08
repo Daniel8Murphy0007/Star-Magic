@@ -161,6 +161,7 @@ $2.85\times10^{-4}$ buoyancy correction from standard $\Lambda$CDM at $z < 0.1$.
 - Springel (2021) — Gadget-4 SPH code (Navier-Stokes benchmark comparison)
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -189,6 +190,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

@@ -127,9 +127,10 @@ with discontinuity in $\partial \Psi / \partial f_\text{TRZ}$ at the zero-point.
 
 ---
 
-*PAPER_264 | UQFF v4.27 | Star-Magic | Session 72g | March 2026*
+*PAPER_264 \| UQFF v4.27 \| Star-Magic \| Session 72g \| March 2026*
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -158,6 +159,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

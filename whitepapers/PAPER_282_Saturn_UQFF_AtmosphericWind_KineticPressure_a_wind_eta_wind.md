@@ -126,6 +126,7 @@ WOLFRAM_TERM_SATURN_WIND: "SaturnUQFF:a_wind=eta_wind^2*g_base=(v_wind/c)^2*g_ba
 *Copyright — Daniel T. Murphy, UQFF 2.0, Session 78, March 2026.*
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -154,6 +155,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

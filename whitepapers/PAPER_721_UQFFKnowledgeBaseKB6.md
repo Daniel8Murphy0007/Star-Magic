@@ -36,6 +36,7 @@ $$U_{bi} = -\beta_i U_{gi} \Omega_g \frac{M_{bh}}{d_g}(1+\varepsilon_{sw}\rho_{s
 
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -64,6 +65,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

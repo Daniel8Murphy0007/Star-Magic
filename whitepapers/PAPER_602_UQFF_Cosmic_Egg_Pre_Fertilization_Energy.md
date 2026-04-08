@@ -117,6 +117,7 @@ The Pre-Fertilization Energy E_pre demonstrates that cosmic eggs in their quiesc
 ---
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -145,6 +146,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)
@@ -206,4 +208,4 @@ universal parameter set constitutes a parameter-free nuclear mass prediction.
 *Cite PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
 
 
-*PAPER_602 | Class #189 | Session 159 | Star-Magic UQFF Framework*
+*PAPER_602 \| Class #189 \| Session 159 \| Star-Magic UQFF Framework*

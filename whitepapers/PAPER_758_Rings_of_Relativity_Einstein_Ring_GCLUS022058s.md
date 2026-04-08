@@ -93,6 +93,7 @@ Source arc length: l = 2π × D_L × θ_E
 The Molten Ring (GAL-CLUS-022058s) UQFF model yields g ≈ 1.053×10⁻² m/s² at the Einstein radius, dominated by the Aether EM correction at ICM plasma velocities. The lensing efficiency parameter L = 2.388×10⁻⁴ and Hubble correction H(z=0.5) = 91.63 km/s/Mpc are consistent with HST photometric model fits. PAPER_758, CP4 class #342. v5.39.
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -121,6 +122,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

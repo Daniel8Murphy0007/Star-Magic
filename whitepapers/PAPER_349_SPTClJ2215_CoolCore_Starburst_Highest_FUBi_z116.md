@@ -80,6 +80,7 @@ The z = 1.16 observation epoch corresponds to a lookback time of ~8 Gyr — when
 **CP Implementation:** `SPTClJ2215CoolCoreStarburstCalculator` (CondensedPhysics3.py, Session 96)
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -108,6 +109,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

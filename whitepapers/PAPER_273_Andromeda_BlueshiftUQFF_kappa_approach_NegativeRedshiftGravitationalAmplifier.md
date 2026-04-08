@@ -133,6 +133,7 @@ Key discoveries:
 *Derived from ANDROMEDA_UQFF_MODULE.cpp, UQFF 2.0, Session 75. Next: PAPER_274 (HI 21-cm UQFF resonance).*
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -161,6 +162,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

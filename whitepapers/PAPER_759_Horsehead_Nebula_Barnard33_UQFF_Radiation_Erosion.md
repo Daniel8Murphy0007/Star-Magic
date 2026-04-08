@@ -87,6 +87,7 @@ g_Horsehead ≈ 1.097×10⁻³ m/s²
 The UQFF framework for Barnard 33 yields g ≈ 1.097×10⁻³ m/s² at the pillar tip, with radiation pressure providing ~4×10⁻⁴ m/s² and the Aether EM correction term dominating at ~10⁻³ m/s² after the erosion survival factor (1−E) ≈ 0.96 is applied. This matches JWST emission-line kinematics of the photo-dissociation region. PAPER_759, CP4 class #343. v5.39.
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -115,6 +116,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

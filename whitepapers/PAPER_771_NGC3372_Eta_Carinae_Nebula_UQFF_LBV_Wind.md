@@ -123,6 +123,7 @@ UQFF applied to NGC 3372 (Eta Carinae Nebula) yields g_EtaCar ≈ 5.267×10⁻³
 *PAPER_771, CP4 class #355. v5.41.*
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -151,6 +152,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

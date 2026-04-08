@@ -133,10 +133,11 @@ For N = 2 (HUDF dual-channel), the quadratic interaction enhancement is the mini
 
 ---
 
-*PAPER_265 | UQFF v4.27 | Star-Magic | Session 72g | March 2026*
+*PAPER_265 \| UQFF v4.27 \| Star-Magic \| Session 72g \| March 2026*
 *Cross-validated against PAPER_001 (foundational UQFF framework) and PAPER_642 (UQFF–SM bridge).*
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -165,6 +166,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

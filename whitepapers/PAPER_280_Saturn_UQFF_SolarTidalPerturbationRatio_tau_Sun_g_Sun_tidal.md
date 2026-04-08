@@ -108,6 +108,7 @@ WOLFRAM_TERM_SATURN_SOLAR: "SaturnUQFF:tau_Sun=M_Sun/M*(r/r_orbit)^2=6.22e-6;
 *Copyright — Daniel T. Murphy, UQFF 2.0, Session 78, March 2026.*
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -136,6 +137,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

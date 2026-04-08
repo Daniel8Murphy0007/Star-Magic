@@ -91,6 +91,7 @@ g_Magnetar(t=5kyr) ≈ (G·M/r²) × 0.97135 × (1 + H₀·t)
 The UQFF magnetar gravity model reproduces g ≈ 4.474×10¹² m/s² at t = 5 kyr for a canonical 1.4 M☉ magnetar with r = 20 km, consistent with X-ray pulse timing constraints. The magnetic-suppression and Hubble-expansion corrections together account for ~3% deviations from the static GR prediction. PAPER_753, CP4 class #337. v5.39.
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -119,6 +120,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

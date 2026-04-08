@@ -102,10 +102,11 @@ The Quadriadic UQFF formally supersedes the Triadic model by adding the Q-wave L
 
 ---
 
-*PAPER_814 | Session 192 | v5.48 | Star-Magic UQFF Project | CVW v2.0.0*
+*PAPER_814 \| Session 192 \| v5.48 \| Star-Magic UQFF Project \| CVW v2.0.0*
 *Cross-validated against PAPER_001 (foundational UQFF framework) and PAPER_642 (UQFF–SM bridge).*
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -134,6 +135,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

@@ -132,6 +132,7 @@ M16UQFF:kappa_neb=[H[z=0.0015]-H[z=0]]/H[z=0]=6.71e-4; H[z=0.0015]=70.047 km/s/M
 *Copyright — Daniel T. Murphy, Session 80, March 2026. UQFF 2.0.*
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -160,6 +161,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

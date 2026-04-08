@@ -81,6 +81,7 @@ The x_2 = 290 Mly cosmic baseline sets the scale for UQFF long-range vacuum cohe
 **CP Implementation:** `StephansQuintetShockRidgeFUBiCalculator` (CondensedPhysics3.py, Session 96)
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -109,6 +110,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

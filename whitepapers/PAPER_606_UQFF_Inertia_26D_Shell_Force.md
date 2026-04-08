@@ -92,6 +92,7 @@ $F_{inert} \approx -3\times10^{-15} \times 26 / (3\times10^4)^{27} \times 10^{-9
 ---
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -120,6 +121,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)
@@ -181,4 +183,4 @@ LISA or BepiColombo precision gravitational measurements.
 *Cite PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
 
 
-*PAPER_606 | Class #193 | Session 159 | Star-Magic UQFF Framework*
+*PAPER_606 \| Class #193 \| Session 159 \| Star-Magic UQFF Framework*

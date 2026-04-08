@@ -98,6 +98,7 @@ The $(1 + \Delta_{dil})$ denominator introduces a small energy release for eccen
 ---
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -126,6 +127,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)
@@ -187,4 +189,4 @@ LISA or BepiColombo precision gravitational measurements.
 *Cite PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
 
 
-*PAPER_607 | Class #194 | Session 159 | Star-Magic UQFF Framework*
+*PAPER_607 \| Class #194 \| Session 159 \| Star-Magic UQFF Framework*

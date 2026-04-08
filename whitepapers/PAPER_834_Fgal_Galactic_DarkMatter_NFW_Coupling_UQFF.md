@@ -212,6 +212,7 @@ Watermark: June 10, 2025, Youngstown OH, USA
 Subject: UQFF F_gal Term — Galactic Dark Matter NFW Coupling
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -240,6 +241,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

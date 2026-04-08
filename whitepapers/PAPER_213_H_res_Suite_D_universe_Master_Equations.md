@@ -293,6 +293,7 @@ Fractional difference: ?D/D ˜ 0.002% (currently unobservable)
 - Planck 2018 VI: Cosmological Parameters (baseline D_universe = 93 Gly)
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -321,6 +322,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

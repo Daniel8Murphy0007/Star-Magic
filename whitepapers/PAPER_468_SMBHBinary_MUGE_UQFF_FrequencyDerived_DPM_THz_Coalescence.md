@@ -105,6 +105,7 @@ $$\boxed{g_{\rm UQFF}(r,t) = \frac{\lambda_P}{2\pi}\!\left[f_{\rm super}(t) + f_
 ---
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -133,6 +134,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

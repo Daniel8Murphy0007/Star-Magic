@@ -161,6 +161,7 @@ The Fornax Cluster (M_Fornax = 7×10¹³ M☉, r_Fornax ≈ 20 Mpc) as the Tier 
 
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -189,6 +190,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

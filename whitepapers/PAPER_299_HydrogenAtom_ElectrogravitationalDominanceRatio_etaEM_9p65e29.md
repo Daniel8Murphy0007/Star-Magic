@@ -139,6 +139,7 @@ The hydrogen atom UQFF module establishes the electrogravitational boundary: at 
 **UQFF computed:** UQFF energy correction term [SSq]�h?_g/(k_B�T) = 0.57 × 7.7e-50/(1.38e-23 × 300) = 1.1e-29; UQFF shift in Lyman-alpha = 1.1e-29 × 13.6 eV.
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -167,6 +168,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

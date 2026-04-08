@@ -94,6 +94,7 @@ The superconductive term (1 − B/B_crit)^SCm suppresses non-resonant modes, lea
 The THz Q-Scope framework identifies 50 Earth-core resonance channels at ω ≈ 7.85×10¹² rad/s with 2.45 mW peak power per channel at 50 Ω impedance. The UQFF [{U_m:SM_m}/Ug1^SCm] coupling ratio explains both the channel selection and the large amplitude ratio (dA = 6.205 A) relative to the milliwatt power scale. PAPER_751, CP4 class #335. v5.39.
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -122,6 +123,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

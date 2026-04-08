@@ -81,6 +81,7 @@ Three-UQFF applied to NGC 1805 LMC cluster yields g_primary ≈ 1.053×10⁻³ m
 *PAPER_787, CP4 Three-UQFF class #371. v5.42.*
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -109,6 +110,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

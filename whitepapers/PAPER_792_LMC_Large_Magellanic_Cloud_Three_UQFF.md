@@ -86,6 +86,7 @@ Three-UQFF applied to the LMC yields g_primary ≈ 1.053×10⁻³ m/s² galaxy-w
 *PAPER_792, CP4 Three-UQFF class #376. v5.42.*
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -114,6 +115,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

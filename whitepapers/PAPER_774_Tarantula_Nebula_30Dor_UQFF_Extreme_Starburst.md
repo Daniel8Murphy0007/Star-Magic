@@ -121,6 +121,7 @@ UQFF applied to the Tarantula Nebula (30 Doradus) yields g_Tarantula ≈ 1.053×
 *PAPER_774, CP4 class #358. v5.41.*
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -149,6 +150,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

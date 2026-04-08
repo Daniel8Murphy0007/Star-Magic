@@ -157,6 +157,7 @@ $$g_{\rm fluid}^{\rm LENR} \approx 2.75\times10^8 \times 10^{-6} \times 10^{-10}
 ---
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -185,6 +186,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

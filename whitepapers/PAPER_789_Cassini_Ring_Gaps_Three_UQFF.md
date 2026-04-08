@@ -121,6 +121,7 @@ Three-UQFF applied to Saturn's Cassini, Encke, and Maxwell ring gaps: primary re
 *PAPER_789, CP4 Three-UQFF class #373. v5.42.*
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -149,6 +150,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

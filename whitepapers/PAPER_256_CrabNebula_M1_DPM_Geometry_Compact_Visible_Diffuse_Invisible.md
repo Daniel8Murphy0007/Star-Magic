@@ -127,9 +127,10 @@ Same ?0, opposite signs. Ratio: `|F_SgrA*| / |F_Crab| ˜ 1,570` — the SMBH has
 
 ---
 
-*PAPER_256 | UQFF v4.27 | Star-Magic | Session 72d | March 2026*
+*PAPER_256 \| UQFF v4.27 \| Star-Magic \| Session 72d \| March 2026*
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -158,6 +159,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

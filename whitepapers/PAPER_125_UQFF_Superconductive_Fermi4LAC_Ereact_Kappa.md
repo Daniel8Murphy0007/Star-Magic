@@ -212,6 +212,7 @@ Fermi LAT 4LAC-DR3 provides the canonical calibration for the UQFF E_react decay
 **Cross-links:** �1.15 PAPER_107 (EP-01), �1.17 PAPER_121
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -240,6 +241,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

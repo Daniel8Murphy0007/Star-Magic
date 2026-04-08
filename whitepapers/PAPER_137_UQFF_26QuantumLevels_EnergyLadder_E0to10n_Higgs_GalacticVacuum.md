@@ -225,6 +225,7 @@ The UQFF 26-quantum-level energy ladder E_n = E_0 × 10^n provides the first phy
 **Cross-links:** PAPER_133 (F_U), PAPER_139 (H Ug4i), PAPER_140 (monopole ratio)
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -253,6 +254,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

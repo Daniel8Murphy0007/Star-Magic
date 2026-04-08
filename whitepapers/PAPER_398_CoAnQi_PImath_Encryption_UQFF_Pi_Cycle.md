@@ -178,6 +178,7 @@ levels $\phi(2\pi)^{n/6}$. The platform's claimed $1.5\times10^{16}$-bit computa
 matches the 26D UQFF polynomial state space sum to within 15%.
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -206,6 +207,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

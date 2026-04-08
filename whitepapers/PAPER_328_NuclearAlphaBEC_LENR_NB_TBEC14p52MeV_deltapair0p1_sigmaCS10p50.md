@@ -223,6 +223,7 @@ This paper constitutes:
 **Citation:** Murphy, D.T. — UQFF Framework, Session 94 (March 2026). Source: gok_share_31b5c807a4.txt (Grok 4 analysis, September 14, 2025). AMD/NIMROD nuclear data, Widom-Larsen LENR theory.
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -251,6 +252,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

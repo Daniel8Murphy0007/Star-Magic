@@ -149,6 +149,7 @@ $$\Delta F_{U,\text{dissip}}^{\odot} = -\sum_{i=1}^{4} \lambda_i \cdot \rho_{\te
 ---
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -177,6 +178,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

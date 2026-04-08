@@ -185,6 +185,7 @@ F_sys(t) encapsulates system-specific: ?v²_wind, -M_SN(t), E(t), P_rad, M_coll(
 - PAPER_173: Modular Compressed MUGE 9-Term Decomposition
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -213,6 +214,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

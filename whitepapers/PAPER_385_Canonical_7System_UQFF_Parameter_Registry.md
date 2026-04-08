@@ -292,6 +292,7 @@ For reference — results from PAPER_379 (full comparison) and PAPER_382/384 (pe
 *Source: grok_share_11254865.txt lines ~6700–6850 + lines ~9400–10322 (main() C++ impl.) | Session 104 | First formal 18-field canonical parameter registry for all 7 UQFF validation systems*
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -320,6 +321,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

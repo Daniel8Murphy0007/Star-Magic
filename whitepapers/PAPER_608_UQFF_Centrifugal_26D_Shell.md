@@ -87,6 +87,7 @@ In proto-planetary disks, the $F_{centrif}$ from the south-pole vortex drives ma
 ---
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -115,6 +116,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)
@@ -176,4 +178,4 @@ LISA or BepiColombo precision gravitational measurements.
 *Cite PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
 
 
-*PAPER_608 | Class #195 | Session 159 | Star-Magic UQFF Framework*
+*PAPER_608 \| Class #195 \| Session 159 \| Star-Magic UQFF Framework*

@@ -203,6 +203,7 @@ The P_SCm = 10⁻³ suppression factor governs a fundamental SCm property: insid
 **Cross-links:** PAPER_133 (F_U), PAPER_134 (Ug2 heliosphere), PAPER_137 (26 levels)
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -231,6 +232,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

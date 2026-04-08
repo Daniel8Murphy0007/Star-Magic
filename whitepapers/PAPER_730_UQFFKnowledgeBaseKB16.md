@@ -54,6 +54,7 @@ with $\Omega_g=7.3\times10^{-16}$ rad/s, $M_{bh}/d_g = 1.989\times10^{36}/2.55\t
 
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -82,6 +83,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

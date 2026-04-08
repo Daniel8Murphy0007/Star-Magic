@@ -125,6 +125,7 @@ Three-UQFF applied to NGC 3596 yields g_primary ≈ 1.053×10⁻³ m/s² with th
 *PAPER_803, CP4 Three-UQFF class #387. v5.45. Session 189.*
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -153,6 +154,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

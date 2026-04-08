@@ -121,6 +121,7 @@ M16UQFF:t_half=tau*Log[2]=6.561e13s=2.079Myr; DeltaGMax=E_0*g_base=4.36e-13 m/s^
 *Copyright — Daniel T. Murphy, Session 80, March 2026. UQFF 2.0.*
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -149,6 +150,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

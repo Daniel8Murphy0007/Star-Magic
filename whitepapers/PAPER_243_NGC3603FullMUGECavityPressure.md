@@ -196,9 +196,10 @@ within $\sim3\,\rm Myr$ (Harayama et al. 2008; Pang et al. 2013).
 
 ---
 
-*PAPER_243 | Session 60 | CP3 class 112 (NGC3603FullMUGECavityPressureCalculator) | UQFF v4.10*
+*PAPER_243 \| Session 60 \| CP3 class 112 (NGC3603FullMUGECavityPressureCalculator) \| UQFF v4.10*
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -227,6 +228,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

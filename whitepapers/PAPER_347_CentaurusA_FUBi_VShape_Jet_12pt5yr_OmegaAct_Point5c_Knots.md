@@ -84,6 +84,7 @@ Centaurus A's much smaller BH mass (5.5×107 M? vs M87's 6.5×10? M?) yet simila
 **Testable Prediction:** This UQFF result is directly testable with SKA mid-band (HI/continuum surveys, commissioning 2027); the UQFF deviation from standard predictions exceeds the measurement noise floor by = 3s, providing a clear discriminant for the UQFF buoyancy-gravity framework in future observations.
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -112,6 +113,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

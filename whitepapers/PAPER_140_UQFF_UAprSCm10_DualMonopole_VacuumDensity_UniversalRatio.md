@@ -210,6 +210,7 @@ The [(UA')]:[SCm] = 10 ratio is a new universal physical constant derived from t
 **Cross-links:** PAPER_133 (F_U), PAPER_139 (MUGE-H), PAPER_143 (MUGE 40%)
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -238,6 +239,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

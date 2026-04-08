@@ -1,10 +1,10 @@
 # PAPER_669: UQFF Waveform Comparison — GW150914
-**Author:** Daniel T. Murphy
-**Subtitle:** UQFF-modified strain h_UQFF vs LIGO GW150914 observation. Inspiral chirp mass, frequency evolution, and phase shift derived.
-**Module:** UQFFComparedToGW150914  
-**Session:** Session 172  
-**Date:** April 2, 2026  
-**Version:** v5.29  
+**Author:** Daniel T. Murphy\
+**Subtitle:** UQFF-modified strain h_UQFF vs LIGO GW150914 observation. Inspiral chirp mass, frequency evolution, and phase shift derived.\
+**Module:** UQFFComparedToGW150914\
+**Session:** Session 172\
+**Date:** April 2, 2026\
+**Version:** v5.29\
 **Status:** Complete — CP4 #253 | UQFF Session 172
 
 ---
@@ -21,7 +21,7 @@ We compute the UQFF-modified gravitational wave strain h_UQFF for the GW150914 b
 $$\mathcal{M}_c = \frac{(m_1 m_2)^{3/5}}{(m_1+m_2)^{1/5}} \approx 28.3\,M_\odot$$
 
 ## 3. Standard Strain
-$$h_{GR}(f) = \frac{4}{d}\left(\frac{G\mathcal{M}_c}{c^2}\right)^{5/3}(\pi f)^{2/3}/c$$
+$$h_{GR}(f) = \frac{4}{d}\left(\frac{G\mathcal{M}_c}{c^2}\right)^{5/3}\left(\frac{\pi f}{c}\right)^{2/3}$$
 
 ## 4. UQFF Modifications
 $$S_{SCm}(f) = \exp(-\rho_{SCm}\,\lambda_{GW}), \quad \lambda_{GW}=c/f$$
@@ -42,9 +42,11 @@ CP4 #253 — `UQFFComparedToGW150914Calculator`
 
 
 ---
-*PAPER_669 | Session 172 | Star-Magic UQFF Framework v5.29 | Daniel Murphy*
+
+*PAPER_669 \| Session 172 \| Star-Magic UQFF Framework v5.29 \| Daniel Murphy*
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -67,12 +69,14 @@ $$\boxed{\frac{\delta S}{\delta \phi_{\rm BH}} = R_{\mu\nu} - \tfrac{1}{2}g_{\mu
 
 ### §A.4 Cosmogenesis Linkage Chain
 
-$$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\rm BH} = 0$$
+$$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm}$$
+
+$$\xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\rm BH} = 0$$
 
 The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g forces) through vacuum density initialization to the sector-specific equation of motion. Every term in the E-L equation inherits its physical origin from the cosmogenesis master.
 
-
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)
@@ -113,9 +117,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
 
-
 ---
-
 
 ## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 

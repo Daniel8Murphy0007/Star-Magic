@@ -138,10 +138,11 @@ The quantum open-energy integral $(1 - 1/x)F_m = \int F_m/x^2 \, dx$ governs cha
 
 ---
 
-*PAPER_822 | Session 192 | v5.48 | Star-Magic UQFF Project | CVW v2.0.0*
+*PAPER_822 \| Session 192 \| v5.48 \| Star-Magic UQFF Project \| CVW v2.0.0*
 *EXPERIMENTAL CONFIRMATION: Daniel T. Murphy, June 16, 2025*
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -170,6 +171,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

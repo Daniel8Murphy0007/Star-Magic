@@ -187,6 +187,7 @@ f_UA' = 0.999  [calibrated]; f_SCm = 0.001  [calibrated]; a = 5×10⁻5 day⁻¹
 **Copyright:** Daniel T. Murphy — Star-Magic UQFF Whitepaper Series
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -215,6 +216,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

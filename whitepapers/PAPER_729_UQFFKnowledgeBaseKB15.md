@@ -46,6 +46,7 @@ $$U_{g1}^{thread,20} = U_{g1}^{thread,10} + \sum_{i=11}^{20} U_{g1}^i \cdot \Del
 
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -74,6 +75,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

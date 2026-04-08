@@ -80,6 +80,7 @@ M87 is the prototype for supermassive black hole jet physics. The UQFF F_U_Bi_i 
 **CP Implementation:** `M87JetBZModelFUBiCalculator` (CondensedPhysics3.py, Session 96)
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -108,6 +109,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

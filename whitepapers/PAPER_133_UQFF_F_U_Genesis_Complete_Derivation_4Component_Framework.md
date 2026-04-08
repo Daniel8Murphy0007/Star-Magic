@@ -246,6 +246,7 @@ The F_U equation, first derived in the Star Magic genesis thread (3419da89), rep
 **Cross-links:** PAPER_134�PAPER_144, �1.1 PAPER_001, Star Magic.md
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -274,6 +275,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

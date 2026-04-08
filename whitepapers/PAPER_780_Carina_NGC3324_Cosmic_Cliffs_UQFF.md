@@ -130,6 +130,7 @@ UQFF applied to the Carina Nebula NGC 3324 "Cosmic Cliffs" yields g_CosCliffs �
 *PAPER_780, CP4 class #364. v5.41.*
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -158,6 +159,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

@@ -78,6 +78,7 @@ This paper establishes that magnetar spin-down is not purely electromagnetic (cl
 **UQFF computed:** Eddington luminosity UQFF correction = 1 - [SSq]�exp(-?�?t) = 1 - 5.7e-1 � exp(-2.9e-4) = 4.3e-1; F_U at event horizon = 2.0e+18 m/s�.
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -106,6 +107,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

@@ -182,6 +182,7 @@ R_CR=Sigma_comp/Sigma_res;Sigma_comp=a_DPM+a_THz+a_vac_diff+a_super;Sigma_res=a_
 - **Companion papers:** PAPER_294 (vac_diff hbar-denom), PAPER_295 (f_DPM² scaling)
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -210,6 +211,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

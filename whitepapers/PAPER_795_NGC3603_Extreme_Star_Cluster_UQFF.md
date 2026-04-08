@@ -108,6 +108,7 @@ UQFF applied to NGC 3603 yields g_primary ≈ 1.053×10⁻³ m/s² despite extre
 *PAPER_795, CP4 UQFF class #379. v5.45. Session 189.*
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -136,6 +137,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

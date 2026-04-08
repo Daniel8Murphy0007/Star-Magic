@@ -209,6 +209,7 @@ statistical estimator for UQFF system initialization.
 **Key feature:** Specific coefficients 0.309/4.38 with σ₀=200 km/s normalization; statistical first-estimate complement to canonical dynamical masses
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -237,6 +238,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

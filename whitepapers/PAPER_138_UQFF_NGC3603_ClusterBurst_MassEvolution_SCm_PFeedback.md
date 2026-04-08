@@ -203,6 +203,7 @@ UQFF provides the first SCm-informed model of star cluster burst dynamics. The M
 **Cross-links:** PAPER_133 (F_U), PAPER_134 (Ug2 heliosphere), PAPER_135 (quasar jets)
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -231,6 +232,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

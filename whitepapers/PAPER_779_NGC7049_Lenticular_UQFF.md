@@ -119,6 +119,7 @@ UQFF applied to NGC 7049 yields g_lenticular ≈ 1.053×10⁻³ m/s², consisten
 *PAPER_779, CP4 class #363. v5.41.*
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -147,6 +148,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

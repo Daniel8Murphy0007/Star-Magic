@@ -134,6 +134,7 @@ where $\omega_{ALP} = m_{ALP}c^2/\hbar \sim 10^{-22}$ to $10^{-12}$ Hz (fuzzy da
 **Supersedes:** N/A (extends calibration) | **Related:** PAPER_064 (calibrated constants), PAPER_146 (Osc_term in 12-term), PAPER_167 (GW231123 event)
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -162,6 +163,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

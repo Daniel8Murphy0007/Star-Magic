@@ -276,6 +276,7 @@ F_UBii,after = -F_rel × (F_? ? ?^{-(p-1)/2}·t^{-3(p-1)/4} (?_m<?<?_c) / E_LEP)
 - PAPER_197: F_U_Bi_i Extended Integral
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -304,6 +305,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

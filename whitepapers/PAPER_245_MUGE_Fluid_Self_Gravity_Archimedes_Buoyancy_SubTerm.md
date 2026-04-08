@@ -139,9 +139,10 @@ This theorem establishes that fluid self-gravity provides a **radial amplificati
 
 ---
 
-*PAPER_245 | UQFF v4.27 | Star-Magic | Session 62 | March 2026*
+*PAPER_245 \| UQFF v4.27 \| Star-Magic \| Session 62 \| March 2026*
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -170,6 +171,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

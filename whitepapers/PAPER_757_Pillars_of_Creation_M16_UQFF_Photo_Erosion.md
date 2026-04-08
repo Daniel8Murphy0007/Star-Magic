@@ -94,6 +94,7 @@ Estimated pillar lifetime: τ_survive ≈ 10 × τ_erode ≈ 10 Myr
 The UQFF photo-erosion model for the Pillars of Creation yields g ≈ 1.053×10⁻⁴ m/s² at t = 0.5 Myr, with the erosion factor (1−E) ≈ 0.94 reducing the amplitude by ~6% relative to a fresh uneroded pillar. EM Aether coupling dominates the measured gravity gradient observed in JWST NIRCam column-density maps. PAPER_757, CP4 class #341. v5.39.
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -122,6 +123,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

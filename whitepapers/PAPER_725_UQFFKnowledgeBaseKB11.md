@@ -40,6 +40,7 @@ $$B_j(r,t) = \frac{\mu_0\mu_j}{4\pi r^3}\left(1 + B_s\sin(\omega_s t)\right)$$
 
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -68,6 +69,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

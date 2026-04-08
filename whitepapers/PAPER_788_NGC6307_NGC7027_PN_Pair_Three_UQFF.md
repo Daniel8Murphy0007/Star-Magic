@@ -94,6 +94,7 @@ Three-UQFF applied jointly to NGC 6307 and NGC 7027 yields g_primary ≈ 1.580×
 *PAPER_788, CP4 Three-UQFF class #372. v5.42.*
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -122,6 +123,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

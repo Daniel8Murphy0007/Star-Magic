@@ -103,6 +103,7 @@ THz holes at 6.24 THz are the UQFF's most accessible laboratory prediction � a
 *Source: validate_drawings_models.py | THZ_HOLES_MODEL.validate_THz_model() | Drawing 24 | aTHz MUGE mode*
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -131,6 +132,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

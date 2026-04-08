@@ -122,9 +122,10 @@ $$g_{L4} = 0.08 \text{ m/s}^2$$
 
 ---
 
-*PAPER_818 | Session 192 | v5.48 | Star-Magic UQFF Project | CVW v2.0.0*
+*PAPER_818 \| Session 192 \| v5.48 \| Star-Magic UQFF Project \| CVW v2.0.0*
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -153,6 +154,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

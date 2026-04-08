@@ -120,6 +120,7 @@ UQFF applied to NGC 6217 yields g_bar_spiral ≈ 1.053×10⁻³ m/s², confirmin
 *PAPER_777, CP4 class #361. v5.41.*
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -148,6 +149,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

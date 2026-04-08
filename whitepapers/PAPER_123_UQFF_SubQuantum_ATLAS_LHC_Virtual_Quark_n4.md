@@ -186,6 +186,7 @@ ATLAS-CONF-2025-007 virtual quark energies (~10?�6 J) confirm UQFF Compressed 
 **Cross-links:** �1.15 PAPER_116 (EP-03), �1.17 PAPER_122
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -214,6 +215,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

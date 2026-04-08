@@ -120,6 +120,7 @@ UQFF applied to Mystic Mountain yields g_Mystic ≈ 1.053×10⁻³ m/s², consis
 *PAPER_776, CP4 class #360. v5.41.*
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -148,6 +149,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

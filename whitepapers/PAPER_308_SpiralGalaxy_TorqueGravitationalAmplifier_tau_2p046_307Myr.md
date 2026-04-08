@@ -117,6 +117,7 @@ The spiral arm torque factor captures how non-axisymmetric mass flows (gas infal
 - Session 88 — SPIRAL_SUPERNOVAE_UQFF_MODULE.cpp (UQFF 2.0 implementation)
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -145,6 +146,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

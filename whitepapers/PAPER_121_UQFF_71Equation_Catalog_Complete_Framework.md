@@ -256,6 +256,7 @@ The CRP Fokker-Planck term is the final structural addition to F_U, linking turb
 *Session: 43 | Commit baseline: `1c28ab9` | Domain: §1.17*
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -284,6 +285,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

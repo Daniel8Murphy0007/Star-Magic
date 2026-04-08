@@ -91,6 +91,7 @@ g_Westerlund2(t=1 Myr) ≈ 1.053×10⁻³ m/s²
 Westerlund 2's denser environment (ρ = 10⁻²⁰ kg/m³) and stronger field (B = 10⁻⁵ T) produce g ≈ 1.053×10⁻³ m/s², a factor of 10 above NGC 2014. The EM Aether correction again dominates, confirming the vacuum-coupling mechanism is robust across a decade of environment density. PAPER_756, CP4 class #340. v5.39.
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -119,6 +120,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

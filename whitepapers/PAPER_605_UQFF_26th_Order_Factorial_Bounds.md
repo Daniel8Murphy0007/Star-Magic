@@ -88,6 +88,7 @@ This is the UQFF resolution of the classical singularity problem: not renormaliz
 ---
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -116,6 +117,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)
@@ -177,4 +179,4 @@ while remaining consistent with all collider and nuclear precision measurements.
 *Cite PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
 
 
-*PAPER_605 | Class #192 | Session 159 | Star-Magic UQFF Framework*
+*PAPER_605 \| Class #192 \| Session 159 \| Star-Magic UQFF Framework*

@@ -121,6 +121,7 @@ UQFF applied to M42 (Orion Nebula) yields g_M42 ≈ 1.053×10⁻³ m/s², confir
 *PAPER_773, CP4 class #357. v5.41.*
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -149,6 +150,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

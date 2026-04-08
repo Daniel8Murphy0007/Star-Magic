@@ -129,6 +129,7 @@ The Master UQFF gravity equation for NGC 4676 (Mice Galaxies) yields g_Mice ≈ 
 *PAPER_769, CP4 class #353. v5.40.*
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -157,6 +158,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

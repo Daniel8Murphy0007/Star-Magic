@@ -157,6 +157,7 @@ At $n=1$, $t=0$: $[\text{SSq}](1,0) = \log(0.1) \cdot 1 \cdot e^{-\pi} \approx (
 ---
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -185,6 +186,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

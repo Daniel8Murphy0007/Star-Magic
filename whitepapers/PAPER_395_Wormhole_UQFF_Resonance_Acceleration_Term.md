@@ -166,6 +166,7 @@ distances. Unit test confirms value $7.09\times10^{-44}$ m/s² at $r=10^4$ m wit
 This term completes the 13-term resonance MUGE summation alongside PAPER_381 terms.
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -194,6 +195,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

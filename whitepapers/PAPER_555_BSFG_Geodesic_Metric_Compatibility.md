@@ -105,6 +105,7 @@ $$v^2_{\rm orbit} = \frac{GM}{r} + \frac{r\,c^2\,|\varepsilon'(r)|}{2}$$
 ---
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -133,6 +134,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

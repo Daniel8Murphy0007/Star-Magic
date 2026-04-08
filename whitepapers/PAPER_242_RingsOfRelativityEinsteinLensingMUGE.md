@@ -155,9 +155,10 @@ geometry of GAL-CLUS-022058s ($\theta_E \approx 10''$, confirmed by HST imaging)
 
 ---
 
-*PAPER_242 | Session 60 | CP3 class 111 (RingsOfRelativityEinsteinLensingMUGECalculator) | UQFF v4.10*
+*PAPER_242 \| Session 60 \| CP3 class 111 (RingsOfRelativityEinsteinLensingMUGECalculator) \| UQFF v4.10*
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -186,6 +187,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

@@ -146,6 +146,7 @@ Combined with Papers #96–#104 (FRB, Whittaker, Big Bang, Plasma Shield, THz, M
 *Source: validate_drawings_models.py (BH_PHASES_MODEL) | validate_all_models.py (10 models) | Drawings 5–9*
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -174,6 +175,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

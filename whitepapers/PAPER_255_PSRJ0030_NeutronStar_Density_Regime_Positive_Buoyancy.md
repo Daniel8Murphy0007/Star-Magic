@@ -123,9 +123,10 @@ PSR J0030+0451 is an ALMA Cycle 12 proposal target. Observable UQFF signatures i
 
 ---
 
-*PAPER_255 | UQFF v4.27 | Star-Magic | Session 72d | March 2026*
+*PAPER_255 \| UQFF v4.27 \| Star-Magic \| Session 72d \| March 2026*
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -154,6 +155,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

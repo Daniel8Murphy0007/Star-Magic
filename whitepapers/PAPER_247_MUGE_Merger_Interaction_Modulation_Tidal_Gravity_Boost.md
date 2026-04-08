@@ -144,9 +144,10 @@ For the default Antennae parameters: integrated boost ˜ `g_base × 0.1 × 400 M
 
 ---
 
-*PAPER_247 | UQFF v4.27 | Star-Magic | Session 62 | March 2026*
+*PAPER_247 \| UQFF v4.27 \| Star-Magic \| Session 62 \| March 2026*
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -175,6 +176,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

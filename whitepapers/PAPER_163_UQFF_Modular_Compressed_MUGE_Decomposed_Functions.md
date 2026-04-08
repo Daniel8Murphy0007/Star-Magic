@@ -174,6 +174,7 @@ double compute_compressed_MUGE_modular(const MUGESystem& sys,
 **Supersedes:** N/A (extends PAPER_090) | **Related:** PAPER_090 (9-term compressed), PAPER_158 (hybrid blending uses g_comp), PAPER_164 (quantum term calibration from CERN)
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -202,6 +203,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

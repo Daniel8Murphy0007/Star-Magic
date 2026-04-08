@@ -109,6 +109,7 @@ All first 10 known Riemann zeros have $\text{Re}(s) = 0.5000...$:
 ---
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -137,6 +138,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)
@@ -198,4 +200,4 @@ a potential bridge between number-theoretic and physical regularity proofs.
 *Cite PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
 
 
-*PAPER_609 | Class #196 | Session 159 | Star-Magic UQFF Framework*
+*PAPER_609 \| Class #196 \| Session 159 \| Star-Magic UQFF Framework*

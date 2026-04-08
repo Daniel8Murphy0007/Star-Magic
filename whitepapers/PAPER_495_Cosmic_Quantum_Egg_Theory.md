@@ -454,6 +454,7 @@ $$g_{CQE}(r,t) = \sum_{i=1}^{26}\left[U_{g1,i} + U_{g2,i} + U_{g3,i} + U_{g4,i}\
 - The 26D chaotic dynamics engine predicts that dimensional shell boundaries produce discrete energy transitions at scales $E_{shell} \sim \rho_{SCm,i} \cdot c^2 \cdot V_{shell,i}$, falsifiable with next-generation gravitational wave detectors.
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -482,6 +483,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

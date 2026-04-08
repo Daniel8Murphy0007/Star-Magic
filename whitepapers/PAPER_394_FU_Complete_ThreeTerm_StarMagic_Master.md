@@ -147,6 +147,7 @@ tensor trace $\text{tr}(A_{\mu\nu})$. Verified simulation outputs confirm $F_U(\
 -2.064\times10^{59}$ with Ug3 as the dominant driving term via $E_{\text{react}} = 8.808\times10^{54}$ J.
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -175,6 +176,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

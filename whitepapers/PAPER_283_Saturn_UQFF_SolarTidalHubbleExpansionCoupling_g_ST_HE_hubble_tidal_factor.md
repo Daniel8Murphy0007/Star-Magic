@@ -179,6 +179,7 @@ hubble_tidal_factor = 1.0 + computeHz() * t_Solar_age;
 *Star-Magic UQFF 2.0 Framework — © Daniel T. Murphy, March 2026*
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -207,6 +208,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

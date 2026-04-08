@@ -150,9 +150,10 @@ with invariant $\Phi(\mathcal{C}_{10^{-12}}) = +2.11 \times 10^{208}$ N. This cl
 
 ---
 
-*PAPER_257 | UQFF v4.27 | Star-Magic | Session 72d | March 2026*
+*PAPER_257 \| UQFF v4.27 \| Star-Magic \| Session 72d \| March 2026*
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -181,6 +182,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

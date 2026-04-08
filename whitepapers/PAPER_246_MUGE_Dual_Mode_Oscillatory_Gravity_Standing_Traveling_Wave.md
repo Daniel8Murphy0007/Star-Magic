@@ -148,9 +148,10 @@ The **Hubble resonance condition** `T_H_gyr = 2p` is the unique epoch at which M
 
 ---
 
-*PAPER_246 | UQFF v4.27 | Star-Magic | Session 62 | March 2026*
+*PAPER_246 \| UQFF v4.27 \| Star-Magic \| Session 62 \| March 2026*
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -179,6 +180,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

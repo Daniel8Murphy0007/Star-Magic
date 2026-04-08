@@ -258,6 +258,7 @@ The lensing ring geometry satisfies the same mathematical condition as the MT me
 **Cross-links:** PAPER_152 (cosmological baseline), PAPER_154 (Navier-Stokes jets), PAPER_155 (SM limiting case)
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -286,6 +287,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

@@ -242,6 +242,7 @@ The UQFF Buoyancy + Quadratic mode provides a complete quantum vacuum treatment 
 **Cross-links:** PAPER_134 (Ug2 heliosphere), PAPER_139 (Ug4i metallic H), PAPER_133 (F_U)
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -270,6 +271,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

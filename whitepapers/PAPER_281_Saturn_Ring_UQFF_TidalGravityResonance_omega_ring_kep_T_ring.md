@@ -133,6 +133,7 @@ WOLFRAM_TERM_SATURN_RING: "SaturnUQFF:omega_ring_kep=Sqrt[GM/r_ring^3]=1.481e-4 
 *Copyright — Daniel T. Murphy, UQFF 2.0, Session 78, March 2026.*
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -161,6 +162,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

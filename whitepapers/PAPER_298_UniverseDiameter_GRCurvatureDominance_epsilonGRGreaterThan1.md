@@ -158,6 +158,7 @@ all 25 prior UQFF epsilon_GR<<1 [PAPER_298]
 *Copyright Daniel T. Murphy — UQFF Whitepaper PAPER_298 — Session 84, March 17, 2026*
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -186,6 +187,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

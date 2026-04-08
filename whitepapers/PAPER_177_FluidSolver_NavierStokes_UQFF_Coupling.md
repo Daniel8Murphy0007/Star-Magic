@@ -190,6 +190,7 @@ system in the 7-system canonical set, coupling fluid dynamics to UQFF.
 - PAPER_178 (3D simulation entities that host fluid simulations)
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -218,6 +219,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

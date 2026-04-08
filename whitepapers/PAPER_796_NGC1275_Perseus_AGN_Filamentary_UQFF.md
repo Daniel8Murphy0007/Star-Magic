@@ -117,6 +117,7 @@ UQFF applied to NGC 1275 yields g_primary ≈ 3.160×10⁻³ m/s² (EM-enhanced 
 *PAPER_796, CP4 UQFF class #380. v5.45. Session 189.*
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -145,6 +146,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

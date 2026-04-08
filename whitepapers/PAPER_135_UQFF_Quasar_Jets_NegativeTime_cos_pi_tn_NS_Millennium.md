@@ -206,6 +206,7 @@ UQFF resolves the quasar jet asymmetry mystery: opposing jets are unequal becaus
 **Cross-links:** PAPER_133 (F_U), PAPER_136 (planetary cores), �1.13 PAPER_114 (Navier-Stokes)
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -234,6 +235,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

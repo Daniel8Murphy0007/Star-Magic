@@ -1,10 +1,10 @@
 # PAPER_666: UQFF Gravitational Wave Power Suppression
-**Author:** Daniel T. Murphy
-**Subtitle:** Derives UQFF suppression factors on GW power (Peters formula) from aether absorption, SCm damping, f_TRZ, and U_m string impedance.
-**Module:** UQFFGWSuppression  
-**Session:** Session 172  
-**Date:** April 2, 2026  
-**Version:** v5.29  
+**Author:** Daniel T. Murphy\
+**Subtitle:** Derives UQFF suppression factors on GW power (Peters formula) from aether absorption, SCm damping, f_TRZ, and U_m string impedance.\
+**Module:** UQFFGWSuppression\
+**Session:** Session 172\
+**Date:** April 2, 2026\
+**Version:** v5.29\
 **Status:** Complete — CP4 #250 | UQFF Session 172
 
 ---
@@ -44,9 +44,11 @@ CP4 #250 — `UQFFGWSuppressionCalculator`
 
 
 ---
-*PAPER_666 | Session 172 | Star-Magic UQFF Framework v5.29 | Daniel Murphy*
+
+*PAPER_666 \| Session 172 \| Star-Magic UQFF Framework v5.29 \| Daniel Murphy*
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -69,12 +71,14 @@ $$\boxed{\frac{\delta S}{\delta \phi_{\rm NS}} = \nabla^2 \phi_{\rm NS} - (4\pi 
 
 ### §A.4 Cosmogenesis Linkage Chain
 
-$$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\rm NS} = 0$$
+$$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm}$$
+
+$$\xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\rm NS} = 0$$
 
 The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g forces) through vacuum density initialization to the sector-specific equation of motion. Every term in the E-L equation inherits its physical origin from the cosmogenesis master.
 
-
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)
@@ -115,9 +119,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
 
-
 ---
-
 
 ## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 

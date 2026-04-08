@@ -133,6 +133,7 @@ def compute_a_wormhole(r: float, b: float = 1.0,
 **Supersedes:** N/A (extends PAPER_146) | **Related:** PAPER_146 (12-term), PAPER_153 (wormhole metric), PAPER_091 (resonance framework)
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -161,6 +162,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

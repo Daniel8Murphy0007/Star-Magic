@@ -116,6 +116,7 @@ Three-UQFF applied to NGC 5335 completes the six-spiral UQFF batch from the June
 *PAPER_805, CP4 Three-UQFF class #389. v5.45. Session 189.*
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -144,6 +145,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

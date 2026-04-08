@@ -102,6 +102,7 @@ The UQFF formulation explicitly identifies this as a distinct gravitational-equi
 - **Cross-references:** PAPER_311 (wind shock), PAPER_313 (torus magnetic confinement)
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -130,6 +131,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

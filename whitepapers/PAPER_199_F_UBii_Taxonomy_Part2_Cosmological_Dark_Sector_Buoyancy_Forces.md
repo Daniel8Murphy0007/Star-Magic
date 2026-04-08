@@ -289,6 +289,7 @@ F_UBii,photo = F_rel × (?_evap = e·L_X·R_p³/(GM_p²·K(?)) / E_LEP) × Q_wav
 - PAPER_196: Triadic Master Equation System
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -317,6 +318,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

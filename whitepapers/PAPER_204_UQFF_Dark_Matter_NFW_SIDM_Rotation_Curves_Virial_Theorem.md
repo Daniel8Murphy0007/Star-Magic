@@ -239,6 +239,7 @@ Um,merg(t) = µ(?_vac)·(1-e^{-?t})·[3r_vir/(5GM)]
 - Planck 2015 lensing
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -267,6 +268,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

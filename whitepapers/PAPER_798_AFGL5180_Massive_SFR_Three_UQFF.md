@@ -127,6 +127,7 @@ Three-UQFF applied to AFGL 5180 yields F_U_g1 ≈ 8.84×10⁻⁴² N, R(t) ≈ �
 *PAPER_798, CP4 Three-UQFF class #382. v5.45. Session 189.*
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -155,6 +156,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

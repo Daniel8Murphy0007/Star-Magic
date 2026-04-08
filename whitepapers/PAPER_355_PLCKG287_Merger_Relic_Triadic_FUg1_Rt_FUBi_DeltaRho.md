@@ -83,6 +83,7 @@ The triadic framework � simultaneously computing FU_g1, R(t), and FU_Bi_i � 
 **UQFF computed:** GW strain UQFF correction factor = 3.33e-1 (33.3% reduction from GR baseline); accumulated phase lag delta_phi = 3.68e+2 cycles over 100s inspiral.
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -111,6 +112,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

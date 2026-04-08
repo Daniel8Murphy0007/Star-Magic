@@ -49,6 +49,7 @@ $$U_{m,i} = \mu_J\,\omega_{THz}\,V_{ch1,i}\left(1 - e^{-\kappa(t+t_i)}\right)$$
 
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -77,6 +78,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

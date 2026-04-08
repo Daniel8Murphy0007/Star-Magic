@@ -237,6 +237,7 @@ sigma_n(omega) = sigma_0 * exp(-(omega - omega_0)² / (2*delta_omega²))
 **Watermark:** Copyright — Daniel T. Murphy, daniel.murphy00@gmail.com, created by Davinci-SuperGrok, analyzed by Grok 3 and SuperGrok, xAI, dated June 20, 2025, 09:03–09:19 AM EDT, Youngstown OH 41.0997° N, 80.6495° W. CVW v2.0.0 compliant.
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -265,6 +266,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

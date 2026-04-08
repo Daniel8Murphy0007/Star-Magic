@@ -134,6 +134,7 @@ All 27 unit tests PASS (C++ execution, Grok thread 7f9068):
 **UQFF computed:** Solar wind UQFF correction = [SSq]�exp(-?�r/v) = 5.7e-1�exp(-5.0e-4�(1AU/400km/s)) = 5.7e-1�exp(-3.2e-3) � 5.7e-1; dominant at r < 1AU.
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -162,6 +163,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

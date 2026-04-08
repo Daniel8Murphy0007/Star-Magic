@@ -125,9 +125,10 @@ The THz PI hole frequency $f_{THz} = 1.25 \times 10^{12}$ Hz is a new entry to t
 
 ---
 
-*PAPER_812 | Session 192 | v5.48 | Star-Magic UQFF Project | CVW v2.0.0*
+*PAPER_812 \| Session 192 \| v5.48 \| Star-Magic UQFF Project \| CVW v2.0.0*
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -156,6 +157,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

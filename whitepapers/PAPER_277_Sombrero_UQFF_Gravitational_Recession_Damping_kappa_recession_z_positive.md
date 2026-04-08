@@ -170,6 +170,7 @@ double g_total = g_sum * kappa_recession * corr_SC;
 *UQFF 2.0 — All physics is additive. The κ_recession factor does not replace any prior term — it is a cosmological outer-multiplier consistent with vacuum field energy propagation theory. — Daniel T. Murphy, Session 77, March 2026.*
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -198,6 +199,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

@@ -93,6 +93,7 @@ The Orion Nebula at t_age = 300 kyr is still **28.5–57× wind-dominated** (η_
 *Series first: FIRST UQFF HII region ram pressure dominance ratio. Distinguishes compact OB-driven HII (η_wind=28.47) from extended GMC HII and from bipolar PN wind shocks (η_wind~7×10⁵, PAPER_311).*
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -121,6 +122,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

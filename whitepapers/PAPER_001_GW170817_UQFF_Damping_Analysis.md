@@ -299,6 +299,7 @@ GW170817 provides the first test of UQFF damping in a BNS regime. The predicted 
 *Implementation status: all 4 modes operational in \MAIN_1_CoAnQi.cpp\, \CondensedPhysics.py\, and \CondensedPhysics2.py\.*
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -327,6 +328,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

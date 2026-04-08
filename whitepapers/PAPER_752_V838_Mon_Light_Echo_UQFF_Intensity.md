@@ -95,6 +95,7 @@ I_echo = [2.3×10³⁸ / (4π × (2.838×10¹⁶)²)]
 The UQFF light-echo model for V838 Mon adds dust-density attenuation via the Ug1 vacuum field and a ×11 vacuum-correction factor, reproducing the observed brightness ring over 3 post-outburst years. PAPER_752, CP4 class #336. v5.39.
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -123,6 +124,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

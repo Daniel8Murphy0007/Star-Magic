@@ -138,6 +138,7 @@ def compute_delta_A(T_s00: float = 1.127e7, eta: float = 1e-22,
 **Supersedes:** N/A (new coupling) | **Related:** PAPER_063 (F_U_Bi_i Integral — A scalar appears in sum), PAPER_042 (GR UQFF framework), PAPER_066 (SCm state equations)
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -166,6 +167,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

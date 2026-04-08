@@ -84,6 +84,7 @@ Two-body tests: UQFF DPM analysis of Halley's Comet ($e=0.967$) yields δ=11.3, 
 ---
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -112,6 +113,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)
@@ -173,4 +175,4 @@ universal parameter set constitutes a parameter-free nuclear mass prediction.
 *Cite PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
 
 
-*PAPER_611 | Class #198 | Session 159 | Star-Magic UQFF Framework*
+*PAPER_611 \| Class #198 \| Session 159 \| Star-Magic UQFF Framework*

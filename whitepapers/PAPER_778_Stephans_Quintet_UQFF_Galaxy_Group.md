@@ -122,6 +122,7 @@ UQFF applied to Stephan's Quintet yields g_SQ ≈ 1.053×10⁻¹ m/s², consiste
 *PAPER_778, CP4 class #362. v5.41.*
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -150,6 +151,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

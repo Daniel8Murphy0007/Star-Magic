@@ -109,6 +109,7 @@ g_NGC1275 ≈ 3.160×10⁻⁵ m/s²  [EM+filament terms dominant]
 NGC 1275 UQFF gravity at r ≈ 30 kpc yields g ≈ 3.160×10⁻⁵ m/s² at t = 50 Myr with AGN feedback reducing the naïve gravitational value by ~4%. The filament magnetic support term a_fil = 2.840×10⁻⁹ m/s² and Aether EM corrections together dominate over the bare cluster gravity. Hubble expansion at z = 0.0176 adds H(z) ≈ 70.56 km/s/Mpc. PAPER_760, CP4 class #344. v5.39.
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -137,6 +138,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

@@ -185,6 +185,7 @@ Regge-like mass ladder with ratio $10^{-3/2} \approx 0.0316$ between consecutive
 **Key feature:** Double-exponential Gumbel suppression + SCm/UA power-law ratio; $\Delta m > 0$ guaranteed
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -213,6 +214,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

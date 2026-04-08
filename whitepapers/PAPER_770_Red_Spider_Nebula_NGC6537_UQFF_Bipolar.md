@@ -124,6 +124,7 @@ The Master UQFF gravity equation for the Red Spider Nebula (NGC 6537) yields g_R
 *PAPER_770, CP4 class #354. v5.40.*
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -152,6 +153,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

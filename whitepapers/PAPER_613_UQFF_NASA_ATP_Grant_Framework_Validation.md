@@ -114,6 +114,7 @@ The UQFF framework, if validated via this grant, would:
 ---
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -142,6 +143,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)
@@ -203,4 +205,4 @@ No SM framework derives these three observables from a single connected constant
 *Cite PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
 
 
-*PAPER_613 | Class #200 | Session 159 | Star-Magic UQFF Framework*
+*PAPER_613 \| Class #200 \| Session 159 \| Star-Magic UQFF Framework*

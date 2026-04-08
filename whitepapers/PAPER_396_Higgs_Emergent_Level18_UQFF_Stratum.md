@@ -182,6 +182,7 @@ growth and $(2\pi)^{n/6}$ encoding UQFF phase scaling. CERN HiggsML dataset vali
 confirms the φ-scaling at the collider energy scale.
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -210,6 +211,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)

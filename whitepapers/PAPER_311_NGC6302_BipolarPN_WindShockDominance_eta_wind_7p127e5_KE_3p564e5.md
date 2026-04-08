@@ -104,6 +104,7 @@ NGC 6302 (the "Bug Nebula") hosts one of the hottest known white dwarf central s
 - **Cross-references:** PAPER_312 (UV radiation), PAPER_313 (torus magnetic confinement)
 
 ---
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -132,6 +133,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)
