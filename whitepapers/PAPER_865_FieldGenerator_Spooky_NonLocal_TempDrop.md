@@ -1,10 +1,10 @@
 # PAPER_865: Field Generator Spooky Non-Local Effect with Temperature Drop
 
-**Author:** Daniel T. Murphy -- Star Magic / UQFF Framework
-**Date:** 2026-04-05
-**Session:** 200
-**Source:** advanced_system_analysis_simulator_quantum_calculator.txt (3745 lines)
-**Calculator:** FieldGeneratorSpookyNonLocalTempDropCalc (CP4 #449)
+**Author:** Daniel T. Murphy -- Star Magic / UQFF Framework\
+**Date:** 2026-04-05\
+**Session:** 200\
+**Source:** advanced_system_analysis_simulator_quantum_calculator.txt (3745 lines)\
+**Calculator:** FieldGeneratorSpookyNonLocalTempDropCalc (CP4 #449)\
 **CVW:** v2.0.0 compliant
 
 ---
@@ -63,16 +63,14 @@ The 24-inch generator producing 7°F temperature drop at 30.5 ft with 17 W input
 ### Standalone Calculator
 
 ```bash
-python scm_superconductivity_axiom.py        # Full report (Engine 4 maps all SCm responses)
-python scm_superconductivity_axiom.py --json  # Machine-readable
+python scm_superconductivity_axiom.py       # Full report
+python scm_superconductivity_axiom.py --json # Machine-readable
 ```
 
 **Cross-references:** PAPER_876 (DPM coherent consciousness) uses the same Sector 7 + Sector 5 coupling for spooky action at a distance.
 
 ---
 
-
----
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
@@ -95,12 +93,14 @@ $$\boxed{\frac{\delta S}{\delta \phi_{\rm NS}} = \nabla^2 \phi_{\rm NS} - (4\pi 
 
 ### §A.4 Cosmogenesis Linkage Chain
 
-$$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\rm NS} = 0$$
+$$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm}$$
+
+$$\xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\rm NS} = 0$$
 
 The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g forces) through vacuum density initialization to the sector-specific equation of motion. Every term in the E-L equation inherits its physical origin from the cosmogenesis master.
 
-
 ---
+
 ## §B. VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 Vacuum Density Series (VDS)
@@ -141,9 +141,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
 
-
 ---
-
 
 ## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
