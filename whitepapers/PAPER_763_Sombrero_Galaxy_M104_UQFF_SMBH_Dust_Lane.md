@@ -1,51 +1,51 @@
-# PAPER_763: Sombrero Galaxy M104 NGC 4594 — UQFF SMBH Dust Lane Evolution
+# PAPER_763: Sombrero Galaxy M104 NGC 4594 -- UQFF SMBH Dust Lane Evolution
 
 **Author:** Daniel T. Murphy  
 **Framework:** UQFF (Universal Quantum Field Superconductive Framework)  
 **Session:** 181 | v5.40  
 **Date:** 2026  
-**CP4 Class:** #347 — SombreroGalaxyM104UQFFCalculator  
+**CP4 Class:** #347 -- SombreroGalaxyM104UQFFCalculator  
 
 ---
 
 ## Abstract
 
-The Sombrero Galaxy (M104, NGC 4594) is a majestic spiral galaxy located ~28 million light-years away in the Virgo Cluster, featuring a supermassive black hole (SMBH) of ~10⁹ M☉, a prominent dust lane, and 2,000 globular clusters. This paper derives the Master Universal Gravity UQFF equation governing its gravitational evolution, incorporating galactic and SMBH gravitational terms, dust lane dynamical friction, Hubble expansion, and Aether electromagnetic effects. The result g_Sombrero ≈ 5.351×10⁻¹ m/s² is dominated by the SMBH and dust lane contributions.
+The Sombrero Galaxy (M104, NGC 4594) is a majestic spiral galaxy located ~28 million light-years away in the Virgo Cluster, featuring a supermassive black hole (SMBH) of ~10^9 M☉, a prominent dust lane, and 2,000 globular clusters. This paper derives the Master Universal Gravity UQFF equation governing its gravitational evolution, incorporating galactic and SMBH gravitational terms, dust lane dynamical friction, Hubble expansion, and Aether electromagnetic effects. The result g_Sombrero ≈ 5.351x10^{-}1 m/s^2 is dominated by the SMBH and dust lane contributions.
 
 ---
 
 ## 1. Introduction
 
-Hubble's Wide Field Camera 3 mosaic reveals the Sombrero Galaxy's iconic structure: a bright bulge of older stars, a striking dust lane rich in gas and dust, and extended spiral arms. The central SMBH (~10⁹ M☉) dominates the core's dynamics, driving stellar velocities and influencing the bulge. The dust lane (gas density ~10⁻²⁰ kg/m³) contributes dynamical friction to orbiting material. The UQFF framework captures these multi-scale dynamics through four coupled equation terms.
+Hubble's Wide Field Camera 3 mosaic reveals the Sombrero Galaxy's iconic structure: a bright bulge of older stars, a striking dust lane rich in gas and dust, and extended spiral arms. The central SMBH (~10^9 M☉) dominates the core's dynamics, driving stellar velocities and influencing the bulge. The dust lane (gas density ~10^{-}2^0 kg/m^3) contributes dynamical friction to orbiting material. The UQFF framework captures these multi-scale dynamics through four coupled equation terms.
 
 ---
 
 ## 2. Master UQFF Gravity Equation
 
 ```
-g_Sombrero(r, t) = (G * M) / r² * (1 + H(z)*t) * (1 + f_TRZ)
-                 + (G * M_BH) / r_BH²
+g_Sombrero(r, t) = (G * M) / r^2 * (1 + H(z)*t) * (1 + f_TRZ)
+                 + (G * M_BH) / r_BH^2
                  + a_dust
-                 + q*(v × B) * (1 + ρ_vac,[UA] / ρ_vac,[SCm]) * 10⁻¹²
+                 + q*(v x B) * (1 + rho_vac,[UA] / rho_vac,[SCm]) * 10^{-}1^2
 ```
 
 ### 2.1 Parameters
 
 | Parameter | Symbol | Value | Source |
 |-----------|--------|-------|--------|
-| Galaxy total mass | M | 1.01×10¹¹ M☉ = 2.009×10⁴¹ kg | Hubble |
-| Galaxy radius (½ diam.) | r | 2.36×10²⁰ m (~25 kly) | Hubble |
-| SMBH mass | M_BH | 10⁹ M☉ = 1.989×10³⁹ kg | Stellar velocities |
-| SMBH influence radius | r_BH | 10¹⁵ m (~0.1 pc) | Labs |
-| Dust lane density | ρ_dust | 10⁻²⁰ kg/m³ | Labs |
-| Orbital velocity | v_orbit | 2×10⁵ m/s | Labs |
+| Galaxy total mass | M | 1.01x10^{1}1 M☉ = 2.009x10^{4}1 kg | Hubble |
+| Galaxy radius (1/2 diam.) | r | 2.36x10^{2}0 m (~25 kly) | Hubble |
+| SMBH mass | M_BH | 10^9 M☉ = 1.989x10^{3}9 kg | Stellar velocities |
+| SMBH influence radius | r_BH | 10^{1}5 m (~0.1 pc) | Labs |
+| Dust lane density | ρ_dust | 10^{-}2^0 kg/m^3 | Labs |
+| Orbital velocity | v_orbit | 2x10^5 m/s | Labs |
 | Redshift | z | 0.0063 | Distance calc |
-| Age | t | 10×10⁹ yr = 3.156×10¹⁷ s | Typical spiral |
-| EM velocity | v | 2×10⁵ m/s | Galactic |
-| Galactic B field | B | 10⁻⁵ T | Labs |
-| ρ_vac,[UA] | — | 7.09×10⁻³⁶ J/m³ | UQFF |
-| ρ_vac,[SCm] | — | 7.09×10⁻³⁷ J/m³ | UQFF |
-| f_TRZ | — | 0.1 | UQFF |
+| Age | t | 10x10^9 yr = 3.156x10^{1}7 s | Typical spiral |
+| EM velocity | v | 2x10^5 m/s | Galactic |
+| Galactic B field | B | 10^{-}5 T | Labs |
+| ρ_vac,[UA] | -- | 7.09x10^{-}3^6 J/m^3 | UQFF |
+| ρ_vac,[SCm] | -- | 7.09x10^{-}3^7 J/m^3 | UQFF |
+| f_TRZ | -- | 0.1 | UQFF |
 
 ---
 
@@ -53,29 +53,29 @@ g_Sombrero(r, t) = (G * M) / r² * (1 + H(z)*t) * (1 + f_TRZ)
 
 ### Step 1: Galactic Base Gravitational Term
 ```
-g_grav = (6.6743e-11 × 2.009e41) / (2.36e20)²
-       = 1.341e31 / 5.570e40 = 2.408e-10 m/s²
+g_grav = (6.6743e-11 x 2.009e41) / (2.36e20)^2
+       = 1.341e31 / 5.570e40 = 2.408e-10 m/s^2
 ```
 
 ### Step 2: SMBH Gravitational Contribution
 ```
-g_BH = (6.6743e-11 × 1.989e39) / (1e15)²
-     = 1.327e29 / 1e30 = 1.327e-1 m/s²
+g_BH = (6.6743e-11 x 1.989e39) / (1e15)^2
+     = 1.327e29 / 1e30 = 1.327e-1 m/s^2
 ```
 
 ### Step 3: Dust Lane Dynamical Friction
 ```
-D_dust = ρ_dust × v_orbit² = 1e-20 × (2e5)² = 4e-10 N/m²
-a_dust = 4e-10 / 1e-21 = 4e11 m/s²  (scaled by mass density)
-a_dust_macro = 4e11 × 10⁻¹² = 4e-1 m/s²  (macroscopic scaling)
+D_dust = rho_dust x v_orbit^2 = 1e-20 x (2e5)^2 = 4e-10 N/m^2
+a_dust = 4e-10 / 1e-21 = 4e11 m/s^2  (scaled by mass density)
+a_dust_macro = 4e11 x 10^{-}1^2 = 4e-1 m/s^2  (macroscopic scaling)
 ```
 
 ### Step 4: Cosmic Expansion
 ```
-H(z) = 70 × sqrt(0.3 × (1.0063)³ + 0.7) = 70 × sqrt(1.0057) = 70.196 km/s/Mpc
-H(z) = 70.196e3 / 3.086e22 = 2.274e-18 s⁻¹
-H(z) × t = 2.274e-18 × 3.156e17 = 7.177e-1
-1 + H(z) × t = 1.7177
+H(z) = 70 x sqrt(0.3 x (1.0063)^3 + 0.7) = 70 x sqrt(1.0057) = 70.196 km/s/Mpc
+H(z) = 70.196e3 / 3.086e22 = 2.274e-18 s^{-}1
+H(z) x t = 2.274e-18 x 3.156e17 = 7.177e-1
+1 + H(z) x t = 1.7177
 ```
 
 ### Step 5: Time-Reversal Correction
@@ -85,24 +85,24 @@ H(z) × t = 2.274e-18 × 3.156e17 = 7.177e-1
 
 ### Step 6: Electromagnetic [UA] Term
 ```
-q × (v × B) = 1.602e-19 × 2e5 × 1e-5 = 3.204e-19 N
-a = 3.204e-19 / 1.673e-27 = 1.915e8 m/s²
-(1 + ρ_vac,[UA]/ρ_vac,[SCm]) = 11
-Total = 1.915e8 × 11 × 10⁻¹² = 2.107e-3 m/s²
+q x (v x B) = 1.602e-19 x 2e5 x 1e-5 = 3.204e-19 N
+a = 3.204e-19 / 1.673e-27 = 1.915e8 m/s^2
+(1 + rho_vac,[UA]/rho_vac,[SCm]) = 11
+Total = 1.915e8 x 11 x 10^{-}1^2 = 2.107e-3 m/s^2
 ```
 
 ### Step 7: Final Solution
 ```
-g_Sombrero = (2.408e-10) × (1.7177) × (1.1) + 1.327e-1 + 4e-1 + 2.107e-3
+g_Sombrero = (2.408e-10) x (1.7177) x (1.1) + 1.327e-1 + 4e-1 + 2.107e-3
            = 4.552e-10 + 1.327e-1 + 4.000e-1 + 2.107e-3
-           = 5.351e-1 m/s²
+           = 5.351e-1 m/s^2
 ```
 
 ---
 
 ## 4. Physical Interpretation
 
-The Sombrero Galaxy's gravity is dominated by the dust lane term (4.0×10⁻¹ m/s²) and the SMBH contribution (1.327×10⁻¹ m/s²), reflecting the galaxy's defining structural features. The classical galactic term (g_grav × H(z) corrections) is negligible by comparison. The Aether term (2.107×10⁻³) provides a non-standard correction from [UA]/[SCm] vacuum energy coupling through the ISM.
+The Sombrero Galaxy's gravity is dominated by the dust lane term (4.0x10^{-}1 m/s^2) and the SMBH contribution (1.327x10^{-}1 m/s^2), reflecting the galaxy's defining structural features. The classical galactic term (g_grav x H(z) corrections) is negligible by comparison. The Aether term (2.107x10^{-}3) provides a non-standard correction from [UA]/[SCm] vacuum energy coupling through the ISM.
 
 ---
 
@@ -116,7 +116,7 @@ The Sombrero Galaxy's gravity is dominated by the dust lane term (4.0×10⁻¹ m
 
 ## 6. Conclusions
 
-The Master UQFF gravity equation for the Sombrero Galaxy yields g_Sombrero ≈ 5.351×10⁻¹ m/s², with dust lane friction and SMBH terms dominating. This demonstrates how the galaxy's iconic structural features — its massive central black hole and dust lane — express directly as primary UQFF gravity components, while Aether provides a secondary non-standard correction.
+The Master UQFF gravity equation for the Sombrero Galaxy yields g_Sombrero ≈ 5.351x10^{-}1 m/s^2, with dust lane friction and SMBH terms dominating. This demonstrates how the galaxy's iconic structural features -- its massive central black hole and dust lane -- express directly as primary UQFF gravity components, while Aether provides a secondary non-standard correction.
 
 *PAPER_763, CP4 class #347. v5.40.*
 
@@ -159,7 +159,7 @@ The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs t
 
 $$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.101$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m³.
+For this system, the local VDS sub-ratio is $0.101$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m^3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -171,7 +171,7 @@ Since $p_{\rm DVP} = 43$ is **resonant** (threshold at $p > 26$), the system's v
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
-The BSH saturation timescale for this sector is **10⁶ M_BH/M_⊙ yr** (quasi-normal mode ringdown):
+The BSH saturation timescale for this sector is **10^6 M_BH/M_⊙ yr** (quasi-normal mode ringdown):
 
 $$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
 
@@ -188,25 +188,25 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.101 | ✓ Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 43$ | ✓ Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
+| κ decay | $5.0 \times 10^{-4}$ day^{-}1 | Applied in VDS exponential | ✓ Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
 
 
 ---
 
 
-## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## §SM Anchors -- Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
 | Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | ✓ Consistent |
-| Cosmological constant Λ | 1.1×10⁻⁵² m⁻² (UQFF vacuum term) | 1.114×10⁻⁵² m⁻² | Planck 2018 | ✓ Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10⁻³⁵/yr | Super-K 2024 | ✓ Consistent |
+| Cosmological constant Λ | 1.1x10^{-}5^2 m^{-}2 (UQFF vacuum term) | 1.114x10^{-}5^2 m^{-}2 | Planck 2018 | ✓ Consistent |
+| Proton decay rate | κ = 0.0005/day -> Γ_p suppression | < 4.17x10^{-}3^5/yr | Super-K 2024 | ✓ Consistent |
 | UQFF buoyancy signature | F_U_Bi_i unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF-SM bridge.*
 
 
 ---

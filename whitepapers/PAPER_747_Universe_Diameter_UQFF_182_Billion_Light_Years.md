@@ -1,10 +1,10 @@
-# PAPER_747: Universe Diameter Equation — UQFF Observable Universe Scale
+# PAPER_747: Universe Diameter Equation -- UQFF Observable Universe Scale
 
 **Author:** Daniel T. Murphy  
 **Framework:** Universal Quantum Field Superconductive Framework (UQFF)  
 **Session:** 180 continuation | v5.38  
 **Date:** 2025  
-**CP4 Class:** #331 — UniverseDiameterUQFFCalculator  
+**CP4 Class:** #331 -- UniverseDiameterUQFFCalculator  
 
 ---
 
@@ -19,33 +19,33 @@ Standard cosmology places the observable universe radius at ~46.5 billion light-
 The standard model of cosmology gives the comoving distance to the particle horizon as:
 
 ```
-d_p ≈ c · ∫₀^t_0 dt'/a(t')
+d_p ~= c * integral_0^t_0 dt'/a(t')
 ```
 
 where a(t) is the scale factor. For ΛCDM with H_0 = 70 km/s/Mpc, Ω_m = 0.3, Ω_Λ = 0.7, this gives d_p ≈ 46.5 billion ly.
 
 However, the UQFF framework identifies four correction factors that modify this value:
-1. Hubble evolution correction (1 + H(z)·t_0)
-2. Dark energy/cosmological constant correction (1 + Λ·c²/(3·H_0²))
+1. Hubble evolution correction (1 + H(z)*t_0)
+2. Dark energy/cosmological constant correction (1 + Λ*c^2/(3*H_0^2))
 3. Quantum gravity correction via ψ_total
-4. Spacetime curvature correction (1 + k·r_c²)
+4. Spacetime curvature correction (1 + k*r_c^2)
 
 ---
 
 ## 2. UQFF Universe Diameter Equation
 
 ```
-D_universe = 2·D_p · (1+H(z)·t_0) · (1+Λ·c²/(3·H_0²))
-           · (1 + (ħ/√(Δx·Δp)) · ∫(ψ·H·ψ dV) / (G·M_total))
-           · (1 + k·r_c²)
+D_universe = 2*D_p * (1+H(z)*t_0) * (1+Lambda*c^2/(3*H_0^2))
+           * (1 + (hbar/√(Deltax*Deltap)) * integral(psi*H*psi dV) / (G*M_total))
+           * (1 + k*r_c^2)
 
-  D_p  = particle horizon distance = 46.5 billion ly = 4.40×10²⁶ m
-  t_0  = age of universe = 13.8 Gyr = 4.35×10¹⁷ s
-  H(z) = H_0 · √(0.3·(1+z)³ + 0.7)  [at z→0: H_0 = 2.268×10⁻¹⁸ s⁻¹]
-  Λ    = 1.1×10⁻⁵² m⁻²
-  c    = 3×10⁸ m/s
-  H_0  = 2.268×10⁻¹⁸ s⁻¹
-  k    = curvature parameter (≈ 0 for flat universe)
+  D_p  = particle horizon distance = 46.5 billion ly = 4.40x10^{2}6 m
+  t_0  = age of universe = 13.8 Gyr = 4.35x10^{1}7 s
+  H(z) = H_0 * √(0.3*(1+z)^3 + 0.7)  [at z->0: H_0 = 2.268x10^{-}1^8 s^{-}1]
+  Lambda    = 1.1x10^{-}5^2 m^{-}2
+  c    = 3x10^8 m/s
+  H_0  = 2.268x10^{-}1^8 s^{-}1
+  k    = curvature parameter (~= 0 for flat universe)
   r_c  = curvature radius
 ```
 
@@ -54,9 +54,9 @@ D_universe = 2·D_p · (1+H(z)·t_0) · (1+Λ·c²/(3·H_0²))
 ## 3. Factor 1: Hubble Evolution Correction
 
 ```
-(1 + H_0·t_0) = 1 + (2.268×10⁻¹⁸ s⁻¹) · (4.35×10¹⁷ s)
+(1 + H_0*t_0) = 1 + (2.268x10^{-}1^8 s^{-}1) * (4.35x10^{1}7 s)
               = 1 + 0.987
-              ≈ 1.987
+              ~= 1.987
 ```
 
 This factor accounts for the expansion of space between the particle horizon and today's comoving frame.
@@ -66,12 +66,12 @@ This factor accounts for the expansion of space between the particle horizon and
 ## 4. Factor 2: Dark Energy / Cosmological Constant Correction
 
 ```
-Λ·c² / (3·H_0²) = (1.1×10⁻⁵²) · (3×10⁸)² / (3 · (2.268×10⁻¹⁸)²)
+Lambda*c^2 / (3*H_0^2) = (1.1x10^{-}5^2) * (3x10^8)^2 / (3 * (2.268x10^{-}1^8)^2)
 
-Numerator: 1.1×10⁻⁵² × 9×10¹⁶ = 9.9×10⁻³⁶
-Denominator: 3 × 5.14×10⁻³⁶ = 1.54×10⁻³⁵
+Numerator: 1.1x10^{-}5^2 x 9x10^{1}6 = 9.9x10^{-}3^6
+Denominator: 3 x 5.14x10^{-}3^6 = 1.54x10^{-}3^5
 
-Λ·c²/(3·H_0²) = 9.9×10⁻³⁶ / 1.54×10⁻³⁵ ≈ 0.643
+Lambda*c^2/(3*H_0^2) = 9.9x10^{-}3^6 / 1.54x10^{-}3^5 ~= 0.643
 ```
 
 Therefore: (1 + 0.643) = 1.643
@@ -81,25 +81,25 @@ Therefore: (1 + 0.643) = 1.643
 ## 5. Factor 3: Quantum Gravity Correction
 
 ```
-Quantum factor = (ħ/√(Δx·Δp)) · ∫(ψ·H·ψ dV) / (G·M_total)
+Quantum factor = (hbar/√(Deltax*Deltap)) * integral(psi*H*psi dV) / (G*M_total)
 ```
 
-For cosmological scales with M_total ≈ 10⁵³ kg (observed baryons + DM):
+For cosmological scales with M_total ≈ 10^{5}3 kg (observed baryons + DM):
 ```
-ħ/√(Δx·Δp) ≈ √2 · ħ/(ħ) = √2   [from Heisenberg minimum]
+hbar/√(Deltax*Deltap) ~= √2 * hbar/(hbar) = √2   [from Heisenberg minimum]
 
-∫(ψ·H·ψ dV) ≈ E_total = M_total·c²
+integral(psi*H*psi dV) ~= E_total = M_total*c^2
 
-Quantum factor = √2 · M_total·c² / (G·M_total)
-               = √2 · c² / G
-               = 1.414 · (9×10¹⁶) / (6.674×10⁻¹¹)
-               ≈ 1.91×10²⁷
+Quantum factor = √2 * M_total*c^2 / (G*M_total)
+               = √2 * c^2 / G
+               = 1.414 * (9x10^{1}6) / (6.674x10^{-}1^1)
+               ~= 1.91x10^{2}7
 ```
 
 However, this must be normalized by the cosmological Planck scale energy:
 ```
-Quantum factor (normalized) ≈ √2 · ρ_vac,[SCm] / ρ_vac,[UA]
-                             = √2 · 0.1 = 0.141
+Quantum factor (normalized) ~= √2 * rho_vac,[SCm] / rho_vac,[UA]
+                             = √2 * 0.1 = 0.141
 ```
 
 Therefore: (1 + 0.141) = 1.141
@@ -110,17 +110,17 @@ Therefore: (1 + 0.141) = 1.141
 
 For k ≈ 0.001 (slightly positive curvature, consistent with Planck CMB data 1-sigma):
 ```
-r_c = √(3/Λ) = √(3 / 1.1×10⁻⁵²) = √(2.73×10⁵¹) ≈ 5.22×10²⁵ m
+r_c = √(3/Lambda) = √(3 / 1.1x10^{-}5^2) = √(2.73x10^{5}1) ~= 5.22x10^{2}5 m
 
-k·r_c² = 0.001 · (5.22×10²⁵)² = 0.001 · 2.72×10⁵¹ ≈ 2.72×10⁴⁸   [too large]
+k*r_c^2 = 0.001 * (5.22x10^{2}5)^2 = 0.001 * 2.72x10^{5}1 ~= 2.72x10^{4}8   [too large]
 ```
 
-Normalizing by H_0⁻² scale:
+Normalizing by H_0^{-}2 scale:
 ```
-k·r_c² / (c/H_0)² = k · (r_c · H_0 / c)²
-                   = 0.001 · (5.22×10²⁵ · 2.268×10⁻¹⁸ / 3×10⁸)²
-                   ≈ 0.001 · (39.4)²
-                   ≈ 1.55
+k*r_c^2 / (c/H_0)^2 = k * (r_c * H_0 / c)^2
+                   = 0.001 * (5.22x10^{2}5 * 2.268x10^{-}1^8 / 3x10^8)^2
+                   ~= 0.001 * (39.4)^2
+                   ~= 1.55
 ```
 
 Therefore: (1 + 1.55) = 2.55   [for slight positive curvature case]
@@ -132,20 +132,20 @@ For k=0 (flat): (1 + 0) = 1.0
 
 **For flat universe (k=0):**
 ```
-D_universe = 2 × 4.40×10²⁶ m × 1.987 × 1.643 × 1.141 × 1.0
-           = 8.80×10²⁶ × 1.987 × 1.643 × 1.141
-           = 8.80×10²⁶ × 3.724
-           = 3.28×10²⁷ m
-           = 3.28×10²⁷ / 9.461×10¹⁵ ly
-           ≈ 3.46×10¹¹ ly
-           ≈ 346 billion light-years
+D_universe = 2 x 4.40x10^{2}6 m x 1.987 x 1.643 x 1.141 x 1.0
+           = 8.80x10^{2}6 x 1.987 x 1.643 x 1.141
+           = 8.80x10^{2}6 x 3.724
+           = 3.28x10^{2}7 m
+           = 3.28x10^{2}7 / 9.461x10^{1}5 ly
+           ~= 3.46x10^{1}1 ly
+           ~= 346 billion light-years
 ```
 
-**For slightly positive curvature (k·r_c²=0.6, moderate estimate):**
+**For slightly positive curvature (k*r_c^2=0.6, moderate estimate):**
 ```
-D_universe = 2 × D_p × 1.987 × 1.643 × 1.141 × (1+0.6)
-           = 2 × D_p × 5.95
-           ≈ 182 billion ly
+D_universe = 2 x D_p x 1.987 x 1.643 x 1.141 x (1+0.6)
+           = 2 x D_p x 5.95
+           ~= 182 billion ly
 ```
 
 ---
@@ -153,11 +153,11 @@ D_universe = 2 × D_p × 1.987 × 1.643 × 1.141 × (1+0.6)
 ## 8. Interpretation: Why 182 Billion Light-Years
 
 The UQFF prediction of ~182 billion ly represents the **effective gravitational diameter** rather than the standard comoving diameter:
-- Hubble factor (~×2) accounts for expansion of the gravitational potential since CMB emission
-- Λ factor (~×1.6) accounts for accelerating expansion beyond standard radius
+- Hubble factor (~x2) accounts for expansion of the gravitational potential since CMB emission
+- Λ factor (~x1.6) accounts for accelerating expansion beyond standard radius
 - The quantum/curvature combined correction brings the total to ~182 bn ly
 
-This is distinct from (but consistent with) proposals that the universe may be significantly larger than the observable horizon, with some estimates in the range 150–500 billion ly.
+This is distinct from (but consistent with) proposals that the universe may be significantly larger than the observable horizon, with some estimates in the range 150-500 billion ly.
 
 ---
 
@@ -165,9 +165,9 @@ This is distinct from (but consistent with) proposals that the universe may be s
 
 | Standard Value | UQFF Value | Ratio |
 |----------------|------------|-------|
-| D = 93 bn ly (comoving) | D ≈ 182 bn ly | ×1.96 |
-| D_p = 46.5 bn ly (radius) | D_UQFF ≈ 91 bn ly (radius) | ×1.96 |
-| Observable mass ~10⁵³ kg | UQFF effective mass ~2×10⁵³ kg | ×2 |
+| D = 93 bn ly (comoving) | D ≈ 182 bn ly | x1.96 |
+| D_p = 46.5 bn ly (radius) | D_UQFF ≈ 91 bn ly (radius) | x1.96 |
+| Observable mass ~10^{5}3 kg | UQFF effective mass ~2x10^{5}3 kg | x2 |
 
 ---
 
@@ -178,7 +178,7 @@ The UQFF universe diameter equation predicts an effective observable diameter of
 ---
 
 *Copyright - Daniel T. Murphy, daniel.murphy00@gmail.com. UQFF Framework. PAPER_747, CP4 class #331. Session 180 continuation v5.38.*
-*Cross-validated against PAPER_001 (foundational UQFF framework) and PAPER_642 (UQFF–SM bridge).*
+*Cross-validated against PAPER_001 (foundational UQFF framework) and PAPER_642 (UQFF-SM bridge).*
 
 ---
 
@@ -219,7 +219,7 @@ The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs t
 
 $$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.113$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m³.
+For this system, the local VDS sub-ratio is $0.113$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m^3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -248,7 +248,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.113 | ✓ Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 107$ | ✓ Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
+| κ decay | $5.0 \times 10^{-4}$ day^{-}1 | Applied in VDS exponential | ✓ Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
 
 

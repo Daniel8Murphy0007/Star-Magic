@@ -1,16 +1,16 @@
-# PAPER_762: NGC 1792 The Stellar Forge — UQFF Starburst Galaxy Evolution
+# PAPER_762: NGC 1792 The Stellar Forge -- UQFF Starburst Galaxy Evolution
 
 **Author:** Daniel T. Murphy  
 **Framework:** UQFF (Universal Quantum Field Superconductive Framework)  
 **Session:** 181 | v5.40  
 **Date:** 2026  
-**CP4 Class:** #346 — NGC1792StellarForgeUQFFCalculator  
+**CP4 Class:** #346 -- NGC1792StellarForgeUQFFCalculator  
 
 ---
 
 ## Abstract
 
-NGC 1792 ("The Stellar Forge") is a starburst spiral galaxy located ~42 million light-years away in Columba, forming stars over 10× faster than the Milky Way at ~10 M☉/yr. This paper derives the Master Universal Gravity UQFF equation governing its starburst-driven evolution, incorporating stellar mass growth, supernova feedback suppression, cosmic expansion, and Aether electromagnetic effects. The result g_NGC1792 ≈ 1.053×10⁻² m/s² is dominated by the [UA]/[SCm] electromagnetic Aether term.
+NGC 1792 ("The Stellar Forge") is a starburst spiral galaxy located ~42 million light-years away in Columba, forming stars over 10x faster than the Milky Way at ~10 M☉/yr. This paper derives the Master Universal Gravity UQFF equation governing its starburst-driven evolution, incorporating stellar mass growth, supernova feedback suppression, cosmic expansion, and Aether electromagnetic effects. The result g_NGC1792 ≈ 1.053x10^{-}2 m/s^2 is dominated by the [UA]/[SCm] electromagnetic Aether term.
 
 ---
 
@@ -23,26 +23,26 @@ NGC 1792 is a classic starburst spiral galaxy with a bright orange core of older
 ## 2. Master UQFF Gravity Equation
 
 ```
-g_NGC1792(r, t) = (G * M) / r² * (1 + H(z)*t) * (1 + M_sf(t)) * (1 - F_sn(t)) * (1 + f_TRZ)
-                + q*(v × B) * (1 + ρ_vac,[UA] / ρ_vac,[SCm]) * 10⁻¹²
+g_NGC1792(r, t) = (G * M) / r^2 * (1 + H(z)*t) * (1 + M_sf(t)) * (1 - F_sn(t)) * (1 + f_TRZ)
+                + q*(v x B) * (1 + rho_vac,[UA] / rho_vac,[SCm]) * 10^{-}1^2
 ```
 
 ### 2.1 Parameters
 
 | Parameter | Symbol | Value | Source |
 |-----------|--------|-------|--------|
-| Galaxy mass | M | 10¹⁰ M☉ = 1.989×10⁴⁰ kg | Hubble |
-| Galaxy radius (½ diam.) | r | 3.78×10²⁰ m (~40 kly) | Hubble |
+| Galaxy mass | M | 10^{1}0 M☉ = 1.989x10^{4}0 kg | Hubble |
+| Galaxy radius (1/2 diam.) | r | 3.78x10^{2}0 m (~40 kly) | Hubble |
 | Redshift | z | 0.0095 | Distance calc |
-| Starburst duration | t | 100×10⁶ yr = 3.156×10¹⁵ s | Labs |
+| Starburst duration | t | 100x10^6 yr = 3.156x10^{1}5 s | Labs |
 | Star formation rate | SFR | 10 M☉/yr | Hubble |
-| Feedback amplitude | F₀ | 0.05 | Labs estimate |
-| Feedback timescale | τ_sn | 100×10⁶ yr = 3.156×10¹⁵ s | Labs |
-| Orbital velocity | v | 10⁶ m/s | ISM |
-| Galactic B field | B | 10⁻⁵ T | Labs |
-| ρ_vac,[UA] | — | 7.09×10⁻³⁶ J/m³ | UQFF |
-| ρ_vac,[SCm] | — | 7.09×10⁻³⁷ J/m³ | UQFF |
-| f_TRZ | — | 0.1 | UQFF |
+| Feedback amplitude | F_0 | 0.05 | Labs estimate |
+| Feedback timescale | τ_sn | 100x10^6 yr = 3.156x10^{1}5 s | Labs |
+| Orbital velocity | v | 10^6 m/s | ISM |
+| Galactic B field | B | 10^{-}5 T | Labs |
+| ρ_vac,[UA] | -- | 7.09x10^{-}3^6 J/m^3 | UQFF |
+| ρ_vac,[SCm] | -- | 7.09x10^{-}3^7 J/m^3 | UQFF |
+| f_TRZ | -- | 0.1 | UQFF |
 
 ---
 
@@ -50,29 +50,29 @@ g_NGC1792(r, t) = (G * M) / r² * (1 + H(z)*t) * (1 + M_sf(t)) * (1 - F_sn(t)) *
 
 ### Step 1: Base Gravitational Term
 ```
-g_grav = (6.6743e-11 × 1.989e40) / (3.78e20)²
-       = 1.328e30 / 1.429e41 = 9.293e-12 m/s²
+g_grav = (6.6743e-11 x 1.989e40) / (3.78e20)^2
+       = 1.328e30 / 1.429e41 = 9.293e-12 m/s^2
 ```
 
 ### Step 2: Starburst Mass Growth
 ```
-M_sf(t) = SFR × t / M_0 = 10 × 100e6 / 10^10 = 0.1
+M_sf(t) = SFR x t / M_0 = 10 x 100e6 / 10^10 = 0.1
 1 + M_sf(t) = 1.1
 ```
 
 ### Step 3: Supernova Feedback Adjustment
 ```
-t / τ_sn = 3.156e15 / 3.156e15 = 1
-F_sn(t) = 0.05 × (1 - exp(-1)) = 0.05 × 0.6321 = 0.031605
+t / tau_sn = 3.156e15 / 3.156e15 = 1
+F_sn(t) = 0.05 x (1 - exp(-1)) = 0.05 x 0.6321 = 0.031605
 1 - F_sn(t) = 0.968395
 ```
 
 ### Step 4: Cosmic Expansion
 ```
-H(z) = 70 × sqrt(0.3 × (1.0095)³ + 0.7) = 70 × sqrt(1.00861) = 70.301 km/s/Mpc
-H(z) = 70.301e3 / 3.086e22 = 2.278e-18 s⁻¹
-H(z) × t = 2.278e-18 × 3.156e15 = 7.189e-3
-1 + H(z) × t = 1.007189
+H(z) = 70 x sqrt(0.3 x (1.0095)^3 + 0.7) = 70 x sqrt(1.00861) = 70.301 km/s/Mpc
+H(z) = 70.301e3 / 3.086e22 = 2.278e-18 s^{-}1
+H(z) x t = 2.278e-18 x 3.156e15 = 7.189e-3
+1 + H(z) x t = 1.007189
 ```
 
 ### Step 5: Time-Reversal Correction
@@ -82,24 +82,24 @@ H(z) × t = 2.278e-18 × 3.156e15 = 7.189e-3
 
 ### Step 6: Electromagnetic [UA] Term
 ```
-q × (v × B) = 1.602e-19 × 1e6 × 1e-5 = 1.602e-18 N
-a = 1.602e-18 / 1.673e-27 = 9.575e8 m/s²
-(1 + ρ_vac,[UA]/ρ_vac,[SCm]) = 11
-Total = 9.575e8 × 11 × 10⁻¹² = 1.053e-2 m/s²
+q x (v x B) = 1.602e-19 x 1e6 x 1e-5 = 1.602e-18 N
+a = 1.602e-18 / 1.673e-27 = 9.575e8 m/s^2
+(1 + rho_vac,[UA]/rho_vac,[SCm]) = 11
+Total = 9.575e8 x 11 x 10^{-}1^2 = 1.053e-2 m/s^2
 ```
 
 ### Step 7: Final Solution
 ```
-g_NGC1792 = (9.293e-12) × (1.007189) × (1.1) × (0.968395) × (1.1) + 1.053e-2
+g_NGC1792 = (9.293e-12) x (1.007189) x (1.1) x (0.968395) x (1.1) + 1.053e-2
           = 1.097e-11 + 1.053e-2
-          ≈ 1.053e-2 m/s²
+          ~= 1.053e-2 m/s^2
 ```
 
 ---
 
 ## 4. Physical Interpretation
 
-The starburst phase dominates NGC 1792's evolution. The supernova feedback term (1 − F_sn = 0.968) captures feedback self-regulation, while the mass growth term (1 + M_sf = 1.1) reflects the 10% gas-to-star conversion rate over 100 Myr. The Aether [UA] electromagnetic term (1.053×10⁻² m/s²) exceeds classical gravity by ~6 orders of magnitude under UQFF, revealing non-standard vacuum energy as a primary driver.
+The starburst phase dominates NGC 1792's evolution. The supernova feedback term (1 - F_sn = 0.968) captures feedback self-regulation, while the mass growth term (1 + M_sf = 1.1) reflects the 10% gas-to-star conversion rate over 100 Myr. The Aether [UA] electromagnetic term (1.053x10^{-}2 m/s^2) exceeds classical gravity by ~6 orders of magnitude under UQFF, revealing non-standard vacuum energy as a primary driver.
 
 ---
 
@@ -114,7 +114,7 @@ The starburst phase dominates NGC 1792's evolution. The supernova feedback term 
 
 ## 6. Conclusions
 
-The Master UQFF gravity equation for NGC 1792 yields g_NGC1792 ≈ 1.053×10⁻² m/s², confirming the Aether electromagnetic term dominates starburst galaxy dynamics under UQFF. The result encodes the balance between starburst mass growth and supernova feedback suppression over a 100 Myr evolutionary timescale.
+The Master UQFF gravity equation for NGC 1792 yields g_NGC1792 ≈ 1.053x10^{-}2 m/s^2, confirming the Aether electromagnetic term dominates starburst galaxy dynamics under UQFF. The result encodes the balance between starburst mass growth and supernova feedback suppression over a 100 Myr evolutionary timescale.
 
 *PAPER_762, CP4 class #346. v5.40.*
 
@@ -157,7 +157,7 @@ The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs t
 
 $$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.097$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m³.
+For this system, the local VDS sub-ratio is $0.097$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m^3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -169,7 +169,7 @@ Since $p_{\rm DVP} = 41$ is **resonant** (threshold at $p > 26$), the system's v
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
-The BSH saturation timescale for this sector is **10⁴ yr** (spin-down equilibrium):
+The BSH saturation timescale for this sector is **10^4 yr** (spin-down equilibrium):
 
 $$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
 
@@ -186,25 +186,25 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.097 | ✓ Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 41$ | ✓ Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
+| κ decay | $5.0 \times 10^{-4}$ day^{-}1 | Applied in VDS exponential | ✓ Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
 
 
 ---
 
 
-## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## §SM Anchors -- Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
 | Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | ✓ Consistent |
-| Cosmological constant Λ | 1.1×10⁻⁵² m⁻² (UQFF vacuum term) | 1.114×10⁻⁵² m⁻² | Planck 2018 | ✓ Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10⁻³⁵/yr | Super-K 2024 | ✓ Consistent |
+| Cosmological constant Λ | 1.1x10^{-}5^2 m^{-}2 (UQFF vacuum term) | 1.114x10^{-}5^2 m^{-}2 | Planck 2018 | ✓ Consistent |
+| Proton decay rate | κ = 0.0005/day -> Γ_p suppression | < 4.17x10^{-}3^5/yr | Super-K 2024 | ✓ Consistent |
 | UQFF buoyancy signature | F_U_Bi_i unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF-SM bridge.*
 
 
 ---

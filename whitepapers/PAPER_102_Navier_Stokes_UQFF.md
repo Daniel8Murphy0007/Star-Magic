@@ -18,14 +18,14 @@
 ---
 
 
-<!-- UQFF constants: ? = 5.0e-4 day⁻¹, [SSq] = 0.57, M_UQFF = 1.43e1 TeV -->
+<!-- UQFF constants: ? = 5.0e-4 day^{-}1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV -->
 ## Abstract
 
 The Navier-Stokes existence and smoothness problem (Millennium Prize) asks whether smooth, globally defined solutions always exist for incompressible 3D N-S equations. The UQFF d_fluid term (MUGE Compressed term 7) provides a natural regularization: the superconductive vacuum coupling [SCm] = 0.99 introduces an effective viscosity ?_eff = ?(1 + [SCm] � f_TRZ) that prevents singular gradients. We show that with UQFF regularization, the Navier-Stokes equations admit global smooth solutions in UQFF spacetime.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0x10^-4 day^{-}1, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -114,38 +114,38 @@ The UQFF framework suggests a path: [SCm] > 0 everywhere ? ?_eff > 0 everywhere 
 **UPDATE:** The UQFF body force f_UQFF in the Navier-Stokes equation now derives from Sector 8 (LENR-Resonance) of the 9-sector Unified Lagrangian:
 
 ```
-L_UQFF = √(-g) [ L_EH + L_YM + L_Dirac + L_φ + L_mag + L_buoy + L_aether + L_LENR + L_KK ]
+L_UQFF = √(-g) [ L_EH + L_YM + L_Dirac + L_phi + L_mag + L_buoy + L_aether + L_LENR + L_KK ]
 ```
 
 **Sector 8 (LENR-Resonance):**
 ```
-L_LENR = ½k_LENR χ̇² - ½ω_LENR² χ² + λ_act χ cos(ω_act t) + ½σ_n(ω)χ²
-δS/δχ = 0 → χ̈ + ω² χ = λ_act cos(ω_act t) + σ_n χ
-→ F_LENR (1.25 THz oscillatory body force), F_act (300 Hz), F_res
+L_LENR = 1/2k_LENR chi̇^2 - 1/2omega_LENR^2 chi^2 + lambda_act chi cos(omega_act t) + 1/2sigma_n(omega)chi^2
+deltaS/deltachi = 0 -> chï + omega^2 chi = lambda_act cos(omega_act t) + sigma_n chi
+-> F_LENR (1.25 THz oscillatory body force), F_act (300 Hz), F_res
 ```
 
 **Navier-Stokes with UQFF body force:**
 ```
-du/dt + (u·∇)u = -(1/ρ)∇p + ν∇²u + f_ext + k_vac·ρ_vac + F_LENR·cos(ω_LENR·t)
+du/dt + (u*nabla)u = -(1/rho)nablap + nunabla^2u + f_ext + k_vac*rho_vac + F_LENR*cos(omega_LENR*t)
 
-f_vac = k_vac × ρ_vac = 1e-38 × 7.09e-36 = 7.09e-74 N/m³ (negligible)
+f_vac = k_vac x rho_vac = 1e-38 x 7.09e-36 = 7.09e-74 N/m^3 (negligible)
 F_LENR = 1.56e+36 N (oscillatory at 1.25 THz)
-Spectral cutoff at ω_LENR → turbulent cascade damping
+Spectral cutoff at omega_LENR -> turbulent cascade damping
 ```
 
-**Sector 4 (Scalar-Higgs-Vacuum) — Additional regularization:**
+**Sector 4 (Scalar-Higgs-Vacuum) -- Additional regularization:**
 ```
-L_φ = |∂_μ φ₄|² - V(φ₄) + κ[SSq]φ₄²
-δS/δφ₄ = 0 → □φ₄ + V'(φ₄) = κ[SSq]φ₄
-→ Ug4 vacuum concentration provides effective viscosity enhancement
+L_phi = |d_mu phi_4|^2 - V(phi_4) + kappa[SSq]phi_4^2
+deltaS/deltaphi_4 = 0 -> □phi_4 + V'(phi_4) = kappa[SSq]phi_4
+-> Ug4 vacuum concentration provides effective viscosity enhancement
 ```
 
 **Critical Values:**
-- f_LENR = 1.56e+36 N, ω_LENR = 2π × 1.25e12 rad/s
+- f_LENR = 1.56e+36 N, ω_LENR = 2π x 1.25e12 rad/s
 - Kolmogorov scale η_K = 2.83e-14 m (with UQFF injection)
 - Spectral cutoff: modes above 1.25 THz damped
 
-**Standalone Calculator:** `millennium_prize_uqff_calculator.py` → `NavierStokesUQFFCalculator`
+**Standalone Calculator:** `millennium_prize_uqff_calculator.py` -> `NavierStokesUQFFCalculator`
 
 **Code Reference:** `uqff_lagrangian_derivation.py` (Session 202, commit 9d26977)
 
@@ -188,7 +188,7 @@ The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs t
 
 $$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.199$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m³.
+For this system, the local VDS sub-ratio is $0.199$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m^3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -200,7 +200,7 @@ Since $p_{\rm DVP} = 41$ is **resonant** (threshold at $p > 26$), the system's v
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
-The BSH saturation timescale for this sector is **10⁴ yr** (spin-down equilibrium):
+The BSH saturation timescale for this sector is **10^4 yr** (spin-down equilibrium):
 
 $$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
 
@@ -217,25 +217,25 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.199 | ✓ Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 41$ | ✓ Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
+| κ decay | $5.0 \times 10^{-4}$ day^{-}1 | Applied in VDS exponential | ✓ Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
 
 
 ---
 
 
-## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## §SM Anchors -- Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
 | Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | ✓ Consistent |
-| Cosmological constant Λ | 1.1×10⁻⁵² m⁻² (UQFF vacuum term) | 1.114×10⁻⁵² m⁻² | Planck 2018 | ✓ Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10⁻³⁵/yr | Super-K 2024 | ✓ Consistent |
+| Cosmological constant Λ | 1.1x10^{-}5^2 m^{-}2 (UQFF vacuum term) | 1.114x10^{-}5^2 m^{-}2 | Planck 2018 | ✓ Consistent |
+| Proton decay rate | κ = 0.0005/day -> Γ_p suppression | < 4.17x10^{-}3^5/yr | Super-K 2024 | ✓ Consistent |
 | UQFF buoyancy signature | F_U_Bi_i unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF-SM bridge.*
 
 
 ---

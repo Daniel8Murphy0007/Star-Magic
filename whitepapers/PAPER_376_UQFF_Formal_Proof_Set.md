@@ -1,4 +1,4 @@
-# PAPER_376 — UQFF Resonance Superconductive Formal Proof Set
+# PAPER_376 -- UQFF Resonance Superconductive Formal Proof Set
 **Author:** Daniel T. Murphy
 **Date:** May 15, 2025
 
@@ -7,7 +7,7 @@
 - "Compressed UQFF Equation_14May2025.docx"
 - "Master UQFF Resonance Equation_14May2025.docx"
 
-**Session:** 102 (re-analysis of lines 6001–10322, previously unread)
+**Session:** 102 (re-analysis of lines 6001-10322, previously unread)
 **CP4 Class:** `UQFFResonanceFormalProofSetCalculator` (CP4 #25)
 
 ---
@@ -31,41 +31,41 @@ empirical validation against astrophysical observations.
 
 ## 2. Dimensional Consistency (Proof 1)
 
-All MUGE terms are shown to yield units of m/s² (acceleration).
+All MUGE terms are shown to yield units of m/s^2 (acceleration).
 
 **Compressed MUGE terms:**
 
 | Term | Dimensional Form | Unit |
 |------|-----------------|------|
-| Base | G·M/r² | m³/(kg·s²) × kg / m² = m/s² ✓ |
-| Expansion | (1 + H₀·t) [dimensionless] | multiplier ✓ |
-| Super_adj | (1 − B/Bcrit) [dimensionless] | multiplier ✓ |
-| Cosm | Λ·c²/3 | m⁻² × (m/s)² = s⁻²·m⁻¹ [contextual] |
-| Quantum | (ℏ/ΔxΔp) × ∫ψ*Ĥψ dV × (2π/t_Hubble) | J·s / (kg·m²/s) × J × s⁻¹ [scaled to m/s²] |
-| Fluid | ρ_fluid·V·g_local | kg/m³ × m³ × m/s² = kg·m/s² [scaled] |
-| Perturbation | (M+M_DM)·(δρ/ρ + 3GM/r³) | kg × m/s² ÷ kg = m/s² ÷ kg [contextual] |
+| Base | G*M/r^2 | m^3/(kg*s^2) x kg / m^2 = m/s^2 ✓ |
+| Expansion | (1 + H_0*t) [dimensionless] | multiplier ✓ |
+| Super_adj | (1 - B/Bcrit) [dimensionless] | multiplier ✓ |
+| Cosm | Λ*c^2/3 | m^{-}2 x (m/s)^2 = s^{-}2*m^{-}1 [contextual] |
+| Quantum | (hbar/ΔxΔp) x integral ψ*Ĥψ dV x (2π/t_Hubble) | J*s / (kg*m^2/s) x J x s^{-}1 [scaled to m/s^2] |
+| Fluid | ρ_fluid*V*g_local | kg/m^3 x m^3 x m/s^2 = kg*m/s^2 [scaled] |
+| Perturbation | (M+M_DM)*(δρ/ρ + 3GM/r^3) | kg x m/s^2 ÷ kg = m/s^2 ÷ kg [contextual] |
 
-**Resonance MUGE terms (all scale as m/s² through Evac_neb normalization):**
+**Resonance MUGE terms (all scale as m/s^2 through Evac_neb normalization):**
 
 All 12 terms (aDPM, aTHz, avac_diff, asuper_freq, aaether_res, Ug4i,
 aquantum_freq, aAether_freq, afluid_freq, Osc_term, aexp_freq, fTRZ)
-reduce to m/s² through the Evac_neb / Evac_ISM / c normalization chain.
+reduce to m/s^2 through the Evac_neb / Evac_ISM / c normalization chain.
 
 ---
 
 ## 3. Boundary Conditions (Proof 2)
 
 ```
-As r → ∞:     g_UQFF → Λ·c²/3 = 1.1e-52 × (3×10⁸)² / 3 ≈ 3.3e-36 m/s²
+As r -> inf:     g_UQFF -> Lambda*c^2/3 = 1.1e-52 x (3x10^8)^2 / 3 ~= 3.3e-36 m/s^2
               Cosmological constant dominates (dark energy floor)
 
-As t → 0:     g_UQFF → G·M/r² (Newtonian gravity recovered)
-              H(t→0,z) → 0; B(0)/Bcrit → 0; Fenv(0) → 0
+As t -> 0:     g_UQFF -> G*M/r^2 (Newtonian gravity recovered)
+              H(t->0,z) -> 0; B(0)/Bcrit -> 0; Fenv(0) -> 0
 
-As B → Bcrit: g_UQFF × (1 − B/Bcrit) → 0 (superconducting quench)
-              Exponential form: g × e^(-B/Bcrit) → g × e^(-1) ≈ 0.368·g
+As B -> Bcrit: g_UQFF x (1 - B/Bcrit) -> 0 (superconducting quench)
+              Exponential form: g x e^(-B/Bcrit) -> g x e^(-1) ~= 0.368*g
 
-As B >> Bcrit: Meissner complete expulsion, g → 0 (field excluded from bulk)
+As B >> Bcrit: Meissner complete expulsion, g -> 0 (field excluded from bulk)
 ```
 
 ---
@@ -74,15 +74,15 @@ As B >> Bcrit: Meissner complete expulsion, g → 0 (field excluded from bulk)
 
 The quantum coherence integral amplifies at the cosmic resonance frequency:
 ```
-ω_res = 2π / t_Hubble = 2π / 4.35e17 s ≈ 1.445e-17 rad/s
+omega_res = 2pi / t_Hubble = 2pi / 4.35e17 s ~= 1.445e-17 rad/s
 ```
 
 Key value: `fquantum = 1.445e-17` in ResonanceParams matches this frequency exactly.
 
 The aquantum_freq term:
 ```
-aquantum_freq = fquantum × Evac_neb × aDPM / Evac_ISM / c
-             = 1.445e-17 × 7.09e-36 × aDPM / 7.09e-37 / 3×10⁸
+aquantum_freq = fquantum x Evac_neb x aDPM / Evac_ISM / c
+             = 1.445e-17 x 7.09e-36 x aDPM / 7.09e-37 / 3x10^8
 ```
 This ensures the quantum coherence frequency (Hubble time resonance) is present
 in every MUGE computation.
@@ -93,21 +93,21 @@ in every MUGE computation.
 
 **Linear Meissner (PAPER_372):**
 ```
-g_adj = g_base × (1 − B/B_crit)
+g_adj = g_base x (1 - B/B_crit)
 ```
 
 **Exponential Meissner (PAPER_375/376):**
 ```
-g_adj = g_base × exp(−B/B_crit)
+g_adj = g_base x exp(-B/B_crit)
 ```
 
-Physical basis: London penetration depth λ_L ∝ 1/√(n_s), where n_s is superfluid
+Physical basis: London penetration depth λ_L ~  1/√(n_s), where n_s is superfluid
 carrier density. The exponential form applies for type-II superconductors where
 the magnetic field partially penetrates (Abrikosov vortex lattice).
 
 At B = Bcrit:
 - Linear form: factor = 0 (exact quench)
-- Exponential form: factor = e⁻¹ ≈ 0.368 (gradual suppression, physically correct)
+- Exponential form: factor = e^{-}1 ≈ 0.368 (gradual suppression, physically correct)
 
 ---
 
@@ -115,16 +115,16 @@ At B = Bcrit:
 
 ### 6.1 Magnetar SGR 1745-2900
 
-**Observed:** X-ray flare timescales 10–100 days (Chandra, NuSTAR)
-**UQFF Prediction:** Ereact = 1046 × exp(−0.0005 × t)
-  At t=10 days:   Ereact ≈ 1046 × exp(−5×10⁻³) ≈ 1046 × 0.995 = 1041 J/reaction
-  At t=100 days:  Ereact ≈ 1046 × exp(−0.05) ≈ 1046 × 0.951 = 995 J/reaction
-  Flare active while Ereact > threshold: ≈ 10–100 day window ✓
+**Observed:** X-ray flare timescales 10-100 days (Chandra, NuSTAR)
+**UQFF Prediction:** Ereact = 1046 x exp(-0.0005 x t)
+  At t=10 days:   Ereact ≈ 1046 x exp(-5x10^{-}3) ≈ 1046 x 0.995 = 1041 J/reaction
+  At t=100 days:  Ereact ≈ 1046 x exp(-0.05) ≈ 1046 x 0.951 = 995 J/reaction
+  Flare active while Ereact > threshold: ≈ 10-100 day window ✓
 
 ### 6.2 Sagittarius A* (Sgr A*)
 
-**Observed:** Accretion rate ~10⁻⁸ M⊙/yr (Event Horizon Telescope)
-**UQFF Prediction:** resonance_MUGE(Sgr A*) ≈ 4.105e29 m/s²
+**Observed:** Accretion rate ~10^{-}8 M⊙/yr (Event Horizon Telescope)
+**UQFF Prediction:** resonance_MUGE(Sgr A*) ≈ 4.105e29 m/s^2
   This extreme acceleration in the innermost accretion region is consistent with
   the high-luminosity flares observed by EHT in 2022-2025.
 
@@ -132,8 +132,8 @@ At B = Bcrit:
 
 **test_compute_compressed_base() at 1 AU:**
 ```
-Expected: G × M_sun / (1 AU)² = 6.674e-11 × 1.989e30 / (1.496e11)²
-         ≈ 0.00593 m/s²
+Expected: G x M_sun / (1 AU)^2 = 6.674e-11 x 1.989e30 / (1.496e11)^2
+         ~= 0.00593 m/s^2
 Computed: ✓ (assertion passes)
 ```
 
@@ -142,20 +142,20 @@ Computed: ✓ (assertion passes)
 ## 7. Unified Proof Equation (Combined Form)
 
 ```
-g(r,t) = [GM(t)/r² · (1+H(t,z)) · exp(−B(t)/Bcrit) · (1+Fenv(t))
-          + ΣUgi + Λc²/3 + ℏ/ΔxΔp · ∫ψ*Ĥψ dV · 2π/tHubble
-          + ρfluid·V·g + (Mvis+MDM)(δρ/ρ + 3GM/r³)]
-        + [aDPM/γ + aTHz + avac_diff + asuper_freq + aaether_res
+g(r,t) = [GM(t)/r^2 * (1+H(t,z)) * exp(-B(t)/Bcrit) * (1+Fenv(t))
+          + SigmaUgi + Lambdac^2/3 + hbar/DeltaxDeltap * integralpsi*Ĥpsi dV * 2pi/tHubble
+          + rhofluid*V*g + (Mvis+MDM)(deltarho/rho + 3GM/r^3)]
+        + [aDPM/gamma + aTHz + avac_diff + asuper_freq + aaether_res
            + Ug4i + aquantum_freq + aAether_freq + afluid_freq
            + Osc_term + aexp_freq + fTRZ]
         + a_worm
-        ± δg
+        +/- deltag
 ```
 
 Where:
-- γ = 1/√(1−v²/c²)  (Lorentz factor for relativistic systems, γ ≈ 7.09 at v=0.99c)
-- a_worm = f_worm · Evac_neb / (b² + r²)  (wormhole coupling term, b=1.0 m)
-- δg = √(Σᵢ (δaᵢ)²)  (total error propagation)
+- γ = 1/√(1-v^2/c^2)  (Lorentz factor for relativistic systems, γ ≈ 7.09 at v=0.99c)
+- a_worm = f_worm * Evac_neb / (b^2 + r^2)  (wormhole coupling term, b=1.0 m)
+- δg = √(Σᵢ (δaᵢ)^2)  (total error propagation)
 
 ---
 
@@ -163,14 +163,14 @@ Where:
 
 | Parameter | Value | Proof Context |
 |-----------|-------|--------------|
-| H₀ | 2.269e-18 s⁻¹ | Expansion factor baseline (matches Planck 2018) |
-| Λ | 1.1e-52 m⁻² | Cosmological constant (ΛCDM) |
-| ℏ | 1.0546e-34 J·s | Quantum coherence integral |
+| H_0 | 2.269e-18 s^{-}1 | Expansion factor baseline (matches Planck 2018) |
+| Λ | 1.1e-52 m^{-}2 | Cosmological constant (ΛCDM) |
+| hbar | 1.0546e-34 J*s | Quantum coherence integral |
 | tHubble | 4.35e17 s | Resonance amplification timescale |
-| Bcrit | 10¹¹ T | Magnetar critical field (PAPER_372) |
+| Bcrit | 10^{1}1 T | Magnetar critical field (PAPER_372) |
 | fquantum | 1.445e-17 Hz | = 2π/tHubble (Hubble resonance) |
 | Ereact(t=0) | 1046 J | Magnetar flare energy seed |
-| kappa | 0.0005 day⁻¹ | SCm reactivity decay, matches 10-100 day flare window |
+| kappa | 0.0005 day^{-}1 | SCm reactivity decay, matches 10-100 day flare window |
 
 ---
 
@@ -182,7 +182,7 @@ Where:
 
 ---
 
-*Watermark: ©2025 Daniel T. Murphy, daniel.murphy00@gmail.com – All Rights Reserved*
+*Watermark: ©2025 Daniel T. Murphy, daniel.murphy00@gmail.com - All Rights Reserved*
 
 ---
 
@@ -223,7 +223,7 @@ The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs t
 
 $$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.151$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m³.
+For this system, the local VDS sub-ratio is $0.151$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m^3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -235,7 +235,7 @@ Since $p_{\rm DVP} = 59$ is **resonant** (threshold at $p > 26$), the system's v
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
-The BSH saturation timescale for this sector is **Q/ω₀** (quality factor damping):
+The BSH saturation timescale for this sector is **Q/ω_0** (quality factor damping):
 
 $$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
 
@@ -252,25 +252,25 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.151 | ✓ Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 59$ | ✓ Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
+| κ decay | $5.0 \times 10^{-4}$ day^{-}1 | Applied in VDS exponential | ✓ Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
 
 
 ---
 
 
-## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## §SM Anchors -- Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
 | Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | ✓ Consistent |
-| Cosmological constant Λ | 1.1×10⁻⁵² m⁻² (UQFF vacuum term) | 1.114×10⁻⁵² m⁻² | Planck 2018 | ✓ Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10⁻³⁵/yr | Super-K 2024 | ✓ Consistent |
+| Cosmological constant Λ | 1.1x10^{-}5^2 m^{-}2 (UQFF vacuum term) | 1.114x10^{-}5^2 m^{-}2 | Planck 2018 | ✓ Consistent |
+| Proton decay rate | κ = 0.0005/day -> Γ_p suppression | < 4.17x10^{-}3^5/yr | Super-K 2024 | ✓ Consistent |
 | UQFF buoyancy signature | F_U_Bi_i unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF-SM bridge.*
 
 
 ---

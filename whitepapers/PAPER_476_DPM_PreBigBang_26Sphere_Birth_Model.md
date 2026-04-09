@@ -1,21 +1,21 @@
-# PAPER_476 — DPM Pre-Big Bang 26-Sphere Birth Model
+# PAPER_476 -- DPM Pre-Big Bang 26-Sphere Birth Model
 **Author:** Daniel T. Murphy
 
 **Star-Magic Unified Quantum Field Framework (UQFF) Whitepaper Series**
-**Copyright © Daniel T. Murphy — All Rights Reserved**
+**Copyright © Daniel T. Murphy -- All Rights Reserved**
 **Version:** 1.0 | **Date:** 2026 | **Session:** 123
 
 ---
 
 ## Abstract
 
-The Dimensional Progenitor Model (DPM) describes the pre-Big Bang quantum state as 26 spherical shells embedded in a unit hypersphere, each encoding a binary quantum level. The [SCm] field provides 10⁴² J of binding energy across the shell structure, while the [UA] field decays exponentially during inflation. This paper derives the 26-sphere geometry, the energy budget, the resonance factor linking DPM states to gravitational output, and the connection to the 26-dimensional framework pervading UQFF physics.
+The Dimensional Progenitor Model (DPM) describes the pre-Big Bang quantum state as 26 spherical shells embedded in a unit hypersphere, each encoding a binary quantum level. The [SCm] field provides 10^{4}2 J of binding energy across the shell structure, while the [UA] field decays exponentially during inflation. This paper derives the 26-sphere geometry, the energy budget, the resonance factor linking DPM states to gravitational output, and the connection to the 26-dimensional framework pervading UQFF physics.
 
 ---
 
 ## 1. Introduction
 
-The DPM answers the question: what was the pre-Big Bang quantum state? The UQFF answer is that the primordial spacetime comprised 26 spherical shells on a unit hypersphere, with each shell representing one quantum electromagnetic level. This is not merely numerology — the 26 emerges from the dimensionality of bosonic string theory and provides the natural binary encoding for the UQFF field hierarchy.
+The DPM answers the question: what was the pre-Big Bang quantum state? The UQFF answer is that the primordial spacetime comprised 26 spherical shells on a unit hypersphere, with each shell representing one quantum electromagnetic level. This is not merely numerology -- the 26 emerges from the dimensionality of bosonic string theory and provides the natural binary encoding for the UQFF field hierarchy.
 
 ---
 
@@ -27,7 +27,7 @@ Each sphere k ∈ {1, ..., 26} satisfies:
 
 $$(x - h_k)^2 + (y - k_k)^2 + (z - l_k)^2 = r_k^2$$
 
-where (h_k, k_k, l_k) are the center coordinates of sphere k on the unit hypersphere S²⁵ (25-sphere boundary of 26D space), and r_k is the sphere's radius.
+where (h_k, k_k, l_k) are the center coordinates of sphere k on the unit hypersphere S^{2}5 (25-sphere boundary of 26D space), and r_k is the sphere's radius.
 
 In the canonical DPM configuration:
 - **All spheres initially coincide** at the origin (h=k=l=0, r=1 normalized)
@@ -38,7 +38,7 @@ In the canonical DPM configuration:
 
 $$V_{DPM} = \sum_{k=1}^{26} \frac{4}{3} \pi r_k^3$$
 
-At Big Bang: r_k = r_Planck = 1.616e-35 m → V_DPM = 26 × (4/3)π r_P³ ≈ 7.24e-104 m³
+At Big Bang: r_k = r_Planck = 1.616e-35 m -> V_DPM = 26 x (4/3)π r_P^3 ≈ 7.24e-104 m^3
 
 ---
 
@@ -54,7 +54,7 @@ where $A_{CP,massive}$ is the massive compact-Planck coupling area.
 
 **Canonical value:** $E_{SCm} \approx 10^{42}$ J
 
-This is approximately the gravitational binding energy of the Milky Way, placing the DPM energy scale at galactic energies — consistent with UQFF's galactic calibration.
+This is approximately the gravitational binding energy of the Milky Way, placing the DPM energy scale at galactic energies -- consistent with UQFF's galactic calibration.
 
 ### 3.2 [UA] Energy Decay
 
@@ -62,11 +62,11 @@ During inflation, the [UA] field decays:
 
 $$E_{UA}(t) = E_{UA,0} \times e^{-\gamma t}$$
 
-with γ ≈ 0.001 s⁻¹ (inflationary damping rate) and $E_{UA,0}$ = 10⁴⁵ J (initial energy).
+with γ ≈ 0.001 s^{-}1 (inflationary damping rate) and $E_{UA,0}$ = 10^{4}5 J (initial energy).
 
-At t_inflation ≈ 10⁻³² s: $E_{UA} \approx 10^{45} \times e^{-10^{-35}} \approx 10^{45}$ J (barely decayed)
+At t_inflation ≈ 10^{-}3^2 s: $E_{UA} \approx 10^{45} \times e^{-10^{-35}} \approx 10^{45}$ J (barely decayed)
 
-At t = 10 Gyr: $E_{UA} \approx 10^{45} \times e^{-γ \times 3×10^{17}} \approx$ negligible → present vacuum density ρ_vac_UA = 7.09e-36 J/m³
+At t = 10 Gyr: $E_{UA} \approx 10^{45} \times e^{-γ \times 3x10^{17}} \approx$ negligible -> present vacuum density ρ_vac_UA = 7.09e-36 J/m^3
 
 ### 3.3 Resonance Factor
 
@@ -74,7 +74,7 @@ DPM states couple to gravity through:
 
 $$R_{DPM} = \frac{G M}{r^2} \times q_{Higgs} \times H_{support} \approx 10^{-11} \text{ (normalized)}$$
 
-where $q_{Higgs}$ is the Higgs field coupling fraction and $H_{support}$ is the DPM-Higgs resonance support factor. At r = 1 m, M = 1 kg: R = G ≈ 6.67e-11 ≈ 10⁻¹⁰.
+where $q_{Higgs}$ is the Higgs field coupling fraction and $H_{support}$ is the DPM-Higgs resonance support factor. At r = 1 m, M = 1 kg: R = G ≈ 6.67e-11 ≈ 10^{-}1^0.
 
 ---
 
@@ -86,12 +86,12 @@ The 26 spheres divide into two groups:
 
 | Group | Levels | State | Energy |
 |-------|--------|-------|--------|
-| +½ states | 1–13 | Low-energy EM channel | E_SCm/2 |
-| −½ states | 14–26 | High-energy SC barriers | E_SCm × H_barrier |
+| +1/2 states | 1-13 | Low-energy EM channel | E_SCm/2 |
+| -1/2 states | 14-26 | High-energy SC barriers | E_SCm x H_barrier |
 
 **Physical interpretation:**
-- **+½ states**: Standard electromagnetic photons + UQFF Ug1–Ug4 fields
-- **−½ states**: High-energy superconducting barriers that prevent quantum decoherence
+- **+1/2 states**: Standard electromagnetic photons + UQFF Ug1-Ug4 fields
+- **-1/2 states**: High-energy superconducting barriers that prevent quantum decoherence
 
 $$\Delta E_{barrier} = E_{SCm} \times H_{SCm} \approx 10^{42} \times 0.99 \approx 9.9 \times 10^{41} \text{ J}$$
 
@@ -103,7 +103,7 @@ $$C_k = \begin{cases} +1 & \text{if level } k \text{ is active} \\ 0 & \text{if 
 
 The total coupling: $C_{total} = \sum_{k=1}^{26} C_k / 26 \in [0, 1]$
 
-At present universe: $C_{total} \approx [SSq] = 0.57$ — exactly 15 of 26 levels active.
+At present universe: $C_{total} \approx [SSq] = 0.57$ -- exactly 15 of 26 levels active.
 
 ---
 
@@ -114,11 +114,11 @@ The DPM initial conditions propagate to present physics as:
 | DPM feature | Present UQFF parameter |
 |------------|----------------------|
 | 26 spheres | 26-layer compressed gravity framework (SOURCE115) |
-| SCm binding E = 10⁴² J | [SSq] = 0.57 calibration |
-| [UA] decay rate γ | ρ_vac_UA = 7.09e-36 J/m³ |
-| +½ / −½ states | Ug fields vs. buoyancy fields |
+| SCm binding E = 10^{4}2 J | [SSq] = 0.57 calibration |
+| [UA] decay rate γ | ρ_vac_UA = 7.09e-36 J/m^3 |
+| +1/2 / -1/2 states | Ug fields vs. buoyancy fields |
 | Resonance factor R | κ = 0.0005/day DPM coupling |
-| Binary encoding | k_η = 10⁻¹¹³ suppression |
+| Binary encoding | k_η = 10^{-}1^{1}3 suppression |
 
 ---
 
@@ -132,7 +132,7 @@ At t=0 (Big Bang): $g_{DPM} \approx G M q_H H_s / r^2 \approx g_{Newton}$ (DPM r
 
 At t = 13.8 Gyr: $g_{DPM} \approx g_{Newton} \times (0.57)^{26} \times e^{-small} \approx 10^{-7} g_{Newton}$
 
-This 10⁻⁷ suppression is the origin of the UQFF quantum correction term a_DPM = κ [SSq] g in the resonance MUGE equation.
+This 10^{-}7 suppression is the origin of the UQFF quantum correction term a_DPM = κ [SSq] g in the resonance MUGE equation.
 
 ### 6.2 DPM Momentum Term
 
@@ -146,16 +146,16 @@ This feeds directly into the F_U_Bi_i integral as F_DPM,mom.
 
 The DPM makes the following testable predictions:
 
-1. **CMB power spectrum**: 26-sphere geometry → specific l-multipole oscillations at l = 26, 52, 78
-2. **Gravitational wave background**: 26D collapse → specific GW frequency spectrum
-3. **Dark matter mass spectrum**: −½ states → SM-neutral particles at E = E_SCm/26 ≈ 3.8e40 J/particle
-4. **Vacuum energy fine-tuning**: ρ_Λ / ρ_DPM = 10⁻⁹⁰ naturally from exp(−γ t_age) decay
+1. **CMB power spectrum**: 26-sphere geometry -> specific l-multipole oscillations at l = 26, 52, 78
+2. **Gravitational wave background**: 26D collapse -> specific GW frequency spectrum
+3. **Dark matter mass spectrum**: -1/2 states -> SM-neutral particles at E = E_SCm/26 ≈ 3.8e40 J/particle
+4. **Vacuum energy fine-tuning**: ρ_Λ / ρ_DPM = 10^{-}9^0 naturally from exp(-γ t_age) decay
 
 ---
 
 ## 8. Conclusion
 
-The DPM provides a pre-Big Bang origin model for the 26-dimensional structure underlying UQFF physics. The 26 spheres encode binary quantum levels, the [SCm] field stores 10⁴² J of binding energy, and the [UA] decay drives the transition from primordial high-energy to present low-energy vacuum. The model is mathematically self-consistent within the UQFF framework and makes testable predictions for the CMB, dark matter spectrum, and vacuum energy problem.
+The DPM provides a pre-Big Bang origin model for the 26-dimensional structure underlying UQFF physics. The 26 spheres encode binary quantum levels, the [SCm] field stores 10^{4}2 J of binding energy, and the [UA] decay drives the transition from primordial high-energy to present low-energy vacuum. The model is mathematically self-consistent within the UQFF framework and makes testable predictions for the CMB, dark matter spectrum, and vacuum energy problem.
 
 ---
 
@@ -198,7 +198,7 @@ The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs t
 
 $$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.075$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m³.
+For this system, the local VDS sub-ratio is $0.075$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m^3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -210,7 +210,7 @@ Since $p_{\rm DVP} = 103$ is **resonant** (threshold at $p > 26$), the system's 
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
-The BSH saturation timescale for this sector is **10⁴ yr** (spin-down equilibrium):
+The BSH saturation timescale for this sector is **10^4 yr** (spin-down equilibrium):
 
 $$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
 
@@ -227,34 +227,34 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.075 | ✓ Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 103$ | ✓ Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
+| κ decay | $5.0 \times 10^{-4}$ day^{-}1 | Applied in VDS exponential | ✓ Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
 
 
 ---
 
 
-## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## §SM Anchors -- Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Cosmological constant Λ | UQFF |∇UA|² → Λ_UQFF = 1.09e-52 m⁻² | Λ = 1.114e-52 m⁻² (Planck 2018 + DESI 2025) | Planck 2018 / DESI | 97.8% |
-| Dark energy fraction Ω_Λ | UQFF [SSq]=0.57; Ω_Λ ~ [SSq]×1.20 = 0.684 | Ω_Λ = 0.6847 ± 0.0073 | Planck 2018 | 99.9% |
-| CMB temperature T_CMB | UQFF vacuum condensate → T_CMB = (ρ_UA/σ_SB)^0.25 = 2.726 K | T_CMB = 2.72548 K | FIRAS 1996 | 99.98% |
-| H₀ Hubble constant | UQFF: H₀_UQFF = κ × c / r_Hubble = 67.4 km/s/Mpc | H₀ = 67.4 ± 0.5 km/s/Mpc (Planck) | Planck 2018 | ✓ Consistent (Planck value) |
+| Cosmological constant Λ | UQFF |nablaUA|^2 -> Λ_UQFF = 1.09e-52 m^{-}2 | Λ = 1.114e-52 m^{-}2 (Planck 2018 + DESI 2025) | Planck 2018 / DESI | 97.8% |
+| Dark energy fraction Ω_Λ | UQFF [SSq]=0.57; Ω_Λ ~ [SSq]x1.20 = 0.684 | Ω_Λ = 0.6847 ± 0.0073 | Planck 2018 | 99.9% |
+| CMB temperature T_CMB | UQFF vacuum condensate -> T_CMB = (ρ_UA/σ_SB)^0.25 = 2.726 K | T_CMB = 2.72548 K | FIRAS 1996 | 99.98% |
+| H_0 Hubble constant | UQFF: H_0_UQFF = κ x c / r_Hubble = 67.4 km/s/Mpc | H_0 = 67.4 ± 0.5 km/s/Mpc (Planck) | Planck 2018 | ✓ Consistent (Planck value) |
 
 **New physics claim:** UQFF [SSq] = 0.57 links directly to the cosmological dark energy fraction
-Ω_Λ via [SSq]×1.20 = 0.684 ≈ Ω_Λ. This is not a parameter fit — [SSq] was calibrated from
-astrophysical magnetar burst profiles, not from CMB data. The coincidence Ω_Λ ≈ [SSq]×1.20
+Ω_Λ via [SSq]x1.20 = 0.684 ≈ Ω_Λ. This is not a parameter fit -- [SSq] was calibrated from
+astrophysical magnetar burst profiles, not from CMB data. The coincidence Ω_Λ ≈ [SSq]x1.20
 constitutes a falsifiable prediction: if future DESI data shifts Ω_Λ by >2%, [SSq] must be
 recalibrated from astrophysical sources independently.
 
-*Cite PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
+*Cite PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF-SM bridge.*
 
 
 
-**UQFF Parameters:** E_SCm = 10⁴² J | [SSq] = 0.57 | γ_UA = 0.001 s⁻¹ | 26 spheres  
-**Class:** `DPMModule` | **Source:** `grok_share_b0a3dc1d.txt` L1871–2081  
+**UQFF Parameters:** E_SCm = 10^{4}2 J | [SSq] = 0.57 | γ_UA = 0.001 s^{-}1 | 26 spheres  
+**Class:** `DPMModule` | **Source:** `grok_share_b0a3dc1d.txt` L1871-2081  
 **Tags:** DPM, pre-Big-Bang, 26D, birth-model, vacuum-energy, CMB, inflation, [SCm], [UA]  
 
 

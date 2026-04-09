@@ -1,16 +1,16 @@
-# PAPER_750: M51 Whirlpool and NGC 1316 Fornax A — MUGE with Simulation Scripts
+# PAPER_750: M51 Whirlpool and NGC 1316 Fornax A -- MUGE with Simulation Scripts
 
 **Author:** Daniel T. Murphy  
 **Framework:** Universal Quantum Field Superconductive Framework (UQFF)  
 **Session:** 180 continuation | v5.38  
 **Date:** 2025  
-**CP4 Class:** #334 — M51NGC1316MUGESimulationCalculator  
+**CP4 Class:** #334 -- M51NGC1316MUGESimulationCalculator  
 
 ---
 
 ## Abstract
 
-Two Hubble-studied galaxies — M51 (the Whirlpool Galaxy, interacting with NGC 5195) and NGC 1316 (Fornax A, a post-merger elliptical) — represent opposite ends of the galaxy evolution spectrum. This paper derives tailored Master Universal Gravity Equations (MUGEs) for both systems using Hubble ACS datasets, incorporating interaction-specific environmental terms: F_tidal and ψ_spiral for M51, and F_tidal + F_cluster + ρ_dust for NGC 1316. Full Python simulation scripts (m51_simulation.py, ngc1316_simulation.py) are included for radial acceleration profile generation.
+Two Hubble-studied galaxies -- M51 (the Whirlpool Galaxy, interacting with NGC 5195) and NGC 1316 (Fornax A, a post-merger elliptical) -- represent opposite ends of the galaxy evolution spectrum. This paper derives tailored Master Universal Gravity Equations (MUGEs) for both systems using Hubble ACS datasets, incorporating interaction-specific environmental terms: F_tidal and ψ_spiral for M51, and F_tidal + F_cluster + ρ_dust for NGC 1316. Full Python simulation scripts (m51_simulation.py, ngc1316_simulation.py) are included for radial acceleration profile generation.
 
 ---
 
@@ -18,54 +18,54 @@ Two Hubble-studied galaxies — M51 (the Whirlpool Galaxy, interacting with NGC 
 
 ### 1.1 M51 (Whirlpool Galaxy)
 M51 is a grand design spiral at 7.7 Mpc with an active tidal interaction companion NGC 5195. Hubble ACS observations (2005) provide:
-- M_visible = 1.2×10¹¹ M☉
-- M_DM = 4×10¹⁰ M☉  
+- M_visible = 1.2x10^{1}1 M☉
+- M_DM = 4x10^{1}0 M☉  
 - SFR ≈ 1 M☉/yr
-- M_BH ≈ 10⁶ M☉
+- M_BH ≈ 10^6 M☉
 - Distance = 7.7 Mpc, z ≈ 0.0015
-- B ≈ 5×10⁻⁶ T
+- B ≈ 5x10^{-}6 T
 
 ### 1.2 NGC 1316 (Fornax A)
 NGC 1316 is a giant elliptical at 75 Mpc with a complex merger history:
-- M_total ≈ 5×10¹¹ M☉ (visible + DM)
-- M_DM = 1.5×10¹¹ M☉
-- M_BH ≈ 10⁸ M☉
-- Merger age: 1–3 Gyr ago (from ripples, dust lanes)
-- ρ_dust ≈ 10⁻²¹ kg/m³
+- M_total ≈ 5x10^{1}1 M☉ (visible + DM)
+- M_DM = 1.5x10^{1}1 M☉
+- M_BH ≈ 10^8 M☉
+- Merger age: 1-3 Gyr ago (from ripples, dust lanes)
+- ρ_dust ≈ 10^{-}2^1 kg/m^3
 
 ---
 
 ## 2. M51 Whirlpool Galaxy MUGE
 
 ```
-g_M51(r, t) = (G·M(t)) / (r(t)²) · (1+H(t,z)) · (1−B(t)/B_crit) · (1+F_env(t))
+g_M51(r, t) = (G*M(t)) / (r(t)^2) * (1+H(t,z)) * (1-B(t)/B_crit) * (1+F_env(t))
             + (U_g1 + U_g2 + U_g3' + U_g4) + U_i
-            + (Λ·c²/3)
-            + (ħ/√(Δx·Δp)) · ∫(ψ_total·H·ψ_total dV) · (2π/t_Hubble)
-            + ρ_fluid·V·g
-            + (M_vis + M_DM) · (δρ/ρ + (3·G·M)/r³)
+            + (Lambda*c^2/3)
+            + (hbar/√(Deltax*Deltap)) * integral(psi_total*H*psi_total dV) * (2pi/t_Hubble)
+            + rho_fluid*V*g
+            + (M_vis + M_DM) * (deltarho/rho + (3*G*M)/r^3)
 ```
 
 ### M51 F_env Terms
 
 ```
-F_env(t)_M51 = F_tidal + ψ_spiral_correction
+F_env(t)_M51 = F_tidal + psi_spiral_correction
 
-F_tidal = G·M_NGC5195 / d_interaction²
-  M_NGC5195 ≈ 10¹⁰ M☉ = 1.989×10⁴⁰ kg
-  d_interaction ≈ 50 kpc = 1.54×10²¹ m
-  F_tidal = 6.674×10⁻¹¹ × 1.989×10⁴⁰ / (1.54×10²¹)²
-  F_tidal ≈ 5.59×10⁻¹³ m/s²  (normalized to F_env fraction)
+F_tidal = G*M_NGC5195 / d_interaction^2
+  M_NGC5195 ~= 10^{1}0 M☉ = 1.989x10^{4}0 kg
+  d_interaction ~= 50 kpc = 1.54x10^{2}1 m
+  F_tidal = 6.674x10^{-}1^1 x 1.989x10^{4}0 / (1.54x10^{2}1)^2
+  F_tidal ~= 5.59x10^{-}1^3 m/s^2  (normalized to F_env fraction)
 
-ψ_spiral = A·e^(−r²/(2σ²))·e^(i(m·θ−ω·t))
-  σ ≈ 1 kpc = 3.086×10¹⁹ m  (spiral arm width)
+psi_spiral = A*e^(-r^2/(2sigma^2))*e^(i(m*theta-omega*t))
+  sigma ~= 1 kpc = 3.086x10^{1}9 m  (spiral arm width)
   m = 2  (grand design two-arm spiral)
 ```
 
 ### M51 H(t,z)
 
 ```
-H(t,z) = H_0·√(0.3·(1+0.0015)³ + 0.7) ≈ H_0·√0.7003 ≈ H_0
+H(t,z) = H_0*√(0.3*(1+0.0015)^3 + 0.7) ~= H_0*√0.7003 ~= H_0
 z = 0.0015 (negligible correction)
 ```
 
@@ -73,12 +73,12 @@ z = 0.0015 (negligible correction)
 
 | Parameter | Value |
 |-----------|-------|
-| M_visible | 1.2×10¹¹ M☉ = 2.39×10⁴¹ kg |
-| M_DM | 4×10¹⁰ M☉ = 7.96×10⁴⁰ kg |
-| r_galaxy | 30 kpc = 9.26×10²⁰ m |
-| B | 5×10⁻⁶ T |
-| SFR | 1 M☉/yr = 6.3×10²² kg/yr |
-| F_tidal | 5.59×10⁻¹³ m/s² |
+| M_visible | 1.2x10^{1}1 M☉ = 2.39x10^{4}1 kg |
+| M_DM | 4x10^{1}0 M☉ = 7.96x10^{4}0 kg |
+| r_galaxy | 30 kpc = 9.26x10^{2}0 m |
+| B | 5x10^{-}6 T |
+| SFR | 1 M☉/yr = 6.3x10^{2}2 kg/yr |
+| F_tidal | 5.59x10^{-}1^3 m/s^2 |
 
 ---
 
@@ -148,8 +148,8 @@ g_vals = [g_M51(r) for r in r_vals]
 plt.figure(figsize=(10, 6))
 plt.plot(r_vals / kpc, g_vals, 'b-', linewidth=2, label='M51 MUGE Acceleration')
 plt.xlabel('Radius (kpc)')
-plt.ylabel('g_M51 (m/s²)')
-plt.title('M51 Whirlpool Galaxy — UQFF MUGE Radial Profile')
+plt.ylabel('g_M51 (m/s^2)')
+plt.title('M51 Whirlpool Galaxy -- UQFF MUGE Radial Profile')
 plt.legend()
 plt.grid(True, alpha=0.3)
 plt.savefig('m51_gravity_profile.png', dpi=150)
@@ -162,12 +162,12 @@ print("M51 simulation complete. Profile saved to m51_gravity_profile.png")
 ## 4. NGC 1316 (Fornax A) MUGE
 
 ```
-g_NGC1316(r, t) = (G·M(t)) / (r(t)²) · (1+H(t,z)) · (1−B(t)/B_crit) · (1+F_env(t))
+g_NGC1316(r, t) = (G*M(t)) / (r(t)^2) * (1+H(t,z)) * (1-B(t)/B_crit) * (1+F_env(t))
                + (U_g1 + U_g2 + U_g3' + U_g4) + U_i
-               + (Λ·c²/3)
-               + (ħ/√(Δx·Δp)) · ∫(ψ_total·H·ψ_total dV) · (2π/t_Hubble)
-               + ρ_dust·V·g
-               + (M_vis + M_DM) · (δρ/ρ + (3·G·M)/r³)
+               + (Lambda*c^2/3)
+               + (hbar/√(Deltax*Deltap)) * integral(psi_total*H*psi_total dV) * (2pi/t_Hubble)
+               + rho_dust*V*g
+               + (M_vis + M_DM) * (deltarho/rho + (3*G*M)/r^3)
 ```
 
 ### NGC 1316 F_env Terms
@@ -176,27 +176,27 @@ g_NGC1316(r, t) = (G·M(t)) / (r(t)²) · (1+H(t,z)) · (1−B(t)/B_crit) · (1+
 F_env(t)_NGC1316 = F_tidal + F_cluster
 
 F_tidal: tidal from past spiral galaxy mergers
-  F_tidal = G·M_spiral / d_spiral²
-  M_spiral ≈ 10¹⁰ M☉ (remnant progenitor)
-  d_spiral ≈ 50 kpc
-  F_tidal ≈ 5.59×10⁻¹³ m/s²
+  F_tidal = G*M_spiral / d_spiral^2
+  M_spiral ~= 10^{1}0 M☉ (remnant progenitor)
+  d_spiral ~= 50 kpc
+  F_tidal ~= 5.59x10^{-}1^3 m/s^2
 
 F_cluster: star cluster tidal disruption
-  F_cluster = k_cluster · M_cluster
-  k_cluster ≈ 10⁻¹² N/M☉
-  M_cluster ≈ 10⁶ M☉
-  F_cluster ≈ 10⁻⁶ m/s²
+  F_cluster = k_cluster * M_cluster
+  k_cluster ~= 10^{-}1^2 N/M☉
+  M_cluster ~= 10^6 M☉
+  F_cluster ~= 10^{-}6 m/s^2
 
-ρ_dust: dust lane fluid term
-  ρ_dust = 10⁻²¹ kg/m³  (ACS-derived dust column density)
+rho_dust: dust lane fluid term
+  rho_dust = 10^{-}2^1 kg/m^3  (ACS-derived dust column density)
 ```
 
 ### NGC 1316 Mass Evolution
 
 ```
 M(t) = M_vis + M_DM + M_merger(t)
-M_merger(t) = M_spiral·e^(−t/τ_merge)
-τ_merge ≈ 1 Gyr = 3.156×10¹⁶ s
+M_merger(t) = M_spiral*e^(-t/tau_merge)
+tau_merge ~= 1 Gyr = 3.156x10^{1}6 s
 ```
 
 ---
@@ -266,8 +266,8 @@ g_vals = [g_NGC1316(r) for r in r_vals]
 plt.figure(figsize=(10, 6))
 plt.plot(r_vals / kpc, g_vals, 'r-', linewidth=2, label='NGC 1316 MUGE Acceleration')
 plt.xlabel('Radius (kpc)')
-plt.ylabel('g_NGC1316 (m/s²)')
-plt.title('NGC 1316 Fornax A — UQFF MUGE Radial Profile')
+plt.ylabel('g_NGC1316 (m/s^2)')
+plt.title('NGC 1316 Fornax A -- UQFF MUGE Radial Profile')
 plt.legend()
 plt.grid(True, alpha=0.3)
 plt.savefig('ngc1316_gravity_profile.png', dpi=150)
@@ -346,7 +346,7 @@ The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs t
 
 $$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.127$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m³.
+For this system, the local VDS sub-ratio is $0.127$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m^3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -358,7 +358,7 @@ Since $p_{\rm DVP} = 2$ is **sub-threshold** (threshold at $p > 26$), the system
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
-The BSH saturation timescale for this sector is **10⁴ yr** (spin-down equilibrium):
+The BSH saturation timescale for this sector is **10^4 yr** (spin-down equilibrium):
 
 $$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
 
@@ -375,25 +375,25 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.127 | ✓ Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 2$ | ✓ Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
+| κ decay | $5.0 \times 10^{-4}$ day^{-}1 | Applied in VDS exponential | ✓ Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
 
 
 ---
 
 
-## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## §SM Anchors -- Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
 | Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | ✓ Consistent |
-| Cosmological constant Λ | 1.1×10⁻⁵² m⁻² (UQFF vacuum term) | 1.114×10⁻⁵² m⁻² | Planck 2018 | ✓ Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10⁻³⁵/yr | Super-K 2024 | ✓ Consistent |
+| Cosmological constant Λ | 1.1x10^{-}5^2 m^{-}2 (UQFF vacuum term) | 1.114x10^{-}5^2 m^{-}2 | Planck 2018 | ✓ Consistent |
+| Proton decay rate | κ = 0.0005/day -> Γ_p suppression | < 4.17x10^{-}3^5/yr | Super-K 2024 | ✓ Consistent |
 | UQFF buoyancy signature | F_U_Bi_i unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF-SM bridge.*
 
 
 ---

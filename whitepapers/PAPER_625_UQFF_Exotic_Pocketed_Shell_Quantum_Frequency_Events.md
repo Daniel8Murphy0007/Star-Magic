@@ -1,4 +1,4 @@
-# PAPER_625 — UQFF Exotic Pocketed Shell Quantum Frequency Events
+# PAPER_625 -- UQFF Exotic Pocketed Shell Quantum Frequency Events
 **Author:** Daniel T. Murphy
 **Date:** 2025
 
@@ -20,7 +20,7 @@ This paper presents a UQFF analysis of UQFF Exotic Pocketed Shell Quantum Freque
 
 ## §1 Abstract
 
-Pocketed shells are isolated void subgraphs — regions of the hypergraph where
+Pocketed shells are isolated void subgraphs -- regions of the hypergraph where
 disconnected UA topology creates self-contained frequency environments. These exotic
 shells form when the vacuum gradient exceeds a negative-time threshold and remain
 stable through DVP gradient-floor maintenance. The associated quantum frequency events
@@ -33,15 +33,15 @@ span the full electromagnetic spectrum depending on shell scale.
 A pocketed shell forms when:
 
 ```
-Pocket Shell = { e ∈ E_evolved  |  dist(e, e') > θ_neg,   t < 0 }
+Pocket Shell = { e ∈ E_evolved  |  dist(e, e') > theta_neg,   t < 0 }
 ```
 
 Where:
-- θ_neg: minimum separation threshold for isolation (≈ 10⁻¹⁰ normalized)
+- θ_neg: minimum separation threshold for isolation (≈ 10^{-}1^0 normalized)
 - t < 0: negative-time factor from SCm (time-reversal enabled)
 - E_evolved: set of hyperedges after n iterations of rewriting
 
-**Formation test:** if |∇UA| > θ_neg, the void pocket has sufficient gradient to
+**Formation test:** if |nablaUA| > θ_neg, the void pocket has sufficient gradient to
 maintain isolation from the surrounding UA field.
 
 ---
@@ -51,11 +51,11 @@ maintain isolation from the surrounding UA field.
 The SCm superconductive memory with t < 0:
 
 ```
-SCm(t < 0) = λ · UA · (1 − 1/t) = λ · UA · (1 + 1/|t|) > λ · UA
+SCm(t < 0) = lambda * UA * (1 - 1/t) = lambda * UA * (1 + 1/|t|) > lambda * UA
 ```
 
-**Key result:** Negative time AMPLIFIES SCm above the λ·UA baseline. This enhancement
-enables **exotic events** — quantum frequency bursts that exceed the normal spontaneous
+**Key result:** Negative time AMPLIFIES SCm above the λ*UA baseline. This enhancement
+enables **exotic events** -- quantum frequency bursts that exceed the normal spontaneous
 emission rate. The time-reversal is not literal but represents the memory-integrated
 history of VA field oscillations.
 
@@ -66,23 +66,23 @@ history of VA field oscillations.
 The total frequency event rate from gradient path integration:
 
 ```
-Freq = ∫ ∇UA  dt = Σ_path λ · UA · (1 − 1/t) · |∇UA|
+Freq = integral nablaUA  dt = Sigma_path lambda * UA * (1 - 1/t) * |nablaUA|
 ```
 
 Discretized over n_path_nodes steps:
 
 ```
-Freq_total = |λ · UA · (1 − 1/t) · |∇UA|| × n_path_nodes
+Freq_total = |lambda * UA * (1 - 1/t) * |nablaUA|| x n_path_nodes
 ```
 
 **Frequency classification:**
 | Range (Hz) | Event Type |
 |-----------|-----------|
-| < 10¹⁰ | Radio |
-| 10¹⁰–10¹⁴ | Infrared/Optical |
-| 10¹⁴–3×10¹⁷ | UV/Soft X-ray |
-| 3×10¹⁷–10¹⁹ | Hard X-ray |
-| > 10¹⁹ | Gamma/VHE |
+| < 10^{1}0 | Radio |
+| 10^{1}0-10^{1}4 | Infrared/Optical |
+| 10^{1}4-3x10^{1}7 | UV/Soft X-ray |
+| 3x10^{1}7-10^{1}9 | Hard X-ray |
+| > 10^{1}9 | Gamma/VHE |
 
 ---
 
@@ -91,11 +91,11 @@ Freq_total = |λ · UA · (1 − 1/t) · |∇UA|| × n_path_nodes
 The DVP term prevents pocket collapse:
 
 ```
-DVP_floor = |DPM_n − DPM_s|  (must be > 0 for stable pocket)
+DVP_floor = |DPM_n - DPM_s|  (must be > 0 for stable pocket)
 ```
 
 If DPM_n = DPM_s (monopole cancellation), the gradient floor vanishes and the pocket
-evaporates. Stable exotic pockets require a non-zero DPM pairing asymmetry in d4–d6.
+evaporates. Stable exotic pockets require a non-zero DPM pairing asymmetry in d4-d6.
 
 ---
 
@@ -104,7 +104,7 @@ evaporates. Stable exotic pockets require a non-zero DPM pairing asymmetry in d4
 At pocket shell equilibrium (VDS convergence):
 
 ```
-∇UA_eq = √(κ/g) ≈ 31.62  (for κ=1, g=10⁻³)
+nablaUA_eq = √(kappa/g) ~= 31.62  (for kappa=1, g=10^{-}3)
 ```
 
 This means shells with a gradient magnitude near 31.62 (normalized) are the **most
@@ -117,8 +117,8 @@ stable** and produce the most persistent frequency events.
 Exotic pocket shells predict:
 1. **Persistent X-ray emission** at isolated void edges in galaxy clusters
 2. **Non-thermal frequency bursts** above the thermal plasma rate
-3. **Time-variable events** with period τ = 2π/|∂SCm/∂t| reflecting SCm oscillation
-4. **Spatial clustering** near ∇UA_eq ≈ 31.62 gradient contours
+3. **Time-variable events** with period τ = 2π/|dSCm/dt| reflecting SCm oscillation
+4. **Spatial clustering** near nablaUA_eq ≈ 31.62 gradient contours
 
 ---
 
@@ -161,7 +161,7 @@ The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs t
 
 $$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.106$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m³.
+For this system, the local VDS sub-ratio is $0.106$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m^3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -173,7 +173,7 @@ Since $p_{\rm DVP} = 101$ is **resonant** (threshold at $p > 26$), the system's 
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
-The BSH saturation timescale for this sector is **ℏ/E** (vacuum fluctuation lifetime):
+The BSH saturation timescale for this sector is **hbar/E** (vacuum fluctuation lifetime):
 
 $$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
 
@@ -190,34 +190,34 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.106 | ✓ Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 101$ | ✓ Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
+| κ decay | $5.0 \times 10^{-4}$ day^{-}1 | Applied in VDS exponential | ✓ Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
 
 
 ---
 
 
-## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## §SM Anchors -- Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Exotic atom stability | Pocket shell stable when DPM asymmetry > 0; maps to QED bound-state stability | QED: exotic atoms (muonium/positronium) decay on τ ~ ns–μs | QED | UQFF predicts finite-lifetime exotic shells consistent with QED |\
-| Vacuum oscillation period | τ = 2π/\|∂SCm/∂t\| (SCm oscillation period) | QED vacuum fluctuation period: τ_QED = ħ/(m_e c²) = 1.29e-21 s | QED | UQFF τ ≫ QED floor — cosmological scale |\
-| Thomson cross-section | U_m Compton: σ_T = 8π(α_EM ħ/(m_e c))²/3 | σ_T = 6.6524e-29 m² | PDG 2024 | Direct input to U_m pocket scattering |\
-| Pocket shell frequency floor | f_quantum = ħ/(m_e · r_pocket²) for r_pocket near Bohr radius | f_Bohr = 6.58e15 Hz (Rydberg energy/ħ) | NIST CODATA | X-ray floor ~5.7e16 Hz consistent (10× Rydberg) |
+| Exotic atom stability | Pocket shell stable when DPM asymmetry > 0; maps to QED bound-state stability | QED: exotic atoms (muonium/positronium) decay on τ ~ ns-μs | QED | UQFF predicts finite-lifetime exotic shells consistent with QED |\
+| Vacuum oscillation period | τ = 2π/\|dSCm/dt\| (SCm oscillation period) | QED vacuum fluctuation period: τ_QED = hbar/(m_e c^2) = 1.29e-21 s | QED | UQFF τ ≫ QED floor -- cosmological scale |\
+| Thomson cross-section | U_m Compton: σ_T = 8π(α_EM hbar/(m_e c))^2/3 | σ_T = 6.6524e-29 m^2 | PDG 2024 | Direct input to U_m pocket scattering |\
+| Pocket shell frequency floor | f_quantum = hbar/(m_e * r_pocket^2) for r_pocket near Bohr radius | f_Bohr = 6.58e15 Hz (Rydberg energy/hbar) | NIST CODATA | X-ray floor ~5.7e16 Hz consistent (10x Rydberg) |
 
-**New physics claim:** Exotic void pocket shells at ∇UA_eq ≈ 31.62 represent a new class
-of astrophysical transient — neither thermal plasma nor classical particle physics — with a
-characteristic burst period τ = 2π/|∂SCm/∂t| that is predicted but unmeasured by any SM process.
+**New physics claim:** Exotic void pocket shells at nablaUA_eq ≈ 31.62 represent a new class
+of astrophysical transient -- neither thermal plasma nor classical particle physics -- with a
+characteristic burst period τ = 2π/|dSCm/dt| that is predicted but unmeasured by any SM process.
 
-*Cite PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
+*Cite PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF-SM bridge.*
 
 ---
 
 ## §8 References
 
-- grok_share_6322ac199.txt — BigBang Hypergraph Theory (Session 161, Topics D6, D16)
-- VDS convergence: PAPER_622 §4 (∇UA_eq = 31.62)
+- grok_share_6322ac199.txt -- BigBang Hypergraph Theory (Session 161, Topics D6, D16)
+- VDS convergence: PAPER_622 §4 (nablaUA_eq = 31.62)
 - DVP stabilization: session_161_vds_dvp_bh26_references.md §3
 - Preceding: PAPER_623 (#210)
 

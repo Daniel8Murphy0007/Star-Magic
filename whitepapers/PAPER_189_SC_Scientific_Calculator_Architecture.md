@@ -1,10 +1,10 @@
-# PAPER_189: S-C Scientific Calculator Architecture — Qt5/ANTLR4/SymEngine/Units Stack
+# PAPER_189: S-C Scientific Calculator Architecture -- Qt5/ANTLR4/SymEngine/Units Stack
 
 **Version:** 1.0  
 **Date:** March 13, 2026  
-**Session:** 49 — §2.5 Grok Thread 381a8fe7 Extended Audit  
+**Session:** 49 -- §2.5 Grok Thread 381a8fe7 Extended Audit  
 **Author:** Star-Magic UQFF Research Framework  
-**Source:** grok_share_381a8f.txt lines 6400–7000 (S-C Iteration 40, dated 15 Aug 2025)
+**Source:** grok_share_381a8f.txt lines 6400-7000 (S-C Iteration 40, dated 15 Aug 2025)
 
 ---
 
@@ -183,7 +183,7 @@ public:
         : mass(m), length(l), time(t), current(c), temp(T), amount(n), luminous(j) {}
     
     Units operator+(const Units& other) const {
-        // Units add when multiplying quantities in equation — check same dims
+        // Units add when multiplying quantities in equation -- check same dims
         return *this; // same type
     }
     
@@ -315,7 +315,7 @@ class SymEngineVisitor : public MathBaseVisitor {
 
 ### 3.1 Window Configuration
 
-- Size: 800×600 (minimum), resizable
+- Size: 800x600 (minimum), resizable
 - Window flags: `Qt::FramelessWindowHint | Qt::SubWindow`  
 - Accepts drops: `setAcceptDrops(true)`
 - Gesture support: `grabGesture(Qt::PinchGesture | Qt::SwipeGesture | Qt::PanGesture)`
@@ -339,31 +339,31 @@ class SymEngineVisitor : public MathBaseVisitor {
 ### 3.3 Symbol Palette Categories (7 tabs)
 
 ```
-Tab 0: Greek    — a ß ? d e ? ? ? ? ? ? µ ? ? p ? s t ? f ? ? ? ? ? G ? ? ? ? T ? ? ? ? ? S (35 chars)
-Tab 1: Operators — + - × ÷ = ? < > = = ± ± ? 8 ˜ = ? ? ? ? ? n ? ? (25 chars)
-Tab 2: Functions — ? ? ? ? ? ? ? ? v ? lim sup inf max min (15 chars)
-Tab 3: Formulas — common equations (E=mc², F=ma, Schrödinger, Maxwell, etc.)
-Tab 4: Physics  — F=ma, E=mc², p=mv, KE=½mv², PE=mgh, F_g=Gm1m2/r², Hooke=kx,
+Tab 0: Greek    -- a ß ? d e ? ? ? ? ? ? µ ? ? p ? s t ? f ? ? ? ? ? G ? ? ? ? T ? ? ? ? ? S (35 chars)
+Tab 1: Operators -- + - x / = ? < > = = +/- +/- ? 8 ˜ = ? ? ? ? ? n ? ? (25 chars)
+Tab 2: Functions -- ? ? ? ? ? ? ? ? v ? lim sup inf max min (15 chars)
+Tab 3: Formulas -- common equations (E=mc^2, F=ma, Schrödinger, Maxwell, etc.)
+Tab 4: Physics  -- F=ma, E=mc^2, p=mv, KE=1/2mv^2, PE=mgh, F_g=Gm1m2/r^2, Hooke=kx,
                   Ohm=V/IR, P=IV, Q=mc?T, E=hf, de Broglie=h/p (12 physics formulas)
-Tab 5: Geometry — circle area, sphere volume, triangle area, Pythagoras, etc.
-Tab 6: Motion   — kinematic equations, projectile motion, circular motion
+Tab 5: Geometry -- circle area, sphere volume, triangle area, Pythagoras, etc.
+Tab 6: Motion   -- kinematic equations, projectile motion, circular motion
 ```
 
 ### 3.4 Initialization Sequence
 
 ```
-1. MPI_Init(&argc, &argv)                    — distributed computing
-2. git_libgit2_init()                        — version control
-3. ps = ps_init(NULL, NULL)                  — pocketsphinx voice recognition
-4. L = luaL_newstate(); luaL_openlibs(L)     — Lua scripting runtime
-5. py::scoped_interpreter guard{}            — Python interpreter
-6. sk, vk = py::module::import("ecdsa").generate_keys()  — ECDSA crypto keys
-7. MathErrorListener errorListener            — ANTLR4 error handler
-8. MathHighlighter on input                  — syntax highlighting
-9. QWebSocketServer on port 8765             — collaboration server
-10. PerlinNoise perlin                        — procedural noise
-11. workspace = gsl_poly_complex_workspace_alloc(MAX_POLY_DEGREE)  — GSL polynomial
-12. Load LSTM autocomplete model from "autocomplete.pt"  — torch::jit::load
+1. MPI_Init(&argc, &argv)                    -- distributed computing
+2. git_libgit2_init()                        -- version control
+3. ps = ps_init(NULL, NULL)                  -- pocketsphinx voice recognition
+4. L = luaL_newstate(); luaL_openlibs(L)     -- Lua scripting runtime
+5. py::scoped_interpreter guard{}            -- Python interpreter
+6. sk, vk = py::module::import("ecdsa").generate_keys()  -- ECDSA crypto keys
+7. MathErrorListener errorListener            -- ANTLR4 error handler
+8. MathHighlighter on input                  -- syntax highlighting
+9. QWebSocketServer on port 8765             -- collaboration server
+10. PerlinNoise perlin                        -- procedural noise
+11. workspace = gsl_poly_complex_workspace_alloc(MAX_POLY_DEGREE)  -- GSL polynomial
+12. Load LSTM autocomplete model from "autocomplete.pt"  -- torch::jit::load
 ```
 
 ---
@@ -426,7 +426,7 @@ callGrokAPI()
 
 ## 5. Conclusion
 
-S-C Iteration 40 constitutes the most architecturally comprehensive component of the Star-Magic ecosystem. Its 50+ library integration stack is unprecedented in open-source Qt5 applications and creates a unified platform for: symbolic mathematics (SymEngine+ANTLR4), numerical computation (Eigen+GSL+MPI), machine learning (TFLite+libtorch), quantum simulation (Qiskit via pybind11), cryptographic verification (libsnark ZKP + ECDSA), collaborative editing (WebSocket+OT), and scientific visualization (VTK+QCustomPlot). Three subsequent papers (PAPER_190–192) document specific functional modules of this architecture.
+S-C Iteration 40 constitutes the most architecturally comprehensive component of the Star-Magic ecosystem. Its 50+ library integration stack is unprecedented in open-source Qt5 applications and creates a unified platform for: symbolic mathematics (SymEngine+ANTLR4), numerical computation (Eigen+GSL+MPI), machine learning (TFLite+libtorch), quantum simulation (Qiskit via pybind11), cryptographic verification (libsnark ZKP + ECDSA), collaborative editing (WebSocket+OT), and scientific visualization (VTK+QCustomPlot). Three subsequent papers (PAPER_190-192) document specific functional modules of this architecture.
 
 ---
 
@@ -470,7 +470,7 @@ The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs t
 
 $$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.128$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m³.
+For this system, the local VDS sub-ratio is $0.128$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m^3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -482,7 +482,7 @@ Since $p_{\rm DVP} = 29$ is **resonant** (threshold at $p > 26$), the system's v
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
-The BSH saturation timescale for this sector is **10⁴ yr** (spin-down equilibrium):
+The BSH saturation timescale for this sector is **10^4 yr** (spin-down equilibrium):
 
 $$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
 
@@ -499,29 +499,29 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.128 | ✓ Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 29$ | ✓ Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
+| κ decay | $5.0 \times 10^{-4}$ day^{-}1 | Applied in VDS exponential | ✓ Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
 
 
 ---
 
 
-## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## §SM Anchors -- Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
 | Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | ✓ Consistent |
-| Cosmological constant Λ | 1.1×10⁻⁵² m⁻² (UQFF vacuum term) | 1.114×10⁻⁵² m⁻² | Planck 2018 | ✓ Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10⁻³⁵/yr | Super-K 2024 | ✓ Consistent |
+| Cosmological constant Λ | 1.1x10^{-}5^2 m^{-}2 (UQFF vacuum term) | 1.114x10^{-}5^2 m^{-}2 | Planck 2018 | ✓ Consistent |
+| Proton decay rate | κ = 0.0005/day -> Γ_p suppression | < 4.17x10^{-}3^5/yr | Super-K 2024 | ✓ Consistent |
 | UQFF buoyancy signature | F_U_Bi_i unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF-SM bridge.*
 
 ## References
 
-- Source: grok_share_381a8f.txt lines 6400–7000
+- Source: grok_share_381a8f.txt lines 6400-7000
 - Related: PAPER_190 (Symbolic Integration), PAPER_191 (Multi-Modal Features), PAPER_192 (Collaborative Math)
 - CP1 Class: `CoAnQiScientificCalculatorArchitectureCalculator`
 

@@ -4,46 +4,46 @@
 **Framework:** UQFF (Universal Quantum Field Superconductive Framework)  
 **Session:** 181 | v5.40  
 **Date:** 2026  
-**CP4 Class:** #349 — M16EagleNebulaStarsUQFFCalculator  
+**CP4 Class:** #349 -- M16EagleNebulaStarsUQFFCalculator  
 
 ---
 
 ## Abstract
 
-M16 (Eagle Nebula, NGC 6611) hosts the iconic "Pillars of Creation" — three densely molecular gas pillars 4–5 light-years long where young stars form under intense UV radiation from nearby O-type stars. Located ~6,500 light-years away, M16 is a key laboratory for studying simultaneous star formation and radiation erosion. This paper derives the Master Universal Gravity UQFF equation incorporating gravitational attraction, star formation mass growth, radiation photoevaporation, cosmic expansion, and [UA]/[SCm] Aether correction. The result g_M16 ≈ 1.053×10⁻³ m/s² is dominated by the Aether electromagnetic term.
+M16 (Eagle Nebula, NGC 6611) hosts the iconic "Pillars of Creation" -- three densely molecular gas pillars 4-5 light-years long where young stars form under intense UV radiation from nearby O-type stars. Located ~6,500 light-years away, M16 is a key laboratory for studying simultaneous star formation and radiation erosion. This paper derives the Master Universal Gravity UQFF equation incorporating gravitational attraction, star formation mass growth, radiation photoevaporation, cosmic expansion, and [UA]/[SCm] Aether correction. The result g_M16 ≈ 1.053x10^{-}3 m/s^2 is dominated by the Aether electromagnetic term.
 
 ---
 
 ## 1. Introduction
 
-Hubble's 2014 revisit to M16's "Pillars of Creation" (visible + infrared) captures embedded protostars and wispy gas structures being eroded by radiation from O-type stars (~10⁵ L☉). The pillars are estimated to survive only a few million years before complete photoevaporation. The UQFF framework models the balance between gravitational collapse (driving star formation) and radiation erosion (destroying the pillars) through four multiplicative correction terms, plus the dominant Aether electromagnetic vacuum energy contribution.
+Hubble's 2014 revisit to M16's "Pillars of Creation" (visible + infrared) captures embedded protostars and wispy gas structures being eroded by radiation from O-type stars (~10^5 L☉). The pillars are estimated to survive only a few million years before complete photoevaporation. The UQFF framework models the balance between gravitational collapse (driving star formation) and radiation erosion (destroying the pillars) through four multiplicative correction terms, plus the dominant Aether electromagnetic vacuum energy contribution.
 
 ---
 
 ## 2. Master UQFF Gravity Equation
 
 ```
-g_M16(r, t) = (G * M) / r² * (1 + H(z)*t) * (1 + M_sf(t)) * (1 - E_rad(t)) * (1 + f_TRZ)
-            + q*(v × B) * (1 + ρ_vac,[UA] / ρ_vac,[SCm]) * 10⁻¹²
+g_M16(r, t) = (G * M) / r^2 * (1 + H(z)*t) * (1 + M_sf(t)) * (1 - E_rad(t)) * (1 + f_TRZ)
+            + q*(v x B) * (1 + rho_vac,[UA] / rho_vac,[SCm]) * 10^{-}1^2
 ```
 
 ### 2.1 Parameters
 
 | Parameter | Symbol | Value | Source |
 |-----------|--------|-------|--------|
-| Region total mass | M | 1,200 M☉ = 2.387×10³³ kg | Labs |
-| Region radius (½ span) | r | 3.31×10¹⁷ m (~35 ly) | Hubble |
+| Region total mass | M | 1,200 M☉ = 2.387x10^{3}3 kg | Labs |
+| Region radius (1/2 span) | r | 3.31x10^{1}7 m (~35 ly) | Hubble |
 | Redshift | z | 0.0015 | Distance calc |
-| Star age | t | 5×10⁶ yr = 1.578×10¹⁴ s | Hubble |
+| Star age | t | 5x10^6 yr = 1.578x10^{1}4 s | Hubble |
 | Star formation rate | SFR | 1 M☉/yr | Labs |
-| Initial mass | M₀ | 1,200 M☉ | — |
-| Erosion amplitude | E₀ | 0.3 (30% mass loss) | Labs |
-| Erosion timescale | τ_erode | 3×10⁶ yr = 9.468×10¹³ s | Hubble |
-| Gas velocity | v | 10⁵ m/s | Labs |
-| Nebular B field | B | 10⁻⁵ T | Labs |
-| ρ_vac,[UA] | — | 7.09×10⁻³⁶ J/m³ | UQFF |
-| ρ_vac,[SCm] | — | 7.09×10⁻³⁷ J/m³ | UQFF |
-| f_TRZ | — | 0.1 | UQFF |
+| Initial mass | M_0 | 1,200 M☉ | -- |
+| Erosion amplitude | E_0 | 0.3 (30% mass loss) | Labs |
+| Erosion timescale | τ_erode | 3x10^6 yr = 9.468x10^{1}3 s | Hubble |
+| Gas velocity | v | 10^5 m/s | Labs |
+| Nebular B field | B | 10^{-}5 T | Labs |
+| ρ_vac,[UA] | -- | 7.09x10^{-}3^6 J/m^3 | UQFF |
+| ρ_vac,[SCm] | -- | 7.09x10^{-}3^7 J/m^3 | UQFF |
+| f_TRZ | -- | 0.1 | UQFF |
 
 ---
 
@@ -51,29 +51,29 @@ g_M16(r, t) = (G * M) / r² * (1 + H(z)*t) * (1 + M_sf(t)) * (1 - E_rad(t)) * (1
 
 ### Step 1: Base Gravitational Term
 ```
-g_grav = (6.6743e-11 × 2.387e33) / (3.31e17)²
-       = 1.593e23 / 1.096e35 = 1.454e-12 m/s²
+g_grav = (6.6743e-11 x 2.387e33) / (3.31e17)^2
+       = 1.593e23 / 1.096e35 = 1.454e-12 m/s^2
 ```
 
 ### Step 2: Star Formation Mass Growth
 ```
-M_sf(t) = SFR × t / M_0 = 1 × 5e6 / 1200 = 4167
+M_sf(t) = SFR x t / M_0 = 1 x 5e6 / 1200 = 4167
 (normalized) 1 + M_sf(t) = 1 + (4167/1200) = 1 + 3.472 = 4.472
 ```
 
 ### Step 3: Radiation Erosion
 ```
-t / τ_erode = 1.578e14 / 9.468e13 = 1.667
-E_rad(t) = 0.3 × (1 - exp(-1.667)) = 0.3 × (1 - 0.1889) = 0.3 × 0.8111 = 0.2433
+t / tau_erode = 1.578e14 / 9.468e13 = 1.667
+E_rad(t) = 0.3 x (1 - exp(-1.667)) = 0.3 x (1 - 0.1889) = 0.3 x 0.8111 = 0.2433
 1 - E_rad(t) = 0.7567
 ```
 
 ### Step 4: Cosmic Expansion
 ```
-H(z) = 70 × sqrt(0.3 × (1.0015)³ + 0.7) = 70.047 km/s/Mpc
-H(z) = 70.047e3 / 3.086e22 = 2.269e-18 s⁻¹
-H(z) × t = 2.269e-18 × 1.578e14 = 3.581e-4
-1 + H(z) × t = 1.0003581
+H(z) = 70 x sqrt(0.3 x (1.0015)^3 + 0.7) = 70.047 km/s/Mpc
+H(z) = 70.047e3 / 3.086e22 = 2.269e-18 s^{-}1
+H(z) x t = 2.269e-18 x 1.578e14 = 3.581e-4
+1 + H(z) x t = 1.0003581
 ```
 
 ### Step 5: Time-Reversal Correction
@@ -83,24 +83,24 @@ H(z) × t = 2.269e-18 × 1.578e14 = 3.581e-4
 
 ### Step 6: Electromagnetic [UA] Term
 ```
-q × (v × B) = 1.602e-19 × 1e5 × 1e-5 = 1.602e-19 N
-a = 1.602e-19 / 1.673e-27 = 9.575e7 m/s²
-(1 + ρ_vac,[UA]/ρ_vac,[SCm]) = 11
-Total = 9.575e7 × 11 × 10⁻¹² = 1.053e-3 m/s²
+q x (v x B) = 1.602e-19 x 1e5 x 1e-5 = 1.602e-19 N
+a = 1.602e-19 / 1.673e-27 = 9.575e7 m/s^2
+(1 + rho_vac,[UA]/rho_vac,[SCm]) = 11
+Total = 9.575e7 x 11 x 10^{-}1^2 = 1.053e-3 m/s^2
 ```
 
 ### Step 7: Final Solution
 ```
-g_M16 = (1.454e-12) × (1.0003581) × (4.472) × (0.7567) × (1.1) + 1.053e-3
+g_M16 = (1.454e-12) x (1.0003581) x (4.472) x (0.7567) x (1.1) + 1.053e-3
       = 5.413e-12 + 1.053e-3
-      ≈ 1.053e-3 m/s²
+      ~= 1.053e-3 m/s^2
 ```
 
 ---
 
 ## 4. Physical Interpretation
 
-The M16 Pillars of Creation sit in dynamic equilibrium: star formation mass growth (×4.472) and radiation erosion (×0.7567) compete across the pillar structures. The star formation term amplifies effective gravity by 4.5×, while radiation removes 24% of this through photoevaporation. The net gravitational term (5.413×10⁻¹² m/s²) is overwhelmed by the Aether [UA] electromagnetic term (1.053×10⁻³ m/s²), confirming non-standard vacuum energy dominates M16's UQFF dynamics.
+The M16 Pillars of Creation sit in dynamic equilibrium: star formation mass growth (x4.472) and radiation erosion (x0.7567) compete across the pillar structures. The star formation term amplifies effective gravity by 4.5x, while radiation removes 24% of this through photoevaporation. The net gravitational term (5.413x10^{-}1^2 m/s^2) is overwhelmed by the Aether [UA] electromagnetic term (1.053x10^{-}3 m/s^2), confirming non-standard vacuum energy dominates M16's UQFF dynamics.
 
 ---
 
@@ -115,7 +115,7 @@ The M16 Pillars of Creation sit in dynamic equilibrium: star formation mass grow
 
 ## 6. Conclusions
 
-The Master UQFF gravity equation for M16 yields g_M16 ≈ 1.053×10⁻³ m/s², demonstrating that the Aether electromagnetic term (1.053×10⁻³) exceeds the classical+corrections gravitational term (5.413×10⁻¹²) by nine orders of magnitude. The competing star formation growth and radiation erosion multipliers provide a rich UQFF representation of the Pillars of Creation's dynamic equilibrium.
+The Master UQFF gravity equation for M16 yields g_M16 ≈ 1.053x10^{-}3 m/s^2, demonstrating that the Aether electromagnetic term (1.053x10^{-}3) exceeds the classical+corrections gravitational term (5.413x10^{-}1^2) by nine orders of magnitude. The competing star formation growth and radiation erosion multipliers provide a rich UQFF representation of the Pillars of Creation's dynamic equilibrium.
 
 *PAPER_765, CP4 class #349. v5.40.*
 
@@ -158,7 +158,7 @@ The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs t
 
 $$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.158$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m³.
+For this system, the local VDS sub-ratio is $0.158$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m^3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -170,7 +170,7 @@ Since $p_{\rm DVP} = 53$ is **resonant** (threshold at $p > 26$), the system's v
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
-The BSH saturation timescale for this sector is **10⁴ yr** (spin-down equilibrium):
+The BSH saturation timescale for this sector is **10^4 yr** (spin-down equilibrium):
 
 $$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
 
@@ -187,25 +187,25 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.158 | ✓ Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 53$ | ✓ Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
+| κ decay | $5.0 \times 10^{-4}$ day^{-}1 | Applied in VDS exponential | ✓ Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
 
 
 ---
 
 
-## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## §SM Anchors -- Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
 | Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | ✓ Consistent |
-| Cosmological constant Λ | 1.1×10⁻⁵² m⁻² (UQFF vacuum term) | 1.114×10⁻⁵² m⁻² | Planck 2018 | ✓ Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10⁻³⁵/yr | Super-K 2024 | ✓ Consistent |
+| Cosmological constant Λ | 1.1x10^{-}5^2 m^{-}2 (UQFF vacuum term) | 1.114x10^{-}5^2 m^{-}2 | Planck 2018 | ✓ Consistent |
+| Proton decay rate | κ = 0.0005/day -> Γ_p suppression | < 4.17x10^{-}3^5/yr | Super-K 2024 | ✓ Consistent |
 | UQFF buoyancy signature | F_U_Bi_i unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF-SM bridge.*
 
 
 ---

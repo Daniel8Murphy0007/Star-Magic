@@ -1,10 +1,10 @@
-# PAPER_190: S-C Symbolic Integration Engine — 10+ Function Types and ODE Ramanujan Fallback
+# PAPER_190: S-C Symbolic Integration Engine -- 10+ Function Types and ODE Ramanujan Fallback
 
 **Version:** 1.0  
 **Date:** March 13, 2026  
-**Session:** 49 — §2.5 Grok Thread 381a8fe7 Extended Audit  
+**Session:** 49 -- §2.5 Grok Thread 381a8fe7 Extended Audit  
 **Author:** Star-Magic UQFF Research Framework  
-**Source:** grok_share_381a8f.txt lines 6500–7200
+**Source:** grok_share_381a8f.txt lines 6500-7200
 
 ---
 
@@ -14,7 +14,7 @@ This paper documents the symbolic integration engine of the S-C Scientific Calcu
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0x10^-4 day^{-}1, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -32,7 +32,7 @@ ScientificCalculatorDialog::integrate(
 {
     using namespace SymEngine;
     
-    // RULE 1: Pow — ∫ x^n dx = x^(n+1)/(n+1)
+    // RULE 1: Pow -- integral x^n dx = x^(n+1)/(n+1)
     if (is_a<Pow>(*expr)) {
         auto& p = down_cast<const Pow&>(*expr);
         auto base = p.get_base();
@@ -42,60 +42,60 @@ ScientificCalculatorDialog::integrate(
             if (n != -1) {
                 return div(pow(base, integer(n+1)), integer(n+1));
             } else {
-                return log(var);  // ∫ x^-1 dx = ln(x)
+                return log(var);  // integral x^-1 dx = ln(x)
             }
         }
     }
     
-    // RULE 2: Sin — ∫ sin(x) dx = -cos(x)
+    // RULE 2: Sin -- integral sin(x) dx = -cos(x)
     if (is_a<Sin>(*expr)) {
         auto arg = down_cast<const Sin&>(*expr).get_args()[0];
         if (arg == var) return neg(cos(var));
     }
     
-    // RULE 3: Cos — ∫ cos(x) dx = sin(x)
+    // RULE 3: Cos -- integral cos(x) dx = sin(x)
     if (is_a<Cos>(*expr)) {
         auto arg = down_cast<const Cos&>(*expr).get_args()[0];
         if (arg == var) return sin(var);
     }
     
-    // RULE 4: Exp — ∫ e^x dx = e^x
+    // RULE 4: Exp -- integral e^x dx = e^x
     if (is_a<Exp>(*expr)) {
         auto arg = down_cast<const Exp&>(*expr).get_args()[0];
         if (arg == var) return exp(var);
     }
     
-    // RULE 5: Log — ∫ ln(x) dx = x*ln(x) - x
+    // RULE 5: Log -- integral ln(x) dx = x*ln(x) - x
     if (is_a<Log>(*expr)) {
         auto arg = down_cast<const Log&>(*expr).get_args()[0];
         if (arg == var) return sub(mul(var, log(var)), var);
     }
     
-    // RULE 6: Tan — ∫ tan(x) dx = -ln|cos(x)|
+    // RULE 6: Tan -- integral tan(x) dx = -ln|cos(x)|
     if (is_a<Tan>(*expr)) {
         auto arg = down_cast<const Tan&>(*expr).get_args()[0];
         if (arg == var) return neg(log(abs(cos(var))));
     }
     
-    // RULE 7: Sec — ∫ sec(x) dx = ln|sec(x) + tan(x)|
+    // RULE 7: Sec -- integral sec(x) dx = ln|sec(x) + tan(x)|
     if (is_a<Sec>(*expr)) {
         auto arg = down_cast<const Sec&>(*expr).get_args()[0];
         if (arg == var) return log(abs(add(sec(var), tan(var))));
     }
     
-    // RULE 8: Csc — ∫ csc(x) dx = ln|csc(x) - cot(x)|
+    // RULE 8: Csc -- integral csc(x) dx = ln|csc(x) - cot(x)|
     if (is_a<Csc>(*expr)) {
         auto arg = down_cast<const Csc&>(*expr).get_args()[0];
         if (arg == var) return log(abs(sub(csc(var), cot(var))));
     }
     
-    // RULE 9: Cot — ∫ cot(x) dx = ln|sin(x)|
+    // RULE 9: Cot -- integral cot(x) dx = ln|sin(x)|
     if (is_a<Cot>(*expr)) {
         auto arg = down_cast<const Cot&>(*expr).get_args()[0];
         if (arg == var) return log(abs(sin(var)));
     }
     
-    // RULE 10: Add — linearity: ∫ (f + g) dx = ∫f dx + ∫g dx
+    // RULE 10: Add -- linearity: integral (f + g) dx = integralf dx + integralg dx
     if (is_a<Add>(*expr)) {
         auto& add_expr = down_cast<const Add&>(*expr);
         RCP<const Basic> result = zero;
@@ -105,7 +105,7 @@ ScientificCalculatorDialog::integrate(
         return result;
     }
     
-    // RULE 10b: Mul — ∫ c*f dx = c * ∫f dx (only when one factor is constant)
+    // RULE 10b: Mul -- integral c*f dx = c * integralf dx (only when one factor is constant)
     if (is_a<Mul>(*expr)) {
         auto& mul_expr = down_cast<const Mul&>(*expr);
         RCP<const Basic> coeff = one;
@@ -172,7 +172,7 @@ ScientificCalculatorDialog::integrateODE(
         return computeRamanujanSeries(expr, var, degree);
     }
     
-    // Standard ODE for degree ≤ 10
+    // Standard ODE for degree <= 10
     return integrate(expr, var);
 }
 ```
@@ -291,7 +291,7 @@ void ScientificCalculatorDialog::solveEquations() {
     // Display
     renderSolutionsToOutput(solutions);
     
-    // If degree > 4 → GSL polynomial roots
+    // If degree > 4 -> GSL polynomial roots
     if (isHighDegreePolynomial(expr, *vars.begin())) {
         solveWithGSL(expr, *vars.begin());
     }
@@ -321,10 +321,10 @@ The integration engine directly supports UQFF equation solving:
 
 | UQFF Equation | Integration Application |
 |---------------|------------------------|
-| $E_{\text{react}}(t) = E_0 e^{-\kappa t}$ | Exp rule → $E_0 (-1/\kappa) e^{-\kappa t}$ |
-| $U_{g1}(r) \propto r^{-3}$ | Pow rule ($n=-3$) → $-r^{-2}/2$ |
-| $H_{Ug3} \propto \cos(\omega_s t \pi)$ | Cos rule → $\sin(\omega_s t \pi)/(\omega_s \pi)$ |
-| $F_{SCm}(r,t) = \rho r^{-1} e^{-\kappa t}$ | Mul(Pow+Exp) → $\rho (-1/\kappa) e^{-\kappa t} \ln(r)$ |
+| $E_{\text{react}}(t) = E_0 e^{-\kappa t}$ | Exp rule -> $E_0 (-1/\kappa) e^{-\kappa t}$ |
+| $U_{g1}(r) \propto r^{-3}$ | Pow rule ($n=-3$) -> $-r^{-2}/2$ |
+| $H_{Ug3} \propto \cos(\omega_s t \pi)$ | Cos rule -> $\sin(\omega_s t \pi)/(\omega_s \pi)$ |
+| $F_{SCm}(r,t) = \rho r^{-1} e^{-\kappa t}$ | Mul(Pow+Exp) -> $\rho (-1/\kappa) e^{-\kappa t} \ln(r)$ |
 
 ---
 
@@ -376,7 +376,7 @@ The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs t
 
 $$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.055$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m³.
+For this system, the local VDS sub-ratio is $0.055$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m^3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -388,7 +388,7 @@ Since $p_{\rm DVP} = 31$ is **resonant** (threshold at $p > 26$), the system's v
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
-The BSH saturation timescale for this sector is **10⁴ yr** (spin-down equilibrium):
+The BSH saturation timescale for this sector is **10^4 yr** (spin-down equilibrium):
 
 $$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
 
@@ -405,29 +405,29 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.055 | ✓ Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 31$ | ✓ Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
+| κ decay | $5.0 \times 10^{-4}$ day^{-}1 | Applied in VDS exponential | ✓ Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
 
 
 ---
 
 
-## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## §SM Anchors -- Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
 | Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | ✓ Consistent |
-| Cosmological constant Λ | 1.1×10⁻⁵² m⁻² (UQFF vacuum term) | 1.114×10⁻⁵² m⁻² | Planck 2018 | ✓ Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10⁻³⁵/yr | Super-K 2024 | ✓ Consistent |
+| Cosmological constant Λ | 1.1x10^{-}5^2 m^{-}2 (UQFF vacuum term) | 1.114x10^{-}5^2 m^{-}2 | Planck 2018 | ✓ Consistent |
+| Proton decay rate | κ = 0.0005/day -> Γ_p suppression | < 4.17x10^{-}3^5/yr | Super-K 2024 | ✓ Consistent |
 | UQFF buoyancy signature | F_U_Bi_i unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF-SM bridge.*
 
 ## References
 
-- Source: grok_share_381a8f.txt lines 6500–7200
+- Source: grok_share_381a8f.txt lines 6500-7200
 - Related: PAPER_189 (S-C Architecture), PAPER_191 (Multi-Modal Features), PAPER_183 (Yang-Mills)
 - CP2 Class: `CoAnQiSymbolicIntegrationCalculator`
 

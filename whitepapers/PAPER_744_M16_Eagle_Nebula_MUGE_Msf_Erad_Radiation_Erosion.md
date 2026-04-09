@@ -1,16 +1,16 @@
-# PAPER_744: M16 Eagle Nebula MUGE — Star Formation and Radiation Erosion
+# PAPER_744: M16 Eagle Nebula MUGE -- Star Formation and Radiation Erosion
 
 **Author:** Daniel T. Murphy  
 **Framework:** Universal Quantum Field Superconductive Framework (UQFF)  
 **Session:** 180 continuation | v5.38  
 **Date:** 2025  
-**CP4 Class:** #328 — M16EagleNebulaRadiationMUGECalculator  
+**CP4 Class:** #328 -- M16EagleNebulaRadiationMUGECalculator  
 
 ---
 
 ## Abstract
 
-The M16 Eagle Nebula (NGC 6611) is the iconic site of the "Pillars of Creation" — dense molecular cloud columns being sculpted by intense photoionization from massive OB stars. This paper derives the MUGE for M16 incorporating two new environmental terms: M_sf(t), the time-dependent star formation rate modulating the total mass, and E_rad, the radiation erosion term that removes mass from pillar structures over time. These terms together capture the dynamic photo-evaporative environment that distinguishes star-forming nebulae from passive systems.
+The M16 Eagle Nebula (NGC 6611) is the iconic site of the "Pillars of Creation" -- dense molecular cloud columns being sculpted by intense photoionization from massive OB stars. This paper derives the MUGE for M16 incorporating two new environmental terms: M_sf(t), the time-dependent star formation rate modulating the total mass, and E_rad, the radiation erosion term that removes mass from pillar structures over time. These terms together capture the dynamic photo-evaporative environment that distinguishes star-forming nebulae from passive systems.
 
 ---
 
@@ -20,36 +20,36 @@ M16 is an H II region and open cluster complex at 2 kpc distance, containing the
 
 **Key parameters:**
 - Distance = 2 kpc
-- M_cluster (visible) = 5×10³ M☉
-- M_cloud (total) ≈ 8×10⁴ M☉
-- SFR ≈ 10⁻³ M☉/yr
-- T_ionized ≈ 10⁴ K
-- UV flux = 10⁷ Habings (ionizing radiation)
-- B ≈ 10⁻⁴ T (magnetic field in cloud)
+- M_cluster (visible) = 5x10^3 M☉
+- M_cloud (total) ≈ 8x10^4 M☉
+- SFR ≈ 10^{-}3 M☉/yr
+- T_ionized ≈ 10^4 K
+- UV flux = 10^7 Habings (ionizing radiation)
+- B ≈ 10^{-}4 T (magnetic field in cloud)
 
 ---
 
 ## 2. M16 Eagle Nebula MUGE
 
 ```
-g_M16(r,t) = (G·M(t))/r² · (1+H(z)·t) · (1−B/B_crit) · (1+M_sf(t))
+g_M16(r,t) = (G*M(t))/r^2 * (1+H(z)*t) * (1-B/B_crit) * (1+M_sf(t))
            + (U_g1 + U_g2 + U_g3 + U_g4)
            + U_i
-           + (Λ·c²/3)
-           + (ħ/√(Δx·Δp)) · ∫(ψ·H·ψ dV) · (2π/t_Hubble)
-           + ρ_gas·V·g
-           − E_rad                                          [radiation erosion -- NEW]
-           + (M_vis + M_DM) · (δρ/ρ + 3·G·M/r³)
+           + (Lambda*c^2/3)
+           + (hbar/√(Deltax*Deltap)) * integral(psi*H*psi dV) * (2pi/t_Hubble)
+           + rho_gas*V*g
+           - E_rad                                          [radiation erosion -- NEW]
+           + (M_vis + M_DM) * (deltarho/rho + 3*G*M/r^3)
 ```
 
 ---
 
-## 3. M_sf(t) — Time-Dependent Star Formation Rate Modulator
+## 3. M_sf(t) -- Time-Dependent Star Formation Rate Modulator
 
 Star formation modifies the effective gravitational mass available:
 
 ```
-M_sf(t) = SFR · t / M_0
+M_sf(t) = SFR * t / M_0
 
   SFR  = star formation rate (M☉/yr)
   t    = time elapsed (yr)
@@ -58,37 +58,37 @@ M_sf(t) = SFR · t / M_0
 
 For M16:
 ```
-M_sf(t) = (10⁻³ M☉/yr) · t / (8×10⁴ M☉)
-M_sf(1 Myr) ≈ 0.0125    (1.25% mass converted)
+M_sf(t) = (10^{-}3 M☉/yr) * t / (8x10^4 M☉)
+M_sf(1 Myr) ~= 0.0125    (1.25% mass converted)
 ```
 
 This term enters multiplicatively in the gravitational term:
 ```
-g_grav · (1 + M_sf(t))  ≈ g_grav · (1 + 0.0125)    at t = 1 Myr
+g_grav * (1 + M_sf(t))  ~= g_grav * (1 + 0.0125)    at t = 1 Myr
 ```
 
-As star formation proceeds, the effective mass increases and local gravity strengthens, triggering further collapse — a positive feedback loop.
+As star formation proceeds, the effective mass increases and local gravity strengthens, triggering further collapse -- a positive feedback loop.
 
 ---
 
-## 4. E_rad — Radiation Erosion Term
+## 4. E_rad -- Radiation Erosion Term
 
 UV photons from OB stars photoevaporate the pillar surfaces, removing mass at:
 
 ```
-ṁ_evap = Φ_UV · m_H / (α_B · n_H)
+ṁ_evap = Phi_UV * m_H / (alpha_B * n_H)
 
-  Φ_UV = 10⁷ Habings = UV photon flux (photons/m²/s)
-  m_H  = hydrogen mass = 1.67×10⁻²⁷ kg
-  α_B  = 2.6×10⁻¹³ cm³/s (case B recombination)
-  n_H  = 10³ cm⁻³ (column density)
+  Phi_UV = 10^7 Habings = UV photon flux (photons/m^2/s)
+  m_H  = hydrogen mass = 1.67x10^{-}2^7 kg
+  alpha_B  = 2.6x10^{-}1^3 cm^3/s (case B recombination)
+  n_H  = 10^3 cm^{-}3 (column density)
 ```
 
 The gravitational equivalent (effective deceleration from mass loss):
 ```
-E_rad = G · ṁ_evap · t / (r² · M_cloud)
+E_rad = G * ṁ_evap * t / (r^2 * M_cloud)
 
-E_rad(1 Myr, r=0.5 pc) ≈ 3×10⁻¹² m/s²    (opposing gravity)
+E_rad(1 Myr, r=0.5 pc) ~= 3x10^{-}1^2 m/s^2    (opposing gravity)
 ```
 
 This erosion term opposes collapse, creating the dynamic equilibrium observed in pillar lifetimes (~few Myr).
@@ -99,18 +99,18 @@ This erosion term opposes collapse, creating the dynamic equilibrium observed in
 
 ```
 U_g1: magnetic dipole from cloud B-field threading
-      μ_dipole = charge density × pillar area × ω_rotation
-      ≈ 10⁻⁴⁵ A·m² (weak for molecular cloud)
+      mu_dipole = charge density x pillar area x omega_rotation
+      ~= 10^{-}4^5 A*m^2 (weak for molecular cloud)
 
 U_g2: aether-superconductive field in ionized HII region
-      B_super = μ_0 · H_aether_HII ≈ 5 T (elevated near ionization front)
-      U_g2 ≈ 10⁷ J/m³
+      B_super = mu_0 * H_aether_HII ~= 5 T (elevated near ionization front)
+      U_g2 ~= 10^7 J/m^3
 
 U_g3: external gravity from cluster mass distribution
-      U_g3 = G · M_NGC6611 / r_cluster²
+      U_g3 = G * M_NGC6611 / r_cluster^2
 
 U_g4: galactic tidal field at 2 kpc from center
-      U_g4 ≈ 2.5×10⁻²⁰ J/m³
+      U_g4 ~= 2.5x10^{-}2^0 J/m^3
 ```
 
 ---
@@ -119,7 +119,7 @@ U_g4: galactic tidal field at 2 kpc from center
 
 The pillars maintain their structure while:
 ```
-g_grav · (1 + M_sf) > E_rad    [net infall]
+g_grav * (1 + M_sf) > E_rad    [net infall]
 ```
 
 When E_rad overcomes (1 + M_sf):
@@ -128,8 +128,8 @@ E_rad / g_grav > (1 + M_sf)   [pillar evaporated]
 ```
 
 Current M16 pillar state:
-- g_grav ≈ 2×10⁻¹¹ m/s²
-- E_rad ≈ 3×10⁻¹² m/s²
+- g_grav ≈ 2x10^{-}1^1 m/s^2
+- E_rad ≈ 3x10^{-}1^2 m/s^2
 - (1 + M_sf) ≈ 1.0125
 - Net: pillars are infalling (star formation wins at present epoch)
 
@@ -138,10 +138,10 @@ Current M16 pillar state:
 ## 7. Temporal Evolution
 
 ```
-M(t) = M_0 · (1 + M_sf(t)) − ṁ_evap · t
+M(t) = M_0 * (1 + M_sf(t)) - ṁ_evap * t
 
 At t = 3 Myr (estimated pillar lifetime):
-M(3 Myr) = M_0 · (1.037) − Δm_evap ≈ 0.85 M_0
+M(3 Myr) = M_0 * (1.037) - Deltam_evap ~= 0.85 M_0
 ```
 
 The pillars are expected to be fully ionized within ~5 Myr, making M16 a transient feature of galactic star formation history.
@@ -158,7 +158,7 @@ M16 shares the Pillars of Creation geometry with the pre-existing CP4 module. Th
 
 ## 9. Conclusion
 
-The M16 Eagle Nebula MUGE introduces two novel UQFF terms: M_sf(t) captures positive-feedback star formation mass growth, while E_rad captures the opposing radiation erosion. Together they define the pillar equilibrium condition and predict pillar lifetimes consistent with current observations (~3–5 Myr). This framework generalizes to all photo-evaporating star-forming regions in the spiral arm environment.
+The M16 Eagle Nebula MUGE introduces two novel UQFF terms: M_sf(t) captures positive-feedback star formation mass growth, while E_rad captures the opposing radiation erosion. Together they define the pillar equilibrium condition and predict pillar lifetimes consistent with current observations (~3-5 Myr). This framework generalizes to all photo-evaporating star-forming regions in the spiral arm environment.
 
 ---
 
@@ -203,7 +203,7 @@ The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs t
 
 $$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.097$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m³.
+For this system, the local VDS sub-ratio is $0.097$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m^3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -215,7 +215,7 @@ Since $p_{\rm DVP} = 97$ is **resonant** (threshold at $p > 26$), the system's v
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
-The BSH saturation timescale for this sector is **10⁴ cycles** (period stability locking):
+The BSH saturation timescale for this sector is **10^4 cycles** (period stability locking):
 
 $$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
 
@@ -232,25 +232,25 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.097 | ✓ Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 97$ | ✓ Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
+| κ decay | $5.0 \times 10^{-4}$ day^{-}1 | Applied in VDS exponential | ✓ Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
 
 
 ---
 
 
-## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## §SM Anchors -- Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
 | Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | ✓ Consistent |
-| Cosmological constant Λ | 1.1×10⁻⁵² m⁻² (UQFF vacuum term) | 1.114×10⁻⁵² m⁻² | Planck 2018 | ✓ Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10⁻³⁵/yr | Super-K 2024 | ✓ Consistent |
+| Cosmological constant Λ | 1.1x10^{-}5^2 m^{-}2 (UQFF vacuum term) | 1.114x10^{-}5^2 m^{-}2 | Planck 2018 | ✓ Consistent |
+| Proton decay rate | κ = 0.0005/day -> Γ_p suppression | < 4.17x10^{-}3^5/yr | Super-K 2024 | ✓ Consistent |
 | UQFF buoyancy signature | F_U_Bi_i unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF-SM bridge.*
 
 
 ---

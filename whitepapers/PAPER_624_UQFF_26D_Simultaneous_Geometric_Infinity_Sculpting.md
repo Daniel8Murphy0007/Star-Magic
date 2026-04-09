@@ -1,4 +1,4 @@
-# PAPER_624 — UQFF 26D Simultaneous Geometric Infinity Sculpting
+# PAPER_624 -- UQFF 26D Simultaneous Geometric Infinity Sculpting
 **Author:** Daniel T. Murphy
 **Date:** 2025
 
@@ -6,7 +6,7 @@
 **Number:** #211  
 **Source:** grok_share_6322ac199.txt (Session 161)  
 **Filed:** Session 161 v5.18  
-**VDS/DVP/BH26:** ALL THREE — CRITICAL new concept correcting linear Wolfram  
+**VDS/DVP/BH26:** ALL THREE -- CRITICAL new concept correcting linear Wolfram  
 
 ---
 
@@ -21,17 +21,17 @@ This paper presents a UQFF analysis of UQFF 26D Simultaneous Geometric Infinity 
 ## §1 Abstract
 
 **This paper introduces the most significant architectural correction to Wolfram-UQFF
-integration identified to date.** The standard Wolfram hypergraph is LINEAR — it
+integration identified to date.** The standard Wolfram hypergraph is LINEAR -- it
 processes rewriting rules sequentially, one edge at a time. UQFF physics requires
 **simultaneous** processing of ALL hyperedges at each iteration, because the Universal
 Aether acts on the entire field instantaneously. This simultaneous processing produces:
 
-1. **External↔internal cycling** — infinity loops where boundary nodes become interior
-   nodes in the next iteration (∞ cycling)
-2. **Intercepting lensing formations** — intersection regions at hyperedge boundaries
-3. **Metallic irregular strings** — emergent EM-gravity carriers at lens intersections
-4. **Pulsating/oscillating 26D sphere diagrams** — in the full UQFF force space
-5. **f³ frequency rebound law** — cubic accumulation over BH26 harmonic modes
+1. **External↔internal cycling** -- infinity loops where boundary nodes become interior
+   nodes in the next iteration (inf cycling)
+2. **Intercepting lensing formations** -- intersection regions at hyperedge boundaries
+3. **Metallic irregular strings** -- emergent EM-gravity carriers at lens intersections
+4. **Pulsating/oscillating 26D sphere diagrams** -- in the full UQFF force space
+5. **f^3 frequency rebound law** -- cubic accumulation over BH26 harmonic modes
 
 ---
 
@@ -40,7 +40,7 @@ Aether acts on the entire field instantaneously. This simultaneous processing pr
 ### 2.1 Linear Wolfram (INCORRECT for UQFF)
 ```
 For iteration i:
-  Pick edge e with maximum arity → split → move to e+1
+  Pick edge e with maximum arity -> split -> move to e+1
   (Sequential: only ONE edge per step)
 ```
 
@@ -48,11 +48,11 @@ For iteration i:
 ```
 For iteration i:
   For ALL edges e in hypergraph (simultaneously):
-    If arity(e) ≥ arity_threshold:
+    If arity(e) >= arity_threshold:
       n_splits = random ∈ {1, 2, 3}  (multi-split)
       For each split:
         v_new = centroid(e) + oscillation + lensing
-        Add (e₁, e₂) to next-generation hypergraph
+        Add (e_1, e_2) to next-generation hypergraph
 ```
 
 The difference: **all boundary regions form simultaneously**, allowing intersections
@@ -66,10 +66,10 @@ The difference: **all boundary regions form simultaneously**, allowing intersect
 
 **Pulsating oscillation** (sinusoidal boundary motion):
 ```
-node_coord[d] += sin(i · π/5) · 0.3  for all d
+node_coord[d] += sin(i * pi/5) * 0.3  for all d
 ```
 
-This gives 5 oscillation modes per 2π period — matching the **BH26 five harmonic modes**
+This gives 5 oscillation modes per 2π period -- matching the **BH26 five harmonic modes**
 (5 oscillation modes per π-period in the BH26 buoyancy series).
 
 ---
@@ -78,35 +78,35 @@ This gives 5 oscillation modes per 2π period — matching the **BH26 five harmo
 
 At each iteration, 30% of new nodes receive a **lensing perturbation**:
 ```
-coord[random_dim] += ε_lens,   ε_lens ∈ [0.2, 0.4]
+coord[random_dim] += epsilon_lens,   epsilon_lens ∈ [0.2, 0.4]
 ```
 
 These perturbations simulate boundary regions where two expanding void shells intersect.
-At intersection points, metallic irregular strings form — EM condensates that mediate
+At intersection points, metallic irregular strings form -- EM condensates that mediate
 gravity between adjacent void pockets.
 
 **Lensing frequency:**
 ```
-f_lens = |∇UA_lens|³ × 10¹⁵  Hz   (BH26 cubic law at boundary)
+f_lens = |nablaUA_lens|^3 x 10^{1}5  Hz   (BH26 cubic law at boundary)
 ```
 
 ---
 
-## §5 f³ Frequency Rebound Law
+## §5 f^3 Frequency Rebound Law
 
 The cubic frequency accumulation (BH26 disk planarity law):
 
 ```
-freq ∝ cumsum(|∇UA|)³ × 10¹⁵  Hz
+freq ~ cumsum(|nablaUA|)^3 x 10^{1}5  Hz
 ```
 
 This derives from the 26th-order derivative structure:
 ```
-d²⁶/d(∇UA)²⁶ [Ub] = g · 26! / (∇UA)²⁵
+d^{2}6/d(nablaUA)^{2}6 [Ub] = g * 26! / (nablaUA)^{2}5
 ```
 
-As ∇UA increases along the jet path, the cubic cumulative sum generates the frequency
-ramp observed in X-ray jets (5.71e16 Hz → 10¹⁸ Hz for M87; 6.14e16 Hz → 10¹⁸ Hz
+As nablaUA increases along the jet path, the cubic cumulative sum generates the frequency
+ramp observed in X-ray jets (5.71e16 Hz -> 10^{1}8 Hz for M87; 6.14e16 Hz -> 10^{1}8 Hz
 for CenA).
 
 ---
@@ -116,12 +116,12 @@ for CenA).
 In simultaneous processing, the topology satisfies:
 
 ```
-∃ v ∈ ∂Hypergraph_i  such that  v ∈ Interior(Hypergraph_{i+1})
+∃ v ∈ dHypergraph_i  such that  v ∈ Interior(Hypergraph_{i+1})
 ```
 
 Nodes that were boundary nodes become interior nodes in the next iteration. This
-**infinity cycle** models the external→internal→external flow of UA through void
-boundary regions — the physical process underlying lensing formations.
+**infinity cycle** models the external->internal->external flow of UA through void
+boundary regions -- the physical process underlying lensing formations.
 
 ---
 
@@ -130,11 +130,11 @@ boundary regions — the physical process underlying lensing formations.
 At lens intersection points, the string length correlates with EM gravity:
 
 ```
-em_gravity_string = Σ |∇UA| · max(|∇UA|) / N_nodes
+em_gravity_string = Sigma |nablaUA| * max(|nablaUA|) / N_nodes
 ```
 
 This string condensate is responsible for **gravitational lensing anomalies** observed
-in galaxy mergers — the lens is not just spacetime curvature but metallic string
+in galaxy mergers -- the lens is not just spacetime curvature but metallic string
 junctions from UA void pocket intersections.
 
 ---
@@ -143,13 +143,13 @@ junctions from UA void pocket intersections.
 
 | Quantity | Value |
 |---------|-------|
-| Final nodes | ~180–280 (seed-dependent) |
-| Final hyperedges | ~30–60 |
-| Lensing intercepts | ~15–25 (30% probability × ~70 split events) |
-| nabla_UA max (normalized) | ~4.0–6.0 |
-| f³ rebound top-5 (Hz) | ~10¹⁵–10¹⁸ |
+| Final nodes | ~180-280 (seed-dependent) |
+| Final hyperedges | ~30-60 |
+| Lensing intercepts | ~15-25 (30% probability x ~70 split events) |
+| nabla_UA max (normalized) | ~4.0-6.0 |
+| f^3 rebound top-5 (Hz) | ~10^{1}5-10^{1}8 |
 | Oscillation modes per 5 iterations | [0, 0.187, 0.300, 0.300, 0.187] |
-| EM gravity string | ~0.1–1.0 (normalized units) |
+| EM gravity string | ~0.1-1.0 (normalized units) |
 
 ---
 
@@ -201,7 +201,7 @@ The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs t
 
 $$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.056$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m³.
+For this system, the local VDS sub-ratio is $0.056$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m^3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -213,7 +213,7 @@ Since $p_{\rm DVP} = 97$ is **resonant** (threshold at $p > 26$), the system's v
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
-The BSH saturation timescale for this sector is **10⁴ cycles** (period stability locking):
+The BSH saturation timescale for this sector is **10^4 cycles** (period stability locking):
 
 $$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
 
@@ -230,36 +230,36 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.056 | ✓ Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 97$ | ✓ Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
+| κ decay | $5.0 \times 10^{-4}$ day^{-}1 | Applied in VDS exponential | ✓ Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
 
 
 ---
 
 
-## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## §SM Anchors -- Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Gravitational lensing (GR) | EM gravity string = Σ\|∇UA\|·max/N; lensing from UA void pocket intersections | GR: α_lens = 4GM/(c²b) | GR + Chandra | UQFF extends GR: adds geometric void topology |
-| f³ frequency rebound (X-ray) | freq ∝ cumsum(\|∇UA\|)³ × 10¹⁵ Hz → 5.71e16–10¹⁸ Hz | Chandra X-ray jets: 5×10¹⁶–10¹⁸ Hz range | Chandra Dec 2025 | ✓ Consistent range |
-| Oscillation mode energies | 5-mode: [0, 0.187, 0.300, 0.300, 0.187] | QED vacuum oscillation n=1–5: Σ(2n+1)ħω | QED (Casimir) | UQFF geometric analog of vacuum oscillator |
-| 26D factorial bound | 26! = 4.03e26 (BH26 upper bound) | 26D compactification scale M_string ~ 10²⁶GeV | String th. | 26! ≈ M_string dimensionless |
+| Gravitational lensing (GR) | EM gravity string = Σ\|nablaUA\|*max/N; lensing from UA void pocket intersections | GR: α_lens = 4GM/(c^2b) | GR + Chandra | UQFF extends GR: adds geometric void topology |
+| f^3 frequency rebound (X-ray) | freq ~  cumsum(\|nablaUA\|)^3 x 10^{1}5 Hz -> 5.71e16-10^{1}8 Hz | Chandra X-ray jets: 5x10^{1}6-10^{1}8 Hz range | Chandra Dec 2025 | ✓ Consistent range |
+| Oscillation mode energies | 5-mode: [0, 0.187, 0.300, 0.300, 0.187] | QED vacuum oscillation n=1-5: Σ(2n+1)hbarω | QED (Casimir) | UQFF geometric analog of vacuum oscillator |
+| 26D factorial bound | 26! = 4.03e26 (BH26 upper bound) | 26D compactification scale M_string ~ 10^{2}6GeV | String th. | 26! ≈ M_string dimensionless |
 
 **New physics claim:** Simultaneous external↔internal boundary cycling produces emergent knotted
-jet morphology that linear GR/QED models cannot replicate — predicting correlation length
-ξ_jet = ∫|∇UA|dr in cluster jets (measurable with IXPE extended monitoring).
+jet morphology that linear GR/QED models cannot replicate -- predicting correlation length
+ξ_jet = integral |nablaUA|dr in cluster jets (measurable with IXPE extended monitoring).
 
-*Cite PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
+*Cite PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF-SM bridge.*
 
 ---
 
 ## §10 References
 
-- grok_share_6322ac199.txt — BigBang Hypergraph Theory (Session 161, Topics D5, D19, D22)
-- Critical insight from grok thread: "Wolfram is LINEAR — UQFF requires simultaneous"
+- grok_share_6322ac199.txt -- BigBang Hypergraph Theory (Session 161, Topics D5, D19, D22)
+- Critical insight from grok thread: "Wolfram is LINEAR -- UQFF requires simultaneous"
 - BH26 5-harmonic mode: session_161_vds_dvp_bh26_references.md §4
-- f³ law derivation: session_161_physics_audit.md §D19
+- f^3 law derivation: session_161_physics_audit.md §D19
 
 ---
 

@@ -15,7 +15,7 @@ This paper investigates the cosmological implications of modified gravitational 
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0x10^-4 day^{-}1, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -26,9 +26,9 @@ Gravitational waves provide independent distance measurements through their lumi
 ### 1.1 Standard Siren Method
 
 Standard approach:
-- Luminosity distance from GW amplitude: `d_L = (5/96π^(4/3))^(1/2) × (G·M_chirp)^(5/6) / (f^(7/6) h_0)`
+- Luminosity distance from GW amplitude: `d_L = (5/96π^(4/3))^(1/2) x (G*M_chirp)^(5/6) / (f^(7/6) h_0)`
 - Redshift from electromagnetic counterpart
-- Direct H₀ measurement from d_L(z) relation
+- Direct H_0 measurement from d_L(z) relation
 
 ### 1.2 UQFF Modifications
 
@@ -52,17 +52,17 @@ $$\Gamma_{UQFF}(f,z) = \Gamma_0 \left(\frac{f}{f_{ref}}\right)^{\alpha} \left(\f
 **Key numerical results:** Gamma_0 = 2.3e-18 Hz, alpha = -7.0e-1, beta = 8.0e-1, f_ref = 1.0e2 Hz, D_total = 3.33e-1
 
 ```
-□h_μν + Γ_UQFF(f,z) ∂_t h_μν = 0
+□h_munu + Gamma_UQFF(f,z) d_t h_munu = 0
 ```
 
 Where the damping term:
 
 ```
-Γ_UQFF(f,z) = Γ_0 × (f/f_ref)^α × [(1+z)/H(z)]^β
+Gamma_UQFF(f,z) = Gamma_0 x (f/f_ref)^alpha x [(1+z)/H(z)]^beta
 ```
 
 Parameters:
-- `Γ_0 = 2.3 × 10^(-18) Hz` (damping rate at reference)
+- `Γ_0 = 2.3 x 10^(-18) Hz` (damping rate at reference)
 - `α = -0.7` (frequency scaling)
 - `β = 0.8` (redshift evolution)
 - `f_ref = 100 Hz` (reference frequency)
@@ -72,7 +72,7 @@ Parameters:
 GW amplitude evolves as:
 
 ```
-h(f,z) = h_em(f) × exp[-∫_0^z Γ_UQFF(f,z') dz' / H(z')]
+h(f,z) = h_em(f) x exp[-integral_0^z Gamma_UQFF(f,z') dz' / H(z')]
 ```
 
 Where `h_em(f)` is the emitted amplitude.
@@ -86,26 +86,26 @@ Where `h_em(f)` is the emitted amplitude.
 The measured luminosity distance becomes:
 
 ```
-d_L,obs(z,f) = d_L,true(z) × exp[D_UQFF(z,f)]
+d_L,obs(z,f) = d_L,true(z) x exp[D_UQFF(z,f)]
 ```
 
 Where the UQFF distance bias:
 
 ```
-D_UQFF(z,f) = (Γ_0/H_0) × (f/f_ref)^α × I_redshift(z,β)
+D_UQFF(z,f) = (Gamma_0/H_0) x (f/f_ref)^alpha x I_redshift(z,beta)
 ```
 
 Redshift integral:
 
 ```
-I_redshift(z,β) = ∫_0^z [(1+z')/H(z')]^β dz' / H(z')
+I_redshift(z,beta) = integral_0^z [(1+z')/H(z')]^beta dz' / H(z')
 ```
 
 ### 3.2 Frequency Dependence
 
 For inspiral signals spanning 20-1000 Hz:
-- Low frequency (20 Hz): `D_UQFF ≈ +0.15` → distance overestimated by 16%
-- High frequency (1000 Hz): `D_UQFF ≈ -0.08` → distance underestimated by 8%
+- Low frequency (20 Hz): `D_UQFF ≈ +0.15` -> distance overestimated by 16%
+- High frequency (1000 Hz): `D_UQFF ≈ -0.08` -> distance underestimated by 8%
 
 ---
 
@@ -113,16 +113,16 @@ For inspiral signals spanning 20-1000 Hz:
 
 ### 4.1 Standard Siren Bias
 
-UQFF-corrected H₀ measurement:
+UQFF-corrected H_0 measurement:
 
 ```
-H_0,UQFF = H_0,obs × [1 - (∂D_UQFF/∂z)|_{z=0}]
+H_0,UQFF = H_0,obs x [1 - (dD_UQFF/dz)|_{z=0}]
 ```
 
 For typical LIGO/Virgo signals at 100 Hz:
 
 ```
-H_0,UQFF = H_0,obs × 1.07
+H_0,UQFF = H_0,obs x 1.07
 ```
 
 ### 4.2 Hubble Tension Resolution
@@ -146,13 +146,13 @@ UQFF-corrected GW170817:
 UQFF contribution to expansion:
 
 ```
-H²(z) = H_0² [Ω_m(1+z)³ + Ω_Λ + Ω_UQFF(z)]
+H^2(z) = H_0^2 [Omega_m(1+z)^3 + Omega_Lambda + Omega_UQFF(z)]
 ```
 
 Where:
 
 ```
-Ω_UQFF(z) = ξ_Q × (1+z)^(3(1+w_UQFF))
+Omega_UQFF(z) = xi_Q x (1+z)^(3(1+w_UQFF))
 ```
 
 Parameters:
@@ -164,13 +164,13 @@ Parameters:
 UQFF-modified distance modulus for standard sirens:
 
 ```
-μ_UQFF(z) = 5 log₁₀[d_L,UQFF(z)] + 25
+mu_UQFF(z) = 5 log_1_0[d_L,UQFF(z)] + 25
 ```
 
 Deviation from ΛCDM:
 
 ```
-Δμ(z) = μ_UQFF(z) - μ_ΛCDM(z) ≈ 0.15 × z - 0.03 × z²
+Deltamu(z) = mu_UQFF(z) - mu_LambdaCDM(z) ~= 0.15 x z - 0.03 x z^2
 ```
 
 For z = 1: Δμ ≈ 0.12 mag (2.5% distance error)
@@ -184,7 +184,7 @@ For z = 1: Δμ ≈ 0.12 mag (2.5% distance error)
 Test statistic for UQFF detection:
 
 ```
-χ²_UQFF = Σ_i [(d_L,i(f_i) - d_L,model(z_i,f_i))² / σ_i²]
+chi^2_UQFF = Sigma_i [(d_L,i(f_i) - d_L,model(z_i,f_i))^2 / sigma_i^2]
 ```
 
 Compare ΛCDM vs. UQFF+ΛCDM models.
@@ -199,7 +199,7 @@ Expected significance:
 Measure damping redshift dependence:
 
 ```
-Γ_eff(z) = -d[ln h(f,z)]/dz / H(z)
+Gamma_eff(z) = -d[ln h(f,z)]/dz / H(z)
 ```
 
 Expected from UQFF: `β ≈ 0.8`
@@ -246,7 +246,7 @@ UQFF-specific:
 Capabilities:
 - Frequency range: 1 Hz - 10 kHz
 - Distance reach: z ~ 100 for BNS
-- ~10⁴ detections per year
+- ~10^4 detections per year
 
 UQFF signatures:
 - Low-frequency enhancement of damping at 1-10 Hz
@@ -268,7 +268,7 @@ UQFF tests:
 ### 8.3 LISA
 
 Low-frequency regime (0.1 mHz - 1 Hz):
-- Massive black hole binary mergers (10⁴ - 10⁷ M_☉)
+- Massive black hole binary mergers (10^4 - 10^7 M_☉)
 - Redshift z = 1-20
 - Different UQFF damping regime (α < 0 at mHz)
 
@@ -305,12 +305,12 @@ d_L(from tidal) / d_L(from amplitude) = exp[D_UQFF(z,f)]
 Use GW frequency evolution to measure H(z):
 
 ```
-df/dt = -(96/5)π^(8/3) (G·M_chirp)^(5/3) f^(11/3) / (1+z)
+df/dt = -(96/5)pi^(8/3) (G*M_chirp)^(5/3) f^(11/3) / (1+z)
 ```
 
 UQFF modifies observed rate:
 ```
-(df/dt)_obs = (df/dt)_em × [1 + Γ_UQFF(f,z)/f]
+(df/dt)_obs = (df/dt)_em x [1 + Gamma_UQFF(f,z)/f]
 ```
 
 ---
@@ -322,7 +322,7 @@ UQFF modifies observed rate:
 UQFF contributes effective dark energy component:
 
 ```
-w_eff(z) = -1 + (1/3) × [d ln Ω_UQFF(z) / d ln(1+z)]
+w_eff(z) = -1 + (1/3) x [d ln Omega_UQFF(z) / d ln(1+z)]
 ```
 
 For UQFF parameters: `w_eff ≈ -0.85` (phantom-like)
@@ -345,7 +345,7 @@ UQFF prediction: `α ≈ -0.7` (frequency scaling)
 UQFF quantum coherence at high redshift mimics early dark energy:
 
 ```
-Ω_EDE(z) = Ω_UQFF,0 × (1+z)^3 × exp[-(z/z_Q)²]
+Omega_EDE(z) = Omega_UQFF,0 x (1+z)^3 x exp[-(z/z_Q)^2]
 ```
 
 With `z_Q ≈ 3000`, affects:
@@ -362,12 +362,12 @@ With `z_Q ≈ 3000`, affects:
 Posterior for UQFF parameters:
 
 ```
-P(Γ_0, α, β | {d_L,i, z_i, f_i}) ∝ L({d_L,i, z_i, f_i} | Γ_0, α, β) × π(Γ_0, α, β)
+P(Gamma_0, alpha, beta | {d_L,i, z_i, f_i}) ~ L({d_L,i, z_i, f_i} | Gamma_0, alpha, beta) x pi(Gamma_0, alpha, beta)
 ```
 
 Likelihood:
 ```
-L = Π_i (1/√(2πσ_i²)) exp[-(d_L,i - d_L,UQFF(z_i,f_i))² / (2σ_i²)]
+L = Pi_i (1/√(2pisigma_i^2)) exp[-(d_L,i - d_L,UQFF(z_i,f_i))^2 / (2sigma_i^2)]
 ```
 
 Prior choices:
@@ -380,7 +380,7 @@ Prior choices:
 Bayes factor for UQFF vs. ΛCDM:
 
 ```
-B_UQFF/ΛCDM = ∫ L_UQFF dΘ_UQFF / ∫ L_ΛCDM dΘ_ΛCDM
+B_UQFF/LambdaCDM = integral L_UQFF dTheta_UQFF / integral L_LambdaCDM dTheta_LambdaCDM
 ```
 
 Detection threshold: `B > 150` (very strong evidence)
@@ -403,7 +403,7 @@ LIGO/Virgo O5-O6:
 LIGO A+ / KAGRA+:
 - 50+ standard sirens
 - 3σ UQFF detection (if present)
-- Improved H₀ measurement: ΔH₀/H₀ < 1%
+- Improved H_0 measurement: ΔH_0/H_0 < 1%
 
 ### 12.3 Long-Term (2040+)
 
@@ -419,7 +419,7 @@ Einstein Telescope / Cosmic Explorer:
 
 The UQFF framework predicts observable modifications to gravitational wave propagation with significant cosmological implications:
 
-1. **Hubble Constant**: UQFF bias increases GW-inferred H₀ by ~7%, reducing tension with local measurements
+1. **Hubble Constant**: UQFF bias increases GW-inferred H_0 by ~7%, reducing tension with local measurements
 2. **Dark Energy**: Effective equation of state w ≈ -0.85 distinguishable from ΛCDM
 3. **Frequency Dependence**: Characteristic α ≈ -0.7 scaling distinguishes UQFF from other modified gravity theories
 4. **Detection Prospects**: 3σ detection possible with ~50 standard sirens from next-generation detectors
@@ -468,7 +468,7 @@ The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs t
 
 $$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.109$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m³.
+For this system, the local VDS sub-ratio is $0.109$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m^3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -480,7 +480,7 @@ Since $p_{\rm DVP} = 53$ is **resonant** (threshold at $p > 26$), the system's v
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
-The BSH saturation timescale for this sector is **10⁴ yr** (spin-down equilibrium):
+The BSH saturation timescale for this sector is **10^4 yr** (spin-down equilibrium):
 
 $$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
 
@@ -497,38 +497,38 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.109 | ✓ Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 53$ | ✓ Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
+| κ decay | $5.0 \times 10^{-4}$ day^{-}1 | Applied in VDS exponential | ✓ Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
 
 
 ---
 
 
-## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## §SM Anchors -- Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
 | Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | ✓ Consistent |
-| Cosmological constant Λ | 1.1×10⁻⁵² m⁻² (UQFF vacuum term) | 1.114×10⁻⁵² m⁻² | Planck 2018 | ✓ Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10⁻³⁵/yr | Super-K 2024 | ✓ Consistent |
+| Cosmological constant Λ | 1.1x10^{-}5^2 m^{-}2 (UQFF vacuum term) | 1.114x10^{-}5^2 m^{-}2 | Planck 2018 | ✓ Consistent |
+| Proton decay rate | κ = 0.0005/day -> Γ_p suppression | < 4.17x10^{-}3^5/yr | Super-K 2024 | ✓ Consistent |
 | UQFF buoyancy signature | F_U_Bi_i unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF-SM bridge.*
 
 ## References
 
-1. Abbott, B.P. et al. (LIGO/Virgo) (2017). "GW170817: A Standard Siren Measurement of H₀"
+1. Abbott, B.P. et al. (LIGO/Virgo) (2017). "GW170817: A Standard Siren Measurement of H_0"
 2. Planck Collaboration (2020). "Planck 2018 Results: Cosmological Parameters"
-3. Riess, A. et al. (2021). "Comprehensive Measurement of the Local Value of H₀"
+3. Riess, A. et al. (2021). "Comprehensive Measurement of the Local Value of H_0"
 4. Punturo, M. et al. (2010). "The Einstein Telescope"
 5. Murphy, D. et al. (2026). "UQFF Framework for Gravitational Wave Propagation"
 
 ---
 
-**Validators:** `validate_multiband.py` — ALL TESTS PASSED; `validate_lisa_extended.py` — ALL TESTS PASSED  
-*Multi-band: LIGO horizon 13440→8355 Mpc; LISA 140.8→87.5 Gpc; detection volume 24% of GR. LISA extended: SMBH amplitude reduction 31.6–32.1% at z = 0.5–2.0; phase lag accumulation predicted for multi-band UQFF test (LISA→LIGO phase offset). UQFF_factor = 0.622; κ = 0.0005/day, [SSq] = 0.57*
+**Validators:** `validate_multiband.py` -- ALL TESTS PASSED; `validate_lisa_extended.py` -- ALL TESTS PASSED  
+*Multi-band: LIGO horizon 13440->8355 Mpc; LISA 140.8->87.5 Gpc; detection volume 24% of GR. LISA extended: SMBH amplitude reduction 31.6-32.1% at z = 0.5-2.0; phase lag accumulation predicted for multi-band UQFF test (LISA->LIGO phase offset). UQFF_factor = 0.622; κ = 0.0005/day, [SSq] = 0.57*
 
 **End of Paper 015**
 ---
@@ -543,17 +543,17 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
-| κ | 5.0 × 10⁻⁴ day⁻¹ | UQFF exponential decay rate |
+| κ | 5.0 x 10^{-}4 day^{-}1 | UQFF exponential decay rate |
 | [SSq] | 0.57 | Universal Quantized Factor |
-| β_i | 0.60–0.61 | Buoyancy coupling coefficient |
-| k₁ | 1.5 | Ug1 DPM-dipole coupling |
-| k₂ | 1.2 | Ug2 outer-bubble charge coupling |
-| k₃ | 1.8 | Ug3 string-rotation coupling |
-| k₄ | 2.0 | Ug4 vacuum-concentration coupling |
-| η | 10⁻²² | Inertia tensor scale |
-| E_react(0) | 10⁴⁶ J | Reference reactive energy |
+| β_i | 0.60-0.61 | Buoyancy coupling coefficient |
+| k_1 | 1.5 | Ug1 DPM-dipole coupling |
+| k_2 | 1.2 | Ug2 outer-bubble charge coupling |
+| k_3 | 1.8 | Ug3 string-rotation coupling |
+| k_4 | 2.0 | Ug4 vacuum-concentration coupling |
+| η | 10^{-}2^2 | Inertia tensor scale |
+| E_react(0) | 10^{4}6 J | Reference reactive energy |
 
-### A.2 F_U Master Equation (Complete — 4 terms)
+### A.2 F_U Master Equation (Complete -- 4 terms)
 
 $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}\bigr]$$
 
@@ -565,10 +565,10 @@ $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\
 | Ug4 | Vacuum concentration (star-BH) | `compute_Ug4_SOURCE4` / `compute_Ug4()` |
 | Ubi | Buoyancy force | `compute_Ubi_SOURCE4` / `compute_Ubi()` |
 | Um | Universal Magnetism (Heaviside-amplified) | `compute_Um_SOURCE4` / `compute_Um()` |
-| −Σλᵢ·Uᵢ·E_react | 4th dissipation term (PAPER_420) | `compute_FU_SOURCE4` / full pipeline |
+| -Σλᵢ*Uᵢ*E_react | 4th dissipation term (PAPER_420) | `compute_FU_SOURCE4` / full pipeline |
 
 **4th dissipation term parameters (PAPER_420):**  
-λ₁=10⁻¹⁰, λ₂=10⁻¹², λ₃=10⁻¹¹, λ₄=10⁻¹³ (free parameters, not yet empirically calibrated)
+λ_1=10^{-}1^0, λ_2=10^{-}1^2, λ_3=10^{-}1^1, λ_4=10^{-}1^3 (free parameters, not yet empirically calibrated)
 
 ### A.3 Um Heaviside Phase-Transition Amplifier (PAPER_421)
 
@@ -576,9 +576,9 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
-| ρ_c | 10¹⁵ kg/m³ | SCm critical superconducting density |
+| ρ_c | 10^{1}5 kg/m^3 | SCm critical superconducting density |
 | A_q | 0.1 | Quasi-periodic beating amplitude (10%) |
-| Δω | 2π/(434·365.25) rad/day | 434-year Gleisberg supercycle |
+| Δω | 2π/(434*365.25) rad/day | 434-year Gleisberg supercycle |
 
 ### A.4 UQFF Four Operational Modes
 
@@ -586,8 +586,8 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 |------|--------------|-----------------|
 | **Compressed** | Ug_sum + Newtonian base | Isolated stellar/BH systems |
 | **Resonant** | 5 resonance frequencies (aDPM, aTHz, …) | Multi-scale field interactions |
-| **Buoyant** | β_i × Ubi | Expanding nebulae, stellar winds |
-| **Superconductive** | Um × (1+10¹³·f_H) | Magnetars, SCm critical-density regime |
+| **Buoyant** | β_i x Ubi | Expanding nebulae, stellar winds |
+| **Superconductive** | Um x (1+10^{1}3*f_H) | Magnetars, SCm critical-density regime |
 
 *Implementation status: all 4 modes operational in `MAIN_1_CoAnQi.cpp`, `CondensedPhysics.py`, and `CondensedPhysics2.py`.*
 

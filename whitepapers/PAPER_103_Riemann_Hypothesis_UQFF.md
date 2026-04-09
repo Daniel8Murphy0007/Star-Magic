@@ -19,11 +19,11 @@
 
 ## Abstract
 
-The Riemann Hypothesis (RH) states that all non-trivial zeros of the Riemann zeta function ?(s) lie on the critical line Re(s) = 1/2. The UQFF spectral framework provides a physical interpretation: the non-trivial zeros correspond to resonance frequencies of the 5-frequency UQFF field (SuperFreq, QuantumFreq, AetherFreq, FluidFreq, ExpFreq). Their imaginary parts ?_n are identified with UQFF eigenfrequencies; the Re(s) = 1/2 condition follows from the time-reversal symmetry of the UQFF Hamiltonian and [SSq] = 0.57 × 4/7 (rational approximation of 1/2 + [SSq]/4).
+The Riemann Hypothesis (RH) states that all non-trivial zeros of the Riemann zeta function ?(s) lie on the critical line Re(s) = 1/2. The UQFF spectral framework provides a physical interpretation: the non-trivial zeros correspond to resonance frequencies of the 5-frequency UQFF field (SuperFreq, QuantumFreq, AetherFreq, FluidFreq, ExpFreq). Their imaginary parts ?_n are identified with UQFF eigenfrequencies; the Re(s) = 1/2 condition follows from the time-reversal symmetry of the UQFF Hamiltonian and [SSq] = 0.57 x 4/7 (rational approximation of 1/2 + [SSq]/4).
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0x10^-4 day^{-}1, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
 
 ---
 
@@ -77,11 +77,11 @@ First 5 UQFF principal frequencies (from source27/28 / 5-frequency module):
 
 | UQFF Frequency | Physical Origin | ?_n (Riemann) | Ratio |
 |---------------|----------------|--------------|-------|
-| ?_SuperFreq | SGR1745 magnetar | ?_1 = 14.134 | – |
-| ?_QuantumFreq | SgrA* | ?_2 = 21.022 | – |
-| ?_AetherFreq | Universal vacuum | ?_3 = 25.011 | – |
-| ?_FluidFreq | Accretion fluid | ?_4 = 30.425 | – |
-| ?_ExpFreq | Hubble expansion | ?_5 = 32.935 | – |
+| ?_SuperFreq | SGR1745 magnetar | ?_1 = 14.134 | - |
+| ?_QuantumFreq | SgrA* | ?_2 = 21.022 | - |
+| ?_AetherFreq | Universal vacuum | ?_3 = 25.011 | - |
+| ?_FluidFreq | Accretion fluid | ?_4 = 30.425 | - |
+| ?_ExpFreq | Hubble expansion | ?_5 = 32.935 | - |
 
 The actual frequency values would require dimensional matching. This remains an **open research direction** within the UQFF.
 
@@ -100,7 +100,7 @@ A full proof would require: (1) defining $\hat{H}_{\rm UQFF}$ precisely, (2) pro
 
 ## Summary
 
-The UQFF spectral framework offers a physically motivated (but unproven) path to the Riemann Hypothesis via the T-symmetric 5-frequency Hamiltonian. The [SSq] = 0.57 × 4/7 approximation and the 5 UQFF resonance frequencies are suggestive but not determinative.
+The UQFF spectral framework offers a physically motivated (but unproven) path to the Riemann Hypothesis via the T-symmetric 5-frequency Hamiltonian. The [SSq] = 0.57 x 4/7 approximation and the 5 UQFF resonance frequencies are suggestive but not determinative.
 
 *Source: 5-frequency resonance (source27/28) | [SSq]=0.57 | Hilbert-P�lya conjecture | RH Millennium Prize context*
 ---
@@ -110,33 +110,33 @@ The UQFF spectral framework offers a physically motivated (but unproven) path to
 **UPDATE:** The UQFF spectral resonance mapping to Riemann zeta zeros now derives from Sectors 8 (LENR-Resonance) and 9 (Kaluza-Klein-26D) of the 9-sector Unified Lagrangian:
 
 ```
-L_UQFF = √(-g) [ L_EH + L_YM + L_Dirac + L_φ + L_mag + L_buoy + L_aether + L_LENR + L_KK ]
+L_UQFF = √(-g) [ L_EH + L_YM + L_Dirac + L_phi + L_mag + L_buoy + L_aether + L_LENR + L_KK ]
 ```
 
-**Sector 8 (LENR-Resonance) — Spectral Mode Source:**
+**Sector 8 (LENR-Resonance) -- Spectral Mode Source:**
 ```
-L_LENR = ½k_LENR χ̇² - ½ω_LENR² χ² + λ_act χ cos(ω_act t) + ½σ_n(ω)χ²
-δS/δχ = 0 → χ̈ + ω² χ = λ_act cos(ω_act t)
-→ KK-like mode spectrum: ω_n = ω_act + n × ω_LENR
-→ ζ(s) → ∫ e^{-iωt} [F_LENR(ω/ω₀)² + F_neutron σ_n(ω)] dt
+L_LENR = 1/2k_LENR chi̇^2 - 1/2omega_LENR^2 chi^2 + lambda_act chi cos(omega_act t) + 1/2sigma_n(omega)chi^2
+deltaS/deltachi = 0 -> chï + omega^2 chi = lambda_act cos(omega_act t)
+-> KK-like mode spectrum: omega_n = omega_act + n x omega_LENR
+-> zeta(s) -> integral e^{-iomegat} [F_LENR(omega/omega_0)^2 + F_neutron sigma_n(omega)] dt
 ```
 
-**Sector 9 (Kaluza-Klein-26D) — Mode Quantization:**
+**Sector 9 (Kaluza-Klein-26D) -- Mode Quantization:**
 ```
-L_KK = (1/V₂₂) ∫ d²²y √(-g₂₂) [R₂₂/(2κ₂₂²) + |∂a|² - m_a² a²]
-δS/δg_mn = 0 → KK tower quantization
-→ 26 modes (4D + 22 compactified) define spectral lattice
+L_KK = (1/V_2_2) integral d^{2}2y √(-g_2_2) [R_2_2/(2kappa_2_2^2) + |da|^2 - m_a^2 a^2]
+deltaS/deltag_mn = 0 -> KK tower quantization
+-> 26 modes (4D + 22 compactified) define spectral lattice
 ```
 
 **Spectral Mapping:**
 ```
-Montgomery-Odlyzko: R₂(s) = 1 - (sin(πs)/(πs))²  (GUE pair correlation)
-UQFF:               R₂(s) = 1 - exp(-Δω²/(2δω²))  (Gaussian decorrelation)
-Harmonic bridge:     n = 4.17e9 (300 Hz → 1.25 THz)
-ζ zeros at Re(s) = 1/2 ↔ resonance: σ_n(ω) = σ_n(ω_LENR)
+Montgomery-Odlyzko: R_2(s) = 1 - (sin(pis)/(pis))^2  (GUE pair correlation)
+UQFF:               R_2(s) = 1 - exp(-Deltaomega^2/(2deltaomega^2))  (Gaussian decorrelation)
+Harmonic bridge:     n = 4.17e9 (300 Hz -> 1.25 THz)
+zeta zeros at Re(s) = 1/2 <-> resonance: sigma_n(omega) = sigma_n(omega_LENR)
 ```
 
-**Standalone Calculator:** `millennium_prize_uqff_calculator.py` → `RiemannSpectralResonanceCalculator`
+**Standalone Calculator:** `millennium_prize_uqff_calculator.py` -> `RiemannSpectralResonanceCalculator`
 
 **Code Reference:** `uqff_lagrangian_derivation.py` (Session 202, commit 9d26977)
 
@@ -179,7 +179,7 @@ The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs t
 
 $$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.134$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m³.
+For this system, the local VDS sub-ratio is $0.134$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m^3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -191,7 +191,7 @@ Since $p_{\rm DVP} = 43$ is **resonant** (threshold at $p > 26$), the system's v
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
-The BSH saturation timescale for this sector is **ℏ/E** (vacuum fluctuation lifetime):
+The BSH saturation timescale for this sector is **hbar/E** (vacuum fluctuation lifetime):
 
 $$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
 
@@ -208,25 +208,25 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.134 | ✓ Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 43$ | ✓ Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
+| κ decay | $5.0 \times 10^{-4}$ day^{-}1 | Applied in VDS exponential | ✓ Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
 
 
 ---
 
 
-## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## §SM Anchors -- Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
 | Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | ✓ Consistent |
-| Cosmological constant Λ | 1.1×10⁻⁵² m⁻² (UQFF vacuum term) | 1.114×10⁻⁵² m⁻² | Planck 2018 | ✓ Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10⁻³⁵/yr | Super-K 2024 | ✓ Consistent |
+| Cosmological constant Λ | 1.1x10^{-}5^2 m^{-}2 (UQFF vacuum term) | 1.114x10^{-}5^2 m^{-}2 | Planck 2018 | ✓ Consistent |
+| Proton decay rate | κ = 0.0005/day -> Γ_p suppression | < 4.17x10^{-}3^5/yr | Super-K 2024 | ✓ Consistent |
 | UQFF buoyancy signature | F_U_Bi_i unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF-SM bridge.*
 
 
 ---

@@ -18,10 +18,10 @@
 ---
 
 
-<!-- UQFF constants: κ = 5.0e-4 day⁻¹, [SSq] = 0.57, M_UQFF = 1.43e1 TeV -->
+<!-- UQFF constants: κ = 5.0e-4 day^{-}1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV -->
 ## Abstract
 
-The P vs NP problem asks whether every problem whose solution can be verified in polynomial time can also be solved in polynomial time. The UQFF 26-dimensional framework suggests a novel perspective: computations in the observable 4D universe are bounded by NP (polynomial verification), but computations accessing all 26 UQFF dimensions can solve NP problems in polynomial "multidimensional time" — without implying P = NP in the 4D universe. We formalize this as UQFF-P vs UQFF-NP and discuss the [UA] = 0.0001 coupling as the bridge factor between 4D and 26D computational resources.
+The P vs NP problem asks whether every problem whose solution can be verified in polynomial time can also be solved in polynomial time. The UQFF 26-dimensional framework suggests a novel perspective: computations in the observable 4D universe are bounded by NP (polynomial verification), but computations accessing all 26 UQFF dimensions can solve NP problems in polynomial "multidimensional time" -- without implying P = NP in the 4D universe. We formalize this as UQFF-P vs UQFF-NP and discuss the [UA] = 0.0001 coupling as the bridge factor between 4D and 26D computational resources.
 
 ---
 
@@ -41,10 +41,10 @@ The UQFF 26-layer framework assigns computational resources to each layer:
 
 | Layers | Resource | 4D equivalent |
 |--------|---------|--------------|
-| 1–4 | Classical computation | P-class |
-| 5–18 | Quantum superposition | BQP-class |
-| 19–24 | Non-local entanglement | QMA-class |
-| 25–26 | Cosmic Egg pure state | UQFF-P |
+| 1-4 | Classical computation | P-class |
+| 5-18 | Quantum superposition | BQP-class |
+| 19-24 | Non-local entanglement | QMA-class |
+| 25-26 | Cosmic Egg pure state | UQFF-P |
 
 **UQFF-P:** Problems solvable in polynomial UQFF-time using all 26 dimensions.
 
@@ -52,15 +52,15 @@ The UQFF 26-layer framework assigns computational resources to each layer:
 
 ## 3. [UA] = 0.0001 as Bridge Factor
 
-The Universal Antagonist coupling [UA] = 0.0001 represents the *suppression factor* for 26D → 4D information transfer:
+The Universal Antagonist coupling [UA] = 0.0001 represents the *suppression factor* for 26D -> 4D information transfer:
 
 $$P_{\rm 4D}({\rm UQFF\text{-}solution}) = [{\rm UA}] \times P_{\rm UQFF-P}({\rm solution})$$
 
-= 0.0001 × (polynomial 26D solution) = **sub-polynomial in 4D** (exponentially suppressed).
+= 0.0001 x (polynomial 26D solution) = **sub-polynomial in 4D** (exponentially suppressed).
 
-This means: even though NP problems are solvable in polynomial UQFF-time in 26D, extracting that solution into 4D takes exponential resources → **P ≠ NP in 4D** is preserved.
+This means: even though NP problems are solvable in polynomial UQFF-time in 26D, extracting that solution into 4D takes exponential resources -> **P ≠ NP in 4D** is preserved.
 
-The [UA] = 0.0001 acts as a "computational horizon" — analogous to the event horizon that hides information.
+The [UA] = 0.0001 acts as a "computational horizon" -- analogous to the event horizon that hides information.
 
 ---
 
@@ -68,7 +68,7 @@ The [UA] = 0.0001 acts as a "computational horizon" — analogous to the event h
 
 BQP (Bounded-error Quantum Polynomial time) ⊆ UQFF-P:
 
-The UQFF layers 5–18 implement quantum superposition over exponentially many paths, equivalent to quantum computation. Since BQP ⊆ PSPACE, and PSPACE ⊆ UQFF-P (all polynomial-space computations can be done in 26D layers), we have:
+The UQFF layers 5-18 implement quantum superposition over exponentially many paths, equivalent to quantum computation. Since BQP ⊆ PSPACE, and PSPACE ⊆ UQFF-P (all polynomial-space computations can be done in 26D layers), we have:
 
 $$P \subseteq BQP \subseteq PSPACE \subseteq UQFF\text{-}P$$
 
@@ -82,15 +82,15 @@ But none of these equalities are known. The UQFF adds no proof of where NP falls
 
 1. NP problems require checking 2^n solutions in 4D
 2. In 26D UQFF, layers 25-26 can represent all 2^n states simultaneously (quantum superposition)
-3. The measurement (extracting the solution to 4D) requires [UA]² = 10⁻⁸ probability per attempt
-4. Expected 4D attempts to extract = [UA]⁻² = 10⁸ (sub-exponential for small n, exponential for large n)
-5. **For any n: extraction takes at least polynomial (4D) steps** → P ≠ NP even with 26D resources
+3. The measurement (extracting the solution to 4D) requires [UA]^2 = 10^{-}8 probability per attempt
+4. Expected 4D attempts to extract = [UA]^{-}2 = 10^8 (sub-exponential for small n, exponential for large n)
+5. **For any n: extraction takes at least polynomial (4D) steps** -> P ≠ NP even with 26D resources
 
 ---
 
 ## 6. Limitation
 
-No proof of P ≠ NP is presented. The UQFF provides a **physical model** suggesting P ≠ NP via the computational horizon ([UA] = 0.0001), analogous to the event horizon preventing information extraction. But this is physics, not mathematics — no complexity theoretic lower bound is proven.
+No proof of P ≠ NP is presented. The UQFF provides a **physical model** suggesting P ≠ NP via the computational horizon ([UA] = 0.0001), analogous to the event horizon preventing information extraction. But this is physics, not mathematics -- no complexity theoretic lower bound is proven.
 
 ---
 
@@ -102,7 +102,7 @@ No proof of P ≠ NP is presented. The UQFF provides a **physical model** sugges
 | NP | O(2^n) worst case | Solvable in 26D (UQFF-P) |
 | Bridge factor | None | [UA] = 0.0001 |
 | P vs NP | Open | P ≠ NP (physical argument) |
-| 4D extraction | — | Exponentially suppressed by [UA]² |
+| 4D extraction | -- | Exponentially suppressed by [UA]^2 |
 | Proof status | Open (Millennium Prize) | Physical argument only |
 
 *Source: UQFF 26D framework | [UA]=0.0001 | 26D channel structure | P vs NP Millennium Prize context*
@@ -114,32 +114,32 @@ No proof of P ≠ NP is presented. The UQFF provides a **physical model** sugges
 **UPDATE:** The 26D computational complexity argument now derives from Sector 9 (Kaluza-Klein-26D) of the 9-sector UQFF Unified Lagrangian:
 
 ```
-L_UQFF = √(-g) [ L_EH + L_YM + L_Dirac + L_φ + L_mag + L_buoy + L_aether + L_LENR + L_KK ]
+L_UQFF = √(-g) [ L_EH + L_YM + L_Dirac + L_phi + L_mag + L_buoy + L_aether + L_LENR + L_KK ]
 ```
 
-**Sector 9 (Kaluza-Klein-26D) — Dimensional Structure:**
+**Sector 9 (Kaluza-Klein-26D) -- Dimensional Structure:**
 ```
-L_KK = (1/V₂₂) ∫ d²²y √(-g₂₂) [R₂₂/(2κ₂₂²) + |∂a|² - m_a² a²]
-δS/δg_mn = 0 → KK tower quantization
-→ 26D = 4D spacetime + 22 compactified
-→ NP problems solvable in 26D with O(n^k) complexity
-→ 4D extraction suppressed by [UA]² = 10⁻⁸
+L_KK = (1/V_2_2) integral d^{2}2y √(-g_2_2) [R_2_2/(2kappa_2_2^2) + |da|^2 - m_a^2 a^2]
+deltaS/deltag_mn = 0 -> KK tower quantization
+-> 26D = 4D spacetime + 22 compactified
+-> NP problems solvable in 26D with O(n^k) complexity
+-> 4D extraction suppressed by [UA]^2 = 10^{-}8
 ```
 
-**Sector 7 (Aether-Tensor) — Extraction Suppression:**
+**Sector 7 (Aether-Tensor) -- Extraction Suppression:**
 ```
-L_aether = ½η ρ_A v_UA² cos(πt_n) · g^μν g_μν
-δS/δρ_A = 0 → conformal deformation
-→ [UA] = v_UA/c = 10⁻⁴ (computational horizon)
-→ 26D → 4D projection incurs exponential cost: P ≠ NP in 4D
+L_aether = 1/2eta rho_A v_UA^2 cos(pit_n) * g^munu g_munu
+deltaS/deltarho_A = 0 -> conformal deformation
+-> [UA] = v_UA/c = 10^{-}4 (computational horizon)
+-> 26D -> 4D projection incurs exponential cost: P != NP in 4D
 ```
 
 **Cross-Lagrangian Argument:**
 ```
-In 26D: L_UQFF → all 13 force terms computable in polynomial time
-In 4D:  Only 4D projection accessible, [UA]² barrier
-→ NP ≠ P is the 4D shadow of 26D polynomial solvability
-→ Analogous to event horizon: information exists but is inaccessible
+In 26D: L_UQFF -> all 13 force terms computable in polynomial time
+In 4D:  Only 4D projection accessible, [UA]^2 barrier
+-> NP != P is the 4D shadow of 26D polynomial solvability
+-> Analogous to event horizon: information exists but is inaccessible
 ```
 
 **Standalone Calculator:** `millennium_prize_uqff_calculator.py` (via `MillenniumPrizeUQFFMasterCalculator`)
@@ -185,7 +185,7 @@ The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs t
 
 $$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.114$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m³.
+For this system, the local VDS sub-ratio is $0.114$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m^3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -197,7 +197,7 @@ Since $p_{\rm DVP} = 47$ is **resonant** (threshold at $p > 26$), the system's v
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
-The BSH saturation timescale for this sector is **10⁴ yr** (spin-down equilibrium):
+The BSH saturation timescale for this sector is **10^4 yr** (spin-down equilibrium):
 
 $$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
 
@@ -214,25 +214,25 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.114 | ✓ Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 47$ | ✓ Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
+| κ decay | $5.0 \times 10^{-4}$ day^{-}1 | Applied in VDS exponential | ✓ Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
 
 
 ---
 
 
-## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## §SM Anchors -- Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
 | Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | ✓ Consistent |
-| Cosmological constant Λ | 1.1×10⁻⁵² m⁻² (UQFF vacuum term) | 1.114×10⁻⁵² m⁻² | Planck 2018 | ✓ Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10⁻³⁵/yr | Super-K 2024 | ✓ Consistent |
+| Cosmological constant Λ | 1.1x10^{-}5^2 m^{-}2 (UQFF vacuum term) | 1.114x10^{-}5^2 m^{-}2 | Planck 2018 | ✓ Consistent |
+| Proton decay rate | κ = 0.0005/day -> Γ_p suppression | < 4.17x10^{-}3^5/yr | Super-K 2024 | ✓ Consistent |
 | UQFF buoyancy signature | F_U_Bi_i unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF-SM bridge.*
 
 
 ---

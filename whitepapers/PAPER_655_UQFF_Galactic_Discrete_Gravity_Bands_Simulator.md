@@ -4,7 +4,7 @@
 **Version:** 1.0.0  
 **Session:** 168 | **Date:** March 31 2026  
 **CP4 Class:** UQFFGalacticDiscreteBandSimulatorCalculator  
-**Source:** grok_share_b2e2c5cba7a.txt (Session 168) — SystemAnalysisSimulator_v1–v7 (lines 5215–17971)  
+**Source:** grok_share_b2e2c5cba7a.txt (Session 168) -- SystemAnalysisSimulator_v1-v7 (lines 5215-17971)  
 **Companion papers:** PAPER_650 (Buoyancy Harmonics), PAPER_646 (Ui Operator), PAPER_647 (Vacuum Density), PAPER_642 (SM Bridge)
 
 ---
@@ -13,57 +13,57 @@
 
 $$U_{g1} = k_1 \frac{G M \mu_B B}{r^3};\quad U_{g2} = k_2 \frac{G M \varepsilon_0 E^2}{2r};\quad U_{g3} = k_3 \sum_j B_j \cos(\omega_s t \pi) P_{\text{core}} E_{\text{react}}$$
 
-The SystemAnalysisSimulator (v1–v7) implements three simultaneous, discrete Universal
+The SystemAnalysisSimulator (v1-v7) implements three simultaneous, discrete Universal
 Gravity bands (Ug1: internal magnetic dipole, Ug2: field bubble, Ug3: magnetic string disk)
-operating on galactic objects within the Universal Aether (ρvac,A = 10⁻²³ gm/cm³).
+operating on galactic objects within the Universal Aether (ρvac,A = 10^{-}2^3 gm/cm^3).
 The v7 version adds **discrete Universal Magnetism** (non-interactive, separately banded),
 confirms that each Ug band has a paired opposite Ub (buoyancy) band, and derives star
 spin rate as a function of Ug1/Ub/Ug2. The simulator uses 82 real two-star galactic
 observational data points for validation. This paper formalizes the three-band gravity
-architecture, the non-interactive magnetism condition, and the Aether density 10⁻²³ gm/cm³
+architecture, the non-interactive magnetism condition, and the Aether density 10^{-}2^3 gm/cm^3
 as the medium supporting all field propagation.
 
 ---
 
 ## §1 Three Discrete Universal Gravity Bands
 
-### 1.1 Ug1 — Internal Magnetic Dipole Gravity
+### 1.1 Ug1 -- Internal Magnetic Dipole Gravity
 
 $$U_{g1} = k_1 \cdot \frac{G M \mu_B B_{\text{internal}}}{r^3} \cdot (1 + H_{SCm})$$
 
 | Variable | Value | Meaning |
 |---------|-------|---------|
-| k₁ | UQFF calibrated | Dipole coupling constant |
-| G | 6.674×10⁻¹¹ N·m²/kg² | Newton's gravitational constant |
+| k_1 | UQFF calibrated | Dipole coupling constant |
+| G | 6.674x10^{-}1^1 N*m^2/kg^2 | Newton's gravitational constant |
 | M | body mass (kg) | Central body mass |
-| μB | 9.274×10⁻²⁴ J/T | Bohr magneton |
+| μB | 9.274x10^{-}2^4 J/T | Bohr magneton |
 | B_internal | body dipole field (T) | Internal dipole field strength |
 | r | separation distance (m) | From body center |
 | H_SCm | 0.99 | Heliosphere/superconductive modulation |
 
 **Physical meaning**: Ug1 is the gravity component sourced by the body's **internal magnetic
-dipole** — essentially the coupling between mass (G·M), magnetic moment (μB·B), and the
-inverse-cube field geometry of a dipole (1/r³).
+dipole** -- essentially the coupling between mass (G*M), magnetic moment (μB*B), and the
+inverse-cube field geometry of a dipole (1/r^3).
 
-### 1.2 Ug2 — Field Bubble Tension
+### 1.2 Ug2 -- Field Bubble Tension
 
 $$U_{g2} = k_2 \cdot \frac{G M \varepsilon_0 E_{\text{field}}^2}{2r} \cdot \left(\sum_j \rho_{\text{vac},j}\right) \cdot H_{SCm}$$
 
 **Physical meaning**: Ug2 is the energy stored in the **electromagnetic field bubble**
-surrounding the body — proportional to the electric field energy density (ε₀E²/2) and
+surrounding the body -- proportional to the electric field energy density (ε_0E^2/2) and
 the sum of vacuum densities from the hierarchy (PAPER_647). It falls as 1/r (longer range
-than Ug1's 1/r³), making it the **circumstellar field gravity component**.
+than Ug1's 1/r^3), making it the **circumstellar field gravity component**.
 
 The sum Σρvac,j = ρvac,[SCm] + ρvac,[UA] + ρvac,Ui creates three sub-levels within Ug2,
 giving Ug2 its own internal three-layer structure.
 
-### 1.3 Ug3 — Magnetic String Disk
+### 1.3 Ug3 -- Magnetic String Disk
 
 $$U_{g3} = k_3 \sum_j B_j(r, \theta, t, \rho_{\text{vac},[SCm]}) \cdot \cos(\omega_s t \pi) \cdot P_{\text{core}} \cdot E_{\text{react}}$$
 
 **Physical meaning**: Ug3 is the gravity component produced by **billions of discrete
 magnetic strings** that fill the galactic disk in the x-y plane. Each string has a
-unique polarity, length, and angular frequency — forming the prime-coded DVP structure
+unique polarity, length, and angular frequency -- forming the prime-coded DVP structure
 (PAPER_649). The strings "reciprocate without losing energy" through the Aether.
 
 ---
@@ -78,11 +78,11 @@ A key result from SystemAnalysisSimulator_v7:
 > band does not couple to adjacent magnetic bands, only to its paired gravity band."*
 
 This means:
-- Um_band1 (internal) → couples only to Ug1, not to Ug2 or Ug3
-- Um_band2 (circumstellar) → couples only to Ug2
-- Um_band3 (string disk) → couples only to Ug3
+- Um_band1 (internal) -> couples only to Ug1, not to Ug2 or Ug3
+- Um_band2 (circumstellar) -> couples only to Ug2
+- Um_band3 (string disk) -> couples only to Ug3
 
-**Consequence**: The full field equation is block-diagonal in gravity-magnetism space —
+**Consequence**: The full field equation is block-diagonal in gravity-magnetism space --
 three independent (Ugi, Umi) pairs. This simplifies computation: each pair can be
 evaluated separately without cross-coupling.
 
@@ -103,16 +103,16 @@ evaluated separately without cross-coupling.
 
 $$f_{\text{star}} = f\left(\frac{U_{g1}}{U_{b1}} \cdot \frac{1}{U_{g2}}\right)$$
 
-When Ug1/|Ub1| > 1: gravity dominates → star spins faster (angular momentum compression).
-When Ug1/|Ub1| < 1: buoyancy dominates → star spins slower (angular momentum expansion).
+When Ug1/|Ub1| > 1: gravity dominates -> star spins faster (angular momentum compression).
+When Ug1/|Ub1| < 1: buoyancy dominates -> star spins slower (angular momentum expansion).
 
 The exact functional form:
 
 $$f_{\text{spin}} = f_0 \cdot \left(\frac{U_{g1}}{|U_{b1}|}\right)^{1/2} \cdot \left(\frac{1}{U_{g2} r}\right)^{1/3}$$
 
 This combines:
-- ½ power dependence on gravity/buoyancy ratio (orbital mechanics)
-- ⅓ power dependence on field bubble tension (stellar structure)
+- 1/2 power dependence on gravity/buoyancy ratio (orbital mechanics)
+- 1/3 power dependence on field bubble tension (stellar structure)
 
 ### 3.2 Star Motion (Galactic Orbit)
 
@@ -132,12 +132,12 @@ This is the UQFF explanation for flat rotation curves without dark matter:
 
 ## §4 82-Point Two-Star Validation Dataset
 
-The SystemAnalysisSimulator (v1–v6) uses 82 real observational timestamps from
+The SystemAnalysisSimulator (v1-v6) uses 82 real observational timestamps from
 two-star binary/galactic systems for validation. Each timestamp provides:
-- Positions (x₁,y₁,z₁), (x₂,y₂,z₂) [AU]
-- Velocities (vx₁,vy₁,vz₁), (vx₂,vy₂,vz₂) [km/s]
-- Masses M₁, M₂ [solar masses]
-- Magnetic field strengths B₁, B₂ [Gauss]
+- Positions (x_1,y_1,z_1), (x_2,y_2,z_2) [AU]
+- Velocities (vx_1,vy_1,vz_1), (vx_2,vy_2,vz_2) [km/s]
+- Masses M_1, M_2 [solar masses]
+- Magnetic field strengths B_1, B_2 [Gauss]
 
 The simulator computes Ug1+Ug2+Ug3+Ub for each timestamp and validates against
 observed orbital parameters. The 82-point comparison confirms the three-band gravity
@@ -153,7 +153,7 @@ $$\rho_{\text{vac},A} = 10^{-23}\ \text{gm/cm}^3 = 10^{-20}\ \text{kg/m}^3 \appr
 
 The Aether is the **medium for all three gravity bands**. Its properties:
 - Zero viscosity (Ug3 strings reciprocate without energy loss)
-- Density 10⁻²³ gm/cm³ (solar-system scale baseline, Aether13_16)
+- Density 10^{-}2^3 gm/cm^3 (solar-system scale baseline, Aether13_16)
 - Supports electromagnetic wave propagation at c
 - Carries the Ui inertial resistance term (PAPER_646)
 
@@ -204,7 +204,7 @@ The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs t
 
 $$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.067$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m³.
+For this system, the local VDS sub-ratio is $0.067$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m^3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -233,37 +233,37 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.067 | ✓ Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 101$ | ✓ Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
+| κ decay | $5.0 \times 10^{-4}$ day^{-}1 | Applied in VDS exponential | ✓ Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
 
 
 ---
 
 
-## §SM Anchors — G6 Gate (CVW v2.0.0)
+## §SM Anchors -- G6 Gate (CVW v2.0.0)
 
 | Observable | SM Value | UQFF Discrete Band Prediction | Alignment |
 |------------|----------|-------------------------------|-----------|
 | Galactic flat rotation | ~220 km/s constant | Ub1 correction to v_orbit | ✅ structural |
-| Binary star orbital period | Kepler (GM/r)^{1/2} | Ug1/Ug2 three-band correction | ✅ 5–15% |
-| Sun rotation period | 25–35 days | Ug1/Ub1/Ug2 spin formula | 🔍 calibration needed |
+| Binary star orbital period | Kepler (GM/r)^{1/2} | Ug1/Ug2 three-band correction | ✅ 5-15% |
+| Sun rotation period | 25-35 days | Ug1/Ub1/Ug2 spin formula | 🔍 calibration needed |
 | Milky Way disk thickness | ~1 kpc | Ug3 string disk scale height | ✅ structural |
-| CMB dipole isotropy | 10⁻³ anisotropy | Ug1 dipole modulation of Aether | 🔍 candidate |
+| CMB dipole isotropy | 10^{-}3 anisotropy | Ug1 dipole modulation of Aether | 🔍 candidate |
 
-> **SM Anchor Reference:** PAPER_642 — UQFFSMParameterBridgeMasterComparisonCalculator
+> **SM Anchor Reference:** PAPER_642 -- UQFFSMParameterBridgeMasterComparisonCalculator
 
 ---
 
 ## References
 
-1. SystemAnalysisSimulator v1–v7 — grok_share_b2e2c5cba7a.txt (Session 168) lines 5215–17971
-2. PAPER_650 — Buoyancy Harmonics (Ub companion to each Ug band)
-3. PAPER_646 — Universal Inertial Operator (Ui medium properties)
-4. PAPER_647 — Vacuum Density Series (ρvac,A Aether baseline)
-5. PAPER_649 — Dipole Vortex Primes (Ug3 string prime encoding)
-6. PAPER_642 — SM Parameter Bridge
+1. SystemAnalysisSimulator v1-v7 -- grok_share_b2e2c5cba7a.txt (Session 168) lines 5215-17971
+2. PAPER_650 -- Buoyancy Harmonics (Ub companion to each Ug band)
+3. PAPER_646 -- Universal Inertial Operator (Ui medium properties)
+4. PAPER_647 -- Vacuum Density Series (ρvac,A Aether baseline)
+5. PAPER_649 -- Dipole Vortex Primes (Ug3 string prime encoding)
+6. PAPER_642 -- SM Parameter Bridge
 7. Rubin V C, Ford W K (1970): "Rotation of Andromeda Nebula", ApJ 159:379
-8. Milky Way Galactic rotation — Gravity Collaboration (2019), A&A 625:L10
+8. Milky Way Galactic rotation -- Gravity Collaboration (2019), A&A 625:L10
 9. ARCHITECTURE_FLOW_DIAGRAM.md v5.24
 
 

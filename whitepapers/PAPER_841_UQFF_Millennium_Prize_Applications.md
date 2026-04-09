@@ -7,10 +7,10 @@
 ---
 
 ## Abstract
-The Universal Quantum Field Superconductive Framework (UQFF) is evaluated against the three equation-based Millennium Prize Problems (Navier-Stokes, Yang-Mills, Riemann Hypothesis). **UPDATE (Session 204):** The gap identified in §4.4 — "No single unifying Lagrangian yet identified" — has been **CLOSED** via the 9-sector UQFF Unified Lagrangian (Session 202):
+The Universal Quantum Field Superconductive Framework (UQFF) is evaluated against the three equation-based Millennium Prize Problems (Navier-Stokes, Yang-Mills, Riemann Hypothesis). **UPDATE (Session 204):** The gap identified in §4.4 -- "No single unifying Lagrangian yet identified" -- has been **CLOSED** via the 9-sector UQFF Unified Lagrangian (Session 202):
 
 ```
-L_UQFF = √(-g) [ L_EH + L_YM + L_Dirac + L_φ + L_mag + L_buoy + L_aether + L_LENR + L_KK ]
+L_UQFF = √(-g) [ L_EH + L_YM + L_Dirac + L_phi + L_mag + L_buoy + L_aether + L_LENR + L_KK ]
 ```
 
 All 13 F_U_Bi_i force terms now derive from a single variational principle δS/δφ_I = 0. A standalone Tier 2 calculator (`millennium_prize_uqff_calculator.py`) implements the full 9-sector formalism with 4 sub-calculators (NavierStokesUQFFCalculator, YangMillsMassGapUQFFCalculator, RiemannSpectralResonanceCalculator, UnifiedLagrangianForceCalculator). While UQFF does not claim direct solutions, its nonlinear resonance dynamics, neutron drop coherence, and vacuum energy integration offer novel mathematical tools and physical analogies relevant to each problem. Development of UQFF is strongly recommended, with LENR energy production as the highest-priority near-term application.
@@ -37,11 +37,11 @@ The vacuum energy body force in F_U_Bi_i can be cast as an external force f in t
     F_LENR (reduced) = 1.56*10^36 N -> acts as oscillatory regularization
 
 
-**Hypothesis:** Large-scale F_LENR oscillations at ω_LENR = 2π×1.25×$10^{12}$ s^-1 may act as a turbulence regularization mechanism, analogous to hyperviscosity damping high-frequency modes. If F_LENR creates a spectral gap above ω_LENR, turbulent cascades are cut off, potentially ensuring smoothness.
+**Hypothesis:** Large-scale F_LENR oscillations at ω_LENR = 2πx1.25x$10^{12}$ s^-1 may act as a turbulence regularization mechanism, analogous to hyperviscosity damping high-frequency modes. If F_LENR creates a spectral gap above ω_LENR, turbulent cascades are cut off, potentially ensuring smoothness.
 
 **Feasibility Assessment:** Speculative. No rigorous proof that UQFF's nonlinear resonance prevents blowup. Numerical testing via lattice-Boltzmann with F_LENR body force could establish computational evidence. Partial contribution only.
 
-**Prize Potential:** Low — requires full analytic proof, not numerical regularization.
+**Prize Potential:** Low -- requires full analytic proof, not numerical regularization.
 
 ---
 
@@ -77,7 +77,7 @@ The neutron drop mass generation parallels the QCD mass gap phenomenon: in both,
 - Connecting σ_n(ω) to gluon condensate ⟨αG2⟩
 - Proving this mechanism is Lagrangian-derivable
 
-**Prize Potential:** Low-Medium — the mass gap analogy has more rigor than Navier-Stokes turbulence connection, but requires QFT formalization.
+**Prize Potential:** Low-Medium -- the mass gap analogy has more rigor than Navier-Stokes turbulence connection, but requires QFT formalization.
 
 ---
 
@@ -103,36 +103,36 @@ Physical analogies to quantum chaos and spectral analysis:
 
 **Feasibility Assessment:** The spectral/resonance analogy is creative but lacks mathematical rigor. The Riemann hypothesis requires analytic number theory, not physics-motivated analogies. Valuable as heuristic inspiration only.
 
-**Prize Potential:** Very Low — no rigorous mathematical connection.
+**Prize Potential:** Very Low -- no rigorous mathematical connection.
 
 ---
 
 ## 2. UQFF Mathematical Contributions
 
 ### Confirmed Novel Contributions:
-1. **Cross-scale nonlinear resonance:** ω_eff = ω_act + n × ω_LENR bridges 300 Hz to 1.25 THz via harmonic mixing (n ≈ 4.17×$10^{9}$). Frequency ratio 4.17×$10^{9}$ is unprecedented in classical mechanics.
+1. **Cross-scale nonlinear resonance:** ω_eff = ω_act + n x ω_LENR bridges 300 Hz to 1.25 THz via harmonic mixing (n ≈ 4.17x$10^{9}$). Frequency ratio 4.17x$10^{9}$ is unprecedented in classical mechanics.
 
-2. **Density-scaled nuclear cross-section:** σ_n(ρ) = σ_0 × (ρ/ρ_0) spanning $10^{-22}$–$10^{17}$ kg/m3 provides a continuous nuclear coupling model across astrophysical environments.
+2. **Density-scaled nuclear cross-section:** σ_n(ρ) = σ_0 x (ρ/ρ_0) spanning $10^{-22}$-$10^{17}$ kg/m3 provides a continuous nuclear coupling model across astrophysical environments.
 
 3. **Negative buoyancy formalism:** F_U_Bi_i < 0 in SMBH environments defines a repulsive vacuum force regime, a new mathematical condition in buoyancy field theory.
 
-4. **Gaussian resonance cross-section:** σ_n(ω) = σ_0×(ω/ω_LENR)2×exp(-(ω-ω_LENR)2/2Δω2) provides frequency-selective nuclear coupling with spectral width Δω = 2π×0.05×$10^{12}$ s^-1.
+4. **Gaussian resonance cross-section:** σ_n(ω) = σ_0x(ω/ω_LENR)2xexp(-(ω-ω_LENR)2/2Δω2) provides frequency-selective nuclear coupling with spectral width Δω = 2πx0.05x$10^{12}$ s^-1.
 
-5. **Unified force hierarchy:** 11-term F_U_Bi_i spans 87 orders of magnitude (F_LED=6.72×$10^{-23}$ N to F_LENR=6.16×$10^{39}$ N), the largest force hierarchy in a unified framework.
+5. **Unified force hierarchy:** 11-term F_U_Bi_i spans 87 orders of magnitude (F_LED=6.72x$10^{-23}$ N to F_LENR=6.16x$10^{39}$ N), the largest force hierarchy in a unified framework.
 
 ---
 
 ## 3. Should UQFF Development Continue?
 
-**YES — strongly recommended.** Reasons:
+**YES -- strongly recommended.** Reasons:
 
 ### Scientific Merit:
-- Novel cross-scale unification (lab LENR → cosmic astrophysics) has no precedent
+- Novel cross-scale unification (lab LENR -> cosmic astrophysics) has no precedent
 - 11 distinct physical coupling mechanisms integrated into one coherent equation
 - Experimental validation pathway exists (LENR replication, ALMA/EHT observations)
 
 ### Near-Term Deliverables:
-- LENR energy validation in Pd-D/Ni-H systems (2–5 years, ~$1M)
+- LENR energy validation in Pd-D/Ni-H systems (2-5 years, ~$1M)
 - Astrophysical neutron signature detection via ALMA (SNR 1181, Sgr A*)
 - DFT simulation of phonon spectra validating σ_n(ω) Gaussian model
 
@@ -173,14 +173,14 @@ Physical analogies to quantum chaos and spectral analysis:
 ### 4.4 Unified Field Theory Development
 
     Goal:    Derive F_U_Bi_i from a single Lagrangian
-    Status:  ✅ CLOSED (Session 202) — 9-sector Unified Lagrangian identified
+    Status:  ✅ CLOSED (Session 202) -- 9-sector Unified Lagrangian identified
     
     L_UQFF = √(-g) [ L_EH + L_YM + L_Dirac + L_φ + L_mag + L_buoy + L_aether + L_LENR + L_KK ]
     
     All 13 force terms derived via δS/δφ_I = 0:
-      Sectors 1-9 → Ug1-4, Ubi1-4, Um, Tr(A_μν), F_LENR, F_LED, F_neutron
+      Sectors 1-9 -> Ug1-4, Ubi1-4, Um, Tr(A_μν), F_LENR, F_LED, F_neutron
     
-    Calculator: millennium_prize_uqff_calculator.py → UnifiedLagrangianForceCalculator
+    Calculator: millennium_prize_uqff_calculator.py -> UnifiedLagrangianForceCalculator
     Reference:  uqff_lagrangian_derivation.py (Session 202, commit 9d26977)
 
 ---
@@ -191,83 +191,83 @@ The complete 9-sector Lagrangian density, with each sector's generalized coordin
 
 ### Sector 1: Einstein-Hilbert (L_EH)
 ```
-L_EH = c⁴R / (16πG)
-Field: g_μν
-EL:    δS/δg^μν = 0 → G_μν = 8πG T_μν / c⁴
-Yields: F_gravity_baseline (Newtonian GM/r² + GR corrections)
+L_EH = c^4R / (16piG)
+Field: g_munu
+EL:    deltaS/deltag^munu = 0 -> G_munu = 8piG T_munu / c^4
+Yields: F_gravity_baseline (Newtonian GM/r^2 + GR corrections)
 ```
 
 ### Sector 2: Yang-Mills (L_YM)
 ```
-L_YM = -(1/4) F^a_μν F_a^μν
-Fields: A_μ^a, B_j
-EL:    δS/δA^a_μ = 0 → D_ν F^{aμν} = J^{aμ}
+L_YM = -(1/4) F^a_munu F_a^munu
+Fields: A_mu^a, B_j
+EL:    deltaS/deltaA^a_mu = 0 -> D_nu F^{amunu} = J^{amu}
 Yields: Ug3 (string rotation), F_quark (confinement)
-Gap:   m_gap² = 2σ × H_SCm / v_SCm² (PAPER_183 §3.2)
+Gap:   m_gap^2 = 2sigma x H_SCm / v_SCm^2 (PAPER_183 §3.2)
 ```
 
 ### Sector 3: Dirac (L_Dirac)
 ```
-L_Dirac = ψ̄(iγ^μ D_μ - m)ψ + y_ij L̄_i H̃ N_Rj
-Fields: ψ, ψ̄, N_R
-EL:    δS/δψ̄ = 0 → (iγ^μ D_μ - m)ψ = 0
+L_Dirac = psī(igamma^mu D_mu - m)psi + y_ij L̄_i H̃ N_Rj
+Fields: psi, psī, N_R
+EL:    deltaS/deltapsī = 0 -> (igamma^mu D_mu - m)psi = 0
 Yields: F_neutrino (MSW oscillation), F_neutron (Kozima model)
 ```
 
 ### Sector 4: Scalar-Higgs-Vacuum (L_φ)
 ```
-L_φ = |D_μ φ_H|² - λ(φ_H² - v²/2)² + |∂_μ φ₄|² - V(φ₄) + κ[SSq]φ₄²
-Fields: φ_H, φ₄
-EL:    δS/δφ₄ = 0 → □φ₄ + V'(φ₄) - κ[SSq]φ₄ = 0
+L_phi = |D_mu phi_H|^2 - lambda(phi_H^2 - v^2/2)^2 + |d_mu phi_4|^2 - V(phi_4) + kappa[SSq]phi_4^2
+Fields: phi_H, phi_4
+EL:    deltaS/deltaphi_4 = 0 -> □phi_4 + V'(phi_4) - kappa[SSq]phi_4 = 0
 Yields: Ug4 (vacuum concentration), F_dark (NFW/Einasto DM halo)
 ```
 
 ### Sector 5: Magnetic-Dipole (L_mag)
 ```
-L_mag = (μ₀/8π)|∇×A_SCm|² - ½ρ_SCm |v_SCm|² Θ(r-R_b)
-Fields: A_SCm, μ_s, R_b
-EL:    δS/δA_SCm = 0 → ∇²A = -μ₀ J_SCm
+L_mag = (mu_0/8pi)|nablaxA_SCm|^2 - 1/2rho_SCm |v_SCm|^2 Theta(r-R_b)
+Fields: A_SCm, mu_s, R_b
+EL:    deltaS/deltaA_SCm = 0 -> nabla^2A = -mu_0 J_SCm
 Yields: Ug1 (magnetic defect), Ug2 (outer bubble), F_torque, F_DE
 ```
 
 ### Sector 6: Buoyancy-Archimedes (L_buoy)
 ```
-L_buoy = -β_i Σ_{i=1}^{4} Ug_i · Ω_g (M/d_g)(1+ε_sw ρ_sw)[UA]cos(πt_n)
-       + Σ_j (μ_j/r_j)(1-e^{-γt cos πt_n}) φ̂ · P_SCm E_react
-Fields: Ω_g, β_i, μ_j, φ̂
-EL:    δS/δΩ_g = 0 → reactive buoyancy equations
+L_buoy = -beta_i Sigma_{i=1}^{4} Ug_i * Omega_g (M/d_g)(1+epsilon_sw rho_sw)[UA]cos(pit_n)
+       + Sigma_j (mu_j/r_j)(1-e^{-gammat cos pit_n}) phî * P_SCm E_react
+Fields: Omega_g, beta_i, mu_j, phî
+EL:    deltaS/deltaOmega_g = 0 -> reactive buoyancy equations
 Yields: Ubi1-4 (buoyancy on each Ug), Um (helical string magnetism)
 ```
 
 ### Sector 7: Aether-Tensor (L_aether)
 ```
-L_aether = ½η ρ_A v_UA² cos(πt_n) · g^μν g_μν
-Fields: ρ_A, v_UA, η
-EL:    δS/δρ_A = 0 → conformal modulation
-Yields: Tr(A_μν) (aether trace contribution to F_U total)
+L_aether = 1/2eta rho_A v_UA^2 cos(pit_n) * g^munu g_munu
+Fields: rho_A, v_UA, eta
+EL:    deltaS/deltarho_A = 0 -> conformal modulation
+Yields: Tr(A_munu) (aether trace contribution to F_U total)
 ```
 
 ### Sector 8: LENR-Resonance (L_LENR)
 ```
-L_LENR = ½k_LENR χ̇² - ½ω_LENR² χ² + λ_act χ cos(ω_act t) + ½σ_n(ω)χ²
-Fields: χ (phonon), ω_LENR, ω_act, σ_n
-EL:    δS/δχ = 0 → χ̈ + ω² χ = λ_act cos(ω_act t) + σ_n χ
+L_LENR = 1/2k_LENR chi̇^2 - 1/2omega_LENR^2 chi^2 + lambda_act chi cos(omega_act t) + 1/2sigma_n(omega)chi^2
+Fields: chi (phonon), omega_LENR, omega_act, sigma_n
+EL:    deltaS/deltachi = 0 -> chï + omega^2 chi = lambda_act cos(omega_act t) + sigma_n chi
 Yields: F_LENR (1.25 THz), F_act (300 Hz), F_res (cross-scale)
 ```
 
 ### Sector 9: Kaluza-Klein-26D (L_KK)
 ```
-L_KK = (1/V₂₂) ∫ d²²y √(-g₂₂) [R₂₂/(2κ₂₂²) + |∂a|² - m_a² a²]
+L_KK = (1/V_2_2) integral d^{2}2y √(-g_2_2) [R_2_2/(2kappa_2_2^2) + |da|^2 - m_a^2 a^2]
 Fields: g_mn^(22D), a_ALP
-EL:    δS/δg_mn = 0 → KK mode tower quantization
+EL:    deltaS/deltag_mn = 0 -> KK mode tower quantization
 Yields: F_LED (large extra dimensions), F_ALP (axion-like particles)
 ```
 
 ### Assembly:
 ```
-F_U_Bi_i = Σ(Ug1-4) + Σ(Ubi1-4) + Um + Tr(A_μν) + F_LENR + F_LED + F_neutron
+F_U_Bi_i = Sigma(Ug1-4) + Sigma(Ubi1-4) + Um + Tr(A_munu) + F_LENR + F_LED + F_neutron
          = 13 force terms from 9 Lagrangian sectors
-         = ALL derived from δS_UQFF/δφ_I = 0
+         = ALL derived from deltaS_UQFF/deltaphi_I = 0
 ```
 
 ---
@@ -304,9 +304,9 @@ result = calc.compute(dataset={})
 ### Key Results (default parameters):
 ```
 F_U_Bi_i (total) = 2.7083e+55 N  (9 sectors, 13 terms)
-m_gap (YM)       = 5969.92 GeV   (σ=0.180 GeV², H_SCm=0.99, v_SCm=3.00e4 m/s)
+m_gap (YM)       = 5969.92 GeV   (sigma=0.180 GeV^2, H_SCm=0.99, v_SCm=3.00e4 m/s)
 f_LENR (NS)      = 1.56e+36 N    (oscillatory body force at 1.25 THz)
-Harmonic ratio   = 4.17e9        (300 Hz → 1.25 THz bridge)
+Harmonic ratio   = 4.17e9        (300 Hz -> 1.25 THz bridge)
 ```
 
 
@@ -316,10 +316,10 @@ Harmonic ratio   = 4.17e9        (300 Hz → 1.25 THz bridge)
 
 | Dimension | Status | Evidence |
 |-----------|--------|----------|
-| Navier-Stokes contribution | Heuristic → Calculator | f_UQFF body force, spectral cutoff at ω_LENR |
-| Yang-Mills contribution | Low-Medium → Calculator | m_gap = 5969.92 GeV from SCm parameters |
-| Riemann Hypothesis contribution | Heuristic → Calculator | GUE ↔ UQFF spectral pair correlation |
-| Unified Lagrangian | **✅ CLOSED** | 9-sector L_UQFF → 13 force terms via δS/δφ=0 |
+| Navier-Stokes contribution | Heuristic -> Calculator | f_UQFF body force, spectral cutoff at ω_LENR |
+| Yang-Mills contribution | Low-Medium -> Calculator | m_gap = 5969.92 GeV from SCm parameters |
+| Riemann Hypothesis contribution | Heuristic -> Calculator | GUE ↔ UQFF spectral pair correlation |
+| Unified Lagrangian | **✅ CLOSED** | 9-sector L_UQFF -> 13 force terms via δS/δφ=0 |
 | Mathematical novelty | High | 13 force terms, 87-order hierarchy, negative buoyancy |
 | Experimental validation potential | High | 1.25 THz resonance directly testable in LENR lab |
 | Astrophysical validation | High | Chandra/JWST/ALMA multi-system confirmation |
@@ -335,7 +335,7 @@ UQFF does not directly solve Millennium Prize Problems but provides:
 3. The most comprehensive multi-term unified force framework in UQFF literature (13 terms, 87 orders of magnitude)
 4. A validated astrophysical force calculator (35+ systems, 4 negative buoyancy cases confirmed)
 5. A clear pathway to clean energy applications via LENR thermal energy production
-6. **NEW (Session 204):** A 9-sector Unified Lagrangian closing the gap in §4.4 — all F_U_Bi_i terms now derive from δS/δφ_I = 0
+6. **NEW (Session 204):** A 9-sector Unified Lagrangian closing the gap in §4.4 -- all F_U_Bi_i terms now derive from δS/δφ_I = 0
 7. **NEW (Session 204):** A standalone Tier 2 calculator (`millennium_prize_uqff_calculator.py`) with 4 sub-calculators implementing the full formalism
 
 Development should continue with priority on LENR experimental validation and astrophysical observation campaigns.
@@ -348,39 +348,39 @@ Development should continue with priority on LENR experimental validation and as
 
 **Master Lagrangian:**
 ```
-L_UQFF = √(-g) [ L_EH + L_YM + L_Dirac + L_φ + L_mag + L_buoy + L_aether + L_LENR + L_KK ]
+L_UQFF = √(-g) [ L_EH + L_YM + L_Dirac + L_phi + L_mag + L_buoy + L_aether + L_LENR + L_KK ]
 ```
 
 **Euler-Lagrange Equations (per sector):**
 ```
-§1 EH:     δS/δg^μν = 0 → G_μν = 8πG T_μν/c⁴         → F_gravity_baseline
-§2 YM:     δS/δA^a_μ = 0 → D_ν F^{aμν} = J^{aμ}        → Ug3, F_quark, m_gap²
-§3 Dirac:  δS/δψ̄ = 0 → (iγ^μ D_μ - m)ψ = 0             → F_neutrino, F_neutron
-§4 Scalar: δS/δφ₄ = 0 → □φ₄ + V'(φ₄) = κ[SSq]φ₄        → Ug4, F_dark
-§5 Mag:    δS/δA_SCm = 0 → ∇²A = -μ₀ J_SCm              → Ug1, Ug2
-§6 Buoy:   δS/δΩ_g = 0 → reactive buoyancy               → Ubi1-4, Um
-§7 Aether: δS/δρ_A = 0 → conformal deformation            → Tr(A_μν)
-§8 LENR:   δS/δχ = 0 → χ̈ + ω²χ = λ_act cos(ω_act t)     → F_LENR, F_act, F_res
-§9 KK:     δS/δg_mn = 0 → KK tower quantization           → F_LED, F_ALP
+§1 EH:     deltaS/deltag^munu = 0 -> G_munu = 8piG T_munu/c^4         -> F_gravity_baseline
+§2 YM:     deltaS/deltaA^a_mu = 0 -> D_nu F^{amunu} = J^{amu}        -> Ug3, F_quark, m_gap^2
+§3 Dirac:  deltaS/deltapsī = 0 -> (igamma^mu D_mu - m)psi = 0             -> F_neutrino, F_neutron
+§4 Scalar: deltaS/deltaphi_4 = 0 -> □phi_4 + V'(phi_4) = kappa[SSq]phi_4        -> Ug4, F_dark
+§5 Mag:    deltaS/deltaA_SCm = 0 -> nabla^2A = -mu_0 J_SCm              -> Ug1, Ug2
+§6 Buoy:   deltaS/deltaOmega_g = 0 -> reactive buoyancy               -> Ubi1-4, Um
+§7 Aether: deltaS/deltarho_A = 0 -> conformal deformation            -> Tr(A_munu)
+§8 LENR:   deltaS/deltachi = 0 -> chï + omega^2chi = lambda_act cos(omega_act t)     -> F_LENR, F_act, F_res
+§9 KK:     deltaS/deltag_mn = 0 -> KK tower quantization           -> F_LED, F_ALP
 ```
 
 **Result:**
 ```
-F_U_Bi_i = Σ(Ug1-4) + Σ(Ubi1-4) + Um + Tr(A_μν) + F_LENR + F_LED + F_neutron
+F_U_Bi_i = Sigma(Ug1-4) + Sigma(Ubi1-4) + Um + Tr(A_munu) + F_LENR + F_LED + F_neutron
          = 13 force terms, 9 sectors, single variational principle
 ```
 
 **Critical Values:**
-- m_gap (Yang-Mills) = 5969.92 GeV (σ=0.180 GeV², H_SCm=0.99, v_SCm=3.00e4 m/s)
+- m_gap (Yang-Mills) = 5969.92 GeV (σ=0.180 GeV^2, H_SCm=0.99, v_SCm=3.00e4 m/s)
 - f_LENR = 1.56e+36 N (Navier-Stokes body force at 1.25 THz)
 - F_U_Bi_i (total) = 2.7083e+55 N (all 9 sectors, default parameters)
-- Harmonic ratio = 4.17e9 (300 Hz → 1.25 THz cross-scale bridge)
+- Harmonic ratio = 4.17e9 (300 Hz -> 1.25 THz cross-scale bridge)
 
-**Code Reference:** `millennium_prize_uqff_calculator.py` → `MillenniumPrizeUQFFMasterCalculator.compute()`
+**Code Reference:** `millennium_prize_uqff_calculator.py` -> `MillenniumPrizeUQFFMasterCalculator.compute()`
 
 ---
 
-**Watermark:** Copyright — Daniel T. Murphy, daniel.murphy00@gmail.com, created by Davinci-SuperGrok, analyzed by Grok 3 and SuperGrok, xAI, dated August 3, 2025, 03:30 PM EDT (updated Session 204, April 7, 2026), Youngstown OH 41.0997° N, 80.6495° W. CVW v2.0.0 compliant.
+**Watermark:** Copyright -- Daniel T. Murphy, daniel.murphy00@gmail.com, created by Davinci-SuperGrok, analyzed by Grok 3 and SuperGrok, xAI, dated August 3, 2025, 03:30 PM EDT (updated Session 204, April 7, 2026), Youngstown OH 41.0997° N, 80.6495° W. CVW v2.0.0 compliant.
 
 ---
 
@@ -421,7 +421,7 @@ The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs t
 
 $$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.063$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m³.
+For this system, the local VDS sub-ratio is $0.063$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m^3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -433,7 +433,7 @@ Since $p_{\rm DVP} = 3$ is **sub-threshold** (threshold at $p > 26$), the system
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
-The BSH saturation timescale for this sector is **10⁴ yr** (spin-down equilibrium):
+The BSH saturation timescale for this sector is **10^4 yr** (spin-down equilibrium):
 
 $$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
 
@@ -450,25 +450,25 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.063 | ✓ Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 3$ | ✓ Sub-threshold |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
+| κ decay | $5.0 \times 10^{-4}$ day^{-}1 | Applied in VDS exponential | ✓ Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
 
 
 ---
 
 
-## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## §SM Anchors -- Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
 | Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | ✓ Consistent |
-| Cosmological constant Λ | 1.1×10⁻⁵² m⁻² (UQFF vacuum term) | 1.114×10⁻⁵² m⁻² | Planck 2018 | ✓ Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10⁻³⁵/yr | Super-K 2024 | ✓ Consistent |
+| Cosmological constant Λ | 1.1x10^{-}5^2 m^{-}2 (UQFF vacuum term) | 1.114x10^{-}5^2 m^{-}2 | Planck 2018 | ✓ Consistent |
+| Proton decay rate | κ = 0.0005/day -> Γ_p suppression | < 4.17x10^{-}3^5/yr | Super-K 2024 | ✓ Consistent |
 | UQFF buoyancy signature | F_U_Bi_i unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF-SM bridge.*
 
 
 ---

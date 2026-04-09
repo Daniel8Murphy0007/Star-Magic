@@ -1,67 +1,67 @@
-# PAPER_742: Sombrero Galaxy MUGE — Dust Lane Drag Term D_dust
+# PAPER_742: Sombrero Galaxy MUGE -- Dust Lane Drag Term D_dust
 
 **Author:** Daniel T. Murphy  
 **Framework:** Universal Quantum Field Superconductive Framework (UQFF)  
 **Session:** 180 continuation | v5.38  
 **Date:** 2025  
-**CP4 Class:** #326 — SombreroGalaxyDustMUGECalculator  
+**CP4 Class:** #326 -- SombreroGalaxyDustMUGECalculator  
 
 ---
 
 ## Abstract
 
-The Sombrero Galaxy (M104) presents a unique astrophysical challenge: its prominent equatorial dust lane exerts measurable drag on bulge dynamics and star formation near the central black hole (~10⁹ M☉). This paper derives the MUGE for the Sombrero Galaxy incorporating the new D_dust environmental term, extending the standard UQFF formalism to include optically thick dust lane physics via the F_env operator.
+The Sombrero Galaxy (M104) presents a unique astrophysical challenge: its prominent equatorial dust lane exerts measurable drag on bulge dynamics and star formation near the central black hole (~10^9 M☉). This paper derives the MUGE for the Sombrero Galaxy incorporating the new D_dust environmental term, extending the standard UQFF formalism to include optically thick dust lane physics via the F_env operator.
 
 ---
 
 ## 1. Introduction
 
-M104 (NGC 4594), the Sombrero Galaxy, is a lenticular/Sa galaxy at 28 Mpc with one of the most prominent dust lanes in the local universe. Its structure features a massive bulge, a flat disk embedded in dust, and a 10⁹ M☉ SMBH. The dust lane creates a unique gravitational environment where extinction, drag forces, and angular momentum exchange compete with bulge and halo dynamics.
+M104 (NGC 4594), the Sombrero Galaxy, is a lenticular/Sa galaxy at 28 Mpc with one of the most prominent dust lanes in the local universe. Its structure features a massive bulge, a flat disk embedded in dust, and a 10^9 M☉ SMBH. The dust lane creates a unique gravitational environment where extinction, drag forces, and angular momentum exchange compete with bulge and halo dynamics.
 
 **Hubble parameters for M104:**
-- M_visible ≈ 8×10¹¹ M☉
-- M_BH ≈ 10⁹ M☉
+- M_visible ≈ 8x10^{1}1 M☉
+- M_BH ≈ 10^9 M☉
 - Distance ≈ 28 Mpc
 - r_galaxy ≈ 50 kpc
-- ρ_dust ≈ 10⁻²⁰ kg/m³ (dust lane)
-- B ≈ 5×10⁻⁶ T (typical galactic field)
+- ρ_dust ≈ 10^{-}2^0 kg/m^3 (dust lane)
+- B ≈ 5x10^{-}6 T (typical galactic field)
 
 ---
 
 ## 2. Sombrero Galaxy MUGE
 
 ```
-g_Sombrero(r,t) = (G·M)/r² · (1+H(z)·t) · (1−B/B_crit)
-                + (G·M_BH)/r_BH²
+g_Sombrero(r,t) = (G*M)/r^2 * (1+H(z)*t) * (1-B/B_crit)
+                + (G*M_BH)/r_BH^2
                 + (U_g1 + U_g2 + U_g3 + U_g4)
                 + U_i
-                + (Λ·c²/3)
-                + (ħ/√(Δx·Δp)) · ∫(ψ·H·ψ dV) · (2π/t_Hubble)
-                + ρ_fluid·V·g
-                + (M_vis + M_DM) · (δρ/ρ + 3·G·M/r³)
+                + (Lambda*c^2/3)
+                + (hbar/√(Deltax*Deltap)) * integral(psi*H*psi dV) * (2pi/t_Hubble)
+                + rho_fluid*V*g
+                + (M_vis + M_DM) * (deltarho/rho + 3*G*M/r^3)
                 + D_dust
 ```
 
 ---
 
-## 3. D_dust — Dust Lane Drag Term
+## 3. D_dust -- Dust Lane Drag Term
 
 The novel term D_dust models the retarding force exerted by the optically thick equatorial dust lane on bulge stellar orbits and gas dynamics:
 
 ```
-D_dust = −k_dust · ρ_dust · v_orbit² · A_cross / r
+D_dust = -k_dust * rho_dust * v_orbit^2 * A_cross / r
 
   k_dust   = dust-gas coupling coefficient (~0.5)
-  ρ_dust   = dust lane mass density (~10⁻²⁰ kg/m³ for M104)
+  rho_dust   = dust lane mass density (~10^{-}2^0 kg/m^3 for M104)
   v_orbit  = local orbital velocity (m/s)
-  A_cross  = cross-sectional area of interaction (m²)
+  A_cross  = cross-sectional area of interaction (m^2)
   r        = radial distance from center (m)
 ```
 
-For the Sombrero bulge region (r ~ 1–5 kpc):
+For the Sombrero bulge region (r ~ 1-5 kpc):
 
 ```
-D_dust ≈ −5×10⁻¹² m/s²   (retarding contribution)
+D_dust ~= -5x10^{-}1^2 m/s^2   (retarding contribution)
 ```
 
 This is comparable in magnitude to the dark matter perturbation term, making it non-negligible for bulge kinematics near r < 3 kpc.
@@ -70,11 +70,11 @@ This is comparable in magnitude to the dark matter perturbation term, making it 
 
 ## 4. Black Hole Contribution
 
-The Sombrero's SMBH (M_BH ~ 10⁹ M☉) dominates within r < 1 kpc:
+The Sombrero's SMBH (M_BH ~ 10^9 M☉) dominates within r < 1 kpc:
 
 ```
-g_BH = G · M_BH / r_BH²
-g_BH(1 kpc) ≈ 2.4×10⁻⁸ m/s²
+g_BH = G * M_BH / r_BH^2
+g_BH(1 kpc) ~= 2.4x10^{-}8 m/s^2
 ```
 
 ---
@@ -82,15 +82,15 @@ g_BH(1 kpc) ≈ 2.4×10⁻⁸ m/s²
 ## 5. U_g Terms (Sombrero Configuration)
 
 ```
-U_g1 = μ_dipole · B           (AGN magnetic dipole)
-       μ_dipole = I·A·ω_spin ≈ 10⁻⁵¹ A·m²
+U_g1 = mu_dipole * B           (AGN magnetic dipole)
+       mu_dipole = I*A*omega_spin ~= 10^{-}5^1 A*m^2
 
-U_g2 = B_super² / (2·μ_0)    (aether superconductor field)
-       B_super = μ_0 · H_aether, H_aether ≈ 10⁻⁵ A/m
+U_g2 = B_super^2 / (2*mu_0)    (aether superconductor field)
+       B_super = mu_0 * H_aether, H_aether ~= 10^{-}5 A/m
 
-U_g3 = G·M_ext / r_ext²       (companion galaxy influence)
+U_g3 = G*M_ext / r_ext^2       (companion galaxy influence)
 
-U_g4 = k_4 · ρ_vac,[SCm] · (M_BH/d_g) · e^(−αt) · cos(π·t_n) · (1+f_feedback)
+U_g4 = k_4 * rho_vac,[SCm] * (M_BH/d_g) * e^(-alphat) * cos(pi*t_n) * (1+f_feedback)
        k_4 = 1.0
 ```
 
@@ -102,8 +102,8 @@ U_g4 = k_4 · ρ_vac,[SCm] · (M_BH/d_g) · e^(−αt) · cos(π·t_n) · (1+f_f
 F_env(t) = F_dust + F_BH + F_cosmo
 
 F_dust = D_dust / g_Newtonian     (dust drag fraction)
-F_BH   = G·M_BH / (r²·g_Newtonian)  (BH contribution fraction)
-F_cosmo ≈ H(z)·t                  (cosmological expansion)
+F_BH   = G*M_BH / (r^2*g_Newtonian)  (BH contribution fraction)
+F_cosmo ~= H(z)*t                  (cosmological expansion)
 ```
 
 ---
@@ -111,11 +111,11 @@ F_cosmo ≈ H(z)·t                  (cosmological expansion)
 ## 7. Full Equation Solutions
 
 For standard bulge parameters (r = 5 kpc, t = 0):
-- g_Newton ≈ 4.5×10⁻¹⁰ m/s²
-- H(z)·t correction ≈ +0.35%
-- (1−B/B_crit) ≈ 1 (negligible for B << B_crit)
-- D_dust ≈ −5×10⁻¹² m/s² (−1.1% correction)
-- g_Sombrero ≈ 4.5×10⁻¹⁰ − 5×10⁻¹² + quantum + DM terms
+- g_Newton ≈ 4.5x10^{-}1^0 m/s^2
+- H(z)*t correction ≈ +0.35%
+- (1-B/B_crit) ≈ 1 (negligible for B << B_crit)
+- D_dust ≈ -5x10^{-}1^2 m/s^2 (-1.1% correction)
+- g_Sombrero ≈ 4.5x10^{-}1^0 - 5x10^{-}1^2 + quantum + DM terms
 
 ---
 
@@ -136,7 +136,7 @@ The Sombrero Galaxy MUGE extends UQFF to dust-dominated lenticular/Sa galactic e
 ---
 
 *Copyright - Daniel T. Murphy, daniel.murphy00@gmail.com. UQFF Framework. PAPER_742, CP4 class #326. Session 180 continuation v5.38.*
-*Cross-validated against PAPER_001 (foundational UQFF framework) and PAPER_642 (UQFF–SM bridge).*
+*Cross-validated against PAPER_001 (foundational UQFF framework) and PAPER_642 (UQFF-SM bridge).*
 
 ---
 
@@ -177,7 +177,7 @@ The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs t
 
 $$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.060$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m³.
+For this system, the local VDS sub-ratio is $0.060$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m^3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -189,7 +189,7 @@ Since $p_{\rm DVP} = 83$ is **resonant** (threshold at $p > 26$), the system's v
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
-The BSH saturation timescale for this sector is **10⁶ M_BH/M_⊙ yr** (quasi-normal mode ringdown):
+The BSH saturation timescale for this sector is **10^6 M_BH/M_⊙ yr** (quasi-normal mode ringdown):
 
 $$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
 
@@ -206,7 +206,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.060 | ✓ Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 83$ | ✓ Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
+| κ decay | $5.0 \times 10^{-4}$ day^{-}1 | Applied in VDS exponential | ✓ Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
 
 

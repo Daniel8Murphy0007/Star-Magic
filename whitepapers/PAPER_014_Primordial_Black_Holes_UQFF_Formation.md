@@ -45,10 +45,10 @@ $$H^2(t) = \frac{8\pi G}{3}\rho(t) - \frac{k}{a^2(t)} + \frac{\Lambda_{UQFF}(t)}
 
 $$\delta_{c,UQFF} = \delta_{c,GR}\,[1 - \alpha_Q(M,t) + \beta_{damp}(\omega_{collapse})]$$
 
-**Key numerical results:** delta_c(GR) = 3.33e-1, alpha_Q ~ 1.0e-2 to 5.0e-2, xi_Q ~ 1.0e-3, Lambda_UQFF ~ kappa × rho_crit = 5.0e-4 × rho_crit
+**Key numerical results:** delta_c(GR) = 3.33e-1, alpha_Q ~ 1.0e-2 to 5.0e-2, xi_Q ~ 1.0e-3, Lambda_UQFF ~ kappa x rho_crit = 5.0e-4 x rho_crit
 
 ```
-H²(t) = (8πG/3)ρ(t) - k/a²(t) + Λ_UQFF(t)/3 + ξ_Q(t)H(t)
+H^2(t) = (8piG/3)rho(t) - k/a^2(t) + Lambda_UQFF(t)/3 + xi_Q(t)H(t)
 ```
 
 Where:
@@ -60,7 +60,7 @@ Where:
 The critical overdensity for collapse becomes:
 
 ```
-δ_c,UQFF = δ_c,GR × [1 - α_Q(M,t) + β_damp(ω_collapse)]
+delta_c,UQFF = delta_c,GR x [1 - alpha_Q(M,t) + beta_damp(omega_collapse)]
 ```
 
 Parameters:
@@ -75,19 +75,19 @@ Parameters:
 ### 3.1 Standard Mass Function
 
 ```
-dN/dM ∝ M^(-5/2) exp(-M/M_horizon)
+dN/dM ~ M^(-5/2) exp(-M/M_horizon)
 ```
 
 ### 3.2 UQFF-Modified Mass Function
 
 ```
-dN/dM|_UQFF = (dN/dM)|_std × F_UQFF(M,t_form)
+dN/dM|_UQFF = (dN/dM)|_std x F_UQFF(M,t_form)
 ```
 
 Where the modification factor:
 
 ```
-F_UQFF(M,t) = exp[-(M/M_Q)^γ] × [1 + A_damp sin(ω_Q t + φ)]
+F_UQFF(M,t) = exp[-(M/M_Q)^gamma] x [1 + A_damp sin(omega_Q t + phi)]
 ```
 
 Parameters:
@@ -105,7 +105,7 @@ Parameters:
 Formation time when horizon mass equals PBH mass:
 
 ```
-t_form(M) = (M/M_Planck)^(1/2) × t_Planck × [1 + ξ_Q(M)]
+t_form(M) = (M/M_Planck)^(1/2) x t_Planck x [1 + xi_Q(M)]
 ```
 
 ### 4.2 UQFF Quantum Transition Era
@@ -131,7 +131,7 @@ UQFF predicts:
 Modified merger rate:
 
 ```
-R_merger(z) = R_0 × [(1+z)^α / (1 + (1+z/z_Q)^β)]
+R_merger(z) = R_0 x [(1+z)^alpha / (1 + (1+z/z_Q)^beta)]
 ```
 
 Parameters from UQFF fit:
@@ -145,7 +145,7 @@ Parameters from UQFF fit:
 UQFF PBH mergers contribute:
 
 ```
-Ω_GW(f) = (8π²/3H_0²) × f² × ∫ dz dM₁ dM₂ (dE_GW/df) × R_merger(M₁,M₂,z)
+Omega_GW(f) = (8pi^2/3H_0^2) x f^2 x integral dz dM_1 dM_2 (dE_GW/df) x R_merger(M_1,M_2,z)
 ```
 
 Predicted peak at `f ≈ 0.1 Hz` detectable by LISA.
@@ -159,7 +159,7 @@ Predicted peak at `f ≈ 0.1 Hz` detectable by LISA.
 Fraction of dark matter in PBHs:
 
 ```
-f_PBH = Ω_PBH/Ω_DM < 0.1 (observational constraint)
+f_PBH = Omega_PBH/Omega_DM < 0.1 (observational constraint)
 ```
 
 ### 6.2 UQFF Coherence Limit
@@ -167,7 +167,7 @@ f_PBH = Ω_PBH/Ω_DM < 0.1 (observational constraint)
 Quantum coherence prevents complete dark matter composition:
 
 ```
-f_PBH,max = exp(-M_DM/M_Q) ≈ 0.15
+f_PBH,max = exp(-M_DM/M_Q) ~= 0.15
 ```
 
 Consistent with observational limits.
@@ -228,22 +228,22 @@ UQFF: Enhanced formation at `z > 10^10`, no conflict with CMB.
 The UQFF framework modifies Hawking radiation via the TRZ (Time-Reversal-Zeroth) damping factor:
 
 ```
-T_UQFF = T_H × (1 - f_TRZ) = T_H × 0.990
+T_UQFF = T_H x (1 - f_TRZ) = T_H x 0.990
 ```
 
 Codebase validation (`validate_hawking_temperature.py`, 7/7 PASSED):
 
 | System | Mass | T_H (GR) | T_UQFF | T_UQFF/T_H |
 |--------|------|----------|--------|-----------|
-| SgrA* | 4.0×10⁶ M_☉ | 1.542×10⁻¹⁴ K | 1.527×10⁻¹⁴ K | 0.990 |
-| M87* | 6.5×10⁹ M_☉ | 9.490×10⁻¹⁸ K | 9.395×10⁻¹⁸ K | 0.990 |
-| Cygnus X-1 | 21.2 M_☉ | 2.910×10⁻⁹ K | 2.881×10⁻⁹ K | 0.990 |
-| PBH (10¹⁰ kg) | 5.0×10⁻²³ M_☉ | 1.227×10¹³ K | 1.215×10¹³ K | 0.990 |
-| PBH (lunar mass) | 3.7×10⁻⁸ M_☉ | 1.667 K | 1.650 K | 0.990 |
+| SgrA* | 4.0x10^6 M_☉ | 1.542x10^{-}1^4 K | 1.527x10^{-}1^4 K | 0.990 |
+| M87* | 6.5x10^9 M_☉ | 9.490x10^{-}1^8 K | 9.395x10^{-}1^8 K | 0.990 |
+| Cygnus X-1 | 21.2 M_☉ | 2.910x10^{-}9 K | 2.881x10^{-}9 K | 0.990 |
+| PBH (10^{1}0 kg) | 5.0x10^{-}2^3 M_☉ | 1.227x10^{1}3 K | 1.215x10^{1}3 K | 0.990 |
+| PBH (lunar mass) | 3.7x10^{-}8 M_☉ | 1.667 K | 1.650 K | 0.990 |
 
-PBH evaporation lifetime (10¹⁰ kg): `t_evap = 8.411×10¹³ s = 2.665×10⁶ yr`
+PBH evaporation lifetime (10^{1}0 kg): `t_evap = 8.411x10^{1}3 s = 2.665x10^6 yr`
 
-The universal 1% temperature suppression is detectable as a ~1% spectral shift in gamma-ray emission from Hawking-evaporating PBHs with Fermi-LAT and CTA. Mass-loss simulations confirm 0.382% mass reduction over 10¹² s for a 10¹⁰ kg PBH, providing a distinct observational signature for UQFF model discrimination.
+The universal 1% temperature suppression is detectable as a ~1% spectral shift in gamma-ray emission from Hawking-evaporating PBHs with Fermi-LAT and CTA. Mass-loss simulations confirm 0.382% mass reduction over 10^{1}2 s for a 10^{1}0 kg PBH, providing a distinct observational signature for UQFF model discrimination.
 
 ---
 
@@ -300,7 +300,7 @@ The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs t
 
 $$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.145$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m³.
+For this system, the local VDS sub-ratio is $0.145$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m^3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -312,7 +312,7 @@ Since $p_{\rm DVP} = 47$ is **resonant** (threshold at $p > 26$), the system's v
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
-The BSH saturation timescale for this sector is **10⁶ M_BH/M_⊙ yr** (quasi-normal mode ringdown):
+The BSH saturation timescale for this sector is **10^6 M_BH/M_⊙ yr** (quasi-normal mode ringdown):
 
 $$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
 
@@ -329,25 +329,25 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.145 | ✓ Threshold-consistent |
 | DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 47$ | ✓ Resonant |
 | BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
+| κ decay | $5.0 \times 10^{-4}$ day^{-}1 | Applied in VDS exponential | ✓ Canonical |
 | [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
 
 
 ---
 
 
-## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## §SM Anchors -- Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
 | Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | ✓ Consistent |
-| Cosmological constant Λ | 1.1×10⁻⁵² m⁻² (UQFF vacuum term) | 1.114×10⁻⁵² m⁻² | Planck 2018 | ✓ Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10⁻³⁵/yr | Super-K 2024 | ✓ Consistent |
+| Cosmological constant Λ | 1.1x10^{-}5^2 m^{-}2 (UQFF vacuum term) | 1.114x10^{-}5^2 m^{-}2 | Planck 2018 | ✓ Consistent |
+| Proton decay rate | κ = 0.0005/day -> Γ_p suppression | < 4.17x10^{-}3^5/yr | Super-K 2024 | ✓ Consistent |
 | UQFF buoyancy signature | F_U_Bi_i unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
 **New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF-SM bridge.*
 
 ## References
 
@@ -358,8 +358,8 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 ---
 
-**Validator:** `validate_hawking_temperature.py` — PASSED (7/7)  
-*Hawking temperature ratio T_UQFF/T_H = 0.990 (universal TRZ suppression); PBH (10¹⁰ kg) t_evap = 2.665×10⁶ yr; κ = 0.0005/day, [SSq] = 0.57*
+**Validator:** `validate_hawking_temperature.py` -- PASSED (7/7)  
+*Hawking temperature ratio T_UQFF/T_H = 0.990 (universal TRZ suppression); PBH (10^{1}0 kg) t_evap = 2.665x10^6 yr; κ = 0.0005/day, [SSq] = 0.57*
 
 **End of Paper 014**
 ---
@@ -374,17 +374,17 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
-| κ | 5.0 × 10⁻⁴ day⁻¹ | UQFF exponential decay rate |
+| κ | 5.0 x 10^{-}4 day^{-}1 | UQFF exponential decay rate |
 | [SSq] | 0.57 | Universal Quantized Factor |
-| β_i | 0.60–0.61 | Buoyancy coupling coefficient |
-| k₁ | 1.5 | Ug1 DPM-dipole coupling |
-| k₂ | 1.2 | Ug2 outer-bubble charge coupling |
-| k₃ | 1.8 | Ug3 string-rotation coupling |
-| k₄ | 2.0 | Ug4 vacuum-concentration coupling |
-| η | 10⁻²² | Inertia tensor scale |
-| E_react(0) | 10⁴⁶ J | Reference reactive energy |
+| β_i | 0.60-0.61 | Buoyancy coupling coefficient |
+| k_1 | 1.5 | Ug1 DPM-dipole coupling |
+| k_2 | 1.2 | Ug2 outer-bubble charge coupling |
+| k_3 | 1.8 | Ug3 string-rotation coupling |
+| k_4 | 2.0 | Ug4 vacuum-concentration coupling |
+| η | 10^{-}2^2 | Inertia tensor scale |
+| E_react(0) | 10^{4}6 J | Reference reactive energy |
 
-### A.2 F_U Master Equation (Complete — 4 terms)
+### A.2 F_U Master Equation (Complete -- 4 terms)
 
 $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\lambda_i \cdot U_i(r,t) \cdot E_{\mathrm{react}}\bigr]$$
 
@@ -396,10 +396,10 @@ $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\
 | Ug4 | Vacuum concentration (star-BH) | `compute_Ug4_SOURCE4` / `compute_Ug4()` |
 | Ubi | Buoyancy force | `compute_Ubi_SOURCE4` / `compute_Ubi()` |
 | Um | Universal Magnetism (Heaviside-amplified) | `compute_Um_SOURCE4` / `compute_Um()` |
-| −Σλᵢ·Uᵢ·E_react | 4th dissipation term (PAPER_420) | `compute_FU_SOURCE4` / full pipeline |
+| -Σλᵢ*Uᵢ*E_react | 4th dissipation term (PAPER_420) | `compute_FU_SOURCE4` / full pipeline |
 
 **4th dissipation term parameters (PAPER_420):**  
-λ₁=10⁻¹⁰, λ₂=10⁻¹², λ₃=10⁻¹¹, λ₄=10⁻¹³ (free parameters, not yet empirically calibrated)
+λ_1=10^{-}1^0, λ_2=10^{-}1^2, λ_3=10^{-}1^1, λ_4=10^{-}1^3 (free parameters, not yet empirically calibrated)
 
 ### A.3 Um Heaviside Phase-Transition Amplifier (PAPER_421)
 
@@ -407,9 +407,9 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
-| ρ_c | 10¹⁵ kg/m³ | SCm critical superconducting density |
+| ρ_c | 10^{1}5 kg/m^3 | SCm critical superconducting density |
 | A_q | 0.1 | Quasi-periodic beating amplitude (10%) |
-| Δω | 2π/(434·365.25) rad/day | 434-year Gleisberg supercycle |
+| Δω | 2π/(434*365.25) rad/day | 434-year Gleisberg supercycle |
 
 ### A.4 UQFF Four Operational Modes
 
@@ -417,8 +417,8 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 |------|--------------|-----------------|
 | **Compressed** | Ug_sum + Newtonian base | Isolated stellar/BH systems |
 | **Resonant** | 5 resonance frequencies (aDPM, aTHz, …) | Multi-scale field interactions |
-| **Buoyant** | β_i × Ubi | Expanding nebulae, stellar winds |
-| **Superconductive** | Um × (1+10¹³·f_H) | Magnetars, SCm critical-density regime |
+| **Buoyant** | β_i x Ubi | Expanding nebulae, stellar winds |
+| **Superconductive** | Um x (1+10^{1}3*f_H) | Magnetars, SCm critical-density regime |
 
 *Implementation status: all 4 modes operational in `MAIN_1_CoAnQi.cpp`, `CondensedPhysics.py`, and `CondensedPhysics2.py`.*
 
