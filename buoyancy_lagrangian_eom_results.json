@@ -1,0 +1,72 @@
+{
+  "calculator": "BuoyancyLagrangianEOM",
+  "timestamp": "2026-04-09T14:02:01.862799+00:00",
+  "sgr_a_star": {
+    "eom": "\u25a1\u03c6 + m_eff\u00b2\u00b7\u03c6 = J_buoy",
+    "effective_mass": {
+      "m_eff_sq": 8.451280952638142e+53,
+      "m_eff_kg": 9.19308487540398e+26,
+      "m_eff_eV": 5.157770513887046e+62,
+      "lambda_buoy_m": 3.8278909885101054e-70,
+      "lambda_buoy_pc": 1.2404053754083298e-86,
+      "Ug_sum": 4e-10,
+      "n_Ug_terms": 4,
+      "beta_i": 0.603,
+      "Omega_g": 1.0,
+      "M_kg": 8.552699999999999e+36,
+      "d_g_m": 2.44e+20,
+      "U_UA": 0.0001,
+      "equation": "m_eff\u00b2 = \u03b2_i \u00b7 \u03a3|Ug_i| \u00b7 \u03a9_g \u00b7 M/(d_g\u00b7c\u00b2\u00b7\u0127\u00b2) \u00b7 [UA]"
+    },
+    "source_term": {
+      "J_buoy": 6.372494836000006e-21,
+      "reversal_factor": 0.10000000000000009,
+      "buoyancy_reversed": true,
+      "F_U_Bi": 1.1,
+      "F_U": 1.0,
+      "rho_SCm": 7.09e-37,
+      "equation": "J_buoy = (F_{U,Bi}/F_U - 1) \u00b7 \u03c1_SCm \u00b7 c\u00b2"
+    },
+    "phi_static": 7.540270962132404e-75,
+    "Ubi_values": [
+      -211.36385655737706,
+      -211.36385655737706,
+      -211.36385655737706,
+      -211.36385655737706
+    ],
+    "variational_equations": {
+      "magnetic": "\u03b4S/\u03b4A_SCm = 0 \u2192 \u2207\u00d7B_SCm = \u03bc\u2080 J_SCm",
+      "buoyancy_Omega": "\u03b4S/\u03b4\u03a9_g = 0 \u2192 Ubi_i = -\u03b2_i Ug_i \u03a9_g M/d_g [UA]",
+      "magnetism_hat": "\u03b4S/\u03b4\u03c6\u0302 = 0 \u2192 Um = \u03a3 \u03bc_j/r_j (1-e^{-\u03b3t}) \u03c6\u0302 N P E",
+      "buoyancy_field": "\u03b4S/\u03b4\u03c6_buoy = 0 \u2192 \u25a1\u03c6 + m_eff\u00b2\u03c6 = J_buoy  [NEW]"
+    }
+  },
+  "lab_scale": {
+    "eom": "\u25a1\u03c6 + m_eff\u00b2\u00b7\u03c6 = J_buoy",
+    "effective_mass": {
+      "m_eff_sq": 3.287940807186044e+42,
+      "m_eff_kg": 1.8132679910002393e+21,
+      "m_eff_eV": 1.0173320821586838e+57,
+      "lambda_buoy_m": 1.940701921934649e-64,
+      "lambda_buoy_pc": 6.2887294942794845e-81,
+      "Ug_sum": 1.0909500088458528e-05,
+      "n_Ug_terms": 4,
+      "beta_i": 0.603,
+      "Omega_g": 1.0,
+      "M_kg": 0.5,
+      "d_g_m": 0.1,
+      "U_UA": 0.0001,
+      "equation": "m_eff\u00b2 = \u03b2_i \u00b7 \u03a3|Ug_i| \u00b7 \u03a9_g \u00b7 M/(d_g\u00b7c\u00b2\u00b7\u0127\u00b2) \u00b7 [UA]"
+    },
+    "source_term": {
+      "J_buoy": 3.186247418000003e-21,
+      "reversal_factor": 0.050000000000000044,
+      "buoyancy_reversed": true,
+      "F_U_Bi": 1.05,
+      "F_U": 1.0,
+      "rho_SCm": 7.09e-37,
+      "equation": "J_buoy = (F_{U,Bi}/F_U - 1) \u00b7 \u03c1_SCm \u00b7 c\u00b2"
+    },
+    "phi_static": 9.690707968453135e-64
+  }
+}

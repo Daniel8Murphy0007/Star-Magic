@@ -1,0 +1,237 @@
+{
+  "calculator": "SCmActivationFunction",
+  "B_crit": 44000000000000.0,
+  "timestamp": "2026-04-09T14:01:54.643757+00:00",
+  "comparisons": [
+    {
+      "B": 0.0,
+      "B_crit": 44000000000000.0,
+      "B_over_Bcrit": 0.0,
+      "beta_linear": 1.0,
+      "A_SCm_gaussian": 1.0,
+      "absolute_difference": 0.0,
+      "relative_difference": 0.0,
+      "dominant": "equal",
+      "linear_detail": {
+        "model": "linear",
+        "beta": 1.0,
+        "B": 0.0,
+        "B_crit": 44000000000000.0,
+        "B_over_Bcrit": 0.0,
+        "d_beta_dB": -2.2727272727272727e-14,
+        "equation": "\u03b2(B) = exp(-B/B_crit)"
+      },
+      "gaussian_detail": {
+        "model": "gaussian",
+        "A_SCm": 1.0,
+        "B": 0.0,
+        "B_crit": 44000000000000.0,
+        "B_over_Bcrit": 0.0,
+        "d_A_dB": -0.0,
+        "equation": "A_SCm(B) = exp[-(B/B_crit)\u00b2]"
+      }
+    },
+    {
+      "B": 1.5,
+      "B_crit": 44000000000000.0,
+      "B_over_Bcrit": 3.409090909090909e-14,
+      "beta_linear": 0.9999999999999659,
+      "A_SCm_gaussian": 1.0,
+      "absolute_difference": 3.4083846855992306e-14,
+      "relative_difference": 3.408384685599347e-14,
+      "dominant": "gaussian_higher",
+      "linear_detail": {
+        "model": "linear",
+        "beta": 0.9999999999999659,
+        "B": 1.5,
+        "B_crit": 44000000000000.0,
+        "B_over_Bcrit": 3.409090909090909e-14,
+        "d_beta_dB": -2.2727272727271953e-14,
+        "equation": "\u03b2(B) = exp(-B/B_crit)"
+      },
+      "gaussian_detail": {
+        "model": "gaussian",
+        "A_SCm": 1.0,
+        "B": 1.5,
+        "B_crit": 44000000000000.0,
+        "B_over_Bcrit": 3.409090909090909e-14,
+        "d_A_dB": -1.5495867768595042e-27,
+        "equation": "A_SCm(B) = exp[-(B/B_crit)\u00b2]"
+      }
+    },
+    {
+      "B": 10.0,
+      "B_crit": 44000000000000.0,
+      "B_over_Bcrit": 2.2727272727272728e-13,
+      "beta_linear": 0.9999999999997727,
+      "A_SCm_gaussian": 1.0,
+      "absolute_difference": 2.2726265314076954e-13,
+      "relative_difference": 2.272626531408212e-13,
+      "dominant": "gaussian_higher",
+      "linear_detail": {
+        "model": "linear",
+        "beta": 0.9999999999997727,
+        "B": 10.0,
+        "B_crit": 44000000000000.0,
+        "B_over_Bcrit": 2.2727272727272728e-13,
+        "d_beta_dB": -2.272727272726756e-14,
+        "equation": "\u03b2(B) = exp(-B/B_crit)"
+      },
+      "gaussian_detail": {
+        "model": "gaussian",
+        "A_SCm": 1.0,
+        "B": 10.0,
+        "B_crit": 44000000000000.0,
+        "B_over_Bcrit": 2.2727272727272728e-13,
+        "d_A_dB": -1.0330578512396694e-26,
+        "equation": "A_SCm(B) = exp[-(B/B_crit)\u00b2]"
+      }
+    },
+    {
+      "B": 22000000000000.0,
+      "B_crit": 44000000000000.0,
+      "B_over_Bcrit": 0.5,
+      "beta_linear": 0.6065306597126334,
+      "A_SCm_gaussian": 0.7788007830714049,
+      "absolute_difference": 0.17227012335877145,
+      "relative_difference": 0.2840254166877415,
+      "dominant": "gaussian_higher",
+      "linear_detail": {
+        "model": "linear",
+        "beta": 0.6065306597126334,
+        "B": 22000000000000.0,
+        "B_crit": 44000000000000.0,
+        "B_over_Bcrit": 0.5,
+        "d_beta_dB": -1.3784787720741668e-14,
+        "equation": "\u03b2(B) = exp(-B/B_crit)"
+      },
+      "gaussian_detail": {
+        "model": "gaussian",
+        "A_SCm": 0.7788007830714049,
+        "B": 22000000000000.0,
+        "B_crit": 44000000000000.0,
+        "B_over_Bcrit": 0.5,
+        "d_A_dB": -1.7700017797077384e-14,
+        "equation": "A_SCm(B) = exp[-(B/B_crit)\u00b2]"
+      }
+    },
+    {
+      "B": 44000000000000.0,
+      "B_crit": 44000000000000.0,
+      "B_over_Bcrit": 1.0,
+      "beta_linear": 0.36787944117144233,
+      "A_SCm_gaussian": 0.36787944117144233,
+      "absolute_difference": 0.0,
+      "relative_difference": 0.0,
+      "dominant": "equal",
+      "linear_detail": {
+        "model": "linear",
+        "beta": 0.36787944117144233,
+        "B": 44000000000000.0,
+        "B_crit": 44000000000000.0,
+        "B_over_Bcrit": 1.0,
+        "d_beta_dB": -8.360896390260052e-15,
+        "equation": "\u03b2(B) = exp(-B/B_crit)"
+      },
+      "gaussian_detail": {
+        "model": "gaussian",
+        "A_SCm": 0.36787944117144233,
+        "B": 44000000000000.0,
+        "B_crit": 44000000000000.0,
+        "B_over_Bcrit": 1.0,
+        "d_A_dB": -1.6721792780520105e-14,
+        "equation": "A_SCm(B) = exp[-(B/B_crit)\u00b2]"
+      }
+    },
+    {
+      "B": 88000000000000.0,
+      "B_crit": 44000000000000.0,
+      "B_over_Bcrit": 2.0,
+      "beta_linear": 0.1353352832366127,
+      "A_SCm_gaussian": 0.01831563888873418,
+      "absolute_difference": 0.11701964434787852,
+      "relative_difference": 0.8646647167633873,
+      "dominant": "linear_higher",
+      "linear_detail": {
+        "model": "linear",
+        "beta": 0.1353352832366127,
+        "B": 88000000000000.0,
+        "B_crit": 44000000000000.0,
+        "B_over_Bcrit": 2.0,
+        "d_beta_dB": -3.075801891741198e-15,
+        "equation": "\u03b2(B) = exp(-B/B_crit)"
+      },
+      "gaussian_detail": {
+        "model": "gaussian",
+        "A_SCm": 0.01831563888873418,
+        "B": 88000000000000.0,
+        "B_crit": 44000000000000.0,
+        "B_over_Bcrit": 2.0,
+        "d_A_dB": -1.6650580807940161e-15,
+        "equation": "A_SCm(B) = exp[-(B/B_crit)\u00b2]"
+      }
+    }
+  ],
+  "transition": {
+    "B_transition": 4699200000000.0,
+    "B_trans_over_Bcrit": 0.1068,
+    "threshold": 0.1,
+    "B_crit": 44000000000000.0
+  },
+  "lenr_systems": [
+    {
+      "system": "Micro-Plasmoid Reversal",
+      "paper": "PAPER_859",
+      "B_T": 0.5,
+      "beta_linear": 0.9999999999999887,
+      "A_SCm_gaussian": 1.0,
+      "relative_difference": 1.1324274851176725e-14,
+      "note": "Lab fields B << B_crit: both \u2248 1.0 (SCm fully active)"
+    },
+    {
+      "system": "Water Reactor H2O2",
+      "paper": "PAPER_863",
+      "B_T": 0.01,
+      "beta_linear": 0.9999999999999998,
+      "A_SCm_gaussian": 1.0,
+      "relative_difference": 2.2204460492503136e-16,
+      "note": "Lab fields B << B_crit: both \u2248 1.0 (SCm fully active)"
+    },
+    {
+      "system": "Colman-Gillespie Pulsed Motor",
+      "paper": "PAPER_835",
+      "B_T": 1.2,
+      "beta_linear": 0.9999999999999727,
+      "A_SCm_gaussian": 1.0,
+      "relative_difference": 2.7311486405779596e-14,
+      "note": "Lab fields B << B_crit: both \u2248 1.0 (SCm fully active)"
+    },
+    {
+      "system": "Kozima Neutron Drop",
+      "paper": "PAPER_840",
+      "B_T": 0.0,
+      "beta_linear": 1.0,
+      "A_SCm_gaussian": 1.0,
+      "relative_difference": 0.0,
+      "note": "Lab fields B << B_crit: both \u2248 1.0 (SCm fully active)"
+    },
+    {
+      "system": "LRC Spark-Gap Monopole",
+      "paper": "PAPER_864",
+      "B_T": 0.1,
+      "beta_linear": 0.9999999999999978,
+      "A_SCm_gaussian": 1.0,
+      "relative_difference": 2.2204460492503182e-15,
+      "note": "Lab fields B << B_crit: both \u2248 1.0 (SCm fully active)"
+    },
+    {
+      "system": "Caduceus Twin-Helix Motor",
+      "paper": "PAPER_866",
+      "B_T": 0.8,
+      "beta_linear": 0.9999999999999818,
+      "A_SCm_gaussian": 1.0,
+      "relative_difference": 1.82076576038529e-14,
+      "note": "Lab fields B << B_crit: both \u2248 1.0 (SCm fully active)"
+    }
+  ]
+}

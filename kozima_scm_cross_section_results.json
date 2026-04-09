@@ -1,0 +1,254 @@
+{
+  "calculator": "KozimaSCmCrossSection",
+  "timestamp": "2026-04-09T14:01:48.982410+00:00",
+  "on_resonance": {
+    "base": {
+      "model": "base_CP2",
+      "sigma_n": 0.0001,
+      "sigma_0": 0.0001,
+      "omega": 7853981633974.482,
+      "omega_LENR": 7853981633974.482,
+      "freq_ratio_sq": 1.0,
+      "gaussian": 1.0,
+      "equation": "\u03c3_n(\u03c9) = \u03c3\u2080 \u00b7 (\u03c9/\u03c9_LENR)\u00b2 \u00b7 exp[-(\u03c9-\u03c9_LENR)\u00b2/(2\u0394\u03c9\u00b2)]"
+    },
+    "scm": {
+      "model": "SCm_modulated",
+      "sigma_n_scm": 0.0001285,
+      "sigma_0": 0.0001,
+      "omega": 7853981633974.482,
+      "omega_SCm": 7853981633974.482,
+      "f_SCm_THz": 1.25,
+      "Gamma": 628318530717.9586,
+      "Gamma_THz": 0.1,
+      "gaussian": 1.0,
+      "vds_level_n": 13,
+      "vds_factor": 1.285,
+      "SSq": 0.57,
+      "equation": "\u03c3_n^SCm(\u03c9,n) = \u03c3\u2080 \u00b7 exp[-(\u03c9-\u03c9_SCm)\u00b2/(2\u0393\u00b2)] \u00b7 (1+[SSq]\u00b7n/26)"
+    }
+  },
+  "off_resonance": {
+    "base": {
+      "model": "base_CP2",
+      "sigma_n": 9.76309868416852e-18,
+      "sigma_0": 0.0001,
+      "omega": 3141592653589.793,
+      "omega_LENR": 7853981633974.482,
+      "freq_ratio_sq": 0.16000000000000003,
+      "gaussian": 6.101936677605324e-13,
+      "equation": "\u03c3_n(\u03c9) = \u03c3\u2080 \u00b7 (\u03c9/\u03c9_LENR)\u00b2 \u00b7 exp[-(\u03c9-\u03c9_LENR)\u00b2/(2\u0394\u03c9\u00b2)]"
+    },
+    "scm": {
+      "model": "SCm_modulated",
+      "sigma_n_scm": 7.840988630722842e-17,
+      "sigma_0": 0.0001,
+      "omega": 3141592653589.793,
+      "omega_SCm": 7853981633974.482,
+      "f_SCm_THz": 1.25,
+      "Gamma": 628318530717.9586,
+      "Gamma_THz": 0.1,
+      "gaussian": 6.101936677605324e-13,
+      "vds_level_n": 13,
+      "vds_factor": 1.285,
+      "SSq": 0.57,
+      "equation": "\u03c3_n^SCm(\u03c9,n) = \u03c3\u2080 \u00b7 exp[-(\u03c9-\u03c9_SCm)\u00b2/(2\u0393\u00b2)] \u00b7 (1+[SSq]\u00b7n/26)"
+    }
+  },
+  "density_scaled": {
+    "model": "SCm_density",
+    "sigma_n_scm_rho": 0.00014309719046530226,
+    "sigma_n_base_rho": 2.0,
+    "sigma_0": 0.0001,
+    "rho": 1e-22,
+    "rho_SCm": 9.47e-27,
+    "rho_UA": 5e-27,
+    "rho_crit": 1e-20,
+    "ratio_SCm_UA": 1.894,
+    "SSq_exponent": 0.57,
+    "vds_power": 1.43915173487881,
+    "exp_cutoff": 0.9943162141784332,
+    "equation": "\u03c3_n^SCm(\u03c1) = \u03c3\u2080 \u00b7 (\u03c1_SCm/\u03c1_UA)^[SSq] \u00b7 exp(-[SSq]\u00b7\u03c1/\u03c1_crit)",
+    "equation_base": "\u03c3_n(\u03c1) = \u03c3\u2080 \u00b7 (\u03c1/\u03c1\u2080)  [CP2 linear]"
+  },
+  "f_neutron_scm": {
+    "model": "F_neutron_SCm",
+    "F_neutron_scm": 1.2850000000000011e+39,
+    "N_n": 1e+28,
+    "sigma_n_scm": 0.0001285,
+    "phi_phonon": 1e+16,
+    "F_U_Bi": 1.1,
+    "F_U": 1.0,
+    "buoyancy_reversal_factor": 0.10000000000000009,
+    "buoyancy_reversed": true,
+    "vds_level": 13,
+    "cross_section_detail": {
+      "model": "SCm_modulated",
+      "sigma_n_scm": 0.0001285,
+      "sigma_0": 0.0001,
+      "omega": 7853981633974.482,
+      "omega_SCm": 7853981633974.482,
+      "f_SCm_THz": 1.25,
+      "Gamma": 628318530717.9586,
+      "Gamma_THz": 0.1,
+      "gaussian": 1.0,
+      "vds_level_n": 13,
+      "vds_factor": 1.285,
+      "SSq": 0.57,
+      "equation": "\u03c3_n^SCm(\u03c9,n) = \u03c3\u2080 \u00b7 exp[-(\u03c9-\u03c9_SCm)\u00b2/(2\u0393\u00b2)] \u00b7 (1+[SSq]\u00b7n/26)"
+    },
+    "equation": "F_neutron^SCm = N_n \u00b7 \u03c3_n^SCm(\u03c9,n) \u00b7 \u03a6_phonon \u00b7 (F_{U,Bi}/F_U - 1)"
+  },
+  "vds_scan": {
+    "omega": 7853981633974.482,
+    "f_THz": 1.25,
+    "SSq": 0.57,
+    "n_levels": 26,
+    "levels": [
+      {
+        "n": 0,
+        "vds_factor": 1.0,
+        "sigma_scm": 0.0001
+      },
+      {
+        "n": 1,
+        "vds_factor": 1.021923076923077,
+        "sigma_scm": 0.0001021923076923077
+      },
+      {
+        "n": 2,
+        "vds_factor": 1.0438461538461539,
+        "sigma_scm": 0.00010438461538461539
+      },
+      {
+        "n": 3,
+        "vds_factor": 1.0657692307692308,
+        "sigma_scm": 0.00010657692307692309
+      },
+      {
+        "n": 4,
+        "vds_factor": 1.0876923076923077,
+        "sigma_scm": 0.00010876923076923078
+      },
+      {
+        "n": 5,
+        "vds_factor": 1.1096153846153847,
+        "sigma_scm": 0.00011096153846153847
+      },
+      {
+        "n": 6,
+        "vds_factor": 1.1315384615384616,
+        "sigma_scm": 0.00011315384615384616
+      },
+      {
+        "n": 7,
+        "vds_factor": 1.1534615384615385,
+        "sigma_scm": 0.00011534615384615386
+      },
+      {
+        "n": 8,
+        "vds_factor": 1.1753846153846155,
+        "sigma_scm": 0.00011753846153846155
+      },
+      {
+        "n": 9,
+        "vds_factor": 1.1973076923076924,
+        "sigma_scm": 0.00011973076923076924
+      },
+      {
+        "n": 10,
+        "vds_factor": 1.2192307692307691,
+        "sigma_scm": 0.00012192307692307692
+      },
+      {
+        "n": 11,
+        "vds_factor": 1.241153846153846,
+        "sigma_scm": 0.0001241153846153846
+      },
+      {
+        "n": 12,
+        "vds_factor": 1.2630769230769232,
+        "sigma_scm": 0.00012630769230769233
+      },
+      {
+        "n": 13,
+        "vds_factor": 1.285,
+        "sigma_scm": 0.0001285
+      },
+      {
+        "n": 14,
+        "vds_factor": 1.3069230769230769,
+        "sigma_scm": 0.00013069230769230768
+      },
+      {
+        "n": 15,
+        "vds_factor": 1.3288461538461538,
+        "sigma_scm": 0.0001328846153846154
+      },
+      {
+        "n": 16,
+        "vds_factor": 1.3507692307692307,
+        "sigma_scm": 0.0001350769230769231
+      },
+      {
+        "n": 17,
+        "vds_factor": 1.3726923076923077,
+        "sigma_scm": 0.00013726923076923077
+      },
+      {
+        "n": 18,
+        "vds_factor": 1.3946153846153846,
+        "sigma_scm": 0.00013946153846153847
+      },
+      {
+        "n": 19,
+        "vds_factor": 1.4165384615384615,
+        "sigma_scm": 0.00014165384615384615
+      },
+      {
+        "n": 20,
+        "vds_factor": 1.4384615384615385,
+        "sigma_scm": 0.00014384615384615385
+      },
+      {
+        "n": 21,
+        "vds_factor": 1.4603846153846154,
+        "sigma_scm": 0.00014603846153846156
+      },
+      {
+        "n": 22,
+        "vds_factor": 1.4823076923076923,
+        "sigma_scm": 0.00014823076923076923
+      },
+      {
+        "n": 23,
+        "vds_factor": 1.5042307692307693,
+        "sigma_scm": 0.00015042307692307694
+      },
+      {
+        "n": 24,
+        "vds_factor": 1.5261538461538462,
+        "sigma_scm": 0.00015261538461538461
+      },
+      {
+        "n": 25,
+        "vds_factor": 1.548076923076923,
+        "sigma_scm": 0.0001548076923076923
+      },
+      {
+        "n": 26,
+        "vds_factor": 1.5699999999999998,
+        "sigma_scm": 0.000157
+      }
+    ],
+    "sigma_n0": 0.0001,
+    "sigma_n26": 0.000157,
+    "total_enhancement": 1.5699999999999998
+  },
+  "sweep_summary": {
+    "peak_base": 0.00010102628704123178,
+    "peak_scm": 0.00012813178430870763,
+    "peak_f_THz": 1.2424242424242424,
+    "enhancement": 1.2683014298685777
+  }
+}
