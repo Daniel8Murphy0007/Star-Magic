@@ -247,3 +247,71 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 - Nicholl et al. (2020). *AT2019qiz tidal disruption event*, MNRAS 499, 482
 - ESA Gaia DR4 (2026). *SgrA* parallax and distance*
 - Widom, A. & Larsen, L. (2006). *Ultra low momentum neutron catalyzed nuclear reactions*, Eur. Phys. J. C 46, 107
+
+
+---
+
+## Appendix: Session 204 Codebase Upgrade Reference
+
+> *Cross-reference appendix for Session 204 (April 2026) codebase upgrades.
+> Added by `upgrade_kozima_ramanujan_appendices.py`. For detailed derivations,
+> see PAPER_840/851/852/855.*
+
+### S204.1 Kozima-UQFF LENR Integration
+
+| Module | Purpose | Key Result |
+|--------|---------|------------|
+| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+
+**Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
+where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
+
+### S204.2 Ramanujan 26-State Summation
+
+| Module | Purpose | Key Result |
+|--------|---------|------------|
+| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
+
+**Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
+
+### S204.3 Mock Theta Functions (26-State)
+
+| Module | Purpose | Key Result |
+|--------|---------|------------|
+| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+
+**Core equations:**
+- f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
+- phi_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q^2;q^2)_n
+- psi_26(q) = Sum_{n=1}^{26} q^{n^2} / (q;q^2)_n
+
+### S204.4 Ramanujan 1/pi with UQFF Modification
+
+| Module | Purpose | Key Result |
+|--------|---------|------------|
+| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+
+**Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
+where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
+
+### S204.5 Calibration Constants (Canonical)
+
+| Symbol | Value | Description |
+|--------|-------|-------------|
+| [SSq] | 0.57 | Universal Quantized Factor |
+| kappa | 5.787 x 10^-9 s^-1 | UQFF exponential decay rate |
+| beta_i | 0.603 | Buoyancy coupling coefficient |
+| H_SCm | 0.99 | SCm manifold completeness |
+| rho_SCm | 7.09 x 10^-37 kg/m^3 | SCm vacuum density |
+| rho_UA | 7.09 x 10^-36 kg/m^3 | UA aether vacuum density |
+| omega_SCm | 2*pi x 1.25 THz | SCm phonon resonance |
+| sigma_0 | 10^-4 | Base neutron cross-section |
+
+*Implementation: all modules operational in `CondensedPhysics.py`, `CondensedPhysics2.py`,
+`MAIN_1_CoAnQi.cpp`, and Wolfram kernels (`uqff_kozima_kernel.wl`, `uqff_s26_kernel.wl`,
+`uqff_mock_theta_pi_kernel.wl`).*
+
