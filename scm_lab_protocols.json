@@ -1,0 +1,1389 @@
+{
+  "generator": "scm_lab_replication_protocol.py",
+  "generated_at": "2026-04-09T04:32:54.256702+00:00",
+  "n_systems": 6,
+  "protocols": [
+    {
+      "system_name": "Micro-Plasmoid Reversal",
+      "paper_ref": "PAPER_859",
+      "system_params": {
+        "M_kg": 1e-12,
+        "r_m": 2.54e-05,
+        "B_T": 0.5,
+        "T_K": 5000,
+        "efficiency": 1.5,
+        "primary_element_Z": 1,
+        "element_symbol": "H",
+        "element_name": "Hydrogen",
+        "neutron_density_m3": 1e+28,
+        "phonon_freq_Hz": 1250000000000.0,
+        "phonon_freq_THz": 1.25
+      },
+      "overview": "Replication protocol for the Micro-Plasmoid Reversal system (PAPER_859). Primary element: Hydrogen (Z=1). Target temperature: 5000 K, magnetic field: 0.5 T, predicted COP: 1.5x. This protocol aims to verify UQFF SCm buoyancy signatures (1/r field decay, 1.2500 THz phonon resonance) and measure excess thermal power.",
+      "materials": [
+        "High-purity Hydrogen (H, Z=1), \u226599.9%, 1\u201310 g",
+        "Reaction chamber (vacuum-rated or gas-tight as required)",
+        "Electrical feedthroughs rated for operating temperature",
+        "Cooling water supply (if electromagnet requires)",
+        "Calibration standards for all sensors",
+        "Lab notebook and camera for documentation"
+      ],
+      "equipment": [
+        {
+          "name": "Data acquisition system",
+          "specification": "16-bit ADC, \u22651 kHz sampling, 8+ channels",
+          "purpose": "Record all sensor outputs simultaneously",
+          "critical": true
+        },
+        {
+          "name": "Precision calorimeter",
+          "specification": "Flow calorimeter or isoperibolic, \u00b10.1 W resolution",
+          "purpose": "Measure input/output thermal power for COP determination",
+          "critical": true
+        },
+        {
+          "name": "Permanent magnet array / small solenoid",
+          "specification": "Field: 0.5 T, uniformity \u00b15% over reaction volume",
+          "purpose": "Seed magnetic field for Birkeland current formation",
+          "critical": true
+        },
+        {
+          "name": "Hall probe / fluxgate magnetometer",
+          "specification": "Range: 0\u20131.0 T, resolution 0.001 T",
+          "purpose": "Monitor and verify confinement field",
+          "critical": true
+        },
+        {
+          "name": "Thermocouple array",
+          "specification": "Type K (up to 1300 K) or Type R (up to 1700 K), \u22654 probes",
+          "purpose": "Monitor reaction temperature (target 5000 K)",
+          "critical": true
+        },
+        {
+          "name": "THz spectrometer / Raman system",
+          "specification": "Range covering 1.25 THz, resolution \u22651 GHz",
+          "purpose": "Detect predicted phonon resonance signature",
+          "critical": true
+        },
+        {
+          "name": "Neutron detector",
+          "specification": "He-3 proportional counter or BF3 tube, \u00b11 n/cm\u00b2/s sensitivity",
+          "purpose": "Monitor neutron flux from reaction zone",
+          "critical": true
+        },
+        {
+          "name": "Sample material (Hydrogen, Z=1)",
+          "specification": "High purity (\u226599.9%) Hydrogen (H) in appropriate form",
+          "purpose": "Primary reactant / catalyst (paper: PAPER_859)",
+          "critical": true
+        }
+      ],
+      "safety": [
+        {
+          "category": "thermal",
+          "severity": "high",
+          "description": "Operating temperature 5000 K \u2014 risk of severe burns",
+          "mitigation": "Heat-resistant gloves, face shield, ceramic containment vessel"
+        },
+        {
+          "category": "magnetic",
+          "severity": "medium",
+          "description": "Moderate magnetic field (0.5 T)",
+          "mitigation": "Keep magnetic media and sensitive electronics >1m from apparatus"
+        },
+        {
+          "category": "radiation",
+          "severity": "high",
+          "description": "Neutron density 1e+28 m\u207b\u00b3 \u2014 activation and dose risk",
+          "mitigation": "Borated polyethylene shielding (min 10cm), personal dosimeter, real-time neutron monitor. Maximum 1 hour exposure per session."
+        },
+        {
+          "category": "general",
+          "severity": "low",
+          "description": "All LENR experiments must follow institutional radiation safety protocols",
+          "mitigation": "Review with radiation safety officer before first operation"
+        }
+      ],
+      "procedure": [
+        {
+          "step_number": 1,
+          "action": "Review safety notes and ensure all PPE is available. Verify radiation safety officer sign-off.",
+          "duration": "15 min",
+          "notes": "Mandatory before every session"
+        },
+        {
+          "step_number": 2,
+          "action": "Calibrate all sensors: thermocouples, Hall probes, neutron detectors, DAQ.",
+          "duration": "30 min",
+          "notes": "Record calibration in lab notebook"
+        },
+        {
+          "step_number": 3,
+          "action": "Prepare sample material: Hydrogen (Z=1). Weigh to \u00b10.001 g. Record mass.",
+          "duration": "10 min",
+          "notes": ""
+        },
+        {
+          "step_number": 4,
+          "action": "Energize magnetic field source. Ramp to 0.5 T over 60 seconds. Verify field uniformity at \u00b15% across reaction volume.",
+          "duration": "5 min",
+          "notes": "Monitor for quench (superconducting) or overcurrent"
+        },
+        {
+          "step_number": 5,
+          "action": "Position sample in reaction chamber. Seal chamber if gas-tight operation required.",
+          "duration": "5 min",
+          "notes": ""
+        },
+        {
+          "step_number": 6,
+          "action": "Begin heating to target temperature 5000 K. Ramp rate: \u226450 K/min to avoid thermal shock.",
+          "duration": "94 min",
+          "notes": "Log temperature vs time throughout"
+        },
+        {
+          "step_number": 7,
+          "action": "Enable primary excitation source (RF/DC pulse, laser, or chemical trigger per system specification). Record exact trigger time.",
+          "duration": "1 min",
+          "notes": "This is t=0 for the experiment"
+        },
+        {
+          "step_number": 8,
+          "action": "Monitor and record all channels continuously:\n  - Input power (electrical)\n  - Output power (calorimetric)\n  - Temperature at \u22654 points\n  - Magnetic field\n  - Neutron count rate\n  - Phonon spectrum (THz/Raman if available)",
+          "duration": "30\u2013120 min",
+          "notes": "Minimum 30 min; extend if excess heat observed"
+        },
+        {
+          "step_number": 9,
+          "action": "During active phase, perform 1/r field profile measurement:\n  - Probe field at r = 1, 2, 5, 10 cm from reaction center\n  - Record 3 measurements at each distance\n  - Fit log(E) vs log(r) \u2014 expect slope = -1.00 \u00b1 0.05",
+          "duration": "15 min",
+          "notes": "Key SCm monopole signature"
+        },
+        {
+          "step_number": 10,
+          "action": "Check for phonon resonance at f = 1.2500e+12 Hz (1.2500 THz). Record peak frequency, width, and amplitude.",
+          "duration": "10 min",
+          "notes": "Key UQFF 1.25 THz signature"
+        },
+        {
+          "step_number": 11,
+          "action": "Disable excitation source. Allow system to cool to <350 K before opening.",
+          "duration": "15\u201360 min",
+          "notes": ""
+        },
+        {
+          "step_number": 12,
+          "action": "Ramp magnetic field to zero. De-energize coils.",
+          "duration": "5 min",
+          "notes": ""
+        },
+        {
+          "step_number": 13,
+          "action": "Retrieve sample. Weigh to \u00b10.001 g. Compare pre/post mass. If transmutation suspected, send for mass spectrometry analysis.",
+          "duration": "10 min",
+          "notes": ""
+        },
+        {
+          "step_number": 14,
+          "action": "Export all DAQ data. Compute COP = P_out/P_in. Compare measured signatures against expected values in this protocol.",
+          "duration": "20 min",
+          "notes": ""
+        }
+      ],
+      "expected_signatures": [
+        {
+          "name": "Buoyancy reversal force",
+          "quantity": "F_buoy",
+          "expected_value": "3.0100e-39 N",
+          "measurement_method": "Precision force balance / torsion pendulum",
+          "tolerance": "\u00b150% (order-of-magnitude confirmation sufficient)"
+        },
+        {
+          "name": "Phonon resonance frequency",
+          "quantity": "f_phonon",
+          "expected_value": "1.2500e+12 Hz (1.2500 THz)",
+          "measurement_method": "THz spectroscopy / Raman scattering",
+          "tolerance": "\u00b110% of predicted frequency"
+        },
+        {
+          "name": "Magnetic confinement field",
+          "quantity": "B_conf",
+          "expected_value": "0.5 T",
+          "measurement_method": "Hall probe / fluxgate magnetometer",
+          "tolerance": "\u00b15% of target field"
+        },
+        {
+          "name": "Excess thermal power ratio",
+          "quantity": "COP (efficiency)",
+          "expected_value": "1.5x input (50% excess)",
+          "measurement_method": "Calorimetry (flow / isoperibolic)",
+          "tolerance": "\u00b120% of predicted COP"
+        },
+        {
+          "name": "Neutron density in reaction zone",
+          "quantity": "n_neutron",
+          "expected_value": "1.0e+28 m\u207b\u00b3",
+          "measurement_method": "He-3 proportional counter / BF3 detector",
+          "tolerance": "order-of-magnitude agreement"
+        },
+        {
+          "name": "1/r field decay profile",
+          "quantity": "E(r) \u221d 1/r",
+          "expected_value": "Power-law index = -1.00 \u00b1 0.05",
+          "measurement_method": "Multi-point field probe array at r = 1cm, 2cm, 5cm, 10cm",
+          "tolerance": "\u00b10.05 on power-law exponent"
+        }
+      ],
+      "success_criteria": [
+        "COP \u2265 0.8 (\u226550% of predicted 1.5x)",
+        "Phonon peak within \u00b110% of 1.2500e+12 Hz",
+        "1/r field decay: power-law exponent = -1.00 \u00b1 0.10",
+        "Magnetic confinement stable at 0.5 T \u00b1 5% for \u226530 min",
+        "Neutron count rate elevated >3\u03c3 above background during active phase",
+        "All measurements repeated in \u22653 independent runs for statistical significance"
+      ],
+      "references": [
+        "PAPER_859 \u2014 Original UQFF whitepaper for this system",
+        "vds_dvp_bsh_lenr_synthesis.py \u2014 VDS/DVP/BSH calculator (parameter source)",
+        "CondensedPhysics.py \u2014 Primary UQFF calculator (tidal deformability, GW validation)",
+        "PAPER_001\u2013009 \u2014 Core UQFF theory and gravitational wave framework"
+      ]
+    },
+    {
+      "system_name": "Water Reactor H2O2 (Birkeland)",
+      "paper_ref": "PAPER_863",
+      "system_params": {
+        "M_kg": 0.018,
+        "r_m": 0.05,
+        "B_T": 0.01,
+        "T_K": 373,
+        "efficiency": 283.0,
+        "primary_element_Z": 8,
+        "element_symbol": "O",
+        "element_name": "Oxygen",
+        "neutron_density_m3": 1e+25,
+        "phonon_freq_Hz": 1250000000000.0,
+        "phonon_freq_THz": 1.25
+      },
+      "overview": "Replication protocol for the Water Reactor H2O2 (Birkeland) system (PAPER_863). Primary element: Oxygen (Z=8). Target temperature: 373 K, magnetic field: 0.01 T, predicted COP: 283.0x. This protocol aims to verify UQFF SCm buoyancy signatures (1/r field decay, 1.2500 THz phonon resonance) and measure excess thermal power.",
+      "materials": [
+        "High-purity Oxygen (O, Z=8), \u226599.9%, 1\u201310 g",
+        "Reaction chamber (vacuum-rated or gas-tight as required)",
+        "Electrical feedthroughs rated for operating temperature",
+        "Cooling water supply (if electromagnet requires)",
+        "Calibration standards for all sensors",
+        "Lab notebook and camera for documentation"
+      ],
+      "equipment": [
+        {
+          "name": "Data acquisition system",
+          "specification": "16-bit ADC, \u22651 kHz sampling, 8+ channels",
+          "purpose": "Record all sensor outputs simultaneously",
+          "critical": true
+        },
+        {
+          "name": "Precision calorimeter",
+          "specification": "Flow calorimeter or isoperibolic, \u00b10.1 W resolution",
+          "purpose": "Measure input/output thermal power for COP determination",
+          "critical": true
+        },
+        {
+          "name": "Permanent magnet array / small solenoid",
+          "specification": "Field: 0.01 T, uniformity \u00b15% over reaction volume",
+          "purpose": "Seed magnetic field for Birkeland current formation",
+          "critical": true
+        },
+        {
+          "name": "Hall probe / fluxgate magnetometer",
+          "specification": "Range: 0\u20130.1 T, resolution 0.001 T",
+          "purpose": "Monitor and verify confinement field",
+          "critical": true
+        },
+        {
+          "name": "Thermocouple array",
+          "specification": "Type K (up to 1300 K) or Type R (up to 1700 K), \u22654 probes",
+          "purpose": "Monitor reaction temperature (target 373 K)",
+          "critical": true
+        },
+        {
+          "name": "THz spectrometer / Raman system",
+          "specification": "Range covering 1.25 THz, resolution \u22651 GHz",
+          "purpose": "Detect predicted phonon resonance signature",
+          "critical": true
+        },
+        {
+          "name": "Neutron detector",
+          "specification": "He-3 proportional counter or BF3 tube, \u00b11 n/cm\u00b2/s sensitivity",
+          "purpose": "Monitor neutron flux from reaction zone",
+          "critical": true
+        },
+        {
+          "name": "Sample material (Oxygen, Z=8)",
+          "specification": "High purity (\u226599.9%) Oxygen (O) in appropriate form",
+          "purpose": "Primary reactant / catalyst (paper: PAPER_863)",
+          "critical": true
+        }
+      ],
+      "safety": [
+        {
+          "category": "thermal",
+          "severity": "medium",
+          "description": "Operating temperature 373 K \u2014 hot surfaces",
+          "mitigation": "Use insulated handling tools, allow cooling before disassembly"
+        },
+        {
+          "category": "radiation",
+          "severity": "medium",
+          "description": "Neutron density 1e+25 m\u207b\u00b3",
+          "mitigation": "BF3 monitor, monthly dosimetry review"
+        },
+        {
+          "category": "chemical",
+          "severity": "medium",
+          "description": "Hydrogen peroxide decomposition \u2014 oxygen enrichment risk",
+          "mitigation": "Ventilated area, no open flames, splash goggles"
+        },
+        {
+          "category": "general",
+          "severity": "low",
+          "description": "All LENR experiments must follow institutional radiation safety protocols",
+          "mitigation": "Review with radiation safety officer before first operation"
+        }
+      ],
+      "procedure": [
+        {
+          "step_number": 1,
+          "action": "Review safety notes and ensure all PPE is available. Verify radiation safety officer sign-off.",
+          "duration": "15 min",
+          "notes": "Mandatory before every session"
+        },
+        {
+          "step_number": 2,
+          "action": "Calibrate all sensors: thermocouples, Hall probes, neutron detectors, DAQ.",
+          "duration": "30 min",
+          "notes": "Record calibration in lab notebook"
+        },
+        {
+          "step_number": 3,
+          "action": "Prepare sample material: Oxygen (Z=8). Weigh to \u00b10.001 g. Record mass.",
+          "duration": "10 min",
+          "notes": ""
+        },
+        {
+          "step_number": 4,
+          "action": "Energize magnetic field source. Ramp to 0.01 T over 60 seconds. Verify field uniformity at \u00b15% across reaction volume.",
+          "duration": "5 min",
+          "notes": "Monitor for quench (superconducting) or overcurrent"
+        },
+        {
+          "step_number": 5,
+          "action": "Position sample in reaction chamber. Seal chamber if gas-tight operation required.",
+          "duration": "5 min",
+          "notes": ""
+        },
+        {
+          "step_number": 6,
+          "action": "Begin heating to target temperature 373 K. Ramp rate: \u226450 K/min to avoid thermal shock.",
+          "duration": "1 min",
+          "notes": "Log temperature vs time throughout"
+        },
+        {
+          "step_number": 7,
+          "action": "Enable primary excitation source (RF/DC pulse, laser, or chemical trigger per system specification). Record exact trigger time.",
+          "duration": "1 min",
+          "notes": "This is t=0 for the experiment"
+        },
+        {
+          "step_number": 8,
+          "action": "Monitor and record all channels continuously:\n  - Input power (electrical)\n  - Output power (calorimetric)\n  - Temperature at \u22654 points\n  - Magnetic field\n  - Neutron count rate\n  - Phonon spectrum (THz/Raman if available)",
+          "duration": "30\u2013120 min",
+          "notes": "Minimum 30 min; extend if excess heat observed"
+        },
+        {
+          "step_number": 9,
+          "action": "During active phase, perform 1/r field profile measurement:\n  - Probe field at r = 1, 2, 5, 10 cm from reaction center\n  - Record 3 measurements at each distance\n  - Fit log(E) vs log(r) \u2014 expect slope = -1.00 \u00b1 0.05",
+          "duration": "15 min",
+          "notes": "Key SCm monopole signature"
+        },
+        {
+          "step_number": 10,
+          "action": "Check for phonon resonance at f = 1.2500e+12 Hz (1.2500 THz). Record peak frequency, width, and amplitude.",
+          "duration": "10 min",
+          "notes": "Key UQFF 1.25 THz signature"
+        },
+        {
+          "step_number": 11,
+          "action": "Disable excitation source. Allow system to cool to <350 K before opening.",
+          "duration": "15\u201360 min",
+          "notes": ""
+        },
+        {
+          "step_number": 12,
+          "action": "Ramp magnetic field to zero. De-energize coils.",
+          "duration": "5 min",
+          "notes": ""
+        },
+        {
+          "step_number": 13,
+          "action": "Retrieve sample. Weigh to \u00b10.001 g. Compare pre/post mass. If transmutation suspected, send for mass spectrometry analysis.",
+          "duration": "10 min",
+          "notes": ""
+        },
+        {
+          "step_number": 14,
+          "action": "Export all DAQ data. Compute COP = P_out/P_in. Compare measured signatures against expected values in this protocol.",
+          "duration": "20 min",
+          "notes": ""
+        }
+      ],
+      "expected_signatures": [
+        {
+          "name": "Buoyancy reversal force",
+          "quantity": "F_buoy",
+          "expected_value": "2.2960e-29 N",
+          "measurement_method": "Precision force balance / torsion pendulum",
+          "tolerance": "\u00b150% (order-of-magnitude confirmation sufficient)"
+        },
+        {
+          "name": "Phonon resonance frequency",
+          "quantity": "f_phonon",
+          "expected_value": "1.2500e+12 Hz (1.2500 THz)",
+          "measurement_method": "THz spectroscopy / Raman scattering",
+          "tolerance": "\u00b110% of predicted frequency"
+        },
+        {
+          "name": "Magnetic confinement field",
+          "quantity": "B_conf",
+          "expected_value": "0.01 T",
+          "measurement_method": "Hall probe / fluxgate magnetometer",
+          "tolerance": "\u00b15% of target field"
+        },
+        {
+          "name": "Excess thermal power ratio",
+          "quantity": "COP (efficiency)",
+          "expected_value": "283.0x input (28200% excess)",
+          "measurement_method": "Calorimetry (flow / isoperibolic)",
+          "tolerance": "\u00b120% of predicted COP"
+        },
+        {
+          "name": "Neutron density in reaction zone",
+          "quantity": "n_neutron",
+          "expected_value": "1.0e+25 m\u207b\u00b3",
+          "measurement_method": "He-3 proportional counter / BF3 detector",
+          "tolerance": "order-of-magnitude agreement"
+        },
+        {
+          "name": "1/r field decay profile",
+          "quantity": "E(r) \u221d 1/r",
+          "expected_value": "Power-law index = -1.00 \u00b1 0.05",
+          "measurement_method": "Multi-point field probe array at r = 1cm, 2cm, 5cm, 10cm",
+          "tolerance": "\u00b10.05 on power-law exponent"
+        }
+      ],
+      "success_criteria": [
+        "COP \u2265 141.5 (\u226550% of predicted 283.0x)",
+        "Phonon peak within \u00b110% of 1.2500e+12 Hz",
+        "1/r field decay: power-law exponent = -1.00 \u00b1 0.10",
+        "Magnetic confinement stable at 0.01 T \u00b1 5% for \u226530 min",
+        "Neutron count rate elevated >3\u03c3 above background during active phase",
+        "All measurements repeated in \u22653 independent runs for statistical significance"
+      ],
+      "references": [
+        "PAPER_863 \u2014 Original UQFF whitepaper for this system",
+        "vds_dvp_bsh_lenr_synthesis.py \u2014 VDS/DVP/BSH calculator (parameter source)",
+        "CondensedPhysics.py \u2014 Primary UQFF calculator (tidal deformability, GW validation)",
+        "PAPER_001\u2013009 \u2014 Core UQFF theory and gravitational wave framework"
+      ]
+    },
+    {
+      "system_name": "Colman-Gillespie Pulsed Motor",
+      "paper_ref": "PAPER_835",
+      "system_params": {
+        "M_kg": 0.5,
+        "r_m": 0.1,
+        "B_T": 1.2,
+        "T_K": 300,
+        "efficiency": 3.5,
+        "primary_element_Z": 26,
+        "element_symbol": "Fe",
+        "element_name": "Iron",
+        "neutron_density_m3": 1e+22,
+        "phonon_freq_Hz": 500000000000.0,
+        "phonon_freq_THz": 0.5
+      },
+      "overview": "Replication protocol for the Colman-Gillespie Pulsed Motor system (PAPER_835). Primary element: Iron (Z=26). Target temperature: 300 K, magnetic field: 1.2 T, predicted COP: 3.5x. This protocol aims to verify UQFF SCm buoyancy signatures (1/r field decay, 0.5000 THz phonon resonance) and measure excess thermal power.",
+      "materials": [
+        "High-purity Iron (Fe, Z=26), \u226599.9%, 1\u201310 g",
+        "Reaction chamber (vacuum-rated or gas-tight as required)",
+        "Electrical feedthroughs rated for operating temperature",
+        "Cooling water supply (if electromagnet requires)",
+        "Calibration standards for all sensors",
+        "Lab notebook and camera for documentation"
+      ],
+      "equipment": [
+        {
+          "name": "Data acquisition system",
+          "specification": "16-bit ADC, \u22651 kHz sampling, 8+ channels",
+          "purpose": "Record all sensor outputs simultaneously",
+          "critical": true
+        },
+        {
+          "name": "Precision calorimeter",
+          "specification": "Flow calorimeter or isoperibolic, \u00b10.1 W resolution",
+          "purpose": "Measure input/output thermal power for COP determination",
+          "critical": true
+        },
+        {
+          "name": "Electromagnet / Helmholtz coil",
+          "specification": "Capable of 1.2 T in 10.0 cm gap, water-cooled",
+          "purpose": "Provide confinement field for reaction zone",
+          "critical": true
+        },
+        {
+          "name": "Hall probe / fluxgate magnetometer",
+          "specification": "Range: 0\u20132.4 T, resolution 0.001 T",
+          "purpose": "Monitor and verify confinement field",
+          "critical": true
+        },
+        {
+          "name": "Thermocouple array",
+          "specification": "Type K (up to 1300 K) or Type R (up to 1700 K), \u22654 probes",
+          "purpose": "Monitor reaction temperature (target 300 K)",
+          "critical": true
+        },
+        {
+          "name": "THz spectrometer / Raman system",
+          "specification": "Range covering 0.50 THz, resolution \u22651 GHz",
+          "purpose": "Detect predicted phonon resonance signature",
+          "critical": true
+        },
+        {
+          "name": "Sample material (Iron, Z=26)",
+          "specification": "High purity (\u226599.9%) Iron (Fe) in appropriate form",
+          "purpose": "Primary reactant / catalyst (paper: PAPER_835)",
+          "critical": true
+        }
+      ],
+      "safety": [
+        {
+          "category": "magnetic",
+          "severity": "high",
+          "description": "Strong magnetic field (1.2 T) \u2014 projectile hazard for ferrous objects",
+          "mitigation": "Clear 2m exclusion zone of ferrous materials, remove jewelry, pacemaker exclusion zone 3m"
+        },
+        {
+          "category": "electrical",
+          "severity": "high",
+          "description": "Pulsed high-voltage system \u2014 arc flash and electrocution risk",
+          "mitigation": "Lockout/tagout before servicing, capacitor discharge procedure, insulated tools, rubber mat, buddy system"
+        },
+        {
+          "category": "general",
+          "severity": "low",
+          "description": "All LENR experiments must follow institutional radiation safety protocols",
+          "mitigation": "Review with radiation safety officer before first operation"
+        }
+      ],
+      "procedure": [
+        {
+          "step_number": 1,
+          "action": "Review safety notes and ensure all PPE is available. Verify radiation safety officer sign-off.",
+          "duration": "15 min",
+          "notes": "Mandatory before every session"
+        },
+        {
+          "step_number": 2,
+          "action": "Calibrate all sensors: thermocouples, Hall probes, neutron detectors, DAQ.",
+          "duration": "30 min",
+          "notes": "Record calibration in lab notebook"
+        },
+        {
+          "step_number": 3,
+          "action": "Prepare sample material: Iron (Z=26). Weigh to \u00b10.001 g. Record mass.",
+          "duration": "10 min",
+          "notes": ""
+        },
+        {
+          "step_number": 4,
+          "action": "Energize magnetic field source. Ramp to 1.2 T over 60 seconds. Verify field uniformity at \u00b15% across reaction volume.",
+          "duration": "5 min",
+          "notes": "Monitor for quench (superconducting) or overcurrent"
+        },
+        {
+          "step_number": 5,
+          "action": "Position sample in reaction chamber. Seal chamber if gas-tight operation required.",
+          "duration": "5 min",
+          "notes": ""
+        },
+        {
+          "step_number": 6,
+          "action": "Enable primary excitation source (RF/DC pulse, laser, or chemical trigger per system specification). Record exact trigger time.",
+          "duration": "1 min",
+          "notes": "This is t=0 for the experiment"
+        },
+        {
+          "step_number": 7,
+          "action": "Monitor and record all channels continuously:\n  - Input power (electrical)\n  - Output power (calorimetric)\n  - Temperature at \u22654 points\n  - Magnetic field\n  - Neutron count rate\n  - Phonon spectrum (THz/Raman if available)",
+          "duration": "30\u2013120 min",
+          "notes": "Minimum 30 min; extend if excess heat observed"
+        },
+        {
+          "step_number": 8,
+          "action": "During active phase, perform 1/r field profile measurement:\n  - Probe field at r = 1, 2, 5, 10 cm from reaction center\n  - Record 3 measurements at each distance\n  - Fit log(E) vs log(r) \u2014 expect slope = -1.00 \u00b1 0.05",
+          "duration": "15 min",
+          "notes": "Key SCm monopole signature"
+        },
+        {
+          "step_number": 9,
+          "action": "Check for phonon resonance at f = 5.0000e+11 Hz (0.5000 THz). Record peak frequency, width, and amplitude.",
+          "duration": "10 min",
+          "notes": "Key UQFF 1.25 THz signature"
+        },
+        {
+          "step_number": 10,
+          "action": "Disable excitation source. Allow system to cool to <350 K before opening.",
+          "duration": "15\u201360 min",
+          "notes": ""
+        },
+        {
+          "step_number": 11,
+          "action": "Ramp magnetic field to zero. De-energize coils.",
+          "duration": "5 min",
+          "notes": ""
+        },
+        {
+          "step_number": 12,
+          "action": "Retrieve sample. Weigh to \u00b10.001 g. Compare pre/post mass. If transmutation suspected, send for mass spectrometry analysis.",
+          "duration": "10 min",
+          "notes": ""
+        },
+        {
+          "step_number": 13,
+          "action": "Export all DAQ data. Compute COP = P_out/P_in. Compare measured signatures against expected values in this protocol.",
+          "duration": "20 min",
+          "notes": ""
+        }
+      ],
+      "expected_signatures": [
+        {
+          "name": "Buoyancy reversal force",
+          "quantity": "F_buoy",
+          "expected_value": "1.8368e-28 N",
+          "measurement_method": "Precision force balance / torsion pendulum",
+          "tolerance": "\u00b150% (order-of-magnitude confirmation sufficient)"
+        },
+        {
+          "name": "Phonon resonance frequency",
+          "quantity": "f_phonon",
+          "expected_value": "5.0000e+11 Hz (0.5000 THz)",
+          "measurement_method": "THz spectroscopy / Raman scattering",
+          "tolerance": "\u00b110% of predicted frequency"
+        },
+        {
+          "name": "Magnetic confinement field",
+          "quantity": "B_conf",
+          "expected_value": "1.2 T",
+          "measurement_method": "Hall probe / fluxgate magnetometer",
+          "tolerance": "\u00b15% of target field"
+        },
+        {
+          "name": "Excess thermal power ratio",
+          "quantity": "COP (efficiency)",
+          "expected_value": "3.5x input (250% excess)",
+          "measurement_method": "Calorimetry (flow / isoperibolic)",
+          "tolerance": "\u00b120% of predicted COP"
+        },
+        {
+          "name": "Neutron density in reaction zone",
+          "quantity": "n_neutron",
+          "expected_value": "1.0e+22 m\u207b\u00b3",
+          "measurement_method": "He-3 proportional counter / BF3 detector",
+          "tolerance": "order-of-magnitude agreement"
+        },
+        {
+          "name": "1/r field decay profile",
+          "quantity": "E(r) \u221d 1/r",
+          "expected_value": "Power-law index = -1.00 \u00b1 0.05",
+          "measurement_method": "Multi-point field probe array at r = 1cm, 2cm, 5cm, 10cm",
+          "tolerance": "\u00b10.05 on power-law exponent"
+        }
+      ],
+      "success_criteria": [
+        "COP \u2265 1.8 (\u226550% of predicted 3.5x)",
+        "Phonon peak within \u00b110% of 5.0000e+11 Hz",
+        "1/r field decay: power-law exponent = -1.00 \u00b1 0.10",
+        "Magnetic confinement stable at 1.2 T \u00b1 5% for \u226530 min",
+        "All measurements repeated in \u22653 independent runs for statistical significance"
+      ],
+      "references": [
+        "PAPER_835 \u2014 Original UQFF whitepaper for this system",
+        "vds_dvp_bsh_lenr_synthesis.py \u2014 VDS/DVP/BSH calculator (parameter source)",
+        "CondensedPhysics.py \u2014 Primary UQFF calculator (tidal deformability, GW validation)",
+        "PAPER_001\u2013009 \u2014 Core UQFF theory and gravitational wave framework"
+      ]
+    },
+    {
+      "system_name": "Kozima Neutron Drop",
+      "paper_ref": "PAPER_840",
+      "system_params": {
+        "M_kg": 1.675e-27,
+        "r_m": 1e-15,
+        "B_T": 0.0,
+        "T_K": 300,
+        "efficiency": 1.0,
+        "primary_element_Z": 46,
+        "element_symbol": "Pd",
+        "element_name": "Palladium",
+        "neutron_density_m3": 1e+35,
+        "phonon_freq_Hz": 1250000000000.0,
+        "phonon_freq_THz": 1.25
+      },
+      "overview": "Replication protocol for the Kozima Neutron Drop system (PAPER_840). Primary element: Palladium (Z=46). Target temperature: 300 K, magnetic field: 0.0 T, predicted COP: 1.0x. This protocol aims to verify UQFF SCm buoyancy signatures (1/r field decay, 1.2500 THz phonon resonance) and measure excess thermal power.",
+      "materials": [
+        "High-purity Palladium (Pd, Z=46), \u226599.9%, 1\u201310 g",
+        "Reaction chamber (vacuum-rated or gas-tight as required)",
+        "Electrical feedthroughs rated for operating temperature",
+        "Cooling water supply (if electromagnet requires)",
+        "Calibration standards for all sensors",
+        "Lab notebook and camera for documentation"
+      ],
+      "equipment": [
+        {
+          "name": "Data acquisition system",
+          "specification": "16-bit ADC, \u22651 kHz sampling, 8+ channels",
+          "purpose": "Record all sensor outputs simultaneously",
+          "critical": true
+        },
+        {
+          "name": "Precision calorimeter",
+          "specification": "Flow calorimeter or isoperibolic, \u00b10.1 W resolution",
+          "purpose": "Measure input/output thermal power for COP determination",
+          "critical": true
+        },
+        {
+          "name": "Thermocouple array",
+          "specification": "Type K (up to 1300 K) or Type R (up to 1700 K), \u22654 probes",
+          "purpose": "Monitor reaction temperature (target 300 K)",
+          "critical": true
+        },
+        {
+          "name": "THz spectrometer / Raman system",
+          "specification": "Range covering 1.25 THz, resolution \u22651 GHz",
+          "purpose": "Detect predicted phonon resonance signature",
+          "critical": true
+        },
+        {
+          "name": "Neutron detector",
+          "specification": "He-3 proportional counter or BF3 tube, \u00b11 n/cm\u00b2/s sensitivity",
+          "purpose": "Monitor neutron flux from reaction zone",
+          "critical": true
+        },
+        {
+          "name": "Sample material (Palladium, Z=46)",
+          "specification": "High purity (\u226599.9%) Palladium (Pd) in appropriate form",
+          "purpose": "Primary reactant / catalyst (paper: PAPER_840)",
+          "critical": true
+        }
+      ],
+      "safety": [
+        {
+          "category": "radiation",
+          "severity": "high",
+          "description": "Neutron density 1e+35 m\u207b\u00b3 \u2014 activation and dose risk",
+          "mitigation": "Borated polyethylene shielding (min 10cm), personal dosimeter, real-time neutron monitor. Maximum 1 hour exposure per session."
+        },
+        {
+          "category": "general",
+          "severity": "low",
+          "description": "All LENR experiments must follow institutional radiation safety protocols",
+          "mitigation": "Review with radiation safety officer before first operation"
+        }
+      ],
+      "procedure": [
+        {
+          "step_number": 1,
+          "action": "Review safety notes and ensure all PPE is available. Verify radiation safety officer sign-off.",
+          "duration": "15 min",
+          "notes": "Mandatory before every session"
+        },
+        {
+          "step_number": 2,
+          "action": "Calibrate all sensors: thermocouples, Hall probes, neutron detectors, DAQ.",
+          "duration": "30 min",
+          "notes": "Record calibration in lab notebook"
+        },
+        {
+          "step_number": 3,
+          "action": "Prepare sample material: Palladium (Z=46). Weigh to \u00b10.001 g. Record mass.",
+          "duration": "10 min",
+          "notes": ""
+        },
+        {
+          "step_number": 4,
+          "action": "Position sample in reaction chamber. Seal chamber if gas-tight operation required.",
+          "duration": "5 min",
+          "notes": ""
+        },
+        {
+          "step_number": 5,
+          "action": "Enable primary excitation source (RF/DC pulse, laser, or chemical trigger per system specification). Record exact trigger time.",
+          "duration": "1 min",
+          "notes": "This is t=0 for the experiment"
+        },
+        {
+          "step_number": 6,
+          "action": "Monitor and record all channels continuously:\n  - Input power (electrical)\n  - Output power (calorimetric)\n  - Temperature at \u22654 points\n  - Magnetic field\n  - Neutron count rate\n  - Phonon spectrum (THz/Raman if available)",
+          "duration": "30\u2013120 min",
+          "notes": "Minimum 30 min; extend if excess heat observed"
+        },
+        {
+          "step_number": 7,
+          "action": "During active phase, perform 1/r field profile measurement:\n  - Probe field at r = 1, 2, 5, 10 cm from reaction center\n  - Record 3 measurements at each distance\n  - Fit log(E) vs log(r) \u2014 expect slope = -1.00 \u00b1 0.05",
+          "duration": "15 min",
+          "notes": "Key SCm monopole signature"
+        },
+        {
+          "step_number": 8,
+          "action": "Check for phonon resonance at f = 1.2500e+12 Hz (1.2500 THz). Record peak frequency, width, and amplitude.",
+          "duration": "10 min",
+          "notes": "Key UQFF 1.25 THz signature"
+        },
+        {
+          "step_number": 9,
+          "action": "Disable excitation source. Allow system to cool to <350 K before opening.",
+          "duration": "15\u201360 min",
+          "notes": ""
+        },
+        {
+          "step_number": 10,
+          "action": "Retrieve sample. Weigh to \u00b10.001 g. Compare pre/post mass. If transmutation suspected, send for mass spectrometry analysis.",
+          "duration": "10 min",
+          "notes": ""
+        },
+        {
+          "step_number": 11,
+          "action": "Export all DAQ data. Compute COP = P_out/P_in. Compare measured signatures against expected values in this protocol.",
+          "duration": "20 min",
+          "notes": ""
+        }
+      ],
+      "expected_signatures": [
+        {
+          "name": "Buoyancy reversal force",
+          "quantity": "F_buoy",
+          "expected_value": "1.8368e-70 N",
+          "measurement_method": "Precision force balance / torsion pendulum",
+          "tolerance": "\u00b150% (order-of-magnitude confirmation sufficient)"
+        },
+        {
+          "name": "Phonon resonance frequency",
+          "quantity": "f_phonon",
+          "expected_value": "1.2500e+12 Hz (1.2500 THz)",
+          "measurement_method": "THz spectroscopy / Raman scattering",
+          "tolerance": "\u00b110% of predicted frequency"
+        },
+        {
+          "name": "Neutron density in reaction zone",
+          "quantity": "n_neutron",
+          "expected_value": "1.0e+35 m\u207b\u00b3",
+          "measurement_method": "He-3 proportional counter / BF3 detector",
+          "tolerance": "order-of-magnitude agreement"
+        },
+        {
+          "name": "1/r field decay profile",
+          "quantity": "E(r) \u221d 1/r",
+          "expected_value": "Power-law index = -1.00 \u00b1 0.05",
+          "measurement_method": "Multi-point field probe array at r = 1cm, 2cm, 5cm, 10cm",
+          "tolerance": "\u00b10.05 on power-law exponent"
+        }
+      ],
+      "success_criteria": [
+        "Observe anomalous thermal output above input power uncertainty",
+        "Phonon peak within \u00b110% of 1.2500e+12 Hz",
+        "1/r field decay: power-law exponent = -1.00 \u00b1 0.10",
+        "Neutron count rate elevated >3\u03c3 above background during active phase",
+        "All measurements repeated in \u22653 independent runs for statistical significance"
+      ],
+      "references": [
+        "PAPER_840 \u2014 Original UQFF whitepaper for this system",
+        "vds_dvp_bsh_lenr_synthesis.py \u2014 VDS/DVP/BSH calculator (parameter source)",
+        "CondensedPhysics.py \u2014 Primary UQFF calculator (tidal deformability, GW validation)",
+        "PAPER_001\u2013009 \u2014 Core UQFF theory and gravitational wave framework"
+      ]
+    },
+    {
+      "system_name": "LRC Spark-Gap 1/r Monopole",
+      "paper_ref": "PAPER_864",
+      "system_params": {
+        "M_kg": 1e-06,
+        "r_m": 0.001,
+        "B_T": 0.1,
+        "T_K": 300,
+        "efficiency": 2.0,
+        "primary_element_Z": 29,
+        "element_symbol": "Cu",
+        "element_name": "Copper",
+        "neutron_density_m3": 1e+26,
+        "phonon_freq_Hz": 29.14,
+        "phonon_freq_THz": 2.914e-11
+      },
+      "overview": "Replication protocol for the LRC Spark-Gap 1/r Monopole system (PAPER_864). Primary element: Copper (Z=29). Target temperature: 300 K, magnetic field: 0.1 T, predicted COP: 2.0x. This protocol aims to verify UQFF SCm buoyancy signatures (1/r field decay, 0.0000 THz phonon resonance) and measure excess thermal power.",
+      "materials": [
+        "High-purity Copper (Cu, Z=29), \u226599.9%, 1\u201310 g",
+        "Reaction chamber (vacuum-rated or gas-tight as required)",
+        "Electrical feedthroughs rated for operating temperature",
+        "Cooling water supply (if electromagnet requires)",
+        "Calibration standards for all sensors",
+        "Lab notebook and camera for documentation"
+      ],
+      "equipment": [
+        {
+          "name": "Data acquisition system",
+          "specification": "16-bit ADC, \u22651 kHz sampling, 8+ channels",
+          "purpose": "Record all sensor outputs simultaneously",
+          "critical": true
+        },
+        {
+          "name": "Precision calorimeter",
+          "specification": "Flow calorimeter or isoperibolic, \u00b10.1 W resolution",
+          "purpose": "Measure input/output thermal power for COP determination",
+          "critical": true
+        },
+        {
+          "name": "Permanent magnet array / small solenoid",
+          "specification": "Field: 0.1 T, uniformity \u00b15% over reaction volume",
+          "purpose": "Seed magnetic field for Birkeland current formation",
+          "critical": true
+        },
+        {
+          "name": "Hall probe / fluxgate magnetometer",
+          "specification": "Range: 0\u20130.2 T, resolution 0.001 T",
+          "purpose": "Monitor and verify confinement field",
+          "critical": true
+        },
+        {
+          "name": "Thermocouple array",
+          "specification": "Type K (up to 1300 K) or Type R (up to 1700 K), \u22654 probes",
+          "purpose": "Monitor reaction temperature (target 300 K)",
+          "critical": true
+        },
+        {
+          "name": "Neutron detector",
+          "specification": "He-3 proportional counter or BF3 tube, \u00b11 n/cm\u00b2/s sensitivity",
+          "purpose": "Monitor neutron flux from reaction zone",
+          "critical": true
+        },
+        {
+          "name": "Sample material (Copper, Z=29)",
+          "specification": "High purity (\u226599.9%) Copper (Cu) in appropriate form",
+          "purpose": "Primary reactant / catalyst (paper: PAPER_864)",
+          "critical": true
+        }
+      ],
+      "safety": [
+        {
+          "category": "magnetic",
+          "severity": "medium",
+          "description": "Moderate magnetic field (0.1 T)",
+          "mitigation": "Keep magnetic media and sensitive electronics >1m from apparatus"
+        },
+        {
+          "category": "radiation",
+          "severity": "medium",
+          "description": "Neutron density 1e+26 m\u207b\u00b3",
+          "mitigation": "BF3 monitor, monthly dosimetry review"
+        },
+        {
+          "category": "electrical",
+          "severity": "high",
+          "description": "Pulsed high-voltage system \u2014 arc flash and electrocution risk",
+          "mitigation": "Lockout/tagout before servicing, capacitor discharge procedure, insulated tools, rubber mat, buddy system"
+        },
+        {
+          "category": "general",
+          "severity": "low",
+          "description": "All LENR experiments must follow institutional radiation safety protocols",
+          "mitigation": "Review with radiation safety officer before first operation"
+        }
+      ],
+      "procedure": [
+        {
+          "step_number": 1,
+          "action": "Review safety notes and ensure all PPE is available. Verify radiation safety officer sign-off.",
+          "duration": "15 min",
+          "notes": "Mandatory before every session"
+        },
+        {
+          "step_number": 2,
+          "action": "Calibrate all sensors: thermocouples, Hall probes, neutron detectors, DAQ.",
+          "duration": "30 min",
+          "notes": "Record calibration in lab notebook"
+        },
+        {
+          "step_number": 3,
+          "action": "Prepare sample material: Copper (Z=29). Weigh to \u00b10.001 g. Record mass.",
+          "duration": "10 min",
+          "notes": ""
+        },
+        {
+          "step_number": 4,
+          "action": "Energize magnetic field source. Ramp to 0.1 T over 60 seconds. Verify field uniformity at \u00b15% across reaction volume.",
+          "duration": "5 min",
+          "notes": "Monitor for quench (superconducting) or overcurrent"
+        },
+        {
+          "step_number": 5,
+          "action": "Position sample in reaction chamber. Seal chamber if gas-tight operation required.",
+          "duration": "5 min",
+          "notes": ""
+        },
+        {
+          "step_number": 6,
+          "action": "Enable primary excitation source (RF/DC pulse, laser, or chemical trigger per system specification). Record exact trigger time.",
+          "duration": "1 min",
+          "notes": "This is t=0 for the experiment"
+        },
+        {
+          "step_number": 7,
+          "action": "Monitor and record all channels continuously:\n  - Input power (electrical)\n  - Output power (calorimetric)\n  - Temperature at \u22654 points\n  - Magnetic field\n  - Neutron count rate\n  - Phonon spectrum (THz/Raman if available)",
+          "duration": "30\u2013120 min",
+          "notes": "Minimum 30 min; extend if excess heat observed"
+        },
+        {
+          "step_number": 8,
+          "action": "During active phase, perform 1/r field profile measurement:\n  - Probe field at r = 1, 2, 5, 10 cm from reaction center\n  - Record 3 measurements at each distance\n  - Fit log(E) vs log(r) \u2014 expect slope = -1.00 \u00b1 0.05",
+          "duration": "15 min",
+          "notes": "Key SCm monopole signature"
+        },
+        {
+          "step_number": 9,
+          "action": "Check for phonon resonance at f = 2.9140e+01 Hz (0.0000 THz). Record peak frequency, width, and amplitude.",
+          "duration": "10 min",
+          "notes": "Key UQFF 1.25 THz signature"
+        },
+        {
+          "step_number": 10,
+          "action": "Disable excitation source. Allow system to cool to <350 K before opening.",
+          "duration": "15\u201360 min",
+          "notes": ""
+        },
+        {
+          "step_number": 11,
+          "action": "Ramp magnetic field to zero. De-energize coils.",
+          "duration": "5 min",
+          "notes": ""
+        },
+        {
+          "step_number": 12,
+          "action": "Retrieve sample. Weigh to \u00b10.001 g. Compare pre/post mass. If transmutation suspected, send for mass spectrometry analysis.",
+          "duration": "10 min",
+          "notes": ""
+        },
+        {
+          "step_number": 13,
+          "action": "Export all DAQ data. Compute COP = P_out/P_in. Compare measured signatures against expected values in this protocol.",
+          "duration": "20 min",
+          "notes": ""
+        }
+      ],
+      "expected_signatures": [
+        {
+          "name": "Buoyancy reversal force",
+          "quantity": "F_buoy",
+          "expected_value": "1.8368e-34 N",
+          "measurement_method": "Precision force balance / torsion pendulum",
+          "tolerance": "\u00b150% (order-of-magnitude confirmation sufficient)"
+        },
+        {
+          "name": "Phonon resonance frequency",
+          "quantity": "f_phonon",
+          "expected_value": "2.9140e+01 Hz (0.0000 THz)",
+          "measurement_method": "THz spectroscopy / Raman scattering",
+          "tolerance": "\u00b110% of predicted frequency"
+        },
+        {
+          "name": "Magnetic confinement field",
+          "quantity": "B_conf",
+          "expected_value": "0.1 T",
+          "measurement_method": "Hall probe / fluxgate magnetometer",
+          "tolerance": "\u00b15% of target field"
+        },
+        {
+          "name": "Excess thermal power ratio",
+          "quantity": "COP (efficiency)",
+          "expected_value": "2.0x input (100% excess)",
+          "measurement_method": "Calorimetry (flow / isoperibolic)",
+          "tolerance": "\u00b120% of predicted COP"
+        },
+        {
+          "name": "Neutron density in reaction zone",
+          "quantity": "n_neutron",
+          "expected_value": "1.0e+26 m\u207b\u00b3",
+          "measurement_method": "He-3 proportional counter / BF3 detector",
+          "tolerance": "order-of-magnitude agreement"
+        },
+        {
+          "name": "1/r field decay profile",
+          "quantity": "E(r) \u221d 1/r",
+          "expected_value": "Power-law index = -1.00 \u00b1 0.05",
+          "measurement_method": "Multi-point field probe array at r = 1cm, 2cm, 5cm, 10cm",
+          "tolerance": "\u00b10.05 on power-law exponent"
+        }
+      ],
+      "success_criteria": [
+        "COP \u2265 1.0 (\u226550% of predicted 2.0x)",
+        "Phonon peak within \u00b110% of 2.9140e+01 Hz",
+        "1/r field decay: power-law exponent = -1.00 \u00b1 0.10",
+        "Magnetic confinement stable at 0.1 T \u00b1 5% for \u226530 min",
+        "Neutron count rate elevated >3\u03c3 above background during active phase",
+        "All measurements repeated in \u22653 independent runs for statistical significance"
+      ],
+      "references": [
+        "PAPER_864 \u2014 Original UQFF whitepaper for this system",
+        "vds_dvp_bsh_lenr_synthesis.py \u2014 VDS/DVP/BSH calculator (parameter source)",
+        "CondensedPhysics.py \u2014 Primary UQFF calculator (tidal deformability, GW validation)",
+        "PAPER_001\u2013009 \u2014 Core UQFF theory and gravitational wave framework"
+      ]
+    },
+    {
+      "system_name": "Caduceus Twin-Helix Motor",
+      "paper_ref": "PAPER_866",
+      "system_params": {
+        "M_kg": 0.2,
+        "r_m": 0.05,
+        "B_T": 0.8,
+        "T_K": 300,
+        "efficiency": 4.0,
+        "primary_element_Z": 26,
+        "element_symbol": "Fe",
+        "element_name": "Iron",
+        "neutron_density_m3": 1e+24,
+        "phonon_freq_Hz": 1000000000000.0,
+        "phonon_freq_THz": 1.0
+      },
+      "overview": "Replication protocol for the Caduceus Twin-Helix Motor system (PAPER_866). Primary element: Iron (Z=26). Target temperature: 300 K, magnetic field: 0.8 T, predicted COP: 4.0x. This protocol aims to verify UQFF SCm buoyancy signatures (1/r field decay, 1.0000 THz phonon resonance) and measure excess thermal power.",
+      "materials": [
+        "High-purity Iron (Fe, Z=26), \u226599.9%, 1\u201310 g",
+        "Reaction chamber (vacuum-rated or gas-tight as required)",
+        "Electrical feedthroughs rated for operating temperature",
+        "Cooling water supply (if electromagnet requires)",
+        "Calibration standards for all sensors",
+        "Lab notebook and camera for documentation"
+      ],
+      "equipment": [
+        {
+          "name": "Data acquisition system",
+          "specification": "16-bit ADC, \u22651 kHz sampling, 8+ channels",
+          "purpose": "Record all sensor outputs simultaneously",
+          "critical": true
+        },
+        {
+          "name": "Precision calorimeter",
+          "specification": "Flow calorimeter or isoperibolic, \u00b10.1 W resolution",
+          "purpose": "Measure input/output thermal power for COP determination",
+          "critical": true
+        },
+        {
+          "name": "Permanent magnet array / small solenoid",
+          "specification": "Field: 0.8 T, uniformity \u00b15% over reaction volume",
+          "purpose": "Seed magnetic field for Birkeland current formation",
+          "critical": true
+        },
+        {
+          "name": "Hall probe / fluxgate magnetometer",
+          "specification": "Range: 0\u20131.6 T, resolution 0.001 T",
+          "purpose": "Monitor and verify confinement field",
+          "critical": true
+        },
+        {
+          "name": "Thermocouple array",
+          "specification": "Type K (up to 1300 K) or Type R (up to 1700 K), \u22654 probes",
+          "purpose": "Monitor reaction temperature (target 300 K)",
+          "critical": true
+        },
+        {
+          "name": "THz spectrometer / Raman system",
+          "specification": "Range covering 1.00 THz, resolution \u22651 GHz",
+          "purpose": "Detect predicted phonon resonance signature",
+          "critical": true
+        },
+        {
+          "name": "Neutron detector",
+          "specification": "He-3 proportional counter or BF3 tube, \u00b11 n/cm\u00b2/s sensitivity",
+          "purpose": "Monitor neutron flux from reaction zone",
+          "critical": true
+        },
+        {
+          "name": "Sample material (Iron, Z=26)",
+          "specification": "High purity (\u226599.9%) Iron (Fe) in appropriate form",
+          "purpose": "Primary reactant / catalyst (paper: PAPER_866)",
+          "critical": true
+        }
+      ],
+      "safety": [
+        {
+          "category": "magnetic",
+          "severity": "medium",
+          "description": "Moderate magnetic field (0.8 T)",
+          "mitigation": "Keep magnetic media and sensitive electronics >1m from apparatus"
+        },
+        {
+          "category": "radiation",
+          "severity": "medium",
+          "description": "Neutron density 1e+24 m\u207b\u00b3",
+          "mitigation": "BF3 monitor, monthly dosimetry review"
+        },
+        {
+          "category": "electrical",
+          "severity": "high",
+          "description": "Pulsed high-voltage system \u2014 arc flash and electrocution risk",
+          "mitigation": "Lockout/tagout before servicing, capacitor discharge procedure, insulated tools, rubber mat, buddy system"
+        },
+        {
+          "category": "general",
+          "severity": "low",
+          "description": "All LENR experiments must follow institutional radiation safety protocols",
+          "mitigation": "Review with radiation safety officer before first operation"
+        }
+      ],
+      "procedure": [
+        {
+          "step_number": 1,
+          "action": "Review safety notes and ensure all PPE is available. Verify radiation safety officer sign-off.",
+          "duration": "15 min",
+          "notes": "Mandatory before every session"
+        },
+        {
+          "step_number": 2,
+          "action": "Calibrate all sensors: thermocouples, Hall probes, neutron detectors, DAQ.",
+          "duration": "30 min",
+          "notes": "Record calibration in lab notebook"
+        },
+        {
+          "step_number": 3,
+          "action": "Prepare sample material: Iron (Z=26). Weigh to \u00b10.001 g. Record mass.",
+          "duration": "10 min",
+          "notes": ""
+        },
+        {
+          "step_number": 4,
+          "action": "Energize magnetic field source. Ramp to 0.8 T over 60 seconds. Verify field uniformity at \u00b15% across reaction volume.",
+          "duration": "5 min",
+          "notes": "Monitor for quench (superconducting) or overcurrent"
+        },
+        {
+          "step_number": 5,
+          "action": "Position sample in reaction chamber. Seal chamber if gas-tight operation required.",
+          "duration": "5 min",
+          "notes": ""
+        },
+        {
+          "step_number": 6,
+          "action": "Enable primary excitation source (RF/DC pulse, laser, or chemical trigger per system specification). Record exact trigger time.",
+          "duration": "1 min",
+          "notes": "This is t=0 for the experiment"
+        },
+        {
+          "step_number": 7,
+          "action": "Monitor and record all channels continuously:\n  - Input power (electrical)\n  - Output power (calorimetric)\n  - Temperature at \u22654 points\n  - Magnetic field\n  - Neutron count rate\n  - Phonon spectrum (THz/Raman if available)",
+          "duration": "30\u2013120 min",
+          "notes": "Minimum 30 min; extend if excess heat observed"
+        },
+        {
+          "step_number": 8,
+          "action": "During active phase, perform 1/r field profile measurement:\n  - Probe field at r = 1, 2, 5, 10 cm from reaction center\n  - Record 3 measurements at each distance\n  - Fit log(E) vs log(r) \u2014 expect slope = -1.00 \u00b1 0.05",
+          "duration": "15 min",
+          "notes": "Key SCm monopole signature"
+        },
+        {
+          "step_number": 9,
+          "action": "Check for phonon resonance at f = 1.0000e+12 Hz (1.0000 THz). Record peak frequency, width, and amplitude.",
+          "duration": "10 min",
+          "notes": "Key UQFF 1.25 THz signature"
+        },
+        {
+          "step_number": 10,
+          "action": "Disable excitation source. Allow system to cool to <350 K before opening.",
+          "duration": "15\u201360 min",
+          "notes": ""
+        },
+        {
+          "step_number": 11,
+          "action": "Ramp magnetic field to zero. De-energize coils.",
+          "duration": "5 min",
+          "notes": ""
+        },
+        {
+          "step_number": 12,
+          "action": "Retrieve sample. Weigh to \u00b10.001 g. Compare pre/post mass. If transmutation suspected, send for mass spectrometry analysis.",
+          "duration": "10 min",
+          "notes": ""
+        },
+        {
+          "step_number": 13,
+          "action": "Export all DAQ data. Compute COP = P_out/P_in. Compare measured signatures against expected values in this protocol.",
+          "duration": "20 min",
+          "notes": ""
+        }
+      ],
+      "expected_signatures": [
+        {
+          "name": "Buoyancy reversal force",
+          "quantity": "F_buoy",
+          "expected_value": "2.2960e-29 N",
+          "measurement_method": "Precision force balance / torsion pendulum",
+          "tolerance": "\u00b150% (order-of-magnitude confirmation sufficient)"
+        },
+        {
+          "name": "Phonon resonance frequency",
+          "quantity": "f_phonon",
+          "expected_value": "1.0000e+12 Hz (1.0000 THz)",
+          "measurement_method": "THz spectroscopy / Raman scattering",
+          "tolerance": "\u00b110% of predicted frequency"
+        },
+        {
+          "name": "Magnetic confinement field",
+          "quantity": "B_conf",
+          "expected_value": "0.8 T",
+          "measurement_method": "Hall probe / fluxgate magnetometer",
+          "tolerance": "\u00b15% of target field"
+        },
+        {
+          "name": "Excess thermal power ratio",
+          "quantity": "COP (efficiency)",
+          "expected_value": "4.0x input (300% excess)",
+          "measurement_method": "Calorimetry (flow / isoperibolic)",
+          "tolerance": "\u00b120% of predicted COP"
+        },
+        {
+          "name": "Neutron density in reaction zone",
+          "quantity": "n_neutron",
+          "expected_value": "1.0e+24 m\u207b\u00b3",
+          "measurement_method": "He-3 proportional counter / BF3 detector",
+          "tolerance": "order-of-magnitude agreement"
+        },
+        {
+          "name": "1/r field decay profile",
+          "quantity": "E(r) \u221d 1/r",
+          "expected_value": "Power-law index = -1.00 \u00b1 0.05",
+          "measurement_method": "Multi-point field probe array at r = 1cm, 2cm, 5cm, 10cm",
+          "tolerance": "\u00b10.05 on power-law exponent"
+        }
+      ],
+      "success_criteria": [
+        "COP \u2265 2.0 (\u226550% of predicted 4.0x)",
+        "Phonon peak within \u00b110% of 1.0000e+12 Hz",
+        "1/r field decay: power-law exponent = -1.00 \u00b1 0.10",
+        "Magnetic confinement stable at 0.8 T \u00b1 5% for \u226530 min",
+        "Neutron count rate elevated >3\u03c3 above background during active phase",
+        "All measurements repeated in \u22653 independent runs for statistical significance"
+      ],
+      "references": [
+        "PAPER_866 \u2014 Original UQFF whitepaper for this system",
+        "vds_dvp_bsh_lenr_synthesis.py \u2014 VDS/DVP/BSH calculator (parameter source)",
+        "CondensedPhysics.py \u2014 Primary UQFF calculator (tidal deformability, GW validation)",
+        "PAPER_001\u2013009 \u2014 Core UQFF theory and gravitational wave framework"
+      ]
+    }
+  ]
+}

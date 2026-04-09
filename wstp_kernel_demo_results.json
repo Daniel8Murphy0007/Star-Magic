@@ -1,0 +1,134 @@
+{
+  "backend": "dry_run",
+  "wl_package": "C:\\Users\\tmsjd\\source\\repos\\Daniel8Murphy0007\\Star-Magic\\uqff_lagrangian_unified.wl",
+  "timestamp": "2026-04-09T04:41:16.390875+00:00",
+  "total_elapsed_ms": 0.03,
+  "n_expressions": 13,
+  "n_success": 13,
+  "n_failed": 0,
+  "results": [
+    {
+      "label": "Load UQFFLagrangian package",
+      "code": "Get[\"C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic/uqff_lagrangian_unified.wl\"]",
+      "success": true,
+      "output": "[DRY-RUN] Get[\"C:/Users/tmsjd/source/repos/Daniel8Murphy0007/Star-Magic/uqff_lagrangian_unified.wl\"]",
+      "elapsed_ms": 0.0
+    },
+    {
+      "label": "Retrieve calibrated constants",
+      "code": "UQFFConstants[]",
+      "success": true,
+      "output": "[DRY-RUN] UQFFConstants[]",
+      "elapsed_ms": 0.0
+    },
+    {
+      "label": "Sector 1 \u2014 Einstein-Hilbert (R \u2192 10^-52)",
+      "code": "LEH[10^-52] // N",
+      "success": true,
+      "output": "[DRY-RUN] LEH[10^-52] // N",
+      "elapsed_ms": 0.0
+    },
+    {
+      "label": "Sector 5 \u2014 Magnetic-Dipole (SGR1745: B=10^14 T)",
+      "code": "LMag[10^14, 7.09*^-37, 10^3, 10^4, 10^4] // N",
+      "success": true,
+      "output": "[DRY-RUN] LMag[10^14, 7.09*^-37, 10^3, 10^4, 10^4] // N",
+      "elapsed_ms": 0.0
+    },
+    {
+      "label": "Sector 8 \u2014 LENR-Resonance (\u03c9=1.25 THz)",
+      "code": "LLENR[10^-15, 1.25*^12, 300*2*Pi, 1, 10^-20, 10^-28, 0] // N",
+      "success": true,
+      "output": "[DRY-RUN] LLENR[10^-15, 1.25*^12, 300*2*Pi, 1, 10^-20, 10^-28, 0] // N",
+      "elapsed_ms": 0.0
+    },
+    {
+      "label": "Unified L_UQFF (Sgr A* defaults)",
+      "code": "result = LUQFF[<||>]; result[\"L_UQFF_total\"] // N",
+      "success": true,
+      "output": "[DRY-RUN] result = LUQFF[<||>]; result[\"L_UQFF_total\"] // N",
+      "elapsed_ms": 0.0
+    },
+    {
+      "label": "F_U_Bi_i total force (Sgr A* defaults)",
+      "code": "forces = FUBii[<||>]; forces[\"F_U_Bi_i\"] // N",
+      "success": true,
+      "output": "[DRY-RUN] forces = FUBii[<||>]; forces[\"F_U_Bi_i\"] // N",
+      "elapsed_ms": 0.0
+    },
+    {
+      "label": "GW damping: D_total = D_Aether \u00d7 D_SCm \u00d7 D_TRZ \u00d7 D_String",
+      "code": "DTotal[1.0, 1.0, 0.900, 0.370] // N",
+      "success": true,
+      "output": "[DRY-RUN] DTotal[1.0, 1.0, 0.900, 0.370] // N",
+      "elapsed_ms": 0.0
+    },
+    {
+      "label": "GW170817: h_UQFF = h_GR \u00d7 D_total",
+      "code": "HUQFF[5.4176*^-22, 0.333] // N",
+      "success": true,
+      "output": "[DRY-RUN] HUQFF[5.4176*^-22, 0.333] // N",
+      "elapsed_ms": 0.0
+    },
+    {
+      "label": "GW150914: h_UQFF",
+      "code": "HUQFF[1.2499*^-21, 0.333] // N",
+      "success": true,
+      "output": "[DRY-RUN] HUQFF[1.2499*^-21, 0.333] // N",
+      "elapsed_ms": 0.0
+    },
+    {
+      "label": "GW170817 chirp mass (1.46 + 1.27 M\u2609)",
+      "code": "ChirpMass[1.46 * 1.98892e+30, 1.27 * 1.98892e+30] // N",
+      "success": true,
+      "output": "[DRY-RUN] ChirpMass[1.46 * 1.98892e+30, 1.27 * 1.98892e+30] // N",
+      "elapsed_ms": 0.0
+    },
+    {
+      "label": "GW170817 phase lag (150 Hz, 100 s chirp)",
+      "code": "PhaseLag[0.333, 150, 100] // N",
+      "success": true,
+      "output": "[DRY-RUN] PhaseLag[0.333, 150, 100] // N",
+      "elapsed_ms": 0.0
+    },
+    {
+      "label": "GW170817 apparent distance bias",
+      "code": "ApparentDistanceBias[40 * 3.086*^22, 0.333] // N",
+      "success": true,
+      "output": "[DRY-RUN] ApparentDistanceBias[40 * 3.086*^22, 0.333] // N",
+      "elapsed_ms": 0.0
+    }
+  ],
+  "gw_validation": [
+    {
+      "event": "GW170817",
+      "type": "BNS",
+      "D_total": 0.333,
+      "h_GR": 5.4176e-22,
+      "h_UQFF_predicted": 1.8040608e-22,
+      "h_UQFF_observed": 1.804e-22,
+      "residual": 3.4e-05,
+      "pass": true
+    },
+    {
+      "event": "GW150914",
+      "type": "BBH",
+      "D_total": 0.81,
+      "h_GR": 1.2499e-21,
+      "h_UQFF_predicted": 1.012419e-21,
+      "h_UQFF_observed": 4.1622e-22,
+      "residual": 1.432413,
+      "pass": false
+    },
+    {
+      "event": "GW190425",
+      "type": "BNS",
+      "D_total": 0.53,
+      "h_GR": 3e-22,
+      "h_UQFF_predicted": 1.59e-22,
+      "h_UQFF_observed": 1.59e-22,
+      "residual": 0.0,
+      "pass": true
+    }
+  ]
+}

@@ -1,0 +1,144 @@
+{
+  "package": "UQFFLagrangian`",
+  "generated": "2026-04-09T01:58:26.881581Z",
+  "source": "wstp_symbolic_exporter.py",
+  "session": 204,
+  "output_file": "uqff_lagrangian_unified.wl",
+  "sectors": [
+    {
+      "id": 1,
+      "name": "Einstein-Hilbert",
+      "symbol": "LEH",
+      "fields": [
+        "g_munu"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Yang-Mills",
+      "symbol": "LYM",
+      "fields": [
+        "A_mu_a",
+        "B_j"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Dirac",
+      "symbol": "LDirac",
+      "fields": [
+        "psi",
+        "psi_bar",
+        "N_R"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Scalar-Higgs-Vacuum",
+      "symbol": "LPhi",
+      "fields": [
+        "phi_H",
+        "phi_4"
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Magnetic-Dipole",
+      "symbol": "LMag",
+      "fields": [
+        "A_SCm",
+        "mu_s",
+        "R_b"
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Buoyancy-Archimedes",
+      "symbol": "LBuoy",
+      "fields": [
+        "Omega_g",
+        "beta_i",
+        "mu_j"
+      ]
+    },
+    {
+      "id": 7,
+      "name": "Aether-Tensor",
+      "symbol": "LAether",
+      "fields": [
+        "rho_A",
+        "v_UA",
+        "eta"
+      ]
+    },
+    {
+      "id": 8,
+      "name": "LENR-Resonance",
+      "symbol": "LLENR",
+      "fields": [
+        "chi",
+        "omega_LENR",
+        "omega_act"
+      ]
+    },
+    {
+      "id": 9,
+      "name": "Kaluza-Klein-26D",
+      "symbol": "LKK",
+      "fields": [
+        "g_mn_22D",
+        "a_ALP"
+      ]
+    }
+  ],
+  "force_functions": [
+    "FUBii",
+    "Ug1Func",
+    "Ug2Func",
+    "Ug3Func",
+    "Ug4Func",
+    "UbiFunc",
+    "UmFunc",
+    "FGravityBaseline",
+    "FQuark",
+    "FNeutrino",
+    "FNeutron",
+    "FDark",
+    "FDE",
+    "FTorque",
+    "FLENR",
+    "FAct",
+    "FRes",
+    "FALP",
+    "FLED",
+    "FAetherTrace",
+    "AetherTrace"
+  ],
+  "gw_functions": [
+    "DTotal",
+    "HUQFF",
+    "ChirpMass",
+    "HGR",
+    "ApparentDistanceBias",
+    "PhaseLag"
+  ],
+  "gw_events": [
+    "GW170817Params",
+    "GW150914Params",
+    "GW190425Params"
+  ],
+  "constants_function": "UQFFConstants",
+  "calibrated_constants": {
+    "kappa": 5.787e-09,
+    "SSq": 0.57,
+    "H_SCm": 0.99,
+    "beta_i": 0.603,
+    "U_UA": 0.0001,
+    "rho_UA": 7.09e-36,
+    "rho_SCm": 7.09e-37,
+    "eta_aether": 1e-22,
+    "D_TRZ": 0.9,
+    "D_String": 0.37,
+    "F_combined": 0.333
+  }
+}

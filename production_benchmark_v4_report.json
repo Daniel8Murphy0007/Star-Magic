@@ -1,0 +1,82 @@
+{
+  "timestamp": "2026-04-09T01:58:47.694687Z",
+  "target_calc_per_sec": 100000,
+  "n_warmup": 100,
+  "n_iterations": 10000,
+  "total_elapsed_seconds": 2.612,
+  "all_targets_met": false,
+  "fastest_kernel": "BSFG Geodesic Step",
+  "fastest_calc_per_sec": 755618.0,
+  "slowest_kernel": "Vectorized 26-Layer (1000 systems)",
+  "slowest_calc_per_sec": 747.9,
+  "has_numpy": true,
+  "python_version": "3.14.0",
+  "benchmarks": [
+    {
+      "name": "26-Layer Gravity",
+      "n_iterations": 10000,
+      "total_seconds": 0.3889,
+      "calc_per_second": 25713.9,
+      "avg_us": 38.66,
+      "min_us": 34.0,
+      "max_us": 294.7,
+      "std_us": 9.666,
+      "target_met": false
+    },
+    {
+      "name": "F_U_Bi_i Assembly",
+      "n_iterations": 10000,
+      "total_seconds": 0.0169,
+      "calc_per_second": 591586.5,
+      "avg_us": 1.548,
+      "min_us": 1.4,
+      "max_us": 14.0,
+      "std_us": 0.246,
+      "target_met": true
+    },
+    {
+      "name": "BSFG Geodesic Step",
+      "n_iterations": 10000,
+      "total_seconds": 0.0132,
+      "calc_per_second": 755618.0,
+      "avg_us": 1.193,
+      "min_us": 1.1,
+      "max_us": 20.7,
+      "std_us": 0.235,
+      "target_met": true
+    },
+    {
+      "name": "VDS/DVP/BSH Series",
+      "n_iterations": 10000,
+      "total_seconds": 0.1304,
+      "calc_per_second": 76664.8,
+      "avg_us": 12.88,
+      "min_us": 11.9,
+      "max_us": 151.7,
+      "std_us": 3.067,
+      "target_met": false
+    },
+    {
+      "name": "Full Pipeline",
+      "n_iterations": 10000,
+      "total_seconds": 0.5397,
+      "calc_per_second": 18528.2,
+      "avg_us": 53.773,
+      "min_us": 50.5,
+      "max_us": 247.1,
+      "std_us": 8.743,
+      "target_met": false
+    },
+    {
+      "name": "Vectorized 26-Layer (1000 systems)",
+      "n_iterations": 1000,
+      "total_seconds": 1.3371,
+      "calc_per_second": 747.9,
+      "avg_us": 1336.459,
+      "min_us": 1286.3,
+      "max_us": 2361.5,
+      "std_us": 102.578,
+      "target_met": false
+    }
+  ]
+}

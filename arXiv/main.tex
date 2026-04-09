@@ -1,0 +1,47 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage[margin=1in]{geometry}
+
+\title{PAPER\_389: Galactic $\omega_s$ Calibration from Stellar Velocity Dispersion}
+\author{Daniel T. Murphy \& UQFF Research Collective}
+\date{2026-03-07}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+The UQFF framework encodes angular frequency inputs through $\omega_s$ (system) and $\omega_g$ (galactic). This paper provides the first direct observational calibration $\omega_{s,\rm galactic} = \sigma \times 10^3 / R_{\rm bulge}$ linking stellar velocity dispersion ($\sigma$) to the UQFF MUGE resonance channel, anchoring all galactic models to the M-$\sigma$ relation.
+\end{abstract}
+
+\section{Formula Derivation and Physical Basis}
+
+\subsection{Dimensional Analysis}
+The angular frequency $\omega$ has SI units of rad/s:
+\[
+[\omega] = \left[ \frac{v}{R} \right] = \frac{\rm m/s}{m} = {\rm s}^{-1}\ ({\rm rad/s}).
+\]
+Thus
+\[
+\omega_{s,\rm galactic} = \frac{\sigma}{R_{\rm bulge}}
+\]
+is dimensionally consistent when $\sigma$ is converted to m/s and $R_{\rm bulge}$ is in m.
+
+\subsection{Master Calibration Formula}
+\[
+\omega_{s,\rm galactic} = \sigma \times 10^3 / R_{\rm bulge}
+\]
+where $\sigma$ is stellar velocity dispersion (km/s) and $R_{\rm bulge}$ is bulge radius (m).
+
+\section{Conclusion}
+This calibration directly bridges observable galactic kinematics (M-$\sigma$ relation) to the UQFF angular-frequency inputs used in all MUGE resonance and buoyancy calculations.
+
+\appendix
+\section{UQFF Production Framework Reference (v4.75+)}
+(Identical calibration constants and master equation tables as in previous papers.)
+
+\typeout{get arXiv to do 4 passes: Label(s) may have changed. Rerun}
+\end{document}
