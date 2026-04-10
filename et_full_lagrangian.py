@@ -17,6 +17,10 @@ PURPOSE: Standalone symbolic derivation engine for the complete E(t) sector
            - uqff_lagrangian_derivation.py sectors 10-11
          into a single derivation engine with ΛCDM contrast.
 
+         Session 207: Added SCm vacuum density evolution ρ_SCm(t) and
+         phonon resonance coupling at 1.25 THz. See et_scm_vacuum.py for
+         the dedicated SCm-specific derivation engine.
+
 ARCHITECTURE: Pure calculator. No hardcoded systems. Tier 2 compute.
 """
 
@@ -56,6 +60,12 @@ V_FILAMENT_DEFAULT = 1e68   # m³ (~50 Mpc × 1 Mpc × 1 Mpc filament)
 
 # Nebular filament volume (local, e.g. G359)
 V_FILAMENT_NEBULAR = 1e48   # m³ (~1 pc × 0.01 pc × 0.01 pc)
+
+# SCm vacuum density ratio
+RHO_SCM_OVER_UA = RHO_SCM / RHO_UA  # 0.1
+
+# SCm phonon flux default
+PHI_PHONON_DEFAULT = 1e20   # phonons/m²/s
 
 
 # ══════════════════════════════════════════════════════════════════════════════
@@ -205,6 +215,79 @@ class EtFullLagrangian:
             })
         return {"time_series": series, "t_start": t_start,
                 "t_end": t_end, "n_points": n_points}
+
+    def scm_vacuum_density(self, dataset: dict) -> Dict[str, Any]:
+        """
+        SCm vacuum energy density evolution (Session 207).
+
+        Master equation:
+          ρ_SCm(t) = ρ_vac,SCm · S₂₆([SSq]) · exp(κt + [SSq]·t/26)
+
+        Returns the SCm density at time t alongside density ratio ρ_SCm/ρ_UA.
+        """
+        t       = dataset.get('t', 0.0)
+        kappa   = dataset.get('kappa', KAPPA)
+        ssq     = dataset.get('SSq', SSQ)
+        rho_vac = dataset.get('rho_vac', RHO_VAC_SCM)
+
+        S26 = S26_accelerated(ssq)
+        S26_val = S26["S_26"]
+
+        exp_arg = min(kappa * t + (ssq * t) / N_LEVELS, 700.0)
+        growth = math.exp(exp_arg)
+
+        rho_SCm_t = rho_vac * S26_val * growth
+        rate = kappa + ssq / N_LEVELS
+
+        return {
+            "rho_SCm_t": rho_SCm_t,
+            "rho_vac_base": rho_vac,
+            "S_26": S26_val,
+            "growth_factor": growth,
+            "rate": rate,
+            "drho_dt": rate * rho_SCm_t,
+            "t_doubling": math.log(2) / rate if rate > 0 else float('inf'),
+            "rho_SCm_over_UA": RHO_SCM_OVER_UA,
+        }
+
+    def phonon_coupling(self, dataset: dict) -> Dict[str, Any]:
+        """
+        SCm phonon resonance coupling at 1.25 THz (Session 207).
+
+        Kozima force in the Lagrangian context:
+          F_neutron^SCm = N_n · σ_n^SCm(ω) · Φ_{1.25 THz} · E_net(t)
+
+        with Gaussian cross-section:
+          σ_n^SCm(ω,n) = σ₀ · exp[-(ω-ω_SCm)²/(2Γ²)] · (1+[SSq]·n/26)
+        """
+        N_n     = dataset.get('N_n', 1e6)
+        sigma_0 = dataset.get('sigma_n', SIGMA_0)
+        omega   = dataset.get('omega', OMEGA_SCM)
+        Phi     = dataset.get('Phi_phonon', PHI_PHONON_DEFAULT)
+        gamma   = dataset.get('gamma', GAMMA_DEFAULT)
+        n_level = dataset.get('n_level', 13)
+        ssq     = dataset.get('SSq', SSQ)
+
+        # Gaussian peak at ω_SCm
+        exponent = -((omega - OMEGA_SCM)**2) / (2 * gamma**2)
+        gaussian = math.exp(min(exponent, 0.0))
+        vds_factor = 1.0 + ssq * n_level / N_LEVELS
+        sigma_scm = sigma_0 * gaussian * vds_factor
+
+        # E_net from the Lagrangian
+        lag = self.compute(dataset)
+        E_net = lag["E_net_t"]
+
+        F_neutron = N_n * sigma_scm * Phi * E_net
+
+        return {
+            "F_neutron_SCm": F_neutron,
+            "sigma_scm": sigma_scm,
+            "gaussian_peak": gaussian,
+            "vds_factor": vds_factor,
+            "omega_SCm": OMEGA_SCM,
+            "E_net_t": E_net,
+        }
 
 
 # ══════════════════════════════════════════════════════════════════════════════
@@ -455,6 +538,19 @@ wUQFF[κ_, SSq_] := -1 + 2 (κ + SSq / 26) / (3 H0);
 
 (* Fine-tuning ratio *)
 fineTuningΛCDM = 10^113 / ρΛ;  (* QFT prediction / observed *)
+
+(* ── SCm Vacuum Density Evolution (Session 207) ── *)
+ρvacSCm = 9.47*^-27;         (* kg/m³ *)
+ρSCm = 7.09*^-37;            (* kg/m³ *)
+ρUA = 7.09*^-36;             (* kg/m³ *)
+ωPhonon = 2 Pi * 1.25*^12;   (* rad/s, 1.25 THz SCm phonon *)
+ΓPhonon = 2 Pi * 0.1*^12;    (* rad/s, resonance width *)
+
+ρSCmEvol[t_, κ_, SSq_] := ρvacSCm * S26[SSq] * Exp[κ t + SSq t / 26];
+
+(* Kozima neutron-drop coupling in SCm *)
+σnSCm[ω_, n_, σ0_, SSq_] :=
+  σ0 * Exp[-(ω - ωPhonon)^2 / (2 ΓPhonon^2)] * (1 + SSq n / 26);
 """
 
 

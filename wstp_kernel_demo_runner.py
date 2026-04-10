@@ -1,5 +1,5 @@
 """
-WSTP Kernel Demo Runner — Live Wolfram Kernel Session for 11-Sector UQFF Lagrangian
+WSTP Kernel Demo Runner — Live Wolfram Kernel Session for 11-Sector UQFF Lagrangian + SCm Vacuum
 
 Session 204 | Daniel Murphy
 PURPOSE: Connect to a running Wolfram kernel (via wolframscript subprocess or
@@ -218,6 +218,57 @@ def build_demo_expressions(wl_path: str) -> List[Dict[str, str]]:
         "code": ('wLCDM = -1; H0 = 2.195*^-18; '
                  'wUQFF = -1 + 2 (5.787*^-9 + 0.57 / 26) / (3 H0); '
                  '{wUQFF, wUQFF - wLCDM} // N'),
+    })
+
+    # ── SCm Vacuum E(t) + Quintessence (Session 207) ──
+
+    # 17. SCm vacuum density evolution ρ_SCm(t)
+    exprs.append({
+        "label": "SCm ρ_SCm(t=1e9 s) vacuum density evolution",
+        "code": ('rhoVacSCm = 9.47*^-27; '
+                 'rhoSCmEvol[t_] := rhoVacSCm * PolyLog[26, 0.57] * '
+                 'Exp[5.787*^-9 t + 0.57 t / 26]; '
+                 'rhoSCmEvol[10^9] // N'),
+    })
+
+    # 18. SCm net energy E_net in SCm vacuum
+    exprs.append({
+        "label": "SCm E_net(t=0, V=1e48) — SCm-specific",
+        "code": ('EnetSCm[t_, Vreg_, FUBi_, FU_] := '
+                 'rhoSCmEvol[t] * Vreg * (2 FUBi / FU - 1); '
+                 'EnetSCm[0, 10^48, 0.55, 1.0] // N'),
+    })
+
+    # 19. Kozima neutron-drop coupling at ω_SCm = 1.25 THz
+    exprs.append({
+        "label": "Kozima σ_n^SCm at 1.25 THz phonon resonance",
+        "code": ('omSCm = 2 Pi * 1.25*^12; GammaSCm = 2 Pi * 0.1*^12; '
+                 'sigmaNSCm[om_, n_] := 10^-4 * '
+                 'Exp[-(om - omSCm)^2 / (2 GammaSCm^2)] * (1 + 0.57 n / 26); '
+                 'sigmaNSCm[omSCm, 13] // N'),
+    })
+
+    # 20. SCm E(t) Lagrangian: L_{SCm-E(t)}
+    exprs.append({
+        "label": "L_{SCm-E(t)} = E_net · V_region · S₂₆",
+        "code": ('LSCmEt[t_, Vreg_, FUBi_, FU_] := '
+                 'EnetSCm[t, Vreg, FUBi, FU] * Vreg * PolyLog[26, 0.57]; '
+                 'LSCmEt[0, 10^48, 0.55, 1.0] // N'),
+    })
+
+    # 21. Quintessence V(φ) = V₀/φ^α comparison
+    exprs.append({
+        "label": "Quintessence: w, ε, η for inverse power-law V(φ)=V₀/φ²",
+        "code": ('MPl = Sqrt[1.055*^-34 * 2.998*^8 / 6.674*^-11]; '
+                 'rhoCr = 3 (2.195*^-18)^2 / (8 Pi 6.674*^-11); '
+                 'V0q = rhoCr * (2.998*^8)^2; alpha = 2; phi0 = MPl; '
+                 'Vphi = V0q / phi0^alpha; '
+                 'Vpr = -alpha V0q / phi0^(alpha + 1); '
+                 'epsQ = (MPl^2 / 2) (Vpr / Vphi)^2; '
+                 'etaQ = MPl^2 alpha (alpha + 1) V0q / (phi0^(alpha + 2) Vphi); '
+                 'phidot = 10^-30; KE = phidot^2 / 2; '
+                 'wQ = (KE - Vphi) / (KE + Vphi); '
+                 '{wQ, epsQ, etaQ} // N'),
     })
 
     return exprs

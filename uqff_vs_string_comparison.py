@@ -504,6 +504,110 @@ class LCDMComparison:
 # §5  FULL COMPARISON REPORT
 # ══════════════════════════════════════════════════════════════════════════════
 
+class QuintessenceComparison:
+    """
+    E(t) vs quintessence scalar-field dark energy comparison (Session 207).
+
+    Quintessence: scalar field φ with potential V(φ), w(φ) ≈ −1 but dynamic.
+      Klein-Gordon: φ̈ + 3Hφ̇ + V'(φ) = 0
+      Slow-roll: ε = (M_Pl²/2)(V'/V)², η = M_Pl² V''/V
+      w = (½φ̇² − V) / (½φ̇² + V)
+
+    UQFF E(t): SCm buoyancy-driven, sign-flipping, 2 calibrated parameters.
+    """
+
+    H_0  = 2.195e-18
+    M_PL = math.sqrt(hbar * c / G)
+    RHO_CRIT = 3 * (2.195e-18)**2 / (8 * PI * G)
+
+    def compute(self, dataset: dict = None) -> Dict[str, Any]:
+        if dataset is None:
+            dataset = {}
+        w_obs   = dataset.get('w_obs', -1.03)
+        sigma_w = dataset.get('sigma_w', 0.03)
+
+        # Quintessence: inverse power-law V(φ) = V₀ / φ^α
+        V0    = dataset.get('V0_quint', self.RHO_CRIT * c**2)
+        alpha = dataset.get('alpha_quint', 2.0)
+        phi_0 = dataset.get('phi_0', self.M_PL)
+        phi_dot = dataset.get('phi_dot_0', 1e-30)
+
+        V_phi = V0 / (phi_0 ** alpha) if phi_0 != 0 else V0
+        V_prime = -alpha * V0 / (phi_0 ** (alpha + 1)) if phi_0 != 0 else 0.0
+        V_dp = alpha * (alpha + 1) * V0 / (phi_0 ** (alpha + 2)) \
+            if phi_0 != 0 else 0.0
+
+        # Slow-roll
+        epsilon_sr = 0.5 * self.M_PL**2 * (V_prime / V_phi)**2 \
+            if V_phi != 0 else 0.0
+        eta_sr = self.M_PL**2 * V_dp / V_phi if V_phi != 0 else 0.0
+
+        # EOS
+        KE = 0.5 * phi_dot**2
+        rho_q = KE + V_phi
+        w_quint = (KE - V_phi) / rho_q if rho_q != 0 else -1.0
+
+        # UQFF EOS
+        rate = KAPPA + SSQ / N_LEVELS
+        w_UQFF = -1.0 + 2.0 * rate / (3.0 * self.H_0)
+
+        # χ²
+        chi2_q = ((w_quint - w_obs) / sigma_w)**2
+        chi2_U = ((w_UQFF - w_obs) / sigma_w)**2
+        Delta_chi2 = chi2_q - chi2_U
+
+        rho_QFT = 1e113
+        rho_L = 0.692 * self.RHO_CRIT
+        ft_exp = int(math.log10(rho_QFT / rho_L)) if rho_L > 0 else 0
+
+        return {
+            "w_quintessence": w_quint,
+            "w_UQFF": w_UQFF,
+            "Delta_w": w_quint - w_UQFF,
+            "chi2_quintessence": chi2_q,
+            "chi2_UQFF": chi2_U,
+            "Delta_chi2": Delta_chi2,
+            "preferred": "UQFF" if Delta_chi2 > 0 else "Quintessence",
+            "epsilon_slow_roll": epsilon_sr,
+            "eta_slow_roll": eta_sr,
+            "V_phi": V_phi,
+            "fine_tuning_quint": f"~10^{ft_exp} V(φ) tuned",
+            "fine_tuning_UQFF": "None (2 free params)",
+            "contrast_table": [
+                {"aspect": "Physical origin",
+                 "Quintessence": "Scalar field φ with potential V(φ)",
+                 "UQFF": "SCm superconductive vacuum; buoyancy opposition"},
+                {"aspect": "Equation of state",
+                 "Quintessence": f"w = {w_quint:.6f} (dynamic, can cross −1)",
+                 "UQFF": f"w = {w_UQFF:.6f} (sign-flipping)"},
+                {"aspect": "Dynamics",
+                 "Quintessence": "φ̈ + 3Hφ̇ + V'(φ) = 0 (slow-roll inflation)",
+                 "UQFF": "Exponential: exp(κt + [SSq]t/26) · S₂₆"},
+                {"aspect": "Lab testability",
+                 "Quintessence": "None (Planck-scale field)",
+                 "UQFF": "1.25 THz phonon, LENR COP>10, micro-plasmoid"},
+                {"aspect": "GW prediction",
+                 "Quintessence": "Standard GR waveforms",
+                 "UQFF": "66.7% strain reduction + 367.8-cycle lag"},
+                {"aspect": "Cosmogenesis",
+                 "Quintessence": "Inflation + quintessence (no pre-gravity)",
+                 "UQFF": "SCm phonon → DPM → EM bang + 2 cycles"},
+                {"aspect": "Fine-tuning",
+                 "Quintessence": f"V(φ) tuned for flatness (~10^{ft_exp})",
+                 "UQFF": "None — 2 fixed from data"},
+                {"aspect": "Sign behavior",
+                 "Quintessence": "Always accelerating (w ≈ −1)",
+                 "UQFF": "Sign-flipping (expansion ↔ erosion)"},
+                {"aspect": "Slow-roll parameters",
+                 "Quintessence": f"ε = {epsilon_sr:.6e}, η = {eta_sr:.6e}",
+                 "UQFF": "N/A (buoyancy-driven, no potential)"},
+                {"aspect": "Vacuum structure",
+                 "Quintessence": "Single scalar field (no hierarchy)",
+                 "UQFF": "VDS 26-level hierarchy"},
+            ],
+        }
+
+
 class UQFFvsStringComparison:
     """
     Master comparison engine assembling all sub-comparisons.
@@ -514,6 +618,7 @@ class UQFFvsStringComparison:
         self.dimensions = DimensionComparison()
         self.scoring = ComparisonScoring()
         self.lcdm = LCDMComparison()
+        self.quintessence = QuintessenceComparison()
 
     def compute(self, dataset: dict = None) -> Dict[str, Any]:
         if dataset is None:
@@ -523,12 +628,14 @@ class UQFFvsStringComparison:
         dim = self.dimensions.compute(dataset)
         score = self.scoring.compute(dataset)
         lcdm = self.lcdm.compute(dataset)
+        quint = self.quintessence.compute(dataset)
 
         return {
             "lagrangian_comparison": lag,
             "dimension_comparison": dim,
             "scoring": score,
             "lcdm_comparison": lcdm,
+            "quintessence_comparison": quint,
             "comparison_table": [
                 {
                     "aspect": a.name,
@@ -558,6 +665,16 @@ class UQFFvsStringComparison:
                 "erosion with the same mechanism, eliminating the need for a separate "
                 "cosmological constant. The 10^120 fine-tuning problem vanishes: two "
                 "calibrated parameters ([SSq]=0.57, κ=0.0005/day) replace the unexplained Λ."
+            ),
+            "quintessence_critique": (
+                "Quintessence is a phenomenological scalar-field patch for dark energy but "
+                "lacks a first-principle vacuum origin and is untestable in the lab. "
+                "It requires fine-tuning V(φ) for potential flatness. UQFF E(t) replaces it "
+                "with a buoyancy-driven term derived from the SCm vacuum manifold — directly "
+                "testable via 1.25 THz phonon resonance, LENR excess heat, and micro-plasmoid "
+                "buoyancy reversal. E(t) naturally produces both accelerating expansion and "
+                "erosive depletion with the same mechanism, eliminating the need for an "
+                "ad-hoc scalar field."
             ),
         }
 
@@ -669,6 +786,24 @@ def _run_self_test():
     assert full["lcdm_comparison"]["w_LCDM"] == -1.0
     passed += 1
     print("\nT10 Full report includes ΛCDM section: valid")
+    print("    PASS")
+
+    # Test 11: Quintessence comparison
+    qc = QuintessenceComparison()
+    qr = qc.compute()
+    print(f"\nT11 w_quint = {qr['w_quintessence']:.6f}, w_UQFF = {qr['w_UQFF']:.6f}")
+    print(f"    Δw = {qr['Delta_w']:.6f}, preferred = {qr['preferred']}")
+    assert abs(qr['w_quintessence'] - (-1.0)) < 0.1  # slow-roll → near −1
+    assert len(qr['contrast_table']) == 10
+    passed += 1
+    print("    PASS")
+
+    # Test 12: Full report includes quintessence
+    assert "quintessence_comparison" in full
+    assert "quintessence_critique" in full
+    assert full["quintessence_comparison"]["w_quintessence"] is not None
+    passed += 1
+    print("\nT12 Full report includes quintessence section: valid")
     print("    PASS")
 
     print(f"\n{'=' * 72}")
