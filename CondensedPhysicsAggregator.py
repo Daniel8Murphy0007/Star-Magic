@@ -1007,9 +1007,9 @@ ALL_CALCULATORS = {
 
 # Module metadata
 # Module metadata
-AGGREGATOR_VERSION = "3.5.0"
-TOTAL_MODULES = 24  # CP1 (1,227 classes, 168,803L), CP2 (659 classes), CP3 (219 classes, 13,944L), CP4 (484 classes, v5.62 Session 209), + 10 thread registries + source179 PCR module
-# Updated: Session 209 v5.62 (2026-04-08) — CP4 461→484 (#462–#484); PAPER_878–900; 900/1000 papers (90.0%); Sessions 204-208 standalone integration
+AGGREGATOR_VERSION = "3.6.0"
+TOTAL_MODULES = 24  # CP1 (1,227 classes, 168,803L), CP2 (659 classes), CP3 (219 classes, 13,944L), CP4 (493 classes, v5.63 Session 210), + 10 thread registries + source179 PCR module
+# Updated: Session 210 v5.63 (2026-04-10) — CP4 484→493 (#485–#493); PAPER_901–909; 909/1000 papers (90.9%); stellar-wind nebulae + wormhole geodesics + BH phonon physics
 
 
 def get_calculator(name: str):
