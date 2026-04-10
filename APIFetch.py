@@ -300,14 +300,16 @@ class SIMBADFetcher:
         Returns:
             Dictionary with available parameters or None if not found
         """
-        # TAP query for basic data
+        # Sanitize object name for ADQL (escape single quotes)
+        safe_name = object_name.replace("'", "''")
+        # TAP query using ident JOIN (correct SIMBAD schema)
         query = f"""
-        SELECT TOP 1 
-            main_id, ra, dec, pmra, pmdec, plx_value, rvz_radvel,
-            sp_type, flux_B, flux_V, flux_J, flux_H, flux_K
-        FROM basic
-        WHERE main_id = '{object_name}' 
-           OR ident LIKE '%{object_name}%'
+        SELECT TOP 1
+            b.main_id, b.ra, b.dec, b.pmra, b.pmdec, b.plx_value, b.rvz_radvel,
+            b.sp_type
+        FROM basic AS b
+        JOIN ident AS i ON b.oid = i.oidref
+        WHERE i.id = '{safe_name}'
         """
         
         try:
@@ -387,6 +389,13 @@ class NEDFetcher:
         self.endpoint = ENDPOINTS['ned']
         self.timeout = 30
     
+    # NED preferred name aliases for common short names
+    _NED_ALIASES = {
+        'M87': 'Messier 087', 'M31': 'Messier 031', 'M33': 'Messier 033',
+        'M81': 'Messier 081', 'M82': 'Messier 082', 'M51': 'Messier 051',
+        'M104': 'Messier 104', 'M101': 'Messier 101', 'M83': 'Messier 083',
+    }
+
     def fetch(self, object_name: str) -> Optional[Dict[str, Any]]:
         """
         Fetch data for an extragalactic object from NED.
@@ -397,11 +406,15 @@ class NEDFetcher:
         Returns:
             Dictionary with available parameters or None if not found
         """
+        # Sanitize for ADQL (escape single quotes)
+        safe_name = object_name.replace("'", "''")
+        # Try NED preferred name alias first, then original
+        ned_name = self._NED_ALIASES.get(object_name, safe_name)
         query = f"""
-        SELECT TOP 1 
-            objname, ra, dec, z, Dist_Mpc
+        SELECT TOP 1
+            prefname, ra, dec, z
         FROM objdir
-        WHERE objname LIKE '%{object_name}%'
+        WHERE prefname = '{ned_name}'
         """
         
         try:
@@ -413,7 +426,7 @@ class NEDFetcher:
                     'FORMAT': 'json',
                     'QUERY': query
                 },
-                timeout=self.timeout
+                timeout=45
             )
             
             if response.status_code == 200:
@@ -431,13 +444,14 @@ class NEDFetcher:
         """Parse NED response into standardized format."""
         result = {'name': object_name, 'source': 'NED'}
         
-        # Redshift
-        if len(row) > 3 and row[3]:
-            result['redshift'] = row[3]
+        # RA, Dec (indices 1, 2)
+        if len(row) > 2 and row[1] is not None:
+            result['ra'] = row[1]
+            result['dec'] = row[2]
         
-        # Distance in Mpc
-        if len(row) > 4 and row[4]:
-            result['distance'] = row[4] * UNITS['Mpc']
+        # Redshift (index 3)
+        if len(row) > 3 and row[3] is not None:
+            result['redshift'] = row[3]
         
         return result
 

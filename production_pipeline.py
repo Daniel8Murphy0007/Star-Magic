@@ -386,22 +386,39 @@ class ProductionPipeline:
         return output_path
     
     def _api_to_compute_params(self, query_name: str, api_data: Dict) -> ComputeParams:
-        """Convert API data to ComputeParams object."""
+        """Convert API data to ComputeParams object.
+        
+        Handles key naming from multiple sources:
+          SIMBAD: distance, temperature, radial_velocity, redshift
+          NED: redshift, ra, dec
+          bodies.csv: Ms, Rs, Bs_avg, Ts_surface, omega_s
+          Direct: M, r, B, T, z, d, v
+        """
+        def _get(primary, *alternates, default=None):
+            v = api_data.get(primary)
+            if v is not None:
+                return v
+            for alt in alternates:
+                v = api_data.get(alt)
+                if v is not None:
+                    return v
+            return default
+
         return ComputeParams(
             query_name=query_name,
-            M=api_data.get('M', 1e30),
-            r=api_data.get('r', 1e6),
-            B=api_data.get('B', 1e-5),
-            t=api_data.get('t', 1e8),
-            z=api_data.get('z', 0.0),
-            T=api_data.get('T', None),
-            L=api_data.get('L', None),
-            R=api_data.get('R', None),
-            d=api_data.get('d', None),
-            v=api_data.get('v', None),
-            omega=api_data.get('omega', None),
-            P=api_data.get('P', None),
-            t_n=api_data.get('tn_years', 0.0)  # Map tn_years → t_n
+            M=_get('M', 'mass', 'Ms', default=1e30),
+            r=_get('r', 'radius', 'Rs', default=1e6),
+            B=_get('B', 'magnetic_field', 'Bs_avg', default=1e-5),
+            t=_get('t', default=1e8),
+            z=_get('z', 'redshift', default=0.0),
+            T=_get('T', 'temperature', 'Ts_surface', default=None),
+            L=_get('L', 'luminosity', default=None),
+            R=_get('R', 'Rs', default=None),
+            d=_get('d', 'distance', default=None),
+            v=_get('v', 'radial_velocity', default=None),
+            omega=_get('omega', 'omega_s', default=None),
+            P=_get('P', 'period', 'Pcore', default=None),
+            t_n=_get('tn_years', default=0.0),
         )
     
     def _load_from_csv(self, query_name: str) -> Dict:
