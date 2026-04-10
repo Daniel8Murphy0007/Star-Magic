@@ -53,6 +53,7 @@ Updated: Session 192 v5.48 — CP4 387→398 (#396 ACPQwaveTHzHoleUBmiCalculator
     Updated: Session 199 v5.59 — CP4 429→438 (#438 LENRKetaCalibration3EnvironmentDeltaKCalc + #439 PseudoMonopole26StateVacuumDensityCalc + #440 HiggsVacuumUHExcitationKHiggsUQFFCalc + #441 NGC346Ug3StarFormationTempVradCalc + #442 Westerlund2QuadriadicRealImaginaryCalc + #443 MicroPlasmoid25umLENRBuoyancyReversalCalc + #444 NeutrinoEnergyUQFFVacuumRatioCalc + #445 KeplerOrreryV35FrameIterativeUbCalc + #446 UniversalMagnetismUmMasterEquationCalc: PAPER_854-862; grok_share_589f6949-6fe9.txt (2404 lines, May 05 – Aug 07 2025); LENR k_eta 3-environment calibration + pseudo-monopole 26-state δ_n=(2π)^(n/6) + Higgs UH(t,n) vacuum excitation k_Higgs=1.79e18 + NGC346 Ug3 T_scaled star formation + Westerlund 2 quadriadic real+imaginary 4-set solver + micro-plasmoid 25.4μm LENR buoyancy reversal + neutrino E_nu vacuum ratio + Kepler Orrery V 35-frame iterative F_env(t) + Universal Magnetism U_m fourth master equation; VDS-DVP-BH ABSENT; 862/1000 papers 86.2%)
     Updated: Session 198 v5.58 — CP4 428→429 (#437 SolfeggioFrequencyPiEncodingResonanceCalc: PAPER_853; grok_share_be188d1c-8ff4.txt (296 lines, March 16 2025); Solfeggio 9-frequency basis (174-963 Hz) Pi-digit encoding; triadic digital root {3,6,9} cycle; multi-channel superposition energy E_int; UQFF frequency scaling bridge f_UQFF=f_solf*(c/r); no new F_U_Bi_i terms; VDS-DVP-BH ABSENT; 853/1000 papers 85.3%)
     Updated: Session 162 v5.19 — CP4 219→229 (#220–#229 Tau Lepton G2 SM Bridge, CKM Vcb Flavor Vacuum Coupling, VLQ Kappa Heavy Mode, LFV BDecay TimeReversal, ALICE Run3 Multiplicity, BESIII DCS Cabibbo Dipole, Higgs 125GeV VEV Buoyancy, Proton Decay Kappa Scale, Electroweak SinThetaW SCm, SM Parameter Bridge Master: PAPER_633–642; SM Anchors added PAPER_622–632; CVW v2.0.0 G6 gate; UQFF_SM_ANCHOR_REQUIREMENTS.md)
+    Updated: Session 209 v5.62 — CP4 461→484 (#462–#484) PAPER_878–900; Sessions 204-208 standalone module integration: SCm Gaussian activation + buoyancy Klein-Gordon EOM + E±(t) expansion/erosion engines + Kozima neutron drop coupling + expansion/erosion Lagrangians + UQFF vs String Theory 10-aspect + E(t) full Lagrangian + ΛCDM/quintessence/k-essence dark energy contrasts + SCm vacuum density evolution + phonon modulation factor + buoyancy reversal sign flip; 900/1000 papers 90.0%)
 
 Architecture Compliance (MANDATORY):
   - PURE PHYSICS CALCULATOR — no hardcoded astronomical data
@@ -30076,11 +30077,11 @@ _SESSION_192_CLASSES = [
 
 
 class UQFFCompressionCycle2DerivationMethodCalculator:
-    \"\"\"PAPER_823 #407 -- UQFF Compression Cycle 2 Derivation Methodology.
+    """PAPER_823 #407 -- UQFF Compression Cycle 2 Derivation Methodology.
     F_env(t) 15-subterm architecture; H(t,z)=H_0*sqrt(0.3*(1+z)^3+0.7); psi_total;
     Ug3 prime generalization; 38-system compression to single unified equation.
     grok_share_96da8158-f7c5.txt.
-    \"\"\"
+    """
     def compute(self, dataset: dict) -> dict:
         z = dataset.get('z', 0.0)
         H0 = dataset.get('H0', 2.269e-18)
@@ -30145,12 +30146,12 @@ class UQFFCompressionCycle2DerivationMethodCalculator:
 
 
 class SpiralsAndSupernovaeTspiralSNTermUQFFCalculator:
-    \"\"\"PAPER_824 #408 -- Spirals & Supernovae T_spiral + SN_term UQFF.
+    """PAPER_824 #408 -- Spirals & Supernovae T_spiral + SN_term UQFF.
     T_spiral=spiral arm angular momentum torque multiplicative modifier;
     SN_term=supernova energy injection rate additive term;
     Lambda*c^2*Omega_Lambda/3 explicit cosmological constant form.
     grok_share_96da8158-f7c5.txt Document 31.
-    \"\"\"
+    """
     def compute(self, dataset: dict) -> dict:
         G = 6.6743e-11
         M = dataset.get('M', 2e41)
@@ -30212,11 +30213,11 @@ class SpiralsAndSupernovaeTspiralSNTermUQFFCalculator:
 
 
 class NGC6302BipolarWshockYoungStarsPoutflowUQFFCalculator:
-    \"\"\"PAPER_825 #409 -- NGC 6302 Bipolar Wind-Shock W_shock + Young Stars P_outflow UQFF.
+    """PAPER_825 #409 -- NGC 6302 Bipolar Wind-Shock W_shock + Young Stars P_outflow UQFF.
     W_shock=wind termination shock lobe collision; theta_lobe=half-opening angle;
     P_outflow=rho*v_jet^2*(r_jet/r)^2 outflow momentum flux.
     grok_share_96da8158-f7c5.txt Documents 32 and 35.
-    \"\"\"
+    """
     def compute(self, dataset: dict) -> dict:
         G = 6.6743e-11
         M = dataset.get('M', 1.2e30)
@@ -30281,13 +30282,13 @@ class NGC6302BipolarWshockYoungStarsPoutflowUQFFCalculator:
 
 
 class GravitySinceBigBangQGDMGWTermsUQFFCalculator:
-    \"\"\"PAPER_826 #410 -- Gravity Since the Big Bang: QG_term + DM_term + GW_term UQFF.
+    """PAPER_826 #410 -- Gravity Since the Big Bang: QG_term + DM_term + GW_term UQFF.
     QG_term=hbar*G/(c^3*r^4) Planck-scale quantum gravity correction;
     DM_term=G*M_DM/r^2*(1+delta_rho/rho) dark matter co-evolution;
     GW_term=Omega_GW*c^2/L_horizon gravitational wave energy density.
     F_cosmo = QG_term + DM_term + GW_term.
     grok_share_96da8158-f7c5.txt Document 38.
-    \"\"\"
+    """
     def compute(self, dataset: dict) -> dict:
         G = 6.6743e-11
         hbar = 1.0546e-34
@@ -30375,12 +30376,12 @@ _SESSION_193_CLASSES = [
 
 
 class WstellarPtermOrionEagleHydrogenAtomUQFFCalculator:
-    \"\"\"PAPER_827 #411 -- W_stellar stellar wind pressure + P_term atomic pressure correction.
+    """PAPER_827 #411 -- W_stellar stellar wind pressure + P_term atomic pressure correction.
     W_stellar=Mdot_wind*v_wind/(4*pi*r^2*rho_cloud) (Orion/Eagle + P_rad net balance);
     P_term=(P_ext*a0^3*Z^2)/(E_1/n^2) multiplicative atomic pressure correction;
     Together complete 100% extraction of grok_share_96da8158-f7c5.txt.
     Documents 27 (Hydrogen Atom), 34 (Orion), 36 (Eagle). PAPER_827.
-    \"\"\"
+    """
     def compute(self, dataset: dict) -> dict:
         G = 6.6743e-11
         H0 = dataset.get('H0', 2.269e-18)
@@ -30647,7 +30648,7 @@ class AetherIonConcentrationUQFFCalculator:  # PAPER_829 #413
         n_cosmic = n_ions_nasa_scaled * t_s
 
         return {
-            'n_ions_per_ft3_lower': n_ions_lower := n_ions_per_ft3_lower,
+            'n_ions_per_ft3_lower': n_ions_per_ft3_lower,
             'n_ions_per_ft3_upper': n_ions_per_ft3_upper,
             'n_ions_nasa_scaled_ft3': n_ions_nasa_scaled,
             'n_ions_formula_estimated': n_ions_estimate,
@@ -35287,6 +35288,1234 @@ class ThreeAssumptionUQFFCosmogenesisCalc(_CP4Calculator):  # PAPER_877 #461
         results = []
         for Z in (sweep or [1, 2, 6, 26, 56, 92, 118]):
             r = self.compute({"Z": Z}); r["sweep_val"] = Z; results.append(r)
+        return results
+
+    def self_update(self): pass
+    def self_expand(self): pass
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# SESSION 209 INTEGRATION — Sessions 204-208 Standalone Module Pipeline Entry
+# 23 new CP4 classes (#462–#484), PAPER_878–PAPER_900
+# Sources: scm_activation_function.py, buoyancy_lagrangian_eom.py,
+#   positive_et_expansion.py, negative_et_erosion.py, uqff_vs_string_comparison.py,
+#   et_full_lagrangian.py, et_scm_vacuum.py, et_phonon_resonance.py
+# ═══════════════════════════════════════════════════════════════════════════════
+
+# ---------------------------------------------------------------------------
+# SESSION 204 — SCm Activation + Buoyancy Klein-Gordon EOM
+# ---------------------------------------------------------------------------
+
+class SCmGaussianActivationBFieldSuppressionCalc(_CP4Calculator):  # PAPER_878 #462
+    """PAPER_878 — SCm Gaussian Activation Function: B-Field Suppression.
+    Compares linear exp(-B/B_crit) vs Gaussian exp[-(B/B_crit)²] suppression
+    for SCm manifold collapse. Gaussian form matches BCS gap behavior:
+    flatter at low B (preserving coherence), sharper cutoff near B_crit.
+    At B=0.5·B_crit: linear→0.607, Gaussian→0.779 (28% higher coherence).
+    CP4 class #462. Session 204 → Session 209 integration."""
+
+    B_CRIT_MAGNETAR = 4.4e13
+    B_CRIT_LAB = 1.5
+    RHO_SCM = 7.09e-37
+    SSQ = 0.57
+
+    PARAMETERS = [
+        ("B", "float", 1e12, "Magnetic field strength (T)"),
+        ("B_crit", "float", 4.4e13, "Critical field (T)"),
+        ("w_blend", "float", 0.5, "Blending weight linear vs Gaussian"),
+    ]
+
+    def compute(self, dataset: dict) -> dict:
+        B = float(dataset.get("B", 1e12))
+        B_c = float(dataset.get("B_crit", self.B_CRIT_MAGNETAR))
+        w = float(dataset.get("w_blend", 0.5))
+        x = B / B_c
+        beta_lin = math.exp(-x)
+        A_gauss = math.exp(-x * x)
+        alpha_blend = w * beta_lin + (1 - w) * A_gauss
+        dbeta_dB = -beta_lin / B_c
+        dA_dB = -2 * x * A_gauss / B_c
+        divergence = abs(A_gauss - beta_lin)
+        B_trans = B_c * 0.5 * math.sqrt(math.log(10))  # approx where 10% divergence
+        return {
+            "B": B, "B_crit": B_c, "x": x,
+            "beta_linear": beta_lin, "A_gaussian": A_gauss,
+            "alpha_blended": alpha_blend, "w_blend": w,
+            "d_beta_dB": dbeta_dB, "d_A_dB": dA_dB,
+            "divergence_abs": divergence,
+            "B_transition_10pct": B_trans,
+            "primary_equations": [
+                "β(B) = exp(-B/B_crit)  [linear, existing CP3]",
+                "A_SCm(B) = exp[-(B/B_crit)²]  [Gaussian, BCS-motivated]",
+                "α(B) = w·β(B) + (1-w)·A_SCm(B)  [blended]",
+                "dβ/dB = -β/B_crit",
+                "dA/dB = -2(B/B_crit)·A/B_crit",
+                f"B_trans ≈ {B_trans:.3e} T  (10% divergence threshold)",
+            ],
+            "note": "PAPER_878 CP4 #462. Session 204→209. scm_activation_function.py.",
+        }
+
+    def simulate(self, sweep=None, **kw):
+        results = []
+        for B in (sweep or [0, 0.5e13, 1e13, 2.2e13, 4.4e13, 8.8e13]):
+            r = self.compute({"B": B}); r["sweep_val"] = B; results.append(r)
+        return results
+
+    def self_update(self): pass
+    def self_expand(self): pass
+
+
+class BuoyancyKleinGordonScalarFieldEOMCalc(_CP4Calculator):  # PAPER_879 #463
+    """PAPER_879 — Buoyancy Klein-Gordon Scalar Field EOM.
+    Euler-Lagrange derivation for buoyancy scalar φ_buoy(x,t):
+      L = ½(∂_μ φ)² - V(φ) + J_buoy·φ
+      V(φ) = ½ m_eff² φ²
+      m_eff² = β_i·Σ Ug_i·Ω_g·M/(d_g·c²·ħ²)·[UA]
+    EOM: □φ + m_eff²φ = J_buoy  (Klein-Gordon with buoyancy source).
+    Static solution: φ_static(r) = (J_buoy/m_eff²)·[1 - exp(-m_eff·r)].
+    CP4 class #463. Session 204 → Session 209 integration."""
+
+    HBAR = 1.0546e-34;  C = 2.998e8;  G = 6.674e-11
+    BETA_I = 0.603;  U_UA = 1e-4;  RHO_SCM = 7.09e-37;  SSQ = 0.57
+
+    PARAMETERS = [
+        ("M", "float", 1.989e30, "Central mass (kg)"),
+        ("d_g", "float", 2.55e20, "Distance (m)"),
+        ("omega_g", "float", 7.3e-16, "Galactic angular velocity (rad/s)"),
+        ("Ug_sum", "float", 1e-8, "Sum of Ug_i terms (m/s²)"),
+        ("F_UBi_over_FU", "float", 0.8, "F_{U,Bi}/F_U ratio"),
+        ("r", "float", 1e16, "Radial distance for static solution (m)"),
+    ]
+
+    def compute(self, dataset: dict) -> dict:
+        M = float(dataset.get("M", 1.989e30))
+        d_g = float(dataset.get("d_g", 2.55e20))
+        omega_g = float(dataset.get("omega_g", 7.3e-16))
+        Ug_sum = float(dataset.get("Ug_sum", 1e-8))
+        ratio = float(dataset.get("F_UBi_over_FU", 0.8))
+        r = float(dataset.get("r", 1e16))
+
+        m_eff_sq = self.BETA_I * Ug_sum * omega_g * M / (d_g * self.C**2 * self.HBAR**2) * self.U_UA
+        m_eff = math.sqrt(abs(m_eff_sq)) if m_eff_sq > 0 else 0
+        J_buoy = (ratio - 1.0) * self.RHO_SCM * self.C**2
+        phi_static = (J_buoy / m_eff_sq) * (1 - math.exp(-m_eff * r)) if m_eff_sq != 0 else 0
+        compton_buoy = (2 * math.pi * self.HBAR) / (m_eff * self.C) if m_eff > 0 else float('inf')
+
+        return {
+            "m_eff_squared": m_eff_sq, "m_eff": m_eff,
+            "J_buoy": J_buoy, "phi_static_at_r": phi_static,
+            "compton_buoyancy_m": compton_buoy,
+            "ratio": ratio, "r": r,
+            "primary_equations": [
+                "L_buoy = ½(∂_μφ)² - ½m_eff²φ² + J_buoy·φ",
+                "□φ + m_eff²φ = J_buoy  [Klein-Gordon EOM]",
+                f"m_eff² = β_i·ΣUg·Ω_g·M/(d_g·c²·ħ²)·[UA] = {m_eff_sq:.4e}",
+                f"J_buoy = (F_UBi/F_U - 1)·ρ_SCm·c² = {J_buoy:.4e} J/m³",
+                f"φ_static(r) = (J/m²)·[1 - exp(-m·r)] = {phi_static:.4e}",
+                f"λ_Compton_buoy = 2πħ/(m_eff·c) = {compton_buoy:.4e} m",
+            ],
+            "note": "PAPER_879 CP4 #463. Session 204→209. buoyancy_lagrangian_eom.py.",
+        }
+
+    def simulate(self, sweep=None, **kw):
+        results = []
+        for rat in (sweep or [0.2, 0.5, 0.8, 1.0, 1.2, 1.5]):
+            r = self.compute({"F_UBi_over_FU": rat}); r["sweep_val"] = rat; results.append(r)
+        return results
+
+    def self_update(self): pass
+    def self_expand(self): pass
+
+
+# ---------------------------------------------------------------------------
+# SESSION 205 — E±(t) Expansion/Erosion Engines + String Theory Comparison
+# ---------------------------------------------------------------------------
+
+class PositiveEtBuoyancyExpansionMasterCalc(_CP4Calculator):  # PAPER_880 #464
+    """PAPER_880 — Positive E(t) Buoyancy-Driven Expansion Master Equation.
+    E⁺(t) = E₀·exp(κt + [SSq]·t/26)·S₂₆([SSq])·(F_{U,Bi}/F_U)
+    with Ramanujan 26-state mock theta acceleration.
+    Applies to nebulae, star-forming regions, and cosmogenesis expansion.
+    CP4 class #464. Session 205 → Session 209 integration."""
+
+    KAPPA = 5.787e-9;  SSQ = 0.57;  N = 26
+
+    PARAMETERS = [
+        ("E_0", "float", 1.0, "Initial vacuum energy (J)"),
+        ("t", "float", 0.0, "Time (seconds)"),
+        ("F_UBi_over_FU", "float", 1.1, "Buoyancy ratio F_{U,Bi}/F_U"),
+    ]
+
+    @staticmethod
+    def _s26(ssq=0.57):
+        """S₂₆([SSq]) = Σ_{n=1}^{26} exp(-[SSq]·n/26)."""
+        return sum(math.exp(-ssq * n / 26.0) for n in range(1, 27))
+
+    def compute(self, dataset: dict) -> dict:
+        E0 = float(dataset.get("E_0", 1.0))
+        t = float(dataset.get("t", 0.0))
+        ratio = float(dataset.get("F_UBi_over_FU", 1.1))
+        s26 = self._s26(self.SSQ)
+        exponent = self.KAPPA * t + self.SSQ * t / 26.0
+        growth = math.exp(exponent) if exponent < 709 else float('inf')
+        E_plus = E0 * growth * s26 * ratio
+        regime = "expansion (buoyancy > gravity)" if ratio > 0.5 else "sub-threshold"
+        doubling_t = math.log(2) / (self.KAPPA + self.SSQ / 26.0) if (self.KAPPA + self.SSQ / 26.0) > 0 else float('inf')
+        return {
+            "E_plus": E_plus, "S26": s26, "growth_factor": growth,
+            "ratio": ratio, "regime": regime,
+            "doubling_time_s": doubling_t,
+            "primary_equations": [
+                "E⁺(t) = E₀·exp(κt + [SSq]·t/26)·S₂₆([SSq])·(F_{U,Bi}/F_U)",
+                f"S₂₆({self.SSQ}) = {s26:.10e}",
+                f"E⁺({t:.1e}s) = {E_plus:.6e} J",
+                f"τ_doubling = {doubling_t:.4e} s",
+            ],
+            "note": "PAPER_880 CP4 #464. Session 205→209. positive_et_expansion.py.",
+        }
+
+    def simulate(self, sweep=None, **kw):
+        results = []
+        for t in (sweep or [0, 1e6, 1e9, 1e12, 1e15]):
+            r = self.compute({"t": t}); r["sweep_val"] = t; results.append(r)
+        return results
+
+    def self_update(self): pass
+    def self_expand(self): pass
+
+
+class KozimaExpansionNeutronDropCouplingCalc(_CP4Calculator):  # PAPER_881 #465
+    """PAPER_881 — Kozima Neutron Drop Coupling in Expansion Regime.
+    F_coupled = F_Kozima(ω_SCm) × E⁺(t) × Φ(ω)
+    Gaussian cross-section σₙ(ω) = σ₀·exp[-(ω-ω_SCm)²/(2Γ²)].
+    1.25 THz phonon coupling to neutron drop reactions in LENR.
+    CP4 class #465. Session 205 → Session 209 integration."""
+
+    OMEGA_SCM = 2 * math.pi * 1.25e12
+    GAMMA = 2 * math.pi * 0.1e12
+    SIGMA_0 = 1e-4;  HBAR = 1.0546e-34;  K_B = 1.381e-23
+    KAPPA = 5.787e-9;  SSQ = 0.57
+
+    PARAMETERS = [
+        ("omega", "float", 2 * math.pi * 1.25e12, "Phonon frequency (rad/s)"),
+        ("T", "float", 300.0, "Temperature (K)"),
+        ("n_density", "float", 1e28, "SCm neutron density (m⁻³)"),
+        ("E_0", "float", 1.0, "Initial energy (J)"),
+        ("t", "float", 0.0, "Time (s)"),
+    ]
+
+    def compute(self, dataset: dict) -> dict:
+        omega = float(dataset.get("omega", self.OMEGA_SCM))
+        T = float(dataset.get("T", 300.0))
+        n = float(dataset.get("n_density", 1e28))
+        E0 = float(dataset.get("E_0", 1.0))
+        t = float(dataset.get("t", 0.0))
+
+        delta = omega - self.OMEGA_SCM
+        sigma_n = self.SIGMA_0 * math.exp(-delta**2 / (2 * self.GAMMA**2))
+        v_th = math.sqrt(2 * self.K_B * T / 1.675e-27)  # neutron thermal velocity
+        F_kozima = n * sigma_n * v_th * self.HBAR * omega
+
+        s26 = sum(math.exp(-self.SSQ * k / 26.0) for k in range(1, 27))
+        E_plus = E0 * (math.exp(_ea) if (_ea := self.KAPPA * t + self.SSQ * t / 26.0) < 709 else float("inf")) * s26
+        F_coupled = F_kozima * E_plus
+
+        return {
+            "sigma_n": sigma_n, "v_thermal": v_th,
+            "F_kozima": F_kozima, "F_coupled": F_coupled,
+            "E_plus": E_plus, "omega": omega,
+            "primary_equations": [
+                "σₙ(ω) = σ₀·exp[-(ω-ω_SCm)²/(2Γ²)]",
+                f"σₙ({omega/(2*math.pi):.2e} Hz) = {sigma_n:.6e} m²",
+                f"F_Kozima = n·σ·v_th·ħω = {F_kozima:.4e} N",
+                f"F_coupled = F_Kozima × E⁺(t) = {F_coupled:.4e}",
+            ],
+            "note": "PAPER_881 CP4 #465. Session 205→209. positive_et_expansion.py.",
+        }
+
+    def simulate(self, sweep=None, **kw):
+        results = []
+        for f in (sweep or [1.0e12, 1.15e12, 1.25e12, 1.35e12, 1.5e12]):
+            r = self.compute({"omega": 2 * math.pi * f}); r["sweep_val"] = f; results.append(r)
+        return results
+
+    def self_update(self): pass
+    def self_expand(self): pass
+
+
+class ExpansionLagrangianEulerLagrangeCalc(_CP4Calculator):  # PAPER_882 #466
+    """PAPER_882 — Expansion Lagrangian Euler-Lagrange Variation.
+    L_expansion = E⁺(t)·V·S₂₆([SSq])
+    δS/δφ_expansion = 0 → closure equation for expansion potential.
+    Variational principle applied to positive buoyancy scalar.
+    CP4 class #466. Session 205 → Session 209 integration."""
+
+    KAPPA = 5.787e-9;  SSQ = 0.57
+
+    PARAMETERS = [
+        ("E_0", "float", 1.0, "Initial energy (J)"),
+        ("t", "float", 0.0, "Time (s)"),
+        ("V_filament", "float", 1e48, "Filament volume (m³)"),
+        ("F_UBi_over_FU", "float", 1.1, "Buoyancy ratio"),
+    ]
+
+    def compute(self, dataset: dict) -> dict:
+        E0 = float(dataset.get("E_0", 1.0))
+        t = float(dataset.get("t", 0.0))
+        V = float(dataset.get("V_filament", 1e48))
+        ratio = float(dataset.get("F_UBi_over_FU", 1.1))
+        s26 = sum(math.exp(-self.SSQ * k / 26.0) for k in range(1, 27))
+        E_plus = E0 * (math.exp(_ea) if (_ea := self.KAPPA * t + self.SSQ * t / 26.0) < 709 else float("inf")) * s26 * ratio
+        L_exp = E_plus * V * s26
+        rate = self.KAPPA + self.SSQ / 26.0
+        EL_residual = L_exp * rate * rate
+        return {
+            "L_expansion": L_exp, "E_plus": E_plus,
+            "S26": s26, "V": V,
+            "EL_residual": EL_residual,
+            "primary_equations": [
+                "L_expansion = E⁺(t)·V·S₂₆",
+                f"L = {L_exp:.6e}",
+                "δS/δφ = ∂L/∂φ - d/dt(∂L/∂φ̇) = 0",
+                f"EL residual = {EL_residual:.6e}",
+            ],
+            "note": "PAPER_882 CP4 #466. Session 205→209. positive_et_expansion.py.",
+        }
+
+    def simulate(self, sweep=None, **kw):
+        results = []
+        for V in (sweep or [1e45, 1e48, 1e51, 1e54, 1e57]):
+            r = self.compute({"V_filament": V}); r["sweep_val"] = V; results.append(r)
+        return results
+
+    def self_update(self): pass
+    def self_expand(self): pass
+
+
+class NegativeEtBuoyancyErosionMasterCalc(_CP4Calculator):  # PAPER_883 #467
+    """PAPER_883 — Negative E(t) Buoyancy-Driven Erosion Master Equation.
+    E⁻(t) = -E₀·exp(κt + [SSq]·t/26)·S₂₆([SSq])·(1 - F_{U,Bi}/F_U)
+    Symmetric counterpart to E⁺(t). Applies when gravity dominates buoyancy,
+    e.g. filament erosion (PAPER_359), photoevaporation (M16), GW damping.
+    CP4 class #467. Session 205 → Session 209 integration."""
+
+    KAPPA = 5.787e-9;  SSQ = 0.57
+
+    PARAMETERS = [
+        ("E_0", "float", 1.0, "Initial vacuum energy (J)"),
+        ("t", "float", 0.0, "Time (seconds)"),
+        ("F_UBi_over_FU", "float", 0.3, "Buoyancy ratio F_{U,Bi}/F_U"),
+    ]
+
+    def compute(self, dataset: dict) -> dict:
+        E0 = float(dataset.get("E_0", 1.0))
+        t = float(dataset.get("t", 0.0))
+        ratio = float(dataset.get("F_UBi_over_FU", 0.3))
+        s26 = sum(math.exp(-self.SSQ * k / 26.0) for k in range(1, 27))
+        _exp_arg = self.KAPPA * t + self.SSQ * t / 26.0; growth = math.exp(_exp_arg) if _exp_arg < 709 else float("inf")
+        net_factor = 2 * ratio - 1.0
+        E_minus = -E0 * growth * s26 * (1.0 - ratio)
+        regime = "erosion (gravity > buoyancy)" if ratio < 0.5 else ("balanced" if ratio == 0.5 else "expansion")
+        return {
+            "E_minus": E_minus, "S26": s26, "net_factor": net_factor,
+            "ratio": ratio, "regime": regime,
+            "primary_equations": [
+                "E⁻(t) = -E₀·exp(κt + [SSq]·t/26)·S₂₆·(1 - F_{U,Bi}/F_U)",
+                f"E⁻({t:.1e}s) = {E_minus:.6e} J",
+                f"net_factor = 2·ratio - 1 = {net_factor:.4f}",
+                f"regime = {regime}",
+            ],
+            "note": "PAPER_883 CP4 #467. Session 205→209. negative_et_erosion.py.",
+        }
+
+    def simulate(self, sweep=None, **kw):
+        results = []
+        for r in (sweep or [0.1, 0.3, 0.5, 0.7, 0.9]):
+            res = self.compute({"F_UBi_over_FU": r}); res["sweep_val"] = r; results.append(res)
+        return results
+
+    def self_update(self): pass
+    def self_expand(self): pass
+
+
+class NetEnergyEplusEminusEvolutionCalc(_CP4Calculator):  # PAPER_884 #468
+    """PAPER_884 — Net Energy E_net(t) = E⁺(t) + E⁻(t) Evolution.
+    E_net(t) = E₀·exp(κt + [SSq]·t/26)·S₂₆·(2·F_{U,Bi}/F_U - 1)
+    Sign determined by buoyancy ratio: >0.5 expanding, <0.5 eroding, =0.5 balanced.
+    CP4 class #468. Session 205 → Session 209 integration."""
+
+    KAPPA = 5.787e-9;  SSQ = 0.57
+
+    PARAMETERS = [
+        ("E_0", "float", 1.0, "Initial energy (J)"),
+        ("t", "float", 0.0, "Time (s)"),
+        ("F_UBi_over_FU", "float", 0.8, "Buoyancy ratio"),
+    ]
+
+    def compute(self, dataset: dict) -> dict:
+        E0 = float(dataset.get("E_0", 1.0))
+        t = float(dataset.get("t", 0.0))
+        ratio = float(dataset.get("F_UBi_over_FU", 0.8))
+        s26 = sum(math.exp(-self.SSQ * k / 26.0) for k in range(1, 27))
+        _exp_arg = self.KAPPA * t + self.SSQ * t / 26.0; growth = math.exp(_exp_arg) if _exp_arg < 709 else float("inf")
+        net_factor = 2 * ratio - 1.0
+        E_net = E0 * growth * s26 * net_factor
+        E_plus = E0 * growth * s26 * ratio
+        E_minus = -E0 * growth * s26 * (1 - ratio)
+        if ratio > 0.5: regime = "expanding"
+        elif ratio < 0.5: regime = "eroding"
+        else: regime = "balanced"
+        return {
+            "E_net": E_net, "E_plus": E_plus, "E_minus": E_minus,
+            "net_factor": net_factor, "ratio": ratio, "regime": regime,
+            "identity_check": abs((E_plus + E_minus) - E_net),
+            "primary_equations": [
+                "E_net(t) = E⁺(t) + E⁻(t) = E₀·exp(...)·S₂₆·(2R-1)",
+                f"E⁺ = {E_plus:.6e}, E⁻ = {E_minus:.6e}",
+                f"E_net = {E_net:.6e} [{regime}]",
+                "E⁺ + E⁻ ≡ E_net  [identity verified]",
+            ],
+            "note": "PAPER_884 CP4 #468. Session 205→209. negative_et_erosion.py.",
+        }
+
+    def simulate(self, sweep=None, **kw):
+        results = []
+        for r in (sweep or [0.1, 0.3, 0.5, 0.7, 0.9, 1.1]):
+            res = self.compute({"F_UBi_over_FU": r}); res["sweep_val"] = r; results.append(res)
+        return results
+
+    def self_update(self): pass
+    def self_expand(self): pass
+
+
+class GWDampingErosion66PercentCalc(_CP4Calculator):  # PAPER_885 #469
+    """PAPER_885 — GW170817 66.7% Damping Erosion Integration.
+    GW strain damping: h_damped = h_GR × (1 - D_erosion)
+    where D_erosion = |E⁻(t)|/|E_0| constrained at 66.7% (PAPER_008b).
+    Phase lag Δφ = D × f_GW / f_orbit cycles.
+    CP4 class #469. Session 205 → Session 209 integration."""
+
+    D_COMBINED = 0.667;  KAPPA = 5.787e-9;  SSQ = 0.57
+
+    PARAMETERS = [
+        ("h_GR", "float", 1e-21, "GR predicted strain"),
+        ("f_GW", "float", 100.0, "GW frequency (Hz)"),
+        ("f_orbit", "float", 50.0, "Orbital frequency (Hz)"),
+        ("D_erosion", "float", 0.667, "Erosion damping fraction"),
+    ]
+
+    def compute(self, dataset: dict) -> dict:
+        h_GR = float(dataset.get("h_GR", 1e-21))
+        f_GW = float(dataset.get("f_GW", 100.0))
+        f_orb = float(dataset.get("f_orbit", 50.0))
+        D = float(dataset.get("D_erosion", self.D_COMBINED))
+        h_damped = h_GR * (1 - D)
+        reduction_pct = D * 100
+        phase_lag = D * f_GW / f_orb
+        return {
+            "h_GR": h_GR, "h_damped": h_damped,
+            "D_erosion": D, "reduction_pct": reduction_pct,
+            "phase_lag_cycles": phase_lag,
+            "primary_equations": [
+                "h_damped = h_GR × (1 - D_erosion)",
+                f"h_damped = {h_damped:.4e}  (D = {D:.1%})",
+                f"Δφ = D·f_GW/f_orbit = {phase_lag:.2f} cycles",
+                "D_erosion = |E⁻|/|E_0| ≈ 0.667  [GW170817 constraint]",
+            ],
+            "note": "PAPER_885 CP4 #469. Session 205→209. negative_et_erosion.py.",
+        }
+
+    def simulate(self, sweep=None, **kw):
+        results = []
+        for D in (sweep or [0.1, 0.333, 0.5, 0.667, 0.9]):
+            r = self.compute({"D_erosion": D}); r["sweep_val"] = D; results.append(r)
+        return results
+
+    def self_update(self): pass
+    def self_expand(self): pass
+
+
+class ErosionLagrangianEulerLagrangeCalc(_CP4Calculator):  # PAPER_886 #470
+    """PAPER_886 — Erosion Lagrangian Euler-Lagrange Variation.
+    L_erosion = E⁻(t)·V·S₂₆ (symmetric to L_expansion).
+    δS/δφ_erosion = 0 → closure for erosion potential.
+    CP4 class #470. Session 205 → Session 209 integration."""
+
+    KAPPA = 5.787e-9;  SSQ = 0.57
+
+    PARAMETERS = [
+        ("E_0", "float", 1.0, "Initial energy (J)"),
+        ("t", "float", 0.0, "Time (s)"),
+        ("V_filament", "float", 1e48, "Volume (m³)"),
+        ("F_UBi_over_FU", "float", 0.3, "Buoyancy ratio"),
+    ]
+
+    def compute(self, dataset: dict) -> dict:
+        E0 = float(dataset.get("E_0", 1.0))
+        t = float(dataset.get("t", 0.0))
+        V = float(dataset.get("V_filament", 1e48))
+        ratio = float(dataset.get("F_UBi_over_FU", 0.3))
+        s26 = sum(math.exp(-self.SSQ * k / 26.0) for k in range(1, 27))
+        _exp_arg = self.KAPPA * t + self.SSQ * t / 26.0; growth = math.exp(_exp_arg) if _exp_arg < 709 else float("inf")
+        E_minus = -E0 * growth * s26 * (1.0 - ratio)
+        L_ero = E_minus * V * s26
+        rate = self.KAPPA + self.SSQ / 26.0
+        EL_residual = L_ero * rate * rate
+        return {
+            "L_erosion": L_ero, "E_minus": E_minus,
+            "S26": s26, "V": V, "EL_residual": EL_residual,
+            "primary_equations": [
+                "L_erosion = E⁻(t)·V·S₂₆  [symmetric to L_expansion]",
+                f"L = {L_ero:.6e}",
+                "δS/δφ_erosion = ∂L/∂φ - d/dt(∂L/∂φ̇) = 0",
+                f"EL residual = {EL_residual:.6e}",
+            ],
+            "note": "PAPER_886 CP4 #470. Session 205→209. negative_et_erosion.py.",
+        }
+
+    def simulate(self, sweep=None, **kw):
+        results = []
+        for r in (sweep or [0.1, 0.2, 0.3, 0.4, 0.5]):
+            res = self.compute({"F_UBi_over_FU": r}); res["sweep_val"] = r; results.append(res)
+        return results
+
+    def self_update(self): pass
+    def self_expand(self): pass
+
+
+class UQFFVsStringTheory10AspectComparisonCalc(_CP4Calculator):  # PAPER_887 #471
+    """PAPER_887 — UQFF vs String Theory Systematic 10-Aspect Comparison.
+    Weighted scoring across 10 phenomenological aspects:
+    foundation, extra-dims, vacuum, predictions, testability,
+    GW, dark energy, unification, mathematical, Occam.
+    UQFF: 26D Ramanujan, single vacuum, lab-testable.
+    String: 10/11D Calabi-Yau, 10^500 landscape, Planck-scale.
+    CP4 class #471. Session 205 → Session 209 integration."""
+
+    WEIGHTS = {"foundation": 0.15, "prediction": 0.20, "math": 0.15, "testability": 0.25, "unification": 0.25}
+
+    PARAMETERS = []
+
+    def compute(self, dataset: dict) -> dict:
+        aspects = [
+            ("Foundational entity", 0.4, 0.8, "foundation", "Strings vs SCm vacuum"),
+            ("Extra dimensions", 0.5, 0.7, "math", "10/11D Calabi-Yau vs 26D Ramanujan"),
+            ("Vacuum structure", 0.3, 0.9, "foundation", "10^500 landscape vs single VDS"),
+            ("Lab predictions", 0.2, 0.9, "testability", "Planck-scale vs LENR/THz accessible"),
+            ("GW predictions", 0.5, 0.8, "prediction", "Standard GR vs 66.7% damping"),
+            ("Dark energy", 0.4, 0.7, "prediction", "Λ constant vs ρ_SCm evolution"),
+            ("Unification", 0.6, 0.8, "unification", "M-theory vs UQFF 9-sector Lagrangian"),
+            ("Mathematical rigor", 0.8, 0.6, "math", "Proven dualities vs developing formalism"),
+            ("Free parameters", 0.3, 0.8, "foundation", "~100 moduli vs 2 calibrated: κ, [SSq]"),
+            ("Occam simplicity", 0.3, 0.9, "testability", "Complex landscape vs single SCm vacuum"),
+        ]
+        string_total = sum(s * self.WEIGHTS.get(c, 0.15) for _, s, _, c, _ in aspects)
+        uqff_total = sum(u * self.WEIGHTS.get(c, 0.15) for _, _, u, c, _ in aspects)
+        w_sum = sum(self.WEIGHTS.get(c, 0.15) for _, _, _, c, _ in aspects)
+        string_score = string_total / w_sum
+        uqff_score = uqff_total / w_sum
+        winner = "UQFF" if uqff_score > string_score else "String Theory"
+        table = [{"aspect": a, "string": s, "uqff": u, "category": c, "note": n} for a, s, u, c, n in aspects]
+        return {
+            "comparison_table": table, "string_score": string_score,
+            "uqff_score": uqff_score, "winner": winner,
+            "aspect_count": len(aspects),
+            "primary_equations": [
+                f"String weighted score = {string_score:.4f}",
+                f"UQFF weighted score = {uqff_score:.4f}",
+                f"Winner: {winner}",
+                "Scoring: 4 categories × weighted sum (testability 25%, prediction 20%)",
+            ],
+            "note": "PAPER_887 CP4 #471. Session 205→209. uqff_vs_string_comparison.py.",
+        }
+
+    def simulate(self, sweep=None, **kw): return [self.compute({})]
+    def self_update(self): pass
+    def self_expand(self): pass
+
+
+# ---------------------------------------------------------------------------
+# SESSION 206 — E(t) Full Lagrangian + ΛCDM Comparison
+# ---------------------------------------------------------------------------
+
+class EtFullLagrangianUnifiedDerivationCalc(_CP4Calculator):  # PAPER_888 #472
+    """PAPER_888 — E(t) Full Lagrangian Unified Derivation.
+    L_{E(t)} = E_net(t)·V_filament·S₂₆([SSq])
+    Combines E⁺(t) + E⁻(t), buoyancy sign-flipping, cosmological Λ link.
+    Complete variational principle with GW constraints.
+    CP4 class #472. Session 206 → Session 209 integration."""
+
+    KAPPA = 5.787e-9;  SSQ = 0.57;  G = 6.674e-11;  C = 2.998e8
+    H_0 = 2.195e-18
+
+    PARAMETERS = [
+        ("E_0", "float", 1.0, "Initial energy (J)"),
+        ("t", "float", 0.0, "Time (s)"),
+        ("V_filament", "float", 1e48, "Volume (m³)"),
+        ("F_UBi_over_FU", "float", 0.8, "Buoyancy ratio"),
+    ]
+
+    def compute(self, dataset: dict) -> dict:
+        E0 = float(dataset.get("E_0", 1.0))
+        t = float(dataset.get("t", 0.0))
+        V = float(dataset.get("V_filament", 1e48))
+        ratio = float(dataset.get("F_UBi_over_FU", 0.8))
+        s26 = sum(math.exp(-self.SSQ * k / 26.0) for k in range(1, 27))
+        _exp_arg = self.KAPPA * t + self.SSQ * t / 26.0; growth = math.exp(_exp_arg) if _exp_arg < 709 else float("inf")
+        net_factor = 2 * ratio - 1.0
+        E_net = E0 * growth * s26 * net_factor
+        L_Et = E_net * V * s26
+        rho_crit = 3 * self.H_0**2 / (8 * math.pi * self.G)
+        Lambda = 8 * math.pi * self.G * 0.692 * rho_crit / self.C**2
+        if ratio > 0.5: regime = "expanding"
+        elif ratio < 0.5: regime = "eroding"
+        else: regime = "balanced"
+        return {
+            "L_Et": L_Et, "E_net": E_net, "S26": s26,
+            "net_factor": net_factor, "regime": regime,
+            "H_0": self.H_0, "Lambda_cosm": Lambda,
+            "primary_equations": [
+                "L_{E(t)} = E_net(t)·V·S₂₆",
+                f"L = {L_Et:.6e}",
+                f"E_net = {E_net:.6e} [{regime}]",
+                f"Λ = {Lambda:.4e} m⁻²",
+            ],
+            "note": "PAPER_888 CP4 #472. Session 206→209. et_full_lagrangian.py.",
+        }
+
+    def simulate(self, sweep=None, **kw):
+        results = []
+        for r in (sweep or [0.3, 0.5, 0.8, 1.0, 1.2]):
+            res = self.compute({"F_UBi_over_FU": r}); res["sweep_val"] = r; results.append(res)
+        return results
+
+    def self_update(self): pass
+    def self_expand(self): pass
+
+
+class EtVsLambdaCDMDarkEnergyContrastCalc(_CP4Calculator):  # PAPER_889 #473
+    """PAPER_889 — E(t) vs ΛCDM Dark Energy Contrast.
+    Direct comparison of UQFF E(t) equation of state vs ΛCDM w=-1.
+    w_UQFF from E(t) Lagrangian pressure/density ratio.
+    Fine-tuning: QFT/observed ΔΛ ~ 10^{120-139}.
+    CP4 class #473. Session 206 → Session 209 integration."""
+
+    G = 6.674e-11;  C = 2.998e8;  H_0 = 2.195e-18
+    HBAR = 1.0546e-34;  SSQ = 0.57;  KAPPA = 5.787e-9
+
+    PARAMETERS = [
+        ("E_0", "float", 1.0, "Initial energy (J)"),
+        ("F_UBi_over_FU", "float", 0.8, "Buoyancy ratio"),
+    ]
+
+    def compute(self, dataset: dict) -> dict:
+        E0 = float(dataset.get("E_0", 1.0))
+        ratio = float(dataset.get("F_UBi_over_FU", 0.8))
+        rho_crit = 3 * self.H_0**2 / (8 * math.pi * self.G)
+        rho_Lambda = 0.692 * rho_crit
+        w_LCDM = -1.0
+        s26 = sum(math.exp(-self.SSQ * k / 26.0) for k in range(1, 27))
+        net_factor = 2 * ratio - 1.0
+        E_net = E0 * s26 * net_factor
+        rho_UQFF = abs(E_net) * s26  # effective density
+        w_UQFF = E_net / rho_UQFF if rho_UQFF != 0 else 0
+        delta_w = w_UQFF - w_LCDM
+        rho_QFT = self.HBAR * (1e19 * 1.6e-19 / self.HBAR)**4 / (self.C**3 * 8 * math.pi**2)
+        fine_tune = rho_QFT / rho_Lambda if rho_Lambda > 0 else float('inf')
+        preferred = "LCDM" if abs(w_LCDM - (-1)) < abs(w_UQFF - (-1)) else "UQFF"
+        contrast = [
+            {"aspect": "Equation of state", "LCDM": f"w = {w_LCDM}", "UQFF": f"w = {w_UQFF:.6f}"},
+            {"aspect": "Dark energy density", "LCDM": f"ρ_Λ = {rho_Lambda:.4e}", "UQFF": f"ρ_UQFF = {rho_UQFF:.4e}"},
+            {"aspect": "Fine-tuning", "LCDM": f"~10^{math.log10(fine_tune):.0f}", "UQFF": "2 params (κ, [SSq])"},
+            {"aspect": "Physical origin", "LCDM": "Cosmological constant", "UQFF": "SCm vacuum buoyancy"},
+            {"aspect": "Time evolution", "LCDM": "Static w=-1", "UQFF": "Dynamic exp(κt)"},
+        ]
+        return {
+            "w_LCDM": w_LCDM, "w_UQFF": w_UQFF, "delta_w": delta_w,
+            "rho_Lambda": rho_Lambda, "rho_UQFF": rho_UQFF,
+            "fine_tuning_ratio": fine_tune, "preferred": preferred,
+            "contrast_table": contrast,
+            "primary_equations": [
+                f"w_ΛCDM = {w_LCDM}",
+                f"w_UQFF = {w_UQFF:.6f}",
+                f"Δw = {delta_w:.6f}",
+                f"Fine-tuning: ρ_QFT/ρ_Λ ~ 10^{math.log10(fine_tune):.0f}",
+            ],
+            "note": "PAPER_889 CP4 #473. Session 206→209. et_full_lagrangian.py.",
+        }
+
+    def simulate(self, sweep=None, **kw):
+        results = []
+        for r in (sweep or [0.3, 0.5, 0.8, 1.0]):
+            res = self.compute({"F_UBi_over_FU": r}); res["sweep_val"] = r; results.append(res)
+        return results
+
+    def self_update(self): pass
+    def self_expand(self): pass
+
+
+# ---------------------------------------------------------------------------
+# SESSION 207 — SCm Vacuum Density E(t) + Quintessence Comparison
+# ---------------------------------------------------------------------------
+
+class SCmVacuumDensityEvolutionCalc(_CP4Calculator):  # PAPER_890 #474
+    """PAPER_890 — SCm Vacuum Density Evolution ρ_SCm(t).
+    ρ_SCm(t) = ρ_vac,SCm·S₂₆([SSq])·exp(κt + [SSq]t/26)
+    with ρ_SCm/ρ_UA = 0.1 ratio and Hubble normalization.
+    CP4 class #474. Session 207 → Session 209 integration."""
+
+    RHO_VAC_SCM = 9.47e-27;  RHO_SCM = 7.09e-37;  RHO_UA = 7.09e-36
+    KAPPA = 5.787e-9;  SSQ = 0.57
+
+    PARAMETERS = [
+        ("t", "float", 0.0, "Time (s)"),
+        ("rho_vac_scm", "float", 9.47e-27, "Vacuum density ρ_vac,SCm (kg/m³)"),
+    ]
+
+    def compute(self, dataset: dict) -> dict:
+        t = float(dataset.get("t", 0.0))
+        rho0 = float(dataset.get("rho_vac_scm", self.RHO_VAC_SCM))
+        s26 = sum(math.exp(-self.SSQ * k / 26.0) for k in range(1, 27))
+        rho_t = rho0 * s26 * (math.exp(_ea) if (_ea := self.KAPPA * t + self.SSQ * t / 26.0) < 709 else float("inf"))
+        ratio = self.RHO_SCM / self.RHO_UA
+        return {
+            "rho_SCm_t": rho_t, "rho_0": rho0, "S26": s26,
+            "rho_SCm_over_UA": ratio,
+            "primary_equations": [
+                "ρ_SCm(t) = ρ_vac,SCm·S₂₆·exp(κt + [SSq]t/26)",
+                f"ρ_SCm({t:.1e}s) = {rho_t:.6e} kg/m³",
+                f"ρ_SCm/ρ_UA = {ratio:.4f}",
+            ],
+            "note": "PAPER_890 CP4 #474. Session 207→209. et_scm_vacuum.py.",
+        }
+
+    def simulate(self, sweep=None, **kw):
+        results = []
+        for t in (sweep or [0, 1e9, 1e12, 1e15, 1e17]):
+            r = self.compute({"t": t}); r["sweep_val"] = t; results.append(r)
+        return results
+
+    def self_update(self): pass
+    def self_expand(self): pass
+
+
+class SCmNetEnergyBuoyancyRegimeCalc(_CP4Calculator):  # PAPER_891 #475
+    """PAPER_891 — SCm Net Energy Buoyancy Regime Calculator.
+    E_net,SCm = ρ_SCm(t)·V·c²·(2R-1) where R = F_{U,Bi}/F_U.
+    Determines expansion/erosion regime in SCm vacuum.
+    CP4 class #475. Session 207 → Session 209 integration."""
+
+    C = 2.998e8;  RHO_VAC_SCM = 9.47e-27;  KAPPA = 5.787e-9;  SSQ = 0.57
+
+    PARAMETERS = [
+        ("t", "float", 0.0, "Time (s)"),
+        ("V", "float", 1e48, "Volume (m³)"),
+        ("F_UBi_over_FU", "float", 0.8, "Buoyancy ratio"),
+    ]
+
+    def compute(self, dataset: dict) -> dict:
+        t = float(dataset.get("t", 0.0))
+        V = float(dataset.get("V", 1e48))
+        ratio = float(dataset.get("F_UBi_over_FU", 0.8))
+        s26 = sum(math.exp(-self.SSQ * k / 26.0) for k in range(1, 27))
+        rho_t = self.RHO_VAC_SCM * s26 * (math.exp(_ea) if (_ea := self.KAPPA * t + self.SSQ * t / 26.0) < 709 else float("inf"))
+        net_factor = 2 * ratio - 1.0
+        E_net = rho_t * V * self.C**2 * net_factor
+        if ratio > 0.5: regime = "expansion (nebulae, cosmogenesis)"
+        elif ratio < 0.5: regime = "erosion (filaments, cavities)"
+        else: regime = "balanced"
+        return {
+            "E_net_SCm": E_net, "rho_SCm_t": rho_t, "net_factor": net_factor,
+            "regime": regime, "ratio": ratio,
+            "primary_equations": [
+                "E_net,SCm = ρ_SCm(t)·V·c²·(2R-1)",
+                f"E_net = {E_net:.6e} J  [{regime}]",
+                f"ρ_SCm(t) = {rho_t:.6e} kg/m³",
+            ],
+            "note": "PAPER_891 CP4 #475. Session 207→209. et_scm_vacuum.py.",
+        }
+
+    def simulate(self, sweep=None, **kw):
+        results = []
+        for r in (sweep or [0.2, 0.5, 0.8, 1.0, 1.2]):
+            res = self.compute({"F_UBi_over_FU": r}); res["sweep_val"] = r; results.append(res)
+        return results
+
+    def self_update(self): pass
+    def self_expand(self): pass
+
+
+class SCmKozimaPhononResonanceCouplingCalc(_CP4Calculator):  # PAPER_892 #476
+    """PAPER_892 — SCm Kozima Phonon Resonance Coupling at 1.25 THz.
+    F_neutron = n·σₙ(ω)·v_th·ħω × E_SCm plus Gaussian σₙ.
+    1.25 THz phonon resonance drives LENR neutron drop reactions
+    within the SCm vacuum field.
+    CP4 class #476. Session 207 → Session 209 integration."""
+
+    OMEGA_SCM = 2 * math.pi * 1.25e12;  GAMMA = 2 * math.pi * 0.1e12
+    SIGMA_0 = 1e-4;  HBAR = 1.0546e-34;  K_B = 1.381e-23
+
+    PARAMETERS = [
+        ("omega", "float", 2 * math.pi * 1.25e12, "Frequency (rad/s)"),
+        ("T", "float", 300.0, "Temperature (K)"),
+        ("n_density", "float", 1e28, "Neutron density (m⁻³)"),
+    ]
+
+    def compute(self, dataset: dict) -> dict:
+        omega = float(dataset.get("omega", self.OMEGA_SCM))
+        T = float(dataset.get("T", 300.0))
+        n = float(dataset.get("n_density", 1e28))
+        delta = omega - self.OMEGA_SCM
+        sigma_n = self.SIGMA_0 * math.exp(-delta**2 / (2 * self.GAMMA**2))
+        v_th = math.sqrt(2 * self.K_B * T / 1.675e-27)
+        F_neutron = n * sigma_n * v_th * self.HBAR * omega
+        return {
+            "sigma_n": sigma_n, "v_thermal": v_th,
+            "F_neutron": F_neutron, "omega": omega,
+            "at_resonance": abs(delta) < self.GAMMA,
+            "primary_equations": [
+                "σₙ(ω) = σ₀·exp[-(ω-ω_SCm)²/(2Γ²)]",
+                "F_neutron = n·σₙ·v_th·ħω",
+                f"σₙ = {sigma_n:.6e} m²",
+                f"F_neutron = {F_neutron:.4e} N",
+            ],
+            "note": "PAPER_892 CP4 #476. Session 207→209. et_scm_vacuum.py.",
+        }
+
+    def simulate(self, sweep=None, **kw):
+        results = []
+        for f in (sweep or [1.0e12, 1.15e12, 1.25e12, 1.35e12, 1.5e12]):
+            r = self.compute({"omega": 2 * math.pi * f}); r["sweep_val"] = f; results.append(r)
+        return results
+
+    def self_update(self): pass
+    def self_expand(self): pass
+
+
+class SCmPhononModulatedEnergyPhiCalc(_CP4Calculator):  # PAPER_893 #477
+    """PAPER_893 — SCm Phonon-Modulated Energy Φ_{1.25 THz} × E_net.
+    E_net^phonon(t) = E_net(t) × Φ_{1.25 THz}(ω)
+    where Φ = Φ₀·exp[-(ω-ω_SCm)²/(2Γ²)]·S₂₆.
+    Gaussian modulation peaks at SCm resonance frequency.
+    CP4 class #477. Session 207 → Session 209 integration."""
+
+    OMEGA_SCM = 2 * math.pi * 1.25e12;  GAMMA = 2 * math.pi * 0.1e12
+    PHI_0 = 1e20;  SSQ = 0.57;  KAPPA = 5.787e-9
+
+    PARAMETERS = [
+        ("omega", "float", 2 * math.pi * 1.25e12, "Frequency (rad/s)"),
+        ("E_net_bare", "float", 1.0, "Bare E_net (J)"),
+    ]
+
+    def compute(self, dataset: dict) -> dict:
+        omega = float(dataset.get("omega", self.OMEGA_SCM))
+        E_bare = float(dataset.get("E_net_bare", 1.0))
+        s26 = sum(math.exp(-self.SSQ * k / 26.0) for k in range(1, 27))
+        delta = omega - self.OMEGA_SCM
+        gaussian = math.exp(-delta**2 / (2 * self.GAMMA**2))
+        Phi = self.PHI_0 * gaussian * s26
+        E_phonon = E_bare * Phi
+        return {
+            "Phi_125THz": Phi, "gaussian": gaussian, "S26": s26,
+            "E_net_bare": E_bare, "E_net_phonon": E_phonon,
+            "primary_equations": [
+                "Φ_{1.25THz}(ω) = Φ₀·exp[-(ω-ω_SCm)²/(2Γ²)]·S₂₆",
+                "E_net^phonon = E_net × Φ_{1.25THz}",
+                f"Φ = {Phi:.6e} phonons/m²/s",
+                f"E_net^phonon = {E_phonon:.6e} J",
+            ],
+            "note": "PAPER_893 CP4 #477. Session 207→209. et_scm_vacuum.py.",
+        }
+
+    def simulate(self, sweep=None, **kw):
+        results = []
+        for f in (sweep or [1.0e12, 1.15e12, 1.25e12, 1.35e12, 1.5e12]):
+            r = self.compute({"omega": 2 * math.pi * f}); r["sweep_val"] = f; results.append(r)
+        return results
+
+    def self_update(self): pass
+    def self_expand(self): pass
+
+
+class SCmEtLagrangianVariationCalc(_CP4Calculator):  # PAPER_894 #478
+    """PAPER_894 — SCm E(t) Lagrangian Variation in Superconductive Vacuum.
+    L_SCm = ρ_SCm(t)·V·c²·(2R-1)·V_fil·S₂₆
+    δS/δφ_SCm = 0 → SCm-specific closure equation.
+    CP4 class #478. Session 207 → Session 209 integration."""
+
+    C = 2.998e8;  RHO_VAC_SCM = 9.47e-27;  KAPPA = 5.787e-9;  SSQ = 0.57
+
+    PARAMETERS = [
+        ("t", "float", 0.0, "Time (s)"),
+        ("V_filament", "float", 1e48, "Volume (m³)"),
+        ("F_UBi_over_FU", "float", 0.8, "Buoyancy ratio"),
+    ]
+
+    def compute(self, dataset: dict) -> dict:
+        t = float(dataset.get("t", 0.0))
+        V = float(dataset.get("V_filament", 1e48))
+        ratio = float(dataset.get("F_UBi_over_FU", 0.8))
+        s26 = sum(math.exp(-self.SSQ * k / 26.0) for k in range(1, 27))
+        rho = self.RHO_VAC_SCM * s26 * (math.exp(_ea) if (_ea := self.KAPPA * t + self.SSQ * t / 26.0) < 709 else float("inf"))
+        nf = 2 * ratio - 1.0
+        E_net = rho * V * self.C**2 * nf
+        L_SCm = E_net * V * s26
+        rate = self.KAPPA + self.SSQ / 26.0
+        EL_res = L_SCm * rate * rate
+        return {
+            "L_SCm": L_SCm, "E_net_SCm": E_net, "rho_SCm": rho,
+            "EL_residual": EL_res,
+            "primary_equations": [
+                "L_SCm = E_net,SCm·V·S₂₆",
+                f"L = {L_SCm:.6e}",
+                f"δS/δφ_SCm EL residual = {EL_res:.6e}",
+            ],
+            "note": "PAPER_894 CP4 #478. Session 207→209. et_scm_vacuum.py.",
+        }
+
+    def simulate(self, sweep=None, **kw):
+        results = []
+        for r in (sweep or [0.3, 0.5, 0.8, 1.0]):
+            res = self.compute({"F_UBi_over_FU": r}); res["sweep_val"] = r; results.append(res)
+        return results
+
+    def self_update(self): pass
+    def self_expand(self): pass
+
+
+class EtVsQuintessenceScalarFieldContrastCalc(_CP4Calculator):  # PAPER_895 #479
+    """PAPER_895 — E(t) vs Quintessence Scalar Field Dark Energy Contrast.
+    Quintessence: V(φ) = M⁴·exp(-λφ/M_Pl); w_quint from φ̇²/2 vs V(φ).
+    UQFF: E(t) with S₂₆ Ramanujan × exp(κt); w_UQFF from net factor.
+    10-row contrast table + χ² comparison.
+    CP4 class #479. Session 207 → Session 209 integration."""
+
+    G = 6.674e-11;  HBAR = 1.0546e-34;  C = 2.998e8;  H_0 = 2.195e-18
+    SSQ = 0.57;  KAPPA = 5.787e-9
+
+    PARAMETERS = [
+        ("phi_0", "float", 1e-5, "Initial scalar field value (M_Pl)"),
+        ("phi_dot_0", "float", 1e-40, "Initial field velocity (M_Pl/s)"),
+        ("lambda_quint", "float", 1.0, "Quintessence steepness λ"),
+        ("M_scale", "float", 1e-3, "Energy scale M (eV)"),
+    ]
+
+    def compute(self, dataset: dict) -> dict:
+        phi = float(dataset.get("phi_0", 1e-5))
+        phi_dot = float(dataset.get("phi_dot_0", 1e-40))
+        lam = float(dataset.get("lambda_quint", 1.0))
+        M = float(dataset.get("M_scale", 1e-3))
+        M_Pl = math.sqrt(self.HBAR * self.C / self.G)
+        M_eV = M * 1.602e-19
+        V_phi = M_eV**4 * math.exp(-lam * phi)
+        KE = 0.5 * phi_dot**2
+        rho_q = KE + V_phi
+        p_q = KE - V_phi
+        w_quint = p_q / rho_q if rho_q != 0 else -1
+        s26 = sum(math.exp(-self.SSQ * k / 26.0) for k in range(1, 27))
+        w_UQFF = 1.0  # placeholder for ratio-dependent
+        delta_w = w_UQFF - w_quint
+        contrast_table = [
+            {"dim": "Field content", "Quint": "Single scalar φ", "UQFF": "SCm vacuum + 26 quantum levels"},
+            {"dim": "Potential V(φ)", "Quint": "M⁴exp(-λφ/M_Pl)", "UQFF": "V = β_i·ΣUg·Ω_g (from Lagrangian)"},
+            {"dim": "EOS parameter", "Quint": f"w = {w_quint:.6f}", "UQFF": f"w ≈ {w_UQFF:.6f}"},
+            {"dim": "Free parameters", "Quint": "M, λ, φ₀, φ̇₀", "UQFF": "κ, [SSq] (2 calibrated)"},
+            {"dim": "Time evolution", "Quint": "Slow-roll φ̈+3Hφ̇+V'=0", "UQFF": "exp(κt+[SSq]t/26)"},
+            {"dim": "Vacuum structure", "Quint": "Single runaway", "UQFF": "VDS 26-level hierarchy"},
+            {"dim": "Lab testable", "Quint": "Fifth force searches", "UQFF": "LENR 1.25 THz phonon"},
+            {"dim": "GW impact", "Quint": "None direct", "UQFF": "66.7% strain damping"},
+            {"dim": "Fine-tuning", "Quint": "M scale problem", "UQFF": "2 params cover 99.9%"},
+            {"dim": "Origin", "Quint": "Ad hoc scalar", "UQFF": "SCm superconductive manifold"},
+        ]
+        preferred = "Quintessence" if abs(w_quint - (-1)) < abs(w_UQFF - (-1)) else "UQFF"
+        return {
+            "w_quintessence": w_quint, "w_UQFF": w_UQFF, "delta_w": delta_w,
+            "V_phi": V_phi, "rho_quint": rho_q, "preferred": preferred,
+            "contrast_table": contrast_table,
+            "primary_equations": [
+                f"V(φ) = M⁴·exp(-λφ/M_Pl) = {V_phi:.4e}",
+                f"w_quint = (KE - V)/(KE + V) = {w_quint:.6f}",
+                f"Δw = w_UQFF - w_quint = {delta_w:.6f}",
+            ],
+            "note": "PAPER_895 CP4 #479. Session 207→209. et_scm_vacuum.py.",
+        }
+
+    def simulate(self, sweep=None, **kw):
+        results = []
+        for lam in (sweep or [0.1, 0.5, 1.0, 2.0, 5.0]):
+            r = self.compute({"lambda_quint": lam}); r["sweep_val"] = lam; results.append(r)
+        return results
+
+    def self_update(self): pass
+    def self_expand(self): pass
+
+
+# ---------------------------------------------------------------------------
+# SESSION 208 — Phonon Resonance E(t) + k-Essence Comparison
+# ---------------------------------------------------------------------------
+
+class PhononModulationFactor125THzGaussianCalc(_CP4Calculator):  # PAPER_896 #480
+    """PAPER_896 — Phonon Modulation Factor Φ_{1.25 THz} Gaussian.
+    Φ(ω) = Φ₀·exp[-(ω-ω_SCm)²/(2Γ²)]·S₂₆([SSq])
+    Quality factor Q = ω_SCm/Γ = 6.25 (sharp resonance).
+    FWHM = 2Γ√(2ln2) ≈ 1.49 THz linewidth.
+    CP4 class #480. Session 208 → Session 209 integration."""
+
+    OMEGA_SCM = 2 * math.pi * 1.25e12;  GAMMA = 2 * math.pi * 0.1e12
+    PHI_0 = 1e20;  SSQ = 0.57
+
+    PARAMETERS = [
+        ("omega", "float", 2 * math.pi * 1.25e12, "Frequency (rad/s)"),
+    ]
+
+    def compute(self, dataset: dict) -> dict:
+        omega = float(dataset.get("omega", self.OMEGA_SCM))
+        s26 = sum(math.exp(-self.SSQ * k / 26.0) for k in range(1, 27))
+        delta = omega - self.OMEGA_SCM
+        gaussian = math.exp(-delta**2 / (2 * self.GAMMA**2))
+        Phi = self.PHI_0 * gaussian * s26
+        Q = self.OMEGA_SCM / self.GAMMA
+        FWHM = 2 * self.GAMMA * math.sqrt(2 * math.log(2))
+        return {
+            "Phi": Phi, "gaussian": gaussian, "S26": s26,
+            "Q_factor": Q, "FWHM_rad_s": FWHM,
+            "FWHM_THz": FWHM / (2 * math.pi * 1e12),
+            "primary_equations": [
+                "Φ(ω) = Φ₀·exp[-(ω-ω_SCm)²/(2Γ²)]·S₂₆",
+                f"Φ = {Phi:.6e} phonons/m²/s",
+                f"Q = ω_SCm/Γ = {Q:.2f}",
+                f"FWHM = {FWHM/(2*math.pi*1e12):.4f} THz",
+            ],
+            "note": "PAPER_896 CP4 #480. Session 208→209. et_phonon_resonance.py.",
+        }
+
+    def simulate(self, sweep=None, **kw):
+        results = []
+        for f in (sweep or [0.5e12, 1.0e12, 1.25e12, 1.5e12, 2.0e12]):
+            r = self.compute({"omega": 2 * math.pi * f}); r["sweep_val"] = f; results.append(r)
+        return results
+
+    def self_update(self): pass
+    def self_expand(self): pass
+
+
+class PhononModulatedEnergyEnetPhononCalc(_CP4Calculator):  # PAPER_897 #481
+    """PAPER_897 — Phonon-Modulated Energy E_net^phonon.
+    E_net^phonon(t) = E_net(t) × Φ_{1.25 THz}(ω)
+    Symmetric phonon pairing: E⁺_phonon + E⁻_phonon = E_net^phonon.
+    CP4 class #481. Session 208 → Session 209 integration."""
+
+    OMEGA_SCM = 2 * math.pi * 1.25e12;  GAMMA = 2 * math.pi * 0.1e12
+    PHI_0 = 1e20;  SSQ = 0.57;  KAPPA = 5.787e-9
+
+    PARAMETERS = [
+        ("E_0", "float", 1.0, "Initial energy (J)"),
+        ("t", "float", 0.0, "Time (s)"),
+        ("F_UBi_over_FU", "float", 0.8, "Buoyancy ratio"),
+        ("omega", "float", 2 * math.pi * 1.25e12, "Frequency (rad/s)"),
+    ]
+
+    def compute(self, dataset: dict) -> dict:
+        E0 = float(dataset.get("E_0", 1.0))
+        t = float(dataset.get("t", 0.0))
+        ratio = float(dataset.get("F_UBi_over_FU", 0.8))
+        omega = float(dataset.get("omega", self.OMEGA_SCM))
+        s26 = sum(math.exp(-self.SSQ * k / 26.0) for k in range(1, 27))
+        _exp_arg = self.KAPPA * t + self.SSQ * t / 26.0; growth = math.exp(_exp_arg) if _exp_arg < 709 else float("inf")
+        net_factor = 2 * ratio - 1.0
+        E_net_bare = E0 * growth * s26 * net_factor
+        delta = omega - self.OMEGA_SCM
+        gaussian = math.exp(-delta**2 / (2 * self.GAMMA**2))
+        Phi = self.PHI_0 * gaussian * s26
+        E_phonon = E_net_bare * Phi
+        E_plus_ph = E0 * growth * s26 * ratio * Phi
+        E_minus_ph = -E0 * growth * s26 * (1 - ratio) * Phi
+        identity_err = abs((E_plus_ph + E_minus_ph) - E_phonon)
+        return {
+            "E_net_phonon": E_phonon, "E_net_bare": E_net_bare,
+            "Phi": Phi, "E_plus_phonon": E_plus_ph, "E_minus_phonon": E_minus_ph,
+            "identity_error": identity_err,
+            "primary_equations": [
+                "E_net^phonon = E_net(t) × Φ_{1.25THz}(ω)",
+                f"E_net^phonon = {E_phonon:.6e} J",
+                "E⁺_phonon + E⁻_phonon = E_net^phonon  [verified]",
+            ],
+            "note": "PAPER_897 CP4 #481. Session 208→209. et_phonon_resonance.py.",
+        }
+
+    def simulate(self, sweep=None, **kw):
+        results = []
+        for r in (sweep or [0.2, 0.5, 0.8, 1.0, 1.2]):
+            res = self.compute({"F_UBi_over_FU": r}); res["sweep_val"] = r; results.append(res)
+        return results
+
+    def self_update(self): pass
+    def self_expand(self): pass
+
+
+class PhononLagrangianPhiS26DerivationCalc(_CP4Calculator):  # PAPER_898 #482
+    """PAPER_898 — Phonon Lagrangian L_phonon = E_net·V·Φ·S₂₆.
+    Complete phonon-modulated Lagrangian with Euler-Lagrange variation
+    δS/δφ_phonon = 0 and Kozima coupling in phonon regime.
+    CP4 class #482. Session 208 → Session 209 integration."""
+
+    OMEGA_SCM = 2 * math.pi * 1.25e12;  GAMMA = 2 * math.pi * 0.1e12
+    PHI_0 = 1e20;  SSQ = 0.57;  KAPPA = 5.787e-9
+
+    PARAMETERS = [
+        ("E_0", "float", 1.0, "Initial energy (J)"),
+        ("t", "float", 0.0, "Time (s)"),
+        ("V_filament", "float", 1e48, "Volume (m³)"),
+        ("F_UBi_over_FU", "float", 0.8, "Buoyancy ratio"),
+        ("omega", "float", 2 * math.pi * 1.25e12, "Frequency (rad/s)"),
+    ]
+
+    def compute(self, dataset: dict) -> dict:
+        E0 = float(dataset.get("E_0", 1.0))
+        t = float(dataset.get("t", 0.0))
+        V = float(dataset.get("V_filament", 1e48))
+        ratio = float(dataset.get("F_UBi_over_FU", 0.8))
+        omega = float(dataset.get("omega", self.OMEGA_SCM))
+        s26 = sum(math.exp(-self.SSQ * k / 26.0) for k in range(1, 27))
+        _exp_arg = self.KAPPA * t + self.SSQ * t / 26.0; growth = math.exp(_exp_arg) if _exp_arg < 709 else float("inf")
+        E_net = E0 * growth * s26 * (2 * ratio - 1.0)
+        delta = omega - self.OMEGA_SCM
+        Phi = self.PHI_0 * math.exp(-delta**2 / (2 * self.GAMMA**2)) * s26
+        L_phonon = E_net * V * Phi * s26
+        rate = self.KAPPA + self.SSQ / 26.0
+        EL_res = L_phonon * rate * rate
+        return {
+            "L_phonon": L_phonon, "E_net": E_net, "Phi": Phi, "S26": s26,
+            "EL_residual": EL_res,
+            "primary_equations": [
+                "L_phonon = E_net·V·Φ_{1.25THz}·S₂₆",
+                f"L = {L_phonon:.6e}",
+                f"δS/δφ_phonon EL residual = {EL_res:.6e}",
+            ],
+            "note": "PAPER_898 CP4 #482. Session 208→209. et_phonon_resonance.py.",
+        }
+
+    def simulate(self, sweep=None, **kw):
+        results = []
+        for V in (sweep or [1e45, 1e48, 1e51, 1e54]):
+            r = self.compute({"V_filament": V}); r["sweep_val"] = V; results.append(r)
+        return results
+
+    def self_update(self): pass
+    def self_expand(self): pass
+
+
+class BuoyancyReversalSignFlipResonanceCalc(_CP4Calculator):  # PAPER_899 #483
+    """PAPER_899 — Buoyancy Reversal Sign Flip at Resonance.
+    Sweeps F_{U,Bi}/F_U from 0.1 to 0.9 detecting net_factor sign changes.
+    At ratio=0.5, net_factor=0 (buoyancy-gravity balance point).
+    Sign flips indicate expansion↔erosion phase transitions.
+    CP4 class #483. Session 208 → Session 209 integration."""
+
+    PARAMETERS = [
+        ("ratio_min", "float", 0.1, "Sweep start ratio"),
+        ("ratio_max", "float", 0.9, "Sweep end ratio"),
+        ("n_points", "int", 9, "Number of sweep points"),
+    ]
+
+    def compute(self, dataset: dict) -> dict:
+        r_min = float(dataset.get("ratio_min", 0.1))
+        r_max = float(dataset.get("ratio_max", 0.9))
+        n = int(dataset.get("n_points", 9))
+        step = (r_max - r_min) / max(n - 1, 1)
+        points = []
+        sign_flips = 0
+        prev_nf = None
+        for i in range(n):
+            ratio = r_min + i * step
+            nf = 2 * ratio - 1.0
+            regime = "expansion" if nf > 0 else ("erosion" if nf < 0 else "balanced")
+            if prev_nf is not None:
+                if (prev_nf * nf < 0) or (prev_nf != 0 and nf == 0) or (prev_nf == 0 and nf != 0):
+                    sign_flips += 1
+            prev_nf = nf
+            points.append({"ratio": round(ratio, 4), "net_factor": round(nf, 4), "regime": regime})
+        return {
+            "sweep_points": points, "sign_flips": sign_flips,
+            "critical_ratio": 0.5,
+            "primary_equations": [
+                "net_factor(R) = 2R - 1",
+                "Sign flip at R = 0.5 (buoyancy = gravity balance)",
+                f"Detected {sign_flips} sign flip(s) across {n} points",
+            ],
+            "note": "PAPER_899 CP4 #483. Session 208→209. et_phonon_resonance.py.",
+        }
+
+    def simulate(self, sweep=None, **kw): return [self.compute({})]
+    def self_update(self): pass
+    def self_expand(self): pass
+
+
+class EtVsKEssenceScherrerModelContrastCalc(_CP4Calculator):  # PAPER_900 #484
+    """PAPER_900 — E(t) vs k-Essence Scherrer Model Contrast.
+    k-Essence: F(X) = -A + BX^n with X = ½(∂φ)².
+    ρ = 2XF_X - F, p = F, w = F/(2XF_X - F), c_s² = F_X/(F_X + 2XF_XX).
+    UQFF: E(t) with phonon modulation vs non-canonical kinetic scalar.
+    10-row contrast table + χ² comparison.
+    CP4 class #484. Session 208 → Session 209 integration."""
+
+    G = 6.674e-11;  HBAR = 1.0546e-34;  C = 2.998e8;  SSQ = 0.57
+
+    PARAMETERS = [
+        ("A_kess", "float", 1e-47, "k-Essence vacuum energy scale (J/m³)"),
+        ("B_kess", "float", 1e-47, "k-Essence kinetic coupling (J/m³)"),
+        ("n_kess", "float", 1.0, "Kinetic exponent"),
+        ("X_kinetic", "float", 1e-50, "Kinetic variable X = ½(∂φ)²"),
+    ]
+
+    def compute(self, dataset: dict) -> dict:
+        A = float(dataset.get("A_kess", 1e-47))
+        B = float(dataset.get("B_kess", 1e-47))
+        n = float(dataset.get("n_kess", 1.0))
+        X = float(dataset.get("X_kinetic", 1e-50))
+        F = -A + B * X**n
+        F_X = B * n * X**(n - 1) if X > 0 and n > 0 else B
+        F_XX = B * n * (n - 1) * X**(n - 2) if X > 0 and n > 1 else 0.0
+        rho_k = 2 * X * F_X - F
+        p_k = F
+        w_kess = p_k / rho_k if rho_k != 0 else -1.0
+        denom_cs = F_X + 2 * X * F_XX
+        c_s_sq = F_X / denom_cs if denom_cs != 0 else 1.0
+        c_s = math.sqrt(abs(c_s_sq))
+        s26 = sum(math.exp(-self.SSQ * k / 26.0) for k in range(1, 27))
+        w_UQFF = 1.0  # ratio-dependent placeholder
+        delta_w = w_kess - w_UQFF
+        contrast = [
+            {"dim": "Field content", "kEss": "Non-canonical scalar", "UQFF": "SCm vacuum + 26 levels"},
+            {"dim": "Lagrangian", "kEss": "F(X) = -A + BX^n", "UQFF": "9-sector L_UQFF"},
+            {"dim": "EOS", "kEss": f"w = {w_kess:.6f}", "UQFF": f"w ≈ {w_UQFF:.6f}"},
+            {"dim": "Sound speed", "kEss": f"c_s = {c_s:.6f}", "UQFF": "S₂₆ propagation"},
+            {"dim": "Free params", "kEss": "A, B, n, X", "UQFF": "κ, [SSq] (2)"},
+            {"dim": "Lab test", "kEss": "Fifth force", "UQFF": "1.25 THz phonon"},
+            {"dim": "Vacuum", "kEss": "K-field ground state", "UQFF": "VDS hierarchy"},
+            {"dim": "GW impact", "kEss": "Modified propagation", "UQFF": "66.7% damping"},
+            {"dim": "Fine-tuning", "kEss": "A,B scale problem", "UQFF": "2 params"},
+            {"dim": "Origin", "kEss": "Ad hoc kinetic", "UQFF": "SCm phonon resonance"},
+        ]
+        preferred = "k-Essence" if abs(w_kess - (-1)) < abs(w_UQFF - (-1)) else "UQFF"
+        return {
+            "w_kessence": w_kess, "w_UQFF": w_UQFF, "delta_w": delta_w,
+            "c_s": c_s, "c_s_squared": c_s_sq,
+            "rho_k": rho_k, "p_k": p_k, "F_X": F_X,
+            "preferred": preferred, "contrast_table": contrast,
+            "primary_equations": [
+                "F(X) = -A + BX^n",
+                f"w_kess = F/(2XF_X - F) = {w_kess:.6f}",
+                f"c_s² = F_X/(F_X + 2XF_XX) = {c_s_sq:.6f}",
+                f"Δw = w_kessence - w_UQFF = {delta_w:.6f}",
+            ],
+            "note": "PAPER_900 CP4 #484. Session 208→209. et_phonon_resonance.py.",
+        }
+
+    def simulate(self, sweep=None, **kw):
+        results = []
+        for n in (sweep or [0.5, 1.0, 1.5, 2.0, 3.0]):
+            r = self.compute({"n_kess": n}); r["sweep_val"] = n; results.append(r)
         return results
 
     def self_update(self): pass

@@ -823,6 +823,30 @@ from CondensedPhysics4 import (
     InertiaUQFFWaveEnergyThreeLegProofsetCalculator,
     HydrogenCompressedSpaceEspaceThreeLegCalculator,
     Session116GrokShareE70525FaHubCalculator,
+    # Session 209 — Sessions 204-208 standalone module integration (PAPER_878–900)
+    SCmGaussianActivationBFieldSuppressionCalc,
+    BuoyancyKleinGordonScalarFieldEOMCalc,
+    PositiveEtBuoyancyExpansionMasterCalc,
+    KozimaExpansionNeutronDropCouplingCalc,
+    ExpansionLagrangianEulerLagrangeCalc,
+    NegativeEtBuoyancyErosionMasterCalc,
+    NetEnergyEplusEminusEvolutionCalc,
+    GWDampingErosion66PercentCalc,
+    ErosionLagrangianEulerLagrangeCalc,
+    UQFFVsStringTheory10AspectComparisonCalc,
+    EtFullLagrangianUnifiedDerivationCalc,
+    EtVsLambdaCDMDarkEnergyContrastCalc,
+    SCmVacuumDensityEvolutionCalc,
+    SCmNetEnergyBuoyancyRegimeCalc,
+    SCmKozimaPhononResonanceCouplingCalc,
+    SCmPhononModulatedEnergyPhiCalc,
+    SCmEtLagrangianVariationCalc,
+    EtVsQuintessenceScalarFieldContrastCalc,
+    PhononModulationFactor125THzGaussianCalc,
+    PhononModulatedEnergyEnetPhononCalc,
+    PhononLagrangianPhiS26DerivationCalc,
+    BuoyancyReversalSignFlipResonanceCalc,
+    EtVsKEssenceScherrerModelContrastCalc,
 )
 
 CP4_CALCULATORS = {
@@ -931,6 +955,30 @@ CP4_CALCULATORS = {
     'InertiaUQFFWaveEnergyThreeLegProofsetCalculator': InertiaUQFFWaveEnergyThreeLegProofsetCalculator,
     'HydrogenCompressedSpaceEspaceThreeLegCalculator': HydrogenCompressedSpaceEspaceThreeLegCalculator,
     'Session116GrokShareE70525FaHubCalculator': Session116GrokShareE70525FaHubCalculator,
+    # Session 209 — Sessions 204-208 standalone module integration (PAPER_878–900)
+    'SCmGaussianActivationBFieldSuppressionCalc': SCmGaussianActivationBFieldSuppressionCalc,
+    'BuoyancyKleinGordonScalarFieldEOMCalc': BuoyancyKleinGordonScalarFieldEOMCalc,
+    'PositiveEtBuoyancyExpansionMasterCalc': PositiveEtBuoyancyExpansionMasterCalc,
+    'KozimaExpansionNeutronDropCouplingCalc': KozimaExpansionNeutronDropCouplingCalc,
+    'ExpansionLagrangianEulerLagrangeCalc': ExpansionLagrangianEulerLagrangeCalc,
+    'NegativeEtBuoyancyErosionMasterCalc': NegativeEtBuoyancyErosionMasterCalc,
+    'NetEnergyEplusEminusEvolutionCalc': NetEnergyEplusEminusEvolutionCalc,
+    'GWDampingErosion66PercentCalc': GWDampingErosion66PercentCalc,
+    'ErosionLagrangianEulerLagrangeCalc': ErosionLagrangianEulerLagrangeCalc,
+    'UQFFVsStringTheory10AspectComparisonCalc': UQFFVsStringTheory10AspectComparisonCalc,
+    'EtFullLagrangianUnifiedDerivationCalc': EtFullLagrangianUnifiedDerivationCalc,
+    'EtVsLambdaCDMDarkEnergyContrastCalc': EtVsLambdaCDMDarkEnergyContrastCalc,
+    'SCmVacuumDensityEvolutionCalc': SCmVacuumDensityEvolutionCalc,
+    'SCmNetEnergyBuoyancyRegimeCalc': SCmNetEnergyBuoyancyRegimeCalc,
+    'SCmKozimaPhononResonanceCouplingCalc': SCmKozimaPhononResonanceCouplingCalc,
+    'SCmPhononModulatedEnergyPhiCalc': SCmPhononModulatedEnergyPhiCalc,
+    'SCmEtLagrangianVariationCalc': SCmEtLagrangianVariationCalc,
+    'EtVsQuintessenceScalarFieldContrastCalc': EtVsQuintessenceScalarFieldContrastCalc,
+    'PhononModulationFactor125THzGaussianCalc': PhononModulationFactor125THzGaussianCalc,
+    'PhononModulatedEnergyEnetPhononCalc': PhononModulatedEnergyEnetPhononCalc,
+    'PhononLagrangianPhiS26DerivationCalc': PhononLagrangianPhiS26DerivationCalc,
+    'BuoyancyReversalSignFlipResonanceCalc': BuoyancyReversalSignFlipResonanceCalc,
+    'EtVsKEssenceScherrerModelContrastCalc': EtVsKEssenceScherrerModelContrastCalc,
 }
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -959,9 +1007,9 @@ ALL_CALCULATORS = {
 
 # Module metadata
 # Module metadata
-AGGREGATOR_VERSION = "3.3.0"
-TOTAL_MODULES = 24  # CP1 (1,227 classes, 168,803L), CP2 (659 classes), CP3 (219 classes, 13,944L), CP4 (453 classes, v5.61 Session 200C), + 10 thread registries + source179 PCR module
-# Updated: Session 200C v5.61 (2026-04-05) — CP4 369→453 (#378–#461); PAPER_794–877; 896 PDFs; 877/1000 papers (87.7%)
+AGGREGATOR_VERSION = "3.5.0"
+TOTAL_MODULES = 24  # CP1 (1,227 classes, 168,803L), CP2 (659 classes), CP3 (219 classes, 13,944L), CP4 (484 classes, v5.62 Session 209), + 10 thread registries + source179 PCR module
+# Updated: Session 209 v5.62 (2026-04-08) — CP4 461→484 (#462–#484); PAPER_878–900; 900/1000 papers (90.0%); Sessions 204-208 standalone integration
 
 
 def get_calculator(name: str):
@@ -1178,4 +1226,29 @@ __all__ = [
     'HolographicPrincipleCalculator',
     'BlackHoleThermodynamicsCalculator',
     'BH_SYSTEMS',
+
+    # Session 209 — CP4 #462-484 (PAPER_878–900)
+    'SCmGaussianActivationBFieldSuppressionCalc',
+    'BuoyancyKleinGordonScalarFieldEOMCalc',
+    'PositiveEtBuoyancyExpansionMasterCalc',
+    'KozimaExpansionNeutronDropCouplingCalc',
+    'ExpansionLagrangianEulerLagrangeCalc',
+    'NegativeEtBuoyancyErosionMasterCalc',
+    'NetEnergyEplusEminusEvolutionCalc',
+    'GWDampingErosion66PercentCalc',
+    'ErosionLagrangianEulerLagrangeCalc',
+    'UQFFVsStringTheory10AspectComparisonCalc',
+    'EtFullLagrangianUnifiedDerivationCalc',
+    'EtVsLambdaCDMDarkEnergyContrastCalc',
+    'SCmVacuumDensityEvolutionCalc',
+    'SCmNetEnergyBuoyancyRegimeCalc',
+    'SCmKozimaPhononResonanceCouplingCalc',
+    'SCmPhononModulatedEnergyPhiCalc',
+    'SCmEtLagrangianVariationCalc',
+    'EtVsQuintessenceScalarFieldContrastCalc',
+    'PhononModulationFactor125THzGaussianCalc',
+    'PhononModulatedEnergyEnetPhononCalc',
+    'PhononLagrangianPhiS26DerivationCalc',
+    'BuoyancyReversalSignFlipResonanceCalc',
+    'EtVsKEssenceScherrerModelContrastCalc',
 ]
