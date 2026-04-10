@@ -257,18 +257,19 @@ LAGRANGIAN_SECTORS = [
     LagrangianSector(
         name="E-plus-Expansion",
         symbol="L_exp",
-        equation_latex=r"L_{exp} = \beta_i \sum_{i=1}^{4} Ug_i \cdot "
-                       r"\Omega_g \frac{M}{d_g} [UA] "
-                       r"+ F_n \cdot S_{26}([SSq]) \cdot \frac{F_{U,Bi}}{F_U} "
-                       r"\cdot e^{\kappa t + [SSq] t / 26}",
-        fields=["E_plus", "phi_expansion", "F_UBi_ratio"],
+        equation_latex=r"L_{exp} = E^+(t) \cdot V_{\text{filament}} \cdot S_{26}([SSq]) "
+                       r"= E_0 e^{\kappa t + [SSq] t / 26} S_{26} \frac{F_{U,Bi}}{F_U} "
+                       r"\cdot V_{\text{filament}} \cdot S_{26}",
+        fields=["E_plus", "phi_expansion", "F_UBi_ratio", "V_filament"],
         yields_forces=["F_expansion", "F_kozima_expansion"],
         description="Positive energy expansion driven by SCm buoyancy surplus. "
+                    "L_{E⁺} = E⁺(t) · V_filament · S₂₆([SSq]) where "
                     "E⁺(t) = E₀ exp(κt + [SSq]t/26) S₂₆ (F_{U,Bi}/F_U). "
+                    "V_filament is the structure volume (~1e48 m³ nebular, ~1e68 m³ cosmological). "
                     "Variation δS/δφ_expansion = 0 recovers the exponential growth "
                     "equation with S₂₆ polylogarithmic modulation and mock theta "
                     "acceleration. Kozima coupling adds F_neutron × E⁺(t) channel. "
-                    "Added Session 205."
+                    "Session 205 (expanded Session 206 with V_filament + ΛCDM)."
     ),
     # ──────────────────────────────────────────────────────────────────────
     # SECTOR 11: E⁻(t) Erosion (Session 205 — buoyancy deficit decay)
@@ -279,18 +280,20 @@ LAGRANGIAN_SECTORS = [
     LagrangianSector(
         name="E-minus-Erosion",
         symbol="L_ero",
-        equation_latex=r"L_{ero} = -\beta_i \sum_{i=1}^{4} Ug_i \cdot "
-                       r"\Omega_g \frac{M}{d_g} [UA] "
-                       r"+ F_n \cdot S_{26}([SSq]) \cdot (1 - \frac{F_{U,Bi}}{F_U}) "
-                       r"\cdot e^{\kappa t + [SSq] t / 26}",
-        fields=["E_minus", "phi_erosion", "F_UBi_ratio"],
+        equation_latex=r"L_{ero} = E^-(t) \cdot V_{\text{filament}} \cdot S_{26}([SSq]) "
+                       r"= -E_0 e^{\kappa t + [SSq] t / 26} S_{26} (1 - \frac{F_{U,Bi}}{F_U}) "
+                       r"\cdot V_{\text{filament}} \cdot S_{26}",
+        fields=["E_minus", "phi_erosion", "F_UBi_ratio", "V_filament"],
         yields_forces=["F_erosion", "F_gw_damping"],
         description="Negative energy erosion (buoyancy deficit → decay). "
+                    "L_{E⁻} = E⁻(t) · V_filament · S₂₆([SSq]) where "
                     "E⁻(t) = −E₀ exp(κt + [SSq]t/26) S₂₆ (1 − F_{U,Bi}/F_U). "
+                    "V_filament is the structure volume (~1e48 m³ nebular, ~1e68 m³ cosmological). "
                     "Net energy E_net = E⁺ + E⁻ = E₀ exp(...) S₂₆ [2(F_{U,Bi}/F_U)−1]. "
                     "Critical balance at F_{U,Bi}/F_U = 0.5. "
                     "GW damping: h_UQFF = h_GR × [1 − |E⁻|/E_GW] → 66.7% strain "
-                    "reduction in GW170817. Added Session 205."
+                    "reduction in GW170817. "
+                    "Session 205 (expanded Session 206 with V_filament + ΛCDM)."
     ),
 ]
 

@@ -1,5 +1,5 @@
 """
-WSTP Kernel Demo Runner — Live Wolfram Kernel Session for 9-Sector UQFF Lagrangian
+WSTP Kernel Demo Runner — Live Wolfram Kernel Session for 11-Sector UQFF Lagrangian
 
 Session 204 | Daniel Murphy
 PURPOSE: Connect to a running Wolfram kernel (via wolframscript subprocess or
@@ -176,6 +176,48 @@ def build_demo_expressions(wl_path: str) -> List[Dict[str, str]]:
     exprs.append({
         "label": "GW170817 apparent distance bias",
         "code": 'ApparentDistanceBias[40 * 3.086*^22, 0.333] // N',
+    })
+
+    # ── Sectors 10-11: E(t) Expansion/Erosion (Session 206) ──
+
+    # 12. E⁺(t) positive expansion
+    exprs.append({
+        "label": "Sector 10 — E⁺(t) Expansion (t=1e9 s, F_UBi/F_U=1.1)",
+        "code": ('Eplus[t_, E0_, k_, SSq_, FUBi_, FU_] := '
+                 'E0 * Exp[k t + SSq t / 26] * PolyLog[26, SSq] * (FUBi / FU); '
+                 'Eplus[10^9, 1.0, 5.787*^-9, 0.57, 1.1, 1.0] // N'),
+    })
+
+    # 13. E⁻(t) negative erosion
+    exprs.append({
+        "label": "Sector 11 — E⁻(t) Erosion (t=1e9 s, F_UBi/F_U=0.3)",
+        "code": ('Eminus[t_, E0_, k_, SSq_, FUBi_, FU_] := '
+                 '-E0 * Exp[k t + SSq t / 26] * PolyLog[26, SSq] * (1 - FUBi / FU); '
+                 'Eminus[10^9, 1.0, 5.787*^-9, 0.57, 0.3, 1.0] // N'),
+    })
+
+    # 14. E_net combined
+    exprs.append({
+        "label": "E_net = E⁺ + E⁻ (ratio=0.6 → expanding)",
+        "code": ('Enet[t_, E0_, k_, SSq_, FUBi_, FU_] := '
+                 'E0 * Exp[k t + SSq t / 26] * PolyLog[26, SSq] * (2 FUBi / FU - 1); '
+                 'Enet[0, 1.0, 5.787*^-9, 0.57, 0.6, 1.0] // N'),
+    })
+
+    # 15. Full E(t) Lagrangian: L_{E(t)} = E_net · V_filament · S₂₆
+    exprs.append({
+        "label": "L_{E(t)} = E_net · V_filament · S₂₆ (nebular V=1e48 m³)",
+        "code": ('LEt[t_, E0_, k_, SSq_, FUBi_, FU_, Vfil_] := '
+                 'Enet[t, E0, k, SSq, FUBi, FU] * Vfil * PolyLog[26, SSq]; '
+                 'LEt[0, 1.0, 5.787*^-9, 0.57, 0.6, 1.0, 10^48] // N'),
+    })
+
+    # 16. ΛCDM comparison: Δw
+    exprs.append({
+        "label": "ΛCDM comparison: Δw = w_UQFF − w_ΛCDM",
+        "code": ('wLCDM = -1; H0 = 2.195*^-18; '
+                 'wUQFF = -1 + 2 (5.787*^-9 + 0.57 / 26) / (3 H0); '
+                 '{wUQFF, wUQFF - wLCDM} // N'),
     })
 
     return exprs
@@ -373,7 +415,7 @@ class WSTPKernelDemoRunner:
 # ── §6  MAIN ──────────────────────────────────────────────────────────────
 
 def main():
-    """Run live WSTP kernel demo on the 9-sector UQFF Lagrangian."""
+    """Run live WSTP kernel demo on the 11-sector UQFF Lagrangian."""
     print("=" * 72)
     print("WSTP Kernel Demo Runner — 9-Sector UQFF Lagrangian Live Session")
     print("=" * 72)

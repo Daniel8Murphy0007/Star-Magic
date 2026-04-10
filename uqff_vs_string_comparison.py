@@ -424,6 +424,83 @@ class ComparisonScoring:
 
 
 # ══════════════════════════════════════════════════════════════════════════════
+# §4.5 ΛCDM COMPARISON
+# ══════════════════════════════════════════════════════════════════════════════
+
+class LCDMComparison:
+    """
+    E(t) vs ΛCDM dark-energy comparison.
+
+    ΛCDM: constant Λ > 0, w = −1, ρ_Λ ≈ 5.96e-27 kg/m³, 10^120 fine-tuning.
+    UQFF: time-dependent E(t), sign-flipping, 2 calibrated parameters, lab-testable.
+    """
+
+    H_0       = 2.195e-18     # s⁻¹ (67.4 km/s/Mpc)
+    RHO_CRIT  = 3 * (2.195e-18)**2 / (8 * PI * G)
+    RHO_LAMBDA = 0.692 * RHO_CRIT
+    LAMBDA_COSM = 8 * PI * G * RHO_LAMBDA / c**2
+
+    def compute(self, dataset: dict = None) -> Dict[str, Any]:
+        if dataset is None:
+            dataset = {}
+        z       = dataset.get('z', 0.5)
+        w_obs   = dataset.get('w_obs', -1.03)
+        sigma_w = dataset.get('sigma_w', 0.03)
+
+        w_LCDM = -1.0
+        rate = KAPPA + SSQ / N_LEVELS
+        w_UQFF = -1.0 + 2.0 * rate / (3.0 * self.H_0)  # deviation from w=-1
+
+        Delta_w = w_UQFF - w_LCDM
+        chi2_LCDM = ((w_LCDM - w_obs) / sigma_w) ** 2
+        chi2_UQFF = ((w_UQFF - w_obs) / sigma_w) ** 2
+        Delta_chi2 = chi2_LCDM - chi2_UQFF
+
+        rho_QFT = 1e113
+        fine_tuning_exp = int(math.log10(rho_QFT / self.RHO_LAMBDA))
+
+        return {
+            "w_LCDM": w_LCDM,
+            "w_UQFF": w_UQFF,
+            "Delta_w": Delta_w,
+            "chi2_LCDM": chi2_LCDM,
+            "chi2_UQFF": chi2_UQFF,
+            "Delta_chi2": Delta_chi2,
+            "preferred": "UQFF" if Delta_chi2 > 0 else "LCDM",
+            "rho_Lambda": self.RHO_LAMBDA,
+            "Lambda": self.LAMBDA_COSM,
+            "fine_tuning_LCDM": f"~10^{fine_tuning_exp}",
+            "fine_tuning_UQFF": "None (2 free params)",
+            "contrast_table": [
+                {"aspect": "Form",
+                 "LCDM": f"Constant Λ = {self.LAMBDA_COSM:.4e} m⁻²",
+                 "UQFF": "E_net(t) = E₀ exp(κt+[SSq]t/26) S₂₆ [2r−1]"},
+                {"aspect": "Dynamics",
+                 "LCDM": "ä/a = Λ/3 = constant acceleration (de Sitter)",
+                 "UQFF": "ä/a ∝ exp(κt) S₂₆ (exponential, sign-flipping)"},
+                {"aspect": "Physical origin",
+                 "LCDM": "Vacuum energy (unexplained magnitude)",
+                 "UQFF": "SCm buoyancy opposition (superconductive vacuum)"},
+                {"aspect": "Sign",
+                 "LCDM": "Always Λ > 0 (accelerating expansion only)",
+                 "UQFF": "Positive (expansion) ↔ negative (erosion)"},
+                {"aspect": "GW prediction",
+                 "LCDM": "Standard GR waveforms (no damping)",
+                 "UQFF": "66.7% strain reduction + 367.8-cycle phase lag"},
+                {"aspect": "Lab testability",
+                 "LCDM": "None (Planck scale)",
+                 "UQFF": "1.25 THz phonon, micro-plasmoid, LENR COP>10"},
+                {"aspect": "Cosmogenesis",
+                 "LCDM": "Inflation + Λ (no pre-gravity)",
+                 "UQFF": "SCm phonon → DPM → EM bang + 2 cycles"},
+                {"aspect": "Fine-tuning",
+                 "LCDM": f"Severe (~10^{fine_tuning_exp} discrepancy)",
+                 "UQFF": "None — 2 params from CMB/Kepler/ALMA"},
+            ],
+        }
+
+
+# ══════════════════════════════════════════════════════════════════════════════
 # §5  FULL COMPARISON REPORT
 # ══════════════════════════════════════════════════════════════════════════════
 
@@ -436,6 +513,7 @@ class UQFFvsStringComparison:
         self.lagrangian = LagrangianComparison()
         self.dimensions = DimensionComparison()
         self.scoring = ComparisonScoring()
+        self.lcdm = LCDMComparison()
 
     def compute(self, dataset: dict = None) -> Dict[str, Any]:
         if dataset is None:
@@ -444,11 +522,13 @@ class UQFFvsStringComparison:
         lag = self.lagrangian.compute(dataset)
         dim = self.dimensions.compute(dataset)
         score = self.scoring.compute(dataset)
+        lcdm = self.lcdm.compute(dataset)
 
         return {
             "lagrangian_comparison": lag,
             "dimension_comparison": dim,
             "scoring": score,
+            "lcdm_comparison": lcdm,
             "comparison_table": [
                 {
                     "aspect": a.name,
@@ -468,6 +548,16 @@ class UQFFvsStringComparison:
                 "The 26D hierarchy in UQFF is mathematically distinct from String Theory's "
                 "10/11D compactification — it is a Ramanujan-accelerated polylog ladder rather "
                 "than a Calabi-Yau manifold."
+            ),
+            "lcdm_critique": (
+                "ΛCDM is empirically successful but treats dark energy as a constant Λ "
+                "with no first-principle derivation or lab anchor. UQFF E(t) replaces Λ "
+                "with a buoyancy-driven, sign-flipping term derived from SCm vacuum structure. "
+                "It reproduces observed GW damping/phase lag and is testable in table-top "
+                "LENR experiments. E(t) explains both accelerating expansion and filament "
+                "erosion with the same mechanism, eliminating the need for a separate "
+                "cosmological constant. The 10^120 fine-tuning problem vanishes: two "
+                "calibrated parameters ([SSq]=0.57, κ=0.0005/day) replace the unexplained Λ."
             ),
         }
 
@@ -558,6 +648,27 @@ def _run_self_test():
     print(f"\nT8  S₂₆ in dimension comparison = {s26:.10e}")
     assert 0.0 < s26 < 1.0
     passed += 1
+    print("    PASS")
+
+    # Test 9: ΛCDM comparison
+    lc = LCDMComparison()
+    lr2 = lc.compute()
+    print(f"\nT9  w_ΛCDM = {lr2['w_LCDM']:.1f}, w_UQFF = {lr2['w_UQFF']:.6f}")
+    print(f"    Δw = {lr2['Delta_w']:.6f}, preferred = {lr2['preferred']}")
+    assert lr2['w_LCDM'] == -1.0
+    assert lr2['Delta_w'] != 0
+    assert len(lr2['contrast_table']) == 8
+    passed += 1
+    print("    PASS")
+
+    # Test 10: Full report includes ΛCDM
+    comp = UQFFvsStringComparison()
+    full = comp.compute()
+    assert "lcdm_comparison" in full
+    assert "lcdm_critique" in full
+    assert full["lcdm_comparison"]["w_LCDM"] == -1.0
+    passed += 1
+    print("\nT10 Full report includes ΛCDM section: valid")
     print("    PASS")
 
     print(f"\n{'=' * 72}")
