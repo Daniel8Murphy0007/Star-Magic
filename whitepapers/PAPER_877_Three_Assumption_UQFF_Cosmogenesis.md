@@ -256,7 +256,45 @@ $$V(\phi_{\rm NS}) = \frac{1}{2} m^2 \phi_{\rm NS}^2 + \frac{\lambda}{4!} \phi_{
 
 $$\boxed{\frac{\delta S}{\delta \phi_{\rm NS}} = \nabla^2 \phi_{\rm NS} - (4\pi G \rho_{\rm NS}/c^2)\phi_{\rm NS} + \Omega_{\rm spin} \partial_t \phi_{\rm NS} = 0}$$
 
-### §A.4 Cosmogenesis Linkage Chain
+### §A.4 Kaluza-Klein-26D Compact Dimension Derivation (Session 200C/204)
+
+**Lagrangian Sector:** Kaluza-Klein-26D (Sector 9 of 9-sector UQFF Lagrangian)
+
+**Generalized Coordinate:** `R_n` (compact dimension radius at state n)
+
+**Lagrangian:**
+
+$$\mathcal{L}_{\rm cosmo} = \mathcal{L}_{\rm KK(26D)} + \mathcal{L}_{\rm EH(emergent)} + \mathcal{L}_{\rm buoy(proto)} + \mathcal{L}_{\rm Dirac(proto\text{-}H)}$$
+
+$$\mathcal{L}_{\rm KK} = \int d^{26}x \sqrt{-g_{26}} \left[\frac{R_{26}}{2\kappa_{26}^2}\right]$$
+
+**Euler-Lagrange Equation (compact dimension):**
+
+$$\boxed{\frac{d^2 R_n}{dt^2} + \frac{n^2 \hbar^2}{m_p R_n^3} = -\frac{dV_{\rm eff}}{dR_n}}$$
+
+**Result:**
+
+$$R_{26} \to \text{equilibrium} \implies g_{\rm emergent} = \frac{G M_{\rm proto}}{R_{26}^2}$$
+
+$$\text{Proto-H} = \text{Proto-Fe at } Z_{\rm id} = 26 \text{ (magnetic identity)}$$
+
+**Critical Values:**
+- `n_states = 26` (quantum atomic states before mass)
+- `proto_H_Fe_identity = True` (Proto-Hydrogen = Proto-Iron at Z=26)
+- States 1-13: pseudo-monopole (1/r DPM coherence building)
+- States 14-26: dipole emergence (gravity crystallizes)
+- Quantum-to-mass gradient at 7-10 U_mag degrees
+
+**Derivation Chain:**
+1. $S_{\rm KK} = \int d^{26}x \sqrt{-g_{26}} \left[\frac{R_{26}}{2\kappa_{26}^2} + \phi_{\rm proto} \text{ terms}\right]$
+2. $\delta S / \delta g_{MN} = 0$ → Einstein field equations emerge at state 26
+3. $V_{\rm proto}(n) = \frac{\hbar^2 n^2}{2 m_{\rm proto} R_{\rm proto}^2}$ for each quantum state
+4. At n=26: $R_{26}$ stabilizes, $G_{MN} = 8\pi G T_{MN}/c^4$ emerges
+5. **Conclusion: Gravity did not birth the universe — SCm did**
+
+**Code Reference:** `uqff_lagrangian_derivation.py` → `EULER_LAGRANGE_NEW_TERM_MAPPINGS["cosmogenesis_proto_shell"]`
+
+### §A.5 Cosmogenesis Linkage Chain
 
 $$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\rm NS} = 0$$
 
