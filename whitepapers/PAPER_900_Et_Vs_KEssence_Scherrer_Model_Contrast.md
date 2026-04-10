@@ -11,7 +11,7 @@
 
 ## Abstract
 
-Comparison of UQFF E(t) with k-essence Scherrer model dark energy. k-Essence uses non-canonical kinetic Lagrangian F(X) = -A + BX^n with X = ½(∂φ)². Derives ρ = 2XF_X - F, p = F, w = F/(2XF_X - F), and sound speed c_s² = F_X/(F_X + 2XF_XX). 10-row contrast table covering field content, Lagrangian, EOS, sound speed, free parameters, lab testability, vacuum, GW impact, fine-tuning, and origin.
+Comparison of UQFF E(t) with k-essence Scherrer model dark energy. k-Essence uses non-canonical kinetic Lagrangian `F(X) = -A + BX^n` with `X = (1/2)(∂φ)²`. Derives `ρ = 2XF_X - F`, `p = F`, `w = F/(2XF_X - F)`, and sound speed `c_s² = F_X/(F_X + 2XF_XX)`. 10-row contrast table covering field content, Lagrangian, EOS, sound speed, free parameters, lab testability, vacuum, GW impact, fine-tuning, and origin.
 
 ---
 
@@ -32,7 +32,7 @@ c_s² = F_X/(F_X + 2XF_XX)
 | A_kess | 1e-47 J/m³ | k-Essence constant A |
 | B_kess | 1e-47 J/m³ | k-Essence constant B |
 | n_kess | 1.0 | k-Essence power index |
-| X_kinetic | 1e-50 | Kinetic term X = ½(∂φ)² |
+| X_kinetic | 1e-50 | Kinetic term X = (1/2)(d\_phi)^2 |
 
 ---
 

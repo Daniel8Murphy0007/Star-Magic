@@ -11,7 +11,7 @@
 
 ## Abstract
 
-Euler-Lagrange derivation for the buoyancy scalar field φ_buoy(x,t) via Klein-Gordon equation with UQFF buoyancy source. The Lagrangian L = ½(∂_μφ)² - ½m_eff²φ² + J_buoy·φ yields the EOM □φ + m_eff²φ = J_buoy where m_eff² encodes the buoyancy mass scale from β_i·ΣUg·Ω_g·M/(d_g·c²·ħ²)·[UA].
+Euler-Lagrange derivation for the buoyancy scalar field `φ_buoy(x,t)` via Klein-Gordon equation with UQFF buoyancy source. The Lagrangian `L = (1/2)(∂_μφ)² - (1/2)m_eff²φ² + J_buoy·φ` yields the EOM `□φ + m_eff²φ = J_buoy` where `m_eff²` encodes the buoyancy mass scale from `β_i·ΣUg·Ω_g·M/(d_g·c²·ħ²)·[UA]`.
 
 ---
 
