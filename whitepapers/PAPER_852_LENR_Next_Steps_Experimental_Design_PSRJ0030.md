@@ -488,3 +488,47 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 `MAIN_1_CoAnQi.cpp`, and Wolfram kernels (`uqff_kozima_kernel.wl`, `uqff_s26_kernel.wl`,
 `uqff_mock_theta_pi_kernel.wl`).*
 
+
+---
+
+## Appendix: Session 209 CP4 Integration Cross-Reference
+
+> *Session 209 (April 2026, commit `cf493abd`) wrapped Sessions 204-208
+> standalone physics modules as CP4 calculator classes. This paper's
+> experimental design framework now has parameterized calculator support.*
+
+### S209.1 CP4 Calculator Mappings for Experimental Validation
+
+| CP4 Class | # | PAPER | Experimental Track |
+|-----------|---|-------|-------------------|
+| `SCmGaussianActivationBFieldSuppressionCalc` | 462 | PAPER_878 | Track 1: B-field suppression in Pd-D cathode |
+| `PhononModulationFactor125THzGaussianCalc` | 480 | PAPER_896 | Track 2: 1.25 THz phonon Q-factor measurement |
+| `PhononModulatedEnergyEnetPhononCalc` | 481 | PAPER_897 | Track 2: Phonon-modulated excess heat prediction |
+| `PhononLagrangianPhiS26DerivationCalc` | 482 | PAPER_898 | Track 3: Lagrangian formalism for DFT comparison |
+| `SCmKozimaPhononResonanceCouplingCalc` | 476 | PAPER_892 | Track 4: Cross-section prediction for neutron flux |
+| `BuoyancyReversalSignFlipResonanceCalc` | 483 | PAPER_899 | Track 4: Sign flip detection in calorimetry |
+
+### S209.2 Computational Pipeline for Experimental Predictions
+
+The CP4 pipeline enables direct numerical predictions for experimental design:
+
+```python
+from CondensedPhysics4 import (
+    PhononModulationFactor125THzGaussianCalc,
+    SCmGaussianActivationBFieldSuppressionCalc,
+)
+# Predict expected phonon Q-factor
+q_result = PhononModulationFactor125THzGaussianCalc().compute({})
+# Predict B-field threshold for activation
+b_result = SCmGaussianActivationBFieldSuppressionCalc().compute({"B": 0.5})
+```
+
+### S209.3 Corpus Metrics (April 10, 2026)
+
+| Metric | Value |
+|--------|-------|
+| Total papers | 900/1000 (90.0%) |
+| CP4 classes | 484 |
+| Experimental tracks covered by CP4 | 4/4 |
+
+*Session 209 v5.62 — integrated by GitHub Copilot (Claude Opus 4.6)*

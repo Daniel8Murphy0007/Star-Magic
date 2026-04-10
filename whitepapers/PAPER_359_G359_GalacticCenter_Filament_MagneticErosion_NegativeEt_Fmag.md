@@ -220,3 +220,50 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 `MAIN_1_CoAnQi.cpp`, and Wolfram kernels (`uqff_kozima_kernel.wl`, `uqff_s26_kernel.wl`,
 `uqff_mock_theta_pi_kernel.wl`).*
 
+
+---
+
+## Appendix: Session 209 CP4 Integration Cross-Reference
+
+> *Session 209 (April 2026, commit `cf493abd`) wrapped Sessions 204-208
+> standalone modules as CP4 classes. This paper's G359 negative E(t) magnetic
+> erosion analysis now connects to the E(t) engine CP4 pipeline.*
+
+### S209.1 Direct CP4 Calculator Mappings
+
+| CP4 Class | # | PAPER | Connection to G359 |
+|-----------|---|-------|-------------------|
+| `NegativeEtBuoyancyErosionMasterCalc` | 467 | PAPER_883 | $E^-(t) = -E_0 \cdot \exp(\kappa t + [SSq]t/26) \cdot S_{26} \cdot (1 - F_{U,Bi}/F_U)$ |
+| `GWDampingErosion66PercentCalc` | 469 | PAPER_885 | 66.7% damping constraint applicable to filament erosion |
+| `ErosionLagrangianEulerLagrangeCalc` | 470 | PAPER_886 | $L_{\rm erosion} = E^-(t) \cdot V \cdot S_{26}$ Lagrangian for G359 |
+| `SCmGaussianActivationBFieldSuppressionCalc` | 462 | PAPER_878 | $A_{\rm SCm}(B)$ for G359 magnetic field profile |
+
+### S209.2 G359 Erosion Regime in E(t) Framework
+
+G359's negative E(t) erosion (magnetic field-driven filament dissipation)
+maps directly to the Session 205 erosion engine:
+
+```
+G359 erosion: E(t) < 0  →  F_mag dominates  →  filament dissipation
+CP4 class:    NegativeEtBuoyancyErosionMasterCalc(F_UBi_over_FU=0.3)
+Lagrangian:   ErosionLagrangianEulerLagrangeCalc(V_filament=1e48)
+```
+
+### S209.3 Full E(t) Comparison Framework
+
+| CP4 Class | # | PAPER | G359 Relevance |
+|-----------|---|-------|----------------|
+| `PositiveEtBuoyancyExpansionMasterCalc` | 464 | PAPER_880 | Counter-regime: what would drive G359 growth |
+| `NetEnergyEplusEminusEvolutionCalc` | 468 | PAPER_884 | Net balance: confirms G359 is erosion-dominated |
+| `UQFFVsStringTheory10AspectComparisonCalc` | 471 | PAPER_887 | Theoretical context for magnetic erosion |
+| `EtFullLagrangianUnifiedDerivationCalc` | 472 | PAPER_888 | Full Lagrangian containing G359's erosion sector |
+
+### S209.4 Corpus Metrics (April 10, 2026)
+
+| Metric | Value |
+|--------|-------|
+| Total papers | 900/1000 (90.0%) |
+| CP4 classes | 484 |
+| Erosion-regime CP4 classes | 4 (direct) |
+
+*Session 209 v5.62 — integrated by GitHub Copilot (Claude Opus 4.6)*

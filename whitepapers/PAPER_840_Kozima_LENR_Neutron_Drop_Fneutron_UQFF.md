@@ -586,3 +586,46 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 `MAIN_1_CoAnQi.cpp`, and Wolfram kernels (`uqff_kozima_kernel.wl`, `uqff_s26_kernel.wl`,
 `uqff_mock_theta_pi_kernel.wl`).*
 
+
+---
+
+## Appendix: Session 209 CP4 Integration Cross-Reference
+
+> *Session 209 (April 2026, commit `cf493abd`) integrated Sessions 204-208
+> standalone modules into the CP4 calculator pipeline. This paper's Kozima LENR
+> F_neutron framework is now wrapped as parameterized CP4 calculator classes.*
+
+### S209.1 Direct CP4 Calculator Mappings
+
+| CP4 Class | # | PAPER | Equation Wrapped |
+|-----------|---|-------|-----------------|
+| `SCmGaussianActivationBFieldSuppressionCalc` | 462 | PAPER_878 | $A_{\rm SCm}(B) = \exp[-B^2/B_{\rm crit}^2]$ (this paper §K.5) |
+| `BuoyancyKleinGordonScalarFieldEOMCalc` | 463 | PAPER_879 | $\Box\phi + m_{\rm eff}^2\phi = J_{\rm buoy}$ (this paper §8) |
+| `KozimaExpansionNeutronDropCouplingCalc` | 465 | PAPER_881 | $F_{\rm coupled} = F_{\rm Kozima}(\omega_{\rm SCm}) \times E^+(t) \times \Phi(\omega)$ |
+| `SCmKozimaPhononResonanceCouplingCalc` | 476 | PAPER_892 | $\sigma_n^{\rm SCm}(\omega, n)$ (this paper §K.2) |
+| `PhononModulationFactor125THzGaussianCalc` | 480 | PAPER_896 | $Q = \omega_{\rm SCm}/(2\Gamma)$ phonon Q-factor |
+| `PhononModulatedEnergyEnetPhononCalc` | 481 | PAPER_897 | $E_{\rm net,phonon} = E^+(t) \times Q_{\rm phonon}$ |
+
+### S209.2 Indirect Cross-References (E(t) Engine Extensions)
+
+| CP4 Class | # | PAPER | Connection to This Paper |
+|-----------|---|-------|------------------------|
+| `PositiveEtBuoyancyExpansionMasterCalc` | 464 | PAPER_880 | Expansion regime where F_neutron amplifies |
+| `NegativeEtBuoyancyErosionMasterCalc` | 467 | PAPER_883 | Erosion regime where F_neutron suppressed |
+| `NetEnergyEplusEminusEvolutionCalc` | 468 | PAPER_884 | Net E(t) determines F_neutron dominance |
+| `EtFullLagrangianUnifiedDerivationCalc` | 472 | PAPER_888 | Full E(t) Lagrangian unifying §8 E-L equation |
+| `SCmVacuumDensityEvolutionCalc` | 474 | PAPER_890 | $\rho_{\rm SCm}(t)$ evolution governing §K.2 activation |
+
+### S209.3 Corpus Analysis (April 10, 2026)
+
+| Metric | Value |
+|--------|-------|
+| Total papers | 900/1000 (90.0%) |
+| CP4 classes | 484 (461 + 23 Session 209) |
+| Aggregator version | v3.5.0 |
+| This paper line count | 588 → upgraded |
+| Equations coverage | 900/900 (100%) |
+| §A Cosmogenesis coverage | 874/900 (97.1%) |
+| §SM Anchors coverage | 818/900 (90.9%) |
+
+*Session 209 v5.62 — integrated by GitHub Copilot (Claude Opus 4.6)*

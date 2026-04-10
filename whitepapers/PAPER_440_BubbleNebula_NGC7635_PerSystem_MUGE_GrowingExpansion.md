@@ -265,3 +265,51 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 `MAIN_1_CoAnQi.cpp`, and Wolfram kernels (`uqff_kozima_kernel.wl`, `uqff_s26_kernel.wl`,
 `uqff_mock_theta_pi_kernel.wl`).*
 
+
+---
+
+## Appendix: Session 209 CP4 Integration Cross-Reference
+
+> *Session 209 (April 2026, commit `cf493abd`) wrapped Sessions 204-208
+> standalone modules as CP4 classes. This paper's Bubble Nebula NGC 7635
+> growing expansion analysis maps directly to the E+(t) engine pipeline.*
+
+### S209.1 Direct CP4 Calculator Mappings
+
+| CP4 Class | # | PAPER | Connection to NGC 7635 |
+|-----------|---|-------|----------------------|
+| `PositiveEtBuoyancyExpansionMasterCalc` | 464 | PAPER_880 | $E^+(t)$ master equation for nebular expansion |
+| `ExpansionLagrangianEulerLagrangeCalc` | 466 | PAPER_882 | $L_{\rm expansion} = E^+(t) \cdot V \cdot S_{26}$ |
+| `KozimaExpansionNeutronDropCouplingCalc` | 465 | PAPER_881 | Kozima coupling in expansion-dominated regime |
+| `SCmVacuumDensityEvolutionCalc` | 474 | PAPER_890 | $\rho_{\rm SCm}(t)$ driving nebular expansion |
+
+### S209.2 NGC 7635 Expansion in E(t) Framework
+
+The Bubble Nebula's growing expansion `E(t) = 0.1(1-exp(-t/tau))` is the
+saturation form of the general E+(t) master equation:
+
+```
+NGC 7635:  E(t) = E_0·(1-exp(-t/tau))     [bounded growth, tau ~ Myr]
+CP4 class: PositiveEtBuoyancyExpansionMasterCalc(F_UBi_over_FU=1.1)
+           → unbounded exponential at early times
+           → NGC 7635's bounded form = physical saturation limit
+```
+
+### S209.3 MUGE ↔ UQFF Dual Framework
+
+| CP4 Class | # | PAPER | MUGE Connection |
+|-----------|---|-------|----------------|
+| `NetEnergyEplusEminusEvolutionCalc` | 468 | PAPER_884 | E+/E- balance for 10-term MUGE |
+| `EtVsLambdaCDMDarkEnergyContrastCalc` | 473 | PAPER_889 | Cosmological context for expansion |
+| `EtVsQuintessenceScalarFieldContrastCalc` | 479 | PAPER_895 | Quintessence comparison for dark energy |
+| `EtFullLagrangianUnifiedDerivationCalc` | 472 | PAPER_888 | Full Lagrangian containing expansion sector |
+
+### S209.4 Corpus Metrics (April 10, 2026)
+
+| Metric | Value |
+|--------|-------|
+| Total papers | 900/1000 (90.0%) |
+| CP4 classes | 484 |
+| Expansion-regime CP4 classes | 4 (direct) |
+
+*Session 209 v5.62 — integrated by GitHub Copilot (Claude Opus 4.6)*

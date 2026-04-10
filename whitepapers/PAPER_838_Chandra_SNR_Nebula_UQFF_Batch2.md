@@ -303,3 +303,52 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 `MAIN_1_CoAnQi.cpp`, and Wolfram kernels (`uqff_kozima_kernel.wl`, `uqff_s26_kernel.wl`,
 `uqff_mock_theta_pi_kernel.wl`).*
 
+
+---
+
+## Appendix: Session 209 CP4 Integration Cross-Reference
+
+> *Session 209 (April 2026, commit `cf493abd`) wrapped Sessions 204-208
+> standalone modules as CP4 classes. This paper's 7-system Chandra SNR/nebula
+> batch connects to both expansion and erosion CP4 engines.*
+
+### S209.1 System-to-CP4 Mapping
+
+| System | Regime | Primary CP4 Class | PAPER |
+|--------|--------|-------------------|-------|
+| Cas A (SNR) | Erosion | `NegativeEtBuoyancyErosionMasterCalc` #467 | PAPER_883 |
+| Crab Nebula (PWN) | Mixed | `NetEnergyEplusEminusEvolutionCalc` #468 | PAPER_884 |
+| Vela (SNR) | Erosion | `ErosionLagrangianEulerLagrangeCalc` #470 | PAPER_886 |
+| Tycho (SNR) | Erosion | `GWDampingErosion66PercentCalc` #469 | PAPER_885 |
+| Helix (PN) | Expansion | `PositiveEtBuoyancyExpansionMasterCalc` #464 | PAPER_880 |
+| SNR 1181 (Iax) | Mixed | `NetEnergyEplusEminusEvolutionCalc` #468 | PAPER_884 |
+| NGC 6543 (PN) | Expansion | `ExpansionLagrangianEulerLagrangeCalc` #466 | PAPER_882 |
+
+### S209.2 Cross-Cutting CP4 Classes
+
+| CP4 Class | # | PAPER | Batch-Wide Relevance |
+|-----------|---|-------|---------------------|
+| `SCmGaussianActivationBFieldSuppressionCalc` | 462 | PAPER_878 | B-field profiles for all 7 systems |
+| `SCmVacuumDensityEvolutionCalc` | 474 | PAPER_890 | Vacuum density in SNR/nebula environments |
+| `SCmKozimaPhononResonanceCouplingCalc` | 476 | PAPER_892 | Phonon coupling in shocked gas |
+| `EtFullLagrangianUnifiedDerivationCalc` | 472 | PAPER_888 | Unified Lagrangian covering all 7 systems |
+| `UQFFVsStringTheory10AspectComparisonCalc` | 471 | PAPER_887 | Theoretical framing for SNR physics |
+
+### S209.3 Dark Energy Context for Batch Systems
+
+| CP4 Class | # | PAPER | Context |
+|-----------|---|-------|---------|
+| `EtVsLambdaCDMDarkEnergyContrastCalc` | 473 | PAPER_889 | Cosmological backdrop for SNR evolution |
+| `EtVsQuintessenceScalarFieldContrastCalc` | 479 | PAPER_895 | Alternative DE model comparison |
+| `EtVsKEssenceScherrerModelContrastCalc` | 484 | PAPER_900 | K-essence kinetic term for SNR dynamics |
+
+### S209.4 Corpus Metrics (April 10, 2026)
+
+| Metric | Value |
+|--------|-------|
+| Total papers | 900/1000 (90.0%) |
+| CP4 classes | 484 |
+| Systems covered in this batch | 7 |
+| CP4 classes mapped | 15 |
+
+*Session 209 v5.62 — integrated by GitHub Copilot (Claude Opus 4.6)*

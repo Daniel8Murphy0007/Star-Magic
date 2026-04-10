@@ -401,3 +401,105 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 `MAIN_1_CoAnQi.cpp`, and Wolfram kernels (`uqff_kozima_kernel.wl`, `uqff_s26_kernel.wl`,
 `uqff_mock_theta_pi_kernel.wl`).*
 
+
+---
+
+## Appendix: Session 209 CP4 Integration Cross-Reference
+
+> *Session 209 (April 2026, commit `cf493abd`) wrapped Sessions 204-208
+> standalone modules as CP4 classes. As the cosmogenesis master equation paper,
+> PAPER_877 anchors the §A Lagrangian linkage chain across 874 papers. The
+> Session 209 classes extend the cosmogenesis framework with E(t) engines,
+> vacuum density evolution, phonon coupling, and dark energy comparisons.*
+
+### S209.1 Core Cosmogenesis Extensions (CP4)
+
+| CP4 Class | # | PAPER | Cosmogenesis Stage Link |
+|-----------|---|-------|----------------------|
+| `SCmVacuumDensityEvolutionCalc` | 474 | PAPER_890 | Stage 1: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm}$ evolution |
+| `SCmNetEnergyBuoyancyRegimeCalc` | 475 | PAPER_891 | Stage 5: Buoyancy seed $U_{b,\rm seed}$ regime |
+| `SCmPhononModulatedEnergyPhiCalc` | 477 | PAPER_893 | Stage 4: Force differentiation via phonon |
+| `SCmEtLagrangianVariationCalc` | 478 | PAPER_894 | Lagrangian variation of cosmogenesis E(t) |
+| `EtFullLagrangianUnifiedDerivationCalc` | 472 | PAPER_888 | Full 9-sector Lagrangian unification |
+
+### S209.2 E(t) Engine: Expansion ↔ Erosion Duality
+
+The three cosmogenesis axioms (DPM, ACP, four $U_g$ forces) generate both
+expansion (E+) and erosion (E-) regimes. Session 209 CP4 classes formalize:
+
+| CP4 Class | # | PAPER | Cosmogenesis Role |
+|-----------|---|-------|------------------|
+| `PositiveEtBuoyancyExpansionMasterCalc` | 464 | PAPER_880 | ACP Stage 6: cosmic expansion |
+| `NegativeEtBuoyancyErosionMasterCalc` | 467 | PAPER_883 | Gravitational collapse/erosion |
+| `NetEnergyEplusEminusEvolutionCalc` | 468 | PAPER_884 | Net cosmic energy balance |
+| `ExpansionLagrangianEulerLagrangeCalc` | 466 | PAPER_882 | Expansion Lagrangian from axioms |
+| `ErosionLagrangianEulerLagrangeCalc` | 470 | PAPER_886 | Erosion Lagrangian from axioms |
+
+### S209.3 Dark Energy Cosmological Context
+
+PAPER_877's cosmogenesis generates dark energy as emergent vacuum behavior.
+Session 209 adds three explicit comparison frameworks:
+
+| CP4 Class | # | PAPER | vs Cosmogenesis |
+|-----------|---|-------|----------------|
+| `EtVsLambdaCDMDarkEnergyContrastCalc` | 473 | PAPER_889 | UQFF E(t) vs $\Lambda$CDM cosmological constant |
+| `EtVsQuintessenceScalarFieldContrastCalc` | 479 | PAPER_895 | UQFF vs quintessence $\phi$ rolling |
+| `EtVsKEssenceScherrerModelContrastCalc` | 484 | PAPER_900 | UQFF vs k-essence $F(X)$ kinetic gravity |
+| `UQFFVsStringTheory10AspectComparisonCalc` | 471 | PAPER_887 | 10-aspect UQFF vs String Theory |
+
+### S209.4 LENR-Nuclear Sector from Cosmogenesis
+
+The Kozima LENR framework (PAPER_840/851/852) traces through cosmogenesis
+Stage 4 force differentiation to nuclear-scale phonon coupling:
+
+| CP4 Class | # | PAPER | Nuclear Sector |
+|-----------|---|-------|---------------|
+| `SCmGaussianActivationBFieldSuppressionCalc` | 462 | PAPER_878 | SCm activation from ACP Stage 3 |
+| `BuoyancyKleinGordonScalarFieldEOMCalc` | 463 | PAPER_879 | Klein-Gordon EOM from Stage 4 |
+| `KozimaExpansionNeutronDropCouplingCalc` | 465 | PAPER_881 | Neutron drop in expansion regime |
+| `SCmKozimaPhononResonanceCouplingCalc` | 476 | PAPER_892 | 1.25 THz phonon from Colman-Gillespie |
+| `PhononModulationFactor125THzGaussianCalc` | 480 | PAPER_896 | Phonon Q-factor at resonance |
+| `BuoyancyReversalSignFlipResonanceCalc` | 483 | PAPER_899 | Buoyancy sign reversal in LENR |
+
+### S209.5 Complete Session 209 CP4 Class Inventory
+
+All 23 new CP4 classes (#462-#484) from Session 209:
+
+| # | Class | Source Session | PAPER |
+|---|-------|---------------|-------|
+| 462 | `SCmGaussianActivationBFieldSuppressionCalc` | S204 | 878 |
+| 463 | `BuoyancyKleinGordonScalarFieldEOMCalc` | S204 | 879 |
+| 464 | `PositiveEtBuoyancyExpansionMasterCalc` | S205 | 880 |
+| 465 | `KozimaExpansionNeutronDropCouplingCalc` | S205 | 881 |
+| 466 | `ExpansionLagrangianEulerLagrangeCalc` | S205 | 882 |
+| 467 | `NegativeEtBuoyancyErosionMasterCalc` | S205 | 883 |
+| 468 | `NetEnergyEplusEminusEvolutionCalc` | S205 | 884 |
+| 469 | `GWDampingErosion66PercentCalc` | S205 | 885 |
+| 470 | `ErosionLagrangianEulerLagrangeCalc` | S205 | 886 |
+| 471 | `UQFFVsStringTheory10AspectComparisonCalc` | S205 | 887 |
+| 472 | `EtFullLagrangianUnifiedDerivationCalc` | S206 | 888 |
+| 473 | `EtVsLambdaCDMDarkEnergyContrastCalc` | S206 | 889 |
+| 474 | `SCmVacuumDensityEvolutionCalc` | S207 | 890 |
+| 475 | `SCmNetEnergyBuoyancyRegimeCalc` | S207 | 891 |
+| 476 | `SCmKozimaPhononResonanceCouplingCalc` | S207 | 892 |
+| 477 | `SCmPhononModulatedEnergyPhiCalc` | S207 | 893 |
+| 478 | `SCmEtLagrangianVariationCalc` | S207 | 894 |
+| 479 | `EtVsQuintessenceScalarFieldContrastCalc` | S207 | 895 |
+| 480 | `PhononModulationFactor125THzGaussianCalc` | S208 | 896 |
+| 481 | `PhononModulatedEnergyEnetPhononCalc` | S208 | 897 |
+| 482 | `PhononLagrangianPhiS26DerivationCalc` | S208 | 898 |
+| 483 | `BuoyancyReversalSignFlipResonanceCalc` | S208 | 899 |
+| 484 | `EtVsKEssenceScherrerModelContrastCalc` | S208 | 900 |
+
+### S209.6 Corpus Metrics (April 10, 2026)
+
+| Metric | Value |
+|--------|-------|
+| Total papers | 900/1000 (90.0%) |
+| CP4 classes | 484 (461 + 23 Session 209) |
+| Aggregator version | v3.5.0 |
+| Papers with §A Cosmogenesis | 874/900 (97.1%) |
+| Papers referencing PAPER_877 | 874 (via §A.4 linkage chain) |
+| Session 209 CP4 classes | 23 (#462-#484) |
+
+*Session 209 v5.62 — integrated by GitHub Copilot (Claude Opus 4.6)*

@@ -248,3 +248,52 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 `MAIN_1_CoAnQi.cpp`, and Wolfram kernels (`uqff_kozima_kernel.wl`, `uqff_s26_kernel.wl`,
 `uqff_mock_theta_pi_kernel.wl`).*
 
+
+---
+
+## Appendix: Session 209 CP4 Integration Cross-Reference
+
+> *Session 209 (April 2026, commit `cf493abd`) wrapped Sessions 204-208
+> standalone modules as CP4 classes. This paper's Pillars of Creation M16
+> photo-erosion framework connects to the E-(t) erosion engine pipeline.*
+
+### S209.1 Direct CP4 Calculator Mappings
+
+| CP4 Class | # | PAPER | Connection to M16 Pillars |
+|-----------|---|-------|--------------------------|
+| `NegativeEtBuoyancyErosionMasterCalc` | 467 | PAPER_883 | $E^-(t)$ master equation for photo-erosion |
+| `ErosionLagrangianEulerLagrangeCalc` | 470 | PAPER_886 | $L_{\rm erosion} = E^-(t) \cdot V \cdot S_{26}$ for pillar decay |
+| `GWDampingErosion66PercentCalc` | 469 | PAPER_885 | 66.7% damping constraint for erosion rate |
+| `SCmGaussianActivationBFieldSuppressionCalc` | 462 | PAPER_878 | SCm activation under M16 UV radiation field |
+
+### S209.2 Pillars Photo-Erosion in E(t) Framework
+
+The Pillars' exponential decay `E(t) = E_0·exp(-t/tau_erode)` is the
+photo-erosion limit of the general E-(t) master equation:
+
+```
+Pillars:   E(t) = E_0·exp(-t/tau_erode)    [UV-driven mass loss]
+CP4 class: NegativeEtBuoyancyErosionMasterCalc(F_UBi_over_FU=0.3)
+           → Erosion dominated when F_{U,Bi}/F_U < 0.5
+           → NGC 6611 OB stars supply UV erosion energy
+Lagrangian: ErosionLagrangianEulerLagrangeCalc(V_filament=V_pillar)
+```
+
+### S209.3 Expansion ↔ Erosion Duality
+
+| CP4 Class | # | PAPER | Duality Connection |
+|-----------|---|-------|-------------------|
+| `PositiveEtBuoyancyExpansionMasterCalc` | 464 | PAPER_880 | Star formation WITHIN pillars (expansion) |
+| `NetEnergyEplusEminusEvolutionCalc` | 468 | PAPER_884 | Net E = E+ + E-: pillar survival timescale |
+| `SCmVacuumDensityEvolutionCalc` | 474 | PAPER_890 | Vacuum density in pillar interior vs exterior |
+| `EtFullLagrangianUnifiedDerivationCalc` | 472 | PAPER_888 | Full Lagrangian for combined erosion+formation |
+
+### S209.4 Corpus Metrics (April 10, 2026)
+
+| Metric | Value |
+|--------|-------|
+| Total papers | 900/1000 (90.0%) |
+| CP4 classes | 484 |
+| Erosion CP4 classes | 4 (direct) |
+
+*Session 209 v5.62 — integrated by GitHub Copilot (Claude Opus 4.6)*

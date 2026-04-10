@@ -456,3 +456,53 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 `MAIN_1_CoAnQi.cpp`, and Wolfram kernels (`uqff_kozima_kernel.wl`, `uqff_s26_kernel.wl`,
 `uqff_mock_theta_pi_kernel.wl`).*
 
+
+---
+
+## Appendix: Session 209 CP4 Integration Cross-Reference
+
+> *Session 209 (April 2026, commit `cf493abd`) wrapped Sessions 204-208
+> standalone modules as CP4 calculator classes. This paper's 8-system
+> F_neutron density scaling and PSR J0030+0451 analysis now has direct
+> CP4 calculator equivalents.*
+
+### S209.1 Direct CP4 Calculator Mappings
+
+| CP4 Class | # | PAPER | Connection to This Paper |
+|-----------|---|-------|------------------------|
+| `SCmGaussianActivationBFieldSuppressionCalc` | 462 | PAPER_878 | SCm activation governing neutron-drop triggering |
+| `BuoyancyKleinGordonScalarFieldEOMCalc` | 463 | PAPER_879 | Buoyancy EOM: $m_{\rm eff}^2$ from density-scaled $\sigma_n(\rho)$ |
+| `KozimaExpansionNeutronDropCouplingCalc` | 465 | PAPER_881 | Kozima coupling in expansion regime for 8 systems |
+| `SCmKozimaPhononResonanceCouplingCalc` | 476 | PAPER_892 | $\sigma_n^{\rm SCm}(\omega, n)$ with VDS 26-level factor |
+| `SCmNetEnergyBuoyancyRegimeCalc` | 475 | PAPER_891 | Net energy regime classification for 8-system batch |
+
+### S209.2 E(t) Engine Extensions
+
+| CP4 Class | # | PAPER | Relevance |
+|-----------|---|-------|-----------|
+| `PositiveEtBuoyancyExpansionMasterCalc` | 464 | PAPER_880 | Expansion in star-forming systems (M74, H1821+643) |
+| `NegativeEtBuoyancyErosionMasterCalc` | 467 | PAPER_883 | Erosion in SNR systems (IC 443, MSH 15-52) |
+| `GWDampingErosion66PercentCalc` | 469 | PAPER_885 | GW damping applicable to PSR J0030+0451 |
+| `EtVsLambdaCDMDarkEnergyContrastCalc` | 473 | PAPER_889 | Cosmological context for density scaling |
+| `SCmVacuumDensityEvolutionCalc` | 474 | PAPER_890 | $\rho_{\rm SCm}(t)$ underlying density-scaled $\sigma_n$ |
+
+### S209.3 PSR J0030+0451 Enhanced Analysis
+
+The density-scaled F_neutron prediction ($\sim 10^{45}$ N at neutron star density)
+can now be computed directly via CP4 pipeline:
+
+```
+from CondensedPhysics4 import SCmKozimaPhononResonanceCouplingCalc
+calc = SCmKozimaPhononResonanceCouplingCalc()
+result = calc.compute({"rho": 1e17})  # neutron star density
+```
+
+### S209.4 Corpus Metrics (April 10, 2026)
+
+| Metric | Value |
+|--------|-------|
+| Total papers | 900/1000 (90.0%) |
+| CP4 classes | 484 |
+| This paper's CP4 linkages | 10 direct + indirect |
+
+*Session 209 v5.62 — integrated by GitHub Copilot (Claude Opus 4.6)*

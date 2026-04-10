@@ -356,3 +356,50 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 `MAIN_1_CoAnQi.cpp`, and Wolfram kernels (`uqff_kozima_kernel.wl`, `uqff_s26_kernel.wl`,
 `uqff_mock_theta_pi_kernel.wl`).*
 
+
+---
+
+## Appendix: Session 209 CP4 Integration Cross-Reference
+
+> *Session 209 (April 2026, commit `cf493abd`) wrapped Sessions 204-208
+> standalone modules as CP4 classes. This paper's pseudo-monopole 26-state
+> vacuum density framework connects to SCm vacuum and phonon resonance classes.*
+
+### S209.1 Direct CP4 Calculator Mappings
+
+| CP4 Class | # | PAPER | Connection |
+|-----------|---|-------|-----------|
+| `SCmVacuumDensityEvolutionCalc` | 474 | PAPER_890 | $\rho_{\rm SCm}(t) = \rho_0 \cdot S_{26} \cdot \exp(\kappa t + [SSq]t/26)$ |
+| `SCmNetEnergyBuoyancyRegimeCalc` | 475 | PAPER_891 | Net energy classification for vacuum density regimes |
+| `SCmPhononModulatedEnergyPhiCalc` | 477 | PAPER_893 | $E_\phi = E_{\rm net} \times Q_{\rm phonon} \times S_{26}$ |
+| `SCmEtLagrangianVariationCalc` | 478 | PAPER_894 | E(t) Lagrangian for vacuum density evolution |
+| `SCmGaussianActivationBFieldSuppressionCalc` | 462 | PAPER_878 | SCm activation relevant to pseudo-monopole transition |
+
+### S209.2 26-State VDS Connection to New CP4 Classes
+
+The 26-state vacuum density progression in this paper (VDS levels n=0..26)
+is now directly computable through CP4 classes that parameterize $S_{26}([SSq])$:
+
+| VDS Level | $\rho_n$ Scaling | CP4 Class for Computation |
+|-----------|-----------------|--------------------------|
+| n=0 (dilute) | $\rho_{\rm UA}$ baseline | `SCmVacuumDensityEvolutionCalc` |
+| n=13 (mid) | $1 + 0.57 \times 13/26 = 1.285\times$ | `SCmPhononModulatedEnergyPhiCalc` |
+| n=26 (condensed) | $1 + 0.57 = 1.57\times$ | `EtVsQuintessenceScalarFieldContrastCalc` |
+
+### S209.3 Dark Energy Comparison Extensions
+
+| CP4 Class | # | PAPER | Comparison Framework |
+|-----------|---|-------|---------------------|
+| `EtVsLambdaCDMDarkEnergyContrastCalc` | 473 | PAPER_889 | Pseudo-monopole VDS vs LCDM $\Lambda$ |
+| `EtVsQuintessenceScalarFieldContrastCalc` | 479 | PAPER_895 | VDS vs quintessence scalar field |
+| `EtVsKEssenceScherrerModelContrastCalc` | 484 | PAPER_900 | VDS vs k-essence kinetic gravity |
+
+### S209.4 Corpus Metrics (April 10, 2026)
+
+| Metric | Value |
+|--------|-------|
+| Total papers | 900/1000 (90.0%) |
+| CP4 classes | 484 |
+| VDS-connected CP4 classes | 8 |
+
+*Session 209 v5.62 — integrated by GitHub Copilot (Claude Opus 4.6)*
