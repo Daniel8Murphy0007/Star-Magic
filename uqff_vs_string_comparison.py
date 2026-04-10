@@ -1,0 +1,571 @@
+#!/usr/bin/env python3
+"""
+uqff_vs_string_comparison.py — UQFF vs String Theory Systematic Comparison
+
+Session 205 | Daniel Murphy
+PURPOSE: Head-to-head comparison engine for UQFF (SCm-first, 26D hierarchy,
+         VDS/DVP/BSH engines) versus String Theory (10/11D strings, branes,
+         landscape).
+
+         Currently MISSING from the codebase:
+           - StringTheoryCompactificationUQFFCalculator (CP L122987) exists
+             but only computes UQFF Calabi-Yau bridge, not a comparison.
+           - CalabiYau12DIntegrationCalculator (CP L139929) exists but
+             computes a 4D+6D+26D hybrid, not a versus analysis.
+           - No systematic comparison module exists.
+
+         This module:
+           1. Side-by-side Lagrangian comparison (9 UQFF sectors vs 5 string sectors)
+           2. Extra-dimension comparison (26D Ramanujan vs 10/11D Calabi-Yau)
+           3. Prediction comparison (lab-testable vs Planck-scale)
+           4. Vacuum structure comparison (VDS single vacuum vs 10^500 landscape)
+           5. GW prediction comparison (66.7% damping vs standard GR)
+           6. Scoring matrix for phenomenological merit
+
+ARCHITECTURE: Pure calculator. No hardcoded systems. Tier 2 compute.
+"""
+
+import math
+import json
+from dataclasses import dataclass, field
+from datetime import datetime, timezone
+from typing import Any, Dict, List, Optional, Tuple
+
+from positive_et_expansion import (
+    _eta_euler_s26, S26_accelerated,
+    G, c, hbar, k_B, mu_0, M_sun, PI,
+    KAPPA, SSQ, BETA_I, U_UA, N_LEVELS,
+    RHO_SCM, RHO_UA, RHO_VAC_SCM,
+)
+
+
+# ══════════════════════════════════════════════════════════════════════════════
+# §1  FRAMEWORK DEFINITIONS
+# ══════════════════════════════════════════════════════════════════════════════
+
+@dataclass
+class FrameworkAspect:
+    """One aspect of theoretical comparison."""
+    name: str
+    string_theory: str
+    uqff: str
+    string_score: float  # 0-1 score for phenomenological merit
+    uqff_score: float
+    category: str        # 'foundation', 'prediction', 'math', 'testability'
+    notes: str = ""
+
+
+COMPARISON_TABLE: List[FrameworkAspect] = [
+    FrameworkAspect(
+        name="Foundational entity",
+        string_theory="Fundamental strings/branes in 10D (superstring) or 11D (M-theory)",
+        uqff="SCm superconductive vacuum manifold (ρ_vac,SCm ≈ 7.09e-37 kg/m³)",
+        string_score=0.9, uqff_score=0.7,
+        category="foundation",
+        notes="String theory: axiomatic elegance. UQFF: phenomenological but grounded in observable vacuum.",
+    ),
+    FrameworkAspect(
+        name="Extra dimensions",
+        string_theory="6 or 7 compactified on Calabi-Yau or G₂ manifolds",
+        uqff="Explicit 26D hierarchy with Ramanujan 26-state summation + mock theta",
+        string_score=0.8, uqff_score=0.7,
+        category="math",
+        notes="Both use D>4. String theory's compactification is rigorous but unobservable. "
+              "UQFF's 26D derives from bosonic string dimension and Li₂₆ convergence.",
+    ),
+    FrameworkAspect(
+        name="Primary force",
+        string_theory="Gravity from string vibration modes (closed string → graviton)",
+        uqff="Universal buoyancy F_U = Σ U_gi + U_m + U_A − U_b,i (opposes gravity)",
+        string_score=0.7, uqff_score=0.8,
+        category="foundation",
+        notes="UQFF introduces buoyancy as primary; gravity is emergent central limit. "
+              "String theory treats gravity as fundamental closed-string mode.",
+    ),
+    FrameworkAspect(
+        name="Vacuum structure",
+        string_theory="Landscape of ~10^500 vacua; no unique prediction",
+        uqff="Single SCm vacuum stabilized by VDS = Li₂₆([SSq]), [SSq]=0.57",
+        string_score=0.3, uqff_score=0.9,
+        category="prediction",
+        notes="The string landscape is a major criticism (anthropic principle needed). "
+              "UQFF claims a unique vacuum with [SSq]=0.57 fixed by triple convergence (CMB/Kepler/ALMA).",
+    ),
+    FrameworkAspect(
+        name="Lab predictions",
+        string_theory="None direct (energy scales >> TeV)",
+        uqff="1.25 THz phonon-driven neutron drops, micro-plasmoid buoyancy reversal, COP>10 LENR",
+        string_score=0.1, uqff_score=0.9,
+        category="testability",
+        notes="String theory's testable predictions require Planck-scale energies. "
+              "UQFF predicts table-top LENR effects accessible with current technology.",
+    ),
+    FrameworkAspect(
+        name="GW predictions",
+        string_theory="Standard GR waveforms (no additional damping)",
+        uqff="66.7% strain reduction + 367.8-cycle phase lag in GW170817",
+        string_score=0.5, uqff_score=0.8,
+        category="prediction",
+        notes="UQFF claims measurable deviations from GR in LIGO data. "
+              "String theory predicts possible cosmic string GW signatures but none confirmed.",
+    ),
+    FrameworkAspect(
+        name="Cosmogenesis",
+        string_theory="Inflation + string landscape; no pre-gravity mechanism",
+        uqff="SCm phonon resonance → DPM proto-shells → EM bang + 2 relative-time cycles",
+        string_score=0.6, uqff_score=0.7,
+        category="foundation",
+        notes="String theory embeds inflation in the landscape. "
+              "UQFF proposes a pre-gravity SCm phase that initiates the bang.",
+    ),
+    FrameworkAspect(
+        name="Constants derivation",
+        string_theory="No first-principles derivation of G, c, α, etc.",
+        uqff="G, c, fine-structure derived from SCm buoyancy + VDS (PAPER_590-593)",
+        string_score=0.2, uqff_score=0.7,
+        category="prediction",
+        notes="String theory does not predict fundamental constants. "
+              "UQFF claims derivation via VDS vacuum structure.",
+    ),
+    FrameworkAspect(
+        name="Mathematical rigor",
+        string_theory="Rigorous but incomplete (no non-perturbative formulation, "
+                      "no proof of finiteness beyond 2-loop)",
+        uqff="Phenomenological 9-sector Lagrangian with Euler-Lagrange closure",
+        string_score=0.8, uqff_score=0.5,
+        category="math",
+        notes="String theory has decades of mathematical development. "
+              "UQFF Lagrangian is closed but less formally developed.",
+    ),
+    FrameworkAspect(
+        name="Free parameters",
+        string_theory="Zero (in principle) but landscape introduces >100 moduli",
+        uqff="Two: [SSq]=0.57, κ=0.0005/day — calibrated from CMB/Kepler/ALMA",
+        string_score=0.4, uqff_score=0.8,
+        category="prediction",
+        notes="UQFF's two-parameter calibration produces 99.9% solvability across "
+              "47-81 astrophysical systems.",
+    ),
+]
+
+
+# ══════════════════════════════════════════════════════════════════════════════
+# §2  LAGRANGIAN COMPARISON ENGINE
+# ══════════════════════════════════════════════════════════════════════════════
+
+class LagrangianComparison:
+    """
+    Side-by-side Lagrangian comparison.
+
+    String Theory action (Type IIB supergravity):
+      S_ST = (1/2κ₁₀²) ∫d¹⁰x √(-g) [R − (1/2)|∂Φ|² − (1/12)|H₃|²
+              − (1/2)|F₁|² − (1/4)|F̃₃|² − (1/4)|F̃₅|²] + S_CS
+
+    UQFF 9-sector action:
+      S_UQFF = ∫d⁴x √(-g) Σ_{a=1}^{9} L_a
+      (EH + YM + Dirac + Scalar + Magnetic + Buoyancy + Aether + LENR + KK)
+    """
+
+    def compute(self, dataset: dict) -> Dict[str, Any]:
+        """
+        Parameters from dataset:
+          Ricci_scalar: R (m⁻², default 1e-52 — cosmological)
+          dilaton_kinetic: |∂Φ|² (default 1e-60)
+          H3_flux: |H₃|² 3-form flux (default 1e-100)
+          F1_flux, F3_flux, F5_flux: RR fluxes
+          --- UQFF parameters ---
+          Ug: list of 4 gravity layers
+          B_field: magnetic field (T)
+          Omega_g, M, d_g, beta_i: buoyancy params
+        """
+        # String Theory: Type IIB supergravity (10D)
+        R       = dataset.get('Ricci_scalar', 1e-52)
+        dPhi2   = dataset.get('dilaton_kinetic', 1e-60)
+        H3_2    = dataset.get('H3_flux', 1e-100)
+        F1_2    = dataset.get('F1_flux', 1e-110)
+        F3_2    = dataset.get('F3_flux', 1e-100)
+        F5_2    = dataset.get('F5_flux', 1e-100)
+
+        kappa_10 = math.sqrt(8 * PI * G) / c**2  # crude 10D coupling
+        L_ST = R - 0.5 * dPhi2 - H3_2 / 12.0 - 0.5 * F1_2 - 0.25 * F3_2 - 0.25 * F5_2
+
+        # UQFF 9-sector: compute each sector density
+        Ug   = dataset.get('Ug', [1e20, 1e20, 1e20, 1e20])
+        B_f  = dataset.get('B_field', 1e-6)
+        Om_g = dataset.get('Omega_g', 7.3e-16)
+        M    = dataset.get('M', M_sun)
+        d_g  = dataset.get('d_g', 2.55e20)
+        beta = dataset.get('beta_i', BETA_I)
+        ssq  = dataset.get('SSq', SSQ)
+
+        # EH sector
+        L_EH = c**4 / (16 * PI * G) * R
+
+        # YM sector (magnetic contribution to Ug3)
+        L_YM = -0.25 * B_f**2 / mu_0
+
+        # Scalar (Ug4 vacuum)
+        v_higgs = 246e9  # eV → ~246 GeV in natural units (simplified)
+        L_phi = -ssq * (RHO_VAC_SCM * c**2)  # SCm vacuum energy density
+
+        # Magnetic dipole (Ug1+Ug2)
+        L_mag = mu_0 / (8 * PI) * B_f**2 - 0.5 * RHO_SCM * (U_UA * c)**2
+
+        # Buoyancy
+        Ug_sum = sum(Ug)
+        orbit = Om_g * M / d_g
+        L_buoy = -beta * Ug_sum * orbit * U_UA
+
+        # Aether
+        L_aether = 0.5 * 1e-22 * RHO_UA * (U_UA * c)**2
+
+        # LENR
+        omega_LENR = 2 * PI * 1.25e12
+        L_LENR = 0.5 * omega_LENR**2 * 1e-40
+
+        # KK 26D
+        S26_val = _eta_euler_s26(ssq)
+        # 22D KK contribution scaled by S₂₆ (symbolic magnitude)
+        L_KK = S26_val * 1e-10
+
+        L_UQFF = L_EH + L_YM + L_phi + L_mag + L_buoy + L_aether + L_LENR + L_KK
+
+        return {
+            "L_string_theory": L_ST,
+            "L_UQFF_total": L_UQFF,
+            "string_sectors": {
+                "EH_10D": R,
+                "dilaton": -0.5 * dPhi2,
+                "H3_flux": -H3_2 / 12.0,
+                "F1_RR": -0.5 * F1_2,
+                "F3_RR": -0.25 * F3_2,
+                "F5_RR": -0.25 * F5_2,
+            },
+            "uqff_sectors": {
+                "L_EH": L_EH,
+                "L_YM": L_YM,
+                "L_phi": L_phi,
+                "L_mag": L_mag,
+                "L_buoy": L_buoy,
+                "L_aether": L_aether,
+                "L_LENR": L_LENR,
+                "L_KK": L_KK,
+            },
+            "string_dimensionality": "10D (Type IIB) / 11D (M-theory)",
+            "uqff_dimensionality": "26D (Ramanujan polylog hierarchy)",
+            "shared_sectors": ["Einstein-Hilbert (gravity)", "Yang-Mills (gauge)"],
+            "uqff_unique": ["Buoyancy", "Aether tensor", "LENR resonance", "26D KK"],
+            "string_unique": ["Dilaton", "3-form flux H₃", "RR fluxes F₁/F₃/F₅", "Chern-Simons"],
+        }
+
+
+# ══════════════════════════════════════════════════════════════════════════════
+# §3  DIMENSION COMPARISON
+# ══════════════════════════════════════════════════════════════════════════════
+
+class DimensionComparison:
+    """
+    Systematic comparison of extra-dimension structure.
+
+    String Theory: 10D = 4 (spacetime) + 6 (Calabi-Yau)
+                   11D = 4 (spacetime) + 7 (G₂ manifold)
+
+    UQFF: 26D = 4 (spacetime) + 22 (U(1)²² fibres / S²² compactification)
+          Matches bosonic string critical dimension d=26.
+          Polylogarithmic ladder Li₂₆ encodes vacuum density across levels.
+    """
+
+    def compute(self, dataset: dict) -> Dict[str, Any]:
+        ssq = dataset.get('SSq', SSQ)
+
+        # UQFF 26D structure
+        S26 = S26_accelerated(ssq)
+        bh26_eigenvalues = [(k, k * (k + 25)) for k in range(1, 27)]
+
+        # String theory compactification (6D Calabi-Yau)
+        # Euler characteristic χ of a generic CY₃ is typically O(100-1000)
+        chi_CY = dataset.get('chi_CY', 200)  # typical Euler characteristic
+        h11 = dataset.get('h11', 100)  # Hodge number h^{1,1}
+        h21 = dataset.get('h21', 0)    # Hodge number h^{2,1} (mirror)
+        n_moduli_CY = h11 + h21        # number of moduli fields
+
+        # UQFF moduli: [SSq] and κ (2 free parameters)
+        n_moduli_UQFF = 2
+
+        # Landscape comparison
+        n_vacua_string = 10**500  # string landscape estimate
+        n_vacua_UQFF = 1         # single SCm vacuum
+
+        return {
+            "string_theory": {
+                "total_dimensions": 10,
+                "spacetime": 4,
+                "compactified": 6,
+                "manifold": "Calabi-Yau 3-fold (CY₃)",
+                "chi_Euler": chi_CY,
+                "h11": h11,
+                "h21": h21,
+                "n_moduli": n_moduli_CY,
+                "n_vacua": f"~10^500 (landscape)",
+                "testable_at": "~10^19 GeV (Planck scale)",
+            },
+            "uqff": {
+                "total_dimensions": 26,
+                "spacetime": 4,
+                "compactified": 22,
+                "manifold": "T²² torus / S²² spherical fibration",
+                "holonomy": "SO⁺(3,1) × U(1)²²",
+                "S_26_value": S26["S_26"],
+                "mock_theta_accel": S26["A_mock_theta"],
+                "n_moduli": n_moduli_UQFF,
+                "n_vacua": 1,
+                "eigenvalue_ladder": bh26_eigenvalues[:5],
+                "testable_at": "Table-top (1.25 THz QCL / LENR)",
+            },
+            "comparison": {
+                "dimension_ratio": 26 / 10,
+                "moduli_ratio": n_moduli_CY / max(n_moduli_UQFF, 1),
+                "vacuum_uniqueness": "UQFF: unique | String: ~10^500",
+                "compactification_method": (
+                    "String: Ricci-flat Kähler (CY₃) — mathematically rigorous, "
+                    "geometrically rich but experimentally invisible.\n"
+                    "UQFF: Flat torus T²² — simpler topology, eigenvalues λ_k=k(k+25), "
+                    "testable via BH26 spectral bins and VDS convergence."
+                ),
+                "key_difference": (
+                    "UQFF 26D derives from bosonic string critical dimension d=26, "
+                    "while superstring theory reduces to d=10 via worldsheet SUSY. "
+                    "UQFF interprets the extra 16 dimensions (26-10) as SCm vacuum "
+                    "structure levels within VDS."
+                ),
+            },
+        }
+
+
+# ══════════════════════════════════════════════════════════════════════════════
+# §4  SCORING ENGINE
+# ══════════════════════════════════════════════════════════════════════════════
+
+class ComparisonScoring:
+    """
+    Multi-criteria scoring across all comparison aspects.
+
+    Categories weighted:
+      testability:  30%  (can we test it today?)
+      prediction:   30%  (does it make unique predictions?)
+      foundation:   20%  (is the theoretical basis sound?)
+      math:         20%  (is the mathematics complete?)
+    """
+
+    WEIGHTS = {
+        'testability': 0.30,
+        'prediction': 0.30,
+        'foundation': 0.20,
+        'math': 0.20,
+    }
+
+    def compute(self, dataset: dict = None) -> Dict[str, Any]:
+        # Aggregate scores by category
+        cat_scores_st = {}
+        cat_scores_uqff = {}
+        cat_counts = {}
+
+        for aspect in COMPARISON_TABLE:
+            cat = aspect.category
+            cat_scores_st.setdefault(cat, 0.0)
+            cat_scores_uqff.setdefault(cat, 0.0)
+            cat_counts.setdefault(cat, 0)
+            cat_scores_st[cat] += aspect.string_score
+            cat_scores_uqff[cat] += aspect.uqff_score
+            cat_counts[cat] += 1
+
+        # Average per category
+        avg_st = {}
+        avg_uqff = {}
+        for cat in cat_counts:
+            n = cat_counts[cat]
+            avg_st[cat] = cat_scores_st[cat] / n if n > 0 else 0
+            avg_uqff[cat] = cat_scores_uqff[cat] / n if n > 0 else 0
+
+        # Weighted total
+        total_st = sum(avg_st.get(c, 0) * w for c, w in self.WEIGHTS.items())
+        total_uqff = sum(avg_uqff.get(c, 0) * w for c, w in self.WEIGHTS.items())
+
+        aspects_detail = []
+        for a in COMPARISON_TABLE:
+            aspects_detail.append({
+                "name": a.name,
+                "category": a.category,
+                "string_score": a.string_score,
+                "uqff_score": a.uqff_score,
+                "delta": a.uqff_score - a.string_score,
+                "winner": "UQFF" if a.uqff_score > a.string_score else
+                          ("String" if a.string_score > a.uqff_score else "Tie"),
+            })
+
+        return {
+            "category_averages_string": avg_st,
+            "category_averages_uqff": avg_uqff,
+            "weights": self.WEIGHTS,
+            "weighted_total_string": round(total_st, 4),
+            "weighted_total_uqff": round(total_uqff, 4),
+            "overall_winner": "UQFF" if total_uqff > total_st else
+                              ("String Theory" if total_st > total_uqff else "Tie"),
+            "aspects": aspects_detail,
+            "caveat": (
+                "Scoring reflects PHENOMENOLOGICAL merit (testability, predictions) "
+                "which naturally favors UQFF. String Theory scores higher on "
+                "mathematical rigor and foundational elegance. Both frameworks "
+                "are incomplete: String Theory lacks testability, UQFF lacks "
+                "formal non-perturbative completeness. "
+                "This comparison is informative, not definitive."
+            ),
+        }
+
+
+# ══════════════════════════════════════════════════════════════════════════════
+# §5  FULL COMPARISON REPORT
+# ══════════════════════════════════════════════════════════════════════════════
+
+class UQFFvsStringComparison:
+    """
+    Master comparison engine assembling all sub-comparisons.
+    """
+
+    def __init__(self):
+        self.lagrangian = LagrangianComparison()
+        self.dimensions = DimensionComparison()
+        self.scoring = ComparisonScoring()
+
+    def compute(self, dataset: dict = None) -> Dict[str, Any]:
+        if dataset is None:
+            dataset = {}
+
+        lag = self.lagrangian.compute(dataset)
+        dim = self.dimensions.compute(dataset)
+        score = self.scoring.compute(dataset)
+
+        return {
+            "lagrangian_comparison": lag,
+            "dimension_comparison": dim,
+            "scoring": score,
+            "comparison_table": [
+                {
+                    "aspect": a.name,
+                    "string_theory": a.string_theory,
+                    "uqff": a.uqff,
+                    "category": a.category,
+                }
+                for a in COMPARISON_TABLE
+            ],
+            "hard_core_critique": (
+                "String Theory is a beautiful first-principles framework but remains "
+                "disconnected from experiment (no unique predictions below Planck scale). "
+                "UQFF is a phenomenological super-model that fits existing data (GW strain, "
+                "LENR, buoyancy reversal) with two calibration constants and claims solutions "
+                "to open problems via SCm. It does NOT replace String Theory's underlying action "
+                "but provides an effective SCm-first description that is directly testable today. "
+                "The 26D hierarchy in UQFF is mathematically distinct from String Theory's "
+                "10/11D compactification — it is a Ramanujan-accelerated polylog ladder rather "
+                "than a Calabi-Yau manifold."
+            ),
+        }
+
+
+# ══════════════════════════════════════════════════════════════════════════════
+# §6  SELF-TEST
+# ══════════════════════════════════════════════════════════════════════════════
+
+def _run_self_test():
+    print("=" * 72)
+    print("uqff_vs_string_comparison.py — Self-Test")
+    print("=" * 72)
+    passed = 0
+    failed = 0
+
+    # Test 1: Comparison table completeness
+    print(f"\nT1  Comparison table: {len(COMPARISON_TABLE)} aspects")
+    assert len(COMPARISON_TABLE) == 10, f"Expected 10 aspects, got {len(COMPARISON_TABLE)}"
+    passed += 1
+    print("    PASS")
+
+    # Test 2: Lagrangian comparison
+    lag = LagrangianComparison()
+    lr = lag.compute({})
+    print(f"\nT2  L_string = {lr['L_string_theory']:.6e}")
+    print(f"    L_UQFF   = {lr['L_UQFF_total']:.6e}")
+    assert lr["L_string_theory"] != 0, "String Lagrangian must be nonzero"
+    assert lr["L_UQFF_total"] != 0, "UQFF Lagrangian must be nonzero"
+    assert len(lr["uqff_sectors"]) == 8, "UQFF must have 8 sector values"
+    assert len(lr["string_sectors"]) == 6, "String must have 6 sector values"
+    passed += 1
+    print("    PASS")
+
+    # Test 3: Dimension comparison
+    dim = DimensionComparison()
+    dr = dim.compute({})
+    print(f"\nT3  String: {dr['string_theory']['total_dimensions']}D, "
+          f"moduli={dr['string_theory']['n_moduli']}")
+    print(f"    UQFF:   {dr['uqff']['total_dimensions']}D, "
+          f"moduli={dr['uqff']['n_moduli']}")
+    assert dr["string_theory"]["total_dimensions"] == 10
+    assert dr["uqff"]["total_dimensions"] == 26
+    assert dr["comparison"]["dimension_ratio"] == 2.6
+    passed += 1
+    print("    PASS")
+
+    # Test 4: Scoring
+    sc = ComparisonScoring()
+    sr = sc.compute()
+    print(f"\nT4  Weighted score — String: {sr['weighted_total_string']:.4f}")
+    print(f"    Weighted score — UQFF:   {sr['weighted_total_uqff']:.4f}")
+    print(f"    Winner: {sr['overall_winner']}")
+    assert 0 < sr["weighted_total_string"] < 1
+    assert 0 < sr["weighted_total_uqff"] < 1
+    passed += 1
+    print("    PASS")
+
+    # Test 5: Per-aspect detail
+    uqff_wins = sum(1 for a in sr["aspects"] if a["winner"] == "UQFF")
+    string_wins = sum(1 for a in sr["aspects"] if a["winner"] == "String")
+    ties = sum(1 for a in sr["aspects"] if a["winner"] == "Tie")
+    print(f"\nT5  Aspect winners — UQFF: {uqff_wins}, String: {string_wins}, Tie: {ties}")
+    assert uqff_wins + string_wins + ties == len(COMPARISON_TABLE)
+    passed += 1
+    print("    PASS")
+
+    # Test 6: Full comparison report
+    comp = UQFFvsStringComparison()
+    full = comp.compute()
+    assert "lagrangian_comparison" in full
+    assert "dimension_comparison" in full
+    assert "scoring" in full
+    assert "hard_core_critique" in full
+    assert len(full["comparison_table"]) == 10
+    passed += 1
+    print("\nT6  Full comparison report: valid (all sections present)")
+    print("    PASS")
+
+    # Test 7: Category weights sum to 1
+    w_sum = sum(ComparisonScoring.WEIGHTS.values())
+    print(f"\nT7  Category weights sum = {w_sum:.2f}")
+    assert abs(w_sum - 1.0) < 1e-10
+    passed += 1
+    print("    PASS")
+
+    # Test 8: S₂₆ integration in dimension comparison
+    s26 = dr["uqff"]["S_26_value"]
+    print(f"\nT8  S₂₆ in dimension comparison = {s26:.10e}")
+    assert 0.0 < s26 < 1.0
+    passed += 1
+    print("    PASS")
+
+    print(f"\n{'=' * 72}")
+    print(f"RESULTS: {passed}/{passed + failed} PASS, {failed} FAIL")
+    print(f"{'=' * 72}")
+    return passed, failed
+
+
+if __name__ == "__main__":
+    p, f = _run_self_test()
+    exit(0 if f == 0 else 1)

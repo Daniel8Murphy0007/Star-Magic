@@ -248,6 +248,50 @@ LAGRANGIAN_SECTORS = [
                     "Axion-like particles from internal flux: a → γγ photon conversion "
                     "gives F_ALP. 26D = 4D spacetime + 22 internal."
     ),
+    # ──────────────────────────────────────────────────────────────────────
+    # SECTOR 10: E⁺(t) Expansion (Session 205 — buoyancy-driven growth)
+    # Yields: F_expansion (E+ driven), F_kozima_expansion (LENR coupled)
+    # Connection: E⁺(t) = E₀ exp(κt + [SSq]t/26) S₂₆ (F_{U,Bi}/F_U)
+    # See: positive_et_expansion.py
+    # ──────────────────────────────────────────────────────────────────────
+    LagrangianSector(
+        name="E-plus-Expansion",
+        symbol="L_exp",
+        equation_latex=r"L_{exp} = \beta_i \sum_{i=1}^{4} Ug_i \cdot "
+                       r"\Omega_g \frac{M}{d_g} [UA] "
+                       r"+ F_n \cdot S_{26}([SSq]) \cdot \frac{F_{U,Bi}}{F_U} "
+                       r"\cdot e^{\kappa t + [SSq] t / 26}",
+        fields=["E_plus", "phi_expansion", "F_UBi_ratio"],
+        yields_forces=["F_expansion", "F_kozima_expansion"],
+        description="Positive energy expansion driven by SCm buoyancy surplus. "
+                    "E⁺(t) = E₀ exp(κt + [SSq]t/26) S₂₆ (F_{U,Bi}/F_U). "
+                    "Variation δS/δφ_expansion = 0 recovers the exponential growth "
+                    "equation with S₂₆ polylogarithmic modulation and mock theta "
+                    "acceleration. Kozima coupling adds F_neutron × E⁺(t) channel. "
+                    "Added Session 205."
+    ),
+    # ──────────────────────────────────────────────────────────────────────
+    # SECTOR 11: E⁻(t) Erosion (Session 205 — buoyancy deficit decay)
+    # Yields: F_erosion (E- driven), F_gw_damping (GW170817 strain reduction)
+    # Connection: E⁻(t) = −E₀ exp(κt + [SSq]t/26) S₂₆ (1 − F_{U,Bi}/F_U)
+    # See: negative_et_erosion.py
+    # ──────────────────────────────────────────────────────────────────────
+    LagrangianSector(
+        name="E-minus-Erosion",
+        symbol="L_ero",
+        equation_latex=r"L_{ero} = -\beta_i \sum_{i=1}^{4} Ug_i \cdot "
+                       r"\Omega_g \frac{M}{d_g} [UA] "
+                       r"+ F_n \cdot S_{26}([SSq]) \cdot (1 - \frac{F_{U,Bi}}{F_U}) "
+                       r"\cdot e^{\kappa t + [SSq] t / 26}",
+        fields=["E_minus", "phi_erosion", "F_UBi_ratio"],
+        yields_forces=["F_erosion", "F_gw_damping"],
+        description="Negative energy erosion (buoyancy deficit → decay). "
+                    "E⁻(t) = −E₀ exp(κt + [SSq]t/26) S₂₆ (1 − F_{U,Bi}/F_U). "
+                    "Net energy E_net = E⁺ + E⁻ = E₀ exp(...) S₂₆ [2(F_{U,Bi}/F_U)−1]. "
+                    "Critical balance at F_{U,Bi}/F_U = 0.5. "
+                    "GW damping: h_UQFF = h_GR × [1 − |E⁻|/E_GW] → 66.7% strain "
+                    "reduction in GW170817. Added Session 205."
+    ),
 ]
 
 

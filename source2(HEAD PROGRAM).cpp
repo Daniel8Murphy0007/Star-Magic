@@ -123,6 +123,7 @@
 #include "ipc/uqff_ipc.h"    // IPC layer - Named Pipes, SharedMem for pipeline communication
 #include "ipc/physics_service.h"  // Physics Backend Service (Phase 2 - headless mode)
 #include "ipc_pipeline_handler.h" // Phase 0: IPC Pipeline Handler (QCalc subprocess bridge)
+#include "QCalcGeom.h"           // BSFG Geometric Calculator (Session 150) — VR/simulation integration
 // NOTE: astro_graphics.h disabled - Qt3D integrated directly below
 // #include "vr/astro_graphics.h"    // Phase 4: Astronomical Graphics Engine IPC Integration
 
@@ -415,6 +416,160 @@ void InitializeIPCServer() {
             
             // Process request
             return g_ipc_handler->processPipelineRequest(req);
+            
+        } else if (msg_type == "QCALCGEOM_COMPUTE") {
+            // ================================================================
+            // QCalcGeom BSFG Geometric Calculator — IPC message 0x0B01
+            // Routes to QCALCGEOM namespace functions based on "function" field
+            // ================================================================
+            QString func = request["function"].toString();
+            QJsonObject result;
+            result["success"] = true;
+            result["type"] = "QCALCGEOM_RESULT";
+            result["function"] = func;
+            
+            if (func == "bsfg_metric") {
+                double r  = request["r"].toDouble(QCALCGEOM::R_SUN);
+                double tn = request["t_n"].toDouble(0.0);
+                auto m = QCALCGEOM::bsfg_metric(r, tn);
+                result["eps"]        = m.eps;
+                result["eps_p"]      = m.eps_p;
+                result["eps_pp"]     = m.eps_pp;
+                result["A00"]        = m.A00;
+                result["Arr"]        = m.Arr;
+                result["R_r0r0"]     = m.R_r0r0;
+                result["R_00"]       = m.R_00;
+                result["R_rr"]       = m.R_rr;
+                result["R_scalar"]   = m.R_scalar;
+                result["Kretschner"] = m.Kretschner;
+                
+            } else if (func == "bsfg_horizon") {
+                double tn = request["t_n"].toDouble(0.0);
+                auto h = QCALCGEOM::bsfg_horizon(tn);
+                result["exists"]      = h.exists;
+                result["r_h"]         = h.r_h;
+                result["T_H"]         = h.T_H;
+                result["kappa_surf"]  = h.kappa_surf;
+                result["r_h_over_Rs"] = h.r_h_over_Rs;
+                
+            } else if (func == "bsfg_field_equations") {
+                double r  = request["r"].toDouble(QCALCGEOM::R_SUN);
+                double tn = request["t_n"].toDouble(0.0);
+                auto f = QCALCGEOM::bsfg_field_equations(r, tn);
+                result["amp_factor"]   = f.amp_factor;
+                result["Lambda_eff"]   = f.Lambda_eff;
+                result["Lambda_ratio"] = f.Lambda_ratio;
+                result["rho_vac_eff"]  = f.rho_vac_eff;
+                
+            } else if (func == "bsfg_geodesic") {
+                double r  = request["r"].toDouble(QCALCGEOM::R_SUN);
+                double tn = request["t_n"].toDouble(0.0);
+                auto g = QCALCGEOM::bsfg_geodesic(r, tn);
+                result["v2_newton"]     = g.v2_newton;
+                result["v2_aether"]     = g.v2_aether;
+                result["r_cross_m"]     = g.r_cross_m;
+                result["r_cross_AU"]    = g.r_cross_AU;
+                result["h_eta"]         = g.h_eta;
+                result["delta_J_over_J"]= g.delta_J_over_J;
+                
+            } else if (func == "bsfg_holonomy") {
+                double r    = request["r"].toDouble(QCALCGEOM::R_SUN);
+                double tn   = request["t_n"].toDouble(0.0);
+                double area = request["loop_area_m2"].toDouble(1.0);
+                auto ho = QCALCGEOM::bsfg_holonomy(r, tn, area);
+                result["delta_phi"]     = ho.delta_phi;
+                result["omega_0r"]      = ho.omega_0r;
+                result["n_extra_flat"]  = ho.n_extra_flat;
+                result["G2_excluded"]   = ho.G2_excluded;
+                result["Spin7_excluded"]= ho.Spin7_excluded;
+                
+            } else if (func == "vds_series") {
+                double ssq = request["SSq"].toDouble(QCALCGEOM::SSQ_DEFAULT);
+                int n      = request["n_terms"].toInt(200);
+                auto v = QCALCGEOM::vds_series(ssq, n);
+                result["value"]       = v.value;
+                result["converged"]   = v.converged;
+                result["tail_bound"]  = v.tail_bound;
+                result["n_terms_used"]= v.n_terms_used;
+                
+            } else if (func == "dvp_arithmetic") {
+                auto d = QCALCGEOM::dvp_arithmetic();
+                result["fac26_mod_113"] = (qint64)d.fac26_mod_113;
+                result["non_repeating"] = d.non_repeating;
+                result["r_q_AU"]        = d.r_q_AU;
+                result["r_q_m"]         = d.r_q_m;
+                
+            } else if (func == "bsh_harmonic") {
+                double fUb  = request["f_Ub"].toDouble(3.3e7);
+                double ssq  = request["SSq"].toDouble(QCALCGEOM::SSQ_DEFAULT);
+                double om   = request["omega"].toDouble(2.0 * M_PI * 3.3e7);
+                double tn   = request["t_n"].toDouble(0.0);
+                int mmax    = request["m_max"].toInt(20);
+                auto b = QCALCGEOM::bsh_harmonic(fUb, ssq, om, tn, mmax);
+                result["U_g2"]     = b.U_g2;
+                result["H_m_max"]  = b.H_m_max;
+                result["saturated"]= b.saturated;
+                
+            } else if (func == "bh26_eigenvalue") {
+                int k = request["k"].toInt(1);
+                auto e = QCALCGEOM::bh26_eigenvalue(k);
+                result["lambda_k"]    = e.lambda_k;
+                result["freq_bin_hz"] = e.freq_bin_hz;
+                result["finite"]      = e.finite;
+                
+            } else if (func == "bsfg_buoyancy") {
+                double r  = request["r"].toDouble(QCALCGEOM::R_SUN);
+                double tn = request["t_n"].toDouble(0.0);
+                auto bu = QCALCGEOM::bsfg_buoyancy(r, tn);
+                result["Ubi"]           = bu.Ubi;
+                result["Ug_field"]      = bu.Ug_field;
+                result["orbit_factor"]  = bu.orbit_factor;
+                result["cos_tn"]        = bu.cos_tn;
+                result["negative"]      = bu.negative;
+                result["inverted"]      = bu.inverted;
+                result["zero_crossing"] = bu.zero_crossing;
+                
+            } else if (func == "poly26_derivative") {
+                int k    = request["k"].toInt(1);
+                double c = request["c"].toDouble(QCALCGEOM::G_NEWTON * QCALCGEOM::M_SUN);
+                double r = request["r"].toDouble(QCALCGEOM::R_SUN);
+                auto p = QCALCGEOM::poly26_derivative(k, c, r);
+                result["value"]           = p.value;
+                result["factorial_ratio"] = p.factorial_ratio;
+                result["r_power"]         = p.r_power;
+                result["negligible"]      = p.negligible;
+                
+            } else if (func == "uqff_comp_matrix") {
+                double r   = request["r"].toDouble(QCALCGEOM::R_SUN);
+                double rho = request["rho"].toDouble(1408.0);  // Solar mean density kg/m³
+                auto u = QCALCGEOM::uqff_comp_matrix(r, rho);
+                result["m00"]              = u.m00;
+                result["m11"]              = u.m11;
+                result["m22"]              = u.m22;
+                result["cross_d13"]        = u.cross_d13;
+                result["eigenvalue_min"]   = u.eigenvalue_min;
+                result["positive_definite"]= u.positive_definite;
+                
+            } else {
+                result["success"] = false;
+                result["error"] = "Unknown QCalcGeom function: " + func;
+            }
+            
+            return result;
+            
+        } else if (msg_type == "QCALCGEOM_TEST_RUN") {
+            // ================================================================
+            // QCalcGeom Test Runner — IPC message 0x0B03
+            // Triggers QCALCGEOM::runQCalcGeomTests() (60 tests)
+            // ================================================================
+            qDebug() << "[IPC QCalcGeom] Running 60 QCalcGeom requirement tests...";
+            QCALCGEOM::runQCalcGeomTests();
+            QJsonObject result;
+            result["success"] = true;
+            result["type"] = "QCALCGEOM_RESULT";
+            result["message"] = "QCalcGeom 60-test suite completed (see console output)";
+            return result;
+            
         } else {
             QJsonObject error;
             error["success"] = false;
@@ -434,7 +589,8 @@ void InitializeIPCServer() {
     qDebug() << "[IPC Server] Initialization complete";
     qDebug() << "[IPC Server] Named Pipe: \\\\.\\pipe\\StarMagic_UQFF";
     qDebug() << "[IPC Server] Python script: qcalc_cp2_hybrid.py (QCalc + CP2 router)";
-    qDebug() << "[IPC Server] Listening for PIPELINE_PROCESS messages...";
+    qDebug() << "[IPC Server] QCalcGeom v" << QCALCGEOM::QCALCGEOM_VERSION_STR << " BSFG handler active (0x0B01/0x0B03)";
+    qDebug() << "[IPC Server] Listening for PIPELINE_PROCESS + QCALCGEOM_COMPUTE messages...";
 }
 
 /**
@@ -1369,6 +1525,57 @@ public:
         physics_channel_->send(header, params);
     }
     
+    // ========================================================================
+    // QCalcGeom BSFG Integration — Geometric physics at VR probe positions
+    // ========================================================================
+    
+    /**
+     * @brief Compute BSFG metric, buoyancy, and geodesic at a radial position.
+     *
+     * Called during VR frame updates and gesture events to enrich
+     * the physics overlay with aether-metric geometry from QCalcGeom.
+     *
+     * @param r   Radial coordinate [m]
+     * @param t_n Phase parameter (default 0.0)
+     * @return    True if computation succeeded
+     */
+    bool computeQCalcGeomAtProbe(double r, double t_n = 0.0) {
+        if (r <= 0.0) return false;
+        
+        // BSFG metric: curvature, Riemann tensor
+        auto metric = QCALCGEOM::bsfg_metric(r, t_n);
+        
+        // BSFG buoyancy: Ubi coupling force
+        auto buoyancy = QCALCGEOM::bsfg_buoyancy(r, t_n);
+        
+        // BSFG geodesic: Aether-Newton crossover, angular momentum correction
+        auto geodesic = QCALCGEOM::bsfg_geodesic(r, t_n);
+        
+        // Store in frame state for rendering pipeline
+        last_qcalcgeom_.valid       = true;
+        last_qcalcgeom_.eps         = metric.eps;
+        last_qcalcgeom_.R_scalar    = metric.R_scalar;
+        last_qcalcgeom_.Kretschner  = metric.Kretschner;
+        last_qcalcgeom_.Ubi         = buoyancy.Ubi;
+        last_qcalcgeom_.r_cross_AU  = geodesic.r_cross_AU;
+        last_qcalcgeom_.delta_J     = geodesic.delta_J_over_J;
+        
+        return true;
+    }
+    
+    /// QCalcGeom data from most recent probe computation
+    struct QCalcGeomProbeData {
+        bool   valid      = false;
+        double eps        = 0.0;   // Aether density perturbation
+        double R_scalar   = 0.0;   // Ricci scalar curvature
+        double Kretschner = 0.0;   // Kretschner invariant
+        double Ubi        = 0.0;   // Buoyancy coupling
+        double r_cross_AU = 0.0;   // Aether-Newton crossover radius [AU]
+        double delta_J    = 0.0;   // Angular momentum correction |δJ/J|
+    };
+    
+    const QCalcGeomProbeData& getLastQCalcGeom() const { return last_qcalcgeom_; }
+    
     // Get field result from IPC
     bool getFieldResult(double& F_U, double& Ug_sum) {
         if (!isPhysicsConnected()) return false;
@@ -1465,6 +1672,9 @@ public:
                                          event.target_position[1] * event.target_position[1] +
                                          event.target_position[2] * event.target_position[2]);
                     requestFieldUpdate(r, 1.989e30, 0.0);  // Default solar mass
+                    
+                    // QCalcGeom: BSFG metric + buoyancy + geodesic at probe position
+                    computeQCalcGeomAtProbe(r, 0.0);
                 }
                 break;
                 
@@ -1504,6 +1714,9 @@ public:
             
             // Request field at probe position (async)
             requestFieldUpdate(probe_r * 3.086e16, 1.989e30, 0.0);  // Convert pc to m
+            
+            // QCalcGeom: compute BSFG geometry at probe radius (native, no IPC round-trip)
+            computeQCalcGeomAtProbe(probe_r * 3.086e16, 0.0);
         }
         
         // Handle gesture flags from VR frame
@@ -1544,6 +1757,19 @@ public:
             }
         } else if (cmd.intent == "calculate_all") {
             calculateAllAstroFields();
+        } else if (cmd.intent == "qcalcgeom_compute") {
+            // QCalcGeom task-bot: compute BSFG at specified object's distance
+            auto it = cmd.params.find("object");
+            if (it != cmd.params.end() && astro_graphics_) {
+                auto* entry = astro_graphics_->findEntry(it->second);
+                if (entry) {
+                    double r = entry->distance_pc * 3.086e16;
+                    computeQCalcGeomAtProbe(r, 0.0);
+                }
+            }
+        } else if (cmd.intent == "qcalcgeom_tests") {
+            // QCalcGeom task-bot: run 60-test validation suite
+            QCALCGEOM::runQCalcGeomTests();
         } else if (cmd.intent == "show_field_overlay") {
             if (astro_graphics_) {
                 VR::FieldOverlayConfig config;
@@ -1570,6 +1796,9 @@ private:
     
     // Phase 4: Astro Graphics Engine
     std::unique_ptr<VR::AstroGraphics> astro_graphics_;
+    
+    // QCalcGeom BSFG probe data (updated per-frame or per-gesture)
+    QCalcGeomProbeData last_qcalcgeom_;
 };
 
 } // namespace VR
