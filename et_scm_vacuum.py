@@ -16,6 +16,10 @@ PURPOSE: Standalone symbolic derivation engine for E(t) *explicitly* in
          and produces head-to-head comparison vs quintessence scalar-field
          dark energy models (w(φ) dynamic, slow-roll, V(φ)).
 
+         Session 208: Added SCmPhononModulatedEnergy class — E_net(t) with
+         explicit Φ_{1.25 THz}(ω) modulation factor. See et_phonon_resonance.py
+         for the dedicated phonon resonance derivation engine.
+
          Gap closed: et_scm_vacuum.py was referenced in workflow reports
          but did not exist.
 
@@ -292,6 +296,81 @@ class SCmKozimaCoupling:
                 f"  σ_n^SCm = σ₀ · exp[-(ω-ω_SCm)²/(2Γ²)] · (1+[SSq]·n/26)\n"
                 f"          = {sigma_0:.4e} × {gaussian:.6e} × {vds_factor:.4f}\n"
                 f"          = {sigma_scm:.6e}"
+            ),
+        }
+
+
+# ══════════════════════════════════════════════════════════════════════════════
+# §3.5  PHONON-MODULATED E_net (Session 208)
+# ══════════════════════════════════════════════════════════════════════════════
+
+class SCmPhononModulatedEnergy:
+    """
+    E_net with explicit Φ_{1.25 THz} phonon modulation in SCm vacuum.
+
+    The full phonon-modulated net energy is:
+
+      E_net^phonon(t) = ρ_SCm(t) · V_region · (2r−1) · Φ_{1.25 THz}(ω)
+
+    where Φ_{1.25 THz}(ω) = Φ₀ · exp[-(ω−ω_SCm)²/(2Γ²)] · S₂₆([SSq]).
+
+    This couples vacuum density evolution directly to the phonon
+    resonance so E(t) is amplified at ω = ω_SCm and suppressed
+    off-resonance.
+    """
+
+    def __init__(self):
+        self._net_energy = SCmNetEnergy()
+
+    def compute(self, dataset: dict) -> Dict[str, Any]:
+        """
+        Parameters from dataset:
+          omega:      driving frequency (rad/s, default OMEGA_SCM)
+          Phi_0:      base phonon fluence (phonons/m²/s, default 1e20)
+          gamma:      resonance width (rad/s, default GAMMA_DEFAULT)
+          + all SCmNetEnergy parameters (t, V_region, F_U_Bi, F_U, etc.)
+        """
+        omega  = dataset.get('omega', OMEGA_SCM)
+        Phi_0  = dataset.get('Phi_0', PHI_PHONON_DEFAULT)
+        gamma  = dataset.get('gamma', GAMMA_DEFAULT)
+        ssq    = dataset.get('SSq', SSQ)
+
+        # Gaussian resonance peak
+        delta_omega = omega - OMEGA_SCM
+        exponent = -(delta_omega**2) / (2 * gamma**2)
+        gaussian = math.exp(min(exponent, 0.0))
+
+        # S₂₆
+        s26_data = S26_accelerated(ssq)
+        S26_val = s26_data["S_26"]
+
+        # Phonon modulation factor
+        Phi_125 = Phi_0 * gaussian * S26_val
+
+        # Bare E_net
+        net_result = self._net_energy.compute(dataset)
+        E_net_bare = net_result["E_net_t"]
+
+        # Phonon-modulated E_net
+        E_net_phonon = E_net_bare * Phi_125
+        E_plus_phonon = net_result["E_plus_t"] * Phi_125
+        E_minus_phonon = net_result["E_minus_t"] * Phi_125
+
+        return {
+            "E_net_phonon": E_net_phonon,
+            "E_plus_phonon": E_plus_phonon,
+            "E_minus_phonon": E_minus_phonon,
+            "E_net_bare": E_net_bare,
+            "Phi_125_THz": Phi_125,
+            "gaussian_peak": gaussian,
+            "rho_SCm_t": net_result["rho_SCm_t"],
+            "regime": net_result["regime"],
+            "net_factor": net_result["net_factor"],
+            "bare_details": net_result,
+            "equation": (
+                "E_net^phonon(t) = E_net(t) · Φ_{1.25 THz}(ω)\n"
+                f"               = {E_net_bare:.6e} × {Phi_125:.6e}\n"
+                f"               = {E_net_phonon:.6e} J"
             ),
         }
 
@@ -786,6 +865,22 @@ def _run_tests():
     check("WSTP kernel string contains SCm-specific definitions",
           "ρSCmEvol" in wl and "σnSCm" in wl and "wQuint" in wl,
           f"len = {len(wl)}")
+
+    # T14: Phonon-modulated E_net at resonance
+    pm = SCmPhononModulatedEnergy()
+    r14 = pm.compute({'t': 0.0, 'F_U_Bi': 0.55, 'F_U': 1.0, 'V_region': 1e48,
+                      'omega': OMEGA_SCM})
+    check("Phonon-modulated E_net is E_bare × Φ (identity)",
+          abs(r14["E_net_phonon"] - r14["E_net_bare"] * r14["Phi_125_THz"])
+          / (abs(r14["E_net_phonon"]) + 1e-300) < 1e-10,
+          f"E_phonon = {r14['E_net_phonon']:.6e}")
+
+    # T15: Phonon Gaussian peaks at ω_SCm
+    r15_off = pm.compute({'t': 0.0, 'F_U_Bi': 0.55, 'F_U': 1.0,
+                          'V_region': 1e48, 'omega': OMEGA_SCM * 2.0})
+    check("Phonon modulation peaks at ω_SCm",
+          abs(r14["Phi_125_THz"]) > abs(r15_off["Phi_125_THz"]),
+          f"Φ(ω_SCm) = {r14['Phi_125_THz']:.6e} > Φ(2ω) = {r15_off['Phi_125_THz']:.6e}")
 
     # Summary
     passed = sum(1 for _, tag, _ in results if tag == "PASS")

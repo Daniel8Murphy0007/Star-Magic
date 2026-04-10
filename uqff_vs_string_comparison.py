@@ -608,6 +608,115 @@ class QuintessenceComparison:
         }
 
 
+class KEssenceComparison:
+    """
+    E(t) vs k-essence non-canonical kinetic scalar field comparison (Session 208).
+
+    k-Essence: Lagrangian L = F(X, φ) where X = ½(∂φ)².
+      Scherrer model: F(X) = -A + B X^n
+      Density: ρ = 2X F_X - F
+      Pressure: p = F
+      EOS: w = F / (2X F_X - F)
+      Sound speed: c_s² = F_X / (F_X + 2X F_XX)
+
+    UQFF E(t): SCm buoyancy-driven, phonon-modulated, sign-flipping.
+    """
+
+    H_0  = 2.195e-18
+    RHO_CRIT = 3 * (2.195e-18)**2 / (8 * PI * G)
+
+    def compute(self, dataset: dict = None) -> Dict[str, Any]:
+        if dataset is None:
+            dataset = {}
+        w_obs   = dataset.get('w_obs', -1.03)
+        sigma_w = dataset.get('sigma_w', 0.03)
+
+        # k-Essence: Scherrer model F(X) = -A + B X^n
+        A_kess = dataset.get('A_kess', self.RHO_CRIT * c**2)
+        B_kess = dataset.get('B_kess', 1.0)
+        n_kess = dataset.get('n_kess', 1.0)
+        phi_dot = dataset.get('phi_dot_0', 1e-30)
+
+        X_0 = 0.5 * phi_dot**2
+
+        # F(X) = -A + B X^n
+        F_val = -A_kess + B_kess * (X_0 ** n_kess) if X_0 > 0 else -A_kess
+        # F_X = n B X^{n-1}
+        F_X = n_kess * B_kess * (X_0 ** max(n_kess - 1, 0)) \
+            if X_0 > 0 else n_kess * B_kess
+        # F_XX
+        F_XX = n_kess * (n_kess - 1) * B_kess * (X_0 ** max(n_kess - 2, 0)) \
+            if X_0 > 0 and n_kess > 1 else 0.0
+
+        # EOS
+        rho_k = 2 * X_0 * F_X - F_val
+        w_kess = F_val / rho_k if rho_k != 0 else -1.0
+
+        # Sound speed
+        denom_cs = F_X + 2 * X_0 * F_XX
+        c_s_sq = F_X / denom_cs if denom_cs != 0 else 1.0
+        c_s = math.sqrt(abs(c_s_sq))
+
+        # UQFF EOS
+        rate = KAPPA + SSQ / N_LEVELS
+        w_UQFF = -1.0 + 2.0 * rate / (3.0 * self.H_0)
+
+        # χ²
+        chi2_k = ((w_kess - w_obs) / sigma_w)**2
+        chi2_U = ((w_UQFF - w_obs) / sigma_w)**2
+        Delta_chi2 = chi2_k - chi2_U
+
+        rho_QFT = 1e113
+        rho_L = 0.692 * self.RHO_CRIT
+        ft_exp = int(math.log10(rho_QFT / rho_L)) if rho_L > 0 else 0
+
+        return {
+            "w_kessence": w_kess,
+            "w_UQFF": w_UQFF,
+            "Delta_w": w_kess - w_UQFF,
+            "chi2_kessence": chi2_k,
+            "chi2_UQFF": chi2_U,
+            "Delta_chi2": Delta_chi2,
+            "preferred": "UQFF" if Delta_chi2 > 0 else "k-Essence",
+            "c_s": c_s,
+            "c_s_squared": c_s_sq,
+            "fine_tuning_kessence": f"~10^{ft_exp} (A tuned)",
+            "fine_tuning_UQFF": "None (2 free params)",
+            "contrast_table": [
+                {"aspect": "Origin",
+                 "kEssence": "Kinetic term K(X,φ); X=½(∂φ)²; p=F(X,φ)",
+                 "UQFF": "SCm vacuum modulated by 1.25 THz phonon resonance"},
+                {"aspect": "Equation of state",
+                 "kEssence": f"w = {w_kess:.6f} (can cross −1; depends on F)",
+                 "UQFF": f"w = {w_UQFF:.6f} (sign-flipping via buoyancy)"},
+                {"aspect": "Dynamics",
+                 "kEssence": f"(F_X+2XF_XX)φ̈+3HF_Xφ̇−F_φ=0; c_s={c_s:.4f}",
+                 "UQFF": "exp(κt+[SSq]t/26)·S₂₆·Φ_{1.25 THz}"},
+                {"aspect": "Lab testability",
+                 "kEssence": "None (high-energy scalar field)",
+                 "UQFF": "1.25 THz QCL neutron drops, micro-plasmoid, LENR COP>10"},
+                {"aspect": "GW prediction",
+                 "kEssence": "Standard GR waveforms",
+                 "UQFF": "66.7% strain reduction + 367.8-cycle phase lag"},
+                {"aspect": "Cosmogenesis",
+                 "kEssence": "Possible inflation but no pre-gravity vacuum",
+                 "UQFF": "SCm phonon → DPM → EM bang + 2 cycles"},
+                {"aspect": "Fine-tuning",
+                 "kEssence": f"Kinetic function tuned (~10^{ft_exp})",
+                 "UQFF": "None — 2 fixed parameters"},
+                {"aspect": "Sign behavior",
+                 "kEssence": "Usually accelerating (w ≈ −1)",
+                 "UQFF": "Explicit ± phases (expansion ↔ erosion)"},
+                {"aspect": "Sound speed",
+                 "kEssence": f"c_s² = F_X/(F_X+2XF_XX) = {c_s_sq:.6e}",
+                 "UQFF": "No scalar c_s; phonon at ω_SCm = 1.25 THz"},
+                {"aspect": "Free parameters",
+                 "kEssence": "3+ (A, B, n) + initial conditions",
+                 "UQFF": "2 ([SSq], κ) calibrated from data"},
+            ],
+        }
+
+
 class UQFFvsStringComparison:
     """
     Master comparison engine assembling all sub-comparisons.
@@ -619,6 +728,7 @@ class UQFFvsStringComparison:
         self.scoring = ComparisonScoring()
         self.lcdm = LCDMComparison()
         self.quintessence = QuintessenceComparison()
+        self.kessence = KEssenceComparison()
 
     def compute(self, dataset: dict = None) -> Dict[str, Any]:
         if dataset is None:
@@ -629,6 +739,7 @@ class UQFFvsStringComparison:
         score = self.scoring.compute(dataset)
         lcdm = self.lcdm.compute(dataset)
         quint = self.quintessence.compute(dataset)
+        kess = self.kessence.compute(dataset)
 
         return {
             "lagrangian_comparison": lag,
@@ -636,6 +747,7 @@ class UQFFvsStringComparison:
             "scoring": score,
             "lcdm_comparison": lcdm,
             "quintessence_comparison": quint,
+            "kessence_comparison": kess,
             "comparison_table": [
                 {
                     "aspect": a.name,
@@ -675,6 +787,17 @@ class UQFFvsStringComparison:
                 "buoyancy reversal. E(t) naturally produces both accelerating expansion and "
                 "erosive depletion with the same mechanism, eliminating the need for an "
                 "ad-hoc scalar field."
+            ),
+            "kessence_critique": (
+                "k-Essence is a flexible phenomenological patch for dark energy with "
+                "tunable non-canonical kinetic terms but no first-principle vacuum origin "
+                "and zero lab testability. The sound speed c_s can be subluminal, but this "
+                "is a free parameter, not a prediction. UQFF E(t) replaces it with a "
+                "phonon-driven buoyancy term derived directly from the SCm vacuum manifold "
+                "— testable today via 1.25 THz resonance, LENR excess heat, and micro-plasmoid "
+                "buoyancy reversal. It naturally produces both accelerating expansion and "
+                "erosive depletion with the same mechanism (sign-flipping at ratio=0.5), "
+                "eliminating the need for an ad-hoc kinetic scalar field."
             ),
         }
 
@@ -804,6 +927,27 @@ def _run_self_test():
     assert full["quintessence_comparison"]["w_quintessence"] is not None
     passed += 1
     print("\nT12 Full report includes quintessence section: valid")
+    print("    PASS")
+
+    # Test 13: k-Essence comparison
+    kc = KEssenceComparison()
+    kr = kc.compute()
+    print(f"\nT13 w_kessence = {kr['w_kessence']:.6f}, w_UQFF = {kr['w_UQFF']:.6f}")
+    print(f"    Δw = {kr['Delta_w']:.6f}, c_s = {kr['c_s']:.6f}")
+    print(f"    preferred = {kr['preferred']}")
+    assert len(kr['contrast_table']) == 10
+    assert kr['c_s'] > 0  # sound speed must be positive
+    passed += 1
+    print("    PASS")
+
+    # Test 14: Full report includes k-essence
+    comp2 = UQFFvsStringComparison()
+    full2 = comp2.compute()
+    assert "kessence_comparison" in full2
+    assert "kessence_critique" in full2
+    assert full2["kessence_comparison"]["c_s"] > 0
+    passed += 1
+    print("\nT14 Full report includes k-essence section: valid")
     print("    PASS")
 
     print(f"\n{'=' * 72}")

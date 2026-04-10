@@ -1,5 +1,5 @@
 """
-WSTP Kernel Demo Runner — Live Wolfram Kernel Session for 11-Sector UQFF Lagrangian + SCm Vacuum
+WSTP Kernel Demo Runner — Live Wolfram Kernel Session for 11-Sector UQFF Lagrangian + SCm Vacuum + Phonon Resonance
 
 Session 204 | Daniel Murphy
 PURPOSE: Connect to a running Wolfram kernel (via wolframscript subprocess or
@@ -269,6 +269,57 @@ def build_demo_expressions(wl_path: str) -> List[Dict[str, str]]:
                  'phidot = 10^-30; KE = phidot^2 / 2; '
                  'wQ = (KE - Vphi) / (KE + Vphi); '
                  '{wQ, epsQ, etaQ} // N'),
+    })
+
+    # ── Phonon-Modulated E(t) + k-Essence (Session 208) ──
+
+    # 22. Phonon modulation factor Φ_{1.25 THz}(ω)
+    exprs.append({
+        "label": "Phonon modulation Φ_{1.25 THz} at resonance ω=ω_SCm",
+        "code": ('Phi0 = 10^20; omSCm = 2 Pi * 1.25*^12; '
+                 'GammaSCm = 2 Pi * 0.1*^12; '
+                 'Phi125THz[om_] := Phi0 * Exp[-(om - omSCm)^2 / (2 GammaSCm^2)] '
+                 '* PolyLog[26, 0.57]; '
+                 'Phi125THz[omSCm] // N'),
+    })
+
+    # 23. Phonon-modulated E_net
+    exprs.append({
+        "label": "E_net^phonon(t=0, V=1e48) — phonon-modulated",
+        "code": ('EnetPhonon[t_, Vreg_, FUBi_, FU_, om_] := '
+                 'rhoSCmEvol[t] * Vreg * (2 FUBi / FU - 1) * Phi125THz[om]; '
+                 'EnetPhonon[0, 10^48, 0.55, 1.0, omSCm] // N'),
+    })
+
+    # 24. Phonon Lagrangian: L_phonon = E_net · V · Φ · S₂₆
+    exprs.append({
+        "label": "L_phonon = E_net · V · Φ_{1.25 THz} · S₂₆",
+        "code": ('Lphonon[t_, Vreg_, FUBi_, FU_, om_] := '
+                 'EnetPhonon[t, Vreg, FUBi, FU, om] * Vreg * PolyLog[26, 0.57]; '
+                 'Lphonon[0, 10^48, 0.55, 1.0, omSCm] // N'),
+    })
+
+    # 25. k-Essence: Scherrer model F(X) = -A + B X^n, w, c_s²
+    exprs.append({
+        "label": "k-Essence Scherrer: w, c_s² for F(X)=-A+BX^n",
+        "code": ('rhoCr = 3 (2.195*^-18)^2 / (8 Pi 6.674*^-11); '
+                 'Akess = rhoCr * (2.998*^8)^2; Bkess = 1; nkess = 1; '
+                 'phidotK = 10^-30; X0 = phidotK^2 / 2; '
+                 'FX = -Akess + Bkess X0^nkess; '
+                 'FXd = nkess Bkess X0^(nkess - 1); '
+                 'FXXd = nkess (nkess - 1) Bkess X0^(nkess - 2); '
+                 'rhoK = 2 X0 FXd - FX; '
+                 'wK = FX / rhoK; '
+                 'cs2K = FXd / (FXd + 2 X0 FXXd); '
+                 '{wK, cs2K} // N'),
+    })
+
+    # 26. Δw comparison: k-essence vs UQFF
+    exprs.append({
+        "label": "Δw = w_kessence − w_UQFF",
+        "code": ('H0 = 2.195*^-18; '
+                 'wUQFF = -1 + 2 (5.787*^-9 + 0.57 / 26) / (3 H0); '
+                 '{wK, wUQFF, wK - wUQFF} // N'),
     })
 
     return exprs

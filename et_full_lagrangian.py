@@ -21,6 +21,10 @@ PURPOSE: Standalone symbolic derivation engine for the complete E(t) sector
          phonon resonance coupling at 1.25 THz. See et_scm_vacuum.py for
          the dedicated SCm-specific derivation engine.
 
+         Session 208: Added phonon_lagrangian() method for L_phonon with
+         Φ_{1.25 THz}(ω) modulation. See et_phonon_resonance.py for the
+         dedicated phonon resonance derivation engine and k-essence comparison.
+
 ARCHITECTURE: Pure calculator. No hardcoded systems. Tier 2 compute.
 """
 
@@ -287,6 +291,53 @@ class EtFullLagrangian:
             "vds_factor": vds_factor,
             "omega_SCm": OMEGA_SCM,
             "E_net_t": E_net,
+        }
+
+    def phonon_lagrangian(self, dataset: dict) -> Dict[str, Any]:
+        """
+        Phonon-modulated E(t) Lagrangian (Session 208).
+
+        Couples E_net to the phonon modulation factor:
+          L_phonon = E_net(t) · V_filament · Φ_{1.25 THz}(ω) · S₂₆
+
+        where Φ_{1.25 THz}(ω) = Φ₀ · exp[-(ω−ω_SCm)²/(2Γ²)] · S₂₆.
+        """
+        V_fil   = dataset.get('V_filament', V_FILAMENT_DEFAULT)
+        ssq     = dataset.get('SSq', SSQ)
+        omega   = dataset.get('omega', OMEGA_SCM)
+        Phi_0   = dataset.get('Phi_0', PHI_PHONON_DEFAULT)
+        gamma   = dataset.get('gamma', GAMMA_DEFAULT)
+
+        # Base Lagrangian
+        lag = self.compute(dataset)
+        E_net = lag["E_net_t"]
+
+        # S₂₆
+        S26 = S26_accelerated(ssq)
+        S26_val = S26["S_26"]
+
+        # Phonon modulation
+        delta_omega = omega - OMEGA_SCM
+        exponent = -(delta_omega**2) / (2 * gamma**2)
+        gaussian = math.exp(min(exponent, 0.0))
+        Phi_125 = Phi_0 * gaussian * S26_val
+
+        # Phonon Lagrangian
+        L_phonon = E_net * V_fil * Phi_125 * S26_val
+
+        return {
+            "L_phonon": L_phonon,
+            "L_Et_base": lag["L_Et"],
+            "E_net_t": E_net,
+            "Phi_125_THz": Phi_125,
+            "gaussian_peak": gaussian,
+            "S_26": S26_val,
+            "V_filament": V_fil,
+            "equation": (
+                "L_phonon = E_net · V_fil · Φ_{1.25 THz} · S₂₆\n"
+                f"         = {E_net:.6e} × {V_fil:.4e} × {Phi_125:.6e} × {S26_val:.6e}\n"
+                f"         = {L_phonon:.6e}"
+            ),
         }
 
 
