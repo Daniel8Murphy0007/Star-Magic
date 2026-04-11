@@ -10,7 +10,7 @@
 4. **physics_backend.cpp** = CPU-bound physics server (headless, ~12,000 lines)
 5. **index.js** = LIBRARY INDEX (NOT a calculator) - exports 106 systems for require()
 6. **uqff_server.js** = REST API server that imports index.js library (Port 3141)
-7. **CondensedPhysics2.py** = UQFF Extensions calculator (45,990 lines, 600 classes) - **5th parallel calculator**
+7. **CondensedPhysics2.py** = UQFF Extensions calculator (50,855 lines, 680 classes) - **5th parallel calculator**
 
 ### Port Assignments (CANONICAL)
 | Port | Service | Description |
@@ -45,7 +45,7 @@ CoAnQi.cpp  (9K)      ics.py (81K)    (46K, 600 classes)    (index.js LIB)
 ## Big Picture Architecture
 - **6-Tier Cross-Platform System:**
   - **Tier 1 GUI:** `source2.cpp` (15,753 lines, Qt6, 21 tabs) — where ALL user workflows begin
-  - **Tier 2 Compute (5 parallel calculators):** `MAIN_1_CoAnQi.cpp` (107,019 lines) + `QCalc.py` (9,100+L) + `CondensedPhysics.py` (81,626L, 176 classes) + `CondensedPhysics2.py` (45,990L, 600 classes) + `uqff_server.js` (imports index.js)
+  - **Tier 2 Compute (5 parallel calculators):** `MAIN_1_CoAnQi.cpp` (107,019 lines) + `QCalc.py` (9,100+L) + `CondensedPhysics.py` (81,626L, 176 classes) + `CondensedPhysics2.py` (50,855L, 680 classes) + `uqff_server.js` (imports index.js)
   - **Tier 3 VR/VM Backend:** `source2(HEAD PROGRAM).cpp` (2,625L GPU) + `physics_backend.cpp` (~12,000L CPU)
   - **Tier 4 IPC:** `uqff_ipc.h` (515L v3.1, 45 message types), `python_bridge.h`, `physics_service.h` (470L v3.1)
   - **Tier 5 Storage:** `bodies_*.csv`, `uqff_results.json`, `CondensedPhysics_OutputData.py` (RECALL)
@@ -63,7 +63,7 @@ CoAnQi.cpp  (9K)      ics.py (81K)    (46K, 600 classes)    (index.js LIB)
   - **Session 129** (Mar 23, 2026): 7 new UQFF C++ module pairs from grok_share_97bfeecaa5.txt (UQFFCalculationsModule, UQFFBuoyancySNRModule, UQFFCassiniBuoyancyModule, UQFFMultiAstroSystemsModule, UQFFEightAstroSystemsModule, UQFFNineteenAstroSystemsModule, WolframFieldUnityModule); PAPER_484–490; **50 total UQFF C++ modules**; v5.00
   - 6,688+ physics terms registered (Wolfram KB + extracted modules + validation batches)
   - 57 files skipped (GUI infrastructure, duplicate wrappers)
-- **Whitepaper Suite:** 656/1,000 whitepapers in progress (PAPER_001–656 total, 65.6% of target; updated April 01, 2026) — includes §1.13 Millennium Prize papers (Navier-Stokes, Yang-Mills, Riemann, P≠NP); G1–G6 CVW gate compliance enforced across all papers (all 645 fully CVW v2.0.0 compliant; PAPER_646–655 Session 168 CVW v2.0.0 compliant; PAPER_656 Session 170); 674 PDFs in canonical pdf/
+- **Whitepaper Suite:** 935/1,000 whitepapers in progress (PAPER_001–922 total, 93.5% of target; updated April 11, 2026) — includes §1.13 Millennium Prize papers (Navier-Stokes, Yang-Mills, Riemann, P≠NP); G1–G6 CVW gate compliance enforced across all papers; all papers CVW v2.0.0 compliant; 937 PDFs in canonical pdf/
 - **UQFF Solvability:** 99.9% (Grok 4 analysis Sept 14-21, 2025), calibrated constants: κ=0.0005/day, [SSq]=0.57, H_SCm≈0.99, U_UA≈0.0001, k_η=10⁻¹¹³, β_i≈0.603
 - **Self-Expanding Framework 2.0:** Dynamic term registration, runtime parameters, state export/import, auto-optimization, metadata tracking
 - **Build System:** CMake + Visual Studio 2022 (MSVC 14.44.35219), C++20 standard, Windows threading compatibility, UPX 5.0.2 compression (1.43 MB, 15.51% ratio)
@@ -193,7 +193,7 @@ SOURCE4::student_guide_SOURCE4    // Student Guide Universe (cosmological)
 - `physics_backend.cpp` - CPU-bound headless physics server (~12,000 lines)
 - `QCalc.py` - Python unified field solver (9,100+ lines, 8 master equations)
 - `CondensedPhysics.py` - Primary integration target (81,626 lines, 176 calculator classes) — **ADD NEW CALCULATORS HERE**
-- `CondensedPhysics2.py` - UQFF extensions (37,420+ lines, 548+ calculator classes)
+- `CondensedPhysics2.py` - UQFF extensions (50,855 lines, 680 calculator classes)
 - `index.js` - JavaScript LIBRARY (23,790 lines, 106 systems) — `uqff_server.js` is the REST server
 - `MAIN_1.cpp` - Original mathematical framework (referenced by index.js)
 
