@@ -435,6 +435,78 @@ class BuoyancyReversalAtResonance:
 
 
 # ══════════════════════════════════════════════════════════════════════════════
+# §4b  RESONANCE ACCELERATION TERM  a_res  (Session 211 addition)
+# ══════════════════════════════════════════════════════════════════════════════
+
+class ResonanceAccelerationTerm:
+    """
+    Resonance acceleration term — the missing link between phonon modulation
+    and the gravitational field equations:
+
+        a_res = (F_{U,Bi} / F_U) · Φ_{1.25 THz}(ω) · S₂₆([SSq])
+
+    When F_{U,Bi}/F_U > 0.5, a_res drives expansion (buoyancy dominant).
+    When F_{U,Bi}/F_U < 0.5, a_res drives contraction (gravity dominant).
+
+    This term couples the phonon modulation factor Φ directly into the
+    26-layer compressed gravity framework via:
+        g_phonon(r,t) = Σ_{i=1}^{26} Ug_i × a_res × Q_i
+    """
+
+    def __init__(self):
+        self._pmf = PhononModulationFactor()
+
+    def compute(self, dataset: dict) -> Dict[str, Any]:
+        """
+        Parameters from dataset:
+          omega:   angular frequency (rad/s, default ω_SCm)
+          Gamma:   linewidth (rad/s, default Γ_SCm)
+          Phi_0:   fluence normalization
+          F_U_Bi:  buoyancy force (N)
+          F_U:     gravity force (N)
+          ssq:     [SSq] parameter
+        """
+        F_U_Bi = dataset.get('F_U_Bi', 1.0)
+        F_U    = dataset.get('F_U', 1.0)
+        ssq    = dataset.get('ssq', SSQ)
+
+        # Get Φ from the phonon modulation factor
+        pmf_result = self._pmf.compute(dataset)
+        Phi_norm = pmf_result["Phi_125_THz"] / max(pmf_result.get("Phi_0_used", PHI_0_DEFAULT), 1e-50)
+
+        # S₂₆
+        S26 = S26_accelerated(ssq)
+
+        # Buoyancy ratio
+        ratio = F_U_Bi / max(F_U, 1e-50)
+
+        # Resonance acceleration
+        a_res = ratio * Phi_norm * S26
+
+        # Direction
+        if ratio > 0.5:
+            regime = "expansion (buoyancy dominant)"
+        elif ratio < 0.5:
+            regime = "contraction (gravity dominant)"
+        else:
+            regime = "critical balance"
+
+        return {
+            "a_res": a_res,
+            "F_UBi_over_FU": ratio,
+            "Phi_normalized": Phi_norm,
+            "S26": S26,
+            "regime": regime,
+            "Q_factor": pmf_result["Q_factor"],
+            "equation": (
+                "a_res = (F_{U,Bi}/F_U) · Φ_{1.25THz}(ω) · S₂₆([SSq])\n"
+                f"      = {ratio:.6f} × {Phi_norm:.6e} × {S26:.6e}\n"
+                f"      = {a_res:.6e}"
+            ),
+        }
+
+
+# ══════════════════════════════════════════════════════════════════════════════
 # §5  E(t) vs k-ESSENCE COMPARISON
 # ══════════════════════════════════════════════════════════════════════════════
 

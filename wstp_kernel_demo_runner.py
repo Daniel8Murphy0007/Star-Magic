@@ -322,6 +322,70 @@ def build_demo_expressions(wl_path: str) -> List[Dict[str, str]]:
                  '{wK, wUQFF, wK - wUQFF} // N'),
     })
 
+    # ── GW190425 Phonon + Jet Physics (Session 211) ──
+
+    # 27. GW190425 phonon-suppressed strain h_UQFF(t)
+    exprs.append({
+        "label": "GW190425 h_UQFF(t) = h_GR · 0.5297 · exp([SSq]·t/26)",
+        "code": ('hGR = 3.0*^-22; Dtotal = 0.530; SSq = 0.57; '
+                 'hUQFF[t_] := hGR * Dtotal * Exp[SSq t / 26]; '
+                 'hUQFF[0] // N'),
+    })
+
+    # 28. GW190425 phonon-modified wavelength λ_UQFF
+    exprs.append({
+        "label": "GW190425 λ_UQFF = λ_GR · (1 − F_UBi/F_U · Φ)",
+        "code": ('c = 2.998*^8; fGW = 300; lambdaGR = c / fGW; '
+                 'FUBi = 0.6; FU = 1.0; '
+                 'lambdaUQFF = lambdaGR * (1 - FUBi / FU * Phi125THz[omSCm] / 10^20); '
+                 '{lambdaGR, lambdaUQFF} // N'),
+    })
+
+    # 29. Jet modulation factor M_jet(Γ)
+    exprs.append({
+        "label": "M_jet(Γ) phonon-coupled jet modulation",
+        "code": ('Ajet = 1.5; sigmaGamma = 2 Pi * 0.08*^12; '
+                 'Gamma0 = 2 Pi * 1.25*^12; '
+                 'Mjet[Gamma_] := 1 + Ajet * '
+                 'Exp[-(Gamma - Gamma0)^2 / (2 sigmaGamma^2)]; '
+                 'Table[{Gamma / (2 Pi * 10^12), Mjet[Gamma]}, '
+                 '{Gamma, 2 Pi * 0.5*^12, 2 Pi * 2.0*^12, 2 Pi * 0.1*^12}] // N'),
+    })
+
+    # 30. Phonon-enhanced Blandford-Znajek jet power P_jet(Γ)
+    exprs.append({
+        "label": "P_jet = P_BZ · (1 + M_jet) for M87-type AGN",
+        "code": ('G = 6.674*^-11; c = 2.998*^8; '
+                 'MBH = 6.5*^9 * 1.989*^30; aBH = 0.9; B = 50; '
+                 'PBZ = (Pi / 6) (G MBH / c^2)^2 aBH^2 B^2 c; '
+                 'Pjet[Gamma_] := PBZ * (1 + Mjet[Gamma]); '
+                 '{PBZ, Pjet[Gamma0]} // N'),
+    })
+
+    # 31. Phonon-corrected NS spindown: Ω̇_NS^phonon
+    exprs.append({
+        "label": "Ω̇_NS^phonon = Ω̇_NS · (1 + Φ·S₂₆·[SSq]/N)",
+        "code": ('OmegaDotNS = -4.2*^-15; NLayers = 26; '
+                 'S26 = PolyLog[26, 0.57]; '
+                 'PhiRes = Phi125THz[omSCm]; '
+                 'OmegaDotPhonon = OmegaDotNS * '
+                 '(1 + PhiRes * S26 * 0.57 / NLayers); '
+                 '{OmegaDotNS, OmegaDotPhonon, '
+                 'OmegaDotPhonon / OmegaDotNS - 1} // N'),
+    })
+
+    # 32. GW190425 cumulative inspiral phase lag
+    exprs.append({
+        "label": "GW190425 inspiral phase lag ΔΦ(t) integral",
+        "code": ('M1 = 1.7 * 1.989*^30; M2 = 1.5 * 1.989*^30; '
+                 'Mc = (M1 M2)^(3/5) / (M1 + M2)^(1/5); '
+                 'fGW0 = 20; fGWEnd = 300; '
+                 'DeltaPhi = NIntegrate['
+                 '2 Pi (fGWEnd - fGW0) * 0.5297 * Phi125THz[omSCm] / 10^20, '
+                 '{x, 0, 1}]; '
+                 '{Mc, DeltaPhi} // N'),
+    })
+
     return exprs
 
 
