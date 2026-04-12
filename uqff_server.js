@@ -620,6 +620,92 @@ function handleRequest(req, res) {
         return;
     }
 
+    // POST /api/qgp/density — QGP vacuum density + Yang-Mills mass gap (Session 216)
+    if (method === 'POST' && pathname === '/api/qgp/density') {
+        let body = '';
+        req.on('data', c => body += c);
+        req.on('end', () => {
+            try {
+                const p = JSON.parse(body || '{}');
+                const T_K = parseFloat(p.T_K || 2e12);
+                const order = parseInt(p.order || 3);
+
+                const SSq = 0.57;
+                const Tc = 1.5e12;
+                const LamQCD = 0.217e9;
+                const rhoSCm = 1e-10;
+
+                // S_26^{(k)}
+                let S26k = 0;
+                for (let n = 1; n <= 50; n++) {
+                    let Rn = 1;
+                    for (let f = 2; f <= Math.min(n, 20); f++) Rn /= f;
+                    S26k += Math.pow(SSq, n) / Math.pow(n, 26) * Rn;
+                }
+
+                const expF = Math.exp(Math.max(Math.min(-(Tc - T_K) / T_K, 500), -500));
+                const rho_QGP = rhoSCm * S26k * expF;
+                const Delta_YM = T_K < Tc ? LamQCD * (1 - T_K / Tc) * S26k : 0;
+
+                res.writeHead(200, CORS_HEADERS);
+                res.end(JSON.stringify({
+                    status: 'ok', T_K, order,
+                    rho_QGP, Delta_YM, S26k,
+                    phase: T_K > Tc ? 'QGP' : 'hadron',
+                    session: 216
+                }));
+            } catch (e) {
+                res.writeHead(400, CORS_HEADERS);
+                res.end(JSON.stringify({ status: 'error', error: e.message }));
+            }
+        });
+        return;
+    }
+
+    // POST /api/master/99system — 99-system master equation F_U^{(99)} (Session 216)
+    if (method === 'POST' && pathname === '/api/master/99system') {
+        let body = '';
+        req.on('data', c => body += c);
+        req.on('end', () => {
+            try {
+                const p = JSON.parse(body || '{}');
+                const nSystems = parseInt(p.n_systems || 99);
+                const SSq = 0.57;
+                const G0 = 6.674e-11;
+                const Msun = 1.989e30;
+                const betaI = 0.603;
+
+                let S26 = 0;
+                for (let k = 1; k <= 26; k++) S26 += Math.exp(-SSq * k / 26);
+
+                let totalFU = 0;
+                for (let i = 1; i <= nSystems; i++) {
+                    const M = (0.1 + i * 2) * Msun;
+                    const r = 1e9 * (1 + i * 0.3);
+                    let Ug = 0, Ub = 0;
+                    for (let j = 1; j <= 26; j++) {
+                        Ug += G0 * M / (r * r) * SSq * j / 26;
+                        Ub += G0 * M / (r * r) * Math.exp(-SSq * j / 26) * betaI;
+                    }
+                    const Um = G0 * M / (r * r) * SSq * 0.1;
+                    const UA = G0 * M / (r * r) * 1e-10;
+                    totalFU += Ug + Um + UA - Ub + 1e-10 * S26 * S26;
+                }
+
+                res.writeHead(200, CORS_HEADERS);
+                res.end(JSON.stringify({
+                    status: 'ok', n_systems: nSystems,
+                    F_U_99: totalFU,
+                    session: 216
+                }));
+            } catch (e) {
+                res.writeHead(400, CORS_HEADERS);
+                res.end(JSON.stringify({ status: 'error', error: e.message }));
+            }
+        });
+        return;
+    }
+
     // 404 for unknown routes
     res.writeHead(404, CORS_HEADERS);
     res.end(JSON.stringify({
@@ -638,7 +724,9 @@ function handleRequest(req, res) {
             'POST /api/phonon/bcs',
             'POST /api/phonon/spectral-ladder',
             'POST /api/phonon/ns',
-            'POST /api/ramanujan/26d'
+            'POST /api/ramanujan/26d',
+            'POST /api/qgp/density',
+            'POST /api/master/99system'
         ]
     }));
 }

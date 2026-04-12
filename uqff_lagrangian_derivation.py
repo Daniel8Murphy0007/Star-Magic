@@ -1172,5 +1172,47 @@ TRIADIC_SOLUTIONS = {
 }
 
 
+# ── §12  QGP Deconfinement Lagrangian Sector ──────────────────────────────
+
+QGP_DECONFINEMENT = {
+    "sector": "QGP_DECONFINEMENT",
+    "session": 216,
+    "equations": {
+        "rho_QGP": "ρ_QGP(T) = ρ_SCm · S₂₆^{(k)}(SSq) · exp(-(T_c - T)/T)",
+        "Delta_YM": "Δ_YM(T) = Λ_QCD · (1 - T/T_c) · S₂₆^{(k)}",
+        "ALICE_dN": "dN/dη = A · √s^0.156 · (1-c/100)^α · S₂₆^{(k)}",
+        "phase_line": "T_c(μ_B) = T_c0 · (1 - (μ_B/μ_crit)²)",
+    },
+    "constants": {
+        "T_c_QGP": "1.5 × 10¹² K",
+        "Lambda_QCD": "217 MeV",
+        "mu_crit": "1200 MeV",
+        "rho_SCm": "1 × 10⁻¹⁰ kg/m³",
+    },
+    "lagrangian": "L_QGP = −ρ_QGP·c² + ½·(∂Δ_YM/∂T)²·Ṫ² − V(Δ_YM)",
+    "note": "PAPER_970-973. Deconfined QGP via S₂₆ Ramanujan acceleration.",
+}
+
+
+# ── §13  99-System Compression Lagrangian Sector ──────────────────────────
+
+NINETYNINE_SYSTEM_COMPRESSION = {
+    "sector": "99_SYSTEM_COMPRESSION",
+    "session": 216,
+    "equations": {
+        "F_U_99": "F_U^{(99)} = Σ_{i=1}^{99} [U_g,i + U_m,i + U_A,i − U_b,i] + F_n·S₂₆·Φ",
+        "triadic_compress": "g_tri = w_C·g_comp + w_R·g_res + w_B·g_buoy",
+        "weights": "w_X = |g_X| / (|g_comp| + |g_res| + |g_buoy|)",
+        "residual": "|g_tri − g_full| / |g_full| < 1%",
+    },
+    "categories": [
+        "stellar (20)", "galaxy (20)", "nebula (15)",
+        "compact (15)", "cluster (15)", "cosmological (14)",
+    ],
+    "lagrangian": "L_99 = Σ_{i=1}^{99} [½ṁ_i² − V(F_U,i)] with triadic decomposition",
+    "note": "PAPER_974. Standalone 99-system compressed master equation.",
+}
+
+
 if __name__ == "__main__":
     main()

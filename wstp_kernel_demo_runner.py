@@ -555,6 +555,29 @@ def build_demo_expressions(wl_path: str) -> List[Dict[str, str]]:
                  'Table[{G, lamUQFF[1, 2 Pi G*^12]}, {G, 0.01, 0.5, 0.05}]'),
     })
 
+    # 49. QGP vacuum density and Yang-Mills mass gap via S_26^{(k)}
+    exprs.append({
+        "label": "QGP vacuum density rho_QGP + Yang-Mills mass gap",
+        "code": ('Rn[n_, d_, k_] := 1/n! (1 + Sum[1/n^(d m) Sum[(-1)^(j+1) Binomial[d,j] (d-j)!/n^j, {j,1,d}], {m,1,k}]); '
+                 'S26k[z_, N_, k_] := Sum[z^n/n^26 Rn[n,26,k], {n,1,N}]; '
+                 'Tc = 1.5*^12; LamQCD = 0.217*^9; rhoSCm = 1*^-10; '
+                 'rhoQGP[T_] := rhoSCm * S26k[0.57,50,3] * Exp[-(Tc-T)/T]; '
+                 'DeltaYM[T_] := LamQCD * (1 - T/Tc) * S26k[0.57,50,3]; '
+                 'Table[{T, rhoQGP[T], DeltaYM[T]}, {T, 1*^11, 3*^12, 2*^11}]'),
+    })
+
+    # 50. 99-system master equation F_U^{(99)} aggregate
+    exprs.append({
+        "label": "99-system master equation F_U^{(99)} evaluation",
+        "code": ('G0 = 6.674*^-11; Msun = 1.989*^30; SSq = 0.57; betaI = 0.603; '
+                 'S26 = Sum[Exp[-SSq k/26], {k,1,26}]; '
+                 'Ug[M_, r_] := Sum[G0 M/r^2 SSq i/26, {i,1,26}]; '
+                 'Ub[M_, r_] := Sum[G0 M/r^2 Exp[-SSq i/26] betaI, {i,1,26}]; '
+                 'FU99 = Sum[With[{M = (0.1 + i 2) Msun, r = 10^9 (1 + i 0.3)}, '
+                 'Ug[M,r] + G0 M/r^2 SSq 0.1 + G0 M/r^2 10^-10 - Ub[M,r] + 10^-10 S26^2], {i,1,99}]; '
+                 'FU99'),
+    })
+
     return exprs
 
 
