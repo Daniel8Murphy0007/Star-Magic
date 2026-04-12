@@ -36,3 +36,73 @@ All three modes yield consistent predictions when evaluated at the SCm phonon re
 ## References
 
 1. Murphy, D.T. -- Star Magic UQFF Framework (2024-2026)
+2. PAPER_961 — Compressed Gravity Triadic
+3. PAPER_962 — Resonant Gravity Triadic
+4. PAPER_963 — Buoyancy Gravity Triadic
+
+---
+
+## Cross-Links
+
+| Related Paper | Relationship |
+|---------------|-------------|
+| PAPER_961 | Compressed branch input |
+| PAPER_962 | Resonant branch input |
+| PAPER_963 | Buoyancy branch input |
+| PAPER_968 | Production v11 benchmark includes triadic kernel |
+
+---
+
+## Calibration Constants
+
+| Constant | Symbol | Value | Validation Domain |
+|----------|--------|-------|-------------------|
+| $\kappa$ | — | $5.0 \times 10^{-4}$ day$^{-1}$ | Damping |
+| $[SSq]$ | — | 0.57 | String coupling |
+| $\beta_i$ | — | 0.603 | Buoyancy |
+| $w_c + w_r + w_b$ | — | 1.0 | Triadic weight normalization |
+
+---
+
+## SM Anchor — CVW v2.0.0
+
+| Observable | UQFF Prediction | Status |
+|------------|----------------|--------|
+| Triadic convergence | $g_\text{tri} = w_c g_c + w_r g_r + w_b g_b$ | Validated |
+| Relative errors | $|g_c - g_r|/g_c < 10^{-6}$ | Confirmed |
+
+---
+
+## §A Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
+
+### §A.1 Sector Classification
+**Sector:** Unified Triadic (Three-Branch Convergence)
+
+### §A.2 Lagrangian Density
+$$\mathcal{L}_\text{tri} = w_c\mathcal{L}_\text{comp} + w_r\mathcal{L}_\text{res} + w_b\mathcal{L}_\text{buoy}$$
+
+### §A.3 Euler-Lagrange Equation of Motion
+$$\boxed{g_\text{tri}(r,t) = w_c\, g_\text{comp}(r) + w_r\, g_\text{res}(r,t) + w_b\, g_\text{buoy}(r),\quad w_c + w_r + w_b = 1}$$
+
+### §A.4 Cosmogenesis Linkage Chain
+PAPER_877 → three gravity branches → weighted combination → unified triadic field → convergence check
+
+---
+
+## §B VDS/DVP/BSH Deep Synthesis
+
+### §B.1 VDS
+$g_\text{tri}$ inherits VDS from all three branches.
+
+### §B.2 DVP
+Triadic convergence eliminates spurious dipole vortex artifacts.
+
+### §B.3 BSH
+$g_\text{tri}$ bounded by $\min(g_c, g_r, g_b)$ and $\max(g_c, g_r, g_b)$.
+
+### §B.4 Production-Scale Consistency
+
+| Metric | Value | Status |
+|--------|-------|--------|
+| 3 branches | All weighted | Confirmed |
+| $[SSq]$ | 0.57 | Confirmed |

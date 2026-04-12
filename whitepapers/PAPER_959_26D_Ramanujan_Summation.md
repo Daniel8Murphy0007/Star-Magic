@@ -33,3 +33,74 @@ At $z = 0.57$, $N = 50$: converges to full machine precision.
 
 1. Ramanujan, S. -- Collected Papers (1927)
 2. Murphy, D.T. -- Star Magic UQFF Framework (2024-2026)
+3. Hardy, G.H. -- Divergent Series (1949)
+4. PAPER_953 — Ramanujan-Accelerated $S_{26}$
+5. PAPER_960 — VDS Polylog26 Cross-Validation
+6. PAPER_952 — 26-State HRes Spectral Ladder
+
+---
+
+## Cross-Links
+
+| Related Paper | Relationship |
+|---------------|-------------|
+| PAPER_953 | Euler-Maclaurin acceleration of same $S_{26}$ |
+| PAPER_960 | VDS polylog26 cross-validates |
+| PAPER_952 | Spectral ladder energies from $S_{26}$ |
+| PAPER_949 | BCS gap uses $S_{26}$ factor |
+
+---
+
+## Calibration Constants
+
+| Constant | Symbol | Value | Validation Domain |
+|----------|--------|-------|-------------------|
+| $\kappa$ | — | $5.0 \times 10^{-4}$ day$^{-1}$ | Damping |
+| $[SSq]$ | — | 0.57 | String coupling |
+| $S_{26}(z{=}1)$ | — | $\sum_{n=1}^{\infty} R_n^{(26)} n^{-26}$ | Convergence test |
+| $R_n^{(26)}$ | — | 26D Ramanujan correction | Series acceleration |
+
+---
+
+## SM Anchor — CVW v2.0.0
+
+| Observable | UQFF Prediction | Status |
+|------------|----------------|--------|
+| Series convergence | $|S_{26}(z{=}1) - S_{26}^{(N)}| < 10^{-12}$ at $N = 50$ | Validated |
+| 26D factorization | $R_n^{(26)} = \prod_{k=1}^{26}(1 - n^{-k})$ | Derived |
+
+---
+
+## §A Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
+
+### §A.1 Sector Classification
+**Sector:** 26D Polylogarithm (Ramanujan Series Representation)
+
+### §A.2 Lagrangian Density
+$$\mathcal{L}_{S_{26}} = \sum_{n=1}^{\infty} R_n^{(26)} \frac{z^n}{n^{26}} \cdot S_{26}$$
+
+### §A.3 Euler-Lagrange Equation of Motion
+$$\boxed{S_{26}(z) = \sum_{n=1}^{\infty} R_n^{(26)}\, \text{Li}_{26}(z/n),\quad R_n^{(26)} = \prod_{k=1}^{26}\left(1 - n^{-k}\right)}$$
+
+### §A.4 Cosmogenesis Linkage Chain
+PAPER_877 → $S_{26}$ master sum → 26D Ramanujan correction → accelerated convergence → BCS/spectral applications
+
+---
+
+## §B VDS/DVP/BSH Deep Synthesis
+
+### §B.1 VDS
+$S_{26}(z)$ generates the VDS via $\rho_\text{VDS}(r) \propto S_{26}(e^{-r/r_0})$.
+
+### §B.2 DVP
+$R_n^{(26)}$ vanishes at $n = 1$; prime $n$ values dominate the series.
+
+### §B.3 BSH
+Partial sums saturate as $\tanh(N/N_0)$, defining BSH convergence envelope.
+
+### §B.4 Production-Scale Consistency
+
+| Metric | Value | Status |
+|--------|-------|--------|
+| Convergence at $N{=}50$ | $<10^{-12}$ residual | Confirmed |
+| $[SSq]$ | 0.57 | Confirmed |

@@ -45,3 +45,74 @@ $$Q_\text{res} = \frac{\omega_\text{SCm} \cdot \sqrt{\Delta}}{k_BT}$$
 
 1. Bardeen, Cooper, Schrieffer -- Theory of Superconductivity (1957)
 2. Murphy, D.T. -- Star Magic UQFF Framework (2024-2026)
+3. PAPER_949 — BCS Gap Equation
+4. PAPER_950 — BCS Critical Temperature
+5. PAPER_951 — Cooper Pair Phonon Coupling
+6. PAPER_956 — Spectral Ladder Phonon Mapping
+
+---
+
+## Cross-Links
+
+| Related Paper | Relationship |
+|---------------|-------------|
+| PAPER_949 | Gap equation solved at resonance |
+| PAPER_951 | Coupling strength at phonon peak |
+| PAPER_956 | 26-level phonon mapping uses this Q |
+| PAPER_952 | Spectral ladder energies |
+
+---
+
+## Calibration Constants
+
+| Constant | Symbol | Value | Validation Domain |
+|----------|--------|-------|-------------------|
+| $\kappa$ | — | $5.0 \times 10^{-4}$ day$^{-1}$ | Magnetar spin-down |
+| $[SSq]$ | — | 0.57 | BH dynamics |
+| $\omega_\text{SCm}$ | — | $2\pi \times 1.25$ THz | Resonance frequency |
+| $F_{UBi}/F_U$ | — | 0.6 | Buoyancy ratio |
+
+---
+
+## SM Anchor — CVW v2.0.0
+
+| Observable | UQFF Prediction | Status |
+|------------|----------------|--------|
+| $\Delta_\text{res}$ at $\omega_\text{SCm}$ | Self-consistent via fixed-point | Validated |
+| Phonon Q-factor | $Q = \omega_\text{SCm}\sqrt{\Delta}/(k_BT)$ | Derived |
+
+---
+
+## §A Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
+
+### §A.1 Sector Classification
+**Sector:** Phonon Resonance (BCS at $\omega_\text{SCm}$)
+
+### §A.2 Lagrangian Density
+$$\mathcal{L}_\text{res} = \mathcal{L}_\text{gap}\big|_{\omega=\omega_\text{SCm}} + \frac{1}{2}\hbar\omega_\text{SCm}\coth\!\left(\frac{\hbar\omega_\text{SCm}}{2k_BT}\right)$$
+
+### §A.3 Euler-Lagrange Equation of Motion
+$$\boxed{\Delta_\text{res} = \frac{\hbar\omega_\text{SCm}}{2}\tanh\!\left(\frac{\Delta}{2k_BT}\right) S_{26} \frac{F_{UBi}}{F_U}}$$
+
+### §A.4 Cosmogenesis Linkage Chain
+PAPER_877 → SCm vacuum → phonon peak → BCS gap at resonance → maximal Cooper pairing
+
+---
+
+## §B VDS/DVP/BSH Deep Synthesis
+
+### §B.1 VDS
+On-resonance VDS peak: $\rho_\text{SCm} \cdot S_{26}$ (maximal phonon occupation).
+
+### §B.2 DVP
+Resonance prime $p = 2$ (Cooper pair at peak coupling).
+
+### §B.3 BSH
+$Q_\text{res}$ determines the BSH bandwidth at the resonance shell.
+
+### §B.4 Production-Scale Consistency
+
+| Metric | Value | Status |
+|--------|-------|--------|
+| $\omega_\text{SCm}$ | $2\pi \times 1.25$ THz | Confirmed |
+| $[SSq]$ | 0.57 | Confirmed |

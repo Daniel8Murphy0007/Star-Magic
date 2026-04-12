@@ -57,3 +57,77 @@ $$\Gamma_\text{LENR} \propto \Delta^2 \cdot \exp\!\left(-\frac{E_\text{Coulomb}}
 
 1. Bardeen, Cooper, Schrieffer -- Theory of Superconductivity (1957)
 2. Murphy, D.T. -- Star Magic UQFF Framework (2024-2026)
+3. PAPER_949 — BCS Gap Equation
+4. PAPER_950 — BCS Critical Temperature
+5. PAPER_952 — 26-State HRes Spectral Ladder
+6. PAPER_877 — Cosmogenesis Master Lagrangian
+
+---
+
+## Cross-Links
+
+| Related Paper | Relationship |
+|---------------|-------------|
+| PAPER_949 | Gap equation derived from this Lagrangian |
+| PAPER_950 | $T_c$ from stationarity condition |
+| PAPER_951 | $V_\text{eff}$ coupling in Lagrangian |
+| PAPER_952 | Spectral ladder link to $E_n$ |
+| PAPER_877 | Master Lagrangian parent sector |
+
+---
+
+## Calibration Constants
+
+| Constant | Symbol | Value | Validation Domain |
+|----------|--------|-------|-------------------|
+| $\kappa$ | — | $5.0 \times 10^{-4}$ day$^{-1}$ | Damping |
+| $[SSq]$ | — | 0.57 | String coupling |
+| $\beta_i$ | — | 0.603 | Buoyancy coupling |
+| $\omega_\text{SCm}$ | — | $2\pi \times 1.25$ THz | Phonon |
+| $N(0)V_\text{SCm}$ | — | Dimensionless | Critical coupling |
+
+---
+
+## SM Anchor — CVW v2.0.0
+
+| Observable | UQFF Prediction | Status |
+|------------|----------------|--------|
+| Stationarity | $\delta S/\delta\varphi_\text{pair} = 0$ yields BCS gap | Derived |
+| LENR connection | $\Gamma_\text{LENR} \propto \Delta^2 e^{-E_C/k_BT_c}\Phi$ | Novel |
+| Spectral ladder link | $E_n$ phonon channels in Lagrangian | Validated |
+
+---
+
+## §A Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
+
+### §A.1 Sector Classification
+**Sector:** Cooper Pair Lagrangian (Variational Gap Principle)
+
+### §A.2 Lagrangian Density
+$$\mathcal{L}_\text{gap} = -\frac{N(0)|\Delta|^2}{V_\text{SCm}} + N(0)\hbar\omega_\text{SCm}\ln\!\left(2\cosh\frac{\Delta}{2k_BT}\right)$$
+
+### §A.3 Euler-Lagrange Equation of Motion
+$$\boxed{\frac{\delta S}{\delta\varphi_\text{pair}} = \frac{\partial}{\partial\Delta}\left(-\beta_i\sum U_{g,i}\frac{\Omega_g M}{d_g[UA]} + F_n \Phi_{1.25\text{THz}}\right) = 0}$$
+
+### §A.4 Cosmogenesis Linkage Chain
+PAPER_877 → 9-sector Lagrangian → Cooper pair sector → $\delta S/\delta\Delta = 0$ → BCS gap + spectral ladder + LENR
+
+---
+
+## §B VDS/DVP/BSH Deep Synthesis
+
+### §B.1 VDS
+Gap Lagrangian embeds VDS via $\rho_\text{SCm}$ dependence in $N(0)$.
+
+### §B.2 DVP
+Variational principle selects Cooper pair prime $p = 2$.
+
+### §B.3 BSH
+LENR rate saturation: $\tanh(\Delta/E_0) \cdot S_{26}$.
+
+### §B.4 Production-Scale Consistency
+
+| Metric | Value | Status |
+|--------|-------|--------|
+| Lagrangian sectors | 9 + Cooper pair | Confirmed |
+| $[SSq]$ | 0.57 | Confirmed |

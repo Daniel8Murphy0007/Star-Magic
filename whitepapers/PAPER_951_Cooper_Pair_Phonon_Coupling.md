@@ -39,3 +39,75 @@ At on-resonance ($\omega = \omega_\text{SCm}$), $\Phi = S_{26}$ and coupling is 
 
 1. Murphy, D.T. -- Star Magic UQFF Framework (2024-2026)
 2. Cooper, L.N. (1956) -- Phys. Rev. 104, 1189
+3. PAPER_949 — BCS Gap Equation
+4. PAPER_950 — BCS Critical Temperature
+5. PAPER_955 — BCS Phonon Resonance
+6. PAPER_957 — Cooper Pair Lagrangian
+
+---
+
+## Cross-Links
+
+| Related Paper | Relationship |
+|---------------|-------------|
+| PAPER_949 | Gap equation driven by this coupling |
+| PAPER_950 | $T_c$ depends on $V_\text{eff}$ |
+| PAPER_952 | Spectral ladder channels for pairing |
+| PAPER_955 | Resonance Q-factor at $\omega_\text{SCm}$ |
+
+---
+
+## Calibration Constants
+
+| Constant | Symbol | Value | Validation Domain |
+|----------|--------|-------|-------------------|
+| $\kappa$ | $5.0 \times 10^{-4}\,\text{day}^{-1}$ | — | Magnetar spin-down |
+| $[SSq]$ | 0.57 | — | BH dynamics |
+| $\beta_i$ | 0.603 | — | Multi-system |
+| $\omega_\text{SCm}$ | $2\pi \times 1.25$ THz | — | Phonon resonance |
+| $F_{UBi}/F_U$ | 0.6 | — | Buoyancy-gravity ratio |
+
+---
+
+## SM Anchor — CVW v2.0.0
+
+| Observable | UQFF Prediction | Status |
+|------------|----------------|--------|
+| Cooper pair binding | $E_\text{pair} = 2\Delta$ via $\Phi_{1.25\text{THz}}$ | Mapped |
+| Phonon mediation | $V_\text{eff} = V_\text{SCm} \cdot \Phi(\omega,\Gamma)$ | Novel |
+
+---
+
+## §A Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
+
+### §A.1 Sector Classification
+**Sector:** Cooper Pair Binding (BCS-SCm Phonon Mediation)
+
+### §A.2 Lagrangian Density
+$$\mathcal{L}_\text{pair} = \bar{\psi}(i\partial\!\!/ - m)\psi + V_\text{SCm}(\bar{\psi}\psi)^2 \cdot \Phi_{1.25\text{THz}}$$
+
+### §A.3 Euler-Lagrange Equation of Motion
+$$\boxed{(i\partial\!\!/ - m)\psi = -2V_\text{SCm}\Phi \cdot (\bar{\psi}\psi)\psi}$$
+
+### §A.4 Cosmogenesis Linkage Chain
+PAPER_877 → SCm vacuum → $\Phi_{1.25\text{THz}}$ phonon → Cooper pair binding → BCS condensate
+
+---
+
+## §B VDS/DVP/BSH Deep Synthesis
+
+### §B.1 VDS
+Cooper pair density scales with $\rho_\text{SCm} \cdot S_{26}$.
+
+### §B.2 DVP
+Prime $p = 2$ encodes pair symmetry.
+
+### §B.3 BSH
+$\text{BSH}_\text{pair} = \tanh(\beta_i \cdot \Delta / E_0) \cdot S_{26}$
+
+### §B.4 Production-Scale Consistency
+
+| Metric | Value | Status |
+|--------|-------|--------|
+| VDS ratio | 0.1 | Confirmed |
+| $[SSq]$ | 0.57 | Confirmed |

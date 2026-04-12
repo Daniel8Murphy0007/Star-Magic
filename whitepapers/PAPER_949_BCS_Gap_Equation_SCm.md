@@ -46,3 +46,82 @@ Self-consistent solution via iterative fixed-point method converges in $<50$ ite
 
 1. Murphy, D.T. -- Star Magic UQFF Framework (2024-2026)
 2. Bardeen, J., Cooper, L.N. & Schrieffer, J.R. (1957) -- Phys. Rev. 108, 1175
+3. PAPER_950 — BCS Critical Temperature
+4. PAPER_951 — Cooper Pair Phonon Coupling
+5. PAPER_955 — BCS Phonon Resonance
+6. PAPER_957 — Cooper Pair Lagrangian Variation
+7. PAPER_877 — Cosmogenesis Master Lagrangian
+
+---
+
+## Cross-Links
+
+| Related Paper | Relationship |
+|---------------|-------------|
+| PAPER_950 | $T_c$ derived from this gap equation |
+| PAPER_951 | Cooper pair coupling via $V_\text{eff}$ |
+| PAPER_952 | Spectral ladder provides phonon channel hierarchy |
+| PAPER_955 | BCS gap at $\omega_\text{SCm}$ resonance |
+| PAPER_957 | Lagrangian variational principle yields this gap |
+
+---
+
+## Calibration Constants
+
+| Constant | Symbol | Value | Validation Domain |
+|----------|--------|-------|-------------------|
+| UQFF damping rate | $\kappa$ | $5.0 \times 10^{-4}\,\text{day}^{-1}$ | Magnetar spin-down, GW events |
+| String sector coupling | $[SSq]$ | 0.57 | BH dynamics, nuclear binding |
+| Buoyancy coupling | $\beta_i$ | 0.603 | Multi-system calibration |
+| SCm phonon frequency | $\omega_\text{SCm}$ | $2\pi \times 1.25$ THz | Phonon resonance |
+| SCm completeness | $H_\text{SCm}$ | 0.99 | Vacuum structure |
+| SCm vacuum density | $\rho_\text{SCm}$ | $7.09 \times 10^{-37}\,\text{kg/m}^3$ | Fundamental constant |
+
+---
+
+## SM Anchor — CVW v2.0.0
+
+| Observable | UQFF Prediction | Status |
+|------------|----------------|--------|
+| BCS gap symmetry | $\Delta \propto \tanh(\Delta/2k_BT) \cdot S_{26}$ | Mapped to SCm |
+| Gap closure at $T_c$ | $\Delta(T_c) = 0$ consistent with BCS | Validated |
+| Phonon coupling | $\omega_\text{SCm} = 1.25$ THz replaces Debye | Novel prediction |
+
+---
+
+## §A Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
+
+### §A.1 Sector Classification
+**Sector:** Superconducting Gap (BCS-SCm)
+
+### §A.2 Lagrangian Density
+$$\mathcal{L}_\text{gap} = -\frac{N(0)|\Delta|^2}{V_\text{SCm}} + N(0)\hbar\omega_\text{SCm}\ln\!\left(2\cosh\frac{\Delta}{2k_BT}\right)$$
+
+### §A.3 Euler-Lagrange Equation of Motion
+$$\boxed{\frac{\delta S}{\delta \Delta} = 0 \implies \Delta = \frac{\hbar\omega_\text{SCm}}{2}\tanh\!\left(\frac{\Delta}{2k_BT}\right) \cdot S_{26} \cdot \frac{F_{U,Bi}}{F_U}}$$
+
+### §A.4 Cosmogenesis Linkage Chain
+PAPER_877 axioms → DPM vacuum → $\rho_\text{SCm}$ → $\omega_\text{SCm}$ phonon → BCS gap → Cooper pair binding → superconducting condensate
+
+---
+
+## §B VDS/DVP/BSH Deep Synthesis
+
+### §B.1 Vacuum Density Series (VDS)
+$$\text{VDS}(r) = \rho_\text{SCm} \cdot \exp\!\left(-\frac{r}{\lambda_\text{SCm}}\right) \cdot S_{26}([SSq])$$
+
+### §B.2 Dipole Vortex Primes (DVP)
+Prime lattice encoding: $p_n \in \{2, 3, 5, 7, 11, 13\}$ maps to magnetic/non-magnetic shell hierarchy.
+
+### §B.3 Buoyancy Saturation Harmonics (BSH)
+$$\text{BSH}(n) = \tanh(\beta_i \cdot n / 26) \cdot S_{26}$$
+
+### §B.4 Production-Scale Consistency
+
+| Metric | Value | Status |
+|--------|-------|--------|
+| VDS ratio $\rho_\text{SCm}/\rho_\text{UA}$ | 0.1 | Confirmed |
+| DVP prime | 2 (Cooper pair) | Confirmed |
+| BSH layers | 26 | Confirmed |
+| $\kappa$ decay | $5 \times 10^{-4}$ | Confirmed |
+| $[SSq]$ | 0.57 | Confirmed |

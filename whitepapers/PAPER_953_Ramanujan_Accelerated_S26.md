@@ -45,3 +45,74 @@ where $a_k = \exp(-[\text{SSq}] \cdot k/26)$ and $B_2 = 1/6$, $B_4 = -1/30$, $B_
 
 1. Murphy, D.T. -- Star Magic UQFF Framework (2024-2026)
 2. Hardy, G.H. (1949) -- Divergent Series (Oxford University Press)
+3. Ramanujan, S. -- Collected Papers (1927)
+4. PAPER_952 — 26-State HRes Spectral Ladder
+5. PAPER_959 — 26D Ramanujan Summation Engine
+6. PAPER_960 — VDS Polylog26 Reference
+
+---
+
+## Cross-Links
+
+| Related Paper | Relationship |
+|---------------|-------------|
+| PAPER_952 | Spectral ladder that $S_{26}$ accelerates |
+| PAPER_959 | Full 26D Ramanujan summation implementation |
+| PAPER_960 | Li$_{26}$ cross-validation target |
+| PAPER_949 | BCS gap uses $S_{26}$ |
+
+---
+
+## Calibration Constants
+
+| Constant | Symbol | Value | Validation Domain |
+|----------|--------|-------|-------------------|
+| $[SSq]$ | — | 0.57 | Polylog argument |
+| $\kappa$ | — | $5.0 \times 10^{-4}\,\text{day}^{-1}$ | Damping rate |
+| $\beta_i$ | — | 0.603 | Buoyancy coupling |
+| $B_2, B_4, B_6, B_8$ | — | $1/6, -1/30, 1/42, -1/30$ | Bernoulli coefficients |
+
+---
+
+## SM Anchor — CVW v2.0.0
+
+| Observable | UQFF Prediction | Status |
+|------------|----------------|--------|
+| $S_{26}(0.57)$ convergence | $\leq 50$ terms to machine precision | Validated |
+| Bernoulli coefficient identity | Standard number theory | Confirmed |
+
+---
+
+## §A Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
+
+### §A.1 Sector Classification
+**Sector:** Mathematical Acceleration (Ramanujan Summation Methods)
+
+### §A.2 Generating Function
+$$S_{26}^{(R)}(z) = \sum_{n=1}^{N} \frac{z^n}{n^{26}} \cdot R_n^{(26)} \xrightarrow{N\to\infty} \text{Li}_{26}(z)$$
+
+### §A.3 Euler-Maclaurin Connection
+$$\boxed{S_N^{(R)} = S_N + \sum_{k=1}^{p} \frac{B_{2k}}{(2k)!} f^{(2k-1)}(N)}$$
+
+### §A.4 Cosmogenesis Linkage Chain
+PAPER_877 → VDS $\text{Li}_{26}$ → Ramanujan $R_n^{(26)}$ acceleration → all phonon/jet/NS calculations
+
+---
+
+## §B VDS/DVP/BSH Deep Synthesis
+
+### §B.1 VDS
+$S_{26}$ IS the VDS — it evaluates $\text{Li}_{26}([SSq])$ directly.
+
+### §B.2 DVP
+Prime factorization of convergence index maps to dipole vortex structure.
+
+### §B.3 BSH
+Bernoulli coefficients provide the harmonic correction to buoyancy saturation.
+
+### §B.4 Production-Scale Consistency
+
+| Metric | Value | Status |
+|--------|-------|--------|
+| Convergence terms | $\leq 50$ | Confirmed |
+| $[SSq]$ | 0.57 | Confirmed |
