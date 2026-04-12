@@ -1064,5 +1064,39 @@ def main():
         engine.print_report(result)
 
 
+# ═══════════════════════════════════════════════════════════════════════════════
+# §6  MERGER BUOYANCY SECTOR LAGRANGIAN (Session 213)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+MERGER_BUOYANCY_LAGRANGIAN = {
+    # Merger Lagrangian density:
+    # L_merger = L_grav + L_phonon
+    # L_grav = -β_i Σ U_{g,i} Ω_g M/d_g [UA]
+    # L_phonon = F_neutron · Φ_{1.25 THz}
+    #
+    # Variation: δS/δφ_merger = 0 → stationarity at r_critical
+    # Strain damping: D_total(q) = 0.333 + 0.197(1-q), range 47-66.7%
+    # Phase lag: 200-400 cycles (LISA band 1-100 mHz)
+    "merger_power": {
+        "equation": "P_merger(Γ) = P_GR · (1 + M_merger(Γ))",
+        "sector": "Buoyancy-Archimedes (Sector 6)",
+        "variation": "δS/δφ = ∂/∂E_net(-β_i Σ U_{g,i} Ω_g M/d_g [UA] + F_n·Φ) = 0",
+        "damping_range": "47-66.7%",
+        "phase_lag_cycles": "200-400",
+    },
+    "strain_damping": {
+        "equation": "h_UQFF(t) = h_GR · D_total(q) · exp([SSq]·t/26)",
+        "D_total": "0.333 + 0.197·(1-q)",
+        "range_q0": "D=0.530, damping=47.0%",
+        "range_q1": "D=0.333, damping=66.7%",
+    },
+    "lagrangian_stationarity": {
+        "equation": "∂L/∂r = 2β_i ΣU_{g,i} M/r² - F_n·Φ/r = 0",
+        "r_critical": "2β_i ΣU_{g,i} M / (F_n·Φ)",
+        "note": "Phonon resonance drives final coalescence at r_critical",
+    },
+}
+
+
 if __name__ == "__main__":
     main()

@@ -405,7 +405,78 @@ function handleRequest(req, res) {
         });
         return;
     }
-    
+
+    // ── POST /api/phonon/jet/cena — Centaurus A jet power (Session 213) ──
+    if (method === 'POST' && pathname === '/api/phonon/jet/cena') {
+        let body = '';
+        req.on('data', c => body += c);
+        req.on('end', () => {
+            try {
+                const d = JSON.parse(body);
+                const M = (d.M_Msun || 5.5e7) * 1.989e30;
+                const a = d.a_spin || 0.70;
+                const B = d.B_field || 3000;
+                const gTHz = d.Gamma_THz || 0.10;
+                const Ajet = d.A_jet || 0.95;
+                const rS = 2 * 6.674e-11 * M / (3e8)**2;
+                const rH = rS / 2 * (1 + Math.sqrt(Math.max(1 - a*a, 0)));
+                const PBZ = (B*B / (8 * Math.PI)) * (rH / 3e8)**2 * a*a * 3e8;
+                const G0 = 2 * Math.PI * 0.1e12;
+                const sG = 0.08 * 2 * Math.PI * 1e12;
+                const Grad = 2 * Math.PI * gTHz * 1e12;
+                const delta = Grad - G0;
+                const Mj = 1 + Ajet * Math.exp(-delta*delta / (2 * sG*sG));
+                const Pjet = PBZ * (1 + Mj);
+                res.writeHead(200, CORS_HEADERS);
+                res.end(JSON.stringify({
+                    system: 'Centaurus_A', P_BZ: PBZ, P_jet: Pjet,
+                    enhancement: Pjet / PBZ, Gamma_THz: gTHz,
+                    P_BZ_erg_s: PBZ * 1e7,
+                }));
+            } catch (e) {
+                res.writeHead(400, CORS_HEADERS);
+                res.end(JSON.stringify({ error: e.message }));
+            }
+        });
+        return;
+    }
+
+    // ── POST /api/phonon/jet/txs0506 — TXS 0506+056 jet power (Session 213) ──
+    if (method === 'POST' && pathname === '/api/phonon/jet/txs0506') {
+        let body = '';
+        req.on('data', c => body += c);
+        req.on('end', () => {
+            try {
+                const d = JSON.parse(body);
+                const M = (d.M_Msun || 3e8) * 1.989e30;
+                const a = d.a_spin || 0.85;
+                const B = d.B_field || 8000;
+                const gTHz = d.Gamma_THz || 0.10;
+                const Ajet = d.A_jet || 1.20;
+                const rS = 2 * 6.674e-11 * M / (3e8)**2;
+                const rH = rS / 2 * (1 + Math.sqrt(Math.max(1 - a*a, 0)));
+                const PBZ = (B*B / (8 * Math.PI)) * (rH / 3e8)**2 * a*a * 3e8;
+                const G0 = 2 * Math.PI * 0.1e12;
+                const sG = 0.08 * 2 * Math.PI * 1e12;
+                const Grad = 2 * Math.PI * gTHz * 1e12;
+                const delta = Grad - G0;
+                const Mj = 1 + Ajet * Math.exp(-delta*delta / (2 * sG*sG));
+                const Pjet = PBZ * (1 + Mj);
+                res.writeHead(200, CORS_HEADERS);
+                res.end(JSON.stringify({
+                    system: 'TXS_0506+056', P_BZ: PBZ, P_jet: Pjet,
+                    enhancement: Pjet / PBZ, Gamma_THz: gTHz,
+                    icecube: 'IceCube-170922A',
+                    P_BZ_erg_s: PBZ * 1e7,
+                }));
+            } catch (e) {
+                res.writeHead(400, CORS_HEADERS);
+                res.end(JSON.stringify({ error: e.message }));
+            }
+        });
+        return;
+    }
+
     // 404 for unknown routes
     res.writeHead(404, CORS_HEADERS);
     res.end(JSON.stringify({
@@ -418,7 +489,9 @@ function handleRequest(req, res) {
             'GET  /api/modules',
             'POST /api/compute',
             'POST /api/batch',
-            'POST /api/phonon/jet'
+            'POST /api/phonon/jet',
+            'POST /api/phonon/jet/cena',
+            'POST /api/phonon/jet/txs0506'
         ]
     }));
 }

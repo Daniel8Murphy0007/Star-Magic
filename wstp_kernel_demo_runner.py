@@ -453,6 +453,50 @@ def build_demo_expressions(wl_path: str) -> List[Dict[str, str]]:
                  '{Mc / (1.989*^30), hUQFF, ratio, 1 - ratio} // N'),
     })
 
+    # ── Centaurus A + TXS0506 + SMBH Mergers + Linewidth (Session 213) ──
+
+    # 39. CenA P_BZ jet power at 3 Γ values
+    exprs.append({
+        "label": "CenA P_BZ jet power (M=5.5e7, a=0.7, B=3000)",
+        "code": ('M = 5.5*^7 * 1.989*^30; a = 0.7; B = 3000; '
+                 'rS = 2 * 6.674*^-11 * M / (2.998*^8)^2; '
+                 'rH = rS/2 * (1 + Sqrt[1 - a^2]); '
+                 'PBZ = (B^2 / (8 Pi)) * (rH / 2.998*^8)^2 * a^2 * 2.998*^8; '
+                 'Ajet = 0.95; G0 = 2 Pi * 0.1*^12; sG = 0.08 * 2 Pi * 10^12; '
+                 'Mjet[g_] := 1 + Ajet * Exp[-(2 Pi * g * 10^12 - G0)^2 / (2 sG^2)]; '
+                 '{PBZ, PBZ*(1+Mjet[0.05]), PBZ*(1+Mjet[0.10]), PBZ*(1+Mjet[0.30])} // N'),
+    })
+
+    # 40. TXS0506 P_BZ + IceCube neutrino flux
+    exprs.append({
+        "label": "TXS0506 P_BZ + IceCube (M=3e8, a=0.85, B=8000)",
+        "code": ('M = 3*^8 * 1.989*^30; a = 0.85; B = 8000; '
+                 'rS = 2 * 6.674*^-11 * M / (2.998*^8)^2; '
+                 'rH = rS/2 * (1 + Sqrt[1 - a^2]); '
+                 'PBZ = (B^2 / (8 Pi)) * (rH / 2.998*^8)^2 * a^2 * 2.998*^8; '
+                 'Ajet = 1.20; G0 = 2 Pi * 0.1*^12; sG = 0.08 * 2 Pi * 10^12; '
+                 'Mjet[g_] := 1 + Ajet * Exp[-(2 Pi * g * 10^12 - G0)^2 / (2 sG^2)]; '
+                 '{PBZ, PBZ*(1+Mjet[0.05]), PBZ*(1+Mjet[0.10]), PBZ*(1+Mjet[0.30])} // N'),
+    })
+
+    # 41. SMBH binary merger strain with phonon damping
+    exprs.append({
+        "label": "SMBH merger D_total(q) strain damping",
+        "code": ('Dtotal[q_] := 0.333 + 0.197 * (1 - q); '
+                 'hUQFF[hGR_, q_, t_] := hGR * Dtotal[q] * Exp[0.57 * t / 26]; '
+                 'Table[{q, Dtotal[q], (1 - Dtotal[q]) * 100}, {q, 0.1, 1.0, 0.1}] // N'),
+    })
+
+    # 42. Linewidth Γ sweep → collimation/sharpness table
+    exprs.append({
+        "label": "Linewidth Γ sweep Q(Γ) collimation table",
+        "code": ('wSCm = 2 Pi * 1.25*^12; '
+                 'Q[g_] := wSCm / (2 * 2 Pi * g * 10^12); '
+                 'Table[{g, Q[g], '
+                 'If[g <= 0.07, "narrow", If[g <= 0.15, "optimal", "broad"]]}, '
+                 '{g, {0.01, 0.05, 0.10, 0.15, 0.30, 0.50, 1.0}}]'),
+    })
+
     return exprs
 
 

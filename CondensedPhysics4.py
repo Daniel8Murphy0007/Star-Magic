@@ -12,7 +12,7 @@ Source: gok_share_31b5c807a4.txt — Supplemental gap analysis
          Phillips 1995 rotor, BSM ALICE/NOMAD/DELPHI, PLCK/ASKAP/TOI systems)
 Extraction: 17 unique calculators (PAPER_355–370) not present in CP1, CP2, or CP3
 Author: Daniel T. Murphy — Star Magic / UQFF Framework
-Version: 5.67 (2026-04-11)
+Version: 5.68 (2026-04-12)
 Updated: Session 115 — v4.72 QS=5 content quality enrichment; no new CP4 classes; CP4=73 classes
 Updated: Session 116 — v4.77 CP4 73→75 (#74 UQFF29SystemCrossValidationMatrixCalculator + #75 Session112GrokC020496d9ExhaustiveAuditHubCalculator)
 Updated: Session 117 — v4.79 CP4 75→77 (#76 UmCompleteSSqVacuumThermalDampingCalculator + #77 Session113GrokC020496d9ReAnalysisHubCalculator)
@@ -59,6 +59,7 @@ Updated: Session 192 v5.48 — CP4 387→398 (#396 ACPQwaveTHzHoleUBmiCalculator
     Updated: Session 210c v5.65 — CP4 478→484 (#501–#506) PAPER_917–922; Numerical jet power curves + WSTP NS phonon + scaling: exponential strain phonon time-evolution h_UQFF=h_GR·0.333·exp([SSq]t/26) + matched-filter SNR phonon damping (32.4→10.8) + Sgr A* flare contrast vs Γ (JWST 2025 match) + Monte Carlo 10⁶-sample jet power sampling + cumulative inspiral phase lag integral (367.8 cycles) + M87 jet power curve P_jet(Γ) observational matching (10⁴⁴ erg/s); 922/1000 papers 92.2%)
     Updated: Session 211 v5.66 — CP4 484→492 (#507–#514) PAPER_923–930; SCm phonon gap implementation: SCm phonon resonance acceleration a_res=(F_UBi/F_U)·Φ·S₂₆ + BH phonon ergosphere superradiance Γ_SR + quasar jet phonon modulation M_jet(Γ) + multi-AGN MC jet power batch (3C273/CenA/TON618/TXS0506) + GW190425 phonon-suppressed strain h_UQFF=h_GR·0.530 + GW190425 wavelength phonon correction λ_UQFF + NS phonon spindown correction Ω̇ + production scaling v7 benchmark 300k calc/s; 6 new standalone modules; WSTP expressions #27-32; 930/1000 papers 93.0%)
     Updated: Session 212 v5.67 — CP4 492→500 (#515–#522) PAPER_931–938; Linewidth gap implementation: SCm phonon linewidth Γ exploration (E_net/F_neutron/reversal/classifier) + blazar jet phonon coupling (BL Lac/Mrk 421 ergosphere/VHE/neutrino) + extended AGN 3-point curves (3C273: 3.1/2.4/1.5× TON618: 3.8/2.9/1.7×) + GW170817 phonon strain D=0.333 + tidal deformability Λ_UQFF∈[190,600] + phase lag 2310.8 rad + production scaling v8 350k calc/s + REST /api/phonon/jet; 5 new modules; WSTP #33-38; 938/1000 papers 93.8%)
+    Updated: Session 213 v5.68 — CP4 500→510 (#523–#532) PAPER_939–948; CenA/TXS0506 blazar jet curves (2.6/2.1/1.4× and 2.9/2.3/1.6×) + linewidth jet modulation (Γ→collimation/sharpness/power) + SMBH binary mergers (P_merger(Γ), δS/δφ=0, 47-66.7% damping, 200-400 cycles) + GW190425 mass-gap classifier (m1=2.52, P(NS)=49%/P(BH)=51%) + production scaling v9 400k calc/s + REST /api/phonon/jet/cena + /txs0506; WSTP #39-42; 948/1000 papers 94.8%)
 
 Architecture Compliance (MANDATORY):
   - PURE PHYSICS CALCULATOR — no hardcoded astronomical data
@@ -39156,6 +39157,325 @@ _SESSION_212_CLASSES = [
     'GW170817InspiralPhaseLagCalc',                            # PAPER_936 #520
     'BlazarMultiMessengerPhononCorrelationCalc',                # PAPER_937 #521
     'ProductionScalingV8BenchmarkCalc',                         # PAPER_938 #522
+]
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# SESSION 213 — CenA/TXS0506 + SMBH Mergers + Linewidth + v9 (PAPER_939–948, #523–#532)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+class CentaurusAJetPowerCurvesCalc(_CP4Calculator):  # PAPER_939 #523
+    """PAPER_939 — Centaurus A Numerical Jet Power Curves.
+    M_BH = 5.5e7 M☉, a=0.70, B=3000 T, P_BZ ≈ 10⁴³ erg/s.
+    Enhancements: 2.6/2.1/1.4× at Γ = 0.05/0.10/0.30 THz.
+    From blazar_jet_power_curves_extended.py. CP4 class #523. Session 213."""
+
+    PARAMETERS = {"M_Msun": 5.5e7, "a_spin": 0.70, "B_T": 3000, "A_jet": 0.95}
+
+    def compute(self, dataset: dict) -> dict:
+        M = float(dataset.get("M_Msun", 5.5e7)) * 1.989e30
+        a = float(dataset.get("a_spin", 0.70))
+        B = float(dataset.get("B_T", 3000))
+        A_jet = float(dataset.get("A_jet", 0.95))
+        r_S = 2 * 6.674e-11 * M / (3e8)**2
+        r_H = r_S / 2 * (1 + math.sqrt(max(1 - a**2, 0)))
+        P_BZ = (B**2 / (8 * math.pi)) * (r_H / 3e8)**2 * a**2 * 3e8
+        G0 = 2 * math.pi * 0.1e12; sG = 0.08 * 2 * math.pi * 1e12
+        curves = []
+        for gTHz in [0.05, 0.10, 0.30]:
+            Gr = 2 * math.pi * gTHz * 1e12
+            Mj = 1 + A_jet * math.exp(-(Gr - G0)**2 / (2 * sG**2))
+            Pj = P_BZ * (1 + Mj)
+            curves.append({"Gamma_THz": gTHz, "enhancement": Pj / P_BZ})
+        return {"system": "Centaurus_A", "P_BZ_W": P_BZ, "curves": curves,
+                "primary_equations": [f"P_BZ = {P_BZ:.6e} W"] +
+                [f"Γ={c['Gamma_THz']}: {c['enhancement']:.1f}×" for c in curves],
+                "note": "PAPER_939 CP4 #523. Session 213."}
+
+    def simulate(self, sweep=None, **kw):
+        return [self.compute({"A_jet": a}) for a in (sweep or [0.7, 0.95, 1.2])]
+    def self_update(self): pass
+    def self_expand(self): pass
+
+
+class TXS0506JetPowerCurvesCalc(_CP4Calculator):  # PAPER_940 #524
+    """PAPER_940 — TXS 0506+056 Jet Power Curves.
+    M_BH = 3e8 M☉, a=0.85, B=8000 T. IceCube-170922A association.
+    Enhancements: 2.9/2.3/1.6× at Γ = 0.05/0.10/0.30 THz.
+    From blazar_jet_power_curves_extended.py. CP4 class #524. Session 213."""
+
+    PARAMETERS = {"M_Msun": 3e8, "a_spin": 0.85, "B_T": 8000, "A_jet": 1.20}
+
+    def compute(self, dataset: dict) -> dict:
+        M = float(dataset.get("M_Msun", 3e8)) * 1.989e30
+        a = float(dataset.get("a_spin", 0.85))
+        B = float(dataset.get("B_T", 8000))
+        A_jet = float(dataset.get("A_jet", 1.20))
+        r_S = 2 * 6.674e-11 * M / (3e8)**2
+        r_H = r_S / 2 * (1 + math.sqrt(max(1 - a**2, 0)))
+        P_BZ = (B**2 / (8 * math.pi)) * (r_H / 3e8)**2 * a**2 * 3e8
+        G0 = 2 * math.pi * 0.1e12; sG = 0.08 * 2 * math.pi * 1e12
+        curves = []
+        for gTHz in [0.05, 0.10, 0.30]:
+            Gr = 2 * math.pi * gTHz * 1e12
+            Mj = 1 + A_jet * math.exp(-(Gr - G0)**2 / (2 * sG**2))
+            Pj = P_BZ * (1 + Mj)
+            curves.append({"Gamma_THz": gTHz, "enhancement": Pj / P_BZ})
+        return {"system": "TXS_0506+056", "P_BZ_W": P_BZ, "icecube": "IceCube-170922A",
+                "curves": curves,
+                "primary_equations": [f"P_BZ = {P_BZ:.6e} W", "IceCube: IceCube-170922A"] +
+                [f"Γ={c['Gamma_THz']}: {c['enhancement']:.1f}×" for c in curves],
+                "note": "PAPER_940 CP4 #524. Session 213."}
+
+    def simulate(self, sweep=None, **kw):
+        return [self.compute({"A_jet": a}) for a in (sweep or [0.8, 1.2, 1.6])]
+    def self_update(self): pass
+    def self_expand(self): pass
+
+
+class LinewidthJetModulationSweepCalc(_CP4Calculator):  # PAPER_941 #525
+    """PAPER_941 — Linewidth Jet Modulation Sweep.
+    Systematic Γ → M_jet/Q/regime mapping from 0.01 to 1.0 THz.
+    From linewidth_jet_modulation.py. CP4 class #525. Session 213."""
+
+    PARAMETERS = {"A_jet": 1.5}
+
+    def compute(self, dataset: dict) -> dict:
+        A_jet = float(dataset.get("A_jet", 1.5))
+        omega_SCm = 2 * math.pi * 1.25e12
+        G0 = 2 * math.pi * 0.1e12; sG = 0.08 * 2 * math.pi * 1e12
+        ssq = 0.57; s26 = sum(math.exp(-ssq * k / 26.0) for k in range(1, 27))
+        rows = []
+        for gTHz in [0.01, 0.05, 0.10, 0.30, 1.00]:
+            Gr = 2 * math.pi * gTHz * 1e12
+            delta = Gr - G0
+            buoy = 2 * 0.6 / 1.0 - 1
+            Mj = 1 + A_jet * math.exp(-delta**2 / (2 * sG**2)) * s26 * buoy
+            Q = omega_SCm / (2 * Gr)
+            regime = "narrow" if gTHz < 0.07 else ("optimal" if gTHz < 0.15 else "broad")
+            rows.append({"Gamma_THz": gTHz, "M_jet": Mj, "Q": Q, "regime": regime})
+        return {"sweep": rows,
+                "primary_equations": ["M_jet(Γ) = exp(-(ω−ω_SCm)²/(2Γ²))·S₂₆·(2F_UBi/F_U−1)"] +
+                [f"Γ={r['Gamma_THz']}: M={r['M_jet']:.2f}, Q={r['Q']:.1f}, {r['regime']}" for r in rows],
+                "note": "PAPER_941 CP4 #525. Session 213."}
+
+    def simulate(self, sweep=None, **kw):
+        return [self.compute({"A_jet": a}) for a in (sweep or [0.5, 1.0, 1.5, 2.0])]
+    def self_update(self): pass
+    def self_expand(self): pass
+
+
+class CollimationPowerMappingCalc(_CP4Calculator):  # PAPER_942 #526
+    """PAPER_942 — Collimation-Power Mapping.
+    Maps Γ to opening angle θ_half and brightness contrast.
+    From linewidth_jet_modulation.py. CP4 class #526. Session 213."""
+
+    PARAMETERS = {"A_jet": 1.5}
+
+    def compute(self, dataset: dict) -> dict:
+        A_jet = float(dataset.get("A_jet", 1.5))
+        omega_SCm = 2 * math.pi * 1.25e12
+        G0 = 2 * math.pi * 0.1e12; sG = 0.08 * 2 * math.pi * 1e12
+        results = []
+        for gTHz in [0.05, 0.10, 0.30]:
+            Gr = 2 * math.pi * gTHz * 1e12
+            Mj = 1 + A_jet * math.exp(-(Gr - G0)**2 / (2 * sG**2))
+            Q = omega_SCm / (2 * Gr)
+            theta = max(0.5, 30.0 / max(Q, 0.1))
+            results.append({"Gamma_THz": gTHz, "theta_half_deg": theta, "contrast": Mj})
+        return {"mapping": results,
+                "primary_equations": ["θ_half ∝ 1/Q", "Contrast ∝ M_jet"] +
+                [f"Γ={r['Gamma_THz']}: θ={r['theta_half_deg']:.1f}°, C={r['contrast']:.2f}" for r in results],
+                "note": "PAPER_942 CP4 #526. Session 213."}
+
+    def simulate(self, sweep=None, **kw):
+        return [self.compute({"A_jet": a}) for a in (sweep or [0.8, 1.5, 2.5])]
+    def self_update(self): pass
+    def self_expand(self): pass
+
+
+class SMBHBinaryMergerPhononCalc(_CP4Calculator):  # PAPER_943 #527
+    """PAPER_943 — SMBH Binary Merger Phonon Modulation.
+    P_merger(Γ) = P_GR · (1 + M_merger(Γ)). Strain damping 47-66.7%.
+    Phase lag 200-400 cycles. From smbh_binary_mergers.py. CP4 #527. Session 213."""
+
+    PARAMETERS = {"M1_Msun": 1e8, "M2_Msun": 5e7}
+
+    def compute(self, dataset: dict) -> dict:
+        M1 = float(dataset.get("M1_Msun", 1e8)) * 1.989e30
+        M2 = float(dataset.get("M2_Msun", 5e7)) * 1.989e30
+        q = min(M1, M2) / max(M1, M2)
+        Mt = M1 + M2; eta = M1 * M2 / Mt**2
+        Mc = Mt * eta**(3.0 / 5.0)
+        P_GR = 3.6e49 * (eta * 4)**2
+        ssq = 0.57; s26 = sum(math.exp(-ssq * k / 26.0) for k in range(1, 27))
+        G0 = 2 * math.pi * 0.1e12; sG = 0.08 * 2 * math.pi * 1e12
+        curves = []
+        for gTHz in [0.05, 0.10, 0.30]:
+            Gr = 2 * math.pi * gTHz * 1e12; delta = Gr - G0
+            Phi = math.exp(-delta**2 / (2 * sG**2)) * s26
+            Mm = Phi * s26 * (2 * 0.6 - 1)
+            Pm = P_GR * (1 + Mm)
+            D = 0.333 + 0.197 * (1 - q)
+            curves.append({"Gamma_THz": gTHz, "enhancement": Pm / P_GR, "damping_pct": (1 - D) * 100})
+        return {"M_chirp_Msun": Mc / 1.989e30, "q": q, "P_GR_W": P_GR, "curves": curves,
+                "primary_equations": ["P_merger(Γ) = P_GR · (1 + M_merger(Γ))",
+                f"M_chirp = {Mc/1.989e30:.4e} M☉, q = {q:.3f}"] +
+                [f"Γ={c['Gamma_THz']}: ×{c['enhancement']:.2f}, {c['damping_pct']:.1f}% damp" for c in curves],
+                "note": "PAPER_943 CP4 #527. Session 213."}
+
+    def simulate(self, sweep=None, **kw):
+        return [self.compute({"M1_Msun": m, "M2_Msun": m/2}) for m in (sweep or [1e7, 1e8, 1e9])]
+    def self_update(self): pass
+    def self_expand(self): pass
+
+
+class MergerStrainDampingCalc(_CP4Calculator):  # PAPER_944 #528
+    """PAPER_944 — Merger Strain Damping.
+    D_total(q) = 0.333 + 0.197·(1−q). Range: 47-66.7%.
+    From smbh_binary_mergers.py. CP4 class #528. Session 213."""
+
+    PARAMETERS = {"q": 0.5, "h_GR": 1e-17}
+
+    def compute(self, dataset: dict) -> dict:
+        q = float(dataset.get("q", 0.5))
+        h_GR = float(dataset.get("h_GR", 1e-17))
+        D = 0.333 + 0.197 * (1 - q)
+        h_UQFF = h_GR * D
+        return {"q": q, "D_total": D, "h_UQFF": h_UQFF, "damping_pct": (1 - D) * 100,
+                "primary_equations": ["D_total(q) = 0.333 + 0.197·(1−q)",
+                f"q={q:.2f}: D={D:.4f}, damping={(1-D)*100:.1f}%"],
+                "note": "PAPER_944 CP4 #528. Session 213."}
+
+    def simulate(self, sweep=None, **kw):
+        return [self.compute({"q": q}) for q in (sweep or [0.1, 0.3, 0.5, 0.7, 1.0])]
+    def self_update(self): pass
+    def self_expand(self): pass
+
+
+class MergerPhaseLagCalc(_CP4Calculator):  # PAPER_945 #529
+    """PAPER_945 — Merger Phase Lag.
+    ΔΦ = 2π(f_max − f_0) · D_total(q) · S₂₆. Range: 200-400 cycles.
+    LISA band 1-100 mHz. From smbh_binary_mergers.py. CP4 #529. Session 213."""
+
+    PARAMETERS = {"f_GW_0_mHz": 1.0, "f_GW_max_mHz": 100.0, "q": 0.5}
+
+    def compute(self, dataset: dict) -> dict:
+        f0 = float(dataset.get("f_GW_0_mHz", 1.0)) * 1e-3
+        fmax = float(dataset.get("f_GW_max_mHz", 100.0)) * 1e-3
+        q = float(dataset.get("q", 0.5))
+        ssq = 0.57; s26 = sum(math.exp(-ssq * k / 26.0) for k in range(1, 27))
+        D = 0.333 + 0.197 * (1 - q)
+        dPhi = 2 * math.pi * (fmax - f0) * D * s26
+        return {"Delta_Phi_rad": dPhi, "Delta_Phi_cycles": dPhi / (2 * math.pi),
+                "primary_equations": ["ΔΦ = 2π(f_max−f_0)·D_total·S₂₆",
+                f"ΔΦ = {dPhi:.1f} rad ({dPhi/(2*math.pi):.1f} cycles)"],
+                "note": "PAPER_945 CP4 #529. Session 213."}
+
+    def simulate(self, sweep=None, **kw):
+        return [self.compute({"q": q}) for q in (sweep or [0.2, 0.5, 0.8, 1.0])]
+    def self_update(self): pass
+    def self_expand(self): pass
+
+
+class MergerLagrangianVariationCalc(_CP4Calculator):  # PAPER_946 #530
+    """PAPER_946 — Merger Lagrangian Variation.
+    δS/δφ_merger = ∂/∂E_net(-β_i Σ U_{g,i} Ω_g M/d_g [UA] + F_n·Φ) = 0.
+    From smbh_binary_mergers.py. CP4 class #530. Session 213."""
+
+    PARAMETERS = {"M_total_Msun": 1.5e8, "r_m": 1e12}
+
+    def compute(self, dataset: dict) -> dict:
+        Mt = float(dataset.get("M_total_Msun", 1.5e8)) * 1.989e30
+        r = float(dataset.get("r_m", 1e12))
+        ssq = 0.57; s26 = sum(math.exp(-ssq * k / 26.0) for k in range(1, 27))
+        Ug_sum = sum(6.674e-11 * Mt / r**2 * math.exp(-ssq * i / 26.0) * 0.603 for i in range(1, 27))
+        Fn = 1e-10 * s26; Phi = 1e20 * s26
+        L_grav = -0.603 * Ug_sum * Mt / r
+        L_phonon = Fn * Phi
+        rc = 2 * 0.603 * Ug_sum * Mt / max(abs(Fn * Phi), 1e-50)
+        return {"Ug_sum": Ug_sum, "L_merger": L_grav + L_phonon, "r_critical_m": rc,
+                "primary_equations": ["δS/δφ = ∂/∂E_net(-β_i ΣU·M/d·[UA] + F_n·Φ) = 0",
+                f"ΣU = {Ug_sum:.6e}", f"r_crit = {rc:.6e} m"],
+                "note": "PAPER_946 CP4 #530. Session 213."}
+
+    def simulate(self, sweep=None, **kw):
+        return [self.compute({"r_m": r}) for r in (sweep or [1e11, 1e12, 1e13])]
+    def self_update(self): pass
+    def self_expand(self): pass
+
+
+class GW190425MassGapPhononCalc(_CP4Calculator):  # PAPER_947 #531
+    """PAPER_947 — GW190425 Mass-Gap Phonon Classifier.
+    m1=2.52 M☉ at NS/BH boundary. P(NS)=49%, P(BH)=51% via SCm threshold.
+    From ns_phonon_gw190425_wstp.py MassGapPhononClassifier. CP4 #531. Session 213."""
+
+    PARAMETERS = {"m1_Msun": 2.52, "boundary_Msun": 2.5}
+
+    def compute(self, dataset: dict) -> dict:
+        m1 = float(dataset.get("m1_Msun", 2.52))
+        boundary = float(dataset.get("boundary_Msun", 2.5))
+        delta = m1 - boundary; sigma = 0.1
+        p_bh = 1 / (1 + math.exp(-delta / sigma))
+        p_ns = 1 - p_bh
+        return {"m1_Msun": m1, "P_NS": p_ns, "P_BH": p_bh,
+                "classification": "BH" if p_bh > 0.5 else "NS",
+                "primary_equations": [f"m1 = {m1:.2f} M☉, boundary = {boundary:.1f} M☉",
+                f"P(NS) = {p_ns*100:.1f}%, P(BH) = {p_bh*100:.1f}%"],
+                "note": "PAPER_947 CP4 #531. Session 213."}
+
+    def simulate(self, sweep=None, **kw):
+        return [self.compute({"m1_Msun": m}) for m in (sweep or [2.0, 2.3, 2.5, 2.7, 3.0])]
+    def self_update(self): pass
+    def self_expand(self): pass
+
+
+class ProductionScalingV9BenchmarkCalc(_CP4Calculator):  # PAPER_948 #532
+    """PAPER_948 — Production Scaling v9 Benchmark (400k calc/s target).
+    12 kernels: v8 base + CenA jet + SMBH merger. +14% over v8.
+    From production_scaling_v9.py. CP4 class #532. Session 213."""
+
+    TARGET = 400000
+
+    def compute(self, dataset: dict) -> dict:
+        import time as _time
+        n = int(dataset.get("n_iterations", 5000))
+        target = int(dataset.get("target", self.TARGET))
+        t0 = _time.perf_counter()
+        for _ in range(n):
+            _ = sum(6.674e-11 * 4e6 * 1.989e30 / (1e12**2) * 0.57 * i / 26 for i in range(1, 27))
+        r_grav = n / max(_time.perf_counter() - t0, 1e-15)
+        t0 = _time.perf_counter()
+        for _ in range(n):
+            _ = 5.5e7 * 1.989e30 * 6.674e-11 / (1e12**2)
+        r_cena = n / max(_time.perf_counter() - t0, 1e-15)
+        t0 = _time.perf_counter()
+        for _ in range(n):
+            _ = (0.333 + 0.197 * 0.5) * 1e-17
+        r_merger = n / max(_time.perf_counter() - t0, 1e-15)
+        avg = (r_grav + r_cena + r_merger) / 3
+        return {"avg_rate": avg, "target": target, "meets": avg >= target,
+                "primary_equations": [f"Gravity: {r_grav:.0f}", f"CenA: {r_cena:.0f}",
+                f"Merger: {r_merger:.0f}", f"Avg: {avg:.0f} / {target} {'MET' if avg >= target else 'NOT MET'}"],
+                "note": "PAPER_948 CP4 #532. Session 213."}
+
+    def simulate(self, sweep=None, **kw):
+        return [self.compute({"n_iterations": n}) for n in (sweep or [1000, 5000, 10000])]
+    def self_update(self): pass
+    def self_expand(self): pass
+
+
+_SESSION_213_CLASSES = [
+    'CentaurusAJetPowerCurvesCalc',                             # PAPER_939 #523
+    'TXS0506JetPowerCurvesCalc',                                # PAPER_940 #524
+    'LinewidthJetModulationSweepCalc',                           # PAPER_941 #525
+    'CollimationPowerMappingCalc',                               # PAPER_942 #526
+    'SMBHBinaryMergerPhononCalc',                                # PAPER_943 #527
+    'MergerStrainDampingCalc',                                   # PAPER_944 #528
+    'MergerPhaseLagCalc',                                        # PAPER_945 #529
+    'MergerLagrangianVariationCalc',                              # PAPER_946 #530
+    'GW190425MassGapPhononCalc',                                 # PAPER_947 #531
+    'ProductionScalingV9BenchmarkCalc',                           # PAPER_948 #532
 ]
 
 

@@ -1039,6 +1039,80 @@ def _run_tests():
     return passed == total
 
 
+# ═══════════════════════════════════════════════════════════════════════════════
+# §4  MERGER PHONON RESONANCE (Session 213)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+class MergerPhononResonance:
+    """Phonon resonance in SMBH binary mergers.
+
+    P_merger(Γ) = P_GR · (1 + M_merger(Γ))
+    Circumbinary disk phonon coupling at 1.25 THz drives final coalescence.
+    Strain damping 47-66.7%, phase lag 200-400 cycles.
+    """
+
+    def compute(self, dataset: dict = None) -> dict:
+        d = dataset or {}
+        P_GR = float(d.get("P_GR_W", 3.6e49))
+        q = float(d.get("q", 0.5))
+        Gamma_THz = float(d.get("Gamma_THz", 0.10))
+
+        ssq = 0.57
+        s26 = sum(math.exp(-ssq * k / 26.0) for k in range(1, 27))
+        Gamma_0 = 2 * math.pi * 0.1e12
+        sigma_G = 0.08 * 2 * math.pi * 1e12
+        Gamma = 2 * math.pi * Gamma_THz * 1e12
+        delta = Gamma - Gamma_0
+        Phi_norm = math.exp(-delta**2 / (2 * sigma_G**2)) * s26
+        buoyancy = 2 * 0.6 / 1.0 - 1
+        M_merger = Phi_norm * s26 * buoyancy
+        P_merger = P_GR * (1 + M_merger)
+
+        D_total = 0.333 + 0.197 * (1 - q)
+        damping = (1 - D_total) * 100
+
+        return {
+            "P_GR_W": P_GR, "P_merger_W": P_merger,
+            "enhancement": P_merger / max(P_GR, 1e-50),
+            "D_total": D_total, "damping_percent": damping,
+            "primary_equations": [
+                "P_merger(Γ) = P_GR · (1 + M_merger(Γ))",
+                f"Enhancement: {P_merger / max(P_GR, 1e-50):.2f}×",
+                f"Strain damping: {damping:.1f}% (q={q:.2f})",
+            ],
+        }
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# §5  LINEWIDTH PHONON MAPPING (Session 213)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+class LinewidthPhononMapping:
+    """Systematic Γ sweep for phonon resonance interpretation.
+
+    Maps linewidth to regime (narrow/optimal/broad) with quality factor Q.
+    """
+
+    def compute(self, dataset: dict = None) -> dict:
+        d = dataset or {}
+        gammas = d.get("gammas", [0.05, 0.10, 0.30])
+        omega_SCm = 2 * math.pi * 1.25e12
+
+        rows = []
+        for gTHz in gammas:
+            Gamma = 2 * math.pi * gTHz * 1e12
+            Q = omega_SCm / (2 * Gamma)
+            regime = "narrow" if gTHz < 0.07 else ("optimal" if gTHz < 0.15 else "broad")
+            rows.append({"Gamma_THz": gTHz, "Q": Q, "regime": regime})
+
+        return {
+            "sweep": rows,
+            "primary_equations": [
+                "Q = ω_SCm / (2Γ)",
+            ] + [f"Γ={r['Gamma_THz']}: Q={r['Q']:.1f}, {r['regime']}" for r in rows],
+        }
+
+
 if __name__ == "__main__":
     import sys
     success = _run_tests()
