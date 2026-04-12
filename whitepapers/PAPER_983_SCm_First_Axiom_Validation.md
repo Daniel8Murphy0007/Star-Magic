@@ -1,0 +1,67 @@
+---
+paper_id: PAPER_983
+title: "SCm First Axiom Validation — |Ub/Ug| > 0.5 at 25.4 μm"
+session: 217
+date: 2026-04-12
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [SCm, axiom, buoyancy, validation, 25.4-micron, UQFF]
+crosslinks: [PAPER_979, PAPER_980, PAPER_984]
+calibration: {SSq: 0.57, beta_i: 0.603, lambda_SCm: "25.4 μm", threshold: 0.5}
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
+# PAPER_983: SCm First Axiom Validation — |Ub/Ug| > 0.5 at 25.4 μm
+
+## Abstract
+
+The SCm First Axiom states that at the characteristic wavelength $\lambda_{\text{SCm}} = 25.4\;\mu\text{m}$ (corresponding to $\omega_{\text{SCm}} = 2\pi \times 1.25$ THz), the buoyancy-to-gravity ratio must exceed 0.5, i.e., $|U_b / U_g| > 0.5$. This paper validates the axiom numerically for the Solar System ($M_\odot$, $r = 1$ AU) and demonstrates that the measured ratio $|U_b/U_g| \approx 1.536$ satisfies the threshold with margin, confirming the SCm vacuum is buoyancy-active at its fundamental resonance.
+
+## 1. First Axiom Statement
+
+$$\text{Axiom 1:} \quad \left|\frac{U_b(r, \lambda_{\text{SCm}})}{U_g(r)}\right| > 0.5$$
+
+This ensures the SCm vacuum exerts non-negligible buoyancy at its own characteristic scale — a self-consistency requirement for any medium that claims to support buoyancy forces.
+
+## 2. Ratio Computation
+
+$$\frac{|U_b|}{|U_g|} = \frac{\sum_{i=1}^{26} \frac{GM}{r^2} e^{-[\text{SSq}]\cdot i/26} \cdot \beta_i}{\sum_{i=1}^{26} \frac{GM}{r^2} \cdot [\text{SSq}] \cdot i/26}$$
+
+The $GM/r^2$ factors cancel:
+
+$$= \frac{\beta_i \sum_{i=1}^{26} e^{-[\text{SSq}]\cdot i/26}}{[\text{SSq}] \sum_{i=1}^{26} i/26} = \frac{\beta_i \cdot S_{26,\text{exp}}}{[\text{SSq}] \cdot 13.5}$$
+
+## 3. Numerical Result
+
+With $[\text{SSq}] = 0.57$, $\beta_i = 0.603$:
+
+$$\frac{|U_b|}{|U_g|} = 1.536 > 0.5 \quad \checkmark$$
+
+The ratio exceeds the threshold by a factor of $\sim 3$, indicating strong buoyancy activation.
+
+## 4. Physical Interpretation
+
+- $|U_b/U_g| > 1$: buoyancy dominates gravity → net outward force
+- This is consistent with the heliospheric expansion observed at $r = 1$ AU
+- The axiom would fail for $\beta_i < 0.196$, setting a lower bound on buoyancy coupling
+
+## 5. Implementation
+
+Class `SCmFirstAxiomValidator` in `fubi_master_calculator.py`: computes $|U_b/U_g|$ at $\lambda = 25.4\;\mu\text{m}$, asserts ratio $> 0.5$.
+
+## References
+- PAPER_979: Complete 6-Layer F_U_Bi_i
+- PAPER_980: Solar Surface Calibration
+
+---
+
+## §A. Cosmogenesis-Linked Lagrangian
+
+The First Axiom constrains the Lagrangian: $\partial V_b / \partial \phi > 0.5 \cdot \partial V_g / \partial \phi$ at $\lambda_{\text{SCm}}$, ensuring the buoyancy sector is dynamically relevant.
+
+## §B. VDS/DVP/BSH Deep Synthesis
+
+- **VDS:** The axiom sets a minimum vacuum density for buoyancy activation.
+- **DVP:** Dipole alignment at 25.4 μm implies vortex coherence over $\sim 10^4$ lattice sites.
+- **BSH:** The harmonic sum $S_{26,\text{exp}}$ determines the axiom threshold through its convergence properties.

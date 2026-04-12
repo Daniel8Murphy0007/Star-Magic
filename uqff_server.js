@@ -706,6 +706,71 @@ function handleRequest(req, res) {
         return;
     }
 
+    // POST /api/fubi/master — Complete 6-layer F_U_Bi_i master buoyancy (Session 217)
+    if (method === 'POST' && pathname === '/api/fubi/master') {
+        let body = '';
+        req.on('data', c => body += c);
+        req.on('end', () => {
+            try {
+                const p = JSON.parse(body || '{}');
+                const M = parseFloat(p.M_kg || 1.989e30);
+                const r = Math.max(parseFloat(p.r_m || 1.496e11), 1.0);
+                const t = parseFloat(p.t_s || 86400);
+                const gTHz = parseFloat(p.Gamma_THz || 0.10);
+                const SSq = 0.57;
+                const G0 = 6.674e-11;
+                const betaI = 0.603;
+                const kappa = 0.0005 / 86400;
+                const wSCm = 2 * Math.PI * 1.25e12;
+                const gammaRad = 2 * Math.PI * gTHz * 1e12;
+
+                let S26 = 0;
+                for (let k = 1; k <= 26; k++) S26 += Math.exp(-SSq * k / 26);
+
+                // 26-layer Ug and Ub
+                let Ug = 0, Ub = 0;
+                const r2 = r * r;
+                for (let i = 1; i <= 26; i++) {
+                    Ug += G0 * M / r2 * SSq * i / 26;
+                    Ub += G0 * M / r2 * Math.exp(-SSq * i / 26) * betaI;
+                }
+                const Um = G0 * M / r2 * SSq * 0.1;
+                const UA = G0 * M / r2 * 1e-10;
+                const Fgrav = Ug + Um + UA - Ub;
+
+                // Phonon + neutron
+                const Fn = 1e-10 * S26;
+                const Phi = Math.exp(-Math.pow(wSCm - wSCm, 2) / (2 * gammaRad * gammaRad)) * S26;
+                const Fpn = Fn * S26 * Phi;
+
+                // E_net modulation
+                const FUbare = Math.abs(Fgrav) + Math.abs(Fpn) + 1e-300;
+                const ratio = Math.abs(Ub) / FUbare;
+                const Enet = (2 * ratio - 1) * Math.exp(Math.min(kappa * t, 500)) * S26;
+
+                const FUBii = Fgrav + Fpn * Enet;
+
+                res.writeHead(200, CORS_HEADERS);
+                res.end(JSON.stringify({
+                    status: 'ok',
+                    F_U_Bi_i: FUBii,
+                    F_gravity: Fgrav,
+                    Ug: Ug, Ub: Ub, Um: Um, UA: UA,
+                    F_phonon_neutron: Fpn,
+                    E_net: Enet,
+                    Phi_phonon: Phi,
+                    S26: S26,
+                    Gamma_THz: gTHz,
+                    session: 217
+                }));
+            } catch (e) {
+                res.writeHead(400, CORS_HEADERS);
+                res.end(JSON.stringify({ status: 'error', error: e.message }));
+            }
+        });
+        return;
+    }
+
     // 404 for unknown routes
     res.writeHead(404, CORS_HEADERS);
     res.end(JSON.stringify({
@@ -726,7 +791,8 @@ function handleRequest(req, res) {
             'POST /api/phonon/ns',
             'POST /api/ramanujan/26d',
             'POST /api/qgp/density',
-            'POST /api/master/99system'
+            'POST /api/master/99system',
+            'POST /api/fubi/master'
         ]
     }));
 }

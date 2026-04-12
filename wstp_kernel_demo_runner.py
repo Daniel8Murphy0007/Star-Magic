@@ -578,6 +578,25 @@ def build_demo_expressions(wl_path: str) -> List[Dict[str, str]]:
                  'FU99'),
     })
 
+    # 51. Complete F_U_Bi_i master buoyancy force (6 layers) — Session 217
+    exprs.append({
+        "label": "F_U_Bi_i master buoyancy force (6-layer canonical)",
+        "code": ('G0 = 6.674*^-11; Msun = 1.989*^30; AU = 1.496*^11; SSq = 0.57; betaI = 0.603; '
+                 'wSCm = 2 Pi 1.25*^12; kappa = 0.0005/86400; '
+                 'S26 = Sum[Exp[-SSq k/26], {k,1,26}]; '
+                 'Ug26[M_, r_] := Sum[G0 M/r^2 SSq i/26, {i,1,26}]; '
+                 'Ub26[M_, r_] := Sum[G0 M/r^2 Exp[-SSq i/26] betaI, {i,1,26}]; '
+                 'Um[M_, r_] := G0 M/r^2 SSq 0.1; '
+                 'UA[M_, r_] := G0 M/r^2 10^-10; '
+                 'Fn = 10^-10 S26; '
+                 'Phi[w_, G_] := Exp[-(w - wSCm)^2/(2 G^2)] S26; '
+                 'Enet[t_, FUBi_, FU_] := (2 FUBi/FU - 1) Exp[kappa t] S26; '
+                 'FUBii[M_, r_, t_, G_] := Ug26[M,r] + Um[M,r] + UA[M,r] - Ub26[M,r] '
+                 '+ Fn S26 Phi[wSCm, G] Enet[t, Abs[Ub26[M,r]], Abs[Ug26[M,r]] + 10^-300]; '
+                 'Table[{\"r\", r, \"F_U_Bi_i\", FUBii[Msun, r, 86400, 2 Pi 0.1*^12]}, '
+                 '{r, {6.96*^8, AU, 10 AU}}]'),
+    })
+
     return exprs
 
 

@@ -1214,5 +1214,30 @@ NINETYNINE_SYSTEM_COMPRESSION = {
 }
 
 
+# ── §14  F_U_Bi_i Master Buoyancy Lagrangian Sector ──────────────────────
+
+FUBI_MASTER_BUOYANCY = {
+    "sector": "FUBI_MASTER_BUOYANCY",
+    "session": 217,
+    "equations": {
+        "F_U_Bi_i": "F_{U,Bi_i}(r,t,Γ) = Σ_{i=1}^{99} U_{g,i} + U_m + U_A − U_{b,i} + F_n·S₂₆·Φ·E_net",
+        "Phi_phonon": "Φ_{1.25THz}(ω,Γ) = exp(-(ω−ω_SCm)²/(2Γ²))·S₂₆",
+        "E_net": "E_net(t,Γ) = (2·F_{U,Bi}/F_U − 1)·exp(κt)·S₂₆",
+        "F_neutron": "F_n = F_0·S₂₆ (Kozima neutron-drop)",
+        "solar_cal": "F_{U,Bi_i}(M⊙, 1 AU, 1 day, 0.1 THz) ≈ −2.4×10⁻² m/s²",
+    },
+    "layers": [
+        "L1: 99-system Ug compression (26-layer per system)",
+        "L2: Um universal magnetism + UA aether coupling",
+        "L3: Ubi buoyancy subtraction (26-layer per system)",
+        "L4: S₂₆ physical 26-state sum",
+        "L5: Φ_{1.25THz}(ω,Γ) phonon resonance with linewidth",
+        "L6: E_net(t,Γ) positive/negative modulation + F_neutron",
+    ],
+    "lagrangian": "L_FUBi = T_kin − V_grav + V_buoy + L_phonon + L_neutron; δS/δφ = 0 → F_{U,Bi_i}",
+    "note": "PAPER_979. Complete 6-layer master buoyancy variational derivation. Session 217.",
+}
+
+
 if __name__ == "__main__":
     main()
