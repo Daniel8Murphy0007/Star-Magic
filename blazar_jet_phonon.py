@@ -465,5 +465,61 @@ class TXS0506JetPhononCoupling:
         }
 
 
+# ── §8  E(t) Linewidth Modulation ─────────────────────────────────────────
+
+class EtLinewidthModulation:
+    """E(t) linewidth modulation with sign-flip dynamics.
+
+    E(t, Γ) = S₂₆ · cos(ω_SCm · t) · exp(-Γ · t)
+
+    The sign of E(t) flips after relative-time cycles, driving extra-gravitational
+    responses in blazar jets. At narrow Γ, sign flips are sharper and jet
+    collimation is tighter. At broad Γ, damping dominates and E(t) → 0
+    before the first flip.
+    Session 214.
+    """
+
+    OMEGA_SCM = 2 * math.pi * 1.25e12
+    SSQ = 0.57
+    S26 = sum(math.exp(-0.57 * k / 26.0) for k in range(1, 27))
+
+    def Et(self, t: float, gamma: float) -> float:
+        """E(t, Γ) at time t (seconds) and linewidth gamma (rad/s)."""
+        return self.S26 * math.cos(self.OMEGA_SCM * t) * math.exp(-gamma * t)
+
+    def sign_flip_time(self, gamma: float) -> float:
+        """Time of first zero crossing: t_flip = π/(2ω_SCm)."""
+        return math.pi / (2 * self.OMEGA_SCM)
+
+    def compute(self, dataset: dict) -> dict:
+        gamma_THz = float(dataset.get("Gamma_THz", 0.10))
+        gamma = 2 * math.pi * gamma_THz * 1e12
+        dt = 0.1e-12  # 0.1 ps steps
+        n_steps = 50
+        trace = []
+        n_flips = 0
+        prev_sign = 1
+        for i in range(n_steps):
+            t = i * dt
+            E = self.Et(t, gamma)
+            s = 1 if E >= 0 else -1
+            if s != prev_sign and i > 0:
+                n_flips += 1
+            prev_sign = s
+            trace.append({"t_ps": t * 1e12, "Et": E, "sign": s})
+        t_flip = self.sign_flip_time(gamma)
+        return {
+            "Gamma_THz": gamma_THz,
+            "t_flip_ps": t_flip * 1e12,
+            "n_flips_in_5ps": n_flips,
+            "trace": trace[:10],  # first 10 for summary
+            "primary_equations": [
+                "E(t,Γ) = S₂₆ · cos(ω_SCm·t) · exp(-Γ·t)",
+                f"t_flip = π/(2ω_SCm) = {t_flip*1e12:.4f} ps",
+                f"Flips in 5 ps: {n_flips}",
+            ],
+        }
+
+
 if __name__ == "__main__":
     main()

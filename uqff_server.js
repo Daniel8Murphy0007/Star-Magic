@@ -477,6 +477,82 @@ function handleRequest(req, res) {
         return;
     }
 
+    // POST /api/phonon/bcs — BCS gap equation solve
+    if (method === 'POST' && url === '/api/phonon/bcs') {
+        let body = '';
+        req.on('data', chunk => { body += chunk; });
+        req.on('end', () => {
+            try {
+                const params = body ? JSON.parse(body) : {};
+                const T = parseFloat(params.T_K || 0);
+                const omegaSCm = 2 * Math.PI * 1.25e12;
+                const hbar = 1.055e-34;
+                const kB = 1.381e-23;
+                const ssq = 0.57;
+                let S26 = 0;
+                for (let k = 1; k <= 26; k++) S26 += Math.exp(-ssq * k / 26);
+                const fubi = 0.6;
+                const deltaPF = hbar * omegaSCm / 2;
+                let delta = deltaPF * S26 * fubi;
+                if (T > 0) {
+                    for (let i = 0; i < 500; i++) {
+                        const arg = Math.min(delta / (2 * kB * T), 500);
+                        const newD = deltaPF * Math.tanh(arg) * S26 * fubi;
+                        if (Math.abs(newD - delta) < 1e-30) { delta = newD; break; }
+                        delta = newD;
+                    }
+                }
+                const Tc = (1.13 * hbar * omegaSCm / kB) * Math.exp(-1 / 0.27);
+                res.writeHead(200, CORS_HEADERS);
+                res.end(JSON.stringify({
+                    status: 'ok', T_K: T,
+                    Delta_J: delta, Delta_eV: delta / 1.602e-19,
+                    T_c_K: Tc, session: 214
+                }));
+            } catch (e) {
+                res.writeHead(400, CORS_HEADERS);
+                res.end(JSON.stringify({ status: 'error', error: e.message }));
+            }
+        });
+        return;
+    }
+
+    // POST /api/phonon/spectral-ladder — 26-state HRes ladder
+    if (method === 'POST' && url === '/api/phonon/spectral-ladder') {
+        let body = '';
+        req.on('data', chunk => { body += chunk; });
+        req.on('end', () => {
+            try {
+                const params = body ? JSON.parse(body) : {};
+                const gammaTHz = parseFloat(params.Gamma_THz || 0.10);
+                const gamma = 2 * Math.PI * gammaTHz * 1e12;
+                const hbar = 1.055e-34;
+                const omegaSCm = 2 * Math.PI * 1.25e12;
+                const ssq = 0.57;
+                let S26 = 0;
+                for (let k = 1; k <= 26; k++) S26 += Math.exp(-ssq * k / 26);
+                const E0 = hbar * omegaSCm;
+                const levels = [];
+                for (let n = 1; n <= 26; n++) {
+                    const En = E0 * Math.pow(2 * Math.PI, n / 3) * S26;
+                    const omegaN = En / hbar;
+                    const Qn = omegaN / (2 * gamma);
+                    levels.push({ n, E_eV: En / 1.602e-19, Q: Qn,
+                        regime: Qn > 10 ? 'narrow' : (Qn > 3 ? 'optimal' : 'broad') });
+                }
+                res.writeHead(200, CORS_HEADERS);
+                res.end(JSON.stringify({
+                    status: 'ok', Gamma_THz: gammaTHz,
+                    levels, session: 214
+                }));
+            } catch (e) {
+                res.writeHead(400, CORS_HEADERS);
+                res.end(JSON.stringify({ status: 'error', error: e.message }));
+            }
+        });
+        return;
+    }
+
     // 404 for unknown routes
     res.writeHead(404, CORS_HEADERS);
     res.end(JSON.stringify({
@@ -491,7 +567,9 @@ function handleRequest(req, res) {
             'POST /api/batch',
             'POST /api/phonon/jet',
             'POST /api/phonon/jet/cena',
-            'POST /api/phonon/jet/txs0506'
+            'POST /api/phonon/jet/txs0506',
+            'POST /api/phonon/bcs',
+            'POST /api/phonon/spectral-ladder'
         ]
     }));
 }

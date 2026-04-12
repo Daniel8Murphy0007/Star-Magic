@@ -1113,6 +1113,82 @@ class LinewidthPhononMapping:
         }
 
 
+# ── §6  BCS Phonon Resonance ──────────────────────────────────────────────
+
+class BCSPhononResonance:
+    """BCS superconductivity mapped to SCm phonon resonance.
+
+    Gap equation Δ = (ℏω_SCm/2) · tanh(Δ/2k_BT) · S₂₆ · (F_{UBi}/F_U)
+    evaluated at phonon resonance ω = ω_SCm for Cooper pair formation.
+    Session 214.
+    """
+
+    OMEGA_SCM = 2 * math.pi * 1.25e12
+    HBAR = 1.055e-34
+    K_B = 1.381e-23
+    SSQ = 0.57
+    S26 = sum(math.exp(-0.57 * k / 26.0) for k in range(1, 27))
+    FUBI_RATIO = 0.6
+
+    def compute(self, dataset: dict) -> dict:
+        T = float(dataset.get("T_K", 0.0))
+        delta_pf = self.HBAR * self.OMEGA_SCM / 2.0
+        delta = delta_pf * self.S26 * self.FUBI_RATIO  # T=0 seed
+        for _ in range(500):
+            if T <= 0:
+                break
+            arg = min(delta / (2 * self.K_B * T), 500)
+            delta_new = delta_pf * math.tanh(arg) * self.S26 * self.FUBI_RATIO
+            if abs(delta_new - delta) < 1e-30:
+                delta = delta_new
+                break
+            delta = delta_new
+        return {
+            "T_K": T,
+            "Delta_J": delta,
+            "Delta_eV": delta / 1.602e-19,
+            "primary_equations": [
+                "Δ = (ℏω_SCm/2)·tanh(Δ/2k_BT)·S₂₆·(F_UBi/F_U)",
+                f"Δ(T={T:.1f}K) = {delta:.6e} J",
+            ],
+        }
+
+
+# ── §7  Spectral Ladder Phonon Mapping ────────────────────────────────────
+
+class SpectralLadderPhononMapping:
+    """Map 26-state HRes spectral ladder to phonon resonance.
+
+    E_n = E_0 · (2π)^{n/3} · S₂₆,  ω_n = E_n/ℏ,  Q_n = ω_n/(2Γ)
+    Session 214.
+    """
+
+    HBAR = 1.055e-34
+    OMEGA_SCM = 2 * math.pi * 1.25e12
+    S26 = sum(math.exp(-0.57 * k / 26.0) for k in range(1, 27))
+    E0 = HBAR * OMEGA_SCM
+
+    def compute(self, dataset: dict) -> dict:
+        gamma_THz = float(dataset.get("Gamma_THz", 0.10))
+        gamma = 2 * math.pi * gamma_THz * 1e12
+        levels = []
+        for n in range(1, 27):
+            E_n = self.E0 * (2 * math.pi)**(n / 3.0) * self.S26
+            omega_n = E_n / self.HBAR
+            Q_n = omega_n / (2 * gamma)
+            regime = "narrow" if Q_n > 10 else ("optimal" if Q_n > 3 else "broad")
+            levels.append({"n": n, "E_eV": E_n / 1.602e-19, "Q": Q_n, "regime": regime})
+        return {
+            "Gamma_THz": gamma_THz,
+            "levels": levels,
+            "primary_equations": [
+                "E_n = E_0·(2π)^{n/3}·S₂₆",
+                f"E_1 = {levels[0]['E_eV']:.6e} eV, Q_1 = {levels[0]['Q']:.1f}",
+                f"E_26 = {levels[25]['E_eV']:.6e} eV, Q_26 = {levels[25]['Q']:.1f}",
+            ],
+        }
+
+
 if __name__ == "__main__":
     import sys
     success = _run_tests()

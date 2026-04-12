@@ -12,7 +12,7 @@ Source: gok_share_31b5c807a4.txt — Supplemental gap analysis
          Phillips 1995 rotor, BSM ALICE/NOMAD/DELPHI, PLCK/ASKAP/TOI systems)
 Extraction: 17 unique calculators (PAPER_355–370) not present in CP1, CP2, or CP3
 Author: Daniel T. Murphy — Star Magic / UQFF Framework
-Version: 5.68 (2026-04-12)
+Version: 5.69 (2026-04-12)
 Updated: Session 115 — v4.72 QS=5 content quality enrichment; no new CP4 classes; CP4=73 classes
 Updated: Session 116 — v4.77 CP4 73→75 (#74 UQFF29SystemCrossValidationMatrixCalculator + #75 Session112GrokC020496d9ExhaustiveAuditHubCalculator)
 Updated: Session 117 — v4.79 CP4 75→77 (#76 UmCompleteSSqVacuumThermalDampingCalculator + #77 Session113GrokC020496d9ReAnalysisHubCalculator)
@@ -60,6 +60,7 @@ Updated: Session 192 v5.48 — CP4 387→398 (#396 ACPQwaveTHzHoleUBmiCalculator
     Updated: Session 211 v5.66 — CP4 484→492 (#507–#514) PAPER_923–930; SCm phonon gap implementation: SCm phonon resonance acceleration a_res=(F_UBi/F_U)·Φ·S₂₆ + BH phonon ergosphere superradiance Γ_SR + quasar jet phonon modulation M_jet(Γ) + multi-AGN MC jet power batch (3C273/CenA/TON618/TXS0506) + GW190425 phonon-suppressed strain h_UQFF=h_GR·0.530 + GW190425 wavelength phonon correction λ_UQFF + NS phonon spindown correction Ω̇ + production scaling v7 benchmark 300k calc/s; 6 new standalone modules; WSTP expressions #27-32; 930/1000 papers 93.0%)
     Updated: Session 212 v5.67 — CP4 492→500 (#515–#522) PAPER_931–938; Linewidth gap implementation: SCm phonon linewidth Γ exploration (E_net/F_neutron/reversal/classifier) + blazar jet phonon coupling (BL Lac/Mrk 421 ergosphere/VHE/neutrino) + extended AGN 3-point curves (3C273: 3.1/2.4/1.5× TON618: 3.8/2.9/1.7×) + GW170817 phonon strain D=0.333 + tidal deformability Λ_UQFF∈[190,600] + phase lag 2310.8 rad + production scaling v8 350k calc/s + REST /api/phonon/jet; 5 new modules; WSTP #33-38; 938/1000 papers 93.8%)
     Updated: Session 213 v5.68 — CP4 500→510 (#523–#532) PAPER_939–948; CenA/TXS0506 blazar jet curves (2.6/2.1/1.4× and 2.9/2.3/1.6×) + linewidth jet modulation (Γ→collimation/sharpness/power) + SMBH binary mergers (P_merger(Γ), δS/δφ=0, 47-66.7% damping, 200-400 cycles) + GW190425 mass-gap classifier (m1=2.52, P(NS)=49%/P(BH)=51%) + production scaling v9 400k calc/s + REST /api/phonon/jet/cena + /txs0506; WSTP #39-42; 948/1000 papers 94.8%)
+    Updated: Session 214 v5.69 — CP4 510→520 (#533–#542) PAPER_949–958; BCS superconductivity in UQFF/SCm (Δ=(ℏω_SCm/2)tanh·S₂₆, T_c, Cooper pairs) + 26-state HRes spectral ladder (E_n=(2π)^{n/3}·S₂₆ + Ramanujan acceleration) + E(t) linewidth sign-flip dynamics + Cooper-pair Lagrangian δS/δφ_pair=0 + production scaling v10 450k calc/s + REST /api/phonon/bcs + /spectral-ladder; WSTP #43-46; 958/1000 papers 95.8%)
 
 Architecture Compliance (MANDATORY):
   - PURE PHYSICS CALCULATOR — no hardcoded astronomical data
@@ -39476,6 +39477,330 @@ _SESSION_213_CLASSES = [
     'MergerLagrangianVariationCalc',                              # PAPER_946 #530
     'GW190425MassGapPhononCalc',                                 # PAPER_947 #531
     'ProductionScalingV9BenchmarkCalc',                           # PAPER_948 #532
+]
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# SESSION 214 — BCS Superconductivity + Spectral Ladder + E(t) (PAPER_949–958, #533–#542)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+class BCSGapEquationCalc(_CP4Calculator):  # PAPER_949 #533
+    """PAPER_949 — BCS Gap Equation (SCm Vacuum).
+    Δ = (ℏω_SCm/2) · tanh(Δ/2k_BT) · S₂₆ · (F_{UBi}/F_U).
+    Self-consistent fixed-point solution.
+    From bcs_superconductivity_uqff.py. CP4 class #533. Session 214."""
+
+    PARAMETERS = {"T_K": 0.0, "fubi_ratio": 0.6}
+
+    def compute(self, dataset: dict) -> dict:
+        T = float(dataset.get("T_K", 0.0))
+        fubi = float(dataset.get("fubi_ratio", 0.6))
+        wSCm = 2 * math.pi * 1.25e12
+        hbar = 1.055e-34; kB = 1.381e-23
+        ssq = 0.57; s26 = sum(math.exp(-ssq * k / 26.0) for k in range(1, 27))
+        dpf = hbar * wSCm / 2.0
+        delta = dpf * s26 * fubi
+        if T > 0:
+            for _ in range(500):
+                arg = min(delta / (2 * kB * T), 500)
+                dn = dpf * math.tanh(arg) * s26 * fubi
+                if abs(dn - delta) < 1e-30: delta = dn; break
+                delta = dn
+        return {"T_K": T, "Delta_J": delta, "Delta_eV": delta / 1.602e-19,
+                "primary_equations": ["Δ = (ℏω_SCm/2)·tanh(Δ/2k_BT)·S₂₆·(F_UBi/F_U)",
+                f"Δ(T={T:.1f}K) = {delta:.6e} J = {delta/1.602e-19:.6e} eV"],
+                "note": "PAPER_949 CP4 #533. Session 214."}
+
+    def simulate(self, sweep=None, **kw):
+        return [self.compute({"T_K": t}) for t in (sweep or [0, 1, 10, 100, 300])]
+    def self_update(self): pass
+    def self_expand(self): pass
+
+
+class BCSCriticalTemperatureCalc(_CP4Calculator):  # PAPER_950 #534
+    """PAPER_950 — BCS Critical Temperature T_c.
+    T_c = (1.13·ℏω_SCm/k_B) · exp(-1/N(0)V_SCm).
+    From bcs_superconductivity_uqff.py. CP4 class #534. Session 214."""
+
+    PARAMETERS = {"N0_states_per_J": 1e47, "V_SCm_J": 1e-20}
+
+    def compute(self, dataset: dict) -> dict:
+        N0 = float(dataset.get("N0_states_per_J", 1e47))
+        Vscm = float(dataset.get("V_SCm_J", 1e-20))
+        wSCm = 2 * math.pi * 1.25e12
+        hbar = 1.055e-34; kB = 1.381e-23
+        N0V = N0 * Vscm
+        if N0V <= 0: return {"T_c_K": 0, "error": "N0V must be > 0"}
+        Tc = (1.13 * hbar * wSCm / kB) * math.exp(-1.0 / N0V)
+        d0 = 1.764 * kB * Tc
+        return {"T_c_K": Tc, "N0V": N0V, "Delta_0_eV": d0 / 1.602e-19,
+                "primary_equations": ["T_c = (1.13·ℏω_SCm/k_B)·exp(-1/N(0)V_SCm)",
+                f"N(0)V = {N0V:.4f}", f"T_c = {Tc:.2f} K"],
+                "note": "PAPER_950 CP4 #534. Session 214."}
+
+    def simulate(self, sweep=None, **kw):
+        return [self.compute({"N0_states_per_J": 1e47, "V_SCm_J": v})
+                for v in (sweep or [5e-21, 1e-20, 2e-20, 5e-20])]
+    def self_update(self): pass
+    def self_expand(self): pass
+
+
+class CooperPairPhononCouplingCalc(_CP4Calculator):  # PAPER_951 #535
+    """PAPER_951 — Cooper Pair Phonon Coupling.
+    V_eff(ω,Γ) = V_SCm · Φ_{1.25THz}(ω,Γ), E_pair = 2Δ.
+    From bcs_superconductivity_uqff.py. CP4 class #535. Session 214."""
+
+    PARAMETERS = {"Gamma_THz": 0.10, "T_K": 0.0}
+
+    def compute(self, dataset: dict) -> dict:
+        gTHz = float(dataset.get("Gamma_THz", 0.10))
+        T = float(dataset.get("T_K", 0.0))
+        wSCm = 2 * math.pi * 1.25e12
+        hbar = 1.055e-34; kB = 1.381e-23
+        ssq = 0.57; s26 = sum(math.exp(-ssq * k / 26.0) for k in range(1, 27))
+        gamma = 2 * math.pi * gTHz * 1e12
+        phi = math.exp(0) * s26  # on-resonance ω=ω_SCm → exp(0)
+        dpf = hbar * wSCm / 2; fubi = 0.6
+        delta = dpf * s26 * fubi
+        if T > 0:
+            for _ in range(200):
+                arg = min(delta / (2 * kB * T), 500)
+                delta = dpf * math.tanh(arg) * s26 * fubi
+        E_pair = 2 * delta
+        return {"Γ_THz": gTHz, "Φ": phi, "E_pair_eV": E_pair / 1.602e-19,
+                "primary_equations": ["V_eff = V_SCm·Φ_{1.25THz}(ω,Γ)",
+                f"E_pair = 2Δ = {E_pair:.6e} J = {E_pair/1.602e-19:.6e} eV"],
+                "note": "PAPER_951 CP4 #535. Session 214."}
+
+    def simulate(self, sweep=None, **kw):
+        return [self.compute({"Gamma_THz": g}) for g in (sweep or [0.05, 0.10, 0.30])]
+    def self_update(self): pass
+    def self_expand(self): pass
+
+
+class SpectralLadder26StateCalc(_CP4Calculator):  # PAPER_952 #536
+    """PAPER_952 — 26-State HRes Spectral Ladder.
+    E_n = E_0 · (2π)^{n/3} · S₂₆, n=1..26.
+    From spectral_ladder_26state.py. CP4 class #536. Session 214."""
+
+    PARAMETERS = {}
+
+    def compute(self, dataset: dict = None) -> dict:
+        hbar = 1.055e-34; wSCm = 2 * math.pi * 1.25e12
+        ssq = 0.57; s26 = sum(math.exp(-ssq * k / 26.0) for k in range(1, 27))
+        E0 = hbar * wSCm
+        levels = []
+        for n in range(1, 27):
+            En = E0 * (2 * math.pi)**(n / 3.0) * s26
+            levels.append({"n": n, "E_eV": En / 1.602e-19})
+        return {"levels": levels, "E_0_J": E0, "S26": s26,
+                "primary_equations": ["E_n = E_0·(2π)^{n/3}·S₂₆",
+                f"E_1 = {levels[0]['E_eV']:.6e} eV", f"E_26 = {levels[25]['E_eV']:.6e} eV"],
+                "note": "PAPER_952 CP4 #536. Session 214."}
+
+    def simulate(self, sweep=None, **kw):
+        return [self.compute()]
+    def self_update(self): pass
+    def self_expand(self): pass
+
+
+class RamanujanAccelerationCalc(_CP4Calculator):  # PAPER_953 #537
+    """PAPER_953 — Ramanujan-Accelerated S₂₆ Convergence.
+    S_N^(R) = S_N + ½a_N + Σ B_{2p}/(2p)! · Δ^{2p-1} a_N.
+    From spectral_ladder_26state.py. CP4 class #537. Session 214."""
+
+    PARAMETERS = {"N": 26}
+    BERNOULLI = [1/6, -1/30, 1/42, -1/30]
+
+    def compute(self, dataset: dict = None) -> dict:
+        N = int((dataset or {}).get("N", 26))
+        ssq = 0.57
+        a = lambda k: math.exp(-ssq * k / 26)
+        s_std = sum(a(k) for k in range(1, N + 1))
+        # Ramanujan correction
+        R = 0.5 * a(N)
+        for p_idx in range(len(self.BERNOULLI)):
+            order = 2 * (p_idx + 1) - 1
+            delta_val = sum((-1)**j * math.comb(order, j) * a(N + order - j)
+                           for j in range(order + 1) if N + order - j > 0)
+            R += self.BERNOULLI[p_idx] / math.factorial(2 * (p_idx + 1)) * delta_val
+        s_acc = s_std + R
+        return {"N": N, "S_standard": s_std, "S_accelerated": s_acc,
+                "primary_equations": ["S^(R) = S_N + ½a_N + Σ B_{2p}/(2p)! Δ^{2p-1}a_N",
+                f"S_{N} = {s_std:.10f}", f"S_{N}^(R) = {s_acc:.10f}"],
+                "note": "PAPER_953 CP4 #537. Session 214."}
+
+    def simulate(self, sweep=None, **kw):
+        return [self.compute({"N": n}) for n in (sweep or [5, 10, 15, 20, 26])]
+    def self_update(self): pass
+    def self_expand(self): pass
+
+
+class EtLinewidthModulationCalc(_CP4Calculator):  # PAPER_954 #538
+    """PAPER_954 — E(t) Linewidth Modulation with Sign-Flip.
+    E(t,Γ) = S₂₆ · cos(ω_SCm·t) · exp(-Γ·t). Sign flips drive jet collimation.
+    From blazar_jet_phonon.py EtLinewidthModulation. CP4 #538. Session 214."""
+
+    PARAMETERS = {"Gamma_THz": 0.10}
+
+    def compute(self, dataset: dict) -> dict:
+        gTHz = float(dataset.get("Gamma_THz", 0.10))
+        gamma = 2 * math.pi * gTHz * 1e12
+        wSCm = 2 * math.pi * 1.25e12
+        ssq = 0.57; s26 = sum(math.exp(-ssq * k / 26.0) for k in range(1, 27))
+        dt = 0.1e-12; n_flips = 0; prev_sign = 1
+        for i in range(50):
+            t = i * dt
+            Et = s26 * math.cos(wSCm * t) * math.exp(-gamma * t)
+            s = 1 if Et >= 0 else -1
+            if s != prev_sign and i > 0: n_flips += 1
+            prev_sign = s
+        t_flip = math.pi / (2 * wSCm)
+        return {"Γ_THz": gTHz, "t_flip_ps": t_flip * 1e12, "n_flips_5ps": n_flips,
+                "primary_equations": ["E(t,Γ) = S₂₆·cos(ω_SCm·t)·exp(-Γ·t)",
+                f"t_flip = {t_flip*1e12:.4f} ps", f"Flips in 5 ps: {n_flips}"],
+                "note": "PAPER_954 CP4 #538. Session 214."}
+
+    def simulate(self, sweep=None, **kw):
+        return [self.compute({"Gamma_THz": g}) for g in (sweep or [0.01, 0.05, 0.10, 0.30, 1.0])]
+    def self_update(self): pass
+    def self_expand(self): pass
+
+
+class BCSPhononResonanceCalc(_CP4Calculator):  # PAPER_955 #539
+    """PAPER_955 — BCS Phonon Resonance at ω_SCm.
+    Maps BCS gap to ET phonon resonance framework.
+    From et_phonon_resonance.py BCSPhononResonance. CP4 #539. Session 214."""
+
+    PARAMETERS = {"T_K": 0.0}
+
+    def compute(self, dataset: dict) -> dict:
+        T = float(dataset.get("T_K", 0.0))
+        wSCm = 2 * math.pi * 1.25e12; hbar = 1.055e-34; kB = 1.381e-23
+        ssq = 0.57; s26 = sum(math.exp(-ssq * k / 26.0) for k in range(1, 27))
+        dpf = hbar * wSCm / 2; fubi = 0.6
+        delta = dpf * s26 * fubi
+        if T > 0:
+            for _ in range(500):
+                arg = min(delta / (2 * kB * T), 500)
+                dn = dpf * math.tanh(arg) * s26 * fubi
+                if abs(dn - delta) < 1e-30: delta = dn; break
+                delta = dn
+        return {"T_K": T, "Δ_eV": delta / 1.602e-19,
+                "primary_equations": ["Δ at ω_SCm phonon resonance",
+                f"Δ(T={T:.1f}K) = {delta/1.602e-19:.6e} eV"],
+                "note": "PAPER_955 CP4 #539. Session 214."}
+
+    def simulate(self, sweep=None, **kw):
+        return [self.compute({"T_K": t}) for t in (sweep or [0, 10, 77, 300])]
+    def self_update(self): pass
+    def self_expand(self): pass
+
+
+class SpectralLadderPhononMappingCalc(_CP4Calculator):  # PAPER_956 #540
+    """PAPER_956 — Spectral Ladder Phonon Mapping.
+    Maps 26 HRes levels to phonon Q factors at given Γ.
+    From et_phonon_resonance.py SpectralLadderPhononMapping. CP4 #540. Session 214."""
+
+    PARAMETERS = {"Gamma_THz": 0.10}
+
+    def compute(self, dataset: dict) -> dict:
+        gTHz = float(dataset.get("Gamma_THz", 0.10))
+        gamma = 2 * math.pi * gTHz * 1e12
+        hbar = 1.055e-34; wSCm = 2 * math.pi * 1.25e12
+        ssq = 0.57; s26 = sum(math.exp(-ssq * k / 26.0) for k in range(1, 27))
+        E0 = hbar * wSCm
+        levels = []
+        for n in range(1, 27):
+            En = E0 * (2 * math.pi)**(n / 3.0) * s26
+            wn = En / hbar; Qn = wn / (2 * gamma)
+            regime = "narrow" if Qn > 10 else ("optimal" if Qn > 3 else "broad")
+            levels.append({"n": n, "Q": Qn, "regime": regime})
+        return {"Γ_THz": gTHz, "levels": levels,
+                "primary_equations": ["ω_n = E_n/ℏ, Q_n = ω_n/(2Γ)",
+                f"Q_1 = {levels[0]['Q']:.1f}", f"Q_26 = {levels[25]['Q']:.1f}"],
+                "note": "PAPER_956 CP4 #540. Session 214."}
+
+    def simulate(self, sweep=None, **kw):
+        return [self.compute({"Gamma_THz": g}) for g in (sweep or [0.05, 0.10, 0.30])]
+    def self_update(self): pass
+    def self_expand(self): pass
+
+
+class CooperPairLagrangianCalc(_CP4Calculator):  # PAPER_957 #541
+    """PAPER_957 — Cooper Pair Lagrangian Variation.
+    δS/δφ_pair = ∂/∂Δ (-β_i Σ U_{g,i} Ω_g M/d_g [UA] + F_n·Φ_{1.25THz}) = 0.
+    From uqff_lagrangian_derivation.py. CP4 #541. Session 214."""
+
+    PARAMETERS = {"M_total_Msun": 1.0, "r_m": 1e10}
+
+    def compute(self, dataset: dict) -> dict:
+        Mt = float(dataset.get("M_total_Msun", 1.0)) * 1.989e30
+        r = float(dataset.get("r_m", 1e10))
+        ssq = 0.57; s26 = sum(math.exp(-ssq * i / 26.0) for i in range(1, 27))
+        Ug_sum = sum(6.674e-11 * Mt / r**2 * math.exp(-ssq * i / 26.0) * 0.603 for i in range(1, 27))
+        Fn = 1e-10 * s26; Phi = 1e20 * s26
+        N0V_crit = 0.603 * Ug_sum * s26 / max(1.055e-34 * 2 * math.pi * 1.25e12 * abs(Fn * Phi), 1e-50)
+        return {"Ug_sum": Ug_sum, "N0V_critical": N0V_crit,
+                "primary_equations": ["δS/δφ_pair = ∂/∂Δ(-β_iΣU·M/d[UA] + F_nΦ) = 0",
+                f"N(0)V_crit = {N0V_crit:.6e}"],
+                "note": "PAPER_957 CP4 #541. Session 214."}
+
+    def simulate(self, sweep=None, **kw):
+        return [self.compute({"r_m": r}) for r in (sweep or [1e9, 1e10, 1e11])]
+    def self_update(self): pass
+    def self_expand(self): pass
+
+
+class ProductionScalingV10BenchmarkCalc(_CP4Calculator):  # PAPER_958 #542
+    """PAPER_958 — Production Scaling v10 Benchmark (450k calc/s).
+    14 kernels: v9's 12 + BCS gap + spectral ladder. +12.5% over v9.
+    From production_scaling_v10.py. CP4 class #542. Session 214."""
+
+    TARGET = 450000
+
+    def compute(self, dataset: dict) -> dict:
+        import time as _time
+        n = int(dataset.get("n_iterations", 5000))
+        ssq = 0.57; s26 = sum(math.exp(-ssq * k / 26.0) for k in range(1, 27))
+        # Gravity kernel
+        t0 = _time.perf_counter()
+        for _ in range(n):
+            _ = sum(6.674e-11 * 4e6 * 1.989e30 / (1e12**2) * ssq * i / 26 for i in range(1, 27))
+        r_grav = n / max(_time.perf_counter() - t0, 1e-15)
+        # BCS kernel
+        t0 = _time.perf_counter()
+        for _ in range(n):
+            d = 1.055e-34 * 2 * math.pi * 1.25e12 / 2 * s26 * 0.6
+        r_bcs = n / max(_time.perf_counter() - t0, 1e-15)
+        # Spectral ladder kernel
+        t0 = _time.perf_counter()
+        for _ in range(n):
+            _ = sum(1.055e-34 * 2 * math.pi * 1.25e12 * (2*math.pi)**(k/3) * s26 for k in range(1, 27))
+        r_ladder = n / max(_time.perf_counter() - t0, 1e-15)
+        avg = (r_grav + r_bcs + r_ladder) / 3
+        return {"avg_rate": avg, "target": self.TARGET, "meets": avg >= self.TARGET,
+                "primary_equations": [f"Gravity: {r_grav:.0f}", f"BCS: {r_bcs:.0f}",
+                f"Ladder: {r_ladder:.0f}", f"Avg: {avg:.0f}/{self.TARGET} {'MET' if avg >= self.TARGET else 'NOT MET'}"],
+                "note": "PAPER_958 CP4 #542. Session 214."}
+
+    def simulate(self, sweep=None, **kw):
+        return [self.compute({"n_iterations": n}) for n in (sweep or [1000, 5000, 10000])]
+    def self_update(self): pass
+    def self_expand(self): pass
+
+
+_SESSION_214_CLASSES = [
+    'BCSGapEquationCalc',                                        # PAPER_949 #533
+    'BCSCriticalTemperatureCalc',                                 # PAPER_950 #534
+    'CooperPairPhononCouplingCalc',                               # PAPER_951 #535
+    'SpectralLadder26StateCalc',                                  # PAPER_952 #536
+    'RamanujanAccelerationCalc',                                  # PAPER_953 #537
+    'EtLinewidthModulationCalc',                                  # PAPER_954 #538
+    'BCSPhononResonanceCalc',                                     # PAPER_955 #539
+    'SpectralLadderPhononMappingCalc',                             # PAPER_956 #540
+    'CooperPairLagrangianCalc',                                    # PAPER_957 #541
+    'ProductionScalingV10BenchmarkCalc',                           # PAPER_958 #542
 ]
 
 

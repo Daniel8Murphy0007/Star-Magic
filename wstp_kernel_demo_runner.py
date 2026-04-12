@@ -497,6 +497,44 @@ def build_demo_expressions(wl_path: str) -> List[Dict[str, str]]:
                  '{g, {0.01, 0.05, 0.10, 0.15, 0.30, 0.50, 1.0}}]'),
     })
 
+    # ── BCS Superconductivity + Spectral Ladder + E(t) Linewidth (Session 214) ──
+
+    # 43. BCS gap equation (SCm vacuum self-consistent solve)
+    exprs.append({
+        "label": "BCS gap Δ(T) SCm phonon self-consistent",
+        "code": ('wSCm = 2 Pi * 1.25*^12; S26 = Sum[Exp[-0.57 k/26], {k, 1, 26}]; '
+                 'FUBi = 0.6; dPF = 1.055*^-34 * wSCm / 2; '
+                 'gapRHS[d_, T_] := dPF * Tanh[d / (2 * 1.381*^-23 * T)] * S26 * FUBi; '
+                 'FindRoot[d == gapRHS[d, 1.0], {d, 1*^-22}]'),
+    })
+
+    # 44. BCS critical temperature T_c(N0V)
+    exprs.append({
+        "label": "BCS T_c(N(0)V_SCm) critical temperature table",
+        "code": ('wSCm = 2 Pi * 1.25*^12; '
+                 'Tc[N0V_] := (1.13 * 1.055*^-34 * wSCm / 1.381*^-23) * Exp[-1/N0V]; '
+                 'Table[{N0V, Tc[N0V]}, {N0V, 0.1, 0.5, 0.05}]'),
+    })
+
+    # 45. 26-state HRes spectral ladder E_n
+    exprs.append({
+        "label": "26-state HRes spectral ladder E_n table",
+        "code": ('E0 = 1.055*^-34 * 2 Pi * 1.25*^12; '
+                 'S26 = Sum[Exp[-0.57 k/26], {k, 1, 26}]; '
+                 'En[n_] := E0 * (2 Pi)^(n/3) * S26; '
+                 'Table[{n, En[n], En[n] / 1.602*^-19}, {n, 1, 26}]'),
+    })
+
+    # 46. E(t) linewidth modulation sign-flip dynamics
+    exprs.append({
+        "label": "E(t) linewidth Γ modulation with sign-flip",
+        "code": ('wSCm = 2 Pi * 1.25*^12; S26 = Sum[Exp[-0.57 k/26], {k, 1, 26}]; '
+                 'Et[t_, G_] := S26 * Cos[wSCm * t] * Exp[-G * t]; '
+                 'signFlip[t_, G_] := Sign[Et[t, G]]; '
+                 'Table[{t, Et[t, 2 Pi * 0.1*^12], signFlip[t, 2 Pi * 0.1*^12]}, '
+                 '{t, 0, 5*^-12, 0.1*^-12}]'),
+    })
+
     return exprs
 
 

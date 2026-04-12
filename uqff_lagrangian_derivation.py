@@ -1098,5 +1098,43 @@ MERGER_BUOYANCY_LAGRANGIAN = {
 }
 
 
+# ── §10  Cooper-Pair Lagrangian Sector ─────────────────────────────────────
+#     Session 214: BCS superconductivity in UQFF/SCm context
+
+COOPER_PAIR_LAGRANGIAN = {
+    "sector": "Cooper-Pair (BCS-SCm)",
+    "session": 214,
+    "description": "Lagrangian variation for Cooper-pair phonon sector at ω_SCm = 1.25 THz",
+
+    "gap_lagrangian": {
+        "equation": "L_gap = -N(0)|Δ|² / V_SCm + Σ_k (ε_k - μ - E_k) + Δ Σ_k u_k v_k",
+        "E_k": "sqrt(ε_k² + |Δ|²)",
+        "note": "Standard BCS with V_SCm replacing V_electron-phonon",
+    },
+
+    "scm_gap_equation": {
+        "equation": "Δ = (ℏω_SCm/2) · tanh(Δ/2k_BT) · S₂₆([SSq]) · (F_{UBi}/F_U)",
+        "self_consistent": True,
+        "T_c": "T_c = (1.13·ℏω_SCm/k_B) · exp(-1/N(0)V_SCm)",
+    },
+
+    "stationarity": {
+        "equation": "δS/δφ_pair = ∂/∂Δ (-β_i Σ U_{g,i} Ω_g M/d_g [UA] + F_n · Φ_{1.25THz}) = 0",
+        "critical_coupling": "N(0)V_SCm = β_i Σ U_{g,i} · S₂₆ / (ℏω_SCm · F_n · Φ)",
+        "note": "Links gravitational buoyancy to Cooper pair binding",
+    },
+
+    "spectral_ladder_link": {
+        "equation": "E_n = E_0 · (2π)^{n/3} · S₂₆, n=1..26",
+        "note": "Each ladder level n provides a phonon resonance channel for Cooper pairing",
+    },
+
+    "lenr_connection": {
+        "equation": "LENR rate ∝ Δ² · exp(-E_coulomb / (k_B T_c)) · Φ_{1.25THz}",
+        "note": "Lab superconductivity signatures emerge at SCm phonon threshold",
+    },
+}
+
+
 if __name__ == "__main__":
     main()
