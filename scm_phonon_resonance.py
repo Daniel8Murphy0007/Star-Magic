@@ -525,13 +525,98 @@ class MultiLayerPhononGravityCoupling:
 
 
 # ══════════════════════════════════════════════════════════════════════════════
-# §7  MAIN / DEMO
+# §7  KOZIMA NEUTRON-DROP WITH LINEWIDTH  (Session 212)
+# ══════════════════════════════════════════════════════════════════════════════
+
+class KozimaNeutronDropLinewidth:
+    """
+    Kozima neutron-drop force with explicit linewidth parameter Γ:
+
+        F_neutron(ω,Γ) = N_n · σ_n(ω,ρ) · Φ(ω,Γ) · E_net(t,Γ)
+
+    where:
+        σ_n(ω,Γ) = σ₀ · exp[-(ω−ω_SCm)²/(2Γ²)] · (1 + [SSq]·n/N)
+        Φ(ω,Γ)   = Φ₀ · exp[-(ω−ω_SCm)²/(2Γ²)] · S₂₆
+
+    The explicit Γ parameter allows sweeping through linewidth regimes
+    to probe the neutron-drop coupling strength as function of phonon
+    bandwidth.
+    """
+
+    def compute(self, dataset: dict) -> Dict[str, Any]:
+        """
+        Parameters from dataset:
+          omega:      probe frequency (rad/s, default ω_SCm)
+          Gamma:      phonon linewidth (rad/s, default Γ_SCm)
+          N_n:        neutron density (m⁻³, default 1e18)
+          sigma_0:    bare cross-section (m², default 1e-4)
+          n_level:    lattice level (default 13)
+          ssq:        [SSq] (default 0.57)
+          V:          region volume (m³, default 1e48)
+          F_U_Bi:     buoyancy fraction (default 0.6)
+          F_U:        total force (default 1.0)
+          t:          time (s, default 0)
+        """
+        omega   = dataset.get('omega', OMEGA_PHONON)
+        Gamma   = dataset.get('Gamma', GAMMA_PHONON)
+        N_n     = dataset.get('N_n', 1e18)
+        sigma_0 = dataset.get('sigma_0', SIGMA_0)
+        n_level = dataset.get('n_level', 13)
+        ssq     = dataset.get('ssq', SSQ)
+        V       = dataset.get('V', 1e48)
+        F_U_Bi  = dataset.get('F_U_Bi', 0.6)
+        F_U     = dataset.get('F_U', 1.0)
+        t       = dataset.get('t', 0.0)
+
+        S26 = S26_accelerated(ssq)
+        net_factor = 2.0 * F_U_Bi / max(F_U, 1e-50) - 1.0
+        rho_SCm_t = RHO_VAC_SCM * S26 * math.exp(KAPPA * t + ssq * t / 26.0)
+
+        # Phonon modulation at given (ω, Γ)
+        delta_omega = omega - OMEGA_PHONON
+        exponent = -(delta_omega**2) / (2.0 * Gamma**2)
+        gaussian = math.exp(min(exponent, 0.0))
+        vds_factor = 1.0 + ssq * n_level / N_LEVELS
+
+        sigma_n = sigma_0 * gaussian * vds_factor
+        Phi = PHI_0_DEFAULT * gaussian * S26
+        E_net = rho_SCm_t * V * net_factor * Phi * S26
+        F_neutron = N_n * sigma_n * Phi * E_net
+
+        Q_factor = OMEGA_PHONON / (2.0 * Gamma)
+
+        return {
+            "F_neutron_N": F_neutron,
+            "sigma_n_m2": sigma_n,
+            "Phi": Phi,
+            "E_net_J": E_net,
+            "Q_factor": Q_factor,
+            "Gamma_THz": Gamma / (2.0 * PI * 1e12),
+            "gaussian": gaussian,
+            "vds_factor": vds_factor,
+            "primary_equations": [
+                "F_neutron(ω,Γ) = N_n · σ_n(ω,Γ) · Φ(ω,Γ) · E_net(t,Γ)",
+                "σ_n(ω,Γ) = σ₀ · exp[-(ω−ω_SCm)²/(2Γ²)] · (1 + [SSq]·n/N)",
+            ],
+            "equation": (
+                "Kozima neutron-drop force with linewidth Γ:\n"
+                f"  Γ = {Gamma / (2.0 * PI * 1e12):.3f} THz (Q = {Q_factor:.1f})\n"
+                f"  σ_n = {sigma_n:.6e} m²\n"
+                f"  Φ   = {Phi:.6e} phonons/m²/s\n"
+                f"  E_net = {E_net:.6e} J\n"
+                f"  F_neutron = {F_neutron:.6e} N"
+            ),
+        }
+
+
+# ══════════════════════════════════════════════════════════════════════════════
+# §8  MAIN / DEMO
 # ══════════════════════════════════════════════════════════════════════════════
 
 def main():
     """Demonstrate SCm phonon resonance exploration."""
     print("=" * 72)
-    print("SCm Phonon Resonance Exploration Engine — Session 211")
+    print("SCm Phonon Resonance Exploration Engine — Session 211+212")
     print("=" * 72)
 
     # §1 Resonance acceleration

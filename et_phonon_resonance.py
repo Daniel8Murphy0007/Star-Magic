@@ -356,6 +356,163 @@ class PhononLagrangian:
 
 
 # ══════════════════════════════════════════════════════════════════════════════
+# §3b  Ug,i-COUPLED LAGRANGIAN VARIATION  (Session 212)
+# ══════════════════════════════════════════════════════════════════════════════
+
+class UgiCoupledLagrangianVariation:
+    """
+    Full 4-channel Ug,i gravity coupling in the Euler-Lagrange equation
+    with explicit stationarity output:
+
+        δS/δφ_phonon = 0  ⟹
+        ∂/∂E_net[ −β_i Σ_{i=1}^{26} Ug,i · Ω_g · M/d_g · [UA]
+                 + F_neutron · Φ_{1.25 THz} ] = 0
+
+    The 4 gravity channels are:
+        Ug1_i = μ₀μ_s / (4π r_i³)              (magnetic dipole)
+        Ug2_i = E_react · η_aether / r_i²       (charge-reactivity)
+        Ug3_i = μ_s ω_s sin(ω_s t) / r_i²      (string rotation)
+        Ug4_i = ρ_SCm G M / (r_i ρ_UA)          (vacuum concentration)
+
+    Each channel contributes independently to the buoyancy term,
+    producing a 4×26 stationarity matrix.
+    """
+
+    def compute(self, dataset: dict) -> Dict[str, Any]:
+        """
+        Parameters from dataset:
+          M:        central mass (kg)
+          r:        radial distance (m)
+          mu_s:     magnetic dipole moment (A·m²)
+          omega_s:  spin angular frequency (rad/s)
+          t:        time (s)
+          omega:    phonon frequency (rad/s)
+          Gamma:    linewidth (rad/s)
+          F_U_Bi, F_U: buoyancy fraction
+          ssq:      [SSq]
+          V_region: region volume (m³)
+          N_n:      neutron density (m⁻³)
+          sigma_0:  cross-section (m²)
+          n_level:  lattice level
+        """
+        from positive_et_expansion import (
+            RHO_VAC_SCM, mu_0, SIGMA_0 as sigma_0_default,
+        )
+
+        M         = dataset.get('M', 4e6 * M_sun)
+        r         = dataset.get('r', 1e12)
+        mu_s      = dataset.get('mu_s', 1e25)
+        omega_s   = dataset.get('omega_s', 1.0)
+        t         = dataset.get('t', 0.0)
+        omega     = dataset.get('omega', OMEGA_PHONON)
+        Gamma     = dataset.get('Gamma', GAMMA_PHONON)
+        F_U_Bi    = dataset.get('F_U_Bi', 0.6)
+        F_U       = dataset.get('F_U', 1.0)
+        ssq       = dataset.get('ssq', SSQ)
+        V_region  = dataset.get('V_region', 1e48)
+        N_n       = dataset.get('N_n', 1e18)
+        sigma_0   = dataset.get('sigma_0', sigma_0_default)
+        n_level   = dataset.get('n_level', 13)
+        beta_i    = dataset.get('beta_i', BETA_I)
+        Omega_g   = dataset.get('Omega_g', 1.0)
+        d_g       = dataset.get('d_g', 1e12)
+        UA        = dataset.get('UA', U_UA)
+
+        eta_aether = 1e-22
+        E_react    = 1e46
+
+        S26 = S26_accelerated(ssq)
+        rho_SCm = RHO_VAC_SCM * S26
+
+        # Phonon modulation
+        delta_omega = omega - OMEGA_PHONON
+        gaussian = math.exp(min(-delta_omega**2 / (2.0 * Gamma**2), 0.0))
+        Phi_125 = PHI_0_DEFAULT * gaussian * S26
+        vds_factor = 1.0 + ssq * n_level / N_LEVELS
+        sigma_n = sigma_0 * gaussian * vds_factor
+
+        # 4-channel gravity across 26 layers
+        Ug1_total, Ug2_total, Ug3_total, Ug4_total = 0.0, 0.0, 0.0, 0.0
+        channel_layers = []
+        for layer in range(1, 27):
+            qi = ssq * layer / N_LEVELS
+            r_i = r * (1.0 + layer * 0.01)
+
+            Ug1_i = mu_0 * mu_s / (4.0 * PI * r_i**3) * qi
+            Ug2_i = E_react * eta_aether / (r_i**2) * qi
+            Ug3_i = mu_s * omega_s * math.sin(omega_s * t) / (r_i**2) * qi
+            Ug4_i = rho_SCm * G * M / (r_i * RHO_UA) * qi
+
+            Ug1_total += Ug1_i
+            Ug2_total += Ug2_i
+            Ug3_total += Ug3_i
+            Ug4_total += Ug4_i
+
+            if layer in (1, 13, 26):
+                channel_layers.append({
+                    "layer": layer,
+                    "Ug1_i": Ug1_i, "Ug2_i": Ug2_i,
+                    "Ug3_i": Ug3_i, "Ug4_i": Ug4_i,
+                })
+
+        Ug_sum = Ug1_total + Ug2_total + Ug3_total + Ug4_total
+        orbit_factor = Omega_g * M / d_g
+
+        # Buoyancy term (4-channel)
+        buoyancy_1 = -beta_i * Ug1_total * orbit_factor * UA
+        buoyancy_2 = -beta_i * Ug2_total * orbit_factor * UA
+        buoyancy_3 = -beta_i * Ug3_total * orbit_factor * UA
+        buoyancy_4 = -beta_i * Ug4_total * orbit_factor * UA
+        buoyancy_total = buoyancy_1 + buoyancy_2 + buoyancy_3 + buoyancy_4
+
+        # Neutron force (phonon-modulated)
+        net_factor = 2.0 * F_U_Bi / max(F_U, 1e-50) - 1.0
+        rho_t = rho_SCm * math.exp(KAPPA * t + ssq * t / 26.0)
+        E_net = rho_t * V_region * net_factor * Phi_125 * S26
+        F_neutron = N_n * sigma_n * Phi_125 * E_net
+
+        # Euler-Lagrange stationarity
+        dL_dEnet = V_region * Phi_125 * S26
+        action_integrand = buoyancy_total + F_neutron * Phi_125
+        EL_residual = dL_dEnet * action_integrand
+
+        # Stationarity condition: buoyancy = −F_neutron · Φ
+        stationarity_ratio = abs(buoyancy_total) / max(abs(F_neutron * Phi_125), 1e-50)
+
+        return {
+            "Ug1_total": Ug1_total,
+            "Ug2_total": Ug2_total,
+            "Ug3_total": Ug3_total,
+            "Ug4_total": Ug4_total,
+            "Ug_sum": Ug_sum,
+            "buoyancy_ch1_dipole": buoyancy_1,
+            "buoyancy_ch2_charge": buoyancy_2,
+            "buoyancy_ch3_string": buoyancy_3,
+            "buoyancy_ch4_vacuum": buoyancy_4,
+            "buoyancy_total": buoyancy_total,
+            "F_neutron": F_neutron,
+            "E_net": E_net,
+            "EL_residual": EL_residual,
+            "stationarity_ratio": stationarity_ratio,
+            "channel_layers_sample": channel_layers,
+            "primary_equations": [
+                "∂/∂E_net[ −β_i Σ Ug,i · Ω_g M/d_g [UA] + F_neutron · Φ ] = 0",
+                "Ug1 = μ₀μ_s/(4πr³), Ug2 = E_react·η/r², Ug3 = μ_s·ω_s·sin(ωt)/r², Ug4 = ρ_SCm·GM/(r·ρ_UA)",
+            ],
+            "equation": (
+                "4-channel Ug,i-coupled Lagrangian variation:\n"
+                f"  Ug1 (dipole)  = {Ug1_total:.6e} → buoyancy = {buoyancy_1:.6e}\n"
+                f"  Ug2 (charge)  = {Ug2_total:.6e} → buoyancy = {buoyancy_2:.6e}\n"
+                f"  Ug3 (string)  = {Ug3_total:.6e} → buoyancy = {buoyancy_3:.6e}\n"
+                f"  Ug4 (vacuum)  = {Ug4_total:.6e} → buoyancy = {buoyancy_4:.6e}\n"
+                f"  F_neutron = {F_neutron:.6e}\n"
+                f"  EL_residual = {EL_residual:.6e}\n"
+                f"  Stationarity ratio = {stationarity_ratio:.6e}"
+            ),
+        }
+
+
+# ══════════════════════════════════════════════════════════════════════════════
 # §4  BUOYANCY REVERSAL AT RESONANCE
 # ══════════════════════════════════════════════════════════════════════════════
 

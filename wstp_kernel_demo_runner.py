@@ -386,6 +386,73 @@ def build_demo_expressions(wl_path: str) -> List[Dict[str, str]]:
                  '{Mc, DeltaPhi} // N'),
     })
 
+    # ── GW170817 Phonon + Tidal Deformability (Session 212) ──
+
+    # 33. GW170817 phonon-suppressed strain h_UQFF(t)
+    exprs.append({
+        "label": "GW170817 h_UQFF(t) = h_GR · 0.333 · exp([SSq]·t/26)",
+        "code": ('hGR170817 = 5.4176*^-22; Dtotal170817 = 0.333; SSq = 0.57; '
+                 'hUQFF170817[t_] := hGR170817 * Dtotal170817 * Exp[SSq t / 26]; '
+                 'hUQFF170817[0] // N'),
+    })
+
+    # 34. GW170817 phonon-modified wavelength λ_UQFF
+    exprs.append({
+        "label": "GW170817 λ_UQFF = λ_GR · (1 − F_UBi/F_U · Φ)",
+        "code": ('c = 2.998*^8; fGW170817 = 300; '
+                 'lambdaGR170817 = c / fGW170817; '
+                 'FUBi = 0.6; FU = 1.0; '
+                 'lambdaUQFF170817 = lambdaGR170817 * '
+                 '(1 - FUBi / FU * Phi125THz[omSCm] / 10^20); '
+                 '{lambdaGR170817, lambdaUQFF170817} // N'),
+    })
+
+    # 35. GW170817 tidal deformability Λ_UQFF
+    exprs.append({
+        "label": "GW170817 Λ_UQFF = Λ_GR · (1 + Φ·S₂₆·D_total)",
+        "code": ('LambdaGR = 300; Dtotal170817 = 0.333; '
+                 'S26val = PolyLog[26, 0.57]; '
+                 'Phi = Phi125THz[omSCm] / 10^20; '
+                 'LambdaUQFF = LambdaGR * (1 + Phi * S26val * Dtotal170817); '
+                 '{LambdaUQFF, LambdaUQFF < 800} // N'),
+    })
+
+    # 36. GW170817 NS phonon spindown correction
+    exprs.append({
+        "label": "GW170817 Ω̇_NS^phonon spindown correction",
+        "code": ('OmegaDotNS170817 = -4.2*^-15; NLayers = 26; '
+                 'S26 = PolyLog[26, 0.57]; '
+                 'PhiRes = Phi125THz[omSCm]; '
+                 'OmegaDotPhonon170817 = OmegaDotNS170817 * '
+                 '(1 + PhiRes * S26 * 0.57 / NLayers); '
+                 '{OmegaDotNS170817, OmegaDotPhonon170817} // N'),
+    })
+
+    # 37. GW170817 inspiral phase lag ΔΦ = 2310.8 rad
+    exprs.append({
+        "label": "GW170817 inspiral phase lag ΔΦ = 2310.8 rad (367.8 cycles)",
+        "code": ('M1 = 1.46 * 1.989*^30; M2 = 1.27 * 1.989*^30; '
+                 'Mc170817 = (M1 M2)^(3/5) / (M1 + M2)^(1/5); '
+                 'fGW0 = 20; fGWEnd = 300; '
+                 'DeltaPhi170817 = NIntegrate['
+                 '2 Pi (fGWEnd - fGW0) * 0.333 * Phi125THz[omSCm] / 10^20, '
+                 '{x, 0, 1}]; '
+                 '{Mc170817 / (1.989*^30), DeltaPhi170817, '
+                 'DeltaPhi170817 / (2 Pi)} // N'),
+    })
+
+    # 38. GW170817 chirp mass phonon consistency
+    exprs.append({
+        "label": "GW170817 M_chirp = 1.188 M☉ phonon consistency",
+        "code": ('Mc = 1.188 * 1.989*^30; '
+                 'DL = 40 * 3.086*^22; '
+                 'hGR = 5.4176*^-22; '
+                 'hUQFF = hGR * 0.333; '
+                 'fGW = 300; '
+                 'ratio = hUQFF / hGR; '
+                 '{Mc / (1.989*^30), hUQFF, ratio, 1 - ratio} // N'),
+    })
+
     return exprs
 
 

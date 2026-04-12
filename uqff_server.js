@@ -359,6 +359,53 @@ function handleRequest(req, res) {
         return;
     }
     
+    // POST /api/phonon/jet — Phonon-modulated jet power computation
+    if (pathname === '/api/phonon/jet' && method === 'POST') {
+        let body = '';
+        req.on('data', chunk => body += chunk);
+        req.on('end', () => {
+            try {
+                const params = JSON.parse(body);
+                const M_bh = params.M_bh || 6.5e9 * CONSTANTS.SOLAR_MASS;
+                const a_spin = params.a_spin || 0.9;
+                const B_field = params.B_field || 50;
+                const Gamma_THz = params.Gamma_THz || 0.1;
+                
+                const Gamma_rad = Gamma_THz * 2 * Math.PI * 1e12;
+                const r_S = 2 * CONSTANTS.GRAVITATIONAL_CONSTANT * M_bh / (CONSTANTS.SPEED_OF_LIGHT ** 2);
+                const r_H = r_S / 2 * (1 + Math.sqrt(Math.max(1 - a_spin ** 2, 0)));
+                const P_BZ = (B_field ** 2 / (8 * Math.PI)) * (r_H / CONSTANTS.SPEED_OF_LIGHT) ** 2 * a_spin ** 2 * CONSTANTS.SPEED_OF_LIGHT;
+                
+                const OMEGA_SCM = 2 * Math.PI * 1.25e12;
+                const GAMMA_SCM = 2 * Math.PI * 0.1e12;
+                const A_JET = 1.5;
+                const SIGMA_G = 0.08 * 2 * Math.PI * 1e12;
+                
+                const delta = Gamma_rad - GAMMA_SCM;
+                const M_jet = 1 + A_JET * Math.exp(-delta ** 2 / (2 * SIGMA_G ** 2));
+                const P_jet = P_BZ * (1 + M_jet);
+                const enhancement = P_jet / P_BZ;
+                
+                res.writeHead(200, CORS_HEADERS);
+                res.end(JSON.stringify({
+                    M_bh, a_spin, B_field, Gamma_THz,
+                    M_jet,
+                    P_BZ,
+                    P_jet,
+                    enhancement,
+                    equation: `P_jet = P_BZ * (1 + M_jet) = ${P_BZ.toExponential(6)} * (1 + ${M_jet.toFixed(4)}) = ${P_jet.toExponential(6)} W`
+                }));
+            } catch (err) {
+                res.writeHead(400, CORS_HEADERS);
+                res.end(JSON.stringify({
+                    status: 'error',
+                    error: err.message
+                }));
+            }
+        });
+        return;
+    }
+    
     // 404 for unknown routes
     res.writeHead(404, CORS_HEADERS);
     res.end(JSON.stringify({
@@ -370,7 +417,8 @@ function handleRequest(req, res) {
             'GET  /api/systems',
             'GET  /api/modules',
             'POST /api/compute',
-            'POST /api/batch'
+            'POST /api/batch',
+            'POST /api/phonon/jet'
         ]
     }));
 }

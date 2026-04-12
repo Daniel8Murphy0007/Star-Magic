@@ -374,13 +374,94 @@ class PhononModifiedBHEntropy:
 
 
 # ══════════════════════════════════════════════════════════════════════════════
-# §5  MAIN / DEMO
+# §5  BLAZAR ERGOSPHERE PHONON COUPLING  (Session 212)
+# ══════════════════════════════════════════════════════════════════════════════
+
+class BlazarErgosphereCoupling:
+    """
+    Blazar-specific ergosphere phonon coupling for BL Lac / Mrk 421 type systems.
+
+    Extends PhononErgosphereSuperradiance with relativistic Doppler boosting:
+
+        E_ergo^blazar = (a/2) M c² · Φ · S₂₆ · δ_D
+        δ_D = 1 / [Γ_bulk (1 − β cos θ)]     (Doppler factor)
+
+    Superradiant condition in blazar frame: ω_obs = ω_SCm · δ_D < Ω_H.
+    Jet-ergosphere coupling: P_ergo = E_ergo · Ω_H / (2π).
+    """
+
+    def compute(self, dataset: dict) -> Dict[str, Any]:
+        """
+        Parameters from dataset:
+          M:          BH mass (kg, default 3e8 M☉ — BL Lac type)
+          a_spin:     spin (default 0.95)
+          Gamma_bulk: bulk Lorentz factor (default 15)
+          theta_obs:  observer angle (rad, default 0.05)
+          omega:      phonon frequency (rad/s)
+          Gamma:      phonon linewidth (rad/s)
+          ssq:        [SSq]
+        """
+        M           = dataset.get('M', 3e8 * M_sun)
+        a_spin      = dataset.get('a_spin', 0.95)
+        Gamma_bulk  = dataset.get('Gamma_bulk', 15.0)
+        theta_obs   = dataset.get('theta_obs', 0.05)
+        omega       = dataset.get('omega', OMEGA_PHONON)
+        Gamma       = dataset.get('Gamma', GAMMA_PHONON)
+        ssq         = dataset.get('ssq', SSQ)
+
+        S26 = S26_accelerated(ssq)
+
+        # Doppler factor
+        beta = math.sqrt(1.0 - 1.0 / max(Gamma_bulk**2, 1.0 + 1e-50))
+        delta_D = 1.0 / (Gamma_bulk * (1.0 - beta * math.cos(theta_obs)))
+
+        # Horizon
+        r_S = 2.0 * G * M / c**2
+        r_H = r_S / 2.0 * (1.0 + math.sqrt(max(1.0 - a_spin**2, 0.0)))
+        Omega_H = a_spin * c / (2.0 * r_H)
+
+        # Doppler-shifted phonon
+        omega_obs = omega * delta_D
+        is_superradiant = omega_obs < Omega_H
+
+        # Phonon modulation
+        delta_omega = omega_obs - OMEGA_PHONON
+        gaussian = math.exp(-delta_omega**2 / (2.0 * Gamma**2))
+        Phi_norm = gaussian * S26
+
+        # Ergosphere energy extraction
+        E_ergo = (a_spin / 2.0) * M * c**2 * Phi_norm * S26 * delta_D
+        P_ergo = E_ergo * Omega_H / (2.0 * PI)
+
+        return {
+            "delta_D": delta_D,
+            "omega_obs_rad_s": omega_obs,
+            "Omega_H_rad_s": Omega_H,
+            "is_superradiant": is_superradiant,
+            "E_ergo_J": E_ergo,
+            "P_ergo_W": P_ergo,
+            "Phi_norm": Phi_norm,
+            "r_H_m": r_H,
+            "equation": (
+                "Blazar ergosphere phonon coupling:\n"
+                f"  δ_D = {delta_D:.4f}\n"
+                f"  ω_obs = {omega_obs:.6e} rad/s\n"
+                f"  Ω_H = {Omega_H:.6e} rad/s\n"
+                f"  Superradiant: {is_superradiant}\n"
+                f"  E_ergo = {E_ergo:.6e} J\n"
+                f"  P_ergo = {P_ergo:.6e} W"
+            ),
+        }
+
+
+# ══════════════════════════════════════════════════════════════════════════════
+# §6  MAIN / DEMO
 # ══════════════════════════════════════════════════════════════════════════════
 
 def main():
     """Demonstrate BH phonon interaction engine."""
     print("=" * 72)
-    print("Black Hole Phonon Interaction Engine — Session 211")
+    print("Black Hole Phonon Interaction Engine — Session 211+212")
     print("=" * 72)
 
     # §1 Ergosphere superradiance
