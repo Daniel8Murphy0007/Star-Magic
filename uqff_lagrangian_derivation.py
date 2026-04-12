@@ -1239,5 +1239,31 @@ FUBI_MASTER_BUOYANCY = {
 }
 
 
+# ── §15  F_U_Bi Inside-to-Outside + 99-System Γ Sweep Sector ─────────────
+
+FUBI_INSIDE_OUTSIDE_GAMMA = {
+    "sector": "FUBI_INSIDE_OUTSIDE_GAMMA",
+    "session": 218,
+    "equations": {
+        "F_U_Bi": "F_{U,Bi} = ρ_SCm · V · S₂₆² · |U_b|/(|U_g|+|U_b|)",
+        "g_eff_solar": "g_eff = g_N / (1 + β_i·S₂₆/(SSq·13.5)) ≈ 108 m/s²",
+        "CenA_jet": "P_jet(Γ) = (B²/8π)(r_H/c)²a²c · M_jet(Γ) [Centaurus A]",
+        "GW190425_strain": "h_UQFF = h_GR · 0.530 · (1 − 0.47·exp(0)) [47% peak suppression]",
+        "TXS0506_mod": "M_jet(Γ₀) = 1 + A_jet·exp(0) = 3.3× [TXS 0506+056]",
+        "99sys_gamma": "F_U^{(99)}(Γ) = Σ_{s=1}^{99} [U_g + U_m + U_A − U_b + F_n·S₂₆²·E_net](Γ)",
+    },
+    "layers": [
+        "L1: F_U_Bi inside-to-outside mass portion (buoyancy-dominant ratio)",
+        "L2: F_U_Bi_i outside-to-inside net acceleration (6-layer canonical)",
+        "L3: CenA / GW190425 / TXS 0506+056 numerical curves",
+        "L4: Solar calibration g_eff convergence",
+        "L5: 99-system Γ sweep aggregate at 7 linewidths",
+        "L6: Production scaling v13 20-kernel 550k calc/s benchmark",
+    ],
+    "lagrangian": "L_IO = L_FUBi + L_inside(ρ_SCm,V,ratio) − L_outside(Ug,Ub,Um,UA); δS/δφ=0 → F_{U,Bi}",
+    "note": "PAPER_989-998. Session 218. F_U_Bi inside-out + Γ sweep + 550k scaling.",
+}
+
+
 if __name__ == "__main__":
     main()

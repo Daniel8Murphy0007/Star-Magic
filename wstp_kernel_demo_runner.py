@@ -597,6 +597,37 @@ def build_demo_expressions(wl_path: str) -> List[Dict[str, str]]:
                  '{r, {6.96*^8, AU, 10 AU}}]'),
     })
 
+    # 52. F_U_Bi inside-to-outside buoyancy mass portion — Session 218
+    exprs.append({
+        "label": "F_U_Bi inside-to-outside buoyancy mass portion",
+        "code": ('G0 = 6.674*^-11; Msun = 1.989*^30; AU = 1.496*^11; SSq = 0.57; betaI = 0.603; '
+                 'kappa = 0.0005/86400; '
+                 'S26 = Sum[Exp[-SSq k/26], {k,1,26}]; '
+                 'Ug[M_, r_] := Sum[G0 M/r^2 SSq i/26, {i,1,26}]; '
+                 'Ub[M_, r_] := Sum[G0 M/r^2 Exp[-SSq i/26] betaI, {i,1,26}]; '
+                 'ratio[M_, r_] := Abs[Ub[M,r]]/(Abs[Ug[M,r]] + Abs[Ub[M,r]] + 10^-300); '
+                 'rhoSCm = 10^-10 Exp[kappa 86400]; Vregion = 10^48; '
+                 'FUBi[M_, r_] := rhoSCm Vregion S26^2 ratio[M,r]; '
+                 '{"F_U_Bi(Sun,AU)", FUBi[Msun, AU], '
+                 '"ratio", ratio[Msun, AU], '
+                 '"g_eff", G0 Msun/(6.96*^8)^2 / (1 + betaI S26/(SSq 13.5))}'),
+    })
+
+    # 53. 99-system Gamma sweep (aggregate F_U_Bi_i at 7 linewidths) — Session 218
+    exprs.append({
+        "label": "99-system Gamma sweep aggregate F_U_Bi_i",
+        "code": ('G0 = 6.674*^-11; Msun = 1.989*^30; SSq = 0.57; betaI = 0.603; '
+                 'wSCm = 2 Pi 1.25*^12; kappa = 0.0005/86400; '
+                 'S26 = Sum[Exp[-SSq k/26], {k,1,26}]; '
+                 'Ug[M_, r_] := Sum[G0 M/r^2 SSq i/26, {i,1,26}]; '
+                 'Ub[M_, r_] := Sum[G0 M/r^2 Exp[-SSq i/26] betaI, {i,1,26}]; '
+                 'FU99[G_] := Sum[With[{M = (0.1 + i 5) Msun, r = 10^9 (1 + i 0.5)}, '
+                 'Ug[M,r] + G0 M/r^2 SSq 0.1 + G0 M/r^2 10^-10 - Ub[M,r] + '
+                 '10^-10 S26^3 Exp[-(wSCm - wSCm)^2/(2 G^2)]], {i,0,19}]; '
+                 'Table[{"Gamma_THz", g, "FU99", FU99[2 Pi g 10^12]}, '
+                 '{g, {0.01, 0.05, 0.1, 0.5, 1.0, 5.0, 10.0}}]'),
+    })
+
     return exprs
 
 

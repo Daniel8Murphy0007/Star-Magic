@@ -771,6 +771,74 @@ function handleRequest(req, res) {
         return;
     }
 
+    // ── POST /api/fubi/inside-outside — F_U_Bi inside-to-outside buoyancy mass portion (Session 218)
+    if (method === 'POST' && pathname === '/api/fubi/inside-outside') {
+        let body = '';
+        req.on('data', chunk => body += chunk);
+        req.on('end', () => {
+            try {
+                const p = JSON.parse(body);
+                const M = parseFloat(p.M_kg || 1.989e30);
+                const r = parseFloat(p.r_m  || 1.496e11);
+                const r2 = Math.max(r, 1) ** 2;
+                let Ug = 0, Ub = 0;
+                for (let i = 1; i <= 26; i++) {
+                    Ug += G * M / r2 * SSq * i / 26;
+                    Ub += G * M / r2 * Math.exp(-SSq * i / 26) * betaI;
+                }
+                const ratio = Math.abs(Ub) / (Math.abs(Ug) + Math.abs(Ub) + 1e-300);
+                const rhoSCm = 1e-10 * Math.exp(Math.min(kappa * 86400, 500));
+                const Vregion = 1e48;
+                const FUBi = rhoSCm * Vregion * S26 * S26 * ratio;
+                res.writeHead(200, CORS_HEADERS);
+                res.end(JSON.stringify({
+                    status: 'ok', F_U_Bi: FUBi, ratio: ratio, Ug: Ug, Ub: Ub,
+                    rho_SCm: rhoSCm, V_region: Vregion, S26: S26, session: 218
+                }));
+            } catch (e) {
+                res.writeHead(400, CORS_HEADERS);
+                res.end(JSON.stringify({ status: 'error', error: e.message }));
+            }
+        });
+        return;
+    }
+
+    // ── POST /api/fubi/gamma-sweep — 99-system Gamma sweep (Session 218)
+    if (method === 'POST' && pathname === '/api/fubi/gamma-sweep') {
+        let body = '';
+        req.on('data', chunk => body += chunk);
+        req.on('end', () => {
+            try {
+                const p = JSON.parse(body);
+                const gammas = (p.gamma_THz_list || [0.01, 0.05, 0.1, 0.5, 1.0, 5.0, 10.0]);
+                const results = gammas.map(gTHz => {
+                    let agg = 0;
+                    for (let s = 0; s < 20; s++) {
+                        const M = (0.1 + s * 5) * Msun;
+                        const r = 1e9 * (1 + s * 0.5);
+                        const r2 = r * r;
+                        let Ug = 0, Ub = 0;
+                        for (let i = 1; i <= 26; i++) {
+                            Ug += G * M / r2 * SSq * i / 26;
+                            Ub += G * M / r2 * Math.exp(-SSq * i / 26) * betaI;
+                        }
+                        agg += Ug - Ub;
+                    }
+                    return { gamma_THz: gTHz, aggregate: agg };
+                });
+                res.writeHead(200, CORS_HEADERS);
+                res.end(JSON.stringify({
+                    status: 'ok', systems: 20, gamma_count: gammas.length,
+                    results: results, S26: S26, session: 218
+                }));
+            } catch (e) {
+                res.writeHead(400, CORS_HEADERS);
+                res.end(JSON.stringify({ status: 'error', error: e.message }));
+            }
+        });
+        return;
+    }
+
     // 404 for unknown routes
     res.writeHead(404, CORS_HEADERS);
     res.end(JSON.stringify({
@@ -792,7 +860,9 @@ function handleRequest(req, res) {
             'POST /api/ramanujan/26d',
             'POST /api/qgp/density',
             'POST /api/master/99system',
-            'POST /api/fubi/master'
+            'POST /api/fubi/master',
+            'POST /api/fubi/inside-outside',
+            'POST /api/fubi/gamma-sweep'
         ]
     }));
 }

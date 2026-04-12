@@ -64,6 +64,7 @@ Updated: Session 192 v5.48 — CP4 387→398 (#396 ACPQwaveTHzHoleUBmiCalculator
     Updated: Session 215 v5.70 — CP4 520→530 (#543–#552) PAPER_959–968; 26D Ramanujan summation S₂₆(z)=Σz^n/n²⁶·R_n^{(26)} + Triadic solutions (Compressed/Resonant/Buoyancy) + 3D MUGE magnetar sim (SCm core+vortex+phonon shells) + NS phonon GW190425 (h_UQFF, Λ_UQFF, mass-gap P(NS)/P(BH)) + production scaling v11 500k calc/s 16 kernels + REST /api/phonon/ns + /api/ramanujan/26d (13 routes); WSTP #47-48; §8 NSPhononGW190425 + §11 TRIADIC_SOLUTIONS; 968/1000 papers 96.8%)
     Updated: Session 216 v5.71 — CP4 530→540 (#553–#562) PAPER_969–978; Expanded 26D Ramanujan k-th order S₂₆^{(k)} + mock-theta correction + QGP vacuum density ρ_QGP(T) + Yang-Mills mass gap Δ_YM(T) + ALICE centrality multiplicity + color deconfinement phase diagram + 99-system compressed master equation F_U^{(99)} + triadic QGP validation + 3D MUGE galaxy cluster simulation (NFW+ICM+leapfrog) + production scaling v12 501k calc/s 18 kernels + REST /api/qgp/density + /api/master/99system (15 routes); WSTP #49-50; §12 QGP_DECONFINEMENT + §13 99_SYSTEM_COMPRESSION; 978/1000 papers 97.8%)
     Updated: Session 217 v5.72 — CP4 540→550 (#563–#572) PAPER_979–988; Complete 6-layer F_U_Bi_i master buoyancy calculator (fubi_master_calculator.py: 99-system Ug + Um + UA − Ub + Fn·S₂₆·Φ·E_net) + solar calibration (R_sun g_N=274 + 1 AU snapshot) + variational derivation (L_SCm → δS/δφ=0 → F_U_Bi_i) + Γ linewidth curves + SCm-first axiom validator (|Ub/Ug|>0.5 at 25.4μm) + 99-system aggregate + production kernel_fu_bi_i_complete + BCS-spectral ladder coupling in master + REST /api/fubi/master (16 routes); WSTP #51; §14 FUBI_MASTER_BUOYANCY; 988/1000 papers 98.8%)
+    Updated: Session 218 v5.73 — CP4 550→560 (#573–#582) PAPER_989–998; F_U_Bi inside-to-outside buoyancy mass portion (fubi_inside_outside.py: ρ_SCm·V·S₂₆²·ratio, ratio=|Ub|/(|Ug|+|Ub|)) + F_U_Bi vs F_U_Bi_i distinction (direction sign, magnitude, dimensionality) + Centaurus A AGN F_U_Bi_i curves (M_BH=5.5e7 M☉, 7-Γ sweep, jet modulation) + GW190425 NS merger (47% peak strain suppression, d=159 Mpc) + TXS 0506+056 blazar jet (3.3× peak mod, spin 0.95) + solar calibration g_eff=g_N/(1+β_i·S₂₆/(SSq·13.5))≈108 m/s² + 99-system WSTP Γ sweep (7 linewidths, WL code gen) + WSTP Γ sweep runner + production scaling v13 20 kernels 550k calc/s + REST /api/fubi/inside-outside + /api/fubi/gamma-sweep (18 routes); WSTP #52-53; §15 FUBI_INSIDE_OUTSIDE_GAMMA; 998/1000 papers 99.8%)
 
 Architecture Compliance (MANDATORY):
   - PURE PHYSICS CALCULATOR — no hardcoded astronomical data
@@ -40554,4 +40555,19 @@ _SESSION_217_CLASSES = [
     'BCSSpectralLadderMasterCouplingCalc',                            # PAPER_986 #570
     'WSTPFUBiSymbolicExportCalc',                                    # PAPER_987 #571
     'RESTFUBiEndpointCalc',                                          # PAPER_988 #572
+]
+
+# ── Session 218 classes (CP4 550→560) ──────────────────────────────────────
+
+_SESSION_218_CLASSES = [
+    'FUBiInsideOutsideMassCalc',                                     # PAPER_989 #573
+    'FUBiDistinctionDirectionCalc',                                  # PAPER_990 #574
+    'CentaurusAFUBiCurvesCalc',                                      # PAPER_991 #575
+    'GW190425FUBiStrainCalc',                                        # PAPER_992 #576
+    'TXS0506FUBiJetModCalc',                                         # PAPER_993 #577
+    'SolarCalibration147EffCalc',                                    # PAPER_994 #578
+    'NinetyNineSystemGammaSweepCalc',                                # PAPER_995 #579
+    'WSTPGammaSweepRunnerCalc',                                      # PAPER_996 #580
+    'ProductionScalingV13BenchmarkCalc',                              # PAPER_997 #581
+    'RESTFUBiGammaSweepEndpointCalc',                                # PAPER_998 #582
 ]
