@@ -553,6 +553,73 @@ function handleRequest(req, res) {
         return;
     }
 
+    // POST /api/phonon/ns — NS phonon effects for GW190425
+    if (method === 'POST' && url === '/api/phonon/ns') {
+        let body = '';
+        req.on('data', c => body += c);
+        req.on('end', () => {
+            try {
+                const p = JSON.parse(body || '{}');
+                const gammaTHz = parseFloat(p.Gamma_THz || 0.10);
+                const hGR = parseFloat(p.h_GR || 1e-21);
+                const LambdaGR = parseFloat(p.Lambda_GR || 400);
+
+                const OMEGA_SCM = 2 * Math.PI * 1.25e12;
+                const S26 = (() => { let s = 0; for (let k = 1; k <= 26; k++) s += Math.exp(-0.57 * k / 26); return s; })();
+                const gamma = 2 * Math.PI * gammaTHz * 1e12;
+                const phi = Math.exp(0) * S26;  // on-resonance
+                const F_UBI = 0.6;
+                const hUQFF = hGR * 0.5297;
+                const lambdaRatio = 1 - F_UBI * phi;
+                const LambdaUQFF = LambdaGR * (1 + F_UBI * phi * 0.1);
+                const P_NS = 0.5 - 0.01 * phi;
+
+                res.writeHead(200, CORS_HEADERS);
+                res.end(JSON.stringify({
+                    status: 'ok', Gamma_THz: gammaTHz,
+                    h_UQFF: hUQFF, strain_reduction_pct: 47.03,
+                    lambda_ratio: lambdaRatio, Lambda_UQFF: LambdaUQFF,
+                    P_NS, P_BH: 1 - P_NS, session: 215
+                }));
+            } catch (e) {
+                res.writeHead(400, CORS_HEADERS);
+                res.end(JSON.stringify({ status: 'error', error: e.message }));
+            }
+        });
+        return;
+    }
+
+    // POST /api/ramanujan/26d — 26D Ramanujan summation S_26(z)
+    if (method === 'POST' && url === '/api/ramanujan/26d') {
+        let body = '';
+        req.on('data', c => body += c);
+        req.on('end', () => {
+            try {
+                const p = JSON.parse(body || '{}');
+                const z = parseFloat(p.z || 0.57);
+                const N = parseInt(p.N || 50);
+
+                let S = 0;
+                for (let n = 1; n <= N; n++) {
+                    // Simplified R_n for REST performance
+                    let Rn = 1;
+                    for (let f = 2; f <= Math.min(n, 20); f++) Rn /= f;
+                    S += Math.pow(z, n) / Math.pow(n, 26) * Rn;
+                }
+
+                res.writeHead(200, CORS_HEADERS);
+                res.end(JSON.stringify({
+                    status: 'ok', z, N,
+                    S_26: S, session: 215
+                }));
+            } catch (e) {
+                res.writeHead(400, CORS_HEADERS);
+                res.end(JSON.stringify({ status: 'error', error: e.message }));
+            }
+        });
+        return;
+    }
+
     // 404 for unknown routes
     res.writeHead(404, CORS_HEADERS);
     res.end(JSON.stringify({
@@ -569,7 +636,9 @@ function handleRequest(req, res) {
             'POST /api/phonon/jet/cena',
             'POST /api/phonon/jet/txs0506',
             'POST /api/phonon/bcs',
-            'POST /api/phonon/spectral-ladder'
+            'POST /api/phonon/spectral-ladder',
+            'POST /api/phonon/ns',
+            'POST /api/ramanujan/26d'
         ]
     }));
 }

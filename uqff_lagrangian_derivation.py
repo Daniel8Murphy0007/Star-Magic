@@ -1136,5 +1136,41 @@ COOPER_PAIR_LAGRANGIAN = {
 }
 
 
+# ── §11  Triadic Solutions (Compressed / Resonant / Buoyancy) ──────────────
+#     Session 215: Next Triadic solutions applied to phonon/jet/NS
+
+TRIADIC_SOLUTIONS = {
+    "sector": "Triadic (Compressed / Resonant / Buoyancy)",
+    "session": 215,
+    "description": "Three UQFF operational modes converging on SCm phonon resonance",
+
+    "compressed_gravity": {
+        "equation": "F_compressed(Γ) = F_{U,Bi}/F_U · exp(-(ω-ω_SCm)²/2Γ²) · S₂₆ · A_jet",
+        "application": "Jet collimation in AGN — sharper Γ → tighter knots",
+        "note": "Drives CenA/TXS0506 jet power modulation",
+    },
+
+    "resonant_gravity": {
+        "equation": "Φ(ω,Γ) = Φ_0 · exp(-(ω-ω_SCm)²/2Γ²) · S₂₆([SSq])",
+        "application": "1.25 THz phonon linewidth tunes neutron-drop and buoyancy reversal",
+        "neutron_drop": "Triggered when Φ > Φ_crit (drip-line shift threshold)",
+        "note": "Controls NS merger dynamics in GW190425/GW170817",
+    },
+
+    "buoyancy_gravity": {
+        "equation": "E_net(t,Γ) = S₂₆ · cos(ω_SCm·t) · exp(-Γ·t) - threshold",
+        "positive": "Expansion (nebulae, HII regions)",
+        "negative": "Erosion (filaments, pillars, cometary knots)",
+        "note": "Sign-flip dynamics drive morphological transitions",
+    },
+
+    "convergence": {
+        "statement": "All three modes converge on SCm phonon resonance at ω_SCm = 2π × 1.25 THz",
+        "S26": "S₂₆([SSq]) = Li_{26}(0.57) with Ramanujan acceleration R_n^{(26)}",
+        "note": "Unified by 26D Ramanujan summation",
+    },
+}
+
+
 if __name__ == "__main__":
     main()

@@ -1189,6 +1189,76 @@ class SpectralLadderPhononMapping:
         }
 
 
+# ── §8  NS Phonon Effects for GW190425 ─────────────────────────────────────
+
+class NSPhononGW190425:
+    """Neutron star phonon effects for GW190425 (mass-gap BNS).
+
+    h_UQFF(t) = h_GR(t) · 0.5297 · exp([SSq]·t/26)
+    λ_UQFF = λ_GR · (1 - F_{UBi}/F_U · Φ_{1.25THz}(ω,Γ))
+    Tidal deformability Λ_UQFF = Λ_GR · (1 + δΛ_phonon)
+    Session 215.
+    """
+
+    HBAR = 1.055e-34
+    OMEGA_SCM = 2 * math.pi * 1.25e12
+    S26 = sum(math.exp(-0.57 * k / 26.0) for k in range(1, 27))
+    F_UBI_RATIO = 0.6
+    STRAIN_FACTOR = 0.5297
+
+    def h_uqff(self, t: float, h_gr: float) -> float:
+        """Phonon-corrected GW strain."""
+        return h_gr * self.STRAIN_FACTOR * math.exp(0.57 * t / 26)
+
+    def phi_phonon(self, omega: float, gamma_THz: float) -> float:
+        gamma = 2 * math.pi * gamma_THz * 1e12
+        return math.exp(-(omega - self.OMEGA_SCM)**2 / (2 * gamma**2)) * self.S26
+
+    def lambda_uqff(self, lambda_gr: float, gamma_THz: float) -> float:
+        """Phonon-corrected wavelength / tidal deformability."""
+        phi = self.phi_phonon(self.OMEGA_SCM, gamma_THz)
+        return lambda_gr * (1 - self.F_UBI_RATIO * phi)
+
+    def tidal_deformability_correction(self, Lambda_gr: float, gamma_THz: float) -> float:
+        """Tidal deformability Λ_UQFF = Λ_GR · (1 + δΛ)."""
+        phi = self.phi_phonon(self.OMEGA_SCM, gamma_THz)
+        delta_Lambda = self.F_UBI_RATIO * phi * 0.1  # 10% maximal correction
+        return Lambda_gr * (1 + delta_Lambda)
+
+    def mass_gap_probability(self, gamma_THz: float) -> dict:
+        """P(NS) vs P(BH) for mass-gap component."""
+        phi = self.phi_phonon(self.OMEGA_SCM, gamma_THz)
+        p_ns = 0.5 - 0.01 * phi
+        return {"P_NS": p_ns, "P_BH": 1 - p_ns}
+
+    def compute(self, dataset: dict) -> dict:
+        gamma_THz = float(dataset.get("Gamma_THz", 0.10))
+        h_gr = float(dataset.get("h_GR", 1e-21))
+        Lambda_gr = float(dataset.get("Lambda_GR", 400.0))
+
+        h_corr = self.h_uqff(0, h_gr)
+        lam = self.lambda_uqff(1.0, gamma_THz)
+        Lambda = self.tidal_deformability_correction(Lambda_gr, gamma_THz)
+        probs = self.mass_gap_probability(gamma_THz)
+        reduction = (1 - self.STRAIN_FACTOR) * 100
+
+        return {
+            "Gamma_THz": gamma_THz,
+            "h_UQFF_at_t0": h_corr,
+            "strain_reduction_pct": reduction,
+            "lambda_ratio": lam,
+            "Lambda_UQFF": Lambda,
+            "mass_gap": probs,
+            "primary_equations": [
+                "h_UQFF(t) = h_GR(t)·0.5297·exp([SSq]·t/26)",
+                f"Strain reduction: {reduction:.1f}%",
+                f"λ_UQFF/λ_GR = {lam:.6f}",
+                f"Λ_UQFF = {Lambda:.1f}",
+                f"P(NS) = {probs['P_NS']:.1%}, P(BH) = {probs['P_BH']:.1%}",
+            ],
+        }
+
+
 if __name__ == "__main__":
     import sys
     success = _run_tests()

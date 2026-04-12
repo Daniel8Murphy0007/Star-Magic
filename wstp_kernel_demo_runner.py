@@ -535,6 +535,26 @@ def build_demo_expressions(wl_path: str) -> List[Dict[str, str]]:
                  '{t, 0, 5*^-12, 0.1*^-12}]'),
     })
 
+    # ── 26D Ramanujan Summation + Triadic Solver + NS Phonon GW190425 (Session 215)
+
+    # 47. 26D Ramanujan summation S_26(z) with R_n^{(26)}
+    exprs.append({
+        "label": "26D Ramanujan summation S_26(z) with acceleration",
+        "code": ('Rn[n_, d_] := 1/n! (1 + 1/n^d Sum[(-1)^(k+1) Binomial[d,k] (d-k)!/n^k, {k,1,d}]); '
+                 'S26[z_, N_] := Sum[z^n/n^26 Rn[n,26], {n,1,N}]; '
+                 'Table[{N, S26[0.57, N]}, {N, 5, 50, 5}]'),
+    })
+
+    # 48. NS phonon GW190425 strain correction h_UQFF(t)
+    exprs.append({
+        "label": "NS phonon GW190425 h_UQFF strain correction",
+        "code": ('wSCm = 2 Pi * 1.25*^12; S26 = Sum[Exp[-0.57 k/26], {k, 1, 26}]; '
+                 'Phi[w_, G_] := Exp[-(w - wSCm)^2/(2 G^2)] * S26; '
+                 'hUQFF[t_, hGR_] := hGR * 0.5297 * Exp[0.57 t/26]; '
+                 'lamUQFF[lamGR_, G_] := lamGR * (1 - 0.6 * Phi[wSCm, G]); '
+                 'Table[{G, lamUQFF[1, 2 Pi G*^12]}, {G, 0.01, 0.5, 0.05}]'),
+    })
+
     return exprs
 
 

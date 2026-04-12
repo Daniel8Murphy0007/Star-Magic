@@ -12,7 +12,7 @@ Source: gok_share_31b5c807a4.txt — Supplemental gap analysis
          Phillips 1995 rotor, BSM ALICE/NOMAD/DELPHI, PLCK/ASKAP/TOI systems)
 Extraction: 17 unique calculators (PAPER_355–370) not present in CP1, CP2, or CP3
 Author: Daniel T. Murphy — Star Magic / UQFF Framework
-Version: 5.69 (2026-04-12)
+Version: 5.70 (2026-04-12)
 Updated: Session 115 — v4.72 QS=5 content quality enrichment; no new CP4 classes; CP4=73 classes
 Updated: Session 116 — v4.77 CP4 73→75 (#74 UQFF29SystemCrossValidationMatrixCalculator + #75 Session112GrokC020496d9ExhaustiveAuditHubCalculator)
 Updated: Session 117 — v4.79 CP4 75→77 (#76 UmCompleteSSqVacuumThermalDampingCalculator + #77 Session113GrokC020496d9ReAnalysisHubCalculator)
@@ -61,6 +61,7 @@ Updated: Session 192 v5.48 — CP4 387→398 (#396 ACPQwaveTHzHoleUBmiCalculator
     Updated: Session 212 v5.67 — CP4 492→500 (#515–#522) PAPER_931–938; Linewidth gap implementation: SCm phonon linewidth Γ exploration (E_net/F_neutron/reversal/classifier) + blazar jet phonon coupling (BL Lac/Mrk 421 ergosphere/VHE/neutrino) + extended AGN 3-point curves (3C273: 3.1/2.4/1.5× TON618: 3.8/2.9/1.7×) + GW170817 phonon strain D=0.333 + tidal deformability Λ_UQFF∈[190,600] + phase lag 2310.8 rad + production scaling v8 350k calc/s + REST /api/phonon/jet; 5 new modules; WSTP #33-38; 938/1000 papers 93.8%)
     Updated: Session 213 v5.68 — CP4 500→510 (#523–#532) PAPER_939–948; CenA/TXS0506 blazar jet curves (2.6/2.1/1.4× and 2.9/2.3/1.6×) + linewidth jet modulation (Γ→collimation/sharpness/power) + SMBH binary mergers (P_merger(Γ), δS/δφ=0, 47-66.7% damping, 200-400 cycles) + GW190425 mass-gap classifier (m1=2.52, P(NS)=49%/P(BH)=51%) + production scaling v9 400k calc/s + REST /api/phonon/jet/cena + /txs0506; WSTP #39-42; 948/1000 papers 94.8%)
     Updated: Session 214 v5.69 — CP4 510→520 (#533–#542) PAPER_949–958; BCS superconductivity in UQFF/SCm (Δ=(ℏω_SCm/2)tanh·S₂₆, T_c, Cooper pairs) + 26-state HRes spectral ladder (E_n=(2π)^{n/3}·S₂₆ + Ramanujan acceleration) + E(t) linewidth sign-flip dynamics + Cooper-pair Lagrangian δS/δφ_pair=0 + production scaling v10 450k calc/s + REST /api/phonon/bcs + /spectral-ladder; WSTP #43-46; 958/1000 papers 95.8%)
+    Updated: Session 215 v5.70 — CP4 520→530 (#543–#552) PAPER_959–968; 26D Ramanujan summation S₂₆(z)=Σz^n/n²⁶·R_n^{(26)} + Triadic solutions (Compressed/Resonant/Buoyancy) + 3D MUGE magnetar sim (SCm core+vortex+phonon shells) + NS phonon GW190425 (h_UQFF, Λ_UQFF, mass-gap P(NS)/P(BH)) + production scaling v11 500k calc/s 16 kernels + REST /api/phonon/ns + /api/ramanujan/26d (13 routes); WSTP #47-48; §8 NSPhononGW190425 + §11 TRIADIC_SOLUTIONS; 968/1000 papers 96.8%)
 
 Architecture Compliance (MANDATORY):
   - PURE PHYSICS CALCULATOR — no hardcoded astronomical data
@@ -39801,6 +39802,21 @@ _SESSION_214_CLASSES = [
     'SpectralLadderPhononMappingCalc',                             # PAPER_956 #540
     'CooperPairLagrangianCalc',                                    # PAPER_957 #541
     'ProductionScalingV10BenchmarkCalc',                           # PAPER_958 #542
+]
+
+# ── Session 215 classes (CP4 520→530) ──────────────────────────────────────
+
+_SESSION_215_CLASSES = [
+    'Ramanujan26DSummationCalc',                                    # PAPER_959 #543
+    'VDSPolylog26Calc',                                             # PAPER_960 #544
+    'CompressedGravityTriadicCalc',                                  # PAPER_961 #545
+    'ResonantGravityTriadicCalc',                                    # PAPER_962 #546
+    'BuoyancyGravityTriadicCalc',                                    # PAPER_963 #547
+    'MUGEMagnetar3DSimCalc',                                        # PAPER_964 #548
+    'NSPhononGW190425Calc',                                          # PAPER_965 #549
+    'TriadicSolverNextCalc',                                         # PAPER_966 #550
+    'NSPhononTidalDeformabilityCalc',                                # PAPER_967 #551
+    'ProductionScalingV11BenchmarkCalc',                              # PAPER_968 #552
 ]
 
 
