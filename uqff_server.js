@@ -839,6 +839,100 @@ function handleRequest(req, res) {
         return;
     }
 
+    // ── POST /api/fubi/agn-merger — AGN merger F_U_Bi with S₂₆⁽³⁾ (Session 219)
+    if (method === 'POST' && pathname === '/api/fubi/agn-merger') {
+        let body = '';
+        req.on('data', chunk => body += chunk);
+        req.on('end', () => {
+            try {
+                const p = JSON.parse(body);
+                const M_Msun = p.M_bh_Msun || 5.5e7;
+                const a = p.a_spin || 0.70;
+                const M = M_Msun * Msun;
+                const rS = 2 * G * M / (c * c);
+                const rH = rS / 2 * (1 + Math.sqrt(Math.max(1 - a * a, 0)));
+                const r2 = rH * rH;
+                let Ug = 0, Ub = 0;
+                for (let i = 1; i <= 26; i++) {
+                    Ug += G * M / r2 * SSq * i / 26;
+                    Ub += G * M / r2 * Math.exp(-SSq * i / 26) * betaI;
+                }
+                const ratio = Math.abs(Ub) / (Math.abs(Ug) + Math.abs(Ub) + 1e-300);
+                const rho = 1e-10 * Math.exp(kappa * 86400);
+                const V = (4 / 3) * Math.PI * Math.pow(rH, 3);
+                // S₂₆⁽³⁾ inline
+                let S26_3rd = 0;
+                for (let n = 1; n <= 26; n++) {
+                    let Rn = 0;
+                    for (let j = 0; j < 3; j++) {
+                        const sign = Math.pow(-1, j);
+                        let binom = 1;
+                        for (let m = 0; m < j; m++) binom *= (2 - m) / (m + 1);
+                        let fact = 1;
+                        for (let f = 2; f <= Math.min(n + j, 170); f++) fact *= f;
+                        Rn += sign * binom / fact;
+                    }
+                    S26_3rd += Math.pow(SSq, n) / Math.pow(n, 26) * Rn;
+                }
+                const F_U_Bi = rho * V * S26_3rd * S26_3rd * ratio;
+                res.writeHead(200, CORS_HEADERS);
+                res.end(JSON.stringify({
+                    status: 'ok', M_bh_Msun: M_Msun, a_spin: a,
+                    rH_m: rH, F_U_Bi: F_U_Bi, S26_3rd: S26_3rd,
+                    Ug: Ug, Ub: Ub, ratio: ratio, session: 219
+                }));
+            } catch (e) {
+                res.writeHead(400, CORS_HEADERS);
+                res.end(JSON.stringify({ status: 'error', error: e.message }));
+            }
+        });
+        return;
+    }
+
+    // ── POST /api/qgp/scm-dynamics — QGP SCm phonon dynamics (Session 219)
+    if (method === 'POST' && pathname === '/api/qgp/scm-dynamics') {
+        let body = '';
+        req.on('data', chunk => body += chunk);
+        req.on('end', () => {
+            try {
+                const p = JSON.parse(body);
+                const T_K = p.T_K || 2e12;
+                const Tc = 1.5e12;
+                // S₂₆⁽³⁾
+                let S26_3rd = 0;
+                for (let n = 1; n <= 26; n++) {
+                    let Rn = 0;
+                    for (let j = 0; j < 3; j++) {
+                        const sign = Math.pow(-1, j);
+                        let binom = 1;
+                        for (let m = 0; m < j; m++) binom *= (2 - m) / (m + 1);
+                        let fact = 1;
+                        for (let f = 2; f <= Math.min(n + j, 170); f++) fact *= f;
+                        Rn += sign * binom / fact;
+                    }
+                    S26_3rd += Math.pow(SSq, n) / Math.pow(n, 26) * Rn;
+                }
+                let rho_QGP = 0;
+                if (T_K > Tc) {
+                    const rho_SCm = 1e-10 * Math.exp(kappa * 86400);
+                    const Phi = S26_3rd * Math.exp(-Math.pow(T_K - Tc, 2) / (2 * Math.pow(0.1 * Tc, 2)));
+                    rho_QGP = rho_SCm * S26_3rd * Math.exp(-(Tc - T_K) / T_K) * Phi;
+                }
+                const phase = T_K > Tc ? 'QGP' : 'hadron';
+                res.writeHead(200, CORS_HEADERS);
+                res.end(JSON.stringify({
+                    status: 'ok', T_K: T_K, T_c: Tc,
+                    rho_QGP: rho_QGP, phase: phase,
+                    S26_3rd: S26_3rd, session: 219
+                }));
+            } catch (e) {
+                res.writeHead(400, CORS_HEADERS);
+                res.end(JSON.stringify({ status: 'error', error: e.message }));
+            }
+        });
+        return;
+    }
+
     // 404 for unknown routes
     res.writeHead(404, CORS_HEADERS);
     res.end(JSON.stringify({
@@ -862,7 +956,9 @@ function handleRequest(req, res) {
             'POST /api/master/99system',
             'POST /api/fubi/master',
             'POST /api/fubi/inside-outside',
-            'POST /api/fubi/gamma-sweep'
+            'POST /api/fubi/gamma-sweep',
+            'POST /api/fubi/agn-merger',
+            'POST /api/qgp/scm-dynamics'
         ]
     }));
 }

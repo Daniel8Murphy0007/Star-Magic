@@ -628,6 +628,34 @@ def build_demo_expressions(wl_path: str) -> List[Dict[str, str]]:
                  '{g, {0.01, 0.05, 0.1, 0.5, 1.0, 5.0, 10.0}}]'),
     })
 
+    # 54. AGN merger F_U_Bi with S₂₆⁽³⁾ (3rd-order Ramanujan) — Session 219
+    exprs.append({
+        "label": "AGN merger F_U_Bi with S26_3rd Ramanujan",
+        "code": ('G0 = 6.674*^-11; Msun = 1.989*^30; SSq = 0.57; betaI = 0.603; '
+                 'Rn3[n_] := Sum[(-1)^j Binomial[2,j]/(n+j)!, {j,0,2}]; '
+                 'S263 = Sum[(SSq^n)/n^26 Rn3[n], {n,1,26}]; '
+                 'M = 5.5*^7 Msun; a = 0.70; rS = 2 G0 M/(2.998*^8)^2; '
+                 'rH = rS/2 (1 + Sqrt[1 - a^2]); r2 = rH^2; '
+                 'Ug = Sum[G0 M/r2 SSq i/26, {i,1,26}]; '
+                 'Ub = Sum[G0 M/r2 Exp[-SSq i/26] betaI, {i,1,26}]; '
+                 'ratio = Abs[Ub]/(Abs[Ug] + Abs[Ub]); '
+                 'rho = 10^-10 Exp[0.0005]; V = 4/3 Pi rH^3; '
+                 '{"F_U_Bi_AGN", rho V S263^2 ratio, "S26_3rd", S263}'),
+    })
+
+    # 55. QGP vacuum density with SCm phonon coupling — Session 219
+    exprs.append({
+        "label": "QGP vacuum density rho_QGP with S26_3rd",
+        "code": ('SSq = 0.57; betaI = 0.603; Tc = 1.5*^12; '
+                 'Rn3[n_] := Sum[(-1)^j Binomial[2,j]/(n+j)!, {j,0,2}]; '
+                 'S263 = Sum[(SSq^n)/n^26 Rn3[n], {n,1,26}]; '
+                 'rhoSCm = 10^-10 Exp[0.0005]; '
+                 'rhoQGP[T_] := If[T <= Tc, 0, rhoSCm S263 Exp[-(Tc-T)/T] '
+                 'S263 Exp[-(T-Tc)^2/(2 (0.1 Tc)^2)]]; '
+                 'Table[{"T_K", T, "rho_QGP", rhoQGP[T]}, '
+                 '{T, {10^6, 10^12, 1.5*^12, 2*^12, 5*^12, 10^13}}]'),
+    })
+
     return exprs
 
 

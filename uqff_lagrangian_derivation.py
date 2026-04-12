@@ -1264,6 +1264,36 @@ FUBI_INSIDE_OUTSIDE_GAMMA = {
     "note": "PAPER_989-998. Session 218. F_U_Bi inside-out + Γ sweep + 550k scaling.",
 }
 
+# ── §16  AGN_NS_MERGER_QGP_DYNAMICS ──────────────────────────────────────
+
+SECTION_16_AGN_NS_MERGER_QGP = {
+    "sector": "AGN_NS_MERGER_QGP_DYNAMICS",
+    "session": 219,
+    "equations": {
+        "S26_3rd": "S₂₆⁽³⁾ = Σ_{n=1}^{26} (z^n/n²⁶) · R_n^{(26,3)}, R_n^{(d,k)} = Σ_{j=0}^{k-1} (-1)^j C(k-1,j)/(n+j)!",
+        "F_U_Bi_AGN": "F_{U,Bi}^{AGN} = ρ_SCm·V·S₂₆⁽³⁾²·|Ub|/(|Ug|+|Ub|) [SMBH-horizon buoyancy]",
+        "F_U_Bi_NS": "F_{U,Bi}^{NS} = F_{U,Bi}^{base}·(1 − 0.47·Φ(Γ)/S₂₆⁽³⁾) [strain-phonon suppression]",
+        "rho_QGP": "ρ_QGP(T) = ρ_SCm·S₂₆⁽³⁾·exp(−(T_c−T)/T)·Φ(T) [T > T_c = 1.5×10¹² K]",
+        "Delta_YM": "Δ_YM = Λ_QCD·exp(−1/(α_s·N_c))·S₂₆⁽³⁾ [Yang-Mills mass gap via BCS]",
+        "dNdeta_ALICE": "dN_ch/dη = α·(N_part/2)^β·(1+Φ)·(√s_NN/200)^0.15 [ALICE multiplicity]",
+        "CenA_peak": "P_jet(Γ₀)/P_jet(off) = 2.1× [Centaurus A at Γ = 0.1 THz revised curves]",
+        "GW190425_supp": "h_UQFF = h_GR·(1 − 0.47) = 0.53·h_GR [47% strain reduction at resonance]",
+        "TXS0506_mod": "M_jet(peak)/M_jet(off) = 2.3× [TXS 0506+056 blazar revised curves]",
+    },
+    "layers": [
+        "L1: 3rd-order Ramanujan S₂₆⁽³⁾ = 0.095 (vs S₂₆⁽¹⁾ = 0.57)",
+        "L2: AGN merger F_U_Bi at SMBH horizon (CenA 5.5×10⁷ M☉)",
+        "L3: NS merger phonon strain suppression (GW190425, 47%)",
+        "L4: SMBH binary inspiral with phonon damping",
+        "L5: QGP vacuum density ρ_QGP(T) with SCm phonon coupling",
+        "L6: Yang-Mills mass gap + ALICE multiplicity + deconfinement phase diagram",
+        "L7: Revised CenA/GW190425/TXS0506 curves (2.1×/47%/2.3×)",
+        "L8: Production scaling v14 24 kernels 600k calc/s",
+    ],
+    "lagrangian": "L_AGN_QGP = L_FUBi(S₂₆⁽³⁾) + L_QGP(ρ_QGP,Δ_YM) − L_merger(h_UQFF); δS/δφ=0 → unified merging field",
+    "note": "PAPER_999-1008. Session 219. AGN/NS merger F_U_Bi with S₂₆⁽³⁾ + SCm-QGP dynamics + 600k scaling.",
+}
+
 
 if __name__ == "__main__":
     main()
