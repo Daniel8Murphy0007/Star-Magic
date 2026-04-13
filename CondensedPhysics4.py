@@ -66,6 +66,7 @@ Updated: Session 192 v5.48 — CP4 387→398 (#396 ACPQwaveTHzHoleUBmiCalculator
     Updated: Session 217 v5.72 — CP4 540→550 (#563–#572) PAPER_979–988; Complete 6-layer F_U_Bi_i master buoyancy calculator (fubi_master_calculator.py: 99-system Ug + Um + UA − Ub + Fn·S₂₆·Φ·E_net) + solar calibration (R_sun g_N=274 + 1 AU snapshot) + variational derivation (L_SCm → δS/δφ=0 → F_U_Bi_i) + Γ linewidth curves + SCm-first axiom validator (|Ub/Ug|>0.5 at 25.4μm) + 99-system aggregate + production kernel_fu_bi_i_complete + BCS-spectral ladder coupling in master + REST /api/fubi/master (16 routes); WSTP #51; §14 FUBI_MASTER_BUOYANCY; 988/1000 papers 98.8%)
     Updated: Session 218 v5.73 — CP4 550→560 (#573–#582) PAPER_989–998; F_U_Bi inside-to-outside buoyancy mass portion (fubi_inside_outside.py: ρ_SCm·V·S₂₆²·ratio, ratio=|Ub|/(|Ug|+|Ub|)) + F_U_Bi vs F_U_Bi_i distinction (direction sign, magnitude, dimensionality) + Centaurus A AGN F_U_Bi_i curves (M_BH=5.5e7 M☉, 7-Γ sweep, jet modulation) + GW190425 NS merger (47% peak strain suppression, d=159 Mpc) + TXS 0506+056 blazar jet (3.3× peak mod, spin 0.95) + solar calibration g_eff=g_N/(1+β_i·S₂₆/(SSq·13.5))≈108 m/s² + 99-system WSTP Γ sweep (7 linewidths, WL code gen) + WSTP Γ sweep runner + production scaling v13 20 kernels 550k calc/s + REST /api/fubi/inside-outside + /api/fubi/gamma-sweep (18 routes); WSTP #52-53; §15 FUBI_INSIDE_OUTSIDE_GAMMA; 998/1000 papers 99.8%)
     Updated: Session 219 v5.74 — CP4 560→570 (#583–#592) PAPER_999–1008; AGN/NS merger F_U_Bi with 3rd-order Ramanujan S₂₆⁽³⁾=0.095 (fubi_agn_ns_mergers.py: ρ_SCm·V·S₂₆⁽³⁾²·ratio at SMBH horizon) + NS merger strain suppression (47% with BCS gap + tidal correction) + SMBH binary inspiral phonon damping + AGN accretion buoyancy-corrected Eddington luminosity + spectral ladder merger coupling + SCm-QGP phonon dynamics (scm_qgp_dynamics.py: ρ_QGP(T)=ρ_SCm·S₂₆⁽³⁾·exp(-(T_c-T)/T)·Φ) + Yang-Mills mass gap Δ_YM via SCm BCS + ALICE multiplicity SCm scaling + deconfinement phase diagram + revised CenA/GW190425/TXS0506 curves (2.1×/47%/2.3× with S₂₆⁽³⁾) + wormhole geodesic BSFG batch + production scaling v14 24 kernels 600k calc/s + REST /api/fubi/agn-merger + /api/qgp/scm-dynamics (20 routes); WSTP #54-55; §16 AGN_NS_MERGER_QGP_DYNAMICS; 1008/1000 papers 100.8%)
+    Updated: Session 220 v5.75 — CP4 570→580 (#593–#602) PAPER_1009–1018; 3C273 AGN F_U_Bi_i 3.1× + TON618 3.8× (fubi_i_curves_agn_ns_qgp.py) + GW170817 66.7% strain reduction 367.8-cycle phase lag + GW190425 upgraded S₂₆⁽³⁾ + QGP ALICE 4-centrality + SMBH merger F_U_Bi inspiral/coalescence/ringdown (fubi_smbh_mergers.py) + SCm DM halos NFW rotation curve flattening 0.891 (scm_dm_halos.py) + TXS0506 3-Γ profile 2.9×/2.3×/1.6× (fubi_i_txs0506_revised.py) + 99-system WSTP v1 8-Γ (99system_wstp_gamma_upgraded.py) + production scaling v15 30 kernels 650k calc/s + REST /api/fubi/smbh-merger + /api/dm/halo-nfw (22 routes); WSTP #56-57; §17 AGN_NS_QGP_SMBH_DM_HALO; 1018 papers)
 
 Architecture Compliance (MANDATORY):
   - PURE PHYSICS CALCULATOR — no hardcoded astronomical data
@@ -40586,4 +40587,19 @@ _SESSION_219_CLASSES = [
     'ALICEMultiplicityCalc',                                         # PAPER_1006 #590
     'DeconfinementPhaseDiagramCalc',                                 # PAPER_1007 #591
     'ProductionScalingV14BenchmarkCalc',                              # PAPER_1008 #592
+]
+
+# ── Session 220 classes (CP4 570→580) ──────────────────────────────────────
+
+_SESSION_220_CLASSES = [
+    'ThreeCTwoSevenThreeAGNCurvesCalc',                              # PAPER_1009 #593
+    'TON618AGNCurvesCalc',                                           # PAPER_1010 #594
+    'GW170817MergerCurvesCalc',                                      # PAPER_1011 #595
+    'GW190425UpgradedCurvesCalc',                                    # PAPER_1012 #596
+    'QGPALICECentralityCurvesCalc',                                  # PAPER_1013 #597
+    'SMBHMergerFUBiDedicatedCalc',                                   # PAPER_1014 #598
+    'SCmDMHaloNFWCalc',                                              # PAPER_1015 #599
+    'TXS0506ThreeGammaProfileCalc',                                  # PAPER_1016 #600
+    'NinetyNineSystemGammaSweepV1Calc',                              # PAPER_1017 #601
+    'ProductionScalingV15BenchmarkCalc',                              # PAPER_1018 #602
 ]

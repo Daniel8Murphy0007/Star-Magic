@@ -656,6 +656,41 @@ def build_demo_expressions(wl_path: str) -> List[Dict[str, str]]:
                  '{T, {10^6, 10^12, 1.5*^12, 2*^12, 5*^12, 10^13}}]'),
     })
 
+    # ── 3C273/TON618 AGN + DM Halo NFW (Session 220) ──
+
+    # 56. 3C273 + TON618 AGN F_U_Bi_i jet modulation curves
+    exprs.append({
+        "label": "3C273+TON618 AGN F_U_Bi_i jet modulation (3.1×/3.8×)",
+        "code": ('G0 = 6.674*^-11; Msun = 1.989*^30; c = 2.998*^8; SSq = 0.57; betaI = 0.603; '
+                 'Rn3[n_] := Sum[(-1)^j Binomial[2,j]/(n+j)!, {j,0,2}]; '
+                 'S263 = Sum[(SSq^n)/n^26 Rn3[n], {n,1,26}]; '
+                 'wSCm = 2 Pi 1.25*^12; sG = 0.08 * 2 Pi * 10^12; '
+                 'Phi[g_] := Exp[-(g - wSCm)^2/(2 sG^2)] S263; '
+                 'FUBiAGN[M_, a_, Ajet_] := Module[{rS, rH, r2, Ug, Ub, ratio, Mjet}, '
+                 'rS = 2 G0 M/(c^2); rH = rS/2 (1 + Sqrt[1 - a^2]); r2 = rH^2; '
+                 'Ug = Sum[G0 M/r2 SSq i/26, {i,1,26}]; '
+                 'Ub = Sum[G0 M/r2 Exp[-SSq i/26] betaI, {i,1,26}]; '
+                 'ratio = Abs[Ub]/(Abs[Ug] + Abs[Ub] + 10^-300); '
+                 'Mjet = 1 + Ajet; {ratio Mjet S263, Mjet}]; '
+                 '{"3C273", FUBiAGN[8.86*^8 Msun, 0.90, 2.1], '
+                 '"TON618", FUBiAGN[6.6*^10 Msun, 0.998, 2.8]}'),
+    })
+
+    # 57. DM halo NFW profile with SCm phonon coupling
+    exprs.append({
+        "label": "DM halo NFW ρ_UQFF = ρ_SCm · S₂₆⁽³⁾ · NFW · Φ",
+        "code": ('SSq = 0.57; kappa = 0.0005/86400; kpc = 3.086*^19; '
+                 'Rn3[n_] := Sum[(-1)^j Binomial[2,j]/(n+j)!, {j,0,2}]; '
+                 'S263 = Sum[(SSq^n)/n^26 Rn3[n], {n,1,26}]; '
+                 'rhoSCm = 10^-10 Exp[kappa 86400]; rho0 = 5*^-22; rs = 20; '
+                 'wSCm = 2 Pi 1.25*^12; sG = 0.08 * 2 Pi * 10^12; '
+                 'Phi = Exp[0] S263; '
+                 'nfw[r_] := rho0/((r/rs)(1+r/rs)^2); '
+                 'rhoUQFF[r_] := rhoSCm S263 nfw[r] Phi / rho0; '
+                 'Table[{"r_kpc", r, "rho_NFW", nfw[r], "rho_UQFF", rhoUQFF[r]}, '
+                 '{r, {1, 5, 10, 20, 50, 100}}]'),
+    })
+
     return exprs
 
 

@@ -1294,6 +1294,38 @@ SECTION_16_AGN_NS_MERGER_QGP = {
     "note": "PAPER_999-1008. Session 219. AGN/NS merger F_U_Bi with S₂₆⁽³⁾ + SCm-QGP dynamics + 600k scaling.",
 }
 
+# ── §17  AGN_NS_QGP_SMBH_DM_HALO ────────────────────────────────────────
+
+SECTION_17_AGN_NS_QGP_SMBH_DM_HALO = {
+    "sector": "AGN_NS_QGP_SMBH_DM_HALO",
+    "session": 220,
+    "equations": {
+        "3C273_mod": "M_jet(Γ₀) = 1 + A_jet = 3.1× [M_BH = 8.86×10⁸ M☉, a = 0.90, A_jet = 2.1]",
+        "TON618_mod": "M_jet(Γ₀) = 1 + A_jet = 3.8× [M_BH = 6.6×10¹⁰ M☉, a = 0.998, A_jet = 2.8]",
+        "GW170817_supp": "h_UQFF = h_GR·(1 − 0.667·Φ/S₂₆⁽³⁾) [66.7% strain reduction, 367.8-cycle lag]",
+        "SMBH_inspiral": "F_{U,Bi}(r,t,Γ) = ρ_SCm·V·S₂₆⁽³⁾²·Φ·ratio [inspiral phonon damping]",
+        "SMBH_coalescence": "M_rem = M_tot − E_GW/c² − ΔM_buoy [buoyancy mass ejection]",
+        "SMBH_ringdown": "f_UQFF = f_QNM·(1 + S₂₆⁽³⁾·Φ) [QNM frequency SCm correction]",
+        "DM_halo_NFW": "ρ_halo(r) = ρ_SCm·S₂₆⁽³⁾·ρ₀/[(r/r_s)(1+r/r_s)²]·Φ [NFW from |∇φ₄|²]",
+        "rotation_curve": "v_c(r) flat at 0.891·v_peak via SCm phonon pressure [no CDM particles]",
+        "TXS0506_3Gamma": "M_jet: Γ=0.05→2.9×, Γ=0.10→2.3×, Γ=0.30→1.6× [3-point profile]",
+        "99sys_v1": "F_U^{(99)}(Γ) with 8 Γ-points (added 0.30 THz) + AGN/NS/QGP/SMBH/DM systems",
+    },
+    "layers": [
+        "L1: 3C273 + TON618 AGN F_U_Bi_i jet modulation curves (3.1×/3.8×)",
+        "L2: GW170817 66.7% strain reduction with 367.8-cycle phase lag",
+        "L3: GW190425 upgraded with S₂₆⁽³⁾ and Γ=0.30 point",
+        "L4: QGP ALICE centrality-dependent multiplicity (4 bins)",
+        "L5: SMBH merger F_U_Bi (inspiral + coalescence + ringdown)",
+        "L6: SCm dark matter halos via NFW profile (rotation curve flattening)",
+        "L7: TXS0506 3-Γ-point profile (flare/IceCube/sustained)",
+        "L8: Upgraded 99-system WSTP kernel v1 (8 Γ-points, extended catalogue)",
+        "L9: Production scaling v15 30 kernels 650k calc/s",
+    ],
+    "lagrangian": "L_220 = L_AGN(3C273,TON618) + L_GW(170817,190425) + L_SMBH(inspiral,coal,ring) + L_DM(NFW,v_c) + L_QGP(ALICE); δS/δφ=0",
+    "note": "PAPER_1009-1018. Session 220. 3C273/TON618/GW170817/SMBH/DM halos/TXS0506 revised/99sys v1/650k.",
+}
+
 
 if __name__ == "__main__":
     main()

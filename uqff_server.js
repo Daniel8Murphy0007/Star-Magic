@@ -933,6 +933,97 @@ function handleRequest(req, res) {
         return;
     }
 
+    // ── POST /api/fubi/smbh-merger — Session 220 ──
+    if (method === 'POST' && pathname === '/api/fubi/smbh-merger') {
+        let body = '';
+        req.on('data', chunk => body += chunk);
+        req.on('end', () => {
+            try {
+                const data = JSON.parse(body);
+                const M1 = (data.M1_Msun || 5.5e7) * 1.989e30;
+                const M2 = (data.M2_Msun || 3.0e7) * 1.989e30;
+                const a1 = data.a1_spin || 0.70;
+                const a2 = data.a2_spin || 0.60;
+                const M_total = M1 + M2;
+                const rS = 2 * 6.674e-11 * M_total / Math.pow(2.998e8, 2);
+                const a_eff = (M1 * a1 + M2 * a2) / M_total;
+                const rH = rS / 2 * (1 + Math.sqrt(Math.max(1 - a_eff * a_eff, 0)));
+                const rho = 1e-10 * Math.exp(kappa * 86400);
+                const V = (4 / 3) * Math.PI * Math.pow(rH, 3);
+                let S26_3rd = 0;
+                for (let n = 1; n <= 26; n++) {
+                    let Rn = 0;
+                    for (let j = 0; j < 3; j++) {
+                        const sign = Math.pow(-1, j);
+                        let binom = 1;
+                        for (let m = 0; m < j; m++) binom *= (2 - m) / (m + 1);
+                        let fact = 1;
+                        for (let f = 2; f <= Math.min(n + j, 170); f++) fact *= f;
+                        Rn += sign * binom / fact;
+                    }
+                    S26_3rd += Math.pow(SSq, n) / Math.pow(n, 26) * Rn;
+                }
+                const Phi = S26_3rd; // at resonance
+                const F_U_Bi = rho * V * S26_3rd * S26_3rd * Phi;
+                res.writeHead(200, CORS_HEADERS);
+                res.end(JSON.stringify({
+                    status: 'ok',
+                    M_total_Msun: M_total / 1.989e30,
+                    F_U_Bi: F_U_Bi,
+                    rH_m: rH, a_eff: a_eff,
+                    S26_3rd: S26_3rd, session: 220
+                }));
+            } catch (e) {
+                res.writeHead(400, CORS_HEADERS);
+                res.end(JSON.stringify({ status: 'error', error: e.message }));
+            }
+        });
+        return;
+    }
+
+    // ── POST /api/dm/halo-nfw — Session 220 ──
+    if (method === 'POST' && pathname === '/api/dm/halo-nfw') {
+        let body = '';
+        req.on('data', chunk => body += chunk);
+        req.on('end', () => {
+            try {
+                const data = JSON.parse(body);
+                const rho_0 = data.rho_0 || 5e-22;
+                const r_kpc = data.r_kpc || 20;
+                const r_s_kpc = data.r_s_kpc || 20;
+                const x = Math.max(r_kpc / r_s_kpc, 1e-10);
+                const rho_nfw = rho_0 / (x * Math.pow(1 + x, 2));
+                const rho_SCm = 1e-10 * Math.exp(kappa * 86400);
+                let S26_3rd = 0;
+                for (let n = 1; n <= 26; n++) {
+                    let Rn = 0;
+                    for (let j = 0; j < 3; j++) {
+                        const sign = Math.pow(-1, j);
+                        let binom = 1;
+                        for (let m = 0; m < j; m++) binom *= (2 - m) / (m + 1);
+                        let fact = 1;
+                        for (let f = 2; f <= Math.min(n + j, 170); f++) fact *= f;
+                        Rn += sign * binom / fact;
+                    }
+                    S26_3rd += Math.pow(SSq, n) / Math.pow(n, 26) * Rn;
+                }
+                const Phi = S26_3rd; // at resonance
+                const rho_UQFF = rho_SCm * S26_3rd * rho_nfw * Phi / rho_0;
+                res.writeHead(200, CORS_HEADERS);
+                res.end(JSON.stringify({
+                    status: 'ok',
+                    r_kpc: r_kpc, r_s_kpc: r_s_kpc,
+                    rho_NFW: rho_nfw, rho_UQFF: rho_UQFF,
+                    S26_3rd: S26_3rd, session: 220
+                }));
+            } catch (e) {
+                res.writeHead(400, CORS_HEADERS);
+                res.end(JSON.stringify({ status: 'error', error: e.message }));
+            }
+        });
+        return;
+    }
+
     // 404 for unknown routes
     res.writeHead(404, CORS_HEADERS);
     res.end(JSON.stringify({
@@ -958,7 +1049,9 @@ function handleRequest(req, res) {
             'POST /api/fubi/inside-outside',
             'POST /api/fubi/gamma-sweep',
             'POST /api/fubi/agn-merger',
-            'POST /api/qgp/scm-dynamics'
+            'POST /api/qgp/scm-dynamics',
+            'POST /api/fubi/smbh-merger',
+            'POST /api/dm/halo-nfw'
         ]
     }));
 }
