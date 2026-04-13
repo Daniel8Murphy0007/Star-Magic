@@ -1,4 +1,4 @@
-"""
+﻿"""
 CondensedPhysics4.py — UQFF Phase 4 Physics Calculator
 =======================================================
 IPC Chain Position: 4 of 4
@@ -17707,15 +17707,8 @@ __all__ = [
     "HydrogenCompressedSpaceEspaceThreeLegCalculator",               # PAPER_463 (#102)
     "Session116GrokShareE70525FaHubCalculator",                      # Session 116 hub (#103)
     # --- Session 125: grok_share_4e4d8be1f7.txt — UQFFBuoyancy 3 modules, PAPER_479-480 ---
-    "Session125GrokShare4e4d8be1f7HubCalculator",                    # Session 125 hub (#104)
     # --- Session 126: grok_share_bdfb3a05b06.txt — 43 UQFF modules, PAPER_481-483 ---
-    "Session126GrokShareBdfb3a05b06HubCalculator",                   # Session 126 hub (#105)
     # --- Session 131: QCalc.py Batch 20/21 expansion — PAPER_491–494 ---
-    "MUGECompressedNineTermCalculator",                               # PAPER_491 (#106)
-    "MUGEResonanceThirteenModeCalculator",                           # PAPER_492 (#107)
-    "UniversalFieldDecompositionCalculator",                         # PAPER_493 (#108)
-    "BSMParticleObservablesCalculator",                              # PAPER_494 (#109)
-    "Session131QCalcBatch2021ExpansionHubCalculator",                # Session 131 hub (#110)
     # --- Session 140: grok_share_0f5d4c91f2c.txt — DPM Shell-Energy Radiance, Neg Time, DPM Forces PAPER_516–520 ---
     "DPMLayeredShellEnergyRadianceCalculator",                       # PAPER_516 (#111)
     "NegativeTimeDilationSpookyDistanceCalculator",                  # PAPER_517 (#112)

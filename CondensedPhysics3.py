@@ -11147,9 +11147,8 @@ class SNIaHubbleTensionImprintCalculator:
                 {'z': zv, 'delta_pct': (
                     (1 + (H0*1e3/MPC_M)*math.sqrt(Omega_m*(1+zv)**3+Omega_L)*t_5Gyr) -
                     (1 + (H0_PLANCK*1e3/MPC_M)*math.sqrt(Omega_m*(1+zv)**3+Omega_L)*t_5Gyr)
-                ) / (1 + (H0*1e3/MPC_M)*math.sqrt(Omega_m*(1+zv)**3+Omega_L)*t_5Gyr) * 100
+                ) / (1 + (H0*1e3/MPC_M)*math.sqrt(Omega_m*(1+zv)**3+Omega_L)*t_5Gyr) * 100}
                 for zv in [0.1, 0.3, 0.5, 1.0, 1.5]
-                }
             ],
             'flux_SN_Pa':       flux_SN,
             'a_SN_m_s2':        a_SN,

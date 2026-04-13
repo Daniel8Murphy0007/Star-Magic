@@ -9,10 +9,11 @@ while maintaining a single-import API.
 
 ARCHITECTURE:
     CondensedPhysics.py      → Foundation (1,227 base classes, 168,803 lines)
-    CondensedPhysics2.py     → Extension 1 (631 classes, 48,679+ lines: Orb Analysis 10/11+ + Grok thread extensions + Session 137 _84A767D3 + Session 138 SOURCE179 + Session 151 Millennium Prize)
+    CondensedPhysics2.py     → Extension 1 (668 classes, 48,679+ lines: Orb Analysis 10/11+ + Grok thread extensions + Session 137 _84A767D3 + Session 138 SOURCE179 + Session 151 Millennium Prize)
     CondensedPhysics3.py     → Extension 2 (219 classes, 13,944 lines: 15+ categories, Sessions 41-96)
-    CondensedPhysics4.py     → Extension 3 (453 classes, Sessions 97-204, 2026-04-09)
-    Last updated: Session 204 v5.62 (2026-04-09) — Session 204: 9 standalone Kozima-LENR modules from fabricated reports gap analysis (kozima_scm_cross_section.py + scm_activation_function.py + buoyancy_lagrangian_eom.py + wstp_symbolic_exporter.py + cosmogenesis_montecarlo_v2.py + production_scaling_v4.py + wstp_kernel_demo_runner.py + montecarlo_rest_exporter.py + scm_lab_replication_protocol.py); 877/1000 papers (87.7%); 896 PDFs
+    CondensedPhysics4.py     → Extension 3 (580 classes, Sessions 97-220, v5.75)
+    + 29 standalone physics modules (Sessions 204-220)
+    Last updated: Session 220 v5.75 (2026-04-13) — Housekeeping: aggregator catch-up for Sessions 204-220; 1018 papers; 1033 PDFs
     CondensedPhysicsAggregator.py → This file (unified API, v3.5.0)
 
 USAGE:
@@ -51,29 +52,12 @@ from CondensedPhysics2 import (
     CP2_VERSION,
     CP2_CLASS_COUNT,
     
-    # Orb Analysis_10 (8 classes)
+    # Orb Analysis_10 registry
     ORB_ANALYSIS_10_PARAMS,
-    ThirtySixFrameSequenceCalculator,
-    CyclicalConvectionPatternCalculator,
-    Orb10RefinedFUCalculator,
-    SpookyActionNonLocalTransferCalculator,
-    ThermalGradientDrivenDynamicsCalculator,
-    QuadrantTransitionTrackerCalculator,
-    ACEDCEModulatedEnergyCalculator,
-    MagneticBubbleConfinementCalculator,
     ORB_ANALYSIS_10_CALCULATORS,
     
-    # Orb Analysis_11 (9 classes)
+    # Orb Analysis_11 registry
     ORB_ANALYSIS_11_PARAMS,
-    ThirtyNineFrameSequenceCalculator,
-    CounterClockwiseDiagonalCycleCalculator,
-    Orb11RefinedFUCalculator,
-    ExtendedCyclePatternAnalyzerCalculator,
-    IntelligentPlasmoidBehaviorCalculator,
-    BulbDrivenPlasmaEnergeticsCalculator,
-    WaxCapCoolingDynamicsCalculator,
-    FieldGeneratorResonanceCouplingCalculator,
-    TotalEnergyBudgetCalculator,
     ORB_ANALYSIS_11_CALCULATORS,
     
     # Session 137 — Wolfram/_84A767D3 PhysicsTerm CP2 wrappers (PAPER_502–508)
@@ -705,281 +689,159 @@ from GrokThreadUQFFExtensions import (
 )
 
 # ═══════════════════════════════════════════════════════════════════════════════
-# IMPORT FROM CONDENSEDPHYSICS4.PY (EXTENSION 3 — 103 classes, Sessions 97-120)
-# Source: gok_share_31b5c807a4 + grok_share_11254865 + grok_share_cfdcad2f5 + grok_share_755feea7
-#         + grok_share_c020496d9e + grok_share_5fa36e4e035 + grok_share_dc707f5d3
-#         + grok_share_e70525fa
+# IMPORT FROM CONDENSEDPHYSICS4.PY (EXTENSION 3 — 580 classes, Sessions 97-220)
+# Wildcard import: CP4 has grown from 103 to 580 classes across Sessions 97-220.
+# Dynamic registry construction replaces manual per-class import.
 # ═══════════════════════════════════════════════════════════════════════════════
-from CondensedPhysics4 import (
-    # Sessions 97-98 — CP4 creation + PSZ2 gap fill (PAPER_355–367)
-    PLCKClusterG287MergerRelicTriadicCalculator,
-    ASKAPUltraLongPeriodTransientFUBiCalculator,
-    TOI1227bYoungNeptuneExoplanetFUBiCalculator,
-    AT2024tvdWanderingMBHTDECalculator,
-    G359FilamentGalacticCenterFUBiCalculator,
-    J1610HighZQuasarJetFUBiCalculator,
-    BubbleNebulaPositiveExpansionFUBiCalculator,
-    H2OH2RotorPhillipsCSCrossSectionCalculator,
-    NOMADMonophotonNeutrinoVacuumCouplingCalculator,
-    ALICEMultiplicityCentralityRhoVacRatioCalculator,
-    MagnetarMmagOutburstTimescaleCalculator,
-    SgrAStarJWST2025FlareOmegaActDerivationCalculator,
-    PSZ2G181MergerRelicTriadicFUBiCalculator,
-    # Sessions 100-101 — grok_share_11254865 UQFF 2.0 Integration (PAPER_368–375)
-    Ug4VacuumEnergyLambdaCDMGalacticBHCouplingCalculator,
-    NavierStokesStableFluidUQFFQuasarJetCalculator,
-    MultiBodySolarPcorePlanetaryScalingCalculator,
-    StarMagic09SeptUQFFMultiBodyNSCalculator,
-    MUGESuperconductive12TermResonanceCalculator,
-    CompressedUQFFBcritSuperconductivityCalculator,
-    MorrisThorneWormholeNullGeodesicsCalculator,
-    J1610RelativisticQuasarJetUQFFNSCalculator,
-    UQFFWormholeMeissnerRelativisticGammaCalculator,
-    # Sessions 102-104 — grok_share_11254865 deep analysis (PAPER_376–386)
-    StarMagic11254865MUGESessionHubCalculator,
-    UQFFResonanceFormalProofSetCalculator,
-    WormholeMUGETermImplSafetyCalculator,
-    StarMagic11254865Session102HubCalculator,
-    CohesiveUQFFIntegrationCalculator,
-    DualModelMUGEComparisonCalculator,
-    UQFFSolvableEquationSetCalculator,
-    StarMagic11254865Session103HubCalculator,
-    SGR1745CompressedMUGESpectralTermDecompositionCalculator,
-    UQFF12TermSpectralLadderSGR1745Calculator,
-    Ug4iTransientAgeDecayLawCalculator,
-    SagAStarFullResonanceTermDecompositionCalculator,
-    Canonical7SystemUQFFParameterRegistryCalculator,
-    LaTeXDualBlockUQFFMasterEquationCalculator,
-    # Sessions 106-107 — grok_share_cfdcad2f5 analysis (PAPER_387–399)
-    vSCmRelativisticParameterUpdateCalculator,
-    YangMillsMassGapVacuumDensityEvolutionCalculator,
-    GalacticOmegaSVelocityDispersionCalibrationCalculator,
-    SMBHMassSigmaDispersionRelationUQFFAnchorCalculator,
-    HybridMUGEMeissnerBlendingModelCalculator,
-    AetherMetricTensorPerturbationCalculator,
-    SCmReactorEfficiencyDecayCalculator,
-    FUThreeTermStarMagicMasterCalculator,
-    WormholeUQFFResonanceAccelerationCalculator,
-    HiggsEmergentLevel18UQFFStratumCalculator,
-    Session107CfdcAd2f5HubCalculator,
-    # Session 108 — grok_share_cfdcad2f5 C++ construction (PAPER_400–408)
-    Ug2HeliosphereBubbleChargeCoupledEreactCalculator,
-    Ug3MagneticStringsDiskPcoreCalculator,
-    Ug4VacuumBHFeedbackCconcentrationCalculator,
-    Ubi4TermSolarWindBuoyancyEpsilonSwCalculator,
-    MusSCmAugmentedMagneticDipoleOmegaCCalculator,
-    SCmDensityPlanetaryScalingLawCalculator,
-    Ts00TwoComponentStressEnergyDecompositionCalculator,
-    FU4BodySolarSystemNumericalVerificationCalculator,
-    ResonanceMUGE14TermCompleteWormholeSumCalculator,
-    Session108CfdcAd2f5OctConstructionFileHubCalculator,
-    # Session 109 — grok_share_cfdcad2f5 refactoring exhaustion
-    Session109CfdcAd2f5RefactoringSectionExhaustionHubCalculator,
-    # Sessions 110-111 — grok_share_755feea7 Star Magic book + exhaustive re-analysis (PAPER_410–421)
-    SCmHiddenElementUndetectableQsQuasarIgnitionCalculator,
-    Ug1DPMDiPseudoMonopoleSolarCalibrationCalculator,
-    HeliosphereHydrogenComplexSCmStellarAgeCalculator,
-    Ug3CCWCWDifferentialRotationSCmPlanetaryCoreCalculator,
-    QuasarJetNavierStokesUQFFFluidSolverBodyForceCalculator,
-    EreactSCmReactivityAetherDensityReactorEfficiencyCalculator,
-    TsUniverse5ComponentStressEnergyDecompositionCalculator,
-    PiCyclesNegativeTimeCosineTemporalReversalCalculator,
-    FUSunCompleteSCmSolarCycleFinalCalibrationCalculator,
-    HamiltonianPlanetaryCoreHUg3HSCmHUAYangMillsMassGapCalculator,
-    Session110Grok755feea7StarMagicBookPhysicsHubCalculator,
-    FUCompleteLambdaI4thDissipationSumCalculator,
-    UmHeavisideQuasiPeriodicSCmPhaseTransitionAmplifierCalculator,
-    Session111Grok755feea7ExhaustiveReanalysisHubCalculator,
-    UQFF29SystemCrossValidationMatrixCalculator,
-    Session112GrokC020496d9ExhaustiveAuditHubCalculator,
-    UmCompleteSSqVacuumThermalDampingCalculator,
-    Session113GrokC020496d9ReAnalysisHubCalculator,
-    # Session 114 — PAPER_424–429
-    FUBiiUmUniversalCompanionCatalogCalculator,
-    DPMFourComponentCorrelationCalculator,
-    UAScmJWSTALMACERNValidationTableCalculator,
-    TwentySixDResonanceLayerAmplitudeFrequencyCalculator,
-    HResPeriodicTableUniversalNuclearCorrelationCalculator,
-    ThreeNewNumberSystemsVacuumDipoleBuoyancyCalculator,
-    Session114GrokC020496d9DeepPhysicsHubCalculator,
-    # Session 115 — grok_share_5fa36e4e035.txt UQFF module library (PAPER_447–455)
-    OrionNebulaHAlphaUQFFCalculator,
-    MultiSystemUQFFCoreCalculator,
-    YoungStarsOutflowsPressureCalculator,
-    EagleNebulaWindRadiationCalculator,
-    BigBangCosmicQGDMGWCalculator,
-    CompressedUQFFEnvModularCalculator,
-    MagnetarDualModeUQFFCalculator,
-    MultiSystemCompressionCycle2Calculator,
-    UQFFExpandedSystemRegistryCalculator,
-    Session115GrokShare5fa36e4eHubCalculator,
-    # Session 116 — grok_share_e70525fa.txt MUGE+UFE module library (PAPER_456–463)
-    MUGECompressed29SystemUnifiedGravityCalculator,
-    MUGECompressed38SystemExtendedEnvCalculator,
-    MUGEFinal7SystemResonanceAccelerationsCalculator,
-    UFEOrbPlasmoidDynamicsRedDwarfCalculator,
-    NebularUQFFDrawing32LENRHiggsCalculator,
-    RedDwarfLENRPiSeriesHiggsCalculator,
-    InertiaUQFFWaveEnergyThreeLegProofsetCalculator,
-    HydrogenCompressedSpaceEspaceThreeLegCalculator,
-    Session116GrokShareE70525FaHubCalculator,
-    # Session 209 — Sessions 204-208 standalone module integration (PAPER_878–900)
-    SCmGaussianActivationBFieldSuppressionCalc,
-    BuoyancyKleinGordonScalarFieldEOMCalc,
-    PositiveEtBuoyancyExpansionMasterCalc,
-    KozimaExpansionNeutronDropCouplingCalc,
-    ExpansionLagrangianEulerLagrangeCalc,
-    NegativeEtBuoyancyErosionMasterCalc,
-    NetEnergyEplusEminusEvolutionCalc,
-    GWDampingErosion66PercentCalc,
-    ErosionLagrangianEulerLagrangeCalc,
-    UQFFVsStringTheory10AspectComparisonCalc,
-    EtFullLagrangianUnifiedDerivationCalc,
-    EtVsLambdaCDMDarkEnergyContrastCalc,
-    SCmVacuumDensityEvolutionCalc,
-    SCmNetEnergyBuoyancyRegimeCalc,
-    SCmKozimaPhononResonanceCouplingCalc,
-    SCmPhononModulatedEnergyPhiCalc,
-    SCmEtLagrangianVariationCalc,
-    EtVsQuintessenceScalarFieldContrastCalc,
-    PhononModulationFactor125THzGaussianCalc,
-    PhononModulatedEnergyEnetPhononCalc,
-    PhononLagrangianPhiS26DerivationCalc,
-    BuoyancyReversalSignFlipResonanceCalc,
-    EtVsKEssenceScherrerModelContrastCalc,
-)
+from CondensedPhysics4 import *
+import CondensedPhysics4 as _cp4_module
+import inspect as _inspect
 
-CP4_CALCULATORS = {
-    'PLCKClusterG287MergerRelicTriadicCalculator': PLCKClusterG287MergerRelicTriadicCalculator,
-    'ASKAPUltraLongPeriodTransientFUBiCalculator': ASKAPUltraLongPeriodTransientFUBiCalculator,
-    'TOI1227bYoungNeptuneExoplanetFUBiCalculator': TOI1227bYoungNeptuneExoplanetFUBiCalculator,
-    'AT2024tvdWanderingMBHTDECalculator': AT2024tvdWanderingMBHTDECalculator,
-    'G359FilamentGalacticCenterFUBiCalculator': G359FilamentGalacticCenterFUBiCalculator,
-    'J1610HighZQuasarJetFUBiCalculator': J1610HighZQuasarJetFUBiCalculator,
-    'BubbleNebulaPositiveExpansionFUBiCalculator': BubbleNebulaPositiveExpansionFUBiCalculator,
-    'H2OH2RotorPhillipsCSCrossSectionCalculator': H2OH2RotorPhillipsCSCrossSectionCalculator,
-    'NOMADMonophotonNeutrinoVacuumCouplingCalculator': NOMADMonophotonNeutrinoVacuumCouplingCalculator,
-    'ALICEMultiplicityCentralityRhoVacRatioCalculator': ALICEMultiplicityCentralityRhoVacRatioCalculator,
-    'MagnetarMmagOutburstTimescaleCalculator': MagnetarMmagOutburstTimescaleCalculator,
-    'SgrAStarJWST2025FlareOmegaActDerivationCalculator': SgrAStarJWST2025FlareOmegaActDerivationCalculator,
-    'PSZ2G181MergerRelicTriadicFUBiCalculator': PSZ2G181MergerRelicTriadicFUBiCalculator,
-    'Ug4VacuumEnergyLambdaCDMGalacticBHCouplingCalculator': Ug4VacuumEnergyLambdaCDMGalacticBHCouplingCalculator,
-    'NavierStokesStableFluidUQFFQuasarJetCalculator': NavierStokesStableFluidUQFFQuasarJetCalculator,
-    'MultiBodySolarPcorePlanetaryScalingCalculator': MultiBodySolarPcorePlanetaryScalingCalculator,
-    'StarMagic09SeptUQFFMultiBodyNSCalculator': StarMagic09SeptUQFFMultiBodyNSCalculator,
-    'MUGESuperconductive12TermResonanceCalculator': MUGESuperconductive12TermResonanceCalculator,
-    'CompressedUQFFBcritSuperconductivityCalculator': CompressedUQFFBcritSuperconductivityCalculator,
-    'MorrisThorneWormholeNullGeodesicsCalculator': MorrisThorneWormholeNullGeodesicsCalculator,
-    'J1610RelativisticQuasarJetUQFFNSCalculator': J1610RelativisticQuasarJetUQFFNSCalculator,
-    'UQFFWormholeMeissnerRelativisticGammaCalculator': UQFFWormholeMeissnerRelativisticGammaCalculator,
-    'StarMagic11254865MUGESessionHubCalculator': StarMagic11254865MUGESessionHubCalculator,
-    'UQFFResonanceFormalProofSetCalculator': UQFFResonanceFormalProofSetCalculator,
-    'WormholeMUGETermImplSafetyCalculator': WormholeMUGETermImplSafetyCalculator,
-    'StarMagic11254865Session102HubCalculator': StarMagic11254865Session102HubCalculator,
-    'CohesiveUQFFIntegrationCalculator': CohesiveUQFFIntegrationCalculator,
-    'DualModelMUGEComparisonCalculator': DualModelMUGEComparisonCalculator,
-    'UQFFSolvableEquationSetCalculator': UQFFSolvableEquationSetCalculator,
-    'StarMagic11254865Session103HubCalculator': StarMagic11254865Session103HubCalculator,
-    'SGR1745CompressedMUGESpectralTermDecompositionCalculator': SGR1745CompressedMUGESpectralTermDecompositionCalculator,
-    'UQFF12TermSpectralLadderSGR1745Calculator': UQFF12TermSpectralLadderSGR1745Calculator,
-    'Ug4iTransientAgeDecayLawCalculator': Ug4iTransientAgeDecayLawCalculator,
-    'SagAStarFullResonanceTermDecompositionCalculator': SagAStarFullResonanceTermDecompositionCalculator,
-    'Canonical7SystemUQFFParameterRegistryCalculator': Canonical7SystemUQFFParameterRegistryCalculator,
-    'LaTeXDualBlockUQFFMasterEquationCalculator': LaTeXDualBlockUQFFMasterEquationCalculator,
-    'vSCmRelativisticParameterUpdateCalculator': vSCmRelativisticParameterUpdateCalculator,
-    'YangMillsMassGapVacuumDensityEvolutionCalculator': YangMillsMassGapVacuumDensityEvolutionCalculator,
-    'GalacticOmegaSVelocityDispersionCalibrationCalculator': GalacticOmegaSVelocityDispersionCalibrationCalculator,
-    'SMBHMassSigmaDispersionRelationUQFFAnchorCalculator': SMBHMassSigmaDispersionRelationUQFFAnchorCalculator,
-    'HybridMUGEMeissnerBlendingModelCalculator': HybridMUGEMeissnerBlendingModelCalculator,
-    'AetherMetricTensorPerturbationCalculator': AetherMetricTensorPerturbationCalculator,
-    'SCmReactorEfficiencyDecayCalculator': SCmReactorEfficiencyDecayCalculator,
-    'FUThreeTermStarMagicMasterCalculator': FUThreeTermStarMagicMasterCalculator,
-    'WormholeUQFFResonanceAccelerationCalculator': WormholeUQFFResonanceAccelerationCalculator,
-    'HiggsEmergentLevel18UQFFStratumCalculator': HiggsEmergentLevel18UQFFStratumCalculator,
-    'Session107CfdcAd2f5HubCalculator': Session107CfdcAd2f5HubCalculator,
-    'Ug2HeliosphereBubbleChargeCoupledEreactCalculator': Ug2HeliosphereBubbleChargeCoupledEreactCalculator,
-    'Ug3MagneticStringsDiskPcoreCalculator': Ug3MagneticStringsDiskPcoreCalculator,
-    'Ug4VacuumBHFeedbackCconcentrationCalculator': Ug4VacuumBHFeedbackCconcentrationCalculator,
-    'Ubi4TermSolarWindBuoyancyEpsilonSwCalculator': Ubi4TermSolarWindBuoyancyEpsilonSwCalculator,
-    'MusSCmAugmentedMagneticDipoleOmegaCCalculator': MusSCmAugmentedMagneticDipoleOmegaCCalculator,
-    'SCmDensityPlanetaryScalingLawCalculator': SCmDensityPlanetaryScalingLawCalculator,
-    'Ts00TwoComponentStressEnergyDecompositionCalculator': Ts00TwoComponentStressEnergyDecompositionCalculator,
-    'FU4BodySolarSystemNumericalVerificationCalculator': FU4BodySolarSystemNumericalVerificationCalculator,
-    'ResonanceMUGE14TermCompleteWormholeSumCalculator': ResonanceMUGE14TermCompleteWormholeSumCalculator,
-    'Session108CfdcAd2f5OctConstructionFileHubCalculator': Session108CfdcAd2f5OctConstructionFileHubCalculator,
-    'Session109CfdcAd2f5RefactoringSectionExhaustionHubCalculator': Session109CfdcAd2f5RefactoringSectionExhaustionHubCalculator,
-    'SCmHiddenElementUndetectableQsQuasarIgnitionCalculator': SCmHiddenElementUndetectableQsQuasarIgnitionCalculator,
-    'Ug1DPMDiPseudoMonopoleSolarCalibrationCalculator': Ug1DPMDiPseudoMonopoleSolarCalibrationCalculator,
-    'HeliosphereHydrogenComplexSCmStellarAgeCalculator': HeliosphereHydrogenComplexSCmStellarAgeCalculator,
-    'Ug3CCWCWDifferentialRotationSCmPlanetaryCoreCalculator': Ug3CCWCWDifferentialRotationSCmPlanetaryCoreCalculator,
-    'QuasarJetNavierStokesUQFFFluidSolverBodyForceCalculator': QuasarJetNavierStokesUQFFFluidSolverBodyForceCalculator,
-    'EreactSCmReactivityAetherDensityReactorEfficiencyCalculator': EreactSCmReactivityAetherDensityReactorEfficiencyCalculator,
-    'TsUniverse5ComponentStressEnergyDecompositionCalculator': TsUniverse5ComponentStressEnergyDecompositionCalculator,
-    'PiCyclesNegativeTimeCosineTemporalReversalCalculator': PiCyclesNegativeTimeCosineTemporalReversalCalculator,
-    'FUSunCompleteSCmSolarCycleFinalCalibrationCalculator': FUSunCompleteSCmSolarCycleFinalCalibrationCalculator,
-    'HamiltonianPlanetaryCoreHUg3HSCmHUAYangMillsMassGapCalculator': HamiltonianPlanetaryCoreHUg3HSCmHUAYangMillsMassGapCalculator,
-    'Session110Grok755feea7StarMagicBookPhysicsHubCalculator': Session110Grok755feea7StarMagicBookPhysicsHubCalculator,
-    'FUCompleteLambdaI4thDissipationSumCalculator': FUCompleteLambdaI4thDissipationSumCalculator,
-    'UmHeavisideQuasiPeriodicSCmPhaseTransitionAmplifierCalculator': UmHeavisideQuasiPeriodicSCmPhaseTransitionAmplifierCalculator,
-    'Session111Grok755feea7ExhaustiveReanalysisHubCalculator': Session111Grok755feea7ExhaustiveReanalysisHubCalculator,
-    'UQFF29SystemCrossValidationMatrixCalculator': UQFF29SystemCrossValidationMatrixCalculator,
-    'Session112GrokC020496d9ExhaustiveAuditHubCalculator': Session112GrokC020496d9ExhaustiveAuditHubCalculator,
-    'UmCompleteSSqVacuumThermalDampingCalculator': UmCompleteSSqVacuumThermalDampingCalculator,
-    'Session113GrokC020496d9ReAnalysisHubCalculator': Session113GrokC020496d9ReAnalysisHubCalculator,
-    # Session 114 — PAPER_424–429
-    'FUBiiUmUniversalCompanionCatalogCalculator': FUBiiUmUniversalCompanionCatalogCalculator,
-    'DPMFourComponentCorrelationCalculator': DPMFourComponentCorrelationCalculator,
-    'UAScmJWSTALMACERNValidationTableCalculator': UAScmJWSTALMACERNValidationTableCalculator,
-    'TwentySixDResonanceLayerAmplitudeFrequencyCalculator': TwentySixDResonanceLayerAmplitudeFrequencyCalculator,
-    'HResPeriodicTableUniversalNuclearCorrelationCalculator': HResPeriodicTableUniversalNuclearCorrelationCalculator,
-    'ThreeNewNumberSystemsVacuumDipoleBuoyancyCalculator': ThreeNewNumberSystemsVacuumDipoleBuoyancyCalculator,
-    'Session114GrokC020496d9DeepPhysicsHubCalculator': Session114GrokC020496d9DeepPhysicsHubCalculator,
-    # Session 115 — PAPER_447–455 (grok_share_5fa36e4e035.txt)
-    'OrionNebulaHAlphaUQFFCalculator': OrionNebulaHAlphaUQFFCalculator,
-    'MultiSystemUQFFCoreCalculator': MultiSystemUQFFCoreCalculator,
-    'YoungStarsOutflowsPressureCalculator': YoungStarsOutflowsPressureCalculator,
-    'EagleNebulaWindRadiationCalculator': EagleNebulaWindRadiationCalculator,
-    'BigBangCosmicQGDMGWCalculator': BigBangCosmicQGDMGWCalculator,
-    'CompressedUQFFEnvModularCalculator': CompressedUQFFEnvModularCalculator,
-    'MagnetarDualModeUQFFCalculator': MagnetarDualModeUQFFCalculator,
-    'MultiSystemCompressionCycle2Calculator': MultiSystemCompressionCycle2Calculator,
-    'UQFFExpandedSystemRegistryCalculator': UQFFExpandedSystemRegistryCalculator,
-    'Session115GrokShare5fa36e4eHubCalculator': Session115GrokShare5fa36e4eHubCalculator,
-    # Session 116 — grok_share_e70525fa.txt MUGE+UFE (PAPER_456–463)
-    'MUGECompressed29SystemUnifiedGravityCalculator': MUGECompressed29SystemUnifiedGravityCalculator,
-    'MUGECompressed38SystemExtendedEnvCalculator': MUGECompressed38SystemExtendedEnvCalculator,
-    'MUGEFinal7SystemResonanceAccelerationsCalculator': MUGEFinal7SystemResonanceAccelerationsCalculator,
-    'UFEOrbPlasmoidDynamicsRedDwarfCalculator': UFEOrbPlasmoidDynamicsRedDwarfCalculator,
-    'NebularUQFFDrawing32LENRHiggsCalculator': NebularUQFFDrawing32LENRHiggsCalculator,
-    'RedDwarfLENRPiSeriesHiggsCalculator': RedDwarfLENRPiSeriesHiggsCalculator,
-    'InertiaUQFFWaveEnergyThreeLegProofsetCalculator': InertiaUQFFWaveEnergyThreeLegProofsetCalculator,
-    'HydrogenCompressedSpaceEspaceThreeLegCalculator': HydrogenCompressedSpaceEspaceThreeLegCalculator,
-    'Session116GrokShareE70525FaHubCalculator': Session116GrokShareE70525FaHubCalculator,
-    # Session 209 — Sessions 204-208 standalone module integration (PAPER_878–900)
-    'SCmGaussianActivationBFieldSuppressionCalc': SCmGaussianActivationBFieldSuppressionCalc,
-    'BuoyancyKleinGordonScalarFieldEOMCalc': BuoyancyKleinGordonScalarFieldEOMCalc,
-    'PositiveEtBuoyancyExpansionMasterCalc': PositiveEtBuoyancyExpansionMasterCalc,
-    'KozimaExpansionNeutronDropCouplingCalc': KozimaExpansionNeutronDropCouplingCalc,
-    'ExpansionLagrangianEulerLagrangeCalc': ExpansionLagrangianEulerLagrangeCalc,
-    'NegativeEtBuoyancyErosionMasterCalc': NegativeEtBuoyancyErosionMasterCalc,
-    'NetEnergyEplusEminusEvolutionCalc': NetEnergyEplusEminusEvolutionCalc,
-    'GWDampingErosion66PercentCalc': GWDampingErosion66PercentCalc,
-    'ErosionLagrangianEulerLagrangeCalc': ErosionLagrangianEulerLagrangeCalc,
-    'UQFFVsStringTheory10AspectComparisonCalc': UQFFVsStringTheory10AspectComparisonCalc,
-    'EtFullLagrangianUnifiedDerivationCalc': EtFullLagrangianUnifiedDerivationCalc,
-    'EtVsLambdaCDMDarkEnergyContrastCalc': EtVsLambdaCDMDarkEnergyContrastCalc,
-    'SCmVacuumDensityEvolutionCalc': SCmVacuumDensityEvolutionCalc,
-    'SCmNetEnergyBuoyancyRegimeCalc': SCmNetEnergyBuoyancyRegimeCalc,
-    'SCmKozimaPhononResonanceCouplingCalc': SCmKozimaPhononResonanceCouplingCalc,
-    'SCmPhononModulatedEnergyPhiCalc': SCmPhononModulatedEnergyPhiCalc,
-    'SCmEtLagrangianVariationCalc': SCmEtLagrangianVariationCalc,
-    'EtVsQuintessenceScalarFieldContrastCalc': EtVsQuintessenceScalarFieldContrastCalc,
-    'PhononModulationFactor125THzGaussianCalc': PhononModulationFactor125THzGaussianCalc,
-    'PhononModulatedEnergyEnetPhononCalc': PhononModulatedEnergyEnetPhononCalc,
-    'PhononLagrangianPhiS26DerivationCalc': PhononLagrangianPhiS26DerivationCalc,
-    'BuoyancyReversalSignFlipResonanceCalc': BuoyancyReversalSignFlipResonanceCalc,
-    'EtVsKEssenceScherrerModelContrastCalc': EtVsKEssenceScherrerModelContrastCalc,
-}
+# Build CP4_CALCULATORS dynamically from all classes in the module
+CP4_CALCULATORS = {}
+for _name, _obj in _inspect.getmembers(_cp4_module, _inspect.isclass):
+    if _name.startswith('_'):
+        continue
+    if hasattr(_obj, 'compute') or 'Calc' in _name or 'Calculator' in _name:
+        CP4_CALCULATORS[_name] = _obj
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# IMPORT FROM STANDALONE PHYSICS MODULES (Sessions 204-220)
+# Each module is guarded with try/except to avoid import failures breaking
+# the aggregator if a module has unresolved dependencies.
+# ═══════════════════════════════════════════════════════════════════════════════
+
+STANDALONE_CALCULATORS = {}
+
+def _safe_import(module_name, class_names):
+    """Import calculator classes from a standalone module, silently skip on failure."""
+    try:
+        mod = __import__(module_name)
+        for name in class_names:
+            obj = getattr(mod, name, None)
+            if obj is not None:
+                globals()[name] = obj
+                STANDALONE_CALCULATORS[name] = obj
+    except Exception:
+        pass
+
+# Session 204 — Kozima-LENR + Ramanujan + WSTP modules
+_safe_import('bcs_superconductivity_uqff', [
+    'BCSGapEquation', 'BCSCriticalTemperature', 'CooperPairPhononCoupling',
+])
+_safe_import('spectral_ladder_26state', [
+    'SpectralLadder26State', 'RamanujanAcceleration', 'SpectralLadderPhononMapping',
+])
+_safe_import('ramanujan_26d_summation', [
+    'Ramanujan26DSummation', 'VDSPolylog26',
+])
+_safe_import('ramanujan_26d_expanded', [
+    'ExpandedRamanujan26DCalculator',
+])
+_safe_import('qgp_ramanujan_application', [
+    'QGPVacuumDensityCalculator', 'YangMillsMassGapCalculator',
+    'ALICECentralityMultiplicityCalculator', 'ColorDeconfinementPhaseCalculator',
+])
+
+# Session 211 — SCm phonon gap
+_safe_import('bh_phonon_interaction', [
+    'PhononErgosphereSuperradiance', 'PhononModifiedHawkingTemperature',
+    'QPOAccretionDiskPhononCoupling', 'PhononModifiedBHEntropy',
+    'BlazarErgosphereCoupling',
+])
+_safe_import('scm_phonon_linewidth', [
+    'LinewidthEnetEvolution', 'LinewidthNeutronDrop',
+    'LinewidthBuoyancyReversal', 'LinewidthRegimeClassifier',
+])
+_safe_import('scm_phonon_resonance', [
+    'ResonanceAcceleration', 'LinewidthGammaSweep', 'VacuumDensityCoupling',
+    'ResonanceFrequencyScan', 'PhononDampingEvolution',
+    'MultiLayerPhononGravityCoupling', 'KozimaNeutronDropLinewidth',
+])
+
+# Session 212 — Linewidth gap + jet modulation
+_safe_import('blazar_jet_phonon', [
+    'BlazarErgosphereResonance', 'BlazarJetPowerGammaCurve',
+    'BlazarMultiMessengerPhononCorrelation', 'CentaurusAJetPhononCoupling',
+    'TXS0506JetPhononCoupling', 'EtLinewidthModulation',
+])
+_safe_import('quasar_jet_phonon', [
+    'JetModulationFactor', 'BlandfordZnajekJetPower',
+    'JetPowerGammaSweep', 'JetPhononWSTPExporter',
+])
+_safe_import('nuclear_um_jwst_synthesis', ['UniversalMagnetismCalculator'])
+_safe_import('linewidth_jet_modulation', [
+    'LinewidthJetModulationSweep', 'CollimationPowerMapping', 'ReferenceSystemMatcher',
+])
+
+# Session 213 — AGN/blazar jet power curves + SMBH mergers
+_safe_import('agn_jet_power_curves', [
+    'MonteCarloJetPowerSampler', 'MultiAGNGammaSweep', 'MultiAGNMonteCarloBatch',
+])
+_safe_import('blazar_jet_power_curves_extended', [
+    'CentaurusAJetPowerCurves', 'TXS0506JetPowerCurves', 'DualBlazarJetComparison',
+])
+_safe_import('smbh_binary_mergers', [
+    'SMBHBinaryMergerPhonon', 'MergerStrainDamping',
+    'MergerPhaseLag', 'MergerLagrangianVariation',
+])
+
+# Session 214 — BCS superconductivity + spectral ladder + E(t) modulation
+_safe_import('triadic_solutions_next', [
+    'CompressedGravityTriadic', 'ResonantGravityTriadic',
+    'BuoyancyGravityTriadic', 'TriadicSolverNext',
+])
+_safe_import('triadic_validations_next', [
+    'QGPTriadicValidator', 'NinetyNineSystemTriadicValidator', 'ALICETriadicCrossCheck',
+])
+
+# Session 215 — 26D Ramanujan + 3D MUGE + NS phonon + v11 scaling
+_safe_import('muge_magnetar_3d_sim', [
+    'SCmCoreModel', 'MagneticVortexModel', 'PhononResonanceShells', 'MUGEMagnetar3DSim',
+])
+_safe_import('muge_cluster_3d_sim', ['Galaxy3D', 'MUGECluster3DSim'])
+
+# Session 216 — QGP + 99-system + cluster 3D
+_safe_import('99system_master_equation', ['NinetyNineSystemMasterCalc', 'NinetyNineSystemAggregateCalc'])
+
+# Session 217 — F_U_Bi_i master buoyancy
+_safe_import('fubi_master_calculator', ['FUBiMasterCalculator'])
+
+# Session 218 — F_U_Bi inside/outside + 99sys gamma sweep + v13
+_safe_import('fubi_inside_outside', [
+    'FUBiInsideOutsideCalc', 'FUBiDistinctionCalc', 'SolarCalibration147Calc',
+])
+
+# Session 219 — AGN/NS merger + SCm-QGP + revised curves + v14
+_safe_import('fubi_agn_ns_mergers', [
+    'AGNFUBiMergerCalc', 'NSMergerFUBiCalc', 'SMBHBinaryMergerFUBiCalc',
+    'AGNAccretionBuoyancyCalc', 'SpectralLadderMergerCalc',
+])
+_safe_import('scm_qgp_dynamics', [
+    'QGPVacuumDensityCalc', 'YangMillsMassGapCalc',
+    'ALICEMultiplicityCalc', 'DeconfinementPhaseDiagramCalc',
+])
+_safe_import('fubi_i_curves_revised', [
+    'CentaurusARevisedCurvesCalc', 'GW190425RevisedCurvesCalc',
+    'TXS0506RevisedCurvesCalc', 'WormholeGeodesicBatchCalc',
+])
+
+# Session 220 — 3C273/TON618 AGN + GW170817 + SMBH merger + SCm DM halos + TXS0506 revised
+_safe_import('fubi_i_curves_agn_ns_qgp', [
+    'ThreeCTwoSevenThreeAGNCurvesCalc', 'TON618AGNCurvesCalc',
+    'GW170817MergerCurvesCalc', 'GW190425UpgradedCurvesCalc',
+    'QGPALICECentralityCurvesCalc',
+])
+_safe_import('fubi_smbh_mergers', [
+    'SMBHInspiralFUBiCalc', 'SMBHCoalescenceFUBiCalc', 'SMBHRingdownFUBiCalc',
+])
+_safe_import('scm_dm_halos', [
+    'SCmDMHaloDensityCalc', 'RotationCurveFlatteningCalc', 'HaloStabilizationCalc',
+])
+_safe_import('fubi_i_txs0506_revised', [
+    'TXS0506ExtremeFlareCalc', 'TXS0506IceCubeCalc',
+    'TXS0506SustainedEmissionCalc', 'TXS0506ThreeGammaProfileCalc',
+])
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # AGGREGATED MASTER REGISTRY
@@ -990,8 +852,10 @@ ALL_CALCULATORS = {
     **CP2_CALCULATORS,
     # CP3 Extension 2 (219 classes, 15+ categories, Sessions 41-96 — 2026-03-20)
     **CP3_CALCULATORS,
-    # CP4 Extension 3 (453 classes, Sessions 97-200C — 2026-04-05)
+    # CP4 Extension 3 (580 classes, Sessions 97-220 — 2026-04-13, dynamically built)
     **CP4_CALCULATORS,
+    # Standalone physics modules (Sessions 204-220)
+    **STANDALONE_CALCULATORS,
     # Grok Thread UQFF Extensions (Thread 9c3666463ac14753b4f3bea869caaf01)
     **GROK_THREAD_UQFF_CALCULATORS,
     # Grok Deep Analysis Modules (Equations 12-99)
@@ -1006,10 +870,9 @@ ALL_CALCULATORS = {
 }
 
 # Module metadata
-# Module metadata
-AGGREGATOR_VERSION = "3.8.0"
-TOTAL_MODULES = 24  # CP1 (1,227 classes, 168,803L), CP2 (659 classes), CP3 (219 classes, 13,944L), CP4 (484 classes, v5.65 Session 210c), + 10 thread registries + source179 PCR module
-# Updated: Session 210c v5.65 (2026-04-11) — CP4 478→484 (#501–#506); PAPER_917–922; 922/1000 papers (92.2%); exponential strain + SNR phonon + Sgr A* flare contrast + Monte Carlo jet + inspiral phase + M87 jet curves; class count corrected from 506→484 (fixed +22 overcount from S209)
+AGGREGATOR_VERSION = "4.0.0"
+TOTAL_MODULES = 35  # CP1 (1,227 classes) + CP2 (668 classes) + CP3 (219 classes) + CP4 (580 classes, v5.75 Session 220) + 10 thread registries + 29 standalone physics modules
+# Updated: Session 220 v5.75 (2026-04-13) — Housekeeping: aggregator catch-up; wildcard CP4 import (540→580 classes); 29 standalone modules added (Sessions 204-220); dynamic CP4_CALCULATORS registry; 1018/1000 papers; 1033 PDFs
 
 
 def get_calculator(name: str):
@@ -1045,8 +908,12 @@ def list_all_calculators():
     return {
         'CP2_ORB_ANALYSIS_10': list(ORB_ANALYSIS_10_CALCULATORS.keys()),
         'CP2_ORB_ANALYSIS_11': list(ORB_ANALYSIS_11_CALCULATORS.keys()),
-        # CP3 Extension 2 (112 classes, 15+ categories, Sessions 41-60)
+        # CP3 Extension 2 (219 classes, 15+ categories, Sessions 41-96)
         'CP3_ALL': list(CP3_CALCULATORS.keys()),
+        # CP4 Extension 3 (580 classes, Sessions 97-220, dynamically built)
+        'CP4_ALL': list(CP4_CALCULATORS.keys()),
+        # Standalone physics modules (Sessions 204-220)
+        'STANDALONE': list(STANDALONE_CALCULATORS.keys()),
         # Grok Deep Analysis modules
         'AGN_FEEDBACK': list(AGN_FEEDBACK_CALCULATORS.keys()),
         'GRB_EQUATIONS': list(GRB_CALCULATORS.keys()),
@@ -1064,6 +931,8 @@ def list_all_calculators():
 __all__ = [
     # Aggregator utilities
     'ALL_CALCULATORS',
+    'CP4_CALCULATORS',
+    'STANDALONE_CALCULATORS',
     'AGGREGATOR_VERSION',
     'TOTAL_MODULES',
     'get_calculator',
@@ -1130,27 +999,10 @@ __all__ = [
     'TXS0506PICoSumCalculator',
     # Orb Analysis_10
     'ORB_ANALYSIS_10_PARAMS',
-    'ThirtySixFrameSequenceCalculator',
-    'CyclicalConvectionPatternCalculator',
-    'Orb10RefinedFUCalculator',
-    'SpookyActionNonLocalTransferCalculator',
-    'ThermalGradientDrivenDynamicsCalculator',
-    'QuadrantTransitionTrackerCalculator',
-    'ACEDCEModulatedEnergyCalculator',
-    'MagneticBubbleConfinementCalculator',
     'ORB_ANALYSIS_10_CALCULATORS',
     
     # Orb Analysis_11
     'ORB_ANALYSIS_11_PARAMS',
-    'ThirtyNineFrameSequenceCalculator',
-    'CounterClockwiseDiagonalCycleCalculator',
-    'Orb11RefinedFUCalculator',
-    'ExtendedCyclePatternAnalyzerCalculator',
-    'IntelligentPlasmoidBehaviorCalculator',
-    'BulbDrivenPlasmaEnergeticsCalculator',
-    'WaxCapCoolingDynamicsCalculator',
-    'FieldGeneratorResonanceCouplingCalculator',
-    'TotalEnergyBudgetCalculator',
     'ORB_ANALYSIS_11_CALCULATORS',
     
     # AGN Feedback Module
@@ -1252,3 +1104,6 @@ __all__ = [
     'BuoyancyReversalSignFlipResonanceCalc',
     'EtVsKEssenceScherrerModelContrastCalc',
 ]
+
+# Dynamically extend __all__ with CP4 and standalone calculator names
+__all__ += list(CP4_CALCULATORS.keys()) + list(STANDALONE_CALCULATORS.keys())
