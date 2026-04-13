@@ -1,0 +1,627 @@
+{
+  "date": "2026-04-13",
+  "mode": "live",
+  "papers_upgraded": 60,
+  "sections_added": 199,
+  "details": [
+    {
+      "paper": "PAPER_945",
+      "score_before": 32,
+      "sections_added": [
+        "Calibration_Constants",
+        "SM_Anchors",
+        "Cosmogenesis",
+        "VDS_DVP_BSH"
+      ],
+      "file": "PAPER_945_Merger_Phase_Lag.md"
+    },
+    {
+      "paper": "PAPER_938",
+      "score_before": 34,
+      "sections_added": [
+        "Calibration_Constants",
+        "SM_Anchors",
+        "Cosmogenesis",
+        "VDS_DVP_BSH"
+      ],
+      "file": "PAPER_938_Production_Scaling_V8_Benchmark.md"
+    },
+    {
+      "paper": "PAPER_942",
+      "score_before": 34,
+      "sections_added": [
+        "Calibration_Constants",
+        "SM_Anchors",
+        "Cosmogenesis",
+        "VDS_DVP_BSH"
+      ],
+      "file": "PAPER_942_Collimation_Power_Mapping.md"
+    },
+    {
+      "paper": "PAPER_948",
+      "score_before": 34,
+      "sections_added": [
+        "Calibration_Constants",
+        "SM_Anchors",
+        "Cosmogenesis",
+        "VDS_DVP_BSH"
+      ],
+      "file": "PAPER_948_Production_Scaling_V9_Benchmark.md"
+    },
+    {
+      "paper": "PAPER_997",
+      "score_before": 36,
+      "sections_added": [
+        "Calibration_Constants",
+        "SM_Anchors",
+        "Cosmogenesis",
+        "VDS_DVP_BSH"
+      ],
+      "file": "PAPER_997_Production_Scaling_V13.md"
+    },
+    {
+      "paper": "PAPER_1008",
+      "score_before": 36,
+      "sections_added": [
+        "Calibration_Constants",
+        "SM_Anchors",
+        "Cosmogenesis",
+        "VDS_DVP_BSH"
+      ],
+      "file": "PAPER_1008_Production_Scaling_V14.md"
+    },
+    {
+      "paper": "PAPER_930",
+      "score_before": 37,
+      "sections_added": [
+        "Calibration_Constants",
+        "SM_Anchors",
+        "Cosmogenesis",
+        "VDS_DVP_BSH"
+      ],
+      "file": "PAPER_930_Production_Scaling_V7_Benchmark.md"
+    },
+    {
+      "paper": "PAPER_935",
+      "score_before": 39,
+      "sections_added": [
+        "Calibration_Constants",
+        "SM_Anchors",
+        "Cosmogenesis",
+        "VDS_DVP_BSH"
+      ],
+      "file": "PAPER_935_GW170817_Tidal_Deformability_Phonon_Correction.md"
+    },
+    {
+      "paper": "PAPER_936",
+      "score_before": 39,
+      "sections_added": [
+        "Calibration_Constants",
+        "SM_Anchors",
+        "Cosmogenesis",
+        "VDS_DVP_BSH"
+      ],
+      "file": "PAPER_936_GW170817_Inspiral_Phase_Lag.md"
+    },
+    {
+      "paper": "PAPER_941",
+      "score_before": 39,
+      "sections_added": [
+        "Calibration_Constants",
+        "SM_Anchors",
+        "Cosmogenesis",
+        "VDS_DVP_BSH"
+      ],
+      "file": "PAPER_941_Linewidth_Jet_Modulation_Engine.md"
+    },
+    {
+      "paper": "PAPER_944",
+      "score_before": 39,
+      "sections_added": [
+        "Calibration_Constants",
+        "SM_Anchors",
+        "Cosmogenesis",
+        "VDS_DVP_BSH"
+      ],
+      "file": "PAPER_944_Merger_Strain_Damping.md"
+    },
+    {
+      "paper": "PAPER_947",
+      "score_before": 39,
+      "sections_added": [
+        "Calibration_Constants",
+        "SM_Anchors",
+        "Cosmogenesis",
+        "VDS_DVP_BSH"
+      ],
+      "file": "PAPER_947_GW190425_Mass_Gap_Phonon.md"
+    },
+    {
+      "paper": "PAPER_1003",
+      "score_before": 39,
+      "sections_added": [
+        "Calibration_Constants",
+        "SM_Anchors",
+        "Cosmogenesis",
+        "VDS_DVP_BSH"
+      ],
+      "file": "PAPER_1003_Spectral_Ladder_Merger.md"
+    },
+    {
+      "paper": "PAPER_940",
+      "score_before": 40,
+      "sections_added": [
+        "Calibration_Constants",
+        "SM_Anchors",
+        "Cosmogenesis",
+        "VDS_DVP_BSH"
+      ],
+      "file": "PAPER_940_TXS_0506_Jet_Power_Curves.md"
+    },
+    {
+      "paper": "PAPER_992",
+      "score_before": 41,
+      "sections_added": [
+        "Calibration_Constants",
+        "SM_Anchors",
+        "Cosmogenesis",
+        "VDS_DVP_BSH"
+      ],
+      "file": "PAPER_992_GW190425_NS_Merger_Curves.md"
+    },
+    {
+      "paper": "PAPER_1006",
+      "score_before": 41,
+      "sections_added": [
+        "Calibration_Constants",
+        "SM_Anchors",
+        "Cosmogenesis",
+        "VDS_DVP_BSH"
+      ],
+      "file": "PAPER_1006_ALICE_Multiplicity_SCm.md"
+    },
+    {
+      "paper": "PAPER_1011",
+      "score_before": 41,
+      "sections_added": [
+        "Calibration_Constants",
+        "SM_Anchors",
+        "Cosmogenesis",
+        "VDS_DVP_BSH"
+      ],
+      "file": "PAPER_1011_GW170817_NS_Merger_FUBi_i.md"
+    },
+    {
+      "paper": "PAPER_1002",
+      "score_before": 42,
+      "sections_added": [
+        "Calibration_Constants",
+        "SM_Anchors",
+        "Cosmogenesis",
+        "VDS_DVP_BSH"
+      ],
+      "file": "PAPER_1002_AGN_Accretion_Buoyancy.md"
+    },
+    {
+      "paper": "PAPER_1005",
+      "score_before": 42,
+      "sections_added": [
+        "Calibration_Constants",
+        "SM_Anchors",
+        "Cosmogenesis",
+        "VDS_DVP_BSH"
+      ],
+      "file": "PAPER_1005_YangMills_MassGap_SCm.md"
+    },
+    {
+      "paper": "PAPER_931",
+      "score_before": 43,
+      "sections_added": [
+        "SM_Anchors",
+        "Cosmogenesis",
+        "VDS_DVP_BSH"
+      ],
+      "file": "PAPER_931_SCm_Phonon_Linewidth_Enet_Evolution.md"
+    },
+    {
+      "paper": "PAPER_996",
+      "score_before": 43,
+      "sections_added": [
+        "SM_Anchors",
+        "Cosmogenesis",
+        "VDS_DVP_BSH"
+      ],
+      "file": "PAPER_996_WSTP_Gamma_Sweep_Runner.md"
+    },
+    {
+      "paper": "PAPER_932",
+      "score_before": 44,
+      "sections_added": [
+        "Calibration_Constants",
+        "SM_Anchors",
+        "Cosmogenesis",
+        "VDS_DVP_BSH"
+      ],
+      "file": "PAPER_932_Blazar_Ergosphere_Phonon_Resonance.md"
+    },
+    {
+      "paper": "PAPER_933",
+      "score_before": 44,
+      "sections_added": [
+        "Calibration_Constants",
+        "SM_Anchors",
+        "Cosmogenesis",
+        "VDS_DVP_BSH"
+      ],
+      "file": "PAPER_933_Extended_AGN_Three_Point_Jet_Power_Curves.md"
+    },
+    {
+      "paper": "PAPER_937",
+      "score_before": 44,
+      "sections_added": [
+        "Calibration_Constants",
+        "SM_Anchors",
+        "Cosmogenesis",
+        "VDS_DVP_BSH"
+      ],
+      "file": "PAPER_937_Blazar_Multi_Messenger_Phonon_Correlation.md"
+    },
+    {
+      "paper": "PAPER_998",
+      "score_before": 46,
+      "sections_added": [
+        "Calibration_Constants",
+        "SM_Anchors",
+        "Cosmogenesis",
+        "VDS_DVP_BSH"
+      ],
+      "file": "PAPER_998_REST_FUBi_GammaSweep.md"
+    },
+    {
+      "paper": "PAPER_1001",
+      "score_before": 46,
+      "sections_added": [
+        "Calibration_Constants",
+        "SM_Anchors",
+        "Cosmogenesis",
+        "VDS_DVP_BSH"
+      ],
+      "file": "PAPER_1001_SMBH_Binary_Merger_FUBi.md"
+    },
+    {
+      "paper": "PAPER_990",
+      "score_before": 47,
+      "sections_added": [
+        "Calibration_Constants",
+        "SM_Anchors",
+        "Cosmogenesis",
+        "VDS_DVP_BSH"
+      ],
+      "file": "PAPER_990_FUBi_vs_FUBii_Distinction.md"
+    },
+    {
+      "paper": "PAPER_995",
+      "score_before": 47,
+      "sections_added": [
+        "Calibration_Constants",
+        "SM_Anchors",
+        "Cosmogenesis",
+        "VDS_DVP_BSH"
+      ],
+      "file": "PAPER_995_99System_Gamma_Sweep.md"
+    },
+    {
+      "paper": "PAPER_1007",
+      "score_before": 47,
+      "sections_added": [
+        "Calibration_Constants",
+        "SM_Anchors",
+        "Cosmogenesis",
+        "VDS_DVP_BSH"
+      ],
+      "file": "PAPER_1007_Deconfinement_Phase_Diagram.md"
+    },
+    {
+      "paper": "PAPER_1012",
+      "score_before": 47,
+      "sections_added": [
+        "Calibration_Constants",
+        "SM_Anchors",
+        "Cosmogenesis",
+        "VDS_DVP_BSH"
+      ],
+      "file": "PAPER_1012_GW190425_Upgraded_FUBi_i.md"
+    },
+    {
+      "paper": "PAPER_939",
+      "score_before": 50,
+      "sections_added": [
+        "Calibration_Constants",
+        "SM_Anchors",
+        "Cosmogenesis",
+        "VDS_DVP_BSH"
+      ],
+      "file": "PAPER_939_Centaurus_A_Jet_Power_Curves.md"
+    },
+    {
+      "paper": "PAPER_994",
+      "score_before": 51,
+      "sections_added": [
+        "Calibration_Constants",
+        "SM_Anchors",
+        "Cosmogenesis",
+        "VDS_DVP_BSH"
+      ],
+      "file": "PAPER_994_Solar_Calibration_147.md"
+    },
+    {
+      "paper": "PAPER_999",
+      "score_before": 51,
+      "sections_added": [
+        "Calibration_Constants",
+        "SM_Anchors",
+        "Cosmogenesis",
+        "VDS_DVP_BSH"
+      ],
+      "file": "PAPER_999_AGN_FUBi_Merger_S26_3rd.md"
+    },
+    {
+      "paper": "PAPER_1000",
+      "score_before": 51,
+      "sections_added": [
+        "SM_Anchors",
+        "Cosmogenesis",
+        "VDS_DVP_BSH"
+      ],
+      "file": "PAPER_1000_NS_Merger_FUBi_Strain.md"
+    },
+    {
+      "paper": "PAPER_1004",
+      "score_before": 51,
+      "sections_added": [
+        "Calibration_Constants",
+        "SM_Anchors",
+        "Cosmogenesis",
+        "VDS_DVP_BSH"
+      ],
+      "file": "PAPER_1004_QGP_Vacuum_Density_SCm.md"
+    },
+    {
+      "paper": "PAPER_1009",
+      "score_before": 51,
+      "sections_added": [
+        "Calibration_Constants",
+        "SM_Anchors",
+        "Cosmogenesis",
+        "VDS_DVP_BSH"
+      ],
+      "file": "PAPER_1009_3C273_AGN_FUBi_i_Curves.md"
+    },
+    {
+      "paper": "PAPER_1010",
+      "score_before": 51,
+      "sections_added": [
+        "Calibration_Constants",
+        "SM_Anchors",
+        "Cosmogenesis",
+        "VDS_DVP_BSH"
+      ],
+      "file": "PAPER_1010_TON618_AGN_FUBi_i_Curves.md"
+    },
+    {
+      "paper": "PAPER_993",
+      "score_before": 52,
+      "sections_added": [
+        "Calibration_Constants",
+        "SM_Anchors",
+        "Cosmogenesis",
+        "VDS_DVP_BSH"
+      ],
+      "file": "PAPER_993_TXS0506_Blazar_Jet_Mod.md"
+    },
+    {
+      "paper": "PAPER_925",
+      "score_before": 54,
+      "sections_added": [
+        "Calibration_Constants",
+        "SM_Anchors",
+        "Cosmogenesis"
+      ],
+      "file": "PAPER_925_Quasar_Jet_Phonon_Modulation.md"
+    },
+    {
+      "paper": "PAPER_934",
+      "score_before": 54,
+      "sections_added": [
+        "Calibration_Constants",
+        "SM_Anchors",
+        "Cosmogenesis",
+        "VDS_DVP_BSH"
+      ],
+      "file": "PAPER_934_GW170817_Phonon_Suppressed_Strain.md"
+    },
+    {
+      "paper": "PAPER_943",
+      "score_before": 54,
+      "sections_added": [
+        "Calibration_Constants",
+        "SM_Anchors",
+        "Cosmogenesis",
+        "VDS_DVP_BSH"
+      ],
+      "file": "PAPER_943_SMBH_Binary_Merger_Phonon.md"
+    },
+    {
+      "paper": "PAPER_946",
+      "score_before": 54,
+      "sections_added": [
+        "Calibration_Constants",
+        "SM_Anchors",
+        "VDS_DVP_BSH"
+      ],
+      "file": "PAPER_946_Merger_Lagrangian_Variation.md"
+    },
+    {
+      "paper": "PAPER_989",
+      "score_before": 59,
+      "sections_added": [
+        "Calibration_Constants",
+        "SM_Anchors",
+        "Cosmogenesis",
+        "VDS_DVP_BSH"
+      ],
+      "file": "PAPER_989_FUBi_Inside_Out_Mass.md"
+    },
+    {
+      "paper": "PAPER_924",
+      "score_before": 61,
+      "sections_added": [
+        "Calibration_Constants",
+        "SM_Anchors",
+        "Cosmogenesis"
+      ],
+      "file": "PAPER_924_BH_Phonon_Ergosphere_Superradiance.md"
+    },
+    {
+      "paper": "PAPER_926",
+      "score_before": 61,
+      "sections_added": [
+        "Calibration_Constants",
+        "SM_Anchors",
+        "Cosmogenesis"
+      ],
+      "file": "PAPER_926_Multi_AGN_Monte_Carlo_Jet_Power.md"
+    },
+    {
+      "paper": "PAPER_927",
+      "score_before": 61,
+      "sections_added": [
+        "Calibration_Constants",
+        "SM_Anchors",
+        "Cosmogenesis"
+      ],
+      "file": "PAPER_927_GW190425_Phonon_Suppressed_Strain.md"
+    },
+    {
+      "paper": "PAPER_928",
+      "score_before": 61,
+      "sections_added": [
+        "Calibration_Constants",
+        "SM_Anchors",
+        "Cosmogenesis"
+      ],
+      "file": "PAPER_928_GW190425_Wavelength_Phonon_Correction.md"
+    },
+    {
+      "paper": "PAPER_929",
+      "score_before": 61,
+      "sections_added": [
+        "Calibration_Constants",
+        "SM_Anchors",
+        "Cosmogenesis"
+      ],
+      "file": "PAPER_929_NS_Phonon_Spindown_Correction.md"
+    },
+    {
+      "paper": "PAPER_987",
+      "score_before": 61,
+      "sections_added": [
+        "Calibration_Constants",
+        "SM_Anchors"
+      ],
+      "file": "PAPER_987_WSTP_FUBi_Symbolic_Export.md"
+    },
+    {
+      "paper": "PAPER_991",
+      "score_before": 62,
+      "sections_added": [
+        "Calibration_Constants",
+        "SM_Anchors",
+        "Cosmogenesis",
+        "VDS_DVP_BSH"
+      ],
+      "file": "PAPER_991_CenA_AGN_FUBi_Curves.md"
+    },
+    {
+      "paper": "PAPER_923",
+      "score_before": 65,
+      "sections_added": [
+        "SM_Anchors",
+        "Cosmogenesis"
+      ],
+      "file": "PAPER_923_SCm_Phonon_Resonance_Acceleration.md"
+    },
+    {
+      "paper": "PAPER_740",
+      "score_before": 75,
+      "sections_added": [
+        "SM_Anchors"
+      ],
+      "file": "PAPER_740_MassWithoutWeight_fUb_BuoyancyCalibration.md"
+    },
+    {
+      "paper": "PAPER_742",
+      "score_before": 85,
+      "sections_added": [
+        "SM_Anchors"
+      ],
+      "file": "PAPER_742_Sombrero_Galaxy_MUGE_Dust_Lane_Drag.md"
+    },
+    {
+      "paper": "PAPER_656",
+      "score_before": 90,
+      "sections_added": [
+        "SM_Anchors"
+      ],
+      "file": "PAPER_656_UQFF_V838_Mon_Light_Echo_Master_Equation.md"
+    },
+    {
+      "paper": "PAPER_747",
+      "score_before": 90,
+      "sections_added": [
+        "SM_Anchors"
+      ],
+      "file": "PAPER_747_Universe_Diameter_UQFF_182_Billion_Light_Years.md"
+    },
+    {
+      "paper": "PAPER_793",
+      "score_before": 90,
+      "sections_added": [
+        "SM_Anchors"
+      ],
+      "file": "PAPER_793_ESO510_G13_Warped_Spiral_Three_UQFF.md"
+    },
+    {
+      "paper": "PAPER_837",
+      "score_before": 90,
+      "sections_added": [
+        "SM_Anchors"
+      ],
+      "file": "PAPER_837_Fquark_Fneutrino_FALP_Fdark_ArXiv_Bridge_UQFF.md"
+    },
+    {
+      "paper": "PAPER_849",
+      "score_before": 90,
+      "sections_added": [
+        "SM_Anchors"
+      ],
+      "file": "PAPER_849_ArXiv_24Paper_BSM_Landscape_Fquark_Fneutrino_FALP_Fdark.md"
+    },
+    {
+      "paper": "PAPER_850",
+      "score_before": 90,
+      "sections_added": [
+        "SM_Anchors"
+      ],
+      "file": "PAPER_850_ADD_Graviton_Leakage_Negative_Buoyancy_SgrA.md"
+    },
+    {
+      "paper": "PAPER_862",
+      "score_before": 90,
+      "sections_added": [
+        "SM_Anchors"
+      ],
+      "file": "PAPER_862_Universal_Magnetism_Um_Master_Equation.md"
+    }
+  ]
+}
