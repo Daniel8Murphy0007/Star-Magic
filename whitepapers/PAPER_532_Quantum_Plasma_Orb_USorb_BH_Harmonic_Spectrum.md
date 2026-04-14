@@ -139,6 +139,39 @@ result = calc.compute()
 
 ---
 
+<!-- PKG-CLU-S225 -->
+
+### Session 225 Phonon-Physics Upgrade: ICM Buoyancy Force Profile
+
+> *Upgrade from PAPER_1039 (SCm Galaxy Cluster Buoyancy Profile),
+> PAPER_1041 (Cool-Core Buoyancy Balance), and PAPER_1079 (Cooling-Flow
+> Suppression).  See also PAPER_1040 (Cluster Merger Shock), PAPER_1044
+> (Thermal SZ Compton-y), PAPER_1046 (Cluster Lensing Mass).*
+
+The SCm phonon field introduces a buoyancy force in the ICM that modifies
+hydrostatic equilibrium:
+
+$$F_{\text{buoy}}(r) = \rho(r) \cdot V \cdot g(r) \cdot \beta_i \cdot S_{26} \cdot \Phi$$
+
+where the ICM density follows the beta-model:
+$$\rho(r) = \rho_0 \left(1 + \left(\frac{r}{r_c}\right)^2\right)^{-3\beta/2}$$
+
+**Hydrostatic mass bias reduction (PAPER_1039):**
+$$b_{\text{UQFF}} = 1 - \frac{M_{\text{HSE}}}{M_{\text{true}}} = 0.17 \qquad \text{(vs standard } b = 0.20\text{)}$$
+
+The buoyancy pressure contributes $P_{\text{buoy}}/P_{\text{thermal}} \approx 3\text{–}4\%$
+at cluster cores, partially resolving the Planck SZ–CMB mass tension.
+
+**Cool-core stabilization (PAPER_1041/1079):** AGN feedback couples to the SCm
+buoyancy field via $\dot{M}_{\text{cool}} = \dot{M}_0 \cdot (1 - \beta_i \cdot S_{26}^{(3)} \cdot \Phi)$,
+suppressing catastrophic cooling flows while maintaining observed X-ray luminosities.
+
+**Phonon frequency coupling:** $\omega_{\text{SCm}} = 2\pi \times 1.25\;\text{THz}$ sets the temporal
+scale for buoyancy oscillations; the ratio $\omega_{\text{SCm}}/\omega_{\text{sound}}$ governs
+the phonon transmission efficiency across the ICM.
+
+
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification

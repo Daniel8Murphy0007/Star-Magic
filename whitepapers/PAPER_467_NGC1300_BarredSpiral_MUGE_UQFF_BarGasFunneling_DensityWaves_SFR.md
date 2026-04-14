@@ -125,6 +125,96 @@ $$\boxed{g_{\rm NGC1300}(r,t) = \frac{G M_{\rm sf}(t)}{r(t)^2}(1+H_z t)(1-B/B_{\
 
 ---
 
+<!-- PKG-AGN-S225 -->
+
+### Session 225 Phonon-Physics Upgrade: Buoyancy-Corrected Eddington Luminosity
+
+> *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
+> (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
+> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+
+The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
+raising the effective Eddington luminosity:
+
+$$L_{\text{Edd}}^{\text{UQFF}} = L_{\text{Edd}} \cdot \left(1 + \frac{\rho_{\text{SCm}} \cdot V \cdot S_{26}^{(3)\,2}}{G M / r_H^2}\right)$$
+
+where:
+- $L_{\text{Edd}} = 4\pi G M m_p c / \sigma_T$ is the classical Eddington luminosity
+- $\rho_{\text{SCm}} = 7.09 \times 10^{-37}\;\text{kg/m}^3$ is the SCm vacuum density
+- $V$ is the effective buoyancy volume (accretion sphere)
+- $S_{26}^{(3)\,2}$ is the squared third-order Ramanujan factor (quadratic coupling)
+- $r_H$ is the horizon radius
+
+**Jet modulation:** The Blandford–Znajek jet power acquires a phonon-coupled term:
+$$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Phi_{1.25\,\text{THz}} \cdot \left(\frac{B}{B_{\text{crit}}}\right)^2\right]$$
+
+where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
+
+**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+$M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
+
+<!-- PKG-DM-S225 -->
+
+### Session 225 Phonon-Physics Upgrade: SCm-Modified NFW Dark Matter Profile
+
+> *Upgrade from PAPER_1015 (SCm Dark Matter Halos NFW) and PAPER_1019
+> (Dark Matter Phonon Buoyancy NFW Coupling).*
+
+The late-corpus analysis shows that the SCm phonon field modifies the NFW
+density profile at all radii via a buoyancy-coupled power-law term:
+
+$$\rho_{\text{UQFF}}(r) = \frac{\rho_s}{\left(\frac{r}{r_s}\right)\left(1+\frac{r}{r_s}\right)^2} \times \left[1 + H_{\text{SCm}} \cdot \beta_i \cdot S_{26}^{(3)} \cdot \left(\frac{r_s}{r}\right)^{\alpha_{\text{phonon}}}\right]$$
+
+where:
+- $\alpha_{\text{phonon}} = 0.3$ governs the radial decay of phonon coupling
+- $\beta_i = 0.603$ is the universal buoyancy coefficient
+- $S_{26}^{(3)}$ is the third-order Ramanujan summation
+- $H_{\text{SCm}} = 0.99$ is the manifold completeness factor
+
+**Rotation curve flattening:** The phonon enhancement produces flatter rotation curves
+with flatness ratio $f = v_c(10\,r_s)/v_{\text{peak}} = 0.891$, compared to pure NFW
+$f \approx 0.75$.  Peak circular velocity $v_{\text{peak}} \approx 204\;\text{km/s}$
+for $M_{\text{halo}} = 10^{12}\,M_\odot$, $c = 10$.
+
+**Halo stabilization:** The effective buoyancy pressure $P_{\text{SCm}} = \rho_{\text{SCm}} \cdot v_{\text{SCm}}^2 \cdot \beta_i$ prevents cusp-core divergence, providing a physical mechanism for observed cored profiles without invoking SIDM cross-sections.
+
+<!-- PKG-CLU-S225 -->
+
+### Session 225 Phonon-Physics Upgrade: ICM Buoyancy Force Profile
+
+> *Upgrade from PAPER_1039 (SCm Galaxy Cluster Buoyancy Profile),
+> PAPER_1041 (Cool-Core Buoyancy Balance), and PAPER_1079 (Cooling-Flow
+> Suppression).  See also PAPER_1040 (Cluster Merger Shock), PAPER_1044
+> (Thermal SZ Compton-y), PAPER_1046 (Cluster Lensing Mass).*
+
+The SCm phonon field introduces a buoyancy force in the ICM that modifies
+hydrostatic equilibrium:
+
+$$F_{\text{buoy}}(r) = \rho(r) \cdot V \cdot g(r) \cdot \beta_i \cdot S_{26} \cdot \Phi$$
+
+where the ICM density follows the beta-model:
+$$\rho(r) = \rho_0 \left(1 + \left(\frac{r}{r_c}\right)^2\right)^{-3\beta/2}$$
+
+**Hydrostatic mass bias reduction (PAPER_1039):**
+$$b_{\text{UQFF}} = 1 - \frac{M_{\text{HSE}}}{M_{\text{true}}} = 0.17 \qquad \text{(vs standard } b = 0.20\text{)}$$
+
+The buoyancy pressure contributes $P_{\text{buoy}}/P_{\text{thermal}} \approx 3\text{–}4\%$
+at cluster cores, partially resolving the Planck SZ–CMB mass tension.
+
+**Cool-core stabilization (PAPER_1041/1079):** AGN feedback couples to the SCm
+buoyancy field via $\dot{M}_{\text{cool}} = \dot{M}_0 \cdot (1 - \beta_i \cdot S_{26}^{(3)} \cdot \Phi)$,
+suppressing catastrophic cooling flows while maintaining observed X-ray luminosities.
+
+**Phonon frequency coupling:** $\omega_{\text{SCm}} = 2\pi \times 1.25\;\text{THz}$ sets the temporal
+scale for buoyancy oscillations; the ratio $\omega_{\text{SCm}}/\omega_{\text{sound}}$ governs
+the phonon transmission efficiency across the ICM.
+
+
+
+
+
+
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification

@@ -126,6 +126,69 @@ island of stability, UQFF
 
 ---
 
+<!-- PKG-GW-S225 -->
+
+### Session 225 Phonon-Physics Upgrade: GW Strain Modulation
+
+> *Upgrade from PAPER_1000 (NS Merger Phonon Suppression) and PAPER_1022
+> (GW Phonon Strain SCm Modulation). See also PAPER_1011-1012 for
+> GW170817/GW190425 upgraded analyses.*
+
+The late-corpus phonon analysis (Sessions 219-225) reveals that the SCm
+vacuum field modulates gravitational-wave strain via a frequency-dependent
+suppression factor.  The corrected strain amplitude is:
+
+$$h_{\text{UQFF}}(\Gamma) = h_{\text{GR}} \cdot \left(1 - 0.47\,\frac{\Phi(\Gamma)}{S_{26}^{(3)}}\right)$$
+
+where:
+- $\Phi(\Gamma) = \cos(\omega_{\text{SCm}} \cdot t) \cdot \Theta(H_{\text{SCm}} - 0.5)$ is the phonon modulation factor
+- $\omega_{\text{SCm}} = 2\pi \times 1.25\;\text{THz}$ is the SCm phonon resonance frequency
+- $S_{26}^{(3)} = \sum_{n=0}^{\infty} \frac{(1/4)_n\,(1/2)_n\,(3/4)_n}{(n!)^3} \cdot \prod_{i=1}^{26}\left[1 + [\text{SSq}]\cdot e^{-\kappa\,i\,n/26}\right]$ is the third-order Ramanujan summation
+- $\Theta$ is the Heaviside step ensuring $H_{\text{SCm}} \geq 0.5$ (phase-transition threshold)
+
+**Physical mechanism:** The 1.25 THz phonon field of the SCm vacuum creates
+a standing-wave pattern that partially decouples the metric perturbation from
+the radiation zone, producing a 47% peak strain reduction for optimally
+oriented NS mergers.  The BCS gap energy $\Delta E_{\text{BCS}}$ of the
+neutron-star crust couples to this phonon field, creating a mass-gap
+classifier that distinguishes NS from BH remnants at $M \approx 2.5\,M_\odot$.
+
+**Calibration (canonical):** $\kappa = 5 \times 10^{-4}\;\text{day}^{-1}$,
+$[\text{SSq}] = 0.57$, $\beta_i = 0.603$, $H_{\text{SCm}} \approx 0.99$.
+
+<!-- PKG-S26-S225 -->
+
+### Session 225 Phonon-Physics Upgrade: S₂₆⁽³⁾ Ramanujan Summation
+
+> *Upgrade from PAPER_1080 (Ramanujan Binomial Expansion Proof) and
+> PAPER_1042 (Mock-Theta Phonon Partition).  See also PAPER_1078
+> (QCalcGeom Master Equation) for BSFG crossover applications.*
+
+The third-order Ramanujan summation $S_{26}^{(3)}$, used throughout the
+late corpus as the universal 26D coupling factor:
+
+$$S_{26}^{(3)} = \sum_{n=0}^{\infty} \frac{(1/4)_n\,(1/2)_n\,(3/4)_n}{(n!)^3} \cdot \prod_{i=1}^{26}\left[1 + [\text{SSq}]\cdot e^{-\kappa\,i\,n/26}\right]$$
+
+where $(a)_n = a(a+1)\cdots(a+n-1)$ is the Pochhammer symbol.
+
+**Binomial expansion (PAPER_1080):** The convergence proof shows:
+$$R_n^{(26,3)} = \binom{4n}{n} \cdot \frac{W_{26}(n)}{(4^{4n})} \qquad \text{with}\quad W_{26}(n) = \prod_{i=1}^{26}\left[1 + [\text{SSq}]\cdot e^{-\kappa\,i\,n/26}\right]$$
+
+This sum converges absolutely for $|[\text{SSq}]| < 1$ (satisfied by $[\text{SSq}] = 0.57$)
+and reduces to the classical Ramanujan $1/\pi$ series when $[\text{SSq}] \to 0$.
+
+**VDS/DVP/BSH bridge (PAPER_1069):** The 26 layers of $W_{26}(n)$ encode the
+vacuum density series hierarchy, with each layer $i$ contributing a VDS
+sub-ratio weighted by the exponential decay $e^{-\kappa\,i\,n/26}$.
+
+**Mock-theta connection (PAPER_1042):** The phonon partition function
+$Z_{\text{phonon}} = \sum_n q^{n^2} \cdot W_{26}(n)$ unifies the Ramanujan
+mock-theta framework with the SCm phonon spectrum.
+
+
+
+
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification

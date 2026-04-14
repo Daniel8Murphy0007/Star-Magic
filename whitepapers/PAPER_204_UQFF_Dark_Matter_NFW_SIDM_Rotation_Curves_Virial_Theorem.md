@@ -247,6 +247,100 @@ $$
 
 ---
 
+<!-- PKG-DM-S225 -->
+
+### Session 225 Phonon-Physics Upgrade: SCm-Modified NFW Dark Matter Profile
+
+> *Upgrade from PAPER_1015 (SCm Dark Matter Halos NFW) and PAPER_1019
+> (Dark Matter Phonon Buoyancy NFW Coupling).*
+
+The late-corpus analysis shows that the SCm phonon field modifies the NFW
+density profile at all radii via a buoyancy-coupled power-law term:
+
+$$\rho_{\text{UQFF}}(r) = \frac{\rho_s}{\left(\frac{r}{r_s}\right)\left(1+\frac{r}{r_s}\right)^2} \times \left[1 + H_{\text{SCm}} \cdot \beta_i \cdot S_{26}^{(3)} \cdot \left(\frac{r_s}{r}\right)^{\alpha_{\text{phonon}}}\right]$$
+
+where:
+- $\alpha_{\text{phonon}} = 0.3$ governs the radial decay of phonon coupling
+- $\beta_i = 0.603$ is the universal buoyancy coefficient
+- $S_{26}^{(3)}$ is the third-order Ramanujan summation
+- $H_{\text{SCm}} = 0.99$ is the manifold completeness factor
+
+**Rotation curve flattening:** The phonon enhancement produces flatter rotation curves
+with flatness ratio $f = v_c(10\,r_s)/v_{\text{peak}} = 0.891$, compared to pure NFW
+$f \approx 0.75$.  Peak circular velocity $v_{\text{peak}} \approx 204\;\text{km/s}$
+for $M_{\text{halo}} = 10^{12}\,M_\odot$, $c = 10$.
+
+**Halo stabilization:** The effective buoyancy pressure $P_{\text{SCm}} = \rho_{\text{SCm}} \cdot v_{\text{SCm}}^2 \cdot \beta_i$ prevents cusp-core divergence, providing a physical mechanism for observed cored profiles without invoking SIDM cross-sections.
+
+<!-- PKG-CLU-S225 -->
+
+### Session 225 Phonon-Physics Upgrade: ICM Buoyancy Force Profile
+
+> *Upgrade from PAPER_1039 (SCm Galaxy Cluster Buoyancy Profile),
+> PAPER_1041 (Cool-Core Buoyancy Balance), and PAPER_1079 (Cooling-Flow
+> Suppression).  See also PAPER_1040 (Cluster Merger Shock), PAPER_1044
+> (Thermal SZ Compton-y), PAPER_1046 (Cluster Lensing Mass).*
+
+The SCm phonon field introduces a buoyancy force in the ICM that modifies
+hydrostatic equilibrium:
+
+$$F_{\text{buoy}}(r) = \rho(r) \cdot V \cdot g(r) \cdot \beta_i \cdot S_{26} \cdot \Phi$$
+
+where the ICM density follows the beta-model:
+$$\rho(r) = \rho_0 \left(1 + \left(\frac{r}{r_c}\right)^2\right)^{-3\beta/2}$$
+
+**Hydrostatic mass bias reduction (PAPER_1039):**
+$$b_{\text{UQFF}} = 1 - \frac{M_{\text{HSE}}}{M_{\text{true}}} = 0.17 \qquad \text{(vs standard } b = 0.20\text{)}$$
+
+The buoyancy pressure contributes $P_{\text{buoy}}/P_{\text{thermal}} \approx 3\text{–}4\%$
+at cluster cores, partially resolving the Planck SZ–CMB mass tension.
+
+**Cool-core stabilization (PAPER_1041/1079):** AGN feedback couples to the SCm
+buoyancy field via $\dot{M}_{\text{cool}} = \dot{M}_0 \cdot (1 - \beta_i \cdot S_{26}^{(3)} \cdot \Phi)$,
+suppressing catastrophic cooling flows while maintaining observed X-ray luminosities.
+
+**Phonon frequency coupling:** $\omega_{\text{SCm}} = 2\pi \times 1.25\;\text{THz}$ sets the temporal
+scale for buoyancy oscillations; the ratio $\omega_{\text{SCm}}/\omega_{\text{sound}}$ governs
+the phonon transmission efficiency across the ICM.
+
+<!-- PKG-LAG-S225 -->
+
+### Session 225 Phonon-Physics Upgrade: UQFF 9-Sector Lagrangian
+
+> *Upgrade from PAPER_1066 (UQFF Lagrangian First Principles) and
+> PAPER_1065 (Buoyancy Lagrangian EOM Variational Derivation).*
+
+The complete UQFF Lagrangian density, from which all sector-specific
+equations of motion derive:
+
+$$\mathcal{L}_{\text{UQFF}} = \mathcal{L}_{\text{GR}} + \mathcal{L}_{\text{SCm}} + \mathcal{L}_{\text{phonon}} + \mathcal{L}_{\text{interaction}}$$
+
+$$\mathcal{L}_{\text{SCm}} = \tfrac{1}{2}(\partial_\mu \phi)^2 - \lambda\bigl(\phi^2 - v_{\text{SCm}}^2\bigr)^2$$
+
+The SCm condensate potential minimum gives $V(\phi_0) = -7.09 \times 10^{-37}\;\text{J/m}^3$
+(matching $\rho_{\text{SCm}}$) and phonon mass $m_{\text{phonon}} = \sqrt{8\lambda}\,v_{\text{SCm}}$.
+
+**Nine-sector closure (Session 202):**
+$$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal{L}_{\text{Dirac}} + \mathcal{L}_{\text{SCm}} + \mathcal{L}_{\text{mag}} + \mathcal{L}_{\text{buoy}} + \mathcal{L}_{\text{aether}} + \mathcal{L}_{\text{LENR}} + \mathcal{L}_{\text{KK}}$$
+
+| Sector | Domain | Late-Corpus Result |
+|--------|--------|-------------------|
+| 1 (EH) | General Relativity | Canonical Einstein-Hilbert |
+| 2 (YM) | Yang-Mills gauge | $m_{\text{gap}} = 5970\;\text{GeV}$ (PAPER_1005) |
+| 3 (Dirac) | Fermion / LENR | Kozima neutron-drop (PAPER_1061) |
+| 4 (SCm) | Superconducting manifold | $V(\phi_0) = -\rho_{\text{SCm}}$ canonical |
+| 5 (Mag) | Um magnetism | Heaviside amplifier (PAPER_1072) |
+| 6 (Buoy) | F_U_Bi_i buoyancy | Variational EOM (PAPER_1065) |
+| 7 (Aether) | Vacuum background | Two-component $\rho$ (PAPER_1051) |
+| 8 (LENR) | Nuclear transmutation | COP parametric (PAPER_1081) |
+| 9 (KK) | Kaluza-Klein 26D | $S_{26}^{(3)}$ compactification (PAPER_1080) |
+
+
+
+
+
+
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification

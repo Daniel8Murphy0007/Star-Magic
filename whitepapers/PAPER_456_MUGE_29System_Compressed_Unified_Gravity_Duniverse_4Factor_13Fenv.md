@@ -152,6 +152,40 @@ optical-frequency gravity probes.
 
 ---
 
+<!-- PKG-LAG-S225 -->
+
+### Session 225 Phonon-Physics Upgrade: UQFF 9-Sector Lagrangian
+
+> *Upgrade from PAPER_1066 (UQFF Lagrangian First Principles) and
+> PAPER_1065 (Buoyancy Lagrangian EOM Variational Derivation).*
+
+The complete UQFF Lagrangian density, from which all sector-specific
+equations of motion derive:
+
+$$\mathcal{L}_{\text{UQFF}} = \mathcal{L}_{\text{GR}} + \mathcal{L}_{\text{SCm}} + \mathcal{L}_{\text{phonon}} + \mathcal{L}_{\text{interaction}}$$
+
+$$\mathcal{L}_{\text{SCm}} = \tfrac{1}{2}(\partial_\mu \phi)^2 - \lambda\bigl(\phi^2 - v_{\text{SCm}}^2\bigr)^2$$
+
+The SCm condensate potential minimum gives $V(\phi_0) = -7.09 \times 10^{-37}\;\text{J/m}^3$
+(matching $\rho_{\text{SCm}}$) and phonon mass $m_{\text{phonon}} = \sqrt{8\lambda}\,v_{\text{SCm}}$.
+
+**Nine-sector closure (Session 202):**
+$$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal{L}_{\text{Dirac}} + \mathcal{L}_{\text{SCm}} + \mathcal{L}_{\text{mag}} + \mathcal{L}_{\text{buoy}} + \mathcal{L}_{\text{aether}} + \mathcal{L}_{\text{LENR}} + \mathcal{L}_{\text{KK}}$$
+
+| Sector | Domain | Late-Corpus Result |
+|--------|--------|-------------------|
+| 1 (EH) | General Relativity | Canonical Einstein-Hilbert |
+| 2 (YM) | Yang-Mills gauge | $m_{\text{gap}} = 5970\;\text{GeV}$ (PAPER_1005) |
+| 3 (Dirac) | Fermion / LENR | Kozima neutron-drop (PAPER_1061) |
+| 4 (SCm) | Superconducting manifold | $V(\phi_0) = -\rho_{\text{SCm}}$ canonical |
+| 5 (Mag) | Um magnetism | Heaviside amplifier (PAPER_1072) |
+| 6 (Buoy) | F_U_Bi_i buoyancy | Variational EOM (PAPER_1065) |
+| 7 (Aether) | Vacuum background | Two-component $\rho$ (PAPER_1051) |
+| 8 (LENR) | Nuclear transmutation | COP parametric (PAPER_1081) |
+| 9 (KK) | Kaluza-Klein 26D | $S_{26}^{(3)}$ compactification (PAPER_1080) |
+
+
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification

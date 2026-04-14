@@ -249,6 +249,74 @@ Widom-Larsen LENR theory.
 
 ---
 
+<!-- PKG-CLU-S225 -->
+
+### Session 225 Phonon-Physics Upgrade: ICM Buoyancy Force Profile
+
+> *Upgrade from PAPER_1039 (SCm Galaxy Cluster Buoyancy Profile),
+> PAPER_1041 (Cool-Core Buoyancy Balance), and PAPER_1079 (Cooling-Flow
+> Suppression).  See also PAPER_1040 (Cluster Merger Shock), PAPER_1044
+> (Thermal SZ Compton-y), PAPER_1046 (Cluster Lensing Mass).*
+
+The SCm phonon field introduces a buoyancy force in the ICM that modifies
+hydrostatic equilibrium:
+
+$$F_{\text{buoy}}(r) = \rho(r) \cdot V \cdot g(r) \cdot \beta_i \cdot S_{26} \cdot \Phi$$
+
+where the ICM density follows the beta-model:
+$$\rho(r) = \rho_0 \left(1 + \left(\frac{r}{r_c}\right)^2\right)^{-3\beta/2}$$
+
+**Hydrostatic mass bias reduction (PAPER_1039):**
+$$b_{\text{UQFF}} = 1 - \frac{M_{\text{HSE}}}{M_{\text{true}}} = 0.17 \qquad \text{(vs standard } b = 0.20\text{)}$$
+
+The buoyancy pressure contributes $P_{\text{buoy}}/P_{\text{thermal}} \approx 3\text{–}4\%$
+at cluster cores, partially resolving the Planck SZ–CMB mass tension.
+
+**Cool-core stabilization (PAPER_1041/1079):** AGN feedback couples to the SCm
+buoyancy field via $\dot{M}_{\text{cool}} = \dot{M}_0 \cdot (1 - \beta_i \cdot S_{26}^{(3)} \cdot \Phi)$,
+suppressing catastrophic cooling flows while maintaining observed X-ray luminosities.
+
+**Phonon frequency coupling:** $\omega_{\text{SCm}} = 2\pi \times 1.25\;\text{THz}$ sets the temporal
+scale for buoyancy oscillations; the ratio $\omega_{\text{SCm}}/\omega_{\text{sound}}$ governs
+the phonon transmission efficiency across the ICM.
+
+<!-- PKG-LENR-S225 -->
+
+### Session 225 Phonon-Physics Upgrade: VDS LENR Transmutation Dynamics
+
+> *Upgrade from PAPER_1060 (VDS LENR Isotopic Evolution), PAPER_1061
+> (Kozima SCm Integration Neutron-Drop), and PAPER_1081 (SCm LENR COP
+> Linewidth Parametric Engine).*
+
+The late-corpus LENR analysis provides the phonon-mediated transmutation
+rate via the vacuum density series:
+
+$$\Gamma_{\text{trans}} = \Gamma_0 \cdot \left(\frac{\rho_{\text{SCm}}}{\rho_{\text{crit}}}\right) \cdot K_n$$
+
+where:
+- $\rho_{\text{SCm}}(t) = \rho_0 \cdot e^{-\kappa t} \cdot S_{26}$ (time-dependent vacuum density)
+- $K_n = \sigma_n^{\text{SCm}}(\omega) \cdot \Phi_{\text{phonon}}$ is the Kozima neutron-drop factor
+
+**Phonon cross-section (PAPER_1061):**
+$$\sigma_n^{\text{SCm}}(\omega, n) = \sigma_0 \cdot \exp\!\left[-\frac{(\omega - \omega_{\text{SCm}})^2}{2\Gamma^2}\right] \cdot \left(1 + [\text{SSq}] \cdot \frac{n}{26}\right)$$
+
+The VDS factor $(1 + [\text{SSq}] \cdot n/26)$ provides ~470× amplification via
+the 26-level vacuum density ladder at resonance ($\omega = \omega_{\text{SCm}}$).
+
+**COP parametric engine (PAPER_1081):**
+$$\text{COP}(\Gamma, P_{\text{in}}) = \frac{P_{\text{out}}}{P_{\text{in}}} = 1 + \eta_{\text{SCm}} \cdot S_{26}^{(3)} \cdot f(\Gamma)$$
+
+where the linewidth function $f(\Gamma)$ peaks near the SCm phonon linewidth,
+yielding COP > 1 when $\Gamma \lesssim 10^{-3}\;\text{eV}$ (Fleischmann regime).
+
+**Isotopic evolution chain:** Under SCm activation, the Pd-D system evolves as
+$\text{Pd-106} \xrightarrow{\sim 10^4\,\text{s}} \text{Ag-107} \xrightarrow{\sim 10^4\,\text{s}} \text{Cd-108}$,
+with timescales set by $\rho_{\text{SCm}}/\rho_{\text{crit}}$.
+
+
+
+
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification

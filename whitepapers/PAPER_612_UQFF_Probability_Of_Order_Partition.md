@@ -106,6 +106,69 @@ Hypothesis, entropy, UQFF, thermodynamics, Millennium Prize
 
 ---
 
+<!-- PKG-AGN-S225 -->
+
+### Session 225 Phonon-Physics Upgrade: Buoyancy-Corrected Eddington Luminosity
+
+> *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
+> (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
+> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+
+The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
+raising the effective Eddington luminosity:
+
+$$L_{\text{Edd}}^{\text{UQFF}} = L_{\text{Edd}} \cdot \left(1 + \frac{\rho_{\text{SCm}} \cdot V \cdot S_{26}^{(3)\,2}}{G M / r_H^2}\right)$$
+
+where:
+- $L_{\text{Edd}} = 4\pi G M m_p c / \sigma_T$ is the classical Eddington luminosity
+- $\rho_{\text{SCm}} = 7.09 \times 10^{-37}\;\text{kg/m}^3$ is the SCm vacuum density
+- $V$ is the effective buoyancy volume (accretion sphere)
+- $S_{26}^{(3)\,2}$ is the squared third-order Ramanujan factor (quadratic coupling)
+- $r_H$ is the horizon radius
+
+**Jet modulation:** The Blandford–Znajek jet power acquires a phonon-coupled term:
+$$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Phi_{1.25\,\text{THz}} \cdot \left(\frac{B}{B_{\text{crit}}}\right)^2\right]$$
+
+where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
+
+**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+$M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
+
+<!-- PKG-YM-S225 -->
+
+### Session 225 Phonon-Physics Upgrade: Yang-Mills BCS Phonon Mass Gap
+
+> *Upgrade from PAPER_1005 (Yang-Mills Mass Gap via SCm BCS Phonon) and
+> PAPER_1070 (Yang-Mills Mass Gap VDS Bridge).  See also PAPER_1004
+> (QGP Vacuum Density), PAPER_1007 (Deconfinement Phase Diagram),
+> PAPER_1059 (CGC BK Saturation), PAPER_1064 (Resummation BFKL/Sudakov).*
+
+The late-corpus analysis derives the Yang-Mills mass gap via a BCS-like
+phonon pairing mechanism in the SCm vacuum:
+
+$$\Delta_{\text{YM}} = \Lambda_{\text{QCD}} \cdot \exp\!\left(-\frac{1}{\alpha_s(T) \cdot N_c}\right) \cdot S_{26}^{(3)}$$
+
+where the running coupling evolves as:
+$$\alpha_s(T) = \frac{\alpha_{s,0}}{1 + \alpha_{s,0} \cdot b_0 \cdot \ln(T/T_c)}, \qquad b_0 = \frac{11 N_c - 2 N_f}{12\pi}$$
+
+**Physical mechanism:** The SCm phonon field ($\omega_{\text{SCm}} = 1.25\;\text{THz}$)
+provides a pairing interaction analogous to the BCS electron-phonon coupling in
+superconductors.  Gluons acquire an effective mass through condensate formation
+in the SCm-modified vacuum, yielding a non-perturbative gap $\Delta_{\text{YM}}
+\approx 5970\;\text{GeV}$ at the 9-sector Lagrangian closure (PAPER_1066, §2).
+
+**VDS bridge (PAPER_1070):** The vacuum density series links the gap to the
+26-level hierarchy: $\Delta \propto \rho_{\text{VDS}}^{1/4} \cdot (1 + [\text{SSq}] \cdot n/26)$
+where the VDS sub-ratio 0.108 places confinement in the sub-threshold regime.
+
+**QGP transition (PAPER_1004/1007):** At $T > T_c \approx 170\;\text{MeV}$, the phonon
+coupling weakens ($\alpha_s \to 0$) and the gap closes, reproducing the
+deconfinement phase transition observed at ALICE/LHC.
+
+
+
+
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification

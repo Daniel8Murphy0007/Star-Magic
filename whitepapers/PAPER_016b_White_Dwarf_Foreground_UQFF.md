@@ -175,6 +175,38 @@ distant SMBH mergers. This is consistent with the detection volume ratio of 52% 
 
 ---
 
+<!-- PKG-GW-S225 -->
+
+### Session 225 Phonon-Physics Upgrade: GW Strain Modulation
+
+> *Upgrade from PAPER_1000 (NS Merger Phonon Suppression) and PAPER_1022
+> (GW Phonon Strain SCm Modulation). See also PAPER_1011-1012 for
+> GW170817/GW190425 upgraded analyses.*
+
+The late-corpus phonon analysis (Sessions 219-225) reveals that the SCm
+vacuum field modulates gravitational-wave strain via a frequency-dependent
+suppression factor.  The corrected strain amplitude is:
+
+$$h_{\text{UQFF}}(\Gamma) = h_{\text{GR}} \cdot \left(1 - 0.47\,\frac{\Phi(\Gamma)}{S_{26}^{(3)}}\right)$$
+
+where:
+- $\Phi(\Gamma) = \cos(\omega_{\text{SCm}} \cdot t) \cdot \Theta(H_{\text{SCm}} - 0.5)$ is the phonon modulation factor
+- $\omega_{\text{SCm}} = 2\pi \times 1.25\;\text{THz}$ is the SCm phonon resonance frequency
+- $S_{26}^{(3)} = \sum_{n=0}^{\infty} \frac{(1/4)_n\,(1/2)_n\,(3/4)_n}{(n!)^3} \cdot \prod_{i=1}^{26}\left[1 + [\text{SSq}]\cdot e^{-\kappa\,i\,n/26}\right]$ is the third-order Ramanujan summation
+- $\Theta$ is the Heaviside step ensuring $H_{\text{SCm}} \geq 0.5$ (phase-transition threshold)
+
+**Physical mechanism:** The 1.25 THz phonon field of the SCm vacuum creates
+a standing-wave pattern that partially decouples the metric perturbation from
+the radiation zone, producing a 47% peak strain reduction for optimally
+oriented NS mergers.  The BCS gap energy $\Delta E_{\text{BCS}}$ of the
+neutron-star crust couples to this phonon field, creating a mass-gap
+classifier that distinguishes NS from BH remnants at $M \approx 2.5\,M_\odot$.
+
+**Calibration (canonical):** $\kappa = 5 \times 10^{-4}\;\text{day}^{-1}$,
+$[\text{SSq}] = 0.57$, $\beta_i = 0.603$, $H_{\text{SCm}} \approx 0.99$.
+
+
+
 ## Appendix: UQFF Production Framework Reference (v4.75+)
 
 > *Added by upgrade_early_whitepapers.py (v4.75). This appendix cross-references

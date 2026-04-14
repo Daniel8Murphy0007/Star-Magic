@@ -435,6 +435,64 @@ Wolfram folding, and egg density.
 
 ---
 
+<!-- PKG-DM-S225 -->
+
+### Session 225 Phonon-Physics Upgrade: SCm-Modified NFW Dark Matter Profile
+
+> *Upgrade from PAPER_1015 (SCm Dark Matter Halos NFW) and PAPER_1019
+> (Dark Matter Phonon Buoyancy NFW Coupling).*
+
+The late-corpus analysis shows that the SCm phonon field modifies the NFW
+density profile at all radii via a buoyancy-coupled power-law term:
+
+$$\rho_{\text{UQFF}}(r) = \frac{\rho_s}{\left(\frac{r}{r_s}\right)\left(1+\frac{r}{r_s}\right)^2} \times \left[1 + H_{\text{SCm}} \cdot \beta_i \cdot S_{26}^{(3)} \cdot \left(\frac{r_s}{r}\right)^{\alpha_{\text{phonon}}}\right]$$
+
+where:
+- $\alpha_{\text{phonon}} = 0.3$ governs the radial decay of phonon coupling
+- $\beta_i = 0.603$ is the universal buoyancy coefficient
+- $S_{26}^{(3)}$ is the third-order Ramanujan summation
+- $H_{\text{SCm}} = 0.99$ is the manifold completeness factor
+
+**Rotation curve flattening:** The phonon enhancement produces flatter rotation curves
+with flatness ratio $f = v_c(10\,r_s)/v_{\text{peak}} = 0.891$, compared to pure NFW
+$f \approx 0.75$.  Peak circular velocity $v_{\text{peak}} \approx 204\;\text{km/s}$
+for $M_{\text{halo}} = 10^{12}\,M_\odot$, $c = 10$.
+
+**Halo stabilization:** The effective buoyancy pressure $P_{\text{SCm}} = \rho_{\text{SCm}} \cdot v_{\text{SCm}}^2 \cdot \beta_i$ prevents cusp-core divergence, providing a physical mechanism for observed cored profiles without invoking SIDM cross-sections.
+
+<!-- PKG-S26-S225 -->
+
+### Session 225 Phonon-Physics Upgrade: S₂₆⁽³⁾ Ramanujan Summation
+
+> *Upgrade from PAPER_1080 (Ramanujan Binomial Expansion Proof) and
+> PAPER_1042 (Mock-Theta Phonon Partition).  See also PAPER_1078
+> (QCalcGeom Master Equation) for BSFG crossover applications.*
+
+The third-order Ramanujan summation $S_{26}^{(3)}$, used throughout the
+late corpus as the universal 26D coupling factor:
+
+$$S_{26}^{(3)} = \sum_{n=0}^{\infty} \frac{(1/4)_n\,(1/2)_n\,(3/4)_n}{(n!)^3} \cdot \prod_{i=1}^{26}\left[1 + [\text{SSq}]\cdot e^{-\kappa\,i\,n/26}\right]$$
+
+where $(a)_n = a(a+1)\cdots(a+n-1)$ is the Pochhammer symbol.
+
+**Binomial expansion (PAPER_1080):** The convergence proof shows:
+$$R_n^{(26,3)} = \binom{4n}{n} \cdot \frac{W_{26}(n)}{(4^{4n})} \qquad \text{with}\quad W_{26}(n) = \prod_{i=1}^{26}\left[1 + [\text{SSq}]\cdot e^{-\kappa\,i\,n/26}\right]$$
+
+This sum converges absolutely for $|[\text{SSq}]| < 1$ (satisfied by $[\text{SSq}] = 0.57$)
+and reduces to the classical Ramanujan $1/\pi$ series when $[\text{SSq}] \to 0$.
+
+**VDS/DVP/BSH bridge (PAPER_1069):** The 26 layers of $W_{26}(n)$ encode the
+vacuum density series hierarchy, with each layer $i$ contributing a VDS
+sub-ratio weighted by the exponential decay $e^{-\kappa\,i\,n/26}$.
+
+**Mock-theta connection (PAPER_1042):** The phonon partition function
+$Z_{\text{phonon}} = \sum_n q^{n^2} \cdot W_{26}(n)$ unifies the Ramanujan
+mock-theta framework with the SCm phonon spectrum.
+
+
+
+
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification

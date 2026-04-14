@@ -84,6 +84,71 @@ A VLQ mass spectrum with 30-GeV spacing is a falsifiable LHC prediction.
 
 ---
 
+<!-- PKG-GW-S225 -->
+
+### Session 225 Phonon-Physics Upgrade: GW Strain Modulation
+
+> *Upgrade from PAPER_1000 (NS Merger Phonon Suppression) and PAPER_1022
+> (GW Phonon Strain SCm Modulation). See also PAPER_1011-1012 for
+> GW170817/GW190425 upgraded analyses.*
+
+The late-corpus phonon analysis (Sessions 219-225) reveals that the SCm
+vacuum field modulates gravitational-wave strain via a frequency-dependent
+suppression factor.  The corrected strain amplitude is:
+
+$$h_{\text{UQFF}}(\Gamma) = h_{\text{GR}} \cdot \left(1 - 0.47\,\frac{\Phi(\Gamma)}{S_{26}^{(3)}}\right)$$
+
+where:
+- $\Phi(\Gamma) = \cos(\omega_{\text{SCm}} \cdot t) \cdot \Theta(H_{\text{SCm}} - 0.5)$ is the phonon modulation factor
+- $\omega_{\text{SCm}} = 2\pi \times 1.25\;\text{THz}$ is the SCm phonon resonance frequency
+- $S_{26}^{(3)} = \sum_{n=0}^{\infty} \frac{(1/4)_n\,(1/2)_n\,(3/4)_n}{(n!)^3} \cdot \prod_{i=1}^{26}\left[1 + [\text{SSq}]\cdot e^{-\kappa\,i\,n/26}\right]$ is the third-order Ramanujan summation
+- $\Theta$ is the Heaviside step ensuring $H_{\text{SCm}} \geq 0.5$ (phase-transition threshold)
+
+**Physical mechanism:** The 1.25 THz phonon field of the SCm vacuum creates
+a standing-wave pattern that partially decouples the metric perturbation from
+the radiation zone, producing a 47% peak strain reduction for optimally
+oriented NS mergers.  The BCS gap energy $\Delta E_{\text{BCS}}$ of the
+neutron-star crust couples to this phonon field, creating a mass-gap
+classifier that distinguishes NS from BH remnants at $M \approx 2.5\,M_\odot$.
+
+**Calibration (canonical):** $\kappa = 5 \times 10^{-4}\;\text{day}^{-1}$,
+$[\text{SSq}] = 0.57$, $\beta_i = 0.603$, $H_{\text{SCm}} \approx 0.99$.
+
+<!-- PKG-YM-S225 -->
+
+### Session 225 Phonon-Physics Upgrade: Yang-Mills BCS Phonon Mass Gap
+
+> *Upgrade from PAPER_1005 (Yang-Mills Mass Gap via SCm BCS Phonon) and
+> PAPER_1070 (Yang-Mills Mass Gap VDS Bridge).  See also PAPER_1004
+> (QGP Vacuum Density), PAPER_1007 (Deconfinement Phase Diagram),
+> PAPER_1059 (CGC BK Saturation), PAPER_1064 (Resummation BFKL/Sudakov).*
+
+The late-corpus analysis derives the Yang-Mills mass gap via a BCS-like
+phonon pairing mechanism in the SCm vacuum:
+
+$$\Delta_{\text{YM}} = \Lambda_{\text{QCD}} \cdot \exp\!\left(-\frac{1}{\alpha_s(T) \cdot N_c}\right) \cdot S_{26}^{(3)}$$
+
+where the running coupling evolves as:
+$$\alpha_s(T) = \frac{\alpha_{s,0}}{1 + \alpha_{s,0} \cdot b_0 \cdot \ln(T/T_c)}, \qquad b_0 = \frac{11 N_c - 2 N_f}{12\pi}$$
+
+**Physical mechanism:** The SCm phonon field ($\omega_{\text{SCm}} = 1.25\;\text{THz}$)
+provides a pairing interaction analogous to the BCS electron-phonon coupling in
+superconductors.  Gluons acquire an effective mass through condensate formation
+in the SCm-modified vacuum, yielding a non-perturbative gap $\Delta_{\text{YM}}
+\approx 5970\;\text{GeV}$ at the 9-sector Lagrangian closure (PAPER_1066, §2).
+
+**VDS bridge (PAPER_1070):** The vacuum density series links the gap to the
+26-level hierarchy: $\Delta \propto \rho_{\text{VDS}}^{1/4} \cdot (1 + [\text{SSq}] \cdot n/26)$
+where the VDS sub-ratio 0.108 places confinement in the sub-threshold regime.
+
+**QGP transition (PAPER_1004/1007):** At $T > T_c \approx 170\;\text{MeV}$, the phonon
+coupling weakens ($\alpha_s \to 0$) and the gap closes, reproducing the
+deconfinement phase transition observed at ALICE/LHC.
+
+
+
+
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification

@@ -155,6 +155,36 @@ Um → electromagnetic chain (gated by α = 1/137).
 
 ---
 
+<!-- PKG-AGN-S225 -->
+
+### Session 225 Phonon-Physics Upgrade: Buoyancy-Corrected Eddington Luminosity
+
+> *Upgrade from PAPER_1002 (AGN Buoyancy-Corrected Eddington) and PAPER_1037
+> (AGN Buoyancy Jet Launching).  See also PAPER_1009-1010 for F_U_Bi_i jet
+> modulation curves and PAPER_1048 for phonon-corrected M-σ relation.*
+
+The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
+raising the effective Eddington luminosity:
+
+$$L_{\text{Edd}}^{\text{UQFF}} = L_{\text{Edd}} \cdot \left(1 + \frac{\rho_{\text{SCm}} \cdot V \cdot S_{26}^{(3)\,2}}{G M / r_H^2}\right)$$
+
+where:
+- $L_{\text{Edd}} = 4\pi G M m_p c / \sigma_T$ is the classical Eddington luminosity
+- $\rho_{\text{SCm}} = 7.09 \times 10^{-37}\;\text{kg/m}^3$ is the SCm vacuum density
+- $V$ is the effective buoyancy volume (accretion sphere)
+- $S_{26}^{(3)\,2}$ is the squared third-order Ramanujan factor (quadratic coupling)
+- $r_H$ is the horizon radius
+
+**Jet modulation:** The Blandford–Znajek jet power acquires a phonon-coupled term:
+$$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Phi_{1.25\,\text{THz}} \cdot \left(\frac{B}{B_{\text{crit}}}\right)^2\right]$$
+
+where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
+
+**M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
+$M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
+
+
+
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
