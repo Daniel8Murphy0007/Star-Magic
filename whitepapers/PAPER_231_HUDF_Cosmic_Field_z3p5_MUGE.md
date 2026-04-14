@@ -135,6 +135,46 @@ The HUDF MUGE introduces two novel contributions: extreme early-universe Friedma
 **UQFF computed:** MUGE buoyancy ratio U_bi/F_U = [SSq]?r/GM = 5.7e-1§5.0e-4 = 2.85e-4; compressed
 MUGE baseline g = 5.4e-7 m/s at r_ISCO.
 
+
+
+---
+
+## Session 225: Late-Corpus Physics Integration (PAPER_1000-1081)
+
+> *The following physics upgrades incorporate equations, mechanisms, and
+> derivations from the late-corpus papers (Sessions 219-225, PAPER_1000-1081).
+> These represent body-level integrations of phonon physics, buoyancy
+> formulations, and S₂₆⁽³⁾ Ramanujan corrections into this paper's domain.*
+
+<!-- PKG-S26-S225 -->
+
+### Session 225 Phonon-Physics Upgrade: S26(3) Ramanujan Summation
+
+> *Upgrade from PAPER_1080 (Ramanujan Binomial Expansion Proof) and
+> PAPER_1042 (Mock-Theta Phonon Partition).  See also PAPER_1078
+> (QCalcGeom Master Equation) for BSFG crossover applications.*
+
+The third-order Ramanujan summation $S_{26}^{(3)}$, used throughout the
+late corpus as the universal 26D coupling factor:
+
+$$S_{26}^{(3)} = \sum_{n=0}^{\infty} \frac{(1/4)_n\,(1/2)_n\,(3/4)_n}{(n!)^3} \cdot \prod_{i=1}^{26}\left[1 + [\text{SSq}]\cdot e^{-\kappa\,i\,n/26}\right]$$
+
+where $(a)_n = a(a+1)\cdots(a+n-1)$ is the Pochhammer symbol.
+
+**Binomial expansion (PAPER_1080):** The convergence proof shows:
+$$R_n^{(26,3)} = \binom{4n}{n} \cdot \frac{W_{26}(n)}{(4^{4n})} \qquad \text{with}\quad W_{26}(n) = \prod_{i=1}^{26}\left[1 + [\text{SSq}]\cdot e^{-\kappa\,i\,n/26}\right]$$
+
+This sum converges absolutely for $|[\text{SSq}]| < 1$ (satisfied by $[\text{SSq}] = 0.57$)
+and reduces to the classical Ramanujan $1/\pi$ series when $[\text{SSq}] \to 0$.
+
+**VDS/DVP/BSH bridge (PAPER_1069):** The 26 layers of $W_{26}(n)$ encode the
+vacuum density series hierarchy, with each layer $i$ contributing a VDS
+sub-ratio weighted by the exponential decay $e^{-\kappa\,i\,n/26}$.
+
+**Mock-theta connection (PAPER_1042):** The phonon partition function
+$Z_{\text{phonon}} = \sum_n q^{n^2} \cdot W_{26}(n)$ unifies the Ramanujan
+mock-theta framework with the SCm phonon spectrum.
+
 ---
 
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
