@@ -1,19 +1,41 @@
+---
+paper_id: PAPER_008
+title: "UQFF Waveform Phase Evolution and Template Mismatch"
+session: 143
+date: 2026-03-05
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [GW, gravitational-wave, vacuum, LIGO, damping, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_008: UQFF Waveform Phase Evolution and Template Mismatch
 
 **Author:** Daniel T. Murphy  
 **Date:** March 5, 2026  
-**Session:** Phase 1 (Sessions 1�43)  
-**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57, κ_i = 0.61)  
+**Session:** Phase 1 (Sessions 143)  
+**Framework:** UQFF Star-Magic (κ = 0.0005/day, [SSq] = 0.57, κ_i = 0.61)  
 **Source:** `source27.cpp` (SOURCE27 namespace), `MAIN_1_CoAnQi.cpp`  
-**Cross-links:** PAPER_001 (GW170817 Damping), PAPER_007 (Tidal Deformability), PAPER_009 (Damping Decomposition)
+**Cross-links:** PAPER_001 (GW170817 Damping), PAPER_007 (Tidal Deformability), PAPER_009 (Damping
+Decomposition)
 
 ## Abstract
 
-Matched filtering of gravitational wave signals requires accurate waveform templates. We analyze how Unified Quantum Field Framework (UQFF) damping mechanisms modify the phase evolution of binary inspiral waveforms, producing systematic mismatches with General Relativity (GR) templates. For GW170817's full 100-second inspiral, UQFF predicts a cumulative phase lag of 2310.8 radians (367.8 cycles) due to energy dissipation into vacuum structure. This produces a mismatch metric M = 0.667 for the short chirp and accumulated phase errors of ~370 cycles for the full inspiral. We derive analytical expressions for frequency-dependent phase corrections and calculate signal-to-noise ratio (SNR) penalties when GR templates are used to search for UQFF signals. Third-generation detectors with SNR > 100 will enable phase-lag measurements at 5s significance, providing a definitive test of UQFF vs GR.
+Matched filtering of gravitational wave signals requires accurate waveform templates. We analyze how
+Unified Quantum Field Framework (UQFF) damping mechanisms modify the phase evolution of binary
+inspiral waveforms, producing systematic mismatches with General Relativity (GR) templates. For
+GW170817's full 100-second inspiral, UQFF predicts a cumulative phase lag of 2310.8 radians (367.8
+cycles) due to energy dissipation into vacuum structure. This produces a mismatch metric M = 0.667
+for the short chirp and accumulated phase errors of ~370 cycles for the full inspiral. We derive
+analytical expressions for frequency-dependent phase corrections and calculate signal-to-noise ratio
+(SNR) penalties when GR templates are used to search for UQFF signals. Third-generation detectors
+with SNR > 100 will enable phase-lag measurements at 5s significance, providing a definitive test of
+UQFF vs GR.
 
-
-
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+0.57) uniquely enabling this analysis  establishing a new connection in the UQFF framework not
+present in Standard Model treatments.
 
 ---
 
@@ -29,7 +51,8 @@ $$P_{UQFF} = D^2_{total} \times P_{GR},\qquad D_{total} = 0.333$$
 
 $$\tau_{UQFF} = \frac{\tau_{GR}}{D^2_{total}} = 9.0\, \tau_{GR}$$
 
-**Key numerical results:** D_total = 3.33e-1, D_total� = 1.11e-1, ?f_full = 2.311e3 rad (3.678e2 cycles), mismatch M = 6.67e-1, SNR_UQFF = 1.08e1
+**Key numerical results:** D_total = 3.33e-1, D_total = 1.11e-1, ?f_full = 2.311e3 rad (3.678e2
+cycles), mismatch M = 6.67e-1, SNR_UQFF = 1.08e1
 
 where:
 - s(f) = detector output (signal + noise)
@@ -41,7 +64,7 @@ Template accuracy is critical: a 1% phase error at merger can reduce SNR by 50%.
 ### 1.2 UQFF Waveform Modifications
 
 UQFF modifies GW waveforms through:
-1. **Amplitude damping:** h_UQFF = D_total � h_GR (66.7% reduction)
+1. **Amplitude damping:** h_UQFF = D_total  h_GR (66.7% reduction)
 2. **Phase lag:** ?f(t) accumulates due to energy dissipation
 3. **Frequency evolution:** df/dt modified by vacuum coupling
 
@@ -51,7 +74,7 @@ These produce systematic mismatches with GR templates.
 
 For a binary with chirp mass M, the phase evolves as:
 
-**f(t) = f0 - (1/16) (c�/GM)^(5/8) (5/256 ?t)^(-5/8)**
+**f(t) = f0 - (1/16) (c/GM)^(5/8) (5/256 ?t)^(-5/8)**
 
 where ?t = t_c - t (time to coalescence).
 
@@ -76,9 +99,10 @@ Lower power extends inspiral timescale:
 **t_UQFF = t_GR / Dκ_total**
 
 For D_total = 0.333:
-- **t_UQFF = 9� t_GR**
+- **t_UQFF = 9 t_GR**
 
-But this applies to infinite-time inspiral. For finite-duration observation (100s), the phase lag is:
+But this applies to infinite-time inspiral. For finite-duration observation (100s), the phase lag
+is:
 
 **?f = ? [?_GR(t) - ?_UQFF(t)] dt**
 
@@ -88,11 +112,11 @@ where ? = 2pf is orbital angular frequency.
 
 Frequency evolution is governed by:
 
-**df/dt = (96/5p) (pMf)^(11/3) / c�**
+**df/dt = (96/5p) (pMf)^(11/3) / c**
 
 UQFF modifies this:
 
-**df/dt|_UQFF = Dκ_total � df/dt|_GR**
+**df/dt|_UQFF = Dκ_total  df/dt|_GR**
 
 Integrating over frequency range f_min ? f_max:
 
@@ -100,18 +124,18 @@ Integrating over frequency range f_min ? f_max:
 
 For D_total = 0.333:
 
-**?f(f) � (1 - 1/Dκ_total) � f_GR(f)**
-**?f(f) � 8 � f_GR(f)**
+**?f(f)  (1 - 1/Dκ_total)  f_GR(f)**
+**?f(f)  8  f_GR(f)**
 
 ### 2.3 Mismatch Metric
 
 The waveform mismatch is:
 
-**M = 1 - max_over_params ? [h1(f) h2*(f) / S_n(f)] df / v[?|h1|�/S_n ?|h2|�/S_n]**
+**M = 1 - `max_over_params` ? [h1(f) h2*(f) / S_n(f)] df / v[?|h1|/S_n ?|h2|/S_n]**
 
 For phase-only mismatch:
 
-**M � (?f)� / 2** (for small ?f)
+**M  (?f) / 2** (for small ?f)
 
 For large phase errors (?f > 1 rad), M ? 1.
 
@@ -155,7 +179,7 @@ For 367-cycle phase lag:
 
 **?f = 367 × 2p = 2305 rad**
 
-**M � 1** (complete mismatch)
+**M  1** (complete mismatch)
 
 Validation output confirms:
 - **Mismatch = 0.667** for 0.2s chirp (partial overlap)
@@ -170,8 +194,8 @@ Validation output confirms:
 From `validate_gw170817_chirp.py`:
 - **Duration:** 0.2 seconds (35-300 Hz)
 - **GW cycles:** ~7 cycles
-- **Peak GR strain:** 2.81 × 10?��
-- **Peak UQFF strain:** 9.43 × 10?��
+- **Peak GR strain:** 2.81 × 10?
+- **Peak UQFF strain:** 9.43 × 10?
 
 ### 4.2 Phase Evolution
 
@@ -239,14 +263,14 @@ LIGO detection threshold: SNR > 8
 
 For Newtonian inspiral, phase evolves as:
 
-**f_N(f) = 2pft - p/4 + (3/128)(pMf)^(-5/3) / (pMf�)**
+**f_N(f) = 2pft - p/4 + (3/128)(pMf)^(-5/3) / (pMf)**
 
-UQFF introduces damping factor D�:
+UQFF introduces damping factor D:
 
-**f_UQFF(f) = f_GR(f) � [1 + (D?� - 1)]**
+**f_UQFF(f) = f_GR(f)  [1 + (D? - 1)]**
 
 For D = 0.333:
-**f_UQFF = f_GR � [1 + 8] = 9 � f_GR**
+**f_UQFF = f_GR  [1 + 8] = 9  f_GR**
 
 ### 6.2 Post-Newtonian Corrections
 
@@ -256,7 +280,7 @@ Full 3.5PN phase includes spin, tidal, and higher-order terms:
 
 UQFF modifies each term:
 
-**f_UQFF,PN = S [D?�n f_nPN]**
+**f_UQFF,PN = S [D?n f_nPN]**
 
 where n is the PN order.
 
@@ -264,7 +288,7 @@ where n is the PN order.
 
 UQFF damping is frequency-dependent:
 
-**D(f) = D_0 � [1 + (f/f_crit)^a]**
+**D(f) = D_0  [1 + (f/f_crit)^a]**
 
 where:
 - D_0 = 0.333 (low-frequency limit)
@@ -285,7 +309,7 @@ Phase evolution determines chirp mass:
 
 UQFF phase lag shifts estimated M:
 
-**?M / M � (3/5) � (?f / f) � (3/5) ≈ 0.10 = 6%**
+**?M / M  (3/5)  (?f / f)  (3/5) ≈ 0.10 = 6%**
 
 For GW170817 (M = 1.188 M?):
 **?M ≈ 0.07 M?**
@@ -301,13 +325,13 @@ UQFF amplitude reduction (D = 0.333) is misinterpreted as increased distance:
 **D_L,inferred / D_L,true = 1 / D_total = 3.0**
 
 For GW170817 (D_L = 40 Mpc):
-**D_L,inferred = 120 Mpc** (3� overestimate)
+**D_L,inferred = 120 Mpc** (3 overestimate)
 
 ### 7.3 Mass Ratio Bias
 
 Phase evolution encodes mass ratio q = m2/m1:
 
-**f(f, q) � f(f, q=1) � [1 + corrections(q)]**
+**f(f, q)  f(f, q=1)  [1 + corrections(q)]**
 
 UQFF phase lag mimics asymmetric mass ratio, biasing q by ~10%.
 
@@ -326,7 +350,7 @@ Einstein Telescope / Cosmic Explorer:
 
 Combining LIGO (10-1000 Hz) with LISA (0.1-1 mHz):
 - Observe same binary over years ? measure df/dt directly
-- UQFF predicts 9� longer inspiral
+- UQFF predicts 9 longer inspiral
 - Unambiguous discrimination
 
 ### 8.3 Waveform Systematics
@@ -355,10 +379,11 @@ We have analyzed UQFF waveform phase evolution and template mismatch for BNS mer
 4. **Parameter biases:** Chirp mass +6%, distance +200%, mass ratio +10%
 5. **Future tests:** Einstein Telescope will detect 367-cycle lag at 5s significance
 
-The accumulated phase lag of 367 cycles over GW170817's full inspiral provides a clear prediction distinguishing UQFF from GR. Next-generation detectors with SNR > 100 will enable definitive tests of this signature.
+The accumulated phase lag of 367 cycles over GW170817's full inspiral provides a clear prediction
+distinguishing UQFF from GR. Next-generation detectors with SNR > 100 will enable definitive tests
+of this signature.
 
 ---
-
 
 ---
 
@@ -366,13 +391,15 @@ The accumulated phase lag of 367 cycles over GW170817's full inspiral provides a
 
 ### §A.1 Sector Classification
 
-This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see `uqff_lagrangian_derivation.py`).
+This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
-The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive quantum fundamentals (DPM, UA, SCm):
+The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
+quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_\mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
+$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
 
 where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
@@ -386,8 +413,9 @@ $$\boxed{\frac{\delta S}{\delta \phi_{\rm NS}} = \nabla^2 \phi_{\rm NS} - (4\pi 
 
 $$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\rm NS} = 0$$
 
-The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g forces) through vacuum density initialization to the sector-specific equation of motion. Every term in the E-L equation inherits its physical origin from the cosmogenesis master.
-
+The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
+forces) through vacuum density initialization to the sector-specific equation of motion. Every term
+in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 ---
 
@@ -397,9 +425,9 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.079$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m³.
+For this system, the local VDS sub-ratio is $0.079$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -411,13 +439,13 @@ Since $p_{\rm DVP} = 23$ is **sub-threshold** (threshold at $p > 26$), the syste
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
-The BSH saturation timescale for this sector is **10⁴ yr** (spin-down equilibrium):
+The BSH saturation timescale for this sector is **104 yr** (spin-down equilibrium):
 
-$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
+$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\rm SCm}$ which initializes the harmonic series at cosmogenesis.
 
@@ -425,35 +453,38 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.079 | ✓ Threshold-consistent |
-| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 23$ | ✓ Sub-threshold |
-| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
-| [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
-
+| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.079 | PASS Threshold-consistent |
+| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 23$ | PASS Sub-threshold |
+| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
+| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 ---
-
 
 ## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | ✓ Consistent |
-| Cosmological constant Λ | 1.1×10⁻⁵² m⁻² (UQFF vacuum term) | 1.114×10⁻⁵² m⁻² | Planck 2018 | ✓ Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10⁻³⁵/yr | Super-K 2024 | ✓ Consistent |
-| UQFF buoyancy signature | F_U_Bi_i unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
+| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
-**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes significant, offering a falsifiable prediction beyond the Standard Model.
+**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
+produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
+bridge.*
 
 ## References
 
-1. `validate_gw170817_full.py` � Full 100s inspiral simulation
-2. `validate_gw170817_chirp.py` � Short 0.2s chirp simulation
-3. Cutler & Flanagan, Gravitational waves from merging compact binaries: How accurately can one extract the binary's parameters from the inspiral waveform?, *Phys. Rev. D* **49**, 2658 (1994).
-4. Damour et al., Phasing of gravitational waves from inspiralling eccentric binaries, *Phys. Rev. D* **70**, 064028 (2004).
+1. `validate_gw170817_full.py`  Full 100s inspiral simulation
+2. `validate_gw170817_chirp.py`  Short 0.2s chirp simulation
+3. Cutler & Flanagan, Gravitational waves from merging compact binaries: How accurately can one
+extract the binary's parameters from the inspiral waveform?, *Phys. Rev. D* **49**, 2658 (1994).
+4. Damour et al., Phasing of gravitational waves from inspiralling eccentric binaries, *Phys. Rev.
+D* **70**, 064028 (2004).
 
 ---
 
@@ -463,19 +494,22 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 where:
 
-**?_GR = (96/5p) (pMf)^(11/3) / c�**
+**?_GR = (96/5p) (pMf)^(11/3) / c**
 
-**?_UQFF = D� � ?_GR**
+**?_UQFF = D  ?_GR**
 
 Evaluating the integral:
 
-**?f(f) = (1 - 1/D�) � (3/128) (pM)^(-5/3) f^(-5/3)**
+**?f(f) = (1 - 1/D)  (3/128) (pM)^(-5/3) f^(-5/3)**
 
 For GW170817 (M = 1.188 M?, f = 23-300 Hz, D = 0.333):
 
 **?f(300 Hz) - ?f(23 Hz) = 2310.8 rad = 367.8 cycles** ?
 
-This validates the phase lag result quoted throughout the domain �1.1 papers. The 2310.8 rad total phase lag accumulated over the BNS inspiral band is entirely due to UQFF reducing the energy loss rate (Dκ_total = 0.111), which shifts orbital frequency evolution. This is a large, unambiguous signature � not a small correction.
+This validates the phase lag result quoted throughout the domain §1.1 papers. The 2310.8 rad total
+phase lag accumulated over the BNS inspiral band is entirely due to UQFF reducing the energy loss
+rate (Dκ_total = 0.111), which shifts orbital frequency evolution. This is a large, unambiguous
+signature  not a small correction.
 
 ---
 
@@ -496,29 +530,29 @@ This level of mismatch is detectable in LIGO O4 for events with SNR > 20.
 
 GR-based parameter estimation applied to a UQFF signal would:
 - Bias chirp mass M_chirp high by ~3%
-- Bias distance D_L high by factor 3�
+- Bias distance D_L high by factor 3
 - Show non-Gaussian post-Newtonian residuals at 3.5PN order
 
 ### 7.3 Test on Population
 
-For a population of 50+ O4/O5 BNS events, the distribution of template mismatches should cluster around M ≈ 0.44 if UQFF is correct, vs M � 0 if GR is correct. This is the most direct test of UQFF waveform physics.
+For a population of 50+ O4/O5 BNS events, the distribution of template mismatches should cluster
+around M ≈ 0.44 if UQFF is correct, vs M  0 if GR is correct. This is the most direct test of UQFF
+waveform physics.
 
 ---
 
 ## 8. Conclusion
 
-UQFF introduces a two-component waveform modification: (1) a 66.7% amplitude suppression from the combined damping factor D_total = 0.333, and (2) a 2310.8 rad total phase lag accumulated over the GW170817 BNS inspiral (23�300 Hz). The reduced SNR (10.8 vs 32.4 in GR) keeps events detectable while the 44% template mismatch is in principle resolvable with LIGO O4/O5 sensitivity. GW150914 sits at the detection margin (SNR = 8.0) under UQFF � events of this type are first detections in GR but marginal under UQFF. A matched-filter search optimized for UQFF waveforms would recover 3� more events at fixed false alarm rate.
+UQFF introduces a two-component waveform modification: (1) a 66.7% amplitude suppression from the
+combined damping factor D_total = 0.333, and (2) a 2310.8 rad total phase lag accumulated over the
+GW170817 BNS inspiral (23300 Hz). The reduced SNR (10.8 vs 32.4 in GR) keeps events detectable while
+the 44% template mismatch is in principle resolvable with LIGO O4/O5 sensitivity. GW150914 sits at
+the detection margin (SNR = 8.0) under UQFF  events of this type are first detections in GR but
+marginal under UQFF. A matched-filter search optimized for UQFF waveforms would recover 3 more
+events at fixed false alarm rate.
 
-**Validator:** `validate_gw170817.py` (phase lag confirmation: 2310.8 rad ?).Groups[1].Value : UQFF Waveform Phase Evolution and Template Mismatch
-
-**Author:** Daniel T. Murphy  
-**Date:** March 5, 2026  
-**Session:** Phase 1 (Sessions 1�43)  
-**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57, κ_i = 0.61)  
-**Source:** `source27.cpp` (SOURCE27 namespace), `MAIN_1_CoAnQi.cpp`  
-**Cross-links:** PAPER_001 (GW170817 Damping), PAPER_007 (Tidal Deformability), PAPER_009 (Damping Decomposition)
-
----
+**Validator:** `validate_gw170817.py` (phase lag confirmation: 2310.8 rad ?).Groups[1].Value : UQFF
+Waveform Phase Evolution and Template Mismatch
 
 ## Appendix: UQFF Production Framework Reference (v4.75+)
 
@@ -530,15 +564,15 @@ UQFF introduces a two-component waveform modification: (1) a 66.7% amplitude sup
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
-| κ | 5.0 × 10⁻⁴ day⁻¹ | UQFF exponential decay rate |
+| κ | 5.0 × 10-4 day-1 | UQFF exponential decay rate |
 | [SSq] | 0.57 | Universal Quantized Factor |
 | β_i | 0.60–0.61 | Buoyancy coupling coefficient |
 | k₁ | 1.5 | Ug1 DPM-dipole coupling |
 | k₂ | 1.2 | Ug2 outer-bubble charge coupling |
 | k₃ | 1.8 | Ug3 string-rotation coupling |
 | k₄ | 2.0 | Ug4 vacuum-concentration coupling |
-| η | 10⁻²² | Inertia tensor scale |
-| E_react(0) | 10⁴⁶ J | Reference reactive energy |
+| η | 10-22 | Inertia tensor scale |
+| E_react(0) | 1046 J | Reference reactive energy |
 
 ### A.2 F_U Master Equation (Complete — 4 terms)
 
@@ -546,16 +580,16 @@ $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\
 
 | Term | Description | Implementation |
 |------|-------------|----------------|
-| Ug1 | DPM magnetic dipole | `compute_Ug1_SOURCE4` / `compute_Ug1()` |
-| Ug2 | Outer-field bubble (charge-reactivity) | `compute_Ug2_SOURCE4` / `compute_Ug2()` |
-| Ug3 | Magnetic string rotation | `compute_Ug3_SOURCE4` / `compute_Ug3()` |
-| Ug4 | Vacuum concentration (star-BH) | `compute_Ug4_SOURCE4` / `compute_Ug4()` |
-| Ubi | Buoyancy force | `compute_Ubi_SOURCE4` / `compute_Ubi()` |
-| Um | Universal Magnetism (Heaviside-amplified) | `compute_Um_SOURCE4` / `compute_Um()` |
-| −Σλᵢ·Uᵢ·E_react | 4th dissipation term (PAPER_420) | `compute_FU_SOURCE4` / full pipeline |
+| Ug1 | DPM magnetic dipole | `c`ompute_Ug1_SOURCE`4` / `compute_Ug1()` |
+| Ug2 | Outer-field bubble (charge-reactivity) | `c`ompute_Ug2_SOURCE`4` / `compute_Ug2()` |
+| Ug3 | Magnetic string rotation | `c`ompute_Ug3_SOURCE`4` / `compute_Ug3()` |
+| Ug4 | Vacuum concentration (star-BH) | `c`ompute_Ug4_SOURCE`4` / `compute_Ug4()` |
+| Ubi | Buoyancy force | `c`ompute_Ubi_SOURCE`4` / `compute_Ubi()` |
+| Um | Universal Magnetism (Heaviside-amplified) | `c`ompute_Um_SOURCE`4` / `compute_Um()` |
+| −Σλᵢ·Uᵢ·E_react | 4th dissipation term (PAPER_420) | `c`ompute_FU_SOURCE`4` / full pipeline |
 
 **4th dissipation term parameters (PAPER_420):**  
-λ₁=10⁻¹⁰, λ₂=10⁻¹², λ₃=10⁻¹¹, λ₄=10⁻¹³ (free parameters, not yet empirically calibrated)
+λ₁=10-10, λ₂=10-12, λ₃=10-11, λ₄=10-13 (free parameters, not yet empirically calibrated)
 
 ### A.3 Um Heaviside Phase-Transition Amplifier (PAPER_421)
 
@@ -563,7 +597,7 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
-| ρ_c | 10¹⁵ kg/m³ | SCm critical superconducting density |
+| ρ_c | 1015 kg/m3 | SCm critical superconducting density |
 | A_q | 0.1 | Quasi-periodic beating amplitude (10%) |
 | Δω | 2π/(434·365.25) rad/day | 434-year Gleisberg supercycle |
 
@@ -574,10 +608,10 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 | **Compressed** | Ug_sum + Newtonian base | Isolated stellar/BH systems |
 | **Resonant** | 5 resonance frequencies (aDPM, aTHz, …) | Multi-scale field interactions |
 | **Buoyant** | β_i × Ubi | Expanding nebulae, stellar winds |
-| **Superconductive** | Um × (1+10¹³·f_H) | Magnetars, SCm critical-density regime |
+| **Superconductive** | Um × (1+1013·f_H) | Magnetars, SCm critical-density regime |
 
-*Implementation status: all 4 modes operational in `MAIN_1_CoAnQi.cpp`, `CondensedPhysics.py`, and `CondensedPhysics2.py`.*
-
+*Implementation status: all 4 modes operational in `MAIN_1_CoAnQi.cpp`, `CondensedPhysics.py`, and
+`CondensedPhysics2.py`.*
 
 ---
 
@@ -605,7 +639,7 @@ $$F_{\rm neutron} = k_{\rm neutron} \times \sigma_n = 10^{10} \times 10^{-4} = 1
 The SCm superconductive manifold modulates the cross-section via VDS 26-level
 enhancement:
 
-$$\sigma_n^{\rm SCm}(\omega, n) = \sigma_0 \cdot \exp\!\left[-\frac{(\omega - \omega_{\rm SCm})^2}{2\Gamma^2}\right] \cdot \left(1 + \frac{[\text{SSq}] \cdot n}{26}\right)$$
+$$\sigma_n^{\rm SCm}(\omega, n) = \sigma_0 \cdot \exp!\left[-\frac{(\omega - \omega_{\rm SCm})^2}{2\Gamma^2}\right] \cdot \left(1 + \frac{[\text{SSq}] \cdot n}{26}\right)$$
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
@@ -646,7 +680,7 @@ spectrum, producing ~470x amplification relative to decoupled models.
 
 ### K.5 SCm Activation Function
 
-$$A_{\rm SCm}(B) = \exp\!\left[-\frac{B^2}{B_{\rm crit}^2}\right], \quad B_{\rm crit} = 4.4 \times 10^{13} \;\text{T}$$
+$$A_{\rm SCm}(B) = \exp!\left[-\frac{B^2}{B_{\rm crit}^2}\right], \quad B_{\rm crit} = 4.4 \times 10^{13} \;\text{T}$$
 
 The Gaussian activation (from `scm_activation_function.py`) governs the transition
 probability for the neutron-drop mechanism as a function of ambient magnetic field.
@@ -665,8 +699,6 @@ FNeutronS26[..., nTerms]
 
 *Source: `kozima_wstp_kernel.py` → `uqff_kozima_kernel.wl`*
 
-
-
 ---
 
 ## Appendix: Session 204 Codebase Upgrade Reference
@@ -679,9 +711,9 @@ FNeutronS26[..., nTerms]
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `f`neutron_s26_coupling`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `k`ozima_scm_cross_section`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `k`ozima_wstp_kernel`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -690,7 +722,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `r`amanujan_polylog_s26`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
 | `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
@@ -699,7 +731,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `m`ock_theta_q26`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -710,8 +742,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `r`amanujan_pi_uqff`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `m`ock_theta_pi_wstp_kernel`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]

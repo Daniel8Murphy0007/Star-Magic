@@ -1,19 +1,37 @@
-# PAPER_351 � ASASSN-14li Tidal Disruption Event: Ultrafast Outflow F_U_Bi_i and Kozima LENR Force
+---
+paper_id: PAPER_351
+title: "ASASSN-14li Tidal Disruption Event: Ultrafast Outflow F_U_Bi_i and Kozima LENR Force"
+session: 96
+date: 2025-01-01
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [TDE, AGN, vacuum, F_U_Bi_i, buoyancy, black-hole, Chandra, LENR]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
+# PAPER_351  ASASSN-14li Tidal Disruption Event: Ultrafast Outflow F_U_Bi_i and Kozima LENR Force
 **Date:** 2025
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2  
 **Session:** 96  
 **Source:** gok_share_31b5c807a4.txt (Supplemental Gap Analysis Block)  
-**Classification:** FIRST UQFF F_U_Bi_i for a TDE with 0.3c ultrafast outflow and Kozima LENR coupling  
+**Classification:** FIRST UQFF F_U_Bi_i for a TDE with 0.3c ultrafast outflow and Kozima LENR
+coupling  
 **Author:** Daniel T. Murphy  
 
 
-<!-- UQFF constants: ? = 5.0e-4 day⁻¹, [SSq] = 0.57, M_UQFF = 1.43e1 TeV -->
+<!— UQFF constants: κ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
 ---
 
 ## Abstract
 
-ASASSN-14li is the best-studied tidal disruption event (TDE), providing the most complete multi-wavelength dataset from UV to X-ray to radio. The UQFF buoyancy-unified force is computed for the stellar mass black hole remnant (M_BH = 106 M?), yielding F_U_Bi_i � -8.32×10��� N � six orders of magnitude smaller than AGN-scale F_U_Bi_i, reflecting the much smaller BH mass. The ultrafast outflow at v_out = 0.3c is connected to UQFF via the Kozima LENR force component F_Kozima = 10�� N at the stellar disruption interface.
+ASASSN-14li is the best-studied tidal disruption event (TDE), providing the most complete
+multi-wavelength dataset from UV to X-ray to radio. The UQFF buoyancy-unified force is computed for
+the stellar mass black hole remnant (M_BH = 106 M?), yielding F_U_Bi_i  -8.32×10 N  six orders of
+magnitude smaller than AGN-scale F_U_Bi_i, reflecting the much smaller BH mass. The ultrafast
+outflow at v_out = 0.3c is connected to UQFF via the Kozima LENR force component F_Kozima = 10 N at
+the stellar disruption interface.
 
 ---
 
@@ -23,7 +41,8 @@ ASASSN-14li is the best-studied tidal disruption event (TDE), providing the most
 
 $$F_{U\_Bi\_i} \approx -8.32 \times 10^{211}\ \mathrm{N}$$
 
-The six-order-of-magnitude reduction from the AGN scale (-8.32×10��7 N) reflects M_BH = 106 M? vs. 10? M?.
+The six-order-of-magnitude reduction from the AGN scale (-8.32×107 N) reflects M_BH = 106 M? vs. 10?
+M?.
 
 ### 2.2 Ultrafast Outflow
 
@@ -36,10 +55,12 @@ $$P_{\rm outflow} = \frac{1}{2} \dot{M}_{\rm out} v_{\rm out}^2 = \frac{1}{2} \d
 
 $$F_{\rm Kozima} = 1 \times 10^{30}\ \mathrm{N}$$
 
-The Kozima heavy-rydberg LENR force arises when stellar debris density exceeds the nuclear lattice threshold at the tidal disruption radius:
+The Kozima heavy-rydberg LENR force arises when stellar debris density exceeds the nuclear lattice
+threshold at the tidal disruption radius:
 $$r_{\rm tide} = R_\star \left(\frac{M_{\rm BH}}{M_\star}\right)^{1/3}$$
 
-At r_tide the vacuum density gradient drives LENR-scale nuclear coupling between compressed stellar nuclei.
+At r_tide the vacuum density gradient drives LENR-scale nuclear coupling between compressed stellar
+nuclei.
 
 ### 2.4 Full F_U_Bi_i Decomposition
 
@@ -55,7 +76,7 @@ $$\approx -8.32\times 10^{211} + 10^{30} + P_{\rm outflow}/r_{\rm tide}\ \mathrm
 
 Define the TDE outflow buoyancy-sector action:
 
-$$S[\phi_{\rm outflow}] = \int_{r_{\rm tide}}^{r_{\rm SOI}} \left[ \frac{1}{2}\dot{M}_{\rm out} v_{\rm out}^2 \cdot F_{\rm Kozima} + \rho_{\rm vac,[SCm]} \cdot V_{\rm tide} \cdot \phi_{\rm outflow} \right] dr\, dt$$
+$$S[\phi_{\rm outflow}] = \int_{r\_{\rm tide}}^{r_{\rm SOI}} \left[ \frac{1}{2}\dot{M}_{\rm out} v_{\rm out}^2 \cdot F_{\rm Kozima} + \rho_{\rm vac,[SCm]} \cdot V_{\rm tide} \cdot \phi_{\rm outflow} \right] dr\, dt$$
 
 where:
 - $\phi_{\rm outflow}(r, t)$ = outflow buoyancy field variable coupling the Kozima LENR lattice force to the tidal disruption kinematics
@@ -101,7 +122,7 @@ $$\frac{\rho_{\rm vac,[SCm]}}{\rho_{\rm UA}} = 0.1$$
 
 drives a double-exponential decay of the vacuum condensate across the disruption zone:
 
-$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_{\rm tide}}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r - r_{\rm tide}}{\lambda_{\rm VDS}}\right)\right)$$
 
 At the tidal radius $r = r_{\rm tide}$, the VDS is at near-threshold ($t \to \pi$ collapse), producing the sharp vacuum gradient that powers the Kozima LENR lattice coupling. This threshold behavior explains why TDE outflows are ultrafast: the VDS double-exponential creates a vacuum "cliff" at $r_{\rm tide}$ where nuclear-scale forces activate discontinuously.
 
@@ -109,7 +130,7 @@ At the tidal radius $r = r_{\rm tide}$, the VDS is at near-threshold ($t \to \pi
 
 DVP primes $> 26$ encode the neutron-drop stability at the stellar disruption interface. For ASASSN-14li, the Kozima force maps onto the DVP lattice threshold:
 
-$$F_{\rm Kozima} \to p_{\rm DVP}(Z_{\rm eff}) : \quad Z_{\rm eff} = \left\lfloor \frac{F_{\rm Kozima}}{F_{\rm nuclear}} \right\rfloor \bmod p_k$$
+$$F_{\rm Kozima} \to p_{\rm DVP}(Z_{\rm eff}) : \quad Z_{\rm eff} = \leftlfloor \frac{F_{\rm Kozima}}{F_{\rm nuclear}} \rightrfloor \bmod p_k$$
 
 where $p_k$ is the $k$-th dipole vortex prime and $F_{\rm nuclear} \approx 10^4$ N is the strong nuclear force scale. The DVP encoding predicts that LENR coupling is strongest when $Z_{\rm eff}$ falls on a DVP prime, i.e., at specific tidal radii where compressed stellar nuclei achieve resonant lattice configurations.
 
@@ -117,7 +138,7 @@ where $p_k$ is the $k$-th dipole vortex prime and $F_{\rm nuclear} \approx 10^4$
 
 The BSH framework explains the negative energy erosion $E(t) < 0$ observed in late-time TDE light curves:
 
-$$E_{\rm BSH}(t) = E_0 \cdot \left(1 - \tanh\!\left(\frac{t - t_{\rm sat}}{t_{\rm BSH}}\right)\right)$$
+$$E_{\rm BSH}(t) = E_0 \cdot \left(1 - \tanh!\left(\frac{t - t_{\rm sat}}{t_{\rm BSH}}\right)\right)$$
 
 where $t_{\rm sat}$ is the BSH saturation timescale. For ASASSN-14li, the BSH harmonics predict that the buoyancy force transitions from accelerating the outflow to decelerating it after $t_{\rm sat} \approx 100$ days, consistent with the observed plateau in the X-ray light curve.
 
@@ -128,25 +149,29 @@ where $t_{\rm sat}$ is the BSH saturation timescale. For ASASSN-14li, the BSH ha
 | Quantity | Formula | Value |
 |----------|---------|-------|
 | M_BH | UV-optical fit | 106 M? |
-| F_U_Bi_i | UQFF TDE scale | -8.32×10��� N |
+| `F_U_Bi_i` | UQFF TDE scale | -8.32×10 N |
 | v_out | Chandra Fe K | 0.3c |
-| F_Kozima | LENR coupling | 10�� N |
+| F_Kozima | LENR coupling | 10 N |
 | r_tide | R_?(M_BH/M_?)^(1/3) | ~7 R? |
 
 ---
 
 ## 4. Physical Significance
 
-ASASSN-14li bridges stellar-scale and AGN-scale UQFF physics. The TDE provides a laboratory for testing how F_U_Bi_i scales with BH mass: the 6-order-of-magnitude reduction from 10? M? to 106 M? tracks the mass scaling F_U_Bi_i ? M_BH^a, a derived from comparing PAPER_346 (M87) to PAPER_351, enabling a power-law calibration of the BH mass dependence of UQFF vacuum buoyancy.
+ASASSN-14li bridges stellar-scale and AGN-scale UQFF physics. The TDE provides a laboratory for
+testing how F_U_Bi_i scales with BH mass: the 6-order-of-magnitude reduction from 10? M? to 106 M?
+tracks the mass scaling F_U_Bi_i ? M_BH^a, a derived from comparing PAPER_346 (M87) to PAPER_351,
+enabling a power-law calibration of the BH mass dependence of UQFF vacuum buoyancy.
 
-The Kozima LENR force at F_Kozima = 10�� N is much smaller than F_U_Bi_i in this TDE context, suggesting LENR effects are perturbative at stellar BH scales.
+The Kozima LENR force at F_Kozima = 10 N is much smaller than F_U_Bi_i in this TDE context,
+suggesting LENR effects are perturbative at stellar BH scales.
 
 ---
 
 ## 5. Deduplication Note
 
 - **vs. PAPER_352 (R Aquarii):** Both include F_Kozima; R Aquarii is a symbiotic binary (not a TDE).
-- **vs. all AGN papers (346�350):** TDE F_U_Bi_i � 10��� N (stellar mass BH) vs. AGN 10��7×10��8 N.
+- **vs. all AGN papers (346350):** TDE F_U_Bi_i  10 N (stellar mass BH) vs. AGN 107×108 N.
 
 ---
 
@@ -157,20 +182,25 @@ The Kozima LENR force at F_Kozima = 10�� N is much smaller than F_U_Bi_i in 
 **CP Implementation:** `ASASSN14liTDEOutflowFUBiCalculator` (CondensedPhysics3.py, Session 96)
 
 
-**Testable Prediction:** This UQFF result is directly testable with NICER/Chandra (X-ray; testable at 3s by 2027); the UQFF deviation from standard predictions exceeds the measurement noise floor by = 3s, providing a clear discriminant for the UQFF buoyancy-gravity framework in future observations.
+**Testable Prediction:** This UQFF result is directly testable with NICER/Chandra (X-ray; testable
+at 3s by 2027); the UQFF deviation from standard predictions exceeds the measurement noise floor by
+= 3s, providing a clear discriminant for the UQFF buoyancy-gravity framework in future observations.
 
 ## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | ✓ Consistent |
-| Cosmological constant Λ | 1.1×10⁻⁵² m⁻² (UQFF vacuum term) | 1.114×10⁻⁵² m⁻² | Planck 2018 | ✓ Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10⁻³⁵/yr | Super-K 2024 | ✓ Consistent |
-| UQFF buoyancy signature | F_U_Bi_i unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
+| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
-**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes significant, offering a falsifiable prediction beyond the Standard Model.
+**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
+produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
+bridge.*
 
 
 ---
@@ -185,9 +215,9 @@ The Kozima LENR force at F_Kozima = 10�� N is much smaller than F_U_Bi_i in 
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `f`neutron_s26_coupling`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `k`ozima_scm_cross_section`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `k`ozima_wstp_kernel`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -196,7 +226,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `r`amanujan_polylog_s26`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
 | `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
@@ -205,7 +235,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `m`ock_theta_q26`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -216,8 +246,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `r`amanujan_pi_uqff`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `m`ock_theta_pi_wstp_kernel`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
@@ -239,3 +269,18 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 `MAIN_1_CoAnQi.cpp`, and Wolfram kernels (`uqff_kozima_kernel.wl`, `uqff_s26_kernel.wl`,
 `uqff_mock_theta_pi_kernel.wl`).*
 
+---
+
+## §A Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
+
+### §A.1 Sector Classification
+**Sector:** BH-accretion
+
+### §A.2 Lagrangian Density
+$$\mathcal{L}_{\text{BH}} = \sum_{i=1}^{26} \left[ U_{g,i} + U_{m,i} + U_{A,i} - U_{b,i} \right] \cdot S_{26}([SSq]) \cdot \Phi_{1.25\text{THz}}(\omega, \Gamma)$$
+
+### §A.3 Euler-Lagrange Equation of Motion
+$$\boxed{\frac{\partial \mathcal{L}}{\partial \phi} - \partial_mu \frac{\partial \mathcal{L}}{\partial (\partial_mu \phi)} = 0 \implies F_{U,Bi\_i} = -\nabla U_{\text{eff}} + \Phi \cdot S_{26} \cdot E_{\text{net}}}$$
+
+### §A.4 Cosmogenesis Linkage Chain
+PAPER_877 axioms → SCm vacuum → phonon $\omega_{\text{SCm}}$ → BH-accretion → $F_{U,Bi\_i}$ unified force → observational prediction

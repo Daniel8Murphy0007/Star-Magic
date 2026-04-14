@@ -1,21 +1,36 @@
+---
+paper_id: PAPER_468
+title: "SMBH Binary Evolution: MUGE UQFF Frequency-Derived Gravitational Acceleration with DPM Core,
+THz Hole Pipeline, and Coalescence"
+session: 120
+date: 2025-01-01
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [GW, merger, vacuum, DPM, MUGE, SMBH, black-hole, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_468 — SMBH Binary Evolution: MUGE UQFF Frequency-Derived Gravitational Acceleration with DPM Core, THz Hole Pipeline, and Coalescence
 **Date:** 2025
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2 — Supermassive Black Hole Binary Dynamics
 **Session:** 120 (C++ module encoded) / Whitepapers created Session 122
-**Source:** grok_share_dc707f5d3.txt (Doc 70 — SMBHBinaryUQFFModule, "Master Universal Gravity Equation SMBH Binary Evolution")
-**Classification:** FIRST UQFF frequency-derived acceleration for SMBH Binary; FIRST DPM THz hole pipeline term; FIRST Aether-dominant binary coalescence via f_super decay
+**Source:** grok_share_dc707f5d3.txt (Doc 70 — SMBHBinaryUQFFModule, "Master Universal Gravity
+Equation SMBH Binary Evolution")
+**Classification:** FIRST UQFF frequency-derived acceleration for SMBH Binary; FIRST DPM THz hole
+pipeline term; FIRST Aether-dominant binary coalescence via f_super decay
 **Author:** Daniel T. Murphy
 **CP4 Class:** Pending (dc707f5d3 batch)
 **C++ Module:** `SMBHBinaryUQFFModule.h` / `SMBHBinaryUQFFModule.cpp`
 
-<!-- UQFF constants: κ = 5.0e-4 day⁻¹, [SSq] = 0.57, M_UQFF = 1.43e1 TeV -->
+<!— UQFF constants: κ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
 
 ---
 
 ## Abstract
 
-This paper presents the MUGE UQFF model for a supermassive black hole (SMBH) binary system, departing from standard 2PN waveform gravity to model all acceleration terms via frequency-derived Planck-scale quantities: $g_i = f_i \cdot \lambda_P / (2\pi)$. The binary (M1 = 4×10⁶ M☉, M2 = 2×10⁶ M☉, total = 6×10⁶ M☉) evolves toward coalescence at t_coal = 1.555×10⁷ s (SNR~475). The dominant superconductive frequency $f_{\rm super}(t) = 1.411 \times 10^{16} e^{-t/t_{\rm coal}}$ Hz decays to zero at merger, while DPM vacuum, THz hole, Ug4i reactive, resonance, and Aether terms constitute additional frequency channels. Result: g_UQFF ≈ 1.65×10⁻¹²² m/s² (Aether/resonance dominant; frequency-causal UQFF framework advance).
+This paper presents the MUGE UQFF model for a supermassive black hole (SMBH) binary system, departing from standard 2PN waveform gravity to model all acceleration terms via frequency-derived Planck-scale quantities: $g_i = f_i \cdot \lambda_P / (2\pi)$. The binary (M1 = 4×106 MM_sun, M2 = 2×106 MM_sun, total = 6×106 MM_sun) evolves toward coalescence at t_coal = 1.555×107 s (SNR~475). The dominant superconductive frequency $f_{\rm super}(t) = 1.411 \times 10^{16} e^{-t/t_{\rm coal}}$ Hz decays to zero at merger, while DPM vacuum, THz hole, Ug4i reactive, resonance, and Aether terms constitute additional frequency channels. Result: g_UQFF ≈ 1.65×10-122 m/s2 (Aether/resonance dominant; frequency-causal UQFF framework advance).
 
 ---
 
@@ -25,18 +40,19 @@ This paper presents the MUGE UQFF model for a supermassive black hole (SMBH) bin
 
 | Parameter | Value | Notes |
 |-----------|-------|-------|
-| M1 | 4×10⁶ M☉ | Primary SMBH |
-| M2 | 2×10⁶ M☉ | Secondary SMBH |
-| M_total | 6×10⁶ M☉ | Total system mass |
-| r_init | ~9.46×10¹⁶ m (~3.07 pc) | Initial separation |
-| t_coal | 1.555×10⁷ s (~0.49 yr) | Coalescence time |
+| M1 | 4×106 MM_sun | Primary SMBH |
+| M2 | 2×106 MM_sun | Secondary SMBH |
+| M_total | 6×106 MM_sun | Total system mass |
+| r_init | ~9.46×1016 m (~3.07 pc) | Initial separation |
+| t_coal | 1.555×107 s (~0.49 yr) | Coalescence time |
 | SNR | ~475 | GW Signal-to-noise ratio |
 | z | 0.1 | Estimated redshift |
-| f_super | 1.411×10¹⁶ Hz | Initial superconductive frequency |
+| f_super | 1.411×1016 Hz | Initial superconductive frequency |
 
 ### 2.2 Frequency-Derived Gravitational Acceleration
 
-**The central UQFF innovation:** All gravitational terms are derived from frequencies rather than direct mass-distance:
+**The central UQFF innovation:** All gravitational terms are derived from frequencies rather than
+direct mass-distance:
 
 $$g_{\rm UQFF}(r, t) = \sum_i f_i(t) \cdot \frac{\lambda_P}{2\pi}$$
 
@@ -61,7 +77,9 @@ $$f_{\rm super}(t) = 1.411 \times 10^{16} \cdot e^{-t/t_{\rm coal}}\ \mathrm{Hz}
 At $t = 0$: $f_{\rm super} = 1.411 \times 10^{16}$ Hz (UV-scale frequency)
 At $t = t_{\rm coal}$: $f_{\rm super} \to 0$ (merger completion)
 
-This exponential decay is the **UQFF analog of gravitational wave frequency chirp** — the superconductive aether resonance drains to zero as the BHs merge, releasing energy via the THz hole pipeline.
+This exponential decay is the **UQFF analog of gravitational wave frequency chirp** — the
+superconductive aether resonance drains to zero as the BHs merge, releasing energy via the THz hole
+pipeline.
 
 ### 2.4 THz Hole Pipeline
 
@@ -90,15 +108,15 @@ $$\boxed{g_{\rm UQFF}(r,t) = \frac{\lambda_P}{2\pi}\!\left[f_{\rm super}(t) + f_
 ## 4. Physical Interpretation
 
 - **No SM gravity illusions**: The standard Newtonian/GR treatment of SMBH binaries ($g = GM_{\rm chirp}/r^2$) is replaced entirely by frequency-derived Planck-scale terms — demonstrating that UQFF can recover GW physics from first principles via $g = f \lambda_P / (2\pi)$.
-- **Aether dominant**: The extremely small result (1.65×10⁻¹²² m/s²) reflects the Planck-length scaling, where the observable is the frequency rather than the spatial acceleration — consistent with LIGO SNR~475 GW detection.
-- **THz hole pipeline advance**: The 10¹² Hz THz term represents a new UQFF prediction — near-field energy transport through structured spacetime cavities.
+- **Aether dominant**: The extremely small result (1.65×10-122 m/s2) reflects the Planck-length scaling, where the observable is the frequency rather than the spatial acceleration — consistent with LIGO SNR~475 GW detection.
+- **THz hole pipeline advance**: The 1012 Hz THz term represents a new UQFF prediction — near-field energy transport through structured spacetime cavities.
 
 ---
 
 ## 5. C++ Module Reference
 
 **Module:** `SMBHBinaryUQFFModule` (root-level, Session 120 from grok_share_dc707f5d3.txt)
-**Key method:** `computeG(double t)` — returns total frequency-derived g_UQFF in m/s²
+**Key method:** `computeG(double t)` — returns total frequency-derived g_UQFF in m/s2
 **Unique feature:** `computeFreqSuper(double t)` — exponential coalescence decay
 **Integration point:** MAIN_1_CoAnQi.cpp SMBH binary validation (GW cross-check)
 
@@ -110,13 +128,15 @@ $$\boxed{g_{\rm UQFF}(r,t) = \frac{\lambda_P}{2\pi}\!\left[f_{\rm super}(t) + f_
 
 ### §A.1 Sector Classification
 
-This paper maps to **BH-gravity** sector of the 9-sector UQFF Lagrangian (see `uqff_lagrangian_derivation.py`).
+This paper maps to **BH-gravity** sector of the 9-sector UQFF Lagrangian (see
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
-The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive quantum fundamentals (DPM, UA, SCm):
+The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
+quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_\mu \phi_{\rm BH})(\partial^\mu \phi_{\rm BH}) - V(\phi_{\rm BH}) + \mathcal{L}_{\rm cosmo}$$
+$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_mu \phi_{\rm BH})(\partial^\mu \phi_{\rm BH}) - V(\phi_{\rm BH}) + \mathcal{L}_{\rm cosmo}$$
 
 where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
@@ -130,7 +150,9 @@ $$\boxed{\frac{\delta S}{\delta \phi_{\rm BH}} = R_{\mu\nu} - \tfrac{1}{2}g_{\mu
 
 $$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\rm BH} = 0$$
 
-The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g forces) through vacuum density initialization to the sector-specific equation of motion. Every term in the E-L equation inherits its physical origin from the cosmogenesis master.
+The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
+forces) through vacuum density initialization to the sector-specific equation of motion. Every term
+in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 
 ---
@@ -141,9 +163,9 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.171$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m³.
+For this system, the local VDS sub-ratio is $0.171$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -155,13 +177,13 @@ Since $p_{\rm DVP} = 67$ is **resonant** (threshold at $p > 26$), the system's v
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
-The BSH saturation timescale for this sector is **10⁶ M_BH/M_⊙ yr** (quasi-normal mode ringdown):
+The BSH saturation timescale for this sector is **106 M_BH/M_M_sun yr** (quasi-normal mode ringdown):
 
-$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
+$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\rm SCm}$ which initializes the harmonic series at cosmogenesis.
 
@@ -169,11 +191,11 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.171 | ✓ Threshold-consistent |
-| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 67$ | ✓ Resonant |
-| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
-| [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
+| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.171 | PASS Threshold-consistent |
+| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 67$ | PASS Resonant |
+| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
+| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
 ---
@@ -183,12 +205,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Thomson σ_T (QED synchrotron) | UQFF U_m scattering kernel: σ_T = 6.6524×10⁻²⁹ m² | σ_T = 6.6524×10⁻²⁹ m² (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
-| Active Galactic Nucleus / SMBH luminosity X-ray 2–10 keV | UQFF MUGE g_total → L_X via Stefan-Boltzmann + buoyancy flux: L_X ≈ g_total × M_env | L_X L_X ~ 10⁴³–10⁴⁶ erg/s | Chandra/XMM | ✓ Consistent order of magnitude |
-| GR Schwarzschild limit | UQFF g_total must satisfy g ≤ c²/(2r_s) at event horizon | r_s = 2GM/c² (GR exact) | PDG 2024 / GR | ✓ UQFF respects GR horizon |
+| Thomson σ_T (QED synchrotron) | UQFF U_m scattering kernel: σ_T = 6.6524×10-29 m2 | σ_T = 6.6524×10-29 m2 (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
+| Active Galactic Nucleus / SMBH luminosity X-ray 2–10 keV | UQFF MUGE g_total → L_X via Stefan-Boltzmann + buoyancy flux: L_X ≈ g_total × M_env | L_X L_X ~ 1043–1046 erg/s | Chandra/XMM | PASS Consistent order of magnitude |
+| GR Schwarzschild limit | UQFF g_total must satisfy g ≤ c2/(2r_s) at event horizon | r_s = 2GM/c2 (GR exact) | PDG 2024 / GR | PASS UQFF respects GR horizon |
 | κ vacuum rate vs X-ray variability | UQFF κ = 0.0005/day → timescale τ_UQFF = 2000 days | Observed X-ray variability τ_obs (instrument monitoring) | Chandra/XMM | Testable UQFF variability timescale |
 
-**New physics claim:** UQFF MUGE generates gravity enhancement factors (g_total/g_Newt > 1) for Active Galactic Nucleus / SMBH
+**New physics claim:** UQFF MUGE generates gravity enhancement factors (g_total/g_Newt > 1) for
+Active Galactic Nucleus / SMBH
 through vacuum buoyancy coupling — a mechanism absent from GR+SM. The enhancement factor and
 X-ray luminosity are linked via the UQFF buoyancy flux, providing a testable prediction for
 future Chandra/XMM monitoring observations.
@@ -197,7 +220,8 @@ future Chandra/XMM monitoring observations.
 
 
 
-**QS=5** — Full UQFF frequency-derived physics: f_super decay, THz pipeline, DPM aether, Planck-length scaling, SMBH binary coalescence.
+**QS=5** — Full UQFF frequency-derived physics: f_super decay, THz pipeline, DPM aether,
+Planck-length scaling, SMBH binary coalescence.
 *Copyright — Daniel T. Murphy. Encoded Oct 10, 2025.*
 
 
@@ -213,9 +237,9 @@ future Chandra/XMM monitoring observations.
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `f`neutron_s26_coupling`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `k`ozima_scm_cross_section`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `k`ozima_wstp_kernel`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -224,7 +248,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `r`amanujan_polylog_s26`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
 | `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
@@ -233,7 +257,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `m`ock_theta_q26`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -244,8 +268,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `r`amanujan_pi_uqff`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `m`ock_theta_pi_wstp_kernel`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]

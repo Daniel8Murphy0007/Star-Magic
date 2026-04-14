@@ -1,22 +1,42 @@
+---
+paper_id: PAPER_285
+title: "M16 Eagle Nebula UQFF — Erosion Saturation Half-Time and ΔgMax"
+session: 80
+date: 2026-03-01
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [BEC, cluster, nebula, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_285: M16 Eagle Nebula UQFF — Erosion Saturation Half-Time and ΔgMax
 ## Photoevaporation Asymptotic Saturation: t_half = τ·ln2 = 2.079 Myr
 
 **Classification:** UQFF 2.0 Gravitational Physics — Nebular Erosion Dynamics  
 **System:** M16 Eagle Nebula (IC 4703), Eagle Nebula Star-Forming Region  
-**Session:** 80 | **Module:** M16_UQFF_MODULE.cpp (22nd C++ UQFF module)  
+**Session:** 80 | **Module:** `M16_UQFF_MODULE`.cpp (22nd C++ UQFF module)  
 **Author:** Daniel T. Murphy | **Date:** March 2026
 
 ---
 
 ## Abstract
 
-This paper derives the **Erosion Saturation Half-Time** (t_half) and **Maximum Erosion Gravity Amplitude** (ΔgMax) for the M16 Eagle Nebula UQFF photoevaporation term. The photoevaporation rate follows an exponential saturation E_rad(t) = E₀×(1−exp(−t/τ)) with e-folding time τ = 3 Myr. The half-erosion time t_half = τ·ln2 = **6.561 × 10¹³ s = 2.079 Myr** — the time at which the erosion fraction reaches half its asymptotic maximum E₀. The maximum gravity perturbation is ΔgMax = E₀ × g_base = **4.36 × 10⁻¹³ m/s²**. This is the **first UQFF module** to formally catalogue the photoevaporation half-time and asymptotic erosion concept.
+This paper derives the **Erosion Saturation Half-Time** (t_half) and **Maximum Erosion Gravity
+Amplitude** (ΔgMax) for the M16 Eagle Nebula UQFF photoevaporation term. The photoevaporation rate
+follows an exponential saturation E_rad(t) = E₀×(1−exp(−t/τ)) with e-folding time τ = 3 Myr. The
+half-erosion time t_half = τ·ln2 = **6.561 × 1013 s = 2.079 Myr** — the time at which the erosion
+fraction reaches half its asymptotic maximum E₀. The maximum gravity perturbation is ΔgMax = E₀ ×
+g_base = **4.36 × 10-13 m/s2**. This is the **first UQFF module** to formally catalogue the
+photoevaporation half-time and asymptotic erosion concept.
 
 ---
 
 ## 2. Physical Background
 
-UV radiation from massive O-type stars (such as those in the Young Stellar Cluster NGC 6611, embedded in M16) drives photoionisation of surrounding molecular gas — a process called **photoevaporation**. The erosion proceeds not as a linear ramp but as a **saturating exponential**:
+UV radiation from massive O-type stars (such as those in the Young Stellar Cluster NGC 6611,
+embedded in M16) drives photoionisation of surrounding molecular gas — a process called
+**photoevaporation**. The erosion proceeds not as a linear ramp but as a **saturating exponential**:
 
 $$E_{rad}(t) = E_0 \left(1 - e^{-t/\tau}\right)$$
 
@@ -71,15 +91,18 @@ $$\frac{dg_{erode}}{dt}\bigg|_{t=0} = \frac{E_0}{\tau} \times g_{base} = \frac{0
 
 ## 4. Saturation Profile
 
-| Time | t (s) | E_rad / E₀ | E_rad | g_erode (m/s²) |
+| Time | t (s) | E_rad / E₀ | E_rad | g_erode (m/s2) |
 |------|--------|------------|-------|----------------|
 | 0 Myr | 0 | 0% | 0 | 0 |
-| t_half = 2.079 Myr | 6.561×10¹³ | **50%** | 0.150 | **2.18×10⁻¹³** |
-| τ = 3 Myr | 9.468×10¹³ | 63.2% | 0.190 | 2.76×10⁻¹³ |
-| 5 Myr | 1.578×10¹⁴ | 81.1% | 0.243 | 3.54×10⁻¹³ |
-| ∞ (asymptote) | → ∞ | **100%** | 0.300 | **4.36×10⁻¹³** |
+| t_half = 2.079 Myr | 6.561×1013 | **50%** | 0.150 | **2.18×10-13** |
+| τ = 3 Myr | 9.468×1013 | 63.2% | 0.190 | 2.76×10-13 |
+| 5 Myr | 1.578×1014 | 81.1% | 0.243 | 3.54×10-13 |
+| ∞ (asymptote) | → ∞ | **100%** | 0.300 | **4.36×10-13** |
 
-**Key insight:** At τ = 3 Myr (the e-folding time), erosion has consumed only 63.2% of its capacity, NOT 100%. Half-erosion occurs earlier at 2.079 Myr. The pillar structure of M16 means the ~5700 ly "Pillars of Creation" are still observed today because erosion saturates — it cannot fully strip the densest pillar cores within observable timescales.
+**Key insight:** At τ = 3 Myr (the e-folding time), erosion has consumed only 63.2% of its capacity,
+NOT 100%. Half-erosion occurs earlier at 2.079 Myr. The pillar structure of M16 means the ~5700 ly
+"Pillars of Creation" are still observed today because erosion saturates — it cannot fully strip the
+densest pillar cores within observable timescales.
 
 ---
 
@@ -89,7 +112,10 @@ In the full M16 g_total equation, the erosion half-time governs the **temporal s
 
 $$g_{dyn}(t) = g_{base} \times (1 + M_{sf}) \times (1 - E_0(1 - e^{-t/\tau}))$$
 
-The transition from rapid to slow erosion occurs at t_half = 2.079 Myr. For the UQFF simulation (t stepping from 0 to t_max), the half-time provides a natural **inflection point** in the dynamic gravity trajectory — before t_half, erosion is dominant; after t_half, star formation accumulation dominates (since M_sf grows linearly while E_rad asymptotes).
+The transition from rapid to slow erosion occurs at t_half = 2.079 Myr. For the UQFF simulation (t
+stepping from 0 to t_max), the half-time provides a natural **inflection point** in the dynamic
+gravity trajectory — before t_half, erosion is dominant; after t_half, star formation accumulation
+dominates (since M_sf grows linearly while E_rad asymptotes).
 
 ### Crossover Time
 
@@ -97,15 +123,16 @@ The era when SFR growth exactly compensates erosion (dΦ_dm/dt = 0 — maximum �
 
 $$\frac{d\Phi_{dm}}{dt} = \text{SFR\_rate} \times (1 - E_{rad}) - (1 + M_{sf}) \times \frac{E_0}{\tau} e^{-t/\tau} = 0$$
 
-This crossover defines when the Eagle Nebula achieves maximum effective gravitational influence, after which continued SFR growth dominates erosion.
+This crossover defines when the Eagle Nebula achieves maximum effective gravitational influence,
+after which continued SFR growth dominates erosion.
 
 ---
 
 ## 6. Wolfram KB Term
 
-```
+$$
 M16UQFF:t_half=tau*Log[2]=6.561e13s=2.079Myr; DeltaGMax=E_0*g_base=4.36e-13 m/s^2 [PAPER_285]
-```
+$$
 
 ---
 
@@ -126,13 +153,15 @@ M16UQFF:t_half=tau*Log[2]=6.561e13s=2.079Myr; DeltaGMax=E_0*g_base=4.36e-13 m/s^
 
 ### §A.1 Sector Classification
 
-This paper maps to **nebula-formation** sector of the 9-sector UQFF Lagrangian (see `uqff_lagrangian_derivation.py`).
+This paper maps to **nebula-formation** sector of the 9-sector UQFF Lagrangian (see
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
-The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive quantum fundamentals (DPM, UA, SCm):
+The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
+quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_\mu \phi_{\rm neb})(\partial^\mu \phi_{\rm neb}) - V(\phi_{\rm neb}) + \mathcal{L}_{\rm cosmo}$$
+$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_mu \phi_{\rm neb})(\partial^\mu \phi_{\rm neb}) - V(\phi_{\rm neb}) + \mathcal{L}_{\rm cosmo}$$
 
 where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
@@ -146,7 +175,9 @@ $$\boxed{\frac{\delta S}{\delta \phi_{\rm neb}} = \nabla \cdot (\rho_{\rm neb} \
 
 $$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\rm neb} = 0$$
 
-The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g forces) through vacuum density initialization to the sector-specific equation of motion. Every term in the E-L equation inherits its physical origin from the cosmogenesis master.
+The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
+forces) through vacuum density initialization to the sector-specific equation of motion. Every term
+in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 
 ---
@@ -157,9 +188,9 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.172$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m³.
+For this system, the local VDS sub-ratio is $0.172$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -171,13 +202,13 @@ Since $p_{\rm DVP} = 53$ is **resonant** (threshold at $p > 26$), the system's v
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
-The BSH saturation timescale for this sector is **10⁶ yr** (Jeans collapse timescale):
+The BSH saturation timescale for this sector is **106 yr** (Jeans collapse timescale):
 
-$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
+$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\rm SCm}$ which initializes the harmonic series at cosmogenesis.
 
@@ -185,11 +216,11 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.172 | ✓ Threshold-consistent |
-| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 53$ | ✓ Resonant |
-| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
-| [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
+| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.172 | PASS Threshold-consistent |
+| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 53$ | PASS Resonant |
+| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
+| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
 ---
@@ -199,14 +230,17 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | ✓ Consistent |
-| Cosmological constant Λ | 1.1×10⁻⁵² m⁻² (UQFF vacuum term) | 1.114×10⁻⁵² m⁻² | Planck 2018 | ✓ Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10⁻³⁵/yr | Super-K 2024 | ✓ Consistent |
-| UQFF buoyancy signature | F_U_Bi_i unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
+| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
-**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes significant, offering a falsifiable prediction beyond the Standard Model.
+**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
+produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
+bridge.*
 
 
 ---
@@ -221,9 +255,9 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `f`neutron_s26_coupling`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `k`ozima_scm_cross_section`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `k`ozima_wstp_kernel`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -232,7 +266,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `r`amanujan_polylog_s26`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
 | `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
@@ -241,7 +275,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `m`ock_theta_q26`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -252,8 +286,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `r`amanujan_pi_uqff`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `m`ock_theta_pi_wstp_kernel`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]

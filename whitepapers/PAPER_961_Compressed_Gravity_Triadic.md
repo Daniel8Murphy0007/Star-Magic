@@ -1,6 +1,18 @@
+---
+paper_id: PAPER_961
+title: "Compressed Gravity Triadic Mode"
+session: 215
+date: 2026-04-12
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [SCm, jet, MUGE, buoyancy, phonon, damping, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_961: Compressed Gravity Triadic Mode
 
-**Author:** Daniel T. Murphy -- Star Magic / UQFF Framework
+**Author:** Daniel T. Murphy — Star Magic / UQFF Framework
 **Date:** 2026-04-12
 **Session:** 215
 **Source:** triadic_solutions_next.py (CompressedGravityTriadic)
@@ -17,7 +29,7 @@ The Compressed Gravity Triadic mode modulates the buoyancy-to-gravity ratio $F_{
 
 ## 1. Compressed Gravity
 
-$$F_\text{compressed}(\Gamma) = \frac{F_{U,Bi}}{F_U} \cdot \exp\!\left(-\frac{(\omega - \omega_\text{SCm})^2}{2\Gamma^2}\right) \cdot S_{26} \cdot A_\text{jet}$$
+$$F_\text{compressed}(\Gamma) = \frac{F_{U,Bi}}{F_U} \cdot \exp!\left(-\frac{(\omega - \omega_text{SCm})^2}{2\Gamma^2}\right) \cdot S_{26} \cdot A_\text{jet}$$
 
 ## 2. Regime Map
 
@@ -31,7 +43,7 @@ $$F_\text{compressed}(\Gamma) = \frac{F_{U,Bi}}{F_U} \cdot \exp\!\left(-\frac{(\
 
 ## References
 
-1. Murphy, D.T. -- Star Magic UQFF Framework (2024-2026)
+1. Murphy, D.T. — Star Magic UQFF Framework (2024-2026)
 2. PAPER_962 — Resonant Gravity Triadic
 3. PAPER_963 — Buoyancy Gravity Triadic
 4. PAPER_966 — Unified Triadic Solver

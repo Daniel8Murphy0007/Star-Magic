@@ -16,7 +16,10 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 ## Abstract
 
-We extend AGN F_U_Bi_i curve analysis to TON618, the most massive known SMBH (M_BH = 6.6 x 10^10 M_sun, a = 0.998). With a stronger jet amplitude A_jet = 2.8, the peak modulation reaches 3.8x at Gamma = 0.05 THz, exceeding 3C273 by 22.6%. This confirms the UQFF prediction that ultramassive BHs exhibit stronger buoyancy-jet coupling due to higher spin and magnetic field strength.
+We extend AGN F_U_Bi_i curve analysis to TON618, the most massive known SMBH (M_BH = 6.6 x 10^10
+M_sun, a = 0.998). With a stronger jet amplitude A_jet = 2.8, the peak modulation reaches 3.8x at
+Gamma = 0.05 THz, exceeding 3C273 by 22.6%. This confirms the UQFF prediction that ultramassive BHs
+exhibit stronger buoyancy-jet coupling due to higher spin and magnetic field strength.
 
 ## 1. System Parameters
 
@@ -31,15 +34,18 @@ We extend AGN F_U_Bi_i curve analysis to TON618, the most massive known SMBH (M_
 
 ## 2. Mass Scaling
 
-The ratio M_jet(TON618) / M_jet(3C273) = 3.8 / 3.1 = 1.226, consistent with the logarithmic mass-modulation scaling:
+The ratio M_jet(TON618) / M_jet(3C273) = 3.8 / 3.1 = 1.226, consistent with the logarithmic
+mass-modulation scaling:
 
 Delta_M ~ A_jet * log10(M_BH / M_ref)
 
-where M_ref = 10^6 M_sun. The near-maximal spin (a = 0.998) enhances frame-dragging contributions to Ug3.
+where M_ref = 10^6 M_sun. The near-maximal spin (a = 0.998) enhances frame-dragging contributions to
+Ug3.
 
 ## 3. Results
 
-TON618 F_U_Bi_i exceeds 3C273 at all 8 Gamma points. The modulation ratio is monotonically increasing with BH mass, validating the UQFF AGN hierarchy.
+TON618 F_U_Bi_i exceeds 3C273 at all 8 Gamma points. The modulation ratio is monotonically
+increasing with BH mass, validating the UQFF AGN hierarchy.
 
 ## 4. Implementation
 
@@ -68,7 +74,8 @@ File: `fubi_i_curves_agn_ns_qgp.py`, class `TON618AGNCurvesCalc`. CP4 class #594
 | $\sin^2\theta_W$ | Embedded in $U_{g2}$ charge coupling | $0.2312$ | PDG 2024 | 99.6% |
 | Fine structure $\alpha$ | UQFF reproduces via $U_{g1}$ dipole | $1/137.036$ | PDG 2024 | 99.9% |
 
-**New physics claim:** UQFF phonon-mediated vacuum coupling provides testable predictions beyond SM for this system.
+**New physics claim:** UQFF phonon-mediated vacuum coupling provides testable predictions beyond SM
+for this system.
 
 *Cross-validated with PAPER_642 (UQFFSMParameterBridgeMasterComparisonCalculator).*
 
@@ -80,13 +87,13 @@ File: `fubi_i_curves_agn_ns_qgp.py`, class `TON618AGNCurvesCalc`. CP4 class #594
 **Sector:** BH-accretion (active galactic nucleus jet)
 
 ### §A.2 Lagrangian Density
-$$\mathcal{L}_{BH_accretion} = \sum_{i=1}^{26} \left[ U_{g,i} + U_{m,i} + U_{A,i} - U_{b,i} \right] \cdot S_{26}([SSq]) \cdot \Phi_{1.25\text{THz}}(\omega, \Gamma)$$
+$$\mathcal{L}_{BH\_accretion} = \sum_{i=1}^{26} \left[ U_{g,i} + U_{m,i} + U_{A,i} - U_{b,i} \right] \cdot S_{26}([SSq]) \cdot \Phi_{1.25\text{THz}}(\omega, \Gamma)$$
 
 ### §A.3 Euler-Lagrange Equation of Motion
-$$\boxed{\frac{\partial \mathcal{L}}{\partial \phi} - \partial_\mu \frac{\partial \mathcal{L}}{\partial (\partial_\mu \phi)} = 0 \implies F_{U,Bi_i} = -\nabla U_{\text{eff}} + \Phi \cdot S_{26} \cdot E_{\text{net}}}$$
+$$\boxed{\frac{\partial \mathcal{L}}{\partial \phi} - \partial_mu \frac{\partial \mathcal{L}}{\partial (\partial_mu \phi)} = 0 \implies F_{U,Bi\_i} = -\nabla U_{\text{eff}} + \Phi \cdot S_{26} \cdot E_{\text{net}}}$$
 
 ### §A.4 Cosmogenesis Linkage Chain
-PAPER_877 axioms → SCm vacuum → phonon $\omega_{\text{SCm}}$ → active galactic nucleus jet → $F_{U,Bi_i}$ unified force → observational prediction
+PAPER_877 axioms → SCm vacuum → phonon $\omega_{\text{SCm}}$ → active galactic nucleus jet → $F_{U,Bi\_i}$ unified force → observational prediction
 
 ---
 

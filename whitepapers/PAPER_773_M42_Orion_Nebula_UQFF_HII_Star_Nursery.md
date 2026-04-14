@@ -1,3 +1,15 @@
+---
+paper_id: PAPER_773
+title: "M42 Orion Nebula — UQFF HII Region Star Nursery"
+session: 181
+date: 2026-01-01
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [cluster, AGN, Hubble, nebula, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_773: M42 Orion Nebula — UQFF HII Region Star Nursery
 
 **Author:** Daniel T. Murphy  
@@ -10,36 +22,49 @@
 
 ## Abstract
 
-M42, the Orion Nebula (~1,344 ly), is the nearest and best-studied massive star-forming HII region. With ~2,000 M☉ of gas and dust spanning ~2 ly around the Trapezium cluster, Hubble's iconic mosaic (1995) revealed hundreds of protoplanetary disks (proplyds) being photoevaporated by Trapezium's UV radiation. Under UQFF, the moderate star-formation rate (0.3 M☉/yr), Aether electromagnetic correction, and expansion factor yield g_M42 ≈ 1.053×10⁻³ m/s², establishing M42 as the canonical low-SFR HII region reference.
+M42, the Orion Nebula (~1,344 ly), is the nearest and best-studied massive star-forming HII region.
+With ~2,000 MM_sun of gas and dust spanning ~2 ly around the Trapezium cluster, Hubble's iconic mosaic
+(1995) revealed hundreds of protoplanetary disks (proplyds) being photoevaporated by Trapezium's UV
+radiation. Under UQFF, the moderate star-formation rate (0.3 MM_sun/yr), Aether electromagnetic
+correction, and expansion factor yield g_M42 ≈ 1.053×10-3 m/s2, establishing M42 as the canonical
+low-SFR HII region reference.
 
 ---
 
 ## 1. Introduction
 
-The Orion Nebula is the closest region of massive star formation to Earth, providing UQFF with an exceptional close-range (~1,344 ly) calibration system. The Trapezium cluster of young O-type stars ionizes ~0.5 pc of surrounding gas, creating the optical nebula visible to the naked eye. Hubble resolved ~150 proplyds — circumstellar disks being photoevaporated — confirming active planetary system formation. The modest B-field (~10⁻⁵ T) and measured SFR (0.3 M☉/yr) place M42 firmly in the standard HII regime under UQFF, where the Aether EM term dominates via the ionized gas velocity (~100 km/s).
+The Orion Nebula is the closest region of massive star formation to Earth, providing UQFF with an
+exceptional close-range (~1,344 ly) calibration system. The Trapezium cluster of young O-type stars
+ionizes ~0.5 pc of surrounding gas, creating the optical nebula visible to the naked eye. Hubble
+resolved ~150 proplyds — circumstellar disks being photoevaporated — confirming active planetary
+system formation. The modest B-field (~10-5 T) and measured SFR (0.3 MM_sun/yr) place M42 firmly in the
+standard HII regime under UQFF, where the Aether EM term dominates via the ionized gas velocity
+(~100 km/s).
 
 ---
 
 ## 2. Master UQFF Gravity Equation
 
-```
-g_M42(r, t) = (G × M) / r² × (1 + H(z)×t) × (1 + M_sf) × (1 - E_rad) × (1 + f_TRZ)
-           + a_EM
-```
+$$
+\begin{aligned}
+  & g_M42(r, t) = (G × M) / r2 × (1 + H(z)×t) × (1 + M_sf) × (1 - E_rad) × (1 + f_TRZ) \\
+  & + a_EM
+\end{aligned}
+$$
 
 ### 2.1 Parameters
 
 | Parameter | Symbol | Value | Source |
 |-----------|--------|-------|--------|
-| Nebula mass | M | 2,000 M☉ = 3.978×10³³ kg | Hubble |
-| Nebula radius | r | 2×10¹⁶ m (~2.1 ly) | Hubble |
-| SFR | SFR | 0.3 M☉/yr | Labs |
-| Age | t | 3×10⁵ yr = 9.468×10¹² s | Cluster age |
+| Nebula mass | M | 2,000 MM_sun = 3.978×1033 kg | Hubble |
+| Nebula radius | r | 2×1016 m (~2.1 ly) | Hubble |
+| SFR | SFR | 0.3 MM_sun/yr | Labs |
+| Age | t | 3×105 yr = 9.468×1012 s | Cluster age |
 | M_sf | — | 0.045 | UQFF integral |
 | E_rad | — | 0.12 | UQFF Trapezium UV |
 | Redshift | z | 0.0004 | Distance |
-| v_EM | v | 10⁵ m/s | Ionized gas radial |
-| B_EM | B | 10⁻⁵ T | HII region |
+| v_EM | v | 105 m/s | Ionized gas radial |
+| B_EM | B | 10-5 T | HII region |
 | f_TRZ | — | 0.1 | UQFF |
 
 ---
@@ -47,62 +72,77 @@ g_M42(r, t) = (G × M) / r² × (1 + H(z)×t) × (1 + M_sf) × (1 - E_rad) × (1
 ## 3. Long-Form Derivation
 
 ### Step 1: Base Gravitational Term
-```
-g_grav = (6.6743e-11 × 3.978e33) / (2e16)²
-       = 2.655e23 / 4e32 = 6.638e-10 m/s²
-```
+$$
+\begin{aligned}
+  & g_grav = (6.6743e-11 × 3.978e33) / (2e16)2 \\
+  & = 2.655e23 / 4e32 = 6.638e-10 m/s2
+\end{aligned}
+$$
 
 ### Step 2: Star-Formation Mass Fraction
-```
-SFR = 0.3 M☉/yr; t = 3×10⁵ yr; M₀ = 2,000 M☉
-M_sf = 0.3 × 3e5 / 2000 = 45 → UQFF bounded: M_sf = 0.045
-1 + M_sf = 1.045
-```
+$$
+\begin{aligned}
+  & SFR = 0.3 MM_sun/yr; t = 3×105 yr; M₀ = 2,000 MM_sun \\
+  & M_sf = 0.3 × 3e5 / 2000 = 45 → UQFF bounded: M_sf = 0.045 \\
+  & 1 + M_sf = 1.045
+\end{aligned}
+$$
 
 ### Step 3: Radiation Energy Loss (Trapezium UV)
-```
-E_rad (Trapezium 4 O-stars, L_trap ≈ 2.5×10⁴ L☉):
-UQFF coupling: E_rad = 0.12 (moderate UV photoionization)
-1 - E_rad = 0.88
-```
+$$
+\begin{aligned}
+  & E_rad (Trapezium 4 O-stars, L_trap ≈ 2.5×104 LM_sun): \\
+  & UQFF coupling: E_rad = 0.12 (moderate UV photoionization) \\
+  & 1 - E_rad = 0.88
+\end{aligned}
+$$
 
 ### Step 4: Cosmic Expansion Factor
-```
-H(z) = 2.268e-18 × √(0.3×(1.0004)³ + 0.7) = 2.268e-18 s⁻¹
-H(z) × t = 2.268e-18 × 9.468e12 = 2.147e-5
-1 + H(z) × t = 1.0000215
-```
+$$
+\begin{aligned}
+  & H(z) = 2.268e-18 × √(0.3×(1.0004)3 + 0.7) = 2.268e-18 s-1 \\
+  & H(z) × t = 2.268e-18 × 9.468e12 = 2.147e-5 \\
+  & 1 + H(z) × t = 1.0000215
+\end{aligned}
+$$
 
 ### Step 5: Aether Electromagnetic Correction
-```
-v = 10⁵ m/s (photoionized gas velocity)
-B = 10⁻⁵ T
-
-q × (v × B) = 1.602e-19 × 1e5 × 1e-5 = 1.602e-19 N
-a = 1.602e-19 / m_p = 1.602e-19 / 1.673e-27 = 9.575e7 m/s²
-a_EM = 9.575e7 × 11 × 1e-12 = 1.053e-3 m/s²
-```
+$$
+\begin{aligned}
+  & v = 105 m/s (photoionized gas velocity) \\
+  & B = 10-5 T \\
+  & q × (v × B) = 1.602e-19 × 1e5 × 1e-5 = 1.602e-19 N \\
+  & a = 1.602e-19 / m_p = 1.602e-19 / 1.673e-27 = 9.575e7 m/s2 \\
+  & a_EM = 9.575e7 × 11 × 1e-12 = 1.053e-3 m/s2
+\end{aligned}
+$$
 
 ### Step 6: Time-Reversal Correction
-```
+$$
 1 + f_TRZ = 1.1
-```
+$$
 
 ### Step 7: Final Solution
-```
-g_M42 = (6.638e-10) × (1.0000215) × (1.045) × (0.88) × (1.1) + 1.053e-3
-       = 6.638e-10 × 1.046 = 6.943e-10
-       × 0.88 = 6.110e-10
-       × 1.1 = 6.721e-10
-       = 6.721e-10 + 1.053e-3
-       ≈ 1.053e-3 m/s²
-```
+$$
+\begin{aligned}
+  & g_M42 = (6.638e-10) × (1.0000215) × (1.045) × (0.88) × (1.1) + 1.053e-3 \\
+  & = 6.638e-10 × 1.046 = 6.943e-10 \\
+  & × 0.88 = 6.110e-10 \\
+  & × 1.1 = 6.721e-10 \\
+  & = 6.721e-10 + 1.053e-3 \\
+  & ≈ 1.053e-3 m/s2
+\end{aligned}
+$$
 
 ---
 
 ## 4. Physical Interpretation
 
-M42's result (1.053×10⁻³ m/s²) confirms the canonical UQFF frequency for standard HII region ionized gas (v = 100 km/s, B = 10⁻⁵ T). Classical gravity (6.638×10⁻¹⁰) contributes ~0.06% of the total, negligible against the Aether EM correction. The M_sf = 0.045 and E_rad = 0.12 modifiers change the gravitational baseline by only ~8%, leaving the result dominated by the Aether term. This places M42 as the archetypal UQFF HII region benchmark alongside M16, NGC 2264, and NGC 3324.
+M42's result (1.053×10-3 m/s2) confirms the canonical UQFF frequency for standard HII region ionized
+gas (v = 100 km/s, B = 10-5 T). Classical gravity (6.638×10-10) contributes ~0.06% of the total,
+negligible against the Aether EM correction. The M_sf = 0.045 and E_rad = 0.12 modifiers change the
+gravitational baseline by only ~8%, leaving the result dominated by the Aether term. This places M42
+as the archetypal UQFF HII region benchmark alongside M16, NGC 2264, and NGC 3324.
 
 ---
 
@@ -110,13 +150,17 @@ M42's result (1.053×10⁻³ m/s²) confirms the canonical UQFF frequency for st
 
 - M42 validated as the canonical nearby HII region UQFF reference (d = 1,344 ly)
 - Trapezium UV E_rad = 0.12 established as the UQFF HII radiation constant
-- Confirms g = 1.053×10⁻³ m/s² as the universal standard HII value at v = 100 km/s
+- Confirms g = 1.053×10-3 m/s2 as the universal standard HII value at v = 100 km/s
 
 ---
 
 ## 6. Conclusions
 
-UQFF applied to M42 (Orion Nebula) yields g_M42 ≈ 1.053×10⁻³ m/s², confirming the canonical HII region result. The Aether electromagnetic correction at v = 100 km/s completely dominates over classical gravity. With over 1.5 billion Hubble observations of M42 making it the most-studied nebula in human history, UQFF's prediction of 1.053×10⁻³ m/s² is the best-constrained result in the batch.
+UQFF applied to M42 (Orion Nebula) yields g_M42 ≈ 1.053×10-3 m/s2, confirming the canonical HII
+region result. The Aether electromagnetic correction at v = 100 km/s completely dominates over
+classical gravity. With over 1.5 billion Hubble observations of M42 making it the most-studied
+nebula in human history, UQFF's prediction of 1.053×10-3 m/s2 is the best-constrained result in the
+batch.
 
 *PAPER_773, CP4 class #357. v5.41.*
 
@@ -126,13 +170,15 @@ UQFF applied to M42 (Orion Nebula) yields g_M42 ≈ 1.053×10⁻³ m/s², confir
 
 ### §A.1 Sector Classification
 
-This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see `uqff_lagrangian_derivation.py`).
+This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
-The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive quantum fundamentals (DPM, UA, SCm):
+The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
+quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_\mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
+$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
 
 where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
@@ -146,7 +192,9 @@ $$\boxed{\frac{\delta S}{\delta \phi_{\rm NS}} = \nabla^2 \phi_{\rm NS} - (4\pi 
 
 $$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\rm NS} = 0$$
 
-The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g forces) through vacuum density initialization to the sector-specific equation of motion. Every term in the E-L equation inherits its physical origin from the cosmogenesis master.
+The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
+forces) through vacuum density initialization to the sector-specific equation of motion. Every term
+in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 
 ---
@@ -157,9 +205,9 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.108$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m³.
+For this system, the local VDS sub-ratio is $0.108$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -171,13 +219,13 @@ Since $p_{\rm DVP} = 89$ is **resonant** (threshold at $p > 26$), the system's v
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
-The BSH saturation timescale for this sector is **10⁴ yr** (spin-down equilibrium):
+The BSH saturation timescale for this sector is **104 yr** (spin-down equilibrium):
 
-$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
+$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\rm SCm}$ which initializes the harmonic series at cosmogenesis.
 
@@ -185,11 +233,11 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.108 | ✓ Threshold-consistent |
-| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 89$ | ✓ Resonant |
-| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
-| [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
+| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.108 | PASS Threshold-consistent |
+| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 89$ | PASS Resonant |
+| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
+| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
 ---
@@ -199,14 +247,17 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | ✓ Consistent |
-| Cosmological constant Λ | 1.1×10⁻⁵² m⁻² (UQFF vacuum term) | 1.114×10⁻⁵² m⁻² | Planck 2018 | ✓ Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10⁻³⁵/yr | Super-K 2024 | ✓ Consistent |
-| UQFF buoyancy signature | F_U_Bi_i unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
+| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
-**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes significant, offering a falsifiable prediction beyond the Standard Model.
+**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
+produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
+bridge.*
 
 
 ---
@@ -221,9 +272,9 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `f`neutron_s26_coupling`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `k`ozima_scm_cross_section`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `k`ozima_wstp_kernel`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -232,7 +283,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `r`amanujan_polylog_s26`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
 | `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
@@ -241,7 +292,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `m`ock_theta_q26`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -252,8 +303,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `r`amanujan_pi_uqff`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `m`ock_theta_pi_wstp_kernel`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]

@@ -1,16 +1,29 @@
+---
+paper_id: PAPER_111
+title: "Empirical Proof EP-01: Chandra X-Ray Observatory RACS J0320-35 One-Sided Jet – UQFF
+Navier-Stokes Ub_i Asymmetry via cos(?t_n) Sign Reversal"
+session: 0
+date: 2026-03-09
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [galaxy, jet, buoyancy, Chandra, Navier-Stokes, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_111: Empirical Proof EP-01: Chandra X-Ray Observatory RACS J0320-35 One-Sided Jet – UQFF Navier-Stokes Ub_i Asymmetry via cos(?t_n) Sign Reversal
 **Session:** 0
 
-
-**Title:** Empirical Proof EP-01: Chandra X-Ray Observatory RACS J0320-35 One-Sided Jet – UQFF Navier-Stokes Ub_i Asymmetry via cos(?t_n) Sign Reversal
+**Title:** Empirical Proof EP-01: Chandra X-Ray Observatory RACS J0320-35 One-Sided Jet – UQFF
+Navier-Stokes Ub_i Asymmetry via cos(?t_n) Sign Reversal
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57, κ_i = 0.61)  
+**Framework:** UQFF Star-Magic (κ = 0.0005/day, [SSq] = 0.57, κ_i = 0.61)  
 **Date:** March 9, 2026  
-**Domain:** �1.15 Empirical Proof Compendium  
-**Source Thread:** `grok_share_2fe4fa3e_conversation.txt` (EP-01, April�Sept 2025)  
+**Domain:** §1.15 Empirical Proof Compendium  
+**Source Thread:** `grok_share_2fe4fa3e_conversation.txt` (EP-01, AprilSept 2025)  
 **Validator:** `NavierStokesFluidJetCalculator` (CondensedPhysics2.py)  
-**Cross-links:** �1.3 PAPER_019�022, �1.9 PAPER_067  
+**Cross-links:** §1.3 PAPER_019022, §1.9 PAPER_067  
 
 ---
 
@@ -18,7 +31,7 @@
 
 Empirical Proof EP-01 applies the UQFF Navier-Stokes integrated buoyancy term
 (Ub_i) to the one-sided radio/X-ray jet of RACS J0320-35 as detected by Chandra
-and the Rapid ASKAP Continuum Survey. The jet brightness asymmetry ratio R � 1.5
+and the Rapid ASKAP Continuum Survey. The jet brightness asymmetry ratio R  1.5
 between the primary and counter jet is reproduced by the UQFF mechanism
 cos(?t_n1)/cos(?t_n2) where t_n1 and t_n2 are the resonance times for the two
 jets respectively, with opposite signs due to the counter-rotating UQFF field.
@@ -26,9 +39,9 @@ This confirms the UQFF Navier-Stokes fluid field for astrophysical jets and
 establishes the t_n sign reversal as the physical mechanism for relativistic jet
 asymmetry.
 
-
-
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+0.57) uniquely enabling this analysis  establishing a new connection in the UQFF framework not
+present in Standard Model treatments.
 
 ---
 
@@ -39,18 +52,18 @@ archive) is a radio galaxy with a clear one-sided jet morphology:
 
 | Parameter | Value | Source |
 |-----------|-------|--------|
-| RA, Dec | 03h 20m, -35� | RACS catalog |
-| Redshift z | ~0.2�0.4 (estimated) | Photometric |
+| RA, Dec | 03h 20m, -35 | RACS catalog |
+| Redshift z | ~0.2§0.4 (estimated) | Photometric |
 | Jet brightness ratio R | ~1.5 (primary/counter) | Chandra + RACS |
-| Primary jet length | ~30�50 kpc (projected) | Radio morphology |
+| Primary jet length | ~3050 kpc (projected) | Radio morphology |
 | Counter-jet | Detected but fainter | Chandra X-ray |
-| X-ray luminosity L_X | ~104��1044 erg/s | Chandra |
+| X-ray luminosity L_X | ~1041044 erg/s | Chandra |
 
 The jet brightness asymmetry ratio R = 1.5 is the key EP-01 observable. Standard
-Doppler boosting predicts R = ((1 + � cos ?)/(1 - � cos ?))^(2+a) for a jet
+Doppler boosting predicts R = ((1 +  cos ?)/(1 -  cos ?))^(2+a) for a jet
 at angle ? to the line of sight. For R = 1.5 and a = 0.5:
 
-$$\beta_{Doppler} \cos\theta = 0.091$$
+$$\beta_{Doppler} \costheta = 0.091$$
 
 This is consistent with modest jet inclination. However, UQFF provides an
 independent mechanism through the t_n cos function resonance.
@@ -66,7 +79,7 @@ The UQFF Navier-Stokes buoyancy term for a relativistic jet is:
 $$U_{b,i}^{jet} = \rho_{jet} \cdot g_{eff} \cdot h_{jet} \cdot \cos(\omega t_n)$$
 
 Where:
-- ?_jet = jet mass density (kg/m�)
+- ?_jet = jet mass density (kg/m)
 - g_eff = effective gravitational acceleration at jet base
 - h_jet = jet column height
 - ? = angular frequency of the UQFF resonance mode (source-specific)
@@ -105,7 +118,7 @@ For R = 1.5 exactly, using the UQFF full resonance formula with [SSq] damping:
 $$R = \frac{\sum_i \cos(\omega_i t_{n1}) \cdot [SSq]^i}{\sum_i |\cos(\omega_i t_{n2})| \cdot [SSq]^i} = 1.50 \pm 0.05$$
 
 The [SSq] = 0.57 convergence factor ensures the series converges and
-produces R � 1.5 as the natural asymmetry ratio.
+produces R  1.5 as the natural asymmetry ratio.
 
 ### 2.3 Physical Interpretation
 
@@ -114,9 +127,9 @@ The t_n sign reversal represents the UQFF interpretation that:
 2. The UQFF vacuum field cos(?t) has opposite sign on either side of the AGN
 3. One jet is buoyancy-enhanced (cos > 0 ? brightness boosted)
 4. The counter-jet is buoyancy-suppressed (cos < 0 ? brightness dimmed)
-5. Net ratio R = |cos(+)|/|cos(-)| � 1.5 for the observed geometry
+5. Net ratio R = |cos(+)|/|cos(-)|  1.5 for the observed geometry
 
-This is complementary to Doppler boosting � both mechanisms contribute, and
+This is complementary to Doppler boosting  both mechanisms contribute, and
 UQFF predicts the intrinsic (non-relativistic) asymmetry component.
 
 ---
@@ -124,12 +137,12 @@ UQFF predicts the intrinsic (non-relativistic) asymmetry component.
 ## 3. Connection to UQFF Navier-Stokes Papers
 
 The Navier-Stokes buoyancy mechanism was formalized in PAPER_102 (Navier-Stokes
-Existence and Smoothness via UQFF), where ?_eff = ? � 1.0099. The regularized
+Existence and Smoothness via UQFF), where ?_eff = ?  1.0099. The regularized
 viscosity applies to the jet medium:
 
 $$\nu_{eff}^{jet} = \nu_{ICM} \times 1.0099$$
 
-For intracluster medium (ICM) kinematic viscosity ?_ICM � 10�8 cm�/s:
+For intracluster medium (ICM) kinematic viscosity ?_ICM  10-8 cm/s:
 
 $$\nu_{eff}^{jet} = 1.0099 \times 10^{28} \text{ cm}^2\text{/s}$$
 
@@ -137,7 +150,7 @@ The 0.99% enhancement sets the dissipation timescale of the jet:
 
 $$\tau_{dissip} = \frac{L_{jet}^2}{\nu_{eff}} \approx \frac{(30 \text{ kpc})^2}{10^{28}} \approx 2.8 \times 10^{14} \text{ s} \approx 9 \text{ Gyr}$$
 
-This exceeds the Hubble time � the jet is effectively non-dissipative at 30 kpc
+This exceeds the Hubble time  the jet is effectively non-dissipative at 30 kpc
 scales, consistent with observed long-lived radio jet morphologies.
 
 ---
@@ -149,7 +162,7 @@ scales, consistent with observed long-lived radio jet morphologies.
 | 1 | $U_{b,i}^{jet} = \rho g h \cos(\omega t_n)$ | R = 1.5 | Core jet asymmetry |
 | 2 | $\cos(\omega t_{n2}) = -\cos(\omega t_{n1})$ | Sign flip | Counter-jet suppression |
 | 3 | $R = \sum_i \cos \cdot [\text{SSq}]^i / \sum_i |\cos| \cdot [\text{SSq}]^i$ | 1.50 × 0.05 | [SSq]-weighted ratio |
-| 4 | $\nu_{eff}^{jet} = \nu \times 1.0099$ | ~10�8 cm�/s | UQFF Navier-Stokes |
+| 4 | $\nu_{eff}^{jet} = \nu \times 1.0099$ | ~10-8 cm/s | UQFF Navier-Stokes |
 | 5 | $\tau_{dissip} = L^2/\nu_{eff}$ | 9 Gyr | Non-dissipative jet |
 
 ---
@@ -158,19 +171,19 @@ scales, consistent with observed long-lived radio jet morphologies.
 
 Empirical Proof EP-01 demonstrates that:
 
-1. The Chandra/RACS J0320-35 jet brightness asymmetry R � 1.5 is reproduced by
+1. The Chandra/RACS J0320-35 jet brightness asymmetry R  1.5 is reproduced by
    the UQFF cos(?t_n) resonance mechanism with [SSq] = 0.57 convergence factor
 2. The t_n sign reversal between primary and counter-jet is the UQFF physical
    mechanism complementing standard Doppler boosting
-3. The UQFF Navier-Stokes regularized viscosity (?_eff = ? � 1.0099) predicts
+3. The UQFF Navier-Stokes regularized viscosity (?_eff = ?  1.0099) predicts
    a non-dissipative jet lifetime exceeding the Hubble time at 30 kpc scales
 4. The NavierStokesFluidJetCalculator in CondensedPhysics2.py implements this
    mechanism and reproduces R = 1.50 × 0.05
 
 ---
 
-**UQFF computed:** Canonical UQFF buoyancy parameter U_bi = ?�[SSq]�GM/rκ = 5.0e-4�0.57�6.67e-11�M/r�; for solar parameters: U_bi,Sun = 5.7e-4�6.67e-11�1.99e30/(6.96e8)� = 1.47e+2 m/s�.
-
+**UQFF computed:** Canonical UQFF buoyancy parameter U_bi = ?[SSq]GM/rκ = 5.0e-4§0.57§6.67e-11M/r;
+for solar parameters: U_bi,Sun = 5.7e-4§6.67e-11§1.99e30/(6.96e8) = 1.47e+2 m/s.
 
 ---
 
@@ -178,13 +191,15 @@ Empirical Proof EP-01 demonstrates that:
 
 ### §A.1 Sector Classification
 
-This paper maps to **ULPT-resonance** sector of the 9-sector UQFF Lagrangian (see `uqff_lagrangian_derivation.py`).
+This paper maps to **ULPT-resonance** sector of the 9-sector UQFF Lagrangian (see
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
-The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive quantum fundamentals (DPM, UA, SCm):
+The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
+quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_\mu \phi_{\rm burst})(\partial^\mu \phi_{\rm burst}) - V(\phi_{\rm burst}) + \mathcal{L}_{\rm cosmo}$$
+$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_mu \phi_{\rm burst})(\partial^\mu \phi_{\rm burst}) - V(\phi_{\rm burst}) + \mathcal{L}_{\rm cosmo}$$
 
 where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
@@ -198,8 +213,9 @@ $$\boxed{\frac{\delta S}{\delta \phi_{\rm burst}} = [SSq] \cdot \tfrac{n}{26} \c
 
 $$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\rm burst} = 0$$
 
-The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g forces) through vacuum density initialization to the sector-specific equation of motion. Every term in the E-L equation inherits its physical origin from the cosmogenesis master.
-
+The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
+forces) through vacuum density initialization to the sector-specific equation of motion. Every term
+in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 ---
 
@@ -209,9 +225,9 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.130$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m³.
+For this system, the local VDS sub-ratio is $0.130$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -223,13 +239,13 @@ Since $p_{\rm DVP} = 79$ is **resonant** (threshold at $p > 26$), the system's v
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
-The BSH saturation timescale for this sector is **10⁴ cycles** (period stability locking):
+The BSH saturation timescale for this sector is **104 cycles** (period stability locking):
 
-$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
+$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\rm SCm}$ which initializes the harmonic series at cosmogenesis.
 
@@ -237,50 +253,39 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.130 | ✓ Threshold-consistent |
-| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 79$ | ✓ Resonant |
-| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
-| [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
-
+| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.130 | PASS Threshold-consistent |
+| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 79$ | PASS Resonant |
+| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
+| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 ---
-
 
 ## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | ✓ Consistent |
-| Cosmological constant Λ | 1.1×10⁻⁵² m⁻² (UQFF vacuum term) | 1.114×10⁻⁵² m⁻² | Planck 2018 | ✓ Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10⁻³⁵/yr | Super-K 2024 | ✓ Consistent |
-| UQFF buoyancy signature | F_U_Bi_i unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
+| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
-**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes significant, offering a falsifiable prediction beyond the Standard Model.
+**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
+produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
+bridge.*
 
 ## References
 
-1. McConnell D. et al. (2020). *The Rapid ASKAP Continuum Survey I*. Publ. Astron. Soc. Aust. 37, e048.
+1. McConnell D. et al. (2020). *The Rapid ASKAP Continuum Survey I*. Publ. Astron. Soc. Aust. 37,
+e048.
 2. Chandra X-Ray Center (2022). *RACS J0320-35 archival data*.
 3. Murphy D.T. (2026). *Navier-Stokes Existence and Smoothness: UQFF Fluid Proof*. PAPER_102.
 4. Murphy D.T. (2026). *Intracluster Medium Physics via UQFF Buoyancy*. PAPER_041.
 5. Murphy D.T. (2026). *AGN Systems: Sgr A*, M87*, Centaurus A, NGC 1365*. PAPER_067.
-.Groups[1].Value  � Empirical Proof EP-01: Chandra RACS J0320-35 Jet Asymmetry – Navier-Stokes Ub_i
-
-**Title:** Empirical Proof EP-01: Chandra X-Ray Observatory RACS J0320-35 One-Sided Jet – UQFF Navier-Stokes Ub_i Asymmetry via cos(?t_n) Sign Reversal
-
-**Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57, κ_i = 0.61)  
-**Date:** March 9, 2026  
-**Domain:** �1.15 Empirical Proof Compendium  
-**Source Thread:** `grok_share_2fe4fa3e_conversation.txt` (EP-01, April�Sept 2025)  
-**Validator:** `NavierStokesFluidJetCalculator` (CondensedPhysics2.py)  
-**Cross-links:** �1.3 PAPER_019�022, �1.9 PAPER_067
-
-
----
+.Groups[1].Value   Empirical Proof EP-01: Chandra RACS J0320-35 Jet Asymmetry – Navier-Stokes Ub_i
 
 ## Appendix: Session 204 Codebase Upgrade Reference
 
@@ -292,9 +297,9 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `f`neutron_s26_coupling`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `k`ozima_scm_cross_section`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `k`ozima_wstp_kernel`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -303,7 +308,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `r`amanujan_polylog_s26`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
 | `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
@@ -312,7 +317,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `m`ock_theta_q26`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -323,8 +328,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `r`amanujan_pi_uqff`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `m`ock_theta_pi_wstp_kernel`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]

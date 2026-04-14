@@ -1,4 +1,16 @@
-# PAPER_625 -- UQFF Exotic Pocketed Shell Quantum Frequency Events
+---
+paper_id: PAPER_625
+title: "UQFF Exotic Pocketed Shell Quantum Frequency Events"
+session: 0
+date: 2025-01-01
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [SCm, vacuum, AGN, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
+# PAPER_625 — UQFF Exotic Pocketed Shell Quantum Frequency Events
 **Author:** Daniel T. Murphy
 **Date:** 2025
 
@@ -16,11 +28,12 @@
 $$F_{U,Bi} = \kappa \cdot \frac{\rho_{\text{SCm}}}{\rho_{\text{UA}}} \cdot (U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_m + U_{bi})$$
 
 
-This paper presents a UQFF analysis of UQFF Exotic Pocketed Shell Quantum Frequency Events, deriving compressed field equations and observational predictions within the Star-Magic/UQFF framework.
+This paper presents a UQFF analysis of UQFF Exotic Pocketed Shell Quantum Frequency Events, deriving
+compressed field equations and observational predictions within the Star-Magic/UQFF framework.
 
 ## §1 Abstract
 
-Pocketed shells are isolated void subgraphs -- regions of the hypergraph where
+Pocketed shells are isolated void subgraphs — regions of the hypergraph where
 disconnected UA topology creates self-contained frequency environments. These exotic
 shells form when the vacuum gradient exceeds a negative-time threshold and remain
 stable through DVP gradient-floor maintenance. The associated quantum frequency events
@@ -32,9 +45,9 @@ span the full electromagnetic spectrum depending on shell scale.
 
 A pocketed shell forms when:
 
-```
+$$
 Pocket Shell = { e ∈ E_evolved  |  dist(e, e') > theta_neg,   t < 0 }
-```
+$$
 
 Where:
 - θ_neg: minimum separation threshold for isolation (≈ 10^{-}1^0 normalized)
@@ -50,12 +63,12 @@ maintain isolation from the surrounding UA field.
 
 The SCm superconductive memory with t < 0:
 
-```
+$$
 SCm(t < 0) = lambda * UA * (1 - 1/t) = lambda * UA * (1 + 1/|t|) > lambda * UA
-```
+$$
 
 **Key result:** Negative time AMPLIFIES SCm above the λ*UA baseline. This enhancement
-enables **exotic events** -- quantum frequency bursts that exceed the normal spontaneous
+enables **exotic events** — quantum frequency bursts that exceed the normal spontaneous
 emission rate. The time-reversal is not literal but represents the memory-integrated
 history of VA field oscillations.
 
@@ -65,15 +78,15 @@ history of VA field oscillations.
 
 The total frequency event rate from gradient path integration:
 
-```
+$$
 Freq = integral nablaUA  dt = Sigma_path lambda * UA * (1 - 1/t) * |nablaUA|
-```
+$$
 
 Discretized over n_path_nodes steps:
 
-```
-Freq_total = |lambda * UA * (1 - 1/t) * |nablaUA|| x n_path_nodes
-```
+$$
+Freq_total = |lambda * UA * (1 - 1/t) * |nablaUA|| x \text{n\_path\_nodes}
+$$
 
 **Frequency classification:**
 | Range (Hz) | Event Type |
@@ -128,13 +141,15 @@ Exotic pocket shells predict:
 
 ### §A.1 Sector Classification
 
-This paper maps to **quantum-vacuum** sector of the 9-sector UQFF Lagrangian (see `uqff_lagrangian_derivation.py`).
+This paper maps to **quantum-vacuum** sector of the 9-sector UQFF Lagrangian (see
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
-The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive quantum fundamentals (DPM, UA, SCm):
+The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
+quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_\mu \phi_{\rm vac})(\partial^\mu \phi_{\rm vac}) - V(\phi_{\rm vac}) + \mathcal{L}_{\rm cosmo}$$
+$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_mu \phi_{\rm vac})(\partial^\mu \phi_{\rm vac}) - V(\phi_{\rm vac}) + \mathcal{L}_{\rm cosmo}$$
 
 where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
@@ -148,7 +163,9 @@ $$\boxed{\frac{\delta S}{\delta \phi_{\rm vac}} = \hat{H}\phi = (\hat{T} + \hat{
 
 $$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\rm vac} = 0$$
 
-The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g forces) through vacuum density initialization to the sector-specific equation of motion. Every term in the E-L equation inherits its physical origin from the cosmogenesis master.
+The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
+forces) through vacuum density initialization to the sector-specific equation of motion. Every term
+in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 
 ---
@@ -159,7 +176,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
 For this system, the local VDS sub-ratio is $0.106$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m^3.
 
@@ -175,11 +192,11 @@ Since $p_{\rm DVP} = 101$ is **resonant** (threshold at $p > 26$), the system's 
 
 The BSH saturation timescale for this sector is **hbar/E** (vacuum fluctuation lifetime):
 
-$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
+$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\rm SCm}$ which initializes the harmonic series at cosmogenesis.
 
@@ -187,27 +204,27 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.106 | ✓ Threshold-consistent |
-| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 101$ | ✓ Resonant |
-| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day^{-}1 | Applied in VDS exponential | ✓ Canonical |
-| [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
+| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.106 | PASS Threshold-consistent |
+| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 101$ | PASS Resonant |
+| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
+| κ decay | $5.0 \times 10^{-4}$ day^{-}1 | Applied in VDS exponential | PASS Canonical |
+| [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
 ---
 
 
-## §SM Anchors -- Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
 | Exotic atom stability | Pocket shell stable when DPM asymmetry > 0; maps to QED bound-state stability | QED: exotic atoms (muonium/positronium) decay on τ ~ ns-μs | QED | UQFF predicts finite-lifetime exotic shells consistent with QED |\
-| Vacuum oscillation period | τ = 2π/\|dSCm/dt\| (SCm oscillation period) | QED vacuum fluctuation period: τ_QED = hbar/(m_e c^2) = 1.29e-21 s | QED | UQFF τ ≫ QED floor -- cosmological scale |\
+| Vacuum oscillation period | τ = 2π/\|dSCm/dt\| (SCm oscillation period) | QED vacuum fluctuation period: τ_QED = hbar/(m_e c^2) = 1.29e-21 s | QED | UQFF τ >> QED floor -- cosmological scale |\
 | Thomson cross-section | U_m Compton: σ_T = 8π(α_EM hbar/(m_e c))^2/3 | σ_T = 6.6524e-29 m^2 | PDG 2024 | Direct input to U_m pocket scattering |\
 | Pocket shell frequency floor | f_quantum = hbar/(m_e * r_pocket^2) for r_pocket near Bohr radius | f_Bohr = 6.58e15 Hz (Rydberg energy/hbar) | NIST CODATA | X-ray floor ~5.7e16 Hz consistent (10x Rydberg) |
 
 **New physics claim:** Exotic void pocket shells at nablaUA_eq ≈ 31.62 represent a new class
-of astrophysical transient -- neither thermal plasma nor classical particle physics -- with a
+of astrophysical transient — neither thermal plasma nor classical particle physics — with a
 characteristic burst period τ = 2π/|dSCm/dt| that is predicted but unmeasured by any SM process.
 
 *Cite PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF-SM bridge.*
@@ -216,7 +233,7 @@ characteristic burst period τ = 2π/|dSCm/dt| that is predicted but unmeasured 
 
 ## §8 References
 
-- grok_share_6322ac199.txt -- BigBang Hypergraph Theory (Session 161, Topics D6, D16)
+- grok_share_6322ac199.txt — BigBang Hypergraph Theory (Session 161, Topics D6, D16)
 - VDS convergence: PAPER_622 §4 (nablaUA_eq = 31.62)
 - DVP stabilization: session_161_vds_dvp_bh26_references.md §3
 - Preceding: PAPER_623 (#210)
@@ -238,9 +255,9 @@ characteristic burst period τ = 2π/|dSCm/dt| that is predicted but unmeasured 
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `f`neutron_s26_coupling`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `k`ozima_scm_cross_section`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `k`ozima_wstp_kernel`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -249,7 +266,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `r`amanujan_polylog_s26`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
 | `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
@@ -258,7 +275,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `m`ock_theta_q26`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -269,8 +286,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `r`amanujan_pi_uqff`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `m`ock_theta_pi_wstp_kernel`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]

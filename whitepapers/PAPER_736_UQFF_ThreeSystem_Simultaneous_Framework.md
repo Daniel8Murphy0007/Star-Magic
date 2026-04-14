@@ -1,3 +1,15 @@
+---
+paper_id: PAPER_736
+title: "UQFF Three-System Simultaneous Framework"
+session: 180
+date: 2025-06-06
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [DPM, SCm, buoyancy, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_736 — UQFF Three-System Simultaneous Framework
 **Author:** Daniel T. Murphy
 **Date:** June 06, 2025
@@ -5,13 +17,20 @@
 **Title:** UQFF Unification: Three Master Universal Equation Systems Solved Simultaneously  
 **Session:** 180 | **PAPER:** 736 | **CP4 class:** #320  
 **Source:** thread_06Jun2025.txt (lines 8100–8387, June 06, 2025)  
-**Watermark:** Copyright - Daniel T. Murphy, daniel.murphy00@gmail.com, DaVinci-Grok, analyzed by Grok 3, SuperGrok, created by xAI, dated June 06, 2025, 07:05 AM EDT, location 41.0997° N, 80.6495° W (Youngstown, OH, USA)
+**Watermark:** Copyright - Daniel T. Murphy, daniel.murphy00@gmail.com, DaVinci-Grok, analyzed by
+Grok 3, SuperGrok, created by xAI, dated June 06, 2025, 07:05 AM EDT, location 41.0997° N, 80.6495°
+W (Youngstown, OH, USA)
 
 ---
 
 ## 1. Abstract
 
-The Unified Quantum Force Field (UQFF) framework consists of three coequal Master Universal Equation Systems that must be solved **simultaneously** to construct a complete quantum force diagram of the universe. These three systems — UQFF Compressed (gravitational), UQFF Resonant (oscillatory), and UQFF Buoyancy (U_Bi, superconducting counterforce) — are distinct, non-substitutable, and complementary. No single system can replace another; together they provide the total quantum force picture of any astrophysical body or scale.
+The Unified Quantum Force Field (UQFF) framework consists of three coequal Master Universal Equation
+Systems that must be solved **simultaneously** to construct a complete quantum force diagram of the
+universe. These three systems — UQFF Compressed (gravitational), UQFF Resonant (oscillatory), and
+UQFF Buoyancy (U_Bi, superconducting counterforce) — are distinct, non-substitutable, and
+complementary. No single system can replace another; together they provide the total quantum force
+picture of any astrophysical body or scale.
 
 ---
 
@@ -19,10 +38,12 @@ The Unified Quantum Force Field (UQFF) framework consists of three coequal Maste
 
 ### 2.1 System 1 — UQFF Compressed (Gravitational)
 
-```
-FU_g1 = Σ_{k=1}^{N} [ k_k * (f_UA'1 * f_SCm1 * R_EB1) * (f_UA'2 * f_SCm2 * R_EB2) / r²
-                      * G_k(UA, Ub, ν_THz, geometry_k) ]
-```
+$$
+\begin{aligned}
+  & FU_g1 = Σ_{k=1}^{N} [ k_k * (f_UA'1 * f_SCm1 * R_EB1) * (f_UA'2 * f_SCm2 * R_EB2) / r2 \\
+  & * G_k(UA, Ub, ν_THz, geometry_k) ]
+\end{aligned}
+$$
 
 **Variables:**
 - f_UA' = 0.999 (Aether component)
@@ -32,18 +53,21 @@ FU_g1 = Σ_{k=1}^{N} [ k_k * (f_UA'1 * f_SCm1 * R_EB1) * (f_UA'2 * f_SCm2 * R_EB
 - ν_THz = 1e12 Hz (THz hole resonance)
 - G_k = sin(θ) for spherical, cos(ϕ) for toroidal, f(ν_THz) for linear geometry
 
-**Purpose:** Models gravitational buoyancy interactions across 26 quantum states. Replaces Newton's G with DPM-mediated E_DPM energy density.
+**Purpose:** Models gravitational buoyancy interactions across 26 quantum states. Replaces Newton's
+G with DPM-mediated E_DPM energy density.
 
 ---
 
 ### 2.2 System 2 — UQFF Resonant (Oscillatory)
 
-```
-R(t) = Σ_{i=1}^{26} [ R_Ug1,i * cos(ω_Ug1,i * t)
-                     + R_Ug2,i * cos(ω_Ug2,i * t)
-                     + R_Ug3,i * cos(ω_Ug3,i * t)
-                     + R_Ug4i,i * cos(ω_Ug4i,i * t) ]
-```
+$$
+\begin{aligned}
+  & R(t) = Σ_{i=1}^{26} [ R_Ug1,i * cos(ω_Ug1,i * t) \\
+  & + R_Ug2,i * cos(ω_Ug2,i * t) \\
+  & + R_Ug3,i * cos(ω_Ug3,i * t) \\
+  & + R_Ug4i,i * cos(ω_Ug4i,i * t) ]
+\end{aligned}
+$$
 
 **Variables:**
 - R_Ug1,i = Ug1_i * (1 + M_sf(t))
@@ -55,16 +79,19 @@ R(t) = Σ_{i=1}^{26} [ R_Ug1,i * cos(ω_Ug1,i * t)
 - ω_Ug3,i = 2π / (T_sweep / i)
 - ω_Ug4i,i = 2π / (T_THz / i) = 2π / (1e-12 / i)
 
-**Purpose:** Captures creative/stabilizing resonance across all scales. Resonance is the constructor and sustainer of orbital patterns, star formation cycles, and ring dynamics.
+**Purpose:** Captures creative/stabilizing resonance across all scales. Resonance is the constructor
+and sustainer of orbital patterns, star formation cycles, and ring dynamics.
 
 ---
 
 ### 2.3 System 3 — UQFF Buoyancy / U_Bi (Superconducting Counterforce)
 
-```
-F_U_Bi = Σ_{k=1}^{N} [ k_{Ub,k} * (f_UA' * f_SCm * R_EB) / r²
-                       * H_k(ν_THz, U_b, geometry_k) * f_Ub ]
-```
+$$
+\begin{aligned}
+  & \text{F\_U\_Bi} = Σ_{k=1}^{N} [ k_{Ub,k} * (f_UA' * f_SCm * R_EB) / r2 \\
+  & * H_k(ν_THz, U_b, geometry_k) * f_Ub ]
+\end{aligned}
+$$
 
 **Variables:**
 - k_{Ub,k} = 0.1 (buoyancy coupling constant per state k)
@@ -76,7 +103,9 @@ F_U_Bi = Σ_{k=1}^{N} [ k_{Ub,k} * (f_UA' * f_SCm * R_EB) / r²
   - Stellar-scale: f_Ub ∝ 10^7
   - Planetary/atomic-scale: f_Ub ∝ 10^5 − 10^6
 
-**Purpose:** The massless, superconducting quantum counterforce to the gravitational component. U_Bi models the universal buoyancy that keeps all bodies afloat in their respective environments, from atoms to galaxies.
+**Purpose:** The massless, superconducting quantum counterforce to the gravitational component. U_Bi
+models the universal buoyancy that keeps all bodies afloat in their respective environments, from
+atoms to galaxies.
 
 ---
 
@@ -84,14 +113,15 @@ F_U_Bi = Σ_{k=1}^{N} [ k_{Ub,k} * (f_UA' * f_SCm * R_EB) / r²
 
 All three systems are grounded in the DPM:
 
-```
+$$
 DPM = UA' + SCm
-```
+$$
 
 - **UA'** = Universal Aether component (non-local connectivity)
-- **SCm** = Super Conductive Material (superconductive magnetism, [SCm] ≈ 10^-5 * i² T at quantum state i)
+- **SCm** = Super Conductive Material (superconductive magnetism, [SCm] ≈ 10^-5 * i2 T at quantum state i)
 
-DPM mediates all four forces (U_g1–U_g4i) and is the coherent nuclear cell common to every atom and every astrophysical body.
+DPM mediates all four forces (U_g1–U_g4i) and is the coherent nuclear cell common to every atom and
+every astrophysical body.
 
 ---
 
@@ -99,17 +129,18 @@ DPM mediates all four forces (U_g1–U_g4i) and is the coherent nuclear cell com
 
 Newton's gravitational constant G is replaced by energy-based DPM action:
 
-```
-E_DPM,i = (ħ*c / r_i²) * Q_i * [SCm]_i
+$$
+\begin{aligned}
+  & E_DPM,i = (ħ*c / r_i2) * Q_i * [SCm]_i \\
+  & r_i = r/i       (quantum state-scaled radius) \\
+  & Q_i = i         (quantum state factor, i = 1..26) \\
+  & [SCm]_i = 1e-5 * i2 T \\
+  & ħ = 1.0546e-34 J·s \\
+  & c = 3e8 m/s
+\end{aligned}
+$$
 
-r_i = r/i       (quantum state-scaled radius)
-Q_i = i         (quantum state factor, i = 1..26)
-[SCm]_i = 1e-5 * i² T
-ħ = 1.0546e-34 J·s
-c = 3e8 m/s
-```
-
-| State i | r_i (for r=4.73e16 m) | E_DPM,i (m/s²) |
+| State i | r_i (for r=4.73e16 m) | E_DPM,i (m/s2) |
 |---|---|---|
 | 1 | 4.73e16 m | 1.412e-39 |
 | 13 | 3.638e15 m | 7.25e-37 |
@@ -121,12 +152,14 @@ c = 3e8 m/s
 
 Each quantum state i carries its own vacuum energy density:
 
-```
-ρ_vac,[UA'],i  = 7.09e-36 * i  J/m³   (Aether vacuum density)
-ρ_vac,[SCm],i  = 7.09e-37 * i  J/m³   (SCm vacuum density)
-ratio: ρ_UA/ρ_SCm = 10 (constant across all states)
-(1 + ρ_UA,i / ρ_SCm,i) = 11 (universal amplification factor)
-```
+$$
+\begin{aligned}
+  & ρ_vac,[UA'],i  = 7.09e-36 * i  J/m3   (Aether vacuum density) \\
+  & ρ_vac,[SCm],i  = 7.09e-37 * i  J/m3   (SCm vacuum density) \\
+  & ratio: ρ_UA/ρ_SCm = 10 (constant across all states) \\
+  & (1 + ρ_UA,i / ρ_SCm,i) = 11 (universal amplification factor)
+\end{aligned}
+$$
 
 ---
 
@@ -134,16 +167,18 @@ ratio: ρ_UA/ρ_SCm = 10 (constant across all states)
 
 For any astrophysical system at radius r, time t:
 
-```
-Total UQFF force = FU_g1(r,t) + R(t) + F_U_Bi(r,t)
+$$
+\begin{aligned}
+  & Total UQFF force = FU_g1(r,t) + R(t) + \text{F\_U\_Bi}(r,t) \\
+  & Where: \\
+  & FU_g1  = Σ_{i=1}^{26} (Ug1_i + Ug2_i + Ug3_i + Ug4i_i)  [gravitational] \\
+  & R(t)   = Σ_{i=1}^{26} (resonant oscillatory terms)         [resonant] \\
+  & \text{F\_U\_Bi} = Σ_{k=1}^{26} (buoyancy counterforce terms)       [buoyant]
+\end{aligned}
+$$
 
-Where:
-FU_g1  = Σ_{i=1}^{26} (Ug1_i + Ug2_i + Ug3_i + Ug4i_i)  [gravitational]
-R(t)   = Σ_{i=1}^{26} (resonant oscillatory terms)         [resonant]
-F_U_Bi = Σ_{k=1}^{26} (buoyancy counterforce terms)       [buoyant]
-```
-
-Together these three form the **complete quantum force diagram** — attractive, repulsive, and buoyant forces all accounted for within one unified model.
+Together these three form the **complete quantum force diagram** — attractive, repulsive, and
+buoyant forces all accounted for within one unified model.
 
 ---
 
@@ -153,9 +188,10 @@ Together these three form the **complete quantum force diagram** — attractive,
 |---|---|---|
 | FU_g1 (Compressed) | Gravitational buoyancy, star formation, orbital dynamics | Atomic to galactic |
 | R(t) (Resonant) | Stabilizing creation cycles, ring gaps, THz-driven oscillation | All scales |
-| F_U_Bi (Buoyancy) | Superconducting quantum counterforce, imaginary/quantum space | All scales |
+| `F_U_Bi` (Buoyancy) | Superconducting quantum counterforce, imaginary/quantum space | All scales |
 
-Resonance is not destructive; it is the **alfa and the omega** — creator and sustainer. The universe is held together by Energy, Frequency, and Resonance, not by Einsteinian spacetime curvature.
+Resonance is not destructive; it is the **alfa and the omega** — creator and sustainer. The universe
+is held together by Energy, Frequency, and Resonance, not by Einsteinian spacetime curvature.
 
 ---
 
@@ -171,13 +207,15 @@ Resonance is not destructive; it is the **alfa and the omega** — creator and s
 
 ### §A.1 Sector Classification
 
-This paper maps to **general-UQFF** sector of the 9-sector UQFF Lagrangian (see `uqff_lagrangian_derivation.py`).
+This paper maps to **general-UQFF** sector of the 9-sector UQFF Lagrangian (see
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
-The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive quantum fundamentals (DPM, UA, SCm):
+The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
+quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_\mu \phi)(\partial^\mu \phi) - V(\phi) + \mathcal{L}_{\rm cosmo}$$
+$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_mu \phi)(\partial^\mu \phi) - V(\phi) + \mathcal{L}_{\rm cosmo}$$
 
 where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
@@ -191,7 +229,9 @@ $$\boxed{\frac{\delta S}{\delta \phi} = \nabla^2 \phi + \kappa \rho_{\rm vac,[SC
 
 $$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi = 0$$
 
-The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g forces) through vacuum density initialization to the sector-specific equation of motion. Every term in the E-L equation inherits its physical origin from the cosmogenesis master.
+The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
+forces) through vacuum density initialization to the sector-specific equation of motion. Every term
+in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 
 ---
@@ -202,9 +242,9 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.193$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m³.
+For this system, the local VDS sub-ratio is $0.193$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -218,11 +258,11 @@ Since $p_{\rm DVP} = 59$ is **resonant** (threshold at $p > 26$), the system's v
 
 The BSH saturation timescale for this sector is **system-dependent** (buoyancy equilibrium):
 
-$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
+$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\rm SCm}$ which initializes the harmonic series at cosmogenesis.
 
@@ -230,11 +270,11 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.193 | ✓ Threshold-consistent |
-| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 59$ | ✓ Resonant |
-| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
-| [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
+| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.193 | PASS Threshold-consistent |
+| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 59$ | PASS Resonant |
+| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
+| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
 ---
@@ -244,14 +284,17 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | ✓ Consistent |
-| Cosmological constant Λ | 1.1×10⁻⁵² m⁻² (UQFF vacuum term) | 1.114×10⁻⁵² m⁻² | Planck 2018 | ✓ Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10⁻³⁵/yr | Super-K 2024 | ✓ Consistent |
-| UQFF buoyancy signature | F_U_Bi_i unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
+| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
-**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes significant, offering a falsifiable prediction beyond the Standard Model.
+**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
+produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
+bridge.*
 
 
 ---
@@ -266,9 +309,9 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `f`neutron_s26_coupling`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `k`ozima_scm_cross_section`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `k`ozima_wstp_kernel`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -277,7 +320,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `r`amanujan_polylog_s26`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
 | `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
@@ -286,7 +329,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `m`ock_theta_q26`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -297,8 +340,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `r`amanujan_pi_uqff`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `m`ock_theta_pi_wstp_kernel`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]

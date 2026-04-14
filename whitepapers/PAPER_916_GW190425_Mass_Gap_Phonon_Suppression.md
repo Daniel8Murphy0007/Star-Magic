@@ -1,6 +1,18 @@
+---
+paper_id: PAPER_916
+title: "GW190425 Mass-Gap Phonon Suppression"
+session: 210
+date: 2026-04-10
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [GW, merger, vacuum, SCm, jet, neutron-star, phonon, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_916: GW190425 Mass-Gap Phonon Suppression
 
-**Author:** Daniel T. Murphy -- Star Magic / UQFF Framework
+**Author:** Daniel T. Murphy — Star Magic / UQFF Framework
 **Date:** 2026-04-10
 **Session:** 210b
 **Source:** Numerical BH jet modulation + neutron star phonon effects
@@ -11,18 +23,25 @@
 
 ## Abstract
 
-Phonon suppression mechanism disambiguating the mass-gap component (2.5-5 M_sun) of GW190425. P(NS) = 0.5 * (1 - Phi * S_26 * epsilon_phonon): calibrated at epsilon_phonon = 0.02, yields P(NS) ~ 49%, P(BH) ~ 51%. GW190425's total mass 3.4 M_sun with mass ratio q = 0.8-1.0 places the secondary in the 'mass gap' region. The phonon suppression provides a UQFF-native mechanism for shifting the BH/NS probability partition. This is the 500th CP4 calculator class, marking a milestone for the CondensedPhysics4 computational platform.
+Phonon suppression mechanism disambiguating the mass-gap component (2.5-5 M_sun) of GW190425. P(NS)
+= 0.5 * (1 - Phi * S_26 * epsilon_phonon): calibrated at epsilon_phonon = 0.02, yields P(NS) ~ 49%,
+P(BH) ~ 51%. GW190425's total mass 3.4 M_sun with mass ratio q = 0.8-1.0 places the secondary in the
+'mass gap' region. The phonon suppression provides a UQFF-native mechanism for shifting the BH/NS
+probability partition. This is the 500th CP4 calculator class, marking a milestone for the
+CondensedPhysics4 computational platform.
 
 ---
 
 ## 1. Core Equations
 
-```
-P(NS) = 0.5 * (1 - Phi_{1.25THz} * S_26 * epsilon_phonon)
-P(BH) = 1 - P(NS)
-M_chirp = (m_1 * m_2)^{3/5} / (m_1 + m_2)^{1/5}
-m_1 = M_total / (1 + q), m_2 = M_total * q / (1 + q)
-```
+$$
+\begin{aligned}
+  & P(NS) = 0.5 * (1 - Phi_{1.25THz} * S_26 * epsilon_phonon) \\
+  & P(BH) = 1 - P(NS) \\
+  & M_chirp = (m_1 * m_2)^{3/5} / (m_1 + m_2)^{1/5} \\
+  & m_1 = M_total / (1 + q), m_2 = M_total * q / (1 + q)
+\end{aligned}
+$$
 
 ---
 
@@ -51,7 +70,14 @@ m_1 = M_total / (1 + q), m_2 = M_total * q / (1 + q)
 
 ## 4. Physical Interpretation
 
-The phonon suppression factor epsilon_phonon parameterizes the strength of SCm vacuum condensate interaction with the merger remnant. At epsilon = 0.02 (calibrated value), the NS probability drops from the prior 50% to 49%, while BH probability rises to 51%. This small but definite shift reflects the SCm buoyancy framework's prediction that mass-gap objects preferentially collapse to BH when phonon-mediated pressure support is suppressed. For larger epsilon (stronger phonon coupling), P(NS) decreases further, consistent with SCm condensate destabilization of the NS equation of state at high compactness. The result is testable with future BNS/NSBH detections in the mass-gap region by LIGO O5+.
+The phonon suppression factor epsilon_phonon parameterizes the strength of SCm vacuum condensate
+interaction with the merger remnant. At epsilon = 0.02 (calibrated value), the NS probability drops
+from the prior 50% to 49%, while BH probability rises to 51%. This small but definite shift reflects
+the SCm buoyancy framework's prediction that mass-gap objects preferentially collapse to BH when
+phonon-mediated pressure support is suppressed. For larger epsilon (stronger phonon coupling), P(NS)
+decreases further, consistent with SCm condensate destabilization of the NS equation of state at
+high compactness. The result is testable with future BNS/NSBH detections in the mass-gap region by
+LIGO O5+.
 
 ---
 
@@ -62,7 +88,9 @@ This calculator operates as a stateless physics calculator within the CondensedP
 source2.cpp principal GUI pipeline. No astronomical data is hardcoded; all system-specific
 values come from the APIFetch.py -> bodies_*.csv data flow.
 
-**Significance:** 500th CP4 class (milestone). First UQFF prediction for mass-gap classification probabilities. Phonon suppression parameter epsilon is extractable from multi-event GW population studies.
+**Significance:** 500th CP4 class (milestone). First UQFF prediction for mass-gap classification
+probabilities. Phonon suppression parameter epsilon is extractable from multi-event GW population
+studies.
 
 ---
 
@@ -95,13 +123,15 @@ tidal deformability, gravitational wave strain, and mass-gap probabilities.
 
 ### §A.1 Sector Classification
 
-This paper maps to **mass-gap sector** of the 9-sector UQFF Lagrangian (see `uqff_lagrangian_derivation.py`).
+This paper maps to **mass-gap sector** of the 9-sector UQFF Lagrangian (see
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
-The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive quantum fundamentals (DPM, UA, SCm):
+The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
+quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_\mu \phi)(\partial^\mu \phi) - V(\phi) + \mathcal{L}_{\rm cosmo}$$
+$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_mu \phi)(\partial^\mu \phi) - V(\phi) + \mathcal{L}_{\rm cosmo}$$
 
 where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2).
 
@@ -121,7 +151,7 @@ $$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_
 
 The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
 For this system, the local VDS sub-ratio is $0.05$.
 
@@ -133,17 +163,17 @@ $$p_{\rm DVP} = 2, \quad n_{\rm channel} = 22/26$$
 
 The BSH saturation timescale for this sector is **10 s (BNS/NSBH merger)**:
 
-$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
 ### §B.4 Production-Scale Consistency
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.05 | ✓ Consistent |
-| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 2$ | ✓ Lattice-consistent |
-| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
-| [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
+| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.05 | PASS Consistent |
+| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 2$ | PASS Lattice-consistent |
+| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
+| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 ---
 
@@ -151,25 +181,28 @@ $$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | ✓ Consistent |
-| Cosmological constant Λ | 1.1×10⁻⁵² m⁻² (UQFF vacuum term) | 1.114×10⁻⁵² m⁻² | Planck 2018 | ✓ Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10⁻³⁵/yr | Super-K 2024 | ✓ Consistent |
-| UQFF buoyancy signature | F_U_Bi_i unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
+| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
-**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that produce measurable deviations from GR at scales where vacuum condensate density rho_SCm becomes significant, offering a falsifiable prediction beyond the Standard Model.
+**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
+produce measurable deviations from GR at scales where vacuum condensate density rho_SCm becomes
+significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF-SM bridge.*
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF-SM
+bridge.*
 
 ## References
 
-1. PAPER_877 -- Three-Assumption Cosmogenesis (SCm axiom)
-2. PAPER_908 -- Phonon Jet Launching M87/Sgr A*
-3. PAPER_905 -- Phonon Ergosphere Superradiance
-4. PAPER_914 -- Tidal Deformability Phonon Correction
-5. PAPER_915 -- GW170817 Phonon Strain Damping
-6. Abbott, R. et al. (2020) ApJ 892, L3 -- GW190425
-7. Thompson, T.A. et al. (2019) Science 366, 637 -- Mass gap
-4. Murphy, D.T. -- Star Magic UQFF Framework (2024-2026)
+1. PAPER_877 — Three-Assumption Cosmogenesis (SCm axiom)
+2. PAPER_908 — Phonon Jet Launching M87/Sgr A*
+3. PAPER_905 — Phonon Ergosphere Superradiance
+4. PAPER_914 — Tidal Deformability Phonon Correction
+5. PAPER_915 — GW170817 Phonon Strain Damping
+6. Abbott, R. et al. (2020) ApJ 892, L3 — GW190425
+7. Thompson, T.A. et al. (2019) Science 366, 637 — Mass gap
+4. Murphy, D.T. — Star Magic UQFF Framework (2024-2026)
 
 ---
 

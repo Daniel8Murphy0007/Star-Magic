@@ -1,8 +1,21 @@
+---
+paper_id: PAPER_433
+title: "Tapestry of Blazing Starbirth: Per-System MUGE with Stellar Wind Feedback M(t)"
+session: 119
+date: 2025-01-01
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [cluster, AGN, Hubble, MUGE, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_433 — Tapestry of Blazing Starbirth: Per-System MUGE with Stellar Wind Feedback M(t)
 **Author:** Daniel T. Murphy
 **Date:** 2025
 
-**Source:** grok_share_68eb34022.txt — Document 4: "Master Universal Gravity Equation (UQFF & SM Integration)_Tapestry of Blazing Starbirth Evolution_03May2025.docx" (lines 1619–1963)
+**Source:** grok_share_68eb34022.txt — Document 4: "Master Universal Gravity Equation (UQFF & SM
+Integration)_Tapestry of Blazing Starbirth Evolution_03May2025.docx" (lines 1619–1963)
 **Session:** 119
 **CP4 Class:** `TapestryStarbirthWindFeedbackMUGECalculator` (#88)
 
@@ -11,11 +24,13 @@
 
 ## Abstract
 
-This paper presents a UQFF analysis of Tapestry of Blazing Starbirth: Per-System MUGE with Stellar Wind Feedback M(t), deriving compressed field equations and observational predictions within the Star-Magic/UQFF framework.
+This paper presents a UQFF analysis of Tapestry of Blazing Starbirth: Per-System MUGE with Stellar
+Wind Feedback M(t), deriving compressed field equations and observational predictions within the
+Star-Magic/UQFF framework.
 
 ## 1. Overview
 
-PAPER_433 presents the **complete per-system MUGE** for the "Tapestry of Blazing Starbirth" (NGC 2014 + NGC 2020 in the Large Magellanic Cloud). While PAPER_345 captured only the tail term $\Delta_\text{Tap} = \rho_\text{ISM} v_\text{wind}^2$ and PAPER_372 included the compressed abstract, this paper provides the **first complete 10-term derivation** with the unique stellar feedback function $M(t) = M_\text{init}(1 + M_f \, e^{-t/\tau_\text{SF}})$, where the cluster grows from 240 $M_\odot$ to a peak $\sim 10{,}000 \, M_\odot$ before declining.
+PAPER_433 presents the **complete per-system MUGE** for the "Tapestry of Blazing Starbirth" (NGC 2014 + NGC 2020 in the Large Magellanic Cloud). While PAPER_345 captured only the tail term $\Delta_text{Tap} = \rho_text{ISM} v_\text{wind}^2$ and PAPER_372 included the compressed abstract, this paper provides the **first complete 10-term derivation** with the unique stellar feedback function $M(t) = M_\text{init}(1 + M_f \, e^{-t/\tau_text{SF}})$, where the cluster grows from 240 $M_\odot$ to a peak $\sim 10{,}000 \, M_\odot$ before declining.
 
 **Novel claim (Q1):** First complete per-system MUGE for an LMC star-forming region, featuring mass growth function $M(t)$ driven by star formation feedback and wind ram pressure as a ninth gravitational term calibrated to Hubble LMC imaging.
 
@@ -29,35 +44,35 @@ PAPER_433 presents the **complete per-system MUGE** for the "Tapestry of Blazing
 | Peak mass | $M_\text{peak}$ | $\sim 10{,}000 \, M_\odot$ |
 | $M$ growth factor | $M_f$ | $M_\text{peak}/M_\text{init} - 1 \approx 40.67$ |
 | Cluster radius | $r$ | 10 ly $= 9.461 \times 10^{16}$ m |
-| SF timescale | $\tau_\text{SF}$ | $5 \times 10^6$ yr $= 1.578 \times 10^{14}$ s |
+| SF timescale | $\tau_text{SF}$ | $5 \times 10^6$ yr $= 1.578 \times 10^{14}$ s |
 | Magnetic field | $B$ | $10^{-6}$ T (static ISM) |
-| Wind density | $\rho_w$ | $10^{-21}$ kg/m³ |
+| Wind density | $\rho_w$ | $10^{-21}$ kg/m3 |
 | Wind velocity | $v_w$ | $10^3$ m/s (warm cluster wind) |
-| Hubble constant | $H_0$ | $2.184 \times 10^{-18}$ s⁻¹ |
+| Hubble constant | $H_0$ | $2.184 \times 10^{-18}$ s-1 |
 | Time-reversal factor | $f_\text{TRZ}$ | $0.1$ |
 
 ---
 
 ## 3. Mass Growth Function
 
-$$M(t) = M_\text{init} \left(1 + M_f \, e^{-t/\tau_\text{SF}}\right) = 240\,M_\odot \left(1 + 40.67 \, e^{-t/\tau_\text{SF}}\right)$$
+$$M(t) = M_\text{init} \left(1 + M_f \, e^{-t/\tau_text{SF}}\right) = 240\,M_\odot \left(1 + 40.67 \, e^{-t/\tau_text{SF}}\right)$$
 
 This models the LMC cluster evolution: initial burst of star formation multiplies the mass by factor ~41, then feedback (UV radiation + winds) disperses the gas, returning effective gravitational mass toward $M_\text{init}$.
 
 **At $t = 0$:** $M(0) = 240 \times 41.67 \approx 10{,}000 \, M_\odot$ (peak SF state)  
-**At $t = \tau_\text{SF}$:** $M = 240 \times (1 + 40.67/e) \approx 6{,}250 \, M_\odot$  
-**At $t \gg \tau_\text{SF}$:** $M \rightarrow 240 \, M_\odot$ (dispersed)
+**At $t = \tau_text{SF}$:** $M = 240 \times (1 + 40.67/e) \approx 6{,}250 \, M_\odot$  
+**At $t \gg \tau_text{SF}$:** $M \rightarrow 240 \, M_\odot$ (dispersed)
 
 ---
 
 ## 4. Complete 10-Term MUGE
 
-$$\boxed{g_\text{Tap}(r,t) = \frac{G M(t)}{r^2}(1 + H_0 t)\left(1 - \frac{B}{B_\text{crit}}\right)(1 + f_\text{TRZ}) + \sum_\text{Ug} + T_\Lambda + T_Q + T_\text{EM} + T_\text{fluid} + T_\text{osc} + T_\text{DM} + T_\text{wind}}$$
+$$\boxed{g_\text{Tap}(r,t) = \frac{G M(t)}{r^2}(1 + H_0 t)\left(1 - \frac{B}{B_\text{crit}}\right)(1 + f_\text{TRZ}) + \sum_text{Ug} + T_\Lambda + T_Q + T_\text{EM} + T_\text{fluid} + T_\text{osc} + T_\text{DM} + T_\text{wind}}$$
 
 **Term 1 — Newtonian with M(t) and ISM B-field correction:**
 $$T_1 = \frac{G M(t)}{r^2} (1 + H_0 t)\left(1 - \frac{B}{B_\text{crit}}\right)$$
 
-At $t = 0$: $T_1 = G \times 10{,}000 M_\odot / r^2 \approx 7.45 \times 10^{-26}$ m/s² (low density, large r)
+At $t = 0$: $T_1 = G \times 10{,}000 M_\odot / r^2 \approx 7.45 \times 10^{-26}$ m/s2 (low density, large r)
 
 **Term 2 — UQFF Ug1 + Ug4 with f_TRZ:**
 $$T_2 = 2 \frac{G M(t)}{r^2} (1 + f_\text{TRZ})$$
@@ -67,16 +82,16 @@ $$T_2 = 2 \frac{G M(t)}{r^2} (1 + f_\text{TRZ})$$
 **Term 4 — Quantum:** negligible for stellar-mass regime
 
 **Term 5 — EM with UA/SCm:**
-$$T_5 = \frac{q (v_\text{gas} \times B)}{m_p}\left(1 + \frac{\rho_\text{UA}}{\rho_\text{SCm}}\right) s_\text{EM}$$
+$$T_5 = \frac{q (v_\text{gas} \times B)}{m_p}\left(1 + \frac{\rho_text{UA}}{\rho_text{SCm}}\right) s_\text{EM}$$
 
 **Term 6 — Fluid (gas dynamics):**
 $$T_6 = \frac{\rho_f V g_\text{local}}{M(t)}$$
 
 **Term 7 — Oscillatory stellar modes:**
-$$T_7 = A_\text{osc} \sin(k_\text{osc} r)\cos(\omega_\text{osc} t)$$
+$$T_7 = A_\text{osc} \sin(k_\text{osc} r)\cos(\omega_text{osc} t)$$
 
 **Term 8 — Dark matter perturbation:**
-$$T_8 = (M(t) + M_\text{DM})\frac{\delta\rho/\rho + 3GM(t)/r^3}{r^2}$$
+$$T_8 = (M(t) + M_\text{DM})\frac{\deltarho/\rho + 3GM(t)/r^3}{r^2}$$
 
 **Term 9 — Stellar wind ram pressure (ninth term — unique to this system):**
 $$\boxed{T_9 = \frac{\rho_w v_w^2}{\rho_f} = \frac{10^{-21} \times (10^3)^2}{10^{-21}} = 10^6 \text{ m}^2/\text{s}^2 \cdot r^{-1} \Rightarrow a_\text{wind} = \frac{\rho_w v_w^2}{r \rho_f}}$$
@@ -88,12 +103,15 @@ $$a_\text{wind} \approx \frac{10^{-21} \times 10^6}{9.461 \times 10^{16} \times 
 
 ## 5. Canonical Numerical Result
 
-At $t = \tau_\text{SF} = 5$ Myr (peak feedback phase):
+At $t = \tau_text{SF} = 5$ Myr (peak feedback phase):
 
 $$g_\text{Tap} \approx 2.67 \times 10^{-25} \text{ m/s}^2 \quad [\text{dominant: }T_1+T_2]$$
 $$a_\text{wind} \approx 1.06 \times 10^{-11} \text{ m/s}^2 \quad [>\, g_\text{grav} \text{ by } 14 \text{ orders}]$$
 
-**Wind dominance:** This is the **first UQFF demonstration that stellar wind feedback exceeds self-gravity by ~14 orders of magnitude** in an LMC star-forming cluster — the system is dynamically wind-dominated during SF peak, consistent with Hubble observations of NGC 2014 nebular gas dispersal.
+**Wind dominance:** This is the **first UQFF demonstration that stellar wind feedback exceeds
+self-gravity by ~14 orders of magnitude** in an LMC star-forming cluster — the system is dynamically
+wind-dominated during SF peak, consistent with Hubble observations of NGC 2014 nebular gas
+dispersal.
 
 ---
 
@@ -101,14 +119,14 @@ $$a_\text{wind} \approx 1.06 \times 10^{-11} \text{ m/s}^2 \quad [>\, g_\text{gr
 
 | Prior Paper | Content | New in PAPER_433 |
 |-------------|---------|-----------------|
-| PAPER_345 | Tail: $\Delta_\text{Tap} = \rho_\text{ISM} v_\text{wind}^2$ (single term) | Full 10-term + M(t) SF growth function |
+| PAPER_345 | Tail: $\Delta_text{Tap} = \rho_text{ISM} v_\text{wind}^2$ (single term) | Full 10-term + M(t) SF growth function |
 | PAPER_372 | Compressed single-line | Complete per-system derivation |
 
 ---
 
 ## 7. Comparison to Standard Model
 
-Standard Jeans gravity: $g_\text{Jeans} = 4\pi G \rho_\text{cloud} r/3$. For this cluster, the wind ram pressure $T_9$ exceeds gravitational self-binding by $\gg 10^{10}$×, consistent with LMC OB associations being gravitationally unbound.
+Standard Jeans gravity: $g_\text{Jeans} = 4\pi G \rho_text{cloud} r/3$. For this cluster, the wind ram pressure $T_9$ exceeds gravitational self-binding by $\gg 10^{10}$×, consistent with LMC OB associations being gravitationally unbound.
 
 ---
 
@@ -118,13 +136,15 @@ Standard Jeans gravity: $g_\text{Jeans} = 4\pi G \rho_\text{cloud} r/3$. For thi
 
 ### §A.1 Sector Classification
 
-This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see `uqff_lagrangian_derivation.py`).
+This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
-The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive quantum fundamentals (DPM, UA, SCm):
+The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
+quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_\mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
+$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
 
 where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
@@ -138,7 +158,9 @@ $$\boxed{\frac{\delta S}{\delta \phi_{\rm NS}} = \nabla^2 \phi_{\rm NS} - (4\pi 
 
 $$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\rm NS} = 0$$
 
-The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g forces) through vacuum density initialization to the sector-specific equation of motion. Every term in the E-L equation inherits its physical origin from the cosmogenesis master.
+The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
+forces) through vacuum density initialization to the sector-specific equation of motion. Every term
+in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 
 ---
@@ -149,9 +171,9 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.166$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m³.
+For this system, the local VDS sub-ratio is $0.166$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -163,13 +185,13 @@ Since $p_{\rm DVP} = 43$ is **resonant** (threshold at $p > 26$), the system's v
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
-The BSH saturation timescale for this sector is **10⁴ yr** (spin-down equilibrium):
+The BSH saturation timescale for this sector is **104 yr** (spin-down equilibrium):
 
-$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
+$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\rm SCm}$ which initializes the harmonic series at cosmogenesis.
 
@@ -177,11 +199,11 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.166 | ✓ Threshold-consistent |
-| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 43$ | ✓ Resonant |
-| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
-| [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
+| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.166 | PASS Threshold-consistent |
+| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 43$ | PASS Resonant |
+| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
+| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
 ---
@@ -191,12 +213,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Thomson σ_T (QED synchrotron) | UQFF U_m scattering kernel: σ_T = 6.6524e-29 m² | σ_T = 6.6524e-29 m² (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
-| Tapestry Star Formation luminosity Radio 1.4 GHz + IR | UQFF MUGE g_total → L_X via Stefan-Boltzmann + buoyancy flux: L_X ≈ g_total × M_env | L_X SFR ~ 10 M_☉/yr | ALMA / Spitzer | ✓ Consistent order of magnitude |
-| GR Schwarzschild limit | UQFF g_total must satisfy g ≤ c²/(2r_s) at event horizon | r_s = 2GM/c² (GR exact) | PDG 2024 / GR | ✓ UQFF respects GR horizon |
+| Thomson σ_T (QED synchrotron) | UQFF U_m scattering kernel: σ_T = 6.6524e-29 m2 | σ_T = 6.6524e-29 m2 (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
+| Tapestry Star Formation luminosity Radio 1.4 GHz + IR | UQFF MUGE g_total → L_X via Stefan-Boltzmann + buoyancy flux: L_X ≈ g_total × M_env | L_X SFR ~ 10 `M_M_sun`/yr | ALMA / Spitzer | PASS Consistent order of magnitude |
+| GR Schwarzschild limit | UQFF g_total must satisfy g ≤ c2/(2r_s) at event horizon | r_s = 2GM/c2 (GR exact) | PDG 2024 / GR | PASS UQFF respects GR horizon |
 | κ vacuum rate vs X-ray variability | UQFF κ = 0.0005/day → timescale τ_UQFF = 2000 days | Observed X-ray variability τ_obs (instrument monitoring) | ALMA / Spitzer | Testable UQFF variability timescale |
 
-**New physics claim:** UQFF MUGE generates gravity enhancement factors (g_total/g_Newt > 1) for Tapestry Star Formation
+**New physics claim:** UQFF MUGE generates gravity enhancement factors (g_total/g_Newt > 1) for
+Tapestry Star Formation
 through vacuum buoyancy coupling — a mechanism absent from GR+SM. The enhancement factor and
 X-ray luminosity are linked via the UQFF buoyancy flux, providing a testable prediction for
 future ALMA / Spitzer monitoring observations.
@@ -207,11 +230,11 @@ future ALMA / Spitzer monitoring observations.
 
 ## 8. Testable Predictions
 
-**Q5 Prediction 1:** $M(t)$ growth function predicts a 14-orders-of-magnitude transition from wind-dominated ($t < \tau_\text{SF}$) to gravity-dominated ($t \gg \tau_\text{SF}$) — the LMC age-dating channel for NGC 2014 dispersal timescale.
+**Q5 Prediction 1:** $M(t)$ growth function predicts a 14-orders-of-magnitude transition from wind-dominated ($t < \tau_text{SF}$) to gravity-dominated ($t \gg \tau_text{SF}$) — the LMC age-dating channel for NGC 2014 dispersal timescale.
 
 **Q5 Prediction 2:** Wind term dominance $\gg g_\text{grav}$ predicts the cluster cannot gravitationally re-collapse — consistent with the observed lack of second-generation OB stars in Tapestry (Hubble ACS data).
 
-**Q5 Prediction 3:** $\tau_\text{SF} = 5$ Myr implies cluster should show peak UV emission (maximum M(t)) at ages $< 5$ Myr — testable with JWST NIRCam age-dating of NGC 2014 substellar populations.
+**Q5 Prediction 3:** $\tau_text{SF} = 5$ Myr implies cluster should show peak UV emission (maximum M(t)) at ages $< 5$ Myr — testable with JWST NIRCam age-dating of NGC 2014 substellar populations.
 
 
 ---
@@ -226,9 +249,9 @@ future ALMA / Spitzer monitoring observations.
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `f`neutron_s26_coupling`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `k`ozima_scm_cross_section`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `k`ozima_wstp_kernel`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -237,7 +260,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `r`amanujan_polylog_s26`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
 | `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
@@ -246,7 +269,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `m`ock_theta_q26`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -257,8 +280,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `r`amanujan_pi_uqff`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `m`ock_theta_pi_wstp_kernel`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]

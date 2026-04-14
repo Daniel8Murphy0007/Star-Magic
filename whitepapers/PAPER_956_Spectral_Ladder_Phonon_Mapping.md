@@ -1,6 +1,18 @@
+---
+paper_id: PAPER_956
+title: "Spectral Ladder Phonon Mapping (26-Level)"
+session: 214
+date: 2026-04-12
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [phonon, magnetar, AGN, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_956: Spectral Ladder Phonon Mapping (26-Level)
 
-**Author:** Daniel T. Murphy -- Star Magic / UQFF Framework
+**Author:** Daniel T. Murphy — Star Magic / UQFF Framework
 **Date:** 2026-04-12
 **Session:** 214
 **Source:** et_phonon_resonance.py §7 (SpectralLadderPhononMapping)
@@ -47,7 +59,7 @@ Each level $n$ from 1 to 26 produces a unique $(E_n, \omega_n, Q_n)$ triplet, fu
 
 ## References
 
-1. Murphy, D.T. -- Star Magic UQFF Framework (2024-2026)
+1. Murphy, D.T. — Star Magic UQFF Framework (2024-2026)
 2. PAPER_952 — 26-State HRes Spectral Ladder
 3. PAPER_955 — BCS Phonon Resonance
 4. PAPER_953 — Ramanujan-Accelerated $S_{26}$

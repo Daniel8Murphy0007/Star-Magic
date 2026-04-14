@@ -1,3 +1,15 @@
+---
+paper_id: PAPER_216
+title: "Triadic UQFF Numerical Validation Suite — Westerlund 2 and Pillars of Creation"
+session: 0
+date: 2026-03-14
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [cluster, vacuum, SCm, buoyancy, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_216: Triadic UQFF Numerical Validation Suite — Westerlund 2 and Pillars of Creation
 
 **Author:** Daniel T. Murphy (daniel.murphy00@gmail.com)  
@@ -8,20 +20,28 @@
 
 ---
 
-$$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b_i}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57$$
+$$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b\_i}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57$$
 
 $$
-M_J^\text{UQFF} = M_J^\text{Jeans}\cdot\Bigl(1 - [SSq]\cdot\frac{B^2}{8\pi\rho c_s^2}\Bigr), \quad [SSq] = 0.57
+M_J^\text{UQFF} = M_J^\text{Jeans}\cdotBigl(1 - [SSq]\cdot\frac{B^2}{8\pirho c_s^2}\Bigr), \quad
+[SSq] = 0.57
 $$
-<!-- ? = 5.0e-4 day⁻¹, [SSq] = 0.57, ß_i = 6.1e-1 -->
+<!— κ = 5.0e-4 day-1, [SSq] = 0.57, ß_i = 6.1e-1 —>
 
 ## Abstract
 
-This paper presents complete numerical validation of the Triadic UQFF framework applied to two benchmark astrophysical systems: Westerlund 2 star cluster (r=1.89×10¹6 m) and the Pillars of Creation (M16, r=4.73×10¹6 m). The three Triadic modes — Compressed (FU_g1), Resonance (R(t)), and Buoyancy (FU_Bi) — are computed simultaneously as a proof of the Triadic Master Equations with full [SSq] corrections and e^{-(p-t_n)} temporal decay in the buoyancy term. This validation suite confirms the Triadic framework at the N-body astrophysical scale.
+This paper presents complete numerical validation of the Triadic UQFF framework applied to two
+benchmark astrophysical systems: Westerlund 2 star cluster (r=1.89×1016 m) and the Pillars of
+Creation (M16, r=4.73×1016 m). The three Triadic modes — Compressed (FU_g1), Resonance (R(t)), and
+Buoyancy (FU_Bi) — are computed simultaneously as a proof of the Triadic Master Equations with full
+[SSq] corrections and e^{-(p-t_n)} temporal decay in the buoyancy term. This validation suite
+confirms the Triadic framework at the N-body astrophysical scale.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not
+present in Standard Model treatments.
 
 ---
 
@@ -29,12 +49,14 @@ This paper presents complete numerical validation of the Triadic UQFF framework 
 
 ### 1.1 Compressed UQFF (FU_g1)
 
-```
-FU_g1 = S_{k=1}^N [ k_k · ((f_UA'1·f_SCm1·R_EB1)·(f_UA'2·f_SCm2·R_EB2)) / r²
-                      · G_k(UA, U_b, ?_THz, geom_k)
-                    + k_4 · ?_vac,[SCm] · M_BH / r · e^{-at} · cos(pt_n)
-                      · (1 + f_feedback) · e^{-[SSq]·n/26} ]
-```
+$$
+\begin{aligned}
+  & FU_g1 = S_{k=1}^N [ k_k · ((f_UA'1·f_SCm1·R_EB1)·(f_UA'2·f_SCm2·R_EB2)) / r2 \\
+  & · G_k(UA, U_b, ?_THz, geom_k) \\
+  & + k_4 · ?_vac,[SCm] · M_BH / r · e^{-at} · cos(pt_n) \\
+  & · (1 + f_feedback) · e^{-[SSq]·n/26} ]
+\end{aligned}
+$$
 
 Where:
 - G_k = sin(?) for spherical, cos(f) for toroidal, f(?_THz) for linear geometry
@@ -45,20 +67,22 @@ Where:
 
 ### 1.2 Resonance UQFF (R(t))
 
-```
-R(t) = S_{i=1}^{26} (R_{U_g1,i}·cos(?_{U_g1,i}·t) + R_{U_g2,i}·cos(?_{U_g2,i}·t)
-                    + R_{U_g3,i}·cos(?_{U_g3,i}·t) + R_{U_g4i,i}·cos(?_{U_g4i,i}·t))
+$$
+\begin{aligned}
+  & R(t) = S_{i=1}^{26} (R_{U\_g1,i}·cos(?_{U\_g1,i}·t) + R_{U\_g2,i}·cos(?_{U\_g2,i}·t) \\
+  & + R_{U\_g3,i}·cos(?_{U\_g3,i}·t) + R_{U\_g4i,i}·cos(?_{U\_g4i,i}·t)) \\
+  & R_{U\_g1,i} = F_{U\_g1,i} · (1 + M_sf(t)) · e^{-[SSq]·i/26} \\
+  & ?_{U\_g1,i} = 2p / (T_sf / i) · (1 + [SSq])
+\end{aligned}
+$$
 
-R_{U_g1,i} = F_{U_g1,i} · (1 + M_sf(t)) · e^{-[SSq]·i/26}
-?_{U_g1,i} = 2p / (T_sf / i) · (1 + [SSq])
-```
-
-The SSq-enhanced resonance frequencies `?_{U_g1,i} = 2p/(T_sf/i)·(1+[SSq])` ensure each of the 26 levels has both amplitude suppression and frequency upshift.
+The SSq-enhanced resonance frequencies `?_{U\_g1,i} = 2p/(T_sf/i)·(1+[SSq])` ensure each of the 26
+levels has both amplitude suppression and frequency upshift.
 
 ### 1.3 Buoyancy UQFF (FU_Bi) with Temporal Decay
 
 ```
-FU_Bi = S_{k=1}^N [ k_Ub,k · (f_UA'·f_SCm·R_EB / r²)
+FU_Bi = S_{k=1}^N [ k_Ub,k · (f_UA'·f_SCm·R_EB / r2)
                       · H_k(?_THz, U_b, geom_k) · f_Ub · e^{-(p-t_n)} ]
 
 H_k = cos(f) · f(?_THz)
@@ -74,86 +98,92 @@ For t_n ? p, the buoyancy term recovers maximum amplitude; for t_n ? 0, it is ma
 
 ## 2. Numerical Validation: Westerlund 2
 
-**System parameters:** r = 1.89×10¹6 m, f_UA' = 0.999, f_SCm = 0.001, R_EB = 1.0
+**System parameters:** r = 1.89×1016 m, f_UA' = 0.999, f_SCm = 0.001, R_EB = 1.0
 
 ### 2.1 Compressed UQFF (FU_g1)
 
-```
-FU_g1 = [ 1·(0.999·0.001·1)² / (1.89×10¹6)² · 1
-         + 0.1 · 0.999·0.001 / (1.89×10¹6)² · 1 ]
-       · (1 + H(z)·t)_corr  ·  (SSq_correction)
-
-FU_g1 ˜ (2.79×10⁻45 + 2.79×10⁻4°) · 0.8701 ˜ 2.43×10⁻4° N
-```
+$$
+\begin{aligned}
+  & FU_g1 = [ 1·(0.999·0.001·1)2 / (1.89×1016)2 · 1 \\
+  & + 0.1 · 0.999·0.001 / (1.89×1016)2 · 1 ] \\
+  & · (1 + H(z)·t)_corr  ·  (SSq_correction) \\
+  & FU_g1 ˜ (2.79×10-45 + 2.79×10-4°) · 0.8701 ˜ 2.43×10-4° N
+\end{aligned}
+$$
 
 ### 2.2 Resonance UQFF (R(t))
 
-```
-R(t) = 0.1 · (2.79×10⁻45 + 2.79×10⁻4°) · 0.8701
-      · cos(1.989×10?¹³ · 6.307×10¹³)
-
-R(t) ˜ 0.1 · 2.79×10⁻4° · 0.8701 · (-0.9455) ˜ -2.29×10⁻4¹ N
-```
+$$
+\begin{aligned}
+  & R(t) = 0.1 · (2.79×10-45 + 2.79×10-4°) · 0.8701 \\
+  & · cos(1.989×10?13 · 6.307×1013) \\
+  & R(t) ˜ 0.1 · 2.79×10-4° · 0.8701 · (-0.9455) ˜ -2.29×10-41 N
+\end{aligned}
+$$
 
 ### 2.3 Buoyancy UQFF (FU_Bi) — Westerlund 2
 
-```
-FU_Bi = k_Ub · (f_UA'·f_SCm·R_EB / r²) · H_k · f_Ub · e^{-(p-t_n)}
-       = 0.1 · (0.999·0.001·1) / (1.89×10¹6)² · 1 · 2.20×108 · [decay]
-
-FU_Bi ˜ 6.14×10?³² N  (document reference, with decay factor absorbed in f_Ub param)
-```
+$$
+\begin{aligned}
+  & FU_Bi = k_Ub · (f_UA'·f_SCm·R_EB / r2) · H_k · f_Ub · e^{-(p-t_n)} \\
+  & = 0.1 · (0.999·0.001·1) / (1.89×1016)2 · 1 · 2.20×108 · [decay] \\
+  & FU_Bi ˜ 6.14×10?32 N  (document reference, with decay factor absorbed in f_Ub param)
+\end{aligned}
+$$
 
 ### 2.4 Simultaneous Solutions — Westerlund 2
 
 | Mode | Value | Units |
 |------|-------|-------|
-| FU_g1 | 2.43×10⁻4° | N |
-| R(t) | -2.29×10⁻4¹ | N |
-| FU_Bi | ~6.14×10?³² | N |
-| f_z,CGM | ~1.46×10⁻7³ | (dimensionless) |
+| FU_g1 | 2.43×10-4° | N |
+| R(t) | -2.29×10-41 | N |
+| FU_Bi | ~6.14×10?32 | N |
+| f_z,CGM | ~1.46×10-73 | (dimensionless) |
 
 ---
 
 ## 3. Numerical Validation: Pillars of Creation (M16)
 
-**System parameters:** r = 4.73×10¹6 m, V_little/V_big = 1/33 for proto-shell
+**System parameters:** r = 4.73×1016 m, V_little/V_big = 1/33 for proto-shell
 
 ### 3.1 Compressed UQFF (FU_g1)
 
-```
-FU_g1 = [ 1·(0.999·0.001·1)² / (4.73×10¹6)² · 1
-         + 0.1 · 0.999·0.001 / (4.73×10¹6)² · 1 ]
-       · 1.0002147 · 0.8872
-
-FU_g1 ˜ (4.45×10⁻46 + 4.45×10⁻4¹) · 0.8872 ˜ 3.95×10⁻4¹ N
-```
+$$
+\begin{aligned}
+  & FU_g1 = [ 1·(0.999·0.001·1)2 / (4.73×1016)2 · 1 \\
+  & + 0.1 · 0.999·0.001 / (4.73×1016)2 · 1 ] \\
+  & · 1.0002147 · 0.8872 \\
+  & FU_g1 ˜ (4.45×10-46 + 4.45×10-41) · 0.8872 ˜ 3.95×10-41 N
+\end{aligned}
+$$
 
 ### 3.2 Resonance UQFF (R(t))
 
-```
-R(t) = 0.03 · (4.45×10⁻46 + 4.45×10⁻4¹) · 0.8872
-      · cos(1.989×10?¹³ · 4.705×10¹³)
-
-R(t) ˜ 0.03 · 4.45×10⁻4¹ · 0.8872 · (-0.9455) ˜ -1.12×10⁻4² N
-```
+$$
+\begin{aligned}
+  & R(t) = 0.03 · (4.45×10-46 + 4.45×10-41) · 0.8872 \\
+  & · cos(1.989×10?13 · 4.705×1013) \\
+  & R(t) ˜ 0.03 · 4.45×10-41 · 0.8872 · (-0.9455) ˜ -1.12×10-42 N
+\end{aligned}
+$$
 
 ### 3.3 Buoyancy UQFF (FU_Bi) — Pillars of Creation
 
-```
-FU_Bi = 0.1 · (0.999·0.001·1) / (4.73×10¹6)² · 1 · 2.20×107 · [decay]
-
-FU_Bi ˜ 9.79×10?³³ N  (document reference)
-```
+$$
+\begin{aligned}
+  & FU_Bi = 0.1 · (0.999·0.001·1) / (4.73×1016)2 · 1 · 2.20×107 · [decay] \\
+  & FU_Bi ˜ 9.79×10?33 N  (document reference)
+\end{aligned}
+$$
 
 ### 3.4 Simultaneous Solutions — Pillars of Creation
 
 | Mode | Value | Units |
 |------|-------|-------|
-| FU_g1 | 3.95×10⁻4¹ | N |
-| R(t) | -1.12×10⁻4² | N |
-| FU_Bi | ~9.79×10?³³ | N |
-| f_z,CGM | ~1.46×10⁻7³ | (dimensionless) |
+| FU_g1 | 3.95×10-41 | N |
+| R(t) | -1.12×10-42 | N |
+| FU_Bi | ~9.79×10?33 | N |
+| f_z,CGM | ~1.46×10-73 | (dimensionless) |
 
 ---
 
@@ -162,29 +192,35 @@ FU_Bi ˜ 9.79×10?³³ N  (document reference)
 ### 4.1 Buoyancy Temporal Decay Proof
 
 The `e^{-(p-t_n)}` factor ensures:
-- At t_n = 0: `e^{-p} ˜ 4.32×10?²` (maximum attenuation; minimal buoyancy)
+- At t_n = 0: `e^{-p} ˜ 4.32×10?2` (maximum attenuation; minimal buoyancy)
 - At t_n = p: `e^{0} = 1` (no attenuation; maximum buoyancy)
 - At t_n = p/2: `e^{-p/2} ˜ 0.208` (intermediate)
 
-This tracks the cosmic-to-quantum time bridge: proto-shells at t_n ˜ 0 produce heavily damped buoyancy while mature quantum systems at t_n ˜ p produce full buoyancy amplitude.
+This tracks the cosmic-to-quantum time bridge: proto-shells at t_n ˜ 0 produce heavily damped
+buoyancy while mature quantum systems at t_n ˜ p produce full buoyancy amplitude.
 
 ### 4.2 f_Ub Calibration (Hydride-like Environments)
 
-```
-f_Ub = k_Ub · ?k_? · (?_vac,[UA]/?_vac,[SCm]) · (V_little/V_big)
-     = 0.1 · 7.25×108 · (?_UA/?_SCm) · (1/33)
-```
+$$
+\begin{aligned}
+  & f_Ub = k_Ub · ?k_? · (?_vac,[UA]/?_vac,[SCm]) · (V_little/V_big) \\
+  & = 0.1 · 7.25×108 · (?_UA/?_SCm) · (1/33)
+\end{aligned}
+$$
 
-The `?k_? = 7.25×108` value is calibrated for hydride-like nuclear binding energy environments (hydrogen-rich star-forming regions such as the Pillars of Creation).
+The `?k_? = 7.25×108` value is calibrated for hydride-like nuclear binding energy environments
+(hydrogen-rich star-forming regions such as the Pillars of Creation).
 
 ### 4.3 CGM Metallicity Update
 
-The SSq-updated CGM metallicity: f_z,CGM ˜ 1.46×10⁻7³  
+The SSq-updated CGM metallicity: f_z,CGM ˜ 1.46×10-73  
 Represents the fraction of metals in the circumgalactic medium, corrected for vacuum entanglement:
-```
-f_z,CGM = [SSq]^26 · exp(-[SSq]·n/26) · VDS
-VDS = S_{n=1}^{26} (1/n^26) · [SSq]^n
-```
+$$
+\begin{aligned}
+  & f_z,CGM = [SSq]^26 · exp(-[SSq]·n/26) · VDS \\
+  & VDS = S_{n=1}^{26} (1/n^26) · [SSq]^n
+\end{aligned}
+$$
 
 ---
 
@@ -196,7 +232,7 @@ The following CP3 calculators implement this validation:
 |-----------|-------------|
 | `UQFFBuoyancyMasterIntegralCalculator` | Full FU_Bi with H_k(geom) + e^{-(p-t_n)} |
 | `TriadicSSqFeedbackEnhancedCalculator` | FU_g1 and R(t) SSq corrections (Session 52) |
-| `UQFFCGMSSqMetallicityCalculator` | f_z,CGM ˜ 1.46×10⁻7³ (Session 54) |
+| `UQFFCGMSSqMetallicityCalculator` | f_z,CGM ˜ 1.46×10-73 (Session 54) |
 | `DPMHarmonicBuoyancySeriesCalculator` | H_m harmonic series + VDS (Session 52) |
 
 ---
@@ -212,7 +248,8 @@ This is physically meaningful:
 - **FU_g1**: compressed gravity provides structural binding
 - **R(t)**: small oscillating correction represents resonant feedback stabilization
 
-The negative R(t) (anti-phase at t = 200 Myr for Westerlund 2) indicates resonant damping — the star-forming region self-suppresses its star formation rate at large amplitudes.
+The negative R(t) (anti-phase at t = 200 Myr for Westerlund 2) indicates resonant damping — the
+star-forming region self-suppresses its star formation rate at large amplitudes.
 
 ---
 
@@ -223,13 +260,15 @@ The negative R(t) (anti-phase at t = 200 Myr for Westerlund 2) indicates resonan
 
 ### §A.1 Sector Classification
 
-This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see `uqff_lagrangian_derivation.py`).
+This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
-The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive quantum fundamentals (DPM, UA, SCm):
+The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
+quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_\mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
+$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
 
 where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
@@ -243,7 +282,9 @@ $$\boxed{\frac{\delta S}{\delta \phi_{\rm NS}} = \nabla^2 \phi_{\rm NS} - (4\pi 
 
 $$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\rm NS} = 0$$
 
-The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g forces) through vacuum density initialization to the sector-specific equation of motion. Every term in the E-L equation inherits its physical origin from the cosmogenesis master.
+The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
+forces) through vacuum density initialization to the sector-specific equation of motion. Every term
+in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 
 ---
@@ -254,9 +295,9 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.069$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m³.
+For this system, the local VDS sub-ratio is $0.069$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -268,13 +309,13 @@ Since $p_{\rm DVP} = 17$ is **sub-threshold** (threshold at $p > 26$), the syste
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
-The BSH saturation timescale for this sector is **10⁴ yr** (spin-down equilibrium):
+The BSH saturation timescale for this sector is **104 yr** (spin-down equilibrium):
 
-$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
+$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\rm SCm}$ which initializes the harmonic series at cosmogenesis.
 
@@ -282,11 +323,11 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.069 | ✓ Threshold-consistent |
-| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 17$ | ✓ Sub-threshold |
-| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
-| [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
+| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.069 | PASS Threshold-consistent |
+| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 17$ | PASS Sub-threshold |
+| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
+| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
 ---
@@ -296,20 +337,24 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | ✓ Consistent |
-| Cosmological constant Λ | 1.1×10⁻⁵² m⁻² (UQFF vacuum term) | 1.114×10⁻⁵² m⁻² | Planck 2018 | ✓ Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10⁻³⁵/yr | Super-K 2024 | ✓ Consistent |
-| UQFF buoyancy signature | F_U_Bi_i unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
+| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
-**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes significant, offering a falsifiable prediction beyond the Standard Model.
+**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
+produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
+bridge.*
 
 ## References
 
-1. grok_share_7514fe.txt — "UQFF Framework with Triadic Master Equation Systems" (Westerlund 2 and Pillars sections)
-2. Westerlund 2 (WR20a/b pair): r = 1.89×10¹6 m, M ˜ 800 M?, z ˜ 0.0056
-3. M16 Pillars of Creation: r = 4.73×10¹6 m, M ˜ 2000 M?, z ˜ 0.0
+1. grok_share_7514fe.txt — "UQFF Framework with Triadic Master Equation Systems" (Westerlund 2 and
+Pillars sections)
+2. Westerlund 2 (WR20a/b pair): r = 1.89×1016 m, M ˜ 800 M?, z ˜ 0.0056
+3. M16 Pillars of Creation: r = 4.73×1016 m, M ˜ 2000 M?, z ˜ 0.0
 4. ?k_? calibration: Page 12, grok_share_7514fe — "buoyancy as inverse gravity in vacuum shells"
 5. CondensedPhysics3.py — `UQFFBuoyancyMasterIntegralCalculator` (Session 54)
 
@@ -331,9 +376,9 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `f`neutron_s26_coupling`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `k`ozima_scm_cross_section`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `k`ozima_wstp_kernel`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -342,7 +387,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `r`amanujan_polylog_s26`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
 | `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
@@ -351,7 +396,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `m`ock_theta_q26`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -362,8 +407,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `r`amanujan_pi_uqff`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `m`ock_theta_pi_wstp_kernel`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]

@@ -1,6 +1,18 @@
+---
+paper_id: PAPER_959
+title: "26D Ramanujan Summation Engine"
+session: 215
+date: 2026-04-12
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [jet, 26D, phonon, damping, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_959: 26D Ramanujan Summation Engine
 
-**Author:** Daniel T. Murphy -- Star Magic / UQFF Framework
+**Author:** Daniel T. Murphy — Star Magic / UQFF Framework
 **Date:** 2026-04-12
 **Session:** 215
 **Source:** ramanujan_26d_summation.py (Ramanujan26DSummation)
@@ -31,9 +43,9 @@ At $z = 0.57$, $N = 50$: converges to full machine precision.
 
 ## References
 
-1. Ramanujan, S. -- Collected Papers (1927)
-2. Murphy, D.T. -- Star Magic UQFF Framework (2024-2026)
-3. Hardy, G.H. -- Divergent Series (1949)
+1. Ramanujan, S. — Collected Papers (1927)
+2. Murphy, D.T. — Star Magic UQFF Framework (2024-2026)
+3. Hardy, G.H. — Divergent Series (1949)
 4. PAPER_953 — Ramanujan-Accelerated $S_{26}$
 5. PAPER_960 — VDS Polylog26 Cross-Validation
 6. PAPER_952 — 26-State HRes Spectral Ladder
@@ -77,7 +89,7 @@ At $z = 0.57$, $N = 50$: converges to full machine precision.
 **Sector:** 26D Polylogarithm (Ramanujan Series Representation)
 
 ### §A.2 Lagrangian Density
-$$\mathcal{L}_{S_{26}} = \sum_{n=1}^{\infty} R_n^{(26)} \frac{z^n}{n^{26}} \cdot S_{26}$$
+$$\mathcal{L}_{S\_{26}} = \sum_{n=1}^{\infty} R_n^{(26)} \frac{z^n}{n^{26}} \cdot S_{26}$$
 
 ### §A.3 Euler-Lagrange Equation of Motion
 $$\boxed{S_{26}(z) = \sum_{n=1}^{\infty} R_n^{(26)}\, \text{Li}_{26}(z/n),\quad R_n^{(26)} = \prod_{k=1}^{26}\left(1 - n^{-k}\right)}$$
@@ -90,7 +102,7 @@ PAPER_877 → $S_{26}$ master sum → 26D Ramanujan correction → accelerated c
 ## §B VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 VDS
-$S_{26}(z)$ generates the VDS via $\rho_\text{VDS}(r) \propto S_{26}(e^{-r/r_0})$.
+$S_{26}(z)$ generates the VDS via $\rho_text{VDS}(r) \propto S_{26}(e^{-r/r_0})$.
 
 ### §B.2 DVP
 $R_n^{(26)}$ vanishes at $n = 1$; prime $n$ values dominate the series.

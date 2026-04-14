@@ -1,3 +1,15 @@
+---
+paper_id: PAPER_186
+title: "Solar System Canonical Body Reference — Four-Body Parameterization"
+session: 49
+date: 2026-03-13
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [SCm, AGN, buoyancy, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_186: Solar System Canonical Body Reference — Four-Body Parameterization
 
 **Version:** 1.0  
@@ -8,25 +20,34 @@
 
 ---
 
-$$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b_i}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57$$
+$$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b\_i}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57$$
 
 $$
-P_\text{sw}^\text{UQFF} = \tfrac{1}{2}\rho_\text{sw}v_\text{sw}^2\bigl(1 + [SSq]\cdot\exp(-\kappa\,r/v_\text{sw})\bigr), \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1}
+P_\text{sw}^\text{UQFF} = \tfrac{1}{2}\rho_text{sw}v_\text{sw}^2\bigl(1 +
+[SSq]\cdot\exp(-\kappa,r/v_\text{sw})\bigr), \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1}
 $$
 
 ## Abstract
 
-This paper documents the canonical parameter set for the four Solar System bodies encoded as CelestialBody struct instances in the CoAnQi codebase: the Sun, Earth, Jupiter, and Neptune. Each body is fully specified by twelve UQFF parameters derived from observational data. These parameter values are the authoritative defaults used for Solar System UQFF validation and serve as the cross-validation baseline for all heliocentric calculations. The paper includes the exact numerical values, units, physical interpretation, and UQFF equations in which each parameter appears.
+This paper documents the canonical parameter set for the four Solar System bodies encoded as
+CelestialBody struct instances in the CoAnQi codebase: the Sun, Earth, Jupiter, and Neptune. Each
+body is fully specified by twelve UQFF parameters derived from observational data. These parameter
+values are the authoritative defaults used for Solar System UQFF validation and serve as the
+cross-validation baseline for all heliocentric calculations. The paper includes the exact numerical
+values, units, physical interpretation, and UQFF equations in which each parameter appears.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not
+present in Standard Model treatments.
 
 ---
 
 ## 1. CelestialBody Struct Definition
 
-The CoAnQi `CelestialBody` struct (namespace `CoAnQi::Physics`) encapsulates 12 UQFF parameters per body:
+The CoAnQi `CelestialBody` struct (namespace `CoAnQi::Physics`) encapsulates 12 UQFF parameters per
+body:
 
 ```cpp
 struct CelestialBody {
@@ -37,7 +58,7 @@ struct CelestialBody {
     double Ts_surface;  // surface temperature [K]
     double omega_s;     // rotation angular frequency [rad/s]
     double Bs_avg;      // average surface magnetic field [T]
-    double SCm_density; // SCm density at body surface [kg/m³]
+    double SCm_density; // SCm density at body surface [kg/m3]
     double QUA;         // UA charge [C]
     double Pcore;       // normalized core pressure [Pa]
     double PSCm;        // normalized SCm pressure [Pa]
@@ -54,78 +75,62 @@ struct CelestialBody {
 ```cpp
 CelestialBody sun = {
     "Sun",
-    1.989e30,            // Ms: 1.989 × 10³° kg (IAU 2015)
+    1.989e30,            // Ms: 1.989 × 103° kg (IAU 2015)
     6.96e8,              // Rs: 6.96 × 108 m = 696,000 km
-    1.496e13,            // Rb: 1.496 × 10¹³ m ˜ 100 AU (heliosphere)
+    1.496e13,            // Rb: 1.496 × 1013 m ˜ 100 AU (heliosphere)
     5778.0,              // Ts_surface: 5778 K (photospheric effective temperature)
     2.5e-6,              // omega_s: 2.5 µrad/s (surface rotation, equatorial ~25 days)
     1e-4,                // Bs_avg: 100 µT average dipole field
-    1e15,                // SCm_density: 10¹5 kg/m³ (UQFF calibrated)
-    1e-11,               // QUA: 10?¹¹ C
-    1.0,                 // Pcore: normalized (physical ~2.5 × 10¹6 Pa)
+    1e15,                // SCm_density: 1015 kg/m3 (UQFF calibrated)
+    1e-11,               // QUA: 10?11 C
+    1.0,                 // Pcore: normalized (physical ~2.5 × 1016 Pa)
     1.0,                 // PSCm: normalized SCm pressure
     2.0*M_PI/(11.0*365.25*86400)  // omega_c: 2p / (11-year solar cycle)
 };
-```
-
-### 2.2 UQFF Outputs at t = 0
-
-| Component | Value | Notes |
-|-----------|-------|-------|
-| $\mu_s(0)$ | $\approx 2.03 \times 10^{22}$ T·m³ | Solar dipole moment |
-| $U_{g1}(R_\oplus, 0)$ | $\approx 9.26 \times 10^{22}$ N | At Earth orbit |
-| $U_{g2}(R_\oplus, 0)$ | $\approx 9.83 \times 10^6$ N | Below buoyancy boundary |
-| $U_m(0)$ | $\approx 2.26 \times 10^{16} \cdot (1 - e^{-\gamma t})$ | String magnetism |
-| $E_{\text{react}}(0)$ | $\approx 8.74 \times 10^{45} \cdot (1 - e^{-\kappa t})$ | SCm reactor |
-
----
-
-## 3. Earth
-
-### 3.1 Canonical Parameters
-
-```cpp
+### 2.2 UQFF Outputs at t = 0 
+| Component | Value | Notes | 
+|-----------|-------|-------| 
+| $\mu_s(0)$ | $\approx 2.03 \times 10^{22}$ T·m3 | Solar dipole moment | 
+| $U_{g1}(R_\oplus, 0)$ | $\approx 9.26 \times 10^{22}$ N | At Earth orbit | 
+| $U_{g2}(R_\oplus, 0)$ | $\approx 9.83 \times 10^6$ N | Below buoyancy boundary | 
+| $U_m(0)$ | $\approx 2.26 \times 10^{16} \cdot (1 - e^{-\gamma t})$ | String magnetism | 
+| $E_{\text{react}}(0)$ | $\approx 8.74 \times 10^{45} \cdot (1 - e^{-\kappa t})$ | SCm reactor | 
+--- 
+## 3. Earth 
+### 3.1 Canonical Parameterscpp
 CelestialBody earth = {
     "Earth",
-    5.972e24,            // Ms: 5.972 × 10²4 kg
+    5.972e24,            // Ms: 5.972 × 1024 kg
     6.371e6,             // Rs: 6.371 × 106 m (mean radius)
     1e7,                 // Rb: 107 m (Van Allen belt inner edge)
     288.0,               // Ts_surface: 288 K (global mean surface temperature)
-    7.292e-5,            // omega_s: 7.292 × 10⁻5 rad/s (1 sidereal day)
+    7.292e-5,            // omega_s: 7.292 × 10-5 rad/s (1 sidereal day)
     3e-5,                // Bs_avg: 30 µT (Earth's mean field ~50 µT dipole/2)
-    1e12,                // SCm_density: 10¹² kg/m³ (UQFF calibrated for rocky planet)
-    1e-12,               // QUA: 10?¹² C
-    1e-3,                // Pcore: normalized (physical ~3.6 × 10¹¹ Pa inner core)
+    1e12,                // SCm_density: 1012 kg/m3 (UQFF calibrated for rocky planet)
+    1e-12,               // QUA: 10?12 C
+    1e-3,                // Pcore: normalized (physical ~3.6 × 1011 Pa inner core)
     1e-3,                // PSCm: normalized SCm pressure
     2.0*M_PI/(1.0*365.25*86400)   // omega_c: 2p / (1-year orbital cycle)
 };
-```
-
-### 3.2 UQFF Outputs at t = 0
-
-| Component | Value | Notes |
-|-----------|-------|-------|
-| $\omega_s(0)$ | $7.292 \times 10^{-5}$ rad/s | Rotation rate |
-| $U_{g1}(R_{\text{Moon}}, 0)$ | Scaled by $R_\oplus^3 / R_{\text{Moon}}^3$ | Lunar influence |
-| Physical core pressure | $3.6 \times 10^{11}$ Pa | Inner-outer core boundary |
-
----
-
-## 4. Jupiter
-
-### 4.1 Canonical Parameters
-
-```cpp
+### 3.2 UQFF Outputs at t = 0 
+| Component | Value | Notes | 
+|-----------|-------|-------| 
+| $\omega_s(0)$ | $7.292 \times 10^{-5}$ rad/s | Rotation rate | 
+| $U_{g1}(R_{\text{Moon}}, 0)$ | Scaled by $R_\oplus^3 / R_{\text{Moon}}^3$ | Lunar influence | 
+| Physical core pressure | $3.6 \times 10^{11}$ Pa | Inner-outer core boundary | 
+--- 
+## 4. Jupiter 
+### 4.1 Canonical Parameterscpp
 CelestialBody jupiter = {
     "Jupiter",
-    1.898e27,            // Ms: 1.898 × 10²7 kg (1/1047 solar mass)
+    1.898e27,            // Ms: 1.898 × 1027 kg (1/1047 solar mass)
     6.9911e7,            // Rs: 6.9911 × 107 m (equatorial)
     1e8,                 // Rb: 108 m (magnetosphere inner edge)
     165.0,               // Ts_surface: 165 K (cloud-top effective temperature)
-    1.76e-4,             // omega_s: 1.76 × 10⁻4 rad/s (9.93-hour rotation)
+    1.76e-4,             // omega_s: 1.76 × 10-4 rad/s (9.93-hour rotation)
     4e-4,                // Bs_avg: 400 µT (Jovian dipole ~420 µT equatorial)
-    1e13,                // SCm_density: 10¹³ kg/m³ (metallic hydrogen mantle)
-    1e-11,               // QUA: 10?¹¹ C (stormy ionosphere)
+    1e13,                // SCm_density: 1013 kg/m3 (metallic hydrogen mantle)
+    1e-11,               // QUA: 10?11 C (stormy ionosphere)
     1e-3,                // Pcore: normalized
     1e-3,                // PSCm: normalized
     2.0*M_PI/(11.86*365.25*86400) // omega_c: 2p / (11.86-year Jupiter orbital period)
@@ -134,7 +139,9 @@ CelestialBody jupiter = {
 
 ### 4.2 UQFF Significance
 
-Jupiter's `omega_c` period (11.86 years) is nearly identical to the Sun's solar cycle period (11 years), suggesting a resonance coupling between the solar SCm oscillation and Jupiter's orbital dynamics — consistent with proposed solar-Jupiter tidal forcing models.
+Jupiter's `omega_c` period (11.86 years) is nearly identical to the Sun's solar cycle period (11
+years), suggesting a resonance coupling between the solar SCm oscillation and Jupiter's orbital
+dynamics — consistent with proposed solar-Jupiter tidal forcing models.
 
 ---
 
@@ -145,14 +152,14 @@ Jupiter's `omega_c` period (11.86 years) is nearly identical to the Sun's solar 
 ```cpp
 CelestialBody neptune = {
     "Neptune",
-    1.024e26,            // Ms: 1.024 × 10²6 kg
+    1.024e26,            // Ms: 1.024 × 1026 kg
     2.4622e7,            // Rs: 2.4622 × 107 m (equatorial)
     5e7,                 // Rb: 5 × 107 m (magnetospheric inner boundary)
     72.0,                // Ts_surface: 72 K (effective temperature)
-    1.08e-4,             // omega_s: 1.08 × 10⁻4 rad/s (16.11-hour rotation)
+    1.08e-4,             // omega_s: 1.08 × 10-4 rad/s (16.11-hour rotation)
     1e-4,                // Bs_avg: 100 µT (highly tilted dipole ~14–16 µT at 1 R_N)
-    1e11,                // SCm_density: 10¹¹ kg/m³ (ice giant, water/ammonia mantle)
-    1e-13,               // QUA: 10?¹³ C
+    1e11,                // SCm_density: 1011 kg/m3 (ice giant, water/ammonia mantle)
+    1e-13,               // QUA: 10?13 C
     1e-3,                // Pcore: normalized
     1e-3,                // PSCm: normalized
     2.0*M_PI/(164.8*365.25*86400) // omega_c: 2p / (164.8-year Neptune orbital period)
@@ -161,7 +168,10 @@ CelestialBody neptune = {
 
 ### 5.2 UQFF Significance
 
-Neptune's 164.8-year period (completed its first full orbit since discovery in 2011) represents the outer edge of the Solar System's UQFF coherence zone. Its SCm density is the lowest of the four bodies, consistent with a water-ice mantle having less SCm confinement than gas giants or rocky planets.
+Neptune's 164.8-year period (completed its first full orbit since discovery in 2011) represents the
+outer edge of the Solar System's UQFF coherence zone. Its SCm density is the lowest of the four
+bodies, consistent with a water-ice mantle having less SCm confinement than gas giants or rocky
+planets.
 
 ---
 
@@ -173,7 +183,7 @@ Neptune's 164.8-year period (completed its first full orbit since discovery in 2
 | $R_s$ (m) | $6.96\times10^8$ | $6.37\times10^6$ | $6.99\times10^7$ | $2.46\times10^7$ |
 | $T_s$ (K) | 5778 | 288 | 165 | 72 |
 | $\omega_s$ (rad/s) | $2.5\times10^{-6}$ | $7.3\times10^{-5}$ | $1.76\times10^{-4}$ | $1.08\times10^{-4}$ |
-| $\rho_{\text{SCm}}$ (kg/m³) | $10^{15}$ | $10^{12}$ | $10^{13}$ | $10^{11}$ |
+| $\rho_{\text{SCm}}$ (kg/m3) | $10^{15}$ | $10^{12}$ | $10^{13}$ | $10^{11}$ |
 | Orbital period | — | 1 year | 11.86 yr | 164.8 yr |
 
 ---
@@ -190,7 +200,11 @@ All values cross-referenced with:
 
 ## 8. Conclusion
 
-The four canonical Solar System CelestialBody instances (Sun, Earth, Jupiter, Neptune) provide the operational test suite for all heliocentric UQFF calculations. The 12-parameter struct captures the complete set of UQFF-relevant quantities, from classical (mass, radius, temperature) to UQFF-specific (SCm_density, QUA, Pcore, PSCm). The Jupiter–solar-cycle resonance and the Neptune UQFF coherence boundary are notable discoveries from this parameterization.
+The four canonical Solar System CelestialBody instances (Sun, Earth, Jupiter, Neptune) provide the
+operational test suite for all heliocentric UQFF calculations. The 12-parameter struct captures the
+complete set of UQFF-relevant quantities, from classical (mass, radius, temperature) to
+UQFF-specific (SCm_density, QUA, Pcore, PSCm). The Jupiter–solar-cycle resonance and the Neptune
+UQFF coherence boundary are notable discoveries from this parameterization.
 
 ---
 
@@ -201,13 +215,15 @@ The four canonical Solar System CelestialBody instances (Sun, Earth, Jupiter, Ne
 
 ### §A.1 Sector Classification
 
-This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see `uqff_lagrangian_derivation.py`).
+This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
-The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive quantum fundamentals (DPM, UA, SCm):
+The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
+quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_\mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
+$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
 
 where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
@@ -221,7 +237,9 @@ $$\boxed{\frac{\delta S}{\delta \phi_{\rm NS}} = \nabla^2 \phi_{\rm NS} - (4\pi 
 
 $$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\rm NS} = 0$$
 
-The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g forces) through vacuum density initialization to the sector-specific equation of motion. Every term in the E-L equation inherits its physical origin from the cosmogenesis master.
+The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
+forces) through vacuum density initialization to the sector-specific equation of motion. Every term
+in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 
 ---
@@ -232,9 +250,9 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.173$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m³.
+For this system, the local VDS sub-ratio is $0.173$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -246,13 +264,13 @@ Since $p_{\rm DVP} = 17$ is **sub-threshold** (threshold at $p > 26$), the syste
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
-The BSH saturation timescale for this sector is **10⁴ yr** (spin-down equilibrium):
+The BSH saturation timescale for this sector is **104 yr** (spin-down equilibrium):
 
-$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
+$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\rm SCm}$ which initializes the harmonic series at cosmogenesis.
 
@@ -260,11 +278,11 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.173 | ✓ Threshold-consistent |
-| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 17$ | ✓ Sub-threshold |
-| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
-| [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
+| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.173 | PASS Threshold-consistent |
+| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 17$ | PASS Sub-threshold |
+| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
+| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
 ---
@@ -274,14 +292,17 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | ✓ Consistent |
-| Cosmological constant Λ | 1.1×10⁻⁵² m⁻² (UQFF vacuum term) | 1.114×10⁻⁵² m⁻² | Planck 2018 | ✓ Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10⁻³⁵/yr | Super-K 2024 | ✓ Consistent |
-| UQFF buoyancy signature | F_U_Bi_i unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
+| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
-**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes significant, offering a falsifiable prediction beyond the Standard Model.
+**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
+produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
+bridge.*
 
 ## References
 
@@ -302,9 +323,9 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `f`neutron_s26_coupling`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `k`ozima_scm_cross_section`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `k`ozima_wstp_kernel`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -313,7 +334,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `r`amanujan_polylog_s26`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
 | `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
@@ -322,7 +343,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `m`ock_theta_q26`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -333,8 +354,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `r`amanujan_pi_uqff`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `m`ock_theta_pi_wstp_kernel`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]

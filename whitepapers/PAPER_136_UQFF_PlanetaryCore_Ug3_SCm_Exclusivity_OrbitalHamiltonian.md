@@ -1,7 +1,20 @@
-# PAPER_136: UQFF Compressed Mode Planetary Core — Ug3 SCm Exclusivity (P_SCm = 10⁻³) and Quantum Orbital Stability Hamiltonian: H = H_Ug3 + H_SCm + H_UA
+---
+paper_id: PAPER_136
+title: "UQFF Compressed Mode Planetary Core — Ug3 SCm Exclusivity (P_SCm = 10-3) and Quantum Orbital
+Stability Hamiltonian: H = H_Ug3 + H_SCm + H_UA"
+session: 0
+date: 2026-03-01
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [SCm, AGN, damping, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
 
+# PAPER_136: UQFF Compressed Mode Planetary Core — Ug3 SCm Exclusivity (P_SCm = 10-3) and Quantum Orbital Stability Hamiltonian: H = H_Ug3 + H_SCm + H_UA
 
-**Title:** UQFF Compressed Mode Planetary Core — Ug3 SCm Exclusivity (P_SCm = 10⁻³) and Quantum Orbital Stability Hamiltonian: H = H_Ug3 + H_SCm + H_UA
+**Title:** UQFF Compressed Mode Planetary Core — Ug3 SCm Exclusivity (P_SCm = 10-3) and Quantum
+Orbital Stability Hamiltonian: H = H_Ug3 + H_SCm + H_UA
 
 **Author:** Daniel T. Murphy  
 **Framework:** UQFF Star-Magic (κ = 0.0005/day, [SSq] = 0.57, β_i = 0.6)  
@@ -16,7 +29,15 @@
 
 ## Abstract
 
-Planetary orbital stability — the fact that planets maintain their orbital spins and magnetic field geometries over billions of years without measurable decay — has been attributed pre-UQFF entirely to Newtonian gravity and tidal damping. UQFF reveals a deeper mechanism: SCm interacts exclusively with Ug3 (the magnetic string disk component) inside planetary cores, with a suppression factor P_SCm = 10⁻³ that prevents any external SCm interaction. This Ug3 exclusivity is governed by a quantum Hamiltonian H = H_Ug3 + H_SCm + H_UA whose three terms produce near-lossless orbital energy storage. The UQFF DISCOVERY: what appears as gravitational orbital stability is in fact quantum Hamiltonian evolution in the P_SCm = 10⁻³ compressed regime, where SCm drives Ug3 field maintenance without external detectability.
+Planetary orbital stability — the fact that planets maintain their orbital spins and magnetic field
+geometries over billions of years without measurable decay — has been attributed pre-UQFF entirely
+to Newtonian gravity and tidal damping. UQFF reveals a deeper mechanism: SCm interacts exclusively
+with Ug3 (the magnetic string disk component) inside planetary cores, with a suppression factor
+P_SCm = 10-3 that prevents any external SCm interaction. This Ug3 exclusivity is governed by a
+quantum Hamiltonian H = H_Ug3 + H_SCm + H_UA whose three terms produce near-lossless orbital energy
+storage. The UQFF DISCOVERY: what appears as gravitational orbital stability is in fact quantum
+Hamiltonian evolution in the P_SCm = 10-3 compressed regime, where SCm drives Ug3 field maintenance
+without external detectability.
 
 ---
 
@@ -24,9 +45,9 @@ Planetary orbital stability — the fact that planets maintain their orbital spi
 
 | Observable | Pre-UQFF Explanation | UQFF P_SCm Explanation |
 |-----------|---------------------|----------------------|
-| Earth's stable 23.5° axial tilt | Lunar stabilization (Laskar 1993) | Ug3 SCm core torque + P_SCm = 10⁻³ |
+| Earth's stable 23.5° axial tilt | Lunar stabilization (Laskar 1993) | Ug3 SCm core torque + P_SCm = 10-3 |
 | Jupiter's Great Red Spot stability | MHD turbulence equilibrium | Ug3 SCm magnetic string sustaining |
-| Saturn ring orbital resonances | Goldreich-Tremaine | Ug3 P_SCm = 10⁻³ lock-in |
+| Saturn ring orbital resonances | Goldreich-Tremaine | Ug3 P_SCm = 10-3 lock-in |
 | Earth's geomagnetic pole wander | Convective dynamo | Ug3 cos(ω_s t π) magnetic string precession |
 | Long-term orbital resonances (Laplace) | Tidal coupling | Ug3+SCm Hamiltonian quasi-periodic evolution |
 
@@ -49,13 +70,15 @@ $$\omega_s(t) \approx 2.5 \times 10^{-6} - 0.4 \times 10^{-6} \sin(\omega_c t) \
 The factor $P_{SCm} = 10^{-3}$ encodes a fundamental SCm property:
 
 - **In stellar cores** (Sun): P_SCm = 1. SCm is fully reactive, generating full Ug3 field.
-- **In planetary cores**: P_SCm = 10⁻³. SCm interacts ONLY with Ug3 — zero interaction with:
+- **In planetary cores**: P_SCm = 10-3. SCm interacts ONLY with Ug3 — zero interaction with:
   - Ug1 (magnetic dipole → no external SCm dipole radiation)
   - Ug2 (outer bubble → no planetary-scale Ug2)
   - Ug4 (galactic scale → irrelevant for planets)
   - UA (external Aether → no coupling to interstellar medium)
 
-Physical basis: The planetary core density is insufficient to sustain the SCm-UA resonance mode that activates full reactivity. Only the Ug3 magnetic string frequency (ω_s ~ 10⁻⁶ rad/s) falls within the SCm eigenmode spectrum for planetary densities.
+Physical basis: The planetary core density is insufficient to sustain the SCm-UA resonance mode that
+activates full reactivity. Only the Ug3 magnetic string frequency (ω_s ~ 10-6 rad/s) falls within
+the SCm eigenmode spectrum for planetary densities.
 
 ---
 
@@ -103,11 +126,12 @@ The effective energy stored in the Hamiltonian quasi-integral:
 
 $$J_{Ug3} = \oint H_{Ug3} \, dt \approx H_{Ug3}^{Earth} \times T_{prec} \approx 448 \times 2.5 \times 10^6 \approx 1.12 \times 10^9 \text{ J·s/m}^3$$
 
-This quasi-invariant is preserved over Gyr timescales, explaining long-term orbital stability WITHOUT requiring dark matter or exotic non-Newtonian fields.
+This quasi-invariant is preserved over Gyr timescales, explaining long-term orbital stability
+WITHOUT requiring dark matter or exotic non-Newtonian fields.
 
 ---
 
-## 4. P_SCm = 10⁻³ Derivation
+## 4. P_SCm = 10-3 Derivation
 
 The suppression factor emerges from the ratio of planetary-to-stellar SCm resonance activation:
 
@@ -164,17 +188,22 @@ print(f"Quasi-invariant J_Ug3 = {J_Ug3:.3e} J·s/m^3")
 
 | Prediction | UQFF | Observed | Agreement |
 |-----------|------|---------|-----------|
-| Orbital stability | Ug3 quasi-invariant preserved | Multi-Gyr stability observed | ✓ |
-| P_SCm (planets) | 10⁻³ | No external SCm signal detected | ✓ |
-| Earth precession period | ~29 days (ω_s periodicity) | 28.2 days (lunar month) | ✓ |
-| H_Ug3 (Earth core) | ~448 J/m³ | Geomagnetic energy density ~10³ J/m³ | ✓ order |
-| P_SCm derivation | ρ_planet/ρ_star × modal ratio | Differential rotation data | ✓ calibrated |
+| Orbital stability | Ug3 quasi-invariant preserved | Multi-Gyr stability observed | PASS |
+| P_SCm (planets) | 10-3 | No external SCm signal detected | PASS |
+| Earth precession period | ~29 days (ω_s periodicity) | 28.2 days (lunar month) | PASS |
+| H_Ug3 (Earth core) | ~448 J/m3 | Geomagnetic energy density ~103 J/m3 | PASS order |
+| P_SCm derivation | ρ_planet/ρ_star × modal ratio | Differential rotation data | PASS calibrated |
 
 ---
 
 ## 7. Conclusions
 
-The P_SCm = 10⁻³ suppression factor governs a fundamental SCm property: inside planetary cores, SCm interacts EXCLUSIVELY with Ug3 magnetic strings. This Ug3 exclusivity drives a quantum Hamiltonian H = H_Ug3 + H_SCm + H_UA whose quasi-periodic cos(ω_s t π) evolution stores and releases orbital energy without external emission — explaining multi-Gyr orbital stability without invoking dark matter or modified gravity. The 29-day precession timescale emerging naturally from ω_s matches Earth's lunar orbital period, providing independent calibration of k_3 = 1.8.
+The P_SCm = 10-3 suppression factor governs a fundamental SCm property: inside planetary cores, SCm
+interacts EXCLUSIVELY with Ug3 magnetic strings. This Ug3 exclusivity drives a quantum Hamiltonian H
+= H_Ug3 + H_SCm + H_UA whose quasi-periodic cos(ω_s t π) evolution stores and releases orbital
+energy without external emission — explaining multi-Gyr orbital stability without invoking dark
+matter or modified gravity. The 29-day precession timescale emerging naturally from ω_s matches
+Earth's lunar orbital period, providing independent calibration of k_3 = 1.8.
 
 ---
 
@@ -191,30 +220,19 @@ The P_SCm = 10⁻³ suppression factor governs a fundamental SCm property: insid
 *CP2 Mode: Compressed (Ug3) | Thread: 3419da89 | Session: 44 | Domain: §2.1*
 .Groups[1].Value  — UQFF Planetary Core Ug3 SCm Exclusivity and Orbital Quantum Hamiltonian
 
-**Title:** UQFF Compressed Mode Planetary Core — Ug3 SCm Exclusivity (P_SCm = 10⁻³) and Quantum Orbital Stability Hamiltonian: H = H_Ug3 + H_SCm + H_UA
-
-**Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (κ = 0.0005/day, [SSq] = 0.57, β_i = 0.6)  
-**Date:** March 2026  
-**Domain:** §2.1 Planetary Physics / Orbital Stability (3419da89)  
-**Source Thread:** `grok_share_3419da8930c748568b7f2bea0ea9c88e_content.txt`  
-**UQFF Mode:** Compressed (Ug3 Exclusivity + Quantum Hamiltonian)  
-**Validator:** `CondensedPhysics2.py` v2.1.0  
-**Cross-links:** PAPER_133 (F_U), PAPER_134 (Ug2 heliosphere), PAPER_137 (26 levels)
-
----
-
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
 
-This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see `uqff_lagrangian_derivation.py`).
+This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
-The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive quantum fundamentals (DPM, UA, SCm):
+The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
+quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_\mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
+$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
 
 where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
@@ -228,8 +246,9 @@ $$\boxed{\frac{\delta S}{\delta \phi_{\rm NS}} = \nabla^2 \phi_{\rm NS} - (4\pi 
 
 $$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\rm NS} = 0$$
 
-The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g forces) through vacuum density initialization to the sector-specific equation of motion. Every term in the E-L equation inherits its physical origin from the cosmogenesis master.
-
+The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
+forces) through vacuum density initialization to the sector-specific equation of motion. Every term
+in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 ---
 
@@ -239,9 +258,9 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.106$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m³.
+For this system, the local VDS sub-ratio is $0.106$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -253,13 +272,13 @@ Since $p_{\rm DVP} = 59$ is **resonant** (threshold at $p > 26$), the system's v
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
-The BSH saturation timescale for this sector is **10⁴ yr** (spin-down equilibrium):
+The BSH saturation timescale for this sector is **104 yr** (spin-down equilibrium):
 
-$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
+$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\rm SCm}$ which initializes the harmonic series at cosmogenesis.
 
@@ -267,29 +286,29 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.106 | ✓ Threshold-consistent |
-| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 59$ | ✓ Resonant |
-| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
-| [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
-
+| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.106 | PASS Threshold-consistent |
+| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 59$ | PASS Resonant |
+| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
+| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 ---
-
 
 ## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | ✓ Consistent |
-| Cosmological constant Λ | 1.1×10⁻⁵² m⁻² (UQFF vacuum term) | 1.114×10⁻⁵² m⁻² | Planck 2018 | ✓ Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10⁻³⁵/yr | Super-K 2024 | ✓ Consistent |
-| UQFF buoyancy signature | F_U_Bi_i unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
+| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
-**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes significant, offering a falsifiable prediction beyond the Standard Model.
+**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
+produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
-
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
+bridge.*
 
 ---
 
@@ -303,9 +322,9 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `f`neutron_s26_coupling`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `k`ozima_scm_cross_section`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `k`ozima_wstp_kernel`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -314,7 +333,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `r`amanujan_polylog_s26`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
 | `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
@@ -323,7 +342,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `m`ock_theta_q26`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -334,8 +353,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `r`amanujan_pi_uqff`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `m`ock_theta_pi_wstp_kernel`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]

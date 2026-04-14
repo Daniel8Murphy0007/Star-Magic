@@ -1,3 +1,15 @@
+---
+paper_id: PAPER_636
+title: "UQFF Lepton Flavor Violation B-Decay as Time-Reversal Constraint"
+session: 162
+date: 2026-01-01
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [vacuum, LHC, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_636: UQFF Lepton Flavor Violation B-Decay as Time-Reversal Constraint
 **Author:** Daniel T. Murphy
 
@@ -11,25 +23,26 @@
 
 ## Abstract
 
-This paper presents a UQFF analysis of Decay as Time-Reversal Constraint, deriving compressed field equations and observational predictions within the Star-Magic/UQFF framework.
+This paper presents a UQFF analysis of Decay as Time-Reversal Constraint, deriving compressed field
+equations and observational predictions within the Star-Magic/UQFF framework.
 
 ## §1 Abstract
 
 LHCb has placed the world's best limit on lepton flavor violation (LFV) in B-meson decays:
-BR(B→K*τe) < 5.9e-6 at 90% CL (5.4 fb⁻¹). We show that the UQFF vacuum-topology
-suppression parameter k_η = 10⁻¹¹³ generates an expected LFV rate at UQFF scale that
+BR(B→K*τe) < 5.9e-6 at 90% CL (5.4 fb-1). We show that the UQFF vacuum-topology
+suppression parameter k_η = 10-113 generates an expected LFV rate at UQFF scale that
 is 107 orders below this bound, providing an effective UQFF upper limit on LFV through the
-t_n time-reversal node constraint: BR_UQFF(B→K*τe) < k_η² × phase_space ~ 10⁻²³⁰.
+t_n time-reversal node constraint: BR_UQFF(B→K*τe) < k_η2 × phase_space ~ 10-230.
 
 ---
 
 ## §2 Physical Motivation
 
 Lepton Flavor Violation is forbidden in the SM at tree level and arises only through tiny
-neutrino-mass loop corrections (BR_SM ≲ 10⁻⁵⁴). Any observation of LFV at the LHCb
+neutrino-mass loop corrections (BR_SM ≲ 10-54). Any observation of LFV at the LHCb
 sensitivity level would imply new physics coupling lepton generations.
 
-UQFF claim: k_η = 10⁻¹¹³ represents the maximum suppression depth of the UQFF vacuum
+UQFF claim: k_η = 10-113 represents the maximum suppression depth of the UQFF vacuum
 string compactification topology. This sets an effective LFV ceiling: phenomena suppressed
 by k_η cannot be confused with SM new-physics signatures.
 
@@ -41,22 +54,22 @@ The t_n parameter (UQFF time-node) suppresses cross-flavour topological transiti
 
 $$BR_{UQFF}(B \to K^* \tau e) = k_\eta^2 \times \frac{|V_{tb}|^2 |V_{ts}|^2}{m_B^4} \times |\mathcal{M}_{LFV}|^2$$
 
-where |M_LFV|² represents the flavor-topology mixing matrix element, bounded by:
+where |M_LFV|2 represents the flavor-topology mixing matrix element, bounded by:
 
 $$|\mathcal{M}_{LFV}|^2 \leq \frac{[\text{SSq}]^2}{\beta_i} \approx 0.534$$
 
-This gives BR_UQFF < 10⁻²³⁰ — 224 orders below the LHCb limit.
+This gives BR_UQFF < 10-230 — 224 orders below the LHCb limit.
 
 ---
 
 ## §4 Implications for UQFF Topology
 
-The enormous gap between BR_UQFF < 10⁻²³⁰ and BR_LHCb < 5.9e-6 confirms that:
+The enormous gap between BR_UQFF < 10-230 and BR_LHCb < 5.9e-6 confirms that:
 - UQFF vacuum topology is **lepton-flavor conserving** at all accessible energy scales
-- Any future LFV observation at LHCb (even near 10⁻⁶) would be **inconsistent** with UQFF
+- Any future LFV observation at LHCb (even near 10-6) would be **inconsistent** with UQFF
 - UQFF thus makes a strict null prediction for LFV at future colliders
 
-This is falsifiable: if LHCb Run 4 observes BR > 10⁻⁸, UQFF requires revision.
+This is falsifiable: if LHCb Run 4 observes BR > 10-8, UQFF requires revision.
 
 ---
 
@@ -66,13 +79,15 @@ This is falsifiable: if LHCb Run 4 observes BR > 10⁻⁸, UQFF requires revisio
 
 ### §A.1 Sector Classification
 
-This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see `uqff_lagrangian_derivation.py`).
+This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
-The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive quantum fundamentals (DPM, UA, SCm):
+The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
+quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_\mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
+$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
 
 where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
@@ -86,7 +101,9 @@ $$\boxed{\frac{\delta S}{\delta \phi_{\rm NS}} = \nabla^2 \phi_{\rm NS} - (4\pi 
 
 $$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\rm NS} = 0$$
 
-The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g forces) through vacuum density initialization to the sector-specific equation of motion. Every term in the E-L equation inherits its physical origin from the cosmogenesis master.
+The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
+forces) through vacuum density initialization to the sector-specific equation of motion. Every term
+in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 
 ---
@@ -97,9 +114,9 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.076$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m³.
+For this system, the local VDS sub-ratio is $0.076$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -111,13 +128,13 @@ Since $p_{\rm DVP} = 17$ is **sub-threshold** (threshold at $p > 26$), the syste
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
-The BSH saturation timescale for this sector is **10⁴ yr** (spin-down equilibrium):
+The BSH saturation timescale for this sector is **104 yr** (spin-down equilibrium):
 
-$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
+$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\rm SCm}$ which initializes the harmonic series at cosmogenesis.
 
@@ -125,11 +142,11 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.076 | ✓ Threshold-consistent |
-| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 17$ | ✓ Sub-threshold |
-| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
-| [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
+| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.076 | PASS Threshold-consistent |
+| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 17$ | PASS Sub-threshold |
+| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
+| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
 ---
@@ -139,15 +156,15 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| BR(B→K*τe) upper limit | BR_UQFF < 10⁻²³⁰ (k_η² suppression) | BR < 5.9e-6 at 90% CL | arXiv:2506.15347 (LHCb 5.4/fb) | ✓ UQFF far below bound |
-| SM LFV prediction | BR_SM ~ 10⁻⁵⁴ (ν loop) | SM: no tree-level LFV | PDG 2024 | UQFF consistent with SM null |
-| k_η suppression scale | k_η = 10⁻¹¹³ ↔ LFV cutoff energy Λ_LFV = m_W/√k_η ~ 10⁶⁰ GeV | No collider can reach Λ_LFV | n/a | UQFF LFV unreachable |
-| LHCb Run 4 null prediction | UQFF: BR(B→K*τe) will remain unobserved at any LHCb run | LHCb Run 4: target BR ~ 10⁻⁸ | LHCb 2027+ | Testable UQFF null prediction |
+| BR(B→K*τe) upper limit | BR_UQFF < 10-230 (k_η2 suppression) | BR < 5.9e-6 at 90% CL | arXiv:2506.15347 (LHCb 5.4/fb) | PASS UQFF far below bound |
+| SM LFV prediction | BR_SM ~ 10-54 (ν loop) | SM: no tree-level LFV | PDG 2024 | UQFF consistent with SM null |
+| k_η suppression scale | k_η = 10-113 ↔ LFV cutoff energy Λ_LFV = m_W/√k_η ~ 1060 GeV | No collider can reach Λ_LFV | n/a | UQFF LFV unreachable |
+| LHCb Run 4 null prediction | UQFF: BR(B→K*τe) will remain unobserved at any LHCb run | LHCb Run 4: target BR ~ 10-8 | LHCb 2027+ | Testable UQFF null prediction |
 
 **New physics claim:** UQFF predicts LFV in B-decays is **not accessible at any current
-or planned collider** because k_η suppression places the UQFF LFV amplitude at 10⁻²³⁰ —
+or planned collider** because k_η suppression places the UQFF LFV amplitude at 10-230 —
 224 orders below LHCb's current best limit. This is a strict, high-confidence falsifiability
-constraint: LHCb Run 4 discovering LFV above 10⁻⁸ would require UQFF revision.
+constraint: LHCb Run 4 discovering LFV above 10-8 would require UQFF revision.
 
 *Cite PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for k_η SM mapping.*
 
@@ -155,7 +172,7 @@ constraint: LHCb Run 4 discovering LFV above 10⁻⁸ would require UQFF revisio
 
 ## §6 References
 
-- arXiv:2506.15347 — LHCb LFV B→K*τe search (5.4 fb⁻¹, June 2025)
+- arXiv:2506.15347 — LHCb LFV B→K*τe search (5.4 fb-1, June 2025)
 - PDG 2024 — LFV decays, Section 90.4
 - bsm_physics_validation.py — `BSMPhysicsConstants.lhcb_lfv_br_limit`
 - PAPER_642 — UQFF SM Parameter Bridge Master Comparison
@@ -177,9 +194,9 @@ constraint: LHCb Run 4 discovering LFV above 10⁻⁸ would require UQFF revisio
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `f`neutron_s26_coupling`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `k`ozima_scm_cross_section`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `k`ozima_wstp_kernel`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -188,7 +205,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `r`amanujan_polylog_s26`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
 | `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
@@ -197,7 +214,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `m`ock_theta_q26`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -208,8 +225,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `r`amanujan_pi_uqff`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `m`ock_theta_pi_wstp_kernel`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]

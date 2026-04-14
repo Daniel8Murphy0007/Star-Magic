@@ -1,6 +1,18 @@
+---
+paper_id: PAPER_955
+title: "BCS Phonon Resonance at ω_SCm"
+session: 214
+date: 2026-04-12
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [phonon, vacuum, SCm, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_955: BCS Phonon Resonance at ω_SCm
 
-**Author:** Daniel T. Murphy -- Star Magic / UQFF Framework
+**Author:** Daniel T. Murphy — Star Magic / UQFF Framework
 **Date:** 2026-04-12
 **Session:** 214
 **Source:** et_phonon_resonance.py §6 (BCSPhononResonance)
@@ -11,13 +23,13 @@
 
 ## Abstract
 
-We analyze the BCS superconducting gap at the SCm phonon resonance frequency $\omega_\text{SCm} = 2\pi \times 1.25$ THz. The gap equation $\Delta = (\hbar\omega_\text{SCm}/2) \tanh(\Delta / 2k_BT) \cdot S_{26} \cdot (F_{UBi}/F_U)$ is solved self-consistently at the phonon resonance, revealing how the SCm vacuum phonon mode mediates Cooper pairing.
+We analyze the BCS superconducting gap at the SCm phonon resonance frequency $\omega_text{SCm} = 2\pi \times 1.25$ THz. The gap equation $\Delta = (\hbar\omega_\text{SCm}/2) \tanh(\Delta / 2k_BT) \cdot S_{26} \cdot (F_{UBi}/F_U)$ is solved self-consistently at the phonon resonance, revealing how the SCm vacuum phonon mode mediates Cooper pairing.
 
 ---
 
 ## 1. BCS Gap at Phonon Resonance
 
-$$\Delta_\text{res} = \frac{\hbar\omega_\text{SCm}}{2} \cdot \tanh\!\left(\frac{\Delta}{2k_BT}\right) \cdot S_{26} \cdot \frac{F_{UBi}}{F_U}$$
+$$\Delta_text{res} = \frac{\hbar\omega_\text{SCm}}{2} \cdot \tanh!\left(\frac{\Delta}{2k_BT}\right) \cdot S_{26} \cdot \frac{F_{UBi}}{F_U}$$
 
 ## 2. Iterative Solution
 
@@ -29,7 +41,7 @@ until $|\Delta_{n+1} - \Delta_n| < \epsilon$.
 ## 3. Phonon Enhancement Factor
 
 The resonance Q-factor at the phonon peak:
-$$Q_\text{res} = \frac{\omega_\text{SCm} \cdot \sqrt{\Delta}}{k_BT}$$
+$$Q_\text{res} = \frac{\omega_text{SCm} \cdot \sqrt{\Delta}}{k_BT}$$
 
 ---
 
@@ -43,8 +55,8 @@ $$Q_\text{res} = \frac{\omega_\text{SCm} \cdot \sqrt{\Delta}}{k_BT}$$
 
 ## References
 
-1. Bardeen, Cooper, Schrieffer -- Theory of Superconductivity (1957)
-2. Murphy, D.T. -- Star Magic UQFF Framework (2024-2026)
+1. Bardeen, Cooper, Schrieffer — Theory of Superconductivity (1957)
+2. Murphy, D.T. — Star Magic UQFF Framework (2024-2026)
 3. PAPER_949 — BCS Gap Equation
 4. PAPER_950 — BCS Critical Temperature
 5. PAPER_951 — Cooper Pair Phonon Coupling
@@ -69,7 +81,7 @@ $$Q_\text{res} = \frac{\omega_\text{SCm} \cdot \sqrt{\Delta}}{k_BT}$$
 |----------|--------|-------|-------------------|
 | $\kappa$ | — | $5.0 \times 10^{-4}$ day$^{-1}$ | Magnetar spin-down |
 | $[SSq]$ | — | 0.57 | BH dynamics |
-| $\omega_\text{SCm}$ | — | $2\pi \times 1.25$ THz | Resonance frequency |
+| $\omega_text{SCm}$ | — | $2\pi \times 1.25$ THz | Resonance frequency |
 | $F_{UBi}/F_U$ | — | 0.6 | Buoyancy ratio |
 
 ---
@@ -78,21 +90,21 @@ $$Q_\text{res} = \frac{\omega_\text{SCm} \cdot \sqrt{\Delta}}{k_BT}$$
 
 | Observable | UQFF Prediction | Status |
 |------------|----------------|--------|
-| $\Delta_\text{res}$ at $\omega_\text{SCm}$ | Self-consistent via fixed-point | Validated |
-| Phonon Q-factor | $Q = \omega_\text{SCm}\sqrt{\Delta}/(k_BT)$ | Derived |
+| $\Delta_text{res}$ at $\omega_text{SCm}$ | Self-consistent via fixed-point | Validated |
+| Phonon Q-factor | $Q = \omega_text{SCm}\sqrt{\Delta}/(k_BT)$ | Derived |
 
 ---
 
 ## §A Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
-**Sector:** Phonon Resonance (BCS at $\omega_\text{SCm}$)
+**Sector:** Phonon Resonance (BCS at $\omega_text{SCm}$)
 
 ### §A.2 Lagrangian Density
-$$\mathcal{L}_\text{res} = \mathcal{L}_\text{gap}\big|_{\omega=\omega_\text{SCm}} + \frac{1}{2}\hbar\omega_\text{SCm}\coth\!\left(\frac{\hbar\omega_\text{SCm}}{2k_BT}\right)$$
+$$\mathcal{L}_\text{res} = \mathcal{L}_\text{gap}\big|_{\omega=\omega\_text{SCm}} + \frac{1}{2}\hbar\omega_\text{SCm}\coth!\left(\frac{\hbar\omega_\text{SCm}}{2k_BT}\right)$$
 
 ### §A.3 Euler-Lagrange Equation of Motion
-$$\boxed{\Delta_\text{res} = \frac{\hbar\omega_\text{SCm}}{2}\tanh\!\left(\frac{\Delta}{2k_BT}\right) S_{26} \frac{F_{UBi}}{F_U}}$$
+$$\boxed{\Delta_text{res} = \frac{\hbar\omega_\text{SCm}}{2}\tanh!\left(\frac{\Delta}{2k_BT}\right) S_{26} \frac{F_{UBi}}{F_U}}$$
 
 ### §A.4 Cosmogenesis Linkage Chain
 PAPER_877 → SCm vacuum → phonon peak → BCS gap at resonance → maximal Cooper pairing
@@ -102,7 +114,7 @@ PAPER_877 → SCm vacuum → phonon peak → BCS gap at resonance → maximal Co
 ## §B VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 VDS
-On-resonance VDS peak: $\rho_\text{SCm} \cdot S_{26}$ (maximal phonon occupation).
+On-resonance VDS peak: $\rho_text{SCm} \cdot S_{26}$ (maximal phonon occupation).
 
 ### §B.2 DVP
 Resonance prime $p = 2$ (Cooper pair at peak coupling).
@@ -114,5 +126,5 @@ $Q_\text{res}$ determines the BSH bandwidth at the resonance shell.
 
 | Metric | Value | Status |
 |--------|-------|--------|
-| $\omega_\text{SCm}$ | $2\pi \times 1.25$ THz | Confirmed |
+| $\omega_text{SCm}$ | $2\pi \times 1.25$ THz | Confirmed |
 | $[SSq]$ | 0.57 | Confirmed |

@@ -1,10 +1,23 @@
+---
+paper_id: PAPER_479
+title: "UQFF Buoyancy Complex Arithmetic Module — 5-System Astrophysical Framework"
+session: 0
+date: 2025-10-22
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [quasar, cluster, DPM, buoyancy, Chandra, LENR, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_479: UQFF Buoyancy Complex Arithmetic Module — 5-System Astrophysical Framework
 **Author:** Daniel T. Murphy
 **Date:** October 22, 2025
 
 ## Abstract
 
-This paper presents a UQFF analysis of 5-System Astrophysical Framework, deriving compressed field equations and observational predictions within the Star-Magic/UQFF framework.
+This paper presents a UQFF analysis of 5-System Astrophysical Framework, deriving compressed field
+equations and observational predictions within the Star-Magic/UQFF framework.
 
 ## Whitepaper 479 of 1,000 | Session 125 | v4.98
 ## Source: grok_share_4e4d8be1f7.txt (Source161.docx — UQFFBuoyancyAstroModule)
@@ -16,11 +29,16 @@ This paper presents a UQFF analysis of 5-System Astrophysical Framework, derivin
 
 ### 1.1 Abstract
 
-This whitepaper documents the **UQFFBuoyancyAstroModule** — a C++ implementation of the Master Unified Quantum Field Framework (UQFF) buoyancy equation applied to five canonical astrophysical systems. The central innovation is the use of `std::complex<double>` (cdouble) arithmetic throughout all UQFF force calculations, enabling proper treatment of imaginary-component contributions in DPM momentum coupling, gravitational terms, and resonance dynamics.
+This whitepaper documents the **UQFFBuoyancyAstroModule** — a C++ implementation of the Master
+Unified Quantum Field Framework (UQFF) buoyancy equation applied to five canonical astrophysical
+systems. The central innovation is the use of `std::complex<double>` (cdouble) arithmetic throughout
+all UQFF force calculations, enabling proper treatment of imaginary-component contributions in DPM
+momentum coupling, gravitational terms, and resonance dynamics.
 
 The master equation computes $F_{U,Bi,i}$ — the total UQFF buoyancy integral force — for: J1610+1811 (high-z quasar, z=3.122), PLCK G287.0+32.9 (massive gravitational lens cluster, z=0.383), PSZ2 G181.06+48.47 (merging cluster with radio relics, z=0.234), ASKAP J1832-0911 (44-minute long-period radio transient, ~15,000 ly), and the Chandra Sonification Collection (composite astrophysical dataset).
 
-**Key result:** At LENR-dominant conditions (low ω₀ = 10⁻¹² rad/s), the LENR resonance term overwhelms all others:
+**Key result:** At LENR-dominant conditions (low ω₀ = 10-12 rad/s), the LENR resonance term
+overwhelms all others:
 
 $$F_{LENR}(J1610) = k_{LENR} \cdot \left(\frac{\omega_0 (LENR)}{1 \times 10^{-12}}\right)^2 \approx 6.25 \times 10^{36} \text{ N}$$
 
@@ -32,12 +50,12 @@ $$F_{LENR}(J1610) = k_{LENR} \cdot \left(\frac{\omega_0 (LENR)}{1 \times 10^{-12
 
 The UQFF buoyancy integral force:
 
-$$F_{U,Bi,i}(r, t) = -F_0 + \frac{m_e c^2}{r^2} D_{PM,mom} \cos\theta + \frac{GM}{r^2} D_{PM,grav} + \int_{0}^{t} \text{Integrand}(r, t') \, dt'$$
+$$F_{U,Bi,i}(r, t) = -F_0 + \frac{m_e c^2}{r^2} D_{PM,mom} \costheta + \frac{GM}{r^2} D_{PM,grav} + \int_{0}^{t} \text{Integrand}(r, t') \, dt'$$
 
 **Constants:**
 - $F_0 = 1.83 \times 10^{71}$ N (base force normalization)
 - $m_e = 9.11 \times 10^{-31}$ kg, $c = 3 \times 10^8$ m/s
-- $G = 6.6743 \times 10^{-11}$ m³/(kg·s²)
+- $G = 6.6743 \times 10^{-11}$ m3/(kg·s2)
 - $\theta = \pi/4$ (45° default; system-adjustable)
 
 ### 2.2 Integral Approximation (Quadratic Root)
@@ -57,7 +75,7 @@ $$\text{Integrand}(r, t) = F_{LENR} + F_{act} + F_{DE} + F_{res} + F_{neutron} +
 | **LENR Resonance** | $k_{LENR} \cdot \left(\frac{\omega_0^{LENR}}{\omega_0}\right)^2$ | Dominant; $\omega_0^{LENR} = 2\pi \times 1.25 \times 10^{12}$ rad/s |
 | **Activation** | $k_{act} \cdot \cos(\omega_{act} t)$, $\omega_{act} = 2\pi \times 300$ | $k_{act} = 10^{-6}$ |
 | **Directed Energy** | $k_{DE} \cdot L_X$ | $k_{DE} = 10^{-30}$; $L_X = 10^{31}$ W → $F_{DE} = 10$ N |
-| **Magnetic Resonance** | $2qB_0 V \sin\theta \cdot DPM_{res}$ | $B_0 = 10^{-4}$ T, $V = 10^{-3}$ m/s |
+| **Magnetic Resonance** | $2qB_0 V \sintheta \cdot DPM_{res}$ | $B_0 = 10^{-4}$ T, $V = 10^{-3}$ m/s |
 | **Neutron Drop** | $k_{neutron} \cdot \sigma_n$ | $k_{neutron} = 10^{10}$ |
 | **Relativistic** | $k_{rel} \cdot (E_{cm,astro}/E_{cm,ref})^2$ | $= 4.30 \times 10^{33}$ N (1998 LEP calibration) |
 
@@ -67,7 +85,8 @@ $$\text{Integrand}(r, t) = F_{LENR} + F_{act} + F_{DE} + F_{res} + F_{neutron} +
 
 $$DPM_{res}(\text{system}) = \text{Re}(\text{momentum term from complex DPM map})$$
 
-The `computeDPM_resonance()` method returns a cdouble encoding both real magnetic resonance amplitude and imaginary phase shift through the DPM structure.
+The `computeDPM_resonance()` method returns a cdouble encoding both real magnetic resonance
+amplitude and imaginary phase shift through the DPM structure.
 
 ### 2.5 Complex Arithmetic Implementation
 
@@ -81,13 +100,13 @@ All variables stored in `std::map<std::string, std::complex<double>>`. Key desig
 
 | Parameter | Value |
 |-----------|-------|
-| M | 2.785 × 10³⁰ kg (stellar-scale jet base) |
-| r | 3.09 × 10¹⁵ m (X-ray jet extent, ~100 AU) |
-| T | 10⁴ K |
-| L_X | 10³¹ W (Chandra 2025 X-ray luminosity) |
-| ω₀ | 10⁻¹² rad/s |
+| M | 2.785 × 1030 kg (stellar-scale jet base) |
+| r | 3.09 × 1015 m (X-ray jet extent, ~100 AU) |
+| T | 104 K |
+| L_X | 1031 W (Chandra 2025 X-ray luminosity) |
+| ω₀ | 10-12 rad/s |
 | Mach | 1.0 |
-| t_obs | 3.156 × 10¹⁰ s (~1000 yr) |
+| t_obs | 3.156 × 1010 s (~1000 yr) |
 
 **Physics context:** High-redshift quasar with resolved X-ray jets detected by Chandra (2025). At z=3.122, the comoving distance is ~11.7 Gly. UQFF buoyancy at this system probes the LENR-dominant regime where $\omega_0 = 10^{-12}$ rad/s gives maximum resonance amplification: $(\omega_{LENR,0}/\omega_0)^2 \approx (7.854 \times 10^{12} / 10^{-12})^2 = 6.17 \times 10^{49}$.
 
@@ -97,43 +116,44 @@ All variables stored in `std::map<std::string, std::complex<double>>`. Key desig
 
 | Parameter | Value |
 |-----------|-------|
-| M | 1.989 × 10⁴⁴ kg (~10¹⁴ M☉, massive cluster) |
-| r | 3.09 × 10²² m (~1 Mpc cluster radius) |
-| T | 10⁷ K (intracluster medium) |
-| L_X | 10³⁸ W (cluster X-ray luminosity) |
-| ω₀ | 10⁻¹⁵ rad/s (cluster-scale oscillation) |
+| M | 1.989 × 1044 kg (~1014 MM_sun, massive cluster) |
+| r | 3.09 × 1022 m (~1 Mpc cluster radius) |
+| T | 107 K (intracluster medium) |
+| L_X | 1038 W (cluster X-ray luminosity) |
+| ω₀ | 10-15 rad/s (cluster-scale oscillation) |
 | Mach | 1.5 (merger shock) |
 | C | 1.2 (concentration) |
-| t_obs | 1.42 × 10¹⁷ s (~4.5 Gyr = ~age at z=0.383) |
+| t_obs | 1.42 × 1017 s (~4.5 Gyr = ~age at z=0.383) |
 
-**Physics context:** PLCK G287.0+32.9 is one of the most massive clusters discovered by Planck, with Einstein ring gravitational lensing geometry. The cluster's merger dynamics (Mach 1.5) drive enhanced magnetic resonance ($B_0 = 10^{-4}$ T relic radio field). UQFF buoyancy at cluster scale tests the $GM/r^2$ gravity term at 10⁴⁴ kg scale — the ICM DPM gravity coupling: $(6.6743 \times 10^{-11} \times 1.989 \times 10^{44}) / (3.09 \times 10^{22})^2 \approx 1.39 \times 10^{-10}$ m/s² (cluster acceleration).
+**Physics context:** PLCK G287.0+32.9 is one of the most massive clusters discovered by Planck, with Einstein ring gravitational lensing geometry. The cluster's merger dynamics (Mach 1.5) drive enhanced magnetic resonance ($B_0 = 10^{-4}$ T relic radio field). UQFF buoyancy at cluster scale tests the $GM/r^2$ gravity term at 1044 kg scale — the ICM DPM gravity coupling: $(6.6743 \times 10^{-11} \times 1.989 \times 10^{44}) / (3.09 \times 10^{22})^2 \approx 1.39 \times 10^{-10}$ m/s2 (cluster acceleration).
 
 ### 3.3 PSZ2 G181.06+48.47 (Merging Cluster with Radio Relics, z = 0.234)
 
 | Parameter | Value |
 |-----------|-------|
-| M | 1.989 × 10⁴⁴ kg |
-| r | 3.09 × 10²² m |
-| T | 10⁷ K |
-| L_X | 10³⁹ W (enhanced; radio relic emission) |
-| ω₀ | 10⁻¹⁵ rad/s |
+| M | 1.989 × 1044 kg |
+| r | 3.09 × 1022 m |
+| T | 107 K |
+| L_X | 1039 W (enhanced; radio relic emission) |
+| ω₀ | 10-15 rad/s |
 | Mach | 1.5 |
-| t_obs | 2.36 × 10¹⁷ s (~7.5 Gyr = age at z=0.234) |
+| t_obs | 2.36 × 1017 s (~7.5 Gyr = age at z=0.234) |
 
 **Physics context:** PSZ2 G181 features double radio relics indicating a major merger event. The enhanced X-ray luminosity ($L_X = 10^{39}$ W, 10× PLCK G287) produces larger directed energy term $F_{DE} = k_{DE} \times L_X = 10^{-30} \times 10^{39} = 10^9$ N. This system was previously analyzed in PAPER_367 with Triadic/FUBi formalism; this paper adds the complex-arithmetic buoyancy framework.
 
-**Cross-reference:** PAPER_355 (PLCK G287 merger relics), PAPER_367 (PSZ2 G181 full 5-equation Triadic)
+**Cross-reference:** PAPER_355 (PLCK G287 merger relics), PAPER_367 (PSZ2 G181 full 5-equation
+Triadic)
 
 ### 3.4 ASKAP J1832-0911 (Long-Period Radio Transient, ~15,000 ly)
 
 | Parameter | Value |
 |-----------|-------|
-| M | 2.785 × 10³⁰ kg (white dwarf or magnetar candidate) |
-| r | 4.63 × 10¹⁶ m (~1.5 pc, emission region) |
-| T | 10⁴ K |
-| L_X | 10³¹ W |
-| ω₀ | 10⁻¹² rad/s (44-minute period proxy) |
-| t_obs | 3.156 × 10¹⁰ s |
+| M | 2.785 × 1030 kg (white dwarf or magnetar candidate) |
+| r | 4.63 × 1016 m (~1.5 pc, emission region) |
+| T | 104 K |
+| L_X | 1031 W |
+| ω₀ | 10-12 rad/s (44-minute period proxy) |
+| t_obs | 3.156 × 1010 s |
 
 **Physics context:** ASKAP J1832-0911 is a long-period (44-minute) radio transient of unknown nature (white dwarf or ultra-long-period magnetar candidate). The LENR-dominant regime ($\omega_0 = 10^{-12}$) captures the slow spin-down dynamics. UQFF buoyancy for this system parallels PAPER_069 (UQFF F_U_Bi_i) and PAPER_356 (SSq burst modulation), now extended with full complex arithmetic.
 
@@ -143,15 +163,15 @@ All variables stored in `std::map<std::string, std::complex<double>>`. Key desig
 
 | Parameter | Value |
 |-----------|-------|
-| M | 1.989 × 10³¹ kg (~10 M☉ composite) |
-| r | 6.17 × 10¹⁶ m (~2 pc composite scale) |
-| T | 10⁵ K |
-| L_X | 10³³ W |
-| B₀ | 10⁻⁵ T |
-| ω₀ | 10⁻¹² rad/s |
-| t_obs | 3.156 × 10¹⁴ s (~10⁷ yr) |
+| M | 1.989 × 1031 kg (~10 MM_sun composite) |
+| r | 6.17 × 1016 m (~2 pc composite scale) |
+| T | 105 K |
+| L_X | 1033 W |
+| B₀ | 10-5 T |
+| ω₀ | 10-12 rad/s |
+| t_obs | 3.156 × 1014 s (~107 yr) |
 
-**Physics context:** The Chandra Sonification Collection converts X-ray observations of multiple astrophysical objects (Cas A, Crab Nebula, Perseus Cluster, SgrA*, M87) into audio. As a unified UQFF system, the collection is treated as a composite dataset with mass and radius representing the characteristic scale of the dominant object. This is the **first whitepaper treating astrophysical sonification data as a UQFF computational target**. The reduced $B_0 = 10^{-5}$ T (vs. 10⁻⁴ T for point sources) reflects the ensemble averaging of multi-object data.
+**Physics context:** The Chandra Sonification Collection converts X-ray observations of multiple astrophysical objects (Cas A, Crab Nebula, Perseus Cluster, SgrA*, M87) into audio. As a unified UQFF system, the collection is treated as a composite dataset with mass and radius representing the characteristic scale of the dominant object. This is the **first whitepaper treating astrophysical sonification data as a UQFF computational target**. The reduced $B_0 = 10^{-5}$ T (vs. 10-4 T for point sources) reflects the ensemble averaging of multi-object data.
 
 ---
 
@@ -192,7 +212,9 @@ public:
 
 ### 4.2 Variable Map Design
 
-The dynamic `std::map<std::string, cdouble>` allows runtime variable updates via `updateVariable()`. This is the **UQFF Self-Expanding 2.0** pattern: physics constants are not hardcoded — they can be updated without recompilation.
+The dynamic `std::map<std::string, cdouble>` allows runtime variable updates via `updateVariable()`.
+This is the **UQFF Self-Expanding 2.0** pattern: physics constants are not hardcoded — they can be
+updated without recompilation.
 
 ### 4.3 Usage Pattern
 
@@ -226,7 +248,7 @@ std::cout << mod.getEquationText("ASKAP_J1832-0911") << std::endl;
 
 | PAPER | Overlap | New Contribution of PAPER_479 |
 |-------|---------|-------------------------------|
-| PAPER_069 | ASKAP J1832 F_U_Bi_i | Complex arithmetic cdouble framework |
+| PAPER_069 | ASKAP J1832 `F_U_Bi_i` | Complex arithmetic cdouble framework |
 | PAPER_161, 360 | J1610+1811 SCm jet | Buoyancy integral + LENR dominant term |
 | PAPER_355 | PLCK G287 merger relic | Buoyancy computation (new formalism) |
 | PAPER_367 | PSZ2 G181 5-equation | Buoyancy cdouble framework (new) |
@@ -248,8 +270,8 @@ std::cout << mod.getEquationText("ASKAP_J1832-0911") << std::endl;
 | `UQFFBuoyancyAstroModule.h` | C++ header (3,511 chars, 68 lines) — Block 2 from Source161.docx |
 | `UQFFBuoyancyAstroModule.cpp` | C++ implementation (13,730 chars, 299 lines) — Block 2 |
 | `UQFFBuoyancyModule.h` / `.cpp` | Base template module (Block 0) from Source161.docx |
-| `grok_share_4e4d8be1f7.txt` | Source file (2,327 lines) — L153–1260 = Source161.docx |
-| `INTEGRATION_PLAN_4e4d8be1f7.md` | Complete integration roadmap |
+| `g`rok_share_4e4d8be1f7`.txt` | Source file (2,327 lines) — L153–1260 = Source161.docx |
+| `I`NTEGRATION_PLAN_4e4d8be1f7`.md` | Complete integration roadmap |
 
 ---
 
@@ -259,13 +281,15 @@ std::cout << mod.getEquationText("ASKAP_J1832-0911") << std::endl;
 
 ### §A.1 Sector Classification
 
-This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see `uqff_lagrangian_derivation.py`).
+This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
-The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive quantum fundamentals (DPM, UA, SCm):
+The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
+quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_\mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
+$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
 
 where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
@@ -279,7 +303,9 @@ $$\boxed{\frac{\delta S}{\delta \phi_{\rm NS}} = \nabla^2 \phi_{\rm NS} - (4\pi 
 
 $$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\rm NS} = 0$$
 
-The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g forces) through vacuum density initialization to the sector-specific equation of motion. Every term in the E-L equation inherits its physical origin from the cosmogenesis master.
+The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
+forces) through vacuum density initialization to the sector-specific equation of motion. Every term
+in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 
 ---
@@ -290,9 +316,9 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.177$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m³.
+For this system, the local VDS sub-ratio is $0.177$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -304,13 +330,13 @@ Since $p_{\rm DVP} = 113$ is **resonant** (threshold at $p > 26$), the system's 
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
-The BSH saturation timescale for this sector is **10⁴ yr** (spin-down equilibrium):
+The BSH saturation timescale for this sector is **104 yr** (spin-down equilibrium):
 
-$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
+$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\rm SCm}$ which initializes the harmonic series at cosmogenesis.
 
@@ -318,11 +344,11 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.177 | ✓ Threshold-consistent |
-| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 113$ | ✓ Resonant |
-| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
-| [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
+| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.177 | PASS Threshold-consistent |
+| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 113$ | PASS Resonant |
+| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
+| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
 ---
@@ -332,10 +358,10 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Higgs mass m_H | UQFF K_HIGGS=47.34 → m_H_UQFF = 125.09 GeV | m_H = 125.20 ± 0.11 GeV | PDG 2024 | 99.8% |
-| Cosmological Λ | UQFF |∇UA|² → 1.09×10⁻⁵² m⁻² | Λ = 1.114×10⁻⁵² m⁻² (Planck+DESI) | Planck 2018 | 97.8% |
-| Thomson σ_T (QED) | UQFF U_m kernel: σ_T = 6.6524×10⁻²⁹ m² | σ_T = 6.6524×10⁻²⁹ m² | PDG 2024 | 100% (exact) |
-| κ baryon stability | κ = 0.0005/day; scale separation 10³³ from proton decay | τ_p > 7.7×10³³ yr (Super-K) | Super-K 2024 | ✓ UQFF baryon-safe |
+| Higgs mass m_H | UQFF K_HIGGS=47.34 → `m_H_UQFF` = 125.09 GeV | m_H = 125.20 ± 0.11 GeV | PDG 2024 | 99.8% |
+| Cosmological Λ | UQFF |∇UA|2 → 1.09×10-52 m-2 | Λ = 1.114×10-52 m-2 (Planck+DESI) | Planck 2018 | 97.8% |
+| Thomson σ_T (QED) | UQFF U_m kernel: σ_T = 6.6524×10-29 m2 | σ_T = 6.6524×10-29 m2 | PDG 2024 | 100% (exact) |
+| κ baryon stability | κ = 0.0005/day; scale separation 1033 from proton decay | τ_p > 7.7×1033 yr (Super-K) | Super-K 2024 | PASS UQFF baryon-safe |
 
 **New physics claim:** UQFF operates at a vacuum topology scale (~200 PeV) that is 8 orders
 below the GUT scale and 33 orders above nuclear baryon-number scales. This intermediate-scale
@@ -347,7 +373,8 @@ while remaining consistent with all collider and nuclear precision measurements.
 
 
 **Watermark:** Copyright © Daniel T. Murphy, analyzed October 22, 2025. Documented March 2026.  
-**QS=5:** Q1 core discovery ✅ | Q2 equations ✅ | Q3 systems ✅ | Q4 implementation ✅ | Q5 validation ✅
+**QS=5:** Q1 core discovery ✅ | Q2 equations ✅ | Q3 systems ✅ | Q4 implementation ✅ | Q5 validation
+✅
 
 
 ---
@@ -362,9 +389,9 @@ while remaining consistent with all collider and nuclear precision measurements.
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `f`neutron_s26_coupling`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `k`ozima_scm_cross_section`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `k`ozima_wstp_kernel`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -373,7 +400,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `r`amanujan_polylog_s26`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
 | `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
@@ -382,7 +409,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `m`ock_theta_q26`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -393,8 +420,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `r`amanujan_pi_uqff`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `m`ock_theta_pi_wstp_kernel`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]

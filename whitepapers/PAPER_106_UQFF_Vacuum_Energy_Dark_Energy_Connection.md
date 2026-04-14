@@ -1,3 +1,15 @@
+---
+paper_id: PAPER_106
+title: "UQFF Vacuum Energy and Dark Energy Connection"
+session: 0
+date: 2026-03-05
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [AGN, vacuum, cosmology, dark-energy, damping, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_030: UQFF Vacuum Energy and Dark Energy Connection
 **Author:** Daniel T. Murphy
 **Session:** 0
@@ -9,25 +21,35 @@
 
 ---
 
-$$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b_i}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57$$
+$$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b\_i}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57$$
 
 $$
-\rho_\Lambda^\text{UQFF} = \rho_\Lambda^\text{obs}\cdot\Bigl(1 + \kappa^2\cdot[SSq]^2\Bigr) = \rho_\Lambda^\text{obs}\times1.0000000812
+\rho_Lambda^\text{UQFF} = \rho_Lambda^\text{obs}\cdotBigl(1 + \kappa^2\cdot[SSq]^2\Bigr) =
+\rho_Lambda^\text{obs}\times1.0000000812
 $$
 
 ## Abstract
 
-This paper explores the connection between UQFF vacuum energy and cosmological dark energy. We propose that the UQFF damping mechanism provides a natural resolution to the cosmological constant problem by generating a time-dependent vacuum energy density that evolves with the universe's expansion. Our model predicts specific deviations from ?CDM cosmology detectable by next-generation surveys.
+This paper explores the connection between UQFF vacuum energy and cosmological dark energy. We
+propose that the UQFF damping mechanism provides a natural resolution to the cosmological constant
+problem by generating a time-dependent vacuum energy density that evolves with the universe's
+expansion. Our model predicts specific deviations from ?CDM cosmology detectable by next-generation
+surveys.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not
+present in Standard Model treatments.
 
 ---
 
 ## 1. Introduction
 
-The cosmological constant problem—the 120-order-of-magnitude discrepancy between predicted quantum vacuum energy and observed dark energy—represents one of the most profound puzzles in physics. The UQFF framework offers a potential resolution through its damping mechanism, which naturally regulates vacuum energy contributions.
+The cosmological constant problem—the 120-order-of-magnitude discrepancy between predicted quantum
+vacuum energy and observed dark energy—represents one of the most profound puzzles in physics. The
+UQFF framework offers a potential resolution through its damping mechanism, which naturally
+regulates vacuum energy contributions.
 
 ### 1.1 The Cosmological Constant Problem
 
@@ -61,15 +83,15 @@ The UQFF proposes:
 
 Standard vacuum energy from zero-point fluctuations:
 
-```
+$$
 ?_vac = ?_0^k_max (??_k/2) × (d^3k/(2p)^3)
-```
+$$
 
 UQFF-modified vacuum energy:
 
-```
+$$
 ?_vac,UQFF(t) = ?_0^k_Q (??_k/2) × exp[-?_damp(k) t] × F_UQFF(k) × (d^3k/(2p)^3)
-```
+$$
 
 Where:
 - `k_Q = E_Q/(?c)` = UQFF momentum cutoff
@@ -80,9 +102,9 @@ Where:
 
 The vacuum energy evolves as:
 
-```
+$$
 ?_vac,UQFF(t) = ?_vac,0 × exp[-G_eff t] + ?_?,eff × [1 - exp(-G_eff t)]
-```
+$$
 
 Parameters:
 - `?_vac,0` = initial vacuum energy (Planck scale)
@@ -93,9 +115,9 @@ Parameters:
 
 At cosmic time `t_0 = 13.8 Gyr`:
 
-```
+$$
 ?_vac,UQFF(t_0) ˜ ?_?,eff ˜ 6 × 10^(-10) J/m^3
-```
+$$
 
 This matches observed dark energy density!
 
@@ -107,15 +129,15 @@ This matches observed dark energy density!
 
 Cosmological constant equation of state:
 
-```
+$$
 w = p/? = -1 (constant)
-```
+$$
 
 ### 3.2 UQFF-Modified Equation of State
 
-```
+$$
 w_UQFF(a) = -1 + w_1 (1-a) + w_2 (1-a)^2
-```
+$$
 
 Where scale factor `a(t) = R(t)/R_0`.
 
@@ -127,9 +149,9 @@ UQFF predictions:
 
 Explicit time evolution:
 
-```
+$$
 w_UQFF(z) = -1 + e_w × [(1+z)/100]^?_w
-```
+$$
 
 Parameters:
 - `e_w = 0.02` (amplitude)
@@ -141,15 +163,15 @@ Parameters:
 
 ### 4.1 Standard ?CDM
 
-```
-H²(a) = H_0² [O_m a^(-3) + O_r a^(-4) + O_?]
-```
+$$
+H2(a) = H_02 [O_m a^(-3) + O_r a^(-4) + O_?]
+$$
 
 ### 4.2 UQFF-Modified Expansion
 
-```
-H²_UQFF(a) = H_0² [O_m a^(-3) + O_r a^(-4) + O_?,UQFF(a) + ?_Q(a)]
-```
+$$
+H2_UQFF(a) = H_02 [O_m a^(-3) + O_r a^(-4) + O_?,UQFF(a) + ?_Q(a)]
+$$
 
 Where:
 - `O_?,UQFF(a) = O_?,0 × [1 + e_? (1-a)^?]`
@@ -170,22 +192,22 @@ Parameters from UQFF theory:
 
 Luminosity distance in UQFF:
 
-```
+$$
 d_L,UQFF(z) = (c/H_0)(1+z) ?_0^z dz'/E_UQFF(z')
-```
+$$
 
 Where:
-```
+$$
 E_UQFF(z) = H_UQFF(z)/H_0
-```
+$$
 
 ### 5.2 Deviation from ?CDM
 
 Distance modulus difference:
 
-```
+$$
 ?µ(z) = µ_UQFF(z) - µ_?CDM(z)
-```
+$$
 
 Predictions:
 - `z = 0.5`: `?µ ˜ +0.02 mag`
@@ -208,9 +230,9 @@ UQFF predicts systematic deviation in Hubble diagram:
 
 UQFF modifies angular diameter distance:
 
-```
-d_A,UQFF(z) = d_L,UQFF(z)/(1+z)²
-```
+$$
+d_A,UQFF(z) = d_L,UQFF(z)/(1+z)2
+$$
 
 Effect on CMB peaks:
 - First peak: shift by `?l_1 ˜ +3`
@@ -221,9 +243,9 @@ Effect on CMB peaks:
 
 Time-varying dark energy affects ISW:
 
-```
+$$
 ?ISW_UQFF/?ISW_?CDM ˜ 1 + 0.15 × (l/100)^(-0.5)
-```
+$$
 
 Predicted enhancement at low multipoles: ~10-20%.
 
@@ -245,22 +267,22 @@ Future CMB-S4 sensitivity: `s_w ~ 0.01` (will decisively test UQFF).
 
 UQFF modifies growth of density perturbations:
 
-```
+$$
 f_UQFF(a) = O_m(a)^?_UQFF / a
-```
+$$
 
 Where:
-```
+$$
 ?_UQFF = 0.55 + 0.05 × [1 + w_UQFF(a)]
-```
+$$
 
 ### 7.2 RSD Measurements
 
 Redshift-space distortions parameter:
 
-```
+$$
 fs_8,UQFF(z) = fs_8,?CDM(z) × [1 - 0.03 (z/1)^1.2]
-```
+$$
 
 Prediction: ~3% suppression at z=1 compared to ?CDM.
 
@@ -268,9 +290,9 @@ Prediction: ~3% suppression at z=1 compared to ?CDM.
 
 Lensing convergence power spectrum modification:
 
-```
+$$
 P_?,UQFF(l) / P_?,?CDM(l) = 1 - 0.02 × (l/1000)^0.5
-```
+$$
 
 Testable with Euclid and LSST surveys.
 
@@ -288,19 +310,19 @@ Testable with Euclid and LSST surveys.
 
 UQFF modifies late-time expansion:
 
-```
+$$
 H_0,UQFF = H_0,?CDM × [1 + d_H]
-```
+$$
 
 Where:
-```
+$$
 d_H = 0.04 ± 0.01 (UQFF prediction)
-```
+$$
 
 This yields:
-```
+$$
 H_0,UQFF = 67.4 × 1.04 = 70.1 ± 1.0 km/s/Mpc
-```
+$$
 
 Reduces tension to 2.1s.
 
@@ -308,9 +330,9 @@ Reduces tension to 2.1s.
 
 UQFF affects sound horizon at recombination:
 
-```
+$$
 r_s,UQFF = r_s,?CDM × [1 - 0.02]
-```
+$$
 
 Smaller sound horizon ? larger inferred H_0 from CMB.
 
@@ -322,14 +344,14 @@ Smaller sound horizon ? larger inferred H_0 from CMB.
 
 UQFF allows energy exchange between vacuum and matter:
 
-```
+$$
 d?_?/dt + 3H(?_? + p_?) = Q(t)
-```
+$$
 
 Where coupling term:
-```
+$$
 Q(t) = a_Q H(t) ?_m(t) × [?_?(t)/?_?,0 - 1]
-```
+$$
 
 Coupling strength: `a_Q = 0.001` (weak coupling).
 
@@ -354,14 +376,14 @@ This ratio is NOT coincidental in UQFF:
 
 UQFF vacuum energy from effective action:
 
-```
+$$
 S_eff = ? d^4x v(-g) [R/(16pG) - ?_eff(t) + L_matter + L_UQFF]
-```
+$$
 
 Where:
-```
-L_UQFF = -a_Q (?µf)² - ß_damp f (?_t f) + ...
-```
+$$
+L_UQFF = -a_Q (?µf)2 - ß_damp f (?_t f) + ...
+$$
 
 ### 10.2 Renormalization
 
@@ -438,7 +460,7 @@ UQFF advantages:
 - Can detect UQFF deviations at 3s level
 
 **Euclid Space Telescope:**
-- Weak lensing over 15,000 deg²
+- Weak lensing over 15,000 deg2
 - fs_8 constraints to 2% at z~1
 - Direct test of growth modifications
 
@@ -484,9 +506,9 @@ Why was ?_vac,0 at Planck scale initially?
 ### 14.3 Fine-Structure Constant Variation
 
 UQFF might predict time variation of a:
-```
+$$
 ?a/a ~ 10^(-6) × (t/t_universe)
-```
+$$
 
 Current limits: |?a/a| < 10^(-6) (marginal constraint).
 
@@ -526,7 +548,8 @@ The UQFF framework provides a compelling resolution to the cosmological constant
 3. **Hubble tension** partially resolved by late-time modifications
 4. **No fine-tuning** required—values emerge from dynamics
 
-Upcoming surveys (DESI, Euclid, LSST, CMB-S4) will definitively test these predictions within the next 5-10 years.
+Upcoming surveys (DESI, Euclid, LSST, CMB-S4) will definitively test these predictions within the
+next 5-10 years.
 
 ---
 
@@ -537,13 +560,15 @@ Upcoming surveys (DESI, Euclid, LSST, CMB-S4) will definitively test these predi
 
 ### §A.1 Sector Classification
 
-This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see `uqff_lagrangian_derivation.py`).
+This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
-The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive quantum fundamentals (DPM, UA, SCm):
+The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
+quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_\mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
+$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
 
 where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
@@ -557,7 +582,9 @@ $$\boxed{\frac{\delta S}{\delta \phi_{\rm NS}} = \nabla^2 \phi_{\rm NS} - (4\pi 
 
 $$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\rm NS} = 0$$
 
-The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g forces) through vacuum density initialization to the sector-specific equation of motion. Every term in the E-L equation inherits its physical origin from the cosmogenesis master.
+The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
+forces) through vacuum density initialization to the sector-specific equation of motion. Every term
+in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 
 ---
@@ -568,9 +595,9 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.089$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m³.
+For this system, the local VDS sub-ratio is $0.089$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -582,13 +609,13 @@ Since $p_{\rm DVP} = 59$ is **resonant** (threshold at $p > 26$), the system's v
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
-The BSH saturation timescale for this sector is **10⁴ yr** (spin-down equilibrium):
+The BSH saturation timescale for this sector is **104 yr** (spin-down equilibrium):
 
-$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
+$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\rm SCm}$ which initializes the harmonic series at cosmogenesis.
 
@@ -596,11 +623,11 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.089 | ✓ Threshold-consistent |
-| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 59$ | ✓ Resonant |
-| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
-| [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
+| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.089 | PASS Threshold-consistent |
+| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 59$ | PASS Resonant |
+| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
+| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
 ---
@@ -610,14 +637,17 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | ✓ Consistent |
-| Cosmological constant Λ | 1.1×10⁻⁵² m⁻² (UQFF vacuum term) | 1.114×10⁻⁵² m⁻² | Planck 2018 | ✓ Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10⁻³⁵/yr | Super-K 2024 | ✓ Consistent |
-| UQFF buoyancy signature | F_U_Bi_i unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
+| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
-**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes significant, offering a falsifiable prediction beyond the Standard Model.
+**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
+produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
+bridge.*
 
 ## References
 
@@ -630,9 +660,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 ---
 
 **Validator:** `validate_uqff_calculators.py` — PASSED (8/8)  
-*All 8 UQFF master equations validated including UQFF_Superconductive (H_SCm vacuum modulation), UQFF_Buoyant (vacuum buoyancy forces), UQFF_Resonant (vacuum resonance modes), Triadic 26-layer scaling; confirms framework foundations for vacuum energy regulation mechanism; ? = 0.0005/day, [SSq] = 0.57*
+*All 8 UQFF master equations validated including UQFF_Superconductive (H_SCm vacuum modulation),
+UQFF_Buoyant (vacuum buoyancy forces), UQFF_Resonant (vacuum resonance modes), Triadic 26-layer
+scaling; confirms framework foundations for vacuum energy regulation mechanism; κ = 0.0005/day,
+[SSq] = 0.57*
 
-**End of Paper 030** *(formerly incorrectly numbered as Paper 017; PAPER_017 is reserved for Redshift Corrections z=1)*
+**End of Paper 030** *(formerly incorrectly numbered as Paper 017; PAPER_017 is reserved for
+Redshift Corrections z=1)*
 
 ---
 
@@ -646,9 +680,9 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `f`neutron_s26_coupling`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `k`ozima_scm_cross_section`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `k`ozima_wstp_kernel`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -657,7 +691,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `r`amanujan_polylog_s26`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
 | `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
@@ -666,7 +700,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `m`ock_theta_q26`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -677,8 +711,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `r`amanujan_pi_uqff`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `m`ock_theta_pi_wstp_kernel`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]

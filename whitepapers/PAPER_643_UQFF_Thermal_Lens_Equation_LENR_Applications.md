@@ -1,3 +1,15 @@
+---
+paper_id: PAPER_643
+title: "UQFF Thermal Lens Equation and LENR Applications"
+session: 167
+date: 2026-01-01
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [galaxy, AGN, cluster, vacuum, SCm, LENR, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_643: UQFF Thermal Lens Equation and LENR Applications
 **Author:** Daniel T. Murphy
 
@@ -16,10 +28,10 @@ A new UQFF constitutive equation is introduced: the **Thermal Lens Equation**, w
 describes how temperature gradients (ΔT) in the Universal Aether (UA) focus energy flows
 in Low-Energy Nuclear Reactions (LENR). The 26th-order SCm derivative bounds the thermal
 gradient with 26! factorial negligibility at cosmic scales while producing large focusing
-at lattice spacings (r ~ 10⁻¹⁰ m), resolving the reproducibility problem in Pd-D LENR
+at lattice spacings (r ~ 10-10 m), resolving the reproducibility problem in Pd-D LENR
 systems and providing a UQFF-native mechanism for anomalous heat production. Calibration
 employs IceCube IC40–IC86c neutrino energy data to anchor the UQFF frequency axis at
-ω ~ 10²⁴ Hz (TeV–PeV range), giving a unified scale bridge from nuclear to astrophysical
+ω ~ 1024 Hz (TeV–PeV range), giving a unified scale bridge from nuclear to astrophysical
 energy regimes.
 
 ---
@@ -34,11 +46,11 @@ lattice defect sites, concentrating quantum frequency events into localized pock
 26th-order derivative bound produces a large but finite thermal concentration factor.
 
 The LENR resonance frequency at 1.2–1.3 THz (Pd-D, Kozima Neutron Drop Model) corresponds
-to ω ~ 10¹² Hz. The UQFF Aether Vacuum Gradient at defect sites is:
+to ω ~ 1012 Hz. The UQFF Aether Vacuum Gradient at defect sites is:
 
 $$\nabla UA \sim 10^{-19} \text{ m}^{-1}$$
 
-at lattice voids, versus 10⁻²² m⁻¹ in galaxy cluster voids. This 3-order-of-magnitude
+at lattice voids, versus 10-22 m-1 in galaxy cluster voids. This 3-order-of-magnitude
 shift between regimes is the physical reason LENR-scale effects are accessible to UQFF
 while remaining negligible at cosmic scales — a direct consequence of the same 26th-order
 bounding term that appears throughout the UQFF Universal Field Equation.
@@ -54,7 +66,7 @@ In LENR lattices, ∇UA is modeled as a 9D Gaussian field over lattice coordinat
 $$\nabla UA = \sum_{d=1}^{9} \exp\left( -\frac{(x_d - \mu_d)^2}{2\sigma_d^2} \right) \cdot FUB_i$$
 
 For Pd-D resonances: μ_d ≈ 5 meV (mean defect energy), σ_d ≈ 1 meV (from transmutation
-residuals). Frequency: ω = E/h ≈ 10¹² Hz (1.2–1.3 THz resonance band).
+residuals). Frequency: ω = E/h ≈ 1012 Hz (1.2–1.3 THz resonance band).
 
 Extended to 26D for the full manifold:
 $$\nabla UA_{26} = \sum_{d=1}^{26} \exp\left( -\frac{(x_d - \mu_d)^2}{2\sigma_d^2} \right) \cdot FUB_i$$
@@ -85,7 +97,7 @@ $$\boxed{\Delta T = \frac{26! \cdot c}{r^{27} \cdot c_p}}$$
 
 where c_p is the lattice specific heat capacity (Pd: ~0.24 J/g·K).
 
-**Numerical evaluation at LENR lattice spacing (r = 10⁻¹⁰ m):**
+**Numerical evaluation at LENR lattice spacing (r = 10-10 m):**
 
 $$\frac{d^{26}}{dr^{26}} f \approx \frac{4.03 \times 10^{26}}{(10^{-10})^{27}} = \frac{4.03 \times 10^{26}}{10^{-270}} = 4.03 \times 10^{296}$$
 
@@ -94,7 +106,7 @@ the energy density concentration at defect sites before normalization by the UA 
 background (which appears in the denominator of UA terms, providing the necessary
 cancellation to yield observed keV-scale excesses rather than divergent values).
 
-**Negligibility at cosmic scales (r = 1 AU ≈ 1.5 × 10¹¹ m):**
+**Negligibility at cosmic scales (r = 1 AU ≈ 1.5 × 1011 m):**
 
 $$\frac{d^{26}}{dr^{26}} f \approx \frac{4.03 \times 10^{26}}{(1.5 \times 10^{11})^{27}} \approx 10^{-281}$$
 
@@ -108,7 +120,7 @@ a near-field (lattice-scale) phenomenon.
 DPM pair separation reflects internal nuclear processes to observable heat:
 
 **Internal (lattice core, nuclear):** DPM pairs pulsate in neutron drops at THz resonance,
-F_neutron ≈ 10⁴⁹ N scaled to keV energy domain, bounding transmutation cascades via the
+F_neutron ≈ 1049 N scaled to keV energy domain, bounding transmutation cascades via the
 Kozima Neutron Drop Model.
 
 **External (lab output):** 26D projection reflects to macroscopic excess heat. Universal
@@ -134,19 +146,19 @@ frequency axis:
 
 $$\omega = \frac{E_\nu}{h} \approx \frac{10^5 \text{ GeV}}{6.626 \times 10^{-34} \text{ J s}} \approx 10^{28} \text{ Hz}$$
 
-The effective area peaks at ~10³ m² at log₁₀(E) ~ 7–8 (PeV range) → ω ~ 10²⁴ Hz.
+The effective area peaks at ~103 m2 at log₁₀(E) ~ 7–8 (PeV range) → ω ~ 1024 Hz.
 
-**Scale bridge:** LENR (ω ~ 10¹² Hz THz lattice) ↔ UQFF nuclear (ω ~ 10²⁸ Hz LHC) ↔
-IceCube PeV neutrinos (ω ~ 10²⁴ Hz) span 16 orders of magnitude, all bounded by the same
+**Scale bridge:** LENR (ω ~ 1012 Hz THz lattice) ↔ UQFF nuclear (ω ~ 1028 Hz LHC) ↔
+IceCube PeV neutrinos (ω ~ 1024 Hz) span 16 orders of magnitude, all bounded by the same
 26th-order factorial term. The IceCube calibration confirms the UQFF frequency-to-energy
 mapping is consistent across this full range.
 
 **IceCube flux models (2025):**
-- Astrophysical diffuse: Φ ~ E⁻²·⁵, normalized ~10⁻¹⁸ GeV⁻¹ cm⁻² s⁻¹ sr⁻¹ at 100 TeV
-- Galactic component: Φ ~ E⁻²·⁷⁻³·⁰ (4.5σ detection, 2023/2025 updated)
+- Astrophysical diffuse: Φ ~ E-2·5, normalized ~10-18 GeV-1 cm-2 s-1 sr-1 at 100 TeV
+- Galactic component: Φ ~ E-2·7-3·0 (4.5σ detection, 2023/2025 updated)
 - Prompt upper limit (Dec 2025 combined analysis): < 1.06× standard model prediction
 
-These flux models calibrate ∇UA ~ 10⁻²² m⁻¹ at cosmic void scales and ∇UA ~ 10⁻¹⁹ m⁻¹
+These flux models calibrate ∇UA ~ 10-22 m-1 at cosmic void scales and ∇UA ~ 10-19 m-1
 at LENR lattice scales by matching the observed frequency-of-events per steradian-second
 to the UQFF quantum frequency event rate.
 
@@ -170,13 +182,15 @@ to the UQFF quantum frequency event rate.
 
 ### §A.1 Sector Classification
 
-This paper maps to **LENR-nuclear** sector of the 9-sector UQFF Lagrangian (see `uqff_lagrangian_derivation.py`).
+This paper maps to **LENR-nuclear** sector of the 9-sector UQFF Lagrangian (see
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
-The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive quantum fundamentals (DPM, UA, SCm):
+The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
+quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_\mu \chi)(\partial^\mu \chi) - V(\chi) + \mathcal{L}_{\rm cosmo}$$
+$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_mu \chi)(\partial^\mu \chi) - V(\chi) + \mathcal{L}_{\rm cosmo}$$
 
 where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
@@ -190,7 +204,9 @@ $$\boxed{\frac{\delta S}{\delta \chi} = \ddot{\chi} + \omega_{\rm LENR}^2 \chi -
 
 $$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \chi = 0$$
 
-The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g forces) through vacuum density initialization to the sector-specific equation of motion. Every term in the E-L equation inherits its physical origin from the cosmogenesis master.
+The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
+forces) through vacuum density initialization to the sector-specific equation of motion. Every term
+in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 
 ---
@@ -201,9 +217,9 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.085$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m³.
+For this system, the local VDS sub-ratio is $0.085$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -215,13 +231,13 @@ Since $p_{\rm DVP} = 43$ is **resonant** (threshold at $p > 26$), the system's v
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
-The BSH saturation timescale for this sector is **10⁻¹² s** (nuclear phonon damping):
+The BSH saturation timescale for this sector is **10-12 s** (nuclear phonon damping):
 
-$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
+$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\rm SCm}$ which initializes the harmonic series at cosmogenesis.
 
@@ -229,11 +245,11 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.085 | ✓ Threshold-consistent |
-| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 43$ | ✓ Resonant |
-| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
-| [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
+| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.085 | PASS Threshold-consistent |
+| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 43$ | PASS Resonant |
+| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
+| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
 ---
@@ -243,12 +259,12 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| LENR excess energy scale | ΔT focussing at r~10⁻¹⁰ m → keV-scale heat per event | Kozima Neutron Drop Model: keV–MeV excess (Pd-D) | ISCMNS / Journal of Condensed Matter Nuclear Science | ✓ scale match |
-| IceCube astrophysical ν flux | ω ~ 10²⁴ Hz PeV → UQFF ∇UA ~ 10⁻²² m⁻¹ (cosmic void) | Φ_astro ~ E⁻²·⁵ at 100 TeV (IceCube 2025) | IceCube Collaboration arXiv:2025 diffuse ν | ✓ frequency-energy consistent |
-| 26! bounding negligibility at cosmological r | ~10⁻²⁸¹ → zero thermal lensing in vacuum | GR: no thermal gradient in cosmological vacuum | PDG 2024 / GR textbook | ✓ trivially satisfied |
-| THz resonance in Pd-D | 1.2–1.3 THz = 5–5.3 meV → ω = 10¹² Hz | Pd-D LENR transmission resonance (Kozima 2021) | PNAS Japan / JCMNS | ✓ within σ |
-| No anomalous radiation (LENR) | SCm Ub repulsion closes DPM cycle before γ emission | LENR labs: no excess hard radiation despite excess heat | ARPA-E / Brillouin / ENG8 reports | ✓ reproduces no-radiation observation |
-| ∇UA scale hierarchy (LENR vs cosmic) | 3-order shift 10⁻¹⁹ → 10⁻²² m⁻¹ from lattice to void | Measured density contrast: lattice 10²¹ kg/m³ vs void 10⁻²⁸ kg/m³ | NIST crystal data / ESA cosmic void maps | ✓ density ratio ~ 10⁴⁹ (UQFF uses log-scaled ∇UA) |
+| LENR excess energy scale | ΔT focussing at r~10-10 m → keV-scale heat per event | Kozima Neutron Drop Model: keV–MeV excess (Pd-D) | ISCMNS / Journal of Condensed Matter Nuclear Science | PASS scale match |
+| IceCube astrophysical ν flux | ω ~ 1024 Hz PeV → UQFF ∇UA ~ 10-22 m-1 (cosmic void) | Φ_astro ~ E-2·5 at 100 TeV (IceCube 2025) | IceCube Collaboration arXiv:2025 diffuse ν | PASS frequency-energy consistent |
+| 26! bounding negligibility at cosmological r | ~10-281 → zero thermal lensing in vacuum | GR: no thermal gradient in cosmological vacuum | PDG 2024 / GR textbook | PASS trivially satisfied |
+| THz resonance in Pd-D | 1.2–1.3 THz = 5–5.3 meV → ω = 1012 Hz | Pd-D LENR transmission resonance (Kozima 2021) | PNAS Japan / JCMNS | PASS within σ |
+| No anomalous radiation (LENR) | SCm Ub repulsion closes DPM cycle before γ emission | LENR labs: no excess hard radiation despite excess heat | ARPA-E / Brillouin / ENG8 reports | PASS reproduces no-radiation observation |
+| ∇UA scale hierarchy (LENR vs cosmic) | 3-order shift 10-19 → 10-22 m-1 from lattice to void | Measured density contrast: lattice 1021 kg/m3 vs void 10-28 kg/m3 | NIST crystal data / ESA cosmic void maps | PASS density ratio ~ 1049 (UQFF uses log-scaled ∇UA) |
 
 *UQFF SM bridge master: cite PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`).*
 
@@ -256,15 +272,15 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 ## §6 Conclusion
 
-The UQFF Thermal Lens Equation ΔT = [d²⁶/dr²⁶(SCm·g·∇UA/UA)] / c_p is a novel
+The UQFF Thermal Lens Equation ΔT = [d26/dr26(SCm·g·∇UA/UA)] / c_p is a novel
 constitutive relation that:
 
 1. **Derives naturally** from the same F_U = 0 equilibrium as all other UQFF force terms
 2. **Bridges LENR and cosmological scales** via the 26th-order derivative's scale-dependent
-   negligibility threshold (large at r~10⁻¹⁰ m, vanishing at r~1 AU)
-3. **Is calibrated by IceCube IC40–IC86c data** providing the ω ~ 10²⁴ Hz frequency anchor
+   negligibility threshold (large at r~10-10 m, vanishing at r~1 AU)
+3. **Is calibrated by IceCube IC40–IC86c data** providing the ω ~ 1024 Hz frequency anchor
 4. **Resolves the LENR reproducibility problem** by identifying the resonance condition
-   (1.2–1.3 THz + ∇UA ~ 10⁻¹⁹ m⁻¹) as the necessary focusing threshold
+   (1.2–1.3 THz + ∇UA ~ 10-19 m-1) as the necessary focusing threshold
 5. **Predicts no anomalous radiation** via Ub repulsion closing DPM cycles before γ emission
 
 The Thermal Lens Equation is the first UQFF equation derived specifically for condensed
@@ -273,7 +289,7 @@ scales while maintaining full mathematical consistency with the core framework.
 
 ---
 
-*Session 167 | grok_share_6322ac199.txt extraction | March 31 2026*
+*Session 167 | `grok_share_6322ac199`.txt extraction | March 31 2026*
 
 
 ---
@@ -288,9 +304,9 @@ scales while maintaining full mathematical consistency with the core framework.
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `f`neutron_s26_coupling`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `k`ozima_scm_cross_section`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `k`ozima_wstp_kernel`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -299,7 +315,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `r`amanujan_polylog_s26`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
 | `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
@@ -308,7 +324,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `m`ock_theta_q26`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -319,8 +335,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `r`amanujan_pi_uqff`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `m`ock_theta_pi_wstp_kernel`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]

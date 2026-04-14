@@ -16,7 +16,10 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 ## Abstract
 
-We compute numerical F_U_Bi_i curves for the archetypal quasar 3C273 (z = 0.158, M_BH = 8.86 x 10^8 M_sun) across 8 Gamma points [0.01, 0.05, 0.10, 0.30, 0.50, 1.0, 5.0, 10.0] THz. The jet modulation factor M_jet = 1 + A_jet * exp(-Gamma / Gamma_crit) peaks at 3.1x for Gamma = 0.05 THz, confirming UQFF-predicted AGN buoyancy-jet coupling at sub-THz resonance.
+We compute numerical F_U_Bi_i curves for the archetypal quasar 3C273 (z = 0.158, M_BH = 8.86 x 10^8
+M_sun) across 8 Gamma points [0.01, 0.05, 0.10, 0.30, 0.50, 1.0, 5.0, 10.0] THz. The jet modulation
+factor M_jet = 1 + A_jet * exp(-Gamma / Gamma_crit) peaks at 3.1x for Gamma = 0.05 THz, confirming
+UQFF-predicted AGN buoyancy-jet coupling at sub-THz resonance.
 
 ## 1. System Parameters
 
@@ -35,15 +38,19 @@ For each Gamma in the sweep, the unified buoyancy field is:
 
 F_U_Bi_i(Gamma) = [Ug1 + Ug2 + Ug3(Gamma) + Ug4] * M_jet(Gamma) * (1 + BETA_I * S26_3)
 
-where S26_3 = 9.5000001009e-02 (3rd-order Ramanujan) and M_jet(Gamma) = 1 + A_jet * exp(-Gamma / Gamma_crit).
+where S26_3 = 9.5000001009e-02 (3rd-order Ramanujan) and M_jet(Gamma) = 1 + A_jet * exp(-Gamma /
+Gamma_crit).
 
 ## 3. Results
 
-Peak modulation 3.1x at Gamma = 0.05 THz. The curve shows exponential decay toward unity as Gamma increases beyond 1.0 THz, consistent with thermal decoupling of jet magnetic pressure from buoyancy feedback.
+Peak modulation 3.1x at Gamma = 0.05 THz. The curve shows exponential decay toward unity as Gamma
+increases beyond 1.0 THz, consistent with thermal decoupling of jet magnetic pressure from buoyancy
+feedback.
 
 ## 4. Implementation
 
-File: `fubi_i_curves_agn_ns_qgp.py`, class `ThreeCTwoSevenThreeAGNCurvesCalc`. CP4 class #593. Tests: 8/8 pass.
+File: `fubi_i_curves_agn_ns_qgp.py`, class `ThreeCTwoSevenThreeAGNCurvesCalc`. CP4 class #593.
+Tests: 8/8 pass.
 
 ---
 
@@ -68,7 +75,8 @@ File: `fubi_i_curves_agn_ns_qgp.py`, class `ThreeCTwoSevenThreeAGNCurvesCalc`. C
 | $\sin^2\theta_W$ | Embedded in $U_{g2}$ charge coupling | $0.2312$ | PDG 2024 | 99.6% |
 | Fine structure $\alpha$ | UQFF reproduces via $U_{g1}$ dipole | $1/137.036$ | PDG 2024 | 99.9% |
 
-**New physics claim:** UQFF phonon-mediated vacuum coupling provides testable predictions beyond SM for this system.
+**New physics claim:** UQFF phonon-mediated vacuum coupling provides testable predictions beyond SM
+for this system.
 
 *Cross-validated with PAPER_642 (UQFFSMParameterBridgeMasterComparisonCalculator).*
 
@@ -80,13 +88,13 @@ File: `fubi_i_curves_agn_ns_qgp.py`, class `ThreeCTwoSevenThreeAGNCurvesCalc`. C
 **Sector:** BH-accretion (active galactic nucleus jet)
 
 ### §A.2 Lagrangian Density
-$$\mathcal{L}_{BH_accretion} = \sum_{i=1}^{26} \left[ U_{g,i} + U_{m,i} + U_{A,i} - U_{b,i} \right] \cdot S_{26}([SSq]) \cdot \Phi_{1.25\text{THz}}(\omega, \Gamma)$$
+$$\mathcal{L}_{BH\_accretion} = \sum_{i=1}^{26} \left[ U_{g,i} + U_{m,i} + U_{A,i} - U_{b,i} \right] \cdot S_{26}([SSq]) \cdot \Phi_{1.25\text{THz}}(\omega, \Gamma)$$
 
 ### §A.3 Euler-Lagrange Equation of Motion
-$$\boxed{\frac{\partial \mathcal{L}}{\partial \phi} - \partial_\mu \frac{\partial \mathcal{L}}{\partial (\partial_\mu \phi)} = 0 \implies F_{U,Bi_i} = -\nabla U_{\text{eff}} + \Phi \cdot S_{26} \cdot E_{\text{net}}}$$
+$$\boxed{\frac{\partial \mathcal{L}}{\partial \phi} - \partial_mu \frac{\partial \mathcal{L}}{\partial (\partial_mu \phi)} = 0 \implies F_{U,Bi\_i} = -\nabla U_{\text{eff}} + \Phi \cdot S_{26} \cdot E_{\text{net}}}$$
 
 ### §A.4 Cosmogenesis Linkage Chain
-PAPER_877 axioms → SCm vacuum → phonon $\omega_{\text{SCm}}$ → active galactic nucleus jet → $F_{U,Bi_i}$ unified force → observational prediction
+PAPER_877 axioms → SCm vacuum → phonon $\omega_{\text{SCm}}$ → active galactic nucleus jet → $F_{U,Bi\_i}$ unified force → observational prediction
 
 ---
 

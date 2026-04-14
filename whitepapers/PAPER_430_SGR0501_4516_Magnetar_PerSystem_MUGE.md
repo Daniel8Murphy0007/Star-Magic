@@ -1,8 +1,21 @@
+---
+paper_id: PAPER_430
+title: "SGR 0501+4516 Magnetar: First Complete Per-System MUGE Derivation"
+session: 119
+date: 2025-01-01
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [AGN, MUGE, UQFF, neutron-star, magnetar, supernova]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_430 — SGR 0501+4516 Magnetar: First Complete Per-System MUGE Derivation
 **Author:** Daniel T. Murphy
 **Date:** 2025
 
-**Source:** grok_share_68eb34022.txt — Document 2: "Master Universal Gravity Equation_Magnetar_03May2025.docx" (lines 84–880; full analysis + C++ encoding of SGR 0501+4516 MUGE)
+**Source:** grok_share_68eb34022.txt — Document 2: "Master Universal Gravity
+Equation_Magnetar_03May2025.docx" (lines 84–880; full analysis + C++ encoding of SGR 0501+4516 MUGE)
 **Session:** 119
 **CP4 Class:** `SGR0501_4516_MagnetarPerSystemMUGECalculator` (#85)
 
@@ -11,13 +24,15 @@
 
 ## Abstract
 
-This paper presents a UQFF analysis of SGR 0501+4516 Magnetar: First Complete Per-System MUGE Derivation, deriving compressed field equations and observational predictions within the Star-Magic/UQFF framework.
+This paper presents a UQFF analysis of SGR 0501+4516 Magnetar: First Complete Per-System MUGE
+Derivation, deriving compressed field equations and observational predictions within the
+Star-Magic/UQFF framework.
 
 ## 1. Overview
 
-PAPER_430 presents the first complete per-system Master Universal Gravity Equation (MUGE) for **SGR 0501+4516**, a magnetar distinct from SGR 1745-2900 (previously modelled in PAPER_342/343). SGR 0501+4516 is observed ~80 arcminutes from supernova remnant HB9, with magnetic field evolution  $B(t) = 10^{10} \exp(-t/\tau_B)$ T and rotation rate $\Omega(t) = (2\pi/P_0)\exp(-t/\tau_\Omega)$, where this paper derives the **complete 10-term g_Magnetar(r,t)** incorporating all UQFF force channels.
+PAPER_430 presents the first complete per-system Master Universal Gravity Equation (MUGE) for **SGR 0501+4516**, a magnetar distinct from SGR 1745-2900 (previously modelled in PAPER_342/343). SGR 0501+4516 is observed ~80 arcminutes from supernova remnant HB9, with magnetic field evolution  $B(t) = 10^{10} \exp(-t/\tau_B)$ T and rotation rate $\Omega(t) = (2\pi/P_0)\exp(-t/\tau_Omega)$, where this paper derives the **complete 10-term g_Magnetar(r,t)** incorporating all UQFF force channels.
 
-**Novel claim (Q1):** First complete UQFF-MUGE for SGR 0501+4516, combining all 10 gravitational channels into a single calibrated expression evaluated at t = 5000 yr, yielding $g_\text{Magnetar} \approx 4.474 \times 10^{12}$ m/s².
+**Novel claim (Q1):** First complete UQFF-MUGE for SGR 0501+4516, combining all 10 gravitational channels into a single calibrated expression evaluated at t = 5000 yr, yielding $g_\text{Magnetar} \approx 4.474 \times 10^{12}$ m/s2.
 
 **Physical significance:** SGR 0501+4516's motion away from HB9 challenges standard supernova formation; the UQFF time-reversal component $f_\text{TRZ}$ and Universal Aether (UA) coupling provide a non-standard magnetic field enhancement mechanism consistent with this anomaly.
 
@@ -33,12 +48,12 @@ PAPER_430 presents the first complete per-system Master Universal Gravity Equati
 | B decay timescale | $\tau_B$ | $4000$ yr $= 1.262 \times 10^{11}$ s | Hubble dataset |
 | Critical B field | $B_\text{crit}$ | $10^{11}$ T | Type-II SC threshold |
 | Initial period | $P_0$ | 5 s | Standard magnetar period |
-| Ω decay timescale | $\tau_\Omega$ | $10{,}000$ yr $= 3.156 \times 10^{11}$ s | Fermilab simulation |
-| Hubble constant | $H_0$ | $2.184 \times 10^{-18}$ s⁻¹ | Planck CMB |
+| Ω decay timescale | $\tau_Omega$ | $10{,}000$ yr $= 3.156 \times 10^{11}$ s | Fermilab simulation |
+| Hubble constant | $H_0$ | $2.184 \times 10^{-18}$ s-1 | Planck CMB |
 | Time-reversal factor | $f_\text{TRZ}$ | $0.1$ | UQFF calibration |
 | EM scaling | $s_\text{EM}$ | $10^{-12}$ | Macroscopic approximation |
-| UA vacuum density | $\rho_\text{UA}$ | $7.09 \times 10^{-36}$ J/m³ | UQFF canonical |
-| SCm vacuum density | $\rho_\text{SCm}$ | $7.09 \times 10^{-37}$ J/m³ | UQFF canonical |
+| UA vacuum density | $\rho_text{UA}$ | $7.09 \times 10^{-36}$ J/m3 | UQFF canonical |
+| SCm vacuum density | $\rho_text{SCm}$ | $7.09 \times 10^{-37}$ J/m3 | UQFF canonical |
 
 ---
 
@@ -48,10 +63,10 @@ PAPER_430 presents the first complete per-system Master Universal Gravity Equati
 $$B(t) = B_0 \, e^{-t/\tau_B} = 10^{10} \, e^{-t/1.262 \times 10^{11}} \quad [\text{T}]$$
 
 **Rotation rate decay:**
-$$\Omega(t) = \frac{2\pi}{P_0} \, e^{-t/\tau_\Omega} \quad [\text{rad/s}]$$
+$$\Omega(t) = \frac{2\pi}{P_0} \, e^{-t/\tau_Omega} \quad [\text{rad/s}]$$
 
 **Ω derivative (spin-down):**
-$$\frac{d\Omega}{dt}(t) = -\frac{2\pi}{P_0 \tau_\Omega} \, e^{-t/\tau_\Omega} \quad [\text{rad/s}^2]$$
+$$\frac{d\Omega}{dt}(t) = -\frac{2\pi}{P_0 \tau_Omega} \, e^{-t/\tau_Omega} \quad [\text{rad/s}^2]$$
 
 At $t = 5{,}000$ yr $= 1.578 \times 10^{11}$ s:
 - $B(5000\,\text{yr}) = 10^{10} \cdot e^{-1.578/1.262} \approx 0.0829 \times 10^{10}$ T
@@ -75,8 +90,8 @@ $$T_1 = \frac{6.674 \times 10^{-11} \times 2.785 \times 10^{30}}{(2 \times 10^4)
 $$T_2 = (U_{g1} + U_{g4}) \cdot (1 + f_\text{TRZ})$$
 
 Where:
-- $U_{g1} = G M / r^2 = 4.645 \times 10^{11}$ m/s²
-- $U_{g4} = U_{g1} \cdot (1 - B(t)/B_\text{crit}) \approx 4.512 \times 10^{11}$ m/s²
+- $U_{g1} = G M / r^2 = 4.645 \times 10^{11}$ m/s2
+- $U_{g4} = U_{g1} \cdot (1 - B(t)/B_\text{crit}) \approx 4.512 \times 10^{11}$ m/s2
 
 $$T_2 = (4.645 \times 10^{11} + 4.512 \times 10^{11}) \times 1.1 \approx 1.007 \times 10^{12} \text{ m/s}^2$$
 
@@ -90,9 +105,9 @@ $$T_4 = \frac{\hbar}{\Delta x \cdot \Delta p} \cdot \int \psi^\dagger \hat{H} \p
 
 ### Term 5 — Electromagnetic force (scaled macroscopic UA correction)
 
-$$T_5 = \frac{q (v \times B(t))}{m_p} \cdot \left(1 + \frac{\rho_\text{UA}}{\rho_\text{SCm}}\right) \cdot s_\text{EM}$$
+$$T_5 = \frac{q (v \times B(t))}{m_p} \cdot \left(1 + \frac{\rho_text{UA}}{\rho_text{SCm}}\right) \cdot s_\text{EM}$$
 
-Where $\rho_\text{UA}/\rho_\text{SCm} = 10$:
+Where $\rho_text{UA}/\rho_text{SCm} = 10$:
 
 $$T_5 = \frac{1.602 \times 10^{-19} \times 10^6 \times B(5000\,yr)}{1.673 \times 10^{-27}} \times 11 \times 10^{-12} \approx 3.018 \times 10^{12} \text{ m/s}^2$$
 
@@ -106,7 +121,7 @@ $$T_7 \approx 0 \quad [\text{subdominant at stellar radius}]$$
 
 ### Term 8 — Dark matter perturbation
 
-$$T_8 = (M + M_\text{DM}) \cdot \frac{\delta\rho/\rho + 3GM/r^3}{r^2}$$
+$$T_8 = (M + M_\text{DM}) \cdot \frac{\deltarho/\rho + 3GM/r^3}{r^2}$$
 
 $$T_8 \approx 2.135 \times 10^{41} \text{ kg m}^{-1} \quad [\text{mass-scale quantity; not additive to acceleration}]$$
 
@@ -128,7 +143,7 @@ $$\boxed{g_\text{Magnetar}(r = 20\,\text{km},\; t = 5000\,\text{yr}) \approx 4.4
 
 **Term dominance:**
 
-| Term | Magnitude (m/s²) | Fraction |
+| Term | Magnitude (m/s2) | Fraction |
 |------|-----------------|----------|
 | $T_1$ (base + $H_0$ + $B/B_c$) | $4.607 \times 10^{11}$ | 10.3% |
 | $T_2$ (UQFF Ug + $f_\text{TRZ}$) | $1.007 \times 10^{12}$ | 22.5% |
@@ -144,7 +159,7 @@ The standard model for magnetar surface gravity is:
 $$g_\text{SM} = \frac{GM}{r^2} \approx 4.645 \times 10^{11} \text{ m/s}^2$$
 
 **UQFF enhancement factor:** $g_\text{UQFF}/g_\text{SM} \approx 9.63 \times$ — the EM term with UA/SCm ratio provides the dominant amplification. The standard model omits:
-- UA/SCm vacuum density ratio coupling ($\rho_\text{UA}/\rho_\text{SCm} = 10$)
+- UA/SCm vacuum density ratio coupling ($\rho_text{UA}/\rho_text{SCm} = 10$)
 - $f_\text{TRZ}$ time-reversal Ug correction (+10%)
 - Magnetic field superconductivity correction to base gravity
 
@@ -156,7 +171,7 @@ $$g_\text{SM} = \frac{GM}{r^2} \approx 4.645 \times 10^{11} \text{ m/s}^2$$
 
 **Q5 Prediction 2:** The $f_\text{TRZ}$ correction implies a 10% gravitational asymmetry between infall and outward trajectories from the magnetar surface, potentially detectable as a timing asymmetry in burst arrival rates.
 
-**Q5 Prediction 3:** UQFF predicts $g_\text{Magnetar}(t=0) \approx 5.523 \times 10^{12}$ m/s² — 23% higher than current epoch — suggesting magnetic burst intensity should have been observably stronger at formation (t=0).
+**Q5 Prediction 3:** UQFF predicts $g_\text{Magnetar}(t=0) \approx 5.523 \times 10^{12}$ m/s2 — 23% higher than current epoch — suggesting magnetic burst intensity should have been observably stronger at formation (t=0).
 
 ---
 
@@ -166,13 +181,15 @@ $$g_\text{SM} = \frac{GM}{r^2} \approx 4.645 \times 10^{11} \text{ m/s}^2$$
 
 ### §A.1 Sector Classification
 
-This paper maps to **magnetar-field** sector of the 9-sector UQFF Lagrangian (see `uqff_lagrangian_derivation.py`).
+This paper maps to **magnetar-field** sector of the 9-sector UQFF Lagrangian (see
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
-The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive quantum fundamentals (DPM, UA, SCm):
+The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
+quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_\mu \phi_B)(\partial^\mu \phi_B) - V(\phi_B) + \mathcal{L}_{\rm cosmo}$$
+$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_mu \phi_B)(\partial^\mu \phi_B) - V(\phi_B) + \mathcal{L}_{\rm cosmo}$$
 
 where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
@@ -186,7 +203,9 @@ $$\boxed{\frac{\delta S}{\delta \phi_B} = \nabla \times (\rho_{\rm SCm} \mathbf{
 
 $$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_B = 0$$
 
-The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g forces) through vacuum density initialization to the sector-specific equation of motion. Every term in the E-L equation inherits its physical origin from the cosmogenesis master.
+The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
+forces) through vacuum density initialization to the sector-specific equation of motion. Every term
+in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 
 ---
@@ -197,9 +216,9 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.168$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m³.
+For this system, the local VDS sub-ratio is $0.168$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -211,13 +230,13 @@ Since $p_{\rm DVP} = 31$ is **resonant** (threshold at $p > 26$), the system's v
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
-The BSH saturation timescale for this sector is **10³ yr** (field decay quiescence):
+The BSH saturation timescale for this sector is **103 yr** (field decay quiescence):
 
-$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
+$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\rm SCm}$ which initializes the harmonic series at cosmogenesis.
 
@@ -225,11 +244,11 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.168 | ✓ Threshold-consistent |
-| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 31$ | ✓ Resonant |
-| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
-| [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
+| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.168 | PASS Threshold-consistent |
+| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 31$ | PASS Resonant |
+| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
+| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
 ---
@@ -239,12 +258,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Thomson σ_T (QED synchrotron) | UQFF U_m scattering kernel: σ_T = 6.6524×10⁻²⁹ m² | σ_T = 6.6524×10⁻²⁹ m² (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
-| SGR 0501+4516 Magnetar luminosity X-ray 0.5–8 keV | UQFF MUGE g_total → L_X via Stefan-Boltzmann + buoyancy flux: L_X ≈ g_total × M_env | L_X L_X ~ 10³⁶ erg/s | Chandra CXC | ✓ Consistent order of magnitude |
-| GR Schwarzschild limit | UQFF g_total must satisfy g ≤ c²/(2r_s) at event horizon | r_s = 2GM/c² (GR exact) | PDG 2024 / GR | ✓ UQFF respects GR horizon |
+| Thomson σ_T (QED synchrotron) | UQFF U_m scattering kernel: σ_T = 6.6524×10-29 m2 | σ_T = 6.6524×10-29 m2 (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
+| SGR 0501+4516 Magnetar luminosity X-ray 0.5–8 keV | UQFF MUGE g_total → L_X via Stefan-Boltzmann + buoyancy flux: L_X ≈ g_total × M_env | L_X L_X ~ 1036 erg/s | Chandra CXC | PASS Consistent order of magnitude |
+| GR Schwarzschild limit | UQFF g_total must satisfy g ≤ c2/(2r_s) at event horizon | r_s = 2GM/c2 (GR exact) | PDG 2024 / GR | PASS UQFF respects GR horizon |
 | κ vacuum rate vs X-ray variability | UQFF κ = 0.0005/day → timescale τ_UQFF = 2000 days | Observed X-ray variability τ_obs (instrument monitoring) | Chandra CXC | Testable UQFF variability timescale |
 
-**New physics claim:** UQFF MUGE generates gravity enhancement factors (g_total/g_Newt > 1) for SGR 0501+4516 Magnetar
+**New physics claim:** UQFF MUGE generates gravity enhancement factors (g_total/g_Newt > 1) for SGR
+0501+4516 Magnetar
 through vacuum buoyancy coupling — a mechanism absent from GR+SM. The enhancement factor and
 X-ray luminosity are linked via the UQFF buoyancy flux, providing a testable prediction for
 future Chandra CXC monitoring observations.
@@ -290,10 +310,10 @@ class SGR0501_4516_MagnetarPerSystemMUGECalculator:
 
 **Key outputs:**
 ```
-g_total(t=5000yr) = 4.474e12 m/s²
-SM_base          = 4.645e11 m/s²
+g_total(t=5000yr) = 4.474e12 m/s2
+SM_base          = 4.645e11 m/s2
 enhancement      = 9.63×
-T5_EM dominant   = 3.018e12 m/s² (67.4%)
+T5_EM dominant   = 3.018e12 m/s2 (67.4%)
 ```
 
 
@@ -309,9 +329,9 @@ T5_EM dominant   = 3.018e12 m/s² (67.4%)
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `f`neutron_s26_coupling`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `k`ozima_scm_cross_section`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `k`ozima_wstp_kernel`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -320,7 +340,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `r`amanujan_polylog_s26`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
 | `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
@@ -329,7 +349,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `m`ock_theta_q26`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -340,8 +360,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `r`amanujan_pi_uqff`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `m`ock_theta_pi_wstp_kernel`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]

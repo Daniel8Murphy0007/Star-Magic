@@ -1,6 +1,18 @@
+---
+paper_id: PAPER_976
+title: "3D MUGE Galaxy Cluster Simulation"
+session: 216
+date: 2026-04-12
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [galaxy, AGN, cluster, dark-matter, MUGE, buoyancy, magnetar, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_976: 3D MUGE Galaxy Cluster Simulation
 
-**Author:** Daniel T. Murphy -- Star Magic / UQFF Framework
+**Author:** Daniel T. Murphy — Star Magic / UQFF Framework
 **Date:** 2026-04-12
 **Session:** 216
 **Source:** muge_cluster_3d_sim.py (MUGECluster3DSim)
@@ -17,15 +29,15 @@ We present a 3-dimensional galaxy cluster simulation under the MUGE (Multi-Unive
 
 ## 1. NFW Dark Matter Profile
 
-$$\rho_\text{NFW}(r) = \frac{\rho_s}{(r/r_s)(1 + r/r_s)^2}$$
+$$\rho_text{NFW}(r) = \frac{\rho_s}{(r/r_s)(1 + r/r_s)^2}$$
 
 $$M_\text{enc}(r) = 4\pi \rho_s r_s^3 \left[\ln(1 + r/r_s) - \frac{r/r_s}{1 + r/r_s}\right]$$
 
 ## 2. ICM β-Model
 
-$$\rho_\text{ICM}(r) = \rho_0 \left(1 + \left(\frac{r}{r_c}\right)^2\right)^{-3\beta/2}$$
+$$\rho_text{ICM}(r) = \rho_0 \left(1 + \left(\frac{r}{r_c}\right)^2\right)^{-3\beta/2}$$
 
-$$P_\text{ICM}(r) = \frac{\rho_\text{ICM}(r)}{m_p} k_B T_\text{ICM}$$
+$$P_\text{ICM}(r) = \frac{\rho_text{ICM}(r)}{m_p} k_B T_\text{ICM}$$
 
 ## 3. MUGE Cluster Gravity
 
@@ -44,7 +56,7 @@ Default: 50 galaxies, 100 steps × 10 Myr = 1 Gyr evolution.
 
 ## References
 
-1. Murphy, D.T. -- Star Magic UQFF Framework (2024-2026)
+1. Murphy, D.T. — Star Magic UQFF Framework (2024-2026)
 2. PAPER_964 — 3D MUGE Magnetar Simulation (predecessor)
 3. Navarro, Frenk, White (1996) — NFW profile
 4. Cavaliere & Fusco-Femiano (1976) — β-model
@@ -95,7 +107,7 @@ Default: 50 galaxies, 100 steps × 10 Myr = 1 Gyr evolution.
 $$\boxed{g_\text{MUGE}(r) = w_C \cdot g_\text{comp}(M_\text{NFW}(r), r) + w_R \cdot g_\text{res} + w_B \cdot g_\text{buoy}}$$
 
 ### §A.3 Lagrangian Contribution
-$$\mathcal{L}_\text{cluster} = \sum_{i=1}^{N_\text{gal}} \left[\frac{1}{2} m_i \dot{\mathbf{x}}_i^2 - m_i \Phi_\text{MUGE}(\mathbf{x}_i)\right]$$
+$$\mathcal{L}_\text{cluster} = \sum_{i=1}^{N_\text{gal}} \left[\frac{1}{2} m_i \dot{\mathbf{x}}_i^2 - m_i \Phi_text{MUGE}(\mathbf{x}_i)\right]$$
 
 ### §A.4 Cosmogenesis Linkage Chain
 PAPER_877 → UQFF gravity → NFW halo → ICM gas → galaxy orbits → cluster evolution

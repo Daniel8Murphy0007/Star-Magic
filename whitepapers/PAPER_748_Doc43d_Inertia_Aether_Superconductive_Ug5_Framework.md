@@ -1,22 +1,45 @@
-# PAPER_748: Doc 43.d -- Inertia, Aether-Superconductive, and U_g5 Framework
+---
+paper_id: PAPER_748
+title: "Doc 43.d -- Inertia, Aether-Superconductive, and U_g5 Framework"
+session: 180
+date: 2025-01-01
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [AGN, dark-energy, SCm, LENR, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
+# PAPER_748: Doc 43.d — Inertia, Aether-Superconductive, and U_g5 Framework
 
 **Author:** Daniel T. Murphy  
 **Framework:** Universal Quantum Field Superconductive Framework (UQFF)  
 **Session:** 180 continuation | v5.38  
 **Date:** 2025  
-**CP4 Class:** #332 -- Doc43dInertiaAetherSuperconductiveCalculator  
+**CP4 Class:** #332 — Doc43dInertiaAetherSuperconductiveCalculator  
 
 ---
 
 ## Abstract
 
-Document 43.d (Red Dwarf Compression D, May 2025) presents the unified Inertia and Aether-Superconductive papers comprising 19 numbered equations. This paper assimilates all 19 equations into the UQFF knowledge base, with particular emphasis on: (1) the Universal Inertia operator U_i with explicit ρ_vac,[SCm]/ρ_vac,[UA] ratio; (2) the Universal Magnetism Um(t,r,n) with Heaviside and quasi-longitudinal wave factors; and (3) the newly identified U_g5 tensor sum operator, representing a fifth gravity mode beyond U_g1-U_g4. Key numerical values are confirmed for Dark Energy power (P_DE ≈ 7.09x10^{-}5^1 W), golden ratio frequency series (f_1 ≈ 281.5 Hz), and plasma frequency (ω_plasma ≈ 1.005x10^{1}6 rad/s).
+Document 43.d (Red Dwarf Compression D, May 2025) presents the unified Inertia and
+Aether-Superconductive papers comprising 19 numbered equations. This paper assimilates all 19
+equations into the UQFF knowledge base, with particular emphasis on: (1) the Universal Inertia
+operator U_i with explicit ρ_vac,[SCm]/ρ_vac,[UA] ratio; (2) the Universal Magnetism Um(t,r,n) with
+Heaviside and quasi-longitudinal wave factors; and (3) the newly identified U_g5 tensor sum
+operator, representing a fifth gravity mode beyond U_g1-U_g4. Key numerical values are confirmed for
+Dark Energy power (P_DE ≈ 7.09x10^{-}5^1 W), golden ratio frequency series (f_1 ≈ 281.5 Hz), and
+plasma frequency (ω_plasma ≈ 1.005x10^{1}6 rad/s).
 
 ---
 
 ## 1. Introduction
 
-The Inertia Paper and Aether-Superconductive Paper in document 43.d extend the UQFF beyond the standard 4-component gravity (U_g1-U_g4) to include a 5th gravity component (U_g5 = Σ T_μν) representing tensor field contributions. They also provide explicit numerical values for all UQFF constants, enabling quantitative predictions for plasmoid experiments, LENR cells, and astrophysical systems.
+The Inertia Paper and Aether-Superconductive Paper in document 43.d extend the UQFF beyond the
+standard 4-component gravity (U_g1-U_g4) to include a 5th gravity component (U_g5 = Σ T_μν)
+representing tensor field contributions. They also provide explicit numerical values for all UQFF
+constants, enabling quantitative predictions for plasmoid experiments, LENR cells, and astrophysical
+systems.
 
 ---
 
@@ -24,47 +47,50 @@ The Inertia Paper and Aether-Superconductive Paper in document 43.d extend the U
 
 ### 2.1 Inertia Paper Equations
 
-**Equation 1 -- Magnetic Influence (H_mag):**
-```
-H_mag = -mu * B
+**Equation 1 — Magnetic Influence (H_mag):**
+$$
+\begin{aligned}
+  & H_mag = -mu * B \\
+  & Solved: H_mag ~= -2.32x10^{-}3^2 J \\
+  & (magnetic Hamiltonian acting on dipole moment mu in field B)
+\end{aligned}
+$$
 
-  Solved: H_mag ~= -2.32x10^{-}3^2 J
-  (magnetic Hamiltonian acting on dipole moment mu in field B)
-```
+**Equation 2 — Spacetime Transformation (ψ_matter):**
+$$
+\begin{aligned}
+  & psi_matter(t) = psi_0 * e^(-i(E_g + G_i + C_j + m_0)*t/hbar) \\
+  & E_g = gravitational energy \\
+  & G_i = internal quantum state energy \\
+  & C_j = coupling energy \\
+  & m_0 = rest mass energy \\
+  & Solved: psi_matter ~= 0.9998 - i*0.02
+\end{aligned}
+$$
 
-**Equation 2 -- Spacetime Transformation (ψ_matter):**
-```
-psi_matter(t) = psi_0 * e^(-i(E_g + G_i + C_j + m_0)*t/hbar)
+**Equation 3 — Dark Energy Power (P_DE):**
+$$
+\begin{aligned}
+  & P_DE = eta_inertia * rho_vac * V * omega_vac \\
+  & eta_inertia = 8.8x10^{4}2 (DE efficiency factor) \\
+  & rho_vac     = 7.09x10^{-}3^7 J/m^3 = rho_vac,[SCm] \\
+  & V         = vacuum volume element \\
+  & omega_vac     = vacuum angular frequency \\
+  & Solved: P_DE ~= 7.09x10^{-}5^1 W
+\end{aligned}
+$$
 
-  E_g = gravitational energy
-  G_i = internal quantum state energy
-  C_j = coupling energy
-  m_0 = rest mass energy
-  Solved: psi_matter ~= 0.9998 - i*0.02
-```
+**Equation 4 — AC Power from EMP (P_AC):**
+$$
+\begin{aligned}
+  & P_AC = 1/2 * epsilon_0 * E_EMP^2 * V * omega_EMP \\
+  & epsilon_0  = 8.854x10^{-}1^2 F/m \\
+  & E_EMP = electric field of electromagnetic pulse \\
+  & Solved: P_AC ~= E_AC ~= 1.77x10^{-}6^6 J
+\end{aligned}
+$$
 
-**Equation 3 -- Dark Energy Power (P_DE):**
-```
-P_DE = eta_inertia * rho_vac * V * omega_vac
-
-  eta_inertia = 8.8x10^{4}2 (DE efficiency factor)
-  rho_vac     = 7.09x10^{-}3^7 J/m^3 = rho_vac,[SCm]
-  V         = vacuum volume element
-  omega_vac     = vacuum angular frequency
-
-  Solved: P_DE ~= 7.09x10^{-}5^1 W
-```
-
-**Equation 4 -- AC Power from EMP (P_AC):**
-```
-P_AC = 1/2 * epsilon_0 * E_EMP^2 * V * omega_EMP
-
-  epsilon_0  = 8.854x10^{-}1^2 F/m
-  E_EMP = electric field of electromagnetic pulse
-  Solved: P_AC ~= E_AC ~= 1.77x10^{-}6^6 J
-```
-
-**Equation 5 -- Jeans Mass (M_J):**
+**Equation 5 — Jeans Mass (M_J):**
 ```
 M_J = (5*k_B*T / (G*mu*m_H))^(3/2) * (3/(4pi*rho))^(1/2)
 
@@ -75,52 +101,54 @@ M_J = (5*k_B*T / (G*mu*m_H))^(3/2) * (3/(4pi*rho))^(1/2)
   m_H = 1.67x10^{-}2^7 kg
   rho   = cloud density
 
-  Solved: M_J ~= 5.13x10^{3}1 kg ~= 25.8 M☉ (typical molecular cloud core)
+  Solved: M_J ~= 5.13x10^{3}1 kg ~= 25.8 MM_sun (typical molecular cloud core)
          U_g3 ~= 3.42x10^{2}1 J/m^3 (grid scale)
 ```
 
-**Equation 6 -- Rotating Wave Function:**
-```
-psi(r,theta,t) = A * e^(-r^2/(2sigma^2)) * e^(i(m*theta - omega*t))
+**Equation 6 — Rotating Wave Function:**
+$$
+\begin{aligned}
+  & psi(r,theta,t) = A * e^(-r^2/(2sigma^2)) * e^(i(m*theta - omega*t)) \\
+  & sigma = spatial width parameter \\
+  & m = angular quantum number \\
+  & omega = angular frequency \\
+  & Solved: psi ~= 0.511 + i*0.327 \\
+  & U_m ~= 2.61x10^{-}3^6 J/m^3
+\end{aligned}
+$$
 
-  sigma = spatial width parameter
-  m = angular quantum number
-  omega = angular frequency
-  Solved: psi ~= 0.511 + i*0.327
-         U_m ~= 2.61x10^{-}3^6 J/m^3
-```
-
-**Equation 7 -- Golden Ratio Frequency Series:**
-```
-f_n = f_0 * phi^n
-
-  f_0 = base frequency = 174 Hz (Solfeggio fundamental)
-  phi   = (1+√5)/2 ~= 1.618 (golden ratio)
-  n   = harmonic index
-
-  f_1 = 174 x 1.618 ~= 281.5 Hz
-  f_2 = 174 x 1.618^2 ~= 455.4 Hz
-  f_3 = 174 x 1.618^3 ~= 736.7 Hz
-  ...
-  f_9 ~= 13264.1 Hz
-```
+**Equation 7 — Golden Ratio Frequency Series:**
+$$
+\begin{aligned}
+  & f_n = f_0 * phi^n \\
+  & f_0 = base frequency = 174 Hz (Solfeggio fundamental) \\
+  & phi   = (1+√5)/2 ~= 1.618 (golden ratio) \\
+  & n   = harmonic index \\
+  & f_1 = 174 x 1.618 ~= 281.5 Hz \\
+  & f_2 = 174 x 1.618^2 ~= 455.4 Hz \\
+  & f_3 = 174 x 1.618^3 ~= 736.7 Hz \\
+  & ... \\
+  & f_9 ~= 13264.1 Hz
+\end{aligned}
+$$
 
 ---
 
 ### 2.2 Aether-Superconductive Paper Equations
 
-**Equation 8 -- Dipole Moment (U_g1 source):**
-```
-mu_dipole = I * A * omega_spin
+**Equation 8 — Dipole Moment (U_g1 source):**
+$$
+\begin{aligned}
+  & mu_dipole = I * A * omega_spin \\
+  & I       = current loop \\
+  & A       = loop area \\
+  & omega_spin  = spin angular velocity \\
+  & Solved: mu_dipole ~= 10^{-}5^1 A*m^2 \\
+  & U_g1 ~= 10^{-}5^1 J/m^3
+\end{aligned}
+$$
 
-  I       = current loop
-  A       = loop area
-  omega_spin  = spin angular velocity
-  Solved: mu_dipole ~= 10^{-}5^1 A*m^2
-         U_g1 ~= 10^{-}5^1 J/m^3
-```
-
-**Equation 9 -- Superconductor Field (U_g2 source):**
+**Equation 9 — Superconductor Field (U_g2 source):**
 ```
 B_super = mu_0 * H_aether
 
@@ -130,92 +158,96 @@ B_super = mu_0 * H_aether
          U_g2 ~= 6.29x10^5 J/m^3
 ```
 
-**Equation 10 -- Magnetic Disk (U_g3 source):**
-```
-B_disk = -mu_0 * M / (4pi * r^3)
+**Equation 10 — Magnetic Disk (U_g3 source):**
+$$
+\begin{aligned}
+  & B_disk = -mu_0 * M / (4pi * r^3) \\
+  & M = magnetic moment of disk \\
+  & Solved: B_disk ~= -10^{-}7 T \\
+  & U_g3 ~= 3.98x10^{-}9 J/m^3
+\end{aligned}
+$$
 
-  M = magnetic moment of disk
-  Solved: B_disk ~= -10^{-}7 T
-         U_g3 ~= 3.98x10^{-}9 J/m^3
-```
+**Equation 11 — Torque:**
+$$
+\begin{aligned}
+  & tau = I * alpha,   alpha = domega/dt \\
+  & I = moment of inertia \\
+  & alpha = angular acceleration \\
+  & Solved: tau ~= 10^{-}1^5 N*m (atomic scale)
+\end{aligned}
+$$
 
-**Equation 11 -- Torque:**
-```
-tau = I * alpha,   alpha = domega/dt
+**Equation 12 — Spinners Contribution (U_g,i):**
+$$
+\begin{aligned}
+  & U_g,i = Sigma_k S_k \\
+  & S_k = contribution from k-th spinner field \\
+  & Solved: U_g,i ~= 2.108x10^{-}3^4 J*s \\
+  & U_m ~= 2.108x10^{-}1^8 J/m^3 (normalized)
+\end{aligned}
+$$
 
-  I = moment of inertia
-  alpha = angular acceleration
-  Solved: tau ~= 10^{-}1^5 N*m (atomic scale)
-```
-
-**Equation 12 -- Spinners Contribution (U_g,i):**
-```
-U_g,i = Sigma_k S_k
-
-  S_k = contribution from k-th spinner field
-  Solved: U_g,i ~= 2.108x10^{-}3^4 J*s
-         U_m ~= 2.108x10^{-}1^8 J/m^3 (normalized)
-```
-
-**Equation 13 -- Tensor Sum (U_g5 -- NEW 5th Gravity Mode):**
-```
-U_g5 = Sigma T_munu
-
-  T_munu = stress-energy tensor components
-  Sum over all tensor components at the field point
-  Solved: U_g5 ~= 3.6x10^{-}3 J/m^3
-
-  NOTE: U_g5 represents the first UQFF gravitational term explicitly
-        derived from the full stress-energy tensor, extending the
-        framework beyond the 4 standard UQFF fields.
-```
-
----
-
-## 3. Universal Inertia Operator (U_i) -- Confirmed Values
-
-```
-U_i = lambda_I * (rho_vac,[SCm]/rho_vac,[UA]) * omega_i(t) * cos(pi*t_n) * (1 + F_RZ)
-
-  lambda_I          = 1.0 (calibration factor)
-  rho_vac,[SCm]  = 7.09x10^{-}3^7 J/m^3
-  rho_vac,[UA]   = 7.09x10^{-}3^6 J/m^3
-  rho ratio      = 0.1
-  omega_i(t)       = 1.585x10^{-}8 rad/s (base)
-  cos(pi*t_n)   = 1 at t_n=0
-  F_RZ         = 0.01 (Rindler zone correction)
-
-  U_i ~= 1.0 x 0.1 x 1.585x10^{-}8 x 1 x 1.01
-  U_i ~= 1.601x10^{-}9 m/s^2
-```
+**Equation 13 — Tensor Sum (U_g5 — NEW 5th Gravity Mode):**
+$$
+\begin{aligned}
+  & U_g5 = Sigma T_munu \\
+  & T_munu = stress-energy tensor components \\
+  & Sum over all tensor components at the field point \\
+  & Solved: U_g5 ~= 3.6x10^{-}3 J/m^3 \\
+  & NOTE: U_g5 represents the first UQFF gravitational term explicitly \\
+  & derived from the full stress-energy tensor, extending the \\
+  & framework beyond the 4 standard UQFF fields.
+\end{aligned}
+$$
 
 ---
 
-## 4. Universal Magnetism Um(t,r,n) -- Full Form
+## 3. Universal Inertia Operator (U_i) — Confirmed Values
 
-```
-Um(t,r,n) = Sigma_j [mu_j(t,rho_vac,[SCm])/r_j * (1-e^(-gammat)*cos(pi*t_n))*phî_j]
-           * P_SCm * E_react(t)
-           * (1 + 10^{1}3*f_Heaviside) * (1 + f_quasi)
+$$
+\begin{aligned}
+  & U_i = lambda_I * (rho_vac,[SCm]/rho_vac,[UA]) * omega_i(t) * cos(pi*t_n) * (1 + F_RZ) \\
+  & lambda_I          = 1.0 (calibration factor) \\
+  & rho_vac,[SCm]  = 7.09x10^{-}3^7 J/m^3 \\
+  & rho_vac,[UA]   = 7.09x10^{-}3^6 J/m^3 \\
+  & rho ratio      = 0.1 \\
+  & omega_i(t)       = 1.585x10^{-}8 rad/s (base) \\
+  & cos(pi*t_n)   = 1 at t_n=0 \\
+  & F_RZ         = 0.01 (Rindler zone correction) \\
+  & U_i ~= 1.0 x 0.1 x 1.585x10^{-}8 x 1 x 1.01 \\
+  & U_i ~= 1.601x10^{-}9 m/s^2
+\end{aligned}
+$$
 
-  mu_j(t)       = (1000 + 0.4*sin(omega_c*t)) * 3.38x10^{2}0 T*pm^3
-  omega_c          = 2pi / (3.96x10^8 s)
-  r_j          = 1.496x10^{1}3 m (100 AU)
-  gamma            = 5x10^{-}5 day^{-}1
-  P_SCm        ~= 1
-  E_react      = 10^{4}6
-  f_Heaviside  = 0.01  -> (1 + 10^{1}3x0.01) = 1+10^{1}1
-  f_quasi      = 0.01
+---
 
-At t=0, t_n=0:
-  Um ~= 2.28x10^{6}5 J/m^3 (dominant UQFF field)
-```
+## 4. Universal Magnetism Um(t,r,n) — Full Form
+
+$$
+\begin{aligned}
+  & Um(t,r,n) = Sigma_j [mu_j(t,rho_vac,[SCm])/r_j * (1-e^(-gammat)*cos(pi*t_n))*phî_j] \\
+  & * P_SCm * E_react(t) \\
+  & * (1 + 10^{1}3*f_Heaviside) * (1 + f_quasi) \\
+  & mu_j(t)       = (1000 + 0.4*sin(omega_c*t)) * 3.38x10^{2}0 T*pm^3 \\
+  & omega_c          = 2pi / (3.96x10^8 s) \\
+  & r_j          = 1.496x10^{1}3 m (100 AU) \\
+  & gamma            = 5x10^{-}5 day^{-}1 \\
+  & P_SCm        ~= 1 \\
+  & E_react      = 10^{4}6 \\
+  & f_Heaviside  = 0.01  -> (1 + 10^{1}3x0.01) = 1+10^{1}1 \\
+  & f_quasi      = 0.01 \\
+  & At t=0, t_n=0: \\
+  & Um ~= 2.28x10^{6}5 J/m^3 (dominant UQFF field)
+\end{aligned}
+$$
 
 ---
 
 ## 5. New U_g5 Tensor Mode
 
-The tensor sum U_g5 = Σ T_μν represents the gravitational contribution from the full stress-energy tensor, including:
+The tensor sum U_g5 = Σ T_μν represents the gravitational contribution from the full stress-energy
+tensor, including:
 - Pressure components T_ii (i=1,2,3)
 - Energy density T_00
 - Momentum flux T_0i
@@ -251,7 +283,8 @@ For dark energy: w = -1, U_g5 ~  -2ρc^2
 
 Document 43.d advances UQFF by:
 1. **U_g5 identification**: first stress-energy tensor gravity mode
-2. **Confirmed vacuum densities**: ρ_vac,[SCm] = 7.09x10^{-}3^7, [UA] = 7.09x10^{-}3^6 J/m^3 (exact ratio = 0.1)
+2. **Confirmed vacuum densities**: ρ_vac,[SCm] = 7.09x10^{-}3^7, [UA] = 7.09x10^{-}3^6 J/m^3 (exact
+ratio = 0.1)
 3. **Dark Energy power**: P_DE quantified at 7.09x10^{-}5^1 W
 4. **Plasma frequency**: ω_plasma = 1.005x10^{1}6 rad/s for [SCm]/[UA] interface
 
@@ -259,11 +292,16 @@ Document 43.d advances UQFF by:
 
 ## 8. Conclusion
 
-Document 43.d provides 19 foundational equations that complete the UQFF inertia and aether-superconductive framework. The U_g5 tensor sum represents a new fifth gravitational mode operational at cosmological scales. The confirmed vacuum density ratio ρ_vac,[SCm]/ρ_vac,[UA] = 0.1 anchors all U_i calculations. These additions advance the UQFF from a 4-component to a 5-component gravity model with full tensor support.
+Document 43.d provides 19 foundational equations that complete the UQFF inertia and
+aether-superconductive framework. The U_g5 tensor sum represents a new fifth gravitational mode
+operational at cosmological scales. The confirmed vacuum density ratio ρ_vac,[SCm]/ρ_vac,[UA] = 0.1
+anchors all U_i calculations. These additions advance the UQFF from a 4-component to a 5-component
+gravity model with full tensor support.
 
 ---
 
-*Copyright - Daniel T. Murphy, daniel.murphy00@gmail.com. UQFF Framework. PAPER_748, CP4 class #332. Session 180 continuation v5.38.*
+*Copyright - Daniel T. Murphy, daniel.murphy00@gmail.com. UQFF Framework. PAPER_748, CP4 class #332.
+Session 180 continuation v5.38.*
 
 ---
 
@@ -271,13 +309,15 @@ Document 43.d provides 19 foundational equations that complete the UQFF inertia 
 
 ### §A.1 Sector Classification
 
-This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see `uqff_lagrangian_derivation.py`).
+This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
-The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive quantum fundamentals (DPM, UA, SCm):
+The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
+quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_\mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
+$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
 
 where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
@@ -291,7 +331,9 @@ $$\boxed{\frac{\delta S}{\delta \phi_{\rm NS}} = \nabla^2 \phi_{\rm NS} - (4\pi 
 
 $$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\rm NS} = 0$$
 
-The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g forces) through vacuum density initialization to the sector-specific equation of motion. Every term in the E-L equation inherits its physical origin from the cosmogenesis master.
+The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
+forces) through vacuum density initialization to the sector-specific equation of motion. Every term
+in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 
 ---
@@ -302,7 +344,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
 For this system, the local VDS sub-ratio is $0.195$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m^3.
 
@@ -318,11 +360,11 @@ Since $p_{\rm DVP} = 109$ is **resonant** (threshold at $p > 26$), the system's 
 
 The BSH saturation timescale for this sector is **10^4 yr** (spin-down equilibrium):
 
-$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
+$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\rm SCm}$ which initializes the harmonic series at cosmogenesis.
 
@@ -330,28 +372,31 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.195 | ✓ Threshold-consistent |
-| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 109$ | ✓ Resonant |
-| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day^{-}1 | Applied in VDS exponential | ✓ Canonical |
-| [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
+| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.195 | PASS Threshold-consistent |
+| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 109$ | PASS Resonant |
+| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
+| κ decay | $5.0 \times 10^{-4}$ day^{-}1 | Applied in VDS exponential | PASS Canonical |
+| [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
 ---
 
 
-## §SM Anchors -- Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | ✓ Consistent |
-| Cosmological constant Λ | 1.1x10^{-}5^2 m^{-}2 (UQFF vacuum term) | 1.114x10^{-}5^2 m^{-}2 | Planck 2018 | ✓ Consistent |
-| Proton decay rate | κ = 0.0005/day -> Γ_p suppression | < 4.17x10^{-}3^5/yr | Super-K 2024 | ✓ Consistent |
-| UQFF buoyancy signature | F_U_Bi_i unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
+| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant Λ | 1.1x10^{-}5^2 m^{-}2 (UQFF vacuum term) | 1.114x10^{-}5^2 m^{-}2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | κ = 0.0005/day -> Γ_p suppression | < 4.17x10^{-}3^5/yr | Super-K 2024 | PASS Consistent |
+| UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
-**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes significant, offering a falsifiable prediction beyond the Standard Model.
+**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
+produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF-SM bridge.*
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF-SM
+bridge.*
 
 
 ---
@@ -366,9 +411,9 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `f`neutron_s26_coupling`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `k`ozima_scm_cross_section`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `k`ozima_wstp_kernel`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -377,7 +422,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `r`amanujan_polylog_s26`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
 | `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
@@ -386,7 +431,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `m`ock_theta_q26`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -397,8 +442,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `r`amanujan_pi_uqff`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `m`ock_theta_pi_wstp_kernel`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]

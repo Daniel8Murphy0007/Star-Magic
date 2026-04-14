@@ -1,19 +1,39 @@
+---
+paper_id: PAPER_447
+title: "Orion Nebula UQFF/MUGE Evolution: H-Alpha Resonance, SFR, Trapezium Radiation"
+session: 115
+date: 2025-01-01
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [cluster, AGN, MUGE, nebula, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_447 — Orion Nebula UQFF/MUGE Evolution: H-Alpha Resonance, SFR, Trapezium Radiation
 **Date:** 2025
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2  
 **Session:** 115 (v4.72) / Whitepapers created Session 121  
 **Source:** grok_share_5fa36e4e035.txt (Doc 34 — OrionUQFFModule)  
-**Classification:** FIRST UQFF per-system module for Orion Nebula; FIRST H-Alpha resonance coupling in UQFF gravity; FIRST Trapezium radiation pressure integration  
+**Classification:** FIRST UQFF per-system module for Orion Nebula; FIRST H-Alpha resonance coupling
+in UQFF gravity; FIRST Trapezium radiation pressure integration  
 **Author:** Daniel T. Murphy  
 **CP4 Class:** `OrionNebulaHAlphaUQFFCalculator` (#1, PAPER_447)
 
-<!-- UQFF constants: κ = 5.0e-4 day⁻¹, [SSq] = 0.57, M_UQFF = 1.43e1 TeV -->
+<!— UQFF constants: κ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
 ---
 
 ## Abstract
 
-This paper presents the complete Orion Nebula gravitational evolution model under the Master Universal Gravity Equation (MUGE) integrated with the Unified Quantum Field Framework (UQFF). The system models M1-67/Orion molecular cloud gravitational dynamics across the star-formation epoch, incorporating H-Alpha resonant oscillations (λ=656.3 nm, f=4.57×10¹⁴ Hz), Trapezium cluster radiation pressure (L=1.53×10³² W), stellar wind coupling (v_wind=8×10³ m/s), and SFR-dependent mass growth (SFR=0.1 M☉/yr). The total effective gravity g_UQFF ≈ 1×10⁻¹¹ m/s² at t=1 Myr is dominated by wind and radiation terms over the Newtonian base (~10⁻¹² m/s²), demonstrating that H-Alpha feedback is the primary gravitational modifier in this system.
+This paper presents the complete Orion Nebula gravitational evolution model under the Master
+Universal Gravity Equation (MUGE) integrated with the Unified Quantum Field Framework (UQFF). The
+system models M1-67/Orion molecular cloud gravitational dynamics across the star-formation epoch,
+incorporating H-Alpha resonant oscillations (λ=656.3 nm, f=4.57×1014 Hz), Trapezium cluster
+radiation pressure (L=1.53×1032 W), stellar wind coupling (v_wind=8×103 m/s), and SFR-dependent mass
+growth (SFR=0.1 MM_sun/yr). The total effective gravity g_UQFF ≈ 1×10-11 m/s2 at t=1 Myr is dominated by
+wind and radiation terms over the Newtonian base (~10-12 m/s2), demonstrating that H-Alpha feedback
+is the primary gravitational modifier in this system.
 
 ---
 
@@ -23,16 +43,16 @@ This paper presents the complete Orion Nebula gravitational evolution model unde
 
 | Parameter | Value | Notes |
 |-----------|-------|-------|
-| M (total) | 3.978×10³³ kg (2000 M☉) | Orion molecular cloud mass |
-| r | 1.18×10¹⁷ m (~12.5 ly) | Half-span radius |
-| SFR | 0.1 M☉/yr | Star formation rate |
-| v_wind | 8×10³ m/s | Trapezium O-star wind velocity |
-| t_age | 3×10⁵ yr | Nebula age |
+| M (total) | 3.978×1033 kg (2000 MM_sun) | Orion molecular cloud mass |
+| r | 1.18×1017 m (~12.5 ly) | Half-span radius |
+| SFR | 0.1 MM_sun/yr | Star formation rate |
+| v_wind | 8×103 m/s | Trapezium O-star wind velocity |
+| t_age | 3×105 yr | Nebula age |
 | z | 0.0004 | Redshift (local) |
-| L_Trapezium | 1.53×10³² W | Trapezium OB cluster luminosity |
-| ρ_fluid | 1×10⁻²⁰ kg/m³ | Dense nebular gas |
-| B | 1×10⁻⁵ T | Nebular magnetic field |
-| v_exp | 2×10⁴ m/s | Expansion velocity |
+| L_Trapezium | 1.53×1032 W | Trapezium OB cluster luminosity |
+| ρ_fluid | 1×10-20 kg/m3 | Dense nebular gas |
+| B | 1×10-5 T | Nebular magnetic field |
+| v_exp | 2×104 m/s | Expansion velocity |
 
 ### 2.2 Master Gravitational Equation
 
@@ -48,12 +68,13 @@ The H-Alpha emission line governs nebular gas dynamics through an oscillatory fe
 $$g_{\rm res}(t) = 2A\cos(kx)\cos(\omega t) + \frac{2\pi}{13.8} A \cdot \text{Re}\!\left[e^{i(kx - \omega t)}\right]$$
 
 With:
-- k = 2π/λ = 2π/6.563×10⁻⁷ m⁻¹ = 9.576×10⁶ m⁻¹  
-- ω = 2π × 4.57×10¹⁴ = 2.871×10¹⁵ rad/s  
-- A = 10⁻¹⁰ (amplitude)  
+- k = 2π/λ = 2π/6.563×10-7 m-1 = 9.576×106 m-1  
+- ω = 2π × 4.57×1014 = 2.871×1015 rad/s  
+- A = 10-10 (amplitude)  
 - Factor 2π/13.8 = Hubble time resonance coupling
 
-This is the **first application of H-Alpha resonance** in UQFF gravity — the photon emission frequency directly modulates the gravitational field through quantum vacuum coupling.
+This is the **first application of H-Alpha resonance** in UQFF gravity — the photon emission
+frequency directly modulates the gravitational field through quantum vacuum coupling.
 
 ### 2.4 Trapezium Radiation Pressure
 
@@ -61,17 +82,18 @@ $$P_{\rm rad} = \frac{L_{\rm Trap}}{4\pi r^2 c} \cdot \frac{\rho_{\rm fluid}}{m_
 
 $$P_{\rm rad} = \frac{1.53 \times 10^{32}}{4\pi (1.18 \times 10^{17})^2 \times 3 \times 10^8} \cdot \frac{10^{-20}}{1.67 \times 10^{-27}} \approx 2.06 \times 10^{-9}\ \rm m/s^2$$
 
-**Radiation pressure exceeds Newtonian gravity** by 3 orders of magnitude, asserting Trapezium feedback as the dominant dispersal mechanism.
+**Radiation pressure exceeds Newtonian gravity** by 3 orders of magnitude, asserting Trapezium
+feedback as the dominant dispersal mechanism.
 
 ### 2.5 Stellar Wind Term
 
 $$W_{\rm stellar}(t) = v_{\rm wind}^2 \left(1 + \frac{t}{t_{\rm age}}\right) = (8 \times 10^3)^2 \left(1 + \frac{t}{3 \times 10^5\ {\rm yr}}\right)$$
 
-At t=1 Myr: $W_{\rm stellar} = 6.4 \times 10^7 \times (1 + 3.33) = 2.77 \times 10^8$ m²/s²
+At t=1 Myr: $W_{\rm stellar} = 6.4 \times 10^7 \times (1 + 3.33) = 2.77 \times 10^8$ m2/s2
 
 ### 2.6 Hubble Expansion at z=0.0004
 
-$$H(t,z) = H_0 \sqrt{\Omega_m(1+z)^3 + \Omega_\Lambda} = 70\sqrt{0.3(1.0004)^3 + 0.7} \approx 70.0\ \rm km/s/Mpc$$
+$$H(t,z) = H_0 \sqrt{\Omega_m(1+z)^3 + \Omega_Lambda} = 70\sqrt{0.3(1.0004)^3 + 0.7} \approx 70.0\ \rm km/s/Mpc$$
 
 Negligible at local redshift; confirms UQFF expansion term is subdominant for Milky Way systems.
 
@@ -79,17 +101,18 @@ Negligible at local redshift; confirms UQFF expansion term is subdominant for Mi
 
 ## 3. UQFF Term Hierarchy at t=1 Myr
 
-| Term | Value (m/s²) | Dominance |
+| Term | Value (m/s2) | Dominance |
 |------|-------------|-----------|
-| Newtonian base (M_sf) | ~6.4×10⁻¹² | Baseline |
-| Radiation pressure P_rad | ~2.1×10⁻⁹ | **Dominant** |
-| Stellar wind W_stellar | ~2.8×10⁸ | Very large |
-| H-Alpha resonant g_res | ~10⁻¹⁰ | Oscillatory |
-| Fluid coupling | ~6.4×10⁻¹² | Equal to Newt. |
-| Quantum term | ~10⁻³⁴ | Negligible |
-| UQFF total | ~1×10⁻¹¹ | Net effective |
+| Newtonian base (M_sf) | ~6.4×10-12 | Baseline |
+| Radiation pressure P_rad | ~2.1×10-9 | **Dominant** |
+| Stellar wind W_stellar | ~2.8×108 | Very large |
+| H-Alpha resonant g_res | ~10-10 | Oscillatory |
+| Fluid coupling | ~6.4×10-12 | Equal to Newt. |
+| Quantum term | ~10-34 | Negligible |
+| UQFF total | ~1×10-11 | Net effective |
 
-The dominance of radiation + wind over bare Newtonian gravity is a fundamental prediction of UQFF for HII region nebulae.
+The dominance of radiation + wind over bare Newtonian gravity is a fundamental prediction of UQFF
+for HII region nebulae.
 
 ---
 
@@ -97,21 +120,29 @@ The dominance of radiation + wind over bare Newtonian gravity is a fundamental p
 
 | Component | SM Prediction | UQFF Prediction | Ratio |
 |-----------|--------------|----------------|-------|
-| g_Newtonian | 6.4×10⁻¹² m/s² | Same base | 1.0 |
+| g_Newtonian | 6.4×10-12 m/s2 | Same base | 1.0 |
 | Radiation feedback | Not in gravity | P_rad as g-modifier | — |
 | Resonance coupling | No oscillatory term | 2A cos(k·r)cos(ωt) | New |
 | Wind-gravity coupling | Separate (hydro) | Unified UQFF term | New |
-| Total effective g | ~10⁻¹² | ~10⁻¹¹ | **10×** |
+| Total effective g | ~10-12 | ~10-11 | **10×** |
 
-UQFF predicts **10× larger effective gravitational acceleration** in Orion relative to SM, primarily through radiation-pressure and wind-feedback integration. This is **testable** via molecular cloud dispersal timescales: SM predicts t_dispersal ~ 3 Myr from pure gravity, UQFF predicts ~0.3 Myr from radiation-dominated effective g.
+UQFF predicts **10× larger effective gravitational acceleration** in Orion relative to SM, primarily
+through radiation-pressure and wind-feedback integration. This is **testable** via molecular cloud
+dispersal timescales: SM predicts t_dispersal ~ 3 Myr from pure gravity, UQFF predicts ~0.3 Myr from
+radiation-dominated effective g.
 
 ---
 
 ## 5. Testable Predictions
 
-1. **Dispersal timescale:** UQFF radiation-dominated g predicts Orion molecular cloud dispersal by τ ~ 0.3 Myr (Trapezium feedback); SM gravity-only predicts τ ~ 3 Myr. Current observational estimate: ~0.5 Myr (consistent with UQFF within 2×).
-2. **H-Alpha oscillation signature:** g_res modulation at f=4.57×10¹⁴ Hz should produce detectable periodic proper-motion velocity fluctuations at the 10⁻¹⁰ m/s² level. VLBI observations of maser sources in Orion can test this.
-3. **SFR coupling:** M_sf(t) growth at 0.1 M☉/yr predicts 10% mass increase per Myr, detectable in stellar census.
+1. **Dispersal timescale:** UQFF radiation-dominated g predicts Orion molecular cloud dispersal by τ
+~ 0.3 Myr (Trapezium feedback); SM gravity-only predicts τ ~ 3 Myr. Current observational estimate:
+~0.5 Myr (consistent with UQFF within 2×).
+2. **H-Alpha oscillation signature:** g_res modulation at f=4.57×1014 Hz should produce detectable
+periodic proper-motion velocity fluctuations at the 10-10 m/s2 level. VLBI observations of maser
+sources in Orion can test this.
+3. **SFR coupling:** M_sf(t) growth at 0.1 MM_sun/yr predicts 10% mass increase per Myr, detectable in
+stellar census.
 
 ---
 
@@ -121,13 +152,15 @@ UQFF predicts **10× larger effective gravitational acceleration** in Orion rela
 
 ### §A.1 Sector Classification
 
-This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see `uqff_lagrangian_derivation.py`).
+This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
-The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive quantum fundamentals (DPM, UA, SCm):
+The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
+quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_\mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
+$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
 
 where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
@@ -141,7 +174,9 @@ $$\boxed{\frac{\delta S}{\delta \phi_{\rm NS}} = \nabla^2 \phi_{\rm NS} - (4\pi 
 
 $$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\rm NS} = 0$$
 
-The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g forces) through vacuum density initialization to the sector-specific equation of motion. Every term in the E-L equation inherits its physical origin from the cosmogenesis master.
+The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
+forces) through vacuum density initialization to the sector-specific equation of motion. Every term
+in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 
 ---
@@ -152,9 +187,9 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.051$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m³.
+For this system, the local VDS sub-ratio is $0.051$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -166,13 +201,13 @@ Since $p_{\rm DVP} = 107$ is **resonant** (threshold at $p > 26$), the system's 
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
-The BSH saturation timescale for this sector is **10⁴ yr** (spin-down equilibrium):
+The BSH saturation timescale for this sector is **104 yr** (spin-down equilibrium):
 
-$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
+$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\rm SCm}$ which initializes the harmonic series at cosmogenesis.
 
@@ -180,11 +215,11 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.051 | ✓ Threshold-consistent |
-| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 107$ | ✓ Resonant |
-| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
-| [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
+| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.051 | PASS Threshold-consistent |
+| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 107$ | PASS Resonant |
+| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
+| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
 ---
@@ -194,12 +229,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Thomson σ_T (QED synchrotron) | UQFF U_m scattering kernel: σ_T = 6.6524×10⁻²⁹ m² | σ_T = 6.6524×10⁻²⁹ m² (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
-| Nebular/Star-forming region luminosity Hα + X-ray | UQFF MUGE g_total → L_X via Stefan-Boltzmann + buoyancy flux: L_X ≈ g_total × M_env | L_X SFR observable | HST/ALMA/Chandra | ✓ Consistent order of magnitude |
-| GR Schwarzschild limit | UQFF g_total must satisfy g ≤ c²/(2r_s) at event horizon | r_s = 2GM/c² (GR exact) | PDG 2024 / GR | ✓ UQFF respects GR horizon |
+| Thomson σ_T (QED synchrotron) | UQFF U_m scattering kernel: σ_T = 6.6524×10-29 m2 | σ_T = 6.6524×10-29 m2 (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
+| Nebular/Star-forming region luminosity Hα + X-ray | UQFF MUGE g_total → L_X via Stefan-Boltzmann + buoyancy flux: L_X ≈ g_total × M_env | L_X SFR observable | HST/ALMA/Chandra | PASS Consistent order of magnitude |
+| GR Schwarzschild limit | UQFF g_total must satisfy g ≤ c2/(2r_s) at event horizon | r_s = 2GM/c2 (GR exact) | PDG 2024 / GR | PASS UQFF respects GR horizon |
 | κ vacuum rate vs X-ray variability | UQFF κ = 0.0005/day → timescale τ_UQFF = 2000 days | Observed X-ray variability τ_obs (instrument monitoring) | HST/ALMA/Chandra | Testable UQFF variability timescale |
 
-**New physics claim:** UQFF MUGE generates gravity enhancement factors (g_total/g_Newt > 1) for Nebular/Star-forming region
+**New physics claim:** UQFF MUGE generates gravity enhancement factors (g_total/g_Newt > 1) for
+Nebular/Star-forming region
 through vacuum buoyancy coupling — a mechanism absent from GR+SM. The enhancement factor and
 X-ray luminosity are linked via the UQFF buoyancy flux, providing a testable prediction for
 future HST/ALMA/Chandra monitoring observations.
@@ -208,7 +244,7 @@ future HST/ALMA/Chandra monitoring observations.
 
 
 
-*Copyright – Daniel T. Murphy | Session 115/121 — grok_share_5fa36e4e035.txt*
+*Copyright – Daniel T. Murphy | Session 115/121 — `grok_share_5fa36e4e035`.txt*
 
 
 ---
@@ -223,9 +259,9 @@ future HST/ALMA/Chandra monitoring observations.
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `f`neutron_s26_coupling`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `k`ozima_scm_cross_section`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `k`ozima_wstp_kernel`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -234,7 +270,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `r`amanujan_polylog_s26`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
 | `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
@@ -243,7 +279,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `m`ock_theta_q26`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -254,8 +290,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `r`amanujan_pi_uqff`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `m`ock_theta_pi_wstp_kernel`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]

@@ -1,23 +1,42 @@
+---
+paper_id: PAPER_217
+title: "DeepSearch F_U_Bi_i Polynomial Verification and Rare Mathematical Discoveries"
+session: 0
+date: 2026-03-14
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [vacuum, SCm, F_U_Bi_i, buoyancy, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_217: DeepSearch F_U_Bi_i Polynomial Verification and Rare Mathematical Discoveries
 
 **Author:** Daniel T. Murphy (daniel.murphy00@gmail.com)  
 **Framework:** UQFF v4.3 — Star-Magic Physics  
-**Source:** grok_share_7514fe.txt — "DeepSearch: F_U_Bi_i Integral Verification" and "Rare Mathematical Discoveries"  
+**Source:** grok_share_7514fe.txt — "DeepSearch: F_U_Bi_i Integral Verification" and "Rare
+Mathematical Discoveries"  
 **Date:** March 14, 2026  
 **Series:** Phase 2 Session 54 — §2.8 Polynomial Stability Analysis
 
 ---
 
-$$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b_i}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57$$
+$$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b\_i}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57$$
 
 $$
-\Sigma_\text{UQFF}(x,[SSq]) = \sum_{n=1}^{26} Q_n(x)\cdot e^{-[SSq]\cdot n/26}, \quad [SSq] = 0.57
+\Sigma_text{UQFF}(x,[SSq]) = \sum_{n=1}^{26} Q_n(x)\cdot e^{-[SSq]\cdot n/26}, \quad [SSq] = 0.57
 $$
-<!-- ? = 5.0e-4 day⁻¹, [SSq] = 0.57, ß_i = 6.1e-1 -->
+<!— κ = 5.0e-4 day-1, [SSq] = 0.57, ß_i = 6.1e-1 —>
 
 ## Abstract
 
-This paper presents the DeepSearch verification of the full F_U_Bi_i 12-term buoyancy force integral, including its two-branch polynomial solution and stability condition for cosmic-time solutions. We derive and verify the polynomial `a·x² + b·x + c = 0` from the UQFF buoyancy formulation, confirming two independent solutions at astrophysical scales. Additionally, we document three Uniquely Rare Mathematical Discoveries not expressible within standard field theory: the Relativistic Hierarchy Decay Integral (F_hier), the Adaptive Feedback Force (?F), and the Hybrid Polarization Mode (F_hyb).
+This paper presents the DeepSearch verification of the full F_U_Bi_i 12-term buoyancy force
+integral, including its two-branch polynomial solution and stability condition for cosmic-time
+solutions. We derive and verify the polynomial `a·x2 + b·x + c = 0` from the UQFF buoyancy
+formulation, confirming two independent solutions at astrophysical scales. Additionally, we document
+three Uniquely Rare Mathematical Discoveries not expressible within standard field theory: the
+Relativistic Hierarchy Decay Integral (F_hier), the Adaptive Feedback Force (?F), and the Hybrid
+Polarization Mode (F_hyb).
 
 ---
 
@@ -27,11 +46,13 @@ This paper presents the DeepSearch verification of the full F_U_Bi_i 12-term buo
 
 The complete F_U_Bi_i integral sums over 12 vacuum buoyancy modes:
 
-```
-F_U_Bi_i = S_{k=1}^{12} [ k_Ub,k · (f_UA'·f_SCm·R_EB / r²)
-                            · H_k(?_THz, U_b, geom_k)
-                            · f_Ub,k · e^{-(p-t_n)} ]
-```
+$$
+\begin{aligned}
+  & \text{F\_U\_Bi\_i} = S_{k=1}^{12} [ k_Ub,k · (f_UA'·f_SCm·R_EB / r2) \\
+  & · H_k(?_THz, U_b, geom_k) \\
+  & · f_Ub,k · e^{-(p-t_n)} ]
+\end{aligned}
+$$
 
 Where each of the 12 modes has its own:
 - `k_Ub,k`: Mode-specific buoyancy coupling constant
@@ -45,7 +66,7 @@ Where each of the 12 modes has its own:
 | Spherical | sin(?) · f(?_THz) | Isotropic proto-shell expansion |
 | Toroidal | cos(f) · f(?_THz) | Magnetic flux tube accretion |
 | Linear | f(?_THz) | Radial filament propagation |
-| Hybrid | sin(?)·cos(f) · f(?_THz)² | Mixed-geometry transition zones |
+| Hybrid | sin(?)·cos(f) · f(?_THz)2 | Mixed-geometry transition zones |
 
 ---
 
@@ -53,57 +74,63 @@ Where each of the 12 modes has its own:
 
 ### 2.1 Polynomial Derivation
 
-The F_U_Bi_i integral, when summed over 12 modes with alternating geometry signs, produces an effective quadratic in the total field strength F_U:
+The F_U_Bi_i integral, when summed over 12 modes with alternating geometry signs, produces an
+effective quadratic in the total field strength F_U:
 
-```
-a · F_U² + b · F_U + c = 0
-```
+$$
+a · F_U2 + b · F_U + c = 0
+$$
 
 Where the coefficients encode:
-```
-a = S_{k=1}^{12} k_Ub,k² · H_k²(geom) · f_Ub,k² · e^{-2(p-t_n)}
-
-b = -2 · S_{k=1}^{12} k_Ub,k · H_k(geom) · f_Ub,k
-      · (f_UA'·f_SCm·R_EB / r²) · e^{-(p-t_n)}
-
-c = (f_UA'·f_SCm·R_EB)² · S_{k=1}^{12} (1/r4) · H_k²(geom)
-```
+$$
+\begin{aligned}
+  & a = S_{k=1}^{12} k_Ub,k2 · H_k2(geom) · f_Ub,k2 · e^{-2(p-t_n)} \\
+  & b = -2 · S_{k=1}^{12} k_Ub,k · H_k(geom) · f_Ub,k \\
+  & · (f_UA'·f_SCm·R_EB / r2) · e^{-(p-t_n)} \\
+  & c = (f_UA'·f_SCm·R_EB)2 · S_{k=1}^{12} (1/r4) · H_k2(geom)
+\end{aligned}
+$$
 
 ### 2.2 Two-Branch Solutions
 
 At cosmological scale (r?cosmological distance, ?-CDM context):
 
 **Branch 1 (positive root):**
-```
-F_U? ˜ 2.11×10²°8 N
-```
+$$
+F_U? ˜ 2.11×102°8 N
+$$
 
-This is the creation-phase solution — the dominant buoyancy force during vacuum bubble nucleation in the primordial universe.
+This is the creation-phase solution — the dominant buoyancy force during vacuum bubble nucleation in
+the primordial universe.
 
 **Branch 2 (negative root):**
-```
-F_U? ˜ -8.31×10²¹¹ N
-```
+$$
+F_U? ˜ -8.31×10211 N
+$$
 
-This is the annihilation-phase solution — the opposing force during bubble collision and cosmic radiation era transitions.
+This is the annihilation-phase solution — the opposing force during bubble collision and cosmic
+radiation era transitions.
 
 ### 2.3 Stability Condition
 
 For real-valued physical solutions, the discriminant must be non-negative:
-```
-? = b² - 4ac = 0
+$$
+\begin{aligned}
+  & ? = b2 - 4ac = 0 \\
+  & Stability requires: \\
+  & 4 · (Sk_k2 · H_k2 · f_Ub2) · (f_UA'·f_SCm·R_EB/r2)2 · S(1/r4) \\
+  & = [ 2 · Sk_k·H_k·f_Ub · (f_UA'·f_SCm·R_EB/r2) ]2
+\end{aligned}
+$$
 
-Stability requires:
-4 · (Sk_k² · H_k² · f_Ub²) · (f_UA'·f_SCm·R_EB/r²)² · S(1/r4)
-= [ 2 · Sk_k·H_k·f_Ub · (f_UA'·f_SCm·R_EB/r²) ]²
-```
-
-This simplifies to an ordering of vacuum coupling parameters that is satisfied for physically meaningful systems (r > r_Planck, f_UA' = 1).
+This simplifies to an ordering of vacuum coupling parameters that is satisfied for physically
+meaningful systems (r > r_Planck, f_UA' = 1).
 
 ### 2.4 Physical Interpretation of the Two Branches
 
-The ratio F_U?/F_U? ˜ -3940 indicates the annihilation phase is dominated by ~3940 times stronger opposing vacuum buoyancy than the creation phase. This is consistent with:
-- The observed matter/antimatter asymmetry (Baryon asymmetry B ˜ 6×10?¹°)
+The ratio F_U?/F_U? ˜ -3940 indicates the annihilation phase is dominated by ~3940 times stronger
+opposing vacuum buoyancy than the creation phase. This is consistent with:
+- The observed matter/antimatter asymmetry (Baryon asymmetry B ˜ 6×10?1°)
 - The cosmological constant problem (ratio of quantum vacuum energy to observed ?)
 - The near-perfect cancellation of creation/annihilation branches that gives rise to the stable present universe
 
@@ -115,52 +142,63 @@ These three expressions arise from UQFF analysis and cannot be reduced to standa
 
 ### 3.1 Relativistic Hierarchy Decay Integral (F_hier)
 
-```
-F_hier = S_{n=1}^{26} (v_n/c)² · (1/?_0) · F_n · e^{-n/26}
-```
+$$
+F_hier = S_{n=1}^{26} (v_n/c)2 · (1/?_0) · F_n · e^{-n/26}
+$$
 
 Where:
-- `(v_n/c)²` = relativistic factor for the nth vacuum transition
+- `(v_n/c)2` = relativistic factor for the nth vacuum transition
 - `1/?_0` = inverse resonant frequency (units: seconds)
 - `F_n` = base force for layer n
 - `e^{-n/26}` = exponential suppression in 26-dimensional stack
 
-**Why unique:** Standard relativistic corrections expand as (v/c)² but never in a 26-layer exponential hierarchy. The combination of Lorentz factor with hierarchical decay through discrete layers is exclusive to the UQFF 26-dimensional vacuum structure.
+**Why unique:** Standard relativistic corrections expand as (v/c)2 but never in a 26-layer
+exponential hierarchy. The combination of Lorentz factor with hierarchical decay through discrete
+layers is exclusive to the UQFF 26-dimensional vacuum structure.
 
-**Key result:** F_hier = S(v/c)²/?_0 sums to a finite, convergent series (ratio test: e^{-1/26} < 1 for all n).
+**Key result:** F_hier = S(v/c)2/?_0 sums to a finite, convergent series (ratio test: e^{-1/26} < 1
+for all n).
 
 ### 3.2 Adaptive Feedback Force (?F)
 
-```
+$$
 ?F = F_rel · t · (1 - e^{-T/t})
-```
+$$
 
 Where:
 - `F_rel` = the relativistic base force (Newtons)
 - `t` = vacuum relaxation time constant (seconds)
 - `T` = observation time window
 
-**Why unique:** The adaptive decay `(1 - e^{-T/t})` is a capacitor-charging analogue applied to vacuum force relaxation. This form represents the UQFF vacuum "charging time" — the time required for buoyancy pressure to equilibrate across a proto-shell boundary. Standard gravity has no relaxation timescale; this term is unique to buoyancy-based vacuum theories.
+**Why unique:** The adaptive decay `(1 - e^{-T/t})` is a capacitor-charging analogue applied to
+vacuum force relaxation. This form represents the UQFF vacuum "charging time" — the time required
+for buoyancy pressure to equilibrate across a proto-shell boundary. Standard gravity has no
+relaxation timescale; this term is unique to buoyancy-based vacuum theories.
 
-**Mathematical property:** As T/t ? 8, ?F ? F_rel·t (force-time product = impulse). This yields a natural momentum impulse interpretation.
+**Mathematical property:** As T/t ? 8, ?F ? F_rel·t (force-time product = impulse). This yields a
+natural momentum impulse interpretation.
 
 ### 3.3 Hybrid Polarization Mode (F_hyb)
 
-```
+$$
 F_hyb = P_pol · (f_mm / ?_0)
-```
+$$
 
 Where:
 - `P_pol` = vacuum polarization factor (dimensionless)
 - `f_mm` = millimeter-wave vacuum transition frequency (Hz)
 - `?_0` = fundamental resonant frequency
 
-**Why unique:** The millimeter-wave coupling to vacuum polarization via `f_mm/?_0` creates a dimensionless energy ratio that converts polarization percentage to a force contribution. In quantum vacuum fluctuation theory, mm-wave modes are typically not coupled to gravitational forces. The UQFF framework uniquely couples the THz/mm-wave band vacuum transitions to the gravitational field through the polarization index.
+**Why unique:** The millimeter-wave coupling to vacuum polarization via `f_mm/?_0` creates a
+dimensionless energy ratio that converts polarization percentage to a force contribution. In quantum
+vacuum fluctuation theory, mm-wave modes are typically not coupled to gravitational forces. The UQFF
+framework uniquely couples the THz/mm-wave band vacuum transitions to the gravitational field
+through the polarization index.
 
 **Relation to other terms:**
-```
-F_hyb / F_hier = (P_pol · f_mm/?_0) / (S(v/c)² / ?_0) = P_pol · f_mm / S(v_n/c)²
-```
+$$
+F_hyb / F_hier = (P_pol · f_mm/?_0) / (S(v/c)2 / ?_0) = P_pol · f_mm / S(v_n/c)2
+$$
 
 The ratio is pure polarization per relativistic factor — a new dimensionless UQFF invariant.
 
@@ -170,39 +208,42 @@ The ratio is pure polarization per relativistic factor — a new dimensionless U
 
 ### 4.1 f_z,CGM with [SSq] Update
 
-The circumgalactic medium metallicity fraction receives a UQFF correction through the same [SSq] Entanglement parameter that governs the Triadic resonance:
+The circumgalactic medium metallicity fraction receives a UQFF correction through the same [SSq]
+Entanglement parameter that governs the Triadic resonance:
 
-```
-f_z,CGM = [SSq]^26 · (?_vac,[UA] / ?_vac,[SCm])^{n_CGM} · e^{-[SSq]·n_CGM/26} · VDS
-
-VDS = S_{n=1}^{26} (1/n^26) · [SSq]^n
-
-Reference: f_z,CGM ˜ 1.46×10⁻7³
-```
+$$
+\begin{aligned}
+  & f_z,CGM = [SSq]^26 · (?_vac,[UA] / ?_vac,[SCm])^{n_CGM} · e^{-[SSq]·n_CGM/26} · VDS \\
+  & VDS = S_{n=1}^{26} (1/n^26) · [SSq]^n \\
+  & Reference: f_z,CGM ˜ 1.46×10-73
+\end{aligned}
+$$
 
 ### 4.2 Derivation
 
-```
-[SSq]^26 = 0.57^26 ˜ 6.16×10⁻6
-(?_UA/?_SCm)^{n_CGM}: with (?_UA/?_SCm) ˜ 0.001 and n_CGM = 26
-                      ? 0.001^26 = 10⁻78
-e^{-[SSq]·26/26} = e^{-0.57} ˜ 0.566
+$$
+\begin{aligned}
+  & [SSq]^26 = 0.57^26 ˜ 6.16×10-6 \\
+  & (?_UA/?_SCm)^{n_CGM}: with (?_UA/?_SCm) ˜ 0.001 and n_CGM = 26 \\
+  & ? 0.001^26 = 10-78 \\
+  & e^{-[SSq]·26/26} = e^{-0.57} ˜ 0.566 \\
+  & VDS(n=1 to 26, [SSq]=0.57): \\
+  & VDS = 0.57 + 0.572/2^26 + ... = dominated by n=1 term ˜ 0.57/1 = 0.57 \\
+  & f_z,CGM ˜ 6.16×10-6 · 10-78 · 0.566 · 0.57 ˜ 1.99×10-84...
+\end{aligned}
+$$
 
-VDS(n=1 to 26, [SSq]=0.57):
-VDS = 0.57 + 0.57²/2^26 + ... = dominated by n=1 term ˜ 0.57/1 = 0.57
-
-f_z,CGM ˜ 6.16×10⁻6 · 10⁻78 · 0.566 · 0.57 ˜ 1.99×10⁻84... 
-```
-
-Note: The precise calibration to 1.46×10⁻7³ uses extended intermediate exponent scaling — the density ratio exponent n_CGM is fitted to 67.5 (fractional) rather than the integer 26, matching observed CGM metallicity constraints from Haardt & Madau (2012) and Prochaska et al. (2017).
+Note: The precise calibration to 1.46×10-73 uses extended intermediate exponent scaling — the
+density ratio exponent n_CGM is fitted to 67.5 (fractional) rather than the integer 26, matching
+observed CGM metallicity constraints from Haardt & Madau (2012) and Prochaska et al. (2017).
 
 ### 4.3 Physical Meaning
 
-The 1.46×10⁻7³ value represents approximately:
+The 1.46×10-73 value represents approximately:
 
-- 10^{-73} is near the ratio of Planck length to Hubble radius: l_P/R_H ˜ 1.6×10⁻6¹
-- The ratio to atomic metallicity fraction: Z_CGM/Z_solar ˜ 0.01 ? with UQFF vacuum correction factor ˜ 1.46×10⁻7¹
-- Implies CGM metals are approximately 10⁻7³ of the vacuum energy density, consistent with the CGM tracing filamentary structure in the cosmic web
+- 10^{-73} is near the ratio of Planck length to Hubble radius: l_P/R_H ˜ 1.6×10-61
+- The ratio to atomic metallicity fraction: Z_CGM/Z_solar ˜ 0.01 ? with UQFF vacuum correction factor ˜ 1.46×10-71
+- Implies CGM metals are approximately 10-73 of the vacuum energy density, consistent with the CGM tracing filamentary structure in the cosmic web
 
 ---
 
@@ -210,11 +251,11 @@ The 1.46×10⁻7³ value represents approximately:
 
 | Quantity | Value | Notes |
 |---------|-------|-------|
-| F_U_Bi_i Branch 1 | +2.11×10²°8 N | Creation phase |
-| F_U_Bi_i Branch 2 | -8.31×10²¹¹ N | Annihilation phase |
+| `F_U_Bi_i` Branch 1 | +2.11×102°8 N | Creation phase |
+| `F_U_Bi_i` Branch 2 | -8.31×10211 N | Annihilation phase |
 | Ratio |F_U?/F_U??| = 3940 | Asymmetry factor |
 | Discriminant ? | = 0 | For r > r_Planck |
-| f_z,CGM | 1.46×10⁻7³ | [SSq]-updated |
+| f_z,CGM | 1.46×10-73 | [SSq]-updated |
 | [SSq] | 0.57 | Calibrated constant |
 
 ---
@@ -223,10 +264,10 @@ The 1.46×10⁻7³ value represents approximately:
 
 | F_hier type | Existing CP3 class | Status |
 |------------|-------------------|--------|
-| `F_hier = S(v/c)²/?_0` | `UQFFRelativisticHierarchyDecayIntegralCalculator` | ? Session 52 |
+| `F_hier = S(v/c)2/?_0` | `UQFFRelativisticHierarchyDecayIntegralCalculator` | ? Session 52 |
 | `?F = F_rel·t·(1-e^{-T/t})` | Same class above | ? Session 52 |
 | `F_hyb = P_pol·f_mm/?_0` | Same class above | ? Session 52 |
-| `f_z,CGM ˜ 1.46×10⁻7³` | `UQFFCGMSSqMetallicityCalculator` | ? Session 54 |
+| `f_z,CGM ˜ 1.46×10-73` | `UQFFCGMSSqMetallicityCalculator` | ? Session 54 |
 | `FU_Bi e^{-(p-t_n)}·H_k` | `UQFFBuoyancyMasterIntegralCalculator` | ? Session 54 |
 
 ---
@@ -235,10 +276,14 @@ The 1.46×10⁻7³ value represents approximately:
 
 The two-branch polynomial result confirms:
 
-1. **UQFF vacuum contains two stable extrema** at cosmological scales — creation and annihilation phases
-2. **The real universe sits at the positive branch** (F_U? = 2.11×10²°8 N) at the current epoch t_n ˜ 0.95p
-3. **Primordial nucleation asymmetry** explains why the negative branch (10³·7× stronger) drove inflation-era expansion
-4. **Stability is guaranteed** for all physically observable systems (r > r_Planck, all astrophysical systems)
+1. **UQFF vacuum contains two stable extrema** at cosmological scales — creation and annihilation
+phases
+2. **The real universe sits at the positive branch** (F_U? = 2.11×102°8 N) at the current epoch t_n
+˜ 0.95p
+3. **Primordial nucleation asymmetry** explains why the negative branch (103·7× stronger) drove
+inflation-era expansion
+4. **Stability is guaranteed** for all physically observable systems (r > r_Planck, all
+astrophysical systems)
 
 ---
 
@@ -249,13 +294,15 @@ The two-branch polynomial result confirms:
 
 ### §A.1 Sector Classification
 
-This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see `uqff_lagrangian_derivation.py`).
+This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
-The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive quantum fundamentals (DPM, UA, SCm):
+The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
+quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_\mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
+$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
 
 where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
@@ -269,7 +316,9 @@ $$\boxed{\frac{\delta S}{\delta \phi_{\rm NS}} = \nabla^2 \phi_{\rm NS} - (4\pi 
 
 $$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\rm NS} = 0$$
 
-The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g forces) through vacuum density initialization to the sector-specific equation of motion. Every term in the E-L equation inherits its physical origin from the cosmogenesis master.
+The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
+forces) through vacuum density initialization to the sector-specific equation of motion. Every term
+in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 
 ---
@@ -280,9 +329,9 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.115$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m³.
+For this system, the local VDS sub-ratio is $0.115$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -294,13 +343,13 @@ Since $p_{\rm DVP} = 19$ is **sub-threshold** (threshold at $p > 26$), the syste
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
-The BSH saturation timescale for this sector is **10⁴ yr** (spin-down equilibrium):
+The BSH saturation timescale for this sector is **104 yr** (spin-down equilibrium):
 
-$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
+$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\rm SCm}$ which initializes the harmonic series at cosmogenesis.
 
@@ -308,11 +357,11 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.115 | ✓ Threshold-consistent |
-| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 19$ | ✓ Sub-threshold |
-| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
-| [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
+| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.115 | PASS Threshold-consistent |
+| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 19$ | PASS Sub-threshold |
+| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
+| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
 ---
@@ -322,20 +371,23 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | ✓ Consistent |
-| Cosmological constant Λ | 1.1×10⁻⁵² m⁻² (UQFF vacuum term) | 1.114×10⁻⁵² m⁻² | Planck 2018 | ✓ Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10⁻³⁵/yr | Super-K 2024 | ✓ Consistent |
-| UQFF buoyancy signature | F_U_Bi_i unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
+| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
-**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes significant, offering a falsifiable prediction beyond the Standard Model.
+**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
+produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
+bridge.*
 
 ## References
 
 1. grok_share_7514fe.txt — "DeepSearch: F_U_Bi_i Integral Verification" (Section 27-29)
 2. grok_share_7514fe.txt — "Uniquely Rare Mathematical Discoveries" (Section 24-26)
-3. grok_share_7514fe.txt — "DeepSearch Insights Update" — f_z,CGM ˜ 1.46×10⁻7³
+3. grok_share_7514fe.txt — "DeepSearch Insights Update" — f_z,CGM ˜ 1.46×10-73
 4. CondensedPhysics3.py — `UQFFRelativisticHierarchyDecayIntegralCalculator` (Session 52)
 5. CondensedPhysics3.py — `UQFFBuoyancyMasterIntegralCalculator` (Session 54)
 6. CondensedPhysics3.py — `UQFFCGMSSqMetallicityCalculator` (Session 54)
@@ -360,9 +412,9 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `f`neutron_s26_coupling`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `k`ozima_scm_cross_section`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `k`ozima_wstp_kernel`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -371,7 +423,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `r`amanujan_polylog_s26`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
 | `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
@@ -380,7 +432,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `m`ock_theta_q26`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -391,8 +443,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `r`amanujan_pi_uqff`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `m`ock_theta_pi_wstp_kernel`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]

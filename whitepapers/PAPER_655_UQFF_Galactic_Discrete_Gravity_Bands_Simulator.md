@@ -1,11 +1,25 @@
+---
+paper_id: PAPER_655
+title: "UQFF Galactic Discrete Gravity Bands & Aether Field Simulator"
+session: 168
+date: 2026-01-01
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [AGN, vacuum, SCm, buoyancy, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_655: UQFF Galactic Discrete Gravity Bands & Aether Field Simulator
 **Author:** Daniel T. Murphy
 
 **Version:** 1.0.0  
 **Session:** 168 | **Date:** March 31 2026  
 **CP4 Class:** UQFFGalacticDiscreteBandSimulatorCalculator  
-**Source:** grok_share_b2e2c5cba7a.txt (Session 168) -- SystemAnalysisSimulator_v1-v7 (lines 5215-17971)  
-**Companion papers:** PAPER_650 (Buoyancy Harmonics), PAPER_646 (Ui Operator), PAPER_647 (Vacuum Density), PAPER_642 (SM Bridge)
+**Source:** grok_share_b2e2c5cba7a.txt (Session 168) — SystemAnalysisSimulator_v1-v7 (lines
+5215-17971)  
+**Companion papers:** PAPER_650 (Buoyancy Harmonics), PAPER_646 (Ui Operator), PAPER_647 (Vacuum
+Density), PAPER_642 (SM Bridge)
 
 ---
 
@@ -27,7 +41,7 @@ as the medium supporting all field propagation.
 
 ## §1 Three Discrete Universal Gravity Bands
 
-### 1.1 Ug1 -- Internal Magnetic Dipole Gravity
+### 1.1 Ug1 — Internal Magnetic Dipole Gravity
 
 $$U_{g1} = k_1 \cdot \frac{G M \mu_B B_{\text{internal}}}{r^3} \cdot (1 + H_{SCm})$$
 
@@ -42,28 +56,28 @@ $$U_{g1} = k_1 \cdot \frac{G M \mu_B B_{\text{internal}}}{r^3} \cdot (1 + H_{SCm
 | H_SCm | 0.99 | Heliosphere/superconductive modulation |
 
 **Physical meaning**: Ug1 is the gravity component sourced by the body's **internal magnetic
-dipole** -- essentially the coupling between mass (G*M), magnetic moment (μB*B), and the
+dipole** — essentially the coupling between mass (G*M), magnetic moment (μB*B), and the
 inverse-cube field geometry of a dipole (1/r^3).
 
-### 1.2 Ug2 -- Field Bubble Tension
+### 1.2 Ug2 — Field Bubble Tension
 
 $$U_{g2} = k_2 \cdot \frac{G M \varepsilon_0 E_{\text{field}}^2}{2r} \cdot \left(\sum_j \rho_{\text{vac},j}\right) \cdot H_{SCm}$$
 
 **Physical meaning**: Ug2 is the energy stored in the **electromagnetic field bubble**
-surrounding the body -- proportional to the electric field energy density (ε_0E^2/2) and
+surrounding the body — proportional to the electric field energy density (ε_0E^2/2) and
 the sum of vacuum densities from the hierarchy (PAPER_647). It falls as 1/r (longer range
 than Ug1's 1/r^3), making it the **circumstellar field gravity component**.
 
 The sum Σρvac,j = ρvac,[SCm] + ρvac,[UA] + ρvac,Ui creates three sub-levels within Ug2,
 giving Ug2 its own internal three-layer structure.
 
-### 1.3 Ug3 -- Magnetic String Disk
+### 1.3 Ug3 — Magnetic String Disk
 
 $$U_{g3} = k_3 \sum_j B_j(r, \theta, t, \rho_{\text{vac},[SCm]}) \cdot \cos(\omega_s t \pi) \cdot P_{\text{core}} \cdot E_{\text{react}}$$
 
 **Physical meaning**: Ug3 is the gravity component produced by **billions of discrete
 magnetic strings** that fill the galactic disk in the x-y plane. Each string has a
-unique polarity, length, and angular frequency -- forming the prime-coded DVP structure
+unique polarity, length, and angular frequency — forming the prime-coded DVP structure
 (PAPER_649). The strings "reciprocate without losing energy" through the Aether.
 
 ---
@@ -82,7 +96,7 @@ This means:
 - Um_band2 (circumstellar) -> couples only to Ug2
 - Um_band3 (string disk) -> couples only to Ug3
 
-**Consequence**: The full field equation is block-diagonal in gravity-magnetism space --
+**Consequence**: The full field equation is block-diagonal in gravity-magnetism space —
 three independent (Ugi, Umi) pairs. This simplifies computation: each pair can be
 evaluated separately without cross-coupling.
 
@@ -171,13 +185,15 @@ This is the **vacuum zero-point energy extraction mode** referenced in AetherIne
 
 ### §A.1 Sector Classification
 
-This paper maps to **general-UQFF** sector of the 9-sector UQFF Lagrangian (see `uqff_lagrangian_derivation.py`).
+This paper maps to **general-UQFF** sector of the 9-sector UQFF Lagrangian (see
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
-The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive quantum fundamentals (DPM, UA, SCm):
+The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
+quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_\mu \phi)(\partial^\mu \phi) - V(\phi) + \mathcal{L}_{\rm cosmo}$$
+$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_mu \phi)(\partial^\mu \phi) - V(\phi) + \mathcal{L}_{\rm cosmo}$$
 
 where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
@@ -191,7 +207,9 @@ $$\boxed{\frac{\delta S}{\delta \phi} = \nabla^2 \phi + \kappa \rho_{\rm vac,[SC
 
 $$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi = 0$$
 
-The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g forces) through vacuum density initialization to the sector-specific equation of motion. Every term in the E-L equation inherits its physical origin from the cosmogenesis master.
+The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
+forces) through vacuum density initialization to the sector-specific equation of motion. Every term
+in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 
 ---
@@ -202,7 +220,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
 For this system, the local VDS sub-ratio is $0.067$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m^3.
 
@@ -218,11 +236,11 @@ Since $p_{\rm DVP} = 101$ is **resonant** (threshold at $p > 26$), the system's 
 
 The BSH saturation timescale for this sector is **system-dependent** (buoyancy equilibrium):
 
-$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
+$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\rm SCm}$ which initializes the harmonic series at cosmogenesis.
 
@@ -230,17 +248,17 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.067 | ✓ Threshold-consistent |
-| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 101$ | ✓ Resonant |
-| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day^{-}1 | Applied in VDS exponential | ✓ Canonical |
-| [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
+| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.067 | PASS Threshold-consistent |
+| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 101$ | PASS Resonant |
+| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
+| κ decay | $5.0 \times 10^{-4}$ day^{-}1 | Applied in VDS exponential | PASS Canonical |
+| [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
 ---
 
 
-## §SM Anchors -- G6 Gate (CVW v2.0.0)
+## §SM Anchors — G6 Gate (CVW v2.0.0)
 
 | Observable | SM Value | UQFF Discrete Band Prediction | Alignment |
 |------------|----------|-------------------------------|-----------|
@@ -250,20 +268,20 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | Milky Way disk thickness | ~1 kpc | Ug3 string disk scale height | ✅ structural |
 | CMB dipole isotropy | 10^{-}3 anisotropy | Ug1 dipole modulation of Aether | 🔍 candidate |
 
-> **SM Anchor Reference:** PAPER_642 -- UQFFSMParameterBridgeMasterComparisonCalculator
+> **SM Anchor Reference:** PAPER_642 — UQFFSMParameterBridgeMasterComparisonCalculator
 
 ---
 
 ## References
 
-1. SystemAnalysisSimulator v1-v7 -- grok_share_b2e2c5cba7a.txt (Session 168) lines 5215-17971
-2. PAPER_650 -- Buoyancy Harmonics (Ub companion to each Ug band)
-3. PAPER_646 -- Universal Inertial Operator (Ui medium properties)
-4. PAPER_647 -- Vacuum Density Series (ρvac,A Aether baseline)
-5. PAPER_649 -- Dipole Vortex Primes (Ug3 string prime encoding)
-6. PAPER_642 -- SM Parameter Bridge
+1. SystemAnalysisSimulator v1-v7 — grok_share_b2e2c5cba7a.txt (Session 168) lines 5215-17971
+2. PAPER_650 — Buoyancy Harmonics (Ub companion to each Ug band)
+3. PAPER_646 — Universal Inertial Operator (Ui medium properties)
+4. PAPER_647 — Vacuum Density Series (ρvac,A Aether baseline)
+5. PAPER_649 — Dipole Vortex Primes (Ug3 string prime encoding)
+6. PAPER_642 — SM Parameter Bridge
 7. Rubin V C, Ford W K (1970): "Rotation of Andromeda Nebula", ApJ 159:379
-8. Milky Way Galactic rotation -- Gravity Collaboration (2019), A&A 625:L10
+8. Milky Way Galactic rotation — Gravity Collaboration (2019), A&A 625:L10
 9. ARCHITECTURE_FLOW_DIAGRAM.md v5.24
 
 
@@ -279,9 +297,9 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `f`neutron_s26_coupling`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `k`ozima_scm_cross_section`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `k`ozima_wstp_kernel`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -290,7 +308,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `r`amanujan_polylog_s26`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
 | `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
@@ -299,7 +317,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `m`ock_theta_q26`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -310,8 +328,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `r`amanujan_pi_uqff`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `m`ock_theta_pi_wstp_kernel`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]

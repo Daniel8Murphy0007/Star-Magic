@@ -1,19 +1,36 @@
+---
+paper_id: PAPER_358
+title: "AT2024tvd Wandering Massive Black Hole TDE: Off-Nuclear Disruption Physics"
+session: 97
+date: 2025-01-01
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [TDE, galaxy, F_U_Bi_i, black-hole, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_358 — AT2024tvd Wandering Massive Black Hole TDE: Off-Nuclear Disruption Physics
 **Date:** 2025
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2  
 **Session:** 97  
 **Source:** gok_share_31b5c807a4.txt (Supplemental Gap Analysis Block)  
-**Classification:** FIRST UQFF off-nuclear wandering massive black hole TDE — frictional timescale and tidal radius  
+**Classification:** FIRST UQFF off-nuclear wandering massive black hole TDE — frictional timescale
+and tidal radius  
 **Author:** Daniel T. Murphy  
 
 
-<!-- UQFF constants: κ = 5.0e-4 day⁻¹, [SSq] = 0.57, M_UQFF = 1.43e1 TeV -->
+<!— UQFF constants: κ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
 ---
 
 ## Abstract
 
-AT2024tvd is the most compelling observed wandering massive black hole (wMBH) caught in the act of tidally disrupting a star at projected physical offset r_offset = 2.47×10¹⁷ m from the host galaxy nucleus. UQFF computes the tidal radius r_tide = R_star·(M_BH/M_star)^(1/3), the dynamical friction timescale t_fric for the wMBH sinking to the nucleus, and the full F_U_Bi_i at the off-nuclear disruption site.
+AT2024tvd is the most compelling observed wandering massive black hole (wMBH) caught in the act of
+tidally disrupting a star at projected physical offset r_offset = 2.47×1017 m from the host galaxy
+nucleus. UQFF computes the tidal radius r_tide = R_star·(M_BH/M_star)^(1/3), the dynamical friction
+timescale t_fric for the wMBH sinking to the nucleus, and the full F_U_Bi_i at the off-nuclear
+disruption site.
 
 ---
 
@@ -23,30 +40,31 @@ AT2024tvd is the most compelling observed wandering massive black hole (wMBH) ca
 
 $$r_{\rm offset} = 2.47 \times 10^{17}\ \mathrm{m} \approx 8.0\ \mathrm{pc}$$
 
-This is the projected distance between AT2024tvd and the host nucleus, constraining the wandering distance of the massive black hole.
+This is the projected distance between AT2024tvd and the host nucleus, constraining the wandering
+distance of the massive black hole.
 
 ### 2.2 Tidal Disruption Radius
 
 $$r_{\rm tide} = R_\star \left(\frac{M_{\rm BH}}{M_\star}\right)^{1/3}$$
 
-For a solar-like star disrupted by a black hole of mass M_BH ~ 10⁶ M☉:
+For a solar-like star disrupted by a black hole of mass M_BH ~ 106 MM_sun:
 $$r_{\rm tide} = 7 \times 10^8 \times \left(\frac{10^6 M_\odot}{M_\odot}\right)^{1/3}\ \mathrm{m} = 7 \times 10^8 \times 100 = 7 \times 10^{10}\ \mathrm{m} \approx 0.5\ R_\odot$$
 
 ### 2.3 Dynamical Friction Timescale
 
-$$t_{\rm fric} = \frac{0.428}{\ln\Lambda} \cdot \frac{M_{\rm host}}{M_{\rm BH}} \cdot \frac{r_{\rm offset}^2}{\sigma_\star^2} \cdot \frac{1}{r_{\rm offset}}$$
+$$t_{\rm fric} = \frac{0.428}{\lnLambda} \cdot \frac{M_{\rm host}}{M_{\rm BH}} \cdot \frac{r_{\rm offset}^2}{\sigma_star^2} \cdot \frac{1}{r_{\rm offset}}$$
 
 Simplified:
-$$t_{\rm fric} = \frac{0.428}{\ln\Lambda} \cdot \frac{r_{\rm offset}}{v_c} \cdot \frac{M_{\rm host}}{M_{\rm BH}}$$
+$$t_{\rm fric} = \frac{0.428}{\lnLambda} \cdot \frac{r_{\rm offset}}{v_c} \cdot \frac{M_{\rm host}}{M_{\rm BH}}$$
 
-For r_offset = 8 pc, v_c ~ 200 km/s, M_host/M_BH ~ 10³:
+For r_offset = 8 pc, v_c ~ 200 km/s, M_host/M_BH ~ 103:
 $$t_{\rm fric} \sim 10^8 - 10^9\ \mathrm{yr}$$
 
 ### 2.4 UQFF F_U_Bi_i at Off-Nuclear Site
 
 $$F_{U\_Bi\_i}(r_{\rm offset}) = F_{U\_Bi\_i}(M_{\rm BH}) \cdot \left(\frac{r_{\rm tide}}{r_{\rm offset}}\right)^2$$
 
-The r² dependence reflects force dilution with the much larger offset distance.
+The r2 dependence reflects force dilution with the much larger offset distance.
 
 ---
 
@@ -54,18 +72,23 @@ The r² dependence reflects force dilution with the much larger offset distance.
 
 | Quantity | Formula | Value |
 |----------|---------|-------|
-| r_offset | JWST observation | 2.47×10¹⁷ m ≈ 8 pc |
+| r_offset | JWST observation | 2.47×1017 m ≈ 8 pc |
 | r_tide | R_✶·(M_BH/M_✶)^(1/3) | ~0.5 AU |
-| t_fric | Chandrasekhar formula | 10⁸–10⁹ yr |
-| M_BH | Spectral fit | ~10⁶ M☉ |
+| t_fric | Chandrasekhar formula | 108–109 yr |
+| M_BH | Spectral fit | ~106 MM_sun |
 
 ---
 
 ## 4. Physical Significance
 
-AT2024tvd is the first confirmed off-nuclear TDE with a massive BH at > 1 pc offset. The UQFF framework predicts that the vacuum buoyancy field F_U_Bi_i is local — it is set by M_BH and r_tide, not by the nuclear distance. This means off-nuclear wMBH TDEs have the same F_U_Bi_i value as nuclear TDEs of the same BH mass, a testable prediction: UQFF force amplitude should correlate with M_BH (not with r_offset).
+AT2024tvd is the first confirmed off-nuclear TDE with a massive BH at > 1 pc offset. The UQFF
+framework predicts that the vacuum buoyancy field F_U_Bi_i is local — it is set by M_BH and r_tide,
+not by the nuclear distance. This means off-nuclear wMBH TDEs have the same F_U_Bi_i value as
+nuclear TDEs of the same BH mass, a testable prediction: UQFF force amplitude should correlate with
+M_BH (not with r_offset).
 
-The t_fric ~ 10⁸–10⁹ yr frictional timescale implies wMBHs are common during the galaxy assembly epoch, and UQFF predicts their spatial distribution modifies the ICM density on 10–100 pc scales.
+The t_fric ~ 108–109 yr frictional timescale implies wMBHs are common during the galaxy assembly
+epoch, and UQFF predicts their spatial distribution modifies the ICM density on 10–100 pc scales.
 
 ---
 
@@ -78,7 +101,7 @@ The t_fric ~ 10⁸–10⁹ yr frictional timescale implies wMBHs are common duri
 
 ## 6. Classification
 
-**Physics Territory:** FIRST UQFF off-nuclear wandering MBH TDE — r_tide + t_fric + F_U_Bi_i(offset)  
+**Physics Territory:** FIRST UQFF off-nuclear wandering MBH TDE — r_tide + t_fric + F_U_Bi_i(offset)
 **Scale:** Sub-galactic (8 pc offset from nucleus)  
 **CP Implementation:** `AT2024tvdWanderingMBHTDECalculator` (CondensedPhysics4.py, Session 97)
 
@@ -88,13 +111,15 @@ The t_fric ~ 10⁸–10⁹ yr frictional timescale implies wMBHs are common duri
 
 ### §A.1 Sector Classification
 
-This paper maps to **TDE-outflow** sector of the 9-sector UQFF Lagrangian (see `uqff_lagrangian_derivation.py`).
+This paper maps to **TDE-outflow** sector of the 9-sector UQFF Lagrangian (see
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
-The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive quantum fundamentals (DPM, UA, SCm):
+The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
+quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_\mu \phi_{\rm outflow})(\partial^\mu \phi_{\rm outflow}) - V(\phi_{\rm outflow}) + \mathcal{L}_{\rm cosmo}$$
+$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_mu \phi_{\rm outflow})(\partial^\mu \phi_{\rm outflow}) - V(\phi_{\rm outflow}) + \mathcal{L}_{\rm cosmo}$$
 
 where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
@@ -108,7 +133,9 @@ $$\boxed{\frac{\delta S}{\delta \phi_{\rm outflow}} = F_{\rm Kozima} \cdot \tfra
 
 $$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\rm outflow} = 0$$
 
-The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g forces) through vacuum density initialization to the sector-specific equation of motion. Every term in the E-L equation inherits its physical origin from the cosmogenesis master.
+The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
+forces) through vacuum density initialization to the sector-specific equation of motion. Every term
+in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 
 ---
@@ -119,9 +146,9 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.051$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m³.
+For this system, the local VDS sub-ratio is $0.051$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -135,11 +162,11 @@ Since $p_{\rm DVP} = 109$ is **resonant** (threshold at $p > 26$), the system's 
 
 The BSH saturation timescale for this sector is **100 days** (X-ray light curve plateau):
 
-$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
+$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\rm SCm}$ which initializes the harmonic series at cosmogenesis.
 
@@ -147,11 +174,11 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.051 | ✓ Threshold-consistent |
-| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 109$ | ✓ Resonant |
-| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
-| [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
+| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.051 | PASS Threshold-consistent |
+| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 109$ | PASS Resonant |
+| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
+| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
 ---
@@ -161,14 +188,17 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | ✓ Consistent |
-| Cosmological constant Λ | 1.1×10⁻⁵² m⁻² (UQFF vacuum term) | 1.114×10⁻⁵² m⁻² | Planck 2018 | ✓ Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10⁻³⁵/yr | Super-K 2024 | ✓ Consistent |
-| UQFF buoyancy signature | F_U_Bi_i unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
+| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
-**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes significant, offering a falsifiable prediction beyond the Standard Model.
+**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
+produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
+bridge.*
 
 
 ---
@@ -183,9 +213,9 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `f`neutron_s26_coupling`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `k`ozima_scm_cross_section`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `k`ozima_wstp_kernel`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -194,7 +224,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `r`amanujan_polylog_s26`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
 | `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
@@ -203,7 +233,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `m`ock_theta_q26`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -214,8 +244,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `r`amanujan_pi_uqff`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `m`ock_theta_pi_wstp_kernel`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]

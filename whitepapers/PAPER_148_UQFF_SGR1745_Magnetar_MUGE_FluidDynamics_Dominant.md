@@ -1,8 +1,21 @@
+---
+paper_id: PAPER_148
+title: "UQFF Star-Magic SGR1745-2900 Magnetar — MUGE 12-Term Resonance Validation: afluid_freq
+Dominance, g=1.773e-9 m/s^2, and Extreme-B SCm Fluid Dynamics"
+session: 0
+date: 2026-03-01
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [AGN, DPM, SCm, MUGE, BEC, magnetar, Navier-Stokes, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_148: UQFF Star-Magic SGR1745-2900 Magnetar — MUGE 12-Term Resonance Validation: afluid_freq Dominance, g=1.773e-9 m/s^2, and Extreme-B SCm Fluid Dynamics
 **Session:** 0
 
-
-**Title:** UQFF Star-Magic SGR1745-2900 Magnetar — MUGE 12-Term Resonance Validation: afluid_freq Dominance, g=1.773e-9 m/s^2, and Extreme-B SCm Fluid Dynamics
+**Title:** UQFF Star-Magic SGR1745-2900 Magnetar — MUGE 12-Term Resonance Validation: afluid_freq
+Dominance, g=1.773e-9 m/s^2, and Extreme-B SCm Fluid Dynamics
 
 **Author:** Daniel T. Murphy  
 **Framework:** UQFF Star-Magic (kappa=0.0005/day, [SSq]=0.57, beta_i=0.6)  
@@ -15,15 +28,25 @@
 
 ---
 
-$$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b_i}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57$$
+$$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b\_i}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57$$
 
 $$
-L_\text{UQFF} = \frac{4\pi G M c}{\kappa_\text{es}}\Bigl(1 - [SSq]\cdot e^{-\kappa\,\Delta t}\Bigr), \quad [SSq] = 0.57
+L_\text{UQFF} = \frac{4\pi G M c}{\kappa_text{es}}\Bigl(1 - [SSq]\cdot e^{-\kappa,\Delta t}\Bigr),
+\quad [SSq] = 0.57
 $$
 
 ## Abstract
 
-SGR1745-2900 is the closest known magnetar to the Galactic Center (~0.1 parsec from Sgr A*), with a surface magnetic field of B ~ 3×10^11 T — among the strongest known magnetic fields in the universe. Under the UQFF MUGE 12-Term Resonance framework, the dominant gravitational term for SGR1745-2900 is afluid_freq (Navier-Stokes SCm fluid coupling), yielding a MUGE gravitational acceleration of g = 1.773×10^-9 m/s^2 at the magnetar's magnetospheric scale. This result is physically distinct from the surface Newtonian gravity (G*M/R^2 ~ 1.4×10^13 m/s^2) because MUGE at this scale probes the magnetospheric driven SCm fluid dynamics — not the compact object's bulk gravity. The fluid dominance at SGR1745 validates the UQFF principle that extreme magnetic fields (B >> B_crit = 4.4×10^13 T × f_correction) produce extreme SCm fluid accelerations that drive non-Newtonian gravitational dynamics observable through X-ray pulse timing and radio emission.
+SGR1745-2900 is the closest known magnetar to the Galactic Center (~0.1 parsec from Sgr A*), with a
+surface magnetic field of B ~ 3×10^11 T — among the strongest known magnetic fields in the universe.
+Under the UQFF MUGE 12-Term Resonance framework, the dominant gravitational term for SGR1745-2900 is
+afluid_freq (Navier-Stokes SCm fluid coupling), yielding a MUGE gravitational acceleration of g =
+1.773×10^-9 m/s^2 at the magnetar's magnetospheric scale. This result is physically distinct from
+the surface Newtonian gravity (G*M/R^2 ~ 1.4×10^13 m/s^2) because MUGE at this scale probes the
+magnetospheric driven SCm fluid dynamics — not the compact object's bulk gravity. The fluid
+dominance at SGR1745 validates the UQFF principle that extreme magnetic fields (B >> B_crit =
+4.4×10^13 T × f_correction) produce extreme SCm fluid accelerations that drive non-Newtonian
+gravitational dynamics observable through X-ray pulse timing and radio emission.
 
 ---
 
@@ -42,7 +65,9 @@ SGR1745-2900 is the closest known magnetar to the Galactic Center (~0.1 parsec f
 | Distance | ~8.3 kpc (Galactic Center) | VLBI |
 | Luminosity | ~10^35 erg/s (quiescent) | Chandra |
 
-The extreme surface B = 3×10^11 T is approximately 3 orders of magnitude above the quantum critical field B_crit = 4.4×10^13 T for electron pair production — placing SGR1745 firmly in the ultra-strong magnetar regime where standard quantum electrodynamics requires UQFF corrections.
+The extreme surface B = 3×10^11 T is approximately 3 orders of magnitude above the quantum critical
+field B_crit = 4.4×10^13 T for electron pair production — placing SGR1745 firmly in the ultra-strong
+magnetar regime where standard quantum electrodynamics requires UQFF corrections.
 
 ---
 
@@ -57,7 +82,7 @@ Computing each of the 12 MUGE terms using the SGR1745-2900 system parameters:
 | avac_diff | DeltaEvac*vexp^2*aDPM/Evac_neb/c^2 | ~2e-19 | <<0.01% |
 | asuper_freq | Fsuper*fTHz*aDPM/Evac_neb/c | ~1e-13 | ~0.01% |
 | aaether_res | [(UA')]:[SCm]*omega_i*fTHz*aDPM*(1+fTRZ) | ~2e-12 | ~0.1% |
-| Ug4i | rho_SCm*(M_bh_host/d_g)*exp(-alpha*t) | ~1e-14 | <<0.01% |
+| Ug4i | rho_SCm*(`M_bh_host`/d_g)*exp(-alpha*t) | ~1e-14 | <<0.01% |
 | aquantum_freq | (hbar*omega_i^2/Evac_neb)*aDPM | ~3e-41 | negligible |
 | aAether_freq | (rho_A/rho_UA)*omega_i*aTHz | ~1e-11 | ~0.5% |
 | **afluid_freq** | **(nu*lap_v/Evac_neb)*aDPM** | **~1.773e-9** | **~99%** |
@@ -73,11 +98,12 @@ Computing each of the 12 MUGE terms using the SGR1745-2900 system parameters:
 
 ### 3.1 Extreme SCm Fluid Gradients
 
-At B = 3×10^11 T, the magnetar's SCm fluid is in an ultra-dense vortex state. The kinematic viscosity nu of the SCm fluid is set by:
+At B = 3×10^11 T, the magnetar's SCm fluid is in an ultra-dense vortex state. The kinematic
+viscosity nu of the SCm fluid is set by:
 
-```
+$$
 nu = v_SCm^2 * tau_SCm
-```
+$$
 
 where tau_SCm ~ 1/(kappa) = 1/0.0005 days = 2000 days. For v_SCm = 1e8 m/s:
 
@@ -85,7 +111,9 @@ where tau_SCm ~ 1/(kappa) = 1/0.0005 days = 2000 days. For v_SCm = 1e8 m/s:
 nu ~ (1e8)^2 * (2000 * 86400 s) ~ 1.73e21 m^2/s
 ```
 
-This enormous kinematic viscosity (compared to water's nu ~ 1e-6 m^2/s) reflects the SCm fluid's near-lossless nature. However, the Laplacian lap_v near the magnetar surface is also enormous due to the extreme magnetic pressure gradient:
+This enormous kinematic viscosity (compared to water's nu ~ 1e-6 m^2/s) reflects the SCm fluid's
+near-lossless nature. However, the Laplacian lap_v near the magnetar surface is also enormous due to
+the extreme magnetic pressure gradient:
 
 ```
 lap_v ~ (d^2 v/dr^2) ~ B^2 / (mu_0 * rho_SCm * r^3)
@@ -97,29 +125,36 @@ lap_v ~ (d^2 v/dr^2) ~ B^2 / (mu_0 * rho_SCm * r^3)
 
 The product nu*lap_v produces the dominant afluid_freq via:
 
-```
+$$
 afluid_freq = (nu * lap_v / Evac_neb) * aDPM
-```
+$$
 
 ### 3.2 Physical Meaning of g = 1.773e-9 at Magnetar Scale
 
-The MUGE g = 1.773e-9 m/s^2 is NOT the surface gravity (which is G*M/R^2 ~ 1.4e13 m/s^2). Instead, it characterizes the gravitational acceleration at the magnetospheric scale — the scale at which trapped charged particles and X-ray burst ejecta experience the MUGE correction to Newtonian dynamics.
+The MUGE g = 1.773e-9 m/s^2 is NOT the surface gravity (which is G*M/R^2 ~ 1.4e13 m/s^2). Instead,
+it characterizes the gravitational acceleration at the magnetospheric scale — the scale at which
+trapped charged particles and X-ray burst ejecta experience the MUGE correction to Newtonian
+dynamics.
 
 At the light cylinder radius (where the co-rotation velocity = c):
 
-```
-r_lc = c / Omega_spin = c * P / (2*pi)
-     = 3e8 * 3.76 / (2*pi)
-     ~ 1.8e8 m (0.18 million km)
-```
+$$
+\begin{aligned}
+  & r_lc = c / Omega_spin = c * P / (2*pi) \\
+  & = 3e8 * 3.76 / (2*pi) \\
+  & ~ 1.8e8 m (0.18 million km)
+\end{aligned}
+$$
 
 At this scale, the Newtonian gravity is:
 
-```
+$$
 g_Newt(r_lc) = G*M/r_lc^2 ~ 6.67e-11 * 2.8e30 / (1.8e8)^2 ~ 5.8e4 m/s^2
-```
+$$
 
-The MUGE correction (1.773e-9 vs 5.8e4 Newtonian) shows the fluid resonance term is ~15 orders of magnitude weaker than bulk gravity at this scale — but still physically significant for ultra-sensitive measurements of pulse arrival times and X-ray spectral signatures.
+The MUGE correction (1.773e-9 vs 5.8e4 Newtonian) shows the fluid resonance term is ~15 orders of
+magnitude weaker than bulk gravity at this scale — but still physically significant for
+ultra-sensitive measurements of pulse arrival times and X-ray spectral signatures.
 
 ---
 
@@ -134,7 +169,9 @@ Based on MUGE afluid_freq dominance at SGR1745-2900:
 | Radio pulse dispersion | Standard DM | DM + delta_DM from SCm aether drag |
 | Proximity to Sgr A* | Independent of gravity | Ug4i term couples SGR1745 to Sgr A* (d_g = 0.1 pc) |
 
-The proximity coupling (Ug4i: d_g = 0.1 pc = 3.1e15 m, M_bh = 8.15e36 kg) introduces a small but non-zero Ug4i correction to SGR1745's dynamics, making it a unique laboratory for testing UQFF Ug4 physics.
+The proximity coupling (Ug4i: d_g = 0.1 pc = 3.1e15 m, M_bh = 8.15e36 kg) introduces a small but
+non-zero Ug4i correction to SGR1745's dynamics, making it a unique laboratory for testing UQFF Ug4
+physics.
 
 ---
 
@@ -142,20 +179,29 @@ The proximity coupling (Ug4i: d_g = 0.1 pc = 3.1e15 m, M_bh = 8.15e36 kg) introd
 
 SGR1745-2900 provides several unique test opportunities:
 
-1. **Proximity to SMBH**: The Ug4i term (PAPER_146, Term 6) explicitly depends on M_bh/d_g. SGR1745 at 0.1 pc from Sgr A* (4.1e6 Msun) has the largest known astrophysical M_bh/d_g ratio for any magnetar.
+1. **Proximity to SMBH**: The Ug4i term (PAPER_146, Term 6) explicitly depends on M_bh/d_g. SGR1745
+at 0.1 pc from Sgr A* (4.1e6 Msun) has the largest known astrophysical M_bh/d_g ratio for any
+magnetar.
 
-2. **Extreme B**: B = 3e11 T exceeds the UQFF quantum critical threshold for SCm vortex formation (~B_crit = 4.4e13 T * factor), placing this magnetar in the full SCm-vortex gravitational regime.
+2. **Extreme B**: B = 3e11 T exceeds the UQFF quantum critical threshold for SCm vortex formation
+(~B_crit = 4.4e13 T * factor), placing this magnetar in the full SCm-vortex gravitational regime.
 
-3. **Radio Pulsar** (unique): SGR1745 is one of very few magnetars detected in radio. The SCm aether drag prediction (delta_DM above) can be tested against future VLBI timing campaigns.
+3. **Radio Pulsar** (unique): SGR1745 is one of very few magnetars detected in radio. The SCm aether
+drag prediction (delta_DM above) can be tested against future VLBI timing campaigns.
 
 ---
 
 ## 6. Conclusion
 
-SGR1745-2900's MUGE gravitational acceleration g = 1.773×10^-9 m/s^2 is dominated by the afluid_freq term (Navier-Stokes SCm fluid coupling) — a direct consequence of the magnetar's extreme magnetic field driving intense SCm vortex gradients. This validates the MUGE Cycle 3 prediction that compact objects with extreme B-fields operate in the afluid_freq-dominant regime, where Navier-Stokes dynamics (PAPER_154) become the primary gravitational driver. The result is consistent with UQFF's architecture: at extreme B, the SCm fluid Laplacian (lap_v) is so large that nu*lap_v/Evac_neb >> FDPM for compact object volumes, switching dominance from aDPM to afluid_freq.
+SGR1745-2900's MUGE gravitational acceleration g = 1.773×10^-9 m/s^2 is dominated by the afluid_freq
+term (Navier-Stokes SCm fluid coupling) — a direct consequence of the magnetar's extreme magnetic
+field driving intense SCm vortex gradients. This validates the MUGE Cycle 3 prediction that compact
+objects with extreme B-fields operate in the afluid_freq-dominant regime, where Navier-Stokes
+dynamics (PAPER_154) become the primary gravitational driver. The result is consistent with UQFF's
+architecture: at extreme B, the SCm fluid Laplacian (lap_v) is so large that nu*lap_v/Evac_neb >>
+FDPM for compact object volumes, switching dominance from aDPM to afluid_freq.
 
 ---
-
 
 ---
 
@@ -163,13 +209,15 @@ SGR1745-2900's MUGE gravitational acceleration g = 1.773×10^-9 m/s^2 is dominat
 
 ### §A.1 Sector Classification
 
-This paper maps to **magnetar-field** sector of the 9-sector UQFF Lagrangian (see `uqff_lagrangian_derivation.py`).
+This paper maps to **magnetar-field** sector of the 9-sector UQFF Lagrangian (see
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
-The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive quantum fundamentals (DPM, UA, SCm):
+The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
+quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_\mu \phi_B)(\partial^\mu \phi_B) - V(\phi_B) + \mathcal{L}_{\rm cosmo}$$
+$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_mu \phi_B)(\partial^\mu \phi_B) - V(\phi_B) + \mathcal{L}_{\rm cosmo}$$
 
 where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
@@ -183,8 +231,9 @@ $$\boxed{\frac{\delta S}{\delta \phi_B} = \nabla \times (\rho_{\rm SCm} \mathbf{
 
 $$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_B = 0$$
 
-The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g forces) through vacuum density initialization to the sector-specific equation of motion. Every term in the E-L equation inherits its physical origin from the cosmogenesis master.
-
+The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
+forces) through vacuum density initialization to the sector-specific equation of motion. Every term
+in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 ---
 
@@ -194,9 +243,9 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.170$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m³.
+For this system, the local VDS sub-ratio is $0.170$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -208,13 +257,13 @@ Since $p_{\rm DVP} = 109$ is **resonant** (threshold at $p > 26$), the system's 
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
-The BSH saturation timescale for this sector is **10³ yr** (field decay quiescence):
+The BSH saturation timescale for this sector is **103 yr** (field decay quiescence):
 
-$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
+$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\rm SCm}$ which initializes the harmonic series at cosmogenesis.
 
@@ -222,28 +271,29 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.170 | ✓ Threshold-consistent |
-| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 109$ | ✓ Resonant |
-| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
-| [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
-
+| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.170 | PASS Threshold-consistent |
+| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 109$ | PASS Resonant |
+| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
+| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 ---
-
 
 ## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | ✓ Consistent |
-| Cosmological constant Λ | 1.1×10⁻⁵² m⁻² (UQFF vacuum term) | 1.114×10⁻⁵² m⁻² | Planck 2018 | ✓ Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10⁻³⁵/yr | Super-K 2024 | ✓ Consistent |
-| UQFF buoyancy signature | F_U_Bi_i unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
+| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
-**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes significant, offering a falsifiable prediction beyond the Standard Model.
+**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
+produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
+bridge.*
 
 ## References
 
@@ -256,20 +306,6 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 - PAPER_154 — Navier-Stokes SCm bridge (afluid_freq foundation)
 .Groups[1].Value  — UQFF SGR1745-2900 Magnetar: MUGE Fluid Dynamics Dominant Configuration
 
-**Title:** UQFF Star-Magic SGR1745-2900 Magnetar — MUGE 12-Term Resonance Validation: afluid_freq Dominance, g=1.773e-9 m/s^2, and Extreme-B SCm Fluid Dynamics
-
-**Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (kappa=0.0005/day, [SSq]=0.57, beta_i=0.6)  
-**Date:** March 2026  
-**Domain:** §2.2 MUGE Compression Cycle 3 (07b7f7a6)  
-**Source Thread:** `grok_share_07b7f7a635c04b6e90170b8a481ab1b0_content.txt`  
-**UQFF Mode:** Superconductive Resonance — afluid_freq dominant  
-**Validator:** `CondensedPhysics2.py` v2.1.0  
-**Cross-links:** PAPER_146 (12-term), PAPER_147 (FDPM), PAPER_149 (Sgr A* aDPM)
-
-
----
-
 ## Appendix: Session 204 Codebase Upgrade Reference
 
 > *Cross-reference appendix for Session 204 (April 2026) codebase upgrades.
@@ -280,9 +316,9 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `f`neutron_s26_coupling`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `k`ozima_scm_cross_section`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `k`ozima_wstp_kernel`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -291,7 +327,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `r`amanujan_polylog_s26`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
 | `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
@@ -300,7 +336,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `m`ock_theta_q26`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -311,8 +347,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `r`amanujan_pi_uqff`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `m`ock_theta_pi_wstp_kernel`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]

@@ -1,3 +1,15 @@
+---
+paper_id: PAPER_558
+title: "BSFG Complete Geometric System — Unification Atlas Theorem and Buoyancy-Curvature Duality"
+session: 148
+date: 2026-03-27
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [vacuum, buoyancy, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_558: BSFG Complete Geometric System — Unification Atlas Theorem and Buoyancy-Curvature Duality
 
 **Author:** Daniel T. Murphy — Star Magic / UQFF Framework  
@@ -11,7 +23,9 @@
 
 ## Abstract
 
-This paper presents a UQFF analysis of Unification Atlas Theorem and Buoyancy-Curvature Duality, deriving compressed field equations and observational predictions within the Star-Magic/UQFF framework.
+This paper presents a UQFF analysis of Unification Atlas Theorem and Buoyancy-Curvature Duality,
+deriving compressed field equations and observational predictions within the Star-Magic/UQFF
+framework.
 
 ## §1 Abstract
 
@@ -95,7 +109,7 @@ $$\lfloor 26!\cdot e_3\rfloor \bmod 113 = (2\,\lfloor 26!\cdot e_1\rfloor) \bmod
 
 The VDS eigenvalue $e_1 = P/3$ is the amplitude of stable BH26 modes ($k=1\ldots 13$):
 
-$$f_k = e_1\,\cos(\pi\,\nu_k/\nu_{\max}), \quad \nu_k = k \times 92\ {\rm GHz}$$
+$$f_k = e_1\,\cos(\pi,\nu_k/\nu_{\max}), \quad \nu_k = k \times 92\ {\rm GHz}$$
 
 The $e_3 = 2P/3$ value satisfies $e_3 = 2e_1 = \sum_{\rm stable}\,f_k|_{k{\rm-mean}} + \sum_{\rm destructive}\,f_k|_{k-{\rm mean}}$ — the doubled mode appears as the coherent sum over both mode subsets. $\checkmark$
 
@@ -111,7 +125,7 @@ $$F_U^{bi}(r) \geq 0 \iff R(r) \leq 0$$
 
 **Physical derivation:**
 
-From PAPER_554: $R_{\rm scalar} \approx 3\varepsilon''/(A_{00}) + \varepsilon''/(A_{rr})$. With $\varepsilon'' = 12\eta\cos(\pi t_n)\,C_{\rm num}/r^5$:
+From PAPER_554: $R_{\rm scalar} \approx 3\varepsilon''/(A_{00}) + \varepsilon''/(A_{rr})$. With $\varepsilon'' = 12\etacos(\pi t_n)\,C_{\rm num}/r^5$:
 
 - **Buoyancy-dominant** ($F_U^{bi} \geq 0$): By PAPER_548, this requires $\rho_{SCm} v_{SCm}^2 / \rho_A \geq g_N$ (SCm kinetic energy exceeds gravitational binding). This condition is satisfied at large $r$ (diffuse medium), where $T_{s00}(r) = C_{\rm num}/r^3$ is small. At large $r$: $\varepsilon'' < 0$ (as $C_{\rm num}$ is positive and $r$ appears in the denominator with positive power), so $R_{\rm scalar} \propto \varepsilon'' < 0$ (anti-de Sitter segment). $\checkmark$
 
@@ -126,9 +140,9 @@ From PAPER_554: $R_{\rm scalar} \approx 3\varepsilon''/(A_{00}) + \varepsilon''/
 | Component | Definition | Source |
 |---|---|---|
 | **Manifold** | $\mathcal{M}^{26}$, smooth, pseudo-Riemannian, dim 26 | SOURCE115 |
-| **Metric** | $A_{\mu\nu}(r) = g_{\mu\nu} + \eta\,T_{s00}(r)\,\cos(\pi t_n)\,\delta_{\mu\nu}$ | PAPER_554 |
+| **Metric** | $A_{\mu\nu}(r) = g_{\mu\nu} + \eta,T_{s00}(r)\,\cos(\pi t_n)\,\delta_{\mu\nu}$ | PAPER_554 |
 | **Connection** | $\Gamma^{\rm LC}_{\mu\nu}{}^\rho$: Levi-Civita, torsion-free | PAPER_555 |
-| **Curvature** | $R^r{}_{0r0} = 6\eta\cos(\pi t_n)C_{\rm num}/r^5$ | PAPER_554 |
+| **Curvature** | $R^r{}_{0r0} = 6\etacos(\pi t_n)C_{\rm num}/r^5$ | PAPER_554 |
 | **26D line element** | $ds^2_{26} = A_{\mu\nu}dx^\mu dx^\nu + \sum_{i=5}^{26}L_i^2 d\theta_i^2$ | PAPER_556 |
 | **Compactification** | $L_i(r) = r_P\,\exp(-r^i/(i!\,r_P^{i-1}))$ | PAPER_556 |
 | **Isometry group** | $G = SO(3) \times U(1)^{23}$, 26 generators | PAPER_557 |
@@ -146,10 +160,14 @@ BSFG is distinct from all existing geometric frameworks:
 1. **Not pure Riemannian** — the metric is perturbed by a physical field ($T_{s00}$) that couples to matter density; the geometry is dynamical.  
 2. **Not general relativity** — the source of curvature is the Aether density $\eta T_{s00}$, not the Einstein tensor $G_{\mu\nu}$; no field equations of GR form hold.  
 3. **Not Kaluza-Klein alone** — the compactification uses factorial radii $L_i \propto 1/i!$ rather than a single compactification scale; the extra dimensions encode the same combinatorial structure as the polynomial stress-energy proofs.  
-4. **Not string theory** — the 26 dimensions arise from the UQFF polynomial physics (26th-degree Gaussian proof, 26-layer gravity), not from conformal anomaly cancellation.  
+4. **Not string theory** — the 26 dimensions arise from the UQFF polynomial physics (26th-degree
+Gaussian proof, 26-layer gravity), not from conformal anomaly cancellation.  
 5. **Unique duality** — the Buoyancy-Curvature Duality $F_U^{bi} \geq 0 \iff R \leq 0$ has no analog in existing theories; it geometrizes the UQFF stability condition.
 
-The three number systems VDS (algebraic) + DVP (arithmetic) + BH26 (analytic) providing three independent coordinate charts is structurally analogous to the **Langlands Program**, which relates different mathematical representations of the same object — here, different coordinate descriptions of the same physical geometry.
+The three number systems VDS (algebraic) + DVP (arithmetic) + BH26 (analytic) providing three
+independent coordinate charts is structurally analogous to the **Langlands Program**, which relates
+different mathematical representations of the same object — here, different coordinate descriptions
+of the same physical geometry.
 
 ---
 
@@ -159,13 +177,15 @@ The three number systems VDS (algebraic) + DVP (arithmetic) + BH26 (analytic) pr
 
 ### §A.1 Sector Classification
 
-This paper maps to **curvature-D5** sector of the 9-sector UQFF Lagrangian (see `uqff_lagrangian_derivation.py`).
+This paper maps to **curvature-D5** sector of the 9-sector UQFF Lagrangian (see
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
-The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive quantum fundamentals (DPM, UA, SCm):
+The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
+quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_\mu \phi_{\rm curv})(\partial^\mu \phi_{\rm curv}) - V(\phi_{\rm curv}) + \mathcal{L}_{\rm cosmo}$$
+$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_mu \phi_{\rm curv})(\partial^\mu \phi_{\rm curv}) - V(\phi_{\rm curv}) + \mathcal{L}_{\rm cosmo}$$
 
 where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
@@ -173,13 +193,15 @@ $$V(\phi_{\rm curv}) = \frac{1}{2} m^2 \phi_{\rm curv}^2 + \frac{\lambda}{4!} \p
 
 ### §A.3 Euler-Lagrange Equation of Motion
 
-$$\boxed{\frac{\delta S}{\delta \phi_{\rm curv}} = k_{\rm curv} r_c^2 \cdot \partial_{D_5}(D_1 D_2 D_3 D_4 \cdot D_5) = 0}$$
+$$\boxed{\frac{\delta S}{\delta \phi_{\rm curv}} = k_{\rm curv} r_c^2 \cdot \partial_{D\_5}(D_1 D_2 D_3 D_4 \cdot D_5) = 0}$$
 
 ### §A.4 Cosmogenesis Linkage Chain
 
 $$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\rm curv} = 0$$
 
-The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g forces) through vacuum density initialization to the sector-specific equation of motion. Every term in the E-L equation inherits its physical origin from the cosmogenesis master.
+The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
+forces) through vacuum density initialization to the sector-specific equation of motion. Every term
+in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 
 ---
@@ -190,9 +212,9 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.074$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m³.
+For this system, the local VDS sub-ratio is $0.074$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -206,11 +228,11 @@ Since $p_{\rm DVP} = 67$ is **resonant** (threshold at $p > 26$), the system's v
 
 The BSH saturation timescale for this sector is **Hubble time** (super-Hubble saturation):
 
-$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
+$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\rm SCm}$ which initializes the harmonic series at cosmogenesis.
 
@@ -218,11 +240,11 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.074 | ✓ Threshold-consistent |
-| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 67$ | ✓ Resonant |
-| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
-| [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
+| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.074 | PASS Threshold-consistent |
+| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 67$ | PASS Resonant |
+| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
+| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
 ---
@@ -232,13 +254,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| GR Schwarzschild metric recovery | BSFG line element → g_tt = -(1-2GM/rc²) ≡ GR in ε_BSFG→0 limit | Schwarzschild metric (GR exact) | PDG 2024 / MTW | ✓ BSFG reduces to GR |
-| Shapiro time delay | BSFG geodesic → Δt_BSFG ≈ Δt_GR × (1 + ε_correction) | Cassini: Δt/Δt_GR = 1 ± 2.3e-5 | Cassini/GR 2003 | ✓ Within Shapiro bound |
-| Gravitational wave speed v_GW | BSFG: v_GW = c × (1 + k_η²) ≈ c + 10⁻²²⁶ m/s | GW150914 / GW170817: |v_GW/c - 1| < 10⁻¹⁵ | LIGO/Fermi GBM | ✓ UQFF deviation 10⁻²¹¹ orders below bound |
-| Perihelion precession (Mercury) | BSFG adds buoyancy correction δφ = κ × φ_GR ~ 10⁻⁶ arcsec/century | GR prediction: 43.03"/century; observed: 43.1" | GR + obs. | UQFF correction undetectable at current precision |
+| GR Schwarzschild metric recovery | BSFG line element → g_tt = -(1-2GM/rc2) ≡ GR in ε_BSFG→0 limit | Schwarzschild metric (GR exact) | PDG 2024 / MTW | PASS BSFG reduces to GR |
+| Shapiro time delay | BSFG geodesic → Δt_BSFG ≈ Δt_GR × (1 + ε_correction) | Cassini: Δt/Δt_GR = 1 ± 2.3e-5 | Cassini/GR 2003 | PASS Within Shapiro bound |
+| Gravitational wave speed v_GW | BSFG: v_GW = c × (1 + k_η2) ≈ c + 10-226 m/s | GW150914 / GW170817: |v_GW/c - 1| < 10-15 | LIGO/Fermi GBM | PASS UQFF deviation 10-211 orders below bound |
+| Perihelion precession (Mercury) | BSFG adds buoyancy correction δφ = κ × φ_GR ~ 10-6 arcsec/century | GR prediction: 43.03"/century; observed: 43.1" | GR + obs. | UQFF correction undetectable at current precision |
 
 **New physics claim:** BSFG (Buoyancy-Stratified Factorial Geometry) reproduces all tested GR
-predictions in the classical limit, while adding a vacuum buoyancy correction Δg ~ 10⁻⁶ arcsec/
+predictions in the classical limit, while adding a vacuum buoyancy correction Δg ~ 10-6 arcsec/
 century to Mercury's perihelion. This is a falsifiable GR extension testable with future
 LISA or BepiColombo precision gravitational measurements.
 
@@ -248,7 +270,7 @@ LISA or BepiColombo precision gravitational measurements.
 
 ## §7 Open Questions
 
-1. **BSFG field equations** — What is the analog of Einstein's equations $G_{\mu\nu} = 8\pi T_{\mu\nu}$ for BSFG? The Aether metric suggests $A_{\mu\nu} = g_{\mu\nu} + \delta_{\mu\nu}\,(\eta\,T_{s00})$ as a linearized form, which would give field equations linear in $T_{s00}$.
+1. **BSFG field equations** — What is the analog of Einstein's equations $G_{\mu\nu} = 8\pi T_{\mu\nu}$ for BSFG? The Aether metric suggests $A_{\mu\nu} = g_{\mu\nu} + \delta_{\mu\nu}\,(\eta,T_{s00})$ as a linearized form, which would give field equations linear in $T_{s00}$.
 
 2. **Holonomy of $\mathcal{M}^{26}$** — The holonomy group $\mathrm{Hol}(\Gamma^{\rm LC})$ of the BSFG connection (expected: $SO(26)$ subgroup; special holonomy $G_2$ or $Spin(7)$ if exceptional structure present).
 
@@ -269,9 +291,9 @@ LISA or BepiColombo precision gravitational measurements.
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `f`neutron_s26_coupling`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `k`ozima_scm_cross_section`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `k`ozima_wstp_kernel`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -280,7 +302,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `r`amanujan_polylog_s26`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
 | `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
@@ -289,7 +311,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `m`ock_theta_q26`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -300,8 +322,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `r`amanujan_pi_uqff`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `m`ock_theta_pi_wstp_kernel`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]

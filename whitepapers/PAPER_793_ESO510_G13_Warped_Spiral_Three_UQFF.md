@@ -1,3 +1,15 @@
+---
+paper_id: PAPER_793
+title: "ESO 510-G13 — Three-UQFF Warped Spiral Galaxy"
+session: 181
+date: 2026-01-01
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [accretion, galaxy, AGN, Hubble, Three-UQFF, dark-matter, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_793: ESO 510-G13 — Three-UQFF Warped Spiral Galaxy
 
 **Author:** Daniel T. Murphy  
@@ -10,13 +22,26 @@
 
 ## Abstract
 
-ESO 510-G13 is a highly warped spiral galaxy approximately 150 million light-years distant (z ≈ 0.010) in the constellation Hydra. Its most remarkable feature, visible in Hubble ACS imaging, is an extreme S-shaped warp of the dust disk extending well beyond the central stellar bulge — one of the most dramatic disk warps known in the nearby universe. The warp indicates a dynamical disturbance, likely a past (still ongoing) gravitational interaction. Despite the dramatic visual appearance, ESO 510-G13's total mass and rotation velocity are standard for a spiral of its size. Three-UQFF analysis yields g_primary ≈ 1.053×10⁻³ m/s² — confirming that disk warps, however dramatic, do not alter the UQFF electromagnetic ground state.
+ESO 510-G13 is a highly warped spiral galaxy approximately 150 million light-years distant (z ≈
+0.010) in the constellation Hydra. Its most remarkable feature, visible in Hubble ACS imaging, is an
+extreme S-shaped warp of the dust disk extending well beyond the central stellar bulge — one of the
+most dramatic disk warps known in the nearby universe. The warp indicates a dynamical disturbance,
+likely a past (still ongoing) gravitational interaction. Despite the dramatic visual appearance, ESO
+510-G13's total mass and rotation velocity are standard for a spiral of its size. Three-UQFF
+analysis yields g_primary ≈ 1.053×10-3 m/s2 — confirming that disk warps, however dramatic, do not
+alter the UQFF electromagnetic ground state.
 
 ---
 
 ## 1. Introduction
 
-Disk warps arise from tidal forces from external galaxies, accretion from misaligned gas infall, or misalignment between the dark matter halo and the baryonic disk. ESO 510-G13's S-warp is so extreme that the outer disk is nearly perpendicular to the inner disk plane — a ~90° warp. Hubble ACS imaging (2001) captured this edge-on system's dust lane bending dramatically above and below the galaxy plane. Yet kinematically, ESO 510-G13 still rotates at approximately normal spiral velocities (v ~ 200 km/s), and its total mass is standard (~10¹¹ M☉). Three-UQFF tests whether the extreme morphological distortion changes the UQFF mode convergence.
+Disk warps arise from tidal forces from external galaxies, accretion from misaligned gas infall, or
+misalignment between the dark matter halo and the baryonic disk. ESO 510-G13's S-warp is so extreme
+that the outer disk is nearly perpendicular to the inner disk plane — a ~90° warp. Hubble ACS
+imaging (2001) captured this edge-on system's dust lane bending dramatically above and below the
+galaxy plane. Yet kinematically, ESO 510-G13 still rotates at approximately normal spiral velocities
+(v ~ 200 km/s), and its total mass is standard (~1011 MM_sun). Three-UQFF tests whether the extreme
+morphological distortion changes the UQFF mode convergence.
 
 ---
 
@@ -24,14 +49,14 @@ Disk warps arise from tidal forces from external galaxies, accretion from misali
 
 | Parameter | Symbol | Value | Source |
 |-----------|--------|-------|--------|
-| Galaxy mass | M | 10¹¹ M☉ = 1.989×10⁴¹ kg | Estimate |
-| Disk radius | r | 3.78×10²⁰ m (~40 kly) | HST |
-| SFR | — | 1.0 M☉/yr | Warped disk activity |
-| Age | t | 5×10⁹ yr = 1.578×10¹⁷ s | Hubble time |
+| Galaxy mass | M | 1011 MM_sun = 1.989×1041 kg | Estimate |
+| Disk radius | r | 3.78×1020 m (~40 kly) | HST |
+| SFR | — | 1.0 MM_sun/yr | Warped disk activity |
+| Age | t | 5×109 yr = 1.578×1017 s | Hubble time |
 | M_sf | — | 0.03 | UQFF |
 | Redshift | z | 0.010 | Spectroscopic |
-| v_EM | v | 10⁵ m/s | Disk rotation |
-| B_EM | B | 10⁻⁵ T | Galactic field |
+| v_EM | v | 105 m/s | Disk rotation |
+| B_EM | B | 10-5 T | Galactic field |
 | f_warp | — | 0.05 | UQFF warp correction |
 
 ---
@@ -40,43 +65,52 @@ Disk warps arise from tidal forces from external galaxies, accretion from misali
 
 ### Mode 1: Compressed UQFF
 ```
-g_grav = 6.6743e-11 × 1.989e41 / (3.78e20)²
-       = 1.328e31 / 1.429e41 = 9.294e-11 m/s²
+g_grav = 6.6743e-11 × 1.989e41 / (3.78e20)2
+       = 1.328e31 / 1.429e41 = 9.294e-11 m/s2
 
 H(z)×t = 2.35e-18 × 1.578e17 = 0.371; factor = 1.371
 factor_sf = 1.03; factor_warp = 1.05 (replaces f_TRZ for this system)
-g_grav_total = 9.294e-11 × 1.371 × 1.03 × 1.05 = 1.378e-10 m/s²
-a_EM = 1.053e-3 m/s²
-g_comp = 1.053e-3 m/s²
+g_grav_total = 9.294e-11 × 1.371 × 1.03 × 1.05 = 1.378e-10 m/s2
+a_EM = 1.053e-3 m/s2
+g_comp = 1.053e-3 m/s2
 ```
 
 ### Mode 2: Resonant UQFF
-```
-g_res = 1.053e-3 × 1.000285 = 1.053e-3 m/s²
-```
+$$
+g_res = 1.053e-3 × 1.000285 = 1.053e-3 m/s2
+$$
 
 ### Mode 3: Buoyancy UQFF (with warp geometry)
-```
-V_effective = (4/3)π(3.78e20)³ × f_warp_vol
-(Warp increases effective volume; buoyancy correction still << a_EM)
-g_buoy = 1.053e-3 m/s²
-```
+$$
+\begin{aligned}
+  & V_effective = (4/3)π(3.78e20)3 × \text{f\_warp\_vol} \\
+  & (Warp increases effective volume; buoyancy correction still << a_EM) \\
+  & g_buoy = 1.053e-3 m/s2
+\end{aligned}
+$$
 
 ### Three-UQFF Simultaneous Result
-```
-g_compressed = 1.053e-3 m/s²
-g_resonant   = 1.053e-3 m/s²
-g_buoyancy   = 1.053e-3 m/s²
-g_primary = 1.053e-3 m/s²
-
-Warp geometry (90° S-warp) does not alter UQFF electromagnetic ground state.
-```
+$$
+\begin{aligned}
+  & g_compressed = 1.053e-3 m/s2 \\
+  & g_resonant   = 1.053e-3 m/s2 \\
+  & g_buoyancy   = 1.053e-3 m/s2 \\
+  & g_primary = 1.053e-3 m/s2 \\
+  & Warp geometry (90° S-warp) does not alter UQFF electromagnetic ground state.
+\end{aligned}
+$$
 
 ---
 
 ## 4. Physical Interpretation
 
-ESO 510-G13's extreme warp is the most visually dramatic disk distortion in the UQFF catalog. Yet the Three-UQFF result confirms that disk warps, regardless of their amplitude, do not change the Aether EM coupling result. The warp modifies the geometry of gas distribution but not the rotation velocity or local B-field that drive the UQFF EM term. This is a profound result: UQFF predicts that any edge-on warped spiral with standard rotation velocities will yield the same g = 1.053×10⁻³ m/s² as a perfectly symmetric face-on spiral. The electromagnetic ground state is rotationally invariant and geometry-invariant at constant v and B.
+ESO 510-G13's extreme warp is the most visually dramatic disk distortion in the UQFF catalog. Yet
+the Three-UQFF result confirms that disk warps, regardless of their amplitude, do not change the
+Aether EM coupling result. The warp modifies the geometry of gas distribution but not the rotation
+velocity or local B-field that drive the UQFF EM term. This is a profound result: UQFF predicts that
+any edge-on warped spiral with standard rotation velocities will yield the same g = 1.053×10-3 m/s2
+as a perfectly symmetric face-on spiral. The electromagnetic ground state is rotationally invariant
+and geometry-invariant at constant v and B.
 
 ---
 
@@ -84,19 +118,25 @@ ESO 510-G13's extreme warp is the most visually dramatic disk distortion in the 
 
 From Batch 4 Three-UQFF analysis, a corollary theorem emerges:
 
-**UQFF Geometry Invariance:** For any galaxy with standard rotation velocity v = 10⁵ m/s and standard galactic field B = 10⁻⁵ T, the UQFF electromagnetic ground state g = 1.053×10⁻³ m/s² is independent of:
+**UQFF Geometry Invariance:** For any galaxy with standard rotation velocity v = 105 m/s and
+standard galactic field B = 10-5 T, the UQFF electromagnetic ground state g = 1.053×10-3 m/s2 is
+independent of:
 - Disk inclination (edge-on vs. face-on: NGC 5866, M74)
 - Disk warp amplitude (ESO 510-G13 90° S-warp vs. symmetric spirals)
 - Bar presence (NGC 6217, NGC 1672 — only changes g via v enhancement)
 - Counter-rotation (NGC 4826 — zero effect at constant v and B)
 
-Only changes in v or B alter the UQFF result. This is the electromagnetic universality of the Aether ground state.
+Only changes in v or B alter the UQFF result. This is the electromagnetic universality of the Aether
+ground state.
 
 ---
 
 ## 6. Conclusions
 
-Three-UQFF applied to ESO 510-G13 yields g_primary ≈ 1.053×10⁻³ m/s² despite the galaxy's extreme 90° disk warp. Combined with Batch 4 results, this establishes the **UQFF Geometry Invariance Theorem**: the electromagnetic Aether ground state is invariant under all geometric transformations of galaxy morphology at constant v and B.
+Three-UQFF applied to ESO 510-G13 yields g_primary ≈ 1.053×10-3 m/s2 despite the galaxy's extreme
+90° disk warp. Combined with Batch 4 results, this establishes the **UQFF Geometry Invariance
+Theorem**: the electromagnetic Aether ground state is invariant under all geometric transformations
+of galaxy morphology at constant v and B.
 
 *PAPER_793, CP4 Three-UQFF class #377. v5.42.*
 *Cross-validated against PAPER_001 (foundational UQFF framework) and PAPER_642 (UQFF–SM bridge).*
@@ -108,11 +148,12 @@ Three-UQFF applied to ESO 510-G13 yields g_primary ≈ 1.053×10⁻³ m/s² desp
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| BCS ratio $2\Delta_0/k_BT_c$ | 3.528 (standard BCS) | 3.528 | BCS Theory | 100% |
+| BCS ratio $2\Delta_0/\text{k\_BT\_c}$ | 3.528 (standard BCS) | 3.528 | BCS Theory | 100% |
 | $T_c$ formula | SCm phonon replaces Debye: $\omega_D \to \omega_{\text{SCm}}$ | Standard BCS | Bardeen et al. (1957) | Novel |
 | Fine structure $\alpha$ | UQFF reproduces via $U_{g1}$ dipole | $1/137.036$ | PDG 2024 | 99.9% |
 
-**New physics claim:** UQFF phonon-mediated vacuum coupling provides testable predictions beyond SM for this system.
+**New physics claim:** UQFF phonon-mediated vacuum coupling provides testable predictions beyond SM
+for this system.
 
 *Cross-validated with PAPER_642 (UQFFSMParameterBridgeMasterComparisonCalculator).*
 
@@ -122,13 +163,15 @@ Three-UQFF applied to ESO 510-G13 yields g_primary ≈ 1.053×10⁻³ m/s² desp
 
 ### §A.1 Sector Classification
 
-This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see `uqff_lagrangian_derivation.py`).
+This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
-The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive quantum fundamentals (DPM, UA, SCm):
+The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
+quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_\mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
+$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
 
 where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
@@ -142,7 +185,9 @@ $$\boxed{\frac{\delta S}{\delta \phi_{\rm NS}} = \nabla^2 \phi_{\rm NS} - (4\pi 
 
 $$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\rm NS} = 0$$
 
-The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g forces) through vacuum density initialization to the sector-specific equation of motion. Every term in the E-L equation inherits its physical origin from the cosmogenesis master.
+The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
+forces) through vacuum density initialization to the sector-specific equation of motion. Every term
+in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 
 ---
@@ -153,9 +198,9 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.149$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m³.
+For this system, the local VDS sub-ratio is $0.149$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -167,13 +212,13 @@ Since $p_{\rm DVP} = 43$ is **resonant** (threshold at $p > 26$), the system's v
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
-The BSH saturation timescale for this sector is **10⁴ yr** (spin-down equilibrium):
+The BSH saturation timescale for this sector is **104 yr** (spin-down equilibrium):
 
-$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
+$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\rm SCm}$ which initializes the harmonic series at cosmogenesis.
 
@@ -181,11 +226,11 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.149 | ✓ Threshold-consistent |
-| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 43$ | ✓ Resonant |
-| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
-| [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
+| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.149 | PASS Threshold-consistent |
+| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 43$ | PASS Resonant |
+| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
+| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
 ---
@@ -204,9 +249,9 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `f`neutron_s26_coupling`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `k`ozima_scm_cross_section`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `k`ozima_wstp_kernel`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -215,7 +260,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `r`amanujan_polylog_s26`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
 | `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
@@ -224,7 +269,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `m`ock_theta_q26`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -235,8 +280,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `r`amanujan_pi_uqff`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `m`ock_theta_pi_wstp_kernel`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]

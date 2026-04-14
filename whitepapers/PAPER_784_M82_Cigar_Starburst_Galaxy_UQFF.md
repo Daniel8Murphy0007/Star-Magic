@@ -1,3 +1,15 @@
+---
+paper_id: PAPER_784
+title: "M82 Cigar Galaxy — UQFF Starburst Superwind"
+session: 181
+date: 2026-01-01
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [galaxy, AGN, nebula, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_784: M82 Cigar Galaxy — UQFF Starburst Superwind
 
 **Author:** Daniel T. Murphy  
@@ -10,34 +22,46 @@
 
 ## Abstract
 
-M82 (NGC 3034), the "Cigar Galaxy," is the archetypal starburst galaxy, located only ~12 million light-years away (z ≈ 0.0008) in Ursa Major. Tidally disturbed by its companion M81, M82 experiences a star-formation rate roughly 10× higher than the Milky Way, driving a spectacular bi-polar superwind of hot gas and dust erupting ~12 kly above and below the disk. The superwind magnetic field reaches ~10⁻⁴ T — characteristic of the starburst regime. Under UQFF, v = 10⁶ m/s (superwind velocity) and B = 10⁻⁴ T (starburst-amplified field) yield g_M82 ≈ 1.053×10⁻¹ m/s², identical to the Tarantula Nebula and Stephan's Quintet at these extreme parameters.
+M82 (NGC 3034), the "Cigar Galaxy," is the archetypal starburst galaxy, located only ~12 million
+light-years away (z ≈ 0.0008) in Ursa Major. Tidally disturbed by its companion M81, M82 experiences
+a star-formation rate roughly 10× higher than the Milky Way, driving a spectacular bi-polar
+superwind of hot gas and dust erupting ~12 kly above and below the disk. The superwind magnetic
+field reaches ~10-4 T — characteristic of the starburst regime. Under UQFF, v = 106 m/s (superwind
+velocity) and B = 10-4 T (starburst-amplified field) yield g_M82 ≈ 1.053×10-1 m/s2, identical to the
+Tarantula Nebula and Stephan's Quintet at these extreme parameters.
 
 ---
 
 ## 1. Introduction
 
-M82's starburst was triggered ~100 Myr ago by a close encounter with M81. The resulting disk starburst currently produces ~10 M☉/yr in a region only ~1 kpc in diameter — one of the most concentrated starbursts in the nearby universe. The galactic-scale superwind reaches ~1,000 km/s and carries a luminosity of ~10⁴¹ erg/s. Radio measurements confirm B-fields of ~50–200 μT throughout the starburst disk. UQFF encodes the superwind through v = 10⁶ m/s and the starburst-amplified B = 10⁻⁴ T, placing M82 in the UQFF starburst regime alongside Tarantula 30 Dor (PAPER_774) and Stephan's Quintet (PAPER_778).
+M82's starburst was triggered ~100 Myr ago by a close encounter with M81. The resulting disk
+starburst currently produces ~10 MM_sun/yr in a region only ~1 kpc in diameter — one of the most
+concentrated starbursts in the nearby universe. The galactic-scale superwind reaches ~1,000 km/s and
+carries a luminosity of ~1041 erg/s. Radio measurements confirm B-fields of ~50–200 μT throughout
+the starburst disk. UQFF encodes the superwind through v = 106 m/s and the starburst-amplified B =
+10-4 T, placing M82 in the UQFF starburst regime alongside Tarantula 30 Dor (PAPER_774) and
+Stephan's Quintet (PAPER_778).
 
 ---
 
 ## 2. Master UQFF Gravity Equation
 
-```
-g_M82(r, t) = (G × M) / r² × (1 + H(z)×t) × (1 + M_sf) × (1 + f_TRZ) + a_EM
-```
+$$
+g_M82(r, t) = (G × M) / r2 × (1 + H(z)×t) × (1 + M_sf) × (1 + f_TRZ) + a_EM
+$$
 
 ### 2.1 Parameters
 
 | Parameter | Symbol | Value | Source |
 |-----------|--------|-------|--------|
-| Galaxy mass | M | 10¹⁰ M☉ = 1.989×10⁴⁰ kg | NED |
-| Disk radius | r | 2×10²⁰ m (~21 kly) | NED |
-| SFR | — | 10 M☉/yr | Radio/IR |
-| Age | t | 1×10⁸ yr = 3.156×10¹⁵ s | Starburst duration |
+| Galaxy mass | M | 1010 MM_sun = 1.989×1040 kg | NED |
+| Disk radius | r | 2×1020 m (~21 kly) | NED |
+| SFR | — | 10 MM_sun/yr | Radio/IR |
+| Age | t | 1×108 yr = 3.156×1015 s | Starburst duration |
 | M_sf | — | 0.15 | UQFF starburst mass fraction |
 | Redshift | z | 0.0008 | Spectroscopic |
-| v_EM | v | 10⁶ m/s | Superwind velocity |
-| B_EM | B | 10⁻⁴ T | Starburst-amplified B |
+| v_EM | v | 106 m/s | Superwind velocity |
+| B_EM | B | 10-4 T | Starburst-amplified B |
 | f_TRZ | — | 0.05 | UQFF |
 
 ---
@@ -45,52 +69,61 @@ g_M82(r, t) = (G × M) / r² × (1 + H(z)×t) × (1 + M_sf) × (1 + f_TRZ) + a_E
 ## 3. Long-Form Derivation
 
 ### Step 1: Base Gravitational Term
-```
-g_grav = 6.6743e-11 × 1.989e40 / (2e20)² = 3.319e-11 m/s²
-```
+$$
+g_grav = 6.6743e-11 × 1.989e40 / (2e20)2 = 3.319e-11 m/s2
+$$
 
 ### Step 2: Cosmic Expansion Factor
-```
-H(z) = 2.268e-18 s⁻¹; H(z)×t = 2.268e-18 × 3.156e15 = 7.160e-3; factor = 1.00716
-```
+$$
+H(z) = 2.268e-18 s-1; H(z)×t = 2.268e-18 × 3.156e15 = 7.160e-3; factor = 1.00716
+$$
 
 ### Step 3: SFR Mass Fraction (Starburst)
-```
+$$
 M_sf = 0.15; 1 + M_sf = 1.15
-```
+$$
 
 ### Step 4: Time-Reversal Correction
-```
+$$
 f_TRZ = 0.05; 1 + f_TRZ = 1.05
-```
+$$
 
 ### Step 5: Gravitational Total
-```
-g_grav_total = 3.319e-11 × 1.00716 × 1.15 × 1.05 = 4.015e-11 m/s²
-```
+$$
+\text{g\_grav\_total} = 3.319e-11 × 1.00716 × 1.15 × 1.05 = 4.015e-11 m/s2
+$$
 
 ### Step 6: Aether EM Correction (Starburst Level)
-```
-v = 10⁶ m/s, B = 10⁻⁴ T
-a_EM = (1.602e-19 × 10⁶ × 10⁻⁴ / 1.673e-27) × 11 × 10⁻¹² = 1.053e-1 m/s²
-```
+$$
+\begin{aligned}
+  & v = 106 m/s, B = 10-4 T \\
+  & a_EM = (1.602e-19 × 106 × 10-4 / 1.673e-27) × 11 × 10-12 = 1.053e-1 m/s2
+\end{aligned}
+$$
 
 ### Step 7: Final Solution
-```
-g_M82 = 4.015e-11 + 1.053e-1 ≈ 1.053e-1 m/s²
-```
+$$
+g_M82 = 4.015e-11 + 1.053e-1 ≈ 1.053e-1 m/s2
+$$
 
 ---
 
 ## 4. Physical Interpretation
 
-At only 12 Mly distance, M82 is the closest prototype of the starburst superwind regime. The observed superwind velocity ~1,000 km/s and starburst B-field ~10⁻⁴ T both directly confirm the UQFF starburst parameters. M82's result g = 1.053×10⁻¹ m/s² matches Tarantula Nebula (PAPER_774) and Stephan's Quintet (PAPER_778), confirming UQFF universality across: dwarf-scale starburst (30 Dor in LMC), compact-group intergalactic shock (Stephan's Quintet), and galaxy-scale starburst (M82) at the same extreme EM parameter combination (v = 10⁶ m/s, B = 10⁻⁴ T).
+At only 12 Mly distance, M82 is the closest prototype of the starburst superwind regime. The
+observed superwind velocity ~1,000 km/s and starburst B-field ~10-4 T both directly confirm the UQFF
+starburst parameters. M82's result g = 1.053×10-1 m/s2 matches Tarantula Nebula (PAPER_774) and
+Stephan's Quintet (PAPER_778), confirming UQFF universality across: dwarf-scale starburst (30 Dor in
+LMC), compact-group intergalactic shock (Stephan's Quintet), and galaxy-scale starburst (M82) at the
+same extreme EM parameter combination (v = 106 m/s, B = 10-4 T).
 
 ---
 
 ## 5. Conclusions
 
-UQFF applied to M82 yields g ≈ 1.053×10⁻¹ m/s², confirming M82 occupies the same UQFF starburst-shock class as Tarantula and Stephan's Quintet. At z = 0.0008, the nearest starburst galaxy serves as the closest-distance validation point for the UQFF starburst regime.
+UQFF applied to M82 yields g ≈ 1.053×10-1 m/s2, confirming M82 occupies the same UQFF
+starburst-shock class as Tarantula and Stephan's Quintet. At z = 0.0008, the nearest starburst
+galaxy serves as the closest-distance validation point for the UQFF starburst regime.
 
 *PAPER_784, CP4 class #368. v5.42.*
 
@@ -100,13 +133,15 @@ UQFF applied to M82 yields g ≈ 1.053×10⁻¹ m/s², confirming M82 occupies t
 
 ### §A.1 Sector Classification
 
-This paper maps to **galaxy-rotation** sector of the 9-sector UQFF Lagrangian (see `uqff_lagrangian_derivation.py`).
+This paper maps to **galaxy-rotation** sector of the 9-sector UQFF Lagrangian (see
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
-The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive quantum fundamentals (DPM, UA, SCm):
+The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
+quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_\mu \phi_{\rm rot})(\partial^\mu \phi_{\rm rot}) - V(\phi_{\rm rot}) + \mathcal{L}_{\rm cosmo}$$
+$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_mu \phi_{\rm rot})(\partial^\mu \phi_{\rm rot}) - V(\phi_{\rm rot}) + \mathcal{L}_{\rm cosmo}$$
 
 where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
@@ -120,7 +155,9 @@ $$\boxed{\frac{\delta S}{\delta \phi_{\rm rot}} = v_c^2/r - GM/r^2 - F_{U\_Bi\_i
 
 $$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\rm rot} = 0$$
 
-The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g forces) through vacuum density initialization to the sector-specific equation of motion. Every term in the E-L equation inherits its physical origin from the cosmogenesis master.
+The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
+forces) through vacuum density initialization to the sector-specific equation of motion. Every term
+in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 
 ---
@@ -131,9 +168,9 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.112$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m³.
+For this system, the local VDS sub-ratio is $0.112$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -145,13 +182,13 @@ Since $p_{\rm DVP} = 11$ is **sub-threshold** (threshold at $p > 26$), the syste
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
-The BSH saturation timescale for this sector is **10⁹ yr** (disk settling timescale):
+The BSH saturation timescale for this sector is **109 yr** (disk settling timescale):
 
-$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
+$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\rm SCm}$ which initializes the harmonic series at cosmogenesis.
 
@@ -159,11 +196,11 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.112 | ✓ Threshold-consistent |
-| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 11$ | ✓ Sub-threshold |
-| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
-| [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
+| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.112 | PASS Threshold-consistent |
+| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 11$ | PASS Sub-threshold |
+| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
+| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
 ---
@@ -173,14 +210,17 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | ✓ Consistent |
-| Cosmological constant Λ | 1.1×10⁻⁵² m⁻² (UQFF vacuum term) | 1.114×10⁻⁵² m⁻² | Planck 2018 | ✓ Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10⁻³⁵/yr | Super-K 2024 | ✓ Consistent |
-| UQFF buoyancy signature | F_U_Bi_i unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
+| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
-**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes significant, offering a falsifiable prediction beyond the Standard Model.
+**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
+produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
+bridge.*
 
 
 ---
@@ -195,9 +235,9 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `f`neutron_s26_coupling`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `k`ozima_scm_cross_section`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `k`ozima_wstp_kernel`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -206,7 +246,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `r`amanujan_polylog_s26`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
 | `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
@@ -215,7 +255,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `m`ock_theta_q26`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -226,8 +266,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `r`amanujan_pi_uqff`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `m`ock_theta_pi_wstp_kernel`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]

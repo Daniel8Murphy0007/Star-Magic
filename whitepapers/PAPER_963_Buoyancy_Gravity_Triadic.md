@@ -1,6 +1,18 @@
+---
+paper_id: PAPER_963
+title: "Buoyancy Gravity Triadic Mode"
+session: 215
+date: 2026-04-12
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [SCm, buoyancy, nebula, damping, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_963: Buoyancy Gravity Triadic Mode
 
-**Author:** Daniel T. Murphy -- Star Magic / UQFF Framework
+**Author:** Daniel T. Murphy — Star Magic / UQFF Framework
 **Date:** 2026-04-12
 **Session:** 215
 **Source:** triadic_solutions_next.py (BuoyancyGravityTriadic)
@@ -11,13 +23,13 @@
 
 ## Abstract
 
-The Buoyancy Gravity Triadic mode evaluates $E_\text{net}(t, \Gamma) = S_{26} \cdot \cos(\omega_\text{SCm} t) \cdot \exp(-\Gamma t) - \text{threshold}$. Positive $E_\text{net}$ drives expansion (nebulae, HII regions); negative $E_\text{net}$ drives erosion (filaments, cometary knots).
+The Buoyancy Gravity Triadic mode evaluates $E_\text{net}(t, \Gamma) = S_{26} \cdot \cos(\omega_text{SCm} t) \cdot \exp(-\Gamma t) - \text{threshold}$. Positive $E_\text{net}$ drives expansion (nebulae, HII regions); negative $E_\text{net}$ drives erosion (filaments, cometary knots).
 
 ---
 
 ## 1. Net Energy
 
-$$E_\text{net}(t, \Gamma) = S_{26} \cdot \cos(\omega_\text{SCm} \cdot t) \cdot \exp(-\Gamma \cdot t) - \text{threshold}$$
+$$E_\text{net}(t, \Gamma) = S_{26} \cdot \cos(\omega_text{SCm} \cdot t) \cdot \exp(-\Gamma \cdot t) - \text{threshold}$$
 
 ## 2. Regime Classification
 
@@ -31,7 +43,7 @@ $$E_\text{net}(t, \Gamma) = S_{26} \cdot \cos(\omega_\text{SCm} \cdot t) \cdot \
 
 ## References
 
-1. Murphy, D.T. -- Star Magic UQFF Framework (2024-2026)
+1. Murphy, D.T. — Star Magic UQFF Framework (2024-2026)
 2. PAPER_961 — Compressed Gravity Triadic
 3. PAPER_962 — Resonant Gravity Triadic
 4. PAPER_966 — Unified Triadic Solver

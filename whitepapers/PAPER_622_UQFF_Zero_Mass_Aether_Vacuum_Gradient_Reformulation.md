@@ -1,3 +1,15 @@
+---
+paper_id: PAPER_622
+title: "UQFF Zero-Mass Aether Vacuum Gradient Reformulation"
+session: 0
+date: 2025-01-01
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [AGN, vacuum, SCm, DPM, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_622 — UQFF Zero-Mass Aether Vacuum Gradient Reformulation
 **Author:** Daniel T. Murphy
 **Date:** 2025
@@ -16,7 +28,8 @@
 $$F_{U,Bi} = \kappa \cdot \frac{\rho_{\text{SCm}}}{\rho_{\text{UA}}} \cdot (U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_m + U_{bi})$$
 
 
-This paper presents a UQFF analysis of UQFF Zero-Mass Aether Vacuum Gradient Reformulation, deriving compressed field equations and observational predictions within the Star-Magic/UQFF framework.
+This paper presents a UQFF analysis of UQFF Zero-Mass Aether Vacuum Gradient Reformulation, deriving
+compressed field equations and observational predictions within the Star-Magic/UQFF framework.
 
 ## §1 Abstract
 
@@ -47,43 +60,47 @@ emerges.
 
 The complete Unified Field equation in gradient form:
 
-```
-F_U = U_g + U_m + U_b + d²⁶/dr²⁶ (SCm · g · ∇UA / UA) = 0
-```
+$$
+F_U = U_g + U_m + U_b + d26/dr26 (SCm · g · ∇UA / UA) = 0
+$$
 
 Individual components:
 
 **Gravitational-gradient:**
-```
-U_g = g · (SCm · ∇UA / UA) · (Ug1 + Ug2 + Ug3 + Ug4)
-       + Σ_{m=0}^{26} a_m · (∇UA)^m
-```
+$$
+\begin{aligned}
+  & U_g = g · (SCm · ∇UA / UA) · (Ug1 + Ug2 + Ug3 + Ug4) \\
+  & + Σ_{m=0}^{26} a_m · (∇UA)^m
+\end{aligned}
+$$
 
 **Magnetic-vortex (DVP form):**
-```
-U_m = κ · (DPM_n − DPM_s) / (∇UA)^26
-       + d²⁶/dt²⁶ [Σ_{k=0}^{26} c_k · (∇UA · t)^k]
-```
+$$
+\begin{aligned}
+  & U_m = κ · (DPM_n − DPM_s) / (∇UA)^26 \\
+  & + d26/dt26 [Σ_{k=0}^{26} c_k · (∇UA · t)^k]
+\end{aligned}
+$$
 
 **Buoyancy-gradient (BH26 form):**
-```
-U_b = g · (1 − 1/∇UA) + d²⁶/d(∇UA)²⁶ (g · ∇UA)
-```
+$$
+U_b = g · (1 − 1/∇UA) + d26/d(∇UA)26 (g · ∇UA)
+$$
 
 **Superconductive memory:**
-```
+$$
 SCm = λ · UA · (1 − 1/t) + Σ_{m=0}^{26} b_m · (∇UA · t^{−m})
-```
+$$
 
 ### 2.3 Equilibrium Solution
 
 Setting F_U = 0 and isolating the buoyancy-gravitational balance:
 
-```
+$$
 ∇UA_eq = √(κ / g)
-```
+$$
 
-For κ = 1, g = 10⁻³: ∇UA_eq ≈ 31.62 m⁻¹ (dimensionless normalization).  
+For κ = 1, g = 10-3: ∇UA_eq ≈ 31.62 m-1 (dimensionless normalization).  
 This is identical to the **VDS equilibrium convergence value** — confirming that the vacuum
 density series and the zero-mass reformulation share the same fixed point.
 
@@ -98,9 +115,9 @@ The Zero-Mass reformulation *is* the foundation of VDS:
 
 Full 9D Gaussian VDS definition:
 
-```
-∇UA = Σ_{d=1}^{9} exp(−(x_d − μ_d)² / 2σ_d²) · FUB_i
-```
+$$
+∇UA = Σ_{d=1}^{9} exp(−(x_d − μ_d)2 / 2σ_d2) · FUB_i
+$$
 
 Where FUB_i is the buoyancy integral coefficient at spatial position i.
 
@@ -108,12 +125,12 @@ Where FUB_i is the buoyancy integral coefficient at spatial position i.
 
 ## §4 26th-Order Derivative Term
 
-The term d²⁶/dr²⁶ (SCm·g·∇UA/UA) is the **signature of the 26-dimensional BH framework**.
+The term d26/dr26 (SCm·g·∇UA/UA) is the **signature of the 26-dimensional BH framework**.
 For a power-law field c/(∇UA)^k:
 
-```
-d²⁶/d(∇UA)²⁶ [c/(∇UA)^k] = ((k+25)! / (k−1)!) · c / (∇UA)^{k+26}
-```
+$$
+d26/d(∇UA)26 [c/(∇UA)^k] = ((k+25)! / (k−1)!) · c / (∇UA)^{k+26}
+$$
 
 This divergence at low ∇UA generates the buoyancy suppression preventing gravitational
 collapse in void regions (BH26 harmonic mode).
@@ -126,7 +143,7 @@ collapse in void regions (BH26 harmonic mode).
 |----------|---------------|-----------------|
 | ρ_vac | \|∇UA\| | Void density = gradient magnitude |
 | F_U equilibrium | ∇UA_eq = √(κ/g) | VDS convergence = 31.62 |
-| Quantum frequency | f ∝ λ·UA / t² | Gradient-driven event emission |
+| Quantum frequency | f ∝ λ·UA / t2 | Gradient-driven event emission |
 | Collapse prevention | U_b → +∞ as ∇UA → 0⁺ | BH26 repulsive divergence |
 | Mass-free field | ρ_UA ≡ 0 | UA is pure gradient topology |
 
@@ -135,8 +152,8 @@ collapse in void regions (BH26 harmonic mode).
 ## §6 Observational Tests
 
 1. **Void region density:** ρ_vac = |∇UA| should match observed X-ray void densities in
-   galaxy cluster outskirts (≈ 10⁻²⁸ kg/m³).
-2. **Frequency prediction:** f_event ≈ |λ·UA/t²| × 10¹⁸ Hz at jet base.
+   galaxy cluster outskirts (≈ 10-28 kg/m3).
+2. **Frequency prediction:** f_event ≈ |λ·UA/t2| × 1018 Hz at jet base.
 3. **Equilibrium crossing:** Systems with ∇UA near 31.62 should show phase transitions
    in observational data (pocket shell formation).
 
@@ -145,8 +162,8 @@ collapse in void regions (BH26 harmonic mode).
 ## §7 Connection to UQFF Number Systems
 
 - **VDS:** ρ_vac = |∇UA| IS the vacuum density series value
-- **DVP:** U_m = κ·(DPM_n−DPM_s)/(∇UA)²⁶ — vortex-prime gradient pockets
-- **BH26:** U_b 26th-derivative = g·26!/(∇UA)²⁵ — buoyancy harmonic series
+- **DVP:** U_m = κ·(DPM_n−DPM_s)/(∇UA)26 — vortex-prime gradient pockets
+- **BH26:** U_b 26th-derivative = g·26!/(∇UA)25 — buoyancy harmonic series
 
 ---
 
@@ -156,13 +173,15 @@ collapse in void regions (BH26 harmonic mode).
 
 ### §A.1 Sector Classification
 
-This paper maps to **general-UQFF** sector of the 9-sector UQFF Lagrangian (see `uqff_lagrangian_derivation.py`).
+This paper maps to **general-UQFF** sector of the 9-sector UQFF Lagrangian (see
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
-The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive quantum fundamentals (DPM, UA, SCm):
+The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
+quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_\mu \phi)(\partial^\mu \phi) - V(\phi) + \mathcal{L}_{\rm cosmo}$$
+$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_mu \phi)(\partial^\mu \phi) - V(\phi) + \mathcal{L}_{\rm cosmo}$$
 
 where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
@@ -176,7 +195,9 @@ $$\boxed{\frac{\delta S}{\delta \phi} = \nabla^2 \phi + \kappa \rho_{\rm vac,[SC
 
 $$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi = 0$$
 
-The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g forces) through vacuum density initialization to the sector-specific equation of motion. Every term in the E-L equation inherits its physical origin from the cosmogenesis master.
+The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
+forces) through vacuum density initialization to the sector-specific equation of motion. Every term
+in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 
 ---
@@ -187,9 +208,9 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.197$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m³.
+For this system, the local VDS sub-ratio is $0.197$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -203,11 +224,11 @@ Since $p_{\rm DVP} = 83$ is **resonant** (threshold at $p > 26$), the system's v
 
 The BSH saturation timescale for this sector is **system-dependent** (buoyancy equilibrium):
 
-$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
+$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\rm SCm}$ which initializes the harmonic series at cosmogenesis.
 
@@ -215,11 +236,11 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.197 | ✓ Threshold-consistent |
-| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 83$ | ✓ Resonant |
-| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
-| [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
+| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.197 | PASS Threshold-consistent |
+| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 83$ | PASS Resonant |
+| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
+| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
 ---
@@ -229,14 +250,14 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Vacuum energy ρ_Λ | ρ_vac = \|∇UA\|; equilibrium ∇UA_eq = √(κ/g) = 31.62 | ρ_Λ = 5.96e-27 kg/m³ (PDG) | PDG 2024 | Geometric topology match |
+| Vacuum energy ρ_Λ | ρ_vac = \|∇UA\|; equilibrium ∇UA_eq = √(κ/g) = 31.62 | ρ_Λ = 5.96e-27 kg/m3 (PDG) | PDG 2024 | Geometric topology match |
 | Higgs mass m_H | K_HIGGS = 47.34 → m_H ≈ 125.09 GeV | 125.20 ± 0.11 GeV | PDG 2024 | 99.89% |
-| Photon (gauge boson) mass | UA zero-mass field: ρ_UA = 0 (immutable) | m_γ < 10⁻¹⁸ eV | PDG 2024 | ✓ Consistent |
+| Photon (gauge boson) mass | UA zero-mass field: ρ_UA = 0 (immutable) | m_γ < 10-18 eV | PDG 2024 | PASS Consistent |
 | Fine structure α_EM | 1/137.036 in U_m Compton scattering term | 1/137.036 | PDG 2024 | 100% |
 
 **New physics claim:** The UQFF zero-mass UA reframing separates ρ_UA = 0 (topology)
 from ρ_vac = |∇UA| (geometry), predicting measurable void-density gradients in
-cluster outskirts ≈ 10⁻²⁸ kg/m³ — testable with future eROSITA / Chandra surveys.
+cluster outskirts ≈ 10-28 kg/m3 — testable with future eROSITA / Chandra surveys.
 
 *Cite PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
 
@@ -266,9 +287,9 @@ cluster outskirts ≈ 10⁻²⁸ kg/m³ — testable with future eROSITA / Chand
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `f`neutron_s26_coupling`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `k`ozima_scm_cross_section`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `k`ozima_wstp_kernel`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -277,7 +298,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `r`amanujan_polylog_s26`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
 | `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
@@ -286,7 +307,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `m`ock_theta_q26`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -297,8 +318,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `r`amanujan_pi_uqff`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `m`ock_theta_pi_wstp_kernel`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]

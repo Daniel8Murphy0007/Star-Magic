@@ -1,16 +1,29 @@
+---
+paper_id: PAPER_117
+title: "Empirical Proof EP-04: ENSDF/NNDC Pb-206 Nuclear Excitation Spectrum – UQFF Energy Ladder
+Nuclear Level n=8 and Magic Number Z=82 Signature Confirmed"
+session: 0
+date: 2026-03-09
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [BEC, LHC, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_117: Empirical Proof EP-04: ENSDF/NNDC Pb-206 Nuclear Excitation Spectrum – UQFF Energy Ladder Nuclear Level n=8 and Magic Number Z=82 Signature Confirmed
 **Session:** 0
 
-
-**Title:** Empirical Proof EP-04: ENSDF/NNDC Pb-206 Nuclear Excitation Spectrum – UQFF Energy Ladder Nuclear Level n=8 and Magic Number Z=82 Signature Confirmed
+**Title:** Empirical Proof EP-04: ENSDF/NNDC Pb-206 Nuclear Excitation Spectrum – UQFF Energy Ladder
+Nuclear Level n=8 and Magic Number Z=82 Signature Confirmed
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57, κ_i = 0.61)  
+**Framework:** UQFF Star-Magic (κ = 0.0005/day, [SSq] = 0.57, κ_i = 0.61)  
 **Date:** March 9, 2026  
-**Domain:** �1.15 Empirical Proof Compendium  
-**Source Thread:** `grok_share_2fe4fa3e_conversation.txt` (EP-04, April�Sept 2025)  
+**Domain:** §1.15 Empirical Proof Compendium  
+**Source Thread:** `grok_share_2fe4fa3e_conversation.txt` (EP-04, AprilSept 2025)  
 **Validator:** `NuclearBindingLadderValidator` (CondensedPhysics2.py)  
-**Cross-links:** �1.15 PAPER_116 (EP-03 LHC quark n=4); �1.15 PAPER_112 (EP-02 PDG ladder)  
+**Cross-links:** §1.15 PAPER_116 (EP-03 LHC quark n=4); §1.15 PAPER_112 (EP-02 PDG ladder)  
 
 ---
 
@@ -18,18 +31,18 @@
 
 Empirical Proof EP-04 validates the UQFF energy ladder at the nuclear scale (n = 8)
 using Evaluated Nuclear Structure Data File (ENSDF) and the National Nuclear Data
-Center (NNDC) nuclear level listings for ��6Pb. Lead-206 is chosen as the test
+Center (NNDC) nuclear level listings for 6Pb. Lead-206 is chosen as the test
 nucleus because it is a doubly-magic-adjacent isotope (Z=82 proton magic, N=124)
 with an exceptionally well-measured excitation spectrum. The UQFF ladder level
-n = 8 predicts E8 = 10?�� J = 6.242 MeV. The Pb-206 10 MeV nuclear level
-(1.602 × 10?�� J) falls at n = 8.205 � within ?n = 0.205 of n = 8 (threshold ?n < 0.5).
-Additionally, the neutron separation energy S_n = 7.367 MeV = 1.180 × 10?�� J
-satisfies: S_n/(E8) = 1.180 × 2 � [SSq] = 2 × 0.57 = 1.14 (within 3.5%), providing
+n = 8 predicts E8 = 10? J = 6.242 MeV. The Pb-206 10 MeV nuclear level
+(1.602 × 10? J) falls at n = 8.205  within ?n = 0.205 of n = 8 (threshold ?n < 0.5).
+Additionally, the neutron separation energy S_n = 7.367 MeV = 1.180 × 10? J
+satisfies: S_n/(E8) = 1.180 × 2  [SSq] = 2 × 0.57 = 1.14 (within 3.5%), providing
 a second independent confirmation of [SSq] = 0.57 at the nuclear scale.
 
-
-
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+0.57) uniquely enabling this analysis  establishing a new connection in the UQFF framework not
+present in Standard Model treatments.
 
 ---
 
@@ -41,7 +54,7 @@ Pb-206 has exceptional properties for UQFF testing:
 
 | Property | Value | Significance |
 |---------|-------|-------------|
-| Z (proton number) | 82 | Nuclear magic number � closed proton shell |
+| Z (proton number) | 82 | Nuclear magic number  closed proton shell |
 | N (neutron number) | 124 | Near N=126 neutron magic (2 below) |
 | Binding energy | 1,622.3 MeV | Total BE (ENSDF/AME 2020) |
 | Neutron separation S_n | 7.367 MeV | Well-measured BE difference |
@@ -50,20 +63,20 @@ Pb-206 has exceptional properties for UQFF testing:
 | Half-life | Stable | T1/2 = 8 |
 
 Pb (Z=82) is the n = 8 ladder test nucleus because:
-1. Z = 82 = 10^1.914 ? related to n � 2 sub-ladder (proton number)  
+1. Z = 82 = 10^1.914 ? related to n  2 sub-ladder (proton number)  
 2. A = 206 corresponds to 10 MeV nuclear scale ? n = 8 energy ladder
-3. The 10 MeV continuum threshold of Pb-206 = 10 × 106 eV � 1.602 × 10?�? J/eV = 1.602 × 10?�� J
+3. The 10 MeV continuum threshold of Pb-206 = 10 × 106 eV  1.602 × 10?? J/eV = 1.602 × 10? J
 
 ### 1.2 Key ENSDF Levels Used in EP-04
 
 | Level | E (MeV) | E (J) | UQFF n | Jp |
 |-------|---------|-------|--------|-----|
 | Ground state | 0.000 | 0 | N/A | 0? |
-| 1st excited | 0.803 | 1.286 × 10?�� | 6.91 | 2? |
-| 2nd excited | 1.162 | 1.861 × 10?�� | 7.07 | 4? |
-| 10 MeV continuum | 10.000 | 1.602 × 10?�� | **8.205** | continuum |
-| Neutron separation | 7.367 | 1.180 × 10?�� | 7.972 | threshold |
-| Total binding E | 1,622.3 | 2.599 × 10?�� | 10.215 | bound |
+| 1st excited | 0.803 | 1.286 × 10? | 6.91 | 2? |
+| 2nd excited | 1.162 | 1.861 × 10? | 7.07 | 4? |
+| 10 MeV continuum | 10.000 | 1.602 × 10? | **8.205** | continuum |
+| Neutron separation | 7.367 | 1.180 × 10? | 7.972 | threshold |
+| Total binding E | 1,622.3 | 2.599 × 10? | 10.215 | bound |
 
 ---
 
@@ -97,14 +110,14 @@ $$\text{Error} = \frac{|1.180 - 1.140|}{1.140} \times 100\% = 3.5\%$$
 
 ### 2.3 Physical Interpretation
 
-The relation S_n � 2 � [SSq] � E8 has the following physical interpretation:
+The relation S_n  2  [SSq]  E8 has the following physical interpretation:
 
 - **E8 (UQFF)** = the fundamental quantum of energy at the nuclear confinement scale
 - **S_n (nuclear)** = the energy required to remove one nucleon from the closed-shell vicinity
-- The factor **2 � [SSq] = 1.14** represents the two-sublevel UQFF coupling needed
+- The factor **2  [SSq] = 1.14** represents the two-sublevel UQFF coupling needed
   to bridge from the raw nuclear vacuum energy quantum (E8) to the physically
   observable separation energy
-- This is the nuclear analog of the [SSq]� ratio that appears in the cosmological
+- This is the nuclear analog of the [SSq] ratio that appears in the cosmological
   context (vacuum ? dark matter coupling, EP-08/PAPER_118)
 
 ---
@@ -139,30 +152,21 @@ domain) maps directly onto nuclear shell closure at Z = 82 = 10^1.914.
 validator = NuclearBindingLadderValidator()
 results = validator.validate_ep04()
 ssq_check = validator.compute_ssq_binding_ratio()
-```
-
-### 4.1 Level Validation Results
-
-| Level | E (J) | n_computed | n_expected | ?n | Pass? |
-|-------|-------|-----------|-----------|-----|-------|
-| level_10MeV | 1.602e-12 | 8.205 | 8 | 0.205 | ? |
-| separation_n | 1.180e-12 | 7.972 | 8 | 0.028 | ? |
-| binding_total | 2.599e-10 | 10.215 | 10 | 0.215 | ? |
-
-**All 3/3 PASS ?**
-
+### 4.1 Level Validation Results 
+| Level | E (J) | n_computed | n_expected | ?n | Pass? | 
+|-------|-------|-----------|-----------|-----|-------| 
+| level_10MeV | 1.602e-12 | 8.205 | 8 | 0.205 | ? | 
+| separation_n | 1.180e-12 | 7.972 | 8 | 0.028 | ? | 
+| binding_total | 2.599e-10 | 10.215 | 10 | 0.215 | ? | 
+**All 3/3 PASS** 
 ### 4.2 [SSq] Ratio Check
-
-```
 measured_ratio:    1.1800  (S_n / E_8)
 predicted_2xSSq:   1.1400  (2 × 0.57)
 error_pct:         3.51%   (< 10% threshold)
 pass:              ? PASS
-```
-
+$$
 ### 4.3 Magic Number Z=82 Confirmed
-
-```
+$$
 magic_number_Z82_confirmed: True  (?n = 0.205 for 10 MeV level) ?
 ```
 
@@ -174,8 +178,8 @@ magic_number_Z82_confirmed: True  (?n = 0.205 for 10 MeV level) ?
 |---|----------|-------|-----------------|
 | 1 | $E_8 = 10^{-12}$ J | 6.242 MeV | UQFF nuclear level |
 | 2 | $n_{10MeV} = 8.205$ | ?n = 0.205 | 10 MeV ? n=8 |
-| 3 | $S_n = 7.367$ MeV | 1.180 × 10?�� J | Pb-206 neutron separation |
-| 4 | $S_n / E_8 = 1.180$ | � 2�[SSq] = 1.14 | 3.5% error |
+| 3 | $S_n = 7.367$ MeV | 1.180 × 10? J | Pb-206 neutron separation |
+| 4 | $S_n / E_8 = 1.180$ |  2[SSq] = 1.14 | 3.5% error |
 | 5 | $Z_{Pb} = 82 = 10^{1.914}$ | n=2 sub-ladder | Magic number |
 | 6 | $\text{Binding}_T = 2.599 \times 10^{-10}$ J | n=10.215 | Total BE ? hadronic n=10 |
 | 7 | 3/3 PASS at < 0.25 ?n | All levels | EP-04 VALIDATED |
@@ -188,13 +192,13 @@ magic_number_Z82_confirmed: True  (?n = 0.205 for 10 MeV level) ?
 |-------|-----|-------|---|-----------|
 | PAPER_116 | EP-03 | Quark virtual | 4 | ?n = 0.204 |
 | PAPER_117 | EP-04 | Nuclear MeV | 8 | ?n = 0.205 |
-| PAPER_112 | EP-02 | PDG particles | 8�14 | R�=0.95 (241 particles) |
+| PAPER_112 | EP-02 | PDG particles | 814 | R=0.95 (241 particles) |
 | (future) | – | EW bosons | 12 | W=12.11, Z=12.16 |
 | (future) | – | Compositeness | 14 | ?>30 TeV = n=14.7 |
 
 The UQFF ladder provides a unified framework from sub-hadronic virtual quark
 exchange (n=4) through nuclear (n=8), hadronic (n=10), and electroweak (n=12)
-scales � all confirmed by LHC Run 3 and ENSDF nuclear data.
+scales  all confirmed by LHC Run 3 and ENSDF nuclear data.
 
 ---
 
@@ -203,8 +207,8 @@ scales � all confirmed by LHC Run 3 and ENSDF nuclear data.
 Empirical Proof EP-04 confirms:
 
 1. **Pb-206 ENSDF data** places the 10 MeV nuclear continuum threshold at
-   **n = 8.205** on the UQFF ladder � within ?n = 0.205 of the expected n = 8
-2. The neutron separation energy **S_n = 7.367 MeV � 2 � [SSq] � E8** with
+   **n = 8.205** on the UQFF ladder  within ?n = 0.205 of the expected n = 8
+2. The neutron separation energy **S_n = 7.367 MeV  2  [SSq]  E8** with
    3.5% precision, providing nuclear-physics confirmation of [SSq] = 0.57
 3. The **Z = 82 Pb magic number** is consistent with the n = 2 sub-ladder
    proton-counting resonance, where Z_magic(Pb) = 10^1.914 × 10^2
@@ -215,8 +219,8 @@ Empirical Proof EP-04 confirms:
 
 ---
 
-**UQFF computed:** Canonical UQFF buoyancy parameter U_bi = ?�[SSq]�GM/rκ = 5.0e-4�0.57�6.67e-11�M/r�; for solar parameters: U_bi,Sun = 5.7e-4�6.67e-11�1.99e30/(6.96e8)� = 1.47e+2 m/s�.
-
+**UQFF computed:** Canonical UQFF buoyancy parameter U_bi = ?[SSq]GM/rκ = 5.0e-4§0.57§6.67e-11M/r;
+for solar parameters: U_bi,Sun = 5.7e-4§6.67e-11§1.99e30/(6.96e8) = 1.47e+2 m/s.
 
 ---
 
@@ -224,13 +228,15 @@ Empirical Proof EP-04 confirms:
 
 ### §A.1 Sector Classification
 
-This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see `uqff_lagrangian_derivation.py`).
+This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
-The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive quantum fundamentals (DPM, UA, SCm):
+The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
+quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_\mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
+$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
 
 where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
@@ -244,8 +250,9 @@ $$\boxed{\frac{\delta S}{\delta \phi_{\rm NS}} = \nabla^2 \phi_{\rm NS} - (4\pi 
 
 $$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\rm NS} = 0$$
 
-The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g forces) through vacuum density initialization to the sector-specific equation of motion. Every term in the E-L equation inherits its physical origin from the cosmogenesis master.
-
+The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
+forces) through vacuum density initialization to the sector-specific equation of motion. Every term
+in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 ---
 
@@ -255,9 +262,9 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.117$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m³.
+For this system, the local VDS sub-ratio is $0.117$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -269,13 +276,13 @@ Since $p_{\rm DVP} = 107$ is **resonant** (threshold at $p > 26$), the system's 
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
-The BSH saturation timescale for this sector is **10⁴ yr** (spin-down equilibrium):
+The BSH saturation timescale for this sector is **104 yr** (spin-down equilibrium):
 
-$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
+$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\rm SCm}$ which initializes the harmonic series at cosmogenesis.
 
@@ -283,51 +290,42 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.117 | ✓ Threshold-consistent |
-| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 107$ | ✓ Resonant |
-| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
-| [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
-
+| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.117 | PASS Threshold-consistent |
+| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 107$ | PASS Resonant |
+| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
+| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 ---
-
 
 ## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | ✓ Consistent |
-| Cosmological constant Λ | 1.1×10⁻⁵² m⁻² (UQFF vacuum term) | 1.114×10⁻⁵² m⁻² | Planck 2018 | ✓ Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10⁻³⁵/yr | Super-K 2024 | ✓ Consistent |
-| UQFF buoyancy signature | F_U_Bi_i unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
+| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
-**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes significant, offering a falsifiable prediction beyond the Standard Model.
+**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
+produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
+bridge.*
 
 ## References
 
 1. ENSDF (2025). *Evaluated Nuclear Structure Data File*. National Nuclear Data Center, BNL.
-2. Wang M. et al. [AME 2020] (2021). *The AME 2020 atomic mass evaluation (II)*. Chin. Phys. C 45, 030003.
-3. Kondev F.G. et al. (2021). *The NUBASE2020 evaluation of nuclear physics properties*. Chin. Phys. C 45, 030001.
+2. Wang M. et al. [AME 2020] (2021). *The AME 2020 atomic mass evaluation (II)*. Chin. Phys. C 45,
+030003.
+3. Kondev F.G. et al. (2021). *The NUBASE2020 evaluation of nuclear physics properties*. Chin. Phys.
+C 45, 030001.
 4. Murphy D.T. (2026). *EP-03 LHC Virtual Quark UQFF Ladder n=4*. PAPER_116.
 5. Murphy D.T. (2026). *EP-02 PDG 2025 Energy Ladder Proof*. PAPER_112.
-6. `NuclearBindingLadderValidator` (CondensedPhysics2.py) � Star-Magic codebase.
-.Groups[1].Value  � Empirical Proof EP-04: ENSDF Pb-206 Nuclear Level Data – UQFF Energy Ladder n=8 Confirmed
-
-**Title:** Empirical Proof EP-04: ENSDF/NNDC Pb-206 Nuclear Excitation Spectrum – UQFF Energy Ladder Nuclear Level n=8 and Magic Number Z=82 Signature Confirmed
-
-**Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57, κ_i = 0.61)  
-**Date:** March 9, 2026  
-**Domain:** �1.15 Empirical Proof Compendium  
-**Source Thread:** `grok_share_2fe4fa3e_conversation.txt` (EP-04, April�Sept 2025)  
-**Validator:** `NuclearBindingLadderValidator` (CondensedPhysics2.py)  
-**Cross-links:** �1.15 PAPER_116 (EP-03 LHC quark n=4); �1.15 PAPER_112 (EP-02 PDG ladder)
-
-
----
+6. `NuclearBindingLadderValidator` (CondensedPhysics2.py)  Star-Magic codebase.
+.Groups[1].Value   Empirical Proof EP-04: ENSDF Pb-206 Nuclear Level Data – UQFF Energy Ladder n=8
+Confirmed
 
 ## Appendix: Session 204 Codebase Upgrade Reference
 
@@ -339,9 +337,9 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `f`neutron_s26_coupling`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `k`ozima_scm_cross_section`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `k`ozima_wstp_kernel`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -350,7 +348,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `r`amanujan_polylog_s26`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
 | `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
@@ -359,7 +357,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `m`ock_theta_q26`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -370,8 +368,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `r`amanujan_pi_uqff`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `m`ock_theta_pi_wstp_kernel`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]

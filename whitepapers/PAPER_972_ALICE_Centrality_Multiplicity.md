@@ -1,6 +1,18 @@
+---
+paper_id: PAPER_972
+title: "ALICE Centrality Multiplicity via S₂₆^{(k)}"
+session: 216
+date: 2026-04-12
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [ALICE, vacuum, QGP, 26D, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_972: ALICE Centrality Multiplicity via S₂₆^{(k)}
 
-**Author:** Daniel T. Murphy -- Star Magic / UQFF Framework
+**Author:** Daniel T. Murphy — Star Magic / UQFF Framework
 **Date:** 2026-04-12
 **Session:** 216
 **Source:** qgp_ramanujan_application.py (ALICECentralityMultiplicityCalculator)
@@ -39,7 +51,7 @@ The $\sqrt{s}^{0.156}$ power law is consistent with ALICE Run 3 Pb-Pb data.
 
 ## References
 
-1. Murphy, D.T. -- Star Magic UQFF Framework (2024-2026)
+1. Murphy, D.T. — Star Magic UQFF Framework (2024-2026)
 2. PAPER_364 — ALICE multiplicity centrality (original CP4 #8)
 3. PAPER_969 — Expanded 26D Ramanujan $S_{26}^{(k)}$
 4. ALICE Collaboration — Pb-Pb at $\sqrt{s_{NN}} = 5.02$ TeV

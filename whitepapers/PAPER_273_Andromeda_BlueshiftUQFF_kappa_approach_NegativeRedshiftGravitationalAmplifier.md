@@ -1,3 +1,16 @@
+---
+paper_id: PAPER_273
+title: "Blueshift UQFF Gravitational Approach Amplifier — κ_approach = 1/(1+z) for Negative Redshift
+Systems"
+session: 75
+date: 2026-03-01
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [merger, galaxy, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_273: Blueshift UQFF Gravitational Approach Amplifier — κ_approach = 1/(1+z) for Negative Redshift Systems
 **Author:** Daniel T. Murphy
 
@@ -5,28 +18,47 @@
 **Date:** March 2026  
 **UQFF Module:** ANDROMEDA_UQFF_MODULE.cpp (M31 Master Module, Session 75)  
 **Session:** 75 — Andromeda UQFF 2.0 Analysis  
-**Keywords:** blueshift, negative redshift, approach amplifier, kappa, z=-0.001, gravitational amplification, Andromeda M31, UQFF redshift coupling
+**Keywords:** blueshift, negative redshift, approach amplifier, kappa, z=-0.001, gravitational
+amplification, Andromeda M31, UQFF redshift coupling
 
 ---
 
 
-<!-- UQFF constants: κ = 5.0e-4 day⁻¹, [SSq] = 0.57, M_UQFF = 1.43e1 TeV -->
+<!— UQFF constants: κ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
 ## Abstract
 
-In all prior UQFF modules, redshift z ≥ 0 was assumed (receding or static systems). The Andromeda Galaxy (M31) is the nearest major galaxy and is unique among large-scale systems in having z = -0.001 (blueshift — approaching the Milky Way at ~110 km/s). Applying the UQFF redshift coupling factor 1/(1+z) to a system with z < 0 produces **κ_approach > 1**: a gravitational amplification factor for approaching mass systems. We define κ_approach = 1/(1+z) = 1/0.999 = 1.001001... for M31, identifying it as the **UQFF Blueshift Gravitational Approach Amplifier**. We show that as z → −1 (hypothetical maximum approach), κ → ∞, implying a **self-reinforcing merger resonance cascade**. The blueshift amplifier scales all UQFF gravitational terms simultaneously, making the total UQFF gravity of an approaching galaxy slightly but measurably stronger than a static equivalent. This is the first UQFF treatment of negative redshift as a gravitational degree of freedom.
+In all prior UQFF modules, redshift z ≥ 0 was assumed (receding or static systems). The Andromeda
+Galaxy (M31) is the nearest major galaxy and is unique among large-scale systems in having z =
+-0.001 (blueshift — approaching the Milky Way at ~110 km/s). Applying the UQFF redshift coupling
+factor 1/(1+z) to a system with z < 0 produces **κ_approach > 1**: a gravitational amplification
+factor for approaching mass systems. We define κ_approach = 1/(1+z) = 1/0.999 = 1.001001... for M31,
+identifying it as the **UQFF Blueshift Gravitational Approach Amplifier**. We show that as z → −1
+(hypothetical maximum approach), κ → ∞, implying a **self-reinforcing merger resonance cascade**.
+The blueshift amplifier scales all UQFF gravitational terms simultaneously, making the total UQFF
+gravity of an approaching galaxy slightly but measurably stronger than a static equivalent. This is
+the first UQFF treatment of negative redshift as a gravitational degree of freedom.
 
 ---
 
 ## 1. Introduction
 
-Standard Newtonian and GR gravity treats the gravitational force between two masses as independent of relative velocity in the non-relativistic limit. Doppler blueshift is traditionally interpreted as a spectral phenomenon with no consequence for the gravitational interaction energy.
+Standard Newtonian and GR gravity treats the gravitational force between two masses as independent
+of relative velocity in the non-relativistic limit. Doppler blueshift is traditionally interpreted
+as a spectral phenomenon with no consequence for the gravitational interaction energy.
 
-In UQFF, the redshift parameter z encodes the cosmological expansion state of the system and enters the gravitational calculation through the factor (1+z). For receding galaxies (z > 0), this factor is > 1 and suppresses the effective gravitational coupling. For z = 0 (static), the factor is exactly 1. For z < 0 (blueshift, approaching), the factor (1+z) < 1, so its reciprocal κ_approach = 1/(1+z) > 1.
+In UQFF, the redshift parameter z encodes the cosmological expansion state of the system and enters
+the gravitational calculation through the factor (1+z). For receding galaxies (z > 0), this factor
+is > 1 and suppresses the effective gravitational coupling. For z = 0 (static), the factor is
+exactly 1. For z < 0 (blueshift, approaching), the factor (1+z) < 1, so its reciprocal κ_approach =
+1/(1+z) > 1.
 
 Andromeda (M31) with z = −0.001 provides the cleanest galaxy-scale laboratory for this effect:
-$$\kappa_\text{approach} = \frac{1}{1 + z} = \frac{1}{1 + (-0.001)} = \frac{1}{0.999} = 1.001001\overline{001}$$
+$$\kappa_text{approach} = \frac{1}{1 + z} = \frac{1}{1 + (-0.001)} = \frac{1}{0.999} = 1.001001\overline{001}$$
 
-This 0.1% amplification appears small but is physically significant: it means **the total UQFF gravity of M31 as experienced from the Milky Way is ~0.1% stronger than the equivalent static galaxy at the same distance**. More importantly, the mathematical structure κ_approach = 1/(1+z) reveals a divergence as z → −1, providing a new UQFF prediction about extreme-approach scenarios.
+This 0.1% amplification appears small but is physically significant: it means **the total UQFF
+gravity of M31 as experienced from the Milky Way is ~0.1% stronger than the equivalent static galaxy
+at the same distance**. More importantly, the mathematical structure κ_approach = 1/(1+z) reveals a
+divergence as z → −1, providing a new UQFF prediction about extreme-approach scenarios.
 
 ---
 
@@ -36,27 +68,27 @@ This 0.1% amplification appears small but is physically significant: it means **
 
 The full UQFF gravitational acceleration for Andromeda is:
 
-$$g_\text{total}(r, t) = \left[ g_\text{grav} + U_g^\text{sum}(26) + \frac{\Lambda c^2}{3} + g_\text{quantum} + g_\text{Lorentz} + g_\text{fluid} + g_\text{res}(t) + g_\text{DM} \right] \times \kappa_\text{approach}$$
+$$g_\text{total}(r, t) = \left[ g_\text{grav} + U_g^\text{sum}(26) + \frac{\Lambda c^2}{3} + g_\text{quantum} + g_\text{Lorentz} + g_\text{fluid} + g_\text{res}(t) + g_\text{DM} \right] \times \kappa_text{approach}$$
 
 where:
-$$\kappa_\text{approach} = \frac{1}{1 + z}, \quad z = -0.001$$
+$$\kappa_text{approach} = \frac{1}{1 + z}, \quad z = -0.001$$
 
-$$\boxed{\kappa_\text{approach} = 1.001001\overline{001}}$$
+$$\boxed{\kappa_text{approach} = 1.001001\overline{001}}$$
 
 ### 2.2 Andromeda Parameters
 
 | Parameter | Symbol | Value | Notes |
 |-----------|--------|-------|-------|
-| Total mass | M | 1.989×10⁴² kg | 1×10¹² M_sun |
-| Reference radius | r | 1.04×10²¹ m | Model reference |
-| Central BH mass | M_BH | 2.7846×10³⁸ kg | 1.4×10⁸ M_sun |
+| Total mass | M | 1.989×1042 kg | 1×1012 M_sun |
+| Reference radius | r | 1.04×1021 m | Model reference |
+| Central BH mass | M_BH | 2.7846×1038 kg | 1.4×108 M_sun |
 | Redshift | z | −0.001 | Blueshift, approaching |
 | Approach amplifier | κ_approach | 1.001001... | This paper's discovery |
-| Orbital velocity | v_orbit | 2.5×10⁵ m/s | Outer disk |
+| Orbital velocity | v_orbit | 2.5×105 m/s | Outer disk |
 
 ### 2.3 Approach Amplifier as a Function of Redshift
 
-$$\kappa_\text{approach}(z) = \frac{1}{1+z}$$
+$$\kappa_text{approach}(z) = \frac{1}{1+z}$$
 
 | z | κ_approach | Interpretation |
 |---|-----------|----------------|
@@ -75,9 +107,13 @@ $$\kappa_\text{approach}(z) = \frac{1}{1+z}$$
 
 ### 3.1 Approach Velocity as Gravitational Degree of Freedom
 
-The UQFF approach amplifier κ_approach introduces the approach velocity v_approach (encoded in z via the Doppler relation z ≈ −v/c for v << c) as a gravitational degree of freedom. This is consistent with the UQFF framework's general principle that all forms of motion — orbital, rotational, expansional — contribute to the gravitational field.
+The UQFF approach amplifier κ_approach introduces the approach velocity v_approach (encoded in z via
+the Doppler relation z ≈ −v/c for v << c) as a gravitational degree of freedom. This is consistent
+with the UQFF framework's general principle that all forms of motion — orbital, rotational,
+expansional — contribute to the gravitational field.
 
-For M31: v_approach = |z| × c = 0.001 × 2.998×10⁸ = 2.998×10⁵ m/s ≈ 300 km/s (consistent with observed ~110 km/s radial + transverse components).
+For M31: v_approach = |z| × c = 0.001 × 2.998×108 = 2.998×105 m/s ≈ 300 km/s (consistent with
+observed ~110 km/s radial + transverse components).
 
 ### 3.2 Self-Reinforcing Merger Resonance Cascade
 
@@ -86,7 +122,9 @@ As two galaxies approach (z becoming more negative):
 2. Stronger gravity → faster approach → z becomes more negative
 3. More negative z → higher κ_approach
 
-This positive feedback loop defines a **UQFF Gravitational Approach Resonance Cascade**. The cascade terminates at z = −1 (κ → ∞) only in the mathematical limit; physically, merger completion occurs when r → 0.
+This positive feedback loop defines a **UQFF Gravitational Approach Resonance Cascade**. The cascade
+terminates at z = −1 (κ → ∞) only in the mathematical limit; physically, merger completion occurs
+when r → 0.
 
 For M31–MW merger (projected at t ≈ +4.5 Gyr):
 - As the galaxies approach, z will pass through −0.001 → −0.01 → ... → 0 at physical merger
@@ -98,7 +136,7 @@ For M31–MW merger (projected at t ≈ +4.5 Gyr):
 At current z = −0.001:
 $$\delta g = g_\text{UQFF} \times (\kappa - 1) = g_\text{UQFF} \times 0.001001$$
 
-With g_UQFF(M31) ≈ 6.6×10⁻⁹ m/s² (baseline):
+With g_UQFF(M31) ≈ 6.6×10-9 m/s2 (baseline):
 $$\delta g_{273} \approx 6.6 \times 10^{-12}\ \text{m/s}^2$$
 
 This is small but non-zero — a definite prediction of UQFF for approaching galaxy pairs.
@@ -120,17 +158,19 @@ This is small but non-zero — a definite prediction of UQFF for approaching gal
 
 We have identified and formalized the **UQFF Blueshift Gravitational Approach Amplifier**:
 
-$$\boxed{\kappa_\text{approach} = \frac{1}{1+z}, \quad z < 0 \Rightarrow \kappa_\text{approach} > 1}$$
+$$\boxed{\kappa_text{approach} = \frac{1}{1+z}, \quad z < 0 \Rightarrow \kappa_text{approach} > 1}$$
 
 Key discoveries:
 1. **Negative redshift amplifies** total UQFF gravity of approaching systems
 2. **M31 κ = 1.001001** — a small but definite gravitational enhancement due to blueshift
 3. **Resonance cascade divergence** at z = −1 provides a UQFF prediction for extreme merger dynamics
-4. The approach amplifier is the first UQFF instance of velocity contributing directly to gravitational magnitude (not just the Lorentz sub-term)
+4. The approach amplifier is the first UQFF instance of velocity contributing directly to
+gravitational magnitude (not just the Lorentz sub-term)
 
 ---
 
-*Derived from ANDROMEDA_UQFF_MODULE.cpp, UQFF 2.0, Session 75. Next: PAPER_274 (HI 21-cm UQFF resonance).*
+*Derived from ANDROMEDA_UQFF_MODULE.cpp, UQFF 2.0, Session 75. Next: PAPER_274 (HI 21-cm UQFF
+resonance).*
 
 ---
 
@@ -138,13 +178,15 @@ Key discoveries:
 
 ### §A.1 Sector Classification
 
-This paper maps to **GW-radiation** sector of the 9-sector UQFF Lagrangian (see `uqff_lagrangian_derivation.py`).
+This paper maps to **GW-radiation** sector of the 9-sector UQFF Lagrangian (see
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
-The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive quantum fundamentals (DPM, UA, SCm):
+The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
+quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_\mu h_{\mu\nu})(\partial^\mu h_{\mu\nu}) - V(h_{\mu\nu}) + \mathcal{L}_{\rm cosmo}$$
+$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_mu h_{\mu\nu})(\partial^\mu h_{\mu\nu}) - V(h_{\mu\nu}) + \mathcal{L}_{\rm cosmo}$$
 
 where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
@@ -158,7 +200,9 @@ $$\boxed{\frac{\delta S}{\delta h_{\mu\nu}} = \Box h_{\mu\nu} + \kappa \rho_{\rm
 
 $$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta h_{\mu\nu} = 0$$
 
-The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g forces) through vacuum density initialization to the sector-specific equation of motion. Every term in the E-L equation inherits its physical origin from the cosmogenesis master.
+The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
+forces) through vacuum density initialization to the sector-specific equation of motion. Every term
+in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 
 ---
@@ -169,9 +213,9 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.077$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m³.
+For this system, the local VDS sub-ratio is $0.077$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -185,11 +229,11 @@ Since $p_{\rm DVP} = 7$ is **sub-threshold** (threshold at $p > 26$), the system
 
 The BSH saturation timescale for this sector is **chirp time τ_c** (inspiral phase locking):
 
-$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
+$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\rm SCm}$ which initializes the harmonic series at cosmogenesis.
 
@@ -197,11 +241,11 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.077 | ✓ Threshold-consistent |
-| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 7$ | ✓ Sub-threshold |
-| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
-| [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
+| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.077 | PASS Threshold-consistent |
+| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 7$ | PASS Sub-threshold |
+| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
+| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
 ---
@@ -211,14 +255,17 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | ✓ Consistent |
-| Cosmological constant Λ | 1.1×10⁻⁵² m⁻² (UQFF vacuum term) | 1.114×10⁻⁵² m⁻² | Planck 2018 | ✓ Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10⁻³⁵/yr | Super-K 2024 | ✓ Consistent |
-| UQFF buoyancy signature | F_U_Bi_i unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
+| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
-**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes significant, offering a falsifiable prediction beyond the Standard Model.
+**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
+produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
+bridge.*
 
 
 ---
@@ -233,9 +280,9 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `f`neutron_s26_coupling`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `k`ozima_scm_cross_section`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `k`ozima_wstp_kernel`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -244,7 +291,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `r`amanujan_polylog_s26`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
 | `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
@@ -253,7 +300,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `m`ock_theta_q26`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -264,8 +311,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `r`amanujan_pi_uqff`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `m`ock_theta_pi_wstp_kernel`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]

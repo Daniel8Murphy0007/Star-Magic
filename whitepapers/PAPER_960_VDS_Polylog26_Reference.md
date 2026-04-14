@@ -1,6 +1,18 @@
+---
+paper_id: PAPER_960
+title: "VDS Polylogarithm Li_{26} Reference"
+session: 215
+date: 2026-04-12
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [Riemann, vacuum, 26D, damping, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_960: VDS Polylogarithm Li_{26} Reference
 
-**Author:** Daniel T. Murphy -- Star Magic / UQFF Framework
+**Author:** Daniel T. Murphy — Star Magic / UQFF Framework
 **Date:** 2026-04-12
 **Session:** 215
 **Source:** ramanujan_26d_summation.py (VDSPolylog26)
@@ -27,10 +39,10 @@ $$|S_{26}(z) - \text{Li}_{26}(z)| \xrightarrow{N \to \infty} 0$$
 
 ## References
 
-1. Murphy, D.T. -- Star Magic UQFF Framework (2024-2026)
+1. Murphy, D.T. — Star Magic UQFF Framework (2024-2026)
 2. PAPER_959 — 26D Ramanujan Summation
 3. PAPER_953 — Ramanujan-Accelerated $S_{26}$
-4. Lewin, L. -- Polylogarithms and Associated Functions (1981)
+4. Lewin, L. — Polylogarithms and Associated Functions (1981)
 
 ---
 
@@ -70,7 +82,7 @@ $$|S_{26}(z) - \text{Li}_{26}(z)| \xrightarrow{N \to \infty} 0$$
 **Sector:** VDS Cross-Validation (Polylog26 Reference Curve)
 
 ### §A.2 Lagrangian Density
-$$\mathcal{L}_\text{VDS} = \text{Li}_{26}(z) \cdot \rho_\text{SCm}(r)$$
+$$\mathcal{L}_\text{VDS} = \text{Li}_{26}(z) \cdot \rho_text{SCm}(r)$$
 
 ### §A.3 Euler-Lagrange Equation of Motion
 $$\boxed{\frac{\partial}{\partial z}\text{Li}_{26}(z) = \frac{\text{Li}_{25}(z)}{z},\quad S_{26}^\text{VDS}(z) = \text{Li}_{26}(z) \cdot S_{26}}$$

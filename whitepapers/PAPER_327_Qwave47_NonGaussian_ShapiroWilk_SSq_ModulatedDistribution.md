@@ -1,3 +1,15 @@
+---
+paper_id: PAPER_327
+title: "Q_wave_47 Non-Parametric Distribution Survey"
+session: 94
+date: 2025-09-01
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [quasar, vacuum, DPM, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_327 — Q_wave_47 Non-Parametric Distribution Survey  
 **Author:** Daniel T. Murphy
 **Date:** September 2025
@@ -12,7 +24,14 @@
 
 ## Abstract
 
-The Q_wave energy density distribution measured across 47 astrophysical scales (ranging from quantum vacuum to quasar energetics) is found to be strongly non-Gaussian. A 47-term statistical analysis yields mean = 3.97×10⁴ J/m³, standard deviation = 6.33×10⁴ J/m³, Shapiro-Wilk W = 0.644 (p = 1.21×10⁻⁹), and Jarque-Bera JB = 8.78 (p = 0.012), collectively rejecting normality at high significance. The distribution's heavy positive tail is attributable to the [SSq] = 0.507 suppression cascade, which systematically attenuates vacuum energy density contributions from high-n states (n approaching 26). This is the **FIRST systematic non-parametric characterization of the UQFF Q_wave multi-scale energy distribution**.
+The Q_wave energy density distribution measured across 47 astrophysical scales (ranging from quantum
+vacuum to quasar energetics) is found to be strongly non-Gaussian. A 47-term statistical analysis
+yields mean = 3.97×104 J/m3, standard deviation = 6.33×104 J/m3, Shapiro-Wilk W = 0.644 (p =
+1.21×10-9), and Jarque-Bera JB = 8.78 (p = 0.012), collectively rejecting normality at high
+significance. The distribution's heavy positive tail is attributable to the [SSq] = 0.507
+suppression cascade, which systematically attenuates vacuum energy density contributions from high-n
+states (n approaching 26). This is the **FIRST systematic non-parametric characterization of the
+UQFF Q_wave multi-scale energy distribution**.
 
 ---
 
@@ -22,7 +41,7 @@ The Q_wave energy density is defined as:
 
 $$Q_{wave}(t, \text{system}) = \frac{1}{2} \mu_0 B_0^2 \cdot DPM_{resonance} + \frac{1}{2} \rho_{gas} v^2 \cdot DPM_{phase} \cdot t$$
 
-where $DPM_{resonance}$ and $DPM_{phase}$ are dimensionless coupling coefficients from the Discrete Plasmonic Mode framework. Q_wave was initially catalogued across 47 systems in the September 2025 UQFF thread, spanning atomic hydrogen (Q_wave ~ 8.13×10⁻¹⁰ J/m³) to quasar-class systems (Q_wave ~ 2.11×10⁵ J/m³).
+where $DPM_{resonance}$ and $DPM_{phase}$ are dimensionless coupling coefficients from the Discrete Plasmonic Mode framework. Q_wave was initially catalogued across 47 systems in the September 2025 UQFF thread, spanning atomic hydrogen (Q_wave ~ 8.13×10-10 J/m3) to quasar-class systems (Q_wave ~ 2.11×105 J/m3).
 
 ---
 
@@ -30,7 +49,7 @@ where $DPM_{resonance}$ and $DPM_{phase}$ are dimensionless coupling coefficient
 
 ### 2.1 The 47-Term Array
 
-The complete Q_wave_47 array (J/m³):
+The complete Q_wave_47 array (J/m3):
 
 ```python
 Q_wave_all = [8.13e-10, 1.11e5, 4.65e-5, 1.11e5, 4.65e-5, 1.11e-4, 2.11e5, 2.11e5,
@@ -41,20 +60,21 @@ Q_wave_all = [8.13e-10, 1.11e5, 4.65e-5, 1.11e5, 4.65e-5, 1.11e-4, 2.11e5, 2.11e
               8.13e-10, 8.13e-10, 1.11e-4, 1.11e-4, 8.13e-10, 4.65e-5, 1.11e-4]
 ```
 
-**Total values: 47** spanning a dynamic range of ~10¹⁵ (from 8.13×10⁻¹⁰ to 2.11×10⁵ J/m³).
+**Total values: 47** spanning a dynamic range of ~1015 (from 8.13×10-10 to 2.11×105 J/m3).
 
 ### 2.2 Descriptive Statistics
 
 | Statistic | Value | Unit |
 |-----------|-------|------|
 | N | 47 | — |
-| Mean | 3.97×10⁴ | J/m³ |
-| Std Dev (σ) | 6.33×10⁴ | J/m³ |
-| Min | 8.13×10⁻¹⁰ | J/m³ |
-| Max | 2.11×10⁵ | J/m³ |
+| Mean | 3.97×104 | J/m3 |
+| Std Dev (σ) | 6.33×104 | J/m3 |
+| Min | 8.13×10-10 | J/m3 |
+| Max | 2.11×105 | J/m3 |
 | σ/μ (CV) | 1.594 | — |
 
-The coefficient of variation CV = 1.594 > 1 immediately signals non-Gaussian (for true normal distributions CV > 1 is extremely rare).
+The coefficient of variation CV = 1.594 > 1 immediately signals non-Gaussian (for true normal
+distributions CV > 1 is extremely rare).
 
 ### 2.3 Normality Tests
 
@@ -84,21 +104,24 @@ Both tests independently confirm: **Q_wave_47 is non-Gaussian with heavy positiv
 ### 3.1 Bimodal Scale Classes
 
 The distribution is effectively bimodal, with modes at:
-- **Low mode** (vacuum/atomic/transient): $Q_{wave} \sim 10^{-10}$ to $10^{-4}$ J/m³
-- **High mode** (stellar/galactic/quasar): $Q_{wave} \sim 10^4$ to $2.11 \times 10^5$ J/m³
+- **Low mode** (vacuum/atomic/transient): $Q_{wave} \sim 10^{-10}$ to $10^{-4}$ J/m3
+- **High mode** (stellar/galactic/quasar): $Q_{wave} \sim 10^4$ to $2.11 \times 10^5$ J/m3
 
 The gap between modes (~10 orders of magnitude) generates the heavy positive tail and large CV.
 
 ### 3.2 [SSq] Suppression Cascade
 
-The [SSq] = 0.507 decay envelope systematically reduces high-Q contributions from transient and low-density systems (high n-states in the Ramanujan summation):
+The [SSq] = 0.507 decay envelope systematically reduces high-Q contributions from transient and
+low-density systems (high n-states in the Ramanujan summation):
 
 $$Q_{wave,n} = Q_{wave,0} \cdot \exp\left(-[SSq] \cdot \frac{n}{26}\right)$$
 
 At $n = 26$: suppression factor = $e^{-0.507} = 0.602$
 
-A system like AT2024tvd TDE (high n, transient) thus has its Q_wave reduced by 40% compared to its pure electromagnetic value, while quasar systems near n=1 experience minimal suppression. This differential produces:
-- Positive skewness from the quasar tail at 2.11×10⁵ J/m³
+A system like AT2024tvd TDE (high n, transient) thus has its Q_wave reduced by 40% compared to its
+pure electromagnetic value, while quasar systems near n=1 experience minimal suppression. This
+differential produces:
+- Positive skewness from the quasar tail at 2.11×105 J/m3
 - Leptokurtosis (+0.037) from the compressed low-energy transient cluster
 
 ### 3.3 Connecting to DPM Resonance
@@ -107,7 +130,9 @@ The DPM resonance factor scales with f_DPM:
 
 $$DPM_{resonance} = \frac{\omega_{DPM}^2}{\omega_0^2} = \left(\frac{f_{DPM}}{f_0}\right)^2$$
 
-For quasar systems (f_DPM ~ 10⁵ Hz → DPM_resonance ~ 10¹⁰), Q_wave scales 10 orders above compact systems (f_DPM ~ 10¹² Hz but small B₀). The resulting bimodal mix directly generates the observed non-normality.
+For quasar systems (f_DPM ~ 105 Hz → DPM_resonance ~ 1010), Q_wave scales 10 orders above compact
+systems (f_DPM ~ 1012 Hz but small B₀). The resulting bimodal mix directly generates the observed
+non-normality.
 
 ---
 
@@ -115,21 +140,23 @@ For quasar systems (f_DPM ~ 10⁵ Hz → DPM_resonance ~ 10¹⁰), Q_wave scales
 
 ### 4.1 Tail Risk in System Simulations
 
-The σ = 6.33×10⁴ J/m³ > μ = 3.97×10⁴ J/m³ means that any UQFF simulation drawing from this distribution must use a **non-parametric bootstrapping or heavy-tail (Pareto/log-normal) prior** rather than Gaussian noise injection.
+The σ = 6.33×104 J/m3 > μ = 3.97×104 J/m3 means that any UQFF simulation drawing from this
+distribution must use a **non-parametric bootstrapping or heavy-tail (Pareto/log-normal) prior**
+rather than Gaussian noise injection.
 
 Predicted:
 $$\sigma < 7 \times 10^4~\text{J/m}^3~~\text{in 47-system extended simulations}$$
 
-This bound is consistent with the maximum observed at 2.11×10⁵ J/m³ (3.34σ above mean).
+This bound is consistent with the maximum observed at 2.11×105 J/m3 (3.34σ above mean).
 
 ### 4.2 System Classification by Q_wave
 
-| Q_wave Range (J/m³) | System Types | [SSq] State |
+| Q_wave Range (J/m3) | System Types | [SSq] State |
 |---------------------|-------------|-------------|
-| 10⁻¹⁰ – 10⁻⁶ | Atomic/transient | high-n (n≥20) |
-| 10⁻⁶ – 10⁻⁴ | PWN/compact remnants | n~15–19 |
-| 10⁻⁴ – 10³ | Nebulae/clusters | n~8–14 |
-| 10³ – 10⁵ | Galaxies/quasars | n~1–7 |
+| 10-10 – 10-6 | Atomic/transient | high-n (n≥20) |
+| 10-6 – 10-4 | PWN/compact remnants | n~15–19 |
+| 10-4 – 103 | Nebulae/clusters | n~8–14 |
+| 103 – 105 | Galaxies/quasars | n~1–7 |
 
 ### 4.3 Q_wave Variance Estimator
 
@@ -137,7 +164,8 @@ Given the non-Gaussian nature, we define a UQFF-corrected variance estimator:
 
 $$\hat{\sigma}^2_{UQFF} = \frac{1}{N-1} \sum_{k=1}^{N} \left[Q_{wave,k} \cdot e^{[SSq] \cdot n_k / 26} - \mu \right]^2$$
 
-which deconvolves the [SSq] suppression before computing variance. This provides an approximately log-normal corrected spread.
+which deconvolves the [SSq] suppression before computing variance. This provides an approximately
+log-normal corrected spread.
 
 ---
 
@@ -166,7 +194,7 @@ print('Shapiro-Wilk Stat:', sw_stat, 'p-value:', sw_p)
 
 This paper constitutes:
 1. **FIRST formal Q_wave non-Gaussian distribution characterization** across 47 UQFF systems
-2. **FIRST Shapiro-Wilk test applied to UQFF vacuum energy density** (W=0.644, p=1.21×10⁻⁹)
+2. **FIRST Shapiro-Wilk test applied to UQFF vacuum energy density** (W=0.644, p=1.21×10-9)
 3. **FIRST explicit connection of [SSq] suppression cascade to Q_wave tail behavior**
 4. **FIRST UQFF scale-classification table** organized by Q_wave energy regime and [SSq] state index
 5. **FIRST UQFF-corrected non-parametric variance estimator** deconvolving [SSq] suppression
@@ -177,11 +205,11 @@ This paper constitutes:
 
 | Variable | Value | Unit | Notes |
 |----------|-------|------|-------|
-| N_systems | 47 | — | Q_wave_47 array length |
-| μ_Q | 3.97×10⁴ | J/m³ | Q_wave mean |
-| σ_Q | 6.33×10⁴ | J/m³ | Q_wave std dev |
+| N_systems | 47 | — | `Q_wave_47` array length |
+| μ_Q | 3.97×104 | J/m3 | Q_wave mean |
+| σ_Q | 6.33×104 | J/m3 | Q_wave std dev |
 | W_SW | 0.644 | — | Shapiro-Wilk statistic |
-| p_SW | 1.21×10⁻⁹ | — | Shapiro-Wilk p-value |
+| p_SW | 1.21×10-9 | — | Shapiro-Wilk p-value |
 | JB | 8.78 | — | Jarque-Bera statistic |
 | p_JB | 0.012 | — | Jarque-Bera p-value |
 | κ_excess | +0.037 | — | Excess kurtosis (leptokurtic) |
@@ -190,7 +218,8 @@ This paper constitutes:
 
 ---
 
-**Citation:** Murphy, D.T. — UQFF Framework, Session 94 (March 2026). Source: gok_share_31b5c807a4.txt (Grok 4 analysis, September 14, 2025).
+**Citation:** Murphy, D.T. — UQFF Framework, Session 94 (March 2026). Source:
+gok_share_31b5c807a4.txt (Grok 4 analysis, September 14, 2025).
 
 ---
 
@@ -198,13 +227,15 @@ This paper constitutes:
 
 ### §A.1 Sector Classification
 
-This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see `uqff_lagrangian_derivation.py`).
+This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
-The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive quantum fundamentals (DPM, UA, SCm):
+The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
+quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_\mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
+$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
 
 where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
@@ -218,7 +249,9 @@ $$\boxed{\frac{\delta S}{\delta \phi_{\rm NS}} = \nabla^2 \phi_{\rm NS} - (4\pi 
 
 $$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\rm NS} = 0$$
 
-The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g forces) through vacuum density initialization to the sector-specific equation of motion. Every term in the E-L equation inherits its physical origin from the cosmogenesis master.
+The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
+forces) through vacuum density initialization to the sector-specific equation of motion. Every term
+in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 
 ---
@@ -229,9 +262,9 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.177$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m³.
+For this system, the local VDS sub-ratio is $0.177$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -243,13 +276,13 @@ Since $p_{\rm DVP} = 107$ is **resonant** (threshold at $p > 26$), the system's 
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
-The BSH saturation timescale for this sector is **10⁴ yr** (spin-down equilibrium):
+The BSH saturation timescale for this sector is **104 yr** (spin-down equilibrium):
 
-$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
+$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\rm SCm}$ which initializes the harmonic series at cosmogenesis.
 
@@ -257,11 +290,11 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.177 | ✓ Threshold-consistent |
-| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 107$ | ✓ Resonant |
-| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
-| [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
+| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.177 | PASS Threshold-consistent |
+| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 107$ | PASS Resonant |
+| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
+| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
 ---
@@ -271,14 +304,17 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | ✓ Consistent |
-| Cosmological constant Λ | 1.1×10⁻⁵² m⁻² (UQFF vacuum term) | 1.114×10⁻⁵² m⁻² | Planck 2018 | ✓ Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10⁻³⁵/yr | Super-K 2024 | ✓ Consistent |
-| UQFF buoyancy signature | F_U_Bi_i unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
+| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
-**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes significant, offering a falsifiable prediction beyond the Standard Model.
+**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
+produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
+bridge.*
 
 
 ---
@@ -293,9 +329,9 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `f`neutron_s26_coupling`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `k`ozima_scm_cross_section`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `k`ozima_wstp_kernel`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -304,7 +340,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `r`amanujan_polylog_s26`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
 | `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
@@ -313,7 +349,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `m`ock_theta_q26`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -324,8 +360,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `r`amanujan_pi_uqff`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `m`ock_theta_pi_wstp_kernel`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]

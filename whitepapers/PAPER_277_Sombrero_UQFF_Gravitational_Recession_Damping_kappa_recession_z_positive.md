@@ -1,3 +1,15 @@
+---
+paper_id: PAPER_277
+title: "UQFF Gravitational Recession Damping Factor κ_recession for Positive Redshift"
+session: 77
+date: 2026-03-01
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [galaxy, vacuum, buoyancy, damping, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_277 — UQFF Gravitational Recession Damping Factor κ_recession for Positive Redshift
 **Date:** March 2026
 
@@ -12,18 +24,33 @@
 ---
 
 
-<!-- UQFF constants: κ = 5.0e-4 day⁻¹, [SSq] = 0.57, M_UQFF = 1.43e1 TeV -->
+<!— UQFF constants: κ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
 ## Abstract
 
-We introduce the UQFF Gravitational Recession Damping Factor κ_recession = 1/(1+z) for galaxies receding from the observer (positive cosmological redshift z > 0). Applied to the Sombrero Galaxy (M104, z = +0.0063), this factor yields κ_recession = 0.99374, attenuating the total UQFF gravitational output by 0.63% relative to the rest-frame value. This result is the precise complement of PAPER_273's blueshift amplifier (Andromeda, z = −0.001, κ > 1), and together the two whitepapers establish the **Universal UQFF Bidirectional Redshift Law**: the single analytic function κ(z) = 1/(1+z) applies for all z, unifying recession and approach within one UQFF correction framework.
+We introduce the UQFF Gravitational Recession Damping Factor κ_recession = 1/(1+z) for galaxies
+receding from the observer (positive cosmological redshift z > 0). Applied to the Sombrero Galaxy
+(M104, z = +0.0063), this factor yields κ_recession = 0.99374, attenuating the total UQFF
+gravitational output by 0.63% relative to the rest-frame value. This result is the precise
+complement of PAPER_273's blueshift amplifier (Andromeda, z = −0.001, κ > 1), and together the two
+whitepapers establish the **Universal UQFF Bidirectional Redshift Law**: the single analytic
+function κ(z) = 1/(1+z) applies for all z, unifying recession and approach within one UQFF
+correction framework.
 
 ---
 
 ## 1. Motivation and Context
 
-In standard cosmological physics, the gravitational interaction between two mass-energy concentrations is not generally modulated by their relative cosmological line-of-sight velocity. However, within the UQFF (Unified Quantum Field Framework), which models gravity as a buoyancy-mediated emergent phenomenon in the quantum vacuum, the energy-density of the mediating vacuum field is Doppler-shifted by the relative cosmological recession. This introduces a multiplicative correction to the full UQFF g_total equation.
+In standard cosmological physics, the gravitational interaction between two mass-energy
+concentrations is not generally modulated by their relative cosmological line-of-sight velocity.
+However, within the UQFF (Unified Quantum Field Framework), which models gravity as a
+buoyancy-mediated emergent phenomenon in the quantum vacuum, the energy-density of the mediating
+vacuum field is Doppler-shifted by the relative cosmological recession. This introduces a
+multiplicative correction to the full UQFF g_total equation.
 
-The Sombrero Galaxy (M104) is a nearby edge-on Sa-type spiral galaxy at a recession velocity of approximately +1890 km/s, corresponding to a spectroscopic heliocentric redshift of z = +0.0063. Its recession — the opposite of Andromeda's blueshift approach — provides the ideal test case for the positive-z branch of the universal κ(z) function.
+The Sombrero Galaxy (M104) is a nearby edge-on Sa-type spiral galaxy at a recession velocity of
+approximately +1890 km/s, corresponding to a spectroscopic heliocentric redshift of z = +0.0063. Its
+recession — the opposite of Andromeda's blueshift approach — provides the ideal test case for the
+positive-z branch of the universal κ(z) function.
 
 This paper establishes:
 1. The analytic form of κ_recession for z > 0.
@@ -37,11 +64,15 @@ This paper establishes:
 
 ### 2.1 UQFF Vacuum Field Energy Under Recession
 
-In UQFF, the gravitational term g_UQFF is proportional to the local vacuum energy density ρ_vac at the point of computation. For a source receding from the observer at cosmological velocity corresponding to redshift z, the energy of each mediating vacuum quantum is red-shifted by the factor (1+z):
+In UQFF, the gravitational term g_UQFF is proportional to the local vacuum energy density ρ_vac at
+the point of computation. For a source receding from the observer at cosmological velocity
+corresponding to redshift z, the energy of each mediating vacuum quantum is red-shifted by the
+factor (1+z):
 
 $$E_{\text{obs}} = \frac{E_{\text{emit}}}{1+z}$$
 
-Since the gravitational coupling in UQFF is proportional to the vacuum field energy density, the full UQFF g_total is correspondingly attenuated:
+Since the gravitational coupling in UQFF is proportional to the vacuum field energy density, the
+full UQFF g_total is correspondingly attenuated:
 
 $$g_{\text{UQFF,obs}} = \frac{g_{\text{UQFF,emit}}}{1+z} = \kappa_{\text{recession}} \cdot g_{\text{UQFF,emit}}$$
 
@@ -65,7 +96,7 @@ where $\sigma_{\text{SC}} = 1 - B/B_{\text{crit}}$ (superconductivity correction
 
 $$\Delta g_{\text{recession}} = g_{\text{UQFF}} \left(1 - \frac{1}{1.0063}\right) = 0.00626 \cdot g_{\text{UQFF}}$$
 
-With g_base = G·M/r² = 2.382×10⁻¹⁰ m/s² and pre_sum_Ug ≈ 52·g_base ≈ 1.238×10⁻⁸ m/s²:
+With g_base = G·M/r2 = 2.382×10-10 m/s2 and pre_sum_Ug ≈ 52·g_base ≈ 1.238×10-8 m/s2:
 
 $$\Delta g \approx 0.00626 \times 1.238 \times 10^{-8} \approx 7.75 \times 10^{-11}\ \text{m/s}^2$$
 
@@ -73,7 +104,8 @@ $$\Delta g \approx 0.00626 \times 1.238 \times 10^{-8} \approx 7.75 \times 10^{-
 
 ## 3. Universal UQFF Bidirectional Redshift Law
 
-Combining PAPER_273 (z = −0.001, Andromeda) and PAPER_277 (z = +0.0063, Sombrero), we arrive at the general statement:
+Combining PAPER_273 (z = −0.001, Andromeda) and PAPER_277 (z = +0.0063, Sombrero), we arrive at the
+general statement:
 
 **Universal UQFF Bidirectional Redshift Law:**
 
@@ -105,13 +137,18 @@ $$\kappa(z) = \frac{1}{1+z}, \quad z \in (-1, +\infty)$$
 
 $$\lim_{z \to \infty} \kappa(z) = 0$$
 
-In the UQFF framework this corresponds to **gravitational switchoff** in the extreme early universe — the vacuum field quanta are so severely redshifted that they carry negligible energy. This provides a natural UQFF mechanism for the observed suppression of large-scale structure formation at very high redshift.
+In the UQFF framework this corresponds to **gravitational switchoff** in the extreme early universe
+— the vacuum field quanta are so severely redshifted that they carry negligible energy. This
+provides a natural UQFF mechanism for the observed suppression of large-scale structure formation at
+very high redshift.
 
 **Merger Singularity (z → −1):**
 
 $$\lim_{z \to -1} \kappa(z) = +\infty$$
 
-For a source approaching the observer at the speed of light (z → −1 in the blueshift convention), the UQFF gravity diverges. This represents the merger or coalescence singularity, where the UQFF vacuum field collapses to a single point and gravitational focusing becomes unbounded.
+For a source approaching the observer at the speed of light (z → −1 in the blueshift convention),
+the UQFF gravity diverges. This represents the merger or coalescence singularity, where the UQFF
+vacuum field collapses to a single point and gravitational focusing becomes unbounded.
 
 ---
 
@@ -139,19 +176,25 @@ double g_total = g_sum * kappa_recession * corr_SC;
 |--------|-------|-------|-------------|
 | κ_recession | 0.99374 | dimensionless | UQFF recession damping factor for z=+0.0063 |
 | z_Sombrero | +0.0063 | dimensionless | Heliocentric spectroscopic recession redshift |
-| Δg_recession | ~7.75×10⁻¹¹ | m/s² | Absolute gravitational attenuation |
+| Δg_recession | ~7.75×10-11 | m/s2 | Absolute gravitational attenuation |
 
 ---
 
 ## 6. Physical Significance
 
-1. **Bidirectional completeness:** PAPER_273 and PAPER_277 together show that the UQFF κ(z) correction is a universal single-parameter function. No new free parameters are introduced.
+1. **Bidirectional completeness:** PAPER_273 and PAPER_277 together show that the UQFF κ(z)
+correction is a universal single-parameter function. No new free parameters are introduced.
 
-2. **Observable consequence for Sombrero:** The 0.626% attenuation is below current measurement precision for M104's rotation curves (~1–5% estimated observational errors), but is computable and constitutes a UQFF first-principles prediction.
+2. **Observable consequence for Sombrero:** The 0.626% attenuation is below current measurement
+precision for M104's rotation curves (~1–5% estimated observational errors), but is computable and
+constitutes a UQFF first-principles prediction.
 
-3. **Cosmological implications:** The κ(z) law predicts that UQFF gravity was weaker in the early universe by the factor 1/(1+z), offering a potential explanation for the delayed gravitational collapse epoch without invoking modified gravity theories.
+3. **Cosmological implications:** The κ(z) law predicts that UQFF gravity was weaker in the early
+universe by the factor 1/(1+z), offering a potential explanation for the delayed gravitational
+collapse epoch without invoking modified gravity theories.
 
-4. **Dual outer multiplier uniqueness:** Sombrero is the first UQFF module to employ *two* outer multipliers simultaneously (κ_recession × σ_SC), whose combined effect is:
+4. **Dual outer multiplier uniqueness:** Sombrero is the first UQFF module to employ *two* outer
+multipliers simultaneously (κ_recession × σ_SC), whose combined effect is:
    $$\kappa_{\text{recession}} \times \sigma_{\text{SC}} = 0.99374 \times (1 - 10^{-20}) \approx 0.99374$$
 
 ---
@@ -167,7 +210,9 @@ double g_total = g_sum * kappa_recession * corr_SC;
 
 ---
 
-*UQFF 2.0 — All physics is additive. The κ_recession factor does not replace any prior term — it is a cosmological outer-multiplier consistent with vacuum field energy propagation theory. — Daniel T. Murphy, Session 77, March 2026.*
+*UQFF 2.0 — All physics is additive. The κ_recession factor does not replace any prior term — it is
+a cosmological outer-multiplier consistent with vacuum field energy propagation theory. — Daniel T.
+Murphy, Session 77, March 2026.*
 
 ---
 
@@ -175,13 +220,15 @@ double g_total = g_sum * kappa_recession * corr_SC;
 
 ### §A.1 Sector Classification
 
-This paper maps to **galaxy-rotation** sector of the 9-sector UQFF Lagrangian (see `uqff_lagrangian_derivation.py`).
+This paper maps to **galaxy-rotation** sector of the 9-sector UQFF Lagrangian (see
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
-The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive quantum fundamentals (DPM, UA, SCm):
+The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
+quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_\mu \phi_{\rm rot})(\partial^\mu \phi_{\rm rot}) - V(\phi_{\rm rot}) + \mathcal{L}_{\rm cosmo}$$
+$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_mu \phi_{\rm rot})(\partial^\mu \phi_{\rm rot}) - V(\phi_{\rm rot}) + \mathcal{L}_{\rm cosmo}$$
 
 where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
@@ -195,7 +242,9 @@ $$\boxed{\frac{\delta S}{\delta \phi_{\rm rot}} = v_c^2/r - GM/r^2 - F_{U\_Bi\_i
 
 $$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\rm rot} = 0$$
 
-The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g forces) through vacuum density initialization to the sector-specific equation of motion. Every term in the E-L equation inherits its physical origin from the cosmogenesis master.
+The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
+forces) through vacuum density initialization to the sector-specific equation of motion. Every term
+in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 
 ---
@@ -206,9 +255,9 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.150$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m³.
+For this system, the local VDS sub-ratio is $0.150$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -220,13 +269,13 @@ Since $p_{\rm DVP} = 19$ is **sub-threshold** (threshold at $p > 26$), the syste
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
-The BSH saturation timescale for this sector is **10⁹ yr** (disk settling timescale):
+The BSH saturation timescale for this sector is **109 yr** (disk settling timescale):
 
-$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
+$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\rm SCm}$ which initializes the harmonic series at cosmogenesis.
 
@@ -234,11 +283,11 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.150 | ✓ Threshold-consistent |
-| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 19$ | ✓ Sub-threshold |
-| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
-| [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
+| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.150 | PASS Threshold-consistent |
+| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 19$ | PASS Sub-threshold |
+| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
+| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
 ---
@@ -248,14 +297,17 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | ✓ Consistent |
-| Cosmological constant Λ | 1.1×10⁻⁵² m⁻² (UQFF vacuum term) | 1.114×10⁻⁵² m⁻² | Planck 2018 | ✓ Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10⁻³⁵/yr | Super-K 2024 | ✓ Consistent |
-| UQFF buoyancy signature | F_U_Bi_i unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
+| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
-**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes significant, offering a falsifiable prediction beyond the Standard Model.
+**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
+produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
+bridge.*
 
 
 ---
@@ -270,9 +322,9 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `f`neutron_s26_coupling`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `k`ozima_scm_cross_section`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `k`ozima_wstp_kernel`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -281,7 +333,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `r`amanujan_polylog_s26`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
 | `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
@@ -290,7 +342,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `m`ock_theta_q26`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -301,8 +353,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `r`amanujan_pi_uqff`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `m`ock_theta_pi_wstp_kernel`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]

@@ -1,6 +1,18 @@
+---
+paper_id: PAPER_968
+title: "Production Scaling v11 Benchmark (500k calc/s)"
+session: 215
+date: 2026-04-12
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [buoyancy, 26D, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_968: Production Scaling v11 Benchmark (500k calc/s)
 
-**Author:** Daniel T. Murphy -- Star Magic / UQFF Framework
+**Author:** Daniel T. Murphy — Star Magic / UQFF Framework
 **Date:** 2026-04-12
 **Session:** 215
 **Source:** production_scaling_v11.py (ProductionScalingV11)
@@ -11,7 +23,9 @@
 
 ## Abstract
 
-We benchmark the UQFF production pipeline at 500,000 calculations per second, an 11.1% improvement over v10 (450k). Two new kernels — 26D Ramanujan summation and Triadic solver — bring the total to 16 simultaneously benchmarked kernels.
+We benchmark the UQFF production pipeline at 500,000 calculations per second, an 11.1% improvement
+over v10 (450k). Two new kernels — 26D Ramanujan summation and Triadic solver — bring the total to
+16 simultaneously benchmarked kernels.
 
 ---
 
@@ -44,7 +58,7 @@ $$\text{rate} = \frac{N_\text{iter} \times 16}{t_\text{elapsed}} \geq 500{,}000 
 
 ## References
 
-1. Murphy, D.T. -- Star Magic UQFF Framework (2024-2026)
+1. Murphy, D.T. — Star Magic UQFF Framework (2024-2026)
 2. PAPER_958 — Production Scaling v10 (450k)
 3. PAPER_959 — 26D Ramanujan Summation (kernel source)
 4. PAPER_966 — Unified Triadic Solver (kernel source)
@@ -93,7 +107,7 @@ $$\text{rate} = \frac{N_\text{iter} \times 16}{t_\text{elapsed}} \geq 500{,}000 
 $$\text{rate} = \frac{N_\text{iter} \times 16}{t_\text{elapsed}} \geq 500{,}000$$
 
 ### §A.3 Kernel Integrity Constraint
-$$\boxed{\forall\, k \in \{1,\ldots,16\}:\; |k(\mathbf{x})| < \infty,\quad k_{15} = S_{26}(z),\; k_{16} = g_\text{tri}(r,t)}$$
+$$\boxed{\forall, k \in \{1,\ldots,16\}:\; |k(\mathbf{x})| < \infty,\quad k_{15} = S_{26}(z),\; k_{16} = g_\text{tri}(r,t)}$$
 
 ### §A.4 Cosmogenesis Linkage Chain
 PAPER_877 → UQFF equations → 16 kernels extracted → production pipeline v11 → 500k benchmark
@@ -103,7 +117,7 @@ PAPER_877 → UQFF equations → 16 kernels extracted → production pipeline v1
 ## §B VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 VDS
-All 16 kernels embed VDS through $S_{26}$ or $\rho_\text{SCm}$.
+All 16 kernels embed VDS through $S_{26}$ or $\rho_text{SCm}$.
 
 ### §B.2 DVP
 16 kernels cover the full dipole vortex mode spectrum.

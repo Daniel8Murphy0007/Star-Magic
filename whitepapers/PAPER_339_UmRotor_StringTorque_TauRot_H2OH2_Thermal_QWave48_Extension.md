@@ -1,21 +1,40 @@
-# PAPER_339 � Um Rotor String-Rotation Torque Integration: t_rot in the UQFF Um Framework
+---
+paper_id: PAPER_339
+title: "Um Rotor String-Rotation Torque Integration: t_rot in the UQFF Um Framework"
+session: 96
+date: 2025-01-01
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [SCm, vacuum, AGN, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
+# PAPER_339  Um Rotor String-Rotation Torque Integration: t_rot in the UQFF Um Framework
 **Date:** 2025
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2  
 **Session:** 96  
 **Source:** gok_share_31b5c807a4.txt (Supplemental Gap Analysis Block)  
-**Classification:** FIRST Um rotor torque t_rot extension in UQFF Um framework; FIRST Q_wave_48 thermal H2O�H2 regime extension  
+**Classification:** FIRST Um rotor torque t_rot extension in UQFF Um framework; FIRST Q_wave_48
+thermal H2OH2 regime extension  
 **Author:** Daniel T. Murphy  
 
 ---
 
 ## Abstract
 
-The UQFF Um (magnetism/vacuum) field framework is extended with a rotor string-rotation torque term t_rot = r � (-?V). The torque couples the string rotation velocity (Ug3) with the inelastic cross-section s_CS = 10.50 Ų from the Phillips 1995 H2O�H2 close-coupling calculation, extending Q_wave_47 statistics to Q_wave_48 covering the thermal H2O�H2 regime. This is the first time a rotational torque t_rot appears explicitly as an enhancement factor in the Um formula.
+The UQFF Um (magnetism/vacuum) field framework is extended with a rotor string-rotation torque term
+t_rot = r  (-?V). The torque couples the string rotation velocity (Ug3) with the inelastic
+cross-section s_CS = 10.50 Ų from the Phillips 1995 H2OH2 close-coupling calculation, extending
+Q_wave_47 statistics to Q_wave_48 covering the thermal H2OH2 regime. This is the first time a
+rotational torque t_rot appears explicitly as an enhancement factor in the Um formula.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+0.57) uniquely enabling this analysis  establishing a new connection in the UQFF framework not
+present in Standard Model treatments.
 
 ---
 
@@ -27,7 +46,8 @@ The rotor string-rotation torque is:
 
 $$\tau_{\rm rot} = r \times (-\nabla V) = r \times F_V \quad [\mathrm{N \cdot m}]$$
 
-For a molecule at separation r with restoring force F_V from the Tao�Klemperer PES, the typical magnitude is:
+For a molecule at separation r with restoring force F_V from the TaoKlemperer PES, the typical
+magnitude is:
 
 $$\tau_{\rm rot} \approx r \cdot F_V \approx 10^{-34} \ \mathrm{N \cdot m}$$
 
@@ -39,13 +59,13 @@ $$U_m^{\rm rotor} = \frac{\mu_j}{r}\left(1 - e^{-\gamma t}\cos(\pi t_n)\right) \
 
 where:
 - κ_j = thermal dipole moment proxy (J/K units at molecular scale)
-- ? = 5×10⁻5 day⁻¹ (canonical UQFF decay constant)
+- ? = 5×10-5 day-1 (canonical UQFF decay constant)
 - f = 0.8 (geometric phase factor)
 - P_SCm = 1.0 (superconductive modifier, unit baseline)
 
 ### 2.3 CS Cross-Section Coupling
 
-The H2O�H2 inelastic cross-section at E = 300 cm?� provides:
+The H2OH2 inelastic cross-section at E = 300 cm? provides:
 
 $$\sigma_{\rm CS}(300\ \mathrm{cm}^{-1}) = 10.50\ \mathrm{\AA}^2 \quad (J \le 6,\ \Delta j = 2)$$
 
@@ -53,7 +73,7 @@ The Q_wave_48 extension is:
 
 $$Q_{\rm wave,48} = U_m^{\rm rotor} \cdot \left(1 + 0.48 \cdot \sigma_{\rm CS}\right)$$
 
-where s_CS is expressed in m� units (1 Ų = 10?�� m�).
+where s_CS is expressed in m units (1 Ų = 10? m).
 
 ---
 
@@ -61,49 +81,59 @@ where s_CS is expressed in m� units (1 Ų = 10?�� m�).
 
 | Quantity | Formula | Value |
 |----------|---------|-------|
-| t_rot | r – F_V | ~10?�4 N�m |
-| s_CS(300 cm?�) | 10.50 Ų (Phillips 1995, CS ?j=2) | 10.50 Ų |
+| t_rot | r – F_V | ~10?4 Nm |
+| s_CS(300 cm?) | 10.50 Ų (Phillips 1995, CS ?j=2) | 10.50 Ų |
 | J_max CS valid | J = 6 (error < 10%) | 6 |
-| ?_Um | 5×10⁻5 day⁻¹ | canonical |
-| Q_wave_48 | Q_wave_47 + s_CS thermal weighting | extended |
+| ?_Um | 5×10-5 day-1 | canonical |
+| `Q_wave_48` | `Q_wave_47` + s_CS thermal weighting | extended |
 
 ---
 
-## 4. Canonical Values at r = 10?�� m
+## 4. Canonical Values at r = 10? m
 
-```
-tau_rot         = 1.0e-10 � F_V  �  8.19e-21  N�m
-Um_rotor_term   =  (κ_j/r)(1 - exp(-?t)cos(pt_n))�f�P_SCm·t_rot
-sigma_CS(m^2)   =  1.05e-19  m�
-Q_wave_48       =  Um_rotor � (1 + 0.48 × 1.05e-19)
-```
+$$
+\begin{aligned}
+  & tau_rot         = 1.0e-10  F_V    8.19e-21  Nm \\
+  & \text{Um\_rotor\_term}   =  (κ_j/r)(1 - exp(-?t)cos(pt_n))fP_SCm·t_rot \\
+  & sigma_CS(m^2)   =  1.05e-19  m \\
+  & \text{Q\_wave\_48}       =  Um_rotor  (1 + 0.48 × 1.05e-19)
+\end{aligned}
+$$
 
 ---
 
 ## 5. Physical Interpretation
 
-The rotor torque t_rot couples the Ug3 string-rotation mode to molecular collision physics. This directly links the quantum vacuum (Um framework, PAPER_328 BEC T_BEC=14.52 MeV calibration) to inelastic molecular scattering data, providing a quantitative bridge between the UQFF scale hierarchy and laboratory collision cross-sections.
+The rotor torque t_rot couples the Ug3 string-rotation mode to molecular collision physics. This
+directly links the quantum vacuum (Um framework, PAPER_328 BEC T_BEC=14.52 MeV calibration) to
+inelastic molecular scattering data, providing a quantitative bridge between the UQFF scale
+hierarchy and laboratory collision cross-sections.
 
-The Q_wave_48 extension confirms that the statistical distribution of UQFF vacuum energy densities extends coherently into the thermal H2O�H2 scattering regime, consistent with the Phillips 1995 close-coupling benchmark.
+The Q_wave_48 extension confirms that the statistical distribution of UQFF vacuum energy densities
+extends coherently into the thermal H2OH2 scattering regime, consistent with the Phillips 1995
+close-coupling benchmark.
 
 ---
 
 ## 6. Deduplication Note
 
-- PAPER_328: N_B BEC formula, T_BEC = 14.52 MeV � nuclear regime  
-- PAPER_339: t_rot Um extension at molecular collision scale � **FIRST torque in Um framework**  
-- PAPER_362 (Session 97): s(E) = a(1-e^{-bE}) CS model derivation � distinct from t_rot torque
+- PAPER_328: N_B BEC formula, T_BEC = 14.52 MeV  nuclear regime  
+- PAPER_339: t_rot Um extension at molecular collision scale  **FIRST torque in Um framework**  
+- PAPER_362 (Session 97): s(E) = a(1-e^{-bE}) CS model derivation  distinct from t_rot torque
 
 ---
 
 ## 7. Classification
 
 **Physics Territory:** FIRST Um rotor t_rot extension in UQFF Um framework  
-**Scale:** Molecular (10?�� m)  
+**Scale:** Molecular (10? m)  
 **CP Implementation:** `UmRotorStringTorqueIntegrationCalculator` (CondensedPhysics3.py, Session 96)
 
 
-**Testable Prediction:** This UQFF result is directly testable with next-generation atomic interferometers and CODATA 2026 spectroscopy; the UQFF deviation from standard predictions exceeds the measurement noise floor by = 3s, providing a clear discriminant for the UQFF buoyancy-gravity framework in future observations.
+**Testable Prediction:** This UQFF result is directly testable with next-generation atomic
+interferometers and CODATA 2026 spectroscopy; the UQFF deviation from standard predictions exceeds
+the measurement noise floor by = 3s, providing a clear discriminant for the UQFF buoyancy-gravity
+framework in future observations.
 
 ---
 
@@ -111,13 +141,15 @@ The Q_wave_48 extension confirms that the statistical distribution of UQFF vacuu
 
 ### §A.1 Sector Classification
 
-This paper maps to **AGN-jet** sector of the 9-sector UQFF Lagrangian (see `uqff_lagrangian_derivation.py`).
+This paper maps to **AGN-jet** sector of the 9-sector UQFF Lagrangian (see
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
-The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive quantum fundamentals (DPM, UA, SCm):
+The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
+quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_\mu \phi_{\rm jet})(\partial^\mu \phi_{\rm jet}) - V(\phi_{\rm jet}) + \mathcal{L}_{\rm cosmo}$$
+$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_mu \phi_{\rm jet})(\partial^\mu \phi_{\rm jet}) - V(\phi_{\rm jet}) + \mathcal{L}_{\rm cosmo}$$
 
 where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
@@ -131,7 +163,9 @@ $$\boxed{\frac{\delta S}{\delta \phi_{\rm jet}} = \partial_t(\gamma \rho v_{\rm 
 
 $$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\rm jet} = 0$$
 
-The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g forces) through vacuum density initialization to the sector-specific equation of motion. Every term in the E-L equation inherits its physical origin from the cosmogenesis master.
+The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
+forces) through vacuum density initialization to the sector-specific equation of motion. Every term
+in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 
 ---
@@ -142,9 +176,9 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.051$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m³.
+For this system, the local VDS sub-ratio is $0.051$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -156,13 +190,13 @@ Since $p_{\rm DVP} = 29$ is **resonant** (threshold at $p > 26$), the system's v
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
-The BSH saturation timescale for this sector is **10⁷ yr** (duty cycle period):
+The BSH saturation timescale for this sector is **107 yr** (duty cycle period):
 
-$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
+$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\rm SCm}$ which initializes the harmonic series at cosmogenesis.
 
@@ -170,11 +204,11 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.051 | ✓ Threshold-consistent |
-| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 29$ | ✓ Resonant |
-| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
-| [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
+| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.051 | PASS Threshold-consistent |
+| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 29$ | PASS Resonant |
+| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
+| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
 ---
@@ -184,14 +218,17 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | ✓ Consistent |
-| Cosmological constant Λ | 1.1×10⁻⁵² m⁻² (UQFF vacuum term) | 1.114×10⁻⁵² m⁻² | Planck 2018 | ✓ Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10⁻³⁵/yr | Super-K 2024 | ✓ Consistent |
-| UQFF buoyancy signature | F_U_Bi_i unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
+| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
-**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes significant, offering a falsifiable prediction beyond the Standard Model.
+**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
+produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
+bridge.*
 
 
 ---
@@ -206,9 +243,9 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `f`neutron_s26_coupling`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `k`ozima_scm_cross_section`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `k`ozima_wstp_kernel`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -217,7 +254,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `r`amanujan_polylog_s26`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
 | `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
@@ -226,7 +263,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `m`ock_theta_q26`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -237,8 +274,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `r`amanujan_pi_uqff`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `m`ock_theta_pi_wstp_kernel`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]

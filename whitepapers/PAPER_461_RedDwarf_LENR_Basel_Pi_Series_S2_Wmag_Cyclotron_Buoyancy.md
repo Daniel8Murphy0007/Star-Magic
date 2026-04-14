@@ -1,14 +1,27 @@
-# PAPER_461 — Red Dwarf LENR: Basel π-Series S(2)=π²/6 + W_mag Cyclotron + Buoyancy Series
+---
+paper_id: PAPER_461
+title: "Red Dwarf LENR: Basel π-Series S(2)=π2/6 + W_mag Cyclotron + Buoyancy Series"
+session: 116
+date: 2025-01-01
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [AGN, Riemann, buoyancy, LENR, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
+# PAPER_461 — Red Dwarf LENR: Basel π-Series S(2)=π2/6 + W_mag Cyclotron + Buoyancy Series
 **Date:** 2025
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2  
 **Session:** 116 (v4.73) / Whitepapers created Session 121  
 **Source:** grok_share_e70525fa.txt (Doc 43.c — RedDwarfLENRPiSeriesHiggs)  
-**Classification:** FIRST Basel problem S(2)=π²/6 applied in UQFF; FIRST W_mag cyclotron energy formula in UQFF; FIRST convergent buoyancy series Σ 1/3^{(π+1)^n}  
+**Classification:** FIRST Basel problem S(2)=π2/6 applied in UQFF; FIRST W_mag cyclotron energy
+formula in UQFF; FIRST convergent buoyancy series Σ 1/3^{(π+1)^n}  
 **Author:** Daniel T. Murphy  
 **CP4 Class:** `RedDwarfLENRPiSeriesHiggsCalculator` (#99, PAPER_461)
 
-<!-- UQFF constants: κ = 5.0e-4 day⁻¹, [SSq] = 0.57, k_η = 2.75×10⁸ -->
+<!— UQFF constants: κ = 5.0e-4 day-1, [SSq] = 0.57, k_η = 2.75×108 —>
 ---
 
 ## Abstract
@@ -27,7 +40,8 @@ $$S(s) = \sum_{n=1}^{\infty} \frac{1}{n^s}, \quad S(2) = \frac{\pi^2}{6} \approx
 
 ### 2.2 UQFF Application of S(2)
 
-In the LENR context, S(2) appears as the **quantum degeneracy factor** for proton-electron recombination in a dense red dwarf interior:
+In the LENR context, S(2) appears as the **quantum degeneracy factor** for proton-electron
+recombination in a dense red dwarf interior:
 
 $$E_{\rm LENR}^{(2)} = E_0 \cdot S(2) = E_0 \cdot \frac{\pi^2}{6}$$
 
@@ -38,16 +52,17 @@ $$= \frac{1.113\times10^{-68}}{2.58\times10^{-57}} = 4.31\times10^{-12}\ \rm J \
 
 $$E_{\rm LENR}^{(2)} = 26.9 \times 1.64493 \approx 44.3\ \text{MeV}$$
 
-This is the **first application of the Basel series** in any UQFF calculation, providing a well-defined mathematical correction factor with known convergence properties.
+This is the **first application of the Basel series** in any UQFF calculation, providing a
+well-defined mathematical correction factor with known convergence properties.
 
 ### 2.3 General S(s) Table
 
 | s | S(s) | Physical meaning |
 |---|------|-----------------|
 | 1 | ∞ (harmonic, divergent) | Unbounded energy states |
-| 2 | π²/6 ≈ 1.6449 | Proton degeneracy correction |
+| 2 | π2/6 ≈ 1.6449 | Proton degeneracy correction |
 | 3 | ζ(3) ≈ 1.2021 (Apéry) | Cubic density of states |
-| 4 | π⁴/90 ≈ 1.0823 | Stefan-Boltzmann radiation |
+| 4 | π4/90 ≈ 1.0823 | Stefan-Boltzmann radiation |
 | ∞ | 1 | Single ground state |
 
 ---
@@ -76,15 +91,21 @@ Term 3: $\approx 1.42\times10^{-34}$
 
 $$\mathcal{B}_{\rm UQFF} \approx 0.010571 + 1.42\times10^{-34} + \ldots \approx 0.01057$$
 
-**Note:** The value stated in the source as ≈ −0.8887 uses signed terms or a different series convention; the unsigned convergent sum ≈ 0.010571. The negative value arises from alternate-sign convention (−1)^n:
+**Note:** The value stated in the source as ≈ −0.8887 uses signed terms or a different series
+convention; the unsigned convergent sum ≈ 0.010571. The negative value arises from alternate-sign
+convention (−1)^n:
 
 $$\mathcal{B}_{\rm UQFF}^{\rm alt} = \sum_{n=1,3,5...} \frac{(-1)^{(n-1)/2}}{3^{(\pi+1)^n}} \approx -0.010571 + \ldots \approx -0.0106$$
 
-The larger negative value −0.8887 is quoted in the source as the limiting partial sum for a different buoyancy convergence test — the exact series definition is captured here for reference.
+The larger negative value −0.8887 is quoted in the source as the limiting partial sum for a
+different buoyancy convergence test — the exact series definition is captured here for reference.
 
 ### 3.3 Physical Meaning in Red Dwarf LENR
 
-The buoyancy series represents the **probability amplitude** of LENR catalysts diffusing outward from the stellar core. Each term represents a successive diffusion step — the rapid convergence of the series means that LENR catalysts are confined within the first diffusion layer with probability ~1 − 0.0106 = 98.9%.
+The buoyancy series represents the **probability amplitude** of LENR catalysts diffusing outward
+from the stellar core. Each term represents a successive diffusion step — the rapid convergence of
+the series means that LENR catalysts are confined within the first diffusion layer with probability
+~1 − 0.0106 = 98.9%.
 
 ---
 
@@ -121,7 +142,9 @@ $$= (1.008665 - 1.007276 - 0.000549)\ \text{u} \times 931.494\ \text{MeV/u}$$
 
 $$= (0.000840\ \text{u}) \times 931.494\ \text{MeV/u} = 0.783\ \text{MeV} \approx 0.78\ \text{MeV}$$
 
-This is the **neutron decay Q-value** — the energy available from neutron → proton + electron + antineutrino (or equivalently, the energy cost for LENR to capture a proton and produce a neutron in a UQFF vacuum field).
+This is the **neutron decay Q-value** — the energy available from neutron → proton + electron +
+antineutrino (or equivalently, the energy cost for LENR to capture a proton and produce a neutron in
+a UQFF vacuum field).
 
 ### 5.2 k_η Viscosity Coupling
 
@@ -131,7 +154,7 @@ Units: [kg/(m·s)] — dynamic viscosity scaling constant. In UQFF, $k_\eta$ mul
 
 $$g_{\rm fluid}^{\rm LENR} = k_\eta \nu_{\rm eff} \nabla^2 v = 2.75\times10^8 \times \nu_{\rm eff} \nabla^2 v$$
 
-For red dwarf interior viscosity $\nu_{\rm eff} \sim 10^{-6}$ m²/s and $\nabla^2 v \sim 10^{-10}$ m⁻¹s⁻¹:
+For red dwarf interior viscosity $\nu_{\rm eff} \sim 10^{-6}$ m2/s and $\nabla^2 v \sim 10^{-10}$ m-1s-1:
 
 $$g_{\rm fluid}^{\rm LENR} \approx 2.75\times10^8 \times 10^{-6} \times 10^{-10} = 2.75\times10^{-8}\ \rm m/s^2$$
 
@@ -142,17 +165,19 @@ $$g_{\rm fluid}^{\rm LENR} \approx 2.75\times10^8 \times 10^{-6} \times 10^{-10}
 | Feature | SM | UQFF PAPER_461 |
 |---------|-----|----------------|
 | LENR Q-value | Standard nuclear physics: 0.78 MeV | Same (confirmed by UQFF) |
-| Energy correction factor | Fermi-Dirac statistics | Basel S(2) = π²/6 |
-| Cyclotron energy | E = ħω_c = eħB/m | W_mag = 15×10⁹ B_kG R_km (v/c) eV |
+| Energy correction factor | Fermi-Dirac statistics | Basel S(2) = π2/6 |
+| Cyclotron energy | E = ħω_c = eħB/m | W_mag = 15×109 B_kG R_km (v/c) eV |
 | Buoyancy series | Not defined | Σ1/3^{(π+1)^n} ≈ 0.0106 |
 
 ---
 
 ## 7. Testable Predictions
 
-1. **Basel factor validation:** The S(2) = π²/6 correction to LENR ground-state energy gives E_LENR = 44.3 MeV vs bare 26.9 MeV. If LENR heat excess is measured, the ratio 44.3/26.9 ≈ 1.645 should appear in power density measurements.
+1. **Basel factor validation:** The S(2) = π2/6 correction to LENR ground-state energy gives E_LENR
+= 44.3 MeV vs bare 26.9 MeV. If LENR heat excess is measured, the ratio 44.3/26.9 ≈ 1.645 should
+appear in power density measurements.
 2. **W_mag scaling:** $W_{\rm mag} \propto B R (v/c)$ — doubling B doubles W_mag linearly. Testable in tokamak plasma experiments by varying toroidal field.
-3. **k_η = 2.75×10⁸ universality:** This constant should appear in all UQFF fluid LENR calculations. Dimensional analysis: $k_\eta$ has units [Pa·m⁻¹s] = [kg m⁻² s⁻¹]. Derivable from $k_\eta = \rho_{\rm vac,[UA]}/(\mu_{\rm fluid})$ for known vacuum density.
+3. **k_η = 2.75×108 universality:** This constant should appear in all UQFF fluid LENR calculations. Dimensional analysis: $k_\eta$ has units [Pa·m-1s] = [kg m-2 s-1]. Derivable from $k_\eta = \rho_{\rm vac,[UA]}/(\mu_{\rm fluid})$ for known vacuum density.
 
 ---
 
@@ -162,13 +187,15 @@ $$g_{\rm fluid}^{\rm LENR} \approx 2.75\times10^8 \times 10^{-6} \times 10^{-10}
 
 ### §A.1 Sector Classification
 
-This paper maps to **LENR-nuclear** sector of the 9-sector UQFF Lagrangian (see `uqff_lagrangian_derivation.py`).
+This paper maps to **LENR-nuclear** sector of the 9-sector UQFF Lagrangian (see
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
-The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive quantum fundamentals (DPM, UA, SCm):
+The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
+quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_\mu \chi)(\partial^\mu \chi) - V(\chi) + \mathcal{L}_{\rm cosmo}$$
+$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_mu \chi)(\partial^\mu \chi) - V(\chi) + \mathcal{L}_{\rm cosmo}$$
 
 where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
@@ -182,7 +209,9 @@ $$\boxed{\frac{\delta S}{\delta \chi} = \ddot{\chi} + \omega_{\rm LENR}^2 \chi -
 
 $$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \chi = 0$$
 
-The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g forces) through vacuum density initialization to the sector-specific equation of motion. Every term in the E-L equation inherits its physical origin from the cosmogenesis master.
+The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
+forces) through vacuum density initialization to the sector-specific equation of motion. Every term
+in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 
 ---
@@ -193,9 +222,9 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.067$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m³.
+For this system, the local VDS sub-ratio is $0.067$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -207,13 +236,13 @@ Since $p_{\rm DVP} = 37$ is **resonant** (threshold at $p > 26$), the system's v
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
-The BSH saturation timescale for this sector is **10⁻¹² s** (nuclear phonon damping):
+The BSH saturation timescale for this sector is **10-12 s** (nuclear phonon damping):
 
-$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
+$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\rm SCm}$ which initializes the harmonic series at cosmogenesis.
 
@@ -221,11 +250,11 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.067 | ✓ Threshold-consistent |
-| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 37$ | ✓ Resonant |
-| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
-| [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
+| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.067 | PASS Threshold-consistent |
+| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 37$ | PASS Resonant |
+| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
+| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
 ---
@@ -235,10 +264,10 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Higgs mass m_H | UQFF K_HIGGS=47.34 → m_H_UQFF = 125.09 GeV | m_H = 125.20 ± 0.11 GeV | PDG 2024 | 99.8% |
-| Cosmological Λ | UQFF |∇UA|² → 1.09×10⁻⁵² m⁻² | Λ = 1.114×10⁻⁵² m⁻² (Planck+DESI) | Planck 2018 | 97.8% |
-| Thomson σ_T (QED) | UQFF U_m kernel: σ_T = 6.6524×10⁻²⁹ m² | σ_T = 6.6524×10⁻²⁹ m² | PDG 2024 | 100% (exact) |
-| κ baryon stability | κ = 0.0005/day; scale separation 10³³ from proton decay | τ_p > 7.7×10³³ yr (Super-K) | Super-K 2024 | ✓ UQFF baryon-safe |
+| Higgs mass m_H | UQFF K_HIGGS=47.34 → `m_H_UQFF` = 125.09 GeV | m_H = 125.20 ± 0.11 GeV | PDG 2024 | 99.8% |
+| Cosmological Λ | UQFF |∇UA|2 → 1.09×10-52 m-2 | Λ = 1.114×10-52 m-2 (Planck+DESI) | Planck 2018 | 97.8% |
+| Thomson σ_T (QED) | UQFF U_m kernel: σ_T = 6.6524×10-29 m2 | σ_T = 6.6524×10-29 m2 | PDG 2024 | 100% (exact) |
+| κ baryon stability | κ = 0.0005/day; scale separation 1033 from proton decay | τ_p > 7.7×1033 yr (Super-K) | Super-K 2024 | PASS UQFF baryon-safe |
 
 **New physics claim:** UQFF operates at a vacuum topology scale (~200 PeV) that is 8 orders
 below the GUT scale and 33 orders above nuclear baryon-number scales. This intermediate-scale
@@ -249,7 +278,7 @@ while remaining consistent with all collider and nuclear precision measurements.
 
 
 
-*Copyright – Daniel T. Murphy | Session 116/121 — grok_share_e70525fa.txt*
+*Copyright – Daniel T. Murphy | Session 116/121 — `grok_share_e70525fa`.txt*
 
 
 ---
@@ -264,9 +293,9 @@ while remaining consistent with all collider and nuclear precision measurements.
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `f`neutron_s26_coupling`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `k`ozima_scm_cross_section`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `k`ozima_wstp_kernel`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -275,7 +304,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `r`amanujan_polylog_s26`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
 | `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
@@ -284,7 +313,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `m`ock_theta_q26`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -295,8 +324,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `r`amanujan_pi_uqff`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `m`ock_theta_pi_wstp_kernel`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]

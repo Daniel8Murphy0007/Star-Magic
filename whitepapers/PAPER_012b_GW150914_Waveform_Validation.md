@@ -1,3 +1,15 @@
+---
+paper_id: PAPER_012b
+title: "GW150914 Waveform Validation — Peak Strain, Phase Lag, and Damping Ratio"
+session: 0
+date: 2026-03-07
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [AGN, GW, merger, gravitational-wave, SCm, black-hole, damping, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_012b: GW150914 Waveform Validation — Peak Strain, Phase Lag, and Damping Ratio
 **Author:** Daniel T. Murphy
 **Session:** 0
@@ -9,31 +21,47 @@
 
 ---
 
-$$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b_i}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57$$
+$$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b\_i}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57$$
 
 $$
-h_\text{UQFF}(t) = h_\text{GR}(t)\cdot\bigl(1 - U_{b_i}/F_U\bigr)\cdot e^{-\kappa t}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1}
+h_\text{UQFF}(t) = h_\text{GR}(t)\cdot\bigl(1 - U_{b\_i}/F_U\bigr)\cdot e^{-\kappa t}, \quad \kappa =
+5.0\times10^{-4}\,\text{day}^{-1}
 $$
 
 ## Abstract
 
-We validate the UQFF waveform predictions against GW150914-like parameters using a dedicated multi-frequency simulation with chirp mass M_c = 28.0 M? at d_L = 410 Mpc. The validation confirms: peak standard strain 1.8131 × 10?¹7, peak UQFF strain 1.6113 × 10?¹7, amplitude ratio h_std/h_UQFF = 2.6207, and average phase lag 0.3138 rad across the frequency band. At the mid-frequency reference point f = 3.17 Hz, the damping ratio is 0.6691, demonstrating sub-unity UQFF suppression at all frequencies. The TRZ factor (f_TRZ = 0.90) and SCm factor (f_SCm = 0.990) are independently validated. This waveform test confirms that UQFF modifications are detectable as a systematic waveform-morphology shift rather than a simple amplitude rescaling.
+We validate the UQFF waveform predictions against GW150914-like parameters using a dedicated
+multi-frequency simulation with chirp mass M_c = 28.0 M? at d_L = 410 Mpc. The validation confirms:
+peak standard strain 1.8131 × 10?17, peak UQFF strain 1.6113 × 10?17, amplitude ratio h_std/h_UQFF =
+2.6207, and average phase lag 0.3138 rad across the frequency band. At the mid-frequency reference
+point f = 3.17 Hz, the damping ratio is 0.6691, demonstrating sub-unity UQFF suppression at all
+frequencies. The TRZ factor (f_TRZ = 0.90) and SCm factor (f_SCm = 0.990) are independently
+validated. This waveform test confirms that UQFF modifications are detectable as a systematic
+waveform-morphology shift rather than a simple amplitude rescaling.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not
+present in Standard Model treatments.
 
 ---
 
 ## 1. Introduction
 
-GW150914 established the first direct detection of gravitational waves from a binary black hole merger, with component masses 36 + 29 M? at 410 Mpc. While Paper #9 addressed the damping channel decomposition, this paper focuses on the **waveform validation**: matching the UQFF prediction across the full frequency band and reporting the amplitude ratio and phase lag as primary diagnostics.
+GW150914 established the first direct detection of gravitational waves from a binary black hole
+merger, with component masses 36 + 29 M? at 410 Mpc. While Paper #9 addressed the damping channel
+decomposition, this paper focuses on the **waveform validation**: matching the UQFF prediction
+across the full frequency band and reporting the amplitude ratio and phase lag as primary
+diagnostics.
 
-The validation uses a chirp mass M_c = 28.0 M? (close to the GW150914 best-fit value) and simulates the waveform across the LIGO frequency band, checking that:
+The validation uses a chirp mass M_c = 28.0 M? (close to the GW150914 best-fit value) and simulates
+the waveform across the LIGO frequency band, checking that:
 
 1. TRZ factor achieves exactly 0.90 at all frequencies
 2. SCm factor is ˜ 0.99 (slightly below 1.0 due to vacuum condensate coupling)
-3. The amplitude ratio h_std/h_UQFF ˜ 2.62 (note: this differs from D = 0.333 because the SCm and Aether channels modify the ratio away from exactly 3.00)
+3. The amplitude ratio h_std/h_UQFF ˜ 2.62 (note: this differs from D = 0.333 because the SCm and
+Aether channels modify the ratio away from exactly 3.00)
 4. The phase lag is measurable and non-zero
 
 ---
@@ -50,7 +78,8 @@ The validation uses a chirp mass M_c = 28.0 M? (close to the GW150914 best-fit v
 | String coupling ß_string | 1.000 (set to unity in this test) |
 | Aether factor U_A | 1.000 |
 
-Note: In this waveform test, ß_string is held at 1.000 to isolate the TRZ and SCm contributions. The combined factor including string coupling is covered in Papers #9 and #11.
+Note: In this waveform test, ß_string is held at 1.000 to isolate the TRZ and SCm contributions. The
+combined factor including string coupling is covered in Papers #9 and #11.
 
 ---
 
@@ -60,17 +89,20 @@ Note: In this waveform test, ß_string is held at 1.000 to isolate the TRZ and S
 
 | Quantity | Value |
 |----------|-------|
-| Peak strain (standard) | 1.8131 × 10?¹7 |
-| Peak strain (UQFF) | 1.6113 × 10?¹7 |
+| Peak strain (standard) | 1.8131 × 10?17 |
+| Peak strain (UQFF) | 1.6113 × 10?17 |
 | Amplitude ratio h_std/h_UQFF | 2.6207 |
 | Effective UQFF factor | 1/2.6207 = 0.3816 |
 
-The amplitude ratio of 2.6207 (UQFF factor ˜ 0.382) differs from the full D = 0.333 because this test holds ß_string = 1.0, leaving only the TRZ × SCm combination:
+The amplitude ratio of 2.6207 (UQFF factor ˜ 0.382) differs from the full D = 0.333 because this
+test holds ß_string = 1.0, leaving only the TRZ × SCm combination:
 
-```
-D_partial = f_TRZ × f_SCm = 0.90 × 0.99 = 0.891
-h_UQFF/h_std ˜ 0.382   [from simulation, slight above 0.891 × calibration]
-```
+$$
+\begin{aligned}
+  & D_partial = f_TRZ × f_SCm = 0.90 × 0.99 = 0.891 \\
+  & h_UQFF/h_std ˜ 0.382   [from simulation, slight above 0.891 × calibration]
+\end{aligned}
+$$
 
 The simulation value 0.382 incorporates frequency-dependent averaging effects across the full band.
 
@@ -84,7 +116,9 @@ The average phase lag across the simulated frequency range:
 | Phase lag (per cycle) | ~0.05 rad/cycle |
 | Phase lag in degrees | 17.98° |
 
-This 0.314 rad phase lag is substantially larger than the GW150914 short-chirp value (0.126 rad from Paper #9) because of the different simulation methodology — here the full frequency band is sampled, including low-frequency components that accumulate more phase lag per unit time.
+This 0.314 rad phase lag is substantially larger than the GW150914 short-chirp value (0.126 rad from
+Paper #9) because of the different simulation methodology — here the full frequency band is sampled,
+including low-frequency components that accumulate more phase lag per unit time.
 
 ### 3.3 Mid-Frequency Reference Point: f = 3.17 Hz
 
@@ -92,8 +126,8 @@ At f = 3.17 Hz (the lowest-frequency reference point in the simulation):
 
 | Quantity | Value |
 |----------|-------|
-| Standard strain h_std | 1.5768 × 10?¹8 |
-| UQFF strain h_UQFF | 1.0550 × 10?¹8 |
+| Standard strain h_std | 1.5768 × 10?18 |
+| UQFF strain h_UQFF | 1.0550 × 10?18 |
 | Damping ratio | 0.6691 |
 
 The damping ratio 0.6691 at 3.17 Hz confirms:
@@ -101,7 +135,8 @@ The damping ratio 0.6691 at 3.17 Hz confirms:
 2. The TRZ channel is partially transparent at low frequencies
 3. This is consistent with: f_TRZ(3.17 Hz) ˜ 0.6691 / f_SCm = 0.6691 / 0.99 ˜ 0.676
 
-This demonstrates the predicted **frequency-dependent TRZ onset** behavior, with the factor gradually rising toward 0.90 as frequency increases.
+This demonstrates the predicted **frequency-dependent TRZ onset** behavior, with the factor
+gradually rising toward 0.90 as frequency increases.
 
 ---
 
@@ -116,7 +151,8 @@ Across the full frequency range of the simulation:
 | ~20 Hz | ~5.0e-18 | ~4.5e-18 | ~1.11 | ~0.88 |
 | >20 Hz (asymptote) | varies | varies | ~2.62 | 0.90 |
 
-The smooth rise of the TRZ factor from 0.669 at 3.17 Hz to 0.90 above 20 Hz is a key UQFF prediction for space-based detectors and Einstein Telescope.
+The smooth rise of the TRZ factor from 0.669 at 3.17 Hz to 0.90 above 20 Hz is a key UQFF prediction
+for space-based detectors and Einstein Telescope.
 
 ---
 
@@ -129,7 +165,8 @@ The smooth rise of the TRZ factor from 0.669 at 3.17 Hz to 0.90 above 20 Hz is a
 | Amplitude reduction 10–50% | 10% = reduction = 50% | NOTE: 10–30% for TRZ+SCm only |
 | Arrays match shape | h_std and h_UQFF same length | PASS |
 
-The "Amplitude reduction 10–50%" test flag reflects that with ß_string = 1.0 in this test, the reduction is 10–30% (TRZ × SCm only), not the 66.7% seen with the full string coupling.
+The "Amplitude reduction 10–50%" test flag reflects that with ß_string = 1.0 in this test, the
+reduction is 10–30% (TRZ × SCm only), not the 66.7% seen with the full string coupling.
 
 ---
 
@@ -142,25 +179,37 @@ The "Amplitude reduction 10–50%" test flag reflects that with ß_string = 1.0 
 | **Paper #12 (this work)** | **TRZ × SCm only** | **~0.382** | **~38%** |
 | Full UQFF | TRZ × SCm × String | 0.329 | 67.1% |
 
-This test isolates the TRZ and SCm components, confirming their individual contributions before the dominant string coupling is applied.
+This test isolates the TRZ and SCm components, confirming their individual contributions before the
+dominant string coupling is applied.
 
 ---
 
 ## 7. Testable Predictions
 
-1. **TRZ onset at 20 Hz:** Third-generation detectors (Einstein Telescope, Cosmic Explorer) operating below 10 Hz should observe the TRZ factor smoothly increasing from ~0.67 (at 3 Hz) to 0.90 (at 20 Hz) in long-duration inspiral signals.
+1. **TRZ onset at 20 Hz:** Third-generation detectors (Einstein Telescope, Cosmic Explorer)
+operating below 10 Hz should observe the TRZ factor smoothly increasing from ~0.67 (at 3 Hz) to 0.90
+(at 20 Hz) in long-duration inspiral signals.
 
-2. **SCm = 0.990 universality:** The SCm factor should be identical for all GW sources at similar redshifts (z < 0.3), representing a local vacuum property rather than a source property.
+2. **SCm = 0.990 universality:** The SCm factor should be identical for all GW sources at similar
+redshifts (z < 0.3), representing a local vacuum property rather than a source property.
 
-3. **Amplitude ratio diagnostic:** The ratio h_standard_template / h_observed should be 2.62 ± 0.1 when only TRZ+SCm are active (low-redshift, large-ß sources) and 3.00 ± 0.1 when the full string coupling acts.
+3. **Amplitude ratio diagnostic:** The ratio h_standard_template / h_observed should be 2.62 ± 0.1
+when only TRZ+SCm are active (low-redshift, large-ß sources) and 3.00 ± 0.1 when the full string
+coupling acts.
 
-4. **Phase lag measurement:** The 0.314 rad average phase lag should manifest as a systematic offset in matched-filter time-of-arrival measurements when GR templates are compared to UQFF-modified data.
+4. **Phase lag measurement:** The 0.314 rad average phase lag should manifest as a systematic offset
+in matched-filter time-of-arrival measurements when GR templates are compared to UQFF-modified data.
 
 ---
 
 ## 8. Conclusions
 
-The GW150914-like waveform validation confirms UQFF predictions for TRZ (f = 0.90) and SCm (f = 0.99) damping channels. The amplitude ratio h_std/h_UQFF = 2.6207 and average phase lag 0.3138 rad are consistent with the theoretical predictions for these two channels acting alone (ß_string = 1). At the low-frequency test point f = 3.17 Hz, the damping ratio 0.6691 confirms the predicted sub-asymptotic TRZ behavior below 20 Hz. These results validate the individual UQFF channel structure and support the complete D = 0.333 derivation when the string coupling is included.
+The GW150914-like waveform validation confirms UQFF predictions for TRZ (f = 0.90) and SCm (f =
+0.99) damping channels. The amplitude ratio h_std/h_UQFF = 2.6207 and average phase lag 0.3138 rad
+are consistent with the theoretical predictions for these two channels acting alone (ß_string = 1).
+At the low-frequency test point f = 3.17 Hz, the damping ratio 0.6691 confirms the predicted
+sub-asymptotic TRZ behavior below 20 Hz. These results validate the individual UQFF channel
+structure and support the complete D = 0.333 derivation when the string coupling is included.
 
 ---
 
@@ -171,13 +220,15 @@ The GW150914-like waveform validation confirms UQFF predictions for TRZ (f = 0.9
 
 ### §A.1 Sector Classification
 
-This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see `uqff_lagrangian_derivation.py`).
+This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
-The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive quantum fundamentals (DPM, UA, SCm):
+The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
+quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_\mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
+$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
 
 where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
@@ -191,7 +242,9 @@ $$\boxed{\frac{\delta S}{\delta \phi_{\rm NS}} = \nabla^2 \phi_{\rm NS} - (4\pi 
 
 $$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\rm NS} = 0$$
 
-The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g forces) through vacuum density initialization to the sector-specific equation of motion. Every term in the E-L equation inherits its physical origin from the cosmogenesis master.
+The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
+forces) through vacuum density initialization to the sector-specific equation of motion. Every term
+in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 
 ---
@@ -202,9 +255,9 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.144$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m³.
+For this system, the local VDS sub-ratio is $0.144$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -216,13 +269,13 @@ Since $p_{\rm DVP} = 41$ is **resonant** (threshold at $p > 26$), the system's v
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
-The BSH saturation timescale for this sector is **10⁴ yr** (spin-down equilibrium):
+The BSH saturation timescale for this sector is **104 yr** (spin-down equilibrium):
 
-$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
+$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\rm SCm}$ which initializes the harmonic series at cosmogenesis.
 
@@ -230,11 +283,11 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.144 | ✓ Threshold-consistent |
-| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 41$ | ✓ Resonant |
-| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
-| [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
+| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.144 | PASS Threshold-consistent |
+| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 41$ | PASS Resonant |
+| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
+| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
 ---
@@ -244,29 +297,35 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | ✓ Consistent |
-| Cosmological constant Λ | 1.1×10⁻⁵² m⁻² (UQFF vacuum term) | 1.114×10⁻⁵² m⁻² | Planck 2018 | ✓ Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10⁻³⁵/yr | Super-K 2024 | ✓ Consistent |
-| UQFF buoyancy signature | F_U_Bi_i unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
+| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
-**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes significant, offering a falsifiable prediction beyond the Standard Model.
+**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
+produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
+bridge.*
 
 ## References
 
-1. Abbott et al. (LIGO/Virgo), *Properties of the Binary Black Hole Merger GW150914*, Phys. Rev. Lett. **116**, 241102 (2016)
-2. The LIGO Scientific Collaboration, *GW150914: The Advanced LIGO Detectors in the Era of First Discoveries*, Phys. Rev. Lett. **116**, 131103 (2016)
+1. Abbott et al. (LIGO/Virgo), *Properties of the Binary Black Hole Merger GW150914*, Phys. Rev.
+Lett. **116**, 241102 (2016)
+2. The LIGO Scientific Collaboration, *GW150914: The Advanced LIGO Detectors in the Era of First
+Discoveries*, Phys. Rev. Lett. **116**, 131103 (2016)
 3. Murphy, D., UQFF TRZ and SCm Channel Documentation, Star-Magic (2025)
 4. Murphy, D., `validate_gw_waveform.py` — UQFF waveform validation (2026)
 
 ---
 
-**Validator:** `validate_gw_waveform.py` — **TEST PASSED** (TRZ factor ?, SCm factor ?, array shape ?)  
+**Validator:** `validate_gw_waveform.py` — **TEST PASSED** (TRZ factor ?, SCm factor ?, array shape
+?)  
 *M_chirp = 28.0 M?, d_L = 410 Mpc; Peak std = 1.8131e-17, Peak UQFF = 1.6113e-17;*  
 *Amplitude ratio = 2.6207; Phase lag avg = 0.3138 rad;*  
 *At f=3.17 Hz: h_std=1.5768e-18, h_UQFF=1.0550e-18, damping ratio=0.6691;*  
-*TRZ=0.90, SCm=0.990, String=1.0 (isolated test); ? = 0.0005/day, [SSq] = 0.57*
+*TRZ=0.90, SCm=0.990, String=1.0 (isolated test); κ = 0.0005/day, [SSq] = 0.57*
 
 **End of Paper 012b**
 
@@ -282,15 +341,15 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
-| κ | 5.0 × 10⁻⁴ day⁻¹ | UQFF exponential decay rate |
+| κ | 5.0 × 10-4 day-1 | UQFF exponential decay rate |
 | [SSq] | 0.57 | Universal Quantized Factor |
 | β_i | 0.60–0.61 | Buoyancy coupling coefficient |
 | k₁ | 1.5 | Ug1 DPM-dipole coupling |
 | k₂ | 1.2 | Ug2 outer-bubble charge coupling |
 | k₃ | 1.8 | Ug3 string-rotation coupling |
 | k₄ | 2.0 | Ug4 vacuum-concentration coupling |
-| η | 10⁻²² | Inertia tensor scale |
-| E_react(0) | 10⁴⁶ J | Reference reactive energy |
+| η | 10-22 | Inertia tensor scale |
+| E_react(0) | 1046 J | Reference reactive energy |
 
 ### A.2 F_U Master Equation (Complete — 4 terms)
 
@@ -298,16 +357,16 @@ $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\
 
 | Term | Description | Implementation |
 |------|-------------|----------------|
-| Ug1 | DPM magnetic dipole | `compute_Ug1_SOURCE4` / `compute_Ug1()` |
-| Ug2 | Outer-field bubble (charge-reactivity) | `compute_Ug2_SOURCE4` / `compute_Ug2()` |
-| Ug3 | Magnetic string rotation | `compute_Ug3_SOURCE4` / `compute_Ug3()` |
-| Ug4 | Vacuum concentration (star-BH) | `compute_Ug4_SOURCE4` / `compute_Ug4()` |
-| Ubi | Buoyancy force | `compute_Ubi_SOURCE4` / `compute_Ubi()` |
-| Um | Universal Magnetism (Heaviside-amplified) | `compute_Um_SOURCE4` / `compute_Um()` |
-| −Σλᵢ·Uᵢ·E_react | 4th dissipation term (PAPER_420) | `compute_FU_SOURCE4` / full pipeline |
+| Ug1 | DPM magnetic dipole | `c`ompute_Ug1_SOURCE`4` / `compute_Ug1()` |
+| Ug2 | Outer-field bubble (charge-reactivity) | `c`ompute_Ug2_SOURCE`4` / `compute_Ug2()` |
+| Ug3 | Magnetic string rotation | `c`ompute_Ug3_SOURCE`4` / `compute_Ug3()` |
+| Ug4 | Vacuum concentration (star-BH) | `c`ompute_Ug4_SOURCE`4` / `compute_Ug4()` |
+| Ubi | Buoyancy force | `c`ompute_Ubi_SOURCE`4` / `compute_Ubi()` |
+| Um | Universal Magnetism (Heaviside-amplified) | `c`ompute_Um_SOURCE`4` / `compute_Um()` |
+| −Σλᵢ·Uᵢ·E_react | 4th dissipation term (PAPER_420) | `c`ompute_FU_SOURCE`4` / full pipeline |
 
 **4th dissipation term parameters (PAPER_420):**  
-λ₁=10⁻¹⁰, λ₂=10⁻¹², λ₃=10⁻¹¹, λ₄=10⁻¹³ (free parameters, not yet empirically calibrated)
+λ₁=10-10, λ₂=10-12, λ₃=10-11, λ₄=10-13 (free parameters, not yet empirically calibrated)
 
 ### A.3 Um Heaviside Phase-Transition Amplifier (PAPER_421)
 
@@ -315,7 +374,7 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
-| ρ_c | 10¹⁵ kg/m³ | SCm critical superconducting density |
+| ρ_c | 1015 kg/m3 | SCm critical superconducting density |
 | A_q | 0.1 | Quasi-periodic beating amplitude (10%) |
 | Δω | 2π/(434·365.25) rad/day | 434-year Gleisberg supercycle |
 
@@ -326,9 +385,10 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 | **Compressed** | Ug_sum + Newtonian base | Isolated stellar/BH systems |
 | **Resonant** | 5 resonance frequencies (aDPM, aTHz, …) | Multi-scale field interactions |
 | **Buoyant** | β_i × Ubi | Expanding nebulae, stellar winds |
-| **Superconductive** | Um × (1+10¹³·f_H) | Magnetars, SCm critical-density regime |
+| **Superconductive** | Um × (1+1013·f_H) | Magnetars, SCm critical-density regime |
 
-*Implementation status: all 4 modes operational in `MAIN_1_CoAnQi.cpp`, `CondensedPhysics.py`, and `CondensedPhysics2.py`.*
+*Implementation status: all 4 modes operational in `MAIN_1_CoAnQi.cpp`, `CondensedPhysics.py`, and
+`CondensedPhysics2.py`.*
 
 
 ---
@@ -343,9 +403,9 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `f`neutron_s26_coupling`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `k`ozima_scm_cross_section`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `k`ozima_wstp_kernel`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -354,7 +414,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `r`amanujan_polylog_s26`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
 | `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
@@ -363,7 +423,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `m`ock_theta_q26`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -374,8 +434,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `r`amanujan_pi_uqff`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `m`ock_theta_pi_wstp_kernel`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]

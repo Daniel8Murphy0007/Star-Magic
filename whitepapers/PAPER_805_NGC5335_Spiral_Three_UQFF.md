@@ -1,3 +1,15 @@
+---
+paper_id: PAPER_805
+title: "NGC 5335 — Spiral Galaxy with Triadic UQFF and CGM Metal Calibration"
+session: 189
+date: 2026-01-01
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [galaxy, Hubble, Three-UQFF, SMBH, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_805: NGC 5335 — Spiral Galaxy with Triadic UQFF and CGM Metal Calibration
 
 **Author:** Daniel T. Murphy  
@@ -10,13 +22,23 @@
 
 ## Abstract
 
-NGC 5335 is a spiral galaxy approximately 100 million light-years away (z ≈ 0.0067) in the constellation Virgo. Hubble ACS imaging reveals a regular, symmetric spiral morphology with moderate star formation (SFR ~ 1.0 M☉/yr) and an estimated SMBH mass of ~10⁸ M☉ from M–σ (σ ~ 150 km/s). Three-UQFF analysis yields g_primary ≈ 1.053×10⁻³ m/s², completing the five-galaxy UQFF spiral batch from the June 2025 Grok thread (PAPER_800–805). NGC 5335 serves as the intermediate-z, normal-SMBH calibration point between the lowest-z NGC 3511 and highest-z NGC 1961 systems.
+NGC 5335 is a spiral galaxy approximately 100 million light-years away (z ≈ 0.0067) in the
+constellation Virgo. Hubble ACS imaging reveals a regular, symmetric spiral morphology with moderate
+star formation (SFR ~ 1.0 MM_sun/yr) and an estimated SMBH mass of ~108 MM_sun from M–σ (σ ~ 150 km/s).
+Three-UQFF analysis yields g_primary ≈ 1.053×10-3 m/s2, completing the five-galaxy UQFF spiral batch
+from the June 2025 Grok thread (PAPER_800–805). NGC 5335 serves as the intermediate-z, normal-SMBH
+calibration point between the lowest-z NGC 3511 and highest-z NGC 1961 systems.
 
 ---
 
 ## 1. Introduction
 
-NGC 5335 occupies the intermediate position in the five-galaxy batch: z = 0.0067 (between 0.0027 and 0.013), M_BH ~ 10⁸ M☉ (between 10⁷ and 10⁸·⁵), and SFR = 1.0 M☉/yr (normal for its mass). This makes NGC 5335 the natural calibration point for the UQFF five-galaxy M_BH sequence, particularly for verifying that the CGM metal retention formula (Sanchez et al. 2023 coupling) works correctly at the "normal" end of the distribution. The f_Z,CGM at M_BH ~ 10⁸ M☉ represents the transition between metal-retaining and metal-expelling regimes.
+NGC 5335 occupies the intermediate position in the five-galaxy batch: z = 0.0067 (between 0.0027 and
+0.013), M_BH ~ 108 MM_sun (between 107 and 108·5), and SFR = 1.0 MM_sun/yr (normal for its mass). This makes
+NGC 5335 the natural calibration point for the UQFF five-galaxy M_BH sequence, particularly for
+verifying that the CGM metal retention formula (Sanchez et al. 2023 coupling) works correctly at the
+"normal" end of the distribution. The f_Z,CGM at M_BH ~ 108 MM_sun represents the transition between
+metal-retaining and metal-expelling regimes.
 
 ---
 
@@ -24,17 +46,17 @@ NGC 5335 occupies the intermediate position in the five-galaxy batch: z = 0.0067
 
 | Parameter | Symbol | Value | Source |
 |-----------|--------|-------|--------|
-| Galaxy mass | M | 10¹¹ M☉ = 1.989×10⁴¹ kg | Spiral estimate |
-| Disk radius | r | 3.78×10²⁰ m (~40 kly) | Optical |
-| SMBH mass | M_BH | 10⁸ M☉ = 1.989×10³⁸ kg | M–σ (σ=150 km/s) |
+| Galaxy mass | M | 1011 MM_sun = 1.989×1041 kg | Spiral estimate |
+| Disk radius | r | 3.78×1020 m (~40 kly) | Optical |
+| SMBH mass | M_BH | 108 MM_sun = 1.989×1038 kg | M–σ (σ=150 km/s) |
 | σ | — | 150 km/s | M–σ |
-| SFR | — | 1.0 M☉/yr | Normal |
+| SFR | — | 1.0 MM_sun/yr | Normal |
 | Redshift | z | 0.0067 | Spectroscopic |
-| Age | t | 5×10⁹ yr = 1.578×10¹⁷ s | — |
+| Age | t | 5×109 yr = 1.578×1017 s | — |
 | M_sf | — | 0.02 | UQFF |
 | f_TRZ | — | 0.05 | THz |
-| v_EM | v | 10⁵ m/s | Rotation |
-| B_EM | B | 10⁻⁵ T | Galactic field |
+| v_EM | v | 105 m/s | Rotation |
+| B_EM | B | 10-5 T | Galactic field |
 | f_feedback | — | 0.063 | SMBH feedback |
 
 ---
@@ -43,34 +65,38 @@ NGC 5335 occupies the intermediate position in the five-galaxy batch: z = 0.0067
 
 ### Numerical Evaluation
 
-```
-G·M/r²  = 6.6743e-11 × 1.989e41 / (3.78e20)²
-        = 1.328e31 / 1.429e41 = 9.294e-11 m/s²
-
-Hz(z=0.0067) = H0·√(0.3·(1.0067)³+0.7) = 2.269e-18
-(1+Hz·t) = 1.358 (Hubble correction)
-factor_sf = 1.02; factor_TRZ = 1.05
-g_grav = 9.294e-11 × 1.358 × 1.02 × 1.05 = 1.351e-10 m/s²
-
-a_EM = 1.053e-3 m/s²
-g_primary = 1.053e-3 m/s²
-```
+$$
+\begin{aligned}
+  & G·M/r2  = 6.6743e-11 × 1.989e41 / (3.78e20)2 \\
+  & = 1.328e31 / 1.429e41 = 9.294e-11 m/s2 \\
+  & Hz(z=0.0067) = H0·√(0.3·(1.0067)3+0.7) = 2.269e-18 \\
+  & (1+Hz·t) = 1.358 (Hubble correction) \\
+  & factor_sf = 1.02; factor_TRZ = 1.05 \\
+  & g_grav = 9.294e-11 × 1.358 × 1.02 × 1.05 = 1.351e-10 m/s2 \\
+  & a_EM = 1.053e-3 m/s2 \\
+  & g_primary = 1.053e-3 m/s2
+\end{aligned}
+$$
 
 ### Three-UQFF Simultaneous Result
 
-```
-g_compressed = 1.053×10⁻³ m/s²
-g_resonant   = 1.053×10⁻³ m/s²
-g_buoyancy   = 1.053×10⁻³ m/s²
-g_primary    = 1.053×10⁻³ m/s²
-```
+$$
+\begin{aligned}
+  & g_compressed = 1.053×10-3 m/s2 \\
+  & g_resonant   = 1.053×10-3 m/s2 \\
+  & g_buoyancy   = 1.053×10-3 m/s2 \\
+  & g_primary    = 1.053×10-3 m/s2
+\end{aligned}
+$$
 
 ### CGM Metal Retention — Five-Galaxy Summary
 
-```
-At M_BH = 10⁸ M☉: f_Z,CGM = 0.89
-(Normal SMBH mass: f_Z,CGM approaches retention limit from Sanchez et al. 2023 mean)
-```
+$$
+\begin{aligned}
+  & At M_BH = 108 MM_sun: f_Z,CGM = 0.89 \\
+  & (Normal SMBH mass: f_Z,CGM approaches retention limit from Sanchez et al. 2023 mean)
+\end{aligned}
+$$
 
 ---
 
@@ -78,40 +104,46 @@ At M_BH = 10⁸ M☉: f_Z,CGM = 0.89
 
 | PAPER | System | z | M_BH | σ | f_Z,CGM | g_primary |
 |-------|--------|---|------|---|---------|-----------|
-| 800 | NGC 685 | 0.004 | 10⁸ M☉ | 150 km/s | 0.89 | 1.053×10⁻³ |
-| 801 | NGC 3507 | 0.004 | 10⁷·⁵ M☉ | 120 km/s | 0.75 | 1.053×10⁻³ |
-| 802 | NGC 3511 | 0.0027 | 10⁷ M☉ | 100 km/s | 0.93 | 1.053×10⁻³ |
-| 803 | NGC 3596 | 0.0047 | 10⁸ M☉ | 150 km/s | 0.89 | 1.053×10⁻³ |
-| 804 | NGC 1961 | 0.013 | 10⁸·⁵ M☉ | 180 km/s | 0.10 | 1.053×10⁻³ |
-| **805** | **NGC 5335** | **0.0067** | **10⁸ M☉** | **150 km/s** | **0.89** | **1.053×10⁻³** |
+| 800 | NGC 685 | 0.004 | 108 MM_sun | 150 km/s | 0.89 | 1.053×10-3 |
+| 801 | NGC 3507 | 0.004 | 107·5 MM_sun | 120 km/s | 0.75 | 1.053×10-3 |
+| 802 | NGC 3511 | 0.0027 | 107 MM_sun | 100 km/s | 0.93 | 1.053×10-3 |
+| 803 | NGC 3596 | 0.0047 | 108 MM_sun | 150 km/s | 0.89 | 1.053×10-3 |
+| 804 | NGC 1961 | 0.013 | 108·5 MM_sun | 180 km/s | 0.10 | 1.053×10-3 |
+| **805** | **NGC 5335** | **0.0067** | **108 MM_sun** | **150 km/s** | **0.89** | **1.053×10-3** |
 
-**All six systems yield g_primary = 1.053×10⁻³ m/s² — UQFF universality confirmed across the batch.**
+**All six systems yield g_primary = 1.053×10-3 m/s2 — UQFF universality confirmed across the
+batch.**
 
 ### Key UQFF Invariance Results from Batch:
-1. **EM Ground State Invariance:** g = 1.053×10⁻³ m/s² for all six spirals regardless of M_BH, z, SFR, or morphology (barred vs. unbarred)
-2. **SMBH Mass Invariance:** Confirmed across 10⁷–10⁸·⁵ M☉
+1. **EM Ground State Invariance:** g = 1.053×10-3 m/s2 for all six spirals regardless of M_BH, z,
+SFR, or morphology (barred vs. unbarred)
+2. **SMBH Mass Invariance:** Confirmed across 107–108·5 MM_sun
 3. **Redshift Invariance:** Confirmed for z = 0.0027–0.013 (Hubble-time correction negligible)
-4. **SFR Invariance:** Confirmed from 0.6–1.2 M☉/yr
-5. **f_Z,CGM Non-Monotonicity:** Peak metal expulsion at intermediate SMBH mass (~10⁷·⁵ M☉)
+4. **SFR Invariance:** Confirmed from 0.6–1.2 MM_sun/yr
+5. **f_Z,CGM Non-Monotonicity:** Peak metal expulsion at intermediate SMBH mass (~107·5 MM_sun)
 
 ---
 
 ## 5. DVP Species Index Application (NGC 5335 Gas Content)
 
-```
-Species Index = log(ρ_SCm/ρ_UA) · n = log(0.1) · n = –1.0 · n
-
-At galactic scale (NGC 5335, n=26):
-S_index = –26 → spiral disk self-gravity state
-→ NGC 5335's spiral arm density waves are n=26 DVP manifestations of the
-  vacuum density species hierarchy
-```
+$$
+\begin{aligned}
+  & Species Index = log(ρ_SCm/ρ_UA) · n = log(0.1) · n = –1.0 · n \\
+  & At galactic scale (NGC 5335, n=26): \\
+  & S_index = –26 → spiral disk self-gravity state \\
+  & → NGC 5335's spiral arm density waves are n=26 DVP manifestations of the \\
+  & vacuum density species hierarchy
+\end{aligned}
+$$
 
 ---
 
 ## 6. Conclusions
 
-Three-UQFF applied to NGC 5335 completes the six-spiral UQFF batch from the June 2025 Grok thread, confirming g_primary ≈ 1.053×10⁻³ m/s² and establishing five simultaneous UQFF invariance theorems (EM ground state, SMBH mass, redshift, SFR, and morphology invariance). The six-system f_Z,CGM sequence fully encodes the Sanchez et al. 2023 SMBH–CGM metal retention coupling within UQFF.
+Three-UQFF applied to NGC 5335 completes the six-spiral UQFF batch from the June 2025 Grok thread,
+confirming g_primary ≈ 1.053×10-3 m/s2 and establishing five simultaneous UQFF invariance theorems
+(EM ground state, SMBH mass, redshift, SFR, and morphology invariance). The six-system f_Z,CGM
+sequence fully encodes the Sanchez et al. 2023 SMBH–CGM metal retention coupling within UQFF.
 
 *PAPER_805, CP4 Three-UQFF class #389. v5.45. Session 189.*
 
@@ -121,13 +153,15 @@ Three-UQFF applied to NGC 5335 completes the six-spiral UQFF batch from the June
 
 ### §A.1 Sector Classification
 
-This paper maps to **BH-gravity** sector of the 9-sector UQFF Lagrangian (see `uqff_lagrangian_derivation.py`).
+This paper maps to **BH-gravity** sector of the 9-sector UQFF Lagrangian (see
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
-The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive quantum fundamentals (DPM, UA, SCm):
+The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
+quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_\mu \phi_{\rm BH})(\partial^\mu \phi_{\rm BH}) - V(\phi_{\rm BH}) + \mathcal{L}_{\rm cosmo}$$
+$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_mu \phi_{\rm BH})(\partial^\mu \phi_{\rm BH}) - V(\phi_{\rm BH}) + \mathcal{L}_{\rm cosmo}$$
 
 where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
@@ -141,7 +175,9 @@ $$\boxed{\frac{\delta S}{\delta \phi_{\rm BH}} = R_{\mu\nu} - \tfrac{1}{2}g_{\mu
 
 $$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\rm BH} = 0$$
 
-The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g forces) through vacuum density initialization to the sector-specific equation of motion. Every term in the E-L equation inherits its physical origin from the cosmogenesis master.
+The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
+forces) through vacuum density initialization to the sector-specific equation of motion. Every term
+in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 
 ---
@@ -152,9 +188,9 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.194$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m³.
+For this system, the local VDS sub-ratio is $0.194$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -166,13 +202,13 @@ Since $p_{\rm DVP} = 101$ is **resonant** (threshold at $p > 26$), the system's 
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
-The BSH saturation timescale for this sector is **10⁶ M_BH/M_⊙ yr** (quasi-normal mode ringdown):
+The BSH saturation timescale for this sector is **106 M_BH/M_M_sun yr** (quasi-normal mode ringdown):
 
-$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
+$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\rm SCm}$ which initializes the harmonic series at cosmogenesis.
 
@@ -180,11 +216,11 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.194 | ✓ Threshold-consistent |
-| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 101$ | ✓ Resonant |
-| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
-| [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
+| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.194 | PASS Threshold-consistent |
+| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 101$ | PASS Resonant |
+| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
+| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
 ---
@@ -194,14 +230,17 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | ✓ Consistent |
-| Cosmological constant Λ | 1.1×10⁻⁵² m⁻² (UQFF vacuum term) | 1.114×10⁻⁵² m⁻² | Planck 2018 | ✓ Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10⁻³⁵/yr | Super-K 2024 | ✓ Consistent |
-| UQFF buoyancy signature | F_U_Bi_i unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
+| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
-**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes significant, offering a falsifiable prediction beyond the Standard Model.
+**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
+produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
+bridge.*
 
 
 ---
@@ -216,9 +255,9 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `f`neutron_s26_coupling`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `k`ozima_scm_cross_section`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `k`ozima_wstp_kernel`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -227,7 +266,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `r`amanujan_polylog_s26`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
 | `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
@@ -236,7 +275,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `m`ock_theta_q26`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -247,8 +286,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `r`amanujan_pi_uqff`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `m`ock_theta_pi_wstp_kernel`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]

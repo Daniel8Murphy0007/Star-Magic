@@ -1,3 +1,15 @@
+---
+paper_id: PAPER_754
+title: "Sagittarius A* SMBH Evolution — UQFF Accretion and Spin Precession"
+session: 181
+date: 2026-01-01
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [accretion, Hubble, spin-down, SMBH, black-hole, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_754: Sagittarius A* SMBH Evolution — UQFF Accretion and Spin Precession
 
 **Author:** Daniel T. Murphy  
@@ -10,27 +22,37 @@
 
 ## Abstract
 
-Sagittarius A*, the 4.3×10⁶ M☉ supermassive black hole at the Galactic Centre, shows secular evolution through accretion-driven mass growth, spin-down, and orbital precession. This paper derives the UQFF time-dependent surface gravity g_SgrA*(t) at the Schwarzschild radius, incorporating exponential accretion decay, Hubble-expansion correction, and a sin(30°) precession term. At t = 4.5 Gyr the model yields g_SgrA* ≈ 1.250×10⁷ m/s², consistent with near-infrared flare timing.
+Sagittarius A*, the 4.3×106 MM_sun supermassive black hole at the Galactic Centre, shows secular
+evolution through accretion-driven mass growth, spin-down, and orbital precession. This paper
+derives the UQFF time-dependent surface gravity g_SgrA*(t) at the Schwarzschild radius,
+incorporating exponential accretion decay, Hubble-expansion correction, and a sin(30°) precession
+term. At t = 4.5 Gyr the model yields g_SgrA* ≈ 1.250×107 m/s2, consistent with near-infrared flare
+timing.
 
 ---
 
 ## 1. Introduction
 
-The Galactic Centre SMBH exerts the dominant gravitational influence over the central parsec. UQFF models the gravity at the Schwarzschild radius r_s = 2GM/c² as a function of: accretion-driven mass growth M(t), spin evolution Ω(t), Hubble dilution (1 + H₀t), and a nuclear stellar disk precession term sin(θ_prec). The 30° precession angle is derived from the observed inner stellar-disk inclination to the Galactic plane.
+The Galactic Centre SMBH exerts the dominant gravitational influence over the central parsec. UQFF
+models the gravity at the Schwarzschild radius r_s = 2GM/c2 as a function of: accretion-driven mass
+growth M(t), spin evolution Ω(t), Hubble dilution (1 + H₀t), and a nuclear stellar disk precession
+term sin(θ_prec). The 30° precession angle is derived from the observed inner stellar-disk
+inclination to the Galactic plane.
 
 ---
 
 ## 2. Master UQFF Gravity Equation
 
-```
-g_SgrA*(r_s, t) = [G·M(t) / r_s²] × (1 + H₀·t) × sin(θ_prec)
-                + [Ug1(r_s) + Ug2(r_s)]
-                + (Λ·c²/3)
-
-M(t)  = M_0 + ΔM × (1 − exp(−t / τ_acc))    [accretion build-up]
-Ω(t)  = Ω_0 × exp(−t / τ_spin)               [spin-down]
-M_dot(t) = M_dot_0 × exp(−t / τ_acc)          [accretion rate]
-```
+$$
+\begin{aligned}
+  & g_SgrA*(r_s, t) = [G·M(t) / r_s2] × (1 + H₀·t) × sin(θ_prec) \\
+  & + [Ug1(r_s) + Ug2(r_s)] \\
+  & + (Λ·c2/3) \\
+  & M(t)  = M_0 + ΔM × (1 − exp(−t / τ_acc))    [accretion build-up] \\
+  & Ω(t)  = Ω_0 × exp(−t / τ_spin)               [spin-down] \\
+  & M_dot(t) = \text{M\_dot\_0} × exp(−t / τ_acc)          [accretion rate]
+\end{aligned}
+$$
 
 ---
 
@@ -38,34 +60,33 @@ M_dot(t) = M_dot_0 × exp(−t / τ_acc)          [accretion rate]
 
 | Parameter | Symbol | Value | Unit |
 |-----------|--------|-------|------|
-| Mass | M | 8.552×10³⁶ | kg (4.3×10⁶ M☉) |
-| Schwarzschild radius | r_s | 1.27×10¹⁰ | m |
-| Initial accretion rate | M_dot_0 | 0.01 | M☉/yr |
-| Accretion timescale | τ_acc | 2.84×10¹⁷ | s (9 Gyr) |
+| Mass | M | 8.552×1036 | kg (4.3×106 MM_sun) |
+| Schwarzschild radius | r_s | 1.27×1010 | m |
+| Initial accretion rate | `M_dot_0` | 0.01 | MM_sun/yr |
+| Accretion timescale | τ_acc | 2.84×1017 | s (9 Gyr) |
 | Initial spin | Ω_0 | 0.3c/r_s | rad/s |
-| Spin timescale | τ_spin | 2.84×10¹⁷ | s |
-| Hubble constant | H₀ | 2.184×10⁻¹⁸ | s⁻¹ |
+| Spin timescale | τ_spin | 2.84×1017 | s |
+| Hubble constant | H₀ | 2.184×10-18 | s-1 |
 | Precession angle | θ_prec | 30° | — |
-| Evaluation epoch | t | 1.42×10¹⁷ | s (4.5 Gyr) |
+| Evaluation epoch | t | 1.42×1017 | s (4.5 Gyr) |
 
 ---
 
 ## 4. Numerical Result (t = 4.5 Gyr)
 
-```
-t = 4.5×10⁹ × 3.156×10⁷ = 1.420×10¹⁷ s
-
-M_dot(t) = 0.01 × exp(−1.420×10¹⁷ / 2.84×10¹⁷)
-          = 0.01 × exp(−0.5) ≈ 6.065×10⁻³ M☉/yr
-
-g_grav = G·M/r_s² × (1 + H₀·t) × sin(30°)
-       = 6.674×10⁻¹¹ × 8.552×10³⁶ / (1.27×10¹⁰)²
-         × (1 + 2.184×10⁻¹⁸ × 1.420×10¹⁷) × 0.5
-       ≈ 3.536×10⁷ × 1.310 × 0.5
-       ≈ 2.316×10⁷ m/s²   [before Ug floor]
-
-g_SgrA*(t=4.5 Gyr) ≈ 1.250×10⁷ m/s²   [with Ug corrections + precession]
-```
+$$
+\begin{aligned}
+  & t = 4.5×109 × 3.156×107 = 1.420×1017 s \\
+  & M_dot(t) = 0.01 × exp(−1.420×1017 / 2.84×1017) \\
+  & = 0.01 × exp(−0.5) ≈ 6.065×10-3 MM_sun/yr \\
+  & g_grav = G·M/r_s2 × (1 + H₀·t) × sin(30°) \\
+  & = 6.674×10-11 × 8.552×1036 / (1.27×1010)2 \\
+  & × (1 + 2.184×10-18 × 1.420×1017) × 0.5 \\
+  & ≈ 3.536×107 × 1.310 × 0.5 \\
+  & ≈ 2.316×107 m/s2   [before Ug floor] \\
+  & g_SgrA*(t=4.5 Gyr) ≈ 1.250×107 m/s2   [with Ug corrections + precession]
+\end{aligned}
+$$
 
 ---
 
@@ -74,16 +95,18 @@ g_SgrA*(t=4.5 Gyr) ≈ 1.250×10⁷ m/s²   [with Ug corrections + precession]
 - g_SgrA*(r_s, t) — surface gravity at Schwarzschild radius (primary)
 - M_dot(t) = M_dot_0·exp(−t/τ_acc) — accretion rate decay
 - Ω(t) = Ω_0·exp(−t/τ_spin) — spin evolution
-- r_s = 2GM/c² — Schwarzschild radius (1.27×10¹⁰ m)
-- ISCO: r_ISCO = 3·r_s (Schwarzschild) = 3.81×10¹⁰ m
-- L_acc(t) = η·M_dot(t)·c² — accretion luminosity (η ≈ 0.1)
+- r_s = 2GM/c2 — Schwarzschild radius (1.27×1010 m)
+- ISCO: r_ISCO = 3·r_s (Schwarzschild) = 3.81×1010 m
+- L_acc(t) = η·M_dot(t)·c2 — accretion luminosity (η ≈ 0.1)
 - T_flare ∝ (r_ISCO/c) × Ω(t) — characteristic flare period
 
 ---
 
 ## 6. Conclusions
 
-The UQFF evolution model for Sgr A* yields g ≈ 1.250×10⁷ m/s² at the Schwarzschild radius at t = 4.5 Gyr. The combination of accretion-driven growth, Hubble expansion, and 30° precession reproduces the observed near-IR flare repetition timescales. PAPER_754, CP4 class #338. v5.39.
+The UQFF evolution model for Sgr A* yields g ≈ 1.250×107 m/s2 at the Schwarzschild radius at t = 4.5
+Gyr. The combination of accretion-driven growth, Hubble expansion, and 30° precession reproduces the
+observed near-IR flare repetition timescales. PAPER_754, CP4 class #338. v5.39.
 
 ---
 
@@ -91,13 +114,15 @@ The UQFF evolution model for Sgr A* yields g ≈ 1.250×10⁷ m/s² at the Schwa
 
 ### §A.1 Sector Classification
 
-This paper maps to **magnetar-field** sector of the 9-sector UQFF Lagrangian (see `uqff_lagrangian_derivation.py`).
+This paper maps to **magnetar-field** sector of the 9-sector UQFF Lagrangian (see
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
-The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive quantum fundamentals (DPM, UA, SCm):
+The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
+quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_\mu \phi_B)(\partial^\mu \phi_B) - V(\phi_B) + \mathcal{L}_{\rm cosmo}$$
+$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_mu \phi_B)(\partial^\mu \phi_B) - V(\phi_B) + \mathcal{L}_{\rm cosmo}$$
 
 where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
@@ -111,7 +136,9 @@ $$\boxed{\frac{\delta S}{\delta \phi_B} = \nabla \times (\rho_{\rm SCm} \mathbf{
 
 $$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_B = 0$$
 
-The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g forces) through vacuum density initialization to the sector-specific equation of motion. Every term in the E-L equation inherits its physical origin from the cosmogenesis master.
+The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
+forces) through vacuum density initialization to the sector-specific equation of motion. Every term
+in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 
 ---
@@ -122,9 +149,9 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.082$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m³.
+For this system, the local VDS sub-ratio is $0.082$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -136,13 +163,13 @@ Since $p_{\rm DVP} = 11$ is **sub-threshold** (threshold at $p > 26$), the syste
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
-The BSH saturation timescale for this sector is **10³ yr** (field decay quiescence):
+The BSH saturation timescale for this sector is **103 yr** (field decay quiescence):
 
-$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
+$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\rm SCm}$ which initializes the harmonic series at cosmogenesis.
 
@@ -150,11 +177,11 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.082 | ✓ Threshold-consistent |
-| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 11$ | ✓ Sub-threshold |
-| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
-| [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
+| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.082 | PASS Threshold-consistent |
+| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 11$ | PASS Sub-threshold |
+| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
+| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
 ---
@@ -164,14 +191,17 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | ✓ Consistent |
-| Cosmological constant Λ | 1.1×10⁻⁵² m⁻² (UQFF vacuum term) | 1.114×10⁻⁵² m⁻² | Planck 2018 | ✓ Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10⁻³⁵/yr | Super-K 2024 | ✓ Consistent |
-| UQFF buoyancy signature | F_U_Bi_i unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
+| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
-**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes significant, offering a falsifiable prediction beyond the Standard Model.
+**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
+produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
+bridge.*
 
 
 ---
@@ -186,9 +216,9 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `f`neutron_s26_coupling`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `k`ozima_scm_cross_section`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `k`ozima_wstp_kernel`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -197,7 +227,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `r`amanujan_polylog_s26`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
 | `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
@@ -206,7 +236,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `m`ock_theta_q26`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -217,8 +247,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `r`amanujan_pi_uqff`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `m`ock_theta_pi_wstp_kernel`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]

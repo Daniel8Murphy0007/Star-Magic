@@ -1,28 +1,42 @@
+---
+paper_id: PAPER_482
+title: "HydrogenResonanceUQFFModule: PTOE Nuclear Resonance in Unified Quantum Field Framework"
+session: 0
+date: 2026-03-23
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [DPM, SCm, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_482 — HydrogenResonanceUQFFModule: PTOE Nuclear Resonance in Unified Quantum Field Framework
 **Author:** Daniel T. Murphy
 **Date:** March 23, 2026
-<!-- Session 126 | grok_share_bdfb3a05b06.txt | Quality Score: 5 -->
+<!— Session 126 | `grok_share_bdfb3a05b06`.txt | Quality Score: 5 —>
 
 ## Abstract
 
-> **Key UQFF calibrated constants:** κ = 5.0e-4 day⁻¹; [SSq] = 5.7e-1; H_SCm ≈ 9.9e-1; U_UA ≈ 1.0e-4; k_η = 1.0e-113; β_i ≈ 6.0e-1; G = 6.674e-11 N·m²/kg²
+> **Key UQFF calibrated constants:** κ = 5.0e-4 day-1; [SSq] = 5.7e-1; H_SCm ≈ 9.9e-1; U_UA ≈ 1.0e-4; k_η = 1.0e-113; β_i ≈ 6.0e-1; G = 6.674e-11 N·m2/kg2
 
 
 This paper documents the `HydrogenResonanceUQFFModule` — a unique application of the UQFF module architecture to nuclear binding resonance and the Periodic Table of Elements (PTOE). Unlike the astrophysical system modules (PAPER_481), this module operates at the **nuclear/atomic scale**, computing $H_{res}$ — the hydrogen resonance amplitude across atomic number Z=1–118. The framework maps nuclear shell structure, binding energy resonances, deep pairing frequencies, and shell magic number corrections into the UQFF complex-number formalism, producing a unified model of nuclear force in the UQFF paradigm.
 
-**Source:** `grok_share_bdfb3a05b06.txt`, docx: "Hydrogen Resonance Equations of the PTOE_02May2025.docx", Session 126, March 23, 2026.
+**Source:** `grok_share_bdfb3a05b06.txt`, docx: "Hydrogen Resonance Equations of the
+PTOE_02May2025.docx", Session 126, March 23, 2026.
 
-**Related Papers:** PAPER_139 (Hydrogen atom Ug4i/Boyle), PAPER_142 (PTOE Hres Z=1–126), PAPER_240 (spooky action DPM), PAPER_299–304 (hydrogen atom multi-paper), PAPER_463 (Compressed Space Espace).
+**Related Papers:** PAPER_139 (Hydrogen atom Ug4i/Boyle), PAPER_142 (PTOE Hres Z=1–126), PAPER_240
+(spooky action DPM), PAPER_299–304 (hydrogen atom multi-paper), PAPER_463 (Compressed Space Espace).
 
 ---
 
 ## 1. Master Nuclear Resonance Equation
 
-$$H_{res}(Z, A, t) \approx \mathcal{I}_{H_{res}}(Z, A, t) \cdot x_2(Z, A)$$
+$$H_{res}(Z, A, t) \approx \mathcal{I}_{H\_{res}}(Z, A, t) \cdot x_2(Z, A)$$
 
 where the integrand is:
 
-$$\mathcal{I}_{H_{res}} = A_{res}(Z,A) \sin(2\pi f_{res}(A) \cdot t) + U_{dp}(A_1, A_2, f_{dp}, \phi) \cdot SC_m \cdot k_{nuc}(N, Z) + S_{shell}(Z_{magic}, N_{magic})$$
+$$\mathcal{I}_{H\_{res}} = A_{res}(Z,A) \sin(2\pi f_{res}(A) \cdot t) + U_{dp}(A_1, A_2, f_{dp}, \phi) \cdot SC_m \cdot k_{nuc}(N, Z) + S_{shell}(Z_{magic}, N_{magic})$$
 
 with quadratic root scaled by atomic number:
 
@@ -54,7 +68,7 @@ This is the UQFF nuclear frequency analog to the binding energy per nucleon.
 
 ### 2.3 Deep Pairing Potential $U_{dp}$
 
-$$U_{dp}(A_1, A_2, f_{dp}, \phi) = k \cdot \frac{A_1 A_2}{f_{dp}^2} \cdot \cos\phi$$
+$$U_{dp}(A_1, A_2, f_{dp}, \phi) = k \cdot \frac{A_1 A_2}{f_{dp}^2} \cdot \cosphi$$
 
 | Parameter | Value | Description |
 |-----------|-------|-------------|
@@ -88,8 +102,8 @@ $$g_{nuc}(r, t) \approx -\frac{G \cdot M_{nuc} \cdot \rho_{nuc}}{r_{nuc}} - \fra
 | Parameter | Value | Description |
 |-----------|-------|-------------|
 | $M_{nuc}$ | $A \times 1.67\times10^{-27}$ kg | Nuclear mass |
-| $\rho_{nuc}$ | $10^{17}$ kg/m³ | Nuclear matter density |
-| $r_{nuc}$ | $(3M_{nuc}/4\pi\rho_{nuc})^{1/3}$ | Nuclear radius |
+| $\rho_{nuc}$ | $10^{17}$ kg/m3 | Nuclear matter density |
+| $r_{nuc}$ | $(3M_{nuc}/4\pirho_{nuc})^{1/3}$ | Nuclear radius |
 | $\kappa_{DPM}$ | $10^{-22}$ | DPM curvature factor |
 | $T$ | $10^7$ K | Nuclear temperature placeholder |
 
@@ -143,7 +157,7 @@ This enables full PTOE resonance mapping within the same UQFF framework as galac
 
 ## 7. Key Equations Summary
 
-$$\boxed{H_{res} \approx \left[k_A Z \frac{A}{A_H}(1+\delta_{pair}) \sin\!\left(\frac{2\pi E_{bind} t}{h A}\right) + k\frac{A}{f_{dp}^2} SC_m \frac{N}{Z} + 0.1(Z_{mag}+N_{mag})\right] \cdot (-1.35\times10^{172})(Z+A)}$$
+$$\boxed{H_{res} \approx \left[k_A Z \frac{A}{A_H}(1+\delta_{pair}) \sin!\left(\frac{2\pi E_{bind} t}{h A}\right) + k\frac{A}{f_{dp}^2} SC_m \frac{N}{Z} + 0.1(Z_{mag}+N_{mag})\right] \cdot (-1.35\times10^{172})(Z+A)}$$
 
 $$\boxed{f_{res}(A) = \frac{E_{bind}}{hA} = \frac{7.8\times10^6 \times 1.602\times10^{-19}}{6.626\times10^{-34} \cdot A} \approx \frac{1.88\times10^{21}}{A} \text{ Hz}}$$
 
@@ -157,13 +171,15 @@ $$\boxed{g_{nuc} \approx -\frac{GM_{nuc}\rho_{nuc}}{r_{nuc}} - \frac{k_B T \rho_
 
 ### §A.1 Sector Classification
 
-This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see `uqff_lagrangian_derivation.py`).
+This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
-The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive quantum fundamentals (DPM, UA, SCm):
+The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
+quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_\mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
+$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
 
 where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
@@ -177,7 +193,9 @@ $$\boxed{\frac{\delta S}{\delta \phi_{\rm NS}} = \nabla^2 \phi_{\rm NS} - (4\pi 
 
 $$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\rm NS} = 0$$
 
-The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g forces) through vacuum density initialization to the sector-specific equation of motion. Every term in the E-L equation inherits its physical origin from the cosmogenesis master.
+The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
+forces) through vacuum density initialization to the sector-specific equation of motion. Every term
+in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 
 ---
@@ -188,9 +206,9 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.118$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m³.
+For this system, the local VDS sub-ratio is $0.118$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -202,13 +220,13 @@ Since $p_{\rm DVP} = 5$ is **sub-threshold** (threshold at $p > 26$), the system
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
-The BSH saturation timescale for this sector is **10⁴ yr** (spin-down equilibrium):
+The BSH saturation timescale for this sector is **104 yr** (spin-down equilibrium):
 
-$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
+$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\rm SCm}$ which initializes the harmonic series at cosmogenesis.
 
@@ -216,11 +234,11 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.118 | ✓ Threshold-consistent |
-| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 5$ | ✓ Sub-threshold |
-| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
-| [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
+| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.118 | PASS Threshold-consistent |
+| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 5$ | PASS Sub-threshold |
+| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
+| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
 ---
@@ -231,9 +249,9 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
 | Nuclear binding energy (PDG tabulated) | UQFF DPM pyramid sum → B(A,Z) within 5% for Z≤82 | AME2020 atomic mass evaluation | PDG/NUBASE2020 | <5% for Z≤82, <15% for Z≤118 |
-| Proton mass m_p | UQFF: m_p = U_m / (κ × c²) × R_unit | m_p = 938.272 MeV/c² | PDG 2024 | ✓ Input consistent |
-| Island of stability (Z=114–126) | UQFF predicts enhanced binding for Z=114,120,126 via [SSq] shell closure | Predicted superheavy magic numbers: Z=114,120,126 | GSI/RIKEN experiments | ✓ UQFF shell prediction consistent |
-| Nuclear α particle mass | UQFF Ug1 dipole → m_α = 4m_p - B_α/c² | m_α = 3727.379 MeV/c² | PDG 2024 | 100% (exact input) |
+| Proton mass m_p | UQFF: m_p = U_m / (κ × c2) × R_unit | m_p = 938.272 MeV/c2 | PDG 2024 | PASS Input consistent |
+| Island of stability (Z=114–126) | UQFF predicts enhanced binding for Z=114,120,126 via [SSq] shell closure | Predicted superheavy magic numbers: Z=114,120,126 | GSI/RIKEN experiments | PASS UQFF shell prediction consistent |
+| Nuclear α particle mass | UQFF Ug1 dipole → m_α = 4m_p - B_α/c2 | m_α = 3727.379 MeV/c2 | PDG 2024 | 100% (exact input) |
 
 **New physics claim:** UQFF DPM pyramid-sum nuclear model achieves <5% binding energy accuracy
 for Z≤82 using only the UQFF constants κ, [SSq], β_i — without a separate per-nucleus fit.
@@ -244,7 +262,8 @@ universal parameter set constitutes a parameter-free nuclear mass prediction.
 
 
 
-*Copyright — Daniel T. Murphy. Session 126, March 23, 2026. Files: `HydrogenResonanceUQFFModule.h`, `HydrogenResonanceUQFFModule.cpp`.*
+*Copyright — Daniel T. Murphy. Session 126, March 23, 2026. Files: `HydrogenResonanceUQFFModule.h`,
+`HydrogenResonanceUQFFModule.cpp`.*
 
 
 ---
@@ -259,9 +278,9 @@ universal parameter set constitutes a parameter-free nuclear mass prediction.
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `f`neutron_s26_coupling`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `k`ozima_scm_cross_section`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `k`ozima_wstp_kernel`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -270,7 +289,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `r`amanujan_polylog_s26`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
 | `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
@@ -279,7 +298,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `m`ock_theta_q26`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -290,8 +309,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `r`amanujan_pi_uqff`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `m`ock_theta_pi_wstp_kernel`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]

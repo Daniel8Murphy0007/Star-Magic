@@ -1,6 +1,18 @@
+---
+paper_id: PAPER_939
+title: "Centaurus A Jet Power Curves"
+session: 213
+date: 2026-04-12
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [galaxy, jet, SMBH, phonon, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_939: Centaurus A Jet Power Curves
 
-**Author:** Daniel T. Murphy -- Star Magic / UQFF Framework
+**Author:** Daniel T. Murphy — Star Magic / UQFF Framework
 **Date:** 2026-04-12
 **Session:** 213
 **Source:** blazar_jet_power_curves_extended.py (CentaurusAJetPowerCurves)
@@ -37,7 +49,7 @@ where $r_H = \frac{r_S}{2}(1 + \sqrt{1 - a^2})$ and $r_S = 2GM/c^2$.
 
 ## 3. UQFF Jet Modulation
 
-$$M_\text{jet}(\Gamma) = 1 + A_\text{jet} \exp\!\left(-\frac{(\Gamma - \Gamma_0)^2}{2\sigma_\Gamma^2}\right)$$
+$$M_\text{jet}(\Gamma) = 1 + A_\text{jet} \exp!\left(-\frac{(\Gamma - \Gamma_0)^2}{2\sigma_Gamma^2}\right)$$
 
 $$P_\text{jet}(\Gamma) = P_\text{BZ} \cdot (1 + M_\text{jet}(\Gamma))$$
 
@@ -59,9 +71,9 @@ $$P_\text{jet}(\Gamma) = P_\text{BZ} \cdot (1 + M_\text{jet}(\Gamma))$$
 
 ## References
 
-1. Murphy, D.T. -- Star Magic UQFF Framework (2024-2026)
-2. Israel, F.P. (1998) -- Centaurus A, A&AR, 8, 237
-3. Blandford, R.D. & Znajek, R.L. (1977) -- MNRAS, 179, 433
+1. Murphy, D.T. — Star Magic UQFF Framework (2024-2026)
+2. Israel, F.P. (1998) — Centaurus A, A&AR, 8, 237
+3. Blandford, R.D. & Znajek, R.L. (1977) — MNRAS, 179, 433
 
 ---
 
@@ -86,7 +98,8 @@ $$P_\text{jet}(\Gamma) = P_\text{BZ} \cdot (1 + M_\text{jet}(\Gamma))$$
 | Vacuum energy $\rho_{\text{vac}}$ | $7.09 \times 10^{-37}$ kg/m$^3$ | $\rho_{\text{vac}} \sim 10^{-29}$ g/cm$^3$ | Planck 2018 | Novel SCm scale |
 | Fine structure $\alpha$ | UQFF reproduces via $U_{g1}$ dipole | $1/137.036$ | PDG 2024 | 99.9% |
 
-**New physics claim:** UQFF phonon-mediated vacuum coupling provides testable predictions beyond SM for this system.
+**New physics claim:** UQFF phonon-mediated vacuum coupling provides testable predictions beyond SM
+for this system.
 
 *Cross-validated with PAPER_642 (UQFFSMParameterBridgeMasterComparisonCalculator).*
 
@@ -98,13 +111,13 @@ $$P_\text{jet}(\Gamma) = P_\text{BZ} \cdot (1 + M_\text{jet}(\Gamma))$$
 **Sector:** SCm-phonon (lattice resonance)
 
 ### §A.2 Lagrangian Density
-$$\mathcal{L}_{SCm_phonon} = \sum_{i=1}^{26} \left[ U_{g,i} + U_{m,i} + U_{A,i} - U_{b,i} \right] \cdot S_{26}([SSq]) \cdot \Phi_{1.25\text{THz}}(\omega, \Gamma)$$
+$$\mathcal{L}_{SCm\_phonon} = \sum_{i=1}^{26} \left[ U_{g,i} + U_{m,i} + U_{A,i} - U_{b,i} \right] \cdot S_{26}([SSq]) \cdot \Phi_{1.25\text{THz}}(\omega, \Gamma)$$
 
 ### §A.3 Euler-Lagrange Equation of Motion
-$$\boxed{\frac{\partial \mathcal{L}}{\partial \phi} - \partial_\mu \frac{\partial \mathcal{L}}{\partial (\partial_\mu \phi)} = 0 \implies F_{U,Bi_i} = -\nabla U_{\text{eff}} + \Phi \cdot S_{26} \cdot E_{\text{net}}}$$
+$$\boxed{\frac{\partial \mathcal{L}}{\partial \phi} - \partial_mu \frac{\partial \mathcal{L}}{\partial (\partial_mu \phi)} = 0 \implies F_{U,Bi\_i} = -\nabla U_{\text{eff}} + \Phi \cdot S_{26} \cdot E_{\text{net}}}$$
 
 ### §A.4 Cosmogenesis Linkage Chain
-PAPER_877 axioms → SCm vacuum → phonon $\omega_{\text{SCm}}$ → lattice resonance → $F_{U,Bi_i}$ unified force → observational prediction
+PAPER_877 axioms → SCm vacuum → phonon $\omega_{\text{SCm}}$ → lattice resonance → $F_{U,Bi\_i}$ unified force → observational prediction
 
 ---
 

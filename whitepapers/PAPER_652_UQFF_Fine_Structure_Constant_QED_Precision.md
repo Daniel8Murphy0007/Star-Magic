@@ -1,25 +1,39 @@
+---
+paper_id: PAPER_652
+title: "UQFF Fine Structure Constant & QED Precision Hierarchy"
+session: 168
+date: 2026-01-01
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [AGN, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_652: UQFF Fine Structure Constant & QED Precision Hierarchy
 **Author:** Daniel T. Murphy
 
 **Version:** 1.0.0  
 **Session:** 168 | **Date:** March 31 2026  
 **CP4 Class:** UQFFFineSC_QEDPrecisionCalculator  
-**Source:** grok_share_b2e2c5cba7a.txt (Session 168) — FineStructureConstant module (lines 3635–3847)  
-**Companion papers:** PAPER_649 (DVP Primes: 137), PAPER_651 (Schwarzschild Proton), PAPER_642 (SM Bridge)
+**Source:** grok_share_b2e2c5cba7a.txt (Session 168) — FineStructureConstant module (lines
+3635–3847)  
+**Companion papers:** PAPER_649 (DVP Primes: 137), PAPER_651 (Schwarzschild Proton), PAPER_642 (SM
+Bridge)
 
 ---
 
 ## Abstract
 
-$$\alpha = \frac{e^2}{4\pi\varepsilon_0 \hbar c} = \frac{1}{137.035999084}; \qquad a_e = \frac{\alpha}{2\pi} - 0.328\frac{\alpha^2}{\pi^2} + \ldots = 0.001159652$$
+$$\alpha = \frac{e^2}{4\pivarepsilon_0 \hbar c} = \frac{1}{137.035999084}; \qquad a_e = \frac{\alpha}{2\pi} - 0.328\frac{\alpha^2}{\pi^2} + \ldots = 0.001159652$$
 
 The fine structure constant α = 1/137 is the most precisely measured dimensionless constant
 in physics, with fractional uncertainty 0.37 ppb (via electron g-2). This paper develops
 the UQFF framework's interpretation of α: (1) 137 is prime — its primality is the DVP
 fingerprint of electromagnetic coupling in the Dipole Vortex Prime sequence (PAPER_649);
-(2) The Quantum Hall Effect expression R_K = h/e² = μ₀c/(2α) connects α to the Aether
+(2) The Quantum Hall Effect expression R_K = h/e2 = μ₀c/(2α) connects α to the Aether
 impedance 377Ω; (3) The atomic recoil relation
-α² = 2R∞c·(m/M)·(h/e²·1/R_K) provides a direct c-independent route to α;
+α2 = 2R∞c·(m/M)·(h/e2·1/R_K) provides a direct c-independent route to α;
 and (4) The g-2 anomalous magnetic moment multi-loop expansion is shown to be a
 truncated n-wave mixing series (PAPER_649), linking DVP to QED precision.
 
@@ -29,16 +43,16 @@ truncated n-wave mixing series (PAPER_649), linking DVP to QED precision.
 
 ### 1.1 Charge Coupling (Standard)
 
-$$\alpha = \frac{e^2}{4\pi\varepsilon_0 \hbar c} = \frac{e^2 \mu_0 c}{2h} = \frac{1}{137.035999084}$$
+$$\alpha = \frac{e^2}{4\pivarepsilon_0 \hbar c} = \frac{e^2 \mu_0 c}{2h} = \frac{1}{137.035999084}$$
 
 | Quantity | Value |
 |---------|-------|
-| e | 1.602×10⁻¹⁹ C |
-| ε₀ | 8.854×10⁻¹² F/m |
-| ℏ | 1.055×10⁻³⁴ J·s |
-| c | 2.998×10⁸ m/s |
-| μ₀ | 4π×10⁻⁷ H/m |
-| h | 6.626×10⁻³⁴ J·s |
+| e | 1.602×10-19 C |
+| ε₀ | 8.854×10-12 F/m |
+| ℏ | 1.055×10-34 J·s |
+| c | 2.998×108 m/s |
+| μ₀ | 4π×10-7 H/m |
+| h | 6.626×10-34 J·s |
 
 ### 1.2 Quantum Hall Expression
 
@@ -47,7 +61,7 @@ $$R_K = \frac{h}{e^2} = \frac{\mu_0 c}{2\alpha} = 25812.807\ \Omega$$
 The UQFF significance: the Aether free-space impedance:
 $$Z_0 = \mu_0 c = 376.73\ \Omega \approx 377\ \Omega$$
 
-$$\alpha = \frac{Z_0}{2 R_K} = \frac{376.73}{2 \times 25812.8} = \frac{1}{137.036}\ ✓$$
+$$\alpha = \frac{Z_0}{2 R_K} = \frac{376.73}{2 \times 25812.8} = \frac{1}{137.036}\ PASS$$
 
 This means α encodes the **ratio of Aether impedance to twice the von Klitzing constant** —
 a direct connection between the Universal Aether's electromagnetic property (Z₀) and
@@ -62,7 +76,7 @@ Simplified:
 
 $$\alpha^2 = \frac{2 R_\infty c \cdot m_e}{M} \cdot \frac{h}{e^2}$$
 
-where R∞ = 10973731.568 m⁻¹ (Rydberg constant), m_e/M the mass ratio.
+where R∞ = 10973731.568 m-1 (Rydberg constant), m_e/M the mass ratio.
 This is the **recoil route** measured in atom interferometry — the most c-independent
 precision route to α.
 
@@ -98,7 +112,7 @@ the QED series is the n-wave phase coherence condition.
 ### 3.1 Mathematical Properties
 
 - 137 is the 33rd prime number
-- It is not representable as sum of two primes (Goldbach: 137 = 131+6, not prime+prime — ✓ since 6 is not prime; 137 is prime itself)
+- It is not representable as sum of two primes (Goldbach: 137 = 131+6, not prime+prime — PASS since 6 is not prime; 137 is prime itself)
 - 1/137: the only inverse-integer approximation to α accurate to 4 decimal places
 
 ### 3.2 Historical Significance
@@ -145,13 +159,15 @@ Um → electromagnetic chain (gated by α = 1/137).
 
 ### §A.1 Sector Classification
 
-This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see `uqff_lagrangian_derivation.py`).
+This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
-The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive quantum fundamentals (DPM, UA, SCm):
+The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
+quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_\mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
+$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
 
 where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
@@ -165,7 +181,9 @@ $$\boxed{\frac{\delta S}{\delta \phi_{\rm NS}} = \nabla^2 \phi_{\rm NS} - (4\pi 
 
 $$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\rm NS} = 0$$
 
-The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g forces) through vacuum density initialization to the sector-specific equation of motion. Every term in the E-L equation inherits its physical origin from the cosmogenesis master.
+The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
+forces) through vacuum density initialization to the sector-specific equation of motion. Every term
+in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 
 ---
@@ -176,9 +194,9 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.166$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m³.
+For this system, the local VDS sub-ratio is $0.166$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -190,13 +208,13 @@ Since $p_{\rm DVP} = 83$ is **resonant** (threshold at $p > 26$), the system's v
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
-The BSH saturation timescale for this sector is **10⁴ yr** (spin-down equilibrium):
+The BSH saturation timescale for this sector is **104 yr** (spin-down equilibrium):
 
-$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
+$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\rm SCm}$ which initializes the harmonic series at cosmogenesis.
 
@@ -204,11 +222,11 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.166 | ✓ Threshold-consistent |
-| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 83$ | ✓ Resonant |
-| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
-| [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
+| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.166 | PASS Threshold-consistent |
+| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 83$ | PASS Resonant |
+| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
+| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
 ---
@@ -220,9 +238,9 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 |------------|--------------|-----------------|-----------|
 | Fine structure α | 1/137.035999084 | DVP prime level 5 = 1/137 | ✅ exact |
 | Electron g-2 anomaly ae | 0.001159652181 | n-wave DVP series to 4th order | ✅ 0.37 ppb |
-| von Klitzing R_K | 25812.807 Ω | h/e² = μ₀c/(2α) | ✅ exact |
+| von Klitzing R_K | 25812.807 Ω | h/e2 = μ₀c/(2α) | ✅ exact |
 | Aether impedance Z₀ | 376.73 Ω | μ₀c = Z₀ (free space) | ✅ exact match |
-| Proton:Rydberg ratio | R∞·r_p independent | Recoil route α² | ✅ structural |
+| Proton:Rydberg ratio | R∞·r_p independent | Recoil route α2 | ✅ structural |
 
 > **SM Anchor Reference:** PAPER_642 — UQFFSMParameterBridgeMasterComparisonCalculator
 
@@ -234,7 +252,8 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 2. PAPER_649 — Dipole Vortex Primes (DVP sequence 7, 9, 26, 137, 139)
 3. PAPER_651 — Schwarzschild Proton (electromagnetic geometry)
 4. PAPER_642 — SM Parameter Bridge
-5. Hanneke D, Fogwell S, Gabrielse G (2008): "New Measurement of the Electron Magnetic Moment", PRL 100:120801
+5. Hanneke D, Fogwell S, Gabrielse G (2008): "New Measurement of the Electron Magnetic Moment", PRL
+100:120801
 6. Morel L et al. (2020): "Determination of alpha from recoil", Nature 588:61
 7. von Klitzing K (1985): Nobel Lecture — Quantized Hall Resistance
 8. ARCHITECTURE_FLOW_DIAGRAM.md v5.24
@@ -252,9 +271,9 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `f`neutron_s26_coupling`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `k`ozima_scm_cross_section`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `k`ozima_wstp_kernel`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -263,7 +282,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `r`amanujan_polylog_s26`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
 | `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
@@ -272,7 +291,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `m`ock_theta_q26`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -283,8 +302,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `r`amanujan_pi_uqff`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `m`ock_theta_pi_wstp_kernel`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]

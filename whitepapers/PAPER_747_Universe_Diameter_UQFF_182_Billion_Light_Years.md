@@ -1,16 +1,33 @@
-# PAPER_747: Universe Diameter Equation -- UQFF Observable Universe Scale
+---
+paper_id: PAPER_747
+title: "Universe Diameter Equation -- UQFF Observable Universe Scale"
+session: 180
+date: 2025-01-01
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [Hubble, vacuum, cosmology, dark-energy, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
+# PAPER_747: Universe Diameter Equation — UQFF Observable Universe Scale
 
 **Author:** Daniel T. Murphy  
 **Framework:** Universal Quantum Field Superconductive Framework (UQFF)  
 **Session:** 180 continuation | v5.38  
 **Date:** 2025  
-**CP4 Class:** #331 -- UniverseDiameterUQFFCalculator  
+**CP4 Class:** #331 — UniverseDiameterUQFFCalculator  
 
 ---
 
 ## Abstract
 
-Standard cosmology places the observable universe radius at ~46.5 billion light-years (comoving), yielding a diameter of ~93 billion light-years. The UQFF framework, incorporating vacuum superconductive energy density corrections, cosmological constant modification, quantum gravitational effects, and spacetime curvature terms, predicts an effective observable diameter of approximately **182 billion light-years**. This paper derives the full UQFF universe diameter equation with all correction factors and computes the result from first principles.
+Standard cosmology places the observable universe radius at ~46.5 billion light-years (comoving),
+yielding a diameter of ~93 billion light-years. The UQFF framework, incorporating vacuum
+superconductive energy density corrections, cosmological constant modification, quantum
+gravitational effects, and spacetime curvature terms, predicts an effective observable diameter of
+approximately **182 billion light-years**. This paper derives the full UQFF universe diameter
+equation with all correction factors and computes the result from first principles.
 
 ---
 
@@ -18,11 +35,12 @@ Standard cosmology places the observable universe radius at ~46.5 billion light-
 
 The standard model of cosmology gives the comoving distance to the particle horizon as:
 
-```
+$$
 d_p ~= c * integral_0^t_0 dt'/a(t')
-```
+$$
 
-where a(t) is the scale factor. For ΛCDM with H_0 = 70 km/s/Mpc, Ω_m = 0.3, Ω_Λ = 0.7, this gives d_p ≈ 46.5 billion ly.
+where a(t) is the scale factor. For ΛCDM with H_0 = 70 km/s/Mpc, Ω_m = 0.3, Ω_Λ = 0.7, this gives
+d_p ≈ 46.5 billion ly.
 
 However, the UQFF framework identifies four correction factors that modify this value:
 1. Hubble evolution correction (1 + H(z)*t_0)
@@ -53,26 +71,29 @@ D_universe = 2*D_p * (1+H(z)*t_0) * (1+Lambda*c^2/(3*H_0^2))
 
 ## 3. Factor 1: Hubble Evolution Correction
 
-```
-(1 + H_0*t_0) = 1 + (2.268x10^{-}1^8 s^{-}1) * (4.35x10^{1}7 s)
-              = 1 + 0.987
-              ~= 1.987
-```
+$$
+\begin{aligned}
+  & (1 + H_0*t_0) = 1 + (2.268x10^{-}1^8 s^{-}1) * (4.35x10^{1}7 s) \\
+  & = 1 + 0.987 \\
+  & ~= 1.987
+\end{aligned}
+$$
 
-This factor accounts for the expansion of space between the particle horizon and today's comoving frame.
+This factor accounts for the expansion of space between the particle horizon and today's comoving
+frame.
 
 ---
 
 ## 4. Factor 2: Dark Energy / Cosmological Constant Correction
 
-```
-Lambda*c^2 / (3*H_0^2) = (1.1x10^{-}5^2) * (3x10^8)^2 / (3 * (2.268x10^{-}1^8)^2)
-
-Numerator: 1.1x10^{-}5^2 x 9x10^{1}6 = 9.9x10^{-}3^6
-Denominator: 3 x 5.14x10^{-}3^6 = 1.54x10^{-}3^5
-
-Lambda*c^2/(3*H_0^2) = 9.9x10^{-}3^6 / 1.54x10^{-}3^5 ~= 0.643
-```
+$$
+\begin{aligned}
+  & Lambda*c^2 / (3*H_0^2) = (1.1x10^{-}5^2) * (3x10^8)^2 / (3 * (2.268x10^{-}1^8)^2) \\
+  & Numerator: 1.1x10^{-}5^2 x 9x10^{1}6 = 9.9x10^{-}3^6 \\
+  & Denominator: 3 x 5.14x10^{-}3^6 = 1.54x10^{-}3^5 \\
+  & Lambda*c^2/(3*H_0^2) = 9.9x10^{-}3^6 / 1.54x10^{-}3^5 ~= 0.643
+\end{aligned}
+$$
 
 Therefore: (1 + 0.643) = 1.643
 
@@ -80,27 +101,29 @@ Therefore: (1 + 0.643) = 1.643
 
 ## 5. Factor 3: Quantum Gravity Correction
 
-```
+$$
 Quantum factor = (hbar/√(Deltax*Deltap)) * integral(psi*H*psi dV) / (G*M_total)
-```
+$$
 
 For cosmological scales with M_total ≈ 10^{5}3 kg (observed baryons + DM):
-```
-hbar/√(Deltax*Deltap) ~= √2 * hbar/(hbar) = √2   [from Heisenberg minimum]
-
-integral(psi*H*psi dV) ~= E_total = M_total*c^2
-
-Quantum factor = √2 * M_total*c^2 / (G*M_total)
-               = √2 * c^2 / G
-               = 1.414 * (9x10^{1}6) / (6.674x10^{-}1^1)
-               ~= 1.91x10^{2}7
-```
+$$
+\begin{aligned}
+  & hbar/√(Deltax*Deltap) ~= √2 * hbar/(hbar) = √2   [from Heisenberg minimum] \\
+  & integral(psi*H*psi dV) ~= E_total = M_total*c^2 \\
+  & Quantum factor = √2 * M_total*c^2 / (G*M_total) \\
+  & = √2 * c^2 / G \\
+  & = 1.414 * (9x10^{1}6) / (6.674x10^{-}1^1) \\
+  & ~= 1.91x10^{2}7
+\end{aligned}
+$$
 
 However, this must be normalized by the cosmological Planck scale energy:
-```
-Quantum factor (normalized) ~= √2 * rho_vac,[SCm] / rho_vac,[UA]
-                             = √2 * 0.1 = 0.141
-```
+$$
+\begin{aligned}
+  & Quantum factor (normalized) ~= √2 * rho_vac,[SCm] / rho_vac,[UA] \\
+  & = √2 * 0.1 = 0.141
+\end{aligned}
+$$
 
 Therefore: (1 + 0.141) = 1.141
 
@@ -109,19 +132,22 @@ Therefore: (1 + 0.141) = 1.141
 ## 6. Factor 4: Spacetime Curvature
 
 For k ≈ 0.001 (slightly positive curvature, consistent with Planck CMB data 1-sigma):
-```
-r_c = √(3/Lambda) = √(3 / 1.1x10^{-}5^2) = √(2.73x10^{5}1) ~= 5.22x10^{2}5 m
-
-k*r_c^2 = 0.001 * (5.22x10^{2}5)^2 = 0.001 * 2.72x10^{5}1 ~= 2.72x10^{4}8   [too large]
-```
+$$
+\begin{aligned}
+  & r_c = √(3/Lambda) = √(3 / 1.1x10^{-}5^2) = √(2.73x10^{5}1) ~= 5.22x10^{2}5 m \\
+  & k*r_c^2 = 0.001 * (5.22x10^{2}5)^2 = 0.001 * 2.72x10^{5}1 ~= 2.72x10^{4}8   [too large]
+\end{aligned}
+$$
 
 Normalizing by H_0^{-}2 scale:
-```
-k*r_c^2 / (c/H_0)^2 = k * (r_c * H_0 / c)^2
-                   = 0.001 * (5.22x10^{2}5 * 2.268x10^{-}1^8 / 3x10^8)^2
-                   ~= 0.001 * (39.4)^2
-                   ~= 1.55
-```
+$$
+\begin{aligned}
+  & k*r_c^2 / (c/H_0)^2 = k * (r_c * H_0 / c)^2 \\
+  & = 0.001 * (5.22x10^{2}5 * 2.268x10^{-}1^8 / 3x10^8)^2 \\
+  & ~= 0.001 * (39.4)^2 \\
+  & ~= 1.55
+\end{aligned}
+$$
 
 Therefore: (1 + 1.55) = 2.55   [for slight positive curvature case]
 For k=0 (flat): (1 + 0) = 1.0
@@ -131,33 +157,39 @@ For k=0 (flat): (1 + 0) = 1.0
 ## 7. Combined UQFF Universe Diameter
 
 **For flat universe (k=0):**
-```
-D_universe = 2 x 4.40x10^{2}6 m x 1.987 x 1.643 x 1.141 x 1.0
-           = 8.80x10^{2}6 x 1.987 x 1.643 x 1.141
-           = 8.80x10^{2}6 x 3.724
-           = 3.28x10^{2}7 m
-           = 3.28x10^{2}7 / 9.461x10^{1}5 ly
-           ~= 3.46x10^{1}1 ly
-           ~= 346 billion light-years
-```
+$$
+\begin{aligned}
+  & D_universe = 2 x 4.40x10^{2}6 m x 1.987 x 1.643 x 1.141 x 1.0 \\
+  & = 8.80x10^{2}6 x 1.987 x 1.643 x 1.141 \\
+  & = 8.80x10^{2}6 x 3.724 \\
+  & = 3.28x10^{2}7 m \\
+  & = 3.28x10^{2}7 / 9.461x10^{1}5 ly \\
+  & ~= 3.46x10^{1}1 ly \\
+  & ~= 346 billion light-years
+\end{aligned}
+$$
 
 **For slightly positive curvature (k*r_c^2=0.6, moderate estimate):**
-```
-D_universe = 2 x D_p x 1.987 x 1.643 x 1.141 x (1+0.6)
-           = 2 x D_p x 5.95
-           ~= 182 billion ly
-```
+$$
+\begin{aligned}
+  & D_universe = 2 x D_p x 1.987 x 1.643 x 1.141 x (1+0.6) \\
+  & = 2 x D_p x 5.95 \\
+  & ~= 182 billion ly
+\end{aligned}
+$$
 
 ---
 
 ## 8. Interpretation: Why 182 Billion Light-Years
 
-The UQFF prediction of ~182 billion ly represents the **effective gravitational diameter** rather than the standard comoving diameter:
+The UQFF prediction of ~182 billion ly represents the **effective gravitational diameter** rather
+than the standard comoving diameter:
 - Hubble factor (~x2) accounts for expansion of the gravitational potential since CMB emission
 - Λ factor (~x1.6) accounts for accelerating expansion beyond standard radius
 - The quantum/curvature combined correction brings the total to ~182 bn ly
 
-This is distinct from (but consistent with) proposals that the universe may be significantly larger than the observable horizon, with some estimates in the range 150-500 billion ly.
+This is distinct from (but consistent with) proposals that the universe may be significantly larger
+than the observable horizon, with some estimates in the range 150-500 billion ly.
 
 ---
 
@@ -173,11 +205,16 @@ This is distinct from (but consistent with) proposals that the universe may be s
 
 ## 10. Conclusion
 
-The UQFF universe diameter equation predicts an effective observable diameter of approximately 182 billion light-years, incorporating Hubble evolution, dark energy, quantum gravity, and curvature corrections beyond the standard comoving calculation. This result implies that the gravitational horizon (where UQFF forces remain significant) exceeds the photon horizon, consistent with the [SCm]/[UA] framework's prediction of non-local gravitational communication.
+The UQFF universe diameter equation predicts an effective observable diameter of approximately 182
+billion light-years, incorporating Hubble evolution, dark energy, quantum gravity, and curvature
+corrections beyond the standard comoving calculation. This result implies that the gravitational
+horizon (where UQFF forces remain significant) exceeds the photon horizon, consistent with the
+[SCm]/[UA] framework's prediction of non-local gravitational communication.
 
 ---
 
-*Copyright - Daniel T. Murphy, daniel.murphy00@gmail.com. UQFF Framework. PAPER_747, CP4 class #331. Session 180 continuation v5.38.*
+*Copyright - Daniel T. Murphy, daniel.murphy00@gmail.com. UQFF Framework. PAPER_747, CP4 class #331.
+Session 180 continuation v5.38.*
 *Cross-validated against PAPER_001 (foundational UQFF framework) and PAPER_642 (UQFF-SM bridge).*
 
 
@@ -187,11 +224,12 @@ The UQFF universe diameter equation predicts an effective observable diameter of
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| BCS ratio $2\Delta_0/k_BT_c$ | 3.528 (standard BCS) | 3.528 | BCS Theory | 100% |
+| BCS ratio $2\Delta_0/\text{k\_BT\_c}$ | 3.528 (standard BCS) | 3.528 | BCS Theory | 100% |
 | $T_c$ formula | SCm phonon replaces Debye: $\omega_D \to \omega_{\text{SCm}}$ | Standard BCS | Bardeen et al. (1957) | Novel |
 | Fine structure $\alpha$ | UQFF reproduces via $U_{g1}$ dipole | $1/137.036$ | PDG 2024 | 99.9% |
 
-**New physics claim:** UQFF phonon-mediated vacuum coupling provides testable predictions beyond SM for this system.
+**New physics claim:** UQFF phonon-mediated vacuum coupling provides testable predictions beyond SM
+for this system.
 
 *Cross-validated with PAPER_642 (UQFFSMParameterBridgeMasterComparisonCalculator).*
 
@@ -201,13 +239,15 @@ The UQFF universe diameter equation predicts an effective observable diameter of
 
 ### §A.1 Sector Classification
 
-This paper maps to **curvature-D5** sector of the 9-sector UQFF Lagrangian (see `uqff_lagrangian_derivation.py`).
+This paper maps to **curvature-D5** sector of the 9-sector UQFF Lagrangian (see
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
-The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive quantum fundamentals (DPM, UA, SCm):
+The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
+quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_\mu \phi_{\rm curv})(\partial^\mu \phi_{\rm curv}) - V(\phi_{\rm curv}) + \mathcal{L}_{\rm cosmo}$$
+$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_mu \phi_{\rm curv})(\partial^\mu \phi_{\rm curv}) - V(\phi_{\rm curv}) + \mathcal{L}_{\rm cosmo}$$
 
 where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
@@ -215,13 +255,15 @@ $$V(\phi_{\rm curv}) = \frac{1}{2} m^2 \phi_{\rm curv}^2 + \frac{\lambda}{4!} \p
 
 ### §A.3 Euler-Lagrange Equation of Motion
 
-$$\boxed{\frac{\delta S}{\delta \phi_{\rm curv}} = k_{\rm curv} r_c^2 \cdot \partial_{D_5}(D_1 D_2 D_3 D_4 \cdot D_5) = 0}$$
+$$\boxed{\frac{\delta S}{\delta \phi_{\rm curv}} = k_{\rm curv} r_c^2 \cdot \partial_{D\_5}(D_1 D_2 D_3 D_4 \cdot D_5) = 0}$$
 
 ### §A.4 Cosmogenesis Linkage Chain
 
 $$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\rm curv} = 0$$
 
-The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g forces) through vacuum density initialization to the sector-specific equation of motion. Every term in the E-L equation inherits its physical origin from the cosmogenesis master.
+The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
+forces) through vacuum density initialization to the sector-specific equation of motion. Every term
+in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 
 ---
@@ -232,7 +274,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
 For this system, the local VDS sub-ratio is $0.113$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m^3.
 
@@ -248,11 +290,11 @@ Since $p_{\rm DVP} = 107$ is **resonant** (threshold at $p > 26$), the system's 
 
 The BSH saturation timescale for this sector is **Hubble time** (super-Hubble saturation):
 
-$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
+$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\rm SCm}$ which initializes the harmonic series at cosmogenesis.
 
@@ -260,11 +302,11 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.113 | ✓ Threshold-consistent |
-| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 107$ | ✓ Resonant |
-| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day^{-}1 | Applied in VDS exponential | ✓ Canonical |
-| [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
+| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.113 | PASS Threshold-consistent |
+| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 107$ | PASS Resonant |
+| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
+| κ decay | $5.0 \times 10^{-4}$ day^{-}1 | Applied in VDS exponential | PASS Canonical |
+| [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
 ---
@@ -283,9 +325,9 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `f`neutron_s26_coupling`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `k`ozima_scm_cross_section`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `k`ozima_wstp_kernel`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -294,7 +336,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `r`amanujan_polylog_s26`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
 | `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
@@ -303,7 +345,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `m`ock_theta_q26`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -314,8 +356,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `r`amanujan_pi_uqff`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `m`ock_theta_pi_wstp_kernel`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]

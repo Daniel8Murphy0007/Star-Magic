@@ -1,27 +1,49 @@
+---
+paper_id: PAPER_337
+title: "Q_wave_81 Updated Statistics and Phase Separation Validation Model (Vela Pulsar)"
+session: 95
+date: 2025-09-01
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [AGN, spin-down, pulsar, Chandra, magnetar, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_337 — Q_wave_81 Updated Statistics and Phase Separation Validation Model (Vela Pulsar)
 **Date:** September 2025
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2  
 **Session:** 95  
 **Source:** gok_share_31b5c807a4.txt (Deep Re-Analysis, September 2025 Grok 4 Thread)  
-**Classification:** EXTENDS PAPER_327 (Q_wave_47) — FIRST Q_wave_81 (81-system ensemble statistics); FIRST phase separation cosine validation model fitted to Vela Chandra/Fermi data; FIRST t_glitch prediction from ??  
+**Classification:** EXTENDS PAPER_327 (Q_wave_47) — FIRST Q_wave_81 (81-system ensemble statistics);
+FIRST phase separation cosine validation model fitted to Vela Chandra/Fermi data; FIRST t_glitch
+prediction from ??  
 **Author:** Daniel T. Murphy  
 
 ---
 
-$$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b_i}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57$$
+$$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b\_i}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57$$
 
 $$
-U_{b_i}(r) = \kappa\cdot[SSq]\cdot\frac{GM}{r^2}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57,\; \beta_i = 0.61
+U_{b\_i}(r) = \kappacdot[SSq]\cdot\frac{GM}{r^2}, \quad \kappa =
+5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57,\; \beta_i = 0.61
 $$
 
 ## Abstract
 
-This paper extends the Q_wave_47 wave-function amplitude statistics (PAPER_327, 47-system ensemble) to a new 81-system ensemble: Q_wave_81. It records the updated statistical parameters (mean=3.97×104 J/m³, std=+0.5% above Q_wave_47 due to PWNe inclusion) and presents the phase separation validation model — a cosine-based fitting framework that yields sep˜0.3 when matched to the Vela Pulsar multi-peak pulse profile (Chandra/Fermi PASS 8 2025 data). A glitch recovery timescale prediction t_glitch ~ 10¹¹ s is derived from the spin-down rate.
+This paper extends the Q_wave_47 wave-function amplitude statistics (PAPER_327, 47-system ensemble)
+to a new 81-system ensemble: Q_wave_81. It records the updated statistical parameters (mean=3.97×104
+J/m3, std=+0.5% above Q_wave_47 due to PWNe inclusion) and presents the phase separation validation
+model — a cosine-based fitting framework that yields sep˜0.3 when matched to the Vela Pulsar
+multi-peak pulse profile (Chandra/Fermi PASS 8 2025 data). A glitch recovery timescale prediction
+t_glitch ~ 1011 s is derived from the spin-down rate.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not
+present in Standard Model treatments.
 
 ---
 
@@ -30,43 +52,47 @@ This paper extends the Q_wave_47 wave-function amplitude statistics (PAPER_327, 
 ### 2.1 Generalization from Q_wave_47
 
 **Q_wave_47 (PAPER_327, Session 93):**
-```
-mean = 3.95×104 J/m³
-std  = 2.1×10³ J/m³ (5.3%)
-N    = 47 systems
-Systems: pulsars, magnetars, SNRs, compact galactic
-```
+$$
+\begin{aligned}
+  & mean = 3.95×104 J/m3 \\
+  & std  = 2.1×103 J/m3 (5.3%) \\
+  & N    = 47 systems \\
+  & Systems: pulsars, magnetars, SNRs, compact galactic
+\end{aligned}
+$$
 
 **Q_wave_81 (Session 95):**
-```
-mean = 3.97×104 J/m³     [+0.5% from Q_wave_47]
-std  = 2.15×10³ J/m³      [+0.5% increase driven by PWNe outliers]
-N    = 81 systems
-Systems: expanded to include 34 additional Pulsar Wind Nebulae (PWNe)
-```
+$$
+\begin{aligned}
+  & mean = 3.97×104 J/m3     [+0.5% from \text{Q\_wave\_47}] \\
+  & std  = 2.15×103 J/m3      [+0.5% increase driven by PWNe outliers] \\
+  & N    = 81 systems \\
+  & Systems: expanded to include 34 additional Pulsar Wind Nebulae (PWNe)
+\end{aligned}
+$$
 
 ### 2.2 Why +0.5% Shift
 
 PWNe have higher Q_wave values than isolated pulsars/SNRs due to the synchrotron nebula environment:
 
-```
+$$
 Q_wave(PWN) ~ ?_nebula × V_synchrotron × B_nebula
-```
+$$
 
 The Vela SNR wrap (PWN component) and Crab Nebula dominate the upper tail:
-- Crab PWN: Q_wave ~ 4.8×104 J/m³ (LOFAR 2025 radio morphology)
-- Vela PWN: Q_wave ~ 4.2×104 J/m³ (SST-1M/Chandra 2025)
+- Crab PWN: Q_wave ~ 4.8×104 J/m3 (LOFAR 2025 radio morphology)
+- Vela PWN: Q_wave ~ 4.2×104 J/m3 (SST-1M/Chandra 2025)
 
-These pull the mean upward from 3.95 to 3.97×104 J/m³ (+0.5%).
+These pull the mean upward from 3.95 to 3.97×104 J/m3 (+0.5%).
 
 ### 2.3 Calibrated Parameters for Use in Calculations
 
-| Parameter | Q_wave_47 | Q_wave_81 | Unit |
+| Parameter | `Q_wave_47` | `Q_wave_81` | Unit |
 |-----------|-----------|-----------|------|
-| mean | 3.95×104 | 3.97×104 | J/m³ |
-| std | 2.10×10³ | 2.15×10³ | J/m³ |
-| 95% CI lower | 3.55×104 | 3.55×104 | J/m³ |
-| 95% CI upper | 4.37×104 | 4.42×104 | J/m³ |
+| mean | 3.95×104 | 3.97×104 | J/m3 |
+| std | 2.10×103 | 2.15×103 | J/m3 |
+| 95% CI lower | 3.55×104 | 3.55×104 | J/m3 |
+| 95% CI upper | 4.37×104 | 4.42×104 | J/m3 |
 | Ensemble N | 47 | 81 | — |
 
 ---
@@ -75,11 +101,12 @@ These pull the mean upward from 3.95 to 3.97×104 J/m³ (+0.5%).
 
 ### 3.1 Model Definition
 
-The phase separation model fits the UQFF resonance decomposition to observed multi-peak pulse profiles:
+The phase separation model fits the UQFF resonance decomposition to observed multi-peak pulse
+profiles:
 
-```
+$$
 phase_model(phases, sep) = cos(p × phases / sep)
-```
+$$
 
 Where:
 - `phases` = array of pulse phase bins (0 to 2p rad)
@@ -89,12 +116,12 @@ Where:
 ### 3.2 Physical Motivation
 
 In UQFF, the R(t) resonance spectrum (PAPER_336) predicts adjacent peaks with angular separation:
-```
+$$
 ?f = p × sep / phase_range
-```
+$$
 The cosine form arises because:
-1. R(t) = ? R_i cos(?_i t) (PAPER_336)
-2. In phase space: ?_i t ? p × phase_i / phase_range
+1. R(t) = ? R_i cos(β_i t) (PAPER_336)
+2. In phase space: β_i t ? p × phase_i / phase_range
 3. The envelope between two dominant peaks is cos(p × ?phase / sep)
 
 ### 3.3 Vela Pulsar Fit
@@ -122,26 +149,23 @@ In the Vela multi-peak profile:
 - Peak P2 at phase ~0.3 × 2p / p = 0.6 ? 2p × 0.3/1.0 ˜ 0.6 rad
 - Anti-phase minimum at cos(p × 0.3/0.3) = cos(p) = -1
 
-This matches the Fermi-LAT double peak separation for Vela (P1-P2 separation ˜ 0.09 in normalized phase, scaled by 2p ˜ 0.565 rad ˜ 0.3 model units).
+This matches the Fermi-LAT double peak separation for Vela (P1-P2 separation ˜ 0.09 in normalized
+phase, scaled by 2p ˜ 0.565 rad ˜ 0.3 model units).
 
-**Note:** The convergence to exactly 0.3 (matching [SSq]=0.57 × p/6 ˜ 0.299) is a UQFF calibration cross-check — the phase separation encodes [SSq] through p geometry.
+**Note:** The convergence to exactly 0.3 (matching [SSq]=0.57 × p/6 ˜ 0.299) is a UQFF calibration
+cross-check — the phase separation encodes [SSq] through p geometry.
 
 ### 3.5 Connection to UQFF Calibrated Constants
 
 ```
 sep = 0.3 = [SSq] × p / 6 = 0.57 × 3.14159... / 6 = 0.2998 ˜ 0.3 ?
-```
-
-This confirms that the phase separation of 0.3 in cosine models is NOT arbitrary — it is metrically equivalent to [SSq]=0.57 expressed through the p/6 phase geometry bridging PAPER_331 frequency basis to PAPER_336 R(t) cosine structure.
-
----
-
-## 4. Glitch Recovery Timescale Prediction
-
-### 4.1 Formula
-
+This confirms that the phase separation of 0.3 in cosine models is NOT arbitrary — it is
+metrically equivalent to [SSq]=0.57 expressed through the p/6 phase geometry bridging PAPER_331
+frequency basis to PAPER_336 R(t) cosine structure. 
+--- 
+## 4. Glitch Recovery Timescale Prediction 
+### 4.1 Formula 
 From spin-down rate ?? and period P:
-```
 t_glitch ~ P / |??|
 ```
 
@@ -149,33 +173,37 @@ t_glitch ~ P / |??|
 
 ```
 P = 0.0893 s (Vela rotation period)
-?? = -1.25×10?¹¹ Hz/s (Vela spin-down)
+?? = -1.25×10?11 Hz/s (Vela spin-down)
 
-t_glitch ~ 0.0893 / 1.25×10?¹¹ = 7.14×10? s
+t_glitch ~ 0.0893 / 1.25×10?11 = 7.14×10? s
 ```
 
 **Literature: More precisely using P and ?:**
 ```
 P = 0.08927 s
-? = 1.25×10?¹³ s/s (dimensionless)
-?? = -?/P² = -1.57×10?¹¹ Hz/s (corrected)
+? = 1.25×10?13 s/s (dimensionless)
+?? = -?/P2 = -1.57×10?11 Hz/s (corrected)
 
-t_glitch ~ P / |??| = P × P² / ? = P³/?
-         = (0.08927)³ / (1.25×10?¹³ = 7.11×10⁻4 / 1.25×10?¹³ = 5.69×10? s
-         ~ 10¹° s (order of magnitude)
+t_glitch ~ P / |??| = P × P2 / ? = P3/?
+         = (0.08927)3 / (1.25×10?13 = 7.11×10-4 / 1.25×10?13 = 5.69×10? s
+         ~ 101° s (order of magnitude)
 ```
 
-[Note from gok_share_31b5c807a4: "t ~ P/?? ~ 3.76/(4.23×108) ? ~10¹¹ s" — this appears to use ?? for a different pulsar parameter set. Both estimates give t in range 10?–10¹¹ s.]
+[Note from gok_share_31b5c807a4: "t ~ P/?? ~ 3.76/(4.23×108) ? ~1011 s" — this appears to use ?? for
+a different pulsar parameter set. Both estimates give t in range 10?–1011 s.]
 
-**Physical meaning:** t_glitch represents the vortex unpinning timescale — the time between successive glitch events where the neutron star's superfluid inner crust suddenly transfers angular momentum to the crust. Observed Vela glitch intervals: ~2–3 years (6×107 – 108 s), suggesting the t here refers to the FULL recovery (not just the inter-glitch interval).
+**Physical meaning:** t_glitch represents the vortex unpinning timescale — the time between
+successive glitch events where the neutron star's superfluid inner crust suddenly transfers angular
+momentum to the crust. Observed Vela glitch intervals: ~2–3 years (6×107 – 108 s), suggesting the t
+here refers to the FULL recovery (not just the inter-glitch interval).
 
 ### 4.3 UQFF Interpretation
 
 The glitch timescale in UQFF framework:
 ```
-t_glitch(UQFF) = t_SC / (k_? × |??|) × [SSq]?¹
+t_glitch(UQFF) = t_SC / (k_? × |??|) × [SSq]?1
 ```
-Where t_SC = superconductive vortex timescale ~ 108 s, k_? = 10?¹¹³ (long-range parameter).
+Where t_SC = superconductive vortex timescale ~ 108 s, k_? = 10?113 (long-range parameter).
 
 ---
 
@@ -191,7 +219,8 @@ The fitted sep=0.3 for Vela generalizes to other compact systems:
 | Magnetar | ~0.25 | Stronger B, tighter phase |
 | Galactic AGN | 0.30 (adopted) | [SSq] scaling universal |
 
-The universality of sep˜0.3 ? [SSq]=0.57/p×6 across compact and galactic scales validates the UQFF constant calibration framework (PAPER_331, PAPER_287).
+The universality of sep˜0.3 ? [SSq]=0.57/p×6 across compact and galactic scales validates the UQFF
+constant calibration framework (PAPER_331, PAPER_287).
 
 ---
 
@@ -215,22 +244,23 @@ print(f"Fitted phase sep: {popt[0]:.17f}")
 
 # Q_wave_81 statistics
 systems_81 = np.random.normal(3.97e4, 2.15e3, 81)
-print(f"Q_wave_81 mean: {np.mean(systems_81):.3e} J/m³")
-print(f"Q_wave_81 std:  {np.std(systems_81):.3e} J/m³")
+print(f"Q_wave_81 mean: {np.mean(systems_81):.3e} J/m3")
+print(f"Q_wave_81 std:  {np.std(systems_81):.3e} J/m3")
 # Fitted phase sep: 0.2999...
-# Q_wave_81 mean ˜ 3.97×104 J/m³
-# Q_wave_81 std  ˜ 2.15×10³ J/m³
+# Q_wave_81 mean ˜ 3.97×104 J/m3
+# Q_wave_81 std  ˜ 2.15×103 J/m3
 ```
 
 ---
 
 ## 7. FIRST Declarations
 
-1. **FIRST Q_wave_81 ensemble** — 81-system (vs Q_wave_47 in PAPER_327), +0.5% mean, +0.5% std, PWNe expansion
+1. **FIRST Q_wave_81 ensemble** — 81-system (vs Q_wave_47 in PAPER_327), +0.5% mean, +0.5% std, PWNe
+expansion
 2. **FIRST phase_model cosine validation** — `cos(p·phases/sep)` formal definition
 3. **FIRST sep=0.3 Vela calibration** — machine-precision convergence from curve_fit
 4. **FIRST [SSq]=0.57 ? sep=0.3 connection** — through p/6 phase geometry
-5. **FIRST t_glitch UQFF prediction** — P/|??| ~ 10?–10¹¹ s from Vela spin-down
+5. **FIRST t_glitch UQFF prediction** — P/|??| ~ 10?–1011 s from Vela spin-down
 
 ---
 
@@ -251,13 +281,15 @@ print(f"Q_wave_81 std:  {np.std(systems_81):.3e} J/m³")
 
 ### §A.1 Sector Classification
 
-This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see `uqff_lagrangian_derivation.py`).
+This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
-The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive quantum fundamentals (DPM, UA, SCm):
+The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
+quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_\mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
+$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
 
 where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
@@ -271,7 +303,9 @@ $$\boxed{\frac{\delta S}{\delta \phi_{\rm NS}} = \nabla^2 \phi_{\rm NS} - (4\pi 
 
 $$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\rm NS} = 0$$
 
-The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g forces) through vacuum density initialization to the sector-specific equation of motion. Every term in the E-L equation inherits its physical origin from the cosmogenesis master.
+The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
+forces) through vacuum density initialization to the sector-specific equation of motion. Every term
+in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 
 ---
@@ -282,9 +316,9 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.140$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m³.
+For this system, the local VDS sub-ratio is $0.140$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -296,13 +330,13 @@ Since $p_{\rm DVP} = 19$ is **sub-threshold** (threshold at $p > 26$), the syste
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
-The BSH saturation timescale for this sector is **10⁴ yr** (spin-down equilibrium):
+The BSH saturation timescale for this sector is **104 yr** (spin-down equilibrium):
 
-$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
+$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\rm SCm}$ which initializes the harmonic series at cosmogenesis.
 
@@ -310,11 +344,11 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.140 | ✓ Threshold-consistent |
-| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 19$ | ✓ Sub-threshold |
-| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
-| [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
+| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.140 | PASS Threshold-consistent |
+| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 19$ | PASS Sub-threshold |
+| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
+| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
 ---
@@ -324,14 +358,17 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | ✓ Consistent |
-| Cosmological constant Λ | 1.1×10⁻⁵² m⁻² (UQFF vacuum term) | 1.114×10⁻⁵² m⁻² | Planck 2018 | ✓ Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10⁻³⁵/yr | Super-K 2024 | ✓ Consistent |
-| UQFF buoyancy signature | F_U_Bi_i unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
+| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
-**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes significant, offering a falsifiable prediction beyond the Standard Model.
+**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
+produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
+bridge.*
 
 
 ---
@@ -346,9 +383,9 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `f`neutron_s26_coupling`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `k`ozima_scm_cross_section`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `k`ozima_wstp_kernel`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -357,7 +394,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `r`amanujan_polylog_s26`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
 | `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
@@ -366,7 +403,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `m`ock_theta_q26`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -377,8 +414,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `r`amanujan_pi_uqff`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `m`ock_theta_pi_wstp_kernel`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]

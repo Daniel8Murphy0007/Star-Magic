@@ -1,6 +1,18 @@
+---
+paper_id: PAPER_906
+title: "Phonon-QPO Accretion Disk Coupling at 1.25 THz"
+session: 210
+date: 2026-04-10
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [accretion, SCm, Chandra, wormhole, phonon, nebula, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_906: Phonon-QPO Accretion Disk Coupling at 1.25 THz
 
-**Author:** Daniel T. Murphy -- Star Magic / UQFF Framework
+**Author:** Daniel T. Murphy — Star Magic / UQFF Framework
 **Date:** 2026-04-10
 **Session:** 210
 **Source:** Stellar-wind nebulae exploration + wormhole geodesic simulations + BH phonon physics
@@ -11,18 +23,24 @@
 
 ## Abstract
 
-Quasi-periodic oscillations (QPOs) in BH accretion disks are modeled as arising from SCm phonon resonance at 1.25 THz coupled to orbital Keplerian frequencies. The phonon-orbital coupling produces beat frequencies observable in X-ray timing data (Chandra, XMM). The beat frequency f_beat = |f_Keplerian - f_SCm / N_harmonic| maps QPO frequencies to phonon harmonics, unifying HF-QPOs (100-450 Hz) with the UQFF phonon framework.
+Quasi-periodic oscillations (QPOs) in BH accretion disks are modeled as arising from SCm phonon
+resonance at 1.25 THz coupled to orbital Keplerian frequencies. The phonon-orbital coupling produces
+beat frequencies observable in X-ray timing data (Chandra, XMM). The beat frequency f_beat =
+|f_Keplerian - f_SCm / N_harmonic| maps QPO frequencies to phonon harmonics, unifying HF-QPOs
+(100-450 Hz) with the UQFF phonon framework.
 
 ---
 
 ## 1. Core Equations
 
-```
-f_beat = |f_Keplerian - f_SCm / N_harmonic|                       [beat frequency]
-f_Keplerian = (1/2pi) * sqrt(G*M / r^3)                           [orbital frequency]
-f_SCm = 1.25 THz                                                   [SCm phonon]
-QPO correlation = f_beat * Phi_{1.25THz} / f_Kepler
-```
+$$
+\begin{aligned}
+  & f_beat = |f_Keplerian - f_SCm / N_harmonic|                       [beat frequency] \\
+  & f_Keplerian = (1/2pi) * sqrt(G*M / r^3)                           [orbital frequency] \\
+  & f_SCm = 1.25 THz                                                   [SCm phonon] \\
+  & QPO correlation = f_beat * Phi_{1.25THz} / f_Kepler
+\end{aligned}
+$$
 
 ---
 
@@ -50,7 +68,11 @@ QPO correlation = f_beat * Phi_{1.25THz} / f_Kepler
 
 ## 4. Physical Interpretation
 
-High-frequency QPOs in X-ray binaries are interpreted as beat frequencies between the Keplerian orbital motion at the ISCO and harmonics of the SCm phonon resonance. The division of f_SCm = 1.25 THz by harmonic integers (N ~ 10^9) maps the phonon frequency onto the mHz-kHz range where QPOs are observed. This coupling provides a physical mechanism for the previously empirical 3:2 frequency ratio observed in many BH QPO systems.
+High-frequency QPOs in X-ray binaries are interpreted as beat frequencies between the Keplerian
+orbital motion at the ISCO and harmonics of the SCm phonon resonance. The division of f_SCm = 1.25
+THz by harmonic integers (N ~ 10^9) maps the phonon frequency onto the mHz-kHz range where QPOs are
+observed. This coupling provides a physical mechanism for the previously empirical 3:2 frequency
+ratio observed in many BH QPO systems.
 
 ---
 
@@ -61,7 +83,9 @@ This calculator operates as a stateless physics calculator within the CondensedP
 source2.cpp principal GUI pipeline. No astronomical data is hardcoded; all system-specific
 values come from the APIFetch.py -> bodies_*.csv data flow.
 
-**Significance:** Provides a UQFF-native explanation for QPOs without invoking diskoseismology or parametric resonance models. The phonon-orbital coupling prediction is testable with next-generation X-ray timing (STROBE-X, eXTP) at higher harmonic resolution.
+**Significance:** Provides a UQFF-native explanation for QPOs without invoking diskoseismology or
+parametric resonance models. The phonon-orbital coupling prediction is testable with next-generation
+X-ray timing (STROBE-X, eXTP) at higher harmonic resolution.
 
 ---
 
@@ -94,13 +118,15 @@ Gravity is the late-emergent central limit; SCm operates with extra-gravitationa
 
 ### §A.1 Sector Classification
 
-This paper maps to **gravitational-BH sector** of the 9-sector UQFF Lagrangian (see `uqff_lagrangian_derivation.py`).
+This paper maps to **gravitational-BH sector** of the 9-sector UQFF Lagrangian (see
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
-The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive quantum fundamentals (DPM, UA, SCm):
+The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
+quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_\mu \phi)(\partial^\mu \phi) - V(\phi) + \mathcal{L}_{\rm cosmo}$$
+$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_mu \phi)(\partial^\mu \phi) - V(\phi) + \mathcal{L}_{\rm cosmo}$$
 
 where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2).
 
@@ -120,7 +146,7 @@ $$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_
 
 The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
 For this system, the local VDS sub-ratio is $0.07$.
 
@@ -132,17 +158,17 @@ $$p_{\rm DVP} = 109, \quad n_{\rm channel} = 20/26$$
 
 The BSH saturation timescale for this sector is **10^3 yr (accretion disk lifetime)**:
 
-$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
 ### §B.4 Production-Scale Consistency
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.07 | ✓ Consistent |
-| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 109$ | ✓ Lattice-consistent |
-| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
-| [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
+| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.07 | PASS Consistent |
+| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 109$ | PASS Lattice-consistent |
+| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
+| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 ---
 
@@ -150,22 +176,25 @@ $$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | ✓ Consistent |
-| Cosmological constant Λ | 1.1×10⁻⁵² m⁻² (UQFF vacuum term) | 1.114×10⁻⁵² m⁻² | Planck 2018 | ✓ Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10⁻³⁵/yr | Super-K 2024 | ✓ Consistent |
-| UQFF buoyancy signature | F_U_Bi_i unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
+| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
-**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that produce measurable deviations from GR at scales where vacuum condensate density rho_SCm becomes significant, offering a falsifiable prediction beyond the Standard Model.
+**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
+produce measurable deviations from GR at scales where vacuum condensate density rho_SCm becomes
+significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF-SM bridge.*
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF-SM
+bridge.*
 
 ## References
 
-1. PAPER_905 -- Phonon Ergosphere Superradiance
-2. PAPER_366 -- Sgr A* Flare JWST 2025 Data
-3. PAPER_877 -- Three-Assumption Cosmogenesis (SCm axiom)
+1. PAPER_905 — Phonon Ergosphere Superradiance
+2. PAPER_366 — Sgr A* Flare JWST 2025 Data
+3. PAPER_877 — Three-Assumption Cosmogenesis (SCm axiom)
 4. Remillard, R.A. & McClintock, J.E. (2006) ARA&A 44, 49 (BH QPOs)
-5. Murphy, D.T. -- Star Magic UQFF Framework (2024-2026)
+5. Murphy, D.T. — Star Magic UQFF Framework (2024-2026)
 
 ---
 
@@ -178,21 +207,21 @@ $$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `stellar_wind_nebulae_exploration.py` | UQFF prediction engine for additional nebulae | 5 systems, 5-11% agreement |
-| `nebula_obs_comparison.py` | Simulation vs JWST/Chandra/Hubble/ALMA | Mean 7.8% agreement |
+| `s`tellar_wind_nebulae_exploration`.py` | UQFF prediction engine for additional nebulae | 5 systems, 5-11% agreement |
+| `n`ebula_obs_comparison`.py` | Simulation vs JWST/Chandra/Hubble/ALMA | Mean 7.8% agreement |
 
 ### S210.2 Wormhole Geodesic Modules
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `wormhole_geodesic_simulator.py` | BSFG 26D geodesic integrator | Morris-Thorne traversable with phonon stabilization |
+| `w`ormhole_geodesic_simulator`.py` | BSFG 26D geodesic integrator | Morris-Thorne traversable with phonon stabilization |
 | PAPER_901 | Phonon-modified Christoffel symbols | Additive correction to geodesic equation |
 
 ### S210.3 BH Phonon Physics
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `bh_phonon_interaction.py` | SCm phonon coupling at horizons/ergospheres | Superradiance bandwidth broadened |
+| `b`h_phonon_interaction`.py` | SCm phonon coupling at horizons/ergospheres | Superradiance bandwidth broadened |
 | PAPER_905-906 | Ergosphere superradiance + QPO coupling | Phonon-amplified jet launching |
 | PAPER_908-909 | Jet power + Hawking T modification | M87/Sgr A* power ratio explained |
 

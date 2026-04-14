@@ -1,3 +1,15 @@
+---
+paper_id: PAPER_204
+title: "UQFF Dark Matter — NFW, SIDM, Rotation Curves, and Virial Theorem"
+session: 50
+date: 2026-03-13
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [dark-matter, vacuum, buoyancy, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_204: UQFF Dark Matter — NFW, SIDM, Rotation Curves, and Virial Theorem
 
 **Version:** 1.0  
@@ -8,27 +20,35 @@
 
 ---
 
-$$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b_i}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57$$
+$$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b\_i}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57$$
 
 $$
-U_{b_i}(r) = \kappa\cdot[SSq]\cdot\frac{GM}{r^2}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57,\; \beta_i = 0.61
+U_{b\_i}(r) = \kappacdot[SSq]\cdot\frac{GM}{r^2}, \quad \kappa =
+5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57,\; \beta_i = 0.61
 $$
-<!-- ? = 5.0e-4 day⁻¹, [SSq] = 0.57, ß_i = 6.1e-1 -->
+<!— κ = 5.0e-4 day-1, [SSq] = 0.57, ß_i = 6.1e-1 —>
 
 ## Abstract
 
-This paper applies the UQFF buoyancy framework to dark matter structural physics: the Navarro-Frenk-White (NFW) density profile, NFW rotation curve, self-interacting dark matter (SIDM) core formation, virial theorem mass estimation, strong gravitational lensing Einstein radius, void density evolution, and peculiar velocity. The UQFF perspective unifies these through F_UBii operators that embed DM physical expressions into F_rel/E_LEP scaled buoyancy forces, capturing the feedback between vacuum energy and CDM structure formation.
+This paper applies the UQFF buoyancy framework to dark matter structural physics: the
+Navarro-Frenk-White (NFW) density profile, NFW rotation curve, self-interacting dark matter (SIDM)
+core formation, virial theorem mass estimation, strong gravitational lensing Einstein radius, void
+density evolution, and peculiar velocity. The UQFF perspective unifies these through F_UBii
+operators that embed DM physical expressions into F_rel/E_LEP scaled buoyancy forces, capturing the
+feedback between vacuum energy and CDM structure formation.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not
+present in Standard Model treatments.
 
 ---
 
 ## 1. NFW Density Profile
 
 ```
-?_NFW(r) = ?_s / ((r/r_s) · (1 + r/r_s)²)
+?_NFW(r) = ?_s / ((r/r_s) · (1 + r/r_s)2)
 
 Parameters:
   ?_s = characteristic density (from halo mass-concentration relation)
@@ -36,11 +56,11 @@ Parameters:
   c = r_vir/r_s = concentration parameter (c ~ 10 at z=0, increases at higher z)
 
 Mass enclosed:
-  M(r) = 4p?_s r³_s [ln(1+r/r_s) - r/r_s/(1+r/r_s)]
+  M(r) = 4p?_s r3_s [ln(1+r/r_s) - r/r_s/(1+r/r_s)]
 
-F_UBii,nfw = -F_rel × (?_NFW(r) / E_LEP) × Q_wave × (4pr²·d?/dr) × r
+F_UBii,nfw = -F_rel × (?_NFW(r) / E_LEP) × Q_wave × (4pr2·d?/dr) × r
 
-Um,nfw(r) = µ(?_vac)·(1-e^{-?t})·[Fit to universal NFW form ?_s/(x·(1+x)²)]
+Um,nfw(r) = µ(?_vac)·(1-e^{-?t})·[Fit to universal NFW form ?_s/(x·(1+x)2)]
 
 Physical context:
   NFW is universal for CDM halos (Milky Way to galaxy clusters)
@@ -53,7 +73,7 @@ Physical context:
 ## 2. NFW Rotation Curve
 
 ```
-v(r)² = 4pG?_s r²_s [ln(1+x) - x/(1+x)] / r     x = r/r_s
+v(r)2 = 4pG?_s r2_s [ln(1+x) - x/(1+x)] / r     x = r/r_s
 
 Asymptotic limits:
   r << r_s: v(r) ? r^{0.5}     (inner rising)
@@ -61,42 +81,38 @@ Asymptotic limits:
   r >> r_s: v(r) ? r^{-0.5}·ln(r)^{0.5}  (slowly declining)
 
 Flat rotation curves require NFW halo + baryons together:
-  v²_total(r) = v²_bary(r) + v²_NFW(r)
+  v2_total(r) = v2_bary(r) + v2_NFW(r)
 
-F_UBii,nfwrot = F_rel × (v²(r)/G / E_LEP) × Q_wave × [ln(1+x)-x/(1+x)]
+F_UBii,nfwrot = F_rel × (v2(r)/G / E_LEP) × Q_wave × [ln(1+x)-x/(1+x)]
 
 Um,nfwrot(x) = µ(?_vac)·(1-e^{-?t})·[Flat rotation for r >> r_s]
 
 Calibration: Milky Way NFW:
-  ?_s ˜ 0.3 GeV/cm³, r_s ˜ 20 kpc, v_c ˜ 220 km/s at Solar circle (8 kpc)
+  ?_s ˜ 0.3 GeV/cm3, r_s ˜ 20 kpc, v_c ˜ 220 km/s at Solar circle (8 kpc)
 ```
 
 ---
 
 ## 3. SIDM Core Formation
 
-```
-Self-interacting DM rate:
-  G = ?·(s/m)·v_rel    (interaction rate)
-
-Core formation timescale:
-  t_core ˜ (?·s/m)?¹ ~ 10¹°·(?/108 M_? kpc?³)?¹·(s/m / 1 cm²/g)^{-1} yr
-
-Exponential density evolution:
-  ?_core(t) = ?_init·e^{-Gt}    (NFW cusp converts to core when Gt ˜ 1)
-
-F_UBii,sidm = -F_rel × (G·?_init / E_LEP) × Q_wave × ln(0.02N)
-
-Um,sidm(t) = µ(?_vac)·(1-e^{-?t})·[Exponential density flattening]
-
-Observational constraint: s/m ˜ 0.1–1 cm²/g (galaxy clusters, Bullet Cluster)
-Planck does not exclude SIDM at this level (CDM and SIDM nearly identical on large scales)
-
-SIDM predictions:
-  - Dwarf galaxies: soliton cores of radius ~100 pc (observed)
-  - Galaxy clusters: rounder, less concentrated halos
-  - Bullet Cluster: upper limit s/m < 1.25 cm²/g (from offset DM centroid)
-```
+$$
+\begin{aligned}
+  & Self-interacting DM rate: \\
+  & G = ?·(s/m)·v_rel    (interaction rate) \\
+  & Core formation timescale: \\
+  & t_core ˜ (?·s/m)?1 ~ 101°·(?/108 M_? kpc?3)?1·(s/m / 1 cm2/g)^{-1} yr \\
+  & Exponential density evolution: \\
+  & ?_core(t) = β_init·e^{-Gt}    (NFW cusp converts to core when Gt ˜ 1) \\
+  & F_UBii,sidm = -F_rel × (G·β_init / E_LEP) × Q_wave × ln(0.02N) \\
+  & Um,sidm(t) = µ(?_vac)·(1-e^{-?t})·[Exponential density flattening] \\
+  & Observational constraint: s/m ˜ 0.1–1 cm2/g (galaxy clusters, Bullet Cluster) \\
+  & Planck does not exclude SIDM at this level (CDM and SIDM nearly identical on large scales) \\
+  & SIDM predictions: \\
+  & - Dwarf galaxies: soliton cores of radius ~100 pc (observed) \\
+  & - Galaxy clusters: rounder, less concentrated halos \\
+  & - Bullet Cluster: upper limit s/m < 1.25 cm2/g (from offset DM centroid)
+\end{aligned}
+$$
 
 ---
 
@@ -104,51 +120,47 @@ SIDM predictions:
 
 ```
 2K + W = 0    (virial equilibrium for collisionless system)
-K = (3/2)M·s²_v    (kinetic energy)
-W = -(3/5)GM²/r_h   (potential for uniform sphere)
+K = (3/2)M·s2_v    (kinetic energy)
+W = -(3/5)GM2/r_h   (potential for uniform sphere)
 
 Virial mass:
-  M_vir = 2|K|/G = 3·s²_v·r_h/G    (for spherical system)
+  M_vir = 2|K|/G = 3·s2_v·r_h/G    (for spherical system)
 
 Cluster mass from spectroscopic s_v:
-  M(< r) = 3s²_v(r)·r/G + corrections for anisotropy + pressure
+  M(< r) = 3s2_v(r)·r/G + corrections for anisotropy + pressure
 
-F_UBii,vir = F_rel × (M_vir / E_LEP) × Q_wave × (s²_v/G) × 3
+F_UBii,vir = F_rel × (M_vir / E_LEP) × Q_wave × (s2_v/G) × 3
 
-Um,vir(r) = µ(?_vac)·(1-e^{-?t})·[s²_v = GM/(3r)]
+Um,vir(r) = µ(?_vac)·(1-e^{-?t})·[s2_v = GM/(3r)]
 
 X-ray virial:
-  M_vir,X = 3s²_X·r_h/G    (from X-ray spectroscopy instead of optical)
+  M_vir,X = 3s2_X·r_h/G    (from X-ray spectroscopy instead of optical)
 Um,virx(r) = µ(?_vac)·(1-e^{-?t})·[Matches Chandra cluster observations]
 
 Numerical calibration: Coma Cluster
-  s_v ˜ 880 km/s, r_h ˜ 1 Mpc ? M_vir ˜ 2×10¹5 M_?
+  s_v ˜ 880 km/s, r_h ˜ 1 Mpc ? M_vir ˜ 2×1015 M_?
 ```
 
 ---
 
 ## 5. Strong Gravitational Lensing
 
-```
-Einstein radius:
-  ?_E = v(4GM(<?)/c²·D_LS/(D_L·D_S))
-
-Critical surface density:
-  S_cr = c²D_S/(4pGD_L·D_LS)
-
-Convergence: ? = S/S_cr
-Shear: ? (traceless tidal field)
-
-Multiple images: ? = 1 at image positions
-
-F_UBii,lens = F_rel × (?_E / E_LEP) × Q_wave × (S_cr·?)
-
-Um,lens(?) = µ(?_vac)·(1-e^{-?t})·[?_E = v(a·?) from lensing equation]
-
-Einstein ring systems:
-  SDP.81 (ALMA): z_L=0.3, z_S=3.04 ? ?_E ˜ 1.5" ? M(<?_E) ˜ 10¹¹ M_?
-  UQFF: vacuum ? correction to D_LS shifts ?_E by ~0.1%
-```
+$$
+\begin{aligned}
+  & Einstein radius: \\
+  & ?_E = v(4GM(<?)/c2·D_LS/(D_L·D_S)) \\
+  & Critical surface density: \\
+  & S_cr = c2D_S/(4pGD_L·D_LS) \\
+  & Convergence: ? = S/S_cr \\
+  & Shear: ? (traceless tidal field) \\
+  & Multiple images: ? = 1 at image positions \\
+  & F_UBii,lens = F_rel × (?_E / E_LEP) × Q_wave × (S_cr·?) \\
+  & Um,lens(?) = µ(?_vac)·(1-e^{-?t})·[?_E = v(a·?) from lensing equation] \\
+  & Einstein ring systems: \\
+  & SDP.81 (ALMA): z_L=0.3, z_S=3.04 ? ?_E ˜ 1.5" ? M(<?_E) ˜ 1011 M_? \\
+  & UQFF: vacuum ? correction to D_LS shifts ?_E by ~0.1%
+\end{aligned}
+$$
 
 ---
 
@@ -168,7 +180,7 @@ F_UBii,voidden = -F_rel × (|d_v(a)| / E_LEP) × Q_wave × (O_m·a + O_?)^{-3/2}
 Um,voidden(a) = µ(?_vac)·(1-e^{-?t})·[d ? a^{-1} in matter domination]
 
 Physical context in UQFF:
-  Voids are dominated by vacuum energy (?) ? UQFF's ?c²/3 term strongest here
+  Voids are dominated by vacuum energy (?) ? UQFF's ?c2/3 term strongest here
   F_UBii,voidden predicts void expansion driven by vacuum buoyancy
 ```
 
@@ -176,43 +188,38 @@ Physical context in UQFF:
 
 ## 7. Peculiar Velocity Field
 
-```
-Peculiar velocity from linear theory:
-  v_pec(r) = -(fH/3)·?d(r')·r·dr'/r²    (spherical approximation)
-
-Redshift space distortions (RSD):
-  v_pec,observed = f·H·r + noise    (adds to Hubble flow)
-
-f ˜ O_m^{0.55}    (growth rate approximation)
-
-Cosmic flow from Laniakea to CMB dipole:
-  v ˜ 630 km/s toward Perseus-Pisces
-
-F_UBii,pec = F_rel × (fH·d(r)/3 / E_LEP) × Q_wave × (dv/dz systematic)
-
-Um,pec(r) = µ(?_vac)·(1-e^{-?t})·[Spherical void: integrate Poisson]
-```
+$$
+\begin{aligned}
+  & Peculiar velocity from linear theory: \\
+  & v_pec(r) = -(fH/3)·?d(r')·r·dr'/r2    (spherical approximation) \\
+  & Redshift space distortions (RSD): \\
+  & v_pec,observed = f·H·r + noise    (adds to Hubble flow) \\
+  & f ˜ O_m^{0.55}    (growth rate approximation) \\
+  & Cosmic flow from Laniakea to CMB dipole: \\
+  & v ˜ 630 km/s toward Perseus-Pisces \\
+  & F_UBii,pec = F_rel × (fH·d(r)/3 / E_LEP) × Q_wave × (dv/dz systematic) \\
+  & Um,pec(r) = µ(?_vac)·(1-e^{-?t})·[Spherical void: integrate Poisson]
+\end{aligned}
+$$
 
 ---
 
 ## 8. Cluster Shock Mach Number and Merger Timescale
 
-```
-Shock Mach number from X-ray temperature jump:
-  M = [(?+1)(?2/?1) + (?-1)] / (2?)          (from Rankine-Hugoniot)
-  T2/T1 = [2?M² - (?-1)]·[(?-1)M² + 2] / [(?+1)M]²  (temperature jump)
-
-  Coma radio relic: M ˜ 2.5 (from spectral index a = (M²+1)/(M²-1))
-
-Merger crossing/dynamical timescale:
-  t_merge = r_vir/s_v = v(3r³_vir/(5GM))
-
-F_UBii,mach = F_rel × (M·v_s / E_LEP) × Q_wave × (T2/T1)
-F_UBii,merg = F_rel × (t_merge / E_LEP) × Q_wave × (r_vir/v_c)
-
-Um,mach(?) = µ(?_vac)·(1-e^{-?t})·[Matches Coma radio relic shocks M~2–3]
-Um,merg(t) = µ(?_vac)·(1-e^{-?t})·[3r_vir/(5GM)]
-```
+$$
+\begin{aligned}
+  & Shock Mach number from X-ray temperature jump: \\
+  & M = [(?+1)(?2/?1) + (?-1)] / (2?)          (from Rankine-Hugoniot) \\
+  & T2/T1 = [2?M2 - (?-1)]·[(?-1)M2 + 2] / [(?+1)M]2  (temperature jump) \\
+  & Coma radio relic: M ˜ 2.5 (from spectral index a = (M2+1)/(M2-1)) \\
+  & Merger crossing/dynamical timescale: \\
+  & t_merge = r_vir/s_v = v(3r3_vir/(5GM)) \\
+  & F_UBii,mach = F_rel × (M·v_s / E_LEP) × Q_wave × (T2/T1) \\
+  & F_UBii,merg = F_rel × (t_merge / E_LEP) × Q_wave × (r_vir/v_c) \\
+  & Um,mach(?) = µ(?_vac)·(1-e^{-?t})·[Matches Coma radio relic shocks M~2–3] \\
+  & Um,merg(t) = µ(?_vac)·(1-e^{-?t})·[3r_vir/(5GM)]
+\end{aligned}
+$$
 
 ---
 
@@ -244,13 +251,15 @@ Um,merg(t) = µ(?_vac)·(1-e^{-?t})·[3r_vir/(5GM)]
 
 ### §A.1 Sector Classification
 
-This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see `uqff_lagrangian_derivation.py`).
+This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
-The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive quantum fundamentals (DPM, UA, SCm):
+The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
+quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_\mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
+$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
 
 where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
@@ -264,7 +273,9 @@ $$\boxed{\frac{\delta S}{\delta \phi_{\rm NS}} = \nabla^2 \phi_{\rm NS} - (4\pi 
 
 $$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\rm NS} = 0$$
 
-The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g forces) through vacuum density initialization to the sector-specific equation of motion. Every term in the E-L equation inherits its physical origin from the cosmogenesis master.
+The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
+forces) through vacuum density initialization to the sector-specific equation of motion. Every term
+in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 
 ---
@@ -275,9 +286,9 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.169$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m³.
+For this system, the local VDS sub-ratio is $0.169$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -289,13 +300,13 @@ Since $p_{\rm DVP} = 97$ is **resonant** (threshold at $p > 26$), the system's v
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
-The BSH saturation timescale for this sector is **10⁴ yr** (spin-down equilibrium):
+The BSH saturation timescale for this sector is **104 yr** (spin-down equilibrium):
 
-$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
+$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\rm SCm}$ which initializes the harmonic series at cosmogenesis.
 
@@ -303,11 +314,11 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.169 | ✓ Threshold-consistent |
-| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 97$ | ✓ Resonant |
-| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
-| [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
+| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.169 | PASS Threshold-consistent |
+| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 97$ | PASS Resonant |
+| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
+| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
 ---
@@ -317,14 +328,17 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | ✓ Consistent |
-| Cosmological constant Λ | 1.1×10⁻⁵² m⁻² (UQFF vacuum term) | 1.114×10⁻⁵² m⁻² | Planck 2018 | ✓ Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10⁻³⁵/yr | Super-K 2024 | ✓ Consistent |
-| UQFF buoyancy signature | F_U_Bi_i unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
+| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
-**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes significant, offering a falsifiable prediction beyond the Standard Model.
+**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
+produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
+bridge.*
 
 
 ---
@@ -339,9 +353,9 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `f`neutron_s26_coupling`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `k`ozima_scm_cross_section`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `k`ozima_wstp_kernel`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -350,7 +364,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `r`amanujan_polylog_s26`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
 | `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
@@ -359,7 +373,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `m`ock_theta_q26`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -370,8 +384,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `r`amanujan_pi_uqff`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `m`ock_theta_pi_wstp_kernel`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]

@@ -1,3 +1,15 @@
+---
+paper_id: PAPER_629
+title: "UQFF MS 0735.6+7421 Cluster AGN Jet Void Pocket"
+session: 0
+date: 2025-12-01
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [galaxy, AGN, cluster, DPM, SCm, jet, Chandra, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_629 — UQFF MS 0735.6+7421 Cluster AGN Jet Void Pocket
 **Author:** Daniel T. Murphy
 **Date:** December 2025
@@ -6,7 +18,7 @@
 **Number:** #216  
 **Source:** grok_share_6322ac199.txt (Session 161)  
 **Filed:** Session 161 v5.18  
-**VDS/DVP/BH26:** DVP (explosive (∇UA)⁻²⁶ AGN driver)  
+**VDS/DVP/BH26:** DVP (explosive (∇UA)-26 AGN driver)  
 
 ---
 
@@ -16,15 +28,16 @@
 $$F_{U,Bi} = \kappa \cdot \frac{\rho_{\text{SCm}}}{\rho_{\text{UA}}} \cdot (U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_m + U_{bi})$$
 
 
-This paper presents a UQFF analysis of UQFF MS 0735.6+7421 Cluster AGN Jet Void Pocket, deriving compressed field equations and observational predictions within the Star-Magic/UQFF framework.
+This paper presents a UQFF analysis of UQFF MS 0735.6+7421 Cluster AGN Jet Void Pocket, deriving
+compressed field equations and observational predictions within the Star-Magic/UQFF framework.
 
 ## §1 Abstract
 
 MS 0735.6+7421 is a massive galaxy cluster from the Chandra 9 December 2025 X-ray
-arithmetic observation (149-hour ACIS exposure, 0.5–7 keV). At ∇UA ≈ 10⁻²² m⁻¹
-(extreme cluster void), the DVP term U_m = κ·(DPM_n−DPM_s)/(∇UA)²⁶ diverges to
-10⁵⁷²+ — providing an explosive energy reservoir that drives the powerful AGN jet
-outburst. The 9D Wolfram equilibrium pocket forms at ∇UA_eq ≈ 10⁻¹¹ where U_b
+arithmetic observation (149-hour ACIS exposure, 0.5–7 keV). At ∇UA ≈ 10-22 m-1
+(extreme cluster void), the DVP term U_m = κ·(DPM_n−DPM_s)/(∇UA)26 diverges to
+10572+ — providing an explosive energy reservoir that drives the powerful AGN jet
+outburst. The 9D Wolfram equilibrium pocket forms at ∇UA_eq ≈ 10-11 where U_b
 rebound stabilizes the explosive DVP energy.
 
 ---
@@ -36,9 +49,9 @@ rebound stabilizes the explosive DVP energy.
 | Distance | 2.6 Gly = 2.46e25 m |
 | Effective radius r_eff | 1.32e22 m |
 | Chandra exposure | 149 hours (ACIS) |
-| Temperature | ~10⁸ K |
-| ∇UA (cluster voids) | ~10⁻²² m⁻¹ |
-| ∇UA (equilibrium pocket) | ~10⁻¹¹ |
+| Temperature | ~108 K |
+| ∇UA (cluster voids) | ~10-22 m-1 |
+| ∇UA (equilibrium pocket) | ~10-11 |
 | Energy band | 0.5–7 keV |
 | RA/Dec | 07h41m50.2s, +74°14′51″ |
 | Observation | Chandra X-ray Arithmetic 09 Dec 2025 |
@@ -49,14 +62,16 @@ rebound stabilizes the explosive DVP energy.
 
 The U_m component at cluster-void gradient:
 
-```
-U_m = κ · (DPM_n − DPM_s) / (∇UA)²⁶
-    = 1 · 2 / (10⁻²²)²⁶
-    = 2 / 10⁻⁵⁷²
-    = 2 × 10⁵⁷²  N  (log₁₀ ≈ 572)
-```
+$$
+\begin{aligned}
+  & U_m = κ · (DPM_n − DPM_s) / (∇UA)26 \\
+  & = 1 · 2 / (10-22)26 \\
+  & = 2 / 10-572 \\
+  & = 2 × 10572  N  (log₁₀ ≈ 572)
+\end{aligned}
+$$
 
-**This is the explosive AGN energy source.** At cluster-void gradients (∇UA ≈ 10⁻²²),
+**This is the explosive AGN energy source.** At cluster-void gradients (∇UA ≈ 10-22),
 the DVP term generates an almost unbounded energy density that must be channeled
 outward — explaining why MS 0735.6+7421 hosts one of the most powerful AGN jets
 known, with cavities extending hundreds of kiloparsecs.
@@ -68,10 +83,12 @@ known, with cavities extending hundreds of kiloparsecs.
 The explosive energy terminates when ∇UA rises to an equilibrium value ∇UA_eq where
 U_b rebound suppresses U_m:
 
-```
-F_U = 0  at  ∇UA_eq ≈ 10⁻¹¹
-U_b(∇UA_eq) = g · (1 − 1/∇UA_eq) ≈ g · 1 = 10⁻³  N
-```
+$$
+\begin{aligned}
+  & F_U = 0  at  ∇UA_eq ≈ 10-11 \\
+  & U_b(∇UA_eq) = g · (1 − 1/∇UA_eq) ≈ g · 1 = 10-3  N
+\end{aligned}
+$$
 
 At this pocket equilibrium, the explosive energy has been deposited into the cluster
 medium as the X-ray cavity + radio lobe system observed by Chandra.
@@ -82,9 +99,9 @@ medium as the X-ray cavity + radio lobe system observed by Chandra.
 
 The 9D Gaussian sum at cluster scale:
 
-```
-∇UA_9D_cluster = Σ_{d=1}^{9} exp(−(r/d+1 − r/d+1)²/(2·(σ/d+1)²))
-```
+$$
+∇\text{UA\_9D\_cluster} = Σ_{d=1}^{9} exp(−(r/d+1 − r/d+1)2/(2·(σ/d+1)2))
+$$
 
 At r_eff = 1.32e22 m, each Gaussian peaks at the channel centroid. The total
 9D sum characterizes the cluster's multi-scale void topology from core to
@@ -96,21 +113,21 @@ outskirt filaments.
 
 | Component | Frequency (Hz) | Physical Process |
 |-----------|---------------|-----------------|
-| Thermal (10⁸ K) | k_B·T/h ≈ 2×10¹⁸ Hz | ICM thermal bremsstrahlung |
+| Thermal (108 K) | k_B·T/h ≈ 2×1018 Hz | ICM thermal bremsstrahlung |
 | Low keV Chandra | 0.5 keV → 1.2e17 Hz | Soft X-ray spectral edge |
 | High keV Chandra | 7 keV → 1.7e18 Hz | Hard X-ray spectral cutoff |
-| DVP explosive event | ~10¹⁶–10¹⁸ Hz | Pocket formation burst |
+| DVP explosive event | ~1016–1018 Hz | Pocket formation burst |
 
 ---
 
 ## §7 Physical Significance
 
 MS 0735.6+7421 is UQFF's premier testbed for the DVP explosive mechanism:
-1. The cavity volume (≈ 0.5 Mpc³) stores the deposited DVP energy
+1. The cavity volume (≈ 0.5 Mpc3) stores the deposited DVP energy
 2. The radio lobes mark the outflow paths driven by DVP gradient flux
 3. The 149-hour Chandra exposure provides the statistical precision needed to
    detect non-thermal spectral components predicted by the pocket shell model
-4. The equilibrium at ∇UA_eq ≈ 10⁻¹¹ predicts a X-ray brightness edge at r ≈ r_eff
+4. The equilibrium at ∇UA_eq ≈ 10-11 predicts a X-ray brightness edge at r ≈ r_eff
 
 ---
 
@@ -120,13 +137,15 @@ MS 0735.6+7421 is UQFF's premier testbed for the DVP explosive mechanism:
 
 ### §A.1 Sector Classification
 
-This paper maps to **AGN-jet** sector of the 9-sector UQFF Lagrangian (see `uqff_lagrangian_derivation.py`).
+This paper maps to **AGN-jet** sector of the 9-sector UQFF Lagrangian (see
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
-The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive quantum fundamentals (DPM, UA, SCm):
+The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
+quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_\mu \phi_{\rm jet})(\partial^\mu \phi_{\rm jet}) - V(\phi_{\rm jet}) + \mathcal{L}_{\rm cosmo}$$
+$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_mu \phi_{\rm jet})(\partial^\mu \phi_{\rm jet}) - V(\phi_{\rm jet}) + \mathcal{L}_{\rm cosmo}$$
 
 where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
@@ -140,7 +159,9 @@ $$\boxed{\frac{\delta S}{\delta \phi_{\rm jet}} = \partial_t(\gamma \rho v_{\rm 
 
 $$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\rm jet} = 0$$
 
-The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g forces) through vacuum density initialization to the sector-specific equation of motion. Every term in the E-L equation inherits its physical origin from the cosmogenesis master.
+The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
+forces) through vacuum density initialization to the sector-specific equation of motion. Every term
+in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 
 ---
@@ -151,9 +172,9 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.073$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m³.
+For this system, the local VDS sub-ratio is $0.073$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -165,13 +186,13 @@ Since $p_{\rm DVP} = 113$ is **resonant** (threshold at $p > 26$), the system's 
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
-The BSH saturation timescale for this sector is **10⁷ yr** (duty cycle period):
+The BSH saturation timescale for this sector is **107 yr** (duty cycle period):
 
-$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
+$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\rm SCm}$ which initializes the harmonic series at cosmogenesis.
 
@@ -179,11 +200,11 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.073 | ✓ Threshold-consistent |
-| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 113$ | ✓ Resonant |
-| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
-| [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
+| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.073 | PASS Threshold-consistent |
+| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 113$ | PASS Resonant |
+| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
+| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
 ---
@@ -193,10 +214,10 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| AGN jet kinetic power P_jet | DVP flux: P_jet ≈ (1/2)ρ_vac × A_jet × v_jet³; for MS 0735: P_jet ~ 10⁶⁷ W | Chandra MS 0735: P_jet ≈ 10⁶⁷ W (cavity inflation) | Chandra Dec 2025 | ✓ Consistent |
-| Radio lobe cavity energy (QHD) | BH26: E_cavity = P_jet × t_bubble ≈ 6×10⁶³ J | MS 0735 cavities: E ≈ 6×10⁶³ J (Chandra/VLA) | Chandra + VLA | ✓ Consistent |
-| Eddington luminosity ceiling | L_Edd = 4πGMm_pc/σ_T; M_BH ~ 3×10⁰M_☉ | MS 0735 BH mass: ~10¹⁰M_☉; L_Edd ~ 10⁶µ W | PDG / Chandra | UQFF jet power within Eddington limit |
-| σ_T Thomson cross-section (QED) | U_m scattering: σ_T = 6.65e-29 m² | σ_T = 6.6524e-29 m² | PDG (QED) | 100% (exact QED input) |
+| AGN jet kinetic power P_jet | DVP flux: P_jet ≈ (1/2)ρ_vac × A_jet × v_jet3; for MS 0735: P_jet ~ 1067 W | Chandra MS 0735: P_jet ≈ 1067 W (cavity inflation) | Chandra Dec 2025 | PASS Consistent |
+| Radio lobe cavity energy (QHD) | BH26: E_cavity = P_jet × t_bubble ≈ 6×1063 J | MS 0735 cavities: E ≈ 6×1063 J (Chandra/VLA) | Chandra + VLA | PASS Consistent |
+| Eddington luminosity ceiling | L_Edd = 4πGMm_pc/σ_T; M_BH ~ 3×100`M_M_sun` | MS 0735 BH mass: ~1010`M_M_sun`; L_Edd ~ 106µ W | PDG / Chandra | UQFF jet power within Eddington limit |
+| σ_T Thomson cross-section (QED) | U_m scattering: σ_T = 6.65e-29 m2 | σ_T = 6.6524e-29 m2 | PDG (QED) | 100% (exact QED input) |
 
 **New physics claim:** The DVP explosive mechanism deposits energy into cavities at a rate
 determined by the gradient pocket geometry, NOT by standard MHD jet propagation. The
@@ -231,9 +252,9 @@ distinct from the ICM thermal pressure balance model.
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `f`neutron_s26_coupling`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `k`ozima_scm_cross_section`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `k`ozima_wstp_kernel`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -242,7 +263,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `r`amanujan_polylog_s26`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
 | `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
@@ -251,7 +272,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `m`ock_theta_q26`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -262,8 +283,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `r`amanujan_pi_uqff`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `m`ock_theta_pi_wstp_kernel`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]

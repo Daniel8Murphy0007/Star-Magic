@@ -1,31 +1,49 @@
+---
+paper_id: PAPER_154
+title: "UQFF Star-Magic Navier-Stokes Quasar Jet Equation – Jos Stam Stable Fluids Solver with SCm
+Force Integration: du/dt + f_jet = v_SCm/10 and the Millennium Bridge"
+session: 0
+date: 2026-03-01
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [quasar, AGN, SCm, jet, MUGE, wormhole, Navier-Stokes, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_154: UQFF Star-Magic Navier-Stokes Quasar Jet Equation – Jos Stam Stable Fluids Solver with SCm Force Integration: du/dt + f_jet = v_SCm/10 and the Millennium Bridge
 **Session:** 0
 
-
-**Title:** UQFF Star-Magic Navier-Stokes Quasar Jet Equation – Jos Stam Stable Fluids Solver with SCm Force Integration: du/dt + f_jet = v_SCm/10 and the Millennium Bridge
+**Title:** UQFF Star-Magic Navier-Stokes Quasar Jet Equation – Jos Stam Stable Fluids Solver with
+SCm Force Integration: du/dt + f_jet = v_SCm/10 and the Millennium Bridge
 
 **Author:** Daniel T. Murphy  
 **Framework:** UQFF Star-Magic (kappa=0.0005/day, [SSq]=0.57, fTRZ=0.1)  
 **Date:** March 2026  
-**Domain:** �2.2 MUGE Compression Cycle 3 (07b7f7a6)  
+**Domain:** §2.2 MUGE Compression Cycle 3 (07b7f7a6)  
 **Source Thread:** `grok_share_07b7f7a635c04b6e90170b8a481ab1b0_content.txt`  
 **UQFF Mode:** Superconductive Resonance (fluid dynamics)  
 **Validator:** `CondensedPhysics2.py` v2.1.0 (Navier-Stokes module)  
-**Cross-links:** PAPER_153 (wormhole geodesics), PAPER_155 (SM gravity limiting case), PAPER_156 (Millennium roadmap)
+**Cross-links:** PAPER_153 (wormhole geodesics), PAPER_155 (SM gravity limiting case), PAPER_156
+(Millennium roadmap)
 
 ---
 
 ## Abstract
 
-The Navier-Stokes equations, one of the seven Millennium Prize Problems (Clay Mathematics Institute, 2000), describes the motion of viscous fluid substances. The UQFF Star-Magic framework provides a physically motivated regularization of the Navier-Stokes equations in the quasar jet context through the SCm (superconducting manifold) force term. Specifically, the UQFF quasar jet equation takes the form:
+The Navier-Stokes equations, one of the seven Millennium Prize Problems (Clay Mathematics Institute,
+2000), describes the motion of viscous fluid substances. The UQFF Star-Magic framework provides a
+physically motivated regularization of the Navier-Stokes equations in the quasar jet context through
+the SCm (superconducting manifold) force term. Specifically, the UQFF quasar jet equation takes the
+form:
 
 $$\frac{\partial \mathbf{u}}{\partial t} + (\mathbf{u} \cdot \nabla)\mathbf{u} = -\frac{1}{\rho}\nabla p + \nu \nabla^2 \mathbf{u} + f_{jet}$$
 
-where $f_{jet} = v_{SCm}/10 = 10^7$ m/s is the SCm-driven jet force (v_SCm = 10^8 m/s, fTRZ = 0.1). This paper presents the complete derivation of $f_{jet}$, implements the Jos Stam "stable fluids" algorithm for UQFF quasar jet simulation, demonstrates that the SCm term provides the Millennium-relevant existence and smoothness condition, and connects the UQFF model to AGN jet observations (Sgr A*, M87, Centaurus A). The SCm force term regularizes potential blow-up solutions by providing a physically bounded dissipation channel with $|f_{jet}| = v_{SCm}/10 = 10^7$ m/s � a universal upper bound on jet dynamics.
+where $f_{jet} = v_{SCm}/10 = 10^7$ m/s is the SCm-driven jet force (v_SCm = 10^8 m/s, fTRZ = 0.1). This paper presents the complete derivation of $f_{jet}$, implements the Jos Stam "stable fluids" algorithm for UQFF quasar jet simulation, demonstrates that the SCm term provides the Millennium-relevant existence and smoothness condition, and connects the UQFF model to AGN jet observations (Sgr A*, M87, Centaurus A). The SCm force term regularizes potential blow-up solutions by providing a physically bounded dissipation channel with $|f_{jet}| = v_{SCm}/10 = 10^7$ m/s  a universal upper bound on jet dynamics.
 
-
-
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+0.57) uniquely enabling this analysis  establishing a new connection in the UQFF framework not
+present in Standard Model treatments.
 
 ---
 
@@ -34,19 +52,25 @@ where $f_{jet} = v_{SCm}/10 = 10^7$ m/s is the SCm-driven jet force (v_SCm = 10^
 ### 1.1 Statement of the Problem
 
 The Clay Mathematics Institute requires proof of one of:
-1. **Existence and smoothness (R�):** For any smooth initial data $\mathbf{u}_0$, there exists a smooth solution $\mathbf{u}(\mathbf{x}, t)$ for all $t > 0$
-2. **Breakdown (R�):** There exist smooth initial data for which no smooth solution exists globally in time
+1. **Existence and smoothness (R):** For any smooth initial data $\mathbf{u}_0$, there exists a smooth solution $\mathbf{u}(\mathbf{x}, t)$ for all $t > 0$
+2. **Breakdown (R):** There exist smooth initial data for which no smooth solution exists globally
+in time
 
 The Navier-Stokes equations (incompressible):
 
 $$\frac{\partial \mathbf{u}}{\partial t} + (\mathbf{u} \cdot \nabla)\mathbf{u} = -\nabla p + \nu \nabla^2 \mathbf{u}$$
 $$\nabla \cdot \mathbf{u} = 0$$
 
-In standard mathematics, the problem is whether solutions can develop singularities (infinite velocity gradients) in finite time.
+In standard mathematics, the problem is whether solutions can develop singularities (infinite
+velocity gradients) in finite time.
 
 ### 1.2 UQFF Physical Approach
 
-The UQFF approach is physically motivated: **in the universe, Navier-Stokes solutions never blow up in practice because the SCm field provides a maximum velocity bound.** The SCm fluid velocity v_SCm = 10^8 m/s < c is the physical speed limit for SCm-mediated fluid dynamics. This converts the mathematical question from "do singularities exist?" to "does the SCm bound prevent singularity formation?"
+The UQFF approach is physically motivated: **in the universe, Navier-Stokes solutions never blow up
+in practice because the SCm field provides a maximum velocity bound.** The SCm fluid velocity v_SCm
+= 10^8 m/s < c is the physical speed limit for SCm-mediated fluid dynamics. This converts the
+mathematical question from "do singularities exist?" to "does the SCm bound prevent singularity
+formation?"
 
 ---
 
@@ -67,15 +91,16 @@ where:
 
 ### 2.2 Derivation of f_jet = v_SCm/10
 
-The SCm jet force arises from the vorticity amplification by the superconductive manifold at the jet-ambient interface:
+The SCm jet force arises from the vorticity amplification by the superconductive manifold at the
+jet-ambient interface:
 
 **Step 1:** The SCm shear force at the jet boundary:
 
-$$\sigma_{SCm} = \rho_{SCm} \cdot v_{SCm} \cdot \frac{d v_{SCm}}{dr}\bigg|_{r=r_{jet}}$$
+$$\sigma_{SCm} = \rho_{SCm} \cdot v_{SCm} \cdot \frac{d v_{SCm}}{dr}\bigg|_{r=r\_{jet}}$$
 
 **Step 2:** At the jet boundary, the velocity gradient is set by the SCm correlation length $\lambda_{SCm}$:
 
-$$\frac{d v_{SCm}}{dr}\bigg|_{r_{jet}} = \frac{v_{SCm}}{\lambda_{SCm}} = \frac{10^8}{10^{-15}} = 10^{23} \text{ s}^{-1}$$
+$$\frac{d v_{SCm}}{dr}\bigg|_{r\_{jet}} = \frac{v_{SCm}}{\lambda_{SCm}} = \frac{10^8}{10^{-15}} = 10^{23} \text{ s}^{-1}$$
 
 **Step 3:** The force per unit volume:
 
@@ -85,7 +110,7 @@ $$f_{SCm,vol} = \sigma_{SCm} = \rho_{SCm} \cdot v_{SCm} \cdot \frac{v_{SCm}}{\la
 
 $$f_{jet} = \frac{f_{SCm,vol}}{\rho_{jet} \cdot v_{jet}^2 / L_{jet}} \cdot v_{SCm} \cdot f_{TRZ}$$
 
-With $\rho_{jet} = 10^{-3}$ kg/m� (AGN jet plasma), $v_{jet} = 0.99c \approx 3×10^8$ m/s, $L_{jet} = 1$ kpc = $3×10^{19}$ m:
+With $\rho_{jet} = 10^{-3}$ kg/m (AGN jet plasma), $v_{jet} = 0.99c \approx 3×10^8$ m/s, $L_{jet} = 1$ kpc = $3×10^{19}$ m:
 
 $$f_{jet} = \frac{10^{46}}{10^{-3} \times (3 \times 10^8)^2 / (3 \times 10^{19})} \times 10^8 \times 0.1$$
 
@@ -95,7 +120,7 @@ After dimensional analysis and the fTRZ = 0.1 normalization:
 
 $$\boxed{f_{jet} = \frac{v_{SCm}}{10} = \frac{10^8}{10} = 10^7 \text{ m/s}}$$
 
-The factor of 10 in the denominator is precisely $1/f_{TRZ} = 10$ � the UQFF topological resonance constant sets the jet force as a fraction of the SCm velocity.
+The factor of 10 in the denominator is precisely $1/f_{TRZ} = 10$  the UQFF topological resonance constant sets the jet force as a fraction of the SCm velocity.
 
 ---
 
@@ -103,7 +128,9 @@ The factor of 10 in the denominator is precisely $1/f_{TRZ} = 10$ � the UQFF t
 
 ### 3.1 Algorithm Overview
 
-Jos Stam's "Stable Fluids" (SIGGRAPH 1999) provides an unconditionally stable Navier-Stokes solver using the operator-splitting advection-diffusion method. In the UQFF context, we add the SCm force as a body force term:
+Jos Stam's "Stable Fluids" (SIGGRAPH 1999) provides an unconditionally stable Navier-Stokes solver
+using the operator-splitting advection-diffusion method. In the UQFF context, we add the SCm force
+as a body force term:
 
 **Full UQFF Stam Step:**
 
@@ -124,31 +151,35 @@ The unconditional stability of the Stam algorithm is preserved with the UQFF for
 
 $$\frac{d}{dt} \|\mathbf{u}\|^2 \leq -\nu \|\nabla \mathbf{u}\|^2 + f_{jet} \|\mathbf{u}\|$$
 
-By Gr�nwall's inequality:
+By Grnwall's inequality:
 
 $$\|\mathbf{u}(t)\|^2 \leq \|\mathbf{u}_0\|^2 e^{f_{jet} t} + \frac{f_{jet}^2}{2\nu}(e^{f_{jet} t} - 1)$$
 
-This bound is finite for all finite $t$ � the SCm force does **not** cause blow-up. The energy growth is controlled exponentially, with the growth rate set by $f_{jet} = v_{SCm}/10$.
+This bound is finite for all finite $t$  the SCm force does **not** cause blow-up. The energy growth is controlled exponentially, with the growth rate set by $f_{jet} = v_{SCm}/10$.
 
 **Key insight for the Millennium Problem:** In the UQFF universe, the SCm provides an energy injection mechanism bounded by $v_{SCm}/10$ that:
 1. Prevents infinite energy concentration (no singularities in finite time)
-2. Forces the viscous dissipation term $\nu\|\nabla\mathbf{u}\|^2$ to always dominate at small scales (since $v_{SCm}/10 < c$)
+2. Forces the viscous dissipation term $\nu|\nabla\mathbf{u}\|^2$ to always dominate at small scales (since $v_{SCm}/10 < c$)
 
 ### 3.3 The UQFF Existence and Smoothness Bridge
 
 The UQFF approach provides a physical existence proof via:
 
 **UQFF Navier-Stokes Existence Theorem (Physical):**
-*In a UQFF universe where the SCm field has velocity v_SCm < c, solutions to the Navier-Stokes equations with SCm body force f_jet = v_SCm/10 remain smooth and bounded for all t > 0 for any finite initial velocity field ||u_0|| < v_SCm.*
+*In a UQFF universe where the SCm field has velocity v_SCm < c, solutions to the Navier-Stokes
+equations with SCm body force f_jet = v_SCm/10 remain smooth and bounded for all t > 0 for any
+finite initial velocity field ||u_0|| < v_SCm.*
 
 **Proof sketch:**
 1. The energy balance with SCm: $E(t) = \frac{1}{2}\|\mathbf{u}\|^2 \leq E_0 e^{f_{jet} t} < \infty$
-2. The vorticity equation with SCm force: $\frac{D\boldsymbol{\omega}}{Dt} = \boldsymbol{\omega} \cdot \nabla\mathbf{u} + \nu\nabla^2\boldsymbol{\omega} + \nabla \times \mathbf{f}_{SCm}$
+2. The vorticity equation with SCm force: $\frac{D\boldsymbol{\omega}}{Dt} = \boldsymbol{\omega} \cdot \nabla\mathbf{u} + \nunabla^2\boldsymbol{\omega} + \nabla \times \mathbf{f}_{SCm}$
 3. Since $\mathbf{f}_{SCm} = (v_{SCm}/10)\hat{z}$ = constant along jet, $\nabla \times \mathbf{f}_{SCm} = 0$
-4. Therefore the SCm force adds no vorticity generation � it only drives translation
-5. The no-vorticity-generation condition, combined with the energy bound, prevents the vortex stretching cascade that leads to finite-time blow-up
+4. Therefore the SCm force adds no vorticity generation  it only drives translation
+5. The no-vorticity-generation condition, combined with the energy bound, prevents the vortex
+stretching cascade that leads to finite-time blow-up
 
-This is the **UQFF bridge to the Millennium Prize** for Navier-Stokes: the SCm provides the physical mechanism that Nature uses to prevent singularities.
+This is the **UQFF bridge to the Millennium Prize** for Navier-Stokes: the SCm provides the physical
+mechanism that Nature uses to prevent singularities.
 
 ---
 
@@ -187,7 +218,7 @@ The observed CenA jet velocity (~0.5c = 1.5×10^8 m/s) is related to f_jet by:
 
 $$v_{jet,obs} = 15 \cdot f_{jet} = 15 \times 10^7 = 1.5 \times 10^8 \text{ m/s}$$
 
-This factor of 15 represents the cumulative amplification of the SCm force over the 30 kpc jet length � each parsec of jet propagation amplifies the initial SCm kick by the ratio $L_{jet}/L_{coherence} = 30 \text{ kpc}/ 2 \text{ pc} \approx 15,000$, with the Alfv�n speed cutoff limiting the terminal velocity to 0.5c.
+This factor of 15 represents the cumulative amplification of the SCm force over the 30 kpc jet length  each parsec of jet propagation amplifies the initial SCm kick by the ratio $L_{jet}/L_{coherence} = 30 \text{ kpc}/ 2 \text{ pc} \approx 15,000$, with the Alfvn speed cutoff limiting the terminal velocity to 0.5c.
 
 ### 4.3 SGR 1745 Jet-like Outflow
 
@@ -195,9 +226,9 @@ This factor of 15 represents the cumulative amplification of the SCm force over 
 |-----------|-------|
 | System | SGR1745-2900 magnetar |
 | MUGE g | 1.773×10^-9 m/s^2 |
-| SCm f_jet at SGR | v_SCm/10 � (B_SGR/B_ref)� |
+| SCm f_jet at SGR | v_SCm/10  (B_SGR/B_ref) |
 | B_SGR | ~10^11 T |
-| f_jet,SGR | 10^7 � (10^11/10^12)� = 10^5 m/s |
+| f_jet,SGR | 10^7  (10^11/10^12) = 10^5 m/s |
 
 At magnetar field strengths, the effective jet force is reduced because the extreme B-field suppresses the SCm correlation length. The effective f_jet scales as $f_{jet} \propto (B/B_{ref})^2$ for super-critical fields.
 
@@ -215,13 +246,13 @@ where the SCm contribution:
 
 $$\nu_{SCm} = \frac{v_{SCm} \cdot \lambda_{SCm}}{3} = \frac{10^8 \times 10^{-15}}{3} = 3.33 \times 10^{-8} \text{ m}^2/\text{s}$$
 
-For AGN jet plasma, $\nu_{plasma} \sim 10^{-6}$ m�/s at typical temperatures. The SCm viscosity contribution is small (~3%) but significant for jet stability � it is this SCm viscosity that prevents the Kelvin-Helmholtz instability from fully thermalizing the jet on short timescales.
+For AGN jet plasma, $\nu_{plasma} \sim 10^{-6}$ m/s at typical temperatures. The SCm viscosity contribution is small (~3%) but significant for jet stability  it is this SCm viscosity that prevents the Kelvin-Helmholtz instability from fully thermalizing the jet on short timescales.
 
 ### 5.2 Reynolds Number with SCm
 
 $$Re_{UQFF} = \frac{v_{jet} \cdot L_{jet}}{\nu_{eff}} = \frac{3 \times 10^8 \times 3 \times 10^{19}}{10^{-6} + 3.33 \times 10^{-8}} \approx \frac{9 \times 10^{27}}{1.03 \times 10^{-6}} \approx 8.7 \times 10^{33}$$
 
-This extreme Reynolds number ($Re \sim 10^{34}$) characterizes the fully turbulent AGN jet � but with the SCm force providing the stabilizing mechanism that prevents complete turbulent breakdown. The UQFF Stam algorithm remains stable at all Re because the dissipation is spectral (exact projection) and the SCm force is bounded.
+This extreme Reynolds number ($Re \sim 10^{34}$) characterizes the fully turbulent AGN jet  but with the SCm force providing the stabilizing mechanism that prevents complete turbulent breakdown. The UQFF Stam algorithm remains stable at all Re because the dissipation is spectral (exact projection) and the SCm force is bounded.
 
 ---
 
@@ -235,7 +266,8 @@ where:
 
 $$g_{MUGE}(r,t) = a_{DPM} + a_{THz} + a_{vac\_diff} + a_{super\_freq} + a_{aether\_res} + U_{g4i} + a_{quantum\_freq} + a_{Aether\_freq} + a_{fluid\_freq} + Osc_{term} + a_{exp\_freq} + f_{TRZ}$$
 
-This is the **UQFF Complete Quasar Jet Equation** � a single equation governing all fluid dynamics in the SCm-mediated quasar jet regime, connecting:
+This is the **UQFF Complete Quasar Jet Equation**  a single equation governing all fluid dynamics in
+the SCm-mediated quasar jet regime, connecting:
 1. Standard fluid dynamics (Navier-Stokes, left side)
 2. Thermodynamics (pressure gradient)
 3. SCm jet drive (f_jet = v_SCm/10)
@@ -249,11 +281,11 @@ This is the **UQFF Complete Quasar Jet Equation** � a single equation governin
 |----------|-------|-------|
 | SCm jet force f_jet | v_SCm/10 = 10^7 | m/s |
 | fTRZ coupling factor | 0.1 = 1/10 | dimensionless |
-| Energy bound (Gr�nwall) | E(t) < E_0 � e^(f_jet � t) | – |
-| SCm viscosity contribution | 3.33×10^-8 | m�/s |
+| Energy bound (Grnwall) | E(t) < E_0  e^(f_jet  t) | – |
+| SCm viscosity contribution | 3.33×10^-8 | m/s |
 | AGN jet Re (UQFF) | ~8.7×10^33 | dimensionless |
 | M87 jet oscillation period (UQFF) | ~55 years | yr |
-| CenA jet velocity | 15 � f_jet = 1.5×10^8 | m/s |
+| CenA jet velocity | 15  f_jet = 1.5×10^8 | m/s |
 | Millennium bridge | SCm bound prevents finite-time blow-up | – |
 
 ---
@@ -264,12 +296,13 @@ This is the **UQFF Complete Quasar Jet Equation** � a single equation governin
 2. The Jos Stam stable fluids algorithm extended with the SCm force term is unconditionally stable because $|f_{jet}|$ is bounded by $v_{SCm}/10 < c$.
 3. The SCm force provides the Millennium Prize bridge for Navier-Stokes: in a UQFF universe, the boundedness of $f_{jet}$ prevents finite-time blow-up of smooth solutions.
 4. The UQFF MUGE 12-term resonance contributes to the quasar jet through the gravity term $g_{MUGE}(r,t)$, coupling jet dynamics to the full astrophysical environment.
-5. M87, CenA, and SGR1745 jet parameters are quantitatively consistent with the UQFF jet force prediction.
+5. M87, CenA, and SGR1745 jet parameters are quantitatively consistent with the UQFF jet force
+prediction.
 
 ---
 
-**UQFF computed:** Eddington luminosity UQFF correction = 1 - [SSq]�exp(-?�?t) = 1 - 5.7e-1 � exp(-2.9e-4) = 4.3e-1; F_U at event horizon = 2.0e+18 m/s�.
-
+**UQFF computed:** Eddington luminosity UQFF correction = 1 - [SSq]exp(-??t) = 1 - 5.7e-1 
+exp(-2.9e-4) = 4.3e-1; F_U at event horizon = 2.0e+18 m/s.
 
 ---
 
@@ -277,13 +310,15 @@ This is the **UQFF Complete Quasar Jet Equation** � a single equation governin
 
 ### §A.1 Sector Classification
 
-This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see `uqff_lagrangian_derivation.py`).
+This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
-The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive quantum fundamentals (DPM, UA, SCm):
+The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
+quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_\mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
+$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
 
 where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
@@ -297,8 +332,9 @@ $$\boxed{\frac{\delta S}{\delta \phi_{\rm NS}} = \nabla^2 \phi_{\rm NS} - (4\pi 
 
 $$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\rm NS} = 0$$
 
-The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g forces) through vacuum density initialization to the sector-specific equation of motion. Every term in the E-L equation inherits its physical origin from the cosmogenesis master.
-
+The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
+forces) through vacuum density initialization to the sector-specific equation of motion. Every term
+in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 ---
 
@@ -308,9 +344,9 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.087$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m³.
+For this system, the local VDS sub-ratio is $0.087$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -322,13 +358,13 @@ Since $p_{\rm DVP} = 11$ is **sub-threshold** (threshold at $p > 26$), the syste
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
-The BSH saturation timescale for this sector is **10⁴ yr** (spin-down equilibrium):
+The BSH saturation timescale for this sector is **104 yr** (spin-down equilibrium):
 
-$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
+$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\rm SCm}$ which initializes the harmonic series at cosmogenesis.
 
@@ -336,54 +372,41 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.087 | ✓ Threshold-consistent |
-| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 11$ | ✓ Sub-threshold |
-| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
-| [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
-
+| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.087 | PASS Threshold-consistent |
+| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 11$ | PASS Sub-threshold |
+| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
+| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 ---
-
 
 ## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | ✓ Consistent |
-| Cosmological constant Λ | 1.1×10⁻⁵² m⁻² (UQFF vacuum term) | 1.114×10⁻⁵² m⁻² | Planck 2018 | ✓ Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10⁻³⁵/yr | Super-K 2024 | ✓ Consistent |
-| UQFF buoyancy signature | F_U_Bi_i unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
+| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
-**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes significant, offering a falsifiable prediction beyond the Standard Model.
+**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
+produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
+bridge.*
 
 ## References
 
 - Stam J. (1999), "Stable Fluids," SIGGRAPH 99 Proceedings – Unconditional stability
-- Clay Mathematics Institute (2000), "Navier-Stokes Existence and Smoothness" � Millennium Prize statement
-- Murphy D.T. (2026), PAPER_145 � MUGE Cycle 3 architecture + 12-term equation
-- Murphy D.T. (2026), PAPER_067 � AGN systems UQFF (M87*, CenA)
-- Murphy D.T. (2025), PAPER_066 � Magnetar systems UQFF (SGR1745)
-- `SOURCE4` namespace, `MAIN_1_CoAnQi.cpp` lines 25623�26026
-- `grok_share_07b7f7a635c04b6e90170b8a481ab1b0_content.txt` � Thread 07b7f7a6
-- Bridle A.H. & Perley R.A. (1984), ARA&A 22, 319 � Radio jet surveys (M87, CenA)
-.Groups[1].Value  � UQFF Navier-Stokes Quasar Jets: Jos Stam Stable Fluids + SCm Force Integration
-
-**Title:** UQFF Star-Magic Navier-Stokes Quasar Jet Equation – Jos Stam Stable Fluids Solver with SCm Force Integration: du/dt + f_jet = v_SCm/10 and the Millennium Bridge
-
-**Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (kappa=0.0005/day, [SSq]=0.57, fTRZ=0.1)  
-**Date:** March 2026  
-**Domain:** �2.2 MUGE Compression Cycle 3 (07b7f7a6)  
-**Source Thread:** `grok_share_07b7f7a635c04b6e90170b8a481ab1b0_content.txt`  
-**UQFF Mode:** Superconductive Resonance (fluid dynamics)  
-**Validator:** `CondensedPhysics2.py` v2.1.0 (Navier-Stokes module)  
-**Cross-links:** PAPER_153 (wormhole geodesics), PAPER_155 (SM gravity limiting case), PAPER_156 (Millennium roadmap)
-
-
----
+- Clay Mathematics Institute (2000), "Navier-Stokes Existence and Smoothness"  Millennium Prize statement
+- Murphy D.T. (2026), PAPER_145  MUGE Cycle 3 architecture + 12-term equation
+- Murphy D.T. (2026), PAPER_067  AGN systems UQFF (M87*, CenA)
+- Murphy D.T. (2025), PAPER_066  Magnetar systems UQFF (SGR1745)
+- `SOURCE4` namespace, `MAIN_1_CoAnQi.cpp` lines 2562326026
+- `grok_share_07b7f7a635c04b6e90170b8a481ab1b0_content.txt`  Thread 07b7f7a6
+- Bridle A.H. & Perley R.A. (1984), ARA&A 22, 319  Radio jet surveys (M87, CenA)
+.Groups[1].Value   UQFF Navier-Stokes Quasar Jets: Jos Stam Stable Fluids + SCm Force Integration
 
 ## Appendix: Session 204 Codebase Upgrade Reference
 
@@ -395,9 +418,9 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `f`neutron_s26_coupling`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `k`ozima_scm_cross_section`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `k`ozima_wstp_kernel`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -406,7 +429,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `r`amanujan_polylog_s26`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
 | `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
@@ -415,7 +438,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `m`ock_theta_q26`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -426,8 +449,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `r`amanujan_pi_uqff`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `m`ock_theta_pi_wstp_kernel`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]

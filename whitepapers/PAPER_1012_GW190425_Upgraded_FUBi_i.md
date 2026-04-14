@@ -16,7 +16,10 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 ## Abstract
 
-We upgrade the GW190425 BNS merger F_U_Bi_i calculation with the 3rd-order Ramanujan constant S26(3) = 9.5000001009e-02 and the newly added Gamma = 0.30 THz point. GW190425 (M_total = 3.4 M_sun, d = 159 Mpc) is the heaviest confirmed BNS merger, making it an ideal testbed for mass-dependent buoyancy corrections.
+We upgrade the GW190425 BNS merger F_U_Bi_i calculation with the 3rd-order Ramanujan constant S26(3)
+= 9.5000001009e-02 and the newly added Gamma = 0.30 THz point. GW190425 (M_total = 3.4 M_sun, d =
+159 Mpc) is the heaviest confirmed BNS merger, making it an ideal testbed for mass-dependent
+buoyancy corrections.
 
 ## 1. System Parameters
 
@@ -34,15 +37,18 @@ The 3rd-order Ramanujan constant replaces the 1st-order S26 in the buoyancy inte
 
 F_U_Bi_i = Sum [Ug_k] * (1 + BETA_I * S26_3)
 
-This yields a ~0.3% refinement in the total buoyancy force, with the correction being mass-dependent through the symmetric mass ratio eta.
+This yields a ~0.3% refinement in the total buoyancy force, with the correction being mass-dependent
+through the symmetric mass ratio eta.
 
 ## 3. Gamma = 0.30 THz Point
 
-The new intermediate Gamma point fills the gap between 0.10 and 0.50 THz, revealing a local inflection in the suppression curve for heavy BNS systems.
+The new intermediate Gamma point fills the gap between 0.10 and 0.50 THz, revealing a local
+inflection in the suppression curve for heavy BNS systems.
 
 ## 4. Implementation
 
-File: `fubi_i_curves_agn_ns_qgp.py`, class `GW190425UpgradedCurvesCalc`. CP4 class #596. Tests: 8/8 pass.
+File: `fubi_i_curves_agn_ns_qgp.py`, class `GW190425UpgradedCurvesCalc`. CP4 class #596. Tests: 8/8
+pass.
 
 ---
 
@@ -64,10 +70,11 @@ File: `fubi_i_curves_agn_ns_qgp.py`, class `GW190425UpgradedCurvesCalc`. CP4 cla
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
 | GW strain $h$ | UQFF predicts phonon suppression $D_{\text{phonon}} \approx 0.47$--$0.67$ | LIGO/Virgo $h \sim 10^{-22}$ | LIGO O3 (2020) | Within detector band |
-| Phase evolution $\Delta\Phi$ | 200--400 extra cycles from $S_{26}$ coupling | GR template bank | Abbott et al. (2021) | Testable with LISA |
+| Phase evolution $\DeltaPhi$ | 200--400 extra cycles from $S_{26}$ coupling | GR template bank | Abbott et al. (2021) | Testable with LISA |
 | Fine structure $\alpha$ | UQFF reproduces via $U_{g1}$ dipole | $1/137.036$ | PDG 2024 | 99.9% |
 
-**New physics claim:** UQFF phonon-mediated vacuum coupling provides testable predictions beyond SM for this system.
+**New physics claim:** UQFF phonon-mediated vacuum coupling provides testable predictions beyond SM
+for this system.
 
 *Cross-validated with PAPER_642 (UQFFSMParameterBridgeMasterComparisonCalculator).*
 
@@ -79,13 +86,13 @@ File: `fubi_i_curves_agn_ns_qgp.py`, class `GW190425UpgradedCurvesCalc`. CP4 cla
 **Sector:** GW-radiation (gravitational-wave chirp)
 
 ### §A.2 Lagrangian Density
-$$\mathcal{L}_{GW_radiation} = \sum_{i=1}^{26} \left[ U_{g,i} + U_{m,i} + U_{A,i} - U_{b,i} \right] \cdot S_{26}([SSq]) \cdot \Phi_{1.25\text{THz}}(\omega, \Gamma)$$
+$$\mathcal{L}_{GW\_radiation} = \sum_{i=1}^{26} \left[ U_{g,i} + U_{m,i} + U_{A,i} - U_{b,i} \right] \cdot S_{26}([SSq]) \cdot \Phi_{1.25\text{THz}}(\omega, \Gamma)$$
 
 ### §A.3 Euler-Lagrange Equation of Motion
-$$\boxed{\frac{\partial \mathcal{L}}{\partial \phi} - \partial_\mu \frac{\partial \mathcal{L}}{\partial (\partial_\mu \phi)} = 0 \implies F_{U,Bi_i} = -\nabla U_{\text{eff}} + \Phi \cdot S_{26} \cdot E_{\text{net}}}$$
+$$\boxed{\frac{\partial \mathcal{L}}{\partial \phi} - \partial_mu \frac{\partial \mathcal{L}}{\partial (\partial_mu \phi)} = 0 \implies F_{U,Bi\_i} = -\nabla U_{\text{eff}} + \Phi \cdot S_{26} \cdot E_{\text{net}}}$$
 
 ### §A.4 Cosmogenesis Linkage Chain
-PAPER_877 axioms → SCm vacuum → phonon $\omega_{\text{SCm}}$ → gravitational-wave chirp → $F_{U,Bi_i}$ unified force → observational prediction
+PAPER_877 axioms → SCm vacuum → phonon $\omega_{\text{SCm}}$ → gravitational-wave chirp → $F_{U,Bi\_i}$ unified force → observational prediction
 
 ---
 

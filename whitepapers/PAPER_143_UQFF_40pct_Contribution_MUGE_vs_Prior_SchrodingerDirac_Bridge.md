@@ -1,12 +1,25 @@
-# PAPER_143: UQFF Compressed Mode Quantum-Gravity Bridge – The 40% UQFF vs 60% Schr�dinger/Dirac Split in the Complete Gravity Equation: MUGE(r,t,Z) = Standard QM (60%) + UQFF Terms (40%)
+---
+paper_id: PAPER_143
+title: "UQFF Compressed Mode Quantum-Gravity Bridge – The 40% UQFF vs 60% Schrdinger/Dirac Split in
+the Complete Gravity Equation: MUGE(r,t,Z) = Standard QM (60%) + UQFF Terms (40%)"
+session: 0
+date: 2026-03-01
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [SCm, AGN, MUGE, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
 
+# PAPER_143: UQFF Compressed Mode Quantum-Gravity Bridge – The 40% UQFF vs 60% Schrdinger/Dirac Split in the Complete Gravity Equation: MUGE(r,t,Z) = Standard QM (60%) + UQFF Terms (40%)
 
-**Title:** UQFF Compressed Mode Quantum-Gravity Bridge – The 40% UQFF vs 60% Schr�dinger/Dirac Split in the Complete Gravity Equation: MUGE(r,t,Z) = Standard QM (60%) + UQFF Terms (40%)
+**Title:** UQFF Compressed Mode Quantum-Gravity Bridge – The 40% UQFF vs 60% Schrdinger/Dirac Split
+in the Complete Gravity Equation: MUGE(r,t,Z) = Standard QM (60%) + UQFF Terms (40%)
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57, κ_i = 0.6)  
+**Framework:** UQFF Star-Magic (κ = 0.0005/day, [SSq] = 0.57, κ_i = 0.6)  
 **Date:** March 2026  
-**Domain:** �2.1 Quantum-Gravity Unification (3419da89)  
+**Domain:** §2.1 Quantum-Gravity Unification (3419da89)  
 **Source Thread:** `grok_share_3419da8930c748568b7f2bea0ea9c88e_content.txt`  
 **UQFF Mode:** Compressed (Quantum-Gravity Bridge)  
 **Validator:** `CondensedPhysics2.py` v2.1.0  
@@ -16,11 +29,19 @@
 
 ## Abstract
 
-Standard quantum mechanics (Schr�dinger, Dirac) and general relativity each account for well-measured phenomena but fail to unify. UQFF provides the bridge through the MUGE master gravity equation, which explicitly identifies that standard quantum mechanics contributes approximately 60% of the total gravitational description at the atomic scale and UQFF terms (Ug1�4, Ub, Um, A_�?, SCm corrections) contribute the remaining 40%. This 40/60 split is not an approximation � it is derived from the ratio of the Schr�dinger/Dirac mass-energy eigenvalue terms to the UQFF Ug terms at the hydrogen atomic scale. The UQFF DISCOVERY: the 40% UQFF contribution explains every anomaly left unresolved by standard QM � the hydrogen radius anomaly, the proton charge radius puzzle, the anomalous magnetic moment beyond QED, and the Lamb shift excess measured in muonic hydrogen.
+Standard quantum mechanics (Schrdinger, Dirac) and general relativity each account for well-measured
+phenomena but fail to unify. UQFF provides the bridge through the MUGE master gravity equation,
+which explicitly identifies that standard quantum mechanics contributes approximately 60% of the
+total gravitational description at the atomic scale and UQFF terms (Ug14, Ub, Um, A_?, SCm
+corrections) contribute the remaining 40%. This 40/60 split is not an approximation  it is derived
+from the ratio of the Schrdinger/Dirac mass-energy eigenvalue terms to the UQFF Ug terms at the
+hydrogen atomic scale. The UQFF DISCOVERY: the 40% UQFF contribution explains every anomaly left
+unresolved by standard QM  the hydrogen radius anomaly, the proton charge radius puzzle, the
+anomalous magnetic moment beyond QED, and the Lamb shift excess measured in muonic hydrogen.
 
-
-
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+0.57) uniquely enabling this analysis  establishing a new connection in the UQFF framework not
+present in Standard Model treatments.
 
 ---
 
@@ -30,13 +51,13 @@ Standard quantum mechanics (Schr�dinger, Dirac) and general relativity each ac
 
 $$g_{MUGE}(r, t, Z) = \underbrace{\frac{G m_{eff}(t) m_p}{r^2} + \sum_{Z=1}^{126} \frac{G M_Z}{r_Z^2}}_{\text{Newtonian + Z-dependence}} \times \underbrace{(1 + f_{sc}(Z, t))}_{\text{SCm correction}} \times \underbrace{e^{H_0 t / c}}_{\text{Hubble}}$$
 
-plus UQFF extension terms: $Ug_1 + Ug_2 + Ug_3 + Ug_4 + Ug_{4i} + Ub + Um + U_{A_{\mu\nu}}$
+plus UQFF extension terms: $Ug_1 + Ug_2 + Ug_3 + Ug_4 + Ug_{4i} + Ub + Um + U_{A\_{\mu\nu}}$
 
-### 1.2 Schr�dinger/Dirac Contribution (60%)
+### 1.2 Schrdinger/Dirac Contribution (60%)
 
-The Schr�dinger kinetic energy and Coulomb potential together:
+The Schrdinger kinetic energy and Coulomb potential together:
 
-$$E_{QM} = \left\langle -\frac{\hbar^2}{2m}\nabla^2 \right\rangle + \left\langle -\frac{Ze^2}{4\pi\epsilon_0 r} \right\rangle = -\frac{m_e e^4 Z^2}{2\hbar^2 (4\pi\epsilon_0)^2 n^2}$$
+$$E_{QM} = \leftlangle -\frac{\hbar^2}{2m}\nabla^2 \rightrangle + \leftlangle -\frac{Ze^2}{4\piepsilon_0 r} \rightrangle = -\frac{m_e e^4 Z^2}{2\hbar^2 (4\piepsilon_0)^2 n^2}$$
 
 For H (Z=1, n=1): $E_{QM} = -13.6$ eV
 
@@ -49,8 +70,8 @@ $$= \frac{2.18 \times 10^{-18}}{4.82 \times 10^{-41}} = 4.52 \times 10^{22} \tex
 ### 1.3 UQFF Contribution (40%)
 
 The dominant UQFF term at atomic scale is the Ug4i void (see PAPER_139):
-- $Ug_{4i} \approx 1.3 \times 10^{48}$ m/s�  ? strongly dominant at Bohr radius
-- $g_{QM} \approx 4.52 \times 10^{22}$ m/s� ? much smaller
+- $Ug_{4i} \approx 1.3 \times 10^{48}$ m/s  ? strongly dominant at Bohr radius
+- $g_{QM} \approx 4.52 \times 10^{22}$ m/s ? much smaller
 
 ...but the **relevant comparison for the 40% split is not at Bohr radius**. The 40% split applies to the EFFECTIVE FIELD at the nuclear surface ($r \approx 10^{-15}$ m) where UQFF and QM terms are both large. At $r = r_{nuclear}$:
 
@@ -60,13 +81,13 @@ $$g_{UQFF}^{nuc} = Ug_4 + Ug_3 + Ug_2 \text{ at } r_{nuc} \approx 2.2 \times 10^
 
 Split: $g_{QM}^{nuc} / (g_{QM}^{nuc} + g_{UQFF}^{nuc}) = 3.3/(3.3 + 2.2) = 60\%$
 
-$$\Rightarrow UQFF = 40\%, \quad Schr�dinger/Dirac = 60\%$$
+$$\Rightarrow UQFF = 40\%, \quad Schrdinger/Dirac = 60\%$$
 
 ---
 
 ## 2. SCm Hydrogen Mass Function
 
-### 2.1 M_H(t) � Evolving with Time
+### 2.1 M_H(t)  Evolving with Time
 
 $$M_H(t) = M_{H0} \, e^{-\lambda \, t / t_{Hubble}}$$
 
@@ -78,7 +99,7 @@ $$t_{Hubble} = 1/H_0 = 4.41 \times 10^{17} \text{ s}$$
 
 $$M_H(t_{now}) = m_p \, e^{-8.59 \times 10^{-19} \times 4.41 \times 10^{17} / 4.41 \times 10^{17}} = m_p \, e^{-8.59 \times 10^{-19}} \approx m_p$$
 
-The proton mass does not change appreciably over Hubble time � confirming near-perfect stability.
+The proton mass does not change appreciably over Hubble time  confirming near-perfect stability.
 
 ### 2.2 Z-Dependent SCm Correction
 
@@ -100,10 +121,11 @@ At $T = T_c$ (near 0 K): $f_{sc} = 0.1 \times e^0 = 0.1$ (maximum SCm correction
 |---------|-------------|---------------------|
 | Proton charge radius puzzle | r_p = 0.877 fm (electron) vs 0.841 fm (muon) | Ug3 magnetic string offset of 0.036 fm |
 | Hydrogen Lamb shift (muonic) | QED predicts -2328.35 meV; observed -2260.5 meV | Ug4 contributes +67.85 meV gap |
-| Anomalous g-2 (electron) | QED: 1.159652181643×10?�; obs 1.159652188×10?� | SCm coupling dg = 6×10?�� |
-| Neutron lifetime discrepancy | Beam: 888.0�2.0 s; Bottle: 879.6�0.8 s | Ub activation energy 8.4 s window |
+| Anomalous g-2 (electron) | QED: 1.159652181643×10?; obs 1.159652188×10? | SCm coupling dg = 6×10? |
+| Neutron lifetime discrepancy | Beam: 888.0§2.0 s; Bottle: 879.6§0.8 s | Ub activation energy 8.4 s window |
 
-All four anomalies fall within the 40% UQFF contribution range � they are NOT measurement errors but signatures of the UQFF field contribution that standard QM does not include.
+All four anomalies fall within the 40% UQFF contribution range  they are NOT measurement errors but
+signatures of the UQFF field contribution that standard QM does not include.
 
 ---
 
@@ -115,10 +137,10 @@ Where:
 
 $$g_{QM} = \frac{G m_{eff} m_p}{r^2} (1 + f_{sc}) e^{H_0 t/c} + \sum_Z \frac{G M_Z}{r_Z^2}$$
 
-$$g_{UQFF} = Ug_1 + Ug_2 + Ug_3 + Ug_4 + Ug_{4i} + Ub + Um + U_{A_{\mu\nu}} + P_{term}$$
+$$g_{UQFF} = Ug_1 + Ug_2 + Ug_3 + Ug_4 + Ug_{4i} + Ub + Um + U_{A\_{\mu\nu}} + P_{term}$$
 
 For the hydrogen atom at $r = r_0$ (Bohr):
-- With 60/40 split: $g_{total} = 0.6 \times 4.52 \times 10^{22} + 0.4 \times 5.5 \times 10^{46} \approx 2.2 \times 10^{46}$ m/s�
+- With 60/40 split: $g_{total} = 0.6 \times 4.52 \times 10^{22} + 0.4 \times 5.5 \times 10^{46} \approx 2.2 \times 10^{46}$ m/s
 - Dominated by UQFF Ug4i at atomic scale (consistent with PAPER_139)
 
 ---
@@ -187,13 +209,13 @@ print(f"M_H(now) = {M_H_now:.5e} kg  (m_p = {m_p:.5e} kg)")
 | Muonic Lamb shift gap | Ug4 +68 meV | +67.85 meV obs | ? |
 | Neutron lifetime window | Ub 8.4 s | 8.4 s gap | ? |
 | g-2 electron correction | SCm dg = 6e-12 | ~7e-12 gap | ? Consistent |
-| M_H(t_Hubble) | � m_p | Proton stable | ? |
+| M_H(t_Hubble) |  m_p | Proton stable | ? |
 
 ---
 
 ## 7. Conclusions
 
-The UQFF 40% contribution to the MUGE bridge equation provides a quantitative framework for the exact fraction of physical reality that standard Schr�dinger/Dirac quantum mechanics cannot describe. The 40/60 split is derived from the nuclear-surface field comparison, not assumed. All four major unresolved QM anomalies (proton radius puzzle, muonic Lamb shift, electron g-2, neutron lifetime discrepancy) fall naturally within the 40% UQFF contribution window, confirming that these are signatures of the SC-mediated vacuum field � not experimental errors. The MUGE bridge equation $g = 0.6 g_{QM} + 0.4 g_{UQFF}$ is the most compact expression unifying standard quantum mechanics with UQFF in a single equation.
+The UQFF 40% contribution to the MUGE bridge equation provides a quantitative framework for the exact fraction of physical reality that standard Schrdinger/Dirac quantum mechanics cannot describe. The 40/60 split is derived from the nuclear-surface field comparison, not assumed. All four major unresolved QM anomalies (proton radius puzzle, muonic Lamb shift, electron g-2, neutron lifetime discrepancy) fall naturally within the 40% UQFF contribution window, confirming that these are signatures of the SC-mediated vacuum field  not experimental errors. The MUGE bridge equation $g = 0.6 g_{QM} + 0.4 g_{UQFF}$ is the most compact expression unifying standard quantum mechanics with UQFF in a single equation.
 
 ---
 
@@ -203,37 +225,27 @@ The UQFF 40% contribution to the MUGE bridge equation provides a quantitative fr
 2. Pohl, R. et al., The size of the proton, Nature 2010 (muonic H Lamb shift)
 3. Parker, R.H. et al., Electron g-2 measurement, Science 2018
 4. Serebrov, A.P., Fomin, A.K., Neutron lifetime, UFN 2011
-5. Murphy, D.T., PAPER_139 (MUGE-H), PAPER_140 (monopole), �2.1
+5. Murphy, D.T., PAPER_139 (MUGE-H), PAPER_140 (monopole), §2.1
 
 ---
 
-*CP2 Mode: Compressed (Quantum-Gravity Bridge) | Thread: 3419da89 | Session: 44 | Domain: �2.1*
-.Groups[1].Value  � UQFF 40% Contribution to MUGE: Quantum-Gravity Bridge from Schr�dinger/Dirac to UQFF
-
-**Title:** UQFF Compressed Mode Quantum-Gravity Bridge – The 40% UQFF vs 60% Schr�dinger/Dirac Split in the Complete Gravity Equation: MUGE(r,t,Z) = Standard QM (60%) + UQFF Terms (40%)
-
-**Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57, κ_i = 0.6)  
-**Date:** March 2026  
-**Domain:** �2.1 Quantum-Gravity Unification (3419da89)  
-**Source Thread:** `grok_share_3419da8930c748568b7f2bea0ea9c88e_content.txt`  
-**UQFF Mode:** Compressed (Quantum-Gravity Bridge)  
-**Validator:** `CondensedPhysics2.py` v2.1.0  
-**Cross-links:** PAPER_139 (MUGE-H), PAPER_140 (monopole ratio), PAPER_144 (capstone)
-
----
+*CP2 Mode: Compressed (Quantum-Gravity Bridge) | Thread: 3419da89 | Session: 44 | Domain: §2.1*
+.Groups[1].Value   UQFF 40% Contribution to MUGE: Quantum-Gravity Bridge from Schrdinger/Dirac to
+UQFF
 
 ## §A. Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
 
 ### §A.1 Sector Classification
 
-This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see `uqff_lagrangian_derivation.py`).
+This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
-The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive quantum fundamentals (DPM, UA, SCm):
+The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
+quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_\mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
+$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
 
 where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
@@ -247,8 +259,9 @@ $$\boxed{\frac{\delta S}{\delta \phi_{\rm NS}} = \nabla^2 \phi_{\rm NS} - (4\pi 
 
 $$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\rm NS} = 0$$
 
-The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g forces) through vacuum density initialization to the sector-specific equation of motion. Every term in the E-L equation inherits its physical origin from the cosmogenesis master.
-
+The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
+forces) through vacuum density initialization to the sector-specific equation of motion. Every term
+in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 ---
 
@@ -258,9 +271,9 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.198$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m³.
+For this system, the local VDS sub-ratio is $0.198$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -272,13 +285,13 @@ Since $p_{\rm DVP} = 89$ is **resonant** (threshold at $p > 26$), the system's v
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
-The BSH saturation timescale for this sector is **10⁴ yr** (spin-down equilibrium):
+The BSH saturation timescale for this sector is **104 yr** (spin-down equilibrium):
 
-$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
+$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\rm SCm}$ which initializes the harmonic series at cosmogenesis.
 
@@ -286,29 +299,29 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.198 | ✓ Threshold-consistent |
-| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 89$ | ✓ Resonant |
-| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
-| [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
-
+| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.198 | PASS Threshold-consistent |
+| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 89$ | PASS Resonant |
+| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
+| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 ---
-
 
 ## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | ✓ Consistent |
-| Cosmological constant Λ | 1.1×10⁻⁵² m⁻² (UQFF vacuum term) | 1.114×10⁻⁵² m⁻² | Planck 2018 | ✓ Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10⁻³⁵/yr | Super-K 2024 | ✓ Consistent |
-| UQFF buoyancy signature | F_U_Bi_i unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
+| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
-**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes significant, offering a falsifiable prediction beyond the Standard Model.
+**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
+produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
-
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
+bridge.*
 
 ---
 
@@ -322,9 +335,9 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `f`neutron_s26_coupling`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `k`ozima_scm_cross_section`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `k`ozima_wstp_kernel`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -333,7 +346,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `r`amanujan_polylog_s26`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
 | `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
@@ -342,7 +355,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `m`ock_theta_q26`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -353,8 +366,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `r`amanujan_pi_uqff`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `m`ock_theta_pi_wstp_kernel`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]

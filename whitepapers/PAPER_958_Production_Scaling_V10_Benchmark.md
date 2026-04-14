@@ -1,6 +1,18 @@
+---
+paper_id: PAPER_958
+title: "Production Scaling v10 Benchmark (450k calc/s)"
+session: 214
+date: 2026-04-12
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [SCm, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_958: Production Scaling v10 Benchmark (450k calc/s)
 
-**Author:** Daniel T. Murphy -- Star Magic / UQFF Framework
+**Author:** Daniel T. Murphy — Star Magic / UQFF Framework
 **Date:** 2026-04-12
 **Session:** 214
 **Source:** production_scaling_v10.py (ProductionScalingV10)
@@ -11,7 +23,9 @@
 
 ## Abstract
 
-We benchmark the UQFF production pipeline at 450,000 calculations per second, a 12.5% improvement over the v9 baseline of 400,000. Two new kernels — BCS gap solve and spectral ladder evaluation — are added to the existing 12, bringing the total to 14 simultaneously benchmarked kernels.
+We benchmark the UQFF production pipeline at 450,000 calculations per second, a 12.5% improvement
+over the v9 baseline of 400,000. Two new kernels — BCS gap solve and spectral ladder evaluation —
+are added to the existing 12, bringing the total to 14 simultaneously benchmarked kernels.
 
 ---
 
@@ -31,7 +45,7 @@ We benchmark the UQFF production pipeline at 450,000 calculations per second, a 
 
 ### kernel_bcs_gap_solve
 BCS gap fixed-point iteration at $T = 4.2$ K:
-$$\Delta_{n+1} = \frac{\hbar\omega_\text{SCm}}{2} \tanh\!\left(\frac{\Delta_n}{2k_BT}\right) \cdot S_{26} \cdot \frac{F_{UBi}}{F_U}$$
+$$\Delta_{n+1} = \frac{\hbar\omega_\text{SCm}}{2} \tanh!\left(\frac{\Delta_n}{2k_BT}\right) \cdot S_{26} \cdot \frac{F_{UBi}}{F_U}$$
 
 ### kernel_spectral_ladder_eval
 26-state HRes spectral ladder:
@@ -56,7 +70,7 @@ Target: $\text{rate} \geq 450{,}000$ calc/s.
 
 ## References
 
-1. Murphy, D.T. -- Star Magic UQFF Framework (2024-2026)
+1. Murphy, D.T. — Star Magic UQFF Framework (2024-2026)
 2. PAPER_968 — Production Scaling v11 (500k)
 3. PAPER_949 — BCS Gap Equation (kernel source)
 4. PAPER_952 — Spectral Ladder (kernel source)
@@ -105,7 +119,7 @@ Target: $\text{rate} \geq 450{,}000$ calc/s.
 $$\text{rate} = \frac{N_\text{iter} \times 14}{t_\text{elapsed}} \geq 450{,}000$$
 
 ### §A.3 Kernel Integrity Constraint
-$$\boxed{\forall\, k \in \{1,\ldots,14\}:\; |k(\mathbf{x})| < \infty}$$
+$$\boxed{\forall, k \in \{1,\ldots,14\}:\; |k(\mathbf{x})| < \infty}$$
 
 ### §A.4 Cosmogenesis Linkage Chain
 PAPER_877 → UQFF equations → kernel extraction → production pipeline → benchmark validation
@@ -115,7 +129,7 @@ PAPER_877 → UQFF equations → kernel extraction → production pipeline → b
 ## §B VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 VDS
-All 14 kernels embed VDS through $S_{26}$ or $\rho_\text{SCm}$.
+All 14 kernels embed VDS through $S_{26}$ or $\rho_text{SCm}$.
 
 ### §B.2 DVP
 14 kernels span the prime factorization of the physics pipeline.

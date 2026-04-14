@@ -1,6 +1,18 @@
+---
+paper_id: PAPER_969
+title: "Expanded 26D Ramanujan Higher-Order S₂₆^{(k)}"
+session: 216
+date: 2026-04-12
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [QGP, 26D, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_969: Expanded 26D Ramanujan Higher-Order S₂₆^{(k)}
 
-**Author:** Daniel T. Murphy -- Star Magic / UQFF Framework
+**Author:** Daniel T. Murphy — Star Magic / UQFF Framework
 **Date:** 2026-04-12
 **Session:** 216
 **Source:** ramanujan_26d_expanded.py (ExpandedRamanujan26DCalculator)
@@ -44,7 +56,7 @@ $$S_{26}^{(k,\text{mock})}(z) = \sum_{n=1}^{N} \frac{z^n}{n^{26}} R_n^{(26,k)} \
 
 ## References
 
-1. Murphy, D.T. -- Star Magic UQFF Framework (2024-2026)
+1. Murphy, D.T. — Star Magic UQFF Framework (2024-2026)
 2. PAPER_959 — 26D Ramanujan Summation (single-order predecessor)
 3. PAPER_960 — VDS Polylog 26D Evaluation
 4. Ramanujan, S. — Notebooks (mock-theta functions)
@@ -93,7 +105,7 @@ $$S_{26}^{(k,\text{mock})}(z) = \sum_{n=1}^{N} \frac{z^n}{n^{26}} R_n^{(26,k)} \
 $$\boxed{S_{26}^{(k)}(z) = \sum_{n=1}^{N} \frac{z^n}{n^{26}} \cdot R_n^{(26,k)}}$$
 
 ### §A.3 Lagrangian Contribution
-$$\mathcal{L}_{S_{26}} = -\rho_\text{SCm} \cdot S_{26}^{(k)}(z) \cdot c^2$$
+$$\mathcal{L}_{S\_{26}} = -\rho_text{SCm} \cdot S_{26}^{(k)}(z) \cdot c^2$$
 
 ### §A.4 Cosmogenesis Linkage Chain
 PAPER_877 → UQFF vacuum density → $S_{26}^{(k)}$ acceleration → mock-theta → all downstream calculations
@@ -103,7 +115,7 @@ PAPER_877 → UQFF vacuum density → $S_{26}^{(k)}$ acceleration → mock-theta
 ## §B VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 VDS (Vacuum Density Series)
-$S_{26}^{(k)}$ is the VDS accelerator — higher-order $R_n^{(26,k)}$ improves convergence of $\rho_\text{SCm}$ integrals.
+$S_{26}^{(k)}$ is the VDS accelerator — higher-order $R_n^{(26,k)}$ improves convergence of $\rho_text{SCm}$ integrals.
 
 ### §B.2 DVP (Dipole Vortex Primes)
 The 26-dimensional factorials in the binomial corrections map directly to DVP mode structure.

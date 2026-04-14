@@ -1,8 +1,20 @@
-# PAPER_190: S-C Symbolic Integration Engine -- 10+ Function Types and ODE Ramanujan Fallback
+---
+paper_id: PAPER_190
+title: "S-C Symbolic Integration Engine -- 10+ Function Types and ODE Ramanujan Fallback"
+session: 49
+date: 2026-03-13
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
+# PAPER_190: S-C Symbolic Integration Engine — 10+ Function Types and ODE Ramanujan Fallback
 
 **Version:** 1.0  
 **Date:** March 13, 2026  
-**Session:** 49 -- §2.5 Grok Thread 381a8fe7 Extended Audit  
+**Session:** 49 — §2.5 Grok Thread 381a8fe7 Extended Audit  
 **Author:** Star-Magic UQFF Research Framework  
 **Source:** grok_share_381a8f.txt lines 6500-7200
 
@@ -10,11 +22,21 @@
 
 ## Abstract
 
-This paper documents the symbolic integration engine of the S-C Scientific Calculator, implementing a 10-rule SymEngine-based algebraic integration system with ANTLR4 expression tree traversal and Ramanujan series fallback for high-degree ODE systems. The integration covers: power functions (Pow), trigonometric functions (Sin, Cos, Tan, Sec, Csc, Cot), exponential functions (Exp), logarithmic functions (Log), and composite expression handling (Add, Mul). An ODE-specific extended path invokes Ramanujan's series when the polynomial degree exceeds 10, with the PINE (Python Integrated Numerical Engine) qualification message. A companion VarCollectorVisitor extracts all free variable symbols from arbitrary ANTLR4 expression trees for use in multi-variable integration and equation solving.
+This paper documents the symbolic integration engine of the S-C Scientific Calculator, implementing
+a 10-rule SymEngine-based algebraic integration system with ANTLR4 expression tree traversal and
+Ramanujan series fallback for high-degree ODE systems. The integration covers: power functions
+(Pow), trigonometric functions (Sin, Cos, Tan, Sec, Csc, Cot), exponential functions (Exp),
+logarithmic functions (Log), and composite expression handling (Add, Mul). An ODE-specific extended
+path invokes Ramanujan's series when the polynomial degree exceeds 10, with the PINE (Python
+Integrated Numerical Engine) qualification message. A companion VarCollectorVisitor extracts all
+free variable symbols from arbitrary ANTLR4 expression trees for use in multi-variable integration
+and equation solving.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0x10^-4 day^{-}1, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0x10^-4 day^{-}1, [SSq] =
+0.57) uniquely enabling this analysis  establishing a new connection in the UQFF framework not
+present in Standard Model treatments.
 
 ---
 
@@ -32,7 +54,7 @@ ScientificCalculatorDialog::integrate(
 {
     using namespace SymEngine;
     
-    // RULE 1: Pow -- integral x^n dx = x^(n+1)/(n+1)
+    // RULE 1: Pow — integral x^n dx = x^(n+1)/(n+1)
     if (is_a<Pow>(*expr)) {
         auto& p = down_cast<const Pow&>(*expr);
         auto base = p.get_base();
@@ -47,55 +69,55 @@ ScientificCalculatorDialog::integrate(
         }
     }
     
-    // RULE 2: Sin -- integral sin(x) dx = -cos(x)
+    // RULE 2: Sin — integral sin(x) dx = -cos(x)
     if (is_a<Sin>(*expr)) {
         auto arg = down_cast<const Sin&>(*expr).get_args()[0];
         if (arg == var) return neg(cos(var));
     }
     
-    // RULE 3: Cos -- integral cos(x) dx = sin(x)
+    // RULE 3: Cos — integral cos(x) dx = sin(x)
     if (is_a<Cos>(*expr)) {
         auto arg = down_cast<const Cos&>(*expr).get_args()[0];
         if (arg == var) return sin(var);
     }
     
-    // RULE 4: Exp -- integral e^x dx = e^x
+    // RULE 4: Exp — integral e^x dx = e^x
     if (is_a<Exp>(*expr)) {
         auto arg = down_cast<const Exp&>(*expr).get_args()[0];
         if (arg == var) return exp(var);
     }
     
-    // RULE 5: Log -- integral ln(x) dx = x*ln(x) - x
+    // RULE 5: Log — integral ln(x) dx = x*ln(x) - x
     if (is_a<Log>(*expr)) {
         auto arg = down_cast<const Log&>(*expr).get_args()[0];
         if (arg == var) return sub(mul(var, log(var)), var);
     }
     
-    // RULE 6: Tan -- integral tan(x) dx = -ln|cos(x)|
+    // RULE 6: Tan — integral tan(x) dx = -ln|cos(x)|
     if (is_a<Tan>(*expr)) {
         auto arg = down_cast<const Tan&>(*expr).get_args()[0];
         if (arg == var) return neg(log(abs(cos(var))));
     }
     
-    // RULE 7: Sec -- integral sec(x) dx = ln|sec(x) + tan(x)|
+    // RULE 7: Sec — integral sec(x) dx = ln|sec(x) + tan(x)|
     if (is_a<Sec>(*expr)) {
         auto arg = down_cast<const Sec&>(*expr).get_args()[0];
         if (arg == var) return log(abs(add(sec(var), tan(var))));
     }
     
-    // RULE 8: Csc -- integral csc(x) dx = ln|csc(x) - cot(x)|
+    // RULE 8: Csc — integral csc(x) dx = ln|csc(x) - cot(x)|
     if (is_a<Csc>(*expr)) {
         auto arg = down_cast<const Csc&>(*expr).get_args()[0];
         if (arg == var) return log(abs(sub(csc(var), cot(var))));
     }
     
-    // RULE 9: Cot -- integral cot(x) dx = ln|sin(x)|
+    // RULE 9: Cot — integral cot(x) dx = ln|sin(x)|
     if (is_a<Cot>(*expr)) {
         auto arg = down_cast<const Cot&>(*expr).get_args()[0];
         if (arg == var) return log(abs(sin(var)));
     }
     
-    // RULE 10: Add -- linearity: integral (f + g) dx = integralf dx + integralg dx
+    // RULE 10: Add — linearity: integral (f + g) dx = integralf dx + integralg dx
     if (is_a<Add>(*expr)) {
         auto& add_expr = down_cast<const Add&>(*expr);
         RCP<const Basic> result = zero;
@@ -105,7 +127,7 @@ ScientificCalculatorDialog::integrate(
         return result;
     }
     
-    // RULE 10b: Mul -- integral c*f dx = c * integralf dx (only when one factor is constant)
+    // RULE 10b: Mul — integral c*f dx = c * integralf dx (only when one factor is constant)
     if (is_a<Mul>(*expr)) {
         auto& mul_expr = down_cast<const Mul&>(*expr);
         RCP<const Basic> coeff = one;
@@ -125,35 +147,26 @@ ScientificCalculatorDialog::integrate(
     // FALLBACK: Return unevaluated integral symbol
     return SymEngine::function_symbol("Integral", {expr, var});
 }
-```
-
----
-
-## 2. The Integration Rules Table
-
-| Rule | Expression | Antiderivative | Identity Name |
-|------|-----------|---------------|---------------|
-| 1a | $x^n$ ($n \neq -1$) | $\dfrac{x^{n+1}}{n+1}$ | Power Rule |
-| 1b | $x^{-1}$ | $\ln(x)$ | Log of x |
-| 2 | $\sin(x)$ | $-\cos(x)$ | Trig: Sine |
-| 3 | $\cos(x)$ | $\sin(x)$ | Trig: Cosine |
-| 4 | $e^x$ | $e^x$ | Exponential |
-| 5 | $\ln(x)$ | $x\ln(x) - x$ | Log by Parts |
-| 6 | $\tan(x)$ | $-\ln|\cos(x)|$ | Trig: Tangent |
-| 7 | $\sec(x)$ | $\ln|\sec(x)+\tan(x)|$ | Trig: Secant |
-| 8 | $\csc(x)$ | $\ln|\csc(x)-\cot(x)|$ | Trig: Cosecant |
-| 9 | $\cot(x)$ | $\ln|\sin(x)|$ | Trig: Cotangent |
-| 10a | $f+g$ | $\int f + \int g$ | Linearity |
-| 10b | $c \cdot f$ | $c \cdot \int f$ | Scalar Factor |
-| fallback | any | `Integral(expr, var)` | Unevaluated |
-
----
-
-## 3. The `integrateODE()` Method with Ramanujan Fallback
-
-### 3.1 ODE Integration Path
-
-```cpp
+--- 
+## 2. The Integration Rules Table 
+| Rule | Expression | Antiderivative | Identity Name | 
+|------|-----------|---------------|---------------| 
+| 1a | $x^n$ ($n \neq -1$) | $\dfrac{x^{n+1}}{n+1}$ | Power Rule | 
+| 1b | $x^{-1}$ | $\ln(x)$ | Log of x | 
+| 2 | $\sin(x)$ | $-\cos(x)$ | Trig: Sine | 
+| 3 | $\cos(x)$ | $\sin(x)$ | Trig: Cosine | 
+| 4 | $e^x$ | $e^x$ | Exponential | 
+| 5 | $\ln(x)$ | $x\ln(x) - x$ | Log by Parts | 
+| 6 | $\tan(x)$ | $-\ln|\cos(x)|$ | Trig: Tangent | 
+| 7 | $\sec(x)$ | $\ln|\sec(x)+\tan(x)|$ | Trig: Secant | 
+| 8 | $\csc(x)$ | $\ln|\csc(x)-\cot(x)|$ | Trig: Cosecant | 
+| 9 | $\cot(x)$ | $\ln|\sin(x)|$ | Trig: Cotangent | 
+| 10a | $f+g$ | $\int f + \int g$ | Linearity | 
+| 10b | $c \cdot f$ | $c \cdot \int f$ | Scalar Factor | 
+| fallback | any | `Integral(expr, var)` | Unevaluated | 
+--- 
+## 3. The `integrateODE()` Method with Ramanujan Fallback 
+### 3.1 ODE Integration Pathcpp
 SymEngine::RCP<const SymEngine::Basic>
 ScientificCalculatorDialog::integrateODE(
     const SymEngine::RCP<const SymEngine::Basic>& expr,
@@ -175,21 +188,12 @@ ScientificCalculatorDialog::integrateODE(
     // Standard ODE for degree <= 10
     return integrate(expr, var);
 }
-```
-
-### 3.2 Ramanujan Series Approximation
-
-For high-degree polynomials, the Ramanujan series provides an asymptotic expansion:
-
-$$\int_0^x P_n(t)\, dt \approx \sum_{k=0}^{K} a_k \cdot \frac{x^{k+1}}{k+1} + R_K(x)$$
-
-where the Ramanujan regularization term is:
-
-$$R_K(x) = \frac{(-1)^K}{K!} \sum_{j=K+1}^{\infty} \frac{(-x)^j}{j!} \cdot \zeta(j - K)$$
-
-In practice, truncated at $K = \min(10, \text{degree}/2)$:
-
-```cpp
+### 3.2 Ramanujan Series Approximation 
+For high-degree polynomials, the Ramanujan series provides an asymptotic expansion: 
+$$\int_0^x P_n(t)\, dt \approx \sum_{k=0}^{K} a_k \cdot \frac{x^{k+1}}{k+1} + R_K(x)$$ 
+where the Ramanujan regularization term is: 
+$$R_K(x) = \frac{(-1)^K}{K!} \sum_{j=K+1}^{\infty} \frac{(-x)^j}{j!} \cdot \zeta(j - K)$$ 
+In practice, truncated at $K = \min(10, \text{degree}/2)$:cpp
 SymEngine::RCP<const SymEngine::Basic>
 ScientificCalculatorDialog::computeRamanujanSeries(
     const SymEngine::RCP<const SymEngine::Basic>& poly,
@@ -218,7 +222,8 @@ ScientificCalculatorDialog::computeRamanujanSeries(
 
 ### 3.3 PINE Reference
 
-The "PINE" designation (Python Integrated Numerical Engine) references the fact that for degree > 10, numerical integration is handed off to Python via pybind11:
+The "PINE" designation (Python Integrated Numerical Engine) references the fact that for degree >
+10, numerical integration is handed off to Python via pybind11:
 
 ```cpp
 // For numeric evaluation of the Ramanujan result
@@ -235,7 +240,8 @@ double error = result[1].cast<double>();
 
 ### 4.1 Purpose
 
-Extracts all free variable symbols from an ANTLR4 expression tree, used by `solveEquations()` to determine which variables are present before invoking SymEngine.
+Extracts all free variable symbols from an ANTLR4 expression tree, used by `solveEquations()` to
+determine which variables are present before invoking SymEngine.
 
 ```cpp
 class VarCollectorVisitor : public MathBaseVisitor {
@@ -330,11 +336,17 @@ The integration engine directly supports UQFF equation solving:
 
 ## 6. Conclusion
 
-The S-C integration engine provides a complete algebraic integration system covering all standard elementary functions through 10 SymEngine dispatch rules. The Ramanujan series fallback for degree > 10 polynomials (with PINE activation warning) provides numerical robustness for complex physics equations. The VarCollectorVisitor enables automatic variable detection from arbitrary input expressions. Together, these components form the mathematical backbone of the S-C Scientific Calculator's equation solving pipeline.
+The S-C integration engine provides a complete algebraic integration system covering all standard
+elementary functions through 10 SymEngine dispatch rules. The Ramanujan series fallback for degree >
+10 polynomials (with PINE activation warning) provides numerical robustness for complex physics
+equations. The VarCollectorVisitor enables automatic variable detection from arbitrary input
+expressions. Together, these components form the mathematical backbone of the S-C Scientific
+Calculator's equation solving pipeline.
 
 ---
 
-**UQFF computed:** Canonical UQFF buoyancy parameter U_bi = ?�[SSq]�GM/rκ = 5.0e-4�0.57�6.67e-11�M/r�; for solar parameters: U_bi,Sun = 5.7e-4�6.67e-11�1.99e30/(6.96e8)� = 1.47e+2 m/s�.
+**UQFF computed:** Canonical UQFF buoyancy parameter U_bi = ?[SSq]GM/rκ = 5.0e-4§0.57§6.67e-11M/r;
+for solar parameters: U_bi,Sun = 5.7e-4§6.67e-11§1.99e30/(6.96e8) = 1.47e+2 m/s.
 
 
 ---
@@ -343,13 +355,15 @@ The S-C integration engine provides a complete algebraic integration system cove
 
 ### §A.1 Sector Classification
 
-This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see `uqff_lagrangian_derivation.py`).
+This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
-The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive quantum fundamentals (DPM, UA, SCm):
+The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
+quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_\mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
+$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
 
 where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
@@ -363,7 +377,9 @@ $$\boxed{\frac{\delta S}{\delta \phi_{\rm NS}} = \nabla^2 \phi_{\rm NS} - (4\pi 
 
 $$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\rm NS} = 0$$
 
-The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g forces) through vacuum density initialization to the sector-specific equation of motion. Every term in the E-L equation inherits its physical origin from the cosmogenesis master.
+The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
+forces) through vacuum density initialization to the sector-specific equation of motion. Every term
+in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 
 ---
@@ -374,7 +390,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
 For this system, the local VDS sub-ratio is $0.055$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m^3.
 
@@ -390,11 +406,11 @@ Since $p_{\rm DVP} = 31$ is **resonant** (threshold at $p > 26$), the system's v
 
 The BSH saturation timescale for this sector is **10^4 yr** (spin-down equilibrium):
 
-$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
+$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\rm SCm}$ which initializes the harmonic series at cosmogenesis.
 
@@ -402,28 +418,31 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.055 | ✓ Threshold-consistent |
-| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 31$ | ✓ Resonant |
-| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day^{-}1 | Applied in VDS exponential | ✓ Canonical |
-| [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
+| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.055 | PASS Threshold-consistent |
+| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 31$ | PASS Resonant |
+| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
+| κ decay | $5.0 \times 10^{-4}$ day^{-}1 | Applied in VDS exponential | PASS Canonical |
+| [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
 ---
 
 
-## §SM Anchors -- Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | ✓ Consistent |
-| Cosmological constant Λ | 1.1x10^{-}5^2 m^{-}2 (UQFF vacuum term) | 1.114x10^{-}5^2 m^{-}2 | Planck 2018 | ✓ Consistent |
-| Proton decay rate | κ = 0.0005/day -> Γ_p suppression | < 4.17x10^{-}3^5/yr | Super-K 2024 | ✓ Consistent |
-| UQFF buoyancy signature | F_U_Bi_i unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
+| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant Λ | 1.1x10^{-}5^2 m^{-}2 (UQFF vacuum term) | 1.114x10^{-}5^2 m^{-}2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | κ = 0.0005/day -> Γ_p suppression | < 4.17x10^{-}3^5/yr | Super-K 2024 | PASS Consistent |
+| UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
-**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes significant, offering a falsifiable prediction beyond the Standard Model.
+**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
+produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF-SM bridge.*
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF-SM
+bridge.*
 
 ## References
 
@@ -444,9 +463,9 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `f`neutron_s26_coupling`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `k`ozima_scm_cross_section`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `k`ozima_wstp_kernel`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -455,7 +474,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `r`amanujan_polylog_s26`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
 | `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
@@ -464,7 +483,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `m`ock_theta_q26`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -475,8 +494,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `r`amanujan_pi_uqff`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `m`ock_theta_pi_wstp_kernel`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]

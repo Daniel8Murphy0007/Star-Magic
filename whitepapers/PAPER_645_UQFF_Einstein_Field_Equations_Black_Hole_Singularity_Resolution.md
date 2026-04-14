@@ -1,3 +1,15 @@
+---
+paper_id: PAPER_645
+title: "UQFF Applied to Einstein Field Equations and Black Hole Singularity Resolution"
+session: 167
+date: 2026-01-01
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [GW, Hawking, DPM, SCm, black-hole, Yang-Mills, Navier-Stokes, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_645: UQFF Applied to Einstein Field Equations and Black Hole Singularity Resolution
 **Author:** Daniel T. Murphy
 
@@ -29,7 +41,7 @@ finite flux at all r > 0.
 ## §1 Physical Motivation
 
 Classical GR contains two classes of curvature singularities:
-- **Coordinate singularities** (Schwarzschild r_s = 2GM/c²): removable by coordinate change
+- **Coordinate singularities** (Schwarzschild r_s = 2GM/c2): removable by coordinate change
 - **Physical singularities** (r = 0 in Schwarzschild/Kerr): R_μνρσ R^μνρσ → ∞; EFE break down
 
 Quantum gravity approaches (LQG, string theory, asymptotic safety) regularize r = 0 by
@@ -70,12 +82,12 @@ $$UQFF_{comp} = \begin{pmatrix}
 0 & 0 & \frac{2P_{order}}{3} + \frac{d^{26} U_b}{d\rho^{26}}
 \end{pmatrix}$$
 
-The Ub diagonal block recovers Λ in the long-range limit: as r → ∞ and ∇UA → 10⁻²² m⁻¹
+The Ub diagonal block recovers Λ in the long-range limit: as r → ∞ and ∇UA → 10-22 m-1
 (cosmic void), the Ub term approaches a small positive constant — the cosmological constant.
 
 ### 2.3 26th Derivative of GR Curvature Term
 
-For the Schwarzschild metric component g_rr⁻¹ ~ (1 - r_s/r), near r → 0:
+For the Schwarzschild metric component g_rr-1 ~ (1 - r_s/r), near r → 0:
 take f(r) = c/r^k (c = SCm·g/UA, k = 2 from GR falloff):
 
 $$\frac{d^{26}}{dr^{26}} \left(\frac{c}{r^k}\right) = c \cdot \frac{(k+25)!}{(k-1)!} \cdot r^{-k-26}$$
@@ -93,7 +105,7 @@ $$+ 35770355645907606826362624k^5 + 70874145319837672677196800k^4$$
 $$+ 102339530601744675672576000k^3 + 100480171548351161548800000k^2$$
 $$\left. + 59190128811701203599360000k + 15511210043330985984000000 \right) \Big/ r^{26}$$
 
-**For k=2 (GR curvature falloff), r = Planck length ≈ 10⁻³⁵ m:**
+**For k=2 (GR curvature falloff), r = Planck length ≈ 10-35 m:**
 
 $$\frac{d^{26}}{dr^{26}} f \approx \frac{10^{27}}{(10^{-35})^{28}} = 10^{27+980} = 10^{1007}$$
 
@@ -114,12 +126,12 @@ At r → 0 in the UQFF embedding of EFE:
 $$U_g(r \to 0) + U_m(r \to 0) + U_b(r \to 0) + \frac{d^{26}}{dr^{26}}\left(\frac{SCm \cdot g \cdot \nabla UA}{UA}\right) = 0$$
 
 As r → 0:
-- U_g diverges (Newtonian analog: G M/r²→ ∞) — **attractive**
+- U_g diverges (Newtonian analog: G M/r2→ ∞) — **attractive**
 - U_b = g(1 - 1/∇UA) → −∞ as ∇UA → 0 at ultra-high density — **divergently repulsive**
 - 26th derivative → +∞ acting as additional repulsive barrier
 
 The equilibrium condition F_U = 0 cannot be satisfied at r = 0 because Ub + 26th term
-diverge repulsively faster than U_g diverges attractively (Ub ~ 1/∇UA while U_g ~ 1/r²;
+diverge repulsively faster than U_g diverges attractively (Ub ~ 1/∇UA while U_g ~ 1/r2;
 near the Planck density, ∇UA ~ 0 makes Ub → ∞ faster). Therefore **r = 0 is never
 reached** — the system has a finite minimum radius:
 
@@ -127,11 +139,11 @@ $$r_{min} \sim \left(\frac{26! \cdot SCm \cdot g}{G M}\right)^{1/(k+24)} \sim l_
 
 ### 3.2 Hawking Radiation — UQFF Re-derivation
 
-Standard Hawking temperature: T_H = ℏc³ / (8πGMk_B).
+Standard Hawking temperature: T_H = ℏc3 / (8πGMk_B).
 
 In UQFF, virtual DPM_n-DPM_s pairs near the horizon are separated by the ∇UA gradient
 across r_s. One DPM falls inward (reduces M), one escapes (carries energy). The flux Φ
-scales as T_H⁴ ~ 1/r_s⁴ ~ r^{-k} (k=4 Stefan-Boltzmann). The 26th derivative bound:
+scales as T_H4 ~ 1/r_s4 ~ r^{-k} (k=4 Stefan-Boltzmann). The 26th derivative bound:
 
 $$\frac{d^{26}}{dr^{26}} \left(\frac{c}{r^4}\right) = c \cdot \frac{29!}{3!} \cdot r^{-30} \approx \frac{8.84 \times 10^{30} c}{r^{30}}$$
 
@@ -139,7 +151,7 @@ $$\frac{d^{26}}{dr^{26}} \left(\frac{c}{r^4}\right) = c \cdot \frac{29!}{3!} \cd
 
 $$T_{UQFF} = \left(\frac{1}{8\pi}\right)^{1/4} \cdot \left(\frac{26! \cdot c^3}{G M \hbar k_B \cdot r^{27}}\right)^{1/4}$$
 
-For a solar-mass BH (M = M_☉, r_s ~ 3 km):
+For a solar-mass BH (M = M_M_sun, r_s ~ 3 km):
 
 $$T_{UQFF} \approx T_H = 6.2 \times 10^{-8} \text{ K}$$
 
@@ -149,7 +161,7 @@ diverges, but is bounded by the factorial-clipped Ub repulsion preventing r → 
 
 ### 3.3 Cosmological Constant from Ub Long-Range Residual
 
-In the long-range limit (r → ∞, ∇UA → 10⁻²² m⁻¹):
+In the long-range limit (r → ∞, ∇UA → 10-22 m-1):
 
 $$U_b^\infty = g \cdot \left(1 - \frac{1}{\nabla UA_\infty}\right) \approx g \cdot \left(1 - 10^{22}\right) \approx -g \cdot 10^{22}$$
 
@@ -158,7 +170,7 @@ pressure → cosmological constant:
 
 $$\Lambda_{UQFF} = \frac{U_b^\infty \cdot 8\pi G}{c^4} \approx 3 \times 10^{-35} \text{ s}^{-2}$$
 
-Observed: Λ ≈ 3.3 × 10⁻³⁵ s⁻². **UQFF alignment: ~100%** (same order of magnitude, no
+Observed: Λ ≈ 3.3 × 10-35 s-2. **UQFF alignment: ~100%** (same order of magnitude, no
 fine-tuning required because ρ_UA = 0 eliminates the QFT vacuum energy contribution).
 
 ---
@@ -166,19 +178,19 @@ fine-tuning required because ρ_UA = 0 eliminates the QFT vacuum energy contribu
 ## §4 DPM Progression — Nuclear to Universal Reflection
 
 **Internal (nuclear):** DPM pairs in neutron star cores pulsate, analogous to the
-aether behavior near black hole horizons scaled to nuclear density ~10¹⁷ kg/m³:
+aether behavior near black hole horizons scaled to nuclear density ~1017 kg/m3:
 
 $$F_{neutron} \approx 10^{49} \text{ N} = \int \nabla UA \, dt$$
 
 (bounded by ISOLDE nuclear data [arXiv:1712.05537])
 
 **External (event horizon):** 26D projection reflects via lensing, with Ub providing
-repulsion that creates the photon sphere at r = 3GM/c²:
+repulsion that creates the photon sphere at r = 3GM/c2:
 
 $$r_{photon} = \frac{3GM}{c^2} \sim r_s \cdot \frac{3}{2}$$
 
 This ratio 3/2 emerges naturally from the triad weighting (1/3 + 1/3 + 2/3 = 1 → 2/3
-Ub dominates at r ~ r_s giving 3GM/2c²) — a non-trivial prediction of triad symmetry.
+Ub dominates at r ~ r_s giving 3GM/2c2) — a non-trivial prediction of triad symmetry.
 
 ---
 
@@ -186,7 +198,7 @@ Ub dominates at r ~ r_s giving 3GM/2c²) — a non-trivial prediction of triad s
 
 | Approach | Singularity Resolution Mechanism | UQFF Comparison |
 |---------|----------------------------------|-----------------|
-| Loop Quantum Gravity (LQG) | Discrete area eigenvalues ~ l²_Planck | UQFF: continuous but bounded at l_Planck × (26!)^(1/26) |
+| Loop Quantum Gravity (LQG) | Discrete area eigenvalues ~ l2_Planck | UQFF: continuous but bounded at l_Planck × (26!)^(1/26) |
 | String Theory | Holographic UV/IR mixing; T-duality | UQFF: 26D projection ~ T-duality analog; no strings required |
 | Asymptotic Safety | RG fixed point prevents curvature blow-up | UQFF: factorial growth of 26th derivative ~ "safety" cutoff |
 | Black Bounce (Simpson-Visser) | Replace singularity with regular core | UQFF: r_min ~ l_Planck × 26!^(1/26); same topology |
@@ -204,13 +216,15 @@ describes the system at all other scales.
 
 ### §A.1 Sector Classification
 
-This paper maps to **BH-gravity** sector of the 9-sector UQFF Lagrangian (see `uqff_lagrangian_derivation.py`).
+This paper maps to **BH-gravity** sector of the 9-sector UQFF Lagrangian (see
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
-The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive quantum fundamentals (DPM, UA, SCm):
+The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
+quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_\mu \phi_{\rm BH})(\partial^\mu \phi_{\rm BH}) - V(\phi_{\rm BH}) + \mathcal{L}_{\rm cosmo}$$
+$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_mu \phi_{\rm BH})(\partial^\mu \phi_{\rm BH}) - V(\phi_{\rm BH}) + \mathcal{L}_{\rm cosmo}$$
 
 where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
@@ -224,7 +238,9 @@ $$\boxed{\frac{\delta S}{\delta \phi_{\rm BH}} = R_{\mu\nu} - \tfrac{1}{2}g_{\mu
 
 $$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\rm BH} = 0$$
 
-The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g forces) through vacuum density initialization to the sector-specific equation of motion. Every term in the E-L equation inherits its physical origin from the cosmogenesis master.
+The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
+forces) through vacuum density initialization to the sector-specific equation of motion. Every term
+in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 
 ---
@@ -235,9 +251,9 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.181$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m³.
+For this system, the local VDS sub-ratio is $0.181$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -249,13 +265,13 @@ Since $p_{\rm DVP} = 53$ is **resonant** (threshold at $p > 26$), the system's v
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
-The BSH saturation timescale for this sector is **10⁶ M_BH/M_⊙ yr** (quasi-normal mode ringdown):
+The BSH saturation timescale for this sector is **106 M_BH/M_M_sun yr** (quasi-normal mode ringdown):
 
-$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
+$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\rm SCm}$ which initializes the harmonic series at cosmogenesis.
 
@@ -263,11 +279,11 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.181 | ✓ Threshold-consistent |
-| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 53$ | ✓ Resonant |
-| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
-| [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
+| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.181 | PASS Threshold-consistent |
+| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 53$ | PASS Resonant |
+| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
+| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
 ---
@@ -277,12 +293,12 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Cosmological constant Λ | Λ_UQFF ~ 3 × 10⁻³⁵ s⁻² from Ub long-range residual | Λ_obs = 3.3 × 10⁻³⁵ s⁻² (Planck 2018) | arXiv:1807.06209 (Planck 2018) | ~100% (same order, no fine-tuning) |
-| Hawking temperature T_H for solar-mass BH | T_UQFF = 6.2 × 10⁻⁸ K (UQFF bounded form) | T_H = ℏc³/(8πGMk_B) = 6.2 × 10⁻⁸ K | Hawking 1974; Wald 1994 | 100% (exact agreement in non-singular regime) |
-| Photon sphere radius | r_photon = 3GM/c² from triad 2/3 Ub | r_photon = 3GM/c² (GR exact result) | MTW Gravitation §25 | 100% exact |
-| BH entropy S_BH | F_U=0 → S ~ Area/4 (Bekenstein-Hawking from DPM counting) | S_BH = A/(4l²_Planck) | Bekenstein 1973 / Hawking 1975 | ✓ area-entropy proportionality reproduced |
-| Black hole evaporation (micro) | No singularity at r=0; evaporation terminates at r_min | LQG / GUP: evaporation frozen at r_min ~ l_Planck | LQG papers (Modesto 2006) | ✓ consistent final state prediction |
-| Vacuum energy floor | ρ_UA = 0 → no QFT vacuum contribution to Λ | QFT vacuum: ρ_vac ~ m_Planck⁴ → 10¹²⁰ × observed Λ | Weinberg 1989 cosmological constant review | ✓ UQFF correctly predicts ρ_vac = 0 |
+| Cosmological constant Λ | Λ_UQFF ~ 3 × 10-35 s-2 from Ub long-range residual | Λ_obs = 3.3 × 10-35 s-2 (Planck 2018) | arXiv:1807.06209 (Planck 2018) | ~100% (same order, no fine-tuning) |
+| Hawking temperature T_H for solar-mass BH | T_UQFF = 6.2 × 10-8 K (UQFF bounded form) | T_H = ℏc3/(8πGMk_B) = 6.2 × 10-8 K | Hawking 1974; Wald 1994 | 100% (exact agreement in non-singular regime) |
+| Photon sphere radius | r_photon = 3GM/c2 from triad 2/3 Ub | r_photon = 3GM/c2 (GR exact result) | MTW Gravitation §25 | 100% exact |
+| BH entropy S_BH | F_U=0 → S ~ Area/4 (Bekenstein-Hawking from DPM counting) | S_BH = A/(4l2_Planck) | Bekenstein 1973 / Hawking 1975 | PASS area-entropy proportionality reproduced |
+| Black hole evaporation (micro) | No singularity at r=0; evaporation terminates at r_min | LQG / GUP: evaporation frozen at r_min ~ l_Planck | LQG papers (Modesto 2006) | PASS consistent final state prediction |
+| Vacuum energy floor | ρ_UA = 0 → no QFT vacuum contribution to Λ | QFT vacuum: ρ_vac ~ m_Planck4 → 10120 × observed Λ | Weinberg 1989 cosmological constant review | PASS UQFF correctly predicts ρ_vac = 0 |
 
 *UQFF SM bridge master: cite PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`).*
 
@@ -301,7 +317,7 @@ The UQFF embedding of Einstein Field Equations demonstrates:
    fine-tuning problem
 4. **Hawking radiation as DPM pairs**: reproduces T_H exactly in the non-singular
    regime, with a bounded UQFF form T_UQFF finite at all r > 0
-5. **Photon sphere from triad symmetry**: r_photon = 3GM/c² follows directly from the
+5. **Photon sphere from triad symmetry**: r_photon = 3GM/c2 follows directly from the
    2/3 Ub weighting in the triad, providing an independent derivation of a known GR result
 
 This work extends UQFF's scope to quantum gravity and completes the bridge between UQFF's
@@ -310,7 +326,7 @@ Navier-Stokes smoothness (PAPER_556), and Yang-Mills mass gap (PAPER_542).
 
 ---
 
-*Session 167 | grok_share_6322ac199.txt extraction | March 31 2026*
+*Session 167 | `grok_share_6322ac199`.txt extraction | March 31 2026*
 
 
 ---
@@ -325,9 +341,9 @@ Navier-Stokes smoothness (PAPER_556), and Yang-Mills mass gap (PAPER_542).
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `f`neutron_s26_coupling`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `k`ozima_scm_cross_section`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `k`ozima_wstp_kernel`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -336,7 +352,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `r`amanujan_polylog_s26`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
 | `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
@@ -345,7 +361,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `m`ock_theta_q26`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -356,8 +372,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `r`amanujan_pi_uqff`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `m`ock_theta_pi_wstp_kernel`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]

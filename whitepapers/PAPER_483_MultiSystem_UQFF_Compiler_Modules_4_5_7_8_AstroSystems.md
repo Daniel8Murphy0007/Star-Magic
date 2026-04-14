@@ -1,13 +1,27 @@
+---
+paper_id: PAPER_483
+title: "Multi-System UQFF Compiler Modules: 4/5/7/8 AstroSystems Architecture"
+session: 0
+date: 2025-01-01
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [buoyancy, nebula, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_483 — Multi-System UQFF Compiler Modules: 4/5/7/8 AstroSystems Architecture
 **Author:** Daniel T. Murphy
 **Date:** Oct 23, 2025
-<!-- Session 126 | grok_share_bdfb3a05b06.txt | Quality Score: 5 -->
+<!— Session 126 | `grok_share_bdfb3a05b06`.txt | Quality Score: 5 —>
 
 ## Abstract
 
-This paper documents the **multi-system compiler modules** extracted from `grok_share_bdfb3a05b06.txt` — a new architectural tier above individual-system modules. Where PAPER_481 documents single-system UQFF implementations, these modules simultaneously compute $F_{U_{Bi_i}}$ for 4, 5, 7, and 8 astrophysical systems through a single `computeMasterEquations(system)` call, using a runtime-dispatched parameter lookup (`setSystemParams`). New physics includes the triadic simultaneous solver (`computeTriadicSolution`), gas-nebula integration (`computeGasNebulaIntegration`), and the Source160 computation validation showing $F_{U_{Bi_i}} \approx -8.32\times10^{217}$ N universally for template-mass systems.
+This paper documents the **multi-system compiler modules** extracted from `grok_share_bdfb3a05b06.txt` — a new architectural tier above individual-system modules. Where PAPER_481 documents single-system UQFF implementations, these modules simultaneously compute $F_{U\_{Bi\_i}}$ for 4, 5, 7, and 8 astrophysical systems through a single `computeMasterEquations(system)` call, using a runtime-dispatched parameter lookup (`setSystemParams`). New physics includes the triadic simultaneous solver (`computeTriadicSolution`), gas-nebula integration (`computeGasNebulaIntegration`), and the Source160 computation validation showing $F_{U\_{Bi\_i}} \approx -8.32\times10^{217}$ N universally for template-mass systems.
 
-**Source:** `grok_share_bdfb3a05b06.txt`, docx: "4 Astro Systems_11Oct2025", "5 Astro Systems_11Oct2025", "7 Astro Systems_11Oct2025", "8 Astro Systems_11Oct2025", "8 Astro Systems_B_11Oct2025", "Source160.docx". Analyzed Oct 23, 2025.
+**Source:** `grok_share_bdfb3a05b06.txt`, docx: "4 Astro Systems_11Oct2025", "5 Astro
+Systems_11Oct2025", "7 Astro Systems_11Oct2025", "8 Astro Systems_11Oct2025", "8 Astro
+Systems_B_11Oct2025", "Source160.docx". Analyzed Oct 23, 2025.
 
 ---
 
@@ -48,7 +62,8 @@ UQFF Multi-System Architecture
 
 ### 2.1 AstroSystemsUQFFModule (4 Systems)
 
-**Comment doc:** `"Multi-system params: NGC685 M=1e41 kg r=1e21 m; NGC3507 M=2e41 kg r=2e21 m; NGC3511 M=3e41 kg r=3e21 m; AT2024tvd M=1..."`
+**Comment doc:** `"Multi-system params: NGC685 M=1e41 kg r=1e21 m; NGC3507 M=2e41 kg r=2e21 m;
+NGC3511 M=3e41 kg r=3e21 m; AT2024tvd M=1..."`
 
 | System | M (kg) | r (m) | Type |
 |--------|--------|-------|------|
@@ -57,28 +72,32 @@ UQFF Multi-System Architecture
 | NGC3511 | $3\times10^{41}$ | $3\times10^{21}$ | Spiral galaxy |
 | AT2024tvd | $10^{41}$ (template) | $10^{21}$ | Sept 2025 transient TDE off-nucleus |
 
-**AT2024tvd** is notable — this is the off-nucleus tidal disruption event discovered September 2024 in a galaxy 600 Mpc away, consistent with UQFF cluster-scale parameters.
+**AT2024tvd** is notable — this is the off-nucleus tidal disruption event discovered September 2024
+in a galaxy 600 Mpc away, consistent with UQFF cluster-scale parameters.
 
 ### 2.2 UQFFNebulaTriadicModule (5 Systems)
 
-**Comment doc:** `"Multi-system params: NGC3596 M=1e41 kg r=1e21 m; NGC1961 M=2e41 kg r=2e21 m; NGC5335 M=3e41 kg r=3e21 m; NGC2014 M=4e..."`
+**Comment doc:** `"Multi-system params: NGC3596 M=1e41 kg r=1e21 m; NGC1961 M=2e41 kg r=2e21 m;
+NGC5335 M=3e41 kg r=3e21 m; NGC2014 M=4e..."`
 
 | System | M (kg) | r (m) | Type |
 |--------|--------|-------|------|
 | NGC3596 | $10^{41}$ | $10^{21}$ | Spiral galaxy (Leo cluster) |
 | NGC1961 | $2\times10^{41}$ | $2\times10^{21}$ | Peculiar spiral (AGN) |
 | NGC5335 | $3\times10^{41}$ | $3\times10^{21}$ | Lenticular galaxy |
-| NGC2014 | $4\times10^{41}$ | $\sim4\times10^{21}$ | LMC H II region |
+| NGC2014 | $4\times10^{41}$ | $\sim4times10^{21}$ | LMC H II region |
 | Carina | $\sim10^{36}$ | $\sim10^{17}$ | Carina Nebula star-forming region |
 
 ### 2.3 UQFFNebulaTriadicModule (7 Systems — Canonical Version)
 
-**Comment doc:** `"Multi-system params: NGC685 M=1e41 kg r=1e21 m; NGC3507 M=2e41 kg r=2e21 m; NGC3511 M=3e41 kg r=3e21 m; Carina M=1e36..."`
+**Comment doc:** `"Multi-system params: NGC685 M=1e41 kg r=1e21 m; NGC3507 M=2e41 kg r=2e21 m;
+NGC3511 M=3e41 kg r=3e21 m; Carina M=1e36..."`
 - 4 systems from 4AstroSystems + Carina + 2 additional (from 7-system batch)
 
 ### 2.4 UQFF8AstroSystemsModule (8 Systems)
 
-**Comment doc:** `"Multi-system params: NGC4826 M=1e41 kg r=1e21 m; NGC1805 M=2e41 kg r=2e21 m; NGC6307 M=3e41 kg r=3e21 m; NGC7027 M=..."`
+**Comment doc:** `"Multi-system params: NGC4826 M=1e41 kg r=1e21 m; NGC1805 M=2e41 kg r=2e21 m;
+NGC6307 M=3e41 kg r=3e21 m; NGC7027 M=..."`
 
 | System | M (kg) | r (m) | Type |
 |--------|--------|-------|------|
@@ -135,7 +154,8 @@ Simultaneously solves all three triadic arms for a given system and time:
 
 $$\vec{F}_{triadic} = \left( F_\mathrm{compressed}(t), \; F_\mathrm{resonant}(t), \; F_\mathrm{buoyancy}(t) \right)$$
 
-Returns the triadic solution vector as three `cdouble` values, enabling simultaneous constraint by compressed, resonant, and buoyancy observational data.
+Returns the triadic solution vector as three `cdouble` values, enabling simultaneous constraint by
+compressed, resonant, and buoyancy observational data.
 
 ---
 
@@ -143,15 +163,15 @@ Returns the triadic solution vector as three `cdouble` values, enabling simultan
 
 From the Grok Thoughts section analyzing Source160.docx:
 
-### 4.1 Full $F_{U_{Bi_i}}$ (template-mass systems)
+### 4.1 Full $F_{U\_{Bi\_i}}$ (template-mass systems)
 
-$$F_{U_{Bi_i}} \approx -8.32\times10^{217} + i(-6.75\times10^{160}) \text{ N}$$
+$$F_{U\_{Bi\_i}} \approx -8.32\times10^{217} + i(-6.75\times10^{160}) \text{ N}$$
 
 Identical for: **Tycho's SNR, Abell 2256, Tarantula Nebula, NGC 253** — when evaluated at template-mass ($M=10^{41}$ kg, $r=10^{21}$ m, $\omega_0=10^{-15}$).
 
 ### 4.2 Compressed Integrand per System
 
-$$F_{U_{Bi_i},integrand} = \sum\mathrm{terms} \approx \begin{cases} 6.16\times10^{45} \text{ N} & \text{Abell 2256 } (M=1.23\times10^{45}\ \text{kg}) \\ 6.16\times10^{39} \text{ N} & \text{Template mass systems} \end{cases}$$
+$$F_{U\_{Bi\_i},integrand} = \sum\mathrm{terms} \approx \begin{cases} 6.16\times10^{45} \text{ N} & \text{Abell 2256 } (M=1.23\times10^{45}\ \text{kg}) \\ 6.16\times10^{39} \text{ N} & \text{Template mass systems} \end{cases}$$
 
 ### 4.3 DPM Resonance per System
 
@@ -211,13 +231,15 @@ Add three calculators to `CondensedPhysics2.py`:
 
 ### §A.1 Sector Classification
 
-This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see `uqff_lagrangian_derivation.py`).
+This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
-The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive quantum fundamentals (DPM, UA, SCm):
+The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
+quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_\mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
+$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
 
 where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
@@ -231,7 +253,9 @@ $$\boxed{\frac{\delta S}{\delta \phi_{\rm NS}} = \nabla^2 \phi_{\rm NS} - (4\pi 
 
 $$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\rm NS} = 0$$
 
-The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g forces) through vacuum density initialization to the sector-specific equation of motion. Every term in the E-L equation inherits its physical origin from the cosmogenesis master.
+The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
+forces) through vacuum density initialization to the sector-specific equation of motion. Every term
+in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 
 ---
@@ -242,9 +266,9 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.097$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m³.
+For this system, the local VDS sub-ratio is $0.097$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -256,13 +280,13 @@ Since $p_{\rm DVP} = 7$ is **sub-threshold** (threshold at $p > 26$), the system
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
-The BSH saturation timescale for this sector is **10⁴ yr** (spin-down equilibrium):
+The BSH saturation timescale for this sector is **104 yr** (spin-down equilibrium):
 
-$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
+$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\rm SCm}$ which initializes the harmonic series at cosmogenesis.
 
@@ -270,11 +294,11 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.097 | ✓ Threshold-consistent |
-| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 7$ | ✓ Sub-threshold |
-| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
-| [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
+| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.097 | PASS Threshold-consistent |
+| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 7$ | PASS Sub-threshold |
+| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
+| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
 ---
@@ -284,10 +308,10 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Higgs mass m_H | UQFF K_HIGGS=47.34 → m_H_UQFF = 125.09 GeV | m_H = 125.20 ± 0.11 GeV | PDG 2024 | 99.8% |
-| Cosmological Λ | UQFF |∇UA|² → 1.09e-52 m⁻² | Λ = 1.114e-52 m⁻² (Planck+DESI) | Planck 2018 | 97.8% |
-| Thomson σ_T (QED) | UQFF U_m kernel: σ_T = 6.6524e-29 m² | σ_T = 6.6524e-29 m² | PDG 2024 | 100% (exact) |
-| κ baryon stability | κ = 0.0005/day; scale separation 10³³ from proton decay | τ_p > 7.7e33 yr (Super-K) | Super-K 2024 | ✓ UQFF baryon-safe |
+| Higgs mass m_H | UQFF K_HIGGS=47.34 → `m_H_UQFF` = 125.09 GeV | m_H = 125.20 ± 0.11 GeV | PDG 2024 | 99.8% |
+| Cosmological Λ | UQFF |∇UA|2 → 1.09e-52 m-2 | Λ = 1.114e-52 m-2 (Planck+DESI) | Planck 2018 | 97.8% |
+| Thomson σ_T (QED) | UQFF U_m kernel: σ_T = 6.6524e-29 m2 | σ_T = 6.6524e-29 m2 | PDG 2024 | 100% (exact) |
+| κ baryon stability | κ = 0.0005/day; scale separation 1033 from proton decay | τ_p > 7.7e33 yr (Super-K) | Super-K 2024 | PASS UQFF baryon-safe |
 
 **New physics claim:** UQFF operates at a vacuum topology scale (~200 PeV) that is 8 orders
 below the GUT scale and 33 orders above nuclear baryon-number scales. This intermediate-scale
@@ -313,9 +337,9 @@ while remaining consistent with all collider and nuclear precision measurements.
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `f`neutron_s26_coupling`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `k`ozima_scm_cross_section`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `k`ozima_wstp_kernel`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -324,7 +348,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `r`amanujan_polylog_s26`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
 | `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
@@ -333,7 +357,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `m`ock_theta_q26`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -344,8 +368,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `r`amanujan_pi_uqff`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `m`ock_theta_pi_wstp_kernel`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]

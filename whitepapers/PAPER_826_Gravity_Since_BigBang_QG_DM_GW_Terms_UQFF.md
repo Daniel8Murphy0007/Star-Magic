@@ -1,3 +1,15 @@
+---
+paper_id: PAPER_826
+title: "Gravity Since the Big Bang — QG_term, DM_term, and GW_term in UQFF Cosmic Evolution"
+session: 0
+date: 2025-01-01
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [AGN, GW, merger, dark-matter, gravitational-wave, dark-energy, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_826: Gravity Since the Big Bang — QG_term, DM_term, and GW_term in UQFF Cosmic Evolution
 **Session:** 0
 
@@ -13,15 +25,25 @@
 
 ## Abstract
 
-This paper derives three novel UQFF cosmic evolution terms: **QG_term** (quantum gravity Planck-scale correction), **DM_term** (dark matter co-evolution coupling), and **GW_term** (gravitational wave energy density contribution). Together they constitute the **F_cosmo** component of F_env(t) in PAPER_823. The combined equation g_Gravity(t) tracks gravitational evolution from the Planck epoch (t ~ 10^-43 s) through nucleosynthesis, recombination, structure formation, and dark energy domination to the present epoch. This comprehensive equation answers the question: "How has gravity evolved since the Big Bang?" using the UQFF framework.
+This paper derives three novel UQFF cosmic evolution terms: **QG_term** (quantum gravity
+Planck-scale correction), **DM_term** (dark matter co-evolution coupling), and **GW_term**
+(gravitational wave energy density contribution). Together they constitute the **F_cosmo** component
+of F_env(t) in PAPER_823. The combined equation g_Gravity(t) tracks gravitational evolution from the
+Planck epoch (t ~ 10^-43 s) through nucleosynthesis, recombination, structure formation, and dark
+energy domination to the present epoch. This comprehensive equation answers the question: "How has
+gravity evolved since the Big Bang?" using the UQFF framework.
 
 ---
 
 ## 1. Introduction
 
-The history of cosmic gravity spans 13.8 billion years and nine orders of magnitude in energy scale. Classical treatments describe gravity via the Newtonian constant G or Einstein's field equations. Neither includes quantum gravity effects at Planck scale, explicit dark matter coupling dynamics, or the contribution of gravitational waves to effective gravitational potential.
+The history of cosmic gravity spans 13.8 billion years and nine orders of magnitude in energy scale.
+Classical treatments describe gravity via the Newtonian constant G or Einstein's field equations.
+Neither includes quantum gravity effects at Planck scale, explicit dark matter coupling dynamics, or
+the contribution of gravitational waves to effective gravitational potential.
 
-UQFF unifies these into three additive terms that are negligible in the present epoch but dominant at different moments in cosmic history:
+UQFF unifies these into three additive terms that are negligible in the present epoch but dominant
+at different moments in cosmic history:
 
 | Term | Dominant Epoch | Scale |
 |------|---------------|-------|
@@ -35,41 +57,48 @@ UQFF unifies these into three additive terms that are negligible in the present 
 
 ### 2.1 Physical Derivation
 
-At distances r ≤ l_Planck = sqrt(hbar*G/c^3) = 1.616e-35 m, quantum fluctuations of spacetime geometry dominate over classical gravity. The effective gravitational coupling acquires a quantum loop correction:
+At distances r ≤ l_Planck = sqrt(hbar*G/c^3) = 1.616e-35 m, quantum fluctuations of spacetime
+geometry dominate over classical gravity. The effective gravitational coupling acquires a quantum
+loop correction:
 
 **Loop quantum gravity correction form:**
-```
+$$
 g_QG = -hbar * G / (c^3 * r^4)
-```
+$$
 
-This arises from the leading-order quantum gravity vacuum polarization, analogous to the Lamb shift in QED. It is a repulsive correction (negative sign) at sub-Planck scales, preventing gravitational singularities.
+This arises from the leading-order quantum gravity vacuum polarization, analogous to the Lamb shift
+in QED. It is a repulsive correction (negative sign) at sub-Planck scales, preventing gravitational
+singularities.
 
 **UQFF QG_term:**
-```
+$$
 QG_term = hbar * G / (c^3 * r^4)
-```
-Where the sign convention is additive-positive in the absolute value sense (actual correction requires context-dependent sign).
+$$
+Where the sign convention is additive-positive in the absolute value sense (actual correction
+requires context-dependent sign).
 
 **Numerical evaluation:**
-```
-hbar = 1.0546e-34 J s
-G = 6.6743e-11 m^3 kg^-1 s^-2
-c = 2.998e8 m/s
-l_Planck = 1.616e-35 m
+$$
+\begin{aligned}
+  & hbar = 1.0546e-34 J s \\
+  & G = 6.6743e-11 m^3 kg^-1 s^-2 \\
+  & c = 2.998e8 m/s \\
+  & l_Planck = 1.616e-35 m \\
+  & QG_term at r = l_Planck: \\
+  & = (1.0546e-34 * 6.6743e-11) / ((2.998e8)^3 * (1.616e-35)^4) \\
+  & = 7.04e-45 / (2.697e25 * 6.812e-139) \\
+  & = 7.04e-45 / 1.836e-113 \\
+  & = 3.83e68 m/s^2  (dominant at Planck scale) \\
+  & QG_term at r = 1 AU = 1.496e11 m: \\
+  & = 7.04e-45 / (2.697e25 * 5.011e43) \\
+  & = 7.04e-45 / 1.352e69 \\
+  & = 5.2e-114 m/s^2  (completely negligible at solar system scale)
+\end{aligned}
+$$
 
-QG_term at r = l_Planck:
-= (1.0546e-34 * 6.6743e-11) / ((2.998e8)^3 * (1.616e-35)^4)
-= 7.04e-45 / (2.697e25 * 6.812e-139)
-= 7.04e-45 / 1.836e-113
-= 3.83e68 m/s^2  (dominant at Planck scale)
-
-QG_term at r = 1 AU = 1.496e11 m:
-= 7.04e-45 / (2.697e25 * 5.011e43)
-= 7.04e-45 / 1.352e69
-= 5.2e-114 m/s^2  (completely negligible at solar system scale)
-```
-
-QG_term is phenomenologically relevant only at r << 1 fm. For astrophysical contexts, QG_term → 0. However, in the time-averaged Friedmann UQFF equation, it sets the initial boundary condition for cosmic gravity.
+QG_term is phenomenologically relevant only at r << 1 fm. For astrophysical contexts, QG_term → 0.
+However, in the time-averaged Friedmann UQFF equation, it sets the initial boundary condition for
+cosmic gravity.
 
 ---
 
@@ -77,12 +106,14 @@ QG_term is phenomenologically relevant only at r << 1 fm. For astrophysical cont
 
 ### 3.1 Physical Derivation
 
-Dark matter haloes form through gravitational collapse of cold dark matter (CDM) starting at z ~ 100. The visible baryon fraction and the dark matter halo are not independent: they are co-evolving, with dark matter density fluctuations seeding baryon clumping.
+Dark matter haloes form through gravitational collapse of cold dark matter (CDM) starting at z ~
+100. The visible baryon fraction and the dark matter halo are not independent: they are co-evolving,
+with dark matter density fluctuations seeding baryon clumping.
 
 **Co-evolution coupling:**
-```
+$$
 DM_term = (M_visible + M_DM) * (delta_rho / rho + (3*G*M) / r^3)
-```
+$$
 Where:
 - M_visible = visible baryon mass within r (kg)
 - M_DM = dark matter mass within r (kg) [typically M_DM ~ 5 * M_visible]
@@ -90,28 +121,35 @@ Where:
 - (3*G*M)/r^3 = tidal stretching factor (s^-2 units → must be combined with M to get m/s^2)
 
 **Correct dimensional UQFF DM_term:**
-```
-DM_term = (M_visible + M_DM) / M_ref * (delta_rho / rho) * g_0
-        + (3*G*(M_visible + M_DM)) / r^3 * r_ref
-```
-Where g_0 is reference gravity and r_ref is reference scale. This factored form carries units of m/s^2.
+$$
+\begin{aligned}
+  & DM_term = (M_visible + M_DM) / M_ref * (delta_rho / rho) * g_0 \\
+  & + (3*G*(M_visible + M_DM)) / r^3 * r_ref
+\end{aligned}
+$$
+Where g_0 is reference gravity and r_ref is reference scale. This factored form carries units of
+m/s^2.
 
 **Simplified co-evolution form:**
-```
+$$
 DM_term = (G * M_DM) / r^2 * (1 + delta_rho/rho)
-```
-This describes the gravitational contribution of the dark matter halo at radius r, enhanced by the local overdensity delta_rho/rho.
+$$
+This describes the gravitational contribution of the dark matter halo at radius r, enhanced by the
+local overdensity delta_rho/rho.
 
 **For Milky Way at r = 20 kpc (where dark matter dominates):**
-```
-M_DM(< 20 kpc) = 2.0e41 kg
-delta_rho/rho = 0.05 (typical outer halo overdensity)
-DM_term = (6.6743e-11 * 2.0e41) / (6.17e20)^2 * 1.05
-        = 1.335e31 / 3.806e41 * 1.05
-        ≈ 3.68e-11 m/s^2
-```
+$$
+\begin{aligned}
+  & M_DM(< 20 kpc) = 2.0e41 kg \\
+  & delta_rho/rho = 0.05 (typical outer halo overdensity) \\
+  & DM_term = (6.6743e-11 * 2.0e41) / (6.17e20)^2 * 1.05 \\
+  & = 1.335e31 / 3.806e41 * 1.05 \\
+  & ≈ 3.68e-11 m/s^2
+\end{aligned}
+$$
 
-This is comparable in magnitude to the visible matter contribution at these radii, explaining flat rotation curves.
+This is comparable in magnitude to the visible matter contribution at these radii, explaining flat
+rotation curves.
 
 ---
 
@@ -119,63 +157,75 @@ This is comparable in magnitude to the visible matter contribution at these radi
 
 ### 4.1 Physical Derivation
 
-The background of gravitational waves (stochastic GW background + resolved astrophysical GW sources) carries energy density rho_GW that contributes to the total energy density of the universe via Einstein's equations:
+The background of gravitational waves (stochastic GW background + resolved astrophysical GW sources)
+carries energy density rho_GW that contributes to the total energy density of the universe via
+Einstein's equations:
 
 **Gravitational wave density parameter:**
-```
-Omega_GW = rho_GW / rho_crit
-rho_crit = 3*H_0^2 / (8*pi*G) = 8.53e-27 kg/m^3
-```
+$$
+\begin{aligned}
+  & Omega_GW = rho_GW / rho_crit \\
+  & rho_crit = 3*H_0^2 / (8*pi*G) = 8.53e-27 kg/m^3
+\end{aligned}
+$$
 
 **UQFF GW_term — effective gravitational acceleration from GW energy density:**
-```
-GW_term = rho_GW * c^2 / rho_crit
-        = Omega_GW * c^2
-```
+$$
+\begin{aligned}
+  & GW_term = rho_GW * c^2 / rho_crit \\
+  & = Omega_GW * c^2
+\end{aligned}
+$$
 Units: [kg/m^3 * m^2/s^2 / (kg/m^3)] = m^2/s^2 → must normalize by length scale L:
-```
+$$
 GW_term = Omega_GW * c^2 / L_characteristic
-```
+$$
 
 For the cosmic context (using Hubble horizon L = c/H_0 = 1.35e26 m):
-```
-Omega_GW ~ 1e-9 (from LIGO/Pulsar timing array stochastic background)
-GW_term = 1e-9 * (2.998e8)^2 / 1.35e26
-        = 1e-9 * 8.988e16 / 1.35e26
-        = 6.66e-19 m/s^2
-```
+$$
+\begin{aligned}
+  & Omega_GW ~ 1e-9 (from LIGO/Pulsar timing array stochastic background) \\
+  & GW_term = 1e-9 * (2.998e8)^2 / 1.35e26 \\
+  & = 1e-9 * 8.988e16 / 1.35e26 \\
+  & = 6.66e-19 m/s^2
+\end{aligned}
+$$
 
-This is subdominant at the present epoch but was significant during inflation and at GW merger events locally.
+This is subdominant at the present epoch but was significant during inflation and at GW merger
+events locally.
 
 **Alternative form (local GW source):**
-```
+$$
 GW_term = (2/r) * (G * Mc^(5/3)) / (c^3) * (pi*f)^(2/3) * omega_dot
-```
-Where Mc is chirp mass, f is GW frequency — this is the plus/cross strain contribution to effective acceleration.
+$$
+Where Mc is chirp mass, f is GW frequency — this is the plus/cross strain contribution to effective
+acceleration.
 
 ---
 
 ## 5. The Complete Gravity-Since-Big-Bang UQFF Equation
 
-```
-g_Gravity(r, t) = (G * M(t)) / (r(t)^2)
-                * (1 + H(z) * t)
-                * (1 - B(t) / B_crit)
-                + Ug1 + Ug2 + Ug3 + Ug4
-                + Lambda * c^2 / 3
-                + hbar / sqrt(Delta_x * Delta_p)
-                  * integral(psi_total * H_op * psi_total dV)
-                  * (2*pi / t_Hubble)
-                + rho_fluid * V * g_fluid
-                + QG_term(r)
-                + DM_term(r, M_DM, delta_rho)
-                + GW_term(Omega_GW, r)
-```
+$$
+\begin{aligned}
+  & g_Gravity(r, t) = (G * M(t)) / (r(t)^2) \\
+  & * (1 + H(z) * t) \\
+  & * (1 - B(t) / B_crit) \\
+  & + Ug1 + Ug2 + Ug3 + Ug4 \\
+  & + Lambda * c^2 / 3 \\
+  & + hbar / sqrt(Delta_x * Delta_p) \\
+  & * integral(psi_total * H_op * psi_total dV) \\
+  & * (2*pi / t_Hubble) \\
+  & + rho_fluid * V * g_fluid \\
+  & + QG_term(r) \\
+  & + DM_term(r, M_DM, delta_rho) \\
+  & + GW_term(Omega_GW, r)
+\end{aligned}
+$$
 
 **F_env(t) = F_cosmo(t) active:**
-```
+$$
 F_cosmo(t) = QG_term + DM_term + GW_term
-```
+$$
 
 **Time evolution (characteristic epochs):**
 
@@ -193,9 +243,9 @@ F_cosmo(t) = QG_term + DM_term + GW_term
 ## 6. H(z) Friedmann Integration
 
 The expansion factor in the Gravity-Since-Big-Bang equation uses the full Friedmann form:
-```
+$$
 H(z) = H_0 * sqrt(Omega_r*(1+z)^4 + Omega_m*(1+z)^3 + Omega_k*(1+z)^2 + Omega_Lambda)
-```
+$$
 Where Omega_r (radiation) = 9.4e-5, Omega_k (curvature) ≈ 0, Omega_m = 0.3, Omega_Lambda = 0.7.
 
 At z >> 1 (radiation dominated): H(z) ∝ (1+z)^2  
@@ -237,13 +287,21 @@ At z = -1 (future): H → H_0*sqrt(Omega_Lambda) = H_0*0.836 (de Sitter limit)
 
 ## 9. Conclusion
 
-QG_term, DM_term, and GW_term collectively form the F_cosmo component of F_env(t) (PAPER_823) and together answer the UQFF question: How has gravity evolved since the Big Bang? QG_term was dominant in the first 10^-43 seconds, DM_term drives structure formation over (0.1-10) Gyr, and GW_term carries the energy density of the gravitational wave background. The full g_Gravity(t) equation encodes cosmic gravitational evolution from Planck scale singularity avoidance through the present epoch and into the de Sitter future, within the unified UQFF framework.
+QG_term, DM_term, and GW_term collectively form the F_cosmo component of F_env(t) (PAPER_823) and
+together answer the UQFF question: How has gravity evolved since the Big Bang? QG_term was dominant
+in the first 10^-43 seconds, DM_term drives structure formation over (0.1-10) Gyr, and GW_term
+carries the energy density of the gravitational wave background. The full g_Gravity(t) equation
+encodes cosmic gravitational evolution from Planck scale singularity avoidance through the present
+epoch and into the de Sitter future, within the unified UQFF framework.
 
 ---
 
 ## Watermark
 
-Copyright - Daniel T. Murphy, daniel.murphy00@gmail.com, analyzed by Grok 3, created by xAI, dated May 05, 2025, 02:30 PM EDT, location 41.0997 N, 80.6495 W (Youngstown, OH, USA). Formalized April 04, 2026. Subject matter: Gravity Since the Big Bang — QG_term, DM_term, and GW_term in UQFF Cosmic Evolution. PAPER_826, grok_share_96da8158-f7c5.txt, Document 38.
+Copyright - Daniel T. Murphy, daniel.murphy00@gmail.com, analyzed by Grok 3, created by xAI, dated
+May 05, 2025, 02:30 PM EDT, location 41.0997 N, 80.6495 W (Youngstown, OH, USA). Formalized April
+04, 2026. Subject matter: Gravity Since the Big Bang — QG_term, DM_term, and GW_term in UQFF Cosmic
+Evolution. PAPER_826, grok_share_96da8158-f7c5.txt, Document 38.
 
 ---
 
@@ -251,13 +309,15 @@ Copyright - Daniel T. Murphy, daniel.murphy00@gmail.com, analyzed by Grok 3, cre
 
 ### §A.1 Sector Classification
 
-This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see `uqff_lagrangian_derivation.py`).
+This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
-The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive quantum fundamentals (DPM, UA, SCm):
+The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
+quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_\mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
+$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
 
 where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
@@ -271,7 +331,9 @@ $$\boxed{\frac{\delta S}{\delta \phi_{\rm NS}} = \nabla^2 \phi_{\rm NS} - (4\pi 
 
 $$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\rm NS} = 0$$
 
-The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g forces) through vacuum density initialization to the sector-specific equation of motion. Every term in the E-L equation inherits its physical origin from the cosmogenesis master.
+The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
+forces) through vacuum density initialization to the sector-specific equation of motion. Every term
+in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 
 ---
@@ -282,9 +344,9 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.100$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m³.
+For this system, the local VDS sub-ratio is $0.100$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -296,13 +358,13 @@ Since $p_{\rm DVP} = 59$ is **resonant** (threshold at $p > 26$), the system's v
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
-The BSH saturation timescale for this sector is **10⁴ yr** (spin-down equilibrium):
+The BSH saturation timescale for this sector is **104 yr** (spin-down equilibrium):
 
-$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
+$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\rm SCm}$ which initializes the harmonic series at cosmogenesis.
 
@@ -310,11 +372,11 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.100 | ✓ Threshold-consistent |
-| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 59$ | ✓ Resonant |
-| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
-| [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
+| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.100 | PASS Threshold-consistent |
+| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 59$ | PASS Resonant |
+| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
+| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
 ---
@@ -324,14 +386,17 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | ✓ Consistent |
-| Cosmological constant Λ | 1.1×10⁻⁵² m⁻² (UQFF vacuum term) | 1.114×10⁻⁵² m⁻² | Planck 2018 | ✓ Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10⁻³⁵/yr | Super-K 2024 | ✓ Consistent |
-| UQFF buoyancy signature | F_U_Bi_i unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
+| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
-**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes significant, offering a falsifiable prediction beyond the Standard Model.
+**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
+produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
+bridge.*
 
 
 ---
@@ -346,9 +411,9 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `f`neutron_s26_coupling`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `k`ozima_scm_cross_section`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `k`ozima_wstp_kernel`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -357,7 +422,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `r`amanujan_polylog_s26`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
 | `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
@@ -366,7 +431,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `m`ock_theta_q26`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -377,8 +442,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `r`amanujan_pi_uqff`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `m`ock_theta_pi_wstp_kernel`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]

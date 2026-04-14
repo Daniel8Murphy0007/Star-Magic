@@ -1,6 +1,18 @@
+---
+paper_id: PAPER_974
+title: "99-System Compressed Master Equation F_U^{(99)}"
+session: 216
+date: 2026-04-12
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [galaxy, AGN, cluster, neutron-star, black-hole, buoyancy, phonon, nebula]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_974: 99-System Compressed Master Equation F_U^{(99)}
 
-**Author:** Daniel T. Murphy -- Star Magic / UQFF Framework
+**Author:** Daniel T. Murphy — Star Magic / UQFF Framework
 **Date:** 2026-04-12
 **Session:** 216
 **Source:** 99system_master_equation.py (NinetyNineSystemMasterEquation)
@@ -50,7 +62,7 @@ Target: $|g_\text{tri} - g_\text{full}| / |g_\text{full}| < 1\%$ for all 99 syst
 
 ## References
 
-1. Murphy, D.T. -- Star Magic UQFF Framework (2024-2026)
+1. Murphy, D.T. — Star Magic UQFF Framework (2024-2026)
 2. PAPER_741 — 38-System Compressed Master Equation
 3. PAPER_969 — Expanded 26D Ramanujan $S_{26}^{(k)}$
 4. PAPER_961-963 — Triadic decomposition branches

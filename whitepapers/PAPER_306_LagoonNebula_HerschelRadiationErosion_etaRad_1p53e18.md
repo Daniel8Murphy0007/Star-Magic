@@ -1,10 +1,27 @@
-# PAPER_306 — Lagoon Nebula Herschel 36 Radiation Erosion: η_rad = 1.53×10¹⁸
+---
+paper_id: PAPER_306
+title: "Lagoon Nebula Herschel 36 Radiation Erosion: η_rad = 1.53×1018"
+session: 87
+date: 2025-01-01
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [AGN, nebula, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
+# PAPER_306 — Lagoon Nebula Herschel 36 Radiation Erosion: η_rad = 1.53×1018
 **Author:** Daniel T. Murphy
 **Date:** 2025
 
 ## Abstract
 
-The Lagoon Nebula (M8/NGC 6523) UQFF 2.0 analysis reveals that the single O7V star Herschel 36 produces a radiation pressure acceleration that exceeds the nebula's self-gravity by **18 orders of magnitude**: η_rad = a_rad/g_base = **1.53×10¹⁸**. This is the **FIRST UQFF single-point-source radiation pressure parameter** computed across all 29 C++ UQFF modules, and explains the blister H II morphology of the Lagoon Nebula as driven by sustained radiation erosion from one dominant ionizing source.
+The Lagoon Nebula (M8/NGC 6523) UQFF 2.0 analysis reveals that the single O7V star Herschel 36
+produces a radiation pressure acceleration that exceeds the nebula's self-gravity by **18 orders of
+magnitude**: η_rad = a_rad/g_base = **1.53×1018**. This is the **FIRST UQFF single-point-source
+radiation pressure parameter** computed across all 29 C++ UQFF modules, and explains the blister H
+II morphology of the Lagoon Nebula as driven by sustained radiation erosion from one dominant
+ionizing source.
 
 ---
 
@@ -12,12 +29,12 @@ The Lagoon Nebula (M8/NGC 6523) UQFF 2.0 analysis reveals that the single O7V st
 
 | Parameter | Value | Description |
 |-----------|-------|-------------|
-| L_H36 | 7.65×10³¹ W | Herschel 36 (O7V) bolometric luminosity |
-| r | 5.2×10¹⁷ m | Nebula half-span (~55 ly) |
-| ρ_fluid | 1×10⁻²⁰ kg/m³ | Nebula gas density |
-| c | 2.998×10⁸ m/s | Speed of light |
-| M0 | 1.989×10³⁴ kg | Molecular cloud mass (1e4 M_sun) |
-| g_base | 4.91×10⁻¹² m/s² | G×M0/r² |
+| L_H36 | 7.65×1031 W | Herschel 36 (O7V) bolometric luminosity |
+| r | 5.2×1017 m | Nebula half-span (~55 ly) |
+| ρ_fluid | 1×10-20 kg/m3 | Nebula gas density |
+| c | 2.998×108 m/s | Speed of light |
+| M0 | 1.989×1034 kg | Molecular cloud mass (1e4 M_sun) |
+| g_base | 4.91×10-12 m/s2 | G×M0/r2 |
 
 ---
 
@@ -33,7 +50,7 @@ $$F_\text{rad} = \frac{7.65\times10^{31}}{4\pi \times (5.2\times10^{17})^2 \time
 
 ### Radiation Acceleration
 
-$$a_\text{rad} = \frac{F_\text{rad}}{\rho_\text{fluid}} = \frac{7.511\times10^{-14}}{1\times10^{-20}} = \mathbf{7.51\times10^6\,\text{m/s}^2}$$
+$$a_\text{rad} = \frac{F_\text{rad}}{\rho_text{fluid}} = \frac{7.511\times10^{-14}}{1\times10^{-20}} = \mathbf{7.51\times10^6\,\text{m/s}^2}$$
 
 ### Base Gravity
 
@@ -41,9 +58,10 @@ $$g_\text{base} = \frac{G M_0}{r^2} = \frac{6.6743\times10^{-11} \times 1.989\ti
 
 ### Radiation-to-Gravity Dominance Ratio
 
-$$\eta_\text{rad} = \frac{a_\text{rad}}{g_\text{base}} = \frac{7.51\times10^6}{4.91\times10^{-12}} = \mathbf{1.53\times10^{18}}$$
+$$\eta_text{rad} = \frac{a_\text{rad}}{g_\text{base}} = \frac{7.51\times10^6}{4.91\times10^{-12}} = \mathbf{1.53\times10^{18}}$$
 
-Radiation pressure from a **single O7V star** exceeds the nebula self-gravity by **18 orders of magnitude**.
+Radiation pressure from a **single O7V star** exceeds the nebula self-gravity by **18 orders of
+magnitude**.
 
 ---
 
@@ -51,7 +69,7 @@ Radiation pressure from a **single O7V star** exceeds the nebula self-gravity by
 
 ### Blister H II Morphology
 
-The extreme η_rad = 1.53×10¹⁸ explains the Lagoon Nebula's characteristic blister morphology:
+The extreme η_rad = 1.53×1018 explains the Lagoon Nebula's characteristic blister morphology:
 
 - Herschel 36 drives a supersonic ionization front outward from the molecular cloud face
 - Radiation erosion (a_rad >> g_base) prevents gas from falling back under self-gravity
@@ -59,19 +77,21 @@ The extreme η_rad = 1.53×10¹⁸ explains the Lagoon Nebula's characteristic b
 
 ### Single-Star Dominance
 
-Unlike multi-star associations (e.g., M42 Trapezium), the Lagoon Nebula's Hourglass subregion is dominated by Herschel 36 as a single ionizing source:
+Unlike multi-star associations (e.g., M42 Trapezium), the Lagoon Nebula's Hourglass subregion is
+dominated by Herschel 36 as a single ionizing source:
 
-- Herschel 36 provides ~80% of ionizing photons (Q_Lyc ~ 10⁴⁹ s⁻¹)
-- The single-source calculation η_rad = 1.53×10¹⁸ captures this dominance
+- Herschel 36 provides ~80% of ionizing photons (Q_Lyc ~ 1049 s-1)
+- The single-source calculation η_rad = 1.53×1018 captures this dominance
 - **FIRST** such single-source UQFF parameter — contrast with PAPER_306's ensemble approach in M16/M42
 
 ### UQFF Role
 
 In the 9-term pipeline, P_rad is **subtracted** from g_total:
 
-$$g_\text{Lagoon}(t) = g_\text{pipeline}(t) + \Sigma_\text{terms} - a_\text{rad}$$
+$$g_\text{Lagoon}(t) = g_\text{pipeline}(t) + \Sigma_text{terms} - a_\text{rad}$$
 
-This encodes the physical reality: radiation pressure opposes gravitational collapse in the nebula, creating the net outward-driving force that sculpts the HII zone.
+This encodes the physical reality: radiation pressure opposes gravitational collapse in the nebula,
+creating the net outward-driving force that sculpts the HII zone.
 
 ---
 
@@ -79,9 +99,9 @@ This encodes the physical reality: radiation pressure opposes gravitational coll
 
 | Module | System | η_rad | Source | Session |
 |--------|--------|-------|--------|---------|
-| LAGOON (PAPER_306) | M8 Lagoon | **1.53×10¹⁸** | Single star (Herschel 36 O7V) | 87 |
-| EAGLE (PAPER_284) | M16 Eagle | ~10¹⁶ | OB cluster ensemble | earlier |
-| PILLARS (SOURCE4) | M16 Pillars | ~10¹⁵ | Embedded OB flux | SOURCE4 |
+| LAGOON (PAPER_306) | M8 Lagoon | **1.53×1018** | Single star (Herschel 36 O7V) | 87 |
+| EAGLE (PAPER_284) | M16 Eagle | ~1016 | OB cluster ensemble | earlier |
+| PILLARS (SOURCE4) | M16 Pillars | ~1015 | Embedded OB flux | SOURCE4 |
 
 **M8 achieves the highest single-source η_rad across all computed systems.**
 
@@ -98,10 +118,13 @@ This encodes the physical reality: radiation pressure opposes gravitational coll
 
 ---
 
-*Computed values: flux=7.511e-14 Pa, a_rad=7.51×10⁶ m/s², g_base=4.91×10⁻¹² m/s², η_rad=1.53×10¹⁸*
+*Computed values: flux=7.511e-14 Pa, a_rad=7.51×106 m/s2, g_base=4.91×10-12 m/s2, η_rad=1.53×1018*
 
 
-**Testable Prediction:** This UQFF result is directly testable with JWST NIRSpec/MIRI (testable at 3s within Cycle 4, 2026); the UQFF deviation from standard predictions exceeds the measurement noise floor by = 3s, providing a clear discriminant for the UQFF buoyancy-gravity framework in future observations.
+**Testable Prediction:** This UQFF result is directly testable with JWST NIRSpec/MIRI (testable at
+3s within Cycle 4, 2026); the UQFF deviation from standard predictions exceeds the measurement noise
+floor by = 3s, providing a clear discriminant for the UQFF buoyancy-gravity framework in future
+observations.
 
 ---
 
@@ -109,13 +132,15 @@ This encodes the physical reality: radiation pressure opposes gravitational coll
 
 ### §A.1 Sector Classification
 
-This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see `uqff_lagrangian_derivation.py`).
+This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
-The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive quantum fundamentals (DPM, UA, SCm):
+The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
+quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_\mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
+$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
 
 where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
@@ -129,7 +154,9 @@ $$\boxed{\frac{\delta S}{\delta \phi_{\rm NS}} = \nabla^2 \phi_{\rm NS} - (4\pi 
 
 $$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\rm NS} = 0$$
 
-The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g forces) through vacuum density initialization to the sector-specific equation of motion. Every term in the E-L equation inherits its physical origin from the cosmogenesis master.
+The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
+forces) through vacuum density initialization to the sector-specific equation of motion. Every term
+in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 
 ---
@@ -140,9 +167,9 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.109$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m³.
+For this system, the local VDS sub-ratio is $0.109$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -154,13 +181,13 @@ Since $p_{\rm DVP} = 17$ is **sub-threshold** (threshold at $p > 26$), the syste
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
-The BSH saturation timescale for this sector is **10⁴ yr** (spin-down equilibrium):
+The BSH saturation timescale for this sector is **104 yr** (spin-down equilibrium):
 
-$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
+$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\rm SCm}$ which initializes the harmonic series at cosmogenesis.
 
@@ -168,11 +195,11 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.109 | ✓ Threshold-consistent |
-| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 17$ | ✓ Sub-threshold |
-| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
-| [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
+| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.109 | PASS Threshold-consistent |
+| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 17$ | PASS Sub-threshold |
+| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
+| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
 ---
@@ -182,14 +209,17 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | ✓ Consistent |
-| Cosmological constant Λ | 1.1×10⁻⁵² m⁻² (UQFF vacuum term) | 1.114×10⁻⁵² m⁻² | Planck 2018 | ✓ Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10⁻³⁵/yr | Super-K 2024 | ✓ Consistent |
-| UQFF buoyancy signature | F_U_Bi_i unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
+| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
-**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes significant, offering a falsifiable prediction beyond the Standard Model.
+**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
+produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
+bridge.*
 
 
 ---
@@ -204,9 +234,9 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `f`neutron_s26_coupling`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `k`ozima_scm_cross_section`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `k`ozima_wstp_kernel`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -215,7 +245,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `r`amanujan_polylog_s26`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
 | `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
@@ -224,7 +254,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `m`ock_theta_q26`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -235,8 +265,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `r`amanujan_pi_uqff`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `m`ock_theta_pi_wstp_kernel`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]

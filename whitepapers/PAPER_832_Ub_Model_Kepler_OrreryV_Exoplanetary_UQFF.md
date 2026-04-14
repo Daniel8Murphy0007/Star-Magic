@@ -1,3 +1,15 @@
+---
+paper_id: PAPER_832
+title: "U_b Model: Kepler Orrery V Exoplanetary UQFF Extension"
+session: 0
+date: 2011-01-01
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [Hubble, dark-matter, exoplanet, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_832 — U_b Model: Kepler Orrery V Exoplanetary UQFF Extension
 **Date:** Sep 2011
 **Session:** 0
@@ -12,7 +24,14 @@
 
 ## 1. Abstract
 
-The Universal Quantum Field Superconductive Framework (UQFF) is extended to exoplanetary systems through the **U_b Model**, derived from 62 Kepler Orrery V mission simulation frames (22 Sep 2011 – 01 Dec 2011). Three new environmental force terms are introduced: **F_orbit** (orbital resonance force), **F_tide** (tidal locking force), and **F_gal** (galactic rotation and dark matter coupling). These terms replace the general F_env(t) scalar with physically motivated sub-components validated against Kepler DR25 and TESS datasets, including Kepler-11b (5:4 resonance), TOI-178b (2:4:6:9:12 Laplace resonance chain), TOI-849b (tidal circularization), and TOI-2109b (tidal distortion).
+The Universal Quantum Field Superconductive Framework (UQFF) is extended to exoplanetary systems
+through the **U_b Model**, derived from 62 Kepler Orrery V mission simulation frames (22 Sep 2011 –
+01 Dec 2011). Three new environmental force terms are introduced: **F_orbit** (orbital resonance
+force), **F_tide** (tidal locking force), and **F_gal** (galactic rotation and dark matter
+coupling). These terms replace the general F_env(t) scalar with physically motivated sub-components
+validated against Kepler DR25 and TESS datasets, including Kepler-11b (5:4 resonance), TOI-178b
+(2:4:6:9:12 Laplace resonance chain), TOI-849b (tidal circularization), and TOI-2109b (tidal
+distortion).
 
 ---
 
@@ -20,23 +39,25 @@ The Universal Quantum Field Superconductive Framework (UQFF) is extended to exop
 
 The compressed UQFF equation (derived from 38 canonical documents, PAPER_823):
 
-```
-g_UQFF(r,t) = (G*M(t))/(r(t)^2) * (1+H(t,z)) * (1-B(t)/B_crit) * (1+F_env(t))
-            + (Ug1 + Ug2 + Ug3' + Ug4)
-            + (Lambdac^2/3)
-            + (hbar/sqrt(DeltaxDeltap)) * integral(psi_total H psi_total dV) * (2pi/t_Hubble)
-            + rho_fluid*V*g
-            + (M_vis + M_DM) * (deltarho/rho + 3GM/r^3)
-```
+$$
+\begin{aligned}
+  & g_UQFF(r,t) = (G*M(t))/(r(t)^2) * (1+H(t,z)) * (1-B(t)/B_crit) * (1+F_env(t)) \\
+  & + (Ug1 + Ug2 + Ug3' + Ug4) \\
+  & + (Lambdac^2/3) \\
+  & + (hbar/sqrt(DeltaxDeltap)) * integral(psi_total H psi_total dV) * (2pi/t_Hubble) \\
+  & + rho_fluid*V*g \\
+  & + (M_vis + M_DM) * (deltarho/rho + 3GM/r^3)
+\end{aligned}
+$$
 
 Where:
 - H(t,z) = H_0 sqrt(0.3(1+z)^3 + 0.7)
 - F_env(t) = Sigmaᵢ Fᵢ (system-specific environmental forces)
 - G = 6.6743x10-^1^1 m^3 kg-^1 s-^2
-- hbar = 1.0546x10-^3⁴ J*s
-- Lambda = 1.1x10-⁵^2 m-^2
-- c = 3x10⁸ m/s
-- t_Hubble = 4.35x10^1⁷ s
+- hbar = 1.0546x10-^34 J*s
+- Lambda = 1.1x10-5^2 m-^2
+- c = 3x108 m/s
+- t_Hubble = 4.35x10^17 s
 
 ---
 
@@ -44,21 +65,23 @@ Where:
 
 ### 3.1 Full U_b Equation
 
-```
-g_Ub(r,t) = (G*M(t))/(r(t)^2) * (1+H(t,z)) * (1-B(t)/B_crit)
-            * (1 + F_orbit(t) + F_tide(t) + F_gal(t))
-            + (Ug1 + Ug2 + Ug3' + Ug4)
-            + (Lambdac^2/3)
-            + (hbar/sqrt(DeltaxDeltap)) * integral(psi_total H psi_total dV) * (2pi/t_Hubble)
-            + rho_fluid*V*g
-            + (M_vis + M_DM) * (deltarho/rho + 3GM/r^3)
-```
+$$
+\begin{aligned}
+  & g_Ub(r,t) = (G*M(t))/(r(t)^2) * (1+H(t,z)) * (1-B(t)/B_crit) \\
+  & * (1 + F_orbit(t) + F_tide(t) + F_gal(t)) \\
+  & + (Ug1 + Ug2 + Ug3' + Ug4) \\
+  & + (Lambdac^2/3) \\
+  & + (hbar/sqrt(DeltaxDeltap)) * integral(psi_total H psi_total dV) * (2pi/t_Hubble) \\
+  & + rho_fluid*V*g \\
+  & + (M_vis + M_DM) * (deltarho/rho + 3GM/r^3)
+\end{aligned}
+$$
 
 ### 3.2 F_orbit — Orbital Resonance Force
 
-```
+$$
 F_orbit(t) = (G * M_p * M_s) / a^3
-```
+$$
 
 | Symbol  | Meaning  |
 |--------|---------|
@@ -66,36 +89,38 @@ F_orbit(t) = (G * M_p * M_s) / a^3
 | M_s  | Star mass [kg]  |
 | a  | Semi-major axis [m]  |
 
-Physical interpretation: Gravitational coupling force per unit mass driving mean-motion resonance between planet pairs. Analogous to the restoring force in a resonance chain.
+Physical interpretation: Gravitational coupling force per unit mass driving mean-motion resonance
+between planet pairs. Analogous to the restoring force in a resonance chain.
 
 **Standard Kepler value** (M_p = 5 M_Earth, M_s = 1.1 M_Sun, a = 0.1 AU):
-```
+$$
 F_orbit = (6.6743e-11 * 2.98e25 * 2.188e30) / (1.496e10)^3 ~= 1.30x10-^1 m/s^2
-```
+$$
 
 ### 3.3 F_tide — Tidal Locking Force
 
-```
-F_tide(t) = (G * M_p * M_s * R_p) / a⁶
-```
+$$
+F_tide(t) = (G * M_p * M_s * R_p) / a6
+$$
 
 | Symbol  | Meaning  |
 |--------|---------|
 | R_p  | Planetary radius [m]  |
-| a  | Semi-major axis [m] (note a-⁶ dependence)  |
+| a  | Semi-major axis [m] (note a-6 dependence)  |
 
-Physical interpretation: Tidal bulge gravitational coupling; drives orbital circularization and tidal locking in close-orbit (a < 0.1 AU) planets.
+Physical interpretation: Tidal bulge gravitational coupling; drives orbital circularization and
+tidal locking in close-orbit (a < 0.1 AU) planets.
 
-**Standard value** (R_p = 1.5 R_Earth = 9.555x10⁶ m, a = 0.01 AU):
-```
-F_tide = (6.6743e-11 * 1.192e25 * 2.188e30 * 9.555e6) / (1.496e9)⁶ ~= 2.91x10-^1^1 m/s^2
-```
+**Standard value** (R_p = 1.5 R_Earth = 9.555x106 m, a = 0.01 AU):
+$$
+F_tide = (6.6743e-11 * 1.192e25 * 2.188e30 * 9.555e6) / (1.496e9)6 ~= 2.91x10-^1^1 m/s^2
+$$
 
 ### 3.4 F_gal — Galactic Rotation + Dark Matter Coupling
 
-```
+$$
 F_gal(t) = v_gal^2 / r_gal + G * M_DM / r_gal^2
-```
+$$
 
 | Symbol  | Meaning  |
 |--------|---------|
@@ -104,26 +129,28 @@ F_gal(t) = v_gal^2 / r_gal + G * M_DM / r_gal^2
 | M_DM  | Dark matter mass enclosed within r_gal  |
 
 NFW dark matter density:
-```
-rho_DM = 4.2x10-^2 kg/m^3  (at 8 kpc, Navarro-Frenk-White profile)
-M_DM = rho_DM * (4/3)pi r_gal^3 = 2.57x10⁴^0 kg
-F_DM = G*M_DM / r_gal^2 = 2.83x10-^1^0 m/s^2
-F_gal = (2.2e5)^2 / (2.47e20) + 2.83e-10 ~= 4.79x10-^1^0 m/s^2
-```
+$$
+\begin{aligned}
+  & rho_DM = 4.2x10-^2 kg/m^3  (at 8 kpc, Navarro-Frenk-White profile) \\
+  & M_DM = rho_DM * (4/3)pi r_gal^3 = 2.57x104^0 kg \\
+  & F_DM = G*M_DM / r_gal^2 = 2.83x10-^1^0 m/s^2 \\
+  & F_gal = (2.2e5)^2 / (2.47e20) + 2.83e-10 ~= 4.79x10-^1^0 m/s^2
+\end{aligned}
+$$
 
 ---
 
 ## 4. Equilibrium Temperature Model
 
-```
+$$
 T_eq = [(1 - A) * S / (4sigma)]^0.25
-```
+$$
 
 | Symbol  | Meaning  |
 |--------|---------|
 | A  | Bond albedo (~= 0.3 for Earth-like)  |
 | S  | Stellar flux [W/m^2]  |
-| sigma  | Stefan-Boltzmann = 5.67x10-⁸ W m-^2 K-⁴  |
+| sigma  | Stefan-Boltzmann = 5.67x10-8 W m-^2 K-4  |
 
 Temperature scale observed in Kepler Orrery V: 250 K (outer, blue) -> 1250 K (inner, red).
 
@@ -131,9 +158,9 @@ Temperature scale observed in Kepler Orrery V: 250 K (outer, blue) -> 1250 K (in
 
 ## 5. F_env(t) Standardized Kepler Value
 
-```
+$$
 F_env(t) = 0.50 * F_orbit + 0.30 * F_tide + 0.20 * F_gal
-```
+$$
 
 Weighted to reflect dominant contributions across 62 Kepler frames:
 - 50% F_orbit: resonance stability dominates multi-planet dynamics
@@ -155,10 +182,11 @@ Weighted to reflect dominant contributions across 62 Kepler frames:
 | System  | Parameter  | F_tide (m/s^2)  | Effect  |
 |--------|-----------|---------------|--------|
 | TOI-849b  | a=0.016 AU, M_p=40 M_Earth  | 5.61x10-^1^2  | Circularized (OK)  |
-| Kepler-13Ab  | a=0.033 AU, M_p=1 M_Jup  | 2.59x10-^1⁷  | Tidally locked (OK)  |
+| Kepler-13Ab  | a=0.033 AU, M_p=1 M_Jup  | 2.59x10-^17  | Tidally locked (OK)  |
 | TOI-2109b  | a=0.018 AU  | dominates  | Tidal distortion (OK)  |
 
-**DeepSearch sources:** Kepler DR25 (4,034 candidates), TESS/MAST (1,799 candidates), arXiv (MacDonald & Dawson 2018, Winn et al. 2018, Szabó et al. 2020), STScl, NASA Exoplanet Archive.
+**DeepSearch sources:** Kepler DR25 (4,034 candidates), TESS/MAST (1,799 candidates), arXiv
+(MacDonald & Dawson 2018, Winn et al. 2018, Szabó et al. 2020), STScl, NASA Exoplanet Archive.
 
 ---
 
@@ -192,15 +220,18 @@ Compute: P_1 = 2pisqrt(a_1^3 / G*M_s), P_2 = 2pisqrt(a_2^3 / G*M_s)
 Check: r = P_2/P_1 ~= n/m (resonance ratio)
 Output: F_orbit for each planet
 ```
-Example (TOI-178): a_1=0.045 AU, a_2=0.067 AU -> P_1=1.98 days, P_2=3.24 days, r~=1.64 (2:1 resonance)
+Example (TOI-178): a_1=0.045 AU, a_2=0.067 AU -> P_1=1.98 days, P_2=3.24 days, r~=1.64 (2:1
+resonance)
 
 ### F_tide Tidal Solver
-```
-Input: M_p, M_s, R_p, a
-Compute: F_tide = G * M_p * M_s * R_p / a⁶
-Check: F_tide > threshold -> tidal locking likely
-Output: tidal locking timescale
-```
+$$
+\begin{aligned}
+  & Input: M_p, M_s, R_p, a \\
+  & Compute: F_tide = G * M_p * M_s * R_p / a6 \\
+  & Check: F_tide > threshold -> tidal locking likely \\
+  & Output: tidal locking timescale
+\end{aligned}
+$$
 Example (TOI-849b): F_tide = 5.61x10-^1^2 m/s^2
 
 ---
@@ -216,7 +247,8 @@ F_env(t) [Standard UQFF]
     └── F_gal(t)    [Kepler U_b: galactic + dark matter]
 ```
 
-This modular decomposition allows the same base UQFF machinery to cover planetary, stellar, galactic, and cosmological scales through appropriate F_env parameterization.
+This modular decomposition allows the same base UQFF machinery to cover planetary, stellar,
+galactic, and cosmological scales through appropriate F_env parameterization.
 
 ---
 
@@ -235,11 +267,14 @@ With U_b extension:
 
 ## 11. Conclusion
 
-The U_b Model (PAPER_832) provides the first UQFF-native treatment of exoplanetary orbital dynamics, validated across 62 Kepler Orrery V frames and 1,200+ Kepler/TESS confirmed systems. The three-component F_env decomposition (F_orbit + F_tide + F_gal) yields a standardized Kepler value of F_env ~= 6.5x10-^2 m/s^2, consistent with observed resonance patterns and tidal locking statistics.
+The U_b Model (PAPER_832) provides the first UQFF-native treatment of exoplanetary orbital dynamics,
+validated across 62 Kepler Orrery V frames and 1,200+ Kepler/TESS confirmed systems. The
+three-component F_env decomposition (F_orbit + F_tide + F_gal) yields a standardized Kepler value of
+F_env ~= 6.5x10-^2 m/s^2, consistent with observed resonance patterns and tidal locking statistics.
 
 **Key equations:**
 - `F_orbit = G*M_p*M_s / a^3`
-- `F_tide = G*M_p*M_s*R_p / a⁶`
+- `F_tide = G*M_p*M_s*R_p / a6`
 - `F_gal = v_gal^2/r_gal + G*M_DM/r_gal^2`
 - `T_eq = [(1-A)*S/(4sigma)]^0.25`
 - `F_env = 0.5*F_orbit + 0.3*F_tide + 0.2*F_gal ~= 6.5x10-^2 m/s^2`
@@ -255,13 +290,15 @@ Subject: UQFF U_b Model — Kepler Orrery V 62 Frames
 
 ### §A.1 Sector Classification
 
-This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see `uqff_lagrangian_derivation.py`).
+This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
-The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive quantum fundamentals (DPM, UA, SCm):
+The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
+quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_\mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
+$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
 
 where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
@@ -275,7 +312,9 @@ $$\boxed{\frac{\delta S}{\delta \phi_{\rm NS}} = \nabla^2 \phi_{\rm NS} - (4\pi 
 
 $$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\rm NS} = 0$$
 
-The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g forces) through vacuum density initialization to the sector-specific equation of motion. Every term in the E-L equation inherits its physical origin from the cosmogenesis master.
+The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
+forces) through vacuum density initialization to the sector-specific equation of motion. Every term
+in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 
 ---
@@ -286,9 +325,9 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.104$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m³.
+For this system, the local VDS sub-ratio is $0.104$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -300,13 +339,13 @@ Since $p_{\rm DVP} = 83$ is **resonant** (threshold at $p > 26$), the system's v
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
-The BSH saturation timescale for this sector is **10⁴ yr** (spin-down equilibrium):
+The BSH saturation timescale for this sector is **104 yr** (spin-down equilibrium):
 
-$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
+$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\rm SCm}$ which initializes the harmonic series at cosmogenesis.
 
@@ -314,11 +353,11 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.104 | ✓ Threshold-consistent |
-| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 83$ | ✓ Resonant |
-| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
-| [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
+| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.104 | PASS Threshold-consistent |
+| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 83$ | PASS Resonant |
+| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
+| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
 ---
@@ -328,14 +367,17 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | ✓ Consistent |
-| Cosmological constant Λ | 1.1×10⁻⁵² m⁻² (UQFF vacuum term) | 1.114×10⁻⁵² m⁻² | Planck 2018 | ✓ Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10⁻³⁵/yr | Super-K 2024 | ✓ Consistent |
-| UQFF buoyancy signature | F_U_Bi_i unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
+| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
-**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes significant, offering a falsifiable prediction beyond the Standard Model.
+**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
+produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
+bridge.*
 
 
 ---
@@ -350,9 +392,9 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `f`neutron_s26_coupling`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `k`ozima_scm_cross_section`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `k`ozima_wstp_kernel`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -361,7 +403,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `r`amanujan_polylog_s26`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
 | `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
@@ -370,7 +412,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `m`ock_theta_q26`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -381,8 +423,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `r`amanujan_pi_uqff`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `m`ock_theta_pi_wstp_kernel`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]

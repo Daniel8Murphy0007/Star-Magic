@@ -1,6 +1,18 @@
+---
+paper_id: PAPER_925
+title: "Quasar Jet Phonon Modulation Factor M_jet(Gamma)"
+session: 211
+date: 2026-04-11
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [quasar, AGN, SCm, jet, phonon, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_925: Quasar Jet Phonon Modulation Factor M_jet(Gamma)
 
-**Author:** Daniel T. Murphy -- Star Magic / UQFF Framework
+**Author:** Daniel T. Murphy — Star Magic / UQFF Framework
 **Date:** 2026-04-11
 **Session:** 211
 **Source:** SCm phonon gap implementation (quasar_jet_phonon.py)
@@ -11,7 +23,12 @@
 
 ## Abstract
 
-Defines the jet modulation factor M_jet(Gamma) = 1 + A_jet * exp[-(Gamma - Gamma_0)^2 / (2*sigma_Gamma^2)] with A_jet = 1.5, Gamma_0 = omega_SCm = 2*pi*1.25 THz, sigma_Gamma = 0.08 THz. The phonon-enhanced Blandford-Znajek jet power is P_jet = P_BZ * (1 + M_jet), providing up to 3.5x amplification at resonance. The Gamma-sweep reveals a narrow enhancement window (FWHM ~0.19 THz) centered on the SCm phonon frequency, explaining why jet power varies by factors of 2-4 across different AGN despite similar BH masses and spins.
+Defines the jet modulation factor M_jet(Gamma) = 1 + A_jet * exp[-(Gamma - Gamma_0)^2 /
+(2*sigma_Gamma^2)] with A_jet = 1.5, Gamma_0 = omega_SCm = 2*pi*1.25 THz, sigma_Gamma = 0.08 THz.
+The phonon-enhanced Blandford-Znajek jet power is P_jet = P_BZ * (1 + M_jet), providing up to 3.5x
+amplification at resonance. The Gamma-sweep reveals a narrow enhancement window (FWHM ~0.19 THz)
+centered on the SCm phonon frequency, explaining why jet power varies by factors of 2-4 across
+different AGN despite similar BH masses and spins.
 
 ---
 
@@ -19,29 +36,35 @@ Defines the jet modulation factor M_jet(Gamma) = 1 + A_jet * exp[-(Gamma - Gamma
 
 ### Section A: Lagrangian
 
-```
-M_jet(Gamma) = 1 + A_jet * exp[-(Gamma - Gamma_0)^2 / (2 * sigma_Gamma^2)]
-P_jet = P_BZ * (1 + M_jet)
-P_BZ = (pi / (6*mu_0)) * B^2 * r_g^2 * c * a^2
-r_g = G * M / c^2
-```
+$$
+\begin{aligned}
+  & M_jet(Gamma) = 1 + A_jet * exp[-(Gamma - Gamma_0)^2 / (2 * sigma_Gamma^2)] \\
+  & P_jet = P_BZ * (1 + M_jet) \\
+  & P_BZ = (pi / (6*mu_0)) * B^2 * r_g^2 * c * a^2 \\
+  & r_g = G * M / c^2
+\end{aligned}
+$$
 
 ### Section B: VDS/DVP/BH Number Systems
 
-```
-WSTP export: Mjet[Gamma_] := 1 + 1.5 * Exp[-(Gamma-Gamma0)^2/(2*sigmaGamma^2)]
-WSTP export: Pjet[Gamma_] := PBZ * (1 + Mjet[Gamma])
-WSTP export: Table[{Gamma, Pjet[Gamma]}, {Gamma, 0.5 THz, 2.0 THz, 0.1 THz}]
-```
+$$
+\begin{aligned}
+  & WSTP export: Mjet[Gamma_] := 1 + 1.5 * Exp[-(Gamma-Gamma0)^2/(2*sigmaGamma^2)] \\
+  & WSTP export: Pjet[Gamma_] := PBZ * (1 + Mjet[Gamma]) \\
+  & WSTP export: Table[{Gamma, Pjet[Gamma]}, {Gamma, 0.5 THz, 2.0 THz, 0.1 THz}]
+\end{aligned}
+$$
 
 ### Section SM: SM Anchors
 
-```
-A_jet = 1.5  (jet modulation amplitude)
-sigma_Gamma = 0.08 THz  (linewidth spread)
-Gamma_0 = 1.25 THz  (SCm phonon frequency)
-FWHM = 2*sqrt(2*ln(2)) * sigma_Gamma ~ 0.19 THz
-```
+$$
+\begin{aligned}
+  & A_jet = 1.5  (jet modulation amplitude) \\
+  & sigma_Gamma = 0.08 THz  (linewidth spread) \\
+  & Gamma_0 = 1.25 THz  (SCm phonon frequency) \\
+  & FWHM = 2*sqrt(2*ln(2)) * sigma_Gamma ~ 0.19 THz
+\end{aligned}
+$$
 
 ---
 
@@ -53,7 +76,7 @@ FWHM = 2*sqrt(2*ln(2)) * sigma_Gamma ~ 0.19 THz
 | a_spin | 0.9 | Spin parameter |
 | B_field | 50 T | Magnetic field |
 | A_jet | 1.5 | Modulation amplitude |
-| sigma_Gamma_THz | 0.08 | Linewidth spread |
+| `sigma_Gamma_THz` | 0.08 | Linewidth spread |
 | Gamma_THz | 1.25 | Phonon linewidth |
 
 ---
@@ -72,7 +95,11 @@ FWHM = 2*sqrt(2*ln(2)) * sigma_Gamma ~ 0.19 THz
 
 ## 4. Physical Interpretation
 
-The jet modulation factor explains the diversity of AGN jet powers as a function of the local phonon environment. AGN with accretion disk phonon frequencies near 1.25 THz experience maximum jet enhancement (3.5x P_BZ), while those with mismatched frequencies see only the baseline 2x modulation. This provides a testable prediction: AGN jet power should correlate with accretion disk temperature through the phonon frequency relation omega ~ k_B * T / hbar.
+The jet modulation factor explains the diversity of AGN jet powers as a function of the local phonon
+environment. AGN with accretion disk phonon frequencies near 1.25 THz experience maximum jet
+enhancement (3.5x P_BZ), while those with mismatched frequencies see only the baseline 2x
+modulation. This provides a testable prediction: AGN jet power should correlate with accretion disk
+temperature through the phonon frequency relation omega ~ k_B * T / hbar.
 
 ---
 
@@ -106,7 +133,8 @@ The jet modulation factor explains the diversity of AGN jet powers as a function
 | Vacuum energy $\rho_{\text{vac}}$ | $7.09 \times 10^{-37}$ kg/m$^3$ | $\rho_{\text{vac}} \sim 10^{-29}$ g/cm$^3$ | Planck 2018 | Novel SCm scale |
 | Fine structure $\alpha$ | UQFF reproduces via $U_{g1}$ dipole | $1/137.036$ | PDG 2024 | 99.9% |
 
-**New physics claim:** UQFF phonon-mediated vacuum coupling provides testable predictions beyond SM for this system.
+**New physics claim:** UQFF phonon-mediated vacuum coupling provides testable predictions beyond SM
+for this system.
 
 *Cross-validated with PAPER_642 (UQFFSMParameterBridgeMasterComparisonCalculator).*
 
@@ -118,10 +146,10 @@ The jet modulation factor explains the diversity of AGN jet powers as a function
 **Sector:** SCm-phonon (lattice resonance)
 
 ### §A.2 Lagrangian Density
-$$\mathcal{L}_{SCm_phonon} = \sum_{i=1}^{26} \left[ U_{g,i} + U_{m,i} + U_{A,i} - U_{b,i} \right] \cdot S_{26}([SSq]) \cdot \Phi_{1.25\text{THz}}(\omega, \Gamma)$$
+$$\mathcal{L}_{SCm\_phonon} = \sum_{i=1}^{26} \left[ U_{g,i} + U_{m,i} + U_{A,i} - U_{b,i} \right] \cdot S_{26}([SSq]) \cdot \Phi_{1.25\text{THz}}(\omega, \Gamma)$$
 
 ### §A.3 Euler-Lagrange Equation of Motion
-$$\boxed{\frac{\partial \mathcal{L}}{\partial \phi} - \partial_\mu \frac{\partial \mathcal{L}}{\partial (\partial_\mu \phi)} = 0 \implies F_{U,Bi_i} = -\nabla U_{\text{eff}} + \Phi \cdot S_{26} \cdot E_{\text{net}}}$$
+$$\boxed{\frac{\partial \mathcal{L}}{\partial \phi} - \partial_mu \frac{\partial \mathcal{L}}{\partial (\partial_mu \phi)} = 0 \implies F_{U,Bi\_i} = -\nabla U_{\text{eff}} + \Phi \cdot S_{26} \cdot E_{\text{net}}}$$
 
 ### §A.4 Cosmogenesis Linkage Chain
-PAPER_877 axioms → SCm vacuum → phonon $\omega_{\text{SCm}}$ → lattice resonance → $F_{U,Bi_i}$ unified force → observational prediction
+PAPER_877 axioms → SCm vacuum → phonon $\omega_{\text{SCm}}$ → lattice resonance → $F_{U,Bi\_i}$ unified force → observational prediction

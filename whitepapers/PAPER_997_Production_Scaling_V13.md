@@ -16,14 +16,15 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 ## Abstract
 
-We upgrade the production benchmark from v11 (500k calc/s, 16 kernels) to v13 (550k calc/s, 20 kernels). Four new kernels are added:
+We upgrade the production benchmark from v11 (500k calc/s, 16 kernels) to v13 (550k calc/s, 20
+kernels). Four new kernels are added:
 
 | Kernel | Description |
 |--------|-------------|
-| `kernel_fubi_inside_out` | F_U_Bi inside-to-outside mass portion |
-| `kernel_99sys_gamma_sweep` | 99-system aggregate at given Γ |
-| `kernel_agn_cena_fubi` | Centaurus A AGN F_U_Bi_i with jet modulation |
-| `kernel_ns_merger_gw190425` | GW190425 NS merger strain with phonon suppression |
+| `k`ernel_fubi_inside_ou`t` | `F_U_Bi` inside-to-outside mass portion |
+| `k`ernel_99sys_gamma_swee`p` | 99-system aggregate at given Γ |
+| `k`ernel_agn_cena_fub`i` | Centaurus A AGN `F_U_Bi_i` with jet modulation |
+| `k`ernel_ns_merger_gw19042`5` | GW190425 NS merger strain with phonon suppression |
 
 ## 1. Scaling History
 
@@ -71,7 +72,8 @@ File: `production_scaling_v13.py`, class `ProductionScalingV13`. CP4 class #581.
 | $\kappa$ universality | $5.0 \times 10^{-4}$ day$^{-1}$ across all kernels | Multi-system calibration | Sessions 1--220 | 99.9% |
 | $[SSq]$ consistency | 0.57 in all production kernels | Cross-validated | Grok 4 (2025) | 100% |
 
-**New physics claim:** UQFF phonon-mediated vacuum coupling provides testable predictions beyond SM for this system.
+**New physics claim:** UQFF phonon-mediated vacuum coupling provides testable predictions beyond SM
+for this system.
 
 *Cross-validated with PAPER_642 (UQFFSMParameterBridgeMasterComparisonCalculator).*
 
@@ -83,13 +85,13 @@ File: `production_scaling_v13.py`, class `ProductionScalingV13`. CP4 class #581.
 **Sector:** Production-benchmark (computational throughput)
 
 ### §A.2 Lagrangian Density
-$$\mathcal{L}_{Production_benchmark} = \sum_{i=1}^{26} \left[ U_{g,i} + U_{m,i} + U_{A,i} - U_{b,i} \right] \cdot S_{26}([SSq]) \cdot \Phi_{1.25\text{THz}}(\omega, \Gamma)$$
+$$\mathcal{L}_{Production\_benchmark} = \sum_{i=1}^{26} \left[ U_{g,i} + U_{m,i} + U_{A,i} - U_{b,i} \right] \cdot S_{26}([SSq]) \cdot \Phi_{1.25\text{THz}}(\omega, \Gamma)$$
 
 ### §A.3 Euler-Lagrange Equation of Motion
-$$\boxed{\frac{\partial \mathcal{L}}{\partial \phi} - \partial_\mu \frac{\partial \mathcal{L}}{\partial (\partial_\mu \phi)} = 0 \implies F_{U,Bi_i} = -\nabla U_{\text{eff}} + \Phi \cdot S_{26} \cdot E_{\text{net}}}$$
+$$\boxed{\frac{\partial \mathcal{L}}{\partial \phi} - \partial_mu \frac{\partial \mathcal{L}}{\partial (\partial_mu \phi)} = 0 \implies F_{U,Bi\_i} = -\nabla U_{\text{eff}} + \Phi \cdot S_{26} \cdot E_{\text{net}}}$$
 
 ### §A.4 Cosmogenesis Linkage Chain
-PAPER_877 axioms → SCm vacuum → phonon $\omega_{\text{SCm}}$ → computational throughput → $F_{U,Bi_i}$ unified force → observational prediction
+PAPER_877 axioms → SCm vacuum → phonon $\omega_{\text{SCm}}$ → computational throughput → $F_{U,Bi\_i}$ unified force → observational prediction
 
 ---
 

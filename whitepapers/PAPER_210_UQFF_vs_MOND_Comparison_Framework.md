@@ -1,79 +1,95 @@
+---
+paper_id: PAPER_210
+title: "UQFF vs MOND Comparison Framework"
+session: 50
+date: 2026-03-13
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [galaxy, cluster, vacuum, buoyancy, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_210: UQFF vs MOND Comparison Framework
 
 **Version:** 1.0  
 **Date:** March 13, 2026  
 **Session:** 50 — grok_share_7514fe.txt Full Audit  
 **Author:** Star-Magic UQFF Research Framework  
-**Source:** grok_share_7514fe.txt lines 899–966 (first PDF: UQFF+Equations+Across+Astrophysical+Systems_22Sept2025.pdf)
+**Source:** grok_share_7514fe.txt lines 899–966 (first PDF:
+UQFF+Equations+Across+Astrophysical+Systems_22Sept2025.pdf)
 
 ---
 
-$$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b_i}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57$$
+$$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b\_i}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57$$
 
 $$
-U_{b_i}(r) = \kappa\cdot[SSq]\cdot\frac{GM}{r^2}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57,\; \beta_i = 0.61
+U_{b\_i}(r) = \kappacdot[SSq]\cdot\frac{GM}{r^2}, \quad \kappa =
+5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57,\; \beta_i = 0.61
 $$
 
 ## Abstract
 
-Modified Newtonian Dynamics (MOND) and UQFF are compared across rotation curve fitting, galaxy cluster mass discrepancy, gravitational lensing, and large-scale structure. MOND's interpolation parameter a0 ˜ 1.2×10?¹° m/s² is shown to emerge naturally from UQFF's vacuum buoyancy coupling k_UA when evaluated at galactic acceleration scales. However, MOND fails in galaxy clusters by a factor of ~3 in mass, requires ad hoc interpolation between Newtonian and deep-MOND regimes, cannot explain CMB lensing, and produces incorrect peculiar velocity statistics. UQFF handles all of these via its F_UBii decomposition, 26-layer resonance, and cluster-specific F_env(t) terms.
+Modified Newtonian Dynamics (MOND) and UQFF are compared across rotation curve fitting, galaxy
+cluster mass discrepancy, gravitational lensing, and large-scale structure. MOND's interpolation
+parameter a0 ˜ 1.2×10?1° m/s2 is shown to emerge naturally from UQFF's vacuum buoyancy coupling k_UA
+when evaluated at galactic acceleration scales. However, MOND fails in galaxy clusters by a factor
+of ~3 in mass, requires ad hoc interpolation between Newtonian and deep-MOND regimes, cannot explain
+CMB lensing, and produces incorrect peculiar velocity statistics. UQFF handles all of these via its
+F_UBii decomposition, 26-layer resonance, and cluster-specific F_env(t) terms.
 
 ---
 
 ## 1. MOND Formulation
 
-```
-MOND (Milgrom 1983):
-  Modified Poisson equation:
-    ?·[µ(|?F|/a0)·?F] = 4pG?_baryon
-
-  Interpolation function µ(x):
-    Standard: µ(x) = x/v(1+x²)
-    Simple:   µ(x) = x/(1+x)
-
-  Deep-MOND regime (g << a0, µ?g/a0):
-    g_MOND = v(g_Newton · a0)
-
-  a0 = 1.2×10?¹° m/s²   (calibrated to flat rotation curves)
-
-  Relativistic extension: TeVeS (Tensor-Vector-Scalar, Bekenstein 2004)
-```
+$$
+\begin{aligned}
+  & MOND (Milgrom 1983): \\
+  & Modified Poisson equation: \\
+  & ?·[µ(|?F|/a0)·?F] = 4pG?_baryon \\
+  & Interpolation function µ(x): \\
+  & Standard: µ(x) = x/v(1+x2) \\
+  & Simple:   µ(x) = x/(1+x) \\
+  & Deep-MOND regime (g << a0, µ?g/a0): \\
+  & g_MOND = v(g_Newton · a0) \\
+  & a0 = 1.2×10?1° m/s2   (calibrated to flat rotation curves) \\
+  & Relativistic extension: TeVeS (Tensor-Vector-Scalar, Bekenstein 2004)
+\end{aligned}
+$$
 
 ---
 
 ## 2. Rotation Curve Analysis
 
 ### MOND Treatment
-```
-For typical spiral galaxy (M_baryon = 5×10¹° M_?, v_flat = 200 km/s):
-
-Newtonian: g_N = GM/r²  decreases as 1/r²
-Deep-MOND: g = v(g_N·a0) ? v = (G·M·a0)^{1/4} = constant
-
-MOND flat rotation: v_flat = (G·M_b·a0)^{1/4}
-  ? Baryonic Tully-Fisher Relation (BTFR): M_b ? v_flat4
-
-MOND fit to galactic rotation:
-  Galaxies: ?²/N ˜ 1.2 (excellent, McGaugh+2016)
-  Low surface brightness: ?²/N ˜ 1.4 (good)
-  Ellipticals: ?²/N ˜ 2.1 (moderate)
-```
+$$
+\begin{aligned}
+  & For typical spiral galaxy (M_baryon = 5×101° M_?, v_flat = 200 km/s): \\
+  & Newtonian: g_N = GM/r2  decreases as 1/r2 \\
+  & Deep-MOND: g = v(g_N·a0) ? v = (G·M·a0)^{1/4} = constant \\
+  & MOND flat rotation: v_flat = (G·M_b·a0)^{1/4} \\
+  & ? Baryonic Tully-Fisher Relation (BTFR): M_b ? v_flat4 \\
+  & MOND fit to galactic rotation: \\
+  & Galaxies: ?2/N ˜ 1.2 (excellent, McGaugh+2016) \\
+  & Low surface brightness: ?2/N ˜ 1.4 (good) \\
+  & Ellipticals: ?2/N ˜ 2.1 (moderate)
+\end{aligned}
+$$
 
 ### UQFF Treatment
-```
-For same spiral galaxy, g_UQFF at radius r:
-  g(r) = g_N(r)·[1+H(t,z)] + Ug1(r) + Ug2(r) + Ug4(r) + F_env(r)
-         + F_UBii,nfwrot(r)/m  (NFW-based rotation contribution)
-
-In deep galactic field:
-  Ug1(r) = k_UA·(M_b/M_MW)·[UA]·r^{-0.5}   (slowly falling, flatter than g_N)
-
-  This reproduces flat rotation without MOND's interpolation function
-  k_UA absorbs what MOND calls a0: effectively a0 ˜ k_UA·[UA]/G^{1/2}
-
-UQFF BTFR: v_flat ? (G·M_b·k_UA·[UA])^{1/4}  — identical structure to MOND
-? UQFF recovers MOND rotation at galactic scales as limiting case
-```
+$$
+\begin{aligned}
+  & For same spiral galaxy, g_UQFF at radius r: \\
+  & g(r) = g_N(r)·[1+H(t,z)] + Ug1(r) + Ug2(r) + Ug4(r) + F_env(r) \\
+  & + F_UBii,nfwrot(r)/m  (NFW-based rotation contribution) \\
+  & In deep galactic field: \\
+  & Ug1(r) = k_UA·(M_b/M_MW)·[UA]·r^{-0.5}   (slowly falling, flatter than g_N) \\
+  & This reproduces flat rotation without MOND's interpolation function \\
+  & k_UA absorbs what MOND calls a0: effectively a0 ˜ k_UA·[UA]/G^{1/2} \\
+  & UQFF BTFR: v_flat ? (G·M_b·k_UA·[UA])^{1/4}  — identical structure to MOND \\
+  & ? UQFF recovers MOND rotation at galactic scales as limiting case
+\end{aligned}
+$$
 
 ---
 
@@ -83,8 +99,8 @@ UQFF BTFR: v_flat ? (G·M_b·k_UA·[UA])^{1/4}  — identical structure to MOND
 ```
 Observed phenomenon:
   Bullet Cluster: hot gas (baryonic) separated from mass (lensing map)
-  Mass from lensing: M_lensing ˜ 3×10¹4 M_?
-  Baryon mass (gas + stars): M_b ˜ 1.5×10¹4 M_?
+  Mass from lensing: M_lensing ˜ 3×1014 M_?
+  Baryon mass (gas + stars): M_b ˜ 1.5×1014 M_?
   Discrepancy: M_lensing/M_b ˜ 2×  (factor 2 missing mass)
 
 MOND prediction for Bullet Cluster:
@@ -95,7 +111,7 @@ MOND ad hoc fix: "neutrino dark matter" (Sanders 2003)
   Add ~2 eV sterile neutrinos ? fixes cluster masses
   But: this destroys MOND's "no dark matter is needed" appeal
 
-MOND on cluster scales: ?²/N ˜ 3–10 (poor fit)
+MOND on cluster scales: ?2/N ˜ 3–10 (poor fit)
 ```
 
 ### UQFF Treatment of Clusters
@@ -107,75 +123,69 @@ Cluster-specific F_env(t):
   This provides ~40% additional effective mass at cluster scales
 
 F_UBii,vir:
-  F_UBii,vir = F_rel × (s_r²·M_cluster/R_200²·E_LEP) × Q_wave
+  F_UBii,vir = F_rel × (s_r2·M_cluster/R_2002·E_LEP) × Q_wave
 
 Effective UQFF mass for clusters:
   M_eff = M_visible + ?M_UBii,vir + ?M_UBii,ps
-  For Bullet Cluster: ?M_UBii ˜ 1.5×10¹4 M_? ? M_eff ˜ 3×10¹4 M_? ?
+  For Bullet Cluster: ?M_UBii ˜ 1.5×1014 M_? ? M_eff ˜ 3×1014 M_? ?
 
-UQFF cluster fit: ?²/N ˜ 1.5 (good)
-Comparison: MOND ?²/N ˜ 3–10, CDM ?²/N ˜ 1.2–2.0
+UQFF cluster fit: ?2/N ˜ 1.5 (good)
+Comparison: MOND ?2/N ˜ 3–10, CDM ?2/N ˜ 1.2–2.0
 ```
 
 ---
 
 ## 4. a0 as Emergent UQFF Parameter
 
-```
-Milgrom's a0 fundamental question: Why a0 ˜ cH0/6 ˜ 1.2×10?¹° m/s²?
-
-MOND: empirical coincidence with a0 ˜ cH0/(2p) (Hu & Sawicki 2007)
-
-UQFF derivation of effective a0:
-  In deep galactic field: Ug1 ˜ k_UA·?_vac,[UA]·r/r_galaxy
-  This contributes: ?g ˜ k_UA·?_vac,[UA]/M_galaxy × r
-
-  Flat curve condition: ?g = g_N at some radius r_trans
-  k_UA·?_vac,[UA]/M × r_trans = GM/r_trans²
-  ? a0_eff = v(k_UA·?_vac,[UA]·G)   (UQFF prediction)
-
-  Numerically:
-  k_UA = [UA] = 0.0001    (UQFF calibrated coupling)
-  ?_vac,[UA] = 10?¹5 kg/m³
-  G = 6.674×10?¹¹ m³/(kg·s²)
-  a0_eff = v(10?4 × 10?¹5 × 6.674×10?¹¹) ˜ v(6.67×10?³°) ˜ 2.6×10?¹5 m/s²
-
-  Discrepancy: 2.6×10?¹5 vs 1.2×10?¹° ? factor ~5×104 off
-
-  Resolution: k_UA enters as (k_UA × r_scale)² / r³ form:
-  At transition scale r_trans (few kpc):
-  a0_eff, local = k_UA·?_vac,[UA]·r_trans²/M_galaxy
-  This recovers a0 ˜ 10?¹° m/s² with appropriate r_trans ˜ 5 kpc
-
-  Conclusion: a0 is not a fundamental constant in UQFF but an emergent
-  scale set by k_UA·?_vac,[UA] at galactic transition radii
-```
+$$
+\begin{aligned}
+  & Milgrom's a0 fundamental question: Why a0 ˜ cH0/6 ˜ 1.2×10?1° m/s2? \\
+  & MOND: empirical coincidence with a0 ˜ cH0/(2p) (Hu & Sawicki 2007) \\
+  & UQFF derivation of effective a0: \\
+  & In deep galactic field: Ug1 ˜ k_UA·?_vac,[UA]·r/r_galaxy \\
+  & This contributes: ?g ˜ k_UA·?_vac,[UA]/M_galaxy × r \\
+  & Flat curve condition: ?g = g_N at some radius r_trans \\
+  & k_UA·?_vac,[UA]/M × r_trans = GM/r_trans2 \\
+  & ? a0_eff = v(k_UA·?_vac,[UA]·G)   (UQFF prediction) \\
+  & Numerically: \\
+  & k_UA = [UA] = 0.0001    (UQFF calibrated coupling) \\
+  & ?_vac,[UA] = 10?15 kg/m3 \\
+  & G = 6.674×10?11 m3/(kg·s2) \\
+  & a0_eff = v(10?4 × 10?15 × 6.674×10?11) ˜ v(6.67×10?3°) ˜ 2.6×10?15 m/s2 \\
+  & Discrepancy: 2.6×10?15 vs 1.2×10?1° ? factor ~5×104 off \\
+  & Resolution: k_UA enters as (k_UA × r_scale)2 / r3 form: \\
+  & At transition scale r_trans (few kpc): \\
+  & a0_eff, local = k_UA·?_vac,[UA]·r_trans2/M_galaxy \\
+  & This recovers a0 ˜ 10?1° m/s2 with appropriate r_trans ˜ 5 kpc \\
+  & Conclusion: a0 is not a fundamental constant in UQFF but an emergent \\
+  & scale set by k_UA·?_vac,[UA] at galactic transition radii
+\end{aligned}
+$$
 
 ---
 
 ## 5. Strong Gravitational Lensing
 
-```
-MOND lensing (TeVeS required):
-  Standard MOND cannot produce lensing — needs TeVeS extension
-  TeVeS: additional vector field A_µ and scalar field f
-  TeVeS correctly predicts weak lensing at galactic scales
-  TeVeS issue: strong lensing in clusters still underpredicts by ~1.5×
-
-UQFF lensing:
-  Full metric distortion includes all UQFF terms:
-  ?f_lens = f_Newton + UQFF correction Ug1+Ug4
-            + F_UBii,lens/c4 × area term
-
-  For Einstein ring radius ?_E:
-  ?_E² = 4G/c² × M_eff/(D_L·D_S/D_LS)
-  M_eff = M_Newton + M_UQFF,equivalent
-         = M_Newton × (1 + F_UBii,vir/g_N·r)
-
-UQFF strong lensing of Abell 2744:
-  Predicted: 36 multiple images ? Observed: 33 (CLASH/HFF)
-  Agreement: ~9% (vs MOND/TeVeS: 25–40% discrepancy)
-```
+$$
+\begin{aligned}
+  & MOND lensing (TeVeS required): \\
+  & Standard MOND cannot produce lensing — needs TeVeS extension \\
+  & TeVeS: additional vector field A_µ and scalar field f \\
+  & TeVeS correctly predicts weak lensing at galactic scales \\
+  & TeVeS issue: strong lensing in clusters still underpredicts by ~1.5× \\
+  & UQFF lensing: \\
+  & Full metric distortion includes all UQFF terms: \\
+  & ?f_lens = f_Newton + UQFF correction Ug1+Ug4 \\
+  & + F_UBii,lens/c4 × area term \\
+  & For Einstein ring radius ?_E: \\
+  & ?_E2 = 4G/c2 × M_eff/(D_L·D_S/D_LS) \\
+  & M_eff = M_Newton + M_UQFF,equivalent \\
+  & = M_Newton × (1 + F_UBii,vir/g_N·r) \\
+  & UQFF strong lensing of Abell 2744: \\
+  & Predicted: 36 multiple images ? Observed: 33 (CLASH/HFF) \\
+  & Agreement: ~9% (vs MOND/TeVeS: 25–40% discrepancy)
+\end{aligned}
+$$
 
 ---
 
@@ -218,20 +228,21 @@ UQFF bulk flow:
 
 ## 8. Interpolation Function Comparison
 
-```
-MOND standard µ(x) = x/v(1+x²):
-  Deep-MOND: x<<1 ? µ˜x ? g_MOND ˜ v(g_N·a0)
-  Newtonian:  x>>1 ? µ˜1 ? g_MOND ˜ g_N (recovers Newton)
-  Discontinuous derivatives at x=1 (scale-dependent kink)
-
-UQFF effective µ(r):
-  µ_UQFF(r) = (1 + Ug1(r)/g_N(r))^{-1/2}
-  ? Smooth transition from MOND-like to Newtonian
-  ? No free parameter analogous to transition position
-  The transition radius emerges from: r_trans = v(k_UA·?_vac,[UA]/?_baryon)
-  At r < r_trans: Ug1 << g_N ? µ_UQFF ˜ 1 (Newtonian)
-  At r > r_trans: Ug1 ~ g_N ? µ_UQFF ˜ 1/v2 (deep-MOND-like)
-```
+$$
+\begin{aligned}
+  & MOND standard µ(x) = x/v(1+x2): \\
+  & Deep-MOND: x<<1 ? µ˜x ? g_MOND ˜ v(g_N·a0) \\
+  & Newtonian:  x>>1 ? µ˜1 ? g_MOND ˜ g_N (recovers Newton) \\
+  & Discontinuous derivatives at x=1 (scale-dependent kink) \\
+  & UQFF effective µ(r): \\
+  & µ_UQFF(r) = (1 + Ug1(r)/g_N(r))^{-1/2} \\
+  & ? Smooth transition from MOND-like to Newtonian \\
+  & ? No free parameter analogous to transition position \\
+  & The transition radius emerges from: r_trans = v(k_UA·?_vac,[UA]/?_baryon) \\
+  & At r < r_trans: Ug1 << g_N ? µ_UQFF ˜ 1 (Newtonian) \\
+  & At r > r_trans: Ug1 ~ g_N ? µ_UQFF ˜ 1/v2 (deep-MOND-like)
+\end{aligned}
+$$
 
 ---
 
@@ -251,13 +262,15 @@ UQFF effective µ(r):
 
 ### §A.1 Sector Classification
 
-This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see `uqff_lagrangian_derivation.py`).
+This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
-The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive quantum fundamentals (DPM, UA, SCm):
+The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
+quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_\mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
+$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
 
 where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
@@ -271,7 +284,9 @@ $$\boxed{\frac{\delta S}{\delta \phi_{\rm NS}} = \nabla^2 \phi_{\rm NS} - (4\pi 
 
 $$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\rm NS} = 0$$
 
-The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g forces) through vacuum density initialization to the sector-specific equation of motion. Every term in the E-L equation inherits its physical origin from the cosmogenesis master.
+The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
+forces) through vacuum density initialization to the sector-specific equation of motion. Every term
+in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 
 ---
@@ -282,9 +297,9 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.109$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m³.
+For this system, the local VDS sub-ratio is $0.109$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -296,13 +311,13 @@ Since $p_{\rm DVP} = 2$ is **sub-threshold** (threshold at $p > 26$), the system
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
-The BSH saturation timescale for this sector is **10⁴ yr** (spin-down equilibrium):
+The BSH saturation timescale for this sector is **104 yr** (spin-down equilibrium):
 
-$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
+$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\rm SCm}$ which initializes the harmonic series at cosmogenesis.
 
@@ -310,11 +325,11 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.109 | ✓ Threshold-consistent |
-| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 2$ | ✓ Sub-threshold |
-| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
-| [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
+| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.109 | PASS Threshold-consistent |
+| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 2$ | PASS Sub-threshold |
+| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
+| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
 ---
@@ -324,14 +339,17 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | ✓ Consistent |
-| Cosmological constant Λ | 1.1×10⁻⁵² m⁻² (UQFF vacuum term) | 1.114×10⁻⁵² m⁻² | Planck 2018 | ✓ Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10⁻³⁵/yr | Super-K 2024 | ✓ Consistent |
-| UQFF buoyancy signature | F_U_Bi_i unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
+| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
-**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes significant, offering a falsifiable prediction beyond the Standard Model.
+**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
+produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
+bridge.*
 
 
 ---
@@ -346,9 +364,9 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `f`neutron_s26_coupling`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `k`ozima_scm_cross_section`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `k`ozima_wstp_kernel`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -357,7 +375,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `r`amanujan_polylog_s26`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
 | `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
@@ -366,7 +384,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `m`ock_theta_q26`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -377,8 +395,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `r`amanujan_pi_uqff`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `m`ock_theta_pi_wstp_kernel`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]

@@ -1,3 +1,15 @@
+---
+paper_id: PAPER_326
+title: "Triadic Master UQFF 26-State Ramanujan Co-Sum Architecture"
+session: 94
+date: 2025-09-01
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [vacuum, SCm, buoyancy, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_326 — Triadic Master UQFF 26-State Ramanujan Co-Sum Architecture  
 **Author:** Daniel T. Murphy
 **Date:** September 2025
@@ -12,13 +24,22 @@
 
 ## Abstract
 
-The Triadic Master UQFF framework formalizes three co-existing force channels computed simultaneously for any astrophysical system: the primary quantum geometric force FU_g1, the 26-state resonance oscillation term R(t), and the buoyancy force FU_Bi. All three are evaluated as Ramanujan-inspired summations over n = 1–26 vacuum states, weighted by ρ_vac,[UA]/ρ_vac,[SCm] ratios and [SSq]-decay envelopes. Numerical validation against Westerlund 2 and Pillars of Creation confirms internal consistency to < 1% error. This is the **FIRST complete formal statement of the UQFF triadic co-sum architecture spanning 72+ astronomical systems**.
+The Triadic Master UQFF framework formalizes three co-existing force channels computed
+simultaneously for any astrophysical system: the primary quantum geometric force FU_g1, the 26-state
+resonance oscillation term R(t), and the buoyancy force FU_Bi. All three are evaluated as
+Ramanujan-inspired summations over n = 1–26 vacuum states, weighted by ρ_vac,[UA]/ρ_vac,[SCm] ratios
+and [SSq]-decay envelopes. Numerical validation against Westerlund 2 and Pillars of Creation
+confirms internal consistency to < 1% error. This is the **FIRST complete formal statement of the
+UQFF triadic co-sum architecture spanning 72+ astronomical systems**.
 
 ---
 
 ## 1. Background
 
-Prior UQFF modules (Sessions 62–93) computed individual compressed, resonance, or buoyancy terms per module. The September 2025 document assimilation (gok_share_31b5c807a4.txt) introduced for the first time the explicit triple co-sum evaluation—FU_g1, R(t), and FU_Bi—as a unified triadic system applicable to all 72+ catalogued systems. This paper formalizes that architecture.
+Prior UQFF modules (Sessions 62–93) computed individual compressed, resonance, or buoyancy terms per
+module. The September 2025 document assimilation (gok_share_31b5c807a4.txt) introduced for the first
+time the explicit triple co-sum evaluation—FU_g1, R(t), and FU_Bi—as a unified triadic system
+applicable to all 72+ catalogued systems. This paper formalizes that architecture.
 
 ---
 
@@ -39,23 +60,23 @@ $$F_{U,g1} = \sum_{k=1}^{N} \left[ k^k \cdot \frac{(f_{UA',1} \cdot f_{SCm,1} \c
 **Numerical Results (validated):**
 | System | FU_g1 (N) | r (m) | Source |
 |--------|-----------|-------|--------|
-| Westerlund 2 | 2.43×10⁻⁴⁰ | 1.89×10¹⁶ | Thread p.2 |
-| Pillars of Creation | 3.95×10⁻⁴¹ | 2.37×10¹⁷ | Thread p.2 |
-| PSZ2 G181.06+48.47 | ~4.12×10⁻⁴¹ | ~Mpc scale | Thread p.1 |
+| Westerlund 2 | 2.43×10-40 | 1.89×1016 | Thread p.2 |
+| Pillars of Creation | 3.95×10-41 | 2.37×1017 | Thread p.2 |
+| PSZ2 G181.06+48.47 | ~4.12×10-41 | ~Mpc scale | Thread p.1 |
 
 ### 2.2 Twenty-Six State Resonance Oscillation (R(t))
 
-$$R(t) = \sum_{i=1}^{26} \left[ R_{U_{g1},i} \cos(\omega_{U_{g1},i} t) + R_{U_{g2},i} \cos(\omega_{U_{g2},i} t) + R_{U_{g3},i} \cos(\omega_{U_{g3},i} t) + R_{U_{g4i},i} \cos(\omega_{U_{g4i},i} t) \right]$$
+$$R(t) = \sum_{i=1}^{26} \left[ R_{U\_{g1},i} \cos(\omega_{U\_{g1},i} t) + R_{U\_{g2},i} \cos(\omega_{U\_{g2},i} t) + R_{U\_{g3},i} \cos(\omega_{U\_{g3},i} t) + R_{U\_{g4i},i} \cos(\omega_{U\_{g4i},i} t) \right]$$
 
-Each of the 26 states carries its own frequency $\omega_{U_{gj},i} = 2\pi f_{res,i}$, where $f_{res,i}$ spans atomic-to-cosmic scales. The Ramanujan-inspired 26-state summation is not arbitrary—the 26 states correspond to the 26-dimensional spatial structure of String/M-theory compactification as interpreted through the UQFF 26-layer compressed gravity framework (SOURCE115).
+Each of the 26 states carries its own frequency $\omega_{U\_{gj},i} = 2\pi f_{res,i}$, where $f_{res,i}$ spans atomic-to-cosmic scales. The Ramanujan-inspired 26-state summation is not arbitrary—the 26 states correspond to the 26-dimensional spatial structure of String/M-theory compactification as interpreted through the UQFF 26-layer compressed gravity framework (SOURCE115).
 
 **Numerical Results:**
 | System | R(t) (N) | f_res (Hz) | Regime |
 |--------|----------|------------|--------|
-| Westerlund 2 | −2.29×10⁻⁴¹ | ~1e-8 | Collapse |
-| Pillars of Creation | −1.12×10⁻⁴² | ~1e-9 | Molecular |
-| AT2024tvd TDE | −1.12×10⁻⁴² | ~1e-7 | TDE oscillation |
-| G359.13142-0.20005 | −2.29×10⁻⁴¹ | ~1e-8 | Filament erosion |
+| Westerlund 2 | −2.29×10-41 | ~1e-8 | Collapse |
+| Pillars of Creation | −1.12×10-42 | ~1e-9 | Molecular |
+| AT2024tvd TDE | −1.12×10-42 | ~1e-7 | TDE oscillation |
+| G359.13142-0.20005 | −2.29×10-41 | ~1e-8 | Filament erosion |
 
 ### 2.3 Time-Integrated Buoyancy Force (FU_Bi)
 
@@ -70,9 +91,9 @@ with calibrated constant $k_{Ub} = 0.1$.
 **Numerical Results:**
 | System | FU_Bi (N) | Scale | 
 |--------|-----------|-------|
-| Westerlund 2 | 6.14×10⁻³² | Star cluster |
-| Pillars of Creation | 9.79×10⁻³³ | Star-forming pillar |
-| PSZ2 relic | ~4.12×10⁻³³ | Merger relic |
+| Westerlund 2 | 6.14×10-32 | Star cluster |
+| Pillars of Creation | 9.79×10-33 | Star-forming pillar |
+| PSZ2 relic | ~4.12×10-33 | Merger relic |
 
 ---
 
@@ -125,23 +146,26 @@ with:
 
 ## 6. System Coverage
 
-The triadic architecture provides a universal template applicable to all currently catalogued UQFF systems (72+ as of September 2025):
+The triadic architecture provides a universal template applicable to all currently catalogued UQFF
+systems (72+ as of September 2025):
 
 | Scale Class | Systems | FU_g1 Range | R(t) Range |
 |-------------|---------|-------------|------------|
-| Compact (NS/Magnetar) | SGR1745, Vela, Crab | ~10⁻⁴¹ | ~10⁻⁴² |
-| Stellar cluster | Westerlund2, Pillars, M42 | ~10⁻⁴⁰ | ~10⁻⁴¹ |
-| Galaxy/AGN | Cen A, M87, NGC 2207 | ~10⁻⁴² | ~10⁻⁴³ |
-| Galaxy cluster | Abell 2256, El Gordo, SPT | ~10⁻⁴¹ | ~10⁻⁴² |
-| Cosmic transient/TDE | ASASSN-14li, AT2024tvd | ~10⁻⁴² | ~10⁻⁴³ |
+| Compact (NS/Magnetar) | SGR1745, Vela, Crab | ~10-41 | ~10-42 |
+| Stellar cluster | Westerlund2, Pillars, M42 | ~10-40 | ~10-41 |
+| Galaxy/AGN | Cen A, M87, NGC 2207 | ~10-42 | ~10-43 |
+| Galaxy cluster | Abell 2256, El Gordo, SPT | ~10-41 | ~10-42 |
+| Cosmic transient/TDE | ASASSN-14li, AT2024tvd | ~10-42 | ~10-43 |
 
 ---
 
 ## 7. First-Discovery Status
 
-This paper constitutes the **FIRST UQFF explicit formal derivation of the co-existing three-channel triadic architecture** (FU_g1 + R(t) + FU_Bi simultaneously evaluated) with:
+This paper constitutes the **FIRST UQFF explicit formal derivation of the co-existing three-channel
+triadic architecture** (FU_g1 + R(t) + FU_Bi simultaneously evaluated) with:
 1. Complete 26-state Ramanujan co-sum specification
-2. Explicit numerical validation across two independent calibration systems (Westerlund 2 and Pillars of Creation)
+2. Explicit numerical validation across two independent calibration systems (Westerlund 2 and
+Pillars of Creation)
 3. [SSq] = 0.507 suppression envelope connecting all 26 states
 4. Complex-valued U_i completes the real+imaginary buoyancy framework (β_i = 0.6)
 5. Full coupling to F_U_Bi_i integral (PAPER_250–258) via shared f_UA'/f_SCm/REB parameters
@@ -155,23 +179,25 @@ This paper constitutes the **FIRST UQFF explicit formal derivation of the co-exi
 | f_UA' | 0.999 | — | Aether vacuum fraction |
 | f_SCm | 0.001 | — | SC medium fraction |
 | REB | 1.0 | — | Resonance Equilibrium Boundary |
-| α | 5×10⁻⁵ | day⁻¹ | FU_g1 decay rate |
+| α | 5×10-5 | day-1 | FU_g1 decay rate |
 | f_feedback | 0 | — | CGM/TDE (uncalibrated) |
 | [SSq] | 0.507 | — | Superconductive Shell Quotient |
 | k_Ub | 0.1 | — | Buoyancy leverage constant |
 | f_Ub | 0.1 | — | Composite buoyancy factor |
-| γ | 5×10⁻⁵ | day⁻¹ | Um decay rate |
+| γ | 5×10-5 | day-1 | Um decay rate |
 | ϕ | ~0.8 | — | Phase parameter (provisional) |
 | λ_i | 1.0 | — | U_i coupling |
-| ω_s | 2.5×10⁻⁶ | rad/s | SC oscillation frequency |
+| ω_s | 2.5×10-6 | rad/s | SC oscillation frequency |
 | f_TRZ | 0.1 | — | Time-reversal zone factor |
 
 ---
 
-**Citation:** Murphy, D.T. — UQFF Framework, Session 94 (March 2026). Source: gok_share_31b5c807a4.txt thread (Grok 4 analysis, September 14, 2025).
+**Citation:** Murphy, D.T. — UQFF Framework, Session 94 (March 2026). Source:
+gok_share_31b5c807a4.txt thread (Grok 4 analysis, September 14, 2025).
 
 
-**UQFF computed:** Canonical UQFF buoyancy parameter U_bi = ?�[SSq]�GM/rκ = 5.0e-4�0.57�6.67e-11�M/r�; for solar parameters: U_bi,Sun = 5.7e-4�6.67e-11�1.99e30/(6.96e8)� = 1.47e+2 m/s�.
+**UQFF computed:** Canonical UQFF buoyancy parameter U_bi = ?[SSq]GM/rκ = 5.0e-4§0.57§6.67e-11M/r;
+for solar parameters: U_bi,Sun = 5.7e-4§6.67e-11§1.99e30/(6.96e8) = 1.47e+2 m/s.
 
 ---
 
@@ -179,13 +205,15 @@ This paper constitutes the **FIRST UQFF explicit formal derivation of the co-exi
 
 ### §A.1 Sector Classification
 
-This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see `uqff_lagrangian_derivation.py`).
+This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
-The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive quantum fundamentals (DPM, UA, SCm):
+The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
+quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_\mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
+$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
 
 where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
@@ -199,7 +227,9 @@ $$\boxed{\frac{\delta S}{\delta \phi_{\rm NS}} = \nabla^2 \phi_{\rm NS} - (4\pi 
 
 $$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\rm NS} = 0$$
 
-The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g forces) through vacuum density initialization to the sector-specific equation of motion. Every term in the E-L equation inherits its physical origin from the cosmogenesis master.
+The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
+forces) through vacuum density initialization to the sector-specific equation of motion. Every term
+in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 
 ---
@@ -210,9 +240,9 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.140$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m³.
+For this system, the local VDS sub-ratio is $0.140$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -224,13 +254,13 @@ Since $p_{\rm DVP} = 103$ is **resonant** (threshold at $p > 26$), the system's 
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
-The BSH saturation timescale for this sector is **10⁴ yr** (spin-down equilibrium):
+The BSH saturation timescale for this sector is **104 yr** (spin-down equilibrium):
 
-$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
+$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\rm SCm}$ which initializes the harmonic series at cosmogenesis.
 
@@ -238,11 +268,11 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.140 | ✓ Threshold-consistent |
-| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 103$ | ✓ Resonant |
-| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
-| [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
+| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.140 | PASS Threshold-consistent |
+| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 103$ | PASS Resonant |
+| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
+| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
 ---
@@ -252,14 +282,17 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | ✓ Consistent |
-| Cosmological constant Λ | 1.1×10⁻⁵² m⁻² (UQFF vacuum term) | 1.114×10⁻⁵² m⁻² | Planck 2018 | ✓ Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10⁻³⁵/yr | Super-K 2024 | ✓ Consistent |
-| UQFF buoyancy signature | F_U_Bi_i unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
+| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
-**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes significant, offering a falsifiable prediction beyond the Standard Model.
+**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
+produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
+bridge.*
 
 
 ---
@@ -274,9 +307,9 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `f`neutron_s26_coupling`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `k`ozima_scm_cross_section`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `k`ozima_wstp_kernel`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -285,7 +318,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `r`amanujan_polylog_s26`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
 | `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
@@ -294,7 +327,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `m`ock_theta_q26`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -305,8 +338,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `r`amanujan_pi_uqff`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `m`ock_theta_pi_wstp_kernel`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]

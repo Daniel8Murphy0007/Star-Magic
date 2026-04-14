@@ -16,7 +16,10 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 ## Abstract
 
-We compute F_U_Bi_i curves for GW170817 (BNS merger, d = 40 Mpc, M_total = 2.73 M_sun) incorporating buoyancy-induced strain suppression. The UQFF framework predicts a 66.7% reduction in gravitational wave strain amplitude relative to vacuum GR, with a phase lag of 367.8 cycles accumulated over the inspiral. These signatures are potentially detectable in next-generation GW observatories (ET, CE).
+We compute F_U_Bi_i curves for GW170817 (BNS merger, d = 40 Mpc, M_total = 2.73 M_sun) incorporating
+buoyancy-induced strain suppression. The UQFF framework predicts a 66.7% reduction in gravitational
+wave strain amplitude relative to vacuum GR, with a phase lag of 367.8 cycles accumulated over the
+inspiral. These signatures are potentially detectable in next-generation GW observatories (ET, CE).
 
 ## 1. System Parameters
 
@@ -35,7 +38,9 @@ The buoyancy suppression factor at each Gamma point is:
 
 S(Gamma) = 1 - BETA_I * S26_3 * f(Gamma)
 
-where f(Gamma) models the frequency-dependent coupling of buoyancy to the gravitational wave emission zone. The effective suppression reaches 0.667 (33.3% of original amplitude) at peak coupling.
+where f(Gamma) models the frequency-dependent coupling of buoyancy to the gravitational wave
+emission zone. The effective suppression reaches 0.667 (33.3% of original amplitude) at peak
+coupling.
 
 ## 3. Phase Lag Accumulation
 
@@ -47,7 +52,8 @@ This represents the integrated phase difference between UQFF-modified and vacuum
 
 ## 4. Implementation
 
-File: `fubi_i_curves_agn_ns_qgp.py`, class `GW170817MergerCurvesCalc`. CP4 class #595. Tests: 8/8 pass.
+File: `fubi_i_curves_agn_ns_qgp.py`, class `GW170817MergerCurvesCalc`. CP4 class #595. Tests: 8/8
+pass.
 
 ---
 
@@ -69,10 +75,11 @@ File: `fubi_i_curves_agn_ns_qgp.py`, class `GW170817MergerCurvesCalc`. CP4 class
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
 | GW strain $h$ | UQFF predicts phonon suppression $D_{\text{phonon}} \approx 0.47$--$0.67$ | LIGO/Virgo $h \sim 10^{-22}$ | LIGO O3 (2020) | Within detector band |
-| Phase evolution $\Delta\Phi$ | 200--400 extra cycles from $S_{26}$ coupling | GR template bank | Abbott et al. (2021) | Testable with LISA |
+| Phase evolution $\DeltaPhi$ | 200--400 extra cycles from $S_{26}$ coupling | GR template bank | Abbott et al. (2021) | Testable with LISA |
 | Fine structure $\alpha$ | UQFF reproduces via $U_{g1}$ dipole | $1/137.036$ | PDG 2024 | 99.9% |
 
-**New physics claim:** UQFF phonon-mediated vacuum coupling provides testable predictions beyond SM for this system.
+**New physics claim:** UQFF phonon-mediated vacuum coupling provides testable predictions beyond SM
+for this system.
 
 *Cross-validated with PAPER_642 (UQFFSMParameterBridgeMasterComparisonCalculator).*
 
@@ -84,13 +91,13 @@ File: `fubi_i_curves_agn_ns_qgp.py`, class `GW170817MergerCurvesCalc`. CP4 class
 **Sector:** GW-radiation (gravitational-wave chirp)
 
 ### §A.2 Lagrangian Density
-$$\mathcal{L}_{GW_radiation} = \sum_{i=1}^{26} \left[ U_{g,i} + U_{m,i} + U_{A,i} - U_{b,i} \right] \cdot S_{26}([SSq]) \cdot \Phi_{1.25\text{THz}}(\omega, \Gamma)$$
+$$\mathcal{L}_{GW\_radiation} = \sum_{i=1}^{26} \left[ U_{g,i} + U_{m,i} + U_{A,i} - U_{b,i} \right] \cdot S_{26}([SSq]) \cdot \Phi_{1.25\text{THz}}(\omega, \Gamma)$$
 
 ### §A.3 Euler-Lagrange Equation of Motion
-$$\boxed{\frac{\partial \mathcal{L}}{\partial \phi} - \partial_\mu \frac{\partial \mathcal{L}}{\partial (\partial_\mu \phi)} = 0 \implies F_{U,Bi_i} = -\nabla U_{\text{eff}} + \Phi \cdot S_{26} \cdot E_{\text{net}}}$$
+$$\boxed{\frac{\partial \mathcal{L}}{\partial \phi} - \partial_mu \frac{\partial \mathcal{L}}{\partial (\partial_mu \phi)} = 0 \implies F_{U,Bi\_i} = -\nabla U_{\text{eff}} + \Phi \cdot S_{26} \cdot E_{\text{net}}}$$
 
 ### §A.4 Cosmogenesis Linkage Chain
-PAPER_877 axioms → SCm vacuum → phonon $\omega_{\text{SCm}}$ → gravitational-wave chirp → $F_{U,Bi_i}$ unified force → observational prediction
+PAPER_877 axioms → SCm vacuum → phonon $\omega_{\text{SCm}}$ → gravitational-wave chirp → $F_{U,Bi\_i}$ unified force → observational prediction
 
 ---
 

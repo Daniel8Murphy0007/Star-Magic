@@ -55,7 +55,8 @@ The WSTP export enables:
 
 ## 3. Integration with WSTP Pipeline
 
-Expression #51 joins the existing 50 WSTP expressions. The WSTP kernel demo runner dispatches it via:
+Expression #51 joins the existing 50 WSTP expressions. The WSTP kernel demo runner dispatches it
+via:
 ```python
 link.putFunction("EvaluatePacket", 1)
 link.put(expr_51_code)
@@ -65,7 +66,8 @@ result = link.getResult()
 
 ## 4. Implementation
 
-Added as expression #51 in `wstp_kernel_demo_runner.py`, function `_build_expressions()`. Total WSTP expressions: 51.
+Added as expression #51 in `wstp_kernel_demo_runner.py`, function `_build_expressions()`. Total WSTP
+expressions: 51.
 
 ## References
 - PAPER_979: Complete 6-Layer F_U_Bi_i
@@ -96,7 +98,8 @@ Added as expression #51 in `wstp_kernel_demo_runner.py`, function `_build_expres
 | Vacuum energy $\rho_{\text{vac}}$ | $7.09 \times 10^{-37}$ kg/m$^3$ | $\rho_{\text{vac}} \sim 10^{-29}$ g/cm$^3$ | Planck 2018 | Novel SCm scale |
 | Fine structure $\alpha$ | UQFF reproduces via $U_{g1}$ dipole | $1/137.036$ | PDG 2024 | 99.9% |
 
-**New physics claim:** UQFF phonon-mediated vacuum coupling provides testable predictions beyond SM for this system.
+**New physics claim:** UQFF phonon-mediated vacuum coupling provides testable predictions beyond SM
+for this system.
 
 *Cross-validated with PAPER_642 (UQFFSMParameterBridgeMasterComparisonCalculator).*
 
@@ -104,7 +107,7 @@ Added as expression #51 in `wstp_kernel_demo_runner.py`, function `_build_expres
 
 ## §A. Cosmogenesis-Linked Lagrangian
 
-The Wolfram export allows symbolic computation of $\delta S / \delta\phi$ directly in Mathematica, cross-validating the numerical Euler-Lagrange result from PAPER_981.
+The Wolfram export allows symbolic computation of $\delta S / \deltaphi$ directly in Mathematica, cross-validating the numerical Euler-Lagrange result from PAPER_981.
 
 ## §B. VDS/DVP/BSH Deep Synthesis
 

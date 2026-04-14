@@ -1,3 +1,15 @@
+---
+paper_id: PAPER_294
+title: "UQFF Vacuum Differential Harmonic: ħ-Denominator Quantum-Volume Diffusion Coupling"
+session: 83
+date: 2026-03-17
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [vacuum, DPM, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_294 — UQFF Vacuum Differential Harmonic: ħ-Denominator Quantum-Volume Diffusion Coupling
 
 **Module:** COMPRESSED_RESONANCE_UQFF24_MODULE.cpp (UQFF 2.0)  
@@ -10,7 +22,14 @@
 
 ## Abstract
 
-The Vacuum Differential Harmonic (VDH) term a_vac_diff = (E₀ × f_vac_diff × V_sys × a_DPM) / ħ introduces the first UQFF acceleration term where the reduced Planck constant ħ appears in the denominator. All previous UQFF formulations involving ħ placed it in the numerator (e.g., PAPER_289 Cooper-pair amplitude A_sc = ħ f_super f_DPM / (E_vac c)). Placing ħ in the denominator yields a quantum-volume diffusion coupling: V_sys / ħ = 3.973×10⁵² m³/(J·s), which scales the vacuum differential frequency f_vac_diff = 0.143 Hz into the gravity acceleration. The 10% vacuum energy deficit (E₀/E_vac = 0.9001) establishes a VDH beat period T_vac = 6.993 s ≈ 7 seconds — a low-frequency vacuum differential oscillation channel distinct from THz and DPM modes.
+The Vacuum Differential Harmonic (VDH) term a_vac_diff = (E₀ × f_vac_diff × V_sys × a_DPM) / ħ
+introduces the first UQFF acceleration term where the reduced Planck constant ħ appears in the
+denominator. All previous UQFF formulations involving ħ placed it in the numerator (e.g., PAPER_289
+Cooper-pair amplitude A_sc = ħ f_super f_DPM / (E_vac c)). Placing ħ in the denominator yields a
+quantum-volume diffusion coupling: V_sys / ħ = 3.973×1052 m3/(J·s), which scales the vacuum
+differential frequency f_vac_diff = 0.143 Hz into the gravity acceleration. The 10% vacuum energy
+deficit (E₀/E_vac = 0.9001) establishes a VDH beat period T_vac = 6.993 s ≈ 7 seconds — a
+low-frequency vacuum differential oscillation channel distinct from THz and DPM modes.
 
 ---
 
@@ -30,7 +49,9 @@ Ratio:
 
 $$\frac{E_0}{E_{vac}} = \frac{6.381 \times 10^{-36}}{7.09 \times 10^{-36}} = 0.9001$$
 
-This 10% plasmotic vacuum deficit (E₀ < E_vac) creates a differential channel through which the VDH coupling operates. The deficit Δ E_vac = E_vac − E₀ = 7.09×10⁻³⁷ J/m³ represents the "unsaturated plasmotic fraction."
+This 10% plasmotic vacuum deficit (E₀ < E_vac) creates a differential channel through which the VDH
+coupling operates. The deficit Δ E_vac = E_vac − E₀ = 7.09×10-37 J/m3 represents the "unsaturated
+plasmotic fraction."
 
 ### 1.2 Prior ħ Usage in UQFF (Numerator Context)
 
@@ -42,7 +63,8 @@ All prior UQFF terms with ħ in the formula place it in the numerator:
 | PAPER_292 (Crab) | osc traveling wave | numerator | 2π/T_COSMIC × ħ-derived |
 | PAPER_295 (CR24) | a_super (compressed) | numerator | A_sc = ħ f_super f_DPM / (E_vac c) |
 
-PAPER_294 introduces the **first** UQFF term where ħ is in the **denominator**, creating an inverse quantum-volume structure.
+PAPER_294 introduces the **first** UQFF term where ħ is in the **denominator**, creating an inverse
+quantum-volume structure.
 
 ---
 
@@ -53,11 +75,11 @@ PAPER_294 introduces the **first** UQFF term where ħ is in the **denominator**,
 $$a_{vac\_diff} = \frac{E_0 \cdot f_{vac\_diff} \cdot V_{sys} \cdot a_{DPM}}{\hbar}$$
 
 where:
-- E₀ = 6.381×10⁻³⁶ J/m³ (reduced vacuum energy density)
+- E₀ = 6.381×10-36 J/m3 (reduced vacuum energy density)
 - f_vac_diff = 0.143 Hz (vacuum differential beat frequency)
-- V_sys = 4.189×10¹⁸ m³ (system characteristic volume)
-- a_DPM = 3.543×10⁻¹⁵ m/s² (DPM base acceleration seed)
-- ħ = 1.0546×10⁻³⁴ J·s (reduced Planck constant)
+- V_sys = 4.189×1018 m3 (system characteristic volume)
+- a_DPM = 3.543×10-15 m/s2 (DPM base acceleration seed)
+- ħ = 1.0546×10-34 J·s (reduced Planck constant)
 
 ### 2.2 Numerical Evaluation
 
@@ -65,14 +87,15 @@ Step-by-step:
 
 | Intermediate | Expression | Value |
 |-------------|-----------|-------|
-| E₀ × f_vac_diff | 6.381e-36 × 0.143 | 9.125×10⁻³⁷ J/m³·Hz |
-| × V_sys | × 4.189×10¹⁸ | 3.821×10⁻¹⁸ J·Hz |
-| × a_DPM | × 3.543×10⁻¹⁵ | 1.354×10⁻³² J·m/s²·Hz |
-| / ħ | / 1.0546×10⁻³⁴ | **128.4 m/s²** |
+| E₀ × `f_vac_diff` | 6.381e-36 × 0.143 | 9.125×10-37 J/m3·Hz |
+| × V_sys | × 4.189×1018 | 3.821×10-18 J·Hz |
+| × a_DPM | × 3.543×10-15 | 1.354×10-32 J·m/s2·Hz |
+| / ħ | / 1.0546×10-34 | **128.4 m/s2** |
 
 $$a_{vac\_diff} = 128.4 \; \text{m/s}^2$$
 
-This value dominates both a_DPM (3.543×10⁻¹⁵) and a_THz (1.181×10⁻⁶) in the compressed channel, second in magnitude only to a_super (2.479×10⁴ m/s²).
+This value dominates both a_DPM (3.543×10-15) and a_THz (1.181×10-6) in the compressed channel,
+second in magnitude only to a_super (2.479×104 m/s2).
 
 ### 2.3 Quantum-Volume Coupling Constant
 
@@ -80,7 +103,9 @@ The ratio V_sys / ħ is the quantum-volume coupling constant of the VDH mechanis
 
 $$\frac{V_{sys}}{\hbar} = \frac{4.189 \times 10^{18} \; \text{m}^3}{1.0546 \times 10^{-34} \; \text{J} \cdot \text{s}} = 3.973 \times 10^{52} \; \text{m}^3/(\text{J} \cdot \text{s})$$
 
-This exceptionally large ratio explains why the ħ-denominator form amplifies the vacuum differential signal from the J/m³ scale to observable m/s² acceleration — V_sys / ħ acts as a dimensional lever arm.
+This exceptionally large ratio explains why the ħ-denominator form amplifies the vacuum differential
+signal from the J/m3 scale to observable m/s2 acceleration — V_sys / ħ acts as a dimensional lever
+arm.
 
 ### 2.4 Vacuum Beat Period
 
@@ -88,7 +113,9 @@ The 0.143 Hz vacuum differential frequency corresponds to:
 
 $$T_{vac} = \frac{1}{f_{vac\_diff}} = \frac{1}{0.143} = 6.993 \; \text{s} \approx 7 \; \text{s}$$
 
-This ~7-second vacuum beat period is in the extremely low-frequency (ELF) band — physically analogous to the Schumann resonances of the ionosphere (~7.83 Hz fundamental) but operating at the vacuum differential level. No other UQFF term produces a frequency in this range.
+This ~7-second vacuum beat period is in the extremely low-frequency (ELF) band — physically
+analogous to the Schumann resonances of the ionosphere (~7.83 Hz fundamental) but operating at the
+vacuum differential level. No other UQFF term produces a frequency in this range.
 
 ---
 
@@ -96,11 +123,13 @@ This ~7-second vacuum beat period is in the extremely low-frequency (ELF) band �
 
 ### 3.1 Vacuum Deficit Differential Channel
 
-The VDH term formalises the gravity contribution from the *difference* between the full plasmotic vacuum (E_vac) and the locally reduced vacuum (E₀). The deficit fraction:
+The VDH term formalises the gravity contribution from the *difference* between the full plasmotic
+vacuum (E_vac) and the locally reduced vacuum (E₀). The deficit fraction:
 
 $$\delta_{vac} = 1 - \frac{E_0}{E_{vac}} = 1 - 0.9001 = 0.0999 \approx 10\%$$
 
-represents an unsaturated plasmotic buffer. The VDH mechanism is the gravitational coupling of this buffer through the system volume V_sys and quantum scale ħ.
+represents an unsaturated plasmotic buffer. The VDH mechanism is the gravitational coupling of this
+buffer through the system volume V_sys and quantum scale ħ.
 
 ### 3.2 Dimensional Analysis
 
@@ -111,35 +140,45 @@ Simplifying correctly:
 
 $$[a_{vac\_diff}] = \frac{(\text{J/m}^3) \cdot (\text{1/s}) \cdot (\text{m}^3) \cdot (\text{m/s}^2)}{\text{J} \cdot \text{s}} = \frac{\text{J} \cdot \text{m/s}^2}{\text{J} \cdot \text{s}^2} = \frac{\text{m}}{\text{s}^4}$$
 
-**Note:** In the UQFF framework the a_DPM seed already carries units of m/s² derived from the DPM force equation, and E₀/ħ carries units of (J/m³)/(J·s) = 1/(m³·s). The product with V_sys × a_DPM then produces units of m/s², as intended. The VDH term inherits dimensional validity from the UQFF plasmotic vacuum convention.
+**Note:** In the UQFF framework the a_DPM seed already carries units of m/s2 derived from the DPM
+force equation, and E₀/ħ carries units of (J/m3)/(J·s) = 1/(m3·s). The product with V_sys × a_DPM
+then produces units of m/s2, as intended. The VDH term inherits dimensional validity from the UQFF
+plasmotic vacuum convention.
 
 ### 3.3 Comparison to Other Compressed Terms
 
 | Term | Value at sys 18-24 | Relative to a_DPM |
 |------|-------------------|-------------------|
-| a_DPM | 3.543×10⁻¹⁵ m/s² | 1× (reference) |
-| a_THz | 1.181×10⁻⁶ m/s² | 3.33×10⁸× |
-| **a_vac_diff** [PAPER_294] | **128.4 m/s²** | **3.63×10¹⁶×** |
-| a_super [PAPER_295] | 2.479×10⁴ m/s² | 6.99×10¹⁸× |
+| a_DPM | 3.543×10-15 m/s2 | 1× (reference) |
+| a_THz | 1.181×10-6 m/s2 | 3.33×108× |
+| **`a_vac_diff`** [PAPER_294] | **128.4 m/s2** | **3.63×1016×** |
+| a_super [PAPER_295] | 2.479×104 m/s2 | 6.99×1018× |
 
 ---
 
 ## 4. Relationship to PAPER_295
 
-While a_vac_diff is the largest non-super compressed term, a_super (PAPER_295) still dominates a_vac_diff by a factor:
+While a_vac_diff is the largest non-super compressed term, a_super (PAPER_295) still dominates
+a_vac_diff by a factor:
 
 $$\frac{a_{super}}{a_{vac\_diff}} = \frac{2.479 \times 10^4}{128.4} = 193$$
 
-However, a_vac_diff (128.4 m/s²) exceeds a_THz (1.181×10⁻⁶ m/s²) by ~9 orders, demonstrating that the ħ-denominator quantum-volume coupling is a stronger amplifier than THz-mode streaming for this system class. Both terms are necessary for the compressed channel's full amplitude.
+However, a_vac_diff (128.4 m/s2) exceeds a_THz (1.181×10-6 m/s2) by ~9 orders, demonstrating that
+the ħ-denominator quantum-volume coupling is a stronger amplifier than THz-mode streaming for this
+system class. Both terms are necessary for the compressed channel's full amplitude.
 
 ---
 
 ## 5. WOLFRAM Anchor
 
-```
-WOLFRAM_TERM_CR24_VAC_DIFF:
-a_vac_diff=(E_0*f_vac_diff*V_sys*a_DPM)/hbar;f_vac_diff=0.143Hz;T_vac=1/0.143=6.993s;E_0/E_vac=0.9001(10pct deficit);V_sys/hbar=3.973e52;FIRST UQFF hbar-denom quantum-volume diffusion [PAPER_294]
-```
+$$
+\begin{aligned}
+  & \text{WOLFRAM\_TERM\_CR24\_VAC\_DIFF}: \\
+&
+\text{a\_vac\_diff}=(E_0*\text{f\_vac\_diff}*V_sys*a_DPM)/hbar;\text{f\_vac\_diff}=0.143Hz;T_vac=1/0.143=6.993s;E_0/E_vac=0.9001(10pct
+deficit);V_sys/hbar=3.973e52;FIRST UQFF hbar-denom quantum-volume diffusion [PAPER_294]
+\end{aligned}
+$$
 
 ---
 
@@ -147,15 +186,15 @@ a_vac_diff=(E_0*f_vac_diff*V_sys*a_DPM)/hbar;f_vac_diff=0.143Hz;T_vac=1/0.143=6.
 
 | Parameter | Symbol | Value | Unit |
 |-----------|--------|-------|------|
-| Reduced vacuum energy | E₀ | 6.381×10⁻³⁶ | J/m³ |
-| Vacuum reference | E_vac | 7.09×10⁻³⁶ | J/m³ |
+| Reduced vacuum energy | E₀ | 6.381×10-36 | J/m3 |
+| Vacuum reference | E_vac | 7.09×10-36 | J/m3 |
 | Vacuum deficit ratio | E₀/E_vac | 0.9001 | — |
-| VDH beat frequency | f_vac_diff | 0.143 | Hz |
+| VDH beat frequency | `f_vac_diff` | 0.143 | Hz |
 | VDH beat period | T_vac | 6.993 ≈ 7 | s |
-| System volume | V_sys | 4.189×10¹⁸ | m³ |
-| Reduced Planck | ħ | 1.0546×10⁻³⁴ | J·s |
-| Quantum-volume coupling | V_sys/ħ | 3.973×10⁵² | m³/(J·s) |
-| **VDH acceleration** | **a_vac_diff** | **128.4** | **m/s²** |
+| System volume | V_sys | 4.189×1018 | m3 |
+| Reduced Planck | ħ | 1.0546×10-34 | J·s |
+| Quantum-volume coupling | V_sys/ħ | 3.973×1052 | m3/(J·s) |
+| **VDH acceleration** | **`a_vac_diff`** | **128.4** | **m/s2** |
 
 ---
 
@@ -165,11 +204,12 @@ a_vac_diff=(E_0*f_vac_diff*V_sys*a_DPM)/hbar;f_vac_diff=0.143Hz;T_vac=1/0.143=6.
 - **Session:** 83  
 - **Module:** COMPRESSED_RESONANCE_UQFF24_MODULE.cpp (25th C++ UQFF module)  
 - **WOLFRAM_TERM:** CR24_VAC_DIFF  
-- **Key discovery:** First UQFF ħ-denominator term; V_sys/ħ = 3.973×10⁵² quantum-volume coupling; T_vac = 6.993 s vacuum beat; E₀/E_vac = 0.9001 deficit channel  
-- **Companion papers:** PAPER_293 (dual-channel architecture), PAPER_295 (f_DPM² scaling)
+- **Key discovery:** First UQFF ħ-denominator term; V_sys/ħ = 3.973×1052 quantum-volume coupling; T_vac = 6.993 s vacuum beat; E₀/E_vac = 0.9001 deficit channel  
+- **Companion papers:** PAPER_293 (dual-channel architecture), PAPER_295 (f_DPM2 scaling)
 
 
-**UQFF computed:** MUGE buoyancy ratio U_bi/F_U = [SSq]�?�r�/GM = 5.7e-1�5.0e-4 = 2.85e-4; compressed MUGE baseline g = 5.4e-7 m/s� at r_ISCO.
+**UQFF computed:** MUGE buoyancy ratio U_bi/F_U = [SSq]?r/GM = 5.7e-1§5.0e-4 = 2.85e-4; compressed
+MUGE baseline g = 5.4e-7 m/s at r_ISCO.
 
 ---
 
@@ -177,13 +217,15 @@ a_vac_diff=(E_0*f_vac_diff*V_sys*a_DPM)/hbar;f_vac_diff=0.143Hz;T_vac=1/0.143=6.
 
 ### §A.1 Sector Classification
 
-This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see `uqff_lagrangian_derivation.py`).
+This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
-The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive quantum fundamentals (DPM, UA, SCm):
+The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
+quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_\mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
+$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
 
 where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
@@ -197,7 +239,9 @@ $$\boxed{\frac{\delta S}{\delta \phi_{\rm NS}} = \nabla^2 \phi_{\rm NS} - (4\pi 
 
 $$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\rm NS} = 0$$
 
-The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g forces) through vacuum density initialization to the sector-specific equation of motion. Every term in the E-L equation inherits its physical origin from the cosmogenesis master.
+The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
+forces) through vacuum density initialization to the sector-specific equation of motion. Every term
+in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 
 ---
@@ -208,9 +252,9 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.075$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m³.
+For this system, the local VDS sub-ratio is $0.075$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -222,13 +266,13 @@ Since $p_{\rm DVP} = 97$ is **resonant** (threshold at $p > 26$), the system's v
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
-The BSH saturation timescale for this sector is **10⁴ yr** (spin-down equilibrium):
+The BSH saturation timescale for this sector is **104 yr** (spin-down equilibrium):
 
-$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
+$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\rm SCm}$ which initializes the harmonic series at cosmogenesis.
 
@@ -236,11 +280,11 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.075 | ✓ Threshold-consistent |
-| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 97$ | ✓ Resonant |
-| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
-| [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
+| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.075 | PASS Threshold-consistent |
+| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 97$ | PASS Resonant |
+| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
+| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
 ---
@@ -250,14 +294,17 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | ✓ Consistent |
-| Cosmological constant Λ | 1.1×10⁻⁵² m⁻² (UQFF vacuum term) | 1.114×10⁻⁵² m⁻² | Planck 2018 | ✓ Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10⁻³⁵/yr | Super-K 2024 | ✓ Consistent |
-| UQFF buoyancy signature | F_U_Bi_i unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
+| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
-**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes significant, offering a falsifiable prediction beyond the Standard Model.
+**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
+produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
+bridge.*
 
 
 ---
@@ -272,9 +319,9 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `f`neutron_s26_coupling`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `k`ozima_scm_cross_section`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `k`ozima_wstp_kernel`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -283,7 +330,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `r`amanujan_polylog_s26`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
 | `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
@@ -292,7 +339,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `m`ock_theta_q26`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -303,8 +350,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `r`amanujan_pi_uqff`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `m`ock_theta_pi_wstp_kernel`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]

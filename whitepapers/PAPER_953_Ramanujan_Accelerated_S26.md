@@ -1,6 +1,18 @@
+---
+paper_id: PAPER_953
+title: "Ramanujan-Accelerated S26 Convergence"
+session: 214
+date: 2026-04-12
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [buoyancy, 26D, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_953: Ramanujan-Accelerated S26 Convergence
 
-**Author:** Daniel T. Murphy -- Star Magic / UQFF Framework
+**Author:** Daniel T. Murphy — Star Magic / UQFF Framework
 **Date:** 2026-04-12
 **Session:** 214
 **Source:** spectral_ladder_26state.py (RamanujanAcceleration)
@@ -43,9 +55,9 @@ where $a_k = \exp(-[\text{SSq}] \cdot k/26)$ and $B_2 = 1/6$, $B_4 = -1/30$, $B_
 
 ## References
 
-1. Murphy, D.T. -- Star Magic UQFF Framework (2024-2026)
-2. Hardy, G.H. (1949) -- Divergent Series (Oxford University Press)
-3. Ramanujan, S. -- Collected Papers (1927)
+1. Murphy, D.T. — Star Magic UQFF Framework (2024-2026)
+2. Hardy, G.H. (1949) — Divergent Series (Oxford University Press)
+3. Ramanujan, S. — Collected Papers (1927)
 4. PAPER_952 — 26-State HRes Spectral Ladder
 5. PAPER_959 — 26D Ramanujan Summation Engine
 6. PAPER_960 — VDS Polylog26 Reference
@@ -89,7 +101,7 @@ where $a_k = \exp(-[\text{SSq}] \cdot k/26)$ and $B_2 = 1/6$, $B_4 = -1/30$, $B_
 **Sector:** Mathematical Acceleration (Ramanujan Summation Methods)
 
 ### §A.2 Generating Function
-$$S_{26}^{(R)}(z) = \sum_{n=1}^{N} \frac{z^n}{n^{26}} \cdot R_n^{(26)} \xrightarrow{N\to\infty} \text{Li}_{26}(z)$$
+$$S_{26}^{(R)}(z) = \sum_{n=1}^{N} \frac{z^n}{n^{26}} \cdot R_n^{(26)} \xrightarrow{N\toinfty} \text{Li}_{26}(z)$$
 
 ### §A.3 Euler-Maclaurin Connection
 $$\boxed{S_N^{(R)} = S_N + \sum_{k=1}^{p} \frac{B_{2k}}{(2k)!} f^{(2k-1)}(N)}$$

@@ -1,3 +1,15 @@
+---
+paper_id: PAPER_753
+title: "Magnetar Evolution — UQFF Spin-Down and Magnetic Decay"
+session: 181
+date: 2026-01-01
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [AGN, GW, Hubble, spin-down, neutron-star, magnetar, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_753: Magnetar Evolution — UQFF Spin-Down and Magnetic Decay
 
 **Author:** Daniel T. Murphy  
@@ -10,13 +22,20 @@
 
 ## Abstract
 
-Magnetars are neutron stars with surface magnetic fields B ~ 10¹⁰–10¹¹ T and spin periods of seconds. This paper derives the UQFF surface-gravity evolution for a canonical magnetar (M = 1.4 M☉, r = 20 km) incorporating exponential magnetic-field decay (τ_B = 4000 yr), spin-down via gravitational-wave emission, and the Hubble-expansion Ug1 corrections. At t = 5 kyr the model yields g_Magnetar ≈ 4.474×10¹² m/s², in excellent agreement with the canonical value derived from X-ray pulse timing.
+Magnetars are neutron stars with surface magnetic fields B ~ 1010–1011 T and spin periods of
+seconds. This paper derives the UQFF surface-gravity evolution for a canonical magnetar (M = 1.4 MM_sun,
+r = 20 km) incorporating exponential magnetic-field decay (τ_B = 4000 yr), spin-down via
+gravitational-wave emission, and the Hubble-expansion Ug1 corrections. At t = 5 kyr the model yields
+g_Magnetar ≈ 4.474×1012 m/s2, in excellent agreement with the canonical value derived from X-ray
+pulse timing.
 
 ---
 
 ## 1. Introduction
 
-The surface gravity of a magnetar governs photon redshift, atmospheric scale height, and burst energetics. Standard neutron-star models use g = GM/R². UQFF augments this with three time-dependent corrections:
+The surface gravity of a magnetar governs photon redshift, atmospheric scale height, and burst
+energetics. Standard neutron-star models use g = GM/R2. UQFF augments this with three time-dependent
+corrections:
 
 1. **Magnetic suppression**: (1 − B(t)/B_crit) — as B decays, gravity increases
 2. **Hubble term**: (1 + H₀·t) — secular cosmological expansion factor
@@ -26,15 +45,16 @@ The surface gravity of a magnetar governs photon redshift, atmospheric scale hei
 
 ## 2. Master UQFF Gravity Equation
 
-```
-g_Magnetar(t) = [G·M / r²] × (1 + H₀·t) × (1 − B(t)/B_crit)
-              + [Ug1 + Ug4]
-              + GW_term(t)
-
-B(t) = B_0 × exp(−t / τ_B)
-Ω(t) = Ω_0 × exp(−t / τ_spin)
-GW_term(t) = (32·G⁴·M³·r²·Ω⁴) / (5·c⁵·r⁴)  [GR quadrupole]
-```
+$$
+\begin{aligned}
+  & g_Magnetar(t) = [G·M / r2] × (1 + H₀·t) × (1 − B(t)/B_crit) \\
+  & + [Ug1 + Ug4] \\
+  & + GW_term(t) \\
+  & B(t) = B_0 × exp(−t / τ_B) \\
+  & Ω(t) = Ω_0 × exp(−t / τ_spin) \\
+  & GW_term(t) = (32·G4·M3·r2·Ω4) / (5·c5·r4)  [GR quadrupole]
+\end{aligned}
+$$
 
 ---
 
@@ -42,35 +62,33 @@ GW_term(t) = (32·G⁴·M³·r²·Ω⁴) / (5·c⁵·r⁴)  [GR quadrupole]
 
 | Parameter | Symbol | Value | Unit |
 |-----------|--------|-------|------|
-| Mass | M | 2.785×10³⁰ | kg |
-| Radius | r | 2.000×10⁴ | m |
-| Initial B-field | B_0 | 1.00×10¹⁰ | T |
-| B-field decay timescale | τ_B | 1.262×10¹¹ | s (4000 yr) |
-| Critical B-field | B_crit | 1.00×10¹¹ | T |
+| Mass | M | 2.785×1030 | kg |
+| Radius | r | 2.000×104 | m |
+| Initial B-field | B_0 | 1.00×1010 | T |
+| B-field decay timescale | τ_B | 1.262×1011 | s (4000 yr) |
+| Critical B-field | B_crit | 1.00×1011 | T |
 | Initial spin rate | Ω_0 | 2π/5 ≈ 1.2566 | rad/s |
-| Spin-down timescale | τ_spin | 3.156×10¹¹ | s (10 kyr) |
-| Hubble constant | H₀ | 2.184×10⁻¹⁸ | s⁻¹ |
+| Spin-down timescale | τ_spin | 3.156×1011 | s (10 kyr) |
+| Hubble constant | H₀ | 2.184×10-18 | s-1 |
 
 ---
 
 ## 4. Numerical Result (t = 5000 yr)
 
-```
-t = 5000 × 3.156×10⁷ = 1.578×10¹¹ s
-
-B(t) = 1×10¹⁰ × exp(−1.578×10¹¹ / 1.262×10¹¹)
-     = 1×10¹⁰ × exp(−1.25) ≈ 2.865×10⁹ T
-
-(1 − B/B_crit) = 1 − 2.865×10⁹/1×10¹¹ = 0.97135
-
-Ω(t) = 1.2566 × exp(−1.578×10¹¹ / 3.156×10¹¹)
-     = 1.2566 × exp(−0.5) ≈ 0.7616 rad/s
-
-g_Magnetar(t=5kyr) ≈ (G·M/r²) × 0.97135 × (1 + H₀·t)
-                   ≈ 4.607×10¹¹ × 0.97135 × (1 + small)
-                   + 1.007×10¹²          [Ug1+Ug4 floor term]
-                   ≈ 4.474×10¹² m/s²
-```
+$$
+\begin{aligned}
+  & t = 5000 × 3.156×107 = 1.578×1011 s \\
+  & B(t) = 1×1010 × exp(−1.578×1011 / 1.262×1011) \\
+  & = 1×1010 × exp(−1.25) ≈ 2.865×109 T \\
+  & (1 − B/B_crit) = 1 − 2.865×109/1×1011 = 0.97135 \\
+  & Ω(t) = 1.2566 × exp(−1.578×1011 / 3.156×1011) \\
+  & = 1.2566 × exp(−0.5) ≈ 0.7616 rad/s \\
+  & g_Magnetar(t=5kyr) ≈ (G·M/r2) × 0.97135 × (1 + H₀·t) \\
+  & ≈ 4.607×1011 × 0.97135 × (1 + small) \\
+  & + 1.007×1012          [Ug1+Ug4 floor term] \\
+  & ≈ 4.474×1012 m/s2
+\end{aligned}
+$$
 
 ---
 
@@ -81,14 +99,17 @@ g_Magnetar(t=5kyr) ≈ (G·M/r²) × 0.97135 × (1 + H₀·t)
 - Ω(t) = Ω_0·exp(−t/τ_spin) — spin-down
 - P(t) = 2π/Ω(t) — pulse period vs time
 - ΔP/P = τ_GW / τ_spin — characteristic age
-- L_X(t) ∝ B(t)²·Ω(t)⁴ — X-ray luminosity proxy
-- r_s = 2GM/c² — Schwarzschild radius (r_s ≈ 4.138 km)
+- L_X(t) ∝ B(t)2·Ω(t)4 — X-ray luminosity proxy
+- r_s = 2GM/c2 — Schwarzschild radius (r_s ≈ 4.138 km)
 
 ---
 
 ## 6. Conclusions
 
-The UQFF magnetar gravity model reproduces g ≈ 4.474×10¹² m/s² at t = 5 kyr for a canonical 1.4 M☉ magnetar with r = 20 km, consistent with X-ray pulse timing constraints. The magnetic-suppression and Hubble-expansion corrections together account for ~3% deviations from the static GR prediction. PAPER_753, CP4 class #337. v5.39.
+The UQFF magnetar gravity model reproduces g ≈ 4.474×1012 m/s2 at t = 5 kyr for a canonical 1.4 MM_sun
+magnetar with r = 20 km, consistent with X-ray pulse timing constraints. The magnetic-suppression
+and Hubble-expansion corrections together account for ~3% deviations from the static GR prediction.
+PAPER_753, CP4 class #337. v5.39.
 
 ---
 
@@ -96,13 +117,15 @@ The UQFF magnetar gravity model reproduces g ≈ 4.474×10¹² m/s² at t = 5 ky
 
 ### §A.1 Sector Classification
 
-This paper maps to **magnetar-field** sector of the 9-sector UQFF Lagrangian (see `uqff_lagrangian_derivation.py`).
+This paper maps to **magnetar-field** sector of the 9-sector UQFF Lagrangian (see
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
-The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive quantum fundamentals (DPM, UA, SCm):
+The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
+quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_\mu \phi_B)(\partial^\mu \phi_B) - V(\phi_B) + \mathcal{L}_{\rm cosmo}$$
+$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_mu \phi_B)(\partial^\mu \phi_B) - V(\phi_B) + \mathcal{L}_{\rm cosmo}$$
 
 where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
@@ -116,7 +139,9 @@ $$\boxed{\frac{\delta S}{\delta \phi_B} = \nabla \times (\rho_{\rm SCm} \mathbf{
 
 $$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_B = 0$$
 
-The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g forces) through vacuum density initialization to the sector-specific equation of motion. Every term in the E-L equation inherits its physical origin from the cosmogenesis master.
+The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
+forces) through vacuum density initialization to the sector-specific equation of motion. Every term
+in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 
 ---
@@ -127,9 +152,9 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.186$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m³.
+For this system, the local VDS sub-ratio is $0.186$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -141,13 +166,13 @@ Since $p_{\rm DVP} = 7$ is **sub-threshold** (threshold at $p > 26$), the system
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
-The BSH saturation timescale for this sector is **10³ yr** (field decay quiescence):
+The BSH saturation timescale for this sector is **103 yr** (field decay quiescence):
 
-$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
+$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\rm SCm}$ which initializes the harmonic series at cosmogenesis.
 
@@ -155,11 +180,11 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.186 | ✓ Threshold-consistent |
-| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 7$ | ✓ Sub-threshold |
-| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
-| [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
+| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.186 | PASS Threshold-consistent |
+| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 7$ | PASS Sub-threshold |
+| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
+| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
 ---
@@ -169,14 +194,17 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | ✓ Consistent |
-| Cosmological constant Λ | 1.1×10⁻⁵² m⁻² (UQFF vacuum term) | 1.114×10⁻⁵² m⁻² | Planck 2018 | ✓ Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10⁻³⁵/yr | Super-K 2024 | ✓ Consistent |
-| UQFF buoyancy signature | F_U_Bi_i unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
+| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
-**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes significant, offering a falsifiable prediction beyond the Standard Model.
+**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
+produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
+bridge.*
 
 
 ---
@@ -191,9 +219,9 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `f`neutron_s26_coupling`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `k`ozima_scm_cross_section`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `k`ozima_wstp_kernel`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -202,7 +230,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `r`amanujan_polylog_s26`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
 | `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
@@ -211,7 +239,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `m`ock_theta_q26`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -222,8 +250,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `r`amanujan_pi_uqff`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `m`ock_theta_pi_wstp_kernel`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]

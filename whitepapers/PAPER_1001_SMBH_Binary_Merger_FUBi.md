@@ -16,17 +16,18 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 ## Abstract
 
-We compute F_U_Bi for SMBH binary inspiral systems where phonon damping modifies the merger waveform. The SCm buoyancy field introduces a frequency-dependent damping envelope via S₂₆⁽³⁾.
+We compute F_U_Bi for SMBH binary inspiral systems where phonon damping modifies the merger
+waveform. The SCm buoyancy field introduces a frequency-dependent damping envelope via S₂₆⁽3⁾.
 
 ## 1. Core Equation
 
-F_{U,Bi}^{binary} = ρ_SCm · V · S₂₆⁽³⁾² · ratio · (1 + Φ(Γ) · e^{-Γ/Γ₀})
+F_{U,Bi}^{binary} = ρ_SCm · V · S₂₆⁽3⁾2 · ratio · (1 + Φ(Γ) · e^{-Γ/Γ₀})
 
 The damping envelope suppresses high-frequency phonon modes during the final inspiral.
 
 ## 2. Results
 
-For a 5.5×10⁷ M☉ primary: F_U_Bi = 5.47×10³⁵ m/s² with S₂₆⁽³⁾-calibrated buoyancy correction.
+For a 5.5×107 MM_sun primary: F_U_Bi = 5.47×1035 m/s2 with S₂₆⁽3⁾-calibrated buoyancy correction.
 
 ## 3. Implementation
 
@@ -52,10 +53,11 @@ File: `fubi_agn_ns_mergers.py`, class `SMBHBinaryMergerFUBiCalc`. CP4 class #585
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
 | GW strain $h$ | UQFF predicts phonon suppression $D_{\text{phonon}} \approx 0.47$--$0.67$ | LIGO/Virgo $h \sim 10^{-22}$ | LIGO O3 (2020) | Within detector band |
-| Phase evolution $\Delta\Phi$ | 200--400 extra cycles from $S_{26}$ coupling | GR template bank | Abbott et al. (2021) | Testable with LISA |
+| Phase evolution $\DeltaPhi$ | 200--400 extra cycles from $S_{26}$ coupling | GR template bank | Abbott et al. (2021) | Testable with LISA |
 | Fine structure $\alpha$ | UQFF reproduces via $U_{g1}$ dipole | $1/137.036$ | PDG 2024 | 99.9% |
 
-**New physics claim:** UQFF phonon-mediated vacuum coupling provides testable predictions beyond SM for this system.
+**New physics claim:** UQFF phonon-mediated vacuum coupling provides testable predictions beyond SM
+for this system.
 
 *Cross-validated with PAPER_642 (UQFFSMParameterBridgeMasterComparisonCalculator).*
 
@@ -67,13 +69,13 @@ File: `fubi_agn_ns_mergers.py`, class `SMBHBinaryMergerFUBiCalc`. CP4 class #585
 **Sector:** GW-radiation (gravitational-wave chirp)
 
 ### §A.2 Lagrangian Density
-$$\mathcal{L}_{GW_radiation} = \sum_{i=1}^{26} \left[ U_{g,i} + U_{m,i} + U_{A,i} - U_{b,i} \right] \cdot S_{26}([SSq]) \cdot \Phi_{1.25\text{THz}}(\omega, \Gamma)$$
+$$\mathcal{L}_{GW\_radiation} = \sum_{i=1}^{26} \left[ U_{g,i} + U_{m,i} + U_{A,i} - U_{b,i} \right] \cdot S_{26}([SSq]) \cdot \Phi_{1.25\text{THz}}(\omega, \Gamma)$$
 
 ### §A.3 Euler-Lagrange Equation of Motion
-$$\boxed{\frac{\partial \mathcal{L}}{\partial \phi} - \partial_\mu \frac{\partial \mathcal{L}}{\partial (\partial_\mu \phi)} = 0 \implies F_{U,Bi_i} = -\nabla U_{\text{eff}} + \Phi \cdot S_{26} \cdot E_{\text{net}}}$$
+$$\boxed{\frac{\partial \mathcal{L}}{\partial \phi} - \partial_mu \frac{\partial \mathcal{L}}{\partial (\partial_mu \phi)} = 0 \implies F_{U,Bi\_i} = -\nabla U_{\text{eff}} + \Phi \cdot S_{26} \cdot E_{\text{net}}}$$
 
 ### §A.4 Cosmogenesis Linkage Chain
-PAPER_877 axioms → SCm vacuum → phonon $\omega_{\text{SCm}}$ → gravitational-wave chirp → $F_{U,Bi_i}$ unified force → observational prediction
+PAPER_877 axioms → SCm vacuum → phonon $\omega_{\text{SCm}}$ → gravitational-wave chirp → $F_{U,Bi\_i}$ unified force → observational prediction
 
 ---
 

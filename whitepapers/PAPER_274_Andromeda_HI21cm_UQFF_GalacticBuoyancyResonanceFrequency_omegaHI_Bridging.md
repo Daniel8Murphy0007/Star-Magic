@@ -1,3 +1,16 @@
+---
+paper_id: PAPER_274
+title: "HI 21-cm Line as UQFF Galactic Buoyancy Resonance Frequency — ω_HI Bridges Atomic Hyperfine
+Physics to Galaxy-Scale Dynamics"
+session: 75
+date: 2026-03-01
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [galaxy, buoyancy, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_274: HI 21-cm Line as UQFF Galactic Buoyancy Resonance Frequency — ω_HI Bridges Atomic Hyperfine Physics to Galaxy-Scale Dynamics
 **Author:** Daniel T. Murphy
 
@@ -5,37 +18,53 @@
 **Date:** March 2026  
 **UQFF Module:** ANDROMEDA_UQFF_MODULE.cpp (M31 Master Module, Session 75)  
 **Session:** 75 — Andromeda UQFF 2.0 Analysis  
-**Keywords:** 21-cm HI line, hydrogen spin-flip, hyperfine transition, UQFF resonance, galactic buoyancy frequency, omega_HI, 1.42 GHz, nu_HI, atomic-to-galactic bridge
+**Keywords:** 21-cm HI line, hydrogen spin-flip, hyperfine transition, UQFF resonance, galactic
+buoyancy frequency, omega_HI, 1.42 GHz, nu_HI, atomic-to-galactic bridge
 
 ---
 
 ## Abstract
 
-The neutral hydrogen 21-cm spin-flip transition at ν_HI = 1.42040575 GHz is one of the most precisely known frequencies in all of physics and is universally used as a velocity tracer in radio astronomy. In this paper, we demonstrate that this frequency appears naturally in the UQFF framework as the **galactic buoyancy resonance frequency**: when the resonant oscillatory term of the master UQFF gravity equation is parameterized with ω = ω_HI = 2π × 1.42040575 × 10⁹ rad/s, it produces a resonant gravitational force F_res(t) = A_res × cos(ω_HI × t) × exp(−t/τ_gal) that is simultaneously consistent with both the atomic hyperfine energy splitting in hydrogen (E_HF = hν_HI = 9.411×10⁻²⁵ J) and the large-scale buoyancy dynamics of galaxy-sized systems. We identify ω_HI as the **HI-UQFF Bridging Frequency**, constituting a new multi-scale coupling between quantum atomic physics and gravitational galaxy dynamics within the UQFF framework.
+The neutral hydrogen 21-cm spin-flip transition at ν_HI = 1.42040575 GHz is one of the most
+precisely known frequencies in all of physics and is universally used as a velocity tracer in radio
+astronomy. In this paper, we demonstrate that this frequency appears naturally in the UQFF framework
+as the **galactic buoyancy resonance frequency**: when the resonant oscillatory term of the master
+UQFF gravity equation is parameterized with ω = ω_HI = 2π × 1.42040575 × 109 rad/s, it produces a
+resonant gravitational force F_res(t) = A_res × cos(ω_HI × t) × exp(−t/τ_gal) that is simultaneously
+consistent with both the atomic hyperfine energy splitting in hydrogen (E_HF = hν_HI = 9.411×10-25
+J) and the large-scale buoyancy dynamics of galaxy-sized systems. We identify ω_HI as the **HI-UQFF
+Bridging Frequency**, constituting a new multi-scale coupling between quantum atomic physics and
+gravitational galaxy dynamics within the UQFF framework.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+0.57) uniquely enabling this analysis  establishing a new connection in the UQFF framework not
+present in Standard Model treatments.
 
 ---
 
 ## 1. Introduction
 
-The hydrogen 21-cm line arises from the hyperfine transition between the F=1 (parallel electron-proton spin) and F=0 (antiparallel) states of the hydrogen ground state. Its frequency is:
+The hydrogen 21-cm line arises from the hyperfine transition between the F=1 (parallel
+electron-proton spin) and F=0 (antiparallel) states of the hydrogen ground state. Its frequency is:
 
-$$\nu_\text{HI} = 1.42040575177 \times 10^9\ \text{Hz}$$
+$$\nu_text{HI} = 1.42040575177 \times 10^9\ \text{Hz}$$
 
-$$\omega_\text{HI} = 2\pi \times \nu_\text{HI} = 8.92819 \times 10^9\ \text{rad/s}$$
+$$\omega_text{HI} = 2\pi \times \nu_text{HI} = 8.92819 \times 10^9\ \text{rad/s}$$
 
-This transition has zero classical analogue and arises purely from quantum electrodynamic effects (magnetic dipole coupling between electron and proton magnetic moments). It is measured to 12 significant figures and is used as a cosmic standard.
+This transition has zero classical analogue and arises purely from quantum electrodynamic effects
+(magnetic dipole coupling between electron and proton magnetic moments). It is measured to 12
+significant figures and is used as a cosmic standard.
 
 In UQFF, the galactic resonance term appears as:
 
-$$F_\text{res}(t) = A_\text{res} \times \cos(\omega_\text{osc} \times t) \times e^{-t/\tau_\text{gal}}$$
+$$F_\text{res}(t) = A_\text{res} \times \cos(\omega_text{osc} \times t) \times e^{-t/\tau_text{gal}}$$
 
 The key question: what is the natural value of ω_osc for a galaxy like Andromeda?
 
-Our finding: **ω_osc = ω_HI = 8.92819 × 10⁹ rad/s** is the physically motivated choice, linking the atomic spin-flip frequency to the galactic buoyancy oscillator.
+Our finding: **ω_osc = ω_HI = 8.92819 × 109 rad/s** is the physically motivated choice, linking the
+atomic spin-flip frequency to the galactic buoyancy oscillator.
 
 ---
 
@@ -43,23 +72,23 @@ Our finding: **ω_osc = ω_HI = 8.92819 × 10⁹ rad/s** is the physically motiv
 
 ### 2.1 UQFF Resonant Term
 
-$$\boxed{F_\text{res}(t) = A_\text{res} \times \cos(\omega_\text{HI} \times t) \times e^{-t/\tau_\text{gal}}}$$
+$$\boxed{F_\text{res}(t) = A_\text{res} \times \cos(\omega_text{HI} \times t) \times e^{-t/\tau_text{gal}}}$$
 
 where:
-- A_res = 1.0×10⁻¹² m/s² (galactic resonance amplitude)
-- ω_HI = 2π × 1.42040575×10⁹ = 8.92819×10⁹ rad/s
-- τ_gal = 1 Gyr = 3.15576×10¹⁶ s
+- A_res = 1.0×10-12 m/s2 (galactic resonance amplitude)
+- ω_HI = 2π × 1.42040575×109 = 8.92819×109 rad/s
+- τ_gal = 1 Gyr = 3.15576×1016 s
 
 ### 2.2 Parameter Values
 
 | Parameter | Symbol | Value | Units |
 |-----------|--------|-------|-------|
-| HI frequency | ν_HI | 1.42040575×10⁹ | Hz |
-| Angular frequency | ω_HI | 8.92819×10⁹ | rad/s |
-| Galactic period | T_HI = 2π/ω_HI | 7.037×10⁻¹⁰ | s |
-| Hyperfine energy | E_HF = ℏω_HI | 9.411×10⁻²⁵ | J |
-| Resonance amplitude | A_res | 1.0×10⁻¹² | m/s² |
-| Galactic decay time | τ_gal | 3.156×10¹⁶ | s (1 Gyr) |
+| HI frequency | ν_HI | 1.42040575×109 | Hz |
+| Angular frequency | ω_HI | 8.92819×109 | rad/s |
+| Galactic period | T_HI = 2π/ω_HI | 7.037×10-10 | s |
+| Hyperfine energy | E_HF = ℏω_HI | 9.411×10-25 | J |
+| Resonance amplitude | A_res | 1.0×10-12 | m/s2 |
+| Galactic decay time | τ_gal | 3.156×1016 | s (1 Gyr) |
 
 ### 2.3 computeHz() Implementation
 
@@ -69,7 +98,8 @@ The `computeHz()` method in `AndromedaUQFFModule` returns ω_HI directly:
 double computeHz() { return omega_HI; }   // 8.9282e9 rad/s
 ```
 
-This encodes the 21-cm frequency as the canonical galactic UQFF frequency output, accessible via the public interface for use in multi-module cross-validation.
+This encodes the 21-cm frequency as the canonical galactic UQFF frequency output, accessible via the
+public interface for use in multi-module cross-validation.
 
 ---
 
@@ -77,9 +107,15 @@ This encodes the 21-cm frequency as the canonical galactic UQFF frequency output
 
 ### 3.1 Hydrogen's Universal Presence
 
-Hydrogen constitutes ~74% of the cosmic baryonic mass fraction. In Andromeda, neutral HI gas is distributed throughout the disk and halo with a total HI mass of ~6.5×10⁹ M_sun (~3.6% of total mass). The 21-cm emission traces the rotation curve, spiral structure, and velocity dispersion of the galaxy.
+Hydrogen constitutes ~74% of the cosmic baryonic mass fraction. In Andromeda, neutral HI gas is
+distributed throughout the disk and halo with a total HI mass of ~6.5×109 M_sun (~3.6% of total
+mass). The 21-cm emission traces the rotation curve, spiral structure, and velocity dispersion of
+the galaxy.
 
-In UQFF, the buoyancy dynamics of a system are driven by its dominant mass constituents. Since hydrogen is the dominant visible-matter component (and its atomic spin-flip frequency ω_HI governs the characteristic oscillation time of HI gas), using ω_HI as the galactic resonance frequency is physically motivated.
+In UQFF, the buoyancy dynamics of a system are driven by its dominant mass constituents. Since
+hydrogen is the dominant visible-matter component (and its atomic spin-flip frequency ω_HI governs
+the characteristic oscillation time of HI gas), using ω_HI as the galactic resonance frequency is
+physically motivated.
 
 ### 3.2 HI-UQFF Scale Bridging
 
@@ -87,17 +123,23 @@ The 21-cm transition bridges two vastly different physical scales:
 
 | Scale | Physical Domain | Role of ω_HI |
 |-------|----------------|--------------|
-| Atomic (10⁻¹⁰ m) | Hydrogen ground state hyperfine structure | Photon emission frequency |
-| Galactic (10²¹ m) | Galaxy disk rotation and HI distribution | UQFF buoyancy resonance |
+| Atomic (10-10 m) | Hydrogen ground state hyperfine structure | Photon emission frequency |
+| Galactic (1021 m) | Galaxy disk rotation and HI distribution | UQFF buoyancy resonance |
 
-The ratio of these scales is ~10³¹, yet a single frequency ω_HI appears in both. This is the **HI-UQFF Bridging Frequency** — a scale-invariant constant of hydrogen atomic physics that re-emerges at galactic scale in the UQFF buoyancy framework.
+The ratio of these scales is ~1031, yet a single frequency ω_HI appears in both. This is the
+**HI-UQFF Bridging Frequency** — a scale-invariant constant of hydrogen atomic physics that
+re-emerges at galactic scale in the UQFF buoyancy framework.
 
 ### 3.3 Connection to Radio Velocity Tracing
 
 In radio astronomy, the observed frequency of 21-cm emission is Doppler-shifted by the gas velocity:
-$$\nu_\text{obs} = \nu_\text{HI} \left(1 - \frac{v_r}{c}\right)$$
+$$\nu_text{obs} = \nu_text{HI} \left(1 - \frac{v_r}{c}\right)$$
 
-This is inverted to measure v_r (radial velocity). In UQFF, the cos(ω_HI × t) oscillation in F_res encodes the same velocity information: the phase of the oscillation at time t maps to the dynamical state of the HI gas at that epoch. At t = 0 (initial epoch), F_res = A_res (maximum positive buoyancy); at t = π/ω_HI ≈ 0.35 ns, F_res = −A_res (maximum negative buoyancy). Over the 1 Gyr timescale τ_gal, the amplitude decays to ~0 as HI gas depletes through star formation.
+This is inverted to measure v_r (radial velocity). In UQFF, the cos(ω_HI × t) oscillation in F_res
+encodes the same velocity information: the phase of the oscillation at time t maps to the dynamical
+state of the HI gas at that epoch. At t = 0 (initial epoch), F_res = A_res (maximum positive
+buoyancy); at t = π/ω_HI ≈ 0.35 ns, F_res = −A_res (maximum negative buoyancy). Over the 1 Gyr
+timescale τ_gal, the amplitude decays to ~0 as HI gas depletes through star formation.
 
 ---
 
@@ -109,20 +151,24 @@ $$F_\text{res}(0) = A_\text{res} \times \cos(0) \times \exp(0) = 1.0 \times 10^{
 
 ### 4.2 F_res at t = τ_gal = 1 Gyr
 
-$$F_\text{res}(\tau_\text{gal}) = 1.0 \times 10^{-12} \times \cos(\omega_\text{HI} \times 3.156 \times 10^{16}) \times e^{-1}$$
+$$F_\text{res}(\tau_text{gal}) = 1.0 \times 10^{-12} \times \cos(\omega_text{HI} \times 3.156 \times 10^{16}) \times e^{-1}$$
 
-The cosine argument: $\omega_\text{HI} \times \tau_\text{gal} = 8.928 \times 10^9 \times 3.156 \times 10^{16} = 2.818 \times 10^{26}$ radians — the resonance oscillates extremely rapidly (10⁹ Hz × Gyr ≈ 10²⁶ cycles) and its time-average is zero. The exp(−1) = 0.368 envelope governs the long-term envelope.
+The cosine argument: $\omega_text{HI} \times \tau_text{gal} = 8.928 \times 10^9 \times 3.156 \times 10^{16} = 2.818 \times 10^{26}$ radians — the resonance oscillates extremely rapidly (109 Hz × Gyr ≈ 1026 cycles) and its time-average is zero. The exp(−1) = 0.368 envelope governs the long-term envelope.
 
-This means **the HI resonance term oscillates at sub-nanosecond timescales while its amplitude envelope decays over Gyr** — an extreme multi-scale temporal structure unique to using ω_HI in a galactic context.
+This means **the HI resonance term oscillates at sub-nanosecond timescales while its amplitude
+envelope decays over Gyr** — an extreme multi-scale temporal structure unique to using ω_HI in a
+galactic context.
 
 ### 4.3 HI-UQFF Bridging Constant
 
 We define:
-$$\Omega_\text{bridge} \equiv \frac{\omega_\text{HI}}{\omega_g} = \frac{8.928 \times 10^9}{7.3 \times 10^{-16}} = 1.223 \times 10^{25}$$
+$$\Omega_text{bridge} \equiv \frac{\omega_text{HI}}{\omega_g} = \frac{8.928 \times 10^9}{7.3 \times 10^{-16}} = 1.223 \times 10^{25}$$
 
-where ω_g = 7.3×10⁻¹⁶ rad/s is the canonical UQFF gravitational buoyancy frequency. The ratio Ω_bridge = 1.223×10²⁵ encodes the scale separation between atomic quantum oscillations and gravitational galaxy dynamics.
+where ω_g = 7.3×10-16 rad/s is the canonical UQFF gravitational buoyancy frequency. The ratio
+Ω_bridge = 1.223×1025 encodes the scale separation between atomic quantum oscillations and
+gravitational galaxy dynamics.
 
-$$\boxed{\Omega_\text{bridge} = \frac{\omega_\text{HI}}{\omega_g} = 1.223 \times 10^{25}}$$
+$$\boxed{\Omega_text{bridge} = \frac{\omega_text{HI}}{\omega_g} = 1.223 \times 10^{25}}$$
 
 ---
 
@@ -140,20 +186,25 @@ No other astrophysical frequency combines all four properties simultaneously at 
 
 ## 6. Conclusions
 
-We identify the neutral hydrogen 21-cm spin-flip frequency as the natural UQFF galactic buoyancy resonance frequency for hydrogen-dominated galaxy systems:
+We identify the neutral hydrogen 21-cm spin-flip frequency as the natural UQFF galactic buoyancy
+resonance frequency for hydrogen-dominated galaxy systems:
 
-$$\boxed{\omega_\text{HI} = 2\pi \times 1.42040575 \times 10^9\ \text{rad/s} = 8.92819 \times 10^9\ \text{rad/s}}$$
+$$\boxed{\omega_text{HI} = 2\pi \times 1.42040575 \times 10^9\ \text{rad/s} = 8.92819 \times 10^9\ \text{rad/s}}$$
 
-$$\boxed{F_\text{res}(t) = A_\text{res} \cos(\omega_\text{HI} t)\, e^{-t/\tau_\text{gal}}}$$
+$$\boxed{F_\text{res}(t) = A_\text{res} \cos(\omega_text{HI} t)\, e^{-t/\tau_text{gal}}}$$
 
-The **HI-UQFF Bridging Constant** Ω_bridge = 1.223×10²⁵ quantifies the scale separation bridged by this single frequency. This is the first explicit UQFF connection between atomic hyperfine physics and galaxy-scale gravitational buoyancy dynamics.
+The **HI-UQFF Bridging Constant** Ω_bridge = 1.223×1025 quantifies the scale separation bridged by
+this single frequency. This is the first explicit UQFF connection between atomic hyperfine physics
+and galaxy-scale gravitational buoyancy dynamics.
 
 ---
 
-*Derived from ANDROMEDA_UQFF_MODULE.cpp, UQFF 2.0, Session 75. Next: PAPER_275 (DM 80/20 shell partition).*
+*Derived from ANDROMEDA_UQFF_MODULE.cpp, UQFF 2.0, Session 75. Next: PAPER_275 (DM 80/20 shell
+partition).*
 
 
-**UQFF computed:** MUGE buoyancy ratio U_bi/F_U = [SSq]�?�r�/GM = 5.7e-1�5.0e-4 = 2.85e-4; compressed MUGE baseline g = 5.4e-7 m/s� at r_ISCO.
+**UQFF computed:** MUGE buoyancy ratio U_bi/F_U = [SSq]?r/GM = 5.7e-1§5.0e-4 = 2.85e-4; compressed
+MUGE baseline g = 5.4e-7 m/s at r_ISCO.
 
 ---
 
@@ -161,13 +212,15 @@ The **HI-UQFF Bridging Constant** Ω_bridge = 1.223×10²⁵ quantifies the scal
 
 ### §A.1 Sector Classification
 
-This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see `uqff_lagrangian_derivation.py`).
+This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
-The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive quantum fundamentals (DPM, UA, SCm):
+The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
+quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_\mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
+$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
 
 where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
@@ -181,7 +234,9 @@ $$\boxed{\frac{\delta S}{\delta \phi_{\rm NS}} = \nabla^2 \phi_{\rm NS} - (4\pi 
 
 $$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\rm NS} = 0$$
 
-The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g forces) through vacuum density initialization to the sector-specific equation of motion. Every term in the E-L equation inherits its physical origin from the cosmogenesis master.
+The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
+forces) through vacuum density initialization to the sector-specific equation of motion. Every term
+in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 
 ---
@@ -192,9 +247,9 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.157$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m³.
+For this system, the local VDS sub-ratio is $0.157$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -206,13 +261,13 @@ Since $p_{\rm DVP} = 11$ is **sub-threshold** (threshold at $p > 26$), the syste
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
-The BSH saturation timescale for this sector is **10⁴ yr** (spin-down equilibrium):
+The BSH saturation timescale for this sector is **104 yr** (spin-down equilibrium):
 
-$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
+$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\rm SCm}$ which initializes the harmonic series at cosmogenesis.
 
@@ -220,11 +275,11 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.157 | ✓ Threshold-consistent |
-| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 11$ | ✓ Sub-threshold |
-| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
-| [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
+| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.157 | PASS Threshold-consistent |
+| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 11$ | PASS Sub-threshold |
+| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
+| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
 ---
@@ -234,14 +289,17 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | ✓ Consistent |
-| Cosmological constant Λ | 1.1×10⁻⁵² m⁻² (UQFF vacuum term) | 1.114×10⁻⁵² m⁻² | Planck 2018 | ✓ Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10⁻³⁵/yr | Super-K 2024 | ✓ Consistent |
-| UQFF buoyancy signature | F_U_Bi_i unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
+| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
-**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes significant, offering a falsifiable prediction beyond the Standard Model.
+**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
+produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
+bridge.*
 
 
 ---
@@ -256,9 +314,9 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `f`neutron_s26_coupling`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `k`ozima_scm_cross_section`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `k`ozima_wstp_kernel`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -267,7 +325,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `r`amanujan_polylog_s26`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
 | `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
@@ -276,7 +334,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `m`ock_theta_q26`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -287,8 +345,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `r`amanujan_pi_uqff`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `m`ock_theta_pi_wstp_kernel`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]

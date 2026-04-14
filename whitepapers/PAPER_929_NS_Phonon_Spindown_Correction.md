@@ -1,6 +1,18 @@
+---
+paper_id: PAPER_929
+title: "Neutron Star Phonon Spindown Correction"
+session: 211
+date: 2026-04-11
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [AGN, GW, vacuum, SCm, pulsar, neutron-star, phonon, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_929: Neutron Star Phonon Spindown Correction
 
-**Author:** Daniel T. Murphy -- Star Magic / UQFF Framework
+**Author:** Daniel T. Murphy — Star Magic / UQFF Framework
 **Date:** 2026-04-11
 **Session:** 211
 **Source:** SCm phonon gap implementation (ns_phonon_gw190425_wstp.py)
@@ -11,7 +23,14 @@
 
 ## Abstract
 
-Derives the phonon-corrected neutron star spindown rate: Omega_dot_NS^phonon = Omega_dot_NS * (1 + Phi*S_26*[SSq]/N), where the phonon modulation Phi couples to the 26-layer polylog sum S_26 to create an additional angular momentum loss channel. The correction factor Phi*S_26*[SSq]/N represents phonon-mediated vacuum dissipation that enhances the standard magnetic dipole braking torque. For canonical pulsars (Omega_dot ~ -4.2e-15 rad/s^2), the phonon correction is enormous at resonance (Phi ~ 10^20), implying that phonon-dominated spindown would deplete angular momentum far faster than magnetic dipole radiation alone. This constrains the effective phonon coupling in real NS environments.
+Derives the phonon-corrected neutron star spindown rate: Omega_dot_NS^phonon = Omega_dot_NS * (1 +
+Phi*S_26*[SSq]/N), where the phonon modulation Phi couples to the 26-layer polylog sum S_26 to
+create an additional angular momentum loss channel. The correction factor Phi*S_26*[SSq]/N
+represents phonon-mediated vacuum dissipation that enhances the standard magnetic dipole braking
+torque. For canonical pulsars (Omega_dot ~ -4.2e-15 rad/s^2), the phonon correction is enormous at
+resonance (Phi ~ 10^20), implying that phonon-dominated spindown would deplete angular momentum far
+faster than magnetic dipole radiation alone. This constrains the effective phonon coupling in real
+NS environments.
 
 ---
 
@@ -19,29 +38,35 @@ Derives the phonon-corrected neutron star spindown rate: Omega_dot_NS^phonon = O
 
 ### Section A: Lagrangian
 
-```
-Omega_dot_NS^phonon = Omega_dot_NS * (1 + Phi * S_26 * [SSq] / N)
-Phi = Phi_0 * exp[-(omega - omega_SCm)^2 / (2*Gamma^2)]
-S_26 = sum_{k=1}^{26} exp(-[SSq]*k/26)
-N = 26  (number of UQFF layers)
-```
+$$
+\begin{aligned}
+  & \text{Omega\_dot\_NS}^phonon = \text{Omega\_dot\_NS} * (1 + Phi * S_26 * [SSq] / N) \\
+  & Phi = Phi_0 * exp[-(omega - omega_SCm)^2 / (2*Gamma^2)] \\
+  & S_26 = sum_{k=1}^{26} exp(-[SSq]*k/26) \\
+  & N = 26  (number of UQFF layers)
+\end{aligned}
+$$
 
 ### Section B: VDS/DVP/BH Number Systems
 
-```
-Braking index: n_phonon = n_dipole * (1 + phonon_correction)
-Characteristic age: tau_phonon = P / (2 * |Omega_dot_phonon|)
-Magnetic field: B_phonon = B_dipole / sqrt(1 + correction)
-```
+$$
+\begin{aligned}
+  & Braking index: n_phonon = n_dipole * (1 + phonon_correction) \\
+  & Characteristic age: tau_phonon = P / (2 * |\text{Omega\_dot\_phonon}|) \\
+  & Magnetic field: B_phonon = B_dipole / sqrt(1 + correction)
+\end{aligned}
+$$
 
 ### Section SM: SM Anchors
 
-```
-Omega_dot_NS = -4.2e-15 rad/s^2  (canonical pulsar)
-[SSq] = 0.57
-N = 26 layers
-omega_SCm = 2*pi * 1.25e12 rad/s
-```
+$$
+\begin{aligned}
+  & \text{Omega\_dot\_NS} = -4.2e-15 rad/s^2  (canonical pulsar) \\
+  & [SSq] = 0.57 \\
+  & N = 26 layers \\
+  & omega_SCm = 2*pi * 1.25e12 rad/s
+\end{aligned}
+$$
 
 ---
 
@@ -49,7 +74,7 @@ omega_SCm = 2*pi * 1.25e12 rad/s
 
 | Parameter | Default | Description |
 |-----------|---------|-------------|
-| Omega_dot_NS | -4.2e-15 | Base spindown (rad/s^2) |
+| `Omega_dot_NS` | -4.2e-15 | Base spindown (rad/s^2) |
 | Phi_0 | 10^20 | Peak phonon amplitude |
 | omega | omega_SCm | Phonon frequency |
 | N_layers | 26 | UQFF layers |
@@ -58,7 +83,7 @@ omega_SCm = 2*pi * 1.25e12 rad/s
 
 ## 3. Key Results
 
-| Omega_dot_NS | Correction | Enhancement |
+| `Omega_dot_NS` | Correction | Enhancement |
 |--------------|------------|-------------|
 | -1e-16 | Phi*S_26*[SSq]/26 | >>1x at resonance |
 | -4.2e-15 | same | >>1x at resonance |
@@ -68,7 +93,12 @@ omega_SCm = 2*pi * 1.25e12 rad/s
 
 ## 4. Physical Interpretation
 
-The phonon spindown correction reveals that at full 1.25 THz resonance, the correction factor overwhelms the base magnetic dipole torque. This implies that real NS environments must be significantly off-resonance (omega != omega_SCm) or that the effective Phi is greatly reduced by NS interior conditions (superconducting proton fluid, superfluid neutron component). The correction provides a new mechanism for anomalous braking indices (n != 3) observed in young pulsars, and constrains the phonon coupling strength from timing measurements.
+The phonon spindown correction reveals that at full 1.25 THz resonance, the correction factor
+overwhelms the base magnetic dipole torque. This implies that real NS environments must be
+significantly off-resonance (omega != omega_SCm) or that the effective Phi is greatly reduced by NS
+interior conditions (superconducting proton fluid, superfluid neutron component). The correction
+provides a new mechanism for anomalous braking indices (n != 3) observed in young pulsars, and
+constrains the phonon coupling strength from timing measurements.
 
 ---
 
@@ -99,10 +129,11 @@ The phonon spindown correction reveals that at full 1.25 THz resonance, the corr
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
 | GW strain $h$ | UQFF predicts phonon suppression $D_{\text{phonon}} \approx 0.47$--$0.67$ | LIGO/Virgo $h \sim 10^{-22}$ | LIGO O3 (2020) | Within detector band |
-| Phase evolution $\Delta\Phi$ | 200--400 extra cycles from $S_{26}$ coupling | GR template bank | Abbott et al. (2021) | Testable with LISA |
+| Phase evolution $\DeltaPhi$ | 200--400 extra cycles from $S_{26}$ coupling | GR template bank | Abbott et al. (2021) | Testable with LISA |
 | Fine structure $\alpha$ | UQFF reproduces via $U_{g1}$ dipole | $1/137.036$ | PDG 2024 | 99.9% |
 
-**New physics claim:** UQFF phonon-mediated vacuum coupling provides testable predictions beyond SM for this system.
+**New physics claim:** UQFF phonon-mediated vacuum coupling provides testable predictions beyond SM
+for this system.
 
 *Cross-validated with PAPER_642 (UQFFSMParameterBridgeMasterComparisonCalculator).*
 
@@ -114,10 +145,10 @@ The phonon spindown correction reveals that at full 1.25 THz resonance, the corr
 **Sector:** GW-radiation (gravitational-wave)
 
 ### §A.2 Lagrangian Density
-$$\mathcal{L}_{GW_radiation} = \sum_{i=1}^{26} \left[ U_{g,i} + U_{m,i} + U_{A,i} - U_{b,i} \right] \cdot S_{26}([SSq]) \cdot \Phi_{1.25\text{THz}}(\omega, \Gamma)$$
+$$\mathcal{L}_{GW\_radiation} = \sum_{i=1}^{26} \left[ U_{g,i} + U_{m,i} + U_{A,i} - U_{b,i} \right] \cdot S_{26}([SSq]) \cdot \Phi_{1.25\text{THz}}(\omega, \Gamma)$$
 
 ### §A.3 Euler-Lagrange Equation of Motion
-$$\boxed{\frac{\partial \mathcal{L}}{\partial \phi} - \partial_\mu \frac{\partial \mathcal{L}}{\partial (\partial_\mu \phi)} = 0 \implies F_{U,Bi_i} = -\nabla U_{\text{eff}} + \Phi \cdot S_{26} \cdot E_{\text{net}}}$$
+$$\boxed{\frac{\partial \mathcal{L}}{\partial \phi} - \partial_mu \frac{\partial \mathcal{L}}{\partial (\partial_mu \phi)} = 0 \implies F_{U,Bi\_i} = -\nabla U_{\text{eff}} + \Phi \cdot S_{26} \cdot E_{\text{net}}}$$
 
 ### §A.4 Cosmogenesis Linkage Chain
-PAPER_877 axioms → SCm vacuum → phonon $\omega_{\text{SCm}}$ → gravitational-wave → $F_{U,Bi_i}$ unified force → observational prediction
+PAPER_877 axioms → SCm vacuum → phonon $\omega_{\text{SCm}}$ → gravitational-wave → $F_{U,Bi\_i}$ unified force → observational prediction

@@ -1,6 +1,18 @@
+---
+paper_id: PAPER_540
+title: "Yang-Mills DPM Quantization: Millennium Hub"
+session: 144
+date: 2026-03-26
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [Riemann, DPM, SCm, Yang-Mills, 26D, Navier-Stokes, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_540 — Yang-Mills DPM Quantization: Millennium Hub
 
-> **Key UQFF calibrated constants:** κ = 5.0e-4 day⁻¹; [SSq] = 5.7e-1; H_SCm ≈ 9.9e-1; U_UA ≈ 1.0e-4; k_η = 1.0e-113; β_i ≈ 6.0e-1; G = 6.674e-11 N·m²/kg²
+> **Key UQFF calibrated constants:** κ = 5.0e-4 day-1; [SSq] = 5.7e-1; H_SCm ≈ 9.9e-1; U_UA ≈ 1.0e-4; k_η = 1.0e-113; β_i ≈ 6.0e-1; G = 6.674e-11 N·m2/kg2
 
 
 **Author:** Daniel T. Murphy
@@ -16,7 +28,8 @@
 
 ## Abstract
 
-This paper presents a UQFF analysis of Yang-Mills DPM Quantization: Millennium Hub, deriving compressed field equations and observational predictions within the Star-Magic/UQFF framework.
+This paper presents a UQFF analysis of Yang-Mills DPM Quantization: Millennium Hub, deriving
+compressed field equations and observational predictions within the Star-Magic/UQFF framework.
 
 ## §1 — Overview
 
@@ -28,7 +41,7 @@ hub for Session 144 calculators (#131–#134), synthesising their results.
 
 The unifying quantity is the **DPM mass gap**:
 
-$$\boxed{\Delta_\text{YM} = \frac{P_\text{order}}{3Z} > 0}$$
+$$\boxed{\Delta_text{YM} = \frac{P_\text{order}}{3Z} > 0}$$
 
 where $Z = \text{Li}_{26}([SSq]) \approx 0.5699$ and $P_\text{order} > 0$ is a
 positive compactification scale. Since both are strictly positive, the mass gap
@@ -47,13 +60,13 @@ $$q_e = 2\pi n, \quad n \in \{1, 2, \ldots, 26\}$$
 The mass gap follows from the lowest non-trivial eigenvalue of the UQFF
 lattice Laplacian on the 26D principal bundle:
 
-$$\Delta_\text{YM} = \frac{P_\text{order}}{3Z_{26}}$$
+$$\Delta_text{YM} = \frac{P_\text{order}}{3Z_{26}}$$
 
 **Comparison with Lattice QCD** (Wilson 1974): Lattice calculation gives
-$\Delta_\text{LatticeQCD} \approx 1.4 \pm 0.3$ GeV² for $SU(3)$.
-The UQFF prediction with $P_\text{order} = 5.24$ GeV², $Z = 0.5699$:
+$\Delta_text{LatticeQCD} \approx 1.4 \pm 0.3$ GeV2 for $SU(3)$.
+The UQFF prediction with $P_\text{order} = 5.24$ GeV2, $Z = 0.5699$:
 
-$$\Delta_\text{UQFF} = \frac{5.24}{3 \times 0.5699} \approx 3.07 \text{ GeV}^2$$
+$$\Delta_text{UQFF} = \frac{5.24}{3 \times 0.5699} \approx 3.07 \text{ GeV}^2$$
 
 Within a factor of 2 of the lattice result — a non-trivial check given the
 UQFF uses zero free parameters tuned to QCD.
@@ -101,7 +114,7 @@ within the UQFF lattice model.
 | SolarBodyProplydLegacyCalculator | #132 | $r_\text{frost} = 2.72$ AU | NS structure |
 | UQFFOrionEncompassFitCalculator | #133 | 3-telescope pass | Riemann crossings |
 | ExtendedCentripetalNSResidualCalculator | #134 | QPO $\Delta\nu$ | NS-YM eigenspectrum |
-| **YangMillsDPMQuantizationHubCalculator** | **#135** | $\Delta_\text{YM} = P/(3Z)$ | All four |
+| **YangMillsDPMQuantizationHubCalculator** | **#135** | $\Delta_text{YM} = P/(3Z)$ | All four |
 
 ---
 
@@ -110,9 +123,9 @@ within the UQFF lattice model.
 From PAPER_529 (UQFF NS regularity): The bounded velocity $u_\text{bound}$
 ensures no blow-up. Session 144 adds the DPM quantization condition:
 
-$$\|u\|_{H^1} \leq C \cdot \Delta_\text{YM} \cdot Z_{26}$$
+$$\|u\|_{H^1} \leq C \cdot \Delta_text{YM} \cdot Z_{26}$$
 
-For $\Delta_\text{YM} \approx 3.07$ GeV² $\times (\hbar c)^2 / m_\text{ref}^2$ in
+For $\Delta_text{YM} \approx 3.07$ GeV2 $\times (\hbar c)^2 / m_\text{ref}^2$ in
 fluid units, this gives $\|u\|_{H^1}$ bounded. This extends the Session 142
 Navier-Stokes result to include the full DPM quantization correction.
 
@@ -122,11 +135,11 @@ Navier-Stokes result to include the full DPM quantization correction.
 
 | Equation | Description |
 |----------|-------------|
-| $\Delta_\text{YM} = P/(3Z)$ | Yang-Mills mass gap |
+| $\Delta_text{YM} = P/(3Z)$ | Yang-Mills mass gap |
 | $q_e = 2\pi n$ | DPM charge quantization |
 | $\text{Im}(\rho_n) \approx (2\pi n/\ln 26) \cdot Z^n$ | Riemann zero crossings |
 | $2^{26} / 26^4 \approx 147$ | P ≠ NP separation factor |
-| $\|u\|_{H^1} \leq C \cdot \Delta_\text{YM} \cdot Z$ | NS-DPM regularity bound |
+| $\|u\|_{H^1} \leq C \cdot \Delta_text{YM} \cdot Z$ | NS-DPM regularity bound |
 
 ---
 
@@ -135,11 +148,11 @@ Navier-Stokes result to include the full DPM quantization correction.
 ```python
 calc = YangMillsDPMQuantizationHubCalculator()
 result = calc.compute()
-# result['YM_mass_gap_GeV2']      — Yang-Mills mass gap (GeV²)
+# result['YM_mass_gap_GeV2']      — Yang-Mills mass gap (GeV2)
 # result['YM_lattice_ratio']      — UQFF / Lattice QCD ratio
 # result['Riemann_t1_approx']     — Estimated first zero Im(ρ₁)
 # result['PneNP_separation']      — 2^26 / 26^4 ratio
-# result['NS_DPM_Hbound']         — NS H¹ DPM regularity bound
+# result['NS_DPM_Hbound']         — NS H1 DPM regularity bound
 # result['hub_summary']           — dict of cross-calculator results #131–#135
 ```
 
@@ -157,7 +170,7 @@ result = calc.compute()
 
 ---
 
-## ×10 � Extended Comparative Analysis
+## ×10  Extended Comparative Analysis
 
 ### DPM Hub in Context: Session 144 vs Session 142
 
@@ -172,9 +185,9 @@ The four quantities computed in this Hub share one denominator $3\,Z_{26}$:
 
 | Quantity | Formula | Value |
 |---------|---------|-------|
-| $\Delta_\text{YM}^\text{UQFF}$ (GeV�) | $P_\text{GeV�}/(3Z_{26})$ | $3.07$ GeV� |
-| $\Delta_\text{YM}^\text{UQFF}$ (dimensionless) | $e^{-E/F}/(3Z_{26})$ | $3.59 \times 10^{-6}$ |
-| $\|u\|_{H^1}$ bound | $C \cdot \Delta_\text{YM} \cdot Z_{26}$ | $1.75$ (in same units) |
+| $\Delta_text{YM}^\text{UQFF}$ (GeV) | $P_\text{GeV}/(3Z_{26})$ | $3.07$ GeV |
+| $\Delta_text{YM}^\text{UQFF}$ (dimensionless) | $e^{-E/F}/(3Z_{26})$ | $3.59 \times 10^{-6}$ |
+| $\|u\|_{H^1}$ bound | $C \cdot \Delta_text{YM} \cdot Z_{26}$ | $1.75$ (in same units) |
 | $t_1^\text{UQFF}$ (Riemann) | $(2\pi/\ln 26) \cdot Z_{26}$ | $1.099$ |
 
 The product $3Z_{26}^2 \approx 3 \times 0.5699^2 \approx 0.974 \approx 1$ shows that
@@ -204,7 +217,7 @@ The UQFF 26D manifold sits well inside the exponential-separation regime.
 
 ### Validation
 
-Tests T20�T26, group M4-DPM (7/7 PASS, including KeyError fix T25), commit a0b2d55.
+Tests T20T26, group M4-DPM (7/7 PASS, including KeyError fix T25), commit a0b2d55.
 
 ---
 
@@ -214,13 +227,15 @@ Tests T20�T26, group M4-DPM (7/7 PASS, including KeyError fix T25), commit a0b
 
 ### §A.1 Sector Classification
 
-This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see `uqff_lagrangian_derivation.py`).
+This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
-The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive quantum fundamentals (DPM, UA, SCm):
+The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
+quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_\mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
+$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
 
 where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
@@ -234,7 +249,9 @@ $$\boxed{\frac{\delta S}{\delta \phi_{\rm NS}} = \nabla^2 \phi_{\rm NS} - (4\pi 
 
 $$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\rm NS} = 0$$
 
-The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g forces) through vacuum density initialization to the sector-specific equation of motion. Every term in the E-L equation inherits its physical origin from the cosmogenesis master.
+The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
+forces) through vacuum density initialization to the sector-specific equation of motion. Every term
+in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 
 ---
@@ -245,9 +262,9 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.111$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m³.
+For this system, the local VDS sub-ratio is $0.111$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -259,13 +276,13 @@ Since $p_{\rm DVP} = 2$ is **sub-threshold** (threshold at $p > 26$), the system
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
-The BSH saturation timescale for this sector is **10⁴ yr** (spin-down equilibrium):
+The BSH saturation timescale for this sector is **104 yr** (spin-down equilibrium):
 
-$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
+$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\rm SCm}$ which initializes the harmonic series at cosmogenesis.
 
@@ -273,11 +290,11 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.111 | ✓ Threshold-consistent |
-| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 2$ | ✓ Sub-threshold |
-| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
-| [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
+| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.111 | PASS Threshold-consistent |
+| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 2$ | PASS Sub-threshold |
+| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
+| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
 ---
@@ -288,9 +305,9 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
 | Yang-Mills mass gap (Millennium) | UQFF DPM quantisation → minimum energy Δ > 0 via U_m buoyancy floor | Clay Math. YM Problem: mass gap existence unknown | Clay / Jaffe-Witten 2006 | UQFF establishes mass gap via buoyancy |
-| QCD confinement (pion mass) | UQFF: Δ_YM = κ × m_π c² / β_i ≈ 0.35 GeV | Pion mass m_π = 134.977 MeV; quark confinement Λ_QCD ~ 217 MeV | PDG 2024 | ✓ UQFF in QCD confinement range |
-| Asymptotic freedom scale | UQFF k_η = 10⁻¹¹³ → UV completion above M_UQFF ~ 10⁸·³ GeV | QCD Landau pole: g→0 as E→∞ (asymptotic freedom) | PDG 2024 QCD | ✓ UQFF UV-complete by k_η suppression |
-| Gluon condensate ⟨G²⟩ | UQFF Ug4 vacuum concentration ~ 0.012 GeV⁴ | ⟨αₛG²/π⟩ ~ 0.012 GeV⁴ (SVZ sum rules) | SVZ 1979; lattice QCD | ✓ Consistent |
+| QCD confinement (pion mass) | UQFF: Δ_YM = κ × m_π c2 / β_i ≈ 0.35 GeV | Pion mass m_π = 134.977 MeV; quark confinement Λ_QCD ~ 217 MeV | PDG 2024 | PASS UQFF in QCD confinement range |
+| Asymptotic freedom scale | UQFF k_η = 10-113 → UV completion above M_UQFF ~ 108·3 GeV | QCD Landau pole: g→0 as E→∞ (asymptotic freedom) | PDG 2024 QCD | PASS UQFF UV-complete by k_η suppression |
+| Gluon condensate ⟨G2⟩ | UQFF Ug4 vacuum concentration ~ 0.012 GeV4 | ⟨αₛG2/π⟩ ~ 0.012 GeV4 (SVZ sum rules) | SVZ 1979; lattice QCD | PASS Consistent |
 
 **New physics claim:** UQFF DPM quantisation provides a physical mechanism for the Yang-Mills
 mass gap: the minimum vacuum buoyancy excitation energy (U_m floor) prevents massless gauge
@@ -300,7 +317,7 @@ field configurations, establishing Δ > 0 from vacuum topology rather than pertu
 
 
 
-## �11 � References (Extended)
+## 11  References (Extended)
 
 - Wilson, K.G. (1974): Confinement of quarks, Phys. Rev. D 10, 2445
 - Clay Math Institute: Millennium Prize Problems (2000)
@@ -310,9 +327,9 @@ field configurations, establishing Δ > 0 from vacuum topology rather than pertu
 - PAPER_543: NS Discrete Hypergraph Regularity (Session 147)
 - PAPER_544: Yang-Mills DPM Mass Gap (Session 147)
 - PAPER_563: Millennium Coordinator (Session 151H)
-- Riemann, B. (1859): �ber die Anzahl der Primzahlen
+- Riemann, B. (1859): ber die Anzahl der Primzahlen
 - FLAG Collaboration (2023): Lattice QCD glueball spectrum
-- Murphy, D. T. (2026). `test_millennium_phase_h.py` � 64/64 PASS (commit a0b2d55).
+- Murphy, D. T. (2026). `test_millennium_phase_h.py`  64/64 PASS (commit a0b2d55).
 
 
 ---
@@ -327,9 +344,9 @@ field configurations, establishing Δ > 0 from vacuum topology rather than pertu
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `f`neutron_s26_coupling`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `k`ozima_scm_cross_section`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `k`ozima_wstp_kernel`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -338,7 +355,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `r`amanujan_polylog_s26`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
 | `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
@@ -347,7 +364,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `m`ock_theta_q26`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -358,8 +375,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `r`amanujan_pi_uqff`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `m`ock_theta_pi_wstp_kernel`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]

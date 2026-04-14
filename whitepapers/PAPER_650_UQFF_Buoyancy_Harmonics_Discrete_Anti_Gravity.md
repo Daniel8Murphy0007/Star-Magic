@@ -1,10 +1,23 @@
+---
+paper_id: PAPER_650
+title: "UQFF Buoyancy Harmonics — Discrete Anti-Gravity Resonance Bands"
+session: 168
+date: 2026-01-01
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [vacuum, buoyancy, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_650: UQFF Buoyancy Harmonics — Discrete Anti-Gravity Resonance Bands
 **Author:** Daniel T. Murphy
 
 **Version:** 1.0.0  
 **Session:** 168 | **Date:** March 31 2026  
 **CP4 Class:** UQFFBuoyancyHarmonicsCalculator  
-**Source:** grok_share_b2e2c5cba7a.txt (Session 168) — AetherInertiaAnalysis2, SystemAnalysisSimulator_v7  
+**Source:** grok_share_b2e2c5cba7a.txt (Session 168) — AetherInertiaAnalysis2,
+SystemAnalysisSimulator_v7  
 **Companion papers:** PAPER_646 (Ui Operator), PAPER_647 (Vacuum Density), PAPER_642 (SM Bridge)
 
 ---
@@ -17,7 +30,7 @@ Universal Buoyancy (Ub1) is the fifth primary UQFF field component: *each discre
 Universal Gravity (Ug) band simultaneously has a corresponding Universal Buoyancy band
 acting in the opposite direction.* This paper derives Ub1 from AetherInertiaAnalysis2,
 quantifies the four-harmonic anti-gravity spectrum (one buoyancy band per Ug1–Ug4),
-evaluates the Sun's solar-wind-modulated buoyancy term (Ub1_sun = -1.94×10²⁷ J/m³),
+evaluates the Sun's solar-wind-modulated buoyancy term (Ub1_sun = -1.94×1027 J/m3),
 and identifies the cos(πtn) frequency argument as the Buoyancy Harmonic oscillation.
 The coupling constant βi = 0.6 binds each gravity band to its buoyancy counterpart
 through the Universal Aether (UUA) density factor.
@@ -30,7 +43,8 @@ through the Universal Aether (UUA) density factor.
 > opposite of each other discrete Universal Gravity range within the Universal Aether."*
 
 This defines the two key principles:
-1. **Discreteness** — Ug1, Ug2, Ug3, Ug4 each have their own Ub counterpart; no continuous interpolation
+1. **Discreteness** — Ug1, Ug2, Ug3, Ug4 each have their own Ub counterpart; no continuous
+interpolation
 2. **Anti-phase** — Every Ub band acts in the **opposite direction** of its paired Ug band
 
 ---
@@ -46,13 +60,13 @@ $$U_{b1} = -\beta_i \cdot Ug_1 \cdot \Omega_g \cdot \frac{M_{bh}}{d_g} \cdot \le
 | Symbol | Value / Formula | Physical meaning |
 |--------|-----------------|-----------------|
 | βi | 0.6 | Buoyancy coupling constant (UQFF calibrated) |
-| Ug1 | 1.39×10²⁶ J/m³ | Internal dipole gravity (see PAPER_646) |
-| Ωg | 2.0×10⁻⁶ rad/s | Galactic rotation rate |
-| Mbh | 1.989×10³⁰ kg | Solar/black hole mass |
-| dg | 8.5×10²⁰ m | Galactic center distance |
+| Ug1 | 1.39×1026 J/m3 | Internal dipole gravity (see PAPER_646) |
+| Ωg | 2.0×10-6 rad/s | Galactic rotation rate |
+| Mbh | 1.989×1030 kg | Solar/black hole mass |
+| dg | 8.5×1020 m | Galactic center distance |
 | εsw | 0.002 | Solar wind modulation coefficient |
-| ρvac,sw | 8×10⁻²¹ J/m³ | Solar wind vacuum density (Vacuum Density Series, PAPER_647) |
-| UUA | 7.09×10⁻³⁶ J/m³ | Universal Aether vacuum energy density |
+| ρvac,sw | 8×10-21 J/m3 | Solar wind vacuum density (Vacuum Density Series, PAPER_647) |
+| UUA | 7.09×10-36 J/m3 | Universal Aether vacuum energy density |
 | tn | normalized time | t_n ∈ [0, 1] → cos(πtn) cycles from +1 to -1 |
 | cos(πtn) | 1.0 at t=0 | Buoyancy harmonic oscillation factor |
 
@@ -74,10 +88,10 @@ Extending the framework to all four gravity bands:
 
 | Band | Gravity component | Buoyancy component | Physical scale |
 |------|--------------------|-------------------|----------------|
-| 1 | Ug1 = 1.39×10²⁶ | Ub1 = -1.94×10²⁷ | Internal dipole / core |
-| 2 | Ug2 = 1.18×10⁵³ | Ub2 = -βi·Ug2·(ρvac,[UA]/ρvac,[SCm])·… | Field bubble / circumstellar |
-| 3 | Ug3 = 1.8×10⁴⁹ | Ub3 = -βi·Ug3·…·cos(πtn·k₃) | Magnetic strings / disk |
-| 4 | Ug4 = 2.50×10⁻²⁰ | Ub4 = -βi·Ug4·…·cos(πtn·k₄) | Vacuum concentration / Planck |
+| 1 | Ug1 = 1.39×1026 | Ub1 = -1.94×1027 | Internal dipole / core |
+| 2 | Ug2 = 1.18×1053 | Ub2 = -βi·Ug2·(ρvac,[UA]/ρvac,[SCm])·… | Field bubble / circumstellar |
+| 3 | Ug3 = 1.8×1049 | Ub3 = -βi·Ug3·…·cos(πtn·k₃) | Magnetic strings / disk |
+| 4 | Ug4 = 2.50×10-20 | Ub4 = -βi·Ug4·…·cos(πtn·k₄) | Vacuum concentration / Planck |
 
 **Key observation**: |Ub1| > |Ug1| for the Sun. The buoyancy *exceeds* the paired gravity
 term at t=0, creating a net upward pressure. This is modulated by the galactic rotation
@@ -129,11 +143,13 @@ a UQFF prediction for galactic-scale pulsation with period ~200 Myr.
 
 The v7 simulator applies three simultaneous gravity bands:
 
-```
-Ug1 = f(internal dipole, spin, mass)      ↕ Ub1 = -βi·Ug1·...·cos(πtn)
-Ug2 = f(field bubble, z-height, tension)  ↕ Ub2 = -βi·Ug2·...·cos(πtn·k₂)
-Ug3 = f(string disk, magnetism)           ↕ Ub3 = -βi·Ug3·...·cos(πtn·k₃)
-```
+$$
+\begin{aligned}
+  & Ug1 = f(internal dipole, spin, mass)      ↕ Ub1 = -βi·Ug1·...·cos(πtn) \\
+  & Ug2 = f(field bubble, z-height, tension)  ↕ Ub2 = -βi·Ug2·...·cos(πtn·k₂) \\
+  & Ug3 = f(string disk, magnetism)           ↕ Ub3 = -βi·Ug3·...·cos(πtn·k₃)
+\end{aligned}
+$$
 
 The simulator confirms: *star spin rate = f(Ug1/Ub1/Ug2)* — the star's observed
 spin is determined by the balance between the internal dipole gravity (Ug1), its
@@ -149,13 +165,15 @@ paired buoyancy band (Ub1), and the field bubble tension (Ug2). This predicts:
 
 ### §A.1 Sector Classification
 
-This paper maps to **BH-gravity** sector of the 9-sector UQFF Lagrangian (see `uqff_lagrangian_derivation.py`).
+This paper maps to **BH-gravity** sector of the 9-sector UQFF Lagrangian (see
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
-The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive quantum fundamentals (DPM, UA, SCm):
+The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
+quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_\mu \phi_{\rm BH})(\partial^\mu \phi_{\rm BH}) - V(\phi_{\rm BH}) + \mathcal{L}_{\rm cosmo}$$
+$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_mu \phi_{\rm BH})(\partial^\mu \phi_{\rm BH}) - V(\phi_{\rm BH}) + \mathcal{L}_{\rm cosmo}$$
 
 where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
@@ -169,7 +187,9 @@ $$\boxed{\frac{\delta S}{\delta \phi_{\rm BH}} = R_{\mu\nu} - \tfrac{1}{2}g_{\mu
 
 $$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\rm BH} = 0$$
 
-The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g forces) through vacuum density initialization to the sector-specific equation of motion. Every term in the E-L equation inherits its physical origin from the cosmogenesis master.
+The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
+forces) through vacuum density initialization to the sector-specific equation of motion. Every term
+in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 
 ---
@@ -180,9 +200,9 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.134$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m³.
+For this system, the local VDS sub-ratio is $0.134$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -194,13 +214,13 @@ Since $p_{\rm DVP} = 73$ is **resonant** (threshold at $p > 26$), the system's v
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
-The BSH saturation timescale for this sector is **10⁶ M_BH/M_⊙ yr** (quasi-normal mode ringdown):
+The BSH saturation timescale for this sector is **106 M_BH/M_M_sun yr** (quasi-normal mode ringdown):
 
-$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
+$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\rm SCm}$ which initializes the harmonic series at cosmogenesis.
 
@@ -208,11 +228,11 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.134 | ✓ Threshold-consistent |
-| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 73$ | ✓ Resonant |
-| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
-| [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
+| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.134 | PASS Threshold-consistent |
+| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 73$ | PASS Resonant |
+| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
+| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
 ---
@@ -223,7 +243,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | Observable | SM Value | UQFF Buoyancy Prediction | Alignment |
 |------------|----------|--------------------------|-----------|
 | Galactic orbital speed | ~220 km/s (flat) | Ub1 modulates flat rotation curve via anti-phase Ug2 | ✅ structural |
-| Solar mass | 1.989×10³⁰ kg | Mbh in Ub1 formula | ✅ input parameter |
+| Solar mass | 1.989×1030 kg | Mbh in Ub1 formula | ✅ input parameter |
 | Galactic rotation period | ~225 Myr | Harmonic period 1/f_Ub ≈ 2/(Ωg/2π) | ✅ scale match |
 | τ lepton coherence | (via cos(πtn) topological) | UQFF half-period maps τ decay | 🔍 candidate |
 
@@ -253,9 +273,9 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `f`neutron_s26_coupling`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `k`ozima_scm_cross_section`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `k`ozima_wstp_kernel`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -264,7 +284,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `r`amanujan_polylog_s26`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
 | `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
@@ -273,7 +293,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `m`ock_theta_q26`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -284,8 +304,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `r`amanujan_pi_uqff`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `m`ock_theta_pi_wstp_kernel`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]

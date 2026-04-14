@@ -1,54 +1,65 @@
+---
+paper_id: PAPER_065
+title: "Automated UQFF Validation Across 121 Astrophysical Systems: Statistical Summary, Pass Rate
+Analysis, and Numeric Stability Assessment"
+session: 0
+date: 2026-03-07
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [galaxy, AGN, cluster, supernova, neutron-star, magnetar, nebula, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_065: Automated UQFF Validation Across 121 Astrophysical Systems: Statistical Summary, Pass Rate Analysis, and Numeric Stability Assessment
 **Session:** 0
 
-
-**Title:** Automated UQFF Validation Across 121 Astrophysical Systems: Statistical Summary, Pass Rate Analysis, and Numeric Stability Assessment
-
-**Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57)  
-**Date:** March 7, 2026  
-**Source Data:** `run_121_system_validation.py`, `experimental_validation_system.py`, `uqff_validation_test.py`, `debug_validation.py`, `MAIN_1_CoAnQi_integration_status.json`  
-**Index Slot:** �1.9 Automated 121-System Validation,  
-
-**Title:** Automated UQFF Validation Across 121 Astrophysical Systems: Statistical Summary, Pass Rate Analysis, and Numeric Stability Assessment
+**Title:** Automated UQFF Validation Across 121 Astrophysical Systems: Statistical Summary, Pass
+Rate Analysis, and Numeric Stability Assessment
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57)  
+**Framework:** UQFF Star-Magic (κ = 0.0005/day, [SSq] = 0.57)  
 **Date:** March 7, 2026  
-**Source Data:** `run_121_system_validation.py`, `experimental_validation_system.py`, `uqff_validation_test.py`, `debug_validation.py`, `MAIN_1_CoAnQi_integration_status.json`  
-**Index Slot:** �1.9 Automated 121-System Validation, PAPER_065  
-
----
+**Source Data:** `run_121_system_validation.py`, `experimental_validation_system.py`,
+`uqff_validation_test.py`, `debug_validation.py`, `MAIN_1_CoAnQi_integration_status.json`  
+**Index Slot:** §1.9 Automated 121-System Validation,  
 
 ## Abstract
 
-The UQFF validation suite tests 121 astrophysical systems spanning neutron stars, magnetars, AGN, galaxy clusters, globular clusters, planetary nebulae, supernova remnants, radio transients, and cosmological references. Results from four automated validator scripts confirm a 99.9% solvability rate (Grok 4 analysis Sept 14�21, 2025), with experimental deviations averaging 3.1% across all tested categories. The KAPPA_MCMC posterior calibration yields ? = 0.00052/day (4% from canonical 0.0005/day). Monte Carlo stability tests (n = 100 per system) confirm all five radio transient/nebular/flare systems to be numerically STABLE. This paper presents the statistical summary, validation framework architecture, and per-category pass rates.
+The UQFF validation suite tests 121 astrophysical systems spanning neutron stars, magnetars, AGN,
+galaxy clusters, globular clusters, planetary nebulae, supernova remnants, radio transients, and
+cosmological references. Results from four automated validator scripts confirm a 99.9% solvability
+rate (Grok 4 analysis Sept 1421, 2025), with experimental deviations averaging 3.1% across all
+tested categories. The KAPPA_MCMC posterior calibration yields κ = 0.00052/day (4% from canonical
+0.0005/day). Monte Carlo stability tests (n = 100 per system) confirm all five radio
+transient/nebular/flare systems to be numerically STABLE. This paper presents the statistical
+summary, validation framework architecture, and per-category pass rates.
 
-
-
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+0.57) uniquely enabling this analysis  establishing a new connection in the UQFF framework not
+present in Standard Model treatments.
 
 ---
 
 ## 1. Validation Infrastructure
 
-### Validator Suite (�1.9)
+### Validator Suite (§1.9)
 
 | File | Scale | Systems | Method |
 |------|-------|---------|--------|
-| `run_121_system_validation.py` | Full suite | 121 | MAIN_1_CoAnQi.exe Option 2 (parallel) |
-| `experimental_validation_system.py` | Lab + astro | 17 tests | UQFF vs ground-truth measurements |
-| `uqff_validation_test.py` | 5 systems | 5 × 100 MC | Monte Carlo numeric stability |
-| `debug_validation.py` | Gravity modes | 3 modes � 3 | Compressed/Resonant/MasterBuoyant |
+| `r`un_121_system_validation`.py` | Full suite | 121 | `MAIN_1_CoAnQi`.exe Option 2 (parallel) |
+| `e`xperimental_validation_system`.py` | Lab + astro | 17 tests | UQFF vs ground-truth measurements |
+| `u`qff_validation_test`.py` | 5 systems | 5 × 100 MC | Monte Carlo numeric stability |
+| `debug_validation.py` | Gravity modes | 3 modes  3 | Compressed/Resonant/MasterBuoyant |
 
 ### System Registry
 
 | Source | Count |
 |--------|-------|
-| MAIN_1_CoAnQi.cpp (446 registered modules) | 121 distinct astrophysical systems |
+| `MAIN_1_CoAnQi`.cpp (446 registered modules) | 121 distinct astrophysical systems |
 | index.js (106 JavaScript UQFF systems) | 106 systems |
-| observational_systems_config.h | 35 explicit parameter sets |
-| GrokThread_UQFF_0904_Validation.py | 52 benchmark systems |
+| `observational_systems_config`.h | 35 explicit parameter sets |
+| `GrokThread_UQFF_0904_Validation`.py | 52 benchmark systems |
 | **Total unique systems (deduplicated)** | **121+** |
 
 ---
@@ -98,15 +109,15 @@ The UQFF validation suite tests 121 astrophysical systems spanning neutron stars
 | RDR-004 | Net Energy (%) | 15.0 | 12.3 | 18.0% | ?? |
 | QSC-001 | THz frequency | 1.20 THz | 1.18 THz | 1.67% | ? |
 | QSC-002 | Amplitude dA | 5.2 V | 5.205 V | 0.10% | ? |
-| QSC-003 | Signal count | 847 | – | � | ? |
+| QSC-003 | Signal count | 847 | – |  | ? |
 | QSC-004 | 2nd harmonic | 2.40 THz | 2.36 THz | 1.67% | ? |
 | GC-M13-001 | M13 v_disp | 12.3 km/s | 12.1 km/s | 1.63% | ? |
 | GC-M13-002 | M13 f_Z | 0.89 | 0.87 | 2.25% | ? |
 | GC-OMEGA-001 | ? Cen v_disp | 18.7 km/s | 18.2 km/s | 2.75% | ? |
 | GC-OMEGA-002 | ? Cen M_BH | 4.2×104 M? | 4.0×104 M? | 5.00% | ? |
-| 26D-L13-001 | Layer 13 [SCm] | 7.09e-37 J/m� | 6.95e-37 J/m� | 2.01% | ? |
+| 26D-L13-001 | Layer 13 [SCm] | 7.09e-37 J/m | 6.95e-37 J/m | 2.01% | ? |
 | 26D-L18-001 | Higgs mass | 125.09 GeV | 125.35 GeV | 0.21% | ? |
-| 26D-L26-001 | Layer 26 ? | 5.4e-10 J/m� | 5.96e-10 J/m� | 9.40% | ? |
+| 26D-L26-001 | Layer 26 ? | 5.4e-10 J/m | 5.96e-10 J/m | 9.40% | ? |
 
 **Overall mean deviation (13 pass tests): 2.87%**
 
@@ -116,41 +127,43 @@ The UQFF validation suite tests 121 astrophysical systems spanning neutron stars
 
 ### Test Protocol
 
-Each system undergoes 100 Monte Carlo trials with ×10% Gaussian noise on M, r, L_X, B0. The stability index is defined as:
+Each system undergoes 100 Monte Carlo trials with ×10% Gaussian noise on M, r, L_X, B0. The
+stability index is defined as:
 
 $$\text{Stability} = 1 - \frac{\sigma_{F}}{|\mu_{F}|}$$
 
-| System | Mean F_U_Bi_i (N) | Std Dev | Stability | Valid/100 | Status |
+| System | Mean `F_U_Bi_i` (N) | Std Dev | Stability | Valid/100 | Status |
 |--------|------------------|---------|-----------|-----------|--------|
-| ASKAP J1832-0911 | -1.47×10�?� | ~4.4×10�?� | **~0.97** | 100 | ? STABLE |
-| Helix Nebula | -2.30×10�?4 | ~6.9×10�?� | **~0.97** | 100 | ? STABLE |
-| R Aquarii | -8.32×10��� | ~2.5×10��� | **~0.97** | 100 | ? STABLE |
-| PN Archive | -8.32×10��� | ~2.5×10��� | **~0.97** | 100 | ? STABLE |
-| Super Flares | -2.73×10�?� | ~8.2×10�?� | **~0.97** | 100 | ? STABLE |
+| ASKAP J1832-0911 | -1.47×10? | ~4.4×10? | **~0.97** | 100 | ? STABLE |
+| Helix Nebula | -2.30×10?4 | ~6.9×10? | **~0.97** | 100 | ? STABLE |
+| R Aquarii | -8.32×10 | ~2.5×10 | **~0.97** | 100 | ? STABLE |
+| PN Archive | -8.32×10 | ~2.5×10 | **~0.97** | 100 | ? STABLE |
+| Super Flares | -2.73×10? | ~8.2×10? | **~0.97** | 100 | ? STABLE |
 
 **All 5 systems: STABLE (stability > 0.97)**
 
-The high stability reflects the dominance of the LENR resonance term in F_U_Bi_i, which depends on ?_LENR/?_0 � a ratio of fixed frequencies, unaffected by M, r, L_X, B0 noise.
+The high stability reflects the dominance of the LENR resonance term in F_U_Bi_i, which depends on
+?_LENR/?_0  a ratio of fixed frequencies, unaffected by M, r, L_X, B0 noise.
 
 ---
 
 ## 5. Gravity Mode Tests (debug_validation.py)
 
-### UQFF_Compressed: g = (M/r) � 10?��
+### UQFF_Compressed: g = (M/r)  10?
 
 | Test | System | g_UQFF | Expected Range | Status |
 |------|--------|--------|--------------|--------|
-| Solar | M_sun at 1 AU | 5.93×10?� m/s� | 4×10?� to 8×10?� | ? |
-| Galactic | 10 kpc | 1.39×10?? m/s� | 10?�� to 10?? | ? |
-| Time-varying | M_sun at AU, t=10�� yr | dg > 10?�� | – | ? |
+| Solar | M_sun at 1 AU | 5.93×10? m/s | 4×10? to 8×10? | ? |
+| Galactic | 10 kpc | 1.39×10?? m/s | 10? to 10?? | ? |
+| Time-varying | M_sun at AU, t=10 yr | dg > 10? | – | ? |
 
-### UQFF_MasterBuoyant: F = M � (Ug_i - Ub_i + Ui_i)
+### UQFF_MasterBuoyant: F = M  (Ug_i - Ub_i + Ui_i)
 
 | Test | System | F (N) | Status |
 |------|--------|--------|--------|
-| Galactic | 10�� M_sun galaxy | < 0 (binding) | ? |
-| Volume breathing | t=10? yr change | dF/F > 10⁻6 | ? |
-| Magnitude | |F| | 10�� < |F| < 105� ? |
+| Galactic | 10 M_sun galaxy | < 0 (binding) | ? |
+| Volume breathing | t=10? yr change | dF/F > 10-6 | ? |
+| Magnitude | |F| | 10 < |F| < 105 ? |
 
 ---
 
@@ -167,7 +180,8 @@ The high stability reflects the dominance of the LENR resonance term in F_U_Bi_i
 | Failed tests | **0** (1 pending) |
 | UQFF modes validated | All 4 (Compressed, Resonant, Buoyant, Superconductive) |
 
-*Source: run_121_system_validation.py, experimental_validation_system.py, uqff_validation_test.py, debug_validation.py | ? = 0.0005/day | [SSq] = 0.57*
+*Source: run_121_system_validation.py, experimental_validation_system.py, uqff_validation_test.py,
+debug_validation.py | κ = 0.0005/day | [SSq] = 0.57*
 
 ---
 
@@ -181,15 +195,15 @@ The high stability reflects the dominance of the LENR resonance term in F_U_Bi_i
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
-| κ | 5.0 × 10⁻⁴ day⁻¹ | UQFF exponential decay rate |
+| κ | 5.0 × 10-4 day-1 | UQFF exponential decay rate |
 | [SSq] | 0.57 | Universal Quantized Factor |
 | β_i | 0.60–0.61 | Buoyancy coupling coefficient |
 | k₁ | 1.5 | Ug1 DPM-dipole coupling |
 | k₂ | 1.2 | Ug2 outer-bubble charge coupling |
 | k₃ | 1.8 | Ug3 string-rotation coupling |
 | k₄ | 2.0 | Ug4 vacuum-concentration coupling |
-| η | 10⁻²² | Inertia tensor scale |
-| E_react(0) | 10⁴⁶ J | Reference reactive energy |
+| η | 10-22 | Inertia tensor scale |
+| E_react(0) | 1046 J | Reference reactive energy |
 
 ### A.2 F_U Master Equation (Complete — 4 terms)
 
@@ -197,16 +211,16 @@ $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\
 
 | Term | Description | Implementation |
 |------|-------------|----------------|
-| Ug1 | DPM magnetic dipole | `compute_Ug1_SOURCE4` / `compute_Ug1()` |
-| Ug2 | Outer-field bubble (charge-reactivity) | `compute_Ug2_SOURCE4` / `compute_Ug2()` |
-| Ug3 | Magnetic string rotation | `compute_Ug3_SOURCE4` / `compute_Ug3()` |
-| Ug4 | Vacuum concentration (star-BH) | `compute_Ug4_SOURCE4` / `compute_Ug4()` |
-| Ubi | Buoyancy force | `compute_Ubi_SOURCE4` / `compute_Ubi()` |
-| Um | Universal Magnetism (Heaviside-amplified) | `compute_Um_SOURCE4` / `compute_Um()` |
-| −Σλᵢ·Uᵢ·E_react | 4th dissipation term (PAPER_420) | `compute_FU_SOURCE4` / full pipeline |
+| Ug1 | DPM magnetic dipole | `c`ompute_Ug1_SOURCE`4` / `compute_Ug1()` |
+| Ug2 | Outer-field bubble (charge-reactivity) | `c`ompute_Ug2_SOURCE`4` / `compute_Ug2()` |
+| Ug3 | Magnetic string rotation | `c`ompute_Ug3_SOURCE`4` / `compute_Ug3()` |
+| Ug4 | Vacuum concentration (star-BH) | `c`ompute_Ug4_SOURCE`4` / `compute_Ug4()` |
+| Ubi | Buoyancy force | `c`ompute_Ubi_SOURCE`4` / `compute_Ubi()` |
+| Um | Universal Magnetism (Heaviside-amplified) | `c`ompute_Um_SOURCE`4` / `compute_Um()` |
+| −Σλᵢ·Uᵢ·E_react | 4th dissipation term (PAPER_420) | `c`ompute_FU_SOURCE`4` / full pipeline |
 
 **4th dissipation term parameters (PAPER_420):**  
-λ₁=10⁻¹⁰, λ₂=10⁻¹², λ₃=10⁻¹¹, λ₄=10⁻¹³ (free parameters, not yet empirically calibrated)
+λ₁=10-10, λ₂=10-12, λ₃=10-11, λ₄=10-13 (free parameters, not yet empirically calibrated)
 
 ### A.3 Um Heaviside Phase-Transition Amplifier (PAPER_421)
 
@@ -214,7 +228,7 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
-| ρ_c | 10¹⁵ kg/m³ | SCm critical superconducting density |
+| ρ_c | 1015 kg/m3 | SCm critical superconducting density |
 | A_q | 0.1 | Quasi-periodic beating amplitude (10%) |
 | Δω | 2π/(434·365.25) rad/day | 434-year Gleisberg supercycle |
 
@@ -225,9 +239,10 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 | **Compressed** | Ug_sum + Newtonian base | Isolated stellar/BH systems |
 | **Resonant** | 5 resonance frequencies (aDPM, aTHz, …) | Multi-scale field interactions |
 | **Buoyant** | β_i × Ubi | Expanding nebulae, stellar winds |
-| **Superconductive** | Um × (1+10¹³·f_H) | Magnetars, SCm critical-density regime |
+| **Superconductive** | Um × (1+1013·f_H) | Magnetars, SCm critical-density regime |
 
-*Implementation status: all 4 modes operational in `MAIN_1_CoAnQi.cpp`, `CondensedPhysics.py`, and `CondensedPhysics2.py`.*
+*Implementation status: all 4 modes operational in `MAIN_1_CoAnQi.cpp`, `CondensedPhysics.py`, and
+`CondensedPhysics2.py`.*
 
 ---
 
@@ -235,13 +250,15 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 
 ### §A.1 Sector Classification
 
-This paper maps to **magnetar-field** sector of the 9-sector UQFF Lagrangian (see `uqff_lagrangian_derivation.py`).
+This paper maps to **magnetar-field** sector of the 9-sector UQFF Lagrangian (see
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
-The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive quantum fundamentals (DPM, UA, SCm):
+The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
+quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_\mu \phi_B)(\partial^\mu \phi_B) - V(\phi_B) + \mathcal{L}_{\rm cosmo}$$
+$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_mu \phi_B)(\partial^\mu \phi_B) - V(\phi_B) + \mathcal{L}_{\rm cosmo}$$
 
 where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
@@ -255,8 +272,9 @@ $$\boxed{\frac{\delta S}{\delta \phi_B} = \nabla \times (\rho_{\rm SCm} \mathbf{
 
 $$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_B = 0$$
 
-The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g forces) through vacuum density initialization to the sector-specific equation of motion. Every term in the E-L equation inherits its physical origin from the cosmogenesis master.
-
+The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
+forces) through vacuum density initialization to the sector-specific equation of motion. Every term
+in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 ---
 
@@ -266,9 +284,9 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.197$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m³.
+For this system, the local VDS sub-ratio is $0.197$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -280,13 +298,13 @@ Since $p_{\rm DVP} = 13$ is **sub-threshold** (threshold at $p > 26$), the syste
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
-The BSH saturation timescale for this sector is **10³ yr** (field decay quiescence):
+The BSH saturation timescale for this sector is **103 yr** (field decay quiescence):
 
-$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
+$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\rm SCm}$ which initializes the harmonic series at cosmogenesis.
 
@@ -294,29 +312,29 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.197 | ✓ Threshold-consistent |
-| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 13$ | ✓ Sub-threshold |
-| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
-| [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
-
+| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.197 | PASS Threshold-consistent |
+| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 13$ | PASS Sub-threshold |
+| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
+| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 ---
-
 
 ## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | ✓ Consistent |
-| Cosmological constant Λ | 1.1×10⁻⁵² m⁻² (UQFF vacuum term) | 1.114×10⁻⁵² m⁻² | Planck 2018 | ✓ Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10⁻³⁵/yr | Super-K 2024 | ✓ Consistent |
-| UQFF buoyancy signature | F_U_Bi_i unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
+| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
-**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes significant, offering a falsifiable prediction beyond the Standard Model.
+**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
+produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
-
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
+bridge.*
 
 ---
 
@@ -330,9 +348,9 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `f`neutron_s26_coupling`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `k`ozima_scm_cross_section`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `k`ozima_wstp_kernel`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -341,7 +359,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `r`amanujan_polylog_s26`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
 | `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
@@ -350,7 +368,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `m`ock_theta_q26`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -361,8 +379,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `r`amanujan_pi_uqff`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `m`ock_theta_pi_wstp_kernel`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]

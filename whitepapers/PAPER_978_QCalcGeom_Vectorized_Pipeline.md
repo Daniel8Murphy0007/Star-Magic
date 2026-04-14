@@ -1,6 +1,18 @@
+---
+paper_id: PAPER_978
+title: "QCalcGeom Fully Vectorized Pipeline"
+session: 216
+date: 2026-04-12
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [SCm, jet, buoyancy, 26D, phonon, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_978: QCalcGeom Fully Vectorized Pipeline
 
-**Author:** Daniel T. Murphy -- Star Magic / UQFF Framework
+**Author:** Daniel T. Murphy — Star Magic / UQFF Framework
 **Date:** 2026-04-12
 **Session:** 216
 **Source:** production_scaling_v12.py (kernel pipeline)
@@ -24,10 +36,10 @@ $$g_{26} = \sum_{i=1}^{26} \frac{GM}{r^2} \cdot \frac{[SSq] \cdot i}{26}$$
 $$F_{UBi} = \sum_{i=1}^{26} \frac{GM}{r^2} \cdot e^{-[SSq] \cdot i/26} \cdot \beta_i$$
 
 ### 1.3 Phonon Resonance
-$$\Phi = \exp\!\left(-\frac{(\omega - \omega_\text{SCm})^2}{2\Gamma^2}\right) \cdot S_{26}$$
+$$\Phi = \exp!\left(-\frac{(\omega - \omega_text{SCm})^2}{2\Gamma^2}\right) \cdot S_{26}$$
 
 ### 1.4 Jet Modulation
-$$M_\text{jet}(\Gamma) = 1 + A_\text{jet} \cdot \exp\!\left(-\frac{(\Gamma - \Gamma_0)^2}{2\sigma_\Gamma^2}\right)$$
+$$M_\text{jet}(\Gamma) = 1 + A_\text{jet} \cdot \exp!\left(-\frac{(\Gamma - \Gamma_0)^2}{2\sigma_Gamma^2}\right)$$
 
 ## 2. Vectorized Total
 
@@ -39,7 +51,7 @@ Single-pass evaluation enables REST API response under 1 ms.
 
 ## References
 
-1. Murphy, D.T. -- Star Magic UQFF Framework (2024-2026)
+1. Murphy, D.T. — Star Magic UQFF Framework (2024-2026)
 2. PAPER_977 — Production Scaling v12 (pipeline benchmark)
 3. PAPER_959 — 26D Ramanujan Summation
 4. PAPER_966 — Unified Triadic Solver
@@ -61,7 +73,7 @@ Single-pass evaluation enables REST API response under 1 ms.
 
 | Constant | Symbol | Value | Validation Domain |
 |----------|--------|-------|-------------------|
-| $\omega_\text{SCm}$ | — | $2\pi \times 1.25$ THz | Phonon frequency |
+| $\omega_text{SCm}$ | — | $2\pi \times 1.25$ THz | Phonon frequency |
 | $\Gamma_0$ | — | $2\pi \times 0.10$ THz | Linewidth |
 | $A_\text{jet}$ | — | 1.5 | Jet amplitude |
 | $[SSq]$ | — | 0.57 | String coupling |

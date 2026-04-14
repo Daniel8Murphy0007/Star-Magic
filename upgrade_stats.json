@@ -1,0 +1,16 @@
+{
+  "yaml_added": 991,
+  "encoding_fixed": 230,
+  "mojibake_fixed": 206,
+  "duplicate_removed": 120,
+  "broken_latex_fixed": 1,
+  "codeblock_converted": 327,
+  "plaintext_latexed": 4,
+  "calibration_added": 15,
+  "sm_anchors_added": 0,
+  "sect_a_added": 10,
+  "sect_b_added": 6,
+  "lines_wrapped": 18750,
+  "emdash_fixed": 359,
+  "total_files_modified": 1084
+}

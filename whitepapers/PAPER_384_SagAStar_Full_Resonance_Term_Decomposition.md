@@ -1,3 +1,15 @@
+---
+paper_id: PAPER_384
+title: "Sagittarius A* Full Resonance + Compressed Term Decomposition"
+session: 104
+date: 2025-01-01
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [AGN, DPM, MUGE, SMBH, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_384 — Sagittarius A* Full Resonance + Compressed Term Decomposition
 **Author:** Daniel T. Murphy
 **Date:** 2025
@@ -12,7 +24,9 @@
 
 ## Abstract
 
-This paper presents a UQFF analysis of Sagittarius A* Full Resonance + Compressed Term Decomposition, deriving compressed field equations and observational predictions within the Star-Magic/UQFF framework.
+This paper presents a UQFF analysis of Sagittarius A* Full Resonance + Compressed Term
+Decomposition, deriving compressed field equations and observational predictions within the
+Star-Magic/UQFF framework.
 
 ## 1. Overview
 
@@ -32,16 +46,16 @@ demonstrating a consistent **fluid-dominance law** across both compact object an
 | Parameter | Symbol | Value | Units |
 |-----------|--------|-------|-------|
 | Mass | M | 8.155e36 | kg |
-| Radius | r | 1×10¹² | m |
-| Magnetic field | B | 1×10⁻⁵ | T |
-| Critical B-field | B_crit | 1×10⁻⁴ | T |
+| Radius | r | 1×1012 | m |
+| Magnetic field | B | 1×10-5 | T |
+| Critical B-field | B_crit | 1×10-4 | T |
 | Age | t | 3.786e14 | s |
 | Redshift | z | 0.0009 | — |
-| V_sys | 3.552e45 | m³ |
-| v_exp | 5×10⁶ | m/s |
+| V_sys | 3.552e45 | m3 |
+| v_exp | 5×106 | m/s |
 | f_fluid | 3.465e-8 | Hz |
-| Current I | 1×10²³ | A |
-| Area A | 2.813e30 | m² |
+| Current I | 1×1023 | A |
+| Area A | 2.813e30 | m2 |
 
 ---
 
@@ -67,25 +81,25 @@ $$\boxed{a_{THz}^{\text{SgrA}*} = 1.001\times10^{-2} \ \text{m/s}^2}$$
 
 $$a_{fluid\_freq} = f_{fluid} \cdot \frac{E_{vac,neb} \cdot V_{sys}}{E_{vac,ISM} \cdot c}$$
 
-With Sag A*: $f_{fluid} = 3.465\times10^{-8}$ Hz, $V_{sys} = 3.552\times10^{45}$ m³:
+With Sag A*: $f_{fluid} = 3.465\times10^{-8}$ Hz, $V_{sys} = 3.552\times10^{45}$ m3:
 
 $$\boxed{a_{fluid\_freq}^{\text{SgrA}*} = 4.105\times10^{29} \ \text{m/s}^2 \quad \textbf{(DOMINANT)}}$$
 
 ### Remaining resonance terms for Sag A*
 
-| Term | Value (m/s²) | Note |
+| Term | Value (m/s2) | Note |
 |------|:------------:|------|
-| avac_diff | ~10⁻¹² | small — low Δ_Evac |
-| asuper_freq | ~10⁻⁵ | B-field much weaker than magnetar |
-| aaether_res | ~10⁻²⁸ | sub-dominant |
+| avac_diff | ~10-12 | small — low Δ_Evac |
+| asuper_freq | ~10-5 | B-field much weaker than magnetar |
+| aaether_res | ~10-28 | sub-dominant |
 | Ug4i | ≈ 0 | ancient system (t=3.786e14 s) |
-| aquantum_freq | ~10⁻⁶⁰ | Hubble quantum floor |
-| aAether_freq | ~10⁻⁷⁴ | minimum |
+| aquantum_freq | ~10-60 | Hubble quantum floor |
+| aAether_freq | ~10-74 | minimum |
 | Osc_term | 0 | steady state |
-| aexp_freq | ~10⁻⁴⁷ | cosmological |
+| aexp_freq | ~10-47 | cosmological |
 | fTRZ | 0.1 | parametric coupling constant |
 
-**Resonance MUGE total:** ≈ $a_{fluid\_freq} = 4.105\times10^{29}$ m/s² (fluid-dominated)
+**Resonance MUGE total:** ≈ $a_{fluid\_freq} = 4.105\times10^{29}$ m/s2 (fluid-dominated)
 
 ---
 
@@ -97,17 +111,17 @@ $$g_\text{base} = \frac{GM}{r^2} = \frac{6.674\times10^{-11} \times 8.155\times1
 
 $$g_\text{base} = 5.443\times10^{2} \ \text{m/s}^2$$
 
-Superconducting adjustment (B/B_crit = 10⁻⁵/10⁻⁴ = 0.1):
+Superconducting adjustment (B/B_crit = 10-5/10-4 = 0.1):
 $$g_\text{SC} = 5.443\times10^{2} \times 0.9 = 4.899\times10^{2} \ \text{m/s}^2$$
 
 ### Term 3: Fluid coupling
-$$g_\text{fluid}^{\text{SgrA}*} = \rho_\text{fluid} \cdot V_{sys} \cdot g_\text{local}$$
+$$g_\text{fluid}^{\text{SgrA}*} = \rho_text{fluid} \cdot V_{sys} \cdot g_\text{local}$$
 
 $$\boxed{g_\text{fluid}^{\text{SgrA}*} = 3.552\times10^{20} \ \text{m/s}^2}$$
 
 ### Term 4: Dark Matter Perturbation (DOMINANT in compressed model)
 
-$$g_\text{pert} = (M + M_{DM})\left(\frac{\delta\rho}{\rho} + \frac{3GM}{r^3}\right)$$
+$$g_\text{pert} = (M + M_{DM})\left(\frac{\deltarho}{\rho} + \frac{3GM}{r^3}\right)$$
 
 With $3GM/r^3 = 3\times6.674\times10^{-11}\times8.155\times10^{36}/(10^{12})^3 = 1.63\times10^{-15}$:
 
@@ -122,23 +136,23 @@ $$\boxed{g_\text{pert}^{\text{SgrA}*} = 2.966\times10^{34} \ \text{m/s}^2}$$
 ## 5. Complete Comparison Table: Sag A* Both Models
 
 ### Resonance MUGE
-| Term | Value (m/s²) | Orders above aDPM |
+| Term | Value (m/s2) | Orders above aDPM |
 |------|:------------:|:-----------------:|
 | **afluid_freq** | **4.105e29** | +39 |
 | aTHz | 1.001e-2 | +32 |
 | aDPM | 1.001e-10 | — |
 | All others | negligible | — |
 
-**Total resonance: ≈ 4.105e29 m/s²**
+**Total resonance: ≈ 4.105e29 m/s2**
 
 ### Compressed MUGE
-| Term | Value (m/s²) | Notes |
+| Term | Value (m/s2) | Notes |
 |------|:------------:|-------|
 | **Perturbation** | **2.966e34** | DOMINANT |
 | Fluid | 3.552e20 | sub-dominant by 14 orders |
 | Newtonian SC | 4.899e2 | base |
 
-**Total compressed: ≈ 2.966e34 m/s²**
+**Total compressed: ≈ 2.966e34 m/s2**
 
 ---
 
@@ -149,8 +163,8 @@ $$\boxed{g_\text{pert}^{\text{SgrA}*} = 2.966\times10^{34} \ \text{m/s}^2}$$
 | Resonance dominant term | afluid=1.773e-9 | afluid=4.105e29 |
 | Resonance dominant mechanism | vacuum×volume coupling | vacuum×volume coupling |
 | Compressed dominant term | perturbation=1.782e39 | perturbation=2.966e34 |
-| Compressed/Resonance ratio | ~10⁴⁸ | ~10⁵ |
-| Resonance total (m/s²) | 1.773e-9 | 4.105e29 |
+| Compressed/Resonance ratio | ~1048 | ~105 |
+| Resonance total (m/s2) | 1.773e-9 | 4.105e29 |
 | Fluid term ratio Sag A*/SGR1745 | — | ×2.3e38 |
 
 **Fluid Universality Principle:** The dominant resonance term in both a compact magnetar ($r=10^4$ m) and a supermassive black hole ($r=10^{12}$ m) is $a_{fluid\_freq}$, but the values differ by **38 orders of magnitude**, scaling with $f_{fluid} \cdot V_{sys}$.
@@ -163,12 +177,12 @@ The fluid frequency coupling scales as:
 $$a_{fluid\_freq} \propto f_{fluid} \cdot V_{sys}$$
 
 For Sag A*:
-- $V_{sys} = 3.552\times10^{45}$ m³ (sphere of radius 1 pc around SMBH)
+- $V_{sys} = 3.552\times10^{45}$ m3 (sphere of radius 1 pc around SMBH)
 - $f_{fluid} = 3.465\times10^{-8}$ Hz (frequency of fluid oscillation in SMBH accretion disk)
 
-The product $f_{fluid} \cdot V_{sys} = 3.465\times10^{-8} \times 3.552\times10^{45} = 1.231\times10^{38}$ m³/s
+The product $f_{fluid} \cdot V_{sys} = 3.465\times10^{-8} \times 3.552\times10^{45} = 1.231\times10^{38}$ m3/s
 
-Versus SGR1745: $f_{fluid} \cdot V_{sys} = 1.269\times10^{-14} \times 4.189\times10^{12} = 5.315\times10^{-2}$ m³/s
+Versus SGR1745: $f_{fluid} \cdot V_{sys} = 1.269\times10^{-14} \times 4.189\times10^{12} = 5.315\times10^{-2}$ m3/s
 
 **Ratio: $1.231\times10^{38} / 5.315\times10^{-2} \approx 2.3\times10^{39}$** — explaining the 39-order dominance difference between the two fluid terms.
 
@@ -188,7 +202,8 @@ term the largest of any system in the canonical 7-system registry.
 
 ---
 
-*Source: grok_share_11254865.txt lines ~2960–2990 | Session 104 | First per-term decomposition for Sagittarius A* under both MUGE models*
+*Source: `grok_share_11254865`.txt lines ~2960–2990 | Session 104 | First per-term decomposition for
+Sagittarius A* under both MUGE models*
 
 ---
 
@@ -196,13 +211,15 @@ term the largest of any system in the canonical 7-system registry.
 
 ### §A.1 Sector Classification
 
-This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see `uqff_lagrangian_derivation.py`).
+This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
-The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive quantum fundamentals (DPM, UA, SCm):
+The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
+quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_\mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
+$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
 
 where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
@@ -216,7 +233,9 @@ $$\boxed{\frac{\delta S}{\delta \phi_{\rm NS}} = \nabla^2 \phi_{\rm NS} - (4\pi 
 
 $$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\rm NS} = 0$$
 
-The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g forces) through vacuum density initialization to the sector-specific equation of motion. Every term in the E-L equation inherits its physical origin from the cosmogenesis master.
+The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
+forces) through vacuum density initialization to the sector-specific equation of motion. Every term
+in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 
 ---
@@ -227,9 +246,9 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.176$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m³.
+For this system, the local VDS sub-ratio is $0.176$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -241,13 +260,13 @@ Since $p_{\rm DVP} = 97$ is **resonant** (threshold at $p > 26$), the system's v
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
-The BSH saturation timescale for this sector is **10⁴ yr** (spin-down equilibrium):
+The BSH saturation timescale for this sector is **104 yr** (spin-down equilibrium):
 
-$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
+$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\rm SCm}$ which initializes the harmonic series at cosmogenesis.
 
@@ -255,11 +274,11 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.176 | ✓ Threshold-consistent |
-| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 97$ | ✓ Resonant |
-| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
-| [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
+| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.176 | PASS Threshold-consistent |
+| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 97$ | PASS Resonant |
+| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
+| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
 ---
@@ -269,14 +288,17 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | ✓ Consistent |
-| Cosmological constant Λ | 1.1×10⁻⁵² m⁻² (UQFF vacuum term) | 1.114×10⁻⁵² m⁻² | Planck 2018 | ✓ Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10⁻³⁵/yr | Super-K 2024 | ✓ Consistent |
-| UQFF buoyancy signature | F_U_Bi_i unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
+| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
-**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes significant, offering a falsifiable prediction beyond the Standard Model.
+**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
+produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
+bridge.*
 
 
 ---
@@ -291,9 +313,9 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `f`neutron_s26_coupling`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `k`ozima_scm_cross_section`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `k`ozima_wstp_kernel`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -302,7 +324,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `r`amanujan_polylog_s26`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
 | `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
@@ -311,7 +333,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `m`ock_theta_q26`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -322,8 +344,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `r`amanujan_pi_uqff`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `m`ock_theta_pi_wstp_kernel`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]

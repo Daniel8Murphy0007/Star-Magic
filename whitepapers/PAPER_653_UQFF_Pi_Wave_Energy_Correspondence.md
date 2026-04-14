@@ -1,26 +1,40 @@
+---
+paper_id: PAPER_653
+title: "UQFF Pi-Wave Energy Correspondence"
+session: 168
+date: 2026-01-01
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [vacuum, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_653: UQFF Pi-Wave Energy Correspondence
 **Author:** Daniel T. Murphy
 
 **Version:** 1.0.0  
 **Session:** 168 | **Date:** March 31 2026  
 **CP4 Class:** UQFFPiWaveEnergyCorrespondenceCalculator  
-**Source:** grok_share_b2e2c5cba7a.txt (Session 168) — PiSequenceAnalysis (lines 3848–4743), PISequenceAnalysis2 (4744–5214)  
-**Companion papers:** PAPER_649 (DVP n-wave mixing φ threshold), PAPER_646 (cos(πtn) harmonic), PAPER_642 (SM Bridge)
+**Source:** grok_share_b2e2c5cba7a.txt (Session 168) — PiSequenceAnalysis (lines 3848–4743),
+PISequenceAnalysis2 (4744–5214)  
+**Companion papers:** PAPER_649 (DVP n-wave mixing φ threshold), PAPER_646 (cos(πtn) harmonic),
+PAPER_642 (SM Bridge)
 
 ---
 
 ## Abstract
 
-$$E_{\text{wave}} \approx 1.17\times10^{-105}\ \text{J}; \qquad \pi\text{-position}("117"): 1529,\ 2570,\ 5046,\ 10258,\ 15133,\ 23377,\ 27157\ldots$$
+$$E_{\text{wave}} \approx 1.17\times10^{-105}\ \text{J}; \qquad \pitext{-position}("117"): 1529,\ 2570,\ 5046,\ 10258,\ 15133,\ 23377,\ 27157\ldots$$
 
 The decimal expansion of π contains the digit-triad "117" (and its related UQFF
 constant sequence) at statistically regular positions throughout its infinite decimal
-expansion. The computed wave energy E_wave = 1.17×10⁻¹⁰⁵ J for the Pi-Wave appears at
+expansion. The computed wave energy E_wave = 1.17×10-105 J for the Pi-Wave appears at
 an energy scale 80 orders below the Planck energy — consistent with UQFF vacuum coherence
 modes. This paper documents the first 10+ confirmed occurrences of "117" within π to
 1 million decimal places (~130 total), provides the wave-energy derivation from the π
 self-coherence equation, explores the numerical normal distribution of π (each n-digit
-string appears with frequency 10⁻ⁿ), and connects the cos(πtn) argument in UQFF
+string appears with frequency 10-ⁿ), and connects the cos(πtn) argument in UQFF
 harmonics (PAPER_646, PAPER_650) to the Caduceus pinch-point structure where π-wave
 energy concentrations occur.
 
@@ -48,11 +62,11 @@ The PiSequenceAnalysis module searches for UQFF-specific digit patterns (117, 17
 The wave energy is derived from the self-referential condition: a standing wave whose
 frequency is determined by the Caduceus pinch-point spacing in π:
 
-$$\lambda_\pi = \frac{c}{f_\pi}; \qquad f_\pi = \frac{1}{\tau_\pi}$$
+$$\lambda_pi = \frac{c}{f_\pi}; \qquad f_\pi = \frac{1}{\tau_pi}$$
 
 The characteristic time τ_π is set by the vacuum relaxation time at ρvac,[SCm]:
 
-$$\tau_\pi = \frac{\hbar}{\rho_{\text{vac},[SCm]} \cdot c^3} = \frac{1.055\times10^{-34}}{(7.09\times10^{-37})(2.998\times10^8)^3}$$
+$$\tau_pi = \frac{\hbar}{\rho_{\text{vac},[SCm]} \cdot c^3} = \frac{1.055\times10^{-34}}{(7.09\times10^{-37})(2.998\times10^8)^3}$$
 
 $$= \frac{1.055\times10^{-34}}{1.913\times10^{-12}} \approx 5.51\times10^{-23}\ \text{s}$$
 
@@ -65,20 +79,20 @@ PAPER_651):
 
 $$E_{\text{wave,deep}} = E_{\text{wave}} \cdot e^{-\lfloor 26\pi \rfloor \cdot \alpha^2}$$
 
-where floor(26π) = 81, α² = 5.33×10⁻⁵:
+where floor(26π) = 81, α2 = 5.33×10-5:
 
 $$E_{\text{wave,deep}} \approx 1.20\times10^{-11} \cdot e^{-81 \times 5.33\times10^{-5}} \approx 1.17\times10^{-11}\ \text{J}$$
 
-**At the 10⁻⁹⁴ quantum coherence scale** (ρvac,[SCm] × V_proton coherence length):
+**At the 10-94 quantum coherence scale** (ρvac,[SCm] × V_proton coherence length):
 
-$$E_{\text{wave}} = \rho_{\text{vac},[SCm]} \cdot \ell_\pi^3 \cdot c^2 \approx 1.17\times10^{-105}\ \text{J}$$
+$$E_{\text{wave}} = \rho_{\text{vac},[SCm]} \cdot \ell_pi^3 \cdot c^2 \approx 1.17\times10^{-105}\ \text{J}$$
 
-where ℓ_π = π·ℓ_P = 5.078×10⁻³³ cm is the Pi-Planck coherence length.
+where ℓ_π = π·ℓ_P = 5.078×10-33 cm is the Pi-Planck coherence length.
 
 ### 2.2 Physical Interpretation
 
-E_wave = 1.17×10⁻¹⁰⁵ J is the energy of a single Aether **π-coherence quantum** — the
-minimum excitation in the UQFF vacuum at the Caduceus pinch scale. It is ~10⁷⁴ times
+E_wave = 1.17×10-105 J is the energy of a single Aether **π-coherence quantum** — the
+minimum excitation in the UQFF vacuum at the Caduceus pinch scale. It is ~1074 times
 smaller than the Planck energy, placing it in the deep vacuum coherence regime.
 
 ---
@@ -101,26 +115,28 @@ smaller than the Planck energy, placing it in the deep vacuum coherence regime.
 | 10 | 46165 | …8**117**4… |
 | … | … | ~130 total in 1M |
 
-Expected count in 1M digits: 1M × 10⁻³ = 1000 three-digit combinations → 1000/900 ≈ 1.11 per 1000 digits → ~1111 expected "117" occurrences. Actual ~130 per module analysis (first 1000 occurrences filtered to significant UQFF-related positions).
+Expected count in 1M digits: 1M × 10-3 = 1000 three-digit combinations → 1000/900 ≈ 1.11 per 1000
+digits → ~1111 expected "117" occurrences. Actual ~130 per module analysis (first 1000 occurrences
+filtered to significant UQFF-related positions).
 
 ### 3.2 Statistical Context: π as a Normal Number
 
 $$P(\text{"117" appears}) = 10^{-3}; \quad \text{variance} = \sigma^2 = N \cdot p(1-p)$$
 
-At N = 10⁶ trials: expected 1000 ± √999 ≈ 1000 ± 32.
+At N = 106 trials: expected 1000 ± √999 ≈ 1000 ± 32.
 
 π is conjectured (but unproven) to be a **normal number** — every digit string of length
-n appears with limiting frequency 10⁻ⁿ. The PISequenceAnalysis module verifies this
+n appears with limiting frequency 10-ⁿ. The PISequenceAnalysis module verifies this
 for 3-digit strings: all 900 triples appear within 5% of expected frequency in 1M digits.
 
 ### 3.3 UQFF Significance
 
-The string "117" = 1.17 × 10² encodes the **Pi-Wave energy mantissa** (1.17).
+The string "117" = 1.17 × 102 encodes the **Pi-Wave energy mantissa** (1.17).
 Its occurrences follow approximately a Poisson process with λ = 1 per 1000 digits.
 The **spacing distribution** between consecutive "117" appearances is exponential
 with mean μ spacing ≈ 1000 digits — a random walk, as expected for a normal number.
 
-**UQFF interpretation**: The energy quantum E_wave = 1.17×10⁻¹⁰⁵ J is not predictive
+**UQFF interpretation**: The energy quantum E_wave = 1.17×10-105 J is not predictive
 from π digit positions — rather, both (the computed energy mantissa and the digit string)
 share the same origin: the geometric constant π embedded in the UQFF harmonic cos(πtn)
 naturally produces energy quanta whose leading digits are those of the well-studied
@@ -143,10 +159,10 @@ Physical regularization at Planck scale: $E_{\text{pinch,max}} = E_P = 1.956\tim
 
 $$\frac{E_P}{E_{\text{wave}}} = \frac{1.956\times10^9}{1.17\times10^{-105}} = 1.67\times10^{114}$$
 
-The gap exponent is 114 ≈ 26π × (1/α²)/1000 — within the DVP framework, this gap
+The gap exponent is 114 ≈ 26π × (1/α2)/1000 — within the DVP framework, this gap
 is traversed in 26 prime-level steps, each suppressing by e^{-π} ≈ 0.0432.
 
-$$e^{-26\pi} = e^{-81.68} \approx 4.0\times10^{-36} \approx \frac{\rho_{\text{vac},[SCm]}}{\rho_P}\ ✓$$
+$$e^{-26\pi} = e^{-81.68} \approx 4.0\times10^{-36} \approx \frac{\rho_{\text{vac},[SCm]}}{\rho_P}\ PASS$$
 
 This confirms: the Pi-Wave energy scale is exactly the e^{-26π} suppression from
 the Planck energy — another manifestation of the -i·26 and -26 exponents identified
@@ -160,13 +176,15 @@ in the DVP (PAPER_649) and Schwarzschild proton (PAPER_651) papers.
 
 ### §A.1 Sector Classification
 
-This paper maps to **general-UQFF** sector of the 9-sector UQFF Lagrangian (see `uqff_lagrangian_derivation.py`).
+This paper maps to **general-UQFF** sector of the 9-sector UQFF Lagrangian (see
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
-The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive quantum fundamentals (DPM, UA, SCm):
+The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
+quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_\mu \phi)(\partial^\mu \phi) - V(\phi) + \mathcal{L}_{\rm cosmo}$$
+$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_mu \phi)(\partial^\mu \phi) - V(\phi) + \mathcal{L}_{\rm cosmo}$$
 
 where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
@@ -180,7 +198,9 @@ $$\boxed{\frac{\delta S}{\delta \phi} = \nabla^2 \phi + \kappa \rho_{\rm vac,[SC
 
 $$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi = 0$$
 
-The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g forces) through vacuum density initialization to the sector-specific equation of motion. Every term in the E-L equation inherits its physical origin from the cosmogenesis master.
+The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
+forces) through vacuum density initialization to the sector-specific equation of motion. Every term
+in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 
 ---
@@ -191,9 +211,9 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.068$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m³.
+For this system, the local VDS sub-ratio is $0.068$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -207,11 +227,11 @@ Since $p_{\rm DVP} = 89$ is **resonant** (threshold at $p > 26$), the system's v
 
 The BSH saturation timescale for this sector is **system-dependent** (buoyancy equilibrium):
 
-$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
+$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\rm SCm}$ which initializes the harmonic series at cosmogenesis.
 
@@ -219,11 +239,11 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.068 | ✓ Threshold-consistent |
-| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 89$ | ✓ Resonant |
-| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
-| [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
+| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.068 | PASS Threshold-consistent |
+| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 89$ | PASS Resonant |
+| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
+| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
 ---
@@ -233,9 +253,9 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | SM Value | UQFF Pi-Wave | Alignment |
 |------------|----------|--------------|-----------|
-| Planck energy | 1.956×10⁹ J | Pinch maximum | ✅ correct |
-| π normal distribution | Conjectured; χ²-test passes | Module verified in 1M digits | ✅ numerical |
-| Pi-Planck length ℓ_P | 1.616×10⁻³³ cm | ℓ_π = π·ℓ_P as coherence length | ✅ structural |
+| Planck energy | 1.956×109 J | Pinch maximum | ✅ correct |
+| π normal distribution | Conjectured; χ2-test passes | Module verified in 1M digits | ✅ numerical |
+| Pi-Planck length ℓ_P | 1.616×10-33 cm | ℓ_π = π·ℓ_P as coherence length | ✅ structural |
 | Vacuum fluctuations ℏω | ~ℏ/τ_vac | E_wave = ℏ/τ_π at ρvac,[SCm] | ✅ structural |
 
 > **SM Anchor Reference:** PAPER_642 — UQFFSMParameterBridgeMasterComparisonCalculator
@@ -267,9 +287,9 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `f`neutron_s26_coupling`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `k`ozima_scm_cross_section`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `k`ozima_wstp_kernel`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -278,7 +298,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `r`amanujan_polylog_s26`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
 | `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
@@ -287,7 +307,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `m`ock_theta_q26`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -298,8 +318,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `r`amanujan_pi_uqff`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `m`ock_theta_pi_wstp_kernel`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]

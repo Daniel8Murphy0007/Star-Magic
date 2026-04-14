@@ -1,19 +1,39 @@
+---
+paper_id: PAPER_452
+title: "MUGE Compression Cycle 2: Unified F_env Modular 7-System Environmental Calculator"
+session: 115
+date: 2025-01-01
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [AGN, SCm, MUGE, magnetar, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_452 — MUGE Compression Cycle 2: Unified F_env Modular 7-System Environmental Calculator
 **Date:** 2025
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2  
 **Session:** 115 (v4.72) / Whitepapers created Session 121  
 **Source:** grok_share_5fa36e4e035.txt (Doc 39 — MultiCompressedUQFFModule, 7-system)  
-**Classification:** FIRST UQFF multi-system compression cycle 2 framework; FIRST unified F_env modular architecture across 7 canonical astrophysical classes  
+**Classification:** FIRST UQFF multi-system compression cycle 2 framework; FIRST unified F_env
+modular architecture across 7 canonical astrophysical classes  
 **Author:** Daniel T. Murphy  
 **CP4 Class:** `CompressedUQFFEnvModularCalculator` (#6, PAPER_452)
 
-<!-- UQFF constants: κ = 5.0e-4 day⁻¹, [SSq] = 0.57, H_SCm ≈ 0.99, U_UA ≈ 0.0001 -->
+<!— UQFF constants: κ = 5.0e-4 day-1, [SSq] = 0.57, H_SCm ≈ 0.99, U_UA ≈ 0.0001 —>
 ---
 
 ## Abstract
 
-MUGE Compression Cycle 2 formalises the multi-system unified gravitational calculator, compressing the per-system equations established across Sessions 1–114 into a single modular architecture. This paper documents the 7-system root registry: MagnetarSGR1745, SagittariusA, TapestryStarbirth, Westerlund2, PillarsCreation, RingsRelativity, and UniverseGuide — each contributing system-specific F_env terms that sum to the total environmental gravitational modifier. The framework introduces the critical distinction between the **compressed MUGE** (analytical one-line forms) and the **full-form UQFF** (explicit component summation), validating that both yield the same g_UQFF to within numerical precision.
+MUGE Compression Cycle 2 formalises the multi-system unified gravitational calculator, compressing
+the per-system equations established across Sessions 1–114 into a single modular architecture. This
+paper documents the 7-system root registry: MagnetarSGR1745, SagittariusA, TapestryStarbirth,
+Westerlund2, PillarsCreation, RingsRelativity, and UniverseGuide — each contributing system-specific
+F_env terms that sum to the total environmental gravitational modifier. The framework introduces the
+critical distinction between the **compressed MUGE** (analytical one-line forms) and the **full-form
+UQFF** (explicit component summation), validating that both yield the same g_UQFF to within
+numerical precision.
 
 ---
 
@@ -21,7 +41,9 @@ MUGE Compression Cycle 2 formalises the multi-system unified gravitational calcu
 
 ### 2.1 Compression Principle
 
-"Compression" means reducing per-system individuated equations into a **modular function call registry**. Instead of 7 separate classes, a single compressed equation calls system-specific F_env modules:
+"Compression" means reducing per-system individuated equations into a **modular function call
+registry**. Instead of 7 separate classes, a single compressed equation calls system-specific F_env
+modules:
 
 $$g_{\rm UQFF}^{(j)}(t) = \frac{GM_j(t)}{r_j^2}(1 + H_z t)(1 - B_j/B_{\rm crit}) + \sum_k U_{gk}^{(j)} + F_{\rm env}^{(j)}(t)$$
 
@@ -33,13 +55,13 @@ $$g_{\rm UQFF}^{(j),\rm comp}(t) = g_{\rm Newton}^{(j)}(1 + H_z t) + F_{\rm env}
 
 | # | System | M (kg) | r (m) | B (T) | F_env type |
 |---|--------|--------|-------|-------|-----------|
-| 1 | MagnetarSGR1745 | 5.58×10³⁰ (2.8 M☉) | 1×10⁴ | 1×10¹¹ | B_field saturation |
-| 2 | SagittariusA | 8.17×10³⁶ (4.1×10⁶ M☉) | 6×10⁹ | 1×10⁻³ | SMBH accretion disk |
-| 3 | TapestryStarbirth | 9.96×10³³ (500 M☉) | 1×10¹⁶ | 1×10⁻⁵ | SFR + outflow |
-| 4 | Westerlund2 | 1.99×10³⁴ (10⁴ M☉) | 6×10¹⁶ | 1×10⁻⁵ | Stellar wind |
-| 5 | PillarsCreation | 3.98×10³² (200 M☉) | 6×10¹⁶ | 1×10⁻⁵ | Radiation P_rad |
-| 6 | RingsRelativity | 1×10³⁹ | 1×10²⁰ | 1×10⁻⁶ | Lensing shear |
-| 7 | UniverseGuide | 1×10⁵³ | 4.4×10²⁶ | ~0 | Full F_cosmo |
+| 1 | MagnetarSGR1745 | 5.58×1030 (2.8 MM_sun) | 1×104 | 1×1011 | B_field saturation |
+| 2 | SagittariusA | 8.17×1036 (4.1×106 MM_sun) | 6×109 | 1×10-3 | SMBH accretion disk |
+| 3 | TapestryStarbirth | 9.96×1033 (500 MM_sun) | 1×1016 | 1×10-5 | SFR + outflow |
+| 4 | Westerlund2 | 1.99×1034 (104 MM_sun) | 6×1016 | 1×10-5 | Stellar wind |
+| 5 | PillarsCreation | 3.98×1032 (200 MM_sun) | 6×1016 | 1×10-5 | Radiation P_rad |
+| 6 | RingsRelativity | 1×1039 | 1×1020 | 1×10-6 | Lensing shear |
+| 7 | UniverseGuide | 1×1053 | 4.4×1026 | ~0 | Full F_cosmo |
 
 ### 2.3 F_env Per-System Equations
 
@@ -51,7 +73,7 @@ Where $B_{\rm crit} = 4.4\times10^{13}$ T, $B/B_{\rm crit} = 10^{11}/4.4\times10
 **2. SagittariusA F_env (SMBH accretion):**
 $$F_{\rm env,SgrA} = \frac{GM_{\rm disk}}{r_{\rm ISCO}^2}\cdot f_{\rm acc} + \Omega_{\rm disk}^2 r_{\rm disk}$$
 
-Where r_ISCO = 6GMc⁻² = innermost stable circular orbit.
+Where r_ISCO = 6GMc-2 = innermost stable circular orbit.
 
 **3. TapestryStarbirth F_env:**
 $$F_{\rm env,Tap} = {\rm SFR}\cdot{v_{\rm wind}^2/r} + P_{\rm outflow}$$
@@ -82,7 +104,7 @@ The standard Ug3 string-rotation term is replaced in Cycle 2 by the compressed f
 
 $$U_{g3}' = \frac{GM_{\rm ext}}{r_{\rm ext}^2}$$
 
-Where M_ext and r_ext are the **external mass and radius** contributing to cross-system string tension. This simplified form discards the $(1 + v_s/c \cos\theta)$ angular factor for the Cycle 2 compression (angle-averaged over the ensemble).
+Where M_ext and r_ext are the **external mass and radius** contributing to cross-system string tension. This simplified form discards the $(1 + v_s/c \costheta)$ angular factor for the Cycle 2 compression (angle-averaged over the ensemble).
 
 ---
 
@@ -94,7 +116,8 @@ The second term is the UQFF **quantum buoyancy correction**:
 
 $$\Delta\psi_{\rm UQFF} = \frac{[SSq]^{n_{26}}}{[SSq]^{n_{26}-1}} = \frac{0.57^{n_{26}}}{0.57^{n_{26}-1}} = 0.57$$
 
-A constant correction of [SSq] = 0.57 to the wave function amplitude — this is the superconducting quantum gravity correction that persists across all UQFF calculations.
+A constant correction of [SSq] = 0.57 to the wave function amplitude — this is the superconducting
+quantum gravity correction that persists across all UQFF calculations.
 
 ---
 
@@ -102,15 +125,15 @@ A constant correction of [SSq] = 0.57 to the wave function amplitude — this is
 
 Compressed vs. full-form comparison at t=1 Gyr, r=r_j:
 
-| System | g_full (m/s²) | g_comp (m/s²) | δ (%) |
+| System | g_full (m/s2) | g_comp (m/s2) | δ (%) |
 |--------|-------------|--------------|-------|
-| Magnetar | 3.73×10⁶ | 3.73×10⁶ | 0.0 |
+| Magnetar | 3.73×106 | 3.73×106 | 0.0 |
 | SgrA* | 1.52 | 1.52 | 0.0 |
-| Tapestry | 2.65×10⁻¹² | 2.66×10⁻¹² | 0.4 |
-| Westerlund2 | 3.70×10⁻¹³ | 3.71×10⁻¹³ | 0.3 |
-| Pillars | 3.70×10⁻¹³ | 3.69×10⁻¹³ | 0.3 |
-| Rings | 4.45×10⁻¹⁰ | 4.45×10⁻¹⁰ | 0.0 |
-| UnivGuide | 5.88×10⁻¹⁰ | 5.89×10⁻¹⁰ | 0.2 |
+| Tapestry | 2.65×10-12 | 2.66×10-12 | 0.4 |
+| Westerlund2 | 3.70×10-13 | 3.71×10-13 | 0.3 |
+| Pillars | 3.70×10-13 | 3.69×10-13 | 0.3 |
+| Rings | 4.45×10-10 | 4.45×10-10 | 0.0 |
+| UnivGuide | 5.88×10-10 | 5.89×10-10 | 0.2 |
 
 Maximum compression error: 0.4% for extended gas systems where F_env angular terms matter.
 
@@ -121,7 +144,7 @@ Maximum compression error: 0.4% for extended gas systems where F_env angular ter
 | Feature | SM | CC2 Compressed |
 |---------|-----|----------------|
 | Multi-system gravity | No unified framework | 7-system registry in single call |
-| Angle-averaged Ug3 | N/A | Ug3' = GM_ext/r_ext² |
+| Angle-averaged Ug3 | N/A | Ug3' = GM_ext/r_ext2 |
 | Ψ_total correction | Not applicable | Δψ = [SSq] = 0.57 constant |
 | Compression error | N/A | <0.5% for all 7 systems |
 
@@ -129,9 +152,14 @@ Maximum compression error: 0.4% for extended gas systems where F_env angular ter
 
 ## 7. Testable Predictions
 
-1. **Validation accuracy:** Running full UQFF and compressed UQFF on the same 7 systems must agree to within 1%. Verification via MAIN_1_CoAnQi.exe Options 1 and 15.
-2. **Ug3 angle-average validity:** For systems where v_s/c < 10⁻², the compressed Ug3' introduces <1% error. Valid for all 7 canonical systems except potentially the magnetar at v_exp = 10⁵ m/s (v_s/c ≈ 3×10⁻⁴ — still valid).
-3. **Extensibility:** Adding an 8th system to the registry should add F_env to G_total without changing any of the existing 7 contributions — testable by insertion followed by running Option 2 (Calculate ALL systems).
+1. **Validation accuracy:** Running full UQFF and compressed UQFF on the same 7 systems must agree
+to within 1%. Verification via MAIN_1_CoAnQi.exe Options 1 and 15.
+2. **Ug3 angle-average validity:** For systems where v_s/c < 10-2, the compressed Ug3' introduces
+<1% error. Valid for all 7 canonical systems except potentially the magnetar at v_exp = 105 m/s
+(v_s/c ≈ 3×10-4 — still valid).
+3. **Extensibility:** Adding an 8th system to the registry should add F_env to G_total without
+changing any of the existing 7 contributions — testable by insertion followed by running Option 2
+(Calculate ALL systems).
 
 ---
 
@@ -141,13 +169,15 @@ Maximum compression error: 0.4% for extended gas systems where F_env angular ter
 
 ### §A.1 Sector Classification
 
-This paper maps to **magnetar-field** sector of the 9-sector UQFF Lagrangian (see `uqff_lagrangian_derivation.py`).
+This paper maps to **magnetar-field** sector of the 9-sector UQFF Lagrangian (see
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
-The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive quantum fundamentals (DPM, UA, SCm):
+The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
+quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_\mu \phi_B)(\partial^\mu \phi_B) - V(\phi_B) + \mathcal{L}_{\rm cosmo}$$
+$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_mu \phi_B)(\partial^\mu \phi_B) - V(\phi_B) + \mathcal{L}_{\rm cosmo}$$
 
 where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
@@ -161,7 +191,9 @@ $$\boxed{\frac{\delta S}{\delta \phi_B} = \nabla \times (\rho_{\rm SCm} \mathbf{
 
 $$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_B = 0$$
 
-The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g forces) through vacuum density initialization to the sector-specific equation of motion. Every term in the E-L equation inherits its physical origin from the cosmogenesis master.
+The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
+forces) through vacuum density initialization to the sector-specific equation of motion. Every term
+in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 
 ---
@@ -172,9 +204,9 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.139$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m³.
+For this system, the local VDS sub-ratio is $0.139$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -186,13 +218,13 @@ Since $p_{\rm DVP} = 5$ is **sub-threshold** (threshold at $p > 26$), the system
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
-The BSH saturation timescale for this sector is **10³ yr** (field decay quiescence):
+The BSH saturation timescale for this sector is **103 yr** (field decay quiescence):
 
-$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
+$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\rm SCm}$ which initializes the harmonic series at cosmogenesis.
 
@@ -200,11 +232,11 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.139 | ✓ Threshold-consistent |
-| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 5$ | ✓ Sub-threshold |
-| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
-| [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
+| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.139 | PASS Threshold-consistent |
+| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 5$ | PASS Sub-threshold |
+| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
+| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
 ---
@@ -214,12 +246,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Thomson σ_T (QED synchrotron) | UQFF U_m scattering kernel: σ_T = 6.6524×10⁻²⁹ m² | σ_T = 6.6524×10⁻²⁹ m² (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
-| Astrophysical system luminosity X-ray / Radio | UQFF MUGE g_total → L_X via Stefan-Boltzmann + buoyancy flux: L_X ≈ g_total × M_env | L_X L ≥ 10³⁷ erg/s | Chandra CXC | ✓ Consistent order of magnitude |
-| GR Schwarzschild limit | UQFF g_total must satisfy g ≤ c²/(2r_s) at event horizon | r_s = 2GM/c² (GR exact) | PDG 2024 / GR | ✓ UQFF respects GR horizon |
+| Thomson σ_T (QED synchrotron) | UQFF U_m scattering kernel: σ_T = 6.6524×10-29 m2 | σ_T = 6.6524×10-29 m2 (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
+| Astrophysical system luminosity X-ray / Radio | UQFF MUGE g_total → L_X via Stefan-Boltzmann + buoyancy flux: L_X ≈ g_total × M_env | L_X L ≥ 1037 erg/s | Chandra CXC | PASS Consistent order of magnitude |
+| GR Schwarzschild limit | UQFF g_total must satisfy g ≤ c2/(2r_s) at event horizon | r_s = 2GM/c2 (GR exact) | PDG 2024 / GR | PASS UQFF respects GR horizon |
 | κ vacuum rate vs X-ray variability | UQFF κ = 0.0005/day → timescale τ_UQFF = 2000 days | Observed X-ray variability τ_obs (instrument monitoring) | Chandra CXC | Testable UQFF variability timescale |
 
-**New physics claim:** UQFF MUGE generates gravity enhancement factors (g_total/g_Newt > 1) for Astrophysical system
+**New physics claim:** UQFF MUGE generates gravity enhancement factors (g_total/g_Newt > 1) for
+Astrophysical system
 through vacuum buoyancy coupling — a mechanism absent from GR+SM. The enhancement factor and
 X-ray luminosity are linked via the UQFF buoyancy flux, providing a testable prediction for
 future Chandra CXC monitoring observations.
@@ -228,7 +261,7 @@ future Chandra CXC monitoring observations.
 
 
 
-*Copyright – Daniel T. Murphy | Session 115/121 — grok_share_5fa36e4e035.txt*
+*Copyright – Daniel T. Murphy | Session 115/121 — `grok_share_5fa36e4e035`.txt*
 
 
 ---
@@ -243,9 +276,9 @@ future Chandra CXC monitoring observations.
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `f`neutron_s26_coupling`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `k`ozima_scm_cross_section`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `k`ozima_wstp_kernel`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -254,7 +287,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `r`amanujan_polylog_s26`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
 | `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
@@ -263,7 +296,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `m`ock_theta_q26`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -274,8 +307,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `r`amanujan_pi_uqff`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `m`ock_theta_pi_wstp_kernel`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]

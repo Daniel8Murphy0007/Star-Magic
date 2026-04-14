@@ -1,3 +1,16 @@
+---
+paper_id: PAPER_291
+title: "Crab Filament Spectral Triad — Quantum-Fluid-Expansion 9-Decade DPM Seeding with Volumetric
+Knot Coupling"
+session: 0
+date: 2026-03-01
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [Hubble, DPM, Chandra, nebula, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_291: Crab Filament Spectral Triad — Quantum-Fluid-Expansion 9-Decade DPM Seeding with Volumetric Knot Coupling
 **Author:** Daniel T. Murphy
 
@@ -12,10 +25,10 @@
 
 The Crab Nebula's intricate filamentary structure encodes three distinct resonance frequency
 scales in UQFF theory. This paper derives the Crab Filament Spectral Triad: a set of three
-DPM-seeded acceleration terms spanning nine decades of frequency from f_quantum = 1.445×10⁻¹⁷ Hz
-(quantum de Broglie mode, period ~2.19 Gyr) to f_exp = 1.373×10⁻⁸ Hz (free expansion mode,
+DPM-seeded acceleration terms spanning nine decades of frequency from f_quantum = 1.445×10-17 Hz
+(quantum de Broglie mode, period ~2.19 Gyr) to f_exp = 1.373×10-8 Hz (free expansion mode,
 period ~2.31 yr). A key novel feature is the **first UQFF volumetric filament knot coupling**:
-the fluid term includes V_knot = 1×10³ m³, representing the volume of an individual filament
+the fluid term includes V_knot = 1×103 m3, representing the volume of an individual filament
 vortical knot as observed by Hubble Space Telescope imaging.
 
 ---
@@ -25,8 +38,8 @@ vortical knot as observed by Hubble Space Telescope imaging.
 HST and Chandra observations of the Crab Nebula reveal an intricate network of optical/X-ray
 filaments, each with characteristic scales:
 
-- **Filament width:** ~1.5×10¹⁴ m (coarse estimate, several arcsec at 2 kpc)
-- **Knot structures:** compact emission regions ~0.1" across = ~3×10¹³ m at 2 kpc
+- **Filament width:** ~1.5×1014 m (coarse estimate, several arcsec at 2 kpc)
+- **Knot structures:** compact emission regions ~0.1" across = ~3×1013 m at 2 kpc
 - **Kelvin-Helmholtz instabilities** at filament/PWN boundary → characteristic frequency f_fluid
 - **de Broglie quantum oscillations** of filament electrons → characteristic frequency f_quantum
 - **Free expansion timescale** → characteristic frequency f_exp
@@ -37,23 +50,28 @@ The UQFF Filament Spectral Triad maps these physical structures to DPM-seeded ac
 
 ## 2. The Three Triad Frequencies
 
-### 2.1 f_quantum = 1.445×10⁻¹⁷ Hz (Quantum de Broglie Mode)
+### 2.1 f_quantum = 1.445×10-17 Hz (Quantum de Broglie Mode)
 
 $$T_{\text{quantum}} = \frac{1}{f_{\text{quantum}}} = \frac{1}{1.445\times10^{-17}} = 6.920\times10^{16}\ \text{s} \approx 2.19\ \text{Gyr}$$
 
-This period corresponds to a quantum coherence timescale comparable to the cosmic age divided by 6.3 (T_universe/6.3). In UQFF, this is the sub-thermal vacuum oscillation of filament electrons coupling to the plasmotic vacuum background.
+This period corresponds to a quantum coherence timescale comparable to the cosmic age divided by 6.3
+(T_universe/6.3). In UQFF, this is the sub-thermal vacuum oscillation of filament electrons coupling
+to the plasmotic vacuum background.
 
 **Acceleration term:**
 $$a_{\text{quantum}} = \frac{f_{\text{quantum}} \cdot E_{\text{vac}} \cdot a_{\text{DPM}}}{(E_{\text{vac}}/10) \cdot c} = \frac{10 \cdot f_{\text{quantum}} \cdot a_{\text{DPM}}}{c}$$
 
-At t = 971 yr (a_DPM = 3.772×10⁻⁵⁷ m/s²):
+At t = 971 yr (a_DPM = 3.772×10-57 m/s2):
 $$a_{\text{quantum}} = \frac{10 \times 1.445\times10^{-17} \times 3.772\times10^{-57}}{3\times10^8} = 1.817\times10^{-81}\ \text{m/s}^2$$
 
-### 2.2 f_fluid = 1.269×10⁻¹⁴ Hz (Kelvin-Helmholtz Turbulence, with V_knot)
+### 2.2 f_fluid = 1.269×10-14 Hz (Kelvin-Helmholtz Turbulence, with V_knot)
 
 $$T_{\text{fluid}} = \frac{1}{f_{\text{fluid}}} = \frac{1}{1.269\times10^{-14}} = 7.880\times10^{13}\ \text{s} \approx 2.49\ \text{Myr}$$
 
-This period corresponds to the Kelvin-Helmholtz instability growth timescale at the filament-PWN interface. The **V_knot = 1×10³ m³** factor represents the volume of a specific filament vortical knot structure. This is the **FIRST UQFF volumetric filament knot coupling** — distinct from all prior terms which use V_sys (the full system volume).
+This period corresponds to the Kelvin-Helmholtz instability growth timescale at the filament-PWN
+interface. The **V_knot = 1×103 m3** factor represents the volume of a specific filament vortical
+knot structure. This is the **FIRST UQFF volumetric filament knot coupling** — distinct from all
+prior terms which use V_sys (the full system volume).
 
 **Acceleration term (with V_knot):**
 $$a_{\text{fluid}} = \frac{f_{\text{fluid}} \cdot E_{\text{vac}} \cdot V_{\text{knot}} \cdot a_{\text{DPM}}}{(E_{\text{vac}}/10) \cdot c} = \frac{10 \cdot f_{\text{fluid}} \cdot V_{\text{knot}} \cdot a_{\text{DPM}}}{c}$$
@@ -61,9 +79,10 @@ $$a_{\text{fluid}} = \frac{f_{\text{fluid}} \cdot E_{\text{vac}} \cdot V_{\text{
 At t = 971 yr:
 $$a_{\text{fluid}} = \frac{10 \times 1.269\times10^{-14} \times 1\times10^3 \times 3.772\times10^{-57}}{3\times10^8} = 1.596\times10^{-75}\ \text{m/s}^2$$
 
-The V_knot amplification factor = V_knot = 1×10³ m³ (a 3-dimensional structure with ~10 m scale side). Ratio a_fluid/a_quantum = f_fluid × V_knot / f_quantum = 8.785×10⁵.
+The V_knot amplification factor = V_knot = 1×103 m3 (a 3-dimensional structure with ~10 m scale
+side). Ratio a_fluid/a_quantum = f_fluid × V_knot / f_quantum = 8.785×105.
 
-### 2.3 f_exp = 1.373×10⁻⁸ Hz (Free Expansion Timescale)
+### 2.3 f_exp = 1.373×10-8 Hz (Free Expansion Timescale)
 
 $$T_{\text{exp}} = \frac{1}{f_{\text{exp}}} = \frac{1}{1.373\times10^{-8}} = 7.284\times10^7\ \text{s} \approx 2.31\ \text{yr}$$
 
@@ -81,15 +100,16 @@ $$a_{\text{exp}} = \frac{10 \times 1.373\times10^{-8} \times 3.772\times10^{-57}
 
 ## 3. The Spectral Triad — 9-Decade Summary
 
-| Term | Frequency [Hz] | Period | a_i(t=971yr) [m/s²] | Role |
+| Term | Frequency [Hz] | Period | a_i(t=971yr) [m/s2] | Role |
 |------|----------------|--------|---------------------|------|
-| a_quantum | 1.445×10⁻¹⁷ | ~2.19 Gyr | 1.817×10⁻⁸¹ | Quantum vacuum coupling |
-| a_fluid   | 1.269×10⁻¹⁴ | ~2.49 Myr | 1.596×10⁻⁷⁵ | KH turbulence + V_knot |
-| a_exp     | 1.373×10⁻⁸  | ~2.31 yr  | 1.726×10⁻⁷² | Free expansion mode |
+| a_quantum | 1.445×10-17 | ~2.19 Gyr | 1.817×10-81 | Quantum vacuum coupling |
+| a_fluid   | 1.269×10-14 | ~2.49 Myr | 1.596×10-75 | KH turbulence + V_knot |
+| a_exp     | 1.373×10-8  | ~2.31 yr  | 1.726×10-72 | Free expansion mode |
 
-**Frequency span:** 1.445×10⁻¹⁷ to 1.373×10⁻⁸ Hz = **9.0 decades** (log₁₀(1.373e-8/1.445e-17) = 9.0)
+**Frequency span:** 1.445×10-17 to 1.373×10-8 Hz = **9.0 decades** (log₁₀(1.373e-8/1.445e-17) = 9.0)
 
-**Acceleration span:** 1.817×10⁻⁸¹ to 1.726×10⁻⁷² m/s² = **9.0 decades** (linear proportionality preserved)
+**Acceleration span:** 1.817×10-81 to 1.726×10-72 m/s2 = **9.0 decades** (linear proportionality
+preserved)
 
 ---
 
@@ -98,16 +118,16 @@ $$a_{\text{exp}} = \frac{10 \times 1.373\times10^{-8} \times 3.772\times10^{-57}
 The standard UQFF filament terms (without V_knot) have the form:
 $$a_i = \frac{10 \cdot f_i \cdot a_{\text{DPM}}}{c}$$
 
-The fluid term breaks this pattern by including V_knot = 1×10³ m³:
+The fluid term breaks this pattern by including V_knot = 1×103 m3:
 $$a_{\text{fluid}} = \frac{10 \cdot f_{\text{fluid}} \cdot V_{\text{knot}} \cdot a_{\text{DPM}}}{c}$$
 
 **Physical interpretation:** The filament vortical knot represents a localized region where
-the DPM vacuum coupling concentrates. V_knot = 1×10³ m³ is a~10m³ micro-turbulence cell.
+the DPM vacuum coupling concentrates. V_knot = 1×103 m3 is a~10m3 micro-turbulence cell.
 The V_knot factor makes a_fluid the ONLY UQFF acceleration term with explicit volume coupling
 at sub-system scale. This is the first UQFF term encoding a sub-nebular physical structure.
 
-**Dimensional check:** [m³] × [s⁻¹] × [m/s²] / [m/s] = [m²/s] — the V_knot factor adds units
-that combine with the quantum vacuum contrast (E_vac/E_vac_ISM = 10, dimensionless) to restore m/s².
+**Dimensional check:** [m3] × [s-1] × [m/s2] / [m/s] = [m2/s] — the V_knot factor adds units
+that combine with the quantum vacuum contrast (E_vac/E_vac_ISM = 10, dimensionless) to restore m/s2.
 
 ---
 
@@ -115,7 +135,7 @@ that combine with the quantum vacuum contrast (E_vac/E_vac_ISM = 10, dimensionle
 
 $$a_{\text{triad}}(t) = a_{\text{quantum}} + a_{\text{fluid}} + a_{\text{exp}} = \frac{10 \cdot a_{\text{DPM}}(t)}{c} \left[f_{\text{quantum}} + f_{\text{fluid}} \cdot V_{\text{knot}} + f_{\text{exp}}\right]$$
 
-The bracket evaluates to: [1.445×10⁻¹⁷ + 1.269×10⁻¹¹ + 1.373×10⁻⁸] ≈ 1.374×10⁻⁸
+The bracket evaluates to: [1.445×10-17 + 1.269×10-11 + 1.373×10-8] ≈ 1.374×10-8
 
 This shows that a_exp dominates the triad sum by ~3 orders of magnitude, as the free-expansion
 timescale (2.31 yr) is the most energetically significant filamentary mode in the Crab.
@@ -131,17 +151,19 @@ resonance modes** in a single UQFF module. Prior modules had at most one fluid/e
 |--------|------------|--------|-----------|
 | RSC (Session 81) | 0 fluid terms | N/A | — |
 | M16 (Session 80) | 0 fluid terms | N/A | — |
-| CRAB (This session) | 3 fluid terms | **1×10³ m³** | f_q, f_fl, f_exp |
+| CRAB (This session) | 3 fluid terms | **1×103 m3** | f_q, f_fl, f_exp |
 
 ---
 
 ## 7. Wolfram KB Registration
 
-```
-CRAB_UQFF:a_quantum=10*f_q*a_DPM/c; a_fluid=10*f_fl*V_knot*a_DPM/c;
-a_exp=10*f_exp*a_DPM/c; triad f_q=1.445e-17 to f_exp=1.373e-8 Hz (9 decades)
-V_knot=1e3 m^3 (first UQFF volumetric filament knot coupling) [PAPER_291]
-```
+$$
+\begin{aligned}
+  & CRAB_UQFF:a_quantum=10*f_q*a_DPM/c; a_fluid=10*f_fl*V_knot*a_DPM/c; \\
+  & a_exp=10*f_exp*a_DPM/c; triad f_q=1.445e-17 to f_exp=1.373e-8 Hz (9 decades) \\
+  & V_knot=1e3 m^3 (first UQFF volumetric filament knot coupling) [PAPER_291]
+\end{aligned}
+$$
 
 ---
 
@@ -153,13 +175,15 @@ V_knot=1e3 m^3 (first UQFF volumetric filament knot coupling) [PAPER_291]
 
 ### §A.1 Sector Classification
 
-This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see `uqff_lagrangian_derivation.py`).
+This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
-The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive quantum fundamentals (DPM, UA, SCm):
+The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
+quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_\mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
+$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
 
 where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
@@ -173,7 +197,9 @@ $$\boxed{\frac{\delta S}{\delta \phi_{\rm NS}} = \nabla^2 \phi_{\rm NS} - (4\pi 
 
 $$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\rm NS} = 0$$
 
-The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g forces) through vacuum density initialization to the sector-specific equation of motion. Every term in the E-L equation inherits its physical origin from the cosmogenesis master.
+The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
+forces) through vacuum density initialization to the sector-specific equation of motion. Every term
+in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 
 ---
@@ -184,9 +210,9 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.178$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m³.
+For this system, the local VDS sub-ratio is $0.178$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -198,13 +224,13 @@ Since $p_{\rm DVP} = 79$ is **resonant** (threshold at $p > 26$), the system's v
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
-The BSH saturation timescale for this sector is **10⁴ yr** (spin-down equilibrium):
+The BSH saturation timescale for this sector is **104 yr** (spin-down equilibrium):
 
-$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
+$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\rm SCm}$ which initializes the harmonic series at cosmogenesis.
 
@@ -212,11 +238,11 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.178 | ✓ Threshold-consistent |
-| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 79$ | ✓ Resonant |
-| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
-| [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
+| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.178 | PASS Threshold-consistent |
+| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 79$ | PASS Resonant |
+| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
+| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
 ---
@@ -226,14 +252,17 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | ✓ Consistent |
-| Cosmological constant Λ | 1.1×10⁻⁵² m⁻² (UQFF vacuum term) | 1.114×10⁻⁵² m⁻² | Planck 2018 | ✓ Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10⁻³⁵/yr | Super-K 2024 | ✓ Consistent |
-| UQFF buoyancy signature | F_U_Bi_i unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
+| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
-**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes significant, offering a falsifiable prediction beyond the Standard Model.
+**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
+produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
+bridge.*
 
 
 ---
@@ -248,9 +277,9 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `f`neutron_s26_coupling`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `k`ozima_scm_cross_section`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `k`ozima_wstp_kernel`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -259,7 +288,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `r`amanujan_polylog_s26`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
 | `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
@@ -268,7 +297,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `m`ock_theta_q26`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -279,8 +308,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `r`amanujan_pi_uqff`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `m`ock_theta_pi_wstp_kernel`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]

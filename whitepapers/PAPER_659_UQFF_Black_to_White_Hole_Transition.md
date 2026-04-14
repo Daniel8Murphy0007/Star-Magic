@@ -1,3 +1,15 @@
+---
+paper_id: PAPER_659
+title: "UQFF Black-to-White Hole Transition"
+session: 172
+date: 2026-04-02
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [vacuum, SCm, BEC, buoyancy, black-hole, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_659 — UQFF Black-to-White Hole Transition
 **Date:** April 2, 2026
 
@@ -13,15 +25,29 @@
 
 ## Abstract
 
-Classical General Relativity forbids a black hole from inverting into a white hole: the event horizon is a one-way causal membrane, and its "time-reversal" (a white hole) violates the second law. This paper presents the UQFF mechanism by which the Universal Aether [UA] and Superconductive Medium [SCm] fields create a density-gradient phase transition that inverts the horizon, enabling black holes to become white holes. A six-step derivation produces the transition criterion Θ_trans = P_trans · Φ_trans · S_Um. When Θ_trans > 1 a white hole is predicted to form. Numerical validation for Sgr A* yields Θ_trans ≈ 2.7, corresponding to P(Θ > 1) ≈ 99% (Monte-Carlo, n = 10,000). Connections to all three UQFF number systems (Vacuum Density Series, Dipole Vortex Primes, Buoyancy Harmonics) are established.
+Classical General Relativity forbids a black hole from inverting into a white hole: the event
+horizon is a one-way causal membrane, and its "time-reversal" (a white hole) violates the second
+law. This paper presents the UQFF mechanism by which the Universal Aether [UA] and Superconductive
+Medium [SCm] fields create a density-gradient phase transition that inverts the horizon, enabling
+black holes to become white holes. A six-step derivation produces the transition criterion Θ_trans =
+P_trans · Φ_trans · S_Um. When Θ_trans > 1 a white hole is predicted to form. Numerical validation
+for Sgr A* yields Θ_trans ≈ 2.7, corresponding to P(Θ > 1) ≈ 99% (Monte-Carlo, n = 10,000).
+Connections to all three UQFF number systems (Vacuum Density Series, Dipole Vortex Primes, Buoyancy
+Harmonics) are established.
 
 ---
 
 ## 1. Introduction
 
-White holes are time-reversal solutions of the Schwarzschild metric that expel matter and energy rather than absorbing them. General Relativity admits these solutions mathematically, but classical thermodynamics prohibits their formation: a white hole would represent a macroscopic decrease in entropy.
+White holes are time-reversal solutions of the Schwarzschild metric that expel matter and energy
+rather than absorbing them. General Relativity admits these solutions mathematically, but classical
+thermodynamics prohibits their formation: a white hole would represent a macroscopic decrease in
+entropy.
 
-The UQFF framework (Murphy, 2025–2026) introduces two vacuum density fields that break this symmetry at the quantum level. The [UA] field provides upward negentropic pressure; the [SCm] field provides downward gravitational resistance. Their 10:1 ratio, combined with the negentropic time-reversal factor f_TRZ = 0.1, enables a macroscopic quantum-phase transition at the event horizon.
+The UQFF framework (Murphy, 2025–2026) introduces two vacuum density fields that break this symmetry
+at the quantum level. The [UA] field provides upward negentropic pressure; the [SCm] field provides
+downward gravitational resistance. Their 10:1 ratio, combined with the negentropic time-reversal
+factor f_TRZ = 0.1, enables a macroscopic quantum-phase transition at the event horizon.
 
 ---
 
@@ -31,7 +57,7 @@ The UQFF framework (Murphy, 2025–2026) introduces two vacuum density fields th
 
 $$r_s = \frac{2GM}{c^2}$$
 
-For Sgr A*: M = 4.3 × 10⁶ M☉ = 8.55 × 10³⁶ kg → r_s ≈ 1.27 × 10¹⁰ m.
+For Sgr A*: M = 4.3 × 106 MM_sun = 8.55 × 1036 kg → r_s ≈ 1.27 × 1010 m.
 
 ### Step 2 — UQFF Modified Horizon and Inversion Energy
 
@@ -43,7 +69,8 @@ The energy required to "flip" the horizon (invert causal structure) is:
 
 $$E_{\rm flip} = \frac{GM^2}{r_{s,\rm UQFF}}$$
 
-For Sgr A*: E_flip ≈ 3.6 × 10⁶³ J — enormous by classical standards, but negligible relative to the Hawking reservoir over cosmological time.
+For Sgr A*: E_flip ≈ 3.6 × 1063 J — enormous by classical standards, but negligible relative to the
+Hawking reservoir over cosmological time.
 
 ### Step 3 — Time-Reversal Probability
 
@@ -51,13 +78,14 @@ The Hawking temperature of a black hole:
 
 $$T_H = \frac{\hbar c^3}{8\pi G M k_B}$$
 
-For Sgr A*: T_H ≈ 1.44 × 10⁻¹⁴ K.
+For Sgr A*: T_H ≈ 1.44 × 10-14 K.
 
 The quantum flip probability (Boltzmann factor):
 
-$$P_{\rm flip} = \exp\!\left(-\frac{E_{\rm flip}}{k_B T_H}\right)$$
+$$P_{\rm flip} = \exp!\left(-\frac{E_{\rm flip}}{k_B T_H}\right)$$
 
-UQFF time-reversal boost: the f_TRZ negentropic factor provides a ×10 increase in the effective thermal contact:
+UQFF time-reversal boost: the f_TRZ negentropic factor provides a ×10 increase in the effective
+thermal contact:
 
 $$P_{\rm trans} = f_{\rm TRZ} \cdot P_{\rm flip}$$
 
@@ -73,32 +101,34 @@ Numerically for Sgr A*:
 
 $$\Phi_{\rm trans} = 10 \cdot \frac{6.67 \times 10^{-11} \times 8.55 \times 10^{36}}{3 \times 10^8} \cdot 1.1 \approx 2.09 \times 10^{19}\,\text{m}^2\text{kg/s}$$
 
-This is a Buoyancy Harmonics Series (BH Series) term: the ratio ρ_UA/ρ_SCm = 10 acts as the first harmonic mode of the buoyancy series.
+This is a Buoyancy Harmonics Series (BH Series) term: the ratio ρ_UA/ρ_SCm = 10 acts as the first
+harmonic mode of the buoyancy series.
 
 ### Step 5 — U_m Magnetic String Anchor (Dipole Vortex Primes PAPER_647)
 
-After the transition the white hole is inherently unstable (τ_instab = r_s/c). The magnetic string field stabilises it:
+After the transition the white hole is inherently unstable (τ_instab = r_s/c). The magnetic string
+field stabilises it:
 
-$$U_m(r,t) = \frac{\mu_j}{r}\left[1 - \exp\!\left(-\gamma t \cos(\pi t_n)\right)\right]$$
+$$U_m(r,t) = \frac{\mu_j}{r}\left[1 - \exp!\left(-\gamma t \cos(\pi t_n)\right)\right]$$
 
 where:
-- μ_j = 3.38 × 10²³ J/T — prime-ordered magnetic moment index j = 1 (DVP series)
-- γ = 5 × 10⁻⁵ day⁻¹ — decay rate
+- μ_j = 3.38 × 1023 J/T — prime-ordered magnetic moment index j = 1 (DVP series)
+- γ = 5 × 10-5 day-1 — decay rate
 - t_n = t/t_ref — normalised time
 
 The stabilised white hole lifetime:
 
-$$\tau_{\rm WH} = \tau_{\rm instab} \cdot \exp\!\left(\frac{U_m}{k_B |T_{\rm WH}|}\right)$$
+$$\tau_{\rm WH} = \tau_{\rm instab} \cdot \exp!\left(\frac{U_m}{k_B |T_{\rm WH}|}\right)$$
 
 where |T_WH| = T_H (Hawking temperature magnitude).
 
 ### Step 6 — Full Transition Criterion
 
-$$\boxed{\Theta_{\rm trans} = P_{\rm trans} \cdot \Phi_{\rm trans} \cdot S_{U_m}}$$
+$$\boxed{\Theta_{\rm trans} = P_{\rm trans} \cdot \Phi_{\rm trans} \cdot S_{U\_m}}$$
 
 where:
 
-$$S_{U_m} = \exp\!\left(\frac{U_m(r_s, t)}{k_B T_H}\right)$$
+$$S_{U\_m} = \exp!\left(\frac{U_m(r_s, t)}{k_B T_H}\right)$$
 
 **Transition condition:** If Θ_trans > 1, the UQFF predicts white hole formation.
 
@@ -124,27 +154,29 @@ This is the first UQFF module where all three number systems are directly active
 
 | Quantity | Value |
 |---|---|
-| M | 8.55 × 10³⁶ kg (4.3 × 10⁶ M☉) |
-| r_s | 1.27 × 10¹⁰ m |
-| r_s,UQFF | 1.14 × 10¹⁰ m |
-| T_H | 1.44 × 10⁻¹⁴ K |
-| E_flip | ~3.6 × 10⁶³ J |
-| P_flip | ≈ exp(−2.87 × 10⁷⁶) ≈ 0 (classically) |
+| M | 8.55 × 1036 kg (4.3 × 106 MM_sun) |
+| r_s | 1.27 × 1010 m |
+| r_s,UQFF | 1.14 × 1010 m |
+| T_H | 1.44 × 10-14 K |
+| E_flip | ~3.6 × 1063 J |
+| P_flip | ≈ exp(−2.87 × 1076) ≈ 0 (classically) |
 | P_trans | f_TRZ × P_flip ≈ 0 |
-| Φ_trans | ~2.09 × 10¹⁹ |
-| U_m(r_s, t_Hubble) | ~1.06 × 10¹³ J (large; stabilising) |
+| Φ_trans | ~2.09 × 1019 |
+| U_m(r_s, t_Hubble) | ~1.06 × 1013 J (large; stabilising) |
 | S_Um | exp(U_m/k_B T_H) — large |
 | **Θ_trans** | **≈ 2.7 > 1** |
 | White hole formed | **Yes (UQFF prediction)** |
 | P(Θ > 1) MC n=10000 | **≈ 99%** |
 
-The key insight: while P_trans is effectively zero classically (the Boltzmann factor is immeasurably small), the S_Um term from the magnetic string anchor is exponentially large and dominates, driving Θ_trans above 1.
+The key insight: while P_trans is effectively zero classically (the Boltzmann factor is immeasurably
+small), the S_Um term from the magnetic string anchor is exponentially large and dominates, driving
+Θ_trans above 1.
 
-### 4.2 Micro-BH (M = 10²⁰ kg)
+### 4.2 Micro-BH (M = 1020 kg)
 
 | Quantity | Value |
 |---|---|
-| T_H | ~1.23 × 10³ K (relatively warm) |
+| T_H | ~1.23 × 103 K (relatively warm) |
 | P_flip | Non-negligible |
 | Θ_trans | Elevated — micro-BH transition more probable |
 
@@ -154,32 +186,41 @@ The key insight: while P_trans is effectively zero classically (the Boltzmann fa
 
 The UQFF predicts an elevated white hole luminosity:
 
-$$L_{\rm WH} = L_H \cdot (1 + f_{\rm TRZ}) \cdot \frac{\rho_{\rm UA}}{\rho_{\rm SCm}} \cdot S_{U_m}$$
+$$L_{\rm WH} = L_H \cdot (1 + f_{\rm TRZ}) \cdot \frac{\rho_{\rm UA}}{\rho_{\rm SCm}} \cdot S_{U\_m}$$
 
 where the standard Hawking luminosity is:
 
-$$L_H = \frac{\hbar c^6}{15360\,\pi\,G^2 M^2}$$
+$$L_H = \frac{\hbar c^6}{15360\,\pi,G^2 M^2}$$
 
-For Sgr A*, L_H is extremely small (~10⁻²⁹ W), but the UQFF modulation factor S_Um is very large, predicting a potentially observable luminosity burst during the transition.
+For Sgr A*, L_H is extremely small (~10-29 W), but the UQFF modulation factor S_Um is very large,
+predicting a potentially observable luminosity burst during the transition.
 
 ---
 
 ## 6. Physical Discussion
 
 ### 6.1 Entropy Paradox Resolution
-The UQFF resolves the entropy objection by noting that the [UA] field provides a negentropic reservoir. The *total* entropy (matter + UA vacuum) is non-decreasing, even as the black hole's entropy decreases during the inversion.
+The UQFF resolves the entropy objection by noting that the [UA] field provides a negentropic
+reservoir. The *total* entropy (matter + UA vacuum) is non-decreasing, even as the black hole's
+entropy decreases during the inversion.
 
 ### 6.2 Information Paradox
-The BH→WH transition in UQFF provides a mechanism for information recovery: information is not destroyed at the singularity but is re-emitted as white hole radiation, elevated by the S_Um magnetic anchor. This complements the Hawking/Page curve analysis of PAPER_608–610 (Information Paradox Module).
+The BH→WH transition in UQFF provides a mechanism for information recovery: information is not
+destroyed at the singularity but is re-emitted as white hole radiation, elevated by the S_Um
+magnetic anchor. This complements the Hawking/Page curve analysis of PAPER_608–610 (Information
+Paradox Module).
 
 ### 6.3 V838 Monocerotis Connection
-The V838 Mon light echo (PAPER_656) may relate to a failed BH→WH transition: the star approached the UQFF threshold (Θ_trans ≈ 0.93 estimated) but did not complete the inversion, producing an exotic outburst instead.
+The V838 Mon light echo (PAPER_656) may relate to a failed BH→WH transition: the star approached the
+UQFF threshold (Θ_trans ≈ 0.93 estimated) but did not complete the inversion, producing an exotic
+outburst instead.
 
 ---
 
 ## 7. Simulation Protocol
 
-A time-series simulation evolving Θ_trans(M, r_s, t) is implemented in `BlackToWhiteHoleUQFF::simulate()`:
+A time-series simulation evolving Θ_trans(M, r_s, t) is implemented in
+`BlackToWhiteHoleUQFF::simulate()`:
 
 1. Fix M and r = r_s(M)
 2. Iterate t from t_start to t_end with step dt
@@ -192,7 +233,12 @@ Columns: t [s], r_s [m], T_H [K], Θ_trans, L_WH [W]
 
 ## 8. Conclusion
 
-The UQFF Black-to-White Hole Transition (PAPER_659) provides a physically motivated mechanism for BH→WH inversion driven by the Aether density gradient. The transition criterion Θ_trans > 1 is achieved for Sgr A* with ≈ 99% probability under Monte-Carlo sampling of vacuum density uncertainties. All three UQFF number systems (VDS, DVP, Buoyancy Harmonics) are simultaneously active in the formalism, making this the most comprehensive single-module deployment of UQFF number systems to date.
+The UQFF Black-to-White Hole Transition (PAPER_659) provides a physically motivated mechanism for
+BH→WH inversion driven by the Aether density gradient. The transition criterion Θ_trans > 1 is
+achieved for Sgr A* with ≈ 99% probability under Monte-Carlo sampling of vacuum density
+uncertainties. All three UQFF number systems (VDS, DVP, Buoyancy Harmonics) are simultaneously
+active in the formalism, making this the most comprehensive single-module deployment of UQFF number
+systems to date.
 
 ---
 
@@ -203,13 +249,15 @@ The UQFF Black-to-White Hole Transition (PAPER_659) provides a physically motiva
 
 ### §A.1 Sector Classification
 
-This paper maps to **magnetar-field** sector of the 9-sector UQFF Lagrangian (see `uqff_lagrangian_derivation.py`).
+This paper maps to **magnetar-field** sector of the 9-sector UQFF Lagrangian (see
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
-The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive quantum fundamentals (DPM, UA, SCm):
+The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
+quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_\mu \phi_B)(\partial^\mu \phi_B) - V(\phi_B) + \mathcal{L}_{\rm cosmo}$$
+$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_mu \phi_B)(\partial^\mu \phi_B) - V(\phi_B) + \mathcal{L}_{\rm cosmo}$$
 
 where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
@@ -223,7 +271,9 @@ $$\boxed{\frac{\delta S}{\delta \phi_B} = \nabla \times (\rho_{\rm SCm} \mathbf{
 
 $$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_B = 0$$
 
-The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g forces) through vacuum density initialization to the sector-specific equation of motion. Every term in the E-L equation inherits its physical origin from the cosmogenesis master.
+The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
+forces) through vacuum density initialization to the sector-specific equation of motion. Every term
+in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 
 ---
@@ -234,9 +284,9 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.091$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m³.
+For this system, the local VDS sub-ratio is $0.091$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -248,13 +298,13 @@ Since $p_{\rm DVP} = 113$ is **resonant** (threshold at $p > 26$), the system's 
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
-The BSH saturation timescale for this sector is **10³ yr** (field decay quiescence):
+The BSH saturation timescale for this sector is **103 yr** (field decay quiescence):
 
-$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
+$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\rm SCm}$ which initializes the harmonic series at cosmogenesis.
 
@@ -262,11 +312,11 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.091 | ✓ Threshold-consistent |
-| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 113$ | ✓ Resonant |
-| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
-| [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
+| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.091 | PASS Threshold-consistent |
+| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 113$ | PASS Resonant |
+| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
+| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
 ---
@@ -276,19 +326,23 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | ✓ Consistent |
-| Cosmological constant Λ | 1.1×10⁻⁵² m⁻² (UQFF vacuum term) | 1.114×10⁻⁵² m⁻² | Planck 2018 | ✓ Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10⁻³⁵/yr | Super-K 2024 | ✓ Consistent |
-| UQFF buoyancy signature | F_U_Bi_i unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
+| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
-**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes significant, offering a falsifiable prediction beyond the Standard Model.
+**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
+produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
+bridge.*
 
 ## References
 
 1. Hawking, S. W. (1975). Particle creation by black holes. *Commun. Math. Phys.* 43, 199–220.
-2. Penrose, R. (1965). Gravitational collapse and space-time singularities. *Phys. Rev. Lett.* 14, 57.
+2. Penrose, R. (1965). Gravitational collapse and space-time singularities. *Phys. Rev. Lett.* 14,
+57.
 3. Murphy, D. T. (2025). UQFF Vacuum Density Series. PAPER_646.
 4. Murphy, D. T. (2025). UQFF Dipole Vortex Primes. PAPER_647.
 5. Murphy, D. T. (2025). UQFF Buoyancy Harmonics. PAPER_648.
@@ -313,9 +367,9 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `f`neutron_s26_coupling`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `k`ozima_scm_cross_section`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `k`ozima_wstp_kernel`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -324,7 +378,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `r`amanujan_polylog_s26`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
 | `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
@@ -333,7 +387,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `m`ock_theta_q26`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -344,8 +398,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `r`amanujan_pi_uqff`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `m`ock_theta_pi_wstp_kernel`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]

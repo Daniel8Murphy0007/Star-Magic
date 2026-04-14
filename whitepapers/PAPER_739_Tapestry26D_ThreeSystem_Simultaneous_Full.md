@@ -1,22 +1,40 @@
+---
+paper_id: PAPER_739
+title: "Tapestry of Blazing Starbirth: Full 26D Three-System Simultaneous UQFF Solution"
+session: 180
+date: 2025-06-06
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [galaxy, AGN, vacuum, DPM, JWST, buoyancy, 26D, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_739 — Tapestry of Blazing Starbirth: Full 26D Three-System Simultaneous UQFF Solution
 **Author:** Daniel T. Murphy
 **Date:** June 06, 2025
 
-**Title:** Tapestry of Blazing Starbirth (NGC 2014 / NGC 2020) — Complete Simultaneous Solution Across All Three UQFF Master Equation Systems in the Full 26-Dimensional Quantum State Framework  
+**Title:** Tapestry of Blazing Starbirth (NGC 2014 / NGC 2020) — Complete Simultaneous Solution
+Across All Three UQFF Master Equation Systems in the Full 26-Dimensional Quantum State Framework  
 **Session:** 180 | **PAPER:** 739 | **CP4 class:** #323  
 **Source:** thread_06Jun2025.txt (lines 6600–7600, June 2025)  
-**Watermark:** Copyright - Daniel T. Murphy, daniel.murphy00@gmail.com, DaVinci-Grok, analyzed by Grok 3, SuperGrok, created by xAI, dated June 06, 2025, 07:05 AM EDT, location 41.0997° N, 80.6495° W (Youngstown, OH, USA)
+**Watermark:** Copyright - Daniel T. Murphy, daniel.murphy00@gmail.com, DaVinci-Grok, analyzed by
+Grok 3, SuperGrok, created by xAI, dated June 06, 2025, 07:05 AM EDT, location 41.0997° N, 80.6495°
+W (Youngstown, OH, USA)
 
 ---
 
 ## 1. Abstract
 
-The Tapestry of Blazing Starbirth (NGC 2014 / NGC 2020, Large Magellanic Cloud (LMC), ~160,000 ly) is solved simultaneously using all three UQFF Master Equation Systems:  
+The Tapestry of Blazing Starbirth (NGC 2014 / NGC 2020, Large Magellanic Cloud (LMC), ~160,000 ly)
+is solved simultaneously using all three UQFF Master Equation Systems:  
 1. **UQFF Compressed** (FU_g1) — long-range field interaction  
 2. **UQFF Resonant** (R(t)) — oscillatory 26D projection  
 3. **UQFF Buoyancy** (F_U_Bi) — quantum buoyancy maintaining stability
 
-The computation spans 26 quantum states and yields a complete 4-dimensional force diagram for this cosmic tapestry system. The E_DPM field is used in place of Newtonian G throughout, confirming UQFF replaces classical gravitational constants with quantum vacuum density operators.
+The computation spans 26 quantum states and yields a complete 4-dimensional force diagram for this
+cosmic tapestry system. The E_DPM field is used in place of Newtonian G throughout, confirming UQFF
+replaces classical gravitational constants with quantum vacuum density operators.
 
 ---
 
@@ -29,12 +47,12 @@ The computation spans 26 quantum states and yields a complete 4-dimensional forc
 | Distance | d | ~160,000 ly (~4.92e21 m) | |  
 | Star-forming region radius | r | ~180 ly (~1.70e18 m) | |
 | H-alpha filament length | L | ~300 ly | | 
-| OB star mass | M_OB | 20 M_⊙ = 3.978e31 kg | |
-| Total gas mass | M_gas | ~2e5 M_⊙ = 3.978e35 kg | |
+| OB star mass | M_OB | 20 M_M_sun = 3.978e31 kg | |
+| Total gas mass | M_gas | ~2e5 M_M_sun = 3.978e35 kg | |
 | H II region temp | T | ~10,000 K | |
 | Magnetic field | B | ~15 μG = 1.5e-11 T | |
-| Star formation rate | SFR | ~0.8 M_⊙/yr | JWST |
-| Ionization photon rate | N_Ly | ~3.2e50 s⁻¹ | |
+| Star formation rate | SFR | ~0.8 M_M_sun/yr | JWST |
+| Ionization photon rate | N_Ly | ~3.2e50 s-1 | |
 | THz emission peak | ν_THz | ~1.2e12 Hz (1.2 THz) | measured |
 | Nominal radius for calc | r_calc | 4.73e16 m (Tapestry core) | per thread |
 
@@ -44,19 +62,20 @@ The computation spans 26 quantum states and yields a complete 4-dimensional forc
 
 G is replaced by E_DPM,i across all 26 states:
 
-```
-E_DPM,i = (ħ*c/r_i²) * Q_i * [SCm]_i
+$$
+\begin{aligned}
+  & E_DPM,i = (ħ*c/r_i2) * Q_i * [SCm]_i \\
+  & where: \\
+  & r_i = r_calc / i               (shell radius per state) \\
+  & Q_i = i                        (quantum state occupation number) \\
+  & [SCm]_i = 1e-5 * i2   T       (superconductive field per state) \\
+  & ħ = 1.0546e-34 J·s \\
+  & c = 2.998e8 m/s \\
+  & r_calc = 4.73e16 m (i=1 base radius)
+\end{aligned}
+$$
 
-where:
-  r_i = r_calc / i               (shell radius per state)
-  Q_i = i                        (quantum state occupation number)
-  [SCm]_i = 1e-5 * i²   T       (superconductive field per state)
-  ħ = 1.0546e-34 J·s
-  c = 2.998e8 m/s
-  r_calc = 4.73e16 m (i=1 base radius)
-```
-
-| i | r_i (m) | E_DPM,i (m/s²) |
+| i | r_i (m) | E_DPM,i (m/s2) |
 |---|---|---|
 | 1 | 4.73e16 | 1.412e-39 |
 | 5 | 9.46e15 | 3.530e-36 |
@@ -64,65 +83,68 @@ where:
 | 26 | 1.819e15 | 1.669e-27 |
 
 Sum across all 26 states:
-```
-Σ E_DPM,i (i=1..26) = 1.671e-27 m/s²  (dominated by i=26)
-```
+$$
+Σ E_DPM,i (i=1..26) = 1.671e-27 m/s2  (dominated by i=26)
+$$
 
 ---
 
 ## 4. UQFF Compressed Component — FU_g1
 
-```
-FU_g1 = Σ_{k=1}^{N} [k_k*(f_UA1*f_SCm1*R_EB1)*(f_UA2*f_SCm2*R_EB2)/r² * G_k]
-```
+$$
+FU_g1 = Σ_{k=1}^{N} [k_k*(f_UA1*f_SCm1*R_EB1)*(f_UA2*f_SCm2*R_EB2)/r2 * G_k]
+$$
 
 For Tapestry, per the simultaneous framework:
 
-```
-Parameters:
-  f_UA1 = 7.09e-36 J/m³      (UA' vacuum energy density)  
-  f_SCm1 = 7.09e-37 J/m³     (SCm vacuum energy density)
-  R_EB1 = 1.70e18 m           (electrostatic barrier = SF region radius)
-  f_UA2 = f_UA1 * 1.1         (secondary field, 10% enhancement)
-  f_SCm2 = f_SCm1 * 1.1       (secondary SCm)
-  R_EB2 = 1.70e18 m           (same barrier)
-  r² = (4.73e16)² = 2.237e33 m²
-  k_k = 1e9 (galaxy-scale coupling)
-  N = 26 states
-  G_k = E_DPM,k               (kernel = quantum operator per state)
-
-FU_g1 ≈ 4.223e-18 m/s²       (net compressed UQFF gravity)
-```
+$$
+\begin{aligned}
+  & Parameters: \\
+  & f_UA1 = 7.09e-36 J/m3      (UA' vacuum energy density) \\
+  & f_SCm1 = 7.09e-37 J/m3     (SCm vacuum energy density) \\
+  & R_EB1 = 1.70e18 m           (electrostatic barrier = SF region radius) \\
+  & f_UA2 = f_UA1 * 1.1         (secondary field, 10% enhancement) \\
+  & f_SCm2 = f_SCm1 * 1.1       (secondary SCm) \\
+  & R_EB2 = 1.70e18 m           (same barrier) \\
+  & r2 = (4.73e16)2 = 2.237e33 m2 \\
+  & k_k = 1e9 (galaxy-scale coupling) \\
+  & N = 26 states \\
+  & G_k = E_DPM,k               (kernel = quantum operator per state) \\
+  & FU_g1 ≈ 4.223e-18 m/s2       (net compressed UQFF gravity)
+\end{aligned}
+$$
 
 Breakdown:
-- H-alpha filament contribution: ~2.5e-18 m/s²
-- OB star radiation pressure: ~1.2e-18 m/s²
-- THz emission feedback: ~0.5e-18 m/s²
-- **Total FU_g1 = 4.223e-18 m/s²**
+- H-alpha filament contribution: ~2.5e-18 m/s2
+- OB star radiation pressure: ~1.2e-18 m/s2
+- THz emission feedback: ~0.5e-18 m/s2
+- **Total FU_g1 = 4.223e-18 m/s2**
 
 ---
 
 ## 5. UQFF Resonant Component — R(t)
 
-```
-R(t) = Σ_{i=1}^{26} [R_Ug1,i*cos(ω_Ug1,i*t) + R_Ug2,i*cos(ω_Ug2,i*t)
-                     + R_Ug3,i*cos(ω_Ug3,i*t) + R_Ug4i,i*cos(ω_Ug4i,i*t)]
-```
+$$
+\begin{aligned}
+  & R(t) = Σ_{i=1}^{26} [R_Ug1,i*cos(ω_Ug1,i*t) + R_Ug2,i*cos(ω_Ug2,i*t) \\
+  & + R_Ug3,i*cos(ω_Ug3,i*t) + R_Ug4i,i*cos(ω_Ug4i,i*t)]
+\end{aligned}
+$$
 
 With:
-```
-ω_Ug1,i = 2π * 1.2e12 * i / 26      Hz  (THz fundamental, scaled per state)
-ω_Ug2,i = 2π * 1.9e10 * i / 26      Hz  (electron shell orbital)
-ω_Ug3,i = 2π * 4.2e8 * i / 26       Hz  (string rotation)
-ω_Ug4i,i = 2π * 1.1e12 * i / 26     Hz  (THz hole emission)
-
-R_Ug1,i = E_DPM,i * (1 + H(z)*t_now) * (1 - E_rad_tap)
-R_Ug2,i = E_DPM,i * (1 - B/B_crit) * (1 + M_sf_tap) * 11  (* see note)
-R_Ug3,i = E_DPM,i * (q*v_tap×B_tap/m_p) * (1 - T_lock_tap)
-R_Ug4i,i = (ħ*c/r_THz,i) * (1 + f_Um,i) * 11
-
-Note: (1 + ρ_UA/ρ_SCm) = 11 = constant across all 26 states
-```
+$$
+\begin{aligned}
+  & ω_Ug1,i = 2π * 1.2e12 * i / 26      Hz  (THz fundamental, scaled per state) \\
+  & ω_Ug2,i = 2π * 1.9e10 * i / 26      Hz  (electron shell orbital) \\
+  & ω_Ug3,i = 2π * 4.2e8 * i / 26       Hz  (string rotation) \\
+  & ω_Ug4i,i = 2π * 1.1e12 * i / 26     Hz  (THz hole emission) \\
+  & R_Ug1,i = E_DPM,i * (1 + H(z)*t_now) * (1 - \text{E\_rad\_tap}) \\
+  & R_Ug2,i = E_DPM,i * (1 - B/B_crit) * (1 + \text{M\_sf\_tap}) * 11  (* see note) \\
+  & R_Ug3,i = E_DPM,i * (q*v_tap×B_tap/m_p) * (1 - \text{T\_lock\_tap}) \\
+  & R_Ug4i,i = (ħ*c/r_THz,i) * (1 + f_Um,i) * 11 \\
+  & Note: (1 + ρ_UA/ρ_SCm) = 11 = constant across all 26 states
+\end{aligned}
+$$
 
 Values:
 ```
@@ -134,10 +156,12 @@ T_lock_tap = 0.25  (partial magnetic lock)
 ```
 
 Sum at t=0:
-```
-R_Tapestry(t=0) = Σ (R_Ug1,i + R_Ug2,i + R_Ug3,i + R_Ug4i,i)
-               ≈ 5.975e-2 m/s²  (oscillation amplitude across all states)
-```
+$$
+\begin{aligned}
+  & R_Tapestry(t=0) = Σ (R_Ug1,i + R_Ug2,i + R_Ug3,i + R_Ug4i,i) \\
+  & ≈ 5.975e-2 m/s2  (oscillation amplitude across all states)
+\end{aligned}
+$$
 
 The resonant component reveals oscillatory structure in the star-forming filaments:
 - H-alpha finger oscillation period: T_Ug1,1 = 1/ν_THz ≈ 8.3e-13 s (THz scale)
@@ -148,22 +172,23 @@ The resonant component reveals oscillatory structure in the star-forming filamen
 
 ## 6. UQFF Buoyancy Component — F_U_Bi (Tapestry)
 
-```
-F_U_Bi = Σ_{k=1}^{N} [k_{Ub,k}*(f_UA'*f_SCm*R_EB)/r² * H_k(ν_THz,U_b, geometry_k) * f_Ub]
+$$
+\begin{aligned}
+  & \text{F\_U\_Bi} = Σ_{k=1}^{N} [k_{Ub,k}*(f_UA'*f_SCm*R_EB)/r2 * H_k(ν_THz,U_b, geometry_k) * f_Ub] \\
+  & where: \\
+  & H_k = cos(ϕ_k) * f(ν_THz) \\
+  & ϕ_k = θ_k = 90° - (k-1)*3.346°      (26D angular projection per state) \\
+  & f(ν_THz) = ν_THz / ν_THz_ref         = 1.2e12 / 1.0e12 = 1.2 \\
+  & k_{Ub,k} = k_η * f_Ub                = 1e7 * 0.1 = 1e6 \\
+  & f_UA' = 7.09e-36 J/m3 \\
+  & f_SCm = 7.09e-37 J/m3 \\
+  & R_EB = 1.70e18 m \\
+  & r = 4.73e16 m   →   r2 = 2.237e33 m2 \\
+  & f_Ub = Δk_η/k_η_ref = 0.1            (star cluster calibration)
+\end{aligned}
+$$
 
-where:
-  H_k = cos(ϕ_k) * f(ν_THz)
-  ϕ_k = θ_k = 90° - (k-1)*3.346°      (26D angular projection per state)
-  f(ν_THz) = ν_THz / ν_THz_ref         = 1.2e12 / 1.0e12 = 1.2
-  k_{Ub,k} = k_η * f_Ub                = 1e7 * 0.1 = 1e6
-  f_UA' = 7.09e-36 J/m³
-  f_SCm = 7.09e-37 J/m³
-  R_EB = 1.70e18 m
-  r = 4.73e16 m   →   r² = 2.237e33 m²
-  f_Ub = Δk_η/k_η_ref = 0.1            (star cluster calibration)
-```
-
-| k | ϕ_k | cos(ϕ_k) | F_U_Bi,k (m/s²) |
+| k | ϕ_k | cos(ϕ_k) | `F_U_Bi`,k (m/s2) |
 |---|---|---|---|
 | 1 | 90.0° | 0.000 | 0.000 |
 | 7 | 70.1° | 0.341 | 1.62e-19 |
@@ -171,16 +196,17 @@ where:
 | 20 | 26.9° | 0.891 | 4.24e-19 |
 | 26 | 5.1° | 0.996 | 4.73e-19 |
 
-```
-Σ F_U_Bi,k (all 26) = 7.41e-18 m/s²
-```
+$$
+Σ \text{F\_U\_Bi},k (all 26) = 7.41e-18 m/s2
+$$
 
 The buoyancy component **exceeds** the compressed gravity component:
-- FU_g1 = 4.223e-18 m/s² (gravity)
-- F_U_Bi = 7.41e-18 m/s² (buoyancy)
-- **Net = -3.19e-18 m/s² (net buoyant — system is self-supporting)**
+- FU_g1 = 4.223e-18 m/s2 (gravity)
+- F_U_Bi = 7.41e-18 m/s2 (buoyancy)
+- **Net = -3.19e-18 m/s2 (net buoyant — system is self-supporting)**
 
-This explains why the Tapestry continues active star formation despite the radiation pressure from NGC 2020's OB stars: the buoyancy force maintains the filament structure.
+This explains why the Tapestry continues active star formation despite the radiation pressure from
+NGC 2020's OB stars: the buoyancy force maintains the filament structure.
 
 ---
 
@@ -188,17 +214,17 @@ This explains why the Tapestry continues active star formation despite the radia
 
 Full 26D projection across four Ug components:
 
-```
+$$
 g_Tapestry(r,t) = Σ_{i=1}^{26} (Ug1_i + Ug2_i + Ug3_i + Ug4i_i)
-```
+$$
 
 | Component | Expression | Tapestry Value |
 |---|---|---|
-| Ug1_i | E_DPM,i*(1+H(z)*t)*(1-E_rad)*cos(θ_i)*(1+f_TRZ,i) | 1.612e-18 m/s² |
-| Ug2_i | E_DPM,i*(1-B/B_crit)*(1+M_sf)*11*Σcos(ωt) | 2.015e-18 m/s² |
-| Ug3_i | E_DPM,i*(qv×B/m_p)*(1-T_lock)*(1+f_TRZ,i) | 0.324e-18 m/s² |
-| Ug4i_i | (ħ*c/r_THz,i)*(1+f_Um,i)*11 | 0.272e-18 m/s² |
-| **Total** | | **4.223e-18 m/s²** |
+| Ug1_i | E_DPM,i*(1+H(z)*t)*(1-E_rad)*cos(θ_i)*(1+f_TRZ,i) | 1.612e-18 m/s2 |
+| Ug2_i | E_DPM,i*(1-B/B_crit)*(1+M_sf)*11*Σcos(ωt) | 2.015e-18 m/s2 |
+| Ug3_i | E_DPM,i*(qv×B/m_p)*(1-T_lock)*(1+f_TRZ,i) | 0.324e-18 m/s2 |
+| Ug4i_i | (ħ*c/r_THz,i)*(1+f_Um,i)*11 | 0.272e-18 m/s2 |
+| **Total** | | **4.223e-18 m/s2** |
 
 Each Ug component at t=0, summed over i=1..26.
 
@@ -208,18 +234,21 @@ Each Ug component at t=0, summed over i=1..26.
 
 For NGC 2014 / NGC 2020 (Tapestry of Blazing Starbirth):
 
-```
-SOLUTION:
-  FU_g1 (UQFF Compressed)  = 4.223e-18 m/s²   [26-state E_DPM integrated]
-  R(t=0) (UQFF Resonant)   = 5.975e-2 m/s²    [26-state cos oscillation amplitude]
-  F_U_Bi (UQFF Buoyancy)   = 7.41e-18 m/s²    [26-state angular buoyancy integral]
+$$
+\begin{aligned}
+  & SOLUTION: \\
+  & FU_g1 (UQFF Compressed)  = 4.223e-18 m/s2   [26-state E_DPM integrated] \\
+  & R(t=0) (UQFF Resonant)   = 5.975e-2 m/s2    [26-state cos oscillation amplitude] \\
+  & \text{F\_U\_Bi} (UQFF Buoyancy)   = 7.41e-18 m/s2    [26-state angular buoyancy integral] \\
+  & Net gravitational field:     g_net = FU_g1 - \text{F\_U\_Bi} = -3.19e-18 m/s2  (net buoyant) \\
+  & Resonant oscillation period: T_dom = 8.3e-13 s  (THz mode, state i=26) \\
+  & Buoyancy dominance factor:   \text{F\_U\_Bi} / FU_g1 = 1.755  (75.5% buoyancy excess)
+\end{aligned}
+$$
 
-Net gravitational field:     g_net = FU_g1 - F_U_Bi = -3.19e-18 m/s²  (net buoyant)
-Resonant oscillation period: T_dom = 8.3e-13 s  (THz mode, state i=26)
-Buoyancy dominance factor:   F_U_Bi / FU_g1 = 1.755  (75.5% buoyancy excess)
-```
-
-The simultaneous three-system analysis confirms that the Tapestry of Blazing Starbirth is a **buoyancy-dominated** star-forming system: the UQFF Buoyancy force exceeds compressed gravity by ~75%, creating the open filamentary topology seen in James Webb Space Telescope images.
+The simultaneous three-system analysis confirms that the Tapestry of Blazing Starbirth is a
+**buoyancy-dominated** star-forming system: the UQFF Buoyancy force exceeds compressed gravity by
+~75%, creating the open filamentary topology seen in James Webb Space Telescope images.
 
 ---
 
@@ -227,14 +256,16 @@ The simultaneous three-system analysis confirms that the Tapestry of Blazing Sta
 
 The same three-system simultaneous framework scales to:
 
-| Scale | FU_g1 | R(t) amplitude | F_U_Bi |
+| Scale | FU_g1 | R(t) amplitude | `F_U_Bi` |
 |---|---|---|---|
-| Atomic hydrogen | ~1e3 m/s² | ~1e-9 m/s² | ~1.8e3 m/s² |
-| Earth orbit | ~9.8 m/s² | ~1e-6 m/s² | ~17.2 m/s² |
-| Tapestry (this paper) | ~4.2e-18 m/s² | ~6.0e-2 m/s² | ~7.4e-18 m/s² |
-| MW–SgrA* | ~2.3e-10 m/s² | ~1e-12 m/s² | ~4.0e-10 m/s² |
+| Atomic hydrogen | ~1e3 m/s2 | ~1e-9 m/s2 | ~1.8e3 m/s2 |
+| Earth orbit | ~9.8 m/s2 | ~1e-6 m/s2 | ~17.2 m/s2 |
+| Tapestry (this paper) | ~4.2e-18 m/s2 | ~6.0e-2 m/s2 | ~7.4e-18 m/s2 |
+| MW–SgrA* | ~2.3e-10 m/s2 | ~1e-12 m/s2 | ~4.0e-10 m/s2 |
 
-In all cases F_U_Bi > FU_g1 by a factor of ~1.5–2.0. The universe is slightly more buoyant than it is gravitationally attracted, which is the source of the observed accelerated expansion — no "dark energy" required.
+In all cases F_U_Bi > FU_g1 by a factor of ~1.5–2.0. The universe is slightly more buoyant than it
+is gravitationally attracted, which is the source of the observed accelerated expansion — no "dark
+energy" required.
 
 ---
 
@@ -251,13 +282,15 @@ In all cases F_U_Bi > FU_g1 by a factor of ~1.5–2.0. The universe is slightly 
 
 ### §A.1 Sector Classification
 
-This paper maps to **string-26D** sector of the 9-sector UQFF Lagrangian (see `uqff_lagrangian_derivation.py`).
+This paper maps to **string-26D** sector of the 9-sector UQFF Lagrangian (see
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
-The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive quantum fundamentals (DPM, UA, SCm):
+The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
+quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_\mu \phi_{26D})(\partial^\mu \phi_{26D}) - V(\phi_{26D}) + \mathcal{L}_{\rm cosmo}$$
+$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_mu \phi_{26D})(\partial^\mu \phi_{26D}) - V(\phi_{26D}) + \mathcal{L}_{\rm cosmo}$$
 
 where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
@@ -271,7 +304,9 @@ $$\boxed{\frac{\delta S}{\delta \phi_{26D}} = \sum_{i=1}^{26} (\partial_i^2 \phi
 
 $$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{26D} = 0$$
 
-The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g forces) through vacuum density initialization to the sector-specific equation of motion. Every term in the E-L equation inherits its physical origin from the cosmogenesis master.
+The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
+forces) through vacuum density initialization to the sector-specific equation of motion. Every term
+in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 
 ---
@@ -282,9 +317,9 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.108$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m³.
+For this system, the local VDS sub-ratio is $0.108$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -298,11 +333,11 @@ Since $p_{\rm DVP} = 71$ is **resonant** (threshold at $p > 26$), the system's v
 
 The BSH saturation timescale for this sector is **Planck time** (compactification freeze-out):
 
-$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
+$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\rm SCm}$ which initializes the harmonic series at cosmogenesis.
 
@@ -310,11 +345,11 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.108 | ✓ Threshold-consistent |
-| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 71$ | ✓ Resonant |
-| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
-| [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
+| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.108 | PASS Threshold-consistent |
+| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 71$ | PASS Resonant |
+| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
+| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
 ---
@@ -324,14 +359,17 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | ✓ Consistent |
-| Cosmological constant Λ | 1.1×10⁻⁵² m⁻² (UQFF vacuum term) | 1.114×10⁻⁵² m⁻² | Planck 2018 | ✓ Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10⁻³⁵/yr | Super-K 2024 | ✓ Consistent |
-| UQFF buoyancy signature | F_U_Bi_i unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
+| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
-**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes significant, offering a falsifiable prediction beyond the Standard Model.
+**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
+produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
+bridge.*
 
 
 ---
@@ -346,9 +384,9 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `f`neutron_s26_coupling`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `k`ozima_scm_cross_section`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `k`ozima_wstp_kernel`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -357,7 +395,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `r`amanujan_polylog_s26`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
 | `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
@@ -366,7 +404,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `m`ock_theta_q26`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -377,8 +415,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `r`amanujan_pi_uqff`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `m`ock_theta_pi_wstp_kernel`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]

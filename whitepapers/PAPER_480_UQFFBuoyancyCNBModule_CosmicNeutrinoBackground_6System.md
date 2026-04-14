@@ -1,10 +1,23 @@
+---
+paper_id: PAPER_480
+title: "UQFF Cosmic Neutrino Background (CNB) Buoyancy Module — 6-System Framework"
+session: 0
+date: 2025-10-22
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [galaxy, AGN, vacuum, buoyancy, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_480: UQFF Cosmic Neutrino Background (CNB) Buoyancy Module — 6-System Framework
 **Author:** Daniel T. Murphy
 **Date:** October 22, 2025
 
 ## Abstract
 
-This paper presents a UQFF analysis of 6-System Framework, deriving compressed field equations and observational predictions within the Star-Magic/UQFF framework.
+This paper presents a UQFF analysis of 6-System Framework, deriving compressed field equations and
+observational predictions within the Star-Magic/UQFF framework.
 
 ## Whitepaper 480 of 1,000 | Session 125 | v4.98
 ## Source: grok_share_4e4d8be1f7.txt (Source162.docx — UQFFBuoyancyCNBModule)
@@ -16,7 +29,7 @@ This paper presents a UQFF analysis of 6-System Framework, deriving compressed f
 
 ### 1.1 Abstract
 
-This whitepaper documents the **UQFFBuoyancyCNBModule** — a C++ extension of the UQFFBuoyancyAstroModule (PAPER_479) that incorporates **Cosmic Neutrino Background (CNB) buoyancy terms** into the UQFF master equation. The CNB is the neutrino analogue of the Cosmic Microwave Background (CMB): ~336 relic neutrinos per cm³ produced ~1 second after the Big Bang, with mean energy $E_{CNB} \approx 1.7 \times 10^{-4}$ eV per flavor.
+This whitepaper documents the **UQFFBuoyancyCNBModule** — a C++ extension of the UQFFBuoyancyAstroModule (PAPER_479) that incorporates **Cosmic Neutrino Background (CNB) buoyancy terms** into the UQFF master equation. The CNB is the neutrino analogue of the Cosmic Microwave Background (CMB): ~336 relic neutrinos per cm3 produced ~1 second after the Big Bang, with mean energy $E_{CNB} \approx 1.7 \times 10^{-4}$ eV per flavor.
 
 The module introduces three CNB-exclusive force terms into the UQFF integrand — neutrino coupling ($F_\nu$), Sweet vacuum pressure ($F_{Sweet}$), and Kozima nuclear drop ($F_{Koz}$) — and extends the 5-system Astro framework to include a 6th system: **Centaurus A (NGC 5128)**, the nearest radio galaxy and AGN to Earth.
 
@@ -34,7 +47,7 @@ is the smallest UQFF force term yet computed — 32 orders of magnitude below $F
 
 The CNB-extended UQFF buoyancy force:
 
-$$F_{U,Bi,i}^{CNB}(r, t) = -F_0 + \frac{m_e c^2}{r^2} D_{PM,mom} \cos\theta + \frac{GM}{r^2} D_{PM,grav} + \int_{0}^{t} \text{Integrand}_{CNB}(r, t') \, dt'$$
+$$F_{U,Bi,i}^{CNB}(r, t) = -F_0 + \frac{m_e c^2}{r^2} D_{PM,mom} \costheta + \frac{GM}{r^2} D_{PM,grav} + \int_{0}^{t} \text{Integrand}_{CNB}(r, t') \, dt'$$
 
 The CNB integrand extends the Astro integrand with three additional terms:
 
@@ -49,15 +62,17 @@ $$F_\nu = k_\nu \cdot \sigma_{CNB} \cdot n_{CNB} \cdot E_{CNB}$$
 | Parameter | Symbol | Value |
 |-----------|--------|-------|
 | Neutrino coupling constant | $k_\nu$ | $10^{-15}$ |
-| CNB neutrino cross-section | $\sigma_{CNB}$ | $\sim 10^{-60}$ m² (ultra-weak scattering) |
-| CNB number density | $n_{CNB}$ | $\sim 336$ cm⁻³ $= 3.36 \times 10^8$ m⁻³ |
+| CNB neutrino cross-section | $\sigma_{CNB}$ | $\sim 10^{-60}$ m2 (ultra-weak scattering) |
+| CNB number density | $n_{CNB}$ | $\sim 336$ cm-3 $= 3.36 \times 10^8$ m-3 |
 | CNB neutrino energy | $E_{CNB}$ | $\sim 1.7 \times 10^{-4}$ eV $= 2.72 \times 10^{-23}$ J |
 
 **Result:** $F_\nu \approx k_\nu \cdot (10^{-60}) \cdot (3.36 \times 10^8) \cdot (2.72 \times 10^{-23}) = 9.07 \times 10^{-42}$ N
 
 **Physical significance:** At $F_\nu \sim 10^{-42}$ N, the CNB coupling is below any currently measurable quantum force, yet it is non-zero and represents the neutrino contribution to buoyancy in the UQFF vacuum. This term becomes relevant in ensemble (cosmological) calculations and during periods of CNB anisotropy.
 
-**Observational analogy:** PTOLEMY project (proposed CNB detection via tritium endpoint) targets this same energy scale. UQFF now provides a theoretical framework for what a CNB-coupled buoyancy force would look like in a UQFF-active medium.
+**Observational analogy:** PTOLEMY project (proposed CNB detection via tritium endpoint) targets
+this same energy scale. UQFF now provides a theoretical framework for what a CNB-coupled buoyancy
+force would look like in a UQFF-active medium.
 
 #### 2.2.2 Sweet Vacuum Pressure
 
@@ -68,7 +83,9 @@ $$F_{Sweet} = k_{Sweet} \cdot \rho_{vac,UA}$$
 | Sweet coupling | $k_{Sweet}$ | $10^{-25}$ |
 | UA vacuum density | $\rho_{vac,UA}$ | System-dependent (aether vacuum component) |
 
-The Sweet vacuum term couples the UA (Universal Aether) vacuum density to the buoyancy force. Named after Dr. Peter Sweet (Sweet-Parker magnetic reconnection), this term models vacuum pressure contributions from the UA aether field suppression layer.
+The Sweet vacuum term couples the UA (Universal Aether) vacuum density to the buoyancy force. Named
+after Dr. Peter Sweet (Sweet-Parker magnetic reconnection), this term models vacuum pressure
+contributions from the UA aether field suppression layer.
 
 #### 2.2.3 Kozima Drop Term
 
@@ -79,7 +96,10 @@ $$F_{Koz} = k_{Kozima} \cdot \sigma_{Koz}$$
 | Kozima coupling | $k_{Kozima}$ | $10^{-18}$ |
 | Kozima cross-section | $\sigma_{Koz}$ | Lattice-confined neutron LENR cross-section |
 
-The Kozima drop is derived from H. Kozima's lattice-confined nuclear force model (TNCF theory), representing the nuclear binding energy drop in lattice-confined neutron systems undergoing LENR transitions. In the UQFF context, this term represents the vacuum lattice contribution to buoyancy in strongly magnetized environments.
+The Kozima drop is derived from H. Kozima's lattice-confined nuclear force model (TNCF theory),
+representing the nuclear binding energy drop in lattice-confined neutron systems undergoing LENR
+transitions. In the UQFF context, this term represents the vacuum lattice contribution to buoyancy
+in strongly magnetized environments.
 
 ### 2.3 Complete Integrand Table (All Terms)
 
@@ -88,7 +108,7 @@ The Kozima drop is derived from H. Kozima's lattice-confined nuclear force model
 | LENR Resonance | $k_{LENR}(\omega_{LENR}/\omega_0)^2$ | AstroModule | Dominant at low ω₀ |
 | Activation | $k_{act}\cos(\omega_{act} t)$ | AstroModule | ω_act = 2π×300 |
 | Directed Energy | $k_{DE} \cdot L_X$ | AstroModule | Scales with X-ray luminosity |
-| Magnetic Resonance | $2qB_0 V\sin\theta \cdot DPM_{res}$ | AstroModule | DPM coupling |
+| Magnetic Resonance | $2qB_0 V\sintheta \cdot DPM_{res}$ | AstroModule | DPM coupling |
 | Neutron Drop | $k_{neutron} \cdot \sigma_n$ | AstroModule | $k_{neutron}=10^{10}$ |
 | Relativistic | $F_{rel} = 4.30\times10^{33}$ N | AstroModule | LEP 1998 calibration |
 | **CNB Neutrino** | $k_\nu \sigma_{CNB} n_{CNB} E_{CNB}$ | **CNBModule only** | $\approx 9.07\times10^{-42}$ N |
@@ -99,17 +119,19 @@ The Kozima drop is derived from H. Kozima's lattice-confined nuclear force model
 
 ## Q3 — Six Astrophysical Systems
 
-Systems J1610+1811, PLCK G287.0+32.9, PSZ2 G181.06+48.47, ASKAP J1832-0911, and SonificationCollection maintain identical parameters to PAPER_479 (UQFFBuoyancyAstroModule). The CNBModule adds:
+Systems J1610+1811, PLCK G287.0+32.9, PSZ2 G181.06+48.47, ASKAP J1832-0911, and
+SonificationCollection maintain identical parameters to PAPER_479 (UQFFBuoyancyAstroModule). The
+CNBModule adds:
 
 ### 3.1 Centaurus A / NGC 5128 (AGN Radio Galaxy — NEW in CNBModule)
 
 | Parameter | Value |
 |-----------|-------|
-| M | 1.094 × 10³⁸ kg (~5.5 × 10⁷ M☉; central SMBH) |
-| r | 6.17 × 10¹⁷ m (~20 pc; radio lobe boundary) |
-| T | 10⁴ K (jet plasma) |
-| L_X | 10³⁶ W (Chandra X-ray luminosity) |
-| B₀ | 10⁻⁴ T (radio lobe field) |
+| M | 1.094 × 1038 kg (~5.5 × 107 MM_sun; central SMBH) |
+| r | 6.17 × 1017 m (~20 pc; radio lobe boundary) |
+| T | 104 K (jet plasma) |
+| L_X | 1036 W (Chandra X-ray luminosity) |
+| B₀ | 10-4 T (radio lobe field) |
 | Distance | 3.8 Mpc (~12.4 Mly) — nearest radio galaxy |
 
 **Physics context:** Centaurus A is the closest active galactic nucleus to Earth, featuring giant lobes extending 250,000 light-years from the central SMBH. It was previously analyzed in PAPER_067 (AGN UQFF), PAPER_038/039 (buoyancy variants 7–17 ICM), and PAPER_111/154 (Navier-Stokes jet). The CNBModule adds the CNB neutrino coupling for the CenA radio lobe environment — where the densest CNB overdensities are expected due to gravitational clustering around the massive central object ($M_{SMBH} \approx 5.5 \times 10^7 M_\odot$).
@@ -213,7 +235,7 @@ The $F_\nu$ formula follows from: $\text{Force} = \text{coupling} \times \text{f
 The Kozima LENR coupling $k_{Kozima} = 10^{-18}$ is consistent with:
 - H. Kozima, *The Science of the Cold Fusion Phenomenon* (2006)
 - Kozima TNCF (Trapped Neutron Catalytic Fusion) model: lattice-trapped thermal neutrons with enhanced cross-sections near Pd/Ni lattice spacing (~2.75 Å)
-- PAPER_069 (ASKAP J1832 UQFF) used similar k_neutron = 10¹⁰ for neutron drop coupling
+- PAPER_069 (ASKAP J1832 UQFF) used similar k_neutron = 1010 for neutron drop coupling
 
 ### 5.3 Sweet Parker Context
 
@@ -248,9 +270,9 @@ The Sweet vacuum coupling $k_{Sweet} = 10^{-25}$ connects to:
 |------|-------------|
 | `UQFFBuoyancyCNBModule.h` | C++ header (3,574 chars, 68 lines) — Block 3 from Source162.docx |
 | `UQFFBuoyancyCNBModule.cpp` | C++ implementation (14,567 chars, 311 lines) — Block 3 |
-| `grok_share_4e4d8be1f7.txt` | Source file (2,327 lines) — L1261–2327 = Source162.docx |
-| `INTEGRATION_PLAN_4e4d8be1f7.md` | Complete integration roadmap |
-| `PAPER_479_UQFFBuoyancyAstroModule_ComplexArithmetic_5System.md` | Base module whitepaper |
+| `g`rok_share_4e4d8be1f7`.txt` | Source file (2,327 lines) — L1261–2327 = Source162.docx |
+| `I`NTEGRATION_PLAN_4e4d8be1f7`.md` | Complete integration roadmap |
+| `P`APER_479_UQFFBuoyancyAstroModule_ComplexArithmetic_5System`.md` | Base module whitepaper |
 
 ---
 
@@ -260,13 +282,15 @@ The Sweet vacuum coupling $k_{Sweet} = 10^{-25}$ connects to:
 
 ### §A.1 Sector Classification
 
-This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see `uqff_lagrangian_derivation.py`).
+This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
-The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive quantum fundamentals (DPM, UA, SCm):
+The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
+quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_\mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
+$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
 
 where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
@@ -280,7 +304,9 @@ $$\boxed{\frac{\delta S}{\delta \phi_{\rm NS}} = \nabla^2 \phi_{\rm NS} - (4\pi 
 
 $$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\rm NS} = 0$$
 
-The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g forces) through vacuum density initialization to the sector-specific equation of motion. Every term in the E-L equation inherits its physical origin from the cosmogenesis master.
+The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
+forces) through vacuum density initialization to the sector-specific equation of motion. Every term
+in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 
 ---
@@ -291,9 +317,9 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.080$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m³.
+For this system, the local VDS sub-ratio is $0.080$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -305,13 +331,13 @@ Since $p_{\rm DVP} = 2$ is **sub-threshold** (threshold at $p > 26$), the system
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
-The BSH saturation timescale for this sector is **10⁴ yr** (spin-down equilibrium):
+The BSH saturation timescale for this sector is **104 yr** (spin-down equilibrium):
 
-$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
+$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\rm SCm}$ which initializes the harmonic series at cosmogenesis.
 
@@ -319,11 +345,11 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.080 | ✓ Threshold-consistent |
-| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 2$ | ✓ Sub-threshold |
-| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
-| [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
+| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.080 | PASS Threshold-consistent |
+| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 2$ | PASS Sub-threshold |
+| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
+| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
 ---
@@ -333,10 +359,10 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Higgs mass m_H | UQFF K_HIGGS=47.34 → m_H_UQFF = 125.09 GeV | m_H = 125.20 ± 0.11 GeV | PDG 2024 | 99.8% |
-| Cosmological Λ | UQFF |∇UA|² → 1.09×10⁻⁵² m⁻² | Λ = 1.114×10⁻⁵² m⁻² (Planck+DESI) | Planck 2018 | 97.8% |
-| Thomson σ_T (QED) | UQFF U_m kernel: σ_T = 6.6524×10⁻²⁹ m² | σ_T = 6.6524×10⁻²⁹ m² | PDG 2024 | 100% (exact) |
-| κ baryon stability | κ = 0.0005/day; scale separation 10³³ from proton decay | τ_p > 7.7×10³³ yr (Super-K) | Super-K 2024 | ✓ UQFF baryon-safe |
+| Higgs mass m_H | UQFF K_HIGGS=47.34 → `m_H_UQFF` = 125.09 GeV | m_H = 125.20 ± 0.11 GeV | PDG 2024 | 99.8% |
+| Cosmological Λ | UQFF |∇UA|2 → 1.09×10-52 m-2 | Λ = 1.114×10-52 m-2 (Planck+DESI) | Planck 2018 | 97.8% |
+| Thomson σ_T (QED) | UQFF U_m kernel: σ_T = 6.6524×10-29 m2 | σ_T = 6.6524×10-29 m2 | PDG 2024 | 100% (exact) |
+| κ baryon stability | κ = 0.0005/day; scale separation 1033 from proton decay | τ_p > 7.7×1033 yr (Super-K) | Super-K 2024 | PASS UQFF baryon-safe |
 
 **New physics claim:** UQFF operates at a vacuum topology scale (~200 PeV) that is 8 orders
 below the GUT scale and 33 orders above nuclear baryon-number scales. This intermediate-scale
@@ -348,7 +374,8 @@ while remaining consistent with all collider and nuclear precision measurements.
 
 
 **Watermark:** Copyright © Daniel T. Murphy, analyzed October 22, 2025. Documented March 2026.  
-**QS=5:** Q1 core discovery ✅ | Q2 CNB equations ✅ | Q3 6 systems ✅ | Q4 implementation ✅ | Q5 validation ✅
+**QS=5:** Q1 core discovery ✅ | Q2 CNB equations ✅ | Q3 6 systems ✅ | Q4 implementation ✅ | Q5
+validation ✅
 
 
 ---
@@ -363,9 +390,9 @@ while remaining consistent with all collider and nuclear precision measurements.
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `f`neutron_s26_coupling`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `k`ozima_scm_cross_section`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `k`ozima_wstp_kernel`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -374,7 +401,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `r`amanujan_polylog_s26`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
 | `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
@@ -383,7 +410,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `m`ock_theta_q26`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -394,8 +421,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `r`amanujan_pi_uqff`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `m`ock_theta_pi_wstp_kernel`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]

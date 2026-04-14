@@ -1,6 +1,18 @@
+---
+paper_id: PAPER_966
+title: "Unified Triadic Solver"
+session: 215
+date: 2026-04-12
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [SCm, jet, buoyancy, phonon, damping, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_966: Unified Triadic Solver
 
-**Author:** Daniel T. Murphy -- Star Magic / UQFF Framework
+**Author:** Daniel T. Murphy — Star Magic / UQFF Framework
 **Date:** 2026-04-12
 **Session:** 215
 **Source:** triadic_solutions_next.py (TriadicSolverNext)
@@ -11,7 +23,7 @@
 
 ## Abstract
 
-The unified Triadic solver applies all three UQFF operational modes — Compressed, Resonant, and Buoyancy gravity — simultaneously to a single dataset. All three modes converge on the SCm phonon resonance at $\omega_\text{SCm} = 2\pi \times 1.25$ THz.
+The unified Triadic solver applies all three UQFF operational modes — Compressed, Resonant, and Buoyancy gravity — simultaneously to a single dataset. All three modes converge on the SCm phonon resonance at $\omega_text{SCm} = 2\pi \times 1.25$ THz.
 
 ---
 
@@ -21,11 +33,11 @@ $$F_\text{compressed}(\Gamma) = \frac{F_{U,Bi}}{F_U} \cdot \Phi(\omega,\Gamma) \
 
 ## 2. Resonant Mode
 
-$$\Phi(\omega,\Gamma) = \Phi_0 \cdot \exp\!\left(-\frac{(\omega-\omega_\text{SCm})^2}{2\Gamma^2}\right) \cdot S_{26}$$
+$$\Phi(\omega,\Gamma) = \Phi_0 \cdot \exp!\left(-\frac{(\omega-\omega_text{SCm})^2}{2\Gamma^2}\right) \cdot S_{26}$$
 
 ## 3. Buoyancy Mode
 
-$$E_\text{net}(t,\Gamma) = S_{26} \cdot \cos(\omega_\text{SCm} t) \cdot \exp(-\Gamma t)$$
+$$E_\text{net}(t,\Gamma) = S_{26} \cdot \cos(\omega_text{SCm} t) \cdot \exp(-\Gamma t)$$
 
 ## 4. Convergence
 
@@ -35,7 +47,7 @@ All three modes yield consistent predictions when evaluated at the SCm phonon re
 
 ## References
 
-1. Murphy, D.T. -- Star Magic UQFF Framework (2024-2026)
+1. Murphy, D.T. — Star Magic UQFF Framework (2024-2026)
 2. PAPER_961 — Compressed Gravity Triadic
 3. PAPER_962 — Resonant Gravity Triadic
 4. PAPER_963 — Buoyancy Gravity Triadic
@@ -85,7 +97,8 @@ $$\mathcal{L}_\text{tri} = w_c\mathcal{L}_\text{comp} + w_r\mathcal{L}_\text{res
 $$\boxed{g_\text{tri}(r,t) = w_c\, g_\text{comp}(r) + w_r\, g_\text{res}(r,t) + w_b\, g_\text{buoy}(r),\quad w_c + w_r + w_b = 1}$$
 
 ### §A.4 Cosmogenesis Linkage Chain
-PAPER_877 → three gravity branches → weighted combination → unified triadic field → convergence check
+PAPER_877 → three gravity branches → weighted combination → unified triadic field → convergence
+check
 
 ---
 

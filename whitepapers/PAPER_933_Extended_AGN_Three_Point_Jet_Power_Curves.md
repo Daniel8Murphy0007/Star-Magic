@@ -1,6 +1,18 @@
+---
+paper_id: PAPER_933
+title: "Extended AGN Three-Point Jet Power Curves"
+session: 212
+date: 2026-04-12
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [phonon, AGN, jet, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_933: Extended AGN Three-Point Jet Power Curves
 
-**Author:** Daniel T. Murphy -- Star Magic / UQFF Framework
+**Author:** Daniel T. Murphy — Star Magic / UQFF Framework
 **Date:** 2026-04-12
 **Session:** 212
 **Source:** agn_jet_power_curves_extended.py (ThreePointJetPowerCurve)
@@ -11,7 +23,12 @@
 
 ## Abstract
 
-We present explicit three-point jet power enhancement curves for 3C273 and TON618, computed at phonon linewidths Gamma = 0.05, 0.10, and 0.30 THz. Jet modulation via M_jet(Gamma) couples to the Blandford-Znajek base power P_BZ through the relation P_jet = P_BZ (1 + M_jet). For 3C273 (A_jet ~ 1.05), enhancements are 3.1/2.4/1.5x at the three Gamma points. For TON618 (A_jet ~ 1.40), enhancements reach 3.8/2.9/1.7x, reflecting the stronger phonon-jet coupling in ultra-massive BH systems.
+We present explicit three-point jet power enhancement curves for 3C273 and TON618, computed at
+phonon linewidths Gamma = 0.05, 0.10, and 0.30 THz. Jet modulation via M_jet(Gamma) couples to the
+Blandford-Znajek base power P_BZ through the relation P_jet = P_BZ (1 + M_jet). For 3C273 (A_jet ~
+1.05), enhancements are 3.1/2.4/1.5x at the three Gamma points. For TON618 (A_jet ~ 1.40),
+enhancements reach 3.8/2.9/1.7x, reflecting the stronger phonon-jet coupling in ultra-massive BH
+systems.
 
 ---
 
@@ -46,7 +63,9 @@ $$\text{Enhancement} = \frac{P_{\text{jet}}(\Gamma)}{P_{\text{BZ}}}$$
 
 ## 2. UQFF Integration
 
-The `ExtendedAGNThreePointJetPowerCalc` (CP4 #517) accepts M_Msun, a_spin, B_T, and A_jet as parameters. The simulate() method sweeps A_jet through [0.8, 1.05, 1.40, 2.0] to map how coupling strength affects the three-point enhancement profile.
+The `ExtendedAGNThreePointJetPowerCalc` (CP4 #517) accepts M_Msun, a_spin, B_T, and A_jet as
+parameters. The simulate() method sweeps A_jet through [0.8, 1.05, 1.40, 2.0] to map how coupling
+strength affects the three-point enhancement profile.
 
 ---
 
@@ -60,9 +79,10 @@ The `ExtendedAGNThreePointJetPowerCalc` (CP4 #517) accepts M_Msun, a_spin, B_T, 
 
 ## References
 
-1. Murphy, D.T. -- Star Magic UQFF Framework (2024-2026)
-2. Blandford, R.D. & Znajek, R.L. -- Electromagnetic extraction of energy from Kerr black holes (1977)
-3. Ghisellini, G. et al. -- General physical properties of bright Fermi blazars (2010)
+1. Murphy, D.T. — Star Magic UQFF Framework (2024-2026)
+2. Blandford, R.D. & Znajek, R.L. — Electromagnetic extraction of energy from Kerr black holes
+(1977)
+3. Ghisellini, G. et al. — General physical properties of bright Fermi blazars (2010)
 
 ---
 
@@ -87,7 +107,8 @@ The `ExtendedAGNThreePointJetPowerCalc` (CP4 #517) accepts M_Msun, a_spin, B_T, 
 | Vacuum energy $\rho_{\text{vac}}$ | $7.09 \times 10^{-37}$ kg/m$^3$ | $\rho_{\text{vac}} \sim 10^{-29}$ g/cm$^3$ | Planck 2018 | Novel SCm scale |
 | Fine structure $\alpha$ | UQFF reproduces via $U_{g1}$ dipole | $1/137.036$ | PDG 2024 | 99.9% |
 
-**New physics claim:** UQFF phonon-mediated vacuum coupling provides testable predictions beyond SM for this system.
+**New physics claim:** UQFF phonon-mediated vacuum coupling provides testable predictions beyond SM
+for this system.
 
 *Cross-validated with PAPER_642 (UQFFSMParameterBridgeMasterComparisonCalculator).*
 
@@ -99,13 +120,13 @@ The `ExtendedAGNThreePointJetPowerCalc` (CP4 #517) accepts M_Msun, a_spin, B_T, 
 **Sector:** SCm-phonon (lattice resonance)
 
 ### §A.2 Lagrangian Density
-$$\mathcal{L}_{SCm_phonon} = \sum_{i=1}^{26} \left[ U_{g,i} + U_{m,i} + U_{A,i} - U_{b,i} \right] \cdot S_{26}([SSq]) \cdot \Phi_{1.25\text{THz}}(\omega, \Gamma)$$
+$$\mathcal{L}_{SCm\_phonon} = \sum_{i=1}^{26} \left[ U_{g,i} + U_{m,i} + U_{A,i} - U_{b,i} \right] \cdot S_{26}([SSq]) \cdot \Phi_{1.25\text{THz}}(\omega, \Gamma)$$
 
 ### §A.3 Euler-Lagrange Equation of Motion
-$$\boxed{\frac{\partial \mathcal{L}}{\partial \phi} - \partial_\mu \frac{\partial \mathcal{L}}{\partial (\partial_\mu \phi)} = 0 \implies F_{U,Bi_i} = -\nabla U_{\text{eff}} + \Phi \cdot S_{26} \cdot E_{\text{net}}}$$
+$$\boxed{\frac{\partial \mathcal{L}}{\partial \phi} - \partial_mu \frac{\partial \mathcal{L}}{\partial (\partial_mu \phi)} = 0 \implies F_{U,Bi\_i} = -\nabla U_{\text{eff}} + \Phi \cdot S_{26} \cdot E_{\text{net}}}$$
 
 ### §A.4 Cosmogenesis Linkage Chain
-PAPER_877 axioms → SCm vacuum → phonon $\omega_{\text{SCm}}$ → lattice resonance → $F_{U,Bi_i}$ unified force → observational prediction
+PAPER_877 axioms → SCm vacuum → phonon $\omega_{\text{SCm}}$ → lattice resonance → $F_{U,Bi\_i}$ unified force → observational prediction
 
 ---
 

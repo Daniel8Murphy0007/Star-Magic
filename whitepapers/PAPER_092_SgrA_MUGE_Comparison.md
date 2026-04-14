@@ -1,20 +1,38 @@
+---
+paper_id: PAPER_092
+title: "Sagittarius A* SMBH Gravitational Field: 8-Term MUGE Decomposition and Quantum Coherence
+Peak at Horizon"
+session: 0
+date: 2026-03-07
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [AGN, SCm, MUGE, SMBH, Navier-Stokes, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 **Session:** 0
 
 # PAPER #92 — Sgr A* SMBH: MUGE vs Newtonian Gravity Comparison
 
-**Title:** Sagittarius A* SMBH Gravitational Field: 8-Term MUGE Decomposition and Quantum Coherence Peak at Horizon
+**Title:** Sagittarius A* SMBH Gravitational Field: 8-Term MUGE Decomposition and Quantum Coherence
+Peak at Horizon
 
 **Author:** Daniel T. Murphy  
 **Framework:** UQFF/MUGE Star-Magic  
 **Date:** March 7, 2026  
-**Source Data:** validate_uqff_muge.py, from_system('SgrA'), r_horizon = 1.27 × 10¹° m  
+**Source Data:** validate_uqff_muge.py, from_system('SgrA'), r_horizon = 1.27 × 101° m  
 **Index Slot:** §1.12 UQFF Master Calculators, Paper #92  
 
 ---
 
 ## Abstract
 
-Sgr A*, the Milky Way SMBH at 4 × 106 M?, serves as the primary calibration system for MUGE. Using `validate_uqff_muge.py` and system parameters from the `from_system('SgrA')` constructor, we compute the complete 8-term MUGE breakdown at r_horizon = 1.27 × 10¹° m, confirm no NaN/Inf, identify the quantum coherence Gaussian peak at r_horizon, and quantify the |coherence at horizon| >> |coherence at r >> r_horizon| separation.
+Sgr A*, the Milky Way SMBH at 4 × 106 M?, serves as the primary calibration system for MUGE. Using
+`validate_uqff_muge.py` and system parameters from the `from_system('SgrA')` constructor, we compute
+the complete 8-term MUGE breakdown at r_horizon = 1.27 × 101° m, confirm no NaN/Inf, identify the
+quantum coherence Gaussian peak at r_horizon, and quantify the |coherence at horizon| >> |coherence
+at r >> r_horizon| separation.
 
 ---
 
@@ -22,15 +40,16 @@ Sgr A*, the Milky Way SMBH at 4 × 106 M?, serves as the primary calibration sys
 
 | Parameter | Value | Source |
 |-----------|-------|--------|
-| M_BH | 8.0 × 10³6 kg (4.0 × 106 M?) | EHT 2022, GRAVITY+ |
-| r_Schwarzschild | 1.19 × 10¹° m | r_S = 2GM/c² |
-| r_horizon (UQFF) | 1.27 × 10¹° m | r_S × (1 + [SCm]×0.07) |
-| d_GC | 2.55 × 10²° m | 27,000 ly |
+| M_BH | 8.0 × 1036 kg (4.0 × 106 M?) | EHT 2022, GRAVITY+ |
+| r_Schwarzschild | 1.19 × 101° m | r_S = 2GM/c2 |
+| r_horizon (UQFF) | 1.27 × 101° m | r_S × (1 + [SCm]×0.07) |
+| d_GC | 2.55 × 102° m | 27,000 ly |
 | B_corona | ~10?4 T | EHT polarimetry |
-| ?_corona | ~10?²¹ kg/m³ | RIAF model |
+| ?_corona | ~10?21 kg/m3 | RIAF model |
 | AGN A_AGN | 1.0 (quiescent) | Monitoring 2020-2025 |
 
-Note: r_horizon^UQFF = 1.27 × 10¹° m > r_S = 1.19 × 10¹° m by ~7%, arising from [SCm] ˜ 0.99 superconductive horizon shift.
+Note: r_horizon^UQFF = 1.27 × 101° m > r_S = 1.19 × 101° m by ~7%, arising from [SCm] ˜ 0.99
+superconductive horizon shift.
 
 ---
 
@@ -38,17 +57,17 @@ Note: r_horizon^UQFF = 1.27 × 10¹° m > r_S = 1.19 × 10¹° m by ~7%, arising
 
 From `validate_uqff_muge.py`:
 
-| Term | Value at r_horizon (m/s²) | % of g_total |
+| Term | Value at r_horizon (m/s2) | % of g_total |
 |------|--------------------------|-------------|
 | base_gravity (Newton) | 234.1 | 99.82% |
 | sum_Ug (Ug1+Ug2+Ug3+Ug4) | 0.40 | 0.17% |
 | U_i (UQFF integral) | 0.015 | 0.006% |
-| cosmological (?) | -5.8 × 10?²6 | –2.5 × 10?²6% |
-| quantum (? correction) | +3.1 × 10⁻47 | negligible |
-| fluid (Navier-Stokes) | +7.5 × 10?¹? | negligible |
+| cosmological (?) | -5.8 × 10?26 | –2.5 × 10?26% |
+| quantum (? correction) | +3.1 × 10-47 | negligible |
+| fluid (Navier-Stokes) | +7.5 × 10?1? | negligible |
 | dark_matter (DM halo) | +0.00061 | 0.00026% |
 | coherence (Gaussian peak) | **anomalously high** | **see below** |
-| **sum = g_total** | **234.5 m/s²** | 100% |
+| **sum = g_total** | **234.5 m/s2** | 100% |
 
 ---
 
@@ -61,16 +80,19 @@ The quantum coherence contribution uses a Gaussian peaked at r_horizon:
 $$g_{\rm coh}(r) = g_{\rm coh,0} \cdot \exp\left(-\frac{(r - r_{\rm horizon})^2}{2\sigma_{\rm coh}^2}\right)$$
 
 }
-g_{\rm MUGE}(r) = g_N(r)\left(1 - \frac{U_{b_i}}{F_U}\right)\left(1 + \frac{H_0 r}{c}\right), \quad U_{b_i}/F_U \approx 2.85\times10^{-4}
+g_{\rm MUGE}(r) = g_N(r)\left(1 - \frac{U_{b\_i}}{F_U}\right)\left(1 + \frac{H_0 r}{c}\right), \quad
+U_{b\_i}/F_U \approx 2.85\times10^{-4}
 $$
 
 
 }
-g_{\rm MUGE}(r) = g_N(r)\left(1 - \frac{U_{b_i}}{F_U}\right)\left(1 + \frac{H_0 r}{c}\right), \quad U_{b_i}/F_U \approx 2.85\times10^{-4}
+g_{\rm MUGE}(r) = g_N(r)\left(1 - \frac{U_{b\_i}}{F_U}\right)\left(1 + \frac{H_0 r}{c}\right), \quad
+U_{b\_i}/F_U \approx 2.85\times10^{-4}
 $$
 
 
-NameL_\text{UQFF} = \frac{4\pi G M c}{\kappa_\text{es}}\Bigl(1 - [SSq]\cdot e^{-\kappa\,\Delta t}\Bigr), \quad [SSq] = 0.57Name
+NameL_\text{UQFF} = \frac{4\pi G M c}{`kappa_`text{es}}\Bigl(1 - [SSq]\cdot e^{-\kappa,\Delta
+t}\Bigr), \quad [SSq] = 0.57Name
 
 Where s_coh ~ Planck length × (M/m_P)^{1/3}.
 
@@ -82,7 +104,9 @@ Where s_coh ~ Planck length × (M/m_P)^{1/3}.
 | 2× horizon | 2.0 | g_coh,0 × e^{-very large} | ~0 |
 | 106 × r_horizon | 106 | effectively 0 | ~0 |
 
-**coherence_at_horizon >> coherence_far** — by many orders of magnitude. This confirms the quantum coherence term only contributes near the horizon and falls off (essentially to machine epsilon) at distances >> r_horizon.
+**coherence_at_horizon >> coherence_far** — by many orders of magnitude. This confirms the quantum
+coherence term only contributes near the horizon and falls off (essentially to machine epsilon) at
+distances >> r_horizon.
 
 From validator: `assert coh_at_horizon > coh_far * 1e6` — **PASS**.
 
@@ -90,21 +114,25 @@ From validator: `assert coh_at_horizon > coh_far * 1e6` — **PASS**.
 
 ## 4. MUGE vs Newton: Field Profile r = r_horizon ? 10 kpc
 
-| r (m) | g_Newton (m/s²) | g_MUGE (m/s²) | ? (%) |
+| r (m) | g_Newton (m/s2) | g_MUGE (m/s2) | ? (%) |
 |-------|----------------|--------------|------|
-| 1.27×10¹° | 234.1 | 234.5 | +0.17 |
-| 1×10¹² | 2.18×10?² | 2.19×10?² | +0.13 |
-| 1×10¹5 | 2.18×10⁻8 | 2.18×10⁻8 | +0.04 |
-| 1×10²° | 2.18×10?¹8 | 2.19×10?¹8 | +0.02 |
-| 3×10²° (8.5 kpc) | 2.42×10?¹? | 2.79×10?¹? | +15.3 (DM) |
+| 1.27×101° | 234.1 | 234.5 | +0.17 |
+| 1×1012 | 2.18×10?2 | 2.19×10?2 | +0.13 |
+| 1×1015 | 2.18×10-8 | 2.18×10-8 | +0.04 |
+| 1×102° | 2.18×10?18 | 2.19×10?18 | +0.02 |
+| 3×102° (8.5 kpc) | 2.42×10?1? | 2.79×10?1? | +15.3 (DM) |
 
-At 8.5 kpc from Sgr A* (solar galactocentric radius), MUGE exceeds Newton by 15.3% due to dark matter halo term dominating. This is consistent with rotation curve flatness.
+At 8.5 kpc from Sgr A* (solar galactocentric radius), MUGE exceeds Newton by 15.3% due to dark
+matter halo term dominating. This is consistent with rotation curve flatness.
 
 ---
 
 ## 5. Coherence as Information Anchor
 
-The quantum coherence Gaussian serves as an **information anchor** at the horizon: all infalling quantum states are coherently encoded in the superposition peak at r_horizon. This supports the 26D channel resolution (Paper #84): information is stored in the coherence peak of channels 25-26, not lost to thermal Hawking radiation.
+The quantum coherence Gaussian serves as an **information anchor** at the horizon: all infalling
+quantum states are coherently encoded in the superposition peak at r_horizon. This supports the 26D
+channel resolution (Paper #84): information is stored in the coherence peak of channels 25-26, not
+lost to thermal Hawking radiation.
 
 ---
 
@@ -115,17 +143,18 @@ The quantum coherence Gaussian serves as an **information anchor** at the horizo
 | All 8 MUGE terms finite at r_horizon | ? PASS |
 | g_total = sum of all 8 terms | ? PASS |
 | No NaN/Inf for SgrA* system | ? PASS |
-| coherence_at_horizon >> coherence_far | ? PASS (>106 ratio) |
+| `coherence_at_horizon` >> coherence_far | ? PASS (>106 ratio) |
 | DM halo at 8.5 kpc | +15.3% rotation curve match |
 | base_gravity dominates near-horizon | 99.82% ? |
 
-*Source: validate_uqff_muge.py | from_system('SgrA') | r_horizon = 1.27 × 10¹° m | all 8 terms PASS*
+*Source: `validate_uqff_muge`.py | from_system('SgrA') | r_horizon = 1.27 × 101° m | all 8 terms PASS*
 
 ---
 *See also: PAPER_091 | Part of the Star-Magic UQFF Whitepaper Series.*
 
 
-**UQFF computed:** Eddington luminosity UQFF correction = 1 - [SSq]×exp(-?×?t) = 1 - 5.7e-1 × exp(-2.9e-4) = 4.3e-1; F_U at event horizon = 2.0e+18 m/s².
+**UQFF computed:** Eddington luminosity UQFF correction = 1 - [SSq]×exp(-?×?t) = 1 - 5.7e-1 ×
+exp(-2.9e-4) = 4.3e-1; F_U at event horizon = 2.0e+18 m/s2.
 ---
 
 ## Appendix: UQFF Production Framework Reference (v4.75+)
@@ -138,15 +167,15 @@ The quantum coherence Gaussian serves as an **information anchor** at the horizo
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
-| κ | 5.0 × 10⁻⁴ day⁻¹ | UQFF exponential decay rate |
+| κ | 5.0 × 10-4 day-1 | UQFF exponential decay rate |
 | [SSq] | 0.57 | Universal Quantized Factor |
 | β_i | 0.60–0.61 | Buoyancy coupling coefficient |
 | k₁ | 1.5 | Ug1 DPM-dipole coupling |
 | k₂ | 1.2 | Ug2 outer-bubble charge coupling |
 | k₃ | 1.8 | Ug3 string-rotation coupling |
 | k₄ | 2.0 | Ug4 vacuum-concentration coupling |
-| η | 10⁻²² | Inertia tensor scale |
-| E_react(0) | 10⁴⁶ J | Reference reactive energy |
+| η | 10-22 | Inertia tensor scale |
+| E_react(0) | 1046 J | Reference reactive energy |
 
 ### A.2 F_U Master Equation (Complete — 4 terms)
 
@@ -154,16 +183,16 @@ $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{bi} + U_m - \sum_{i=1}^{4}\bigl[\
 
 | Term | Description | Implementation |
 |------|-------------|----------------|
-| Ug1 | DPM magnetic dipole | `compute_Ug1_SOURCE4` / `compute_Ug1()` |
-| Ug2 | Outer-field bubble (charge-reactivity) | `compute_Ug2_SOURCE4` / `compute_Ug2()` |
-| Ug3 | Magnetic string rotation | `compute_Ug3_SOURCE4` / `compute_Ug3()` |
-| Ug4 | Vacuum concentration (star-BH) | `compute_Ug4_SOURCE4` / `compute_Ug4()` |
-| Ubi | Buoyancy force | `compute_Ubi_SOURCE4` / `compute_Ubi()` |
-| Um | Universal Magnetism (Heaviside-amplified) | `compute_Um_SOURCE4` / `compute_Um()` |
-| −Σλᵢ·Uᵢ·E_react | 4th dissipation term (PAPER_420) | `compute_FU_SOURCE4` / full pipeline |
+| Ug1 | DPM magnetic dipole | `c`ompute_Ug1_SOURCE`4` / `compute_Ug1()` |
+| Ug2 | Outer-field bubble (charge-reactivity) | `c`ompute_Ug2_SOURCE`4` / `compute_Ug2()` |
+| Ug3 | Magnetic string rotation | `c`ompute_Ug3_SOURCE`4` / `compute_Ug3()` |
+| Ug4 | Vacuum concentration (star-BH) | `c`ompute_Ug4_SOURCE`4` / `compute_Ug4()` |
+| Ubi | Buoyancy force | `c`ompute_Ubi_SOURCE`4` / `compute_Ubi()` |
+| Um | Universal Magnetism (Heaviside-amplified) | `c`ompute_Um_SOURCE`4` / `compute_Um()` |
+| −Σλᵢ·Uᵢ·E_react | 4th dissipation term (PAPER_420) | `c`ompute_FU_SOURCE`4` / full pipeline |
 
 **4th dissipation term parameters (PAPER_420):**  
-λ₁=10⁻¹⁰, λ₂=10⁻¹², λ₃=10⁻¹¹, λ₄=10⁻¹³ (free parameters, not yet empirically calibrated)
+λ₁=10-10, λ₂=10-12, λ₃=10-11, λ₄=10-13 (free parameters, not yet empirically calibrated)
 
 ### A.3 Um Heaviside Phase-Transition Amplifier (PAPER_421)
 
@@ -171,7 +200,7 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 
 | Symbol | Value | Description |
 |--------|-------|-------------|
-| ρ_c | 10¹⁵ kg/m³ | SCm critical superconducting density |
+| ρ_c | 1015 kg/m3 | SCm critical superconducting density |
 | A_q | 0.1 | Quasi-periodic beating amplitude (10%) |
 | Δω | 2π/(434·365.25) rad/day | 434-year Gleisberg supercycle |
 
@@ -182,9 +211,10 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 | **Compressed** | Ug_sum + Newtonian base | Isolated stellar/BH systems |
 | **Resonant** | 5 resonance frequencies (aDPM, aTHz, …) | Multi-scale field interactions |
 | **Buoyant** | β_i × Ubi | Expanding nebulae, stellar winds |
-| **Superconductive** | Um × (1+10¹³·f_H) | Magnetars, SCm critical-density regime |
+| **Superconductive** | Um × (1+1013·f_H) | Magnetars, SCm critical-density regime |
 
-*Implementation status: all 4 modes operational in `MAIN_1_CoAnQi.cpp`, `CondensedPhysics.py`, and `CondensedPhysics2.py`.*
+*Implementation status: all 4 modes operational in `MAIN_1_CoAnQi.cpp`, `CondensedPhysics.py`, and
+`CondensedPhysics2.py`.*
 
 ---
 
@@ -192,13 +222,15 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 
 ### §A.1 Sector Classification
 
-This paper maps to **magnetar-field** sector of the 9-sector UQFF Lagrangian (see `uqff_lagrangian_derivation.py`).
+This paper maps to **magnetar-field** sector of the 9-sector UQFF Lagrangian (see
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
-The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive quantum fundamentals (DPM, UA, SCm):
+The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
+quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_\mu \phi_B)(\partial^\mu \phi_B) - V(\phi_B) + \mathcal{L}_{\rm cosmo}$$
+$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_mu \phi_B)(\partial^\mu \phi_B) - V(\phi_B) + \mathcal{L}_{\rm cosmo}$$
 
 where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
@@ -212,7 +244,9 @@ $$\boxed{\frac{\delta S}{\delta \phi_B} = \nabla \times (\rho_{\rm SCm} \mathbf{
 
 $$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_B = 0$$
 
-The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g forces) through vacuum density initialization to the sector-specific equation of motion. Every term in the E-L equation inherits its physical origin from the cosmogenesis master.
+The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
+forces) through vacuum density initialization to the sector-specific equation of motion. Every term
+in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 
 ---
@@ -223,9 +257,9 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.113$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m³.
+For this system, the local VDS sub-ratio is $0.113$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -237,13 +271,13 @@ Since $p_{\rm DVP} = 5$ is **sub-threshold** (threshold at $p > 26$), the system
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
-The BSH saturation timescale for this sector is **10³ yr** (field decay quiescence):
+The BSH saturation timescale for this sector is **103 yr** (field decay quiescence):
 
-$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
+$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\rm SCm}$ which initializes the harmonic series at cosmogenesis.
 
@@ -251,11 +285,11 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.113 | ✓ Threshold-consistent |
-| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 5$ | ✓ Sub-threshold |
-| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
-| [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
+| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.113 | PASS Threshold-consistent |
+| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 5$ | PASS Sub-threshold |
+| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
+| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
 ---
@@ -265,14 +299,17 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | ✓ Consistent |
-| Cosmological constant Λ | 1.1×10⁻⁵² m⁻² (UQFF vacuum term) | 1.114×10⁻⁵² m⁻² | Planck 2018 | ✓ Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10⁻³⁵/yr | Super-K 2024 | ✓ Consistent |
-| UQFF buoyancy signature | F_U_Bi_i unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
+| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
-**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes significant, offering a falsifiable prediction beyond the Standard Model.
+**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
+produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
+bridge.*
 
 
 ---
@@ -287,9 +324,9 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `f`neutron_s26_coupling`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `k`ozima_scm_cross_section`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `k`ozima_wstp_kernel`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -298,7 +335,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `r`amanujan_polylog_s26`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
 | `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
@@ -307,7 +344,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `m`ock_theta_q26`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -318,8 +355,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `r`amanujan_pi_uqff`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `m`ock_theta_pi_wstp_kernel`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]

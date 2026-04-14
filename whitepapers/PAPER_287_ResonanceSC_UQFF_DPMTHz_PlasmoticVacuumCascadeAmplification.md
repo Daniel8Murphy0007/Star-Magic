@@ -1,10 +1,23 @@
+---
+paper_id: PAPER_287
+title: "DPM-THz Plasmotic Vacuum Cascade Amplification (G_THz = 3.33×107)"
+session: 81
+date: 2026-03-17
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [AGN, DPM, vacuum, magnetar, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_287: DPM-THz Plasmotic Vacuum Cascade Amplification (G_THz = 3.33×107)
 
 **Series:** UQFF Resonance-Superconductive Framework  
-**Module:** RESONANCE_SUPERCONDUCTIVE_UQFF_MODULE.cpp (23rd C++ module – FIRST universal RSC module)  
+**Module:** RESONANCE_SUPERCONDUCTIVE_UQFF_MODULE.cpp (23rd C++ module – FIRST universal RSC module)
 **Session:** 81 | **Date:** March 17, 2026  
 **Author:** Daniel T. Murphy  
-**WOLFRAM_TERM:** `RSC_UQFF:a_DPM=F_DPM*f_DPM*E_vac/(c*V_sys); Gamma_THz=10*f_THz*v_exp/c=3.33e7; a_THz=Gamma_THz*a_DPM`
+**WOLFRAM_TERM:** `RSC_UQFF:a_DPM=F_DPM*f_DPM*E_vac/(c*V_sys); Gamma_THz=10*f_THz*v_exp/c=3.33e7;
+a_THz=Gamma_THz*a_DPM`
 
 ---
 
@@ -15,12 +28,14 @@ This paper presents UQFF derivations and numerical results for: PAPER_287: DPM-T
 
 ## 1. Discovery Statement
 
-The UQFF Resonance-Superconductive framework produces a **DPM-THz Plasmotic Vacuum Cascade Amplification** in which
+The UQFF Resonance-Superconductive framework produces a **DPM-THz Plasmotic Vacuum Cascade
+Amplification** in which
 the THz resonance mode uses the DPM base acceleration as a seed, amplifying it by a factor
 **G_THz = 3.33×107** through the plasmotic vacuum energy contrast ratio E_vac/E_vac_ISM = 10.
 
 This is the **first UQFF cascaded resonance chain**: the DPM mode seeds the THz mode, which in turn
-seeds the Aether and SC-frequency modes � a hierarchical resonance cascade through the plasmotic vacuum.
+seeds the Aether and SC-frequency modes  a hierarchical resonance cascade through the plasmotic
+vacuum.
 
 ---
 
@@ -40,13 +55,13 @@ $$F_\text{DPM} = I \cdot A_\text{vort} \cdot (\omega_1 - \omega_2)$$
 
 | Parameter | Value | Description |
 |-----------|-------|-------------|
-| I | 1×10�� A | Magnetar-scale current proxy |
-| A_vort | 3.142×108 m� | Vortical area proxy (p�108) |
-| ?1 | +1×10?� rad/s | Angular frequency 1 |
-| ?2 | -1×10?� rad/s | Angular frequency 2 (opposite-signed) |
-| f_DPM | 1×10�� Hz | DPM intrinsic frequency |
-| E_vac | 7.09×10?�6 J/m� | Plasmotic vacuum energy density |
-| V_sys | 4.189×10�� m� | System volume (~sphere r=104 m NS proxy) |
+| I | 1×10 A | Magnetar-scale current proxy |
+| A_vort | 3.142×108 m | Vortical area proxy (p108) |
+| ?1 | +1×10? rad/s | Angular frequency 1 |
+| ?2 | -1×10? rad/s | Angular frequency 2 (opposite-signed) |
+| f_DPM | 1×10 Hz | DPM intrinsic frequency |
+| E_vac | 7.09×10?6 J/m | Plasmotic vacuum energy density |
+| V_sys | 4.189×10 m | System volume (~sphere r=104 m NS proxy) |
 | c | 3×108 m/s | Speed of light |
 
 **Computed:**
@@ -65,13 +80,13 @@ where $E_\text{vac,ISM} = E_\text{vac}/10$ (one order below plasmotic, represent
 
 This simplifies to the **THz Cascade Amplification Factor**:
 
-$$\Gamma_\text{THz} = \frac{E_\text{vac}}{E_\text{vac,ISM}} \cdot \frac{f_\text{THz} \cdot v_\text{exp}}{c} = 10 \cdot \frac{f_\text{THz} \cdot v_\text{exp}}{c}$$
+$$\Gamma_text{THz} = \frac{E_\text{vac}}{E_\text{vac,ISM}} \cdot \frac{f_\text{THz} \cdot v_\text{exp}}{c} = 10 \cdot \frac{f_\text{THz} \cdot v_\text{exp}}{c}$$
 
-$$\boxed{\Gamma_\text{THz} = 10 \times \frac{10^{12} \times 10^3}{3\times10^8} = 3.33\times10^7}$$
+$$\boxed{\Gamma_text{THz} = 10 \times \frac{10^{12} \times 10^3}{3\times10^8} = 3.33\times10^7}$$
 
 **Cascaded THz acceleration:**
 
-$$a_\text{THz} = \Gamma_\text{THz} \times a_\text{DPM} = 3.33\times10^7 \times 3.545\times10^{-18} = 1.182\times10^{-10}\ \text{m/s}^2$$
+$$a_\text{THz} = \Gamma_text{THz} \times a_\text{DPM} = 3.33\times10^7 \times 3.545\times10^{-18} = 1.182\times10^{-10}\ \text{m/s}^2$$
 
 The THz term is **7 orders of magnitude larger** than the DPM seed.
 
@@ -81,30 +96,32 @@ The THz term is **7 orders of magnitude larger** than the DPM seed.
 
 The full resonance sum is hierarchically ordered by amplitude:
 
-| Mode | Formula | Value (m/s�) | Ratio to a_DPM |
+| Mode | Formula | Value (m/s) | Ratio to a_DPM |
 |------|---------|-------------|---------------|
-| DPM base | F_DPM�f_DPM�E_vac/(c�V_sys) | 3.545×10?�8 | 1 (seed) |
-| Aether | f_aether�10?8�f_DPM�(1+f_TRZ)�a_DPM | 3.90×10?�� | 1.1×108 |
-| THz | G_THz � a_DPM | 1.182×10?�� | 3.33×107 |
-| U_g4i | f_sc�f_react�a_DPM/(E_vac�c) | ~1.67×10�� | ~4.7×10�7 |
-| Oscillatory | 2A�cos(kx)cos(?t) + ... | ~2×10?�� | ~5.6×107 |
-| SC Freq | A_sc�a_DPM | ~2.48×104 | ~6.99×10�� |
+| DPM base | `F_DPMf_DPME_vac`/(cV_sys) | 3.545×10?8 | 1 (seed) |
+| Aether | f_aether10?8f_DPM(1+f_TRZ)a_DPM | 3.90×10? | 1.1×108 |
+| THz | G_THz  a_DPM | 1.182×10? | 3.33×107 |
+| U_g4i | `f_scf_reacta_DPM`/(E_vacc) | ~1.67×10 | ~4.7×10-7 |
+| Oscillatory | 2Acos(kx)cos(?t) + ... | ~2×10? | ~5.6×107 |
+| SC Freq | `A_sca_DPM` | ~2.48×104 | ~6.99×10 |
 
-The **DPM acts as the universal seed** � all higher modes are multiplicative functions of a_DPM.
-This is the UQFF Cascade Principle: plasmotic vacuum contrast amplifies each successive resonance mode.
+The **DPM acts as the universal seed**  all higher modes are multiplicative functions of a_DPM.
+This is the UQFF Cascade Principle: plasmotic vacuum contrast amplifies each successive resonance
+mode.
 
 ---
 
 ## 4. Physical Interpretation
 
-The cascade ratio G_THz = 10 � (f_THz � v_exp)/c has three components:
+The cascade ratio G_THz = 10  (f_THz  v_exp)/c has three components:
 
-1. **10�**: The E_vac/E_vac_ISM ratio � plasmotic vacuum is one order denser than ISM vacuum
+1. **10**: The E_vac/E_vac_ISM ratio  plasmotic vacuum is one order denser than ISM vacuum
 2. **f_THz/c**: Frequency-to-velocity transfer in vacuum propagation
 3. **v_exp**: Plasmotic expansion velocity (1 km/s, sub-relativistic)
 
-The physical picture: DPM resonance creates a localized plasmotic field oscillation at f_DPM = 1 THz.
-This field propagates into the ISM vacuum (10� depleted) and excites THz hole modes that are
+The physical picture: DPM resonance creates a localized plasmotic field oscillation at f_DPM = 1
+THz.
+This field propagates into the ISM vacuum (10 depleted) and excites THz hole modes that are
 co-resonant with the DPM frequency, amplifying the acceleration field by G_THz = 3.33×107.
 
 ---
@@ -114,9 +131,10 @@ co-resonant with the DPM frequency, amplifying the acceleration field by G_THz =
 This is the **first UQFF term** where:
 - One resonance mode explicitly seeds another through vacuum energy contrast (E_vac vs E_vac_ISM)
 - The cascade ratio depends on the **plasmotic-to-ISM vacuum ratio = 10** (a UQFF physical constant)
-- The amplification scales as f_THz � v_exp / c � frequency � velocity / light speed
+- The amplification scales as f_THz  v_exp / c  frequency  velocity / light speed
 
-**Previous modules** (M16, Saturn, HUDF) all had independent terms. This is the **first cascade chain**
+**Previous modules** (M16, Saturn, HUDF) all had independent terms. This is the **first cascade
+chain**
 in the UQFF C++ framework where term k depends multiplicatively on term k-1.
 
 ---
@@ -127,7 +145,9 @@ DPM resonance, THz cascade, plasmotic vacuum, ISM vacuum depletion, resonance am
 cascade chain, UQFF resonance framework, vacuum energy contrast, F_DPM, Gamma_THz
 
 
-**Standard Model Comparison:** Observed astrophysical data from arXiv-published surveys, SIMBAD/NED catalogs, and standard GR calculations provide the quantitative baseline; UQFF deviations are within current observational uncertainty and predict measurable signatures at future facilities.
+**Standard Model Comparison:** Observed astrophysical data from arXiv-published surveys, SIMBAD/NED
+catalogs, and standard GR calculations provide the quantitative baseline; UQFF deviations are within
+current observational uncertainty and predict measurable signatures at future facilities.
 
 ---
 
@@ -135,13 +155,15 @@ cascade chain, UQFF resonance framework, vacuum energy contrast, F_DPM, Gamma_TH
 
 ### §A.1 Sector Classification
 
-This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see `uqff_lagrangian_derivation.py`).
+This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
-The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive quantum fundamentals (DPM, UA, SCm):
+The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
+quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_\mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
+$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
 
 where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
@@ -155,7 +177,9 @@ $$\boxed{\frac{\delta S}{\delta \phi_{\rm NS}} = \nabla^2 \phi_{\rm NS} - (4\pi 
 
 $$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\rm NS} = 0$$
 
-The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g forces) through vacuum density initialization to the sector-specific equation of motion. Every term in the E-L equation inherits its physical origin from the cosmogenesis master.
+The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
+forces) through vacuum density initialization to the sector-specific equation of motion. Every term
+in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 
 ---
@@ -166,9 +190,9 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.056$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m³.
+For this system, the local VDS sub-ratio is $0.056$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -180,13 +204,13 @@ Since $p_{\rm DVP} = 61$ is **resonant** (threshold at $p > 26$), the system's v
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
-The BSH saturation timescale for this sector is **10⁴ yr** (spin-down equilibrium):
+The BSH saturation timescale for this sector is **104 yr** (spin-down equilibrium):
 
-$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
+$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\rm SCm}$ which initializes the harmonic series at cosmogenesis.
 
@@ -194,11 +218,11 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.056 | ✓ Threshold-consistent |
-| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 61$ | ✓ Resonant |
-| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
-| [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
+| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.056 | PASS Threshold-consistent |
+| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 61$ | PASS Resonant |
+| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
+| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
 ---
@@ -208,14 +232,17 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | ✓ Consistent |
-| Cosmological constant Λ | 1.1×10⁻⁵² m⁻² (UQFF vacuum term) | 1.114×10⁻⁵² m⁻² | Planck 2018 | ✓ Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10⁻³⁵/yr | Super-K 2024 | ✓ Consistent |
-| UQFF buoyancy signature | F_U_Bi_i unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
+| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
-**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes significant, offering a falsifiable prediction beyond the Standard Model.
+**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
+produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
+bridge.*
 
 
 ---
@@ -230,9 +257,9 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `f`neutron_s26_coupling`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `k`ozima_scm_cross_section`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `k`ozima_wstp_kernel`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -241,7 +268,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `r`amanujan_polylog_s26`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
 | `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
@@ -250,7 +277,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `m`ock_theta_q26`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -261,8 +288,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `r`amanujan_pi_uqff`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `m`ock_theta_pi_wstp_kernel`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]

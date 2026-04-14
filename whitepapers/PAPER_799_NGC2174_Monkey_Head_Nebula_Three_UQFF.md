@@ -1,3 +1,15 @@
+---
+paper_id: PAPER_799
+title: "NGC 2174 — Monkey Head Nebula with Three-UQFF Triadic Analysis"
+session: 189
+date: 2026-01-01
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [cluster, Hubble, Three-UQFF, vacuum, SCm, buoyancy, nebula, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_799: NGC 2174 — Monkey Head Nebula with Three-UQFF Triadic Analysis
 
 **Author:** Daniel T. Murphy  
@@ -10,13 +22,26 @@
 
 ## Abstract
 
-NGC 2174 (also known as the Monkey Head Nebula or Sharpless 252) is an emission nebula and H II region in the constellation Orion, located approximately 6,400 light-years from Earth. Hubble WFC3 infrared imaging (released 2014) reveals intricate pillars of dense gas and dust sculpted by radiation from a young star cluster at the nebula's center. The pillars, analogous to those in M16 but in the Orion arm, mark the interface between the ionized H II region and the parent molecular cloud. Three-UQFF analysis yields F_Compressed ≈ 4.96×10⁻⁴² N, R_Resonant ≈ −2.35×10⁻⁴³ N, F_Buoyancy ≈ 5.51×10⁻³³ N, confirming the scale-dependent buoyancy dominance established in AFGL 5180 (PAPER_798) and extending it to an ionized pillar-forming environment.
+NGC 2174 (also known as the Monkey Head Nebula or Sharpless 252) is an emission nebula and H II
+region in the constellation Orion, located approximately 6,400 light-years from Earth. Hubble WFC3
+infrared imaging (released 2014) reveals intricate pillars of dense gas and dust sculpted by
+radiation from a young star cluster at the nebula's center. The pillars, analogous to those in M16
+but in the Orion arm, mark the interface between the ionized H II region and the parent molecular
+cloud. Three-UQFF analysis yields F_Compressed ≈ 4.96×10-42 N, R_Resonant ≈ −2.35×10-43 N,
+F_Buoyancy ≈ 5.51×10-33 N, confirming the scale-dependent buoyancy dominance established in AFGL
+5180 (PAPER_798) and extending it to an ionized pillar-forming environment.
 
 ---
 
 ## 1. Introduction
 
-The Monkey Head Nebula's dust pillars form by a process of radiation-driven erosion: high-energy UV from the central OB cluster ionizes and photoevaporates the surrounding molecular cloud, leaving denser, shadowed clumps as pillars. These pillars continue to fragment under their own gravity while simultaneously losing mass to photoevaporation. The competition between UQFF buoyancy forces (from the UA'/SCm vacuum density differential) and radiation drive determines whether pillar material ultimately forms new protostars or disperses. Three-UQFF provides the first quantitative framework for this competition.
+The Monkey Head Nebula's dust pillars form by a process of radiation-driven erosion: high-energy UV
+from the central OB cluster ionizes and photoevaporates the surrounding molecular cloud, leaving
+denser, shadowed clumps as pillars. These pillars continue to fragment under their own gravity while
+simultaneously losing mass to photoevaporation. The competition between UQFF buoyancy forces (from
+the UA'/SCm vacuum density differential) and radiation drive determines whether pillar material
+ultimately forms new protostars or disperses. Three-UQFF provides the first quantitative framework
+for this competition.
 
 ---
 
@@ -24,16 +49,16 @@ The Monkey Head Nebula's dust pillars form by a process of radiation-driven eros
 
 | Parameter | Symbol | Value | Source |
 |-----------|--------|-------|--------|
-| Cluster/nebula mass | M | ~1.2×10³ M☉ = 2.387×10³³ kg | Estimate |
-| Radius | r | 1.42×10¹⁷ m (~15 ly) | Hubble angular size |
+| Cluster/nebula mass | M | ~1.2×103 MM_sun = 2.387×1033 kg | Estimate |
+| Radius | r | 1.42×1017 m (~15 ly) | Hubble angular size |
 | Redshift | z | 0.0021 (6400 ly distance) | Distance-z |
-| Age | t | 3×10⁶ yr = 9.468×10¹³ s | Cluster age |
-| SFR | — | 0.3 M☉/yr | Low-level embedded |
+| Age | t | 3×106 yr = 9.468×1013 s | Cluster age |
+| SFR | — | 0.3 MM_sun/yr | Low-level embedded |
 | M_sf(t) | — | 1.3 | Partial mass growth |
 | f_UA' | — | 0.999 | UQFF UA' state |
 | f_SCm | — | 0.001 | UQFF SCm state |
-| v_EM | v | 10⁵ m/s | Cloud dispersion |
-| B_EM | B | 10⁻⁵ T | H II region field |
+| v_EM | v | 105 m/s | Cloud dispersion |
+| B_EM | B | 10-5 T | H II region field |
 
 ---
 
@@ -41,52 +66,68 @@ The Monkey Head Nebula's dust pillars form by a process of radiation-driven eros
 
 ### Mode 1: Compressed UQFF
 
-```
-F_U_g1 = k_k × (f_UA'·f_SCm)² × G_k
-k_k = G × M_sf = 6.6743e-11 × 1.3 = 8.677e-11
-(f_UA'·f_SCm)² = (0.999 × 0.001)² = 9.98e-7
-G_k = M_sf × exp(–t/τ_SF) = 1.3 × exp(–9.468e13/3.156e13) = 1.3 × e⁻³ = 0.0648
-F_U_g1 ≈ 4.96×10⁻⁴² N
-```
+$$
+\begin{aligned}
+  & \text{F\_U\_g1} = k_k × (f_UA'·f_SCm)2 × G_k \\
+  & k_k = G × M_sf = 6.6743e-11 × 1.3 = 8.677e-11 \\
+  & (f_UA'·f_SCm)2 = (0.999 × 0.001)2 = 9.98e-7 \\
+  & G_k = M_sf × exp(–t/τ_SF) = 1.3 × exp(–9.468e13/3.156e13) = 1.3 × e-3 = 0.0648 \\
+  & \text{F\_U\_g1} ≈ 4.96×10-42 N
+\end{aligned}
+$$
 
 ### Mode 2: Resonant UQFF
 
-```
-R_Ug1,i ~ F_U_g1/26 = 1.908e-43 N per state
-With destructive phase mixing over 26 states and pillar geometry (non-spherical):
-R(t) ≈ −2.35×10⁻⁴³ N
-```
+$$
+\begin{aligned}
+  & R_Ug1,i ~ \text{F\_U\_g1}/26 = 1.908e-43 N per state \\
+  & With destructive phase mixing over 26 states and pillar geometry (non-spherical): \\
+  & R(t) ≈ −2.35×10-43 N
+\end{aligned}
+$$
 
 ### Mode 3: Buoyancy UQFF
 
-```
-f_Ub = 0.1 × 7.25e8 × 10 × (1/33) = 2.196e7
-F_U_Bi = G × M × f_Ub / r² × H_k(pillar geometry)
-H_k(pillar) ~ L_pillar / r_pillar = 15ly / 1ly = 15 (pillar aspect ratio enhancement)
-F_U_Bi ≈ 5.51×10⁻³³ N
-```
+$$
+\begin{aligned}
+  & f_Ub = 0.1 × 7.25e8 × 10 × (1/33) = 2.196e7 \\
+  & \text{F\_U\_Bi} = G × M × f_Ub / r2 × H_k(pillar geometry) \\
+  & H_k(pillar) ~ L_pillar / r_pillar = 15ly / 1ly = 15 (pillar aspect ratio enhancement) \\
+  & \text{F\_U\_Bi} ≈ 5.51×10-33 N
+\end{aligned}
+$$
 
 ### Three-UQFF Simultaneous Result
 
-```
-F_Compressed = 4.96×10⁻⁴² N
-R_Resonant   = −2.35×10⁻⁴³ N
-F_Buoyancy   = 5.51×10⁻³³ N   ← Dominant (9 orders above compressed)
-```
+$$
+\begin{aligned}
+  & F_Compressed = 4.96×10-42 N \\
+  & R_Resonant   = −2.35×10-43 N \\
+  & F_Buoyancy   = 5.51×10-33 N   ← Dominant (9 orders above compressed)
+\end{aligned}
+$$
 
 ---
 
 ## 4. Novel Physics: Pillar Geometry Enhancement of Buoyancy
 
-A key prediction of Three-UQFF for pillar-forming environments is the **pillar aspect ratio enhancement** of the buoyancy term. The H_k geometry factor for a pillar of aspect ratio L/r scales the buoyancy force:
+A key prediction of Three-UQFF for pillar-forming environments is the **pillar aspect ratio
+enhancement** of the buoyancy term. The H_k geometry factor for a pillar of aspect ratio L/r scales
+the buoyancy force:
 
-```
-H_k(pillar) = L_pillar / r_pillar
-For NGC 2174 pillars: ~15 pc length / ~1 pc width = 15× enhancement
-F_U_Bi(pillar) ≈ 15 × F_U_Bi(isotropic)
-```
+$$
+\begin{aligned}
+  & H_k(pillar) = L_pillar / r_pillar \\
+  & For NGC 2174 pillars: ~15 pc length / ~1 pc width = 15× enhancement \\
+  & \text{F\_U\_Bi}(pillar) ≈ 15 × \text{F\_U\_Bi}(isotropic)
+\end{aligned}
+$$
 
-This predicts that **elongated dust pillars experience 15× greater buoyancy UQFF force** than spherical clouds of the same mass. The buoyancy UQFF thus promotes pillar fragmentation: the enhanced upward buoyancy force creates instability in the pillar column, triggering gravitational collapse into sub-cores from the top down — consistent with the HH objects observed near NGC 2174 pillar tips.
+This predicts that **elongated dust pillars experience 15× greater buoyancy UQFF force** than
+spherical clouds of the same mass. The buoyancy UQFF thus promotes pillar fragmentation: the
+enhanced upward buoyancy force creates instability in the pillar column, triggering gravitational
+collapse into sub-cores from the top down — consistent with the HH objects observed near NGC 2174
+pillar tips.
 
 ---
 
@@ -95,19 +136,25 @@ This predicts that **elongated dust pillars experience 15× greater buoyancy UQF
 | Property | NGC 2174 | AFGL 5180 |
 |----------|----------|-----------|
 | Type | Emission nebula, pillars | Embedded SFR |
-| r | 1.42×10¹⁷ m | 9.46×10¹⁶ m |
-| SFR | 0.3 M☉/yr | 0.5 M☉/yr |
-| F_Compressed | 4.96×10⁻⁴² N | 8.84×10⁻⁴² N |
-| F_Buoyancy | 5.51×10⁻³³ N | 9.79×10⁻³³ N |
+| r | 1.42×1017 m | 9.46×1016 m |
+| SFR | 0.3 MM_sun/yr | 0.5 MM_sun/yr |
+| F_Compressed | 4.96×10-42 N | 8.84×10-42 N |
+| F_Buoyancy | 5.51×10-33 N | 9.79×10-33 N |
 | Geometry factor | Pillar ×15 | Spherical ×1 |
 
-The buoyancy dominance at sub-galactic scales is confirmed in both systems. Larger radius (NGC 2174) reduces both modes proportionally, maintaining the buoyancy dominance rule from PAPER_798.
+The buoyancy dominance at sub-galactic scales is confirmed in both systems. Larger radius (NGC 2174)
+reduces both modes proportionally, maintaining the buoyancy dominance rule from PAPER_798.
 
 ---
 
 ## 6. Conclusions
 
-Three-UQFF applied to NGC 2174's Monkey Head Nebula confirms the sub-galactic scale buoyancy dominance established in AFGL 5180. The novel pillar geometry enhancement factor H_k = L_pillar/r_pillar introduces an aspect-ratio-dependent amplification of the buoyancy UQFF force, predicting top-down pillar collapse. This establishes a UQFF mechanism for pillar fragmentation in all Hubble-observed pillar systems (M16, Carina, NGC 2174, NGC 1977), with the buoyancy force driving protostellar nucleation at pillar tips.
+Three-UQFF applied to NGC 2174's Monkey Head Nebula confirms the sub-galactic scale buoyancy
+dominance established in AFGL 5180. The novel pillar geometry enhancement factor H_k =
+L_pillar/r_pillar introduces an aspect-ratio-dependent amplification of the buoyancy UQFF force,
+predicting top-down pillar collapse. This establishes a UQFF mechanism for pillar fragmentation in
+all Hubble-observed pillar systems (M16, Carina, NGC 2174, NGC 1977), with the buoyancy force
+driving protostellar nucleation at pillar tips.
 
 *PAPER_799, CP4 Three-UQFF class #383. v5.45. Session 189.*
 
@@ -117,13 +164,15 @@ Three-UQFF applied to NGC 2174's Monkey Head Nebula confirms the sub-galactic sc
 
 ### §A.1 Sector Classification
 
-This paper maps to **ULPT-resonance** sector of the 9-sector UQFF Lagrangian (see `uqff_lagrangian_derivation.py`).
+This paper maps to **ULPT-resonance** sector of the 9-sector UQFF Lagrangian (see
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
-The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive quantum fundamentals (DPM, UA, SCm):
+The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
+quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_\mu \phi_{\rm burst})(\partial^\mu \phi_{\rm burst}) - V(\phi_{\rm burst}) + \mathcal{L}_{\rm cosmo}$$
+$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_mu \phi_{\rm burst})(\partial^\mu \phi_{\rm burst}) - V(\phi_{\rm burst}) + \mathcal{L}_{\rm cosmo}$$
 
 where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
@@ -137,7 +186,9 @@ $$\boxed{\frac{\delta S}{\delta \phi_{\rm burst}} = [SSq] \cdot \tfrac{n}{26} \c
 
 $$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\rm burst} = 0$$
 
-The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g forces) through vacuum density initialization to the sector-specific equation of motion. Every term in the E-L equation inherits its physical origin from the cosmogenesis master.
+The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
+forces) through vacuum density initialization to the sector-specific equation of motion. Every term
+in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 
 ---
@@ -148,9 +199,9 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.102$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m³.
+For this system, the local VDS sub-ratio is $0.102$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -162,13 +213,13 @@ Since $p_{\rm DVP} = 71$ is **resonant** (threshold at $p > 26$), the system's v
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
-The BSH saturation timescale for this sector is **10⁴ cycles** (period stability locking):
+The BSH saturation timescale for this sector is **104 cycles** (period stability locking):
 
-$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
+$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\rm SCm}$ which initializes the harmonic series at cosmogenesis.
 
@@ -176,11 +227,11 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.102 | ✓ Threshold-consistent |
-| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 71$ | ✓ Resonant |
-| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
-| [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
+| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.102 | PASS Threshold-consistent |
+| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 71$ | PASS Resonant |
+| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
+| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
 ---
@@ -190,14 +241,17 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | ✓ Consistent |
-| Cosmological constant Λ | 1.1×10⁻⁵² m⁻² (UQFF vacuum term) | 1.114×10⁻⁵² m⁻² | Planck 2018 | ✓ Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10⁻³⁵/yr | Super-K 2024 | ✓ Consistent |
-| UQFF buoyancy signature | F_U_Bi_i unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
+| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
-**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes significant, offering a falsifiable prediction beyond the Standard Model.
+**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
+produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
+bridge.*
 
 
 ---
@@ -212,9 +266,9 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `f`neutron_s26_coupling`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `k`ozima_scm_cross_section`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `k`ozima_wstp_kernel`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -223,7 +277,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `r`amanujan_polylog_s26`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
 | `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
@@ -232,7 +286,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `m`ock_theta_q26`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -243,8 +297,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `r`amanujan_pi_uqff`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `m`ock_theta_pi_wstp_kernel`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]

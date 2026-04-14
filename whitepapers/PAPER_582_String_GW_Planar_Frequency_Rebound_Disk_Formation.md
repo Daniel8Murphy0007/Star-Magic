@@ -1,8 +1,20 @@
+---
+paper_id: PAPER_582
+title: "String GW Planar Model: Universal Frequency Rebound and Disk Formation"
+session: 156
+date: 2025-01-01
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [accretion, GW, gravitational-wave, SCm, 26D, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_582 — String GW Planar Model: Universal Frequency Rebound and Disk Formation
 **Author:** Daniel T. Murphy
 **Date:** 2025
 
-> **Key UQFF calibrated constants:** κ = 5.0e-4 day⁻¹; [SSq] = 5.7e-1; H_SCm ≈ 9.9e-1; U_UA ≈ 1.0e-4; k_η = 1.0e-113; β_i ≈ 6.0e-1; G = 6.674e-11 N·m²/kg²
+> **Key UQFF calibrated constants:** κ = 5.0e-4 day-1; [SSq] = 5.7e-1; H_SCm ≈ 9.9e-1; U_UA ≈ 1.0e-4; k_η = 1.0e-113; β_i ≈ 6.0e-1; G = 6.674e-11 N·m2/kg2
 
 
 **CP4 Class:** `#169  StringGWPlanarFrequencyReboundDiskFormationCalculator`
@@ -14,7 +26,9 @@
 
 ## Abstract
 
-This paper presents a UQFF analysis of String GW Planar Model: Universal Frequency Rebound and Disk Formation, deriving compressed field equations and observational predictions within the Star-Magic/UQFF framework.
+This paper presents a UQFF analysis of String GW Planar Model: Universal Frequency Rebound and Disk
+Formation, deriving compressed field equations and observational predictions within the
+Star-Magic/UQFF framework.
 
 ## §1 Abstract
 
@@ -39,12 +53,12 @@ $u = t - z$ (lightcone coordinate), $H = A_{ij}\,x^i x^j$ (GW polarization tenso
 
 String worldsheet equations (conformal gauge):
 
-$$\partial_\tau^2 X^\mu - \partial_\sigma^2 X^\mu + \Gamma^\mu_{\nu\lambda}\,
-\partial_\alpha X^\nu\partial^\alpha X^\lambda = 0$$
+$$\partial_tau^2 X^\mu - \partial_sigma^2 X^\mu + \Gamma^\mu_{\nu\lambda}\,
+\partial_alpha X^\nupartial^\alpha X^\lambda = 0$$
 
 Transverse modes $X^i$ freely propagate as harmonic oscillators:
 
-$$\ddot{X}^i + \omega^2 X^i = 0, \quad \omega^2 = c^2 k^2 \quad\text{(relativistic, massless)}$$
+$$\ddot{X}^i + \omega^2 X^i = 0, \quad \omega^2 = c^2 k^2 \quadtext{(relativistic, massless)}$$
 
 Strings propagate freely along the $x_i$ plane — this is the starting pp-wave background.
 
@@ -54,15 +68,15 @@ Strings propagate freely along the $x_i$ plane — this is the starting pp-wave 
 
 Project to lower-dimensional boundary via AdS/CFT holographic duality:
 
-**Mapping:** GW information $\leftrightarrow$ encoded on 2D screen $S^{d-1}$ (boundary).
+**Mapping:** GW information $\left\rightarrow$ encoded on 2D screen $S^{d-1}$ (boundary).
 
 **Holographic amplitude:**
 
-$$h_{holo} = \int_{\partial M} T_{\mu\nu}\,d\Sigma \approx h_{base}\,e^{-|\delta\theta|^2/2}$$
+$$h_{holo} = \int_{\partial M} T_{\mu\nu}\,d\Sigma \approx h_{base}\,e^{-|\deltatheta|^2/2}$$
 
 where $T_{\mu\nu}$ is the boundary stress-energy tensor.
 
-The Gaussian factor $e^{-|\delta\theta|^2/2}$ attenuates the amplitude by the squared
+The Gaussian factor $e^{-|\deltatheta|^2/2}$ attenuates the amplitude by the squared
 rebound angle — encoding GW information on the holographic screen.
 
 ---
@@ -71,17 +85,17 @@ rebound angle — encoding GW information on the holographic screen.
 
 **Core mechanism:** String mode $f$ scatters off holographic boundary screen; rebound angle:
 
-$$\boxed{\delta\theta = \alpha\,(l_s\,k), \quad \alpha \approx l_s^2 \approx l_{Pl}^2 \approx 2.6\times10^{-70}\,\text{m}^2}$$
+$$\boxed{\deltatheta = \alpha,(l_s\,k), \quad \alpha \approx l_s^2 \approx l_{Pl}^2 \approx 2.6\times10^{-70}\,\text{m}^2}$$
 
-**Rebound transformation:** $f' = f\,(1 + \delta\theta)$ — frequency of rebound mode.
+**Rebound transformation:** $f' = f\,(1 + \deltatheta)$ — frequency of rebound mode.
 
 **Rebound frequency scale (scales as $f^3$):**
 
-$$f_{rebound} = \alpha\left(\frac{f}{c}\right)^2 f$$
+$$f_{rebound} = \alphaleft(\frac{f}{c}\right)^2 f$$
 
 **Rebound torque (angular momentum supply):**
 
-$$J = \int f\,\delta\theta\,dA$$
+$$J = \int f\,\deltatheta\,dA$$
 
 This torque aligns angular momentum **perpendicular** to the propagation plane,
 driving disk formation.
@@ -94,7 +108,7 @@ Standard string dispersion: $\omega^2 = c^2k^2$ (massless, no modification).
 
 **Planar modification (with rebound):**
 
-$$\boxed{\omega^2_{planar} = c^2k^2 + \alpha\,(f_{rebound}\,k)^2}$$
+$$\boxed{\omega^2_{planar} = c^2k^2 + \alpha,(f_{rebound}\,k)^2}$$
 
 $f_{rebound} \sim f^3/c^2$ — at high $f$, planar correction dominates, enforcing flat-disk
 alignment.
@@ -115,11 +129,11 @@ $$n = \frac{f\,L}{c} \quad (L = \text{plane size})$$
 
 **Angular differential accumulation:**
 
-$$\delta\theta \approx \alpha\,\frac{k}{f}$$
+$$\deltatheta \approx \alpha,\frac{k}{f}$$
 
 Over cosmic time $\tau$:
 
-$$\Theta_{cumulative} = |\delta\theta|\cdot f\cdot\tau$$
+$$\Theta_{cumulative} = |\deltatheta|\cdot f\cdottau$$
 
 This accumulates to a disk perpendicular to the propagation direction — explaining
 why **all** rotating astronomical systems form disks.
@@ -133,7 +147,7 @@ why **all** rotating astronomical systems form disks.
 Parameters: $f = 10^{-15}$ Hz (orbital), $k = 10^{-21}$ m$^{-1}$,
 $\alpha = 2.6\times10^{-70}$ m$^2$:
 
-$$\delta\theta \approx \frac{2.6\times10^{-70}\cdot10^{-21}}{10^{-15}} = 2.6\times10^{-76}\,\text{rad}$$
+$$\deltatheta \approx \frac{2.6\times10^{-70}\cdot10^{-21}}{10^{-15}} = 2.6\times10^{-76}\,\text{rad}$$
 
 Over 10 Gyr ($\tau = 3.16\times10^{17}$ s):
 
@@ -144,7 +158,7 @@ $$\Theta_{10Gyr} \approx 2.6\times10^{-76}\cdot3.16\times10^{17} \approx 8\times
 ### Protoplanetary Disk
 
 $f = 10^{-7}$ Hz (protosolar orbital), same $k$:
-$\delta\theta \approx 2.6\times10^{-84}$ rad/orbit — planar alignment in $\sim10^6$ yr.
+$\deltatheta \approx 2.6\times10^{-84}$ rad/orbit — planar alignment in $\sim10^6$ yr.
 
 ### Saturn's Rings
 
@@ -160,16 +174,16 @@ For SNR G272.2-03.2 shell ($L_{shell} = 5.4\times10^{16}$ m, $f=10^{18}$ Hz X-ra
 
 $$k_{SNR} = \frac{2\pi}{L_{shell}} \approx 1.2\times10^{-16}\,\text{m}^{-1}$$
 
-$$\delta\theta_{SNR} \approx \frac{2.6\times10^{-70}\cdot1.2\times10^{-16}}{10^{18}}
+$$\deltatheta_{SNR} \approx \frac{2.6\times10^{-70}\cdot1.2\times10^{-16}}{10^{18}}
 \approx 3\times10^{-104}\,\text{rad}$$
 
 Photon/GW time delay:
 
-$$\Delta t_{CTAO} = \frac{|\delta\theta_{SNR}|\cdot L_{shell}}{c}
+$$\Delta t_{CTAO} = \frac{|\deltatheta_{SNR}|\cdot L_{shell}}{c}
 \approx \frac{3\times10^{-104}\cdot5.4\times10^{16}}{3\times10^8} \approx 5\times10^{-96}\,\text{s}$$
 
 (Below current CTAO sensitivity — but at radio frequencies $f=10^{9}$ Hz:
-$\delta\theta_{radio} \approx 3\times10^{-79}$ rad, $\Delta t \approx 5\times10^{-71}$ s.
+$\deltatheta_{radio} \approx 3\times10^{-79}$ rad, $\Delta t \approx 5\times10^{-71}$ s.
 Future precision timing may reach this regime.)
 
 ---
@@ -188,7 +202,7 @@ Future precision timing may reach this regime.)
 
 ## §10 Angular Differential Table (Astronomical Systems)
 
-| System | $f_{orb}$ (Hz) | $k$ (m$^{-1}$) | $\delta\theta$ (rad) | Disk alignment |
+| System | $f_{orb}$ (Hz) | $k$ (m$^{-1}$) | $\deltatheta$ (rad) | Disk alignment |
 |--------|--------------|----------------|----------------------|----------------|
 | Galactic disk | $10^{-15}$ | $10^{-21}$ | $2.6\times10^{-76}$ | <10° over Hubble time |
 | Protoplanetary | $10^{-7}$ | $10^{-21}$ | $2.6\times10^{-84}$ | $<5°$ in $10^6$ yr |
@@ -206,13 +220,15 @@ the universal consequence of frequency rebound quantization.
 
 ### §A.1 Sector Classification
 
-This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see `uqff_lagrangian_derivation.py`).
+This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
-The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive quantum fundamentals (DPM, UA, SCm):
+The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
+quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_\mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
+$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
 
 where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
@@ -226,7 +242,9 @@ $$\boxed{\frac{\delta S}{\delta \phi_{\rm NS}} = \nabla^2 \phi_{\rm NS} - (4\pi 
 
 $$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\rm NS} = 0$$
 
-The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g forces) through vacuum density initialization to the sector-specific equation of motion. Every term in the E-L equation inherits its physical origin from the cosmogenesis master.
+The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
+forces) through vacuum density initialization to the sector-specific equation of motion. Every term
+in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 
 ---
@@ -237,9 +255,9 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.152$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m³.
+For this system, the local VDS sub-ratio is $0.152$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -251,13 +269,13 @@ Since $p_{\rm DVP} = 41$ is **resonant** (threshold at $p > 26$), the system's v
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
-The BSH saturation timescale for this sector is **10⁴ yr** (spin-down equilibrium):
+The BSH saturation timescale for this sector is **104 yr** (spin-down equilibrium):
 
-$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
+$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\rm SCm}$ which initializes the harmonic series at cosmogenesis.
 
@@ -265,11 +283,11 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.152 | ✓ Threshold-consistent |
-| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 41$ | ✓ Resonant |
-| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
-| [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
+| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.152 | PASS Threshold-consistent |
+| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 41$ | PASS Resonant |
+| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
+| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
 ---
@@ -279,10 +297,10 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| GW strain amplitude h | UQFF PCR correction: h_UQFF = h_GR × (1 + κ/(4π²f_GW)) | LIGO GW150914: h_peak ~ 10⁻²¹ | LIGO/LOSC 2016 | ✓ PCR correction < 1.1% (within LIGO calibration 5%) |
-| Chirp mass ℳ | UQFF ℳ_UQFF = ℳ_GR × H_SCm = 28.3 × 0.990 = 28.0 M_☉ | GW150914 chirp mass: 28.3 ± 1.5 M_☉ | Abbott et al. PRL 116 (2016) | 99.0% |
-| GW frequency f_peak | UQFF: f_peak = c³/(π G ℳ) × (1 + [SSq]) | GW150914 f_peak ~ 150 Hz | LIGO detector frame | ✓ Consistent |
-| Gravitational wave speed bound | UQFF k_η deviation: 10⁻²²⁶ m/s above c | GW170817 + γ-ray: |v_GW - c|/c < 10⁻¹⁵ | LIGO+Fermi GBM 2017 | ✓ UQFF 211 orders within bound |
+| GW strain amplitude h | UQFF PCR correction: h_UQFF = h_GR × (1 + κ/(4π2f_GW)) | LIGO GW150914: h_peak ~ 10-21 | LIGO/LOSC 2016 | PASS PCR correction < 1.1% (within LIGO calibration 5%) |
+| Chirp mass ℳ | UQFF ℳ_UQFF = ℳ_GR × H_SCm = 28.3 × 0.990 = 28.0 `M_M_sun` | GW150914 chirp mass: 28.3 ± 1.5 `M_M_sun` | Abbott et al. PRL 116 (2016) | 99.0% |
+| GW frequency f_peak | UQFF: f_peak = c3/(π G ℳ) × (1 + [SSq]) | GW150914 f_peak ~ 150 Hz | LIGO detector frame | PASS Consistent |
+| Gravitational wave speed bound | UQFF k_η deviation: 10-226 m/s above c | GW170817 + γ-ray: |v_GW - c|/c < 10-15 | LIGO+Fermi GBM 2017 | PASS UQFF 211 orders within bound |
 
 **New physics claim:** UQFF PCR (Pi Co-Resonance) correction adds a κ-dependent phase to the
 GW chirp signal, shifting the merger frequency by ~0.3 Hz at 150 Hz. This is potentially
@@ -296,7 +314,7 @@ in future binary merger observations.
 ## §11 Conclusion
 
 The Universal Frequency Rebound model expands standard string GW theory to a planar model
-with holographic boundary projection. The rebound angular differential $\delta\theta = \alpha(l_s k)$
+with holographic boundary projection. The rebound angular differential $\deltatheta = \alpha(l_s k)$
 quantizes worldsheet modes ($n = fL/c$), generating a rebound torque that aligns all rotating
 astronomical systems into disk configurations. This explains without additional assumptions
 why galaxies, protoplanetary systems, ring systems, and accretion disks universally adopt
@@ -318,9 +336,9 @@ GR or LQG.
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `f`neutron_s26_coupling`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `k`ozima_scm_cross_section`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `k`ozima_wstp_kernel`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -329,7 +347,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `r`amanujan_polylog_s26`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
 | `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
@@ -338,7 +356,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `m`ock_theta_q26`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -349,8 +367,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `r`amanujan_pi_uqff`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `m`ock_theta_pi_wstp_kernel`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]

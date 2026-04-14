@@ -1,6 +1,18 @@
+---
+paper_id: PAPER_930
+title: "Production Scaling v7 Benchmark (300k calc/s)"
+session: 211
+date: 2026-04-11
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [GW, SCm, jet, F_U_Bi_i, phonon, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_930: Production Scaling v7 Benchmark (300k calc/s)
 
-**Author:** Daniel T. Murphy -- Star Magic / UQFF Framework
+**Author:** Daniel T. Murphy — Star Magic / UQFF Framework
 **Date:** 2026-04-11
 **Session:** 211
 **Source:** SCm phonon gap implementation (production_scaling_v7.py)
@@ -11,7 +23,13 @@
 
 ## Abstract
 
-Production benchmark suite targeting 300,000 calculations/second, a 3x improvement over the v4 baseline (100k calc/s). Implements 8 benchmark kernels: 26-Layer Gravity summation, F_U_Bi_i Assembly, Phonon a_res computation, Jet M_jet(Gamma) evaluation, NS Spindown correction, GW190425 strain calculation, Full Pipeline v7 (all-in-one), and Vectorized Phonon Batch processing. Each kernel is timed independently and the aggregate throughput is compared against the 300k target. The benchmark validates that the new phonon physics modules (Session 211) maintain production-grade performance.
+Production benchmark suite targeting 300,000 calculations/second, a 3x improvement over the v4
+baseline (100k calc/s). Implements 8 benchmark kernels: 26-Layer Gravity summation, F_U_Bi_i
+Assembly, Phonon a_res computation, Jet M_jet(Gamma) evaluation, NS Spindown correction, GW190425
+strain calculation, Full Pipeline v7 (all-in-one), and Vectorized Phonon Batch processing. Each
+kernel is timed independently and the aggregate throughput is compared against the 300k target. The
+benchmark validates that the new phonon physics modules (Session 211) maintain production-grade
+performance.
 
 ---
 
@@ -19,25 +37,29 @@ Production benchmark suite targeting 300,000 calculations/second, a 3x improveme
 
 ### Section A: Benchmark Kernels
 
-```
-K1: g = sum_{k=1}^{26} exp(-[SSq]*k/26) * (1 + 0.001*k)
-K2: F_U_Bi_i = F_{U,Bi} * S_26 * [SSq] * E_net
-K3: a_res = (F_{U,Bi}/F_U) * Phi * S_26
-K4: M_jet = 1 + A_jet * exp[-(Gamma-Gamma_0)^2/(2*sigma^2)]
-K5: Omega_dot_phonon = Omega_dot * (1 + Phi*S_26*[SSq]/N)
-K6: h_UQFF = h_GR * D_total * exp([SSq]*t/26)
-K7: Full pipeline (K1-K6 sequential)
-K8: Vectorized phonon batch (1000 frequencies)
-```
+$$
+\begin{aligned}
+  & K1: g = sum_{k=1}^{26} exp(-[SSq]*k/26) * (1 + 0.001*k) \\
+  & K2: \text{F\_U\_Bi\_i} = F_{U,Bi} * S_26 * [SSq] * E_net \\
+  & K3: a_res = (F_{U,Bi}/F_U) * Phi * S_26 \\
+  & K4: M_jet = 1 + A_jet * exp[-(Gamma-Gamma_0)^2/(2*sigma^2)] \\
+  & K5: \text{Omega\_dot\_phonon} = Omega_dot * (1 + Phi*S_26*[SSq]/N) \\
+  & K6: h_UQFF = h_GR * D_total * exp([SSq]*t/26) \\
+  & K7: Full pipeline (K1-K6 sequential) \\
+  & K8: Vectorized phonon batch (1000 frequencies)
+\end{aligned}
+$$
 
 ### Section B: Performance Metrics
 
-```
-Rate = N_iterations / elapsed_time  (calc/s)
-Target: 300,000 calc/s aggregate
-v4 baseline: 100,000 calc/s
-Improvement factor: 3.0x
-```
+$$
+\begin{aligned}
+  & Rate = N_iterations / elapsed_time  (calc/s) \\
+  & Target: 300,000 calc/s aggregate \\
+  & v4 baseline: 100,000 calc/s \\
+  & Improvement factor: 3.0x
+\end{aligned}
+$$
 
 ### Section SM: SM Anchors
 
@@ -54,7 +76,7 @@ Optional numpy vectorization for K8
 | Parameter | Default | Description |
 |-----------|---------|-------------|
 | n_iterations | 10000 | Benchmark iterations |
-| target_calc_per_s | 300000 | Target throughput |
+| `target_calc_per_s` | 300000 | Target throughput |
 
 ---
 
@@ -72,7 +94,12 @@ Optional numpy vectorization for K8
 
 ## 4. Physical Interpretation
 
-The production scaling benchmark ensures that adding phonon physics modules does not degrade computational throughput below operational requirements. The 300k target represents the minimum rate needed for real-time simulation of 26-layer gravity across multiple astrophysical systems simultaneously (e.g., source2.cpp GUI parallel queries). Individual kernels exceed the target, but the full pipeline (all kernels sequential) approaches the limit, indicating that optimization of the pipeline serialization is the primary bottleneck.
+The production scaling benchmark ensures that adding phonon physics modules does not degrade
+computational throughput below operational requirements. The 300k target represents the minimum rate
+needed for real-time simulation of 26-layer gravity across multiple astrophysical systems
+simultaneously (e.g., source2.cpp GUI parallel queries). Individual kernels exceed the target, but
+the full pipeline (all kernels sequential) approaches the limit, indicating that optimization of the
+pipeline serialization is the primary bottleneck.
 
 ---
 
@@ -105,7 +132,8 @@ The production scaling benchmark ensures that adding phonon physics modules does
 | Vacuum energy $\rho_{\text{vac}}$ | $7.09 \times 10^{-37}$ kg/m$^3$ | $\rho_{\text{vac}} \sim 10^{-29}$ g/cm$^3$ | Planck 2018 | Novel SCm scale |
 | Fine structure $\alpha$ | UQFF reproduces via $U_{g1}$ dipole | $1/137.036$ | PDG 2024 | 99.9% |
 
-**New physics claim:** UQFF phonon-mediated vacuum coupling provides testable predictions beyond SM for this system.
+**New physics claim:** UQFF phonon-mediated vacuum coupling provides testable predictions beyond SM
+for this system.
 
 *Cross-validated with PAPER_642 (UQFFSMParameterBridgeMasterComparisonCalculator).*
 
@@ -117,13 +145,13 @@ The production scaling benchmark ensures that adding phonon physics modules does
 **Sector:** SCm-phonon (lattice resonance)
 
 ### §A.2 Lagrangian Density
-$$\mathcal{L}_{SCm_phonon} = \sum_{i=1}^{26} \left[ U_{g,i} + U_{m,i} + U_{A,i} - U_{b,i} \right] \cdot S_{26}([SSq]) \cdot \Phi_{1.25\text{THz}}(\omega, \Gamma)$$
+$$\mathcal{L}_{SCm\_phonon} = \sum_{i=1}^{26} \left[ U_{g,i} + U_{m,i} + U_{A,i} - U_{b,i} \right] \cdot S_{26}([SSq]) \cdot \Phi_{1.25\text{THz}}(\omega, \Gamma)$$
 
 ### §A.3 Euler-Lagrange Equation of Motion
-$$\boxed{\frac{\partial \mathcal{L}}{\partial \phi} - \partial_\mu \frac{\partial \mathcal{L}}{\partial (\partial_\mu \phi)} = 0 \implies F_{U,Bi_i} = -\nabla U_{\text{eff}} + \Phi \cdot S_{26} \cdot E_{\text{net}}}$$
+$$\boxed{\frac{\partial \mathcal{L}}{\partial \phi} - \partial_mu \frac{\partial \mathcal{L}}{\partial (\partial_mu \phi)} = 0 \implies F_{U,Bi\_i} = -\nabla U_{\text{eff}} + \Phi \cdot S_{26} \cdot E_{\text{net}}}$$
 
 ### §A.4 Cosmogenesis Linkage Chain
-PAPER_877 axioms → SCm vacuum → phonon $\omega_{\text{SCm}}$ → lattice resonance → $F_{U,Bi_i}$ unified force → observational prediction
+PAPER_877 axioms → SCm vacuum → phonon $\omega_{\text{SCm}}$ → lattice resonance → $F_{U,Bi\_i}$ unified force → observational prediction
 
 ---
 

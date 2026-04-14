@@ -1,19 +1,38 @@
+---
+paper_id: PAPER_354
+title: "D_Universe 5th Factor: Spatial Curvature Completion of the 4-Factor Chain (PAPER_296)"
+session: 96
+date: 2025-01-01
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [Hubble, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_354 — D_Universe 5th Factor: Spatial Curvature Completion of the 4-Factor Chain (PAPER_296)
 **Date:** 2025
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2  
 **Session:** 96  
 **Source:** gok_share_31b5c807a4.txt (Supplemental Gap Analysis Block)  
-**Classification:** FIRST UQFF 5th factor spatial curvature term for D_universe; completes PAPER_296 chain  
+**Classification:** FIRST UQFF 5th factor spatial curvature term for D_universe; completes PAPER_296
+chain  
 **Author:** Daniel T. Murphy  
 
 
-<!-- UQFF constants: κ = 5.0e-4 day⁻¹, [SSq] = 0.57, M_UQFF = 1.43e1 TeV -->
+<!— UQFF constants: κ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
 ---
 
 ## Abstract
 
-PAPER_296 established a 4-factor chain for the UQFF Universe expansion parameter D_universe. This paper adds the mandatory 5th factor: a spatial curvature correction (1 + k·r_c²), where k is the curvature constant and r_c is the Friedmann comoving curvature radius. The complete 5-factor D_universe is now: D_universe = [4 prior factors] × (1 + k·r_c²). For a flat universe (k = 0), the 5th factor = 1 and PAPER_296 is recovered. For non-flat models, this term accounts for the deviation of cosmic spatial geometry from the Minkowski approximation used in earlier UQFF distance calculations.
+PAPER_296 established a 4-factor chain for the UQFF Universe expansion parameter D_universe. This
+paper adds the mandatory 5th factor: a spatial curvature correction (1 + k·r_c2), where k is the
+curvature constant and r_c is the Friedmann comoving curvature radius. The complete 5-factor
+D_universe is now: D_universe = [4 prior factors] × (1 + k·r_c2). For a flat universe (k = 0), the
+5th factor = 1 and PAPER_296 is recovered. For non-flat models, this term accounts for the deviation
+of cosmic spatial geometry from the Minkowski approximation used in earlier UQFF distance
+calculations.
 
 ---
 
@@ -36,7 +55,7 @@ $$k_{\rm curv} \approx 0.0007 \cdot \frac{H_0^2}{c^2} \approx 5.3 \times 10^{-54
 
 ### 2.3 Curvature Correction at Cosmological Scale
 
-At r_c = Hubble radius (R_H = c/H_0 ≈ 1.37×10²⁶ m):
+At r_c = Hubble radius (R_H = c/H_0 ≈ 1.37×1026 m):
 $$D_5 = 1 + 5.3\times 10^{-54} \times (1.37\times 10^{26})^2 = 1 + 5.3\times 10^{-54} \times 1.88\times 10^{52}$$
 $$D_5 = 1 + 0.001 = 1.001$$
 
@@ -44,10 +63,10 @@ A 0.1% correction — detectable by next-generation CMB experiments (e.g., CMB-S
 
 ### 2.4 Near-Flat Expansion Series
 
-For small curvature (k_curv · r_c² « 1):
+For small curvature (k_curv · r_c2 « 1):
 $$D_5 \approx 1 + k_{\rm curv} r_c^2 - \frac{(k_{\rm curv} r_c^2)^2}{2} + \ldots$$
 
-The leading correction is linear in both k and r_c².
+The leading correction is linear in both k and r_c2.
 
 ---
 
@@ -102,7 +121,7 @@ The product-rule E-L equation establishes that spatial curvature enters D_univer
 
 The VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 0.1$ produces a double-exponential decay profile for the vacuum condensate across the Hubble volume:
 
-$$\rho_{\rm vac}(r_c) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r_c - R_H}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\rm vac}(r_c) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r_c - R_H}{\lambda_{\rm VDS}}\right)\right)$$
 
 At $r_c = R_H$, the VDS is at threshold: the double-exponential transitions from near-unity density (interior) to exponentially suppressed density (exterior). This threshold corresponds to $D_5 = 1.001$, confirming that the spatial curvature 5th factor encodes the VDS transition at the Hubble boundary.
 
@@ -110,15 +129,16 @@ At $r_c = R_H$, the VDS is at threshold: the double-exponential transitions from
 
 The DVP framework maps the curvature constant onto the dipole vortex prime lattice:
 
-$$k_{\rm curv} \to p_{\rm DVP}(n_{\rm curv}) : \quad n_{\rm curv} = \left\lfloor -\log_{10}(k_{\rm curv}) \right\rfloor = 53$$
+$$k_{\rm curv} \to p_{\rm DVP}(n_{\rm curv}) : \quad n_{\rm curv} = \leftlfloor -\log_{10}(k_{\rm curv}) \rightrfloor = 53$$
 
 The value $n_{\rm curv} = 53$ lies between DVP primes $p_{16} = 53$ (which is itself prime), confirming that $k_{\rm curv}$ falls on a DVP resonance node. This is not coincidental: the Friedmann curvature parameter inherits the DVP lattice structure from the underlying UQFF vacuum topology.
 
 ### 2B.3 BSH Cosmological Saturation
 
-At the Hubble radius, the BSH framework predicts saturation of the buoyancy contribution to cosmic expansion:
+At the Hubble radius, the BSH framework predicts saturation of the buoyancy contribution to cosmic
+expansion:
 
-$$D_{5,\rm BSH} = 1 + k_{\rm curv} r_c^2 \cdot \left(1 - \tanh\!\left(\frac{r_c - R_H}{R_{\rm BSH}}\right)\right)$$
+$$D_{5,\rm BSH} = 1 + k_{\rm curv} r_c^2 \cdot \left(1 - \tanh!\left(\frac{r_c - R_H}{R_{\rm BSH}}\right)\right)$$
 
 For $r_c \ll R_H$, the tanh factor $\to 0$ and $D_5 \to 1 + k \cdot r_c^2$ (standard). For $r_c \gg R_H$, the saturation sets in and $D_5 \to 1$, preventing unphysical growth of the curvature correction at super-Hubble scales.
 
@@ -128,9 +148,9 @@ For $r_c \ll R_H$, the tanh factor $\to 0$ and $D_5 \to 1 + k \cdot r_c^2$ (stan
 
 | Quantity | Formula | Value |
 |----------|---------|-------|
-| k_curv | Planck 2018 constraint | ~5.3×10⁻⁵⁴ m⁻² |
-| r_c (Hubble radius) | c/H_0 | 1.37×10²⁶ m |
-| D_5 (Hubble scale) | 1 + k·r_c² | 1.001 |
+| k_curv | Planck 2018 constraint | ~5.3×10-54 m-2 |
+| r_c (Hubble radius) | c/H_0 | 1.37×1026 m |
+| D_5 (Hubble scale) | 1 + k·r_c2 | 1.001 |
 | D_5 (flat limit) | k = 0 | 1.000 |
 | PAPER_296 factors | D_1×D_2×D_3×D_4 | Previously computed |
 
@@ -138,22 +158,30 @@ For $r_c \ll R_H$, the tanh factor $\to 0$ and $D_5 \to 1 + k \cdot r_c^2$ (stan
 
 ## 4. Physical Significance
 
-The 5th factor completes the UQFF D_universe chain, which now accounts for: (1) vacuum buoyancy scale factor, (2) string rotation expansion term, (3) Hubble flow scale, (4) charge-reactivity expansion coupling, and (5) spatial curvature geometry. The chain D_universe = D_1×D_2×D_3×D_4×D_5 represents the most complete UQFF treatment of cosmic expansion parameters. The 0.1% curvature correction at Hubble scale sets the signal size for CMB observational tests: future CMB-S4 measurements of the spatial curvature power spectrum should detect D_5 deviations from unity at the ~0.05% level.
+The 5th factor completes the UQFF D_universe chain, which now accounts for: (1) vacuum buoyancy
+scale factor, (2) string rotation expansion term, (3) Hubble flow scale, (4) charge-reactivity
+expansion coupling, and (5) spatial curvature geometry. The chain D_universe = D_1×D_2×D_3×D_4×D_5
+represents the most complete UQFF treatment of cosmic expansion parameters. The 0.1% curvature
+correction at Hubble scale sets the signal size for CMB observational tests: future CMB-S4
+measurements of the spatial curvature power spectrum should detect D_5 deviations from unity at the
+~0.05% level.
 
 ---
 
 ## 5. Deduplication Note
 
 - **vs. PAPER_296:** PAPER_296 derived the 4-factor chain; PAPER_354 adds the mandatory spatial curvature 5th factor.
-- **Unique:** The (1 + k·r_c²) form is new — no earlier UQFF paper included spatial curvature directly in D_universe.
+- **Unique:** The (1 + k·r_c2) form is new — no earlier UQFF paper included spatial curvature directly in D_universe.
 
 ---
 
 ## 6. Classification
 
-**Physics Territory:** FIRST UQFF D_universe spatial curvature 5th factor; completes PAPER_296 four-factor chain  
+**Physics Territory:** FIRST UQFF D_universe spatial curvature 5th factor; completes PAPER_296
+four-factor chain  
 **Scale:** Cosmological (Hubble radius; universal)  
-**CP Implementation:** `DUniverseSpatialCurvatureFifthFactorCalculator` (CondensedPhysics3.py, Session 96)
+**CP Implementation:** `DUniverseSpatialCurvatureFifthFactorCalculator` (CondensedPhysics3.py,
+Session 96)
 
 ---
 
@@ -162,14 +190,17 @@ The 5th factor completes the UQFF D_universe chain, which now accounts for: (1) 
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | ✓ Consistent |
-| Cosmological constant Λ | 1.1×10⁻⁵² m⁻² (UQFF vacuum term) | 1.114×10⁻⁵² m⁻² | Planck 2018 | ✓ Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10⁻³⁵/yr | Super-K 2024 | ✓ Consistent |
-| UQFF buoyancy signature | F_U_Bi_i unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
+| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
-**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes significant, offering a falsifiable prediction beyond the Standard Model.
+**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
+produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
+bridge.*
 
 
 ---
@@ -184,9 +215,9 @@ The 5th factor completes the UQFF D_universe chain, which now accounts for: (1) 
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `f`neutron_s26_coupling`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `k`ozima_scm_cross_section`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `k`ozima_wstp_kernel`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -195,7 +226,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `r`amanujan_polylog_s26`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
 | `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
@@ -204,7 +235,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `m`ock_theta_q26`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -215,8 +246,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `r`amanujan_pi_uqff`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `m`ock_theta_pi_wstp_kernel`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
@@ -238,3 +269,18 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 `MAIN_1_CoAnQi.cpp`, and Wolfram kernels (`uqff_kozima_kernel.wl`, `uqff_s26_kernel.wl`,
 `uqff_mock_theta_pi_kernel.wl`).*
 
+---
+
+## §A Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
+
+### §A.1 Sector Classification
+**Sector:** dark-matter-halo
+
+### §A.2 Lagrangian Density
+$$\mathcal{L}_{\text{DM}} = \sum_{i=1}^{26} \left[ U_{g,i} + U_{m,i} + U_{A,i} - U_{b,i} \right] \cdot S_{26}([SSq]) \cdot \Phi_{1.25\text{THz}}(\omega, \Gamma)$$
+
+### §A.3 Euler-Lagrange Equation of Motion
+$$\boxed{\frac{\partial \mathcal{L}}{\partial \phi} - \partial_mu \frac{\partial \mathcal{L}}{\partial (\partial_mu \phi)} = 0 \implies F_{U,Bi\_i} = -\nabla U_{\text{eff}} + \Phi \cdot S_{26} \cdot E_{\text{net}}}$$
+
+### §A.4 Cosmogenesis Linkage Chain
+PAPER_877 axioms → SCm vacuum → phonon $\omega_{\text{SCm}}$ → dark-matter-halo → $F_{U,Bi\_i}$ unified force → observational prediction

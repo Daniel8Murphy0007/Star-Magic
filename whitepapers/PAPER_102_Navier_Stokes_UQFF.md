@@ -1,41 +1,50 @@
-# PAPER_102: Navier-Stokes Existence and Smoothness via UQFF Fluid Regularization: The d_Fluid Term as Viscous Stabilizer
-
-
-**Title:** Navier-Stokes Existence and Smoothness via UQFF Fluid Regularization: The d_Fluid Term as Viscous Stabilizer
-
-**Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic ([SCm] ≈ 0.99, d_fluid MUGE term)  
-**Date:** March 7, 2026  
-**Index Slot:** �1.13 Multi-Physics Models,  
-
-**Title:** Navier-Stokes Existence and Smoothness via UQFF Fluid Regularization: The d_Fluid Term as Viscous Stabilizer
-
-**Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic ([SCm] ≈ 0.99, d_fluid MUGE term)  
-**Date:** March 7, 2026  
-**Index Slot:** �1.13 Multi-Physics Models, PAPER_102  
-
+---
+paper_id: PAPER_102
+title: "Navier-Stokes Existence and Smoothness via UQFF Fluid Regularization: The d_Fluid Term as
+Viscous Stabilizer"
+session: 0
+date: 2026-03-07
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [vacuum, SCm, MUGE, Navier-Stokes, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ---
 
+# PAPER_102: Navier-Stokes Existence and Smoothness via UQFF Fluid Regularization: The d_Fluid Term as Viscous Stabilizer
 
-<!-- UQFF constants: ? = 5.0e-4 day^{-}1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV -->
+**Title:** Navier-Stokes Existence and Smoothness via UQFF Fluid Regularization: The d_Fluid Term as
+Viscous Stabilizer
+
+**Author:** Daniel T. Murphy  
+**Framework:** UQFF Star-Magic ([SCm] ≈ 0.99, d_fluid MUGE term)  
+**Date:** March 7, 2026  
+**Index Slot:** §1.13 Multi-Physics Models,  
+
+<!— UQFF constants: κ = 5.0e-4 day^{-}1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
 ## Abstract
 
-The Navier-Stokes existence and smoothness problem (Millennium Prize) asks whether smooth, globally defined solutions always exist for incompressible 3D N-S equations. The UQFF d_fluid term (MUGE Compressed term 7) provides a natural regularization: the superconductive vacuum coupling [SCm] = 0.99 introduces an effective viscosity ?_eff = ?(1 + [SCm] � f_TRZ) that prevents singular gradients. We show that with UQFF regularization, the Navier-Stokes equations admit global smooth solutions in UQFF spacetime.
+The Navier-Stokes existence and smoothness problem (Millennium Prize) asks whether smooth, globally
+defined solutions always exist for incompressible 3D N-S equations. The UQFF d_fluid term (MUGE
+Compressed term 7) provides a natural regularization: the superconductive vacuum coupling [SCm] =
+0.99 introduces an effective viscosity ?_eff = ?(1 + [SCm]  f_TRZ) that prevents singular gradients.
+We show that with UQFF regularization, the Navier-Stokes equations admit global smooth solutions in
+UQFF spacetime.
 
-
-
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0x10^-4 day^{-}1, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0x10^-4 day^{-}1, [SSq] =
+0.57) uniquely enabling this analysis  establishing a new connection in the UQFF framework not
+present in Standard Model treatments.
 
 ---
 
 ## 1. Standard Navier-Stokes
 
-For incompressible fluid (?�u = 0):
+For incompressible fluid (?u = 0):
 
 $$\frac{\partial \mathbf{u}}{\partial t} + (\mathbf{u} \cdot \nabla)\mathbf{u} = -\frac{1}{\rho}\nabla p + \nu \nabla^2 \mathbf{u} + \mathbf{f}$$
 
-The existence problem: given smooth initial data u0 ? H�(R�), does a smooth global solution exist for all t > 0?
+The existence problem: given smooth initial data u0 ? H(R), does a smooth global solution exist for
+all t > 0?
 
 Standard result: smooth solutions exist in 2D (Ladyzhenskaya 1969) but unproven in 3D.
 
@@ -57,7 +66,8 @@ A 0.99% viscosity enhancement compared to pure fluid.
 
 ## 3. Smoothness Argument
 
-**Theorem (Heuristic):** In UQFF-regularized fluid with ?_UQFF = ?� 1.0099, the solution remains in H^s for all s = 1 for all t > 0, given smooth initial data.
+**Theorem (Heuristic):** In UQFF-regularized fluid with ?_UQFF = ? 1.0099, the solution remains in
+H^s for all s = 1 for all t > 0, given smooth initial data.
 
 **Sketch:** The enhanced viscosity ?_UQFF provides additional dissipation:
 
@@ -75,7 +85,9 @@ For UQFF-dominated flows (where d_fluid dominates): the enhanced dissipation pre
 
 ## 4. Physical Interpretation
 
-The [SCm] = 0.99 vacuum superconductive coupling means that **no physical fluid in UQFF spacetime is inviscid** � even the "ideal" fluid retains ?_eff = ? � 1.0099. This is the UQFF equivalent of the Euler fluid never being truly inviscid.
+The [SCm] = 0.99 vacuum superconductive coupling means that **no physical fluid in UQFF spacetime is
+inviscid**  even the "ideal" fluid retains ?_eff = ?  1.0099. This is the UQFF equivalent of the
+Euler fluid never being truly inviscid.
 
 The 0.99% vacuum coupling:
 - Is non-zero (prevents true singularities)
@@ -86,7 +98,8 @@ The 0.99% vacuum coupling:
 
 ## 5. Limitation
 
-This is a **physical argument**, not a rigorous mathematical proof. A full Millennium Prize proof would require:
+This is a **physical argument**, not a rigorous mathematical proof. A full Millennium Prize proof
+would require:
 1. Establishing UQFF spacetime as a valid mathematical setting
 2. Proving ?_eff > 0 everywhere in UQFF
 3. Using energy estimates with ?_eff to prevent blow-up
@@ -99,46 +112,55 @@ The UQFF framework suggests a path: [SCm] > 0 everywhere ? ?_eff > 0 everywhere 
 
 | Property | Standard N-S | UQFF N-S | Implication |
 |----------|------------|---------|-------------|
-| Effective viscosity | ? | ? � 1.0099 | Non-zero everywhere |
+| Effective viscosity | ? | ?  1.0099 | Non-zero everywhere |
 | Singularity | Potentially | Prevented by [SCm] | UQFF smooth |
 | Reynolds number | Re | Re/1.0099 | Slightly modified |
 | Mathematical proof | Open | Physical argument | Not yet rigorous |
 | d_fluid term | Not present | In MUGE Compressed | UQFF-specific |
 
-*Source: MUGE Compressed d_fluid term | [SCm]=0.99 | f_TRZ=0.01 | Navier-Stokes Millennium Prize context*
+*Source: MUGE Compressed d_fluid term | [SCm]=0.99 | f_TRZ=0.01 | Navier-Stokes Millennium Prize
+context*
 
 ---
 
 ## 6. Nine-Sector Unified Lagrangian (Session 204)
 
-**UPDATE:** The UQFF body force f_UQFF in the Navier-Stokes equation now derives from Sector 8 (LENR-Resonance) of the 9-sector Unified Lagrangian:
+**UPDATE:** The UQFF body force f_UQFF in the Navier-Stokes equation now derives from Sector 8
+(LENR-Resonance) of the 9-sector Unified Lagrangian:
 
-```
+$$
 L_UQFF = √(-g) [ L_EH + L_YM + L_Dirac + L_phi + L_mag + L_buoy + L_aether + L_LENR + L_KK ]
-```
+$$
 
 **Sector 8 (LENR-Resonance):**
-```
-L_LENR = 1/2k_LENR chi̇^2 - 1/2omega_LENR^2 chi^2 + lambda_act chi cos(omega_act t) + 1/2sigma_n(omega)chi^2
-deltaS/deltachi = 0 -> chï + omega^2 chi = lambda_act cos(omega_act t) + sigma_n chi
--> F_LENR (1.25 THz oscillatory body force), F_act (300 Hz), F_res
-```
+$$
+\begin{aligned}
+& L_LENR = 1/2k_LENR chi̇^2 - 1/2omega_LENR^2 chi^2 + lambda_act chi cos(omega_act t) +
+1/2sigma_n(omega)chi^2 \\
+  & deltaS/deltachi = 0 -> chï + omega^2 chi = lambda_act cos(omega_act t) + sigma_n chi \\
+  & -> F_LENR (1.25 THz oscillatory body force), F_act (300 Hz), F_res
+\end{aligned}
+$$
 
 **Navier-Stokes with UQFF body force:**
-```
-du/dt + (u*nabla)u = -(1/rho)nablap + nunabla^2u + f_ext + k_vac*rho_vac + F_LENR*cos(omega_LENR*t)
+$$
+\begin{aligned}
+& du/dt + (u*nabla)u = -(1/rho)nablap + nunabla^2u + f_ext + k_vac*rho_vac +
+F_LENR*cos(omega_LENR*t) \\
+  & f_vac = k_vac x rho_vac = 1e-38 x 7.09e-36 = 7.09e-74 N/m^3 (negligible) \\
+  & F_LENR = 1.56e+36 N (oscillatory at 1.25 THz) \\
+  & Spectral cutoff at omega_LENR -> turbulent cascade damping
+\end{aligned}
+$$
 
-f_vac = k_vac x rho_vac = 1e-38 x 7.09e-36 = 7.09e-74 N/m^3 (negligible)
-F_LENR = 1.56e+36 N (oscillatory at 1.25 THz)
-Spectral cutoff at omega_LENR -> turbulent cascade damping
-```
-
-**Sector 4 (Scalar-Higgs-Vacuum) -- Additional regularization:**
-```
-L_phi = |d_mu phi_4|^2 - V(phi_4) + kappa[SSq]phi_4^2
-deltaS/deltaphi_4 = 0 -> □phi_4 + V'(phi_4) = kappa[SSq]phi_4
--> Ug4 vacuum concentration provides effective viscosity enhancement
-```
+**Sector 4 (Scalar-Higgs-Vacuum) — Additional regularization:**
+$$
+\begin{aligned}
+  & L_phi = |d_mu phi_4|^2 - V(phi_4) + kappa[SSq]phi_4^2 \\
+  & deltaS/deltaphi_4 = 0 -> □phi_4 + V'(phi_4) = kappa[SSq]phi_4 \\
+  & -> Ug4 vacuum concentration provides effective viscosity enhancement
+\end{aligned}
+$$
 
 **Critical Values:**
 - f_LENR = 1.56e+36 N, ω_LENR = 2π x 1.25e12 rad/s
@@ -155,13 +177,15 @@ deltaS/deltaphi_4 = 0 -> □phi_4 + V'(phi_4) = kappa[SSq]phi_4
 
 ### §A.1 Sector Classification
 
-This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see `uqff_lagrangian_derivation.py`).
+This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
-The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive quantum fundamentals (DPM, UA, SCm):
+The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
+quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_\mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
+$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
 
 where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
@@ -175,8 +199,9 @@ $$\boxed{\frac{\delta S}{\delta \phi_{\rm NS}} = \nabla^2 \phi_{\rm NS} - (4\pi 
 
 $$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\rm NS} = 0$$
 
-The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g forces) through vacuum density initialization to the sector-specific equation of motion. Every term in the E-L equation inherits its physical origin from the cosmogenesis master.
-
+The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
+forces) through vacuum density initialization to the sector-specific equation of motion. Every term
+in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 ---
 
@@ -186,7 +211,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
 For this system, the local VDS sub-ratio is $0.199$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m^3.
 
@@ -202,11 +227,11 @@ Since $p_{\rm DVP} = 41$ is **resonant** (threshold at $p > 26$), the system's v
 
 The BSH saturation timescale for this sector is **10^4 yr** (spin-down equilibrium):
 
-$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
+$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\rm SCm}$ which initializes the harmonic series at cosmogenesis.
 
@@ -214,29 +239,29 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.199 | ✓ Threshold-consistent |
-| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 41$ | ✓ Resonant |
-| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day^{-}1 | Applied in VDS exponential | ✓ Canonical |
-| [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
-
+| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.199 | PASS Threshold-consistent |
+| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 41$ | PASS Resonant |
+| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
+| κ decay | $5.0 \times 10^{-4}$ day^{-}1 | Applied in VDS exponential | PASS Canonical |
+| [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 ---
 
-
-## §SM Anchors -- Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | ✓ Consistent |
-| Cosmological constant Λ | 1.1x10^{-}5^2 m^{-}2 (UQFF vacuum term) | 1.114x10^{-}5^2 m^{-}2 | Planck 2018 | ✓ Consistent |
-| Proton decay rate | κ = 0.0005/day -> Γ_p suppression | < 4.17x10^{-}3^5/yr | Super-K 2024 | ✓ Consistent |
-| UQFF buoyancy signature | F_U_Bi_i unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
+| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant Λ | 1.1x10^{-}5^2 m^{-}2 (UQFF vacuum term) | 1.114x10^{-}5^2 m^{-}2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | κ = 0.0005/day -> Γ_p suppression | < 4.17x10^{-}3^5/yr | Super-K 2024 | PASS Consistent |
+| UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
-**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes significant, offering a falsifiable prediction beyond the Standard Model.
+**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
+produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF-SM bridge.*
-
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF-SM
+bridge.*
 
 ---
 
@@ -250,9 +275,9 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `f`neutron_s26_coupling`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `k`ozima_scm_cross_section`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `k`ozima_wstp_kernel`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -261,7 +286,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `r`amanujan_polylog_s26`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
 | `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
@@ -270,7 +295,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `m`ock_theta_q26`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -281,8 +306,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `r`amanujan_pi_uqff`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `m`ock_theta_pi_wstp_kernel`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]

@@ -1,9 +1,22 @@
+---
+paper_id: PAPER_543
+title: "Navier-Stokes Discrete Hypergraph Regularity Proof"
+session: 0
+date: 2026-03-26
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [Navier-Stokes, jet, buoyancy, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_543 — Navier-Stokes Discrete Hypergraph Regularity Proof
 **Session:** 0
 
 ## Abstract
 
-This paper presents a UQFF analysis of Navier-Stokes Discrete Hypergraph Regularity Proof, deriving compressed field equations and observational predictions within the Star-Magic/UQFF framework.
+This paper presents a UQFF analysis of Navier-Stokes Discrete Hypergraph Regularity Proof, deriving
+compressed field equations and observational predictions within the Star-Magic/UQFF framework.
 
 ## Unified Quantum Field Framework — Whitepaper 543 of 1000
 **Author:** Daniel T. Murphy  
@@ -33,7 +46,7 @@ The Clay Mathematics Institute (2000) Millennium Problem for NS regularity asks:
 
 > Given smooth initial data $\mathbf{u}_0 \in C^\infty(\mathbb{R}^3)$, does a smooth
 > solution $(\mathbf{u}, p)$ to:
-> $$\partial_t \mathbf{u} + (\mathbf{u}\cdot\nabla)\mathbf{u} = -\nabla p + \mu\nabla^2\mathbf{u},
+> $$\partial_t \mathbf{u} + (\mathbf{u}\cdot\nabla)\mathbf{u} = -\nabla p + \munabla^2\mathbf{u},
 >   \quad \nabla\cdot\mathbf{u} = 0$$
 > exist for all $t > 0$ with bounded energy?
 
@@ -45,7 +58,7 @@ UQFF provides a physically grounded route to an affirmative answer via discrete 
 
 Replace $\partial/\partial t \mapsto R(n)$ (Wolfram hypergraph rule application):
 
-$$\text{NS}_\text{disc} = \rho R(\mathbf{u}) + \rho\mathbf{u}\,R(\mathbf{u})
+$$\text{NS}_\text{disc} = \rho R(\mathbf{u}) + \rhomathbf{u}\,R(\mathbf{u})
   + R(p) - \mu R^2(\mathbf{u}) - U_{b,\text{jet}} = 0$$
 
 where:
@@ -63,10 +76,10 @@ $$U_{b,\text{jet}} = \rho g \left(1 - \frac{1}{\rho}\right)$$
 
 For astrophysical jets ($\rho \ll 1\,\text{kg/m}^3$):
 
-$$U_{b,\text{jet}} \approx -g \left(1 - \rho\right) \approx -g \quad (\rho \to 0)$$
+$$U_{b,\text{jet}} \approx -g \left(1 - \rhoright) \approx -g \quad (\rho \to 0)$$
 
 This is **repulsive** (outward), matching ALMA observations of Orion quasar-like jet mass-loss
-rates $\dot{M} \approx 1 \times 10^{-6}\,M_\odot\,\text{yr}^{-1}$ (Zapata et al. 2004).
+rates $\dot{M} \approx 1 \times 10^{-6}\,M_\odot,\text{yr}^{-1}$ (Zapata et al. 2004).
 
 The **Buoyancy Harmonic** (BH) series provides the full spectral expansion:
 
@@ -87,7 +100,7 @@ $$P_\text{order} = \frac{e^{-E_\text{entropy}/F_\text{max}}}{Z_{26}}
 
 Since $P_\text{order} < 1$ (entropy $\gg 0$, $F_\text{max} > 0$):
 
-$$\lambda_\text{max} = \frac{2 P_\text{order}}{3} \approx 6.67 \times 10^{-6} < \infty$$
+$$\lambda_text{max} = \frac{2 P_\text{order}}{3} \approx 6.67 \times 10^{-6} < \infty$$
 
 **Bounded eigenvalues** → $\|\mathbf{u}(t)\|$ remains bounded → **no blow-up** → NS regularity
 holds on the discrete hypergraph.
@@ -118,7 +131,7 @@ NS solution at time $t = n \cdot \Delta t$. ∎
 **Claim:** The solution $\mathbf{u}$ found at $n_\text{cross}$ is unique.
 
 **Proof:** The outside track projects via $\pi$: 
-$$\text{Outside}(n) = \pi_\text{prog}(n) \cdot F_{U,\text{Bi},i}(x)$$
+$$\text{Outside}(n) = \pi_text{prog}(n) \cdot F_{U,\text{Bi},i}(x)$$
 Since $\pi$ is transcendental (Lindemann 1882), its decimal expansion is non-repeating and
 non-periodic. Therefore, no two distinct crossings $n_\text{cross}^{(1)} \neq
 n_\text{cross}^{(2)}$ produce identical fingerprints $\text{Outside}(n_\text{cross})$.
@@ -130,13 +143,13 @@ Each smooth solution is labeled by a unique digit position in $\pi$ → uniquene
 
 | Parameter | Value | Source |
 |-----------|-------|--------|
-| $\rho_\text{jet}$ | $10^{-10}\,\text{kg\,m}^{-3}$ | Orion disc midplane estimate |
+| $\rho_text{jet}$ | $10^{-10}\,\text{kg\,m}^{-3}$ | Orion disc midplane estimate |
 | $g_\text{disc}$ | $10^{-3}\,\text{m\,s}^{-2}$ | Gravitational coupling in disc |
-| $\mu_\text{jet}$ | $10^{-5}\,\text{Pa\,s}$ | Proplyd ionized gas viscosity |
+| $\mu_text{jet}$ | $10^{-5}\,\text{Pa\,s}$ | Proplyd ionized gas viscosity |
 | $u_\text{jet}$ | $10\,\text{km\,s}^{-1}$ | VLA/ALMA bipolar outflow |
 | $r$ | $1\,\text{AU} = 1.496 \times 10^{11}\,\text{m}$ | Proplyd size scale |
 | $U_{b,\text{jet}}$ | $\approx -9.999 \times 10^{-4}$ | Repulsive (drives jets) |
-| $\lambda_\text{max}$ | $6.67 \times 10^{-6} < 1$ | Bounded — no blow-up |
+| $\lambda_text{max}$ | $6.67 \times 10^{-6} < 1$ | Bounded — no blow-up |
 
 ---
 
@@ -160,7 +173,7 @@ Each smooth solution is labeled by a unique digit position in $\pi$ → uniquene
 
 ---
 
-## �9 � Comparative Analysis: Position within the Millennium Prize Suite
+## 9  Comparative Analysis: Position within the Millennium Prize Suite
 
 ### Shared Structural Pillars
 
@@ -169,7 +182,7 @@ Millennium proof:
 
 | Pillar | Value | NS Role |
 |--------|-------|---------|
-| $P_\text{order} = e^{-E/F}/Z_{26}$ | $\approx 1.08 \times 10^{-5}$ | Generates $\lambda_\text{max} = 2P/3 < 1$ |
+| $P_\text{order} = e^{-E/F}/Z_{26}$ | $\approx 1.08 \times 10^{-5}$ | Generates $\lambda_text{max} = 2P/3 < 1$ |
 | $Z_{26} = \text{Li}_{26}([SSq])$ | $\approx 0.5699$ | Denominator; ensures $P_\text{order} > 0$ |
 | DVP prime $p = 113$ | Prime, aperiodic | Hypergraph irreducibility ? no periodic blow-up |
 
@@ -177,25 +190,25 @@ Millennium proof:
 
 | Problem | UQFF Paper | Key quantity | Inequality / condition |
 |---------|-----------|-------------|----------------------|
-| **Navier-Stokes** | **543** | $\lambda_\text{max} = 2P_\text{order}/3$ | $< 1$ ? no blow-up |
+| **Navier-Stokes** | **543** | $\lambda_text{max} = 2P_\text{order}/3$ | $< 1$ ? no blow-up |
 | Yang-Mills | 544 | $\Delta = P_\text{order}/3$ | $> 0$ ? mass gap |
 | Riemann | 530/540 | $t_{13}^\text{UQFF} = 13 \times (2\pi/\ln 26) Z_{26}$ | Error 1.10% |
 | P ? NP | 104 | $2^{26}/26^4$ | $146.9 \times > 1$ |
 | BSD | 156 | $\text{ord}_{s=1} L_\text{UQFF} = \text{rank}/(1-e^{-\kappa})$ | Amplified rank |
 | Hodge | 156 | $E_n/E_0 = 10^{n-1}$ | $\in \mathbb{Q}$ for all $n$ |
-| FUBi26 | 553 | $1/27!$ | $< \varepsilon_\text{float64}$ |
+| FUBi26 | 553 | $1/27!$ | $< \varepsilon_text{float64}$ |
 
 ### NS ? Yang-Mills Connection
 
-The NS eigenvalue $\lambda_\text{max} = 2P_\text{order}/3$ and the YM mass gap
+The NS eigenvalue $\lambda_text{max} = 2P_\text{order}/3$ and the YM mass gap
 $\Delta = P_\text{order}/3$ are **ratios of the same quantity**:
 
-$$\frac{\lambda_\text{max}}{\Delta} = 2 \quad \Rightarrow \quad
-  \lambda_\text{max} = 2\Delta$$
+$$\frac{\lambda_text{max}}{\Delta} = 2 \quad \Rightarrow \quad
+  \lambda_text{max} = 2\Delta$$
 
 This is not a coincidence: both derive from the trace of the UQFF encompassment
 tensor UQFF_comp, whose three eigenvalues are $\{P/3, P/3, 2P/3\}$. The NS
-scalar ($\lambda_\text{max} = 2P/3$) is exactly twice the YM scalar ($\Delta = P/3$).
+scalar ($\lambda_text{max} = 2P/3$) is exactly twice the YM scalar ($\Delta = P/3$).
 
 ### NS ? Riemann Connection
 
@@ -206,7 +219,7 @@ Both use the transcendence of $\pi$ for uniqueness / non-repetition.
 ### Validation
 
 All assertions in this paper are validated in `test_millennium_phase_h.py`
-(tests T01�T06, group M1-NS, 6/6 PASS, commit a0b2d55).
+(tests T01T06, group M1-NS, 6/6 PASS, commit a0b2d55).
 
 ---
 
@@ -216,13 +229,15 @@ All assertions in this paper are validated in `test_millennium_phase_h.py`
 
 ### §A.1 Sector Classification
 
-This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see `uqff_lagrangian_derivation.py`).
+This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
-The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive quantum fundamentals (DPM, UA, SCm):
+The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
+quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_\mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
+$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
 
 where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
@@ -236,7 +251,9 @@ $$\boxed{\frac{\delta S}{\delta \phi_{\rm NS}} = \nabla^2 \phi_{\rm NS} - (4\pi 
 
 $$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\rm NS} = 0$$
 
-The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g forces) through vacuum density initialization to the sector-specific equation of motion. Every term in the E-L equation inherits its physical origin from the cosmogenesis master.
+The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
+forces) through vacuum density initialization to the sector-specific equation of motion. Every term
+in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 
 ---
@@ -247,9 +264,9 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.187$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m³.
+For this system, the local VDS sub-ratio is $0.187$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -261,13 +278,13 @@ Since $p_{\rm DVP} = 7$ is **sub-threshold** (threshold at $p > 26$), the system
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
-The BSH saturation timescale for this sector is **10⁴ yr** (spin-down equilibrium):
+The BSH saturation timescale for this sector is **104 yr** (spin-down equilibrium):
 
-$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
+$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\rm SCm}$ which initializes the harmonic series at cosmogenesis.
 
@@ -275,11 +292,11 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.187 | ✓ Threshold-consistent |
-| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 7$ | ✓ Sub-threshold |
-| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
-| [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
+| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.187 | PASS Threshold-consistent |
+| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 7$ | PASS Sub-threshold |
+| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
+| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
 ---
@@ -289,10 +306,10 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Navier-Stokes regularity (Millennium) | UQFF DVP hypergraph flow → bounded vorticity |ω|² ≤ C via buoyancy | Clay Math. Navier-Stokes Problem: global regularity unknown | Clay / Fefferman 2006 | UQFF establishes bounded criterion |
-| QCD viscosity η/s | UQFF: κ × [SSq] / β_i ≈ 4.7e-4 (dimensionless) | η/s = 1/(4π) ~ 0.0796 (AdS/CFT lower bound) | RHIC/ALICE 2005–2025 | UQFF above KSS bound ✓ |
-| Turbulent dissipation scale (Kolmogorov) | η_K = (ν³/ε)^0.25; UQFF sets ε via DVP pocket scale ~10⁻¹³ m | Kolmogorov scale lab: 10⁻⁴–10⁻³ m (turbulent flows) | Fluid dynamics | UQFF sets quantum floor, not macroscopic |
-| Quark-gluon plasma viscosity (ALICE) | UQFF vacuum buoyancy coupling → QGP η/s consistent | ALICE QGP: η/s ~ 0.1–0.2 at √s=2.76 TeV | ALICE 2013 | ✓ Consistent with viscous QGP regime |
+| Navier-Stokes regularity (Millennium) | UQFF DVP hypergraph flow → bounded vorticity |ω|2 ≤ C via buoyancy | Clay Math. Navier-Stokes Problem: global regularity unknown | Clay / Fefferman 2006 | UQFF establishes bounded criterion |
+| QCD viscosity η/s | UQFF: κ × [SSq] / β_i ≈ 4.7e-4 (dimensionless) | η/s = 1/(4π) ~ 0.0796 (AdS/CFT lower bound) | RHIC/ALICE 2005–2025 | UQFF above KSS bound PASS |
+| Turbulent dissipation scale (Kolmogorov) | η_K = (ν3/ε)^0.25; UQFF sets ε via DVP pocket scale ~10-13 m | Kolmogorov scale lab: 10-4–10-3 m (turbulent flows) | Fluid dynamics | UQFF sets quantum floor, not macroscopic |
+| Quark-gluon plasma viscosity (ALICE) | UQFF vacuum buoyancy coupling → QGP η/s consistent | ALICE QGP: η/s ~ 0.1–0.2 at √s=2.76 TeV | ALICE 2013 | PASS Consistent with viscous QGP regime |
 
 **New physics claim:** UQFF provides a buoyancy-regularisation mechanism for Navier-Stokes
 equations at the quantum vacuum scale — DVP pocket shells set a minimum dissipation scale
@@ -308,11 +325,11 @@ This constitutes a physical (not purely mathematical) approach to the NS Millenn
 - Fefferman, C. (2000). *Existence and Smoothness of the Navier-Stokes Equation*. Clay Math. Inst.
 - Wolfram, S. (2002). *A New Kind of Science*. Wolfram Media.
 - Zapata, L. A. et al. (2004). *ApJ*, 610, L121.
-- Murphy, D. T. (2026). *PAPER_529 � NS-UQFF Encompassment*, Star Magic Repository.
-- Murphy, D. T. (2026). *PAPER_542 � UQFF Off-Diagonal Proplyd Fit*, Star Magic Repository.
-- Murphy, D. T. (2026). *PAPER_544 � Yang-Mills DPM Mass Gap*, Star Magic Repository.
-- Murphy, D. T. (2026). *PAPER_563 � Millennium Coordinator*, Star Magic Repository.
-- Murphy, D. T. (2026). `test_millennium_phase_h.py` � 64/64 PASS (commit a0b2d55).
+- Murphy, D. T. (2026). *PAPER_529  NS-UQFF Encompassment*, Star Magic Repository.
+- Murphy, D. T. (2026). *PAPER_542  UQFF Off-Diagonal Proplyd Fit*, Star Magic Repository.
+- Murphy, D. T. (2026). *PAPER_544  Yang-Mills DPM Mass Gap*, Star Magic Repository.
+- Murphy, D. T. (2026). *PAPER_563  Millennium Coordinator*, Star Magic Repository.
+- Murphy, D. T. (2026). `test_millennium_phase_h.py`  64/64 PASS (commit a0b2d55).
 
 
 ---
@@ -327,9 +344,9 @@ This constitutes a physical (not purely mathematical) approach to the NS Millenn
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `f`neutron_s26_coupling`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `k`ozima_scm_cross_section`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `k`ozima_wstp_kernel`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -338,7 +355,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `r`amanujan_polylog_s26`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
 | `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
@@ -347,7 +364,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `m`ock_theta_q26`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -358,8 +375,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `r`amanujan_pi_uqff`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `m`ock_theta_pi_wstp_kernel`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]

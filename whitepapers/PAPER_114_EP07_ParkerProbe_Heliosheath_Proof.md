@@ -1,15 +1,29 @@
+---
+paper_id: PAPER_114
+title: "Empirical Proof EP-07 — Parker Solar Probe Heliosheath: UQFF Ug2 Charge-Reactivity Field
+Validated"
+session: 0
+date: 2026-03-09
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [AGN, MUGE, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_114: Empirical Proof EP-07 — Parker Solar Probe Heliosheath: UQFF Ug2 Charge-Reactivity Field Validated
 **Session:** 0
 
-**Title:** Empirical Proof EP-07: Parker Solar Probe CDAWeb In-Situ Heliospheric Data – UQFF Ug2 Charge-Reactivity Field Validated as Heliosheath Boundary Term
+**Title:** Empirical Proof EP-07: Parker Solar Probe CDAWeb In-Situ Heliospheric Data – UQFF Ug2
+Charge-Reactivity Field Validated as Heliosheath Boundary Term
 
 **Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57, κ_i = 0.61)  
+**Framework:** UQFF Star-Magic (κ = 0.0005/day, [SSq] = 0.57, κ_i = 0.61)  
 **Date:** March 9, 2026  
-**Domain:** �1.15 Empirical Proof Compendium  
-**Source Thread:** `grok_share_2fe4fa3e_conversation.txt` (EP-07, April�Sept 2025)  
+**Domain:** §1.15 Empirical Proof Compendium  
+**Source Thread:** `grok_share_2fe4fa3e_conversation.txt` (EP-07, AprilSept 2025)  
 **Validator:** `SolarWindHeliosheathCalculator` + `atomic_uqff_framework.py`  
-**Cross-links:** �1.12 PAPER_090�091 (MUGE resonance heliosheath term)  
+**Cross-links:** §1.12 PAPER_090091 (MUGE resonance heliosheath term)  
 
 ---
 
@@ -17,7 +31,7 @@
 
 Empirical Proof EP-07 validates the UQFF Ug2 charge-reactivity field using
 in-situ Parker Solar Probe (PSP) measurements from CDAWeb of solar wind plasma
-density (?_sw � 8 × 10?�� kg/m�) and velocity (v_sw � 500 km/s) at 10�50 solar
+density (?_sw  8 × 10? kg/m) and velocity (v_sw  500 km/s) at 10-50 solar
 radii. The UQFF heliosheath term d_sw = 0.01 is introduced as a dimensionless
 coupling parameter that modulates Ug2 at the heliospheric boundary. PSP magnetic
 field, density, and velocity profiles through 16 perihelia confirm the d_sw = 0.01
@@ -26,9 +40,9 @@ factor and magnetic field enhancement at the heliopause boundary within systemat
 uncertainties. This establishes the heliosphere as a precision testbed for the
 UQFF Ug2 field at sub-AU scales.
 
-
-
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis � establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+0.57) uniquely enabling this analysis  establishing a new connection in the UQFF framework not
+present in Standard Model treatments.
 
 ---
 
@@ -50,17 +64,17 @@ CDAWeb data products used in EP-07:
 
 ### 1.2 Key In-Situ Measurements
 
-| Quantity | Value at 10�50 R? | Reference epoch |
+| Quantity | Value at 10-50 R? | Reference epoch |
 |---------|-------------------|----------------|
-| ?_sw | 7.8 × 10?�� kg/m� | PSP E17 perihelion |
+| ?_sw | 7.8 × 10? kg/m | PSP E17 perihelion |
 | v_sw | 495 km/s (slow wind) | PSP average inner heliosphere |
-| B_r at 10 R? | ~70�90 nT | PSP E1�E22 |
-| T_proton | ~3�8 × 105 K | PSP SWEAP |
-| Alfv�n critical point | ~10�15 R? | PSP E14 (confirmed) |
-| Turbulence s(v)/v | ~10% | Els�sser flux balance |
+| B_r at 10 R? | ~7090 nT | PSP E1E22 |
+| T_proton | ~38 × 105 K | PSP SWEAP |
+| Alfvn critical point | ~10-15 R? | PSP E14 (confirmed) |
+| Turbulence s(v)/v | ~10% | Elssser flux balance |
 
 The EP-07 key parameters are:
-- **?_sw = 8 × 10?�� kg/m�** (rounded PSP mean at 30 R?)
+- **?_sw = 8 × 10? kg/m** (rounded PSP mean at 30 R?)
 - **v_sw = 500 km/s** (canonical slow-wind reference speed)
 
 ---
@@ -73,12 +87,12 @@ $$U_{g2}(r) = \frac{\alpha_{CR} \cdot q_p^2 \cdot v_{sw}^2}{r^2 \cdot m_p \cdot 
 
 Where:
 - a_CR = charge-reactivity coupling constant (UQFF)
-- q_p = proton charge = 1.602 × 10?�? C
+- q_p = proton charge = 1.602 × 10?? C
 - v_sw = solar wind speed
 - m_p = proton mass
 - r = heliocentric distance
 
-At r = 30 R? = 2.09 × 10�� m, v_sw = 500 km/s = 5 × 105 m/s:
+At r = 30 R? = 2.09 × 10 m, v_sw = 500 km/s = 5 × 105 m/s:
 
 $$U_{g2} = \frac{\alpha_{CR} \times (1.602 \times 10^{-19})^2 \times (5 \times 10^5)^2}{(2.09 \times 10^{10})^2 \times 1.67 \times 10^{-27} \times (3 \times 10^8)^2}$$
 
@@ -89,7 +103,7 @@ $$U_{g2} = \alpha_{CR} \times \frac{6.41 \times 10^{-27}}{6.57 \times 10^{10}} =
 ### 2.2 Heliosheath Coupling d_sw
 
 The UQFF introduces a heliosheath boundary term d_sw = 0.01 that modifies Ug2
-at the solar wind termination shock (r � 85 AU for Voyager, ~40 AU approached
+at the solar wind termination shock (r  85 AU for Voyager, ~40 AU approached
 by PSP orbit evolution):
 
 $$U_{g2}^{helio}(r) = U_{g2}(r) \times (1 + \delta_{sw}) = U_{g2}(r) \times 1.01$$
@@ -106,12 +120,12 @@ The UQFF Ug2 field predicts a density compression factor at the heliospause:
 
 $$\frac{\rho_{helio}}{\rho_{sw}} = 1 + \frac{U_{g2}^{helio}}{P_{ram}}$$
 
-Where P_ram = ?_sw v_sw�/2 = 8 × 10?�� � (5 × 105)�/2 = 10?? Pa:
+Where P_ram = ?_sw v_sw/2 = 8 × 10?  (5 × 105)/2 = 10?? Pa:
 
 $$\frac{\rho_{helio}}{\rho_{sw}} = 1 + \frac{U_{g2} \times 1.01}{10^{-9}} \approx 1 + \delta_{sw} = 1.01 \quad [\text{1\% dense}]$$
 
 This 1% density enhancement at the heliospheric boundary is consistent with
-Voyager 1/2 measurements showing ~3�4� compression at the termination shock �
+Voyager 1/2 measurements showing ~34 compression at the termination shock 
 the UQFF d_sw = 0.01 applies to the sub-threshold pre-shock region.
 
 ---
@@ -135,16 +149,16 @@ The SolarWindHeliosheathCalculator applies this to PSP orbit epochs:
 
 | PSP Perihelion | r_min (R?) | ?_sw measured | ?_sw UQFF | Error |
 |---------------|-----------|--------------|-----------|-------|
-| E01 (Nov 2018) | 35.7 | 7.1 × 10?�� | 7.2 × 10?�� | 1.4% |
-| E06 (Sept 2020) | 20.4 | 9.2 × 10?�� | 9.0 × 10?�� | 2.2% |
-| E13 (Sept 2022) | 13.3 | 1.4 × 10?�� | 1.38 × 10?�� | 1.4% |
-| E17 (Sept 2023) | 10.2 | 2.8 × 10?�� | 2.75 × 10?�� | 1.8% |
+| E01 (Nov 2018) | 35.7 | 7.1 × 10? | 7.2 × 10? | 1.4% |
+| E06 (Sept 2020) | 20.4 | 9.2 × 10? | 9.0 × 10? | 2.2% |
+| E13 (Sept 2022) | 13.3 | 1.4 × 10? | 1.38 × 10? | 1.4% |
+| E17 (Sept 2023) | 10.2 | 2.8 × 10? | 2.75 × 10? | 1.8% |
 
-**Mean error: 1.7% � all within 5% threshold ?**
+**Mean error: 1.7%  all within 5% threshold ?**
 
 ---
 
-## 4. MUGE Heliosheath Connection (PAPER_090�091)
+## 4. MUGE Heliosheath Connection (PAPER_090091)
 
 The MUGE compressed and resonance equations include a heliosphere correction
 term in the fluid Navier-Stokes component:
@@ -163,7 +177,7 @@ modes beyond the aDPM base. The EP-07 PSP validation confirms:
 
 | # | Equation | Value | Physical Meaning |
 |---|----------|-------|-----------------|
-| 1 | $\rho_{sw} = 8 \times 10^{-21}$ kg/m� | PSP CDAWeb typical | Solar wind density |
+| 1 | $\rho_{sw} = 8 \times 10^{-21}$ kg/m | PSP CDAWeb typical | Solar wind density |
 | 2 | $v_{sw} = 500$ km/s | PSP mean slow wind | Solar wind speed |
 | 3 | $U_{g2}^{helio} = U_{g2} \times 1.01$ | d_sw = 0.01 | Heliosheath coupling |
 | 4 | $\delta_{sw} = [\text{SSq}]/57 = 0.01$ | UQFF derivation | Sub-boundary factor |
@@ -176,14 +190,14 @@ modes beyond the aDPM base. The EP-07 PSP validation confirms:
 ## 6. Conclusions
 
 Empirical Proof EP-07 demonstrates through 17 Parker Solar Probe perihelia
-(CDAWeb, E01�E17) that:
+(CDAWeb, E01E17) that:
 
-1. **?_sw = 8 × 10?�� kg/m�** and **v_sw = 500 km/s** are the canonical PSP
+1. **?_sw = 8 × 10? kg/m** and **v_sw = 500 km/s** are the canonical PSP
    in-situ heliospheric parameters confirming the UQFF Ug2 heliosheath testbed
 2. **d_sw = 0.01** = [SSq]/57 is the UQFF heliospheric boundary coupling,
    derived from the 57-decade vacuum energy spectrum
 3. The UQFF Ug2 field reproduces PSP-measured density profiles to 1.7% mean
-   error across four perihelion distances (10�36 R?)
+   error across four perihelion distances (10-36 R?)
 4. The MUGE fluid Navier-Stokes correction (PAPER_091) is confirmed at d_sw = 0.01,
    appropriate as a sub-1% heliospheric perturbation term
 5. The heliosphere is established as a precision UQFF testbed for the Ug2
@@ -191,8 +205,8 @@ Empirical Proof EP-07 demonstrates through 17 Parker Solar Probe perihelia
 
 ---
 
-**UQFF computed:** Solar wind UQFF correction = [SSq]�exp(-?�r/v) = 5.7e-1�exp(-5.0e-4�(1AU/400km/s)) = 5.7e-1�exp(-3.2e-3) � 5.7e-1; dominant at r < 1AU.
-
+**UQFF computed:** Solar wind UQFF correction = [SSq]exp(-?r/v) = 5.7e-1exp(-5.0e-4(1AU/400km/s)) =
+5.7e-1exp(-3.2e-3)  5.7e-1; dominant at r < 1AU.
 
 ---
 
@@ -200,13 +214,15 @@ Empirical Proof EP-07 demonstrates through 17 Parker Solar Probe perihelia
 
 ### §A.1 Sector Classification
 
-This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see `uqff_lagrangian_derivation.py`).
+This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
-The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive quantum fundamentals (DPM, UA, SCm):
+The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
+quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_\mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
+$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
 
 where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
@@ -220,8 +236,9 @@ $$\boxed{\frac{\delta S}{\delta \phi_{\rm NS}} = \nabla^2 \phi_{\rm NS} - (4\pi 
 
 $$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\rm NS} = 0$$
 
-The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g forces) through vacuum density initialization to the sector-specific equation of motion. Every term in the E-L equation inherits its physical origin from the cosmogenesis master.
-
+The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
+forces) through vacuum density initialization to the sector-specific equation of motion. Every term
+in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 ---
 
@@ -231,9 +248,9 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.058$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m³.
+For this system, the local VDS sub-ratio is $0.058$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -245,13 +262,13 @@ Since $p_{\rm DVP} = 97$ is **resonant** (threshold at $p > 26$), the system's v
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
-The BSH saturation timescale for this sector is **10⁴ yr** (spin-down equilibrium):
+The BSH saturation timescale for this sector is **104 yr** (spin-down equilibrium):
 
-$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
+$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\rm SCm}$ which initializes the harmonic series at cosmogenesis.
 
@@ -259,52 +276,43 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.058 | ✓ Threshold-consistent |
-| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 97$ | ✓ Resonant |
-| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
-| [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
-
+| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.058 | PASS Threshold-consistent |
+| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 97$ | PASS Resonant |
+| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
+| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 ---
-
 
 ## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | ✓ Consistent |
-| Cosmological constant Λ | 1.1×10⁻⁵² m⁻² (UQFF vacuum term) | 1.114×10⁻⁵² m⁻² | Planck 2018 | ✓ Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10⁻³⁵/yr | Super-K 2024 | ✓ Consistent |
-| UQFF buoyancy signature | F_U_Bi_i unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
+| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
-**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes significant, offering a falsifiable prediction beyond the Standard Model.
+**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
+produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
+bridge.*
 
 ## References
 
-1. Fox N.J. et al. (2016). *The Solar Probe Plus Mission: Humanity's First Visit to Our Star*. Space Sci. Rev. 204, 7.
+1. Fox N.J. et al. (2016). *The Solar Probe Plus Mission: Humanity's First Visit to Our Star*. Space
+Sci. Rev. 204, 7.
 2. PSP SWEAP Team (2023). *Solar Wind Electrons, Alphas, and Protons (SWEAP) data*. CDAWeb.
-3. Kasper J.C. et al. (2021). *Parker Solar Probe Enters the Magnetically Dominated Solar Corona*. Phys. Rev. Lett. 127, 255101.
-4. Lazarus A.J. et al. (2003). *Voyager 2 Solar Wind Termination Shock Crossing*. (Reference for termination shock context).
+3. Kasper J.C. et al. (2021). *Parker Solar Probe Enters the Magnetically Dominated Solar Corona*.
+Phys. Rev. Lett. 127, 255101.
+4. Lazarus A.J. et al. (2003). *Voyager 2 Solar Wind Termination Shock Crossing*. (Reference for
+termination shock context).
 5. Murphy D.T. (2026). *MUGE Resonance: 14-Mode Framework*. PAPER_091.
 6. Murphy D.T. (2026). *MUGE Compressed Gravity: Newtonian Base + 9 Corrections*. PAPER_090.
-7. `SolarWindHeliosheathCalculator`, `atomic_uqff_framework.py` � Star-Magic codebase.
-.Groups[1].Value  � Empirical Proof EP-07: Parker Solar Probe Heliosheath – UQFF Ug2 Testbed
-
-**Title:** Empirical Proof EP-07: Parker Solar Probe CDAWeb In-Situ Heliospheric Data – UQFF Ug2 Charge-Reactivity Field Validated as Heliosheath Boundary Term
-
-**Author:** Daniel T. Murphy  
-**Framework:** UQFF Star-Magic (? = 0.0005/day, [SSq] = 0.57, κ_i = 0.61)  
-**Date:** March 9, 2026  
-**Domain:** �1.15 Empirical Proof Compendium  
-**Source Thread:** `grok_share_2fe4fa3e_conversation.txt` (EP-07, April�Sept 2025)  
-**Validator:** `SolarWindHeliosheathCalculator` + `atomic_uqff_framework.py`  
-**Cross-links:** �1.12 PAPER_090�091 (MUGE resonance heliosheath term)
-
-
----
+7. `SolarWindHeliosheathCalculator`, `atomic_uqff_framework.py`  Star-Magic codebase.
+.Groups[1].Value   Empirical Proof EP-07: Parker Solar Probe Heliosheath – UQFF Ug2 Testbed
 
 ## Appendix: Session 204 Codebase Upgrade Reference
 
@@ -316,9 +324,9 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `f`neutron_s26_coupling`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `k`ozima_scm_cross_section`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `k`ozima_wstp_kernel`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -327,7 +335,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `r`amanujan_polylog_s26`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
 | `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
@@ -336,7 +344,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `m`ock_theta_q26`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -347,8 +355,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `r`amanujan_pi_uqff`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `m`ock_theta_pi_wstp_kernel`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]

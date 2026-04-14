@@ -1,3 +1,15 @@
+---
+paper_id: PAPER_627
+title: "UQFF Centaurus A Knotted Jet VHE Hypergraph"
+session: 0
+date: 2025-01-01
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [AGN, merger, SCm, jet, JWST, Chandra, 26D, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_627 — UQFF Centaurus A Knotted Jet VHE Hypergraph
 **Author:** Daniel T. Murphy
 **Date:** 2025
@@ -16,7 +28,8 @@
 $$F_{U,Bi} = \kappa \cdot \frac{\rho_{\text{SCm}}}{\rho_{\text{UA}}} \cdot (U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_m + U_{bi})$$
 
 
-This paper presents a UQFF analysis of UQFF Centaurus A Knotted Jet VHE Hypergraph, deriving compressed field equations and observational predictions within the Star-Magic/UQFF framework.
+This paper presents a UQFF analysis of UQFF Centaurus A Knotted Jet VHE Hypergraph, deriving
+compressed field equations and observational predictions within the Star-Magic/UQFF framework.
 
 ## §1 Abstract
 
@@ -34,10 +47,10 @@ knotty morphology of CenA.
 
 | Parameter | Value |
 |-----------|-------|
-| BH mass | 5.5e7 M☉ = 1.09e38 kg |
+| BH mass | 5.5e7 MM_sun = 1.09e38 kg |
 | Distance | 12–13 Mly = 1.23e23 m |
 | Jet length | 25,000 ly = 7.7e19 m |
-| ∇UA (jet base) | ~10⁻¹⁹ m⁻¹ |
+| ∇UA (jet base) | ~10-19 m-1 |
 | RA/Dec | per MNRAS 2025 catalog |
 | Observation | MNRAS 2025 VHE knots + JWST MICONIC + Chandra superluminal knots |
 
@@ -65,21 +78,23 @@ knotty morphology of CenA.
 [0.85, 0.72, 0.96, 0.61, 0.78]
 ```
 
-**f³ rebound frequencies (Hz), first 5:**
-```
-f₁ = 6.14e16   (VHE X-ray floor, MNRAS 2025 knots)
-f₂ = 1.25e17
-f₃ = 2.48e17
-f₄ = 3.19e17
-f₅ = 4.52e17
-```
+**f3 rebound frequencies (Hz), first 5:**
+$$
+\begin{aligned}
+  & f₁ = 6.14e16   (VHE X-ray floor, MNRAS 2025 knots) \\
+  & f₂ = 1.25e17 \\
+  & f₃ = 2.48e17 \\
+  & f₄ = 3.19e17 \\
+  & f₅ = 4.52e17
+\end{aligned}
+$$
 
-Full ramp: 6.14e16 – 10¹⁸ Hz (VHE to hard X-ray).
+Full ramp: 6.14e16 – 1018 Hz (VHE to hard X-ray).
 
-**f³ accumulation law (BH26 cubic rebound):**
-```
-freq_k = (Σ_{i=1}^{k} ∇UA_i)³ × 10¹⁵  Hz
-```
+**f3 accumulation law (BH26 cubic rebound):**
+$$
+freq_k = (Σ_{i=1}^{k} ∇UA_i)3 × 1015  Hz
+$$
 
 ---
 
@@ -87,13 +102,15 @@ freq_k = (Σ_{i=1}^{k} ∇UA_i)³ × 10¹⁵  Hz
 
 Five oscillation modes from sin(i·π/5)·0.3:
 
-```
-i=0: osc = 0.000 (rest position)
-i=1: osc = +0.187 (first expansion)
-i=2: osc = +0.300 (maximum extension)
-i=3: osc = +0.300 (plateau)
-i=4: osc = +0.187 (contraction)
-```
+$$
+\begin{aligned}
+  & i=0: osc = 0.000 (rest position) \\
+  & i=1: osc = +0.187 (first expansion) \\
+  & i=2: osc = +0.300 (maximum extension) \\
+  & i=3: osc = +0.300 (plateau) \\
+  & i=4: osc = +0.187 (contraction)
+\end{aligned}
+$$
 
 These five modes correspond to the five BH26 harmonic oscillation modes per
 π-period. The knots in the CenA jet visually show this 5-mode pulsation in
@@ -120,9 +137,9 @@ trajectory, creating the characteristic V-morphology.
 ## §7 Superluminal Knot Speed
 
 Apparent superluminal speed (1–2c) from DVP vortex-pocket propagation:
-```
+$$
 β_app = v·sin(φ) / (c − v·cos(φ))
-```
+$$
 For v = 0.97c, viewing angle φ = 15°: β_app ≈ 1.4c (consistent with Chandra knots).
 
 The DVP vortex carries the knot outward at relativistic speed; the apparent
@@ -137,13 +154,15 @@ inclination angle (~15° to line of sight).
 
 ### §A.1 Sector Classification
 
-This paper maps to **AGN-jet** sector of the 9-sector UQFF Lagrangian (see `uqff_lagrangian_derivation.py`).
+This paper maps to **AGN-jet** sector of the 9-sector UQFF Lagrangian (see
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
-The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive quantum fundamentals (DPM, UA, SCm):
+The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
+quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_\mu \phi_{\rm jet})(\partial^\mu \phi_{\rm jet}) - V(\phi_{\rm jet}) + \mathcal{L}_{\rm cosmo}$$
+$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_mu \phi_{\rm jet})(\partial^\mu \phi_{\rm jet}) - V(\phi_{\rm jet}) + \mathcal{L}_{\rm cosmo}$$
 
 where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
@@ -157,7 +176,9 @@ $$\boxed{\frac{\delta S}{\delta \phi_{\rm jet}} = \partial_t(\gamma \rho v_{\rm 
 
 $$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\rm jet} = 0$$
 
-The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g forces) through vacuum density initialization to the sector-specific equation of motion. Every term in the E-L equation inherits its physical origin from the cosmogenesis master.
+The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
+forces) through vacuum density initialization to the sector-specific equation of motion. Every term
+in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 
 ---
@@ -168,9 +189,9 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.073$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m³.
+For this system, the local VDS sub-ratio is $0.073$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -182,13 +203,13 @@ Since $p_{\rm DVP} = 107$ is **resonant** (threshold at $p > 26$), the system's 
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
-The BSH saturation timescale for this sector is **10⁷ yr** (duty cycle period):
+The BSH saturation timescale for this sector is **107 yr** (duty cycle period):
 
-$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
+$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\rm SCm}$ which initializes the harmonic series at cosmogenesis.
 
@@ -196,11 +217,11 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.073 | ✓ Threshold-consistent |
-| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 107$ | ✓ Resonant |
-| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
-| [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
+| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.073 | PASS Threshold-consistent |
+| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 107$ | PASS Resonant |
+| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
+| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
 ---
@@ -210,10 +231,10 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Apparent superluminal speed β_app | β_app = v·sin(φ)/(c−v·cos(φ)); v=0.97c, φ=15° → β_app ≈ 1.4c | Chandra/VLBI: apparent speed 1–2c | Chandra CenA | ✓ 1.4c within 1–2c range |
-| VHE gamma-ray threshold (CenA) | DVP high-arity branching produces photons > 100 GeV | H.E.S.S./VERITAS CenA VHE: E_VHE > 100 GeV | MNRAS 2025 | ✓ Consistent |
-| Synchrotron self-Compton (QED) | U_m Compton scattering: f_IC = (4/3)γ²f_sync; γ~10⁶ | QED SSC: E_γ_max ~ γ² × 1 keV | QED | ✓ Energy range aligned |
-| Black hole mass (M87 BH) | BH26 pocket shell at r_S = 2GM/c²; M_M87 = 6.5e9 M_☉ | EHT shadow: M_M87 = 6.5±0.2e9 M_☉ | EHT 2019 | Shared input |
+| Apparent superluminal speed β_app | β_app = v·sin(φ)/(c−v·cos(φ)); v=0.97c, φ=15° → β_app ≈ 1.4c | Chandra/VLBI: apparent speed 1–2c | Chandra CenA | PASS 1.4c within 1–2c range |
+| VHE gamma-ray threshold (CenA) | DVP high-arity branching produces photons > 100 GeV | H.E.S.S./VERITAS CenA VHE: E_VHE > 100 GeV | MNRAS 2025 | PASS Consistent |
+| Synchrotron self-Compton (QED) | U_m Compton scattering: f_IC = (4/3)γ2f_sync; γ~106 | QED SSC: E_γ_max ~ γ2 × 1 keV | QED | PASS Energy range aligned |
+| Black hole mass (M87 BH) | BH26 pocket shell at r_S = 2GM/c2; M_M87 = 6.5e9 `M_M_sun` | EHT shadow: M_M87 = 6.5±0.2e9 `M_M_sun` | EHT 2019 | Shared input |
 
 **New physics claim:** The CenA knotted jet exhibits arity-8 branching nodes that
 produce VHE photon bursts uncorrelated with core accretion rate — a UQFF prediction
@@ -249,9 +270,9 @@ not produced by standard AGN jet models.
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `f`neutron_s26_coupling`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `k`ozima_scm_cross_section`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `k`ozima_wstp_kernel`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -260,7 +281,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `r`amanujan_polylog_s26`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
 | `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
@@ -269,7 +290,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `m`ock_theta_q26`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -280,8 +301,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `r`amanujan_pi_uqff`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `m`ock_theta_pi_wstp_kernel`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]

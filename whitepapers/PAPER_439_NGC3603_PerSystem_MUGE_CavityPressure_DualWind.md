@@ -1,8 +1,21 @@
+---
+paper_id: PAPER_439
+title: "NGC 3603 Extreme Star Cluster: Per-System MUGE with P(t) Cavity Pressure and Dual Wind"
+session: 119
+date: 2025-01-01
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [cluster, MUGE, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_439 — NGC 3603 Extreme Star Cluster: Per-System MUGE with P(t) Cavity Pressure and Dual Wind
 **Author:** Daniel T. Murphy
 **Date:** 2025
 
-**Source:** grok_share_68eb34022.txt — Document 11: "Master Universal Gravity Equation_Extreme Star Cluster Bursts into Life_03May2025.docx" (lines 3430–3788)
+**Source:** grok_share_68eb34022.txt — Document 11: "Master Universal Gravity Equation_Extreme Star
+Cluster Bursts into Life_03May2025.docx" (lines 3430–3788)
 **Session:** 119
 **CP4 Class:** `NGC3603PerSystemMUGE_CavityPressure_DualWind_Calculator` (#94)
 
@@ -11,13 +24,15 @@
 
 ## Abstract
 
-This paper presents a UQFF analysis of NGC 3603 Extreme Star Cluster: Per-System MUGE with P(t) Cavity Pressure and Dual Wind, deriving compressed field equations and observational predictions within the Star-Magic/UQFF framework.
+This paper presents a UQFF analysis of NGC 3603 Extreme Star Cluster: Per-System MUGE with P(t)
+Cavity Pressure and Dual Wind, deriving compressed field equations and observational predictions
+within the Star-Magic/UQFF framework.
 
 ## 1. Overview
 
 PAPER_439 provides the **complete per-system MUGE** for NGC 3603 — the most luminous young massive star cluster (YMC) in the Milky Way at $d \approx 7$ kpc, containing multiple WR stars, O-supergiants, and blue-luminous variables. The cluster age is $\sim 1$ Myr with $M_0 \approx 400{,}000 \, M_\odot$ and a rapidly expanding wind-blown cavity at $r = 9.5$ ly.
 
-**Novel claim (Q1):** First UQFF MUGE for NGC 3603 that includes **both** a stellar wind term $T_\text{wind} = \rho_w v_w^2/\rho_f$ AND a separate cavity expansion pressure term $T_P = P(t)/\rho_f$ where $P(t) = P_0 e^{-t/\tau_\text{exp}}$ with $P_0 = 4 \times 10^{-8}$ Pa — quantifying that the cluster simultaneously blows out material via ram pressure AND drives an expanding hot-gas cavity at pressures $\gg$ the ambient ISM, both decaying on the same $\tau = 1$ Myr timescale.
+**Novel claim (Q1):** First UQFF MUGE for NGC 3603 that includes **both** a stellar wind term $T_\text{wind} = \rho_w v_w^2/\rho_f$ AND a separate cavity expansion pressure term $T_P = P(t)/\rho_f$ where $P(t) = P_0 e^{-t/\tau_text{exp}}$ with $P_0 = 4 \times 10^{-8}$ Pa — quantifying that the cluster simultaneously blows out material via ram pressure AND drives an expanding hot-gas cavity at pressures $\gg$ the ambient ISM, both decaying on the same $\tau = 1$ Myr timescale.
 
 ---
 
@@ -27,29 +42,29 @@ PAPER_439 provides the **complete per-system MUGE** for NGC 3603 — the most lu
 |-----------|--------|-------|
 | Initial cluster mass | $M_0$ | $400{,}000 \, M_\odot = 7.956 \times 10^{35}$ kg |
 | Cluster half-radius | $r$ | 9.5 ly $= 8.988 \times 10^{16}$ m |
-| SF timescale | $\tau_\text{SF}$ | 1 Myr $= 3.156 \times 10^{13}$ s |
+| SF timescale | $\tau_text{SF}$ | 1 Myr $= 3.156 \times 10^{13}$ s |
 | Growth factor | $M_f$ | 1.0 (doubles peak mass to $800{,}000 \, M_\odot$) |
-| Wind density | $\rho_w$ | $10^{-20}$ kg/m³ |
+| Wind density | $\rho_w$ | $10^{-20}$ kg/m3 |
 | Wind velocity | $v_w$ | $2 \times 10^6$ m/s |
-| Fluid density | $\rho_f$ | $10^{-20}$ kg/m³ |
+| Fluid density | $\rho_f$ | $10^{-20}$ kg/m3 |
 | Initial cavity pressure | $P_0$ | $4 \times 10^{-8}$ Pa |
-| Cavity decay timescale | $\tau_\text{exp}$ | 1 Myr $= 3.156 \times 10^{13}$ s |
+| Cavity decay timescale | $\tau_text{exp}$ | 1 Myr $= 3.156 \times 10^{13}$ s |
 | Magnetic field | $B$ | $10^{-5}$ T |
-| Hubble constant | $H_0$ | $2.184 \times 10^{-18}$ s⁻¹ |
+| Hubble constant | $H_0$ | $2.184 \times 10^{-18}$ s-1 |
 
 ---
 
 ## 3. Time-Dependent Functions
 
 **Mass growth:**
-$$M(t) = 400{,}000 \, M_\odot \left(1 + e^{-t/\tau_\text{SF}}\right)$$
+$$M(t) = 400{,}000 \, M_\odot \left(1 + e^{-t/\tau_text{SF}}\right)$$
 
 **Cavity pressure:**
-$$P(t) = 4 \times 10^{-8} \, e^{-t/\tau_\text{exp}} \, \text{Pa}$$
+$$P(t) = 4 \times 10^{-8} \, e^{-t/\tau_text{exp}} \, \text{Pa}$$
 
 At $t=0$: $P = 4 \times 10^{-8}$ Pa  
 At $t=\tau=1$ Myr: $P = 1.47 \times 10^{-8}$ Pa  
-At $t\gg\tau$: $P \rightarrow 0$ (cavity fully expanded)
+At $t\ggtau$: $P \rightarrow 0$ (cavity fully expanded)
 
 ---
 
@@ -89,7 +104,7 @@ $$\boxed{T_{10} = \frac{P(t)}{\rho_f} = \frac{4\times10^{-8}}{10^{-20}} = 4\time
 
 At $t = 0$:
 
-| Term | Value (m/s²) | Fraction |
+| Term | Value (m/s2) | Fraction |
 |------|-------------|---------|
 | $T_9$ Wind | $4.45 \times 10^{-5}$ | 50.0% |
 | $T_{10}$ Cavity $P$ | $4.45 \times 10^{-5}$ | 50.0% |
@@ -98,7 +113,7 @@ At $t = 0$:
 
 $$g_\text{N3603}(t=0) \approx 8.90\times10^{-5} \, \text{m/s}^2 \quad [\text{dual wind+pressure dominated}]$$
 
-**Unique feature:** PAPER_439 is the first MUGE where $T_9$ and $T_{10}$ are **equal magnitude** at $t=0$ — this is because $P_0 = \rho_w v_w^2 = 10^{-20} \times 4\times10^{12} = 4\times10^{-8}$ Pa. After $t = \tau_\text{exp}$, the cavity pressure falls to $P/e$ while wind persists, breaking the degeneracy.
+**Unique feature:** PAPER_439 is the first MUGE where $T_9$ and $T_{10}$ are **equal magnitude** at $t=0$ — this is because $P_0 = \rho_w v_w^2 = 10^{-20} \times 4\times10^{12} = 4\times10^{-8}$ Pa. After $t = \tau_text{exp}$, the cavity pressure falls to $P/e$ while wind persists, breaking the degeneracy.
 
 ---
 
@@ -114,7 +129,7 @@ $$g_\text{N3603}(t=0) \approx 8.90\times10^{-5} \, \text{m/s}^2 \quad [\text{dua
 
 ## 7. Comparison to Standard Model
 
-Standard YMC models (Pellegrini et al. 2011): Pressure-driven bubble expansion described by Weaver et al. model $R(t) \propto (L_\text{wind}/\rho)^{1/5} t^{3/5}$. UQFF provides the alternative: both ram pressure and thermal pressure contribute independently ($T_9$ and $T_{10}$), predicting a phase transition at $t = \tau_\text{exp}$ where the cavity pressure $P(t)$ falls below ram pressure: $P(\tau_\text{exp}) = P_0/e$, creating an observable density/velocity discontinuity in the expanding shell.
+Standard YMC models (Pellegrini et al. 2011): Pressure-driven bubble expansion described by Weaver et al. model $R(t) \propto (L_\text{wind}/\rho)^{1/5} t^{3/5}$. UQFF provides the alternative: both ram pressure and thermal pressure contribute independently ($T_9$ and $T_{10}$), predicting a phase transition at $t = \tau_text{exp}$ where the cavity pressure $P(t)$ falls below ram pressure: $P(\tau_text{exp}) = P_0/e$, creating an observable density/velocity discontinuity in the expanding shell.
 
 ---
 
@@ -124,13 +139,15 @@ Standard YMC models (Pellegrini et al. 2011): Pressure-driven bubble expansion d
 
 ### §A.1 Sector Classification
 
-This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see `uqff_lagrangian_derivation.py`).
+This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
-The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive quantum fundamentals (DPM, UA, SCm):
+The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
+quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_\mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
+$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
 
 where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
@@ -144,7 +161,9 @@ $$\boxed{\frac{\delta S}{\delta \phi_{\rm NS}} = \nabla^2 \phi_{\rm NS} - (4\pi 
 
 $$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\rm NS} = 0$$
 
-The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g forces) through vacuum density initialization to the sector-specific equation of motion. Every term in the E-L equation inherits its physical origin from the cosmogenesis master.
+The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
+forces) through vacuum density initialization to the sector-specific equation of motion. Every term
+in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 
 ---
@@ -155,9 +174,9 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.087$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m³.
+For this system, the local VDS sub-ratio is $0.087$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -169,13 +188,13 @@ Since $p_{\rm DVP} = 71$ is **resonant** (threshold at $p > 26$), the system's v
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
-The BSH saturation timescale for this sector is **10⁴ yr** (spin-down equilibrium):
+The BSH saturation timescale for this sector is **104 yr** (spin-down equilibrium):
 
-$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
+$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\rm SCm}$ which initializes the harmonic series at cosmogenesis.
 
@@ -183,11 +202,11 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.087 | ✓ Threshold-consistent |
-| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 71$ | ✓ Resonant |
-| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
-| [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
+| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.087 | PASS Threshold-consistent |
+| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 71$ | PASS Resonant |
+| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
+| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
 ---
@@ -197,12 +216,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Thomson σ_T (QED synchrotron) | UQFF U_m scattering kernel: σ_T = 6.6524e-29 m² | σ_T = 6.6524e-29 m² (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
-| NGC 3603 Star Cluster luminosity X-ray + UV | UQFF MUGE g_total → L_X via Stefan-Boltzmann + buoyancy flux: L_X ≈ g_total × M_env | L_X L_X ~ 10³⁵ erg/s | Chandra CXC | ✓ Consistent order of magnitude |
-| GR Schwarzschild limit | UQFF g_total must satisfy g ≤ c²/(2r_s) at event horizon | r_s = 2GM/c² (GR exact) | PDG 2024 / GR | ✓ UQFF respects GR horizon |
+| Thomson σ_T (QED synchrotron) | UQFF U_m scattering kernel: σ_T = 6.6524e-29 m2 | σ_T = 6.6524e-29 m2 (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
+| NGC 3603 Star Cluster luminosity X-ray + UV | UQFF MUGE g_total → L_X via Stefan-Boltzmann + buoyancy flux: L_X ≈ g_total × M_env | L_X L_X ~ 1035 erg/s | Chandra CXC | PASS Consistent order of magnitude |
+| GR Schwarzschild limit | UQFF g_total must satisfy g ≤ c2/(2r_s) at event horizon | r_s = 2GM/c2 (GR exact) | PDG 2024 / GR | PASS UQFF respects GR horizon |
 | κ vacuum rate vs X-ray variability | UQFF κ = 0.0005/day → timescale τ_UQFF = 2000 days | Observed X-ray variability τ_obs (instrument monitoring) | Chandra CXC | Testable UQFF variability timescale |
 
-**New physics claim:** UQFF MUGE generates gravity enhancement factors (g_total/g_Newt > 1) for NGC 3603 Star Cluster
+**New physics claim:** UQFF MUGE generates gravity enhancement factors (g_total/g_Newt > 1) for NGC
+3603 Star Cluster
 through vacuum buoyancy coupling — a mechanism absent from GR+SM. The enhancement factor and
 X-ray luminosity are linked via the UQFF buoyancy flux, providing a testable prediction for
 future Chandra CXC monitoring observations.
@@ -215,7 +235,7 @@ future Chandra CXC monitoring observations.
 
 **Q5 Prediction 1:** $T_9 = T_{10}$ at $t=0$ predicts the initial wind-driven and pressure-driven components are equal — testable by spectral decomposition of the X-ray spectrum of the NGC 3603 hot gas bubble: UQFF predicts equal thermal ($kT$ from pressure) and kinetic ($\rho v^2$ from wind) contributions at the bubble boundary, verifiable with Chandra/XMM spectroscopy.
 
-**Q5 Prediction 2:** $P(t)$ decays on $\tau_\text{exp}=1$ Myr while $M(t)$ SF decays on $\tau_\text{SF}=1$ Myr simultaneously — UQFF predicts both wind and pressure terms track each other and both cease at $t \approx 3\tau = 3$ Myr, explaining why NGC 3603 leaves an open cluster without a dense envelope (unlike older clusters like R136, age $\sim 2$ Myr, which retain some cavity).
+**Q5 Prediction 2:** $P(t)$ decays on $\tau_text{exp}=1$ Myr while $M(t)$ SF decays on $\tau_text{SF}=1$ Myr simultaneously — UQFF predicts both wind and pressure terms track each other and both cease at $t \approx 3\tau = 3$ Myr, explaining why NGC 3603 leaves an open cluster without a dense envelope (unlike older clusters like R136, age $\sim 2$ Myr, which retain some cavity).
 
 **Q5 Prediction 3:** The mass growth factor $M_f = 1.0$ means NGC 3603 is currently at half-mass relative to its SF peak ($M_\text{peak} = 800{,}000\, M_\odot$) — this predicts a velocity dispersion enhancement of $\sqrt{2}$ above the current $\sigma$ value at the $t=0$ epoch, testable by comparing current ($t \approx 1$ Myr) to predicted $t=0$ dynamics using stellar orbit integrations in the cluster potential.
 
@@ -232,9 +252,9 @@ future Chandra CXC monitoring observations.
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `f`neutron_s26_coupling`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `k`ozima_scm_cross_section`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `k`ozima_wstp_kernel`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -243,7 +263,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `r`amanujan_polylog_s26`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
 | `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
@@ -252,7 +272,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `m`ock_theta_q26`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -263,8 +283,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `r`amanujan_pi_uqff`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `m`ock_theta_pi_wstp_kernel`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]

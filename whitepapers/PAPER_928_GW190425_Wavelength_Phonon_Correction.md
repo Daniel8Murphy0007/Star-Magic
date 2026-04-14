@@ -1,6 +1,18 @@
+---
+paper_id: PAPER_928
+title: "GW190425 Wavelength Phonon Correction"
+session: 211
+date: 2026-04-11
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [GW, gravitational-wave, vacuum, SCm, buoyancy, LIGO, phonon, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_928: GW190425 Wavelength Phonon Correction
 
-**Author:** Daniel T. Murphy -- Star Magic / UQFF Framework
+**Author:** Daniel T. Murphy — Star Magic / UQFF Framework
 **Date:** 2026-04-11
 **Session:** 211
 **Source:** SCm phonon gap implementation (ns_phonon_gw190425_wstp.py)
@@ -11,7 +23,12 @@
 
 ## Abstract
 
-Derives the phonon-corrected gravitational wave wavelength: lambda_UQFF = lambda_GR * (1 - F_{U,Bi}/F_U * Phi_norm), where Phi_norm = Phi/Phi_0 is the normalized phonon modulation. This implies a refractive-index-like effect in the UQFF vacuum structure, where phonon-vacuum coupling modifies the effective propagation speed of gravitational waves. At resonance (omega = omega_SCm), Phi_norm = S_26 ~ 0.57 and the wavelength correction is proportional to the buoyancy ratio F_{U,Bi}/F_U, providing a frequency-dependent GW dispersion relation unique to the UQFF framework.
+Derives the phonon-corrected gravitational wave wavelength: lambda_UQFF = lambda_GR * (1 -
+F_{U,Bi}/F_U * Phi_norm), where Phi_norm = Phi/Phi_0 is the normalized phonon modulation. This
+implies a refractive-index-like effect in the UQFF vacuum structure, where phonon-vacuum coupling
+modifies the effective propagation speed of gravitational waves. At resonance (omega = omega_SCm),
+Phi_norm = S_26 ~ 0.57 and the wavelength correction is proportional to the buoyancy ratio
+F_{U,Bi}/F_U, providing a frequency-dependent GW dispersion relation unique to the UQFF framework.
 
 ---
 
@@ -19,29 +36,35 @@ Derives the phonon-corrected gravitational wave wavelength: lambda_UQFF = lambda
 
 ### Section A: Lagrangian
 
-```
-lambda_UQFF = lambda_GR * (1 - F_{U,Bi}/F_U * Phi_norm)
-lambda_GR = c / f_GW
-Phi_norm = Phi_{1.25THz}(omega) / Phi_0
-Delta_lambda = lambda_GR - lambda_UQFF = lambda_GR * F_{U,Bi}/F_U * Phi_norm
-```
+$$
+\begin{aligned}
+  & lambda_UQFF = lambda_GR * (1 - F_{U,Bi}/F_U * Phi_norm) \\
+  & lambda_GR = c / f_GW \\
+  & Phi_norm = Phi_{1.25THz}(omega) / Phi_0 \\
+  & Delta_lambda = lambda_GR - lambda_UQFF = lambda_GR * F_{U,Bi}/F_U * Phi_norm
+\end{aligned}
+$$
 
 ### Section B: VDS/DVP/BH Number Systems
 
-```
-Effective refractive index: n_UQFF = 1 / (1 - F_{U,Bi}/F_U * Phi_norm)
-GW dispersion: omega^2 = k^2 * c^2 * (1 - F_{U,Bi}/F_U * Phi_norm)^2
-Phase velocity: v_ph = c * (1 - F_{U,Bi}/F_U * Phi_norm)
-```
+$$
+\begin{aligned}
+  & Effective refractive index: n_UQFF = 1 / (1 - F_{U,Bi}/F_U * Phi_norm) \\
+  & GW dispersion: omega^2 = k^2 * c^2 * (1 - F_{U,Bi}/F_U * Phi_norm)^2 \\
+  & Phase velocity: v_ph = c * (1 - F_{U,Bi}/F_U * Phi_norm)
+\end{aligned}
+$$
 
 ### Section SM: SM Anchors
 
-```
-c = 2.998e8 m/s
-f_GW = 20-300 Hz (LIGO band)
-F_{U,Bi}/F_U = 0.6 (typical buoyancy ratio)
-Phi_0 = 10^20 (peak phonon amplitude)
-```
+$$
+\begin{aligned}
+  & c = 2.998e8 m/s \\
+  & f_GW = 20-300 Hz (LIGO band) \\
+  & F_{U,Bi}/F_U = 0.6 (typical buoyancy ratio) \\
+  & Phi_0 = 10^20 (peak phonon amplitude)
+\end{aligned}
+$$
 
 ---
 
@@ -69,7 +92,12 @@ Phi_0 = 10^20 (peak phonon amplitude)
 
 ## 4. Physical Interpretation
 
-The wavelength correction implies that gravitational waves propagate through the UQFF vacuum with an effective refractive index n > 1, analogous to electromagnetic waves in a dielectric medium. The phonon-vacuum structure acts as a gravitational medium, with the buoyancy ratio F_{U,Bi}/F_U controlling the coupling strength. This predicts a frequency-independent fractional wavelength shift (unlike electromagnetic dispersion), which could be tested by comparing arrival times of multi-frequency GW components from the same source.
+The wavelength correction implies that gravitational waves propagate through the UQFF vacuum with an
+effective refractive index n > 1, analogous to electromagnetic waves in a dielectric medium. The
+phonon-vacuum structure acts as a gravitational medium, with the buoyancy ratio F_{U,Bi}/F_U
+controlling the coupling strength. This predicts a frequency-independent fractional wavelength shift
+(unlike electromagnetic dispersion), which could be tested by comparing arrival times of
+multi-frequency GW components from the same source.
 
 ---
 
@@ -100,10 +128,11 @@ The wavelength correction implies that gravitational waves propagate through the
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
 | GW strain $h$ | UQFF predicts phonon suppression $D_{\text{phonon}} \approx 0.47$--$0.67$ | LIGO/Virgo $h \sim 10^{-22}$ | LIGO O3 (2020) | Within detector band |
-| Phase evolution $\Delta\Phi$ | 200--400 extra cycles from $S_{26}$ coupling | GR template bank | Abbott et al. (2021) | Testable with LISA |
+| Phase evolution $\DeltaPhi$ | 200--400 extra cycles from $S_{26}$ coupling | GR template bank | Abbott et al. (2021) | Testable with LISA |
 | Fine structure $\alpha$ | UQFF reproduces via $U_{g1}$ dipole | $1/137.036$ | PDG 2024 | 99.9% |
 
-**New physics claim:** UQFF phonon-mediated vacuum coupling provides testable predictions beyond SM for this system.
+**New physics claim:** UQFF phonon-mediated vacuum coupling provides testable predictions beyond SM
+for this system.
 
 *Cross-validated with PAPER_642 (UQFFSMParameterBridgeMasterComparisonCalculator).*
 
@@ -115,10 +144,10 @@ The wavelength correction implies that gravitational waves propagate through the
 **Sector:** GW-radiation (gravitational-wave chirp)
 
 ### §A.2 Lagrangian Density
-$$\mathcal{L}_{GW_radiation} = \sum_{i=1}^{26} \left[ U_{g,i} + U_{m,i} + U_{A,i} - U_{b,i} \right] \cdot S_{26}([SSq]) \cdot \Phi_{1.25\text{THz}}(\omega, \Gamma)$$
+$$\mathcal{L}_{GW\_radiation} = \sum_{i=1}^{26} \left[ U_{g,i} + U_{m,i} + U_{A,i} - U_{b,i} \right] \cdot S_{26}([SSq]) \cdot \Phi_{1.25\text{THz}}(\omega, \Gamma)$$
 
 ### §A.3 Euler-Lagrange Equation of Motion
-$$\boxed{\frac{\partial \mathcal{L}}{\partial \phi} - \partial_\mu \frac{\partial \mathcal{L}}{\partial (\partial_\mu \phi)} = 0 \implies F_{U,Bi_i} = -\nabla U_{\text{eff}} + \Phi \cdot S_{26} \cdot E_{\text{net}}}$$
+$$\boxed{\frac{\partial \mathcal{L}}{\partial \phi} - \partial_mu \frac{\partial \mathcal{L}}{\partial (\partial_mu \phi)} = 0 \implies F_{U,Bi\_i} = -\nabla U_{\text{eff}} + \Phi \cdot S_{26} \cdot E_{\text{net}}}$$
 
 ### §A.4 Cosmogenesis Linkage Chain
-PAPER_877 axioms → SCm vacuum → phonon $\omega_{\text{SCm}}$ → gravitational-wave chirp → $F_{U,Bi_i}$ unified force → observational prediction
+PAPER_877 axioms → SCm vacuum → phonon $\omega_{\text{SCm}}$ → gravitational-wave chirp → $F_{U,Bi\_i}$ unified force → observational prediction

@@ -1,3 +1,15 @@
+---
+paper_id: PAPER_777
+title: "NGC 6217 — UQFF Barred Spiral Galaxy Standard Rotation"
+session: 181
+date: 2026-01-01
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [galaxy, AGN, Hubble, BEC, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_777: NGC 6217 — UQFF Barred Spiral Galaxy Standard Rotation
 
 **Author:** Daniel T. Murphy  
@@ -10,35 +22,47 @@
 
 ## Abstract
 
-NGC 6217 is a barred spiral galaxy ~67 million light-years distant (z = 0.0045) in the constellation Ursa Minor. It became notable as one of the first targets imaged by the Hubble Space Telescope's repaired Wide Field Camera 3 (WFC3) after the 2009 Servicing Mission 4, demonstrating the camera's restored capability. With moderate star formation (SFR ≈ 1 M☉/yr) and an extended rotating disk of ~10¹¹ M☉, NGC 6217 represents a typical SBbc barred spiral. Under UQFF, standard rotation velocity (v = 10⁵ m/s) and typical HII B-field yield g_NGC6217 ≈ 1.053×10⁻³ m/s².
+NGC 6217 is a barred spiral galaxy ~67 million light-years distant (z = 0.0045) in the constellation
+Ursa Minor. It became notable as one of the first targets imaged by the Hubble Space Telescope's
+repaired Wide Field Camera 3 (WFC3) after the 2009 Servicing Mission 4, demonstrating the camera's
+restored capability. With moderate star formation (SFR ≈ 1 MM_sun/yr) and an extended rotating disk of
+~1011 MM_sun, NGC 6217 represents a typical SBbc barred spiral. Under UQFF, standard rotation velocity
+(v = 105 m/s) and typical HII B-field yield g_NGC6217 ≈ 1.053×10-3 m/s2.
 
 ---
 
 ## 1. Introduction
 
-NGC 6217 (also catalogued as UGC 10470) has an apparent magnitude of ~11.2, a disk diameter of ~30,000 ly, and a Hubble morphological type of SBbc (barred spiral, late intermediate). Its bar structure funnels gas toward the central region, sustaining moderate star formation. The galaxy's selection as a Hubble Servicing Mission 4 first-light target in 2009 reflects its moderate brightness and interesting bar+ring morphology at z = 0.0045 (~67 Mly). UQFF treats it as a standard barred galaxy with SFR coupling through the galactic bar channel.
+NGC 6217 (also catalogued as UGC 10470) has an apparent magnitude of ~11.2, a disk diameter of
+~30,000 ly, and a Hubble morphological type of SBbc (barred spiral, late intermediate). Its bar
+structure funnels gas toward the central region, sustaining moderate star formation. The galaxy's
+selection as a Hubble Servicing Mission 4 first-light target in 2009 reflects its moderate
+brightness and interesting bar+ring morphology at z = 0.0045 (~67 Mly). UQFF treats it as a standard
+barred galaxy with SFR coupling through the galactic bar channel.
 
 ---
 
 ## 2. Master UQFF Gravity Equation
 
-```
-g_NGC6217(r, t) = (G × M) / r² × (1 + H(z)×t) × (1 + M_sf) × (1 + f_TRZ)
-               + a_EM
-```
+$$
+\begin{aligned}
+  & g_NGC6217(r, t) = (G × M) / r2 × (1 + H(z)×t) × (1 + M_sf) × (1 + f_TRZ) \\
+  & + a_EM
+\end{aligned}
+$$
 
 ### 2.1 Parameters
 
 | Parameter | Symbol | Value | Source |
 |-----------|--------|-------|--------|
-| Galaxy mass | M | 10¹¹ M☉ = 1.989×10⁴¹ kg | Estimate |
-| Disk radius | r | 3×10²⁰ m (~30 kly) | NED |
-| SFR | — | 1 M☉/yr | Moderate SBbc |
-| Age (evolution time) | t | 5×10⁹ yr = 1.578×10¹⁷ s | Hubble time |
+| Galaxy mass | M | 1011 MM_sun = 1.989×1041 kg | Estimate |
+| Disk radius | r | 3×1020 m (~30 kly) | NED |
+| SFR | — | 1 MM_sun/yr | Moderate SBbc |
+| Age (evolution time) | t | 5×109 yr = 1.578×1017 s | Hubble time |
 | M_sf | — | 0.045 | UQFF SFR integral |
 | Redshift | z | 0.0045 | NED spectroscopic |
-| v_EM | v | 10⁵ m/s | Disk rotation |
-| B_EM | B | 10⁻⁵ T | Galactic field |
+| v_EM | v | 105 m/s | Disk rotation |
+| B_EM | B | 10-5 T | Galactic field |
 | f_TRZ | — | 0.04 | UQFF |
 
 ---
@@ -46,68 +70,86 @@ g_NGC6217(r, t) = (G × M) / r² × (1 + H(z)×t) × (1 + M_sf) × (1 + f_TRZ)
 ## 3. Long-Form Derivation
 
 ### Step 1: Base Gravitational Term
-```
-g_grav = G × M / r²
-       = 6.6743e-11 × 1.989e41 / (3e20)²
-       = 1.328e31 / 9e40
-       = 1.476e-10 m/s²
-```
+$$
+\begin{aligned}
+  & g_grav = G × M / r2 \\
+  & = 6.6743e-11 × 1.989e41 / (3e20)2 \\
+  & = 1.328e31 / 9e40 \\
+  & = 1.476e-10 m/s2
+\end{aligned}
+$$
 
 ### Step 2: Cosmic Expansion Factor
-```
-H(z) = H₀ × (1 + z)^(3/2) ≈ 2.315e-18 s⁻¹
-H(z) × t = 2.315e-18 × 1.578e17 = 0.3653
-1 + H(z) × t = 1.3653
-```
+$$
+\begin{aligned}
+  & H(z) = H₀ × (1 + z)^(3/2) ≈ 2.315e-18 s-1 \\
+  & H(z) × t = 2.315e-18 × 1.578e17 = 0.3653 \\
+  & 1 + H(z) × t = 1.3653
+\end{aligned}
+$$
 
 ### Step 3: Star-Formation Mass Fraction (Bar-Channeled)
-```
-Bar-driven SFR = 1 M☉/yr, integrated over 5 Gyr
-M_sf = 0.045 (UQFF bounded, ~4.5% mass fraction in young stars)
-1 + M_sf = 1.045
-```
+$$
+\begin{aligned}
+  & Bar-driven SFR = 1 MM_sun/yr, integrated over 5 Gyr \\
+  & M_sf = 0.045 (UQFF bounded, ~4.5% mass fraction in young stars) \\
+  & 1 + M_sf = 1.045
+\end{aligned}
+$$
 
 ### Step 4: Time-Reversal Correction
-```
-f_TRZ = 0.04 (moderate spiral, bar-driven)
-1 + f_TRZ = 1.04
-```
+$$
+\begin{aligned}
+  & f_TRZ = 0.04 (moderate spiral, bar-driven) \\
+  & 1 + f_TRZ = 1.04
+\end{aligned}
+$$
 
 ### Step 5: Gravitational Total
-```
-g_grav_total = 1.476e-10 × 1.3653 × 1.045 × 1.04
-             = 1.476e-10 × 1.488 = 2.197e-10 m/s²
-```
+$$
+\begin{aligned}
+  & \text{g\_grav\_total} = 1.476e-10 × 1.3653 × 1.045 × 1.04 \\
+  & = 1.476e-10 × 1.488 = 2.197e-10 m/s2
+\end{aligned}
+$$
 
 ### Step 6: Aether Electromagnetic Correction
-```
-v = 10⁵ m/s (disk rotation velocity)
-B = 10⁻⁵ T (galactic B-field)
-
-a_EM = (e/m_p) × (v × B) × Λ_UQFF
-     = 9.575e7 × (10⁵ × 10⁻⁵) × 11 × 10⁻¹²
-     = 9.575e7 × 1 × 1.1e-11
-     = 1.053e-3 m/s²
-```
+$$
+\begin{aligned}
+  & v = 105 m/s (disk rotation velocity) \\
+  & B = 10-5 T (galactic B-field) \\
+  & a_EM = (e/m_p) × (v × B) × Λ_UQFF \\
+  & = 9.575e7 × (105 × 10-5) × 11 × 10-12 \\
+  & = 9.575e7 × 1 × 1.1e-11 \\
+  & = 1.053e-3 m/s2
+\end{aligned}
+$$
 
 ### Step 7: Final Solution
-```
-g_NGC6217 = 2.197e-10 + 1.053e-3
-           ≈ 1.053e-3 m/s²
-```
+$$
+\begin{aligned}
+  & g_NGC6217 = 2.197e-10 + 1.053e-3 \\
+  & ≈ 1.053e-3 m/s2
+\end{aligned}
+$$
 
 ---
 
 ## 4. Physical Interpretation
 
-The classical gravitational term (2.197×10⁻¹⁰ m/s²) is 7 orders of magnitude smaller than the Aether EM result (1.053×10⁻³ m/s²). The UQFF result thus captures disk rotation dynamics through the electromagnetic Aether coupling, not Newtonian gravity. The bar structure in NGC 6217 channels gas inward, sustaining the moderate SFR = 1 M☉/yr and bar-enhanced M_sf = 0.045, slightly higher than a purely symmetric flocculent spiral of similar mass. As with NGC 2841, the dominant physics is electromagnetic at these rotation velocities.
+The classical gravitational term (2.197×10-10 m/s2) is 7 orders of magnitude smaller than the Aether
+EM result (1.053×10-3 m/s2). The UQFF result thus captures disk rotation dynamics through the
+electromagnetic Aether coupling, not Newtonian gravity. The bar structure in NGC 6217 channels gas
+inward, sustaining the moderate SFR = 1 MM_sun/yr and bar-enhanced M_sf = 0.045, slightly higher than a
+purely symmetric flocculent spiral of similar mass. As with NGC 2841, the dominant physics is
+electromagnetic at these rotation velocities.
 
 ---
 
 ## 5. UQFF Framework Advancement
 
 - NGC 6217 validates standard SBbc barred spiral UQFF field result
-- Bar-driven SFR = 1 M☉/yr produces M_sf = 0.045 (canonical bar value)
+- Bar-driven SFR = 1 MM_sun/yr produces M_sf = 0.045 (canonical bar value)
 - Hubble SM4 first-light observation history preserved in UQFF canon
 - SBbc result consistent with other moderate barred spirals (NGC 2841, NGC 1300)
 
@@ -115,7 +157,10 @@ The classical gravitational term (2.197×10⁻¹⁰ m/s²) is 7 orders of magnit
 
 ## 6. Conclusions
 
-UQFF applied to NGC 6217 yields g_bar_spiral ≈ 1.053×10⁻³ m/s², confirming standard barred galaxy behavior. The Hubble-celebrated target joins the UQFF canon as the SBbc benchmark alongside Milky Way analogs. Bar-enhanced gas flow, expressed through M_sf = 0.045 and moderate SFR, demonstrates how UQFF differentiates galaxy morphological types within a unified framework.
+UQFF applied to NGC 6217 yields g_bar_spiral ≈ 1.053×10-3 m/s2, confirming standard barred galaxy
+behavior. The Hubble-celebrated target joins the UQFF canon as the SBbc benchmark alongside Milky
+Way analogs. Bar-enhanced gas flow, expressed through M_sf = 0.045 and moderate SFR, demonstrates
+how UQFF differentiates galaxy morphological types within a unified framework.
 
 *PAPER_777, CP4 class #361. v5.41.*
 
@@ -125,13 +170,15 @@ UQFF applied to NGC 6217 yields g_bar_spiral ≈ 1.053×10⁻³ m/s², confirmin
 
 ### §A.1 Sector Classification
 
-This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see `uqff_lagrangian_derivation.py`).
+This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
-The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive quantum fundamentals (DPM, UA, SCm):
+The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
+quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_\mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
+$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
 
 where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
@@ -145,7 +192,9 @@ $$\boxed{\frac{\delta S}{\delta \phi_{\rm NS}} = \nabla^2 \phi_{\rm NS} - (4\pi 
 
 $$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\rm NS} = 0$$
 
-The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g forces) through vacuum density initialization to the sector-specific equation of motion. Every term in the E-L equation inherits its physical origin from the cosmogenesis master.
+The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
+forces) through vacuum density initialization to the sector-specific equation of motion. Every term
+in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 
 ---
@@ -156,9 +205,9 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.173$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m³.
+For this system, the local VDS sub-ratio is $0.173$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -170,13 +219,13 @@ Since $p_{\rm DVP} = 107$ is **resonant** (threshold at $p > 26$), the system's 
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
-The BSH saturation timescale for this sector is **10⁴ yr** (spin-down equilibrium):
+The BSH saturation timescale for this sector is **104 yr** (spin-down equilibrium):
 
-$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
+$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\rm SCm}$ which initializes the harmonic series at cosmogenesis.
 
@@ -184,11 +233,11 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.173 | ✓ Threshold-consistent |
-| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 107$ | ✓ Resonant |
-| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
-| [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
+| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.173 | PASS Threshold-consistent |
+| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 107$ | PASS Resonant |
+| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
+| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
 ---
@@ -198,14 +247,17 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | ✓ Consistent |
-| Cosmological constant Λ | 1.1×10⁻⁵² m⁻² (UQFF vacuum term) | 1.114×10⁻⁵² m⁻² | Planck 2018 | ✓ Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10⁻³⁵/yr | Super-K 2024 | ✓ Consistent |
-| UQFF buoyancy signature | F_U_Bi_i unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
+| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
-**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes significant, offering a falsifiable prediction beyond the Standard Model.
+**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
+produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
+bridge.*
 
 
 ---
@@ -220,9 +272,9 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `f`neutron_s26_coupling`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `k`ozima_scm_cross_section`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `k`ozima_wstp_kernel`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -231,7 +283,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `r`amanujan_polylog_s26`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
 | `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
@@ -240,7 +292,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `m`ock_theta_q26`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -251,8 +303,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `r`amanujan_pi_uqff`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `m`ock_theta_pi_wstp_kernel`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]

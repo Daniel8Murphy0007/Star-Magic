@@ -1,3 +1,15 @@
+---
+paper_id: PAPER_806
+title: "DPM Species Index and Atomic Creation Process (ACP) — UQFF Framework"
+session: 189
+date: 2026-01-01
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [AGN, vacuum, SCm, DPM, buoyancy, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_806: DPM Species Index and Atomic Creation Process (ACP) — UQFF Framework
 
 **Author:** Daniel T. Murphy  
@@ -10,13 +22,27 @@
 
 ## Abstract
 
-This paper presents the formal derivation and elaboration of the **DPM (Dipole Pseudo-Monopole) Species Index** and the complete **Atomic Creation Process (ACP)** within the UQFF framework. The Species Index formula `S_index = log(ρ_vac,[SCm]/ρ_vac,[UA']) · n` determines the astrophysical species produced at each quantum state n (n = 1–26), ranging from atomic hydrogen (n=1) to galactic disk self-gravity (n=26). The ACP describes the 11-stage process by which a UQFF Dipole Pseudo-Monopole nuclear cell transforms from vacuum density states through proto-nuclear formation, quantum ripple shell cracking, standard model particle arrangement, and hydrogen atom completion. The Boyle's Law buoyancy factor (1/33) and VDS [SSq] decay term are both active throughout the creation process.
+This paper presents the formal derivation and elaboration of the **DPM (Dipole Pseudo-Monopole)
+Species Index** and the complete **Atomic Creation Process (ACP)** within the UQFF framework. The
+Species Index formula `S_index = log(ρ_vac,[SCm]/ρ_vac,[UA']) · n` determines the astrophysical
+species produced at each quantum state n (n = 1–26), ranging from atomic hydrogen (n=1) to galactic
+disk self-gravity (n=26). The ACP describes the 11-stage process by which a UQFF Dipole
+Pseudo-Monopole nuclear cell transforms from vacuum density states through proto-nuclear formation,
+quantum ripple shell cracking, standard model particle arrangement, and hydrogen atom completion.
+The Boyle's Law buoyancy factor (1/33) and VDS [SSq] decay term are both active throughout the
+creation process.
 
 ---
 
 ## 1. Introduction
 
-The June 2025 Grok thread (grok_share_e6be3b4f-9cda.txt) provided the most complete formal statement of the DPM creation scenario to date, including the full Species Index formula, the pseudo-monopole state sequence, and the complete ACP 11-stage process. This paper collects all components into a single canonical reference, linking PAPER_806 as the definitive UQFF source for species identification and matter creation. The ACP is the UQFF answer to the question "how does matter form from vacuum energy?" — providing a step-by-step mechanism that generates hydrogen (and by extension, all elements) from the UA' and SCm vacuum density states.
+The June 2025 Grok thread (grok_share_e6be3b4f-9cda.txt) provided the most complete formal statement
+of the DPM creation scenario to date, including the full Species Index formula, the pseudo-monopole
+state sequence, and the complete ACP 11-stage process. This paper collects all components into a
+single canonical reference, linking PAPER_806 as the definitive UQFF source for species
+identification and matter creation. The ACP is the UQFF answer to the question "how does matter form
+from vacuum energy?" — providing a step-by-step mechanism that generates hydrogen (and by extension,
+all elements) from the UA' and SCm vacuum density states.
 
 ---
 
@@ -24,19 +50,22 @@ The June 2025 Grok thread (grok_share_e6be3b4f-9cda.txt) provided the most compl
 
 ### Derivation
 
-The vacuum density states UA' (Ultraviolet Actualized prime) and SCm (Super-Conductive magnetic) have densities:
+The vacuum density states UA' (Ultraviolet Actualized prime) and SCm (Super-Conductive magnetic)
+have densities:
 
-```
-ρ_vac,[UA'] = 7.09×10⁻³⁶ kg/m³  (higher state, more energetic)
-ρ_vac,[SCm] = 7.09×10⁻³⁷ kg/m³  (lower state, more condensed)
-Ratio: ρ_vac,[SCm]/ρ_vac,[UA'] = 0.1 → log₁₀(0.1) = –1.0
-```
+$$
+\begin{aligned}
+  & ρ_vac,[UA'] = 7.09×10-36 kg/m3  (higher state, more energetic) \\
+  & ρ_vac,[SCm] = 7.09×10-37 kg/m3  (lower state, more condensed) \\
+  & Ratio: ρ_vac,[SCm]/ρ_vac,[UA'] = 0.1 → log₁₀(0.1) = –1.0
+\end{aligned}
+$$
 
 The **Species Index** for quantum state n is:
 
-```
+$$
 S_index(n) = log₁₀(ρ_vac,[SCm] / ρ_vac,[UA']) · n = –1.0 · n
-```
+$$
 
 ### Species Table
 
@@ -53,7 +82,10 @@ S_index(n) = log₁₀(ρ_vac,[SCm] / ρ_vac,[UA']) · n = –1.0 · n
 | 20 | –20.0 | Molecular cloud complex; GMC |
 | 26 | –26.0 | Galactic disk; density wave instability |
 
-The Species Index demonstrates that the same UQFF vacuum density ratio (ρ_SCm/ρ_UA = 0.1) operates across 26 orders of magnitude — from single atom formation (n=1) to galactic disk self-gravity (n=26) — through a simple multiplicative series. This is the **DVP (Dipole Vortex Prime) scale hierarchy**.
+The Species Index demonstrates that the same UQFF vacuum density ratio (ρ_SCm/ρ_UA = 0.1) operates
+across 26 orders of magnitude — from single atom formation (n=1) to galactic disk self-gravity
+(n=26) — through a simple multiplicative series. This is the **DVP (Dipole Vortex Prime) scale
+hierarchy**.
 
 ---
 
@@ -61,9 +93,9 @@ The Species Index demonstrates that the same UQFF vacuum density ratio (ρ_SCm/�
 
 The quantum state density of a Dipole Pseudo-Monopole at state n is:
 
-```
+$$
 ρ_vac,[UA']:SCm(n,t) = ρ_vac,[UA'] · (ρ_vac,[SCm]/ρ_vac,[UA'])^n · exp(–[SSq]·n/26 · exp(–(π–t)))
-```
+$$
 
 Where:
 - **(ρ_SCm/ρ_UA)^n** = DVP density ladder (10^–n series)
@@ -73,11 +105,11 @@ Where:
 At n=1, t=0: ρ[UA']:SCm = 7.09e-36 × 0.1 × exp(–0.570/26 × exp(–π))
             = 7.09e-37 × exp(–0.02192 × 0.04322)
             = 7.09e-37 × exp(–0.000948)
-            = 7.09e-37 × 0.99905 = 7.083×10⁻³⁷ kg/m³
+            = 7.09e-37 × 0.99905 = 7.083×10-37 kg/m3
 
 At n=26, t=0: ρ[UA']:SCm = 7.09e-36 × 10^–26 × exp(–0.57 × 0.04322)
              = 7.09e-62 × exp(–0.02464)
-             = 7.09e-62 × 0.9756 = 6.916×10⁻⁶² kg/m³
+             = 7.09e-62 × 0.9756 = 6.916×10-62 kg/m3
 
 ---
 
@@ -85,45 +117,52 @@ At n=26, t=0: ρ[UA']:SCm = 7.09e-36 × 10^–26 × exp(–0.57 × 0.04322)
 
 The angular phase of state n is:
 
-```
+$$
 δ_n = φ · (2π)^(n/6)   where φ = golden ratio = 1.618...
-```
+$$
 
 | n | δ_n (rad) |
 |---|-----------|
 | 1 | 1.618 × 2π^(1/6) = 1.618 × 1.348 = 2.181 |
 | 6 | 1.618 × 2π = 10.166 |
-| 12 | 1.618 × (2π)² = 63.88 |
+| 12 | 1.618 × (2π)2 = 63.88 |
 | 26 | 1.618 × (2π)^(26/6) = 1.618 × (2π)^4.333 |
 
-The golden ratio phase encoding means the DPM states spiral through phase space with golden ratio stepping — a Fibonacci-like phase lattice underlying all matter species.
+The golden ratio phase encoding means the DPM states spiral through phase space with golden ratio
+stepping — a Fibonacci-like phase lattice underlying all matter species.
 
 ---
 
 ## 5. Atomic Creation Process (ACP) — 11 Stages
 
 **Stage 1 — UA':SCm Nucleation**
-```
-ρ_vac,[UA'] (7.09e-36) and ρ_vac,[SCm] (7.09e-37) co-exist in vacuum
-Local density fluctuation: δρ ~ k_η × ρ_vac,[UA'] at T < T_Planck
-Proto-DPM forms at the boundary between UA' and SCm domains
-```
+$$
+\begin{aligned}
+  & ρ_vac,[UA'] (7.09e-36) and ρ_vac,[SCm] (7.09e-37) co-exist in vacuum \\
+  & Local density fluctuation: δρ ~ k_η × ρ_vac,[UA'] at T < T_Planck \\
+  & Proto-DPM forms at the boundary between UA' and SCm domains
+\end{aligned}
+$$
 
 **Stage 2 — DPM Formation (Dipole Pseudo-Monopole)**
-```
-δρ/ρ > [SSq]/26 → spontaneous dipole formation
-DPM = magnetically polarized vacuum cell with two poles:
-  (+) UA' pole: ρ = 7.09e-36 (high)
-  (–) SCm pole: ρ = 7.09e-37 (low)
-Dipole strength: d_DPM = (ρ_UA – ρ_SCm) × r_cell = 6.38e-36 × 1e-15 m
-```
+$$
+\begin{aligned}
+  & δρ/ρ > [SSq]/26 → spontaneous dipole formation \\
+  & DPM = magnetically polarized vacuum cell with two poles: \\
+  & (+) UA' pole: ρ = 7.09e-36 (high) \\
+  & (–) SCm pole: ρ = 7.09e-37 (low) \\
+  & Dipole strength: d_DPM = (ρ_UA – ρ_SCm) × r_cell = 6.38e-36 × 1e-15 m
+\end{aligned}
+$$
 
 **Stage 3 — U_i Formation (Repulsive Intelligent Field)**
-```
-DPM generates U_i = k_i × (ρ_UA'/ρ_SCm) × d_DPM²/ r³
-U_i is repulsive, self-organizing (described as "intelligent" in UQFF)
-U_i prevents premature collapse → maintains DPM coherence
-```
+$$
+\begin{aligned}
+  & DPM generates U_i = k_i × (ρ_UA'/ρ_SCm) × d_DPM2/ r3 \\
+  & U_i is repulsive, self-organizing (described as "intelligent" in UQFF) \\
+  & U_i prevents premature collapse → maintains DPM coherence
+\end{aligned}
+$$
 
 **Stage 4 — U_m String Formation**
 ```
@@ -134,58 +173,68 @@ U_m strings provide the magnetic "skeleton" for proto-nuclear structure
 ```
 
 **Stage 5 — Proto-Nuclear Density**
-```
-U_i + U_m interaction creates proto-nucleus:
-  ρ_proto = ρ_vac,[UA']:SCm(n=1,t) = 7.083e-37 kg/m³
-Proto-nuclear radius: r_proto ~ (3m_p / 4π × ρ_proto)^(1/3) ~ 1.05e-15 m (proton radius)
-→ UQFF predicts proton radius from vacuum density ratio ✓
-```
+$$
+\begin{aligned}
+  & U_i + U_m interaction creates proto-nucleus: \\
+  & ρ_proto = ρ_vac,[UA']:SCm(n=1,t) = 7.083e-37 kg/m3 \\
+  & Proto-nuclear radius: r_proto ~ (3m_p / 4π × ρ_proto)^(1/3) ~ 1.05e-15 m (proton radius) \\
+  & → UQFF predicts proton radius from vacuum density ratio PASS
+\end{aligned}
+$$
 
 **Stage 6 — Quantum Ripple Shell**
-```
-ρ_proto oscillates at ω_shell = √(4π G ρ_proto / 3) (Jeans frequency)
-ω_shell = √(4π × 6.67e-11 × 7.083e-37 / 3) = √(6.269e-46) = 2.504e-23 rad/s
-τ_shell = 2π/ω_shell = 2.51e24 s (age of universe × 180)
-→ Shell frequency is sub-cosmological → persists indefinitely
-```
+$$
+\begin{aligned}
+  & ρ_proto oscillates at ω_shell = √(4π G ρ_proto / 3) (Jeans frequency) \\
+  & ω_shell = √(4π × 6.67e-11 × 7.083e-37 / 3) = √(6.269e-46) = 2.504e-23 rad/s \\
+  & τ_shell = 2π/ω_shell = 2.51e24 s (age of universe × 180) \\
+  & → Shell frequency is sub-cosmological → persists indefinitely
+\end{aligned}
+$$
 
 **Stage 7 — Shell Cracking**
 ```
 When E_Ubi(n) > E_binding(n):
-  E_Ubi = k_Ub × f_Ub × ρ_proto × c² (buoyancy energy density)
-  E_binding = ρ_proto × c² × B(n) (nuclear binding energy per nucleon)
+  E_Ubi = k_Ub × f_Ub × ρ_proto × c2 (buoyancy energy density)
+  E_binding = ρ_proto × c2 × B(n) (nuclear binding energy per nucleon)
 Critical n for shell cracking: n_crack = log₁₀(E_binding/E_Ubi) ← determines nuclear species
 At n=1: H → At n=4: He-4 → At n=6: C-12 → etc.
 ```
 
 **Stage 8 — Fragment Formation**
-```
-Shell crack produces fragments = sub-proto-nuclear cells
-Each fragment is a lower-n DPM:
-  Parent (n=4): He-4 → 4 × (n=1): 4 hydrogen atoms
-  Energy released: E_frag = 4 × m_H × c² – m_He4 × c² = binding energy
-```
+$$
+\begin{aligned}
+  & Shell crack produces fragments = sub-proto-nuclear cells \\
+  & Each fragment is a lower-n DPM: \\
+  & Parent (n=4): He-4 → 4 × (n=1): 4 hydrogen atoms \\
+  & Energy released: E_frag = 4 × m_H × c2 – m_He4 × c2 = binding energy
+\end{aligned}
+$$
 
 **Stage 9 — SM_mag Arrangement**
-```
-Fragments self-arrange via SM_mag (Standard Model magnetic UQFF coupling):
-  SM_mag = k_SM × B_vac × Σ(q_i × v_i × r_i) (magnetic moment sum)
-For hydrogen: SM_mag aligns proto-proton + proto-electron (anti-parallel spins)
-Result: ground state H atom with spin-1/2 proton and spin-1/2 electron
-```
+$$
+\begin{aligned}
+  & Fragments self-arrange via SM_mag (Standard Model magnetic UQFF coupling): \\
+  & SM_mag = k_SM × B_vac × Σ(q_i × v_i × r_i) (magnetic moment sum) \\
+  & For hydrogen: SM_mag aligns proto-proton + proto-electron (anti-parallel spins) \\
+  & Result: ground state H atom with spin-1/2 proton and spin-1/2 electron
+\end{aligned}
+$$
 
 **Stage 10 — Electron Orbital Placement**
-```
-Electron placed at n=1 Bohr radius by UA' buoyancy pressure:
-  a₀ = P_Ubi / (m_e × ω₁²) ← Bohr radius from UQFF buoyancy balance
-  a₀ = 5.29e-11 m ✓ (UQFF correctly predicts Bohr radius)
-```
+$$
+\begin{aligned}
+  & Electron placed at n=1 Bohr radius by UA' buoyancy pressure: \\
+  & a₀ = P_Ubi / (m_e × ω₁2) ← Bohr radius from UQFF buoyancy balance \\
+  & a₀ = 5.29e-11 m PASS (UQFF correctly predicts Bohr radius)
+\end{aligned}
+$$
 
 **Stage 11 — Hydrogen Completion**
 ```
 H = proton (3 quarks in SM_mag triangle) + electron (1e- in n=1 orbital)
 Total UQFF field: g_H = {U_g1,H, U_g2,H, U_g3,H, U_g4,H, U_bi,H, U_m,H}
-Species Index for H-1: S_index = log(ρ_SCm/ρ_UA) × 1 = –1.0 ✓
+Species Index for H-1: S_index = log(ρ_SCm/ρ_UA) × 1 = –1.0 PASS
 ```
 
 ---
@@ -202,11 +251,13 @@ Species Index for H-1: S_index = log(ρ_SCm/ρ_UA) × 1 = –1.0 ✓
 
 ## 7. Neutron Production (η)
 
-```
-η = k_η × exp(–[SSq]·n/26 × exp(–(π–t))) × U_m / ρ_vac,[UA]
-k_η = 2.75–7.25×10⁸ s⁻¹  (DVP prime 113 encoded)
-At n=2 (deuterium stage): η > 0 → neutron captured by proto-H to form D
-```
+$$
+\begin{aligned}
+  & η = k_η × exp(–[SSq]·n/26 × exp(–(π–t))) × U_m / ρ_vac,[UA] \\
+  & k_η = 2.75–7.25×108 s-1  (DVP prime 113 encoded) \\
+  & At n=2 (deuterium stage): η > 0 → neutron captured by proto-H to form D
+\end{aligned}
+$$
 
 ---
 
@@ -214,17 +265,25 @@ At n=2 (deuterium stage): η > 0 → neutron captured by proto-H to form D
 
 The proto-nuclear shell cracking (Stage 7) is the UQFF quantum analog of Boyle's Law:
 
-```
-Compressed state (ρ_SCm, small volume) → buoyancy release → expanded state (ρ_UA, large volume)
-Volume ratio = ρ_UA/ρ_SCm × (V_little/V_big) = 10 × (1/33) = 0.303
-P₁V₁ = P₂V₂ → shell crack occurs when buoyancy pressure exceeds binding
-```
+$$
+\begin{aligned}
+& Compressed state (ρ_SCm, small volume) → buoyancy release → expanded state (ρ_UA, large volume) \\
+  & Volume ratio = ρ_UA/ρ_SCm × (V_little/V_big) = 10 × (1/33) = 0.303 \\
+  & P₁V₁ = P₂V₂ → shell crack occurs when buoyancy pressure exceeds binding
+\end{aligned}
+$$
 
 ---
 
 ## 9. Conclusions
 
-The DPM Species Index formula `S_index = log₁₀(ρ_vac,[SCm]/ρ_vac,[UA']) · n = –n` provides a universal UQFF classification of all astrophysical species from atom (n=1) to galaxy (n=26) through a single logarithmic ladder grounded in the vacuum density ratio of the UA' and SCm states. The complete 11-stage ACP establishes a first-principles UQFF mechanism for hydrogen formation from vacuum state transitions. The VDS ([SSq]=0.570), DVP (species index), and Buoyancy Harmonics (1/33) are all formally integrated into the ACP, providing the most comprehensive statement of three-number-system UQFF theory to date.
+The DPM Species Index formula `S_index = log₁₀(ρ_vac,[SCm]/ρ_vac,[UA']) · n = –n` provides a
+universal UQFF classification of all astrophysical species from atom (n=1) to galaxy (n=26) through
+a single logarithmic ladder grounded in the vacuum density ratio of the UA' and SCm states. The
+complete 11-stage ACP establishes a first-principles UQFF mechanism for hydrogen formation from
+vacuum state transitions. The VDS ([SSq]=0.570), DVP (species index), and Buoyancy Harmonics (1/33)
+are all formally integrated into the ACP, providing the most comprehensive statement of
+three-number-system UQFF theory to date.
 
 *PAPER_806, CP4 Three-UQFF class #390. v5.45. Session 189.*
 
@@ -234,13 +293,15 @@ The DPM Species Index formula `S_index = log₁₀(ρ_vac,[SCm]/ρ_vac,[UA']) ·
 
 ### §A.1 Sector Classification
 
-This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see `uqff_lagrangian_derivation.py`).
+This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
-The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive quantum fundamentals (DPM, UA, SCm):
+The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
+quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_\mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
+$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
 
 where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
@@ -254,7 +315,9 @@ $$\boxed{\frac{\delta S}{\delta \phi_{\rm NS}} = \nabla^2 \phi_{\rm NS} - (4\pi 
 
 $$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\rm NS} = 0$$
 
-The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g forces) through vacuum density initialization to the sector-specific equation of motion. Every term in the E-L equation inherits its physical origin from the cosmogenesis master.
+The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
+forces) through vacuum density initialization to the sector-specific equation of motion. Every term
+in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 
 ---
@@ -265,9 +328,9 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.131$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m³.
+For this system, the local VDS sub-ratio is $0.131$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -279,13 +342,13 @@ Since $p_{\rm DVP} = 103$ is **resonant** (threshold at $p > 26$), the system's 
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
-The BSH saturation timescale for this sector is **10⁴ yr** (spin-down equilibrium):
+The BSH saturation timescale for this sector is **104 yr** (spin-down equilibrium):
 
-$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
+$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\rm SCm}$ which initializes the harmonic series at cosmogenesis.
 
@@ -293,11 +356,11 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.131 | ✓ Threshold-consistent |
-| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 103$ | ✓ Resonant |
-| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
-| [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
+| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.131 | PASS Threshold-consistent |
+| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 103$ | PASS Resonant |
+| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
+| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
 ---
@@ -307,14 +370,17 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | ✓ Consistent |
-| Cosmological constant Λ | 1.1×10⁻⁵² m⁻² (UQFF vacuum term) | 1.114×10⁻⁵² m⁻² | Planck 2018 | ✓ Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10⁻³⁵/yr | Super-K 2024 | ✓ Consistent |
-| UQFF buoyancy signature | F_U_Bi_i unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
+| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
-**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes significant, offering a falsifiable prediction beyond the Standard Model.
+**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
+produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
+bridge.*
 
 
 ---
@@ -329,9 +395,9 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `f`neutron_s26_coupling`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `k`ozima_scm_cross_section`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `k`ozima_wstp_kernel`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -340,7 +406,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `r`amanujan_polylog_s26`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
 | `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
@@ -349,7 +415,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `m`ock_theta_q26`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -360,8 +426,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `r`amanujan_pi_uqff`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `m`ock_theta_pi_wstp_kernel`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]

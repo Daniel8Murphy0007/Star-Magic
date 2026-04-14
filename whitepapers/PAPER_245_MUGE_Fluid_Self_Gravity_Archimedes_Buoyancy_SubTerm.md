@@ -1,30 +1,57 @@
+---
+paper_id: PAPER_245
+title: "MUGE Fluid Self-Gravity Archimedes Buoyancy Sub-Term — Universal Gravitational Buoyancy"
+session: 0
+date: 2026-03-01
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [galaxy, cluster, MUGE, buoyancy, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_245: MUGE Fluid Self-Gravity Archimedes Buoyancy Sub-Term — Universal Gravitational Buoyancy
 
 **Author:** Daniel T. Murphy (daniel.murphy00@gmail.com)
 **Framework:** UQFF v4.27 — Star-Magic Physics
-**Source:** CondensedPhysics3.py — `MUGEFluidSelfGravityTermCalculator` (Session 62, grok_share_8d951e12.txt 4th-pass)
+**Source:** CondensedPhysics3.py — `MUGEFluidSelfGravityTermCalculator` (Session 62,
+grok_share_8d951e12.txt 4th-pass)
 **Date:** March 2026
 **Series:** Phase 2 Session 62 — §3.x Universal MUGE Sub-Term Integration
 
 ---
 
-$$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b_i}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57$$
+$$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b\_i}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57$$
 
 $$
-g_\text{UQFF}(r) = g_\text{MUGE}(r)\cdot\Bigl(1 - [SSq]\cdot U_{b_i}\,/\,F_U(r,t)\Bigr), \quad [SSq] = 0.57
+g_\text{UQFF}(r) = g_\text{MUGE}(r)\cdotBigl(1 - [SSq]\cdot U_{b\_i}\,/\,F_U(r,t)\Bigr), \quad [SSq]
+= 0.57
 $$
 
 ## Abstract
 
-Archimedes' principle states that a body immersed in a fluid experiences an upward buoyant force equal to the weight of fluid displaced. This paper extends that classical result to the gravitational domain within the Modified Unified Gravity Equation (MUGE) framework, establishing a **fluid self-gravity sub-term** (`g_fluid`) in which the gravitating body's own gravity acts on the surrounding fluid to produce an effective buoyancy correction.
+Archimedes' principle states that a body immersed in a fluid experiences an upward buoyant force
+equal to the weight of fluid displaced. This paper extends that classical result to the
+gravitational domain within the Modified Unified Gravity Equation (MUGE) framework, establishing a
+**fluid self-gravity sub-term** (`g_fluid`) in which the gravitating body's own gravity acts on the
+surrounding fluid to produce an effective buoyancy correction.
 
-The defining equation `g_fluid = (?_fluid · V · g_grav) / M`, with `V = (4/3)pr³`, directly transposes the Archimedes buoyancy ratio to a gravitational acceleration correction. The term introduces a critical crossover radius `r_c = (3M / (4p?_fluid))^(1/3)` at which fluid buoyancy equals Newtonian gravity, representing a fundamental scale boundary in astrophysical fluid-gravity coupling.
+The defining equation `g_fluid = (?_fluid · V · g_grav) / M`, with `V = (4/3)pr3`, directly
+transposes the Archimedes buoyancy ratio to a gravitational acceleration correction. The term
+introduces a critical crossover radius `r_c = (3M / (4p?_fluid))^(1/3)` at which fluid buoyancy
+equals Newtonian gravity, representing a fundamental scale boundary in astrophysical fluid-gravity
+coupling.
 
-Like `g_Q` (PAPER_244), this term appears universally across MUGE modules as a structural additive correction. Its physical significance grows at large radii and high fluid densities, making it particularly relevant for galaxy cluster intracluster medium (ICM) modelling, star-formation regions with dense molecular cloud envelopes, and proto-stellar disk self-gravity.
+Like `g_Q` (PAPER_244), this term appears universally across MUGE modules as a structural additive
+correction. Its physical significance grows at large radii and high fluid densities, making it
+particularly relevant for galaxy cluster intracluster medium (ICM) modelling, star-formation regions
+with dense molecular cloud envelopes, and proto-stellar disk self-gravity.
 
 
 
-**UQFF Discovery:** Novel application of UQFF calibration constants (? = 5.0×10⁻4 day⁻¹, [SSq] = 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not present in Standard Model treatments.
+**UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
+0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not
+present in Standard Model treatments.
 
 ---
 
@@ -32,32 +59,37 @@ Like `g_Q` (PAPER_244), this term appears universally across MUGE modules as a s
 
 | Parameter | Symbol | Default Value | Units | Meaning |
 |-----------|--------|---------------|-------|---------|
-| Gravitational constant | G | 6.6743 × 10?¹¹ | m³/(kg·s²) | Newton |
-| Body mass | M | 1.989 × 10³° | kg | Solar mass |
+| Gravitational constant | G | 6.6743 × 10?11 | m3/(kg·s2) | Newton |
+| Body mass | M | 1.989 × 103° | kg | Solar mass |
 | Body radius | r | 6.957 × 108 | m | Solar radius |
-| Surrounding fluid density | ?_fluid | 1 × 10?²° | kg/m³ | Low-density ISM default |
-| Gravitational acceleration | g_grav | GM/r² | m/s² | Newtonian surface gravity |
+| Surrounding fluid density | ?_fluid | 1 × 10?2° | kg/m3 | Low-density ISM default |
+| Gravitational acceleration | g_grav | GM/r2 | m/s2 | Newtonian surface gravity |
 
 **Primary equation:**
-```
-V        = (4/3) · p · r³
-g_grav   = G · M / r²
-g_fluid  = (?_fluid · V · g_grav) / M
-         = (4p/3) · ?_fluid · r · G
-```
+$$
+\begin{aligned}
+  & V        = (4/3) · p · r3 \\
+  & g_grav   = G · M / r2 \\
+  & g_fluid  = (?_fluid · V · g_grav) / M \\
+  & = (4p/3) · ?_fluid · r · G
+\end{aligned}
+$$
 
-Note the simplified form: `g_fluid = (4pG/3) · ?_fluid · r`, linear in both ?_fluid and r — a remarkable simplification that removes the mass dependence entirely.
+Note the simplified form: `g_fluid = (4pG/3) · ?_fluid · r`, linear in both ?_fluid and r — a
+remarkable simplification that removes the mass dependence entirely.
 
 **Archimedes fraction:**
-```
-? = ?_fluid · V / M   (dimensionless — ratio of fluid-sphere mass to body mass)
-g_fluid = ? · g_grav
-```
+$$
+\begin{aligned}
+  & ? = ?_fluid · V / M   (dimensionless — ratio of fluid-sphere mass to body mass) \\
+  & g_fluid = ? · g_grav
+\end{aligned}
+$$
 
 **Crossover radius:**
-```
+$$
 r_c = (3M / (4p · ?_fluid))^(1/3)   [where ? = 1: g_fluid = g_Newt]
-```
+$$
 
 ---
 
@@ -65,44 +97,58 @@ r_c = (3M / (4p · ?_fluid))^(1/3)   [where ? = 1: g_fluid = g_Newt]
 
 ### 2.1 Archimedes Transposition
 
-Classical Archimedes: `F_buoy = ?_fluid · V · g`. In MUGE, the gravitational field itself is the "fluid", and the buoyant force on a mass M in the field is proportional to the mass of fluid in volume V times the local gravitational acceleration g_grav. Dividing by M to obtain acceleration:
+Classical Archimedes: `F_buoy = ?_fluid · V · g`. In MUGE, the gravitational field itself is the
+"fluid", and the buoyant force on a mass M in the field is proportional to the mass of fluid in
+volume V times the local gravitational acceleration g_grav. Dividing by M to obtain acceleration:
 
-```
+$$
 g_fluid = F_buoy / M = (?_fluid · V · g_grav) / M
-```
+$$
 
-Substituting `V = (4/3)pr³` and `g_grav = GM/r²`:
+Substituting `V = (4/3)pr3` and `g_grav = GM/r2`:
 
-```
-g_fluid = ?_fluid · (4pr³/3) · (G/r²)
-        = (4pG/3) · ?_fluid · r
-```
+$$
+\begin{aligned}
+  & g_fluid = ?_fluid · (4pr3/3) · (G/r2) \\
+  & = (4pG/3) · ?_fluid · r
+\end{aligned}
+$$
 
-This form is identical to the gravitational acceleration at the surface of a uniform sphere of density ?_fluid — the shell theorem applied to the surrounding medium.
+This form is identical to the gravitational acceleration at the surface of a uniform sphere of
+density ?_fluid — the shell theorem applied to the surrounding medium.
 
 ### 2.2 Dimensional Analysis
 
-```
-[g_fluid] = [G] · [?_fluid] · [r]
-           = (m³/kg·s²) · (kg/m³) · m
-           = m/s²   ?
-```
+$$
+\begin{aligned}
+  & [g_fluid] = [G] · [?_fluid] · [r] \\
+  & = (m3/kg·s2) · (kg/m3) · m \\
+  & = m/s2   ?
+\end{aligned}
+$$
 
-The result is independent of body mass M — a body of any mass in a fluid of density ?_fluid at radius r experiences the same fluid gravity correction. This universality is the structural reason the term appears identically in all MUGE modules.
+The result is independent of body mass M — a body of any mass in a fluid of density ?_fluid at
+radius r experiences the same fluid gravity correction. This universality is the structural reason
+the term appears identically in all MUGE modules.
 
 ### 2.3 Crossover Radius and Phase Boundary
 
-Setting `g_fluid = g_Newt = GM/r²`:
+Setting `g_fluid = g_Newt = GM/r2`:
 
-```
-(4pG/3) · ?_fluid · r_c = G·M/r_c²
-r_c³ = 3M / (4p · ?_fluid)
-r_c  = (3M / (4p · ?_fluid))^(1/3)
-```
+$$
+\begin{aligned}
+  & (4pG/3) · ?_fluid · r_c = G·M/r_c2 \\
+  & r_c3 = 3M / (4p · ?_fluid) \\
+  & r_c  = (3M / (4p · ?_fluid))^(1/3)
+\end{aligned}
+$$
 
-For solar parameters (M = M_sun, ?_fluid = 10?²° kg/m³): `r_c ˜ (3 × 1.989×10³° / (4p × 10?²°))^(1/3) ˜ (4.75×104?)^(1/3) ˜ 3.6×10¹6 m ˜ 1.2 pc`.
+For solar parameters (M = M_sun, ?_fluid = 10?2° kg/m3): `r_c ˜ (3 × 1.989×103° / (4p ×
+10?2°))^(1/3) ˜ (4.75×104?)^(1/3) ˜ 3.6×1016 m ˜ 1.2 pc`.
 
-Below r_c, Newtonian gravity dominates; above r_c, fluid self-gravity dominates. This scale is consistent with the outer boundary of stellar wind influence zones and the transition to molecular cloud self-gravity.
+Below r_c, Newtonian gravity dominates; above r_c, fluid self-gravity dominates. This scale is
+consistent with the outer boundary of stellar wind influence zones and the transition to molecular
+cloud self-gravity.
 
 ### 2.4 Rayleigh-Taylor and Hydrodynamic Extensions
 
@@ -115,17 +161,23 @@ The calculator also provides:
 
 ## 3. Linear Radius Theorem
 
-**Theorem (Fluid Self-Gravity Linearity):** Within MUGE, the fluid self-gravity sub-term `g_fluid = (4pG/3) · ?_fluid · r` is a linear function of radius r for fixed ?_fluid, independent of body mass M. The associated Archimedes fraction `? = ?_fluid · V / M` is the only mass-dependent quantity; when ? = 1 the system crosses from Newtonian-dominated to fluid-dominated gravity at the radius r_c.
+**Theorem (Fluid Self-Gravity Linearity):** Within MUGE, the fluid self-gravity sub-term `g_fluid =
+(4pG/3) · ?_fluid · r` is a linear function of radius r for fixed ?_fluid, independent of body mass
+M. The associated Archimedes fraction `? = ?_fluid · V / M` is the only mass-dependent quantity;
+when ? = 1 the system crosses from Newtonian-dominated to fluid-dominated gravity at the radius r_c.
 
-This theorem establishes that fluid self-gravity provides a **radial amplification** of the gravitational correction — at large r (galaxy cluster scale, r ~ Mpc), even dilute intracluster medium (?_ICM ~ 10?²6 kg/m³) contributes `g_fluid ~ (4p × 6.67×10?¹¹ / 3) × 10?²6 × 3×10²² ˜ 8×10?¹? m/s²`, which is non-negligible for cluster mass reconstruction.
+This theorem establishes that fluid self-gravity provides a **radial amplification** of the
+gravitational correction — at large r (galaxy cluster scale, r ~ Mpc), even dilute intracluster
+medium (?_ICM ~ 10?26 kg/m3) contributes `g_fluid ~ (4p × 6.67×10?11 / 3) × 10?26 × 3×1022 ˜ 8×10?1?
+m/s2`, which is non-negligible for cluster mass reconstruction.
 
 ---
 
 ## 4. Observational Predictions / Validation
 
 - **Galaxy cluster ICM:** Fluid self-gravity in the ICM at r ~ Mpc contributes ~1% of the total MUGE gravity, testable via Sunyaev-Zel'dovich effect pressure profiles (Planck/SPT data).
-- **Proto-stellar disks:** At r ~ 100 AU with ?_disk ~ 10?¹4 kg/m³, `g_fluid ~ 10⁻8 m/s²` — comparable to stellar surface gravity at that distance. This modifies the standard disk self-gravity criterion (Toomre Q parameter).
-- **Crossover radius in molecular clouds:** r_c predictions in the range 0.1–1 pc for dense cores (? ~ 10?¹7 kg/m³) are testable with ALMA high-resolution density maps.
+- **Proto-stellar disks:** At r ~ 100 AU with ?_disk ~ 10?14 kg/m3, `g_fluid ~ 10-8 m/s2` — comparable to stellar surface gravity at that distance. This modifies the standard disk self-gravity criterion (Toomre Q parameter).
+- **Crossover radius in molecular clouds:** r_c predictions in the range 0.1–1 pc for dense cores (? ~ 10?17 kg/m3) are testable with ALMA high-resolution density maps.
 
 ---
 
@@ -134,7 +186,8 @@ This theorem establishes that fluid self-gravity provides a **radial amplificati
 1. Archimedes of Syracuse (~250 BC). *On Floating Bodies*. (Classical buoyancy principle.)
 2. Toomre, A. (1964). On the Gravitational Stability of a Disk of Stars. *ApJ* 139, 1217.
 3. Fabian, A.C. (1994). Cooling Flows in Clusters of Galaxies. *ARA&A* 32, 277.
-4. Murphy, D.T. (2025). UQFF Framework v4.x — MUGE Sub-Term Integration. Star-Magic internal document.
+4. Murphy, D.T. (2025). UQFF Framework v4.x — MUGE Sub-Term Integration. Star-Magic internal
+document.
 5. grok_share_8d951e12 validation session — universal `g_fluid` Archimedes term confirmation.
 
 ---
@@ -147,13 +200,15 @@ This theorem establishes that fluid self-gravity provides a **radial amplificati
 
 ### §A.1 Sector Classification
 
-This paper maps to **fluid-NS** sector of the 9-sector UQFF Lagrangian (see `uqff_lagrangian_derivation.py`).
+This paper maps to **fluid-NS** sector of the 9-sector UQFF Lagrangian (see
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
-The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive quantum fundamentals (DPM, UA, SCm):
+The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
+quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_\mu \mathbf{v})(\partial^\mu \mathbf{v}) - V(\mathbf{v}) + \mathcal{L}_{\rm cosmo}$$
+$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_mu \mathbf{v})(\partial^\mu \mathbf{v}) - V(\mathbf{v}) + \mathcal{L}_{\rm cosmo}$$
 
 where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
@@ -167,7 +222,9 @@ $$\boxed{\frac{\delta S}{\delta \mathbf{v}} = \partial_t \mathbf{v} + (\mathbf{v
 
 $$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \mathbf{v} = 0$$
 
-The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g forces) through vacuum density initialization to the sector-specific equation of motion. Every term in the E-L equation inherits its physical origin from the cosmogenesis master.
+The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
+forces) through vacuum density initialization to the sector-specific equation of motion. Every term
+in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 
 ---
@@ -178,9 +235,9 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.123$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m³.
+For this system, the local VDS sub-ratio is $0.123$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -192,13 +249,13 @@ Since $p_{\rm DVP} = 13$ is **sub-threshold** (threshold at $p > 26$), the syste
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
-The BSH saturation timescale for this sector is **Re⁻¹ · L/v** (viscous dissipation timescale):
+The BSH saturation timescale for this sector is **Re-1 · L/v** (viscous dissipation timescale):
 
-$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
+$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\rm SCm}$ which initializes the harmonic series at cosmogenesis.
 
@@ -206,11 +263,11 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.123 | ✓ Threshold-consistent |
-| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 13$ | ✓ Sub-threshold |
-| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
-| [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
+| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.123 | PASS Threshold-consistent |
+| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 13$ | PASS Sub-threshold |
+| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
+| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
 ---
@@ -220,14 +277,17 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | ✓ Consistent |
-| Cosmological constant Λ | 1.1×10⁻⁵² m⁻² (UQFF vacuum term) | 1.114×10⁻⁵² m⁻² | Planck 2018 | ✓ Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10⁻³⁵/yr | Super-K 2024 | ✓ Consistent |
-| UQFF buoyancy signature | F_U_Bi_i unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
+| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
-**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes significant, offering a falsifiable prediction beyond the Standard Model.
+**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
+produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
+bridge.*
 
 
 ---
@@ -242,9 +302,9 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `f`neutron_s26_coupling`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `k`ozima_scm_cross_section`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `k`ozima_wstp_kernel`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -253,7 +313,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `r`amanujan_polylog_s26`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
 | `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
@@ -262,7 +322,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `m`ock_theta_q26`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -273,8 +333,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `r`amanujan_pi_uqff`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `m`ock_theta_pi_wstp_kernel`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]

@@ -1,8 +1,21 @@
+---
+paper_id: PAPER_438
+title: "Galaxy NGC 2525: Per-System MUGE with M_SN(t) Supernova Mass-Loss and g_BH Proximity"
+session: 119
+date: 2025-01-01
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [galaxy, Hubble, MUGE, UQFF, SMBH, black-hole, supernova]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_438 — Galaxy NGC 2525: Per-System MUGE with M_SN(t) Supernova Mass-Loss and g_BH Proximity
 **Author:** Daniel T. Murphy
 **Date:** 2025
 
-**Source:** grok_share_68eb34022.txt — Document 10: "Master Universal Gravity Equation_Galaxy NGC 2525 Evolution_03May2025.docx" (lines 3085–3429)
+**Source:** grok_share_68eb34022.txt — Document 10: "Master Universal Gravity Equation_Galaxy NGC
+2525 Evolution_03May2025.docx" (lines 3085–3429)
 **Session:** 119
 **CP4 Class:** `NGC2525PerSystemMUGE_SNMassLoss_BHProximity_Calculator` (#93)
 
@@ -11,13 +24,15 @@
 
 ## Abstract
 
-This paper presents a UQFF analysis of Galaxy NGC 2525: Per-System MUGE with M_SN(t) Supernova Mass-Loss and g_BH Proximity, deriving compressed field equations and observational predictions within the Star-Magic/UQFF framework.
+This paper presents a UQFF analysis of Galaxy NGC 2525: Per-System MUGE with M_SN(t) Supernova
+Mass-Loss and g_BH Proximity, deriving compressed field equations and observational predictions
+within the Star-Magic/UQFF framework.
 
 ## 1. Overview
 
 PAPER_438 delivers the **complete per-system MUGE** for NGC 2525 — a barred spiral galaxy at $z \approx 0.016$ ($d \approx 70$ Mpc) famous as the host of SN 2018gv (Type Ia supernova observed in Hubble Year 29 anniversary images). The total galaxy mass is $M \approx 10^{10} \, M_\odot$, with a central supermassive black hole $M_\text{BH} \approx 2.25 \times 10^7 \, M_\odot$ at $r_\text{BH} = 1.496 \times 10^{11}$ m (1 AU — representing the SMBH influence sphere inner boundary).
 
-**Novel claim (Q1):** First UQFF MUGE incorporating **SN Ia mass loss as a negative gravitational term**: $T_\text{SN} = -GM_\text{SN}(t)/r^2$ where $M_\text{SN}(t) = 1.4 \, M_\odot \, e^{-t/\tau_\text{SN}}$ with $\tau_\text{SN} = 1$ yr, plus a simultaneous SMBH proximity term $g_\text{BH} = GM_\text{BH}/r_\text{BH}^2$ — establishing the first MUGE where supernova mass ejection directly reduces the effective gravitational field of the parent galaxy.
+**Novel claim (Q1):** First UQFF MUGE incorporating **SN Ia mass loss as a negative gravitational term**: $T_\text{SN} = -GM_\text{SN}(t)/r^2$ where $M_\text{SN}(t) = 1.4 \, M_\odot \, e^{-t/\tau_text{SN}}$ with $\tau_text{SN} = 1$ yr, plus a simultaneous SMBH proximity term $g_\text{BH} = GM_\text{BH}/r_\text{BH}^2$ — establishing the first MUGE where supernova mass ejection directly reduces the effective gravitational field of the parent galaxy.
 
 ---
 
@@ -28,11 +43,11 @@ PAPER_438 delivers the **complete per-system MUGE** for NGC 2525 — a barred sp
 | Total galaxy mass | $M$ | $(10^{10} + 2.25 \times 10^7) \, M_\odot \approx 10^{10} \, M_\odot$ |
 | Galaxy radius | $r$ | 9.2 kpc $= 2.836 \times 10^{20}$ m |
 | Galaxy redshift | $z$ | 0.016 |
-| Hubble at z | $H(z)$ | $\approx 2.19 \times 10^{-18}$ s⁻¹ |
+| Hubble at z | $H(z)$ | $\approx 2.19 \times 10^{-18}$ s-1 |
 | SMBH mass | $M_\text{BH}$ | $2.25 \times 10^7 \, M_\odot = 4.475 \times 10^{37}$ kg |
 | SMBH influence radius | $r_\text{BH}$ | $1.496 \times 10^{11}$ m (1 AU) |
 | SN Ia ejecta mass | $M_\text{SN0}$ | $1.4 \, M_\odot = 2.785 \times 10^{30}$ kg (Chandrasekhar) |
-| SN decay timescale | $\tau_\text{SN}$ | 1 yr $= 3.156 \times 10^7$ s |
+| SN decay timescale | $\tau_text{SN}$ | 1 yr $= 3.156 \times 10^7$ s |
 | Magnetic field | $B$ | $10^{-5}$ T |
 
 ---
@@ -40,7 +55,7 @@ PAPER_438 delivers the **complete per-system MUGE** for NGC 2525 — a barred sp
 ## 3. Time-Dependent Functions
 
 **SN mass loss:**
-$$M_\text{SN}(t) = 1.4 \, M_\odot \, e^{-t/\tau_\text{SN}} = 2.785 \times 10^{30} \, e^{-t/3.156 \times 10^7} \text{ kg}$$
+$$M_\text{SN}(t) = 1.4 \, M_\odot \, e^{-t/\tau_text{SN}} = 2.785 \times 10^{30} \, e^{-t/3.156 \times 10^7} \text{ kg}$$
 
 At $t=0$: $M_\text{SN} = 1.4 \, M_\odot$ (SN peak — Chandrasekhar-mass progenitor)  
 At $t=1$ yr: $M_\text{SN} = 0.515 \, M_\odot$ (ejecta dispersed at 1/e)  
@@ -61,21 +76,21 @@ $$\boxed{T_\text{BH} = \frac{GM_\text{BH}}{r_\text{BH}^2} = \frac{6.674\times10^
 **T2 — UQFF Ug with f_TRZ:**
 $$T_2 = 2 \times 1.65\times10^{-11} \times 1.1 \approx 3.63\times10^{-11} \, \text{m/s}^2$$
 
-**T3 — Λ:** $\sim 3.3\times10^{-36}$ m/s² (negligible)
+**T3 — Λ:** $\sim 3.3\times10^{-36}$ m/s2 (negligible)
 
 **T4 — Quantum:** negligible
 
-**T5 — Scaled EM:** $\sim 10^{-24}$ m/s² (negligible)
+**T5 — Scaled EM:** $\sim 10^{-24}$ m/s2 (negligible)
 
 **T6 — Fluid:** minor
 
 **T7 — Oscillatory spiral arm modes:** minor (oscillatory density waves)
 
 **T8 — DM perturbation:**
-$$T_8 \approx \frac{(M + 0.1M)\delta\rho/\rho + 3GM/r^3}{M} \sim 10^{-11} \, \text{m/s}^2$$
+$$T_8 \approx \frac{(M + 0.1M)\deltarho/\rho + 3GM/r^3}{M} \sim 10^{-11} \, \text{m/s}^2$$
 
 **T_SN — SN Ia mass loss (negative term):**
-$$\boxed{T_\text{SN}(t) = -\frac{GM_\text{SN}(t)}{r^2} = -\frac{6.674\times10^{-11} \times 2.785\times10^{30}}{(2.836\times10^{20})^2} \times e^{-t/\tau_\text{SN}} \approx -2.31\times10^{-21} \, e^{-t/\tau} \, \text{m/s}^2}$$
+$$\boxed{T_\text{SN}(t) = -\frac{GM_\text{SN}(t)}{r^2} = -\frac{6.674\times10^{-11} \times 2.785\times10^{30}}{(2.836\times10^{20})^2} \times e^{-t/\tau_text{SN}} \approx -2.31\times10^{-21} \, e^{-t/\tau} \, \text{m/s}^2}$$
 
 The SN term is $\sim 10^{10}$ times smaller than the galaxy self-gravity — negligible at galaxy scale but **observable at the SN remnant radius** ($r \sim 1$ pc where $T_\text{SN} \gg T_{1}$).
 
@@ -85,7 +100,7 @@ The SN term is $\sim 10^{10}$ times smaller than the galaxy self-gravity — neg
 
 At $t = 0$, $r = r_\text{galaxy} = 2.836 \times 10^{20}$ m:
 
-| Term | Value (m/s²) | Notes |
+| Term | Value (m/s2) | Notes |
 |------|-------------|-------|
 | $T_\text{BH}$ | $+1.334 \times 10^5$ | Dominant (at $r_\text{BH} = 1$ AU) |
 | $T_2$ UQFF Ug | $+3.63 \times 10^{-11}$ | Primary at galaxy scale |
@@ -103,7 +118,7 @@ $$g_\text{N2525}^\text{galaxy} \approx 3.63\times10^{-11} \, \text{m/s}^2 \quad 
 
 | Prior Paper | System | Overlap | New in PAPER_438 |
 |-------------|--------|---------|-----------------|
-| PAPER_383 | NGC 2525 tail $\Delta_\text{N2525}$ | 2-line summary | Full 10-term + SN term derivation |
+| PAPER_383 | NGC 2525 tail $\Delta_text{N2525}$ | 2-line summary | Full 10-term + SN term derivation |
 | PAPER_422 | System 10: NGC 2525 tail | Brief | Complete numerical evaluation |
 | None | SN Ia $T_\text{SN} = -GM_\text{SN}/r^2$ | N/A | **First UQFF SN mass-loss term** |
 
@@ -121,13 +136,15 @@ SM galactic dynamics ignore individual SN mass loss ($1.4 M_\odot$ vs $M_\text{g
 
 ### §A.1 Sector Classification
 
-This paper maps to **BH-gravity** sector of the 9-sector UQFF Lagrangian (see `uqff_lagrangian_derivation.py`).
+This paper maps to **BH-gravity** sector of the 9-sector UQFF Lagrangian (see
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
-The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive quantum fundamentals (DPM, UA, SCm):
+The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
+quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_\mu \phi_{\rm BH})(\partial^\mu \phi_{\rm BH}) - V(\phi_{\rm BH}) + \mathcal{L}_{\rm cosmo}$$
+$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_mu \phi_{\rm BH})(\partial^\mu \phi_{\rm BH}) - V(\phi_{\rm BH}) + \mathcal{L}_{\rm cosmo}$$
 
 where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
@@ -141,7 +158,9 @@ $$\boxed{\frac{\delta S}{\delta \phi_{\rm BH}} = R_{\mu\nu} - \tfrac{1}{2}g_{\mu
 
 $$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\rm BH} = 0$$
 
-The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g forces) through vacuum density initialization to the sector-specific equation of motion. Every term in the E-L equation inherits its physical origin from the cosmogenesis master.
+The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
+forces) through vacuum density initialization to the sector-specific equation of motion. Every term
+in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 
 ---
@@ -152,9 +171,9 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.112$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m³.
+For this system, the local VDS sub-ratio is $0.112$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -166,13 +185,13 @@ Since $p_{\rm DVP} = 67$ is **resonant** (threshold at $p > 26$), the system's v
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
-The BSH saturation timescale for this sector is **10⁶ M_BH/M_⊙ yr** (quasi-normal mode ringdown):
+The BSH saturation timescale for this sector is **106 M_BH/M_M_sun yr** (quasi-normal mode ringdown):
 
-$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
+$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\rm SCm}$ which initializes the harmonic series at cosmogenesis.
 
@@ -180,11 +199,11 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.112 | ✓ Threshold-consistent |
-| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 67$ | ✓ Resonant |
-| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
-| [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
+| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.112 | PASS Threshold-consistent |
+| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 67$ | PASS Resonant |
+| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
+| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
 ---
@@ -194,12 +213,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Thomson σ_T (QED synchrotron) | UQFF U_m scattering kernel: σ_T = 6.6524e-29 m² | σ_T = 6.6524e-29 m² (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
-| NGC 2525 SN Host luminosity Optical + X-ray | UQFF MUGE g_total → L_X via Stefan-Boltzmann + buoyancy flux: L_X ≈ g_total × M_env | L_X SN M_V ~ -19 mag | HST + Chandra | ✓ Consistent order of magnitude |
-| GR Schwarzschild limit | UQFF g_total must satisfy g ≤ c²/(2r_s) at event horizon | r_s = 2GM/c² (GR exact) | PDG 2024 / GR | ✓ UQFF respects GR horizon |
+| Thomson σ_T (QED synchrotron) | UQFF U_m scattering kernel: σ_T = 6.6524e-29 m2 | σ_T = 6.6524e-29 m2 (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
+| NGC 2525 SN Host luminosity Optical + X-ray | UQFF MUGE g_total → L_X via Stefan-Boltzmann + buoyancy flux: L_X ≈ g_total × M_env | L_X SN M_V ~ -19 mag | HST + Chandra | PASS Consistent order of magnitude |
+| GR Schwarzschild limit | UQFF g_total must satisfy g ≤ c2/(2r_s) at event horizon | r_s = 2GM/c2 (GR exact) | PDG 2024 / GR | PASS UQFF respects GR horizon |
 | κ vacuum rate vs X-ray variability | UQFF κ = 0.0005/day → timescale τ_UQFF = 2000 days | Observed X-ray variability τ_obs (instrument monitoring) | HST + Chandra | Testable UQFF variability timescale |
 
-**New physics claim:** UQFF MUGE generates gravity enhancement factors (g_total/g_Newt > 1) for NGC 2525 SN Host
+**New physics claim:** UQFF MUGE generates gravity enhancement factors (g_total/g_Newt > 1) for NGC
+2525 SN Host
 through vacuum buoyancy coupling — a mechanism absent from GR+SM. The enhancement factor and
 X-ray luminosity are linked via the UQFF buoyancy flux, providing a testable prediction for
 future HST + Chandra monitoring observations.
@@ -212,9 +232,9 @@ future HST + Chandra monitoring observations.
 
 **Q5 Prediction 1:** $M_\text{SN}(t) = 1.4 M_\odot  e^{-t/1\text{ yr}}$ predicts that by day 365 after SN 2018gv maximum, the SN Ia ejecta mass contributing to the gravitational term has decayed to $0.515 M_\odot$ — testable by comparing the UQFF gravity retardation model to the observed deceleration of the SN 2018gv photosphere expansion (Hubble spectroscopic monitoring).
 
-**Q5 Prediction 2:** The SMBH proximity term $T_\text{BH} = GM_\text{BH}/r_\text{BH}^2 \approx 1.334 \times 10^5$ m/s² at $r_\text{BH} = 1$ AU predicts a stellar velocity dispersion at $r < r_\text{BH}$ scaling as $v \propto \sqrt{T_\text{BH} \times r_\text{BH}} \approx 4.2 \times 10^3$ m/s $= 4.2$ km/s — consistent with the NGC 2525 SMBH mass scaling relation ($\sigma$-$M_\text{BH}$) for a $10^7 M_\odot$ black hole.
+**Q5 Prediction 2:** The SMBH proximity term $T_\text{BH} = GM_\text{BH}/r_\text{BH}^2 \approx 1.334 \times 10^5$ m/s2 at $r_\text{BH} = 1$ AU predicts a stellar velocity dispersion at $r < r_\text{BH}$ scaling as $v \propto \sqrt{T_\text{BH} \times r_\text{BH}} \approx 4.2 \times 10^3$ m/s $= 4.2$ km/s — consistent with the NGC 2525 SMBH mass scaling relation ($\sigma$-$M_\text{BH}$) for a $10^7 M_\odot$ black hole.
 
-**Q5 Prediction 3:** The UQFF $f_\text{TRZ} = 0.1$ factor predicts a 10% periodic oscillation in the galaxy rotation curve at $\omega_\text{TRZ} = v_\text{gas}/(r) \sim 10^{-16}$ rad/s — a very slow pattern speed observable as a $\sim10\%$ arm-to-interarm density contrast in deep HI 21-cm mapping of NGC 2525.
+**Q5 Prediction 3:** The UQFF $f_\text{TRZ} = 0.1$ factor predicts a 10% periodic oscillation in the galaxy rotation curve at $\omega_text{TRZ} = v_\text{gas}/(r) \sim 10^{-16}$ rad/s — a very slow pattern speed observable as a $\sim10%$ arm-to-interarm density contrast in deep HI 21-cm mapping of NGC 2525.
 
 
 ---
@@ -229,9 +249,9 @@ future HST + Chandra monitoring observations.
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `f`neutron_s26_coupling`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `k`ozima_scm_cross_section`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `k`ozima_wstp_kernel`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -240,7 +260,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `r`amanujan_polylog_s26`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
 | `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
@@ -249,7 +269,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `m`ock_theta_q26`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -260,8 +280,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `r`amanujan_pi_uqff`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `m`ock_theta_pi_wstp_kernel`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]

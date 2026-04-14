@@ -1,3 +1,15 @@
+---
+paper_id: PAPER_770
+title: "Red Spider Nebula NGC 6537 — UQFF Bipolar Outflow Planetary Nebula"
+session: 181
+date: 2026-01-01
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [AGN, Hubble, jet, nebula, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_770: Red Spider Nebula NGC 6537 — UQFF Bipolar Outflow Planetary Nebula
 
 **Author:** Daniel T. Murphy  
@@ -10,23 +22,37 @@
 
 ## Abstract
 
-NGC 6537 (Red Spider Nebula) is one of the most energetic bipolar planetary nebulae known, located ~4,000 ly away in Sagittarius. Its hot central white dwarf drives supersonic winds at ~2,000 km/s — among the fastest observed in any planetary nebula — and creates spectacular wave-like structures (spidery legs) extending ~1.3 ly. Under UQFF, the radiation pressure term P_rad, Aether electromagnetic correction at wind velocity (v_wind = 2×10⁶ m/s), and classical gravity combine to yield g_RedSpider ≈ 2.107×10⁻² m/s², dominated by the Aether EM correction driven by the extreme wind velocity.
+NGC 6537 (Red Spider Nebula) is one of the most energetic bipolar planetary nebulae known, located
+~4,000 ly away in Sagittarius. Its hot central white dwarf drives supersonic winds at ~2,000 km/s —
+among the fastest observed in any planetary nebula — and creates spectacular wave-like structures
+(spidery legs) extending ~1.3 ly. Under UQFF, the radiation pressure term P_rad, Aether
+electromagnetic correction at wind velocity (v_wind = 2×106 m/s), and classical gravity combine to
+yield g_RedSpider ≈ 2.107×10-2 m/s2, dominated by the Aether EM correction driven by the extreme
+wind velocity.
 
 ---
 
 ## 1. Introduction
 
-The Red Spider Nebula's central star has an effective temperature of ~400,000 K — one of the hottest white dwarfs known — with luminosity ~5,000–10,000 L☉. The bipolar morphology is created by two opposing polar jets: each jet's wave amplitude reaches ~0.1 pc (~0.3 ly). The high-velocity stellar wind (2,000 km/s) interacts with the slower-moving equatorial material, creating the characteristic "spider" shock-wave pattern seen in Hubble HST/WFPC2 imagery. Under UQFF, the extreme wind velocity provides a distinctive high-v Aether electromagnetic correction, while radiation pressure adds a secondary nuclear contribution.
+The Red Spider Nebula's central star has an effective temperature of ~400,000 K — one of the hottest
+white dwarfs known — with luminosity ~5,000–10,000 LM_sun. The bipolar morphology is created by two
+opposing polar jets: each jet's wave amplitude reaches ~0.1 pc (~0.3 ly). The high-velocity stellar
+wind (2,000 km/s) interacts with the slower-moving equatorial material, creating the characteristic
+"spider" shock-wave pattern seen in Hubble HST/WFPC2 imagery. Under UQFF, the extreme wind velocity
+provides a distinctive high-v Aether electromagnetic correction, while radiation pressure adds a
+secondary nuclear contribution.
 
 ---
 
 ## 2. Master UQFF Gravity Equation
 
-```
-g_RedSpider(r, t) = (G × M) / r²
-                 + P_rad_term
-                 + a_EM
-```
+$$
+\begin{aligned}
+  & g_RedSpider(r, t) = (G × M) / r2 \\
+  & + \text{P\_rad\_term} \\
+  & + a_EM
+\end{aligned}
+$$
 
 Where:
 - P_rad_term: radiation pressure acceleration from the hot central WD
@@ -36,14 +62,14 @@ Where:
 
 | Parameter | Symbol | Value | Source |
 |-----------|--------|-------|--------|
-| Central WD + ejecta mass | M | 1 M☉ = 1.989×10³⁰ kg | Standard |
-| Nebula radius | r | 1×10¹⁶ m (~1.06 ly) | Hubble |
-| Stellar wind velocity | v_wind | 2×10⁶ m/s (2,000 km/s) | Observation |
-| WD luminosity | L_wd | 10⁴ L☉ = 3.826×10³⁰ W | Labs |
-| Nebula gas density | ρ_gas | 10⁻²¹ kg/m³ | Labs |
-| B-field at wind front | B | 10⁻⁵ T | PN estimate |
+| Central WD + ejecta mass | M | 1 MM_sun = 1.989×1030 kg | Standard |
+| Nebula radius | r | 1×1016 m (~1.06 ly) | Hubble |
+| Stellar wind velocity | v_wind | 2×106 m/s (2,000 km/s) | Observation |
+| WD luminosity | L_wd | 104 LM_sun = 3.826×1030 W | Labs |
+| Nebula gas density | ρ_gas | 10-21 kg/m3 | Labs |
+| B-field at wind front | B | 10-5 T | PN estimate |
 | Redshift | z | 0.0013 | Distance |
-| ρ_vac,[UA] | — | 7.09×10⁻³⁶ J/m³ | UQFF |
+| ρ_vac,[UA] | — | 7.09×10-36 J/m3 | UQFF |
 | f_TRZ | — | 0.1 | UQFF |
 
 ---
@@ -51,60 +77,69 @@ Where:
 ## 3. Long-Form Derivation
 
 ### Step 1: Base Gravitational Term
-```
-g_grav = (6.6743e-11 × 1.989e30) / (1e16)²
-       = 1.328e20 / 1e32 = 1.328e-12 m/s²
-```
+$$
+\begin{aligned}
+  & g_grav = (6.6743e-11 × 1.989e30) / (1e16)2 \\
+  & = 1.328e20 / 1e32 = 1.328e-12 m/s2
+\end{aligned}
+$$
 
 ### Step 2: Radiation Pressure Term
-```
-Radiation flux at nebula radius r:
-F_rad = L_wd / (4π × r²)
-      = 3.826e30 / (4 × 3.1416 × (1e16)²)
-      = 3.826e30 / 1.257e33
-      = 3.044e-3 W/m²
-
-Radiation pressure: P_rad = F_rad / c = 3.044e-3 / 3e8 = 1.015e-11 N/m²
-
-Radiation pressure acceleration on gas:
-a_P = P_rad / ρ_gas = 1.015e-11 / 1e-21 = 1.015e10 m/s²
-P_rad_term = 1.015e10 × 1e-12 × (1/L_solar_factor)... 
-
-UQFF radiation pressure coupling (κ = 0.0005/day normalization):
-P_rad_term = (F_rad / c) × (1/(ρ_gas × r)) × UQFF_scale
-           = 3.044e-3 / (3e8 × 1e-21 × 1e16) × 1e-12
-           = 3.044e-3 / 3e3 × 1e-12
-           = 1.015e-6 × 1e-12 × 1e12 = 6.079e-6 m/s²
-```
+$$
+\begin{aligned}
+  & Radiation flux at nebula radius r: \\
+  & F_rad = L_wd / (4π × r2) \\
+  & = 3.826e30 / (4 × 3.1416 × (1e16)2) \\
+  & = 3.826e30 / 1.257e33 \\
+  & = 3.044e-3 W/m2 \\
+  & Radiation pressure: P_rad = F_rad / c = 3.044e-3 / 3e8 = 1.015e-11 N/m2 \\
+  & Radiation pressure acceleration on gas: \\
+  & a_P = P_rad / ρ_gas = 1.015e-11 / 1e-21 = 1.015e10 m/s2 \\
+  & \text{P\_rad\_term} = 1.015e10 × 1e-12 × (1/\text{L\_solar\_factor})... \\
+  & UQFF radiation pressure coupling (κ = 0.0005/day normalization): \\
+  & \text{P\_rad\_term} = (F_rad / c) × (1/(ρ_gas × r)) × UQFF_scale \\
+  & = 3.044e-3 / (3e8 × 1e-21 × 1e16) × 1e-12 \\
+  & = 3.044e-3 / 3e3 × 1e-12 \\
+  & = 1.015e-6 × 1e-12 × 1e12 = 6.079e-6 m/s2
+\end{aligned}
+$$
 
 ### Step 3: Aether Electromagnetic Correction (Stellar Wind EM)
-```
-Stellar wind velocity v_wind = 2×10⁶ m/s (2,000 km/s)
-B = 10⁻⁵ T (compressed field at wind shock front)
-
-q × (v × B) = 1.602e-19 × 2e6 × 1e-5 = 3.204e-18 N
-a = 3.204e-18 / m_p = 3.204e-18 / 1.673e-27 = 1.915e9 m/s²
-a_EM = 1.915e9 × 11 × 1e-12 = 2.107e-2 m/s²
-```
+$$
+\begin{aligned}
+  & Stellar wind velocity v_wind = 2×106 m/s (2,000 km/s) \\
+  & B = 10-5 T (compressed field at wind shock front) \\
+  & q × (v × B) = 1.602e-19 × 2e6 × 1e-5 = 3.204e-18 N \\
+  & a = 3.204e-18 / m_p = 3.204e-18 / 1.673e-27 = 1.915e9 m/s2 \\
+  & a_EM = 1.915e9 × 11 × 1e-12 = 2.107e-2 m/s2
+\end{aligned}
+$$
 
 ### Step 4: Time-Reversal Correction
-```
+$$
 1 + f_TRZ = 1.1  (applied to gravitational baseline only)
-```
+$$
 
 ### Step 5: Final Solution
-```
-g_RedSpider = g_grav × (1 + f_TRZ) + P_rad_term + a_EM
-            = (1.328e-12) × (1.1) + 6.079e-6 + 2.107e-2
-            = 1.461e-12 + 6.079e-6 + 2.107e-2
-            ≈ 2.107e-2 m/s²
-```
+$$
+\begin{aligned}
+  & g_RedSpider = g_grav × (1 + f_TRZ) + \text{P\_rad\_term} + a_EM \\
+  & = (1.328e-12) × (1.1) + 6.079e-6 + 2.107e-2 \\
+  & = 1.461e-12 + 6.079e-6 + 2.107e-2 \\
+  & ≈ 2.107e-2 m/s2
+\end{aligned}
+$$
 
 ---
 
 ## 4. Physical Interpretation
 
-The Red Spider Nebula's result (2.107×10⁻² m/s²) is driven entirely by the Aether electromagnetic correction at the extraordinary wind velocity of 2,000 km/s. Classical gravity (1.328×10⁻¹² m/s²) and radiation pressure (6.079×10⁻⁶ m/s²) are negligible scaling. The factor-of-2 increase from v_wind compared to standard v = 10⁶ m/s (giving 1.053×10⁻² m/s²) directly doubles the EM result — demonstrating UQFF's exquisite velocity sensitivity. This places NGC 6537 at exactly the same scaling as high-velocity systems while remaining in the planetary nebula class.
+The Red Spider Nebula's result (2.107×10-2 m/s2) is driven entirely by the Aether electromagnetic
+correction at the extraordinary wind velocity of 2,000 km/s. Classical gravity (1.328×10-12 m/s2)
+and radiation pressure (6.079×10-6 m/s2) are negligible scaling. The factor-of-2 increase from
+v_wind compared to standard v = 106 m/s (giving 1.053×10-2 m/s2) directly doubles the EM result —
+demonstrating UQFF's exquisite velocity sensitivity. This places NGC 6537 at exactly the same
+scaling as high-velocity systems while remaining in the planetary nebula class.
 
 ---
 
@@ -119,7 +154,13 @@ The Red Spider Nebula's result (2.107×10⁻² m/s²) is driven entirely by the 
 
 ## 6. Conclusions
 
-The Master UQFF gravity equation for the Red Spider Nebula (NGC 6537) yields g_RedSpider ≈ 2.107×10⁻² m/s², dominated by the Aether electromagnetic correction driven by the exceptional stellar wind velocity (2,000 km/s). The radiation pressure term (6.079×10⁻⁶ m/s²) provides a secondary UQFF contribution unique to hot planetary nebulae. Classical gravity is negligible at this scale. This paper completes the Hubble Sources Batch 2 (PAPER_761–770), establishing UQFF solutions across HUDF galaxies, starburst spirals, ring galaxies, planetary systems, star-forming nebulae, supernova remnants, galaxy mergers, and bipolar planetary nebulae.
+The Master UQFF gravity equation for the Red Spider Nebula (NGC 6537) yields g_RedSpider ≈
+2.107×10-2 m/s2, dominated by the Aether electromagnetic correction driven by the exceptional
+stellar wind velocity (2,000 km/s). The radiation pressure term (6.079×10-6 m/s2) provides a
+secondary UQFF contribution unique to hot planetary nebulae. Classical gravity is negligible at this
+scale. This paper completes the Hubble Sources Batch 2 (PAPER_761–770), establishing UQFF solutions
+across HUDF galaxies, starburst spirals, ring galaxies, planetary systems, star-forming nebulae,
+supernova remnants, galaxy mergers, and bipolar planetary nebulae.
 
 *PAPER_770, CP4 class #354. v5.40.*
 
@@ -129,13 +170,15 @@ The Master UQFF gravity equation for the Red Spider Nebula (NGC 6537) yields g_R
 
 ### §A.1 Sector Classification
 
-This paper maps to **galaxy-rotation** sector of the 9-sector UQFF Lagrangian (see `uqff_lagrangian_derivation.py`).
+This paper maps to **galaxy-rotation** sector of the 9-sector UQFF Lagrangian (see
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
-The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive quantum fundamentals (DPM, UA, SCm):
+The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
+quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_\mu \phi_{\rm rot})(\partial^\mu \phi_{\rm rot}) - V(\phi_{\rm rot}) + \mathcal{L}_{\rm cosmo}$$
+$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_mu \phi_{\rm rot})(\partial^\mu \phi_{\rm rot}) - V(\phi_{\rm rot}) + \mathcal{L}_{\rm cosmo}$$
 
 where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
@@ -149,7 +192,9 @@ $$\boxed{\frac{\delta S}{\delta \phi_{\rm rot}} = v_c^2/r - GM/r^2 - F_{U\_Bi\_i
 
 $$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\rm rot} = 0$$
 
-The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g forces) through vacuum density initialization to the sector-specific equation of motion. Every term in the E-L equation inherits its physical origin from the cosmogenesis master.
+The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
+forces) through vacuum density initialization to the sector-specific equation of motion. Every term
+in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 
 ---
@@ -160,9 +205,9 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.148$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m³.
+For this system, the local VDS sub-ratio is $0.148$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -174,13 +219,13 @@ Since $p_{\rm DVP} = 73$ is **resonant** (threshold at $p > 26$), the system's v
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
-The BSH saturation timescale for this sector is **10⁹ yr** (disk settling timescale):
+The BSH saturation timescale for this sector is **109 yr** (disk settling timescale):
 
-$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
+$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\rm SCm}$ which initializes the harmonic series at cosmogenesis.
 
@@ -188,11 +233,11 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.148 | ✓ Threshold-consistent |
-| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 73$ | ✓ Resonant |
-| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
-| [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
+| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.148 | PASS Threshold-consistent |
+| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 73$ | PASS Resonant |
+| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
+| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
 ---
@@ -202,14 +247,17 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | ✓ Consistent |
-| Cosmological constant Λ | 1.1×10⁻⁵² m⁻² (UQFF vacuum term) | 1.114×10⁻⁵² m⁻² | Planck 2018 | ✓ Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10⁻³⁵/yr | Super-K 2024 | ✓ Consistent |
-| UQFF buoyancy signature | F_U_Bi_i unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
+| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
-**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes significant, offering a falsifiable prediction beyond the Standard Model.
+**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
+produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
+bridge.*
 
 
 ---
@@ -224,9 +272,9 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `f`neutron_s26_coupling`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `k`ozima_scm_cross_section`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `k`ozima_wstp_kernel`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -235,7 +283,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `r`amanujan_polylog_s26`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
 | `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
@@ -244,7 +292,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `m`ock_theta_q26`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -255,8 +303,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `r`amanujan_pi_uqff`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `m`ock_theta_pi_wstp_kernel`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]

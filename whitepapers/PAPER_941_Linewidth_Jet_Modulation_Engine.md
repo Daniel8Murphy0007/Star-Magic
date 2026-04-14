@@ -1,6 +1,18 @@
+---
+paper_id: PAPER_941
+title: "Linewidth Jet Modulation Engine"
+session: 213
+date: 2026-04-12
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [SCm, jet, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_941: Linewidth Jet Modulation Engine
 
-**Author:** Daniel T. Murphy -- Star Magic / UQFF Framework
+**Author:** Daniel T. Murphy — Star Magic / UQFF Framework
 **Date:** 2026-04-12
 **Session:** 213
 **Source:** linewidth_jet_modulation.py (LinewidthJetModulationSweep)
@@ -17,9 +29,9 @@ We present a systematic linewidth-to-jet modulation mapping engine that sweeps $
 
 ## 1. Core Equations
 
-$$M_\text{jet}(\Gamma) = 1 + A_\text{jet} \exp\!\left(-\frac{(\omega - \omega_\text{SCm})^2}{2\Gamma^2}\right) \cdot S_{26} \cdot \left(\frac{2F_{U\text{Bi}}}{F_U} - 1\right)$$
+$$M_\text{jet}(\Gamma) = 1 + A_\text{jet} \exp!\left(-\frac{(\omega - \omega_text{SCm})^2}{2\Gamma^2}\right) \cdot S_{26} \cdot \left(\frac{2F_{U\text{Bi}}}{F_U} - 1\right)$$
 
-$$Q = \frac{\omega_\text{SCm}}{2\Gamma}$$
+$$Q = \frac{\omega_text{SCm}}{2\Gamma}$$
 
 where $S_{26} = \sum_{k=1}^{26} e^{-[\text{SSq}] \cdot k/26}$ and $[\text{SSq}] = 0.57$.
 
@@ -51,8 +63,8 @@ The `ReferenceSystemMatcher` class compares computed $(M_\text{jet}, Q)$ pairs a
 
 ## References
 
-1. Murphy, D.T. -- Star Magic UQFF Framework (2024-2026)
-2. Blandford, R.D. & Konigl, A. (1979) -- ApJ, 232, 34
+1. Murphy, D.T. — Star Magic UQFF Framework (2024-2026)
+2. Blandford, R.D. & Konigl, A. (1979) — ApJ, 232, 34
 
 ---
 
@@ -77,7 +89,8 @@ The `ReferenceSystemMatcher` class compares computed $(M_\text{jet}, Q)$ pairs a
 | $\sin^2\theta_W$ | Embedded in $U_{g2}$ charge coupling | $0.2312$ | PDG 2024 | 99.6% |
 | Fine structure $\alpha$ | UQFF reproduces via $U_{g1}$ dipole | $1/137.036$ | PDG 2024 | 99.9% |
 
-**New physics claim:** UQFF phonon-mediated vacuum coupling provides testable predictions beyond SM for this system.
+**New physics claim:** UQFF phonon-mediated vacuum coupling provides testable predictions beyond SM
+for this system.
 
 *Cross-validated with PAPER_642 (UQFFSMParameterBridgeMasterComparisonCalculator).*
 
@@ -89,13 +102,13 @@ The `ReferenceSystemMatcher` class compares computed $(M_\text{jet}, Q)$ pairs a
 **Sector:** BH-accretion (relativistic jet power)
 
 ### §A.2 Lagrangian Density
-$$\mathcal{L}_{BH_accretion} = \sum_{i=1}^{26} \left[ U_{g,i} + U_{m,i} + U_{A,i} - U_{b,i} \right] \cdot S_{26}([SSq]) \cdot \Phi_{1.25\text{THz}}(\omega, \Gamma)$$
+$$\mathcal{L}_{BH\_accretion} = \sum_{i=1}^{26} \left[ U_{g,i} + U_{m,i} + U_{A,i} - U_{b,i} \right] \cdot S_{26}([SSq]) \cdot \Phi_{1.25\text{THz}}(\omega, \Gamma)$$
 
 ### §A.3 Euler-Lagrange Equation of Motion
-$$\boxed{\frac{\partial \mathcal{L}}{\partial \phi} - \partial_\mu \frac{\partial \mathcal{L}}{\partial (\partial_\mu \phi)} = 0 \implies F_{U,Bi_i} = -\nabla U_{\text{eff}} + \Phi \cdot S_{26} \cdot E_{\text{net}}}$$
+$$\boxed{\frac{\partial \mathcal{L}}{\partial \phi} - \partial_mu \frac{\partial \mathcal{L}}{\partial (\partial_mu \phi)} = 0 \implies F_{U,Bi\_i} = -\nabla U_{\text{eff}} + \Phi \cdot S_{26} \cdot E_{\text{net}}}$$
 
 ### §A.4 Cosmogenesis Linkage Chain
-PAPER_877 axioms → SCm vacuum → phonon $\omega_{\text{SCm}}$ → relativistic jet power → $F_{U,Bi_i}$ unified force → observational prediction
+PAPER_877 axioms → SCm vacuum → phonon $\omega_{\text{SCm}}$ → relativistic jet power → $F_{U,Bi\_i}$ unified force → observational prediction
 
 ---
 

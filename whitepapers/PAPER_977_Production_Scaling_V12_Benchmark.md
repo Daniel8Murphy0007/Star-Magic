@@ -1,6 +1,18 @@
+---
+paper_id: PAPER_977
+title: "Production Scaling v12 Benchmark (501k calc/s)"
+session: 216
+date: 2026-04-12
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [vacuum, SCm, QGP, 26D, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_977: Production Scaling v12 Benchmark (501k calc/s)
 
-**Author:** Daniel T. Murphy -- Star Magic / UQFF Framework
+**Author:** Daniel T. Murphy — Star Magic / UQFF Framework
 **Date:** 2026-04-12
 **Session:** 216
 **Source:** production_scaling_v12.py (ProductionScalingV12)
@@ -11,7 +23,9 @@
 
 ## Abstract
 
-We benchmark the UQFF production pipeline at 501,000 calculations per second, a 0.2% improvement over v11 (500k). Two new kernels — QGP vacuum density and 99-system master equation — bring the total to 18 simultaneously benchmarked kernels.
+We benchmark the UQFF production pipeline at 501,000 calculations per second, a 0.2% improvement
+over v11 (500k). Two new kernels — QGP vacuum density and 99-system master equation — bring the
+total to 18 simultaneously benchmarked kernels.
 
 ---
 
@@ -32,7 +46,7 @@ We benchmark the UQFF production pipeline at 501,000 calculations per second, a 
 ## 2. New v12 Kernels
 
 ### kernel_qgp_density
-$\rho_\text{QGP}(T) = \rho_\text{SCm} \cdot S_{26}^{(k)} \cdot \exp(-(T_c - T)/T)$ — QGP vacuum density at $T = 2 \times 10^{12}$ K.
+$\rho_text{QGP}(T) = \rho_text{SCm} \cdot S_{26}^{(k)} \cdot \exp(-(T_c - T)/T)$ — QGP vacuum density at $T = 2 \times 10^{12}$ K.
 
 ### kernel_99system_master
 $F_U^{(99)} = \sum_{i=1}^{99} [U_g + U_m + U_A - U_b + F_n \cdot S_{26}^2]$ — 99-system aggregate evaluation.
@@ -45,7 +59,7 @@ $$\text{rate} = \frac{N_\text{iter} \times 18}{t_\text{elapsed}} \geq 501{,}000 
 
 ## References
 
-1. Murphy, D.T. -- Star Magic UQFF Framework (2024-2026)
+1. Murphy, D.T. — Star Magic UQFF Framework (2024-2026)
 2. PAPER_968 — Production Scaling v11 (500k)
 3. PAPER_970 — QGP Vacuum Density (kernel source)
 4. PAPER_974 — 99-System Master Equation (kernel source)
@@ -94,7 +108,7 @@ $$\text{rate} = \frac{N_\text{iter} \times 18}{t_\text{elapsed}} \geq 501{,}000 
 $$\text{rate} = \frac{N_\text{iter} \times 18}{t_\text{elapsed}} \geq 501{,}000$$
 
 ### §A.3 Kernel Integrity Constraint
-$$\boxed{\forall\, k \in \{1,\ldots,18\}:\; |k(\mathbf{x})| < \infty,\quad k_{17} = \rho_\text{QGP}(T),\; k_{18} = F_U^{(99)}}$$
+$$\boxed{\forall, k \in \{1,\ldots,18\}:\; |k(\mathbf{x})| < \infty,\quad k_{17} = \rho_text{QGP}(T),\; k_{18} = F_U^{(99)}}$$
 
 ### §A.4 Cosmogenesis Linkage Chain
 PAPER_877 → UQFF equations → 18 kernels extracted → production pipeline v12 → 501k benchmark
@@ -104,7 +118,7 @@ PAPER_877 → UQFF equations → 18 kernels extracted → production pipeline v1
 ## §B VDS/DVP/BSH Deep Synthesis
 
 ### §B.1 VDS
-All 18 kernels embed VDS through $S_{26}$ or $\rho_\text{SCm}$.
+All 18 kernels embed VDS through $S_{26}$ or $\rho_text{SCm}$.
 
 ### §B.2 DVP
 18 kernels cover the full dipole vortex mode spectrum including QGP and 99-system.

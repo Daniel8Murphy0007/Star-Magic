@@ -1,26 +1,45 @@
-# PAPER_742: Sombrero Galaxy MUGE -- Dust Lane Drag Term D_dust
+---
+paper_id: PAPER_742
+title: "Sombrero Galaxy MUGE -- Dust Lane Drag Term D_dust"
+session: 180
+date: 2025-01-01
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [galaxy, Hubble, MUGE, SMBH, black-hole, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
+# PAPER_742: Sombrero Galaxy MUGE — Dust Lane Drag Term D_dust
 
 **Author:** Daniel T. Murphy  
 **Framework:** Universal Quantum Field Superconductive Framework (UQFF)  
 **Session:** 180 continuation | v5.38  
 **Date:** 2025  
-**CP4 Class:** #326 -- SombreroGalaxyDustMUGECalculator  
+**CP4 Class:** #326 — SombreroGalaxyDustMUGECalculator  
 
 ---
 
 ## Abstract
 
-The Sombrero Galaxy (M104) presents a unique astrophysical challenge: its prominent equatorial dust lane exerts measurable drag on bulge dynamics and star formation near the central black hole (~10^9 M☉). This paper derives the MUGE for the Sombrero Galaxy incorporating the new D_dust environmental term, extending the standard UQFF formalism to include optically thick dust lane physics via the F_env operator.
+The Sombrero Galaxy (M104) presents a unique astrophysical challenge: its prominent equatorial dust
+lane exerts measurable drag on bulge dynamics and star formation near the central black hole (~10^9
+MM_sun). This paper derives the MUGE for the Sombrero Galaxy incorporating the new D_dust environmental
+term, extending the standard UQFF formalism to include optically thick dust lane physics via the
+F_env operator.
 
 ---
 
 ## 1. Introduction
 
-M104 (NGC 4594), the Sombrero Galaxy, is a lenticular/Sa galaxy at 28 Mpc with one of the most prominent dust lanes in the local universe. Its structure features a massive bulge, a flat disk embedded in dust, and a 10^9 M☉ SMBH. The dust lane creates a unique gravitational environment where extinction, drag forces, and angular momentum exchange compete with bulge and halo dynamics.
+M104 (NGC 4594), the Sombrero Galaxy, is a lenticular/Sa galaxy at 28 Mpc with one of the most
+prominent dust lanes in the local universe. Its structure features a massive bulge, a flat disk
+embedded in dust, and a 10^9 MM_sun SMBH. The dust lane creates a unique gravitational environment where
+extinction, drag forces, and angular momentum exchange compete with bulge and halo dynamics.
 
 **Hubble parameters for M104:**
-- M_visible ≈ 8x10^{1}1 M☉
-- M_BH ≈ 10^9 M☉
+- M_visible ≈ 8x10^{1}1 MM_sun
+- M_BH ≈ 10^9 MM_sun
 - Distance ≈ 28 Mpc
 - r_galaxy ≈ 50 kpc
 - ρ_dust ≈ 10^{-}2^0 kg/m^3 (dust lane)
@@ -30,23 +49,26 @@ M104 (NGC 4594), the Sombrero Galaxy, is a lenticular/Sa galaxy at 28 Mpc with o
 
 ## 2. Sombrero Galaxy MUGE
 
-```
-g_Sombrero(r,t) = (G*M)/r^2 * (1+H(z)*t) * (1-B/B_crit)
-                + (G*M_BH)/r_BH^2
-                + (U_g1 + U_g2 + U_g3 + U_g4)
-                + U_i
-                + (Lambda*c^2/3)
-                + (hbar/√(Deltax*Deltap)) * integral(psi*H*psi dV) * (2pi/t_Hubble)
-                + rho_fluid*V*g
-                + (M_vis + M_DM) * (deltarho/rho + 3*G*M/r^3)
-                + D_dust
-```
+$$
+\begin{aligned}
+  & g_Sombrero(r,t) = (G*M)/r^2 * (1+H(z)*t) * (1-B/B_crit) \\
+  & + (G*M_BH)/r_BH^2 \\
+  & + (U_g1 + U_g2 + U_g3 + U_g4) \\
+  & + U_i \\
+  & + (Lambda*c^2/3) \\
+  & + (hbar/√(Deltax*Deltap)) * integral(psi*H*psi dV) * (2pi/t_Hubble) \\
+  & + rho_fluid*V*g \\
+  & + (M_vis + M_DM) * (deltarho/rho + 3*G*M/r^3) \\
+  & + D_dust
+\end{aligned}
+$$
 
 ---
 
-## 3. D_dust -- Dust Lane Drag Term
+## 3. D_dust — Dust Lane Drag Term
 
-The novel term D_dust models the retarding force exerted by the optically thick equatorial dust lane on bulge stellar orbits and gas dynamics:
+The novel term D_dust models the retarding force exerted by the optically thick equatorial dust lane
+on bulge stellar orbits and gas dynamics:
 
 ```
 D_dust = -k_dust * rho_dust * v_orbit^2 * A_cross / r
@@ -60,51 +82,54 @@ D_dust = -k_dust * rho_dust * v_orbit^2 * A_cross / r
 
 For the Sombrero bulge region (r ~ 1-5 kpc):
 
-```
+$$
 D_dust ~= -5x10^{-}1^2 m/s^2   (retarding contribution)
-```
+$$
 
-This is comparable in magnitude to the dark matter perturbation term, making it non-negligible for bulge kinematics near r < 3 kpc.
+This is comparable in magnitude to the dark matter perturbation term, making it non-negligible for
+bulge kinematics near r < 3 kpc.
 
 ---
 
 ## 4. Black Hole Contribution
 
-The Sombrero's SMBH (M_BH ~ 10^9 M☉) dominates within r < 1 kpc:
+The Sombrero's SMBH (M_BH ~ 10^9 MM_sun) dominates within r < 1 kpc:
 
-```
-g_BH = G * M_BH / r_BH^2
-g_BH(1 kpc) ~= 2.4x10^{-}8 m/s^2
-```
+$$
+\begin{aligned}
+  & g_BH = G * M_BH / r_BH^2 \\
+  & g_BH(1 kpc) ~= 2.4x10^{-}8 m/s^2
+\end{aligned}
+$$
 
 ---
 
 ## 5. U_g Terms (Sombrero Configuration)
 
-```
-U_g1 = mu_dipole * B           (AGN magnetic dipole)
-       mu_dipole = I*A*omega_spin ~= 10^{-}5^1 A*m^2
-
-U_g2 = B_super^2 / (2*mu_0)    (aether superconductor field)
-       B_super = mu_0 * H_aether, H_aether ~= 10^{-}5 A/m
-
-U_g3 = G*M_ext / r_ext^2       (companion galaxy influence)
-
-U_g4 = k_4 * rho_vac,[SCm] * (M_BH/d_g) * e^(-alphat) * cos(pi*t_n) * (1+f_feedback)
-       k_4 = 1.0
-```
+$$
+\begin{aligned}
+  & U_g1 = mu_dipole * B           (AGN magnetic dipole) \\
+  & mu_dipole = I*A*omega_spin ~= 10^{-}5^1 A*m^2 \\
+  & U_g2 = B_super^2 / (2*mu_0)    (aether superconductor field) \\
+  & B_super = mu_0 * H_aether, H_aether ~= 10^{-}5 A/m \\
+  & U_g3 = G*M_ext / r_ext^2       (companion galaxy influence) \\
+  & U_g4 = k_4 * rho_vac,[SCm] * (M_BH/d_g) * e^(-alphat) * cos(pi*t_n) * (1+f_feedback) \\
+  & k_4 = 1.0
+\end{aligned}
+$$
 
 ---
 
 ## 6. Environmental Forcing for M104
 
-```
-F_env(t) = F_dust + F_BH + F_cosmo
-
-F_dust = D_dust / g_Newtonian     (dust drag fraction)
-F_BH   = G*M_BH / (r^2*g_Newtonian)  (BH contribution fraction)
-F_cosmo ~= H(z)*t                  (cosmological expansion)
-```
+$$
+\begin{aligned}
+  & F_env(t) = F_dust + F_BH + F_cosmo \\
+  & F_dust = D_dust / g_Newtonian     (dust drag fraction) \\
+  & F_BH   = G*M_BH / (r^2*g_Newtonian)  (BH contribution fraction) \\
+  & F_cosmo ~= H(z)*t                  (cosmological expansion)
+\end{aligned}
+$$
 
 ---
 
@@ -131,11 +156,15 @@ The D_dust term explains:
 
 ## 9. Conclusion
 
-The Sombrero Galaxy MUGE extends UQFF to dust-dominated lenticular/Sa galactic environments via the D_dust term. The dust lane drag force amounts to ~1% correction on bulge dynamics but significantly affects the SMBH growth environment and inner kinematics. Future integration with Spitzer/JWST dust mass measurements can refine D_dust for M104 and analogous systems.
+The Sombrero Galaxy MUGE extends UQFF to dust-dominated lenticular/Sa galactic environments via the
+D_dust term. The dust lane drag force amounts to ~1% correction on bulge dynamics but significantly
+affects the SMBH growth environment and inner kinematics. Future integration with Spitzer/JWST dust
+mass measurements can refine D_dust for M104 and analogous systems.
 
 ---
 
-*Copyright - Daniel T. Murphy, daniel.murphy00@gmail.com. UQFF Framework. PAPER_742, CP4 class #326. Session 180 continuation v5.38.*
+*Copyright - Daniel T. Murphy, daniel.murphy00@gmail.com. UQFF Framework. PAPER_742, CP4 class #326.
+Session 180 continuation v5.38.*
 *Cross-validated against PAPER_001 (foundational UQFF framework) and PAPER_642 (UQFF-SM bridge).*
 
 
@@ -145,11 +174,12 @@ The Sombrero Galaxy MUGE extends UQFF to dust-dominated lenticular/Sa galactic e
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| BCS ratio $2\Delta_0/k_BT_c$ | 3.528 (standard BCS) | 3.528 | BCS Theory | 100% |
+| BCS ratio $2\Delta_0/\text{k\_BT\_c}$ | 3.528 (standard BCS) | 3.528 | BCS Theory | 100% |
 | $T_c$ formula | SCm phonon replaces Debye: $\omega_D \to \omega_{\text{SCm}}$ | Standard BCS | Bardeen et al. (1957) | Novel |
 | Fine structure $\alpha$ | UQFF reproduces via $U_{g1}$ dipole | $1/137.036$ | PDG 2024 | 99.9% |
 
-**New physics claim:** UQFF phonon-mediated vacuum coupling provides testable predictions beyond SM for this system.
+**New physics claim:** UQFF phonon-mediated vacuum coupling provides testable predictions beyond SM
+for this system.
 
 *Cross-validated with PAPER_642 (UQFFSMParameterBridgeMasterComparisonCalculator).*
 
@@ -159,13 +189,15 @@ The Sombrero Galaxy MUGE extends UQFF to dust-dominated lenticular/Sa galactic e
 
 ### §A.1 Sector Classification
 
-This paper maps to **BH-gravity** sector of the 9-sector UQFF Lagrangian (see `uqff_lagrangian_derivation.py`).
+This paper maps to **BH-gravity** sector of the 9-sector UQFF Lagrangian (see
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
-The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive quantum fundamentals (DPM, UA, SCm):
+The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
+quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_\mu \phi_{\rm BH})(\partial^\mu \phi_{\rm BH}) - V(\phi_{\rm BH}) + \mathcal{L}_{\rm cosmo}$$
+$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_mu \phi_{\rm BH})(\partial^\mu \phi_{\rm BH}) - V(\phi_{\rm BH}) + \mathcal{L}_{\rm cosmo}$$
 
 where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
@@ -179,7 +211,9 @@ $$\boxed{\frac{\delta S}{\delta \phi_{\rm BH}} = R_{\mu\nu} - \tfrac{1}{2}g_{\mu
 
 $$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\rm BH} = 0$$
 
-The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g forces) through vacuum density initialization to the sector-specific equation of motion. Every term in the E-L equation inherits its physical origin from the cosmogenesis master.
+The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
+forces) through vacuum density initialization to the sector-specific equation of motion. Every term
+in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 
 ---
@@ -190,7 +224,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
 For this system, the local VDS sub-ratio is $0.060$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m^3.
 
@@ -204,13 +238,13 @@ Since $p_{\rm DVP} = 83$ is **resonant** (threshold at $p > 26$), the system's v
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
-The BSH saturation timescale for this sector is **10^6 M_BH/M_⊙ yr** (quasi-normal mode ringdown):
+The BSH saturation timescale for this sector is **10^6 M_BH/M_M_sun yr** (quasi-normal mode ringdown):
 
-$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
+$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\rm SCm}$ which initializes the harmonic series at cosmogenesis.
 
@@ -218,11 +252,11 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.060 | ✓ Threshold-consistent |
-| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 83$ | ✓ Resonant |
-| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day^{-}1 | Applied in VDS exponential | ✓ Canonical |
-| [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
+| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.060 | PASS Threshold-consistent |
+| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 83$ | PASS Resonant |
+| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
+| κ decay | $5.0 \times 10^{-4}$ day^{-}1 | Applied in VDS exponential | PASS Canonical |
+| [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
 ---
@@ -241,9 +275,9 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `f`neutron_s26_coupling`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `k`ozima_scm_cross_section`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `k`ozima_wstp_kernel`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -252,7 +286,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `r`amanujan_polylog_s26`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
 | `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
@@ -261,7 +295,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `m`ock_theta_q26`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -272,8 +306,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `r`amanujan_pi_uqff`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `m`ock_theta_pi_wstp_kernel`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]

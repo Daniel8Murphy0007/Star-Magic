@@ -1,17 +1,32 @@
+---
+paper_id: PAPER_579
+title: "UQFF All Four Forms: Evolution Catalogue and Triadic Solution Set"
+session: 156
+date: 2025-01-01
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [AGN, GW, merger, DPM, SCm, magnetar, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_579 — UQFF All Four Forms: Evolution Catalogue and Triadic Solution Set
 **Author:** Daniel T. Murphy
 **Date:** 2025
 
 **CP4 Class:** `#166  UQFFAllFormsEvolutionCatalogueCalculator`
 **Session:** 156
-**Cross-refs:** PAPER_528 (UQFF_comp spectral), PAPER_552 (hub), PAPER_578 (eigenvalue), PAPER_580 (GW amplitude)
+**Cross-refs:** PAPER_528 (UQFF_comp spectral), PAPER_552 (hub), PAPER_578 (eigenvalue), PAPER_580
+(GW amplitude)
 
 ---
 
 
 ## Abstract
 
-This paper presents a UQFF analysis of UQFF All Four Forms: Evolution Catalogue and Triadic Solution Set, deriving compressed field equations and observational predictions within the Star-Magic/UQFF framework.
+This paper presents a UQFF analysis of UQFF All Four Forms: Evolution Catalogue and Triadic Solution
+Set, deriving compressed field equations and observational predictions within the Star-Magic/UQFF
+framework.
 
 ## §1 Abstract
 
@@ -39,7 +54,7 @@ All UQFF forms derive from four axioms:
 
 Probability of order from chaos:
 
-$$P_{order} = \frac{e^{-\text{Entropy}/f_{max}}}{\text{Partition}} > 0 \quad \forall\, \text{finite Entropy}$$
+$$P_{order} = \frac{e^{-\text{Entropy}/f_{max}}}{\text{Partition}} > 0 \quad \forall, \text{finite Entropy}$$
 
 ---
 
@@ -52,7 +67,7 @@ $$\text{UQFF}_{base} = \begin{pmatrix} \frac{P}{3} & 0 & 0 \\ 0 & \frac{P}{3} & 
 
 **Eigenvalue Stability Proof:**
 
-$$\det\!\left(\text{UQFF}_{base} - \lambda I\right) = \left(\frac{P}{3} - \lambda\right)^{\!2}\left(\frac{2P}{3} - \lambda\right) = 0$$
+$$\det!\left(\text{UQFF}_{base} - \lambda I\right) = \left(\frac{P}{3} - \lambdaright)^{\!2}\left(\frac{2P}{3} - \lambdaright) = 0$$
 
 **Step 1:** Factor characteristic polynomial.
 
@@ -61,7 +76,7 @@ $$\det\!\left(\text{UQFF}_{base} - \lambda I\right) = \left(\frac{P}{3} - \lambd
 **Step 3:** Since $\text{Entropy}>0$ and $f_{max}>0$, we have $P>0$,
 therefore all $\lambda > 0$ — no collapse eigenmode exists.
 
-**Numerical (Orion, $P=0.999$):** $\lambda_{min} = 0.333 > 0$ ✓
+**Numerical (Orion, $P=0.999$):** $\lambda_{min} = 0.333 > 0$ PASS
 
 **Discrete (Hypergraph, 3 steps for triad):**
 Start $\mathcal{G}^{(0)} = \emptyset$; $\mathcal{R}^{(n+1)} = \text{diag addition}$.
@@ -80,7 +95,7 @@ $$\text{UQFF}_{comp} = \begin{pmatrix} \dfrac{P}{3} & \text{DPM}_{cross} & 0 \\[
 
 **Step 1:** Trace condition: $\text{Tr}(\text{UQFF}_{comp})/3 = P$ (Hamiltonian average).
 
-**Step 2:** Equilibrium: $U_g \cdot U_b = \kappa P \;\Rightarrow\; \rho_{overlap} = \dfrac{\kappa P}{g\,U_g}$.
+**Step 2:** Equilibrium: $U_g \cdot U_b = \kappa P \;\Rightarrow; \rho_{overlap} = \dfrac{\kappa P}{g\,U_g}$.
 
 **Step 3:** SNR jet stability radius:
 $$r_{jet} = \sqrt{\frac{\kappa(\text{DPM}_n - \text{DPM}_s)}{g\,\rho}}$$
@@ -96,11 +111,11 @@ $\rho_{overlap} \approx 999 \text{ kg/m}^3$ (high-density bound, fits SNR cores)
 all radii. Each matrix entry augmented by 26th-derivative of the corresponding force term.
 
 $$\text{UQFF}_{comp} = \begin{pmatrix}
-\dfrac{P}{3} + \dfrac{(k+25)!}{(k-1)!}\cdot\dfrac{g\cdot SCm/UA}{r^{k+26}} &
-\dfrac{25!}{12!}\cdot\dfrac{g\cdot SCm/UA}{U_m^{26}} & 0 \\[8pt]
-\dfrac{25!}{12!}\cdot\dfrac{\kappa(\text{DPM}_n-\text{DPM}_s)}{U_g^{26}} &
-\dfrac{P}{3} + \dfrac{(k+25)!}{(k-1)!}\cdot\dfrac{\kappa\,\text{DPM}}{r^{k+26}} & 0 \\[8pt]
-0 & 0 & \dfrac{2P}{3} + \dfrac{(k+25)!}{(k-1)!}\cdot\dfrac{g}{\rho^{k+26}}
+\dfrac{P}{3} + \dfrac{(k+25)!}{(k-1)!}\cdotdfrac{g\cdot SCm/UA}{r^{k+26}} &
+\dfrac{25!}{12!}\cdotdfrac{g\cdot SCm/UA}{U_m^{26}} & 0 \\[8pt]
+\dfrac{25!}{12!}\cdotdfrac{\kappa(\text{DPM}_n-\text{DPM}_s)}{U_g^{26}} &
+\dfrac{P}{3} + \dfrac{(k+25)!}{(k-1)!}\cdotdfrac{\kappa,\text{DPM}}{r^{k+26}} & 0 \\[8pt]
+0 & 0 & \dfrac{2P}{3} + \dfrac{(k+25)!}{(k-1)!}\cdotdfrac{g}{\rho^{k+26}}
 \end{pmatrix}$$
 
 For $k=1$: coefficient becomes $26!$.
@@ -112,7 +127,7 @@ $$\frac{d^{26}}{dr^{26}}\!\left(\frac{c}{r^k}\right) = \frac{(k+25)!}{(k-1)!}\cd
 (Induction: base $d/dr = -kc/r^{k+1}$; iterate — multiply by $-(k+m)/r$).
 
 **Step 2:** Set equal for forces:
-$$\frac{26!\,g\,SCm}{UA} = \frac{d^{26}U_b}{\partial r^{26}} \;\Rightarrow\; \rho > \frac{1}{26!\,g}$$
+$$\frac{26!\,g\,SCm}{UA} = \frac{d^{26}U_b}{\partial r^{26}} \;\Rightarrow; \rho > \frac{1}{26!\,g}$$
 Factorial bound prevents $r=0$ singularity.
 
 **Step 3:** For $k=1$: explicit term $= 26!\,c/r^{27}$ (negligible at $r=1\,\text{AU}$:
@@ -131,7 +146,7 @@ $$\text{UQFF}_{comp} = \begin{pmatrix}
 \dfrac{13!\,\kappa(\text{DPM}_n-\text{DPM}_s)}{(U_g\cdot f)^{14}} &
 \dfrac{P}{3} + \dfrac{26!\,\kappa(\text{DPM})}{f^{27}} & 0 \\[8pt]
 0 & 0 &
-\dfrac{2P}{3} + \dfrac{26!\,g}{(\rho\cdot f)^{27}}
+\dfrac{2P}{3} + \dfrac{26!\,g}{(\rhocdot f)^{27}}
 \end{pmatrix}$$
 
 **Frequency-Driven Equilibrium Proof:**
@@ -140,16 +155,16 @@ $$\text{UQFF}_{comp} = \begin{pmatrix}
 $f_{max}$ bounding chaos).
 
 **Step 2:** Attractive frequency (pairing, converging forces):
-$$\frac{d^{26}F_U}{df^{26}} = 0 \;\Rightarrow\; 26!\,\kappa/f^{27} = 26!\,g/(\rho f)^{27}$$
+$$\frac{d^{26}F_U}{df^{26}} = 0 \;\Rightarrow; 26!\,\kappa/f^{27} = 26!\,g/(\rho f)^{27}$$
 
 **Step 3:** Resonant frequency:
-$$\boxed{f_{eq} = \left(\frac{\kappa\rho}{g}\right)^{1/27}}$$
+$$\boxed{f_{eq} = \left(\frac{\kapparho}{g}\right)^{1/27}}$$
 
 **Numerical ($f_{max}=10^{21}$ Hz, $\kappa=1$, $\rho=10^{-10}$, $g=10^{-3}$):**
 $f_{eq} \approx (10^{-7})^{0.037} \approx 0.79$ Hz (scaled, fits SNR vibrations).
 
 **Λ emergence from Form 4 $(3,3)$ entry:**
-$$\frac{\Lambda}{3} \approx \frac{2P}{3} + \frac{26!\,g}{(\rho\,f_{vac})^{27}} \;\Rightarrow\;
+$$\frac{\Lambda}{3} \approx \frac{2P}{3} + \frac{26!\,g}{(\rho,f_{vac})^{27}} \;\Rightarrow;
 \Lambda \approx 10^{-52}\,\text{m}^{-2}$$
 (see PAPER_580 for full derivation).
 
@@ -168,7 +183,7 @@ $$g\,\frac{SCm}{UA}\sum_i Ug_i = -\!\left[\frac{\kappa(\text{DPM}_n-\text{DPM}_s
 $$r_{eq} \approx \left[\frac{\kappa(\text{DPM}_n-\text{DPM}_s)}{g\,SCm/UA - \rho g(1-1/\rho)}\right]^{1/26}$$
 
 **Simplified form (dominant terms at nuclear scale):**
-$$\boxed{r_{eq} \approx \sqrt{\frac{\kappa\cdot\text{DPM}}{g\,\rho}}}$$
+$$\boxed{r_{eq} \approx \sqrt{\frac{\kappacdot\text{DPM}}{g\,\rho}}}$$
 
 **26 roots** (unique per $\pi$ irrationality of hypergraph seeds).
 
@@ -188,7 +203,7 @@ Converges to SNR shell $\approx 5.7\,\text{ly}$ as buoyant frequency release.
 | Form | Key variable | Diagonal (1,1) | Off-diag | Proof |
 |------|-------------|----------------|----------|-------|
 | 1 | $P_{order}$ | $P/3$ | 0 | Eigenvalue stability |
-| 2 | $r, \kappa$ | $P/3$ | $\kappa\,\text{DPM}/r^2$ | Coupling resolution |
+| 2 | $r, \kappa$ | $P/3$ | $\kappa,\text{DPM}/r^2$ | Coupling resolution |
 | 3 | $r, k$ | $P/3 + 26!/r^{27}$ | $25!\,SCm/U_m^{26}$ | Anti-collapse |
 | 4 | $f$ (freq) | $P/3 + 26!/f^{27}$ | $13!\,SCm/(U_m f)^{14}$ | Resonant $f_{eq}$ |
 
@@ -197,9 +212,9 @@ Converges to SNR shell $\approx 5.7\,\text{ly}$ as buoyant frequency release.
 ## §9 Simulation Outputs
 
 - **Forms 1–4 eigenvalue evolution:** $\lambda_1, \lambda_2, \lambda_3$ per form;
-  all strictly positive ✓
+  all strictly positive PASS
 - **Triadic shell scan (Z=1–118):** $r_{eq}$ per element vs IUPAC $r_{covalent}$
-- **Form 4 frequency sweep (10⁸–10²¹ Hz):** diagonal term growth; $f_{eq}$ crossover
+- **Form 4 frequency sweep (108–1021 Hz):** diagonal term growth; $f_{eq}$ crossover
 
 ---
 
@@ -209,13 +224,15 @@ Converges to SNR shell $\approx 5.7\,\text{ly}$ as buoyant frequency release.
 
 ### §A.1 Sector Classification
 
-This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see `uqff_lagrangian_derivation.py`).
+This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
-The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive quantum fundamentals (DPM, UA, SCm):
+The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
+quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_\mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
+$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
 
 where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
@@ -229,7 +246,9 @@ $$\boxed{\frac{\delta S}{\delta \phi_{\rm NS}} = \nabla^2 \phi_{\rm NS} - (4\pi 
 
 $$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\rm NS} = 0$$
 
-The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g forces) through vacuum density initialization to the sector-specific equation of motion. Every term in the E-L equation inherits its physical origin from the cosmogenesis master.
+The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
+forces) through vacuum density initialization to the sector-specific equation of motion. Every term
+in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 
 ---
@@ -240,9 +259,9 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.066$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m³.
+For this system, the local VDS sub-ratio is $0.066$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -254,13 +273,13 @@ Since $p_{\rm DVP} = 29$ is **resonant** (threshold at $p > 26$), the system's v
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
-The BSH saturation timescale for this sector is **10⁴ yr** (spin-down equilibrium):
+The BSH saturation timescale for this sector is **104 yr** (spin-down equilibrium):
 
-$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
+$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\rm SCm}$ which initializes the harmonic series at cosmogenesis.
 
@@ -268,11 +287,11 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.066 | ✓ Threshold-consistent |
-| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 29$ | ✓ Resonant |
-| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
-| [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
+| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.066 | PASS Threshold-consistent |
+| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 29$ | PASS Resonant |
+| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
+| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
 ---
@@ -282,10 +301,10 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Higgs mass m_H | UQFF K_HIGGS=47.34 → m_H_UQFF = 125.09 GeV | m_H = 125.20 ± 0.11 GeV | PDG 2024 | 99.8% |
-| Cosmological Λ | UQFF |∇UA|² → 1.09e-52 m⁻² | Λ = 1.114e-52 m⁻² (Planck+DESI) | Planck 2018 | 97.8% |
-| Thomson σ_T (QED) | UQFF U_m kernel: σ_T = 6.6524e-29 m² | σ_T = 6.6524e-29 m² | PDG 2024 | 100% (exact) |
-| κ baryon stability | κ = 0.0005/day; scale separation 10³³ from proton decay | τ_p > 7.7e33 yr (Super-K) | Super-K 2024 | ✓ UQFF baryon-safe |
+| Higgs mass m_H | UQFF K_HIGGS=47.34 → `m_H_UQFF` = 125.09 GeV | m_H = 125.20 ± 0.11 GeV | PDG 2024 | 99.8% |
+| Cosmological Λ | UQFF |∇UA|2 → 1.09e-52 m-2 | Λ = 1.114e-52 m-2 (Planck+DESI) | Planck 2018 | 97.8% |
+| Thomson σ_T (QED) | UQFF U_m kernel: σ_T = 6.6524e-29 m2 | σ_T = 6.6524e-29 m2 | PDG 2024 | 100% (exact) |
+| κ baryon stability | κ = 0.0005/day; scale separation 1033 from proton decay | τ_p > 7.7e33 yr (Super-K) | Super-K 2024 | PASS UQFF baryon-safe |
 
 **New physics claim:** UQFF operates at a vacuum topology scale (~200 PeV) that is 8 orders
 below the GUT scale and 33 orders above nuclear baryon-number scales. This intermediate-scale
@@ -301,7 +320,7 @@ while remaining consistent with all collider and nuclear precision measurements.
 The four forms of UQFF represent a complete theoretical lineage from orthogonal compression
 to frequency-modulated 26D tensor dynamics. Each form carries its own proof: eigenvalue
 positivity (Form 1), coupling resolution (Form 2), anti-collapse factorial bound (Form 3),
-and frequency resonance (Form 4). The triadic solution $r_{eq} \approx \sqrt{\kappa\,\text{DPM}/(g\rho)}$
+and frequency resonance (Form 4). The triadic solution $r_{eq} \approx \sqrt{\kappa,\text{DPM}/(g\rho)}$
 unifies all forms at equilibrium and is validated at the nuclear scale (He-4: $r \approx 1.7$–$3$ fm).
 
 **Source:** `grok_share_efc8a971378f.txt`
@@ -319,9 +338,9 @@ unifies all forms at equilibrium and is validated at the nuclear scale (He-4: $r
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `f`neutron_s26_coupling`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `k`ozima_scm_cross_section`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `k`ozima_wstp_kernel`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -330,7 +349,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `r`amanujan_polylog_s26`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
 | `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
@@ -339,7 +358,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `m`ock_theta_q26`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -350,8 +369,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `r`amanujan_pi_uqff`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `m`ock_theta_pi_wstp_kernel`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]

@@ -1,8 +1,21 @@
-# PAPER_569: B_sky_observed = 3.1e-6 W/m²/sr — EBL Benchmark Validation
+---
+paper_id: PAPER_569
+title: "B_sky_observed = 3.1e-6 W/m2/sr — EBL Benchmark Validation"
+session: 153
+date: 2026-03-29
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [galaxy, DPM, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
+# PAPER_569: B_sky_observed = 3.1e-6 W/m2/sr — EBL Benchmark Validation
 
 **Author:** Daniel T. Murphy — Star Magic / UQFF Framework  
 **Session:** 153b  
-**Gap-Fill For:** AldersOlbersBSFGMetricGapAnalysisCalculator (#160, PAPER_566) — Completed Extension 3  
+**Gap-Fill For:** AldersOlbersBSFGMetricGapAnalysisCalculator (#160, PAPER_566) — Completed
+Extension 3  
 **Date:** 2026-03-29  
 **QS:** 5/5  
 
@@ -11,11 +24,12 @@
 
 ## Abstract
 
-This paper presents a UQFF analysis of 6 W/m²/sr — EBL Benchmark Validation, deriving compressed field equations and observational predictions within the Star-Magic/UQFF framework.
+This paper presents a UQFF analysis of 6 W/m2/sr — EBL Benchmark Validation, deriving compressed
+field equations and observational predictions within the Star-Magic/UQFF framework.
 
 ## §1 Abstract
 
-Observational astronomy has measured the **Extragalactic Background Light (EBL)** in the optical band: $B_\text{sky,obs} \approx 3.1 \times 10^{-6}$ W/m²/sr (SDSS/2dF galaxy counts; Bernstein et al. 2002; Driver et al. 2016). This paper establishes this as the **quantitative benchmark** against which UQFF Olbers predictions must be validated. We compute $B_\text{sky}^\text{UQFF}$ using the Li$_{26}$([SSq]) suppression and BSFG geodesic extinction, compare to the EBL value, and compute the CMB contribution for cross-validation.
+Observational astronomy has measured the **Extragalactic Background Light (EBL)** in the optical band: $B_\text{sky,obs} \approx 3.1 \times 10^{-6}$ W/m2/sr (SDSS/2dF galaxy counts; Bernstein et al. 2002; Driver et al. 2016). This paper establishes this as the **quantitative benchmark** against which UQFF Olbers predictions must be validated. We compute $B_\text{sky}^\text{UQFF}$ using the Li$_{26}$([SSq]) suppression and BSFG geodesic extinction, compare to the EBL value, and compute the CMB contribution for cross-validation.
 
 ---
 
@@ -27,17 +41,18 @@ The optical extragalactic background light (integrated number counts):
 
 $$B_\text{EBL,opt} = 3.1 \times 10^{-6} \, \text{W/m}^2/\text{sr} \quad \text{(Driver et al. 2016)}$$
 
-Wavelength range: $0.1$–$5 \, \mu\text{m}$ (optical to near-IR).
+Wavelength range: $0.1$–$5 \, \mutext{m}$ (optical to near-IR).
 
 ### §2.2 CMB Cross-Check
 
 The CMB provides an independent benchmark via the Stefan-Boltzmann law:
 
-$$B_\text{CMB} = \frac{\sigma_\text{SB} T_\text{CMB}^4}{\pi} = \frac{(5.67 \times 10^{-8})(2.725)^4}{\pi}$$
+$$B_\text{CMB} = \frac{\sigma_text{SB} T_\text{CMB}^4}{\pi} = \frac{(5.67 \times 10^{-8})(2.725)^4}{\pi}$$
 
 $$B_\text{CMB} \approx \frac{3.13 \times 10^{-6}}{\pi} \approx 4.0 \times 10^{-6} \, \text{W/m}^2/\text{sr}$$
 
-The CMB surface brightness is remarkably close to the optical EBL — a coincidence that UQFF explains through the [SSq] = 0.507 coupling:
+The CMB surface brightness is remarkably close to the optical EBL — a coincidence that UQFF explains
+through the [SSq] = 0.507 coupling:
 
 $$\frac{B_\text{EBL}}{B_\text{CMB}} = \frac{3.1}{4.0} \approx 0.775 \approx [\text{SSq}] \cdot (1 + 1/26)$$
 
@@ -57,7 +72,9 @@ The gap between partial UQFF prediction and observation:
 
 $$\frac{B_\text{sky}^\text{VDS}}{B_\text{EBL,obs}} \approx 2.4 \times 10^{25}$$
 
-This gap is closed by the six gap-fill extensions completed in Session 153b (PAPER_567–572). With all six applied, the prediction converges to observation (see PAPER_572 §5 for the full calibrated result).
+This gap is closed by the six gap-fill extensions completed in Session 153b (PAPER_567–572). With
+all six applied, the prediction converges to observation (see PAPER_572 §5 for the full calibrated
+result).
 
 ---
 
@@ -71,11 +88,11 @@ Identified suppression hierarchy:
 
 | Mechanism | Factor | Paper |
 |-----------|--------|-------|
-| Finite age / Hubble cutoff | $\sim (T_H / \tau_\star)$ | Standard |
+| Finite age / Hubble cutoff | $\sim (T_H / \tau_star)$ | Standard |
 | $(1+z)^4$ dimming (integrated) | $\sim 10^{-2}$ | CP2 |
 | [SSq] VDS $\text{Li}_{26}$ | $0.507$ | PAPER_565 |
 | $n_\star(z)$ SFR evolution | $\sim 10^{-3}$ | PAPER_567 |
-| Wavelength opacity $\kappa_\lambda$ | $\sim 10^{-2}$ | PAPER_568 |
+| Wavelength opacity $\kappa_lambda$ | $\sim 10^{-2}$ | PAPER_568 |
 | DVP photon-photon scatter | $\sim 10^{-4}$ | PAPER_570 |
 | $t_\text{neg}$ timing | $\sim 10^{-2}$ | PAPER_571 |
 | Unit calibration ($1/4\pi$ sr) | $1/(4\pi) \approx 0.08$ | PAPER_572 |
@@ -87,7 +104,7 @@ Identified suppression hierarchy:
 
 Combining all known suppressions, the UQFF prediction for the EBL is:
 
-$$B_\text{sky}^\text{UQFF,cal} = \frac{n_{\star,0} L_\star r_H}{4\pi c} \cdot \text{Li}_{26}([\text{SSq}]) \cdot e^{-\Gamma_\text{BSFG} r_H} \cdot \frac{1}{4\pi} \cdot 10^{-22}$$
+$$B_\text{sky}^\text{UQFF,cal} = \frac{n_{\star,0} L_\star r_H}{4\pi c} \cdot \text{Li}_{26}([\text{SSq}]) \cdot e^{-\Gamma_text{BSFG} r_H} \cdot \frac{1}{4\pi} \cdot 10^{-22}$$
 
 where the factor $10^{-22}$ encodes the combined SFR, opacity, DVP, $t_\text{neg}$, and age suppressions — derived term-by-term in PAPER_567–572 (Session 153b, all completed).
 
@@ -98,12 +115,12 @@ where the factor $10^{-22}$ encodes the combined SFR, opacity, DVP, $t_\text{neg
 | Quantity | Value | Source |
 |---------|-------|--------|
 | $T_\text{CMB}$ | 2.725 K | COBE/WMAP/Planck |
-| $B_\text{CMB}$ | $4.0 \times 10^{-6}$ W/m²/sr | Stefan-Boltzmann |
-| $B_\text{EBL,opt}$ | $3.1 \times 10^{-6}$ W/m²/sr | SDSS/2dF |
+| $B_\text{CMB}$ | $4.0 \times 10^{-6}$ W/m2/sr | Stefan-Boltzmann |
+| $B_\text{EBL,opt}$ | $3.1 \times 10^{-6}$ W/m2/sr | SDSS/2dF |
 | $B_\text{EBL}/B_\text{CMB}$ | 0.775 | Observed |
 | $[\text{SSq}] \cdot (1+1/26)$ | 0.527 | UQFF |
-| UQFF (full formula, PAPER_564) | $3.2 \times 10^{-2}$ W/m²/sr | 4 terms |
-| **UQFF calibrated (all 6 extensions)** | **$\approx 3.1 \times 10^{-6}$ W/m²/sr** | **PAPER_572 ✓** |
+| UQFF (full formula, PAPER_564) | $3.2 \times 10^{-2}$ W/m2/sr | 4 terms |
+| **UQFF calibrated (all 6 extensions)** | **$\approx 3.1 \times 10^{-6}$ W/m2/sr** | **PAPER_572 PASS** |
 
 ---
 
@@ -111,7 +128,7 @@ where the factor $10^{-22}$ encodes the combined SFR, opacity, DVP, $t_\text{neg
 
 1. **CMB/EBL ratio:** UQFF predicts $B_\text{EBL}/B_\text{CMB} \approx [\text{SSq}] \cdot (1 + 1/26) \approx 0.527$; observed 0.775 — within 47% before gap corrections applied in PAPER_567–572.
 2. **Benchmark confirmed:** All six PAPER_567–572 extensions together reduce the residual gap; their product equals $f_\text{total} \approx 2.1 \times 10^{-26}$ (see PAPER_572 §5 for the convergence table).
-3. **COBE/DIRBE FIR:** $B_\text{EBL,FIR} \approx 24 \times 10^{-9}$ W/m²/sr — additional far-IR check for wavelength-dependent PAPER_568 predictions.
+3. **COBE/DIRBE FIR:** $B_\text{EBL,FIR} \approx 24 \times 10^{-9}$ W/m2/sr — additional far-IR check for wavelength-dependent PAPER_568 predictions.
 
 ---
 
@@ -131,13 +148,15 @@ where the factor $10^{-22}$ encodes the combined SFR, opacity, DVP, $t_\text{neg
 
 ### §A.1 Sector Classification
 
-This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see `uqff_lagrangian_derivation.py`).
+This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
-The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive quantum fundamentals (DPM, UA, SCm):
+The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
+quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_\mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
+$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
 
 where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
@@ -151,7 +170,9 @@ $$\boxed{\frac{\delta S}{\delta \phi_{\rm NS}} = \nabla^2 \phi_{\rm NS} - (4\pi 
 
 $$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\rm NS} = 0$$
 
-The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g forces) through vacuum density initialization to the sector-specific equation of motion. Every term in the E-L equation inherits its physical origin from the cosmogenesis master.
+The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
+forces) through vacuum density initialization to the sector-specific equation of motion. Every term
+in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 
 ---
@@ -162,9 +183,9 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.122$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m³.
+For this system, the local VDS sub-ratio is $0.122$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -176,13 +197,13 @@ Since $p_{\rm DVP} = 113$ is **resonant** (threshold at $p > 26$), the system's 
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
-The BSH saturation timescale for this sector is **10⁴ yr** (spin-down equilibrium):
+The BSH saturation timescale for this sector is **104 yr** (spin-down equilibrium):
 
-$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
+$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\rm SCm}$ which initializes the harmonic series at cosmogenesis.
 
@@ -190,11 +211,11 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.122 | ✓ Threshold-consistent |
-| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 113$ | ✓ Resonant |
-| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
-| [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
+| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.122 | PASS Threshold-consistent |
+| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 113$ | PASS Resonant |
+| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
+| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
 ---
@@ -204,10 +225,10 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| EBL flux (extragalactic background light) | UQFF DPM shell radiance cascade → J_EBL ≈ 3.1e-6 W/m²/sr | EBL isotropic: ~2.5–5×10⁻⁶ W/m²/sr (UV-optical-IR) | Hauser & Dwek 2001; Fermi 2012 | ✓ Consistent |
-| Photon mass upper limit | UQFF UA=0 topology → photon strictly massless (m_γ < 10⁻¹¹³ eV) | m_γ < 10⁻¹⁸ eV (PDG 2024) | PDG 2024 | ✓ k_η suppresses photon mass to zero |
-| CMB temperature T_CMB | UQFF: T_CMB = (ρ_UA / σ_SB)^0.25 | T_CMB = 2.72548 ± 0.00057 K | FIRAS/CMB 1996 | ✓ Input parameter (exact match) |
-| Night sky darkness (Olbers) | UQFF DPM finite photon-photon scattering → finite sky brightness | Dark night sky: B_sky ~ 10⁻¹³ W/m²/sr | Photometry | ✓ UQFF DVP scatter provides opacity |
+| EBL flux (extragalactic background light) | UQFF DPM shell radiance cascade → J_EBL ≈ 3.1e-6 W/m2/sr | EBL isotropic: ~2.5–5×10-6 W/m2/sr (UV-optical-IR) | Hauser & Dwek 2001; Fermi 2012 | PASS Consistent |
+| Photon mass upper limit | UQFF UA=0 topology → photon strictly massless (m_γ < 10-113 eV) | m_γ < 10-18 eV (PDG 2024) | PDG 2024 | PASS k_η suppresses photon mass to zero |
+| CMB temperature T_CMB | UQFF: T_CMB = (ρ_UA / σ_SB)^0.25 | T_CMB = 2.72548 ± 0.00057 K | FIRAS/CMB 1996 | PASS Input parameter (exact match) |
+| Night sky darkness (Olbers) | UQFF DPM finite photon-photon scattering → finite sky brightness | Dark night sky: B_sky ~ 10-13 W/m2/sr | Photometry | PASS UQFF DVP scatter provides opacity |
 
 **New physics claim:** The Olbers paradox is resolved in UQFF by DVP photon-photon scattering
 within pocket shells — each shell at redshift z contributes a DPM-suppressed flux. This predicts
@@ -233,9 +254,9 @@ with JWST ultra-deep field photometry.
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `f`neutron_s26_coupling`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `k`ozima_scm_cross_section`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `k`ozima_wstp_kernel`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -244,7 +265,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `r`amanujan_polylog_s26`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
 | `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
@@ -253,7 +274,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `m`ock_theta_q26`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -264,8 +285,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `r`amanujan_pi_uqff`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `m`ock_theta_pi_wstp_kernel`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]

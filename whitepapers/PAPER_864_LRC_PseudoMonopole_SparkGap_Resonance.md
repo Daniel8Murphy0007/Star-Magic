@@ -1,6 +1,18 @@
+---
+paper_id: PAPER_864
+title: "LRC Circuit Pseudo-Monopole Spark-Gap Resonance (1/r Decay)"
+session: 200
+date: 2026-04-05
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [DPM, AGN, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_864: LRC Circuit Pseudo-Monopole Spark-Gap Resonance (1/r Decay)
 
-**Author:** Daniel T. Murphy -- Star Magic / UQFF Framework
+**Author:** Daniel T. Murphy — Star Magic / UQFF Framework
 **Date:** 2026-04-05
 **Session:** 200
 **Source:** advanced_system_analysis_simulator_quantum_calculator.txt (3745 lines)
@@ -11,7 +23,11 @@
 
 ## Abstract
 
-An LRC circuit with spark-gap discharge produces a pseudo-monopole magnetic field exhibiting 1/r decay (not the 1/r³ dipole law). Components: L = 75 µH (23 AWG, 10 ft), C = 500 µF (2×1000 µF series), R = 33.3 Ω (3×100 Ω parallel), spark gap 0.5 mm mild steel. The resonance frequency f_res = 1/(2π√(LC)) = 29.14 Hz produces B = 2.53×10⁻⁸ T at 0.61 m with monopole-like 1/r radial falloff, connecting to the UQFF Ug1 Di-Pseudo-Monopole (DPM) field geometry.
+An LRC circuit with spark-gap discharge produces a pseudo-monopole magnetic field exhibiting 1/r
+decay (not the 1/r3 dipole law). Components: L = 75 µH (23 AWG, 10 ft), C = 500 µF (2×1000 µF
+series), R = 33.3 Ω (3×100 Ω parallel), spark gap 0.5 mm mild steel. The resonance frequency f_res =
+1/(2π√(LC)) = 29.14 Hz produces B = 2.53×10-8 T at 0.61 m with monopole-like 1/r radial falloff,
+connecting to the UQFF Ug1 Di-Pseudo-Monopole (DPM) field geometry.
 
 ---
 
@@ -28,7 +44,10 @@ An LRC circuit with spark-gap discharge produces a pseudo-monopole magnetic fiel
 
 ## 2. UQFF Integration
 
-The pseudo-monopole 1/r decay (as opposed to standard dipole 1/r³) is the experimental signature of the Ug1 DPM field geometry at the spark-gap scale. The resonance at 29.14 Hz lies in the ultra-low frequency regime relevant to geomagnetic pulsation coupling. This calculator is differentiated from theoretical DPM classes (PAPER_411 #61, PAPER_855 #439) by its experimental circuit specifications.
+The pseudo-monopole 1/r decay (as opposed to standard dipole 1/r3) is the experimental signature of
+the Ug1 DPM field geometry at the spark-gap scale. The resonance at 29.14 Hz lies in the ultra-low
+frequency regime relevant to geomagnetic pulsation coupling. This calculator is differentiated from
+theoretical DPM classes (PAPER_411 #61, PAPER_855 #439) by its experimental circuit specifications.
 
 ---
 
@@ -48,34 +67,38 @@ The pseudo-monopole 1/r decay (as opposed to standard dipole 1/r³) is the exper
 **Generalized Coordinate:** `A_mono` (monopole vector potential)
 
 **Lagrangian:**
-```
-L_monopole = (mu_0/8pi) |curl A_SCm|^2 - (1/2) rho_SCm |v|^2 * Theta(r-R_b)
-           + lambda_LRC * A_SCm * cos(omega_LRC * t)
-```
+$$
+\begin{aligned}
+  & L_monopole = (mu_0/8pi) |curl A_SCm|^2 - (1/2) rho_SCm |v|^2 * Theta(r-R_b) \\
+  & + lambda_LRC * A_SCm * cos(omega_LRC * t)
+\end{aligned}
+$$
 
 **Euler-Lagrange Equation:**
-```
-d²A_mono/dr² + (2/r) dA_mono/dr = -mu_0 * J_DPM(r)
-```
+$$
+d2A_mono/dr2 + (2/r) dA_mono/dr = -mu_0 * J_DPM(r)
+$$
 
 **Result:**
-```
+$$
 B_mono = mu_DPM / (4*pi*r)  with f_res = 29.14 Hz
-```
+$$
 
 **Critical Values:**
 - `f_res = 29.14 Hz` (LRC resonance: 1/(2π√(LC)))
-- `decay_power = -1` (1/r pseudo-monopole, NOT 1/r³ dipole)
+- `decay_power = -1` (1/r pseudo-monopole, NOT 1/r3 dipole)
 - `L = 75 µH, C = 500 µF, R = 33.3 Ω`
 - `B(0.61m) = 2.53e-8 T` (measured)
 
 **Derivation Chain:**
-1. `S_mag = integral d^4x [(mu_0/8pi)|curl A_SCm|^2 - (1/2)rho_SCm|v|^2 Theta + lambda_LRC A cos(omega*t)]`
+1. `S_mag = integral d^4x [(mu_0/8pi)|curl A_SCm|^2 - (1/2)rho_SCm|v|^2 Theta + lambda_LRC A
+cos(omega*t)]`
 2. `delta S / delta A_mono = 0` → modified Ampère with LRC driving
-3. `curl B_SCm = mu_0 J_SCm + lambda_LRC cos(omega*t)` → 1/r solution (not 1/r³)
+3. `curl B_SCm = mu_0 J_SCm + lambda_LRC cos(omega*t)` → 1/r solution (not 1/r3)
 4. DPM coherence at spark-gap: pseudo-monopole geometry from di-pseudo-monopole overlapping fields
 
-**Code Reference:** `uqff_lagrangian_derivation.py` → `EULER_LAGRANGE_NEW_TERM_MAPPINGS["monopole_1_over_r"]`
+**Code Reference:** `uqff_lagrangian_derivation.py` →
+`EULER_LAGRANGE_NEW_TERM_MAPPINGS["monopole_1_over_r"]`
 
 ---
 
@@ -86,13 +109,15 @@ B_mono = mu_DPM / (4*pi*r)  with f_res = 29.14 Hz
 
 ### §A.1 Sector Classification
 
-This paper maps to **AGN-jet** sector of the 9-sector UQFF Lagrangian (see `uqff_lagrangian_derivation.py`).
+This paper maps to **AGN-jet** sector of the 9-sector UQFF Lagrangian (see
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
-The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive quantum fundamentals (DPM, UA, SCm):
+The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
+quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_\mu \phi_{\rm jet})(\partial^\mu \phi_{\rm jet}) - V(\phi_{\rm jet}) + \mathcal{L}_{\rm cosmo}$$
+$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_mu \phi_{\rm jet})(\partial^\mu \phi_{\rm jet}) - V(\phi_{\rm jet}) + \mathcal{L}_{\rm cosmo}$$
 
 where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
@@ -106,7 +131,9 @@ $$\boxed{\frac{\delta S}{\delta \phi_{\rm jet}} = \partial_t(\gamma \rho v_{\rm 
 
 $$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\rm jet} = 0$$
 
-The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g forces) through vacuum density initialization to the sector-specific equation of motion. Every term in the E-L equation inherits its physical origin from the cosmogenesis master.
+The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
+forces) through vacuum density initialization to the sector-specific equation of motion. Every term
+in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 
 ---
@@ -117,9 +144,9 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.106$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m³.
+For this system, the local VDS sub-ratio is $0.106$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -131,13 +158,13 @@ Since $p_{\rm DVP} = 97$ is **resonant** (threshold at $p > 26$), the system's v
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
-The BSH saturation timescale for this sector is **10⁷ yr** (duty cycle period):
+The BSH saturation timescale for this sector is **107 yr** (duty cycle period):
 
-$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
+$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\rm SCm}$ which initializes the harmonic series at cosmogenesis.
 
@@ -145,11 +172,11 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.106 | ✓ Threshold-consistent |
-| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 97$ | ✓ Resonant |
-| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
-| [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
+| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.106 | PASS Threshold-consistent |
+| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 97$ | PASS Resonant |
+| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
+| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
 ---
@@ -159,20 +186,23 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | ✓ Consistent |
-| Cosmological constant Λ | 1.1×10⁻⁵² m⁻² (UQFF vacuum term) | 1.114×10⁻⁵² m⁻² | Planck 2018 | ✓ Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10⁻³⁵/yr | Super-K 2024 | ✓ Consistent |
-| UQFF buoyancy signature | F_U_Bi_i unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
+| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
-**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes significant, offering a falsifiable prediction beyond the Standard Model.
+**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
+produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
+bridge.*
 
 ## References
 
-1. Murphy, D.T. -- Star Magic UQFF Framework (2024-2026)
+1. Murphy, D.T. — Star Magic UQFF Framework (2024-2026)
 2. Biot-Savart law; Maxwell's equations for current loop B-field
-3. Dirac, P.A.M. -- Quantised Singularities in the Electromagnetic Field (1931)
+3. Dirac, P.A.M. — Quantised Singularities in the Electromagnetic Field (1931)
 4. UQFF Calibration: kappa=0.0005/day, [SSq]=0.57, beta_i~0.603
 5. UQFF 9-Sector Lagrangian Derivation, Session 202 (commit 9d26977)
 
@@ -189,9 +219,9 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `f`neutron_s26_coupling`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `k`ozima_scm_cross_section`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `k`ozima_wstp_kernel`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -200,7 +230,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `r`amanujan_polylog_s26`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
 | `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
@@ -209,7 +239,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `m`ock_theta_q26`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -220,8 +250,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `r`amanujan_pi_uqff`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `m`ock_theta_pi_wstp_kernel`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]

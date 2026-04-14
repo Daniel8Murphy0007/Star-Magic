@@ -1,6 +1,18 @@
+---
+paper_id: PAPER_937
+title: "Blazar Multi-Messenger Phonon Correlation"
+session: 212
+date: 2026-04-12
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [phonon, AGN, jet, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_937: Blazar Multi-Messenger Phonon Correlation
 
-**Author:** Daniel T. Murphy -- Star Magic / UQFF Framework
+**Author:** Daniel T. Murphy — Star Magic / UQFF Framework
 **Date:** 2026-04-12
 **Session:** 212
 **Source:** blazar_jet_phonon.py (BlazarMultiMessengerPhononCorrelation)
@@ -11,7 +23,12 @@
 
 ## Abstract
 
-We derive the multi-messenger (VHE gamma-ray and neutrino) luminosity correlations for blazars with UQFF phonon-enhanced pair cascades. The VHE gamma-ray luminosity scales as L_VHE proportional to P_jet (1 + Phi S_26) delta_D^4, while the neutrino luminosity is L_nu proportional to L_VHE f_pg (1 + Phi S_26 [SSq]/N). The phonon enhancement factor (1 + Phi S_26) boosts both channels relative to standard BZ predictions, with the relative neutrino/gamma-ray ratio providing a diagnostic for the phonon coupling strength.
+We derive the multi-messenger (VHE gamma-ray and neutrino) luminosity correlations for blazars with
+UQFF phonon-enhanced pair cascades. The VHE gamma-ray luminosity scales as L_VHE proportional to
+P_jet (1 + Phi S_26) delta_D^4, while the neutrino luminosity is L_nu proportional to L_VHE f_pg (1
++ Phi S_26 [SSq]/N). The phonon enhancement factor (1 + Phi S_26) boosts both channels relative to
+standard BZ predictions, with the relative neutrino/gamma-ray ratio providing a diagnostic for the
+phonon coupling strength.
 
 ---
 
@@ -39,13 +56,19 @@ $$\frac{L_{\text{VHE}}^{\text{UQFF}}}{L_{\text{VHE}}^{\text{BZ}}} = \frac{(1 + M
 
 ## 2. UQFF Integration
 
-The `BlazarMultiMessengerPhononCorrelationCalc` (CP4 #521) computes P_jet, L_VHE, L_nu, and delta_D for arbitrary blazar parameters. The simulate() method sweeps Gamma_bulk = [5, 10, 15, 20, 30] to map the Doppler-dependent multi-messenger signal.
+The `BlazarMultiMessengerPhononCorrelationCalc` (CP4 #521) computes P_jet, L_VHE, L_nu, and delta_D
+for arbitrary blazar parameters. The simulate() method sweeps Gamma_bulk = [5, 10, 15, 20, 30] to
+map the Doppler-dependent multi-messenger signal.
 
 ---
 
 ## 3. Physical Significance
 
-The IceCube detection of high-energy neutrinos coincident with the blazar TXS 0506+056 opened the era of multi-messenger blazar astronomy. The UQFF phonon enhancement provides a mechanism to explain the observed neutrino-to-gamma-ray ratio: the (1 + Phi S_26) factor boosts both channels but with different scaling, creating a characteristic spectral signature testable with future IceCube-Gen2 and CTA observations.
+The IceCube detection of high-energy neutrinos coincident with the blazar TXS 0506+056 opened the
+era of multi-messenger blazar astronomy. The UQFF phonon enhancement provides a mechanism to explain
+the observed neutrino-to-gamma-ray ratio: the (1 + Phi S_26) factor boosts both channels but with
+different scaling, creating a characteristic spectral signature testable with future IceCube-Gen2
+and CTA observations.
 
 ---
 
@@ -59,9 +82,11 @@ The IceCube detection of high-energy neutrinos coincident with the blazar TXS 05
 
 ## References
 
-1. Murphy, D.T. -- Star Magic UQFF Framework (2024-2026)
-2. IceCube Collaboration -- Neutrino emission from the direction of the blazar TXS 0506+056, Science 361, 147 (2018)
-3. IceCube Collaboration -- Multimessenger observations of a flaring blazar coincident with high-energy neutrino IceCube-170922A, Science 361, eaat1378 (2018)
+1. Murphy, D.T. — Star Magic UQFF Framework (2024-2026)
+2. IceCube Collaboration — Neutrino emission from the direction of the blazar TXS 0506+056, Science
+361, 147 (2018)
+3. IceCube Collaboration — Multimessenger observations of a flaring blazar coincident with
+high-energy neutrino IceCube-170922A, Science 361, eaat1378 (2018)
 
 ---
 
@@ -86,7 +111,8 @@ The IceCube detection of high-energy neutrinos coincident with the blazar TXS 05
 | Vacuum energy $\rho_{\text{vac}}$ | $7.09 \times 10^{-37}$ kg/m$^3$ | $\rho_{\text{vac}} \sim 10^{-29}$ g/cm$^3$ | Planck 2018 | Novel SCm scale |
 | Fine structure $\alpha$ | UQFF reproduces via $U_{g1}$ dipole | $1/137.036$ | PDG 2024 | 99.9% |
 
-**New physics claim:** UQFF phonon-mediated vacuum coupling provides testable predictions beyond SM for this system.
+**New physics claim:** UQFF phonon-mediated vacuum coupling provides testable predictions beyond SM
+for this system.
 
 *Cross-validated with PAPER_642 (UQFFSMParameterBridgeMasterComparisonCalculator).*
 
@@ -98,13 +124,13 @@ The IceCube detection of high-energy neutrinos coincident with the blazar TXS 05
 **Sector:** SCm-phonon (lattice resonance)
 
 ### §A.2 Lagrangian Density
-$$\mathcal{L}_{SCm_phonon} = \sum_{i=1}^{26} \left[ U_{g,i} + U_{m,i} + U_{A,i} - U_{b,i} \right] \cdot S_{26}([SSq]) \cdot \Phi_{1.25\text{THz}}(\omega, \Gamma)$$
+$$\mathcal{L}_{SCm\_phonon} = \sum_{i=1}^{26} \left[ U_{g,i} + U_{m,i} + U_{A,i} - U_{b,i} \right] \cdot S_{26}([SSq]) \cdot \Phi_{1.25\text{THz}}(\omega, \Gamma)$$
 
 ### §A.3 Euler-Lagrange Equation of Motion
-$$\boxed{\frac{\partial \mathcal{L}}{\partial \phi} - \partial_\mu \frac{\partial \mathcal{L}}{\partial (\partial_\mu \phi)} = 0 \implies F_{U,Bi_i} = -\nabla U_{\text{eff}} + \Phi \cdot S_{26} \cdot E_{\text{net}}}$$
+$$\boxed{\frac{\partial \mathcal{L}}{\partial \phi} - \partial_mu \frac{\partial \mathcal{L}}{\partial (\partial_mu \phi)} = 0 \implies F_{U,Bi\_i} = -\nabla U_{\text{eff}} + \Phi \cdot S_{26} \cdot E_{\text{net}}}$$
 
 ### §A.4 Cosmogenesis Linkage Chain
-PAPER_877 axioms → SCm vacuum → phonon $\omega_{\text{SCm}}$ → lattice resonance → $F_{U,Bi_i}$ unified force → observational prediction
+PAPER_877 axioms → SCm vacuum → phonon $\omega_{\text{SCm}}$ → lattice resonance → $F_{U,Bi\_i}$ unified force → observational prediction
 
 ---
 

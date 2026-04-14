@@ -1,13 +1,27 @@
+---
+paper_id: PAPER_481
+title: "18-System UQFF Module Suite: F_U_Bi_i C++ Implementations for Astrophysical Systems (Oct
+2025 Batch)"
+session: 0
+date: 2025-01-01
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [TDE, AGN, cluster, DPM, jet, pulsar, F_U_Bi_i, LENR]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_481 — 18-System UQFF Module Suite: F_U_Bi_i C++ Implementations for Astrophysical Systems (Oct 2025 Batch)
 **Author:** Daniel T. Murphy
 **Date:** Oct 2025
-<!-- Session 126 | grok_share_bdfb3a05b06.txt | Quality Score: 5 -->
+<!— Session 126 | `grok_share_bdfb3a05b06`.txt | Quality Score: 5 —>
 
 ## Abstract
 
-This paper documents the complete C++ module implementation suite for 18 astrophysical systems encoded in the UQFF framework (Unified Quantum Field Framework). Each module encapsulates the full $F_{U_{Bi_i}}$ Master Unified Field Equation with system-specific parameters stored in a `std::map<std::string, std::complex<double>>` dictionary, enabling runtime parameter updates, dynamic sub-term computation, and descriptive equation output. This batch extends the existing individual-system module collection (Abell 2256 v1, Centaurus A) to a comprehensive library covering TDEs, compact clusters, pulsars, interacting galaxies, AGN jets, symbiotic binaries, solar-system aurorae, and star-forming regions.
+This paper documents the complete C++ module implementation suite for 18 astrophysical systems encoded in the UQFF framework (Unified Quantum Field Framework). Each module encapsulates the full $F_{U\_{Bi\_i}}$ Master Unified Field Equation with system-specific parameters stored in a `std::map<std::string, std::complex<double>>` dictionary, enabling runtime parameter updates, dynamic sub-term computation, and descriptive equation output. This batch extends the existing individual-system module collection (Abell 2256 v1, Centaurus A) to a comprehensive library covering TDEs, compact clusters, pulsars, interacting galaxies, AGN jets, symbiotic binaries, solar-system aurorae, and star-forming regions.
 
-**Source:** `grok_share_bdfb3a05b06.txt` (~11,592 lines), Grok analysis of 18 × `.docx` attachments (Sept–Oct 2025), Session 126 extraction.
+**Source:** `grok_share_bdfb3a05b06.txt` (~11,592 lines), Grok analysis of 18 × `.docx` attachments
+(Sept–Oct 2025), Session 126 extraction.
 
 ---
 
@@ -15,16 +29,16 @@ This paper documents the complete C++ module implementation suite for 18 astroph
 
 All 18 modules share the same computational skeleton:
 
-$$F_{U_{Bi_i}} \approx \left(\int_0^{x_2} \mathcal{I}(r,t)\, dx\right) \approx \mathcal{I} \cdot x_2$$
+$$F_{U\_{Bi\_i}} \approx \left(\int_0^{x_2} \mathcal{I}(r,t)\, dx\right) \approx \mathcal{I} \cdot x_2$$
 
 where the integrand $\mathcal{I}$ sums all force contributions:
 
-$$\mathcal{I} = -F_0 + \frac{m_e c^2}{r^2} \mathrm{DPM}_{mom} \cos\theta + \frac{GM}{r^2} \mathrm{DPM}_{grav} + \rho_{vac,UA} \mathrm{DPM}_{stab} + k_{LENR}\left(\frac{\omega_{LENR}}{\omega_0}\right)^2 + k_{act}\cos(\omega_{act}t + \phi) + k_{DE}L_X + 2qB_0 V\sin\theta \cdot \mathrm{DPM}_{res} + k_n\sigma_n + k_{rel}\left(\frac{E_{cm,astro}}{E_{cm}}\right)^2 + F_\nu$$
+$$\mathcal{I} = -F_0 + \frac{m_e c^2}{r^2} \mathrm{DPM}_{mom} \costheta + \frac{GM}{r^2} \mathrm{DPM}_{grav} + \rho_{vac,UA} \mathrm{DPM}_{stab} + k_{LENR}\left(\frac{\omega_{LENR}}{\omega_0}\right)^2 + k_{act}\cos(\omega_{act}t + \phi) + k_{DE}L_X + 2qB_0 V\sintheta \cdot \mathrm{DPM}_{res} + k_n\sigma_n + k_{rel}\left(\frac{E_{cm,astro}}{E_{cm}}\right)^2 + F_\nu$$
 
 with quadratic root approximation $x_2 \approx -1.35\times10^{172}$ (universal constant).
 
 **Sub-equation API (identical for all modules):**
-- `computeF(t)` — full $F_{U_{Bi_i}}$ (integral approx)
+- `computeF(t)` — full $F_{U\_{Bi\_i}}$ (integral approx)
 - `computeCompressed(t)` — integrand $\mathcal{I}$
 - `computeResonant()` — DPM magnetic resonance
 - `computeBuoyancy()` — $U_{b1} = \beta_i V_{infl,UA} \rho_{vac,A} a_\mathrm{univ}$
@@ -41,13 +55,13 @@ with quadratic root approximation $x_2 \approx -1.35\times10^{172}$ (universal c
 
 | Constant | Value | Units |
 |----------|-------|-------|
-| $G$ | $6.6743 \times 10^{-11}$ | m³ kg⁻¹ s⁻² |
+| $G$ | $6.6743 \times 10^{-11}$ | m3 kg-1 s-2 |
 | $c$ | $3 \times 10^8$ | m/s |
 | $\hbar$ | $1.0546 \times 10^{-34}$ | J·s |
 | $q$ | $1.6 \times 10^{-19}$ | C |
 | $m_e$ | $9.11 \times 10^{-31}$ | kg |
 | $\mu_B$ | $9.274 \times 10^{-24}$ | J/T |
-| $\rho_{vac,UA}$ | $7.09 \times 10^{-36}$ | kg/m³ |
+| $\rho_{vac,UA}$ | $7.09 \times 10^{-36}$ | kg/m3 |
 | $k_{LENR}$ | $10^{-10}$ | — |
 | $\omega_{LENR}$ | $2\pi \times 1.25\times10^{12}$ | rad/s |
 | $F_0$ | $1.83 \times 10^{71}$ | N |
@@ -77,16 +91,16 @@ with quadratic root approximation $x_2 \approx -1.35\times10^{172}$ (universal c
 | `VelaPulsarUQFFModule` | Pulsar/PWN | $2.8\times10^{30}$ | $1.7\times10^{17}$ | $10^{-12}$ | $10^{27}$ | $3.47\times10^{11}$ | $1.24\times10^{24}$ |
 
 **Notes:**
-- All modules share universal DPM parameters: $\rho_{vac,UA}=(7.09\times10^{-36} + 10^{-37}i)$ kg/m³, $\mathrm{DPM}_{mom}=0.93+0.05i$, $\mathrm{DPM}_{grav}=1.0+0.1i$
+- All modules share universal DPM parameters: $\rho_{vac,UA}=(7.09\times10^{-36} + 10^{-37}i)$ kg/m3, $\mathrm{DPM}_{mom}=0.93+0.05i$, $\mathrm{DPM}_{grav}=1.0+0.1i$
 - $E_{cm}=3.0264\times10^{-8}$ J = 189 GeV (LEP electron-positron reference energy)
-- $\omega_{LENR}=2\pi\times1.25\times10^{12}$ rad/s (LENR THz resonance, universal)
+- $\omega_{LENR}=2\pitimes1.25\times10^{12}$ rad/s (LENR THz resonance, universal)
 
 ---
 
 ## 3. Notable Physical Observations
 
 ### 3.1 Jupiter Aurorae — UQFF at Planetary Scale
-The `JupiterAuroraeUQFFModule` is uniquely significant: it applies the $F_{U_{Bi_i}}$ framework to a **planetary-scale** object, with $M = 1.898\times10^{27}$ kg (Jupiter mass) and $r = 7.1492\times10^7$ m (Jupiter equatorial radius). Default $t = 60$ s captures auroral emission timescale. This demonstrates UQFF universality across 18 orders of magnitude in mass (Jupiter M to galaxy cluster M).
+The `JupiterAuroraeUQFFModule` is uniquely significant: it applies the $F_{U\_{Bi\_i}}$ framework to a **planetary-scale** object, with $M = 1.898\times10^{27}$ kg (Jupiter mass) and $r = 7.1492\times10^7$ m (Jupiter equatorial radius). Default $t = 60$ s captures auroral emission timescale. This demonstrates UQFF universality across 18 orders of magnitude in mass (Jupiter M to galaxy cluster M).
 
 ### 3.2 R Aquarii — Symbiotic Binary on HST-Observable Timescale
 $t = 1.4\times10^9$ s = 44.3 years — precisely the HST 2025 observation epoch for the R Aqr 44-yr orbital period. $\omega_0 = 10^{-12}$ rad/s reflects the binary orbital resonance frequency.
@@ -98,7 +112,7 @@ For $B_0 = 10^{-5}$ T (TDE field), $\omega_0 = 10^{-12}$ rad/s: $\mathrm{DPM}_{r
 
 ### 3.4 LENR Dominance Signature
 At low $\omega_0$ (cluster scale, $10^{-15}$ rad/s):
-$$k_{LENR}\left(\frac{\omega_{LENR}}{\omega_0}\right)^2 = 10^{-10} \times (2\pi\times1.25\times10^{12}/10^{-15})^2 \approx 10^{-10} \times 6.2\times10^{54} \approx 6.2\times10^{44}$$
+$$k_{LENR}\left(\frac{\omega_{LENR}}{\omega_0}\right)^2 = 10^{-10} \times (2\pitimes1.25\times10^{12}/10^{-15})^2 \approx 10^{-10} \times 6.2\times10^{54} \approx 6.2\times10^{44}$$
 This LENR term dominates all other integrand contributions for cluster-scale systems.
 
 ---
@@ -139,12 +153,14 @@ This LENR term dominates all other integrand contributions for cluster-scale sys
 ## 5. Integration Pathway
 
 ### Phase A: MAIN_1 Integration
-Register all 18 modules in `MAIN_1_CoAnQi.cpp` under `SOURCE_SESSION126_MODULES` namespace. Each module contributes to the physics term registry with:
+Register all 18 modules in `MAIN_1_CoAnQi.cpp` under `SOURCE_SESSION126_MODULES` namespace. Each
+module contributes to the physics term registry with:
 - `computeF(t)` → `F_U_Bi_i` value
 - `computeCompressedG(t)` → gravitational analog $g(r,t)$
 
 ### Phase B: CP2 Calculator
-Add `IndividualSystemUQFF18Calculator` to `CondensedPhysics2.py` wrapping all 18 `computeF()` results in a unified dataset response. Target: CP2 class count 602 → 603.
+Add `IndividualSystemUQFF18Calculator` to `CondensedPhysics2.py` wrapping all 18 `computeF()`
+results in a unified dataset response. Target: CP2 class count 602 → 603.
 
 ### Phase C: CP4 Registry
 Add `Session126GrokShareBdfb3a05b06HubCalculator` as CP4 entry #105.
@@ -180,13 +196,15 @@ Add `Session126GrokShareBdfb3a05b06HubCalculator` as CP4 entry #105.
 
 ### §A.1 Sector Classification
 
-This paper maps to **TDE-outflow** sector of the 9-sector UQFF Lagrangian (see `uqff_lagrangian_derivation.py`).
+This paper maps to **TDE-outflow** sector of the 9-sector UQFF Lagrangian (see
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
-The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive quantum fundamentals (DPM, UA, SCm):
+The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
+quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_\mu \phi_{\rm outflow})(\partial^\mu \phi_{\rm outflow}) - V(\phi_{\rm outflow}) + \mathcal{L}_{\rm cosmo}$$
+$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_mu \phi_{\rm outflow})(\partial^\mu \phi_{\rm outflow}) - V(\phi_{\rm outflow}) + \mathcal{L}_{\rm cosmo}$$
 
 where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
@@ -200,7 +218,9 @@ $$\boxed{\frac{\delta S}{\delta \phi_{\rm outflow}} = F_{\rm Kozima} \cdot \tfra
 
 $$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\rm outflow} = 0$$
 
-The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g forces) through vacuum density initialization to the sector-specific equation of motion. Every term in the E-L equation inherits its physical origin from the cosmogenesis master.
+The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
+forces) through vacuum density initialization to the sector-specific equation of motion. Every term
+in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 
 ---
@@ -211,9 +231,9 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.062$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m³.
+For this system, the local VDS sub-ratio is $0.062$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -227,11 +247,11 @@ Since $p_{\rm DVP} = 3$ is **sub-threshold** (threshold at $p > 26$), the system
 
 The BSH saturation timescale for this sector is **100 days** (X-ray light curve plateau):
 
-$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
+$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\rm SCm}$ which initializes the harmonic series at cosmogenesis.
 
@@ -239,11 +259,11 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.062 | ✓ Threshold-consistent |
-| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 3$ | ✓ Sub-threshold |
-| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
-| [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
+| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.062 | PASS Threshold-consistent |
+| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 3$ | PASS Sub-threshold |
+| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
+| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
 ---
@@ -253,10 +273,10 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Higgs mass m_H | UQFF K_HIGGS=47.34 → m_H_UQFF = 125.09 GeV | m_H = 125.20 ± 0.11 GeV | PDG 2024 | 99.8% |
-| Cosmological Λ | UQFF |∇UA|² → 1.09e-52 m⁻² | Λ = 1.114e-52 m⁻² (Planck+DESI) | Planck 2018 | 97.8% |
-| Thomson σ_T (QED) | UQFF U_m kernel: σ_T = 6.6524e-29 m² | σ_T = 6.6524e-29 m² | PDG 2024 | 100% (exact) |
-| κ baryon stability | κ = 0.0005/day; scale separation 10³³ from proton decay | τ_p > 7.7e33 yr (Super-K) | Super-K 2024 | ✓ UQFF baryon-safe |
+| Higgs mass m_H | UQFF K_HIGGS=47.34 → `m_H_UQFF` = 125.09 GeV | m_H = 125.20 ± 0.11 GeV | PDG 2024 | 99.8% |
+| Cosmological Λ | UQFF |∇UA|2 → 1.09e-52 m-2 | Λ = 1.114e-52 m-2 (Planck+DESI) | Planck 2018 | 97.8% |
+| Thomson σ_T (QED) | UQFF U_m kernel: σ_T = 6.6524e-29 m2 | σ_T = 6.6524e-29 m2 | PDG 2024 | 100% (exact) |
+| κ baryon stability | κ = 0.0005/day; scale separation 1033 from proton decay | τ_p > 7.7e33 yr (Super-K) | Super-K 2024 | PASS UQFF baryon-safe |
 
 **New physics claim:** UQFF operates at a vacuum topology scale (~200 PeV) that is 8 orders
 below the GUT scale and 33 orders above nuclear baryon-number scales. This intermediate-scale
@@ -267,7 +287,8 @@ while remaining consistent with all collider and nuclear precision measurements.
 
 
 
-*Copyright — Daniel T. Murphy. Session 126, March 23, 2026. Extracted from grok_share_bdfb3a05b06.txt.*
+*Copyright — Daniel T. Murphy. Session 126, March 23, 2026. Extracted from
+grok_share_bdfb3a05b06.txt.*
 
 
 ---
@@ -282,9 +303,9 @@ while remaining consistent with all collider and nuclear precision measurements.
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `f`neutron_s26_coupling`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `k`ozima_scm_cross_section`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `k`ozima_wstp_kernel`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -293,7 +314,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `r`amanujan_polylog_s26`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
 | `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
@@ -302,7 +323,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `m`ock_theta_q26`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -313,8 +334,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `r`amanujan_pi_uqff`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `m`ock_theta_pi_wstp_kernel`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]

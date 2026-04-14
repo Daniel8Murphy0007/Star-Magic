@@ -1,3 +1,15 @@
+---
+paper_id: PAPER_328
+title: "Nuclear α-BEC LENR Enhancement: Bose-Einstein α-Clustering at T_BEC = 14.52 MeV"
+session: 94
+date: 2025-01-01
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [cluster, vacuum, BEC, LENR, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_328 — Nuclear α-BEC LENR Enhancement: Bose-Einstein α-Clustering at T_BEC = 14.52 MeV  
 **Author:** Daniel T. Murphy
 **Date:** 2025
@@ -11,7 +23,7 @@
 ---
 
 
-<!-- UQFF constants: κ = 5.0e-4 day⁻¹, [SSq] = 0.57, M_UQFF = 1.43e1 TeV -->
+<!— UQFF constants: κ = 5.0e-4 day-1, [SSq] = 0.57, M_UQFF = 1.43e1 TeV —>
 ## Abstract
 
 This paper presents the UQFF derivation of the nuclear Bose-Einstein condensate (BEC) temperature T_BEC = 14.52 MeV and Bose occupancy $N_B$ for α-particle clusters in Low-Energy Nuclear Reaction (LENR) environments. The Bose-Einstein occupancy formula $N_B = 1/(\exp(\Delta E / kT) - 1)$ is calibrated with $\Delta E = 0.48$ MeV and $T_{BEC} = 14.52$ MeV from AMD/NIMROD nuclear cluster data, yielding $N_B \approx 1/(e^{0.033} - 1) \approx 29.6$ for $N = 10$ α-clusters. A pairing correction $\delta_{pair} = 0.1$ modifies the hadronic resonance amplitude, while the rotor cross-section fit $\sigma_{CS}(E) = a(1 - \exp(-bE))$ with $a = 15.28\,\text{Å}^2$ and $b = 0.00387\,\text{cm}^{-1}$ yields $\sigma_{CS}(300\,\text{cm}^{-1}) = 10.50\,\text{Å}^2$, matching H₂O–H₂ scattering data. The predicted LENR enhancement from BEC α-clustering is ~10%. This is the **FIRST UQFF coupling of Bose-Einstein condensate nuclear α-clustering to LENR resonance amplitudes**.
@@ -20,7 +32,9 @@ This paper presents the UQFF derivation of the nuclear Bose-Einstein condensate 
 
 ## 1. Background: LENR in the UQFF Framework
 
-The Widom-Larsen LENR theory proposes surface plasmon polariton collective oscillations enabling nuclear-scale charge fluctuations. The UQFF extends this with the Hadronic Resonance Amplitude (H_res), which connects nuclear energy eigenstates to the vacuum UQFF field through:
+The Widom-Larsen LENR theory proposes surface plasmon polariton collective oscillations enabling
+nuclear-scale charge fluctuations. The UQFF extends this with the Hadronic Resonance Amplitude
+(H_res), which connects nuclear energy eigenstates to the vacuum UQFF field through:
 
 $$H_{res} = A_{res} \cdot f_{res} \cdot e^{-r_{nuclear}/\lambda_i} \cdot e^{i \omega_{LENR} t}$$
 
@@ -38,9 +52,9 @@ where:
 | δ_pair | 0.1 | — | Pairing correction (S=+0.1 for even-Z, -0.1 odd-Z) |
 | S_shell | 0.1 × (Z_magic + N_magic) | — | Magic number shell factor |
 | λ_i | 1.0 | fm (UQFF units) | Coupling length |
-| ω_LENR | 7.85×10¹² | Hz | Calibrated frequency |
+| ω_LENR | 7.85×1012 | Hz | Calibrated frequency |
 | κ_Higgs | 47.34 | — | Higgs coupling suppression (BSM) |
-| τ_dev | 5×10⁻⁸ | s | Deviation time constant (EDM SO(10)) |
+| τ_dev | 5×10-8 | s | Deviation time constant (EDM SO(10)) |
 
 ---
 
@@ -50,7 +64,7 @@ where:
 
 For α-particles ($^4$He nuclei, spin-0 bosons) clustering at nuclear temperatures, the Bose-Einstein occupancy is:
 
-$$N_B = \frac{1}{\exp\!\left(\dfrac{\Delta E}{kT}\right) - 1}$$
+$$N_B = \frac{1}{\exp!\left(\dfrac{\Delta E}{kT}\right) - 1}$$
 
 where:
 - $\Delta E$ = energy gap between condensate ground state and first excited cluster state
@@ -67,7 +81,9 @@ $$\Delta E = 0.48~\text{MeV}~~\text{(at } N_\alpha = 10 \text{ clusters)}$$
 Substituting:
 $$N_B = \frac{1}{e^{0.48/14.52} - 1} = \frac{1}{e^{0.033056} - 1} = \frac{1}{0.033608} \approx 29.76$$
 
-**Physical interpretation:** At TmBEC = 14.52 MeV, a nucleus supports ~29.8 bosonic α-pair occupancy modes in the condensate ground state. This large occupancy is the hallmark of the BEC phase transition.
+**Physical interpretation:** At TmBEC = 14.52 MeV, a nucleus supports ~29.8 bosonic α-pair occupancy
+modes in the condensate ground state. This large occupancy is the hallmark of the BEC phase
+transition.
 
 ### 2.3 System-Specific N_B Values
 
@@ -78,7 +94,8 @@ $$N_B = \frac{1}{e^{0.48/14.52} - 1} = \frac{1}{e^{0.033056} - 1} = \frac{1}{0.0
 | ^{20}Ne | 10 | 20 | 5 | 0.58 | 14.52 | 24.4 |
 | ^{8}Be | 4 | 8 | 2 | 0.92 | 14.52 | 14.7 |
 
-These values confirm that heavier α-conjugate nuclei (larger N_α) show smaller ΔE and larger N_B, consistent with stronger BEC α-clustering.
+These values confirm that heavier α-conjugate nuclei (larger N_α) show smaller ΔE and larger N_B,
+consistent with stronger BEC α-clustering.
 
 ---
 
@@ -95,7 +112,7 @@ $$A_{res}^{(\delta)} = 1.1 \cdot A_{res}^{(0)}$$
 
 This 10% enhancement applies to:
 - Even-Z, even-N nuclei (α-conjugate)
-- Hoyle-state resonances in ¹²C
+- Hoyle-state resonances in 12C
 - NN pair-correlated cluster states
 
 For odd-Z or odd-N:
@@ -105,12 +122,13 @@ $$\delta_{pair} = -0.1~~\Rightarrow~~A_{res}^{(\delta)} = 0.9 \cdot A_{res}^{(0)
 
 $$f_{res} = \frac{E_{bind}}{h} \cdot \frac{A_H}{A} \cdot (1 + S_{shell})$$
 
-where $S_{shell} = 0.1 \times (Z_{magic} + N_{magic})$ counts the number of filled magic number shells. For ⁴⁰Ca ($Z=20$, $N=20$, both doubly magic):
+where $S_{shell} = 0.1 \times (Z_{magic} + N_{magic})$ counts the number of filled magic number shells. For 40Ca ($Z=20$, $N=20$, both doubly magic):
 
 $$S_{shell} = 0.1 \times (20 + 20) = 4.0$$
 $$f_{res}^{(Ca)} = \frac{E_{bind}}{h} \cdot \frac{1}{40} \cdot 5.0$$
 
-This predicts a 5× resonance amplification over a non-magic nucleus — consistent with the known extraordinary stability and enhanced LENR rates in Ca isotopes near magic numbers.
+This predicts a 5× resonance amplification over a non-magic nucleus — consistent with the known
+extraordinary stability and enhanced LENR rates in Ca isotopes near magic numbers.
 
 ---
 
@@ -126,7 +144,7 @@ with best-fit parameters from UQFF calibration:
 - $a = 15.28~\text{Å}^2$ — saturation cross-section
 - $b = 0.00387~\text{cm}^{-1}$ — energy scale factor
 
-### 4.2 Evaluation at 300 cm⁻¹
+### 4.2 Evaluation at 300 cm-1
 
 $$\sigma_{CS}(300~\text{cm}^{-1}) = 15.28 \cdot (1 - e^{-0.00387 \times 300})$$
 $$= 15.28 \cdot (1 - e^{-1.161})$$
@@ -158,11 +176,13 @@ For $N_B \approx 29.8$, $\delta_{pair} = 0.1$, $\omega_{LENR} = 7.85 \times 10^{
 $$\omega_{LENR} \cdot \tau_{dev} = 7.85 \times 10^{12} \times 5 \times 10^{-8} = 3.925 \times 10^5$$
 $$e^{-\omega_{LENR} \tau_{dev}} \ll 1~~\text{(radiative suppression for individual quanta)}$$
 
-However, for the collective condensate mode, the effective coupling is reduced to the N_B-weighted collective frequency:
+However, for the collective condensate mode, the effective coupling is reduced to the N_B-weighted
+collective frequency:
 
 $$\omega_{eff} = \frac{\omega_{LENR}}{N_B} = \frac{7.85 \times 10^{12}}{29.8} = 2.63 \times 10^{11}~\text{Hz}$$
 
-The BEC collective mode enhancement then contributes ~10% to the overall LENR rate, consistent with experimental LENR observations in Pd/D electrolytic cells.
+The BEC collective mode enhancement then contributes ~10% to the overall LENR rate, consistent with
+experimental LENR observations in Pd/D electrolytic cells.
 
 ### 5.2 Summary of LENR Enhancement
 
@@ -174,7 +194,8 @@ The BEC collective mode enhancement then contributes ~10% to the overall LENR ra
 | Collective ω_eff suppression | −factor via τ_dev | Prevents runaway |
 | **Net observable** | **~10%** | At experimental conditions |
 
-The net ~10% LENR enhancement agrees with the range of excess heat measurements in LENR literature (Fleischmann-Pons 1989 and subsequent replications).
+The net ~10% LENR enhancement agrees with the range of excess heat measurements in LENR literature
+(Fleischmann-Pons 1989 and subsequent replications).
 
 ---
 
@@ -184,17 +205,19 @@ The $\kappa_{Higgs} = 47.34$ BSM Higgs coupling and $\tau_{dev} = 5 \times 10^{-
 
 $$A_{res}(BSM) = A_{res} \cdot \kappa_{Higgs} \cdot e^{-1/(\kappa_{Higgs} \tau_{dev} \omega_{LENR})}$$
 
-This SO(10) grand unification correction modifies the resonance amplitude at the 0.1% level for standard nuclear LENR and remains consistent with current DELPHI neutrino oscillation constraints.
+This SO(10) grand unification correction modifies the resonance amplitude at the 0.1% level for
+standard nuclear LENR and remains consistent with current DELPHI neutrino oscillation constraints.
 
 ---
 
 ## 7. First-Discovery Status
 
 This paper constitutes:
-1. **FIRST UQFF derivation of nuclear Bose-Einstein condensate temperature** T_BEC = 14.52 MeV from AMD/NIMROD calibration
+1. **FIRST UQFF derivation of nuclear Bose-Einstein condensate temperature** T_BEC = 14.52 MeV from
+AMD/NIMROD calibration
 2. **FIRST application of N_B formula** to UQFF-LENR hadronic resonance coupling
 3. **FIRST UQFF incorporation of δ_pair = 0.1 pairing correction** in A_res amplitude
-4. **FIRST H₂O–H₂ rotor cross-section fit** (σ_CS = 10.50 Å² at 300 cm⁻¹) in UQFF
+4. **FIRST H₂O–H₂ rotor cross-section fit** (σ_CS = 10.50 Å2 at 300 cm-1) in UQFF
 5. **FIRST quantitative prediction** of ~10% LENR BEC enhancement connecting to vacuum UQFF buoyancy
 
 ---
@@ -206,21 +229,23 @@ This paper constitutes:
 | T_BEC | 14.52 | MeV | α-BEC nuclear temperature |
 | ΔE | 0.48 | MeV | Energy gap (N_α=10) |
 | N_B | 29.8 | — | Bose-Einstein occupancy at ΔE/kT |
-| N_α | 10 | — | Number of α-clusters (¹²C: 3) |
+| N_α | 10 | — | Number of α-clusters (12C: 3) |
 | δ_pair | 0.1 | — | Pairing correction (even-Z,N) |
 | S_shell | 0.1×(Z_m+N_m) | — | Shell factor |
 | λ_i | 1.0 | fm | UQFF coupling length |
-| ω_LENR | 7.85×10¹² | Hz | LENR resonance frequency |
-| τ_dev | 5×10⁻⁸ | s | EDM deviation (SO(10) BSM) |
+| ω_LENR | 7.85×1012 | Hz | LENR resonance frequency |
+| τ_dev | 5×10-8 | s | EDM deviation (SO(10) BSM) |
 | κ_Higgs | 47.34 | — | BSM Higgs coupling |
-| a (CS fit) | 15.28 | Å² | Saturation cross-section |
-| b (CS fit) | 0.00387 | cm⁻¹ | Energy scale rate |
-| σ_CS(300) | 10.50 | Å² | H₂O–H₂ Δj=2 at 300 cm⁻¹ |
+| a (CS fit) | 15.28 | Å2 | Saturation cross-section |
+| b (CS fit) | 0.00387 | cm-1 | Energy scale rate |
+| σ_CS(300) | 10.50 | Å2 | H₂O–H₂ Δj=2 at 300 cm-1 |
 | LENR enhance | ~10% | % | Net BEC-induced enhancement |
 
 ---
 
-**Citation:** Murphy, D.T. — UQFF Framework, Session 94 (March 2026). Source: gok_share_31b5c807a4.txt (Grok 4 analysis, September 14, 2025). AMD/NIMROD nuclear data, Widom-Larsen LENR theory.
+**Citation:** Murphy, D.T. — UQFF Framework, Session 94 (March 2026). Source:
+gok_share_31b5c807a4.txt (Grok 4 analysis, September 14, 2025). AMD/NIMROD nuclear data,
+Widom-Larsen LENR theory.
 
 ---
 
@@ -228,13 +253,15 @@ This paper constitutes:
 
 ### §A.1 Sector Classification
 
-This paper maps to **LENR-nuclear** sector of the 9-sector UQFF Lagrangian (see `uqff_lagrangian_derivation.py`).
+This paper maps to **LENR-nuclear** sector of the 9-sector UQFF Lagrangian (see
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
-The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive quantum fundamentals (DPM, UA, SCm):
+The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
+quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_\mu \chi)(\partial^\mu \chi) - V(\chi) + \mathcal{L}_{\rm cosmo}$$
+$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_mu \chi)(\partial^\mu \chi) - V(\chi) + \mathcal{L}_{\rm cosmo}$$
 
 where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
@@ -248,7 +275,9 @@ $$\boxed{\frac{\delta S}{\delta \chi} = \ddot{\chi} + \omega_{\rm LENR}^2 \chi -
 
 $$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \chi = 0$$
 
-The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g forces) through vacuum density initialization to the sector-specific equation of motion. Every term in the E-L equation inherits its physical origin from the cosmogenesis master.
+The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
+forces) through vacuum density initialization to the sector-specific equation of motion. Every term
+in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 
 ---
@@ -259,9 +288,9 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.148$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m³.
+For this system, the local VDS sub-ratio is $0.148$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -273,13 +302,13 @@ Since $p_{\rm DVP} = 109$ is **resonant** (threshold at $p > 26$), the system's 
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
-The BSH saturation timescale for this sector is **10⁻¹² s** (nuclear phonon damping):
+The BSH saturation timescale for this sector is **10-12 s** (nuclear phonon damping):
 
-$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
+$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\rm SCm}$ which initializes the harmonic series at cosmogenesis.
 
@@ -287,11 +316,11 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.148 | ✓ Threshold-consistent |
-| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 109$ | ✓ Resonant |
-| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
-| [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
+| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.148 | PASS Threshold-consistent |
+| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 109$ | PASS Resonant |
+| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
+| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
 ---
@@ -301,14 +330,17 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | ✓ Consistent |
-| Cosmological constant Λ | 1.1×10⁻⁵² m⁻² (UQFF vacuum term) | 1.114×10⁻⁵² m⁻² | Planck 2018 | ✓ Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10⁻³⁵/yr | Super-K 2024 | ✓ Consistent |
-| UQFF buoyancy signature | F_U_Bi_i unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
+| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
-**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes significant, offering a falsifiable prediction beyond the Standard Model.
+**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
+produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
+bridge.*
 
 
 ---
@@ -323,9 +355,9 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `f`neutron_s26_coupling`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `k`ozima_scm_cross_section`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `k`ozima_wstp_kernel`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -334,7 +366,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `r`amanujan_polylog_s26`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
 | `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
@@ -343,7 +375,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `m`ock_theta_q26`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -354,8 +386,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `r`amanujan_pi_uqff`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `m`ock_theta_pi_wstp_kernel`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]

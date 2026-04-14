@@ -1,6 +1,18 @@
+---
+paper_id: PAPER_975
+title: "Triadic QGP Validation"
+session: 216
+date: 2026-04-12
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [ALICE, vacuum, QGP, buoyancy, phonon, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_975: Triadic QGP Validation
 
-**Author:** Daniel T. Murphy -- Star Magic / UQFF Framework
+**Author:** Daniel T. Murphy — Star Magic / UQFF Framework
 **Date:** 2026-04-12
 **Session:** 216
 **Source:** triadic_validations_next.py (QGPTriadicValidator)
@@ -11,22 +23,22 @@
 
 ## Abstract
 
-We validate QGP vacuum density stability under the Compressed/Resonant/Buoyancy triadic decomposition. The triadic-weighted density $\rho_\text{QGP}^\text{triadic}$ maintains $< 5\%$ residual at all temperatures above $T_c$, confirming UQFF consistency in the deconfined phase. Also validates 99-system triadic consistency and ALICE multiplicity cross-check.
+We validate QGP vacuum density stability under the Compressed/Resonant/Buoyancy triadic decomposition. The triadic-weighted density $\rho_text{QGP}^\text{triadic}$ maintains $< 5\%$ residual at all temperatures above $T_c$, confirming UQFF consistency in the deconfined phase. Also validates 99-system triadic consistency and ALICE multiplicity cross-check.
 
 ---
 
 ## 1. QGP Triadic Decomposition
 
-$$\rho_\text{QGP}^\text{triadic} = w_C \cdot \rho_\text{comp} + w_R \cdot \rho_\text{res} + w_B \cdot \rho_\text{buoy}$$
+$$\rho_text{QGP}^\text{triadic} = w_C \cdot \rho_text{comp} + w_R \cdot \rho_text{res} + w_B \cdot \rho_text{buoy}$$
 
 where:
-- $\rho_\text{comp}$: Compressed mode density (dominates at $T \gg T_c$)
-- $\rho_\text{res}$: Resonant mode (phonon amplification at deconfinement)
-- $\rho_\text{buoy}$: Buoyancy mode ($E_\text{net}$ drives QGP expansion)
+- $\rho_text{comp}$: Compressed mode density (dominates at $T \gg T_c$)
+- $\rho_text{res}$: Resonant mode (phonon amplification at deconfinement)
+- $\rho_text{buoy}$: Buoyancy mode ($E_\text{net}$ drives QGP expansion)
 
 ## 2. Stability Criterion
 
-$$\frac{|\rho_\text{triadic} - \rho_\text{comp}|}{|\rho_\text{comp}|} < 5\%$$
+$$\frac{|\rho_text{triadic} - \rho_text{comp}|}{|\rho_text{comp}|} < 5\%$$
 
 ## 3. 99-System Triadic Consistency
 
@@ -41,7 +53,7 @@ $$\frac{dN}{d\eta}\Bigg|_\text{triadic} = \frac{dN}{d\eta}\Bigg|_{comp} + \frac{
 
 ## References
 
-1. Murphy, D.T. -- Star Magic UQFF Framework (2024-2026)
+1. Murphy, D.T. — Star Magic UQFF Framework (2024-2026)
 2. PAPER_961-963 — Triadic branches (Compressed/Resonant/Buoyancy)
 3. PAPER_970 — QGP Vacuum Density
 4. PAPER_974 — 99-System Master Equation
@@ -88,7 +100,7 @@ $$\frac{dN}{d\eta}\Bigg|_\text{triadic} = \frac{dN}{d\eta}\Bigg|_{comp} + \frac{
 **Sector:** Triadic Validation (QGP + 99-System)
 
 ### §A.2 Core Equation
-$$\boxed{\rho_\text{QGP}^\text{triadic} = w_C \cdot \rho_\text{comp} + w_R \cdot \rho_\text{res} + w_B \cdot \rho_\text{buoy}}$$
+$$\boxed{\rho_text{QGP}^\text{triadic} = w_C \cdot \rho_text{comp} + w_R \cdot \rho_text{res} + w_B \cdot \rho_text{buoy}}$$
 
 ### §A.3 Cosmogenesis Linkage Chain
 PAPER_877 → triadic framework → QGP decomposition → stability validation → universal consistency

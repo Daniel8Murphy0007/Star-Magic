@@ -1,3 +1,15 @@
+---
+paper_id: PAPER_539
+title: "Extended 10-Body Centripetal Table with Neutron Star Residual"
+session: 144
+date: 2026-03-26
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [neutron-star, AGN, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_539 — Extended 10-Body Centripetal Table with Neutron Star Residual
 
 **Author:** Daniel T. Murphy
@@ -13,7 +25,9 @@
 
 ## Abstract
 
-This paper presents a UQFF analysis of Extended 10-Body Centripetal Table with Neutron Star Residual, deriving compressed field equations and observational predictions within the Star-Magic/UQFF framework.
+This paper presents a UQFF analysis of Extended 10-Body Centripetal Table with Neutron Star
+Residual, deriving compressed field equations and observational predictions within the
+Star-Magic/UQFF framework.
 
 ## §1 — Overview
 
@@ -23,7 +37,7 @@ orbiting a proton ($F_c \sim 9 \times 10^{-8}$ N) to Jupiter orbiting the Sun
 ($F_c \sim 4 \times 10^{23}$ N). It introduces the **Neutron Star small-disc
 resonance** frequency:
 
-$$\omega_\text{res} = \frac{c}{r_\text{NS}} \cdot [SSq] \approx 4.1 \times 10^{16} \text{ rad/s}$$
+$$\omega_text{res} = \frac{c}{r_\text{NS}} \cdot [SSq] \approx 4.1 \times 10^{16} \text{ rad/s}$$
 
 where $r_\text{NS} = 10$ km and $[SSq] = 0.57$.
 
@@ -38,11 +52,11 @@ $$F_c = \frac{mv^2}{r}$$
 $$F_c^\text{UQFF} = F_c \cdot \lambda_3 = \frac{mv^2}{r} \cdot \frac{2P}{3}$$
 
 **NS small-disc resonance:**
-$$\omega_\text{res} = \frac{c \cdot [SSq]}{r_\text{NS}} = \frac{2.998 \times 10^8 \times 0.57}{10^4} \approx 1.71 \times 10^4 \text{ rad/s}$$
+$$\omega_text{res} = \frac{c \cdot [SSq]}{r_\text{NS}} = \frac{2.998 \times 10^8 \times 0.57}{10^4} \approx 1.71 \times 10^4 \text{ rad/s}$$
 
 *Note: expressed in "disc frequency" units with$r_\text{NS,disc} = r_\text{NS}$ for
 a thin fall-back disc; in relativistic units $r_\text{NS} = 10^4$ m gives
-$\omega_\text{res} \approx 1.71 \times 10^4$ rad/s $\approx 2.7$ kHz, consistent
+$\omega_text{res} \approx 1.71 \times 10^4$ rad/s $\approx 2.7$ kHz, consistent
 with kHz quasi-periodic oscillations (QPOs) observed in low-mass X-ray binaries.*
 
 ---
@@ -51,7 +65,7 @@ with kHz quasi-periodic oscillations (QPOs) observed in low-mass X-ray binaries.
 
 | System | $m$ (kg) | $r$ (m) | $v$ (m/s) | $F_c$ (N) | $\log_{10} F_c$ |
 |---|---|---|---|---|---|
-| e⁻ around H | $9.11\times10^{-31}$ | $5.29\times10^{-11}$ | $2.19\times10^6$ | $8.24\times10^{-8}$ | -7.1 |
+| e- around H | $9.11\times10^{-31}$ | $5.29\times10^{-11}$ | $2.19\times10^6$ | $8.24\times10^{-8}$ | -7.1 |
 | Moon→Earth | $7.34\times10^{22}$ | $3.84\times10^8$ | $1020$ | $2.01\times10^{20}$ | 20.3 |
 | Earth→Sun | $5.97\times10^{24}$ | $1.50\times10^{11}$ | $29\,783$ | $3.54\times10^{22}$ | 22.5 |
 | Mars→Sun | $6.42\times10^{23}$ | $2.28\times10^{11}$ | $24\,077$ | $1.63\times10^{21}$ | 21.2 |
@@ -62,7 +76,7 @@ with kHz quasi-periodic oscillations (QPOs) observed in low-mass X-ray binaries.
 | Titan→Saturn | $1.34\times10^{23}$ | $1.22\times10^9$ | $5\,570$ | $3.41\times10^{20}$ | 20.5 |
 | Pluto→Sun | $1.31\times10^{22}$ | $5.91\times10^{12}$ | $4\,743$ | $4.98\times10^{17}$ | 17.7 |
 
-*$F_c$ spans $\sim 37$ orders of magnitude; all eigenproof values give $\Delta_\text{res} = 0$.*
+*$F_c$ spans $\sim 37$ orders of magnitude; all eigenproof values give $\Delta_text{res} = 0$.*
 
 ---
 
@@ -70,10 +84,10 @@ with kHz quasi-periodic oscillations (QPOs) observed in low-mass X-ray binaries.
 
 For a neutron star hosting a fall-back disc of inner radius $r_\text{disc} = 10$ km:
 
-$$\omega_\text{res} = \frac{c \cdot [SSq]}{r_\text{disc}}$$
+$$\omega_text{res} = \frac{c \cdot [SSq]}{r_\text{disc}}$$
 
 The 26D cavity modes of such a disc have spacing:
-$$\Delta\omega = \omega_\text{res} / 26 \approx 6.6 \times 10^{2} \text{ rad/s}$$
+$$\Delta\omega = \omega_text{res} / 26 \approx 6.6 \times 10^{2} \text{ rad/s}$$
 
 This predicts kHz QPOs spaced by $\Delta\nu \approx 100$ Hz, in agreement with
 RXTE/XMM-Newton observations of LMXB systems (Strohmayer & Bildsten 2006).
@@ -82,7 +96,7 @@ RXTE/XMM-Newton observations of LMXB systems (Strohmayer & Bildsten 2006).
 
 ## §5 — Cross-Scale Eigenproof Validity
 
-The UQFF eigenproof $\Delta_\text{res} = 0$ holds at all scales because the
+The UQFF eigenproof $\Delta_text{res} = 0$ holds at all scales because the
 eigenvalue $\lambda_3 = 2P/3$ is a **dimensionless ratio** — it does not depend
 on mass, velocity, or radius. The 10-body table demonstrates this scale invariance
 explicitly.
@@ -104,8 +118,8 @@ prime-based reasoning as the Kirkwood asteroid gap.
 |----------|-------------|
 | $F_c = mv^2/r$ | Centripetal force (any scale) |
 | $F_c^\text{UQFF} = F_c \cdot 2P/3$ | UQFF-corrected form |
-| $\omega_\text{res} = c[SSq]/r_\text{NS}$ | NS small-disc resonance |
-| $\Delta\nu = \omega_\text{res}/(2\pi \times 26)$ | QPO mode spacing |
+| $\omega_text{res} = c[SSq]/r_\text{NS}$ | NS small-disc resonance |
+| $\Delta\nu = \omega_text{res}/(2\pi \times 26)$ | QPO mode spacing |
 
 ---
 
@@ -129,13 +143,15 @@ result = calc.compute()
 
 ### §A.1 Sector Classification
 
-This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see `uqff_lagrangian_derivation.py`).
+This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
-The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive quantum fundamentals (DPM, UA, SCm):
+The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
+quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_\mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
+$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
 
 where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
@@ -149,7 +165,9 @@ $$\boxed{\frac{\delta S}{\delta \phi_{\rm NS}} = \nabla^2 \phi_{\rm NS} - (4\pi 
 
 $$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\rm NS} = 0$$
 
-The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g forces) through vacuum density initialization to the sector-specific equation of motion. Every term in the E-L equation inherits its physical origin from the cosmogenesis master.
+The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
+forces) through vacuum density initialization to the sector-specific equation of motion. Every term
+in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 
 ---
@@ -160,9 +178,9 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.101$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m³.
+For this system, the local VDS sub-ratio is $0.101$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -174,13 +192,13 @@ Since $p_{\rm DVP} = 113$ is **resonant** (threshold at $p > 26$), the system's 
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
-The BSH saturation timescale for this sector is **10⁴ yr** (spin-down equilibrium):
+The BSH saturation timescale for this sector is **104 yr** (spin-down equilibrium):
 
-$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
+$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\rm SCm}$ which initializes the harmonic series at cosmogenesis.
 
@@ -188,11 +206,11 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.101 | ✓ Threshold-consistent |
-| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 113$ | ✓ Resonant |
-| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
-| [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
+| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.101 | PASS Threshold-consistent |
+| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 113$ | PASS Resonant |
+| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
+| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
 ---
@@ -202,10 +220,10 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Higgs mass m_H | UQFF K_HIGGS=47.34 → m_H_UQFF = 125.09 GeV | m_H = 125.20 ± 0.11 GeV | PDG 2024 | 99.8% |
-| Cosmological Λ | UQFF |∇UA|² → 1.09e-52 m⁻² | Λ = 1.114e-52 m⁻² (Planck+DESI) | Planck 2018 | 97.8% |
-| Thomson σ_T (QED) | UQFF U_m kernel: σ_T = 6.6524e-29 m² | σ_T = 6.6524e-29 m² | PDG 2024 | 100% (exact) |
-| κ baryon stability | κ = 0.0005/day; scale separation 10³³ from proton decay | τ_p > 7.7e33 yr (Super-K) | Super-K 2024 | ✓ UQFF baryon-safe |
+| Higgs mass m_H | UQFF K_HIGGS=47.34 → `m_H_UQFF` = 125.09 GeV | m_H = 125.20 ± 0.11 GeV | PDG 2024 | 99.8% |
+| Cosmological Λ | UQFF |∇UA|2 → 1.09e-52 m-2 | Λ = 1.114e-52 m-2 (Planck+DESI) | Planck 2018 | 97.8% |
+| Thomson σ_T (QED) | UQFF U_m kernel: σ_T = 6.6524e-29 m2 | σ_T = 6.6524e-29 m2 | PDG 2024 | 100% (exact) |
+| κ baryon stability | κ = 0.0005/day; scale separation 1033 from proton decay | τ_p > 7.7e33 yr (Super-K) | Super-K 2024 | PASS UQFF baryon-safe |
 
 **New physics claim:** UQFF operates at a vacuum topology scale (~200 PeV) that is 8 orders
 below the GUT scale and 33 orders above nuclear baryon-number scales. This intermediate-scale
@@ -237,9 +255,9 @@ while remaining consistent with all collider and nuclear precision measurements.
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `f`neutron_s26_coupling`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `k`ozima_scm_cross_section`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `k`ozima_wstp_kernel`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -248,7 +266,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `r`amanujan_polylog_s26`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
 | `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
@@ -257,7 +275,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `m`ock_theta_q26`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -268,8 +286,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `r`amanujan_pi_uqff`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `m`ock_theta_pi_wstp_kernel`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]

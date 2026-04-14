@@ -1,8 +1,22 @@
+---
+paper_id: PAPER_440
+title: "Bubble Nebula NGC 7635: Per-System MUGE with E(t) GROWING Expansion and Low-Mass Central
+Star"
+session: 119
+date: 2025-01-01
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [MUGE, AGN, nebula, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_440 — Bubble Nebula NGC 7635: Per-System MUGE with E(t) GROWING Expansion and Low-Mass Central Star
 **Author:** Daniel T. Murphy
 **Date:** 2025
 
-**Source:** grok_share_68eb34022.txt — Document 12: "Master Universal Gravity Equation_The Bubble Nebula Evolution_03May2025.docx" (lines 3788–4125)
+**Source:** grok_share_68eb34022.txt — Document 12: "Master Universal Gravity Equation_The Bubble
+Nebula Evolution_03May2025.docx" (lines 3788–4125)
 **Session:** 119
 **CP4 Class:** `BubbleNebulaPerSystemMUGE_GrowingExpansion_Calculator` (#95)
 
@@ -11,13 +25,15 @@
 
 ## Abstract
 
-This paper presents a UQFF analysis of Bubble Nebula NGC 7635: Per-System MUGE with E(t) GROWING Expansion and Low-Mass Central Star, deriving compressed field equations and observational predictions within the Star-Magic/UQFF framework.
+This paper presents a UQFF analysis of Bubble Nebula NGC 7635: Per-System MUGE with E(t) GROWING
+Expansion and Low-Mass Central Star, deriving compressed field equations and observational
+predictions within the Star-Magic/UQFF framework.
 
 ## 1. Overview
 
-PAPER_440 delivers the **complete per-system MUGE** for the Bubble Nebula (NGC 7635) — a stellar wind nebula in Cassiopeia driven by the O-star SAO 20575 (BD+60°2522), $M_\star = 46 \, M_\odot$, at $d \approx 11$ kly. The bubble radius is $r \approx 5$ ly $= 4.731 \times 10^{16}$ m, with expansion age $\tau_\text{exp} = 4$ Myr.
+PAPER_440 delivers the **complete per-system MUGE** for the Bubble Nebula (NGC 7635) — a stellar wind nebula in Cassiopeia driven by the O-star SAO 20575 (BD+60°2522), $M_\star = 46 \, M_\odot$, at $d \approx 11$ kly. The bubble radius is $r \approx 5$ ly $= 4.731 \times 10^{16}$ m, with expansion age $\tau_text{exp} = 4$ Myr.
 
-**Novel claim (Q1):** First UQFF MUGE for NGC 7635 with a **GROWING expansion factor** $E(t) = E_0(1 - e^{-t/\tau_\text{exp}})$ — in contrast to the decaying erosion in Pillars of Creation (PAPER_435). Here $E$ INCREASES from 0 to $E_0 = 0.1$ as the stellar wind bubble inflates, meaning the $(1-E(t))$ suppression of self-gravity GROWS over time — physically representing the process where wind energy excavates an increasingly larger volume, reducing the effective gravitational restoring force at the bubble wall. Wind velocity $v_w = 1800$ km/s is also unique to this system (vs Wd2's 2000 km/s).
+**Novel claim (Q1):** First UQFF MUGE for NGC 7635 with a **GROWING expansion factor** $E(t) = E_0(1 - e^{-t/\tau_text{exp}})$ — in contrast to the decaying erosion in Pillars of Creation (PAPER_435). Here $E$ INCREASES from 0 to $E_0 = 0.1$ as the stellar wind bubble inflates, meaning the $(1-E(t))$ suppression of self-gravity GROWS over time — physically representing the process where wind energy excavates an increasingly larger volume, reducing the effective gravitational restoring force at the bubble wall. Wind velocity $v_w = 1800$ km/s is also unique to this system (vs Wd2's 2000 km/s).
 
 ---
 
@@ -27,19 +43,19 @@ PAPER_440 delivers the **complete per-system MUGE** for the Bubble Nebula (NGC 7
 |-----------|--------|-------|
 | Central star mass | $M_\star$ | $46 \, M_\odot = 9.149 \times 10^{31}$ kg |
 | Bubble radius | $r$ | 5 ly $= 4.731 \times 10^{16}$ m |
-| Expansion timescale | $\tau_\text{exp}$ | 4 Myr $= 1.262 \times 10^{14}$ s |
+| Expansion timescale | $\tau_text{exp}$ | 4 Myr $= 1.262 \times 10^{14}$ s |
 | Max expansion factor | $E_0$ | 0.1 |
 | Magnetic field | $B$ | $10^{-6}$ T |
-| Wind density | $\rho_w$ | $10^{-21}$ kg/m³ |
+| Wind density | $\rho_w$ | $10^{-21}$ kg/m3 |
 | Wind velocity | $v_w$ | $1.8 \times 10^6$ m/s (1800 km/s) |
-| Fluid density | $\rho_f$ | $10^{-21}$ kg/m³ |
-| Hubble constant | $H_0$ | $2.184 \times 10^{-18}$ s⁻¹ |
+| Fluid density | $\rho_f$ | $10^{-21}$ kg/m3 |
+| Hubble constant | $H_0$ | $2.184 \times 10^{-18}$ s-1 |
 
 ---
 
 ## 3. Growing Expansion Function
 
-$$\boxed{E(t) = 0.1\left(1 - e^{-t/\tau_\text{exp}}\right)}$$
+$$\boxed{E(t) = 0.1\left(1 - e^{-t/\tau_text{exp}}\right)}$$
 
 | Time | $E(t)$ | $(1-E(t))$ | Physical meaning |
 |------|--------|-----------|-----------------|
@@ -59,9 +75,9 @@ $$\boxed{g_\text{Bub}(r,t) = T_1 (1-E(t)) + T_2(1-E(t)) + T_3 + T_4 + T_5 + T_6 
 $$T_1 = \frac{GM_\star}{r^2}(1+H_0 t)(1-B/B_\text{crit})(1-E(t))$$
 $$\frac{GM_\star}{r^2} = \frac{6.674\times10^{-11}\times9.149\times10^{31}}{(4.731\times10^{16})^2} = \frac{6.104\times10^{21}}{2.238\times10^{33}} \approx 2.73\times10^{-12} \, \text{m/s}^2$$
 
-At $t=\tau_\text{exp}=4$ Myr: $T_1 \approx 2.73\times10^{-12} \times 0.937 \approx 2.55\times10^{-12}$ m/s²
+At $t=\tau_text{exp}=4$ Myr: $T_1 \approx 2.73\times10^{-12} \times 0.937 \approx 2.55\times10^{-12}$ m/s2
 
-**T2 — UQFF Ug × (1-E(t)):** $\approx 2 \times 2.73\times10^{-12} \times 1.1 \times 0.937 \approx 5.62\times10^{-12}$ m/s²  
+**T2 — UQFF Ug × (1-E(t)):** $\approx 2 \times 2.73\times10^{-12} \times 1.1 \times 0.937 \approx 5.62\times10^{-12}$ m/s2  
 
 **T3-T8:** All negligible or minor
 
@@ -74,7 +90,7 @@ $$T_9 = \frac{\rho_w v_w^2}{\rho_f} = \frac{10^{-21}\times(1.8\times10^6)^2}{10^
 
 $$g_\text{Bub}(t=4\text{ Myr}) \approx 6.85\times10^{-5} \, \text{m/s}^2 \quad [\text{wind dominant by }10^7\times g_\text{self}]$$
 
-**Wind/gravity after expansion at $t=\tau_\text{exp}$:**
+**Wind/gravity after expansion at $t=\tau_text{exp}$:**
 $$\frac{a_w}{g_\text{self}\times(1-E)} = \frac{6.85\times10^{-5}}{2.55\times10^{-12}} \approx 2.7\times10^7$$
 
 The growing $E(t)$ means the bubble is progressively more dynamically unbound as it expands.
@@ -103,13 +119,15 @@ Standard Weaver et al. (1977) stellar wind bubble model: $R \propto (L_w t^3/\rh
 
 ### §A.1 Sector Classification
 
-This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see `uqff_lagrangian_derivation.py`).
+This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
-The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive quantum fundamentals (DPM, UA, SCm):
+The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
+quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_\mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
+$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
 
 where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
@@ -123,7 +141,9 @@ $$\boxed{\frac{\delta S}{\delta \phi_{\rm NS}} = \nabla^2 \phi_{\rm NS} - (4\pi 
 
 $$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\rm NS} = 0$$
 
-The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g forces) through vacuum density initialization to the sector-specific equation of motion. Every term in the E-L equation inherits its physical origin from the cosmogenesis master.
+The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
+forces) through vacuum density initialization to the sector-specific equation of motion. Every term
+in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 
 ---
@@ -134,9 +154,9 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.134$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m³.
+For this system, the local VDS sub-ratio is $0.134$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -148,13 +168,13 @@ Since $p_{\rm DVP} = 73$ is **resonant** (threshold at $p > 26$), the system's v
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
-The BSH saturation timescale for this sector is **10⁴ yr** (spin-down equilibrium):
+The BSH saturation timescale for this sector is **104 yr** (spin-down equilibrium):
 
-$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
+$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\rm SCm}$ which initializes the harmonic series at cosmogenesis.
 
@@ -162,11 +182,11 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.134 | ✓ Threshold-consistent |
-| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 73$ | ✓ Resonant |
-| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
-| [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
+| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.134 | PASS Threshold-consistent |
+| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 73$ | PASS Resonant |
+| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
+| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
 ---
@@ -176,12 +196,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Thomson σ_T (QED synchrotron) | UQFF U_m scattering kernel: σ_T = 6.6524e-29 m² | σ_T = 6.6524e-29 m² (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
-| Bubble Nebula NGC 7635 luminosity Hα + X-ray | UQFF MUGE g_total → L_X via Stefan-Boltzmann + buoyancy flux: L_X ≈ g_total × M_env | L_X R_bubble ~ 3 pc | HST + Chandra | ✓ Consistent order of magnitude |
-| GR Schwarzschild limit | UQFF g_total must satisfy g ≤ c²/(2r_s) at event horizon | r_s = 2GM/c² (GR exact) | PDG 2024 / GR | ✓ UQFF respects GR horizon |
+| Thomson σ_T (QED synchrotron) | UQFF U_m scattering kernel: σ_T = 6.6524e-29 m2 | σ_T = 6.6524e-29 m2 (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
+| Bubble Nebula NGC 7635 luminosity Hα + X-ray | UQFF MUGE g_total → L_X via Stefan-Boltzmann + buoyancy flux: L_X ≈ g_total × M_env | L_X R_bubble ~ 3 pc | HST + Chandra | PASS Consistent order of magnitude |
+| GR Schwarzschild limit | UQFF g_total must satisfy g ≤ c2/(2r_s) at event horizon | r_s = 2GM/c2 (GR exact) | PDG 2024 / GR | PASS UQFF respects GR horizon |
 | κ vacuum rate vs X-ray variability | UQFF κ = 0.0005/day → timescale τ_UQFF = 2000 days | Observed X-ray variability τ_obs (instrument monitoring) | HST + Chandra | Testable UQFF variability timescale |
 
-**New physics claim:** UQFF MUGE generates gravity enhancement factors (g_total/g_Newt > 1) for Bubble Nebula NGC 7635
+**New physics claim:** UQFF MUGE generates gravity enhancement factors (g_total/g_Newt > 1) for
+Bubble Nebula NGC 7635
 through vacuum buoyancy coupling — a mechanism absent from GR+SM. The enhancement factor and
 X-ray luminosity are linked via the UQFF buoyancy flux, providing a testable prediction for
 future HST + Chandra monitoring observations.
@@ -192,11 +213,11 @@ future HST + Chandra monitoring observations.
 
 ## 8. Testable Predictions
 
-**Q5 Prediction 1:** $E_0 = 0.1$ with $\tau_\text{exp} = 4$ Myr predicts that at current age $\sim 4$ Myr, the self-gravity at the bubble wall is suppressed by 6.3% relative to if the star had never blown a wind. UQFF predicts this appears as a 6.3% deficit in the gas column density at the bubble wall vs predictions from simple $r^{-2}$ falloff — measurable in Herschel dust emission maps.
+**Q5 Prediction 1:** $E_0 = 0.1$ with $\tau_text{exp} = 4$ Myr predicts that at current age $\sim 4$ Myr, the self-gravity at the bubble wall is suppressed by 6.3% relative to if the star had never blown a wind. UQFF predicts this appears as a 6.3% deficit in the gas column density at the bubble wall vs predictions from simple $r^{-2}$ falloff — measurable in Herschel dust emission maps.
 
 **Q5 Prediction 2:** Wind velocity $v_w = 1800$ km/s (vs Wd2's 2000 km/s) predicts a lower shock temperature $T_\text{bub} = m_p v_w^2/(3k_B) \approx 2.4\times10^8$ K — softer X-ray spectrum ($kT \approx 2$ keV vs $3.5$ keV for Wd2), testable with XMM-Newton or Chandra.
 
-**Q5 Prediction 3:** At $t \rightarrow \infty$, $E \rightarrow E_0 = 0.1$ — UQFF predicts the bubble expansion velocity asymptotically decreases by 10% from the initial value as the full $(1-E_0) = 0.9$ factor is reached. This predicts a $\sim10\%$ deceleration in the observed bubble expansion rate at ages $\gg 4\tau = 16$ Myr, testable against very old WR nebulae around evolved massive stars.
+**Q5 Prediction 3:** At $t \rightarrow \infty$, $E \rightarrow E_0 = 0.1$ — UQFF predicts the bubble expansion velocity asymptotically decreases by 10% from the initial value as the full $(1-E_0) = 0.9$ factor is reached. This predicts a $\sim10%$ deceleration in the observed bubble expansion rate at ages $\gg 4\tau = 16$ Myr, testable against very old WR nebulae around evolved massive stars.
 
 
 ---
@@ -211,9 +232,9 @@ future HST + Chandra monitoring observations.
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `f`neutron_s26_coupling`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `k`ozima_scm_cross_section`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `k`ozima_wstp_kernel`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -222,7 +243,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `r`amanujan_polylog_s26`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
 | `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
@@ -231,7 +252,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `m`ock_theta_q26`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -242,8 +263,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `r`amanujan_pi_uqff`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `m`ock_theta_pi_wstp_kernel`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
@@ -288,12 +309,14 @@ where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
 The Bubble Nebula's growing expansion `E(t) = 0.1(1-exp(-t/tau))` is the
 saturation form of the general E+(t) master equation:
 
-```
-NGC 7635:  E(t) = E_0·(1-exp(-t/tau))     [bounded growth, tau ~ Myr]
-CP4 class: PositiveEtBuoyancyExpansionMasterCalc(F_UBi_over_FU=1.1)
-           → unbounded exponential at early times
-           → NGC 7635's bounded form = physical saturation limit
-```
+$$
+\begin{aligned}
+  & NGC 7635:  E(t) = E_0·(1-exp(-t/tau))     [bounded growth, tau ~ Myr] \\
+  & CP4 class: PositiveEtBuoyancyExpansionMasterCalc(\text{F\_UBi\_over\_FU}=1.1) \\
+  & → unbounded exponential at early times \\
+  & → NGC 7635's bounded form = physical saturation limit
+\end{aligned}
+$$
 
 ### S209.3 MUGE ↔ UQFF Dual Framework
 

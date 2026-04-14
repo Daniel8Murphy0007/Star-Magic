@@ -1,3 +1,15 @@
+---
+paper_id: PAPER_794
+title: "NGC 2525 — Barred Spiral with Type Ia Supernova SN 2018gv"
+session: 189
+date: 2026-01-01
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [galaxy, Hubble, UQFF, SMBH, supernova]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_794: NGC 2525 — Barred Spiral with Type Ia Supernova SN 2018gv
 
 **Author:** Daniel T. Murphy  
@@ -10,13 +22,26 @@
 
 ## Abstract
 
-NGC 2525 is a barred spiral galaxy located approximately 70 million light-years away (z ≈ 0.016) in the constellation Puppis. It gained significant scientific attention as the host of SN 2018gv, a pristine Type Ia supernova observed by Hubble through its peak brightness and decline. The coincidence of an ongoing Type Ia supernova at the time of Hubble imaging provides unique leverage on stellar mass-loss dynamics within the UQFF framework. Analysis yields g_primary ≈ 1.335×10⁵ m/s², dominated by the SMBH term, with a novel supernova mass-loss correction M_SN(t) = 1.4·M_☉·exp(–t/τ_SN) that quantifies the transient gravitational perturbation during the SN light curve.
+NGC 2525 is a barred spiral galaxy located approximately 70 million light-years away (z ≈ 0.016) in
+the constellation Puppis. It gained significant scientific attention as the host of SN 2018gv, a
+pristine Type Ia supernova observed by Hubble through its peak brightness and decline. The
+coincidence of an ongoing Type Ia supernova at the time of Hubble imaging provides unique leverage
+on stellar mass-loss dynamics within the UQFF framework. Analysis yields g_primary ≈ 1.335×105 m/s2,
+dominated by the SMBH term, with a novel supernova mass-loss correction M_SN(t) =
+1.4·M_M_sun·exp(–t/τ_SN) that quantifies the transient gravitational perturbation during the SN light
+curve.
 
 ---
 
 ## 1. Introduction
 
-SN 2018gv in NGC 2525 was discovered in January 2018 and followed by Hubble's WFC3 and ACS cameras through multiple epochs. As a Type Ia SN, it serves as a standard candle for distance measurement and provides an opportunity to examine how a localized mass-release event perturbs the UQFF field. The parent galaxy NGC 2525 is a classic SAB(s)c barred spiral with active star formation (SFR ~ 1 M☉/yr) and an estimated SMBH mass of ~10⁸ M☉. The UQFF master equation for this system integrates the standard gravity term, Hubble expansion, SMBH contribution, and the novel supernova exponential mass-loss term, revealing a transient perturbation in the local UQFF field during the SN event.
+SN 2018gv in NGC 2525 was discovered in January 2018 and followed by Hubble's WFC3 and ACS cameras
+through multiple epochs. As a Type Ia SN, it serves as a standard candle for distance measurement
+and provides an opportunity to examine how a localized mass-release event perturbs the UQFF field.
+The parent galaxy NGC 2525 is a classic SAB(s)c barred spiral with active star formation (SFR ~ 1
+MM_sun/yr) and an estimated SMBH mass of ~108 MM_sun. The UQFF master equation for this system integrates
+the standard gravity term, Hubble expansion, SMBH contribution, and the novel supernova exponential
+mass-loss term, revealing a transient perturbation in the local UQFF field during the SN event.
 
 ---
 
@@ -24,17 +49,17 @@ SN 2018gv in NGC 2525 was discovered in January 2018 and followed by Hubble's WF
 
 | Parameter | Symbol | Value | Source |
 |-----------|--------|-------|--------|
-| Galaxy mass | M | 1.993×10⁴⁰ kg | Spiral estimate |
-| Disk radius | r | 2.836×10²⁰ m (~30 kly) | Hubble imaging |
-| SMBH mass | M_BH | 10⁸ M☉ = 1.989×10³⁸ kg | M–σ relation |
-| BH radius | r_BH | 1.496×10¹³ m (Schwarzschild ×10) | Estimate |
-| SN mass | M_SN | 1.4 M☉ at t=0 | Type Ia standard |
-| τ_SN | — | 3.156×10⁷ s (1 yr) | SN light curve |
+| Galaxy mass | M | 1.993×1040 kg | Spiral estimate |
+| Disk radius | r | 2.836×1020 m (~30 kly) | Hubble imaging |
+| SMBH mass | M_BH | 108 MM_sun = 1.989×1038 kg | M–σ relation |
+| BH radius | r_BH | 1.496×1013 m (Schwarzschild ×10) | Estimate |
+| SN mass | M_SN | 1.4 MM_sun at t=0 | Type Ia standard |
+| τ_SN | — | 3.156×107 s (1 yr) | SN light curve |
 | Redshift | z | 0.016 | Spectroscopic |
-| Age | t | 5×10⁹ yr = 1.578×10¹⁷ s | Cosmic time |
+| Age | t | 5×109 yr = 1.578×1017 s | Cosmic time |
 | M_sf | — | 0.02 | UQFF |
-| v_EM | v | 10⁵ m/s | Rotation |
-| B_EM | B | 10⁻⁵ T | Galactic field |
+| v_EM | v | 105 m/s | Rotation |
+| B_EM | B | 10-5 T | Galactic field |
 
 ---
 
@@ -42,59 +67,62 @@ SN 2018gv in NGC 2525 was discovered in January 2018 and followed by Hubble's WF
 
 ### Master Gravity Equation
 
-```
-g_NGC2525(r,t) = (G·M(t))/r² · (1 + H(z)·t) · (1 + M_sf) · (1 + f_TRZ)
-              + (G·M_BH)/r_BH²
-              + q·(v×B)/m_p · (1 + ρ_vac,[UA]/ρ_vac,[SCm]) · 10⁻¹²
-              − (G·M_SN(t))/r²
-```
+$$
+\begin{aligned}
+  & g_NGC2525(r,t) = (G·M(t))/r2 · (1 + H(z)·t) · (1 + M_sf) · (1 + f_TRZ) \\
+  & + (G·M_BH)/r_BH2 \\
+  & + q·(v×B)/m_p · (1 + ρ_vac,[UA]/ρ_vac,[SCm]) · 10-12 \\
+  & − (G·M_SN(t))/r2
+\end{aligned}
+$$
 
-where M_SN(t) = 1.4·M_☉·exp(–t/τ_SN) — **novel UQFF supernova mass-loss term**.
+where M_SN(t) = 1.4·M_M_sun·exp(–t/τ_SN) — **novel UQFF supernova mass-loss term**.
 
 ### Numerical Evaluation
 
-```
-G·M / r²     = 6.6743e-11 × 1.993e40 / (2.836e20)²
-             = 1.330e30 / 8.043e40 = 1.655e-11 m/s²
-
-H(z)·t factor: H0 = 2.268e-18; Hz = H0·√(0.3·(1.016)³ + 0.7) = 2.271e-18
-(1 + Hz·t) = 1 + 2.271e-18 × 1.578e17 = 1.358
-factor_sf = 1.02; factor_TRZ = 1.05
-g_grav_total = 1.655e-11 × 1.358 × 1.02 × 1.05 = 2.403e-11 m/s²
-
-G·M_BH / r_BH² = 6.6743e-11 × 1.989e38 / (1.496e13)²
-               = 1.327e28 / 2.238e26 = 1.335e5 m/s²   ← BH term dominates
-
-a_EM = (q·v·B / m_p) × 11 × 10⁻¹² = 1.053e-3 m/s²
-
-g_SN(t=0) = 6.6743e-11 × 2.785e30 / (2.836e20)² = 2.303e-21 m/s² (negligible)
-
-g_primary ≈ 1.335×10⁵ m/s²
-```
+$$
+\begin{aligned}
+  & G·M / r2     = 6.6743e-11 × 1.993e40 / (2.836e20)2 \\
+  & = 1.330e30 / 8.043e40 = 1.655e-11 m/s2 \\
+  & H(z)·t factor: H0 = 2.268e-18; Hz = H0·√(0.3·(1.016)3 + 0.7) = 2.271e-18 \\
+  & (1 + Hz·t) = 1 + 2.271e-18 × 1.578e17 = 1.358 \\
+  & factor_sf = 1.02; factor_TRZ = 1.05 \\
+  & \text{g\_grav\_total} = 1.655e-11 × 1.358 × 1.02 × 1.05 = 2.403e-11 m/s2 \\
+  & G·M_BH / r_BH2 = 6.6743e-11 × 1.989e38 / (1.496e13)2 \\
+  & = 1.327e28 / 2.238e26 = 1.335e5 m/s2   ← BH term dominates \\
+  & a_EM = (q·v·B / m_p) × 11 × 10-12 = 1.053e-3 m/s2 \\
+  & g_SN(t=0) = 6.6743e-11 × 2.785e30 / (2.836e20)2 = 2.303e-21 m/s2 (negligible) \\
+  & g_primary ≈ 1.335×105 m/s2
+\end{aligned}
+$$
 
 ### Resonant UQFF
 
-```
-g_res = g_comp × (1 + κ·[SSq]) = 1.335e5 × 1.000285 = 1.335e5 m/s²
-```
+$$
+g_res = g_comp × (1 + κ·[SSq]) = 1.335e5 × 1.000285 = 1.335e5 m/s2
+$$
 
 ### Buoyancy UQFF
 
-```
-f_Ub = 0.1 × Δk_η × (ρ_UA/ρ_SCm) × (1/33)
-     = 0.1 × 7.25e8 × (7.09e-36/7.09e-37) × (1/33)
-     = 0.1 × 7.25e8 × 10 × 0.03030 = 2.196e7 (UQFF scale)
-g_buoy ≈ 1.335e5 m/s²  (BH dominates at all buoyancy scales)
-```
+$$
+\begin{aligned}
+  & f_Ub = 0.1 × Δk_η × (ρ_UA/ρ_SCm) × (1/33) \\
+  & = 0.1 × 7.25e8 × (7.09e-36/7.09e-37) × (1/33) \\
+  & = 0.1 × 7.25e8 × 10 × 0.03030 = 2.196e7 (UQFF scale) \\
+  & g_buoy ≈ 1.335e5 m/s2  (BH dominates at all buoyancy scales)
+\end{aligned}
+$$
 
 ### Three-UQFF Simultaneous Result
 
-```
-g_compressed = 1.335×10⁵ m/s²
-g_resonant   = 1.335×10⁵ m/s²
-g_buoyancy   = 1.335×10⁵ m/s²
-g_primary    = 1.335×10⁵ m/s²
-```
+$$
+\begin{aligned}
+  & g_compressed = 1.335×105 m/s2 \\
+  & g_resonant   = 1.335×105 m/s2 \\
+  & g_buoyancy   = 1.335×105 m/s2 \\
+  & g_primary    = 1.335×105 m/s2
+\end{aligned}
+$$
 
 ---
 
@@ -102,25 +130,37 @@ g_primary    = 1.335×10⁵ m/s²
 
 The key contribution of NGC 2525 to UQFF theory is the **transient mass-loss correction**:
 
-```
-M_SN(t) = 1.4·M_☉·exp(–t/τ_SN)
-δg_SN(t=0) = G·M_SN / r² = 2.303×10⁻²¹ m/s²
-δg_SN(t=1yr) = δg_SN(t=0) × e⁻¹ = 8.47×10⁻²² m/s²
-```
+$$
+\begin{aligned}
+  & M_SN(t) = 1.4·\text{M\_M\_sun}·exp(–t/τ_SN) \\
+  & δg_SN(t=0) = G·M_SN / r2 = 2.303×10-21 m/s2 \\
+  & δg_SN(t=1yr) = δg_SN(t=0) × e-1 = 8.47×10-22 m/s2
+\end{aligned}
+$$
 
-While the perturbation is negligible compared to the SMBH term, it demonstrates that **UQFF can resolve transient astrophysical events** (SN, TDE, merger ringdown) within its master equation framework. The exponential decay of M_SN mirrors the SN light curve photometric decline, providing a direct link between photometric observations and UQFF field perturbations.
+While the perturbation is negligible compared to the SMBH term, it demonstrates that **UQFF can
+resolve transient astrophysical events** (SN, TDE, merger ringdown) within its master equation
+framework. The exponential decay of M_SN mirrors the SN light curve photometric decline, providing a
+direct link between photometric observations and UQFF field perturbations.
 
 ---
 
 ## 5. Physical Interpretation
 
-NGC 2525's SMBH-dominated result (g ~ 1.335×10⁵ m/s²) confirms that compact SMBH cores produce gravitational accelerations many orders of magnitude above standard galactic rotation curves. The Type Ia SN 2018gv provides a rare calibration point where the UQFF field is measurably perturbed by a single stellar mass-release event. This positions NGC 2525 as the first UQFF system where a transient stellar explosion is incorporated into the master equation.
+NGC 2525's SMBH-dominated result (g ~ 1.335×105 m/s2) confirms that compact SMBH cores produce
+gravitational accelerations many orders of magnitude above standard galactic rotation curves. The
+Type Ia SN 2018gv provides a rare calibration point where the UQFF field is measurably perturbed by
+a single stellar mass-release event. This positions NGC 2525 as the first UQFF system where a
+transient stellar explosion is incorporated into the master equation.
 
 ---
 
 ## 6. Conclusions
 
-UQFF applied to NGC 2525 yields g_primary ≈ 1.335×10⁵ m/s² with SMBH dominance. The novel supernova mass-loss term M_SN(t) = 1.4·M_☉·exp(–t/τ_SN) extends UQFF to cover transient gravitational perturbations from Type Ia supernovae, establishing a new class of time-dependent UQFF field corrections applicable to any system hosting an active SN or TDE.
+UQFF applied to NGC 2525 yields g_primary ≈ 1.335×105 m/s2 with SMBH dominance. The novel supernova
+mass-loss term M_SN(t) = 1.4·M_M_sun·exp(–t/τ_SN) extends UQFF to cover transient gravitational
+perturbations from Type Ia supernovae, establishing a new class of time-dependent UQFF field
+corrections applicable to any system hosting an active SN or TDE.
 
 *PAPER_794, CP4 UQFF class #378. v5.45. Session 189.*
 
@@ -130,13 +170,15 @@ UQFF applied to NGC 2525 yields g_primary ≈ 1.335×10⁵ m/s² with SMBH domin
 
 ### §A.1 Sector Classification
 
-This paper maps to **BH-gravity** sector of the 9-sector UQFF Lagrangian (see `uqff_lagrangian_derivation.py`).
+This paper maps to **BH-gravity** sector of the 9-sector UQFF Lagrangian (see
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
-The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive quantum fundamentals (DPM, UA, SCm):
+The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
+quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_\mu \phi_{\rm BH})(\partial^\mu \phi_{\rm BH}) - V(\phi_{\rm BH}) + \mathcal{L}_{\rm cosmo}$$
+$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_mu \phi_{\rm BH})(\partial^\mu \phi_{\rm BH}) - V(\phi_{\rm BH}) + \mathcal{L}_{\rm cosmo}$$
 
 where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
@@ -150,7 +192,9 @@ $$\boxed{\frac{\delta S}{\delta \phi_{\rm BH}} = R_{\mu\nu} - \tfrac{1}{2}g_{\mu
 
 $$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\rm BH} = 0$$
 
-The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g forces) through vacuum density initialization to the sector-specific equation of motion. Every term in the E-L equation inherits its physical origin from the cosmogenesis master.
+The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
+forces) through vacuum density initialization to the sector-specific equation of motion. Every term
+in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 
 ---
@@ -161,9 +205,9 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.199$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m³.
+For this system, the local VDS sub-ratio is $0.199$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -175,13 +219,13 @@ Since $p_{\rm DVP} = 47$ is **resonant** (threshold at $p > 26$), the system's v
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
-The BSH saturation timescale for this sector is **10⁶ M_BH/M_⊙ yr** (quasi-normal mode ringdown):
+The BSH saturation timescale for this sector is **106 M_BH/M_M_sun yr** (quasi-normal mode ringdown):
 
-$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
+$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\rm SCm}$ which initializes the harmonic series at cosmogenesis.
 
@@ -189,11 +233,11 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.199 | ✓ Threshold-consistent |
-| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 47$ | ✓ Resonant |
-| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
-| [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
+| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.199 | PASS Threshold-consistent |
+| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 47$ | PASS Resonant |
+| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
+| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
 ---
@@ -203,14 +247,17 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | ✓ Consistent |
-| Cosmological constant Λ | 1.1×10⁻⁵² m⁻² (UQFF vacuum term) | 1.114×10⁻⁵² m⁻² | Planck 2018 | ✓ Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10⁻³⁵/yr | Super-K 2024 | ✓ Consistent |
-| UQFF buoyancy signature | F_U_Bi_i unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
+| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
-**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes significant, offering a falsifiable prediction beyond the Standard Model.
+**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
+produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
+bridge.*
 
 
 ---
@@ -225,9 +272,9 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `f`neutron_s26_coupling`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `k`ozima_scm_cross_section`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `k`ozima_wstp_kernel`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -236,7 +283,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `r`amanujan_polylog_s26`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
 | `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
@@ -245,7 +292,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `m`ock_theta_q26`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -256,8 +303,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `r`amanujan_pi_uqff`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `m`ock_theta_pi_wstp_kernel`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]

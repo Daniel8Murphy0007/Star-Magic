@@ -1,21 +1,35 @@
+---
+paper_id: PAPER_460
+title: "Nebular UQFF Drawing 32: LENR Catalyst + Higgs Scalar + DNA Energy Non-Local Term"
+session: 116
+date: 2025-01-01
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [AGN, vacuum, LENR, nebula, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_460 — Nebular UQFF Drawing 32: LENR Catalyst + Higgs Scalar + DNA Energy Non-Local Term
 **Date:** 2025
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2  
 **Session:** 116 (v4.73) / Whitepapers created Session 121  
 **Source:** grok_share_e70525fa.txt (Doc 43.b — NebularUQFFDrawing32)  
-**Classification:** FIRST LENR catalyst non-local gravity term in UQFF; FIRST Higgs scalar mass-gravity coupling formula; FIRST [SSq]²⁶ exponential non-local term; FIRST DNA/biological energy coupling in UQFF  
+**Classification:** FIRST LENR catalyst non-local gravity term in UQFF; FIRST Higgs scalar
+mass-gravity coupling formula; FIRST [SSq]26 exponential non-local term; FIRST DNA/biological energy
+coupling in UQFF  
 **Author:** Daniel T. Murphy  
 **CP4 Class:** `NebularUQFFDrawing32LENRHiggsCalculator` (#98, PAPER_460)
 
-<!-- UQFF constants: κ = 5.0e-4 day⁻¹, [SSq] = 0.57, n26 = 26 -->
+<!— UQFF constants: κ = 5.0e-4 day-1, [SSq] = 0.57, n26 = 26 —>
 ---
 
 ## Abstract
 
 Document 43.b introduces three new UQFF phenomena: (1) The LENR (Low Energy Nuclear Reaction) catalyst, modelled as a non-local gravitational term with exponential suppression; (2) the Higgs scalar coupling formula $m_H \approx k_{\rm Higgs} \times 125 \times \mu \times \kappa_F$; (3) DNA strand energy given by $E_{\rm DNA} = U_m \cos(\omega_c t)$, linking biochemical energy dynamics to the UQFF vacuum magnetism term. The central equation is:
 
-$$U_{g3} \approx \frac{M_{\rm stars} \times 3.38\times10^{20}}{r^3}\cos\theta \times 10^{46} \times (1 + [SSq]^{26} e^{-(\pi+t)})^n$$
+$$U_{g3} \approx \frac{M_{\rm stars} \times 3.38\times10^{20}}{r^3}\costheta \times 10^{46} \times (1 + [SSq]^{26} e^{-(\pi+t)})^n$$
 
 Where the $[SSq]^{26} e^{-(\pi+t)}$ factor is identified as the **non-local LENR catalyst term** — a purely UQFF contribution with no Standard Model analogue.
 
@@ -25,9 +39,10 @@ Where the $[SSq]^{26} e^{-(\pi+t)}$ factor is identified as the **non-local LENR
 
 ### 2.1 Ug3 Non-Local LENR Term (FIRST in UQFF)
 
-The standard Ug3 string rotation in the UQFF framework receives a new LENR-inspired non-local correction:
+The standard Ug3 string rotation in the UQFF framework receives a new LENR-inspired non-local
+correction:
 
-$$U_{g3}^{\rm LENR} = \frac{GM_{\rm stars} \cdot 3.38\times10^{20}}{r^3}\cos\theta \times 10^{46} \times \left(1 + [SSq]^{n_{26}} e^{-(\pi+t)}\right)^n$$
+$$U_{g3}^{\rm LENR} = \frac{GM_{\rm stars} \cdot 3.38\times10^{20}}{r^3}\costheta \times 10^{46} \times \left(1 + [SSq]^{n_{26}} e^{-(\pi+t)}\right)^n$$
 
 Where:
 - $n_{26} = 26$ (UQFF dimensional parameter)
@@ -36,7 +51,7 @@ Where:
 - $t$ = dimensionless time (in units of some reference time)
 - $n$ = polymerisation index (default n=1)
 
-### 2.2 Evaluation of [SSq]²⁶
+### 2.2 Evaluation of [SSq]26
 
 $$[SSq]^{26} = 0.57^{26}$$
 
@@ -48,12 +63,14 @@ At t=0 (t_n=0): exponential factor $= e^{-\pi} = e^{-3.14159} = 0.04322$
 
 $$[SSq]^{26} e^{-\pi} = 4.50\times10^{-7} \times 0.04322 = 1.94\times10^{-8}$$
 
-**The LENR non-local correction is 1.94×10⁻⁸ at t=0** — extremely small, but it decays exponentially with time:
+**The LENR non-local correction is 1.94×10-8 at t=0** — extremely small, but it decays exponentially
+with time:
 
 At t=10 (10 reference units): $e^{-(\pi + 10)} = e^{-13.14} = 1.96\times10^{-6}$
 $$[SSq]^{26} e^{-13.14} = 4.50\times10^{-7}\times1.96\times10^{-6} = 8.82\times10^{-13}$$
 
-The term rapidly becomes negligible — it represents a **transient non-local LENR spark** at t≈0 that dies exponentially.
+The term rapidly becomes negligible — it represents a **transient non-local LENR spark** at t≈0 that
+dies exponentially.
 
 ### 2.3 UQFF Interpretation of LENR
 
@@ -72,7 +89,7 @@ $$m_H \approx k_{\rm Higgs} \times 125\ \text{GeV} \times \mu \times \kappa_F$$
 Where:
 - $m_H$ = Higgs scalar effective mass in the UQFF vacuum
 - $k_{\rm Higgs}$ = UQFF Higgs coupling constant (dimensionless, O(1))
-- 125.09 GeV/c² = SM Higgs mass (LHC measured)
+- 125.09 GeV/c2 = SM Higgs mass (LHC measured)
 - $\mu$ = UQFF reduced mass parameter = $\kappa / [SCm]$
 - $\kappa_F$ = Fermi coupling factor = $G_F m_p^2 / (\hbar c)^3$
 
@@ -84,13 +101,15 @@ $$g_{\rm Higgs} = \frac{G m_H}{r_{\rm Compton}^2}$$
 
 With $r_{\rm Compton} = \hbar/(m_H c) = \hbar/(125\times10^9\times1.602\times10^{-19}/c^2 \times c) = \hbar c/(125\ \text{GeV})$
 
-$$r_{\rm Compton} = \frac{1.055\times10^{-34}\times3\times10^8}{125\times10^9\times1.602\times10^{-19}} = \frac{3.165\times10^{-26}}{2.003\times10^{-8}} = 1.58\times10^{-18}\ \rm m$$
+$$r_{\rm Compton} = \frac{1.055\times10^{-34}\times 3times10^8}{125\times10^9\times1.602\times10^{-19}} = \frac{3.165\times10^{-26}}{2.003\times10^{-8}} = 1.58\times10^{-18}\ \rm m$$
 
-$$g_{\rm Higgs} = \frac{6.674\times10^{-11}\times125\times10^9\times1.78\times10^{-36}}{(1.58\times10^{-18})^2} = \frac{6.674\times10^{-11}\times2.225\times10^{-25}}{2.50\times10^{-36}}$$
+$$g_{\rm Higgs} = \frac{6.674\times10^{-11}\times 125times10^9\times1.78\times10^{-36}}{(1.58\times10^{-18})^2} = \frac{6.674\times10^{-11}\times2.225\times10^{-25}}{2.50\times10^{-36}}$$
 
 $$= \frac{1.48\times10^{-35}}{2.50\times10^{-36}} = 5.94\ \rm m/s^2$$
 
-**Higgs-gravity at Compton scale ≈ 5.94 m/s²** — comparable to Earth's surface gravity. This is the **gravitational equivalent of the Higgs scattering amplitude** — a new metric for Higgs-gravity unification.
+**Higgs-gravity at Compton scale ≈ 5.94 m/s2** — comparable to Earth's surface gravity. This is the
+**gravitational equivalent of the Higgs scattering amplitude** — a new metric for Higgs-gravity
+unification.
 
 ---
 
@@ -105,7 +124,7 @@ Where:
 - $\omega_c$ = cyclotron frequency = $eB/m_e = 1.602\times10^{-19}\times B_{\rm bio}/(9.11\times10^{-31})$
 
 At $B_{\rm bio} = 50\ \mu$T (Earth ambient field):
-$$\omega_c = \frac{1.602\times10^{-19}\times5\times10^{-5}}{9.11\times10^{-31}} = \frac{8.01\times10^{-24}}{9.11\times10^{-31}} = 8.79\times10^6\ \rm rad/s$$
+$$\omega_c = \frac{1.602\times10^{-19}\times 5times10^{-5}}{9.11\times10^{-31}} = \frac{8.01\times10^{-24}}{9.11\times10^{-31}} = 8.79\times10^6\ \rm rad/s$$
 
 Period: $T = 2\pi/\omega_c = 7.15\times10^{-7}$ s ≈ 0.7 µs (nuclear magnetic resonance regime)
 
@@ -121,7 +140,11 @@ $E_{\rm DNA}$ represents the oscillating electromagnetic energy of a DNA base-pa
 
 $$\frac{V_{\rm little}}{V_{\rm big}} = \frac{1}{33}$$
 
-This buoyancy ratio (1:33) appears in UQFF as the ratio of the LENR catalyst grain volume to the surrounding nebular void volume. The factor 33 corresponds to the **number of base pairs** in one DNA helical turn (10.4 base pairs/turn × π ≈ 33). This unexpected coincidence suggests a deep connection between the UQFF nebular buoyancy framework and molecular biology — which PAPER_460 registers as a **FIRST formal observation** in UQFF.
+This buoyancy ratio (1:33) appears in UQFF as the ratio of the LENR catalyst grain volume to the
+surrounding nebular void volume. The factor 33 corresponds to the **number of base pairs** in one
+DNA helical turn (10.4 base pairs/turn × π ≈ 33). This unexpected coincidence suggests a deep
+connection between the UQFF nebular buoyancy framework and molecular biology — which PAPER_460
+registers as a **FIRST formal observation** in UQFF.
 
 ---
 
@@ -129,8 +152,8 @@ This buoyancy ratio (1:33) appears in UQFF as the ratio of the LENR catalyst gra
 
 | Feature | SM | UQFF PAPER_460 |
 |---------|-----|----------------|
-| LENR mechanism | Quantum tunnelling (Gamow) | Non-local [SSq]²⁶ exp(−(π+t)) |
-| Higgs gravity | Conceptual (no formula) | g_Higgs = Gm_H/r_Compton² = 5.94 m/s² |
+| LENR mechanism | Quantum tunnelling (Gamow) | Non-local [SSq]26 exp(−(π+t)) |
+| Higgs gravity | Conceptual (no formula) | g_Higgs = Gm_H/r_Compton2 = 5.94 m/s2 |
 | DNA energy | Spin Hamiltonian = −μB | E_DNA = U_m cos(ω_c t) |
 | Buoyancy coupling | Not applicable | V_little/V_big = 1/33 |
 
@@ -138,9 +161,11 @@ This buoyancy ratio (1:33) appears in UQFF as the ratio of the LENR catalyst gra
 
 ## 7. Testable Predictions
 
-1. **LENR transient:** The [SSq]²⁶ exp(−(π+t)) non-local term produces ~2×10⁻⁸ relative enhancement at t=0, decaying to <10⁻¹² by t=10 reference units. In a 1 ms LENR event (t_ref = 1 ms), this would manifest as a 20 ppb transient gravitational anomaly detectable by atom-interferometry gravimeters.
-2. **Higgs mass measurement:** $g_{\rm Higgs} = 5.94$ m/s² is the Higgs gravitational equivalent at Compton scale. Any future Higgs-mass precision measurement shifting 125.09 → 125.20 GeV would shift $g_{\rm Higgs}$ by 0.09% — tracking the ratio.
-3. **DNA cyclotron coupling:** E_DNA oscillates at 8.79×10⁶ rad/s in Earth's field. EPR (Electron Paramagnetic Resonance) measurements of DNA base pairs should show a resonance at $\nu = \omega_c/2\pi = 1.4$ MHz — the electron cyclotron frequency in 50 µT. This is a **verifiable laboratory prediction**.
+1. **LENR transient:** The [SSq]26 exp(−(π+t)) non-local term produces ~2×10-8 relative enhancement
+at t=0, decaying to <10-12 by t=10 reference units. In a 1 ms LENR event (t_ref = 1 ms), this would
+manifest as a 20 ppb transient gravitational anomaly detectable by atom-interferometry gravimeters.
+2. **Higgs mass measurement:** $g_{\rm Higgs} = 5.94$ m/s2 is the Higgs gravitational equivalent at Compton scale. Any future Higgs-mass precision measurement shifting 125.09 → 125.20 GeV would shift $g_{\rm Higgs}$ by 0.09% — tracking the ratio.
+3. **DNA cyclotron coupling:** E_DNA oscillates at 8.79×106 rad/s in Earth's field. EPR (Electron Paramagnetic Resonance) measurements of DNA base pairs should show a resonance at $\nu = \omega_c/2\pi = 1.4$ MHz — the electron cyclotron frequency in 50 µT. This is a **verifiable laboratory prediction**.
 
 ---
 
@@ -150,13 +175,15 @@ This buoyancy ratio (1:33) appears in UQFF as the ratio of the LENR catalyst gra
 
 ### §A.1 Sector Classification
 
-This paper maps to **LENR-nuclear** sector of the 9-sector UQFF Lagrangian (see `uqff_lagrangian_derivation.py`).
+This paper maps to **LENR-nuclear** sector of the 9-sector UQFF Lagrangian (see
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
-The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive quantum fundamentals (DPM, UA, SCm):
+The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
+quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_\mu \chi)(\partial^\mu \chi) - V(\chi) + \mathcal{L}_{\rm cosmo}$$
+$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_mu \chi)(\partial^\mu \chi) - V(\chi) + \mathcal{L}_{\rm cosmo}$$
 
 where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
@@ -170,7 +197,9 @@ $$\boxed{\frac{\delta S}{\delta \chi} = \ddot{\chi} + \omega_{\rm LENR}^2 \chi -
 
 $$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \chi = 0$$
 
-The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g forces) through vacuum density initialization to the sector-specific equation of motion. Every term in the E-L equation inherits its physical origin from the cosmogenesis master.
+The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
+forces) through vacuum density initialization to the sector-specific equation of motion. Every term
+in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 
 ---
@@ -181,9 +210,9 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.170$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m³.
+For this system, the local VDS sub-ratio is $0.170$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -195,13 +224,13 @@ Since $p_{\rm DVP} = 31$ is **resonant** (threshold at $p > 26$), the system's v
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
-The BSH saturation timescale for this sector is **10⁻¹² s** (nuclear phonon damping):
+The BSH saturation timescale for this sector is **10-12 s** (nuclear phonon damping):
 
-$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
+$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\rm SCm}$ which initializes the harmonic series at cosmogenesis.
 
@@ -209,11 +238,11 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.170 | ✓ Threshold-consistent |
-| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 31$ | ✓ Resonant |
-| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
-| [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
+| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.170 | PASS Threshold-consistent |
+| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 31$ | PASS Resonant |
+| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
+| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
 ---
@@ -223,12 +252,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Thomson σ_T (QED synchrotron) | UQFF U_m scattering kernel: σ_T = 6.6524×10⁻²⁹ m² | σ_T = 6.6524×10⁻²⁹ m² (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
-| Nebular/Star-forming region luminosity Hα + X-ray | UQFF MUGE g_total → L_X via Stefan-Boltzmann + buoyancy flux: L_X ≈ g_total × M_env | L_X SFR observable | HST/ALMA/Chandra | ✓ Consistent order of magnitude |
-| GR Schwarzschild limit | UQFF g_total must satisfy g ≤ c²/(2r_s) at event horizon | r_s = 2GM/c² (GR exact) | PDG 2024 / GR | ✓ UQFF respects GR horizon |
+| Thomson σ_T (QED synchrotron) | UQFF U_m scattering kernel: σ_T = 6.6524×10-29 m2 | σ_T = 6.6524×10-29 m2 (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
+| Nebular/Star-forming region luminosity Hα + X-ray | UQFF MUGE g_total → L_X via Stefan-Boltzmann + buoyancy flux: L_X ≈ g_total × M_env | L_X SFR observable | HST/ALMA/Chandra | PASS Consistent order of magnitude |
+| GR Schwarzschild limit | UQFF g_total must satisfy g ≤ c2/(2r_s) at event horizon | r_s = 2GM/c2 (GR exact) | PDG 2024 / GR | PASS UQFF respects GR horizon |
 | κ vacuum rate vs X-ray variability | UQFF κ = 0.0005/day → timescale τ_UQFF = 2000 days | Observed X-ray variability τ_obs (instrument monitoring) | HST/ALMA/Chandra | Testable UQFF variability timescale |
 
-**New physics claim:** UQFF MUGE generates gravity enhancement factors (g_total/g_Newt > 1) for Nebular/Star-forming region
+**New physics claim:** UQFF MUGE generates gravity enhancement factors (g_total/g_Newt > 1) for
+Nebular/Star-forming region
 through vacuum buoyancy coupling — a mechanism absent from GR+SM. The enhancement factor and
 X-ray luminosity are linked via the UQFF buoyancy flux, providing a testable prediction for
 future HST/ALMA/Chandra monitoring observations.
@@ -237,7 +267,7 @@ future HST/ALMA/Chandra monitoring observations.
 
 
 
-*Copyright – Daniel T. Murphy | Session 116/121 — grok_share_e70525fa.txt*
+*Copyright – Daniel T. Murphy | Session 116/121 — `grok_share_e70525fa`.txt*
 
 
 ---
@@ -252,9 +282,9 @@ future HST/ALMA/Chandra monitoring observations.
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `f`neutron_s26_coupling`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `k`ozima_scm_cross_section`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `k`ozima_wstp_kernel`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -263,7 +293,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `r`amanujan_polylog_s26`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
 | `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
@@ -272,7 +302,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `m`ock_theta_q26`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -283,8 +313,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `r`amanujan_pi_uqff`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `m`ock_theta_pi_wstp_kernel`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]

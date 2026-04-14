@@ -1,3 +1,15 @@
+---
+paper_id: PAPER_825
+title: "NGC 6302 Bipolar Wind-Shock W_shock and Young Stars P_outflow in UQFF"
+session: 0
+date: 2025-01-01
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [jet, buoyancy, nebula, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_825: NGC 6302 Bipolar Wind-Shock W_shock and Young Stars P_outflow in UQFF
 **Session:** 0
 
@@ -13,7 +25,14 @@
 
 ## Abstract
 
-This paper presents two novel UQFF physics terms derived from bipolar nebula and stellar jet dynamics: **W_shock**, the wind-shock term describing lobe termination shocks in bipolar nebulae such as NGC 6302, and **P_outflow**, the outflow momentum flux from collimated protostellar and young stellar jets. NGC 6302 (the "Butterfly Nebula") exhibits one of the most complex known planetary nebula morphologies, driven by a dense central torus and two high-speed bipolar outflows. Young stars (T Tauri, Herbig Ae/Be) produce narrow jets that carve cavities in parent molecular clouds. Both processes create localized gravitational-dynamic coupling that UQFF quantifies through these distinct terms.
+This paper presents two novel UQFF physics terms derived from bipolar nebula and stellar jet
+dynamics: **W_shock**, the wind-shock term describing lobe termination shocks in bipolar nebulae
+such as NGC 6302, and **P_outflow**, the outflow momentum flux from collimated protostellar and
+young stellar jets. NGC 6302 (the "Butterfly Nebula") exhibits one of the most complex known
+planetary nebula morphologies, driven by a dense central torus and two high-speed bipolar outflows.
+Young stars (T Tauri, Herbig Ae/Be) produce narrow jets that carve cavities in parent molecular
+clouds. Both processes create localized gravitational-dynamic coupling that UQFF quantifies through
+these distinct terms.
 
 ---
 
@@ -21,13 +40,22 @@ This paper presents two novel UQFF physics terms derived from bipolar nebula and
 
 ### 1.1 NGC 6302 — The Butterfly Nebula
 
-NGC 6302 (RA 17h 13m, Dec -37° 06') is a planetary nebula at D ≈ 1.17 kpc located in the constellation Scorpius. Its central white dwarf (~200,000 K photospheric temperature) produces a high-velocity stellar wind (~200 km/s) that collides with a dense equatorial dust torus, redirecting the wind into two elongated bipolar lobes extending ~1 pc each.
+NGC 6302 (RA 17h 13m, Dec -37° 06') is a planetary nebula at D ≈ 1.17 kpc located in the
+constellation Scorpius. Its central white dwarf (~200,000 K photospheric temperature) produces a
+high-velocity stellar wind (~200 km/s) that collides with a dense equatorial dust torus, redirecting
+the wind into two elongated bipolar lobes extending ~1 pc each.
 
-The key dynamic phenomenon is the **wind-shock**: the point where the bipolar wind flow terminates against the ambient medium, creating a strong bow shock. This shock imparts momentum to the surrounding gas column, modifying gravity-buoyancy balance in the nebular envelope.
+The key dynamic phenomenon is the **wind-shock**: the point where the bipolar wind flow terminates
+against the ambient medium, creating a strong bow shock. This shock imparts momentum to the
+surrounding gas column, modifying gravity-buoyancy balance in the nebular envelope.
 
 ### 1.2 Young Stars — Protostellar Jets and Bipolar Outflows
 
-T Tauri and Herbig Ae/Be stars produce collimated bipolar jets with velocities of 100-500 km/s and mass flow rates of 10^-8 to 10^-6 M_Sun/year. These jets drive outflows (Herbig-Haro objects) that excavate cavities in parent molecular clouds, compressing surrounding gas and modifying star formation rates. The outflow momentum flux P_outflow is the sustained mechanical coupling between jet and cloud material.
+T Tauri and Herbig Ae/Be stars produce collimated bipolar jets with velocities of 100-500 km/s and
+mass flow rates of 10^-8 to 10^-6 M_Sun/year. These jets drive outflows (Herbig-Haro objects) that
+excavate cavities in parent molecular clouds, compressing surrounding gas and modifying star
+formation rates. The outflow momentum flux P_outflow is the sustained mechanical coupling between
+jet and cloud material.
 
 ---
 
@@ -36,24 +64,26 @@ T Tauri and Herbig Ae/Be stars produce collimated bipolar jets with velocities o
 ### 2.1 Physical Derivation
 
 The bipolar wind from the central star carries kinetic power:
-```
-P_wind_kinetic = (1/2) * Mdot_wind * v_wind^2
-```
+$$
+\text{P\_wind\_kinetic} = (1/2) * Mdot_wind * v_wind^2
+$$
 
-Upon colliding with the ambient (AGB shell or molecular cloud), the wind decelerates through a termination shock at radius r_shock:
-```
+Upon colliding with the ambient (AGB shell or molecular cloud), the wind decelerates through a
+termination shock at radius r_shock:
+$$
 r_shock = sqrt(Mdot_wind * v_wind / (4*pi * rho_ISM * v_ISM^2))
-```
+$$
 
 At the shock, ram pressure equilibrium:
-```
+$$
 rho_wind * v_wind^2 = rho_ISM * v_ISM^2 (at r = r_shock)
-```
+$$
 
-The **W_shock term** captures the acceleration imparted to the surrounding gas column as the bipolar lobe drives the shock forward:
-```
+The **W_shock term** captures the acceleration imparted to the surrounding gas column as the bipolar
+lobe drives the shock forward:
+$$
 W_shock = (1/2) * rho_wind * v_wind^2 * (r_lobe / r)^2 * (1 - cos(theta_lobe))
-```
+$$
 Where:
 - rho_wind = wind density at r (kg/m^3)
 - v_wind = wind velocity (m/s)
@@ -62,26 +92,31 @@ Where:
 - theta_lobe = half-opening angle of the bipolar lobe (rad)
 
 For NGC 6302:
-```
-v_wind = 200 km/s = 2e5 m/s
-Mdot_wind = 1e-5 M_Sun/yr = 6.3e14 kg/s
-r_lobe = 1 pc = 3.086e16 m
-theta_lobe = 25° = 0.436 rad
-W_shock(at r_lobe) ≈ 4.8e-11 m/s^2
-```
+$$
+\begin{aligned}
+  & v_wind = 200 km/s = 2e5 m/s \\
+  & Mdot_wind = 1e-5 M_Sun/yr = 6.3e14 kg/s \\
+  & r_lobe = 1 pc = 3.086e16 m \\
+  & theta_lobe = 25° = 0.436 rad \\
+  & W_shock(at r_lobe) ≈ 4.8e-11 m/s^2
+\end{aligned}
+$$
 
 ### 2.2 UQFF Integration
 
 W_shock is an additive term within F_env(t) mapped to F_shock:
-```
-g_NGC6302 = (G*M(t))/r^2 * (1+H_0*t) * (1-B/B_crit) * (1+F_env)
-           + Ug1+Ug2+Ug3'+Ug4
-           + Lambda*c^2/3
-           + hbar/sqrt(Dx*Dp)*integral(psi_total*H_op*psi_total dV)*(2*pi/t_Hubble)
-           + W_shock(r, v_wind, rho_wind, theta_lobe)
-```
+$$
+\begin{aligned}
+  & g_NGC6302 = (G*M(t))/r^2 * (1+H_0*t) * (1-B/B_crit) * (1+F_env) \\
+  & + Ug1+Ug2+Ug3'+Ug4 \\
+  & + Lambda*c^2/3 \\
+  & + hbar/sqrt(Dx*Dp)*integral(psi_total*H_op*psi_total dV)*(2*pi/t_Hubble) \\
+  & + W_shock(r, v_wind, rho_wind, theta_lobe)
+\end{aligned}
+$$
 
-**Directionality:** W_shock is directed along the bipolar axis. At the equatorial plane (theta = pi/2), W_shock → 0. Maximum at the pole (theta = 0).
+**Directionality:** W_shock is directed along the bipolar axis. At the equatorial plane (theta =
+pi/2), W_shock → 0. Maximum at the pole (theta = 0).
 
 ---
 
@@ -90,41 +125,50 @@ g_NGC6302 = (G*M(t))/r^2 * (1+H_0*t) * (1-B/B_crit) * (1+F_env)
 ### 3.1 Physical Derivation
 
 The collimated jet from a T Tauri star carries momentum flux (force per unit area):
-```
+$$
 P_outflow = rho_jet * v_jet^2 * (r_jet / r)^2
-```
+$$
 Where:
 - rho_jet = jet density (kg/m^3)
 - v_jet = jet velocity (m/s)
 - r_jet = jet launch radius (m) (typically ~10 R_Sun = 7e9 m at jet base)
 - r = position along jet axis (m)
 
-**Physical interpretation:** P_outflow is the ram pressure at distance r from the jet source. It represents the mechanical coupling that drives ISM gas acceleration (Herbig-Haro objects) and carves the cavity. The (r_jet/r)^2 scaling reflects inverse-square dilution of jet momentum in the absence of jet collimation (valid for Herbig-Haro objects beyond r >> 10 r_jet).
+**Physical interpretation:** P_outflow is the ram pressure at distance r from the jet source. It
+represents the mechanical coupling that drives ISM gas acceleration (Herbig-Haro objects) and carves
+the cavity. The (r_jet/r)^2 scaling reflects inverse-square dilution of jet momentum in the absence
+of jet collimation (valid for Herbig-Haro objects beyond r >> 10 r_jet).
 
 For typical T Tauri star:
-```
-Mdot_jet = 2e-7 M_Sun/yr = 1.26e16 kg/s
-v_jet = 300 km/s = 3e5 m/s
-rho_jet at base = Mdot_jet / (pi * r_jet^2 * v_jet) = 8.1e-11 kg/m^3
-P_outflow(at r = 100 AU = 1.5e13 m) ≈ 2.4e-13 m/s^2
-```
+$$
+\begin{aligned}
+  & Mdot_jet = 2e-7 M_Sun/yr = 1.26e16 kg/s \\
+  & v_jet = 300 km/s = 3e5 m/s \\
+  & rho_jet at base = Mdot_jet / (pi * r_jet^2 * v_jet) = 8.1e-11 kg/m^3 \\
+  & P_outflow(at r = 100 AU = 1.5e13 m) ≈ 2.4e-13 m/s^2
+\end{aligned}
+$$
 
 For Orion-class star-forming regions with multiple jets:
-```
-N_jets = 50 (typical dense region)
-P_outflow_total = N_jets * P_outflow_single ≈ 1.2e-11 m/s^2
-```
+$$
+\begin{aligned}
+  & N_jets = 50 (typical dense region) \\
+  & \text{P\_outflow\_total} = N_jets * \text{P\_outflow\_single} ≈ 1.2e-11 m/s^2
+\end{aligned}
+$$
 
 ### 3.2 UQFF Integration
 
 P_outflow maps to F_env(t) sub-term F_wind (outflow variant):
-```
-g_YoungStars = (G*M(t))/r^2 * (1+H_0*t) * (1-B/B_crit) * (1 + P_outflow_norm)
-             + Ug1+Ug2+Ug3'+Ug4
-             + Lambda*c^2/3
-             + hbar/sqrt(Dx*Dp)*integral(psi_total*H_op*psi_total dV)*(2*pi/t_Hubble)
-             + rho_fluid*V*g
-```
+$$
+\begin{aligned}
+  & g_YoungStars = (G*M(t))/r^2 * (1+H_0*t) * (1-B/B_crit) * (1 + \text{P\_outflow\_norm}) \\
+  & + Ug1+Ug2+Ug3'+Ug4 \\
+  & + Lambda*c^2/3 \\
+  & + hbar/sqrt(Dx*Dp)*integral(psi_total*H_op*psi_total dV)*(2*pi/t_Hubble) \\
+  & + rho_fluid*V*g
+\end{aligned}
+$$
 Where P_outflow_norm = P_outflow / g_base is the dimensionless outflow modifier.
 
 ---
@@ -147,36 +191,42 @@ Where P_outflow_norm = P_outflow / g_base is the dimensionless outflow modifier.
 
 ### 5.1 NGC 6302 Full UQFF Equation
 
-```
-g_NGC6302(r, theta, t) = (G * M_CS) / r^2
-                        * (1 + H_0 * t)
-                        * (1 - B(t) / B_crit)
-                        * (1 + F_env_6302(t))
-                       + Ug1 + Ug2 + Ug3' + Ug4
-                       + Lambda * c^2 / 3
-                       + hbar / sqrt(Delta_x * Delta_p)
-                         * integral(psi_total * H_op * psi_total dV)
-                         * (2*pi / t_Hubble)
-                       + W_shock(r, v_wind, rho_wind, theta)
-```
-F_env_6302(t) includes: F_wind (stellar wind), F_erode (photo-evaporation), F_mag (magnetic field decay), F_shock (W_shock)
+$$
+\begin{aligned}
+  & g_NGC6302(r, theta, t) = (G * M_CS) / r^2 \\
+  & * (1 + H_0 * t) \\
+  & * (1 - B(t) / B_crit) \\
+  & * (1 + \text{F\_env\_6302}(t)) \\
+  & + Ug1 + Ug2 + Ug3' + Ug4 \\
+  & + Lambda * c^2 / 3 \\
+  & + hbar / sqrt(Delta_x * Delta_p) \\
+  & * integral(psi_total * H_op * psi_total dV) \\
+  & * (2*pi / t_Hubble) \\
+  & + W_shock(r, v_wind, rho_wind, theta)
+\end{aligned}
+$$
+F_env_6302(t) includes: F_wind (stellar wind), F_erode (photo-evaporation), F_mag (magnetic field
+decay), F_shock (W_shock)
 
 ### 5.2 Young Stars Complete UQFF Equation
 
-```
-g_Young(r, t) = (G * M_star(t)) / r^2
-              * (1 + H_0 * t)
-              * (1 - B(t) / B_crit)
-              * (1 + F_env_young(t))
-             + Ug1 + Ug2 + Ug3' + Ug4
-             + Lambda * c^2 / 3
-             + hbar / sqrt(Delta_x * Delta_p)
-               * integral(psi_total * H_op * psi_total dV)
-               * (2*pi / t_Hubble)
-             + rho_cloud * V_cavity * g_ISM
-             + P_outflow(r, v_jet, rho_jet, r_jet)
-```
-F_env_young(t) includes: F_wind (stellar winds), F_rad (UV + radiation pressure), F_SN (supernova from cluster)
+$$
+\begin{aligned}
+  & g_Young(r, t) = (G * M_star(t)) / r^2 \\
+  & * (1 + H_0 * t) \\
+  & * (1 - B(t) / B_crit) \\
+  & * (1 + \text{F\_env\_young}(t)) \\
+  & + Ug1 + Ug2 + Ug3' + Ug4 \\
+  & + Lambda * c^2 / 3 \\
+  & + hbar / sqrt(Delta_x * Delta_p) \\
+  & * integral(psi_total * H_op * psi_total dV) \\
+  & * (2*pi / t_Hubble) \\
+  & + rho_cloud * V_cavity * g_ISM \\
+  & + P_outflow(r, v_jet, rho_jet, r_jet)
+\end{aligned}
+$$
+F_env_young(t) includes: F_wind (stellar winds), F_rad (UV + radiation pressure), F_SN (supernova
+from cluster)
 
 ---
 
@@ -209,13 +259,21 @@ F_env_young(t) includes: F_wind (stellar winds), F_rad (UV + radiation pressure)
 
 ## 8. Conclusion
 
-W_shock and P_outflow formalize the mechanical coupling between fast stellar winds/jets and their ambient environments within the UQFF framework. W_shock captures the lobe termination dynamics unique to bipolar planetary nebulae (NGC 6302 prototype), while P_outflow describes the sustained momentum injection from protostellar jets in star-forming regions. Both terms are now formalized as F_env(t) sub-terms (F_shock and F_wind-outflow respectively) and extend the F_env(t) 15-subterm architecture of PAPER_823 to cover these distinct astrophysical environments.
+W_shock and P_outflow formalize the mechanical coupling between fast stellar winds/jets and their
+ambient environments within the UQFF framework. W_shock captures the lobe termination dynamics
+unique to bipolar planetary nebulae (NGC 6302 prototype), while P_outflow describes the sustained
+momentum injection from protostellar jets in star-forming regions. Both terms are now formalized as
+F_env(t) sub-terms (F_shock and F_wind-outflow respectively) and extend the F_env(t) 15-subterm
+architecture of PAPER_823 to cover these distinct astrophysical environments.
 
 ---
 
 ## Watermark
 
-Copyright - Daniel T. Murphy, daniel.murphy00@gmail.com, analyzed by Grok 3, created by xAI, dated May 05, 2025, 02:30 PM EDT, location 41.0997 N, 80.6495 W (Youngstown, OH, USA). Formalized April 04, 2026. Subject matter: NGC 6302 Bipolar Wind-Shock W_shock and Young Stars P_outflow in UQFF. PAPER_825, grok_share_96da8158-f7c5.txt, Documents 32 and 35.
+Copyright - Daniel T. Murphy, daniel.murphy00@gmail.com, analyzed by Grok 3, created by xAI, dated
+May 05, 2025, 02:30 PM EDT, location 41.0997 N, 80.6495 W (Youngstown, OH, USA). Formalized April
+04, 2026. Subject matter: NGC 6302 Bipolar Wind-Shock W_shock and Young Stars P_outflow in UQFF.
+PAPER_825, grok_share_96da8158-f7c5.txt, Documents 32 and 35.
 
 ---
 
@@ -223,13 +281,15 @@ Copyright - Daniel T. Murphy, daniel.murphy00@gmail.com, analyzed by Grok 3, cre
 
 ### §A.1 Sector Classification
 
-This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see `uqff_lagrangian_derivation.py`).
+This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
-The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive quantum fundamentals (DPM, UA, SCm):
+The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
+quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_\mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
+$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
 
 where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
@@ -243,7 +303,9 @@ $$\boxed{\frac{\delta S}{\delta \phi_{\rm NS}} = \nabla^2 \phi_{\rm NS} - (4\pi 
 
 $$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\rm NS} = 0$$
 
-The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g forces) through vacuum density initialization to the sector-specific equation of motion. Every term in the E-L equation inherits its physical origin from the cosmogenesis master.
+The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
+forces) through vacuum density initialization to the sector-specific equation of motion. Every term
+in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 
 ---
@@ -254,9 +316,9 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.128$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m³.
+For this system, the local VDS sub-ratio is $0.128$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -268,13 +330,13 @@ Since $p_{\rm DVP} = 53$ is **resonant** (threshold at $p > 26$), the system's v
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
-The BSH saturation timescale for this sector is **10⁴ yr** (spin-down equilibrium):
+The BSH saturation timescale for this sector is **104 yr** (spin-down equilibrium):
 
-$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
+$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\rm SCm}$ which initializes the harmonic series at cosmogenesis.
 
@@ -282,11 +344,11 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.128 | ✓ Threshold-consistent |
-| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 53$ | ✓ Resonant |
-| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
-| [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
+| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.128 | PASS Threshold-consistent |
+| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 53$ | PASS Resonant |
+| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
+| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
 ---
@@ -296,14 +358,17 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | ✓ Consistent |
-| Cosmological constant Λ | 1.1×10⁻⁵² m⁻² (UQFF vacuum term) | 1.114×10⁻⁵² m⁻² | Planck 2018 | ✓ Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10⁻³⁵/yr | Super-K 2024 | ✓ Consistent |
-| UQFF buoyancy signature | F_U_Bi_i unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
+| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
-**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes significant, offering a falsifiable prediction beyond the Standard Model.
+**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
+produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
+bridge.*
 
 
 ---
@@ -318,9 +383,9 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `f`neutron_s26_coupling`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `k`ozima_scm_cross_section`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `k`ozima_wstp_kernel`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -329,7 +394,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `r`amanujan_polylog_s26`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
 | `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
@@ -338,7 +403,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `m`ock_theta_q26`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -349,8 +414,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `r`amanujan_pi_uqff`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `m`ock_theta_pi_wstp_kernel`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]

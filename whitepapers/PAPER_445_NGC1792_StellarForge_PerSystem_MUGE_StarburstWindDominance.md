@@ -1,8 +1,21 @@
+---
+paper_id: PAPER_445
+title: "NGC 1792 \"The Stellar Forge\": Per-System MUGE with Starburst SFR Wind Dominance"
+session: 119
+date: 2025-01-01
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [galaxy, cluster, AGN, MUGE, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_445 — NGC 1792 "The Stellar Forge": Per-System MUGE with Starburst SFR Wind Dominance
 **Author:** Daniel T. Murphy
 **Date:** 2025
 
-**Source:** grok_share_68eb34022.txt — Document 18: "Master Universal Gravity Equation_NGC1792_Stellar_Forge_03May2025.docx" (lines 5538–5900)
+**Source:** grok_share_68eb34022.txt — Document 18: "Master Universal Gravity
+Equation_NGC1792_Stellar_Forge_03May2025.docx" (lines 5538–5900)
 **Session:** 119
 **CP4 Class:** `NGC1792StellarForgeMUGE_StarburstSFRWindDominance_Calculator` (#100)
 
@@ -11,13 +24,15 @@
 
 ## Abstract
 
-This paper presents a UQFF analysis of NGC 1792 "The Stellar Forge": Per-System MUGE with Starburst SFR Wind Dominance, deriving compressed field equations and observational predictions within the Star-Magic/UQFF framework.
+This paper presents a UQFF analysis of NGC 1792 "The Stellar Forge": Per-System MUGE with Starburst
+SFR Wind Dominance, deriving compressed field equations and observational predictions within the
+Star-Magic/UQFF framework.
 
 ## 1. Overview
 
 PAPER_445 delivers the **complete per-system MUGE** for NGC 1792 — a nearby late-type SAbc spiral galaxy in Columba, $d \approx 40$ Mpc, $z = 0.0095$. Combined mass $M_0 = 10^{10} \, M_\odot$, principal half-mass radius $r = 80{,}000$ ly $= 7.569 \times 10^{20}$ m, hosting an active starburst with SFR $\approx 10 \, M_\odot$/yr — the origin of its "Stellar Forge" designation.
 
-**Novel claim (Q1):** First UQFF MUGE for NGC 1792 as a canonical **starburst-dominated gravitational system** — in contrast to the quiescent disk galaxies treated in earlier papers. The normalized starburst rate $\text{SFR}_f = 10/10^{10} = 10^{-9}$ (SFR = 10 $M_\odot$/yr) with $\tau_\text{SF} = 100$ Myr creates an active, time-variable gravitational field in which the **stellar wind outflow completely dominates** all UQFF gravitational channels. This represents the per-system MUGE's first explicit treatment of a starburst-class disk galaxy, complementing PAPER_434 (Westerlund 2 star cluster) and PAPER_433 (Tapestry molecular cloud).
+**Novel claim (Q1):** First UQFF MUGE for NGC 1792 as a canonical **starburst-dominated gravitational system** — in contrast to the quiescent disk galaxies treated in earlier papers. The normalized starburst rate $\text{SFR}_f = 10/10^{10} = 10^{-9}$ (SFR = 10 $M_\odot$/yr) with $\tau_text{SF} = 100$ Myr creates an active, time-variable gravitational field in which the **stellar wind outflow completely dominates** all UQFF gravitational channels. This represents the per-system MUGE's first explicit treatment of a starburst-class disk galaxy, complementing PAPER_434 (Westerlund 2 star cluster) and PAPER_433 (Tapestry molecular cloud).
 
 ---
 
@@ -28,20 +43,20 @@ PAPER_445 delivers the **complete per-system MUGE** for NGC 1792 — a nearby la
 | Galaxy mass | $M_0$ | $10^{10} \, M_\odot = 1.989 \times 10^{40}$ kg |
 | Half-mass radius | $r$ | 80,000 ly $= 7.569 \times 10^{20}$ m |
 | Redshift | $z$ | 0.0095 |
-| $H(z)$ | | $\approx 2.19 \times 10^{-18}$ s⁻¹ |
+| $H(z)$ | | $\approx 2.19 \times 10^{-18}$ s-1 |
 | Magnetic field | $B$ | $10^{-5}$ T |
 | SFR normalized | $\text{SFR}_f$ | $10^{-9}$ (SFR = 10 $M_\odot$/yr, $M_0 = 10^{10} M_\odot$) |
-| SF timescale | $\tau_\text{SF}$ | 100 Myr $= 3.156 \times 10^{15}$ s |
-| Wind density | $\rho_w$ | $10^{-21}$ kg/m³ |
+| SF timescale | $\tau_text{SF}$ | 100 Myr $= 3.156 \times 10^{15}$ s |
+| Wind density | $\rho_w$ | $10^{-21}$ kg/m3 |
 | Wind velocity | $v_w$ | $2 \times 10^6$ m/s |
-| Fluid density | $\rho_f$ | $10^{-21}$ kg/m³ |
+| Fluid density | $\rho_f$ | $10^{-21}$ kg/m3 |
 
 ---
 
 ## 3. Time-Dependent Mass
 
 **Starburst-driven mass evolution:**
-$$M(t) = M_0\left(1 + \text{SFR}_f \cdot e^{-t/\tau_\text{SF}}\right) = M_0\left(1 + 10^{-9} e^{-t/\tau_\text{SF}}\right)$$
+$$M(t) = M_0\left(1 + \text{SFR}_f \cdot e^{-t/\tau_text{SF}}\right) = M_0\left(1 + 10^{-9} e^{-t/\tau_text{SF}}\right)$$
 
 At $t=0$: $M(0) \approx M_0(1 + 10^{-9}) \approx M_0$ (SFR negligible relative to total mass)  
 Note: Unlike massive merger systems (PAPER_441) or SF regions (PAPER_433), NGC 1792's SFR of 10 $M_\odot$/yr is tiny relative to its $10^{10} M_\odot$ total — the mass barely changes. The starburst matters DYNAMICALLY through the wind outflow term, not through mass growth.
@@ -84,7 +99,7 @@ $$T_{10} \sim \text{SFR}_f \times T_9 \ll T_9 \quad [\text{sub-dominant}]$$
 
 At $t = 0$ (peak starburst):
 
-| Term | Value (m/s²) | Fraction |
+| Term | Value (m/s2) | Fraction |
 |------|-------------|---------|
 | $T_9$ Starburst wind | $5.28 \times 10^{-9}$ | **99.86%** |
 | $T_2$ UQFF Ug | $5.10 \times 10^{-12}$ | 0.10% |
@@ -104,10 +119,10 @@ $$\boxed{g_\text{N1792}(t=0) \approx 5.28\times10^{-9} \, \text{m/s}^2} \quad [\
 
 | Prior Paper | Overlap | New in PAPER_445 |
 |-------------|---------|-----------------|
-| PAPER_433 (Tapestry) | Wind dominance | Galaxy-scale (10⁴⁰ kg) vs cloud-scale (10³¹ kg) |
+| PAPER_433 (Tapestry) | Wind dominance | Galaxy-scale (1040 kg) vs cloud-scale (1031 kg) |
 | PAPER_434 (Westerlund 2) | Cluster + wind | Disk galaxy geometry, τ_SF=100 Myr |
 | PAPER_441 (Antennae) | SFR, wind | No merger, isolated starburst disk |
-| None | $M_0 = 10^{10}$ M☉ + SFR=10 | **Lowest-mass galaxy with highest SFR/M ratio in series** |
+| None | $M_0 = 10^{10}$ MM_sun + SFR=10 | **Lowest-mass galaxy with highest SFR/M ratio in series** |
 | None | T9/T1 ≈ 2277× | **Highest individual-galaxy wind dominance ratio in series** |
 
 ---
@@ -124,13 +139,15 @@ Standard galaxy evolution models (GADGET-4, FIRE-2) treat NGC 1792 as a disk gal
 
 ### §A.1 Sector Classification
 
-This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see `uqff_lagrangian_derivation.py`).
+This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
-The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive quantum fundamentals (DPM, UA, SCm):
+The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
+quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_\mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
+$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
 
 where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
@@ -144,7 +161,9 @@ $$\boxed{\frac{\delta S}{\delta \phi_{\rm NS}} = \nabla^2 \phi_{\rm NS} - (4\pi 
 
 $$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\rm NS} = 0$$
 
-The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g forces) through vacuum density initialization to the sector-specific equation of motion. Every term in the E-L equation inherits its physical origin from the cosmogenesis master.
+The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
+forces) through vacuum density initialization to the sector-specific equation of motion. Every term
+in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 
 ---
@@ -155,9 +174,9 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.111$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m³.
+For this system, the local VDS sub-ratio is $0.111$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -169,13 +188,13 @@ Since $p_{\rm DVP} = 101$ is **resonant** (threshold at $p > 26$), the system's 
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
-The BSH saturation timescale for this sector is **10⁴ yr** (spin-down equilibrium):
+The BSH saturation timescale for this sector is **104 yr** (spin-down equilibrium):
 
-$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
+$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\rm SCm}$ which initializes the harmonic series at cosmogenesis.
 
@@ -183,11 +202,11 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.111 | ✓ Threshold-consistent |
-| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 101$ | ✓ Resonant |
-| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
-| [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
+| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.111 | PASS Threshold-consistent |
+| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 101$ | PASS Resonant |
+| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
+| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
 ---
@@ -197,12 +216,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Thomson σ_T (QED synchrotron) | UQFF U_m scattering kernel: σ_T = 6.6524e-29 m² | σ_T = 6.6524e-29 m² (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
-| NGC 1792 Starburst luminosity UV + X-ray | UQFF MUGE g_total → L_X via Stefan-Boltzmann + buoyancy flux: L_X ≈ g_total × M_env | L_X SFR ~ 3 M_☉/yr | GALEX + Chandra | ✓ Consistent order of magnitude |
-| GR Schwarzschild limit | UQFF g_total must satisfy g ≤ c²/(2r_s) at event horizon | r_s = 2GM/c² (GR exact) | PDG 2024 / GR | ✓ UQFF respects GR horizon |
+| Thomson σ_T (QED synchrotron) | UQFF U_m scattering kernel: σ_T = 6.6524e-29 m2 | σ_T = 6.6524e-29 m2 (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
+| NGC 1792 Starburst luminosity UV + X-ray | UQFF MUGE g_total → L_X via Stefan-Boltzmann + buoyancy flux: L_X ≈ g_total × M_env | L_X SFR ~ 3 `M_M_sun`/yr | GALEX + Chandra | PASS Consistent order of magnitude |
+| GR Schwarzschild limit | UQFF g_total must satisfy g ≤ c2/(2r_s) at event horizon | r_s = 2GM/c2 (GR exact) | PDG 2024 / GR | PASS UQFF respects GR horizon |
 | κ vacuum rate vs X-ray variability | UQFF κ = 0.0005/day → timescale τ_UQFF = 2000 days | Observed X-ray variability τ_obs (instrument monitoring) | GALEX + Chandra | Testable UQFF variability timescale |
 
-**New physics claim:** UQFF MUGE generates gravity enhancement factors (g_total/g_Newt > 1) for NGC 1792 Starburst
+**New physics claim:** UQFF MUGE generates gravity enhancement factors (g_total/g_Newt > 1) for NGC
+1792 Starburst
 through vacuum buoyancy coupling — a mechanism absent from GR+SM. The enhancement factor and
 X-ray luminosity are linked via the UQFF buoyancy flux, providing a testable prediction for
 future GALEX + Chandra monitoring observations.
@@ -215,9 +235,9 @@ future GALEX + Chandra monitoring observations.
 
 **Q5 Prediction 1:** $T_9/T_1 \approx 2277$ predicts that an outflowing molecular gas shell at $r \approx 80{,}000$ ly from the NGC 1792 nucleus should have a velocity gradient dominated by starburst wind momentum, not disk gravity. UQFF predicts $\Delta v_\text{wind}/\Delta v_\text{Keplerian} \approx \sqrt{T_9/T_1} \approx 47.7$, meaning the outflow velocity at that radius exceeds the Keplerian disk velocity by $\sim 48\times$. Testable with ALMA CO$(2\rightarrow1)$ moment-1 maps of the NGC 1792 disk outskirts.
 
-**Q5 Prediction 2:** $\tau_\text{SF} = 100$ Myr predicts the starburst wind has been active for $t < \tau_\text{SF}$ given the observed current SFR, with wind term decaying as $T_9(t) \propto e^{-t/\tau_\text{SF}}$. At $t = 100$ Myr: $T_9 = 5.28\times10^{-9}/e \approx 1.94\times10^{-9}$ m/s² — still wind-dominated but $2.7\times$ weaker, and T1 will begin to reassert. This predicts the NGC 1792 starburst will transition to gravity-dominated dynamics within $\sim 300$ Myr ($3\tau_\text{SF}$), when $T_9 \rightarrow 0.05 T_9(0) < T_2$.
+**Q5 Prediction 2:** $\tau_text{SF} = 100$ Myr predicts the starburst wind has been active for $t < \tau_text{SF}$ given the observed current SFR, with wind term decaying as $T_9(t) \propto e^{-t/\tau_text{SF}}$. At $t = 100$ Myr: $T_9 = 5.28\times10^{-9}/e \approx 1.94\times10^{-9}$ m/s2 — still wind-dominated but $2.7\times$ weaker, and T1 will begin to reassert. This predicts the NGC 1792 starburst will transition to gravity-dominated dynamics within $\sim 300$ Myr ($3\tau_text{SF}$), when $T_9 \rightarrow 0.05 T_9(0) < T_2$.
 
-**Q5 Prediction 3:** $v_w = 2000$ km/s starburst wind from UQFF predicts an X-ray halo around NGC 1792 with temperature $kT \sim \frac{1}{2}\mu m_H v_w^2/k_B = \frac{1}{2}\times0.6\times1.67\times10^{-27}\times4\times10^{12}/1.38\times10^{-23} \approx 1.4\times10^8$ K $\approx 12$ keV — detectable as a hot X-ray corona with Chandra ACIS-S in the 6-8 keV band, comparable to the NGC 253 halo observed at $\sim 0.8$ keV (note: NGC 253 wind is slower at $\sim 600$ km/s, consistent with UQFF $kT \propto v_w^2$ scaling).
+**Q5 Prediction 3:** $v_w = 2000$ km/s starburst wind from UQFF predicts an X-ray halo around NGC 1792 with temperature $kT \sim \frac{1}{2}\mu m_H v_w^2/k_B = \frac{1}{2}\times0.6\times1.67\times10^{-27}\times 4times10^{12}/1.38\times10^{-23} \approx 1.4\times10^8$ K $\approx 12$ keV — detectable as a hot X-ray corona with Chandra ACIS-S in the 6-8 keV band, comparable to the NGC 253 halo observed at $\sim 0.8$ keV (note: NGC 253 wind is slower at $\sim 600$ km/s, consistent with UQFF $kT \propto v_w^2$ scaling).
 
 
 ---
@@ -232,9 +252,9 @@ future GALEX + Chandra monitoring observations.
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `f`neutron_s26_coupling`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `k`ozima_scm_cross_section`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `k`ozima_wstp_kernel`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -243,7 +263,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `r`amanujan_polylog_s26`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
 | `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
@@ -252,7 +272,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `m`ock_theta_q26`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -263,8 +283,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `r`amanujan_pi_uqff`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `m`ock_theta_pi_wstp_kernel`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]

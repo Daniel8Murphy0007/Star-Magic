@@ -16,13 +16,15 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 ## Abstract
 
-We apply the 26-state spectral ladder E_n = ℏω_SCm · (2π)^{n/3} · S₂₆⁽³⁾ to merger dynamics. The ladder encodes frequency-dependent energy injection into the merger waveform across 26 independent dimensional channels.
+We apply the 26-state spectral ladder E_n = ℏω_SCm · (2π)^{n/3} · S₂₆⁽3⁾ to merger dynamics. The
+ladder encodes frequency-dependent energy injection into the merger waveform across 26 independent
+dimensional channels.
 
 ## 1. Spectral Energy
 
-E_ladder = Σ_{n=1}^{26} E_n = Σ ℏω_SCm · (2π)^{n/3} · S₂₆⁽³⁾
+E_ladder = Σ_{n=1}^{26} E_n = Σ ℏω_SCm · (2π)^{n/3} · S₂₆⁽3⁾
 
-Result: E_ladder = 1.42×10⁻¹⁵ J.
+Result: E_ladder = 1.42×10-15 J.
 
 ## 2. Jet Modulation
 
@@ -52,10 +54,11 @@ File: `fubi_agn_ns_mergers.py`, class `SpectralLadderMergerCalc`. CP4 class #587
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
 | GW strain $h$ | UQFF predicts phonon suppression $D_{\text{phonon}} \approx 0.47$--$0.67$ | LIGO/Virgo $h \sim 10^{-22}$ | LIGO O3 (2020) | Within detector band |
-| Phase evolution $\Delta\Phi$ | 200--400 extra cycles from $S_{26}$ coupling | GR template bank | Abbott et al. (2021) | Testable with LISA |
+| Phase evolution $\DeltaPhi$ | 200--400 extra cycles from $S_{26}$ coupling | GR template bank | Abbott et al. (2021) | Testable with LISA |
 | Fine structure $\alpha$ | UQFF reproduces via $U_{g1}$ dipole | $1/137.036$ | PDG 2024 | 99.9% |
 
-**New physics claim:** UQFF phonon-mediated vacuum coupling provides testable predictions beyond SM for this system.
+**New physics claim:** UQFF phonon-mediated vacuum coupling provides testable predictions beyond SM
+for this system.
 
 *Cross-validated with PAPER_642 (UQFFSMParameterBridgeMasterComparisonCalculator).*
 
@@ -67,13 +70,13 @@ File: `fubi_agn_ns_mergers.py`, class `SpectralLadderMergerCalc`. CP4 class #587
 **Sector:** GW-radiation (gravitational-wave chirp)
 
 ### §A.2 Lagrangian Density
-$$\mathcal{L}_{GW_radiation} = \sum_{i=1}^{26} \left[ U_{g,i} + U_{m,i} + U_{A,i} - U_{b,i} \right] \cdot S_{26}([SSq]) \cdot \Phi_{1.25\text{THz}}(\omega, \Gamma)$$
+$$\mathcal{L}_{GW\_radiation} = \sum_{i=1}^{26} \left[ U_{g,i} + U_{m,i} + U_{A,i} - U_{b,i} \right] \cdot S_{26}([SSq]) \cdot \Phi_{1.25\text{THz}}(\omega, \Gamma)$$
 
 ### §A.3 Euler-Lagrange Equation of Motion
-$$\boxed{\frac{\partial \mathcal{L}}{\partial \phi} - \partial_\mu \frac{\partial \mathcal{L}}{\partial (\partial_\mu \phi)} = 0 \implies F_{U,Bi_i} = -\nabla U_{\text{eff}} + \Phi \cdot S_{26} \cdot E_{\text{net}}}$$
+$$\boxed{\frac{\partial \mathcal{L}}{\partial \phi} - \partial_mu \frac{\partial \mathcal{L}}{\partial (\partial_mu \phi)} = 0 \implies F_{U,Bi\_i} = -\nabla U_{\text{eff}} + \Phi \cdot S_{26} \cdot E_{\text{net}}}$$
 
 ### §A.4 Cosmogenesis Linkage Chain
-PAPER_877 axioms → SCm vacuum → phonon $\omega_{\text{SCm}}$ → gravitational-wave chirp → $F_{U,Bi_i}$ unified force → observational prediction
+PAPER_877 axioms → SCm vacuum → phonon $\omega_{\text{SCm}}$ → gravitational-wave chirp → $F_{U,Bi\_i}$ unified force → observational prediction
 
 ---
 

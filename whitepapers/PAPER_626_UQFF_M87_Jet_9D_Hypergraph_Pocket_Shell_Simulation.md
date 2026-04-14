@@ -1,3 +1,15 @@
+---
+paper_id: PAPER_626
+title: "UQFF M87 Jet 9D Hypergraph Pocket Shell Simulation"
+session: 0
+date: 2025-01-01
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [AGN, DPM, SCm, jet, JWST, Chandra, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_626 — UQFF M87 Jet 9D Hypergraph Pocket Shell Simulation
 **Author:** Daniel T. Murphy
 **Date:** Dec 2025
@@ -6,7 +18,7 @@
 **Number:** #213  
 **Source:** grok_share_6322ac199.txt (Session 161)  
 **Filed:** Session 161 v5.18  
-**VDS/DVP/BH26:** BH26 (f spectrum 5.71×10¹⁶–10¹⁸ Hz) + DVP (polarization flips)  
+**VDS/DVP/BH26:** BH26 (f spectrum 5.71×1016–1018 Hz) + DVP (polarization flips)  
 
 ---
 
@@ -16,13 +28,14 @@
 $$F_{U,Bi} = \kappa \cdot \frac{\rho_{\text{SCm}}}{\rho_{\text{UA}}} \cdot (U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_m + U_{bi})$$
 
 
-This paper presents a UQFF analysis of UQFF M87 Jet 9D Hypergraph Pocket Shell Simulation, deriving compressed field equations and observational predictions within the Star-Magic/UQFF framework.
+This paper presents a UQFF analysis of UQFF M87 Jet 9D Hypergraph Pocket Shell Simulation, deriving
+compressed field equations and observational predictions within the Star-Magic/UQFF framework.
 
 ## §1 Abstract
 
 Full 9D Wolfram hypergraph simulation of the M87 AGN jet using 200 iterations
 and arity threshold 4. The simulation produces 12 nodes, 4 pocket hyperedges,
-and a frequency ramp from 5.71×10¹⁶ to 10¹⁸ Hz consistent with combined
+and a frequency ramp from 5.71×1016 to 1018 Hz consistent with combined
 EHT/Chandra/JWST observations. Three DVP polarization flip events matching
 EHT 2017–2021 measurements are generated spontaneously from d4–d6 asymmetry.
 
@@ -32,12 +45,12 @@ EHT 2017–2021 measurements are generated spontaneously from d4–d6 asymmetry.
 
 | Parameter | Value |
 |-----------|-------|
-| BH mass | 6.5×10⁹ M☉ = 1.29×10⁴⁰ kg |
-| Distance | 55 Mly = 5.2×10²³ m |
-| Jet length | 5000 ly = 4.6×10¹⁹ m |
-| Photon ring | 40 μas = 3×10¹³ m |
-| ∇UA (jet base) | ~10⁻¹⁸ m⁻¹ |
-| ∇UA (equilibrium) | ~10⁻⁹ |
+| BH mass | 6.5×109 MM_sun = 1.29×1040 kg |
+| Distance | 55 Mly = 5.2×1023 m |
+| Jet length | 5000 ly = 4.6×1019 m |
+| Photon ring | 40 μas = 3×1013 m |
+| ∇UA (jet base) | ~10-18 m-1 |
+| ∇UA (equilibrium) | ~10-9 |
 | Coordinates | RA 12h30m49.19s, Dec +12°22′47.86″ |
 | Observation | EHT 2021 (arXiv Dec 2025) + JWST infrared Oct 2025 + Chandra Dec 2025 |
 
@@ -46,12 +59,14 @@ EHT 2017–2021 measurements are generated spontaneously from d4–d6 asymmetry.
 ## §3 Simulation Architecture
 
 **9D Wolfram rules (Sequential, arity ≥ 4):**
-```
-Seed: 9 nodes, 1 hyperedge e₀ = {v₀,...,v₈}
-Rule: R(e) → (e₁∪{v_new}, e₂∪{v_new})
-v_new coords: centroid(e) + Ub_bias[d7-d9 += 0.5]
-200 iterations, stops when no splits occur
-```
+$$
+\begin{aligned}
+  & Seed: 9 nodes, 1 hyperedge e₀ = {v₀,...,v₈} \\
+  & Rule: R(e) → (e₁∪{v_new}, e₂∪{v_new}) \\
+  & v_new coords: centroid(e) + Ub_bias[d7-d9 += 0.5] \\
+  & 200 iterations, stops when no splits occur
+\end{aligned}
+$$
 
 **DVP flip detection:**
 ```
@@ -69,10 +84,10 @@ if d4_6_sum > 1.5:  polarization_flip += 1
 | Final nodes | 12 |
 | Final hyperedges (pockets) | 4 |
 | Path length proxy | 12 nodes |
-| nabla_UA_max (normalized) | 1.31 |
+| `nabla_UA_max` (normalized) | 1.31 |
 | DVP flip events | 3 |
-| Freq min | 5.71×10¹⁶ Hz |
-| Freq max | 10¹⁸ Hz |
+| Freq min | 5.71×1016 Hz |
+| Freq max | 1018 Hz |
 
 **Frequency ramp (11 points, Hz):**
 ```
@@ -96,16 +111,16 @@ Each flip = one complete DPM→DPM_s reversal in the jet base magnetic geometry.
 
 ## §6 Energy Scale Interpretation
 
-The frequency range 5.71×10¹⁶ – 10¹⁸ Hz corresponds to:
-- 5.71×10¹⁶ Hz ≈ 0.24 keV (soft X-ray, jet base)
-- 10¹⁸ Hz ≈ 4.1 keV (hard X-ray, terminal pocket)
+The frequency range 5.71×1016 – 1018 Hz corresponds to:
+- 5.71×1016 Hz ≈ 0.24 keV (soft X-ray, jet base)
+- 1018 Hz ≈ 4.1 keV (hard X-ray, terminal pocket)
 
 Chandra observations show M87 core at 0.5–7 keV — consistent with UQFF range
-5.71×10¹⁶ – 10¹⁸ Hz.
+5.71×1016 – 1018 Hz.
 
 ---
 
-## §7 3D Projection Coordinates (Sample 5 nodes, ×4.6×10¹⁹ m)
+## §7 3D Projection Coordinates (Sample 5 nodes, ×4.6×1019 m)
 
 Projected from 9D hypergraph to observable 3D jet coordinates using orthogonal
 projector P ∈ ℝ^{3×9}. Representative node positions are consistent with
@@ -119,13 +134,15 @@ synthetic VLBI image morphology at 230 GHz (1.3 mm wavelength, θ_beam ≈ 20 μ
 
 ### §A.1 Sector Classification
 
-This paper maps to **BH-gravity** sector of the 9-sector UQFF Lagrangian (see `uqff_lagrangian_derivation.py`).
+This paper maps to **BH-gravity** sector of the 9-sector UQFF Lagrangian (see
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
-The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive quantum fundamentals (DPM, UA, SCm):
+The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
+quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_\mu \phi_{\rm BH})(\partial^\mu \phi_{\rm BH}) - V(\phi_{\rm BH}) + \mathcal{L}_{\rm cosmo}$$
+$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_mu \phi_{\rm BH})(\partial^\mu \phi_{\rm BH}) - V(\phi_{\rm BH}) + \mathcal{L}_{\rm cosmo}$$
 
 where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
@@ -139,7 +156,9 @@ $$\boxed{\frac{\delta S}{\delta \phi_{\rm BH}} = R_{\mu\nu} - \tfrac{1}{2}g_{\mu
 
 $$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\rm BH} = 0$$
 
-The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g forces) through vacuum density initialization to the sector-specific equation of motion. Every term in the E-L equation inherits its physical origin from the cosmogenesis master.
+The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
+forces) through vacuum density initialization to the sector-specific equation of motion. Every term
+in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 
 ---
@@ -150,9 +169,9 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.185$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m³.
+For this system, the local VDS sub-ratio is $0.185$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -164,13 +183,13 @@ Since $p_{\rm DVP} = 103$ is **resonant** (threshold at $p > 26$), the system's 
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
-The BSH saturation timescale for this sector is **10⁶ M_BH/M_⊙ yr** (quasi-normal mode ringdown):
+The BSH saturation timescale for this sector is **106 M_BH/M_M_sun yr** (quasi-normal mode ringdown):
 
-$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
+$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\rm SCm}$ which initializes the harmonic series at cosmogenesis.
 
@@ -178,11 +197,11 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.185 | ✓ Threshold-consistent |
-| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 103$ | ✓ Resonant |
-| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
-| [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
+| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.185 | PASS Threshold-consistent |
+| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 103$ | PASS Resonant |
+| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
+| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
 ---
@@ -192,10 +211,10 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| M87 X-ray energy range | 5.71×10¹⁶–10¹⁸ Hz = 0.24–4.1 keV | Chandra M87 core: 0.5–7 keV | Chandra Dec 2025 | ✓ Consistent range |
-| Synchrotron frequency floor (QED) | U_m inverse Compton: f_IC = (4/3)γ²f_CMB; γ~10⁶ → f_IC~5×10¹⁶ Hz | QED: f_IC = (4/3)(E_e/m_e c²)² × 160 GHz | QED synchrotron | ✓ UQFF floor matches QED IC prediction |
-| VLBI beam resolution θ_beam | 9D projection resolves structures down to VLBI scale ~20 μas | EHT 230 GHz VLBI: θ_beam = 20 μas at M87 | EHT 2021 arXiv | ✓ Projection scale consistent |
-| M87 jet polarization (QED) | DVP d4–d6 asymmetry → 3 EHT polarization flips | EVN/EHT: ~3 rotation-measure flips in M87 jet | EHT arXiv 2021 | ✓ Count match |
+| M87 X-ray energy range | 5.71×1016–1018 Hz = 0.24–4.1 keV | Chandra M87 core: 0.5–7 keV | Chandra Dec 2025 | PASS Consistent range |
+| Synchrotron frequency floor (QED) | U_m inverse Compton: f_IC = (4/3)γ2f_CMB; γ~106 → f_IC~5×1016 Hz | QED: f_IC = (4/3)(E_e/m_e c2)2 × 160 GHz | QED synchrotron | PASS UQFF floor matches QED IC prediction |
+| VLBI beam resolution θ_beam | 9D projection resolves structures down to VLBI scale ~20 μas | EHT 230 GHz VLBI: θ_beam = 20 μas at M87 | EHT 2021 arXiv | PASS Projection scale consistent |
+| M87 jet polarization (QED) | DVP d4–d6 asymmetry → 3 EHT polarization flips | EVN/EHT: ~3 rotation-measure flips in M87 jet | EHT arXiv 2021 | PASS Count match |
 
 **New physics claim:** The 9D pocket shell simulation predicts time-averaged polarization
 variability with period τ pocket ≡ 2π·r_jet/(c·N_hyperedges) — not derivable from
@@ -211,7 +230,7 @@ standard MHD or QED jet models.
 - EHT 2021 arXiv (Dec 2025 reanalysis)
 - JWST M87 infrared jet (Oct 2025)
 - Chandra M87 AGN (Dec 2025)
-- BH26 f³ law: PAPER_624 §5
+- BH26 f3 law: PAPER_624 §5
 - DVP flip mechanics: PAPER_623 §3.2
 
 ---
@@ -231,9 +250,9 @@ standard MHD or QED jet models.
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `f`neutron_s26_coupling`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `k`ozima_scm_cross_section`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `k`ozima_wstp_kernel`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -242,7 +261,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `r`amanujan_polylog_s26`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
 | `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
@@ -251,7 +270,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `m`ock_theta_q26`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -262,8 +281,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `r`amanujan_pi_uqff`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `m`ock_theta_pi_wstp_kernel`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]

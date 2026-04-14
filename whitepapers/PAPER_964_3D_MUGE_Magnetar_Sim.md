@@ -1,6 +1,18 @@
+---
+paper_id: PAPER_964
+title: "3D MUGE Magnetar Simulation"
+session: 215
+date: 2026-04-12
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [AGN, GW, spin-down, SCm, MUGE, neutron-star, buoyancy, phonon]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_964: 3D MUGE Magnetar Simulation
 
-**Author:** Daniel T. Murphy -- Star Magic / UQFF Framework
+**Author:** Daniel T. Murphy — Star Magic / UQFF Framework
 **Date:** 2026-04-12
 **Session:** 215
 **Source:** muge_magnetar_3d_sim.py (MUGEMagnetar3DSim)
@@ -31,9 +43,9 @@ $$R_n = R_\text{NS} (1 + 0.05n), \quad E_n = E_0 (2\pi)^{n/3} S_{26}$$
 
 ## References
 
-1. Murphy, D.T. -- Star Magic UQFF Framework (2024-2026)
+1. Murphy, D.T. — Star Magic UQFF Framework (2024-2026)
 2. PAPER_949 — BCS Gap Equation (radial $\Delta(r)$)
-3. PAPER_955 — Phonon Resonance ($\omega_\text{SCm}$)
+3. PAPER_955 — Phonon Resonance ($\omega_text{SCm}$)
 4. PAPER_956 — Spectral Ladder Phonon Mapping
 5. PAPER_952 — 26-State Spectral Ladder
 
@@ -81,7 +93,7 @@ $$R_n = R_\text{NS} (1 + 0.05n), \quad E_n = E_0 (2\pi)^{n/3} S_{26}$$
 $$\mathcal{L}_\text{mag} = \mathcal{L}_\text{SCm}(\Delta(r)) + \mathcal{L}_\text{Abrikosov}(\Phi_0, r) + \sum_{n=1}^{26}\mathcal{L}_\text{phonon}(\omega_n, R_n)$$
 
 ### §A.3 Euler-Lagrange Equation of Motion
-$$\boxed{\Delta(r) = \frac{\hbar\omega_\text{SCm}}{2}\tanh\!\left(\frac{\Delta_0}{2k_BT(r)}\right) S_{26} \frac{F_{UBi}}{F_U},\quad R_n = R_\text{NS}(1 + 0.05n)}$$
+$$\boxed{\Delta(r) = \frac{\hbar\omega_\text{SCm}}{2}\tanh!\left(\frac{\Delta_0}{2k_BT(r)}\right) S_{26} \frac{F_{UBi}}{F_U},\quad R_n = R_\text{NS}(1 + 0.05n)}$$
 
 ### §A.4 Cosmogenesis Linkage Chain
 PAPER_877 → SCm vacuum → BCS gap $\Delta(r)$ → Abrikosov vortex lattice → 26 phonon shells → 3D magnetar

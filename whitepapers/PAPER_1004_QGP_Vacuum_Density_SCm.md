@@ -1,6 +1,6 @@
 ---
 paper_id: PAPER_1004
-title: "QGP Vacuum Density with SCm S₂₆⁽³⁾ Phonon Coupling"
+title: "QGP Vacuum Density with SCm S₂₆⁽3⁾ Phonon Coupling"
 session: 219
 date: 2026-04-13
 author: "Daniel T. Murphy"
@@ -16,21 +16,23 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 ## Abstract
 
-We compute the QGP vacuum density ρ_QGP(T) through SCm phonon coupling using S₂₆⁽³⁾. Below T_c = 1.5×10¹² K, confinement suppresses the QGP state; above T_c, the density follows exponential activation with Gaussian phonon response.
+We compute the QGP vacuum density ρ_QGP(T) through SCm phonon coupling using S₂₆⁽3⁾. Below T_c =
+1.5×1012 K, confinement suppresses the QGP state; above T_c, the density follows exponential
+activation with Gaussian phonon response.
 
 ## 1. Core Equation
 
-ρ_QGP(T) = ρ_SCm · S₂₆⁽³⁾ · exp(−(T_c−T)/T) · Φ(T)
+ρ_QGP(T) = ρ_SCm · S₂₆⁽3⁾ · exp(−(T_c−T)/T) · Φ(T)
 
-where Φ(T) = S₂₆⁽³⁾ · exp(−(T−T_c)²/(2(0.1T_c)²)).
+where Φ(T) = S₂₆⁽3⁾ · exp(−(T−T_c)2/(2(0.1T_c)2)).
 
 ## 2. Results
 
 | Temperature | ρ_QGP |
 |-------------|-------|
-| T = 10⁶ K | 0 (confined) |
-| T = 2×10¹² K | 1.16×10⁻¹² kg/m³ |
-| T = 5×10¹² K | ~10⁻¹⁵ kg/m³ |
+| T = 106 K | 0 (confined) |
+| T = 2×1012 K | 1.16×10-12 kg/m3 |
+| T = 5×1012 K | ~10-15 kg/m3 |
 
 ## 3. Implementation
 
@@ -59,7 +61,8 @@ File: `scm_qgp_dynamics.py`, class `QGPVacuumDensityCalc`. CP4 class #588.
 | Vacuum energy $\rho_{\text{vac}}$ | $7.09 \times 10^{-37}$ kg/m$^3$ | $\rho_{\text{vac}} \sim 10^{-29}$ g/cm$^3$ | Planck 2018 | Novel SCm scale |
 | Fine structure $\alpha$ | UQFF reproduces via $U_{g1}$ dipole | $1/137.036$ | PDG 2024 | 99.9% |
 
-**New physics claim:** UQFF phonon-mediated vacuum coupling provides testable predictions beyond SM for this system.
+**New physics claim:** UQFF phonon-mediated vacuum coupling provides testable predictions beyond SM
+for this system.
 
 *Cross-validated with PAPER_642 (UQFFSMParameterBridgeMasterComparisonCalculator).*
 
@@ -71,13 +74,13 @@ File: `scm_qgp_dynamics.py`, class `QGPVacuumDensityCalc`. CP4 class #588.
 **Sector:** SCm-phonon (lattice resonance)
 
 ### §A.2 Lagrangian Density
-$$\mathcal{L}_{SCm_phonon} = \sum_{i=1}^{26} \left[ U_{g,i} + U_{m,i} + U_{A,i} - U_{b,i} \right] \cdot S_{26}([SSq]) \cdot \Phi_{1.25\text{THz}}(\omega, \Gamma)$$
+$$\mathcal{L}_{SCm\_phonon} = \sum_{i=1}^{26} \left[ U_{g,i} + U_{m,i} + U_{A,i} - U_{b,i} \right] \cdot S_{26}([SSq]) \cdot \Phi_{1.25\text{THz}}(\omega, \Gamma)$$
 
 ### §A.3 Euler-Lagrange Equation of Motion
-$$\boxed{\frac{\partial \mathcal{L}}{\partial \phi} - \partial_\mu \frac{\partial \mathcal{L}}{\partial (\partial_\mu \phi)} = 0 \implies F_{U,Bi_i} = -\nabla U_{\text{eff}} + \Phi \cdot S_{26} \cdot E_{\text{net}}}$$
+$$\boxed{\frac{\partial \mathcal{L}}{\partial \phi} - \partial_mu \frac{\partial \mathcal{L}}{\partial (\partial_mu \phi)} = 0 \implies F_{U,Bi\_i} = -\nabla U_{\text{eff}} + \Phi \cdot S_{26} \cdot E_{\text{net}}}$$
 
 ### §A.4 Cosmogenesis Linkage Chain
-PAPER_877 axioms → SCm vacuum → phonon $\omega_{\text{SCm}}$ → lattice resonance → $F_{U,Bi_i}$ unified force → observational prediction
+PAPER_877 axioms → SCm vacuum → phonon $\omega_{\text{SCm}}$ → lattice resonance → $F_{U,Bi\_i}$ unified force → observational prediction
 
 ---
 

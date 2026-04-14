@@ -1,3 +1,15 @@
+---
+paper_id: PAPER_648
+title: "UQFF Ultra-Dense Hydrogen D(-1) LENR & Meson Cascade"
+session: 168
+date: 2026-01-01
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [LENR, cluster, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_648: UQFF Ultra-Dense Hydrogen D(-1) LENR & Meson Cascade
 **Author:** Daniel T. Murphy
 
@@ -5,23 +17,24 @@
 **Session:** 168 | **Date:** March 31 2026  
 **CP4 Class:** UQFFUltraDenseHydrogenLENRCalculator  
 **Source:** grok_share_b2e2c5cba7a.txt (Session 168) — AVS62 module  
-**Companion papers:** PAPER_643 (Thermal Lens LENR), PAPER_649 (Dipole Vortex Primes), PAPER_642 (SM Bridge)
+**Companion papers:** PAPER_643 (Thermal Lens LENR), PAPER_649 (Dipole Vortex Primes), PAPER_642 (SM
+Bridge)
 
 ---
 
 ## Abstract
 
-$$E_{\text{LENR}} = m_e c^2 \cdot e^{-26}; \quad \text{Rate} = f \cdot \exp\!\left[-\frac{\text{barrier} \cdot d}{\hbar v}\right]$$
+$$E_{\text{LENR}} = m_e c^2 \cdot e^{-26}; \quad \text{Rate} = f \cdot \exp!\left[-\frac{\text{barrier} \cdot d}{\hbar v}\right]$$
 
 The AVS62 module presents a complete LENR (Low-Energy Nuclear Reactions) framework
 centered on ultra-dense hydrogen D(-1) — Rydberg matter in the deepest excitation state
-with bond distance 2.3±0.1 pm and density ~10²⁹ cm⁻³ (≈ 140 kg/cm³). The energy
-equation E = mc²e⁻²⁶ directly connects Rydberg matter LENR to the UQFF 26th-order
+with bond distance 2.3±0.1 pm and density ~1029 cm-3 (≈ 140 kg/cm3). The energy
+equation E = mc2e-26 directly connects Rydberg matter LENR to the UQFF 26th-order
 derivative framework, identifying the 26th Rydberg level as the fusion activation threshold.
 The meson decay cascade (proton → D±(0) → K± → π± → µ± → e±) provides the
 prime-energy stepping sequence (938 → 493 → 139 → 105 → 0.511 MeV) that maps to
 the UQFF Dipole Vortex Prime sequence (PAPER_649). Fusion channels include proton-
-proton (0.42 MeV), D+D (3.3/4.0/24 MeV), and p+³He (18.8 MeV), with muon-catalyzed
+proton (0.42 MeV), D+D (3.3/4.0/24 MeV), and p+3He (18.8 MeV), with muon-catalyzed
 fusion yielding KER = 630 eV at laser-induced densities.
 
 ---
@@ -36,15 +49,15 @@ is the lowest (deepest bound) Rydberg state of deuterium/hydrogen clusters:
 | Parameter | Value | Note |
 |-----------|-------|------|
 | Bond distance | 2.3 ± 0.1 pm | a₀ = 52.9 pm basis |
-| Density | ~10²⁹ cm⁻³ | ~140 kg/cm³ (nuclear threshold) |
-| Interatomic distance formula | d = 2.9 n²_b a₀ | Rydberg: nᵦ = bond quantum number |
-| For nᵦ = 1 | d = 2.9 × (1)² × 52.9 pm ≈ 153 pm | Standard H₂ molecule |
+| Density | ~1029 cm-3 | ~140 kg/cm3 (nuclear threshold) |
+| Interatomic distance formula | d = 2.9 n2_b a₀ | Rydberg: nᵦ = bond quantum number |
+| For nᵦ = 1 | d = 2.9 × (1)2 × 52.9 pm ≈ 153 pm | Standard H₂ molecule |
 | For nᵦ → lowest | d = 2.3 pm | Ultra-dense D(-1) state |
 
 The n(-1) designation follows the Rydberg series extended below n=1 into the classically
-forbidden zone — achievable via laser compression at intensities >10¹⁵ W/cm².
+forbidden zone — achievable via laser compression at intensities >1015 W/cm2.
 
-### 1.2 UQFF Connection: E = mc²e⁻²⁶
+### 1.2 UQFF Connection: E = mc2e-26
 
 $$E_{\text{Rydberg-LENR}} = m_e c^2 \cdot e^{-26} \approx (8.187 \times 10^{-14}) \times e^{-26} \approx 4.97 \times 10^{-25}\ \text{J}$$
 
@@ -59,24 +72,24 @@ and Rydberg D(-1) accesses the 26th energy minimum of the vacuum density well.
 
 ### 2.1 Equation
 
-$$\Gamma = f \cdot \exp\!\left[-\frac{\text{barrier\_height} \times d}{\hbar v}\right]$$
+$$\Gamma = f \cdot \exp!\left[-\frac{\text{barrier\_height} \times d}{\hbar v}\right]$$
 
 **Parameters (D(-1) conditions):**
 | Parameter | Value |
 |-----------|-------|
-| Attempt frequency f | 10¹⁶/s (nuclear vibration frequency) |
+| Attempt frequency f | 1016/s (nuclear vibration frequency) |
 | Barrier height | ~MeV scale (strong force Coulomb barrier) |
-| Bond distance d | 2.3 pm = 2.3×10⁻¹² m |
-| Reduced Planck constant ℏ | 1.055×10⁻³⁴ J·s |
+| Bond distance d | 2.3 pm = 2.3×10-12 m |
+| Reduced Planck constant ℏ | 1.055×10-34 J·s |
 | Relative velocity v | c/137 (α-scaled, Bohr velocity) |
 
-The exponential suppression in D(-1) Rydberg matter at d=2.3 pm is ~10⁶ times less than
+The exponential suppression in D(-1) Rydberg matter at d=2.3 pm is ~106 times less than
 at standard H-H bond distance (74 pm), enabling measurable fusion rates at laboratory
 temperatures — this is the LENR mechanism.
 
 ### 2.2 Muon-Catalyzed Fusion
 
-$$W = \frac{e^2}{4\pi\epsilon_0 \cdot d} = \frac{(1.602 \times 10^{-19})^2}{4\pi \times 8.85 \times 10^{-12} \times 2.3 \times 10^{-12}} \approx 1.00 \times 10^{-16}\ \text{J}\ (= 630\ \text{eV})$$
+$$W = \frac{e^2}{4\piepsilon_0 \cdot d} = \frac{(1.602 \times 10^{-19})^2}{4\pi \times 8.85 \times 10^{-12} \times 2.3 \times 10^{-12}} \approx 1.00 \times 10^{-16}\ \text{J}\ (= 630\ \text{eV})$$
 
 The KER (kinetic energy release) of 630 eV matches the Coulomb energy at d = 2.3 pm,
 confirming that muon-catalyzed fusion operates exactly at the D(-1) equilibrium distance.
@@ -88,12 +101,12 @@ confirming that muon-catalyzed fusion operates exactly at the D(-1) equilibrium 
 | Reaction | Products | Energy |
 |----------|---------|--------|
 | p + p → D + e⁺ + νe | Deuterium + positron + neutrino | 0.42 MeV |
-| D + D → ³He + n | Helium-3 + neutron | 3.3 MeV |
+| D + D → 3He + n | Helium-3 + neutron | 3.3 MeV |
 | D + D → T + p | Tritium + proton | 4.0 MeV |
-| D + D → ⁴He + γ | Helium-4 + gamma | 24 MeV |
-| p + ³He → ⁴He + e⁺ + νe | Helium-4 | 18.8 MeV |
+| D + D → 4He + γ | Helium-4 + gamma | 24 MeV |
+| p + 3He → 4He + e⁺ + νe | Helium-4 | 18.8 MeV |
 
-The D+D → ⁴He channel (24 MeV) is the UQFF "maximum energy" LENR pathway, accessed
+The D+D → 4He channel (24 MeV) is the UQFF "maximum energy" LENR pathway, accessed
 only at D(-1) densities where the Gamow factor is reduced to measurable levels.
 
 ---
@@ -123,14 +136,16 @@ the physical scaffold for the Dipole Vortex Prime sequence (PAPER_649).
 
 The AVS62 LENR module integrates with UQFF at three levels:
 
-1. **26D coupling**: E = mc²e⁻²⁶ → UQFF 26th derivative → Rydberg 26th level
-2. **ρvac,[SCm] anchor**: Ultra-dense D(-1) density creates local [SCm]-like vacuum at 10²⁹ cm⁻³ → matches [SCm] permeability threshold
-3. **Ug1 dipole fusion**: The proton dipole (internal Ug1) concentrates Aether flux below D(-1) bond threshold, enabling LENR at stellar interior conditions
+1. **26D coupling**: E = mc2e-26 → UQFF 26th derivative → Rydberg 26th level
+2. **ρvac,[SCm] anchor**: Ultra-dense D(-1) density creates local [SCm]-like vacuum at 1029 cm-3 →
+matches [SCm] permeability threshold
+3. **Ug1 dipole fusion**: The proton dipole (internal Ug1) concentrates Aether flux below D(-1) bond
+threshold, enabling LENR at stellar interior conditions
 
 The Gamow tunneling rate in UQFF becomes:
-$$\Gamma_{\text{UQFF}} = f \cdot \exp\!\left[-\frac{E_{\text{barrier}}}{k_\eta \cdot \rho_{\text{vac},[SCm]} \cdot c^2}\right]$$
+$$\Gamma_{\text{UQFF}} = f \cdot \exp!\left[-\frac{E_{\text{barrier}}}{k_\eta \cdot \rho_{\text{vac},[SCm]} \cdot c^2}\right]$$
 
-where k_η = 10⁻¹¹³ as the Boltzmann tunneling factor, providing the scale suppression
+where k_η = 10-113 as the Boltzmann tunneling factor, providing the scale suppression
 that determines terrestrial vs. stellar LENR activation thresholds.
 
 ---
@@ -141,13 +156,15 @@ that determines terrestrial vs. stellar LENR activation thresholds.
 
 ### §A.1 Sector Classification
 
-This paper maps to **LENR-nuclear** sector of the 9-sector UQFF Lagrangian (see `uqff_lagrangian_derivation.py`).
+This paper maps to **LENR-nuclear** sector of the 9-sector UQFF Lagrangian (see
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
-The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive quantum fundamentals (DPM, UA, SCm):
+The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
+quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_\mu \chi)(\partial^\mu \chi) - V(\chi) + \mathcal{L}_{\rm cosmo}$$
+$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_mu \chi)(\partial^\mu \chi) - V(\chi) + \mathcal{L}_{\rm cosmo}$$
 
 where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
@@ -161,7 +178,9 @@ $$\boxed{\frac{\delta S}{\delta \chi} = \ddot{\chi} + \omega_{\rm LENR}^2 \chi -
 
 $$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \chi = 0$$
 
-The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g forces) through vacuum density initialization to the sector-specific equation of motion. Every term in the E-L equation inherits its physical origin from the cosmogenesis master.
+The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
+forces) through vacuum density initialization to the sector-specific equation of motion. Every term
+in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 
 ---
@@ -172,9 +191,9 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.069$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m³.
+For this system, the local VDS sub-ratio is $0.069$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -186,13 +205,13 @@ Since $p_{\rm DVP} = 67$ is **resonant** (threshold at $p > 26$), the system's v
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
-The BSH saturation timescale for this sector is **10⁻¹² s** (nuclear phonon damping):
+The BSH saturation timescale for this sector is **10-12 s** (nuclear phonon damping):
 
-$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
+$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\rm SCm}$ which initializes the harmonic series at cosmogenesis.
 
@@ -200,11 +219,11 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.069 | ✓ Threshold-consistent |
-| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 67$ | ✓ Resonant |
-| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
-| [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
+| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.069 | PASS Threshold-consistent |
+| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 67$ | PASS Resonant |
+| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
+| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
 ---
@@ -218,7 +237,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | Pion rest mass | 139.57 MeV | π± = 139.6 MeV in cascade | ✅ 99.98% |
 | Kaon rest mass | 493.68 MeV | K± = 493.7 MeV in cascade | ✅ 99.99% |
 | D+D fusion energy | 3.27 MeV (ENDF) | 3.3 MeV (AVS62 framework) | ✅ 99.1% |
-| Casimir energy (d=2.3pm) | ~630 eV | W = e²/(4πε₀d) = 630 eV | ✅ 100% |
+| Casimir energy (d=2.3pm) | ~630 eV | W = e2/(4πε₀d) = 630 eV | ✅ 100% |
 
 > **SM Anchor Reference:** PAPER_642 — UQFFSMParameterBridgeMasterComparisonCalculator.
 > Meson energies confirmed against PDG 2022 values.
@@ -248,9 +267,9 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `f`neutron_s26_coupling`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `k`ozima_scm_cross_section`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `k`ozima_wstp_kernel`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -259,7 +278,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `r`amanujan_polylog_s26`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
 | `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
@@ -268,7 +287,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `m`ock_theta_q26`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -279,8 +298,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `r`amanujan_pi_uqff`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `m`ock_theta_pi_wstp_kernel`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]

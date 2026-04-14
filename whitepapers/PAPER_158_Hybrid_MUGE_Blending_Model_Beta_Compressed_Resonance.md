@@ -1,3 +1,15 @@
+---
+paper_id: PAPER_158
+title: "Hybrid MUGE Blending Model: g_hybrid = β·g_compressed + (1-β)·g_resonance"
+session: 47
+date: 2026-01-01
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [AGN, MUGE, neutron-star, magnetar, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_158 — Hybrid MUGE Blending Model: g_hybrid = β·g_compressed + (1-β)·g_resonance
 **Author:** Daniel T. Murphy
 
@@ -42,7 +54,7 @@ $$\boxed{\beta = e^{-B/B_{crit}}}$$
 - $g_{comp}$ = compressed MUGE gravity (PAPER_090, 9-term Newtonian+corrections)
 - $g_{res}$ = resonance MUGE gravity (PAPER_146/159, 12/13-term superconductive resonance)
 - $B$ = local magnetic field strength [T]
-- $B_{crit}$ = critical quantum field (4.4×10¹³ T for magnetars)
+- $B_{crit}$ = critical quantum field (4.4×1013 T for magnetars)
 
 ---
 
@@ -52,7 +64,7 @@ $$\boxed{\beta = e^{-B/B_{crit}}}$$
 
 $$\beta = e^{-1} \approx 0.368 \quad \Rightarrow \quad g_{hybrid} \approx 0.37\,g_{comp} + 0.63\,g_{res}$$
 
-For SGR 1745-2900 (B = 3×10¹¹ T, B_crit ≈ 4.4×10¹³ T):
+For SGR 1745-2900 (B = 3×1011 T, B_crit ≈ 4.4×1013 T):
 
 $$\beta_{SGR} = e^{-3\times10^{11}/4.4\times10^{13}} \approx 0.9933 \approx 1$$
 
@@ -60,13 +72,13 @@ $$\beta_{SGR} = e^{-3\times10^{11}/4.4\times10^{13}} \approx 0.9933 \approx 1$$
 
 ### 3.2 Solar Regime (B << B_crit)
 
-For Sun (B_s = 10⁻⁴ T):
+For Sun (B_s = 10-4 T):
 
 $$\beta_{Sun} = e^{-10^{-4}/4.4\times10^{13}} \approx 1.000000$$
 
 → g_hybrid → g_comp (pure Newtonian+ regime)
 
-### 3.3 Neutron Star Surface (B ~ 10¹² T)
+### 3.3 Neutron Star Surface (B ~ 1012 T)
 
 $$\beta_{NS} = e^{-10^{12}/4.4\times10^{13}} \approx 0.977$$
 
@@ -86,13 +98,13 @@ def compute_hybrid_muge(g_compressed: float, g_resonance: float,
     where beta = exp(-B/B_crit).
 
     Args:
-        g_compressed: Compressed MUGE gravity [m/s²]
-        g_resonance:  Resonance MUGE gravity [m/s²]
+        g_compressed: Compressed MUGE gravity [m/s2]
+        g_resonance:  Resonance MUGE gravity [m/s2]
         B:            Local magnetic field [T]
         B_crit:       Critical field (default 4.4e13 T, magnetar)
 
     Returns:
-        g_hybrid:     Blended MUGE gravity [m/s²]
+        g_hybrid:     Blended MUGE gravity [m/s2]
     """
     if B_crit <= 0:
         raise ValueError("B_crit must be positive")
@@ -104,18 +116,18 @@ def compute_hybrid_muge(g_compressed: float, g_resonance: float,
 
 ## 5. Validation — 7-System Blending Table
 
-| System              | B [T]      | β             | g_comp [m/s²]  | g_res [m/s²]   | g_hybrid [m/s²] |
+| System              | B [T]      | β             | g_comp [m/s2]  | g_res [m/s2]   | g_hybrid [m/s2] |
 |---------------------|------------|---------------|-----------------|-----------------|-----------------|
-| SGR 1745-2900       | 3×10¹¹     | 0.9933        | 1.783×10³⁹      | 1.655×10⁴⁵     | 1.785×10⁻⁴+dominated|
-| Sagittarius A*      | 1×10⁻⁵     | ~1.0          | 1.816×10³⁴      | 1.256×10¹⁰⁰    | ≈ g_comp         |
-| Tapestry            | 1×10⁻⁴     | ~1.0          | 2.989×10³¹      | 1.257×10¹¹²    | ≈ g_comp         |
-| Westerlund 2        | 1×10⁻⁴     | ~1.0          | 2.989×10³¹      | 1.257×10¹¹²    | ≈ g_comp         |
-| Pillars             | 1×10⁻⁴     | ~1.0          | 1.989×10²⁷      | 1.256×10¹⁰⁵    | ≈ g_comp         |
-| Rings               | 1×10⁻⁵     | ~1.0          | 2.989×10³³      | 1.257×10¹¹³    | ≈ g_comp         |
-| Student's Guide     | 1×10⁻¹⁰    | ~1.0          | 2.000×10⁴⁷      | 1.257×10¹⁵⁶    | ≈ g_comp         |
+| SGR 1745-2900       | 3×1011     | 0.9933        | 1.783×1039      | 1.655×1045     | 1.785×10-4+dominated|
+| Sagittarius A*      | 1×10-5     | ~1.0          | 1.816×1034      | 1.256×10100    | ≈ g_comp         |
+| Tapestry            | 1×10-4     | ~1.0          | 2.989×1031      | 1.257×10112    | ≈ g_comp         |
+| Westerlund 2        | 1×10-4     | ~1.0          | 2.989×1031      | 1.257×10112    | ≈ g_comp         |
+| Pillars             | 1×10-4     | ~1.0          | 1.989×1027      | 1.256×10105    | ≈ g_comp         |
+| Rings               | 1×10-5     | ~1.0          | 2.989×1033      | 1.257×10113    | ≈ g_comp         |
+| Student's Guide     | 1×10-10    | ~1.0          | 2.000×1047      | 1.257×10156    | ≈ g_comp         |
 
 *Note: For all non-magnetar systems, β ≈ 1 so g_hybrid ≈ g_comp. The blending becomes
-significant only for systems with B/B_crit > 0.01 (i.e., B > 4.4×10¹¹ T).*
+significant only for systems with B/B_crit > 0.01 (i.e., B > 4.4×1011 T).*
 
 ---
 
@@ -136,11 +148,13 @@ Connection to 4 UQFF Operational Modes (PAPER_064):
 
 ---
 
-**Status:** ✅ Complete | **CP Stage:** CP3 (new `compute_hybrid_muge()` function)
-**Supersedes:** N/A (new model) | **Related:** PAPER_090 (compressed), PAPER_146 (12-term resonance), PAPER_155 (Newtonian limit), PAPER_064 (4 modes)
+**Status:** ✅ Complete | **CP Stage:** CP3 (new `c`ompute_hybrid_muge`()` function)
+**Supersedes:** N/A (new model) | **Related:** PAPER_090 (compressed), PAPER_146 (12-term
+resonance), PAPER_155 (Newtonian limit), PAPER_064 (4 modes)
 
 
-**UQFF computed:** MUGE buoyancy ratio U_bi/F_U = [SSq]�?�r�/GM = 5.7e-1�5.0e-4 = 2.85e-4; compressed MUGE baseline g = 5.4e-7 m/s� at r_ISCO.
+**UQFF computed:** MUGE buoyancy ratio U_bi/F_U = [SSq]?r/GM = 5.7e-1§5.0e-4 = 2.85e-4; compressed
+MUGE baseline g = 5.4e-7 m/s at r_ISCO.
 
 ---
 
@@ -148,13 +162,15 @@ Connection to 4 UQFF Operational Modes (PAPER_064):
 
 ### §A.1 Sector Classification
 
-This paper maps to **magnetar-field** sector of the 9-sector UQFF Lagrangian (see `uqff_lagrangian_derivation.py`).
+This paper maps to **magnetar-field** sector of the 9-sector UQFF Lagrangian (see
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
-The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive quantum fundamentals (DPM, UA, SCm):
+The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
+quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_\mu \phi_B)(\partial^\mu \phi_B) - V(\phi_B) + \mathcal{L}_{\rm cosmo}$$
+$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_mu \phi_B)(\partial^\mu \phi_B) - V(\phi_B) + \mathcal{L}_{\rm cosmo}$$
 
 where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
@@ -168,7 +184,9 @@ $$\boxed{\frac{\delta S}{\delta \phi_B} = \nabla \times (\rho_{\rm SCm} \mathbf{
 
 $$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_B = 0$$
 
-The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g forces) through vacuum density initialization to the sector-specific equation of motion. Every term in the E-L equation inherits its physical origin from the cosmogenesis master.
+The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
+forces) through vacuum density initialization to the sector-specific equation of motion. Every term
+in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 
 ---
@@ -179,9 +197,9 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.135$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m³.
+For this system, the local VDS sub-ratio is $0.135$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -193,13 +211,13 @@ Since $p_{\rm DVP} = 23$ is **sub-threshold** (threshold at $p > 26$), the syste
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
-The BSH saturation timescale for this sector is **10³ yr** (field decay quiescence):
+The BSH saturation timescale for this sector is **103 yr** (field decay quiescence):
 
-$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
+$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\rm SCm}$ which initializes the harmonic series at cosmogenesis.
 
@@ -207,11 +225,11 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.135 | ✓ Threshold-consistent |
-| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 23$ | ✓ Sub-threshold |
-| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
-| [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
+| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.135 | PASS Threshold-consistent |
+| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 23$ | PASS Sub-threshold |
+| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
+| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
 ---
@@ -221,14 +239,17 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | ✓ Consistent |
-| Cosmological constant Λ | 1.1×10⁻⁵² m⁻² (UQFF vacuum term) | 1.114×10⁻⁵² m⁻² | Planck 2018 | ✓ Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10⁻³⁵/yr | Super-K 2024 | ✓ Consistent |
-| UQFF buoyancy signature | F_U_Bi_i unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
+| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
-**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes significant, offering a falsifiable prediction beyond the Standard Model.
+**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
+produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
+bridge.*
 
 
 ---
@@ -243,9 +264,9 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `f`neutron_s26_coupling`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `k`ozima_scm_cross_section`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `k`ozima_wstp_kernel`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -254,7 +275,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `r`amanujan_polylog_s26`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
 | `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
@@ -263,7 +284,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `m`ock_theta_q26`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -274,8 +295,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `r`amanujan_pi_uqff`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `m`ock_theta_pi_wstp_kernel`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]

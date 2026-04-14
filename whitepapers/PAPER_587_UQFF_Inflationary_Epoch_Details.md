@@ -1,3 +1,15 @@
+---
+paper_id: PAPER_587
+title: "Inflationary Epoch Details from UQFF Grinding"
+session: 157
+date: 2025-01-01
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [SCm, dark-energy, Hubble, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_587 — Inflationary Epoch Details from UQFF Grinding
 **Author:** Daniel T. Murphy
 **Date:** 2025
@@ -12,7 +24,8 @@
 
 ## Abstract
 
-This paper presents a UQFF analysis of Inflationary Epoch Details from UQFF Grinding, deriving compressed field equations and observational predictions within the Star-Magic/UQFF framework.
+This paper presents a UQFF analysis of Inflationary Epoch Details from UQFF Grinding, deriving
+compressed field equations and observational predictions within the Star-Magic/UQFF framework.
 
 ## §1 Abstract
 
@@ -49,7 +62,7 @@ $$\ddot{a}(t) > 0 \iff (v_i - v_c) > 0 \iff v_\text{init} > v_\text{current}$$
 During the pre-mass epoch: $v_\text{current} \approx 0$ (no mass yet, no momentum drag),
 $v_\text{init} = c = 3\times10^8$ m/s. Therefore:
 
-$$v_i - v_c = c \quad\Rightarrow\quad \ddot{a} \gg 0 \quad\checkmark\quad (\text{rapid inflation})$$
+$$v_i - v_c = c \quadRightarrow\quad \ddot{a} \gg 0 \quadcheckmark\quad (\text{rapid inflation})$$
 
 At UQFF inflation time $t \sim 10^{-32}$ s with $\text{Grind} \sim 1$:
 
@@ -59,14 +72,14 @@ $$\ddot{a} \approx 10^{32 \times c \cdot e} \cdot c^2 e \gg 0 \quad (\text{super
 
 ## §4 Inflation Hubble Parameter
 
-$$H_\text{inf} = \sqrt{\Omega_\Lambda + \Omega_{SCm} + \Omega_\text{egg}} \cdot H_0 + \int v_{SCm}\,dV$$
+$$H_\text{inf} = \sqrt{\Omega_Lambda + \Omega_{SCm} + \Omega_text{egg}} \cdot H_0 + \int v_{SCm}\,dV$$
 
 where:
 
-$$\Omega_\text{egg} = \frac{P \cdot (v_i - v_c)}{v_i} \sim \mathcal{O}(0.05\text{–}0.2)$$
+$$\Omega_text{egg} = \frac{P \cdot (v_i - v_c)}{v_i} \sim \mathcal{O}(0.05\text{–}0.2)$$
 
-The "cosmic egg" density parameter $\Omega_\text{egg}$ drives Hubble rate above $H_0$ during
-inflation. After mass builds up ($v_c \to v_i$), $\Omega_\text{egg} \to 0$ and $H$ falls
+The "cosmic egg" density parameter $\Omega_text{egg}$ drives Hubble rate above $H_0$ during
+inflation. After mass builds up ($v_c \to v_i$), $\Omega_text{egg} \to 0$ and $H$ falls
 to $H_0 = 70\text{ km/s/Mpc}$.
 
 ---
@@ -77,7 +90,7 @@ Inflation ends when:
 
 1. **Velocity equalization:** $v_\text{current} \approx v_\text{init}$ as mass chains up
 2. **Tensor stability:** $\lambda_3 = 2P/3 + db$ approaches constant; $P/3$ minimum
-3. **Buoyant void suppression:** $U_b$ decreases as $\rho$ rises above $10^{-26}$ kg/m³
+3. **Buoyant void suppression:** $U_b$ decreases as $\rho$ rises above $10^{-26}$ kg/m3
 4. **Shell completion:** All 26 shells reach their equilibrium energies
 
 The transition from inflation to radiation domination corresponds to $BB \to \text{ProtoH}$
@@ -102,11 +115,11 @@ in PAPER_586.
 Parameters: $v_i = 3\times10^8$ m/s, $v_c = 0.01$ m/s, $t = 10^{-32}$ s,
 $\text{Grind} = 10^{-3}$:
 
-$$\Omega_\text{egg} = \frac{9.99\times10^{-6} \times 3\times10^8}{3\times10^8} \approx 9.99\times10^{-6}$$
+$$\Omega_text{egg} = \frac{9.99\times10^{-6} \times 3\times10^8}{3\times10^8} \approx 9.99\times10^{-6}$$
 
 $$H_\text{inf} \approx H_0 \sqrt{0.27 + 9.99\times10^{-6}} \approx 0.52\,H_0$$
 
-(At true inflation $v_c \to 0$: $\Omega_\text{egg} \to P \approx 1$, $H_\text{inf} \gg H_0$)
+(At true inflation $v_c \to 0$: $\Omega_text{egg} \to P \approx 1$, $H_\text{inf} \gg H_0$)
 
 ---
 
@@ -125,13 +138,15 @@ No free inflaton field is required.
 
 ### §A.1 Sector Classification
 
-This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see `uqff_lagrangian_derivation.py`).
+This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
-The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive quantum fundamentals (DPM, UA, SCm):
+The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
+quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_\mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
+$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
 
 where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
@@ -145,7 +160,9 @@ $$\boxed{\frac{\delta S}{\delta \phi_{\rm NS}} = \nabla^2 \phi_{\rm NS} - (4\pi 
 
 $$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\rm NS} = 0$$
 
-The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g forces) through vacuum density initialization to the sector-specific equation of motion. Every term in the E-L equation inherits its physical origin from the cosmogenesis master.
+The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
+forces) through vacuum density initialization to the sector-specific equation of motion. Every term
+in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 
 ---
@@ -156,9 +173,9 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.176$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m³.
+For this system, the local VDS sub-ratio is $0.176$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -170,13 +187,13 @@ Since $p_{\rm DVP} = 61$ is **resonant** (threshold at $p > 26$), the system's v
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
-The BSH saturation timescale for this sector is **10⁴ yr** (spin-down equilibrium):
+The BSH saturation timescale for this sector is **104 yr** (spin-down equilibrium):
 
-$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
+$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\rm SCm}$ which initializes the harmonic series at cosmogenesis.
 
@@ -184,11 +201,11 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.176 | ✓ Threshold-consistent |
-| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 61$ | ✓ Resonant |
-| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
-| [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
+| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.176 | PASS Threshold-consistent |
+| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 61$ | PASS Resonant |
+| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
+| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
 ---
@@ -198,10 +215,10 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Cosmological constant Λ | UQFF |∇UA|² → Λ_UQFF = 1.09e-52 m⁻² | Λ = 1.114e-52 m⁻² (Planck 2018 + DESI 2025) | Planck 2018 / DESI | 97.8% |
+| Cosmological constant Λ | UQFF |∇UA|2 → Λ_UQFF = 1.09e-52 m-2 | Λ = 1.114e-52 m-2 (Planck 2018 + DESI 2025) | Planck 2018 / DESI | 97.8% |
 | Dark energy fraction Ω_Λ | UQFF [SSq]=0.57; Ω_Λ ~ [SSq]×1.20 = 0.684 | Ω_Λ = 0.6847 ± 0.0073 | Planck 2018 | 99.9% |
 | CMB temperature T_CMB | UQFF vacuum condensate → T_CMB = (ρ_UA/σ_SB)^0.25 = 2.726 K | T_CMB = 2.72548 K | FIRAS 1996 | 99.98% |
-| H₀ Hubble constant | UQFF: H₀_UQFF = κ × c / r_Hubble = 67.4 km/s/Mpc | H₀ = 67.4 ± 0.5 km/s/Mpc (Planck) | Planck 2018 | ✓ Consistent (Planck value) |
+| H₀ Hubble constant | UQFF: H₀_UQFF = κ × c / r_Hubble = 67.4 km/s/Mpc | H₀ = 67.4 ± 0.5 km/s/Mpc (Planck) | Planck 2018 | PASS Consistent (Planck value) |
 
 **New physics claim:** UQFF [SSq] = 0.57 links directly to the cosmological dark energy fraction
 Ω_Λ via [SSq]×1.20 = 0.684 ≈ Ω_Λ. This is not a parameter fit — [SSq] was calibrated from
@@ -228,9 +245,9 @@ recalibrated from astrophysical sources independently.
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `f`neutron_s26_coupling`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `k`ozima_scm_cross_section`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `k`ozima_wstp_kernel`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -239,7 +256,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `r`amanujan_polylog_s26`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
 | `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
@@ -248,7 +265,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `m`ock_theta_q26`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -259,8 +276,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `r`amanujan_pi_uqff`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `m`ock_theta_pi_wstp_kernel`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]

@@ -1,18 +1,32 @@
+---
+paper_id: PAPER_553
+title: "F_U_Bi_i with 26th-Order Gaussian Polynomial — Truncated Exponential Anti-Collapse Proof"
+session: 147
+date: 2026-03-27
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [F_U_Bi_i, BEC, buoyancy, FUBi, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_553: F_U_Bi_i with 26th-Order Gaussian Polynomial — Truncated Exponential Anti-Collapse Proof
 
 **Author:** Daniel T. Murphy — Star Magic / UQFF Framework  
-**Session:** 147 | **Source:** grok_share_b08cc4e3684.txt (item 4, completed from first principles)  
+**Session:** 147 | **Source:** `grok_share_b08cc4e3684`.txt (item 4, completed from first principles) 
 **CP4 Class:** `FUBi26thGaussianTruncatedPolynomialBoundCalculator` (#148)  
 **Date:** 2026-03-27  
 
-> **Source note:** Grok's item 4 in `grok_share_b08cc4e3684.txt` stated only: *"Expand exp in FUB_i to degree 26: exp(-z²) ≈ Σ_{k=0}^{26} (−1)^k z^{2k}/k! (truncates for proof). Proof: Integrates to bounded erf, supporting dynamics."* This paper completes that statement with the full step-by-step derivation matching the level of items 1–3 in the same source.
+> **Source note:** Grok's item 4 in `grok_share_b08cc4e3684.txt` stated only: *"Expand exp in FUB_i to degree 26: exp(-z2) ≈ Σ_{k=0}^{26} (−1)^k z^{2k}/k! (truncates for proof). Proof: Integrates to bounded erf, supporting dynamics."* This paper completes that statement with the full step-by-step derivation matching the level of items 1–3 in the same source.
 
 ---
 
 
 ## Abstract
 
-This paper presents a UQFF analysis of Order Gaussian Polynomial — Truncated Exponential Anti-Collapse Proof, deriving compressed field equations and observational predictions within the Star-Magic/UQFF framework.
+This paper presents a UQFF analysis of Order Gaussian Polynomial — Truncated Exponential
+Anti-Collapse Proof, deriving compressed field equations and observational predictions within the
+Star-Magic/UQFF framework.
 
 ## §1 Abstract
 
@@ -78,7 +92,8 @@ Since the polynomial integrand is bounded and integrates to a finite value:
 
 $$\int_0^\infty F_{U,Bi,i}\,dz = F_U \cdot \frac{\sqrt{\pi}}{2}\,\text{erf}(\infty) = F_U \cdot \frac{\sqrt{\pi}}{2} < \infty$$
 
-This is the **anti-collapse proof**: the total buoyancy indicator energy is finite. No singularity can form from the frequency-space buoyancy distribution.
+This is the **anti-collapse proof**: the total buoyancy indicator energy is finite. No singularity
+can form from the frequency-space buoyancy distribution.
 
 ---
 
@@ -114,7 +129,7 @@ The 26th-order polynomial is evaluated exactly at the three BH26 ALMA frequency 
 
 | System | Context in §3–§5 |
 |---|---|
-| **VDS** | $P_{\text{order}}/3 = 3.333 \times 10^{-6}$ bounds the 26th coefficient: $c_{26} = 1/26! \approx 2.48 \times 10^{-27} \ll P/3$ ✓ |
+| **VDS** | $P_{\text{order}}/3 = 3.333 \times 10^{-6}$ bounds the 26th coefficient: $c_{26} = 1/26! \approx 2.48 \times 10^{-27} \ll P/3$ PASS |
 | **DVP** | $26! \bmod 113 \neq 0$ → polynomial coefficients are primitive roots mod $p=113$ → non-repeating |
 | **BH26** | $z$-variable evaluated at BH26 ALMA channels 92/225/345 GHz → polynomial flat across BH26 window |
 
@@ -127,11 +142,15 @@ The 26th-order Gaussian polynomial truncation of $F_{U,Bi,i}$:
 1. **Agrees with exact $e^{-z^2}$ to float64 machine epsilon** at $z=1$ — polynomial and exact Gaussian produce the same bit-pattern; analytical truncation error $1/27! \approx 9.18 \times 10^{-29}$ lies below float64 resolution; the truncation is not an approximation at $z \leq 1$
 2. **Proves anti-collapse** via bounded integral $= \sqrt{\pi}/2 \cdot \text{erf}(\infty) = \sqrt{\pi}/2 \approx 0.8862 < \infty$ — no frequency runaway, no energy divergence
 3. **Establishes non-repeating dynamics** via: (a) Lindemann–Weierstrass transcendence of $e^{-1}$ and (b) super-geometric $k!$ growth with $26! \bmod 113 \neq 0$ (Legendre $v_{113}(26!)=0$, DVP $p=113$ irreducibility)
-4. **Evaluates to unity across all BH26 ALMA bins** — explaining flat spectral amplitude in 92/225/345 GHz observations
+4. **Evaluates to unity across all BH26 ALMA bins** — explaining flat spectral amplitude in
+92/225/345 GHz observations
 
-**Impact on companion papers PAPER_550–552:** Items 1–3 of the source (`grok_share_b08cc4e3684.txt`) each contained full step-by-step derivations. None contain the rational/irrational coefficient conflation or decimal-place understatement corrected here. PAPER_550–552 are unaffected.
+**Impact on companion papers PAPER_550–552:** Items 1–3 of the source (`grok_share_b08cc4e3684.txt`)
+each contained full step-by-step derivations. None contain the rational/irrational coefficient
+conflation or decimal-place understatement corrected here. PAPER_550–552 are unaffected.
 
-This paper completes the set of four 26th-order proofs for Session 147, alongside DPM quantization (PAPER_550), Ug factorial anti-collapse (PAPER_551), and tensor hub (PAPER_552).
+This paper completes the set of four 26th-order proofs for Session 147, alongside DPM quantization
+(PAPER_550), Ug factorial anti-collapse (PAPER_551), and tensor hub (PAPER_552).
 
 ---
 
@@ -139,7 +158,7 @@ This paper completes the set of four 26th-order proofs for Session 147, alongsid
 
 ---
 
-## ×10 � FUBi26 as the Convergence Foundation
+## ×10  FUBi26 as the Convergence Foundation
 
 ### Why FUBi26 Underpins All Six UQFF Proofs
 
@@ -152,7 +171,7 @@ $$S_N = \sum_{k=0}^{N} c_k \cdot g(k),$$
 used in the Riemann-zeta zero computations (PAPER_530), the Yang-Mills partition
 function (PAPER_544), and the NS energy-dissipation bound (PAPER_543), satisfies
 
-$$|S_N - S_\infty| < 1/27! \approx 2.86 \times 10^{-29} < \varepsilon_\text{float64}.$$
+$$|S_N - S_\infty| < 1/27! \approx 2.86 \times 10^{-29} < \varepsilon_text{float64}.$$
 
 This means all five CP4 calculator chains terminate with IEEE 754 exact zeros at
 the truncation boundary.
@@ -161,12 +180,12 @@ the truncation boundary.
 
 | Paper | Quantity bounded by FUBi26 | Proof step | Tolerance |
 |-------|--------------------------|-----------|-----------|
-| PAPER_530 (RH) | Riemann $\zeta(1/2 + it)$ partial sum | �3.4 | $10^{-29}$ |
-| PAPER_530 (P?NP) | Polynomial NP-reduction expansion | �5.2 | $10^{-29}$ |
-| PAPER_543 (NS) | Sobolev $H^1$ energy norm series | �4.3 | $10^{-12}$ |
-| PAPER_544 (YM) | Plaquette partition function sum | �3.5 | $10^{-29}$ |
-| PAPER_156 (BSD) | $L$-function Taylor coefficients | �6.1 | $10^{-29}$ |
-| PAPER_156 (Hodge) | Period integral expansion | �7.2 | $10^{-18}$ |
+| PAPER_530 (RH) | Riemann $\zeta(1/2 + it)$ partial sum | §3.4 | $10^{-29}$ |
+| PAPER_530 (P?NP) | Polynomial NP-reduction expansion | §5.2 | $10^{-29}$ |
+| PAPER_543 (NS) | Sobolev $H^1$ energy norm series | §4.3 | $10^{-12}$ |
+| PAPER_544 (YM) | Plaquette partition function sum | §3.5 | $10^{-29}$ |
+| PAPER_156 (BSD) | $L$-function Taylor coefficients | §6.1 | $10^{-29}$ |
+| PAPER_156 (Hodge) | Period integral expansion | §7.2 | $10^{-18}$ |
 
 ### Connection to $Z_{26}$
 
@@ -189,7 +208,7 @@ $Z_{26} \approx 0.5699$ is numerically exact within float64.
 
 ### Validation
 
-Tests T48�T55, group M9-FUBi26 (8/8 PASS, including T52 polynomial-bound check), commit a0b2d55.
+Tests T48T55, group M9-FUBi26 (8/8 PASS, including T52 polynomial-bound check), commit a0b2d55.
 
 ---
 
@@ -199,13 +218,15 @@ Tests T48�T55, group M9-FUBi26 (8/8 PASS, including T52 polynomial-bound check
 
 ### §A.1 Sector Classification
 
-This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see `uqff_lagrangian_derivation.py`).
+This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
-The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive quantum fundamentals (DPM, UA, SCm):
+The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
+quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_\mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
+$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
 
 where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
@@ -219,7 +240,9 @@ $$\boxed{\frac{\delta S}{\delta \phi_{\rm NS}} = \nabla^2 \phi_{\rm NS} - (4\pi 
 
 $$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\rm NS} = 0$$
 
-The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g forces) through vacuum density initialization to the sector-specific equation of motion. Every term in the E-L equation inherits its physical origin from the cosmogenesis master.
+The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
+forces) through vacuum density initialization to the sector-specific equation of motion. Every term
+in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 
 ---
@@ -230,9 +253,9 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.153$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m³.
+For this system, the local VDS sub-ratio is $0.153$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -244,13 +267,13 @@ Since $p_{\rm DVP} = 43$ is **resonant** (threshold at $p > 26$), the system's v
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
-The BSH saturation timescale for this sector is **10⁴ yr** (spin-down equilibrium):
+The BSH saturation timescale for this sector is **104 yr** (spin-down equilibrium):
 
-$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
+$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\rm SCm}$ which initializes the harmonic series at cosmogenesis.
 
@@ -258,11 +281,11 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.153 | ✓ Threshold-consistent |
-| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 43$ | ✓ Resonant |
-| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
-| [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
+| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.153 | PASS Threshold-consistent |
+| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 43$ | PASS Resonant |
+| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
+| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
 ---
@@ -272,10 +295,10 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Higgs mass m_H | UQFF K_HIGGS=47.34 → m_H_UQFF = 125.09 GeV | m_H = 125.20 ± 0.11 GeV | PDG 2024 | 99.8% |
-| Cosmological Λ | UQFF |∇UA|² → 1.09e-52 m⁻² | Λ = 1.114e-52 m⁻² (Planck+DESI) | Planck 2018 | 97.8% |
-| Thomson σ_T (QED) | UQFF U_m kernel: σ_T = 6.6524e-29 m² | σ_T = 6.6524e-29 m² | PDG 2024 | 100% (exact) |
-| κ baryon stability | κ = 0.0005/day; scale separation 10³³ from proton decay | τ_p > 7.7e33 yr (Super-K) | Super-K 2024 | ✓ UQFF baryon-safe |
+| Higgs mass m_H | UQFF K_HIGGS=47.34 → `m_H_UQFF` = 125.09 GeV | m_H = 125.20 ± 0.11 GeV | PDG 2024 | 99.8% |
+| Cosmological Λ | UQFF |∇UA|2 → 1.09e-52 m-2 | Λ = 1.114e-52 m-2 (Planck+DESI) | Planck 2018 | 97.8% |
+| Thomson σ_T (QED) | UQFF U_m kernel: σ_T = 6.6524e-29 m2 | σ_T = 6.6524e-29 m2 | PDG 2024 | 100% (exact) |
+| κ baryon stability | κ = 0.0005/day; scale separation 1033 from proton decay | τ_p > 7.7e33 yr (Super-K) | Super-K 2024 | PASS UQFF baryon-safe |
 
 **New physics claim:** UQFF operates at a vacuum topology scale (~200 PeV) that is 8 orders
 below the GUT scale and 33 orders above nuclear baryon-number scales. This intermediate-scale
@@ -286,7 +309,7 @@ while remaining consistent with all collider and nuclear precision measurements.
 
 
 
-## �11 � References (Extended)
+## 11  References (Extended)
 
 - Abramowitz, M. & Stegun, I.A. (1964): Handbook of Mathematical Functions
 - Clay Mathematics Institute: Millennium Prize Problems (2000)
@@ -299,7 +322,7 @@ while remaining consistent with all collider and nuclear precision measurements.
 - PAPER_544: Yang-Mills DPM Gauge Field Mass Gap
 - PAPER_563: Millennium Prize Coordinator (Session 151H)
 - Murphy, D. T. (2026). `grok_share_b08cc4e3684.txt`
-- Murphy, D. T. (2026). `test_millennium_phase_h.py` � 64/64 PASS (commit a0b2d55).
+- Murphy, D. T. (2026). `test_millennium_phase_h.py`  64/64 PASS (commit a0b2d55).
 
 
 ---
@@ -314,9 +337,9 @@ while remaining consistent with all collider and nuclear precision measurements.
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `f`neutron_s26_coupling`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `k`ozima_scm_cross_section`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `k`ozima_wstp_kernel`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -325,7 +348,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `r`amanujan_polylog_s26`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
 | `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
@@ -334,7 +357,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `m`ock_theta_q26`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -345,8 +368,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `r`amanujan_pi_uqff`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `m`ock_theta_pi_wstp_kernel`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]

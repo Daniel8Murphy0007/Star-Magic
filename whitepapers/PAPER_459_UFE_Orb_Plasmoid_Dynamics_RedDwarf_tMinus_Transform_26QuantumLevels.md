@@ -1,23 +1,37 @@
-# PAPER_459 — UFE Orb Plasmoid Dynamics: Red Dwarf t⁻ Time Transform + 26 Quantum Levels
+---
+paper_id: PAPER_459
+title: "UFE Orb Plasmoid Dynamics: Red Dwarf t- Time Transform + 26 Quantum Levels"
+session: 116
+date: 2025-01-01
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [vacuum, SCm, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
+# PAPER_459 — UFE Orb Plasmoid Dynamics: Red Dwarf t- Time Transform + 26 Quantum Levels
 **Date:** 2025
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2  
 **Session:** 116 (v4.73) / Whitepapers created Session 121  
 **Source:** grok_share_e70525fa.txt (Doc 43 — UFEOrbPlasmoidDynamics)  
-**Classification:** FIRST t⁻ = −t_n × exp(π − t_n) time transform in UQFF; FIRST UP/FU plasmoid dynamics with 26 quantum levels; FIRST 6-BatchType video-frame plasmoid registry  
+**Classification:** FIRST t- = −t_n × exp(π − t_n) time transform in UQFF; FIRST UP/FU plasmoid
+dynamics with 26 quantum levels; FIRST 6-BatchType video-frame plasmoid registry  
 **Author:** Daniel T. Murphy  
 **CP4 Class:** `UFEOrbPlasmoidDynamicsRedDwarfCalculator` (#97, PAPER_459)
 
-<!-- UQFF constants: κ = 5.0e-4 day⁻¹, [SSq] = 0.57, ρ_vac,[SCm]=1.60×10¹⁹ J/m³, ρ_vac,[UA]=1.60×10²⁰ J/m³ -->
+<!— UQFF constants: κ = 5.0e-4 day-1, [SSq] = 0.57, ρ_vac,[SCm]=1.60×1019 J/m3, ρ_vac,[UA]=1.60×1020
+J/m3 —>
 ---
 
 ## Abstract
 
-This paper introduces the UFE (Unified Field Energy) Orb Plasmoid module for modelling plasmoid populations in red dwarf stellar atmospheres with a novel backward-time coordinate $t^- = -t_n \exp(\pi - t_n)$. The module processes video-frame plasmoid observations at 33.3 fps (496 frames per sequence), classifying 40–50 plasmoids per frame into 6 BatchTypes. Two vacuum energy densities are defined: $\rho_{\rm vac,[SCm]} = 1.60\times10^{19}$ J/m³ and $\rho_{\rm vac,[UA]} = 1.60\times10^{20}$ J/m³, enabling 26 quantum level spacing calculations. The t⁻ transform provides a **relativistic-like time dilation effect** for plasmoid dynamics near the stellar photosphere without requiring full GR metric solutions.
+This paper introduces the UFE (Unified Field Energy) Orb Plasmoid module for modelling plasmoid populations in red dwarf stellar atmospheres with a novel backward-time coordinate $t^- = -t_n \exp(\pi - t_n)$. The module processes video-frame plasmoid observations at 33.3 fps (496 frames per sequence), classifying 40–50 plasmoids per frame into 6 BatchTypes. Two vacuum energy densities are defined: $\rho_{\rm vac,[SCm]} = 1.60\times10^{19}$ J/m3 and $\rho_{\rm vac,[UA]} = 1.60\times10^{20}$ J/m3, enabling 26 quantum level spacing calculations. The t- transform provides a **relativistic-like time dilation effect** for plasmoid dynamics near the stellar photosphere without requiring full GR metric solutions.
 
 ---
 
-## 2. The t⁻ Time Transform (FIRST in UQFF) — PAPER_459
+## 2. The t- Time Transform (FIRST in UQFF) — PAPER_459
 
 ### 2.1 Mathematical Definition
 
@@ -25,7 +39,7 @@ $$t^- = -t_n \cdot \exp(\pi - t_n)$$
 
 Where $t_n = t/t_{\rm ref}$ is the normalised time coordinate and $t_{\rm ref}$ is the system reference period.
 
-### 2.2 Analysis of t⁻ Behaviour
+### 2.2 Analysis of t- Behaviour
 
 At $t_n = \pi$: $t^- = -\pi \cdot \exp(\pi - \pi) = -\pi \cdot e^0 = -\pi$
 
@@ -35,17 +49,21 @@ At $t_n = 1$: $t^- = -1 \cdot \exp(\pi - 1) = -\exp(\pi-1) = -\exp(2.14) \approx
 
 Extremum: $\frac{d(t^-)}{dt_n} = -\exp(\pi - t_n) + t_n\exp(\pi - t_n) = \exp(\pi - t_n)(t_n - 1) = 0$ at $t_n = 1$
 
-So the **maximum magnitude of t⁻** occurs at t_n=1: $|t^-_{\rm max}| = e^{\pi-1} \approx 8.50$
+So the **maximum magnitude of t-** occurs at t_n=1: $|t^-_{\rm max}| = e^{\pi-1} \approx 8.50$
 
-The transform maps forward-time coordinate to a **non-linear backward-phase** — plasmoid dynamics at t_n close to 1 experience the largest temporal distortion.
+The transform maps forward-time coordinate to a **non-linear backward-phase** — plasmoid dynamics at
+t_n close to 1 experience the largest temporal distortion.
 
 ### 2.3 Physical Interpretation
 
-In the red dwarf photosphere, plasmoids form, evolve, and dissipate on characteristic timescales. The t⁻ transform models the **retarded field effect** — the electromagnetic potential of the plasmoid at position r₁ affects particles at r₂ with a light-travel delay. For plasmoids moving at v ≈ c/100 in the photosphere:
+In the red dwarf photosphere, plasmoids form, evolve, and dissipate on characteristic timescales.
+The t- transform models the **retarded field effect** — the electromagnetic potential of the
+plasmoid at position r₁ affects particles at r₂ with a light-travel delay. For plasmoids moving at v
+≈ c/100 in the photosphere:
 
 $$\Delta t_{\rm retard} = \frac{r_{\rm plasmoid}}{c/100} \cdot\frac{v}{c} = \frac{r_p}{100c} \approx \frac{10^4}{3\times10^6} \approx 3.3\times10^{-3}\ \rm s$$
 
-The t⁻ transform compresses this retarded propagation into the single factor $\exp(\pi - t_n)$.
+The t- transform compresses this retarded propagation into the single factor $\exp(\pi - t_n)$.
 
 ---
 
@@ -66,7 +84,7 @@ The t⁻ transform compresses this retarded propagation into the single factor $
 **UP (Unified Plasmoid) — formation phase:**
 $$E_{\rm UP} = \rho_{\rm vac,[SCm]} \cdot V_p = 1.60\times10^{19} \cdot \frac{4}{3}\pi r_p^3$$
 
-At r_p = 10⁻² m (1 cm plasmoid):
+At r_p = 10-2 m (1 cm plasmoid):
 $$E_{\rm UP} = 1.60\times10^{19} \times 4.19\times10^{-6} = 6.7\times10^{13}\ \rm J\ (67\ TJ)$$
 
 **FU (Field-Unified) — dissipation phase:**
@@ -81,11 +99,12 @@ The FU energy exceeds UP by exactly 10× — the ratio $\rho_{\rm vac,[UA]}/\rho
 | TYPE_A | Fast-rising (t_n < 0.4) | L = 1–5 |
 | TYPE_B | Peak (t_n ≈ 1) | L = 6–10 |
 | TYPE_C | Decay (t_n > 1) | L = 11–15 |
-| TYPE_D | Reflected (t⁻ branch) | L = 16–20 |
+| TYPE_D | Reflected (t- branch) | L = 16–20 |
 | TYPE_E | Superposed | L = 21–24 |
 | TYPE_F | Boundary | L = 25–26 |
 
-The 26-level quantum structure arises from the 26-dimensional UQFF field theory — each plasmoid occupies one of 26 discrete energy states.
+The 26-level quantum structure arises from the 26-dimensional UQFF field theory — each plasmoid
+occupies one of 26 discrete energy states.
 
 ---
 
@@ -95,10 +114,11 @@ $$\Delta E_L = \frac{\rho_{\rm vac,[UA]} - \rho_{\rm vac,[SCm]}}{26} \cdot V_{\r
 
 $$\Delta E_L = \frac{(1.60\times10^{20} - 1.60\times10^{19})}{26} \times V_{\rm ref} = \frac{1.44\times10^{20}}{26} V_{\rm ref} = 5.54\times10^{18} V_{\rm ref}\ \rm J/m^3$$
 
-For V_ref = 4.19×10⁻⁶ m³ (1 cm plasmoid):
+For V_ref = 4.19×10-6 m3 (1 cm plasmoid):
 $$\Delta E_L = 5.54\times10^{18} \times 4.19\times10^{-6} = 2.32\times10^{13}\ \rm J$$
 
-Each quantum level requires 23.2 TJ to climb — consistent with chromospheric energy flux calculations for Type IV solar radio bursts (a proxy for large plasmoids).
+Each quantum level requires 23.2 TJ to climb — consistent with chromospheric energy flux
+calculations for Type IV solar radio bursts (a proxy for large plasmoids).
 
 ---
 
@@ -106,19 +126,20 @@ Each quantum level requires 23.2 TJ to climb — consistent with chromospheric e
 
 | Parameter | Value |
 |-----------|-------|
-| M_* | ~0.3 M☉ = 5.97×10²⁹ kg |
-| R_* | ~3×10⁷ m (0.3 R☉) |
+| M_* | ~0.3 MM_sun = 5.97×1029 kg |
+| R_* | ~3×107 m (0.3 RM_sun) |
 | T_eff | ~3200 K |
-| g_UQFF surface | ~250 m/s² |
+| g_UQFF surface | ~250 m/s2 |
 | B_photosphere | ~0.2 T (active region) |
 
 $$g_{\rm Newton, RD} = \frac{GM_*}{R_*^2} = \frac{6.674\times10^{-11}\times5.97\times10^{29}}{(3\times10^7)^2} = \frac{3.98\times10^{19}}{9\times10^{14}} \approx 44.2\ \rm m/s^2$$
 
-With UQFF magnetic suppression (B/B_crit = 0.2/4.4×10¹³ ≈ 4.5×10⁻¹⁵ — negligible) and Ug terms, g_UQFF_surface ≈ 250 m/s² (typical observed effective surface gravity for active M-dwarfs).
+With UQFF magnetic suppression (B/B_crit = 0.2/4.4×1013 ≈ 4.5×10-15 — negligible) and Ug terms,
+g_UQFF_surface ≈ 250 m/s2 (typical observed effective surface gravity for active M-dwarfs).
 
 ---
 
-## 6. t⁻ Applied to Plasmoid Dynamics
+## 6. t- Applied to Plasmoid Dynamics
 
 The plasmoid equations in backward time:
 
@@ -132,8 +153,8 @@ At t_n = 1: $t^- = -8.50$ → plasmoid velocity runs backward 8.5 time units, pr
 
 | Feature | SM | UQFF PAPER_459 |
 |---------|-----|----------------|
-| Plasmoid energy | Magnetic reconnection B²/2μ₀ | UP/FU vacuum energy densities |
-| Time coordinate | Standard t | Retarded t⁻ = −t_n exp(π−t_n) |
+| Plasmoid energy | Magnetic reconnection B2/2μ₀ | UP/FU vacuum energy densities |
+| Time coordinate | Standard t | Retarded t- = −t_n exp(π−t_n) |
 | Quantum levels | Continuum | 26-level discrete |
 | Classification | Flux-based | 6-BatchType by t_n phase |
 
@@ -141,9 +162,14 @@ At t_n = 1: $t^- = -8.50$ → plasmoid velocity runs backward 8.5 time units, pr
 
 ## 8. Testable Predictions
 
-1. **Peak at t_n = 1:** All TYPE_B (peak) plasmoids should occur exactly at t_n = 1 in the normalised frame — corresponding to t = t_ref in each sequence. Verifiable by cross-correlating frame brightness peak with t_ref.
-2. **Retrograde TYPE_D motion:** TYPE_D plasmoids (t⁻ dominant) should show apparent counter-flow. Observable in Hα Doppler velocity maps of active M-dwarfs during flare decay.
-3. **26 energy levels:** Spectroscopic energy levels of plasmoid-associated emission lines should cluster in groups of ΔE_L ≈ 23.2 TJ / plasmoid-volume. For 1 cm³ volumes this is ~23 TJ — measurable only for solar-scale plasmoids via X-ray calorimetry.
+1. **Peak at t_n = 1:** All TYPE_B (peak) plasmoids should occur exactly at t_n = 1 in the
+normalised frame — corresponding to t = t_ref in each sequence. Verifiable by cross-correlating
+frame brightness peak with t_ref.
+2. **Retrograde TYPE_D motion:** TYPE_D plasmoids (t- dominant) should show apparent counter-flow.
+Observable in Hα Doppler velocity maps of active M-dwarfs during flare decay.
+3. **26 energy levels:** Spectroscopic energy levels of plasmoid-associated emission lines should
+cluster in groups of ΔE_L ≈ 23.2 TJ / plasmoid-volume. For 1 cm3 volumes this is ~23 TJ — measurable
+only for solar-scale plasmoids via X-ray calorimetry.
 
 ---
 
@@ -153,13 +179,15 @@ At t_n = 1: $t^- = -8.50$ → plasmoid velocity runs backward 8.5 time units, pr
 
 ### §A.1 Sector Classification
 
-This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see `uqff_lagrangian_derivation.py`).
+This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
-The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive quantum fundamentals (DPM, UA, SCm):
+The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
+quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_\mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
+$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
 
 where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
@@ -173,7 +201,9 @@ $$\boxed{\frac{\delta S}{\delta \phi_{\rm NS}} = \nabla^2 \phi_{\rm NS} - (4\pi 
 
 $$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\rm NS} = 0$$
 
-The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g forces) through vacuum density initialization to the sector-specific equation of motion. Every term in the E-L equation inherits its physical origin from the cosmogenesis master.
+The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
+forces) through vacuum density initialization to the sector-specific equation of motion. Every term
+in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 
 ---
@@ -184,9 +214,9 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.078$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m³.
+For this system, the local VDS sub-ratio is $0.078$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -198,13 +228,13 @@ Since $p_{\rm DVP} = 29$ is **resonant** (threshold at $p > 26$), the system's v
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
-The BSH saturation timescale for this sector is **10⁴ yr** (spin-down equilibrium):
+The BSH saturation timescale for this sector is **104 yr** (spin-down equilibrium):
 
-$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
+$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\rm SCm}$ which initializes the harmonic series at cosmogenesis.
 
@@ -212,11 +242,11 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.078 | ✓ Threshold-consistent |
-| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 29$ | ✓ Resonant |
-| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
-| [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
+| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.078 | PASS Threshold-consistent |
+| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 29$ | PASS Resonant |
+| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
+| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
 ---
@@ -226,12 +256,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Thomson σ_T (QED synchrotron) | UQFF U_m scattering kernel: σ_T = 6.6524×10⁻²⁹ m² | σ_T = 6.6524×10⁻²⁹ m² (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
-| Astrophysical system luminosity X-ray / Radio | UQFF MUGE g_total → L_X via Stefan-Boltzmann + buoyancy flux: L_X ≈ g_total × M_env | L_X L ≥ 10³⁷ erg/s | Chandra CXC | ✓ Consistent order of magnitude |
-| GR Schwarzschild limit | UQFF g_total must satisfy g ≤ c²/(2r_s) at event horizon | r_s = 2GM/c² (GR exact) | PDG 2024 / GR | ✓ UQFF respects GR horizon |
+| Thomson σ_T (QED synchrotron) | UQFF U_m scattering kernel: σ_T = 6.6524×10-29 m2 | σ_T = 6.6524×10-29 m2 (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
+| Astrophysical system luminosity X-ray / Radio | UQFF MUGE g_total → L_X via Stefan-Boltzmann + buoyancy flux: L_X ≈ g_total × M_env | L_X L ≥ 1037 erg/s | Chandra CXC | PASS Consistent order of magnitude |
+| GR Schwarzschild limit | UQFF g_total must satisfy g ≤ c2/(2r_s) at event horizon | r_s = 2GM/c2 (GR exact) | PDG 2024 / GR | PASS UQFF respects GR horizon |
 | κ vacuum rate vs X-ray variability | UQFF κ = 0.0005/day → timescale τ_UQFF = 2000 days | Observed X-ray variability τ_obs (instrument monitoring) | Chandra CXC | Testable UQFF variability timescale |
 
-**New physics claim:** UQFF MUGE generates gravity enhancement factors (g_total/g_Newt > 1) for Astrophysical system
+**New physics claim:** UQFF MUGE generates gravity enhancement factors (g_total/g_Newt > 1) for
+Astrophysical system
 through vacuum buoyancy coupling — a mechanism absent from GR+SM. The enhancement factor and
 X-ray luminosity are linked via the UQFF buoyancy flux, providing a testable prediction for
 future Chandra CXC monitoring observations.
@@ -240,7 +271,7 @@ future Chandra CXC monitoring observations.
 
 
 
-*Copyright – Daniel T. Murphy | Session 116/121 — grok_share_e70525fa.txt*
+*Copyright – Daniel T. Murphy | Session 116/121 — `grok_share_e70525fa`.txt*
 
 
 ---
@@ -255,9 +286,9 @@ future Chandra CXC monitoring observations.
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `f`neutron_s26_coupling`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `k`ozima_scm_cross_section`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `k`ozima_wstp_kernel`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -266,7 +297,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `r`amanujan_polylog_s26`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
 | `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
@@ -275,7 +306,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `m`ock_theta_q26`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -286,8 +317,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `r`amanujan_pi_uqff`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `m`ock_theta_pi_wstp_kernel`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]

@@ -1,3 +1,15 @@
+---
+paper_id: PAPER_656
+title: "UQFF V838 Monocerotis Light Echo Master Equation"
+session: 0
+date: 2025-01-01
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [Hubble, BEC, SCm, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_656: UQFF V838 Monocerotis Light Echo Master Equation
 **Session:** 0
 ## Hubble Dataset Analysis and Master Universal Gravity Equation for Light Echo Evolution
@@ -29,9 +41,9 @@ This paper integrates the V838 Monocerotis (V838 Mon) Hubble light echo dataset 
 |-----------|-------|
 | Star | V838 Monocerotis (V838 Mon) |
 | Constellation | Monoceros |
-| Distance | 20,000 light-years = 1.892×10²⁰ m |
+| Distance | 20,000 light-years = 1.892×1020 m |
 | Outburst year | 2002 |
-| Peak luminosity | 600,000 L_Sun ≈ 2.3×10³⁸ W |
+| Peak luminosity | 600,000 L_Sun ≈ 2.3×1038 W |
 | Hubble instrument | Advanced Camera for Surveys (ACS) |
 | Key observation | October 2004 (t ≈ 2.5 years post-outburst) |
 | Filters | Blue, green, infrared (full-color composite) |
@@ -58,7 +70,7 @@ $$r_{\text{echo}} = 3 \times 10^8 \cdot (3 \times 365.25 \times 86400) = 2.84 \t
 
 The dust density distribution is modulated by the star's gravitational field within the UQFF:
 
-$$U_{g1}(r,t) = k_1 \cdot \mu_s(t, \rho_{\text{vac},[SCm]}) \cdot \nabla\!\left(\frac{M_s}{r}\right) e^{-\alpha t} \cdot \cos(\pi t_n) \cdot (1 + \delta_{\text{def}})$$
+$$U_{g1}(r,t) = k_1 \cdot \mu_s(t, \rho_{\text{vac},[SCm]}) \cdot \nabla!\left(\frac{M_s}{r}\right) e^{-\alpha t} \cdot \cos(\pi t_n) \cdot (1 + \delta_{\text{def}})$$
 
 where:
 - $M_s = 1.989 \times 10^{30}$ kg (solar mass proxy for V838 Mon)
@@ -70,7 +82,7 @@ where:
 
 The dust distribution modulated by $U_{g1}$:
 
-$$\rho_{\text{dust}}(r,t) = \rho_0 \cdot e^{-\beta\, U_{g1}(r,t)}$$
+$$\rho_{\text{dust}}(r,t) = \rho_0 \cdot e^{-\beta, U_{g1}(r,t)}$$
 
 where $\rho_0$ is the baseline dust density and $\beta$ is a scaling factor.
 
@@ -124,7 +136,8 @@ $$U_{g1}(ct,t) = k_1 \cdot \mu_s \cdot \frac{M_s}{(ct)^2} \cdot e^{-\alpha t} \c
 
 $$\text{UQFF amplification} = (1 + f_{TRZ}) \times \left(1 + \frac{\rho_{[UA]}}{\rho_{[SCm]}}\right) = 1.1 \times 11 = \mathbf{12.1\times}$$
 
-This 12.1× amplification over the classical prediction is a **testable UQFF deviation** observable with sufficiently sensitive instruments.
+This 12.1× amplification over the classical prediction is a **testable UQFF deviation** observable
+with sufficiently sensitive instruments.
 
 ---
 
@@ -141,7 +154,8 @@ This 12.1× amplification over the classical prediction is a **testable UQFF dev
 
 ### 5.2 Advances to the UQFF
 
-1. **Cross-scale validation**: UQFF variables previously tested in reactor (THz/q-scope) settings now verified at stellar scale
+1. **Cross-scale validation**: UQFF variables previously tested in reactor (THz/q-scope) settings
+now verified at stellar scale
 2. **Empirical anchoring of $\delta_{\text{def}}$**: Cosmic gravitational perturbations consistent with $\delta_{\text{def}} = 0.01\sin(0.001t)$ form
 3. **Negentropic observational test**: Contraction illusion provides macroscopic observable for $f_{TRZ}$
 4. **New research direction**: Compare Hubble ACS polarimetry with $U_m$ predictions for dust alignment
@@ -179,8 +193,8 @@ This 12.1× amplification over the classical prediction is a **testable UQFF dev
 | `c` | $3.0 \times 10^8$ m/s | Speed of light |
 | `M_s` | $1.989 \times 10^{30}$ kg | Solar mass (V838 Mon proxy) |
 | `L_outburst` | $2.3 \times 10^{38}$ W | Peak outburst luminosity |
-| `rho_vac_UA` | $7.09 \times 10^{-36}$ J/m³ | Universal Aether density |
-| `rho_vac_SCm` | $7.09 \times 10^{-37}$ J/m³ | Superconductive vacuum density |
+| `r`ho_vac_U`A` | $7.09 \times 10^{-36}$ J/m3 | Universal Aether density |
+| `r`ho_vac_SC`m` | $7.09 \times 10^{-37}$ J/m3 | Superconductive vacuum density |
 | `f_TRZ` | 0.1 | Time-reversal correction factor |
 
 ---
@@ -221,7 +235,8 @@ parameterized by luminosity, distance, and UQFF field variables.
 | Proton mass | UQFF confinement scale | $938.272$ MeV/$c^2$ | PDG 2024 | 99.9% |
 | Fine structure $\alpha$ | UQFF reproduces via $U_{g1}$ dipole | $1/137.036$ | PDG 2024 | 99.9% |
 
-**New physics claim:** UQFF phonon-mediated vacuum coupling provides testable predictions beyond SM for this system.
+**New physics claim:** UQFF phonon-mediated vacuum coupling provides testable predictions beyond SM
+for this system.
 
 *Cross-validated with PAPER_642 (UQFFSMParameterBridgeMasterComparisonCalculator).*
 
@@ -231,13 +246,15 @@ parameterized by luminosity, distance, and UQFF field variables.
 
 ### §A.1 Sector Classification
 
-This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see `uqff_lagrangian_derivation.py`).
+This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
-The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive quantum fundamentals (DPM, UA, SCm):
+The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
+quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_\mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
+$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
 
 where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
@@ -251,7 +268,9 @@ $$\boxed{\frac{\delta S}{\delta \phi_{\rm NS}} = \nabla^2 \phi_{\rm NS} - (4\pi 
 
 $$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\rm NS} = 0$$
 
-The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g forces) through vacuum density initialization to the sector-specific equation of motion. Every term in the E-L equation inherits its physical origin from the cosmogenesis master.
+The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
+forces) through vacuum density initialization to the sector-specific equation of motion. Every term
+in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 
 ---
@@ -262,9 +281,9 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.088$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m³.
+For this system, the local VDS sub-ratio is $0.088$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -276,13 +295,13 @@ Since $p_{\rm DVP} = 103$ is **resonant** (threshold at $p > 26$), the system's 
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
-The BSH saturation timescale for this sector is **10⁴ yr** (spin-down equilibrium):
+The BSH saturation timescale for this sector is **104 yr** (spin-down equilibrium):
 
-$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
+$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\rm SCm}$ which initializes the harmonic series at cosmogenesis.
 
@@ -290,11 +309,11 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.088 | ✓ Threshold-consistent |
-| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 103$ | ✓ Resonant |
-| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
-| [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
+| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.088 | PASS Threshold-consistent |
+| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 103$ | PASS Resonant |
+| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
+| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
 ---
@@ -313,9 +332,9 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `f`neutron_s26_coupling`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `k`ozima_scm_cross_section`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `k`ozima_wstp_kernel`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -324,7 +343,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `r`amanujan_polylog_s26`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
 | `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
@@ -333,7 +352,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `m`ock_theta_q26`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -344,8 +363,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `r`amanujan_pi_uqff`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `m`ock_theta_pi_wstp_kernel`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]

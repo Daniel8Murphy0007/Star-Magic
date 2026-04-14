@@ -1,6 +1,18 @@
+---
+paper_id: PAPER_946
+title: "Merger Lagrangian Variation"
+session: 213
+date: 2026-04-12
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [merger, SMBH, BEC, buoyancy, phonon, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_946: Merger Lagrangian Variation
 
-**Author:** Daniel T. Murphy -- Star Magic / UQFF Framework
+**Author:** Daniel T. Murphy — Star Magic / UQFF Framework
 **Date:** 2026-04-12
 **Session:** 213
 **Source:** smbh_binary_mergers.py (MergerLagrangianVariation)
@@ -11,7 +23,7 @@
 
 ## Abstract
 
-We derive the UQFF Euler-Lagrange equation for SMBH binary merger phonon fields. The stationarity condition $\delta S / \delta\varphi_\text{merger} = 0$ yields a critical radius $r_\text{crit}$ at which the gravitational Lagrangian $\mathcal{L}_\text{grav} = -\beta_i \sum_i U_{g,i} \cdot M/d_g \cdot [\text{UA}]$ balances the phonon Lagrangian $\mathcal{L}_\text{phonon} = F_n \cdot \Phi$. The 26-channel buoyancy sum governs the transition.
+We derive the UQFF Euler-Lagrange equation for SMBH binary merger phonon fields. The stationarity condition $\delta S / \deltavarphi_\text{merger} = 0$ yields a critical radius $r_\text{crit}$ at which the gravitational Lagrangian $\mathcal{L}_\text{grav} = -\beta_i \sum_i U_{g,i} \cdot M/d_g \cdot [\text{UA}]$ balances the phonon Lagrangian $\mathcal{L}_\text{phonon} = F_n \cdot \Phi$. The 26-channel buoyancy sum governs the transition.
 
 ---
 
@@ -27,7 +39,7 @@ $$\mathcal{L}_\text{phonon} = F_n \cdot \Phi$$
 
 ## 2. Stationarity Condition
 
-$$\frac{\delta S}{\delta \varphi_\text{merger}} = \frac{\partial}{\partial E_\text{net}}\left(-\beta_i \sum U_{g,i} \cdot \Omega_g \cdot \frac{M}{d_g} \cdot [\text{UA}] + F_n \cdot \Phi\right) = 0$$
+$$\frac{\delta S}{\delta \varphi_text{merger}} = \frac{\partial}{\partial E_\text{net}}\left(-\beta_i \sum U_{g,i} \cdot \Omega_g \cdot \frac{M}{d_g} \cdot [\text{UA}] + F_n \cdot \Phiright) = 0$$
 
 This yields the critical radius:
 
@@ -51,8 +63,8 @@ Below $r_\text{crit}$, gravitational effects dominate, and the merger phonon fie
 
 ## References
 
-1. Murphy, D.T. -- Star Magic UQFF Framework (2024-2026)
-2. Arnowitt, R., Deser, S. & Misner, C.W. (1962) -- Gravitation (Wiley)
+1. Murphy, D.T. — Star Magic UQFF Framework (2024-2026)
+2. Arnowitt, R., Deser, S. & Misner, C.W. (1962) — Gravitation (Wiley)
 
 ---
 
@@ -74,14 +86,31 @@ Below $r_\text{crit}$, gravitational effects dominate, and the merger phonon fie
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
 | GW strain $h$ | UQFF predicts phonon suppression $D_{\text{phonon}} \approx 0.47$--$0.67$ | LIGO/Virgo $h \sim 10^{-22}$ | LIGO O3 (2020) | Within detector band |
-| Phase evolution $\Delta\Phi$ | 200--400 extra cycles from $S_{26}$ coupling | GR template bank | Abbott et al. (2021) | Testable with LISA |
+| Phase evolution $\DeltaPhi$ | 200--400 extra cycles from $S_{26}$ coupling | GR template bank | Abbott et al. (2021) | Testable with LISA |
 | Fine structure $\alpha$ | UQFF reproduces via $U_{g1}$ dipole | $1/137.036$ | PDG 2024 | 99.9% |
 
-**New physics claim:** UQFF phonon-mediated vacuum coupling provides testable predictions beyond SM for this system.
+**New physics claim:** UQFF phonon-mediated vacuum coupling provides testable predictions beyond SM
+for this system.
 
 *Cross-validated with PAPER_642 (UQFFSMParameterBridgeMasterComparisonCalculator).*
 
 ---
+
+---
+
+## §A Cosmogenesis-Linked Lagrangian (PAPER_877 Symbolic Export)
+
+### §A.1 Sector Classification
+**Sector:** magnetar-NS
+
+### §A.2 Lagrangian Density
+$$\mathcal{L}_{\text{magnetar}} = \sum_{i=1}^{26} \left[ U_{g,i} + U_{m,i} + U_{A,i} - U_{b,i} \right] \cdot S_{26}([SSq]) \cdot \Phi_{1.25\text{THz}}(\omega, \Gamma)$$
+
+### §A.3 Euler-Lagrange Equation of Motion
+$$\boxed{\frac{\partial \mathcal{L}}{\partial \phi} - \partial_mu \frac{\partial \mathcal{L}}{\partial (\partial_mu \phi)} = 0 \implies F_{U,Bi\_i} = -\nabla U_{\text{eff}} + \Phi \cdot S_{26} \cdot E_{\text{net}}}$$
+
+### §A.4 Cosmogenesis Linkage Chain
+PAPER_877 axioms → SCm vacuum → phonon $\omega_{\text{SCm}}$ → magnetar-NS → $F_{U,Bi\_i}$ unified force → observational prediction
 
 ## §B VDS/DVP/BSH Deep Synthesis
 

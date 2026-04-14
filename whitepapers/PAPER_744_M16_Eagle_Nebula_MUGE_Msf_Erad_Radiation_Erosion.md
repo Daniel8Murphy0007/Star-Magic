@@ -1,28 +1,49 @@
-# PAPER_744: M16 Eagle Nebula MUGE -- Star Formation and Radiation Erosion
+---
+paper_id: PAPER_744
+title: "M16 Eagle Nebula MUGE -- Star Formation and Radiation Erosion"
+session: 180
+date: 2025-01-01
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [cluster, AGN, Hubble, MUGE, nebula, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
+# PAPER_744: M16 Eagle Nebula MUGE — Star Formation and Radiation Erosion
 
 **Author:** Daniel T. Murphy  
 **Framework:** Universal Quantum Field Superconductive Framework (UQFF)  
 **Session:** 180 continuation | v5.38  
 **Date:** 2025  
-**CP4 Class:** #328 -- M16EagleNebulaRadiationMUGECalculator  
+**CP4 Class:** #328 — M16EagleNebulaRadiationMUGECalculator  
 
 ---
 
 ## Abstract
 
-The M16 Eagle Nebula (NGC 6611) is the iconic site of the "Pillars of Creation" -- dense molecular cloud columns being sculpted by intense photoionization from massive OB stars. This paper derives the MUGE for M16 incorporating two new environmental terms: M_sf(t), the time-dependent star formation rate modulating the total mass, and E_rad, the radiation erosion term that removes mass from pillar structures over time. These terms together capture the dynamic photo-evaporative environment that distinguishes star-forming nebulae from passive systems.
+The M16 Eagle Nebula (NGC 6611) is the iconic site of the "Pillars of Creation" — dense molecular
+cloud columns being sculpted by intense photoionization from massive OB stars. This paper derives
+the MUGE for M16 incorporating two new environmental terms: M_sf(t), the time-dependent star
+formation rate modulating the total mass, and E_rad, the radiation erosion term that removes mass
+from pillar structures over time. These terms together capture the dynamic photo-evaporative
+environment that distinguishes star-forming nebulae from passive systems.
 
 ---
 
 ## 1. Introduction
 
-M16 is an H II region and open cluster complex at 2 kpc distance, containing the giant OB association NGC 6611. The "Pillars of Creation" (Hubble 1995 image) are three columns of molecular hydrogen being photoevaporated by UV radiation from hot stars. The pillars host ongoing star formation (YSOs, protostars) while simultaneously losing mass to radiation erosion, creating a self-regulating gravitational environment.
+M16 is an H II region and open cluster complex at 2 kpc distance, containing the giant OB
+association NGC 6611. The "Pillars of Creation" (Hubble 1995 image) are three columns of molecular
+hydrogen being photoevaporated by UV radiation from hot stars. The pillars host ongoing star
+formation (YSOs, protostars) while simultaneously losing mass to radiation erosion, creating a
+self-regulating gravitational environment.
 
 **Key parameters:**
 - Distance = 2 kpc
-- M_cluster (visible) = 5x10^3 M☉
-- M_cloud (total) ≈ 8x10^4 M☉
-- SFR ≈ 10^{-}3 M☉/yr
+- M_cluster (visible) = 5x10^3 MM_sun
+- M_cloud (total) ≈ 8x10^4 MM_sun
+- SFR ≈ 10^{-}3 MM_sun/yr
 - T_ionized ≈ 10^4 K
 - UV flux = 10^7 Habings (ionizing radiation)
 - B ≈ 10^{-}4 T (magnetic field in cloud)
@@ -31,67 +52,76 @@ M16 is an H II region and open cluster complex at 2 kpc distance, containing the
 
 ## 2. M16 Eagle Nebula MUGE
 
-```
-g_M16(r,t) = (G*M(t))/r^2 * (1+H(z)*t) * (1-B/B_crit) * (1+M_sf(t))
-           + (U_g1 + U_g2 + U_g3 + U_g4)
-           + U_i
-           + (Lambda*c^2/3)
-           + (hbar/√(Deltax*Deltap)) * integral(psi*H*psi dV) * (2pi/t_Hubble)
-           + rho_gas*V*g
-           - E_rad                                          [radiation erosion -- NEW]
-           + (M_vis + M_DM) * (deltarho/rho + 3*G*M/r^3)
-```
+$$
+\begin{aligned}
+  & g_M16(r,t) = (G*M(t))/r^2 * (1+H(z)*t) * (1-B/B_crit) * (1+M_sf(t)) \\
+  & + (U_g1 + U_g2 + U_g3 + U_g4) \\
+  & + U_i \\
+  & + (Lambda*c^2/3) \\
+  & + (hbar/√(Deltax*Deltap)) * integral(psi*H*psi dV) * (2pi/t_Hubble) \\
+  & + rho_gas*V*g \\
+  & - E_rad                                          [radiation erosion — NEW] \\
+  & + (M_vis + M_DM) * (deltarho/rho + 3*G*M/r^3)
+\end{aligned}
+$$
 
 ---
 
-## 3. M_sf(t) -- Time-Dependent Star Formation Rate Modulator
+## 3. M_sf(t) — Time-Dependent Star Formation Rate Modulator
 
 Star formation modifies the effective gravitational mass available:
 
-```
-M_sf(t) = SFR * t / M_0
-
-  SFR  = star formation rate (M☉/yr)
-  t    = time elapsed (yr)
-  M_0  = initial cloud mass (M☉)
-```
+$$
+\begin{aligned}
+  & M_sf(t) = SFR * t / M_0 \\
+  & SFR  = star formation rate (MM_sun/yr) \\
+  & t    = time elapsed (yr) \\
+  & M_0  = initial cloud mass (MM_sun)
+\end{aligned}
+$$
 
 For M16:
-```
-M_sf(t) = (10^{-}3 M☉/yr) * t / (8x10^4 M☉)
-M_sf(1 Myr) ~= 0.0125    (1.25% mass converted)
-```
+$$
+\begin{aligned}
+  & M_sf(t) = (10^{-}3 MM_sun/yr) * t / (8x10^4 MM_sun) \\
+  & M_sf(1 Myr) ~= 0.0125    (1.25% mass converted)
+\end{aligned}
+$$
 
 This term enters multiplicatively in the gravitational term:
-```
+$$
 g_grav * (1 + M_sf(t))  ~= g_grav * (1 + 0.0125)    at t = 1 Myr
-```
+$$
 
-As star formation proceeds, the effective mass increases and local gravity strengthens, triggering further collapse -- a positive feedback loop.
+As star formation proceeds, the effective mass increases and local gravity strengthens, triggering
+further collapse — a positive feedback loop.
 
 ---
 
-## 4. E_rad -- Radiation Erosion Term
+## 4. E_rad — Radiation Erosion Term
 
 UV photons from OB stars photoevaporate the pillar surfaces, removing mass at:
 
-```
-ṁ_evap = Phi_UV * m_H / (alpha_B * n_H)
-
-  Phi_UV = 10^7 Habings = UV photon flux (photons/m^2/s)
-  m_H  = hydrogen mass = 1.67x10^{-}2^7 kg
-  alpha_B  = 2.6x10^{-}1^3 cm^3/s (case B recombination)
-  n_H  = 10^3 cm^{-}3 (column density)
-```
+$$
+\begin{aligned}
+  & ṁ_evap = Phi_UV * m_H / (alpha_B * n_H) \\
+  & Phi_UV = 10^7 Habings = UV photon flux (photons/m^2/s) \\
+  & m_H  = hydrogen mass = 1.67x10^{-}2^7 kg \\
+  & alpha_B  = 2.6x10^{-}1^3 cm^3/s (case B recombination) \\
+  & n_H  = 10^3 cm^{-}3 (column density)
+\end{aligned}
+$$
 
 The gravitational equivalent (effective deceleration from mass loss):
-```
-E_rad = G * ṁ_evap * t / (r^2 * M_cloud)
+$$
+\begin{aligned}
+  & E_rad = G * ṁ_evap * t / (r^2 * M_cloud) \\
+  & E_rad(1 Myr, r=0.5 pc) ~= 3x10^{-}1^2 m/s^2    (opposing gravity)
+\end{aligned}
+$$
 
-E_rad(1 Myr, r=0.5 pc) ~= 3x10^{-}1^2 m/s^2    (opposing gravity)
-```
-
-This erosion term opposes collapse, creating the dynamic equilibrium observed in pillar lifetimes (~few Myr).
+This erosion term opposes collapse, creating the dynamic equilibrium observed in pillar lifetimes
+(~few Myr).
 
 ---
 
@@ -118,14 +148,14 @@ U_g4: galactic tidal field at 2 kpc from center
 ## 6. Equilibrium Analysis
 
 The pillars maintain their structure while:
-```
+$$
 g_grav * (1 + M_sf) > E_rad    [net infall]
-```
+$$
 
 When E_rad overcomes (1 + M_sf):
-```
+$$
 E_rad / g_grav > (1 + M_sf)   [pillar evaporated]
-```
+$$
 
 Current M16 pillar state:
 - g_grav ≈ 2x10^{-}1^1 m/s^2
@@ -137,14 +167,16 @@ Current M16 pillar state:
 
 ## 7. Temporal Evolution
 
-```
-M(t) = M_0 * (1 + M_sf(t)) - ṁ_evap * t
+$$
+\begin{aligned}
+  & M(t) = M_0 * (1 + M_sf(t)) - ṁ_evap * t \\
+  & At t = 3 Myr (estimated pillar lifetime): \\
+  & M(3 Myr) = M_0 * (1.037) - Deltam_evap ~= 0.85 M_0
+\end{aligned}
+$$
 
-At t = 3 Myr (estimated pillar lifetime):
-M(3 Myr) = M_0 * (1.037) - Deltam_evap ~= 0.85 M_0
-```
-
-The pillars are expected to be fully ionized within ~5 Myr, making M16 a transient feature of galactic star formation history.
+The pillars are expected to be fully ionized within ~5 Myr, making M16 a transient feature of
+galactic star formation history.
 
 ---
 
@@ -158,11 +190,16 @@ M16 shares the Pillars of Creation geometry with the pre-existing CP4 module. Th
 
 ## 9. Conclusion
 
-The M16 Eagle Nebula MUGE introduces two novel UQFF terms: M_sf(t) captures positive-feedback star formation mass growth, while E_rad captures the opposing radiation erosion. Together they define the pillar equilibrium condition and predict pillar lifetimes consistent with current observations (~3-5 Myr). This framework generalizes to all photo-evaporating star-forming regions in the spiral arm environment.
+The M16 Eagle Nebula MUGE introduces two novel UQFF terms: M_sf(t) captures positive-feedback star
+formation mass growth, while E_rad captures the opposing radiation erosion. Together they define the
+pillar equilibrium condition and predict pillar lifetimes consistent with current observations (~3-5
+Myr). This framework generalizes to all photo-evaporating star-forming regions in the spiral arm
+environment.
 
 ---
 
-*Copyright - Daniel T. Murphy, daniel.murphy00@gmail.com. UQFF Framework. PAPER_744, CP4 class #328. Session 180 continuation v5.38.*
+*Copyright - Daniel T. Murphy, daniel.murphy00@gmail.com. UQFF Framework. PAPER_744, CP4 class #328.
+Session 180 continuation v5.38.*
 
 ---
 
@@ -170,13 +207,15 @@ The M16 Eagle Nebula MUGE introduces two novel UQFF terms: M_sf(t) captures posi
 
 ### §A.1 Sector Classification
 
-This paper maps to **ULPT-resonance** sector of the 9-sector UQFF Lagrangian (see `uqff_lagrangian_derivation.py`).
+This paper maps to **ULPT-resonance** sector of the 9-sector UQFF Lagrangian (see
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
-The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive quantum fundamentals (DPM, UA, SCm):
+The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
+quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_\mu \phi_{\rm burst})(\partial^\mu \phi_{\rm burst}) - V(\phi_{\rm burst}) + \mathcal{L}_{\rm cosmo}$$
+$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_mu \phi_{\rm burst})(\partial^\mu \phi_{\rm burst}) - V(\phi_{\rm burst}) + \mathcal{L}_{\rm cosmo}$$
 
 where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
@@ -190,7 +229,9 @@ $$\boxed{\frac{\delta S}{\delta \phi_{\rm burst}} = [SSq] \cdot \tfrac{n}{26} \c
 
 $$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\rm burst} = 0$$
 
-The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g forces) through vacuum density initialization to the sector-specific equation of motion. Every term in the E-L equation inherits its physical origin from the cosmogenesis master.
+The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
+forces) through vacuum density initialization to the sector-specific equation of motion. Every term
+in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 
 ---
@@ -201,7 +242,7 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
 For this system, the local VDS sub-ratio is $0.097$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m^3.
 
@@ -217,11 +258,11 @@ Since $p_{\rm DVP} = 97$ is **resonant** (threshold at $p > 26$), the system's v
 
 The BSH saturation timescale for this sector is **10^4 cycles** (period stability locking):
 
-$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
+$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\rm SCm}$ which initializes the harmonic series at cosmogenesis.
 
@@ -229,28 +270,31 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.097 | ✓ Threshold-consistent |
-| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 97$ | ✓ Resonant |
-| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day^{-}1 | Applied in VDS exponential | ✓ Canonical |
-| [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
+| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.097 | PASS Threshold-consistent |
+| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 97$ | PASS Resonant |
+| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
+| κ decay | $5.0 \times 10^{-4}$ day^{-}1 | Applied in VDS exponential | PASS Canonical |
+| [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
 ---
 
 
-## §SM Anchors -- Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
+## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | ✓ Consistent |
-| Cosmological constant Λ | 1.1x10^{-}5^2 m^{-}2 (UQFF vacuum term) | 1.114x10^{-}5^2 m^{-}2 | Planck 2018 | ✓ Consistent |
-| Proton decay rate | κ = 0.0005/day -> Γ_p suppression | < 4.17x10^{-}3^5/yr | Super-K 2024 | ✓ Consistent |
-| UQFF buoyancy signature | F_U_Bi_i unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
+| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant Λ | 1.1x10^{-}5^2 m^{-}2 (UQFF vacuum term) | 1.114x10^{-}5^2 m^{-}2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | κ = 0.0005/day -> Γ_p suppression | < 4.17x10^{-}3^5/yr | Super-K 2024 | PASS Consistent |
+| UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
-**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes significant, offering a falsifiable prediction beyond the Standard Model.
+**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
+produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF-SM bridge.*
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF-SM
+bridge.*
 
 
 ---
@@ -265,9 +309,9 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `f`neutron_s26_coupling`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `k`ozima_scm_cross_section`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `k`ozima_wstp_kernel`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -276,7 +320,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `r`amanujan_polylog_s26`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
 | `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
@@ -285,7 +329,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `m`ock_theta_q26`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -296,8 +340,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `r`amanujan_pi_uqff`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `m`ock_theta_pi_wstp_kernel`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]

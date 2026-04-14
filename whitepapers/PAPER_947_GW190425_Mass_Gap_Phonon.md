@@ -1,6 +1,18 @@
+---
+paper_id: PAPER_947
+title: "GW190425 Mass-Gap Phonon Classification"
+session: 213
+date: 2026-04-12
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [GW, SCm, neutron-star, BEC, black-hole, LIGO, phonon, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_947: GW190425 Mass-Gap Phonon Classification
 
-**Author:** Daniel T. Murphy -- Star Magic / UQFF Framework
+**Author:** Daniel T. Murphy — Star Magic / UQFF Framework
 **Date:** 2026-04-12
 **Session:** 213
 **Source:** ns_phonon_gw190425_wstp.py (MassGapPhononClassifier)
@@ -17,7 +29,7 @@ We apply UQFF SCm suppression threshold classification to the heavier component 
 
 ## 1. Classification Formula
 
-$$P(\text{BH}) = \frac{1}{1 + \exp\!\left(-\frac{m_1 - M_\text{boundary}}{\sigma}\right)}$$
+$$P(\text{BH}) = \frac{1}{1 + \exp!\left(-\frac{m_1 - M_\text{boundary}}{\sigma}\right)}$$
 
 $$P(\text{NS}) = 1 - P(\text{BH})$$
 
@@ -63,9 +75,9 @@ The SCm suppression threshold corresponds to the mass at which internal phonon m
 
 ## References
 
-1. Murphy, D.T. -- Star Magic UQFF Framework (2024-2026)
-2. Abbott, B.P. et al. (2020) -- ApJL, 892, L3 (GW190425)
-3. Tauris, T.M. et al. (2017) -- ApJ, 846, 170
+1. Murphy, D.T. — Star Magic UQFF Framework (2024-2026)
+2. Abbott, B.P. et al. (2020) — ApJL, 892, L3 (GW190425)
+3. Tauris, T.M. et al. (2017) — ApJ, 846, 170
 
 ---
 
@@ -87,10 +99,11 @@ The SCm suppression threshold corresponds to the mass at which internal phonon m
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
 | GW strain $h$ | UQFF predicts phonon suppression $D_{\text{phonon}} \approx 0.47$--$0.67$ | LIGO/Virgo $h \sim 10^{-22}$ | LIGO O3 (2020) | Within detector band |
-| Phase evolution $\Delta\Phi$ | 200--400 extra cycles from $S_{26}$ coupling | GR template bank | Abbott et al. (2021) | Testable with LISA |
+| Phase evolution $\DeltaPhi$ | 200--400 extra cycles from $S_{26}$ coupling | GR template bank | Abbott et al. (2021) | Testable with LISA |
 | Fine structure $\alpha$ | UQFF reproduces via $U_{g1}$ dipole | $1/137.036$ | PDG 2024 | 99.9% |
 
-**New physics claim:** UQFF phonon-mediated vacuum coupling provides testable predictions beyond SM for this system.
+**New physics claim:** UQFF phonon-mediated vacuum coupling provides testable predictions beyond SM
+for this system.
 
 *Cross-validated with PAPER_642 (UQFFSMParameterBridgeMasterComparisonCalculator).*
 
@@ -102,13 +115,13 @@ The SCm suppression threshold corresponds to the mass at which internal phonon m
 **Sector:** GW-radiation (gravitational-wave)
 
 ### §A.2 Lagrangian Density
-$$\mathcal{L}_{GW_radiation} = \sum_{i=1}^{26} \left[ U_{g,i} + U_{m,i} + U_{A,i} - U_{b,i} \right] \cdot S_{26}([SSq]) \cdot \Phi_{1.25\text{THz}}(\omega, \Gamma)$$
+$$\mathcal{L}_{GW\_radiation} = \sum_{i=1}^{26} \left[ U_{g,i} + U_{m,i} + U_{A,i} - U_{b,i} \right] \cdot S_{26}([SSq]) \cdot \Phi_{1.25\text{THz}}(\omega, \Gamma)$$
 
 ### §A.3 Euler-Lagrange Equation of Motion
-$$\boxed{\frac{\partial \mathcal{L}}{\partial \phi} - \partial_\mu \frac{\partial \mathcal{L}}{\partial (\partial_\mu \phi)} = 0 \implies F_{U,Bi_i} = -\nabla U_{\text{eff}} + \Phi \cdot S_{26} \cdot E_{\text{net}}}$$
+$$\boxed{\frac{\partial \mathcal{L}}{\partial \phi} - \partial_mu \frac{\partial \mathcal{L}}{\partial (\partial_mu \phi)} = 0 \implies F_{U,Bi\_i} = -\nabla U_{\text{eff}} + \Phi \cdot S_{26} \cdot E_{\text{net}}}$$
 
 ### §A.4 Cosmogenesis Linkage Chain
-PAPER_877 axioms → SCm vacuum → phonon $\omega_{\text{SCm}}$ → gravitational-wave → $F_{U,Bi_i}$ unified force → observational prediction
+PAPER_877 axioms → SCm vacuum → phonon $\omega_{\text{SCm}}$ → gravitational-wave → $F_{U,Bi\_i}$ unified force → observational prediction
 
 ---
 

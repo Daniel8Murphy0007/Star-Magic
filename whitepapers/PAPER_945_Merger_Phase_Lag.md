@@ -1,6 +1,18 @@
+---
+paper_id: PAPER_945
+title: "Merger Phase Lag"
+session: 213
+date: 2026-04-12
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [AGN, GW, merger, spin-down, SMBH, buoyancy, phonon, magnetar]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_945: Merger Phase Lag
 
-**Author:** Daniel T. Murphy -- Star Magic / UQFF Framework
+**Author:** Daniel T. Murphy — Star Magic / UQFF Framework
 **Date:** 2026-04-12
 **Session:** 213
 **Source:** smbh_binary_mergers.py (MergerPhaseLag)
@@ -11,13 +23,13 @@
 
 ## Abstract
 
-We derive the UQFF phonon-induced gravitational-wave phase lag for SMBH binary mergers in the LISA band (1--100 mHz). The cumulative phase shift $\Delta\Phi = 2\pi(f_\text{max} - f_0) \cdot D_\text{total}(q) \cdot S_{26}$ yields 200--400 cycles depending on mass ratio, providing a distinctive observational signature separable from GR waveform templates.
+We derive the UQFF phonon-induced gravitational-wave phase lag for SMBH binary mergers in the LISA band (1--100 mHz). The cumulative phase shift $\DeltaPhi = 2\pi(f_\text{max} - f_0) \cdot D_\text{total}(q) \cdot S_{26}$ yields 200--400 cycles depending on mass ratio, providing a distinctive observational signature separable from GR waveform templates.
 
 ---
 
 ## 1. Phase Lag Formula
 
-$$\Delta\Phi = 2\pi (f_\text{max} - f_0) \cdot D_\text{total}(q) \cdot S_{26}$$
+$$\DeltaPhi = 2\pi (f_\text{max} - f_0) \cdot D_\text{total}(q) \cdot S_{26}$$
 
 where $S_{26} = \sum_{k=1}^{26} e^{-[\text{SSq}] \cdot k/26}$ with $[\text{SSq}] = 0.57$.
 
@@ -25,7 +37,7 @@ where $S_{26} = \sum_{k=1}^{26} e^{-[\text{SSq}] \cdot k/26}$ with $[\text{SSq}]
 
 ## 2. Phase Lag vs Mass Ratio
 
-| $q$ | $D_\text{total}$ | $\Delta\Phi$ (rad) | Cycles |
+| $q$ | $D_\text{total}$ | $\DeltaPhi$ (rad) | Cycles |
 |-----|-------------------|---------------------|--------|
 | 0.2 | 0.491 | $\sim 1900$ | $\sim 302$ |
 | 0.5 | 0.432 | $\sim 1670$ | $\sim 266$ |
@@ -36,7 +48,7 @@ where $S_{26} = \sum_{k=1}^{26} e^{-[\text{SSq}] \cdot k/26}$ with $[\text{SSq}]
 
 ## 3. Detectability
 
-At LISA sensitivity ($\delta\Phi \sim 0.1$ rad), phase lags of $\sim 200$--$400$ cycles are detectable with SNR $> 10^3$, making this the most constraining UQFF prediction for space-based GW detectors.
+At LISA sensitivity ($\deltaPhi \sim 0.1$ rad), phase lags of $\sim 200$--$400$ cycles are detectable with SNR $> 10^3$, making this the most constraining UQFF prediction for space-based GW detectors.
 
 ---
 
@@ -50,9 +62,9 @@ At LISA sensitivity ($\delta\Phi \sim 0.1$ rad), phase lags of $\sim 200$--$400$
 
 ## References
 
-1. Murphy, D.T. -- Star Magic UQFF Framework (2024-2026)
-2. Berti, E. et al. (2006) -- PRD, 73, 064030
-3. LISA Consortium (2023) -- arXiv:2402.07571
+1. Murphy, D.T. — Star Magic UQFF Framework (2024-2026)
+2. Berti, E. et al. (2006) — PRD, 73, 064030
+3. LISA Consortium (2023) — arXiv:2402.07571
 
 ---
 
@@ -74,10 +86,11 @@ At LISA sensitivity ($\delta\Phi \sim 0.1$ rad), phase lags of $\sim 200$--$400$
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
 | GW strain $h$ | UQFF predicts phonon suppression $D_{\text{phonon}} \approx 0.47$--$0.67$ | LIGO/Virgo $h \sim 10^{-22}$ | LIGO O3 (2020) | Within detector band |
-| Phase evolution $\Delta\Phi$ | 200--400 extra cycles from $S_{26}$ coupling | GR template bank | Abbott et al. (2021) | Testable with LISA |
+| Phase evolution $\DeltaPhi$ | 200--400 extra cycles from $S_{26}$ coupling | GR template bank | Abbott et al. (2021) | Testable with LISA |
 | Fine structure $\alpha$ | UQFF reproduces via $U_{g1}$ dipole | $1/137.036$ | PDG 2024 | 99.9% |
 
-**New physics claim:** UQFF phonon-mediated vacuum coupling provides testable predictions beyond SM for this system.
+**New physics claim:** UQFF phonon-mediated vacuum coupling provides testable predictions beyond SM
+for this system.
 
 *Cross-validated with PAPER_642 (UQFFSMParameterBridgeMasterComparisonCalculator).*
 
@@ -89,13 +102,13 @@ At LISA sensitivity ($\delta\Phi \sim 0.1$ rad), phase lags of $\sim 200$--$400$
 **Sector:** GW-radiation (gravitational-wave chirp)
 
 ### §A.2 Lagrangian Density
-$$\mathcal{L}_{GW_radiation} = \sum_{i=1}^{26} \left[ U_{g,i} + U_{m,i} + U_{A,i} - U_{b,i} \right] \cdot S_{26}([SSq]) \cdot \Phi_{1.25\text{THz}}(\omega, \Gamma)$$
+$$\mathcal{L}_{GW\_radiation} = \sum_{i=1}^{26} \left[ U_{g,i} + U_{m,i} + U_{A,i} - U_{b,i} \right] \cdot S_{26}([SSq]) \cdot \Phi_{1.25\text{THz}}(\omega, \Gamma)$$
 
 ### §A.3 Euler-Lagrange Equation of Motion
-$$\boxed{\frac{\partial \mathcal{L}}{\partial \phi} - \partial_\mu \frac{\partial \mathcal{L}}{\partial (\partial_\mu \phi)} = 0 \implies F_{U,Bi_i} = -\nabla U_{\text{eff}} + \Phi \cdot S_{26} \cdot E_{\text{net}}}$$
+$$\boxed{\frac{\partial \mathcal{L}}{\partial \phi} - \partial_mu \frac{\partial \mathcal{L}}{\partial (\partial_mu \phi)} = 0 \implies F_{U,Bi\_i} = -\nabla U_{\text{eff}} + \Phi \cdot S_{26} \cdot E_{\text{net}}}$$
 
 ### §A.4 Cosmogenesis Linkage Chain
-PAPER_877 axioms → SCm vacuum → phonon $\omega_{\text{SCm}}$ → gravitational-wave chirp → $F_{U,Bi_i}$ unified force → observational prediction
+PAPER_877 axioms → SCm vacuum → phonon $\omega_{\text{SCm}}$ → gravitational-wave chirp → $F_{U,Bi\_i}$ unified force → observational prediction
 
 ---
 

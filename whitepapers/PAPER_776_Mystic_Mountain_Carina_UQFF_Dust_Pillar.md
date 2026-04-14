@@ -1,3 +1,15 @@
+---
+paper_id: PAPER_776
+title: "Mystic Mountain — UQFF Dust Pillar Photon-Erosion Dynamics"
+session: 181
+date: 2026-01-01
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [Hubble, jet, nebula, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_776: Mystic Mountain — UQFF Dust Pillar Photon-Erosion Dynamics
 
 **Author:** Daniel T. Murphy  
@@ -10,36 +22,49 @@
 
 ## Abstract
 
-The "Mystic Mountain" (HH 901/902) in the Carina Nebula (~7,500 ly) is a 3-light-year-tall dust pillar photographed by Hubble WFC3 in 2010 for the telescope's 20th anniversary. Jets of material spew from embedded protostars at its tips while ultraviolet radiation from hot O-stars carves its surface. With ~100 M☉ of dense molecular gas, Mystic Mountain is an extreme example of interactive star formation — jets and pillars shaped simultaneously by internal protostars and external radiation. Under UQFF, the protostellar jet velocity (v ≈ 100 km/s), standard HII B-field, and modest SFR yield g_Mystic ≈ 1.053×10⁻³ m/s².
+The "Mystic Mountain" (HH 901/902) in the Carina Nebula (~7,500 ly) is a 3-light-year-tall dust
+pillar photographed by Hubble WFC3 in 2010 for the telescope's 20th anniversary. Jets of material
+spew from embedded protostars at its tips while ultraviolet radiation from hot O-stars carves its
+surface. With ~100 MM_sun of dense molecular gas, Mystic Mountain is an extreme example of interactive
+star formation — jets and pillars shaped simultaneously by internal protostars and external
+radiation. Under UQFF, the protostellar jet velocity (v ≈ 100 km/s), standard HII B-field, and
+modest SFR yield g_Mystic ≈ 1.053×10-3 m/s2.
 
 ---
 
 ## 1. Introduction
 
-Mystic Mountain forms part of the NGC 3372 complex (Carina Nebula) but at a denser, more compact ~1 ly × 3 ly scale. The protostars embedded within drive HH (Herbig-Haro) jets at ~100–500 km/s that stream from the pillar's tip. Hubble's WFC3 image (taken April 1-2, 2010) used H-alpha, [O III], and [S II] filters to reveal the pillars' intricate erosion patterns. Under UQFF, the compact scale (r = 1e16 m) and standard protostellar jet velocity (v = 10⁵ m/s) yield the classic HII result, with M_sf and E_rad adjustments reflecting the intense star-formation activity within the pillar.
+Mystic Mountain forms part of the NGC 3372 complex (Carina Nebula) but at a denser, more compact ~1
+ly × 3 ly scale. The protostars embedded within drive HH (Herbig-Haro) jets at ~100–500 km/s that
+stream from the pillar's tip. Hubble's WFC3 image (taken April 1-2, 2010) used H-alpha, [O III], and
+[S II] filters to reveal the pillars' intricate erosion patterns. Under UQFF, the compact scale (r =
+1e16 m) and standard protostellar jet velocity (v = 105 m/s) yield the classic HII result, with M_sf
+and E_rad adjustments reflecting the intense star-formation activity within the pillar.
 
 ---
 
 ## 2. Master UQFF Gravity Equation
 
-```
-g_Mystic(r, t) = (G × M) / r² × (1 + H(z)×t) × (1 + M_sf) × (1 - E_rad) × (1 + f_TRZ)
-             + a_EM
-```
+$$
+\begin{aligned}
+  & g_Mystic(r, t) = (G × M) / r2 × (1 + H(z)×t) × (1 + M_sf) × (1 - E_rad) × (1 + f_TRZ) \\
+  & + a_EM
+\end{aligned}
+$$
 
 ### 2.1 Parameters
 
 | Parameter | Symbol | Value | Source |
 |-----------|--------|-------|--------|
-| Pillar mass | M | 100 M☉ = 1.989×10³² kg | Hubble |
-| Pillar radius | r | 1×10¹⁶ m (~1.06 ly) | Hubble |
-| Embedded SFR | SFR | 0.1 M☉/yr | Labs |
-| Age | t | 10⁵ yr = 3.156×10¹² s | Pillar age |
+| Pillar mass | M | 100 MM_sun = 1.989×1032 kg | Hubble |
+| Pillar radius | r | 1×1016 m (~1.06 ly) | Hubble |
+| Embedded SFR | SFR | 0.1 MM_sun/yr | Labs |
+| Age | t | 105 yr = 3.156×1012 s | Pillar age |
 | M_sf | — | 0.1 | UQFF integral |
 | E_rad | — | 0.15 | External UV erosion |
 | Redshift | z | 0.0025 | Distance |
-| v_EM | v | 10⁵ m/s | Protostellar jet |
-| B_EM | B | 10⁻⁵ T | Molecular cloud |
+| v_EM | v | 105 m/s | Protostellar jet |
+| B_EM | B | 10-5 T | Molecular cloud |
 | f_TRZ | — | 0.1 | UQFF |
 
 ---
@@ -47,61 +72,77 @@ g_Mystic(r, t) = (G × M) / r² × (1 + H(z)×t) × (1 + M_sf) × (1 - E_rad) ×
 ## 3. Long-Form Derivation
 
 ### Step 1: Base Gravitational Term
-```
-g_grav = (6.6743e-11 × 1.989e32) / (1e16)²
-       = 1.328e22 / 1e32 = 1.328e-10 m/s²
-```
+$$
+\begin{aligned}
+  & g_grav = (6.6743e-11 × 1.989e32) / (1e16)2 \\
+  & = 1.328e22 / 1e32 = 1.328e-10 m/s2
+\end{aligned}
+$$
 
 ### Step 2: Star-Formation Mass Fraction
-```
-M_sf = SFR × t / M₀ = 0.1 × 1e5 / 100 = 100 → UQFF bounded: M_sf = 0.1
-1 + M_sf = 1.1
-```
+$$
+\begin{aligned}
+  & M_sf = SFR × t / M₀ = 0.1 × 1e5 / 100 = 100 → UQFF bounded: M_sf = 0.1 \\
+  & 1 + M_sf = 1.1
+\end{aligned}
+$$
 
 ### Step 3: Radiation Energy Loss (External UV + Jet Erosion)
-```
-External UV from η Carinae and Trumpler 14:
-E_rad = 0.15 (combined photo-erosion, jet disruption)
-1 - E_rad = 0.85
-```
+$$
+\begin{aligned}
+  & External UV from η Carinae and Trumpler 14: \\
+  & E_rad = 0.15 (combined photo-erosion, jet disruption) \\
+  & 1 - E_rad = 0.85
+\end{aligned}
+$$
 
 ### Step 4: Cosmic Expansion Factor
-```
-H(z) = 2.269e-18 s⁻¹ (z = 0.0025)
-H(z) × t = 2.269e-18 × 3.156e12 = 7.162e-6
-1 + H(z) × t ≈ 1.0000072
-```
+$$
+\begin{aligned}
+  & H(z) = 2.269e-18 s-1 (z = 0.0025) \\
+  & H(z) × t = 2.269e-18 × 3.156e12 = 7.162e-6 \\
+  & 1 + H(z) × t ≈ 1.0000072
+\end{aligned}
+$$
 
 ### Step 5: Aether Electromagnetic Correction
-```
-v = 10⁵ m/s (protostellar Herbig-Haro jet velocity)
-B = 10⁻⁵ T
-
-q × (v × B) = 1.602e-19 × 1e5 × 1e-5 = 1.602e-19 N
-a = 1.602e-19 / m_p = 9.575e7 m/s²
-a_EM = 9.575e7 × 11 × 1e-12 = 1.053e-3 m/s²
-```
+$$
+\begin{aligned}
+  & v = 105 m/s (protostellar Herbig-Haro jet velocity) \\
+  & B = 10-5 T \\
+  & q × (v × B) = 1.602e-19 × 1e5 × 1e-5 = 1.602e-19 N \\
+  & a = 1.602e-19 / m_p = 9.575e7 m/s2 \\
+  & a_EM = 9.575e7 × 11 × 1e-12 = 1.053e-3 m/s2
+\end{aligned}
+$$
 
 ### Step 6: Time-Reversal Correction
-```
+$$
 1 + f_TRZ = 1.1
-```
+$$
 
 ### Step 7: Final Solution
-```
-g_Mystic = (1.328e-10) × (1.0000072) × (1.1) × (0.85) × (1.1) + 1.053e-3
-          = 1.328e-10 × 1.1 = 1.461e-10
-          × 0.85 = 1.242e-10
-          × 1.1 = 1.366e-10
-          = 1.366e-10 + 1.053e-3
-          ≈ 1.053e-3 m/s²
-```
+$$
+\begin{aligned}
+  & g_Mystic = (1.328e-10) × (1.0000072) × (1.1) × (0.85) × (1.1) + 1.053e-3 \\
+  & = 1.328e-10 × 1.1 = 1.461e-10 \\
+  & × 0.85 = 1.242e-10 \\
+  & × 1.1 = 1.366e-10 \\
+  & = 1.366e-10 + 1.053e-3 \\
+  & ≈ 1.053e-3 m/s2
+\end{aligned}
+$$
 
 ---
 
 ## 4. Physical Interpretation
 
-Mystic Mountain's compact scale (100 M☉, 1 ly) yields a higher classical gravity (1.328×10⁻¹⁰ m/s²) than NGC 3372's 3.319×10⁻¹⁰ per unit, but both remain negligible vs. the Aether EM term. The simultaneous action of internal protostellar jets (providing the Aether coupling velocity) and external UV erosion (providing E_rad = 0.15) captures the dual nature of pillar formation physics. UQFF confirms that whether embedded or external, star formation processes converge to the same 1.053×10⁻³ m/s² result when v = 100 km/s.
+Mystic Mountain's compact scale (100 MM_sun, 1 ly) yields a higher classical gravity (1.328×10-10 m/s2)
+than NGC 3372's 3.319×10-10 per unit, but both remain negligible vs. the Aether EM term. The
+simultaneous action of internal protostellar jets (providing the Aether coupling velocity) and
+external UV erosion (providing E_rad = 0.15) captures the dual nature of pillar formation physics.
+UQFF confirms that whether embedded or external, star formation processes converge to the same
+1.053×10-3 m/s2 result when v = 100 km/s.
 
 ---
 
@@ -115,7 +156,11 @@ Mystic Mountain's compact scale (100 M☉, 1 ly) yields a higher classical gravi
 
 ## 6. Conclusions
 
-UQFF applied to Mystic Mountain yields g_Mystic ≈ 1.053×10⁻³ m/s², consistent with HII star-forming pillars. The dual action of protostellar jets (Aether EM coupling) and external UV radiation (E_rad = 0.15) is captured within the standard UQFF HII framework. Mystic Mountain's result matches the Pillars of Creation (M16, PAPER_757) and NGC 2264 Cone Nebula, confirming UQFF universality for star-forming molecular pillars.
+UQFF applied to Mystic Mountain yields g_Mystic ≈ 1.053×10-3 m/s2, consistent with HII star-forming
+pillars. The dual action of protostellar jets (Aether EM coupling) and external UV radiation (E_rad
+= 0.15) is captured within the standard UQFF HII framework. Mystic Mountain's result matches the
+Pillars of Creation (M16, PAPER_757) and NGC 2264 Cone Nebula, confirming UQFF universality for
+star-forming molecular pillars.
 
 *PAPER_776, CP4 class #360. v5.41.*
 
@@ -125,13 +170,15 @@ UQFF applied to Mystic Mountain yields g_Mystic ≈ 1.053×10⁻³ m/s², consis
 
 ### §A.1 Sector Classification
 
-This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see `uqff_lagrangian_derivation.py`).
+This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
-The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive quantum fundamentals (DPM, UA, SCm):
+The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
+quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_\mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
+$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
 
 where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
@@ -145,7 +192,9 @@ $$\boxed{\frac{\delta S}{\delta \phi_{\rm NS}} = \nabla^2 \phi_{\rm NS} - (4\pi 
 
 $$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\rm NS} = 0$$
 
-The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g forces) through vacuum density initialization to the sector-specific equation of motion. Every term in the E-L equation inherits its physical origin from the cosmogenesis master.
+The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
+forces) through vacuum density initialization to the sector-specific equation of motion. Every term
+in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 
 ---
@@ -156,9 +205,9 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.122$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m³.
+For this system, the local VDS sub-ratio is $0.122$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -170,13 +219,13 @@ Since $p_{\rm DVP} = 103$ is **resonant** (threshold at $p > 26$), the system's 
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
-The BSH saturation timescale for this sector is **10⁴ yr** (spin-down equilibrium):
+The BSH saturation timescale for this sector is **104 yr** (spin-down equilibrium):
 
-$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
+$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\rm SCm}$ which initializes the harmonic series at cosmogenesis.
 
@@ -184,11 +233,11 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.122 | ✓ Threshold-consistent |
-| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 103$ | ✓ Resonant |
-| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
-| [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
+| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.122 | PASS Threshold-consistent |
+| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 103$ | PASS Resonant |
+| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
+| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
 ---
@@ -198,14 +247,17 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | ✓ Consistent |
-| Cosmological constant Λ | 1.1×10⁻⁵² m⁻² (UQFF vacuum term) | 1.114×10⁻⁵² m⁻² | Planck 2018 | ✓ Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10⁻³⁵/yr | Super-K 2024 | ✓ Consistent |
-| UQFF buoyancy signature | F_U_Bi_i unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
+| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
-**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes significant, offering a falsifiable prediction beyond the Standard Model.
+**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
+produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
+bridge.*
 
 
 ---
@@ -220,9 +272,9 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `f`neutron_s26_coupling`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `k`ozima_scm_cross_section`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `k`ozima_wstp_kernel`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -231,7 +283,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `r`amanujan_polylog_s26`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
 | `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
@@ -240,7 +292,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `m`ock_theta_q26`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -251,8 +303,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `r`amanujan_pi_uqff`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `m`ock_theta_pi_wstp_kernel`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]

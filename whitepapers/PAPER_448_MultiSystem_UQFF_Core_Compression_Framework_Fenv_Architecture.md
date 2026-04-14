@@ -1,19 +1,39 @@
+---
+paper_id: PAPER_448
+title: "Multi-System UQFF Core Compression Framework: Unified F_env Architecture"
+session: 115
+date: 2025-01-01
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [AGN, Hubble, SCm, MUGE, magnetar, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_448 — Multi-System UQFF Core Compression Framework: Unified F_env Architecture
 **Date:** 2025
 
 **Whitepaper Series:** Star-Magic UQFF Phase 2  
 **Session:** 115 (v4.72) / Whitepapers created Session 121  
 **Source:** grok_share_5fa36e4e035.txt (Compression Cycle 2 — architectural foundation)  
-**Classification:** FIRST unified multi-system F_env modular architecture in UQFF; FIRST std::map dynamic variable storage for astrophysical UQFF systems  
+**Classification:** FIRST unified multi-system F_env modular architecture in UQFF; FIRST std::map
+dynamic variable storage for astrophysical UQFF systems  
 **Author:** Daniel T. Murphy  
 **CP4 Class:** `MultiSystemUQFFCoreCalculator` (#2, PAPER_448)
 
-<!-- UQFF constants: κ = 5.0e-4 day⁻¹, [SSq] = 0.57, H_SCm ≈ 0.99, U_UA ≈ 0.0001 -->
+<!— UQFF constants: κ = 5.0e-4 day-1, [SSq] = 0.57, H_SCm ≈ 0.99, U_UA ≈ 0.0001 —>
 ---
 
 ## Abstract
 
-The Multi-System UQFF Core Compression Framework establishes the architectural template for UQFF Compression Cycle 2, defining the shared methodology by which an arbitrary number of astrophysical systems can be simultaneously calculated under a single compressed gravitational equation. The unified architecture uses modular environmental factor (`F_env`) summation with Hubble evolution `H(t,z)`, standard map-based dynamic variable storage, and consistent UQFF/MUGE term parameterisation across all Cycle 2 systems. The seven canonical systems (MagnetarSGR1745, SagittariusA, TapestryStarbirth, Westerlund2, PillarsCreation, RingsRelativity, UniverseGuide) define the baseline registry from which the 19- and 29-system expansions are derived.
+The Multi-System UQFF Core Compression Framework establishes the architectural template for UQFF
+Compression Cycle 2, defining the shared methodology by which an arbitrary number of astrophysical
+systems can be simultaneously calculated under a single compressed gravitational equation. The
+unified architecture uses modular environmental factor (`F_env`) summation with Hubble evolution
+`H(t,z)`, standard map-based dynamic variable storage, and consistent UQFF/MUGE term
+parameterisation across all Cycle 2 systems. The seven canonical systems (MagnetarSGR1745,
+SagittariusA, TapestryStarbirth, Westerlund2, PillarsCreation, RingsRelativity, UniverseGuide)
+define the baseline registry from which the 19- and 29-system expansions are derived.
 
 ---
 
@@ -21,7 +41,9 @@ The Multi-System UQFF Core Compression Framework establishes the architectural t
 
 ### 2.1 Compression Cycle 2 Philosophy
 
-In UQFF Compression Cycle 1 (Sessions 1–114), each astrophysical system maintained a dedicated class with hardcoded parameters. Compression Cycle 2 introduces a **generalised modular registry** in which:
+In UQFF Compression Cycle 1 (Sessions 1–114), each astrophysical system maintained a dedicated class
+with hardcoded parameters. Compression Cycle 2 introduces a **generalised modular registry** in
+which:
 
 1. System parameters are stored in `std::map<std::string, double>` containers
 2. Environmental factors `F_env` are computed as a unified sum across all system-specific terms
@@ -40,45 +62,51 @@ With $\{p_j\}$ = system-specific parameter map for system $j$.
 
 ### 2.3 Hubble Evolution Module
 
-$$H(t,z) = H_0\sqrt{\Omega_m(1+z)^3 + \Omega_\Lambda}$$
+$$H(t,z) = H_0\sqrt{\Omega_m(1+z)^3 + \Omega_Lambda}$$
 
 Evaluated at z for each system:
 - Local (z≈0): H ≈ 70 km/s/Mpc
 - Intermediate (z=0.5): H ≈ 85 km/s/Mpc  
-- Cosmological (z=1100, CMB): H ≈ 70×√(0.3×1100³+0.7) km/s/Mpc
+- Cosmological (z=1100, CMB): H ≈ 70×√(0.3×11003+0.7) km/s/Mpc
 
 $$H_z = H(z)/H_0 \;[\text{dimensionless Hubble factor}]$$
 
 ### 2.4 Dynamic Variable Storage (FIRST in UQFF)
 
-The C++ implementation introduces `std::map<std::string, double>` as the canonical storage for per-system variables:
+The C++ implementation introduces `std::map<std::string, double>` as the canonical storage for
+per-system variables:
 
-```
-params["M"]      = system_mass       [kg]
-params["r"]      = radius            [m]
-params["z"]      = redshift          [dimensionless]
-params["B"]      = magnetic_field    [T]
-params["v_exp"]  = expansion_vel     [m/s]
-params["rho"]    = fluid_density     [kg/m³]
-params["F_env"]  = env_modifier      [m/s²]
-params["SC_m"]   = superconductive   [dimensionless]
-```
+$$
+\begin{aligned}
+  & params["M"]      = system_mass       [kg] \\
+  & params["r"]      = radius            [m] \\
+  & params["z"]      = redshift          [dimensionless] \\
+  & params["B"]      = magnetic_field    [T] \\
+  & params["v_exp"]  = expansion_vel     [m/s] \\
+  & params["rho"]    = fluid_density     [kg/m3] \\
+  & params["F_env"]  = env_modifier      [m/s2] \\
+  & params["SC_m"]   = superconductive   [dimensionless]
+\end{aligned}
+$$
 
-This is the **first use of runtime-keyed variable maps** for per-system UQFF gravity in the codebase — replacing class-member variables with O(log n) lookup tables allowing unlimited parameter extension without recompilation.
+This is the **first use of runtime-keyed variable maps** for per-system UQFF gravity in the codebase
+— replacing class-member variables with O(log n) lookup tables allowing unlimited parameter
+extension without recompilation.
 
 ### 2.5 Canonical 7-System Registry
 
 | System | type_key | key parameters |
 |--------|----------|----------------|
-| MagnetarSGR1745 | MAGNETAR_SGR1745 | M=2.8 M☉, r=1e4 m, B=1e11 T |
-| SagittariusA | SAGITTARIUS_A | M=4.1e6 M☉, r=6e9 m, B=1e-3 T |
-| TapestryStarbirth | TAPESTRY_STARBIRTH | M=500 M☉, r=1e16 m, z=0.001 |
-| Westerlund2 | WESTERLUND2 | M=1e4 M☉, r=6e16 m, z=0.005 |
-| PillarsCreation | PILLARS_CREATION | M=200 M☉, r=6e16 m, z=0.002 |
+| MagnetarSGR1745 | MAGNETAR_SGR1745 | M=2.8 MM_sun, r=1e4 m, B=1e11 T |
+| SagittariusA | SAGITTARIUS_A | M=4.1e6 MM_sun, r=6e9 m, B=1e-3 T |
+| TapestryStarbirth | TAPESTRY_STARBIRTH | M=500 MM_sun, r=1e16 m, z=0.001 |
+| Westerlund2 | WESTERLUND2 | M=1e4 MM_sun, r=6e16 m, z=0.005 |
+| PillarsCreation | PILLARS_CREATION | M=200 MM_sun, r=6e16 m, z=0.002 |
 | RingsRelativity | RINGS_RELATIVITY | M=1e39 kg, r=1e20 m, z=0.3 |
 | UniverseGuide | UNIVERSE_GUIDE | M=1e53 kg, r=4.4e26 m, z=1100 |
 
-These 7 are the Compression Cycle 2 **root systems** — all subsequent 19- and 29-system registries add to this base.
+These 7 are the Compression Cycle 2 **root systems** — all subsequent 19- and 29-system registries
+add to this base.
 
 ---
 
@@ -94,7 +122,7 @@ $$U_{g2} = k_e\frac{q_1 q_2}{r}\left(1 + \frac{\kappa t}{\tau_q}\right)$$
 
 ### 3.3 Ug3 — String Rotation Term (UQFF-specific)
 
-$$U_{g3} = \frac{GM_{\rm ext}}{r_{\rm ext}^2}\left(1 + \frac{v_s}{c}\cos\theta\right)$$
+$$U_{g3} = \frac{GM_{\rm ext}}{r_{\rm ext}^2}\left(1 + \frac{v_s}{c}\costheta\right)$$
 
 Compressed form (Cycle 2):
 
@@ -151,9 +179,13 @@ Where $w_j$ = system weight (default: equal weights = 1/N).
 
 ## 7. Testable Predictions
 
-1. **Runtime extensibility:** Adding a new astrophysical system to the Cycle 2 registry should require zero recompilation — only map insertion. Testable by adding any new entry and verifying output.
-2. **F_env additivity:** For two weakly-interacting systems (e.g., Tapestry + Pillars at large separation), F_env_total ≈ F_env_1 + F_env_2 within 0.1%.
-3. **Hubble evolution consistency:** H(z=0.5) from the modular H(t,z) function should reproduce H₀√(0.3×1.5³+0.7) = H₀×0.894 = 62.6 km/s/Mpc (±1%).
+1. **Runtime extensibility:** Adding a new astrophysical system to the Cycle 2 registry should
+require zero recompilation — only map insertion. Testable by adding any new entry and verifying
+output.
+2. **F_env additivity:** For two weakly-interacting systems (e.g., Tapestry + Pillars at large
+separation), F_env_total ≈ F_env_1 + F_env_2 within 0.1%.
+3. **Hubble evolution consistency:** H(z=0.5) from the modular H(t,z) function should reproduce
+H₀√(0.3×1.53+0.7) = H₀×0.894 = 62.6 km/s/Mpc (±1%).
 
 ---
 
@@ -163,13 +195,15 @@ Where $w_j$ = system weight (default: equal weights = 1/N).
 
 ### §A.1 Sector Classification
 
-This paper maps to **magnetar-field** sector of the 9-sector UQFF Lagrangian (see `uqff_lagrangian_derivation.py`).
+This paper maps to **magnetar-field** sector of the 9-sector UQFF Lagrangian (see
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
-The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive quantum fundamentals (DPM, UA, SCm):
+The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
+quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_\mu \phi_B)(\partial^\mu \phi_B) - V(\phi_B) + \mathcal{L}_{\rm cosmo}$$
+$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_mu \phi_B)(\partial^\mu \phi_B) - V(\phi_B) + \mathcal{L}_{\rm cosmo}$$
 
 where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
@@ -183,7 +217,9 @@ $$\boxed{\frac{\delta S}{\delta \phi_B} = \nabla \times (\rho_{\rm SCm} \mathbf{
 
 $$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_B = 0$$
 
-The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g forces) through vacuum density initialization to the sector-specific equation of motion. Every term in the E-L equation inherits its physical origin from the cosmogenesis master.
+The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
+forces) through vacuum density initialization to the sector-specific equation of motion. Every term
+in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 
 ---
@@ -194,9 +230,9 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.054$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m³.
+For this system, the local VDS sub-ratio is $0.054$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -208,13 +244,13 @@ Since $p_{\rm DVP} = 109$ is **resonant** (threshold at $p > 26$), the system's 
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
-The BSH saturation timescale for this sector is **10³ yr** (field decay quiescence):
+The BSH saturation timescale for this sector is **103 yr** (field decay quiescence):
 
-$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
+$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\rm SCm}$ which initializes the harmonic series at cosmogenesis.
 
@@ -222,11 +258,11 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.054 | ✓ Threshold-consistent |
-| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 109$ | ✓ Resonant |
-| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
-| [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
+| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.054 | PASS Threshold-consistent |
+| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 109$ | PASS Resonant |
+| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
+| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
 ---
@@ -236,12 +272,13 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Thomson σ_T (QED synchrotron) | UQFF U_m scattering kernel: σ_T = 6.6524×10⁻²⁹ m² | σ_T = 6.6524×10⁻²⁹ m² (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
-| Astrophysical system luminosity X-ray / Radio | UQFF MUGE g_total → L_X via Stefan-Boltzmann + buoyancy flux: L_X ≈ g_total × M_env | L_X L ≥ 10³⁷ erg/s | Chandra CXC | ✓ Consistent order of magnitude |
-| GR Schwarzschild limit | UQFF g_total must satisfy g ≤ c²/(2r_s) at event horizon | r_s = 2GM/c² (GR exact) | PDG 2024 / GR | ✓ UQFF respects GR horizon |
+| Thomson σ_T (QED synchrotron) | UQFF U_m scattering kernel: σ_T = 6.6524×10-29 m2 | σ_T = 6.6524×10-29 m2 (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
+| Astrophysical system luminosity X-ray / Radio | UQFF MUGE g_total → L_X via Stefan-Boltzmann + buoyancy flux: L_X ≈ g_total × M_env | L_X L ≥ 1037 erg/s | Chandra CXC | PASS Consistent order of magnitude |
+| GR Schwarzschild limit | UQFF g_total must satisfy g ≤ c2/(2r_s) at event horizon | r_s = 2GM/c2 (GR exact) | PDG 2024 / GR | PASS UQFF respects GR horizon |
 | κ vacuum rate vs X-ray variability | UQFF κ = 0.0005/day → timescale τ_UQFF = 2000 days | Observed X-ray variability τ_obs (instrument monitoring) | Chandra CXC | Testable UQFF variability timescale |
 
-**New physics claim:** UQFF MUGE generates gravity enhancement factors (g_total/g_Newt > 1) for Astrophysical system
+**New physics claim:** UQFF MUGE generates gravity enhancement factors (g_total/g_Newt > 1) for
+Astrophysical system
 through vacuum buoyancy coupling — a mechanism absent from GR+SM. The enhancement factor and
 X-ray luminosity are linked via the UQFF buoyancy flux, providing a testable prediction for
 future Chandra CXC monitoring observations.
@@ -250,7 +287,7 @@ future Chandra CXC monitoring observations.
 
 
 
-*Copyright – Daniel T. Murphy | Session 115/121 — grok_share_5fa36e4e035.txt*
+*Copyright – Daniel T. Murphy | Session 115/121 — `grok_share_5fa36e4e035`.txt*
 
 
 ---
@@ -265,9 +302,9 @@ future Chandra CXC monitoring observations.
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `f`neutron_s26_coupling`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `k`ozima_scm_cross_section`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `k`ozima_wstp_kernel`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -276,7 +313,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `r`amanujan_polylog_s26`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
 | `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
@@ -285,7 +322,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `m`ock_theta_q26`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -296,8 +333,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `r`amanujan_pi_uqff`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `m`ock_theta_pi_wstp_kernel`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]

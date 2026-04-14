@@ -16,13 +16,14 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 ## Abstract
 
-We formalize the distinction between two complementary UQFF buoyancy quantities that are frequently confused:
+We formalize the distinction between two complementary UQFF buoyancy quantities that are frequently
+confused:
 
 | Property | $F_{U,\text{Bi}}$ | $F_{U,\text{Bi}_i}$ |
 |----------|--------------------|----------------------|
 | Direction | Inside → Outside | Outside → Inside (net) |
 | Sign | Always positive | Typically negative |
-| Units | Energy (J) | Acceleration (m/s²) |
+| Units | Energy (J) | Acceleration (m/s2) |
 | Magnitude | $\sim 10^{40}$ | $\sim 10^{-2}$ |
 | Physical meaning | Vacuum mass transport | Net gravitational acceleration |
 
@@ -36,7 +37,8 @@ This is the total vacuum energy flowing outward through the 26-layer buoyancy st
 
 $$F_{U,\text{Bi}_i} = U_g + U_m + U_A - U_b + F_n \cdot S_{26} \cdot \Phi \cdot E_{\text{net}}$$
 
-This is the per-particle net acceleration through the 6-layer canonical structure. Negative values indicate net inward pull (gravity dominates buoyancy at the acceleration level).
+This is the per-particle net acceleration through the 6-layer canonical structure. Negative values
+indicate net inward pull (gravity dominates buoyancy at the acceleration level).
 
 ## 3. Complementarity
 
@@ -69,7 +71,8 @@ File: `fubi_inside_outside.py`, class `FUBiDistinctionCalc`. CP4 class #574.
 | $\sin^2\theta_W$ | Embedded in $U_{g2}$ charge coupling | $0.2312$ | PDG 2024 | 99.6% |
 | Fine structure $\alpha$ | UQFF reproduces via $U_{g1}$ dipole | $1/137.036$ | PDG 2024 | 99.9% |
 
-**New physics claim:** UQFF phonon-mediated vacuum coupling provides testable predictions beyond SM for this system.
+**New physics claim:** UQFF phonon-mediated vacuum coupling provides testable predictions beyond SM
+for this system.
 
 *Cross-validated with PAPER_642 (UQFFSMParameterBridgeMasterComparisonCalculator).*
 
@@ -81,13 +84,13 @@ File: `fubi_inside_outside.py`, class `FUBiDistinctionCalc`. CP4 class #574.
 **Sector:** BH-accretion (active galactic nucleus jet)
 
 ### §A.2 Lagrangian Density
-$$\mathcal{L}_{BH_accretion} = \sum_{i=1}^{26} \left[ U_{g,i} + U_{m,i} + U_{A,i} - U_{b,i} \right] \cdot S_{26}([SSq]) \cdot \Phi_{1.25\text{THz}}(\omega, \Gamma)$$
+$$\mathcal{L}_{BH\_accretion} = \sum_{i=1}^{26} \left[ U_{g,i} + U_{m,i} + U_{A,i} - U_{b,i} \right] \cdot S_{26}([SSq]) \cdot \Phi_{1.25\text{THz}}(\omega, \Gamma)$$
 
 ### §A.3 Euler-Lagrange Equation of Motion
-$$\boxed{\frac{\partial \mathcal{L}}{\partial \phi} - \partial_\mu \frac{\partial \mathcal{L}}{\partial (\partial_\mu \phi)} = 0 \implies F_{U,Bi_i} = -\nabla U_{\text{eff}} + \Phi \cdot S_{26} \cdot E_{\text{net}}}$$
+$$\boxed{\frac{\partial \mathcal{L}}{\partial \phi} - \partial_mu \frac{\partial \mathcal{L}}{\partial (\partial_mu \phi)} = 0 \implies F_{U,Bi\_i} = -\nabla U_{\text{eff}} + \Phi \cdot S_{26} \cdot E_{\text{net}}}$$
 
 ### §A.4 Cosmogenesis Linkage Chain
-PAPER_877 axioms → SCm vacuum → phonon $\omega_{\text{SCm}}$ → active galactic nucleus jet → $F_{U,Bi_i}$ unified force → observational prediction
+PAPER_877 axioms → SCm vacuum → phonon $\omega_{\text{SCm}}$ → active galactic nucleus jet → $F_{U,Bi\_i}$ unified force → observational prediction
 
 ---
 

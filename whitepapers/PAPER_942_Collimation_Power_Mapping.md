@@ -1,6 +1,18 @@
+---
+paper_id: PAPER_942
+title: "Collimation-Power Mapping"
+session: 213
+date: 2026-04-12
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [AGN, spin-down, SCm, jet, phonon, magnetar, damping, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_942: Collimation-Power Mapping
 
-**Author:** Daniel T. Murphy -- Star Magic / UQFF Framework
+**Author:** Daniel T. Murphy — Star Magic / UQFF Framework
 **Date:** 2026-04-12
 **Session:** 213
 **Source:** linewidth_jet_modulation.py (CollimationPowerMapping)
@@ -11,21 +23,21 @@
 
 ## Abstract
 
-We derive the mapping between phonon linewidth $\Gamma$, jet collimation half-angle $\theta_\text{half}$, and brightness contrast for astrophysical jets. Narrow linewidths ($\Gamma \leq 0.07$ THz) produce tightly collimated jets with $\theta_\text{half} \lesssim 3^\circ$, while broad linewidths ($\Gamma > 0.15$ THz) yield wide opening angles $\theta_\text{half} \gtrsim 10^\circ$. The contrast (peak-to-background ratio) scales with $M_\text{jet}$.
+We derive the mapping between phonon linewidth $\Gamma$, jet collimation half-angle $\theta_text{half}$, and brightness contrast for astrophysical jets. Narrow linewidths ($\Gamma \leq 0.07$ THz) produce tightly collimated jets with $\theta_text{half} \lesssim 3^\circ$, while broad linewidths ($\Gamma > 0.15$ THz) yield wide opening angles $\theta_text{half} \gtrsim 10^\circ$. The contrast (peak-to-background ratio) scales with $M_\text{jet}$.
 
 ---
 
 ## 1. Collimation Relation
 
-$$\theta_\text{half} = \max\!\left(0.5^\circ,\; \frac{30^\circ}{Q}\right)$$
+$$\theta_text{half} = \max!\left(0.5^\circ,\; \frac{30^\circ}{Q}\right)$$
 
-where $Q = \omega_\text{SCm} / (2\Gamma)$ is the quality factor.
+where $Q = \omega_text{SCm} / (2\Gamma)$ is the quality factor.
 
 ---
 
 ## 2. Mapping Results
 
-| $\Gamma$ (THz) | $Q$ | $\theta_\text{half}$ | Contrast |
+| $\Gamma$ (THz) | $Q$ | $\theta_text{half}$ | Contrast |
 |-----------------|-----|---------------------|----------|
 | 0.05 | 12.5 | $2.4^\circ$ | High |
 | 0.10 | 6.25 | $4.8^\circ$ | Moderate |
@@ -35,7 +47,7 @@ where $Q = \omega_\text{SCm} / (2\Gamma)$ is the quality factor.
 
 ## 3. Observational Implications
 
-The $Q$-$\theta_\text{half}$ relation provides a direct VLBI prediction: systems with narrower phonon linewidths should exhibit tighter jet collimation at mas scales, testable with EHT and ngEHT observations.
+The $Q$-$\theta_text{half}$ relation provides a direct VLBI prediction: systems with narrower phonon linewidths should exhibit tighter jet collimation at mas scales, testable with EHT and ngEHT observations.
 
 ---
 
@@ -49,8 +61,8 @@ The $Q$-$\theta_\text{half}$ relation provides a direct VLBI prediction: systems
 
 ## References
 
-1. Murphy, D.T. -- Star Magic UQFF Framework (2024-2026)
-2. Event Horizon Telescope Collaboration (2019) -- ApJL, 875, L1
+1. Murphy, D.T. — Star Magic UQFF Framework (2024-2026)
+2. Event Horizon Telescope Collaboration (2019) — ApJL, 875, L1
 
 ---
 
@@ -75,7 +87,8 @@ The $Q$-$\theta_\text{half}$ relation provides a direct VLBI prediction: systems
 | Vacuum energy $\rho_{\text{vac}}$ | $7.09 \times 10^{-37}$ kg/m$^3$ | $\rho_{\text{vac}} \sim 10^{-29}$ g/cm$^3$ | Planck 2018 | Novel SCm scale |
 | Fine structure $\alpha$ | UQFF reproduces via $U_{g1}$ dipole | $1/137.036$ | PDG 2024 | 99.9% |
 
-**New physics claim:** UQFF phonon-mediated vacuum coupling provides testable predictions beyond SM for this system.
+**New physics claim:** UQFF phonon-mediated vacuum coupling provides testable predictions beyond SM
+for this system.
 
 *Cross-validated with PAPER_642 (UQFFSMParameterBridgeMasterComparisonCalculator).*
 
@@ -87,13 +100,13 @@ The $Q$-$\theta_\text{half}$ relation provides a direct VLBI prediction: systems
 **Sector:** SCm-phonon (lattice resonance)
 
 ### §A.2 Lagrangian Density
-$$\mathcal{L}_{SCm_phonon} = \sum_{i=1}^{26} \left[ U_{g,i} + U_{m,i} + U_{A,i} - U_{b,i} \right] \cdot S_{26}([SSq]) \cdot \Phi_{1.25\text{THz}}(\omega, \Gamma)$$
+$$\mathcal{L}_{SCm\_phonon} = \sum_{i=1}^{26} \left[ U_{g,i} + U_{m,i} + U_{A,i} - U_{b,i} \right] \cdot S_{26}([SSq]) \cdot \Phi_{1.25\text{THz}}(\omega, \Gamma)$$
 
 ### §A.3 Euler-Lagrange Equation of Motion
-$$\boxed{\frac{\partial \mathcal{L}}{\partial \phi} - \partial_\mu \frac{\partial \mathcal{L}}{\partial (\partial_\mu \phi)} = 0 \implies F_{U,Bi_i} = -\nabla U_{\text{eff}} + \Phi \cdot S_{26} \cdot E_{\text{net}}}$$
+$$\boxed{\frac{\partial \mathcal{L}}{\partial \phi} - \partial_mu \frac{\partial \mathcal{L}}{\partial (\partial_mu \phi)} = 0 \implies F_{U,Bi\_i} = -\nabla U_{\text{eff}} + \Phi \cdot S_{26} \cdot E_{\text{net}}}$$
 
 ### §A.4 Cosmogenesis Linkage Chain
-PAPER_877 axioms → SCm vacuum → phonon $\omega_{\text{SCm}}$ → lattice resonance → $F_{U,Bi_i}$ unified force → observational prediction
+PAPER_877 axioms → SCm vacuum → phonon $\omega_{\text{SCm}}$ → lattice resonance → $F_{U,Bi\_i}$ unified force → observational prediction
 
 ---
 

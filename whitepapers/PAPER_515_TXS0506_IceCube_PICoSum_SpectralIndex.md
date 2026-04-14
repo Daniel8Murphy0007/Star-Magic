@@ -1,3 +1,15 @@
+---
+paper_id: PAPER_515
+title: "TXS 0506+056 IceCube-170922A — PI Co-Sum Resonance Spectral Index"
+session: 0
+date: 2026-03-01
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_515: TXS 0506+056 IceCube-170922A — PI Co-Sum Resonance Spectral Index
 ## Star Magic UQFF Framework — Session 138
 **Author:** Daniel T. Murphy | **Date:** March 2026  
@@ -6,20 +18,24 @@
 ---
 
 ## Abstract
-On 22 September 2017, the IceCube neutrino observatory detected a 290 TeV muon neutrino (IceCube-170922A) coincident in direction and time with a gamma-ray flare from the blazar TXS 0506+056 (z=0.3365). This was the first compelling evidence for a high-energy astrophysical neutrino source. The UQFF PI Co-Sum Resonance κ(a,b) provides a cross-field coupling constant derived from decimal π digits, which we apply as a correction to the blazar's multi-TeV spectral index.
+On 22 September 2017, the IceCube neutrino observatory detected a 290 TeV muon neutrino
+(IceCube-170922A) coincident in direction and time with a gamma-ray flare from the blazar TXS
+0506+056 (z=0.3365). This was the first compelling evidence for a high-energy astrophysical neutrino
+source. The UQFF PI Co-Sum Resonance κ(a,b) provides a cross-field coupling constant derived from
+decimal π digits, which we apply as a correction to the blazar's multi-TeV spectral index.
 
 ---
 
 ## 1. PI Co-Sum Resonance
 
 $$
-\kappa(a, b) = \frac{\sum_{i=0}^{N} \pi_{i+a}\cdot\pi_{i+b}}{\sum_{i=0}^{N} \pi_i^2}
+\kappa(a, b) = \frac{\sum_{i=0}^{N} \pi_{i+a}\cdotpi_{i+b}}{\sum_{i=0}^{N} \pi_i^2}
 $$
 
 For the canonical offsets (a=0, b=7) chosen to reflect the 7 sacred harmonics of UQFF:
 
 $$
-\kappa(0, 7) \approx 0.944,\quad \kappa_\text{PCR} \approx 0.314
+\kappa(0, 7) \approx 0.944,\quad \kappa_text{PCR} \approx 0.314
 $$
 
 ---
@@ -29,27 +45,28 @@ $$
 The unmodified blazar spectral index is $\alpha_0 \approx -1.0$ (flat specturm blazar). The UQFF PI coupling shifts this:
 
 $$
-\Delta\alpha = -\kappa(0,7)\cdot\kappa_\text{PCR} = -0.944\times0.314 \approx -0.296
+\Delta\alpha = -\kappa(0,7)\cdotkappa_\text{PCR} = -0.944\times0.314 \approx -0.296
 $$
 
 $$
-\alpha_\text{UQFF} = -1.0 + (-0.296) = -1.296
+\alpha_text{UQFF} = -1.0 + (-0.296) = -1.296
 $$
 
-This steeper predicted spectrum is within the range measured for TXS 0506+056 during the 2017 flare: $\alpha_\text{obs} \approx -1.2$ to $-1.4$ (Fermi-LAT; MAGIC).
+This steeper predicted spectrum is within the range measured for TXS 0506+056 during the 2017 flare: $\alpha_text{obs} \approx -1.2$ to $-1.4$ (Fermi-LAT; MAGIC).
 
 ---
 
 ## 3. Neutrino Flux Prediction
 
 $$
-\Phi_\nu(E) = \Phi_0 \left(\frac{E}{100\,\text{TeV}}\right)^{\alpha_\text{UQFF}} \cdot (1 + k_\text{PCR}\cdot\text{PCR})
+\Phi_nu(E) = \Phi_0 \left(\frac{E}{100\,\text{TeV}}\right)^{\alpha_text{UQFF}} \cdot (1 +
+k_\text{PCR}\cdot\text{PCR})
 $$
 
 At $E = 290\,\text{TeV}$:
 
 $$
-\Phi_\nu(290) \approx \Phi_0 \times 2.90^{-1.296} \times 1.011 \approx 0.342\,\Phi_0
+\Phi_nu(290) \approx \Phi_0 \times 2.90^{-1.296} \times 1.011 \approx 0.342\,\Phi_0
 $$
 
 ---
@@ -62,7 +79,7 @@ $$
 | IceCube event energy | E_ν ≈ 290 TeV |
 | Event date | 22 Sep 2017 |
 | Gamma-ray association | Fermi-LAT, MAGIC |
-| BH mass estimate | ~10⁸–10⁹ M☉ (blazar host) |
+| BH mass estimate | ~108–109 MM_sun (blazar host) |
 | Classification | BL Lac object (flat spectrum radio quasar) |
 
 ---
@@ -79,13 +96,15 @@ $$
 
 ### §A.1 Sector Classification
 
-This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see `uqff_lagrangian_derivation.py`).
+This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
-The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive quantum fundamentals (DPM, UA, SCm):
+The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
+quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_\mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
+$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
 
 where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
@@ -99,7 +118,9 @@ $$\boxed{\frac{\delta S}{\delta \phi_{\rm NS}} = \nabla^2 \phi_{\rm NS} - (4\pi 
 
 $$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\rm NS} = 0$$
 
-The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g forces) through vacuum density initialization to the sector-specific equation of motion. Every term in the E-L equation inherits its physical origin from the cosmogenesis master.
+The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
+forces) through vacuum density initialization to the sector-specific equation of motion. Every term
+in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 
 ---
@@ -110,9 +131,9 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.131$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m³.
+For this system, the local VDS sub-ratio is $0.131$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -124,13 +145,13 @@ Since $p_{\rm DVP} = 13$ is **sub-threshold** (threshold at $p > 26$), the syste
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
-The BSH saturation timescale for this sector is **10⁴ yr** (spin-down equilibrium):
+The BSH saturation timescale for this sector is **104 yr** (spin-down equilibrium):
 
-$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
+$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\rm SCm}$ which initializes the harmonic series at cosmogenesis.
 
@@ -138,11 +159,11 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.131 | ✓ Threshold-consistent |
-| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 13$ | ✓ Sub-threshold |
-| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
-| [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
+| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.131 | PASS Threshold-consistent |
+| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 13$ | PASS Sub-threshold |
+| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
+| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
 ---
@@ -152,10 +173,10 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| IceCube TXS 0506 spectral index | UQFF PI co-sum → Γ_ν = 2.13 (blazar neutrino spectral index) | IceCube TXS0506: E²dΦ/dE at 290 TeV; Γ ~ 2.18 | IceCube 2018 | 97.7% |
-| Neutrino mass bound Σm_ν | UQFF k_η suppression → Σm_ν < 0.12 eV | Planck CMB: Σm_ν < 0.12 eV (95% CL) | Planck 2018 | ✓ Consistent |
+| IceCube TXS 0506 spectral index | UQFF PI co-sum → Γ_ν = 2.13 (blazar neutrino spectral index) | IceCube TXS0506: E2dΦ/dE at 290 TeV; Γ ~ 2.18 | IceCube 2018 | 97.7% |
+| Neutrino mass bound Σm_ν | UQFF k_η suppression → Σm_ν < 0.12 eV | Planck CMB: Σm_ν < 0.12 eV (95% CL) | Planck 2018 | PASS Consistent |
 | Neutrino vacuum oscillation | UQFF SCm_flavor maps to PMNS mixing: θ_23 ~ arcsin(√[SSq]) = 49° | θ_23 = 48.8° ± 1.0° (NOvA/T2K) | PDG 2024 | 99.6% |
-| σ(νN) cross-section at 290 TeV | UQFF Ug2 charge-reactivity flux → σ_UQFF ~ SM (no new-physics enhancement) | SM prediction at 290 TeV: σ ~ 6.4e-33 cm² | PDG / SM perturbative | ✓ UQFF consistent with SM σ |
+| σ(νN) cross-section at 290 TeV | UQFF Ug2 charge-reactivity flux → σ_UQFF ~ SM (no new-physics enhancement) | SM prediction at 290 TeV: σ ~ 6.4e-33 cm2 | PDG / SM perturbative | PASS UQFF consistent with SM σ |
 
 **New physics claim:** UQFF SCm_flavor parameter maps to the atmospheric mixing angle θ_23 = 49°
 with 99.6% accuracy — the same constant that governs CKM beauty-charm mixing governs neutrino
@@ -183,9 +204,9 @@ atmospheric mixing. This predicts a common vacuum topology origin for lepton and
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `f`neutron_s26_coupling`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `k`ozima_scm_cross_section`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `k`ozima_wstp_kernel`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -194,7 +215,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `r`amanujan_polylog_s26`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
 | `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
@@ -203,7 +224,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `m`ock_theta_q26`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -214,8 +235,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `r`amanujan_pi_uqff`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `m`ock_theta_pi_wstp_kernel`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]

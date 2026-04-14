@@ -1,3 +1,15 @@
+---
+paper_id: PAPER_651
+title: "UQFF Schwarzschild Proton & Vacuum Energy Concentration"
+session: 168
+date: 2026-01-01
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [vacuum, black-hole, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_651: UQFF Schwarzschild Proton & Vacuum Energy Concentration
 **Author:** Daniel T. Murphy
 
@@ -5,7 +17,8 @@
 **Session:** 168 | **Date:** March 31 2026  
 **CP4 Class:** UQFFSchwarzschildProtonVacuumCalculator  
 **Source:** grok_share_b2e2c5cba7a.txt (Session 168) — Aether13_16, Aether5_8  
-**Companion papers:** PAPER_647 (Vacuum Density Series), PAPER_646 (Ui Operator), PAPER_642 (SM Bridge)
+**Companion papers:** PAPER_647 (Vacuum Density Series), PAPER_646 (Ui Operator), PAPER_642 (SM
+Bridge)
 
 ---
 
@@ -13,15 +26,15 @@
 
 $$E_{\text{BH}} = mc^2 \cdot e^{-26}; \qquad r_s = \frac{2GM}{c^2} = 2.9 \times 10^{-13}\ \text{cm (proton)}$$
 
-The proton occupies a physical volume of ~10⁻³⁹ cm³, yet the surrounding Aether vacuum
-holds only ~10⁻²³ gm/cm³ of energy density. Removing 10⁻³⁹% of the total vacuum energy
+The proton occupies a physical volume of ~10-39 cm3, yet the surrounding Aether vacuum
+holds only ~10-23 gm/cm3 of energy density. Removing 10-39% of the total vacuum energy
 content from any region causes gravitational collapse to a black hole — a condition
 satisfied at the proton scale when the Schwarzschild radius equals the proton charge radius.
-This paper derives the Schwarzschild proton mass (1.85×10⁹ kg) from the UQFF vacuum
+This paper derives the Schwarzschild proton mass (1.85×109 kg) from the UQFF vacuum
 concentration framework, connects it to the Wheeler-DeWitt equation with UQFF vacuum
-boundary conditions, evaluates the Casimir force alignment (Δρvac = 6.38×10⁻³⁶ J/m³),
-and establishes E = mc²e^{-26} as the real-valued Rydberg-26 suppression expression
-(complement to the complex form Eₓ = mc²e^{-i26} in PAPER_649).
+boundary conditions, evaluates the Casimir force alignment (Δρvac = 6.38×10-36 J/m3),
+and establishes E = mc2e^{-26} as the real-valued Rydberg-26 suppression expression
+(complement to the complex form Eₓ = mc2e^{-i26} in PAPER_649).
 
 ---
 
@@ -45,11 +58,11 @@ Compare with actual proton mass: $m_p = 1.673\times10^{-27}\ \text{kg}$
 
 Ratio: $M_{\text{Sch,proton}}/m_p \approx 10^{36}$ — a 36-order deficit between actual and
 Schwarzschild proton masses. This is precisely the gap bridged by the vacuum density
-ratio in the UQFF (ρvac,[UA]/ρvac,[SCm] = 10, spanning from 10⁻³⁷ up to cosmological scales).
+ratio in the UQFF (ρvac,[UA]/ρvac,[SCm] = 10, spanning from 10-37 up to cosmological scales).
 
-### 1.3 The 10⁻³⁹% Black Hole Threshold
+### 1.3 The 10-39% Black Hole Threshold
 
-With universe mass ~10⁵⁴ gm and proton volume ~10⁻³⁹ cm³:
+With universe mass ~1054 gm and proton volume ~10-39 cm3:
 
 $$\frac{V_p}{V_{\text{universe}}} \approx \frac{10^{-39}}{10^{87}} = 10^{-126}$$
 
@@ -58,17 +71,17 @@ But the energy fraction removed = vacuum energy density × proton volume / total
 $$\frac{\rho_{\text{vac},A} \cdot V_p}{M_{\text{universe}}c^2} \approx \frac{10^{-23} \cdot 10^{-39}}{10^{54} \cdot (3\times10^{10})^2} \approx 10^{-39}\%$$
 
 This produces the key UQFF statement from Aether13_16:
-**"Removing 10⁻³⁹% of the energy concentration in any vacuum region collapses it to a black hole."**
+**"Removing 10-39% of the energy concentration in any vacuum region collapses it to a black hole."**
 
 ---
 
-## §2 E = mc²e^{-26} (Real Rydberg Suppression)
+## §2 E = mc2e^{-26} (Real Rydberg Suppression)
 
 ### 2.1 Physical Basis
 
 $$E_{\text{Rydberg-26}} = mc^2 \cdot e^{-26} = mc^2 \cdot 5.11\times10^{-12}$$
 
-For the electron (mc² = 0.511 MeV):
+For the electron (mc2 = 0.511 MeV):
 
 $$E = (0.511\times10^6\ \text{eV})(5.11\times10^{-12}) = 2.61\times10^{-6}\ \text{eV}$$
 
@@ -84,12 +97,12 @@ The Casimir pressure between parallel plates separated by gap a:
 
 $$P_{\text{Casimir}} = -\frac{\pi^2 \hbar c}{240 a^4}$$
 
-At proton scale (a = 8.775×10⁻¹⁵ m):
+At proton scale (a = 8.775×10-15 m):
 
 $$P_{\text{Casimir}} \approx 7.3\times10^{25}\ \text{Pa} \approx 7.3\times10^{25}\ \text{J/m}^3$$
 
 The **ratio** $P_{\text{Casimir}} / \Delta\rho_{\text{vac}} \approx 10^{61}$ — consistent with
-the 10³⁶ mass ratio above (squared: 10⁷²/structure factor), confirming the vacuum
+the 1036 mass ratio above (squared: 1072/structure factor), confirming the vacuum
 hierarchy connects Casimir physics to Schwarzschild proton physics in the UQFF framework.
 
 ---
@@ -98,7 +111,7 @@ hierarchy connects Casimir physics to Schwarzschild proton physics in the UQFF f
 
 ### 3.1 Standard Wheeler-DeWitt Equation
 
-$$\hat{H}|\Psi\rangle = 0 \qquad \left[-\frac{\hbar^2}{2}\nabla^2 + V(\phi, a)\right]\Psi(a,\phi) = 0$$
+$$\hat{H}|\Psirangle = 0 \qquad \left[-\frac{\hbar^2}{2}\nabla^2 + V(\phi, a)\right]\Psi(a,\phi) = 0$$
 
 where a is the scale factor and φ the scalar field.
 
@@ -113,7 +126,7 @@ The UQFF Wheeler-DeWitt thus becomes:
 $$\left[-\frac{\hbar^2}{2}\nabla^2 + \frac{c^2}{a^2}\sum_j \rho_{\text{vac},j}\right]\Psi = 0$$
 
 This reproduces the cosmic initial condition at a → 0 (Planck epoch) when ρvac,j → ρvac,[SCm],
-and transitions to the cosmological constant at large a when ρvac,j → ρvac,A = 10⁻²³ gm/cm³.
+and transitions to the cosmological constant at large a when ρvac,j → ρvac,A = 10-23 gm/cm3.
 
 ### 3.3 Planck Length Connection
 
@@ -125,7 +138,7 @@ $$\frac{r_s(m_p)}{r_s(M_{\text{Sch,proton}})} = \frac{m_p}{M_{\text{Sch,proton}}
 
 $$r_s(m_p) = \frac{2Gm_p}{c^2} \approx 2.48\times10^{-52}\ \text{cm} = 1.54\times10^{-19}\ \ell_P$$
 
-This 10⁻¹⁹ ratio encodes the **quantum-Planck-to-proton bridge** in the UQFF
+This 10-19 ratio encodes the **quantum-Planck-to-proton bridge** in the UQFF
 vacuum hierarchy — a 19-order step matched by SOURCE115's 19-system 26D framework.
 
 ---
@@ -134,11 +147,11 @@ vacuum hierarchy — a 19-order step matched by SOURCE115's 19-system 26D framew
 
 | Scale | Radius | Vacuum removal fraction | Collapse type |
 |-------|--------|------------------------|---------------|
-| Planck | 1.616×10⁻³³ cm | ~100% | Spacetime foam |
-| Proton | 8.775×10⁻¹⁴ cm | 10⁻³⁹% | Schwarzschild proton |
-| Electron | 2.818×10⁻¹³ cm | ~10⁻³⁷% | Electron BH |
-| Neutron star | ~10 km | ~10⁻⁵³% | Stellar collapse |
-| SMBH (SgrA*) | ~10⁷ km | ~10⁻⁵⁰% | SMBH formation |
+| Planck | 1.616×10-33 cm | ~100% | Spacetime foam |
+| Proton | 8.775×10-14 cm | 10-39% | Schwarzschild proton |
+| Electron | 2.818×10-13 cm | ~10-37% | Electron BH |
+| Neutron star | ~10 km | ~10-53% | Stellar collapse |
+| SMBH (SgrA*) | ~107 km | ~10-50% | SMBH formation |
 
 ---
 
@@ -148,13 +161,15 @@ vacuum hierarchy — a 19-order step matched by SOURCE115's 19-system 26D framew
 
 ### §A.1 Sector Classification
 
-This paper maps to **BH-gravity** sector of the 9-sector UQFF Lagrangian (see `uqff_lagrangian_derivation.py`).
+This paper maps to **BH-gravity** sector of the 9-sector UQFF Lagrangian (see
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
-The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive quantum fundamentals (DPM, UA, SCm):
+The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
+quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_\mu \phi_{\rm BH})(\partial^\mu \phi_{\rm BH}) - V(\phi_{\rm BH}) + \mathcal{L}_{\rm cosmo}$$
+$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_mu \phi_{\rm BH})(\partial^\mu \phi_{\rm BH}) - V(\phi_{\rm BH}) + \mathcal{L}_{\rm cosmo}$$
 
 where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
@@ -168,7 +183,9 @@ $$\boxed{\frac{\delta S}{\delta \phi_{\rm BH}} = R_{\mu\nu} - \tfrac{1}{2}g_{\mu
 
 $$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\rm BH} = 0$$
 
-The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g forces) through vacuum density initialization to the sector-specific equation of motion. Every term in the E-L equation inherits its physical origin from the cosmogenesis master.
+The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
+forces) through vacuum density initialization to the sector-specific equation of motion. Every term
+in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 
 ---
@@ -179,9 +196,9 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.124$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m³.
+For this system, the local VDS sub-ratio is $0.124$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -193,13 +210,13 @@ Since $p_{\rm DVP} = 79$ is **resonant** (threshold at $p > 26$), the system's v
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
-The BSH saturation timescale for this sector is **10⁶ M_BH/M_⊙ yr** (quasi-normal mode ringdown):
+The BSH saturation timescale for this sector is **106 M_BH/M_M_sun yr** (quasi-normal mode ringdown):
 
-$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
+$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\rm SCm}$ which initializes the harmonic series at cosmogenesis.
 
@@ -207,11 +224,11 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.124 | ✓ Threshold-consistent |
-| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 79$ | ✓ Resonant |
-| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
-| [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
+| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.124 | PASS Threshold-consistent |
+| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 79$ | PASS Resonant |
+| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
+| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
 ---
@@ -222,9 +239,9 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | Observable | SM Value | UQFF Schwarzschild Proton | Alignment |
 |------------|----------|---------------------------|-----------|
 | Proton charge radius | 0.8775 fm | r_p input (exact) | ✅ 100% |
-| Planck length | 1.616×10⁻³³ cm | ℓP from G,ℏ,c (exact) | ✅ 100% |
-| Casimir pressure (1 nm gap) | ~1.3×10⁻³ Pa | Casimir formula (exact) | ✅ |
-| Vacuum energy density | ρvac ≈ 10⁻⁹ J/m³ (QFT) | UQFF ρvac,sw = 8×10⁻²¹ | 🔍 UQFF vs QFT |
+| Planck length | 1.616×10-33 cm | ℓP from G,ℏ,c (exact) | ✅ 100% |
+| Casimir pressure (1 nm gap) | ~1.3×10-3 Pa | Casimir formula (exact) | ✅ |
+| Vacuum energy density | ρvac ≈ 10-9 J/m3 (QFT) | UQFF ρvac,sw = 8×10-21 | 🔍 UQFF vs QFT |
 | Wheeler-DeWitt | H|Ψ⟩=0 (standard) | V_UQFF layered boundary | ✅ structural |
 
 > **SM Anchor Reference:** PAPER_642 — UQFFSMParameterBridgeMasterComparisonCalculator
@@ -234,8 +251,8 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 ## References
 
 1. Aether13_16.cpp — grok_share_b2e2c5cba7a.txt (Session 168) lines 1020–1225
-2. PAPER_647 — Vacuum Density Series (ρvac,[SCm] = 7.09×10⁻³⁷)
-3. PAPER_649 — Dipole Vortex Primes (complex form Eₓ = mc²e^{-i26})
+2. PAPER_647 — Vacuum Density Series (ρvac,[SCm] = 7.09×10-37)
+3. PAPER_649 — Dipole Vortex Primes (complex form Eₓ = mc2e^{-i26})
 4. PAPER_648 — D(-1) LENR (KER = 630 eV; meson cascade)
 5. PAPER_646 — Universal Inertial Operator
 6. PAPER_642 — SM Parameter Bridge
@@ -256,9 +273,9 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `f`neutron_s26_coupling`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `k`ozima_scm_cross_section`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `k`ozima_wstp_kernel`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -267,7 +284,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `r`amanujan_polylog_s26`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
 | `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
@@ -276,7 +293,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `m`ock_theta_q26`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -287,8 +304,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `r`amanujan_pi_uqff`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `m`ock_theta_pi_wstp_kernel`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]

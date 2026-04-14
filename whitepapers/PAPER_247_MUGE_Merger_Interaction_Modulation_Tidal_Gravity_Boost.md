@@ -1,26 +1,50 @@
+---
+paper_id: PAPER_247
+title: "MUGE Merger Interaction Modulation — Tidal Gravity Boost with Exponential Decay"
+session: 0
+date: 2026-03-01
+author: "Daniel T. Murphy"
+status: production
+cvw: "v2.0.0"
+tags: [galaxy, AGN, Hubble, merger, vacuum, MUGE, UQFF]
+sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
+---
+
 # PAPER_247: MUGE Merger Interaction Modulation — Tidal Gravity Boost with Exponential Decay
 
 **Author:** Daniel T. Murphy (daniel.murphy00@gmail.com)
 **Framework:** UQFF v4.27 — Star-Magic Physics
-**Source:** CondensedPhysics3.py — `MUGEMergerInteractionModulationCalculator` (Session 62, grok_share_8d951e12.txt 4th-pass)
+**Source:** CondensedPhysics3.py — `MUGEMergerInteractionModulationCalculator` (Session 62,
+grok_share_8d951e12.txt 4th-pass)
 **Date:** March 2026
 **Series:** Phase 2 Session 62 — §3.x Universal MUGE Sub-Term Integration
 
 ---
 
-$$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b_i}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57$$
+$$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b\_i}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57$$
 
 $$
-h_\text{UQFF}(t) = h_\text{GR}(t)\cdot\bigl(1 - U_{b_i}/F_U\bigr)\cdot e^{-\kappa t}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1}
+h_\text{UQFF}(t) = h_\text{GR}(t)\cdot\bigl(1 - U_{b\_i}/F_U\bigr)\cdot e^{-\kappa t}, \quad \kappa =
+5.0\times10^{-4}\,\text{day}^{-1}
 $$
 
 ## Abstract
 
-Galaxy mergers are the dominant channel for mass assembly at late cosmic times, temporarily amplifying tidal forces, star formation rates, and active galactic nuclei activity. This paper establishes the **merger interaction modulation sub-term** for MUGE, which captures the transient gravitational boost that occurs during and after a tidal encounter through an exponentially decaying interaction function `I(t) = I0 · exp(-t/t_merger)`.
+Galaxy mergers are the dominant channel for mass assembly at late cosmic times, temporarily
+amplifying tidal forces, star formation rates, and active galactic nuclei activity. This paper
+establishes the **merger interaction modulation sub-term** for MUGE, which captures the transient
+gravitational boost that occurs during and after a tidal encounter through an exponentially decaying
+interaction function `I(t) = I0 · exp(-t/t_merger)`.
 
-The modulated gravity `g_merger = g_base · (1 + I(t))` peaks at (1 + I0) ˜ 1.1 times the base MUGE gravity at the moment of closest approach (t = 0) and relaxes exponentially to unity on the merger timescale t_merger. Two key characteristic times emerge: `t_half = t_merger · ln(2)` (half-decay time) and `t_relax = t_merger · ln(I0/0.01)` (the epoch when the modulation drops below 1%).
+The modulated gravity `g_merger = g_base · (1 + I(t))` peaks at (1 + I0) ˜ 1.1 times the base MUGE
+gravity at the moment of closest approach (t = 0) and relaxes exponentially to unity on the merger
+timescale t_merger. Two key characteristic times emerge: `t_half = t_merger · ln(2)` (half-decay
+time) and `t_relax = t_merger · ln(I0/0.01)` (the epoch when the modulation drops below 1%).
 
-The base gravity `g_base = (Ug1 + Ug4) · (1 + f_TRZ)` is itself built from the UQFF magnetic dipole term (Ug1), the vacuum-field correction (Ug4 = Ug1·(1 - B/B_crit)), and the triadic resonance zone factor (f_TRZ). This term appears in the Antennae Galaxies and HUDF (Hubble Ultra-Deep Field) MUGE modules, confirming its astrophysical grounding in observed merger systems.
+The base gravity `g_base = (Ug1 + Ug4) · (1 + f_TRZ)` is itself built from the UQFF magnetic dipole
+term (Ug1), the vacuum-field correction (Ug4 = Ug1·(1 - B/B_crit)), and the triadic resonance zone
+factor (f_TRZ). This term appears in the Antennae Galaxies and HUDF (Hubble Ultra-Deep Field) MUGE
+modules, confirming its astrophysical grounding in observed merger systems.
 
 ---
 
@@ -29,28 +53,30 @@ The base gravity `g_base = (Ug1 + Ug4) · (1 + f_TRZ)` is itself built from the 
 | Parameter | Symbol | Default Value | Units | Meaning |
 |-----------|--------|---------------|-------|---------|
 | Peak boost amplitude | I0 | 0.1 | dimensionless | 10% gravitational boost at t=0 |
-| Merger decay timescale | t_merger | 400 Myr = 1.262 × 10¹6 s | s | Exponential decay time |
-| Body mass | M | 2 × 10¹¹ M_sun | kg | Merging galaxy mass |
+| Merger decay timescale | t_merger | 400 Myr = 1.262 × 1016 s | s | Exponential decay time |
+| Body mass | M | 2 × 1011 M_sun | kg | Merging galaxy mass |
 | Separation radius | r | 30 kly | m | Tidal interaction scale |
 | TRZ factor | f_TRZ | 0.1 | dimensionless | Triadic resonance zone contribution |
-| Critical B field | B_crit | 4.4 × 10¹³ | T | Magnetar QED critical field |
+| Critical B field | B_crit | 4.4 × 1013 | T | Magnetar QED critical field |
 
 **Primary equations:**
-```
-I(t)    = I0 · exp(-t / t_merger)
-
-Ug1     = G · M / r²                          [magnetic dipole gravity]
-Ug4     = Ug1 · (1 - B / B_crit)              [vacuum-field correction]
-g_base  = (Ug1 + Ug4) · (1 + f_TRZ)
-
-g_merger = g_base · (1 + I(t))               [modulated merger gravity]
-```
+$$
+\begin{aligned}
+  & I(t)    = I0 · exp(-t / t_merger) \\
+  & Ug1     = G · M / r2                          [magnetic dipole gravity] \\
+  & Ug4     = Ug1 · (1 - B / B_crit)              [vacuum-field correction] \\
+  & g_base  = (Ug1 + Ug4) · (1 + f_TRZ) \\
+  & g_merger = g_base · (1 + I(t))               [modulated merger gravity]
+\end{aligned}
+$$
 
 **Characteristic times:**
-```
-t_half  = t_merger · ln(2)                ˜ 277 Myr
-t_relax = t_merger · ln(I0 / 0.01)         ˜ 920 Myr  (I drops below 1%)
-```
+$$
+\begin{aligned}
+  & t_half  = t_merger · ln(2)                ˜ 277 Myr \\
+  & t_relax = t_merger · ln(I0 / 0.01)         ˜ 920 Myr  (I drops below 1%)
+\end{aligned}
+$$
 
 ---
 
@@ -58,70 +84,91 @@ t_relax = t_merger · ln(I0 / 0.01)         ˜ 920 Myr  (I drops below 1%)
 
 ### 2.1 Exponential Decay of Tidal Interaction
 
-During a galaxy merger, the tidal force is dominated by the time of closest approach. After periapsis, the two galaxies recede, and the gravitational perturbation decays. The simplest physically motivated model is exponential decay with a characteristic timescale t_merger — the tidal interaction time, roughly proportional to the orbital period at the merger separation.
+During a galaxy merger, the tidal force is dominated by the time of closest approach. After
+periapsis, the two galaxies recede, and the gravitational perturbation decays. The simplest
+physically motivated model is exponential decay with a characteristic timescale t_merger — the tidal
+interaction time, roughly proportional to the orbital period at the merger separation.
 
-```
+$$
 I(t) = I0 · e^{-t/t_merger}
-```
+$$
 
 At t = 0 (closest approach): `I = I0 = 0.1`, giving a 10% boost.
 As t ? 8: `I ? 0`, recovering unperturbed base gravity.
 
-This parametrisation is consistent with N-body merger simulations (e.g., Springel & Hernquist 2005) which find that star formation rate enhancements decay exponentially with timescales of 200–600 Myr for major mergers.
+This parametrisation is consistent with N-body merger simulations (e.g., Springel & Hernquist 2005)
+which find that star formation rate enhancements decay exponentially with timescales of 200–600 Myr
+for major mergers.
 
 ### 2.2 Base Gravity Construction from UQFF Sub-Terms
 
-The merger modulation amplifies the UQFF base gravity, not the Newtonian gravity alone. The base gravity is:
+The merger modulation amplifies the UQFF base gravity, not the Newtonian gravity alone. The base
+gravity is:
 
 ```
-Ug1    = G·M/r²                    [Newtonian-equivalent dipole term]
+Ug1    = G·M/r2                    [Newtonian-equivalent dipole term]
 Ug4    = Ug1·(1-B/B_crit)         [vacuum-field reduction: Ug4 < Ug1 for B > 0]
 
 g_base = (Ug1 + Ug4)·(1 + f_TRZ)
        = Ug1·(2 - B/B_crit)·(1 + f_TRZ)
 ```
 
-For B « B_crit (galactic fields ~10?¹° T): `Ug4 ˜ Ug1`, so `g_base ˜ 2·Ug1·(1 + f_TRZ)`.
+For B « B_crit (galactic fields ~10?1° T): `Ug4 ˜ Ug1`, so `g_base ˜ 2·Ug1·(1 + f_TRZ)`.
 The TRZ factor f_TRZ = 0.1 adds a 10% triadic resonance contribution, giving `g_base ˜ 2.2·Ug1`.
 
 **Peak modulated gravity:**
-```
-g_merger(t=0) = g_base · (1 + I0)
-              = 2.2 · Ug1 · 1.1
-              ˜ 2.42 · G·M/r²
-```
+$$
+\begin{aligned}
+  & g_merger(t=0) = g_base · (1 + I0) \\
+  & = 2.2 · Ug1 · 1.1 \\
+  & ˜ 2.42 · G·M/r2
+\end{aligned}
+$$
 
-This ˜ 2.4× Newtonian gravity at closest approach — consistent with observed tidal distortion amplitudes in Antennae-class mergers.
+This ˜ 2.4× Newtonian gravity at closest approach — consistent with observed tidal distortion
+amplitudes in Antennae-class mergers.
 
 ### 2.3 Temporal Decay Analysis
 
-**Half-life:** `t_half = t · ln(2)`. For t = 400 Myr: `t_half ˜ 277 Myr`. Half the initial merger boost is dissipated in ~277 Myr — the timeframe over which the Antennae system's star-burst peaks and begins to fade.
+**Half-life:** `t_half = t · ln(2)`. For t = 400 Myr: `t_half ˜ 277 Myr`. Half the initial merger
+boost is dissipated in ~277 Myr — the timeframe over which the Antennae system's star-burst peaks
+and begins to fade.
 
-**1% relaxation:** `t_relax = t · ln(I0/0.01) = 400·ln(10) ˜ 920 Myr`. The galaxy pair is effectively unperturbed after ~1 Gyr, consistent with the dynamical friction timescale for major mergers.
+**1% relaxation:** `t_relax = t · ln(I0/0.01) = 400·ln(10) ˜ 920 Myr`. The galaxy pair is
+effectively unperturbed after ~1 Gyr, consistent with the dynamical friction timescale for major
+mergers.
 
-**Instantaneous merger rate:** `dI/dt = -I0/t · exp(-t/t)` — most rapid change at t = 0 (peak merger), slowing as the system relaxes.
+**Instantaneous merger rate:** `dI/dt = -I0/t · exp(-t/t)` — most rapid change at t = 0 (peak
+merger), slowing as the system relaxes.
 
 ### 2.4 HUDF Application
 
-In the Hubble Ultra-Deep Field modules, this term models the cumulative effect of merger-induced gravity boosts across a population of galaxies at z ˜ 1–6. The average boost ?g_merger? over the merger population is:
+In the Hubble Ultra-Deep Field modules, this term models the cumulative effect of merger-induced
+gravity boosts across a population of galaxies at z ˜ 1–6. The average boost ?g_merger? over the
+merger population is:
 
-```
+$$
 ?g_merger? = g_base · (1 + I0 · t / T_observe)
-```
+$$
 
-where T_observe is the observation window. For the HUDF (T ˜ 13 Gyr), the contribution is small but non-zero — merger-driven gravity remains a detectable perturbation in the deep field.
+where T_observe is the observation window. For the HUDF (T ˜ 13 Gyr), the contribution is small but
+non-zero — merger-driven gravity remains a detectable perturbation in the deep field.
 
 ---
 
 ## 3. Exponential Relaxation Theorem
 
-**Theorem (MUGE Merger Relaxation):** For any merger with initial boost I0 and timescale t_merger, the modulated gravity converges to base MUGE gravity exponentially: `g_merger(t) ? g_base` as `t ? 8`. The total integrated boost is:
+**Theorem (MUGE Merger Relaxation):** For any merger with initial boost I0 and timescale t_merger,
+the modulated gravity converges to base MUGE gravity exponentially: `g_merger(t) ? g_base` as `t ?
+8`. The total integrated boost is:
 
-```
+$$
 ?0^8 [g_merger(t) - g_base] dt = g_base · I0 · t_merger
-```
+$$
 
-For the default Antennae parameters: integrated boost ˜ `g_base × 0.1 × 400 Myr = 40 Myr·g_base`. This is the total additional gravitational impulse delivered to the merging system — a directly observable quantity through the system's orbital energy deficit.
+For the default Antennae parameters: integrated boost ˜ `g_base × 0.1 × 400 Myr = 40 Myr·g_base`.
+This is the total additional gravitational impulse delivered to the merging system — a directly
+observable quantity through the system's orbital energy deficit.
 
 ---
 
@@ -136,10 +183,12 @@ For the default Antennae parameters: integrated boost ˜ `g_base × 0.1 × 400 M
 ## 5. References
 
 1. Toomre, A., & Toomre, J. (1972). Galactic Bridges and Tails. *ApJ* 178, 623.
-2. Springel, V., & Hernquist, L. (2005). Formation of a Spiral Galaxy in a Major Merger. *ApJ* 622, L9.
+2. Springel, V., & Hernquist, L. (2005). Formation of a Spiral Galaxy in a Major Merger. *ApJ* 622,
+L9.
 3. Wang, J. et al. (2011). Antennae Galaxies merger dynamics. *ApJ* 739, L22.
 4. Schawinski, K. et al. (2015). The green valley is a red herring: AGN feedback. *MNRAS* 451, 2517.
-5. Murphy, D.T. (2025). UQFF Framework v4.x — MUGE Sub-Term Integration. Star-Magic internal document.
+5. Murphy, D.T. (2025). UQFF Framework v4.x — MUGE Sub-Term Integration. Star-Magic internal
+document.
 6. grok_share_8d951e12 validation session — merger modulation term (Antennae + HUDF modules).
 
 ---
@@ -152,13 +201,15 @@ For the default Antennae parameters: integrated boost ˜ `g_base × 0.1 × 400 M
 
 ### §A.1 Sector Classification
 
-This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see `uqff_lagrangian_derivation.py`).
+This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see
+`uqff_lagrangian_derivation.py`).
 
 ### §A.2 Lagrangian Density
 
-The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive quantum fundamentals (DPM, UA, SCm):
+The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
+quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_\mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
+$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
 
 where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
@@ -172,7 +223,9 @@ $$\boxed{\frac{\delta S}{\delta \phi_{\rm NS}} = \nabla^2 \phi_{\rm NS} - (4\pi 
 
 $$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\rm NS} = 0$$
 
-The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g forces) through vacuum density initialization to the sector-specific equation of motion. Every term in the E-L equation inherits its physical origin from the cosmogenesis master.
+The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
+forces) through vacuum density initialization to the sector-specific equation of motion. Every term
+in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 
 ---
@@ -183,9 +236,9 @@ The chain traces from the three fundamental axioms (DPM proportion pair, ACP evo
 
 The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs the double-exponential vacuum condensate profile:
 
-$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp\!\left(-\exp\!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.082$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m³.
+For this system, the local VDS sub-ratio is $0.082$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -197,13 +250,13 @@ Since $p_{\rm DVP} = 19$ is **sub-threshold** (threshold at $p > 26$), the syste
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
-The BSH saturation timescale for this sector is **10⁴ yr** (spin-down equilibrium):
+The BSH saturation timescale for this sector is **104 yr** (spin-down equilibrium):
 
-$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right)$$
+$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh\!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
+$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
 
 connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\rm SCm}$ which initializes the harmonic series at cosmogenesis.
 
@@ -211,11 +264,11 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Framework | Canonical Value | This Paper | Status |
 |-----------|----------------|------------|--------|
-| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.082 | ✓ Threshold-consistent |
-| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 19$ | ✓ Sub-threshold |
-| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | ✓ Full 26D projection |
-| κ decay | $5.0 \times 10^{-4}$ day⁻¹ | Applied in VDS exponential | ✓ Canonical |
-| [SSq] | 0.57 | Applied in BSH saturation | ✓ Canonical |
+| VDS ratio | $\rho_{\rm SCm}/\rho_{\rm UA} = 1.894$ | Local sub-ratio = 0.082 | PASS Threshold-consistent |
+| DVP prime | $p_k \in$ {2,3,...,113} | $p_{\rm DVP} = 19$ | PASS Sub-threshold |
+| BSH layers | 26 harmonic terms | j = 1...26, $\cos(2\pi j/26)$ | PASS Full 26D projection |
+| κ decay | $5.0 \times 10^{-4}$ day-1 | Applied in VDS exponential | PASS Canonical |
+| [SSq] | 0.57 | Applied in BSH saturation | PASS Canonical |
 
 
 ---
@@ -225,14 +278,17 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | ✓ Consistent |
-| Cosmological constant Λ | 1.1×10⁻⁵² m⁻² (UQFF vacuum term) | 1.114×10⁻⁵² m⁻² | Planck 2018 | ✓ Consistent |
-| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10⁻³⁵/yr | Super-K 2024 | ✓ Consistent |
-| UQFF buoyancy signature | F_U_Bi_i unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
+| Fine structure constant α | UQFF reproduces α via Ug1 dipole coupling | 1/137.036 | PDG 2024 | PASS Consistent |
+| Cosmological constant Λ | 1.1×10-52 m-2 (UQFF vacuum term) | 1.114×10-52 m-2 | Planck 2018 | PASS Consistent |
+| Proton decay rate | κ = 0.0005/day → Γ_p suppression | < 4.17×10-35/yr | Super-K 2024 | PASS Consistent |
+| UQFF buoyancy signature | `F_U_Bi_i` unique gravitational correction | Not yet measured | Future gravitational wave detectors | Testable |
 
-**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes significant, offering a falsifiable prediction beyond the Standard Model.
+**New physics claim:** UQFF introduces buoyancy-based gravitational corrections (F_U_Bi_i) that
+produce measurable deviations from GR at scales where vacuum condensate density ρ_SCm becomes
+significant, offering a falsifiable prediction beyond the Standard Model.
 
-*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM bridge.*
+*Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
+bridge.*
 
 
 ---
@@ -247,9 +303,9 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `fneutron_s26_coupling.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
-| `kozima_scm_cross_section.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
-| `kozima_wstp_kernel.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
+| `f`neutron_s26_coupling`.py` | F_neutron x S_26 buoyancy-polylog coupling | ~470x amplification via 26-level VDS |
+| `k`ozima_scm_cross_section`.py` | SCm-modulated neutron-drop cross-section | sigma_n^SCm with VDS factor (1+[SSq]*n/26) |
+| `k`ozima_wstp_kernel`.py` | 11-symbol Wolfram export (`UQFFKozima`) | FNeutronForce, SigmaSCm, SCmActivation |
 
 **Core equation:** F_neutron^SCm = N_n * sigma_n^SCm(omega) * Phi_phonon * (F_{U,Bi}/F_U - 1)
 where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (1 + [SSq]*n/26)
@@ -258,7 +314,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_polylog_s26.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
+| `r`amanujan_polylog_s26`.py` | Li_26([SSq]) via Euler-Ramanujan acceleration | 15.7+ digits in 53 terms |
 | `s26_wstp_kernel.py` | 8-symbol Wolfram export (`UQFFS26`) | S26, R26, NaiveLi, S26VDS |
 
 **Core equation:** S_26(z) = Li_26(z) = eta_26(z)/(1-2^{1-26}) + 2^{1-26}/(1-2^{1-26}) * Li_26(z^2)
@@ -267,7 +323,7 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `mock_theta_q26.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
+| `m`ock_theta_q26`.py` | f_26(q), phi_26(q), psi_26(q) q-series | Proper q-Pochhammer (a;q)_n |
 
 **Core equations:**
 - f_26(q) = Sum_{n=0}^{25} q^{n^2} / (-q;q)_n^2
@@ -278,8 +334,8 @@ where sigma_n^SCm(omega,n) = sigma_0 * exp[-(omega-omega_SCm)^2/(2*Gamma^2)] * (
 
 | Module | Purpose | Key Result |
 |--------|---------|------------|
-| `ramanujan_pi_uqff.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
-| `mock_theta_pi_wstp_kernel.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
+| `r`amanujan_pi_uqff`.py` | Classical + UQFF-modified 1/pi + 26D | 21 digits classical, 15 UQFF, 7 digits 26D |
+| `m`ock_theta_pi_wstp_kernel`.py` | 9-symbol Wolfram export (`UQFFMockThetaPi`) | qPochhammer, f26, oneOverPiUQFF |
 
 **Core equation:** 1/pi = (2*sqrt(2)/9801) * Sum R_n * (1103+26390n) * W_26(n) / C_26
 where W_26(n) = Prod_{i=1}^{26} [1 + [SSq]*exp(-kappa*i*n/26)]
