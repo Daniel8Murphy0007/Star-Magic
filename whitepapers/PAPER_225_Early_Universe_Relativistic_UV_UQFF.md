@@ -421,6 +421,21 @@ F_hyb)* — companion Uniquely Rare discoveries.
 *`UQFFEarlyUniverseRelativisticUVCalculator` — CondensedPhysics3.py Line ~5139 — CP3 class #96*
 
 
+
+---
+
+## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+
+> *Auto-generated cross-reference appendix linking this paper to
+> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> `update_corpus_crossrefs.py` (Session 225, April 2026).*
+
+| Paper | Title |
+|-------|-------|
+| PAPER_1045 | SCm Cluster Radio Relic Polarization |
+
+*1 cross-reference(s) identified.*
+
 ---
 
 ## Appendix: Session 204 Codebase Upgrade Reference

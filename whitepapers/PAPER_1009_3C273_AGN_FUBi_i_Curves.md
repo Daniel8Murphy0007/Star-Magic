@@ -117,3 +117,28 @@ BSH timescale: $10^6 M_\text{BH}$ yr
 | VDS ratio | 0.167 | Confirmed |
 | $\kappa$ decay | $5 \times 10^{-4}$ | Confirmed |
 | $[SSq]$ | 0.57 | Confirmed |
+
+---
+
+## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+
+> *Auto-generated cross-reference appendix linking this paper to
+> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> `update_corpus_crossrefs.py` (Session 225, April 2026).*
+
+| Paper | Title |
+|-------|-------|
+| PAPER_1022 | GW Phonon Strain SCm Modulation of h(t) |
+| PAPER_1002 | AGN Buoyancy-Corrected Eddington Luminosity |
+| PAPER_1010 | TON618 AGN F_U_Bi_i Jet Modulation |
+| PAPER_1037 | AGN Buoyancy Jet Calculator — SCm Jet Launching |
+| PAPER_1048 | M-Sigma Phonon-Corrected Relation |
+| PAPER_1004 | QGP Vacuum Density with SCm S26 Phonon Coupling |
+| PAPER_1041 | SCm Cool-Core Buoyancy Balance AGN Feedback |
+| PAPER_1079 | Galaxy Cluster Cooling-Flow Buoyancy Suppression |
+| PAPER_1024 | Magnetar Giant Flare SCm Phonon Reservoir |
+| PAPER_1033 | Galactic Bar Resonance SCm Pattern Speed |
+| PAPER_1043 | F_U_Bi_i Multi-System Buoyancy Curve Sweep |
+| PAPER_1072 | SCm Activation Function Phonon Threshold |
+
+*12 cross-reference(s) identified.*

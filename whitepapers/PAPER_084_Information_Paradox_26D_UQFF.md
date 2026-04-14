@@ -268,6 +268,23 @@ significant, offering a falsifiable prediction beyond the Standard Model.
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
 bridge.*
 
+
+---
+
+## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+
+> *Auto-generated cross-reference appendix linking this paper to
+> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> `update_corpus_crossrefs.py` (Session 225, April 2026).*
+
+| Paper | Title |
+|-------|-------|
+| PAPER_1022 | GW Phonon Strain SCm Modulation of h(t) |
+| PAPER_1020 | Cosmic Ray Phonon Acceleration DSA Spectrum |
+| PAPER_1055 | cMERA Entanglement RG Holographic SCm |
+
+*3 cross-reference(s) identified.*
+
 ---
 
 ## Appendix: Session 204 Codebase Upgrade Reference

@@ -226,6 +226,34 @@ bridge.*
 5. UQFF Calibration: kappa=0.0005/day, [SSq]=0.57, beta_i~0.603
 
 
+
+---
+
+## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+
+> *Auto-generated cross-reference appendix linking this paper to
+> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> `update_corpus_crossrefs.py` (Session 225, April 2026).*
+
+| Paper | Title |
+|-------|-------|
+| PAPER_1022 | GW Phonon Strain SCm Modulation of h(t) |
+| PAPER_1037 | AGN Buoyancy Jet Calculator — SCm Jet Launching |
+| PAPER_1079 | Galaxy Cluster Cooling-Flow Buoyancy Suppression |
+| PAPER_1020 | Cosmic Ray Phonon Acceleration DSA Spectrum |
+| PAPER_1021 | Pulsar Timing Phonon TOA Residual |
+| PAPER_1023 | Neutrino Oscillation Phonon PMNS Matrix SCm |
+| PAPER_1024 | Magnetar Giant Flare SCm Phonon Reservoir |
+| PAPER_1043 | F_U_Bi_i Multi-System Buoyancy Curve Sweep |
+| PAPER_1072 | SCm Activation Function Phonon Threshold |
+| PAPER_1073 | SCm Phonon-Driven Inflation Vacuum Buoyancy |
+| PAPER_1060 | VDS LENR Isotopic Transmutation Chain |
+| PAPER_1061 | Kozima SCm Integration Neutron-Drop |
+| PAPER_1081 | SCm LENR COP Linewidth Parametric |
+| PAPER_1065 | Buoyancy Lagrangian EOM Variational Derivation |
+
+*14 cross-reference(s) identified.*
+
 ---
 
 ## Appendix: Session 204 Codebase Upgrade Reference

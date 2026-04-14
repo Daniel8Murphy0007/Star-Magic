@@ -243,6 +243,22 @@ bridge.*
 - Rings of Relativity: Prior session `UQFFLensingModulationRingsCalculator`
 
 
+
+---
+
+## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+
+> *Auto-generated cross-reference appendix linking this paper to
+> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> `update_corpus_crossrefs.py` (Session 225, April 2026).*
+
+| Paper | Title |
+|-------|-------|
+| PAPER_1022 | GW Phonon Strain SCm Modulation of h(t) |
+| PAPER_1043 | F_U_Bi_i Multi-System Buoyancy Curve Sweep |
+
+*2 cross-reference(s) identified.*
+
 ---
 
 ## Appendix: Session 204 Codebase Upgrade Reference

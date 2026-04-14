@@ -106,3 +106,20 @@ Each system receives density/velocity/gravity cubes with summary statistics.
 - `muge_3d_volumetric.py`: Implementation (10/10 tests pass)
 - `production_scaling_v17.py`: Kernels `kernel_muge_8term_gravity`, `kernel_nfw_density`
 - CondensedPhysics4.py: MUGECluster3DSimCalc (radial predecessor)
+
+---
+
+## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+
+> *Auto-generated cross-reference appendix linking this paper to
+> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> `update_corpus_crossrefs.py` (Session 225, April 2026).*
+
+| Paper | Title |
+|-------|-------|
+| PAPER_1022 | GW Phonon Strain SCm Modulation of h(t) |
+| PAPER_1015 | SCm Dark Matter Halos NFW Rotation Curve |
+| PAPER_1020 | Cosmic Ray Phonon Acceleration DSA Spectrum |
+| PAPER_1043 | F_U_Bi_i Multi-System Buoyancy Curve Sweep |
+
+*4 cross-reference(s) identified.*

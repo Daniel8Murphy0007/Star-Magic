@@ -339,6 +339,31 @@ bridge.*
 - `MAIN_1_CoAnQi.cpp` SOURCE4 — sagA_SOURCE4 system, compute_resonance_MUGE_SOURCE4()
 .Groups[1].Value  — UQFF Sagittarius A*: MUGE FDPM Dominance and Extreme Gravity
 
+
+---
+
+## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+
+> *Auto-generated cross-reference appendix linking this paper to
+> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> `update_corpus_crossrefs.py` (Session 225, April 2026).*
+
+| Paper | Title |
+|-------|-------|
+| PAPER_1022 | GW Phonon Strain SCm Modulation of h(t) |
+| PAPER_1009 | 3C273 AGN F_U_Bi_i Jet Modulation |
+| PAPER_1010 | TON618 AGN F_U_Bi_i Jet Modulation |
+| PAPER_1037 | AGN Buoyancy Jet Calculator — SCm Jet Launching |
+| PAPER_1033 | Galactic Bar Resonance SCm Pattern Speed |
+| PAPER_1072 | SCm Activation Function Phonon Threshold |
+| PAPER_1073 | SCm Phonon-Driven Inflation Vacuum Buoyancy |
+| PAPER_1049 | Source10 GPU DPM Spectral Atlas ALMA Overlay |
+| PAPER_1050 | MUGE F_U_Bi_i Unified 9-System Synthesis |
+| PAPER_1074 | GPU-Vectorized DPM S26 Spectral Atlas |
+| PAPER_1075 | 3D Volumetric MUGE Gravitational Field Generator |
+
+*11 cross-reference(s) identified.*
+
 ## Appendix: Session 204 Codebase Upgrade Reference
 
 > *Cross-reference appendix for Session 204 (April 2026) codebase upgrades.

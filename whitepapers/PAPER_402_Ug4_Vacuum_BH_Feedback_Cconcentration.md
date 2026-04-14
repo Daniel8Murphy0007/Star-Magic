@@ -267,6 +267,33 @@ k_η = 1.0e-113; β_i ≈ 6.0e-1; G = 6.674e-11 N·m2/kg2
 *Whitepaper generated Session 108. Source: grok_share_cfdcad2f5.txt lines 277-1600.*
 
 
+
+---
+
+## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+
+> *Auto-generated cross-reference appendix linking this paper to
+> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> `update_corpus_crossrefs.py` (Session 225, April 2026).*
+
+| Paper | Title |
+|-------|-------|
+| PAPER_1022 | GW Phonon Strain SCm Modulation of h(t) |
+| PAPER_1002 | AGN Buoyancy-Corrected Eddington Luminosity |
+| PAPER_1009 | 3C273 AGN F_U_Bi_i Jet Modulation |
+| PAPER_1010 | TON618 AGN F_U_Bi_i Jet Modulation |
+| PAPER_1037 | AGN Buoyancy Jet Calculator — SCm Jet Launching |
+| PAPER_1048 | M-Sigma Phonon-Corrected Relation |
+| PAPER_1004 | QGP Vacuum Density with SCm S26 Phonon Coupling |
+| PAPER_1041 | SCm Cool-Core Buoyancy Balance AGN Feedback |
+| PAPER_1079 | Galaxy Cluster Cooling-Flow Buoyancy Suppression |
+| PAPER_1076 | SCm Dark Energy with Phonon Linewidth Gamma-Modulation |
+| PAPER_1029 | Barocentric Earth Orbital Buoyancy |
+| PAPER_1069 | VDS-DVP-BSH Hybrid Calculator Unified |
+| PAPER_1049 | Source10 GPU DPM Spectral Atlas ALMA Overlay |
+
+*13 cross-reference(s) identified.*
+
 ---
 
 ## Appendix: Session 204 Codebase Upgrade Reference

@@ -4,7 +4,7 @@
 **Unified Quantum Field Framework (UQFF): Production-Scale Implementation and Advanced Theoretical Extensions**
 
 ## Author
-Daniel J. Murphy  
+Daniel T. Murphy  
 Independent Research  
 daniel8murphy0007@github.com
 

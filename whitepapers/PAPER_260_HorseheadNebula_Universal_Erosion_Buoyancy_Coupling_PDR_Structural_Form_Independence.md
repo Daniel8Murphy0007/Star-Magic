@@ -353,6 +353,32 @@ variant
 *Paper 260 of 1,000  Session 72e – Phase 2 §3.1 C++ Module Physics Extraction*
 
 
+
+---
+
+## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+
+> *Auto-generated cross-reference appendix linking this paper to
+> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> `update_corpus_crossrefs.py` (Session 225, April 2026).*
+
+| Paper | Title |
+|-------|-------|
+| PAPER_1037 | AGN Buoyancy Jet Calculator — SCm Jet Launching |
+| PAPER_1039 | SCm Galaxy Cluster Buoyancy Profile ICM Beta-Model |
+| PAPER_1040 | SCm Cluster Merger Shock Mach Number Phonon Damping |
+| PAPER_1041 | SCm Cool-Core Buoyancy Balance AGN Feedback |
+| PAPER_1044 | SCm Cluster Thermal SZ Effect Compton-y Phonon |
+| PAPER_1045 | SCm Cluster Radio Relic Polarization |
+| PAPER_1046 | SCm Cluster Lensing Mass Phonon Correction |
+| PAPER_1079 | Galaxy Cluster Cooling-Flow Buoyancy Suppression |
+| PAPER_1043 | F_U_Bi_i Multi-System Buoyancy Curve Sweep |
+| PAPER_1065 | Buoyancy Lagrangian EOM Variational Derivation |
+| PAPER_1050 | MUGE F_U_Bi_i Unified 9-System Synthesis |
+| PAPER_1075 | 3D Volumetric MUGE Gravitational Field Generator |
+
+*12 cross-reference(s) identified.*
+
 ---
 
 ## Appendix: Session 204 Codebase Upgrade Reference

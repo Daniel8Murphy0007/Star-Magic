@@ -237,6 +237,24 @@ future HST + Chandra monitoring observations.
 **Q5 Prediction 3:** The UQFF $f_\text{TRZ} = 0.1$ factor predicts a 10% periodic oscillation in the galaxy rotation curve at $\omega_text{TRZ} = v_\text{gas}/(r) \sim 10^{-16}$ rad/s — a very slow pattern speed observable as a $\sim10%$ arm-to-interarm density contrast in deep HI 21-cm mapping of NGC 2525.
 
 
+
+---
+
+## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+
+> *Auto-generated cross-reference appendix linking this paper to
+> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> `update_corpus_crossrefs.py` (Session 225, April 2026).*
+
+| Paper | Title |
+|-------|-------|
+| PAPER_1022 | GW Phonon Strain SCm Modulation of h(t) |
+| PAPER_1047 | Type Iax Supernova Buoyancy Reversal |
+| PAPER_1050 | MUGE F_U_Bi_i Unified 9-System Synthesis |
+| PAPER_1075 | 3D Volumetric MUGE Gravitational Field Generator |
+
+*4 cross-reference(s) identified.*
+
 ---
 
 ## Appendix: Session 204 Codebase Upgrade Reference

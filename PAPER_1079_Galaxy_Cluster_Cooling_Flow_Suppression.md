@@ -80,3 +80,20 @@ The suppression factor varies with phonon linewidth through $\Phi(\Gamma)$ in th
 2. Sutherland & Dopita (1993): Cooling functions
 3. $F_{U,Bi,i}$ framework: `MAIN_1_CoAnQi.cpp` SOURCE4
 4. ICM physics: `gen_muge_ngc1275.py`
+
+---
+
+## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+
+> *Auto-generated cross-reference appendix linking this paper to
+> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> `update_corpus_crossrefs.py` (Session 225, April 2026).*
+
+| Paper | Title |
+|-------|-------|
+| PAPER_1022 | GW Phonon Strain SCm Modulation of h(t) |
+| PAPER_1039 | SCm Galaxy Cluster Buoyancy Profile ICM Beta-Model |
+| PAPER_1041 | SCm Cool-Core Buoyancy Balance AGN Feedback |
+| PAPER_1033 | Galactic Bar Resonance SCm Pattern Speed |
+
+*4 cross-reference(s) identified.*

@@ -111,3 +111,19 @@ dominant line at 1.25 THz with FWHM governed by σ_G.
 - `source10_gpu_dpm_atlas.py`: Implementation (11/11 tests pass)
 - `production_scaling_v17.py`: Kernels `kernel_gpu_dpm_atlas_peak`, `kernel_dpm_line_fwhm`
 - PAPER_877: Three-Assumption UQFF Cosmogenesis
+
+---
+
+## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+
+> *Auto-generated cross-reference appendix linking this paper to
+> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> `update_corpus_crossrefs.py` (Session 225, April 2026).*
+
+| Paper | Title |
+|-------|-------|
+| PAPER_1022 | GW Phonon Strain SCm Modulation of h(t) |
+| PAPER_1020 | Cosmic Ray Phonon Acceleration DSA Spectrum |
+| PAPER_1027 | Tidal Disruption Event SCm Fallback |
+
+*3 cross-reference(s) identified.*

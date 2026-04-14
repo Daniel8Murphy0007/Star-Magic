@@ -215,6 +215,25 @@ is a falsifiable indicator of a unified vacuum origin for these constants.
 *Session 157 — Source: grok_share_4cef778c78b8.txt*
 
 
+
+---
+
+## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+
+> *Auto-generated cross-reference appendix linking this paper to
+> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> `update_corpus_crossrefs.py` (Session 225, April 2026).*
+
+| Paper | Title |
+|-------|-------|
+| PAPER_1027 | Tidal Disruption Event SCm Fallback |
+| PAPER_1072 | SCm Activation Function Phonon Threshold |
+| PAPER_1073 | SCm Phonon-Driven Inflation Vacuum Buoyancy |
+| PAPER_1049 | Source10 GPU DPM Spectral Atlas ALMA Overlay |
+| PAPER_1074 | GPU-Vectorized DPM S26 Spectral Atlas |
+
+*5 cross-reference(s) identified.*
+
 ---
 
 ## Appendix: Session 204 Codebase Upgrade Reference

@@ -328,6 +328,26 @@ the framework beyond astrophysics and nuclear physics.
 *Session 167 | `grok_share_6322ac199`.txt extraction | March 31 2026*
 
 
+
+---
+
+## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+
+> *Auto-generated cross-reference appendix linking this paper to
+> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> `update_corpus_crossrefs.py` (Session 225, April 2026).*
+
+| Paper | Title |
+|-------|-------|
+| PAPER_1022 | GW Phonon Strain SCm Modulation of h(t) |
+| PAPER_1072 | SCm Activation Function Phonon Threshold |
+| PAPER_1073 | SCm Phonon-Driven Inflation Vacuum Buoyancy |
+| PAPER_1056 | Quantum Error Correction Topological SCm |
+| PAPER_1049 | Source10 GPU DPM Spectral Atlas ALMA Overlay |
+| PAPER_1074 | GPU-Vectorized DPM S26 Spectral Atlas |
+
+*6 cross-reference(s) identified.*
+
 ---
 
 ## Appendix: Session 204 Codebase Upgrade Reference

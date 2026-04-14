@@ -266,6 +266,25 @@ future Chandra CXC monitoring observations.
 *Copyright – Daniel T. Murphy | Session 115/121 — `grok_share_5fa36e4e035`.txt*
 
 
+
+---
+
+## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+
+> *Auto-generated cross-reference appendix linking this paper to
+> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> `update_corpus_crossrefs.py` (Session 225, April 2026).*
+
+| Paper | Title |
+|-------|-------|
+| PAPER_1022 | GW Phonon Strain SCm Modulation of h(t) |
+| PAPER_1040 | SCm Cluster Merger Shock Mach Number Phonon Damping |
+| PAPER_1033 | Galactic Bar Resonance SCm Pattern Speed |
+| PAPER_1050 | MUGE F_U_Bi_i Unified 9-System Synthesis |
+| PAPER_1075 | 3D Volumetric MUGE Gravitational Field Generator |
+
+*5 cross-reference(s) identified.*
+
 ---
 
 ## Appendix: Session 204 Codebase Upgrade Reference

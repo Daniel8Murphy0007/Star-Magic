@@ -207,6 +207,35 @@ bridge.*
 6. UQFF 9-Sector Lagrangian Derivation, Session 202 (commit 9d26977)
 
 
+
+---
+
+## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+
+> *Auto-generated cross-reference appendix linking this paper to
+> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> `update_corpus_crossrefs.py` (Session 225, April 2026).*
+
+| Paper | Title |
+|-------|-------|
+| PAPER_1037 | AGN Buoyancy Jet Calculator — SCm Jet Launching |
+| PAPER_1004 | QGP Vacuum Density with SCm S26 Phonon Coupling |
+| PAPER_1079 | Galaxy Cluster Cooling-Flow Buoyancy Suppression |
+| PAPER_1043 | F_U_Bi_i Multi-System Buoyancy Curve Sweep |
+| PAPER_1047 | Type Iax Supernova Buoyancy Reversal |
+| PAPER_1072 | SCm Activation Function Phonon Threshold |
+| PAPER_1073 | SCm Phonon-Driven Inflation Vacuum Buoyancy |
+| PAPER_1060 | VDS LENR Isotopic Transmutation Chain |
+| PAPER_1061 | Kozima SCm Integration Neutron-Drop |
+| PAPER_1081 | SCm LENR COP Linewidth Parametric |
+| PAPER_1065 | Buoyancy Lagrangian EOM Variational Derivation |
+| PAPER_1069 | VDS-DVP-BSH Hybrid Calculator Unified |
+| PAPER_1078 | QCalcGeom Master Equation Derivation |
+| PAPER_1049 | Source10 GPU DPM Spectral Atlas ALMA Overlay |
+| PAPER_1074 | GPU-Vectorized DPM S26 Spectral Atlas |
+
+*15 cross-reference(s) identified.*
+
 ---
 
 ## Appendix: Session 204 Codebase Upgrade Reference

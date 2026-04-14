@@ -97,3 +97,25 @@ The phonon sector Lagrangian $\mathcal{L}_{\text{phon}} = \Phi(\Gamma) \cdot S_{
 **New physics claim:** UQFF phonon-mediated vacuum coupling provides testable predictions beyond SM for this system.
 
 *Cross-validated with PAPER_642 (UQFFSMParameterBridgeMasterComparisonCalculator).*
+
+---
+
+## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+
+> *Auto-generated cross-reference appendix linking this paper to
+> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> `update_corpus_crossrefs.py` (Session 225, April 2026).*
+
+| Paper | Title |
+|-------|-------|
+| PAPER_1022 | GW Phonon Strain SCm Modulation of h(t) |
+| PAPER_1004 | QGP Vacuum Density with SCm S26 Phonon Coupling |
+| PAPER_1020 | Cosmic Ray Phonon Acceleration DSA Spectrum |
+| PAPER_1021 | Pulsar Timing Phonon TOA Residual |
+| PAPER_1023 | Neutrino Oscillation Phonon PMNS Matrix SCm |
+| PAPER_1024 | Magnetar Giant Flare SCm Phonon Reservoir |
+| PAPER_1033 | Galactic Bar Resonance SCm Pattern Speed |
+| PAPER_1072 | SCm Activation Function Phonon Threshold |
+| PAPER_1073 | SCm Phonon-Driven Inflation Vacuum Buoyancy |
+
+*9 cross-reference(s) identified.*

@@ -320,6 +320,26 @@ significant, offering a falsifiable prediction beyond the Standard Model.
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
 bridge.*
 
+
+---
+
+## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+
+> *Auto-generated cross-reference appendix linking this paper to
+> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> `update_corpus_crossrefs.py` (Session 225, April 2026).*
+
+| Paper | Title |
+|-------|-------|
+| PAPER_1004 | QGP Vacuum Density with SCm S26 Phonon Coupling |
+| PAPER_1015 | SCm Dark Matter Halos NFW Rotation Curve |
+| PAPER_1019 | Dark Matter Phonon Buoyancy NFW Coupling |
+| PAPER_1076 | SCm Dark Energy with Phonon Linewidth Gamma-Modulation |
+| PAPER_1069 | VDS-DVP-BSH Hybrid Calculator Unified |
+| PAPER_1049 | Source10 GPU DPM Spectral Atlas ALMA Overlay |
+
+*6 cross-reference(s) identified.*
+
 ---
 
 ## Appendix: Session 204 Codebase Upgrade Reference

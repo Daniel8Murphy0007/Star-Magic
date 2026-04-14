@@ -391,6 +391,25 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 ---
 
+
+---
+
+## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+
+> *Auto-generated cross-reference appendix linking this paper to
+> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> `update_corpus_crossrefs.py` (Session 225, April 2026).*
+
+| Paper | Title |
+|-------|-------|
+| PAPER_1022 | GW Phonon Strain SCm Modulation of h(t) |
+| PAPER_1078 | QCalcGeom Master Equation Derivation |
+| PAPER_1049 | Source10 GPU DPM Spectral Atlas ALMA Overlay |
+| PAPER_1050 | MUGE F_U_Bi_i Unified 9-System Synthesis |
+| PAPER_1074 | GPU-Vectorized DPM S26 Spectral Atlas |
+
+*5 cross-reference(s) identified.*
+
 ---
 
 ## Appendix: Session 204 Codebase Upgrade Reference

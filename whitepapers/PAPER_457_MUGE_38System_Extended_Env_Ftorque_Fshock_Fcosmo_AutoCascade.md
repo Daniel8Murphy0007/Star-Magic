@@ -267,6 +267,38 @@ recalibrated from astrophysical sources independently.
 *Copyright – Daniel T. Murphy | Session 116/121 — `grok_share_e70525fa`.txt*
 
 
+
+---
+
+## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+
+> *Auto-generated cross-reference appendix linking this paper to
+> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> `update_corpus_crossrefs.py` (Session 225, April 2026).*
+
+| Paper | Title |
+|-------|-------|
+| PAPER_1000 | NS Merger F_U_Bi Strain Suppression & BCS Gap |
+| PAPER_1001 | SMBH Binary Merger F_U_Bi Phonon Damping |
+| PAPER_1011 | GW170817 NS Merger F_U_Bi_i 66.7% Strain Reduction |
+| PAPER_1012 | GW190425 Upgraded F_U_Bi_i with S26(3) |
+| PAPER_1014 | SMBH Merger Inspiral-Coalescence-Ringdown |
+| PAPER_1022 | GW Phonon Strain SCm Modulation of h(t) |
+| PAPER_1039 | SCm Galaxy Cluster Buoyancy Profile ICM Beta-Model |
+| PAPER_1040 | SCm Cluster Merger Shock Mach Number Phonon Damping |
+| PAPER_1041 | SCm Cool-Core Buoyancy Balance AGN Feedback |
+| PAPER_1044 | SCm Cluster Thermal SZ Effect Compton-y Phonon |
+| PAPER_1045 | SCm Cluster Radio Relic Polarization |
+| PAPER_1046 | SCm Cluster Lensing Mass Phonon Correction |
+| PAPER_1079 | Galaxy Cluster Cooling-Flow Buoyancy Suppression |
+| PAPER_1033 | Galactic Bar Resonance SCm Pattern Speed |
+| PAPER_1038 | White Dwarf Crystallization Buoyancy |
+| PAPER_1047 | Type Iax Supernova Buoyancy Reversal |
+| PAPER_1050 | MUGE F_U_Bi_i Unified 9-System Synthesis |
+| PAPER_1075 | 3D Volumetric MUGE Gravitational Field Generator |
+
+*18 cross-reference(s) identified.*
+
 ---
 
 ## Appendix: Session 204 Codebase Upgrade Reference

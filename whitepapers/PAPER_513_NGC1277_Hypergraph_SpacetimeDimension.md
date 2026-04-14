@@ -188,6 +188,30 @@ future Chandra/HST monitoring observations.
 - Murphy, D.T. *PAPER_507: WolframFieldUnityEngine Hypergraph*
 
 
+
+---
+
+## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+
+> *Auto-generated cross-reference appendix linking this paper to
+> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> `update_corpus_crossrefs.py` (Session 225, April 2026).*
+
+| Paper | Title |
+|-------|-------|
+| PAPER_1022 | GW Phonon Strain SCm Modulation of h(t) |
+| PAPER_1010 | TON618 AGN F_U_Bi_i Jet Modulation |
+| PAPER_1048 | M-Sigma Phonon-Corrected Relation |
+| PAPER_1039 | SCm Galaxy Cluster Buoyancy Profile ICM Beta-Model |
+| PAPER_1040 | SCm Cluster Merger Shock Mach Number Phonon Damping |
+| PAPER_1041 | SCm Cool-Core Buoyancy Balance AGN Feedback |
+| PAPER_1044 | SCm Cluster Thermal SZ Effect Compton-y Phonon |
+| PAPER_1045 | SCm Cluster Radio Relic Polarization |
+| PAPER_1046 | SCm Cluster Lensing Mass Phonon Correction |
+| PAPER_1079 | Galaxy Cluster Cooling-Flow Buoyancy Suppression |
+
+*10 cross-reference(s) identified.*
+
 ---
 
 ## Appendix: Session 204 Codebase Upgrade Reference

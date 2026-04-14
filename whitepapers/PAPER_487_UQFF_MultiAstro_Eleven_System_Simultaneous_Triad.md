@@ -212,6 +212,32 @@ while remaining consistent with all collider and nuclear precision measurements.
 - **CondensedPhysics2.py class:** `UQFFMultiAstroCalculator` (v4.3.9)
 
 
+
+---
+
+## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+
+> *Auto-generated cross-reference appendix linking this paper to
+> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> `update_corpus_crossrefs.py` (Session 225, April 2026).*
+
+| Paper | Title |
+|-------|-------|
+| PAPER_1022 | GW Phonon Strain SCm Modulation of h(t) |
+| PAPER_1037 | AGN Buoyancy Jet Calculator — SCm Jet Launching |
+| PAPER_1004 | QGP Vacuum Density with SCm S26 Phonon Coupling |
+| PAPER_1079 | Galaxy Cluster Cooling-Flow Buoyancy Suppression |
+| PAPER_1029 | Barocentric Earth Orbital Buoyancy |
+| PAPER_1033 | Galactic Bar Resonance SCm Pattern Speed |
+| PAPER_1043 | F_U_Bi_i Multi-System Buoyancy Curve Sweep |
+| PAPER_1065 | Buoyancy Lagrangian EOM Variational Derivation |
+| PAPER_1066 | UQFF Lagrangian First Principles Field Theory |
+| PAPER_1069 | VDS-DVP-BSH Hybrid Calculator Unified |
+| PAPER_1049 | Source10 GPU DPM Spectral Atlas ALMA Overlay |
+| PAPER_1074 | GPU-Vectorized DPM S26 Spectral Atlas |
+
+*12 cross-reference(s) identified.*
+
 ---
 
 ## Appendix: Session 204 Codebase Upgrade Reference

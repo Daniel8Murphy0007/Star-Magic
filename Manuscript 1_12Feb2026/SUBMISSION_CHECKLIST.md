@@ -1,7 +1,7 @@
 # arXiv Submission Checklist - UQFF Production Manuscript
 
 **Manuscript**: Unified Quantum Field Framework (UQFF): Production-Scale Implementation and Advanced Theoretical Extensions  
-**Author**: Daniel J. Murphy  
+**Author**: Daniel T. Murphy  
 **Target**: arXiv (gr-qc primary)  
 **Date**: February 12, 2026
 

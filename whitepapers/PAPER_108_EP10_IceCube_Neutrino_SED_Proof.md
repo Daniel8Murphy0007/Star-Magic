@@ -318,6 +318,25 @@ pp interactions*. Phys. Rev. D 74, 034018.
 8. `neutrino_sed_calculator.py`  Star-Magic codebase, 4/4 PASS.
 .Groups[1].Value   Empirical Proof EP-10: IceCube Sub-PeV Neutrino SED – UQFF κ_i Calibration
 
+
+---
+
+## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+
+> *Auto-generated cross-reference appendix linking this paper to
+> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> `update_corpus_crossrefs.py` (Session 225, April 2026).*
+
+| Paper | Title |
+|-------|-------|
+| PAPER_1022 | GW Phonon Strain SCm Modulation of h(t) |
+| PAPER_1007 | Deconfinement Phase Diagram SCm Phonon Boundary |
+| PAPER_1020 | Cosmic Ray Phonon Acceleration DSA Spectrum |
+| PAPER_1033 | Galactic Bar Resonance SCm Pattern Speed |
+| PAPER_1052 | TQFT Anyon Braiding Chern-Simons |
+
+*5 cross-reference(s) identified.*
+
 ## Appendix: Session 204 Codebase Upgrade Reference
 
 > *Cross-reference appendix for Session 204 (April 2026) codebase upgrades.

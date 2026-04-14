@@ -128,3 +128,28 @@ $Q_\text{res}$ determines the BSH bandwidth at the resonance shell.
 |--------|-------|--------|
 | $\omega_text{SCm}$ | $2\pi \times 1.25$ THz | Confirmed |
 | $[SSq]$ | 0.57 | Confirmed |
+
+---
+
+## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+
+> *Auto-generated cross-reference appendix linking this paper to
+> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> `update_corpus_crossrefs.py` (Session 225, April 2026).*
+
+| Paper | Title |
+|-------|-------|
+| PAPER_1022 | GW Phonon Strain SCm Modulation of h(t) |
+| PAPER_1004 | QGP Vacuum Density with SCm S26 Phonon Coupling |
+| PAPER_1020 | Cosmic Ray Phonon Acceleration DSA Spectrum |
+| PAPER_1021 | Pulsar Timing Phonon TOA Residual |
+| PAPER_1023 | Neutrino Oscillation Phonon PMNS Matrix SCm |
+| PAPER_1024 | Magnetar Giant Flare SCm Phonon Reservoir |
+| PAPER_1033 | Galactic Bar Resonance SCm Pattern Speed |
+| PAPER_1072 | SCm Activation Function Phonon Threshold |
+| PAPER_1073 | SCm Phonon-Driven Inflation Vacuum Buoyancy |
+| PAPER_1003 | Spectral Ladder Merger 26-State Hierarchy |
+| PAPER_1069 | VDS-DVP-BSH Hybrid Calculator Unified |
+| PAPER_1049 | Source10 GPU DPM Spectral Atlas ALMA Overlay |
+
+*12 cross-reference(s) identified.*

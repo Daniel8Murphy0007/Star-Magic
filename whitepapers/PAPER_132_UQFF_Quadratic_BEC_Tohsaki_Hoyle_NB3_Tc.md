@@ -338,6 +338,36 @@ significant, offering a falsifiable prediction beyond the Standard Model.
 *Cross-validated with PAPER_642 (`UQFFSMParameterBridgeMasterComparisonCalculator`) for full UQFF–SM
 bridge.*
 
+
+---
+
+## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+
+> *Auto-generated cross-reference appendix linking this paper to
+> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> `update_corpus_crossrefs.py` (Session 225, April 2026).*
+
+| Paper | Title |
+|-------|-------|
+| PAPER_1022 | GW Phonon Strain SCm Modulation of h(t) |
+| PAPER_1004 | QGP Vacuum Density with SCm S26 Phonon Coupling |
+| PAPER_1039 | SCm Galaxy Cluster Buoyancy Profile ICM Beta-Model |
+| PAPER_1040 | SCm Cluster Merger Shock Mach Number Phonon Damping |
+| PAPER_1041 | SCm Cool-Core Buoyancy Balance AGN Feedback |
+| PAPER_1044 | SCm Cluster Thermal SZ Effect Compton-y Phonon |
+| PAPER_1045 | SCm Cluster Radio Relic Polarization |
+| PAPER_1046 | SCm Cluster Lensing Mass Phonon Correction |
+| PAPER_1079 | Galaxy Cluster Cooling-Flow Buoyancy Suppression |
+| PAPER_1072 | SCm Activation Function Phonon Threshold |
+| PAPER_1073 | SCm Phonon-Driven Inflation Vacuum Buoyancy |
+| PAPER_1060 | VDS LENR Isotopic Transmutation Chain |
+| PAPER_1061 | Kozima SCm Integration Neutron-Drop |
+| PAPER_1081 | SCm LENR COP Linewidth Parametric |
+| PAPER_1069 | VDS-DVP-BSH Hybrid Calculator Unified |
+| PAPER_1049 | Source10 GPU DPM Spectral Atlas ALMA Overlay |
+
+*16 cross-reference(s) identified.*
+
 ---
 
 ## Appendix: Session 204 Codebase Upgrade Reference

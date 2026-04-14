@@ -232,6 +232,30 @@ future JWST / ALMA monitoring observations.
 **Q5 Prediction 3:** $B = 10^{-6}$ T (weaker than most molecular clouds in the per-system series) predicts that the Horsehead Nebula has a mass-to-magnetic flux ratio $M/\Phi_B = M/(B r^2) = 1.989\times10^{33}/(10^{-6}\times5.59\times10^{32}) \approx 3.56$ (supercritical) — meaning magnetic support is insufficient to prevent collapse and the pillar is gravitationally unstable on $\sim 1$ Myr timescales at its tip. Testable via JCMT SCUBA-2 polarimetric maps of dust emission polarization.
 
 
+
+---
+
+## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+
+> *Auto-generated cross-reference appendix linking this paper to
+> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> `update_corpus_crossrefs.py` (Session 225, April 2026).*
+
+| Paper | Title |
+|-------|-------|
+| PAPER_1022 | GW Phonon Strain SCm Modulation of h(t) |
+| PAPER_1002 | AGN Buoyancy-Corrected Eddington Luminosity |
+| PAPER_1009 | 3C273 AGN F_U_Bi_i Jet Modulation |
+| PAPER_1010 | TON618 AGN F_U_Bi_i Jet Modulation |
+| PAPER_1037 | AGN Buoyancy Jet Calculator — SCm Jet Launching |
+| PAPER_1048 | M-Sigma Phonon-Corrected Relation |
+| PAPER_1041 | SCm Cool-Core Buoyancy Balance AGN Feedback |
+| PAPER_1079 | Galaxy Cluster Cooling-Flow Buoyancy Suppression |
+| PAPER_1050 | MUGE F_U_Bi_i Unified 9-System Synthesis |
+| PAPER_1075 | 3D Volumetric MUGE Gravitational Field Generator |
+
+*10 cross-reference(s) identified.*
+
 ---
 
 ## Appendix: Session 204 Codebase Upgrade Reference

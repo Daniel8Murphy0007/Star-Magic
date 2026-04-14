@@ -86,3 +86,17 @@ The binomial form provides:
 1. VDS/DVP/BSH number systems: PAPER_646-655
 2. Ramanujan polylogarithmic identities
 3. 26D string compactification: `MAIN_1_CoAnQi.cpp` SOURCE115-116
+
+---
+
+## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+
+> *Auto-generated cross-reference appendix linking this paper to
+> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> `update_corpus_crossrefs.py` (Session 225, April 2026).*
+
+| Paper | Title |
+|-------|-------|
+| PAPER_1022 | GW Phonon Strain SCm Modulation of h(t) |
+
+*1 cross-reference(s) identified.*

@@ -257,6 +257,35 @@ future Chandra + VLA monitoring observations.
 **Q5 Prediction 3:** $T_\text{cool} = 4.76 \times 10^{-14}$ m/s2 (cooling flow acceleration) predicts that the net inflow momentum flux of the cool ICM gas at 200 kpc is $F_\text{cool} = \rho_text{cool} \times a_\text{cool} \times V_\text{core} \approx 10^{-20} \times 4.76\times10^{-14} \times (3\times10^{21})^3 \approx 1.3\times10^{28}$ N — equivalent to a $\sim 10^{35}$ W power input to the BCG gravitational field, consistent with the $\dot{M}_\text{cool} \approx 100-200 \, M_\odot$/yr cooling rates derived from Hitomi/XRISM X-ray spectroscopy for Perseus A.
 
 
+
+---
+
+## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+
+> *Auto-generated cross-reference appendix linking this paper to
+> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> `update_corpus_crossrefs.py` (Session 225, April 2026).*
+
+| Paper | Title |
+|-------|-------|
+| PAPER_1022 | GW Phonon Strain SCm Modulation of h(t) |
+| PAPER_1002 | AGN Buoyancy-Corrected Eddington Luminosity |
+| PAPER_1009 | 3C273 AGN F_U_Bi_i Jet Modulation |
+| PAPER_1010 | TON618 AGN F_U_Bi_i Jet Modulation |
+| PAPER_1037 | AGN Buoyancy Jet Calculator — SCm Jet Launching |
+| PAPER_1048 | M-Sigma Phonon-Corrected Relation |
+| PAPER_1039 | SCm Galaxy Cluster Buoyancy Profile ICM Beta-Model |
+| PAPER_1040 | SCm Cluster Merger Shock Mach Number Phonon Damping |
+| PAPER_1041 | SCm Cool-Core Buoyancy Balance AGN Feedback |
+| PAPER_1044 | SCm Cluster Thermal SZ Effect Compton-y Phonon |
+| PAPER_1045 | SCm Cluster Radio Relic Polarization |
+| PAPER_1046 | SCm Cluster Lensing Mass Phonon Correction |
+| PAPER_1079 | Galaxy Cluster Cooling-Flow Buoyancy Suppression |
+| PAPER_1050 | MUGE F_U_Bi_i Unified 9-System Synthesis |
+| PAPER_1075 | 3D Volumetric MUGE Gravitational Field Generator |
+
+*15 cross-reference(s) identified.*
+
 ---
 
 ## Appendix: Session 204 Codebase Upgrade Reference

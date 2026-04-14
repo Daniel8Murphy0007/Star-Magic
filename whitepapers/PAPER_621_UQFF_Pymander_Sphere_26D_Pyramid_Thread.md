@@ -222,6 +222,22 @@ triangular-number polynomial encoding provide the strongest convergence bound of
 **Source**: `grok_share_79fdf5367d1.txt` (161 lines, March 29, 2026)
 
 
+
+---
+
+## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+
+> *Auto-generated cross-reference appendix linking this paper to
+> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> `update_corpus_crossrefs.py` (Session 225, April 2026).*
+
+| Paper | Title |
+|-------|-------|
+| PAPER_1022 | GW Phonon Strain SCm Modulation of h(t) |
+| PAPER_1036 | Primordial Nucleosynthesis BBN Phonon |
+
+*2 cross-reference(s) identified.*
+
 ---
 
 ## Appendix: Session 204 Codebase Upgrade Reference

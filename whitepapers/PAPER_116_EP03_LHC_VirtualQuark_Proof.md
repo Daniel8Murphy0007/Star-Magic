@@ -332,6 +332,22 @@ CMS-EXO-24-006.
 .Groups[1].Value   Empirical Proof EP-03: LHC ATLAS Run 3 Virtual Quark Exchange – UQFF Energy
 Ladder n=4
 
+
+---
+
+## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+
+> *Auto-generated cross-reference appendix linking this paper to
+> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> `update_corpus_crossrefs.py` (Session 225, April 2026).*
+
+| Paper | Title |
+|-------|-------|
+| PAPER_1007 | Deconfinement Phase Diagram SCm Phonon Boundary |
+| PAPER_1072 | SCm Activation Function Phonon Threshold |
+
+*2 cross-reference(s) identified.*
+
 ## Appendix: Session 204 Codebase Upgrade Reference
 
 > *Cross-reference appendix for Session 204 (April 2026) codebase upgrades.

@@ -227,6 +227,21 @@ The geodesic correction $\Delta g_r^{(\rm Aether)} \propto r^{-4}$ falls off fas
 **Connection to existing UQFF framework:** The term $\Delta g_r^{(\rm Aether)}$ is the geometric origin of the correction term in the MUGE Compressed framework (PAPER_395, SOURCE4), where the effective gravity $g_{\rm eff} = g_N \cdot (1 + \mathrm{corrections})$ gains contributions from the SCm aether background.
 
 
+
+---
+
+## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+
+> *Auto-generated cross-reference appendix linking this paper to
+> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> `update_corpus_crossrefs.py` (Session 225, April 2026).*
+
+| Paper | Title |
+|-------|-------|
+| PAPER_1022 | GW Phonon Strain SCm Modulation of h(t) |
+
+*1 cross-reference(s) identified.*
+
 ---
 
 ## Appendix: Session 204 Codebase Upgrade Reference

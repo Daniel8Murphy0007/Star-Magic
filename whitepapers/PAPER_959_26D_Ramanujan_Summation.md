@@ -116,3 +116,28 @@ Partial sums saturate as $\tanh(N/N_0)$, defining BSH convergence envelope.
 |--------|-------|--------|
 | Convergence at $N{=}50$ | $<10^{-12}$ residual | Confirmed |
 | $[SSq]$ | 0.57 | Confirmed |
+
+---
+
+## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+
+> *Auto-generated cross-reference appendix linking this paper to
+> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> `update_corpus_crossrefs.py` (Session 225, April 2026).*
+
+| Paper | Title |
+|-------|-------|
+| PAPER_1022 | GW Phonon Strain SCm Modulation of h(t) |
+| PAPER_1009 | 3C273 AGN F_U_Bi_i Jet Modulation |
+| PAPER_1010 | TON618 AGN F_U_Bi_i Jet Modulation |
+| PAPER_1037 | AGN Buoyancy Jet Calculator — SCm Jet Launching |
+| PAPER_1020 | Cosmic Ray Phonon Acceleration DSA Spectrum |
+| PAPER_1021 | Pulsar Timing Phonon TOA Residual |
+| PAPER_1023 | Neutrino Oscillation Phonon PMNS Matrix SCm |
+| PAPER_1024 | Magnetar Giant Flare SCm Phonon Reservoir |
+| PAPER_1072 | SCm Activation Function Phonon Threshold |
+| PAPER_1073 | SCm Phonon-Driven Inflation Vacuum Buoyancy |
+| PAPER_1003 | Spectral Ladder Merger 26-State Hierarchy |
+| PAPER_1080 | Ramanujan Binomial Expansion Proof R_n^{(26,3)} |
+
+*12 cross-reference(s) identified.*

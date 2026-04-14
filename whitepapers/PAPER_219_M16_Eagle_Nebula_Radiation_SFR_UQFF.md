@@ -307,6 +307,21 @@ bridge.*
 *Paper 219 of 1,000 — Session 55 — Phase 2 §2.9 Fourth-Pass Extraction*
 
 
+
+---
+
+## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+
+> *Auto-generated cross-reference appendix linking this paper to
+> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> `update_corpus_crossrefs.py` (Session 225, April 2026).*
+
+| Paper | Title |
+|-------|-------|
+| PAPER_1066 | UQFF Lagrangian First Principles Field Theory |
+
+*1 cross-reference(s) identified.*
+
 ---
 
 ## Appendix: Session 204 Codebase Upgrade Reference

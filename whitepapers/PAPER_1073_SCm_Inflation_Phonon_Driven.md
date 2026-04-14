@@ -172,3 +172,33 @@ This determines the inflation exit condition: when the 26-layer buoyancy sum exc
 
 ### A.4 Cosmogenesis Linkage Chain
 PAPER_877 axioms → SCm vacuum → phonon $\omega_{\text{SCm}} = 1.25$ THz → inflation buoyancy → $H_{\text{SCm}}$ → $a(t) = a_0 e^{H_{\text{SCm}} t}$ → $E_{\text{net}}$ sign-flip → 60 e-foldings → hot Big Bang → CMB → $n_s$, $r$ → observational prediction
+
+---
+
+## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+
+> *Auto-generated cross-reference appendix linking this paper to
+> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> `update_corpus_crossrefs.py` (Session 225, April 2026).*
+
+| Paper | Title |
+|-------|-------|
+| PAPER_1022 | GW Phonon Strain SCm Modulation of h(t) |
+| PAPER_1037 | AGN Buoyancy Jet Calculator — SCm Jet Launching |
+| PAPER_1004 | QGP Vacuum Density with SCm S26 Phonon Coupling |
+| PAPER_1079 | Galaxy Cluster Cooling-Flow Buoyancy Suppression |
+| PAPER_1020 | Cosmic Ray Phonon Acceleration DSA Spectrum |
+| PAPER_1021 | Pulsar Timing Phonon TOA Residual |
+| PAPER_1023 | Neutrino Oscillation Phonon PMNS Matrix SCm |
+| PAPER_1024 | Magnetar Giant Flare SCm Phonon Reservoir |
+| PAPER_1043 | F_U_Bi_i Multi-System Buoyancy Curve Sweep |
+| PAPER_1072 | SCm Activation Function Phonon Threshold |
+| PAPER_1065 | Buoyancy Lagrangian EOM Variational Derivation |
+| PAPER_1066 | UQFF Lagrangian First Principles Field Theory |
+| PAPER_1069 | VDS-DVP-BSH Hybrid Calculator Unified |
+| PAPER_1070 | Yang-Mills Mass Gap VDS Bridge |
+| PAPER_1080 | Ramanujan Binomial Expansion Proof R_n^{(26,3)} |
+| PAPER_1008 | Production Scaling v14 — 600k calc/s 24 Kernels |
+| PAPER_1018 | Production Scaling v15 — 650k calc/s 30 Kernels |
+
+*18 cross-reference(s) identified.*

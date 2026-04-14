@@ -125,3 +125,26 @@ BSH harmonic structure transitions at $T_c$: shell modes dissolve into plasma mo
 | $T_{c0}$ | $1.5 \times 10^{12}$ K | Calibrated |
 | $\mu_text{crit}$ | 1200 MeV | Set |
 | Phase diagram | $(T, \mu_B)$ plane | Mapped |
+
+---
+
+## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+
+> *Auto-generated cross-reference appendix linking this paper to
+> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> `update_corpus_crossrefs.py` (Session 225, April 2026).*
+
+| Paper | Title |
+|-------|-------|
+| PAPER_1022 | GW Phonon Strain SCm Modulation of h(t) |
+| PAPER_1004 | QGP Vacuum Density with SCm S26 Phonon Coupling |
+| PAPER_1005 | Yang-Mills Mass Gap via SCm BCS Phonon Coupling |
+| PAPER_1006 | ALICE Multiplicity SCm Phonon Scaling |
+| PAPER_1007 | Deconfinement Phase Diagram SCm Phonon Boundary |
+| PAPER_1013 | QGP ALICE Centrality F_U_Bi_i dN/deta Scaling |
+| PAPER_1059 | Color Glass Condensate BK Saturation SCm |
+| PAPER_1069 | VDS-DVP-BSH Hybrid Calculator Unified |
+| PAPER_1070 | Yang-Mills Mass Gap VDS Bridge |
+| PAPER_1049 | Source10 GPU DPM Spectral Atlas ALMA Overlay |
+
+*10 cross-reference(s) identified.*

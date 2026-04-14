@@ -109,3 +109,23 @@ $\text{Li}_{26}(1) = \zeta(26)$ sets absolute saturation bound.
 |--------|-------|--------|
 | Cross-validation | $<10^{-12}$ | Confirmed |
 | $[SSq]$ | 0.57 | Confirmed |
+
+---
+
+## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+
+> *Auto-generated cross-reference appendix linking this paper to
+> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> `update_corpus_crossrefs.py` (Session 225, April 2026).*
+
+| Paper | Title |
+|-------|-------|
+| PAPER_1022 | GW Phonon Strain SCm Modulation of h(t) |
+| PAPER_1004 | QGP Vacuum Density with SCm S26 Phonon Coupling |
+| PAPER_1020 | Cosmic Ray Phonon Acceleration DSA Spectrum |
+| PAPER_1068 | Wolfram Physics Bridge WSTP Symbolic Export |
+| PAPER_1069 | VDS-DVP-BSH Hybrid Calculator Unified |
+| PAPER_1080 | Ramanujan Binomial Expansion Proof R_n^{(26,3)} |
+| PAPER_1049 | Source10 GPU DPM Spectral Atlas ALMA Overlay |
+
+*7 cross-reference(s) identified.*

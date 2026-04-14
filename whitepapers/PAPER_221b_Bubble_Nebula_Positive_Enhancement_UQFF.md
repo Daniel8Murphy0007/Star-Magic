@@ -262,6 +262,21 @@ bridge.*
 *Paper 221 of 1,000 — Session 56 — Phase 2 §2.11 Fifth-Pass Extraction*
 
 
+
+---
+
+## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+
+> *Auto-generated cross-reference appendix linking this paper to
+> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> `update_corpus_crossrefs.py` (Session 225, April 2026).*
+
+| Paper | Title |
+|-------|-------|
+| PAPER_1073 | SCm Phonon-Driven Inflation Vacuum Buoyancy |
+
+*1 cross-reference(s) identified.*
+
 ---
 
 ## Appendix: Session 204 Codebase Upgrade Reference

@@ -78,3 +78,18 @@ The SI unit trace confirms correct dimensionality:
 2. 26D string compactification: `MAIN_1_CoAnQi.cpp` SOURCE115-116
 3. Ramanujan corrections: `vds_dvp_bsh_symbolic_proofs.py`
 4. SCm phonon framework: `scm_phonon_linewidth.py`
+
+---
+
+## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+
+> *Auto-generated cross-reference appendix linking this paper to
+> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> `update_corpus_crossrefs.py` (Session 225, April 2026).*
+
+| Paper | Title |
+|-------|-------|
+| PAPER_1022 | GW Phonon Strain SCm Modulation of h(t) |
+| PAPER_1080 | Ramanujan Binomial Expansion Proof R_n^{(26,3)} |
+
+*2 cross-reference(s) identified.*

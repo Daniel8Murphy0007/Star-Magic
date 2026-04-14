@@ -250,6 +250,25 @@ future HST monitoring observations.
 - Murphy, D. T. (2026). *PAPER_541 — DPM-Proplyd Bidirectional Encompassment*, Star Magic Repository.  
 
 
+
+---
+
+## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+
+> *Auto-generated cross-reference appendix linking this paper to
+> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> `update_corpus_crossrefs.py` (Session 225, April 2026).*
+
+| Paper | Title |
+|-------|-------|
+| PAPER_1022 | GW Phonon Strain SCm Modulation of h(t) |
+| PAPER_1005 | Yang-Mills Mass Gap via SCm BCS Phonon Coupling |
+| PAPER_1049 | Source10 GPU DPM Spectral Atlas ALMA Overlay |
+| PAPER_1071 | JWST Synthesis Multi-Instrument UQFF |
+| PAPER_1074 | GPU-Vectorized DPM S26 Spectral Atlas |
+
+*5 cross-reference(s) identified.*
+
 ---
 
 ## Appendix: Session 204 Codebase Upgrade Reference

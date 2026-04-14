@@ -111,3 +111,28 @@ BSH timescale: system-dependent
 | VDS ratio | 0.167 | Confirmed |
 | $\kappa$ decay | $5 \times 10^{{-4}}$ | Confirmed |
 | $[SSq]$ | 0.57 | Confirmed |
+
+---
+
+## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+
+> *Auto-generated cross-reference appendix linking this paper to
+> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> `update_corpus_crossrefs.py` (Session 225, April 2026).*
+
+| Paper | Title |
+|-------|-------|
+| PAPER_1022 | GW Phonon Strain SCm Modulation of h(t) |
+| PAPER_1002 | AGN Buoyancy-Corrected Eddington Luminosity |
+| PAPER_1004 | QGP Vacuum Density with SCm S26 Phonon Coupling |
+| PAPER_1005 | Yang-Mills Mass Gap via SCm BCS Phonon Coupling |
+| PAPER_1006 | ALICE Multiplicity SCm Phonon Scaling |
+| PAPER_1007 | Deconfinement Phase Diagram SCm Phonon Boundary |
+| PAPER_1059 | Color Glass Condensate BK Saturation SCm |
+| PAPER_1024 | Magnetar Giant Flare SCm Phonon Reservoir |
+| PAPER_1033 | Galactic Bar Resonance SCm Pattern Speed |
+| PAPER_1043 | F_U_Bi_i Multi-System Buoyancy Curve Sweep |
+| PAPER_1072 | SCm Activation Function Phonon Threshold |
+| PAPER_1068 | Wolfram Physics Bridge WSTP Symbolic Export |
+
+*12 cross-reference(s) identified.*

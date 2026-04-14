@@ -214,6 +214,27 @@ LISA or BepiColombo precision gravitational measurements.
 3. **26D topology:** The BSFG manifold $\mathcal{M}^{26} \cong \mathbb{R}^4 \times T^{22}$ (at macroscopic scales, the extra dimensions form a 22-torus with Planck-scale radii). Its Euler characteristic $\chi = 0$ (torus topology), consistent with the UQFF non-singular solutions.
 
 
+
+---
+
+## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+
+> *Auto-generated cross-reference appendix linking this paper to
+> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> `update_corpus_crossrefs.py` (Session 225, April 2026).*
+
+| Paper | Title |
+|-------|-------|
+| PAPER_1022 | GW Phonon Strain SCm Modulation of h(t) |
+| PAPER_1037 | AGN Buoyancy Jet Calculator — SCm Jet Launching |
+| PAPER_1079 | Galaxy Cluster Cooling-Flow Buoyancy Suppression |
+| PAPER_1043 | F_U_Bi_i Multi-System Buoyancy Curve Sweep |
+| PAPER_1065 | Buoyancy Lagrangian EOM Variational Derivation |
+| PAPER_1069 | VDS-DVP-BSH Hybrid Calculator Unified |
+| PAPER_1070 | Yang-Mills Mass Gap VDS Bridge |
+
+*7 cross-reference(s) identified.*
+
 ---
 
 ## Appendix: Session 204 Codebase Upgrade Reference

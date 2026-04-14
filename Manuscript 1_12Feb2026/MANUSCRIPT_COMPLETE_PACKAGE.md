@@ -2,7 +2,7 @@
 
 **Status**: ✅ **READY FOR ARXIV SUBMISSION**  
 **Date**: February 12, 2026  
-**Author**: Daniel J. Murphy
+**Author**: Daniel T. Murphy
 
 ---
 

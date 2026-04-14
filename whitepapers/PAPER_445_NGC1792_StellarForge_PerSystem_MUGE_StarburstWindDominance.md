@@ -240,6 +240,36 @@ future GALEX + Chandra monitoring observations.
 **Q5 Prediction 3:** $v_w = 2000$ km/s starburst wind from UQFF predicts an X-ray halo around NGC 1792 with temperature $kT \sim \frac{1}{2}\mu m_H v_w^2/k_B = \frac{1}{2}\times0.6\times1.67\times10^{-27}\times 4times10^{12}/1.38\times10^{-23} \approx 1.4\times10^8$ K $\approx 12$ keV — detectable as a hot X-ray corona with Chandra ACIS-S in the 6-8 keV band, comparable to the NGC 253 halo observed at $\sim 0.8$ keV (note: NGC 253 wind is slower at $\sim 600$ km/s, consistent with UQFF $kT \propto v_w^2$ scaling).
 
 
+
+---
+
+## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+
+> *Auto-generated cross-reference appendix linking this paper to
+> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> `update_corpus_crossrefs.py` (Session 225, April 2026).*
+
+| Paper | Title |
+|-------|-------|
+| PAPER_1022 | GW Phonon Strain SCm Modulation of h(t) |
+| PAPER_1002 | AGN Buoyancy-Corrected Eddington Luminosity |
+| PAPER_1009 | 3C273 AGN F_U_Bi_i Jet Modulation |
+| PAPER_1010 | TON618 AGN F_U_Bi_i Jet Modulation |
+| PAPER_1037 | AGN Buoyancy Jet Calculator — SCm Jet Launching |
+| PAPER_1048 | M-Sigma Phonon-Corrected Relation |
+| PAPER_1039 | SCm Galaxy Cluster Buoyancy Profile ICM Beta-Model |
+| PAPER_1040 | SCm Cluster Merger Shock Mach Number Phonon Damping |
+| PAPER_1041 | SCm Cool-Core Buoyancy Balance AGN Feedback |
+| PAPER_1044 | SCm Cluster Thermal SZ Effect Compton-y Phonon |
+| PAPER_1045 | SCm Cluster Radio Relic Polarization |
+| PAPER_1046 | SCm Cluster Lensing Mass Phonon Correction |
+| PAPER_1079 | Galaxy Cluster Cooling-Flow Buoyancy Suppression |
+| PAPER_1076 | SCm Dark Energy with Phonon Linewidth Gamma-Modulation |
+| PAPER_1050 | MUGE F_U_Bi_i Unified 9-System Synthesis |
+| PAPER_1075 | 3D Volumetric MUGE Gravitational Field Generator |
+
+*16 cross-reference(s) identified.*
+
 ---
 
 ## Appendix: Session 204 Codebase Upgrade Reference

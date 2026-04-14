@@ -217,6 +217,24 @@ significant, offering a falsifiable prediction beyond the Standard Model.
 bridge.*
 
 
+
+---
+
+## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+
+> *Auto-generated cross-reference appendix linking this paper to
+> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> `update_corpus_crossrefs.py` (Session 225, April 2026).*
+
+| Paper | Title |
+|-------|-------|
+| PAPER_1022 | GW Phonon Strain SCm Modulation of h(t) |
+| PAPER_1015 | SCm Dark Matter Halos NFW Rotation Curve |
+| PAPER_1038 | White Dwarf Crystallization Buoyancy |
+| PAPER_1071 | JWST Synthesis Multi-Instrument UQFF |
+
+*4 cross-reference(s) identified.*
+
 ---
 
 ## Appendix: Session 204 Codebase Upgrade Reference

@@ -120,3 +120,18 @@ noise and optical depth effects.
 - `production_scaling_v17.py`: Kernels `kernel_alma_fubi_profile`, `kernel_alma_chi2_co21`
 - `APIFetch.py`: ALMAFetcher stub (L1119) — future real data integration
 - PAPER_1074: GPU DPM Spectral Atlas
+
+---
+
+## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+
+> *Auto-generated cross-reference appendix linking this paper to
+> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> `update_corpus_crossrefs.py` (Session 225, April 2026).*
+
+| Paper | Title |
+|-------|-------|
+| PAPER_1022 | GW Phonon Strain SCm Modulation of h(t) |
+| PAPER_1043 | F_U_Bi_i Multi-System Buoyancy Curve Sweep |
+
+*2 cross-reference(s) identified.*

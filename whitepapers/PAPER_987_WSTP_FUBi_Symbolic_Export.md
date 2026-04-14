@@ -114,3 +114,18 @@ The Wolfram export allows symbolic computation of $\delta S / \deltaphi$ directl
 - **VDS:** Wolfram's `Sum` and `Exp` handle the vacuum density series analytically.
 - **DVP:** Symbolic differentiation reveals the DPM dipole contribution at each order.
 - **BSH:** The buoyancy harmonic sum `Sum[Exp[-SSq*i/26]*betai, {i,1,26}]` evaluates to closed form via geometric series.
+
+---
+
+## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+
+> *Auto-generated cross-reference appendix linking this paper to
+> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> `update_corpus_crossrefs.py` (Session 225, April 2026).*
+
+| Paper | Title |
+|-------|-------|
+| PAPER_1068 | Wolfram Physics Bridge WSTP Symbolic Export |
+| PAPER_1078 | QCalcGeom Master Equation Derivation |
+
+*2 cross-reference(s) identified.*

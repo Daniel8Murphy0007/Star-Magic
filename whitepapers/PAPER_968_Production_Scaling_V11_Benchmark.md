@@ -132,3 +132,24 @@ Scaling: v4 (100k) → v10 (450k) → v11 (500k) — approaching $\tanh$ hardwar
 | v11 target | 500k calc/s | Confirmed |
 | Kernel count | 16 (+2 from v10) | Confirmed |
 | $[SSq]$ | 0.57 | Confirmed |
+
+---
+
+## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+
+> *Auto-generated cross-reference appendix linking this paper to
+> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> `update_corpus_crossrefs.py` (Session 225, April 2026).*
+
+| Paper | Title |
+|-------|-------|
+| PAPER_1037 | AGN Buoyancy Jet Calculator — SCm Jet Launching |
+| PAPER_1079 | Galaxy Cluster Cooling-Flow Buoyancy Suppression |
+| PAPER_1020 | Cosmic Ray Phonon Acceleration DSA Spectrum |
+| PAPER_1043 | F_U_Bi_i Multi-System Buoyancy Curve Sweep |
+| PAPER_1065 | Buoyancy Lagrangian EOM Variational Derivation |
+| PAPER_1080 | Ramanujan Binomial Expansion Proof R_n^{(26,3)} |
+| PAPER_1008 | Production Scaling v14 — 600k calc/s 24 Kernels |
+| PAPER_1018 | Production Scaling v15 — 650k calc/s 30 Kernels |
+
+*8 cross-reference(s) identified.*

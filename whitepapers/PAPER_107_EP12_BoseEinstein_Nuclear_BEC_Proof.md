@@ -374,6 +374,26 @@ PAPER_064.
 10. `bose_occupancy_validation.py`  Star-Magic codebase, ?/dof=0.051, ALL PASS.
 .Groups[1].Value   Empirical Proof EP-12: BoseEinstein Nuclear BEC via UQFF
 
+
+---
+
+## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+
+> *Auto-generated cross-reference appendix linking this paper to
+> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> `update_corpus_crossrefs.py` (Session 225, April 2026).*
+
+| Paper | Title |
+|-------|-------|
+| PAPER_1006 | ALICE Multiplicity SCm Phonon Scaling |
+| PAPER_1020 | Cosmic Ray Phonon Acceleration DSA Spectrum |
+| PAPER_1072 | SCm Activation Function Phonon Threshold |
+| PAPER_1060 | VDS LENR Isotopic Transmutation Chain |
+| PAPER_1061 | Kozima SCm Integration Neutron-Drop |
+| PAPER_1081 | SCm LENR COP Linewidth Parametric |
+
+*6 cross-reference(s) identified.*
+
 ## Appendix: Session 204 Codebase Upgrade Reference
 
 > *Cross-reference appendix for Session 204 (April 2026) codebase upgrades.

@@ -116,3 +116,21 @@ The kernel is the numerical evaluation of $\delta S[\mathcal{L}_{\text{SCm}}] / 
 **New physics claim:** UQFF phonon-mediated vacuum coupling provides testable predictions beyond SM for this system.
 
 *Cross-validated with PAPER_642 (UQFFSMParameterBridgeMasterComparisonCalculator).*
+
+---
+
+## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+
+> *Auto-generated cross-reference appendix linking this paper to
+> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> `update_corpus_crossrefs.py` (Session 225, April 2026).*
+
+| Paper | Title |
+|-------|-------|
+| PAPER_1033 | Galactic Bar Resonance SCm Pattern Speed |
+| PAPER_1061 | Kozima SCm Integration Neutron-Drop |
+| PAPER_1003 | Spectral Ladder Merger 26-State Hierarchy |
+| PAPER_1008 | Production Scaling v14 — 600k calc/s 24 Kernels |
+| PAPER_1018 | Production Scaling v15 — 650k calc/s 30 Kernels |
+
+*5 cross-reference(s) identified.*

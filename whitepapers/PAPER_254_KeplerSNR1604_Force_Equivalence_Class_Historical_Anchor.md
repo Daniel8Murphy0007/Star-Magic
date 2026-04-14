@@ -284,6 +284,30 @@ significant, offering a falsifiable prediction beyond the Standard Model.
 bridge.*
 
 
+
+---
+
+## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+
+> *Auto-generated cross-reference appendix linking this paper to
+> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> `update_corpus_crossrefs.py` (Session 225, April 2026).*
+
+| Paper | Title |
+|-------|-------|
+| PAPER_1022 | GW Phonon Strain SCm Modulation of h(t) |
+| PAPER_1037 | AGN Buoyancy Jet Calculator — SCm Jet Launching |
+| PAPER_1040 | SCm Cluster Merger Shock Mach Number Phonon Damping |
+| PAPER_1079 | Galaxy Cluster Cooling-Flow Buoyancy Suppression |
+| PAPER_1043 | F_U_Bi_i Multi-System Buoyancy Curve Sweep |
+| PAPER_1047 | Type Iax Supernova Buoyancy Reversal |
+| PAPER_1060 | VDS LENR Isotopic Transmutation Chain |
+| PAPER_1061 | Kozima SCm Integration Neutron-Drop |
+| PAPER_1081 | SCm LENR COP Linewidth Parametric |
+| PAPER_1065 | Buoyancy Lagrangian EOM Variational Derivation |
+
+*10 cross-reference(s) identified.*
+
 ---
 
 ## Appendix: Session 204 Codebase Upgrade Reference

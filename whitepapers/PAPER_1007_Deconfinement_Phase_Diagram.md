@@ -101,3 +101,32 @@ BSH timescale: $10^4$ yr
 | VDS ratio | 0.1 | Confirmed |
 | $\kappa$ decay | $5 \times 10^{-4}$ | Confirmed |
 | $[SSq]$ | 0.57 | Confirmed |
+
+---
+
+## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+
+> *Auto-generated cross-reference appendix linking this paper to
+> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> `update_corpus_crossrefs.py` (Session 225, April 2026).*
+
+| Paper | Title |
+|-------|-------|
+| PAPER_1022 | GW Phonon Strain SCm Modulation of h(t) |
+| PAPER_1004 | QGP Vacuum Density with SCm S26 Phonon Coupling |
+| PAPER_1005 | Yang-Mills Mass Gap via SCm BCS Phonon Coupling |
+| PAPER_1006 | ALICE Multiplicity SCm Phonon Scaling |
+| PAPER_1013 | QGP ALICE Centrality F_U_Bi_i dN/deta Scaling |
+| PAPER_1059 | Color Glass Condensate BK Saturation SCm |
+| PAPER_1020 | Cosmic Ray Phonon Acceleration DSA Spectrum |
+| PAPER_1021 | Pulsar Timing Phonon TOA Residual |
+| PAPER_1023 | Neutrino Oscillation Phonon PMNS Matrix SCm |
+| PAPER_1024 | Magnetar Giant Flare SCm Phonon Reservoir |
+| PAPER_1033 | Galactic Bar Resonance SCm Pattern Speed |
+| PAPER_1043 | F_U_Bi_i Multi-System Buoyancy Curve Sweep |
+| PAPER_1072 | SCm Activation Function Phonon Threshold |
+| PAPER_1073 | SCm Phonon-Driven Inflation Vacuum Buoyancy |
+| PAPER_1068 | Wolfram Physics Bridge WSTP Symbolic Export |
+| PAPER_1070 | Yang-Mills Mass Gap VDS Bridge |
+
+*16 cross-reference(s) identified.*

@@ -324,6 +324,31 @@ GR or LQG.
 **Source:** `grok_share_efc8a971378f.txt`
 
 
+
+---
+
+## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+
+> *Auto-generated cross-reference appendix linking this paper to
+> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> `update_corpus_crossrefs.py` (Session 225, April 2026).*
+
+| Paper | Title |
+|-------|-------|
+| PAPER_1000 | NS Merger F_U_Bi Strain Suppression & BCS Gap |
+| PAPER_1001 | SMBH Binary Merger F_U_Bi Phonon Damping |
+| PAPER_1011 | GW170817 NS Merger F_U_Bi_i 66.7% Strain Reduction |
+| PAPER_1012 | GW190425 Upgraded F_U_Bi_i with S26(3) |
+| PAPER_1014 | SMBH Merger Inspiral-Coalescence-Ringdown |
+| PAPER_1022 | GW Phonon Strain SCm Modulation of h(t) |
+| PAPER_1045 | SCm Cluster Radio Relic Polarization |
+| PAPER_1072 | SCm Activation Function Phonon Threshold |
+| PAPER_1073 | SCm Phonon-Driven Inflation Vacuum Buoyancy |
+| PAPER_1051 | Universal Duality SCm-UA Synthesis |
+| PAPER_1055 | cMERA Entanglement RG Holographic SCm |
+
+*11 cross-reference(s) identified.*
+
 ---
 
 ## Appendix: Session 204 Codebase Upgrade Reference

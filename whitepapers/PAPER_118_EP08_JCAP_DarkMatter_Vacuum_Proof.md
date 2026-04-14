@@ -353,6 +353,26 @@ parameters*. A&A 641, A6.
 .Groups[1].Value  — Empirical Proof EP-08: JCAP Dark Matter Vacuum Density — [SSq] = 0.57 Ratio
 Chain Confirmed
 
+
+---
+
+## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+
+> *Auto-generated cross-reference appendix linking this paper to
+> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> `update_corpus_crossrefs.py` (Session 225, April 2026).*
+
+| Paper | Title |
+|-------|-------|
+| PAPER_1004 | QGP Vacuum Density with SCm S26 Phonon Coupling |
+| PAPER_1015 | SCm Dark Matter Halos NFW Rotation Curve |
+| PAPER_1019 | Dark Matter Phonon Buoyancy NFW Coupling |
+| PAPER_1076 | SCm Dark Energy with Phonon Linewidth Gamma-Modulation |
+| PAPER_1069 | VDS-DVP-BSH Hybrid Calculator Unified |
+| PAPER_1049 | Source10 GPU DPM Spectral Atlas ALMA Overlay |
+
+*6 cross-reference(s) identified.*
+
 ## Appendix: Session 204 Codebase Upgrade Reference
 
 > *Cross-reference appendix for Session 204 (April 2026) codebase upgrades.

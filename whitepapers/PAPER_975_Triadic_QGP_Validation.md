@@ -125,3 +125,38 @@ Buoyancy mode residual < 5% confirms BSH consistency in QGP regime.
 | QGP stability | $< 5\%$ | Confirmed |
 | 99-system pass | Near 100% | Validated |
 | Triadic self-consistency | Verified | All three modes |
+
+---
+
+## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+
+> *Auto-generated cross-reference appendix linking this paper to
+> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> `update_corpus_crossrefs.py` (Session 225, April 2026).*
+
+| Paper | Title |
+|-------|-------|
+| PAPER_1022 | GW Phonon Strain SCm Modulation of h(t) |
+| PAPER_1037 | AGN Buoyancy Jet Calculator — SCm Jet Launching |
+| PAPER_1004 | QGP Vacuum Density with SCm S26 Phonon Coupling |
+| PAPER_1005 | Yang-Mills Mass Gap via SCm BCS Phonon Coupling |
+| PAPER_1006 | ALICE Multiplicity SCm Phonon Scaling |
+| PAPER_1007 | Deconfinement Phase Diagram SCm Phonon Boundary |
+| PAPER_1013 | QGP ALICE Centrality F_U_Bi_i dN/deta Scaling |
+| PAPER_1059 | Color Glass Condensate BK Saturation SCm |
+| PAPER_1079 | Galaxy Cluster Cooling-Flow Buoyancy Suppression |
+| PAPER_1020 | Cosmic Ray Phonon Acceleration DSA Spectrum |
+| PAPER_1021 | Pulsar Timing Phonon TOA Residual |
+| PAPER_1023 | Neutrino Oscillation Phonon PMNS Matrix SCm |
+| PAPER_1024 | Magnetar Giant Flare SCm Phonon Reservoir |
+| PAPER_1043 | F_U_Bi_i Multi-System Buoyancy Curve Sweep |
+| PAPER_1072 | SCm Activation Function Phonon Threshold |
+| PAPER_1073 | SCm Phonon-Driven Inflation Vacuum Buoyancy |
+| PAPER_1065 | Buoyancy Lagrangian EOM Variational Derivation |
+| PAPER_1069 | VDS-DVP-BSH Hybrid Calculator Unified |
+| PAPER_1070 | Yang-Mills Mass Gap VDS Bridge |
+| PAPER_1078 | QCalcGeom Master Equation Derivation |
+| PAPER_1049 | Source10 GPU DPM Spectral Atlas ALMA Overlay |
+| PAPER_1050 | MUGE F_U_Bi_i Unified 9-System Synthesis |
+
+*22 cross-reference(s) identified.*

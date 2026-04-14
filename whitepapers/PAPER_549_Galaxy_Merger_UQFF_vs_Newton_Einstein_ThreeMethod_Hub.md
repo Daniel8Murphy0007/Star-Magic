@@ -250,6 +250,34 @@ future Chandra+Spitzer monitoring observations.
 *Star Magic / UQFF Framework · Session 146 · grok_share_366dc393a37.txt*
 
 
+
+---
+
+## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+
+> *Auto-generated cross-reference appendix linking this paper to
+> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> `update_corpus_crossrefs.py` (Session 225, April 2026).*
+
+| Paper | Title |
+|-------|-------|
+| PAPER_1000 | NS Merger F_U_Bi Strain Suppression & BCS Gap |
+| PAPER_1001 | SMBH Binary Merger F_U_Bi Phonon Damping |
+| PAPER_1011 | GW170817 NS Merger F_U_Bi_i 66.7% Strain Reduction |
+| PAPER_1012 | GW190425 Upgraded F_U_Bi_i with S26(3) |
+| PAPER_1014 | SMBH Merger Inspiral-Coalescence-Ringdown |
+| PAPER_1022 | GW Phonon Strain SCm Modulation of h(t) |
+| PAPER_1015 | SCm Dark Matter Halos NFW Rotation Curve |
+| PAPER_1019 | Dark Matter Phonon Buoyancy NFW Coupling |
+| PAPER_1076 | SCm Dark Energy with Phonon Linewidth Gamma-Modulation |
+| PAPER_1035 | Kilonova Buoyancy Light Curve r-Process |
+| PAPER_1072 | SCm Activation Function Phonon Threshold |
+| PAPER_1069 | VDS-DVP-BSH Hybrid Calculator Unified |
+| PAPER_1049 | Source10 GPU DPM Spectral Atlas ALMA Overlay |
+| PAPER_1074 | GPU-Vectorized DPM S26 Spectral Atlas |
+
+*14 cross-reference(s) identified.*
+
 ---
 
 ## Appendix: Session 204 Codebase Upgrade Reference
