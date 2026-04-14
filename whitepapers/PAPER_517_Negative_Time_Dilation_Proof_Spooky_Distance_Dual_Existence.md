@@ -246,6 +246,22 @@ while remaining consistent with all collider and nuclear precision measurements.
 PAPER_519 (Shell Radiance Prototype), PAPER_520 (Session 140 Hub).*
 
 
+
+---
+
+## Appendix: Session 225 Cross-References (PAPER_1000–1081)
+
+> *Auto-generated cross-reference appendix linking this paper to
+> Sessions 204–225 extensions (PAPER_1000–1081). Added by
+> `update_corpus_crossrefs.py` (Session 225, April 2026).*
+
+| Paper | Title |
+|-------|-------|
+| PAPER_1030 | Quantum Gravity Minimum Length GUP-SCm |
+| PAPER_1073 | SCm Phonon-Driven Inflation Vacuum Buoyancy |
+
+*2 cross-reference(s) identified.*
+
 ---
 
 ## Appendix: Session 204 Codebase Upgrade Reference
