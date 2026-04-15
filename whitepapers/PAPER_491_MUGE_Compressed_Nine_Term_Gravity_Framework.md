@@ -89,16 +89,34 @@ $$\boxed{F_U = \sum_{i=1}^{4}\bigl(Ug_i + Ub_i\bigr) + Um + \text{Tr}(A_{\mu\nu}
 
 This is **not** Newton plus corrections.  It is four independent gravitational force channels, each with its own buoyancy opposition, unified by magnetism and the Aether metric:
 
-| Channel | Symbol | Physics | Formula |
-|---------|--------|---------|---------|
-| **Internal Dipole** | $Ug_1$ | DPM dipole monopole gravity | $k_1 \cdot \mu_s(t) \cdot \nabla(M_s/r) \cdot e^{-\alpha t} \cdot \cos(\pi t_n) \cdot (1 + \delta_{\text{def}})$ |
-| **Outer Field Bubble** | $Ug_2$ | Heliosphere charge-reactivity | $k_2 \cdot (Q_A + Q_{UA}) \cdot M_s/r^2 \cdot S(r - R_b) \cdot (1 + \delta_{sw} v_{sw}) \cdot H_{SCm} \cdot E_{\text{react}}$ |
-| **Magnetic Strings** | $Ug_3$ | 90° disk string rotation | $k_3 \cdot B_j(t) \cdot \cos(\omega_s t \cdot \pi) \cdot P_{\text{core}} \cdot E_{\text{react}}$ |
-| **Star–BH Vacuum** | $Ug_4$ | Vacuum concentration gradient | $k_4 \cdot \rho_{\text{vac}} \cdot C_{\text{conc}} \cdot M_{bh}/d_g \cdot e^{-\alpha t} \cdot \cos(\pi t_n) \cdot (1 + f_{\text{feedback}})$ |
-| **Buoyancy** | $Ub_i$ | Opposes each $Ug_i$ | $-\beta_i \cdot Ug_i \cdot \Omega_g \cdot M_{bh}/d_g \cdot (1 + \epsilon_{sw}\rho_{sw}) \cdot U_{UA} \cdot \cos(\pi t_n)$ |
-| **Magnetism** | $Um$ | $10^9$ magnetic strings | $N_{\text{str}} \cdot (\mu_j/r_j) \cdot (1 - e^{-\gamma t \cos(\pi t_n)}) \cdot \hat{\varphi} \cdot P_{SCm} \cdot E_{\text{react}}$ |
-| **Aether Tensor** | $A_{\mu\nu}$ | Metric + vacuum stress | $g_{\mu\nu} + \eta \cdot T_s^{\mu\nu}(\text{UA}, \text{SCm}, \rho_A)$ |
-| **Dissipation** | $D_{\text{diss}}$ | Energy loss to vacuum | $-\sum_{i=0}^{3} \lambda_i \cdot U_i(r,t) \cdot E_{\text{react}}$ |
+| Channel | Symbol | Physics |
+|---------|--------|---------|
+| **Internal Dipole** | $Ug_1$ | DPM dipole monopole gravity |
+| **Outer Field Bubble** | $Ug_2$ | Heliosphere charge-reactivity |
+| **Magnetic Strings** | $Ug_3$ | 90° disk string rotation |
+| **Star–BH Vacuum** | $Ug_4$ | Vacuum concentration gradient |
+| **Buoyancy** | $Ub_i$ | Opposes each $Ug_i$ |
+| **Magnetism** | $Um$ | $10^9$ magnetic strings |
+| **Aether Tensor** | $A_{\mu\nu}$ | Metric + vacuum stress |
+| **Dissipation** | $D_{\text{diss}}$ | Energy loss to vacuum |
+
+**Channel formulas:**
+
+$$Ug_1 = k_1 \cdot \mu_s(t) \cdot \nabla(M_s/r) \cdot e^{-\alpha t} \cdot \cos(\pi t_n) \cdot (1 + \delta_{\text{def}})$$
+
+$$Ug_2 = k_2 (Q_A + Q_{UA}) \frac{M_s}{r^2} S(r - R_b)(1 + \delta_{sw} v_{sw}) H_{SCm} E_{\text{react}}$$
+
+$$Ug_3 = k_3 \cdot B_j(t) \cdot \cos(\omega_s t \cdot \pi) \cdot P_{\text{core}} \cdot E_{\text{react}}$$
+
+$$Ug_4 = k_4 \rho_{\text{vac}} C_{\text{conc}} \frac{M_{bh}}{d_g} e^{-\alpha t} \cos(\pi t_n)(1 + f_{\text{feedback}})$$
+
+$$Ub_i = -\beta_i \cdot Ug_i \cdot \Omega_g \cdot \frac{M_{bh}}{d_g}(1 + \epsilon_{sw}\rho_{sw}) U_{UA} \cos(\pi t_n)$$
+
+$$Um = N_{\text{str}} \frac{\mu_j}{r_j}(1 - e^{-\gamma t \cos(\pi t_n)}) \hat{\varphi} \cdot P_{SCm} \cdot E_{\text{react}}$$
+
+$$A_{\mu\nu} = g_{\mu\nu} + \eta \cdot T_s^{\mu\nu}(\text{UA}, \text{SCm}, \rho_A)$$
+
+$$D_{\text{diss}} = -\sum_{i=0}^{3} \lambda_i \cdot U_i(r,t) \cdot E_{\text{react}}$$
 
 **Newton's limiting case:** When all channels collapse to $Ug_2$ alone with $Q_A = Q_{UA} = 0$, $H_{SCm} \to 1$, $E_{\text{react}} \to 1$, $S(r-R_b) \to 1$, and $\delta_{sw} \to 0$, the outer-field-bubble term reduces to $k_2 \cdot M_s/r^2 \to GM/r^2$.  This is where Newton lives — as a **single-channel, zero-vacuum, zero-buoyancy** limit of $F_U$.
 
@@ -133,22 +151,47 @@ This 10:1 ratio drives differential acceleration between the [UA] aether and [SC
 
 ### §2b.3 Complete 13-Mode Resonance Sum
 
-$$g_{\text{resonance}} = a_{\text{DPM}} + a_{\text{THz}} + a_{\text{vac\_diff}} + a_{\text{SuperFreq}} + a_{\text{AetherRes}} + U_{g4,i} + a_{\text{QuantumFreq}} + a_{\text{AetherFreq}} + a_{\text{FluidFreq}} + a_{\text{Osc}} + a_{\text{ExpFreq}} + f_{\text{TRZ}} + a_{\text{wormhole}}$$
+$$\begin{aligned}
+g_{\text{resonance}} &= a_{\text{DPM}} + a_{\text{THz}} + a_{\text{vac\_diff}} + a_{\text{SuperFreq}} + a_{\text{AetherRes}} \\
+&\quad + U_{g4,i} + a_{\text{QuantumFreq}} + a_{\text{AetherFreq}} + a_{\text{FluidFreq}} \\
+&\quad + a_{\text{Osc}} + a_{\text{ExpFreq}} + f_{\text{TRZ}} + a_{\text{wormhole}}
+\end{aligned}$$
 
-| Mode | Formula | Physics |
-|------|---------|---------|
-| $a_{\text{THz}}$ | $f_{\text{THz}} \cdot E_{\text{vac,neb}} \cdot v_{\text{exp}} \cdot a_{\text{DPM}} / (E_{\text{vac,ISM}} \cdot c)$ | 1.25 THz phonon × vacuum energy ratio |
-| $a_{\text{vac\_diff}}$ | $\Delta E_{\text{vac}} \cdot v_{\text{exp}}^2 \cdot a_{\text{DPM}} / (E_{\text{vac,neb}} \cdot c^2)$ | Vacuum energy differential drive |
-| $a_{\text{SuperFreq}}$ | $F_{\text{super}} \cdot f_{\text{THz}} \cdot a_{\text{DPM}} / (E_{\text{vac,neb}} \cdot c)$ | Superconductive frequency mode |
-| $a_{\text{AetherRes}}$ | $[\text{UA}]_{\text{SCM}} \cdot \omega_i \cdot f_{\text{THz}} \cdot a_{\text{DPM}} \cdot (1 + f_{\text{TRZ}})$ | Aether resonance with time-reversal zone |
-| $U_{g4,i}$ | $k_4 \cdot E_{\text{react}} \cdot f_{\text{react}} \cdot a_{\text{DPM}} / (E_{\text{vac,neb}} \cdot c)$ | Reactor efficiency × vacuum concentration |
-| $a_{\text{QuantumFreq}}$ | $f_{\text{quantum}} \cdot E_{\text{vac,neb}} \cdot a_{\text{DPM}} / (E_{\text{vac,ISM}} \cdot c)$ | Quantum frequency mode |
-| $a_{\text{AetherFreq}}$ | $f_{\text{Aether}} \cdot E_{\text{vac,neb}} \cdot a_{\text{DPM}} / (E_{\text{vac,ISM}} \cdot c)$ | Aether frequency mode |
-| $a_{\text{FluidFreq}}$ | $f_{\text{fluid}} \cdot E_{\text{vac,neb}} \cdot V_{\text{sys}} / (E_{\text{vac,ISM}} \cdot c)$ | Fluid viscosity frequency |
-| $a_{\text{Osc}}$ | $A_{\text{osc}} \cos(k x) \cos(\omega t)$ | Standing-wave oscillation term |
-| $a_{\text{ExpFreq}}$ | $2\pi H(z) \cdot t \cdot E_{\text{vac,neb}} \cdot a_{\text{DPM}} / (E_{\text{vac,ISM}} \cdot c)$ | Hubble expansion frequency |
-| $f_{\text{TRZ}}$ | $0.1$ when $t_n < 0$ (negentropic zone) | Time-reversal zone (10% amplification) |
-| $a_{\text{wormhole}}$ | $f_{\text{worm}} \cdot E_{\text{vac,neb}} / (b^2 + r^2)$ | Morris-Thorne wormhole metric |
+| Mode | Physics |
+|------|---------|
+| $a_{\text{THz}}$ | 1.25 THz phonon × vacuum ratio |
+| $a_{\text{vac\_diff}}$ | Vacuum energy differential |
+| $a_{\text{SuperFreq}}$ | Superconductive frequency |
+| $a_{\text{AetherRes}}$ | Aether resonance + TRZ |
+| $U_{g4,i}$ | Reactor × vacuum concentration |
+| $a_{\text{QuantumFreq}}$ | Quantum frequency mode |
+| $a_{\text{AetherFreq}}$ | Aether frequency mode |
+| $a_{\text{FluidFreq}}$ | Fluid viscosity frequency |
+| $a_{\text{Osc}}$ | Standing-wave oscillation |
+| $a_{\text{ExpFreq}}$ | Hubble expansion frequency |
+| $f_{\text{TRZ}}$ | Time-reversal zone (10%) |
+| $a_{\text{wormhole}}$ | Morris-Thorne wormhole metric |
+
+**Resonance mode formulas:**
+
+$$a_{\text{THz}} = \frac{f_{\text{THz}} \cdot E_{\text{vac,neb}} \cdot v_{\text{exp}} \cdot a_{\text{DPM}}}{E_{\text{vac,ISM}} \cdot c}$$
+
+$$a_{\text{vac\_diff}} = \frac{\Delta E_{\text{vac}} \cdot v_{\text{exp}}^2 \cdot a_{\text{DPM}}}{E_{\text{vac,neb}} \cdot c^2}$$
+
+$$a_{\text{SuperFreq}} = \frac{F_{\text{super}} \cdot f_{\text{THz}} \cdot a_{\text{DPM}}}{E_{\text{vac,neb}} \cdot c}$$
+
+$$a_{\text{AetherRes}} = [\text{UA}]_{\text{SCM}} \cdot \omega_i \cdot f_{\text{THz}} \cdot a_{\text{DPM}} \cdot (1 + f_{\text{TRZ}})$$
+
+$$U_{g4,i} = \frac{k_4 \cdot E_{\text{react}} \cdot f_{\text{react}} \cdot a_{\text{DPM}}}{E_{\text{vac,neb}} \cdot c}$$
+
+$$a_{\text{QuantumFreq}} = \frac{f_{\text{quantum}} \cdot E_{\text{vac,neb}} \cdot a_{\text{DPM}}}{E_{\text{vac,ISM}} \cdot c}$$
+
+$$a_{\text{FluidFreq}} = \frac{f_{\text{fluid}} \cdot E_{\text{vac,neb}} \cdot V_{\text{sys}}}{E_{\text{vac,ISM}} \cdot c}$$
+
+$$a_{\text{ExpFreq}} = \frac{2\pi H(z) \cdot t \cdot E_{\text{vac,neb}} \cdot a_{\text{DPM}}}{E_{\text{vac,ISM}} \cdot c}$$
+
+$$a_{\text{wormhole}} = \frac{f_{\text{worm}} \cdot E_{\text{vac,neb}}}{b^2 + r^2}$$
+
 
 ### §2b.4 Vacuum Energy Gap
 
@@ -162,13 +205,17 @@ This gap is the **engine** of MUGE resonance: the differential between UA and SC
 
 The multiplicative coupling produces **qualitatively different** results from an additive model.  At magnetar-strength fields, the superconductive suppression factor dominates:
 
-| System | $r$ (m) | $M$ (kg) | $B$ (T) | $F_{\text{super}}$ | $g_{\text{core}}$ (m/s²) | $g_{\text{MUGE}}$ (m/s²) | vs. Newton |
-|--------|---------|---------|---------|---------------------|------------------------|--------------------------|------------|
-| Solar surface | $6.96\times10^{8}$ | $1.989\times10^{30}$ | $10^{-4}$ | $\approx 1.0$ | $274.0$ | $274.8$ | $+0.3\%$ |
-| SgrA* at $10\,r_s$ | $1.2\times10^{11}$ | $8.0\times10^{36}$ | $10^{2}$ | $\approx 1.0$ | $3.71\times10^{4}$ | $4.07\times10^{4}$ | $+9.4\%$ |
-| Vela pulsar | $1.0\times10^{4}$ | $2.8\times10^{30}$ | $3.4\times10^{8}$ | $0.99999$ | $1.87\times10^{12}$ | $2.06\times10^{12}$ | $+10.2\%$ |
-| SGR1745 magnetar | $1.0\times10^{4}$ | $2.8\times10^{30}$ | $2.0\times10^{11}$ | $0.99955$ | $1.87\times10^{12}$ | $2.05\times10^{12}$ | $+9.7\%$ (suppressed) |
-| Hypothetical $B_{\text{crit}}$ | $1.0\times10^{4}$ | $2.8\times10^{30}$ | $4.4\times10^{13}$ | $0.0$ | $0$ | residual additive only | $-100\%$ core |
+| System | $B$ (T) | $F_{\text{super}}$ | $g_{\text{MUGE}}$ | vs. Newton |
+|--------|---------|---------------------|-------------------|------------|
+| Solar surface | $10^{-4}$ | $\approx 1.0$ | $274.8$ | $+0.3\%$ |
+| SgrA* $10\,r_s$ | $10^{2}$ | $\approx 1.0$ | $4.07\times10^{4}$ | $+9.4\%$ |
+| Vela pulsar | $3.4\times10^{8}$ | $0.99999$ | $2.06\times10^{12}$ | $+10.2\%$ |
+| SGR1745 | $2.0\times10^{11}$ | $0.99955$ | $2.05\times10^{12}$ | $+9.7\%$ |
+| $B_{\text{crit}}$ | $4.4\times10^{13}$ | $0.0$ | additive only | $-100\%$ |
+
+System parameters: Solar ($r=6.96\times10^{8}$ m, $M=1.989\times10^{30}$ kg),
+SgrA* ($r=1.2\times10^{11}$ m, $M=8.0\times10^{36}$ kg),
+Vela/SGR1745/$B_{\text{crit}}$ ($r=1.0\times10^{4}$ m, $M=2.8\times10^{30}$ kg).
 
 **Key prediction:** At $B = B_{\text{crit}} = 4.4 \times 10^{13}\;\text{T}$, the multiplicative core vanishes entirely — gravity is carried only by the additive terms ($U_{g,i}$, $g_\Lambda$, $g_{\text{quantum}}$, $g_{\text{fluid}}$, $g_{\text{DM}}$).  This is a falsifiable UQFF-specific prediction with no GR analogue.
 
@@ -242,7 +289,7 @@ $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{
 The late-corpus analysis shows that the SCm phonon field modifies the NFW
 density profile at all radii via a buoyancy-coupled power-law term:
 
-$$\rho_{\text{UQFF}}(r) = \frac{\rho_s}{\left(\frac{r}{r_s}\right)\left(1+\frac{r}{r_s}\right)^2} \times \left[1 + H_{\text{SCm}} \cdot \beta_i \cdot S_{26}^{(3)} \cdot \left(\frac{r_s}{r}\right)^{\alpha_{\text{phonon}}}\right]$$
+$$\rho_{\text{UQFF}}(r) = \frac{\rho_s}{\frac{r}{r_s}\!\left(1+\frac{r}{r_s}\right)^2} \left[1 + H_{\text{SCm}} \beta_i S_{26}^{(3)} \left(\frac{r_s}{r}\right)^{\!\alpha_{\text{ph}}}\right]$$
 
 where:
 - $\alpha_{\text{phonon}} = 0.3$ governs the radial decay of phonon coupling
@@ -275,7 +322,10 @@ The SCm condensate potential minimum gives $V(\phi_0) = -7.09 \times 10^{-37}\;\
 (matching $\rho_{\text{SCm}}$) and phonon mass $m_{\text{phonon}} = \sqrt{8\lambda}\,v_{\text{SCm}}$.
 
 **Nine-sector closure (Session 202):**
-$$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal{L}_{\text{Dirac}} + \mathcal{L}_{\text{SCm}} + \mathcal{L}_{\text{mag}} + \mathcal{L}_{\text{buoy}} + \mathcal{L}_{\text{aether}} + \mathcal{L}_{\text{LENR}} + \mathcal{L}_{\text{KK}}$$
+$$\begin{aligned}
+\mathcal{L}_{9} &= \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal{L}_{\text{Dirac}} + \mathcal{L}_{\text{SCm}} + \mathcal{L}_{\text{mag}} \\
+&\quad + \mathcal{L}_{\text{buoy}} + \mathcal{L}_{\text{aether}} + \mathcal{L}_{\text{LENR}} + \mathcal{L}_{\text{KK}}
+\end{aligned}$$
 
 | Sector | Domain | Late-Corpus Result |
 |--------|--------|-------------------|
@@ -319,7 +369,11 @@ $$\boxed{\frac{\delta S}{\delta \phi_{\rm NS}} = \nabla^2 \phi_{\rm NS} - (4\pi 
 
 ### §A.4 Cosmogenesis Linkage Chain
 
-$$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\rm NS} = 0$$
+$$\begin{aligned}
+\text{PAPER\_877 Axioms} &\xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \\
+&\xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \\
+&\xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\rm NS} = 0
+\end{aligned}$$
 
 The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
 forces) through vacuum density initialization to the sector-specific equation of motion. Every term
@@ -374,12 +428,12 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 ## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
-| Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
-|------------|-----------------|-----------------|--------|-----------|
-| Cosmological constant Λ | UQFF |∇UA|2 → Λ_UQFF = 1.09e-52 m-2 | Λ = 1.114e-52 m-2 (Planck 2018 + DESI 2025) | Planck 2018 / DESI | 97.8% |
-| Dark energy fraction Ω_Λ | UQFF [SSq]=0.57; Ω_Λ ~ [SSq]×1.20 = 0.684 | Ω_Λ = 0.6847 ± 0.0073 | Planck 2018 | 99.9% |
-| CMB temperature T_CMB | UQFF vacuum condensate → T_CMB = (ρ_UA/σ_SB)^0.25 = 2.726 K | T_CMB = 2.72548 K | FIRAS 1996 | 99.98% |
-| H₀ Hubble constant | UQFF: H₀_UQFF = κ × c / r_Hubble = 67.4 km/s/Mpc | H₀ = 67.4 ± 0.5 km/s/Mpc (Planck) | Planck 2018 | PASS Consistent (Planck value) |
+| Observable | UQFF Prediction | Measured | Alignment |
+|------------|-----------------|----------|-----------|
+| Λ | $1.09\times10^{-52}$ m$^{-2}$ | $1.114\times10^{-52}$ (Planck+DESI) | 97.8% |
+| Ω_Λ | [SSq]×1.20 = 0.684 | 0.6847±0.0073 (Planck) | 99.9% |
+| T_CMB | 2.726 K | 2.72548 K (FIRAS) | 99.98% |
+| H₀ | 67.4 km/s/Mpc | 67.4±0.5 (Planck) | PASS |
 
 **New physics claim:** UQFF [SSq] = 0.57 links directly to the cosmological dark energy fraction
 Ω_Λ via [SSq]×1.20 = 0.684 ≈ Ω_Λ. This is not a parameter fit — [SSq] was calibrated from

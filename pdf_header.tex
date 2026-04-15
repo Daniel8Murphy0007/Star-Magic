@@ -128,6 +128,12 @@
 \newunicodechar{ι}{\ensuremath{\iota}}         % U+03B9
 \newunicodechar{κ}{\ensuremath{\kappa}}        % U+03BA
 \newunicodechar{λ}{\ensuremath{\lambda}}       % U+03BB
+
+% ── Table and text overflow prevention ──────────────────────────────────────
+\tolerance=1000
+\emergencystretch=3em
+\usepackage{etoolbox}
+\AtBeginEnvironment{longtable}{\footnotesize}
 \newunicodechar{μ}{\ensuremath{\mu}}           % U+03BC
 \newunicodechar{ν}{\ensuremath{\nu}}           % U+03BD
 \newunicodechar{ξ}{\ensuremath{\xi}}           % U+03BE
