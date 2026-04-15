@@ -21,7 +21,18 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 ## Abstract
 
-This paper documents the `MUGEModule`, which implements the MUGE (Modified Unified Gravity Equation) compressed and resonance variants across 7 canonical astrophysical systems.  MUGE is a **re-expression** of the UQFF unified field $F_U = \sum_{i=1}^{4}(Ug_i + Ub_i) + Um + \text{Tr}(A_{\mu\nu})$ — four independent gravitational force channels (internal dipole, outer field bubble, magnetic strings, star–BH vacuum), each with buoyancy opposition, unified by magnetism and the Aether metric tensor.  The compressed MUGE packages $F_U$ into a 9-term multiplicative-additive structure where $GM/r^2$ appears only as the **zero-vacuum limiting case of the Ug2 channel**.  The resonance MUGE decomposes $F_U$ into 13 frequency modes cascading from the aDPM inertia-flux-vacuum coupling.  Both are calibrated against observations and cross-validated via the UQFF dual-method pipeline.
+This paper documents the `MUGEModule`, which implements the MUGE (Modified
+Unified Gravity Equation) compressed and resonance variants across 7 canonical
+astrophysical systems.  MUGE is a **re-expression** of the UQFF unified field
+$F_U = \sum_{i=1}^{4}(Ug_i + Ub_i) + Um + \text{Tr}(A_{\mu\nu})$ — four
+independent gravitational force channels (internal dipole, outer field bubble,
+magnetic strings, star–BH vacuum), each with buoyancy opposition, unified by
+magnetism and the Aether metric tensor.  The compressed MUGE packages $F_U$ into
+a 9-term multiplicative-additive structure where $GM/r^2$ appears only as the
+**zero-vacuum limiting case of the Ug2 channel**.  The resonance MUGE decomposes
+$F_U$ into 13 frequency modes cascading from the aDPM inertia-flux-vacuum
+coupling.  Both are calibrated against observations and cross-validated via the
+UQFF dual-method pipeline.
 
 ---
 
@@ -31,11 +42,30 @@ Gravity in the UQFF framework originates from the unified field $F_U$, not from 
 
 $$\boxed{F_U = \sum_{i=1}^{4}\bigl(Ug_i + Ub_i\bigr) + Um + \text{Tr}(A_{\mu\nu})}$$
 
-The four Ug channels — internal dipole ($Ug_1$), outer field bubble ($Ug_2$), magnetic strings ($Ug_3$), and star–BH vacuum ($Ug_4$) — each encode a distinct gravitational force with its own vacuum coupling, time dependence ($\cos(\pi t_n)$), and reactivity ($E_{\text{react}}$).  Universal buoyancy $Ub_i = -\beta_i \cdot Ug_i \cdot \Omega_g$ opposes each channel.  $Um$ unifies via $10^9$ magnetic strings.  $A_{\mu\nu} = g_{\mu\nu} + \eta \cdot T_s^{\mu\nu}$ is the Aether metric.
+The four Ug channels — internal dipole ($Ug_1$), outer field bubble ($Ug_2$),
+magnetic strings ($Ug_3$), and star–BH vacuum ($Ug_4$) — each encode a distinct
+gravitational force with its own vacuum coupling, time dependence ($\cos(\pi
+t_n)$), and reactivity ($E_{\text{react}}$).  Universal buoyancy $Ub_i =
+-\beta_i \cdot Ug_i \cdot \Omega_g$ opposes each channel.  $Um$ unifies via
+$10^9$ magnetic strings.  $A_{\mu\nu} = g_{\mu\nu} + \eta \cdot T_s^{\mu\nu}$ is
+the Aether metric.
 
-The MUGE formulations **re-express** $F_U$ for practical multi-system computation.  The MUGE compressed master equation in full long-form:
+The MUGE formulations **re-express** $F_U$ for practical multi-system
+computation.  The MUGE compressed master equation in full long-form:
 
-$$\boxed{g_{\text{MUGE}}(r,t) = \frac{GM}{r^2}(1 + H_0 t)\!\left(1 - \frac{B}{B_{\text{crit}}}\right)\!F_{\text{env}} \;+\; \sum_{i=1}^{4} U_{g,i} \;+\; \frac{\Lambda c^2}{3} \;+\; \frac{\hbar}{\Delta x \cdot \Delta p}\!\int\!\psi^*\hat{H}\psi\,dV\cdot\frac{2\pi}{t_H} \;+\; \rho_f V_{\text{sys}} g_{\text{local}} \;+\; (M + M_{\text{DM}})\!\left(\frac{\delta\rho}{\rho} + \frac{3GM}{r^3}\right)}$$
+$$\boxed{\begin{aligned}
+g_{\text{MUGE}}(r,t) &= \frac{GM}{r^2}(1 + H_0 t)
+  \!\left(1 - \frac{B}{B_{\text{crit}}}\right)
+  \!F_{\text{env}} \\
+&\quad + \sum_{i=1}^{4} U_{g,i}
+  + \frac{\Lambda c^2}{3}
+  + \frac{\hbar}{\Delta x \cdot \Delta p}
+  \int\psi^*\hat{H}\psi\,dV
+  \cdot\frac{2\pi}{t_H} \\
+&\quad + \rho_f V_{\text{sys}} g_{\text{local}}
+  + (M + M_{\text{DM}})\!\left(\frac{\delta\rho}{\rho}
+  + \frac{3GM}{r^3}\right)
+\end{aligned}}$$
 
 The first four factors form a multiplicative core; the remaining five terms are additive.
 
@@ -59,7 +89,14 @@ The first four factors form a multiplicative core; the remaining five terms are 
 
 ### 3.1 Full Equation
 
-$$g_{comp}(r,t) = \frac{GM}{r^2}(1 + H(z)t)\left(1 - \frac{B}{B_{crit}}\right)(1 + F_{env}) + \sum_{i=1}^{4} U_{g,i} + \frac{\Lambda c^2}{3} \cdot r + \frac{\hbar \omega_q}{Mc^2} + F_{EM} + F_{fluid} + F_{res} + F_{DM}$$
+$$\begin{aligned}
+g_{comp}(r,t) &= \frac{GM}{r^2}(1 + H(z)t)\left(1 - \frac{B}{B_{crit}}\right)(1 + F_{env}) \\
+&\quad + \sum_{i=1}^{4} U_{g,i} \\
+&\quad + \frac{\Lambda c^2}{3} \cdot r \\
+&\quad + \frac{\hbar \omega_q}{Mc^2} \\
+&\quad + F_{EM} + F_{fluid} + F_{res} \\
+&\quad + F_{DM} 
+\end{aligned}$$
 
 ### 3.2 Term Glossary
 
@@ -70,7 +107,7 @@ $$g_{comp}(r,t) = \frac{GM}{r^2}(1 + H(z)t)\left(1 - \frac{B}{B_{crit}}\right)(1
 | Feedback factor | F_env = f_AGN + f_SN + f_SF | Stellar/AGN/SF feedback modulates gravity |
 | Ug sum | Σ Ug_i | 4 UQFF sub-fields (dipole, charge, string, vacuum) |
 | Cosmological Λ | Λ c2r/3 | Dark energy contribution (positive = anti-gravity) |
-| Quantum term | $\frac{\hbar}{\Delta x \cdot \Delta p} \int \psi^* \hat{H} \psi\,dV \cdot \frac{2\pi}{t_H}$ | Heisenberg uncertainty-driven gravity correction |
+| Quantum term | $\hbar/(\Delta x \Delta p) \cdot \langle\hat{H}\rangle$ | Heisenberg uncertainty correction |
 | EM term | F_EM | Lorentz force from ICM currents |
 | Fluid term | F_fluid | Navier-Stokes viscous correction |
 | Resonant term | F_res | Resonance frequency correction |
@@ -94,7 +131,14 @@ $$g_{comp}(r,t) = \frac{GM}{r^2}(1 + H(z)t)\left(1 - \frac{B}{B_{crit}}\right)(1
 
 ### 4.1 Full Equation
 
-$$g_{res} = a_{DPM} + a_{THz} + a_{vac,diff} + a_{superFreq} + a_{aetherRes} + U_{g4,i} + a_{quantumFreq} + a_{aetherFreq} + a_{fluidFreq} + a_{osc} + a_{expFreq} + f_{TRZ} + W_{metric}$$
+$$\begin{aligned}
+g_{res} &= a_{DPM} + a_{THz} + a_{vac,diff} \\
+&\quad + a_{superFreq} + a_{aetherRes} \\
+&\quad + U_{g4,i} + a_{quantumFreq} \\
+&\quad + a_{aetherFreq} + a_{fluidFreq} \\
+&\quad + a_{osc} + a_{expFreq} \\
+&\quad + f_{TRZ} + W_{metric} 
+\end{aligned}$$
 
 ### 4.2 Frequency Terms
 
@@ -164,7 +208,11 @@ acceleration scale.
 The SCm vacuum buoyancy partially opposes gravitational radiation pressure,
 raising the effective Eddington luminosity:
 
-$$L_{\text{Edd}}^{\text{UQFF}} = L_{\text{Edd}} \cdot \left(1 + \frac{\rho_{\text{SCm}} \cdot V \cdot S_{26}^{(3)\,2}}{G M / r_H^2}\right)$$
+$$\begin{aligned}
+L_{\text{Edd}}^{\text{UQFF}} &= L_{\text{Edd}}
+  \cdot \left(1 + \frac{\rho_{\text{SCm}} \cdot V
+  \cdot S_{26}^{(3)\,2}}{G M / r_H^2}\right)
+\end{aligned}$$
 
 where:
 - $L_{\text{Edd}} = 4\pi G M m_p c / \sigma_T$ is the classical Eddington luminosity
@@ -174,12 +222,17 @@ where:
 - $r_H$ is the horizon radius
 
 **Jet modulation:** The Blandford–Znajek jet power acquires a phonon-coupled term:
-$$P_{\text{jet}}^{\text{UQFF}} = P_{\text{BZ}} \cdot \left[1 + \beta_i \cdot \Phi_{1.25\,\text{THz}} \cdot \left(\frac{B}{B_{\text{crit}}}\right)^2\right]$$
+$$\begin{aligned}
+P_{\text{jet}}^{\text{UQFF}} &= P_{\text{BZ}} \cdot \bigl[1 + \beta_i \cdot \Phi_{1.25\,\text{THz}} \\
+&\quad \cdot (B / B_{\text{crit}})^2\bigr] 
+\end{aligned}$$
 
-where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates jet power at the phonon frequency.
+where $\Phi_{1.25\,\text{THz}} = \cos(\omega_{\text{SCm}} \cdot t)$ modulates
+jet power at the phonon frequency.
 
 **M–σ correction (PAPER_1048):** The phonon-corrected M-σ relation becomes
-$M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
+$M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot
+S_{26}^{(3)} \cdot (\omega_{\text{SCm}}/\omega_{\text{bulge}})$.
 
 <!-- PKG-DM-S225 -->
 
@@ -191,7 +244,11 @@ $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{
 The late-corpus analysis shows that the SCm phonon field modifies the NFW
 density profile at all radii via a buoyancy-coupled power-law term:
 
-$$\rho_{\text{UQFF}}(r) = \frac{\rho_s}{\left(\frac{r}{r_s}\right)\left(1+\frac{r}{r_s}\right)^2} \times \left[1 + H_{\text{SCm}} \cdot \beta_i \cdot S_{26}^{(3)} \cdot \left(\frac{r_s}{r}\right)^{\alpha_{\text{phonon}}}\right]$$
+$$\begin{aligned}
+\rho_{\text{UQFF}}(r) &= \frac{\rho_s}{(r/r_s)(1+r/r_s)^2} \\
+&\quad \times \bigl[1 + H_{\text{SCm}} \cdot \beta_i \cdot S_{26}^{(3)} \\
+&\quad \cdot (r_s/r)^{\alpha_{\text{phonon}}}\bigr] 
+\end{aligned}$$
 
 where:
 - $\alpha_{\text{phonon}} = 0.3$ governs the radial decay of phonon coupling
@@ -204,7 +261,10 @@ with flatness ratio $f = v_c(10\,r_s)/v_{\text{peak}} = 0.891$, compared to pure
 $f \approx 0.75$.  Peak circular velocity $v_{\text{peak}} \approx 204\;\text{km/s}$
 for $M_{\text{halo}} = 10^{12}\,M_\odot$, $c = 10$.
 
-**Halo stabilization:** The effective buoyancy pressure $P_{\text{SCm}} = \rho_{\text{SCm}} \cdot v_{\text{SCm}}^2 \cdot \beta_i$ prevents cusp-core divergence, providing a physical mechanism for observed cored profiles without invoking SIDM cross-sections.
+**Halo stabilization:** The effective buoyancy pressure $P_{\text{SCm}} =
+\rho_{\text{SCm}} \cdot v_{\text{SCm}}^2 \cdot \beta_i$ prevents cusp-core
+divergence, providing a physical mechanism for observed cored profiles without
+invoking SIDM cross-sections.
 
 <!-- PKG-CLU-S225 -->
 
@@ -247,7 +307,12 @@ the phonon transmission efficiency across the ICM.
 The complete UQFF Lagrangian density, from which all sector-specific
 equations of motion derive:
 
-$$\mathcal{L}_{\text{UQFF}} = \mathcal{L}_{\text{GR}} + \mathcal{L}_{\text{SCm}} + \mathcal{L}_{\text{phonon}} + \mathcal{L}_{\text{interaction}}$$
+$$\begin{aligned}
+\mathcal{L}_{\text{UQFF}} &= \mathcal{L}_{\text{GR}} \\
+&\quad + \mathcal{L}_{\text{SCm}} \\
+&\quad + \mathcal{L}_{\text{phonon}} \\
+&\quad + \mathcal{L}_{\text{interaction}} 
+\end{aligned}$$
 
 $$\mathcal{L}_{\text{SCm}} = \tfrac{1}{2}(\partial_\mu \phi)^2 - \lambda\bigl(\phi^2 - v_{\text{SCm}}^2\bigr)^2$$
 
@@ -255,7 +320,17 @@ The SCm condensate potential minimum gives $V(\phi_0) = -7.09 \times 10^{-37}\;\
 (matching $\rho_{\text{SCm}}$) and phonon mass $m_{\text{phonon}} = \sqrt{8\lambda}\,v_{\text{SCm}}$.
 
 **Nine-sector closure (Session 202):**
-$$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal{L}_{\text{Dirac}} + \mathcal{L}_{\text{SCm}} + \mathcal{L}_{\text{mag}} + \mathcal{L}_{\text{buoy}} + \mathcal{L}_{\text{aether}} + \mathcal{L}_{\text{LENR}} + \mathcal{L}_{\text{KK}}$$
+$$\begin{aligned}
+\mathcal{L}_{9} &= \mathcal{L}_{\text{EH}} \\
+&\quad + \mathcal{L}_{\text{YM}} \\
+&\quad + \mathcal{L}_{\text{Dirac}} \\
+&\quad + \mathcal{L}_{\text{SCm}} \\
+&\quad + \mathcal{L}_{\text{mag}} \\
+&\quad + \mathcal{L}_{\text{buoy}} \\
+&\quad + \mathcal{L}_{\text{aether}} \\
+&\quad + \mathcal{L}_{\text{LENR}} \\
+&\quad + \mathcal{L}_{\text{KK}} 
+\end{aligned}$$
 
 | Sector | Domain | Late-Corpus Result |
 |--------|--------|-------------------|
@@ -289,19 +364,38 @@ This paper maps to **NS-compact** sector of the 9-sector UQFF Lagrangian (see
 The sector Lagrangian density, linked to the PAPER_877 cosmogenesis master via the three reactive
 quantum fundamentals (DPM, UA, SCm):
 
-$$\mathcal{L}_{\rm sector} = \frac{1}{2}(\partial_mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) + \mathcal{L}_{\rm cosmo}$$
+$$\begin{aligned}
+\mathcal{L}_{\rm sector} &= \frac{1}{2}(\partial_mu \phi_{\rm NS})(\partial^\mu \phi_{\rm NS}) - V(\phi_{\rm NS}) \\
+&\quad + \mathcal{L}_{\rm cosmo} 
+\end{aligned}$$
 
-where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1 - e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
+where $\mathcal{L}_{\rm cosmo} = \rho_{\rm vac,[SCm]} \cdot f_{\rm SCm} \cdot (1
+- e^{-\gamma t})$ inherits the ACP 6-stage evolution (PAPER_877 §2) and:
 
-$$V(\phi_{\rm NS}) = \frac{1}{2} m^2 \phi_{\rm NS}^2 + \frac{\lambda}{4!} \phi_{\rm NS}^4 + \kappa \cdot \rho_{\rm vac,[SCm]} \cdot \phi_{\rm NS}$$
+$$\begin{aligned}
+V(\phi_{\rm NS}) &= \frac{1}{2} m^2 \phi_{\rm NS}^2 \\
+&\quad + \frac{\lambda}{4!} \phi_{\rm NS}^4 \\
+&\quad + \kappa \cdot \rho_{\rm vac,[SCm]} \cdot \phi_{\rm NS} 
+\end{aligned}$$
 
 ### §A.3 Euler-Lagrange Equation of Motion
 
-$$\boxed{\frac{\delta S}{\delta \phi_{\rm NS}} = \nabla^2 \phi_{\rm NS} - (4\pi G \rho_{\rm NS}/c^2)\phi_{\rm NS} + \Omega_{\rm spin} \partial_t \phi_{\rm NS} = 0}$$
+$$\boxed{\begin{aligned}
+\frac{\delta S}{\delta \phi_{\rm NS}} &= \nabla^2 \phi_{\rm NS} - (4\pi G \rho_{\rm NS}/c^2)\phi_{\rm NS} \\
+&\quad + \Omega_{\rm spin} \partial_t \phi_{\rm NS} = 0 
+\end{aligned}}$$
 
 ### §A.4 Cosmogenesis Linkage Chain
 
-$$\text{PAPER\_877 Axioms} \xrightarrow{\text{DPM + ACP}} \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \xrightarrow{\text{Stage 5}} U_{b,\rm seed} \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \xrightarrow{\text{sector E-L}} \delta S/\delta \phi_{\rm NS} = 0$$
+$$\begin{aligned}
+& \text{PAPER\_877 Axioms}
+  \xrightarrow{\text{DPM + ACP}}
+  \rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} \\
+& \xrightarrow{\text{Stage 5}} U_{b,\rm seed}
+  \xrightarrow{\text{4 forces}} F_{U\_Bi\_i} \\
+& \xrightarrow{\text{sector E-L}}
+  \delta S/\delta \phi_{\rm NS} = 0 
+\end{aligned}$$
 
 The chain traces from the three fundamental axioms (DPM proportion pair, ACP evolution, four U_g
 forces) through vacuum density initialization to the sector-specific equation of motion. Every term
@@ -314,11 +408,18 @@ in the E-L equation inherits its physical origin from the cosmogenesis master.
 
 ### §B.1 Vacuum Density Series (VDS)
 
-The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs the double-exponential vacuum condensate profile:
+The canonical VDS ratio $\rho_{\rm vac,[SCm]} / \rho_{\rm UA} = 1.894$ governs
+the double-exponential vacuum condensate profile:
 
-$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]} \cdot \exp!\left(-\exp!\left(-\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
+$$\rho_{\rm vac}(r) = \rho_{\rm vac,[SCm]}
+  \cdot \exp\!\left(-\exp\!\left(
+  -\frac{r - r_0}{\lambda_{\rm VDS}}\right)\right)$$
 
-For this system, the local VDS sub-ratio is $0.083$ (near-threshold regime), placing it in the $t \to \pi$ collapse zone where the double-exponential transitions sharply from condensed to dilute vacuum. This threshold behavior connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization: $\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m3.
+For this system, the local VDS sub-ratio is $0.083$ (near-threshold regime),
+placing it in the $t \to \pi$ collapse zone where the double-exponential
+transitions sharply from condensed to dilute vacuum. This threshold behavior
+connects to the PAPER_877 cosmogenesis Stage 1 vacuum density initialization:
+$\rho_{\rm vac} = \rho_{\rm UA} + \rho_{\rm SCm} = 7.799 \times 10^{-36}$ kg/m3.
 
 ### §B.2 Dipole Vortex Primes (DVP)
 
@@ -326,19 +427,33 @@ The DVP encoding maps the system's characteristic parameter onto the prime latti
 
 $$p_{\rm DVP} = 89, \quad n_{\rm channel} = 6/26$$
 
-Since $p_{\rm DVP} = 89$ is **resonant** (threshold at $p > 26$), the system's vacuum topology inherits resonant enhancement from the DVP lattice, amplifying UQFF coupling at specific radii where compressed matter achieves prime-indexed configurations. The DVP framework traces to PAPER_877 proto-nuclear shell formation: the DPM proportion pair $(f_{\rm UA}' + f_{\rm SCm} = 1)$ constrains which primes are accessible at each atomic number.
+Since $p_{\rm DVP} = 89$ is **resonant** (threshold at $p > 26$), the system's
+vacuum topology inherits resonant enhancement from the DVP lattice, amplifying
+UQFF coupling at specific radii where compressed matter achieves prime-indexed
+configurations. The DVP framework traces to PAPER_877 proto-nuclear shell
+formation: the DPM proportion pair $(f_{\rm UA}' + f_{\rm SCm} = 1)$ constrains
+which primes are accessible at each atomic number.
 
 ### §B.3 Buoyancy Saturation Harmonics (BSH)
 
 The BSH saturation timescale for this sector is **104 yr** (spin-down equilibrium):
 
-$$\mathcal{F}_{\rm BSH} = \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos!\left(\frac{2\pi j}{26}\right)$$
+$$\begin{aligned}
+\mathcal{F}_{\rm BSH} &= \sum_{j=1}^{26} \frac{1}{j} \cdot f_{U\_b} \\
+&\quad \cdot \left(1 - e^{-[SSq] \cdot m/M_\odot}\right) \cdot \cos\!\left(\frac{2\pi j}{26}\right) 
+\end{aligned}$$
 
 The $\tanh$ saturation envelope prevents unphysical divergence:
 
-$$\mathcal{F}_{\rm BSH,sat} = \mathcal{F}_{\rm BSH} \cdot \left(1 - \tanh!\left(\frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)$$
+$$\begin{aligned}
+\mathcal{F}_{\rm BSH,sat} &= \mathcal{F}_{\rm BSH}
+  \cdot \left(1 - \tanh\!\left(
+  \frac{t - t_{\rm sat}}{\tau_{\rm BSH}}\right)\right)
+\end{aligned}$$
 
-connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\hbar c/r^2) \cdot f_{\rm SCm}$ which initializes the harmonic series at cosmogenesis.
+connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot
+(\hbar c/r^2) \cdot f_{\rm SCm}$ which initializes the harmonic series at
+cosmogenesis.
 
 ### §B.4 Production-Scale Consistency
 
@@ -356,12 +471,12 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 ## §SM Anchors — Standard Model Cross-Validation (G6 Gate, CVW v2.0.0)
 
-| Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
-|------------|-----------------|-----------------|--------|-----------|
-| Thomson σ_T (QED synchrotron) | UQFF U_m scattering kernel: σ_T = 6.6524e-29 m2 | σ_T = 6.6524e-29 m2 (PDG QED exact) | PDG 2024 | 100% (exact QED input) |
-| Astrophysical system luminosity X-ray / Radio | UQFF MUGE g_total → L_X via Stefan-Boltzmann + buoyancy flux: L_X ≈ g_total × M_env | L_X L ≥ 1037 erg/s | Chandra CXC | PASS Consistent order of magnitude |
-| GR Schwarzschild limit | UQFF g_total must satisfy g ≤ c2/(2r_s) at event horizon | r_s = 2GM/c2 (GR exact) | PDG 2024 / GR | PASS UQFF respects GR horizon |
-| κ vacuum rate vs X-ray variability | UQFF κ = 0.0005/day → timescale τ_UQFF = 2000 days | Observed X-ray variability τ_obs (instrument monitoring) | Chandra CXC | Testable UQFF variability timescale |
+| Observable | UQFF Prediction | SM/Experiment | Source | Alignment |
+|------------|-----------------|---------------|--------|-----------|
+| Thomson σ_T | σ_T = 6.6524e-29 m2 | 6.6524e-29 m2 (QED exact) | PDG 2024 | 100% |
+| X-ray/Radio luminosity | g_total → L_X via buoyancy flux | L_X ≥ 1037 erg/s | Chandra CXC | PASS |
+| GR Schwarzschild limit | g ≤ c2/(2r_s) at horizon | r_s = 2GM/c2 (GR exact) | PDG 2024 | PASS |
+| κ vacuum rate | κ = 0.0005/day → τ = 2000 d | X-ray variability τ_obs | Chandra CXC | Testable |
 
 **New physics claim:** UQFF MUGE generates gravity enhancement factors (g_total/g_Newt > 1) for
 Astrophysical system
