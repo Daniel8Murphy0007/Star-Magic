@@ -13,10 +13,9 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 **Session:** 0
 
-# PAPER #90  MUGE Compressed Gravity: Multiplicative-Additive Vacuum-Mediated Framework
+# PAPER #90  MUGE Compressed Gravity: Re-Expression of F_U for Multi-System Computation
 
-**Title:** MUGE Compressed Gravity: A 10-Term Framework Correcting Newtonian Gravity at
-Galaxy-to-Cosmological Scales
+**Title:** MUGE Compressed Gravity: A 10-Term Re-Expression of the F_U Unified Field Equation
 
 **Author:** Daniel T. Murphy  
 **Framework:** MUGE (Multi-Unit Gravity Expression), UQFF Star-Magic  
@@ -29,33 +28,49 @@ compute_compressed_MUGE_SOURCE4
 
 ## Abstract
 
-The MUGE Compressed gravity framework is a **vacuum-energy-mediated, multiplicative-additive gravity model** — not "Newtonian plus small additive corrections."  The master equation combines a multiplicatively coupled core $g_{\text{core}} = (GM/r^2) \times (1 + H_0 t) \times (1 - B/B_{\text{crit}}) \times F_{\text{env}}$ with five additive UQFF terms.  The superconductive factor $(1 - B/B_{\text{crit}})$ predicts measurable gravitational suppression near magnetar-strength fields — a non-Newtonian, non-GR prediction.  `validate_uqff_muge.py` validates the complete framework across 5 astrophysical systems (Sgr A*, M87, Sun, NeutronStar, Magnetar), confirming numerical stability (no NaN/Inf) across 8 radial ranges and 5 mass scales.
+The UQFF unified field is $F_U = \sum_{i=1}^{4}(Ug_i + Ub_i) + Um + \text{Tr}(A_{\mu\nu})$ — four independent gravitational force channels (internal dipole, outer field bubble, magnetic strings, star–BH vacuum), each opposed by universal buoyancy, unified by magnetism and the Aether metric tensor.  The MUGE Compressed gravity framework is a **re-expression of $F_U$** that packages these channels into a 9-term multiplicative-additive structure for practical multi-system computation.  The classical gravitational limit $GM/r^2$ appears in this compressed form only as the **zero-vacuum, zero-buoyancy limiting case of the Ug2 channel** — not as the starting point of the physics.  The superconductive factor $(1 - B/B_{\text{crit}})$ predicts measurable gravitational suppression near magnetar-strength fields — a prediction that originates from the $F_U$ unified field and has no Newtonian or GR analogue.  `validate_uqff_muge.py` validates the framework across 5 astrophysical systems (Sgr A*, M87, Sun, NeutronStar, Magnetar).
 
 ---
 
-## 1. The MUGE Compressed Master Equation — Multiplicative-Additive Architecture
+## 1. The F_U Unified Field Equation
 
-From `source4.cpp::compute_compressed_MUGE_SOURCE4`:
+Gravity in the UQFF framework originates from $F_U$, not from Newton:
 
-The MUGE compressed equation is **NOT** a simple sum $g_N + \sum \delta_k$.  The first four terms form a **multiplicatively coupled core**, and the remaining five terms are additively stacked:
+$$\boxed{F_U = \sum_{i=1}^{4}\bigl(Ug_i + Ub_i\bigr) + Um + \text{Tr}(A_{\mu\nu})}$$
 
-$$\boxed{g_{\text{MUGE}}^{\text{Comp}}(r) = \underbrace{\frac{GM}{r^2} \times (1 + H_0 t) \times \left(1 - \frac{B}{B_{\text{crit}}}\right) \times F_{\text{env}}}_{\text{multiplicative core}} \;+\; \sum_{i=1}^{4} U_{g,i} \;+\; \frac{\Lambda c^2}{3} \;+\; \frac{\hbar}{\Delta x \cdot \Delta p} \int \psi^* \hat{H} \psi\,dV \cdot \frac{2\pi}{t_H} \;+\; \rho_f V g \;+\; (M + M_{\text{DM}})\!\left(\frac{\delta\rho}{\rho} + \frac{3GM}{r^3}\right)}$$
+| Channel | Symbol | Physics |
+|---------|--------|---------|
+| Internal Dipole | $Ug_1$ | $k_1 \cdot \mu_s(t) \cdot \nabla(M_s/r) \cdot e^{-\alpha t} \cdot \cos(\pi t_n) \cdot (1 + \delta_{\text{def}})$ |
+| Outer Field Bubble | $Ug_2$ | $k_2 \cdot (Q_A + Q_{UA}) \cdot M_s/r^2 \cdot S(r-R_b) \cdot H_{SCm} \cdot E_{\text{react}}$ |
+| Magnetic Strings | $Ug_3$ | $k_3 \cdot B_j(t) \cdot \cos(\omega_s t \cdot \pi) \cdot P_{\text{core}} \cdot E_{\text{react}}$ |
+| Star–BH Vacuum | $Ug_4$ | $k_4 \cdot \rho_{\text{vac}} \cdot C_{\text{conc}} \cdot M_{bh}/d_g \cdot e^{-\alpha t} \cdot (1 + f_{\text{feedback}})$ |
+| Buoyancy | $Ub_i$ | $-\beta_i \cdot Ug_i \cdot \Omega_g \cdot M_{bh}/d_g \cdot U_{UA} \cdot \cos(\pi t_n)$ |
+| Magnetism | $Um$ | $N_{\text{str}} \cdot (\mu_j/r_j) \cdot (1 - e^{-\gamma t \cos(\pi t_n)}) \cdot P_{SCm} \cdot E_{\text{react}}$ |
+| Aether Tensor | $A_{\mu\nu}$ | $g_{\mu\nu} + \eta \cdot T_s^{\mu\nu}(\text{UA}, \text{SCm}, \rho_A)$ |
+
+**Newton's $GM/r^2$ is the limiting case** of $Ug_2$ when all vacuum couplings, charges, SCm density, and reactivity factors → 1 or 0.
+
+## 1b. MUGE Compressed Re-Expression
+
+The MUGE compressed form packages $F_U$ into a 9-term multiplicative-additive structure:
+
+$$\boxed{g_{\text{MUGE}}^{\text{Comp}} = \underbrace{\frac{GM}{r^2} \times (1 + H_0 t) \times \left(1 - \frac{B}{B_{\text{crit}}}\right) \times F_{\text{env}}}_{\text{multiplicative core (Ug2 classical limit)}} \;+\; \sum_{i=1}^{4} U_{g,i} \;+\; \frac{\Lambda c^2}{3} \;+\; g_{\text{quantum}} \;+\; g_{\text{fluid}} \;+\; g_{\text{DM}}}$$
 
 ### Term Architecture
 
 | Term | Role | Formula | Physics |
 |------|------|---------|---------|
-| **Base** | Newtonian core | $GM/r^2$ | Mass–distance (classical limit) |
+| **Classical Limit** | Ug2 shorthand | $GM/r^2$ | Zero-vacuum limit of outer-field-bubble channel |
 | **Expansion** | ×  multiplicative | $(1 + H_0 t)$, $H_0 = 2.269 \times 10^{-18}\;\text{s}^{-1}$ | Hubble stretching of gravitational field |
 | **Superconductive** | ×  multiplicative | $(1 - B/B_{\text{crit}})$, $B_{\text{crit}} = 4.4 \times 10^{13}\;\text{T}$ | **SCm vacuum suppression** — gravity weakens as $B \to B_{\text{crit}}$ |
 | **Envelope** | ×  multiplicative | $F_{\text{env}}(r, \theta, z)$ | 15-parameter environmental modulator |
-| **Ug Sum** | +  additive | $\sum_{i=1}^{4} U_{g,i}$ (DPM dipole + charge-reactivity + string rotation + vacuum concentration) | UQFF four-force gravity |
-| **Cosmological** | +  additive | $\Lambda c^2 / 3$, $\Lambda = 1.114 \times 10^{-52}\;\text{m}^{-2}$ | Dark energy acceleration |
+| **Ug Sum** | +  additive | $\sum_{i=1}^{4} U_{g,i}$ | UQFF four-force gravity (dipole + charge + string + vacuum) |
+| **Cosmological** | +  additive | $\Lambda c^2 / 3$ | Dark energy acceleration |
 | **Quantum** | +  additive | $\frac{\hbar}{\Delta x \cdot \Delta p} \int \psi^* \hat{H} \psi\,dV \cdot \frac{2\pi}{t_H}$ | Heisenberg uncertainty-driven gravity correction |
 | **Fluid** | +  additive | $\rho_f V g_{\text{local}}$ | Navier-Stokes viscous medium coupling |
 | **Dark Matter** | +  additive | $(M + M_{\text{DM}})(\delta\rho/\rho + 3GM/r^3)$ | Halo mass + density perturbation |
 
-**Key distinction from Newtonian gravity:** The multiplicative core means the gravitational field is **modulated by magnetic field strength** — at $B = B_{\text{crit}}$, the entire Newtonian base vanishes.  This is a uniquely UQFF prediction.
+**Key distinction:** The $GM/r^2$ in this table is not Newton's law.  It is the **classical limit of $Ug_2$** from the unified field $F_U$, compressed for computational efficiency.
 
 ---
 

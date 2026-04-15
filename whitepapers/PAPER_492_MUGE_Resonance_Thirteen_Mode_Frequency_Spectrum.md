@@ -28,11 +28,19 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 ## Abstract
 
-This paper derives the complete MUGE resonance 13-mode frequency spectrum as implemented in `compute_resonance_MUGE_SOURCE4()`.  All modes cascade from a single inertia-flux-vacuum base coupling $a_{\text{DPM}} = I \cdot A \cdot \Delta\omega \cdot f_{\text{DPM}} \cdot E_{\text{vac,neb}} \cdot c \cdot V$, modulated by the dual vacuum energy ratio $E_{\text{vac,neb}} / E_{\text{vac,ISM}} = 10$.  The spectrum includes THz phonon coupling, superconductive suppression, aether resonance with time-reversal zone (fTRZ) amplification, and Morris-Thorne wormhole metric vacuum coupling.  These modes predict continuous spectral features in LIGO strain power and THz-cavity oscillometry absent in General Relativity.
+The UQFF unified field $F_U = \sum_{i=1}^{4}(Ug_i + Ub_i) + Um + \text{Tr}(A_{\mu\nu})$ can be decomposed into a 13-mode frequency spectrum via the MUGE resonance formulation.  All 13 modes cascade from the aDPM inertia-flux-vacuum base $a_{\text{DPM}} = I \cdot A \cdot \Delta\omega \cdot f_{\text{DPM}} \cdot E_{\text{vac,neb}} \cdot c \cdot V$ — a coupling of rotational inertia, magnetic flux, and dual vacuum energy states that has no Newtonian or GR counterpart.  The dual vacuum ratio $E_{\text{vac,neb}} / E_{\text{vac,ISM}} = 10$ drives the differential $\Delta E_{\text{vac}} = 6.381 \times 10^{-36}\;\text{J/m}^3$ that modulates THz phonon coupling, aether resonance with time-reversal zone amplification, and Morris-Thorne wormhole metric coupling.  These modes predict continuous spectral features in LIGO strain power and THz-cavity oscillometry absent in both Newtonian and GR gravity.
 
-## §1 Novel Claim
+## §1 F_U and Its Resonance Decomposition
 
-The MUGE resonance framework is not a set of independent oscillations superposed on Newtonian gravity.  It is a **vacuum-energy-coupled frequency cascade** in which every mode derives from the aDPM base coupling and the dual vacuum energy states (nebular [UA] $= 7.09 \times 10^{-36}\;\text{J/m}^3$ vs. ISM [SCm] $= 7.09 \times 10^{-37}\;\text{J/m}^3$).  The 10:1 vacuum ratio drives the energy differential $\Delta E_{\text{vac}} = 6.381 \times 10^{-36}\;\text{J/m}^3$ that modulates all 13 modes.  This architecture predicts mode-locked frequency beating at astrophysical and nuclear scales absent in General Relativity, directly testable by LIGO/Virgo spectral line searches and THz laboratory oscillometry.
+The fundamental equation of gravity in the UQFF framework is:
+
+$$\boxed{F_U = \sum_{i=1}^{4}\bigl(Ug_i + Ub_i\bigr) + Um + \text{Tr}(A_{\mu\nu})}$$
+
+where $Ug_{1-4}$ are four independent gravitational force channels (internal dipole, outer field bubble, magnetic strings, star–BH vacuum), $Ub_i$ is universal buoyancy opposing each channel, $Um$ is universal magnetism, and $A_{\mu\nu} = g_{\mu\nu} + \eta \cdot T_s^{\mu\nu}$ is the Aether metric tensor.
+
+The MUGE resonance formulation decomposes $F_U$ into **frequency space**, re-expressing the four Ug channels and their buoyancy opposition as 13 coupled resonance modes built from a single base coupling.  This is not "oscillations superposed on Newtonian gravity."  It is the **frequency-domain representation of $F_U$ itself**.  The aDPM base couples rotational inertia, magnetic flux, and vacuum energy into a single gravitational acceleration — no mass/distance law appears.
+
+The 10:1 vacuum ratio $E_{\text{vac,neb}} / E_{\text{vac,ISM}}$ drives the energy differential $\Delta E_{\text{vac}} = 6.381 \times 10^{-36}\;\text{J/m}^3$ that modulates all 13 modes.  This architecture predicts mode-locked frequency beating at astrophysical and nuclear scales absent in both Newtonian and GR gravity, directly testable by LIGO/Virgo spectral line searches and THz laboratory oscillometry.
 
 ---
 

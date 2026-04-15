@@ -25,13 +25,37 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 ## Abstract
 
-This paper presents the MUGE (Modified Unified Gravity Equation) compressed and resonance master equations as implemented in SOURCE4 (`compute_compressed_MUGE_SOURCE4`, `compute_resonance_MUGE_SOURCE4`), QCalc.py (`MUGECalculator`), and CondensedPhysics2.py (`MUGECompressedNineTermCalculator`).  The compressed formulation uses a **multiplicative core** architecture: $g_{\text{core}} = (GM/r^2) \times (1 + H_0 t) \times (1 - B/B_{\text{crit}}) \times F_{\text{env}}$, with five additive UQFF terms ($\sum U_{g,i}$, $g_\Lambda$, $g_{\text{quantum}}$, $g_{\text{fluid}}$, $g_{\text{DM}}$) stacked on top.  The resonance formulation builds 13 modes from the aDPM inertia-flux-vacuum base, driven by the dual vacuum energy differential $\Delta E_{\text{vac}} = 6.381 \times 10^{-36}\;\text{J/m}^3$ between [UA] and [SCm] states.  MUGE predicts gravitational suppression near critical magnetic fields, THz phonon resonance signatures in GW strain, and vacuum-differential rotation curve modifications — all non-Newtonian, non-GR, and falsifiable.
+The gravitational field in the UQFF framework originates from the unified field equation $F_U = \sum_{i=1}^{4}(Ug_i + Ub_i) + Um + \text{Tr}(A_{\mu\nu})$ — four independent force channels (internal dipole, outer field bubble, magnetic strings, star–black hole vacuum), each opposed by universal buoyancy $Ub_i$, unified by magnetism $Um$ and the Aether metric tensor $A_{\mu\nu}$.  Newton's $GM/r^2$ is a **limiting case** that emerges when all non-gravitational channels collapse to Ug2 alone, SCm density → 0, buoyancy → 0, and Aether coupling η → 0.  The MUGE (Modified Unified Gravity Equation) compressed and resonance formulations are **re-expressions** of $F_U$ for practical multi-system computation: the compressed form packages $F_U$ into a 9-term multiplicative-additive structure; the resonance form decomposes $F_U$ into 13 frequency modes cascading from the aDPM inertia-flux-vacuum coupling.  MUGE predicts gravitational suppression near critical magnetic fields, THz phonon resonance signatures in GW strain, and vacuum-differential rotation curve modifications — all absent from both Newtonian and GR gravity.
 
-## §1 Novel Claim
+## §1 The UQFF Unified Field Equation — F_U
 
-The Modified Unified Gravity Equation (MUGE) is a **vacuum-energy-mediated, frequency-resonant gravity framework** — not "Newtonian plus small corrections."  Its two formulations are:
+The fundamental equation of gravity in the Star-Magic/UQFF framework is the **unified field equation** $F_U$, implemented in `compute_FU_SOURCE4()` (MAIN_1_CoAnQi.cpp) and `compute_FU()` (source4.cpp):
 
-1. **MUGE Compressed (9-term):** A multiplicative-additive hybrid where the Newtonian base is **modulated** by Hubble expansion, superconductive vacuum suppression $(1 - B/B_{\text{crit}})$, and environmental coupling **before** additive UQFF gravity ($\sum U_{g,i}$), dark matter, quantum, and fluid terms are applied.
+$$\boxed{F_U = \sum_{i=1}^{4}\bigl(Ug_i + Ub_i\bigr) + Um + \text{Tr}(A_{\mu\nu}) + D_{\text{diss}}}$$
+
+This is **not** Newton plus corrections.  It is four independent gravitational force channels, each with its own buoyancy opposition, unified by magnetism and the Aether metric:
+
+| Channel | Symbol | Physics | Formula |
+|---------|--------|---------|---------|
+| **Internal Dipole** | $Ug_1$ | DPM dipole monopole gravity | $k_1 \cdot \mu_s(t) \cdot \nabla(M_s/r) \cdot e^{-\alpha t} \cdot \cos(\pi t_n) \cdot (1 + \delta_{\text{def}})$ |
+| **Outer Field Bubble** | $Ug_2$ | Heliosphere charge-reactivity | $k_2 \cdot (Q_A + Q_{UA}) \cdot M_s/r^2 \cdot S(r - R_b) \cdot (1 + \delta_{sw} v_{sw}) \cdot H_{SCm} \cdot E_{\text{react}}$ |
+| **Magnetic Strings** | $Ug_3$ | 90° disk string rotation | $k_3 \cdot B_j(t) \cdot \cos(\omega_s t \cdot \pi) \cdot P_{\text{core}} \cdot E_{\text{react}}$ |
+| **Star–BH Vacuum** | $Ug_4$ | Vacuum concentration gradient | $k_4 \cdot \rho_{\text{vac}} \cdot C_{\text{conc}} \cdot M_{bh}/d_g \cdot e^{-\alpha t} \cdot \cos(\pi t_n) \cdot (1 + f_{\text{feedback}})$ |
+| **Buoyancy** | $Ub_i$ | Opposes each $Ug_i$ | $-\beta_i \cdot Ug_i \cdot \Omega_g \cdot M_{bh}/d_g \cdot (1 + \epsilon_{sw}\rho_{sw}) \cdot U_{UA} \cdot \cos(\pi t_n)$ |
+| **Magnetism** | $Um$ | $10^9$ magnetic strings | $N_{\text{str}} \cdot (\mu_j/r_j) \cdot (1 - e^{-\gamma t \cos(\pi t_n)}) \cdot \hat{\varphi} \cdot P_{SCm} \cdot E_{\text{react}}$ |
+| **Aether Tensor** | $A_{\mu\nu}$ | Metric + vacuum stress | $g_{\mu\nu} + \eta \cdot T_s^{\mu\nu}(\text{UA}, \text{SCm}, \rho_A)$ |
+| **Dissipation** | $D_{\text{diss}}$ | Energy loss to vacuum | $-\sum_{i=0}^{3} \lambda_i \cdot U_i(r,t) \cdot E_{\text{react}}$ |
+
+**Newton's limiting case:** When all channels collapse to $Ug_2$ alone with $Q_A = Q_{UA} = 0$, $H_{SCm} \to 1$, $E_{\text{react}} \to 1$, $S(r-R_b) \to 1$, and $\delta_{sw} \to 0$, the outer-field-bubble term reduces to $k_2 \cdot M_s/r^2 \to GM/r^2$.  This is where Newton lives — as a **single-channel, zero-vacuum, zero-buoyancy** limit of $F_U$.
+
+---
+
+## §1b MUGE as a Re-Expression of F_U
+
+The Modified Unified Gravity Equation (MUGE) is a **compressed re-expression** of $F_U$ for practical multi-system computation.  It packages the four Ug channels, buoyancy, magnetism, and Aether coupling into two equivalent formulations:
+
+1. **MUGE Compressed (9-term):** Re-expresses $F_U$ as a multiplicative-additive structure where the classical gravitational limit is modulated by SCm vacuum suppression, Hubble expansion, and environmental coupling.
+2. **MUGE Resonance (14-term):** Decomposes $F_U$ into 13 frequency modes cascading from the aDPM inertia-flux-vacuum coupling $a_{\text{DPM}} = I \cdot A \cdot \Delta\omega \cdot f_{\text{DPM}} \cdot E_{\text{vac}} \cdot c \cdot V$.
 
 2. **MUGE Resonance (14-term):** A frequency-differential equation built entirely from the aDPM base $a_{\text{DPM}} = I \cdot A \cdot \Delta\omega \cdot f_{\text{DPM}} \cdot E_{\text{vac}} \cdot c \cdot V$, which couples **rotational inertia**, **magnetic flux**, and **dual vacuum energy states** into 13 resonance modes spanning THz phonon, aether, quantum, fluid, and wormhole domains.
 
@@ -39,20 +63,22 @@ The **foundational distinction** from Newtonian and GR gravity: MUGE treats the 
 
 ---
 
-## §2 MUGE Compressed Master Equation
+## §2 MUGE Compressed — 9-Term Re-Expression of F_U
 
 ### §2.1 Multiplicative-Additive Architecture
 
-The MUGE compressed master equation is **NOT a simple sum of nine independent terms**.  The first four terms form a **multiplicatively coupled core**, and the remaining five terms are additively stacked:
+The MUGE compressed form re-expresses $F_U$ for practical computation.  It is **NOT** the fundamental equation — $F_U$ (§1) is.  The compressed form packages the four Ug channels into a multiplicative core using the classical gravitational limit as shorthand, modulated by vacuum and expansion factors:
 
-$$\boxed{g_{\text{MUGE}} = \underbrace{g_{\text{base}} \times F_{\text{exp}} \times F_{\text{super}} \times F_{\text{env}}}_{\text{multiplicative core}} \;+\; \sum_{i=1}^{4} U_{g,i} \;+\; g_\Lambda \;+\; g_{\text{quantum}} \;+\; g_{\text{fluid}} \;+\; g_{\text{DM}}}$$
+$$\boxed{g_{\text{MUGE}} = \underbrace{g_{\text{base}} \times F_{\text{exp}} \times F_{\text{super}} \times F_{\text{env}}}_{\text{multiplicative core (from } Ug_2 \text{ channel)}} \;+\; \sum_{i=1}^{4} U_{g,i} \;+\; g_\Lambda \;+\; g_{\text{quantum}} \;+\; g_{\text{fluid}} \;+\; g_{\text{DM}}}$$
 
-This multiplicative coupling is the central architectural distinction from Newtonian gravity.  The base gravitational field is **modulated** by cosmic expansion, vacuum superconductivity, and local environment **before** the additive corrections are applied.
+The $GM/r^2$ that appears in the multiplicative core is the **classical limit of the Ug2 channel** — the outer field bubble term with all vacuum, charge, and reactivity factors set to unity.  It is not Newton's equation being "corrected"; it is one channel of $F_U$ being re-expressed in a computationally compressed form.
 
 ### §2.2 Multiplicative Core (Terms 1–4)
 
-**Term 1 — Newtonian Base:**
+**Term 1 — Classical Limit (Ug2 channel shorthand):**
 $$g_{\text{base}} = \frac{G M}{r^2}$$
+
+This is the **classical limit** of the Ug2 outer-field-bubble channel: $k_2 \cdot (Q_A + Q_{UA}) \cdot M_s/r^2 \cdot S(r-R_b) \cdot (1+\delta_{sw}v_{sw}) \cdot H_{SCm} \cdot E_{\text{react}}$ → $GM/r^2$ when all vacuum couplings → 1, charges → 0, reactivity → 1.  Newton's law is where this channel goes when you turn off the UQFF physics.
 
 **Term 2 — Hubble Expansion Modulation:**
 $$F_{\text{exp}} = (1 + H_0 \cdot t)$$
@@ -165,9 +191,9 @@ The multiplicative coupling produces **qualitatively different** results from an
 
 ---
 
-## §4 Standard Model Comparison — Why MUGE ≠ Newtonian + Corrections
+## §4 Why F_U ≠ Newton, Why F_U ≠ GR
 
-GR provides $R_{\mu\nu} - \frac{1}{2} g_{\mu\nu} R = 8\pi G T_{\mu\nu}$ with **no mechanism** for:
+The unified field $F_U = \sum(Ug_i + Ub_i) + Um + A_{\mu\nu}$ is structurally different from both frameworks:
 
 1. **Multiplicative vacuum suppression**: MUGE's $(1 - B/B_{\text{crit}})$ factor means the gravitational field is **modulated by the local magnetic field intensity**.  GR treats gravity and electromagnetism as independently mediated.  MUGE unifies them through the SCm vacuum manifold.
 
