@@ -3,7 +3,7 @@
 **Integration Date**: March 13, 2026  
 **Source**: Grok Thread 4e0ecf23 - Star Magic Unified Framework  
 **Purpose**: Epoch framework + Enhanced UQFF documentation integration  
-**Last Synced**: April 2026 — Session 220 Housekeeping (commit `8402a8f1`)
+**Last Synced**: April 2026 — Session 225 (commit `3ba0ad46`)
 
 ### Session Sync Status (Sessions 58–115)
 | Session | Commit | CP3 Total | CP2 Total | CP4 Total | Aggregator | Papers |
@@ -163,6 +163,10 @@
 | **219** | `f3582baa` | **219** | **659** | **570** | **v3.6.0** | **1008/1000** |
 | **220** | `b6e6e412` | **219** | **659** | **580** | **v3.8.0** | **1018/1000** |
 | **220 HK** | `8402a8f1` | **219** | **659** | **580** | **v4.0.0** | **1018/1000** |
+| **221** | `59b843d1` | **219** | **680** | **540** | **v4.0.0** | **1018/1000** |
+| **222** | `dc3ad0f2` | **219** | **680** | **540** | **v4.0.0** | **1018/1000** |
+| **223–224** | `83d4a84c` | **219** | **680** | **540** | **v4.0.0** | **1077/1000** |
+| **225** | `3ba0ad46` | **219** | **680** | **540** | **v4.0.0** | **1090/1000** |
 
 **Current State**: CP1 = 1,227 calculators, CP2 = 659 calculators, CP3 = 219 calculators, CP4 = 580 classes (v5.75), **1018/1000 papers** (101.8%); Session 220 v5.75: 3C273/TON618 AGN + GW170817 + SMBH merger + SCm DM halos + TXS0506 3-Gamma; PAPER_1009–1018; WSTP #56-57; REST 22 routes; 1033 PDFs; Session 220 Housekeeping: Aggregator v4.0.0 — wildcard CP4 import (1,514 dynamically discovered), 25 standalone modules (98 classes), ALL_CALCULATORS=1,671; CP2/CP3/CP4 bug fixes
 

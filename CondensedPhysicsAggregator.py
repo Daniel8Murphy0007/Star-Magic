@@ -8,13 +8,13 @@ CondensedPhysics calculator modules. This enables scalable file clustering
 while maintaining a single-import API.
 
 ARCHITECTURE:
-    CondensedPhysics.py      → Foundation (1,227 base classes, 168,803 lines)
-    CondensedPhysics2.py     → Extension 1 (668 classes, 48,679+ lines: Orb Analysis 10/11+ + Grok thread extensions + Session 137 _84A767D3 + Session 138 SOURCE179 + Session 151 Millennium Prize)
-    CondensedPhysics3.py     → Extension 2 (219 classes, 13,944 lines: 15+ categories, Sessions 41-96)
-    CondensedPhysics4.py     → Extension 3 (580 classes, Sessions 97-220, v5.75)
-    + 29 standalone physics modules (Sessions 204-220)
-    Last updated: Session 220 v5.75 (2026-04-13) — Housekeeping: aggregator catch-up for Sessions 204-220; 1018 papers; 1033 PDFs
-    CondensedPhysicsAggregator.py → This file (unified API, v3.5.0)
+    CondensedPhysics.py      → Foundation (1,264 base classes, 172,384 lines)
+    CondensedPhysics2.py     → Extension 1 (680 classes, 50,893 lines: Orb Analysis 10/11+ + Grok thread extensions + Session 137 _84A767D3 + Session 138 SOURCE179 + Session 151 Millennium Prize)
+    CondensedPhysics3.py     → Extension 2 (219 classes, 13,943 lines: 15+ categories, Sessions 41-96)
+    CondensedPhysics4.py     → Extension 3 (540 classes, 40,597 lines, Sessions 97-225, v5.72)
+    + 29+ standalone physics modules (Sessions 204-225)
+    Last updated: Session 225 (2026-04-15) — tracking sync; 1,090 papers; 1,096 PDFs
+    CondensedPhysicsAggregator.py → This file (unified API, v4.1.0)
 
 USAGE:
     # Import everything from unified API
@@ -33,7 +33,7 @@ Created: February 27, 2026
 """
 
 # ═══════════════════════════════════════════════════════════════════════════════
-# IMPORT FROM CONDENSEDPHYSICS.PY (FOUNDATION - 1011 base classes)
+# IMPORT FROM CONDENSEDPHYSICS.PY (FOUNDATION - 1,264 base classes)
 # ═══════════════════════════════════════════════════════════════════════════════
 
 from CondensedPhysics import *

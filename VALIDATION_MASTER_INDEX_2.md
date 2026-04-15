@@ -38,26 +38,26 @@ arXiv anchor:            arxiv_validation_data.csv
 
 ---
 
-## CURRENT STATE — SESSION 209 METRICS
+## CURRENT STATE — SESSION 225 METRICS
 
 | Metric | Value |
 |--------|-------|
-| **Total Whitepapers (VMI + VMI2)** | **900 / 1,000** (90.0%) |
-| **900 in whitepapers/ (all QS=5)** | ✅ All 5 content quality dimensions complete (Sessions 113–209) |
-| **CP1 Calculator Classes** | **1,227** (CondensedPhysics.py, 168,803 lines) |
-| **CP4 Calculator Classes** | **484** (CondensedPhysics4.py — v5.62; #462–#484 Session 209: Sessions 204-208 integration 23 classes; #454–#461 Session 200C: 8 classes; #447–#453 Session 200: 7 classes; #438–#446 Session 199: 9 classes; #416–#437 Sessions 195–198: 22 classes; #378–#415 Sessions 189–194: 38 classes; #335–#377 Session 181: 43 classes) |
+| **Total Whitepapers (VMI + VMI2)** | **1,090 / 1,000** (109.0% — target exceeded) |
+| **1,090 in whitepapers/ (all QS=5)** | ✅ All 5 content quality dimensions complete (Sessions 113–225) |
+| **CP1 Calculator Classes** | **1,264** (CondensedPhysics.py, 172,384 lines) |
+| **CP4 Calculator Classes** | **540** (CondensedPhysics4.py — v5.72, 40,597 lines; Sessions 209–225 additions + Session 220 HK phantom cleanup) |
 | **CP3 Calculator Classes** | **219** (CondensedPhysics3.py, 13,944 lines; unchanged Sessions 132â€"204) |
-| **CP2 Calculator Classes** | **659** (CondensedPhysics2.py; +25 Session 173: GW/superfluid/M87 modules; last updated Session 176) |
-| **QCalc.py Calculators** | **27 classes** (9,833 lines â€" unchanged Sessions 132â€"204) |
+| **CP2 Calculator Classes** | **680** (CondensedPhysics2.py, 50,893 lines; last updated Session 176) |
+| **QCalc.py Calculators** | **32 classes** (10,229 lines â€" unchanged Sessions 132â€"204) |
 | **C++ Modules (full UQFF 2.0)** | **51 modules** (Sessions 63â€"138) â€" source179.cpp (Session 138) + 50 prior modules; 6,688+ physics terms; Batch 22+23 registered |
-| **Standalone Python Modules** | **15 modules** (Sessions 204-208): kozima_scm_cross_section.py, scm_activation_function.py, buoyancy_lagrangian_eom.py, wstp_symbolic_exporter.py, cosmogenesis_montecarlo_v2.py, production_scaling_v4.py, wstp_kernel_demo_runner.py, montecarlo_rest_exporter.py, scm_lab_replication_protocol.py (S204), positive_et_expansion.py + negative_et_erosion.py + uqff_vs_string_comparison.py (S205), et_full_lagrangian.py (S206), et_scm_vacuum.py (S207), et_phonon_resonance.py (S208) |
+| **Standalone Python Modules** | **29+ modules** (Sessions 204–225): kozima_scm_cross_section.py, scm_activation_function.py, buoyancy_lagrangian_eom.py, wstp_symbolic_exporter.py, cosmogenesis_montecarlo_v2.py, production_scaling_v4.py, wstp_kernel_demo_runner.py, montecarlo_rest_exporter.py, scm_lab_replication_protocol.py (S204), positive_et_expansion.py + negative_et_erosion.py + uqff_vs_string_comparison.py (S205), et_full_lagrangian.py (S206), et_scm_vacuum.py (S207), et_phonon_resonance.py (S208) |
 | **VMI2 opens at Session** | **89** |
 | **VMI2 opens at paper** | **PAPER_311** |
 | **Last VMI session** | Session 88: v4.44; PAPER_308â€“310; commit 307â†’310 âœ… |
-| **Last VMI2 session** | Session 209 v5.62: Sessions 204-208 standalone module integration — 23 new CP4 classes (#462–#484); PAPER_878–900; SCm activation + buoyancy Klein-Gordon + E±(t) engines + Lagrangians + String/ΛCDM/quintessence/k-essence comparisons + SCm vacuum + phonon resonance; 900/1000 papers (90.0%); Aggregator v3.5.0 |
-| **PDFs generated** | **919+ PDFs** in pdf/ directory (Session 209: PAPER_878–900 23 PDFs + 9 upgraded paper PDFs regenerated; Session 200C: PAPER_870–877 8 PDFs; Session 200: PAPER_863–869 7 PDFs; Session 199: PAPER_854–862 9 PDFs; Session 198: PAPER_853 1 PDF; Session 197: PAPER_842–852 11 PDFs; Session 196: PAPER_835–841 7 PDFs; Session 195: PAPER_832–834 3 PDFs; Sessions 189–194: PAPER_794–831 38 PDFs; Session 187b: 3 orphan PDFs rebuilt; Session 187: 805/805 glyph-repaired; A4 595x842 standardized Session 182) |
+| **Last VMI2 session** | Session 225 v5.75+: PAPER_1078–1081 gap modules + body-level PKG integration 177 papers + cross-reference update + MUGE paper overflow fixes (090/173/473/492); 1,090 papers (109.0%); commit 3ba0ad46 |
+| **PDFs generated** | **1,096 PDFs** in pdf/ directory (Session 209: PAPER_878–900 23 PDFs + 9 upgraded paper PDFs regenerated; Session 200C: PAPER_870–877 8 PDFs; Session 200: PAPER_863–869 7 PDFs; Session 199: PAPER_854–862 9 PDFs; Session 198: PAPER_853 1 PDF; Session 197: PAPER_842–852 11 PDFs; Session 196: PAPER_835–841 7 PDFs; Session 195: PAPER_832–834 3 PDFs; Sessions 189–194: PAPER_794–831 38 PDFs; Session 187b: 3 orphan PDFs rebuilt; Session 187: 805/805 glyph-repaired; A4 595x842 standardized Session 182) |
 
-### Session 209 Corpus Analysis (900/900 papers scanned)
+### Session 225 Corpus Analysis (1,090/1,090 papers scanned)
 
 | Metric | Coverage | Count | Missing |
 |--------|----------|-------|---------|
@@ -469,6 +469,10 @@ Select-String -Path "VALIDATION_MASTER_INDEX.md","VALIDATION_MASTER_INDEX_2.md" 
 | v5.74 | Session 219 | 2026-04-11 | PAPER_1007–1012; CP4 576→578; 6 PDFs; 1012/1000 (101.2%); commit f3582baa ✓ |
 | v5.75 | Session 220 | 2026-04-11 | PAPER_1013–1018; CP4 578→580; 6 PDFs; 1018/1000 (101.8%); commit b6e6e412 ✓ |
 | v5.75 | Session 220 HK | 2026-04-11 | Aggregator v4.0.0 — wildcard CP4 import (1,514 classes) + 25 standalone module imports (98 classes); ALL_CALCULATORS=1,671; CP2/CP3/CP4 bug fixes (16 stale imports, ORB_ANALYSIS_60_PARAMS, dict syntax, 7 phantom __all__); commit 8402a8f1 ✓ |
+| v5.75+ | Session 221 | 2026-04-12 | 20 new physics calculators from concepts-to-calculate.txt gap analysis; Gold Standard audit — 60 papers upgraded to full CVW v2.0.0; 199 sections added; 1,012/1,012 compliant; avg score 92.7→94.9; commit e781fd81+59b843d1 ✓ |
+| v5.75+ | Session 222 | 2026-04-12 | 13 new calculators (8 SCm galaxy clusters/mock-theta/F_U_Bi_i + 2 NS/YM/Ug4 report + 3 GPU DPM Atlas/9-system synthesis/SCm-UA duality); commits 77862de6+75f1d751+dc3ad0f2 ✓ |
+| v5.75+ | Sessions 223–224 | 2026-04-13 | 10 new physics modules; PAPER_1073–1077; production scaling v16–v17; commit 83d4a84c ✓ |
+| v5.75+ | Session 225 | 2026-04-14 | 5 gap modules + production_scaling_v18; PAPER_1078–1081; body-level PKG integration 177 papers; cross-reference update PAPER_517+754; comprehensive audit 1,085→1,090 papers + 1,090→1,096 PDFs; MUGE paper overflow fixes (PAPER_491/090/173/473/492 display math + table restructuring); commits 5188ba0a→3ba0ad46 ✓ |
 ---
 
 *VMI2 is the continuation of VALIDATION_MASTER_INDEX.md. Together VMI + VMI2 constitute the complete Star-Magic UQFF whitepaper production ledger. For duplication checks, search both files. For audit execution, follow cross-validation-of-whitepapers.md.*
