@@ -130,10 +130,17 @@
 \newunicodechar{λ}{\ensuremath{\lambda}}       % U+03BB
 
 % ── Table and text overflow prevention ──────────────────────────────────────
-\tolerance=1000
+\sloppy
+\tolerance=9999
 \emergencystretch=3em
+\hfuzz=2pt
 \usepackage{etoolbox}
 \AtBeginEnvironment{longtable}{\footnotesize}
+% Force all verbatim/code to break lines
+\usepackage{fvextra}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{breaklines,commandchars=\\\{\}}
+% Prevent overfull hbox from inline math
+\setlength{\mathsurround}{0pt}
 \newunicodechar{μ}{\ensuremath{\mu}}           % U+03BC
 \newunicodechar{ν}{\ensuremath{\nu}}           % U+03BD
 \newunicodechar{ξ}{\ensuremath{\xi}}           % U+03BE
