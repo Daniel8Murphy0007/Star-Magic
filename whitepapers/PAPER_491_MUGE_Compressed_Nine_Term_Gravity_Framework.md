@@ -25,15 +25,19 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 ## Abstract
 
-The MUGE (Modified Unified Gravity Equation) compressed formulation is a 9-term multiplicative-additive master equation for gravity, derived from the UQFF unified field equation $F_U = \sum_{i=1}^{4}(Ug_i + Ub_i) + Um + \text{Tr}(A_{\mu\nu})$.  It packages four independent force channels — internal dipole, outer field bubble, magnetic strings, star–black hole vacuum — each opposed by universal buoyancy $Ub_i$, unified by magnetism $Um$ and the Aether metric tensor $A_{\mu\nu}$, into a computationally tractable structure.  Newton's $GM/r^2$ appears within MUGE only as a mass-distance kernel — a **limiting case** of the Ug2 channel when all non-gravitational couplings vanish.  MUGE predicts gravitational suppression near critical magnetic fields, THz phonon resonance signatures in GW strain, and vacuum-differential rotation curve modifications — all absent from both Newtonian and GR gravity.
+The MUGE (Modified Unified Gravity Equation) compressed formulation is a 9-term multiplicative-additive master equation for gravity: $g_{\text{MUGE}} = g_{\text{core}} \cdot F_{\text{exp}} \cdot F_{\text{super}} \cdot F_{\text{env}} + \sum U_{g,i} + g_\Lambda + g_{\text{quantum}} + g_{\text{fluid}} + g_{\text{DM}}$, derived from the UQFF unified field equation $F_U = \sum_{i=1}^{4}(Ug_i + Ub_i) + Um + \text{Tr}(A_{\mu\nu})$.  It packages four independent force channels — internal dipole, outer field bubble, magnetic strings, star–black hole vacuum — each opposed by universal buoyancy $Ub_i$, unified by magnetism $Um$ and the Aether metric tensor $A_{\mu\nu}$, into a computationally tractable structure.  MUGE predicts gravitational suppression near critical magnetic fields, THz phonon resonance signatures in GW strain, and vacuum-differential rotation curve modifications — all absent from both Newtonian and GR gravity.
 
 ## §1 MUGE Compressed Master Equation
 
-From `compute_compressed_MUGE_SOURCE4()` (MAIN_1_CoAnQi.cpp) and `compute_compressed_MUGE()` (source4.cpp), the MUGE master equation in full long-form is:
+From `compute_compressed_MUGE_SOURCE4()` (MAIN_1_CoAnQi.cpp) and `compute_compressed_MUGE()` (source4.cpp), the MUGE master equation is:
 
-$$\boxed{g_{\text{MUGE}}(r,t) = \frac{GM}{r^2}(1 + H_0 t)\!\left(1 - \frac{B}{B_{\text{crit}}}\right)\!F_{\text{env}} \;+\; \sum_{i=1}^{4} U_{g,i} \;+\; \frac{\Lambda c^2}{3} \;+\; \frac{\hbar}{\Delta x \cdot \Delta p}\!\int\!\psi^*\hat{H}\psi\,dV\cdot\frac{2\pi}{t_H} \;+\; \rho_f V_{\text{sys}} g_{\text{local}} \;+\; (M + M_{\text{DM}})\!\left(\frac{\delta\rho}{\rho} + \frac{3GM}{r^3}\right)}$$
+$$\boxed{g_{\text{MUGE}}(r,t) = g_{\text{core}} \cdot F_{\text{exp}} \cdot F_{\text{super}} \cdot F_{\text{env}} \;+\; \sum_{i=1}^{4} U_{g,i} \;+\; g_\Lambda \;+\; g_{\text{quantum}} \;+\; g_{\text{fluid}} \;+\; g_{\text{DM}}}$$
 
 The first four factors form a **multiplicative core**; the remaining five terms are additive.  This is a re-expression of the unified field $F_U$ (§2) for practical multi-system computation.
+
+Expanded in full long-form:
+
+$$g_{\text{MUGE}}(r,t) = \frac{GM}{r^2}(1 + H_0 t)\!\left(1 - \frac{B}{B_{\text{crit}}}\right)\!F_{\text{env}} \;+\; \sum_{i=1}^{4} U_{g,i} \;+\; \frac{\Lambda c^2}{3} \;+\; \frac{\hbar}{\Delta x \cdot \Delta p}\!\int\!\psi^*\hat{H}\psi\,dV\cdot\frac{2\pi}{t_H} \;+\; \rho_f V_{\text{sys}} g_{\text{local}} \;+\; (M + M_{\text{DM}})\!\left(\frac{\delta\rho}{\rho} + \frac{3GM}{r^3}\right)$$
 
 ### §1.1 Multiplicative Core (Terms 1–4)
 
