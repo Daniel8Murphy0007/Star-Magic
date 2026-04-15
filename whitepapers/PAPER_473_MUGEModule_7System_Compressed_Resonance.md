@@ -33,11 +33,11 @@ $$\boxed{F_U = \sum_{i=1}^{4}\bigl(Ug_i + Ub_i\bigr) + Um + \text{Tr}(A_{\mu\nu}
 
 The four Ug channels — internal dipole ($Ug_1$), outer field bubble ($Ug_2$), magnetic strings ($Ug_3$), and star–BH vacuum ($Ug_4$) — each encode a distinct gravitational force with its own vacuum coupling, time dependence ($\cos(\pi t_n)$), and reactivity ($E_{\text{react}}$).  Universal buoyancy $Ub_i = -\beta_i \cdot Ug_i \cdot \Omega_g$ opposes each channel.  $Um$ unifies via $10^9$ magnetic strings.  $A_{\mu\nu} = g_{\mu\nu} + \eta \cdot T_s^{\mu\nu}$ is the Aether metric.
 
-The MUGE formulations **re-express** $F_U$ for practical multi-system computation:
+The MUGE formulations **re-express** $F_U$ for practical multi-system computation.  The MUGE compressed master equation in full long-form:
 
-$$g_{\text{MUGE}} = \underbrace{\frac{GM}{r^2} \cdot (1 + H_0 t) \cdot \left(1 - \frac{B}{B_{\text{crit}}}\right) \cdot F_{\text{env}}}_{\text{Ug2 classical limit × vacuum modulation}} \;+\; \sum_{i=1}^{4} U_{g,i} \;+\; g_\Lambda \;+\; g_{\text{quantum}} \;+\; g_{\text{fluid}} \;+\; g_{\text{DM}}$$
+$$\boxed{g_{\text{MUGE}}(r,t) = \frac{GM}{r^2}(1 + H_0 t)\!\left(1 - \frac{B}{B_{\text{crit}}}\right)\!F_{\text{env}} \;+\; \sum_{i=1}^{4} U_{g,i} \;+\; \frac{\Lambda c^2}{3} \;+\; \frac{\hbar}{\Delta x \cdot \Delta p}\!\int\!\psi^*\hat{H}\psi\,dV\cdot\frac{2\pi}{t_H} \;+\; \rho_f V_{\text{sys}} g_{\text{local}} \;+\; (M + M_{\text{DM}})\!\left(\frac{\delta\rho}{\rho} + \frac{3GM}{r^3}\right)}$$
 
-The $GM/r^2$ in the multiplicative core is the **classical limit of the Ug2 outer-field-bubble channel** — not Newton's equation being "corrected."
+The first four factors form a multiplicative core; the remaining five terms are additive.
 
 ---
 

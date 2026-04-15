@@ -50,17 +50,19 @@ $$\boxed{F_U = \sum_{i=1}^{4}\bigl(Ug_i + Ub_i\bigr) + Um + \text{Tr}(A_{\mu\nu}
 
 **Newton's $GM/r^2$ is the limiting case** of $Ug_2$ when all vacuum couplings, charges, SCm density, and reactivity factors → 1 or 0.
 
-## 1b. MUGE Compressed Re-Expression
+## 1b. MUGE Compressed Master Equation
 
-The MUGE compressed form packages $F_U$ into a 9-term multiplicative-additive structure:
+From `compute_compressed_MUGE_SOURCE4()`, the MUGE master equation in full long-form:
 
-$$\boxed{g_{\text{MUGE}}^{\text{Comp}} = \underbrace{\frac{GM}{r^2} \times (1 + H_0 t) \times \left(1 - \frac{B}{B_{\text{crit}}}\right) \times F_{\text{env}}}_{\text{multiplicative core (Ug2 classical limit)}} \;+\; \sum_{i=1}^{4} U_{g,i} \;+\; \frac{\Lambda c^2}{3} \;+\; g_{\text{quantum}} \;+\; g_{\text{fluid}} \;+\; g_{\text{DM}}}$$
+$$\boxed{g_{\text{MUGE}}(r,t) = \frac{GM}{r^2}(1 + H_0 t)\!\left(1 - \frac{B}{B_{\text{crit}}}\right)\!F_{\text{env}} \;+\; \sum_{i=1}^{4} U_{g,i} \;+\; \frac{\Lambda c^2}{3} \;+\; \frac{\hbar}{\Delta x \cdot \Delta p}\!\int\!\psi^*\hat{H}\psi\,dV\cdot\frac{2\pi}{t_H} \;+\; \rho_f V_{\text{sys}} g_{\text{local}} \;+\; (M + M_{\text{DM}})\!\left(\frac{\delta\rho}{\rho} + \frac{3GM}{r^3}\right)}$$
+
+The first four factors form a multiplicative core; the remaining five terms are additive.
 
 ### Term Architecture
 
 | Term | Role | Formula | Physics |
 |------|------|---------|---------|
-| **Classical Limit** | Ug2 shorthand | $GM/r^2$ | Zero-vacuum limit of outer-field-bubble channel |
+| **Mass-distance kernel** | ×  multiplicative | $GM/r^2$ | Gravitational mass-distance base |
 | **Expansion** | ×  multiplicative | $(1 + H_0 t)$, $H_0 = 2.269 \times 10^{-18}\;\text{s}^{-1}$ | Hubble stretching of gravitational field |
 | **Superconductive** | ×  multiplicative | $(1 - B/B_{\text{crit}})$, $B_{\text{crit}} = 4.4 \times 10^{13}\;\text{T}$ | **SCm vacuum suppression** — gravity weakens as $B \to B_{\text{crit}}$ |
 | **Envelope** | ×  multiplicative | $F_{\text{env}}(r, \theta, z)$ | 15-parameter environmental modulator |

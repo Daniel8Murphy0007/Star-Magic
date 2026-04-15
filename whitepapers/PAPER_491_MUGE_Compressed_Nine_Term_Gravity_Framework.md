@@ -63,48 +63,26 @@ The **foundational distinction** from Newtonian and GR gravity: MUGE treats the 
 
 ---
 
-## §2 MUGE Compressed — 9-Term Re-Expression of F_U
+## §2 MUGE Compressed Master Equation
 
-### §2.1 Multiplicative-Additive Architecture
+### §2.1 The Complete MUGE Master Equation
 
-The MUGE compressed form re-expresses $F_U$ for practical computation.  It is **NOT** the fundamental equation — $F_U$ (§1) is.  The compressed form packages the four Ug channels into a multiplicative core using the classical gravitational limit as shorthand, modulated by vacuum and expansion factors:
+From `compute_compressed_MUGE_SOURCE4()` (MAIN_1_CoAnQi.cpp) and `compute_compressed_MUGE()` (source4.cpp), the MUGE master equation in full long-form is:
 
-$$\boxed{g_{\text{MUGE}} = \underbrace{Ug_2 \times F_{\text{exp}} \times F_{\text{super}} \times F_{\text{env}}}_{\text{multiplicative core}} \;+\; \sum_{i=1}^{4} U_{g,i} \;+\; g_\Lambda \;+\; g_{\text{quantum}} \;+\; g_{\text{fluid}} \;+\; g_{\text{DM}}}$$
+$$\boxed{g_{\text{MUGE}}(r,t) = \frac{GM}{r^2}(1 + H_0 t)\!\left(1 - \frac{B}{B_{\text{crit}}}\right)\!F_{\text{env}} \;+\; \sum_{i=1}^{4} U_{g,i} \;+\; \frac{\Lambda c^2}{3} \;+\; \frac{\hbar}{\Delta x \cdot \Delta p}\!\int\!\psi^*\hat{H}\psi\,dV\cdot\frac{2\pi}{t_H} \;+\; \rho_f V_{\text{sys}} g_{\text{local}} \;+\; (M + M_{\text{DM}})\!\left(\frac{\delta\rho}{\rho} + \frac{3GM}{r^3}\right)}$$
 
-The $Ug_2$ in the multiplicative core is the **outer-field-bubble channel** of $F_U$ — a charge-reactivity-vacuum coupling, not Newton's $GM/r^2$.  The classical limit $GM/r^2$ only emerges when all vacuum, charge, and SCm factors are set to their zero-coupling defaults.
+The first four factors form a **multiplicative core**; the remaining five terms are additive.  This is a re-expression of the unified field $F_U$ (§1) for practical multi-system computation.
 
-### §2.2 Multiplicative Core — The Ug2 Channel with Vacuum Modulation
+### §2.2 Term-by-Term Decomposition
 
-The multiplicative core of the MUGE compressed form is the **full Ug2 outer-field-bubble channel** modulated by expansion, superconductive suppression, and environmental coupling:
+**Multiplicative Core (Terms 1–4):**
 
-$$g_{\text{core}} = \underbrace{k_2 \cdot (Q_A + Q_{UA}) \cdot \frac{M_s}{r^2} \cdot S(r - R_b) \cdot (1 + \delta_{sw} v_{sw}) \cdot H_{SCm} \cdot E_{\text{react}}}_{Ug_2\text{ — outer field bubble}} \cdot \underbrace{(1 + H_0 t)}_{\text{expansion}} \cdot \underbrace{\left(1 - \frac{B}{B_{\text{crit}}}\right)}_{\text{SCm suppression}} \cdot \underbrace{F_{\text{env}}(r,\theta,z)}_{\text{envelope}}$$
+$$g_{\text{core}} = \frac{GM}{r^2} \cdot (1 + H_0 t) \cdot \left(1 - \frac{B}{B_{\text{crit}}}\right) \cdot F_{\text{env}}$$
 
-This is a **single UQFF channel** — not Newton with corrections bolted on.  The four multiplicative factors:
-
-**Term 1 — Ug2 Outer Field Bubble:**
-$$Ug_2 = k_2 \cdot (Q_A + Q_{UA}) \cdot \frac{M_s}{r^2} \cdot S(r - R_b) \cdot (1 + \delta_{sw} v_{sw}) \cdot H_{SCm} \cdot E_{\text{react}}$$
-
-Charge-reactivity coupling ($Q_A + Q_{UA}$) through the heliospheric boundary ($S(r - R_b)$), mediated by SCm vacuum density ($H_{SCm}$) and system reactivity ($E_{\text{react}}$).  The $M_s/r^2$ factor is the mass-distance kernel, not Newton's law.
-
-> **Classical limit:** When $Q_A = Q_{UA} = 0$, $H_{SCm} \to 1$, $E_{\text{react}} \to 1$, $S(r-R_b) \to 1$, $\delta_{sw} \to 0$: $Ug_2 \to GM/r^2$.  That is Newton's law — the **zero-vacuum, zero-buoyancy, zero-charge** limit of a single channel of $F_U$.
-
-**Term 2 — Hubble Expansion Modulation:**
-$$F_{\text{exp}} = (1 + H_0 \cdot t)$$
-
-where $H_0 = 2.269 \times 10^{-18}\;\text{s}^{-1}$ is the Hubble constant and $t$ is the system age.  This is **not** an additive correction; it multiplicatively stretches the gravitational field with cosmic expansion, coupling gravity to the age of the universe.
-
-**Term 3 — Superconductive Vacuum Suppression [SCm]:**
-$$F_{\text{super}} = \left(1 - \frac{B}{B_{\text{crit}}}\right)$$
-
-where $B_{\text{crit}} = 4.4 \times 10^{13}\;\text{T}$ is the Schwinger QED critical field.  **Gravity is suppressed as the local magnetic field approaches $B_{\text{crit}}$.**  For magnetars ($B \sim 10^{11}\;\text{T}$), this produces measurable gravitational weakening — a uniquely UQFF prediction absent from both Newtonian and GR gravity.
-
-**Term 4 — Environmental Envelope:**
-$$F_{\text{env}} = f_{\text{env}}(r, \theta, z)$$
-
-A system-specific modular factor encoding 15 environmental parameters (stellar boundary, accretion geometry, tidal field).  In the compressed form: $F_{\text{env}} = 1.0$ (neutral), expandable per system.
-
-**Multiplicative core result:**
-$$g_{\text{core}} = Ug_2 \cdot (1 + H_0 t) \cdot \left(1 - \frac{B}{B_{\text{crit}}}\right) \cdot F_{\text{env}}$$
+- **$GM/r^2$** — mass-distance kernel
+- **$(1 + H_0 t)$** — Hubble expansion modulation, $H_0 = 2.269 \times 10^{-18}\;\text{s}^{-1}$
+- **$(1 - B/B_{\text{crit}})$** — SCm superconductive vacuum suppression, $B_{\text{crit}} = 4.4 \times 10^{13}\;\text{T}$.  Gravity weakens as local magnetic field approaches $B_{\text{crit}}$.
+- **$F_{\text{env}}(r, \theta, z)$** — 15-parameter environmental envelope
 
 ### §2.3 Additive Corrections (Terms 5–9)
 
