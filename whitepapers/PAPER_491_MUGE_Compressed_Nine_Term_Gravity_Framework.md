@@ -69,16 +69,24 @@ The **foundational distinction** from Newtonian and GR gravity: MUGE treats the 
 
 The MUGE compressed form re-expresses $F_U$ for practical computation.  It is **NOT** the fundamental equation — $F_U$ (§1) is.  The compressed form packages the four Ug channels into a multiplicative core using the classical gravitational limit as shorthand, modulated by vacuum and expansion factors:
 
-$$\boxed{g_{\text{MUGE}} = \underbrace{g_{\text{base}} \times F_{\text{exp}} \times F_{\text{super}} \times F_{\text{env}}}_{\text{multiplicative core (from } Ug_2 \text{ channel)}} \;+\; \sum_{i=1}^{4} U_{g,i} \;+\; g_\Lambda \;+\; g_{\text{quantum}} \;+\; g_{\text{fluid}} \;+\; g_{\text{DM}}}$$
+$$\boxed{g_{\text{MUGE}} = \underbrace{Ug_2 \times F_{\text{exp}} \times F_{\text{super}} \times F_{\text{env}}}_{\text{multiplicative core}} \;+\; \sum_{i=1}^{4} U_{g,i} \;+\; g_\Lambda \;+\; g_{\text{quantum}} \;+\; g_{\text{fluid}} \;+\; g_{\text{DM}}}$$
 
-The $GM/r^2$ that appears in the multiplicative core is the **classical limit of the Ug2 channel** — the outer field bubble term with all vacuum, charge, and reactivity factors set to unity.  It is not Newton's equation being "corrected"; it is one channel of $F_U$ being re-expressed in a computationally compressed form.
+The $Ug_2$ in the multiplicative core is the **outer-field-bubble channel** of $F_U$ — a charge-reactivity-vacuum coupling, not Newton's $GM/r^2$.  The classical limit $GM/r^2$ only emerges when all vacuum, charge, and SCm factors are set to their zero-coupling defaults.
 
-### §2.2 Multiplicative Core (Terms 1–4)
+### §2.2 Multiplicative Core — The Ug2 Channel with Vacuum Modulation
 
-**Term 1 — Classical Limit (Ug2 channel shorthand):**
-$$g_{\text{base}} = \frac{G M}{r^2}$$
+The multiplicative core of the MUGE compressed form is the **full Ug2 outer-field-bubble channel** modulated by expansion, superconductive suppression, and environmental coupling:
 
-This is the **classical limit** of the Ug2 outer-field-bubble channel: $k_2 \cdot (Q_A + Q_{UA}) \cdot M_s/r^2 \cdot S(r-R_b) \cdot (1+\delta_{sw}v_{sw}) \cdot H_{SCm} \cdot E_{\text{react}}$ → $GM/r^2$ when all vacuum couplings → 1, charges → 0, reactivity → 1.  Newton's law is where this channel goes when you turn off the UQFF physics.
+$$g_{\text{core}} = \underbrace{k_2 \cdot (Q_A + Q_{UA}) \cdot \frac{M_s}{r^2} \cdot S(r - R_b) \cdot (1 + \delta_{sw} v_{sw}) \cdot H_{SCm} \cdot E_{\text{react}}}_{Ug_2\text{ — outer field bubble}} \cdot \underbrace{(1 + H_0 t)}_{\text{expansion}} \cdot \underbrace{\left(1 - \frac{B}{B_{\text{crit}}}\right)}_{\text{SCm suppression}} \cdot \underbrace{F_{\text{env}}(r,\theta,z)}_{\text{envelope}}$$
+
+This is a **single UQFF channel** — not Newton with corrections bolted on.  The four multiplicative factors:
+
+**Term 1 — Ug2 Outer Field Bubble:**
+$$Ug_2 = k_2 \cdot (Q_A + Q_{UA}) \cdot \frac{M_s}{r^2} \cdot S(r - R_b) \cdot (1 + \delta_{sw} v_{sw}) \cdot H_{SCm} \cdot E_{\text{react}}$$
+
+Charge-reactivity coupling ($Q_A + Q_{UA}$) through the heliospheric boundary ($S(r - R_b)$), mediated by SCm vacuum density ($H_{SCm}$) and system reactivity ($E_{\text{react}}$).  The $M_s/r^2$ factor is the mass-distance kernel, not Newton's law.
+
+> **Classical limit:** When $Q_A = Q_{UA} = 0$, $H_{SCm} \to 1$, $E_{\text{react}} \to 1$, $S(r-R_b) \to 1$, $\delta_{sw} \to 0$: $Ug_2 \to GM/r^2$.  That is Newton's law — the **zero-vacuum, zero-buoyancy, zero-charge** limit of a single channel of $F_U$.
 
 **Term 2 — Hubble Expansion Modulation:**
 $$F_{\text{exp}} = (1 + H_0 \cdot t)$$
@@ -96,7 +104,7 @@ $$F_{\text{env}} = f_{\text{env}}(r, \theta, z)$$
 A system-specific modular factor encoding 15 environmental parameters (stellar boundary, accretion geometry, tidal field).  In the compressed form: $F_{\text{env}} = 1.0$ (neutral), expandable per system.
 
 **Multiplicative core result:**
-$$g_{\text{core}} = \frac{GM}{r^2} \cdot (1 + H_0 t) \cdot \left(1 - \frac{B}{B_{\text{crit}}}\right) \cdot F_{\text{env}}$$
+$$g_{\text{core}} = Ug_2 \cdot (1 + H_0 t) \cdot \left(1 - \frac{B}{B_{\text{crit}}}\right) \cdot F_{\text{env}}$$
 
 ### §2.3 Additive Corrections (Terms 5–9)
 
