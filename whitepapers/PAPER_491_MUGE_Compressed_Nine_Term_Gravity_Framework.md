@@ -37,7 +37,13 @@ The first four factors form a **multiplicative core**; the remaining five terms 
 
 Expanded in full long-form:
 
-$$g_{\text{MUGE}}(r,t) = \frac{GM}{r^2}(1 + H_0 t)\!\left(1 - \frac{B}{B_{\text{crit}}}\right)\!F_{\text{env}} \;+\; \sum_{i=1}^{4} U_{g,i} \;+\; \frac{\Lambda c^2}{3} \;+\; \frac{\hbar}{\Delta x \cdot \Delta p}\!\int\!\psi^*\hat{H}\psi\,dV\cdot\frac{2\pi}{t_H} \;+\; \rho_f V_{\text{sys}} g_{\text{local}} \;+\; (M + M_{\text{DM}})\!\left(\frac{\delta\rho}{\rho} + \frac{3GM}{r^3}\right)$$
+$$\begin{aligned}
+g_{\text{MUGE}}(r,t) &= \frac{GM}{r^2}(1 + H_0 t)\!\left(1 - \frac{B}{B_{\text{crit}}}\right)\!F_{\text{env}} \\
+&\quad +\; \sum_{i=1}^{4} U_{g,i} \;+\; \frac{\Lambda c^2}{3} \\
+&\quad +\; \frac{\hbar}{\Delta x \cdot \Delta p}\!\int\!\psi^*\hat{H}\psi\,dV\cdot\frac{2\pi}{t_H} \\
+&\quad +\; \rho_f V_{\text{sys}} g_{\text{local}} \\
+&\quad +\; (M + M_{\text{DM}})\!\left(\frac{\delta\rho}{\rho} + \frac{3GM}{r^3}\right)
+\end{aligned}$$
 
 ### §1.1 Multiplicative Core (Terms 1–4)
 
