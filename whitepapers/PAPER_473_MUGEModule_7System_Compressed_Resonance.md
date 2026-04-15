@@ -34,9 +34,9 @@ published observational data and cross-validated via the UQFF dual-method verifi
 
 The MUGE framework addresses the fundamental limitation of Newtonian gravity: it cannot
 simultaneously account for dark matter halos, AGN feedback suppression, cosmological expansion,
-quantum vacuum contributions, and plasma turbulence. MUGE achieves this by writing:
+quantum vacuum contributions, and plasma turbulence. MUGE achieves this through a **multiplicative-additive** architecture where the Newtonian base is first **modulated** by expansion, superconductive suppression, and environmental coupling, then augmented with additive UQFF forces:
 
-$$g_{MUGE} = g_{Newton} + \delta g_{expansion} + \delta g_{magnetic} + \delta g_{feedback} + \delta g_{vacuum} + \delta g_\Lambda + \delta g_{quantum} + \delta g_{EM} + \delta g_{fluid} + \delta g_{DM}$$
+$$g_{\text{MUGE}} = \underbrace{\frac{GM}{r^2} \cdot (1 + H_0 t) \cdot \left(1 - \frac{B}{B_{\text{crit}}}\right) \cdot F_{\text{env}}}_{\text{multiplicative core}} \;+\; \sum_{i=1}^{4} U_{g,i} \;+\; g_\Lambda \;+\; g_{\text{quantum}} \;+\; g_{\text{fluid}} \;+\; g_{\text{DM}}$$
 
 ---
 
@@ -69,7 +69,7 @@ $$g_{comp}(r,t) = \frac{GM}{r^2}(1 + H(z)t)\left(1 - \frac{B}{B_{crit}}\right)(1
 | Feedback factor | F_env = f_AGN + f_SN + f_SF | Stellar/AGN/SF feedback modulates gravity |
 | Ug sum | Σ Ug_i | 4 UQFF sub-fields (dipole, charge, string, vacuum) |
 | Cosmological Λ | Λ c2r/3 | Dark energy contribution (positive = anti-gravity) |
-| Quantum term | ħω_q/(Mc2) | Zero-point energy correction |
+| Quantum term | $\frac{\hbar}{\Delta x \cdot \Delta p} \int \psi^* \hat{H} \psi\,dV \cdot \frac{2\pi}{t_H}$ | Heisenberg uncertainty-driven gravity correction |
 | EM term | F_EM | Lorentz force from ICM currents |
 | Fluid term | F_fluid | Navier-Stokes viscous correction |
 | Resonant term | F_res | Resonance frequency correction |

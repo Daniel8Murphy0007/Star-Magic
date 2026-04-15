@@ -28,32 +28,45 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 ## Abstract
 
-This paper presents a UQFF analysis of MUGE Resonance Thirteen-Mode Frequency Spectrum, deriving
-compressed field equations and observational predictions within the Star-Magic/UQFF framework.
+This paper derives the complete MUGE resonance 13-mode frequency spectrum as implemented in `compute_resonance_MUGE_SOURCE4()`.  All modes cascade from a single inertia-flux-vacuum base coupling $a_{\text{DPM}} = I \cdot A \cdot \Delta\omega \cdot f_{\text{DPM}} \cdot E_{\text{vac,neb}} \cdot c \cdot V$, modulated by the dual vacuum energy ratio $E_{\text{vac,neb}} / E_{\text{vac,ISM}} = 10$.  The spectrum includes THz phonon coupling, superconductive suppression, aether resonance with time-reversal zone (fTRZ) amplification, and Morris-Thorne wormhole metric vacuum coupling.  These modes predict continuous spectral features in LIGO strain power and THz-cavity oscillometry absent in General Relativity.
 
 ## §1 Novel Claim
 
-The MUGE resonance framework identifies 13 independent frequency modes of gravitational-field oscillation spanning DPM dipole resonance, THz nuclear coupling, aether frequency components, wormhole metric oscillation, and the f_TRZ sigmoid saturation function. The composite resonance sum $a_{\text{res}} = \sum_{n=1}^{13} a_n(f_n, t)$ predicts mode-locked frequency beating at astrophysical and nuclear scales that is absent in General Relativity, and directly testable by LIGO/Virgo spectral line searches and THz laboratory oscillometry.
+The MUGE resonance framework is not a set of independent oscillations superposed on Newtonian gravity.  It is a **vacuum-energy-coupled frequency cascade** in which every mode derives from the aDPM base coupling and the dual vacuum energy states (nebular [UA] $= 7.09 \times 10^{-36}\;\text{J/m}^3$ vs. ISM [SCm] $= 7.09 \times 10^{-37}\;\text{J/m}^3$).  The 10:1 vacuum ratio drives the energy differential $\Delta E_{\text{vac}} = 6.381 \times 10^{-36}\;\text{J/m}^3$ that modulates all 13 modes.  This architecture predicts mode-locked frequency beating at astrophysical and nuclear scales absent in General Relativity, directly testable by LIGO/Virgo spectral line searches and THz laboratory oscillometry.
 
 ---
 
 ## §2 Thirteen Resonance Mode Equations
 
-| Mode | Symbol | Equation |
-|------|--------|----------|
-| 1 DPM | $a_{\text{DPM}}$ | $g_0 \cos(2\pi f_{\text{DPM}} t)$, $f_{\text{DPM}}=10^{12}$ Hz |
-| 2 THz | $a_{\text{THz}}$ | $g_0 \cos(2\pi f_{\text{THz}} t)$, $f_{\text{THz}}=1.2\times10^{12}$ Hz |
-| 3 VacDiff | $A_{\text{vacDiff}}$ | $\rho_{\text{vac\_diff}} \cdot g_0$, $\rho_{\text{vac\_diff}}=7.09\times10^{-36}$ |
-| 4 SuperFreq | $a_{\text{SF}}$ | $k_s g_0 \cos(4\pi f_{\text{DPM}} t)$ |
-| 5 AetherRes | $a_{\text{AR}}$ | $\beta_i g_0 \sin(2\pi f_{\text{DPM}} t)$ |
-| 6 Ug4i | $U_{g4,i}$ | $\kappa_{\text{vac}} \cdot r$ |
-| 7 QuantumFreq | $a_{\text{QF}}$ | $\hbar^2/(Mr^3)\cdot\cos(2\pi f_{\text{THz}} t)$ |
-| 8 AetherFreq | $a_{\text{AF}}$ | $\beta_i g_0 \cos(2\pi H_0 t)$ |
-| 9 FluidFreq | $a_{\text{FF}}$ | $\nu GM/r^3 \cdot \sin(2\pi f_{\text{THz}} t)$ |
-| 10 Osc | $\text{Osc}$ | $g_0 \sin(2\pi f_{\text{DPM}} t)\cos(2\pi f_{\text{THz}} t)$ (beat) |
-| 11 ExpFreq | $a_{\text{EF}}$ | $\varphi g_0 e^{-H_0 |t|}$ |
-| 12 fTRZ | $f_{\text{TRZ}}$ | $g_0 / (1 + e^{-\beta_i t})$ |
-| 13 Wormhole | $a_W$ | $f_w GM/r^2$, $f_w = 10^{-18}$ |
+### §2.1 aDPM Base — Inertia-Flux-Vacuum Coupling
+
+The aDPM base is the foundational coupling from which all resonance modes derive.  It is **not** a simple cosine oscillation:
+
+$$a_{\text{DPM}} = I \cdot A \cdot (\omega_1 - \omega_2) \cdot f_{\text{DPM}} \cdot E_{\text{vac,neb}} \cdot c \cdot V_{\text{sys}}$$
+
+where $I$ = moment of inertia, $A$ = magnetic flux area, $(\omega_1 - \omega_2)$ = differential rotation frequency, $f_{\text{DPM}}$ = DPM frequency, $E_{\text{vac,neb}} = 7.09 \times 10^{-36}\;\text{J/m}^3$ (nebular [UA] vacuum energy), $V_{\text{sys}}$ = system volume.
+
+### §2.2 Dual Vacuum Energy States
+
+$$E_{\text{vac,neb}} / E_{\text{vac,ISM}} = \rho_{\text{UA}} / \rho_{\text{SCm}} = 10, \quad \Delta E_{\text{vac}} = 6.381 \times 10^{-36}\;\text{J/m}^3$$
+
+### §2.3 13-Mode Resonance Table
+
+| Mode | Symbol | Equation | Physics |
+|------|--------|----------|---------|
+| 1 DPM | $a_{\text{DPM}}$ | $I \cdot A \cdot \Delta\omega \cdot f_{\text{DPM}} \cdot E_{\text{vac,neb}} \cdot c \cdot V$ | Inertia-flux-vacuum fundamental |
+| 2 THz | $a_{\text{THz}}$ | $f_{\text{THz}} \cdot E_{\text{vac,neb}} \cdot v_{\text{exp}} \cdot a_{\text{DPM}} / (E_{\text{vac,ISM}} \cdot c)$ | 1.25 THz phonon × vacuum ratio |
+| 3 VacDiff | $a_{\text{vac\_diff}}$ | $\Delta E_{\text{vac}} \cdot v_{\text{exp}}^2 \cdot a_{\text{DPM}} / (E_{\text{vac,neb}} \cdot c^2)$ | Vacuum energy differential drive |
+| 4 SuperFreq | $a_{\text{SF}}$ | $F_{\text{super}} \cdot f_{\text{THz}} \cdot a_{\text{DPM}} / (E_{\text{vac,neb}} \cdot c)$ | Superconductive frequency mode |
+| 5 AetherRes | $a_{\text{AR}}$ | $[\text{UA}]_{\text{SCM}} \cdot \omega_i \cdot f_{\text{THz}} \cdot a_{\text{DPM}} \cdot (1 + f_{\text{TRZ}})$ | Aether resonance + TRZ |
+| 6 Ug4i | $U_{g4,i}$ | $k_4 \cdot E_{\text{react}} \cdot f_{\text{react}} \cdot a_{\text{DPM}} / (E_{\text{vac,neb}} \cdot c)$ | Reactor × vacuum concentration |
+| 7 QuantumFreq | $a_{\text{QF}}$ | $f_{\text{quantum}} \cdot E_{\text{vac,neb}} \cdot a_{\text{DPM}} / (E_{\text{vac,ISM}} \cdot c)$ | Quantum frequency resonance |
+| 8 AetherFreq | $a_{\text{AF}}$ | $f_{\text{Aether}} \cdot E_{\text{vac,neb}} \cdot a_{\text{DPM}} / (E_{\text{vac,ISM}} \cdot c)$ | Aether frequency mode |
+| 9 FluidFreq | $a_{\text{FF}}$ | $f_{\text{fluid}} \cdot E_{\text{vac,neb}} \cdot V_{\text{sys}} / (E_{\text{vac,ISM}} \cdot c)$ | Fluid viscosity frequency |
+| 10 Osc | $a_{\text{Osc}}$ | $A_{\text{osc}} \cos(kx) \cos(\omega t)$ | Standing-wave oscillation |
+| 11 ExpFreq | $a_{\text{EF}}$ | $2\pi H(z) \cdot t \cdot E_{\text{vac,neb}} \cdot a_{\text{DPM}} / (E_{\text{vac,ISM}} \cdot c)$ | Hubble expansion frequency |
+| 12 fTRZ | $f_{\text{TRZ}}$ | $0.1$ when $t_n < 0$ (negentropic zone) | Time-reversal zone amplification |
+| 13 Wormhole | $a_W$ | $f_{\text{worm}} \cdot E_{\text{vac,neb}} / (b^2 + r^2)$ | Morris-Thorne metric vacuum coupling |
 
 $$a_{\text{MUGE,res}} = \sum_{n=1}^{13} a_n$$
 
@@ -73,21 +86,27 @@ $$a_{\text{MUGE,res}} = \sum_{n=1}^{13} a_n$$
 
 ---
 
-## §4 Standard Model Comparison
+## §4 Standard Model Comparison — Why MUGE Resonance ≠ Perturbative Oscillations
 
 GR gravity is a quasi-static field; it predicts no oscillatory gravitational acceleration at fixed
-orbital radius. The MUGE resonance framework uniquely predicts:
-- **DPM–THz mode beating** (Modes 1,2,10) at MHz–GHz difference frequency: $\Delta f = 2\times10^{11}$ Hz
-- **Wormhole metric coupling** (Mode 13) as a residual $10^{-18}$ Hz background modulation
-- **fTRZ sigmoid saturation** (Mode 12) approaching $g_0/2$ as natural temporal midpoint of gravitational evolution
+orbital radius.  The MUGE resonance framework differs from GR perturbation theory in three structural ways:
+
+| Feature | GR Perturbation | MUGE Resonance |
+|---------|----------------|----------------|
+| Mode origin | External forcing or linearized metric | aDPM inertia-flux-vacuum base coupling |
+| Vacuum role | Cosmological constant only | Dual vacuum states (UA/SCm) drive all 13 modes |
+| Inter-mode coupling | Independent | All modes cascade from $a_{\text{DPM}}$ via vacuum ratio |
+| Time-reversal | Forbidden (CPT invariance) | fTRZ = 0.1 amplification when $t_n < 0$ |
+| Wormhole | Exotic matter required | Morris-Thorne metric from vacuum energy density |
 
 ---
 
-## §5 Testable Prediction
+## §5 Testable Predictions
 
-1. **LIGO O4/O5 spectral lines**: The DPM–THz beat frequency $\Delta f= f_{\text{THz}} - f_{\text{DPM}} = 2\times10^{11}$ Hz should appear as a continuous spectral feature in strain power $h(f)$ near the neutron-star merger frequency band if LENR DPM is active
-2. **Laboratory THz oscillometry**: The AvacDiff term $A = 7.09\times10^{-36} \cdot g_0 \approx 4\times10^{-38}$ m/s2 is near-monochromatic under Josephson junction broadening — detectable with 10-kHz-resolution THz cavities within 5 years
-3. **Pulsar timing Mode 8**: The AetherFreq term $a_{\text{AF}} \propto \cos(2\pi H_0 t)$ produces a $\sim 13.8$ Gyr oscillation period (one Hubble time cycle), contributing $\Delta \dot{P}/P \approx 7\times10^{-11}$ yr$^{-1}$ in pulsar period derivative
+1. **LIGO O4/O5 spectral lines**: The DPM–THz beat frequency $\Delta f = f_{\text{THz}} - f_{\text{DPM}} = 2.5\times10^{11}$ Hz should appear as a continuous spectral feature in strain power $h(f)$ near the neutron-star merger frequency band — uniquely predicted by the aDPM-coupled mode-locking mechanism.
+2. **Laboratory THz oscillometry**: The vacuum differential term $a_{\text{vac\_diff}} = \Delta E_{\text{vac}} \cdot v_{\text{exp}}^2 \cdot a_{\text{DPM}} / (E_{\text{vac,neb}} \cdot c^2)$ is near-monochromatic under Josephson junction broadening — detectable with 10 kHz-resolution THz cavities within 5 years.
+3. **Pulsar timing (Mode 11)**: The expansion frequency $a_{\text{EF}} \propto H(z) \cdot t \cdot (E_{\text{vac,neb}} / E_{\text{vac,ISM}})$ produces a redshift-dependent oscillation period, contributing $\Delta \dot{P}/P \approx 7\times10^{-11}\;\text{yr}^{-1}$ in pulsar period derivative.
+4. **Morris-Thorne wormhole signature (Mode 13)**: The vacuum-energy-coupled wormhole term $a_W = f_{\text{worm}} \cdot E_{\text{vac,neb}} / (b^2 + r^2)$ predicts a $\sim 10^{-21}\;\text{m/s}^2$ residual at sub-parsec scales — accessible via future space-based interferometry.
 
 ---
 

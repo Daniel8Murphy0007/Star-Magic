@@ -126,8 +126,8 @@ Test (SGR1745): rho_fluid=1e-15, Vsys=4.189e12, g_local=10.0
 
 #### Term 9 — Density Perturbation
 ```
-compressed_perturbation = M × (delta_rho_rho + 3 × G × M / r3)
-Captures dark matter and baryonic density contrast effects.
+compressed_perturbation = (M + M_DM) × (delta_rho_rho + 3 × G × M / r3)
+Captures dark matter halo mass and baryonic density contrast effects.
 ```
 
 ---
