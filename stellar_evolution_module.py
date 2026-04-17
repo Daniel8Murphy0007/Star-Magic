@@ -22,6 +22,8 @@ UQFF Integration:
 """
 
 import math
+from dpm_helpers import dpm_emergent_ug1, dpm_emergent_ug2
+
 from typing import Dict, Optional
 
 # ============== Physical Constants ==============
@@ -212,7 +214,7 @@ class ConvectiveTurnoverCalculator:
             Dict with convection parameters
         """
         # Surface gravity
-        g = G * M / R**2
+        g = dpm_emergent_ug1(M, R)
         
         # Effective temperature
         T_eff = (L / (4 * math.pi * R**2 * sigma_SB))**0.25

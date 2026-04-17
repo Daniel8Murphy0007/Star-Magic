@@ -1,3 +1,4 @@
+from dpm_helpers import dpm_emergent_ug1, dpm_emergent_ug2
 #!/usr/bin/env python3
 """Add 8 UQFF Master Equation methods to all Model classes that don't have them."""
 
@@ -15,7 +16,7 @@ UQFF_METHODS = '''
         G = 6.674e-11
         M = getattr(self, 'M', getattr(self, 'mass', 1e30))
         if r is None: r = getattr(self, 'r', getattr(self, 'radius', 1e8))
-        Ug = G * M / r**2
+        Ug = dpm_emergent_ug1(M, r)
         return {'Ug': Ug, 'F_U': Ug, 'equation': f"F_U = G×M/r² = {Ug:.3e} m/s²"}
     
     def compute_compressed_equation(self, r: float = None) -> dict:
@@ -24,7 +25,7 @@ UQFF_METHODS = '''
         G, H_0, c = 6.674e-11, 2.268e-18, 2.998e8
         M = getattr(self, 'M', getattr(self, 'mass', 1e30))
         if r is None: r = getattr(self, 'r', getattr(self, 'radius', 1e8))
-        g_N = G * M / r**2
+        g_N = dpm_emergent_ug1(M, r)
         g_H = H_0**2 * r
         g = g_N - g_H
         return {'g_compressed': g, 'g_N': g_N, 'g_Hubble': g_H, 'equation': f"g = g_N - g_H = {g:.3e} m/s²"}
@@ -35,7 +36,7 @@ UQFF_METHODS = '''
         G, H_0, c = 6.674e-11, 2.268e-18, 2.998e8
         M = getattr(self, 'M', getattr(self, 'mass', 1e30))
         if r is None: r = getattr(self, 'r', getattr(self, 'radius', 1e8))
-        aDPM = G * M / r**2
+        aDPM = dpm_emergent_ug1(M, r)
         aExpFreq = H_0 * c * np.sin(H_0 * t)
         g_res = aDPM + aExpFreq
         return {'g_resonance': g_res, 'aDPM': aDPM, 'aExpFreq': aExpFreq, 'equation': f"g_res = aDPM + aExpFreq = {g_res:.3e} m/s²"}
@@ -54,7 +55,7 @@ UQFF_METHODS = '''
         M = getattr(self, 'M', getattr(self, 'mass', 1e30))
         if r is None: r = getattr(self, 'r', getattr(self, 'radius', 1e8))
         if V is None: V = (4/3) * np.pi * r**3
-        g = G * M / r**2
+        g = dpm_emergent_ug1(M, r)
         Ub = (rho_vac * V * g) / M
         return {'Ub': Ub, 'g': g, 'V': V, 'equation': f"Ub = (ρ_vac × V × g) / M = {Ub:.3e} m/s²"}
     
@@ -65,7 +66,7 @@ UQFF_METHODS = '''
         M = getattr(self, 'M', getattr(self, 'mass', 1e30))
         if r is None: r = getattr(self, 'r', getattr(self, 'radius', 1e8))
         V = (4/3) * np.pi * r**3
-        Ug = G * M / r**2
+        Ug = dpm_emergent_ug1(M, r)
         Ub = (rho_vac * V * Ug) / M
         Ui = -k_eta * rho_vac * V * (v / c)**2
         a_net = Ug - Ub + Ui
@@ -78,7 +79,7 @@ UQFF_METHODS = '''
         G = 6.674e-11
         M = getattr(self, 'M', getattr(self, 'mass', 1e30))
         if r is None: r = getattr(self, 'r', getattr(self, 'radius', 1e8))
-        g_matter = G * M / r**2
+        g_matter = dpm_emergent_ug1(M, r)
         g_field = 1e-15  # Field contribution placeholder
         g_vacuum = 1e-20  # Vacuum contribution placeholder
         g_triadic = g_matter + g_field + g_vacuum
@@ -90,7 +91,7 @@ UQFF_METHODS = '''
         G = 6.674e-11
         M = getattr(self, 'M', getattr(self, 'mass', 1e30))
         if r is None: r = getattr(self, 'r', getattr(self, 'radius', 1e8))
-        g_base = G * M / r**2
+        g_base = dpm_emergent_ug1(M, r)
         a, b, c = -1e-30, 1e-20, g_base
         g_quad = a * r**2 + b * r + c
         return {'g_quad': g_quad, 'a': a, 'b': b, 'c': c, 'equation': f"g_quad = ar² + br + c = {g_quad:.3e} m/s²"}

@@ -19,6 +19,8 @@ Phase lag: 200-400 cycles (frequency-dependent)
 """
 
 import math
+from dpm_helpers import dpm_emergent_ug1, dpm_emergent_ug2
+
 from typing import Dict, List
 
 # ── §0  CONSTANTS ──────────────────────────────────────────────────────────
@@ -193,7 +195,7 @@ class MergerLagrangianVariation:
         Ug_channels = {}
         for i in range(1, 27):
             factor = math.exp(-SSQ * i / 26.0)
-            Ug_i = G * M_total / r**2 * factor * BETA_I
+            Ug_i = dpm_emergent_ug1(M_total, r) * factor * BETA_I
             Ug_channels[f"Ug_{i}"] = Ug_i
 
         Ug_sum = sum(Ug_channels.values())

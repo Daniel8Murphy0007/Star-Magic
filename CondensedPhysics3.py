@@ -1,20 +1,20 @@
-"""
-CondensedPhysics3.py — UQFF Phase 3 Physics Calculator
+﻿"""
+CondensedPhysics3.py â€” UQFF Phase 3 Physics Calculator
 =======================================================
 IPC Chain Position: 3 of 4
   CondensedPhysics.py (1,227 classes, Phase 1)
-      → CondensedPhysics2.py (600 classes, Phase 2)
-          → CondensedPhysics3.py (this file, Phase 3)
-              → CondensedPhysics4.py (12 classes, Phase 4)
+      â†’ CondensedPhysics2.py (600 classes, Phase 2)
+          â†’ CondensedPhysics3.py (this file, Phase 3)
+              â†’ CondensedPhysics4.py (12 classes, Phase 4)
 
 Source: Grok share ba4c0789d5c94bf2a26bb027293d7634
         (captured: grok_share_ba4c0789.txt)
 Extraction: New unique calculators not present in CP1 or CP2
-Author: Daniel T. Murphy — Star Magic / UQFF Framework
+Author: Daniel T. Murphy â€” Star Magic / UQFF Framework
 Version: 1.0.0 (2026-03-11)
 
 Architecture Compliance (MANDATORY):
-  - PURE PHYSICS CALCULATOR — no hardcoded astronomical data
+  - PURE PHYSICS CALCULATOR â€” no hardcoded astronomical data
   - All parameters received via dataset dict from source2.cpp pipeline
   - Outputs: primary_equations (solved), available_equations, simulation_set
   - No named system classes (e.g., no class NGC3596Model)
@@ -48,13 +48,13 @@ from typing import Any
 # IPC CHAIN: Import Phase 1 and Phase 2 calculators
 # ---------------------------------------------------------------------------
 try:
-    from CondensedPhysics import *       # Phase 1 — 1,227 classes
+    from CondensedPhysics import *       # Phase 1 â€” 1,227 classes
     _CP1_LOADED = True
 except ImportError:
     _CP1_LOADED = False
 
 try:
-    from CondensedPhysics2 import *      # Phase 2 — 546 classes
+    from CondensedPhysics2 import *      # Phase 2 â€” 546 classes
     _CP2_LOADED = True
 except ImportError:
     _CP2_LOADED = False
@@ -62,20 +62,47 @@ except ImportError:
 # ---------------------------------------------------------------------------
 # UQFF PHASE-3 CONSTANTS
 # ---------------------------------------------------------------------------
-KAPPA        = 0.0005    # day^{-1}  — E_react exponential decay
+KAPPA        = 0.0005    # day^{-1}  â€” E_react exponential decay
 SSQ          = 0.57      # self-similar quotient [SSq]
-BETA_I       = 0.61      # buoyancy coupling β_i
-E_REACT_BASE = 1e46      # W/m^3  — reactor efficiency base
-RHO_VAC_SCM  = 7.09e-37  # J/m^3  — SCm vacuum density
-RHO_VAC_UA   = 7.09e-36  # J/m^3  — UA vacuum density
-RHO_VAC_A    = 1.0e-23   # J/m^3  — Aether vacuum density
-RHO_VAC_UI   = 2.84e-36  # J/m^3  — inertia vacuum density
-V_SCM        = 1.0e8     # m/s    — SCm velocity (c/3)
-OMEGA_G      = 7.3e-16   # rad/s  — galactic angular velocity
-M_BH_SGR     = 8.15e36   # kg     — Sgr A* mass (canonical)
-D_G_SGR      = 2.55e20   # m      — Sun-SgrA* distance (canonical)
+BETA_I       = 0.61      # buoyancy coupling Î²_i
+E_REACT_BASE = 1e46      # W/m^3  â€” reactor efficiency base
+RHO_VAC_SCM  = 7.09e-37  # J/m^3  â€” SCm vacuum density
+RHO_VAC_UA   = 7.09e-36  # J/m^3  â€” UA vacuum density
+RHO_VAC_A    = 1.0e-23   # J/m^3  â€” Aether vacuum density
+RHO_VAC_UI   = 2.84e-36  # J/m^3  â€” inertia vacuum density
+V_SCM        = 1.0e8     # m/s    â€” SCm velocity (c/3)
+OMEGA_G      = 7.3e-16   # rad/s  â€” galactic angular velocity
+M_BH_SGR     = 8.15e36   # kg     â€” Sgr A* mass (canonical)
+D_G_SGR      = 2.55e20   # m      â€” Sun-SgrA* distance (canonical)
 ALPHA_DECAY  = 0.001     # day^{-1}
 GAMMA_DECAY  = 0.00005   # day^{-1} (string / CRP)
+
+# ---------------------------------------------------------------------------
+# DPM-EMERGENT GRAVITY HELPERS
+# ---------------------------------------------------------------------------
+# CANONICAL: Newtonian gravity is EMERGENT from DPM substrate, not foundational.
+# Ug1 = mu_s * grad(M_s/r) where mu_s = B * R^3, grad = G * M / R^2
+# Static simplified: Ug1 = B * R * G * M
+
+G_CONST = 6.67430e-11  # gravitational constant [m^3/kg/s^2]
+
+def dpm_emergent_ug1(M: float, R: float, B: float = 1e-4) -> float:
+    """DPM-emergent Ug1: mu_s * grad(M_s/r) = B * R^3 * G * M / R^2 = B * R * G * M"""
+    mu_s = B * R ** 3
+    grad_Ms = G_CONST * M / (R ** 2)
+    return mu_s * grad_Ms
+
+
+def dpm_emergent_ug2(M: float, r: float, R: float, v_sw: float = 4e5) -> float:
+    """DPM-emergent Ug2: quantum shell trapping (dual charges x reactor energy)"""
+    V_body = (4.0 / 3.0) * math.pi * R ** 3
+    Q_SCm = RHO_VAC_SCM * V_body
+    Q_UA = RHO_VAC_UA * V_body
+    E_react = RHO_VAC_SCM * v_sw ** 2 / RHO_VAC_UA
+    R_b = R * 100.0
+    S_rb = 1.0 if r > R_b else 0.0
+    return (Q_SCm + Q_UA) * M / (r ** 2) * S_rb * E_react
+
 
 # ---------------------------------------------------------------------------
 # BASE CALCULATOR (Phase-3 Pattern)
@@ -96,20 +123,20 @@ class _CP3Calculator:
 
     @staticmethod
     def _cos_tn(t_n: float) -> float:
-        """cos(π t_n) — oscillatory reversal term."""
+        """cos(Ï€ t_n) â€” oscillatory reversal term."""
         return math.cos(math.pi * t_n)
 
 
 # ===========================================================================
-#  CATEGORY 1 — SOLAR SYSTEM
+#  CATEGORY 1 â€” SOLAR SYSTEM
 # ===========================================================================
 
 class SolarWindBubbleVerificationCalculator(_CP3Calculator):
     """
     Verifies Parker Solar Probe CDAWeb 2025 measurements against UQFF Ug2.
 
-    Physics: Ug2 = k2*(ρ_UA+ρ_SCm)*M_s/r^2 * S(r-R_b)*(1+δ_sw*v_sw)*H_SCm*E_react
-    Verification: δ_sw=0.01 from wind density ρ_sw~8e-21 kg/m^3 at 1 AU
+    Physics: Ug2 = k2*(Ï_UA+Ï_SCm)*M_s/r^2 * S(r-R_b)*(1+Î´_sw*v_sw)*H_SCm*E_react
+    Verification: Î´_sw=0.01 from wind density Ï_sw~8e-21 kg/m^3 at 1 AU
                   v_sw=5e5 m/s observed range 300-800 km/s
     Datasets: PSP CDAWeb 2025, Voyager boundary ~122 AU
     """
@@ -188,21 +215,21 @@ class HeliopausalBoundaryStepFunctionCalculator(_CP3Calculator):
 
 
 # ===========================================================================
-#  CATEGORY 2 — STARS
+#  CATEGORY 2 â€” STARS
 # ===========================================================================
 
 class StellarClusterUg3DiskTurbulenceCalculator(_CP3Calculator):
     """
     Computes Ug3 magnetic-string disk turbulence for stellar clusters.
 
-    Physics: Ug3 = k3 * Σ B_j * cos(ω_s t) * P_core * E_react
+    Physics: Ug3 = k3 * Î£ B_j * cos(Ï‰_s t) * P_core * E_react
     Application: Westerlund 2-style outflows (~70% neutrinos per CRP assimilation)
-    New: turbulence diffusion D_E ∝ E^0.5 (Kolmogorov) integrated into Ug3
+    New: turbulence diffusion D_E âˆ E^0.5 (Kolmogorov) integrated into Ug3
     """
     category = "Stars"
 
     def compute(self, dataset: dict) -> dict:
-        B_avg  = dataset.get("B_avg", 1e-4)   # T — average magnetic field
+        B_avg  = dataset.get("B_avg", 1e-4)   # T â€” average magnetic field
         omega_s = dataset.get("omega_s", 2.5e-6)  # rad/s
         P_core = dataset.get("P_core", 1.0)
         k3     = dataset.get("k3", 1.8)
@@ -216,7 +243,7 @@ class StellarClusterUg3DiskTurbulenceCalculator(_CP3Calculator):
 
         # Kolmogorov turbulence diffusion coefficient
         E_scale = dataset.get("E_scale", 1e10)  # eV
-        D_E = 1.0 * (E_scale ** 0.5)  # D_E ∝ E^0.5
+        D_E = 1.0 * (E_scale ** 0.5)  # D_E âˆ E^0.5
 
         eqs = {
             "Ug3": f"{Ug3:.4e} J/m^3",
@@ -240,14 +267,14 @@ class StellarUg1DipoleDefectCalculator(_CP3Calculator):
     Calculates Ug1 internal dipole with defect-driven oscillation.
 
     Physics: Ug1 = k1 * mu_s * (Ms/r) * exp(-alpha*t) * cos(pi*t_n) * (1 + delta_def)
-    New: δ_def = 0.01 sin(0.001 t) oscillation from source document uploads
+    New: Î´_def = 0.01 sin(0.001 t) oscillation from source document uploads
     """
     category = "Stars"
 
     def compute(self, dataset: dict) -> dict:
         Ms      = dataset.get("Ms", 1.989e30)
         r       = dataset.get("r", 1.496e11)
-        mu_s    = dataset.get("mu_s", 3.38e20)  # T·m^3
+        mu_s    = dataset.get("mu_s", 3.38e20)  # TÂ·m^3
         k1      = dataset.get("k1", 1.5)
         t       = dataset.get("t", 0.0)
         t_n     = dataset.get("t_n", 0.0)
@@ -274,23 +301,23 @@ class StellarUg1DipoleDefectCalculator(_CP3Calculator):
 
 
 # ===========================================================================
-#  CATEGORY 3 — EXOPLANETS
+#  CATEGORY 3 â€” EXOPLANETS
 # ===========================================================================
 
 class ExoplanetAtmosphericMassLossUbCalculator(_CP3Calculator):
     """
     Calculates atmospheric mass loss rate for exoplanets via Ub_i buoyancy.
 
-    Physics: dM/dt ~ |Ub_i| * 4π r^2 * f_loss
+    Physics: dM/dt ~ |Ub_i| * 4Ï€ r^2 * f_loss
     Application: TOI 1227 b mass loss ~10^12 g/s (arXiv 2506.04440, TESS 2025)
     Ub_i opposes Ug_i, allowing atmospheric escape when Ub_i > gravitational binding
     """
     category = "Exoplanets"
 
     def compute(self, dataset: dict) -> dict:
-        Ms    = dataset.get("Ms", 5e26)     # kg — host star mass
-        Mp    = dataset.get("Mp", 1e25)     # kg — planet mass
-        r     = dataset.get("r", 1.5e10)    # m  — orbital radius
+        Ms    = dataset.get("Ms", 5e26)     # kg â€” host star mass
+        Mp    = dataset.get("Mp", 1e25)     # kg â€” planet mass
+        r     = dataset.get("r", 1.5e10)    # m  â€” orbital radius
         omega_g = dataset.get("omega_g", OMEGA_G)
         M_bh  = dataset.get("M_bh", M_BH_SGR)
         d_g   = dataset.get("d_g", D_G_SGR)
@@ -310,7 +337,7 @@ class ExoplanetAtmosphericMassLossUbCalculator(_CP3Calculator):
         # Mass loss rate estimate
         R_planet = dataset.get("R_planet", 1e7)  # m
         f_loss   = dataset.get("f_loss", 1e-15)  # efficiency factor
-        dM_dt    = abs(Ub_i) * 4 * math.pi * R_planet**2 * f_loss  # kg/s → g/s * 1e3
+        dM_dt    = abs(Ub_i) * 4 * math.pi * R_planet**2 * f_loss  # kg/s â†’ g/s * 1e3
 
         eqs = {
             "Ug1_stellar": f"{Ug1:.4e} J/m^3",
@@ -372,12 +399,12 @@ class PlanetaryCoreUg3PenetrationScalingCalculator(_CP3Calculator):
 
 
 # ===========================================================================
-#  CATEGORY 4 — WHITE DWARF
+#  CATEGORY 4 â€” WHITE DWARF
 # ===========================================================================
 
 class WhiteDwarfUQFFGravitationalDecayCalculator(_CP3Calculator):
     """
-    Applies UQFF F_U to white dwarf systems with time-decay e^{-αt} dominant.
+    Applies UQFF F_U to white dwarf systems with time-decay e^{-Î±t} dominant.
 
     Physics: WD systems have strong Ug1 (dipole) from remnant magnetism,
     suppressed Ug2 (no heliosphere-equivalent beyond Roche lobe),
@@ -395,16 +422,16 @@ class WhiteDwarfUQFFGravitationalDecayCalculator(_CP3Calculator):
         r      = dataset.get("r", 7e6)
         alpha  = ALPHA_DECAY
 
-        # Ug1 — dominant remnant dipole
+        # Ug1 â€” dominant remnant dipole
         k1  = dataset.get("k1", 1.5)
         mu_s = dataset.get("mu_s", B_wd * R_wd**3)  # magnetic moment estimate
         Ug1 = k1 * mu_s * (M_wd / r) * math.exp(-alpha * t) * self._cos_tn(t_n)
 
-        # Ug4 — galactic interaction (reduced for cool WD)
+        # Ug4 â€” galactic interaction (reduced for cool WD)
         k4  = dataset.get("k4", 1.0)
         Ug4 = k4 * RHO_VAC_SCM * M_BH_SGR / D_G_SGR * math.exp(-alpha * t) * self._cos_tn(t_n) * 1.1
 
-        # Ub_i — buoyancy (WD degeneracy pressure limits mass loss)
+        # Ub_i â€” buoyancy (WD degeneracy pressure limits mass loss)
         Ub_i = -BETA_I * Ug1 * OMEGA_G * M_BH_SGR / D_G_SGR * 1e-11 * self._cos_tn(t_n)
 
         F_U_approx = Ug1 + Ug4 + Ub_i
@@ -459,27 +486,27 @@ class WhiteDwarfDegenerateElectronUiCalculator(_CP3Calculator):
 
 
 # ===========================================================================
-#  CATEGORY 5 — SUPERNOVA
+#  CATEGORY 5 â€” SUPERNOVA
 # ===========================================================================
 
 class KilonovaTransientQWaveParameterCalculator(_CP3Calculator):
     """
     Calculates Q_wave parameters for kilonova / astrophysical transients (AT2024tvd class).
 
-    Physics: Q_wave = Σ(f_i * E_i) / V — vacuum energy density across transient
+    Physics: Q_wave = Î£(f_i * E_i) / V â€” vacuum energy density across transient
     New: BEC analog parameters from NS merger condensate (Tohsaki AMD alignment)
     Q_wave_47 statistics: mean=3.97e4 J/m^3, std=5.11e4, JB=8.78 p=0.012
     """
     category = "Supernova"
 
     def compute(self, dataset: dict) -> dict:
-        M_ej   = dataset.get("M_ej", 0.05 * 1.989e30)  # kg — ejecta mass
-        v_ej   = dataset.get("v_ej", 3e7)              # m/s — ejecta velocity (0.1c)
+        M_ej   = dataset.get("M_ej", 0.05 * 1.989e30)  # kg â€” ejecta mass
+        v_ej   = dataset.get("v_ej", 3e7)              # m/s â€” ejecta velocity (0.1c)
         Ye     = dataset.get("Ye", 0.1)                 # electron fraction
         t      = dataset.get("t", 0.0)
         f_i    = dataset.get("f_i", 0.5)               # vacuum fraction
-        E_level = dataset.get("E_level", 1e-7)         # J — energy per level
-        V      = dataset.get("V", 1e30)                 # m^3 — ejecta volume
+        E_level = dataset.get("E_level", 1e-7)         # J â€” energy per level
+        V      = dataset.get("V", 1e30)                 # m^3 â€” ejecta volume
 
         Q_wave_mean = 3.97e4    # J/m^3 (Q_wave_47 canonical mean)
         Q_wave_std  = 5.11e4    # J/m^3
@@ -505,7 +532,7 @@ class KilonovaTransientQWaveParameterCalculator(_CP3Calculator):
             "available_equations": [
                 "Q_wave = sum(f_i * E_i) / V  (vacuum energy density)",
                 "Jarque-Bera: non-normality test on 47-system Q_wave array",
-                "r-process: Ye~0.1 → 95% solar heavy-element abundance",
+                "r-process: Ye~0.1 â†’ 95% solar heavy-element abundance",
                 "BEC analog: Tohsaki AMD alpha-cluster condensate alignment",
             ],
             "simulation_set": {"Q_wave_47_ensemble": "Monte Carlo 47-system Q_wave"},
@@ -560,22 +587,22 @@ class SupernovaProgenitorNegativeTimeZoneCalculator(_CP3Calculator):
 
 
 # ===========================================================================
-#  CATEGORY 6 — NEUTRON STAR
+#  CATEGORY 6 â€” NEUTRON STAR
 # ===========================================================================
 
 class NeutronStarCRPIceCubeFluxVerificationCalculator(_CP3Calculator):
     """
     Verifies neutrino flux prediction against IceCube background for NS systems.
 
-    Physics: Fokker-Planck: ∂n/∂t = ∂/∂p[(dp/dt)n] + ∂^2/∂p^2[Dn] + Q - n/t_esc
+    Physics: Fokker-Planck: âˆ‚n/âˆ‚t = âˆ‚/âˆ‚p[(dp/dt)n] + âˆ‚^2/âˆ‚p^2[Dn] + Q - n/t_esc
     n(p) ~ p^{-2.2} exp(-p/p_max), p_max~10^16 eV
-    Φ_ν ≈ (E_react/E_ν^2) * exp(-γ*t) ~ IceCube background 10^{-18} GeV^{-1}cm^{-2}s^{-1}sr^{-1}
+    Î¦_Î½ â‰ˆ (E_react/E_Î½^2) * exp(-Î³*t) ~ IceCube background 10^{-18} GeV^{-1}cm^{-2}s^{-1}sr^{-1}
     pp dominant < 0.1 PeV SED
     """
     category = "Neutron Star"
 
     def compute(self, dataset: dict) -> dict:
-        p_eV    = dataset.get("p_eV", 1e14)     # eV — test momentum
+        p_eV    = dataset.get("p_eV", 1e14)     # eV â€” test momentum
         p_max   = dataset.get("p_max", 1e16)    # eV
         spectral_index = dataset.get("spectral_index", 2.2)
         t       = dataset.get("t", 0.0)
@@ -593,7 +620,7 @@ class NeutronStarCRPIceCubeFluxVerificationCalculator(_CP3Calculator):
         E_nu_J = p_eV * 1.602e-19  # eV to J
         Phi_nu = E_react_t / (E_nu_J**2) * math.exp(-gamma * t)
 
-        # χ² mock metric from verification
+        # Ï‡Â² mock metric from verification
         chi2_mock = 0.05
 
         eqs = {
@@ -621,8 +648,8 @@ class NeutronStarMergerUbOutflowF_UCalculator(_CP3Calculator):
     Full F_U calculation for NS merger systems with Ub_i-fed outflows.
 
     New: Complete proof derivation per GW170817 verification (LIGO/Virgo 2025 NR)
-    Physics: Ub_i feeds outflows → M_ej_frac ~ beta_i (~40%)
-    Ye~0.1 → 95% solar r-process abundance
+    Physics: Ub_i feeds outflows â†’ M_ej_frac ~ beta_i (~40%)
+    Ye~0.1 â†’ 95% solar r-process abundance
     """
     category = "Neutron Star"
 
@@ -639,7 +666,7 @@ class NeutronStarMergerUbOutflowF_UCalculator(_CP3Calculator):
         Ub_i = -BETA_I * Ug_i * omega_g * M_bh / d_g * (1 + 0.01 * RHO_VAC_UA) * UA * self._cos_tn(t_n)
 
         # Mass ejecta fraction: M_ej_dyn / M_ej_total ~ beta_i
-        M_ej_fraction = BETA_I  # ~0.61 → calibrated to ~0.4 dynamical fraction
+        M_ej_fraction = BETA_I  # ~0.61 â†’ calibrated to ~0.4 dynamical fraction
 
         # r-process yield at Ye~0.1
         y_r_process = min(0.95, Ye / 0.1 * 0.95)  # saturates at 95% solar
@@ -668,14 +695,14 @@ class NeutronStarMergerUbOutflowF_UCalculator(_CP3Calculator):
 
 
 # ===========================================================================
-#  CATEGORY 7 — BLACK HOLE
+#  CATEGORY 7 â€” BLACK HOLE
 # ===========================================================================
 
 class BlackHoleJetFluidAsymmetryRatioCalculator(_CP3Calculator):
     """
     Calculates jet asymmetry ratio from t_n reversal zones in BH systems.
 
-    Physics: Asymmetry ratio = |cos(π t_n1) / cos(π t_n2)|
+    Physics: Asymmetry ratio = |cos(Ï€ t_n1) / cos(Ï€ t_n2)|
     Application: RACS J0320-35-class quasars growing at >Eddington
     Navier-Stokes Re >> 1 confirms fluid jets (turbulent)
     Chandra 2025: RACS J0320-35 jets at ~0.99c, asymmetry >100:1 observed
@@ -686,9 +713,9 @@ class BlackHoleJetFluidAsymmetryRatioCalculator(_CP3Calculator):
         t_n1  = dataset.get("t_n1", -0.5)   # jet lobe 1 t_n
         t_n2  = dataset.get("t_n2", 0.0)    # jet lobe 2 t_n
         rho   = dataset.get("rho_jet", 1e-21)   # kg/m^3
-        mu_dyn = dataset.get("mu_dynamic", 1e-11)  # Pa·s
+        mu_dyn = dataset.get("mu_dynamic", 1e-11)  # PaÂ·s
         v_jet = dataset.get("v_jet", 2.97e8)     # m/s (~0.99c)
-        L     = dataset.get("L_scale", 1e18)     # m — jet length scale
+        L     = dataset.get("L_scale", 1e18)     # m â€” jet length scale
 
         cos1 = self._cos_tn(t_n1)
         cos2 = self._cos_tn(t_n2)
@@ -719,10 +746,10 @@ class BlackHoleJetFluidAsymmetryRatioCalculator(_CP3Calculator):
         return {
             "primary_equations": eqs,
             "available_equations": [
-                "Asymmetry = |cos(pi*t_n1) / cos(pi*t_n2)|  → inf for t_n2=0.5",
+                "Asymmetry = |cos(pi*t_n1) / cos(pi*t_n2)|  â†’ inf for t_n2=0.5",
                 "Re = rho * v * L / mu  (Navier-Stokes Reynolds)",
                 "v_jet ~ v_SCm * (1 - exp(-gamma*t))  (jet growth)",
-                "t_n < 0: TRZ reversal → one-sided jet suppression",
+                "t_n < 0: TRZ reversal â†’ one-sided jet suppression",
             ],
             "simulation_set": {
                 "asymmetry_vs_delta_tn": "t_n2 fixed, t_n1 sweep -2.0 to 2.0",
@@ -736,7 +763,7 @@ class BlackHoleUg4GalacticFeedbackCalculator(_CP3Calculator):
     Computes Ug4 star-BH galactic interaction with feedback factor calibration.
 
     Physics: Ug4 = k4 * rho_SCm * M_bh / d_g * exp(-alpha*t) * cos(pi*t_n) * (1+f_feedback)
-    f_feedback = 0.1 tuned to 10× mass echoes from 2025 SMBH growth observations
+    f_feedback = 0.1 tuned to 10Ã— mass echoes from 2025 SMBH growth observations
     """
     category = "Black Hole"
 
@@ -774,7 +801,7 @@ class BlackHoleUg4GalacticFeedbackCalculator(_CP3Calculator):
 
 
 # ===========================================================================
-#  CATEGORY 8 — SUPER MASSIVE BLACK HOLE
+#  CATEGORY 8 â€” SUPER MASSIVE BLACK HOLE
 # ===========================================================================
 
 class GaiaSgrADistanceErrorAnalysisCalculator(_CP3Calculator):
@@ -818,7 +845,7 @@ class GaiaSgrADistanceErrorAnalysisCalculator(_CP3Calculator):
                 "Error_M = |M_model - M_obs| / M_obs * 100",
                 "Average error ~5% within UQFF tolerance",
             ],
-            "simulation_set": {"error_vs_d_model": "d_model scan canonical ±20%"},
+            "simulation_set": {"error_vs_d_model": "d_model scan canonical Â±20%"},
         }
 
 
@@ -834,9 +861,9 @@ class QuasarBlazerLuminosityEreactVerificationCalculator(_CP3Calculator):
 
     def compute(self, dataset: dict) -> dict:
         t      = dataset.get("t", 0.0)
-        V_disk = dataset.get("V_disk", 1e53)   # m^3 — typical blazar disk volume
+        V_disk = dataset.get("V_disk", 1e53)   # m^3 â€” typical blazar disk volume
         t_n    = dataset.get("t_n", 0.0)
-        mu_j   = dataset.get("mu_j", 3.38e20)  # T·m^3
+        mu_j   = dataset.get("mu_j", 3.38e20)  # TÂ·m^3
         r_j    = dataset.get("r_j", 1.496e13)
         phi_j  = dataset.get("phi_j", 1.0)
         P_SCm  = dataset.get("P_SCm", 1.0)
@@ -871,15 +898,15 @@ class QuasarBlazerLuminosityEreactVerificationCalculator(_CP3Calculator):
 
 
 # ===========================================================================
-#  CATEGORY 9 — MILKY WAY GALAXY
+#  CATEGORY 9 â€” MILKY WAY GALAXY
 # ===========================================================================
 
 class GalacticCenterUg4KappaDecayCalibrationCalculator(_CP3Calculator):
     """
-    Calibrates Ug4 with κ=0.0005/day E_react decay for galactic center dynamics.
+    Calibrates Ug4 with Îº=0.0005/day E_react decay for galactic center dynamics.
 
     Physics: Ug4 = k4 * rho_SCm * M_bh / d_g * exp(-alpha*t) * cos(pi*t_n) * (1+f_fb)
-    New: Full κ calibration with τ = 1/κ = 2000 days ~5.5 yr decay constant
+    New: Full Îº calibration with Ï„ = 1/Îº = 2000 days ~5.5 yr decay constant
     Verified against Gaia DR4 M_bh ~4.3e6 M_sun, omega_g from v=220 km/s at r=8 kpc
     """
     category = "Milky Way Galaxy"
@@ -923,10 +950,10 @@ class GalacticCenterUg4KappaDecayCalibrationCalculator(_CP3Calculator):
 
 class MilkyWayGalacticSpinUb_iCouplingCalculator(_CP3Calculator):
     """
-    Full Ub_i coupling calculation through galactic spin ω_g for MW systems.
+    Full Ub_i coupling calculation through galactic spin Ï‰_g for MW systems.
 
-    Physics: Ub_i = -β_i * Ug_i * ω_g * M_bh / d_g * (1+δ_sw*λ_vac,sw) * [UA] * cos(πt_n)
-    Verified: ω_g ~9e-16 rad/s kinematic vs 7.3e-16 canonical (<30% variation)
+    Physics: Ub_i = -Î²_i * Ug_i * Ï‰_g * M_bh / d_g * (1+Î´_sw*Î»_vac,sw) * [UA] * cos(Ï€t_n)
+    Verified: Ï‰_g ~9e-16 rad/s kinematic vs 7.3e-16 canonical (<30% variation)
     """
     category = "Milky Way Galaxy"
 
@@ -962,7 +989,7 @@ class MilkyWayGalacticSpinUb_iCouplingCalculator(_CP3Calculator):
 
 
 # ===========================================================================
-#  CATEGORY 10 — GALAXY
+#  CATEGORY 10 â€” GALAXY
 # ===========================================================================
 
 class GalaxyIMFNucleosynthesisIndexCalculator(_CP3Calculator):
@@ -970,18 +997,18 @@ class GalaxyIMFNucleosynthesisIndexCalculator(_CP3Calculator):
     Calculates IMF index and nucleosynthesis dust yield for galaxy evolution.
 
     Physics:
-      IMF: dN/dM ∝ M^{-2.35 + ν_fund}  → ~M^{-1.732} (UQFF modification)
-      Dust: A_V = 1.086 * (M_dust/M_gas) * κ_dust
-      Yield: y_dust = 0.01 * Z * (τ/τ_SF)^ν_fund
-    ν_fund = 0.618 (from Grok thread assimilation)
+      IMF: dN/dM âˆ M^{-2.35 + Î½_fund}  â†’ ~M^{-1.732} (UQFF modification)
+      Dust: A_V = 1.086 * (M_dust/M_gas) * Îº_dust
+      Yield: y_dust = 0.01 * Z * (Ï„/Ï„_SF)^Î½_fund
+    Î½_fund = 0.618 (from Grok thread assimilation)
     """
     category = "Galaxy"
 
     def compute(self, dataset: dict) -> dict:
         M       = dataset.get("M", 1.0)     # stellar mass in solar masses
         Z       = dataset.get("Z", 0.01)    # metallicity
-        tau     = dataset.get("tau", 1e10)  # yr — galaxy age
-        tau_SF  = dataset.get("tau_SF", 1e9) # yr — star formation timescale
+        tau     = dataset.get("tau", 1e10)  # yr â€” galaxy age
+        tau_SF  = dataset.get("tau_SF", 1e9) # yr â€” star formation timescale
         nu_fund = dataset.get("nu_fund", 0.618)
         M_dust_over_M_gas = dataset.get("M_dust_over_M_gas", 0.005)
         kappa_dust = dataset.get("kappa_dust", 0.4)  # cm^2/g
@@ -1020,10 +1047,10 @@ class GalaxyEquationOfStateUCFCalculator(_CP3Calculator):
     """
     Computes UCF equation-of-state parameter w(z) for galaxy-scale dark energy.
 
-    Physics: w(z) = w_ucf + δ_τ * (1+z)^{-ν_fund}
-    New parameter: δ_τ ~0.05 from NISP/JWST shear constraints
-    w_ucf is the UCF-specific EOS constant (distinct from w=-1 ΛCDM)
-    Note: different from EquationOfStateUCFCalculator in CP2 — this adds δ_τ shear
+    Physics: w(z) = w_ucf + Î´_Ï„ * (1+z)^{-Î½_fund}
+    New parameter: Î´_Ï„ ~0.05 from NISP/JWST shear constraints
+    w_ucf is the UCF-specific EOS constant (distinct from w=-1 Î›CDM)
+    Note: different from EquationOfStateUCFCalculator in CP2 â€” this adds Î´_Ï„ shear
     """
     category = "Galaxy"
 
@@ -1035,7 +1062,7 @@ class GalaxyEquationOfStateUCFCalculator(_CP3Calculator):
 
         w_z = w_ucf + delta_tau * (1 + z) ** (-nu_fund)
 
-        # Compare to ΛCDM
+        # Compare to Î›CDM
         w_lcdm = -1.0
         deviation = abs(w_z - w_lcdm)
 
@@ -1058,14 +1085,14 @@ class GalaxyEquationOfStateUCFCalculator(_CP3Calculator):
 
 
 # ===========================================================================
-#  CATEGORY 11 — QUASAR
+#  CATEGORY 11 â€” QUASAR
 # ===========================================================================
 
 class QuasarJetAsymmetryCosRatioCalculator(_CP3Calculator):
     """
     Computes asymmetry ratio for one-sided quasar jets via t_n reversal.
 
-    Physics: ratio = |cos(π t_n1) / cos(π t_n2)|
+    Physics: ratio = |cos(Ï€ t_n1) / cos(Ï€ t_n2)|
     Application: 3C 273 one-sided jet (length ~200 kpc, brightness >100:1)
     MNRAS 482, 743 (2019): temporal symmetry broken in blazar jets
     """
@@ -1101,7 +1128,7 @@ class QuasarJetAsymmetryCosRatioCalculator(_CP3Calculator):
             "available_equations": [
                 "ratio = |cos(pi*t_n1) / cos(pi*t_n2)|",
                 "t_n = t - t_0  (negative for TRZ reversals)",
-                "Ub_i ~ cos(pi*t_n) — suppresses one jet via time reversal",
+                "Ub_i ~ cos(pi*t_n) â€” suppresses one jet via time reversal",
             ],
             "simulation_set": {
                 "asymmetry_map": "t_n1=t_n2-delta_t, delta_t sweep 0 to 1.0",
@@ -1113,7 +1140,7 @@ class QuasarEddingtonExcessJetVelocityCalculator(_CP3Calculator):
     """
     Models jet velocity for super-Eddington accreting quasars (RACS J0320-35 class).
 
-    Physics: v_jet ~ v_SCm * (1 - exp(-gamma*t))  → ~0.99c at large t
+    Physics: v_jet ~ v_SCm * (1 - exp(-gamma*t))  â†’ ~0.99c at large t
     E_react at accretion rate > Eddington boosts jet to relativistic speed
     Eddington factor: f_Edd = L / L_Edd  (RACS J0320-35: f_Edd ~2.4)
     """
@@ -1121,7 +1148,7 @@ class QuasarEddingtonExcessJetVelocityCalculator(_CP3Calculator):
 
     def compute(self, dataset: dict) -> dict:
         t       = dataset.get("t", 1e7)      # s
-        M_bh    = dataset.get("M_bh", 1e39)  # kg — SMBH mass
+        M_bh    = dataset.get("M_bh", 1e39)  # kg â€” SMBH mass
         f_Edd   = dataset.get("f_Edd", 2.4)  # Eddington ratio
         kappa_opacity = 0.34                  # cm^2/g (electron scattering)
 
@@ -1159,7 +1186,7 @@ class QuasarEddingtonExcessJetVelocityCalculator(_CP3Calculator):
 
 
 # ===========================================================================
-#  CATEGORY 12 — GALAXY CLUSTER
+#  CATEGORY 12 â€” GALAXY CLUSTER
 # ===========================================================================
 
 class GalaxyClusterPSZ2UmTurbulenceCalculator(_CP3Calculator):
@@ -1167,7 +1194,7 @@ class GalaxyClusterPSZ2UmTurbulenceCalculator(_CP3Calculator):
     Computes Um turbulence signature for PSZ2-class galaxy clusters.
 
     Physics: Q_wave analog in galaxy cluster outflows
-    Application: PSZ2 G181.06+48.47 — M_500,X = 2.57e14 M_sun
+    Application: PSZ2 G181.06+48.47 â€” M_500,X = 2.57e14 M_sun
     Double radio relics as Um turbulence signatures
     Low-mass merger, non-normality: Jarque-Bera p=0.012
     """
@@ -1202,7 +1229,7 @@ class GalaxyClusterPSZ2UmTurbulenceCalculator(_CP3Calculator):
             "primary_equations": eqs,
             "available_equations": [
                 "Um = mu_j/r * (1-exp(-gamma*t*cos(pi*t_n))) * P_SCm * E_react",
-                "Q_wave = mean(Σ E_i * f_i / V) over 47-system ensemble",
+                "Q_wave = mean(Î£ E_i * f_i / V) over 47-system ensemble",
                 "Double relics as Um turbulence at merger boundary shells",
             ],
             "simulation_set": {
@@ -1215,9 +1242,9 @@ class GalaxyClusterPLCKDoubleRelicShearCalculator(_CP3Calculator):
     """
     Shear map analysis for PLCK G287-class double-relic galaxy clusters.
 
-    Physics: χ² = Σ (P_obs - P_ucf(δ_τ))^2 / σ_P^2
+    Physics: Ï‡Â² = Î£ (P_obs - P_ucf(Î´_Ï„))^2 / Ïƒ_P^2
     Double radio relics as boundary shock + Um turbulence in UQFF
-    δ_τ parameter tuning from shear power spectrum
+    Î´_Ï„ parameter tuning from shear power spectrum
     """
     category = "Galaxy Cluster"
 
@@ -1256,23 +1283,23 @@ class GalaxyClusterPLCKDoubleRelicShearCalculator(_CP3Calculator):
 
 
 # ===========================================================================
-#  CATEGORY 13 — COSMOLOGICAL
+#  CATEGORY 13 â€” COSMOLOGICAL
 # ===========================================================================
 
 class TwentySixLevelPolynomialHierarchyFullCalculator(_CP3Calculator):
     """
-    Computes the full 26-level polynomial energy hierarchy E_n = E_0 × 10^n.
+    Computes the full 26-level polynomial energy hierarchy E_n = E_0 Ã— 10^n.
 
     New: Parameterized solver returning all 26 levels and application domains.
-    Distinct from TwentySixLevelPolynomialCalculator (CP2) — adds PDG/ENSDF
+    Distinct from TwentySixLevelPolynomialCalculator (CP2) â€” adds PDG/ENSDF
     verification fit R^2~0.95 and level-domain mapping table.
     """
     category = "Cosmological"
 
     def compute(self, dataset: dict) -> dict:
-        E_0     = dataset.get("E_0", 1e-20)  # J — vacuum base energy
+        E_0     = dataset.get("E_0", 1e-20)  # J â€” vacuum base energy
         n_query = dataset.get("n_query", 13)  # query level (1-26)
-        r       = dataset.get("r", 1.0)        # m — for polynomial V(r)
+        r       = dataset.get("r", 1.0)        # m â€” for polynomial V(r)
 
         levels = {}
         for n in range(1, 27):
@@ -1281,11 +1308,11 @@ class TwentySixLevelPolynomialHierarchyFullCalculator(_CP3Calculator):
 
         E_n_query = levels[n_query]
 
-        # Polynomial V(r) ~ a_n r^n, approximate with Σ for low n
+        # Polynomial V(r) ~ a_n r^n, approximate with Î£ for low n
         V_r_approx = sum(levels[n] * (r ** n) for n in range(1, min(n_query + 1, 10)))
 
         # Higgs at n=12 check
-        m_H_J = 125.18e9 * 1.602e-19  # eV → J
+        m_H_J = 125.18e9 * 1.602e-19  # eV â†’ J
         n_Higgs_check = abs(math.log10(m_H_J) - math.log10(E_0)) / 1.0  # should ~12
         m_H_predicted = E_0 * (10 ** 12)
         Higgs_error = abs(m_H_J - m_H_predicted) / m_H_J * 100
@@ -1304,7 +1331,7 @@ class TwentySixLevelPolynomialHierarchyFullCalculator(_CP3Calculator):
             "available_equations": [
                 "E_n = E_0 * 10^n  (n=1 to 26)",
                 "E_0 = 10^{-20} J (vacuum fluctuation base)",
-                "V(r) ~ Σ a_n r^n  (nuclear potential, R^2~0.95 for low deg)",
+                "V(r) ~ Î£ a_n r^n  (nuclear potential, R^2~0.95 for low deg)",
             ],
             "simulation_set": {
                 "E_n_table": "all 26 levels with application labels",
@@ -1317,7 +1344,7 @@ class CosmologicalLineFluximeSFRIntegralCalculator(_CP3Calculator):
     """
     Computes line flux from SFR integral over cosmic time for UQFF cosmology.
 
-    Physics: F_line(z) = ∫ SFR(τ(z')) * y_line(Z(z')) * (1+z)^3 / d_L(z)^2 dτ
+    Physics: F_line(z) = âˆ« SFR(Ï„(z')) * y_line(Z(z')) * (1+z)^3 / d_L(z)^2 dÏ„
     New: UQFF-modified IMF (M^{-1.732}) changes y_line relative to standard
     """
     category = "Cosmological"
@@ -1329,7 +1356,7 @@ class CosmologicalLineFluximeSFRIntegralCalculator(_CP3Calculator):
         y_line = dataset.get("y_line", 1e-3)  # line yield
         n_steps = dataset.get("n_steps", 100)
 
-        # Simplified luminosity distance for flat ΛCDM + UQFF EOS
+        # Simplified luminosity distance for flat Î›CDM + UQFF EOS
         c = 3e8
         d_H = c / H0  # Hubble distance (m)
         # Numerical integration approximation
@@ -1359,7 +1386,7 @@ class CosmologicalLineFluximeSFRIntegralCalculator(_CP3Calculator):
         return {
             "primary_equations": eqs,
             "available_equations": [
-                "F_line(z) = ∫ SFR(tau(z')) * y_line(Z(z')) * (1+z)^3 / d_L^2 dtau",
+                "F_line(z) = âˆ« SFR(tau(z')) * y_line(Z(z')) * (1+z)^3 / d_L^2 dtau",
                 "IMF dN/dM ~ M^{-1.732}  (UQFF-modified)",
                 "SFR(z) ~ (1+z)^2.7 / (1+((1+z)/2.9)^5.6)  (Madau-Dickinson)",
             ],
@@ -1374,14 +1401,14 @@ class PDGNuclearPolynomialFitVerificationCalculator(_CP3Calculator):
     """
     Verifies 26-level polynomial V(r) fit to PDG 2025 / ENSDF nuclear data.
 
-    Physics: V(r) ≈ Σ a_n r^n, R²~0.95 for low degree (deg<5)
-    Overfits at deg=26 (R²~1, unphysical per NNDC 2025 shell models, max ~20 levels)
+    Physics: V(r) â‰ˆ Î£ a_n r^n, RÂ²~0.95 for low degree (deg<5)
+    Overfits at deg=26 (RÂ²~1, unphysical per NNDC 2025 shell models, max ~20 levels)
     Pb-206: ENSDF n=8 binding ~10 MeV = 1.6e-12 J verified
     """
     category = "Cosmological"
 
     def compute(self, dataset: dict) -> dict:
-        # Sample Pb-206 ENSDF levels in MeV → J
+        # Sample Pb-206 ENSDF levels in MeV â†’ J
         ENSDF_levels_MeV = dataset.get("ENSDF_levels_MeV", [0.0, 0.044, 0.137, 0.334, 0.583, 0.802, 1.028])
         eV_to_J = 1.602e-19
         levels_J = [E * 1e6 * eV_to_J for E in ENSDF_levels_MeV]
@@ -1393,7 +1420,7 @@ class PDGNuclearPolynomialFitVerificationCalculator(_CP3Calculator):
         n_vals  = list(range(1, n_levels + 1))
         E_pred  = [E_0 * (10 ** n) for n in n_vals]
 
-        # R² calculation
+        # RÂ² calculation
         mean_E = sum(levels_J) / len(levels_J)
         SS_tot  = sum((E - mean_E)**2 for E in levels_J)
         SS_res  = sum((levels_J[i] - E_pred[i])**2 for i in range(n_levels))
@@ -1409,12 +1436,12 @@ class PDGNuclearPolynomialFitVerificationCalculator(_CP3Calculator):
             "E_8_ENSDF_target": "1.602e-12 J (10 MeV Pb-206)",
             "E_8_error_pct": f"{E_8_check:.2f}%",
             "E_12_Higgs_J": f"{E_0 * (10**12):.4e} J (~2e-8 J, Higgs 125 GeV)",
-            "overfitting_note": "deg=26 → R^2~1 (unphysical, shell models use ~10-20 levels)",
+            "overfitting_note": "deg=26 â†’ R^2~1 (unphysical, shell models use ~10-20 levels)",
         }
         return {
             "primary_equations": eqs,
             "available_equations": [
-                "V(r) ~ Σ a_n * r^n  (n=1 to 26 or lower deg)",
+                "V(r) ~ Î£ a_n * r^n  (n=1 to 26 or lower deg)",
                 "E_n = E_0 * 10^n  (exponential hierarchy)",
                 "R^2 = 1 - SS_res/SS_tot  (polynomial quality metric)",
             ],
@@ -1425,21 +1452,21 @@ class PDGNuclearPolynomialFitVerificationCalculator(_CP3Calculator):
 
 
 # ===========================================================================
-#  CATEGORY 14 — DEEP FIELD
+#  CATEGORY 14 â€” DEEP FIELD
 # ===========================================================================
 
 class DeepFieldShearDeltaTauConstraintCalculator(_CP3Calculator):
     """
-    Derives δ_τ from deep field shear power spectrum constraint.
+    Derives Î´_Ï„ from deep field shear power spectrum constraint.
 
-    Physics: χ² = Σ (P_obs - P_ucf(δ_τ))^2 / σ_P^2  (minimized for best-fit δ_τ)
-    Application: G359.13142-0.20005 NISP/JWST shear maps → δ_τ~0.05
-    Informs w(z) and F_line(z) via ν_fund parameter tuning
+    Physics: Ï‡Â² = Î£ (P_obs - P_ucf(Î´_Ï„))^2 / Ïƒ_P^2  (minimized for best-fit Î´_Ï„)
+    Application: G359.13142-0.20005 NISP/JWST shear maps â†’ Î´_Ï„~0.05
+    Informs w(z) and F_line(z) via Î½_fund parameter tuning
     """
     category = "Deep Field"
 
     def compute(self, dataset: dict) -> dict:
-        P_obs        = dataset.get("P_obs", 4.2e4)       # J/m^3 — observed power
+        P_obs        = dataset.get("P_obs", 4.2e4)       # J/m^3 â€” observed power
         sigma_P      = dataset.get("sigma_P", 5e3)
         delta_tau_range = dataset.get("delta_tau_range", [0.01, 0.03, 0.05, 0.07, 0.10])
         nu_fund      = dataset.get("nu_fund", 0.618)
@@ -1470,7 +1497,7 @@ class DeepFieldShearDeltaTauConstraintCalculator(_CP3Calculator):
             "available_equations": [
                 "chi2 = ((P_obs - P_ucf(delta_tau)) / sigma_P)^2",
                 "P_ucf = Q_wave_mean * (1 + delta_tau * (1+z)^{-nu_fund})",
-                "minimize chi2 over delta_tau → best-fit shear parameter",
+                "minimize chi2 over delta_tau â†’ best-fit shear parameter",
             ],
             "simulation_set": {
                 "chi2_landscape": "delta_tau=0 to 0.2, z_field=0.5 to 5.0",
@@ -1482,7 +1509,7 @@ class HighRedshiftJWSTQWaveDeepFieldCalculator(_CP3Calculator):
     """
     Computes Q_wave vacuum energy signature for JWST deep field systems.
 
-    Physics: Q_wave = Σ(f_i * E_i) / V — applied at z>1 deep field
+    Physics: Q_wave = Î£(f_i * E_i) / V â€” applied at z>1 deep field
     New: redshift-scaling of Q_wave mean (cosmological evolution)
     JWST 2025: G359.13142-0.20005, high-z shear from NISP instrument
     """
@@ -1490,7 +1517,7 @@ class HighRedshiftJWSTQWaveDeepFieldCalculator(_CP3Calculator):
 
     def compute(self, dataset: dict) -> dict:
         z       = dataset.get("z", 2.0)
-        V       = dataset.get("V", 1e60)  # m^3 — volume element at z
+        V       = dataset.get("V", 1e60)  # m^3 â€” volume element at z
         f_i     = dataset.get("f_i", 0.5)
         n_level = dataset.get("n_level", 13)  # plasma level
         E_0     = 1e-20
@@ -1526,9 +1553,9 @@ class DeepFieldG359ShearNISPConstraintCalculator(_CP3Calculator):
     """
     Applies NISP shear constraints from G359.13142-0.20005 to UQFF parameters.
 
-    Physics: Shear power P ~ P_ucf(δ_τ) at high redshift
-    δ_τ~0.05 from NISP instrument (next-generation JWST survey)
-    Constrains w(z) = w_ucf + δ_τ*(1+z)^{-ν_fund}
+    Physics: Shear power P ~ P_ucf(Î´_Ï„) at high redshift
+    Î´_Ï„~0.05 from NISP instrument (next-generation JWST survey)
+    Constrains w(z) = w_ucf + Î´_Ï„*(1+z)^{-Î½_fund}
     """
     category = "Deep Field"
 
@@ -1566,7 +1593,7 @@ class DeepFieldG359ShearNISPConstraintCalculator(_CP3Calculator):
 
 
 # ===========================================================================
-#  CATEGORY 15 — MISCELLANEOUS
+#  CATEGORY 15 â€” MISCELLANEOUS
 # ===========================================================================
 
 class QScopeFrequencyResonanceUQFFCalculator(_CP3Calculator):
@@ -1574,10 +1601,10 @@ class QScopeFrequencyResonanceUQFFCalculator(_CP3Calculator):
     Implements q-scope resonance equations (quantum oscilloscope pipeline).
 
     Physics:
-      Ur = A sin(2πft) + A_2 sin(2πft + ϕ)  [resonance voltage]
+      Ur = A sin(2Ï€ft) + A_2 sin(2Ï€ft + Ï•)  [resonance voltage]
       Ut = 1/dT                               [temporal frequency]
       UA = A_2 - A = dA                       [amplitude stability]
-    Ginzburg-Landau support: Ug = ∇²ψ + αψ + β|ψ|²ψ = 0
+    Ginzburg-Landau support: Ug = âˆ‡Â²Ïˆ + Î±Ïˆ + Î²|Ïˆ|Â²Ïˆ = 0
     Parameters: A=0.491 V, A_2=3.102 V, f=976.68 Hz, dT=25 ms
     Sub-frequencies: f_sub = f/n (brain: delta 1-4Hz, theta 4-8Hz, alpha 8-12Hz)
     """
@@ -1636,7 +1663,7 @@ class ATLASLHCQuarkEnergyLowNLevelCalculator(_CP3Calculator):
     Maps LHC quark energies to UQFF 26-level polynomial low-n levels.
 
     Physics: ATLAS-CONF-2025-007 quark virtualities ~10^{-16} J correspond to n=4
-    Virtual quark loop Q^2 ~ keV to MeV in H→μμ, H→Zγ decays
+    Virtual quark loop Q^2 ~ keV to MeV in Hâ†’Î¼Î¼, Hâ†’ZÎ³ decays
     E_4 = 10^{-20} * 10^4 = 10^{-16} J
     """
     category = "Miscellaneous"
@@ -1672,14 +1699,14 @@ class ATLASLHCQuarkEnergyLowNLevelCalculator(_CP3Calculator):
             "n_max_quark": f"{n_max:.2f}",
             "E_12_Higgs": f"{E_12:.4e} J",
             "Higgs_error_pct": f"{Higgs_err:.2f}%",
-            "ATLAS_source": "ATLAS-CONF-2025-007 (H→μμ, H→Zγ decays)",
+            "ATLAS_source": "ATLAS-CONF-2025-007 (Hâ†’Î¼Î¼, Hâ†’ZÎ³ decays)",
         }
         return {
             "primary_equations": eqs,
             "available_equations": [
                 "E_n = E_0 * 10^n  (E_0=10^{-20} J)",
-                "n=4 → E=10^{-16} J (quark virtuality scale)",
-                "n=12 → E~2e-8 J (Higgs 125 GeV/c^2)",
+                "n=4 â†’ E=10^{-16} J (quark virtuality scale)",
+                "n=12 â†’ E~2e-8 J (Higgs 125 GeV/c^2)",
             ],
             "simulation_set": {
                 "n_level_quark_map": "E_n for n=1 to 5 (sub-quantum to nuclear)",
@@ -1691,9 +1718,9 @@ class VacuumEnergyComponentRatioCalculator(_CP3Calculator):
     """
     Computes and verifies UQFF vacuum energy density component ratios.
 
-    Physics: ρ_vac ratios ~10^{-38} for [SCm]/λ_vac
-    JCAP DM: λ_vac cosmological ~10^{-9} J/m^3
-    ρ_vac,[SCm] = 7.09e-37, ratio = 7.09e-28 (log-scale ~10^{-28})
+    Physics: Ï_vac ratios ~10^{-38} for [SCm]/Î»_vac
+    JCAP DM: Î»_vac cosmological ~10^{-9} J/m^3
+    Ï_vac,[SCm] = 7.09e-37, ratio = 7.09e-28 (log-scale ~10^{-28})
     Note: document states ~10^{-38} for [SCm]/[A] specifically
     """
     category = "Miscellaneous"
@@ -1722,19 +1749,19 @@ class VacuumEnergyComponentRatioCalculator(_CP3Calculator):
         return {
             "primary_equations": eqs,
             "available_equations": [
-                "lambda_vac = Σ(f_i * E_i) / V  (vacuum energy density)",
+                "lambda_vac = Î£(f_i * E_i) / V  (vacuum energy density)",
                 "rho_SCm / lambda_vac ~ 10^{-28}  (SCm to cosmic vacuum)",
                 "rho_SCm / rho_A ~ 10^{-14}  (component ratio)",
                 "JCAP dark energy: rho_Lambda ~ 10^{-9} J/m^3",
             ],
             "simulation_set": {
-                "ratio_scan": "rho_SCm vary ±3 orders of magnitude",
+                "ratio_scan": "rho_SCm vary Â±3 orders of magnitude",
             },
         }
 
 
 # =============================================================================
-# SESSION 47 — PAPER_157–168 (Thread: grok_share_7f9068)
+# SESSION 47 â€” PAPER_157â€“168 (Thread: grok_share_7f9068)
 # =============================================================================
 
 
@@ -1742,7 +1769,7 @@ class SolarSystemFUValidatorCalculator(_CP3Calculator):
     """PAPER_157: Solar System UQFF FU validation for Sun/Earth/Jupiter/Neptune.
 
     CelestialBody parameters with per-body omega_c cycles.
-    FU(Sun)≈-2.064e59 N, FU(Earth)≈-2.064e53 N (thread-confirmed values).
+    FU(Sun)â‰ˆ-2.064e59 N, FU(Earth)â‰ˆ-2.064e53 N (thread-confirmed values).
     """
     category = "Solar System"
     BODIES = {
@@ -1785,11 +1812,11 @@ class SolarSystemFUValidatorCalculator(_CP3Calculator):
 
 
 class HybridMUGEBlendingCalculator(_CP3Calculator):
-    """PAPER_158: Hybrid MUGE blending g_hybrid = β·g_compressed + (1−β)·g_resonance.
+    """PAPER_158: Hybrid MUGE blending g_hybrid = Î²Â·g_compressed + (1âˆ’Î²)Â·g_resonance.
 
     beta = exp(-B/B_crit); B_crit=4.4e13 T (magnetar critical field)
-    beta→0: pure resonance MUGE (magnetar regime)
-    beta→1: pure compressed/Newtonian MUGE (normal star regime)
+    betaâ†’0: pure resonance MUGE (magnetar regime)
+    betaâ†’1: pure compressed/Newtonian MUGE (normal star regime)
     """
     category = "Black Hole"
 
@@ -1810,9 +1837,9 @@ class HybridMUGEBlendingCalculator(_CP3Calculator):
                 'B_over_Bcrit': B / B_crit,
             },
             'available_equations': [
-                'g_hybrid = β·g_comp + (1−β)·g_res',
-                'β = exp(−B/B_crit), B_crit=4.4e13 T',
-                'β→0: pure resonance (magnetar); β→1: pure Newtonian',
+                'g_hybrid = Î²Â·g_comp + (1âˆ’Î²)Â·g_res',
+                'Î² = exp(âˆ’B/B_crit), B_crit=4.4e13 T',
+                'Î²â†’0: pure resonance (magnetar); Î²â†’1: pure Newtonian',
             ],
             'simulation_set': {
                 'magnetar_SGR1745': {'B': 4.5e14, 'g_compressed': -8e-3, 'g_resonance': -7.8e-3},
@@ -1822,11 +1849,11 @@ class HybridMUGEBlendingCalculator(_CP3Calculator):
 
 
 class WormholeMUGE13thTermCalculator(_CP3Calculator):
-    """PAPER_159: 13th Resonance Term — Morris-Thorne Wormhole in MUGE.
+    """PAPER_159: 13th Resonance Term â€” Morris-Thorne Wormhole in MUGE.
 
     a_worm = f_worm * E_vac_neb / (b^2 + r^2)
-    f_worm=1.0, b=1.0 m (throat), E_vac_neb=7.09e-36 J/m³
-    Extends MUGE resonance sum from 12→13 terms.
+    f_worm=1.0, b=1.0 m (throat), E_vac_neb=7.09e-36 J/mÂ³
+    Extends MUGE resonance sum from 12â†’13 terms.
     """
     category = "Black Hole"
 
@@ -1847,8 +1874,8 @@ class WormholeMUGE13thTermCalculator(_CP3Calculator):
             },
             'available_equations': [
                 'a_worm = f_worm * E_vac_neb / (b^2 + r^2)',
-                '13-term MUGE = a_sum_12 (§2.2 PAPER_146) + a_worm',
-                'E_vac_neb=7.09e-36 J/m³; b=1.0m Planck-scale throat',
+                '13-term MUGE = a_sum_12 (Â§2.2 PAPER_146) + a_worm',
+                'E_vac_neb=7.09e-36 J/mÂ³; b=1.0m Planck-scale throat',
             ],
             'simulation_set': {
                 'Pillars_of_Creation': {'E_vac_neb': 7.09e-36, 'b': 1.0, 'r': 1.0},
@@ -1861,7 +1888,7 @@ class J1610QuasarRelativisticSCmCalculator(_CP3Calculator):
     """PAPER_161: J1610+1811 quasar (z=3.122) relativistic SCm jet validation.
 
     E_react = (rho_SCm * v_SCm^2 / rho_A) * exp(-kappa*t)
-    v_SCm=0.99c, Lorentz gamma≈7.09; highest-z relativistic UQFF validation.
+    v_SCm=0.99c, Lorentz gammaâ‰ˆ7.09; highest-z relativistic UQFF validation.
     """
     category = "Quasar"
 
@@ -1886,7 +1913,7 @@ class J1610QuasarRelativisticSCmCalculator(_CP3Calculator):
             },
             'available_equations': [
                 'E_react = (rho_SCm * v_SCm^2 / rho_A) * exp(-kappa*t)',
-                'v_SCm=0.99c → gamma≈7.09',
+                'v_SCm=0.99c â†’ gammaâ‰ˆ7.09',
                 'J1610+1811 z=3.122: highest-z relativistic UQFF SCm validation',
             ],
             'simulation_set': {
@@ -1896,10 +1923,10 @@ class J1610QuasarRelativisticSCmCalculator(_CP3Calculator):
 
 
 class StressEnergyAMunuCouplingCalculator(_CP3Calculator):
-    """PAPER_165: UQFF Stress-Energy Tensor Coupling A_μν = g_μν + η·Ts00·cos(πtn).
+    """PAPER_165: UQFF Stress-Energy Tensor Coupling A_Î¼Î½ = g_Î¼Î½ + Î·Â·Ts00Â·cos(Ï€tn).
 
     Ts00 = 1.27e3 + 1.11e7 (EM + kinetic stress-energy components)
-    η=1e-22, scalar trace A feeds into CP3 FU as delta_FU.
+    Î·=1e-22, scalar trace A feeds into CP3 FU as delta_FU.
     """
     category = "Cosmological"
 
@@ -1920,9 +1947,9 @@ class StressEnergyAMunuCouplingCalculator(_CP3Calculator):
                 'eta': eta,
             },
             'available_equations': [
-                'A_μν = g_μν + η·Ts00·cos(πtn)',
+                'A_Î¼Î½ = g_Î¼Î½ + Î·Â·Ts00Â·cos(Ï€tn)',
                 'Ts00 = T_EM_00 + T_kin_00 = 1.27e3 + 1.11e7',
-                'η=1e-22; scalar trace A = sum delta_FU correction in FU pipeline',
+                'Î·=1e-22; scalar trace A = sum delta_FU correction in FU pipeline',
             ],
             'simulation_set': {
                 'flat_spacetime':    {'g_mu_nu': 1.0,  'tn': 0.0},
@@ -1934,8 +1961,8 @@ class StressEnergyAMunuCouplingCalculator(_CP3Calculator):
 class GW231123MassGapUQFFCalculator(_CP3Calculator):
     """PAPER_167: GW231123 225 M_sun BH merger UQFF Ug4 mass gap analysis.
 
-    GW231123 (Nov 2023, LIGO O4): 225 M_sun. Mass gap 100–200 M_sun pair.
-    Ug4·f_feedback BH-BH interaction; δρ/ρ perturbation from mass gap anomaly.
+    GW231123 (Nov 2023, LIGO O4): 225 M_sun. Mass gap 100â€“200 M_sun pair.
+    Ug4Â·f_feedback BH-BH interaction; Î´Ï/Ï perturbation from mass gap anomaly.
     """
     category = "Black Hole"
 
@@ -1966,8 +1993,8 @@ class GW231123MassGapUQFFCalculator(_CP3Calculator):
             },
             'available_equations': [
                 'GW231123: 225 M_sun merger (Nov 2023, LIGO O4)',
-                'Ug4_merged = k4*rho_v*(1+f_fb)*M_total/r*exp(-κt)*cos(πtn)',
-                'δρ/ρ = (M_total - 186M_sun)/186M_sun (mass gap anomaly)',
+                'Ug4_merged = k4*rho_v*(1+f_fb)*M_total/r*exp(-Îºt)*cos(Ï€tn)',
+                'Î´Ï/Ï = (M_total - 186M_sun)/186M_sun (mass gap anomaly)',
             ],
             'simulation_set': {
                 'GW231123_nominal': {'M1': 100 * M_sun, 'M2': 125 * M_sun, 'r': 1e6},
@@ -1979,9 +2006,9 @@ class GW231123MassGapUQFFCalculator(_CP3Calculator):
 class HighEnergyDatasetValidationCalculator(_CP3Calculator):
     """PAPER_164: CERN/GWOSC/EHT/Chandra high-energy dataset UQFF validation.
 
-    Maps four datasets → UQFF resonance MUGE terms:
-    ATLAS 13TeV → a_QuantumFreq | GW231123 → Osc_term
-    EHT Sgr A* 230GHz → a_aether_res | Chandra X-ray jet → super_adj
+    Maps four datasets â†’ UQFF resonance MUGE terms:
+    ATLAS 13TeV â†’ a_QuantumFreq | GW231123 â†’ Osc_term
+    EHT Sgr A* 230GHz â†’ a_aether_res | Chandra X-ray jet â†’ super_adj
     """
     category = "Cosmological"
 
@@ -2026,7 +2053,7 @@ class HighEnergyDatasetValidationCalculator(_CP3Calculator):
 
 class UQFFIPCChainStatusCalculator(_CP3Calculator):
     """
-    Verifies and reports the IPC chain status (CP1 → CP2 → CP3 pipeline).
+    Verifies and reports the IPC chain status (CP1 â†’ CP2 â†’ CP3 pipeline).
 
     This class is the canonical IPC chain connector for CondensedPhysics3.py.
     Reports loading status of Phase 1 and Phase 2, and provides chain metadata.
@@ -2050,7 +2077,7 @@ class UQFFIPCChainStatusCalculator(_CP3Calculator):
             "CP2_loaded": _CP2_LOADED,
             "CP3_classes": len(cp3_classes),
             "CP3_module_version": "1.0.0",
-            "IPC_chain": "CondensedPhysics → CondensedPhysics2 → CondensedPhysics3",
+            "IPC_chain": "CondensedPhysics â†’ CondensedPhysics2 â†’ CondensedPhysics3",
             "pipeline_position": "3 of 3",
             "source_thread": "grok_share_ba4c0789",
             "categories": [
@@ -2063,7 +2090,7 @@ class UQFFIPCChainStatusCalculator(_CP3Calculator):
         return {
             "primary_equations": eqs,
             "available_equations": [
-                "IPC chain: CP1 (1199) → CP2 (546) → CP3 (this file)",
+                "IPC chain: CP1 (1199) â†’ CP2 (546) â†’ CP3 (this file)",
                 "All CP3 classes stateless, parameterized via dataset dict",
                 "Output format: primary_equations, available_equations, simulation_set",
             ],
@@ -2072,7 +2099,7 @@ class UQFFIPCChainStatusCalculator(_CP3Calculator):
 
 
 # =============================================================================
-# SESSION 48 — PAPER_169–180 (Thread: grok_share_381a8fe7)
+# SESSION 48 â€” PAPER_169â€“180 (Thread: grok_share_381a8fe7)
 # CoAnQi UQFF+3D+Plugin Integration
 # =============================================================================
 
@@ -2081,15 +2108,15 @@ class CoAnQiCelestialBodyFUCalculator(_CP3Calculator):
     """PAPER_169: CoAnQi celestial body F_U calculation with plugin architecture.
 
     Full F_U = -(Ug1+Ug2+Ug3+Ug4+Ub_i) * (G*M/r^2) via CoAnQi plugin system.
-    Plugin: CelestialBodyFUPlugin(body) — wraps CoAnQi namespace call stack.
+    Plugin: CelestialBodyFUPlugin(body) â€” wraps CoAnQi namespace call stack.
     Validated against SOURCE4 Sgr A* and SGR1745 reference values.
     """
     category = "Solar System"
 
     def compute(self, dataset: dict) -> dict:
-        M_body  = dataset.get('M', 1.989e30)       # kg — default Sun
-        r       = dataset.get('r', 6.96e8)          # m — surface radius
-        B       = dataset.get('B', 1.0)             # T — magnetic field
+        M_body  = dataset.get('M', 1.989e30)       # kg â€” default Sun
+        r       = dataset.get('r', 6.96e8)          # m â€” surface radius
+        B       = dataset.get('B', 1.0)             # T â€” magnetic field
         Q_body  = dataset.get('Q', 1.0)             # charge-reactivity
         omega_c = dataset.get('omega_c', 2.0e-7)    # rad/s
         t       = dataset.get('t', 0.0)
@@ -2123,8 +2150,8 @@ class CoAnQiCelestialBodyFUCalculator(_CP3Calculator):
 class CoAnQiModularCompressedMUGECalculator(_CP3Calculator):
     """PAPER_170: CoAnQi modular compressed MUGE via namespace plugin.
 
-    g_compressed = g_Newton * (1 + Σ correction_terms)
-    Correction terms: Hubble expansion, magnetic suppression, vacuum Λ, quantum ℏ.
+    g_compressed = g_Newton * (1 + Î£ correction_terms)
+    Correction terms: Hubble expansion, magnetic suppression, vacuum Î›, quantum â„.
     CoAnQi::CompressedMUGEPlugin encapsulates 10-term MUGE compressed gravity.
     """
     category = "Black Hole"
@@ -2137,7 +2164,7 @@ class CoAnQiModularCompressedMUGECalculator(_CP3Calculator):
         B_crit = dataset.get('B_crit', 4.4e13)
         z     = dataset.get('z', 0.0)
         G = 6.674e-11; c = 3e8; hbar = 1.055e-34
-        g_N = G * M / r ** 2
+        g_N = dpm_emergent_ug1(M, r)  # DPM: mu_s * grad(M_s/r)
         corr_hubble = H0 ** 2 * r / g_N if g_N != 0 else 0.0
         corr_mag    = -B ** 2 / (8.0 * math.pi * 1.0e-7 * M / r ** 3) if M > 0 else 0.0
         corr_lambda = 1e-35 / g_N if g_N != 0 else 0.0
@@ -2164,8 +2191,8 @@ class CoAnQiModularCompressedMUGECalculator(_CP3Calculator):
 class CoAnQiModularResonanceMUGECalculator(_CP3Calculator):
     """PAPER_171: CoAnQi modular resonance MUGE 13-term plugin.
 
-    g_resonance = aDPM + Σ_13 resonance terms
-    CoAnQi::ResonanceMUGEPlugin — 13-term including wormhole metric (term 13).
+    g_resonance = aDPM + Î£_13 resonance terms
+    CoAnQi::ResonanceMUGEPlugin â€” 13-term including wormhole metric (term 13).
     aDPM: Di-Pseudo-Monopole base gravity; aAetherRes, aQuantumFreq, aTHz, etc.
     """
     category = "Black Hole"
@@ -2178,9 +2205,9 @@ class CoAnQiModularResonanceMUGECalculator(_CP3Calculator):
         t_n    = dataset.get('t_n', 0.0)
         omega  = dataset.get('omega', 1e-3)   # rad/s resonance frequency
         f_worm = dataset.get('f_worm', 1e-10)
-        b_worm = dataset.get('b_worm', 1e6)   # m — wormhole throat
+        b_worm = dataset.get('b_worm', 1e6)   # m â€” wormhole throat
         G = 6.674e-11; c = 3e8
-        g_N = G * M / r ** 2
+        g_N = dpm_emergent_ug1(M, r)  # DPM: mu_s * grad(M_s/r)
         # Representative 4 terms (full 13 in CoAnQi plugin)
         aDPM         = g_N
         aAetherRes   = 1e-12 * math.cos(omega * t) * self._cos_tn(t_n)
@@ -2214,8 +2241,8 @@ class CoAnQi26LevelEnergyDensityCalculator(_CP3Calculator):
     category = "Cosmological"
 
     def compute(self, dataset: dict) -> dict:
-        E_0   = dataset.get('E_0', 1e-20)    # J — vacuum base
-        V_0   = dataset.get('V_0', 1.0)      # m^3 — reference volume
+        E_0   = dataset.get('E_0', 1e-20)    # J â€” vacuum base
+        V_0   = dataset.get('V_0', 1.0)      # m^3 â€” reference volume
         n_min = dataset.get('n_min', 1)
         n_max = dataset.get('n_max', 26)
         densities = {}
@@ -2285,9 +2312,9 @@ class CoAnQiQuasarJetFluidCalculator(_CP3Calculator):
 
 
 class CoAnQiArchitectureCalculator(_CP3Calculator):
-    """PAPER_174: CoAnQi architecture validation — IPC chain + plugin registry.
+    """PAPER_174: CoAnQi architecture validation â€” IPC chain + plugin registry.
 
-    Validates: CP1(1199)→CP2(546)→CP3(this) IPC chain integrity.
+    Validates: CP1(1199)â†’CP2(546)â†’CP3(this) IPC chain integrity.
     Plugin registry: SOURCE4, Wolfram WSTP, GrokAPI, 3D VTK/Assimp.
     Reports module count, IPC latency estimate, plugin status.
     """
@@ -2305,14 +2332,14 @@ class CoAnQiArchitectureCalculator(_CP3Calculator):
             'CP2_classes': cp2_count,
             'CP3_classes': cp3_count,
             'total_classes': total,
-            'IPC_chain': f'CP1({cp1_count}) → CP2({cp2_count}) → CP3({cp3_count})',
+            'IPC_chain': f'CP1({cp1_count}) â†’ CP2({cp2_count}) â†’ CP3({cp3_count})',
             'ipc_latency_ms': f'{ipc_latency_ms} ms (estimated)',
             'plugin_registry': ', '.join(plugins),
         }
         return {
             'primary_equations': eqs,
             'available_equations': [
-                'IPC: source2.cpp → APIFetch → CoAnQi → CP1 → CP2 → CP3',
+                'IPC: source2.cpp â†’ APIFetch â†’ CoAnQi â†’ CP1 â†’ CP2 â†’ CP3',
                 'Plugin registry: SOURCE4(Wolfram)+(Grok)+(VTK)+(Assimp)',
             ],
             'simulation_set': {'chain_health': 'ping all IPC stages'},
@@ -2320,7 +2347,7 @@ class CoAnQiArchitectureCalculator(_CP3Calculator):
 
 
 class DiPseudoMonopoleDPMTheoryCalculator(_CP3Calculator):
-    """PAPER_175: Di-Pseudo Monopole (DPM) Theory — aDPM base gravity term.
+    """PAPER_175: Di-Pseudo Monopole (DPM) Theory â€” aDPM base gravity term.
 
     aDPM = mu_DPM * B / (4*pi*r^2) * cos(pi*t_n)
     DPM: paired virtual magnetic monopoles mediating gravitational attraction.
@@ -2330,21 +2357,21 @@ class DiPseudoMonopoleDPMTheoryCalculator(_CP3Calculator):
     category = "Black Hole"
 
     def compute(self, dataset: dict) -> dict:
-        mu_DPM = dataset.get('mu_DPM', 1.0)    # A·m^2 (DPM magnetic moment)
+        mu_DPM = dataset.get('mu_DPM', 1.0)    # AÂ·m^2 (DPM magnetic moment)
         B      = dataset.get('B', 1.0)          # T
         r      = dataset.get('r', 1e10)         # m
         t_n    = dataset.get('t_n', 0.0)
         M      = dataset.get('M', 1.989e30)     # kg (reference mass)
         G = 6.674e-11
         aDPM     = mu_DPM * B / (4.0 * math.pi * r ** 2) * self._cos_tn(t_n)
-        g_Newton = G * M / r ** 2
+        g_Newton = dpm_emergent_ug1(M, r)  # DPM: mu_s * grad(M_s/r)
         ratio    = aDPM / g_Newton if g_Newton != 0 else 0.0
         eqs = {
             'aDPM': f'{aDPM:.4e} m/s^2',
             'g_Newton': f'{g_Newton:.4e} m/s^2',
             'aDPM_to_gN_ratio': f'{ratio:.4e}',
             'cos_pi_t_n': f'{self._cos_tn(t_n):.6f}',
-            'theory': 'Di-Pseudo Monopole — paired virtual magnetic monopoles',
+            'theory': 'Di-Pseudo Monopole â€” paired virtual magnetic monopoles',
         }
         return {
             'primary_equations': eqs,
@@ -2361,15 +2388,15 @@ class DiPseudoMonopoleDPMTheoryCalculator(_CP3Calculator):
 
 
 # =============================================================================
-# SESSION 50 — PAPER_196–215 (Thread: grok_share_7514fe)
+# SESSION 50 â€” PAPER_196â€“215 (Thread: grok_share_7514fe)
 # Triadic Master, F_UBii/Um Taxonomy, GWs, BBN, CMB, DM, Ramanujan Q_26,
-# Magnetar Vortex, QuTiP Entanglement, Variable Calibration, ΛCDM/MOND,
+# Magnetar Vortex, QuTiP Entanglement, Variable Calibration, Î›CDM/MOND,
 # 99-System Framework, 48-Scale CIA, H_res/D_universe, MHD, CR/WHIM/Fermi
 # =============================================================================
 
 
 class TriadicMasterEquationCalculator(_CP3Calculator):
-    """PAPER_196: Triadic Master Equation — Compressed Gravity, Resonance, Buoyancy.
+    """PAPER_196: Triadic Master Equation â€” Compressed Gravity, Resonance, Buoyancy.
 
     g_triadic = w_C * g_compressed + w_R * g_resonance + w_B * g_buoyancy
     w_C + w_R + w_B = 1 (mode weights from beta calibration)
@@ -2406,11 +2433,11 @@ class TriadicMasterEquationCalculator(_CP3Calculator):
 
 
 class FUBiiExtendedIntegralCalculator(_CP3Calculator):
-    """PAPER_197: F_U_Bi_i Extended Integral — UV, mm-Wave, Hybrid, Hierarchical.
+    """PAPER_197: F_U_Bi_i Extended Integral â€” UV, mm-Wave, Hybrid, Hierarchical.
 
-    F_UBii = ∫ Ub_i(r) dV  over UV → mm-wave spectrum
-    UV mode: ω_UV ~ 10^15 Hz; mm-wave: ω_mm ~ 10^11 Hz
-    Hybrid: F_UBii_hyb = α_UV * F_UV + α_mm * F_mm
+    F_UBii = âˆ« Ub_i(r) dV  over UV â†’ mm-wave spectrum
+    UV mode: Ï‰_UV ~ 10^15 Hz; mm-wave: Ï‰_mm ~ 10^11 Hz
+    Hybrid: F_UBii_hyb = Î±_UV * F_UV + Î±_mm * F_mm
     Hierarchical: nested integration across 26-level energy hierarchy
     """
     category = "Cosmological"
@@ -2444,7 +2471,7 @@ class FUBiiExtendedIntegralCalculator(_CP3Calculator):
 
 
 class FUBiiTaxonomyCompactObjectCalculator(_CP3Calculator):
-    """PAPER_198: F_UBii Taxonomy Part 1 — Compact Object and Stellar Buoyancy.
+    """PAPER_198: F_UBii Taxonomy Part 1 â€” Compact Object and Stellar Buoyancy.
 
     F_UBii for compact objects: White Dwarfs, Neutron Stars, Black Holes, Magnetars.
     F_UBii(compact) = -beta_i * Ug_i * omega_g * M / d * [UA] * cos(pi*t_n)
@@ -2485,7 +2512,7 @@ class FUBiiTaxonomyCompactObjectCalculator(_CP3Calculator):
 
 
 class FUBiiTaxonomyCosmologicalCalculator(_CP3Calculator):
-    """PAPER_199: F_UBii Taxonomy Part 2 — Cosmological and Dark Sector.
+    """PAPER_199: F_UBii Taxonomy Part 2 â€” Cosmological and Dark Sector.
 
     F_UBii at galaxy cluster, filament, void, and dark matter halo scales.
     F_UBii(cosm) = -beta_i * lambda_vac * omega_H * M_halo / D_H * [UA] * cos(pi*t_n)
@@ -2494,8 +2521,8 @@ class FUBiiTaxonomyCosmologicalCalculator(_CP3Calculator):
     category = "Cosmological"
 
     def compute(self, dataset: dict) -> dict:
-        M_halo  = dataset.get('M_halo', 1e44)        # kg — cluster mass
-        D_H     = dataset.get('D_H', 1e25)            # m — Hubble distance
+        M_halo  = dataset.get('M_halo', 1e44)        # kg â€” cluster mass
+        D_H     = dataset.get('D_H', 1e25)            # m â€” Hubble distance
         H0      = dataset.get('H0', 2.27e-18)         # s^{-1}
         lam_vac = dataset.get('lambda_vac', 1e-9)     # J/m^3
         t_n     = dataset.get('t_n', 0.0)
@@ -2517,17 +2544,17 @@ class FUBiiTaxonomyCosmologicalCalculator(_CP3Calculator):
             'primary_equations': eqs,
             'available_equations': [
                 'F_UBii_cosm = -beta_i * lam_vac * H0 * M_halo / D_H * [UA] * cos(pi*t_n)',
-                'omega_g → H0 at cosmological scale (Hubble flow)',
+                'omega_g â†’ H0 at cosmological scale (Hubble flow)',
             ],
             'simulation_set': {'F_UBii_cosm_vs_M': 'M_halo from 1e40 to 1e50 kg'},
         }
 
 
 class UmUniversalMagnetismTaxonomyCalculator(_CP3Calculator):
-    """PAPER_200: Um Universal Magnetism Taxonomy — Complete Variant Catalogue.
+    """PAPER_200: Um Universal Magnetism Taxonomy â€” Complete Variant Catalogue.
 
     Um variants: Um_stellar, Um_BH, Um_galactic, Um_cluster, Um_cosmic.
-    Um = Σ_j [mu_j/r_j * (1-exp(-gamma*t*cos(pi*t_n))) * phi_j] * P_SCm * E_react
+    Um = Î£_j [mu_j/r_j * (1-exp(-gamma*t*cos(pi*t_n))) * phi_j] * P_SCm * E_react
     Catalogue spans 5 astrophysical scales with verified parameter ranges.
     """
     category = "Cosmological"
@@ -2560,14 +2587,14 @@ class UmUniversalMagnetismTaxonomyCalculator(_CP3Calculator):
             'primary_equations': eqs,
             'available_equations': [
                 'Um = sum[mu_j/r_j * (1-exp(-gamma*t*cos(pi*t_n)))*phi_j] * P_SCm * E_react',
-                'Catalogue: 5 scales stellar→cosmic, verified mu/r ranges',
+                'Catalogue: 5 scales stellarâ†’cosmic, verified mu/r ranges',
             ],
             'simulation_set': {'Um_all_scales': 'run all 5 Um variants'},
         }
 
 
 class UQFFGravitationalWaveChirpQNMCalculator(_CP3Calculator):
-    """PAPER_201: UQFF GW — Chirp, QNM, BZ, Orbital Decay, Kilonova.
+    """PAPER_201: UQFF GW â€” Chirp, QNM, BZ, Orbital Decay, Kilonova.
 
     chirp_mass M_c = (m1*m2)^{3/5} / (m1+m2)^{1/5}
     QNM ringdown: f_QNM ~ c^3/(2*pi*G*M) * (1-0.63*(1-a)^0.3) (Kerr BH)
@@ -2621,10 +2648,10 @@ class UQFFReionizationBBNCalculator(_CP3Calculator):
         sigma_T = 6.652e-29                           # m^2
         c       = 3e8
         H0      = dataset.get('H0', 2.27e-18)        # s^{-1}
-        # Approximate tau_reion (simplified flat ΛCDM integral)
+        # Approximate tau_reion (simplified flat Î›CDM integral)
         t_reion = 2.0 / (3.0 * H0) * (1.0 + z_reion) ** (-1.5)
         tau_reion = n_b * 1e6 * sigma_T * c * t_reion  # n_b in m^{-3}
-        # UQFF E_react at z_reion — map t(z) ~ t_reion
+        # UQFF E_react at z_reion â€” map t(z) ~ t_reion
         t_days = t_reion / 86400
         E_r  = self._e_react(t_days)
         eqs = {
@@ -2686,7 +2713,7 @@ class UQFFCMBStructureGrowthCalculator(_CP3Calculator):
 
 
 class UQFFDarkMatterNFWSIDMCalculator(_CP3Calculator):
-    """PAPER_204: UQFF Dark Matter — NFW Profile, SIDM, Rotation Curves, Virial Theorem.
+    """PAPER_204: UQFF Dark Matter â€” NFW Profile, SIDM, Rotation Curves, Virial Theorem.
 
     NFW: rho(r) = rho_s / (r/r_s) / (1 + r/r_s)^2
     SIDM core: rho_core ~ rho_s * f(sigma_SIDM) where f ~ 0.5 for typical sigma
@@ -2697,8 +2724,8 @@ class UQFFDarkMatterNFWSIDMCalculator(_CP3Calculator):
     def compute(self, dataset: dict) -> dict:
         r       = dataset.get('r', 3e20)         # m
         rho_s   = dataset.get('rho_s', 1e7 * 1.989e30 / (3e20) ** 3)  # kg/m^3
-        r_s     = dataset.get('r_s', 3e20)       # m — scale radius
-        sigma_SIDM = dataset.get('sigma_SIDM', 1.0)  # cm^2/g — cross section
+        r_s     = dataset.get('r_s', 3e20)       # m â€” scale radius
+        sigma_SIDM = dataset.get('sigma_SIDM', 1.0)  # cm^2/g â€” cross section
         t       = dataset.get('t', 0.0)
         x       = r / r_s
         rho_NFW = rho_s / (x * (1.0 + x) ** 2)
@@ -2729,9 +2756,9 @@ class UQFFDarkMatterNFWSIDMCalculator(_CP3Calculator):
 
 
 class RamanujanPolynomialsQ26Calculator(_CP3Calculator):
-    """PAPER_205: Ramanujan Polynomials Q_26 — UQFF 26-State Summations.
+    """PAPER_205: Ramanujan Polynomials Q_26 â€” UQFF 26-State Summations.
 
-    Q_26 = Σ_{n=1}^{26} c_n * exp(-n*pi*sqrt(n))  (Ramanujan mock theta-like)
+    Q_26 = Î£_{n=1}^{26} c_n * exp(-n*pi*sqrt(n))  (Ramanujan mock theta-like)
     Applied to UQFF: each n-level contribution weighted by Ramanujan sum.
     Cross-validates E_n = E_0 * 10^n hierarchy via Q_26 partial sums.
     """
@@ -2771,10 +2798,10 @@ class RamanujanPolynomialsQ26Calculator(_CP3Calculator):
 
 
 class MagnetarVortexAvalancheCalculator(_CP3Calculator):
-    """PAPER_206: Magnetar Vortex Avalanche Simulation — 2D/3D Power Law Glitch.
+    """PAPER_206: Magnetar Vortex Avalanche Simulation â€” 2D/3D Power Law Glitch.
 
     Glitch size distribution: P(DeltaOmega) ~ DeltaOmega^{-alpha_glitch}
-    alpha_glitch ~ 1.5–2.0 (self-organized criticality)
+    alpha_glitch ~ 1.5â€“2.0 (self-organized criticality)
     UQFF: Ub_i drives vortex unpinning at critical superfluid density
     Vortex avalanche threshold: rho_sf > rho_crit = beta_i * rho_nuclear
     """
@@ -2804,7 +2831,7 @@ class MagnetarVortexAvalancheCalculator(_CP3Calculator):
             'available_equations': [
                 'P(DeltaOmega) ~ DeltaOmega^{-alpha}  (SOC power law)',
                 'rho_crit = beta_i * rho_nuclear  (unpinning threshold)',
-                'Ub_i drives vortex unpinning → glitch avalanche',
+                'Ub_i drives vortex unpinning â†’ glitch avalanche',
             ],
             'simulation_set': {
                 'glitch_size_dist': 'DeltaOmega from 1e-9 to 1e-4 rad/s',
@@ -2814,11 +2841,11 @@ class MagnetarVortexAvalancheCalculator(_CP3Calculator):
 
 
 class QuTiPQuantumEntanglementCalculator(_CP3Calculator):
-    """PAPER_207: QuTiP Quantum Entanglement Chain — CNOT, VonNeumann, Magnetar.
+    """PAPER_207: QuTiP Quantum Entanglement Chain â€” CNOT, VonNeumann, Magnetar.
 
     S_VN = -Tr(rho_A * log(rho_A))  (von Neumann entropy of subsystem A)
     Bell state: |Phi+> = (|00> + |11>) / sqrt(2), S_VN = log(2)
-    UQFF: CNOT gate driven by Ub_i field → entanglement generation rate
+    UQFF: CNOT gate driven by Ub_i field â†’ entanglement generation rate
     """
     category = "Miscellaneous"
 
@@ -2858,9 +2885,9 @@ class QuTiPQuantumEntanglementCalculator(_CP3Calculator):
 
 
 class UQFFVariableCalibrationCalculator(_CP3Calculator):
-    """PAPER_208: UQFF Variable Calibration — phi, f_TRZ, rhoUA, SSq, Q_wave, CIA.
+    """PAPER_208: UQFF Variable Calibration â€” phi, f_TRZ, rhoUA, SSq, Q_wave, CIA.
 
-    Calibration residuals: chi2_cal = Σ (X_i - X_ref_i)^2 / sigma_i^2
+    Calibration residuals: chi2_cal = Î£ (X_i - X_ref_i)^2 / sigma_i^2
     Variables: kappa=0.0005, [SSq]=0.57, beta_i=0.61, [UA]=1e-11, f_TRZ via cos(pi*t_n)
     CIA (Collision-Induced Absorption): cross-section sigma_CIA ~ 1e-44 cm^5
     """
@@ -2893,16 +2920,16 @@ class UQFFVariableCalibrationCalculator(_CP3Calculator):
                 'CIA cross section: sigma_CIA ~ 1e-44 cm^5 (N2-N2 pair)',
                 'PASS criterion: chi2 < 4 (all variables within 2-sigma)',
             ],
-            'simulation_set': {'calibration_sweep': 'scan each variable ±3sigma'},
+            'simulation_set': {'calibration_sweep': 'scan each variable Â±3sigma'},
         }
 
 
 class UQFFvsLambdaCDMComparisonCalculator(_CP3Calculator):
-    """PAPER_209: UQFF vs ΛCDM Comparison Framework.
+    """PAPER_209: UQFF vs Î›CDM Comparison Framework.
 
     Delta_w = w_UQFF - w_LCDM; w_LCDM = -1; w_UQFF = -0.95 + delta_tau*(1+z)^{-nu}
     chi2_LCDM vs chi2_UQFF over Planck+BAO+SN datasets
-    Delta_chi2 > 0: UQFF preferred; < 0: ΛCDM preferred
+    Delta_chi2 > 0: UQFF preferred; < 0: Î›CDM preferred
     """
     category = "Cosmological"
 
@@ -2926,7 +2953,7 @@ class UQFFvsLambdaCDMComparisonCalculator(_CP3Calculator):
             'Delta_w': f'{Delta_w:.6f}',
             'chi2_UQFF': f'{chi2_UQFF:.4f}',
             'chi2_LCDM': f'{chi2_LCDM:.4f}',
-            'Delta_chi2': f'{Delta_chi2:.4f}  (>0 → UQFF preferred)',
+            'Delta_chi2': f'{Delta_chi2:.4f}  (>0 â†’ UQFF preferred)',
             'preferred_model': 'UQFF' if Delta_chi2 > 0 else 'LCDM',
             'PAPER': 'PAPER_209 grok_share_7514fe',
         }
@@ -2951,9 +2978,9 @@ class UQFFvsMONDComparisonCalculator(_CP3Calculator):
     category = "Galaxy"
 
     def compute(self, dataset: dict) -> dict:
-        r     = dataset.get('r', 3e20)           # m — galactic radius
-        M_gal = dataset.get('M', 1e41)           # kg — galaxy mass
-        a0    = dataset.get('a0', 1.2e-10)       # m/s^2 — MOND acceleration
+        r     = dataset.get('r', 3e20)           # m â€” galactic radius
+        M_gal = dataset.get('M', 1e41)           # kg â€” galaxy mass
+        a0    = dataset.get('a0', 1.2e-10)       # m/s^2 â€” MOND acceleration
         t_n   = dataset.get('t_n', 0.0)
         t     = dataset.get('t', 0.0)
         G = 6.674e-11
@@ -3033,9 +3060,9 @@ class UQFF48ScaleMolecularRotorCIACalculator(_CP3Calculator):
     category = "Miscellaneous"
 
     def compute(self, dataset: dict) -> dict:
-        T        = dataset.get('T', 300.0)        # K — temperature
+        T        = dataset.get('T', 300.0)        # K â€” temperature
         n_scale  = dataset.get('n_scale', 12)     # 1-48 scale level
-        Delta_alpha = dataset.get('Delta_alpha', 1e-31)  # m^3 — polarizability anisotropy
+        Delta_alpha = dataset.get('Delta_alpha', 1e-31)  # m^3 â€” polarizability anisotropy
         n_density = dataset.get('n_density', 2.687e25)   # m^{-3} Loschmidt
         k_B = 1.381e-23; hbar = 1.055e-34
         E_rot_scale = 1e-20 * (10 ** (n_scale / 4))     # rotor energy at scale n
@@ -3065,8 +3092,8 @@ class UQFF48ScaleMolecularRotorCIACalculator(_CP3Calculator):
 class HResDUniverseMasterCalculator(_CP3Calculator):
     """PAPER_213: H_res Suite and D_universe Master Equations.
 
-    H_res = H0 * (1 + Σ_n f_n * E_n / E_ref)  (resonance-corrected Hubble constant)
-    D_universe = c * integral(dz / H(z)) — corrected Hubble diameter
+    H_res = H0 * (1 + Î£_n f_n * E_n / E_ref)  (resonance-corrected Hubble constant)
+    D_universe = c * integral(dz / H(z)) â€” corrected Hubble diameter
     Tension: H_res vs Planck H0 (early) vs SH0ES H0 (late universe)
     """
     category = "Cosmological"
@@ -3105,7 +3132,7 @@ class HResDUniverseMasterCalculator(_CP3Calculator):
 
 
 class MHDClustersJetsAccretionCalculator(_CP3Calculator):
-    """PAPER_214: MHD Clusters, Jets, Accretion — UQFF Framework.
+    """PAPER_214: MHD Clusters, Jets, Accretion â€” UQFF Framework.
 
     MHD: Kazantsev dynamo Rm > Rm_crit ~ 100 drives field amplification.
     Jet power: P_BZ = (kappa_BZ/4*pi*c) * Phi_BH^2 * Omega_H^2
@@ -3114,9 +3141,9 @@ class MHDClustersJetsAccretionCalculator(_CP3Calculator):
     category = "Galaxy Cluster"
 
     def compute(self, dataset: dict) -> dict:
-        B0      = dataset.get('B0', 1e-9)         # T — seed field
+        B0      = dataset.get('B0', 1e-9)         # T â€” seed field
         Rm      = dataset.get('Rm', 1000.0)       # magnetic Reynolds number
-        v_A     = dataset.get('v_A', 1e5)          # m/s — Alfven speed
+        v_A     = dataset.get('v_A', 1e5)          # m/s â€” Alfven speed
         M_bh    = dataset.get('M_bh', M_BH_SGR)
         a_spin  = dataset.get('a_spin', 0.9)       # BH spin
         t       = dataset.get('t', 0.0)
@@ -3149,7 +3176,7 @@ class MHDClustersJetsAccretionCalculator(_CP3Calculator):
 
 
 class CosmicRaysWHIMFermiCalculator(_CP3Calculator):
-    """PAPER_215: Cosmic Rays, WHIM, Fermi Acceleration — CR Knee UQFF.
+    """PAPER_215: Cosmic Rays, WHIM, Fermi Acceleration â€” CR Knee UQFF.
 
     CR knee: E_knee ~ Z * 3e15 eV (rigidity-dependent, Z proton charge)
     WHIM shock: Fermi I acceleration rate Gamma_Fermi = (v_sh/c)^2 * c/lambda_mfp
@@ -3162,10 +3189,10 @@ class CosmicRaysWHIMFermiCalculator(_CP3Calculator):
         Z         = dataset.get('Z', 1)            # charge number (proton=1)
         v_sh      = dataset.get('v_sh', 1e6)       # m/s shock velocity
         lambda_mfp = dataset.get('lambda_mfp', 1e17)  # m mean free path
-        E_CR      = dataset.get('E_CR', 1e15 * 1.602e-19)  # J — CR energy
+        E_CR      = dataset.get('E_CR', 1e15 * 1.602e-19)  # J â€” CR energy
         t_n       = dataset.get('t_n', 0.0)
         c = 3e8
-        E_knee_J  = Z * 3e15 * 1.602e-19          # J — CR knee energy
+        E_knee_J  = Z * 3e15 * 1.602e-19          # J â€” CR knee energy
         above_knee = E_CR > E_knee_J
         alpha_CR  = 3.1 if above_knee else 2.7    # spectral index
         # Fermi I acceleration rate
@@ -3196,7 +3223,7 @@ class CosmicRaysWHIMFermiCalculator(_CP3Calculator):
 
 
 # ---------------------------------------------------------------------------
-# Session 52 — grok_share_7514fe deep-analysis (10 new calculators)
+# Session 52 â€” grok_share_7514fe deep-analysis (10 new calculators)
 # Source: UQFF+Equations+Across+Astrophysical+Systems_22Sept2025.pdf analysis
 # Unique content: Friedmann UQFF, multi-factor g, SSq-enhanced triadic,
 # DPM harmonic series, hydrogen nuclear resonance, universe diameter,
@@ -3209,11 +3236,11 @@ class UQFFCompressedFriedmannCalculator(_CP3Calculator):
 
     Unique equation (Doc compression Step 2/6):
       g_UQFF = (G*M(t))/r^2 * (1+H(t,z)) * (1-B(t)/B_crit) * (1+F_env(t))
-               + (Ug1+Ug2+Ug3'+Ug4) + Λc²/3
-               + (ℏ/√(Δx·Δp))·∫ψ_total·H·ψ_total dV·(2π/t_Hubble)
-               + ρ_fluid·V·g + (M_vis+M_DM)·(δρ/ρ + 3GM/r³)
-      H(t,z) = H_0·√(0.3·(1+z)³ + 0.7)   [Friedmann flat ΛCDM]
-      F_env(t) encodes environment: wind (v_wind²), expansion E(t), lensing L(t)
+               + (Ug1+Ug2+Ug3'+Ug4) + Î›cÂ²/3
+               + (â„/âˆš(Î”xÂ·Î”p))Â·âˆ«Ïˆ_totalÂ·HÂ·Ïˆ_total dVÂ·(2Ï€/t_Hubble)
+               + Ï_fluidÂ·VÂ·g + (M_vis+M_DM)Â·(Î´Ï/Ï + 3GM/rÂ³)
+      H(t,z) = H_0Â·âˆš(0.3Â·(1+z)Â³ + 0.7)   [Friedmann flat Î›CDM]
+      F_env(t) encodes environment: wind (v_windÂ²), expansion E(t), lensing L(t)
     """
 
     def compute(self, dataset: dict) -> dict:
@@ -3241,7 +3268,7 @@ class UQFFCompressedFriedmannCalculator(_CP3Calculator):
         rho = dataset.get('rho', 1e-22)
 
         H_tz = H0 * math.sqrt(0.3 * (1 + z)**3 + 0.7)
-        g_newton = (G * M) / r**2
+        g_newton = dpm_emergent_ug1(M, r)  # DPM-emergent
         mag_factor = 1.0 - min(B / B_crit, 0.9999)
         env_factor = 1.0 + F_env
         cosm_factor = 1.0 + H_tz * t
@@ -3252,18 +3279,18 @@ class UQFFCompressedFriedmannCalculator(_CP3Calculator):
         g_dm = (M_vis + M_DM) * (delta_rho / max(rho, 1e-99) + (3 * G * M) / r**3)
 
         g_total = g_grav + g_lambda + g_qm + g_fluid + g_dm
-        prim_eq = (f"g_UQFF = {g_grav:.4e} (grav·env·Htz) + {g_lambda:.4e} (Λ) "
+        prim_eq = (f"g_UQFF = {g_grav:.4e} (gravÂ·envÂ·Htz) + {g_lambda:.4e} (Î›) "
                    f"+ {g_qm:.4e} (QM) + {g_fluid:.4e} (fluid) + {g_dm:.4e} (DM) "
-                   f"= {g_total:.4e} m/s²")
+                   f"= {g_total:.4e} m/sÂ²")
         return {
             'primary_equations': [
                 prim_eq,
-                f"H(t,z) = H0·√(0.3·(1+{z})³+0.7) = {H_tz:.4e} s⁻¹",
-                f"F_env = {F_env:.4f}  →  envelope factor = {env_factor:.6f}",
+                f"H(t,z) = H0Â·âˆš(0.3Â·(1+{z})Â³+0.7) = {H_tz:.4e} sâ»Â¹",
+                f"F_env = {F_env:.4f}  â†’  envelope factor = {env_factor:.6f}",
             ],
             'available_equations': [
-                "g_UQFF extended forms: wind (v_wind²), expansion E(t), lensing L(t)",
-                "H(t,z) → F_env(t) coupling for SFR / AGN feedback regimes",
+                "g_UQFF extended forms: wind (v_windÂ²), expansion E(t), lensing L(t)",
+                "H(t,z) â†’ F_env(t) coupling for SFR / AGN feedback regimes",
                 "psi_total envelope via Ug3' modified superposition",
             ],
             'simulation_set': {
@@ -3276,10 +3303,10 @@ class UQFFCompressedFriedmannCalculator(_CP3Calculator):
 class UQFFMultiFactorEvolutionMergerCalculator(_CP3Calculator):
     """HUDF-style UQFF gravity with dual product factors M_evo and M_merge.
 
-    Unique equation (Document 18 — HUDF):
-      g = (G·M(t))/r² · (1+H(z)·t) · (1-B/B_crit) · (1+M_evo(t)) · (1-M_merge(t))
+    Unique equation (Document 18 â€” HUDF):
+      g = (GÂ·M(t))/rÂ² Â· (1+H(z)Â·t) Â· (1-B/B_crit) Â· (1+M_evo(t)) Â· (1-M_merge(t))
           + (Ug1+Ug2+Ug3+Ug4) + cosmological + QM + fluid + DM terms
-    Cross-term: (1+M_evo)·(1-M_merge) = 1 + M_evo - M_merge - M_evo·M_merge
+    Cross-term: (1+M_evo)Â·(1-M_merge) = 1 + M_evo - M_merge - M_evoÂ·M_merge
     M_evo  = fractional stellar mass growth rate (SFR / M_total)
     M_merge = fractional mass loss to merging (dM_merge/dt / M)
     """
@@ -3305,7 +3332,7 @@ class UQFFMultiFactorEvolutionMergerCalculator(_CP3Calculator):
 
         mag_f = 1.0 - min(B / B_crit, 0.9999)
         evo_f = (1.0 + M_evo) * (1.0 - M_merge)
-        g_base = (G * M) / r**2 * (1 + H0 * t) * mag_f * evo_f
+        g_base = dpm_emergent_ug1(M, r) * (1 + H0 * t) * mag_f * evo_f  # DPM-emergent
         g_lambda = (LAMBDA * c**2) / 3.0
         g_qm = (hbar / math.sqrt(1.055e-34 * 1e-27)) * (2 * math.pi / t_H)
         g_total = g_base + g_lambda + g_qm
@@ -3314,12 +3341,12 @@ class UQFFMultiFactorEvolutionMergerCalculator(_CP3Calculator):
         return {
             'primary_equations': [
                 f"g_HUDF = {g_base:.4e} [(1+M_evo)(1-M_merge) = {evo_f:.4f}]",
-                f"Cross-term suppression: M_evo·M_merge = {cross:.4e}",
-                f"g_total = {g_total:.4e} m/s²",
+                f"Cross-term suppression: M_evoÂ·M_merge = {cross:.4e}",
+                f"g_total = {g_total:.4e} m/sÂ²",
             ],
             'available_equations': [
-                "dM_evo/dt coupling via SFR integral ∫SFR(z)dz",
-                "M_merge redshift scaling: M_merge ∝ (1+z)^2.5",
+                "dM_evo/dt coupling via SFR integral âˆ«SFR(z)dz",
+                "M_merge redshift scaling: M_merge âˆ (1+z)^2.5",
                 "Multi-epoch: iterate over z=[0,2,5,10]",
             ],
             'simulation_set': {
@@ -3331,13 +3358,13 @@ class UQFFMultiFactorEvolutionMergerCalculator(_CP3Calculator):
 
 
 class UQFFVelocityStarFormationCollisionCalculator(_CP3Calculator):
-    """Merging galaxy UQFF with collision suppression M_coll and star-formation velocity v_sf².
+    """Merging galaxy UQFF with collision suppression M_coll and star-formation velocity v_sfÂ².
 
-    Unique equations (Document 14 — Antennae Galaxies):
-      g = (G·M(t))/r² · (1+H(z)·t) · (1-B/B_crit) · (1-M_coll(t))
-          + Ug terms + Λ + QM + ρ·V·g + DM + ρ·v_sf²
+    Unique equations (Document 14 â€” Antennae Galaxies):
+      g = (GÂ·M(t))/rÂ² Â· (1+H(z)Â·t) Â· (1-B/B_crit) Â· (1-M_coll(t))
+          + Ug terms + Î› + QM + ÏÂ·VÂ·g + DM + ÏÂ·v_sfÂ²
     M_coll(t) = fractional mass effectively lost in tidal disruption
-    ρ·v_sf²  = ram pressure of star-forming gas (velocity dispersion)
+    ÏÂ·v_sfÂ²  = ram pressure of star-forming gas (velocity dispersion)
     """
 
     def compute(self, dataset: dict) -> dict:
@@ -3361,7 +3388,7 @@ class UQFFVelocityStarFormationCollisionCalculator(_CP3Calculator):
 
         mag_f = 1.0 - min(B / B_crit, 0.9999)
         coll_f = 1.0 - M_coll
-        g_base = (G * M) / r**2 * (1 + H0 * t) * mag_f * coll_f
+        g_base = dpm_emergent_ug1(M, r) * (1 + H0 * t) * mag_f * coll_f  # DPM-emergent
         g_lambda = (LAMBDA * c**2) / 3.0
         g_ram = rho_sf * v_sf**2
         g_qm = (hbar / math.sqrt(1.055e-34 * 1e-27)) * (2 * math.pi / t_H)
@@ -3369,14 +3396,14 @@ class UQFFVelocityStarFormationCollisionCalculator(_CP3Calculator):
 
         return {
             'primary_equations': [
-                f"g = {g_base:.4e} [(1-M_coll)={coll_f:.4f}] + {g_ram:.4e} [ρ·v_sf²]",
-                f"Ram pressure ρ·v_sf² = {rho_sf:.2e}·{v_sf:.2e}² = {g_ram:.4e}",
-                f"g_total = {g_total:.4e} m/s²",
+                f"g = {g_base:.4e} [(1-M_coll)={coll_f:.4f}] + {g_ram:.4e} [ÏÂ·v_sfÂ²]",
+                f"Ram pressure ÏÂ·v_sfÂ² = {rho_sf:.2e}Â·{v_sf:.2e}Â² = {g_ram:.4e}",
+                f"g_total = {g_total:.4e} m/sÂ²",
             ],
             'available_equations': [
-                "Tidal torque coupling: M_coll ∝ (r_peri / r_apo)^3",
+                "Tidal torque coupling: M_coll âˆ (r_peri / r_apo)^3",
                 "v_sf ALMA CO velocity dispersion constraint",
-                "Star-formation quenching threshold: ρ·v_sf² > g_grav",
+                "Star-formation quenching threshold: ÏÂ·v_sfÂ² > g_grav",
             ],
             'simulation_set': {
                 'M_coll_sweep': 'M_coll from 0 to 0.2 (tidal disruption range)',
@@ -3388,12 +3415,12 @@ class UQFFVelocityStarFormationCollisionCalculator(_CP3Calculator):
 class UQFFSupernovaFeedbackMassLossCalculator(_CP3Calculator):
     """UQFF gravity with supernova outflow (-M_SN) and feedback force F_sn.
 
-    Unique equations (Documents 10/19 — NGC 2525 / NGC 1792):
+    Unique equations (Documents 10/19 â€” NGC 2525 / NGC 1792):
       g_NGC2525 = g_base + (Ug terms) - M_SN(t)       [mass blown out]
-      g_NGC1792 = g_base · (1+M_sf(t)) + F_sn          [SFR + SNe feedback]
-      Combined: g_eff = g_UQFF · (1+M_sf) - M_SN + F_sn
-      M_SN(t) = κ_SN · SFR(t) · E_SN / c²             [mass equivalent]
-      F_sn    = k_sn · (v_ejecta² / r²) · Ω_SNe        [force from ejecta]
+      g_NGC1792 = g_base Â· (1+M_sf(t)) + F_sn          [SFR + SNe feedback]
+      Combined: g_eff = g_UQFF Â· (1+M_sf) - M_SN + F_sn
+      M_SN(t) = Îº_SN Â· SFR(t) Â· E_SN / cÂ²             [mass equivalent]
+      F_sn    = k_sn Â· (v_ejectaÂ² / rÂ²) Â· Î©_SNe        [force from ejecta]
     """
 
     def compute(self, dataset: dict) -> dict:
@@ -3420,7 +3447,7 @@ class UQFFSupernovaFeedbackMassLossCalculator(_CP3Calculator):
         Omega_SN = dataset.get('Omega_SN', 0.01)
 
         mag_f = 1.0 - min(B / B_crit, 0.9999)
-        g_base = (G * M) / r**2 * (1 + H0 * t) * mag_f * (1 + M_sf)
+        g_base = dpm_emergent_ug1(M, r) * (1 + H0 * t) * mag_f * (1 + M_sf)  # DPM-emergent
         g_lambda = (LAMBDA * c**2) / 3.0
         # SN mass equivalent per second: SFR in kg/s * E_SN/c^2 scaling
         SFR_si = SFR * 1.989e30 / 3.156e7   # kg/s
@@ -3430,18 +3457,18 @@ class UQFFSupernovaFeedbackMassLossCalculator(_CP3Calculator):
 
         return {
             'primary_equations': [
-                f"g_base·(1+M_sf) = {g_base:.4e} m/s² [SFR enhancement]",
-                f"−M_SN(t) = −{M_SN:.4e} [SNe mass outflow equivalent]",
+                f"g_baseÂ·(1+M_sf) = {g_base:.4e} m/sÂ² [SFR enhancement]",
+                f"âˆ’M_SN(t) = âˆ’{M_SN:.4e} [SNe mass outflow equivalent]",
                 f"F_sn = {F_sn:.4e} [ejecta feedback]",
-                f"g_eff = {g_total:.4e} m/s²",
+                f"g_eff = {g_total:.4e} m/sÂ²",
             ],
             'available_equations': [
-                "Kennicutt-Schmidt: SFR ∝ Σ_gas^1.4",
+                "Kennicutt-Schmidt: SFR âˆ Î£_gas^1.4",
                 "Snowplow SNR: M_SN(t) time-integrated via SF history",
-                "Feedback threshold: F_sn > g_base → outflow-driven quenching",
+                "Feedback threshold: F_sn > g_base â†’ outflow-driven quenching",
             ],
             'simulation_set': {
-                'SFR_sweep': 'SFR from 0.1 to 100 M☉/yr',
+                'SFR_sweep': 'SFR from 0.1 to 100 Mâ˜‰/yr',
                 'M_sf_sweep': 'M_sf from 0 to 0.2',
             },
         }
@@ -3450,14 +3477,14 @@ class UQFFSupernovaFeedbackMassLossCalculator(_CP3Calculator):
 class HydrogenNuclearShellResonanceCalculator(_CP3Calculator):
     """Hydrogen nuclear resonance with magic-number shell correction S_shell.
 
-    Unique equations (Document 28 — Hydrogen Resonance):
-      H_res = A_res · sin(2π·f_res·t) + U_dp·SC_m·k_nuc + S_shell
-      A_res  = k_A · Z · (A/A_H) · (1 + δ_pair)
-      f_res  = (E_bind/h) · (A_H/A) · (1 + S_shell)
-      U_dp   = k · (A_1·A_2 / f_dp²) · cos(φ_dp)
-      k_nuc  = k_0 · (N/Z) · (1 + δ_pair)
-      S_shell = 0.1 · (Z_magic + N_magic)          [magic number shell correction]
-      δ_pair  = +0.5 if both N,Z even; −0.5 if both odd; 0 otherwise
+    Unique equations (Document 28 â€” Hydrogen Resonance):
+      H_res = A_res Â· sin(2Ï€Â·f_resÂ·t) + U_dpÂ·SC_mÂ·k_nuc + S_shell
+      A_res  = k_A Â· Z Â· (A/A_H) Â· (1 + Î´_pair)
+      f_res  = (E_bind/h) Â· (A_H/A) Â· (1 + S_shell)
+      U_dp   = k Â· (A_1Â·A_2 / f_dpÂ²) Â· cos(Ï†_dp)
+      k_nuc  = k_0 Â· (N/Z) Â· (1 + Î´_pair)
+      S_shell = 0.1 Â· (Z_magic + N_magic)          [magic number shell correction]
+      Î´_pair  = +0.5 if both N,Z even; âˆ’0.5 if both odd; 0 otherwise
     """
 
     def compute(self, dataset: dict) -> dict:
@@ -3502,15 +3529,15 @@ class HydrogenNuclearShellResonanceCalculator(_CP3Calculator):
         return {
             'primary_equations': [
                 f"H_res = {H_res:.4e}",
-                f"A_res = k_A·Z·(A/A_H)·(1+δ_pair) = {A_res:.4e}",
-                f"f_res = (E_bind/h)·(A_H/A)·(1+S_shell) = {f_res:.4e} Hz",
+                f"A_res = k_AÂ·ZÂ·(A/A_H)Â·(1+Î´_pair) = {A_res:.4e}",
+                f"f_res = (E_bind/h)Â·(A_H/A)Â·(1+S_shell) = {f_res:.4e} Hz",
                 f"U_dp = {U_dp:.4e}, k_nuc = {k_nuc:.4f}, S_shell = {S_shell:.2f}",
-                f"δ_pair = {delta_pair:.1f}  (Z={Z}, N={N}, A={A})",
+                f"Î´_pair = {delta_pair:.1f}  (Z={Z}, N={N}, A={A})",
             ],
             'available_equations': [
                 "Nuclear binding: E_bind / A vs semi-empirical mass formula",
                 "Magic number proximity: partial shell filling corrections",
-                "U_dp dipole: k·(A_1·A_2/f_dp²)·cos(φ) for any nucleus",
+                "U_dp dipole: kÂ·(A_1Â·A_2/f_dpÂ²)Â·cos(Ï†) for any nucleus",
             ],
             'simulation_set': {
                 'Z_sweep': 'Z from 1 to 10 (H to Ne), trace S_shell jumps',
@@ -3523,9 +3550,9 @@ class UQFFUniverseDiameterEstimationCalculator(_CP3Calculator):
     """UQFF estimate of universe diameter with quantum and cosmological corrections.
 
     Unique equation (Document 29 / Document 26):
-      D_universe = 2·D_p · (1+H(z)·t_0) · (1+Λc²/(3H_0²))
-                   · (1 + (ℏ/√(Δx·Δp))·∫ψ·H·ψdV / (G·M_total))
-                   · (1 + k_curv·r_c²)
+      D_universe = 2Â·D_p Â· (1+H(z)Â·t_0) Â· (1+Î›cÂ²/(3H_0Â²))
+                   Â· (1 + (â„/âˆš(Î”xÂ·Î”p))Â·âˆ«ÏˆÂ·HÂ·ÏˆdV / (GÂ·M_total))
+                   Â· (1 + k_curvÂ·r_cÂ²)
     D_p   = particle horizon (2c/H_0 for flat universe)
     k_curv = curvature correction (~0 flat, +1 closed, -1 open)
     r_c    = comoving curvature radius
@@ -3557,14 +3584,14 @@ class UQFFUniverseDiameterEstimationCalculator(_CP3Calculator):
         return {
             'primary_equations': [
                 f"D_p = 2c/H_0 = {D_p:.4e} m = {D_p/9.461e15:.3e} ly",
-                f"Cosmological factor (1+H·t_0) = {cosm:.6f}",
-                f"Λ correction = {lambda_corr:.8f}",
+                f"Cosmological factor (1+HÂ·t_0) = {cosm:.6f}",
+                f"Î› correction = {lambda_corr:.8f}",
                 f"QM correction = {qm_corr:.8e}",
                 f"D_universe = {D_universe:.4e} m = {D_universe/9.461e15:.4e} ly",
             ],
             'available_equations': [
-                "Comoving distance: χ = c·∫₀^z dz'/H(z')",
-                "Angular diameter distance: d_A = χ/(1+z)",
+                "Comoving distance: Ï‡ = cÂ·âˆ«â‚€^z dz'/H(z')",
+                "Angular diameter distance: d_A = Ï‡/(1+z)",
                 "Particle horizon evolution with UQFF Ug4 vacuum terms",
             ],
             'simulation_set': {
@@ -3578,13 +3605,13 @@ class TriadicSSqFeedbackEnhancedCalculator(_CP3Calculator):
     """Triadic UQFF with SSq feedback correction in amplitude and resonance.
 
     Unique master equations (Long-Form Proofs section):
-      FU_g1 = Σ_{k=1}^N [ k_k · (f_UA'1·f_SCm1·R_EB1)·(f_UA'2·f_SCm2·R_EB2)/r²
-                           · G_k(UA,Ub,ν_THz,geom_k)
-                         + k_4·ρ_vac,[SCm]·M_BH/r · e^{-αt}·cos(πt_n)
-                           · (1+f_feedback) · e^{-[SSq]·n/26} ]
-      R(t) = Σ_{i=1}^{26} R_{U_g1,i}·cos(ω_{U_g1,i}·t)
-             with R_{U_g1,i} = F_{U_g1,i}·(1+M_sf(t))·e^{-[SSq]·i/26}
-             and ω_{U_g1,i} = 2π/(T_sf/i)·(1+[SSq])
+      FU_g1 = Î£_{k=1}^N [ k_k Â· (f_UA'1Â·f_SCm1Â·R_EB1)Â·(f_UA'2Â·f_SCm2Â·R_EB2)/rÂ²
+                           Â· G_k(UA,Ub,Î½_THz,geom_k)
+                         + k_4Â·Ï_vac,[SCm]Â·M_BH/r Â· e^{-Î±t}Â·cos(Ï€t_n)
+                           Â· (1+f_feedback) Â· e^{-[SSq]Â·n/26} ]
+      R(t) = Î£_{i=1}^{26} R_{U_g1,i}Â·cos(Ï‰_{U_g1,i}Â·t)
+             with R_{U_g1,i} = F_{U_g1,i}Â·(1+M_sf(t))Â·e^{-[SSq]Â·i/26}
+             and Ï‰_{U_g1,i} = 2Ï€/(T_sf/i)Â·(1+[SSq])
     Both FU_g1 feedback term and R amplitude are SSq-attenuated over 26 levels.
     """
 
@@ -3635,12 +3662,12 @@ class TriadicSSqFeedbackEnhancedCalculator(_CP3Calculator):
             'primary_equations': [
                 f"FU_g1 = {FU_g1:.4e} N (SSq={SSq} feedback across {N} levels)",
                 f"R(t) = {R_total:.4e} N (26-level resonance with SSq decay)",
-                f"SSq level sum Σe^{{-SSq·n/26}} = {ssq_sum:.4f}",
-                f"ω_1 = 2π/(T_sf/1)·(1+SSq) = {2*math.pi/T_sf*(1+SSq):.4e} s⁻¹",
+                f"SSq level sum Î£e^{{-SSqÂ·n/26}} = {ssq_sum:.4f}",
+                f"Ï‰_1 = 2Ï€/(T_sf/1)Â·(1+SSq) = {2*math.pi/T_sf*(1+SSq):.4e} sâ»Â¹",
             ],
             'available_equations': [
                 "Full 26-level R(t) spectrum with Ug2,Ug3,Ug4 resonances",
-                "SSq(n) = e^{-[SSq]·n/26}: shell stability gradient",
+                "SSq(n) = e^{-[SSq]Â·n/26}: shell stability gradient",
                 "f_feedback coupling via AGN cavity / winds",
             ],
             'simulation_set': {
@@ -3654,12 +3681,12 @@ class DPMHarmonicBuoyancySeriesCalculator(_CP3Calculator):
     """DPM harmonic U_g2 series with buoyancy harmonics H_m and vacuum density series.
 
     Unique equations (ACP/DPM Creation Scenario, Clarification Answers section):
-      U_g2 = Σ_{m=1}^∞ H_m · (1-e^{-[SSq]·m}) · cos(ω_Ug2·t_n)
-             H_m = Σ_{k=1}^m (1/k) · f_Ub      [buoyancy harmonic: harmonic series]
-      U_i  = k_i · ρ_vac,[SCm] · ρ_vac,[UA] · ω_s(t) · λ_i · k_4  [with harmonic λ_i]
-      Vacuum Density Series: V_DS = Σ_{n=1}^∞ (1/n^26) · [SSq]^n   [convergent]
-      f_Ub = k_Ub · Δk_η · (ρ_vac,[UA]/ρ_vac,[SCm]) · (V_little/V_big)
-      t_n  = (t/t_Hubble) · (1 + H(z)·t_0)    [cosmic-to-quantum time bridge]
+      U_g2 = Î£_{m=1}^âˆž H_m Â· (1-e^{-[SSq]Â·m}) Â· cos(Ï‰_Ug2Â·t_n)
+             H_m = Î£_{k=1}^m (1/k) Â· f_Ub      [buoyancy harmonic: harmonic series]
+      U_i  = k_i Â· Ï_vac,[SCm] Â· Ï_vac,[UA] Â· Ï‰_s(t) Â· Î»_i Â· k_4  [with harmonic Î»_i]
+      Vacuum Density Series: V_DS = Î£_{n=1}^âˆž (1/n^26) Â· [SSq]^n   [convergent]
+      f_Ub = k_Ub Â· Î”k_Î· Â· (Ï_vac,[UA]/Ï_vac,[SCm]) Â· (V_little/V_big)
+      t_n  = (t/t_Hubble) Â· (1 + H(z)Â·t_0)    [cosmic-to-quantum time bridge]
     """
 
     def compute(self, dataset: dict) -> dict:
@@ -3688,21 +3715,21 @@ class DPMHarmonicBuoyancySeriesCalculator(_CP3Calculator):
         # f_Ub buoyancy factor
         f_Ub = k_Ub * delta_k_eta * (rho_UA / rho_SCm) * V_ratio
 
-        # Buoyancy harmonics H_m = Σ_{k=1}^m (1/k) · f_Ub (harmonic series)
+        # Buoyancy harmonics H_m = Î£_{k=1}^m (1/k) Â· f_Ub (harmonic series)
         H_m_list = []
         running = 0.0
         for m in range(1, N_terms + 1):
             running += (1.0 / m) * f_Ub
             H_m_list.append(running)
 
-        # U_g2 = Σ H_m · (1-e^{-SSq·m}) · cos(ω_Ug2·t_n)
+        # U_g2 = Î£ H_m Â· (1-e^{-SSqÂ·m}) Â· cos(Ï‰_Ug2Â·t_n)
         U_g2 = sum(H_m_list[m - 1] * (1 - math.exp(-SSq * m)) * math.cos(omega_Ug2 * t_n)
                    for m in range(1, N_terms + 1))
 
-        # Vacuum Density Series: Σ (1/n^26) · [SSq]^n
+        # Vacuum Density Series: Î£ (1/n^26) Â· [SSq]^n
         V_DS = sum((1.0 / n**26) * SSq**n for n in range(1, N_terms + 1))
 
-        # U_i with harmonic λ_i (prime-harmonic): λ_i = i-th prime / 26
+        # U_i with harmonic Î»_i (prime-harmonic): Î»_i = i-th prime / 26
         from math import log
         lambda_series = []
         primes = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29]
@@ -3715,15 +3742,15 @@ class DPMHarmonicBuoyancySeriesCalculator(_CP3Calculator):
         return {
             'primary_equations': [
                 f"t_n = {t_n:.6e} (cosmic-to-quantum bridge)",
-                f"f_Ub = k_Ub·Δk_η·(ρ_UA/ρ_SCm)·(V_l/V_b) = {f_Ub:.4e}",
+                f"f_Ub = k_UbÂ·Î”k_Î·Â·(Ï_UA/Ï_SCm)Â·(V_l/V_b) = {f_Ub:.4e}",
                 f"U_g2 (N={N_terms} terms) = {U_g2:.4e}",
-                f"Vacuum Density Series V_DS = Σ(1/n²⁶)·[SSq]ⁿ = {V_DS:.6e}",
-                f"U_i total (harmonic λ_i, N_primes) = {U_i_total:.4e}",
+                f"Vacuum Density Series V_DS = Î£(1/nÂ²â¶)Â·[SSq]â¿ = {V_DS:.6e}",
+                f"U_i total (harmonic Î»_i, N_primes) = {U_i_total:.4e}",
             ],
             'available_equations': [
                 "H_m harmonic series: H_m = H_{m-1} + f_Ub/m (Harmonic numbers)",
-                "V_DS convergence: ζ(26) partial with [SSq] weighting",
-                "t_n bridging: t_quantum = t_cosmic · H(z) scaling",
+                "V_DS convergence: Î¶(26) partial with [SSq] weighting",
+                "t_n bridging: t_quantum = t_cosmic Â· H(z) scaling",
             ],
             'simulation_set': {
                 'N_terms_sweep': 'N_terms from 1 to 50',
@@ -3735,14 +3762,14 @@ class DPMHarmonicBuoyancySeriesCalculator(_CP3Calculator):
 class DipoleVortexPrimeEncodingCalculator(_CP3Calculator):
     """Di-Pseudo-Monopole vortex states encoded by primes >26 for U_g3.
 
-    Unique mathematical structure (Clarification Answers — Dipole Vortex Primes):
+    Unique mathematical structure (Clarification Answers â€” Dipole Vortex Primes):
       Vortex state n encoded by prime p_n where p_n > 26 (p_1=29, p_2=31, ...)
       Special: p_27 = 113 for hydrogen proto-shells (the 30th prime)
-      U_g3(n) = U_g3_base · (p_n / p_ref) · e^{-[SSq]·(p_n-26)/n}
-      Pseudo-monopole state: δ_n = φ·(2π)·n/6
-      ρ_vac,[UA']:[SCm] = ρ_vac,[UA'] · (ρ_vac,[SCm]/ρ_vac,[UA])^n
-                          · e^{-[SSq]·n/26} · e^{-(π-t_n)}
-      [SSq] definition: log(ρ_vac,[SCm]/ρ_vac,[UA'])·n·e^{-(π-t)}
+      U_g3(n) = U_g3_base Â· (p_n / p_ref) Â· e^{-[SSq]Â·(p_n-26)/n}
+      Pseudo-monopole state: Î´_n = Ï†Â·(2Ï€)Â·n/6
+      Ï_vac,[UA']:[SCm] = Ï_vac,[UA'] Â· (Ï_vac,[SCm]/Ï_vac,[UA])^n
+                          Â· e^{-[SSq]Â·n/26} Â· e^{-(Ï€-t_n)}
+      [SSq] definition: log(Ï_vac,[SCm]/Ï_vac,[UA'])Â·nÂ·e^{-(Ï€-t)}
     """
 
     def compute(self, dataset: dict) -> dict:
@@ -3777,7 +3804,7 @@ class DipoleVortexPrimeEncodingCalculator(_CP3Calculator):
             u = U_g3_base * (p_n / p_ref) * math.exp(-SSq * (p_n - 26) / idx)
             U_g3_levels.append((p_n, u))
 
-        # Pseudo-monopole state density ρ_vac,[UA']:[SCm]
+        # Pseudo-monopole state density Ï_vac,[UA']:[SCm]
         delta_n_list = []
         rho_cross_list = []
         for n in range(1, N_levels + 1):
@@ -3798,13 +3825,13 @@ class DipoleVortexPrimeEncodingCalculator(_CP3Calculator):
             'primary_equations': [
                 f"p_27 (H proto-shell reference) = 113 (30th prime, p>26)",
                 f"U_g3 vortex sum (N={N_levels} levels) = {U_g3_total:.4e}",
-                f"ρ_vac,[UA']:[SCm] at n=1: {rho_cross_list[0]:.4e}",
-                f"δ_n=1 = φ·2π/6 = {delta_n_list[0]:.4f} rad",
+                f"Ï_vac,[UA']:[SCm] at n=1: {rho_cross_list[0]:.4e}",
+                f"Î´_n=1 = Ï†Â·2Ï€/6 = {delta_n_list[0]:.4f} rad",
                 f"[SSq] from definition (n=1) = {SSq_def:.4f}",
             ],
             'available_equations': [
                 "Prime p_n > 26 vortex encoding: p_27=113, p_28=127, p_29=131",
-                "ρ_cross n-series: exponential decay with [SSq] and (π-t_n)",
+                "Ï_cross n-series: exponential decay with [SSq] and (Ï€-t_n)",
                 "U_g3 total: convergent prime sum with SSq attenuation",
             ],
             'simulation_set': {
@@ -3815,16 +3842,16 @@ class DipoleVortexPrimeEncodingCalculator(_CP3Calculator):
 
 
 class UQFFRelativisticHierarchyDecayIntegralCalculator(_CP3Calculator):
-    """Relativistic hierarchy F_hier, temporal decay ΔF, and hybrid F_hyb.
+    """Relativistic hierarchy F_hier, temporal decay Î”F, and hybrid F_hyb.
 
     Unique mathematical discoveries (Uniquely Rare section):
-      F_hier = Σ_i (v_i/c)^n · ω_0^{-m}   with n=2, m=1   [remnant hierarchy]
-      ΔF     = ∫ F_rel · e^{-t/τ} dt = F_rel · τ · (1 - e^{-T/τ})  [decay integral]
-               τ = eruption/remnant age, F_rel = 4.31e33 N (2024 LEP)
-      F_hyb  = P_pol · f_mm · ω_0^{-1}     [UV/mm wave polarization hybrid]
-      F_UV   = k_UV · L_UV   (k_UV = 1e-30 N/W)  [GALEX/Spitzer UV flares]
-      F_mm   = k_mm · L_mm · f_mm  (k_mm = 1e-30, f_mm = 1.05 protons)
-    All three are rare: F_hier unifies remnants via (v/c)²; ΔF tracks eruption age;
+      F_hier = Î£_i (v_i/c)^n Â· Ï‰_0^{-m}   with n=2, m=1   [remnant hierarchy]
+      Î”F     = âˆ« F_rel Â· e^{-t/Ï„} dt = F_rel Â· Ï„ Â· (1 - e^{-T/Ï„})  [decay integral]
+               Ï„ = eruption/remnant age, F_rel = 4.31e33 N (2024 LEP)
+      F_hyb  = P_pol Â· f_mm Â· Ï‰_0^{-1}     [UV/mm wave polarization hybrid]
+      F_UV   = k_UV Â· L_UV   (k_UV = 1e-30 N/W)  [GALEX/Spitzer UV flares]
+      F_mm   = k_mm Â· L_mm Â· f_mm  (k_mm = 1e-30, f_mm = 1.05 protons)
+    All three are rare: F_hier unifies remnants via (v/c)Â²; Î”F tracks eruption age;
     F_hyb links polarization to ALMA mm-wave with protoplanetary f_mm.
     """
 
@@ -3842,7 +3869,7 @@ class UQFFRelativisticHierarchyDecayIntegralCalculator(_CP3Calculator):
         m_hier = 1
         F_hier = sum((v / c)**n_hier * omega_0**(-m_hier) for v in velocities)
 
-        # Decay integral ΔF = F_rel · τ · (1 - e^{-T/τ})
+        # Decay integral Î”F = F_rel Â· Ï„ Â· (1 - e^{-T/Ï„})
         F_rel = dataset.get('F_rel', 4.31e33)
         tau = dataset.get('tau', 1e10 * 3.156e7)   # 10 Gyr default in s
         T = dataset.get('T', tau)
@@ -3855,33 +3882,33 @@ class UQFFRelativisticHierarchyDecayIntegralCalculator(_CP3Calculator):
         F_UV = k_UV * L_UV
         F_mm_val = k_mm * L_mm * f_mm
 
-        # Hybrid: F_hyb = P_pol · f_mm / omega_0
+        # Hybrid: F_hyb = P_pol Â· f_mm / omega_0
         P_pol = dataset.get('P_pol', 0.1)
         F_hyb = P_pol * f_mm * (1.0 / omega_0)
 
         return {
             'primary_equations': [
-                f"F_hier = Σ(v/c)^2 · ω_0^{{-1}} = {F_hier:.4e} [remnant hierarchy]",
-                f"ΔF = F_rel·τ·(1-e^{{-T/τ}}) = {delta_F:.4e} N [decay integral]",
-                f"F_UV = k_UV·L_UV = {F_UV:.4e} N  (k_UV={k_UV})",
-                f"F_mm = k_mm·L_mm·f_mm = {F_mm_val:.4e} N  (f_mm={f_mm})",
-                f"F_hyb = P_pol·f_mm/ω_0 = {F_hyb:.4e} N·s [UV/mm hybrid]",
+                f"F_hier = Î£(v/c)^2 Â· Ï‰_0^{{-1}} = {F_hier:.4e} [remnant hierarchy]",
+                f"Î”F = F_relÂ·Ï„Â·(1-e^{{-T/Ï„}}) = {delta_F:.4e} N [decay integral]",
+                f"F_UV = k_UVÂ·L_UV = {F_UV:.4e} N  (k_UV={k_UV})",
+                f"F_mm = k_mmÂ·L_mmÂ·f_mm = {F_mm_val:.4e} N  (f_mm={f_mm})",
+                f"F_hyb = P_polÂ·f_mm/Ï‰_0 = {F_hyb:.4e} NÂ·s [UV/mm hybrid]",
             ],
             'available_equations': [
-                "F_hier(n,m) general: Σ(v_i/c)^n · ω_0^{-m} for arbitrary n,m",
-                "ΔF age-dating: invert to find τ from ΔF measurement",
+                "F_hier(n,m) general: Î£(v_i/c)^n Â· Ï‰_0^{-m} for arbitrary n,m",
+                "Î”F age-dating: invert to find Ï„ from Î”F measurement",
                 "F_UV/F_mm ratio: GALEX vs ALMA cross-observatory calibration",
             ],
             'simulation_set': {
                 'v_sweep': 'v/c from 0.01 to 0.99 (relativistic range)',
-                'tau_sweep': 'τ from 1 Myr to 10 Gyr (eruption ages)',
+                'tau_sweep': 'Ï„ from 1 Myr to 10 Gyr (eruption ages)',
                 'L_UV_vs_L_mm': '2D grid L_UV vs L_mm (multi-band photometry)',
             },
         }
 
 
 # ---------------------------------------------------------------------------
-# Session 53 — grok_share_7514fe second-pass unique extractions (6 calculators)
+# Session 53 â€” grok_share_7514fe second-pass unique extractions (6 calculators)
 # Unique items: SgrA* spin drag, Rings lensing g, H-atom UQFF gravity,
 # F_UBii full DPM polynomial integral, neutrino/decay scaling, SGR1745 D(t)
 # ---------------------------------------------------------------------------
@@ -3891,12 +3918,12 @@ class SgrAStarSpinDragUQFFCalculator(_CP3Calculator):
     """Sgr A* UQFF with relativistic spin-angular-momentum dissipation term.
 
     Unique equation from Document 3 (NOT in any SgrA* class in CP1/CP2):
-      g_SgrA*(r,t) = (G·M(t))/r² · (1+H_0·t) · (1-B(t)/B_crit)
-                   + (Ug1+Ug2+Ug3+Ug4) + Λc²/3 + QM + EM + fluid + waves
-                   + (M_vis+M_DM)·(δρ/ρ + 3GM/r³·sin(30°))   ← galactic-plane inclination
-                   + (G·M(t)²)/(c⁴·r) · (dΩ(t)/dt)²           ← spin-drag dissipation [NEW]
+      g_SgrA*(r,t) = (GÂ·M(t))/rÂ² Â· (1+H_0Â·t) Â· (1-B(t)/B_crit)
+                   + (Ug1+Ug2+Ug3+Ug4) + Î›cÂ²/3 + QM + EM + fluid + waves
+                   + (M_vis+M_DM)Â·(Î´Ï/Ï + 3GM/rÂ³Â·sin(30Â°))   â† galactic-plane inclination
+                   + (GÂ·M(t)Â²)/(câ´Â·r) Â· (dÎ©(t)/dt)Â²           â† spin-drag dissipation [NEW]
     The spin-drag term = gravitational radiation back-reaction from spin-down:
-    proportional to M² (not M), involves dΩ/dt² — distinct from GW power (∝r⁵·Ω⁵).
+    proportional to MÂ² (not M), involves dÎ©/dtÂ² â€” distinct from GW power (âˆrâµÂ·Î©âµ).
     """
 
     def compute(self, dataset: dict) -> dict:
@@ -3907,7 +3934,7 @@ class SgrAStarSpinDragUQFFCalculator(_CP3Calculator):
         LAMBDA = 1.1e-52
         hbar = 1.0546e-34
         t_H = 4.35e17
-        sin30 = 0.5   # sin(30°) galactic-plane inclination
+        sin30 = 0.5   # sin(30Â°) galactic-plane inclination
 
         M = dataset.get('M', 8.155e36)       # Sgr A* mass
         r = dataset.get('r', 2.83e16)
@@ -3925,10 +3952,10 @@ class SgrAStarSpinDragUQFFCalculator(_CP3Calculator):
         H_z = H0 * math.sqrt(0.3 * (1 + z)**3 + 0.7)
         dOmega_dt = -Omega_0 / tau_spin * math.exp(-t / tau_spin)
 
-        g_base = (G * M) / r**2 * (1 + H0 * t) * (1 - min(B / B_crit, 0.9999))
+        g_base = dpm_emergent_ug1(M, r) * (1 + H0 * t) * (1 - min(B / B_crit, 0.9999))  # DPM-emergent
         g_lambda = (LAMBDA * c**2) / 3.0
         g_qm = (hbar / math.sqrt(1.055e-34 * 1e-27)) * (2 * math.pi / t_H)
-        # Dark matter with sin(30°) galactic-plane inclination
+        # Dark matter with sin(30Â°) galactic-plane inclination
         g_dm = (M_vis + M_DM) * (delta_rho / max(rho, 1e-99) + (3 * G * M) / r**3 * sin30)
         # Relativistic spin-angular-momentum dissipation term
         g_spin_drag = (G * M**2) / (c**4 * r) * dOmega_dt**2
@@ -3937,16 +3964,16 @@ class SgrAStarSpinDragUQFFCalculator(_CP3Calculator):
 
         return {
             'primary_equations': [
-                f"g_base·(1-B/Bc)·(1+H_0·t) = {g_base:.4e} m/s²",
-                f"dΩ/dt = -Ω_0/τ·e^(-t/τ) = {dOmega_dt:.4e} rad/s²",
-                f"g_spin_drag = G·M²/(c⁴·r)·(dΩ/dt)² = {g_spin_drag:.4e} m/s²",
+                f"g_baseÂ·(1-B/Bc)Â·(1+H_0Â·t) = {g_base:.4e} m/sÂ²",
+                f"dÎ©/dt = -Î©_0/Ï„Â·e^(-t/Ï„) = {dOmega_dt:.4e} rad/sÂ²",
+                f"g_spin_drag = GÂ·MÂ²/(câ´Â·r)Â·(dÎ©/dt)Â² = {g_spin_drag:.4e} m/sÂ²",
                 f"g_DM (sin30 incl.) = {g_dm:.4e}",
-                f"g_total = {g_total:.4e} m/s²",
+                f"g_total = {g_total:.4e} m/sÂ²",
             ],
             'available_equations': [
-                "Comparison to GW power: a_GW = 32G·r⁵·Ω⁵/(5c⁵) vs spin-drag g·M²/(c⁴r)·(dΩ/dt)²",
-                "Galactic plane inclination: sin(30°) DM perturbation for galactic center systems",
-                "M(t) growth: M(t) = M_0·(1+M_dot·t) for accretion history",
+                "Comparison to GW power: a_GW = 32GÂ·râµÂ·Î©âµ/(5câµ) vs spin-drag gÂ·MÂ²/(câ´r)Â·(dÎ©/dt)Â²",
+                "Galactic plane inclination: sin(30Â°) DM perturbation for galactic center systems",
+                "M(t) growth: M(t) = M_0Â·(1+M_dotÂ·t) for accretion history",
             ],
             'simulation_set': {
                 'Omega_0_sweep': 'Omega_0 from 1e-4 to 1e4 rad/s',
@@ -3960,11 +3987,11 @@ class UQFFLensingModulationRingsCalculator(_CP3Calculator):
 
     Unique equation from Document 8 (NOT in CP1's RingsRelativityCalculator
     which only computes Einstein radius geometry):
-      g_Rings(r,t) = (G·M)/r² · (1+H(z)·t) · (1-B/B_crit) · (1+L(t))
-                   + (Ug1+Ug2+Ug3+Ug4) + Λc²/3 + QM + fluid + DM
-    L(t) = L_0 · e^{-t/τ_lens} · cos(ω_lens·t)   [time-varying lens alignment]
+      g_Rings(r,t) = (GÂ·M)/rÂ² Â· (1+H(z)Â·t) Â· (1-B/B_crit) Â· (1+L(t))
+                   + (Ug1+Ug2+Ug3+Ug4) + Î›cÂ²/3 + QM + fluid + DM
+    L(t) = L_0 Â· e^{-t/Ï„_lens} Â· cos(Ï‰_lensÂ·t)   [time-varying lens alignment]
     Physical meaning: transient gravitational lensing alignment increases total g
-    measured along line of sight.  L_0 > 0 → amplification epoch.
+    measured along line of sight.  L_0 > 0 â†’ amplification epoch.
     """
 
     def compute(self, dataset: dict) -> dict:
@@ -3990,7 +4017,7 @@ class UQFFLensingModulationRingsCalculator(_CP3Calculator):
         L_t = L_0 * math.exp(-t / tau_lens) * math.cos(omega_lens * t)
         mag_f = 1.0 - min(B / B_crit, 0.9999)
 
-        g_base = (G * M) / r**2 * (1 + H_z * t) * mag_f * (1 + L_t)
+        g_base = dpm_emergent_ug1(M, r) * (1 + H_z * t) * mag_f * (1 + L_t)  # DPM-emergent
         g_lambda = (LAMBDA * c**2) / 3.0
         g_qm = (hbar / math.sqrt(1.055e-34 * 1e-27)) * (2 * math.pi / t_H)
         g_total = g_base + g_lambda + g_qm
@@ -4003,15 +4030,15 @@ class UQFFLensingModulationRingsCalculator(_CP3Calculator):
 
         return {
             'primary_equations': [
-                f"L(t) = L_0·e^(-t/τ)·cos(ω·t) = {L_t:.6f}",
-                f"g_Rings = (G·M/r²)·(1+H(z)t)·(1-B/Bc)·(1+L(t)) = {g_base:.4e}",
-                f"θ_E (geometric) = {theta_E:.4e} rad = {theta_E*206265:.3f} arcsec",
-                f"g_total = {g_total:.4e} m/s²",
+                f"L(t) = L_0Â·e^(-t/Ï„)Â·cos(Ï‰Â·t) = {L_t:.6f}",
+                f"g_Rings = (GÂ·M/rÂ²)Â·(1+H(z)t)Â·(1-B/Bc)Â·(1+L(t)) = {g_base:.4e}",
+                f"Î¸_E (geometric) = {theta_E:.4e} rad = {theta_E*206265:.3f} arcsec",
+                f"g_total = {g_total:.4e} m/sÂ²",
             ],
             'available_equations': [
-                "L(t) → magnification from caustic crossing: μ = (1/L_t) when L_t ≠ 1",
+                "L(t) â†’ magnification from caustic crossing: Î¼ = (1/L_t) when L_t â‰  1",
                 "Distinguish dynamic g amplification from static Einstein-ring geometry",
-                "L_0 < 0 → de-amplification (partial shielding by intervening mass)",
+                "L_0 < 0 â†’ de-amplification (partial shielding by intervening mass)",
             ],
             'simulation_set': {
                 'L_0_sweep': 'L_0 from -0.5 to 0.5 (demag to mag)',
@@ -4021,16 +4048,16 @@ class UQFFLensingModulationRingsCalculator(_CP3Calculator):
 
 
 class HydrogenAtomUQFFGravityCalculator(_CP3Calculator):
-    """UQFF gravity equation at the atomic scale — hydrogen atom (Document 27).
+    """UQFF gravity equation at the atomic scale â€” hydrogen atom (Document 27).
 
     Unique equation (NOT in HydrogenNuclearShellResonanceCalculator which
-    computes H_res resonance only — this computes the full UQFF g at m_p+m_e scale):
-      g_H(r,t) = (G·(m_p+m_e))/r² · (1+H_0·t) · (1+P_term)
-                 · (1 + (ℏ/√(Δx·Δp))·∫ψ*Hψ dV / E_n)
-                 + (Ug1+Ug2+Ug3+Ug4) + Λc²/3 + q·(v×B) + fluid + DM
+    computes H_res resonance only â€” this computes the full UQFF g at m_p+m_e scale):
+      g_H(r,t) = (GÂ·(m_p+m_e))/rÂ² Â· (1+H_0Â·t) Â· (1+P_term)
+                 Â· (1 + (â„/âˆš(Î”xÂ·Î”p))Â·âˆ«Ïˆ*HÏˆ dV / E_n)
+                 + (Ug1+Ug2+Ug3+Ug4) + Î›cÂ²/3 + qÂ·(vÃ—B) + fluid + DM
                  + F_tech
-    P_term = polarization coupling (electric dipole P·E in atomic field)
-    QM factor normalized by E_n (eigenstate energy) — ATOMIC calibration
+    P_term = polarization coupling (electric dipole PÂ·E in atomic field)
+    QM factor normalized by E_n (eigenstate energy) â€” ATOMIC calibration
     F_tech = coupling to external technological field (e.g., laser, RF)
     This bridges Bohr-scale quantum mechanics to cosmological UQFF framework.
     """
@@ -4056,7 +4083,7 @@ class HydrogenAtomUQFFGravityCalculator(_CP3Calculator):
         F_tech = dataset.get('F_tech', 0.0)   # external tech field contribution
 
         M_tot = m_p + m_e
-        g_newton = (G * M_tot) / r**2
+        g_newton = dpm_emergent_ug1(M_tot, r)  # DPM-emergent
         g_H0 = H0 * t
         # QM integral / E_n normalization (representative value)
         qm_integral = (hbar / math.sqrt(1.055e-34 * 1e-27)) * (2 * math.pi * abs(E_n) / hbar)
@@ -4064,7 +4091,7 @@ class HydrogenAtomUQFFGravityCalculator(_CP3Calculator):
 
         g_base = g_newton * (1 + g_H0) * (1 + P_term) * qm_factor
         g_lambda = (LAMBDA * c**2) / 3.0
-        # EM Lorentz: q(v×B)/m  (atomic scale)
+        # EM Lorentz: q(vÃ—B)/m  (atomic scale)
         g_em = (e * v_e * B_atom) / M_tot
 
         g_total = g_base + g_lambda + g_em + F_tech
@@ -4075,16 +4102,16 @@ class HydrogenAtomUQFFGravityCalculator(_CP3Calculator):
         return {
             'primary_equations': [
                 f"m_p + m_e = {M_tot:.4e} kg",
-                f"g_Newton(atomic) = G·(m_p+m_e)/r² = {g_newton:.4e} m/s²",
-                f"(1+P_term)·QM_factor = {(1+P_term)*qm_factor:.6f}",
-                f"g_EM (Lorentz) = q·v×B/m = {g_em:.4e} m/s²",
-                f"F_tech = {F_tech:.4e}  →  g_H total = {g_total:.4e} m/s²",
-                f"Cosmological Λ at Bohr scale: {g_lambda:.4e} m/s²",
+                f"g_Newton(atomic) = GÂ·(m_p+m_e)/rÂ² = {g_newton:.4e} m/sÂ²",
+                f"(1+P_term)Â·QM_factor = {(1+P_term)*qm_factor:.6f}",
+                f"g_EM (Lorentz) = qÂ·vÃ—B/m = {g_em:.4e} m/sÂ²",
+                f"F_tech = {F_tech:.4e}  â†’  g_H total = {g_total:.4e} m/sÂ²",
+                f"Cosmological Î› at Bohr scale: {g_lambda:.4e} m/sÂ²",
             ],
             'available_equations': [
-                "Energy-level scaling: E_n = -13.6 eV / n² ; QM factor ∝ 1/n⁴",
-                "Bohr radius scaling: r_n = a_0 · n² ; g_Newton ∝ 1/n⁴",
-                "P_term: electric dipole polarizability α_pol · E_external² / m",
+                "Energy-level scaling: E_n = -13.6 eV / nÂ² ; QM factor âˆ 1/nâ´",
+                "Bohr radius scaling: r_n = a_0 Â· nÂ² ; g_Newton âˆ 1/nâ´",
+                "P_term: electric dipole polarizability Î±_pol Â· E_externalÂ² / m",
             ],
             'simulation_set': {
                 'n_sweep': 'n from 1 to 26 (26 quantum shells)',
@@ -4094,26 +4121,26 @@ class HydrogenAtomUQFFGravityCalculator(_CP3Calculator):
 
 
 class FUBiiFullDPMPolynomialIntegralCalculator(_CP3Calculator):
-    """F_U_Bi_i full 12-term DPM polynomial integral yielding ΔF ~ ±10^208-211 N.
+    """F_U_Bi_i full 12-term DPM polynomial integral yielding Î”F ~ Â±10^208-211 N.
 
     Unique equation (NOT in FUBiiExtendedIntegralCalculator which only does
-    UV/mm hybrid — this implements the FULL integral from Step 1 DeepSearch):
-      F_U_Bi_i = ∫_0^{x_2} [
+    UV/mm hybrid â€” this implements the FULL integral from Step 1 DeepSearch):
+      F_U_Bi_i = âˆ«_0^{x_2} [
           -F_0                                              # vacuum baseline
-        + (m_e c²/r²) DPM_momentum cosθ                  # DPM momentum coupling
-        + (GM/r²) DPM_gravity                             # DPM gravitational
-        + ρ_vac,[UA] DPM_stability                        # DPM stability density
-        + k_LENR (ω_LENR/ω_0)²                            # LENR resonance
-        + k_act cos(ω_act t)                               # active coupling
+        + (m_e cÂ²/rÂ²) DPM_momentum cosÎ¸                  # DPM momentum coupling
+        + (GM/rÂ²) DPM_gravity                             # DPM gravitational
+        + Ï_vac,[UA] DPM_stability                        # DPM stability density
+        + k_LENR (Ï‰_LENR/Ï‰_0)Â²                            # LENR resonance
+        + k_act cos(Ï‰_act t)                               # active coupling
         + k_DE L_X                                        # dark energy X-ray
-        + 2qB_0 V sinθ DPM_resonance · P_pol             # DPM resonance
-        + k_neutron σ_n                                   # neutron cross-section
-        + k_rel (E_cm_eff/E_cm)²                          # relativistic ratio
+        + 2qB_0 V sinÎ¸ DPM_resonance Â· P_pol             # DPM resonance
+        + k_neutron Ïƒ_n                                   # neutron cross-section
+        + k_rel (E_cm_eff/E_cm)Â²                          # relativistic ratio
         + k_UV L_UV                                       # UV luminosity
-        + k_mm L_mm · f_mm                                # mm-wave luminosity
+        + k_mm L_mm Â· f_mm                                # mm-wave luminosity
       ] dx
-    Result: F_U_Bi_i ≈ 2.11×10^208 N;  ΔF_U_Bi_i ~ −10^211 N (polynomial form)
-    Polynomial: a·x² + b·x + c = 0 encodes roots of DPM stability condition.
+    Result: F_U_Bi_i â‰ˆ 2.11Ã—10^208 N;  Î”F_U_Bi_i ~ âˆ’10^211 N (polynomial form)
+    Polynomial: aÂ·xÂ² + bÂ·x + c = 0 encodes roots of DPM stability condition.
     """
 
     def compute(self, dataset: dict) -> dict:
@@ -4134,7 +4161,7 @@ class FUBiiFullDPMPolynomialIntegralCalculator(_CP3Calculator):
         DPM_momentum = dataset.get('DPM_momentum', 1.0)
         DPM_gravity = dataset.get('DPM_gravity', 1.0)
         DPM_stability = dataset.get('DPM_stability', 1.0)
-        DPM_resonance = dataset.get('DPM_resonance', 1.67e3)   # calibrated ≈1.67e3
+        DPM_resonance = dataset.get('DPM_resonance', 1.67e3)   # calibrated â‰ˆ1.67e3
         rho_UA = dataset.get('rho_UA', 7.09e-36)
         M = dataset.get('M', 8.155e36)
         k_LENR = dataset.get('k_LENR', 1e-10)
@@ -4165,7 +4192,7 @@ class FUBiiFullDPMPolynomialIntegralCalculator(_CP3Calculator):
             return (
                 -F_0
                 + (m_e * c**2 / r**2) * DPM_momentum * math.cos(theta)
-                + (G * M / r**2) * DPM_gravity
+                + dpm_emergent_ug1(M, r) * DPM_gravity
                 + rho_UA * DPM_stability
                 + k_LENR * (omega_LENR / omega_0)**2
                 + k_act * math.cos(omega_act * t)
@@ -4183,7 +4210,7 @@ class FUBiiFullDPMPolynomialIntegralCalculator(_CP3Calculator):
 
         # Polynomial root encoding (DPM stability condition: a*x^2 + b*x + c=0)
         a_coef = k_LENR * (omega_LENR / omega_0)**2
-        b_coef = (G * M / r**2) * DPM_gravity
+        b_coef = dpm_emergent_ug1(M, r) * DPM_gravity
         c_coef = -F_0 + rho_UA * DPM_stability
         discriminant = b_coef**2 - 4 * a_coef * c_coef
         if discriminant >= 0:
@@ -4192,23 +4219,23 @@ class FUBiiFullDPMPolynomialIntegralCalculator(_CP3Calculator):
         else:
             x_roots = [complex(-b_coef, math.sqrt(-discriminant)) / (2 * a_coef)]
 
-        delta_F = F_total * DPM_resonance   # polynomial-enhanced ΔF
+        delta_F = F_total * DPM_resonance   # polynomial-enhanced Î”F
 
         return {
             'primary_equations': [
-                f"F_U_Bi_i = ∫ [12 terms] dx over [0, {x_2:.1e}] m",
+                f"F_U_Bi_i = âˆ« [12 terms] dx over [0, {x_2:.1e}] m",
                 f"Integrand value = {integrand(0.0):.4e} N/m",
                 f"F_U_Bi_i = {F_total:.4e} N",
-                f"ΔF (DPM resonance enhanced) = {delta_F:.4e} N",
+                f"Î”F (DPM resonance enhanced) = {delta_F:.4e} N",
                 f"DPM_resonance calibrated = {DPM_resonance:.3e}",
-                f"k_LENR = {k_LENR}, ω_LENR = {omega_LENR:.3e} rad/s",
+                f"k_LENR = {k_LENR}, Ï‰_LENR = {omega_LENR:.3e} rad/s",
                 f"Polynomial a={a_coef:.3e}, b={b_coef:.3e}, c={c_coef:.3e}",
                 f"Roots x = {[f'{x:.3e}' for x in x_roots]}",
             ],
             'available_equations': [
                 "12-term DPM integral: -F_0 + DPM_momentum + DPM_gravity + DPM_stability + k_LENR + k_act + k_DE + DPM_resonance + k_neutron + k_rel + F_UV + F_mm",
-                "Polynomial stability: a·x²+b·x+c=0 encodes zeros where DPM field vanishes",
-                "ΔF_U_Bi_i ~ -10^211 N: resonance-amplified polynomial branch",
+                "Polynomial stability: aÂ·xÂ²+bÂ·x+c=0 encodes zeros where DPM field vanishes",
+                "Î”F_U_Bi_i ~ -10^211 N: resonance-amplified polynomial branch",
             ],
             'simulation_set': {
                 'DPM_resonance_sweep': 'DPM_resonance from 1 to 1e5',
@@ -4222,12 +4249,12 @@ class UQFFNeutrinoDecayRateCouplingCalculator(_CP3Calculator):
     """UQFF vacuum density coupling for neutrino energy and universal decay rate.
 
     Unique standalone scaling laws (Sub-Equations / Master Triadic Proofs):
-      E_neutrino ∝ ρ_vac,[UA']:[SCm] · e^{-[SSq]·n/26·e^{-(π-t_n)}} · (U_m/ρ_vac,[UA])
-      Decay Rate ∝ (ρ_vac,[SCm]/ρ_vac,[UA]) · e^{-[SSq]·n/26·e^{-(π-t_n)}}
+      E_neutrino âˆ Ï_vac,[UA']:[SCm] Â· e^{-[SSq]Â·n/26Â·e^{-(Ï€-t_n)}} Â· (U_m/Ï_vac,[UA])
+      Decay Rate âˆ (Ï_vac,[SCm]/Ï_vac,[UA]) Â· e^{-[SSq]Â·n/26Â·e^{-(Ï€-t_n)}}
       with:
-        ρ_vac,[UA']:[SCm] = ρ_vac,[UA'] · (ρ_vac,[SCm]/ρ_vac,[UA])^n
-                            · e^{-[SSq]·n/26} · e^{-(π-t_n)}
-        t_n = t/t_Hubble · (1 + H(z)·t_0)
+        Ï_vac,[UA']:[SCm] = Ï_vac,[UA'] Â· (Ï_vac,[SCm]/Ï_vac,[UA])^n
+                            Â· e^{-[SSq]Â·n/26} Â· e^{-(Ï€-t_n)}
+        t_n = t/t_Hubble Â· (1 + H(z)Â·t_0)
     Implements both proportionalities as absolute calculable quantities using
     calibrated U_m (from Um equation) and vacuum density ratios.
     """
@@ -4244,13 +4271,13 @@ class UQFFNeutrinoDecayRateCouplingCalculator(_CP3Calculator):
         z = dataset.get('z', 0.0)
         n = dataset.get('n', 1)          # quantum level 1..26
         rho_UA_prime = dataset.get('rho_UA_prime', rho_UA)
-        U_m_value = dataset.get('U_m_value', 1e-30)   # J/m³ from Um calculator
+        U_m_value = dataset.get('U_m_value', 1e-30)   # J/mÂ³ from Um calculator
 
         # t_n: cosmic-to-quantum time bridge
         H_z = H0 * math.sqrt(0.3 * (1 + z)**3 + 0.7)
         t_n = (t / t_H) * (1 + H_z * t_H)
 
-        # ρ_vac,[UA']:[SCm] cross-density
+        # Ï_vac,[UA']:[SCm] cross-density
         rho_cross = (rho_UA_prime
                      * (rho_SCm / rho_UA)**n
                      * math.exp(-SSq * n / 26)
@@ -4260,10 +4287,10 @@ class UQFFNeutrinoDecayRateCouplingCalculator(_CP3Calculator):
         inner_exp = -SSq * n / 26 * math.exp(-(math.pi - t_n))
         attenuation = math.exp(inner_exp)
 
-        # E_neutrino proportionality → absolute estimate
+        # E_neutrino proportionality â†’ absolute estimate
         E_neutrino = rho_cross * attenuation * (U_m_value / rho_UA)
 
-        # Decay Rate proportionality → absolute estimate
+        # Decay Rate proportionality â†’ absolute estimate
         decay_rate = (rho_SCm / rho_UA) * attenuation
 
         # Level-26 sweep
@@ -4280,14 +4307,14 @@ class UQFFNeutrinoDecayRateCouplingCalculator(_CP3Calculator):
         return {
             'primary_equations': [
                 f"t_n = {t_n:.6e} [n={n}]",
-                f"ρ_vac,[UA']:[SCm] (n={n}) = {rho_cross:.4e}",
-                f"attenuation e^(-[SSq]·n/26·e^-(π-t_n)) = {attenuation:.6e}",
-                f"E_neutrino ∝ {E_neutrino:.4e} J/m³",
-                f"Decay Rate ∝ {decay_rate:.4e}",
+                f"Ï_vac,[UA']:[SCm] (n={n}) = {rho_cross:.4e}",
+                f"attenuation e^(-[SSq]Â·n/26Â·e^-(Ï€-t_n)) = {attenuation:.6e}",
+                f"E_neutrino âˆ {E_neutrino:.4e} J/mÂ³",
+                f"Decay Rate âˆ {decay_rate:.4e}",
             ],
             'available_equations': [
                 "E_neutrino level map: n=1..26, trace E_neutrino vs shell",
-                "Decay Rate gradient: dΓ/dn at peak shell for instability analysis",
+                "Decay Rate gradient: dÎ“/dn at peak shell for instability analysis",
                 "Cross-density at n=26 vs n=1 ratio: stability endpoint",
             ],
             'simulation_set': {
@@ -4303,14 +4330,14 @@ class MagnetarSGR1745DynamicModulationCalculator(_CP3Calculator):
     """SGR 1745-2900 full UQFF g with M_mag magnetic acceleration and D(t) dynamic term.
 
     Unique equation from Document 2.a (NOT in MagnetarMUGECalculator which uses
-    12 MUGE terms, NOR in MagnetarVortexAvalancheCalculator — unique additions):
-      g_SGR(r,t) = (G·M)/r² · (1+H(z)·t) · (1-B/B_crit)
-                 + (G·M_BH)/r_BH² + (Ug1+Ug2+Ug3+Ug4) + Λc²/3 + QM
-                 + q·(v×B) + fluid + waves + DM
-                 + M_mag(t)                      ← magnetic moment acceleration
-                 + D(t)                           ← dynamic burst modulation
-      M_mag(t) = k_M · B² / (μ_0 · r) · (1-e^{-t/τ_mag})
-      D(t) = D_0 · cos(ω_D·t) · e^{-t/τ_D}     [oscillatory burst signature]
+    12 MUGE terms, NOR in MagnetarVortexAvalancheCalculator â€” unique additions):
+      g_SGR(r,t) = (GÂ·M)/rÂ² Â· (1+H(z)Â·t) Â· (1-B/B_crit)
+                 + (GÂ·M_BH)/r_BHÂ² + (Ug1+Ug2+Ug3+Ug4) + Î›cÂ²/3 + QM
+                 + qÂ·(vÃ—B) + fluid + waves + DM
+                 + M_mag(t)                      â† magnetic moment acceleration
+                 + D(t)                           â† dynamic burst modulation
+      M_mag(t) = k_M Â· BÂ² / (Î¼_0 Â· r) Â· (1-e^{-t/Ï„_mag})
+      D(t) = D_0 Â· cos(Ï‰_DÂ·t) Â· e^{-t/Ï„_D}     [oscillatory burst signature]
     Both terms are time-dependent and additive to total g.
     """
 
@@ -4326,7 +4353,7 @@ class MagnetarSGR1745DynamicModulationCalculator(_CP3Calculator):
 
         M = dataset.get('M', 2.786e30)          # 1.4 M_sun
         r = dataset.get('r', 1e4)               # 10 km
-        B = dataset.get('B', 2e10)              # SGR1745 B field ~2×10^10 T
+        B = dataset.get('B', 2e10)              # SGR1745 B field ~2Ã—10^10 T
         B_crit = dataset.get('B_crit', 4.4e13)
         z = dataset.get('z', 0.0)
         t = dataset.get('t', 0.0)
@@ -4342,7 +4369,7 @@ class MagnetarSGR1745DynamicModulationCalculator(_CP3Calculator):
 
         H_z = H0 * math.sqrt(0.3 * (1 + z)**3 + 0.7)
         mag_f = 1.0 - min(B / B_crit, 0.9999)
-        g_base = (G * M) / r**2 * (1 + H_z * t) * mag_f
+        g_base = dpm_emergent_ug1(M, r) * (1 + H_z * t) * mag_f  # DPM-emergent
         g_bh = (G * M_BH_comp) / r_BH**2
         g_lambda = (LAMBDA * c**2) / 3.0
         g_qm = (hbar / math.sqrt(1.055e-34 * 1e-27)) * (2 * math.pi / t_H)
@@ -4357,50 +4384,50 @@ class MagnetarSGR1745DynamicModulationCalculator(_CP3Calculator):
 
         return {
             'primary_equations': [
-                f"g_base·(1-B/Bc) = {g_base:.4e} m/s²  (B={B:.1e} T)",
-                f"g_BH companion (SgrA*) = {g_bh:.4e} m/s²",
-                f"M_mag(t) = k_M·B²/(μ0·r)·(1-e^(-t/τ)) = {M_mag:.4e} m/s²",
-                f"D(t) = D_0·cos(ω_D·t)·e^(-t/τ_D) = {D_t:.4e} m/s²",
-                f"g_SGR1745 total = {g_total:.4e} m/s²",
+                f"g_baseÂ·(1-B/Bc) = {g_base:.4e} m/sÂ²  (B={B:.1e} T)",
+                f"g_BH companion (SgrA*) = {g_bh:.4e} m/sÂ²",
+                f"M_mag(t) = k_MÂ·BÂ²/(Î¼0Â·r)Â·(1-e^(-t/Ï„)) = {M_mag:.4e} m/sÂ²",
+                f"D(t) = D_0Â·cos(Ï‰_DÂ·t)Â·e^(-t/Ï„_D) = {D_t:.4e} m/sÂ²",
+                f"g_SGR1745 total = {g_total:.4e} m/sÂ²",
             ],
             'available_equations': [
-                "Burst detection: peak D(t) at t=0 → D_0, decay timescale τ_D",
-                "M_mag: full saturation at t >> τ_mag → k_M·B²/(μ0·r)",
-                "Time of maximum: dg_SGR/dt = 0 → solve for burst epoch",
+                "Burst detection: peak D(t) at t=0 â†’ D_0, decay timescale Ï„_D",
+                "M_mag: full saturation at t >> Ï„_mag â†’ k_MÂ·BÂ²/(Î¼0Â·r)",
+                "Time of maximum: dg_SGR/dt = 0 â†’ solve for burst epoch",
             ],
             'simulation_set': {
                 'B_sweep': 'B from 1e8 to 1e11 T (near-Bcrit magnetar range)',
-                'D_0_sweep': 'D_0 from 0 to 0.1 m/s²',
+                'D_0_sweep': 'D_0 from 0 to 0.1 m/sÂ²',
                 't_sweep': 't from 0 to 10*tau_D',
             },
         }
 
 
 # ---------------------------------------------------------------------------
-# Session 54 — grok_share_7514fe third-pass unique extractions (2 calculators)
-# Unique items: Full buoyancy FU_Bi with e^{-(π-t_n)} and H_k geometry,
-#               f_z,CGM ≈ 1.46×10^{-73} [SSq]-calibrated CGM metallicity
+# Session 54 â€” grok_share_7514fe third-pass unique extractions (2 calculators)
+# Unique items: Full buoyancy FU_Bi with e^{-(Ï€-t_n)} and H_k geometry,
+#               f_z,CGM â‰ˆ 1.46Ã—10^{-73} [SSq]-calibrated CGM metallicity
 # ---------------------------------------------------------------------------
 
 
 class UQFFBuoyancyMasterIntegralCalculator(_CP3Calculator):
-    """Full Triadic Buoyancy UQFF integral with e^{-(π-t_n)} temporal decay.
+    """Full Triadic Buoyancy UQFF integral with e^{-(Ï€-t_n)} temporal decay.
 
-    Authentic master form (Triadic Master Equations — Westerlund 2 and Pillars sections):
-      FU_Bi = Σ_{k=1}^N [ k_Ub,k · (f_UA'·f_SCm·R_EB / r²)
-                           · H_k(ν_THz, U_b, geom_k) · f_Ub · e^{-(π-t_n)} ]
-      H_k = cos(φ) · f(ν_THz)            [geometry-frequency coupling]
-        - spherical   → G_k = sin(θ), f(ν_THz) = ν_THz / ν_ref
-        - toroidal    → G_k = cos(φ), f(ν_THz) = 1
-        - linear      → G_k = 1,      f(ν_THz) = ν_THz / ν_ref
-      f_Ub = k_Ub · Δk_η · (ρ_vac,[UA]/ρ_vac,[SCm]) · (V_little/V_big)
-             with Δk_η = 7.25×10^8 (hydride-like calibration)
-      t_n  = (t/t_Hubble) · (1 + H(z)·t_0)
+    Authentic master form (Triadic Master Equations â€” Westerlund 2 and Pillars sections):
+      FU_Bi = Î£_{k=1}^N [ k_Ub,k Â· (f_UA'Â·f_SCmÂ·R_EB / rÂ²)
+                           Â· H_k(Î½_THz, U_b, geom_k) Â· f_Ub Â· e^{-(Ï€-t_n)} ]
+      H_k = cos(Ï†) Â· f(Î½_THz)            [geometry-frequency coupling]
+        - spherical   â†’ G_k = sin(Î¸), f(Î½_THz) = Î½_THz / Î½_ref
+        - toroidal    â†’ G_k = cos(Ï†), f(Î½_THz) = 1
+        - linear      â†’ G_k = 1,      f(Î½_THz) = Î½_THz / Î½_ref
+      f_Ub = k_Ub Â· Î”k_Î· Â· (Ï_vac,[UA]/Ï_vac,[SCm]) Â· (V_little/V_big)
+             with Î”k_Î· = 7.25Ã—10^8 (hydride-like calibration)
+      t_n  = (t/t_Hubble) Â· (1 + H(z)Â·t_0)
     Distinct from:
-    - FUBiiExtendedIntegralCalculator (linear UV/mm blend, no e^{-(π-t_n)})
+    - FUBiiExtendedIntegralCalculator (linear UV/mm blend, no e^{-(Ï€-t_n)})
     - DPMHarmonicBuoyancySeriesCalculator (H_m harmonic, no H_k geometry)
-    Reference outputs (doc): Westerlund 2 (r=1.89e16 m): ≈6.14e-32 N;
-                             Pillars of Creation (r=4.73e16 m): ≈9.79e-33 N
+    Reference outputs (doc): Westerlund 2 (r=1.89e16 m): â‰ˆ6.14e-32 N;
+                             Pillars of Creation (r=4.73e16 m): â‰ˆ9.79e-33 N
     """
 
     def compute(self, dataset: dict) -> dict:
@@ -4429,7 +4456,7 @@ class UQFFBuoyancyMasterIntegralCalculator(_CP3Calculator):
         H_z = H0 * math.sqrt(0.3 * (1 + z)**3 + 0.7)
         t_n = (t / t_H) * (1 + H_z * t_H)
 
-        # f_Ub full formula with Δk_η calibration
+        # f_Ub full formula with Î”k_Î· calibration
         f_Ub = k_Ub * delta_k_eta * (rho_UA / rho_SCm) * V_ratio
 
         # H_k geometry-frequency factor
@@ -4444,7 +4471,7 @@ class UQFFBuoyancyMasterIntegralCalculator(_CP3Calculator):
 
         H_k = H_k_geom(geom) if not isinstance(geom, list) else sum(H_k_geom(g) for g in geom)
 
-        # e^{-(π-t_n)} temporal decay factor
+        # e^{-(Ï€-t_n)} temporal decay factor
         pi_decay = math.exp(-(math.pi - t_n))
 
         # Core buoyancy integral sum
@@ -4464,37 +4491,37 @@ class UQFFBuoyancyMasterIntegralCalculator(_CP3Calculator):
 
         return {
             'primary_equations': [
-                f"t_n = {t_n:.6e}  →  e^{{-(π-t_n)}} = {pi_decay:.6e}",
-                f"f_Ub = k_Ub·Δk_η·(ρ_UA/ρ_SCm)·(V_l/V_b) = {f_Ub:.4e}",
+                f"t_n = {t_n:.6e}  â†’  e^{{-(Ï€-t_n)}} = {pi_decay:.6e}",
+                f"f_Ub = k_UbÂ·Î”k_Î·Â·(Ï_UA/Ï_SCm)Â·(V_l/V_b) = {f_Ub:.4e}",
                 f"H_k ({geom}) = {H_k:.6f}",
                 f"FU_Bi (parametric, r={r:.2e}) = {FU_Bi:.4e} N",
-                f"FU_Bi (Westerlund 2, r=1.89e16, f_Ub=2.20e8) = {FU_Bi_W2:.4e} N [doc≈6.14e-32]",
-                f"FU_Bi (Pillars, r=4.73e16, f_Ub=2.20e7) = {FU_Bi_Pil:.4e} N [doc≈9.79e-33]",
+                f"FU_Bi (Westerlund 2, r=1.89e16, f_Ub=2.20e8) = {FU_Bi_W2:.4e} N [docâ‰ˆ6.14e-32]",
+                f"FU_Bi (Pillars, r=4.73e16, f_Ub=2.20e7) = {FU_Bi_Pil:.4e} N [docâ‰ˆ9.79e-33]",
             ],
             'available_equations': [
                 "Geometry sweep: compare spherical/toroidal/linear H_k contributions",
-                "t_n sweep: trace e^{-(π-t_n)} attenuation over cosmic epochs",
+                "t_n sweep: trace e^{-(Ï€-t_n)} attenuation over cosmic epochs",
                 "f_Ub vs V_ratio: Boyle's Law scaling for proto-shell volumes",
             ],
             'simulation_set': {
                 'r_sweep': 'r from 1e15 to 1e20 m (SF region to galaxy scale)',
                 'geom_compare': ['spherical', 'toroidal', 'linear'],
-                't_n_decay': 't_n from 0 to π (full attenuation range)',
+                't_n_decay': 't_n from 0 to Ï€ (full attenuation range)',
             },
         }
 
 
 class UQFFCGMSSqMetallicityCalculator(_CP3Calculator):
-    """CGM metallicity fraction f_z,CGM updated with [SSq] vacuum coupling to ≈1.46×10^{-73}.
+    """CGM metallicity fraction f_z,CGM updated with [SSq] vacuum coupling to â‰ˆ1.46Ã—10^{-73}.
 
     From the "Clarification Answers / DeepSearch Insights" section:
-      f_z,CGM ≈ 1.46 × 10^{-73}  (updated with [SSq])
+      f_z,CGM â‰ˆ 1.46 Ã— 10^{-73}  (updated with [SSq])
     Physical derivation:
-      f_z,CGM = [SSq]^26 · (ρ_vac,[UA]/ρ_vac,[SCm])^n_CGM · e^{-[SSq]·n_CGM/26}
-                · Σ_{n=1}^{26} [(1/n^26) · [SSq]^n]  ← Vacuum Density Series weight
+      f_z,CGM = [SSq]^26 Â· (Ï_vac,[UA]/Ï_vac,[SCm])^n_CGM Â· e^{-[SSq]Â·n_CGM/26}
+                Â· Î£_{n=1}^{26} [(1/n^26) Â· [SSq]^n]  â† Vacuum Density Series weight
     The [SSq] update couples the intergalactic metallicity fraction to the
-    vacuum entanglement strength — linking galaxy chemical evolution to UQFF.
-    This specific value (1.46×10^{-73}) is not in any existing CP1/CP2/CP3 class.
+    vacuum entanglement strength â€” linking galaxy chemical evolution to UQFF.
+    This specific value (1.46Ã—10^{-73}) is not in any existing CP1/CP2/CP3 class.
     """
 
     def compute(self, dataset: dict) -> dict:
@@ -4511,13 +4538,13 @@ class UQFFCGMSSqMetallicityCalculator(_CP3Calculator):
         H_z = H0 * math.sqrt(0.3 * (1 + z)**3 + 0.7)
         t_n = (t / t_H) * (1 + H_z * t_H)
 
-        # [SSq] = log(ρ_SCm/ρ_UA') · n · e^{-(π-t)}
+        # [SSq] = log(Ï_SCm/Ï_UA') Â· n Â· e^{-(Ï€-t)}
         SSq_dynamic = math.log(rho_SCm / rho_UA) * n_CGM * math.exp(-(math.pi - t_n))
 
         # Vacuum Density Series (VDS) weight
         VDS = sum((1.0 / n**26) * SSq**n for n in range(1, 27))
 
-        # ρ cross-density attenuation
+        # Ï cross-density attenuation
         rho_ratio = (rho_UA / max(rho_SCm, 1e-99))
         rho_factor = rho_ratio**n_CGM if rho_ratio >= 1 else rho_ratio
 
@@ -4527,20 +4554,20 @@ class UQFFCGMSSqMetallicityCalculator(_CP3Calculator):
                    * math.exp(-SSq * n_CGM / 26)
                    * VDS)
 
-        # Calibrated reference: document value ≈ 1.46×10^{-73}
+        # Calibrated reference: document value â‰ˆ 1.46Ã—10^{-73}
         f_z_CGM_ref = 1.46e-73
 
         return {
             'primary_equations': [
                 f"[SSq] (static calibrated) = {SSq:.4f}",
                 f"[SSq] (dynamic t_n) = {SSq_dynamic:.4e}",
-                f"VDS = Σ(1/n²⁶)·[SSq]ⁿ = {VDS:.6e}",
+                f"VDS = Î£(1/nÂ²â¶)Â·[SSq]â¿ = {VDS:.6e}",
                 f"f_z,CGM (computed) = {f_z_CGM:.4e}",
-                f"f_z,CGM (document reference) ≈ {f_z_CGM_ref:.2e}",
+                f"f_z,CGM (document reference) â‰ˆ {f_z_CGM_ref:.2e}",
             ],
             'available_equations': [
-                "f_z,CGM gradient: delta_f / delta_[SSq] — sensitivity to vacuum entanglement",
-                "Galaxy epoch: f_z,CGM(z=0..10) — CGM enrichment history",
+                "f_z,CGM gradient: delta_f / delta_[SSq] â€” sensitivity to vacuum entanglement",
+                "Galaxy epoch: f_z,CGM(z=0..10) â€” CGM enrichment history",
                 "VDS convergence test: partial sums at n=1..26",
             ],
             'simulation_set': {
@@ -4553,26 +4580,26 @@ class UQFFCGMSSqMetallicityCalculator(_CP3Calculator):
 
 
 # ---------------------------------------------------------------------------
-# Session 55 — grok_share_7514fe fourth-pass: 4 system-specific UQFF equations
+# Session 55 â€” grok_share_7514fe fourth-pass: 4 system-specific UQFF equations
 # ---------------------------------------------------------------------------
 
 class NGC3603StellarPressureModulationCalculator(_CP3Calculator):
     """NGC 3603 UQFF with stellar pressure dispersal multiplier (1-P(t)).
 
-    Unique equation (Document 11 — NGC 3603):
-      g_NGC3603 = (G·M(t))/r² · (1+H_0·t) · (1-B/B_crit) · (1-P(t))
-                  + (Ug1+Ug2+Ug3+Ug4) + Λc²/3 + QM + EM + fluid + DM
-                  + ρ·v_wind²
+    Unique equation (Document 11 â€” NGC 3603):
+      g_NGC3603 = (GÂ·M(t))/rÂ² Â· (1+H_0Â·t) Â· (1-B/B_crit) Â· (1-P(t))
+                  + (Ug1+Ug2+Ug3+Ug4) + Î›cÂ²/3 + QM + EM + fluid + DM
+                  + ÏÂ·v_windÂ²
 
-    P(t) = stellar pressure dispersal rate — the fractional rate at which
+    P(t) = stellar pressure dispersal rate â€” the fractional rate at which
     combined UV/wind pressure from O/B stars disperses the natal molecular
     cloud. This multiplicative (1-P(t)) factor is UNIQUE: it is NOT the same
     as (1-E(t)) irradiation (Pillars, Horsehead), NOT (1-M_coll) merger
     suppression (Antennae), and NOT -M_SN supernova loss.
 
-    Reference value: P(t) ≈ 0.15 for NGC 3603 at age ~1-3 Myr
+    Reference value: P(t) â‰ˆ 0.15 for NGC 3603 at age ~1-3 Myr
     (Harayama et al. 2008; Portegies Zwart et al. 2010; NGC 3603 is the
-    most luminous star cluster in the Milky Way, M ≈ 1.6×10⁴ M☉).
+    most luminous star cluster in the Milky Way, M â‰ˆ 1.6Ã—10â´ Mâ˜‰).
     """
 
     def compute(self, dataset: dict) -> dict:
@@ -4581,12 +4608,12 @@ class NGC3603StellarPressureModulationCalculator(_CP3Calculator):
         B_crit = 4.4e13    # T
 
         r      = dataset.get('r', 5.0e18)       # m  (~163 pc)
-        M      = dataset.get('M', 3.18e34)       # kg  (1.6×10⁴ M☉)
-        H0     = dataset.get('H0', 2.27e-18)     # s⁻¹
+        M      = dataset.get('M', 3.18e34)       # kg  (1.6Ã—10â´ Mâ˜‰)
+        H0     = dataset.get('H0', 2.27e-18)     # sâ»Â¹
         t      = dataset.get('t', 9.46e13)       # s  (3 Myr)
         B      = dataset.get('B', 1e-9)          # T
         P_t    = dataset.get('P_t', 0.15)        # stellar pressure dispersal fraction
-        rho    = dataset.get('rho', 1.67e-21)    # kg/m³  (molecular cloud edge)
+        rho    = dataset.get('rho', 1.67e-21)    # kg/mÂ³  (molecular cloud edge)
         v_wind = dataset.get('v_wind', 2.0e6)    # m/s  (stellar wind 2000 km/s)
 
         mag_f   = 1.0 - B / B_crit
@@ -4595,20 +4622,20 @@ class NGC3603StellarPressureModulationCalculator(_CP3Calculator):
 
         # DPM-emergent: mu_s x grad(M_s/r) base (Newtonian form is emergent, not foundational)
 
-        g_base = G * M / r**2 * hubble_f * mag_f * pressure_f
-        F_wind_ram = rho * v_wind**2        # ram pressure (Pa = N/m²)
+        g_base = dpm_emergent_ug1(M, r)  # DPM: mu_s * grad(M_s/r)
+        F_wind_ram = rho * v_wind**2        # ram pressure (Pa = N/mÂ²)
 
         return {
             'primary_equations': [
-                f"g_NGC3603 = (G·M/r²)·(1+H_0·t)·(1-B/B_crit)·(1-P(t)) [+wind]",
-                f"g_base·(1-P({P_t})) = {g_base:.4e} m/s²",
+                f"g_NGC3603 = (GÂ·M/rÂ²)Â·(1+H_0Â·t)Â·(1-B/B_crit)Â·(1-P(t)) [+wind]",
+                f"g_baseÂ·(1-P({P_t})) = {g_base:.4e} m/sÂ²",
                 f"Stellar pressure factor (1-P) = {pressure_f:.4f}",
-                f"ρ·v_wind² ram pressure = {F_wind_ram:.4e} Pa",
-                f"Total g_NGC3603 ≈ {g_base + F_wind_ram/r:.4e} [summed over r]",
+                f"ÏÂ·v_windÂ² ram pressure = {F_wind_ram:.4e} Pa",
+                f"Total g_NGC3603 â‰ˆ {g_base + F_wind_ram/r:.4e} [summed over r]",
             ],
             'available_equations': [
-                "(1-P(t)) as function of cluster age t: P(t) ∝ L_UV(t)·σ_gas",
-                "Pressure equilibrium: ρ·v_wind² = G·M·ρ_gas/r² → dispersal condition",
+                "(1-P(t)) as function of cluster age t: P(t) âˆ L_UV(t)Â·Ïƒ_gas",
+                "Pressure equilibrium: ÏÂ·v_windÂ² = GÂ·MÂ·Ï_gas/rÂ² â†’ dispersal condition",
                 "Stellar mass function integration: M(t) with Kroupa IMF",
                 "Cross-check with (1-B/B_crit): magnetic confinement of O-star wind",
             ],
@@ -4623,22 +4650,22 @@ class NGC3603StellarPressureModulationCalculator(_CP3Calculator):
 class M16EagleNebulaRadiationSFRCalculator(_CP3Calculator):
     """M16 Eagle Nebula UQFF with star-forming rate and radiation subtraction.
 
-    Unique equation (Document 23 — M16 Eagle Nebula):
-      g_M16 = (G·M(t))/r² · (1+H(z)·t) · (1-B/B_crit) · (1+M_sf(t))
-              + (Ug1+Ug2+Ug3+Ug4) + Λc²/3 + QM + EM + fluid + DM
+    Unique equation (Document 23 â€” M16 Eagle Nebula):
+      g_M16 = (GÂ·M(t))/rÂ² Â· (1+H(z)Â·t) Â· (1-B/B_crit) Â· (1+M_sf(t))
+              + (Ug1+Ug2+Ug3+Ug4) + Î›cÂ²/3 + QM + EM + fluid + DM
               - E_rad
 
     Two KEY features distinguish g_M16:
-    1) (1+M_sf(t)) MULTIPLICATIVE on the gravity base — SFR enhancement
-    2) -E_rad ADDITIVE SUBTRACTION — radiation energy per unit volume
+    1) (1+M_sf(t)) MULTIPLICATIVE on the gravity base â€” SFR enhancement
+    2) -E_rad ADDITIVE SUBTRACTION â€” radiation energy per unit volume
        (stellar UV drives envelope expansion, effectively reducing net gravity)
 
-    E_rad = L_UV / (4π·r²·c) — radiation energy density at radius r.
+    E_rad = L_UV / (4Ï€Â·rÂ²Â·c) â€” radiation energy density at radius r.
     This is DIFFERENT from (1-E(t)) irradiation suppression used in Pillars
     and Horsehead. M16 uses SUBTRACTION after full UQFF sum, not a multiplier.
 
-    Reference: M16/Eagle Nebula, r ≈ 5.7 ly pillar tips → 5.4×10¹⁶ m,
-    L_UV ≈ 1.5×10³¹ W, M_sf ≈ 0.08 (active star formation region).
+    Reference: M16/Eagle Nebula, r â‰ˆ 5.7 ly pillar tips â†’ 5.4Ã—10Â¹â¶ m,
+    L_UV â‰ˆ 1.5Ã—10Â³Â¹ W, M_sf â‰ˆ 0.08 (active star formation region).
     """
 
     def compute(self, dataset: dict) -> dict:
@@ -4648,8 +4675,8 @@ class M16EagleNebulaRadiationSFRCalculator(_CP3Calculator):
         B_crit = 4.4e13
 
         r     = dataset.get('r', 5.4e16)     # m
-        M     = dataset.get('M', 2.19e33)    # kg (~1100 M☉)
-        Hz    = dataset.get('Hz', 2.27e-18)  # H(z) s⁻¹
+        M     = dataset.get('M', 2.19e33)    # kg (~1100 Mâ˜‰)
+        Hz    = dataset.get('Hz', 2.27e-18)  # H(z) sâ»Â¹
         t     = dataset.get('t', 3.16e14)    # s (~10 Myr)
         B     = dataset.get('B', 5e-10)      # T
         M_sf  = dataset.get('M_sf', 0.08)    # SFR enhancement fraction
@@ -4658,25 +4685,25 @@ class M16EagleNebulaRadiationSFRCalculator(_CP3Calculator):
         mag_f = 1.0 - B / B_crit
         sf_f  = 1.0 + M_sf
         # DPM-emergent: mu_s x grad(M_s/r) base (Newtonian form is emergent, not foundational)
-        g_base = G * M / r**2 * (1.0 + Hz * t) * mag_f * sf_f
+        g_base = dpm_emergent_ug1(M, r)  # DPM: mu_s * grad(M_s/r)
 
         # Radiation energy density (pressure-like subtraction)
-        E_rad = L_UV / (4.0 * math.pi * r**2 * c)   # J/m³  = Pa
+        E_rad = L_UV / (4.0 * math.pi * r**2 * c)   # J/mÂ³  = Pa
 
         g_net = g_base - E_rad   # net M16 UQFF gravity
 
         return {
             'primary_equations': [
-                f"g_M16 = (G·M/r²)·(1+H(z)·t)·(1-B/B_crit)·(1+M_sf) - E_rad",
-                f"g_base·(1+M_sf={M_sf}) = {g_base:.4e} m/s²",
-                f"E_rad = L_UV/(4πr²c) = {E_rad:.4e} J/m³",
-                f"g_net = g_base - E_rad = {g_net:.4e} m/s²",
+                f"g_M16 = (GÂ·M/rÂ²)Â·(1+H(z)Â·t)Â·(1-B/B_crit)Â·(1+M_sf) - E_rad",
+                f"g_baseÂ·(1+M_sf={M_sf}) = {g_base:.4e} m/sÂ²",
+                f"E_rad = L_UV/(4Ï€rÂ²c) = {E_rad:.4e} J/mÂ³",
+                f"g_net = g_base - E_rad = {g_net:.4e} m/sÂ²",
                 f"SFR enhancement factor (1+M_sf) = {sf_f:.4f}",
             ],
             'available_equations': [
-                "E_rad vs g_base ratio: E_rad / g_base → radiation-dominated regime",
+                "E_rad vs g_base ratio: E_rad / g_base â†’ radiation-dominated regime",
                 "M_sf time evolution: M_sf(t) = SFR(t)/M_total (gas depletion)",
-                "Radiation pressure check: E_rad == G·M·ρ_gas/r² → envelope dispersal",
+                "Radiation pressure check: E_rad == GÂ·MÂ·Ï_gas/rÂ² â†’ envelope dispersal",
                 "Comparison with g_Pillars (1-E(t)) multiplier vs. -E_rad subtraction",
             ],
             'simulation_set': {
@@ -4690,25 +4717,25 @@ class M16EagleNebulaRadiationSFRCalculator(_CP3Calculator):
 class CrabPWNUQFFCalculator(_CP3Calculator):
     """Crab Nebula Pulsar Wind Nebula UQFF with F_wind + M_mag correction.
 
-    Unique equation (Document 24 — Crab Nebula):
-      g_Crab = (G·M)/(r(t)²) · (1+H(z)·t) · (1-B/B_crit)
-               + (Ug1+Ug2+Ug3+Ug4) + Λc²/3 + QM + EM + fluid + DM
+    Unique equation (Document 24 â€” Crab Nebula):
+      g_Crab = (GÂ·M)/(r(t)Â²) Â· (1+H(z)Â·t) Â· (1-B/B_crit)
+               + (Ug1+Ug2+Ug3+Ug4) + Î›cÂ²/3 + QM + EM + fluid + DM
                + F_wind + M_mag
 
     TWO unique additive corrections distinguish Crab from other systems:
-    - F_wind: pulsar wind ram pressure = (Ė_sd / c) / (4π·r²) where Ė_sd
+    - F_wind: pulsar wind ram pressure = (Ä–_sd / c) / (4Ï€Â·rÂ²) where Ä–_sd
       is the pulsar spin-down luminosity (rotational energy loss rate)
     - M_mag: induced magnetization from frozen-in pulsar B-field threading
-      the nebula = μ_0·M_mag_moment / (4π·r³)
+      the nebula = Î¼_0Â·M_mag_moment / (4Ï€Â·rÂ³)
 
     The COMBINATION F_wind + M_mag is unique to pulsar wind nebulae (PWNe).
     Neither term appears in all other 28 documents in grok_share_7514fe.
     MagnetarSGR1745DynamicModulationCalculator (Session 53) handles M_mag
-    for a binary-context magnetar — Crab is a PURE ISOLATED PULSAR in a
+    for a binary-context magnetar â€” Crab is a PURE ISOLATED PULSAR in a
     expanding supernova remnant (fundamentally different environment).
 
-    Reference: Crab Pulsar: P=33ms, Ė_sd≈4.6×10³¹ W, B_nebula≈1.6×10⁻⁴ T,
-    r(t)= r_0 + v_exp·t (v_exp ≈ 1500 km/s), age ≈ 972 yr.
+    Reference: Crab Pulsar: P=33ms, Ä–_sdâ‰ˆ4.6Ã—10Â³Â¹ W, B_nebulaâ‰ˆ1.6Ã—10â»â´ T,
+    r(t)= r_0 + v_expÂ·t (v_exp â‰ˆ 1500 km/s), age â‰ˆ 972 yr.
     """
 
     def compute(self, dataset: dict) -> dict:
@@ -4723,46 +4750,46 @@ class CrabPWNUQFFCalculator(_CP3Calculator):
         t      = dataset.get('t', 3.07e10)      # s  (972 yr age)
         v_exp  = dataset.get('v_exp', 1.5e6)    # m/s  (expansion velocity)
         r      = r_0 + v_exp * t               # r(t) expanding nebula
-        M      = dataset.get('M', 1.0 * 2.0e30) # kg (1 M☉ remnant)
-        Hz     = dataset.get('Hz', 2.27e-18)    # H(z) s⁻¹
+        M      = dataset.get('M', 1.0 * 2.0e30) # kg (1 Mâ˜‰ remnant)
+        Hz     = dataset.get('Hz', 2.27e-18)    # H(z) sâ»Â¹
         B_neb  = dataset.get('B_neb', 1.6e-4)   # T nebula frozen-in field
         B_pulsar = dataset.get('B_pulsar', 3.78e8) # T pulsar surface
-        E_spin = dataset.get('E_sd', 4.6e31)    # W spin-down luminosity Ė_sd
-        M_mag_moment = dataset.get('M_mag_moment', 1e28)  # A·m²
+        E_spin = dataset.get('E_sd', 4.6e31)    # W spin-down luminosity Ä–_sd
+        M_mag_moment = dataset.get('M_mag_moment', 1e28)  # AÂ·mÂ²
 
         mag_f = 1.0 - B_neb / B_crit
 
         # Base UQFF gravity
         # DPM-emergent: mu_s x grad(M_s/r) base (Newtonian form is emergent, not foundational)
-        g_base = G * M / r**2 * (1.0 + Hz * t) * mag_f
+        g_base = dpm_emergent_ug1(M, r)  # DPM: mu_s * grad(M_s/r)
 
-        # Pulsar wind ram pressure: F_wind = Ė_sd / (c · 4π r²)
+        # Pulsar wind ram pressure: F_wind = Ä–_sd / (c Â· 4Ï€ rÂ²)
         F_wind = E_spin / (c * 4.0 * math.pi * r**2)
 
-        # Magnetization correction: M_mag ∝ μ_0·m/(4π·r³)
+        # Magnetization correction: M_mag âˆ Î¼_0Â·m/(4Ï€Â·rÂ³)
         M_mag = mu_0 * M_mag_moment / (4.0 * math.pi * r**3)
 
         g_total = g_base + F_wind + M_mag
 
         return {
             'primary_equations': [
-                f"r(t) = r_0 + v_exp·t = {r:.4e} m  (expanding nebula)",
-                f"g_base = G·M/r(t)²·(1+H(z)·t)·(1-B/B_crit) = {g_base:.4e} m/s²",
-                f"F_wind = Ė_sd/(c·4πr²) = {F_wind:.4e} N/m² (pulsar wind)",
-                f"M_mag = μ_0·m/(4πr³) = {M_mag:.4e} T·m (magnetization)",
+                f"r(t) = r_0 + v_expÂ·t = {r:.4e} m  (expanding nebula)",
+                f"g_base = GÂ·M/r(t)Â²Â·(1+H(z)Â·t)Â·(1-B/B_crit) = {g_base:.4e} m/sÂ²",
+                f"F_wind = Ä–_sd/(cÂ·4Ï€rÂ²) = {F_wind:.4e} N/mÂ² (pulsar wind)",
+                f"M_mag = Î¼_0Â·m/(4Ï€rÂ³) = {M_mag:.4e} TÂ·m (magnetization)",
                 f"g_Crab = g_base + F_wind + M_mag = {g_total:.4e}",
             ],
             'available_equations': [
-                "r(t) = r_0 + v_exp·t  →  age determination from size",
+                "r(t) = r_0 + v_expÂ·t  â†’  age determination from size",
                 "F_wind / g_base ratio: wind-dominated vs gravity-dominated regime",
-                "M_mag decay: ∝ r(t)^{-3} → rapid dilution as nebula expands",
-                "Pulsar spindown: Ė_sd ∝ P^{-3}·dP/dt → age-dependent wind",
+                "M_mag decay: âˆ r(t)^{-3} â†’ rapid dilution as nebula expands",
+                "Pulsar spindown: Ä–_sd âˆ P^{-3}Â·dP/dt â†’ age-dependent wind",
                 "Compare with MagnetarSGR1745: binary context vs isolated PWN",
             ],
             'simulation_set': {
                 'age_sweep': 't from 1 yr to 10000 yr (PWN evolution)',
                 'v_exp_sweep': 'v_exp from 500 to 5000 km/s',
-                'E_sd_sweep': 'Ė_sd from 1e29 to 1e33 W (young→old pulsar)',
+                'E_sd_sweep': 'Ä–_sd from 1e29 to 1e33 W (youngâ†’old pulsar)',
             },
         }
 
@@ -4770,26 +4797,26 @@ class CrabPWNUQFFCalculator(_CP3Calculator):
 class UQFFSombreroDustIntegratedCalculator(_CP3Calculator):
     """Sombrero Galaxy UQFF with D_dust dust-lane drag integrated into g.
 
-    Unique equation (Document 20 — Sombrero Galaxy):
-      g_Sombrero = (G·M)/r² · (1+H(z)·t) · (1-B/B_crit)
-                   + (G·M_BH)/r_BH²
-                   + (Ug1+Ug2+Ug3+Ug4) + Λc²/3 + QM + EM + fluid + DM
+    Unique equation (Document 20 â€” Sombrero Galaxy):
+      g_Sombrero = (GÂ·M)/rÂ² Â· (1+H(z)Â·t) Â· (1-B/B_crit)
+                   + (GÂ·M_BH)/r_BHÂ²
+                   + (Ug1+Ug2+Ug3+Ug4) + Î›cÂ²/3 + QM + EM + fluid + DM
                    + D_dust
 
-    D_dust = ρ_dust · v_dust² / r — the dust lane dynamic friction term.
+    D_dust = Ï_dust Â· v_dustÂ² / r â€” the dust lane dynamic friction term.
 
     While CP2 has a standalone D_dust module, this calculator integrates
     D_dust into the FULL UQFF compressed gravity expression, making
     g_Sombrero the ONLY document-29 system that has both:
-    (1) An explicit SMBH term (G·M_BH)/r_BH² AND
-    (2) A dust-lane correction D_dust = ρ_dust·v_dust²/r
+    (1) An explicit SMBH term (GÂ·M_BH)/r_BHÂ² AND
+    (2) A dust-lane correction D_dust = Ï_dustÂ·v_dustÂ²/r
 
     The Sombrero's dark dust lane (prominent in optical imaging) is a
     fundamental gravitational influence not captured by pure gas dynamics.
-    ρ_dust ≈ 2×10⁻²³ kg/m³, v_dust ≈ 200 km/s, D_dust ≈ 10⁻³¹ N.
+    Ï_dust â‰ˆ 2Ã—10â»Â²Â³ kg/mÂ³, v_dust â‰ˆ 200 km/s, D_dust â‰ˆ 10â»Â³Â¹ N.
 
-    Reference: M104 Sombrero Galaxy, D = 9.55 Mpc, M_BH ≈ 10⁹ M☉,
-    R_dust_lane ≈ 2 kpc ring.
+    Reference: M104 Sombrero Galaxy, D = 9.55 Mpc, M_BH â‰ˆ 10â¹ Mâ˜‰,
+    R_dust_lane â‰ˆ 2 kpc ring.
     """
 
     def compute(self, dataset: dict) -> dict:
@@ -4798,73 +4825,73 @@ class UQFFSombreroDustIntegratedCalculator(_CP3Calculator):
         B_crit = 4.4e13
 
         r       = dataset.get('r', 6.17e19)     # m  (~2 kpc dust lane)
-        M       = dataset.get('M', 3.98e41)     # kg  (2×10¹¹ M☉)
-        M_BH    = dataset.get('M_BH', 1.99e39)  # kg  (10⁹ M☉ SMBH)
+        M       = dataset.get('M', 3.98e41)     # kg  (2Ã—10Â¹Â¹ Mâ˜‰)
+        M_BH    = dataset.get('M_BH', 1.99e39)  # kg  (10â¹ Mâ˜‰ SMBH)
         r_BH    = dataset.get('r_BH', 3.09e17)  # m   (~10 pc sphere of influence)
-        Hz      = dataset.get('Hz', 2.27e-18)   # H(z) s⁻¹
+        Hz      = dataset.get('Hz', 2.27e-18)   # H(z) sâ»Â¹
         t       = dataset.get('t', 4.35e17)     # s  (~13.8 Gyr)
         B       = dataset.get('B', 1e-9)        # T
-        rho_dust = dataset.get('rho_dust', 2e-23) # kg/m³  dust lane density
+        rho_dust = dataset.get('rho_dust', 2e-23) # kg/mÂ³  dust lane density
         v_dust  = dataset.get('v_dust', 2.0e5)  # m/s  (200 km/s circular)
 
         mag_f   = 1.0 - B / B_crit
-        g_base  = G * M / r**2 * (1.0 + Hz * t) * mag_f
+        g_base = dpm_emergent_ug1(M, r)  # DPM: mu_s * grad(M_s/r)
         g_BH    = G * M_BH / r_BH**2        # SMBH contribution
 
-        # Dust lane term: D_dust = ρ_dust · v_dust² / r
+        # Dust lane term: D_dust = Ï_dust Â· v_dustÂ² / r
         D_dust  = rho_dust * v_dust**2 / r
 
         g_total = g_base + g_BH + D_dust
 
         return {
             'primary_equations': [
-                f"g_Sombrero = G·M/r²·(1+H·t)·(1-B/B_crit) + G·M_BH/r_BH² + D_dust",
-                f"g_base (stellar) = {g_base:.4e} m/s²",
-                f"g_BH (SMBH, M_BH=10⁹M☉) = {g_BH:.4e} m/s²",
-                f"D_dust = ρ_dust·v_dust²/r = {D_dust:.4e} m/s²",
-                f"g_Sombrero (total) = {g_total:.4e} m/s²",
+                f"g_Sombrero = GÂ·M/rÂ²Â·(1+HÂ·t)Â·(1-B/B_crit) + GÂ·M_BH/r_BHÂ² + D_dust",
+                f"g_base (stellar) = {g_base:.4e} m/sÂ²",
+                f"g_BH (SMBH, M_BH=10â¹Mâ˜‰) = {g_BH:.4e} m/sÂ²",
+                f"D_dust = Ï_dustÂ·v_dustÂ²/r = {D_dust:.4e} m/sÂ²",
+                f"g_Sombrero (total) = {g_total:.4e} m/sÂ²",
                 f"D_dust / g_base ratio = {D_dust / max(g_base, 1e-99):.4f}",
             ],
             'available_equations': [
-                "D_dust(r): dust lane profile ρ_dust(r) ∝ sech²(z/h_dust)",
-                "SMBH sphere of influence: r_BH = G·M_BH/σ² (velocity dispersion)",
-                "Dust mass fraction: M_dust/M_gas ≈ 0.01 (standard dust/gas ratio)",
-                "Optical depth: τ_V ≈ 2 (visible extinction in dust lane)",
+                "D_dust(r): dust lane profile Ï_dust(r) âˆ sechÂ²(z/h_dust)",
+                "SMBH sphere of influence: r_BH = GÂ·M_BH/ÏƒÂ² (velocity dispersion)",
+                "Dust mass fraction: M_dust/M_gas â‰ˆ 0.01 (standard dust/gas ratio)",
+                "Optical depth: Ï„_V â‰ˆ 2 (visible extinction in dust lane)",
                 "Compare: g_BH vs D_dust dominance as function of r",
             ],
             'simulation_set': {
                 'r_sweep': 'r from 100 pc to 10 kpc (bulge to outer disk)',
-                'rho_dust_sweep': 'ρ_dust from 1e-24 to 1e-21 kg/m³',
+                'rho_dust_sweep': 'Ï_dust from 1e-24 to 1e-21 kg/mÂ³',
                 'v_dust_sweep': 'v_dust from 100 to 500 km/s (circular velocity)',
             },
         }
 
 
 # ---------------------------------------------------------------------------
-# Session 56 — grok_share_7514fe fifth-pass unique physics
+# Session 56 â€” grok_share_7514fe fifth-pass unique physics
 # Four systems with compressed UQFF forms not yet in CP3:
-#   1. Bubble Nebula    — (1+E(t)) POSITIVE shell expansion enhancement (Doc 12)
-#   2. Horsehead Nebula — P_rad blackbody radiation pressure additive (Doc 15)
-#   3. NGC 1275 Perseus — F_BH AGN jet + M_fil cold filament gas (Doc 16)
-#   4. Saturn           — dual-source gravity (Sun + Saturn) + T_ring (Doc 22)
+#   1. Bubble Nebula    â€” (1+E(t)) POSITIVE shell expansion enhancement (Doc 12)
+#   2. Horsehead Nebula â€” P_rad blackbody radiation pressure additive (Doc 15)
+#   3. NGC 1275 Perseus â€” F_BH AGN jet + M_fil cold filament gas (Doc 16)
+#   4. Saturn           â€” dual-source gravity (Sun + Saturn) + T_ring (Doc 22)
 # ---------------------------------------------------------------------------
 
 class BubbleNebulaExpansionEnhancementCalculator(_CP3Calculator):
     """Bubble Nebula UQFF with POSITIVE shell expansion factor (1+E(t)).
 
-    Unique equation (Document 12 — Bubble Nebula / NGC 7635):
-      g_Bubble = (G·M)/r² · (1+H(z)·t) · (1-B/B_crit) · (1+E(t))
-                 + (Ug1+Ug2+Ug3+Ug4) + Λc²/3 + QM + fluid + DM
-                 + ρ·v_wind²
+    Unique equation (Document 12 â€” Bubble Nebula / NGC 7635):
+      g_Bubble = (GÂ·M)/rÂ² Â· (1+H(z)Â·t) Â· (1-B/B_crit) Â· (1+E(t))
+                 + (Ug1+Ug2+Ug3+Ug4) + Î›cÂ²/3 + QM + fluid + DM
+                 + ÏÂ·v_windÂ²
 
     Why unique: (1+E(t)) POSITIVE vs Pillars/Horsehead (1-E(t)) NEGATIVE.
     E(t) here is the shell expansion energy fraction that ADDS to effective
-    gravity on the bubble shell (stellar wind inflates a pressure shell —
+    gravity on the bubble shell (stellar wind inflates a pressure shell â€”
     the ram pressure compresses the surrounding ISM, increasing g_eff).
-    This is the inverse of irradiation erosion: wind inflation → compression.
+    This is the inverse of irradiation erosion: wind inflation â†’ compression.
 
-    E(t) = P_wind / P_gravity = (ρ_w · v_w² · r²) / (G · M · ρ_shell)
-    At large t: E(t) ≈ 0.05 (5% wind enhancement in compressed shell)
+    E(t) = P_wind / P_gravity = (Ï_w Â· v_wÂ² Â· rÂ²) / (G Â· M Â· Ï_shell)
+    At large t: E(t) â‰ˆ 0.05 (5% wind enhancement in compressed shell)
     """
 
     def compute(self, dataset: dict) -> dict:
@@ -4874,20 +4901,20 @@ class BubbleNebulaExpansionEnhancementCalculator(_CP3Calculator):
         c = 2.998e8
         LAMBDA = 1.1e-52
 
-        M = dataset.get('M', 1.5e31)        # BD+60°2522 star ~43 M_sun (kg)
+        M = dataset.get('M', 1.5e31)        # BD+60Â°2522 star ~43 M_sun (kg)
         r = dataset.get('r', 2.84e16)       # 3 ly bubble radius (m)
         B = dataset.get('B', 1e-8)
         B_crit = dataset.get('B_crit', 4.4e13)
         z = dataset.get('z', 0.0)           # Local nebula
         t = dataset.get('t', 4.35e17)
         E_t = dataset.get('E_t', 0.05)      # Expansion enhancement factor
-        rho_wind = dataset.get('rho_wind', 1e-23)   # Shell density (kg/m³)
-        v_wind = dataset.get('v_wind', 1.5e6)        # BD+60°2522 wind ~1500 km/s
+        rho_wind = dataset.get('rho_wind', 1e-23)   # Shell density (kg/mÂ³)
+        v_wind = dataset.get('v_wind', 1.5e6)        # BD+60Â°2522 wind ~1500 km/s
 
         mag_f = 1.0 - min(B / B_crit, 0.9999)
-        # (1+E(t)) POSITIVE enhancement — key distinction from Pillars (1-E(t))
+        # (1+E(t)) POSITIVE enhancement â€” key distinction from Pillars (1-E(t))
         expansion_f = 1.0 + E_t
-        g_base = (G * M) / r**2 * (1.0 + H0 * t) * mag_f * expansion_f
+        g_base = dpm_emergent_ug1(M, r) * (1.0 + H0 * t) * mag_f * expansion_f  # DPM-emergent
         g_lambda = (LAMBDA * c**2) / 3.0
         g_ram = rho_wind * v_wind**2
         g_total = g_base + g_lambda + g_ram
@@ -4895,16 +4922,16 @@ class BubbleNebulaExpansionEnhancementCalculator(_CP3Calculator):
         sign_contrast = 1.0 - E_t  # What Pillars/Horsehead would give
         return {
             'primary_equations': [
-                f"g_base·(1+E(t)) = {g_base:.4e} m/s² [expansion ENHANCES gravity]",
+                f"g_baseÂ·(1+E(t)) = {g_base:.4e} m/sÂ² [expansion ENHANCES gravity]",
                 f"(1+E(t)) = {expansion_f:.4f}  vs  Pillars (1-E(t)) = {sign_contrast:.4f}",
-                f"ρ·v_wind² = {g_ram:.4e} [stellar wind ram pressure on shell]",
-                f"g_total = {g_total:.4e} m/s²",
+                f"ÏÂ·v_windÂ² = {g_ram:.4e} [stellar wind ram pressure on shell]",
+                f"g_total = {g_total:.4e} m/sÂ²",
             ],
             'available_equations': [
-                "Shell compression: g_eff ∝ (1 + P_wind/P_gravity)",
-                "E(t) = ρ_wind·v_wind²·r² / (G·M·ρ_shell) [energy fraction]",
-                "Velocity: v_wind = 1500 km/s for BD+60°2522 (O-type star)",
-                "Expansion age: r(t) = r_0 + v_shell·t, v_shell ≈ 30 km/s",
+                "Shell compression: g_eff âˆ (1 + P_wind/P_gravity)",
+                "E(t) = Ï_windÂ·v_windÂ²Â·rÂ² / (GÂ·MÂ·Ï_shell) [energy fraction]",
+                "Velocity: v_wind = 1500 km/s for BD+60Â°2522 (O-type star)",
+                "Expansion age: r(t) = r_0 + v_shellÂ·t, v_shell â‰ˆ 30 km/s",
                 "Contrast: (1+E) bubble compression vs (1-E) Pillars erosion",
             ],
             'simulation_set': {
@@ -4918,21 +4945,21 @@ class BubbleNebulaExpansionEnhancementCalculator(_CP3Calculator):
 class HorseheadNebulaPradBlackbodyCalculator(_CP3Calculator):
     """Horsehead Nebula UQFF with P_rad Stefan-Boltzmann blackbody radiation pressure.
 
-    Unique equation (Document 15 — Horsehead Nebula / Barnard 33):
-      g_Horsehead = (G·M)/r² · (1+H(z)·t) · (1-B/B_crit) · (1-E(t))
-                   + (Ug1+Ug2+Ug3+Ug4) + Λc²/3 + QM + fluid + DM
+    Unique equation (Document 15 â€” Horsehead Nebula / Barnard 33):
+      g_Horsehead = (GÂ·M)/rÂ² Â· (1+H(z)Â·t) Â· (1-B/B_crit) Â· (1-E(t))
+                   + (Ug1+Ug2+Ug3+Ug4) + Î›cÂ²/3 + QM + fluid + DM
                    + P_rad
 
-    Why unique: P_rad = 4σT⁴/(3c) is BLACKBODY THERMAL radiation pressure
+    Why unique: P_rad = 4ÏƒTâ´/(3c) is BLACKBODY THERMAL radiation pressure
     (Stefan-Boltzmann), different from:
-    - M16's E_rad = L_UV/(4πr²c)  [electromagnetic energy density / photon flux]
-    - ρ·v_wind²                   [ram pressure]
-    P_rad arises from the HII region ion-front temperature T ≈ 10,000 K
+    - M16's E_rad = L_UV/(4Ï€rÂ²c)  [electromagnetic energy density / photon flux]
+    - ÏÂ·v_windÂ²                   [ram pressure]
+    P_rad arises from the HII region ion-front temperature T â‰ˆ 10,000 K
     baking the Horsehead surface. This is classical radiation pressure
-    from a thermalized blackbody source — the strongest thermal pressure
+    from a thermalized blackbody source â€” the strongest thermal pressure
     term in any of the 29 UQFF documents.
 
-    CP1 benchmarks: P_rad_Horsehead = 4.347e-5 m/s² (from Sigma Orionis)
+    CP1 benchmarks: P_rad_Horsehead = 4.347e-5 m/sÂ² (from Sigma Orionis)
     """
 
     def compute(self, dataset: dict) -> dict:
@@ -4941,7 +4968,7 @@ class HorseheadNebulaPradBlackbodyCalculator(_CP3Calculator):
         H0 = 2.27e-18
         c = 2.998e8
         LAMBDA = 1.1e-52
-        sigma_SB = 5.6704e-8   # Stefan-Boltzmann constant (W/m²/K⁴)
+        sigma_SB = 5.6704e-8   # Stefan-Boltzmann constant (W/mÂ²/Kâ´)
 
         M = dataset.get('M', 2.387e32)     # 120 M_sun (CP1 benchmark)
         r = dataset.get('r', 1.182e16)     # 1.25 ly half-diameter (CP1)
@@ -4955,7 +4982,7 @@ class HorseheadNebulaPradBlackbodyCalculator(_CP3Calculator):
 
         E_t = E_0 * (1.0 - math.exp(-t / tau))
         mag_f = 1.0 - min(B / B_crit, 0.9999)
-        g_base = (G * M) / r**2 * (1.0 + H0 * t) * mag_f * (1.0 - E_t)
+        g_base = dpm_emergent_ug1(M, r) * (1.0 + H0 * t) * mag_f * (1.0 - E_t)  # DPM-emergent
         g_lambda = (LAMBDA * c**2) / 3.0
         # Stefan-Boltzmann blackbody radiation pressure
         P_rad = (4.0 * sigma_SB * T_ion**4) / (3.0 * c)
@@ -4963,17 +4990,17 @@ class HorseheadNebulaPradBlackbodyCalculator(_CP3Calculator):
 
         return {
             'primary_equations': [
-                f"E(t) = E_0·(1−e^{{−t/τ}}) = {E_t:.4f} [irradiation erosion fraction]",
-                f"g_base·(1−E(t)) = {g_base:.4e} m/s²",
-                f"P_rad = 4σT⁴/(3c) = 4·{sigma_SB:.4e}·{T_ion:.1e}⁴/(3·{c:.3e})",
-                f"P_rad = {P_rad:.4e} m/s² [blackbody SB radiation pressure]",
-                f"g_total = {g_total:.4e} m/s²",
+                f"E(t) = E_0Â·(1âˆ’e^{{âˆ’t/Ï„}}) = {E_t:.4f} [irradiation erosion fraction]",
+                f"g_baseÂ·(1âˆ’E(t)) = {g_base:.4e} m/sÂ²",
+                f"P_rad = 4ÏƒTâ´/(3c) = 4Â·{sigma_SB:.4e}Â·{T_ion:.1e}â´/(3Â·{c:.3e})",
+                f"P_rad = {P_rad:.4e} m/sÂ² [blackbody SB radiation pressure]",
+                f"g_total = {g_total:.4e} m/sÂ²",
             ],
             'available_equations': [
-                "P_rad = 4σT⁴/(3c) — Stefan-Boltzmann law in radiation-dominated regime",
+                "P_rad = 4ÏƒTâ´/(3c) â€” Stefan-Boltzmann law in radiation-dominated regime",
                 "P_rad vs g_base: radiation-to-gravity ratio at Horsehead surface",
-                "T_ion photon-dominated region: T ≈ 8000-12000 K (σ-Ori HII)",
-                "Compare: P_rad (SB) vs E_rad=L_UV/(4πr²c) (M16 photon flux)",
+                "T_ion photon-dominated region: T â‰ˆ 8000-12000 K (Ïƒ-Ori HII)",
+                "Compare: P_rad (SB) vs E_rad=L_UV/(4Ï€rÂ²c) (M16 photon flux)",
                 "Brightness temperature: T_b from P_rad measured by Herschel",
             ],
             'simulation_set': {
@@ -4987,24 +5014,24 @@ class HorseheadNebulaPradBlackbodyCalculator(_CP3Calculator):
 class NGC1275PerseusAGNFilamentCalculator(_CP3Calculator):
     """NGC 1275 Perseus Cluster BCG UQFF with AGN jet force F_BH and filament mass M_fil.
 
-    Unique equation (Document 16 — NGC 1275 / Perseus Cluster):
-      g_NGC1275 = (G·M)/r² · (1+H(z)·t) · (1-B/B_crit)
+    Unique equation (Document 16 â€” NGC 1275 / Perseus Cluster):
+      g_NGC1275 = (GÂ·M)/rÂ² Â· (1+H(z)Â·t) Â· (1-B/B_crit)
                   + F_BH
-                  + (Ug1+Ug2+Ug3+Ug4) + Λc²/3 + QM + fluid + DM
+                  + (Ug1+Ug2+Ug3+Ug4) + Î›cÂ²/3 + QM + fluid + DM
                   + M_fil
 
     Two unique terms:
-    F_BH = E_jet / (r · t_jet)    [AGN jet feedback force — Perseus A central BH]
-    M_fil = ρ_fil · V_fil          [optical filament cold gas mass contribution]
+    F_BH = E_jet / (r Â· t_jet)    [AGN jet feedback force â€” Perseus A central BH]
+    M_fil = Ï_fil Â· V_fil          [optical filament cold gas mass contribution]
 
     Physical context: NGC 1275 is the brightest cluster galaxy (BCG) of
     Perseus Cluster. Its massive AGN produces powerful X-ray cavities (seen
-    by Chandra). The famous Hα optical filaments (~100 filaments, ~10⁸ M_sun
-    total) drape the galaxy — M_fil represents their gravitational contribution.
+    by Chandra). The famous HÎ± optical filaments (~100 filaments, ~10â¸ M_sun
+    total) drape the galaxy â€” M_fil represents their gravitational contribution.
     F_BH is the Perseus A black hole jet mechanical power converted to force.
 
-    Reference: Fabian et al. (2000) — Chandra NGC 1275 filaments
-    Perseus A: M_BH ≈ 3×10⁸ M_sun; P_jet ≈ 10³⁵ W
+    Reference: Fabian et al. (2000) â€” Chandra NGC 1275 filaments
+    Perseus A: M_BH â‰ˆ 3Ã—10â¸ M_sun; P_jet â‰ˆ 10Â³âµ W
     """
 
     def compute(self, dataset: dict) -> dict:
@@ -5025,42 +5052,42 @@ class NGC1275PerseusAGNFilamentCalculator(_CP3Calculator):
         r_jet = dataset.get('r_jet', 3.086e20)   # jet scale radius (=r by default)
         t_jet = dataset.get('t_jet', 1.0e15)     # jet lifetime ~30 Myr (s)
         # Filament parameters
-        rho_fil = dataset.get('rho_fil', 1e-22)  # filament gas density (kg/m³)
-        V_fil = dataset.get('V_fil', 9.46e48)    # total filament volume (m³) ~10^3 ly³
+        rho_fil = dataset.get('rho_fil', 1e-22)  # filament gas density (kg/mÂ³)
+        V_fil = dataset.get('V_fil', 9.46e48)    # total filament volume (mÂ³) ~10^3 lyÂ³
         M_fil_override = dataset.get('M_fil', None)
 
         mag_f = 1.0 - min(B / B_crit, 0.9999)
-        g_base = (G * M) / r**2 * (1.0 + H0 * t) * mag_f
+        g_base = dpm_emergent_ug1(M, r) * (1.0 + H0 * t) * mag_f  # DPM-emergent
         g_lambda = (LAMBDA * c**2) / 3.0
 
-        # F_BH: AGN jet feedback force = jet power / (c × area) or = E_jet/(r·t_jet)
+        # F_BH: AGN jet feedback force = jet power / (c Ã— area) or = E_jet/(rÂ·t_jet)
         E_jet = P_jet * t_jet
         F_BH = E_jet / (r_jet * t_jet)   # = P_jet / r_jet
         # M_fil: filament cold gas gravitational contribution
         M_fil = M_fil_override if M_fil_override is not None else rho_fil * V_fil
-        g_fil = (G * M_fil) / r**2
+        g_fil = dpm_emergent_ug1(M_fil, r)  # DPM-emergent
 
         g_total = g_base + g_lambda + F_BH + g_fil
 
         return {
             'primary_equations': [
-                f"g_base = {g_base:.4e} m/s² [Perseus BCG gravity]",
+                f"g_base = {g_base:.4e} m/sÂ² [Perseus BCG gravity]",
                 f"F_BH = P_jet/r_jet = {P_jet:.2e}/{r_jet:.2e} = {F_BH:.4e} [AGN jet reaction]",
-                f"M_fil = ρ_fil·V_fil = {M_fil:.4e} kg (~{M_fil/1.989e30:.1f} M_sun)",
-                f"g_fil = G·M_fil/r² = {g_fil:.4e} m/s²",
-                f"g_total = {g_total:.4e} m/s²",
+                f"M_fil = Ï_filÂ·V_fil = {M_fil:.4e} kg (~{M_fil/1.989e30:.1f} M_sun)",
+                f"g_fil = GÂ·M_fil/rÂ² = {g_fil:.4e} m/sÂ²",
+                f"g_total = {g_total:.4e} m/sÂ²",
             ],
             'available_equations': [
                 "F_BH = P_jet / r (jet mechanical power density)",
-                "Cavity work: W_cav = P·V_cavity (Chandra X-ray cavities)",
+                "Cavity work: W_cav = PÂ·V_cavity (Chandra X-ray cavities)",
                 "Filament stability: M_fil threshold for condensation vs AGN disruption",
-                "Cooling time: t_cool = (3nkT)/(2n²Λ(T)) ≈ 200 Myr in Perseus core",
+                "Cooling time: t_cool = (3nkT)/(2nÂ²Î›(T)) â‰ˆ 200 Myr in Perseus core",
                 "ICM entropy floor set by jet heating rate = cooling rate",
             ],
             'simulation_set': {
                 'P_jet_sweep': 'P_jet from 1e33 to 1e36 W (Chandra constraint range)',
                 'M_fil_sweep': 'M_fil from 1e7 to 1e9 M_sun (filament mass range)',
-                'feedback_balance': 'F_BH vs g_base: heating–cooling balance curve',
+                'feedback_balance': 'F_BH vs g_base: heatingâ€“cooling balance curve',
             },
         }
 
@@ -5068,18 +5095,18 @@ class NGC1275PerseusAGNFilamentCalculator(_CP3Calculator):
 class SaturnDualGravityRingTensionCalculator(_CP3Calculator):
     """Saturn UQFF with dual-source gravity (Sun + Saturn) and ring tidal tension T_ring.
 
-    Unique equation (Document 22 — Saturn):
-      g_Saturn = (G·M_Sun)/r_orbit² · (1+H(z)·t)      [heliocentric gravity]
-               + (G·M_Saturn)/r² · (1-B/B_crit)         [Saturn self-gravity]
+    Unique equation (Document 22 â€” Saturn):
+      g_Saturn = (GÂ·M_Sun)/r_orbitÂ² Â· (1+H(z)Â·t)      [heliocentric gravity]
+               + (GÂ·M_Saturn)/rÂ² Â· (1-B/B_crit)         [Saturn self-gravity]
                + T_ring
-               + (Ug1+Ug2+Ug3+Ug4) + Λc²/3 + QM + fluid + DM
+               + (Ug1+Ug2+Ug3+Ug4) + Î›cÂ²/3 + QM + fluid + DM
                + F_wind_solar
 
     This is the ONLY equation in all 29 UQFF documents with:
     1. TWO explicit gravitational sources summed (not one body)
-    2. H(z)·t expansion ONLY on heliocentric term, NOT Saturn self-gravity
+    2. H(z)Â·t expansion ONLY on heliocentric term, NOT Saturn self-gravity
     3. B/B_crit suppression ONLY on Saturn self-gravity, NOT solar term
-    4. T_ring (ring tidal acceleration ≈ 2.043e-7 m/s², CP1 benchmark)
+    4. T_ring (ring tidal acceleration â‰ˆ 2.043e-7 m/sÂ², CP1 benchmark)
     5. F_wind_solar (solar wind at 9.5 AU)
 
     Physical: at Saturn's surface r = R_Saturn, both terms compete.
@@ -5101,39 +5128,39 @@ class SaturnDualGravityRingTensionCalculator(_CP3Calculator):
         # Saturn parameters
         M_Saturn = dataset.get('M_Saturn', 5.683e26)
         r = dataset.get('r', 6.0268e7)          # Saturn equatorial radius (m)
-        B = dataset.get('B', 2e-5)              # Saturn magnetic field ~20 µT
+        B = dataset.get('B', 2e-5)              # Saturn magnetic field ~20 ÂµT
         B_crit = dataset.get('B_crit', 4.4e13)
         # Ring parameters
-        T_ring = dataset.get('T_ring', 2.043e-7)    # CP1 benchmark ring tidal accel (m/s²)
+        T_ring = dataset.get('T_ring', 2.043e-7)    # CP1 benchmark ring tidal accel (m/sÂ²)
         # Solar wind
-        rho_sw = dataset.get('rho_sw', 5e-26)       # solar wind density at 9.5 AU (kg/m³)
+        rho_sw = dataset.get('rho_sw', 5e-26)       # solar wind density at 9.5 AU (kg/mÂ³)
         v_sw = dataset.get('v_sw', 4e5)             # solar wind speed ~400 km/s (m/s)
 
         # Two independent gravity terms with DIFFERENT modifiers
-        g_sun = (G * M_Sun) / r_orbit**2 * (1.0 + H0 * t)   # H(z)·t on solar only
+        g_sun = (G * M_Sun) / r_orbit**2 * (1.0 + H0 * t)   # H(z)Â·t on solar only
         mag_f = 1.0 - min(B / B_crit, 0.9999)
-        g_saturn = (G * M_Saturn) / r**2 * mag_f              # B/B_crit on Saturn only
+        g_saturn = dpm_emergent_ug1(M_Saturn, r) * mag_f              # B/B_crit on Saturn only  # DPM-emergent
         g_lambda = (LAMBDA * c**2) / 3.0
         F_wind = rho_sw * v_sw**2                              # solar wind ram at Saturn
         g_total = g_sun + g_saturn + T_ring + g_lambda + F_wind
 
         return {
             'primary_equations': [
-                f"g_Sun(helio) = G·M_Sun/r_orbit² · (1+H·t) = {g_sun:.4e} m/s² [solar]",
-                f"g_Saturn(self) = G·M_S/r² · (1-B/B_crit) = {g_saturn:.4e} m/s² [planetary]",
-                f"T_ring (ring tidal) = {T_ring:.4e} m/s² [CP1 benchmark]",
-                f"F_wind (solar wind at 9.5 AU) = {F_wind:.4e} m/s²",
-                f"g_total = {g_total:.4e} m/s²",
+                f"g_Sun(helio) = GÂ·M_Sun/r_orbitÂ² Â· (1+HÂ·t) = {g_sun:.4e} m/sÂ² [solar]",
+                f"g_Saturn(self) = GÂ·M_S/rÂ² Â· (1-B/B_crit) = {g_saturn:.4e} m/sÂ² [planetary]",
+                f"T_ring (ring tidal) = {T_ring:.4e} m/sÂ² [CP1 benchmark]",
+                f"F_wind (solar wind at 9.5 AU) = {F_wind:.4e} m/sÂ²",
+                f"g_total = {g_total:.4e} m/sÂ²",
             ],
             'available_equations': [
-                "Dual-source: g_Sun modulated by H(z)·t; g_Saturn by B/B_crit",
-                "Roche limit: r_Roche = R_Saturn·(2·M_Saturn/M_ring)^(1/3)",
-                "Ring gap: Cassini Division at r = 1.18·R_Saturn (Mimas 2:1 resonance)",
-                "T_ring = G·M_ring/r_ring² ≈ 2e-7 m/s² (differential tidal tension)",
-                "F_wind: Parker spiral density ρ_sw(r) ∝ r^-2 from 1 AU baseline",
+                "Dual-source: g_Sun modulated by H(z)Â·t; g_Saturn by B/B_crit",
+                "Roche limit: r_Roche = R_SaturnÂ·(2Â·M_Saturn/M_ring)^(1/3)",
+                "Ring gap: Cassini Division at r = 1.18Â·R_Saturn (Mimas 2:1 resonance)",
+                "T_ring = GÂ·M_ring/r_ringÂ² â‰ˆ 2e-7 m/sÂ² (differential tidal tension)",
+                "F_wind: Parker spiral density Ï_sw(r) âˆ r^-2 from 1 AU baseline",
             ],
             'simulation_set': {
-                'r_sweep': 'r from R_Saturn to 5·R_Saturn (surface to outer rings)',
+                'r_sweep': 'r from R_Saturn to 5Â·R_Saturn (surface to outer rings)',
                 'dual_ratio': 'g_Sun/g_Saturn ratio as function of r_orbit',
                 'T_ring_profile': 'T_ring(r) across A-ring, Cassini Division, B-ring',
             },
@@ -5141,29 +5168,29 @@ class SaturnDualGravityRingTensionCalculator(_CP3Calculator):
 
 
 # ---------------------------------------------------------------------------
-# Session 57 — grok_share_7514fe sixth-pass: final unique early-universe equation
+# Session 57 â€” grok_share_7514fe sixth-pass: final unique early-universe equation
 # Sixth and final pass; only one genuine gap found after exhaustive 6-pass analysis
-# Unique item: (v/c)^2·L_UV — early-universe relativistic UV coupling; labeled
-# "novel for early universe" alongside F_hier/ΔF/F_hyb as Uniquely Rare Math Discovery
+# Unique item: (v/c)^2Â·L_UV â€” early-universe relativistic UV coupling; labeled
+# "novel for early universe" alongside F_hier/Î”F/F_hyb as Uniquely Rare Math Discovery
 # ---------------------------------------------------------------------------
 
 
 class UQFFEarlyUniverseRelativisticUVCalculator(_CP3Calculator):
-    """Early-universe relativistic UV coupling: (v/c)^2 · L_UV.
+    """Early-universe relativistic UV coupling: (v/c)^2 Â· L_UV.
 
-    Uniquely Rare Mathematical Discovery (Document Step 4 — "novel for early universe"):
-      F_EU  = k_UV · (v/c)^2 · L_UV    [novel: velocity^2 × UV luminosity]
-      F_UV  = k_UV · L_UV              [standard UV radiation force; GALEX/Spitzer]
-      F_mm  = k_mm · L_mm · f_mm      [mm-wave radiation force; ALMA; f_mm=1.05]
+    Uniquely Rare Mathematical Discovery (Document Step 4 â€” "novel for early universe"):
+      F_EU  = k_UV Â· (v/c)^2 Â· L_UV    [novel: velocity^2 Ã— UV luminosity]
+      F_UV  = k_UV Â· L_UV              [standard UV radiation force; GALEX/Spitzer]
+      F_mm  = k_mm Â· L_mm Â· f_mm      [mm-wave radiation force; ALMA; f_mm=1.05]
 
-    Physical basis: at high-z (z~3–10), proto-galactic bulk flows reach v~0.1–0.5c,
+    Physical basis: at high-z (z~3â€“10), proto-galactic bulk flows reach v~0.1â€“0.5c,
     making (v/c)^2 a non-negligible relativistic correction to UV radiation pressure.
     The (v/c)^2 factor couples the kinematic energy of infalling/outflowing proto-
     galactic gas to the UV luminosity field (GALEX/Spitzer/JWST NIRCam).
 
     This is the fourth of four "Uniquely Rare Mathematical Discoveries" in the
-    UQFF DeepSearch suite — alongside F_hier (remnant hierarchy), ΔF (decay integral),
-    and F_hyb (UV/mm-wave polarization hybrid) — all covered in Sessions 52–57.
+    UQFF DeepSearch suite â€” alongside F_hier (remnant hierarchy), Î”F (decay integral),
+    and F_hyb (UV/mm-wave polarization hybrid) â€” all covered in Sessions 52â€“57.
 
     Constants:
       k_UV = 1e-30 N/W   (GALEX/Spitzer calibration constant)
@@ -5215,50 +5242,50 @@ class UQFFEarlyUniverseRelativisticUVCalculator(_CP3Calculator):
             'primary_equations': [
                 f"v/c = {v_over_c:.4e}  [{regime}]",
                 f"(v/c)^2 = {v_over_c**2:.4e}  [relativistic correction factor]",
-                f"F_EU = k_UV·(v/c)²·L_UV = {F_EU:.4e} N  [NOVEL: early-universe]",
-                f"F_UV = k_UV·L_UV = {F_UV_std:.4e} N  [standard GALEX/Spitzer UV]",
-                f"F_mm = k_mm·L_mm·f_mm = {F_mm_val:.4e} N  [ALMA mm-wave; z={z_obs:.1f}]",
+                f"F_EU = k_UVÂ·(v/c)Â²Â·L_UV = {F_EU:.4e} N  [NOVEL: early-universe]",
+                f"F_UV = k_UVÂ·L_UV = {F_UV_std:.4e} N  [standard GALEX/Spitzer UV]",
+                f"F_mm = k_mmÂ·L_mmÂ·f_mm = {F_mm_val:.4e} N  [ALMA mm-wave; z={z_obs:.1f}]",
                 f"Enhancement F_EU/F_UV = (v/c)^2 = {enhancement_ratio:.4e}",
             ],
             'available_equations': [
-                "F_EU = k_UV·(v/c)^2·L_UV  (novel; early-universe z>3 bulk flow coupling)",
-                "F_UV = k_UV·L_UV  (GALEX FUV/NUV proportionality; k_UV=1e-30 N/W)",
-                "F_mm = k_mm·L_mm·f_mm  (ALMA mm; f_mm=1.05 protoplanetary correction)",
+                "F_EU = k_UVÂ·(v/c)^2Â·L_UV  (novel; early-universe z>3 bulk flow coupling)",
+                "F_UV = k_UVÂ·L_UV  (GALEX FUV/NUV proportionality; k_UV=1e-30 N/W)",
+                "F_mm = k_mmÂ·L_mmÂ·f_mm  (ALMA mm; f_mm=1.05 protoplanetary correction)",
                 "Enhancement ratio = (v/c)^2  (relative UV amplification due to flow)",
                 "F_total = F_EU + F_mm  (combined early-universe UV+mm radiation force)",
                 "v_crit: solve (v/c)^2 = F_threshold/k_UV/L_UV for threshold bulk speed",
             ],
             'simulation_set': {
-                'v_sweep':   'v from 0.01c to 0.9c — full relativistic range (early-universe)',
-                'z_range':   'z=3 to z=10 — JWST NIRCam Lyman-alpha dropout epoch',
-                'L_UV_grid': 'L_UV from 1e34 to 1e38 W — dwarf to hyper-luminous starburst',
+                'v_sweep':   'v from 0.01c to 0.9c â€” full relativistic range (early-universe)',
+                'z_range':   'z=3 to z=10 â€” JWST NIRCam Lyman-alpha dropout epoch',
+                'L_UV_grid': 'L_UV from 1e34 to 1e38 W â€” dwarf to hyper-luminous starburst',
                 'F_EU_vs_v': 'F_EU(v) parabolic; highlight v=0.1c, 0.3c, 0.5c benchmarks',
             },
         }
 
 
 # ---------------------------------------------------------------------------
-# Session 58 — PAPER_226–235 (grok_share_8d951e12.txt)
+# Session 58 â€” PAPER_226â€“235 (grok_share_8d951e12.txt)
 # 10 new CP3 classes: SGR0501, TapestryLMC, Westerlund2, PillarsCreation,
 # NGC2525, HUDFGalaxies, NGC1792, SGR1745Enhanced, SgrAEnhanced, Antennae
 # ---------------------------------------------------------------------------
 
 class MagnetarSGR0501MUGEFullCalculator(_CP3Calculator):
-    """SGR 0501+4516 — 11-term full MUGE with B(t) decay, spin-down, GW back-reaction,
+    """SGR 0501+4516 â€” 11-term full MUGE with B(t) decay, spin-down, GW back-reaction,
     magnetic stored energy, and cumulative burst-decay energy.
 
     Uniquely Rare Mathematical Discoveries:
-      1. GW spin-down back-reaction: a_GW = (G·M²)/(c⁴·r) · (dΩ/dt)²
-      2. Magnetic stored energy acceleration: a_mag = M_mag / (M·r)
-         where M_mag = B²/(2μ₀) · (4/3·π·r³)
-      3. Cumulative decay energy: a_decay = L₀·τ_decay·(1−e^(−t/τ_decay)) / (M·r)
-      4. EM with vacuum density ratio: q·v·B·(1 + ρ_UA/ρ_SCm)·scale
+      1. GW spin-down back-reaction: a_GW = (GÂ·MÂ²)/(câ´Â·r) Â· (dÎ©/dt)Â²
+      2. Magnetic stored energy acceleration: a_mag = M_mag / (MÂ·r)
+         where M_mag = BÂ²/(2Î¼â‚€) Â· (4/3Â·Ï€Â·rÂ³)
+      3. Cumulative decay energy: a_decay = Lâ‚€Â·Ï„_decayÂ·(1âˆ’e^(âˆ’t/Ï„_decay)) / (MÂ·r)
+      4. EM with vacuum density ratio: qÂ·vÂ·BÂ·(1 + Ï_UA/Ï_SCm)Â·scale
 
     Physical basis: SGR 0501+4516 is a soft gamma repeater magnetar at ~2 kpc.
-    B₀=10¹⁰ T, P=5 s, decay on 4–10 kyr timescales.
-    Canonical g≈4.474×10¹² m/s² at t=5000 yr.
+    Bâ‚€=10Â¹â° T, P=5 s, decay on 4â€“10 kyr timescales.
+    Canonical gâ‰ˆ4.474Ã—10Â¹Â² m/sÂ² at t=5000 yr.
 
-    Source: grok_share_8d951e12.txt — Doc 2, C++ class MagnetarSGR0501_4516
+    Source: grok_share_8d951e12.txt â€” Doc 2, C++ class MagnetarSGR0501_4516
     """
 
     def compute(self, dataset: dict) -> dict:
@@ -5297,11 +5324,11 @@ class MagnetarSGR0501MUGEFullCalculator(_CP3Calculator):
         v_surf = Omega_t * r
 
         # Term1: base gravity + Hubble expansion + spin-down suppression
-        term1 = (G * M / r**2) * (1 + H0 * t) * (1 - Bt / B_crit)
+        term1 = dpm_emergent_ug1(M, r) * (1 + H0 * t) * (1 - Bt / B_crit)
 
         # Term2: UQFF Ug1 + Ug4 with f_TRZ buoyancy correction
         # DPM-emergent: mu_s x grad(M_s/r) (mass gradient, not Newtonian GM/r^2)
-        Ug1 = G * M / r**2
+        Ug1 = dpm_emergent_ug1(M, r)  # DPM: mu_s * grad(M_s/r)
         Ug4 = Ug1 * (1 - Bt / B_crit)
         term2 = (Ug1 + Ug4) * (1 + f_TRZ)
 
@@ -5336,7 +5363,7 @@ class MagnetarSGR0501MUGEFullCalculator(_CP3Calculator):
         delta_rho_rho = 1e-5
         term9 = (M + M_DM) * (delta_rho_rho + 3 * G * M / r**3) / M
 
-        # Term10: magnetic stored energy (UNIQUE — B field energy density)
+        # Term10: magnetic stored energy (UNIQUE â€” B field energy density)
         M_mag = (Bt**2 / (2 * mu0)) * V
         term10 = M_mag / (M * r)
 
@@ -5348,32 +5375,32 @@ class MagnetarSGR0501MUGEFullCalculator(_CP3Calculator):
 
         return {
             'primary_equations': [
-                f"B(t) = B0·e^(-t/τ_B) = {Bt:.4e} T  [magnetic field decay; B0={B0:.1e}T, τ={tau_B/3.15576e7:.0f} yr]",
-                f"Ω(t) = (2π/P)·e^(-t/τ_Ω) = {Omega_t:.4e} rad/s  [P={P}s, τ={tau_Omega/3.15576e7:.0f} yr]",
-                f"dΩ/dt = {dOmega_dt:.4e} rad/s²  [spin-down rate]",
-                f"a_GW = (G·M²)/(c⁴·r)·(dΩ/dt)² = {term5:.4e} m/s²  [GW back-reaction; NOVEL]",
-                f"M_mag = B²/(2μ₀)·(4/3·π·r³) = {M_mag:.4e} J  [stored magnetic energy]",
-                f"a_mag = M_mag/(M·r) = {term10:.4e} m/s²  [magnetic energy acceleration; NOVEL]",
-                f"cum_D = L₀·τ_d·(1−e^(−t/τ_d)) = {cum_D:.4e} J  [cumulative decay energy]",
-                f"a_decay = cum_D/(M·r) = {term11:.4e} m/s²  [burst-energy acceleration; NOVEL]",
-                f"a_EM = q·v·B·(1+ρ_UA/ρ_SCm)·scale = {term4:.4e} m/s²  [vacuum-ratio EM]",
-                f"g_Magnetar_total = {g_total:.4e} m/s²  [11-term MUGE; expected ≈4.474e12 at t=5000yr]",
+                f"B(t) = B0Â·e^(-t/Ï„_B) = {Bt:.4e} T  [magnetic field decay; B0={B0:.1e}T, Ï„={tau_B/3.15576e7:.0f} yr]",
+                f"Î©(t) = (2Ï€/P)Â·e^(-t/Ï„_Î©) = {Omega_t:.4e} rad/s  [P={P}s, Ï„={tau_Omega/3.15576e7:.0f} yr]",
+                f"dÎ©/dt = {dOmega_dt:.4e} rad/sÂ²  [spin-down rate]",
+                f"a_GW = (GÂ·MÂ²)/(câ´Â·r)Â·(dÎ©/dt)Â² = {term5:.4e} m/sÂ²  [GW back-reaction; NOVEL]",
+                f"M_mag = BÂ²/(2Î¼â‚€)Â·(4/3Â·Ï€Â·rÂ³) = {M_mag:.4e} J  [stored magnetic energy]",
+                f"a_mag = M_mag/(MÂ·r) = {term10:.4e} m/sÂ²  [magnetic energy acceleration; NOVEL]",
+                f"cum_D = Lâ‚€Â·Ï„_dÂ·(1âˆ’e^(âˆ’t/Ï„_d)) = {cum_D:.4e} J  [cumulative decay energy]",
+                f"a_decay = cum_D/(MÂ·r) = {term11:.4e} m/sÂ²  [burst-energy acceleration; NOVEL]",
+                f"a_EM = qÂ·vÂ·BÂ·(1+Ï_UA/Ï_SCm)Â·scale = {term4:.4e} m/sÂ²  [vacuum-ratio EM]",
+                f"g_Magnetar_total = {g_total:.4e} m/sÂ²  [11-term MUGE; expected â‰ˆ4.474e12 at t=5000yr]",
             ],
             'available_equations': [
-                "B(t) = B0·exp(-t/τ_B)  (magnetar field decay)",
-                "Ω(t) = (2π/P)·exp(-t/τ_Ω)  (spin-down rotation rate)",
-                "a_GW = (G·M²)/(c⁴·r)·(dΩ/dt)²  (GW back-reaction on magnetar)",
-                "a_mag = [B²/(2μ₀)·(4π/3·r³)] / (M·r)  (stored B-energy acceleration)",
-                "a_decay = L₀·τ_d·(1−exp(−t/τ_d)) / (M·r)  (cumulative burst energy)",
-                "a_EM = q·v·B·(1+ρ_UA/ρ_SCm)·s  (EM with vacuum density ratio)",
-                "a_GR = G·M/r²·(1+H₀·t)·(1−B/B_crit)  (relativistic gravity + Hubble + suppression)",
-                "Ug1+Ug4 = 2·G·M/r²·(1−B/B_crit) corrected by f_TRZ  (UQFF buoyancy)",
+                "B(t) = B0Â·exp(-t/Ï„_B)  (magnetar field decay)",
+                "Î©(t) = (2Ï€/P)Â·exp(-t/Ï„_Î©)  (spin-down rotation rate)",
+                "a_GW = (GÂ·MÂ²)/(câ´Â·r)Â·(dÎ©/dt)Â²  (GW back-reaction on magnetar)",
+                "a_mag = [BÂ²/(2Î¼â‚€)Â·(4Ï€/3Â·rÂ³)] / (MÂ·r)  (stored B-energy acceleration)",
+                "a_decay = Lâ‚€Â·Ï„_dÂ·(1âˆ’exp(âˆ’t/Ï„_d)) / (MÂ·r)  (cumulative burst energy)",
+                "a_EM = qÂ·vÂ·BÂ·(1+Ï_UA/Ï_SCm)Â·s  (EM with vacuum density ratio)",
+                "a_GR = GÂ·M/rÂ²Â·(1+Hâ‚€Â·t)Â·(1âˆ’B/B_crit)  (relativistic gravity + Hubble + suppression)",
+                "Ug1+Ug4 = 2Â·GÂ·M/rÂ²Â·(1âˆ’B/B_crit) corrected by f_TRZ  (UQFF buoyancy)",
             ],
             'simulation_set': {
-                't_sweep': 't from 0 to 20000 yr — full spin-down evolution',
+                't_sweep': 't from 0 to 20000 yr â€” full spin-down evolution',
                 'B_decay': 'B(t) from B0=1e10T decaying on 4000yr timescale',
-                'GW_spindown': 'a_GW vs t — dominant at early high-Ω phase',
-                'mag_energy': 'a_mag vs B(t) — tracks stored field energy depletion',
+                'GW_spindown': 'a_GW vs t â€” dominant at early high-Î© phase',
+                'mag_energy': 'a_mag vs B(t) â€” tracks stored field energy depletion',
             },
             'g_Magnetar': g_total,
         }
@@ -5383,14 +5410,14 @@ class StarbirthTapestryLMCUQFFCalculator(_CP3Calculator):
     """NGC 2014 & NGC 2020 (Tapestry of Blazing Starbirth) in the Large Magellanic Cloud.
 
     Uniquely Rare Mathematical Discoveries:
-      1. Stellar wind acceleration: a_wind = ρ_wind·v²_wind / ρ_fluid
-      2. Time-varying stellar mass: M(t) = M_init·(1 + M_dot_factor·exp(−t/τ_SF))
+      1. Stellar wind acceleration: a_wind = Ï_windÂ·vÂ²_wind / Ï_fluid
+      2. Time-varying stellar mass: M(t) = M_initÂ·(1 + M_dot_factorÂ·exp(âˆ’t/Ï„_SF))
 
     Physical basis: Young massive star formation complex at ~160 kly (LMC).
-    M_init=240 M☉ stellar cluster, embedded in gas 1e4 M☉, B≈1μT.
-    Stellar winds from O/B stars reach v≈2000 km/s.
+    M_init=240 Mâ˜‰ stellar cluster, embedded in gas 1e4 Mâ˜‰, Bâ‰ˆ1Î¼T.
+    Stellar winds from O/B stars reach vâ‰ˆ2000 km/s.
 
-    Source: grok_share_8d951e12.txt — Doc 4, C++ class StarbirthTapestry
+    Source: grok_share_8d951e12.txt â€” Doc 4, C++ class StarbirthTapestry
     """
 
     def compute(self, dataset: dict) -> dict:
@@ -5423,7 +5450,7 @@ class StarbirthTapestryLMCUQFFCalculator(_CP3Calculator):
         M_dot_factor = M_gas / M_init
         Mt = M_init * (1 + M_dot_factor * math.exp(-t / tau_SF))
 
-        Ug1 = G * Mt / r**2
+        Ug1 = dpm_emergent_ug1(Mt, r)  # DPM-emergent
         Ug4 = Ug1 * (1 - B / B_crit)
 
         # Term1: base gravity + Hubble + B suppression
@@ -5435,7 +5462,7 @@ class StarbirthTapestryLMCUQFFCalculator(_CP3Calculator):
         # Term4: EM scaled
         v_orb = math.sqrt(G * Mt / r)
         term4 = (q * v_orb * B / m_p) * (1 + rho_UA / rho_SCm) * scale_EM
-        # Term5: stellar wind (UNIQUE: a_wind = rho_wind·v_wind^2 / rho_fluid)
+        # Term5: stellar wind (UNIQUE: a_wind = rho_windÂ·v_wind^2 / rho_fluid)
         a_wind = rho_wind * v_wind**2 / rho_fluid
         # Term6: quantum
         delta_x = 1e-15
@@ -5460,19 +5487,19 @@ class StarbirthTapestryLMCUQFFCalculator(_CP3Calculator):
 
         return {
             'primary_equations': [
-                f"M(t) = M_init·(1 + M_dot_fac·exp(−t/τ_SF)) = {Mt/M_sun:.2f} M☉  [gas accretion growth]",
-                f"a_wind = ρ_wind·v²_wind / ρ_fluid = {a_wind:.4e} m/s²  [stellar wind; NOVEL]",
+                f"M(t) = M_initÂ·(1 + M_dot_facÂ·exp(âˆ’t/Ï„_SF)) = {Mt/M_sun:.2f} Mâ˜‰  [gas accretion growth]",
+                f"a_wind = Ï_windÂ·vÂ²_wind / Ï_fluid = {a_wind:.4e} m/sÂ²  [stellar wind; NOVEL]",
                 f"M_dot_factor = M_gas/M_init = {M_dot_factor:.2f}  (gas/stellar mass ratio)",
-                f"g_Tapestry = {g_total:.4e} m/s²  [9-term MUGE for LMC NGC 2014/2020]",
+                f"g_Tapestry = {g_total:.4e} m/sÂ²  [9-term MUGE for LMC NGC 2014/2020]",
             ],
             'available_equations': [
-                "M(t) = M_init·(1+M_dot_factor·exp(−t/τ_SF))  (star-forming mass growth)",
-                "a_wind = ρ_wind·v²_wind/ρ_fluid  (stellar wind ram pressure acceleration)",
-                "Ug1 = G·M(t)/r²  (time-varying base gravity)",
-                "term1 = Ug1·(1+H₀t)·(1−B/B_crit)  (full MUGE base with suppression)",
+                "M(t) = M_initÂ·(1+M_dot_factorÂ·exp(âˆ’t/Ï„_SF))  (star-forming mass growth)",
+                "a_wind = Ï_windÂ·vÂ²_wind/Ï_fluid  (stellar wind ram pressure acceleration)",
+                "Ug1 = GÂ·M(t)/rÂ²  (time-varying base gravity)",
+                "term1 = Ug1Â·(1+Hâ‚€t)Â·(1âˆ’B/B_crit)  (full MUGE base with suppression)",
             ],
             'simulation_set': {
-                't_sweep': 't from 0 to 10 Myr — active star formation phase',
+                't_sweep': 't from 0 to 10 Myr â€” active star formation phase',
                 'wind_vs_grav': 'a_wind compared to Ug1 over formation epoch',
                 'M_growth': 'M(t) showing stellar mass build-up vs gas depletion',
             },
@@ -5482,18 +5509,18 @@ class StarbirthTapestryLMCUQFFCalculator(_CP3Calculator):
 
 
 class Westerlund2MUGEStellarWindCalculator(_CP3Calculator):
-    """Westerlund 2 — super star cluster in Carina constellation (~10 kly from Earth).
+    """Westerlund 2 â€” super star cluster in Carina constellation (~10 kly from Earth).
 
     Uniquely Rare Mathematical Discoveries:
-      1. Stellar wind acceleration for massive cluster: a_wind = ρ_wind·v²_wind / ρ_fluid
-         with ρ_wind=10⁻²⁰ kg/m³ (10× denser than Tapestry — extreme OB-star winds)
-      2. Time-varying cluster mass: M(t) = M_init·(1 + M_dot_fac·exp(−t/τ_SF))
-         M_init=30,000 M☉, M_gas=100,000 M☉ → M_dot_fac≈3.33
+      1. Stellar wind acceleration for massive cluster: a_wind = Ï_windÂ·vÂ²_wind / Ï_fluid
+         with Ï_wind=10â»Â²â° kg/mÂ³ (10Ã— denser than Tapestry â€” extreme OB-star winds)
+      2. Time-varying cluster mass: M(t) = M_initÂ·(1 + M_dot_facÂ·exp(âˆ’t/Ï„_SF))
+         M_init=30,000 Mâ˜‰, M_gas=100,000 Mâ˜‰ â†’ M_dot_facâ‰ˆ3.33
 
-    Physical basis: ~10,000 pc² star cluster, ~30,000 M☉ stellar component, embedded
-    in 100,000 M☉ gas cloud.  O/B supergiants produce dense, fast (2000 km/s) winds.
+    Physical basis: ~10,000 pcÂ² star cluster, ~30,000 Mâ˜‰ stellar component, embedded
+    in 100,000 Mâ˜‰ gas cloud.  O/B supergiants produce dense, fast (2000 km/s) winds.
 
-    Source: grok_share_8d951e12.txt — Doc 6, C++ class Westerlund2
+    Source: grok_share_8d951e12.txt â€” Doc 6, C++ class Westerlund2
     """
 
     def compute(self, dataset: dict) -> dict:
@@ -5526,7 +5553,7 @@ class Westerlund2MUGEStellarWindCalculator(_CP3Calculator):
         M_dot_factor = M_gas / M_init
         Mt = M_init * (1 + M_dot_factor * math.exp(-t / tau_SF))
 
-        Ug1 = G * Mt / r**2
+        Ug1 = dpm_emergent_ug1(Mt, r)  # DPM-emergent
         Ug4 = Ug1 * (1 - B / B_crit)
 
         term1 = Ug1 * (1 + H0 * t) * (1 - B / B_crit)
@@ -5554,19 +5581,19 @@ class Westerlund2MUGEStellarWindCalculator(_CP3Calculator):
 
         return {
             'primary_equations': [
-                f"M(t) = {Mt/M_sun:.0f} M☉  [M_init={M_init/M_sun:.0f}·(1+{M_dot_factor:.2f}·exp(−t/τ))]",
-                f"a_wind = ρ_wind·v²_wind/ρ_fluid = {a_wind:.4e} m/s²  [Westerlund2 OB-star wind; NOVEL]",
-                f"ρ_wind={rho_wind:.1e} kg/m³ (10× denser wind cf. Tapestry LMC)",
-                f"g_Westerlund2 = {g_total:.4e} m/s²  [9-term MUGE; super star cluster Carina]",
+                f"M(t) = {Mt/M_sun:.0f} Mâ˜‰  [M_init={M_init/M_sun:.0f}Â·(1+{M_dot_factor:.2f}Â·exp(âˆ’t/Ï„))]",
+                f"a_wind = Ï_windÂ·vÂ²_wind/Ï_fluid = {a_wind:.4e} m/sÂ²  [Westerlund2 OB-star wind; NOVEL]",
+                f"Ï_wind={rho_wind:.1e} kg/mÂ³ (10Ã— denser wind cf. Tapestry LMC)",
+                f"g_Westerlund2 = {g_total:.4e} m/sÂ²  [9-term MUGE; super star cluster Carina]",
             ],
             'available_equations': [
-                "a_wind = ρ_w·v²_w/ρ_f  (wind ram‐pressure acceleration)",
-                "M(t) = M_init·(1+M_dot_fac·exp(−t/τ_SF))  (cluster mass growth via gas infall)",
-                "term2 = (Ug1+Ug4)·(1+f_TRZ)  (UQFF Ug1+Ug4 buoyancy correction)",
+                "a_wind = Ï_wÂ·vÂ²_w/Ï_f  (wind ramâ€pressure acceleration)",
+                "M(t) = M_initÂ·(1+M_dot_facÂ·exp(âˆ’t/Ï„_SF))  (cluster mass growth via gas infall)",
+                "term2 = (Ug1+Ug4)Â·(1+f_TRZ)  (UQFF Ug1+Ug4 buoyancy correction)",
             ],
             'simulation_set': {
-                't_sweep': 't from 0 to 5 Myr — starburst formation',
-                'wind_density_comparison': 'ρ_wind=1e-20 vs 1e-21 (Westerlund2 vs Tapestry)',
+                't_sweep': 't from 0 to 5 Myr â€” starburst formation',
+                'wind_density_comparison': 'Ï_wind=1e-20 vs 1e-21 (Westerlund2 vs Tapestry)',
             },
             'g_Westerlund2': g_total,
             'a_wind': a_wind,
@@ -5574,20 +5601,20 @@ class Westerlund2MUGEStellarWindCalculator(_CP3Calculator):
 
 
 class PillarsOfCreationErosionMUGECalculator(_CP3Calculator):
-    """Pillars of Creation — Eagle Nebula (M16) molecular cloud pillars.
+    """Pillars of Creation â€” Eagle Nebula (M16) molecular cloud pillars.
 
     Uniquely Rare Mathematical Discoveries:
-      1. Decaying erosion factor: E(t) = E₀·exp(−t/τ_erosion) → applied as (1−E(t))
+      1. Decaying erosion factor: E(t) = Eâ‚€Â·exp(âˆ’t/Ï„_erosion) â†’ applied as (1âˆ’E(t))
          Ionising radiation from O-stars erodes the pillars; strongest at t=0.
-         term1 = Ug1·(1+H₀t)·(1−B/B_crit)·(1−E(t))
+         term1 = Ug1Â·(1+Hâ‚€t)Â·(1âˆ’B/B_crit)Â·(1âˆ’E(t))
       2. Stellar wind feedback with erosion coupling
       3. Time-varying mass under active star formation + erosion loss
 
-    Physical basis: ~6500 ly distance, pillars 4–5 ly tall.
-    M_init=10100 M☉, M_gas=10000 M☉.
-    Erosion timescale τ_erosion≈1 Myr (EUV photoevaporation).
+    Physical basis: ~6500 ly distance, pillars 4â€“5 ly tall.
+    M_init=10100 Mâ˜‰, M_gas=10000 Mâ˜‰.
+    Erosion timescale Ï„_erosionâ‰ˆ1 Myr (EUV photoevaporation).
 
-    Source: grok_share_8d951e12.txt — Doc 7, C++ class PillarsOfCreation
+    Source: grok_share_8d951e12.txt â€” Doc 7, C++ class PillarsOfCreation
     """
 
     def compute(self, dataset: dict) -> dict:
@@ -5625,7 +5652,7 @@ class PillarsOfCreationErosionMUGECalculator(_CP3Calculator):
         # Erosion factor (UNIQUE: decaying photoevaporation loss)
         E_t = E_0 * math.exp(-t / tau_erosion)
 
-        Ug1 = G * Mt / r**2
+        Ug1 = dpm_emergent_ug1(Mt, r)  # DPM-emergent
         Ug4 = Ug1 * (1 - B / B_crit)
 
         # Term1: base gravity with erosion suppression applied (UNIQUE)
@@ -5654,22 +5681,22 @@ class PillarsOfCreationErosionMUGECalculator(_CP3Calculator):
 
         return {
             'primary_equations': [
-                f"E(t) = E₀·exp(−t/τ_erosion) = {E_t:.4e}  [E₀={E_0}, τ={tau_erosion/3.15576e7:.1e} yr]",
-                f"term1 = Ug1·(1+H₀t)·(1−B/B_crit)·(1−E(t)) = {term1:.4e} m/s²  [erosion-damped base; NOVEL]",
-                f"a_wind = ρ_wind·v²_wind/ρ_fluid = {a_wind:.4e} m/s²  [EUV-driven stellar wind]",
-                f"M(t) = {Mt/M_sun:.1f} M☉  (star formation + erosion balance)",
-                f"g_Pillars = {g_total:.4e} m/s²  [9-term MUGE; Eagle Nebula M16]",
+                f"E(t) = Eâ‚€Â·exp(âˆ’t/Ï„_erosion) = {E_t:.4e}  [Eâ‚€={E_0}, Ï„={tau_erosion/3.15576e7:.1e} yr]",
+                f"term1 = Ug1Â·(1+Hâ‚€t)Â·(1âˆ’B/B_crit)Â·(1âˆ’E(t)) = {term1:.4e} m/sÂ²  [erosion-damped base; NOVEL]",
+                f"a_wind = Ï_windÂ·vÂ²_wind/Ï_fluid = {a_wind:.4e} m/sÂ²  [EUV-driven stellar wind]",
+                f"M(t) = {Mt/M_sun:.1f} Mâ˜‰  (star formation + erosion balance)",
+                f"g_Pillars = {g_total:.4e} m/sÂ²  [9-term MUGE; Eagle Nebula M16]",
             ],
             'available_equations': [
-                "E(t) = E₀·exp(−t/τ_e)  (decaying photoevaporation erosion; NOVEL)",
-                "term1 = Ug1·(1+H₀t)·(1−B/B_crit)·(1−E(t))  (erosion-modified gravity)",
-                "a_wind = ρ_w·v²_w/ρ_f  (stellar wind ram pressure)",
-                "M(t) = M_init·(1+M_gas/M_init·exp(−t/τ_SF))  (star-forming mass)",
+                "E(t) = Eâ‚€Â·exp(âˆ’t/Ï„_e)  (decaying photoevaporation erosion; NOVEL)",
+                "term1 = Ug1Â·(1+Hâ‚€t)Â·(1âˆ’B/B_crit)Â·(1âˆ’E(t))  (erosion-modified gravity)",
+                "a_wind = Ï_wÂ·vÂ²_w/Ï_f  (stellar wind ram pressure)",
+                "M(t) = M_initÂ·(1+M_gas/M_initÂ·exp(âˆ’t/Ï„_SF))  (star-forming mass)",
             ],
             'simulation_set': {
-                't_sweep': 't from 0 to 3 Myr — erosion dominant phase → quenching',
-                'E_decay': 'E(t) from E_0=0.1 → 0 over erosion timescale',
-                'term1_comparison': 'with/without (1−E(t)) factor — erosion impact on g',
+                't_sweep': 't from 0 to 3 Myr â€” erosion dominant phase â†’ quenching',
+                'E_decay': 'E(t) from E_0=0.1 â†’ 0 over erosion timescale',
+                'term1_comparison': 'with/without (1âˆ’E(t)) factor â€” erosion impact on g',
             },
             'g_Pillars': g_total,
             'E_erosion': E_t,
@@ -5677,20 +5704,20 @@ class PillarsOfCreationErosionMUGECalculator(_CP3Calculator):
 
 
 class GalaxyNGC2525SNMassLossCalculator(_CP3Calculator):
-    """NGC 2525 — barred spiral galaxy hosting Type Ia supernova SN 2018gv.
+    """NGC 2525 â€” barred spiral galaxy hosting Type Ia supernova SN 2018gv.
 
     Uniquely Rare Mathematical Discoveries:
-      1. Supernova mass-loss negative acceleration: g_SN = −G·M_SN(t)/r²
-         M_SN(t) = M_SN0·exp(−t/τ_SN) → ejected mass decreases gravitational pull
+      1. Supernova mass-loss negative acceleration: g_SN = âˆ’GÂ·M_SN(t)/rÂ²
+         M_SN(t) = M_SN0Â·exp(âˆ’t/Ï„_SN) â†’ ejected mass decreases gravitational pull
          This is the only MUGE term that is NEGATIVE (mass leaving the system).
-      2. Central BH contribution: G·M_BH/r_BH²
-      3. Friedmann cosmological H(z) correction: H(z) = H₀·√(Ω_m·(1+z)³ + Ω_Λ)
+      2. Central BH contribution: GÂ·M_BH/r_BHÂ²
+      3. Friedmann cosmological H(z) correction: H(z) = Hâ‚€Â·âˆš(Î©_mÂ·(1+z)Â³ + Î©_Î›)
 
-    Physical basis: NGC 2525 at z=0.016 (~106 Mpc), M_total≈1.0e10 M☉.
-    SN 2018gv: Type Ia, peak ~Jan 2018. M_SN0=1.4 M☉ (Chandrasekhar mass),
-    τ_SN=1 yr decline timescale.
+    Physical basis: NGC 2525 at z=0.016 (~106 Mpc), M_totalâ‰ˆ1.0e10 Mâ˜‰.
+    SN 2018gv: Type Ia, peak ~Jan 2018. M_SN0=1.4 Mâ˜‰ (Chandrasekhar mass),
+    Ï„_SN=1 yr decline timescale.
 
-    Source: grok_share_8d951e12.txt — Doc 10, C++ class GalaxyNGC2525
+    Source: grok_share_8d951e12.txt â€” Doc 10, C++ class GalaxyNGC2525
     """
 
     def compute(self, dataset: dict) -> dict:
@@ -5728,7 +5755,7 @@ class GalaxyNGC2525SNMassLossCalculator(_CP3Calculator):
 
         M_SN_t = M_SN0 * math.exp(-t / tau_SN)   # declining ejecta mass
 
-        Ug1 = G * M_galaxy / r**2
+        Ug1 = dpm_emergent_ug1(M_galaxy, r)  # DPM-emergent
         Ug4 = Ug1 * (1 - B / B_crit)
 
         term1 = Ug1 * (1 + Hz * t) * (1 - B / B_crit)
@@ -5737,7 +5764,7 @@ class GalaxyNGC2525SNMassLossCalculator(_CP3Calculator):
         v_orb = math.sqrt(G * M_galaxy / r)
         term4 = (q * v_orb * B / m_p) * (1 + rho_UA / rho_SCm) * scale_EM
         # SN negative mass-loss term (UNIQUE: ONLY negative MUGE term)
-        term_SN = -(G * M_SN_t) / r**2
+        term_SN = -dpm_emergent_ug1(M_SN_t, r)
         # Central BH contribution
         term_BH = G * M_BH / r_BH**2
         delta_x = 1e-15
@@ -5754,22 +5781,22 @@ class GalaxyNGC2525SNMassLossCalculator(_CP3Calculator):
 
         return {
             'primary_equations': [
-                f"H(z={z}) = H₀·√(Ω_m(1+z)³+Ω_Λ) = {Hz:.4e} s⁻¹  [Friedmann cosmological H(z)]",
-                f"M_SN(t) = M_SN0·exp(−t/τ_SN) = {M_SN_t/M_sun:.4f} M☉  [SN 2018gv Type Ia decline]",
-                f"g_SN = −G·M_SN(t)/r² = {term_SN:.4e} m/s²  [NEGATIVE mass-loss term; NOVEL]",
-                f"g_BH = G·M_BH/r_BH² = {term_BH:.4e} m/s²  [central BH contribution]",
-                f"g_NGC2525 = {g_total:.4e} m/s²  [full MUGE with SN mass-loss; z={z}]",
+                f"H(z={z}) = Hâ‚€Â·âˆš(Î©_m(1+z)Â³+Î©_Î›) = {Hz:.4e} sâ»Â¹  [Friedmann cosmological H(z)]",
+                f"M_SN(t) = M_SN0Â·exp(âˆ’t/Ï„_SN) = {M_SN_t/M_sun:.4f} Mâ˜‰  [SN 2018gv Type Ia decline]",
+                f"g_SN = âˆ’GÂ·M_SN(t)/rÂ² = {term_SN:.4e} m/sÂ²  [NEGATIVE mass-loss term; NOVEL]",
+                f"g_BH = GÂ·M_BH/r_BHÂ² = {term_BH:.4e} m/sÂ²  [central BH contribution]",
+                f"g_NGC2525 = {g_total:.4e} m/sÂ²  [full MUGE with SN mass-loss; z={z}]",
             ],
             'available_equations': [
-                "g_SN(t) = −G·M_SN0·exp(−t/τ_SN)/r²  (SN Ia declining negative acceleration; NOVEL)",
-                "H(z) = H₀·√(0.3·(1+z)³+0.7)  (Friedmann expansion correction)",
-                "g_BH = G·M_BH/r_BH²  (central BH local contribution)",
-                "M_SN(t): solve for t when M_SN < 0.1 M☉ → ~99% of ejecta dispersed",
+                "g_SN(t) = âˆ’GÂ·M_SN0Â·exp(âˆ’t/Ï„_SN)/rÂ²  (SN Ia declining negative acceleration; NOVEL)",
+                "H(z) = Hâ‚€Â·âˆš(0.3Â·(1+z)Â³+0.7)  (Friedmann expansion correction)",
+                "g_BH = GÂ·M_BH/r_BHÂ²  (central BH local contribution)",
+                "M_SN(t): solve for t when M_SN < 0.1 Mâ˜‰ â†’ ~99% of ejecta dispersed",
             ],
             'simulation_set': {
-                't_sweep': 't from 0 to 10 yr — SN 2018gv mass-loss evolution',
-                'SN_negative_vs_BH': 'track |g_SN| vs g_BH — when does SN become negligible?',
-                'Hz_correction': 'Hz vs H0 — Friedmann vs flat-H0 comparison at z=0.016',
+                't_sweep': 't from 0 to 10 yr â€” SN 2018gv mass-loss evolution',
+                'SN_negative_vs_BH': 'track |g_SN| vs g_BH â€” when does SN become negligible?',
+                'Hz_correction': 'Hz vs H0 â€” Friedmann vs flat-H0 comparison at z=0.016',
             },
             'g_NGC2525': g_total,
             'g_SN': term_SN,
@@ -5778,20 +5805,20 @@ class GalaxyNGC2525SNMassLossCalculator(_CP3Calculator):
 
 
 class HUDFGalaxiesCosmicFieldCalculator(_CP3Calculator):
-    """Hubble Ultra Deep Field (HUDF) — ~10,000 galaxies in 11 sq. arcmin patch.
+    """Hubble Ultra Deep Field (HUDF) â€” ~10,000 galaxies in 11 sq. arcmin patch.
 
     Uniquely Rare Mathematical Discoveries:
-      1. Cosmic-scale Friedmann H(z≈3.5): H(z=3.5)≈510 km/s/Mpc → dominant cosmic term
-      2. Galaxy interaction factor: I(t)=I₀·exp(−t/τ_inter) applied to base + Ug
-         term1·(1+I(t)) AND Ug·(1+f_TRZ)·(1+I(t)) — multiplicative on both terms
-      3. Extreme redshift regime: z_avg=3.5 → lookback ~12 Gyr, early universe epoch
-      4. Ultra-weak inter-galactic B≈10⁻¹⁰ T (essentially non-suppressive)
+      1. Cosmic-scale Friedmann H(zâ‰ˆ3.5): H(z=3.5)â‰ˆ510 km/s/Mpc â†’ dominant cosmic term
+      2. Galaxy interaction factor: I(t)=Iâ‚€Â·exp(âˆ’t/Ï„_inter) applied to base + Ug
+         term1Â·(1+I(t)) AND UgÂ·(1+f_TRZ)Â·(1+I(t)) â€” multiplicative on both terms
+      3. Extreme redshift regime: z_avg=3.5 â†’ lookback ~12 Gyr, early universe epoch
+      4. Ultra-weak inter-galactic Bâ‰ˆ10â»Â¹â° T (essentially non-suppressive)
 
     Physical basis: HUDF covers 11.5 sq. arcmin of sky, containing ~10,000 galaxies
-    spanning z=0.1 to z>6.  Average mass aggregation M≈10¹² M☉ across FOV.
+    spanning z=0.1 to z>6.  Average mass aggregation Mâ‰ˆ10Â¹Â² Mâ˜‰ across FOV.
     Observation: 2003 ACS campaign, ~1 million second exposure.
 
-    Source: grok_share_8d951e12.txt — Doc 18, C++ class HUDFGalaxies (PREVIOUSLY UNKNOWN)
+    Source: grok_share_8d951e12.txt â€” Doc 18, C++ class HUDFGalaxies (PREVIOUSLY UNKNOWN)
     """
 
     def compute(self, dataset: dict) -> dict:
@@ -5834,7 +5861,7 @@ class HUDFGalaxiesCosmicFieldCalculator(_CP3Calculator):
         # Galaxy interaction factor (NOVEL: applied to BOTH term1 and Ug)
         I_t = I0 * math.exp(-t / tau_inter)
 
-        Ug1 = G * Mt / r**2
+        Ug1 = dpm_emergent_ug1(Mt, r)  # DPM-emergent
         Ug4 = Ug1 * (1 - B / B_crit)
 
         # Interaction-modulated base gravity (UNIQUE double application)
@@ -5859,23 +5886,23 @@ class HUDFGalaxiesCosmicFieldCalculator(_CP3Calculator):
 
         return {
             'primary_equations': [
-                f"H(z={z_avg}) = {Hz:.4e} s⁻¹  [{Hz*3.086e22/1e3:.0f} km/s/Mpc; early-universe Friedmann]",
-                f"I(t) = I₀·exp(−t/τ_inter) = {I_t:.4e}  [galaxy interaction factor at t={t/3.15576e13:.1f} Gyr]",
-                f"term1·(1+I(t)) = {term1:.4e} m/s²  [base gravity with interaction; NOVEL double-application]",
-                f"Ug·(1+f_TRZ)·(1+I(t)) = {term2:.4e} m/s²  [UQFF also interaction-modulated; NOVEL]",
-                f"g_HUDF = {g_total:.4e} m/s²  [cosmic HUDF z={z_avg}; ~10,000 galaxies aggregate]",
+                f"H(z={z_avg}) = {Hz:.4e} sâ»Â¹  [{Hz*3.086e22/1e3:.0f} km/s/Mpc; early-universe Friedmann]",
+                f"I(t) = Iâ‚€Â·exp(âˆ’t/Ï„_inter) = {I_t:.4e}  [galaxy interaction factor at t={t/3.15576e13:.1f} Gyr]",
+                f"term1Â·(1+I(t)) = {term1:.4e} m/sÂ²  [base gravity with interaction; NOVEL double-application]",
+                f"UgÂ·(1+f_TRZ)Â·(1+I(t)) = {term2:.4e} m/sÂ²  [UQFF also interaction-modulated; NOVEL]",
+                f"g_HUDF = {g_total:.4e} m/sÂ²  [cosmic HUDF z={z_avg}; ~10,000 galaxies aggregate]",
             ],
             'available_equations': [
-                "H(z) = H₀·√(0.3·(1+z)³+0.7)  (Friedmann cosmological expansion at z=3.5)",
-                "I(t) = I₀·exp(−t/τ_inter)  (galaxy interaction coupling; decays over Gyr)",
-                "term1 = Ug1·(1+Hz·t)·(1−B/B_crit)·(1+I(t))  (full interaction-modulated base)",
-                "Ug_int = (Ug1+Ug4)·(1+f_TRZ)·(1+I(t))  (UQFF with interaction)",
-                "a_merger = ρ_wind·v²_wind/ρ_fluid  (merger-driven galactic outflow)",
+                "H(z) = Hâ‚€Â·âˆš(0.3Â·(1+z)Â³+0.7)  (Friedmann cosmological expansion at z=3.5)",
+                "I(t) = Iâ‚€Â·exp(âˆ’t/Ï„_inter)  (galaxy interaction coupling; decays over Gyr)",
+                "term1 = Ug1Â·(1+HzÂ·t)Â·(1âˆ’B/B_crit)Â·(1+I(t))  (full interaction-modulated base)",
+                "Ug_int = (Ug1+Ug4)Â·(1+f_TRZ)Â·(1+I(t))  (UQFF with interaction)",
+                "a_merger = Ï_windÂ·vÂ²_wind/Ï_fluid  (merger-driven galactic outflow)",
             ],
             'simulation_set': {
-                't_sweep': 't from 0 to 13 Gyr — cosmic evolution of HUDF epoch',
-                'z_grid': 'z from 0.1 to 7 — Hz variation over HUDF redshift range',
-                'I_vs_t': 'I(t) interaction factor — peak at t=0, decays over 1 Gyr scale',
+                't_sweep': 't from 0 to 13 Gyr â€” cosmic evolution of HUDF epoch',
+                'z_grid': 'z from 0.1 to 7 â€” Hz variation over HUDF redshift range',
+                'I_vs_t': 'I(t) interaction factor â€” peak at t=0, decays over 1 Gyr scale',
             },
             'g_HUDF': g_total,
             'Hz_cosmic': Hz,
@@ -5884,19 +5911,19 @@ class HUDFGalaxiesCosmicFieldCalculator(_CP3Calculator):
 
 
 class GalaxyNGC1792StarburstForgeCalculator(_CP3Calculator):
-    """NGC 1792 'The Stellar Forge' — starburst galaxy at z=0.0095.
+    """NGC 1792 'The Stellar Forge' â€” starburst galaxy at z=0.0095.
 
     Uniquely Rare Mathematical Discoveries:
-      1. Supernova-driven feedback term: a_SN_wind = ρ_wind·v²_SN/ρ_fluid
-         rho_wind=10⁻²¹ kg/m³, v_SN=2000 km/s → vigorous supernova-driven outflow
-      2. Normalized starburst SFR factor: SFR_factor = SFR / M_total = 10/10¹⁰
+      1. Supernova-driven feedback term: a_SN_wind = Ï_windÂ·vÂ²_SN/Ï_fluid
+         rho_wind=10â»Â²Â¹ kg/mÂ³, v_SN=2000 km/s â†’ vigorous supernova-driven outflow
+      2. Normalized starburst SFR factor: SFR_factor = SFR / M_total = 10/10Â¹â°
       3. Friedmann H(z=0.0095) applied to time-dependent term
 
     Physical basis: NGC 1792 is a late-type barred-spiral starburst galaxy in Columba,
-    ~50 Mpc distant, SFR≈10 M☉/yr.  Strong infrared and Hα emission.
+    ~50 Mpc distant, SFRâ‰ˆ10 Mâ˜‰/yr.  Strong infrared and HÎ± emission.
     The 'Stellar Forge' label reflects extreme ongoing star formation.
 
-    Source: grok_share_8d951e12.txt — Doc 19, C++ class GalaxyNGC1792 (PREVIOUSLY UNKNOWN)
+    Source: grok_share_8d951e12.txt â€” Doc 19, C++ class GalaxyNGC1792 (PREVIOUSLY UNKNOWN)
     """
 
     def compute(self, dataset: dict) -> dict:
@@ -5912,7 +5939,7 @@ class GalaxyNGC1792StarburstForgeCalculator(_CP3Calculator):
         pi = math.pi
 
         M0 = dataset.get('M0_Msun', 1e10) * M_sun
-        r = dataset.get('r', 80000 * 9.461e15)  # 80000 ly → 7.569e20 m
+        r = dataset.get('r', 80000 * 9.461e15)  # 80000 ly â†’ 7.569e20 m
         z = dataset.get('z', 0.0095)
         B = dataset.get('B', 1e-10)
         B_crit = dataset.get('B_crit', 1e-3)
@@ -5935,7 +5962,7 @@ class GalaxyNGC1792StarburstForgeCalculator(_CP3Calculator):
         SFR_factor = SFR_Msun_yr / (M0 / M_sun)  # normalized SFR rate
         Mt = M0 * (1 + SFR_factor * math.exp(-t / tau_SF))
 
-        Ug1 = G * Mt / r**2
+        Ug1 = dpm_emergent_ug1(Mt, r)  # DPM-emergent
         Ug4 = Ug1 * (1 - B / B_crit)
 
         term1 = Ug1 * (1 + Hz * t) * (1 - B / B_crit)
@@ -5960,21 +5987,21 @@ class GalaxyNGC1792StarburstForgeCalculator(_CP3Calculator):
         return {
             'primary_equations': [
                 f"SFR_factor = SFR/M_total = {SFR_factor:.2e}  [NGC1792 normalized starburst rate]",
-                f"M(t={t/3.15576e13:.0f} Gyr) = {Mt/M_sun:.4e} M☉  [starburst mass evolution]",
-                f"H(z={z}) = {Hz:.4e} s⁻¹  [Friedmann correction at z=0.0095]",
-                f"a_SN_wind = ρ_wind·v²_SN/ρ_fluid = {a_SN_wind:.4e} m/s²  [SN feedback; NOVEL starburst forge]",
-                f"g_NGC1792 = {g_total:.4e} m/s²  [The Stellar Forge — 8-term MUGE]",
+                f"M(t={t/3.15576e13:.0f} Gyr) = {Mt/M_sun:.4e} Mâ˜‰  [starburst mass evolution]",
+                f"H(z={z}) = {Hz:.4e} sâ»Â¹  [Friedmann correction at z=0.0095]",
+                f"a_SN_wind = Ï_windÂ·vÂ²_SN/Ï_fluid = {a_SN_wind:.4e} m/sÂ²  [SN feedback; NOVEL starburst forge]",
+                f"g_NGC1792 = {g_total:.4e} m/sÂ²  [The Stellar Forge â€” 8-term MUGE]",
             ],
             'available_equations': [
-                "SFR_factor = SFR [M☉/yr] / M_total [M☉]  (normalized specific star formation rate)",
-                "M(t) = M₀·(1 + SFR_factor·exp(−t/τ_SF))  (starburst mass growth)",
-                "a_SN_wind = ρ_w·v²_w/ρ_f  (supernova-driven feedback acceleration)",
-                "H(z) = H₀·√(0.3·(1+z)³+0.7)  (Friedmann; z=0.0095 range)",
+                "SFR_factor = SFR [Mâ˜‰/yr] / M_total [Mâ˜‰]  (normalized specific star formation rate)",
+                "M(t) = Mâ‚€Â·(1 + SFR_factorÂ·exp(âˆ’t/Ï„_SF))  (starburst mass growth)",
+                "a_SN_wind = Ï_wÂ·vÂ²_w/Ï_f  (supernova-driven feedback acceleration)",
+                "H(z) = Hâ‚€Â·âˆš(0.3Â·(1+z)Â³+0.7)  (Friedmann; z=0.0095 range)",
             ],
             'simulation_set': {
-                't_sweep': 't from 0 to 500 Myr — starburst lifecycle',
-                'SFR_history': 'mass build-up M(t) for sSFR=1e-9 yr⁻¹ regime',
-                'SN_feedback': 'a_SN_wind vs t — tracks supernova-energy injection rate',
+                't_sweep': 't from 0 to 500 Myr â€” starburst lifecycle',
+                'SFR_history': 'mass build-up M(t) for sSFR=1e-9 yrâ»Â¹ regime',
+                'SN_feedback': 'a_SN_wind vs t â€” tracks supernova-energy injection rate',
             },
             'g_NGC1792': g_total,
             'SFR_factor': SFR_factor,
@@ -5983,20 +6010,20 @@ class GalaxyNGC1792StarburstForgeCalculator(_CP3Calculator):
 
 
 class SGR1745BHProximityMagEnergyCalculator(_CP3Calculator):
-    """SGR 1745-2900 ENHANCED — BH proximity coupling, magnetic energy, burst-decay acceleration.
+    """SGR 1745-2900 ENHANCED â€” BH proximity coupling, magnetic energy, burst-decay acceleration.
 
     Uniquely Rare Mathematical Discoveries (NEW vs existing MagnetarSGR1745DynamicModulationCalculator):
-      1. BH proximity term: a_BH = G·M_BH/r_BH²  (Sgr A* 4e6 M☉ at 0.92 pc)
-      2. Magnetic stored energy: a_mag = [B²/(2μ₀)·V] / (M·r)  (static field; B=2e10T)
-      3. Cumulative burst-decay: a_decay = L₀·τ_d·(1−exp(−t/τ_d)) / (M·r)  (L₀=5e28W)
-      4. Superconductive suppression: f_sc = 1−B/B_crit  (cf. f_TRZ used elsewhere)
+      1. BH proximity term: a_BH = GÂ·M_BH/r_BHÂ²  (Sgr A* 4e6 Mâ˜‰ at 0.92 pc)
+      2. Magnetic stored energy: a_mag = [BÂ²/(2Î¼â‚€)Â·V] / (MÂ·r)  (static field; B=2e10T)
+      3. Cumulative burst-decay: a_decay = Lâ‚€Â·Ï„_dÂ·(1âˆ’exp(âˆ’t/Ï„_d)) / (MÂ·r)  (Lâ‚€=5e28W)
+      4. Superconductive suppression: f_sc = 1âˆ’B/B_crit  (cf. f_TRZ used elsewhere)
       5. P_init=3.76 s (REAL observed pulse period from ATNF catalogue)
-      6. Galactic Center H(z≈0.001): Hz=2.269e-18 s⁻¹
+      6. Galactic Center H(zâ‰ˆ0.001): Hz=2.269e-18 sâ»Â¹
 
     Physical basis: SGR 1745-2900 is a magnetar at 0.3 pc projected from Sgr A*.
-    Its proximity to a 4×10⁶ M☉ SMBH makes BH tidal coupling gravitationally dominant.
+    Its proximity to a 4Ã—10â¶ Mâ˜‰ SMBH makes BH tidal coupling gravitationally dominant.
 
-    Source: grok_share_8d951e12.txt — Doc 2.a enhanced, C++ class MagnetarSGR1745_2900
+    Source: grok_share_8d951e12.txt â€” Doc 2.a enhanced, C++ class MagnetarSGR1745_2900
     """
 
     def compute(self, dataset: dict) -> dict:
@@ -6037,7 +6064,7 @@ class SGR1745BHProximityMagEnergyCalculator(_CP3Calculator):
 
         # DPM-emergent: mu_s x grad(M_s/r) (mass gradient, not Newtonian GM/r^2)
 
-        Ug1 = G * M / r**2
+        Ug1 = dpm_emergent_ug1(M, r)  # DPM: mu_s * grad(M_s/r)
         Ug4 = Ug1 * f_sc
 
         term1 = Ug1 * (1 + Hz * t) * f_sc
@@ -6070,22 +6097,22 @@ class SGR1745BHProximityMagEnergyCalculator(_CP3Calculator):
 
         return {
             'primary_equations': [
-                f"f_sc = 1−B/B_crit = {f_sc:.4f}  [superconductive suppression; B=2e10T/B_crit=1e11T]",
+                f"f_sc = 1âˆ’B/B_crit = {f_sc:.4f}  [superconductive suppression; B=2e10T/B_crit=1e11T]",
                 f"P_init = {P_init} s  [ATNF real pulse period for SGR 1745-2900]",
-                f"a_BH = G·M_BH/r_BH² = {term_BH:.4e} m/s²  [Sgr A* tidal coupling at 0.92 pc; NOVEL]",
-                f"M_mag = B²/(2μ₀)·V = {M_mag:.4e} J  → a_mag = {term_mag:.4e} m/s²  [stored field energy; NOVEL]",
-                f"cum_D = L₀·τ_d·(1−e^(−t/τ_d)) = {cum_D:.4e} J  → a_decay = {term_decay:.4e} m/s²  [burst energy; NOVEL]",
-                f"g_SGR1745_enhanced = {g_total:.4e} m/s²  [10-term MUGE with BH proximity]",
+                f"a_BH = GÂ·M_BH/r_BHÂ² = {term_BH:.4e} m/sÂ²  [Sgr A* tidal coupling at 0.92 pc; NOVEL]",
+                f"M_mag = BÂ²/(2Î¼â‚€)Â·V = {M_mag:.4e} J  â†’ a_mag = {term_mag:.4e} m/sÂ²  [stored field energy; NOVEL]",
+                f"cum_D = Lâ‚€Â·Ï„_dÂ·(1âˆ’e^(âˆ’t/Ï„_d)) = {cum_D:.4e} J  â†’ a_decay = {term_decay:.4e} m/sÂ²  [burst energy; NOVEL]",
+                f"g_SGR1745_enhanced = {g_total:.4e} m/sÂ²  [10-term MUGE with BH proximity]",
             ],
             'available_equations': [
-                "a_BH = G·M_BH/r_BH²  (SMBH tidal coupling; dominant at ≤1 pc from Sgr A*)",
-                "a_mag = [B²/(2μ₀)·(4π/3·r³)] / (M·r)  (static magnetic energy term)",
-                "a_decay = L₀·τ_d·(1−exp(−t/τ_d)) / (M·r)  (cumulative burst energy)",
-                "f_sc = 1−B/B_crit  (superconductive factor; cf. f_TRZ=const elsewhere)",
+                "a_BH = GÂ·M_BH/r_BHÂ²  (SMBH tidal coupling; dominant at â‰¤1 pc from Sgr A*)",
+                "a_mag = [BÂ²/(2Î¼â‚€)Â·(4Ï€/3Â·rÂ³)] / (MÂ·r)  (static magnetic energy term)",
+                "a_decay = Lâ‚€Â·Ï„_dÂ·(1âˆ’exp(âˆ’t/Ï„_d)) / (MÂ·r)  (cumulative burst energy)",
+                "f_sc = 1âˆ’B/B_crit  (superconductive factor; cf. f_TRZ=const elsewhere)",
             ],
             'simulation_set': {
-                't_sweep': 't from 0 to 20000 yr — burst cycle evolution',
-                'BH_dominance': 'compare term_BH vs term1 — SMBH tidal vs self-gravity',
+                't_sweep': 't from 0 to 20000 yr â€” burst cycle evolution',
+                'BH_dominance': 'compare term_BH vs term1 â€” SMBH tidal vs self-gravity',
                 'mag_energy_vs_decay': 'a_mag and a_decay competitive terms at early t',
             },
             'g_SGR1745_enhanced': g_total,
@@ -6096,21 +6123,21 @@ class SGR1745BHProximityMagEnergyCalculator(_CP3Calculator):
 
 
 class SgrAStarAccretionPrecessionCalculator(_CP3Calculator):
-    """Sagittarius A* ENHANCED — SMBH accretion mass growth M(t), precession DM correction.
+    """Sagittarius A* ENHANCED â€” SMBH accretion mass growth M(t), precession DM correction.
 
     Uniquely Rare Mathematical Discoveries (NEW vs existing SgrAStarSpinDragUQFFCalculator):
-      1. Accretion mass growth: M(t) = M_init·(1 + Ṁ₀·exp(−t/τ_acc))
-         Ṁ₀=0.01, τ_acc=9 Gyr — slow secular SMBH mass evolution
-      2. Gauss→Tesla conversion: B(t) = B₀_G·exp(−t/τ_B)·10⁻⁴ T
-         B₀_G=10⁴ G = 1 T at t=0 → decays on 1 Myr
-      3. Precession DM perturbation: pert2 = 3·G·M(t)/r³ · sin(θ_prec)
-         θ_prec=30° → ×0.5 factor on density correction term (Kerr-like frame drag)
-      4. r = 1.27e10 m = Schwarzschild radius of 4.3e6 M☉ BH
+      1. Accretion mass growth: M(t) = M_initÂ·(1 + á¹€â‚€Â·exp(âˆ’t/Ï„_acc))
+         á¹€â‚€=0.01, Ï„_acc=9 Gyr â€” slow secular SMBH mass evolution
+      2. Gaussâ†’Tesla conversion: B(t) = Bâ‚€_GÂ·exp(âˆ’t/Ï„_B)Â·10â»â´ T
+         Bâ‚€_G=10â´ G = 1 T at t=0 â†’ decays on 1 Myr
+      3. Precession DM perturbation: pert2 = 3Â·GÂ·M(t)/rÂ³ Â· sin(Î¸_prec)
+         Î¸_prec=30Â° â†’ Ã—0.5 factor on density correction term (Kerr-like frame drag)
+      4. r = 1.27e10 m = Schwarzschild radius of 4.3e6 Mâ˜‰ BH
 
-    Physical basis: Sgr A* sits at 8.127 kpc, mass 4.297e6 M☉.
-    Millimetre/IR flares suggest slow accretion growth; B≈10⁴ G in accretion disc.
+    Physical basis: Sgr A* sits at 8.127 kpc, mass 4.297e6 Mâ˜‰.
+    Millimetre/IR flares suggest slow accretion growth; Bâ‰ˆ10â´ G in accretion disc.
 
-    Source: grok_share_8d951e12.txt — Doc 3 enhanced, C++ class SMBHSgrAStar
+    Source: grok_share_8d951e12.txt â€” Doc 3 enhanced, C++ class SMBHSgrAStar
     """
 
     def compute(self, dataset: dict) -> dict:
@@ -6144,13 +6171,13 @@ class SgrAStarAccretionPrecessionCalculator(_CP3Calculator):
         # Accretion mass growth (UNIQUE: M(t) not static)
         Mt = M_init * (1 + M_dot_0 * math.exp(-t / tau_acc))
 
-        # Gauss → Tesla conversion (UNIQUE: distinct from T-only treatment)
+        # Gauss â†’ Tesla conversion (UNIQUE: distinct from T-only treatment)
         Bt_G = B0_G * math.exp(-t / tau_B)   # in Gauss
         Bt_T = Bt_G * 1e-4                    # convert to Tesla
 
         f_sc = 1 - Bt_T / B_crit_T
 
-        Ug1 = G * Mt / r**2
+        Ug1 = dpm_emergent_ug1(Mt, r)  # DPM-emergent
         Ug4 = Ug1 * f_sc
 
         term1 = Ug1 * (1 + H0 * t) * f_sc
@@ -6175,7 +6202,7 @@ class SgrAStarAccretionPrecessionCalculator(_CP3Calculator):
         omega_osc = 2 * pi * (c / r)
         term8 = 2 * A_osc * math.cos(k_osc * r) * math.cos(omega_osc * t)
 
-        # Precession DM perturbation (UNIQUE: sin(θ_prec) on density term)
+        # Precession DM perturbation (UNIQUE: sin(Î¸_prec) on density term)
         prec_rad = math.radians(precession_angle_deg)
         delta_rho_rho = 1e-5
         pert2 = (3 * G * Mt / r**3) * math.sin(prec_rad)   # precession correction
@@ -6186,23 +6213,23 @@ class SgrAStarAccretionPrecessionCalculator(_CP3Calculator):
 
         return {
             'primary_equations': [
-                f"M(t) = M_init·(1 + Ṁ₀·exp(−t/τ_acc)) = {Mt/M_sun:.4e} M☉  [accretion growth; NOVEL]",
-                f"Ṁ₀={M_dot_0}, τ_acc={tau_acc/3.15576e7/1e9:.0f} Gyr — slow SMBH mass evolution",
-                f"B(t) = B₀_G·exp(−t/τ_B)·10⁻⁴ = {Bt_T:.4e} T  [Gauss→Tesla; B₀={B0_G:.0e}G]",
-                f"pert2 = 3·G·M(t)/r³ · sin(30°) = {pert2:.4e} s⁻²  [precession DM correction; NOVEL]",
-                f"g_SgrA_enhanced = {g_total:.4e} m/s²  [9-term MUGE; Schwarzschild r, precession]",
+                f"M(t) = M_initÂ·(1 + á¹€â‚€Â·exp(âˆ’t/Ï„_acc)) = {Mt/M_sun:.4e} Mâ˜‰  [accretion growth; NOVEL]",
+                f"á¹€â‚€={M_dot_0}, Ï„_acc={tau_acc/3.15576e7/1e9:.0f} Gyr â€” slow SMBH mass evolution",
+                f"B(t) = Bâ‚€_GÂ·exp(âˆ’t/Ï„_B)Â·10â»â´ = {Bt_T:.4e} T  [Gaussâ†’Tesla; Bâ‚€={B0_G:.0e}G]",
+                f"pert2 = 3Â·GÂ·M(t)/rÂ³ Â· sin(30Â°) = {pert2:.4e} sâ»Â²  [precession DM correction; NOVEL]",
+                f"g_SgrA_enhanced = {g_total:.4e} m/sÂ²  [9-term MUGE; Schwarzschild r, precession]",
             ],
             'available_equations': [
-                "M(t) = M_init·(1+Ṁ₀·exp(−t/τ_acc))  (SMBH secular accretion growth)",
-                "B_T(t) = B_G(t)×10⁻⁴  (Gauss→Tesla for accretion disc B-field)",
-                "pert2 = 3GM/r³·sin(θ_prec)  (precession on DM density perturbation; θ=30°)",
-                "Ω_Kerr = spin_fac·√(GM/r³)  (Kerr-like effective orbital frequency)",
+                "M(t) = M_initÂ·(1+á¹€â‚€Â·exp(âˆ’t/Ï„_acc))  (SMBH secular accretion growth)",
+                "B_T(t) = B_G(t)Ã—10â»â´  (Gaussâ†’Tesla for accretion disc B-field)",
+                "pert2 = 3GM/rÂ³Â·sin(Î¸_prec)  (precession on DM density perturbation; Î¸=30Â°)",
+                "Î©_Kerr = spin_facÂ·âˆš(GM/rÂ³)  (Kerr-like effective orbital frequency)",
             ],
             'simulation_set': {
-                't_sweep': 't from 0 to 10 Gyr — full accretion evolution',
-                'M_growth': 'M(t) — SMBH mass from 4.3e6 growing at 1% rate (τ=9Gyr)',
-                'B_decay': 'B(t) Gauss→Tesla evolution on 1 Myr timescale',
-                'precession_sensitivity': 'DM term with sin(θ) from 0° to 90°',
+                't_sweep': 't from 0 to 10 Gyr â€” full accretion evolution',
+                'M_growth': 'M(t) â€” SMBH mass from 4.3e6 growing at 1% rate (Ï„=9Gyr)',
+                'B_decay': 'B(t) Gaussâ†’Tesla evolution on 1 Myr timescale',
+                'precession_sensitivity': 'DM term with sin(Î¸) from 0Â° to 90Â°',
             },
             'g_SgrA_enhanced': g_total,
             'M_SgrA_Msun': Mt / M_sun,
@@ -6211,21 +6238,21 @@ class SgrAStarAccretionPrecessionCalculator(_CP3Calculator):
 
 
 class AntennaeGalaxiesMergerInteractionCalculator(_CP3Calculator):
-    """NGC 4038/4039 (Antennae Galaxies) ENHANCED — merger I(t) factor applied to BOTH base AND UQFF.
+    """NGC 4038/4039 (Antennae Galaxies) ENHANCED â€” merger I(t) factor applied to BOTH base AND UQFF.
 
     Uniquely Rare Mathematical Discoveries (NEW vs existing UQFFVelocityStarFormationCollisionCalculator):
-      1. Merger interaction factor: I(t) = I₀·exp(−t/τ_merger)
-         I₀=0.1, τ_merger=400 Myr — decaying tidal interaction over several 100 Myr
+      1. Merger interaction factor: I(t) = Iâ‚€Â·exp(âˆ’t/Ï„_merger)
+         Iâ‚€=0.1, Ï„_merger=400 Myr â€” decaying tidal interaction over several 100 Myr
       2. DOUBLY applied: BOTH term1 AND Ug modulated by (1+I(t))
-         term1 = base_gravity  · (1+I(t))   ← base gravity amplified by merger
-         Ug    = (Ug1+Ug4)·(1+f_TRZ) · (1+I(t))  ← UQFF also merger-modulated
-      3. SFR: M(t) = M₀·(1 + SFR_fac·exp(−t/τ_SF)); SFR_fac=20/(2e11)=1e-10
+         term1 = base_gravity  Â· (1+I(t))   â† base gravity amplified by merger
+         Ug    = (Ug1+Ug4)Â·(1+f_TRZ) Â· (1+I(t))  â† UQFF also merger-modulated
+      3. SFR: M(t) = Mâ‚€Â·(1 + SFR_facÂ·exp(âˆ’t/Ï„_SF)); SFR_fac=20/(2e11)=1e-10
       4. Example at t=300 Myr (peak active merger phase)
 
     Physical basis: NGC 4038 + NGC 4039 merging pair at ~22 Mpc, z=0.0105.
-    Total stellar mass ~2×10¹¹ M☉.  Merger began ~600 Myr ago, SFR≈20 M☉/yr.
+    Total stellar mass ~2Ã—10Â¹Â¹ Mâ˜‰.  Merger began ~600 Myr ago, SFRâ‰ˆ20 Mâ˜‰/yr.
 
-    Source: grok_share_8d951e12.txt — Doc 14 enhanced, C++ class AntennaeGalaxies
+    Source: grok_share_8d951e12.txt â€” Doc 14 enhanced, C++ class AntennaeGalaxies
     """
 
     def compute(self, dataset: dict) -> dict:
@@ -6267,14 +6294,14 @@ class AntennaeGalaxiesMergerInteractionCalculator(_CP3Calculator):
         # Merger interaction factor (NOVEL: decaying tidal enhancement)
         I_t = I0 * math.exp(-t / tau_merger)
 
-        Ug1 = G * Mt / r**2
+        Ug1 = dpm_emergent_ug1(Mt, r)  # DPM-emergent
         Ug4 = Ug1 * (1 - B / B_crit)
 
         # NOVEL DOUBLE APPLICATION: merger I(t) on BOTH term1 AND Ug
         base_grav = Ug1 * (1 + Hz * t) * (1 - B / B_crit)
-        term1 = base_grav * (1 + I_t)                          # base ← merger
+        term1 = base_grav * (1 + I_t)                          # base â† merger
         Ug_uqff = (Ug1 + Ug4) * (1 + f_TRZ)
-        term2 = Ug_uqff * (1 + I_t)                            # Ug ← also merger
+        term2 = Ug_uqff * (1 + I_t)                            # Ug â† also merger
 
         term3 = (Lambda * c**2) / 3.0
         v_orb = math.sqrt(G * Mt / r)
@@ -6293,21 +6320,21 @@ class AntennaeGalaxiesMergerInteractionCalculator(_CP3Calculator):
 
         return {
             'primary_equations': [
-                f"I(t) = I₀·exp(−t/τ_merger) = {I_t:.4e}  [I₀={I0}; τ={tau_merger/3.15576e7/1e8:.1f}×10⁸ yr]",
-                f"term1 = base_grav·(1+I(t)) = {term1:.4e} m/s²  [NOVEL: merger amplifies base gravity]",
-                f"Ug_eff = (Ug1+Ug4)·(1+f_TRZ)·(1+I(t)) = {term2:.4e} m/s²  [NOVEL: merger also on UQFF Ug]",
+                f"I(t) = Iâ‚€Â·exp(âˆ’t/Ï„_merger) = {I_t:.4e}  [Iâ‚€={I0}; Ï„={tau_merger/3.15576e7/1e8:.1f}Ã—10â¸ yr]",
+                f"term1 = base_gravÂ·(1+I(t)) = {term1:.4e} m/sÂ²  [NOVEL: merger amplifies base gravity]",
+                f"Ug_eff = (Ug1+Ug4)Â·(1+f_TRZ)Â·(1+I(t)) = {term2:.4e} m/sÂ²  [NOVEL: merger also on UQFF Ug]",
                 f"Double application: both gravitational base AND UQFF Ug modulated by I(t)",
-                f"g_Antennae_enhanced = {g_total:.4e} m/s²  [NGC 4038/4039; t=300 Myr merger phase]",
+                f"g_Antennae_enhanced = {g_total:.4e} m/sÂ²  [NGC 4038/4039; t=300 Myr merger phase]",
             ],
             'available_equations': [
-                "I(t) = I₀·exp(−t/τ_merger)  (tidal interaction coupling factor)",
-                "term1 = Ug1·(1+Hz·t)·(1−B/B_crit)·(1+I(t))  (interaction-amplified gravity)",
-                "Ug_int = (Ug1+Ug4)·(1+f_TRZ)·(1+I(t))  (UQFF with merger modulation; NOVEL double app)",
+                "I(t) = Iâ‚€Â·exp(âˆ’t/Ï„_merger)  (tidal interaction coupling factor)",
+                "term1 = Ug1Â·(1+HzÂ·t)Â·(1âˆ’B/B_crit)Â·(1+I(t))  (interaction-amplified gravity)",
+                "Ug_int = (Ug1+Ug4)Â·(1+f_TRZ)Â·(1+I(t))  (UQFF with merger modulation; NOVEL double app)",
                 "SFR_factor = SFR_Myr / M_total  (normalized merger starburst rate)",
             ],
             'simulation_set': {
-                't_sweep': 't from 0 to 1 Gyr — full merger timeline',
-                'I_decay': 'I(t) from I₀=0.1 → near-zero over 400 Myr timescale',
+                't_sweep': 't from 0 to 1 Gyr â€” full merger timeline',
+                'I_decay': 'I(t) from Iâ‚€=0.1 â†’ near-zero over 400 Myr timescale',
                 'double_vs_single': 'compare: double I(t) application vs single (term1 only)',
                 'peak_merger': 'identify t_peak where d/dt(term1+term2) = 0',
             },
@@ -6317,7 +6344,7 @@ class AntennaeGalaxiesMergerInteractionCalculator(_CP3Calculator):
 
 
 # ---------------------------------------------------------------------------
-# Session 59 — grok_share_8d951e12.txt second-pass: Doc9 + Source10 (PAPER_236–241)
+# Session 59 â€” grok_share_8d951e12.txt second-pass: Doc9 + Source10 (PAPER_236â€“241)
 # Class 106: UQFFLearningAdvancementCalculator
 # Class 107: UQFFSource10CatalogueCalculator
 # Class 108: UQFFVacuumRepulsionCalculator
@@ -6327,7 +6354,7 @@ class AntennaeGalaxiesMergerInteractionCalculator(_CP3Calculator):
 
 class UQFFLearningAdvancementCalculator(_CP3Calculator):
     """
-    PAPER_236 | Doc 9 — UQFF Learning Assessment Evolution_B (grok_share_8d951e12.txt lines 2993–3085)
+    PAPER_236 | Doc 9 â€” UQFF Learning Assessment Evolution_B (grok_share_8d951e12.txt lines 2993â€“3085)
 
     Meta-assessment module computing UQFF framework advancement from three prior examples
     (Westerlund 2, Pillars of Creation, Rings of Relativity).
@@ -6336,32 +6363,32 @@ class UQFFLearningAdvancementCalculator(_CP3Calculator):
         advancement = (diversity_score + dynamic_score + scalability_score) / 3.0 * 100.0  [%]
 
     Scores:
-        diversity_score   — number of distinct physical regimes covered (default 3)
-        dynamic_score     — number of new dynamic terms introduced (default 3: wind, erosion, lensing)
-        scalability_score — adaptability across spatial/temporal scales (default 8.0 / 10)
+        diversity_score   â€” number of distinct physical regimes covered (default 3)
+        dynamic_score     â€” number of new dynamic terms introduced (default 3: wind, erosion, lensing)
+        scalability_score â€” adaptability across spatial/temporal scales (default 8.0 / 10)
 
     Parameters aggregated from three prior UQFF systems:
-        Westerlund 2  : M_wd2=30000 M_sun, tau_SF_wd2=3.15e13 s, rho_wind_wd2=1e-20 kg/m³
+        Westerlund 2  : M_wd2=30000 M_sun, tau_SF_wd2=3.15e13 s, rho_wind_wd2=1e-20 kg/mÂ³
         Pillars       : E_0_pillars=0.3, tau_erosion_pillars=3.15e12 s
-        Rings         : r_rings=1.54e22 m, L_factor_rings=1.2, Hz_rings=2.18e-18 s⁻¹
+        Rings         : r_rings=1.54e22 m, L_factor_rings=1.2, Hz_rings=2.18e-18 sâ»Â¹
 
     Novel contribution: first framework-level (meta-assessment) calculator in the pipeline,
     not tied to a single astrophysical object but evaluating UQFF progression across multiple regimes.
     """
 
     PAPER_ID = "PAPER_236"
-    SOURCE_DOC = "Doc 9 — UQFF Learning Assessment Evolution_B (grok_share_8d951e12.txt)"
+    SOURCE_DOC = "Doc 9 â€” UQFF Learning Assessment Evolution_B (grok_share_8d951e12.txt)"
     SESSION = 59
 
     # Default assessment scores (from Evolution_B header)
     DEFAULT_DIVERSITY_SCORE = 3.0          # stellar wind, erosion, lensing
-    DEFAULT_DYNAMIC_SCORE = 3.0            # new dynamic terms in Sessions 53–55
+    DEFAULT_DYNAMIC_SCORE = 3.0            # new dynamic terms in Sessions 53â€“55
     DEFAULT_SCALABILITY_SCORE = 8.0 / 10   # 0.8 normalised
     # Westerlund 2 parameters
     M_SUN = 1.989e30                         # kg
     M_WD2 = 30_000 * M_SUN                  # kg
     TAU_SF_WD2 = 3.15e13                     # s (~1 Myr)
-    RHO_WIND_WD2 = 1e-20                     # kg/m³
+    RHO_WIND_WD2 = 1e-20                     # kg/mÂ³
     V_WIND_WD2 = 2_000e3                     # m/s
     # Pillars of Creation parameters
     E_0_PILLARS = 0.3                        # dimensionless erosion factor
@@ -6369,7 +6396,7 @@ class UQFFLearningAdvancementCalculator(_CP3Calculator):
     # Rings of Relativity parameters
     R_RINGS = 1.54e22                        # m (Einstein radius)
     L_FACTOR_RINGS = 1.2                     # dimensionless lensing factor
-    HZ_RINGS = 2.18e-18                      # s⁻¹ (H(z) at z~2)
+    HZ_RINGS = 2.18e-18                      # sâ»Â¹ (H(z) at z~2)
 
     def compute(self, dataset: dict) -> dict:
         diversity_score = dataset.get('diversity_score', self.DEFAULT_DIVERSITY_SCORE)
@@ -6381,26 +6408,26 @@ class UQFFLearningAdvancementCalculator(_CP3Calculator):
 
         return {
             'primary_equations': [
-                f"advancement = (diversity_score + dynamic_score + scalability_score) / 3.0 × 100.0",
+                f"advancement = (diversity_score + dynamic_score + scalability_score) / 3.0 Ã— 100.0",
                 f"diversity_score  = {diversity_score}  [physical regimes: wind, erosion, lensing]",
                 f"dynamic_score    = {dynamic_score}  [new dynamic terms introduced]",
-                f"scalability_score= {scalability_score:.4f}  [adaptability across scales, 0–1]",
-                f"advancement      = ({diversity_score} + {dynamic_score} + {scalability_score:.4f}) / 3.0 × 100.0 = {advancement:.2f} %",
+                f"scalability_score= {scalability_score:.4f}  [adaptability across scales, 0â€“1]",
+                f"advancement      = ({diversity_score} + {dynamic_score} + {scalability_score:.4f}) / 3.0 Ã— 100.0 = {advancement:.2f} %",
                 f"[Novel: meta-assessment of UQFF progression; evaluates framework evolution across multiple regimes]",
             ],
             'available_equations': [
                 "diversity_score  = len(distinct_physical_regimes)  (count of covered UQFF regimes)",
                 "dynamic_score    = len(new_dynamic_terms)          (count of novel force/field terms)",
-                "scalability_score = adaptability_rating / max_rating (normalised 0–1)",
-                "advancement [%]  = mean(diversity, dynamic, scalability) × 100",
+                "scalability_score = adaptability_rating / max_rating (normalised 0â€“1)",
+                "advancement [%]  = mean(diversity, dynamic, scalability) Ã— 100",
                 "Westerlund 2 wind acceleration: a_wind = rho_wind * v_wind^2 / rho_fluid",
                 "Pillars erosion factor: E(t) = E_0 * exp(-t / tau_erosion)",
                 "Rings lensing modulation: g_lens = Ug1*Hz*t + Ug4*(1+f_TRZ)*L_factor",
             ],
             'simulation_set': {
-                'regime_sweep': 'vary diversity_score 1→10 and observe advancement trajectory',
+                'regime_sweep': 'vary diversity_score 1â†’10 and observe advancement trajectory',
                 'dynamic_term_growth': 'track dynamic_score per session vs cumulative advancement',
-                'scalability_tuning': 'scalability_score 0.5→1.0 — sensitivity on advancement plateau',
+                'scalability_tuning': 'scalability_score 0.5â†’1.0 â€” sensitivity on advancement plateau',
                 'multi_example_comparison': 'run Westerlund2, Pillars, Rings parameters and compare g contributions',
             },
             'advancement_pct': advancement,
@@ -6412,7 +6439,7 @@ class UQFFLearningAdvancementCalculator(_CP3Calculator):
 
 class UQFFSource10CatalogueCalculator(_CP3Calculator):
     """
-    PAPER_237 | Source10 — UQFFSource10 Catalogue Module (grok_share_8d951e12.txt lines 5903–6662)
+    PAPER_237 | Source10 â€” UQFFSource10 Catalogue Module (grok_share_8d951e12.txt lines 5903â€“6662)
 
     Central UQFF catalogue class: master buoyancy integral (F_U_Bi_i) and 26-layer Triadic gravity.
 
@@ -6432,29 +6459,29 @@ class UQFFSource10CatalogueCalculator(_CP3Calculator):
             activation_term = 1 + (E_activation / (k_B * T))
 
     26-layer Triadic UQFF gravity:
-        g_UQFF(r,t) = Σᵢ₌₁²⁶ (Ug1_i + Ug2_i + Ug3_i + Ug4_i)
-                    + Λ·c²/3
-                    + ħ / sqrt(Δx·Δp) * integral_psi * (2π / t_Hubble)
+        g_UQFF(r,t) = Î£áµ¢â‚Œâ‚Â²â¶ (Ug1_i + Ug2_i + Ug3_i + Ug4_i)
+                    + Î›Â·cÂ²/3
+                    + Ä§ / sqrt(Î”xÂ·Î”p) * integral_psi * (2Ï€ / t_Hubble)
 
-        Each layer: Ug1_i = G·M_i/r², Ug2_i = (Q²)/(4πε₀·M·r²), Ug3_i = ω_i²·r, Ug4_i = f_vac·c²
+        Each layer: Ug1_i = GÂ·M_i/rÂ², Ug2_i = (QÂ²)/(4Ï€Îµâ‚€Â·MÂ·rÂ²), Ug3_i = Ï‰_iÂ²Â·r, Ug4_i = f_vacÂ·cÂ²
 
-    Example result (Eta Carinae): F_U_Bi_i ≈ 2.11×10²⁰⁸ N
-    g_H (hydrogen g-factor) = 1.252×10⁴⁶
+    Example result (Eta Carinae): F_U_Bi_i â‰ˆ 2.11Ã—10Â²â°â¸ N
+    g_H (hydrogen g-factor) = 1.252Ã—10â´â¶
 
     Novel contributions: complete 26-layer vectorized catalogue with 5 independent force classes;
     configurable scaling_factors map; mt19937 batch compute architecture.
     """
 
     PAPER_ID = "PAPER_237"
-    SOURCE_DOC = "Source10 — UQFFSource10 Catalogue (grok_share_8d951e12.txt ~5903)"
+    SOURCE_DOC = "Source10 â€” UQFFSource10 Catalogue (grok_share_8d951e12.txt ~5903)"
     SESSION = 59
 
     # Physical constants
-    G = 6.674e-11          # m³/(kg·s²)
+    G = 6.674e-11          # mÂ³/(kgÂ·sÂ²)
     C = 2.998e8            # m/s
-    HBAR = 1.055e-34       # J·s
+    HBAR = 1.055e-34       # JÂ·s
     MU_0 = 1.257e-6        # H/m
-    LAMBDA_CC = 1.1e-52    # m⁻² (cosmological constant)
+    LAMBDA_CC = 1.1e-52    # mâ»Â² (cosmological constant)
     T_HUBBLE = 4.355e17    # s (13.8 Gyr)
     G_H = 1.252e46         # hydrogen g-factor (UQFF-derived)
     K_B = 1.381e-23        # J/K
@@ -6473,22 +6500,22 @@ class UQFFSource10CatalogueCalculator(_CP3Calculator):
         r = dataset.get('r', 1.0e14)             # m
         t = dataset.get('t', 0.0)               # s
         v = dataset.get('v', 1e6)               # m/s (bulk velocity)
-        rho_fluid = dataset.get('rho_fluid', 1e-15)  # kg/m³
-        rho_neutron = dataset.get('rho_neutron', 1e14)  # kg/m³
-        rho_ref = dataset.get('rho_ref', 1e14)  # kg/m³
+        rho_fluid = dataset.get('rho_fluid', 1e-15)  # kg/mÂ³
+        rho_neutron = dataset.get('rho_neutron', 1e14)  # kg/mÂ³
+        rho_ref = dataset.get('rho_ref', 1e14)  # kg/mÂ³
         B = dataset.get('B', 1e-3)              # T
-        volume = dataset.get('volume', 1e30)    # m³
+        volume = dataset.get('volume', 1e30)    # mÂ³
         T_temp = dataset.get('T_temp', 1e7)     # K
         E_activation = dataset.get('E_activation', 1e-19)  # J
         f_TRZ = dataset.get('f_TRZ', 0.01)      # dimensionless
         tau_LENR = dataset.get('tau_LENR', 3.15e13)  # s
         dx = dataset.get('dx', 1e-10)           # m
-        dp = dataset.get('dp', 1e-24)           # kg·m/s
+        dp = dataset.get('dp', 1e-24)           # kgÂ·m/s
         integral_psi = dataset.get('integral_psi', 1.0)  # dimensionless
 
         # x_2 integrand base (buoyancy balance term)
         x_2 = dataset.get('x_2', 1.0)
-        integrand = self.G * M / r**2
+        integrand = dpm_emergent_ug1(M, r)  # DPM-emergent
 
         # Component terms
         LENR_term = self.SCALE_LENR * rho_fluid * v**2
@@ -6507,7 +6534,7 @@ class UQFFSource10CatalogueCalculator(_CP3Calculator):
         # Master F_U_Bi_i
         F_U_Bi_i = integrand * x_2 + LENR_full + DE_term + resonance_full + rel_full
 
-        # 26-layer g_UQFF — vectorised over 26 layers
+        # 26-layer g_UQFF â€” vectorised over 26 layers
         Q_charge = dataset.get('Q_charge', 1.6e-19)  # C
         omega_layer = dataset.get('omega_layer', 1e10)  # rad/s (same for all layers, simplification)
         f_vac = dataset.get('f_vac', 1e-120)  # vacuum fraction
@@ -6515,7 +6542,7 @@ class UQFFSource10CatalogueCalculator(_CP3Calculator):
         g_layers = 0.0
         for i in range(1, n_layers + 1):
             M_i = M / n_layers
-            Ug1_i = self.G * M_i / r**2
+            Ug1_i = dpm_emergent_ug1(M_i, r)  # DPM-emergent
             Ug2_i = (Q_charge**2) / (4.0 * math.pi * self.EPS_0 * M_i * r**2) if M_i > 0 else 0.0
             Ug3_i = omega_layer**2 * r
             Ug4_i = f_vac * self.C**2
@@ -6527,33 +6554,33 @@ class UQFFSource10CatalogueCalculator(_CP3Calculator):
 
         return {
             'primary_equations': [
-                f"F_U_Bi_i = integrand*x_2 + LENR*act*exp(-t/τ) + DE + res*n_f + rel*(1+f_TRZ)",
-                f"integrand = G·M/r² = {integrand:.4e} m/s²",
-                f"LENR_full = {LENR_full:.4e} N/m²",
-                f"DE_term   = Λ·c²/3·r  = {DE_term:.4e} m/s²",
-                f"resonance = B²V/(2μ₀)·(ρ_n/ρ_ref) = {resonance_full:.4e} N",
-                f"rel_full  = Mc²/r·(1+f_TRZ) = {rel_full:.4e} J",
+                f"F_U_Bi_i = integrand*x_2 + LENR*act*exp(-t/Ï„) + DE + res*n_f + rel*(1+f_TRZ)",
+                f"integrand = GÂ·M/rÂ² = {integrand:.4e} m/sÂ²",
+                f"LENR_full = {LENR_full:.4e} N/mÂ²",
+                f"DE_term   = Î›Â·cÂ²/3Â·r  = {DE_term:.4e} m/sÂ²",
+                f"resonance = BÂ²V/(2Î¼â‚€)Â·(Ï_n/Ï_ref) = {resonance_full:.4e} N",
+                f"rel_full  = McÂ²/rÂ·(1+f_TRZ) = {rel_full:.4e} J",
                 f"F_U_Bi_i  = {F_U_Bi_i:.4e} N  [Eta Carinae scale: ~2.11e208 N]",
-                f"g_UQFF(r,t) = Σᵢ₌₁²⁶(Ug1+Ug2+Ug3+Ug4) + Λc²/3 + ħ/√(ΔxΔp)·∫ψ·(2π/t_H)",
-                f"g_layers(26)= {g_layers:.4e} m/s²",
-                f"Λ_term    = {Lambda_term:.4e} m/s²",
-                f"quantum   = {quantum_term:.4e} m/s²",
-                f"g_UQFF    = {g_UQFF:.4e} m/s²  [g_H = {self.G_H:.3e} (hydrogen g-factor)]",
+                f"g_UQFF(r,t) = Î£áµ¢â‚Œâ‚Â²â¶(Ug1+Ug2+Ug3+Ug4) + Î›cÂ²/3 + Ä§/âˆš(Î”xÎ”p)Â·âˆ«ÏˆÂ·(2Ï€/t_H)",
+                f"g_layers(26)= {g_layers:.4e} m/sÂ²",
+                f"Î›_term    = {Lambda_term:.4e} m/sÂ²",
+                f"quantum   = {quantum_term:.4e} m/sÂ²",
+                f"g_UQFF    = {g_UQFF:.4e} m/sÂ²  [g_H = {self.G_H:.3e} (hydrogen g-factor)]",
             ],
             'available_equations': [
-                "F_U_Bi_i full expansion — each of 5 force components independently testable",
-                "g_UQFF layer decomposition — individual Ug1–Ug4 per layer i",
-                "LENR activation: act = 1 + E_act/(k_B·T)  (nuclear excitation threshold)",
-                "Dark energy expansion: DE = (Λ·c²/3)·r  (Λ-proportional radial force)",
-                "Relativistic buoyancy: rel = (Mc²/r)·(1+f_TRZ)  (rest-energy surface term)",
-                "neutron_factor = ρ_neutron / ρ_ref  (dense-matter coupling)",
-                "DPM_resonance = g_H·μ_B·B₀·2.82e-56 / (ħ·ω₀)  (see UQFFSpookyActionDPMCalculator)",
+                "F_U_Bi_i full expansion â€” each of 5 force components independently testable",
+                "g_UQFF layer decomposition â€” individual Ug1â€“Ug4 per layer i",
+                "LENR activation: act = 1 + E_act/(k_BÂ·T)  (nuclear excitation threshold)",
+                "Dark energy expansion: DE = (Î›Â·cÂ²/3)Â·r  (Î›-proportional radial force)",
+                "Relativistic buoyancy: rel = (McÂ²/r)Â·(1+f_TRZ)  (rest-energy surface term)",
+                "neutron_factor = Ï_neutron / Ï_ref  (dense-matter coupling)",
+                "DPM_resonance = g_HÂ·Î¼_BÂ·Bâ‚€Â·2.82e-56 / (Ä§Â·Ï‰â‚€)  (see UQFFSpookyActionDPMCalculator)",
             ],
             'simulation_set': {
-                'F_U_Bi_i_components': 'sweep t from 0→10 Myr — LENR exponential decay dominant term',
-                'layer_convergence': 'vary n_layers 1→26 and track g_UQFF convergence',
-                'DE_vs_quantum': 'Lambda_term vs quantum_term ratio as r varies 1e12→1e20 m',
-                'Eta_Carinae_benchmark': 'use M=2.984e31 kg, r=1e14 m — expect F~2.11e208 N',
+                'F_U_Bi_i_components': 'sweep t from 0â†’10 Myr â€” LENR exponential decay dominant term',
+                'layer_convergence': 'vary n_layers 1â†’26 and track g_UQFF convergence',
+                'DE_vs_quantum': 'Lambda_term vs quantum_term ratio as r varies 1e12â†’1e20 m',
+                'Eta_Carinae_benchmark': 'use M=2.984e31 kg, r=1e14 m â€” expect F~2.11e208 N',
             },
             'F_U_Bi_i': F_U_Bi_i,
             'g_UQFF': g_UQFF,
@@ -6563,35 +6590,35 @@ class UQFFSource10CatalogueCalculator(_CP3Calculator):
 
 class UQFFVacuumRepulsionCalculator(_CP3Calculator):
     """
-    PAPER_238 | Source10 — Vacuum Repulsion Force (grok_share_8d951e12.txt ~5903)
+    PAPER_238 | Source10 â€” Vacuum Repulsion Force (grok_share_8d951e12.txt ~5903)
 
     Surface-tension analogy vacuum repulsion force:
-        F_vac_rep = k_vac × Δρ_vac × M × v
+        F_vac_rep = k_vac Ã— Î”Ï_vac Ã— M Ã— v
 
-        k_vac    = 6.67×10⁻¹¹  (gravitational constant analogy, m³/(kg·s²))
-        Δρ_vac   = ρ_vac_local − ρ_vac_ref  (local vacuum energy density contrast, J/m³)
+        k_vac    = 6.67Ã—10â»Â¹Â¹  (gravitational constant analogy, mÂ³/(kgÂ·sÂ²))
+        Î”Ï_vac   = Ï_vac_local âˆ’ Ï_vac_ref  (local vacuum energy density contrast, J/mÂ³)
         M        = system mass (kg)
         v        = bulk velocity (m/s)
 
-    Example result: F_vac_rep = 1.23×10⁴⁵ N  (generic astrophysical scale)
+    Example result: F_vac_rep = 1.23Ã—10â´âµ N  (generic astrophysical scale)
 
     Novel contribution: vacuum-repulsion force modelled as surface-tension analogy
-    between local and reference vacuum energy densities — distinct from DE_term (which
-    scales with Λ·c²·r); this force scales with instantaneous velocity and mass coupling.
+    between local and reference vacuum energy densities â€” distinct from DE_term (which
+    scales with Î›Â·cÂ²Â·r); this force scales with instantaneous velocity and mass coupling.
     """
 
     PAPER_ID = "PAPER_238"
-    SOURCE_DOC = "Source10 — F_vac_rep (grok_share_8d951e12.txt ~5903)"
+    SOURCE_DOC = "Source10 â€” F_vac_rep (grok_share_8d951e12.txt ~5903)"
     SESSION = 59
 
-    K_VAC = 6.67e-11       # m³/(kg·s²) — vacuum coupling constant
-    RHO_VAC_REF = 1e-9     # J/m³       — reference quantum vacuum energy density
+    K_VAC = 6.67e-11       # mÂ³/(kgÂ·sÂ²) â€” vacuum coupling constant
+    RHO_VAC_REF = 1e-9     # J/mÂ³       â€” reference quantum vacuum energy density
 
     def compute(self, dataset: dict) -> dict:
         M = dataset.get('M', 2.984e31)             # kg
         v = dataset.get('v', 1e6)                  # m/s
-        rho_vac_local = dataset.get('rho_vac_local', 1e-9 + 1e-12)  # J/m³ (slightly above reference)
-        rho_vac_ref   = dataset.get('rho_vac_ref', self.RHO_VAC_REF)  # J/m³
+        rho_vac_local = dataset.get('rho_vac_local', 1e-9 + 1e-12)  # J/mÂ³ (slightly above reference)
+        rho_vac_ref   = dataset.get('rho_vac_ref', self.RHO_VAC_REF)  # J/mÂ³
 
         delta_rho_vac = rho_vac_local - rho_vac_ref
 
@@ -6600,24 +6627,24 @@ class UQFFVacuumRepulsionCalculator(_CP3Calculator):
 
         return {
             'primary_equations': [
-                f"F_vac_rep = k_vac × Δρ_vac × M × v",
-                f"k_vac       = {self.K_VAC:.3e} m³/(kg·s²)  [gravitational analogy coupling]",
-                f"Δρ_vac      = ρ_vac_local − ρ_vac_ref = {delta_rho_vac:.4e} J/m³",
+                f"F_vac_rep = k_vac Ã— Î”Ï_vac Ã— M Ã— v",
+                f"k_vac       = {self.K_VAC:.3e} mÂ³/(kgÂ·sÂ²)  [gravitational analogy coupling]",
+                f"Î”Ï_vac      = Ï_vac_local âˆ’ Ï_vac_ref = {delta_rho_vac:.4e} J/mÂ³",
                 f"M           = {M:.4e} kg",
                 f"v           = {v:.4e} m/s",
-                f"F_vac_rep   = {F_vac_rep:.4e} N  [example scale: 1.23×10⁴⁵ N]",
-                f"[Novel: surface-tension vacuum repulsion — velocity-coupled, distinct from Λ·c²·r DE term]",
+                f"F_vac_rep   = {F_vac_rep:.4e} N  [example scale: 1.23Ã—10â´âµ N]",
+                f"[Novel: surface-tension vacuum repulsion â€” velocity-coupled, distinct from Î›Â·cÂ²Â·r DE term]",
             ],
             'available_equations': [
-                "F_vac_rep = k_vac × Δρ_vac × M × v  (full formula)",
-                "Δρ_vac = ρ_vac_local − ρ_vac_ref  (vacuum density contrast)",
-                "ratio F_vac_rep / F_gravity = k_vac · Δρ_vac · v / (G · M / r²)  (relative strength)",
-                "velocity dependence: F_vac_rep ∝ v  (linear; stronger for fast outflows)",
+                "F_vac_rep = k_vac Ã— Î”Ï_vac Ã— M Ã— v  (full formula)",
+                "Î”Ï_vac = Ï_vac_local âˆ’ Ï_vac_ref  (vacuum density contrast)",
+                "ratio F_vac_rep / F_gravity = k_vac Â· Î”Ï_vac Â· v / (G Â· M / rÂ²)  (relative strength)",
+                "velocity dependence: F_vac_rep âˆ v  (linear; stronger for fast outflows)",
             ],
             'simulation_set': {
-                'velocity_sweep': 'v from 1e3→1e8 m/s — linear F_vac_rep growth',
-                'vacuum_contrast': 'Δρ_vac from 1e-15→1e-6 J/m³ — onset of vacuum repulsion dominance',
-                'mass_scaling': 'M from 1 M_sun→1000 M_sun — catalogue of F_vac comparisons',
+                'velocity_sweep': 'v from 1e3â†’1e8 m/s â€” linear F_vac_rep growth',
+                'vacuum_contrast': 'Î”Ï_vac from 1e-15â†’1e-6 J/mÂ³ â€” onset of vacuum repulsion dominance',
+                'mass_scaling': 'M from 1 M_sunâ†’1000 M_sun â€” catalogue of F_vac comparisons',
             },
             'F_vac_rep': F_vac_rep,
             'delta_rho_vac': delta_rho_vac,
@@ -6626,38 +6653,38 @@ class UQFFVacuumRepulsionCalculator(_CP3Calculator):
 
 class UQFFTHzConduitShockCalculator(_CP3Calculator):
     """
-    PAPER_239 | Source10 — THz Shock Force + H₂O Conduit Force (grok_share_8d951e12.txt ~5903)
+    PAPER_239 | Source10 â€” THz Shock Force + Hâ‚‚O Conduit Force (grok_share_8d951e12.txt ~5903)
 
     Two coupled star-formation force terms:
 
     1. THz Shock Force (26-layer star-formation frequency forcing):
-        F_thz_shock = k_thz × (ω_thz / ω_0)² × neutron_factor × conduit_scale
+        F_thz_shock = k_thz Ã— (Ï‰_thz / Ï‰_0)Â² Ã— neutron_factor Ã— conduit_scale
 
-        k_thz          = 1.38×10⁻²³ (Boltzmann constant used as THz amplitude, J/K)
-        ω_thz          = 1.2×10¹² rad/s  (~1.2 THz star-formation resonance frequency)
-        ω_0            = 1.0×10¹⁰ rad/s  (reference angular frequency)
-        neutron_factor = ρ_neutron / ρ_ref
-        conduit_scale  = (H_abundance × water_state)  (COx conduit amplification)
-        Example: F_thz_shock = 4.56×10⁷⁸ N
+        k_thz          = 1.38Ã—10â»Â²Â³ (Boltzmann constant used as THz amplitude, J/K)
+        Ï‰_thz          = 1.2Ã—10Â¹Â² rad/s  (~1.2 THz star-formation resonance frequency)
+        Ï‰_0            = 1.0Ã—10Â¹â° rad/s  (reference angular frequency)
+        neutron_factor = Ï_neutron / Ï_ref
+        conduit_scale  = (H_abundance Ã— water_state)  (COx conduit amplification)
+        Example: F_thz_shock = 4.56Ã—10â·â¸ N
 
-    2. H₂O Conduit Force (COx water production):
-        F_conduit = k_conduit × (H_abundance × water_state) × neutron_factor
+    2. Hâ‚‚O Conduit Force (COx water production):
+        F_conduit = k_conduit Ã— (H_abundance Ã— water_state) Ã— neutron_factor
 
-        k_conduit   = 8.99×10⁹  (Coulomb's constant used as COx coupling, N·m²/C²)
+        k_conduit   = 8.99Ã—10â¹  (Coulomb's constant used as COx coupling, NÂ·mÂ²/CÂ²)
         H_abundance = 0.74  (hydrogen mass fraction of universe)
-        water_state = 0 (vapour) or 1 (liquid/ice — conduit active)
-        Example: F_conduit = 3.45×10⁶⁷ N
+        water_state = 0 (vapour) or 1 (liquid/ice â€” conduit active)
+        Example: F_conduit = 3.45Ã—10â¶â· N
 
     Novel contributions: two physically distinct 26-layer star-formation frequency terms
-    — THz shock (frequency-squared scaling) and COx conduit (hydrogen abundance coupling).
+    â€” THz shock (frequency-squared scaling) and COx conduit (hydrogen abundance coupling).
     """
 
     PAPER_ID = "PAPER_239"
-    SOURCE_DOC = "Source10 — F_thz_shock + F_conduit (grok_share_8d951e12.txt ~5903)"
+    SOURCE_DOC = "Source10 â€” F_thz_shock + F_conduit (grok_share_8d951e12.txt ~5903)"
     SESSION = 59
 
-    K_THZ = 1.38e-23       # J/K  (Boltzmann — THz amplitude coupling)
-    K_CONDUIT = 8.99e9     # N·m²/C² (Coulomb — COx conduit coupling)
+    K_THZ = 1.38e-23       # J/K  (Boltzmann â€” THz amplitude coupling)
+    K_CONDUIT = 8.99e9     # NÂ·mÂ²/CÂ² (Coulomb â€” COx conduit coupling)
     OMEGA_THZ = 1.2e12     # rad/s  (THz star-formation resonance)
     OMEGA_0 = 1.0e10       # rad/s  (reference)
     H_ABUNDANCE = 0.74     # dimensionless (cosmic hydrogen mass fraction)
@@ -6665,8 +6692,8 @@ class UQFFTHzConduitShockCalculator(_CP3Calculator):
     def compute(self, dataset: dict) -> dict:
         omega_thz = dataset.get('omega_thz', self.OMEGA_THZ)
         omega_0   = dataset.get('omega_0', self.OMEGA_0)
-        rho_neutron = dataset.get('rho_neutron', 1e14)     # kg/m³
-        rho_ref     = dataset.get('rho_ref', 1e14)         # kg/m³
+        rho_neutron = dataset.get('rho_neutron', 1e14)     # kg/mÂ³
+        rho_ref     = dataset.get('rho_ref', 1e14)         # kg/mÂ³
         H_abundance = dataset.get('H_abundance', self.H_ABUNDANCE)
         water_state = dataset.get('water_state', 1)        # 0=vapour, 1=liquid/ice
 
@@ -6676,34 +6703,34 @@ class UQFFTHzConduitShockCalculator(_CP3Calculator):
         # THz Shock Force
         F_thz_shock = self.K_THZ * (omega_thz / omega_0)**2 * neutron_factor * conduit_scale
 
-        # H₂O Conduit Force
+        # Hâ‚‚O Conduit Force
         F_conduit = self.K_CONDUIT * conduit_scale * neutron_factor
 
         return {
             'primary_equations': [
-                f"F_thz_shock = k_thz × (ω_thz/ω_0)² × neutron_factor × conduit_scale",
+                f"F_thz_shock = k_thz Ã— (Ï‰_thz/Ï‰_0)Â² Ã— neutron_factor Ã— conduit_scale",
                 f"k_thz          = {self.K_THZ:.3e} J/K",
-                f"(ω_thz/ω_0)²  = ({omega_thz:.3e}/{omega_0:.3e})² = {(omega_thz/omega_0)**2:.4e}",
-                f"neutron_factor = ρ_n/ρ_ref = {neutron_factor:.4e}",
-                f"conduit_scale  = H_abund × water_state = {conduit_scale:.4f}",
-                f"F_thz_shock    = {F_thz_shock:.4e} N  [example scale: 4.56×10⁷⁸ N]",
+                f"(Ï‰_thz/Ï‰_0)Â²  = ({omega_thz:.3e}/{omega_0:.3e})Â² = {(omega_thz/omega_0)**2:.4e}",
+                f"neutron_factor = Ï_n/Ï_ref = {neutron_factor:.4e}",
+                f"conduit_scale  = H_abund Ã— water_state = {conduit_scale:.4f}",
+                f"F_thz_shock    = {F_thz_shock:.4e} N  [example scale: 4.56Ã—10â·â¸ N]",
                 f"",
-                f"F_conduit = k_conduit × (H_abund × water_state) × neutron_factor",
-                f"k_conduit      = {self.K_CONDUIT:.3e} N·m²/C²",
-                f"F_conduit      = {F_conduit:.4e} N  [example scale: 3.45×10⁶⁷ N]",
-                f"[Novel: THz 26-layer frequency-squared coupling + COx H₂O conduit activation]",
+                f"F_conduit = k_conduit Ã— (H_abund Ã— water_state) Ã— neutron_factor",
+                f"k_conduit      = {self.K_CONDUIT:.3e} NÂ·mÂ²/CÂ²",
+                f"F_conduit      = {F_conduit:.4e} N  [example scale: 3.45Ã—10â¶â· N]",
+                f"[Novel: THz 26-layer frequency-squared coupling + COx Hâ‚‚O conduit activation]",
             ],
             'available_equations': [
-                "F_thz_shock = k_thz × (ω_thz/ω_0)² × n_f × c_s  (full THz shock formula)",
-                "F_conduit   = k_conduit × H_abund × water_state × n_f  (full conduit formula)",
-                "conduit_scale = H_abundance × water_state  (0 when vapour, H_abund when liquid)",
-                "Ratio F_thz / F_conduit = k_thz/k_conduit × (ω_thz/ω_0)²",
+                "F_thz_shock = k_thz Ã— (Ï‰_thz/Ï‰_0)Â² Ã— n_f Ã— c_s  (full THz shock formula)",
+                "F_conduit   = k_conduit Ã— H_abund Ã— water_state Ã— n_f  (full conduit formula)",
+                "conduit_scale = H_abundance Ã— water_state  (0 when vapour, H_abund when liquid)",
+                "Ratio F_thz / F_conduit = k_thz/k_conduit Ã— (Ï‰_thz/Ï‰_0)Â²",
                 "Combined: F_SF = F_thz_shock + F_conduit  (total star-formation coupling force)",
             ],
             'simulation_set': {
-                'water_phase_switch': 'toggle water_state 0→1 — conduit activation gate',
-                'THz_frequency_sweep': 'omega_thz from 1e11→1e13 rad/s — THz shock resonance peak',
-                'neutron_density_grid': 'rho_neutron from 1e10→1e18 kg/m³ vs F_thz landscape',
+                'water_phase_switch': 'toggle water_state 0â†’1 â€” conduit activation gate',
+                'THz_frequency_sweep': 'omega_thz from 1e11â†’1e13 rad/s â€” THz shock resonance peak',
+                'neutron_density_grid': 'rho_neutron from 1e10â†’1e18 kg/mÂ³ vs F_thz landscape',
                 'combined_SF_force': 'F_SF = F_thz + F_conduit over protostellar lifecycle',
             },
             'F_thz_shock': F_thz_shock,
@@ -6715,40 +6742,40 @@ class UQFFTHzConduitShockCalculator(_CP3Calculator):
 
 class UQFFSpookyActionDPMCalculator(_CP3Calculator):
     """
-    PAPER_240 | Source10 — Spooky Action Force + DPM Resonance Energy (grok_share_8d951e12.txt ~5903)
+    PAPER_240 | Source10 â€” Spooky Action Force + DPM Resonance Energy (grok_share_8d951e12.txt ~5903)
 
     Two quantum-scale UQFF force/energy terms:
 
     1. Quantum Spooky Action Force (string-wave coupling):
-        F_spooky = k_spooky × (string_wave / ω_0)
+        F_spooky = k_spooky Ã— (string_wave / Ï‰_0)
 
-        k_spooky    = 1.11×10⁻³⁴ J·s  (Planck-scale coupling ≈ ħ)
-        string_wave = 5.0×10¹⁴ Hz     (optical string wave frequency)
-        ω_0         = 1.0×10¹⁰ rad/s  (reference)
-        Example: F_spooky ≈ 2.71×10⁸⁹ N  (cosmological-scale entanglement)
+        k_spooky    = 1.11Ã—10â»Â³â´ JÂ·s  (Planck-scale coupling â‰ˆ Ä§)
+        string_wave = 5.0Ã—10Â¹â´ Hz     (optical string wave frequency)
+        Ï‰_0         = 1.0Ã—10Â¹â° rad/s  (reference)
+        Example: F_spooky â‰ˆ 2.71Ã—10â¸â¹ N  (cosmological-scale entanglement)
 
     2. DPM Resonance Energy Density (Di-Pseudo-Monopole magnetic resonance):
-        DPM_resonance = (g_H × μ_B × B₀ × C_DPM) / (ħ × ω₀)
+        DPM_resonance = (g_H Ã— Î¼_B Ã— Bâ‚€ Ã— C_DPM) / (Ä§ Ã— Ï‰â‚€)
 
-        g_H     = 1.252×10⁴⁶  (hydrogen UQFF g-factor)
-        μ_B     = 9.274×10⁻²⁴ J/T  (Bohr magneton)
-        B₀      = ambient magnetic field (T)
-        C_DPM   = 2.82×10⁻⁵⁶  (DPM coupling constant)
-        ħ       = 1.055×10⁻³⁴ J·s
-        ω₀      = 1.0×10¹⁰ rad/s
-        Example: Q_wave ≈ 3.11×10⁹ J/m³
+        g_H     = 1.252Ã—10â´â¶  (hydrogen UQFF g-factor)
+        Î¼_B     = 9.274Ã—10â»Â²â´ J/T  (Bohr magneton)
+        Bâ‚€      = ambient magnetic field (T)
+        C_DPM   = 2.82Ã—10â»âµâ¶  (DPM coupling constant)
+        Ä§       = 1.055Ã—10â»Â³â´ JÂ·s
+        Ï‰â‚€      = 1.0Ã—10Â¹â° rad/s
+        Example: Q_wave â‰ˆ 3.11Ã—10â¹ J/mÂ³
 
-    Novel contributions: quantum spooky-action force via string-wave/ω₀ linear coupling;
-    DPM magnetic resonance energy using hydrogen UQFF g-factor g_H = 1.252×10⁴⁶
+    Novel contributions: quantum spooky-action force via string-wave/Ï‰â‚€ linear coupling;
+    DPM magnetic resonance energy using hydrogen UQFF g-factor g_H = 1.252Ã—10â´â¶
     (distinct from standard proton g_p = 5.586).
     """
 
     PAPER_ID = "PAPER_240"
-    SOURCE_DOC = "Source10 — F_spooky + DPM_resonance (grok_share_8d951e12.txt ~5903)"
+    SOURCE_DOC = "Source10 â€” F_spooky + DPM_resonance (grok_share_8d951e12.txt ~5903)"
     SESSION = 59
 
-    K_SPOOKY = 1.11e-34      # J·s (Planck-scale coupling ≈ ħ)
-    HBAR = 1.055e-34          # J·s
+    K_SPOOKY = 1.11e-34      # JÂ·s (Planck-scale coupling â‰ˆ Ä§)
+    HBAR = 1.055e-34          # JÂ·s
     MU_B = 9.274e-24          # J/T (Bohr magneton)
     G_H = 1.252e46            # hydrogen UQFF g-factor
     C_DPM = 2.82e-56          # DPM coupling constant
@@ -6768,31 +6795,31 @@ class UQFFSpookyActionDPMCalculator(_CP3Calculator):
 
         return {
             'primary_equations': [
-                f"F_spooky = k_spooky × (string_wave / ω₀)",
-                f"k_spooky    = {self.K_SPOOKY:.3e} J·s  [Planck-scale string coupling]",
+                f"F_spooky = k_spooky Ã— (string_wave / Ï‰â‚€)",
+                f"k_spooky    = {self.K_SPOOKY:.3e} JÂ·s  [Planck-scale string coupling]",
                 f"string_wave = {string_wave:.3e} Hz  [optical string frequency]",
-                f"ω₀          = {omega_0:.3e} rad/s",
-                f"F_spooky    = {F_spooky:.4e} N  [example scale: 2.71×10⁸⁹ N]",
+                f"Ï‰â‚€          = {omega_0:.3e} rad/s",
+                f"F_spooky    = {F_spooky:.4e} N  [example scale: 2.71Ã—10â¸â¹ N]",
                 f"",
-                f"DPM_resonance = (g_H × μ_B × B₀ × C_DPM) / (ħ × ω₀)",
+                f"DPM_resonance = (g_H Ã— Î¼_B Ã— Bâ‚€ Ã— C_DPM) / (Ä§ Ã— Ï‰â‚€)",
                 f"g_H         = {self.G_H:.4e}  [hydrogen UQFF g-factor; NOT standard g_p=5.586]",
-                f"μ_B         = {self.MU_B:.4e} J/T",
-                f"B₀          = {B_0:.4e} T",
+                f"Î¼_B         = {self.MU_B:.4e} J/T",
+                f"Bâ‚€          = {B_0:.4e} T",
                 f"C_DPM       = {self.C_DPM:.3e}  [DPM coupling constant]",
-                f"DPM_res     = {DPM_resonance:.4e} J/m³  [example scale: Q_wave≈3.11×10⁹ J/m³]",
-                f"[Novel: g_H = 1.252e46 — uniquely large UQFF hydrogen g-factor; DPM magnetic resonance]",
+                f"DPM_res     = {DPM_resonance:.4e} J/mÂ³  [example scale: Q_waveâ‰ˆ3.11Ã—10â¹ J/mÂ³]",
+                f"[Novel: g_H = 1.252e46 â€” uniquely large UQFF hydrogen g-factor; DPM magnetic resonance]",
             ],
             'available_equations': [
-                "F_spooky = k_spooky × string_wave / ω₀  (linear frequency coupling)",
-                "DPM_resonance = g_H × μ_B × B₀ × C_DPM / (ħ × ω₀)  (full DPM formula)",
+                "F_spooky = k_spooky Ã— string_wave / Ï‰â‚€  (linear frequency coupling)",
+                "DPM_resonance = g_H Ã— Î¼_B Ã— Bâ‚€ Ã— C_DPM / (Ä§ Ã— Ï‰â‚€)  (full DPM formula)",
                 "g_H comparison: standard g_H = 5.585 (proton); UQFF g_H = 1.252e46 (UQFF-derived)",
-                "F_spooky / F_gravity = k_spooky × string_wave / (ω₀ × G × M / r²)  (relative strength)",
-                "Q_wave = DPM_resonance = ħω₀ × n_DPM  (photon-count interpretation)",
+                "F_spooky / F_gravity = k_spooky Ã— string_wave / (Ï‰â‚€ Ã— G Ã— M / rÂ²)  (relative strength)",
+                "Q_wave = DPM_resonance = Ä§Ï‰â‚€ Ã— n_DPM  (photon-count interpretation)",
             ],
             'simulation_set': {
-                'string_frequency_sweep': 'string_wave from 1e10→1e16 Hz — F_spooky linear growth',
-                'B_field_DPM': 'B_0 from 1e-10→1e6 T — DPM_resonance across cosmic B-field range',
-                'g_H_sensitivity': 'vary g_H from g_p=5.586 to g_H=1.252e46 — 47-order-of-magnitude range',
+                'string_frequency_sweep': 'string_wave from 1e10â†’1e16 Hz â€” F_spooky linear growth',
+                'B_field_DPM': 'B_0 from 1e-10â†’1e6 T â€” DPM_resonance across cosmic B-field range',
+                'g_H_sensitivity': 'vary g_H from g_p=5.586 to g_H=1.252e46 â€” 47-order-of-magnitude range',
                 'coupled_quantum': 'F_spooky + DPM_resonance as combined quantum coupling to g_UQFF',
             },
             'F_spooky': F_spooky,
@@ -6801,7 +6828,7 @@ class UQFFSpookyActionDPMCalculator(_CP3Calculator):
 
 
 # ---------------------------------------------------------------------------
-# Session 60 — PAPER_242–243 (grok_share_8d951e12.txt third-pass)
+# Session 60 â€” PAPER_242â€“243 (grok_share_8d951e12.txt third-pass)
 # Two new full-MUGE classes: Einstein-ring static lensing (Rings of Relativity)
 # and cavity-pressure additive term with M(t) mass growth (NGC 3603).
 # ---------------------------------------------------------------------------
@@ -6810,19 +6837,19 @@ class RingsOfRelativityEinsteinLensingMUGECalculator(_CP3Calculator):
     """Full MUGE for GAL-CLUS-022058s (Rings of Relativity) with static Einstein
     ring lensing amplification L_t.
 
-    Unique equation (Document 8 — third-pass extension of class 81):
-      L_t  = (G·M / c²·r) · L_factor        [Einstein ring lensing factor]
+    Unique equation (Document 8 â€” third-pass extension of class 81):
+      L_t  = (GÂ·M / cÂ²Â·r) Â· L_factor        [Einstein ring lensing factor]
       L_factor = D_LS / D_S = 0.67           [angular diameter distance ratio]
       corr_L = 1 + L_t
-      term1  = (G·M/r²)·(1+H(z)·t)·(1−B/B_crit)·corr_L
-      term_osc = 2·A·cos(k·x)·cos(ω·t) + (2π/t_Gyr)·A·cos(k·x−ω·t)
-      pert2  = 3·G·M / r³
-      term_DM = (M + M_DM)·(δρ/ρ + pert2) / M
-      term_wind = ρ_wind · v_wind² / ρ_fluid
+      term1  = (GÂ·M/rÂ²)Â·(1+H(z)Â·t)Â·(1âˆ’B/B_crit)Â·corr_L
+      term_osc = 2Â·AÂ·cos(kÂ·x)Â·cos(Ï‰Â·t) + (2Ï€/t_Gyr)Â·AÂ·cos(kÂ·xâˆ’Ï‰Â·t)
+      pert2  = 3Â·GÂ·M / rÂ³
+      term_DM = (M + M_DM)Â·(Î´Ï/Ï + pert2) / M
+      term_wind = Ï_wind Â· v_windÂ² / Ï_fluid
 
     Key distinction from class 81 (UQFFLensingModulationRingsCalculator):
-      • Class 81 uses  L(t) = L_0·e^{−t/τ}·cos(ω_lens·t)  — dynamic transit
-      • This class uses L_t = (GM/c²r)·(D_LS/D_S)          — static Einstein radius
+      â€¢ Class 81 uses  L(t) = L_0Â·e^{âˆ’t/Ï„}Â·cos(Ï‰_lensÂ·t)  â€” dynamic transit
+      â€¢ This class uses L_t = (GM/cÂ²r)Â·(D_LS/D_S)          â€” static Einstein radius
 
     Parameters sourced from Doc 8 C++ class RingsOfRelativity (xAI/Grok,
     October 2025): M=1e14 M_sun, r=10 kpc (Einstein radius), z_lens=0.5,
@@ -6833,7 +6860,7 @@ class RingsOfRelativityEinsteinLensingMUGECalculator(_CP3Calculator):
         import math
         G      = 6.6743e-11
         c      = 2.998e8
-        H0     = 2.184e-18          # s⁻¹
+        H0     = 2.184e-18          # sâ»Â¹
         LAMBDA = 1.1e-52
         hbar   = 1.0546e-34
         t_H    = 4.35e17            # Hubble time (s)
@@ -6846,8 +6873,8 @@ class RingsOfRelativityEinsteinLensingMUGECalculator(_CP3Calculator):
         B        = dataset.get('B',        1e-5)            # T
         B_crit   = dataset.get('B_crit',   4.4e13)          # T
         t        = dataset.get('t',        0.0)             # s
-        rho_fluid  = dataset.get('rho_fluid',  1e-26)       # kg/m³
-        rho_wind   = dataset.get('rho_wind',   1e-26)       # kg/m³
+        rho_fluid  = dataset.get('rho_fluid',  1e-26)       # kg/mÂ³
+        rho_wind   = dataset.get('rho_wind',   1e-26)       # kg/mÂ³
         v_wind     = dataset.get('v_wind',     1e5)         # m/s
         rho_vac_UA  = dataset.get('rho_vac_UA',  7.09e-36)
         rho_vac_SCm = dataset.get('rho_vac_SCm', 7.09e-37)
@@ -6878,7 +6905,7 @@ class RingsOfRelativityEinsteinLensingMUGECalculator(_CP3Calculator):
 
         # DPM-emergent: mu_s x grad(M_s/r) base (Newtonian form is emergent, not foundational)
 
-        g_base = G * M / r**2
+        g_base = dpm_emergent_ug1(M, r)  # DPM: mu_s * grad(M_s/r)
         ug1 = g_base
         ug4 = ug1 * corr_B
 
@@ -6909,7 +6936,7 @@ class RingsOfRelativityEinsteinLensingMUGECalculator(_CP3Calculator):
         term_osc2 = (2.0 * math.pi / t_Gyr) * A_osc * math.cos(arg)
         term_osc  = term_osc1 + term_osc2
 
-        # DM with pert2 = 3GM/r³
+        # DM with pert2 = 3GM/rÂ³
         pert1 = delta_rho
         pert2 = 3.0 * G * M / r**3
         term_DM = (M + M_DM) * (pert1 + pert2) / M
@@ -6921,22 +6948,22 @@ class RingsOfRelativityEinsteinLensingMUGECalculator(_CP3Calculator):
 
         return {
             'primary_equations': [
-                f"L_t = (G·M)/(c²·r)·L_factor = (G·{M:.3e})/(c²·{r:.3e})·{L_factor} = {L_t:.4e}",
+                f"L_t = (GÂ·M)/(cÂ²Â·r)Â·L_factor = (GÂ·{M:.3e})/(cÂ²Â·{r:.3e})Â·{L_factor} = {L_t:.4e}",
                 f"corr_L = 1 + L_t = {corr_L:.6f}",
-                f"H(z={z_lens}) = H0·√(0.3·(1+z)³+0.7) = {Hz:.4e} s⁻¹",
-                f"term1  = (G·M/r²)·(1+H(z)·t)·(1−B/Bc)·corr_L = {term1:.4e} m/s²",
-                f"term_osc = 2·A·cos(kx)·cos(ωt) + (2π/t_Gyr)·A·cos(kx−ωt) = {term_osc:.4e}",
-                f"pert2  = 3·G·M/r³ = {pert2:.4e}",
+                f"H(z={z_lens}) = H0Â·âˆš(0.3Â·(1+z)Â³+0.7) = {Hz:.4e} sâ»Â¹",
+                f"term1  = (GÂ·M/rÂ²)Â·(1+H(z)Â·t)Â·(1âˆ’B/Bc)Â·corr_L = {term1:.4e} m/sÂ²",
+                f"term_osc = 2Â·AÂ·cos(kx)Â·cos(Ï‰t) + (2Ï€/t_Gyr)Â·AÂ·cos(kxâˆ’Ï‰t) = {term_osc:.4e}",
+                f"pert2  = 3Â·GÂ·M/rÂ³ = {pert2:.4e}",
                 f"term_DM = {term_DM:.4e}",
-                f"term_wind = ρ_wind·v_wind²/ρ_fluid = {term_wind:.4e}",
-                f"g_total = {g_total:.4e} m/s²",
+                f"term_wind = Ï_windÂ·v_windÂ²/Ï_fluid = {term_wind:.4e}",
+                f"g_total = {g_total:.4e} m/sÂ²",
             ],
             'available_equations': [
-                "Einstein deflection angle: α = 4GM/(c²·b) for impact parameter b",
-                "Magnification: μ = |1/[(u²+2)/(u·√(u²+4))]| for u = θ/θ_E",
+                "Einstein deflection angle: Î± = 4GM/(cÂ²Â·b) for impact parameter b",
+                "Magnification: Î¼ = |1/[(uÂ²+2)/(uÂ·âˆš(uÂ²+4))]| for u = Î¸/Î¸_E",
                 "L_factor scan: D_LS/D_S sweeping source-plane geometry",
-                "Two-mode beat: Δω between standing (2coscos) and traveling (cos(kx-ωt))",
-                "pert2 = 3GM/r³ vs first-order pert1=δρ/ρ cross-comparison",
+                "Two-mode beat: Î”Ï‰ between standing (2coscos) and traveling (cos(kx-Ï‰t))",
+                "pert2 = 3GM/rÂ³ vs first-order pert1=Î´Ï/Ï cross-comparison",
             ],
             'simulation_set': {
                 'L_factor_sweep':   'L_factor from 0.3 to 0.9 (D_LS/D_S geometry)',
@@ -6952,24 +6979,24 @@ class RingsOfRelativityEinsteinLensingMUGECalculator(_CP3Calculator):
 
 class NGC3603FullMUGECavityPressureCalculator(_CP3Calculator):
     """Full MUGE for NGC 3603 with time-varying mass M(t) and additive cavity
-    pressure term P(t)/ρ_fluid.
+    pressure term P(t)/Ï_fluid.
 
-    Unique equations (Document 11 — full C++ RingsOfRelativity MUGE, third-pass):
-      M(t) = M0·(1 + M_dot·e^{−t/τ_SF})          [mass growth via star formation]
-      P(t) = P0·e^{−t/τ_exp}                       [cavity pressure decay]
-      term_pressure = P(t) / ρ_fluid               [additive pressure acceleration]
-      term1 = (G·M(t)/r²)·(1+H_0·t)·(1−B/B_crit) [M(t) in Newton, not M0]
-      term_osc = 2·A·cos(k·x)·cos(ω·t) + (2π/t_Gyr)·A·cos(kx−ωt)
-      pert2  = 3·G·M(t) / r³
+    Unique equations (Document 11 â€” full C++ RingsOfRelativity MUGE, third-pass):
+      M(t) = M0Â·(1 + M_dotÂ·e^{âˆ’t/Ï„_SF})          [mass growth via star formation]
+      P(t) = P0Â·e^{âˆ’t/Ï„_exp}                       [cavity pressure decay]
+      term_pressure = P(t) / Ï_fluid               [additive pressure acceleration]
+      term1 = (GÂ·M(t)/rÂ²)Â·(1+H_0Â·t)Â·(1âˆ’B/B_crit) [M(t) in Newton, not M0]
+      term_osc = 2Â·AÂ·cos(kÂ·x)Â·cos(Ï‰Â·t) + (2Ï€/t_Gyr)Â·AÂ·cos(kxâˆ’Ï‰t)
+      pert2  = 3Â·GÂ·M(t) / rÂ³
 
     Key distinction from class 88 (NGC3603StellarPressureModulationCalculator):
-      • Class 88 uses P as a multiplicative suppressor: *(1−P(t))
-      • This class uses P(t)/ρ_fluid as an additive acceleration term
-      • This class also includes M(t) mass growth (exponential star-formation model)
+      â€¢ Class 88 uses P as a multiplicative suppressor: *(1âˆ’P(t))
+      â€¢ This class uses P(t)/Ï_fluid as an additive acceleration term
+      â€¢ This class also includes M(t) mass growth (exponential star-formation model)
 
     Parameters from Doc 11 C++ NGC3603 class (xAI/Grok, October 2025):
     M0=400,000 M_sun, r=9.5 ly, tau_SF=1 Myr, tau_exp=1 Myr, P0=4e-8 Pa,
-    rho_wind=1e-20 kg/m³, v_wind=2e6 m/s, B=1e-5 T.
+    rho_wind=1e-20 kg/mÂ³, v_wind=2e6 m/s, B=1e-5 T.
     """
 
     def compute(self, dataset: dict) -> dict:
@@ -7019,7 +7046,7 @@ class NGC3603FullMUGECavityPressureCalculator(_CP3Calculator):
         # Cavity pressure decay
         Pt = P0 * math.exp(-t / tau_exp)
 
-        g_base_t = G * Mt / r**2
+        g_base_t = dpm_emergent_ug1(Mt, r)  # DPM-emergent
         ug1  = g_base_t
         corr_B = 1.0 - B / B_crit
         ug4  = ug1 * corr_B
@@ -7052,7 +7079,7 @@ class NGC3603FullMUGECavityPressureCalculator(_CP3Calculator):
         term_osc2 = (2.0 * math.pi / t_Gyr) * A_osc * math.cos(arg)
         term_osc  = term_osc1 + term_osc2
 
-        # DM with pert2 = 3GM(t)/r³
+        # DM with pert2 = 3GM(t)/rÂ³
         M_DM  = Mt * M_DM_factor
         pert1 = delta_rho
         pert2 = 3.0 * G * Mt / r**3
@@ -7061,7 +7088,7 @@ class NGC3603FullMUGECavityPressureCalculator(_CP3Calculator):
         # Stellar wind acceleration
         term_wind = rho_wind * v_wind**2 / rho_fluid
 
-        # Cavity pressure acceleration (ADDITIVE term — distinct from class 88 multiplier)
+        # Cavity pressure acceleration (ADDITIVE term â€” distinct from class 88 multiplier)
         term_pressure = Pt / rho_fluid
 
         g_total = (term1 + term2 + term3 + term4 + term_q + term_fluid +
@@ -7069,21 +7096,21 @@ class NGC3603FullMUGECavityPressureCalculator(_CP3Calculator):
 
         return {
             'primary_equations': [
-                f"M(t) = M0·(1+M_dot·e^(-t/τ_SF)) = {Mt:.4e} kg  (M_dot={M_dot:.4f})",
-                f"P(t) = P0·e^(-t/τ_exp) = {Pt:.4e} Pa",
-                f"term_pressure = P(t)/ρ_fluid = {term_pressure:.4e} m/s²  [additive]",
-                f"term1 = (G·M(t)/r²)·(1+H0·t)·(1−B/Bc) = {term1:.4e} m/s²",
-                f"pert2 = 3·G·M(t)/r³ = {pert2:.4e}",
-                f"term_osc = 2A·cos(kx)cos(ωt)+(2π/t_Gyr)A·cos(kx−ωt) = {term_osc:.4e}",
-                f"term_wind = ρ_wind·v_wind²/ρ_fluid = {term_wind:.4e} m/s²",
-                f"g_total (10 terms) = {g_total:.4e} m/s²",
+                f"M(t) = M0Â·(1+M_dotÂ·e^(-t/Ï„_SF)) = {Mt:.4e} kg  (M_dot={M_dot:.4f})",
+                f"P(t) = P0Â·e^(-t/Ï„_exp) = {Pt:.4e} Pa",
+                f"term_pressure = P(t)/Ï_fluid = {term_pressure:.4e} m/sÂ²  [additive]",
+                f"term1 = (GÂ·M(t)/rÂ²)Â·(1+H0Â·t)Â·(1âˆ’B/Bc) = {term1:.4e} m/sÂ²",
+                f"pert2 = 3Â·GÂ·M(t)/rÂ³ = {pert2:.4e}",
+                f"term_osc = 2AÂ·cos(kx)cos(Ï‰t)+(2Ï€/t_Gyr)AÂ·cos(kxâˆ’Ï‰t) = {term_osc:.4e}",
+                f"term_wind = Ï_windÂ·v_windÂ²/Ï_fluid = {term_wind:.4e} m/sÂ²",
+                f"g_total (10 terms) = {g_total:.4e} m/sÂ²",
             ],
             'available_equations': [
-                "M(t) mass growth: dM/dt = M0·(M_dot_factor/τ_SF)·e^(-t/τ_SF)",
-                "P(t) dispersal time: t_disp = τ_exp·ln(P0·ρ_fluid/g_threshold)",
-                "Cavity pressure crossover: P(t)/ρ_fluid = term1 → cluster dispersal age",
-                "star formation efficiency: ε_SF = (Mt−M0)/M0 = M_dot·e^(-t/τ_SF)",
-                "Compare (1−P) vs P/ρ_fluid: ratio = (1−P)·g_base / (P/ρ_fluid)",
+                "M(t) mass growth: dM/dt = M0Â·(M_dot_factor/Ï„_SF)Â·e^(-t/Ï„_SF)",
+                "P(t) dispersal time: t_disp = Ï„_expÂ·ln(P0Â·Ï_fluid/g_threshold)",
+                "Cavity pressure crossover: P(t)/Ï_fluid = term1 â†’ cluster dispersal age",
+                "star formation efficiency: Îµ_SF = (Mtâˆ’M0)/M0 = M_dotÂ·e^(-t/Ï„_SF)",
+                "Compare (1âˆ’P) vs P/Ï_fluid: ratio = (1âˆ’P)Â·g_base / (P/Ï_fluid)",
             ],
             'simulation_set': {
                 'tau_SF_sweep':    'tau_SF from 0.5 to 5 Myr (rapid vs slow SF)',
@@ -7099,35 +7126,35 @@ class NGC3603FullMUGECavityPressureCalculator(_CP3Calculator):
 
 
 # ===========================================================================
-# Session 61 — grok_share_8d951e12.txt FOURTH-PASS (unique sub-term physics)
+# Session 61 â€” grok_share_8d951e12.txt FOURTH-PASS (unique sub-term physics)
 # ===========================================================================
 
 class MUGEQuantumUncertaintyTermCalculator(_CP3Calculator):
     """
-    PAPER_244 — Universal MUGE quantum uncertainty gravity sub-term.
+    PAPER_244 â€” Universal MUGE quantum uncertainty gravity sub-term.
 
     Present identically in ALL 19 grok_share_8d951e12 C++ MUGE modules as term_q.
     Extracted as a standalone precision calculator for independent sensitivity analysis.
 
     Core formula
     ------------
-    g_Q = (ħ / √(Δx · Δp)) · ψ_integral · (2π / t_Hubble)
+    g_Q = (Ä§ / âˆš(Î”x Â· Î”p)) Â· Ïˆ_integral Â· (2Ï€ / t_Hubble)
 
-    with Heisenberg minimum-uncertainty: Δx · Δp ≥ ħ/2, so √(Δx·Δp) ≥ √(ħ/2).
-    When Δp = ħ/Δx (minimum uncertainty): √(Δx·Δp) = √ħ → g_Q = ħ^(1/2)·ψ·2π/t_H.
+    with Heisenberg minimum-uncertainty: Î”x Â· Î”p â‰¥ Ä§/2, so âˆš(Î”xÂ·Î”p) â‰¥ âˆš(Ä§/2).
+    When Î”p = Ä§/Î”x (minimum uncertainty): âˆš(Î”xÂ·Î”p) = âˆšÄ§ â†’ g_Q = Ä§^(1/2)Â·ÏˆÂ·2Ï€/t_H.
 
     Physical interpretation
     -----------------------
     Quantum vacuum fluctuations impose a minimum effective gravity perturbation on
-    every astrophysical body. The Hubble-time normalization (2π/t_H) connects the
+    every astrophysical body. The Hubble-time normalization (2Ï€/t_H) connects the
     quantum zero-point scale to the cosmological time horizon.
     """
 
     def compute(self, dataset: dict) -> dict:
         import math
-        hbar          = dataset.get('hbar', 1.0546e-34)      # J·s
+        hbar          = dataset.get('hbar', 1.0546e-34)      # JÂ·s
         delta_x       = dataset.get('delta_x', 1e-10)        # m  (position uncertainty)
-        delta_p       = dataset.get('delta_p', hbar / dataset.get('delta_x', 1e-10))  # kg·m/s
+        delta_p       = dataset.get('delta_p', hbar / dataset.get('delta_x', 1e-10))  # kgÂ·m/s
         psi_integral  = dataset.get('psi_integral', 1.0)     # wavefunction norm
         t_Hubble      = dataset.get('t_Hubble', 13.8e9 * 3.156e7)   # s
 
@@ -7140,22 +7167,22 @@ class MUGEQuantumUncertaintyTermCalculator(_CP3Calculator):
 
         return {
             'primary_equations': [
-                f"g_Q = (ħ/√(Δx·Δp))·ψ·(2π/t_H) = {g_Q:.4e} m/s²",
-                f"√(Δx·Δp) = {sqrt_unc:.4e}  [Δx={delta_x:.2e} m, Δp={delta_p:.2e} kg·m/s]",
-                f"g_Q_min (Heisenberg bound) = {g_Q_min:.4e} m/s²",
-                f"Hubble normalisation: 2π/t_H = {2*math.pi/t_Hubble:.4e} s⁻¹",
+                f"g_Q = (Ä§/âˆš(Î”xÂ·Î”p))Â·ÏˆÂ·(2Ï€/t_H) = {g_Q:.4e} m/sÂ²",
+                f"âˆš(Î”xÂ·Î”p) = {sqrt_unc:.4e}  [Î”x={delta_x:.2e} m, Î”p={delta_p:.2e} kgÂ·m/s]",
+                f"g_Q_min (Heisenberg bound) = {g_Q_min:.4e} m/sÂ²",
+                f"Hubble normalisation: 2Ï€/t_H = {2*math.pi/t_Hubble:.4e} sâ»Â¹",
             ],
             'available_equations': [
-                "Min uncertainty product: Δx·Δp = ħ/2  →  g_Q_min = √(2ħ)·ψ·2π/t_H",
+                "Min uncertainty product: Î”xÂ·Î”p = Ä§/2  â†’  g_Q_min = âˆš(2Ä§)Â·ÏˆÂ·2Ï€/t_H",
                 "Ratio g_Q/g_Newtonian: quantum fraction of local gravity",
-                "Time dependence: if ψ decays as ψ₀·e^(-t/τ_Q),  g_Q(t) drops exponentially",
-                "Hubble-time sensitivity: δg_Q/δt_H = −g_Q/t_H",
+                "Time dependence: if Ïˆ decays as Ïˆâ‚€Â·e^(-t/Ï„_Q),  g_Q(t) drops exponentially",
+                "Hubble-time sensitivity: Î´g_Q/Î´t_H = âˆ’g_Q/t_H",
                 "Scale comparison: g_Q vs kBT/mL  (thermal vs quantum gravity)",
             ],
             'simulation_set': {
-                'delta_x_sweep':    'Δx from 1e-15 (nuclear) to 1e-3 m (macroscopic)',
-                'psi_integral_sweep': 'ψ from 0.1 to 10.0 (wavefunction normalisation)',
-                't_Hubble_sweep':   't_H from 10–20 Gyr (cosmological age uncertainty)',
+                'delta_x_sweep':    'Î”x from 1e-15 (nuclear) to 1e-3 m (macroscopic)',
+                'psi_integral_sweep': 'Ïˆ from 0.1 to 10.0 (wavefunction normalisation)',
+                't_Hubble_sweep':   't_H from 10â€“20 Gyr (cosmological age uncertainty)',
                 'quantum_fraction':  'g_Q/(g_Q + g_Newtonian) over radius sweep',
             },
             'parameters': {
@@ -7168,7 +7195,7 @@ class MUGEQuantumUncertaintyTermCalculator(_CP3Calculator):
 
 class MUGEFluidSelfGravityTermCalculator(_CP3Calculator):
     """
-    PAPER_245 — Universal MUGE fluid self-gravity sub-term.
+    PAPER_245 â€” Universal MUGE fluid self-gravity sub-term.
 
     Present identically in ALL 19 grok_share_8d951e12 C++ MUGE modules as term_fluid.
     Computes the effective gravitational acceleration contribution from the surrounding
@@ -7176,11 +7203,11 @@ class MUGEFluidSelfGravityTermCalculator(_CP3Calculator):
 
     Core formula
     ------------
-    g_fluid = (ρ_fluid · V · g_grav) / M
+    g_fluid = (Ï_fluid Â· V Â· g_grav) / M
 
-    where V = (4/3)·π·r³  (sphere volume defined by characteristic radius r).
+    where V = (4/3)Â·Ï€Â·rÂ³  (sphere volume defined by characteristic radius r).
     This is the Archimedes buoyancy principle transposed to gravity:
-    g_fluid = g_Archimedes = V·ρ_f·g_grav / M_body.
+    g_fluid = g_Archimedes = VÂ·Ï_fÂ·g_grav / M_body.
     """
 
     def compute(self, dataset: dict) -> dict:
@@ -7188,38 +7215,38 @@ class MUGEFluidSelfGravityTermCalculator(_CP3Calculator):
         G          = dataset.get('G', 6.6743e-11)
         M          = dataset.get('M_kg', 1.989e30)       # kg
         r          = dataset.get('r_m', 6.957e8)         # m  (characteristic radius)
-        rho_fluid  = dataset.get('rho_fluid', 1e-20)     # kg/m³ (ambient medium)
+        rho_fluid  = dataset.get('rho_fluid', 1e-20)     # kg/mÂ³ (ambient medium)
 
         V       = (4.0 / 3.0) * math.pi * r**3
-        g_grav  = G * M / r**2                          # local Newtonian g
+        g_grav = dpm_emergent_ug1(M, r)  # DPM: mu_s * grad(M_s/r)
         g_fluid = (rho_fluid * V * g_grav) / M
 
         # Ratio fluid/Newtonian
         ratio = g_fluid / g_grav if g_grav != 0 else 0.0
 
-        # Crossover radius where g_fluid = g_grav → rho_fluid·V = M
+        # Crossover radius where g_fluid = g_grav â†’ rho_fluidÂ·V = M
         r_crossover = (3.0 * M / (4.0 * math.pi * rho_fluid))**(1.0/3.0) if rho_fluid > 0 else float('inf')
 
         return {
             'primary_equations': [
-                f"V = (4/3)πr³ = {V:.4e} m³",
-                f"g_grav = G·M/r² = {g_grav:.4e} m/s²",
-                f"g_fluid = ρ_f·V·g_grav/M = {g_fluid:.4e} m/s²",
-                f"g_fluid/g_grav = ρ_f·V/M = {ratio:.4e}  [Archimedes fraction]",
+                f"V = (4/3)Ï€rÂ³ = {V:.4e} mÂ³",
+                f"g_grav = GÂ·M/rÂ² = {g_grav:.4e} m/sÂ²",
+                f"g_fluid = Ï_fÂ·VÂ·g_grav/M = {g_fluid:.4e} m/sÂ²",
+                f"g_fluid/g_grav = Ï_fÂ·V/M = {ratio:.4e}  [Archimedes fraction]",
                 f"Crossover radius (g_fluid=g_Newt): r_c = {r_crossover:.4e} m",
             ],
             'available_equations': [
-                "Buoyancy crossover: ρ_f·V = M → ρ_f = M/V = 3M/(4πr³)",
-                "g_fluid as fraction: η = ρ_f·(4πr³/3)/M = ρ_f·V/M",
-                "Fluid pressure gradient: ∇P = ρ_f·g → P = ρ_f·g·r (column)",
-                "Rayleigh-Taylor stability: growth rate σ = √(g_fluid·k·Δρ/ρ)",
-                "Kelvin-Helmholtz: shear instability scale L = v_shear²/(g_fluid·Δρ/ρ)",
+                "Buoyancy crossover: Ï_fÂ·V = M â†’ Ï_f = M/V = 3M/(4Ï€rÂ³)",
+                "g_fluid as fraction: Î· = Ï_fÂ·(4Ï€rÂ³/3)/M = Ï_fÂ·V/M",
+                "Fluid pressure gradient: âˆ‡P = Ï_fÂ·g â†’ P = Ï_fÂ·gÂ·r (column)",
+                "Rayleigh-Taylor stability: growth rate Ïƒ = âˆš(g_fluidÂ·kÂ·Î”Ï/Ï)",
+                "Kelvin-Helmholtz: shear instability scale L = v_shearÂ²/(g_fluidÂ·Î”Ï/Ï)",
             ],
             'simulation_set': {
-                'rho_fluid_sweep':    'ρ_f from 1e-25 (void) to 1e-10 kg/m³ (dense cloud)',
+                'rho_fluid_sweep':    'Ï_f from 1e-25 (void) to 1e-10 kg/mÂ³ (dense cloud)',
                 'radius_sweep':       'r from stellar to galactic scale',
-                'mass_sweep':         'M from 1 M☉ to 1e15 M☉ galaxy cluster',
-                'buoyancy_fraction':  'η = g_fluid/g_grav over rho_fluid space',
+                'mass_sweep':         'M from 1 Mâ˜‰ to 1e15 Mâ˜‰ galaxy cluster',
+                'buoyancy_fraction':  'Î· = g_fluid/g_grav over rho_fluid space',
             },
             'parameters': {
                 'V_m3': V, 'g_grav': g_grav, 'g_fluid': g_fluid,
@@ -7230,15 +7257,15 @@ class MUGEFluidSelfGravityTermCalculator(_CP3Calculator):
 
 class MUGEDualModeOscillatoryGravityCalculator(_CP3Calculator):
     """
-    PAPER_246 — Universal MUGE dual-mode oscillatory gravity sub-term.
+    PAPER_246 â€” Universal MUGE dual-mode oscillatory gravity sub-term.
 
     Present identically in ALL 19 grok_share_8d951e12 C++ MUGE modules as term_osc.
     Combines a standing-wave mode and a Hubble-normalised travelling wave mode:
 
     Core formula
     ------------
-    g_osc = 2·A·cos(k·x)·cos(ω·t)          [standing wave, Mode 1]
-          + (2π/T_H_gyr)·A·cos(k·x − ω·t)  [Hubble-normalised traveling, Mode 2]
+    g_osc = 2Â·AÂ·cos(kÂ·x)Â·cos(Ï‰Â·t)          [standing wave, Mode 1]
+          + (2Ï€/T_H_gyr)Â·AÂ·cos(kÂ·x âˆ’ Ï‰Â·t)  [Hubble-normalised traveling, Mode 2]
 
     Mode 1 is a spatial standing wave (interference of two counter-propagating waves).
     Mode 2 is a traveling wave amplitude-scaled to Hubble time in Gyr units,
@@ -7247,7 +7274,7 @@ class MUGEDualModeOscillatoryGravityCalculator(_CP3Calculator):
 
     def compute(self, dataset: dict) -> dict:
         import math
-        A           = dataset.get('A_osc', 1e-10)        # m/s² amplitude
+        A           = dataset.get('A_osc', 1e-10)        # m/sÂ² amplitude
         k           = dataset.get('k_osc', 1.0 / dataset.get('r_m', 1e16))   # rad/m
         omega       = dataset.get('omega_osc', 2 * math.pi / (dataset.get('r_m', 1e16) / 3e8))
         x           = dataset.get('x_pos', dataset.get('r_m', 1e16))         # m
@@ -7265,24 +7292,24 @@ class MUGEDualModeOscillatoryGravityCalculator(_CP3Calculator):
 
         return {
             'primary_equations': [
-                f"Mode 1 (standing): 2A·cos(kx)·cos(ωt) = {mode1:.4e} m/s²",
-                f"Mode 2 (travel):  (2π/T_H_gyr)·A·cos(kx−ωt) = {mode2:.4e} m/s²",
-                f"g_osc = mode1 + mode2 = {g_osc:.4e} m/s²",
-                f"k·x = {phase_kx:.4f} rad,  k·x−ω·t = {phase_kx_wt:.4f} rad",
-                f"Mode2 amplitude factor (2π/T_H_gyr) = {amp_ratio:.4f}",
+                f"Mode 1 (standing): 2AÂ·cos(kx)Â·cos(Ï‰t) = {mode1:.4e} m/sÂ²",
+                f"Mode 2 (travel):  (2Ï€/T_H_gyr)Â·AÂ·cos(kxâˆ’Ï‰t) = {mode2:.4e} m/sÂ²",
+                f"g_osc = mode1 + mode2 = {g_osc:.4e} m/sÂ²",
+                f"kÂ·x = {phase_kx:.4f} rad,  kÂ·xâˆ’Ï‰Â·t = {phase_kx_wt:.4f} rad",
+                f"Mode2 amplitude factor (2Ï€/T_H_gyr) = {amp_ratio:.4f}",
             ],
             'available_equations': [
-                "Standing wave nodes: cos(kx)=0 → x = (n+½)π/k",
-                "Traveling wave phase velocity: v_phase = ω/k",
-                "Group velocity (envelope): v_group = dω/dk (needs dispersion relation)",
-                "Total amplitude envelope: |g_osc_max| ≤ 2A + (2π/T_H_gyr)·A",
-                "Resonance condition: ω_local = 2π/t_Hubble (Mode 2 dominates)",
+                "Standing wave nodes: cos(kx)=0 â†’ x = (n+Â½)Ï€/k",
+                "Traveling wave phase velocity: v_phase = Ï‰/k",
+                "Group velocity (envelope): v_group = dÏ‰/dk (needs dispersion relation)",
+                "Total amplitude envelope: |g_osc_max| â‰¤ 2A + (2Ï€/T_H_gyr)Â·A",
+                "Resonance condition: Ï‰_local = 2Ï€/t_Hubble (Mode 2 dominates)",
                 "Time average: <g_osc> = 0  (both modes average to zero)",
             ],
             'simulation_set': {
-                'omega_sweep':      'ω from 2πν_THz to 2π/t_H (THz to cosmic scales)',
+                'omega_sweep':      'Ï‰ from 2Ï€Î½_THz to 2Ï€/t_H (THz to cosmic scales)',
                 'k_sweep':          'k from 1/pc to 1/nucleus (spatial scale)',
-                'A_sweep':          'A from 1e-15 to 1e-5 m/s² (field strength)',
+                'A_sweep':          'A from 1e-15 to 1e-5 m/sÂ² (field strength)',
                 'phase_evolution':  'g_osc(t) over 0 to 10 Gyr at fixed x',
             },
             'parameters': {
@@ -7294,7 +7321,7 @@ class MUGEDualModeOscillatoryGravityCalculator(_CP3Calculator):
 
 class MUGEMergerInteractionModulationCalculator(_CP3Calculator):
     """
-    PAPER_247 — MUGE galaxy merger interaction gravity modulation term.
+    PAPER_247 â€” MUGE galaxy merger interaction gravity modulation term.
 
     Present in AntennaeGalaxies and HUDF modules as interaction term I(t) that
     amplifies the UQFF Ug gravity by (1 + I(t)) during active merger phases.
@@ -7302,13 +7329,13 @@ class MUGEMergerInteractionModulationCalculator(_CP3Calculator):
 
     Core formula
     ------------
-    I(t) = I₀ · exp(−t / τ_merger)
-    g_merger = g_base · (1 + I(t))
+    I(t) = Iâ‚€ Â· exp(âˆ’t / Ï„_merger)
+    g_merger = g_base Â· (1 + I(t))
 
-    where g_base = UQFF Ug = (Ug1 + Ug4)·(1 + f_TRZ)·(1 + I(t))
-    and Ug1 = G·M(t)/r²,  Ug4 = Ug1·(1 − B/B_crit).
+    where g_base = UQFF Ug = (Ug1 + Ug4)Â·(1 + f_TRZ)Â·(1 + I(t))
+    and Ug1 = GÂ·M(t)/rÂ²,  Ug4 = Ug1Â·(1 âˆ’ B/B_crit).
 
-    The (1+I) factor boosts local gravity during the merger by up to (1+I₀) ≈ 1.1
+    The (1+I) factor boosts local gravity during the merger by up to (1+Iâ‚€) â‰ˆ 1.1
     at t=0 and decays exponentially to unity asymptotically (relaxed state).
     """
 
@@ -7325,7 +7352,7 @@ class MUGEMergerInteractionModulationCalculator(_CP3Calculator):
         B_crit       = dataset.get('B_crit_T', 1e11)
 
         It   = I0 * math.exp(-t / tau_merger)
-        Ug1  = G * M / r**2
+        Ug1 = dpm_emergent_ug1(M, r)  # DPM: mu_s * grad(M_s/r)
         Ug4  = Ug1 * (1.0 - B / B_crit)
         g_base_no_I = (Ug1 + Ug4) * (1 + f_TRZ)
         g_merger    = g_base_no_I * (1.0 + It)
@@ -7338,26 +7365,26 @@ class MUGEMergerInteractionModulationCalculator(_CP3Calculator):
 
         return {
             'primary_equations': [
-                f"I(t) = I₀·e^(−t/τ_m) = {It:.4e}  [I₀={I0}, τ_m={tau_merger:.3e} s]",
-                f"Ug1 = G·M/r² = {Ug1:.4e} m/s²",
-                f"g_base (no merger) = (Ug1+Ug4)·(1+f_TRZ) = {g_base_no_I:.4e} m/s²",
-                f"g_merger = g_base·(1+I(t)) = {g_merger:.4e} m/s²",
+                f"I(t) = Iâ‚€Â·e^(âˆ’t/Ï„_m) = {It:.4e}  [Iâ‚€={I0}, Ï„_m={tau_merger:.3e} s]",
+                f"Ug1 = GÂ·M/rÂ² = {Ug1:.4e} m/sÂ²",
+                f"g_base (no merger) = (Ug1+Ug4)Â·(1+f_TRZ) = {g_base_no_I:.4e} m/sÂ²",
+                f"g_merger = g_baseÂ·(1+I(t)) = {g_merger:.4e} m/sÂ²",
                 f"Gravity boost = +{boost:.2f}%  at t={t:.3e} s",
-                f"Merger half-life t½ = {t_half:.3e} s  ({t_half/3.156e16:.2f} Gyr)",
+                f"Merger half-life tÂ½ = {t_half:.3e} s  ({t_half/3.156e16:.2f} Gyr)",
                 f"Relaxation time (I<1%) = {t_relax:.3e} s  ({t_relax/3.156e16:.2f} Gyr)",
             ],
             'available_equations': [
-                "Peak boost: (1+I₀) at t=0 → need τ_merger for rate",
-                "Energy deposited by tidal torque: E_tide ∝ I₀·Ug1·τ_merger",
-                "SFR enhancement: SFR(t) = SFR₀·(1+I(t))  (tidal trigger)",
-                "Gas inflow rate: dM_gas/dt ∝ I(t)·v_infall²/G·M",
-                "BH accretion boost: L_AGN ∝ Ṁ_BH·c² with Ṁ_BH enhanced by I(t)",
+                "Peak boost: (1+Iâ‚€) at t=0 â†’ need Ï„_merger for rate",
+                "Energy deposited by tidal torque: E_tide âˆ Iâ‚€Â·Ug1Â·Ï„_merger",
+                "SFR enhancement: SFR(t) = SFRâ‚€Â·(1+I(t))  (tidal trigger)",
+                "Gas inflow rate: dM_gas/dt âˆ I(t)Â·v_infallÂ²/GÂ·M",
+                "BH accretion boost: L_AGN âˆ á¹€_BHÂ·cÂ² with á¹€_BH enhanced by I(t)",
             ],
             'simulation_set': {
-                'I0_sweep':         'I₀ from 0.01 to 1.0 (minor to major merger)',
-                'tau_merger_sweep': 'τ_m from 100 Myr to 2 Gyr (fast vs long merger)',
+                'I0_sweep':         'Iâ‚€ from 0.01 to 1.0 (minor to major merger)',
+                'tau_merger_sweep': 'Ï„_m from 100 Myr to 2 Gyr (fast vs long merger)',
                 'mass_ratio_sweep': 'M1/M2 from 1:1 to 1:10 (merger mass ratio)',
-                'phase_evolution':  'g_merger(t) over 0 to 10τ_m',
+                'phase_evolution':  'g_merger(t) over 0 to 10Ï„_m',
             },
             'parameters': {
                 'It': It, 'g_base': g_base_no_I, 'g_merger': g_merger,
@@ -7368,21 +7395,21 @@ class MUGEMergerInteractionModulationCalculator(_CP3Calculator):
 
 class UQFFSource10BatchProfiledCalculator(_CP3Calculator):
     """
-    PAPER_248 — Source10 upgraded batch-compute + OpenMP + chrono profiling calculator.
+    PAPER_248 â€” Source10 upgraded batch-compute + OpenMP + chrono profiling calculator.
 
     Captures the three-pass Source10 upgrade from grok_share_8d951e12.txt that adds:
     1. Replaced legacy <cstdlib>/<ctime> RNG with mt19937 (Mersenne Twister)
     2. Configurable scaling_factors map with file-loadable config
-    3. batch_compute_F_U_Bi_i() for N systems × T timesteps with OpenMP parallelism
+    3. batch_compute_F_U_Bi_i() for N systems Ã— T timesteps with OpenMP parallelism
     4. chrono::high_resolution_clock profiling on all compute paths
 
     Core formulae
     -------------
-    F_U_Bi_i = integrand·x² + LENR_scale·activation·e^(−t/1e6) + DE + resonance·η + rel·(1+f_TRZ)
+    F_U_Bi_i = integrandÂ·xÂ² + LENR_scaleÂ·activationÂ·e^(âˆ’t/1e6) + DE + resonanceÂ·Î· + relÂ·(1+f_TRZ)
 
-    g_UQFF   = Σᵢ₌₁²⁶(Ug1ᵢ + Ug2ᵢ + Ug3ᵢ + Ug4ᵢ) + Λc²/3 + g_Q
+    g_UQFF   = Î£áµ¢â‚Œâ‚Â²â¶(Ug1áµ¢ + Ug2áµ¢ + Ug3áµ¢ + Ug4áµ¢) + Î›cÂ²/3 + g_Q
 
-    DPM_resonance = g_H·μ_B·B₀ / (ħ·ω₀) × 2.82e−56   [Eta Carinae calibration]
+    DPM_resonance = g_HÂ·Î¼_BÂ·Bâ‚€ / (Ä§Â·Ï‰â‚€) Ã— 2.82eâˆ’56   [Eta Carinae calibration]
     """
 
     def compute(self, dataset: dict) -> dict:
@@ -7392,7 +7419,7 @@ class UQFFSource10BatchProfiledCalculator(_CP3Calculator):
         g_H          = dataset.get('g_H', 1.252e46)       # Hydrogen g-factor
         mu_B         = dataset.get('mu_B', 9.274e-24)     # Bohr magneton J/T
         B0           = dataset.get('B0_T', 1e-4)          # T
-        h_planck     = dataset.get('hbar', 1.0546e-34)    # J·s
+        h_planck     = dataset.get('hbar', 1.0546e-34)    # JÂ·s
         omega0       = dataset.get('omega0', 1e-12)        # rad/s base
         adj_factor   = dataset.get('adj_factor', 2.82e-56) # Eta Car calibration
 
@@ -7442,20 +7469,20 @@ class UQFFSource10BatchProfiledCalculator(_CP3Calculator):
 
         return {
             'primary_equations': [
-                f"DPM_resonance = g_H·μ_B·B₀/(ħ·ω₀)·adj = {DPM_res:.4e} J/m³",
-                f"F_U_Bi_i(t={t:.2e}) = integrand·x²+LENR+DE+rel = {FU:.4e} N",
-                f"  term1 = integrand·x² = {t1:.4e}",
-                f"  term2 = LENR·activation·e^(-t/1e6) = {t2:.4e}",
-                f"  term4 = rel·(1+f_TRZ) = {t4:.4e}",
-                f"g_UQFF 26-layer sum = {G_sum:.4e} m/s²",
-                f"Batch: {n_systems} systems × {n_steps} steps → {elapsed_ms:.3f} ms",
+                f"DPM_resonance = g_HÂ·Î¼_BÂ·Bâ‚€/(Ä§Â·Ï‰â‚€)Â·adj = {DPM_res:.4e} J/mÂ³",
+                f"F_U_Bi_i(t={t:.2e}) = integrandÂ·xÂ²+LENR+DE+rel = {FU:.4e} N",
+                f"  term1 = integrandÂ·xÂ² = {t1:.4e}",
+                f"  term2 = LENRÂ·activationÂ·e^(-t/1e6) = {t2:.4e}",
+                f"  term4 = relÂ·(1+f_TRZ) = {t4:.4e}",
+                f"g_UQFF 26-layer sum = {G_sum:.4e} m/sÂ²",
+                f"Batch: {n_systems} systems Ã— {n_steps} steps â†’ {elapsed_ms:.3f} ms",
             ],
             'available_equations': [
-                "Config scaling: LENR_scale adjustable → e.g. 1e13 for enhanced LENR",
-                "Batch throughput: N·T / elapsed_ms  (systems/ms)",
-                "DPM resonance calibration: adj_factor = 3.11e9/(g_H·μ_B·B₀/(ħ·ω₀))",
-                "g_UQFF(r,t) full: +Lambda·c²/3 + quantum_term + EM_term",
-                "OpenMP reduction: pre_sum_Ug = Σ(Ug1ᵢ+Ug2ᵢ+Ug3ᵢ+Ug4ᵢ), parallelised",
+                "Config scaling: LENR_scale adjustable â†’ e.g. 1e13 for enhanced LENR",
+                "Batch throughput: NÂ·T / elapsed_ms  (systems/ms)",
+                "DPM resonance calibration: adj_factor = 3.11e9/(g_HÂ·Î¼_BÂ·Bâ‚€/(Ä§Â·Ï‰â‚€))",
+                "g_UQFF(r,t) full: +LambdaÂ·cÂ²/3 + quantum_term + EM_term",
+                "OpenMP reduction: pre_sum_Ug = Î£(Ug1áµ¢+Ug2áµ¢+Ug3áµ¢+Ug4áµ¢), parallelised",
             ],
             'simulation_set': {
                 'LENR_scale_sweep':  'LENR from 1e10 to 1e14 (scaling sensitivity)',
@@ -7473,7 +7500,7 @@ class UQFFSource10BatchProfiledCalculator(_CP3Calculator):
 
 class UQFFCUDAGPUOptimizationPatternCalculator(_CP3Calculator):
     """
-    PAPER_249 — CUDA GPU optimization patterns for UQFF multi-system computations.
+    PAPER_249 â€” CUDA GPU optimization patterns for UQFF multi-system computations.
 
     From the final section of grok_share_8d951e12.txt: Grok provided a canonical
     CUDA tiled shared-memory matrix-multiply kernel as the reference GPU acceleration
@@ -7482,15 +7509,15 @@ class UQFFCUDAGPUOptimizationPatternCalculator(_CP3Calculator):
     Core CUDA patterns documented
     -----------------------------
     1. Tiled GEMM: shared-memory sA[32][32], sB[32][32] eliminates global reads
-       Wall time: O(N³/32²) global accesses vs O(N³) naive
-    2. Coalesced access: thread (tx,ty) reads A[by+ty][k*32+tx] → stride-1 per warp
-    3. Warp occupancy target: ≥70% SM utilisation on Hopper H100
-    4. cudaGraph capture: 5× lower launch overhead for repetitive MUGE sweeps
+       Wall time: O(NÂ³/32Â²) global accesses vs O(NÂ³) naive
+    2. Coalesced access: thread (tx,ty) reads A[by+ty][k*32+tx] â†’ stride-1 per warp
+    3. Warp occupancy target: â‰¥70% SM utilisation on Hopper H100
+    4. cudaGraph capture: 5Ã— lower launch overhead for repetitive MUGE sweeps
     5. NCCL multi-GPU: collective reduce for ensemble UQFF statistics
 
     Applicable to UQFF when
     -----------------------
-    - Evaluating g_total(r,t) across 500+ systems × 10000 timesteps
+    - Evaluating g_total(r,t) across 500+ systems Ã— 10000 timesteps
     - Computing 26-layer Ug sums in parallel (each layer = independent thread block)
     - Batch-computing F_U_Bi_i across system parameter sweeps
     """
@@ -7512,37 +7539,37 @@ class UQFFCUDAGPUOptimizationPatternCalculator(_CP3Calculator):
 
         # Occupancy estimate
         regs_per_thread = 32
-        shared_mem_bytes = 2 * tile * tile * 4  # 2 tiles × float32
+        shared_mem_bytes = 2 * tile * tile * 4  # 2 tiles Ã— float32
         warps_per_block  = threads_per_block // 32
         max_blocks_per_sm = 2048 // threads_per_block  # H100: 2048 threads/SM
         occupancy_pct    = min(100.0, warps_per_block * max_blocks_per_sm / 64.0 * 100.0)
 
-        # MUGE multi-system throughput  (26 layers × N_systems × T_steps)
+        # MUGE multi-system throughput  (26 layers Ã— N_systems Ã— T_steps)
         total_ops = 26 * n_systems * n_timesteps
         tflops_h100 = 989e12  # H100 FP32 TFLOPS (tensor core peak)
         min_time_ms = total_ops / tflops_h100 * 1000.0
 
         # cudaGraph launch overhead saving
-        kernel_launch_ns = 5000  # ~5 μs naive
-        graph_launch_ns  = 1000  # ~1 μs with graph
+        kernel_launch_ns = 5000  # ~5 Î¼s naive
+        graph_launch_ns  = 1000  # ~1 Î¼s with graph
         overhead_saving_pct = (1 - graph_launch_ns / kernel_launch_ns) * 100.0
 
         return {
             'primary_equations': [
-                f"GEMM tiled speedup: N³/tile÷N³ = 1/tile = ×{speedup_tiled:.0f} global reads saved",
-                f"Shared mem per block: 2×{tile}²×4 B = {shared_mem_bytes} B ({shared_mem_bytes/1024:.1f} KB)",
+                f"GEMM tiled speedup: NÂ³/tileÃ·NÂ³ = 1/tile = Ã—{speedup_tiled:.0f} global reads saved",
+                f"Shared mem per block: 2Ã—{tile}Â²Ã—4 B = {shared_mem_bytes} B ({shared_mem_bytes/1024:.1f} KB)",
                 f"Est. SM occupancy: {occupancy_pct:.1f}%  ({warps_per_block} warps/block)",
-                f"MUGE 26L×{n_systems}sys×{n_timesteps}steps = {total_ops:.2e} ops",
-                f"H100 peak FP32: {tflops_h100:.2e} FLOPS → min_time = {min_time_ms:.3f} ms",
+                f"MUGE 26LÃ—{n_systems}sysÃ—{n_timesteps}steps = {total_ops:.2e} ops",
+                f"H100 peak FP32: {tflops_h100:.2e} FLOPS â†’ min_time = {min_time_ms:.3f} ms",
                 f"cudaGraph launch savings: {overhead_saving_pct:.0f}% overhead reduction",
                 "Kernel: __shared__ sA[32][32],sB[32][32]; coalesced A[by+ty][k*32+tx]",
             ],
             'available_equations': [
                 "Roofline model: compute-bound if FLOPS/byte > machine balance (~20:1 H100)",
-                "Memory bandwidth: 3.35 TB/s (H100 HBM3) → 26-layer Ug bandwidth need",
-                "NVLink all-reduce: latency = α + n·msg_size/bandwidth (ring topology)",
-                "cudaMemPrefetchAsync: prefetch latency ≈ 0 with UM if aligned to 2 MiB",
-                "Warp divergence cost: up to 32× slowdown per divergent warp",
+                "Memory bandwidth: 3.35 TB/s (H100 HBM3) â†’ 26-layer Ug bandwidth need",
+                "NVLink all-reduce: latency = Î± + nÂ·msg_size/bandwidth (ring topology)",
+                "cudaMemPrefetchAsync: prefetch latency â‰ˆ 0 with UM if aligned to 2 MiB",
+                "Warp divergence cost: up to 32Ã— slowdown per divergent warp",
                 "Loop unroll pragma: #pragma unroll 32 for inner GEMM dot product",
             ],
             'simulation_set': {
@@ -7560,32 +7587,32 @@ class UQFFCUDAGPUOptimizationPatternCalculator(_CP3Calculator):
 
 
 # ---------------------------------------------------------------------------
-# Session 72 — PAPER_250–254: Infrared Datasets F_U_Bi_i (5 Chandra systems)
+# Session 72 â€” PAPER_250â€“254: Infrared Datasets F_U_Bi_i (5 Chandra systems)
 # ---------------------------------------------------------------------------
 
 
 class SN1006TypeIaSNRFUBiCalculator(_CP3Calculator):
-    """PAPER_250 | Infrared Datasets — SN 1006 Type Ia SNR F_U_Bi_i integral.
+    """PAPER_250 | Infrared Datasets â€” SN 1006 Type Ia SNR F_U_Bi_i integral.
 
     SN 1006 is a Type Ia supernova remnant ~7,000 ly away, age ~1,019 yr
     (t=3.213e10 s).  Chandra 2023 data: L_X=10^32 W, B=10^-5 T, T=10^6 K,
-    ejecta knots moving at 7–11 million mph (~3,000 km/s), gas density 10^-23 kg/m³.
+    ejecta knots moving at 7â€“11 million mph (~3,000 km/s), gas density 10^-23 kg/mÂ³.
     JWST 2023: shocked gas and dust in the infrared shell.
 
-    F_U_Bi_i = ∫₀^{x₂} [−F₀ + (m_e c²/r²)·DPM_momentum·cosθ
-                          + (GM/r²)·DPM_gravity
-                          + ρ_vac·DPM_stability + F_LENR + F_act
+    F_U_Bi_i = âˆ«â‚€^{xâ‚‚} [âˆ’Fâ‚€ + (m_e cÂ²/rÂ²)Â·DPM_momentumÂ·cosÎ¸
+                          + (GM/rÂ²)Â·DPM_gravity
+                          + Ï_vacÂ·DPM_stability + F_LENR + F_act
                           + F_DE + F_res + F_neutron + F_rel] dx
 
-    Dominant term: F_LENR = k_LENR × (ω_LENR/ω₀)²
-    ω_LENR = 2π×1.25 THz (Colman-Gillespie replication), ω₀ = 10^-12 rad/s
+    Dominant term: F_LENR = k_LENR Ã— (Ï‰_LENR/Ï‰â‚€)Â²
+    Ï‰_LENR = 2Ï€Ã—1.25 THz (Colman-Gillespie replication), Ï‰â‚€ = 10^-12 rad/s
 
-    Key discovery: F_neutron = k_neutron × σ_n stabilises filamentary ejecta
+    Key discovery: F_neutron = k_neutron Ã— Ïƒ_n stabilises filamentary ejecta
     knot structure (unique for high-velocity Type Ia remnants).  F_rel from LEP
-    1998 E_cm=189 GeV is negligible at ω₀=10^-12 — low-energy regime confirmed.
+    1998 E_cm=189 GeV is negligible at Ï‰â‚€=10^-12 â€” low-energy regime confirmed.
 
-    Paper benchmark: F_U_Bi ≈ +2.11×10^208 N (positive buoyancy).
-    DPM_resonance = g·μ_B·B₀/(ħ·ω₀) ≈ 1.76×10³ (magnetised SNR shell).
+    Paper benchmark: F_U_Bi â‰ˆ +2.11Ã—10^208 N (positive buoyancy).
+    DPM_resonance = gÂ·Î¼_BÂ·Bâ‚€/(Ä§Â·Ï‰â‚€) â‰ˆ 1.76Ã—10Â³ (magnetised SNR shell).
     """
 
     def compute(self, dataset: dict) -> dict:
@@ -7606,7 +7633,7 @@ class SN1006TypeIaSNRFUBiCalculator(_CP3Calculator):
         B_0      = dataset.get('B_0',      1e-5)       # magnetic field (T)
         omega_0  = dataset.get('omega_0',  1e-12)      # system resonance (rad/s)
         t        = dataset.get('t',        3.213e10)   # age ~1019 yr (s)
-        theta    = dataset.get('theta',    math.pi/4)  # 45°
+        theta    = dataset.get('theta',    math.pi/4)  # 45Â°
         v_knot   = dataset.get('v_knot',   3e6)        # knot velocity (m/s)
         T_gas    = dataset.get('T_gas',    1e6)        # gas temperature (K)
 
@@ -7617,16 +7644,16 @@ class SN1006TypeIaSNRFUBiCalculator(_CP3Calculator):
         DPM_momentum   = 0.93
         DPM_gravity    = 1.0
 
-        # DPM resonance parameter: g·μ_B·B₀ / (ħ·ω₀) — Colman-Gillespie form
-        DPM_resonance = (2.0 * mu_B * B_0) / (hbar * omega_0)   # ≈ 1.76e3
+        # DPM resonance parameter: gÂ·Î¼_BÂ·Bâ‚€ / (Ä§Â·Ï‰â‚€) â€” Colman-Gillespie form
+        DPM_resonance = (2.0 * mu_B * B_0) / (hbar * omega_0)   # â‰ˆ 1.76e3
 
         # Force terms
-        # LENR resonance: dominant at ω₀=10^-12 (Kozima 1.25 THz phonon coupling)
+        # LENR resonance: dominant at Ï‰â‚€=10^-12 (Kozima 1.25 THz phonon coupling)
         omega_LENR = 2 * math.pi * 1.25e12          # 1.25 THz
         k_LENR     = 1e-10
         F_LENR     = k_LENR * (omega_LENR / omega_0)**2  # dominant term ~6.17e39 N
 
-        # Activation frequency — Colman-Gillespie 300 Hz
+        # Activation frequency â€” Colman-Gillespie 300 Hz
         k_act     = 1e-6
         omega_act = 2 * math.pi * 300.0
         F_act     = k_act * math.cos(omega_act * t)    # oscillatory ~1e-6 N
@@ -7639,24 +7666,24 @@ class SN1006TypeIaSNRFUBiCalculator(_CP3Calculator):
         V_test = 1e-3
         F_res  = 2 * e_charge * B_0 * V_test * math.sin(theta) * DPM_resonance
 
-        # Neutron drop (Kozima model) — stabilises ejecta knots in Type Ia
+        # Neutron drop (Kozima model) â€” stabilises ejecta knots in Type Ia
         k_neutron = 1e10
         sigma_n   = 1e-4      # scaled astrophysical cross-section
         F_neutron = k_neutron * sigma_n                # = 1e6 N (significant)
 
-        # Relativistic coherence (LEP 1998 E_cm=189 GeV, negligible at ω₀=10^-12)
+        # Relativistic coherence (LEP 1998 E_cm=189 GeV, negligible at Ï‰â‚€=10^-12)
         k_rel          = 1e-10
-        E_cm_astro_eff = 1.24e24   # events/m³
+        E_cm_astro_eff = 1.24e24   # events/mÂ³
         E_cm_LEP       = 189e9     # eV
-        F_rel          = k_rel * (E_cm_astro_eff / E_cm_LEP)**2   # ≪ F_LENR
+        F_rel          = k_rel * (E_cm_astro_eff / E_cm_LEP)**2   # â‰ª F_LENR
 
         # Core DPM gravity and momentum terms
-        term_gravity  = (G * M / r**2) * DPM_gravity
+        term_gravity  = dpm_emergent_ug1(M, r) * DPM_gravity
         term_momentum = (m_e * c_light**2 / r**2) * DPM_momentum * math.cos(theta)
         term_vac      = rho_vac_UA * DPM_stability
 
-        # Quadratic DPM stability condition: a·x²+b·x+c=0 → upper integration limit
-        a_coef = term_gravity                    # GM/r² coefficient
+        # Quadratic DPM stability condition: aÂ·xÂ²+bÂ·x+c=0 â†’ upper integration limit
+        a_coef = term_gravity                    # GM/rÂ² coefficient
         b_coef = 4.72e-3                         # canonical value (r=6.17e16 systems)
         c_coef = -F_0 + term_vac                 # vacuum-dominated
         discriminant = b_coef**2 - 4 * a_coef * c_coef
@@ -7664,7 +7691,7 @@ class SN1006TypeIaSNRFUBiCalculator(_CP3Calculator):
                if discriminant >= 0 else
                (-b_coef - math.sqrt(-discriminant)) / (2 * a_coef))
 
-        # F_U_Bi_i — integral over [0, x₂]; F_LENR dominates integrand
+        # F_U_Bi_i â€” integral over [0, xâ‚‚]; F_LENR dominates integrand
         integrand_total = (-F_0 + term_momentum + term_gravity + term_vac
                            + F_LENR + F_act + F_DE + F_res + F_neutron + F_rel)
         F_U_Bi_i = integrand_total * abs(x_2)
@@ -7673,40 +7700,40 @@ class SN1006TypeIaSNRFUBiCalculator(_CP3Calculator):
         F_U_Bi = -F_0 + term_momentum + term_gravity + F_U_Bi_i
 
         # Kinetic energy density of ejecta knots
-        E_knot_density = 0.5 * 1e-23 * v_knot**2   # (rho_gas * v²) per unit vol
+        E_knot_density = 0.5 * 1e-23 * v_knot**2   # (rho_gas * vÂ²) per unit vol
 
         return {
             'primary_equations': [
-                f"DPM_resonance = g·μ_B·B₀/(ħ·ω₀) = {DPM_resonance:.4e}",
-                f"F_LENR = k_LENR·(ω_LENR/ω₀)² = {F_LENR:.4e} N  [dominant term]",
-                f"F_neutron = k_neutron·σ_n = {F_neutron:.4e} N  [knot stabilisation]",
-                f"F_DE = k_DE·L_X = {F_DE:.4e} N",
-                f"F_rel = k_rel·(E_cm_eff/E_cm_LEP)² = {F_rel:.4e} N  [negligible]",
-                f"term_gravity = GM/r² = {term_gravity:.4e} m/s²",
+                f"DPM_resonance = gÂ·Î¼_BÂ·Bâ‚€/(Ä§Â·Ï‰â‚€) = {DPM_resonance:.4e}",
+                f"F_LENR = k_LENRÂ·(Ï‰_LENR/Ï‰â‚€)Â² = {F_LENR:.4e} N  [dominant term]",
+                f"F_neutron = k_neutronÂ·Ïƒ_n = {F_neutron:.4e} N  [knot stabilisation]",
+                f"F_DE = k_DEÂ·L_X = {F_DE:.4e} N",
+                f"F_rel = k_relÂ·(E_cm_eff/E_cm_LEP)Â² = {F_rel:.4e} N  [negligible]",
+                f"term_gravity = GM/rÂ² = {term_gravity:.4e} m/sÂ²",
                 f"a={a_coef:.3e}, b={b_coef:.3e}, c={c_coef:.3e}",
-                f"x₂ = {x_2:.4e} m  [integration upper limit, vacuum-dominated root]",
+                f"xâ‚‚ = {x_2:.4e} m  [integration upper limit, vacuum-dominated root]",
                 f"integrand total = {integrand_total:.4e} N",
-                f"F_U_Bi_i = integrand × |x₂| = {F_U_Bi_i:.4e} N",
+                f"F_U_Bi_i = integrand Ã— |xâ‚‚| = {F_U_Bi_i:.4e} N",
                 f"F_U_Bi = {F_U_Bi:.4e} N  [paper benchmark: +2.11e208 N]",
-                f"E_knot_density ≈ {E_knot_density:.4e} J/m³  (v_knot={v_knot:.2e} m/s)",
+                f"E_knot_density â‰ˆ {E_knot_density:.4e} J/mÂ³  (v_knot={v_knot:.2e} m/s)",
             ],
             'available_equations': [
-                "F_U_Bi_i = ∫[-F₀+DPM_momentum+DPM_gravity+DPM_stability+F_LENR+F_act+F_DE+F_res+F_neutron+F_rel] dx",
-                "DPM_resonance = g·μ_B·B/(ħ·ω₀) — increases with B₀, decreases with ω₀",
-                "F_LENR = k_LENR·(2π·1.25 THz/ω₀)² — dominant at low ω₀",
-                "F_neutron = k_neutron·σ_n — Kozima neutron capture stabilisation",
-                "F_rel ≪ F_LENR for ω₀=10^-12: relativistic coherence subdom regime",
-                "x₂ quadratic root: a=GM/r², b≈4.72e-3, c=-F_0+ρ·DPM_stability",
-                "E_knot = 0.5·ρ_gas·v_knot² — ejecta kinetic energy density",
-                "Q_wave resonant (SN1006) = k_q·T·exp(-r/λ_D)·cos(ω₀t)",
+                "F_U_Bi_i = âˆ«[-Fâ‚€+DPM_momentum+DPM_gravity+DPM_stability+F_LENR+F_act+F_DE+F_res+F_neutron+F_rel] dx",
+                "DPM_resonance = gÂ·Î¼_BÂ·B/(Ä§Â·Ï‰â‚€) â€” increases with Bâ‚€, decreases with Ï‰â‚€",
+                "F_LENR = k_LENRÂ·(2Ï€Â·1.25 THz/Ï‰â‚€)Â² â€” dominant at low Ï‰â‚€",
+                "F_neutron = k_neutronÂ·Ïƒ_n â€” Kozima neutron capture stabilisation",
+                "F_rel â‰ª F_LENR for Ï‰â‚€=10^-12: relativistic coherence subdom regime",
+                "xâ‚‚ quadratic root: a=GM/rÂ², bâ‰ˆ4.72e-3, c=-F_0+ÏÂ·DPM_stability",
+                "E_knot = 0.5Â·Ï_gasÂ·v_knotÂ² â€” ejecta kinetic energy density",
+                "Q_wave resonant (SN1006) = k_qÂ·TÂ·exp(-r/Î»_D)Â·cos(Ï‰â‚€t)",
             ],
             'simulation_set': {
-                'omega_0_sweep':       'ω₀ from 10^-15 to 10^-10 — F_LENR drops as ω₀²',
-                'k_LENR_sensitivity':  'k_LENR 1e-14→1e-6 — linear scaling on F_U_Bi_i',
-                'knot_velocity_map':   'v_knot 1000→11000 km/s — E_knot quadratic',
-                'F_neutron_role':      'σ_n from 1e-6–1e-2 — transition from negligible to dominant',
+                'omega_0_sweep':       'Ï‰â‚€ from 10^-15 to 10^-10 â€” F_LENR drops as Ï‰â‚€Â²',
+                'k_LENR_sensitivity':  'k_LENR 1e-14â†’1e-6 â€” linear scaling on F_U_Bi_i',
+                'knot_velocity_map':   'v_knot 1000â†’11000 km/s â€” E_knot quadratic',
+                'F_neutron_role':      'Ïƒ_n from 1e-6â€“1e-2 â€” transition from negligible to dominant',
                 'paper_benchmark':     'expect F_U_Bi ~ +2.11e208 N (PAPER_250 thread result)',
-                'F_rel_threshold':     'find ω₀_crit where F_rel equals F_LENR',
+                'F_rel_threshold':     'find Ï‰â‚€_crit where F_rel equals F_LENR',
             },
             'F_LENR':      F_LENR,
             'F_neutron':   F_neutron,
@@ -7719,22 +7746,22 @@ class SN1006TypeIaSNRFUBiCalculator(_CP3Calculator):
 
 
 class EtaCarinaeHomuculusFUBiCalculator(_CP3Calculator):
-    """PAPER_251 | Infrared Datasets — Eta Carinae Homunculus F_U_Bi_i integral.
+    """PAPER_251 | Infrared Datasets â€” Eta Carinae Homunculus F_U_Bi_i integral.
 
-    Eta Carinae is a massive stellar system (~120 M☉) ~7,500 ly away, age ~180 yr
+    Eta Carinae is a massive stellar system (~120 Mâ˜‰) ~7,500 ly away, age ~180 yr
     (t=5.681e9 s, since the Great Eruption ~1843 CE).  Chandra 2023: L_X=10^35 W,
-    B=10^-4 T, T=10^6 K, gas density 10^-20 kg/m³, expanding bright ring.
+    B=10^-4 T, T=10^6 K, gas density 10^-20 kg/mÂ³, expanding bright ring.
     JWST 2023: Homunculus nebula infrared shell (~500 AU semimajor axis).
-    Super-Eddington luminosity: ℳ=1.5 (Eddington factor).
+    Super-Eddington luminosity: â„³=1.5 (Eddington factor).
 
-    Key uniquely rare discovery — DPM Invisibility:
-    B₀ = 10^-4 T (100× higher than SN 1006) → DPM_resonance ≈ 1.76×10⁵
-    (100× larger than SN 1006's 1.76×10³), yet F_U_Bi remains +2.11×10^208 N
-    (identical to SN 1006).  F_LENR completely swamps F_res in the ω₀=10^-12
+    Key uniquely rare discovery â€” DPM Invisibility:
+    Bâ‚€ = 10^-4 T (100Ã— higher than SN 1006) â†’ DPM_resonance â‰ˆ 1.76Ã—10âµ
+    (100Ã— larger than SN 1006's 1.76Ã—10Â³), yet F_U_Bi remains +2.11Ã—10^208 N
+    (identical to SN 1006).  F_LENR completely swamps F_res in the Ï‰â‚€=10^-12
     regime: magnetic field strength is invisible to the final buoyancy result.
     This is a force hierarchy discovery: LENR > neutron > Newtonian >> DPM_res.
 
-    Paper benchmark: F_U_Bi ≈ +2.11×10^208 N (positive buoyancy).
+    Paper benchmark: F_U_Bi â‰ˆ +2.11Ã—10^208 N (positive buoyancy).
     """
 
     def compute(self, dataset: dict) -> dict:
@@ -7752,11 +7779,11 @@ class EtaCarinaeHomuculusFUBiCalculator(_CP3Calculator):
         M        = dataset.get('M',        120 * M_sun)   # ~120 M_sun (kg)
         r        = dataset.get('r',        6.17e16)        # ~20 ly Homunculus (m)
         L_X      = dataset.get('L_X',      1e35)           # Chandra X-ray (W)
-        B_0      = dataset.get('B_0',      1e-4)           # 100× SN1006 (T)
+        B_0      = dataset.get('B_0',      1e-4)           # 100Ã— SN1006 (T)
         omega_0  = dataset.get('omega_0',  1e-12)          # same low regime (rad/s)
         t        = dataset.get('t',        5.681e9)        # ~180 yr (s)
         theta    = dataset.get('theta',    math.pi/4)
-        Mach     = dataset.get('Mach',     1.5)            # super-Eddington ℳ
+        Mach     = dataset.get('Mach',     1.5)            # super-Eddington â„³
 
         F_0         = dataset.get('F_0',         1.83e71)
         rho_vac_UA  = dataset.get('rho_vac_UA',  7.09e-36)
@@ -7764,8 +7791,8 @@ class EtaCarinaeHomuculusFUBiCalculator(_CP3Calculator):
         DPM_momentum  = 0.93
         DPM_gravity   = 1.0
 
-        # DPM resonance — B₀=10^-4 gives 100× boost vs SN1006 B₀=10^-5
-        DPM_resonance = (2.0 * mu_B * B_0) / (hbar * omega_0)   # ≈ 1.76e5
+        # DPM resonance â€” Bâ‚€=10^-4 gives 100Ã— boost vs SN1006 Bâ‚€=10^-5
+        DPM_resonance = (2.0 * mu_B * B_0) / (hbar * omega_0)   # â‰ˆ 1.76e5
 
         # Force terms
         omega_LENR = 2 * math.pi * 1.25e12
@@ -7781,7 +7808,7 @@ class EtaCarinaeHomuculusFUBiCalculator(_CP3Calculator):
 
         V_test = 1e-3
         F_res  = 2 * e_charge * B_0 * V_test * math.sin(theta) * DPM_resonance
-        # NOTE: F_res is 100× SN1006 due to B₀×100; still dominated by F_LENR
+        # NOTE: F_res is 100Ã— SN1006 due to Bâ‚€Ã—100; still dominated by F_LENR
 
         k_neutron = 1e10
         sigma_n   = 1e-4
@@ -7792,7 +7819,7 @@ class EtaCarinaeHomuculusFUBiCalculator(_CP3Calculator):
         E_cm_LEP       = 189e9
         F_rel          = k_rel * (E_cm_astro_eff / E_cm_LEP)**2   # still negligible
 
-        term_gravity  = (G * M / r**2) * DPM_gravity      # larger than SN1006
+        term_gravity  = dpm_emergent_ug1(M, r) * DPM_gravity      # larger than SN1006
         term_momentum = (m_e * c_light**2 / r**2) * DPM_momentum * math.cos(theta)
         term_vac      = rho_vac_UA * DPM_stability
 
@@ -7810,40 +7837,40 @@ class EtaCarinaeHomuculusFUBiCalculator(_CP3Calculator):
         F_U_Bi   = -F_0 + term_momentum + term_gravity + F_U_Bi_i
 
         # Super-Eddington luminosity: radiation pressure forcing
-        L_Edd    = 4 * math.pi * G * M * c_light / 0.2   # κ_es = 0.2 m²/kg
-        L_ratio  = L_X / L_Edd   # should be ~ℳ for Eta Car
+        L_Edd    = 4 * math.pi * G * M * c_light / 0.2   # Îº_es = 0.2 mÂ²/kg
+        L_ratio  = L_X / L_Edd   # should be ~â„³ for Eta Car
 
-        # DPM invisibility ratio: F_res / F_LENR → how much DPM boost is wasted
+        # DPM invisibility ratio: F_res / F_LENR â†’ how much DPM boost is wasted
         dpm_visibility_ratio = F_res / F_LENR if F_LENR != 0 else 0.0
 
         return {
             'primary_equations': [
-                f"DPM_resonance = g·μ_B·B₀/(ħ·ω₀) = {DPM_resonance:.4e}  [100× SN1006!]",
-                f"F_LENR = k_LENR·(ω_LENR/ω₀)² = {F_LENR:.4e} N  [identical to SN1006]",
-                f"F_res = 2qB₀V·sinθ·DPM_resonance = {F_res:.4e} N  [100× SN1006]",
-                f"DPM invisibility: F_res/F_LENR = {dpm_visibility_ratio:.4e}  [→0 confirms DPM swamped]",
-                f"F_DE = k_DE·L_X = {F_DE:.4e} N  [3 orders higher than SN1006]",
+                f"DPM_resonance = gÂ·Î¼_BÂ·Bâ‚€/(Ä§Â·Ï‰â‚€) = {DPM_resonance:.4e}  [100Ã— SN1006!]",
+                f"F_LENR = k_LENRÂ·(Ï‰_LENR/Ï‰â‚€)Â² = {F_LENR:.4e} N  [identical to SN1006]",
+                f"F_res = 2qBâ‚€VÂ·sinÎ¸Â·DPM_resonance = {F_res:.4e} N  [100Ã— SN1006]",
+                f"DPM invisibility: F_res/F_LENR = {dpm_visibility_ratio:.4e}  [â†’0 confirms DPM swamped]",
+                f"F_DE = k_DEÂ·L_X = {F_DE:.4e} N  [3 orders higher than SN1006]",
                 f"F_neutron = {F_neutron:.4e} N",
                 f"L_Edd(Eta Car) = {L_Edd:.4e} W,  L_X/L_Edd = {L_ratio:.4e}",
-                f"term_gravity = GM/r² = {term_gravity:.4e} m/s²  [{M/M_sun:.0f} M_sun]",
-                f"x₂ = {x_2:.4e} m",
+                f"term_gravity = GM/rÂ² = {term_gravity:.4e} m/sÂ²  [{M/M_sun:.0f} M_sun]",
+                f"xâ‚‚ = {x_2:.4e} m",
                 f"F_U_Bi_i = {F_U_Bi_i:.4e} N",
                 f"F_U_Bi = {F_U_Bi:.4e} N  [paper benchmark: +2.11e208 N]",
             ],
             'available_equations': [
-                "DPM_resonance scales as B₀/ω₀ — 100× B₀ → 100× DPM_resonance",
-                "F_LENR = k_LENR·(ω_LENR/ω₀)² — independent of B₀ (source of DPM invisibility)",
-                "DPM invisibility condition: F_res/F_LENR ≪ 1 for ω₀ ≪ ω_LENR",
-                "L_Edd = 4πGMc/κ_es — Eddington luminosity limit",
-                "Super-Eddington: L_X/L_Edd > 1 → ℳ > 1 → Great Eruption driver",
-                "F_neutron = k_neutron·σ_n — neutron-mediated coherence term",
-                "Homunculus expansion: r(t) = v_wind × t (kinematic age)",
+                "DPM_resonance scales as Bâ‚€/Ï‰â‚€ â€” 100Ã— Bâ‚€ â†’ 100Ã— DPM_resonance",
+                "F_LENR = k_LENRÂ·(Ï‰_LENR/Ï‰â‚€)Â² â€” independent of Bâ‚€ (source of DPM invisibility)",
+                "DPM invisibility condition: F_res/F_LENR â‰ª 1 for Ï‰â‚€ â‰ª Ï‰_LENR",
+                "L_Edd = 4Ï€GMc/Îº_es â€” Eddington luminosity limit",
+                "Super-Eddington: L_X/L_Edd > 1 â†’ â„³ > 1 â†’ Great Eruption driver",
+                "F_neutron = k_neutronÂ·Ïƒ_n â€” neutron-mediated coherence term",
+                "Homunculus expansion: r(t) = v_wind Ã— t (kinematic age)",
             ],
             'simulation_set': {
-                'B_0_sweep':         'B₀ from 1e-6 to 1e-1 T — confirm DPM_res scales but F_U_Bi unchanged',
-                'DPM_visibility_map': 'DPM_res/F_LENR ratio over ω₀ space — find visibility threshold',
-                'Mach_luminosity':   'ℳ from 0.5 to 5 — impact on L_X term',
-                'Great_Eruption':    't from 0→400 yr — F_act oscillation 300 Hz component',
+                'B_0_sweep':         'Bâ‚€ from 1e-6 to 1e-1 T â€” confirm DPM_res scales but F_U_Bi unchanged',
+                'DPM_visibility_map': 'DPM_res/F_LENR ratio over Ï‰â‚€ space â€” find visibility threshold',
+                'Mach_luminosity':   'â„³ from 0.5 to 5 â€” impact on L_X term',
+                'Great_Eruption':    't from 0â†’400 yr â€” F_act oscillation 300 Hz component',
                 'paper_benchmark':   'expect F_U_Bi ~ +2.11e208 N (PAPER_251 thread result)',
                 'B0_equivalence':    'confirm F_U_Bi(B=1e-5) == F_U_Bi(B=1e-4): DPM invisibility proof',
             },
@@ -7859,23 +7886,23 @@ class EtaCarinaeHomuculusFUBiCalculator(_CP3Calculator):
 
 
 class ChandraArchiveMultiSystemFUBiCalculator(_CP3Calculator):
-    """PAPER_252 | Infrared Datasets — Chandra Archive Composite F_U_Bi_i.
+    """PAPER_252 | Infrared Datasets â€” Chandra Archive Composite F_U_Bi_i.
 
-    A composite dataset spanning 1999–2023 Chandra data, encompassing SN 1987A,
+    A composite dataset spanning 1999â€“2023 Chandra data, encompassing SN 1987A,
     Eta Carinae, and the Helix Nebula.  Parameters are averaged across this ensemble:
-    L_X ∈ [10^31, 10^35] W (Helix→Eta Car), T ∈ [10^4, 10^6] K, and
-    ρ_gas ∈ [10^-23, 10^-20] kg/m³.  All systems share ω₀ ~ 10^-12 rad/s.
+    L_X âˆˆ [10^31, 10^35] W (Helixâ†’Eta Car), T âˆˆ [10^4, 10^6] K, and
+    Ï_gas âˆˆ [10^-23, 10^-20] kg/mÂ³.  All systems share Ï‰â‚€ ~ 10^-12 rad/s.
 
-    Key uniquely rare discovery — Force Equivalence Class:
-    Despite spanning 4 orders in L_X and 2 orders in ρ, all systems in the
-    ω₀ = 10^-12 regime produce F_U_Bi ≈ +2.11×10^208 N.  This confirms an
-    EQUIVALENCE CLASS: systems with the same ω₀ map to the same F_U_Bi regardless
-    of mass, luminosity, temperature, or age.  The ω₀ parameter alone gates the
+    Key uniquely rare discovery â€” Force Equivalence Class:
+    Despite spanning 4 orders in L_X and 2 orders in Ï, all systems in the
+    Ï‰â‚€ = 10^-12 regime produce F_U_Bi â‰ˆ +2.11Ã—10^208 N.  This confirms an
+    EQUIVALENCE CLASS: systems with the same Ï‰â‚€ map to the same F_U_Bi regardless
+    of mass, luminosity, temperature, or age.  The Ï‰â‚€ parameter alone gates the
     buoyancy sector.  The composite average also reproduces this class member,
     validating that F_U_Bi is robust to dataset averaging.
 
-    Composite: t=1e7 yr=3.156e14 s, M=1 M_sun averaged, r=20 ly, ω₀=10^-12.
-    Paper benchmark: F_U_Bi ≈ +2.11×10^208 N.
+    Composite: t=1e7 yr=3.156e14 s, M=1 M_sun averaged, r=20 ly, Ï‰â‚€=10^-12.
+    Paper benchmark: F_U_Bi â‰ˆ +2.11Ã—10^208 N.
     """
 
     def compute(self, dataset: dict) -> dict:
@@ -7888,10 +7915,10 @@ class ChandraArchiveMultiSystemFUBiCalculator(_CP3Calculator):
         hbar     = 1.0546e-34
         mu_B     = 9.274e-24
 
-        # Averaged composite parameters (1999–2023 Chandra archive)
+        # Averaged composite parameters (1999â€“2023 Chandra archive)
         M        = dataset.get('M',       1.989e31)   # averaged ~1 M_sun (kg)
         r        = dataset.get('r',       6.17e16)    # ~20 ly average (m)
-        L_X      = dataset.get('L_X',     1e33)       # geometric mean of 10^31–10^35
+        L_X      = dataset.get('L_X',     1e33)       # geometric mean of 10^31â€“10^35
         B_0      = dataset.get('B_0',     1e-5)       # representative (T)
         omega_0  = dataset.get('omega_0', 1e-12)      # canonical low-freq (rad/s)
         t        = dataset.get('t',       3.156e14)   # archive span ~10 Myr (s)
@@ -7908,7 +7935,7 @@ class ChandraArchiveMultiSystemFUBiCalculator(_CP3Calculator):
         DPM_momentum  = 0.93
         DPM_gravity   = 1.0
 
-        DPM_resonance = (2.0 * mu_B * B_0) / (hbar * omega_0)   # ≈ 1.76e3
+        DPM_resonance = (2.0 * mu_B * B_0) / (hbar * omega_0)   # â‰ˆ 1.76e3
 
         omega_LENR = 2 * math.pi * 1.25e12
         k_LENR     = 1e-10
@@ -7933,7 +7960,7 @@ class ChandraArchiveMultiSystemFUBiCalculator(_CP3Calculator):
         E_cm_LEP       = 189e9
         F_rel          = k_rel * (E_cm_astro_eff / E_cm_LEP)**2   # negligible
 
-        term_gravity  = (G * M / r**2) * DPM_gravity
+        term_gravity  = dpm_emergent_ug1(M, r) * DPM_gravity
         term_momentum = (m_e * c_light**2 / r**2) * DPM_momentum * math.cos(theta)
         term_vac      = rho_vac_UA * DPM_stability
 
@@ -7950,7 +7977,7 @@ class ChandraArchiveMultiSystemFUBiCalculator(_CP3Calculator):
         F_U_Bi_i = integrand_total * abs(x_2)
         F_U_Bi   = -F_0 + term_momentum + term_gravity + F_U_Bi_i
 
-        # L_X range ratio — characterises archive composite span
+        # L_X range ratio â€” characterises archive composite span
         L_X_range_decades = math.log10(L_X_max / L_X_min)
         # F_DE range: how much F_DE varies across the archive
         F_DE_min = k_DE * L_X_min
@@ -7959,30 +7986,30 @@ class ChandraArchiveMultiSystemFUBiCalculator(_CP3Calculator):
 
         return {
             'primary_equations': [
-                f"Composite: {n_systems} systems, L_X ∈ [{L_X_min:.0e}, {L_X_max:.0e}] W ({L_X_range_decades:.0f} decades)",
-                f"DPM_resonance = {DPM_resonance:.4e}  (canonical ω₀=10^-12 value)",
-                f"F_LENR = {F_LENR:.4e} N  [dominant — unchanged by averaging]",
-                f"F_DE ∈ [{F_DE_min:.1e}, {F_DE_max:.1e}] N  ({F_DE_range_decades:.0f} decade range)",
+                f"Composite: {n_systems} systems, L_X âˆˆ [{L_X_min:.0e}, {L_X_max:.0e}] W ({L_X_range_decades:.0f} decades)",
+                f"DPM_resonance = {DPM_resonance:.4e}  (canonical Ï‰â‚€=10^-12 value)",
+                f"F_LENR = {F_LENR:.4e} N  [dominant â€” unchanged by averaging]",
+                f"F_DE âˆˆ [{F_DE_min:.1e}, {F_DE_max:.1e}] N  ({F_DE_range_decades:.0f} decade range)",
                 f"F_neutron = {F_neutron:.4e} N",
-                f"F_rel = {F_rel:.4e} N  [negligible — composite avg confirms low-ω₀ regime]",
-                f"x₂ = {x_2:.4e} m",
+                f"F_rel = {F_rel:.4e} N  [negligible â€” composite avg confirms low-Ï‰â‚€ regime]",
+                f"xâ‚‚ = {x_2:.4e} m",
                 f"F_U_Bi_i = {F_U_Bi_i:.4e} N",
                 f"F_U_Bi = {F_U_Bi:.4e} N  [paper benchmark: +2.11e208 N]",
-                "FORCE EQUIVALENCE CLASS: same ω₀ → same F_U_Bi despite 4-decade L_X range",
+                "FORCE EQUIVALENCE CLASS: same Ï‰â‚€ â†’ same F_U_Bi despite 4-decade L_X range",
             ],
             'available_equations': [
-                "F_U_Bi insensitive to L_X (F_DE ≪ F_LENR): ω₀ is the sole gate",
-                "Equivalence class condition: F_U_Bi(ω₀=const) = const ∀ M, L, T, t",
-                "Composite sensitivity: ΔF_U_Bi / ΔL_X → 0 in ω₀=10^-12 regime",
-                "Archive averaging: geometric mean L̄_X = (L_min·L_max)^(1/2)",
-                "Age independence: t from 180 yr (Eta Car) to 10 Myr — F_act oscillates, F_U_Bi stable",
-                "F_LENR dominance ratio: F_LENR/F_DE_max = k_LENR(ω_LENR/ω₀)²/(k_DE·L_X_max)",
+                "F_U_Bi insensitive to L_X (F_DE â‰ª F_LENR): Ï‰â‚€ is the sole gate",
+                "Equivalence class condition: F_U_Bi(Ï‰â‚€=const) = const âˆ€ M, L, T, t",
+                "Composite sensitivity: Î”F_U_Bi / Î”L_X â†’ 0 in Ï‰â‚€=10^-12 regime",
+                "Archive averaging: geometric mean LÌ„_X = (L_minÂ·L_max)^(1/2)",
+                "Age independence: t from 180 yr (Eta Car) to 10 Myr â€” F_act oscillates, F_U_Bi stable",
+                "F_LENR dominance ratio: F_LENR/F_DE_max = k_LENR(Ï‰_LENR/Ï‰â‚€)Â²/(k_DEÂ·L_X_max)",
             ],
             'simulation_set': {
-                'L_X_sweep':        'L_X from 1e31→1e35 W — verify F_U_Bi flatness (equivalence class)',
-                'n_system_merge':   'average N=2,4,8,16 systems — check superposition law',
-                'archive_span':     'add SN1006, Kepler SNR — confirm 5-system equivalence class',
-                'omega_0_break':    'find ω₀* where averaging breaks the equivalence class',
+                'L_X_sweep':        'L_X from 1e31â†’1e35 W â€” verify F_U_Bi flatness (equivalence class)',
+                'n_system_merge':   'average N=2,4,8,16 systems â€” check superposition law',
+                'archive_span':     'add SN1006, Kepler SNR â€” confirm 5-system equivalence class',
+                'omega_0_break':    'find Ï‰â‚€* where averaging breaks the equivalence class',
                 'paper_benchmark':  'expect F_U_Bi ~ +2.11e208 N regardless of L_X (PAPER_252)',
             },
             'F_LENR': F_LENR,
@@ -7997,30 +8024,30 @@ class ChandraArchiveMultiSystemFUBiCalculator(_CP3Calculator):
 
 
 class SgrACenterNegativeBuoyancyCalculator(_CP3Calculator):
-    """PAPER_253 | Infrared Datasets — Sgr A* Galactic Center Negative Buoyancy.
+    """PAPER_253 | Infrared Datasets â€” Sgr A* Galactic Center Negative Buoyancy.
 
-    Sagittarius A* (Sgr A*), M=4.1×10⁶ M_sun=7.956×10³⁶ kg, ~26,000 ly away.
-    Chandra 2023: L_X=10^33 W, B=10^-5 T, T=10^4 K, ρ=10^-22 kg/m³.
+    Sagittarius A* (Sgr A*), M=4.1Ã—10â¶ M_sun=7.956Ã—10Â³â¶ kg, ~26,000 ly away.
+    Chandra 2023: L_X=10^33 W, B=10^-5 T, T=10^4 K, Ï=10^-22 kg/mÂ³.
     JWST 2023: gas and dust dynamics; ALMA: velocities ~1,000 km/s.
-    ω₀ = 10^-15 rad/s (3 orders below the low-ω₀ group above).
+    Ï‰â‚€ = 10^-15 rad/s (3 orders below the low-Ï‰â‚€ group above).
 
-    *** UNIQUELY RARE MATHEMATICAL DISCOVERY — Negative Buoyancy Inversion ***
-    ω₀ drops 3 orders (10^-12 → 10^-15) → F_LENR = k_LENR·(ω_LENR/ω₀)² jumps
-    6 orders (10^39 → 10^45 N).  With F_rel = 4.30×10^33 N (LEP-anchored
-    relativistic coherence) now non-negligible, the quadratic root x₂ inverts
-    sign, giving F_U_Bi_i ≈ −8.31×10^211 N (NEGATIVE BUOYANCY).
+    *** UNIQUELY RARE MATHEMATICAL DISCOVERY â€” Negative Buoyancy Inversion ***
+    Ï‰â‚€ drops 3 orders (10^-12 â†’ 10^-15) â†’ F_LENR = k_LENRÂ·(Ï‰_LENR/Ï‰â‚€)Â² jumps
+    6 orders (10^39 â†’ 10^45 N).  With F_rel = 4.30Ã—10^33 N (LEP-anchored
+    relativistic coherence) now non-negligible, the quadratic root xâ‚‚ inverts
+    sign, giving F_U_Bi_i â‰ˆ âˆ’8.31Ã—10^211 N (NEGATIVE BUOYANCY).
 
     Physical interpretation: a net outward/repulsive buoyancy force component
     near the Galactic Centre, potentially related to Fermi Bubbles and the
     observed outflow at ~1,000 km/s.  This is the ONLY system in the Chandra
     dataset exhibiting repulsive stabilisation.
 
-    ω₀ criticality:
-    - ω₀ > ω₀_crit (≈ 10^-13): F_rel negligible, F_U_Bi positive
-    - ω₀ < ω₀_crit: F_rel significant, x₂ inverts, F_U_Bi NEGATIVE
+    Ï‰â‚€ criticality:
+    - Ï‰â‚€ > Ï‰â‚€_crit (â‰ˆ 10^-13): F_rel negligible, F_U_Bi positive
+    - Ï‰â‚€ < Ï‰â‚€_crit: F_rel significant, xâ‚‚ inverts, F_U_Bi NEGATIVE
 
-    Paper benchmark: F_U_Bi ≈ −8.31×10²¹¹ N (NEGATIVE — repulsive stabilisation).
-    DPM_resonance = g·μ_B·B₀/(ħ·ω₀) ≈ 1.76×10⁶ (high — driven by low ω₀).
+    Paper benchmark: F_U_Bi â‰ˆ âˆ’8.31Ã—10Â²Â¹Â¹ N (NEGATIVE â€” repulsive stabilisation).
+    DPM_resonance = gÂ·Î¼_BÂ·Bâ‚€/(Ä§Â·Ï‰â‚€) â‰ˆ 1.76Ã—10â¶ (high â€” driven by low Ï‰â‚€).
     """
 
     def compute(self, dataset: dict) -> dict:
@@ -8051,13 +8078,13 @@ class SgrACenterNegativeBuoyancyCalculator(_CP3Calculator):
         DPM_momentum  = 0.93
         DPM_gravity   = 1.0
 
-        # DPM resonance — ω₀=10^-15 gives 10^6 enhancement (vs 10^3 at ω₀=10^-12)
-        DPM_resonance = (2.0 * mu_B * B_0) / (hbar * omega_0)   # ≈ 1.76e6
+        # DPM resonance â€” Ï‰â‚€=10^-15 gives 10^6 enhancement (vs 10^3 at Ï‰â‚€=10^-12)
+        DPM_resonance = (2.0 * mu_B * B_0) / (hbar * omega_0)   # â‰ˆ 1.76e6
 
-        # LENR resonance — 6 orders stronger at ω₀=10^-15 vs 10^-12
+        # LENR resonance â€” 6 orders stronger at Ï‰â‚€=10^-15 vs 10^-12
         omega_LENR = 2 * math.pi * 1.25e12
         k_LENR     = 1e-10
-        F_LENR     = k_LENR * (omega_LENR / omega_0)**2   # ≈ 6.17e45 N (Sgr A*)
+        F_LENR     = k_LENR * (omega_LENR / omega_0)**2   # â‰ˆ 6.17e45 N (Sgr A*)
 
         k_act     = 1e-6
         omega_act = 2 * math.pi * 300.0
@@ -8073,16 +8100,16 @@ class SgrACenterNegativeBuoyancyCalculator(_CP3Calculator):
         sigma_n   = 1e-4
         F_neutron = k_neutron * sigma_n                  # = 1e6 N
 
-        # Relativistic coherence (F_rel NOW SIGNIFICANT for ω₀=10^-15)
+        # Relativistic coherence (F_rel NOW SIGNIFICANT for Ï‰â‚€=10^-15)
         k_rel          = 1e-10
         E_cm_astro_eff = 1.24e24
         E_cm_LEP       = 189e9
         F_rel          = k_rel * (E_cm_astro_eff / E_cm_LEP)**2   # = 4.30e33 N
 
         # F_rel significance ratio vs F_LENR
-        F_rel_significance = F_rel / F_LENR   # non-negligible at this ω₀
+        F_rel_significance = F_rel / F_LENR   # non-negligible at this Ï‰â‚€
 
-        term_gravity  = (G * M / r**2) * DPM_gravity      # larger M and r
+        term_gravity  = dpm_emergent_ug1(M, r) * DPM_gravity      # larger M and r
         term_momentum = (m_e * c_light**2 / r**2) * DPM_momentum * math.cos(theta)
         term_vac      = rho_vac_UA * DPM_stability
 
@@ -8100,50 +8127,50 @@ class SgrACenterNegativeBuoyancyCalculator(_CP3Calculator):
         F_U_Bi_i = integrand_total * abs(x_2)
         F_U_Bi   = -F_0 + term_momentum + term_gravity + F_U_Bi_i
 
-        # Sign analysis — negative buoyancy flag
+        # Sign analysis â€” negative buoyancy flag
         is_negative_buoyancy = F_U_Bi < 0
 
         # Velocity correlation: kinetic energy density at ~1000 km/s outflow
-        rho_GC = 1e-22                            # ISM near GC (kg/m³)
-        E_outflow = 0.5 * rho_GC * v_gas**2      # kinetic energy density (J/m³)
+        rho_GC = 1e-22                            # ISM near GC (kg/mÂ³)
+        E_outflow = 0.5 * rho_GC * v_gas**2      # kinetic energy density (J/mÂ³)
 
-        # Critical ω₀ estimate where F_rel ~ F_LENR (frequency threshold)
-        # F_LENR(ω₀_crit) = F_rel → k_LENR(ω_LENR/ω₀_crit)² = F_rel
+        # Critical Ï‰â‚€ estimate where F_rel ~ F_LENR (frequency threshold)
+        # F_LENR(Ï‰â‚€_crit) = F_rel â†’ k_LENR(Ï‰_LENR/Ï‰â‚€_crit)Â² = F_rel
         omega_0_crit = omega_LENR * math.sqrt(k_LENR / F_rel) if F_rel > 0 else 0.0
 
         return {
             'primary_equations': [
-                "*** NEGATIVE BUOYANCY INVERSION — Sgr A* Galactic Center ***",
-                f"ω₀ = {omega_0:.1e} rad/s  [3 orders below SNR regime → 6-order F_LENR boost]",
-                f"DPM_resonance = g·μ_B·B₀/(ħ·ω₀) = {DPM_resonance:.4e}  [×10³ vs SN1006]",
-                f"F_LENR = k_LENR·(ω_LENR/ω₀)² = {F_LENR:.4e} N  [6 orders > SN1006]",
-                f"F_rel = k_rel·(E_cm_eff/E_cm_LEP)² = {F_rel:.4e} N  [NOW SIGNIFICANT]",
+                "*** NEGATIVE BUOYANCY INVERSION â€” Sgr A* Galactic Center ***",
+                f"Ï‰â‚€ = {omega_0:.1e} rad/s  [3 orders below SNR regime â†’ 6-order F_LENR boost]",
+                f"DPM_resonance = gÂ·Î¼_BÂ·Bâ‚€/(Ä§Â·Ï‰â‚€) = {DPM_resonance:.4e}  [Ã—10Â³ vs SN1006]",
+                f"F_LENR = k_LENRÂ·(Ï‰_LENR/Ï‰â‚€)Â² = {F_LENR:.4e} N  [6 orders > SN1006]",
+                f"F_rel = k_relÂ·(E_cm_eff/E_cm_LEP)Â² = {F_rel:.4e} N  [NOW SIGNIFICANT]",
                 f"F_rel / F_LENR = {F_rel_significance:.4e}  [no longer negligible]",
-                f"term_gravity = GM/r² = {term_gravity:.4e} m/s²  [Sgr A* SMBH]",
-                f"x₂ = {x_2:.4e} m",
+                f"term_gravity = GM/rÂ² = {term_gravity:.4e} m/sÂ²  [Sgr A* SMBH]",
+                f"xâ‚‚ = {x_2:.4e} m",
                 f"F_U_Bi_i = {F_U_Bi_i:.4e} N",
-                f"F_U_Bi = {F_U_Bi:.4e} N  [paper benchmark: −8.31e211 N]",
+                f"F_U_Bi = {F_U_Bi:.4e} N  [paper benchmark: âˆ’8.31e211 N]",
                 f"Negative buoyancy: {is_negative_buoyancy}  [REPULSIVE STABILISATION]",
-                f"ω₀_crit (F_rel=F_LENR) ≈ {omega_0_crit:.4e} rad/s",
-                f"E_outflow density = {E_outflow:.4e} J/m³  (v_gas={v_gas:.0e} m/s)",
+                f"Ï‰â‚€_crit (F_rel=F_LENR) â‰ˆ {omega_0_crit:.4e} rad/s",
+                f"E_outflow density = {E_outflow:.4e} J/mÂ³  (v_gas={v_gas:.0e} m/s)",
             ],
             'available_equations': [
-                "Negative buoyancy condition: F_rel / F_LENR exceeds threshold when ω₀ < ω₀_crit",
-                "ω₀_crit = ω_LENR × sqrt(k_LENR / F_rel) — Type I/II domain boundary",
-                "F_LENR(ω₀) = k_LENR·(ω_LENR/ω₀)² — 6-order amplification per 3-order ω₀ drop",
+                "Negative buoyancy condition: F_rel / F_LENR exceeds threshold when Ï‰â‚€ < Ï‰â‚€_crit",
+                "Ï‰â‚€_crit = Ï‰_LENR Ã— sqrt(k_LENR / F_rel) â€” Type I/II domain boundary",
+                "F_LENR(Ï‰â‚€) = k_LENRÂ·(Ï‰_LENR/Ï‰â‚€)Â² â€” 6-order amplification per 3-order Ï‰â‚€ drop",
                 "Repulsive buoyancy: may drive Fermi Bubble inflation (outflow ~1000 km/s)",
-                "DPM_resonance ≈ 1.76e6 at ω₀=10^-15 (from magnon–phonon coupling at GC)",
-                "F_rel = k_rel·(E_cm_astro,local,adj,eff,enhanced/E_cm,LEP)² — LEP 1998 anchor",
-                "Sign inversion: sgn(F_U_Bi) switches from + to − as ω₀ crosses ω₀_crit",
-                "Velocity correlation: E_outflow = 0.5·ρ_ISM·v_outflow² — kinematic link",
+                "DPM_resonance â‰ˆ 1.76e6 at Ï‰â‚€=10^-15 (from magnonâ€“phonon coupling at GC)",
+                "F_rel = k_relÂ·(E_cm_astro,local,adj,eff,enhanced/E_cm,LEP)Â² â€” LEP 1998 anchor",
+                "Sign inversion: sgn(F_U_Bi) switches from + to âˆ’ as Ï‰â‚€ crosses Ï‰â‚€_crit",
+                "Velocity correlation: E_outflow = 0.5Â·Ï_ISMÂ·v_outflowÂ² â€” kinematic link",
             ],
             'simulation_set': {
-                'omega_0_sign_sweep':  'ω₀ from 1e-10 to 1e-20 — map the F_U_Bi sign transition',
-                'F_rel_threshold':     'vary k_rel 1e-12→1e-8 — find sign-flip onset',
-                'Fermi_bubble_link':   'v_gas 100→10000 km/s — E_outflow correlation with F_U_Bi',
-                'mass_scaling':        'M/M_BH from 0.01 to 100 — negative buoyancy persistence',
-                'omega_0_crit_map':    f'benchmark ω₀_crit ≈ {omega_0_crit:.2e} rad/s boundary',
-                'paper_benchmark':     'expect F_U_Bi ~ −8.31e211 N (NEGATIVE, PAPER_253)',
+                'omega_0_sign_sweep':  'Ï‰â‚€ from 1e-10 to 1e-20 â€” map the F_U_Bi sign transition',
+                'F_rel_threshold':     'vary k_rel 1e-12â†’1e-8 â€” find sign-flip onset',
+                'Fermi_bubble_link':   'v_gas 100â†’10000 km/s â€” E_outflow correlation with F_U_Bi',
+                'mass_scaling':        'M/M_BH from 0.01 to 100 â€” negative buoyancy persistence',
+                'omega_0_crit_map':    f'benchmark Ï‰â‚€_crit â‰ˆ {omega_0_crit:.2e} rad/s boundary',
+                'paper_benchmark':     'expect F_U_Bi ~ âˆ’8.31e211 N (NEGATIVE, PAPER_253)',
             },
             'F_LENR':                F_LENR,
             'F_rel':                 F_rel,
@@ -8158,26 +8185,26 @@ class SgrACenterNegativeBuoyancyCalculator(_CP3Calculator):
 
 
 class KeplerSNR1604FUBiCalculator(_CP3Calculator):
-    """PAPER_254 | Infrared Datasets — Kepler's Supernova Remnant 1604 CE F_U_Bi_i.
+    """PAPER_254 | Infrared Datasets â€” Kepler's Supernova Remnant 1604 CE F_U_Bi_i.
 
     Kepler's Supernova Remnant: Type Ia SNR, ~20,000 ly away, age ~420 yr
-    (t=1.325e10 s, since SN 1604 CE — last Milky Way naked-eye supernova, observed
+    (t=1.325e10 s, since SN 1604 CE â€” last Milky Way naked-eye supernova, observed
     by Johannes Kepler).  Chandra 2023: L_X=10^31 W, B=10^-5 T, T=10^6 K,
-    ρ=10^-23 kg/m³.  JWST 2023: shocked gas filaments.  ALMA: v_shock=4,000 km/s
+    Ï=10^-23 kg/mÂ³.  JWST 2023: shocked gas filaments.  ALMA: v_shock=4,000 km/s
     (highest ejecta velocity in the 5-system Chandra dataset).
 
     Physically distinct from SN 1006 despite identical F_U_Bi outcome:
     - Age: 420 yr vs 1,019 yr for SN 1006 (young; less swept-up mass)
-    - Distance: ~20,000 ly vs ~7,000 ly (3× further; same r=20 ly remnant radius)
-    - L_X: 10^31 W vs 10^32 W (10× fainter — consistent with greater distance)
+    - Distance: ~20,000 ly vs ~7,000 ly (3Ã— further; same r=20 ly remnant radius)
+    - L_X: 10^31 W vs 10^32 W (10Ã— fainter â€” consistent with greater distance)
     - v_shock: 4,000 km/s (highest in set) vs 3,000 km/s (SN 1006)
-    - Historical: 1604 CE — observed at peak by Kepler, Galileo, Crab contemporaries
+    - Historical: 1604 CE â€” observed at peak by Kepler, Galileo, Crab contemporaries
 
-    Same ω₀=10^-12 → same force equivalence class → F_U_Bi = +2.11×10^208 N.
-    F_LENR overwhelms the 10× lower L_X contribution; history doesn't affect buoyancy.
+    Same Ï‰â‚€=10^-12 â†’ same force equivalence class â†’ F_U_Bi = +2.11Ã—10^208 N.
+    F_LENR overwhelms the 10Ã— lower L_X contribution; history doesn't affect buoyancy.
     F_neutron stabilises the younger, faster-expanding Type Ia ejecta shell.
 
-    Paper benchmark: F_U_Bi ≈ +2.11×10^208 N (positive buoyancy).
+    Paper benchmark: F_U_Bi â‰ˆ +2.11Ã—10^208 N (positive buoyancy).
     """
 
     def compute(self, dataset: dict) -> dict:
@@ -8193,13 +8220,13 @@ class KeplerSNR1604FUBiCalculator(_CP3Calculator):
         # Kepler's SNR parameters (Chandra/JWST 2023 defaults)
         M        = dataset.get('M',       1.989e31)   # ~1 M_sun ejecta (kg)
         r        = dataset.get('r',       6.17e16)    # ~20 ly remnant radius (m)
-        L_X      = dataset.get('L_X',     1e31)       # 10× fainter than SN1006 (W)
+        L_X      = dataset.get('L_X',     1e31)       # 10Ã— fainter than SN1006 (W)
         B_0      = dataset.get('B_0',     1e-5)       # magnetised shell (T)
-        omega_0  = dataset.get('omega_0', 1e-12)      # same ω₀-class as SN1006 (rad/s)
+        omega_0  = dataset.get('omega_0', 1e-12)      # same Ï‰â‚€-class as SN1006 (rad/s)
         t        = dataset.get('t',       1.325e10)   # ~420 yr (s)
         theta    = dataset.get('theta',   math.pi/4)
-        v_shock  = dataset.get('v_shock', 4e6)        # 4,000 km/s — fastest in set (m/s)
-        d_kpc    = dataset.get('d_kpc',   6.4)        # ~20,000 ly ≈ 6.4 kpc (kpc)
+        v_shock  = dataset.get('v_shock', 4e6)        # 4,000 km/s â€” fastest in set (m/s)
+        d_kpc    = dataset.get('d_kpc',   6.4)        # ~20,000 ly â‰ˆ 6.4 kpc (kpc)
 
         F_0         = dataset.get('F_0',         1.83e71)
         rho_vac_UA  = dataset.get('rho_vac_UA',  7.09e-36)
@@ -8207,7 +8234,7 @@ class KeplerSNR1604FUBiCalculator(_CP3Calculator):
         DPM_momentum  = 0.93
         DPM_gravity   = 1.0
 
-        DPM_resonance = (2.0 * mu_B * B_0) / (hbar * omega_0)   # ≈ 1.76e3
+        DPM_resonance = (2.0 * mu_B * B_0) / (hbar * omega_0)   # â‰ˆ 1.76e3
 
         omega_LENR = 2 * math.pi * 1.25e12
         k_LENR     = 1e-10
@@ -8218,7 +8245,7 @@ class KeplerSNR1604FUBiCalculator(_CP3Calculator):
         F_act     = k_act * math.cos(omega_act * t)
 
         k_DE = 1e-30
-        F_DE = k_DE * L_X                              # = 10 N (10× less than SN1006)
+        F_DE = k_DE * L_X                              # = 10 N (10Ã— less than SN1006)
 
         V_test = 1e-3
         F_res  = 2 * e_charge * B_0 * V_test * math.sin(theta) * DPM_resonance
@@ -8232,7 +8259,7 @@ class KeplerSNR1604FUBiCalculator(_CP3Calculator):
         E_cm_LEP       = 189e9
         F_rel          = k_rel * (E_cm_astro_eff / E_cm_LEP)**2   # negligible
 
-        term_gravity  = (G * M / r**2) * DPM_gravity
+        term_gravity  = dpm_emergent_ug1(M, r) * DPM_gravity
         term_momentum = (m_e * c_light**2 / r**2) * DPM_momentum * math.cos(theta)
         term_vac      = rho_vac_UA * DPM_stability
 
@@ -8250,48 +8277,48 @@ class KeplerSNR1604FUBiCalculator(_CP3Calculator):
         F_U_Bi   = -F_0 + term_momentum + term_gravity + F_U_Bi_i
 
         # Shock dynamics
-        rho_ISM     = 1e-23                           # ISM density (kg/m³)
+        rho_ISM     = 1e-23                           # ISM density (kg/mÂ³)
         E_shock     = 0.5 * rho_ISM * v_shock**2     # shock kinetic energy density
         t_Sedov     = r / v_shock                     # approximate Sedov-Taylor time
         # L_X age-distance consistency: L_X(Kepler)/L_X(SN1006) ~ (d_SN1006/d_Kepler)^2
         d_SN1006_kpc = 2.15                           # ~7,000 ly
-        L_X_ratio    = (d_SN1006_kpc / d_kpc)**2     # ≈ 0.113 (~10× fainter)
+        L_X_ratio    = (d_SN1006_kpc / d_kpc)**2     # â‰ˆ 0.113 (~10Ã— fainter)
 
         # LENR dominance factor vs F_DE at this L_X
         F_LENR_over_F_DE = F_LENR / F_DE if F_DE != 0 else float('inf')
 
         return {
             'primary_equations': [
-                f"Kepler SNR 1604 CE — t = {t:.4e} s  (~420 yr, youngest Type Ia in set)",
-                f"DPM_resonance = g·μ_B·B₀/(ħ·ω₀) = {DPM_resonance:.4e}  [identical to SN1006]",
-                f"F_LENR = {F_LENR:.4e} N  [same ω₀ → same F_LENR; equivalence class confirmed]",
-                f"F_DE = k_DE·L_X = {F_DE:.4e} N  [10× less than SN1006 — distance-faded L_X]",
+                f"Kepler SNR 1604 CE â€” t = {t:.4e} s  (~420 yr, youngest Type Ia in set)",
+                f"DPM_resonance = gÂ·Î¼_BÂ·Bâ‚€/(Ä§Â·Ï‰â‚€) = {DPM_resonance:.4e}  [identical to SN1006]",
+                f"F_LENR = {F_LENR:.4e} N  [same Ï‰â‚€ â†’ same F_LENR; equivalence class confirmed]",
+                f"F_DE = k_DEÂ·L_X = {F_DE:.4e} N  [10Ã— less than SN1006 â€” distance-faded L_X]",
                 f"F_LENR / F_DE = {F_LENR_over_F_DE:.4e}  [F_DE completely negligible]",
                 f"F_neutron = {F_neutron:.4e} N  [stabilises fast-expanding ejecta]",
-                f"F_rel = {F_rel:.4e} N  [negligible — low-ω₀ class confirmed]",
+                f"F_rel = {F_rel:.4e} N  [negligible â€” low-Ï‰â‚€ class confirmed]",
                 f"v_shock = {v_shock/1e3:.0f} km/s  [fastest Type Ia ejecta in 5-system set]",
-                f"E_shock = {E_shock:.4e} J/m³  (rho_ISM×v²/2)",
-                f"L_X(Kepler)/L_X(SN1006) ≈ {L_X_ratio:.3f}  (inverse distance-sq consistent)",
-                f"x₂ = {x_2:.4e} m",
+                f"E_shock = {E_shock:.4e} J/mÂ³  (rho_ISMÃ—vÂ²/2)",
+                f"L_X(Kepler)/L_X(SN1006) â‰ˆ {L_X_ratio:.3f}  (inverse distance-sq consistent)",
+                f"xâ‚‚ = {x_2:.4e} m",
                 f"F_U_Bi_i = {F_U_Bi_i:.4e} N",
                 f"F_U_Bi = {F_U_Bi:.4e} N  [paper benchmark: +2.11e208 N]",
             ],
             'available_equations': [
-                "F_U_Bi(SN1006) == F_U_Bi(KeplerSNR): same ω₀ gates buoyancy regardless of age",
-                "F_LENR/F_DE → ∞ as L_X→0: distant/faint SNRs still achieve full F_U_Bi",
-                "Sedov-Taylor time: t_ST = r/v_shock — ejecta deceleration phase",
-                "L_X ∝ 1/d²: distance fades luminosity but not F_LENR-dominated buoyancy",
-                "v_shock = 4000 km/s: highest in set — youngest ejecta dynamics",
-                "1604 CE: Kepler/Galileo historical epoch — no quantum instrumentation",
-                "F_neutron = k_neutron·σ_n: ejecta mass-loss stabilisation independent of age",
+                "F_U_Bi(SN1006) == F_U_Bi(KeplerSNR): same Ï‰â‚€ gates buoyancy regardless of age",
+                "F_LENR/F_DE â†’ âˆž as L_Xâ†’0: distant/faint SNRs still achieve full F_U_Bi",
+                "Sedov-Taylor time: t_ST = r/v_shock â€” ejecta deceleration phase",
+                "L_X âˆ 1/dÂ²: distance fades luminosity but not F_LENR-dominated buoyancy",
+                "v_shock = 4000 km/s: highest in set â€” youngest ejecta dynamics",
+                "1604 CE: Kepler/Galileo historical epoch â€” no quantum instrumentation",
+                "F_neutron = k_neutronÂ·Ïƒ_n: ejecta mass-loss stabilisation independent of age",
             ],
             'simulation_set': {
                 'age_comparison':     'SN1006 (1019 yr) vs Kepler (420 yr) vs Chandra avg (10 Myr)',
-                'v_shock_energetics': 'v_shock 1000→10000 km/s — E_shock and F_neutron coupling',
-                'distance_L_X':      'd_kpc 1→50 kpc — confirm L_X fade does not break equiv class',
-                'F_LENR_dominance':   'F_LENR/F_DE across 5 systems — hierarchy confirmation',
+                'v_shock_energetics': 'v_shock 1000â†’10000 km/s â€” E_shock and F_neutron coupling',
+                'distance_L_X':      'd_kpc 1â†’50 kpc â€” confirm L_X fade does not break equiv class',
+                'F_LENR_dominance':   'F_LENR/F_DE across 5 systems â€” hierarchy confirmation',
                 'paper_benchmark':    'expect F_U_Bi ~ +2.11e208 N (PAPER_254 thread result)',
-                'five_system_check':  'run all 5 classes, confirm SN1006=EtaCar=Archive=Kepler; SgrA*≠',
+                'five_system_check':  'run all 5 classes, confirm SN1006=EtaCar=Archive=Kepler; SgrA*â‰ ',
             },
             'F_LENR':              F_LENR,
             'F_DE':                F_DE,
@@ -8308,26 +8335,26 @@ class KeplerSNR1604FUBiCalculator(_CP3Calculator):
 
 
 # ---------------------------------------------------------------------------
-# PAPER_255 — PSR J0030+0451 Isolated Neutron Star F_U_Bi_i Calculator
-# ALMA Cycle 12 Proposal: neutron-star-density regime (σ_n ≈ 10^39)
-# First CP3 class capturing F_neutron = k_neutron × σ_n = 10^10 × 10^39 = 10^49 N
+# PAPER_255 â€” PSR J0030+0451 Isolated Neutron Star F_U_Bi_i Calculator
+# ALMA Cycle 12 Proposal: neutron-star-density regime (Ïƒ_n â‰ˆ 10^39)
+# First CP3 class capturing F_neutron = k_neutron Ã— Ïƒ_n = 10^10 Ã— 10^39 = 10^49 N
 # Uniquely rare: F_neutron dominates all other terms by 53 orders vs ISM regime (10^6 N)
-# System: isolated ms-pulsar ~1,100 ly, M=1.4 M_sun, r=10^4 m, ρ≈10^17 kg/m³
-# Discovery: compact scale (r=10^4 m) + extreme F_neutron → POSITIVE buoyancy
-#            (+2.53e208 N) despite same ω₀=10^-12 as diffuse SNR equivalence class
+# System: isolated ms-pulsar ~1,100 ly, M=1.4 M_sun, r=10^4 m, Ïâ‰ˆ10^17 kg/mÂ³
+# Discovery: compact scale (r=10^4 m) + extreme F_neutron â†’ POSITIVE buoyancy
+#            (+2.53e208 N) despite same Ï‰â‚€=10^-12 as diffuse SNR equivalence class
 # ---------------------------------------------------------------------------
 class PSRJ0030NeutronStarFUBiCalculator(_CP3Calculator):
     """
-    PAPER_255 — PSR J0030+0451 Isolated Neutron Star F_U_Bi_i
+    PAPER_255 â€” PSR J0030+0451 Isolated Neutron Star F_U_Bi_i
     ALMA Cycle 12 Proposal target: isolated neutron star (ms-pulsar), ~1,100 ly,
-    mass ~1.4 M_sun, radius r=10^4 m, ρ≈10^17 kg/m³.
+    mass ~1.4 M_sun, radius r=10^4 m, Ïâ‰ˆ10^17 kg/mÂ³.
 
-    New UQFF regime: neutron-star-density σ_n ≈ 10^39 (vs ISM σ_n ≈ 10^-4).
-    F_neutron = k_neutron × σ_n = 10^10 × 10^39 = 10^49 N — dominant term.
+    New UQFF regime: neutron-star-density Ïƒ_n â‰ˆ 10^39 (vs ISM Ïƒ_n â‰ˆ 10^-4).
+    F_neutron = k_neutron Ã— Ïƒ_n = 10^10 Ã— 10^39 = 10^49 N â€” dominant term.
 
-    Uniquely rare discovery: despite ω₀=10^-12 (same as SN1006/EtaCar equiv class)
+    Uniquely rare discovery: despite Ï‰â‚€=10^-12 (same as SN1006/EtaCar equiv class)
     and dominant F_neutron 53 orders above ISM, F_U_Bi_i falls in the SAME positive
-    buoyancy class (+2.53×10^208 N). Compact-scale geometry (r=10^4 m) preserves
+    buoyancy class (+2.53Ã—10^208 N). Compact-scale geometry (r=10^4 m) preserves
     positive buoyancy signature across 14 orders of magnitude in r.
 
     Receives dataset from source2.cpp PRINCIPAL GUI; outputs to CondensedPhysics_OutputData.py.
@@ -8346,14 +8373,14 @@ class PSRJ0030NeutronStarFUBiCalculator(_CP3Calculator):
         M_sun     = 1.989e30
 
         # --- System parameters (PSR J0030+0451) ---
-        M         = dataset.get('M',   1.4 * M_sun)     # 1.4 M_sun ≈ 2.786e30 kg
+        M         = dataset.get('M',   1.4 * M_sun)     # 1.4 M_sun â‰ˆ 2.786e30 kg
         r         = dataset.get('r',   1e4)              # NS radius ~10 km
         L_X       = dataset.get('L_X', 1e31)             # X-ray luminosity (W)
-        B_0       = dataset.get('B_0', 1e8)              # Surface B field (T) — typical ms-psr
+        B_0       = dataset.get('B_0', 1e8)              # Surface B field (T) â€” typical ms-psr
         omega_0   = dataset.get('omega_0', 1e-12)        # Characteristic frequency (s^-1)
         theta     = dataset.get('theta', math.pi / 4)
         t         = dataset.get('t', 3.156e14)           # ~10 Myr (s)
-        # Neutron-star density σ_n — key parameter distinguishing this regime
+        # Neutron-star density Ïƒ_n â€” key parameter distinguishing this regime
         sigma_n   = dataset.get('sigma_n', 1e39)         # neutron cross-section density
 
         rho_vac_UA = 7.09e-36
@@ -8384,18 +8411,18 @@ class PSRJ0030NeutronStarFUBiCalculator(_CP3Calculator):
         V_test = 1e-3
         F_res  = 2.0 * e_charge * B_0 * V_test * math.sin(theta) * DPM_resonance
 
-        # --- NEUTRON STAR density term (dominant — 10^49 N) ---
+        # --- NEUTRON STAR density term (dominant â€” 10^49 N) ---
         k_neutron  = 1e10
-        F_neutron  = k_neutron * sigma_n    # = 10^10 × 10^39 = 10^49 N
+        F_neutron  = k_neutron * sigma_n    # = 10^10 Ã— 10^39 = 10^49 N
 
-        # --- Relativistic correction (negligible at ω₀=10^-12) ---
+        # --- Relativistic correction (negligible at Ï‰â‚€=10^-12) ---
         k_rel          = 1e-10
         E_cm_astro_eff = 1.24e24
         E_cm_LEP       = 189e9
         F_rel          = k_rel * (E_cm_astro_eff / E_cm_LEP)**2
 
-        # --- Quadratic root x₂ ---
-        term_gravity  = (G * M / r**2) * DPM_gravity
+        # --- Quadratic root xâ‚‚ ---
+        term_gravity  = dpm_emergent_ug1(M, r) * DPM_gravity
         term_momentum = (m_e * c_light**2 / r**2) * DPM_momentum * math.cos(theta)
         term_vac      = rho_vac_UA * DPM_stability
 
@@ -8418,30 +8445,30 @@ class PSRJ0030NeutronStarFUBiCalculator(_CP3Calculator):
 
         return {
             'primary_equations': [
-                f"PSR J0030+0451 — Isolated neutron star, ρ≈10^17 kg/m³, r={r:.2e} m",
-                f"σ_n = {sigma_n:.2e}  [neutron-star density regime — 53 orders above ISM 10^-4]",
-                f"F_neutron = k_neutron × σ_n = {k_neutron:.2e} × {sigma_n:.2e} = {F_neutron:.4e} N  [DOMINANT]",
+                f"PSR J0030+0451 â€” Isolated neutron star, Ïâ‰ˆ10^17 kg/mÂ³, r={r:.2e} m",
+                f"Ïƒ_n = {sigma_n:.2e}  [neutron-star density regime â€” 53 orders above ISM 10^-4]",
+                f"F_neutron = k_neutron Ã— Ïƒ_n = {k_neutron:.2e} Ã— {sigma_n:.2e} = {F_neutron:.4e} N  [DOMINANT]",
                 f"F_LENR = {F_LENR:.4e} N,  F_neutron/F_LENR = {F_neutron_over_F_LENR:.4e}",
-                f"F_rel = {F_rel:.4e} N  [negligible at ω₀=10^-12]",
+                f"F_rel = {F_rel:.4e} N  [negligible at Ï‰â‚€=10^-12]",
                 f"DPM_resonance = {DPM_resonance:.4e}",
-                f"x₂ = {x_2:.4e} m",
-                f"F_U_Bi_i = integrand × |x₂| = {F_U_Bi_i:.4e} N",
+                f"xâ‚‚ = {x_2:.4e} m",
+                f"F_U_Bi_i = integrand Ã— |xâ‚‚| = {F_U_Bi_i:.4e} N",
                 f"F_U_Bi = {F_U_Bi:.4e} N",
                 f"Positive buoyancy: {F_U_Bi_i > 0}  [compact scale preserves + sign despite F_neutron dominance]",
             ],
             'available_equations': [
-                "Neutron star equation of state: P = K × ρ^(5/3) (non-relativistic polytrope)",
-                "Pulsar spin-down: dE/dt = -(4π²Iṗ)/P³  (magnetic dipole radiation)",
-                "Neutron capture cross-section scaling: σ_n ∝ ρ^(1/3) for degenerate matter",
-                "F_LENR regime boundary: ω₀_crit where F_LENR = F_neutron",
-                "ALMA isotopic tracer: ²H/¹H > 10^-5 in PSR wind nebula (neutron-capture signature)",
+                "Neutron star equation of state: P = K Ã— Ï^(5/3) (non-relativistic polytrope)",
+                "Pulsar spin-down: dE/dt = -(4Ï€Â²Iá¹—)/PÂ³  (magnetic dipole radiation)",
+                "Neutron capture cross-section scaling: Ïƒ_n âˆ Ï^(1/3) for degenerate matter",
+                "F_LENR regime boundary: Ï‰â‚€_crit where F_LENR = F_neutron",
+                "ALMA isotopic tracer: Â²H/Â¹H > 10^-5 in PSR wind nebula (neutron-capture signature)",
                 "EHT pulsar wind nebula polarimetry at 230 GHz",
             ],
             'simulation_set': [
                 {'equation': 'F_neutron_vs_sigma_n', 'sigma_n_range': [1e-4, 1e39],
-                 'note': 'Sweep σ_n from ISM to NS interior — F_neutron spans 10^6 to 10^49 N'},
+                 'note': 'Sweep Ïƒ_n from ISM to NS interior â€” F_neutron spans 10^6 to 10^49 N'},
                 {'equation': 'F_U_Bi_i_vs_r', 'r_range': [1e4, 6.17e18],
-                 'note': 'Compact (NS) to SMBH scale — positive buoyancy preserved across 14 decades'},
+                 'note': 'Compact (NS) to SMBH scale â€” positive buoyancy preserved across 14 decades'},
                 {'paper_benchmark': 2.53e208, 'units': 'N', 'paper': 'PAPER_255'},
             ],
             'F_neutron':              F_neutron,
@@ -8457,30 +8484,30 @@ class PSRJ0030NeutronStarFUBiCalculator(_CP3Calculator):
 
 
 # ---------------------------------------------------------------------------
-# PAPER_256 — Crab Nebula M1 Compact-Geometry DPM Probe F_U_Bi_i Calculator
+# PAPER_256 â€” Crab Nebula M1 Compact-Geometry DPM Probe F_U_Bi_i Calculator
 # ALMA Cycle 12 Proposal contingency target #1
-# System: Crab Pulsar/SNR, ~6,500 ly, M=1.4 M_sun, r=10^4 m, B₀=10^-4 T, ω₀=10^-15
-# Uniquely rare: B₀=10^-4 T (same as Eta Carinae PAPER_251) at r=10^4 m (compact object)
-#   → DPM_resonance identical to EtaCar BUT at compact-scale geometry:
-#   x₂ shift + F_neutron=10^49 N → F_res/F_LENR ratio changes → DPM NO LONGER invisible
-#   → DPM visibility is geometry-dependent (first demonstration in CP3)
-# Also: ω₀=10^-15 (same as Sgr A* PAPER_253) yet produces POSITIVE buoyancy
-#   → compact scale (r=10^4 vs r=6.17e18) is the sign-determining variable
-# F_U_Bi_i ≈ +5.30×10^208 N (benchmark per ALMA proposal)
+# System: Crab Pulsar/SNR, ~6,500 ly, M=1.4 M_sun, r=10^4 m, Bâ‚€=10^-4 T, Ï‰â‚€=10^-15
+# Uniquely rare: Bâ‚€=10^-4 T (same as Eta Carinae PAPER_251) at r=10^4 m (compact object)
+#   â†’ DPM_resonance identical to EtaCar BUT at compact-scale geometry:
+#   xâ‚‚ shift + F_neutron=10^49 N â†’ F_res/F_LENR ratio changes â†’ DPM NO LONGER invisible
+#   â†’ DPM visibility is geometry-dependent (first demonstration in CP3)
+# Also: Ï‰â‚€=10^-15 (same as Sgr A* PAPER_253) yet produces POSITIVE buoyancy
+#   â†’ compact scale (r=10^4 vs r=6.17e18) is the sign-determining variable
+# F_U_Bi_i â‰ˆ +5.30Ã—10^208 N (benchmark per ALMA proposal)
 # ---------------------------------------------------------------------------
 class CrabNebulaM1FUBiCalculator(_CP3Calculator):
     """
-    PAPER_256 — Crab Nebula M1 Compact-Geometry DPM Probe F_U_Bi_i
+    PAPER_256 â€” Crab Nebula M1 Compact-Geometry DPM Probe F_U_Bi_i
     ALMA Cycle 12 Proposal contingency target: Crab Pulsar/SNR ~6,500 ly,
-    M≈1.4 M_sun, r=10^4 m, B₀=10^-4 T, ω₀=10^-15 s^-1.
+    Mâ‰ˆ1.4 M_sun, r=10^4 m, Bâ‚€=10^-4 T, Ï‰â‚€=10^-15 s^-1.
 
     Two uniquely rare discoveries:
-    1. DPM geometry dependency: B₀=10^-4 T (Eta Car value) at r=10^4 m
-       changes F_res/F_LENR balance → DPM is no longer invisible at compact scale.
+    1. DPM geometry dependency: Bâ‚€=10^-4 T (Eta Car value) at r=10^4 m
+       changes F_res/F_LENR balance â†’ DPM is no longer invisible at compact scale.
        dpm_geometry_flag distinguishes compact-object from diffuse-gas regime.
-    2. ω₀=10^-15 (same as Sgr A* PAPER_253) at compact r=10^4 m → POSITIVE buoyancy
-       (+5.30×10^208 N) vs Sgr A* NEGATIVE buoyancy (−8.31×10^211 N).
-       Proves r is the sign-determining variable, not ω₀ alone.
+    2. Ï‰â‚€=10^-15 (same as Sgr A* PAPER_253) at compact r=10^4 m â†’ POSITIVE buoyancy
+       (+5.30Ã—10^208 N) vs Sgr A* NEGATIVE buoyancy (âˆ’8.31Ã—10^211 N).
+       Proves r is the sign-determining variable, not Ï‰â‚€ alone.
 
     Receives dataset from source2.cpp PRINCIPAL GUI; outputs to CondensedPhysics_OutputData.py.
     """
@@ -8501,8 +8528,8 @@ class CrabNebulaM1FUBiCalculator(_CP3Calculator):
         M       = dataset.get('M',       1.4 * M_sun)   # 1.4 M_sun
         r       = dataset.get('r',       1e4)            # NS radius ~10 km
         L_X     = dataset.get('L_X',     1e31)           # X-ray luminosity (W) per ALMA proposal
-        B_0     = dataset.get('B_0',     1e-4)           # B₀ = 10^-4 T (same as Eta Carinae)
-        omega_0 = dataset.get('omega_0', 1e-15)          # ω₀ = 10^-15 (same as Sgr A*)
+        B_0     = dataset.get('B_0',     1e-4)           # Bâ‚€ = 10^-4 T (same as Eta Carinae)
+        omega_0 = dataset.get('omega_0', 1e-15)          # Ï‰â‚€ = 10^-15 (same as Sgr A*)
         theta   = dataset.get('theta',   math.pi / 4)
         t       = dataset.get('t',       3.156e10)       # ~1,000 yr (Crab SNR age)
         sigma_n = dataset.get('sigma_n', 1e39)           # NS density regime
@@ -8514,13 +8541,13 @@ class CrabNebulaM1FUBiCalculator(_CP3Calculator):
         DPM_gravity   = 1.0
         DPM_stability = 1.0
 
-        # --- DPM resonance (B₀=10^-4, ω₀=10^-15 — same B₀ as EtaCar but different ω₀) ---
-        DPM_resonance = (2.0 * mu_B * B_0) / (hbar * omega_0)   # large: ω₀ 3 orders smaller
+        # --- DPM resonance (Bâ‚€=10^-4, Ï‰â‚€=10^-15 â€” same Bâ‚€ as EtaCar but different Ï‰â‚€) ---
+        DPM_resonance = (2.0 * mu_B * B_0) / (hbar * omega_0)   # large: Ï‰â‚€ 3 orders smaller
 
-        # --- LENR term (ω₀=10^-15 — same as Sgr A*, amplified 6 orders vs ω₀=10^-12) ---
+        # --- LENR term (Ï‰â‚€=10^-15 â€” same as Sgr A*, amplified 6 orders vs Ï‰â‚€=10^-12) ---
         omega_LENR = 2 * math.pi * 1.25e12
         k_LENR     = 1e-10
-        F_LENR     = k_LENR * (omega_LENR / omega_0)**2   # ≈ 6.17e45 N
+        F_LENR     = k_LENR * (omega_LENR / omega_0)**2   # â‰ˆ 6.17e45 N
 
         # --- Activation term ---
         k_act     = 1e-6
@@ -8539,14 +8566,14 @@ class CrabNebulaM1FUBiCalculator(_CP3Calculator):
         k_neutron = 1e10
         F_neutron = k_neutron * sigma_n    # = 10^49 N
 
-        # --- Relativistic correction (significant at ω₀=10^-15) ---
+        # --- Relativistic correction (significant at Ï‰â‚€=10^-15) ---
         k_rel          = 1e-10
         E_cm_astro_eff = 1.24e24
         E_cm_LEP       = 189e9
         F_rel          = k_rel * (E_cm_astro_eff / E_cm_LEP)**2   # = 4.30e33 N
 
-        # --- Quadratic root x₂ ---
-        term_gravity  = (G * M / r**2) * DPM_gravity
+        # --- Quadratic root xâ‚‚ ---
+        term_gravity  = dpm_emergent_ug1(M, r) * DPM_gravity
         term_momentum = (m_e * c_light**2 / r**2) * DPM_momentum * math.cos(theta)
         term_vac      = rho_vac_UA * DPM_stability
 
@@ -8568,37 +8595,37 @@ class CrabNebulaM1FUBiCalculator(_CP3Calculator):
         dpm_geometry_flag     = 'compact_visible' if dpm_visibility_ratio > 1e-10 else 'diffuse_invisible'
         is_positive_buoyancy  = F_U_Bi_i > 0
 
-        # Sgr A* comparison: same ω₀, different r → sign difference
+        # Sgr A* comparison: same Ï‰â‚€, different r â†’ sign difference
         r_sgrA        = 6.17e18
-        r_ratio       = r_sgrA / r           # ~6.17e14 — scale factor
+        r_ratio       = r_sgrA / r           # ~6.17e14 â€” scale factor
 
         return {
             'primary_equations': [
-                f"Crab Nebula (M1) — Crab Pulsar r={r:.2e} m, B₀={B_0:.2e} T, ω₀={omega_0:.2e} s⁻¹",
-                f"DPM_resonance = (2μ_B·B₀)/(ħ·ω₀) = {DPM_resonance:.4e}  [same B₀ as Eta Carinae; ω₀ 3 orders smaller → DPM 1,000× larger]",
-                f"F_LENR = {F_LENR:.4e} N  [ω₀=10^-15: same as Sgr A*, 6 orders above ω₀=10^-12 class]",
-                f"F_res = {F_res:.4e} N,  F_res/F_LENR = {dpm_visibility_ratio:.4e}  → DPM: {dpm_geometry_flag}",
-                f"F_neutron = {F_neutron:.4e} N  [NS density σ_n=10^39, dominates ISM terms]",
-                f"F_rel = {F_rel:.4e} N  [significant at ω₀=10^-15]",
-                f"x₂ = {x_2:.4e} m",
-                f"F_U_Bi_i = {F_U_Bi_i:.4e} N  [POSITIVE — r=10^4 m reverses Sgr A* sign]",
-                f"Sgr A* r/Crab r ratio = {r_ratio:.4e}  [scale determines buoyancy sign, not ω₀ alone]",
+                f"Crab Nebula (M1) â€” Crab Pulsar r={r:.2e} m, Bâ‚€={B_0:.2e} T, Ï‰â‚€={omega_0:.2e} sâ»Â¹",
+                f"DPM_resonance = (2Î¼_BÂ·Bâ‚€)/(Ä§Â·Ï‰â‚€) = {DPM_resonance:.4e}  [same Bâ‚€ as Eta Carinae; Ï‰â‚€ 3 orders smaller â†’ DPM 1,000Ã— larger]",
+                f"F_LENR = {F_LENR:.4e} N  [Ï‰â‚€=10^-15: same as Sgr A*, 6 orders above Ï‰â‚€=10^-12 class]",
+                f"F_res = {F_res:.4e} N,  F_res/F_LENR = {dpm_visibility_ratio:.4e}  â†’ DPM: {dpm_geometry_flag}",
+                f"F_neutron = {F_neutron:.4e} N  [NS density Ïƒ_n=10^39, dominates ISM terms]",
+                f"F_rel = {F_rel:.4e} N  [significant at Ï‰â‚€=10^-15]",
+                f"xâ‚‚ = {x_2:.4e} m",
+                f"F_U_Bi_i = {F_U_Bi_i:.4e} N  [POSITIVE â€” r=10^4 m reverses Sgr A* sign]",
+                f"Sgr A* r/Crab r ratio = {r_ratio:.4e}  [scale determines buoyancy sign, not Ï‰â‚€ alone]",
             ],
             'available_equations': [
-                "Crab Pulsar spin-down luminosity: L_sd = 4π²Iṗ/P³ ≈ 5×10^31 W",
-                "Synchrotron self-absorption frequency: ν_SSA for Crab Nebula at 230 GHz",
+                "Crab Pulsar spin-down luminosity: L_sd = 4Ï€Â²Iá¹—/PÂ³ â‰ˆ 5Ã—10^31 W",
+                "Synchrotron self-absorption frequency: Î½_SSA for Crab Nebula at 230 GHz",
                 "ALMA 230 GHz polarized emission map: probe B-field geometry in pulsar wind",
-                "EHT 20 μas resolution: Crab Pulsar wind nebula kinematic structure",
+                "EHT 20 Î¼as resolution: Crab Pulsar wind nebula kinematic structure",
                 "DPM geometry transition: r_threshold where F_res/F_LENR crosses 1",
-                "ω₀_crit domain boundary shared with Sgr A* → r is sign discriminant",
+                "Ï‰â‚€_crit domain boundary shared with Sgr A* â†’ r is sign discriminant",
             ],
             'simulation_set': [
                 {'equation': 'F_U_Bi_i_vs_r_at_omega0_1e-15',
                  'r_range': [1e4, 6.17e18],
-                 'note': 'Sweep r at ω₀=10^-15: positive→negative buoyancy transition'},
+                 'note': 'Sweep r at Ï‰â‚€=10^-15: positiveâ†’negative buoyancy transition'},
                 {'equation': 'dpm_visibility_vs_r',
                  'r_range': [1e4, 6.17e16],
-                 'note': 'F_res/F_LENR vs r: compact→diffuse DPM visibility transition'},
+                 'note': 'F_res/F_LENR vs r: compactâ†’diffuse DPM visibility transition'},
                 {'paper_benchmark': 5.30e208, 'units': 'N', 'paper': 'PAPER_256'},
             ],
             'F_neutron':             F_neutron,
@@ -8617,25 +8644,25 @@ class CrabNebulaM1FUBiCalculator(_CP3Calculator):
 
 
 # ---------------------------------------------------------------------------
-# PAPER_257 — Cassiopeia A SNR Neutron Star F_U_Bi_i Calculator
+# PAPER_257 â€” Cassiopeia A SNR Neutron Star F_U_Bi_i Calculator
 # ALMA Cycle 12 Proposal contingency target #2
-# System: Cas A neutron star/SNR, ~11,000 ly, M=1.4 M_sun, r=10^4 m, ω₀=10^-12
-# Uniquely rare: σ_n=10^39 (NS density) yet F_U_Bi_i = +2.11×10^208 N —
-#   IDENTICAL to ChandraArchive composite (PAPER_252, diffuse gas σ_n=10^-4)
+# System: Cas A neutron star/SNR, ~11,000 ly, M=1.4 M_sun, r=10^4 m, Ï‰â‚€=10^-12
+# Uniquely rare: Ïƒ_n=10^39 (NS density) yet F_U_Bi_i = +2.11Ã—10^208 N â€”
+#   IDENTICAL to ChandraArchive composite (PAPER_252, diffuse gas Ïƒ_n=10^-4)
 #   Force Equivalence Class now spans compact neutron stars AND diffuse ISM composites
-#   at the same ω₀.  Cross-validates PAPER_252 from the compact-object side.
+#   at the same Ï‰â‚€.  Cross-validates PAPER_252 from the compact-object side.
 # ---------------------------------------------------------------------------
 class CassiopeiaASNRFUBiCalculator(_CP3Calculator):
     """
-    PAPER_257 — Cassiopeia A SNR Neutron Star F_U_Bi_i
+    PAPER_257 â€” Cassiopeia A SNR Neutron Star F_U_Bi_i
     ALMA Cycle 12 Proposal contingency target: Cas A neutron star, ~11,000 ly,
-    M≈1.4 M_sun, r=10^4 m, σ_n=10^39, ω₀=10^-12.
+    Mâ‰ˆ1.4 M_sun, r=10^4 m, Ïƒ_n=10^39, Ï‰â‚€=10^-12.
 
     Uniquely rare discovery: Force Equivalence Class cross-validation.
-    Cas A (NS density, σ_n=10^39, compact r=10^4 m) yields the SAME F_U_Bi_i
-    as the ChandraArchive composite (PAPER_252, diffuse gas σ_n=10^-4, variable M/r).
-    Both share ω₀=10^-12 → same x₂ → same F_U_Bi_i ≈ +2.11×10^208 N.
-    The equivalence class is now confirmed to span 53 orders in σ_n and 14 orders in r.
+    Cas A (NS density, Ïƒ_n=10^39, compact r=10^4 m) yields the SAME F_U_Bi_i
+    as the ChandraArchive composite (PAPER_252, diffuse gas Ïƒ_n=10^-4, variable M/r).
+    Both share Ï‰â‚€=10^-12 â†’ same xâ‚‚ â†’ same F_U_Bi_i â‰ˆ +2.11Ã—10^208 N.
+    The equivalence class is now confirmed to span 53 orders in Ïƒ_n and 14 orders in r.
 
     Receives dataset from source2.cpp PRINCIPAL GUI; outputs to CondensedPhysics_OutputData.py.
     """
@@ -8657,7 +8684,7 @@ class CassiopeiaASNRFUBiCalculator(_CP3Calculator):
         r       = dataset.get('r',       1e4)            # NS radius ~10 km
         L_X     = dataset.get('L_X',     1e31)           # X-ray luminosity (W)
         B_0     = dataset.get('B_0',     1e-5)           # B field (T)
-        omega_0 = dataset.get('omega_0', 1e-12)          # ω₀=10^-12 (equiv class frequency)
+        omega_0 = dataset.get('omega_0', 1e-12)          # Ï‰â‚€=10^-12 (equiv class frequency)
         theta   = dataset.get('theta',   math.pi / 4)
         t       = dataset.get('t',       1.041e10)       # ~330 yr (Cas A age ~1680 CE)
         sigma_n = dataset.get('sigma_n', 1e39)           # NS density
@@ -8694,14 +8721,14 @@ class CassiopeiaASNRFUBiCalculator(_CP3Calculator):
         k_neutron = 1e10
         F_neutron = k_neutron * sigma_n    # = 10^49 N
 
-        # --- Relativistic correction (negligible at ω₀=10^-12) ---
+        # --- Relativistic correction (negligible at Ï‰â‚€=10^-12) ---
         k_rel          = 1e-10
         E_cm_astro_eff = 1.24e24
         E_cm_LEP       = 189e9
         F_rel          = k_rel * (E_cm_astro_eff / E_cm_LEP)**2
 
-        # --- Quadratic root x₂ ---
-        term_gravity  = (G * M / r**2) * DPM_gravity
+        # --- Quadratic root xâ‚‚ ---
+        term_gravity  = dpm_emergent_ug1(M, r) * DPM_gravity
         term_momentum = (m_e * c_light**2 / r**2) * DPM_momentum * math.cos(theta)
         term_vac      = rho_vac_UA * DPM_stability
 
@@ -8724,27 +8751,27 @@ class CassiopeiaASNRFUBiCalculator(_CP3Calculator):
 
         return {
             'primary_equations': [
-                f"Cassiopeia A — NS remnant, r={r:.2e} m, σ_n={sigma_n:.2e} (NS density), ω₀={omega_0:.2e}",
-                f"F_neutron = k_neutron × σ_n = {k_neutron:.2e} × {sigma_n:.2e} = {F_neutron:.4e} N",
-                f"F_LENR = {F_LENR:.4e} N  [ω₀=10^-12; identical to SN1006/PAPER_250 equiv class]",
-                f"F_rel = {F_rel:.4e} N  [negligible at ω₀=10^-12]",
-                f"x₂ = {x_2:.4e} m  [same ω₀ → same x₂ as ChandraArchive PAPER_252]",
+                f"Cassiopeia A â€” NS remnant, r={r:.2e} m, Ïƒ_n={sigma_n:.2e} (NS density), Ï‰â‚€={omega_0:.2e}",
+                f"F_neutron = k_neutron Ã— Ïƒ_n = {k_neutron:.2e} Ã— {sigma_n:.2e} = {F_neutron:.4e} N",
+                f"F_LENR = {F_LENR:.4e} N  [Ï‰â‚€=10^-12; identical to SN1006/PAPER_250 equiv class]",
+                f"F_rel = {F_rel:.4e} N  [negligible at Ï‰â‚€=10^-12]",
+                f"xâ‚‚ = {x_2:.4e} m  [same Ï‰â‚€ â†’ same xâ‚‚ as ChandraArchive PAPER_252]",
                 f"F_U_Bi_i = {F_U_Bi_i:.4e} N",
                 f"ChandraArchive PAPER_252 benchmark = {F_archive_benchmark:.4e} N",
                 f"Equivalence class match: {equiv_class_match}  [NS compact object = diffuse ISM composite]",
-                f"Equiv class spans: σ_n 10^-4→10^39 (53 orders); r 10^4→6.17e18 m (14 orders)",
+                f"Equiv class spans: Ïƒ_n 10^-4â†’10^39 (53 orders); r 10^4â†’6.17e18 m (14 orders)",
             ],
             'available_equations': [
-                "Cas A neutron star cooling: T_s(t) = T_0 × (t/t_0)^{-1/6} (minimal cooling model)",
-                "ALMA 230 GHz: CO J=2-1 isotopic anomalies in Cas A molecular gas (²H/¹H, ¹³C/¹²C)",
+                "Cas A neutron star cooling: T_s(t) = T_0 Ã— (t/t_0)^{-1/6} (minimal cooling model)",
+                "ALMA 230 GHz: CO J=2-1 isotopic anomalies in Cas A molecular gas (Â²H/Â¹H, Â¹Â³C/Â¹Â²C)",
                 "Equivalence class boundary: r_threshold where F_neutron contribution becomes detectable",
                 "Chandra X-ray (0.5-8 keV): Fe K-alpha line as neutron-capture tracer",
-                "σ_n sweep: from ISM 10^-4 to NS 10^39 → F_U_Bi_i stability test",
+                "Ïƒ_n sweep: from ISM 10^-4 to NS 10^39 â†’ F_U_Bi_i stability test",
             ],
             'simulation_set': [
                 {'equation': 'F_U_Bi_i_vs_sigma_n',
                  'sigma_n_range': [1e-4, 1e39],
-                 'note': 'Equivalence class persistence: F_U_Bi_i constant despite σ_n changing 53 orders'},
+                 'note': 'Equivalence class persistence: F_U_Bi_i constant despite Ïƒ_n changing 53 orders'},
                 {'equation': 'cas_a_equiv_class_vs_chandra_archive',
                  'paper_ref': 'PAPER_252',
                  'note': 'Cross-validation: Cas A NS vs ChandraArchive diffuse composite'},
@@ -8762,12 +8789,12 @@ class CassiopeiaASNRFUBiCalculator(_CP3Calculator):
 
 
 # ---------------------------------------------------------------------------
-# PAPER_258 — Multi-Messenger UQFF Observational Validator
+# PAPER_258 â€” Multi-Messenger UQFF Observational Validator
 # ALMA Cycle 12 Proposal: first CP3 class linking F_U_Bi_i integrals to
 #   concrete radio/mm/X-ray observational thresholds
 # Encodes 3 observable UQFF signatures:
-#   1. Isotopic: ²H/¹H > 10^-5 and ¹³C/¹²C > 0.01 → LENR neutron-capture tracers
-#   2. Kinematic: v_outflow > 100 km/s (asymmetric jet) → negative buoyancy signature
+#   1. Isotopic: Â²H/Â¹H > 10^-5 and Â¹Â³C/Â¹Â²C > 0.01 â†’ LENR neutron-capture tracers
+#   2. Kinematic: v_outflow > 100 km/s (asymmetric jet) â†’ negative buoyancy signature
 #   3. X-ray correlation: flare frequency f_flare ~ 1/day (Sgr A*) or 10^-3 Hz (PSR)
 #      correlated with F_neutron periodicity
 # Uniquely rare: no prior CP3 class connects UQFF integral outputs to observational
@@ -8775,19 +8802,19 @@ class CassiopeiaASNRFUBiCalculator(_CP3Calculator):
 # ---------------------------------------------------------------------------
 class MultiMessengerUQFFValidator(_CP3Calculator):
     """
-    PAPER_258 — Multi-Messenger UQFF Observational Validator
+    PAPER_258 â€” Multi-Messenger UQFF Observational Validator
     ALMA Cycle 12 Proposal: first CP3 class mapping F_U_Bi_i integral results
     to concrete observational detection thresholds (radio, mm, X-ray).
 
     Three observable UQFF signatures encoded:
-    1. Isotopic anomaly threshold: ²H/¹H > 10^-5, ¹³C/¹²C > 0.01
-       → requires F_neutron > 10^6 N (LENR neutron-capture drives isotopic enhancement)
+    1. Isotopic anomaly threshold: Â²H/Â¹H > 10^-5, Â¹Â³C/Â¹Â²C > 0.01
+       â†’ requires F_neutron > 10^6 N (LENR neutron-capture drives isotopic enhancement)
     2. Kinematic signature: v_outflow > 100 km/s (asymmetric jet/outflow)
-       → requires negative buoyancy: F_U_Bi_i < 0
+       â†’ requires negative buoyancy: F_U_Bi_i < 0
     3. X-ray flare correlation: flare frequency f_flare related to F_neutron
-       via f_flare = k_flare × (F_neutron / F_0)
+       via f_flare = k_flare Ã— (F_neutron / F_0)
 
-    Designed to be called AFTER a system-specific F_U_Bi_i class (PAPER_250–257)
+    Designed to be called AFTER a system-specific F_U_Bi_i class (PAPER_250â€“257)
     to classify observational detectability. Receives F_U_Bi_i, F_neutron, and
     system parameters; outputs go/no-go flags and predicted observational values.
 
@@ -8798,8 +8825,8 @@ class MultiMessengerUQFFValidator(_CP3Calculator):
         import math
 
         # --- Thresholds from ALMA Cycle 12 Proposal ---
-        deuterium_threshold   = dataset.get('deuterium_threshold',   1e-5)   # ²H/¹H
-        carbon13_threshold    = dataset.get('carbon13_threshold',    1e-2)   # ¹³C/¹²C
+        deuterium_threshold   = dataset.get('deuterium_threshold',   1e-5)   # Â²H/Â¹H
+        carbon13_threshold    = dataset.get('carbon13_threshold',    1e-2)   # Â¹Â³C/Â¹Â²C
         v_outflow_threshold   = dataset.get('v_outflow_threshold',   1e5)    # m/s (100 km/s)
         f_flare_sgrA          = dataset.get('f_flare_sgrA',          1.157e-5)  # ~1/day in Hz
         f_flare_psr           = dataset.get('f_flare_psr',           1e-3)    # Hz for PSR
@@ -8813,7 +8840,7 @@ class MultiMessengerUQFFValidator(_CP3Calculator):
 
         # --- Observable 1: Isotopic anomaly (LENR-driven neutron capture) ---
         # F_neutron threshold for detectable isotopic enhancement:
-        # F_neutron > k_neutron × σ_n_iso where σ_n_iso ~ 10^-4 (LENR minimum)
+        # F_neutron > k_neutron Ã— Ïƒ_n_iso where Ïƒ_n_iso ~ 10^-4 (LENR minimum)
         F_neutron_iso_threshold  = 1e6           # minimum for isotopic signal (PAPER_250)
         deuterium_predicted      = deuterium_threshold * (F_neutron / F_neutron_iso_threshold)
         carbon13_predicted       = carbon13_threshold  * (F_neutron / F_neutron_iso_threshold)
@@ -8839,11 +8866,11 @@ class MultiMessengerUQFFValidator(_CP3Calculator):
 
         return {
             'primary_equations': [
-                f"System: {system_tag}  |  ω₀={omega_0:.2e}  |  F_U_Bi_i={F_U_Bi_i:.4e} N",
+                f"System: {system_tag}  |  Ï‰â‚€={omega_0:.2e}  |  F_U_Bi_i={F_U_Bi_i:.4e} N",
                 f"--- Observable 1: Isotopic Anomaly ---",
                 f"F_neutron = {F_neutron:.4e} N  (threshold: {F_neutron_iso_threshold:.2e} N)",
-                f"Predicted ²H/¹H  = {deuterium_predicted:.4e}  (ALMA threshold: {deuterium_threshold:.2e})",
-                f"Predicted ¹³C/¹²C = {carbon13_predicted:.4e}  (ALMA threshold: {carbon13_threshold:.2e})",
+                f"Predicted Â²H/Â¹H  = {deuterium_predicted:.4e}  (ALMA threshold: {deuterium_threshold:.2e})",
+                f"Predicted Â¹Â³C/Â¹Â²C = {carbon13_predicted:.4e}  (ALMA threshold: {carbon13_threshold:.2e})",
                 f"Isotopic detectable: {isotopic_detectable}",
                 f"--- Observable 2: Kinematic Outflow (negative buoyancy) ---",
                 f"F_U_Bi_i < 0 (negative buoyancy): {is_negative_buoyancy}",
@@ -8860,16 +8887,16 @@ class MultiMessengerUQFFValidator(_CP3Calculator):
                 "eht-imaging pipeline: EHT 230 GHz VLBI polarized reconstruction",
                 "Chandra 0.5-8 keV: X-ray flare light curve cross-correlation",
                 "ALMA Band 6 (230 GHz, 7.5 GHz BW): isotopic ratio sensitivity calculation",
-                "EHT 20 μas resolution: jet asymmetry detection limit for v > 100 km/s",
+                "EHT 20 Î¼as resolution: jet asymmetry detection limit for v > 100 km/s",
                 "NSF AAG / NASA ROSES ADAP: funding route thresholds for this detection score",
             ],
             'simulation_set': [
                 {'equation': 'detection_score_vs_omega_0',
                  'omega_0_range': [1e-15, 1e-12],
-                 'note': 'Score sweep: negative buoyancy (ω₀=10^-15) vs equiv class (ω₀=10^-12)'},
+                 'note': 'Score sweep: negative buoyancy (Ï‰â‚€=10^-15) vs equiv class (Ï‰â‚€=10^-12)'},
                 {'equation': 'isotopic_ratio_vs_F_neutron',
                  'F_neutron_range': [1e6, 1e49],
-                 'note': 'Predicted ²H/¹H as function of F_neutron across ISM to NS density'},
+                 'note': 'Predicted Â²H/Â¹H as function of F_neutron across ISM to NS density'},
                 {'paper_benchmark': 'ALMA_Cycle12_UQFF', 'paper': 'PAPER_258'},
             ],
             'isotopic_detectable':    isotopic_detectable,
@@ -8885,7 +8912,7 @@ class MultiMessengerUQFFValidator(_CP3Calculator):
 
 
 # ---------------------------------------------------------------------------
-# Session 72g — PAPER_264–266  (HUDF Clone Fragment Unique Physics)
+# Session 72g â€” PAPER_264â€“266  (HUDF Clone Fragment Unique Physics)
 # Three unique physics terms extracted from HUDFGalaxies.cpp UQFF 2.0 upgrade:
 #   PAPER_264: f_TRZ CPT-Asymmetric gravitational phase transition (negative-time)
 #   PAPER_265: Dual-channel I(t) cascade buoyancy (quadratic merger amplification)
@@ -8897,14 +8924,14 @@ class HUDFTRZCPTPhaseCalculator(_CP3Calculator):
     """HUDF Time-Reversal Zeroing (f_TRZ): CPT-asymmetric UQFF gravitational phase transition.
 
     Uniquely Rare Mathematical Discoveries:
-      1. f_TRZ = -1 defines a ZERO POINT: (1+f_TRZ)=0 → UQFF gravity vanishes completely
-      2. f_TRZ < -1: (1+f_TRZ) < 0 → anti-gravity / negative-time regime
+      1. f_TRZ = -1 defines a ZERO POINT: (1+f_TRZ)=0 â†’ UQFF gravity vanishes completely
+      2. f_TRZ < -1: (1+f_TRZ) < 0 â†’ anti-gravity / negative-time regime
       3. HUDF at z=3.5 has f_TRZ=0.1: mild CPT violation in early-universe bulk field
-      4. Phase boundary is sharp — analogous to vacuum expectation value sign-flip in QFT
+      4. Phase boundary is sharp â€” analogous to vacuum expectation value sign-flip in QFT
 
     Physical basis: The (1+f_TRZ) factor in UQFF MUGE is a CPT-asymmetry parameter.
-    Source: HUDFGalaxies.cpp (C++ original) → HUDFTRZNegativeTimeTerm (UQFF 2.0 upgrade)
-    PAPER_264 — Session 72g March 2026.
+    Source: HUDFGalaxies.cpp (C++ original) â†’ HUDFTRZNegativeTimeTerm (UQFF 2.0 upgrade)
+    PAPER_264 â€” Session 72g March 2026.
     """
 
     def compute(self, dataset: dict) -> dict:
@@ -8916,7 +8943,7 @@ class HUDFTRZCPTPhaseCalculator(_CP3Calculator):
         r    = dataset.get('r_m', 1.23e27)
         f_TRZ = dataset.get('f_TRZ', 0.1)
 
-        Ug1  = G * M / r**2
+        Ug1 = dpm_emergent_ug1(M, r)  # DPM: mu_s * grad(M_s/r)
         Ug_UQFF = Ug1 * (1.0 + f_TRZ)   # zero at f_TRZ=-1; negative for f_TRZ<-1
 
         # Phase classification
@@ -8936,20 +8963,20 @@ class HUDFTRZCPTPhaseCalculator(_CP3Calculator):
 
         return {
             'primary_equations': [
-                f"Ug_UQFF = Ug1 × (1+f_TRZ) = {Ug1:.4e} × (1+{f_TRZ}) = {Ug_UQFF:.4e} m/s²",
+                f"Ug_UQFF = Ug1 Ã— (1+f_TRZ) = {Ug1:.4e} Ã— (1+{f_TRZ}) = {Ug_UQFF:.4e} m/sÂ²",
                 f"Phase: {phase}",
-                f"TRZ zero-point: f_TRZ = {f_TRZ_zero} → Ug_UQFF = 0",
-                f"HUDF (z=3.5, f_TRZ=0.1): (1+f_TRZ) = 1.1 — 10% CPT-violating enhancement",
+                f"TRZ zero-point: f_TRZ = {f_TRZ_zero} â†’ Ug_UQFF = 0",
+                f"HUDF (z=3.5, f_TRZ=0.1): (1+f_TRZ) = 1.1 â€” 10% CPT-violating enhancement",
             ],
             'available_equations': [
-                "Ug_UQFF(f_TRZ) = Ug1 × (1+f_TRZ)  [general TRZ modulation]",
+                "Ug_UQFF(f_TRZ) = Ug1 Ã— (1+f_TRZ)  [general TRZ modulation]",
                 "f_TRZ_zero = -1  [CPT phase transition boundary]",
-                "ΔCPT = f_TRZ × Ug1  [CPT-violating excess over Newtonian]",
+                "Î”CPT = f_TRZ Ã— Ug1  [CPT-violating excess over Newtonian]",
                 "g_anti = |Ug_UQFF|(f_TRZ<-1)  [negative-time anti-gravity field]",
             ],
             'simulation_set': {
-                'f_TRZ_sweep': 'Sweep f_TRZ from -2 to +1 → observe Ug_UQFF sign-flip',
-                'epoch_evolution': 'f_TRZ(z) — CPT violation as function of redshift z',
+                'f_TRZ_sweep': 'Sweep f_TRZ from -2 to +1 â†’ observe Ug_UQFF sign-flip',
+                'epoch_evolution': 'f_TRZ(z) â€” CPT violation as function of redshift z',
             },
             'Ug1': Ug1,
             'Ug_UQFF': Ug_UQFF,
@@ -8963,14 +8990,14 @@ class HUDFInteractionCascadeBuoyancyCalculator(_CP3Calculator):
 
     Uniquely Rare Mathematical Discoveries:
       1. I(t) applied to BOTH base gravity (term1) AND UQFF term (term2) simultaneously
-      2. Combined modulation is (1+I(t))^2 — quadratic, not linear
-      3. Cascade buoyancy excess: ΔI_cascade = I₀² (second-order in merger strength)
-      4. Peak coincides with HUDF observation epoch z≈3.5 — cosmic coincidence or selection
+      2. Combined modulation is (1+I(t))^2 â€” quadratic, not linear
+      3. Cascade buoyancy excess: Î”I_cascade = Iâ‚€Â² (second-order in merger strength)
+      4. Peak coincides with HUDF observation epoch zâ‰ˆ3.5 â€” cosmic coincidence or selection
       5. First UQFF module proven to be in N=2 cascade configuration
 
     Physical basis: HUDF ~10,000 galaxies in 11 sq. arcmin field; high merger rate at z=3.5.
-    Source: HUDFGalaxies.cpp (C++ original) → HUDFInteractionCascadeTerm (UQFF 2.0 upgrade)
-    PAPER_265 — Session 72g March 2026.
+    Source: HUDFGalaxies.cpp (C++ original) â†’ HUDFInteractionCascadeTerm (UQFF 2.0 upgrade)
+    PAPER_265 â€” Session 72g March 2026.
     """
 
     def compute(self, dataset: dict) -> dict:
@@ -8987,20 +9014,20 @@ class HUDFInteractionCascadeBuoyancyCalculator(_CP3Calculator):
 
         # DPM-emergent: mu_s x grad(M_s/r) (mass gradient, not Newtonian GM/r^2)
 
-        Ug1 = G * M / r**2
+        Ug1 = dpm_emergent_ug1(M, r)  # DPM: mu_s * grad(M_s/r)
         I_t = I0 * math.exp(-t / tau_inter)
 
         # Single-channel (baseline): only term1 gets I(t)
         g_single_channel = Ug1 * (1.0 + I_t)
 
         # Dual-channel (HUDF): both term1 and UQFF term get I(t)
-        # term1 × (1+I_t) + term2×(1+f_TRZ)×(1+I_t) → combined cascade factor
+        # term1 Ã— (1+I_t) + term2Ã—(1+f_TRZ)Ã—(1+I_t) â†’ combined cascade factor
         term1_cascade = Ug1 * (1.0 + I_t)
         term2_cascade = Ug1 * (1.0 + f_TRZ) * (1.0 + I_t)
         g_cascade_total = term1_cascade + term2_cascade
 
         # Cascade excess (relative to single-channel baseline)
-        delta_I_cascade = Ug1 * I_t * I_t   # I²·Ug1 — second-order buoyancy term
+        delta_I_cascade = Ug1 * I_t * I_t   # IÂ²Â·Ug1 â€” second-order buoyancy term
         cascade_factor = (1.0 + I_t)**2
 
         # Peak values (t=0)
@@ -9009,22 +9036,22 @@ class HUDFInteractionCascadeBuoyancyCalculator(_CP3Calculator):
 
         return {
             'primary_equations': [
-                f"I(t) = I₀·exp(-t/τ) = {I0}·exp(-t/{tau_inter:.2e}s) = {I_t:.4e}",
-                f"Single-channel: g = Ug1×(1+I(t)) = {g_single_channel:.4e} m/s²",
-                f"Dual-cascade: g = Ug1×(1+I(t)) + Ug1×(1+f_TRZ)×(1+I(t)) = {g_cascade_total:.4e} m/s²",
-                f"ΔI_cascade = I(t)²×Ug1 = {delta_I_cascade:.4e} m/s²  [quadratic buoyancy excess]",
-                f"Peak cascade excess (t=0): ΔI_peak = I₀²×Ug1 = {delta_peak:.4e} m/s²",
+                f"I(t) = Iâ‚€Â·exp(-t/Ï„) = {I0}Â·exp(-t/{tau_inter:.2e}s) = {I_t:.4e}",
+                f"Single-channel: g = Ug1Ã—(1+I(t)) = {g_single_channel:.4e} m/sÂ²",
+                f"Dual-cascade: g = Ug1Ã—(1+I(t)) + Ug1Ã—(1+f_TRZ)Ã—(1+I(t)) = {g_cascade_total:.4e} m/sÂ²",
+                f"Î”I_cascade = I(t)Â²Ã—Ug1 = {delta_I_cascade:.4e} m/sÂ²  [quadratic buoyancy excess]",
+                f"Peak cascade excess (t=0): Î”I_peak = Iâ‚€Â²Ã—Ug1 = {delta_peak:.4e} m/sÂ²",
             ],
             'available_equations': [
-                "g_N_channel = Ug1×(1+I(t))^N  [N-channel cascade generalisation]",
-                "ΔI = (1+I)^N - (1+I)  [cascade excess over single-channel]",
-                "I(t) = I₀·exp(-t/τ_inter)  [interaction decay — Gyr timescale]",
+                "g_N_channel = Ug1Ã—(1+I(t))^N  [N-channel cascade generalisation]",
+                "Î”I = (1+I)^N - (1+I)  [cascade excess over single-channel]",
+                "I(t) = Iâ‚€Â·exp(-t/Ï„_inter)  [interaction decay â€” Gyr timescale]",
                 "cascade_factor = (1+I)^2  [quadratic for N=2 dual-channel]",
             ],
             'simulation_set': {
-                't_sweep': 'I(t) from t=0 to 13 Gyr — cascade decay timeline',
-                'I0_sweep': 'Vary I₀ 0.01→0.5 — cascade excess scales as I₀²',
-                'N_channels': 'Vary N=1,2,3 — cascade order sensitivity',
+                't_sweep': 'I(t) from t=0 to 13 Gyr â€” cascade decay timeline',
+                'I0_sweep': 'Vary Iâ‚€ 0.01â†’0.5 â€” cascade excess scales as Iâ‚€Â²',
+                'N_channels': 'Vary N=1,2,3 â€” cascade order sensitivity',
             },
             'I_t': I_t,
             'delta_I_cascade': delta_I_cascade,
@@ -9037,16 +9064,16 @@ class HUDFGravitationalMeissnerCalculator(_CP3Calculator):
     """HUDF critical magnetic field: UQFF Gravitational Meissner Effect at B_crit=10^11 T.
 
     Uniquely Rare Mathematical Discoveries:
-      1. corr_B = 1-B/B_crit is structurally identical to Type II SC order parameter |ψ|²∝(1-B/H_c2)
-      2. B_crit=10^11 T is the UQFF Gravitational Meissner Boundary — UQFF gravity fully quenched
-      3. HUDF (B=10^-10 T): corr_B≈1 — maximum UQFF activity, cosmological benchmark
+      1. corr_B = 1-B/B_crit is structurally identical to Type II SC order parameter |Ïˆ|Â²âˆ(1-B/H_c2)
+      2. B_crit=10^11 T is the UQFF Gravitational Meissner Boundary â€” UQFF gravity fully quenched
+      3. HUDF (B=10^-10 T): corr_Bâ‰ˆ1 â€” maximum UQFF activity, cosmological benchmark
       4. Neutron stars at B~10^11 T sit exactly at the Meissner boundary
       5. First UQFF class identifying a gravitational analogue of superconducting flux expulsion
 
-    Physical basis: B_crit=10^11 T ≈ Schwinger-like NS surface critical field; at B=B_crit,
-    UQFF gravitational condensate melts (corr_B→0), analogous to SU_vac order parameter quench.
-    Source: HUDFGalaxies.cpp B_crit=1e11 T (C++ original) → HUDFCriticalMagneticTerm (UQFF 2.0)
-    PAPER_266 — Session 72g March 2026.
+    Physical basis: B_crit=10^11 T â‰ˆ Schwinger-like NS surface critical field; at B=B_crit,
+    UQFF gravitational condensate melts (corr_Bâ†’0), analogous to SU_vac order parameter quench.
+    Source: HUDFGalaxies.cpp B_crit=1e11 T (C++ original) â†’ HUDFCriticalMagneticTerm (UQFF 2.0)
+    PAPER_266 â€” Session 72g March 2026.
     """
 
     def compute(self, dataset: dict) -> dict:
@@ -9060,7 +9087,7 @@ class HUDFGravitationalMeissnerCalculator(_CP3Calculator):
         B      = dataset.get('B_T', 1e-10)
         B_crit = dataset.get('B_crit_T', 1e11)
 
-        Ug1    = G * M / r**2
+        Ug1 = dpm_emergent_ug1(M, r)  # DPM: mu_s * grad(M_s/r)
         corr_B = 1.0 - B / B_crit         # Meissner suppression factor
         Ug4    = Ug1 * corr_B             # magnetically-suppressed UQFF component
 
@@ -9076,30 +9103,30 @@ class HUDFGravitationalMeissnerCalculator(_CP3Calculator):
         elif corr_B > 0.01:
             regime = 'Near-critical zone (NS surface field)'
         elif abs(corr_B) < 0.01:
-            regime = 'Meissner boundary — UQFF gravity quenched'
+            regime = 'Meissner boundary â€” UQFF gravity quenched'
         else:
             regime = 'Above-critical: corr_B < 0 (anti-gravitational phase)'
 
         return {
             'primary_equations': [
                 f"corr_B = 1 - B/B_crit = 1 - {B:.1e}/{B_crit:.1e} = {corr_B:.6f}",
-                f"Ug4 = Ug1×corr_B = {Ug1:.4e} × {corr_B:.6f} = {Ug4:.4e} m/s²",
+                f"Ug4 = Ug1Ã—corr_B = {Ug1:.4e} Ã— {corr_B:.6f} = {Ug4:.4e} m/sÂ²",
                 f"UQFF active fraction: {active_fraction*100:.4f}%",
                 f"Regime: {regime}",
-                f"HUDF benchmark (B=10^-10 T): corr_B = 1 - 10^-21 ≈ 1.0 [maximum UQFF]",
-                f"Meissner boundary: B_crit = {B_crit:.2e} T — full UQFF quench",
+                f"HUDF benchmark (B=10^-10 T): corr_B = 1 - 10^-21 â‰ˆ 1.0 [maximum UQFF]",
+                f"Meissner boundary: B_crit = {B_crit:.2e} T â€” full UQFF quench",
             ],
             'available_equations': [
-                "corr_B(B) = 1 - B/B_crit  [Meissner suppression; corr_B → 0 at B_crit]",
-                "Ug4 = Ug1 × (1-B/B_crit)  [magnetically-suppressed UQFF gravity]",
+                "corr_B(B) = 1 - B/B_crit  [Meissner suppression; corr_B â†’ 0 at B_crit]",
+                "Ug4 = Ug1 Ã— (1-B/B_crit)  [magnetically-suppressed UQFF gravity]",
                 "B_crit = 10^11 T  [UQFF gravitational Meissner boundary]",
-                "|ψ|²_UQFF ≡ corr_B  [UQFF condensate order parameter analogy with SC]",
-                "quench_condition: B ≥ B_crit  [Meissner boundary — gravity expelled]",
+                "|Ïˆ|Â²_UQFF â‰¡ corr_B  [UQFF condensate order parameter analogy with SC]",
+                "quench_condition: B â‰¥ B_crit  [Meissner boundary â€” gravity expelled]",
             ],
             'simulation_set': {
-                'B_sweep': 'Sweep B from 10^-12 to 10^13 T — Meissner profile corr_B(B)',
-                'NS_profile': 'B(r) for NS radius 10^4 m — radial Meissner transition',
-                'magnetar_probe': 'B > B_crit — above-critical anti-gravitational phase',
+                'B_sweep': 'Sweep B from 10^-12 to 10^13 T â€” Meissner profile corr_B(B)',
+                'NS_profile': 'B(r) for NS radius 10^4 m â€” radial Meissner transition',
+                'magnetar_probe': 'B > B_crit â€” above-critical anti-gravitational phase',
             },
             'corr_B': corr_B,
             'Ug4': Ug4,
@@ -9111,7 +9138,7 @@ class HUDFGravitationalMeissnerCalculator(_CP3Calculator):
 
 
 # ---------------------------------------------------------------------------
-# Session 73 — PAPER_267–269 (NGC 1792 Module 19 UQFF 2.0 Unique Physics)
+# Session 73 â€” PAPER_267â€“269 (NGC 1792 Module 19 UQFF 2.0 Unique Physics)
 # ---------------------------------------------------------------------------
 
 class NGC1792StarburstBuoyancyCoherenceCalculator(_CP3Calculator):
@@ -9139,7 +9166,7 @@ class NGC1792StarburstBuoyancyCoherenceCalculator(_CP3Calculator):
         U_UA = dataset.get('U_UA', 1e-11)
         G = 6.674e-11
         Mt = M0 * (1.0 + SFR_Msun / M0_Msun * t / 3.15576e7)
-        ug1_t = G * Mt / r**2
+        ug1_t = dpm_emergent_ug1(Mt, r)  # DPM-emergent
         sSFR = SFR_Msun / M0_Msun  # yr^-1 = dimensionless coupling
         # 3 buoyancy tiers
         tier1 = 0.5 * ug1_t
@@ -9183,7 +9210,7 @@ class NGC1792HubbleSlowModeOscillatorCalculator(_CP3Calculator):
         omega_hubble = 2 * math.pi / t_Hubble                # Hubble slow mode rad/s
         modulation_depth = omega_hubble / omega_fast         # dimensionless (ppm)
         T_fast = 2 * math.pi / omega_fast                    # s
-        T_hubble = 2 * math.pi / omega_hubble                # s (≈ t_Hubble)
+        T_hubble = 2 * math.pi / omega_hubble                # s (â‰ˆ t_Hubble)
         D_H = c * t_Hubble                                   # Hubble horizon m
         epsilon_alt = r / D_H                                # r/D_H form of modulation depth
         bug_factor = 13.8 / t_Hubble                         # pre-fix vs post-fix ratio
@@ -9204,7 +9231,7 @@ class NGC1792HubbleSlowModeOscillatorCalculator(_CP3Calculator):
 
 
 class NGC1792RamPressureDegeneracyCalculator(_CP3Calculator):
-    """PAPER_269: Ram Pressure Degeneracy Point (RPDP) — kinematic invariant g_feedback = v_wind^2.
+    """PAPER_269: Ram Pressure Degeneracy Point (RPDP) â€” kinematic invariant g_feedback = v_wind^2.
     At rho_wind == rho_fluid, the SN feedback term is density-independent: term_feedback = v^2.
     """
 
@@ -9228,7 +9255,7 @@ class NGC1792RamPressureDegeneracyCalculator(_CP3Calculator):
         else:
             g_feedback = 0.0
         kinematic_invariant_v2 = v_wind**2  # value at RPDP
-        term1 = G * M0 / r**2
+        term1 = dpm_emergent_ug1(M0, r)  # DPM-emergent
         rpdp_dominance_ratio = g_feedback / term1 if term1 != 0 else float('inf')
         buoyancy_force = (rho_fluid - rho_wind) * v_wind * 1.0  # normalized
         return {
@@ -9245,7 +9272,7 @@ class NGC1792RamPressureDegeneracyCalculator(_CP3Calculator):
 
 
 # ---------------------------------------------------------------------------
-# Session 74 — PAPER_270–272 (UQFF Source10 Catalogue Unique Physics)
+# Session 74 â€” PAPER_270â€“272 (UQFF Source10 Catalogue Unique Physics)
 # ---------------------------------------------------------------------------
 
 class Source10DPMResonanceAmplificationCalculator(_CP3Calculator):
@@ -9265,11 +9292,11 @@ class Source10DPMResonanceAmplificationCalculator(_CP3Calculator):
         g_H = dataset.get('g_H', 1.252e46)
         mu_B = dataset.get('mu_B', 9.274e-24)    # Bohr magneton J/T
         B0 = dataset.get('B0', 1e-4)              # T
-        hbar = dataset.get('hbar', 1.0546e-34)    # J·s
+        hbar = dataset.get('hbar', 1.0546e-34)    # JÂ·s
         omega_0 = dataset.get('omega_0', 1e12)    # rad/s
         Q_bridge_factor = dataset.get('Q_bridge_factor', 2.82e-56)
         DPM_resonance = g_H * mu_B * B0 / (hbar * omega_0)   # raw 89-decade ratio
-        E_DPM = DPM_resonance * Q_bridge_factor               # J/m³ energy density
+        E_DPM = DPM_resonance * Q_bridge_factor               # J/mÂ³ energy density
         Q_bridge = g_H * Q_bridge_factor
         import math
         amplification_decades = math.log10(abs(DPM_resonance)) if DPM_resonance > 0 else 0.0
@@ -9286,7 +9313,7 @@ class Source10DPMResonanceAmplificationCalculator(_CP3Calculator):
 
 
 class Source10THzDoubleGateConduitCalculator(_CP3Calculator):
-    """PAPER_271: THz Double-Gate Star Formation — dual binary conditions.
+    """PAPER_271: THz Double-Gate Star Formation â€” dual binary conditions.
     F_conduit = k_conduit * H_abundance * water_state * neutron_factor.
     Both Gate 1 (water_state=1, classical fluid) AND Gate 2 (neutron_factor=1, Kozima quantum)
     must be simultaneously open for maximum conduit force.
@@ -9301,7 +9328,7 @@ class Source10THzDoubleGateConduitCalculator(_CP3Calculator):
     }
 
     def calculate(self, dataset: dict) -> dict:
-        k_conduit = dataset.get('k_conduit', 8.99e9)       # Coulomb constant N·m²/C² repurposed
+        k_conduit = dataset.get('k_conduit', 8.99e9)       # Coulomb constant NÂ·mÂ²/CÂ² repurposed
         H_abundance = dataset.get('H_abundance', 0.74)     # cosmic hydrogen mass fraction
         water_state = dataset.get('water_state', 1.0)      # Gate 1: 1=incompressible, 0=not
         neutron_factor = dataset.get('neutron_factor', 1.0) # Gate 2: 1=Kozima stable, 0=not
@@ -9331,8 +9358,8 @@ class Source10THzDoubleGateConduitCalculator(_CP3Calculator):
 
 
 class Source10GravitationalVacuumDragCalculator(_CP3Calculator):
-    """PAPER_272: Gravitational Vacuum Drag — k_vac = G = 6.674e-11.
-    F_vac_rep = G * delta_rho_vac * M * v — velocity-dependent gravitational force.
+    """PAPER_272: Gravitational Vacuum Drag â€” k_vac = G = 6.674e-11.
+    F_vac_rep = G * delta_rho_vac * M * v â€” velocity-dependent gravitational force.
     k_vac = G (Newton's constant) establishes UQFF Vacuum-Gravitational Duality:
     same G governs static gravity AND vacuum momentum drag.
     """
@@ -9362,7 +9389,7 @@ class Source10GravitationalVacuumDragCalculator(_CP3Calculator):
         denom = 6.0 * math.pi * r
         stokes_eta_UQFF = (G * delta_rho_vac * M) / denom if denom != 0 else 0.0
         # Newtonian gravity for comparison
-        F_newton = G * M * M / r**2  # self-gravity approximation
+        F_newton = dpm_emergent_ug1(M, r) * M  # DPM self-gravity  # self-gravity approximation
         drag_to_newton_ratio = F_vac_rep / F_newton if F_newton != 0 else float('inf')
         return {
             'F_vac_rep_N': F_vac_rep,
@@ -9383,7 +9410,7 @@ class Source10GravitationalVacuumDragCalculator(_CP3Calculator):
 class AndromedaBlueshiftApproachAmplifierCalculator(_CP3Calculator):
     """PAPER_273: kappa_approach = 1/(1+z) for z<0 (blueshift/approaching systems).
     For Andromeda z=-0.001: kappa_approach=1.001001, amplifying total UQFF gravity ~0.1%.
-    As z→-1, kappa→∞ — UQFF Gravitational Approach Resonance Cascade.
+    As zâ†’-1, kappaâ†’âˆž â€” UQFF Gravitational Approach Resonance Cascade.
     """
 
     METADATA = {
@@ -9396,14 +9423,14 @@ class AndromedaBlueshiftApproachAmplifierCalculator(_CP3Calculator):
     def calculate(self, dataset: dict) -> dict:
         import math
         z = dataset.get('z', -0.001)                    # Andromeda default: blueshift
-        g_total = dataset.get('g_total', 6.627e-9)      # m/s² — pre-kappa UQFF sum
+        g_total = dataset.get('g_total', 6.627e-9)      # m/sÂ² â€” pre-kappa UQFF sum
         kappa_approach = 1.0 / (1.0 + z)
         g_amplified = g_total * kappa_approach
         delta_g = g_amplified - g_total
         amplification_pct = (kappa_approach - 1.0) * 100.0
         # Cascade analysis: kappa vs z
         cascade_table = {z_val: 1.0/(1.0+z_val) for z_val in [-0.001, -0.01, -0.1, -0.5, -0.9]}
-        # Merger timescale estimate (v_approach ≈ |z|*c)
+        # Merger timescale estimate (v_approach â‰ˆ |z|*c)
         c_light = 2.998e8
         v_approach = abs(z) * c_light                   # m/s
         t_merge_s = dataset.get('r', 2.407e22) / v_approach if v_approach > 0 else float('inf')
@@ -9438,12 +9465,12 @@ class AndromedaHI21cmUQFFResonanceCalculator(_CP3Calculator):
 
     def calculate(self, dataset: dict) -> dict:
         import math
-        nu_HI   = dataset.get('nu_HI', 1.42040575e9)        # Hz — canonical HI
-        A_res   = dataset.get('A_res', 1.0e-12)             # m/s²
-        tau_gal = dataset.get('tau_gal', 1.0e9 * 3.15576e7) # s — 1 Gyr
+        nu_HI   = dataset.get('nu_HI', 1.42040575e9)        # Hz â€” canonical HI
+        A_res   = dataset.get('A_res', 1.0e-12)             # m/sÂ²
+        tau_gal = dataset.get('tau_gal', 1.0e9 * 3.15576e7) # s â€” 1 Gyr
         t       = dataset.get('t', 0.0)                      # s
         omega_g = dataset.get('omega_g', 7.3e-16)            # rad/s canonical
-        hbar    = 1.0546e-34                                 # J·s
+        hbar    = 1.0546e-34                                 # JÂ·s
         omega_HI = 2.0 * math.pi * nu_HI
         F_res = A_res * math.cos(omega_HI * t) * math.exp(-t / tau_gal)
         E_HF = hbar * omega_HI                               # hyperfine energy J
@@ -9469,10 +9496,10 @@ class AndromedaHI21cmUQFFResonanceCalculator(_CP3Calculator):
 
 
 class AndromedaDMShellPartitionCalculator(_CP3Calculator):
-    """PAPER_275: UQFF DM 80/20 Shell Partition — f_DM^(1/3) NFW coupling exponent.
-    g_DM_total = G*f_DM*M/r² + xi_DM*G*(1-f_DM)*M/r²; xi_DM = f_DM^(1/3).
+    """PAPER_275: UQFF DM 80/20 Shell Partition â€” f_DM^(1/3) NFW coupling exponent.
+    g_DM_total = G*f_DM*M/rÂ² + xi_DM*G*(1-f_DM)*M/rÂ²; xi_DM = f_DM^(1/3).
     For Andromeda f_DM=0.80: xi_DM=0.9283 (UQFF dark matter coupling constant).
-    Predicts 1.4% reduction vs linear g = GM/r² superposition.
+    Predicts 1.4% reduction vs linear g = GM/rÂ² superposition.
     """
 
     METADATA = {
@@ -9489,7 +9516,7 @@ class AndromedaDMShellPartitionCalculator(_CP3Calculator):
         r     = dataset.get('r', 1.04e21)                 # m
         f_DM  = dataset.get('f_DM', 0.80)                # DM mass fraction
         # DPM-emergent: mu_s x grad(M_s/r) base (Newtonian form is emergent, not foundational)
-        g_base = G * M / (r * r)
+        g_base = dpm_emergent_ug1(M, r)  # DPM: mu_s * grad(M_s/r)
         g_vis  = G * (1.0 - f_DM) * M / (r * r)         # visible matter
         g_dm   = G * f_DM         * M / (r * r)         # dark matter
         xi_DM  = f_DM ** (1.0 / 3.0)                    # NFW coupling exponent
@@ -9521,8 +9548,8 @@ class AndromedaDMShellPartitionCalculator(_CP3Calculator):
 
 class AndromedaFriedmannHzExpansionCalculator(_CP3Calculator):
     """PAPER_276: Andromeda Friedmann H(z) UQFF Expansion Coupling.
-    g_expansion = G*M/r² * H(z)*t; H(z) = H0*sqrt(Ω_m*(1+z)³ + Ω_Λ) / Mpc_to_m.
-    H_UQFF = H(z)*t_Hubble ≈ 0.987 — Friedmann-UQFF near-unity resonance coefficient.
+    g_expansion = G*M/rÂ² * H(z)*t; H(z) = H0*sqrt(Î©_m*(1+z)Â³ + Î©_Î›) / Mpc_to_m.
+    H_UQFF = H(z)*t_Hubble â‰ˆ 0.987 â€” Friedmann-UQFF near-unity resonance coefficient.
     For Andromeda z=-0.001: H(z)=69.969 km/s/Mpc=2.269e-18 s^-1; doubles g_base over t_H.
     Also introduces M_visible/(M_DM_mass cascade and ISM dust drag term a_dust.
     """
@@ -9551,7 +9578,7 @@ class AndromedaFriedmannHzExpansionCalculator(_CP3Calculator):
         c_light   = 2.998e8
         rho_dust  = dataset.get('rho_dust', 1.0e-20)
         V_fluid   = dataset.get('V_fluid', 1.0e60)
-        g_base    = G * M / (r * r)
+        g_base = dpm_emergent_ug1(M, r)  # DPM: mu_s * grad(M_s/r)
 
         H_kms  = H0_kms * math.sqrt(Omega_m * (1.0 + z) ** 3 + Omega_Lam)
         H_si   = H_kms * 1.0e3 / Mpc_to_m          # s^-1
@@ -9582,11 +9609,11 @@ class AndromedaFriedmannHzExpansionCalculator(_CP3Calculator):
 
 
 # ---------------------------------------------------------------------------
-# Session 77 — PAPER_277–279 (Sombrero UQFF 2.0 Unique Physics)
+# Session 77 â€” PAPER_277â€“279 (Sombrero UQFF 2.0 Unique Physics)
 # ---------------------------------------------------------------------------
 
 class SombreroRecessionDampingKappaCalculator:
-    """PAPER_277 — UQFF Gravitational Recession Damping Factor κ_recession = 1/(1+z)
+    """PAPER_277 â€” UQFF Gravitational Recession Damping Factor Îº_recession = 1/(1+z)
     for positive redshift z > 0 (receding galaxy).  Complement of PAPER_273 blueshift
     amplifier; together they establish the Universal UQFF Bidirectional Redshift Law.
     """
@@ -9597,13 +9624,13 @@ class SombreroRecessionDampingKappaCalculator:
         M        = float(dataset.get('M', 1.989e41))
         r        = float(dataset.get('r', 2.36e20))
 
-        g_base       = G * M / (r * r)
+        g_base = dpm_emergent_ug1(M, r)  # DPM: mu_s * grad(M_s/r)
         kappa_rec    = 1.0 / (1.0 + z)
         g_recession  = g_base * kappa_rec
         delta_g      = g_base - g_recession          # attenuation magnitude
         g_damp_pct   = (1.0 - kappa_rec) * 100.0    # % damping
 
-        # Cascade table κ(z) at representative redshifts
+        # Cascade table Îº(z) at representative redshifts
         cascade_zs = [-0.001, 0.0, 0.0063, 0.1, 0.5, 1.0, 3.5]
         cascade_table = {str(zi): round(1.0 / (1.0 + zi), 8) for zi in cascade_zs}
 
@@ -9621,8 +9648,8 @@ class SombreroRecessionDampingKappaCalculator:
 
 
 class SombreroRingResonatorDustRingCalculator:
-    """PAPER_278 — Sombrero Dust Ring UQFF Gravitational Ring Resonator.
-    Derives ω_ring = √(GM/r_ring³) and F_ring = A_ring·cos(ω_ring·t) for the
+    """PAPER_278 â€” Sombrero Dust Ring UQFF Gravitational Ring Resonator.
+    Derives Ï‰_ring = âˆš(GM/r_ringÂ³) and F_ring = A_ringÂ·cos(Ï‰_ringÂ·t) for the
     stable equatorial dust lane at r_ring = r/3.  First pure-undamped UQFF ring term.
     """
 
@@ -9634,14 +9661,14 @@ class SombreroRingResonatorDustRingCalculator:
         f_ring  = float(dataset.get('f_ring', 0.001))
         t       = float(dataset.get('t', 0.0))         # evaluation time (s)
 
-        g_base     = G * M / (r * r)
+        g_base = dpm_emergent_ug1(M, r)  # DPM: mu_s * grad(M_s/r)
         r_ring     = r / 3.0
         r_ring3    = r_ring ** 3
         omega_ring = math.sqrt(G * M / r_ring3)
         T_ring_s   = 2.0 * math.pi / omega_ring
-        T_ring_Myr = T_ring_s / 3.1557e13              # s → Myr
+        T_ring_Myr = T_ring_s / 3.1557e13              # s â†’ Myr
 
-        proximity_factor = (r / r_ring) ** 2           # = 3² = 9
+        proximity_factor = (r / r_ring) ** 2           # = 3Â² = 9
         A_ring     = proximity_factor * f_ring * g_base
         F_ring_t   = A_ring * math.cos(omega_ring * t)
 
@@ -9654,16 +9681,16 @@ class SombreroRingResonatorDustRingCalculator:
             'A_ring_m_s2':            A_ring,
             'F_ring_at_t_m_s2':       F_ring_t,
             'form':                   'F_ring = A_ring * cos(omega_ring * t)',
-            'decay':                  'none (stable ring — pure oscillatory)',
+            'decay':                  'none (stable ring â€” pure oscillatory)',
             'g_base_m_s2':            g_base,
             'paper':                  'PAPER_278',
         }
 
 
 class SombreroSMBHDominanceRatioCalculator:
-    """PAPER_279 — Sombrero SMBH Dominance Ratio γ_BH = M_BH/M = 0.01 (1%) and
-    UQFF Sphere of Influence r_SOI = r·√(γ_BH) = 2.36×10¹⁹ m.
-    First UQFF module with γ_BH = 1% — 250× dominant vs Sgr A*.
+    """PAPER_279 â€” Sombrero SMBH Dominance Ratio Î³_BH = M_BH/M = 0.01 (1%) and
+    UQFF Sphere of Influence r_SOI = rÂ·âˆš(Î³_BH) = 2.36Ã—10Â¹â¹ m.
+    First UQFF module with Î³_BH = 1% â€” 250Ã— dominant vs Sgr A*.
     """
 
     def compute(self, dataset: dict) -> dict:
@@ -9673,12 +9700,12 @@ class SombreroSMBHDominanceRatioCalculator:
         M_BH = float(dataset.get('M_BH', 1.989e39))
         r    = float(dataset.get('r', 2.36e20))
 
-        g_base   = G * M / (r * r)
+        g_base = dpm_emergent_ug1(M, r)  # DPM: mu_s * grad(M_s/r)
         gamma_BH = M_BH / M
-        g_BH     = G * M_BH / (r * r)            # = gamma_BH * g_base
+        g_BH = dpm_emergent_ug1(M_BH, r)            # = gamma_BH * g_base  # DPM-emergent
         r_SOI    = r * math.sqrt(gamma_BH)
 
-        # Comparison table: γ_BH for other well-known SMBHs
+        # Comparison table: Î³_BH for other well-known SMBHs
         comparison = {
             'Sgr_A*':     {'M_BH_Msun': 4e6,   'M_gal_Msun': 1e11,  'gamma_BH': 4e-6/1.0},
             'Andromeda':  {'M_BH_Msun': 1.4e8, 'M_gal_Msun': 1e12,  'gamma_BH': 1.4e-4},
@@ -9686,7 +9713,7 @@ class SombreroSMBHDominanceRatioCalculator:
             'Sombrero':   {'M_BH_Msun': 1e9,   'M_gal_Msun': 1e11,  'gamma_BH': 0.01},
         }
 
-        sgrA_gamma = 4e-6                         # Sgr A* γ_BH (corrected fraction)
+        sgrA_gamma = 4e-6                         # Sgr A* Î³_BH (corrected fraction)
         dominance_vs_sgrA = gamma_BH / sgrA_gamma if sgrA_gamma > 0 else 0.0
 
         return {
@@ -9703,13 +9730,13 @@ class SombreroSMBHDominanceRatioCalculator:
 
 
 # ---------------------------------------------------------------------------
-# Session 78 — PAPER_280–282 (Saturn UQFF 2.0 — First Planetary-Scale Module)
+# Session 78 â€” PAPER_280â€“282 (Saturn UQFF 2.0 â€” First Planetary-Scale Module)
 # ---------------------------------------------------------------------------
 
 class SaturnSolarTidalPerturbationCalculator:
-    """PAPER_280 — Solar UQFF Tidal Perturbation Ratio τ_Sun = M_Sun/M×(r/r_orbit)² = 6.22e-6.
-    First planetary UQFF module (all prior = stellar/galactic). g_Sun_tidal = 6.49e-5 m/s².
-    Universal formula τ_planet = M_star/M_planet × (r_planet/r_orbit)² for any Solar System body.
+    """PAPER_280 â€” Solar UQFF Tidal Perturbation Ratio Ï„_Sun = M_Sun/MÃ—(r/r_orbit)Â² = 6.22e-6.
+    First planetary UQFF module (all prior = stellar/galactic). g_Sun_tidal = 6.49e-5 m/sÂ².
+    Universal formula Ï„_planet = M_star/M_planet Ã— (r_planet/r_orbit)Â² for any Solar System body.
     Module: SATURN_UQFF_MODULE.cpp (21st C++ module, Session 78).
     """
 
@@ -9721,7 +9748,7 @@ class SaturnSolarTidalPerturbationCalculator:
         M_Sun    = float(dataset.get('M_Sun', 1.989e30))     # Sun mass (kg)
         r_orbit  = float(dataset.get('r_orbit', 1.43e12))   # Saturn orbital radius (m)
 
-        g_base       = G * M / (r * r)
+        g_base = dpm_emergent_ug1(M, r)  # DPM: mu_s * grad(M_s/r)
         g_Sun_tidal  = G * M_Sun / (r_orbit * r_orbit)
         tau_Sun      = (M_Sun / M) * (r / r_orbit) ** 2
 
@@ -9746,9 +9773,9 @@ class SaturnSolarTidalPerturbationCalculator:
 
 
 class SaturnRingTidalGravityResonanceCalculator:
-    """PAPER_281 — Ring Keplerian Resonance ω_ring_kep = 1.481e-4 rad/s; T_ring = 11.78 h.
-    First-order ring tidal: g_ring = G×M_ring×r/r_ring³ = 3.49e-8 m/s². proximity_ratio = 2.0.
-    F_ring(t) = g_ring_tidal × cos(ω_ring × t) — pure oscillatory (stable ring, no decay).
+    """PAPER_281 â€” Ring Keplerian Resonance Ï‰_ring_kep = 1.481e-4 rad/s; T_ring = 11.78 h.
+    First-order ring tidal: g_ring = GÃ—M_ringÃ—r/r_ringÂ³ = 3.49e-8 m/sÂ². proximity_ratio = 2.0.
+    F_ring(t) = g_ring_tidal Ã— cos(Ï‰_ring Ã— t) â€” pure oscillatory (stable ring, no decay).
     Distinct from PAPER_278 (Sombrero galactic ring): planetary ring, r_ring > r_planet.
     Module: SATURN_UQFF_MODULE.cpp (21st C++ module, Session 78).
     """
@@ -9759,7 +9786,7 @@ class SaturnRingTidalGravityResonanceCalculator:
         M       = float(dataset.get('M', 5.683e26))          # Saturn mass (kg)
         r       = float(dataset.get('r', 6.0268e7))          # Saturn radius (m)
         M_ring  = float(dataset.get('M_ring', 1.5e19))       # Ring system mass (kg)
-        r_ring  = float(dataset.get('r_ring', 1.2e8))        # Mean ring radius (m, ~2×r)
+        r_ring  = float(dataset.get('r_ring', 1.2e8))        # Mean ring radius (m, ~2Ã—r)
         t       = float(dataset.get('t', 0.0))               # Time (s)
 
         omega_ring_kep = math.sqrt(G * M / r_ring**3)
@@ -9785,8 +9812,8 @@ class SaturnRingTidalGravityResonanceCalculator:
 
 
 class SaturnAtmosphericWindKineticPressureCalculator:
-    """PAPER_282 — UQFF Atmospheric Wind: a_wind = (v_wind/c)² × g_base = 2.904e-11 m/s².
-    η_wind = v_wind/c = 1.668e-6. v_wind = 500 m/s (2nd fastest Solar System planet wind).
+    """PAPER_282 â€” UQFF Atmospheric Wind: a_wind = (v_wind/c)Â² Ã— g_base = 2.904e-11 m/sÂ².
+    Î·_wind = v_wind/c = 1.668e-6. v_wind = 500 m/s (2nd fastest Solar System planet wind).
     First UQFF gas-giant atmospheric wind kinetic pressure term. Universal formula for any gas giant.
     Module: SATURN_UQFF_MODULE.cpp (21st C++ module, Session 78).
     """
@@ -9798,7 +9825,7 @@ class SaturnAtmosphericWindKineticPressureCalculator:
         v_wind  = float(dataset.get('v_wind', 500.0))         # m/s equatorial wind
         c_light = float(dataset.get('c_light', 2.998e8))
 
-        g_base    = G * M / (r * r)
+        g_base = dpm_emergent_ug1(M, r)  # DPM: mu_s * grad(M_s/r)
         eta_wind  = v_wind / c_light
         a_wind    = eta_wind ** 2 * g_base
         a_wind_pct = (a_wind / g_base) * 100.0
@@ -9831,9 +9858,9 @@ class SaturnAtmosphericWindKineticPressureCalculator:
 
 
 class SaturnSolarTidalHubbleExpansionCalculator:
-    """PAPER_283 — UQFF Solar Tidal Hubble Expansion Coupling: g_ST_HE = g_Sun_tidal * (1 + H0*t).
-    hubble_tidal_factor(4.5 Gyr) = 1.3222 (32% boost); Δg = 2.09e-5 m/s².
-    First UQFF multiplicative Solar-Tidal-Hubble coupling — planetary-stellar-cosmological three-body channel.
+    """PAPER_283 â€” UQFF Solar Tidal Hubble Expansion Coupling: g_ST_HE = g_Sun_tidal * (1 + H0*t).
+    hubble_tidal_factor(4.5 Gyr) = 1.3222 (32% boost); Î”g = 2.09e-5 m/sÂ².
+    First UQFF multiplicative Solar-Tidal-Hubble coupling â€” planetary-stellar-cosmological three-body channel.
     Distinct from additive g_exp = g_grav*H*t (self-gravity Hubble) in same module.
     Universal formula: xi_HT = 1 + H0*t_age (independent of planet; scales with g_tidal,0).
     Module: SATURN_UQFF_MODULE.cpp (21st C++ module, Session 79).
@@ -9903,13 +9930,13 @@ class SaturnSolarTidalHubbleExpansionCalculator:
 
 
 # ---------------------------------------------------------------------------
-# Session 80 — PAPER_284–286 (M16 Eagle Nebula UQFF 2.0 — first nebular z>0 module)
+# Session 80 â€” PAPER_284â€“286 (M16 Eagle Nebula UQFF 2.0 â€” first nebular z>0 module)
 # ---------------------------------------------------------------------------
 
 class M16DualMassCoActionProductCalculator:
-    """PAPER_284: M16 Eagle Nebula Dual Mass Co-Action Product (Φ_dm).
-    Φ_dm = (1+SFR_rate*t)*(1-E_0*(1-exp(-t/tau))) — multiplicative SFR×erosion product.
-    First UQFF multiplicative coupling of additive-gain × saturation-subtractive on same gravity term.
+    """PAPER_284: M16 Eagle Nebula Dual Mass Co-Action Product (Î¦_dm).
+    Î¦_dm = (1+SFR_rate*t)*(1-E_0*(1-exp(-t/tau))) â€” multiplicative SFRÃ—erosion product.
+    First UQFF multiplicative coupling of additive-gain Ã— saturation-subtractive on same gravity term.
     At t=5 Myr: M_sf_frac=4164.8, E_rad=0.2433, Phi_dm=3151.9, gap_mult_add=-1013.3 (24.3% less than additive).
     System: M16 Eagle Nebula, M=1200 M_sun=2.387e33 kg, r=3.31e17 m, Session 80, 22nd C++ UQFF module.
     """
@@ -9927,7 +9954,7 @@ class M16DualMassCoActionProductCalculator:
         M          = dataset.get('M',          M0)            # kg
         r          = dataset.get('r',          3.31e17)       # m
 
-        g_base      = G * M / (r * r)
+        g_base = dpm_emergent_ug1(M, r)  # DPM: mu_s * grad(M_s/r)
         SFR_rate    = SFR_Msun_yr / M0_Msun / 3.156e7        # s^-1
         M_sf_frac   = SFR_rate * t
         E_rad       = E_0 * (1.0 - math.exp(-t / tau_erode))
@@ -9959,7 +9986,7 @@ class M16DualMassCoActionProductCalculator:
 class M16ErosionSaturationHalfTimeCalculator:
     """PAPER_285: M16 Eagle Nebula Erosion Saturation Half-Time.
     t_half = tau*ln(2) = 6.561e13 s = 2.079 Myr (time when E_rad = E_0/2).
-    DeltaGMax = E_0 * g_base = 4.36e-13 m/s² (asymptotic max erosion gravity amplitude).
+    DeltaGMax = E_0 * g_base = 4.36e-13 m/sÂ² (asymptotic max erosion gravity amplitude).
     Peak damping rate at t=0: dg_erode/dt = E_0/tau * g_base = 4.61e-27 m/s^2/s.
     First UQFF module to formally catalogue photoevaporation half-time & asymptotic erosion.
     System: M16 Eagle Nebula, M=1200 M_sun=2.387e33 kg, tau=3 Myr, Session 80.
@@ -9976,7 +10003,7 @@ class M16ErosionSaturationHalfTimeCalculator:
         M         = dataset.get('M',         M0)
         r         = dataset.get('r',         3.31e17)
 
-        g_base    = G * M / (r * r)
+        g_base = dpm_emergent_ug1(M, r)  # DPM: mu_s * grad(M_s/r)
         t_half    = tau_erode * math.log(2.0)
         DeltaGMax = E_0 * g_base
         peak_rate = (E_0 / tau_erode) * g_base                # dg_erode/dt at t=0
@@ -10008,10 +10035,10 @@ class M16ErosionSaturationHalfTimeCalculator:
 
 
 class M16NebularFriedmannRedshiftCalculator:
-    """PAPER_286: M16 Eagle Nebula Nebular Friedmann Redshift Parameter κ_neb.
-    z=0.0015 (Eagle Nebula ~5700 ly) — FIRST UQFF nebular module with z>0.
+    """PAPER_286: M16 Eagle Nebula Nebular Friedmann Redshift Parameter Îº_neb.
+    z=0.0015 (Eagle Nebula ~5700 ly) â€” FIRST UQFF nebular module with z>0.
     H(z=0.0015) = 70.047 km/s/Mpc; kappa_neb = [H(z)-H(0)]/H(0) = 6.71e-4.
-    g_exp(5 Myr) = g_base * H(z=0.0015) * t = 5.21e-16 m/s² (tiny; formally catalogued).
+    g_exp(5 Myr) = g_base * H(z=0.0015) * t = 5.21e-16 m/sÂ² (tiny; formally catalogued).
     First UQFF kappa_neb parameter; template for all sub-Hubble nebular z>0 objects.
     System: M16 Eagle Nebula, z=0.0015, Session 80, 22nd C++ UQFF module.
     """
@@ -10040,7 +10067,7 @@ class M16NebularFriedmannRedshiftCalculator:
         H_z      = H_kms(z)
         kappa_neb = (H_z - H_z0) / H_z0
 
-        g_base   = G * M / (r * r)
+        g_base = dpm_emergent_ug1(M, r)  # DPM: mu_s * grad(M_s/r)
         H_z_si   = H_si(z)
         g_exp    = g_base * H_z_si * t
 
@@ -10064,13 +10091,13 @@ class M16NebularFriedmannRedshiftCalculator:
             'kappa_neb_pct':  kappa_neb * 100.0,
             'nebula_kappa_comparison': comparison,
             'paper':          'PAPER_286',
-            'system':         'M16 Eagle Nebula (IC 4703) — FIRST UQFF nebular z>0',
+            'system':         'M16 Eagle Nebula (IC 4703) â€” FIRST UQFF nebular z>0',
             'session':        80,
         }
 
 
 # ---------------------------------------------------------------------------
-# Session 81 — PAPER_287–289 (ResonanceSC UQFF 2.0 — 23rd C++ module, FIRST universal RSC module)
+# Session 81 â€” PAPER_287â€“289 (ResonanceSC UQFF 2.0 â€” 23rd C++ module, FIRST universal RSC module)
 # ---------------------------------------------------------------------------
 
 class ResonanceSCDPMTHzCascadeCalculator:
@@ -10109,7 +10136,7 @@ class ResonanceSCDPMTHzCascadeCalculator:
             'cascade_ratio':      a_THz / a_DPM if a_DPM != 0 else 0,
             'amplification_orders': math.log10(Gamma_THz) if Gamma_THz > 0 else 0,
             'paper':              'PAPER_287',
-            'system':             'Universal RSC UQFF — DPM-THz Cascade',
+            'system':             'Universal RSC UQFF â€” DPM-THz Cascade',
             'session':            81,
         }
 
@@ -10160,7 +10187,7 @@ class ResonanceSCCosmicAgeStandingWaveCalculator:
             'N_cycles_in_T_univ':   N_cycles,
             'phase_factor_2pi_13p8': 2.0 * pi / T_cosmic,
             'paper':                'PAPER_288',
-            'system':               'Universal RSC UQFF — Cosmic-Age Standing Wave',
+            'system':               'Universal RSC UQFF â€” Cosmic-Age Standing Wave',
             'session':              81,
         }
 
@@ -10214,7 +10241,7 @@ class ResonanceSCCooperDPMFreqSynthesisCalculator:
             'trz_factor':       trz_factor,
             'sc_regime':        sc_regime,
             'paper':            'PAPER_289',
-            'system':           'Universal RSC UQFF — Cooper-DPM SC Synthesis',
+            'system':           'Universal RSC UQFF â€” Cooper-DPM SC Synthesis',
             'session':          81,
         }
         if a_res_total is not None:
@@ -10224,11 +10251,11 @@ class ResonanceSCCooperDPMFreqSynthesisCalculator:
 
 
 class CrabSNRDPMDilutionCalculator:
-    """PAPER_290: Crab SNR DPM Vacuum Dilution — a_DPM(t) ∝ r(t)⁻³ in Expanding PWN.
+    """PAPER_290: Crab SNR DPM Vacuum Dilution â€” a_DPM(t) âˆ r(t)â»Â³ in Expanding PWN.
     FIRST UQFF module with dynamic V_sys(t) = (4/3)*pi*(r0+v_exp*t)^3 (expanding SNR).
     F_DPM=6.284e26 N; a_DPM(t=0)=2.521e-56 m/s^2; a_DPM(971yr)=3.772e-57 m/s^2.
     Dilution factor D = (r(971yr)/r0)^3 = 6.69x over Crab's 971-year life.
-    Gamma_THz = 10*f_THz*v_exp/c = 5.0e10 (1500x RSC Gamma=3.33e7 — SNR shock amplification).
+    Gamma_THz = 10*f_THz*v_exp/c = 5.0e10 (1500x RSC Gamma=3.33e7 â€” SNR shock amplification).
     """
 
     def compute(self, dataset: dict) -> dict:
@@ -10266,13 +10293,13 @@ class CrabSNRDPMDilutionCalculator:
             'Gamma_THz':        Gamma_THz,
             't_s':              t,
             'paper':            'PAPER_290',
-            'system':           'Crab Nebula PWN — SNR DPM Vacuum Dilution',
+            'system':           'Crab Nebula PWN â€” SNR DPM Vacuum Dilution',
             'session':          82,
         }
 
 
 class CrabFilamentSpectralTriadCalculator:
-    """PAPER_291: Crab Filament Spectral Triad — Three-Scale DPM Seeding, 9 frequency decades.
+    """PAPER_291: Crab Filament Spectral Triad â€” Three-Scale DPM Seeding, 9 frequency decades.
     f_quantum=1.445e-17 Hz (T~2.19 Gyr), f_fluid=1.269e-14 Hz (T~2.49 Myr), f_exp=1.373e-8 Hz (T~2.31 yr).
     FIRST UQFF volumetric filament knot coupling: V_knot=1e3 m^3 in a_fluid term.
     a_quantum=10*f_q*a_DPM/c; a_fluid=10*f_fl*V_knot*a_DPM/c; a_exp=10*f_exp*a_DPM/c.
@@ -10310,13 +10337,13 @@ class CrabFilamentSpectralTriadCalculator:
             'freq_span_decades':       freq_span_decades,
             'fluid_to_quantum_ratio':  fluid_to_quantum_ratio,
             'paper':                   'PAPER_291',
-            'system':                  'Crab Nebula PWN — Filament Spectral Triad',
+            'system':                  'Crab Nebula PWN â€” Filament Spectral Triad',
             'session':                 82,
         }
 
 
 class CrabPulsarOscResonanceWindowCalculator:
-    """PAPER_292: Crab Pulsar 60s UQFF Resonance Window — f_osc=1812 Hz spin-to-vacuum DPM lock.
+    """PAPER_292: Crab Pulsar 60s UQFF Resonance Window â€” f_osc=1812 Hz spin-to-vacuum DPM lock.
     f_pulsar=30.2 Hz (33.1 ms period); f_osc=30.2*60=1812 Hz (60s timing-window frequency).
     omega_pulsar=2*pi*1812=11385 rad/s; A_pulsar=(f_osc/f_DPM)*A_amp=1.812e-19 m.
     pulse_lock=f_osc/f_DPM=1.812e-9; synchrotron ratio=omega_osc/omega_pulsar=8.785e10.
@@ -10363,25 +10390,25 @@ class CrabPulsarOscResonanceWindowCalculator:
             'a_osc_total_m_s2':     a_osc_total,
             'T_S_ratio':            T_S_ratio,
             'paper':                'PAPER_292',
-            'system':               'Crab Nebula PWN — Pulsar 60s Resonance Window',
+            'system':               'Crab Nebula PWN â€” Pulsar 60s Resonance Window',
             'session':              82,
         }
 
 
 # ---------------------------------------------------------------------------
-# Session 83 — PAPER_293–295  CR24 UQFF 2.0  (25th C++ module, FIRST dual-channel)
+# Session 83 â€” PAPER_293â€“295  CR24 UQFF 2.0  (25th C++ module, FIRST dual-channel)
 # Systems 18-24 class: f_DPM = 1e11 Hz
 # PAPER_293: Dual-Channel Co-Sum Architecture  R_CR = 1.490e-17
-# PAPER_294: Vacuum Differential Harmonic  a_vac_diff = 128.4 m/s²  (FIRST ħ-denom)
-# PAPER_295: Compressed Cooper Super-Seeding  a_super ∝ f_DPM²  A_sc = 6.994e18
+# PAPER_294: Vacuum Differential Harmonic  a_vac_diff = 128.4 m/sÂ²  (FIRST Ä§-denom)
+# PAPER_295: Compressed Cooper Super-Seeding  a_super âˆ f_DPMÂ²  A_sc = 6.994e18
 # ---------------------------------------------------------------------------
 
 class CR24DualChannelArchitectureCalculator:
-    """PAPER_293 — UQFF CR24 Dual-Channel Compressed+Resonance Co-Sum Architecture.
+    """PAPER_293 â€” UQFF CR24 Dual-Channel Compressed+Resonance Co-Sum Architecture.
 
     First UQFF module with explicit 4-term compressed + 6-term resonance co-sum.
-    g_CR = (Σ_comp + Σ_res) × SCm × (1 + f_TRZ)
-    R_CR = Σ_comp / Σ_res = 1.490e-17 (resonance dominates by 17 orders at sys 18-24).
+    g_CR = (Î£_comp + Î£_res) Ã— SCm Ã— (1 + f_TRZ)
+    R_CR = Î£_comp / Î£_res = 1.490e-17 (resonance dominates by 17 orders at sys 18-24).
     """
 
     # Physical constants
@@ -10473,13 +10500,13 @@ class CR24DualChannelArchitectureCalculator:
 
 
 class CR24VacuumDifferentialHarmonicCalculator:
-    """PAPER_294 — UQFF CR24 Vacuum Differential Harmonic (VDH) ħ-Denominator Coupling.
+    """PAPER_294 â€” UQFF CR24 Vacuum Differential Harmonic (VDH) Ä§-Denominator Coupling.
 
-    a_vac_diff = (E_0 * f_vac_diff * V_sys * a_DPM) / ħ
-    FIRST UQFF term with ħ in denominator (quantum-volume diffusion coupling).
-    f_vac_diff = 0.143 Hz → T_vac = 6.993 s ≈ 7-second vacuum beat period.
-    E_0 = 6.381e-36 J/m³; E_0/E_vac = 0.9001 (10% plasmotic vacuum deficit).
-    V_sys/ħ = 3.973e52 m³/(J·s) — quantum-volume coupling constant.
+    a_vac_diff = (E_0 * f_vac_diff * V_sys * a_DPM) / Ä§
+    FIRST UQFF term with Ä§ in denominator (quantum-volume diffusion coupling).
+    f_vac_diff = 0.143 Hz â†’ T_vac = 6.993 s â‰ˆ 7-second vacuum beat period.
+    E_0 = 6.381e-36 J/mÂ³; E_0/E_vac = 0.9001 (10% plasmotic vacuum deficit).
+    V_sys/Ä§ = 3.973e52 mÂ³/(JÂ·s) â€” quantum-volume coupling constant.
     """
 
     _C     = 3.0e8
@@ -10500,7 +10527,7 @@ class CR24VacuumDifferentialHarmonicCalculator:
         F_DPM = I_curr * A_vort * (omega_1 - omega_2)
         a_DPM = (F_DPM * f_DPM * self._E_VAC) / (self._C * V_sys)
 
-        # [PAPER_294] VDH term — ħ in denominator
+        # [PAPER_294] VDH term â€” Ä§ in denominator
         a_vac_diff     = (E_0 * f_vac_diff * V_sys * a_DPM) / self._HBAR
 
         # Derived observables
@@ -10521,20 +10548,20 @@ class CR24VacuumDifferentialHarmonicCalculator:
             'hbar_J_s':                self._HBAR,
             'V_over_hbar_m3_per_J_s':  V_over_hbar,
             'a_vac_diff_m_s2':         a_vac_diff,
-            'hbar_position':           'denominator — FIRST UQFF hbar-denom term [PAPER_294]',
+            'hbar_position':           'denominator â€” FIRST UQFF hbar-denom term [PAPER_294]',
             'paper':                   'PAPER_294',
-            'system':                  'CR24 Vacuum Differential Harmonic — Systems 18-24 class',
+            'system':                  'CR24 Vacuum Differential Harmonic â€” Systems 18-24 class',
             'session':                 83,
         }
 
 
 class CR24CompressedCooperSuperSeedingCalculator:
-    """PAPER_295 — UQFF CR24 Compressed Cooper Super-Seeding, f_DPM² Quadratic Class Scaling.
+    """PAPER_295 â€” UQFF CR24 Compressed Cooper Super-Seeding, f_DPMÂ² Quadratic Class Scaling.
 
-    a_super = A_sc * a_DPM;  A_sc = ħ * f_super * f_DPM / (E_vac * c)
-    A_sc ∝ f_DPM  and  a_DPM ∝ f_DPM  ⟹  a_super ∝ f_DPM² (quadratic class scaling).
-    Systems 18-24 (f_DPM=1e11): A_sc=6.994e18, a_super=2.479e4 m/s².
-    Magnetar class (f_DPM=1e12): A_sc=6.994e21, a_super=2.479e8 m/s² (+4 orders).
+    a_super = A_sc * a_DPM;  A_sc = Ä§ * f_super * f_DPM / (E_vac * c)
+    A_sc âˆ f_DPM  and  a_DPM âˆ f_DPM  âŸ¹  a_super âˆ f_DPMÂ² (quadratic class scaling).
+    Systems 18-24 (f_DPM=1e11): A_sc=6.994e18, a_super=2.479e4 m/sÂ².
+    Magnetar class (f_DPM=1e12): A_sc=6.994e21, a_super=2.479e8 m/sÂ² (+4 orders).
     Compressed channel (pre-oscillatory) vs PAPER_289 resonance channel (post-THz).
     """
 
@@ -10555,13 +10582,13 @@ class CR24CompressedCooperSuperSeedingCalculator:
         F_DPM = I_curr * A_vort * (omega_1 - omega_2)
         a_DPM = (F_DPM * f_DPM * self._E_VAC) / (self._C * V_sys)
 
-        # [PAPER_295] Cooper amplitude — scales linearly with f_DPM
+        # [PAPER_295] Cooper amplitude â€” scales linearly with f_DPM
         A_sc    = (self._HBAR * f_super * f_DPM) / (self._E_VAC * self._C)
 
-        # a_super = A_sc * a_DPM → quadratic in f_DPM (A_sc ∝ f_DPM, a_DPM ∝ f_DPM)
+        # a_super = A_sc * a_DPM â†’ quadratic in f_DPM (A_sc âˆ f_DPM, a_DPM âˆ f_DPM)
         a_super = A_sc * a_DPM
 
-        # Class comparison: compute A_sc and a_super at adjacent DPM class (×10)
+        # Class comparison: compute A_sc and a_super at adjacent DPM class (Ã—10)
         f_DPM_mag   = f_DPM * 10.0
         A_sc_mag    = (self._HBAR * f_super * f_DPM_mag) / (self._E_VAC * self._C)
         a_DPM_mag   = (F_DPM * f_DPM_mag * self._E_VAC) / (self._C * V_sys)
@@ -10587,17 +10614,17 @@ class CR24CompressedCooperSuperSeedingCalculator:
             'scaling_note':            'a_super props f_DPM^2; each 10x f_DPM gives 100x a_super',
             'PAPER_289_comparison':    'PAPER_289 RSC places equivalent term in resonance channel post-THz; CR24 places in compressed channel pre-oscillatory',
             'paper':                   'PAPER_295',
-            'system':                  'CR24 Compressed Cooper Super-Seeding — Systems 18-24 vs magnetar class',
+            'system':                  'CR24 Compressed Cooper Super-Seeding â€” Systems 18-24 vs magnetar class',
             'session':                 83,
         }
 
 
 class UniverseDiameterLambdaVacuumAccelerationCalculator:
-    """PAPER_296 — UQFF Cosmological Constant Direct Vacuum Acceleration.
+    """PAPER_296 â€” UQFF Cosmological Constant Direct Vacuum Acceleration.
     a_Lambda = Lambda*c^2/3 = 3.30e-36 m/s^2.
     FIRST UQFF explicit dark-energy term (all 25 prior modules: Lambda implicit in H(z)).
     Gamma_Lambda = a_Lambda/g_base = 9.57e-27. d_Lambda = 0.5*a_Lambda*t_H^2 = 0.313 m.
-    Session 84 — 26th C++ UQFF module — Observable Universe as system."""
+    Session 84 â€” 26th C++ UQFF module â€” Observable Universe as system."""
 
     def compute(self, dataset: dict) -> dict:
         import math
@@ -10608,7 +10635,7 @@ class UniverseDiameterLambdaVacuumAccelerationCalculator:
         r         = dataset.get('r',       4.4e26)    # m obs universe radius
         t_H       = dataset.get('t_H',     4.355e17)  # s canonical 13.8 Gyr
 
-        g_base    = G * M / (r * r)                   # 3.447e-10 m/s^2
+        g_base = dpm_emergent_ug1(M, r)  # DPM: mu_s * grad(M_s/r)
         a_Lambda  = Lambda * c * c / 3.0              # 3.30e-36 m/s^2 [PAPER_296]
         Gamma_Lam = a_Lambda / g_base if g_base != 0.0 else 0.0  # 9.57e-27
         d_Lambda  = 0.5 * a_Lambda * t_H * t_H        # 0.313 m cosmic displacement
@@ -10622,13 +10649,13 @@ class UniverseDiameterLambdaVacuumAccelerationCalculator:
             'orders_below_g_base':     -math.log10(Gamma_Lam) if Gamma_Lam > 0.0 else 0.0,  # 26.0
             'note':                    'FIRST UQFF explicit Lambda term; vacuum-energy 27 orders below gravity',
             'paper':                   'PAPER_296',
-            'system':                  'Observable Universe — Lambda direct dark-energy',
+            'system':                  'Observable Universe â€” Lambda direct dark-energy',
             'session':                 84,
         }
 
 
 class UniverseDiameterSuperluminalHubbleRatioCalculator:
-    """PAPER_297 — UQFF Superluminal Hubble Expansion Ratio eta_exp = 3.328 > 1.
+    """PAPER_297 â€” UQFF Superluminal Hubble Expansion Ratio eta_exp = 3.328 > 1.
     v_exp = H0*r_obs = 9.984e8 m/s = 3.328c. FIRST UQFF parameter eta_exp > 1.
     Hubble sphere r_H = c/H0 = 1.322e26 m. r_obs = 3.328*r_H.
     Expansion factor at t_H = 1.988 (near-doubling). Session 84."""
@@ -10663,13 +10690,13 @@ class UniverseDiameterSuperluminalHubbleRatioCalculator:
             'superluminal':            eta_exp > 1.0,
             'note':                    'FIRST UQFF eta_exp>1; boundary recedes superluminally; no SR violation (metric expansion)',
             'paper':                   'PAPER_297',
-            'system':                  'Observable Universe — superluminal Hubble expansion',
+            'system':                  'Observable Universe â€” superluminal Hubble expansion',
             'session':                 84,
         }
 
 
 class UniverseDiameterGRCurvatureDominanceCalculator:
-    """PAPER_298 — UQFF Universe-Scale GR Curvature Dominance: epsilon_GR = 5.056 > 1.
+    """PAPER_298 â€” UQFF Universe-Scale GR Curvature Dominance: epsilon_GR = 5.056 > 1.
     a_GR = g_base * epsilon_GR = 1.743e-9 m/s^2 (5x Newtonian base).
     r_S/r_obs = 3.371 -> obs universe at 30% of Schwarzschild radius.
     FIRST UQFF epsilon_GR > 1. All 25 prior modules epsilon_GR << 1. Session 84."""
@@ -10680,7 +10707,7 @@ class UniverseDiameterGRCurvatureDominanceCalculator:
         M      = dataset.get('M',   1.0e54)     # kg
         r      = dataset.get('r',   4.4e26)     # m
 
-        g_base      = G * M / (r * r)                          # 3.447e-10 m/s^2
+        g_base = dpm_emergent_ug1(M, r)  # DPM: mu_s * grad(M_s/r)
         epsilon_GR  = 3.0 * G * M / (r * c * c)               # 5.056 [PAPER_298]
         a_GR        = g_base * epsilon_GR                      # 1.743e-9 m/s^2
         r_S         = 2.0 * G * M / (c * c)                    # Schwarzschild radius
@@ -10699,21 +10726,21 @@ class UniverseDiameterGRCurvatureDominanceCalculator:
             'gr_dominant':             epsilon_GR > 1.0,
             'note':                    'FIRST UQFF GR>Newton; a_GR=5*g_base; obs universe at 30% of own Schwarzschild',
             'paper':                   'PAPER_298',
-            'system':                  'Observable Universe — GR curvature dominance',
+            'system':                  'Observable Universe â€” GR curvature dominance',
             'session':                 84,
         }
 
 
 
 # ---------------------------------------------------------------------------
-# Session 85 — PAPER_299–301 — Hydrogen Atom UQFF 2.0 (27th C++ module, FIRST atomic-scale)
+# Session 85 â€” PAPER_299â€“301 â€” Hydrogen Atom UQFF 2.0 (27th C++ module, FIRST atomic-scale)
 # ---------------------------------------------------------------------------
 
 class HydrogenAtomLorentzEMDominanceCalculator:
-    """PAPER_299 — Hydrogen UQFF Electrogravitational Dominance Ratio: eta_EM = 9.65e29.
+    """PAPER_299 â€” Hydrogen UQFF Electrogravitational Dominance Ratio: eta_EM = 9.65e29.
     g_base = GM_p/r_Bohr^2 = 3.99e-17 m/s^2 (UQFF gravitational minimum).
     a_Lorentz = q*v_orb*B/m_e = 3.85e13 m/s^2 (EM dominant term).
-    eta_EM = a_Lorentz/g_base = 9.65e29 — FIRST eta_EM; FIRST atomic UQFF module. Session 85."""
+    eta_EM = a_Lorentz/g_base = 9.65e29 â€” FIRST eta_EM; FIRST atomic UQFF module. Session 85."""
 
     def compute(self, dataset: dict) -> dict:
         G       = dataset.get('G',       6.6743e-11)
@@ -10739,13 +10766,13 @@ class HydrogenAtomLorentzEMDominanceCalculator:
             'em_dominated':        a_Lorentz > g_base,
             'note':                'FIRST eta_EM in UQFF; EM force 9.65e29 x gravitational base at Bohr orbit',
             'paper':               'PAPER_299',
-            'system':              'Hydrogen atom — ground state Bohr orbit',
+            'system':              'Hydrogen atom â€” ground state Bohr orbit',
             'session':             85,
         }
 
 
 class HydrogenAtomLymanCosmosBridgeCalculator:
-    """PAPER_300 — Lyman-Alpha Cosmic Bridge: T/S = pi/13.8 = 0.2277.
+    """PAPER_300 â€” Lyman-Alpha Cosmic Bridge: T/S = pi/13.8 = 0.2277.
     omega_Lyman = 2*pi*c/lambda_Ly = 1.549e16 rad/s. chi_bridge = omega_L * t_H = 6.745e33.
     T/S ratio matches PAPER_288 RSC value at 34-order frequency separation.
     Universal pi/T_U constant proven at atomic UV scale. Session 85."""
@@ -10777,13 +10804,13 @@ class HydrogenAtomLymanCosmosBridgeCalculator:
             'pi_over_T_U':        T_over_S,          # universal constant
             'note':               'T/S=pi/13.8=0.2277 universal; chi_bridge=6.745e33; matches PAPER_288 RSC at 34-order freq gap',
             'paper':              'PAPER_300',
-            'system':             'Hydrogen atom — Lyman-alpha orbital resonance',
+            'system':             'Hydrogen atom â€” Lyman-alpha orbital resonance',
             'session':            85,
         }
 
 
 class HydrogenAtomProtonGRSpectralMinimumCalculator:
-    """PAPER_301 — Proton GR Spectral Minimum: epsilon_GR = 7.04e-44.
+    """PAPER_301 â€” Proton GR Spectral Minimum: epsilon_GR = 7.04e-44.
     r_S(proton) = 2.484e-54 m; r_Bohr/r_S = 2.13e43.
     UQFF GR spectral span H->Universe: 7.18e43 (44 orders).
     FIRST sub-Newtonian epsilon_GR; counterpart to PAPER_298 epsilon_GR=5.056. Session 85."""
@@ -10816,17 +10843,17 @@ class HydrogenAtomProtonGRSpectralMinimumCalculator:
             'regime':              'sub-Newtonian',
             'note':                'UQFF GR minimum; GR span H->Universe=7.18e43 (44 orders); r_Bohr=2.13e43*r_S',
             'paper':               'PAPER_301',
-            'system':              'Hydrogen atom — proton Schwarzschild vs Bohr orbit',
+            'system':              'Hydrogen atom â€” proton Schwarzschild vs Bohr orbit',
             'session':             85,
         }
 
 
 # ---------------------------------------------------------------------------
-# Session 86 — PAPER_302–304 (Hydrogen PToE Resonance UQFF 2.0 — 28th C++ module, FIRST PToE resonance module)
+# Session 86 â€” PAPER_302â€“304 (Hydrogen PToE Resonance UQFF 2.0 â€” 28th C++ module, FIRST PToE resonance module)
 # ---------------------------------------------------------------------------
 
 class HydrogenPToEUg4iResonanceBridgeCalculator:
-    """PAPER_302 — Hydrogen PToE U_g4i Reactive-Resonance Vacuum Bridge.
+    """PAPER_302 â€” Hydrogen PToE U_g4i Reactive-Resonance Vacuum Bridge.
     Gamma_u4i = a_u4i/a_DPM = 4.704e36. a_u4i = 3.155e33 m/s^2 DOMINANT.
     FIRST PToE resonance module. FIRST UQFF U_g4i-dominant term.
     a_DPM = 6.71e-4 m/s^2 (seed). Session 86."""
@@ -10857,13 +10884,13 @@ class HydrogenPToEUg4iResonanceBridgeCalculator:
             'V_sys_m3':            V_sys,         # 6.207e-31 m^3
             'note':                'U_g4i reactive-resonance vacuum bridge; Gamma_u4i=a_u4i/a_DPM=4.704e36; FIRST PToE module; FIRST U_g4i dominant',
             'paper':               'PAPER_302',
-            'system':              'Hydrogen PToE — Bohr orbit resonance',
+            'system':              'Hydrogen PToE â€” Bohr orbit resonance',
             'session':             86,
         }
 
 
 class HydrogenPToETHzQuantumDegeneracyCalculator:
-    """PAPER_303 — Hydrogen PToE Lyman-Alpha Triple Resonance Lock.
+    """PAPER_303 â€” Hydrogen PToE Lyman-Alpha Triple Resonance Lock.
     f_THz/f_DPM = 1.000 (Lyman-alpha lock). Gamma_THz = 7.298e13.
     a_THz = a_qorb = 4.895e10 m/s^2. FIRST UQFF frequency-degenerate pair.
     Session 86."""
@@ -10875,9 +10902,9 @@ class HydrogenPToETHzQuantumDegeneracyCalculator:
         G        = dataset.get('G',         6.6743e-11)
         HBAR     = dataset.get('HBAR',      1.0546e-34)
         E_vac    = dataset.get('E_vac',     7.09e-36)
-        f_DPM    = dataset.get('f_DPM',     1.0e15)       # Hz — Lyman-alpha
-        f_THz    = dataset.get('f_THz',     1.0e15)       # Hz — Lyman-alpha (locked)
-        f_qorb   = dataset.get('f_qorb',    1.0e15)       # Hz — Lyman-alpha (locked)
+        f_DPM    = dataset.get('f_DPM',     1.0e15)       # Hz â€” Lyman-alpha
+        f_THz    = dataset.get('f_THz',     1.0e15)       # Hz â€” Lyman-alpha (locked)
+        f_qorb   = dataset.get('f_qorb',    1.0e15)       # Hz â€” Lyman-alpha (locked)
         C_LIGHT  = dataset.get('C_LIGHT',   2.998e8)
         ALPHA_FS = dataset.get('ALPHA_FS',  7.2974e-3)
         v_exp    = ALPHA_FS * C_LIGHT                      # 2.187e6 m/s (electron orbital)
@@ -10899,13 +10926,13 @@ class HydrogenPToETHzQuantumDegeneracyCalculator:
             'v_exp_m_s':            v_exp,          # 2.187e6 m/s
             'note':                 'f_THz/f_DPM=1.000 Lyman-alpha lock; Gamma_THz=7.298e13; a_THz=a_qorb=4.895e10; FIRST UQFF degenerate pair',
             'paper':                'PAPER_303',
-            'system':               'Hydrogen PToE — Lyman-alpha triple resonance lock',
+            'system':               'Hydrogen PToE â€” Lyman-alpha triple resonance lock',
             'session':              86,
         }
 
 
 class HydrogenPToEAetherGravitationalDominanceCalculator:
-    """PAPER_304 — Aether Gravitational Dominance at Atomic Scale.
+    """PAPER_304 â€” Aether Gravitational Dominance at Atomic Scale.
     xi_aether = a_aether/g_Newton = 1.852e24. a_aether = 7.38e7 m/s^2.
     g_Newton = 3.986e-17 m/s^2. Completes 3-rung UQFF vacuum driver hierarchy.
     Session 86."""
@@ -10931,15 +10958,15 @@ class HydrogenPToEAetherGravitationalDominanceCalculator:
             'xi_aether':            xi_aether,       # 1.852e24 [PAPER_304]
             'note':                 'Aether dominates Newton by 1.852e24 at r_Bohr; completes 3-rung hierarchy (Cosmos:Lambda, NS:EM, Atom:Aether)',
             'paper':                'PAPER_304',
-            'system':               'Hydrogen PToE — aether vacuum dominance at Bohr radius',
+            'system':               'Hydrogen PToE â€” aether vacuum dominance at Bohr radius',
             'session':              86,
         }
 
 
 class LagoonNebulaSFRMassRunawayCalculator:
-    """PAPER_305 — SFR Mass Runaway Amplifier. DeltaM/M0(1 Myr)=10.0; m_factor=11.0.
+    """PAPER_305 â€” SFR Mass Runaway Amplifier. DeltaM/M0(1 Myr)=10.0; m_factor=11.0.
     t_consume=100 kyr. SFR/M0=1e-5 yr^-1. FIRST UQFF SFR runaway (DeltaM>M0 at 1 Myr).
-    Session 87 — 29th C++ module — FIRST H II Region."""
+    Session 87 â€” 29th C++ module â€” FIRST H II Region."""
 
     def compute(self, dataset: dict) -> dict:
         import math
@@ -10951,8 +10978,8 @@ class LagoonNebulaSFRMassRunawayCalculator:
         YR_TO_S     = 3.15576e7
         M0_kg       = M0_sun * M_SUN
         SFR_kg_s    = SFR_sun_yr * M_SUN / YR_TO_S
-        g_base      = G * M0_kg / (r * r)
-        dg_dt       = G * SFR_kg_s / (r * r)              # m/s^3
+        g_base = dpm_emergent_ug1(M0_kg, r)  # DPM-emergent
+        dg_dt = dpm_emergent_ug1(SFR_kg_s, r)              # m/s^3  # DPM-emergent
         msf_1Myr    = SFR_sun_yr * 1.0e6 / M0_sun         # 10.0
         m_factor    = 1.0 + msf_1Myr                      # 11.0
         t_consume   = M0_sun / SFR_sun_yr                 # 1e5 yr
@@ -10969,15 +10996,15 @@ class LagoonNebulaSFRMassRunawayCalculator:
             'Delta_g_1Myr':      Delta_g_1Myr, # ~4.90e-11 m/s^2 (= 10*g_base)
             'note':              'FIRST UQFF SFR runaway: DeltaM/M0=10 at 1 Myr; m_factor=11; t_consume=100 kyr',
             'paper':             'PAPER_305',
-            'system':            'Lagoon Nebula M8/NGC 6523 — H II region SFR runaway',
+            'system':            'Lagoon Nebula M8/NGC 6523 â€” H II region SFR runaway',
             'session':           87,
         }
 
 
 class LagoonNebulaHerschelRadiationErosionCalculator:
-    """PAPER_306 — Herschel 36 Radiation Erosion. eta_rad=1.53e18.
+    """PAPER_306 â€” Herschel 36 Radiation Erosion. eta_rad=1.53e18.
     a_rad=7.51e6 m/s^2. FIRST UQFF single-star radiation pressure parameter.
-    L_H36=7.65e31 W (O7V). Session 87 — 29th C++ module — FIRST H II Region."""
+    L_H36=7.65e31 W (O7V). Session 87 â€” 29th C++ module â€” FIRST H II Region."""
 
     def compute(self, dataset: dict) -> dict:
         import math
@@ -10989,7 +11016,7 @@ class LagoonNebulaHerschelRadiationErosionCalculator:
         G        = dataset.get('G',         6.6743e-11)
         M_SUN    = 1.989e30
         M0_kg    = M0_sun * M_SUN
-        g_base   = G * M0_kg / (r * r)
+        g_base = dpm_emergent_ug1(M0_kg, r)  # DPM-emergent
         flux     = L_H36 / (4.0 * math.pi * r * r * c)   # Pa  (7.511e-14)
         a_rad    = flux / rho                             # m/s^2  (7.51e6) [P306]
         eta_rad  = a_rad / g_base if g_base != 0 else 0.0  # 1.53e18 [P306]
@@ -11000,15 +11027,15 @@ class LagoonNebulaHerschelRadiationErosionCalculator:
             'eta_rad':        eta_rad,   # 1.53e18 [PAPER_306]
             'note':           'FIRST UQFF single-star (Herschel 36 O7V) radiation parameter; eta_rad=1.53e18 (18 orders > g_base)',
             'paper':          'PAPER_306',
-            'system':         'Lagoon Nebula M8/NGC 6523 — Herschel 36 radiation erosion',
+            'system':         'Lagoon Nebula M8/NGC 6523 â€” Herschel 36 radiation erosion',
             'session':        87,
         }
 
 
 class LagoonNebulaDualRadiationEMBarrierCalculator:
-    """PAPER_307 — Dual Radiation-EM Barrier. a_EM=9.59e7 m/s^2; a_EM/a_rad=12.77.
+    """PAPER_307 â€” Dual Radiation-EM Barrier. a_EM=9.59e7 m/s^2; a_EM/a_rad=12.77.
     eta_EM=1.96e19. FIRST UQFF dual-barrier HII module: both a_EM AND a_rad >> g_base.
-    EM leads radiation by 12.77x. Session 87 — 29th C++ module — FIRST H II Region."""
+    EM leads radiation by 12.77x. Session 87 â€” 29th C++ module â€” FIRST H II Region."""
 
     def compute(self, dataset: dict) -> dict:
         import math
@@ -11024,11 +11051,11 @@ class LagoonNebulaDualRadiationEMBarrierCalculator:
         c        = 2.998e8      # m/s
         M_SUN    = 1.989e30
         M0_kg    = M0_sun * M_SUN
-        g_base   = G * M0_kg / (r * r)
-        # PAPER_307 — EM turbulence
+        g_base = dpm_emergent_ug1(M0_kg, r)  # DPM-emergent
+        # PAPER_307 â€” EM turbulence
         a_EM     = q * v_gas * B / m_H                              # 9.59e7 m/s^2
         eta_EM   = a_EM / g_base if g_base != 0 else 0.0            # 1.96e19
-        # PAPER_306 — radiation (for ratio)
+        # PAPER_306 â€” radiation (for ratio)
         flux     = L_H36 / (4.0 * math.pi * r * r * c)
         a_rad    = flux / rho                                       # 7.51e6 m/s^2
         eta_rad  = a_rad / g_base if g_base != 0 else 0.0
@@ -11044,17 +11071,17 @@ class LagoonNebulaDualRadiationEMBarrierCalculator:
             'net_barrier_m_s2':  net_barrier,     # 8.84e7 m/s^2 (EM dominates)
             'note':              'FIRST UQFF dual-barrier: a_EM=9.59e7 AND a_rad=7.51e6 both >> g_base=4.91e-12; EM leads rad 12.77x',
             'paper':             'PAPER_307',
-            'system':            'Lagoon Nebula M8/NGC 6523 — dual radiation-EM barrier HII',
+            'system':            'Lagoon Nebula M8/NGC 6523 â€” dual radiation-EM barrier HII',
             'session':           87,
         }
 
 
 
 class SpiralArmTorqueGravitationalAmplifierCalculator:
-    """PAPER_308 — Spiral Arm Torque Gravitational Amplifier.
+    """PAPER_308 â€” Spiral Arm Torque Gravitational Amplifier.
     tau_spiral(10 Gyr)=2.046; T_pattern=307 Myr; dTau/dt=6.483e-18 s^-1=2.741x H0_SH0ES.
     g_amp=3.046 (gravity 3x at 10 Gyr). f_gas=0.01; Omega_p=6.483e-16 rad/s.
-    Session 88 — 30th C++ module — FIRST Spiral+SN Ia UQFF 2.0.
+    Session 88 â€” 30th C++ module â€” FIRST Spiral+SN Ia UQFF 2.0.
     FIRST UQFF spiral arm pattern speed gravitational amplifier."""
 
     def compute(self, dataset: dict) -> dict:
@@ -11080,7 +11107,7 @@ class SpiralArmTorqueGravitationalAmplifierCalculator:
         T_Myr          = T_pattern / (1.0e6 * YR_TO_S)
         return {
             'primary_equations': [
-                f'tau_spiral(t) = (M_gas/M) * Omega_p * t  [PAPER_308 — dimensionless torque]',
+                f'tau_spiral(t) = (M_gas/M) * Omega_p * t  [PAPER_308 â€” dimensionless torque]',
                 f'tau_spiral(10 Gyr) = {f_gas} * {Omega_p:.4e} * {T_10Gyr:.4e} = {tau_10Gyr:.4f}',
                 f'g_amp = 1 + tau = {g_amp:.4f}  (gravity {g_amp:.2f}x at 10 Gyr)',
                 f'T_pattern = 2pi/Omega_p = {T_pattern:.4e} s = {T_Myr:.1f} Myr',
@@ -11108,9 +11135,9 @@ class SpiralArmTorqueGravitationalAmplifierCalculator:
 
 
 class SNIaHubbleTensionImprintCalculator:
-    """PAPER_309 — SN Ia Hubble Tension Imprint. delta_SN=2.52% at z=0.5, t=5 Gyr.
+    """PAPER_309 â€” SN Ia Hubble Tension Imprint. delta_SN=2.52% at z=0.5, t=5 Gyr.
     eta_SN=2.0e16; a_SN=3.096e5 m/s^2; H0_SH0ES=73.0 vs Planck=67.4 (8.31% tension).
-    flux_SN=3.096e-16 Pa. Session 88 — 30th C++ module — FIRST Spiral+SN Ia.
+    flux_SN=3.096e-16 Pa. Session 88 â€” 30th C++ module â€” FIRST Spiral+SN Ia.
     FIRST UQFF SN Ia H0 tension gravitational signature."""
 
     def compute(self, dataset: dict) -> dict:
@@ -11131,7 +11158,7 @@ class SNIaHubbleTensionImprintCalculator:
         z       = dataset.get('z', 0.5)
         flux_SN     = L_SN / (4.0 * math.pi * r * r * C_LIGHT)
         a_SN        = flux_SN / rho_f
-        g_base      = G * M / (r * r)
+        g_base = dpm_emergent_ug1(M, r)  # DPM: mu_s * grad(M_s/r)
         eta_SN      = a_SN / g_base if g_base else 0.0
         h_factor    = math.sqrt(Omega_m * (1 + z)**3 + Omega_L)
         Hz_SH0ES    = (H0 * 1.0e3 / MPC_M) * h_factor
@@ -11173,9 +11200,9 @@ class SNIaHubbleTensionImprintCalculator:
 
 
 class SpiralDMVisiblePartitionRotationCalculator:
-    """PAPER_310 — DM/Visible Mass Partition Rotation Curve Excess. eta_DM_vis=5.667.
+    """PAPER_310 â€” DM/Visible Mass Partition Rotation Curve Excess. eta_DM_vis=5.667.
     v_excess=67.1%; v_circ=1.197e5 m/s; g_DM=1.316e-11 m/s^2; g_vis=2.324e-12 m/s^2.
-    Session 88 — 30th C++ module — FIRST Spiral+SN Ia UQFF 2.0.
+    Session 88 â€” 30th C++ module â€” FIRST Spiral+SN Ia UQFF 2.0.
     FIRST UQFF explicit DM/visible partition with rotation curve excess analysis."""
 
     def compute(self, dataset: dict) -> dict:
@@ -11190,9 +11217,9 @@ class SpiralDMVisiblePartitionRotationCalculator:
         M_vis       = f_vis * M
         M_dm        = f_DM  * M
         eta_DM_vis  = f_DM / f_vis if f_vis else 0.0
-        g_vis       = G * M_vis / (r * r)
+        g_vis = dpm_emergent_ug1(M_vis, r)  # DPM-emergent
         g_DM        = G * M_dm  / (r * r)
-        g_base      = G * M     / (r * r)
+        g_base = dpm_emergent_ug1(M, r)  # DPM: mu_s * grad(M_s/r)
         v_circ      = math.sqrt(G * M / r)
         v_excess    = v_rot / v_circ if v_circ else 0.0
         return {
@@ -11231,9 +11258,9 @@ class SpiralDMVisiblePartitionRotationCalculator:
 
 
 class BiPolarPNWindShockGravitationalDominanceCalculator:
-    """PAPER_311 — NGC 6302 Bipolar PN Wind Shock Dominance. eta_wind=7.127e5.
+    """PAPER_311 â€” NGC 6302 Bipolar PN Wind Shock Dominance. eta_wind=7.127e5.
     a_wind(t_eject)=2.114e-6 m/s^2; g_base=2.967e-12 m/s^2; KE/grav_well=3.564e5.
-    Session 89 — 31st C++ module — FIRST Bipolar PN UQFF 2.0.
+    Session 89 â€” 31st C++ module â€” FIRST Bipolar PN UQFF 2.0.
     FIRST UQFF explicit bipolar PN wind shock gravitational dominance analysis.
     WOLFRAM_TERM: NGC6302_WIND_SHOCK"""
 
@@ -11247,7 +11274,7 @@ class BiPolarPNWindShockGravitationalDominanceCalculator:
         v_wind  = dataset.get('v_wind',     1.0e5)
         t_eject = dataset.get('t_eject',    2000.0 * YR_TO_S)
         t       = dataset.get('t',          t_eject)
-        g_base        = G * M / (r * r)
+        g_base = dpm_emergent_ug1(M, r)  # DPM: mu_s * grad(M_s/r)
         a_wind_t0     = v_wind**2 / r
         a_wind_tej    = 2.0 * v_wind**2 / r
         eta_wind      = a_wind_tej / g_base
@@ -11285,9 +11312,9 @@ class BiPolarPNWindShockGravitationalDominanceCalculator:
 
 
 class BiPolarPNUVRadiationPressureCalculator:
-    """PAPER_312 — NGC 6302 Central WD UV Radiation Pressure. eta_rad=1.913e20.
+    """PAPER_312 â€” NGC 6302 Central WD UV Radiation Pressure. eta_rad=1.913e20.
     L_star=5000 L_sun (T_eff=200,000K); P_rad=5.672e-12 Pa; a_rad=5.672e8 m/s^2.
-    Session 89 — 31st C++ module — FIRST Bipolar PN UQFF 2.0.
+    Session 89 â€” 31st C++ module â€” FIRST Bipolar PN UQFF 2.0.
     FIRST UQFF explicit hot-WD UV radiation pressure gravitational signature.
     WOLFRAM_TERM: NGC6302_UV_RADIATION"""
 
@@ -11302,7 +11329,7 @@ class BiPolarPNUVRadiationPressureCalculator:
         n_Lsun    = dataset.get('n_Lsun',     5000.0)
         L_star    = dataset.get('L_star',     n_Lsun * L_SUN)
         rho_fluid = dataset.get('rho_fluid',  1.0e-20)
-        g_base    = G * M / (r * r)
+        g_base = dpm_emergent_ug1(M, r)  # DPM: mu_s * grad(M_s/r)
         P_rad     = L_star / (4.0 * math.pi * r * r * C_LIGHT)
         a_rad     = P_rad / rho_fluid
         eta_rad   = a_rad / g_base
@@ -11336,9 +11363,9 @@ class BiPolarPNUVRadiationPressureCalculator:
 
 
 class EquatorialTorusMagneticConfinementCalculator:
-    """PAPER_313 — NGC 6302 Equatorial Torus Magnetic Confinement. eta_B_conf=3.979e5.
+    """PAPER_313 â€” NGC 6302 Equatorial Torus Magnetic Confinement. eta_B_conf=3.979e5.
     beta_plasma=2.513e-6; v_Alfven=8.921e7 m/s; v_A/v_wind=892.1.
-    Session 89 — 31st C++ module — FIRST Bipolar PN UQFF 2.0.
+    Session 89 â€” 31st C++ module â€” FIRST Bipolar PN UQFF 2.0.
     FIRST UQFF equatorial PN torus magnetic confinement (beta_plasma < 10^-5, magnetically dominated).
     WOLFRAM_TERM: NGC6302_TORUS_CONFINEMENT"""
 
@@ -11392,9 +11419,9 @@ class EquatorialTorusMagneticConfinementCalculator:
 
 
 class BipolarPNLobeResonanceDPMMacroAntennaCalculator:
-    """PAPER_314 — NGC6302 Bipolar PN Lobe DPM Macro-Antenna Force.
+    """PAPER_314 â€” NGC6302 Bipolar PN Lobe DPM Macro-Antenna Force.
     F_DPM = I_wind * A_area * delta_omega = 1.267e50 N;
-    a_DPM = 2.497e-31 m/s².
+    a_DPM = 2.497e-31 m/sÂ².
     13-order amplification over compact DPM force (PAPER_293 F=6.284e36 N).
     FIRST UQFF DPM force at planetary nebula lobe scale (r~1.5 ly)."""
 
@@ -11418,14 +11445,14 @@ class BipolarPNLobeResonanceDPMMacroAntennaCalculator:
         ratio_FPN  = F_DPM / F_compact
         return {
             'primary_equations': [
-                f'F_DPM = I_wind * A_area * Δω = {I_wind:.2e} * {A_area:.3e} * {delta_omega:.2e} = {F_DPM:.3e} N',
-                f'a_DPM = F_DPM * f_DPM * E_vac_neb / (c * V_sys) = {a_DPM:.3e} m/s²',
+                f'F_DPM = I_wind * A_area * Î”Ï‰ = {I_wind:.2e} * {A_area:.3e} * {delta_omega:.2e} = {F_DPM:.3e} N',
+                f'a_DPM = F_DPM * f_DPM * E_vac_neb / (c * V_sys) = {a_DPM:.3e} m/sÂ²',
                 f'F_PN/F_compact = {F_DPM:.3e}/{F_compact:.3e} = {ratio_FPN:.3e} (13-order amplification)',
             ],
             'available_equations': [
-                'A_area(r) = pi*r²',
-                'V_sys(r)  = (4/3)*pi*r³',
-                'F_DPM(I, A, Δω)',
+                'A_area(r) = pi*rÂ²',
+                'V_sys(r)  = (4/3)*pi*rÂ³',
+                'F_DPM(I, A, Î”Ï‰)',
                 'a_DPM(F_DPM, f_DPM, E_vac_neb, c, V_sys)',
                 'ratio_FPN_compact',
             ],
@@ -11446,9 +11473,9 @@ class BipolarPNLobeResonanceDPMMacroAntennaCalculator:
 
 
 class ResonanceVacDiffTHzCrossoverRadiusCalculator:
-    """PAPER_315 — NGC6302 UQFF Resonance VacDiff-THz Crossover Radius.
+    """PAPER_315 â€” NGC6302 UQFF Resonance VacDiff-THz Crossover Radius.
     r_cross = 3.280 km: below = THz dominant; above = VacDiff dominant.
-    Gamma_THz=8.939e9; a_THz=2.232e-21 m/s²;
+    Gamma_THz=8.939e9; a_THz=2.232e-21 m/sÂ²;
     a_vac_diff/a_THz at PN scale = 8.118e37 (38-order dominance).
     FIRST UQFF bi-modal resonance crossover radius."""
 
@@ -11477,8 +11504,8 @@ class ResonanceVacDiffTHzCrossoverRadiusCalculator:
         v_ratio     = v_exp / 1.5e6
         return {
             'primary_equations': [
-                f'Γ_THz = VAC_RATIO * f_THz * v_exp / c = {VAC_RATIO} * {f_THz:.0e} * {v_exp:.2e} / c = {Gamma_THz:.3e}',
-                f'r_cross = (3*ħ*Γ_THz / (4π*E_0))^(1/3) = {r_cross:.3e} m = {r_cross/1e3:.3f} km',
+                f'Î“_THz = VAC_RATIO * f_THz * v_exp / c = {VAC_RATIO} * {f_THz:.0e} * {v_exp:.2e} / c = {Gamma_THz:.3e}',
+                f'r_cross = (3*Ä§*Î“_THz / (4Ï€*E_0))^(1/3) = {r_cross:.3e} m = {r_cross/1e3:.3f} km',
                 f'a_vac_diff/a_THz at r={r:.2e} m = {vac_THz_ratio:.3e} (VacDiff dominates by 38 orders)',
             ],
             'available_equations': [
@@ -11506,8 +11533,8 @@ class ResonanceVacDiffTHzCrossoverRadiusCalculator:
 
 
 class CooperDPMf1THz_AscConfirmationCalculator:
-    """PAPER_316 — NGC6302 Cooper-DPM f_DPM=1e12 Hz Class Confirmation.
-    A_sc=6.994e21; a_super=1.747e-9 m/s².
+    """PAPER_316 â€” NGC6302 Cooper-DPM f_DPM=1e12 Hz Class Confirmation.
+    A_sc=6.994e21; a_super=1.747e-9 m/sÂ².
     Confirms PAPER_295 prediction for f_DPM=1e12 class.
     PN hierarchy: a_vac_diff >> a_super >> a_THz >> a_DPM (38-decade span)."""
 
@@ -11536,14 +11563,14 @@ class CooperDPMf1THz_AscConfirmationCalculator:
         a_THz      = Gamma_THz * a_DPM
         return {
             'primary_equations': [
-                f'A_sc = ħ*f_super*f_DPM / (E_vac_ISM*c) = {A_sc:.3e}  [PAPER_295 predicted 6.994e21 ✓]',
-                f'a_super = A_sc * a_DPM = {A_sc:.3e} * {a_DPM:.3e} = {a_super:.3e} m/s²',
+                f'A_sc = Ä§*f_super*f_DPM / (E_vac_ISM*c) = {A_sc:.3e}  [PAPER_295 predicted 6.994e21 âœ“]',
+                f'a_super = A_sc * a_DPM = {A_sc:.3e} * {a_DPM:.3e} = {a_super:.3e} m/sÂ²',
                 f'PN hierarchy: a_vac_diff({a_vac_diff:.2e}) >> a_super({a_super:.2e}) >> a_THz({a_THz:.2e}) >> a_DPM({a_DPM:.2e})',
             ],
             'available_equations': [
                 'A_sc(hbar, f_super, f_DPM, E_vac_ISM, c)',
                 'a_super = A_sc * a_DPM',
-                'quadratic_law: a_super ∝ f_DPM² at fixed seed',
+                'quadratic_law: a_super âˆ f_DPMÂ² at fixed seed',
                 'hierarchy_span_decades = log10(a_vac_diff/a_DPM)',
             ],
             'simulation_set': [
@@ -11566,15 +11593,15 @@ class CooperDPMf1THz_AscConfirmationCalculator:
 
 
 # ---------------------------------------------------------------------------
-# Session 91 — PAPER_317–319 (Orion Nebula M42/NGC 1976 UQFF 2.0)
-# 33rd C++ module — FIRST Trapezium OB-cluster driven HII region
+# Session 91 â€” PAPER_317â€“319 (Orion Nebula M42/NGC 1976 UQFF 2.0)
+# 33rd C++ module â€” FIRST Trapezium OB-cluster driven HII region
 # ---------------------------------------------------------------------------
 
 class OrionTrapeziumWindRamPressureDominanceCalculator:
-    """PAPER_317 — Orion M42 Trapezium Wind Ram Pressure Dominance.
+    """PAPER_317 â€” Orion M42 Trapezium Wind Ram Pressure Dominance.
     eta_wind = 28.47; a_wind(t=0) = 5.424e-10 m/s^2; t_erosion = 467 kyr.
     FIRST UQFF HII region ram pressure dominance ratio.
-    System: Orion Nebula M42/NGC 1976 — 33rd C++ module, Session 91."""
+    System: Orion Nebula M42/NGC 1976 â€” 33rd C++ module, Session 91."""
 
     def compute(self, dataset: dict = None) -> dict:
         import math
@@ -11586,7 +11613,7 @@ class OrionTrapeziumWindRamPressureDominanceCalculator:
         v_wind   = dataset.get('v_wind',  8e3)
         t_age_s  = dataset.get('t_age_s', 9.467e12)   # 3e5 yr in s
         YEAR_TO_S= 3.15576e7
-        g_base   = G * M / (r * r)
+        g_base = dpm_emergent_ug1(M, r)  # DPM: mu_s * grad(M_s/r)
         a_wind_0 = v_wind * v_wind / r
         a_wind_t = a_wind_0 * 2.0                     # at t = t_age
         eta_wind = a_wind_0 / g_base
@@ -11613,7 +11640,7 @@ class OrionTrapeziumWindRamPressureDominanceCalculator:
                 'P_ram = rho*v_wind^2',
                 'P_grav = G*M*rho/r',
                 't_erosion = r/v_wind',
-                'W_KE/W_grav ≈ eta_wind',
+                'W_KE/W_grav â‰ˆ eta_wind',
             ],
             'simulation_set': [
                 {'t_kyr': tkyr,
@@ -11639,10 +11666,10 @@ class OrionTrapeziumWindRamPressureDominanceCalculator:
 
 
 class OrionTrapeziumOBUVRadiationChampagneFlowCalculator:
-    """PAPER_318 — Trapezium OB Cluster UV Radiation Dominance — Champagne Flow.
+    """PAPER_318 â€” Trapezium OB Cluster UV Radiation Dominance â€” Champagne Flow.
     eta_rad = 7.664e18; a_rad = 1.461e8 m/s^2; L_trap = 7.656e31 W.
     FIRST UQFF sub-pc compact HII Trapezium OB UV radiation dominance.
-    System: Orion Nebula M42/NGC 1976 — 33rd C++ module, Session 91."""
+    System: Orion Nebula M42/NGC 1976 â€” 33rd C++ module, Session 91."""
 
     def compute(self, dataset: dict = None) -> dict:
         import math
@@ -11654,7 +11681,7 @@ class OrionTrapeziumOBUVRadiationChampagneFlowCalculator:
         r       = dataset.get('r',       1.18e17)
         rho     = dataset.get('rho',     1e-20)
         L_trap  = dataset.get('L_trap',  2e5 * L_SUN)  # 7.656e31 W
-        g_base  = G * M / (r * r)
+        g_base = dpm_emergent_ug1(M, r)  # DPM: mu_s * grad(M_s/r)
         A_trap  = 4.0 * math.pi * r * r
         P_rad   = L_trap / (A_trap * c)
         a_rad   = P_rad / rho
@@ -11703,10 +11730,10 @@ class OrionTrapeziumOBUVRadiationChampagneFlowCalculator:
 
 
 class OrionCompactHIISFRBindingCrossoverCalculator:
-    """PAPER_319 — Compact HII SFR Gravitational Binding Phase Transition.
+    """PAPER_319 â€” Compact HII SFR Gravitational Binding Phase Transition.
     t_cross = 67730 yr; sSFR = 5e-4 yr^-1 (50x Lagoon); m_factor(t_age) = 151.
     FIRST UQFF compact HII SFR runaway gravitational binding phase transition.
-    System: Orion Nebula M42/NGC 1976 — 33rd C++ module, Session 91."""
+    System: Orion Nebula M42/NGC 1976 â€” 33rd C++ module, Session 91."""
 
     def compute(self, dataset: dict = None) -> dict:
         import math
@@ -11720,7 +11747,7 @@ class OrionCompactHIISFRBindingCrossoverCalculator:
         SFR_yr    = dataset.get('SFR_yr', 1.0)        # M_sun/yr
         t_age_yr  = dataset.get('t_age_yr', 3e5)
         M_sun_cnt = M / M_SUN                         # 2000
-        g_base    = G * M / (r * r)
+        g_base = dpm_emergent_ug1(M, r)  # DPM: mu_s * grad(M_s/r)
         a_wind_0  = v_wind * v_wind / r
         sSFR      = SFR_yr / M_sun_cnt                # 5e-4 yr^-1
         t_consume = M_sun_cnt / SFR_yr                # 2000 yr
@@ -11779,11 +11806,11 @@ class OrionCompactHIISFRBindingCrossoverCalculator:
 
 
 # ---------------------------------------------------------------------------
-# Session 92 — PAPER_320-322 (CR34 UQFF 2.0 — 34th C++ module, 2nd Dual-Channel 7-system)
+# Session 92 â€” PAPER_320-322 (CR34 UQFF 2.0 â€” 34th C++ module, 2nd Dual-Channel 7-system)
 # ---------------------------------------------------------------------------
 
 class CR34DPMForceDensitySpectralAtlasCalculator:
-    """Session 92 — PAPER_320: CR34 7-system DPM force density spectral atlas.
+    """Session 92 â€” PAPER_320: CR34 7-system DPM force density spectral atlas.
     xi_span=1e35; H Atom=1.500e25 N/m^3 (max); Universe=1.500e-10 N/m^3 (min);
     Orion=9.12 N/m^3 HII balance.
     f_density = I * A_vort * delta_omega / V_sys [N/m^3]
@@ -11821,7 +11848,7 @@ class CR34DPMForceDensitySpectralAtlasCalculator:
 
 
 class CR34CrossChannelDominanceCrossoverCalculator:
-    """Session 92 — PAPER_321: CR34 cross-channel dominance reversal threshold.
+    """Session 92 â€” PAPER_321: CR34 cross-channel dominance reversal threshold.
     V_f_crossover = hbar / (E_0 * f_vac_diff * E_vac * c) = 5.43e28 m^3/Hz.
     Compressed dominant when V_sys/f_react > crossover (nebular/cosmic).
     Resonance dominant when V_sys/f_react < crossover (atomic).
@@ -11869,7 +11896,7 @@ class CR34CrossChannelDominanceCrossoverCalculator:
 
 
 class CR34HiIRegionTHzGeometricDifferentialCalculator:
-    """Session 92 — PAPER_322: Orion/Lagoon THz acceleration ratio = 8.59.
+    """Session 92 â€” PAPER_322: Orion/Lagoon THz acceleration ratio = 8.59.
     Same f_DPM=1e11/f_THz=1e11/v_exp=1e4 (identical DPM class).
     Ratio = (A_vort_34 * V_sys_30) / (A_vort_30 * V_sys_34) = 8.59.
     Gamma_THz identical for both; ratio purely from DPM geometric surface density.
@@ -11913,10 +11940,10 @@ class CR34HiIRegionTHzGeometricDifferentialCalculator:
         }
 
 
-# Session 93 — PAPER_323-325 (CR34b UQFF 2.0 — 35th C++ module, CR34 variant, 11-term 6-system)
+# Session 93 â€” PAPER_323-325 (CR34b UQFF 2.0 â€” 35th C++ module, CR34 variant, 11-term 6-system)
 
 class CR34bVacuumAetherFrequencyModeCalculator:
-    """Session 93 — PAPER_323: F_AETHER=1.576e-35 Hz, 11th UQFF term: vacuum aether frequency mode.
+    """Session 93 â€” PAPER_323: F_AETHER=1.576e-35 Hz, 11th UQFF term: vacuum aether frequency mode.
     a_aether_freq = F_AETHER * E_VAC_neb * a_DPM / (E_VAC_ISM * c) = 5.253e-43 * a_DPM.
     Smallest UQFF coupling coefficient identified. Cosmological vacuum frequency mode.
     Distinct from a_aether_res (resonance). Forms UQFF aether doublet with a_aether_res.
@@ -11955,10 +11982,10 @@ class CR34bVacuumAetherFrequencyModeCalculator:
 
 
 class CR34bSaturnFirstPlanetaryDualChannelCalculator:
-    """Session 93 — PAPER_324: Saturn FIRST planetary body in UQFF dual-channel.
+    """Session 93 â€” PAPER_324: Saturn FIRST planetary body in UQFF dual-channel.
     V_sys=9.184e23 m^3 fills planetary gap in xi_span between atomic and nebular.
     a_vac_diff=1.29e-2 m/s^2 dominates compressed channel for planetary scale.
-    f_DPM=1e12 Hz: microwave THz-boundary regime — first planetary in CR series.
+    f_DPM=1e12 Hz: microwave THz-boundary regime â€” first planetary in CR series.
     FIRST planetary-scale dual-channel UQFF computation."""
 
     E_VAC   = 7.09e-36
@@ -11994,7 +12021,7 @@ class CR34bSaturnFirstPlanetaryDualChannelCalculator:
             'vac_diff_fraction':         vac_diff_fraction,
             'dominant_term':             'a_vac_diff',
             'xi_span_coverage':          'fills planetary gap: atomic(4.189e-31) -> Saturn(9.184e23) -> nebular',
-            'freq_regime':               'THz-boundary 1e12 Hz — same as Crab/NGC6302',
+            'freq_regime':               'THz-boundary 1e12 Hz â€” same as Crab/NGC6302',
             'first_planetary':           True,
             'papers':                    ['PAPER_324'],
             'session':                   93,
@@ -12002,7 +12029,7 @@ class CR34bSaturnFirstPlanetaryDualChannelCalculator:
 
 
 class CR34bRhoISMFluidDensityCouplingCalculator:
-    """Session 93 — PAPER_325: CR34b rho-ISM density-weighted fluid term.
+    """Session 93 â€” PAPER_325: CR34b rho-ISM density-weighted fluid term.
     a_fluid_rho = f_fluid * E_VAC_neb * V_fluid * rho_ISM * a_DPM / (E_VAC_ISM * c).
     ISM coupling constant: f_fluid * rho_ISM = 1.269e-35 kg/m^3/Hz.
     CR34b extends CR34 fluid term: CR34b(rho=1) = CR34 fluid term exactly.
@@ -12038,9 +12065,9 @@ class CR34bRhoISMFluidDensityCouplingCalculator:
         }
 
 
-# Session 94 — PAPER_326-328 (gok_share_31b5c807a4 — Triadic UQFF / Q_wave_47 / α-BEC)
+# Session 94 â€” PAPER_326-328 (gok_share_31b5c807a4 â€” Triadic UQFF / Q_wave_47 / Î±-BEC)
 class TriadicMasterFUg1R26StateRamanujanCalculator:
-    """Session 94 — PAPER_326: Triadic Master UQFF 26-state Ramanujan co-sum.
+    """Session 94 â€” PAPER_326: Triadic Master UQFF 26-state Ramanujan co-sum.
     Three co-existing force channels: FU_g1, R(t), FU_Bi.
     Westerlund2: FU_g1=2.43e-40 N, R_t=-2.29e-41 N, FU_Bi=6.14e-32 N.
     Pillars: FU_g1=3.95e-41 N, R_t=-1.12e-42 N, FU_Bi=9.79e-33 N.
@@ -12091,8 +12118,8 @@ class TriadicMasterFUg1R26StateRamanujanCalculator:
 
 
 class QWave47NonGaussianDistributionCalculator:
-    """Session 94 — PAPER_327: Q_wave_47 non-parametric distribution survey.
-    Mean=3.97e4 J/m³, std=6.33e4 J/m³; Shapiro-Wilk W=0.644 p=1.21e-9.
+    """Session 94 â€” PAPER_327: Q_wave_47 non-parametric distribution survey.
+    Mean=3.97e4 J/mÂ³, std=6.33e4 J/mÂ³; Shapiro-Wilk W=0.644 p=1.21e-9.
     Jarque-Bera=8.78 p=0.012; excess kurtosis=0.037 (leptokurtic).
     [SSq]=0.507 explains heavy quasar tails vs transient lows.
     FIRST UQFF Q_wave non-Gaussian distribution characterization across 47 scales."""
@@ -12130,7 +12157,7 @@ class QWave47NonGaussianDistributionCalculator:
 
 
 class AlphaBECNuclearLENREnhancementCalculator:
-    """Session 94 — PAPER_328: Nuclear alpha-BEC Bose-Einstein LENR enhancement.
+    """Session 94 â€” PAPER_328: Nuclear alpha-BEC Bose-Einstein LENR enhancement.
     N_B = 1/(exp(deltaE/kT)-1); T_BEC=14.52 MeV; deltaE=0.48 MeV (N=10 alphas).
     delta_pair=0.1 in H_res. CS rotor sigma(300 cm^-1)=10.50 Ang^2.
     LENR enhancement ~10% from BEC alpha-clustering.
@@ -12173,7 +12200,7 @@ class AlphaBECNuclearLENREnhancementCalculator:
 
 
 # ---------------------------------------------------------------------------
-# Session 95 — PAPER_329–338 (gok_share_31b5c807a4 deep re-analysis)
+# Session 95 â€” PAPER_329â€“338 (gok_share_31b5c807a4 deep re-analysis)
 # 10 new physics territories: Um bilinear/Heaviside/neutrino, H_res 6-eq nuclear,
 # 26-state MUGE freq-basis, F_U_Bi_i 12-term, BSM 10-experiment, U_i complex
 # bifurcation, k^k REB Ramanujan, g_Compressed all-forces+DM, Q_wave_81
@@ -12181,7 +12208,7 @@ class AlphaBECNuclearLENREnhancementCalculator:
 # ---------------------------------------------------------------------------
 
 class UmBilinearHeavisideNeutrinoVacuumCascadeCalculator:
-    """Session 95 — PAPER_329: Um bilinear Heaviside quasi-contact + neutrino double-exponential vacuum cascade.
+    """Session 95 â€” PAPER_329: Um bilinear Heaviside quasi-contact + neutrino double-exponential vacuum cascade.
     Um = sum_j[mu_j/r_j*(1-exp(-gamma*t)*cos(pi*t_n))*phi^j]*P_SCm*E_react*(1+1e13*f_H)*(1+f_q)
     Neutrino double-exp: E_neutrino ~ exp(-[SSq]*n/26 * exp(-(pi-t)))
     gamma=5e-5 day^-1; phi~0.8; f_Heaviside=1e13.
@@ -12217,7 +12244,7 @@ class UmBilinearHeavisideNeutrinoVacuumCascadeCalculator:
 
 
 class HResNuclear6EquationDipolekNucCalculator:
-    """Session 95 — PAPER_330: H_res 6-equation nuclear resonance sub-system.
+    """Session 95 â€” PAPER_330: H_res 6-equation nuclear resonance sub-system.
     H_res = A_res*sin(2pi*f_res*t) + U_dp*SC_m*k_nuc + S_shell
     U_dp = k*(A1*A2/f_dp^2)*cos(phi_dp)  [FIRST dipole coupling]
     k_nuc = k_0*(N/Z)*(1+delta_pair)  [FIRST N/Z ratio term]
@@ -12258,7 +12285,7 @@ class HResNuclear6EquationDipolekNucCalculator:
 
 
 class MUGE26StateFrequencyBasisProofIdentitiesCalculator:
-    """Session 95 — PAPER_331: 26-state MUGE 7-channel frequency basis + 6 proof identities.
+    """Session 95 â€” PAPER_331: 26-state MUGE 7-channel frequency basis + 6 proof identities.
     g_MUGE_freq = sum_{i=1}^{26}[7 channels]*f_TRZ*(rho_UA/rho_SCm)*exp(-[SSq]*n/26)
     f_aether=1.576e-35 Hz, f_super=1.411e16 Hz, f_fluid=1.269e-14 Hz
     f_quantum=1.445e-17 Hz, f_react=1e10 Hz, f_THz=1e12 Hz, f_exp=2.26e-18 Hz.
@@ -12303,7 +12330,7 @@ class MUGE26StateFrequencyBasisProofIdentitiesCalculator:
 
 
 class FUBi12TermExplicitIntegrandCalculator:
-    """Session 95 — PAPER_332: F_U_Bi_i complete 12-term explicit integrand.
+    """Session 95 â€” PAPER_332: F_U_Bi_i complete 12-term explicit integrand.
     Terms 1-5: gravity base, Ub buoyancy, DPM harmonic, quantum unc., THz coupling.
     Terms 6-12: k_act cos(omega_act*t), k_DE*L_X, Zeeman=2qB0V sin(theta)*(g_mu_B*B0/hbar*omega0),
                 k_neutron*sigma_n, k_rel*(E_cm_adj/E_cm)^2, F_Sweet_vac~1e-39 N, F_Kozima~1e30-1e33 N.
@@ -12356,7 +12383,7 @@ class FUBi12TermExplicitIntegrandCalculator:
 
 
 class BSMUQFFMultiExperimentCouplingCalculator:
-    """Session 95 — PAPER_333: BSM-UQFF 10-experiment coupling package.
+    """Session 95 â€” PAPER_333: BSM-UQFF 10-experiment coupling package.
     EDM: Fu+ = d_e*e/(2*m_e*c)*exp(-[SSq]*n/26)
     ALICE: k_eta=1e13 cm^-2/s at n=18 QGP transition
     Axion comagnetometer: Um += b_p*sin(m_a*t + phi)
@@ -12403,7 +12430,7 @@ class BSMUQFFMultiExperimentCouplingCalculator:
 
 
 class UiComplexSuperconductiveVacuumDensityCalculator:
-    """Session 95 — PAPER_334: U_i complex superconductive vacuum density with bifurcation.
+    """Session 95 â€” PAPER_334: U_i complex superconductive vacuum density with bifurcation.
     U_i = lambda_i*(rho_SCm/rho_UA * omega_s * cos(pi*t_n) * (1+f_TRZ))
     Compact: (1.38e-47+i7.80e-51) J/m^3; Galactic: (1.45e-47+i8.20e-51) J/m^3.
     Bifurcation ratio = |U_galactic/U_compact| = 1.051.
@@ -12447,7 +12474,7 @@ class UiComplexSuperconductiveVacuumDensityCalculator:
 
 
 class kkREBTrdicRamanujanFUBiBuoyancyKernelCalculator:
-    """Session 95 — PAPER_335: k^k REB Triadic Ramanujan co-sum form + F_U_Bi buoyancy kernel.
+    """Session 95 â€” PAPER_335: k^k REB Triadic Ramanujan co-sum form + F_U_Bi buoyancy kernel.
     F_U_Bi_i = sum_{k=1}^N [k^k*(f_UA1*f_SCm1*REB1)*(f_UA2*f_SCm2*REB2)/r^2*G_k
                             + k^4*rho_SCm*M_BH/r*exp(-alpha*t)*cos(pi*t_n)*(1+f_feedback)]
     f_Ub = k_Ub * Delta_k_eta * (rho_UA/rho_SCm) * V_little/V_big ~ 0.1
@@ -12490,7 +12517,7 @@ class kkREBTrdicRamanujanFUBiBuoyancyKernelCalculator:
 
 
 class gCompressedAllForcesR26ComponentCalculator:
-    """Session 95 — PAPER_336: g_Compressed complete all-forces equation + R(t) 26-component 4-subterm.
+    """Session 95 â€” PAPER_336: g_Compressed complete all-forces equation + R(t) 26-component 4-subterm.
     g_Compressed = (GM/r^2)(1+H)(1-B/Bc)(1+F_env) + sum(Ug_i') + Lambda*c^2/3
                  + hbar/sqrt(dx*dp)*integral(psi H psi dV)*2pi/t_Hubble
                  + rho_fluid*V*g + (M_vis+M_DM)*(delta_rho/rho + 3GM/r^3)
@@ -12503,7 +12530,7 @@ class gCompressedAllForcesR26ComponentCalculator:
     H_FACTOR   = 0.01
     B_FRAC     = 0.0
     F_ENV      = 0.0
-    LAMBDA_CC  = 1.1e-52  # m^-2 (note: Λ the cosmological constant)
+    LAMBDA_CC  = 1.1e-52  # m^-2 (note: Î› the cosmological constant)
     C_LIGHT    = 3e8
     T_HUBBLE   = 4.33e17
     HBAR       = 1.055e-34
@@ -12525,7 +12552,7 @@ class gCompressedAllForcesR26ComponentCalculator:
         M_DM  = self.M_SYS * self.F_DM
         g_term6 = (M_vis + M_DM) * (self.DELTA_RHO + 3.0 * self.G_GRAV * self.M_SYS / self.R ** 3)
         g_compressed = g_term1 + g_term3 + g_term4 + g_term5 + g_term6
-        # R(t): 26 states × 4 sub-terms
+        # R(t): 26 states Ã— 4 sub-terms
         R_total = 0.0
         for i in range(1, 27):
             exp_factor = math.exp(-self.SSQ * i / 26.0)
@@ -12550,7 +12577,7 @@ class gCompressedAllForcesR26ComponentCalculator:
 
 
 class QWave81PhaseSeparationValidationCalculator:
-    """Session 95 — PAPER_337: Q_wave_81 updated ensemble statistics + phase separation cosine validation.
+    """Session 95 â€” PAPER_337: Q_wave_81 updated ensemble statistics + phase separation cosine validation.
     Q_wave_81: mean=3.97e4 J/m^3, std=2.15e3 J/m^3, N=81 (EXTENDS PAPER_327 Q_wave_47).
     phase_model(phases, sep) = cos(pi*phases/sep)
     Fitted sep=0.3 (Vela Chandra/Fermi 2025); sep=0.3=[SSq]*pi/6=0.57*pi/6.
@@ -12588,7 +12615,7 @@ class QWave81PhaseSeparationValidationCalculator:
 
 
 class NineSystemSepAstroParameterCatalogueCalculator:
-    """Session 95 — PAPER_338: Nine-system September 2025 astrophysical UQFF parameter catalogue.
+    """Session 95 â€” PAPER_338: Nine-system September 2025 astrophysical UQFF parameter catalogue.
     Systems: Vela, NGC 1365, ESO 137-001, Abell 2256, Crab, IC 2163, Jupiter, Lagoon M8, NGC 2207.
     Compact class (CC): F_U_Bi_i=-2.09e212 N, g_Comp=3.95e-41 N, R(t)=-1.12e-42 N.
     Galactic class (GC): F_U_Bi_i=-8.32e217 N, g_Comp=4.12e-41 N, R(t)=-2.29e-41 N.
@@ -12634,25 +12661,25 @@ class NineSystemSepAstroParameterCatalogueCalculator:
 
 
 # ---------------------------------------------------------------------------
-# Session 96 — PAPER_339–354 (gok_share_31b5c807a4 supplemental gaps)
-# 16 new physics territories: Um rotor τ_rot, EDM SO(10) darkonia, calibration
-# 3-var, magnetar DPM-THz 7-ch ∑₂₆, SGR SC_m+LX, SgrA* GW prec², Tapestry
+# Session 96 â€” PAPER_339â€“354 (gok_share_31b5c807a4 supplemental gaps)
+# 16 new physics territories: Um rotor Ï„_rot, EDM SO(10) darkonia, calibration
+# 3-var, magnetar DPM-THz 7-ch âˆ‘â‚‚â‚†, SGR SC_m+LX, SgrA* GW precÂ², Tapestry
 # freq-only SFR, M87 BZ-jet FUBi, Cen A V-shape, Stephan's Quintet shock,
 # SPT-CL J2215 cool-core, El Gordo merger, ASASSN-14li TDE, R Aquarii
 # symbiotic, decay rate double-exp, D_universe 5th-factor curvature.
 # ---------------------------------------------------------------------------
 
 class UmRotorStringTorqueIntegrationCalculator:
-    """Session 96 — PAPER_339: Um rotor string-rotation torque integration.
-    τ_rot = r × (−∇V) ~ 10^{−34} N·m; extends Um with H₂O-H₂ thermal rotor coupling.
-    Um += ∑_Ω [μ_j/r_j*(1−exp(−γt)cos(πt_n))*ϕ^j]*P_SCm*τ_rot.
-    CS decoupling J≤6; Δj=2 σ~10.50 Å² at 300 cm⁻¹ (Phillips 1995).
-    Q_wave_48 system count extended to H₂O-H₂ thermal regime.
-    FIRST Um rotor torque τ_rot extension in UQFF Um framework."""
+    """Session 96 â€” PAPER_339: Um rotor string-rotation torque integration.
+    Ï„_rot = r Ã— (âˆ’âˆ‡V) ~ 10^{âˆ’34} NÂ·m; extends Um with Hâ‚‚O-Hâ‚‚ thermal rotor coupling.
+    Um += âˆ‘_Î© [Î¼_j/r_j*(1âˆ’exp(âˆ’Î³t)cos(Ï€t_n))*Ï•^j]*P_SCm*Ï„_rot.
+    CS decoupling Jâ‰¤6; Î”j=2 Ïƒ~10.50 Ã…Â² at 300 cmâ»Â¹ (Phillips 1995).
+    Q_wave_48 system count extended to Hâ‚‚O-Hâ‚‚ thermal regime.
+    FIRST Um rotor torque Ï„_rot extension in UQFF Um framework."""
     GAMMA_UM = 5e-5
     PHI      = 0.8
     P_SCM    = 1.0
-    SIGMA_CS = 10.50   # Å²
+    SIGMA_CS = 10.50   # Ã…Â²
     J_MAX    = 6
 
     def compute(self, dataset=None):
@@ -12701,10 +12728,10 @@ class UmRotorStringTorqueIntegrationCalculator:
 
 
 class EDMSO10BSMRefinedFuCalculator:
-    """Session 96 — PAPER_340: EDM SO(10) BSM refined F_u coupling.
+    """Session 96 â€” PAPER_340: EDM SO(10) BSM refined F_u coupling.
     F_u += d_e*e/(2mc)*exp(-[SSq]n/26); d_e~10^{-25} e*cm from SO(10).
     Darkonia: stable at P_SCm=1 (new phase boundary).
-    V_cb = (40.5+/-1.3)e-3 → k_eta*G_F^2*s/pi coupling.
+    V_cb = (40.5+/-1.3)e-3 â†’ k_eta*G_F^2*s/pi coupling.
     tau_dev=5e-8 from g-2 fit at r=0.3 fm (<5% vs Super Tau-Charm).
     FIRST SO(10) EDM darkonia phase boundary + V_cb coupling in UQFF."""
     D_E      = 1.6e-44   # d_e ~ 1e-25 e*cm in SI (C*m)
@@ -12760,7 +12787,7 @@ class EDMSO10BSMRefinedFuCalculator:
 
 
 class UQFFSupplementCalibration3VarCalculator:
-    """Session 96 — PAPER_341: UQFF supplement 3-variable calibration meta-framework.
+    """Session 96 â€” PAPER_341: UQFF supplement 3-variable calibration meta-framework.
     6 vars -> 3 core residuals: kappa~0.0005 day^-1, H_SCm~0.99, U_UA~0.0001.
     kappa: E_react/Ug4 decay -> MCMC tau~2000-day quasar variability.
     H_SCm: Ug2 heliosphere ~0.99 -> Parker Solar Probe 2025 perihelion delta.
@@ -12821,7 +12848,7 @@ class UQFFSupplementCalibration3VarCalculator:
 
 
 class MagnetarDPMTHzFrequencyFormCalculator:
-    """Session 96 — PAPER_342: Magnetar DPM-THz 7-component Sum_26 frequency form.
+    """Session 96 â€” PAPER_342: Magnetar DPM-THz 7-component Sum_26 frequency form.
     g = Sum_{i=1}^{26}[a_DPM+a_THz+a_super+a_fluid+a_aether+a_quantum+a_react]
       * f_TRZ * rho_UA/rho_SCm * exp(-[SSq]*n/26).
     f_DPM=1.863e-84 m/s^2, f_THz=1e12 Hz, f_super=1.411e16 Hz.
@@ -12888,7 +12915,7 @@ class MagnetarDPMTHzFrequencyFormCalculator:
 
 
 class SGR17452900SCmLxFreqFormCalculator:
-    """Session 96 — PAPER_343: SGR 1745-2900 SC_m mass-modified L_X frequency form.
+    """Session 96 â€” PAPER_343: SGR 1745-2900 SC_m mass-modified L_X frequency form.
     SC_m = M*(1 - B/B_crit)  [FIRST mass-modifier in SGR class].
     L_X = integral(rho_vac*f_res dV); f_res = E_bind/h*(1+S_shell) ~1e12 Hz.
     Spin-down doubled June 2013 -> f_react adjusted *2.
@@ -12953,7 +12980,7 @@ class SGR17452900SCmLxFreqFormCalculator:
 
 
 class SgrAStarGWPrecessionSquaredCalculator:
-    """Session 96 — PAPER_344: Sgr A* GW precession-squared term + JWST 2025 flare.
+    """Session 96 â€” PAPER_344: Sgr A* GW precession-squared term + JWST 2025 flare.
     New term: (G*M(t)^2)/(c^4*r)*(dOmega/dt)^2  [M^2 -- DISTINCT from PAPER_235].
     sin(30)*DM perturbation: pert2 = 3*G*M(t)/r^3*sin(theta_prec).
     JWST 2025: flares every ~30 min -> f_flare=5.56e-4 Hz.
@@ -13017,7 +13044,7 @@ class SgrAStarGWPrecessionSquaredCalculator:
 
 
 class TapestryStarbirthDPMTHzFreqCalculator:
-    """Session 96 — PAPER_345: Tapestry star birth DPM-THz frequency-only form.
+    """Session 96 â€” PAPER_345: Tapestry star birth DPM-THz frequency-only form.
     Frequency-only: g = Sum_26 a_i*f_TRZ*(rho_UA/rho_SCm) (SM = illusion).
     SFR = rho_gas*v_wind*f_res  [FIRST SFR frequency-form formula].
     R_bubble = v_wind*t*f_res; bubble asymmetry = v_wind*t_asym*f_res.
@@ -13084,7 +13111,7 @@ class TapestryStarbirthDPMTHzFreqCalculator:
 
 
 class M87JetBZModelFUBiCalculator:
-    """Session 96 — PAPER_346: M87 Blandford-Znajek jet F_U_Bi_i force.
+    """Session 96 â€” PAPER_346: M87 Blandford-Znajek jet F_U_Bi_i force.
     F_U_Bi_i ~ -8.32e217 N; x_2=16.8 Mly, M_BH=6.5e9 M_sun.
     BZ-jet: f_res~1e16 Hz from B=1-30 G (Blandford-Znajek model).
     JWST IR Jul 2025: L_X~1e40 W; gamma-ray variability days -> omega_act=2pi/day.
@@ -13149,7 +13176,7 @@ class M87JetBZModelFUBiCalculator:
 
 
 class CentaurusAFUBiJetVshapeCalculator:
-    """Session 96 — PAPER_347: Centaurus A F_U_Bi_i V-shape jet 12.5-yr periodicity.
+    """Session 96 â€” PAPER_347: Centaurus A F_U_Bi_i V-shape jet 12.5-yr periodicity.
     F_U_Bi_i ~ -8.32e217 N; x_2=1.05e23 m; M_BH=5.5e7 M_sun.
     Chandra Dec 2024: V-shape jet stumble; cosmic ray factory Feb 2025.
     k_act*cos(omega_act*t): 12.5-yr periodic -> omega_act=2pi/(12.5 yr).
@@ -13214,7 +13241,7 @@ class CentaurusAFUBiJetVshapeCalculator:
 
 
 class StephansQuintetShockRidgeFUBiCalculator:
-    """Session 96 — PAPER_348: Stephan's Quintet HCG 92 shock ridge F_U_Bi_i.
+    """Session 96 â€” PAPER_348: Stephan's Quintet HCG 92 shock ridge F_U_Bi_i.
     F_U_Bi_i ~ -8.32e217 N; x_2=290 Mly; M=4e11 M_sun; dv=1500 km/s shock.
     JWST MIRI/NIRSpec mosaics Aug 2025; X-ray ridge FLENR active.
     Full 5-eq set: FUBi + compressed + resonant + buoyancy + U_i.
@@ -13275,7 +13302,7 @@ class StephansQuintetShockRidgeFUBiCalculator:
 
 
 class SPTClJ2215CoolCoreStarburstCalculator:
-    """Session 96 — PAPER_349: SPT-CL J2215 cool-core starburst cluster FUBi.
+    """Session 96 â€” PAPER_349: SPT-CL J2215 cool-core starburst cluster FUBi.
     HIGHEST F_U_Bi_i: ~ -1.40e218 N; x_2=8.4 Gly, z=1.16.
     M=7.32e14 M_sun; SFR~700 M_sun/yr; relaxed; r~5 Mpc.
     R(t)=-2.29e-41 N; FU_Bi=1.02e-32 N; Ui~1.45e-47+i*8.20e-51 J/m^3.
@@ -13341,7 +13368,7 @@ class SPTClJ2215CoolCoreStarburstCalculator:
 
 
 class ElGordoACTCLJ0102MergerFUBiCalculator:
-    """Session 96 — PAPER_350: El Gordo ACT-CL J0102-4915 merger F_U_Bi_i.
+    """Session 96 â€” PAPER_350: El Gordo ACT-CL J0102-4915 merger F_U_Bi_i.
     F_U_Bi_i ~ -1.40e218 N; x_2=7.4 Gly, z=0.87.
     M=3e15 M_sun (most massive cluster at z>0.5); high merger dv~2500 km/s.
     U_i~1.45e-47+i*8.20e-51 J/m^3 (galactic class).
@@ -13401,7 +13428,7 @@ class ElGordoACTCLJ0102MergerFUBiCalculator:
 
 
 class ASASSN14liTDEOutflowFUBiCalculator:
-    """Session 96 — PAPER_351: ASASSN-14li TDE outflow F_U_Bi_i full Sep-12 5-eq set.
+    """Session 96 â€” PAPER_351: ASASSN-14li TDE outflow F_U_Bi_i full Sep-12 5-eq set.
     F_U_Bi_i ~ -8.32e211 N; x_2=90 Mly; M_BH=1e6 M_sun.
     Chandra episodic outflows Feb 2025; MUSE host galaxy Jul 2025.
     Hours-months variability -> omega_act broad spectrum; ultrafast outflow.
@@ -13466,7 +13493,7 @@ class ASASSN14liTDEOutflowFUBiCalculator:
 
 
 class RAquariiSymbioticBinaryFUBiCalculator:
-    """Session 96 — PAPER_352: R Aquarii symbiotic binary F_U_Bi_i full Sep-12 5-eq set.
+    """Session 96 â€” PAPER_352: R Aquarii symbiotic binary F_U_Bi_i full Sep-12 5-eq set.
     F_U_Bi_i ~ -2.09e212 N; x_2=0.7 kly; M=1 M_sun total; P_orb=44 yr.
     HST Mar 2025: exploding jets; UV eclipse 2025; proper motion confirmed.
     R(t)=-1.12e-42 N; FU_Bi=9.79e-33 N; Ui~1.38e-47+i*7.80e-51 J/m^3.
@@ -13531,7 +13558,7 @@ class RAquariiSymbioticBinaryFUBiCalculator:
 
 
 class DecayRateVacuumRhoRatioDoubleExpCalculator:
-    """Session 96 — PAPER_353: Decay rate vacuum rho-ratio double-exponential formula.
+    """Session 96 â€” PAPER_353: Decay rate vacuum rho-ratio double-exponential formula.
     Rate proportional to (rho_SCm/rho_UA)*exp(-[SSq]*n/26*exp(-(pi-t))).
     DISTINCT from PAPER_329 E_neutrino (outer base is rho_SCm/rho_UA here).
     rho_SCm=7.09e-37, rho_UA=7.09e-36, ratio=0.1; [SSq]=0.507, n=26.
@@ -13591,7 +13618,7 @@ class DecayRateVacuumRhoRatioDoubleExpCalculator:
 
 
 class DUniverseSpatialCurvatureFifthFactorCalculator:
-    """Session 96 — PAPER_354: D_universe spatial curvature 5th-factor completion.
+    """Session 96 â€” PAPER_354: D_universe spatial curvature 5th-factor completion.
     D_uni = 2*D_p*(1+H*t0)*(1+Lambda*c^2/3H0^2)*(1+hbar*H0/GM)*(1+k*r_c^2).
     5th factor (1+k*r_c^2): spatial curvature correction [NOT in PAPER_296].
     k = spatial curvature parameter; r_c = curvature radius.
@@ -13726,7 +13753,7 @@ __all__ = [
     "VacuumEnergyComponentRatioCalculator",
     "UQFFIPCChainStatusCalculator",
 
-    # Session 47 — Solar System + Wormhole + Hybrid MUGE + GW + HE Datasets (7f9068)
+    # Session 47 â€” Solar System + Wormhole + Hybrid MUGE + GW + HE Datasets (7f9068)
     "SolarSystemFUValidatorCalculator",
     "HybridMUGEBlendingCalculator",
     "WormholeMUGE13thTermCalculator",
@@ -13735,7 +13762,7 @@ __all__ = [
     "GW231123MassGapUQFFCalculator",
     "HighEnergyDatasetValidationCalculator",
 
-    # Session 48 — CoAnQi UQFF+3D+Plugin Integration (381a8fe7)
+    # Session 48 â€” CoAnQi UQFF+3D+Plugin Integration (381a8fe7)
     "CoAnQiCelestialBodyFUCalculator",
     "CoAnQiModularCompressedMUGECalculator",
     "CoAnQiModularResonanceMUGECalculator",
@@ -13744,7 +13771,7 @@ __all__ = [
     "CoAnQiArchitectureCalculator",
     "DiPseudoMonopoleDPMTheoryCalculator",
 
-    # Session 50 — PAPER_196–215 (grok_share_7514fe)
+    # Session 50 â€” PAPER_196â€“215 (grok_share_7514fe)
     "TriadicMasterEquationCalculator",
     "FUBiiExtendedIntegralCalculator",
     "FUBiiTaxonomyCompactObjectCalculator",
@@ -13765,7 +13792,7 @@ __all__ = [
     "HResDUniverseMasterCalculator",
     "MHDClustersJetsAccretionCalculator",
     "CosmicRaysWHIMFermiCalculator",
-    # Session 52 — grok_share_7514fe unique physics extraction
+    # Session 52 â€” grok_share_7514fe unique physics extraction
     "UQFFCompressedFriedmannCalculator",
     "UQFFMultiFactorEvolutionMergerCalculator",
     "UQFFVelocityStarFormationCollisionCalculator",
@@ -13776,29 +13803,29 @@ __all__ = [
     "DPMHarmonicBuoyancySeriesCalculator",
     "DipoleVortexPrimeEncodingCalculator",
     "UQFFRelativisticHierarchyDecayIntegralCalculator",
-    # Session 53 — grok_share_7514fe second-pass unique physics
+    # Session 53 â€” grok_share_7514fe second-pass unique physics
     "SgrAStarSpinDragUQFFCalculator",
     "UQFFLensingModulationRingsCalculator",
     "HydrogenAtomUQFFGravityCalculator",
     "FUBiiFullDPMPolynomialIntegralCalculator",
     "UQFFNeutrinoDecayRateCouplingCalculator",
     "MagnetarSGR1745DynamicModulationCalculator",
-    # Session 54 — grok_share_7514fe third-pass unique physics
+    # Session 54 â€” grok_share_7514fe third-pass unique physics
     "UQFFBuoyancyMasterIntegralCalculator",
     "UQFFCGMSSqMetallicityCalculator",
-    # Session 55 — grok_share_7514fe fourth-pass unique physics
+    # Session 55 â€” grok_share_7514fe fourth-pass unique physics
     "NGC3603StellarPressureModulationCalculator",
     "M16EagleNebulaRadiationSFRCalculator",
     "CrabPWNUQFFCalculator",
     "UQFFSombreroDustIntegratedCalculator",
-    # Session 56 — grok_share_7514fe fifth-pass unique physics
+    # Session 56 â€” grok_share_7514fe fifth-pass unique physics
     "BubbleNebulaExpansionEnhancementCalculator",
     "HorseheadNebulaPradBlackbodyCalculator",
     "NGC1275PerseusAGNFilamentCalculator",
     "SaturnDualGravityRingTensionCalculator",
-    # Session 57 — grok_share_7514fe sixth-pass (final): early-universe (v/c)^2·L_UV
+    # Session 57 â€” grok_share_7514fe sixth-pass (final): early-universe (v/c)^2Â·L_UV
     "UQFFEarlyUniverseRelativisticUVCalculator",
-    # Session 58 — PAPER_226–235 (grok_share_8d951e12.txt)
+    # Session 58 â€” PAPER_226â€“235 (grok_share_8d951e12.txt)
     "MagnetarSGR0501MUGEFullCalculator",
     "StarbirthTapestryLMCUQFFCalculator",
     "Westerlund2MUGEStellarWindCalculator",
@@ -13809,122 +13836,122 @@ __all__ = [
     "SGR1745BHProximityMagEnergyCalculator",
     "SgrAStarAccretionPrecessionCalculator",
     "AntennaeGalaxiesMergerInteractionCalculator",
-    # Session 59 — PAPER_236–241 (grok_share_8d951e12.txt second-pass: Doc9 + Source10)
+    # Session 59 â€” PAPER_236â€“241 (grok_share_8d951e12.txt second-pass: Doc9 + Source10)
     "UQFFLearningAdvancementCalculator",
     "UQFFSource10CatalogueCalculator",
     "UQFFVacuumRepulsionCalculator",
     "UQFFTHzConduitShockCalculator",
     "UQFFSpookyActionDPMCalculator",
-    # Session 60 — PAPER_242–243 (grok_share_8d951e12.txt third-pass)
+    # Session 60 â€” PAPER_242â€“243 (grok_share_8d951e12.txt third-pass)
     "RingsOfRelativityEinsteinLensingMUGECalculator",
     "NGC3603FullMUGECavityPressureCalculator",
-    # Session 62 — PAPER_244–249 (grok_share_8d951e12.txt fourth-pass — universal sub-terms + GPU)
+    # Session 62 â€” PAPER_244â€“249 (grok_share_8d951e12.txt fourth-pass â€” universal sub-terms + GPU)
     "MUGEQuantumUncertaintyTermCalculator",
     "MUGEFluidSelfGravityTermCalculator",
     "MUGEDualModeOscillatoryGravityCalculator",
     "MUGEMergerInteractionModulationCalculator",
     "UQFFSource10BatchProfiledCalculator",
     "UQFFCUDAGPUOptimizationPatternCalculator",
-    # Session 72 — PAPER_250–254 (infrared datasets: 5 Chandra systems F_U_Bi_i)
+    # Session 72 â€” PAPER_250â€“254 (infrared datasets: 5 Chandra systems F_U_Bi_i)
     "SN1006TypeIaSNRFUBiCalculator",
     "EtaCarinaeHomuculusFUBiCalculator",
     "ChandraArchiveMultiSystemFUBiCalculator",
     "SgrACenterNegativeBuoyancyCalculator",
     "KeplerSNR1604FUBiCalculator",
-    # Session 72d — PAPER_255–258 (ALMA Cycle 12 Proposal: NS density regime + multi-messenger)
+    # Session 72d â€” PAPER_255â€“258 (ALMA Cycle 12 Proposal: NS density regime + multi-messenger)
     "PSRJ0030NeutronStarFUBiCalculator",
     "CrabNebulaM1FUBiCalculator",
     "CassiopeiaASNRFUBiCalculator",
     "MultiMessengerUQFFValidator",
-    # Session 72g — PAPER_264–266 (HUDF Clone Fragment Unique Physics: TRZ, cascade, Meissner)
+    # Session 72g â€” PAPER_264â€“266 (HUDF Clone Fragment Unique Physics: TRZ, cascade, Meissner)
     "HUDFTRZCPTPhaseCalculator",
     "HUDFInteractionCascadeBuoyancyCalculator",
     "HUDFGravitationalMeissnerCalculator",
-    # Session 73 — PAPER_267–269 (NGC 1792 Module 19 UQFF 2.0 Unique Physics)
+    # Session 73 â€” PAPER_267â€“269 (NGC 1792 Module 19 UQFF 2.0 Unique Physics)
     "NGC1792StarburstBuoyancyCoherenceCalculator",
     "NGC1792HubbleSlowModeOscillatorCalculator",
     "NGC1792RamPressureDegeneracyCalculator",
-    # Session 74 — PAPER_270–272 (UQFF Source10 Catalogue Unique Physics)
+    # Session 74 â€” PAPER_270â€“272 (UQFF Source10 Catalogue Unique Physics)
     "Source10DPMResonanceAmplificationCalculator",
     "Source10THzDoubleGateConduitCalculator",
     "Source10GravitationalVacuumDragCalculator",
-    # Session 75 — PAPER_273–275 (Andromeda UQFF 2.0 Unique Physics)
+    # Session 75 â€” PAPER_273â€“275 (Andromeda UQFF 2.0 Unique Physics)
     "AndromedaBlueshiftApproachAmplifierCalculator",
     "AndromedaHI21cmUQFFResonanceCalculator",
     "AndromedaDMShellPartitionCalculator",
-    # Session 76 — PAPER_276 (Andromeda Friedmann H(z) UQFF Expansion Coupling)
+    # Session 76 â€” PAPER_276 (Andromeda Friedmann H(z) UQFF Expansion Coupling)
     "AndromedaFriedmannHzExpansionCalculator",
-    # Session 77 — PAPER_277–279 (Sombrero UQFF 2.0 Unique Physics)
+    # Session 77 â€” PAPER_277â€“279 (Sombrero UQFF 2.0 Unique Physics)
     "SombreroRecessionDampingKappaCalculator",
     "SombreroRingResonatorDustRingCalculator",
     "SombreroSMBHDominanceRatioCalculator",
-    # Session 78 — PAPER_280–282 (Saturn UQFF 2.0 Unique Physics — first planetary-scale module)
+    # Session 78 â€” PAPER_280â€“282 (Saturn UQFF 2.0 Unique Physics â€” first planetary-scale module)
     "SaturnSolarTidalPerturbationCalculator",
     "SaturnRingTidalGravityResonanceCalculator",
     "SaturnAtmosphericWindKineticPressureCalculator",
-    # Session 79 — PAPER_283 (Saturn UQFF 2.0 Solar Tidal Hubble Expansion Coupling)
+    # Session 79 â€” PAPER_283 (Saturn UQFF 2.0 Solar Tidal Hubble Expansion Coupling)
     "SaturnSolarTidalHubbleExpansionCalculator",
-    # Session 80 — PAPER_284–286 (M16 Eagle Nebula UQFF 2.0 — first nebular z>0 module)
+    # Session 80 â€” PAPER_284â€“286 (M16 Eagle Nebula UQFF 2.0 â€” first nebular z>0 module)
     "M16DualMassCoActionProductCalculator",
     "M16ErosionSaturationHalfTimeCalculator",
     "M16NebularFriedmannRedshiftCalculator",
-    # Session 81 — PAPER_287–289 (ResonanceSC UQFF 2.0 — 23rd C++ module, FIRST universal RSC module)
+    # Session 81 â€” PAPER_287â€“289 (ResonanceSC UQFF 2.0 â€” 23rd C++ module, FIRST universal RSC module)
     "ResonanceSCDPMTHzCascadeCalculator",
     "ResonanceSCCosmicAgeStandingWaveCalculator",
     "ResonanceSCCooperDPMFreqSynthesisCalculator",
-    # Session 82 — PAPER_290–292 (Crab UQFF 2.0 — 24th C++ module, FIRST UQFF PWN module)
+    # Session 82 â€” PAPER_290â€“292 (Crab UQFF 2.0 â€” 24th C++ module, FIRST UQFF PWN module)
     "CrabSNRDPMDilutionCalculator",
     "CrabFilamentSpectralTriadCalculator",
     "CrabPulsarOscResonanceWindowCalculator",
-    # Session 83 — PAPER_293–295 (CR24 UQFF 2.0 — 25th C++ module, FIRST UQFF dual-channel module)
+    # Session 83 â€” PAPER_293â€“295 (CR24 UQFF 2.0 â€” 25th C++ module, FIRST UQFF dual-channel module)
     "CR24DualChannelArchitectureCalculator",
     "CR24VacuumDifferentialHarmonicCalculator",
     "CR24CompressedCooperSuperSeedingCalculator",
-    # Session 84 — PAPER_296–298 (Universe Diameter UQFF 2.0 — 26th C++ module, FIRST Universe-as-system + FIRST eta_exp>1 + FIRST epsilon_GR>1)
+    # Session 84 â€” PAPER_296â€“298 (Universe Diameter UQFF 2.0 â€” 26th C++ module, FIRST Universe-as-system + FIRST eta_exp>1 + FIRST epsilon_GR>1)
     "UniverseDiameterLambdaVacuumAccelerationCalculator",
     "UniverseDiameterSuperluminalHubbleRatioCalculator",
     "UniverseDiameterGRCurvatureDominanceCalculator",
-    # Session 85 — PAPER_299–301 (Hydrogen Atom UQFF 2.0 — 27th C++ module, FIRST atomic-scale)
+    # Session 85 â€” PAPER_299â€“301 (Hydrogen Atom UQFF 2.0 â€” 27th C++ module, FIRST atomic-scale)
     "HydrogenAtomLorentzEMDominanceCalculator",
     "HydrogenAtomLymanCosmosBridgeCalculator",
     "HydrogenAtomProtonGRSpectralMinimumCalculator",
-    # Session 86 — PAPER_302–304 (Hydrogen PToE Resonance UQFF 2.0 — 28th C++ module, FIRST PToE resonance module)
+    # Session 86 â€” PAPER_302â€“304 (Hydrogen PToE Resonance UQFF 2.0 â€” 28th C++ module, FIRST PToE resonance module)
     "HydrogenPToEUg4iResonanceBridgeCalculator",
     "HydrogenPToETHzQuantumDegeneracyCalculator",
     "HydrogenPToEAetherGravitationalDominanceCalculator",
-    # Session 87 — PAPER_305–307 (Lagoon Nebula UQFF 2.0 — 29th C++ module, FIRST H II Region)
+    # Session 87 â€” PAPER_305â€“307 (Lagoon Nebula UQFF 2.0 â€” 29th C++ module, FIRST H II Region)
     "LagoonNebulaSFRMassRunawayCalculator",
     "LagoonNebulaHerschelRadiationErosionCalculator",
     "LagoonNebulaDualRadiationEMBarrierCalculator",
-    # Session 88 — PAPER_308–310 (Spiral+SN Ia UQFF 2.0 — 30th C++ module, FIRST Spiral+SN Ia)
+    # Session 88 â€” PAPER_308â€“310 (Spiral+SN Ia UQFF 2.0 â€” 30th C++ module, FIRST Spiral+SN Ia)
     "SpiralArmTorqueGravitationalAmplifierCalculator",
     "SNIaHubbleTensionImprintCalculator",
     "SpiralDMVisiblePartitionRotationCalculator",
-    # Session 89 — PAPER_311–313 (NGC 6302 UQFF 2.0 — 31st C++ module, FIRST Bipolar PN)
+    # Session 89 â€” PAPER_311â€“313 (NGC 6302 UQFF 2.0 â€” 31st C++ module, FIRST Bipolar PN)
     "BiPolarPNWindShockGravitationalDominanceCalculator",
     "BiPolarPNUVRadiationPressureCalculator",
     "EquatorialTorusMagneticConfinementCalculator",
-    # Session 90 — PAPER_314–316 (NGC6302 Resonance UQFF 2.0 — 32nd C++ module, FIRST Resonance-Channel PN companion)
+    # Session 90 â€” PAPER_314â€“316 (NGC6302 Resonance UQFF 2.0 â€” 32nd C++ module, FIRST Resonance-Channel PN companion)
     "BipolarPNLobeResonanceDPMMacroAntennaCalculator",
     "ResonanceVacDiffTHzCrossoverRadiusCalculator",
     "CooperDPMf1THz_AscConfirmationCalculator",
-    # Session 91 — PAPER_317–319 (Orion M42 UQFF 2.0 — 33rd C++ module, FIRST Trapezium OB HII region)
+    # Session 91 â€” PAPER_317â€“319 (Orion M42 UQFF 2.0 â€” 33rd C++ module, FIRST Trapezium OB HII region)
     "OrionTrapeziumWindRamPressureDominanceCalculator",
     "OrionTrapeziumOBUVRadiationChampagneFlowCalculator",
     "OrionCompactHIISFRBindingCrossoverCalculator",
-    # Session 92 — PAPER_320-322 (CR34 UQFF 2.0 — 34th C++ module, 2nd Dual-Channel 7-system)
+    # Session 92 â€” PAPER_320-322 (CR34 UQFF 2.0 â€” 34th C++ module, 2nd Dual-Channel 7-system)
     "CR34DPMForceDensitySpectralAtlasCalculator",
     "CR34CrossChannelDominanceCrossoverCalculator",
     "CR34HiIRegionTHzGeometricDifferentialCalculator",
-    # Session 93 — PAPER_323-325 (CR34b UQFF 2.0 — 35th C++ module, CR34 variant, 11-term 6-system)
+    # Session 93 â€” PAPER_323-325 (CR34b UQFF 2.0 â€” 35th C++ module, CR34 variant, 11-term 6-system)
     "CR34bVacuumAetherFrequencyModeCalculator",
     "CR34bSaturnFirstPlanetaryDualChannelCalculator",
     "CR34bRhoISMFluidDensityCouplingCalculator",
-    # Session 94 — PAPER_326-328 (gok_share_31b5c807a4 — Triadic/Q_wave47/alpha-BEC)
+    # Session 94 â€” PAPER_326-328 (gok_share_31b5c807a4 â€” Triadic/Q_wave47/alpha-BEC)
     "TriadicMasterFUg1R26StateRamanujanCalculator",
     "QWave47NonGaussianDistributionCalculator",
     "AlphaBECNuclearLENREnhancementCalculator",
-    # Session 95 — PAPER_329-338 (gok_share_31b5c807a4 deep re-analysis: Um/H_res/FreqBasis/12Term/BSM/Ui/kk/gCompressed/Qwave81/9Sys)
+    # Session 95 â€” PAPER_329-338 (gok_share_31b5c807a4 deep re-analysis: Um/H_res/FreqBasis/12Term/BSM/Ui/kk/gCompressed/Qwave81/9Sys)
     "UmBilinearHeavisideNeutrinoVacuumCascadeCalculator",
     "HResNuclear6EquationDipolekNucCalculator",
     "MUGE26StateFrequencyBasisProofIdentitiesCalculator",
@@ -13935,7 +13962,7 @@ __all__ = [
     "gCompressedAllForcesR26ComponentCalculator",
     "QWave81PhaseSeparationValidationCalculator",
     "NineSystemSepAstroParameterCatalogueCalculator",
-    # Session 96 — PAPER_339–354 (gok_share_31b5c807a4 supplemental gaps: rotor/EDM/calib/DPM-THz/SGR-SCm/SgrA-prec2/Tapestry/M87/CenA/SQ/SPTCl/ElGordo/14li/RAqr/decay/D5)
+    # Session 96 â€” PAPER_339â€“354 (gok_share_31b5c807a4 supplemental gaps: rotor/EDM/calib/DPM-THz/SGR-SCm/SgrA-prec2/Tapestry/M87/CenA/SQ/SPTCl/ElGordo/14li/RAqr/decay/D5)
     "UmRotorStringTorqueIntegrationCalculator",
     "EDMSO10BSMRefinedFuCalculator",
     "UQFFSupplementCalibration3VarCalculator",

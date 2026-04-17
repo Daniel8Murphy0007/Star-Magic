@@ -1,3 +1,4 @@
+from dpm_helpers import dpm_emergent_ug1, dpm_emergent_ug2
 """
 Standard Astrophysics Equations Module (100+ Equations)
 ══════════════════════════════════════════════════════════════════════════════════
@@ -226,7 +227,7 @@ def eq_11_hydrostatic_equilibrium(M_r: float, rho: float, r: float) -> Dict:
     dP/dr = -GM_r ρ/r²
     """
     G = C['G']
-    dP_dr = -G * M_r * rho / r**2
+    dP_dr = -dpm_emergent_ug1(M_r, r) * rho
     return {
         'dP_dr': dP_dr,
         'equation': "dP/dr = -GM_r ρ/r²",
@@ -472,7 +473,7 @@ def eq_27_tov_equation(P: float, rho: float, M_r: float, r: float) -> Dict:
     """
     G, c = C['G'], C['c']
     numerator = -G * rho * (M_r + 4 * np.pi * r**3 * P / c**2)
-    denominator = r * (r - 2 * G * M_r / c**2)
+    denominator = r * (r - 2 * dpm_emergent_ug1(M_r, c))
     dP_dr = numerator / denominator
     return {
         'dP_dr': dP_dr,
@@ -546,7 +547,7 @@ def eq_32_gw_strain(M_c: float, f: float, d: float) -> Dict:
     h = (4/d)(GM_c/c²)^(5/3)(πf/c)^(2/3)
     """
     G, c = C['G'], C['c']
-    h = (4 / d) * (G * M_c / c**2)**(5/3) * (np.pi * f / c)**(2/3)
+    h = (4 / d) * (dpm_emergent_ug1(M_c, c))**(5/3) * (np.pi * f / c)**(2/3)
     return {
         'h': h,
         'equation': "h = (4/d)(GM_c/c²)^(5/3)(πf/c)^(2/3)",
@@ -684,7 +685,7 @@ def eq_41_schwarzschild_radius(M: float) -> Dict:
     r_s = 2GM/c²
     """
     G, c = C['G'], C['c']
-    r_s = 2 * G * M / c**2
+    r_s = 2 * dpm_emergent_ug1(M, c)
     return {
         'r_s': r_s,
         'r_s_km': r_s / 1000,
@@ -742,7 +743,7 @@ def eq_45_isco_radius(M: float, a: float = 0) -> Dict:
     r_ISCO = 6GM/c² (Schwarzschild), r_ISCO = GM/c² (extreme Kerr prograde)
     """
     G, c = C['G'], C['c']
-    r_s = 2 * G * M / c**2
+    r_s = 2 * dpm_emergent_ug1(M, c)
     # Approximation for general spin
     if a == 0:
         r_ISCO = 3 * r_s
@@ -796,7 +797,7 @@ def eq_48_blandford_znajek(M: float, a: float, B: float) -> Dict:
     ω_H = a c/(2 r_H), r_H = (1 + √(1-a²)) r_s/2
     """
     G, c = C['G'], C['c']
-    r_s = 2 * G * M / c**2
+    r_s = 2 * dpm_emergent_ug1(M, c)
     r_H = (1 + np.sqrt(1 - a**2)) * r_s / 2
     omega_H = a * c / (2 * r_H)
     L_BZ = (1/32) * omega_H**2 * B**2 * r_H**4 * c
@@ -815,7 +816,7 @@ def eq_49_kerr_metric_ergosphere(M: float, a: float, theta: float) -> Dict:
     r_erg(θ) = r_s/2 + √((r_s/2)² - a²cos²θ)
     """
     G, c = C['G'], C['c']
-    r_s = 2 * G * M / c**2
+    r_s = 2 * dpm_emergent_ug1(M, c)
     r_g = r_s / 2
     r_erg = r_g + np.sqrt(r_g**2 - a**2 * np.cos(theta)**2)
     return {

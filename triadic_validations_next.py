@@ -16,6 +16,8 @@ Links: PAPER_961-963 (triadic branches), PAPER_966 (unified solver),
 """
 
 import math
+from dpm_helpers import dpm_emergent_ug1, dpm_emergent_ug2
+
 from typing import Dict, List
 
 # ── §0  Constants ──────────────────────────────────────────────────────────
@@ -36,7 +38,7 @@ LAMBDA_QCD = 0.217e9
 
 def g_compressed(M: float, r: float) -> float:
     """Compressed gravity: 26-layer sum."""
-    return sum(G * M / r**2 * SSQ * i / 26.0 for i in range(1, 27))
+    return sum(dpm_emergent_ug1(M, r) * SSQ * i / 26.0 for i in range(1, 27))
 
 
 def g_resonant(M: float, r: float, gamma: float = GAMMA_0) -> float:
@@ -48,7 +50,7 @@ def g_resonant(M: float, r: float, gamma: float = GAMMA_0) -> float:
 
 def g_buoyancy(M: float, r: float) -> float:
     """Buoyancy gravity: F_UBi sum."""
-    return sum(G * M / r**2 * math.exp(-SSQ * i / 26.0) * BETA_I for i in range(1, 27))
+    return sum(dpm_emergent_ug1(M, r) * math.exp(-SSQ * i / 26.0) * BETA_I for i in range(1, 27))
 
 
 def E_net(t: float, gamma: float = GAMMA_0) -> float:

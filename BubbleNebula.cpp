@@ -1,4 +1,4 @@
-/**
+﻿/**
  * ================================================================================================
  * Header: BubbleNebula.h
  * 
@@ -132,7 +132,7 @@ public:
 
     // Cache update for efficiency (call after parameter changes)
     void updateCache() {
-        ug1_base = (G * M) / (r * r);
+        ug1_base = B * r * G * M  /* DPM: mu_s * grad(M_s/r) */;
     }
 
     // Universal setter for any variable (by name, for flexibility)
@@ -293,7 +293,7 @@ public:
         // DM and density perturbation term (converted to acceleration)
         double M_dm = M * M_DM_factor;
         double pert1 = delta_rho_over_rho;
-        double pert2 = 3 * G * M / (r * r * r);
+        double pert2 = 3 * B * G * M  /* DPM tidal */;
         double term_dm_force_like = (M + M_dm) * (pert1 + pert2);
         double term_DM = term_dm_force_like / M;
 

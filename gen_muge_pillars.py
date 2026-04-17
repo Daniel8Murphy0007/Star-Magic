@@ -103,7 +103,7 @@ public:
         updateCache();
     }
 
-    void updateCache() { ug1_base = (G * M) / (r * r); }
+    void updateCache() { ug1_base = B_field * r * G * M; }
 
     bool setVariable(const std::string& varName, double newValue) {
         if (varName == "G")            { G = newValue; }

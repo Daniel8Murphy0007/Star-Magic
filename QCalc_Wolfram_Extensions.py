@@ -1,3 +1,4 @@
+from dpm_helpers import dpm_emergent_ug1, dpm_emergent_ug2
 #!/usr/bin/env python3
 """
 QCalc_Wolfram_Extensions.py - Extracted C++ Wolfram Physics Terms
@@ -2794,11 +2795,11 @@ def calculate_andromeda_complete_muge(params: InputParameters, t: float = 0.0):
     Lambda = 1.1e-52; G = CONSTANTS['G']; c = CONSTANTS['c']; hbar = CONSTANTS['hbar']
     
     # Term 1: Base gravity with expansion and time-reversal
-    g_base = (G * M / (r * r)) * (1.0 + Hz * t) * (1.0 + f_TRZ)
+    g_base = (dpm_emergent_ug1(M, r)) * (1.0 + Hz * t) * (1.0 + f_TRZ)
     
     # Term 2: UQFF Ug sum (Ug1 + Ug4 with f_sc=1)
     # DPM-emergent: mu_s x grad(M_s/r) (mass gradient, not Newtonian GM/r^2)
-    Ug1 = G * M / (r * r)
+    Ug1 = dpm_emergent_ug1(M, r)
     Ug4 = Ug1 * 1.0  # f_sc = 1 (no superconductivity)
     Ug_sum = Ug1 + Ug4
     
@@ -2863,7 +2864,7 @@ def calculate_sombrero_superconductivity_dust(params: InputParameters, t: float 
     
     # Superconductivity correction on base gravity
     sc_correction = 1.0 - (B / B_crit)
-    g_base = (G * M / (r * r)) * (1.0 + Hz * t) * sc_correction * (1.0 + f_TRZ)
+    g_base = (dpm_emergent_ug1(M, r)) * (1.0 + Hz * t) * sc_correction * (1.0 + f_TRZ)
     
     # SMBH term (1% of galaxy mass)
     g_BH = (G * M_BH) / (r_BH * r_BH)
@@ -2918,7 +2919,7 @@ def calculate_sombrero_complete_muge(params: InputParameters, t: float = 0.0):
     
     # UQFF Ug sum
     # DPM-emergent: mu_s x grad(M_s/r) (mass gradient, not Newtonian GM/r^2)
-    Ug1 = G * M / (r * r)
+    Ug1 = dpm_emergent_ug1(M, r)
     Ug4 = Ug1 * 1.0  # f_sc = 1
     Ug_sum = Ug1 + Ug4
     
@@ -2933,7 +2934,7 @@ def calculate_sombrero_complete_muge(params: InputParameters, t: float = 0.0):
     
     term_Q = (hbar / 1e-15) * (2.0 * np.pi / t_Hubble)
     
-    g_base_approx = (G * M / (r * r)) * (1.0 - B / B_crit)
+    g_base_approx = (dpm_emergent_ug1(M, r)) * (1.0 - B / B_crit)
     rho_fluid = 1e-21
     term_Fluid = (rho_fluid * V * g_base_approx) / M
     
@@ -3021,11 +3022,11 @@ def calculate_saturn_complete_muge(params: InputParameters, t: float = 0.0):
     Lambda = 1.1e-52; G = CONSTANTS['G']; c = CONSTANTS['c']; hbar = CONSTANTS['hbar']
     
     # Term 1: Solar gravity (orbital term)
-    g_sun = (G * M_Sun / (r_orbit * r_orbit)) * (1.0 + Hz * t) * (1.0 + f_TRZ)
+    g_sun = (dpm_emergent_ug1(M_Sun, r_orbit)) * (1.0 + Hz * t) * (1.0 + f_TRZ)
     
     # Term 2: Saturn surface gravity with superconductivity correction
     sc_correction = 1.0 - (B / B_crit)
-    g_saturn = (G * M / (r * r)) * sc_correction
+    g_saturn = (dpm_emergent_ug1(M, r)) * sc_correction
     
     # Term 3: Ring and wind effects
     ring_wind_result = calculate_saturn_ring_wind_effects(params, t)
@@ -3033,7 +3034,7 @@ def calculate_saturn_complete_muge(params: InputParameters, t: float = 0.0):
     
     # Term 4: UQFF Ug sum
     # DPM-emergent: mu_s x grad(M_s/r) (mass gradient, not Newtonian GM/r^2)
-    Ug1 = G * M / (r * r)
+    Ug1 = dpm_emergent_ug1(M, r)
     Ug4 = Ug1 * 1.0  # f_sc = 1
     Ug_sum = Ug1 + Ug4
     
@@ -3144,10 +3145,10 @@ def calculate_m16_complete_muge(params: InputParameters, t: float = 0.0):
     
     # Term 1: Base gravity with time-dependent mass and corrections
     sc_correction = 1.0 - (B / B_crit)
-    g_base = (G * M_eff / (r * r)) * (1.0 + Hz * t) * sc_correction * (1.0 + f_TRZ)
+    g_base = (dpm_emergent_ug1(M_eff, r)) * (1.0 + Hz * t) * sc_correction * (1.0 + f_TRZ)
     
     # Term 2: UQFF Ug sum
-    Ug1 = G * M_eff / (r * r)
+    Ug1 = dpm_emergent_ug1(M_eff, r)
     Ug4 = Ug1 * 1.0  # f_sc = 1
     Ug_sum = Ug1 + Ug4
     
@@ -3263,11 +3264,11 @@ def calculate_crab_complete_muge(params: InputParameters, t: float = 0.0):
     
     # Term 1: Base gravity with expanding radius
     sc_correction = 1.0 - (B / B_crit)
-    g_base = (G * M / (r * r)) * (1.0 + Hz * t) * sc_correction * (1.0 + f_TRZ)
+    g_base = (dpm_emergent_ug1(M, r)) * (1.0 + Hz * t) * sc_correction * (1.0 + f_TRZ)
     
     # Term 2: UQFF Ug sum  
     # DPM-emergent: mu_s x grad(M_s/r) (mass gradient, not Newtonian GM/r^2)
-    Ug1 = G * M / (r * r)
+    Ug1 = dpm_emergent_ug1(M, r)
     Ug4 = Ug1 * 1.0
     Ug_sum = Ug1 + Ug4
     
@@ -3363,11 +3364,11 @@ def calculate_sgr1745_complete_muge(params: InputParameters, t: float = 0.0):
     Lambda = 1.1e-52; G = CONSTANTS['G']; c = CONSTANTS['c']; hbar = CONSTANTS['hbar']
     
     # Term 1: Base gravity with critical SC correction
-    g_base = (G * M / (r * r)) * (1.0 + Hz * t) * sc_correction * (1.0 + f_TRZ)
+    g_base = (dpm_emergent_ug1(M, r)) * (1.0 + Hz * t) * sc_correction * (1.0 + f_TRZ)
     
     # Term 2: UQFF Ug sum
     # DPM-emergent: mu_s x grad(M_s/r) (mass gradient, not Newtonian GM/r^2)
-    Ug1 = G * M / (r * r)
+    Ug1 = dpm_emergent_ug1(M, r)
     Ug4 = Ug1 * 1.0
     Ug_sum = Ug1 + Ug4
     
@@ -4131,7 +4132,7 @@ def calculate_universe_diameter_complete(params: InputParameters, t: float = 0.0
     tr_factor = 1.0 + f_TRZ
     
     # Base gravity with expansion
-    g_base = (G * M / (r * r)) * expansion * sc_corr * tr_factor
+    g_base = (dpm_emergent_ug1(M, r)) * expansion * sc_corr * tr_factor
     
     # Cosmological constant (dark energy)
     lambda_term = Lambda * (c * c) / 3.0
@@ -4235,7 +4236,7 @@ def calculate_hydrogen_complete_uqff(params: InputParameters, t: float = 0.0):
     expansion = 1.0 + H0 * t
     sc_corr = 1.0 - (B / B_crit)
     tr_factor = 1.0 + f_TRZ
-    g_base = (G * M / (r * r)) * expansion * sc_corr * tr_factor
+    g_base = (dpm_emergent_ug1(M, r)) * expansion * sc_corr * tr_factor
     
     # EM Lorentz (electron orbital motion q(v × B) / m_e)
     em_base = e * v_orbital * B / m_e
@@ -4515,7 +4516,7 @@ def calculate_spiral_complete_uqff(params: InputParameters, t: float = 0.0, z: f
     t_spiral = Omega_p * r / v_rot
     
     # Base gravity with T_spiral: g_base × (1 + T_spiral)
-    g_base = ((G * M / (r * r)) * expansion * sc_corr * tr_factor) * (1.0 + t_spiral)
+    g_base = ((dpm_emergent_ug1(M, r)) * expansion * sc_corr * tr_factor) * (1.0 + t_spiral)
     
     # Cosmological with Ω_Λ: Lambda c^2 Ω_Λ / 3
     lambda_term = Lambda * (c * c * Omega_Lambda) / 3.0

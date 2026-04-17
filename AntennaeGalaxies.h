@@ -1,9 +1,9 @@
-/**
+﻿/**
  * ================================================================================================
  * Header: AntennaeGalaxies.h
  *
  * Description: C++ Module for Antennae Galaxies (NGC 4038/4039) Class (Module 13)
- *              UQFF simulations — galaxy merger interaction dynamics.
+ *              UQFF simulations â€” galaxy merger interaction dynamics.
  *
  * Unique Terms:
  *   - Merger interaction: I(t) = I_0 * exp(-t / tau_merger)  (decaying interaction)
@@ -92,7 +92,7 @@ public:
         updateCache();
     }
 
-    void updateCache() { ug1_base = (G * M0) / (r * r); }
+    void updateCache() { ug1_base = B * r * G * M0  /* DPM: mu_s * grad(M_s/r) */; }
 
     // Hz(z): approximate H(z) in s^-1
     double Hz() const {
@@ -133,7 +133,7 @@ public:
     double compute_Ug(double Mt, double It) const {
         // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
         // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
-        double ug1 = (G * Mt) / (r * r);
+        double ug1 = B * r * G * Mt  /* DPM: mu_s * grad(M_s/r) */;
         double corr_B = 1.0 - B / B_crit;
         // (1+I) boosts Ug during merger
         return (ug1 + ug1 * corr_B) * (1.0 + f_TRZ) * (1.0 + It);
@@ -146,7 +146,7 @@ public:
 
         double Mt = M_t(t);
         double It = I_t(t);
-        double ug1_t = (G * Mt) / (r * r);
+        double ug1_t = B * r * G * Mt  /* DPM: mu_s * grad(M_s/r) */;
         double hz = Hz();
 
         // Term 1 with H(z) and B correction, boosted by (1+I)
@@ -180,7 +180,7 @@ public:
 
         // DM
         double M_dm = Mt * M_DM_factor;
-        double term_DM = ((Mt + M_dm) * (delta_rho_over_rho + 3.0 * G * Mt / (r * r * r))) / Mt;
+        double term_DM = ((Mt + M_dm) * (delta_rho_over_rho + 3.0 * B * G * Mt  /* DPM tidal */)) / Mt;
 
         return term1 + term2 + term3 + term4 + term_q + term_fluid + term_osc + term_DM;
     }

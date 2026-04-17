@@ -1,9 +1,9 @@
-/**
+﻿/**
  * ================================================================================================
  * Header: GalaxyNGC1792.h
  *
  * Description: C++ Module for NGC 1792 Starburst Spiral Galaxy Class (Module 17)
- *              UQFF simulations — starburst galaxy with extended SFR dynamics.
+ *              UQFF simulations â€” starburst galaxy with extended SFR dynamics.
  *
  * Unique Terms:
  *   - SFR-driven mass growth: M(t) = M0 * (1 + SFR_factor * exp(-t / tau_SF))
@@ -90,7 +90,7 @@ public:
         updateCache();
     }
 
-    void updateCache() { ug1_base = (G * M0) / (r * r); }
+    void updateCache() { ug1_base = B * r * G * M0  /* DPM: mu_s * grad(M_s/r) */; }
 
     // H(z)
     double Hz() const {
@@ -130,7 +130,7 @@ public:
     double compute_Ug(double Mt) const {
         // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
         // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
-        double ug1 = (G * Mt) / (r * r);
+        double ug1 = B * r * G * Mt  /* DPM: mu_s * grad(M_s/r) */;
         double corr_B = 1.0 - B / B_crit;
         return (ug1 + ug1 * corr_B) * (1.0 + f_TRZ);
     }
@@ -141,7 +141,7 @@ public:
         if (t < 0.0) { std::cerr << "Error: t must be non-negative.\n"; return 0.0; }
 
         double Mt = M_t(t);
-        double ug1_t = (G * Mt) / (r * r);
+        double ug1_t = B * r * G * Mt  /* DPM: mu_s * grad(M_s/r) */;
         double hz = Hz();
 
         // Term 1 with H(z) and B correction
@@ -175,7 +175,7 @@ public:
 
         // DM
         double M_dm = Mt * M_DM_factor;
-        double term_DM = ((Mt + M_dm) * (delta_rho_over_rho + 3.0 * G * Mt / (r * r * r))) / Mt;
+        double term_DM = ((Mt + M_dm) * (delta_rho_over_rho + 3.0 * B * G * Mt  /* DPM tidal */)) / Mt;
 
         return term1 + term2 + term3 + term4 + term_q + term_fluid + term_osc + term_DM;
     }

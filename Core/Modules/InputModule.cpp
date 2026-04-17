@@ -511,7 +511,9 @@ public:
         // DM and density perturbation term (converted to acceleration)
         double M_dm = M * M_DM_factor;
         double pert1 = delta_rho_over_rho;
-        double pert2 = 3 * G * M / (r * r * r);
+        double B_field = variables.count("B") ? variables["B"] : 1e-5;
+        double mu_s = B_field * r * r * r;
+        double pert2 = 3 * mu_s * G * M / (r * r * r * r);  // DPM tidal gradient
         double term_dm_force_like = (M + M_dm) * (pert1 + pert2);
         double term_DM = term_dm_force_like / M;
 

@@ -1,5 +1,5 @@
-#include "AetherSuperfluidDynamics.h"
-// ─── UQFF helpers ────────────────────────────────────────────────────────────
+﻿#include "AetherSuperfluidDynamics.h"
+// â”€â”€â”€ UQFF helpers â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 static inline double _AetherSuperfluidDynamics_T_H(double M){
     return (AetherSuperfluidDynamics::HBAR*AetherSuperfluidDynamics::C*AetherSuperfluidDynamics::C*AetherSuperfluidDynamics::C)/
            (8.0*M_PI*AetherSuperfluidDynamics::G*M*AetherSuperfluidDynamics::K_B);
@@ -33,7 +33,9 @@ double AetherSuperfluidDynamics::compute_vortex_circulation() const{
     return (2.0*PI*HBAR)/M_UA; // h/m_UA
 }
 double AetherSuperfluidDynamics::compute_g_eff(double r,double M) const{
-    double g_N=G*M/(r*r);
+    double B_sys = 1e-4;  // DPM magnetic field [T]
+    double mu_s = B_sys * r * r * r;
+    double g_N = mu_s * G * M / (r * r);  // DPM-emergent: mu_s * grad(M_s/r)
     double c_UA=compute_sound_speed(N_UA_REF);
     double boost=1.0+(c_UA*c_UA/(C*C))*F_TRZ*(RHO_UA/RHO_SCM);
     double val=g_N*boost;
@@ -50,7 +52,9 @@ void AetherSuperfluidDynamics::simulate_radial_profile(double r0,double r1,doubl
     std::ostream* os=&std::cout; std::ofstream ofs;
     if(!out.empty()){ofs.open(out);if(ofs.is_open()){os=&ofs;*os<<"r_m,g_Newton,g_UQFF,n_UA_profile\n";}}
     for(double r=r0;r<=r1;r+=dr){
-        double g_N=G*M/(r*r);
+        double B_sys = 1e-4;  // DPM magnetic field [T]
+        double mu_s = B_sys * r * r * r;
+        double g_N = mu_s * G * M / (r * r);  // DPM-emergent: mu_s * grad(M_s/r)
         double g_u=compute_g_eff(r,M);
         // UA density: enhanced near BH by gravitational compression
         double n_local=N_UA_REF*(1.0+_AetherSuperfluidDynamics_r_s(M)/r*F_TRZ);

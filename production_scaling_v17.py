@@ -20,6 +20,8 @@ Architecture: Standalone kernel functions, ALL_KERNELS list, benchmark class.
 """
 
 import math
+from dpm_helpers import dpm_emergent_ug1, dpm_emergent_ug2
+
 import time
 from typing import Dict, List, Callable
 
@@ -83,17 +85,17 @@ _LAYER_COEFFS = [
 # ── §2  Carry-Forward Kernels (v11: 16, v13: 4, v14: 4, v15: 6, v16: 6 = 36) ──
 
 def kernel_gravity_26layer(M=M_SUN, r=6.96e8):
-    return sum(G * M / r**2 * SSQ * i / 26 for i in range(1, 27))
+    return sum(dpm_emergent_ug1(M, r) * SSQ * i / 26 for i in range(1, 27))
 
 
 def kernel_fu_bi_i(M=M_SUN, r=6.96e8, t=86400):
-    Ug = sum(G * M / r**2 * SSQ * i / 26 for i in range(1, 27))
-    Ub = sum(G * M / r**2 * math.exp(-SSQ * i / 26) * BETA_I for i in range(1, 27))
+    Ug = sum(dpm_emergent_ug1(M, r) * SSQ * i / 26 for i in range(1, 27))
+    Ub = sum(dpm_emergent_ug1(M, r) * math.exp(-SSQ * i / 26) * BETA_I for i in range(1, 27))
     return (Ug - Ub) + F_NEUTRON * S26_3RD * Phi(GAMMA_0) * math.exp(min(KAPPA * t, 500))
 
 
 def kernel_phonon_ares(M=M_SUN, r=6.96e8):
-    return sum(math.exp(-SSQ * i / 26) * BETA_I * G * M / r**2 for i in range(1, 27))
+    return sum(math.exp(-SSQ * i / 26) * BETA_I * dpm_emergent_ug1(M, r) for i in range(1, 27))
 
 
 def kernel_jet_mjet(A=1.5, gamma_THz=0.1):
@@ -111,7 +113,7 @@ def kernel_gw170817_strain(M_chirp=1.186, d_Mpc=40):
 
 
 def kernel_blazar_ergosphere(M=3e8, a=0.95):
-    M_kg = M * M_SUN; rS = 2 * G * M_kg / C**2
+    M_kg = M * M_SUN; rS = 2 * dpm_emergent_ug1(M_kg, C)
     return rS / 2 * (1 + math.sqrt(max(1 - a**2, 0)))
 
 
@@ -153,14 +155,14 @@ def kernel_ramanujan_26d_sum():
 def kernel_triadic_solver(M=M_SUN, r=6.96e8):
     Ug = kernel_gravity_26layer(M, r)
     Ub = kernel_phonon_ares(M, r)
-    Um = G * M / r**2 * SSQ * 0.1
+    Um = dpm_emergent_ug1(M, r) * SSQ * 0.1
     return Ug + Um - Ub
 
 
 # v13 carry-forward (4)
 def kernel_fubi_inside_out(M=5e7, r=None):
     M_kg = M * M_SUN
-    if r is None: r = 2 * G * M_kg / C**2
+    if r is None: r = 2 * dpm_emergent_ug1(M_kg, C)
     return kernel_fu_bi_i(M_kg, r, 86400)
 
 
@@ -172,7 +174,7 @@ def kernel_99sys_gamma_sweep():
 
 
 def kernel_agn_cena_fubi(M=5.5e7, a=0.70):
-    M_kg = M * M_SUN; rS = 2 * G * M_kg / C**2
+    M_kg = M * M_SUN; rS = 2 * dpm_emergent_ug1(M_kg, C)
     rH = rS / 2 * (1 + math.sqrt(max(1 - a**2, 0)))
     return kernel_fu_bi_i(M_kg, rH, 86400)
 
@@ -183,10 +185,10 @@ def kernel_ns_merger_gw190425(M_chirp=1.44, d_Mpc=159):
 
 # v14 carry-forward (4)
 def kernel_agn_merger_fubi(M1=5.5e7, M2=3e7, a=0.70):
-    M_kg = (M1 + M2) * M_SUN; rS = 2 * G * M_kg / C**2
+    M_kg = (M1 + M2) * M_SUN; rS = 2 * dpm_emergent_ug1(M_kg, C)
     rH = rS / 2 * (1 + math.sqrt(max(1 - a**2, 0)))
-    Ug = sum(G * M_kg / rH**2 * SSQ * i / 26 for i in range(1, 27))
-    Ub = sum(G * M_kg / rH**2 * math.exp(-SSQ * i / 26) * BETA_I for i in range(1, 27))
+    Ug = sum(dpm_emergent_ug1(M_kg, rH) * SSQ * i / 26 for i in range(1, 27))
+    Ub = sum(dpm_emergent_ug1(M_kg, rH) * math.exp(-SSQ * i / 26) * BETA_I for i in range(1, 27))
     return abs(Ub) / (abs(Ug) + 1e-300) * S26_3RD
 
 
@@ -207,10 +209,10 @@ def kernel_ym_mass_gap(T=2e12, Tc=1.5e12):
 # v15 carry-forward (6)
 def kernel_3c273_agn_fubi(M=8.86e8, a=0.90, A_jet=2.1):
     M_kg = M * M_SUN
-    rS = 2 * G * M_kg / C**2
+    rS = 2 * dpm_emergent_ug1(M_kg, C)
     rH = rS / 2 * (1 + math.sqrt(max(1 - a**2, 0)))
-    Ug = sum(G * M_kg / rH**2 * SSQ * i / 26 for i in range(1, 27))
-    Ub = sum(G * M_kg / rH**2 * math.exp(-SSQ * i / 26) * BETA_I for i in range(1, 27))
+    Ug = sum(dpm_emergent_ug1(M_kg, rH) * SSQ * i / 26 for i in range(1, 27))
+    Ub = sum(dpm_emergent_ug1(M_kg, rH) * math.exp(-SSQ * i / 26) * BETA_I for i in range(1, 27))
     ratio = abs(Ub) / (abs(Ug) + abs(Ub) + 1e-300)
     M_jet = 1 + A_jet
     return ratio * M_jet * S26_3RD
@@ -218,10 +220,10 @@ def kernel_3c273_agn_fubi(M=8.86e8, a=0.90, A_jet=2.1):
 
 def kernel_ton618_agn_fubi(M=6.6e10, a=0.998, A_jet=2.8):
     M_kg = M * M_SUN
-    rS = 2 * G * M_kg / C**2
+    rS = 2 * dpm_emergent_ug1(M_kg, C)
     rH = rS / 2 * (1 + math.sqrt(max(1 - a**2, 0)))
-    Ug = sum(G * M_kg / rH**2 * SSQ * i / 26 for i in range(1, 27))
-    Ub = sum(G * M_kg / rH**2 * math.exp(-SSQ * i / 26) * BETA_I for i in range(1, 27))
+    Ug = sum(dpm_emergent_ug1(M_kg, rH) * SSQ * i / 26 for i in range(1, 27))
+    Ub = sum(dpm_emergent_ug1(M_kg, rH) * math.exp(-SSQ * i / 26) * BETA_I for i in range(1, 27))
     ratio = abs(Ub) / (abs(Ug) + abs(Ub) + 1e-300)
     M_jet = 1 + A_jet
     return ratio * M_jet * S26_3RD
@@ -234,7 +236,7 @@ def kernel_gw170817_merger(M_chirp=1.186, d_Mpc=40, suppression=0.667):
 
 def kernel_smbh_merger_fubi(M1=5.5e7, M2=3e7, a1=0.70, a2=0.60):
     M_total = (M1 + M2) * M_SUN
-    rS = 2 * G * M_total / C**2
+    rS = 2 * dpm_emergent_ug1(M_total, C)
     a_eff = (M1 * a1 + M2 * a2) / (M1 + M2)
     rH = rS / 2 * (1 + math.sqrt(max(1 - a_eff**2, 0)))
     rho = RHO_VAC * math.exp(min(KAPPA * 86400, 500))
@@ -268,7 +270,7 @@ def kernel_scm_inflation_hubble(rho_scm=1e76):
 def kernel_thorne_morris_exotic(M=4.3e6, r0=1e4):
     M_kg = M * M_SUN
     rho_ambient = (HBAR * OMEGA_SCM) / (2 * C**2) * S26_STATIC * 0.99
-    r_s = 2 * G * M_kg / C**2
+    r_s = 2 * dpm_emergent_ug1(M_kg, C)
     amp = (r_s / r0)**2 * S26_STATIC**2
     rho_exotic = rho_ambient * amp
     P_density = -BETA_I * rho_exotic * SSQ * 0.70 * S26_STATIC**2
@@ -299,7 +301,7 @@ def kernel_wormhole_phonon_damping(r0=1e4, M=4.3e6):
     M_kg = M * M_SUN
     b_mod = 1 - BETA_I * SSQ
     damping = math.exp(-KAPPA * r0 / C) * Phi(GAMMA_0) * b_mod
-    rS = 2 * G * M_kg / C**2
+    rS = 2 * dpm_emergent_ug1(M_kg, C)
     curvature = rS / (r0 + rS)
     return damping * curvature * S26_3RD
 
@@ -331,9 +333,9 @@ def kernel_muge_8term_gravity(M=1e11 * M_SUN, r=10 * KPC):
 
     g = g_N + g_exp + g_super + g_env + g_Ug + g_cosm + g_quant + g_fluid
     """
-    g_N = G * M / r**2
+    g_N = dpm_emergent_ug1(M, r)
     g_exp = -H_0**2 * r
-    g_ug = sum(G * M / r**2 * SSQ * i / 26 * BETA_I for i in range(1, 27))
+    g_ug = sum(dpm_emergent_ug1(M, r) * SSQ * i / 26 * BETA_I for i in range(1, 27))
     g_cosm = -LAMBDA_C * C**2 * r / 3
     g_quant = HBAR / (M * r**2) if M > 0 else 0.0
     return g_N + g_exp + g_ug + g_cosm + g_quant
@@ -385,7 +387,7 @@ def kernel_alma_fubi_profile(nu_GHz=230.538, M=2000 * M_SUN, r=1.3e16):
 
     F = Σᵢ cᵢ · β_i · G·M/r² (at line center, Gaussian = 1).
     """
-    g_surf = G * M / r**2
+    g_surf = dpm_emergent_ug1(M, r)
     return sum(c * BETA_I * g_surf for c in _LAYER_COEFFS)
 
 
@@ -394,7 +396,7 @@ def kernel_alma_chi2_co21(M=2000 * M_SUN, r=1.3e16, T_ex=50):
 
     Computes peak ratio between F_{U,Bi,i} and LTE profile.
     """
-    g_surf = G * M / r**2
+    g_surf = dpm_emergent_ug1(M, r)
     fubi_peak = sum(c * BETA_I * g_surf for c in _LAYER_COEFFS)
     h = 6.626e-34
     nu_Hz = 230.538e9

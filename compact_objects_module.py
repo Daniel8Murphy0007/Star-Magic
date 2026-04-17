@@ -23,6 +23,8 @@ References:
 from dataclasses import dataclass, field
 from typing import Dict, List, Optional, Tuple
 import math
+from dpm_helpers import dpm_emergent_ug1, dpm_emergent_ug2
+
 
 # ==============================================================================
 # PHYSICAL CONSTANTS
@@ -116,7 +118,7 @@ class NeutronStarCalculator:
         Returns:
             g: Surface gravity (m/s²)
         """
-        return G * M / R**2
+        return dpm_emergent_ug1(M, R)
     
     @staticmethod
     def compactness(M: float, R: float) -> float:

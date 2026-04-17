@@ -491,8 +491,10 @@ cdouble Abell2256UQFFModule::computeUb1() {
     // Base buoyancy force
     cdouble base_buoyancy = beta * V * rho_A * a;
     
-    // Galaxy cluster gravitational enhancement
-    cdouble cluster_grav = G * M / (r * r);
+    // Galaxy cluster gravitational enhancement (DPM-emergent)
+    cdouble B_field = variables.count("B0") ? variables["B0"] : 1e-9;  // cluster B
+    cdouble mu_s = B_field * r * r * r;
+    cdouble cluster_grav = mu_s * G * M / (r * r);  // DPM: mu_s * grad(M_s/r)
     
     // Intracluster medium (ICM) buoyancy effects
     cdouble rho_ICM = variables["rho_gas"];  // ICM gas density

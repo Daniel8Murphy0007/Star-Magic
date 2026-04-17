@@ -1,4 +1,4 @@
-/**
+﻿/**
  * ================================================================================================
  * Header: HUDFGalaxies.h
  * 
@@ -19,8 +19,8 @@
  *              Compute: double g = hudf.compute_g_HUDF(t);
  * 
  * Key Features:
- *   - Default values from UQFF document: M0 ≈ 1e12 Msun (representative field mass), r ≈ 1.3e11 ly (cosmic scale),
- *     z_avg = 3.5, Hz_avg ≈ 2.5e-18 s^-1, SFR_factor = 1.0, tau_SF = 1 Gyr, I0 = 0.05, tau_inter = 1 Gyr,
+ *   - Default values from UQFF document: M0 â‰ˆ 1e12 Msun (representative field mass), r â‰ˆ 1.3e11 ly (cosmic scale),
+ *     z_avg = 3.5, Hz_avg â‰ˆ 2.5e-18 s^-1, SFR_factor = 1.0, tau_SF = 1 Gyr, I0 = 0.05, tau_inter = 1 Gyr,
  *     rho_wind = 1e-22 kg/m^3, v_wind = 1e6 m/s, B = 1e-10 T.
  *   - Units handled: Msun to kg, ly to m; interaction term I(t) scales gravity.
  *   - Setter methods for updates: setVar(double new_val) or addToVar(double delta)/subtractFromVar(double delta).
@@ -36,7 +36,7 @@
 #define HUDF_GALAXIES_H
 
 // ===========================================================================================
-// UQFF 2.0 UPGRADE — March 2026 (Session 72g)
+// UQFF 2.0 UPGRADE â€” March 2026 (Session 72g)
 // Added: PhysicsTerm base classes, self-expanding framework, F_U_Bi_i 3-tier buoyancy,
 //        DPM resonance, WOLFRAM_TERM macros, exportState, registerDynamicTerm.
 // Original HUDFGalaxies physics preserved intact (additive philosophy).
@@ -55,7 +55,7 @@
 #include <sstream>
 
 // ===========================================================================================
-// WOLFRAM_TERM macros — exported to masterUQFF via AutoExportFullUQFF (source176_auto_full_uqff.cpp)
+// WOLFRAM_TERM macros â€” exported to masterUQFF via AutoExportFullUQFF (source176_auto_full_uqff.cpp)
 // ===========================================================================================
 #define WOLFRAM_TERM_HUDF_BASE   "G*M0*(1+SFR*Exp[-t/tauSF])/(r^2)*(1+Hz*t)*(1-B/Bcrit)*(1+I0*Exp[-t/tauI])"
 #define WOLFRAM_TERM_HUDF_UQFF   "(G*M0/r^2)*(1+1-B/Bcrit)*(1+fTRZ)*(1+I0*Exp[-t/tauI])"
@@ -77,10 +77,10 @@ public:
 };
 
 // ===========================================================================================
-// UNIQUE PHYSICS TERM 1: Time-Reversal Zeroing (f_TRZ) — CPT-asymmetric UQFF gravity
+// UNIQUE PHYSICS TERM 1: Time-Reversal Zeroing (f_TRZ) â€” CPT-asymmetric UQFF gravity
 // PAPER_264 source: HUDFTRZNegativeTimeTerm
-//   f_TRZ = -1 → factor (1+f_TRZ) = 0 → UQFF gravity vanishes ("time-reversal zero point")
-//   f_TRZ < -1 → factor < 0 → UQFF gravity reverses sign (anti-gravity / negative-time regime)
+//   f_TRZ = -1 â†’ factor (1+f_TRZ) = 0 â†’ UQFF gravity vanishes ("time-reversal zero point")
+//   f_TRZ < -1 â†’ factor < 0 â†’ UQFF gravity reverses sign (anti-gravity / negative-time regime)
 // ===========================================================================================
 class HUDFTRZNegativeTimeTerm : public HUDFPhysicsTerm {
 private:
@@ -95,7 +95,7 @@ public:
         double trz = params.count("f_TRZ") ? params.at("f_TRZ") : f_TRZ;
         // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
         // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
-        double Ug1 = (G * M) / (r * r);
+        double Ug1 = B * r * G * M  /* DPM: mu_s * grad(M_s/r) */;
         return Ug1 * (1.0 + trz);   // zero at trz=-1; negative for trz<-1
     }
 
@@ -110,10 +110,10 @@ public:
 };
 
 // ===========================================================================================
-// UNIQUE PHYSICS TERM 2: Dual-Channel Interaction Cascade Buoyancy — double I(t) modulation
+// UNIQUE PHYSICS TERM 2: Dual-Channel Interaction Cascade Buoyancy â€” double I(t) modulation
 // PAPER_265 source: HUDFInteractionCascadeTerm
 //   I(t) applied to BOTH base gravity AND UQFF simultaneously.
-//   Net factor: (1+I(t))^2 in combined output — quadratic buoyancy amplification.
+//   Net factor: (1+I(t))^2 in combined output â€” quadratic buoyancy amplification.
 // ===========================================================================================
 class HUDFInteractionCascadeTerm : public HUDFPhysicsTerm {
 private:
@@ -132,7 +132,7 @@ public:
         double I_t = i0 * std::exp(-t / tau);
         // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
         // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
-        double Ug1 = (G * M) / (r * r);
+        double Ug1 = B * r * G * M  /* DPM: mu_s * grad(M_s/r) */;
         // Cascade: (1+I)^2 total modulation factor across both channels
         double cascade_factor = (1.0 + I_t) * (1.0 + I_t);
         // Additional buoyancy relative to single-channel: (1+I)^2 - (1+I) = I^2 + I
@@ -166,7 +166,7 @@ public:
         double r     = params.count("r")     ? params.at("r")     : 1.23e27;
         double B     = params.count("B")     ? params.at("B")     : 1e-10;
         double bcrit = params.count("B_crit")? params.at("B_crit"): B_crit;
-        double Ug1   = (G * M) / (r * r);
+        double Ug1   = B * r * G * M  /* DPM: mu_s * grad(M_s/r) */;
         double corr_B = 1.0 - B / bcrit;  // Meissner suppression factor
         // Returns the suppressed field; note: corr_B -> 0 at B=B_crit -> FULL QUENCH
         return Ug1 * corr_B;
@@ -302,7 +302,7 @@ public:
 
     // Cache update for efficiency (call after parameter changes)
     void updateCache() {
-        ug1_base = (G * M0) / (r * r);
+        ug1_base = B * r * G * M0  /* DPM: mu_s * grad(M_s/r) */;
     }
 
     // Universal setter for any variable (by name, for flexibility)
@@ -420,7 +420,7 @@ public:
     double compute_Ug(double Mt, double It) const {
         // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
         // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
-        double Ug1 = (G * Mt) / (r * r);
+        double Ug1 = B * r * G * Mt  /* DPM: mu_s * grad(M_s/r) */;
         double Ug2 = 0.0;
         double Ug3 = 0.0;
         double corr_B = 1 - B / B_crit;
@@ -442,7 +442,7 @@ public:
 
         double Mt = M_t(t);
         double It = I_t(t);
-        double ug1_t = (G * Mt) / (r * r);
+        double ug1_t = B * r * G * Mt  /* DPM: mu_s * grad(M_s/r) */;
 
         // Term 1: Base + Hz + B + I corrections
         double corr_H = 1 + Hz * t;
@@ -479,7 +479,7 @@ public:
         // DM and density perturbation term (converted to acceleration)
         double M_dm = Mt * M_DM_factor;
         double pert1 = delta_rho_over_rho;
-        double pert2 = 3 * G * Mt / (r * r * r);
+        double pert2 = 3 * B * G * Mt  /* DPM tidal */;
         double term_dm_force_like = (Mt + M_dm) * (pert1 + pert2);
         double term_DM = term_dm_force_like / Mt;
 
@@ -512,7 +512,7 @@ public:
     }
 
     // ========================================================================
-    // UQFF 2.0 SELF-EXPANDING FRAMEWORK — Dynamic Term Registration
+    // UQFF 2.0 SELF-EXPANDING FRAMEWORK â€” Dynamic Term Registration
     // ========================================================================
     void registerDynamicTerm(std::unique_ptr<HUDFPhysicsTerm> term) {
         enableDynamicTerms = true;
@@ -556,7 +556,7 @@ public:
     }
 
     // ========================================================================
-    // F_U_Bi_i — UQFF 3-TIER BUOYANCY INTEGRAL (UQFF 2.0)
+    // F_U_Bi_i â€” UQFF 3-TIER BUOYANCY INTEGRAL (UQFF 2.0)
     // Integrand: F_LENR + F_neutron + F_rel + vacuum terms
     // Returns: (F_U_Bi_i, DPM_resonance) pair
     // ========================================================================
@@ -591,8 +591,8 @@ public:
         double integrand = F_LENR + F_neutron + F_relativistic;
 
         // Quadratic root x_2 (vacuum-energy dominated)
-        // a·x² + b·x + c = 0;  c = -F0 + rho_vac*DPM_stab ≈ -F0
-        double a_quad = G * M0 / (r * r);
+        // aÂ·xÂ² + bÂ·x + c = 0;  c = -F0 + rho_vac*DPM_stab â‰ˆ -F0
+        double a_quad = B * r * G * M0  /* DPM: mu_s * grad(M_s/r) */;
         double c_quad = -F0 + rho_vac_UA;
         double disc   = b_quad * b_quad - 4.0 * a_quad * c_quad;
         double x_2    = (disc >= 0.0)
@@ -611,7 +611,7 @@ public:
     }
 
     // ========================================================================
-    // ENHANCED COMPUTE (UQFF 2.0) — original g_HUDF + dynamic terms
+    // ENHANCED COMPUTE (UQFF 2.0) â€” original g_HUDF + dynamic terms
     // ========================================================================
     double compute_g_HUDF_UQFF2(double t) const {
         double g_original = compute_g_HUDF(t);
@@ -620,7 +620,7 @@ public:
     }
 
     // ========================================================================
-    // exportState — Self-Expanding Framework state persistence
+    // exportState â€” Self-Expanding Framework state persistence
     // ========================================================================
     void exportState(const std::string& filename) const {
         std::ofstream f(filename);

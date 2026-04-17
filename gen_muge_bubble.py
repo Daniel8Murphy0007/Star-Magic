@@ -104,7 +104,7 @@ public:
         updateCache();
     }
 
-    void updateCache() { ug1_base = (G * M0) / (r * r); }
+    void updateCache() { ug1_base = B_field * r * G * M0; }
 
     bool setVariable(const std::string& varName, double v) {
         if (varName == "M0")      { M0 = v; }
@@ -135,7 +135,7 @@ public:
     double E_t(double t) const { return E_0 * (1.0 - std::exp(-t / tau_exp)); }
 
     double compute_Ug(double t) const {
-        // DPM-emergent: mu_s x grad(M_s/r) (not Newtonian GM/r^2)\ndouble ug1 = (G * M0) / (r * r);
+        // DPM-emergent: mu_s x grad(M_s/r) (not Newtonian GM/r^2)\ndouble ug1 = B_field * r * G * M0;
         double corr_B = 1.0 - B / B_crit;
         double E = E_t(t);
         // (1-E) factor: expansion reduces effective Ug
@@ -147,7 +147,7 @@ public:
     double compute_g_Bubble(double t) const {
         if (t < 0.0) { std::cerr << "Error: t must be non-negative.\n"; return 0.0; }
 
-        double ug1_t = (G * M0) / (r * r);
+        double ug1_t = B_field * r * G * M0;
 
         // Term 1: base + Hubble + B correction
         double corr_H = 1.0 + H0 * t;

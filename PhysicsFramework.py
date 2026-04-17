@@ -39,6 +39,8 @@ from abc import ABC, abstractmethod
 from typing import Dict, List, Optional, Any
 import json
 import math
+from dpm_helpers import dpm_emergent_ug1, dpm_emergent_ug2
+
 import logging
 from datetime import datetime
 
@@ -458,7 +460,7 @@ class DarkMatterHaloTerm(PhysicsTerm):
         # NFW profile
         x = r / rs
         f_x = math.log((rs + r) / rs) - r / (rs + r)
-        result = 4 * math.pi * G * rho * (rs ** 3) / (r * r) * f_x
+        result = 4 * math.pi * dpm_emergent_ug1(rho * (rs ** 3), r) * f_x
         
         if self.enableLogging:
             self.logger.debug(f"DarkMatterHalo: r={r:.3e}, x={x:.3f}, result={result:.6e}")

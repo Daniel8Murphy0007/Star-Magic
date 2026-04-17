@@ -1,4 +1,4 @@
-/**
+﻿/**
  * ================================================================================================
  * MAIN_1_CoAnQi.cpp - Conscious Quantum Intelligence (CoAnQi) UQFF Calculator
  * ================================================================================================
@@ -8,15 +8,15 @@
  *              Executes all systems simultaneously with statistical analysis
  *
  * Key Capabilities:
- *   Ã¢Å“â€œ All unique physics equations from 150+ modules integrated
- *   Ã¢Å“â€œ Self-expanding PhysicsTerm framework for runtime term injection
- *   Ã¢Å“â€œ Self-updating parameter optimization via statistical analysis
- *   Ã¢Å“â€œ Self-cloning system generator for derivative simulations
- *   Ã¢Å“â€œ Simultaneous multi-system execution with thread pooling
- *   Ã¢Å“â€œ Comprehensive verbose logging and real-time analysis
- *   Ã¢Å“â€œ Dynamic module loading and runtime compilation
- *   Ã¢Å“â€œ Cross-module data exchange and state synchronization
- *   Ã¢Å“â€œ Autonomous validation against observational datasets
+ *   ÃƒÂ¢Ã…â€œÃ¢â‚¬Å“ All unique physics equations from 150+ modules integrated
+ *   ÃƒÂ¢Ã…â€œÃ¢â‚¬Å“ Self-expanding PhysicsTerm framework for runtime term injection
+ *   ÃƒÂ¢Ã…â€œÃ¢â‚¬Å“ Self-updating parameter optimization via statistical analysis
+ *   ÃƒÂ¢Ã…â€œÃ¢â‚¬Å“ Self-cloning system generator for derivative simulations
+ *   ÃƒÂ¢Ã…â€œÃ¢â‚¬Å“ Simultaneous multi-system execution with thread pooling
+ *   ÃƒÂ¢Ã…â€œÃ¢â‚¬Å“ Comprehensive verbose logging and real-time analysis
+ *   ÃƒÂ¢Ã…â€œÃ¢â‚¬Å“ Dynamic module loading and runtime compilation
+ *   ÃƒÂ¢Ã…â€œÃ¢â‚¬Å“ Cross-module data exchange and state synchronization
+ *   ÃƒÂ¢Ã…â€œÃ¢â‚¬Å“ Autonomous validation against observational datasets
  *
  * Architecture:
  *   - PhysicsTerm plugin system (runtime extensibility)
@@ -101,28 +101,28 @@ const double mu_0 = 4 * M_PI * 1e-7;      // Vacuum permeability
 // DPM-EMERGENT GRAVITY CONSTANTS AND HELPERS
 // ===========================================================================================
 // CANONICAL: Newtonian gravity is EMERGENT from DPM substrate, not foundational.
-// At quantum cycle start, NO MASS exists. DPM vortical dynamics Ã¢â€ â€™ Ug2 shell traps
-// magnetics/spawn material Ã¢â€ â€™ mass EMERGES Ã¢â€ â€™ Ug1 looks gravitational.
+// At quantum cycle start, NO MASS exists. DPM vortical dynamics ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬â„¢ Ug2 shell traps
+// magnetics/spawn material ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬â„¢ mass EMERGES ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬â„¢ Ug1 looks gravitational.
 //
-// Ug1 = k1 Ãƒâ€” ÃŽÂ¼_s Ãƒâ€” Ã¢Ë†â€¡(M_s/r) Ãƒâ€” exp(-ÃŽÂ±t) Ãƒâ€” cos(Ãâ‚¬t_n) Ãƒâ€” (1+ÃŽÂ´_def)
-//   where ÃŽÂ¼_s = B Ãƒâ€” R_sÃ‚Â³ (magnetic dipole moment)
-//         Ã¢Ë†â€¡(M_s/r) = G Ãƒâ€” M_s / R_sÃ‚Â² (mass gradient, NOT Newtonian force)
+// Ug1 = k1 ÃƒÆ’Ã¢â‚¬â€ ÃƒÅ½Ã‚Â¼_s ÃƒÆ’Ã¢â‚¬â€ ÃƒÂ¢Ã‹â€ Ã¢â‚¬Â¡(M_s/r) ÃƒÆ’Ã¢â‚¬â€ exp(-ÃƒÅ½Ã‚Â±t) ÃƒÆ’Ã¢â‚¬â€ cos(ÃƒÂÃ¢â€šÂ¬t_n) ÃƒÆ’Ã¢â‚¬â€ (1+ÃƒÅ½Ã‚Â´_def)
+//   where ÃƒÅ½Ã‚Â¼_s = B ÃƒÆ’Ã¢â‚¬â€ R_sÃƒâ€šÃ‚Â³ (magnetic dipole moment)
+//         ÃƒÂ¢Ã‹â€ Ã¢â‚¬Â¡(M_s/r) = G ÃƒÆ’Ã¢â‚¬â€ M_s / R_sÃƒâ€šÃ‚Â² (mass gradient, NOT Newtonian force)
 //
 // For simplified PhysicsTerm classes, emergent_Ug1 provides the canonical form:
-//   Ug1 = ÃŽÂ¼_s Ãƒâ€” G Ãƒâ€” M / RÃ‚Â² = B Ãƒâ€” R Ãƒâ€” G Ãƒâ€” M
-// The G*M/RÃ‚Â² structure is the mass gradient operator, not gravitational attraction.
-const double rho_A_DPM = 7.09e-37;    // [SCm] vacuum density [J/mÃ‚Â³]
-const double rho_UA_DPM = 7.09e-36;   // [UA] vacuum density [J/mÃ‚Â³]
+//   Ug1 = ÃƒÅ½Ã‚Â¼_s ÃƒÆ’Ã¢â‚¬â€ G ÃƒÆ’Ã¢â‚¬â€ M / RÃƒâ€šÃ‚Â² = B ÃƒÆ’Ã¢â‚¬â€ R ÃƒÆ’Ã¢â‚¬â€ G ÃƒÆ’Ã¢â‚¬â€ M
+// The G*M/RÃƒâ€šÃ‚Â² structure is the mass gradient operator, not gravitational attraction.
+const double rho_A_DPM = 7.09e-37;    // [SCm] vacuum density [J/mÃƒâ€šÃ‚Â³]
+const double rho_UA_DPM = 7.09e-36;   // [UA] vacuum density [J/mÃƒâ€šÃ‚Â³]
 
-// DPM-emergent Ug1: magnetic moment Ãƒâ€” mass gradient
+// DPM-emergent Ug1: magnetic moment ÃƒÆ’Ã¢â‚¬â€ mass gradient
 // B = magnetic field [T], R = body radius [m], M = mass [kg]
-inline double emergent_Ug1(double M, double R, double B) {
-    double mu_s = B * R * R * R;          // Magnetic moment ÃŽÂ¼_s = B Ãƒâ€” RÃ‚Â³ [J/T]
-    double grad_M = G * M / (R * R);     // Mass gradient Ã¢Ë†â€¡(M_s/r) [kg/mÃ‚Â²]
+inline double emergent_Ug1(double M, double R, double B = 1e-4) {
+    double mu_s = B * R * R * R;          // Magnetic moment ÃƒÅ½Ã‚Â¼_s = B ÃƒÆ’Ã¢â‚¬â€ RÃƒâ€šÃ‚Â³ [J/T]
+    double grad_M = G * M / (R * R);     // Mass gradient ÃƒÂ¢Ã‹â€ Ã¢â‚¬Â¡(M_s/r) [kg/mÃƒâ€šÃ‚Â²]
     return mu_s * grad_M;                // DPM-emergent gravity [J]
 }
 
-// DPM-emergent Ug2: quantum shell trapping (dual charges Ãƒâ€” reactor energy)
+// DPM-emergent Ug2: quantum shell trapping (dual charges ÃƒÆ’Ã¢â‚¬â€ reactor energy)
 inline double emergent_Ug2(double M, double r, double R, double v_sw = 4e5) {
     double V_body = (4.0 / 3.0) * M_PI * R * R * R;
     double Q_SCm = rho_A_DPM * V_body;   // [SCm] charge
@@ -133,7 +133,7 @@ inline double emergent_Ug2(double M, double r, double R, double v_sw = 4e5) {
     return (Q_SCm + Q_UA) * M / (r * r) * S_rb * E_react;
 }
 
-// DPM-emergent Ug4: vacuum concentration (from ÃÂ_vac,[SCm])
+// DPM-emergent Ug4: vacuum concentration (from ÃƒÂÃ‚Â_vac,[SCm])
 inline double emergent_Ug4(double rho_v = 7.09e-37, double C_conc = 1e30, double corr_B = 1.0) {
     return rho_v * C_conc * corr_B;
 }
@@ -529,7 +529,7 @@ public:
         double term_res = 2.0 * q * system_B0 * V * sin(theta) * DPM_resonance;
 
         // Gravity compressed
-        double gravity_compressed = G * system_M / (system_r * system_r);
+        double gravity_compressed = emergent_Ug1(system_M, system_r);  // DPM: mu_s * grad(M_s/r)
 
         // Buoyancy
         double beta_i = getDynamicParameter("beta_i", 1.0);
@@ -770,7 +770,7 @@ public:
         double G = 6.6743e-11;
 
         // Gravity compressed
-        double gravity = G * system_M / (system_r * system_r);
+        double gravity = emergent_Ug1(system_M, system_r);  // DPM: mu_s * grad(M_s/r)
 
         // Gas nebula integration (from Source164)
         double k_B = 1.380649e-23;
@@ -989,11 +989,11 @@ public:
 
         // 11-term integrand
         double term_base = -F0;
-        double term_mom = (m_e * c * c / (system_r * system_r)) * 0.93 * 0.707; // cos(45Ã‚Â°)
+        double term_mom = (m_e * c * c / (system_r * system_r)) * 0.93 * 0.707; // cos(45Ãƒâ€šÃ‚Â°)
         double term_grav = (G * system_M / (system_r * system_r)) * 1.0;
         double term_vac = 7.09e-36 * 0.01;
         double term_LENR = LENR;
-        double term_res = 2.0 * q * system_B0 * 1e-3 * 0.707 * DPM_res; // sin(45Ã‚Â°)
+        double term_res = 2.0 * q * system_B0 * 1e-3 * 0.707 * DPM_res; // sin(45Ãƒâ€šÃ‚Â°)
         double term_neut = k_neutron * sigma_n;
         double term_rel = k_rel * pow(E_cm_astro / E_cm, 2.0);
         double term_neutrino = 9.07e-43;
@@ -1013,7 +1013,7 @@ public:
 
 /**
  * Inflation Buoyancy Term (from Source165)
- * ÃŽÂ²_i Ãƒâ€” V_infl Ãƒâ€” ÃÂ_vac Ãƒâ€” a_universal
+ * ÃƒÅ½Ã‚Â²_i ÃƒÆ’Ã¢â‚¬â€ V_infl ÃƒÆ’Ã¢â‚¬â€ ÃƒÂÃ‚Â_vac ÃƒÆ’Ã¢â‚¬â€ a_universal
  */
 class InflationBuoyancyTerm : public PhysicsTerm
 {
@@ -1044,7 +1044,7 @@ public:
 
 /**
  * Superconductivity Term (from Source165)
- * Time-dependent: ÃŽÂ» Ãƒâ€” (ÃÂ_SC/ÃÂ_UA) Ãƒâ€” Ãâ€°_s Ãƒâ€” cos(Ãâ‚¬t_n) Ãƒâ€” (1 + f_TRZ)
+ * Time-dependent: ÃƒÅ½Ã‚Â» ÃƒÆ’Ã¢â‚¬â€ (ÃƒÂÃ‚Â_SC/ÃƒÂÃ‚Â_UA) ÃƒÆ’Ã¢â‚¬â€ ÃƒÂÃ¢â‚¬Â°_s ÃƒÆ’Ã¢â‚¬â€ cos(ÃƒÂÃ¢â€šÂ¬t_n) ÃƒÆ’Ã¢â‚¬â€ (1 + f_TRZ)
  */
 class SuperconductiveTerm : public PhysicsTerm
 {
@@ -1080,7 +1080,7 @@ public:
 
 /**
  * Neutron Scattering Term (from Source165)
- * k_neutron Ãƒâ€” ÃÆ’_n
+ * k_neutron ÃƒÆ’Ã¢â‚¬â€ ÃƒÂÃ†â€™_n
  */
 class NeutronScatteringTerm : public PhysicsTerm
 {
@@ -1244,7 +1244,7 @@ public:
                            term_res + term_neut + term_rel + term_neutrino + term_gas;
 
         // Add gravity compressed + resonance + buoyancy
-        double gravity = G * system_M / (system_r * system_r);
+        double gravity = emergent_Ug1(system_M, system_r);  // DPM: mu_s * grad(M_s/r)
         double resonance = 2.0 * 4.30e33;
         double buoyancy = 1.0 * 1e-6 * 1e-30 * 1e12; // Triadic beta_i=1.0
 
@@ -1260,7 +1260,7 @@ public:
 
 /**
  * Dipole Vortex Term (from Source166)
- * Golden ratio (Ãâ€  = 0.618) based species determination
+ * Golden ratio (ÃƒÂÃ¢â‚¬Â  = 0.618) based species determination
  */
 class DipoleVortexTerm : public PhysicsTerm
 {
@@ -1269,12 +1269,12 @@ public:
     {
         setMetadata("version", "1.0");
         setMetadata("source", "Source166.cpp");
-        setMetadata("equation", "dipole * sin(2Ãâ‚¬ * Ãâ€  * 1.0) where Ãâ€  = 0.618");
+        setMetadata("equation", "dipole * sin(2ÃƒÂÃ¢â€šÂ¬ * ÃƒÂÃ¢â‚¬Â  * 1.0) where ÃƒÂÃ¢â‚¬Â  = 0.618");
     }
 
     double compute(double /* t */, const std::map<std::string, double> & /* params */) const override
     {
-        double golden_ratio = 0.618033988749895; // (Ã¢Ë†Å¡5 - 1)/2
+        double golden_ratio = 0.618033988749895; // (ÃƒÂ¢Ã‹â€ Ã…Â¡5 - 1)/2
         double dipole_base = getDynamicParameter("dipole_base", 1.0);
         double phase = 2.0 * M_PI * golden_ratio * 1.0;
 
@@ -1323,7 +1323,7 @@ public:
 
 /**
  * Triadic Scale Term (from Source166)
- * Enhanced triadic UQFF scaling with ÃŽÂ²_i = 1.0
+ * Enhanced triadic UQFF scaling with ÃƒÅ½Ã‚Â²_i = 1.0
  */
 class TriadicScaleTerm : public PhysicsTerm
 {
@@ -1687,7 +1687,7 @@ public:
         double r = params.count("radius") ? params.at("radius") : 1e13;
 
         // Resonance-based multi-layer gravity
-        double base_gravity = G * system_intensity / (r * r);
+        double base_gravity = emergent_Ug1(system_intensity, r);  // DPM: mu_s * grad(M_s/r)
         double resonance_mod = 1.0 + 0.2 * cos(2 * M_PI * resonance_freq * t);
         double superconductive_factor = 1.1; // Enhanced by superconductivity
 
@@ -1781,7 +1781,7 @@ public:
         double mu_s = Bs_t * pow(Rs, 3);
 
         // Mass gradient
-        double grad_Ms_r = G * Ms / (Rs * Rs);
+        double grad_Ms_r = emergent_Ug1(Ms, Rs);  // DPM: mu_s * grad(M_s/r)
 
         // Defect modulation
         double defect = 1.0 + delta_def * sin(0.001 * t);
@@ -2063,11 +2063,11 @@ public:
 class CompressedMUGETerm : public PhysicsTerm
 {
 private:
-    double I;      // Moment of inertia (kgÃ‚Â·mÃ‚Â²)
+    double I;      // Moment of inertia (kgÃƒâ€šÃ‚Â·mÃƒâ€šÃ‚Â²)
     double A;      // System amplitude (kg)
     double omega1; // Primary angular velocity (rad/s)
     double omega2; // Secondary angular velocity (rad/s)
-    double Vsys;   // System volume (mÃ‚Â³)
+    double Vsys;   // System volume (mÃƒâ€šÃ‚Â³)
     double vexp;   // Expansion velocity (m/s)
     double t_age;  // System age (s)
     double ffluid; // Fluid fraction
@@ -2119,7 +2119,7 @@ public:
 class ResonanceMUGE_DPMTerm : public PhysicsTerm
 {
 private:
-    double I;      // Moment of inertia (kgÃ‚Â·mÃ‚Â²)
+    double I;      // Moment of inertia (kgÃƒâ€šÃ‚Â·mÃƒâ€šÃ‚Â²)
     double omega1; // Primary angular velocity (rad/s)
     double omega2; // Secondary angular velocity (rad/s)
     double fDPM;   // DPM frequency (Hz)
@@ -2210,8 +2210,8 @@ private:
     double omega1;
     double omega2;
     double fDPM;
-    double Evac_neb;   // Nebula vacuum energy (J/mÃ‚Â³)
-    double Evac_ISM;   // ISM vacuum energy (J/mÃ‚Â³)
+    double Evac_neb;   // Nebula vacuum energy (J/mÃƒâ€šÃ‚Â³)
+    double Evac_ISM;   // ISM vacuum energy (J/mÃƒâ€šÃ‚Â³)
     double Delta_Evac; // Vacuum energy differential
     double k4_res;
 
@@ -2649,7 +2649,7 @@ public:
         double g_muB_B0 = g_H * muB_B0;
         double h_omega0 = h_planck * omega_0;
         double base = g_muB_B0 / h_omega0;
-        double E_DPM = base * 2.82e-56; // Scaled to 3.11e9 J/mÃ‚Â³
+        double E_DPM = base * 2.82e-56; // Scaled to 3.11e9 J/mÃƒâ€šÃ‚Â³
 
         return E_DPM;
     }
@@ -2742,10 +2742,10 @@ public:
         double B_crit = params.count("B_crit") ? params.at("B_crit") : 1e11;
 
         // Base gravitational term
-        // DPM-emergent: Âµ_s Ã— ?(M_s/r) (mass gradient, not Newtonian force)
+        // DPM-emergent: Ã‚Âµ_s Ãƒâ€” ?(M_s/r) (mass gradient, not Newtonian force)
 
         // DPM-emergent: mu_s x grad(M_s/r) (mass gradient, not Newtonian force)
-        double ug1_base = (G * M) / (r * r);
+        double ug1_base = emergent_Ug1(M, r);  // DPM: mu_s * grad(M_s/r)
 
         // H(z) correction
         double corr_H = 1 + Hz * t;
@@ -2758,7 +2758,7 @@ public:
         double term1 = ug1_base * corr_H * corr_B;
 
         // BH term
-        double term_BH = (G * M_BH) / (r_BH * r_BH);
+        double term_BH = emergent_Ug1(M_BH, r_BH);  // DPM: mu_s * grad(M_s/r)
 
         // UQFF Ug (simplified - includes vacuum contributions)
         double Lambda = params.count("Lambda") ? params.at("Lambda") : 1.1e-52;
@@ -2802,7 +2802,7 @@ public:
 };
 
 /**
- * MagnetarEMTerm - Electromagnetic contribution from v Ãƒâ€” B
+ * MagnetarEMTerm - Electromagnetic contribution from v ÃƒÆ’Ã¢â‚¬â€ B
  * Extracted from Source13_Enhanced.cpp: term4
  */
 class MagnetarEMTerm : public PhysicsTerm
@@ -2825,7 +2825,7 @@ public:
     std::string getName() const override { return "MagnetarEM"; }
     std::string getDescription() const override
     {
-        return "Source13 magnetar: electromagnetic vÃƒâ€”B coupling (Lorentz force)";
+        return "Source13 magnetar: electromagnetic vÃƒÆ’Ã¢â‚¬â€B coupling (Lorentz force)";
     }
 };
 
@@ -2863,7 +2863,7 @@ public:
     std::string getName() const override { return "MagnetarGW"; }
     std::string getDescription() const override
     {
-        return "Source13 magnetar: gravitational wave emission (spindown dÃŽÂ©/dt)^2";
+        return "Source13 magnetar: gravitational wave emission (spindown dÃƒÅ½Ã‚Â©/dt)^2";
     }
 };
 
@@ -2889,7 +2889,7 @@ public:
     std::string getName() const override { return "MagnetarQuantum"; }
     std::string getDescription() const override
     {
-        return "Source13 magnetar: quantum uncertainty (Ã¢â€žÂ/Ã¢Ë†Å¡(ÃŽâ€xÃ‚Â·ÃŽâ€p)) contribution";
+        return "Source13 magnetar: quantum uncertainty (ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â/ÃƒÂ¢Ã‹â€ Ã…Â¡(ÃƒÅ½Ã¢â‚¬ÂxÃƒâ€šÃ‚Â·ÃƒÅ½Ã¢â‚¬Âp)) contribution";
     }
 };
 
@@ -2908,10 +2908,10 @@ public:
         double rho_fluid = params.count("rho_fluid") ? params.at("rho_fluid") : 1e8;
 
         // Base gravitational term
-        // DPM-emergent: Âµ_s Ã— ?(M_s/r) (mass gradient, not Newtonian force)
+        // DPM-emergent: Ã‚Âµ_s Ãƒâ€” ?(M_s/r) (mass gradient, not Newtonian force)
 
         // DPM-emergent: mu_s x grad(M_s/r) (mass gradient, not Newtonian force)
-        double ug1_base = (G * M) / (r * r);
+        double ug1_base = emergent_Ug1(M, r);  // DPM: mu_s * grad(M_s/r)
 
         // Volume
         double V = (4.0 / 3.0) * M_PI * r * r * r;
@@ -2922,7 +2922,7 @@ public:
     std::string getName() const override { return "MagnetarFluid"; }
     std::string getDescription() const override
     {
-        return "Source13 magnetar: magnetospheric fluid dynamics (ÃÂ_fluid Ãƒâ€” V)";
+        return "Source13 magnetar: magnetospheric fluid dynamics (ÃƒÂÃ‚Â_fluid ÃƒÆ’Ã¢â‚¬â€ V)";
     }
 };
 
@@ -2988,7 +2988,7 @@ public:
 
         // Density perturbations
         double pert1 = delta_rho_over_rho;
-        double pert2 = 3 * G * M / (r * r * r);
+        double pert2 = 3 * emergent_Ug1(M, r) / r;  // DPM tidal gradient
 
         double term_dm_force_like = (M + M_dm) * (pert1 + pert2);
         return term_dm_force_like / M;
@@ -2997,7 +2997,7 @@ public:
     std::string getName() const override { return "MagnetarDarkMatter"; }
     std::string getDescription() const override
     {
-        return "Source13 magnetar: dark matter halo + density perturbations (M_DM=" + std::to_string(M_DM_factor) + "Ãƒâ€”M)";
+        return "Source13 magnetar: dark matter halo + density perturbations (M_DM=" + std::to_string(M_DM_factor) + "ÃƒÆ’Ã¢â‚¬â€M)";
     }
 };
 
@@ -3027,7 +3027,7 @@ public:
     std::string getName() const override { return "MagnetarMagneticEnergy"; }
     std::string getDescription() const override
     {
-        return "Source13 magnetar: magnetic field energy (BÃ‚Â²/2ÃŽÂ¼Ã¢â€šâ‚¬ Ãƒâ€” V)";
+        return "Source13 magnetar: magnetic field energy (BÃƒâ€šÃ‚Â²/2ÃƒÅ½Ã‚Â¼ÃƒÂ¢Ã¢â‚¬Å¡Ã¢â€šÂ¬ ÃƒÆ’Ã¢â‚¬â€ V)";
     }
 };
 
@@ -3060,7 +3060,7 @@ public:
     std::string getName() const override { return "MagnetarDecay"; }
     std::string getDescription() const override
     {
-        return "Source13 magnetar: cumulative decay energy (LÃ¢â€šâ‚¬ Ãƒâ€” Ãâ€ž_decay Ãƒâ€” [1-e^(-t/Ãâ€ž)])";
+        return "Source13 magnetar: cumulative decay energy (LÃƒÂ¢Ã¢â‚¬Å¡Ã¢â€šÂ¬ ÃƒÆ’Ã¢â‚¬â€ ÃƒÂÃ¢â‚¬Å¾_decay ÃƒÆ’Ã¢â‚¬â€ [1-e^(-t/ÃƒÂÃ¢â‚¬Å¾)])";
     }
 };
 
@@ -3091,10 +3091,10 @@ public:
         double tau_B = params.count("tau_B") ? params.at("tau_B") : 4000 * 3.156e7;
 
         // Base gravitational term
-        // DPM-emergent: Âµ_s Ã— ?(M_s/r) (mass gradient, not Newtonian force)
+        // DPM-emergent: Ã‚Âµ_s Ãƒâ€” ?(M_s/r) (mass gradient, not Newtonian force)
 
         // DPM-emergent: mu_s x grad(M_s/r) (mass gradient, not Newtonian force)
-        double ug1_base = (G * M) / (r * r);
+        double ug1_base = emergent_Ug1(M, r);  // DPM: mu_s * grad(M_s/r)
 
         // B(t) decay
         double Bt = B0 * exp(-t / tau_B);
@@ -3164,7 +3164,7 @@ public:
         // B(t) decay
         double Bt = B0 * exp(-t / tau_B);
 
-        // v Ãƒâ€” B term
+        // v ÃƒÆ’Ã¢â‚¬â€ B term
         double cross_vB = v_surf * Bt;
         double em_base = (q_charge * cross_vB) / proton_mass;
 
@@ -3177,7 +3177,7 @@ public:
     std::string getName() const override { return "Magnetar0501EM"; }
     std::string getDescription() const override
     {
-        return "Source14 SGR 0501+4516: scaled EM vÃƒâ€”B with UA/SCm vacuum correction";
+        return "Source14 SGR 0501+4516: scaled EM vÃƒÆ’Ã¢â‚¬â€B with UA/SCm vacuum correction";
     }
 };
 
@@ -3215,7 +3215,7 @@ public:
     std::string getName() const override { return "Magnetar0501GW"; }
     std::string getDescription() const override
     {
-        return "Source14 SGR 0501+4516: gravitational wave (dÃŽÂ©/dt)^2, P_init=" + std::to_string(P_init) + "s";
+        return "Source14 SGR 0501+4516: gravitational wave (dÃƒÅ½Ã‚Â©/dt)^2, P_init=" + std::to_string(P_init) + "s";
     }
 };
 
@@ -3241,7 +3241,7 @@ public:
     std::string getName() const override { return "Magnetar0501Quantum"; }
     std::string getDescription() const override
     {
-        return "Source14 SGR 0501+4516: quantum uncertainty (Ã¢â€žÂ/Ã¢Ë†Å¡(ÃŽâ€xÃ‚Â·ÃŽâ€p))";
+        return "Source14 SGR 0501+4516: quantum uncertainty (ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â/ÃƒÂ¢Ã‹â€ Ã…Â¡(ÃƒÅ½Ã¢â‚¬ÂxÃƒâ€šÃ‚Â·ÃƒÅ½Ã¢â‚¬Âp))";
     }
 };
 
@@ -3260,10 +3260,10 @@ public:
         double rho_fluid = params.count("rho_fluid") ? params.at("rho_fluid") : 1e17;
 
         // Base gravitational term
-        // DPM-emergent: Âµ_s Ã— ?(M_s/r) (mass gradient, not Newtonian force)
+        // DPM-emergent: Ã‚Âµ_s Ãƒâ€” ?(M_s/r) (mass gradient, not Newtonian force)
 
         // DPM-emergent: mu_s x grad(M_s/r) (mass gradient, not Newtonian force)
-        double ug1_base = (G * M) / (r * r);
+        double ug1_base = emergent_Ug1(M, r);  // DPM: mu_s * grad(M_s/r)
 
         // Volume
         double V = (4.0 / 3.0) * M_PI * r * r * r;
@@ -3274,7 +3274,7 @@ public:
     std::string getName() const override { return "Magnetar0501Fluid"; }
     std::string getDescription() const override
     {
-        return "Source14 SGR 0501+4516: magnetospheric fluid (ÃÂ_fluid Ãƒâ€” V Ãƒâ€” g / M)";
+        return "Source14 SGR 0501+4516: magnetospheric fluid (ÃƒÂÃ‚Â_fluid ÃƒÆ’Ã¢â‚¬â€ V ÃƒÆ’Ã¢â‚¬â€ g / M)";
     }
 };
 
@@ -3339,7 +3339,7 @@ public:
 
         // Density perturbations
         double pert1 = delta_rho_over_rho;
-        double pert2 = 3 * G * M / (r * r * r);
+        double pert2 = 3 * emergent_Ug1(M, r) / r;  // DPM tidal gradient
 
         double term_dm_force_like = (M + M_dm) * (pert1 + pert2);
         return term_dm_force_like / M;
@@ -3390,19 +3390,19 @@ public:
         double Bt = B_G * 1e-4;
 
         // Term 1: Base gravity with M(t) + H(z) + B corrections
-        // DPM-emergent: Âµ_s Ã— ?(M_s/r) (mass gradient, not Newtonian force)
+        // DPM-emergent: Ã‚Âµ_s Ãƒâ€” ?(M_s/r) (mass gradient, not Newtonian force)
 
         // DPM-emergent: mu_s x grad(M_s/r) (mass gradient, not Newtonian force)
-        double ug1_t = (G * Mt) / (r * r);
+        double ug1_t = emergent_Ug1(Mt, r);  // DPM: mu_s * grad(M_s/r)
         double corr_H = 1 + H0 * t;
         double corr_B = 1 - Bt / B_crit;
         double term1 = ug1_t * corr_H * corr_B;
 
         // Term 2: UQFF Ug with f_TRZ
-        // DPM-emergent: gravity from magnetic moment Ã— mass gradient (not Newtonian GM/rÂ²)
+        // DPM-emergent: gravity from magnetic moment Ãƒâ€” mass gradient (not Newtonian GM/rÃ‚Â²)
 
         // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
-        double Ug1 = (G * Mt) / (r * r);
+        double Ug1 = emergent_Ug1(Mt, r);  // DPM: mu_s * grad(M_s/r)
         double Ug2 = 0.0; // TODO: DPM Ug2 quantum shell term (traps magnetics/spawn material)
         double Ug3 = 0.0; // TODO: DPM Ug3 magnetic string rotation term
         double Ug4 = Ug1 * corr_B;
@@ -3441,7 +3441,7 @@ public:
 };
 
 /**
- * SgrAStarEMTerm - Sgr A* electromagnetic vÃƒâ€”B term (simplified, no UA correction)
+ * SgrAStarEMTerm - Sgr A* electromagnetic vÃƒÆ’Ã¢â‚¬â€B term (simplified, no UA correction)
  * Extracted from source15.cpp: term4
  */
 class SgrAStarEMTerm : public PhysicsTerm
@@ -3459,7 +3459,7 @@ public:
         double B_G = B0_G * exp(-t / tau_B);
         double Bt = B_G * 1e-4;
 
-        // v Ãƒâ€” B electromagnetic acceleration
+        // v ÃƒÆ’Ã¢â‚¬â€ B electromagnetic acceleration
         double cross_vB = v_surf * Bt;
         return (q_charge * cross_vB) / proton_mass;
     }
@@ -3467,7 +3467,7 @@ public:
     std::string getName() const override { return "SgrAStar_EM"; }
     std::string getDescription() const override
     {
-        return "Source15 Sgr A*: EM vÃƒâ€”B acceleration (no UA/SCm correction)";
+        return "Source15 Sgr A*: EM vÃƒÆ’Ã¢â‚¬â€B acceleration (no UA/SCm correction)";
     }
 };
 
@@ -3537,7 +3537,7 @@ public:
     std::string getName() const override { return "SgrAStar_Quantum"; }
     std::string getDescription() const override
     {
-        return "Source15 Sgr A*: quantum uncertainty (Ã¢â€žÂ/Ã¢Ë†Å¡(ÃŽâ€xÃ‚Â·ÃŽâ€p))";
+        return "Source15 Sgr A*: quantum uncertainty (ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â/ÃƒÂ¢Ã‹â€ Ã…Â¡(ÃƒÅ½Ã¢â‚¬ÂxÃƒâ€šÃ‚Â·ÃƒÅ½Ã¢â‚¬Âp))";
     }
 };
 
@@ -3562,10 +3562,10 @@ public:
         double Mt = M_initial * (1 + M_dot);
 
         // Base gravity with M(t)
-        // DPM-emergent: Âµ_s Ã— ?(M_s/r) (mass gradient, not Newtonian force)
+        // DPM-emergent: Ã‚Âµ_s Ãƒâ€” ?(M_s/r) (mass gradient, not Newtonian force)
 
         // DPM-emergent: mu_s x grad(M_s/r) (mass gradient, not Newtonian force)
-        double ug1_t = (G * Mt) / (r * r);
+        double ug1_t = emergent_Ug1(Mt, r);  // DPM: mu_s * grad(M_s/r)
 
         // Volume
         double V = (4.0 / 3.0) * M_PI * r * r * r;
@@ -3576,7 +3576,7 @@ public:
     std::string getName() const override { return "SgrAStar_Fluid"; }
     std::string getDescription() const override
     {
-        return "Source15 Sgr A*: accretion disk fluid dynamics (ÃÂ_fluid Ãƒâ€” V)";
+        return "Source15 Sgr A*: accretion disk fluid dynamics (ÃƒÂÃ‚Â_fluid ÃƒÆ’Ã¢â‚¬â€ V)";
     }
 };
 
@@ -3619,7 +3619,7 @@ public:
 
 /**
  * SgrAStarDarkMatterTerm - Sgr A* dark matter with precession angle
- * Extracted from source15.cpp: term_DM with sin(30Ã‚Â°) precession
+ * Extracted from source15.cpp: term_DM with sin(30Ãƒâ€šÃ‚Â°) precession
  */
 class SgrAStarDarkMatterTerm : public PhysicsTerm
 {
@@ -3652,7 +3652,7 @@ public:
 
         // Density perturbations
         double pert1 = delta_rho_over_rho;
-        double pert2 = 3 * G * Mt / (r * r * r);
+        double pert2 = 3 * emergent_Ug1(Mt, r) / r;  // DPM tidal gradient
 
         double term_dm_force_like = (Mt + M_dm) * (pert1 + pert2 * sin_prec);
         return term_dm_force_like / Mt;
@@ -3661,7 +3661,7 @@ public:
     std::string getName() const override { return "SgrAStar_DarkMatter"; }
     std::string getDescription() const override
     {
-        return "Source15 Sgr A*: DM + precession (angle=" + std::to_string(precession_angle_deg) + "Ã‚Â°, M_DM=" + std::to_string(M_DM_factor * 100) + "%)";
+        return "Source15 Sgr A*: DM + precession (angle=" + std::to_string(precession_angle_deg) + "Ãƒâ€šÃ‚Â°, M_DM=" + std::to_string(M_DM_factor * 100) + "%)";
     }
 };
 
@@ -3762,7 +3762,7 @@ public:
         double Mt = mass * (1 + M_dot);
 
         // Ug terms
-        // DPM-emergent: gravity from magnetic moment Ã— mass gradient (not Newtonian GM/rÂ²)
+        // DPM-emergent: gravity from magnetic moment Ãƒâ€” mass gradient (not Newtonian GM/rÃ‚Â²)
 
         // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
         double Ug1 = (g_val * Mt) / (radius * radius);
@@ -4067,7 +4067,7 @@ public:
         double Mt = mass * (1 + M_dot);
 
         // Ug terms
-        // DPM-emergent: gravity from magnetic moment Ã— mass gradient (not Newtonian GM/rÂ²)
+        // DPM-emergent: gravity from magnetic moment Ãƒâ€” mass gradient (not Newtonian GM/rÃ‚Â²)
 
         // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
         double Ug1 = (g_val * Mt) / (radius * radius);
@@ -4380,7 +4380,7 @@ public:
         double Mt = mass * (1 + M_dot);
 
         // Ug terms
-        // DPM-emergent: gravity from magnetic moment Ã— mass gradient (not Newtonian GM/rÂ²)
+        // DPM-emergent: gravity from magnetic moment Ãƒâ€” mass gradient (not Newtonian GM/rÃ‚Â²)
 
         // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
         double Ug1 = (g_val * Mt) / (radius * radius);
@@ -4644,9 +4644,9 @@ public:
         double l_fac = params.count("L_factor") ? params.at("L_factor") : L_factor;
 
         // Base gravity
-        // DPM-emergent: gravity from magnetic moment Ã— mass gradient (not Newtonian GM/rÂ²)
+        // DPM-emergent: gravity from magnetic moment Ãƒâ€” mass gradient (not Newtonian GM/rÃ‚Â²)
 
-        // DPM-emergent: gravity from magnetic moment Ã— mass gradient (not Newtonian GM/rÂ²)
+        // DPM-emergent: gravity from magnetic moment Ãƒâ€” mass gradient (not Newtonian GM/rÃ‚Â²)
 
 
         // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
@@ -4710,9 +4710,9 @@ public:
         double f_trz = params.count("f_TRZ") ? params.at("f_TRZ") : f_TRZ;
 
         // Ug terms
-        // DPM-emergent: gravity from magnetic moment Ã— mass gradient (not Newtonian GM/rÂ²)
+        // DPM-emergent: gravity from magnetic moment Ãƒâ€” mass gradient (not Newtonian GM/rÃ‚Â²)
 
-        // DPM-emergent: gravity from magnetic moment Ã— mass gradient (not Newtonian GM/rÂ²)
+        // DPM-emergent: gravity from magnetic moment Ãƒâ€” mass gradient (not Newtonian GM/rÃ‚Â²)
 
 
         // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
@@ -4805,9 +4805,9 @@ public:
         double rho_f = params.count("rho_fluid") ? params.at("rho_fluid") : rho_fluid;
 
         // Base gravity
-        // DPM-emergent: gravity from magnetic moment Ã— mass gradient (not Newtonian GM/rÂ²)
+        // DPM-emergent: gravity from magnetic moment Ãƒâ€” mass gradient (not Newtonian GM/rÃ‚Â²)
 
-        // DPM-emergent: gravity from magnetic moment Ã— mass gradient (not Newtonian GM/rÂ²)
+        // DPM-emergent: gravity from magnetic moment Ãƒâ€” mass gradient (not Newtonian GM/rÃ‚Â²)
 
 
         // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
@@ -4939,9 +4939,9 @@ public:
         double b_crit_val = params.count("B_crit") ? params.at("B_crit") : B_crit;
 
         // Base gravity
-        // DPM-emergent: gravity from magnetic moment Ã— mass gradient (not Newtonian GM/rÂ²)
+        // DPM-emergent: gravity from magnetic moment Ãƒâ€” mass gradient (not Newtonian GM/rÃ‚Â²)
 
-        // DPM-emergent: gravity from magnetic moment Ã— mass gradient (not Newtonian GM/rÂ²)
+        // DPM-emergent: gravity from magnetic moment Ãƒâ€” mass gradient (not Newtonian GM/rÃ‚Â²)
 
 
         // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
@@ -4982,7 +4982,7 @@ public:
     std::string getName() const override { return "NGC2525_BlackHole"; }
     std::string getDescription() const override
     {
-        return "Source20 NGC2525: Supermassive black hole acceleration (M_BH=" + std::to_string(M_BH / 1.989e30 / 1e6) + "M MÃ¢Ëœâ€°)";
+        return "Source20 NGC2525: Supermassive black hole acceleration (M_BH=" + std::to_string(M_BH / 1.989e30 / 1e6) + "M MÃƒÂ¢Ã‹Å“Ã¢â‚¬Â°)";
     }
 };
 
@@ -5025,9 +5025,9 @@ public:
         double f_trz = params.count("f_TRZ") ? params.at("f_TRZ") : f_TRZ;
 
         // Ug terms
-        // DPM-emergent: gravity from magnetic moment Ã— mass gradient (not Newtonian GM/rÂ²)
+        // DPM-emergent: gravity from magnetic moment Ãƒâ€” mass gradient (not Newtonian GM/rÃ‚Â²)
 
-        // DPM-emergent: gravity from magnetic moment Ã— mass gradient (not Newtonian GM/rÂ²)
+        // DPM-emergent: gravity from magnetic moment Ãƒâ€” mass gradient (not Newtonian GM/rÃ‚Â²)
 
 
         // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
@@ -5120,9 +5120,9 @@ public:
         double rho_f = params.count("rho_fluid") ? params.at("rho_fluid") : rho_fluid;
 
         // Base gravity
-        // DPM-emergent: gravity from magnetic moment Ã— mass gradient (not Newtonian GM/rÂ²)
+        // DPM-emergent: gravity from magnetic moment Ãƒâ€” mass gradient (not Newtonian GM/rÃ‚Â²)
 
-        // DPM-emergent: gravity from magnetic moment Ã— mass gradient (not Newtonian GM/rÂ²)
+        // DPM-emergent: gravity from magnetic moment Ãƒâ€” mass gradient (not Newtonian GM/rÃ‚Â²)
 
 
         // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
@@ -5333,7 +5333,7 @@ public:
         double Mt = mass0 * (1 + M_dot);
 
         // Ug terms
-        // DPM-emergent: gravity from magnetic moment Ã— mass gradient (not Newtonian GM/rÂ²)
+        // DPM-emergent: gravity from magnetic moment Ãƒâ€” mass gradient (not Newtonian GM/rÃ‚Â²)
 
         // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
         double Ug1 = (g_val * Mt) / (radius * radius);
@@ -5588,10 +5588,10 @@ public:
     double compute(double t, const std::map<std::string, double> &params) const override
     {
         double Et = E_0 * (1 - exp(-t / tau_exp));
-        // DPM-emergent: Âµ_s Ã— ?(M_s/r) base (Newtonian form is emergent, not foundational)
+        // DPM-emergent: Ã‚Âµ_s Ãƒâ€” ?(M_s/r) base (Newtonian form is emergent, not foundational)
 
         // DPM-emergent: mu_s x grad(M_s/r) base (Newtonian form is emergent, not foundational)
-        double g_base = G * M / (r * r);
+        double g_base = emergent_Ug1(M, r);  // DPM: mu_s * grad(M_s/r)
         double corr_H = 1 + H0 * t;
         double corr_B = 1 - B / B_crit;
         double corr_E = 1 - Et;
@@ -5641,10 +5641,10 @@ public:
     double compute(double t, const std::map<std::string, double> &params) const override
     {
         double Et = E_0 * (1 - exp(-t / tau_exp));
-        // DPM-emergent: gravity from magnetic moment Ã— mass gradient (not Newtonian GM/rÂ²)
+        // DPM-emergent: gravity from magnetic moment Ãƒâ€” mass gradient (not Newtonian GM/rÃ‚Â²)
 
         // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
-        double Ug1 = G * M / (r * r);
+        double Ug1 = emergent_Ug1(M, r);  // DPM: mu_s * grad(M_s/r)
         double corr_B = 1 - B / B_crit;
         double Ug4 = Ug1 * corr_B;
         return (Ug1 + Ug4) * (1 + f_TRZ) * (1 - Et);
@@ -5722,10 +5722,10 @@ public:
     double compute(double t, const std::map<std::string, double> &params) const override
     {
         double V = (4.0 / 3.0) * M_PI * r * r * r;
-        // DPM-emergent: Âµ_s Ã— ?(M_s/r) base (Newtonian form is emergent, not foundational)
+        // DPM-emergent: Ã‚Âµ_s Ãƒâ€” ?(M_s/r) base (Newtonian form is emergent, not foundational)
 
         // DPM-emergent: mu_s x grad(M_s/r) base (Newtonian form is emergent, not foundational)
-        double g_base = G * M / (r * r);
+        double g_base = emergent_Ug1(M, r);  // DPM: mu_s * grad(M_s/r)
         return (rho_fluid * V * g_base) / M;
     }
 
@@ -5776,7 +5776,7 @@ public:
     {
         double M_dm = M * M_DM_factor;
         double pert1 = delta_rho_over_rho;
-        double pert2 = 3 * G * M / (r * r * r);
+        double pert2 = 3 * emergent_Ug1(M, r) / r;  // DPM tidal gradient
         double term_dm_force = (M + M_dm) * (pert1 + pert2);
         return term_dm_force / M;
     }
@@ -5823,10 +5823,10 @@ public:
     double compute(double t, const std::map<std::string, double> &params) const override
     {
         double Et = E_0 * (1 - exp(-t / tau_exp));
-        // DPM-emergent: Âµ_s Ã— ?(M_s/r) base (Newtonian form is emergent, not foundational)
+        // DPM-emergent: Ã‚Âµ_s Ãƒâ€” ?(M_s/r) base (Newtonian form is emergent, not foundational)
 
         // DPM-emergent: mu_s x grad(M_s/r) base (Newtonian form is emergent, not foundational)
-        double g_base = G * M / (r * r);
+        double g_base = emergent_Ug1(M, r);  // DPM: mu_s * grad(M_s/r)
         return -g_base * Et;
     }
 
@@ -5859,7 +5859,7 @@ public:
         double M_dot = SFR_factor * exp(-t / tau_SF);
         double Mt = M0 * (1 + M_dot);
         double It = I0 * exp(-t / tau_merger);
-        double g_base = G * Mt / (r * r);
+        double g_base = emergent_Ug1(Mt, r);  // DPM: mu_s * grad(M_s/r)
         double corr_H = 1 + Hz * t;
         double corr_B = 1 - B / B_crit;
         double corr_I = 1 + It;
@@ -5912,10 +5912,10 @@ public:
         double M_dot = SFR_factor * exp(-t / tau_SF);
         double Mt = M0 * (1 + M_dot);
         double It = I0 * exp(-t / tau_merger);
-        // DPM-emergent: gravity from magnetic moment Ã— mass gradient (not Newtonian GM/rÂ²)
+        // DPM-emergent: gravity from magnetic moment Ãƒâ€” mass gradient (not Newtonian GM/rÃ‚Â²)
 
         // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
-        double Ug1 = G * Mt / (r * r);
+        double Ug1 = emergent_Ug1(Mt, r);  // DPM: mu_s * grad(M_s/r)
         double corr_B = 1 - B / B_crit;
         double Ug4 = Ug1 * corr_B;
         return (Ug1 + Ug4) * (1 + f_TRZ) * (1 + It);
@@ -5997,7 +5997,7 @@ public:
         double M_dot = SFR_factor * exp(-t / tau_SF);
         double Mt = M0 * (1 + M_dot);
         double V = (4.0 / 3.0) * M_PI * r * r * r;
-        double g_base = G * Mt / (r * r);
+        double g_base = emergent_Ug1(Mt, r);  // DPM: mu_s * grad(M_s/r)
         return (rho_fluid * V * g_base) / Mt;
     }
 
@@ -6051,7 +6051,7 @@ public:
         double Mt = M0 * (1 + M_dot);
         double M_dm = Mt * M_DM_factor;
         double pert1 = delta_rho_over_rho;
-        double pert2 = 3 * G * Mt / (r * r * r);
+        double pert2 = 3 * emergent_Ug1(Mt, r) / r;  // DPM tidal gradient
         double term_dm_force = (Mt + M_dm) * (pert1 + pert2);
         return term_dm_force / Mt;
     }
@@ -6102,7 +6102,7 @@ public:
         double M_dot = SFR_factor * exp(-t / tau_SF);
         double Mt = M0 * (1 + M_dot);
         double It = I0 * exp(-t / tau_merger);
-        double g_base = G * Mt / (r * r);
+        double g_base = emergent_Ug1(Mt, r);  // DPM: mu_s * grad(M_s/r)
         return g_base * It;
     }
 
@@ -6132,10 +6132,10 @@ public:
     double compute(double t, const std::map<std::string, double> &params) const override
     {
         double Et = E_0 * (1 - exp(-t / tau_erosion));
-        // DPM-emergent: Âµ_s Ã— ?(M_s/r) base (Newtonian form is emergent, not foundational)
+        // DPM-emergent: Ã‚Âµ_s Ãƒâ€” ?(M_s/r) base (Newtonian form is emergent, not foundational)
 
         // DPM-emergent: mu_s x grad(M_s/r) base (Newtonian form is emergent, not foundational)
-        double g_base = G * M / (r * r);
+        double g_base = emergent_Ug1(M, r);  // DPM: mu_s * grad(M_s/r)
         double corr_H = 1 + H0 * t;
         double corr_B = 1 - B / B_crit;
         double corr_E = 1 - Et;
@@ -6185,10 +6185,10 @@ public:
     double compute(double t, const std::map<std::string, double> &params) const override
     {
         double Et = E_0 * (1 - exp(-t / tau_erosion));
-        // DPM-emergent: gravity from magnetic moment Ã— mass gradient (not Newtonian GM/rÂ²)
+        // DPM-emergent: gravity from magnetic moment Ãƒâ€” mass gradient (not Newtonian GM/rÃ‚Â²)
 
         // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
-        double Ug1 = G * M / (r * r);
+        double Ug1 = emergent_Ug1(M, r);  // DPM: mu_s * grad(M_s/r)
         double corr_B = 1 - B / B_crit;
         double Ug4 = Ug1 * corr_B;
         return (Ug1 + Ug4) * (1 + f_TRZ) * (1 - Et);
@@ -6266,10 +6266,10 @@ public:
     double compute(double t, const std::map<std::string, double> &params) const override
     {
         double V = (4.0 / 3.0) * M_PI * r * r * r;
-        // DPM-emergent: Âµ_s Ã— ?(M_s/r) base (Newtonian form is emergent, not foundational)
+        // DPM-emergent: Ã‚Âµ_s Ãƒâ€” ?(M_s/r) base (Newtonian form is emergent, not foundational)
 
         // DPM-emergent: mu_s x grad(M_s/r) base (Newtonian form is emergent, not foundational)
-        double g_base = G * M / (r * r);
+        double g_base = emergent_Ug1(M, r);  // DPM: mu_s * grad(M_s/r)
         return (rho_fluid * V * g_base) / M;
     }
 
@@ -6320,7 +6320,7 @@ public:
     {
         double M_dm = M * M_DM_factor;
         double pert1 = delta_rho_over_rho;
-        double pert2 = 3 * G * M / (r * r * r);
+        double pert2 = 3 * emergent_Ug1(M, r) / r;  // DPM tidal gradient
         double term_dm_force = (M + M_dm) * (pert1 + pert2);
         return term_dm_force / M;
     }
@@ -6367,10 +6367,10 @@ public:
     double compute(double t, const std::map<std::string, double> &params) const override
     {
         double Et = E_0 * (1 - exp(-t / tau_erosion));
-        // DPM-emergent: Âµ_s Ã— ?(M_s/r) base (Newtonian form is emergent, not foundational)
+        // DPM-emergent: Ã‚Âµ_s Ãƒâ€” ?(M_s/r) base (Newtonian form is emergent, not foundational)
 
         // DPM-emergent: mu_s x grad(M_s/r) base (Newtonian form is emergent, not foundational)
-        double g_base = G * M / (r * r);
+        double g_base = emergent_Ug1(M, r);  // DPM: mu_s * grad(M_s/r)
         return -g_base * Et;
     }
 
@@ -6401,10 +6401,10 @@ public:
     {
         double Bt = B0 * exp(-t / tau_B);
         double Ft = F0 * exp(-t / tau_fil);
-        // DPM-emergent: Âµ_s Ã— ?(M_s/r) base (Newtonian form is emergent, not foundational)
+        // DPM-emergent: Ã‚Âµ_s Ãƒâ€” ?(M_s/r) base (Newtonian form is emergent, not foundational)
 
         // DPM-emergent: mu_s x grad(M_s/r) base (Newtonian form is emergent, not foundational)
-        double g_base = G * M / (r * r);
+        double g_base = emergent_Ug1(M, r);  // DPM: mu_s * grad(M_s/r)
         double corr_H = 1 + Hz * t;
         double corr_B = 1 - Bt / B_crit;
         double corr_F = 1 + Ft;
@@ -6429,7 +6429,7 @@ public:
 
     double compute(double t, const std::map<std::string, double> &params) const override
     {
-        return G * M_BH / (r_BH * r_BH);
+        return emergent_Ug1(M_BH, r_BH);  // DPM-emergent
     }
 
     std::string getName() const override { return "NGC1275_BlackHole"; }
@@ -6476,10 +6476,10 @@ public:
     {
         double Bt = B0 * exp(-t / tau_B);
         double Ft = F0 * exp(-t / tau_fil);
-        // DPM-emergent: gravity from magnetic moment Ã— mass gradient (not Newtonian GM/rÂ²)
+        // DPM-emergent: gravity from magnetic moment Ãƒâ€” mass gradient (not Newtonian GM/rÃ‚Â²)
 
         // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
-        double Ug1 = G * M / (r * r);
+        double Ug1 = emergent_Ug1(M, r);  // DPM: mu_s * grad(M_s/r)
         double corr_B = 1 - Bt / B_crit;
         double Ug4 = Ug1 * corr_B;
         return (Ug1 + Ug4) * (1 + f_TRZ) * (1 + Ft);
@@ -6558,10 +6558,10 @@ public:
     double compute(double t, const std::map<std::string, double> &params) const override
     {
         double V = (4.0 / 3.0) * M_PI * r * r * r;
-        // DPM-emergent: Âµ_s Ã— ?(M_s/r) base (Newtonian form is emergent, not foundational)
+        // DPM-emergent: Ã‚Âµ_s Ãƒâ€” ?(M_s/r) base (Newtonian form is emergent, not foundational)
 
         // DPM-emergent: mu_s x grad(M_s/r) base (Newtonian form is emergent, not foundational)
-        double g_base = G * M / (r * r);
+        double g_base = emergent_Ug1(M, r);  // DPM: mu_s * grad(M_s/r)
         return (rho_fluid * V * g_base) / M;
     }
 
@@ -6612,7 +6612,7 @@ public:
     {
         double M_dm = M * M_DM_factor;
         double pert1 = delta_rho_over_rho;
-        double pert2 = 3 * G * M / (r * r * r);
+        double pert2 = 3 * emergent_Ug1(M, r) / r;  // DPM tidal gradient
         double term_dm_force = (M + M_dm) * (pert1 + pert2);
         return term_dm_force / M;
     }
@@ -6659,10 +6659,10 @@ public:
     double compute(double t, const std::map<std::string, double> &params) const override
     {
         double Ft = F0 * exp(-t / tau_fil);
-        // DPM-emergent: Âµ_s Ã— ?(M_s/r) base (Newtonian form is emergent, not foundational)
+        // DPM-emergent: Ã‚Âµ_s Ãƒâ€” ?(M_s/r) base (Newtonian form is emergent, not foundational)
 
         // DPM-emergent: mu_s x grad(M_s/r) base (Newtonian form is emergent, not foundational)
-        double g_base = G * M / (r * r);
+        double g_base = emergent_Ug1(M, r);  // DPM: mu_s * grad(M_s/r)
         return g_base * Ft;
     }
 
@@ -6695,7 +6695,7 @@ public:
         double M_dot = SFR_factor * exp(-t / tau_SF);
         double Mt = M0 * (1 + M_dot);
         double It = I0 * exp(-t / tau_inter);
-        double g_base = G * Mt / (r * r);
+        double g_base = emergent_Ug1(Mt, r);  // DPM: mu_s * grad(M_s/r)
         double corr_H = 1 + Hz * t;
         double corr_B = 1 - B / B_crit;
         double corr_I = 1 + It;
@@ -6748,10 +6748,10 @@ public:
         double M_dot = SFR_factor * exp(-t / tau_SF);
         double Mt = M0 * (1 + M_dot);
         double It = I0 * exp(-t / tau_inter);
-        // DPM-emergent: gravity from magnetic moment Ã— mass gradient (not Newtonian GM/rÂ²)
+        // DPM-emergent: gravity from magnetic moment Ãƒâ€” mass gradient (not Newtonian GM/rÃ‚Â²)
 
         // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
-        double Ug1 = G * Mt / (r * r);
+        double Ug1 = emergent_Ug1(Mt, r);  // DPM: mu_s * grad(M_s/r)
         double corr_B = 1 - B / B_crit;
         double Ug4 = Ug1 * corr_B;
         return (Ug1 + Ug4) * (1 + f_TRZ) * (1 + It);
@@ -6833,7 +6833,7 @@ public:
         double M_dot = SFR_factor * exp(-t / tau_SF);
         double Mt = M0 * (1 + M_dot);
         double V = (4.0 / 3.0) * M_PI * r * r * r;
-        double g_base = G * Mt / (r * r);
+        double g_base = emergent_Ug1(Mt, r);  // DPM: mu_s * grad(M_s/r)
         return (rho_fluid * V * g_base) / Mt;
     }
 
@@ -6887,7 +6887,7 @@ public:
         double Mt = M0 * (1 + M_dot);
         double M_dm = Mt * M_DM_factor;
         double pert1 = delta_rho_over_rho;
-        double pert2 = 3 * G * Mt / (r * r * r);
+        double pert2 = 3 * emergent_Ug1(Mt, r) / r;  // DPM tidal gradient
         double term_dm_force = (Mt + M_dm) * (pert1 + pert2);
         return term_dm_force / Mt;
     }
@@ -6938,7 +6938,7 @@ public:
         double M_dot = SFR_factor * exp(-t / tau_SF);
         double Mt = M0 * (1 + M_dot);
         double It = I0 * exp(-t / tau_inter);
-        double g_base = G * Mt / (r * r);
+        double g_base = emergent_Ug1(Mt, r);  // DPM: mu_s * grad(M_s/r)
         return g_base * It;
     }
 
@@ -6969,7 +6969,7 @@ public:
     {
         double M_dot = SFR_factor * exp(-t / tau_SF);
         double Mt = M0 * (1 + M_dot);
-        double g_base = G * Mt / (r * r);
+        double g_base = emergent_Ug1(Mt, r);  // DPM: mu_s * grad(M_s/r)
         double corr_H = 1 + Hz * t;
         double corr_B = 1 - B / B_crit;
         return g_base * corr_H * corr_B;
@@ -7019,10 +7019,10 @@ public:
     {
         double M_dot = SFR_factor * exp(-t / tau_SF);
         double Mt = M0 * (1 + M_dot);
-        // DPM-emergent: gravity from magnetic moment Ã— mass gradient (not Newtonian GM/rÂ²)
+        // DPM-emergent: gravity from magnetic moment Ãƒâ€” mass gradient (not Newtonian GM/rÃ‚Â²)
 
         // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
-        double Ug1 = G * Mt / (r * r);
+        double Ug1 = emergent_Ug1(Mt, r);  // DPM: mu_s * grad(M_s/r)
         double corr_B = 1 - B / B_crit;
         double Ug4 = Ug1 * corr_B;
         return (Ug1 + Ug4) * (1 + f_TRZ);
@@ -7104,7 +7104,7 @@ public:
         double M_dot = SFR_factor * exp(-t / tau_SF);
         double Mt = M0 * (1 + M_dot);
         double V = (4.0 / 3.0) * M_PI * r * r * r;
-        double g_base = G * Mt / (r * r);
+        double g_base = emergent_Ug1(Mt, r);  // DPM: mu_s * grad(M_s/r)
         return (rho_fluid * V * g_base) / Mt;
     }
 
@@ -7158,7 +7158,7 @@ public:
         double Mt = M0 * (1 + M_dot);
         double M_dm = Mt * M_DM_factor;
         double pert1 = delta_rho_over_rho;
-        double pert2 = 3 * G * Mt / (r * r * r);
+        double pert2 = 3 * emergent_Ug1(Mt, r) / r;  // DPM tidal gradient
         double term_dm_force = (Mt + M_dm) * (pert1 + pert2);
         return term_dm_force / Mt;
     }
@@ -7208,10 +7208,10 @@ public:
 
     double compute(double t, const std::map<std::string, double> &params) const override
     {
-        // DPM-emergent: Âµ_s Ã— ?(M_s/r) base (Newtonian form is emergent, not foundational)
+        // DPM-emergent: Ã‚Âµ_s Ãƒâ€” ?(M_s/r) base (Newtonian form is emergent, not foundational)
 
         // DPM-emergent: mu_s x grad(M_s/r) base (Newtonian form is emergent, not foundational)
-        double g_base = G * M / (r * r);
+        double g_base = emergent_Ug1(M, r);  // DPM: mu_s * grad(M_s/r)
         double corr_H = 1 + Hz * t;
         double corr_B = 1 - B / B_crit;
         return g_base * corr_H * corr_B;
@@ -7235,7 +7235,7 @@ public:
 
     double compute(double t, const std::map<std::string, double> &params) const override
     {
-        return G * M_BH / (r_BH * r_BH);
+        return emergent_Ug1(M_BH, r_BH);  // DPM-emergent
     }
 
     std::string getName() const override { return "Andromeda_BlackHole"; }
@@ -7278,10 +7278,10 @@ public:
 
     double compute(double t, const std::map<std::string, double> &params) const override
     {
-        // DPM-emergent: gravity from magnetic moment Ã— mass gradient (not Newtonian GM/rÂ²)
+        // DPM-emergent: gravity from magnetic moment Ãƒâ€” mass gradient (not Newtonian GM/rÃ‚Â²)
 
         // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
-        double Ug1 = G * M / (r * r);
+        double Ug1 = emergent_Ug1(M, r);  // DPM: mu_s * grad(M_s/r)
         double corr_B = 1 - B / B_crit;
         double Ug4 = Ug1 * corr_B;
         return (Ug1 + Ug4) * (1 + f_TRZ);
@@ -7359,10 +7359,10 @@ public:
     double compute(double t, const std::map<std::string, double> &params) const override
     {
         double V = (4.0 / 3.0) * M_PI * r * r * r;
-        // DPM-emergent: Âµ_s Ã— ?(M_s/r) base (Newtonian form is emergent, not foundational)
+        // DPM-emergent: Ã‚Âµ_s Ãƒâ€” ?(M_s/r) base (Newtonian form is emergent, not foundational)
 
         // DPM-emergent: mu_s x grad(M_s/r) base (Newtonian form is emergent, not foundational)
-        double g_base = G * M / (r * r);
+        double g_base = emergent_Ug1(M, r);  // DPM: mu_s * grad(M_s/r)
         return (rho_fluid * V * g_base) / M;
     }
 
@@ -7413,7 +7413,7 @@ public:
     {
         double M_dm = M * M_DM_factor;
         double pert1 = delta_rho_over_rho;
-        double pert2 = 3 * G * M / (r * r * r);
+        double pert2 = 3 * emergent_Ug1(M, r) / r;  // DPM tidal gradient
         double term_dm_force = (M + M_dm) * (pert1 + pert2);
         return term_dm_force / M;
     }
@@ -7441,10 +7441,10 @@ public:
 
     double compute(double t, const std::map<std::string, double> &params) const override
     {
-        // DPM-emergent: Âµ_s Ã— ?(M_s/r) base (Newtonian form is emergent, not foundational)
+        // DPM-emergent: Ã‚Âµ_s Ãƒâ€” ?(M_s/r) base (Newtonian form is emergent, not foundational)
 
         // DPM-emergent: mu_s x grad(M_s/r) base (Newtonian form is emergent, not foundational)
-        double g_base = G * M / (r * r);
+        double g_base = emergent_Ug1(M, r);  // DPM: mu_s * grad(M_s/r)
         double corr_H = 1 + Hz * t;
         double corr_B = 1 - B / B_crit;
         return g_base * corr_H * corr_B;
@@ -7468,7 +7468,7 @@ public:
 
     double compute(double t, const std::map<std::string, double> &params) const override
     {
-        return G * M_BH / (r_BH * r_BH);
+        return emergent_Ug1(M_BH, r_BH);  // DPM-emergent
     }
 
     std::string getName() const override { return "Sombrero_BlackHole"; }
@@ -7511,10 +7511,10 @@ public:
 
     double compute(double t, const std::map<std::string, double> &params) const override
     {
-        // DPM-emergent: gravity from magnetic moment Ã— mass gradient (not Newtonian GM/rÂ²)
+        // DPM-emergent: gravity from magnetic moment Ãƒâ€” mass gradient (not Newtonian GM/rÃ‚Â²)
 
         // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
-        double Ug1 = G * M / (r * r);
+        double Ug1 = emergent_Ug1(M, r);  // DPM: mu_s * grad(M_s/r)
         double corr_B = 1 - B / B_crit;
         double Ug4 = Ug1 * corr_B;
         return (Ug1 + Ug4) * (1 + f_TRZ);
@@ -7592,10 +7592,10 @@ public:
     double compute(double t, const std::map<std::string, double> &params) const override
     {
         double V = (4.0 / 3.0) * M_PI * r * r * r;
-        // DPM-emergent: Âµ_s Ã— ?(M_s/r) base (Newtonian form is emergent, not foundational)
+        // DPM-emergent: Ã‚Âµ_s Ãƒâ€” ?(M_s/r) base (Newtonian form is emergent, not foundational)
 
         // DPM-emergent: mu_s x grad(M_s/r) base (Newtonian form is emergent, not foundational)
-        double g_base = G * M / (r * r);
+        double g_base = emergent_Ug1(M, r);  // DPM: mu_s * grad(M_s/r)
         return (rho_fluid * V * g_base) / M;
     }
 
@@ -7646,7 +7646,7 @@ public:
     {
         double M_dm = M * M_DM_factor;
         double pert1 = delta_rho_over_rho;
-        double pert2 = 3 * G * M / (r * r * r);
+        double pert2 = 3 * emergent_Ug1(M, r) / r;  // DPM tidal gradient
         double term_dm_force = (M + M_dm) * (pert1 + pert2);
         return term_dm_force / M;
     }
@@ -7696,8 +7696,8 @@ public:
 
     double compute(double t, const std::map<std::string, double> &params) const override
     {
-        double g_saturn = G * M / (r * r);
-        double g_sun = G * M_Sun / (r_orbit * r_orbit);
+        double g_saturn = emergent_Ug1(M, r);  // DPM: mu_s * grad(M_s/r)
+        double g_sun = emergent_Ug1(M_Sun, r_orbit);  // DPM: mu_s * grad(M_s/r)
         double corr_B = 1 - B / B_crit;
         return (g_saturn + g_sun) * corr_B;
     }
@@ -7742,10 +7742,10 @@ public:
 
     double compute(double t, const std::map<std::string, double> &params) const override
     {
-        // DPM-emergent: gravity from magnetic moment Ã— mass gradient (not Newtonian GM/rÂ²)
+        // DPM-emergent: gravity from magnetic moment Ãƒâ€” mass gradient (not Newtonian GM/rÃ‚Â²)
 
         // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
-        double Ug1 = G * M / (r * r);
+        double Ug1 = emergent_Ug1(M, r);  // DPM: mu_s * grad(M_s/r)
         double corr_B = 1 - B / B_crit;
         double Ug4 = Ug1 * corr_B;
         return (Ug1 + Ug4) * (1 + f_TRZ);
@@ -7823,10 +7823,10 @@ public:
     double compute(double t, const std::map<std::string, double> &params) const override
     {
         double V = (4.0 / 3.0) * M_PI * r * r * r;
-        // DPM-emergent: Âµ_s Ã— ?(M_s/r) base (Newtonian form is emergent, not foundational)
+        // DPM-emergent: Ã‚Âµ_s Ãƒâ€” ?(M_s/r) base (Newtonian form is emergent, not foundational)
 
         // DPM-emergent: mu_s x grad(M_s/r) base (Newtonian form is emergent, not foundational)
-        double g_base = G * M / (r * r);
+        double g_base = emergent_Ug1(M, r);  // DPM: mu_s * grad(M_s/r)
         return (rho_fluid * V * g_base) / M;
     }
 
@@ -7877,7 +7877,7 @@ public:
     {
         double M_dm = M * M_DM_factor;
         double pert1 = delta_rho_over_rho;
-        double pert2 = 3 * G * M / (r * r * r);
+        double pert2 = 3 * emergent_Ug1(M, r) / r;  // DPM tidal gradient
         double term_dm_force = (M + M_dm) * (pert1 + pert2);
         return term_dm_force / M;
     }
@@ -7900,7 +7900,7 @@ public:
 
     double compute(double t, const std::map<std::string, double> &params) const override
     {
-        return G * M_ring / (r_ring * r_ring);
+        return emergent_Ug1(M_ring, r_ring);  // DPM-emergent
     }
 
     std::string getName() const override { return "Saturn_RingTidal"; }
@@ -7950,7 +7950,7 @@ public:
     double compute(double t, const std::map<std::string, double> &params) const override
     {
         double M_t = M * (1 + M_sf_factor) * (1 - E_rad_factor);
-        double g_base = G * M_t / (r * r);
+        double g_base = emergent_Ug1(M_t, r);  // DPM: mu_s * grad(M_s/r)
         double corr_H = 1 + Hz * t;
         double corr_B = 1 - B / B_crit;
         return g_base * corr_H * corr_B;
@@ -7999,10 +7999,10 @@ public:
     double compute(double t, const std::map<std::string, double> &params) const override
     {
         double M_t = M * (1 + M_sf_factor) * (1 - E_rad_factor);
-        // DPM-emergent: gravity from magnetic moment Ã— mass gradient (not Newtonian GM/rÂ²)
+        // DPM-emergent: gravity from magnetic moment Ãƒâ€” mass gradient (not Newtonian GM/rÃ‚Â²)
 
         // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
-        double Ug1 = G * M_t / (r * r);
+        double Ug1 = emergent_Ug1(M_t, r);  // DPM: mu_s * grad(M_s/r)
         double corr_B = 1 - B / B_crit;
         double Ug4 = Ug1 * corr_B;
         return (Ug1 + Ug4) * (1 + f_TRZ);
@@ -8082,7 +8082,7 @@ public:
     {
         double M_t = M * (1 + M_sf_factor) * (1 - E_rad_factor);
         double V = (4.0 / 3.0) * M_PI * r * r * r;
-        double g_base = G * M_t / (r * r);
+        double g_base = emergent_Ug1(M_t, r);  // DPM: mu_s * grad(M_s/r)
         return (rho_fluid * V * g_base) / M_t;
     }
 
@@ -8135,7 +8135,7 @@ public:
         double M_t = M * (1 + M_sf_factor) * (1 - E_rad_factor);
         double M_dm = M_t * M_DM_factor;
         double pert1 = delta_rho_over_rho;
-        double pert2 = 3 * G * M_t / (r * r * r);
+        double pert2 = 3 * emergent_Ug1(M_t, r) / r;  // DPM tidal gradient
         double term_dm_force = (M_t + M_dm) * (pert1 + pert2);
         return term_dm_force / M_t;
     }
@@ -8210,7 +8210,7 @@ public:
     double compute(double t, const std::map<std::string, double> &params) const override
     {
         double r_t = r0 + v_exp * t;
-        double g_base = G * M / (r_t * r_t);
+        double g_base = emergent_Ug1(M, r_t);  // DPM: mu_s * grad(M_s/r)
         double corr_H = 1 + Hz * t;
         double corr_B = 1 - B / B_crit;
         return g_base * corr_H * corr_B;
@@ -8259,10 +8259,10 @@ public:
     double compute(double t, const std::map<std::string, double> &params) const override
     {
         double r_t = r0 + v_exp * t;
-        // DPM-emergent: gravity from magnetic moment Ã— mass gradient (not Newtonian GM/rÂ²)
+        // DPM-emergent: gravity from magnetic moment Ãƒâ€” mass gradient (not Newtonian GM/rÃ‚Â²)
 
         // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
-        double Ug1 = G * M / (r_t * r_t);
+        double Ug1 = emergent_Ug1(M, r_t);  // DPM: mu_s * grad(M_s/r)
         double corr_B = 1 - B / B_crit;
         double Ug4 = Ug1 * corr_B;
         return (Ug1 + Ug4) * (1 + f_TRZ);
@@ -8341,7 +8341,7 @@ public:
     {
         double r_t = r0 + v_exp * t;
         double V = (4.0 / 3.0) * M_PI * r_t * r_t * r_t;
-        double g_base = G * M / (r_t * r_t);
+        double g_base = emergent_Ug1(M, r_t);  // DPM: mu_s * grad(M_s/r)
         return (rho_fluid * V * g_base) / M;
     }
 
@@ -8394,7 +8394,7 @@ public:
         double r_t = r0 + v_exp * t;
         double M_dm = M * M_DM_factor;
         double pert1 = delta_rho_over_rho;
-        double pert2 = 3 * G * M / (r_t * r_t * r_t);
+        double pert2 = 3 * emergent_Ug1(M, r_t) / r_t;  // DPM tidal gradient
         double term_dm_force = (M + M_dm) * (pert1 + pert2);
         return term_dm_force / M;
     }
@@ -8430,7 +8430,7 @@ public:
     std::string getName() const override { return "Crab_PulsarWind"; }
     std::string getDescription() const override
     {
-        return "Source32 Crab: Pulsar wind a_wind = [P/(4Ãâ‚¬rÃ‚Â²) * (1+v/c)] / ÃÂ";
+        return "Source32 Crab: Pulsar wind a_wind = [P/(4ÃƒÂÃ¢â€šÂ¬rÃƒâ€šÃ‚Â²) * (1+v/c)] / ÃƒÂÃ‚Â";
     }
 };
 
@@ -8473,10 +8473,10 @@ public:
 
     double compute(double t, const std::map<std::string, double> &params) const override
     {
-        // DPM-emergent: Âµ_s Ã— ?(M_s/r) base (Newtonian form is emergent, not foundational)
+        // DPM-emergent: Ã‚Âµ_s Ãƒâ€” ?(M_s/r) base (Newtonian form is emergent, not foundational)
 
         // DPM-emergent: mu_s x grad(M_s/r) base (Newtonian form is emergent, not foundational)
-        double g_base = G * M / (r * r);
+        double g_base = emergent_Ug1(M, r);  // DPM: mu_s * grad(M_s/r)
         double corr_H = 1 + Hz * t;
         double corr_B = 1 - B / B_crit;
         return g_base * corr_H * corr_B;
@@ -8522,10 +8522,10 @@ public:
 
     double compute(double t, const std::map<std::string, double> &params) const override
     {
-        // DPM-emergent: gravity from magnetic moment Ã— mass gradient (not Newtonian GM/rÂ²)
+        // DPM-emergent: gravity from magnetic moment Ãƒâ€” mass gradient (not Newtonian GM/rÃ‚Â²)
 
         // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
-        double Ug1 = G * M / (r * r);
+        double Ug1 = emergent_Ug1(M, r);  // DPM: mu_s * grad(M_s/r)
         double corr_B = 1 - B / B_crit;
         double Ug4 = Ug1 * corr_B;
         return (Ug1 + Ug4) * (1 + f_TRZ);
@@ -8603,10 +8603,10 @@ public:
     double compute(double t, const std::map<std::string, double> &params) const override
     {
         double V = (4.0 / 3.0) * M_PI * r * r * r;
-        // DPM-emergent: Âµ_s Ã— ?(M_s/r) base (Newtonian form is emergent, not foundational)
+        // DPM-emergent: Ã‚Âµ_s Ãƒâ€” ?(M_s/r) base (Newtonian form is emergent, not foundational)
 
         // DPM-emergent: mu_s x grad(M_s/r) base (Newtonian form is emergent, not foundational)
-        double g_base = G * M / (r * r);
+        double g_base = emergent_Ug1(M, r);  // DPM: mu_s * grad(M_s/r)
         return (rho_crust * V * g_base) / M;
     }
 
@@ -8657,7 +8657,7 @@ public:
     {
         double M_dm = M * M_DM_factor;
         double pert1 = delta_rho_over_rho;
-        double pert2 = 3 * G * M / (r * r * r);
+        double pert2 = 3 * emergent_Ug1(M, r) / r;  // DPM tidal gradient
         double term_dm_force = (M + M_dm) * (pert1 + pert2);
         return term_dm_force / M;
     }
@@ -8691,7 +8691,7 @@ public:
     std::string getName() const override { return "SGR1745_DPM"; }
     std::string getDescription() const override
     {
-        return "Source34 SGR1745-UQFF: DPM resonance a_DPM = (I/A) * (Ãâ€°Ã¢â€šÂ-Ãâ€°Ã¢â€šâ€š)";
+        return "Source34 SGR1745-UQFF: DPM resonance a_DPM = (I/A) * (ÃƒÂÃ¢â‚¬Â°ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â-ÃƒÂÃ¢â‚¬Â°ÃƒÂ¢Ã¢â‚¬Å¡Ã¢â‚¬Å¡)";
     }
 };
 
@@ -8713,7 +8713,7 @@ public:
     std::string getName() const override { return "SGR1745_THz"; }
     std::string getDescription() const override
     {
-        return "Source34 SGR1745-UQFF: THz pipeline a_THz = (fÃ‚Â·E_vacÃ‚Â·vÃ‚Â·a_DPM)/(E_ISMÃ‚Â·c)";
+        return "Source34 SGR1745-UQFF: THz pipeline a_THz = (fÃƒâ€šÃ‚Â·E_vacÃƒâ€šÃ‚Â·vÃƒâ€šÃ‚Â·a_DPM)/(E_ISMÃƒâ€šÃ‚Â·c)";
     }
 };
 
@@ -9462,7 +9462,7 @@ double F_U_Bi_i(const SystemParams &p)
 }
 
 /**
- * COMPRESSED GRAVITY EQUATION: g(r,t) = ÃŽÂ£(Ug1 + Ug2 + Ug3 + Ug4) over 26 layers
+ * COMPRESSED GRAVITY EQUATION: g(r,t) = ÃƒÅ½Ã‚Â£(Ug1 + Ug2 + Ug3 + Ug4) over 26 layers
  */
 double compressed_g(const SystemParams &p)
 {
@@ -9495,7 +9495,7 @@ double compressed_g(const SystemParams &p)
 
         // Ug4: Adjusted Newtonian gravity
         double M_i = p.M / i;
-        double Ug4_i = (G * M_i / (r_i * r_i)) * (1 + alpha_i) * SCm_i;
+        double Ug4_i = emergent_Ug1(M_i, r_i) * (1 + alpha_i) * SCm_i;  // DPM-emergent Ug4
 
         double g_layer = Ug1_i + Ug2_i + Ug3_i + Ug4_i;
         g_total += g_layer;
@@ -9663,11 +9663,11 @@ void validation_pipeline(const SystemParams &p)
 
     if (error < 10)
     {
-        cout << "Ã¢Å“â€œ Validation PASSED (error < 10%)" << endl;
+        cout << "ÃƒÂ¢Ã…â€œÃ¢â‚¬Å“ Validation PASSED (error < 10%)" << endl;
     }
     else
     {
-        cout << "Ã¢Å“â€” Validation WARNING (error >= 10%)" << endl;
+        cout << "ÃƒÂ¢Ã…â€œÃ¢â‚¬â€ Validation WARNING (error >= 10%)" << endl;
     }
 }
 
@@ -9915,7 +9915,7 @@ int main()
     cout << "\n=== AVAILABLE SYSTEMS ===" << endl;
     for (const auto &pair : systems)
     {
-        cout << "  Ã¢â‚¬Â¢ " << pair.first << endl;
+        cout << "  ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¢ " << pair.first << endl;
     }
 
     // Main interactive loop

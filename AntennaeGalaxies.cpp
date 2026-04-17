@@ -1,4 +1,4 @@
-/**
+﻿/**
  * ================================================================================================
  * Header: AntennaeGalaxies.h
  * 
@@ -21,7 +21,7 @@
  * 
  * Key Features:
  *   - Default values from UQFF document: M0 = 2e11 Msun, r = 2.838e20 m (30k ly), z = 0.0105,
- *     Hz ≈ 2.19e-18 s^-1, SFR_factor = 20 / (2e11), tau_SF = 100 Myr, I0 = 0.1, tau_merger = 400 Myr,
+ *     Hz â‰ˆ 2.19e-18 s^-1, SFR_factor = 20 / (2e11), tau_SF = 100 Myr, I0 = 0.1, tau_merger = 400 Myr,
  *     rho_wind = 1e-21 kg/m^3, v_wind = 2e6 m/s, B = 1e-5 T.
  *   - Units handled: Msun to kg, ly to m; interaction term I(t) scales gravity.
  *   - Setter methods for updates: setVar(double new_val) or addToVar(double delta)/subtractFromVar(double delta).
@@ -141,7 +141,7 @@ public:
 
     // Cache update for efficiency (call after parameter changes)
     void updateCache() {
-        ug1_base = (G * M0) / (r * r);
+        ug1_base = B * r * G * M0  /* DPM: mu_s * grad(M_s/r) */;
     }
 
     // Universal setter for any variable (by name, for flexibility)
@@ -259,7 +259,7 @@ public:
     double compute_Ug(double Mt, double It) const {
         // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
         // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
-        double Ug1 = (G * Mt) / (r * r);
+        double Ug1 = B * r * G * Mt  /* DPM: mu_s * grad(M_s/r) */;
         double Ug2 = 0.0;
         double Ug3 = 0.0;
         double corr_B = 1 - B / B_crit;
@@ -281,7 +281,7 @@ public:
 
         double Mt = M_t(t);
         double It = I_t(t);
-        double ug1_t = (G * Mt) / (r * r);
+        double ug1_t = B * r * G * Mt  /* DPM: mu_s * grad(M_s/r) */;
 
         // Term 1: Base + Hz + B + I corrections
         double corr_H = 1 + Hz * t;
@@ -318,7 +318,7 @@ public:
         // DM and density perturbation term (converted to acceleration)
         double M_dm = Mt * M_DM_factor;
         double pert1 = delta_rho_over_rho;
-        double pert2 = 3 * G * Mt / (r * r * r);
+        double pert2 = 3 * B * G * Mt  /* DPM tidal */;
         double term_dm_force_like = (Mt + M_dm) * (pert1 + pert2);
         double term_DM = term_dm_force_like / Mt;
 

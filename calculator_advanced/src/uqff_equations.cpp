@@ -24,7 +24,9 @@ void UQFFEquationCatalog::initializeEquations() {
             // Gravity term (simplified)
             double G = 6.67430e-11;
             double M = params.count("M") ? params.at("M") : 1.989e30;
-            double g = G * M / (r * r);
+            double B_field = params.count("B") ? params.at("B") : 1e-4;
+            double mu_s = B_field * r * r * r;  // magnetic dipole moment
+            double g = mu_s * G * M / (r * r);  // DPM-emergent: mu_s * grad(M_s/r)
             
             return F_rel * (E_cm / E_LEP) * Q_wave * g;
         }
@@ -80,7 +82,7 @@ void UQFFEquationCatalog::initializeEquations() {
             const double H_0 = 2.2e-18; // Hubble constant in s^-1
             const double c = 299792458;
             
-            double g_base = G * m_eff * m_p / (r * r);
+            double g_base = G * m_eff * m_p / (r * r);  // DPM: atomic-scale mass gradient
             double z_correction = (1.0 + f_sc) * std::exp(H_0 * t / c);
             
             return g_base * z_correction;
@@ -103,7 +105,9 @@ void UQFFEquationCatalog::initializeEquations() {
             const double H_0 = 2.2e-18;
             const double B_crit = 4.4e13; // Tesla
             
-            double g_base = (G * M / (r * r)) * (1.0 + H_0 * t) * (1.0 - B_t / B_crit);
+            double B_sys = params.count("B_t") ? params.at("B_t") : 1e10;
+            double mu_s = B_sys * r * r * r;  // magnetar dipole moment
+            double g_base = mu_s * (G * M / (r * r)) * (1.0 + H_0 * t) * (1.0 - B_t / B_crit);  // DPM-emergent
             
             // Simplified Ug terms (would need full parameters)
             double Ug_sum = 0.0; // Placeholder
@@ -131,8 +135,10 @@ void UQFFEquationCatalog::initializeEquations() {
             double M_dot = 0.001; // growth rate
             double M_t = M_0 * (1.0 + M_dot * std::exp(-t / t_age));
             
-            // Simplified (B term negligible for SMBH)
-            double g = (G * M_t / (r * r)) * (1.0 + H_0 * t);
+            // DPM-emergent (B negligible for SMBH; mu_s ~ B*r^3)
+            double B_smbh = 1e-4;  // SMBH accretion disk B [T]
+            double mu_s = B_smbh * r * r * r;
+            double g = mu_s * (G * M_t / (r * r)) * (1.0 + H_0 * t);  // DPM-emergent
             
             return g;
         }

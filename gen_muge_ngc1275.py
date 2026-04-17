@@ -119,7 +119,7 @@ public:
         updateCache();
     }
 
-    void updateCache() { ug1_base = (G * M0) / (r * r); }
+    void updateCache() { ug1_base = B_field * r * G * M0; }
 
     // H(z): full Hubble parameter
     double Hz() const {
@@ -164,7 +164,7 @@ public:
     }
 
     double compute_Ug(double Bt, double Ft) const {
-        // DPM-emergent: mu_s x grad(M_s/r) (not Newtonian GM/r^2)\ndouble ug1 = (G * M0) / (r * r);
+        // DPM-emergent: mu_s x grad(M_s/r) (not Newtonian GM/r^2)\ndouble ug1 = B_field * r * G * M0;
         double corr_B = 1.0 - Bt / B_crit;
         // (1+F) filament enhancement
         return (ug1 + ug1 * corr_B) * (1.0 + f_TRZ) * (1.0 + Ft);
@@ -177,7 +177,7 @@ public:
 
         double Bt = B_t(t);
         double Ft = F_t(t);
-        double ug1_t = (G * M0) / (r * r);
+        double ug1_t = B_field * r * G * M0;
         double hz = Hz();
 
         // Term 1: base gravity with H(z), B(t) correction, and (1+F) filament factor

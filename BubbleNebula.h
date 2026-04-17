@@ -1,9 +1,9 @@
-/**
+﻿/**
  * ================================================================================================
  * Header: BubbleNebula.h
  *
  * Description: C++ Module for Bubble Nebula (NGC 7635) Class (Module 12)
- *              UQFF simulations — expanding stellar bubble nebula.
+ *              UQFF simulations â€” expanding stellar bubble nebula.
  *
  * Unique Terms:
  *   - Growing expansion: E(t) = E_0 * (1 - exp(-t / tau_exp))
@@ -89,7 +89,7 @@ public:
         updateCache();
     }
 
-    void updateCache() { ug1_base = (G * M0) / (r * r); }
+    void updateCache() { ug1_base = B * r * G * M0  /* DPM: mu_s * grad(M_s/r) */; }
 
     bool setVariable(const std::string& varName, double v) {
         if (varName == "M0")      { M0 = v; }
@@ -122,7 +122,7 @@ public:
     double compute_Ug(double t) const {
         // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
         // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
-        double ug1 = (G * M0) / (r * r);
+        double ug1 = B * r * G * M0  /* DPM: mu_s * grad(M_s/r) */;
         double corr_B = 1.0 - B / B_crit;
         double E = E_t(t);
         // (1-E) factor: expansion reduces effective Ug
@@ -134,7 +134,7 @@ public:
     double compute_g_Bubble(double t) const {
         if (t < 0.0) { std::cerr << "Error: t must be non-negative.\n"; return 0.0; }
 
-        double ug1_t = (G * M0) / (r * r);
+        double ug1_t = B * r * G * M0  /* DPM: mu_s * grad(M_s/r) */;
 
         // Term 1: base + Hubble + B correction
         double corr_H = 1.0 + H0 * t;
@@ -167,7 +167,7 @@ public:
 
         // DM
         double M_dm = M0 * M_DM_factor;
-        double term_DM = ((M0 + M_dm) * (delta_rho_over_rho + 3.0 * G * M0 / (r * r * r))) / M0;
+        double term_DM = ((M0 + M_dm) * (delta_rho_over_rho + 3.0 * B * G * M0  /* DPM tidal */)) / M0;
 
         // Wind
         double term_wind = (rho_wind * v_wind * v_wind) / rho_fluid;

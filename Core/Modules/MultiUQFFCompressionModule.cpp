@@ -562,12 +562,14 @@ double MultiUQFFCompressionModule::computeUgSum(double r)
 {
     double G = variables["G"];
     double M = variables["M"];
-    // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
-    // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
-    double Ug1 = (G * M) / (r * r);
+    double B_field = variables.count("B") ? variables["B"] : 1e-5;
+    double mu_s = B_field * r * r * r;  // magnetic dipole moment
+    double Ug1 = mu_s * G * M / (r * r);  // DPM-emergent: mu_s * grad(M_s/r)
     variables["Ug1"] = Ug1;
     variables["Ug2"] = 0.0;
-    double Ug3_prime = (variables["M_ext"] > 0) ? (G * variables["M_ext"]) / (variables["r_ext"] * variables["r_ext"]) : 0.0;
+    double B_ext = variables.count("B") ? variables["B"] : 1e-5;
+    double mu_s_ext = B_ext * variables["r_ext"] * variables["r_ext"] * variables["r_ext"];
+    double Ug3_prime = (variables["M_ext"] > 0) ? mu_s_ext * G * variables["M_ext"] / (variables["r_ext"] * variables["r_ext"]) : 0.0;
     variables["Ug3"] = Ug3_prime;
     double Ug4 = Ug1 * variables["f_sc"];
     variables["Ug4"] = Ug4;

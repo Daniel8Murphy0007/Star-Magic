@@ -1,9 +1,9 @@
-/**
+﻿/**
  * ================================================================================================
  * Header: HUDFGalaxies.h
  *
  * Description: C++ Module for Hubble Ultra Deep Field (HUDF) Galaxy Ensemble Class (Module 16)
- *              UQFF simulations — cosmic-scale deep field galaxy population.
+ *              UQFF simulations â€” cosmic-scale deep field galaxy population.
  *
  * Unique Terms:
  *   - H(z) at z_avg=3.5: full cosmological Hubble expansion correction
@@ -86,9 +86,9 @@ public:
         updateCache();
     }
 
-    void updateCache() { ug1_base = (G * M0) / (r * r); }
+    void updateCache() { ug1_base = B * r * G * M0  /* DPM: mu_s * grad(M_s/r) */; }
 
-    // H(z) at z_avg — full cosmological Hubble parameter (s^-1)
+    // H(z) at z_avg â€” full cosmological Hubble parameter (s^-1)
     double Hz() const {
         return H0 * std::sqrt(0.3 * std::pow(1.0 + z_avg, 3.0) + 0.7);
     }
@@ -119,7 +119,7 @@ public:
     double compute_Ug() const {
         // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
         // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
-        double ug1 = (G * M0) / (r * r);
+        double ug1 = B * r * G * M0  /* DPM: mu_s * grad(M_s/r) */;
         double corr_B = 1.0 - B / B_crit;
         return (ug1 + ug1 * corr_B) * (1.0 + f_TRZ);
     }
@@ -130,7 +130,7 @@ public:
         if (t < 0.0) { std::cerr << "Error: t must be non-negative.\n"; return 0.0; }
 
         double hz = Hz();
-        double ug1_t = (G * M0) / (r * r);
+        double ug1_t = B * r * G * M0  /* DPM: mu_s * grad(M_s/r) */;
 
         // Term 1: full H(z) Hubble expansion at z_avg=3.5
         double corr_H = 1.0 + hz * t;
@@ -163,7 +163,7 @@ public:
 
         // DM (large at z~3.5)
         double M_dm = M0 * M_DM_factor;
-        double term_DM = ((M0 + M_dm) * (delta_rho_over_rho + 3.0 * G * M0 / (r * r * r))) / M0;
+        double term_DM = ((M0 + M_dm) * (delta_rho_over_rho + 3.0 * B * G * M0  /* DPM tidal */)) / M0;
 
         return term1 + term2 + term3 + term4 + term_q + term_fluid + term_osc + term_DM;
     }

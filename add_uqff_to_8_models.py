@@ -1,4 +1,5 @@
-﻿import re
+from dpm_helpers import dpm_emergent_ug1, dpm_emergent_ug2
+import re
 
 # 8 UQFF Master Equation methods template (adapted for any model)
 UQFF_METHODS = '''

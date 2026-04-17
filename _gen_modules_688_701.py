@@ -1,3 +1,4 @@
+from dpm_helpers import dpm_emergent_ug1, dpm_emergent_ug2
 """
 Session 174 — Generate C++ .h and .cpp standalone modules for PAPER_688-701.
 Source: grok_share_ba508f76c8e.txt
@@ -122,7 +123,7 @@ double {cls}::H_tz(double zz) const {{
 // F_tidal = G * M_spiral / d^2  [merger remnant tidal forcing]
 // F_cluster = k_cluster * M_cluster  [globular cluster tidal stripping]
 double {cls}::F_env(double t) const {{
-    double F_tidal   = G * M_spiral / (d_spiral * d_spiral);
+    double F_tidal   = dpm_emergent_ug1(M_spiral, d_spiral);
     double F_cluster = k_cluster * M_cluster;
     return F_tidal + F_cluster;
 }}
@@ -147,7 +148,7 @@ double {cls}::U_g2() const {{
 // U_g3': Merger remnant gravitational influence
 // U_g3' = G * M_spiral / d_spiral^2
 double {cls}::U_g3_prime() const {{
-    return G * M_spiral / (d_spiral * d_spiral);
+    return dpm_emergent_ug1(M_spiral, d_spiral);
 }}
 
 // U_g4: Reactive vacuum energy (exponentially decaying)
@@ -188,7 +189,7 @@ double {cls}::g_NGC1316(double r, double t) const {{
     double B_crit = 1.0e11;
 
     // Core Newtonian + UQFF modifiers
-    double g_core = (G * M / (rt * rt)) * (1.0 + H) * (1.0 - B_AGN / B_crit) * (1.0 + F);
+    double g_core = (dpm_emergent_ug1(M, rt)) * (1.0 + H) * (1.0 - B_AGN / B_crit) * (1.0 + F);
 
     // UQFF potential terms
     double U_sum = U_g1(t) + U_g2() + U_g3_prime() + U_g4(t);
@@ -204,7 +205,7 @@ double {cls}::g_NGC1316(double r, double t) const {{
     double g_psi = (hbar / std::sqrt(dx * dp)) * psi_integral(r, t) * (2.0 * M_PI / t_H);
 
     // Dust fluid dynamics
-    double g0        = G * M / (r * r);
+    double g0        = dpm_emergent_ug1(M, r);
     double g_dust    = rho_dust * V_gal * g0;
 
     // Dark matter density perturbation
@@ -330,7 +331,7 @@ public:
 
 // Gravitational radius r_g = G*M_BH/c^2
 double {cls}::r_g() const {{
-    return G * M_BH / (c * c);
+    return dpm_emergent_ug1(M_BH, c);
 }}
 
 // P_BZ: Blandford-Znajek jet power
@@ -515,7 +516,7 @@ void {cls}::update_positions(double dt) {{
 // UQFF-modified cluster gravity:
 // g = G*M/r^2 * (1 + rho_SCm/rho_UA) * (1 + f_TRZ)
 double {cls}::g_cluster_UQFF(double r) const {{
-    double g0 = G * M_cluster / (r * r);
+    double g0 = dpm_emergent_ug1(M_cluster, r);
     return g0 * (1.0 + rho_SCm / rho_UA) * (1.0 + f_TRZ);
 }}
 
@@ -780,7 +781,7 @@ double {cls}::pitch_angle() const {{
 double {cls}::g_M51_UQFF(double r) const {{
     double M_tot = M_main + M_comp;
     double H_z   = H_0 * std::sqrt(0.3 * std::pow(1.0 + z_M51, 3) + 0.7);
-    double g0    = G * M_tot / (r * r);
+    double g0    = dpm_emergent_ug1(M_tot, r);
     double g_ism = rho_ISM * 1.0e51 * g0;  // ISM fluid correction
     return g0 * (1.0 + H_z) + g_ism * (rho_SCm / rho_UA);
 }}
@@ -788,7 +789,7 @@ double {cls}::g_M51_UQFF(double r) const {{
 // SFE_UQFF: star formation efficiency enhanced by tidal interaction
 // SFE = SFR * (1 + F_tidal/g_grav) * (1 + f_TRZ)
 double {cls}::SFE_UQFF() const {{
-    double g_grav = G * M_main / (R_spiral * R_spiral);
+    double g_grav = dpm_emergent_ug1(M_main, R_spiral);
     double F_t    = tidal_force(R_spiral);
     return SFR * (1.0 + F_t / g_grav) * (1.0 + f_TRZ);
 }}
@@ -1228,7 +1229,7 @@ double {cls}::t_dynamical_friction() const {{
 
 double {cls}::g_merge_UQFF(double r) const {{
     double M_tot = M_4038 + M_4039;
-    double g0    = G * M_tot / (r * r);
+    double g0    = dpm_emergent_ug1(M_tot, r);
     double shock = rho_shock * 1.0e51 * g0;  // shock fluid term
     return g0 * (1.0 + f_TRZ) + shock * (rho_SCm / rho_UA);
 }}
@@ -1683,7 +1684,7 @@ double {cls}::Ug2(int layer) const {{
 
 double {cls}::Ug3(int layer, double r, double M_ext) const {{
     double w = 1.0 / (layer + 1.0);  // layer weight ~1/i
-    return w * G * M_ext / (r * r);
+    return w * dpm_emergent_ug1(M_ext, r);
 }}
 
 // Ug4_i = (k_4 * E_react_0 * exp(-kappa * t)) / N_DIM

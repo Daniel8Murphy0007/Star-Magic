@@ -1,3 +1,4 @@
+from dpm_helpers import dpm_emergent_ug1, dpm_emergent_ug2
 #!/usr/bin/env python3
 """Add compute_master_gravity method to all Model classes."""
 
@@ -17,7 +18,7 @@ MASTER_GRAVITY_BLOCK = '''
             r = getattr(self, 'r', getattr(self, 'radius', 1e8))
         
         # Base Newtonian gravity
-        g_N = G * M / r**2
+        g_N = dpm_emergent_ug1(M, r)
         
         # Get buoyancy correction
         buoy = self.compute_buoyant_equation(r)

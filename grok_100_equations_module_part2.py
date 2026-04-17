@@ -25,6 +25,8 @@ Date: March 2026
 """
 
 import math
+from dpm_helpers import dpm_emergent_ug1, dpm_emergent_ug2
+
 from typing import Dict, Any, Optional, List, Tuple
 
 # Import constants from part 1
@@ -1327,7 +1329,7 @@ class MUGECalculator:
         
         # UQFF magnetic buoyancy
         Q_mag = 1e12  # 1 THz
-        g_surface = self.C.G * 1.4 * self.C.M_sun / R**2
+        g_surface = dpm_emergent_ug1(1.4 * self.C.M_sun, R)
         F_UBii_mag = 4.3e33 * (B / 4.4e9) * Q_mag * g_surface
         
         return {
@@ -1386,7 +1388,7 @@ class MUGECalculator:
         
         # UQFF vacuum contribution
         rho_vac_UA = 7.09e-36  # J/m^3
-        g_ISCO = self.C.G * M / R_ISCO**2
+        g_ISCO = self.C.dpm_emergent_ug1(M, R_ISCO)
         
         # Accretion rate for flares
         M_dot_flare = 1e-9 * self.C.M_sun / self.C.yr
@@ -1476,7 +1478,7 @@ class ElectricUniverseValidator:
         
         Compare gravitational force to any plausible electric force
         """
-        F_grav = self.C.G * M * self.C.M_sun / r**2
+        F_grav = dpm_emergent_ug1(M * self.C.M_sun, r)
         
         # If Sun had net charge Q
         epsilon_0 = 8.854e-12

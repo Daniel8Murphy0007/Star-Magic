@@ -15,6 +15,8 @@ History: v4 (100k) → v5 (150k) → v6 (200k) → v7 (300k) → v8 (350k)
 """
 
 import math
+from dpm_helpers import dpm_emergent_ug1, dpm_emergent_ug2
+
 import time
 from typing import Dict, List
 
@@ -40,11 +42,11 @@ TARGET_CALC_PER_SEC = 450_000
 
 def kernel_gravity_26layer(M_kg: float = 4e6 * M_SUN, r: float = 1e12) -> float:
     """26-layer gravity summation."""
-    return sum(G * M_kg / r**2 * SSQ * i / 26 for i in range(1, 27))
+    return sum(dpm_emergent_ug1(M_kg, r) * SSQ * i / 26 for i in range(1, 27))
 
 def kernel_fu_bi_i(M_kg: float = 4e6 * M_SUN, r: float = 1e12) -> float:
     """F_U_Bi_i field assembly."""
-    return sum(G * M_kg / r**2 * math.exp(-SSQ * i / 26) * BETA_I for i in range(1, 27))
+    return sum(dpm_emergent_ug1(M_kg, r) * math.exp(-SSQ * i / 26) * BETA_I for i in range(1, 27))
 
 def kernel_phonon_ares(omega: float = OMEGA_SCM, gamma: float = GAMMA_0) -> float:
     """Phonon a_res evaluation."""
@@ -66,9 +68,9 @@ def kernel_gw170817_strain(d_Mpc: float = 40.0) -> float:
 def kernel_blazar_ergosphere(M_Msun: float = 6.5e9, a: float = 0.90) -> float:
     """Blazar ergosphere coupling."""
     M = M_Msun * M_SUN
-    rS = 2 * G * M / C**2
+    rS = 2 * dpm_emergent_ug1(M, C)
     rH = rS / 2 * (1 + math.sqrt(max(1 - a**2, 0)))
-    return sum(G * M / rH**2 * math.exp(-SSQ * i / 26) for i in range(1, 27))
+    return sum(dpm_emergent_ug1(M, rH) * math.exp(-SSQ * i / 26) for i in range(1, 27))
 
 def kernel_rest_phonon_jet(gamma_THz: float = 0.10, A_jet: float = 1.5) -> float:
     """REST /api/phonon/jet roundtrip simulation."""
@@ -91,7 +93,7 @@ def kernel_pipeline_full() -> float:
 def kernel_cena_jet(M_Msun: float = 5.5e7, a: float = 0.70, B: float = 3000) -> float:
     """CenA jet P_BZ."""
     M = M_Msun * M_SUN
-    rS = 2 * G * M / C**2
+    rS = 2 * dpm_emergent_ug1(M, C)
     rH = rS / 2 * (1 + math.sqrt(max(1 - a**2, 0)))
     return (B**2 / (8 * PI)) * (rH / C)**2 * a**2 * C
 

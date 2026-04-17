@@ -101,7 +101,7 @@ public:
         updateCache();
     }
 
-    void updateCache() { ug1_base = (G * M0) / (r * r); }
+    void updateCache() { ug1_base = B_field * r * G * M0; }
 
     // H(z) at z_avg — full cosmological Hubble parameter (s^-1)
     double Hz() const {
@@ -132,7 +132,7 @@ public:
     }
 
     double compute_Ug() const {
-        // DPM-emergent: mu_s x grad(M_s/r) (not Newtonian GM/r^2)\ndouble ug1 = (G * M0) / (r * r);
+        // DPM-emergent: mu_s x grad(M_s/r) (not Newtonian GM/r^2)\ndouble ug1 = B_field * r * G * M0;
         double corr_B = 1.0 - B / B_crit;
         return (ug1 + ug1 * corr_B) * (1.0 + f_TRZ);
     }
@@ -143,7 +143,7 @@ public:
         if (t < 0.0) { std::cerr << "Error: t must be non-negative.\n"; return 0.0; }
 
         double hz = Hz();
-        double ug1_t = (G * M0) / (r * r);
+        double ug1_t = B_field * r * G * M0;
 
         // Term 1: full H(z) Hubble expansion at z_avg=3.5
         double corr_H = 1.0 + hz * t;

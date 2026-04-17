@@ -111,7 +111,7 @@ public:
         updateCache();
     }
 
-    void updateCache() { ug1_base = (G * M0) / (r * r); }
+    void updateCache() { ug1_base = B_field * r * G * M0; }
 
     bool setVariable(const std::string& varName, double newValue) {
         if (varName == "G")           { G = newValue; }
@@ -157,7 +157,7 @@ public:
     double P_t(double t) const { return P0 * std::exp(-t / tau_exp); }
 
     double compute_Ug(double Mt) const {
-        // DPM-emergent: mu_s x grad(M_s/r) (not Newtonian GM/r^2)\ndouble ug1 = (G * Mt) / (r * r);
+        // DPM-emergent: mu_s x grad(M_s/r) (not Newtonian GM/r^2)\ndouble ug1 = B_field * r * G * Mt;
         double corr_B = 1.0 - B / B_crit;
         return (ug1 + ug1 * corr_B) * (1.0 + f_TRZ);
     }
@@ -169,7 +169,7 @@ public:
 
         double Mt = M_t(t);
         double Pt = P_t(t);
-        double ug1_t = (G * Mt) / (r * r);
+        double ug1_t = B_field * r * G * Mt;
 
         // Term 1
         double corr_H = 1.0 + H0 * t;

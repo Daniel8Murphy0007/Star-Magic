@@ -1,3 +1,4 @@
+from dpm_helpers import dpm_emergent_ug1, dpm_emergent_ug2
 #!/usr/bin/env python3
 """
 Phase6_Consolidated.py - Phase 6 Unified Extraction (SOURCE70-71, 80)
@@ -111,10 +112,10 @@ class Source70_M51:
         F_tidal = G * M_NGC5195 / (d_NGC5195 ** 2)
         F_SF = 1e-10 * SFR * t  # Star formation pressure
         F_env = F_tidal + F_SF
-        f_env_factor = 1 + F_env / (G * M / r**2)
+        f_env_factor = 1 + F_env / (dpm_emergent_ug1(M, r))
         
         # Base gravity with all factors
-        g_base = (G * M_total / r**2) * expansion * sc_correction * f_env_factor
+        g_base = (dpm_emergent_ug1(M_total, r)) * expansion * sc_correction * f_env_factor
         
         # Ug terms (magnetic dipole, superconductor, tidal external, reactive)
         mu_dipole = 1e20  # A·m²
@@ -263,10 +264,10 @@ class Source71_NGC1316:
         F_tidal = G * M_spiral / (d_spiral ** 2) * np.exp(-t / t_merge)
         F_cluster = G * M_cluster / (r ** 2) * 0.1  # Cluster disruption
         F_env = F_tidal + F_cluster
-        f_env_factor = 1 + F_env / (G * M / r**2)
+        f_env_factor = 1 + F_env / (dpm_emergent_ug1(M, r))
         
         # Base gravity
-        g_base = (G * M_total / r**2) * expansion * sc_correction * f_env_factor
+        g_base = (dpm_emergent_ug1(M_total, r)) * expansion * sc_correction * f_env_factor
         
         # Ug terms
         mu_dipole = 1e21  # A·m² (enhanced by AGN)

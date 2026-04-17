@@ -1,3 +1,4 @@
+from dpm_helpers import dpm_emergent_ug1, dpm_emergent_ug2
 
 
 # ===========================================================================
@@ -35,7 +36,7 @@ class UQFF38SystemCompressedMasterCalculator:
         G, c, H_0 = self.G, self.c, self.H_0
         hbar, Lambda = self.hbar, self.Lambda
         H = H_0 * math.sqrt(0.3 * (1 + z)**3 + 0.7)
-        g_grav = (G * M / r**2) * (1 + H) * (1 - B / self.B_crit)
+        g_grav = (dpm_emergent_ug1(M, r)) * (1 + H) * (1 - B / self.B_crit)
         F_eta = self.k_eta * F_env_terms.get("eta", 1.0)
         rho_vac = self.rho_vac_SCm
         V = (4/3) * math.pi * r**3
@@ -99,7 +100,7 @@ class SombreroGalaxyDustMUGECalculator:
         G, c = self.G, self.c
         H = self.H_0 * math.sqrt(0.3 * (1 + self.z)**3 + 0.7)
         M_tot = self.M_vis + self.M_DM
-        g_grav = (G * M_tot / r**2) * (1 + H) * (1 - self.B / self.B_crit)
+        g_grav = (dpm_emergent_ug1(M_tot, r)) * (1 + H) * (1 - self.B / self.B_crit)
         g_BH = G * self.M_BH / max(r**2, self.r_BH**2)
         A_cross = self.A_cross_frac * r**2
         D_dust = -self.k_dust * self.rho_dust * v_orbit**2 * A_cross / r
@@ -155,7 +156,7 @@ class SaturnRingTidalMUGECalculator:
         G, c = self.G, self.c
         H = self.H_0 * math.sqrt(0.7)
         g_solar_orbit = (G * self.M_sun / self.r_orbit**2) * (1 + H * 4.35e17)
-        g_saturn = (G * self.M_saturn / r**2) * (1 - self.B_saturn / self.B_crit)
+        g_saturn = dpm_emergent_ug1(self.M_saturn, r) * (1 - self.B_saturn / self.B_crit)
         T_ring = self.k_ring * G * self.M_rings * r / self.r_ring**3
         F_wind = 0.5 * self.rho_atm * self.v_wind**2 * self.C_D / self.r_atm
         cosmological = self.Lambda * c**2 / 3
@@ -207,7 +208,7 @@ class M16EagleNebulaRadiationMUGECalculator:
         H = self.H_0 * math.sqrt(0.7)
         M_sf = self.SFR * t / self.M_cloud
         M_eff = self.M_cloud * (1 + M_sf)
-        g_grav = (G * M_eff / r**2) * (1 + H * t) * (1 - self.B / self.B_crit) * (1 + M_sf)
+        g_grav = (dpm_emergent_ug1(M_eff, r)) * (1 + H * t) * (1 - self.B / self.B_crit) * (1 + M_sf)
         E_rad = G * self.mdot_evap * t / (r**2 * self.M_cloud)
         cosmological = self.Lambda * c**2 / 3
         g_total = g_grav - E_rad + cosmological
@@ -258,7 +259,7 @@ class CrabNebulaExpandingMUGECalculator:
         G, c = self.G, self.c
         H = self.H_0 * math.sqrt(0.7)
         r = self.r_0 + self.v_r * t
-        g_grav = (G * self.M_ejecta / r**2) * (1 + H * t) * (1 - self.B_pulsar / self.B_crit)
+        g_grav = dpm_emergent_ug1(self.M_ejecta, r) * (1 + H * t) * (1 - self.B_pulsar / self.B_crit)
         F_wind = self.L_pulsar / (4 * math.pi * r**2 * c * self.M_ejecta)
         M_mag = self.B_pulsar**2 / (2 * self.mu_0 * r * self.rho_ejecta)
         cosmological = self.Lambda * c**2 / 3
@@ -572,8 +573,8 @@ class M51NGC1316MUGESimulationCalculator:
         H = self.H_0 * math.sqrt(0.3 * (1 + self.M51_z)**3 + 0.7)
         M_tot = self.M51_M_vis + self.M51_M_DM
         F_tidal = G * self.M51_M_NGC5195 / self.M51_d_inter**2
-        F_env = F_tidal / (G * M_tot / r**2)
-        g_grav = (G * M_tot / r**2) * (1 + H) * (1 - self.M51_B / self.B_crit) * (1 + F_env)
+        F_env = F_tidal / (dpm_emergent_ug1(M_tot, r))
+        g_grav = (dpm_emergent_ug1(M_tot, r)) * (1 + H) * (1 - self.M51_B / self.B_crit) * (1 + F_env)
         psi_spiral = math.exp(-r**2 / (2 * self.M51_sigma_spiral**2))
         quantum = (self.hbar / math.sqrt(1e-10 * 1e-20)) * psi_spiral**2 * (2 * math.pi / self.t_Hubble)
         U_i = self.lambda_i_val() 
@@ -586,9 +587,9 @@ class M51NGC1316MUGESimulationCalculator:
         M_tot = self.N16_M_vis + self.N16_M_DM + self.N16_M_spiral * math.exp(-t / self.N16_tau)
         F_tidal = G * self.N16_M_spiral / self.N16_d_spiral**2
         F_cluster = self.N16_k_cluster * self.N16_M_cluster
-        F_env = (F_tidal + F_cluster) / (G * M_tot / r**2)
-        g_grav = (G * M_tot / r**2) * (1 + H) * (1 - self.N16_B / self.B_crit) * (1 + F_env)
-        g_dust = self.N16_rho_dust * (4/3 * 3.14159 * r**3) * G * M_tot / r**2
+        F_env = (F_tidal + F_cluster) / (dpm_emergent_ug1(M_tot, r))
+        g_grav = (dpm_emergent_ug1(M_tot, r)) * (1 + H) * (1 - self.N16_B / self.B_crit) * (1 + F_env)
+        g_dust = self.N16_rho_dust * (4/3 * 3.14159 * r**3) * dpm_emergent_ug1(M_tot, r)
         U_i = self.lambda_i_val()
         return g_grav + U_i + self.Lambda * c**2 / 3 + g_dust
 

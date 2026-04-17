@@ -114,7 +114,7 @@ public:
     }
 
     void updateCache() {
-        ug1_base = (G * M) / (r * r);
+        ug1_base = B_field * r * G * M;
         g_BH = (G * M_BH) / (r_BH * r_BH);
     }
 
@@ -202,7 +202,7 @@ public:
         double term_DM = ((M + M_dm) * (delta_rho_over_rho + 3.0 * G * M / (r * r * r))) / M;
 
         // SN mass loss (negative — ejecta reduces effective gravity, unique to NGC2525)
-        double term_SN = -(G * MSNt) / (r * r);
+        double term_SN = -B_field * r * G * MSNt;
 
         return term1 + term_BH + term2 + term3 + term4 + term_q + term_fluid
              + term_osc + term_DM + term_SN;

@@ -1,4 +1,4 @@
-/**
+﻿/**
  * ================================================================================================
  * Header: GalaxyNGC1792.h
  * 
@@ -20,7 +20,7 @@
  * 
  * Key Features:
  *   - Default values from UQFF document: M0 = 1e10 Msun, r = 7.569e20 m (80k ly), z = 0.0095,
- *     Hz ≈ 2.19e-18 s^-1, SFR_factor = 10 / 1e10 (normalized), tau_SF = 100 Myr, B = 1e-5 T,
+ *     Hz â‰ˆ 2.19e-18 s^-1, SFR_factor = 10 / 1e10 (normalized), tau_SF = 100 Myr, B = 1e-5 T,
  *     rho_wind = 1e-21 kg/m^3, v_wind = 2e6 m/s.
  *   - Units handled: Msun to kg, ly to m; feedback term as (rho * v_wind^2) / rho_fluid for acceleration.
  *   - Setter methods for updates: setVar(double new_val) or addToVar(double delta)/subtractFromVar(double delta).
@@ -44,7 +44,7 @@
 #include <fstream>
 #include <typeinfo>
 
-// WOLFRAM_TERM macros — canonical Wolfram Language representation of each MUGE term
+// WOLFRAM_TERM macros â€” canonical Wolfram Language representation of each MUGE term
 #define WOLFRAM_TERM_NGC1792_BASE  "G*M0*(1+SFR*Exp[-t/tauSF])/(r^2)*(1+Hz*t)*(1-B/Bcrit)"
 #define WOLFRAM_TERM_NGC1792_UQFF  "(G*M0/r^2)*(1+1-B/Bcrit)*(1+fTRZ)"
 #define WOLFRAM_TERM_NGC1792_BUOY  "-betai*G*M/(r^2)*omegaG*(M/r)*U_UA*Cos[Pi*t]"
@@ -93,13 +93,13 @@ private:
     // Computed caches (updated on demand)
     double ug1_base;        // Cached Ug1 for initial M0
 
-    // UQFF 2.0 — 3-tier buoyancy parameters (CP3/PAPER_198 standard)
+    // UQFF 2.0 â€” 3-tier buoyancy parameters (CP3/PAPER_198 standard)
     double beta_i;          // Buoyancy coupling constant (calibrated 0.61)
     double omega_g;         // Gravitational angular frequency (7.3e-16 rad/s)
     double U_UA;            // [UA] vacuum coupling constant (1e-11)
-    double M_Fornax;        // Fornax Cluster mass (kg) — outer-frame external body
-    double r_Fornax;        // NGC 1792 → Fornax Cluster distance (m, ~20 Mpc)
-    // UQFF 2.0 — Self-expanding framework
+    double M_Fornax;        // Fornax Cluster mass (kg) â€” outer-frame external body
+    double r_Fornax;        // NGC 1792 â†’ Fornax Cluster distance (m, ~20 Mpc)
+    // UQFF 2.0 â€” Self-expanding framework
     bool logging_enabled;
     std::map<std::string, double> dynamic_params;
 
@@ -153,12 +153,12 @@ public:
         M_DM_factor = 0.1;
         delta_rho_over_rho = 1e-5;
 
-        // UQFF 2.0 — 3-tier buoyancy initialization
+        // UQFF 2.0 â€” 3-tier buoyancy initialization
         beta_i   = 0.61;
         omega_g  = 7.3e-16;
         U_UA     = 1e-11;
-        M_Fornax = 1.393e44;  // 7e13 M_sun × 1.989e30 kg (Fornax Cluster)
-        r_Fornax = 6.17e23;   // ~20 Mpc = 20 × 3.086e22 m
+        M_Fornax = 1.393e44;  // 7e13 M_sun Ã— 1.989e30 kg (Fornax Cluster)
+        r_Fornax = 6.17e23;   // ~20 Mpc = 20 Ã— 3.086e22 m
         logging_enabled = false;
 
         updateCache();
@@ -166,7 +166,7 @@ public:
 
     // Cache update for efficiency (call after parameter changes)
     void updateCache() {
-        ug1_base = (G * M0) / (r * r);
+        ug1_base = B * r * G * M0  /* DPM: mu_s * grad(M_s/r) */;
     }
 
     // Universal setter for any variable (by name, for flexibility)
@@ -287,7 +287,7 @@ public:
     double compute_Ug(double Mt) const {
         // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
         // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
-        double Ug1 = (G * Mt) / (r * r);
+        double Ug1 = B * r * G * Mt  /* DPM: mu_s * grad(M_s/r) */;
         double Ug2 = 0.0;
         double Ug3 = 0.0;
         double corr_B = 1 - B / B_crit;
@@ -308,7 +308,7 @@ public:
         }
 
         double Mt = M_t(t);
-        double ug1_t = (G * Mt) / (r * r);
+        double ug1_t = B * r * G * Mt  /* DPM: mu_s * grad(M_s/r) */;
 
         // Term 1: Base + Hz + B corrections
         double corr_H = 1 + Hz * t;
@@ -345,7 +345,7 @@ public:
         // DM and density perturbation term (converted to acceleration)
         double M_dm = Mt * M_DM_factor;
         double pert1 = delta_rho_over_rho;
-        double pert2 = 3 * G * Mt / (r * r * r);
+        double pert2 = 3 * B * G * Mt  /* DPM tidal */;
         double term_dm_force_like = (Mt + M_dm) * (pert1 + pert2);
         double term_DM = term_dm_force_like / Mt;
 
@@ -356,12 +356,12 @@ public:
         // === UQFF 2.0: 3-Tier Buoyancy (CP3/PAPER_198) ===
         // Tier 1: Static half-gravity Ubi (CP3 PAPER_198)
         double term_Ubi    = 0.5 * ug1_t;
-        // Tier 2: Dynamic compact cos modulation over M(t) — F_UBii (PAPER_198)
+        // Tier 2: Dynamic compact cos modulation over M(t) â€” F_UBii (PAPER_198)
         double term_F_UBii = -beta_i * ug1_t * omega_g * (Mt / r) * U_UA * cos(M_PI * t);
-        // Tier 3: Outer-frame via Fornax Cluster external body — Ub_i (CP1)
+        // Tier 3: Outer-frame via Fornax Cluster external body â€” Ub_i (CP1)
         double term_Ub_i   = -beta_i * ug1_t * omega_g * (M_Fornax / r_Fornax) * U_UA * cos(M_PI * t);
 
-        // FU diagnostic (logged only — not summed into MUGE)
+        // FU diagnostic (logged only â€” not summed into MUGE)
         double FU_diag = -(term2 + term_Ubi) * ug1_t;
 
         if (logging_enabled) {

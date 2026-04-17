@@ -21,6 +21,8 @@ Framework: Universal Quantum Field Superconductive Framework (UQFF)
 """
 
 import math
+from dpm_helpers import dpm_emergent_ug1, dpm_emergent_ug2
+
 from typing import Dict, Any, Optional, Tuple
 from dataclasses import dataclass
 
@@ -175,7 +177,7 @@ class AlphaClusteringCalculator:
         
         # Local gravity term
         M_cluster = self.system.projectile_A * u
-        g_local = G * M_cluster / r**2
+        g_local = dpm_emergent_ug1(M_cluster, r)
         
         # Negative for stabilization (prevents disassembly)
         F_UBii = -F_rel * E_ratio * Q_wave * g_local / 1e30  # Scaled

@@ -102,7 +102,7 @@ public:
         updateCache();
     }
 
-    void updateCache() { ug1_base = (G * M0) / (r * r); }
+    void updateCache() { ug1_base = B_field * r * G * M0; }
 
     // Decaying erosion: E(t) = E_0*exp(-t/tau_erosion)
     double E_t(double t) const { return E_0 * std::exp(-t / tau_erosion); }
@@ -131,7 +131,7 @@ public:
     }
 
     double compute_Ug(double Et) const {
-        // DPM-emergent: mu_s x grad(M_s/r) (not Newtonian GM/r^2)\ndouble ug1 = (G * M0) / (r * r);
+        // DPM-emergent: mu_s x grad(M_s/r) (not Newtonian GM/r^2)\ndouble ug1 = B_field * r * G * M0;
         double corr_B = 1.0 - B / B_crit;
         return (ug1 + ug1 * corr_B) * (1.0 + f_TRZ) * (1.0 - Et);
     }
@@ -142,7 +142,7 @@ public:
         if (t < 0.0) { std::cerr << "Error: t must be non-negative.\n"; return 0.0; }
 
         double Et = E_t(t);
-        double ug1_t = (G * M0) / (r * r);
+        double ug1_t = B_field * r * G * M0;
 
         // Term 1 with (1-E) erosion correction
         double corr_H = 1.0 + H0 * t;

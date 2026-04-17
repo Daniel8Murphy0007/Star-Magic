@@ -1,3 +1,4 @@
+from dpm_helpers import dpm_emergent_ug1, dpm_emergent_ug2
 #!/usr/bin/env python3
 """
 QCalc_Wolfram_Phase5.py - Extracted C++ Wolfram Physics Terms (Phase 5)
@@ -86,7 +87,7 @@ def calculate_source100_heaviside_fraction_complete(params: InputParameters, t: 
 
     # Full UQFF gravity computation (source100)
     # Base gravity with expansion and SC correction
-    g_base = (G * M_t / (r * r)) * expansion * sc_correction
+    g_base = (dpm_emergent_ug1(M_t, r)) * expansion * sc_correction
     
     # Environmental coupling
     F_env = SOURCE100_REFERENCE.get('F_env', 0.0)
@@ -98,7 +99,7 @@ def calculate_source100_heaviside_fraction_complete(params: InputParameters, t: 
     mu0 = 4 * np.pi * 1e-7
     Ug1 = np.cos(2 * np.pi * t / 1e15) if t > 0 else 1.0  # Magnetic dipole oscillation
     Ug2 = (B**2) / (2 * mu0 * rho_gas * r) if rho_gas > 0 else 0.0  # Charge-reactivity
-    Ug3 = G * M / (r * r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
+    Ug3 = dpm_emergent_ug1(M, r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
     Ug4 = SOURCE100_REFERENCE.get('k4', 1e-20) * rho_vac  # Vacuum concentration
     ug_sum = Ug1 + Ug2 + Ug3 + Ug4
     
@@ -193,7 +194,7 @@ def calculate_source101_heliosphere_thickness_complete(params: InputParameters, 
 
     # Full UQFF gravity computation (source101)
     # Base gravity with expansion and SC correction
-    g_base = (G * M_t / (r * r)) * expansion * sc_correction
+    g_base = (dpm_emergent_ug1(M_t, r)) * expansion * sc_correction
     
     # Environmental coupling
     F_env = SOURCE101_REFERENCE.get('F_env', 0.0)
@@ -205,7 +206,7 @@ def calculate_source101_heliosphere_thickness_complete(params: InputParameters, 
     mu0 = 4 * np.pi * 1e-7
     Ug1 = np.cos(2 * np.pi * t / 1e15) if t > 0 else 1.0  # Magnetic dipole oscillation
     Ug2 = (B**2) / (2 * mu0 * rho_gas * r) if rho_gas > 0 else 0.0  # Charge-reactivity
-    Ug3 = G * M / (r * r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
+    Ug3 = dpm_emergent_ug1(M, r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
     Ug4 = SOURCE101_REFERENCE.get('k4', 1e-20) * rho_vac  # Vacuum concentration
     ug_sum = Ug1 + Ug2 + Ug3 + Ug4
     
@@ -294,7 +295,7 @@ def calculate_source102_ug_index_complete(params: InputParameters, t: float = 0.
 
     # Full UQFF gravity computation (source102)
     # Base gravity with expansion and SC correction
-    g_base = (G * M_t / (r * r)) * expansion * sc_correction
+    g_base = (dpm_emergent_ug1(M_t, r)) * expansion * sc_correction
     
     # Environmental coupling
     F_env = SOURCE102_REFERENCE.get('F_env', 0.0)
@@ -306,7 +307,7 @@ def calculate_source102_ug_index_complete(params: InputParameters, t: float = 0.
     mu0 = 4 * np.pi * 1e-7
     Ug1 = np.cos(2 * np.pi * t / 1e15) if t > 0 else 1.0  # Magnetic dipole oscillation
     Ug2 = (B**2) / (2 * mu0 * rho_gas * r) if rho_gas > 0 else 0.0  # Charge-reactivity
-    Ug3 = G * M / (r * r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
+    Ug3 = dpm_emergent_ug1(M, r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
     Ug4 = SOURCE102_REFERENCE.get('k4', 1e-20) * rho_vac  # Vacuum concentration
     ug_sum = Ug1 + Ug2 + Ug3 + Ug4
     
@@ -402,7 +403,7 @@ def calculate_source104_magnetic_moment_complete(params: InputParameters, t: flo
 
     # Full UQFF gravity computation (source104)
     # Base gravity with expansion and SC correction
-    g_base = (G * M_t / (r * r)) * expansion * sc_correction
+    g_base = (dpm_emergent_ug1(M_t, r)) * expansion * sc_correction
     
     # Environmental coupling
     F_env = SOURCE104_REFERENCE.get('F_env', 0.0)
@@ -414,7 +415,7 @@ def calculate_source104_magnetic_moment_complete(params: InputParameters, t: flo
     mu0 = 4 * np.pi * 1e-7
     Ug1 = np.cos(2 * np.pi * t / 1e15) if t > 0 else 1.0  # Magnetic dipole oscillation
     Ug2 = (B**2) / (2 * mu0 * rho_gas * r) if rho_gas > 0 else 0.0  # Charge-reactivity
-    Ug3 = G * M / (r * r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
+    Ug3 = dpm_emergent_ug1(M, r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
     Ug4 = SOURCE104_REFERENCE.get('k4', 1e-20) * rho_vac  # Vacuum concentration
     ug_sum = Ug1 + Ug2 + Ug3 + Ug4
     
@@ -512,7 +513,7 @@ def calculate_source105_galactic_black_hole_complete(params: InputParameters, t:
 
     # Full UQFF gravity computation (source105)
     # Base gravity with expansion and SC correction
-    g_base = (G * M_t / (r * r)) * expansion * sc_correction
+    g_base = (dpm_emergent_ug1(M_t, r)) * expansion * sc_correction
     
     # Environmental coupling
     F_env = SOURCE105_REFERENCE.get('F_env', 0.0)
@@ -524,7 +525,7 @@ def calculate_source105_galactic_black_hole_complete(params: InputParameters, t:
     mu0 = 4 * np.pi * 1e-7
     Ug1 = np.cos(2 * np.pi * t / 1e15) if t > 0 else 1.0  # Magnetic dipole oscillation
     Ug2 = (B**2) / (2 * mu0 * rho_gas * r) if rho_gas > 0 else 0.0  # Charge-reactivity
-    Ug3 = G * M / (r * r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
+    Ug3 = dpm_emergent_ug1(M, r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
     Ug4 = SOURCE105_REFERENCE.get('k4', 1e-20) * rho_vac  # Vacuum concentration
     ug_sum = Ug1 + Ug2 + Ug3 + Ug4
     
@@ -615,7 +616,7 @@ def calculate_source106_negative_time_complete(params: InputParameters, t: float
 
     # Full UQFF gravity computation (source106)
     # Base gravity with expansion and SC correction
-    g_base = (G * M_t / (r * r)) * expansion * sc_correction
+    g_base = (dpm_emergent_ug1(M_t, r)) * expansion * sc_correction
     
     # Environmental coupling
     F_env = SOURCE106_REFERENCE.get('F_env', 0.0)
@@ -627,7 +628,7 @@ def calculate_source106_negative_time_complete(params: InputParameters, t: float
     mu0 = 4 * np.pi * 1e-7
     Ug1 = np.cos(2 * np.pi * t / 1e15) if t > 0 else 1.0  # Magnetic dipole oscillation
     Ug2 = (B**2) / (2 * mu0 * rho_gas * r) if rho_gas > 0 else 0.0  # Charge-reactivity
-    Ug3 = G * M / (r * r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
+    Ug3 = dpm_emergent_ug1(M, r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
     Ug4 = SOURCE106_REFERENCE.get('k4', 1e-20) * rho_vac  # Vacuum concentration
     ug_sum = Ug1 + Ug2 + Ug3 + Ug4
     
@@ -716,7 +717,7 @@ def calculate_source107_pi_constant_complete(params: InputParameters, t: float =
 
     # Full UQFF gravity computation (source107)
     # Base gravity with expansion and SC correction
-    g_base = (G * M_t / (r * r)) * expansion * sc_correction
+    g_base = (dpm_emergent_ug1(M_t, r)) * expansion * sc_correction
     
     # Environmental coupling
     F_env = SOURCE107_REFERENCE.get('F_env', 0.0)
@@ -728,7 +729,7 @@ def calculate_source107_pi_constant_complete(params: InputParameters, t: float =
     mu0 = 4 * np.pi * 1e-7
     Ug1 = np.cos(2 * np.pi * t / 1e15) if t > 0 else 1.0  # Magnetic dipole oscillation
     Ug2 = (B**2) / (2 * mu0 * rho_gas * r) if rho_gas > 0 else 0.0  # Charge-reactivity
-    Ug3 = G * M / (r * r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
+    Ug3 = dpm_emergent_ug1(M, r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
     Ug4 = SOURCE107_REFERENCE.get('k4', 1e-20) * rho_vac  # Vacuum concentration
     ug_sum = Ug1 + Ug2 + Ug3 + Ug4
     
@@ -819,7 +820,7 @@ def calculate_source108_core_penetration_complete(params: InputParameters, t: fl
 
     # Full UQFF gravity computation (source108)
     # Base gravity with expansion and SC correction
-    g_base = (G * M_t / (r * r)) * expansion * sc_correction
+    g_base = (dpm_emergent_ug1(M_t, r)) * expansion * sc_correction
     
     # Environmental coupling
     F_env = SOURCE108_REFERENCE.get('F_env', 0.0)
@@ -831,7 +832,7 @@ def calculate_source108_core_penetration_complete(params: InputParameters, t: fl
     mu0 = 4 * np.pi * 1e-7
     Ug1 = np.cos(2 * np.pi * t / 1e15) if t > 0 else 1.0  # Magnetic dipole oscillation
     Ug2 = (B**2) / (2 * mu0 * rho_gas * r) if rho_gas > 0 else 0.0  # Charge-reactivity
-    Ug3 = G * M / (r * r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
+    Ug3 = dpm_emergent_ug1(M, r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
     Ug4 = SOURCE108_REFERENCE.get('k4', 1e-20) * rho_vac  # Vacuum concentration
     ug_sum = Ug1 + Ug2 + Ug3 + Ug4
     
@@ -924,7 +925,7 @@ def calculate_source109_quasi_longitudinal_complete(params: InputParameters, t: 
 
     # Full UQFF gravity computation (source109)
     # Base gravity with expansion and SC correction
-    g_base = (G * M_t / (r * r)) * expansion * sc_correction
+    g_base = (dpm_emergent_ug1(M_t, r)) * expansion * sc_correction
     
     # Environmental coupling
     F_env = SOURCE109_REFERENCE.get('F_env', 0.0)
@@ -936,7 +937,7 @@ def calculate_source109_quasi_longitudinal_complete(params: InputParameters, t: 
     mu0 = 4 * np.pi * 1e-7
     Ug1 = np.cos(2 * np.pi * t / 1e15) if t > 0 else 1.0  # Magnetic dipole oscillation
     Ug2 = (B**2) / (2 * mu0 * rho_gas * r) if rho_gas > 0 else 0.0  # Charge-reactivity
-    Ug3 = G * M / (r * r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
+    Ug3 = dpm_emergent_ug1(M, r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
     Ug4 = SOURCE109_REFERENCE.get('k4', 1e-20) * rho_vac  # Vacuum concentration
     ug_sum = Ug1 + Ug2 + Ug3 + Ug4
     
@@ -1029,7 +1030,7 @@ def calculate_source110_outer_field_bubble_complete(params: InputParameters, t: 
 
     # Full UQFF gravity computation (source110)
     # Base gravity with expansion and SC correction
-    g_base = (G * M_t / (r * r)) * expansion * sc_correction
+    g_base = (dpm_emergent_ug1(M_t, r)) * expansion * sc_correction
     
     # Environmental coupling
     F_env = SOURCE110_REFERENCE.get('F_env', 0.0)
@@ -1041,7 +1042,7 @@ def calculate_source110_outer_field_bubble_complete(params: InputParameters, t: 
     mu0 = 4 * np.pi * 1e-7
     Ug1 = np.cos(2 * np.pi * t / 1e15) if t > 0 else 1.0  # Magnetic dipole oscillation
     Ug2 = (B**2) / (2 * mu0 * rho_gas * r) if rho_gas > 0 else 0.0  # Charge-reactivity
-    Ug3 = G * M / (r * r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
+    Ug3 = dpm_emergent_ug1(M, r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
     Ug4 = SOURCE110_REFERENCE.get('k4', 1e-20) * rho_vac  # Vacuum concentration
     ug_sum = Ug1 + Ug2 + Ug3 + Ug4
     
@@ -1133,7 +1134,7 @@ def calculate_source111_reciprocation_decay_complete(params: InputParameters, t:
 
     # Full UQFF gravity computation (source111)
     # Base gravity with expansion and SC correction
-    g_base = (G * M_t / (r * r)) * expansion * sc_correction
+    g_base = (dpm_emergent_ug1(M_t, r)) * expansion * sc_correction
     
     # Environmental coupling
     F_env = SOURCE111_REFERENCE.get('F_env', 0.0)
@@ -1145,7 +1146,7 @@ def calculate_source111_reciprocation_decay_complete(params: InputParameters, t:
     mu0 = 4 * np.pi * 1e-7
     Ug1 = np.cos(2 * np.pi * t / 1e15) if t > 0 else 1.0  # Magnetic dipole oscillation
     Ug2 = (B**2) / (2 * mu0 * rho_gas * r) if rho_gas > 0 else 0.0  # Charge-reactivity
-    Ug3 = G * M / (r * r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
+    Ug3 = dpm_emergent_ug1(M, r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
     Ug4 = SOURCE111_REFERENCE.get('k4', 1e-20) * rho_vac  # Vacuum concentration
     ug_sum = Ug1 + Ug2 + Ug3 + Ug4
     
@@ -1239,7 +1240,7 @@ def calculate_source112_scm_penetration_complete(params: InputParameters, t: flo
 
     # Full UQFF gravity computation (source112)
     # Base gravity with expansion and SC correction
-    g_base = (G * M_t / (r * r)) * expansion * sc_correction
+    g_base = (dpm_emergent_ug1(M_t, r)) * expansion * sc_correction
     
     # Environmental coupling
     F_env = SOURCE112_REFERENCE.get('F_env', 0.0)
@@ -1251,7 +1252,7 @@ def calculate_source112_scm_penetration_complete(params: InputParameters, t: flo
     mu0 = 4 * np.pi * 1e-7
     Ug1 = np.cos(2 * np.pi * t / 1e15) if t > 0 else 1.0  # Magnetic dipole oscillation
     Ug2 = (B**2) / (2 * mu0 * rho_gas * r) if rho_gas > 0 else 0.0  # Charge-reactivity
-    Ug3 = G * M / (r * r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
+    Ug3 = dpm_emergent_ug1(M, r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
     Ug4 = SOURCE112_REFERENCE.get('k4', 1e-20) * rho_vac  # Vacuum concentration
     ug_sum = Ug1 + Ug2 + Ug3 + Ug4
     
@@ -1342,7 +1343,7 @@ def calculate_source113_scm_reactivity_decay_complete(params: InputParameters, t
 
     # Full UQFF gravity computation (source113)
     # Base gravity with expansion and SC correction
-    g_base = (G * M_t / (r * r)) * expansion * sc_correction
+    g_base = (dpm_emergent_ug1(M_t, r)) * expansion * sc_correction
     
     # Environmental coupling
     F_env = SOURCE113_REFERENCE.get('F_env', 0.0)
@@ -1354,7 +1355,7 @@ def calculate_source113_scm_reactivity_decay_complete(params: InputParameters, t
     mu0 = 4 * np.pi * 1e-7
     Ug1 = np.cos(2 * np.pi * t / 1e15) if t > 0 else 1.0  # Magnetic dipole oscillation
     Ug2 = (B**2) / (2 * mu0 * rho_gas * r) if rho_gas > 0 else 0.0  # Charge-reactivity
-    Ug3 = G * M / (r * r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
+    Ug3 = dpm_emergent_ug1(M, r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
     Ug4 = SOURCE113_REFERENCE.get('k4', 1e-20) * rho_vac  # Vacuum concentration
     ug_sum = Ug1 + Ug2 + Ug3 + Ug4
     
@@ -1442,7 +1443,7 @@ def calculate_source114_solar_cycle_frequency_complete(params: InputParameters, 
 
     # Full UQFF gravity computation (source114)
     # Base gravity with expansion and SC correction
-    g_base = (G * M_t / (r * r)) * expansion * sc_correction
+    g_base = (dpm_emergent_ug1(M_t, r)) * expansion * sc_correction
     
     # Environmental coupling
     F_env = SOURCE114_REFERENCE.get('F_env', 0.0)
@@ -1454,7 +1455,7 @@ def calculate_source114_solar_cycle_frequency_complete(params: InputParameters, 
     mu0 = 4 * np.pi * 1e-7
     Ug1 = np.cos(2 * np.pi * t / 1e15) if t > 0 else 1.0  # Magnetic dipole oscillation
     Ug2 = (B**2) / (2 * mu0 * rho_gas * r) if rho_gas > 0 else 0.0  # Charge-reactivity
-    Ug3 = G * M / (r * r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
+    Ug3 = dpm_emergent_ug1(M, r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
     Ug4 = SOURCE114_REFERENCE.get('k4', 1e-20) * rho_vac  # Vacuum concentration
     ug_sum = Ug1 + Ug2 + Ug3 + Ug4
     
@@ -1547,7 +1548,7 @@ def calculate_source116_solar_wind_velocity_complete(params: InputParameters, t:
 
     # Full UQFF gravity computation (source116)
     # Base gravity with expansion and SC correction
-    g_base = (G * M_t / (r * r)) * expansion * sc_correction
+    g_base = (dpm_emergent_ug1(M_t, r)) * expansion * sc_correction
     
     # Environmental coupling
     F_env = SOURCE116_REFERENCE.get('F_env', 0.0)
@@ -1559,7 +1560,7 @@ def calculate_source116_solar_wind_velocity_complete(params: InputParameters, t:
     mu0 = 4 * np.pi * 1e-7
     Ug1 = np.cos(2 * np.pi * t / 1e15) if t > 0 else 1.0  # Magnetic dipole oscillation
     Ug2 = (B**2) / (2 * mu0 * rho_gas * r) if rho_gas > 0 else 0.0  # Charge-reactivity
-    Ug3 = G * M / (r * r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
+    Ug3 = dpm_emergent_ug1(M, r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
     Ug4 = SOURCE116_REFERENCE.get('k4', 1e-20) * rho_vac  # Vacuum concentration
     ug_sum = Ug1 + Ug2 + Ug3 + Ug4
     
@@ -1654,7 +1655,7 @@ def calculate_source117_stellar_mass_complete(params: InputParameters, t: float 
 
     # Full UQFF gravity computation (source117)
     # Base gravity with expansion and SC correction
-    g_base = (G * M_t / (r * r)) * expansion * sc_correction
+    g_base = (dpm_emergent_ug1(M_t, r)) * expansion * sc_correction
     
     # Environmental coupling
     F_env = SOURCE117_REFERENCE.get('F_env', 0.0)
@@ -1666,7 +1667,7 @@ def calculate_source117_stellar_mass_complete(params: InputParameters, t: float 
     mu0 = 4 * np.pi * 1e-7
     Ug1 = np.cos(2 * np.pi * t / 1e15) if t > 0 else 1.0  # Magnetic dipole oscillation
     Ug2 = (B**2) / (2 * mu0 * rho_gas * r) if rho_gas > 0 else 0.0  # Charge-reactivity
-    Ug3 = G * M / (r * r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
+    Ug3 = dpm_emergent_ug1(M, r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
     Ug4 = SOURCE117_REFERENCE.get('k4', 1e-20) * rho_vac  # Vacuum concentration
     ug_sum = Ug1 + Ug2 + Ug3 + Ug4
     
@@ -1762,7 +1763,7 @@ def calculate_source118_stellar_rotation_complete(params: InputParameters, t: fl
 
     # Full UQFF gravity computation (source118)
     # Base gravity with expansion and SC correction
-    g_base = (G * M_t / (r * r)) * expansion * sc_correction
+    g_base = (dpm_emergent_ug1(M_t, r)) * expansion * sc_correction
     
     # Environmental coupling
     F_env = SOURCE118_REFERENCE.get('F_env', 0.0)
@@ -1774,7 +1775,7 @@ def calculate_source118_stellar_rotation_complete(params: InputParameters, t: fl
     mu0 = 4 * np.pi * 1e-7
     Ug1 = np.cos(2 * np.pi * t / 1e15) if t > 0 else 1.0  # Magnetic dipole oscillation
     Ug2 = (B**2) / (2 * mu0 * rho_gas * r) if rho_gas > 0 else 0.0  # Charge-reactivity
-    Ug3 = G * M / (r * r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
+    Ug3 = dpm_emergent_ug1(M, r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
     Ug4 = SOURCE118_REFERENCE.get('k4', 1e-20) * rho_vac  # Vacuum concentration
     ug_sum = Ug1 + Ug2 + Ug3 + Ug4
     
@@ -1863,7 +1864,7 @@ def calculate_source120_stress_energy_tensor_complete(params: InputParameters, t
 
     # Full UQFF gravity computation (source120)
     # Base gravity with expansion and SC correction
-    g_base = (G * M_t / (r * r)) * expansion * sc_correction
+    g_base = (dpm_emergent_ug1(M_t, r)) * expansion * sc_correction
     
     # Environmental coupling
     F_env = SOURCE120_REFERENCE.get('F_env', 0.0)
@@ -1875,7 +1876,7 @@ def calculate_source120_stress_energy_tensor_complete(params: InputParameters, t
     mu0 = 4 * np.pi * 1e-7
     Ug1 = np.cos(2 * np.pi * t / 1e15) if t > 0 else 1.0  # Magnetic dipole oscillation
     Ug2 = (B**2) / (2 * mu0 * rho_gas * r) if rho_gas > 0 else 0.0  # Charge-reactivity
-    Ug3 = G * M / (r * r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
+    Ug3 = dpm_emergent_ug1(M, r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
     Ug4 = SOURCE120_REFERENCE.get('k4', 1e-20) * rho_vac  # Vacuum concentration
     ug_sum = Ug1 + Ug2 + Ug3 + Ug4
     
@@ -1967,7 +1968,7 @@ def calculate_source121_surface_magnetic_field_complete(params: InputParameters,
 
     # Full UQFF gravity computation (source121)
     # Base gravity with expansion and SC correction
-    g_base = (G * M_t / (r * r)) * expansion * sc_correction
+    g_base = (dpm_emergent_ug1(M_t, r)) * expansion * sc_correction
     
     # Environmental coupling
     F_env = SOURCE121_REFERENCE.get('F_env', 0.0)
@@ -1979,7 +1980,7 @@ def calculate_source121_surface_magnetic_field_complete(params: InputParameters,
     mu0 = 4 * np.pi * 1e-7
     Ug1 = np.cos(2 * np.pi * t / 1e15) if t > 0 else 1.0  # Magnetic dipole oscillation
     Ug2 = (B**2) / (2 * mu0 * rho_gas * r) if rho_gas > 0 else 0.0  # Charge-reactivity
-    Ug3 = G * M / (r * r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
+    Ug3 = dpm_emergent_ug1(M, r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
     Ug4 = SOURCE121_REFERENCE.get('k4', 1e-20) * rho_vac  # Vacuum concentration
     ug_sum = Ug1 + Ug2 + Ug3 + Ug4
     
@@ -2070,7 +2071,7 @@ def calculate_source123_time_reversal_zone_complete(params: InputParameters, t: 
 
     # Full UQFF gravity computation (source123)
     # Base gravity with expansion and SC correction
-    g_base = (G * M_t / (r * r)) * expansion * sc_correction
+    g_base = (dpm_emergent_ug1(M_t, r)) * expansion * sc_correction
     
     # Environmental coupling
     F_env = SOURCE123_REFERENCE.get('F_env', 0.0)
@@ -2082,7 +2083,7 @@ def calculate_source123_time_reversal_zone_complete(params: InputParameters, t: 
     mu0 = 4 * np.pi * 1e-7
     Ug1 = np.cos(2 * np.pi * t / 1e15) if t > 0 else 1.0  # Magnetic dipole oscillation
     Ug2 = (B**2) / (2 * mu0 * rho_gas * r) if rho_gas > 0 else 0.0  # Charge-reactivity
-    Ug3 = G * M / (r * r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
+    Ug3 = dpm_emergent_ug1(M, r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
     Ug4 = SOURCE123_REFERENCE.get('k4', 1e-20) * rho_vac  # Vacuum concentration
     ug_sum = Ug1 + Ug2 + Ug3 + Ug4
     
@@ -2174,7 +2175,7 @@ def calculate_source124_ug1_defect_complete(params: InputParameters, t: float = 
 
     # Full UQFF gravity computation (source124)
     # Base gravity with expansion and SC correction
-    g_base = (G * M_t / (r * r)) * expansion * sc_correction
+    g_base = (dpm_emergent_ug1(M_t, r)) * expansion * sc_correction
     
     # Environmental coupling
     F_env = SOURCE124_REFERENCE.get('F_env', 0.0)
@@ -2186,7 +2187,7 @@ def calculate_source124_ug1_defect_complete(params: InputParameters, t: float = 
     mu0 = 4 * np.pi * 1e-7
     Ug1 = np.cos(2 * np.pi * t / 1e15) if t > 0 else 1.0  # Magnetic dipole oscillation
     Ug2 = (B**2) / (2 * mu0 * rho_gas * r) if rho_gas > 0 else 0.0  # Charge-reactivity
-    Ug3 = G * M / (r * r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
+    Ug3 = dpm_emergent_ug1(M, r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
     Ug4 = SOURCE124_REFERENCE.get('k4', 1e-20) * rho_vac  # Vacuum concentration
     ug_sum = Ug1 + Ug2 + Ug3 + Ug4
     
@@ -2279,7 +2280,7 @@ def calculate_source125_ug3_disk_vector_complete(params: InputParameters, t: flo
 
     # Full UQFF gravity computation (source125)
     # Base gravity with expansion and SC correction
-    g_base = (G * M_t / (r * r)) * expansion * sc_correction
+    g_base = (dpm_emergent_ug1(M_t, r)) * expansion * sc_correction
     
     # Environmental coupling
     F_env = SOURCE125_REFERENCE.get('F_env', 0.0)
@@ -2291,7 +2292,7 @@ def calculate_source125_ug3_disk_vector_complete(params: InputParameters, t: flo
     mu0 = 4 * np.pi * 1e-7
     Ug1 = np.cos(2 * np.pi * t / 1e15) if t > 0 else 1.0  # Magnetic dipole oscillation
     Ug2 = (B**2) / (2 * mu0 * rho_gas * r) if rho_gas > 0 else 0.0  # Charge-reactivity
-    Ug3 = G * M / (r * r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
+    Ug3 = dpm_emergent_ug1(M, r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
     Ug4 = SOURCE125_REFERENCE.get('k4', 1e-20) * rho_vac  # Vacuum concentration
     ug_sum = Ug1 + Ug2 + Ug3 + Ug4
     
@@ -2381,7 +2382,7 @@ def calculate_source126_aether_vacuum_density_complete(params: InputParameters, 
 
     # Full UQFF gravity computation (source126)
     # Base gravity with expansion and SC correction
-    g_base = (G * M_t / (r * r)) * expansion * sc_correction
+    g_base = (dpm_emergent_ug1(M_t, r)) * expansion * sc_correction
     
     # Environmental coupling
     F_env = SOURCE126_REFERENCE.get('F_env', 0.0)
@@ -2393,7 +2394,7 @@ def calculate_source126_aether_vacuum_density_complete(params: InputParameters, 
     mu0 = 4 * np.pi * 1e-7
     Ug1 = np.cos(2 * np.pi * t / 1e15) if t > 0 else 1.0  # Magnetic dipole oscillation
     Ug2 = (B**2) / (2 * mu0 * rho_gas * r) if rho_gas > 0 else 0.0  # Charge-reactivity
-    Ug3 = G * M / (r * r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
+    Ug3 = dpm_emergent_ug1(M, r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
     Ug4 = SOURCE126_REFERENCE.get('k4', 1e-20) * rho_vac  # Vacuum concentration
     ug_sum = Ug1 + Ug2 + Ug3 + Ug4
     
@@ -2485,7 +2486,7 @@ def calculate_source127_universal_inertia_vacuum_complete(params: InputParameter
 
     # Full UQFF gravity computation (source127)
     # Base gravity with expansion and SC correction
-    g_base = (G * M_t / (r * r)) * expansion * sc_correction
+    g_base = (dpm_emergent_ug1(M_t, r)) * expansion * sc_correction
     
     # Environmental coupling
     F_env = SOURCE127_REFERENCE.get('F_env', 0.0)
@@ -2497,7 +2498,7 @@ def calculate_source127_universal_inertia_vacuum_complete(params: InputParameter
     mu0 = 4 * np.pi * 1e-7
     Ug1 = np.cos(2 * np.pi * t / 1e15) if t > 0 else 1.0  # Magnetic dipole oscillation
     Ug2 = (B**2) / (2 * mu0 * rho_gas * r) if rho_gas > 0 else 0.0  # Charge-reactivity
-    Ug3 = G * M / (r * r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
+    Ug3 = dpm_emergent_ug1(M, r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
     Ug4 = SOURCE127_REFERENCE.get('k4', 1e-20) * rho_vac  # Vacuum concentration
     ug_sum = Ug1 + Ug2 + Ug3 + Ug4
     
@@ -2595,7 +2596,7 @@ def calculate_source128_scm_vacuum_density_complete(params: InputParameters, t: 
 
     # Full UQFF gravity computation (source128)
     # Base gravity with expansion and SC correction
-    g_base = (G * M_t / (r * r)) * expansion * sc_correction
+    g_base = (dpm_emergent_ug1(M_t, r)) * expansion * sc_correction
     
     # Environmental coupling
     F_env = SOURCE128_REFERENCE.get('F_env', 0.0)
@@ -2607,7 +2608,7 @@ def calculate_source128_scm_vacuum_density_complete(params: InputParameters, t: 
     mu0 = 4 * np.pi * 1e-7
     Ug1 = np.cos(2 * np.pi * t / 1e15) if t > 0 else 1.0  # Magnetic dipole oscillation
     Ug2 = (B**2) / (2 * mu0 * rho_gas * r) if rho_gas > 0 else 0.0  # Charge-reactivity
-    Ug3 = G * M / (r * r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
+    Ug3 = dpm_emergent_ug1(M, r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
     Ug4 = SOURCE128_REFERENCE.get('k4', 1e-20) * rho_vac  # Vacuum concentration
     ug_sum = Ug1 + Ug2 + Ug3 + Ug4
     
@@ -2705,7 +2706,7 @@ def calculate_source129_ua_vacuum_density_complete(params: InputParameters, t: f
 
     # Full UQFF gravity computation (source129)
     # Base gravity with expansion and SC correction
-    g_base = (G * M_t / (r * r)) * expansion * sc_correction
+    g_base = (dpm_emergent_ug1(M_t, r)) * expansion * sc_correction
     
     # Environmental coupling
     F_env = SOURCE129_REFERENCE.get('F_env', 0.0)
@@ -2717,7 +2718,7 @@ def calculate_source129_ua_vacuum_density_complete(params: InputParameters, t: f
     mu0 = 4 * np.pi * 1e-7
     Ug1 = np.cos(2 * np.pi * t / 1e15) if t > 0 else 1.0  # Magnetic dipole oscillation
     Ug2 = (B**2) / (2 * mu0 * rho_gas * r) if rho_gas > 0 else 0.0  # Charge-reactivity
-    Ug3 = G * M / (r * r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
+    Ug3 = dpm_emergent_ug1(M, r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
     Ug4 = SOURCE129_REFERENCE.get('k4', 1e-20) * rho_vac  # Vacuum concentration
     ug_sum = Ug1 + Ug2 + Ug3 + Ug4
     
@@ -2809,7 +2810,7 @@ def calculate_source130_universal_inertia_vacuum_complete(params: InputParameter
 
     # Full UQFF gravity computation (source130)
     # Base gravity with expansion and SC correction
-    g_base = (G * M_t / (r * r)) * expansion * sc_correction
+    g_base = (dpm_emergent_ug1(M_t, r)) * expansion * sc_correction
     
     # Environmental coupling
     F_env = SOURCE130_REFERENCE.get('F_env', 0.0)
@@ -2821,7 +2822,7 @@ def calculate_source130_universal_inertia_vacuum_complete(params: InputParameter
     mu0 = 4 * np.pi * 1e-7
     Ug1 = np.cos(2 * np.pi * t / 1e15) if t > 0 else 1.0  # Magnetic dipole oscillation
     Ug2 = (B**2) / (2 * mu0 * rho_gas * r) if rho_gas > 0 else 0.0  # Charge-reactivity
-    Ug3 = G * M / (r * r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
+    Ug3 = dpm_emergent_ug1(M, r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
     Ug4 = SOURCE130_REFERENCE.get('k4', 1e-20) * rho_vac  # Vacuum concentration
     ug_sum = Ug1 + Ug2 + Ug3 + Ug4
     
@@ -2914,7 +2915,7 @@ def calculate_source131_scm_velocity_complete(params: InputParameters, t: float 
 
     # Full UQFF gravity computation (source131)
     # Base gravity with expansion and SC correction
-    g_base = (G * M_t / (r * r)) * expansion * sc_correction
+    g_base = (dpm_emergent_ug1(M_t, r)) * expansion * sc_correction
     
     # Environmental coupling
     F_env = SOURCE131_REFERENCE.get('F_env', 0.0)
@@ -2926,7 +2927,7 @@ def calculate_source131_scm_velocity_complete(params: InputParameters, t: float 
     mu0 = 4 * np.pi * 1e-7
     Ug1 = np.cos(2 * np.pi * t / 1e15) if t > 0 else 1.0  # Magnetic dipole oscillation
     Ug2 = (B**2) / (2 * mu0 * rho_gas * r) if rho_gas > 0 else 0.0  # Charge-reactivity
-    Ug3 = G * M / (r * r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
+    Ug3 = dpm_emergent_ug1(M, r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
     Ug4 = SOURCE131_REFERENCE.get('k4', 1e-20) * rho_vac  # Vacuum concentration
     ug_sum = Ug1 + Ug2 + Ug3 + Ug4
     
@@ -3042,7 +3043,7 @@ def calculate_source132_butterfly_nebula_complete(params: InputParameters, t: fl
 
     # Full UQFF gravity computation (source132)
     # Base gravity with expansion and SC correction
-    g_base = (G * M_t / (r * r)) * expansion * sc_correction
+    g_base = (dpm_emergent_ug1(M_t, r)) * expansion * sc_correction
     
     # Environmental coupling
     F_env = SOURCE132_REFERENCE.get('F_env', 0.0)
@@ -3054,7 +3055,7 @@ def calculate_source132_butterfly_nebula_complete(params: InputParameters, t: fl
     mu0 = 4 * np.pi * 1e-7
     Ug1 = np.cos(2 * np.pi * t / 1e15) if t > 0 else 1.0  # Magnetic dipole oscillation
     Ug2 = (B**2) / (2 * mu0 * rho_gas * r) if rho_gas > 0 else 0.0  # Charge-reactivity
-    Ug3 = G * M / (r * r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
+    Ug3 = dpm_emergent_ug1(M, r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
     Ug4 = SOURCE132_REFERENCE.get('k4', 1e-20) * rho_vac  # Vacuum concentration
     ug_sum = Ug1 + Ug2 + Ug3 + Ug4
     
@@ -3179,7 +3180,7 @@ def calculate_source133_centaurus_auqff_complete(params: InputParameters, t: flo
 
     # Full UQFF gravity computation (source133)
     # Base gravity with expansion and SC correction
-    g_base = (G * M_t / (r * r)) * expansion * sc_correction
+    g_base = (dpm_emergent_ug1(M_t, r)) * expansion * sc_correction
     
     # Environmental coupling
     F_env = SOURCE133_REFERENCE.get('F_env', 0.0)
@@ -3191,7 +3192,7 @@ def calculate_source133_centaurus_auqff_complete(params: InputParameters, t: flo
     mu0 = 4 * np.pi * 1e-7
     Ug1 = np.cos(2 * np.pi * t / 1e15) if t > 0 else 1.0  # Magnetic dipole oscillation
     Ug2 = (B**2) / (2 * mu0 * rho_gas * r) if rho_gas > 0 else 0.0  # Charge-reactivity
-    Ug3 = G * M / (r * r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
+    Ug3 = dpm_emergent_ug1(M, r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
     Ug4 = SOURCE133_REFERENCE.get('k4', 1e-20) * rho_vac  # Vacuum concentration
     ug_sum = Ug1 + Ug2 + Ug3 + Ug4
     
@@ -3288,7 +3289,7 @@ def calculate_source134_abell2256_complete(params: InputParameters, t: float = 0
     # Vacuum stability
     rho_vac = SOURCE134_REFERENCE.get('rho_vac_UA', 7.09e-36)
     V = (4.0/3.0) * np.pi * r**3
-    F_vac = rho_vac * V * G * M / (r * r)
+    F_vac = rho_vac * V * dpm_emergent_ug1(M, r)
     
     # Magnetic resonance
     mu0 = 4 * np.pi * 1e-7
@@ -3360,7 +3361,7 @@ def calculate_source135_asassn14li_complete(params: InputParameters, t: float = 
     # Vacuum stability
     rho_vac = SOURCE135_REFERENCE.get('rho_vac_UA', 7.09e-36)
     V = (4.0/3.0) * np.pi * r**3
-    F_vac = rho_vac * V * G * M / (r * r)
+    F_vac = rho_vac * V * dpm_emergent_ug1(M, r)
     
     # Magnetic resonance
     mu0 = 4 * np.pi * 1e-7
@@ -3432,7 +3433,7 @@ def calculate_source136_centaurus_auqff_complete(params: InputParameters, t: flo
     # Vacuum stability
     rho_vac = SOURCE136_REFERENCE.get('rho_vac_UA', 7.09e-36)
     V = (4.0/3.0) * np.pi * r**3
-    F_vac = rho_vac * V * G * M / (r * r)
+    F_vac = rho_vac * V * dpm_emergent_ug1(M, r)
     
     # Magnetic resonance
     mu0 = 4 * np.pi * 1e-7
@@ -3504,7 +3505,7 @@ def calculate_source137_crab_nebula_complete(params: InputParameters, t: float =
     # Vacuum stability
     rho_vac = SOURCE137_REFERENCE.get('rho_vac_UA', 7.09e-36)
     V = (4.0/3.0) * np.pi * r**3
-    F_vac = rho_vac * V * G * M / (r * r)
+    F_vac = rho_vac * V * dpm_emergent_ug1(M, r)
     
     # Magnetic resonance
     mu0 = 4 * np.pi * 1e-7
@@ -3576,7 +3577,7 @@ def calculate_source138_el_gordo_complete(params: InputParameters, t: float = 0.
     # Vacuum stability
     rho_vac = SOURCE138_REFERENCE.get('rho_vac_UA', 7.09e-36)
     V = (4.0/3.0) * np.pi * r**3
-    F_vac = rho_vac * V * G * M / (r * r)
+    F_vac = rho_vac * V * dpm_emergent_ug1(M, r)
     
     # Magnetic resonance
     mu0 = 4 * np.pi * 1e-7
@@ -3648,7 +3649,7 @@ def calculate_source140_ic2163_complete(params: InputParameters, t: float = 0.0)
     # Vacuum stability
     rho_vac = SOURCE140_REFERENCE.get('rho_vac_UA', 7.09e-36)
     V = (4.0/3.0) * np.pi * r**3
-    F_vac = rho_vac * V * G * M / (r * r)
+    F_vac = rho_vac * V * dpm_emergent_ug1(M, r)
     
     # Magnetic resonance
     mu0 = 4 * np.pi * 1e-7
@@ -3720,7 +3721,7 @@ def calculate_source141_j1610_complete(params: InputParameters, t: float = 0.0):
     # Vacuum stability
     rho_vac = SOURCE141_REFERENCE.get('rho_vac_UA', 7.09e-36)
     V = (4.0/3.0) * np.pi * r**3
-    F_vac = rho_vac * V * G * M / (r * r)
+    F_vac = rho_vac * V * dpm_emergent_ug1(M, r)
     
     # Magnetic resonance
     mu0 = 4 * np.pi * 1e-7
@@ -3792,7 +3793,7 @@ def calculate_source142_jupiter_aurorae_complete(params: InputParameters, t: flo
     # Vacuum stability
     rho_vac = SOURCE142_REFERENCE.get('rho_vac_UA', 7.09e-36)
     V = (4.0/3.0) * np.pi * r**3
-    F_vac = rho_vac * V * G * M / (r * r)
+    F_vac = rho_vac * V * dpm_emergent_ug1(M, r)
     
     # Magnetic resonance
     mu0 = 4 * np.pi * 1e-7
@@ -3864,7 +3865,7 @@ def calculate_source144_lagoon_nebula_complete(params: InputParameters, t: float
     # Vacuum stability
     rho_vac = SOURCE144_REFERENCE.get('rho_vac_UA', 7.09e-36)
     V = (4.0/3.0) * np.pi * r**3
-    F_vac = rho_vac * V * G * M / (r * r)
+    F_vac = rho_vac * V * dpm_emergent_ug1(M, r)
     
     # Magnetic resonance
     mu0 = 4 * np.pi * 1e-7
@@ -3936,7 +3937,7 @@ def calculate_source145_m87_jet_complete(params: InputParameters, t: float = 0.0
     # Vacuum stability
     rho_vac = SOURCE145_REFERENCE.get('rho_vac_UA', 7.09e-36)
     V = (4.0/3.0) * np.pi * r**3
-    F_vac = rho_vac * V * G * M / (r * r)
+    F_vac = rho_vac * V * dpm_emergent_ug1(M, r)
     
     # Magnetic resonance
     mu0 = 4 * np.pi * 1e-7
@@ -4008,7 +4009,7 @@ def calculate_source146_ngc1365_complete(params: InputParameters, t: float = 0.0
     # Vacuum stability
     rho_vac = SOURCE146_REFERENCE.get('rho_vac_UA', 7.09e-36)
     V = (4.0/3.0) * np.pi * r**3
-    F_vac = rho_vac * V * G * M / (r * r)
+    F_vac = rho_vac * V * dpm_emergent_ug1(M, r)
     
     # Magnetic resonance
     mu0 = 4 * np.pi * 1e-7
@@ -4080,7 +4081,7 @@ def calculate_source147_ngc2207_complete(params: InputParameters, t: float = 0.0
     # Vacuum stability
     rho_vac = SOURCE147_REFERENCE.get('rho_vac_UA', 7.09e-36)
     V = (4.0/3.0) * np.pi * r**3
-    F_vac = rho_vac * V * G * M / (r * r)
+    F_vac = rho_vac * V * dpm_emergent_ug1(M, r)
     
     # Magnetic resonance
     mu0 = 4 * np.pi * 1e-7
@@ -4152,7 +4153,7 @@ def calculate_source148_r_aquarii_complete(params: InputParameters, t: float = 0
     # Vacuum stability
     rho_vac = SOURCE148_REFERENCE.get('rho_vac_UA', 7.09e-36)
     V = (4.0/3.0) * np.pi * r**3
-    F_vac = rho_vac * V * G * M / (r * r)
+    F_vac = rho_vac * V * dpm_emergent_ug1(M, r)
     
     # Magnetic resonance
     mu0 = 4 * np.pi * 1e-7
@@ -4224,7 +4225,7 @@ def calculate_source149_sgr_a_star_complete(params: InputParameters, t: float = 
     # Vacuum stability
     rho_vac = SOURCE149_REFERENCE.get('rho_vac_UA', 7.09e-36)
     V = (4.0/3.0) * np.pi * r**3
-    F_vac = rho_vac * V * G * M / (r * r)
+    F_vac = rho_vac * V * dpm_emergent_ug1(M, r)
     
     # Magnetic resonance
     mu0 = 4 * np.pi * 1e-7
@@ -4296,7 +4297,7 @@ def calculate_source150_sptclj2215_complete(params: InputParameters, t: float = 
     # Vacuum stability
     rho_vac = SOURCE150_REFERENCE.get('rho_vac_UA', 7.09e-36)
     V = (4.0/3.0) * np.pi * r**3
-    F_vac = rho_vac * V * G * M / (r * r)
+    F_vac = rho_vac * V * dpm_emergent_ug1(M, r)
     
     # Magnetic resonance
     mu0 = 4 * np.pi * 1e-7
@@ -4368,7 +4369,7 @@ def calculate_source151_stephan_quintet_complete(params: InputParameters, t: flo
     # Vacuum stability
     rho_vac = SOURCE151_REFERENCE.get('rho_vac_UA', 7.09e-36)
     V = (4.0/3.0) * np.pi * r**3
-    F_vac = rho_vac * V * G * M / (r * r)
+    F_vac = rho_vac * V * dpm_emergent_ug1(M, r)
     
     # Magnetic resonance
     mu0 = 4 * np.pi * 1e-7
@@ -4440,7 +4441,7 @@ def calculate_source152_vela_pulsar_complete(params: InputParameters, t: float =
     # Vacuum stability
     rho_vac = SOURCE152_REFERENCE.get('rho_vac_UA', 7.09e-36)
     V = (4.0/3.0) * np.pi * r**3
-    F_vac = rho_vac * V * G * M / (r * r)
+    F_vac = rho_vac * V * dpm_emergent_ug1(M, r)
     
     # Magnetic resonance
     mu0 = 4 * np.pi * 1e-7
@@ -4512,7 +4513,7 @@ def calculate_source153_abell2256_complete(params: InputParameters, t: float = 0
     # Vacuum stability
     rho_vac = SOURCE153_REFERENCE.get('rho_vac_UA', 7.09e-36)
     V = (4.0/3.0) * np.pi * r**3
-    F_vac = rho_vac * V * G * M / (r * r)
+    F_vac = rho_vac * V * dpm_emergent_ug1(M, r)
     
     # Magnetic resonance
     mu0 = 4 * np.pi * 1e-7
@@ -4579,7 +4580,7 @@ def calculate_source168_complete(params: InputParameters, t: float = 0.0):
 
     # Full UQFF gravity computation (source168)
     # Base gravity with expansion and SC correction
-    g_base = (G * M_t / (r * r)) * expansion * sc_correction
+    g_base = (dpm_emergent_ug1(M_t, r)) * expansion * sc_correction
     
     # Environmental coupling
     F_env = SOURCE168_REFERENCE.get('F_env', 0.0)
@@ -4591,7 +4592,7 @@ def calculate_source168_complete(params: InputParameters, t: float = 0.0):
     mu0 = 4 * np.pi * 1e-7
     Ug1 = np.cos(2 * np.pi * t / 1e15) if t > 0 else 1.0  # Magnetic dipole oscillation
     Ug2 = (B**2) / (2 * mu0 * rho_gas * r) if rho_gas > 0 else 0.0  # Charge-reactivity
-    Ug3 = G * M / (r * r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
+    Ug3 = dpm_emergent_ug1(M, r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
     Ug4 = SOURCE168_REFERENCE.get('k4', 1e-20) * rho_vac  # Vacuum concentration
     ug_sum = Ug1 + Ug2 + Ug3 + Ug4
     
@@ -4683,7 +4684,7 @@ def calculate_source169_complete(params: InputParameters, t: float = 0.0):
 
     # Full UQFF gravity computation (source169)
     # Base gravity with expansion and SC correction
-    g_base = (G * M_t / (r * r)) * expansion * sc_correction
+    g_base = (dpm_emergent_ug1(M_t, r)) * expansion * sc_correction
     
     # Environmental coupling
     F_env = SOURCE169_REFERENCE.get('F_env', 0.0)
@@ -4695,7 +4696,7 @@ def calculate_source169_complete(params: InputParameters, t: float = 0.0):
     mu0 = 4 * np.pi * 1e-7
     Ug1 = np.cos(2 * np.pi * t / 1e15) if t > 0 else 1.0  # Magnetic dipole oscillation
     Ug2 = (B**2) / (2 * mu0 * rho_gas * r) if rho_gas > 0 else 0.0  # Charge-reactivity
-    Ug3 = G * M / (r * r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
+    Ug3 = dpm_emergent_ug1(M, r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
     Ug4 = SOURCE169_REFERENCE.get('k4', 1e-20) * rho_vac  # Vacuum concentration
     ug_sum = Ug1 + Ug2 + Ug3 + Ug4
     
@@ -4787,7 +4788,7 @@ def calculate_source170_complete(params: InputParameters, t: float = 0.0):
 
     # Full UQFF gravity computation (source170)
     # Base gravity with expansion and SC correction
-    g_base = (G * M_t / (r * r)) * expansion * sc_correction
+    g_base = (dpm_emergent_ug1(M_t, r)) * expansion * sc_correction
     
     # Environmental coupling
     F_env = SOURCE170_REFERENCE.get('F_env', 0.0)
@@ -4799,7 +4800,7 @@ def calculate_source170_complete(params: InputParameters, t: float = 0.0):
     mu0 = 4 * np.pi * 1e-7
     Ug1 = np.cos(2 * np.pi * t / 1e15) if t > 0 else 1.0  # Magnetic dipole oscillation
     Ug2 = (B**2) / (2 * mu0 * rho_gas * r) if rho_gas > 0 else 0.0  # Charge-reactivity
-    Ug3 = G * M / (r * r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
+    Ug3 = dpm_emergent_ug1(M, r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
     Ug4 = SOURCE170_REFERENCE.get('k4', 1e-20) * rho_vac  # Vacuum concentration
     ug_sum = Ug1 + Ug2 + Ug3 + Ug4
     
@@ -4891,7 +4892,7 @@ def calculate_source171_eight_astro_systems_source114_complete(params: InputPara
 
     # Full UQFF gravity computation (source171)
     # Base gravity with expansion and SC correction
-    g_base = (G * M_t / (r * r)) * expansion * sc_correction
+    g_base = (dpm_emergent_ug1(M_t, r)) * expansion * sc_correction
     
     # Environmental coupling
     F_env = SOURCE171_REFERENCE.get('F_env', 0.0)
@@ -4903,7 +4904,7 @@ def calculate_source171_eight_astro_systems_source114_complete(params: InputPara
     mu0 = 4 * np.pi * 1e-7
     Ug1 = np.cos(2 * np.pi * t / 1e15) if t > 0 else 1.0  # Magnetic dipole oscillation
     Ug2 = (B**2) / (2 * mu0 * rho_gas * r) if rho_gas > 0 else 0.0  # Charge-reactivity
-    Ug3 = G * M / (r * r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
+    Ug3 = dpm_emergent_ug1(M, r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
     Ug4 = SOURCE171_REFERENCE.get('k4', 1e-20) * rho_vac  # Vacuum concentration
     ug_sum = Ug1 + Ug2 + Ug3 + Ug4
     
@@ -4995,7 +4996,7 @@ def calculate_source172_nineteen_astro_systems_source115_complete(params: InputP
 
     # Full UQFF gravity computation (source172)
     # Base gravity with expansion and SC correction
-    g_base = (G * M_t / (r * r)) * expansion * sc_correction
+    g_base = (dpm_emergent_ug1(M_t, r)) * expansion * sc_correction
     
     # Environmental coupling
     F_env = SOURCE172_REFERENCE.get('F_env', 0.0)
@@ -5007,7 +5008,7 @@ def calculate_source172_nineteen_astro_systems_source115_complete(params: InputP
     mu0 = 4 * np.pi * 1e-7
     Ug1 = np.cos(2 * np.pi * t / 1e15) if t > 0 else 1.0  # Magnetic dipole oscillation
     Ug2 = (B**2) / (2 * mu0 * rho_gas * r) if rho_gas > 0 else 0.0  # Charge-reactivity
-    Ug3 = G * M / (r * r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
+    Ug3 = dpm_emergent_ug1(M, r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
     Ug4 = SOURCE172_REFERENCE.get('k4', 1e-20) * rho_vac  # Vacuum concentration
     ug_sum = Ug1 + Ug2 + Ug3 + Ug4
     
@@ -5099,7 +5100,7 @@ def calculate_source173_wolfram_field_unity_source116_complete(params: InputPara
 
     # Full UQFF gravity computation (source173)
     # Base gravity with expansion and SC correction
-    g_base = (G * M_t / (r * r)) * expansion * sc_correction
+    g_base = (dpm_emergent_ug1(M_t, r)) * expansion * sc_correction
     
     # Environmental coupling
     F_env = SOURCE173_REFERENCE.get('F_env', 0.0)
@@ -5111,7 +5112,7 @@ def calculate_source173_wolfram_field_unity_source116_complete(params: InputPara
     mu0 = 4 * np.pi * 1e-7
     Ug1 = np.cos(2 * np.pi * t / 1e15) if t > 0 else 1.0  # Magnetic dipole oscillation
     Ug2 = (B**2) / (2 * mu0 * rho_gas * r) if rho_gas > 0 else 0.0  # Charge-reactivity
-    Ug3 = G * M / (r * r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
+    Ug3 = dpm_emergent_ug1(M, r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
     Ug4 = SOURCE173_REFERENCE.get('k4', 1e-20) * rho_vac  # Vacuum concentration
     ug_sum = Ug1 + Ug2 + Ug3 + Ug4
     
@@ -5203,7 +5204,7 @@ def calculate_source174_asymmetrical_capacitor_complete(params: InputParameters,
 
     # Full UQFF gravity computation (source174)
     # Base gravity with expansion and SC correction
-    g_base = (G * M_t / (r * r)) * expansion * sc_correction
+    g_base = (dpm_emergent_ug1(M_t, r)) * expansion * sc_correction
     
     # Environmental coupling
     F_env = SOURCE174_REFERENCE.get('F_env', 0.0)
@@ -5215,7 +5216,7 @@ def calculate_source174_asymmetrical_capacitor_complete(params: InputParameters,
     mu0 = 4 * np.pi * 1e-7
     Ug1 = np.cos(2 * np.pi * t / 1e15) if t > 0 else 1.0  # Magnetic dipole oscillation
     Ug2 = (B**2) / (2 * mu0 * rho_gas * r) if rho_gas > 0 else 0.0  # Charge-reactivity
-    Ug3 = G * M / (r * r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
+    Ug3 = dpm_emergent_ug1(M, r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
     Ug4 = SOURCE174_REFERENCE.get('k4', 1e-20) * rho_vac  # Vacuum concentration
     ug_sum = Ug1 + Ug2 + Ug3 + Ug4
     
@@ -5307,7 +5308,7 @@ def calculate_source175_complete(params: InputParameters, t: float = 0.0):
 
     # Full UQFF gravity computation (source175)
     # Base gravity with expansion and SC correction
-    g_base = (G * M_t / (r * r)) * expansion * sc_correction
+    g_base = (dpm_emergent_ug1(M_t, r)) * expansion * sc_correction
     
     # Environmental coupling
     F_env = SOURCE175_REFERENCE.get('F_env', 0.0)
@@ -5319,7 +5320,7 @@ def calculate_source175_complete(params: InputParameters, t: float = 0.0):
     mu0 = 4 * np.pi * 1e-7
     Ug1 = np.cos(2 * np.pi * t / 1e15) if t > 0 else 1.0  # Magnetic dipole oscillation
     Ug2 = (B**2) / (2 * mu0 * rho_gas * r) if rho_gas > 0 else 0.0  # Charge-reactivity
-    Ug3 = G * M / (r * r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
+    Ug3 = dpm_emergent_ug1(M, r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
     Ug4 = SOURCE175_REFERENCE.get('k4', 1e-20) * rho_vac  # Vacuum concentration
     ug_sum = Ug1 + Ug2 + Ug3 + Ug4
     
@@ -5402,7 +5403,7 @@ def calculate_source179_complete(params: InputParameters, t: float = 0.0):
 
     # Full UQFF gravity computation (source179)
     # Base gravity with expansion and SC correction
-    g_base = (G * M_t / (r * r)) * expansion * sc_correction
+    g_base = (dpm_emergent_ug1(M_t, r)) * expansion * sc_correction
     
     # Environmental coupling
     F_env = SOURCE179_REFERENCE.get('F_env', 0.0)
@@ -5414,7 +5415,7 @@ def calculate_source179_complete(params: InputParameters, t: float = 0.0):
     mu0 = 4 * np.pi * 1e-7
     Ug1 = np.cos(2 * np.pi * t / 1e15) if t > 0 else 1.0  # Magnetic dipole oscillation
     Ug2 = (B**2) / (2 * mu0 * rho_gas * r) if rho_gas > 0 else 0.0  # Charge-reactivity
-    Ug3 = G * M / (r * r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
+    Ug3 = dpm_emergent_ug1(M, r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
     Ug4 = SOURCE179_REFERENCE.get('k4', 1e-20) * rho_vac  # Vacuum concentration
     ug_sum = Ug1 + Ug2 + Ug3 + Ug4
     
@@ -5520,7 +5521,7 @@ def calculate_source52_multi_complete(params: InputParameters, t: float = 0.0):
 
     # Full UQFF gravity computation (source52)
     # Base gravity with expansion and SC correction
-    g_base = (G * M_t / (r * r)) * expansion * sc_correction
+    g_base = (dpm_emergent_ug1(M_t, r)) * expansion * sc_correction
     
     # Environmental coupling
     F_env = SOURCE52_REFERENCE.get('F_env', 0.0)
@@ -5532,7 +5533,7 @@ def calculate_source52_multi_complete(params: InputParameters, t: float = 0.0):
     mu0 = 4 * np.pi * 1e-7
     Ug1 = np.cos(2 * np.pi * t / 1e15) if t > 0 else 1.0  # Magnetic dipole oscillation
     Ug2 = (B**2) / (2 * mu0 * rho_gas * r) if rho_gas > 0 else 0.0  # Charge-reactivity
-    Ug3 = G * M / (r * r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
+    Ug3 = dpm_emergent_ug1(M, r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
     Ug4 = SOURCE52_REFERENCE.get('k4', 1e-20) * rho_vac  # Vacuum concentration
     ug_sum = Ug1 + Ug2 + Ug3 + Ug4
     
@@ -5648,7 +5649,7 @@ def calculate_source54_young_stars_outflows_complete(params: InputParameters, t:
 
     # Full UQFF gravity computation (source54)
     # Base gravity with expansion and SC correction
-    g_base = (G * M_t / (r * r)) * expansion * sc_correction
+    g_base = (dpm_emergent_ug1(M_t, r)) * expansion * sc_correction
     
     # Environmental coupling
     F_env = SOURCE54_REFERENCE.get('F_env', 0.0)
@@ -5660,7 +5661,7 @@ def calculate_source54_young_stars_outflows_complete(params: InputParameters, t:
     mu0 = 4 * np.pi * 1e-7
     Ug1 = np.cos(2 * np.pi * t / 1e15) if t > 0 else 1.0  # Magnetic dipole oscillation
     Ug2 = (B**2) / (2 * mu0 * rho_gas * r) if rho_gas > 0 else 0.0  # Charge-reactivity
-    Ug3 = G * M / (r * r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
+    Ug3 = dpm_emergent_ug1(M, r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
     Ug4 = SOURCE54_REFERENCE.get('k4', 1e-20) * rho_vac  # Vacuum concentration
     ug_sum = Ug1 + Ug2 + Ug3 + Ug4
     
@@ -5773,7 +5774,7 @@ def calculate_source56_big_bang_gravity_complete(params: InputParameters, t: flo
 
     # Full UQFF gravity computation (source56)
     # Base gravity with expansion and SC correction
-    g_base = (G * M_t / (r * r)) * expansion * sc_correction
+    g_base = (dpm_emergent_ug1(M_t, r)) * expansion * sc_correction
     
     # Environmental coupling
     F_env = SOURCE56_REFERENCE.get('F_env', 0.0)
@@ -5785,7 +5786,7 @@ def calculate_source56_big_bang_gravity_complete(params: InputParameters, t: flo
     mu0 = 4 * np.pi * 1e-7
     Ug1 = np.cos(2 * np.pi * t / 1e15) if t > 0 else 1.0  # Magnetic dipole oscillation
     Ug2 = (B**2) / (2 * mu0 * rho_gas * r) if rho_gas > 0 else 0.0  # Charge-reactivity
-    Ug3 = G * M / (r * r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
+    Ug3 = dpm_emergent_ug1(M, r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
     Ug4 = SOURCE56_REFERENCE.get('k4', 1e-20) * rho_vac  # Vacuum concentration
     ug_sum = Ug1 + Ug2 + Ug3 + Ug4
     
@@ -5887,7 +5888,7 @@ def calculate_source57_multi_compressed_complete(params: InputParameters, t: flo
 
     # Full UQFF gravity computation (source57)
     # Base gravity with expansion and SC correction
-    g_base = (G * M_t / (r * r)) * expansion * sc_correction
+    g_base = (dpm_emergent_ug1(M_t, r)) * expansion * sc_correction
     
     # Environmental coupling
     F_env = SOURCE57_REFERENCE.get('F_env', 0.0)
@@ -5899,7 +5900,7 @@ def calculate_source57_multi_compressed_complete(params: InputParameters, t: flo
     mu0 = 4 * np.pi * 1e-7
     Ug1 = np.cos(2 * np.pi * t / 1e15) if t > 0 else 1.0  # Magnetic dipole oscillation
     Ug2 = (B**2) / (2 * mu0 * rho_gas * r) if rho_gas > 0 else 0.0  # Charge-reactivity
-    Ug3 = G * M / (r * r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
+    Ug3 = dpm_emergent_ug1(M, r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
     Ug4 = SOURCE57_REFERENCE.get('k4', 1e-20) * rho_vac  # Vacuum concentration
     ug_sum = Ug1 + Ug2 + Ug3 + Ug4
     
@@ -6002,7 +6003,7 @@ def calculate_source60_multi_compression_complete(params: InputParameters, t: fl
 
     # Full UQFF gravity computation (source60)
     # Base gravity with expansion and SC correction
-    g_base = (G * M_t / (r * r)) * expansion * sc_correction
+    g_base = (dpm_emergent_ug1(M_t, r)) * expansion * sc_correction
     
     # Environmental coupling
     F_env = SOURCE60_REFERENCE.get('F_env', 0.0)
@@ -6014,7 +6015,7 @@ def calculate_source60_multi_compression_complete(params: InputParameters, t: fl
     mu0 = 4 * np.pi * 1e-7
     Ug1 = np.cos(2 * np.pi * t / 1e15) if t > 0 else 1.0  # Magnetic dipole oscillation
     Ug2 = (B**2) / (2 * mu0 * rho_gas * r) if rho_gas > 0 else 0.0  # Charge-reactivity
-    Ug3 = G * M / (r * r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
+    Ug3 = dpm_emergent_ug1(M, r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
     Ug4 = SOURCE60_REFERENCE.get('k4', 1e-20) * rho_vac  # Vacuum concentration
     ug_sum = Ug1 + Ug2 + Ug3 + Ug4
     
@@ -6131,7 +6132,7 @@ def calculate_source64_ufe_orb_complete(params: InputParameters, t: float = 0.0)
 
     # Full UQFF gravity computation (source64)
     # Base gravity with expansion and SC correction
-    g_base = (G * M_t / (r * r)) * expansion * sc_correction
+    g_base = (dpm_emergent_ug1(M_t, r)) * expansion * sc_correction
     
     # Environmental coupling
     F_env = SOURCE64_REFERENCE.get('F_env', 0.0)
@@ -6143,7 +6144,7 @@ def calculate_source64_ufe_orb_complete(params: InputParameters, t: float = 0.0)
     mu0 = 4 * np.pi * 1e-7
     Ug1 = np.cos(2 * np.pi * t / 1e15) if t > 0 else 1.0  # Magnetic dipole oscillation
     Ug2 = (B**2) / (2 * mu0 * rho_gas * r) if rho_gas > 0 else 0.0  # Charge-reactivity
-    Ug3 = G * M / (r * r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
+    Ug3 = dpm_emergent_ug1(M, r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
     Ug4 = SOURCE64_REFERENCE.get('k4', 1e-20) * rho_vac  # Vacuum concentration
     ug_sum = Ug1 + Ug2 + Ug3 + Ug4
     
@@ -6264,7 +6265,7 @@ def calculate_source65_nebular_complete(params: InputParameters, t: float = 0.0)
 
     # Full UQFF gravity computation (source65)
     # Base gravity with expansion and SC correction
-    g_base = (G * M_t / (r * r)) * expansion * sc_correction
+    g_base = (dpm_emergent_ug1(M_t, r)) * expansion * sc_correction
     
     # Environmental coupling
     F_env = SOURCE65_REFERENCE.get('F_env', 0.0)
@@ -6276,7 +6277,7 @@ def calculate_source65_nebular_complete(params: InputParameters, t: float = 0.0)
     mu0 = 4 * np.pi * 1e-7
     Ug1 = np.cos(2 * np.pi * t / 1e15) if t > 0 else 1.0  # Magnetic dipole oscillation
     Ug2 = (B**2) / (2 * mu0 * rho_gas * r) if rho_gas > 0 else 0.0  # Charge-reactivity
-    Ug3 = G * M / (r * r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
+    Ug3 = dpm_emergent_ug1(M, r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
     Ug4 = SOURCE65_REFERENCE.get('k4', 1e-20) * rho_vac  # Vacuum concentration
     ug_sum = Ug1 + Ug2 + Ug3 + Ug4
     
@@ -6397,7 +6398,7 @@ def calculate_source66_red_dwarf_complete(params: InputParameters, t: float = 0.
 
     # Full UQFF gravity computation (source66)
     # Base gravity with expansion and SC correction
-    g_base = (G * M_t / (r * r)) * expansion * sc_correction
+    g_base = (dpm_emergent_ug1(M_t, r)) * expansion * sc_correction
     
     # Environmental coupling
     F_env = SOURCE66_REFERENCE.get('F_env', 0.0)
@@ -6409,7 +6410,7 @@ def calculate_source66_red_dwarf_complete(params: InputParameters, t: float = 0.
     mu0 = 4 * np.pi * 1e-7
     Ug1 = np.cos(2 * np.pi * t / 1e15) if t > 0 else 1.0  # Magnetic dipole oscillation
     Ug2 = (B**2) / (2 * mu0 * rho_gas * r) if rho_gas > 0 else 0.0  # Charge-reactivity
-    Ug3 = G * M / (r * r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
+    Ug3 = dpm_emergent_ug1(M, r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
     Ug4 = SOURCE66_REFERENCE.get('k4', 1e-20) * rho_vac  # Vacuum concentration
     ug_sum = Ug1 + Ug2 + Ug3 + Ug4
     
@@ -6522,7 +6523,7 @@ def calculate_source67_inertia_complete(params: InputParameters, t: float = 0.0)
 
     # Full UQFF gravity computation (source67)
     # Base gravity with expansion and SC correction
-    g_base = (G * M_t / (r * r)) * expansion * sc_correction
+    g_base = (dpm_emergent_ug1(M_t, r)) * expansion * sc_correction
     
     # Environmental coupling
     F_env = SOURCE67_REFERENCE.get('F_env', 0.0)
@@ -6534,7 +6535,7 @@ def calculate_source67_inertia_complete(params: InputParameters, t: float = 0.0)
     mu0 = 4 * np.pi * 1e-7
     Ug1 = np.cos(2 * np.pi * t / 1e15) if t > 0 else 1.0  # Magnetic dipole oscillation
     Ug2 = (B**2) / (2 * mu0 * rho_gas * r) if rho_gas > 0 else 0.0  # Charge-reactivity
-    Ug3 = G * M / (r * r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
+    Ug3 = dpm_emergent_ug1(M, r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
     Ug4 = SOURCE67_REFERENCE.get('k4', 1e-20) * rho_vac  # Vacuum concentration
     ug_sum = Ug1 + Ug2 + Ug3 + Ug4
     
@@ -6633,7 +6634,7 @@ def calculate_source68_hydrogen_complete(params: InputParameters, t: float = 0.0
 
     # Full UQFF gravity computation (source68)
     # Base gravity with expansion and SC correction
-    g_base = (G * M_t / (r * r)) * expansion * sc_correction
+    g_base = (dpm_emergent_ug1(M_t, r)) * expansion * sc_correction
     
     # Environmental coupling
     F_env = SOURCE68_REFERENCE.get('F_env', 0.0)
@@ -6645,7 +6646,7 @@ def calculate_source68_hydrogen_complete(params: InputParameters, t: float = 0.0
     mu0 = 4 * np.pi * 1e-7
     Ug1 = np.cos(2 * np.pi * t / 1e15) if t > 0 else 1.0  # Magnetic dipole oscillation
     Ug2 = (B**2) / (2 * mu0 * rho_gas * r) if rho_gas > 0 else 0.0  # Charge-reactivity
-    Ug3 = G * M / (r * r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
+    Ug3 = dpm_emergent_ug1(M, r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
     Ug4 = SOURCE68_REFERENCE.get('k4', 1e-20) * rho_vac  # Vacuum concentration
     ug_sum = Ug1 + Ug2 + Ug3 + Ug4
     
@@ -6764,7 +6765,7 @@ def calculate_source69_uqff_compression_complete(params: InputParameters, t: flo
 
     # Full UQFF gravity computation (source69)
     # Base gravity with expansion and SC correction
-    g_base = (G * M_t / (r * r)) * expansion * sc_correction
+    g_base = (dpm_emergent_ug1(M_t, r)) * expansion * sc_correction
     
     # Environmental coupling
     F_env = SOURCE69_REFERENCE.get('F_env', 0.0)
@@ -6776,7 +6777,7 @@ def calculate_source69_uqff_compression_complete(params: InputParameters, t: flo
     mu0 = 4 * np.pi * 1e-7
     Ug1 = np.cos(2 * np.pi * t / 1e15) if t > 0 else 1.0  # Magnetic dipole oscillation
     Ug2 = (B**2) / (2 * mu0 * rho_gas * r) if rho_gas > 0 else 0.0  # Charge-reactivity
-    Ug3 = G * M / (r * r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
+    Ug3 = dpm_emergent_ug1(M, r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
     Ug4 = SOURCE69_REFERENCE.get('k4', 1e-20) * rho_vac  # Vacuum concentration
     ug_sum = Ug1 + Ug2 + Ug3 + Ug4
     
@@ -6896,7 +6897,7 @@ def calculate_source70_m51_complete(params: InputParameters, t: float = 0.0):
 
     # Full UQFF gravity computation (source70)
     # Base gravity with expansion and SC correction
-    g_base = (G * M_t / (r * r)) * expansion * sc_correction
+    g_base = (dpm_emergent_ug1(M_t, r)) * expansion * sc_correction
     
     # Environmental coupling
     F_env = SOURCE70_REFERENCE.get('F_env', 0.0)
@@ -6908,7 +6909,7 @@ def calculate_source70_m51_complete(params: InputParameters, t: float = 0.0):
     mu0 = 4 * np.pi * 1e-7
     Ug1 = np.cos(2 * np.pi * t / 1e15) if t > 0 else 1.0  # Magnetic dipole oscillation
     Ug2 = (B**2) / (2 * mu0 * rho_gas * r) if rho_gas > 0 else 0.0  # Charge-reactivity
-    Ug3 = G * M / (r * r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
+    Ug3 = dpm_emergent_ug1(M, r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
     Ug4 = SOURCE70_REFERENCE.get('k4', 1e-20) * rho_vac  # Vacuum concentration
     ug_sum = Ug1 + Ug2 + Ug3 + Ug4
     
@@ -7028,7 +7029,7 @@ def calculate_source71_ngc1316_complete(params: InputParameters, t: float = 0.0)
 
     # Full UQFF gravity computation (source71)
     # Base gravity with expansion and SC correction
-    g_base = (G * M_t / (r * r)) * expansion * sc_correction
+    g_base = (dpm_emergent_ug1(M_t, r)) * expansion * sc_correction
     
     # Environmental coupling
     F_env = SOURCE71_REFERENCE.get('F_env', 0.0)
@@ -7040,7 +7041,7 @@ def calculate_source71_ngc1316_complete(params: InputParameters, t: float = 0.0)
     mu0 = 4 * np.pi * 1e-7
     Ug1 = np.cos(2 * np.pi * t / 1e15) if t > 0 else 1.0  # Magnetic dipole oscillation
     Ug2 = (B**2) / (2 * mu0 * rho_gas * r) if rho_gas > 0 else 0.0  # Charge-reactivity
-    Ug3 = G * M / (r * r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
+    Ug3 = dpm_emergent_ug1(M, r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
     Ug4 = SOURCE71_REFERENCE.get('k4', 1e-20) * rho_vac  # Vacuum concentration
     ug_sum = Ug1 + Ug2 + Ug3 + Ug4
     
@@ -7135,7 +7136,7 @@ def calculate_source72_v838_mon_complete(params: InputParameters, t: float = 0.0
 
     # Full UQFF gravity computation (source72)
     # Base gravity with expansion and SC correction
-    g_base = (G * M_t / (r * r)) * expansion * sc_correction
+    g_base = (dpm_emergent_ug1(M_t, r)) * expansion * sc_correction
     
     # Environmental coupling
     F_env = SOURCE72_REFERENCE.get('F_env', 0.0)
@@ -7147,7 +7148,7 @@ def calculate_source72_v838_mon_complete(params: InputParameters, t: float = 0.0
     mu0 = 4 * np.pi * 1e-7
     Ug1 = np.cos(2 * np.pi * t / 1e15) if t > 0 else 1.0  # Magnetic dipole oscillation
     Ug2 = (B**2) / (2 * mu0 * rho_gas * r) if rho_gas > 0 else 0.0  # Charge-reactivity
-    Ug3 = G * M / (r * r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
+    Ug3 = dpm_emergent_ug1(M, r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
     Ug4 = SOURCE72_REFERENCE.get('k4', 1e-20) * rho_vac  # Vacuum concentration
     ug_sum = Ug1 + Ug2 + Ug3 + Ug4
     
@@ -7267,7 +7268,7 @@ def calculate_source73_ngc1300_complete(params: InputParameters, t: float = 0.0)
 
     # Full UQFF gravity computation (source73)
     # Base gravity with expansion and SC correction
-    g_base = (G * M_t / (r * r)) * expansion * sc_correction
+    g_base = (dpm_emergent_ug1(M_t, r)) * expansion * sc_correction
     
     # Environmental coupling
     F_env = SOURCE73_REFERENCE.get('F_env', 0.0)
@@ -7279,7 +7280,7 @@ def calculate_source73_ngc1300_complete(params: InputParameters, t: float = 0.0)
     mu0 = 4 * np.pi * 1e-7
     Ug1 = np.cos(2 * np.pi * t / 1e15) if t > 0 else 1.0  # Magnetic dipole oscillation
     Ug2 = (B**2) / (2 * mu0 * rho_gas * r) if rho_gas > 0 else 0.0  # Charge-reactivity
-    Ug3 = G * M / (r * r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
+    Ug3 = dpm_emergent_ug1(M, r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
     Ug4 = SOURCE73_REFERENCE.get('k4', 1e-20) * rho_vac  # Vacuum concentration
     ug_sum = Ug1 + Ug2 + Ug3 + Ug4
     
@@ -7387,7 +7388,7 @@ def calculate_source74_uqff_compressed_resonance_complete(params: InputParameter
 
     # Full UQFF gravity computation (source74)
     # Base gravity with expansion and SC correction
-    g_base = (G * M_t / (r * r)) * expansion * sc_correction
+    g_base = (dpm_emergent_ug1(M_t, r)) * expansion * sc_correction
     
     # Environmental coupling
     F_env = SOURCE74_REFERENCE.get('F_env', 0.0)
@@ -7399,7 +7400,7 @@ def calculate_source74_uqff_compressed_resonance_complete(params: InputParameter
     mu0 = 4 * np.pi * 1e-7
     Ug1 = np.cos(2 * np.pi * t / 1e15) if t > 0 else 1.0  # Magnetic dipole oscillation
     Ug2 = (B**2) / (2 * mu0 * rho_gas * r) if rho_gas > 0 else 0.0  # Charge-reactivity
-    Ug3 = G * M / (r * r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
+    Ug3 = dpm_emergent_ug1(M, r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
     Ug4 = SOURCE74_REFERENCE.get('k4', 1e-20) * rho_vac  # Vacuum concentration
     ug_sum = Ug1 + Ug2 + Ug3 + Ug4
     
@@ -7529,7 +7530,7 @@ def calculate_source76_ngc2264_complete(params: InputParameters, t: float = 0.0)
 
     # Full UQFF gravity computation (source76)
     # Base gravity with expansion and SC correction
-    g_base = (G * M_t / (r * r)) * expansion * sc_correction
+    g_base = (dpm_emergent_ug1(M_t, r)) * expansion * sc_correction
     
     # Environmental coupling
     F_env = SOURCE76_REFERENCE.get('F_env', 0.0)
@@ -7541,7 +7542,7 @@ def calculate_source76_ngc2264_complete(params: InputParameters, t: float = 0.0)
     mu0 = 4 * np.pi * 1e-7
     Ug1 = np.cos(2 * np.pi * t / 1e15) if t > 0 else 1.0  # Magnetic dipole oscillation
     Ug2 = (B**2) / (2 * mu0 * rho_gas * r) if rho_gas > 0 else 0.0  # Charge-reactivity
-    Ug3 = G * M / (r * r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
+    Ug3 = dpm_emergent_ug1(M, r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
     Ug4 = SOURCE76_REFERENCE.get('k4', 1e-20) * rho_vac  # Vacuum concentration
     ug_sum = Ug1 + Ug2 + Ug3 + Ug4
     
@@ -7661,7 +7662,7 @@ def calculate_source77_ugc10214_complete(params: InputParameters, t: float = 0.0
 
     # Full UQFF gravity computation (source77)
     # Base gravity with expansion and SC correction
-    g_base = (G * M_t / (r * r)) * expansion * sc_correction
+    g_base = (dpm_emergent_ug1(M_t, r)) * expansion * sc_correction
     
     # Environmental coupling
     F_env = SOURCE77_REFERENCE.get('F_env', 0.0)
@@ -7673,7 +7674,7 @@ def calculate_source77_ugc10214_complete(params: InputParameters, t: float = 0.0
     mu0 = 4 * np.pi * 1e-7
     Ug1 = np.cos(2 * np.pi * t / 1e15) if t > 0 else 1.0  # Magnetic dipole oscillation
     Ug2 = (B**2) / (2 * mu0 * rho_gas * r) if rho_gas > 0 else 0.0  # Charge-reactivity
-    Ug3 = G * M / (r * r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
+    Ug3 = dpm_emergent_ug1(M, r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
     Ug4 = SOURCE77_REFERENCE.get('k4', 1e-20) * rho_vac  # Vacuum concentration
     ug_sum = Ug1 + Ug2 + Ug3 + Ug4
     
@@ -7795,7 +7796,7 @@ def calculate_source78_ngc4676_complete(params: InputParameters, t: float = 0.0)
 
     # Full UQFF gravity computation (source78)
     # Base gravity with expansion and SC correction
-    g_base = (G * M_t / (r * r)) * expansion * sc_correction
+    g_base = (dpm_emergent_ug1(M_t, r)) * expansion * sc_correction
     
     # Environmental coupling
     F_env = SOURCE78_REFERENCE.get('F_env', 0.0)
@@ -7807,7 +7808,7 @@ def calculate_source78_ngc4676_complete(params: InputParameters, t: float = 0.0)
     mu0 = 4 * np.pi * 1e-7
     Ug1 = np.cos(2 * np.pi * t / 1e15) if t > 0 else 1.0  # Magnetic dipole oscillation
     Ug2 = (B**2) / (2 * mu0 * rho_gas * r) if rho_gas > 0 else 0.0  # Charge-reactivity
-    Ug3 = G * M / (r * r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
+    Ug3 = dpm_emergent_ug1(M, r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
     Ug4 = SOURCE78_REFERENCE.get('k4', 1e-20) * rho_vac  # Vacuum concentration
     ug_sum = Ug1 + Ug2 + Ug3 + Ug4
     
@@ -7912,7 +7913,7 @@ def calculate_source79_red_spider_complete(params: InputParameters, t: float = 0
 
     # Full UQFF gravity computation (source79)
     # Base gravity with expansion and SC correction
-    g_base = (G * M_t / (r * r)) * expansion * sc_correction
+    g_base = (dpm_emergent_ug1(M_t, r)) * expansion * sc_correction
     
     # Environmental coupling
     F_env = SOURCE79_REFERENCE.get('F_env', 0.0)
@@ -7924,7 +7925,7 @@ def calculate_source79_red_spider_complete(params: InputParameters, t: float = 0
     mu0 = 4 * np.pi * 1e-7
     Ug1 = np.cos(2 * np.pi * t / 1e15) if t > 0 else 1.0  # Magnetic dipole oscillation
     Ug2 = (B**2) / (2 * mu0 * rho_gas * r) if rho_gas > 0 else 0.0  # Charge-reactivity
-    Ug3 = G * M / (r * r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
+    Ug3 = dpm_emergent_ug1(M, r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
     Ug4 = SOURCE79_REFERENCE.get('k4', 1e-20) * rho_vac  # Vacuum concentration
     ug_sum = Ug1 + Ug2 + Ug3 + Ug4
     
@@ -8035,7 +8036,7 @@ def calculate_source80_smbh_binary_complete(params: InputParameters, t: float = 
 
     # Full UQFF gravity computation (source80)
     # Base gravity with expansion and SC correction
-    g_base = (G * M_t / (r * r)) * expansion * sc_correction
+    g_base = (dpm_emergent_ug1(M_t, r)) * expansion * sc_correction
     
     # Environmental coupling
     F_env = SOURCE80_REFERENCE.get('F_env', 0.0)
@@ -8047,7 +8048,7 @@ def calculate_source80_smbh_binary_complete(params: InputParameters, t: float = 
     mu0 = 4 * np.pi * 1e-7
     Ug1 = np.cos(2 * np.pi * t / 1e15) if t > 0 else 1.0  # Magnetic dipole oscillation
     Ug2 = (B**2) / (2 * mu0 * rho_gas * r) if rho_gas > 0 else 0.0  # Charge-reactivity
-    Ug3 = G * M / (r * r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
+    Ug3 = dpm_emergent_ug1(M, r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
     Ug4 = SOURCE80_REFERENCE.get('k4', 1e-20) * rho_vac  # Vacuum concentration
     ug_sum = Ug1 + Ug2 + Ug3 + Ug4
     
@@ -8173,7 +8174,7 @@ def calculate_source81_ngc346_complete(params: InputParameters, t: float = 0.0):
 
     # Full UQFF gravity computation (source81)
     # Base gravity with expansion and SC correction
-    g_base = (G * M_t / (r * r)) * expansion * sc_correction
+    g_base = (dpm_emergent_ug1(M_t, r)) * expansion * sc_correction
     
     # Environmental coupling
     F_env = SOURCE81_REFERENCE.get('F_env', 0.0)
@@ -8185,7 +8186,7 @@ def calculate_source81_ngc346_complete(params: InputParameters, t: float = 0.0):
     mu0 = 4 * np.pi * 1e-7
     Ug1 = np.cos(2 * np.pi * t / 1e15) if t > 0 else 1.0  # Magnetic dipole oscillation
     Ug2 = (B**2) / (2 * mu0 * rho_gas * r) if rho_gas > 0 else 0.0  # Charge-reactivity
-    Ug3 = G * M / (r * r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
+    Ug3 = dpm_emergent_ug1(M, r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
     Ug4 = SOURCE81_REFERENCE.get('k4', 1e-20) * rho_vac  # Vacuum concentration
     ug_sum = Ug1 + Ug2 + Ug3 + Ug4
     
@@ -8297,7 +8298,7 @@ def calculate_source82_smbhuqff_complete(params: InputParameters, t: float = 0.0
 
     # Full UQFF gravity computation (source82)
     # Base gravity with expansion and SC correction
-    g_base = (G * M_t / (r * r)) * expansion * sc_correction
+    g_base = (dpm_emergent_ug1(M_t, r)) * expansion * sc_correction
     
     # Environmental coupling
     F_env = SOURCE82_REFERENCE.get('F_env', 0.0)
@@ -8309,7 +8310,7 @@ def calculate_source82_smbhuqff_complete(params: InputParameters, t: float = 0.0
     mu0 = 4 * np.pi * 1e-7
     Ug1 = np.cos(2 * np.pi * t / 1e15) if t > 0 else 1.0  # Magnetic dipole oscillation
     Ug2 = (B**2) / (2 * mu0 * rho_gas * r) if rho_gas > 0 else 0.0  # Charge-reactivity
-    Ug3 = G * M / (r * r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
+    Ug3 = dpm_emergent_ug1(M, r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
     Ug4 = SOURCE82_REFERENCE.get('k4', 1e-20) * rho_vac  # Vacuum concentration
     ug_sum = Ug1 + Ug2 + Ug3 + Ug4
     
@@ -8438,7 +8439,7 @@ def calculate_source83_lenruqff_complete(params: InputParameters, t: float = 0.0
 
     # Full UQFF gravity computation (source83)
     # Base gravity with expansion and SC correction
-    g_base = (G * M_t / (r * r)) * expansion * sc_correction
+    g_base = (dpm_emergent_ug1(M_t, r)) * expansion * sc_correction
     
     # Environmental coupling
     F_env = SOURCE83_REFERENCE.get('F_env', 0.0)
@@ -8450,7 +8451,7 @@ def calculate_source83_lenruqff_complete(params: InputParameters, t: float = 0.0
     mu0 = 4 * np.pi * 1e-7
     Ug1 = np.cos(2 * np.pi * t / 1e15) if t > 0 else 1.0  # Magnetic dipole oscillation
     Ug2 = (B**2) / (2 * mu0 * rho_gas * r) if rho_gas > 0 else 0.0  # Charge-reactivity
-    Ug3 = G * M / (r * r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
+    Ug3 = dpm_emergent_ug1(M, r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
     Ug4 = SOURCE83_REFERENCE.get('k4', 1e-20) * rho_vac  # Vacuum concentration
     ug_sum = Ug1 + Ug2 + Ug3 + Ug4
     
@@ -8548,7 +8549,7 @@ def calculate_source84_lenr_calib_complete(params: InputParameters, t: float = 0
 
     # Full UQFF gravity computation (source84)
     # Base gravity with expansion and SC correction
-    g_base = (G * M_t / (r * r)) * expansion * sc_correction
+    g_base = (dpm_emergent_ug1(M_t, r)) * expansion * sc_correction
     
     # Environmental coupling
     F_env = SOURCE84_REFERENCE.get('F_env', 0.0)
@@ -8560,7 +8561,7 @@ def calculate_source84_lenr_calib_complete(params: InputParameters, t: float = 0
     mu0 = 4 * np.pi * 1e-7
     Ug1 = np.cos(2 * np.pi * t / 1e15) if t > 0 else 1.0  # Magnetic dipole oscillation
     Ug2 = (B**2) / (2 * mu0 * rho_gas * r) if rho_gas > 0 else 0.0  # Charge-reactivity
-    Ug3 = G * M / (r * r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
+    Ug3 = dpm_emergent_ug1(M, r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
     Ug4 = SOURCE84_REFERENCE.get('k4', 1e-20) * rho_vac  # Vacuum concentration
     ug_sum = Ug1 + Ug2 + Ug3 + Ug4
     
@@ -8677,7 +8678,7 @@ def calculate_source85_ngc346_complete(params: InputParameters, t: float = 0.0):
 
     # Full UQFF gravity computation (source85)
     # Base gravity with expansion and SC correction
-    g_base = (G * M_t / (r * r)) * expansion * sc_correction
+    g_base = (dpm_emergent_ug1(M_t, r)) * expansion * sc_correction
     
     # Environmental coupling
     F_env = SOURCE85_REFERENCE.get('F_env', 0.0)
@@ -8689,7 +8690,7 @@ def calculate_source85_ngc346_complete(params: InputParameters, t: float = 0.0):
     mu0 = 4 * np.pi * 1e-7
     Ug1 = np.cos(2 * np.pi * t / 1e15) if t > 0 else 1.0  # Magnetic dipole oscillation
     Ug2 = (B**2) / (2 * mu0 * rho_gas * r) if rho_gas > 0 else 0.0  # Charge-reactivity
-    Ug3 = G * M / (r * r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
+    Ug3 = dpm_emergent_ug1(M, r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
     Ug4 = SOURCE85_REFERENCE.get('k4', 1e-20) * rho_vac  # Vacuum concentration
     ug_sum = Ug1 + Ug2 + Ug3 + Ug4
     
@@ -8817,7 +8818,7 @@ def calculate_source86_muge_complete(params: InputParameters, t: float = 0.0):
 
     # Full UQFF gravity computation (source86)
     # Base gravity with expansion and SC correction
-    g_base = (G * M_t / (r * r)) * expansion * sc_correction
+    g_base = (dpm_emergent_ug1(M_t, r)) * expansion * sc_correction
     
     # Environmental coupling
     F_env = SOURCE86_REFERENCE.get('F_env', 0.0)
@@ -8829,7 +8830,7 @@ def calculate_source86_muge_complete(params: InputParameters, t: float = 0.0):
     mu0 = 4 * np.pi * 1e-7
     Ug1 = np.cos(2 * np.pi * t / 1e15) if t > 0 else 1.0  # Magnetic dipole oscillation
     Ug2 = (B**2) / (2 * mu0 * rho_gas * r) if rho_gas > 0 else 0.0  # Charge-reactivity
-    Ug3 = G * M / (r * r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
+    Ug3 = dpm_emergent_ug1(M, r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
     Ug4 = SOURCE86_REFERENCE.get('k4', 1e-20) * rho_vac  # Vacuum concentration
     ug_sum = Ug1 + Ug2 + Ug3 + Ug4
     
@@ -8950,7 +8951,7 @@ def calculate_source87_muge_resonance_complete(params: InputParameters, t: float
 
     # Full UQFF gravity computation (source87)
     # Base gravity with expansion and SC correction
-    g_base = (G * M_t / (r * r)) * expansion * sc_correction
+    g_base = (dpm_emergent_ug1(M_t, r)) * expansion * sc_correction
     
     # Environmental coupling
     F_env = SOURCE87_REFERENCE.get('F_env', 0.0)
@@ -8962,7 +8963,7 @@ def calculate_source87_muge_resonance_complete(params: InputParameters, t: float
     mu0 = 4 * np.pi * 1e-7
     Ug1 = np.cos(2 * np.pi * t / 1e15) if t > 0 else 1.0  # Magnetic dipole oscillation
     Ug2 = (B**2) / (2 * mu0 * rho_gas * r) if rho_gas > 0 else 0.0  # Charge-reactivity
-    Ug3 = G * M / (r * r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
+    Ug3 = dpm_emergent_ug1(M, r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
     Ug4 = SOURCE87_REFERENCE.get('k4', 1e-20) * rho_vac  # Vacuum concentration
     ug_sum = Ug1 + Ug2 + Ug3 + Ug4
     
@@ -9070,7 +9071,7 @@ def calculate_source88_andromeda_complete(params: InputParameters, t: float = 0.
 
     # Full UQFF gravity computation (source88)
     # Base gravity with expansion and SC correction
-    g_base = (G * M_t / (r * r)) * expansion * sc_correction
+    g_base = (dpm_emergent_ug1(M_t, r)) * expansion * sc_correction
     
     # Environmental coupling
     F_env = SOURCE88_REFERENCE.get('F_env', 0.0)
@@ -9082,7 +9083,7 @@ def calculate_source88_andromeda_complete(params: InputParameters, t: float = 0.
     mu0 = 4 * np.pi * 1e-7
     Ug1 = np.cos(2 * np.pi * t / 1e15) if t > 0 else 1.0  # Magnetic dipole oscillation
     Ug2 = (B**2) / (2 * mu0 * rho_gas * r) if rho_gas > 0 else 0.0  # Charge-reactivity
-    Ug3 = G * M / (r * r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
+    Ug3 = dpm_emergent_ug1(M, r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
     Ug4 = SOURCE88_REFERENCE.get('k4', 1e-20) * rho_vac  # Vacuum concentration
     ug_sum = Ug1 + Ug2 + Ug3 + Ug4
     
@@ -9171,7 +9172,7 @@ def calculate_source89_aether_coupling_complete(params: InputParameters, t: floa
 
     # Full UQFF gravity computation (source89)
     # Base gravity with expansion and SC correction
-    g_base = (G * M_t / (r * r)) * expansion * sc_correction
+    g_base = (dpm_emergent_ug1(M_t, r)) * expansion * sc_correction
     
     # Environmental coupling
     F_env = SOURCE89_REFERENCE.get('F_env', 0.0)
@@ -9183,7 +9184,7 @@ def calculate_source89_aether_coupling_complete(params: InputParameters, t: floa
     mu0 = 4 * np.pi * 1e-7
     Ug1 = np.cos(2 * np.pi * t / 1e15) if t > 0 else 1.0  # Magnetic dipole oscillation
     Ug2 = (B**2) / (2 * mu0 * rho_gas * r) if rho_gas > 0 else 0.0  # Charge-reactivity
-    Ug3 = G * M / (r * r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
+    Ug3 = dpm_emergent_ug1(M, r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
     Ug4 = SOURCE89_REFERENCE.get('k4', 1e-20) * rho_vac  # Vacuum concentration
     ug_sum = Ug1 + Ug2 + Ug3 + Ug4
     
@@ -9272,7 +9273,7 @@ def calculate_source90_background_aether_complete(params: InputParameters, t: fl
 
     # Full UQFF gravity computation (source90)
     # Base gravity with expansion and SC correction
-    g_base = (G * M_t / (r * r)) * expansion * sc_correction
+    g_base = (dpm_emergent_ug1(M_t, r)) * expansion * sc_correction
     
     # Environmental coupling
     F_env = SOURCE90_REFERENCE.get('F_env', 0.0)
@@ -9284,7 +9285,7 @@ def calculate_source90_background_aether_complete(params: InputParameters, t: fl
     mu0 = 4 * np.pi * 1e-7
     Ug1 = np.cos(2 * np.pi * t / 1e15) if t > 0 else 1.0  # Magnetic dipole oscillation
     Ug2 = (B**2) / (2 * mu0 * rho_gas * r) if rho_gas > 0 else 0.0  # Charge-reactivity
-    Ug3 = G * M / (r * r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
+    Ug3 = dpm_emergent_ug1(M, r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
     Ug4 = SOURCE90_REFERENCE.get('k4', 1e-20) * rho_vac  # Vacuum concentration
     ug_sum = Ug1 + Ug2 + Ug3 + Ug4
     
@@ -9377,7 +9378,7 @@ def calculate_source91_dpm_complete(params: InputParameters, t: float = 0.0):
 
     # Full UQFF gravity computation (source91)
     # Base gravity with expansion and SC correction
-    g_base = (G * M_t / (r * r)) * expansion * sc_correction
+    g_base = (dpm_emergent_ug1(M_t, r)) * expansion * sc_correction
     
     # Environmental coupling
     F_env = SOURCE91_REFERENCE.get('F_env', 0.0)
@@ -9389,7 +9390,7 @@ def calculate_source91_dpm_complete(params: InputParameters, t: float = 0.0):
     mu0 = 4 * np.pi * 1e-7
     Ug1 = np.cos(2 * np.pi * t / 1e15) if t > 0 else 1.0  # Magnetic dipole oscillation
     Ug2 = (B**2) / (2 * mu0 * rho_gas * r) if rho_gas > 0 else 0.0  # Charge-reactivity
-    Ug3 = G * M / (r * r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
+    Ug3 = dpm_emergent_ug1(M, r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
     Ug4 = SOURCE91_REFERENCE.get('k4', 1e-20) * rho_vac  # Vacuum concentration
     ug_sum = Ug1 + Ug2 + Ug3 + Ug4
     
@@ -9495,7 +9496,7 @@ def calculate_source92_buoyancy_coupling_complete(params: InputParameters, t: fl
 
     # Full UQFF gravity computation (source92)
     # Base gravity with expansion and SC correction
-    g_base = (G * M_t / (r * r)) * expansion * sc_correction
+    g_base = (dpm_emergent_ug1(M_t, r)) * expansion * sc_correction
     
     # Environmental coupling
     F_env = SOURCE92_REFERENCE.get('F_env', 0.0)
@@ -9507,7 +9508,7 @@ def calculate_source92_buoyancy_coupling_complete(params: InputParameters, t: fl
     mu0 = 4 * np.pi * 1e-7
     Ug1 = np.cos(2 * np.pi * t / 1e15) if t > 0 else 1.0  # Magnetic dipole oscillation
     Ug2 = (B**2) / (2 * mu0 * rho_gas * r) if rho_gas > 0 else 0.0  # Charge-reactivity
-    Ug3 = G * M / (r * r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
+    Ug3 = dpm_emergent_ug1(M, r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
     Ug4 = SOURCE92_REFERENCE.get('k4', 1e-20) * rho_vac  # Vacuum concentration
     ug_sum = Ug1 + Ug2 + Ug3 + Ug4
     
@@ -9601,7 +9602,7 @@ def calculate_source93_solar_wind_buoyancy_complete(params: InputParameters, t: 
 
     # Full UQFF gravity computation (source93)
     # Base gravity with expansion and SC correction
-    g_base = (G * M_t / (r * r)) * expansion * sc_correction
+    g_base = (dpm_emergent_ug1(M_t, r)) * expansion * sc_correction
     
     # Environmental coupling
     F_env = SOURCE93_REFERENCE.get('F_env', 0.0)
@@ -9613,7 +9614,7 @@ def calculate_source93_solar_wind_buoyancy_complete(params: InputParameters, t: 
     mu0 = 4 * np.pi * 1e-7
     Ug1 = np.cos(2 * np.pi * t / 1e15) if t > 0 else 1.0  # Magnetic dipole oscillation
     Ug2 = (B**2) / (2 * mu0 * rho_gas * r) if rho_gas > 0 else 0.0  # Charge-reactivity
-    Ug3 = G * M / (r * r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
+    Ug3 = dpm_emergent_ug1(M, r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
     Ug4 = SOURCE93_REFERENCE.get('k4', 1e-20) * rho_vac  # Vacuum concentration
     ug_sum = Ug1 + Ug2 + Ug3 + Ug4
     
@@ -9716,7 +9717,7 @@ def calculate_source94_ug_coupling_complete(params: InputParameters, t: float = 
 
     # Full UQFF gravity computation (source94)
     # Base gravity with expansion and SC correction
-    g_base = (G * M_t / (r * r)) * expansion * sc_correction
+    g_base = (dpm_emergent_ug1(M_t, r)) * expansion * sc_correction
     
     # Environmental coupling
     F_env = SOURCE94_REFERENCE.get('F_env', 0.0)
@@ -9728,7 +9729,7 @@ def calculate_source94_ug_coupling_complete(params: InputParameters, t: float = 
     mu0 = 4 * np.pi * 1e-7
     Ug1 = np.cos(2 * np.pi * t / 1e15) if t > 0 else 1.0  # Magnetic dipole oscillation
     Ug2 = (B**2) / (2 * mu0 * rho_gas * r) if rho_gas > 0 else 0.0  # Charge-reactivity
-    Ug3 = G * M / (r * r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
+    Ug3 = dpm_emergent_ug1(M, r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
     Ug4 = SOURCE94_REFERENCE.get('k4', 1e-20) * rho_vac  # Vacuum concentration
     ug_sum = Ug1 + Ug2 + Ug3 + Ug4
     
@@ -9831,7 +9832,7 @@ def calculate_source95_magnetic_string_complete(params: InputParameters, t: floa
 
     # Full UQFF gravity computation (source95)
     # Base gravity with expansion and SC correction
-    g_base = (G * M_t / (r * r)) * expansion * sc_correction
+    g_base = (dpm_emergent_ug1(M_t, r)) * expansion * sc_correction
     
     # Environmental coupling
     F_env = SOURCE95_REFERENCE.get('F_env', 0.0)
@@ -9843,7 +9844,7 @@ def calculate_source95_magnetic_string_complete(params: InputParameters, t: floa
     mu0 = 4 * np.pi * 1e-7
     Ug1 = np.cos(2 * np.pi * t / 1e15) if t > 0 else 1.0  # Magnetic dipole oscillation
     Ug2 = (B**2) / (2 * mu0 * rho_gas * r) if rho_gas > 0 else 0.0  # Charge-reactivity
-    Ug3 = G * M / (r * r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
+    Ug3 = dpm_emergent_ug1(M, r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
     Ug4 = SOURCE95_REFERENCE.get('k4', 1e-20) * rho_vac  # Vacuum concentration
     ug_sum = Ug1 + Ug2 + Ug3 + Ug4
     
@@ -9942,7 +9943,7 @@ def calculate_source96_galactic_distance_complete(params: InputParameters, t: fl
 
     # Full UQFF gravity computation (source96)
     # Base gravity with expansion and SC correction
-    g_base = (G * M_t / (r * r)) * expansion * sc_correction
+    g_base = (dpm_emergent_ug1(M_t, r)) * expansion * sc_correction
     
     # Environmental coupling
     F_env = SOURCE96_REFERENCE.get('F_env', 0.0)
@@ -9954,7 +9955,7 @@ def calculate_source96_galactic_distance_complete(params: InputParameters, t: fl
     mu0 = 4 * np.pi * 1e-7
     Ug1 = np.cos(2 * np.pi * t / 1e15) if t > 0 else 1.0  # Magnetic dipole oscillation
     Ug2 = (B**2) / (2 * mu0 * rho_gas * r) if rho_gas > 0 else 0.0  # Charge-reactivity
-    Ug3 = G * M / (r * r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
+    Ug3 = dpm_emergent_ug1(M, r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
     Ug4 = SOURCE96_REFERENCE.get('k4', 1e-20) * rho_vac  # Vacuum concentration
     ug_sum = Ug1 + Ug2 + Ug3 + Ug4
     
@@ -10046,7 +10047,7 @@ def calculate_source97_feedback_factor_complete(params: InputParameters, t: floa
 
     # Full UQFF gravity computation (source97)
     # Base gravity with expansion and SC correction
-    g_base = (G * M_t / (r * r)) * expansion * sc_correction
+    g_base = (dpm_emergent_ug1(M_t, r)) * expansion * sc_correction
     
     # Environmental coupling
     F_env = SOURCE97_REFERENCE.get('F_env', 0.0)
@@ -10058,7 +10059,7 @@ def calculate_source97_feedback_factor_complete(params: InputParameters, t: floa
     mu0 = 4 * np.pi * 1e-7
     Ug1 = np.cos(2 * np.pi * t / 1e15) if t > 0 else 1.0  # Magnetic dipole oscillation
     Ug2 = (B**2) / (2 * mu0 * rho_gas * r) if rho_gas > 0 else 0.0  # Charge-reactivity
-    Ug3 = G * M / (r * r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
+    Ug3 = dpm_emergent_ug1(M, r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
     Ug4 = SOURCE97_REFERENCE.get('k4', 1e-20) * rho_vac  # Vacuum concentration
     ug_sum = Ug1 + Ug2 + Ug3 + Ug4
     
@@ -10154,7 +10155,7 @@ def calculate_source98_unified_field_complete(params: InputParameters, t: float 
 
     # Full UQFF gravity computation (source98)
     # Base gravity with expansion and SC correction
-    g_base = (G * M_t / (r * r)) * expansion * sc_correction
+    g_base = (dpm_emergent_ug1(M_t, r)) * expansion * sc_correction
     
     # Environmental coupling
     F_env = SOURCE98_REFERENCE.get('F_env', 0.0)
@@ -10166,7 +10167,7 @@ def calculate_source98_unified_field_complete(params: InputParameters, t: float 
     mu0 = 4 * np.pi * 1e-7
     Ug1 = np.cos(2 * np.pi * t / 1e15) if t > 0 else 1.0  # Magnetic dipole oscillation
     Ug2 = (B**2) / (2 * mu0 * rho_gas * r) if rho_gas > 0 else 0.0  # Charge-reactivity
-    Ug3 = G * M / (r * r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
+    Ug3 = dpm_emergent_ug1(M, r) * (rho_gas / rho_vac) if rho_vac > 0 else 0.0  # String rotation
     Ug4 = SOURCE98_REFERENCE.get('k4', 1e-20) * rho_vac  # Vacuum concentration
     ug_sum = Ug1 + Ug2 + Ug3 + Ug4
     

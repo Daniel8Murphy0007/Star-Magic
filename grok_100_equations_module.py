@@ -49,6 +49,8 @@ Date: March 2026
 """
 
 import math
+from dpm_helpers import dpm_emergent_ug1, dpm_emergent_ug2
+
 from typing import Dict, Any, Optional, List, Tuple
 
 # =============================================================================
@@ -684,7 +686,7 @@ class NeutronStarCalculator:
         factor2 = 1 + 4 * math.pi * r**3 * P / (m_r * self.C.c**2)
         factor3 = 1 - 2 * self.C.G * m_r / (r * self.C.c**2)
         
-        dP_dr = -self.C.G * m_r * rho / r**2 * factor1 * factor2 / factor3
+        dP_dr = -dpm_emergent_ug1(m_r, r) * rho * factor1 * factor2 / factor3
         
         return {
             'equation': 'TOV equation',

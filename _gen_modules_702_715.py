@@ -1,3 +1,4 @@
+from dpm_helpers import dpm_emergent_ug1, dpm_emergent_ug2
 """
 Session 175 -- Generate C++ .h and .cpp standalone modules for PAPER_702-715.
 Source: grok_share_ba508f76c8e.txt
@@ -119,20 +120,20 @@ public:
 // Solar gravitational pull at Saturn orbit, with Hubble + TRZ correction
 // g_solar = G*M_Sun/r_orbit^2 * (1 + H_0*t) * (1 + f_TRZ)
 double {cls}::g_solar(double t) const {{
-    double g_base = G * M_Sun / (r_orbit * r_orbit);
+    double g_base = dpm_emergent_ug1(M_Sun, r_orbit);
     return g_base * (1.0 + H_0 * t) * (1.0 + f_TRZ);
 }}
 
 // Saturn self-gravity at equatorial surface
 // g_self = G*M_Saturn/r_eq^2  => ~10.44 m/s^2
 double {cls}::g_self() const {{
-    return G * M_Saturn / (r_eq * r_eq);
+    return dpm_emergent_ug1(M_Saturn, r_eq);
 }}
 
 // Ring tidal acceleration from main ring system
 // T_ring = G*M_ring/r_ring^2 ~ 2.043e-7 m/s^2
 double {cls}::T_ring() const {{
-    return G * M_ring / (r_ring * r_ring);
+    return dpm_emergent_ug1(M_ring, r_ring);
 }}
 
 // Wind dynamic pressure converted to acceleration
@@ -280,7 +281,7 @@ public:
 // Base gravitational acceleration
 double {cls}::g_grav(double r) const {{
     double M_tot = M_SMBH + M_stellar;
-    return G * M_tot / (r * r);
+    return dpm_emergent_ug1(M_tot, r);
 }}
 
 // Hubble parameter at z=0.0176
@@ -436,7 +437,7 @@ public:
 #include <iostream>
 
 double {cls}::g_grav() const {{
-    return G * M_neb / (r_neb * r_neb);
+    return dpm_emergent_ug1(M_neb, r_neb);
 }}
 
 // Hubble expansion at z~3e-4
@@ -604,7 +605,7 @@ double {cls}::a_EM() const {{
 // At t=0.5 Myr: ~ 1.053e-3 m/s^2
 double {cls}::g_NGC3603v2(double t) const {{
     double M   = M_t(t);
-    double g_n = G * M / (r_clust * r_clust);
+    double g_n = dpm_emergent_ug1(M, r_clust);
     return g_n * (1.0 + H_0 * t) * one_minus_P(t) * (1.0 + f_TRZ) + a_EM();
 }}
 
@@ -992,7 +993,7 @@ double {cls}::a_EM() const {{
 // ~ 1.053e-4 m/s^2 at t=0.5 Myr
 double {cls}::g_Pillars(double t) const {{
     double M   = M_t(t);
-    double g_n = G * M / (r_pillar * r_pillar);
+    double g_n = dpm_emergent_ug1(M, r_pillar);
     const double B_crit = 1.0e11; // T
     double g_core = g_n * (1.0 + H_z() * t) * (1.0 - B_pillar / B_crit)
                         * one_minus_E(t);
@@ -1121,7 +1122,7 @@ double {cls}::a_EM() const {{
 // g_W2 ~ 1.053e-3 m/s^2 at t=1 Myr
 double {cls}::g_Westerlund2(double t) const {{
     double M   = M_t(t);
-    double g_n = G * M / (r_wd2 * r_wd2);
+    double g_n = dpm_emergent_ug1(M, r_wd2);
     const double B_crit = 1.0e11;
     double g_core = g_n * (1.0 + H0_wd2 * t) * (1.0 - B_wd2 / B_crit);
     double Ug1   = g_n;
@@ -1242,7 +1243,7 @@ double {cls}::a_EM() const {{
 // g_Starbirth ~ 1.053e-4 m/s^2 at t=2.5 Myr
 double {cls}::g_Starbirth(double t) const {{
     double M   = M_t(t);
-    double g_n = G * M / (r_region * r_region);
+    double g_n = dpm_emergent_ug1(M, r_region);
     const double B_crit = 1.0e11;
     double g_core = g_n * (1.0 + H0_LMC * t) * (1.0 - B_LMC / B_crit);
     double Ug1 = g_n;
@@ -1369,7 +1370,7 @@ double {cls}::a_EM_WR() const {{
 // WR cone MUGE variant 2
 double {cls}::g_WRcone(double t) const {{
     double M  = M_WR_t(t);
-    double g_n = G * M / (r_cone * r_cone);
+    double g_n = dpm_emergent_ug1(M, r_cone);
     double g_core = g_n * (1.0 + H_0 * t) * (1.0 + f_TRZ);
     return g_core + a_WR_radiation() + a_EM_WR();
 }}
@@ -1506,7 +1507,7 @@ double {cls}::a_EM_jet() const {{
 // Full v2 MUGE: g_Pv2 = g_core*(1-E_shock) + (Ug1+Ug4)*(1+f_TRZ) + a_jet + a_EM
 double {cls}::g_Pillars_v2(double t) const {{
     double M   = M_t(t);
-    double g_n = G * M / (r_pillar * r_pillar);
+    double g_n = dpm_emergent_ug1(M, r_pillar);
     const double B_crit = 1.0e11;
     double g_core = g_n * (1.0 + H_z() * t) * (1.0 - B_jet / B_crit)
                         * one_minus_E_shock(t);

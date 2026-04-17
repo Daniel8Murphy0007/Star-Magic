@@ -308,9 +308,9 @@ double OrionUQFFModule::computeUgSum()
     double G = variables["G"];
     double M = variables["M"];
     double vexp = variables["v_exp"];
-    // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
-    // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
-    double Ug1 = (G * M) / (r * r);
+    double B_field = variables.count("B") ? variables["B"] : 1e-5;
+    double mu_s = B_field * r * r * r;  // magnetic dipole moment
+    double Ug1 = mu_s * G * M / (r * r);  // DPM-emergent: mu_s * grad(M_s/r)
     variables["Ug1"] = Ug1;
     double Ug2 = std::pow(vexp, 2) / r;
     variables["Ug2"] = Ug2;

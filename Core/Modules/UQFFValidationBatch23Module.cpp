@@ -1,7 +1,7 @@
-// UQFFValidationBatch23Module.cpp
+﻿// UQFFValidationBatch23Module.cpp
 // ================================================================================================
 // UQFF Advanced Validation Module - Batch 23
-// Gaia DR4 Binaries, JWST κ Calibration, LIGO GW Events, Neutrino SEDs
+// Gaia DR4 Binaries, JWST Îº Calibration, LIGO GW Events, Neutrino SEDs
 // ================================================================================================
 //
 // THEORETICAL FOUNDATION:
@@ -10,29 +10,29 @@
 // multimessenger observations, calibrating the final ~0.2% of the framework to achieve
 // 99.9% solvability. Key calibrations include:
 //
-// 1. κ (Decay Rate): 0.0005 day⁻¹ from JWST quasar light curves (MCMC fit)
+// 1. Îº (Decay Rate): 0.0005 dayâ»Â¹ from JWST quasar light curves (MCMC fit)
 // 2. [SSq] (Superconductive Shell Quotient): 0.57 from nebula neutrino Ye~0.1 mapping
-// 3. U_UA (Universal Aether Contribution): 0.0001 from Gaia DR4 i~90° binary damping
+// 3. U_UA (Universal Aether Contribution): 0.0001 from Gaia DR4 i~90Â° binary damping
 // 4. Gravitational Wave Integration: LIGO GWTC-4.0 (218 events) Ug4 validation
-// 5. Neutrino SED: RIAF pp/pγ soft spectra <0.1 PeV from η equation
+// 5. Neutrino SED: RIAF pp/pÎ³ soft spectra <0.1 PeV from Î· equation
 //
 // DATA SOURCES (September 2025):
 // ==============================
 // - Gaia DR4 (March 2025): 5-10M binaries, nss_two_body_orbit table
-// - JWST: Quasar variability τ~2000 days (arXiv 2509.05417, 2508.14350)
+// - JWST: Quasar variability Ï„~2000 days (arXiv 2509.05417, 2508.14350)
 // - LIGO GWTC-4.0 (August 26, 2025): 218 GW events, BBH/BNS/NSBH
-// - IceCube: NGC 1068 hotspot (4.2σ), neutrino flux background
+// - IceCube: NGC 1068 hotspot (4.2Ïƒ), neutrino flux background
 // - AT2019qiz: TDE at 66 Mpc, QPE quasi-periodic eruptions
 //
 // CALIBRATED CONSTANTS (Final Values):
 // ====================================
-// κ = 0.0005 day⁻¹ = 5.787e-9 s⁻¹    (E_react/Ug4 decay rate)
+// Îº = 0.0005 dayâ»Â¹ = 5.787e-9 sâ»Â¹    (E_react/Ug4 decay rate)
 // [SSq] = 0.57                        (Superconductive Shell Quotient)
 // U_UA = 0.0001                       (Universal Aether factor)
-// k_η = 10⁻¹¹³                        (LENR neutron rate coefficient)
-// β_i = 0.603                         (Ug balance parameter)
+// k_Î· = 10â»Â¹Â¹Â³                        (LENR neutron rate coefficient)
+// Î²_i = 0.603                         (Ug balance parameter)
 // H_SCm = 0.99                        (SCm Heaviside at quiet Sun)
-// γ = 0.00005 day⁻¹                   (Secondary decay constant)
+// Î³ = 0.00005 dayâ»Â¹                   (Secondary decay constant)
 // f_fb = 0.05                         (Feedback factor from Gaia gradients)
 //
 // UQFF SOLVABILITY: 99.9% (up from 99.7% with Batch 22)
@@ -83,14 +83,14 @@ namespace UQFFValidation {
     constexpr double m_e = 9.10938e-31;         // Electron mass (kg)
     constexpr double m_p = 1.67262e-27;         // Proton mass (kg)
     constexpr double e_charge = 1.60218e-19;    // Elementary charge (C)
-    constexpr double G_F_val = 1.166e-5;        // Fermi constant (GeV⁻²) - renamed
+    constexpr double G_F_val = 1.166e-5;        // Fermi constant (GeVâ»Â²) - renamed
     
     // UQFF vacuum densities
-    constexpr double rho_vac_UA = 7.09e-36;     // Universal Aether vacuum density (kg/m³)
-    constexpr double rho_vac_SCm = 6.38e-36;    // SCm vacuum density (kg/m³)
-    constexpr double rho_vac_UA_prime = 7.80e-36; // UA' vacuum density (kg/m³)
-    constexpr double rho_A = 1e-23;             // Aether density (kg/m³)
-    constexpr double rho_SCm = 1e15;            // SCm core density (kg/m³)
+    constexpr double rho_vac_UA = 7.09e-36;     // Universal Aether vacuum density (kg/mÂ³)
+    constexpr double rho_vac_SCm = 6.38e-36;    // SCm vacuum density (kg/mÂ³)
+    constexpr double rho_vac_UA_prime = 7.80e-36; // UA' vacuum density (kg/mÂ³)
+    constexpr double rho_A = 1e-23;             // Aether density (kg/mÂ³)
+    constexpr double rho_SCm = 1e15;            // SCm core density (kg/mÂ³)
     constexpr double v_SCm = 1e8;               // SCm velocity (m/s)
     
     // UQFF critical fields
@@ -100,17 +100,17 @@ namespace UQFFValidation {
     constexpr double PHI = 1.6180339887;        // Golden ratio
     
     // === FINAL CALIBRATED UQFF PARAMETERS (99.9% Solvability) ===
-    constexpr double kappa = 0.0005;            // κ: Decay constant (day⁻¹) - JWST MCMC
-    constexpr double kappa_sec = 5.787e-9;      // κ: Decay constant (s⁻¹)
+    constexpr double kappa = 0.0005;            // Îº: Decay constant (dayâ»Â¹) - JWST MCMC
+    constexpr double kappa_sec = 5.787e-9;      // Îº: Decay constant (sâ»Â¹)
     constexpr double SSq = 0.57;                // [SSq]: Shell Quotient - Nebula Ye~0.1
-    constexpr double U_UA = 0.0001;             // U_UA: Aether contribution - Gaia i~90°
-    constexpr double k_eta = 1e-113;            // k_η: LENR coefficient - SM derivation
-    constexpr double beta_i = 0.603;            // β_i: Ug balance - Gaia damping
+    constexpr double U_UA = 0.0001;             // U_UA: Aether contribution - Gaia i~90Â°
+    constexpr double k_eta = 1e-113;            // k_Î·: LENR coefficient - SM derivation
+    constexpr double beta_i = 0.603;            // Î²_i: Ug balance - Gaia damping
     constexpr double H_SCm = 0.99;              // H_SCm: Heaviside quiet Sun
-    constexpr double gamma_decay = 0.00005;     // γ: Secondary decay (day⁻¹)
-    constexpr double gamma_sec = 5.787e-10;     // γ: Secondary decay (s⁻¹)
+    constexpr double gamma_decay = 0.00005;     // Î³: Secondary decay (dayâ»Â¹)
+    constexpr double gamma_sec = 5.787e-10;     // Î³: Secondary decay (sâ»Â¹)
     constexpr double f_fb = 0.05;               // f_fb: Feedback factor - Gaia
-    constexpr double alpha_decay = 0.001;       // α: Primary decay (day⁻¹)
+    constexpr double alpha_decay = 0.001;       // Î±: Primary decay (dayâ»Â¹)
     
     // Distance/time conversions
     constexpr double pc_to_m = 3.0857e16;       // parsec to meters
@@ -146,10 +146,10 @@ struct GaiaBinaryParams {
     
     void computeUQFFParams() {
         using namespace UQFFValidation;
-        // f_Ub ~ β_i × cos(i - 90°) for edge-on binaries
+        // f_Ub ~ Î²_i Ã— cos(i - 90Â°) for edge-on binaries
         double i_rad = inclination * M_PI / 180.0;
         f_Ub = beta_i * std::cos(i_rad - M_PI / 2.0);
-        // U_UA ~ U_UA × |f_Ub| for damping
+        // U_UA ~ U_UA Ã— |f_Ub| for damping
         U_UA_local = U_UA * std::abs(f_Ub);
     }
 };
@@ -185,10 +185,10 @@ struct GWEventParams {
         using namespace UQFFValidation;
         double M_total = (M1 + M2) * M_sun;
         double d_g = distance * Mpc_to_m;
-        // Ug4 = k4 × ρ_vac,[SCm] × M_BH / d_g × e^{-κ t} × cos(π t_n) × (1 + f_fb)
+        // Ug4 = k4 Ã— Ï_vac,[SCm] Ã— M_BH / d_g Ã— e^{-Îº t} Ã— cos(Ï€ t_n) Ã— (1 + f_fb)
         double k4 = 1.0;  // Normalization
         Ug4_merger = k4 * rho_vac_SCm * M_total / d_g * (1.0 + f_fb);
-        // τ_ringdown ~ G M / c³ × quality factor
+        // Ï„_ringdown ~ G M / cÂ³ Ã— quality factor
         double Q_factor = 2.0;  // Typical for Kerr BH
         tau_ringdown = G * M_final * M_sun / (c * c * c) * Q_factor;
     }
@@ -209,30 +209,30 @@ public:
 };
 
 // ===========================================================================================
-// 1. κ DECAY RATE CALIBRATION TERM (JWST Quasar Light Curves)
+// 1. Îº DECAY RATE CALIBRATION TERM (JWST Quasar Light Curves)
 // ===========================================================================================
 
 /**
  * KappaDecayTerm - E_react/Ug4 Decay Rate from JWST Quasar Variability
  * 
  * CALIBRATION METHOD:
- * - MCMC fit to mock exponential L(t) = L₀ exp(-t/τ) with τ = 2000 days
- * - Data: arXiv 2509.05417 (Lyman-α tomography), 2508.14350 (Seyfert variability)
- * - Result: κ = 0.0005 day⁻¹ (χ² = 0.001, p = 0.99)
+ * - MCMC fit to mock exponential L(t) = Lâ‚€ exp(-t/Ï„) with Ï„ = 2000 days
+ * - Data: arXiv 2509.05417 (Lyman-Î± tomography), 2508.14350 (Seyfert variability)
+ * - Result: Îº = 0.0005 dayâ»Â¹ (Ï‡Â² = 0.001, p = 0.99)
  * 
  * DERIVATION:
- * κ = γ × (ρ_A / ρ_SCm) × ∂t_n/∂t
- *   = 0.00005 × 10⁻³⁸ × (-1)  [t_n reversal for decay flip]
- *   ≈ 0.0005 day⁻¹ (with normalization)
+ * Îº = Î³ Ã— (Ï_A / Ï_SCm) Ã— âˆ‚t_n/âˆ‚t
+ *   = 0.00005 Ã— 10â»Â³â¸ Ã— (-1)  [t_n reversal for decay flip]
+ *   â‰ˆ 0.0005 dayâ»Â¹ (with normalization)
  * 
  * APPLICATIONS:
- * - E_react = (ρ_SCm v_SCm² / ρ_A) × e^{-κ t}
- * - Ug4 = k4 × ρ_vac,[SCm] × M_BH / d_g × e^{-κ t} × cos(π t_n) × (1 + f_fb)
- * - Quasar burst duration prediction: τ = 1/κ ≈ 2000 days
+ * - E_react = (Ï_SCm v_SCmÂ² / Ï_A) Ã— e^{-Îº t}
+ * - Ug4 = k4 Ã— Ï_vac,[SCm] Ã— M_BH / d_g Ã— e^{-Îº t} Ã— cos(Ï€ t_n) Ã— (1 + f_fb)
+ * - Quasar burst duration prediction: Ï„ = 1/Îº â‰ˆ 2000 days
  */
 class KappaDecayTerm : public PhysicsTerm_Batch23 {
 private:
-    double kappa_fitted;     // Fitted κ value (day⁻¹)
+    double kappa_fitted;     // Fitted Îº value (dayâ»Â¹)
     double tau_decay;        // Decay timescale (days)
     double chi_squared;      // Goodness of fit
     double L0;               // Initial luminosity normalization
@@ -261,7 +261,7 @@ public:
         double L_pred = L0 * std::exp(-kappa_use * t_days);
         
         if (enableLogging) {
-            std::cout << "[KappaDecay] t=" << t_days << " days, κ=" << kappa_use 
+            std::cout << "[KappaDecay] t=" << t_days << " days, Îº=" << kappa_use 
                       << ", E_react=" << E_react << ", L/L0=" << L_pred << std::endl;
         }
         
@@ -279,7 +279,7 @@ public:
     
     // Temporal asymmetry prediction
     double computeAsymmetry(double t_n) const {
-        // t_n < 0 flips e^{-κ t} to growth for bursts
+        // t_n < 0 flips e^{-Îº t} to growth for bursts
         double t_days = 1000.0;  // Reference time
         if (t_n < 0) {
             return L0 * std::exp(kappa_fitted * t_days);  // Growth
@@ -290,14 +290,14 @@ public:
     std::string getName() const override { return "KappaDecayTerm"; }
     
     std::string getDescription() const override {
-        return "κ decay rate calibration from JWST quasar light curves, "
-               "κ = 0.0005 day⁻¹ (MCMC fit, χ² = 0.001), predicts τ ~ 2000 day bursts";
+        return "Îº decay rate calibration from JWST quasar light curves, "
+               "Îº = 0.0005 dayâ»Â¹ (MCMC fit, Ï‡Â² = 0.001), predicts Ï„ ~ 2000 day bursts";
     }
     
     std::string getEquation() const override {
-        return "E_react = (ρ_SCm v_SCm² / ρ_A) × e^{-κ t}\n"
-               "κ = γ × (ρ_A / ρ_SCm) × ∂t_n/∂t = 0.0005 day⁻¹\n"
-               "τ_burst = 1/κ ≈ 2000 days";
+        return "E_react = (Ï_SCm v_SCmÂ² / Ï_A) Ã— e^{-Îº t}\n"
+               "Îº = Î³ Ã— (Ï_A / Ï_SCm) Ã— âˆ‚t_n/âˆ‚t = 0.0005 dayâ»Â¹\n"
+               "Ï„_burst = 1/Îº â‰ˆ 2000 days";
     }
     
     double getKappa() const { return kappa_fitted; }
@@ -314,15 +314,15 @@ public:
  * 
  * CALIBRATION METHOD:
  * - Map electron fraction Ye ~ 0.1 (neutron-rich r-process) to exp(-[SSq] n/26)
- * - For n = 13 (plasma level): exp(-[SSq] × 13/26) ~ exp(-[SSq]/2) ~ 0.1
+ * - For n = 13 (plasma level): exp(-[SSq] Ã— 13/26) ~ exp(-[SSq]/2) ~ 0.1
  * - Solve: [SSq] ~ 0.57 (close to original 0.5)
  * 
  * DEFINITION:
- * [SSq] = log(ρ_vac,[SCm] / ρ_vac,[UA']) × n × e^{-(π - t)}
+ * [SSq] = log(Ï_vac,[SCm] / Ï_vac,[UA']) Ã— n Ã— e^{-(Ï€ - t)}
  * 
  * APPLICATIONS:
- * - η = k_η × exp(-[SSq] n/26) × exp(-(π - t)) × Um / ρ_vac,[UA]
- * - Nebula blue/red shifts ~ v ≈ 10 km/s as t_n asymmetry
+ * - Î· = k_Î· Ã— exp(-[SSq] n/26) Ã— exp(-(Ï€ - t)) Ã— Um / Ï_vac,[UA]
+ * - Nebula blue/red shifts ~ v â‰ˆ 10 km/s as t_n asymmetry
  * - R-process Ye ~ 0.1 for neutron-rich outflows
  */
 class SSqShellQuotientTerm : public PhysicsTerm_Batch23 {
@@ -353,7 +353,7 @@ public:
         double temporal = std::exp(-(M_PI - t / year_to_sec));  // Scale t to years
         double SSq_computed = log_ratio * n * temporal;
         
-        // Suppression factor for η
+        // Suppression factor for Î·
         double suppression = std::exp(-SSq_use * n / 26.0);
         
         // Ye prediction
@@ -370,13 +370,13 @@ public:
     
     // Derive [SSq] from Ye
     static double deriveSSqFromYe(double Ye, int n) {
-        // Ye ~ exp(-[SSq] n/26) => [SSq] = -26/n × ln(Ye)
+        // Ye ~ exp(-[SSq] n/26) => [SSq] = -26/n Ã— ln(Ye)
         return -26.0 / n * std::log(Ye);
     }
     
     // Neutrino red-blue shift prediction
     double computeShiftVelocity(double t_n) const {
-        // Blue/red ~ ±10 km/s from t_n asymmetry
+        // Blue/red ~ Â±10 km/s from t_n asymmetry
         double v_shift = 1e4 * std::sin(M_PI * t_n);  // m/s
         return v_shift;
     }
@@ -389,9 +389,9 @@ public:
     }
     
     std::string getEquation() const override {
-        return "[SSq] = log(ρ_vac,[SCm] / ρ_vac,[UA']) × n × e^{-(π - t)}\n"
-               "η = k_η × exp(-[SSq] n/26) × exp(-(π - t)) × Um / ρ_vac,[UA]\n"
-               "Ye ~ exp(-[SSq] × 13/26) ~ 0.1 for [SSq] = 0.57";
+        return "[SSq] = log(Ï_vac,[SCm] / Ï_vac,[UA']) Ã— n Ã— e^{-(Ï€ - t)}\n"
+               "Î· = k_Î· Ã— exp(-[SSq] n/26) Ã— exp(-(Ï€ - t)) Ã— Um / Ï_vac,[UA]\n"
+               "Ye ~ exp(-[SSq] Ã— 13/26) ~ 0.1 for [SSq] = 0.57";
     }
     
     double getSSq() const { return SSq_calibrated; }
@@ -403,22 +403,22 @@ public:
 // ===========================================================================================
 
 /**
- * GaiaBinaryInclinationTerm - U_UA from i~90° Binary Damping
+ * GaiaBinaryInclinationTerm - U_UA from i~90Â° Binary Damping
  * 
  * CALIBRATION METHOD:
  * - Query: SELECT * FROM gaiadr4.nss_two_body_orbit WHERE inclination > 85 AND inclination < 95
- * - Distribution: ~30% binaries have i > 85° (edge-on bias for eclipsing)
- * - f_Ub ~ β_i × cos(i - 90°) for i = 89.9° → f_Ub ~ 0.61 × 0.0017 ~ 10⁻³
- * - U_UA ~ U_UA × |f_Ub| ~ 0.0001
+ * - Distribution: ~30% binaries have i > 85Â° (edge-on bias for eclipsing)
+ * - f_Ub ~ Î²_i Ã— cos(i - 90Â°) for i = 89.9Â° â†’ f_Ub ~ 0.61 Ã— 0.0017 ~ 10â»Â³
+ * - U_UA ~ U_UA Ã— |f_Ub| ~ 0.0001
  * 
  * GAIA DR4 STATS (March 2025):
  * - 5-10 million binary systems cataloged
- * - Mean i ~ 70° overall, ~90° for eclipsing
- * - Precision ±1-10° for P < 10 yr
+ * - Mean i ~ 70Â° overall, ~90Â° for eclipsing
+ * - Precision Â±1-10Â° for P < 10 yr
  */
 class GaiaBinaryInclinationTerm : public PhysicsTerm_Batch23 {
 private:
-    double beta_i_calibrated;    // Calibrated β_i
+    double beta_i_calibrated;    // Calibrated Î²_i
     double U_UA_calibrated;      // Calibrated U_UA
     double i_target;             // Target inclination (degrees)
     int N_binaries;              // Number of binaries in catalog
@@ -453,7 +453,7 @@ public:
         double Ub_i = -beta * f_Ub * U_UA_local;
         
         if (enableLogging) {
-            std::cout << "[GaiaBinary] i=" << i_deg << "°, f_Ub=" << f_Ub 
+            std::cout << "[GaiaBinary] i=" << i_deg << "Â°, f_Ub=" << f_Ub 
                       << ", U_UA_local=" << U_UA_local << std::endl;
         }
         
@@ -470,23 +470,23 @@ public:
         return query.str();
     }
     
-    // Statistics for i > 85° binaries
+    // Statistics for i > 85Â° binaries
     double estimateEdgeOnFraction() const {
-        // ~30% have i > 85° from DR4 stats
+        // ~30% have i > 85Â° from DR4 stats
         return 0.30;
     }
     
     std::string getName() const override { return "GaiaBinaryInclinationTerm"; }
     
     std::string getDescription() const override {
-        return "Gaia DR4 i~90° binary damping calibration, "
-               "U_UA = 0.0001 from f_Ub ~ β_i × cos(i - 90°), 5-10M binaries cataloged";
+        return "Gaia DR4 i~90Â° binary damping calibration, "
+               "U_UA = 0.0001 from f_Ub ~ Î²_i Ã— cos(i - 90Â°), 5-10M binaries cataloged";
     }
     
     std::string getEquation() const override {
-        return "f_Ub = β_i × cos(i - 90°) = 0.603 × cos(89.9° - 90°) ~ 10⁻³\n"
-               "U_UA = U_UA × |f_Ub| ~ 0.0001\n"
-               "Ub_i = -β_i × f_Ub × U_UA × Ω_g × M_bh / d_g";
+        return "f_Ub = Î²_i Ã— cos(i - 90Â°) = 0.603 Ã— cos(89.9Â° - 90Â°) ~ 10â»Â³\n"
+               "U_UA = U_UA Ã— |f_Ub| ~ 0.0001\n"
+               "Ub_i = -Î²_i Ã— f_Ub Ã— U_UA Ã— Î©_g Ã— M_bh / d_g";
     }
     
     double getBetaI() const { return beta_i_calibrated; }
@@ -507,9 +507,9 @@ public:
  * - Most massive: GW231123 (~150 M_sun total)
  * 
  * UQFF INTEGRATION:
- * - Ug4 = k4 × ρ_vac,[SCm] × M_BH / d_g × e^{-κ t} × cos(π t_n) × (1 + f_fb)
+ * - Ug4 = k4 Ã— Ï_vac,[SCm] Ã— M_BH / d_g Ã— e^{-Îº t} Ã— cos(Ï€ t_n) Ã— (1 + f_fb)
  * - DPM reversal (t_n < 0) for chirp asymmetry
- * - Predict τ ~ 10⁴¹ N·m torque for BBH
+ * - Predict Ï„ ~ 10â´Â¹ NÂ·m torque for BBH
  */
 class LIGOGravitationalWaveTerm : public PhysicsTerm_Batch23 {
 private:
@@ -585,9 +585,9 @@ public:
     // Predict torque for BBH merger
     double predictTorque(double M1, double M2, double separation) const {
         using namespace UQFFValidation;
-        // τ ~ G M1 M2 / r²
+        // Ï„ ~ G M1 M2 / rÂ²
         double tau = G * M1 * M_sun * M2 * M_sun / (separation * separation);
-        return tau;  // Should be ~10⁴¹ N·m for close BBH
+        return tau;  // Should be ~10â´Â¹ NÂ·m for close BBH
     }
     
     // Get event by ID
@@ -602,13 +602,13 @@ public:
     
     std::string getDescription() const override {
         return "LIGO GWTC-4.0 Ug4 validation with 218 GW events (BBH/BNS/NSBH), "
-               "DPM reversal for chirp asymmetry, τ ~ 10⁴¹ N·m for BBH mergers";
+               "DPM reversal for chirp asymmetry, Ï„ ~ 10â´Â¹ NÂ·m for BBH mergers";
     }
     
     std::string getEquation() const override {
-        return "Ug4 = k4 × ρ_vac,[SCm] × M_BH / d_g × e^{-κ t} × cos(π t_n) × (1 + f_fb)\n"
+        return "Ug4 = k4 Ã— Ï_vac,[SCm] Ã— M_BH / d_g Ã— e^{-Îº t} Ã— cos(Ï€ t_n) Ã— (1 + f_fb)\n"
                "t_n < 0: DPM reversal (growth phase for inspiral)\n"
-               "τ_BBH ~ G M₁ M₂ / r² ~ 10⁴¹ N·m";
+               "Ï„_BBH ~ G Mâ‚ Mâ‚‚ / rÂ² ~ 10â´Â¹ NÂ·m";
     }
     
     int getTotalEvents() const { return total_events; }
@@ -616,7 +616,7 @@ public:
 };
 
 // ===========================================================================================
-// 5. NEUTRINO SED TERM (RIAF pp/pγ Soft Spectra)
+// 5. NEUTRINO SED TERM (RIAF pp/pÎ³ Soft Spectra)
 // ===========================================================================================
 
 /**
@@ -624,21 +624,21 @@ public:
  * 
  * THEORETICAL BASIS:
  * - 3D GRMHD simulations of RIAFs around SMBHs (Kawashima & Asano 2025)
- * - CRP acceleration via turbulence: D_E ∝ E^{0.5}
- * - pp and pγ interactions dominate <0.1 PeV (soft SED)
+ * - CRP acceleration via turbulence: D_E âˆ E^{0.5}
+ * - pp and pÎ³ interactions dominate <0.1 PeV (soft SED)
  * - Outflow-dominated emission (70% vs 30% inflow)
  * 
  * UQFF INTEGRATION:
- * - η = k_η × exp(-[SSq] n/26) × exp(-(π - t)) × Um / ρ_vac,[UA]
+ * - Î· = k_Î· Ã— exp(-[SSq] n/26) Ã— exp(-(Ï€ - t)) Ã— Um / Ï_vac,[UA]
  * - Soft SED from D_E ~ E^{0.5} as DPM acceleration
- * - NGC 1068 hotspot (4.2σ IceCube) as validation
+ * - NGC 1068 hotspot (4.2Ïƒ IceCube) as validation
  */
 class NeutrinoSEDTerm : public PhysicsTerm_Batch23 {
 private:
     double M_BH;             // SMBH mass (M_sun)
     double spin;             // BH spin (dimensionless)
     double p_max;            // Maximum CRP momentum (eV)
-    double spectral_index;   // n(p) ∝ p^{-α}
+    double spectral_index;   // n(p) âˆ p^{-Î±}
     double outflow_fraction; // Fraction from outflow
 
 public:
@@ -649,7 +649,7 @@ public:
         : M_BH(M), spin(a), p_max(pmax), spectral_index(alpha), outflow_fraction(0.7) {
         setMetadata("source", "RIAF GRMHD Simulations");
         setMetadata("method", "Fokker-Planck CRP transport");
-        setMetadata("validation", "NGC 1068 IceCube 4.2σ");
+        setMetadata("validation", "NGC 1068 IceCube 4.2Ïƒ");
     }
     
     double compute(double t, const std::map<std::string, double>& params) const override {
@@ -660,7 +660,7 @@ public:
         int n = params.count("n") ? static_cast<int>(params.at("n")) : 13;
         double Um = params.count("Um") ? params.at("Um") : 1e90;  // Default Um
         
-        // η calculation with [SSq] suppression
+        // Î· calculation with [SSq] suppression
         double suppression = std::exp(-SSq * n / 26.0);
         double temporal = std::exp(-(M_PI - t / year_to_sec));
         double eta = k_eta * suppression * temporal * Um / rho_vac_UA;
@@ -672,7 +672,7 @@ public:
         double flux = eta * outflow_fraction;
         
         if (enableLogging) {
-            std::cout << "[NeutrinoSED] M_BH=" << M << " M_sun, η=" << eta 
+            std::cout << "[NeutrinoSED] M_BH=" << M << " M_sun, Î·=" << eta 
                       << ", E_peak=" << E_peak << " eV" << std::endl;
         }
         
@@ -681,27 +681,27 @@ public:
     
     // Fokker-Planck steady-state solution
     double computeCRPDistribution(double p) const {
-        // n(p) ~ p^{-α} exp(-p/p_max)
+        // n(p) ~ p^{-Î±} exp(-p/p_max)
         return std::pow(p, -spectral_index) * std::exp(-p / p_max);
     }
     
-    // pp vs pγ dominance
+    // pp vs pÎ³ dominance
     std::string dominantProcess(double E_neutrino) const {
         if (E_neutrino < 0.1e15) return "pp (hadronuclear)";
-        return "pγ (photohadronic)";
+        return "pÎ³ (photohadronic)";
     }
     
     std::string getName() const override { return "NeutrinoSEDTerm"; }
     
     std::string getDescription() const override {
-        return "RIAF neutrino SED from pp/pγ processes, soft <0.1 PeV from D_E ~ E^{0.5}, "
-               "η suppressed by exp(-[SSq] n/26), validates NGC 1068 IceCube hotspot";
+        return "RIAF neutrino SED from pp/pÎ³ processes, soft <0.1 PeV from D_E ~ E^{0.5}, "
+               "Î· suppressed by exp(-[SSq] n/26), validates NGC 1068 IceCube hotspot";
     }
     
     std::string getEquation() const override {
-        return "η = k_η × exp(-[SSq] n/26) × exp(-(π - t)) × Um / ρ_vac,[UA]\n"
+        return "Î· = k_Î· Ã— exp(-[SSq] n/26) Ã— exp(-(Ï€ - t)) Ã— Um / Ï_vac,[UA]\n"
                "n(p) ~ p^{-2.2} exp(-p/p_max), p_max ~ 10^{16} eV\n"
-               "∂n/∂t = ∂/∂p[(dp/dt)n] + ∂²/∂p²[Dn] + Q - n/t_esc";
+               "âˆ‚n/âˆ‚t = âˆ‚/âˆ‚p[(dp/dt)n] + âˆ‚Â²/âˆ‚pÂ²[Dn] + Q - n/t_esc";
     }
     
     double getPMax() const { return p_max; }
@@ -718,22 +718,22 @@ public:
  * THEORETICAL BASIS (arXiv:0810.0159v1):
  * - Collective EM oscillations in condensed matter enable weak interactions
  * - Heavy electron renormalization: m* >> m_e at surface plasmas
- * - Threshold: E ~ m_e c² / e ~ 0.5 MV (for e + p → n + ν_e, Q~0.78 MeV)
- * - Neutron rate: η ~ σ v ~ G_F² s / π
+ * - Threshold: E ~ m_e cÂ² / e ~ 0.5 MV (for e + p â†’ n + Î½_e, Q~0.78 MeV)
+ * - Neutron rate: Î· ~ Ïƒ v ~ G_FÂ² s / Ï€
  * 
  * CALIBRATION DATA:
- * - Hydride cells: E ~ 2×10¹¹ V/m, Ω ~ 10¹⁶ rad/s, η ~ 10¹³ cm⁻²/s
- * - Exploding wires: E ~ 28.8×10¹¹ V/m, η ~ 10⁸ cm⁻²/s
- * - Solar corona: E ~ 1.2×10⁻³ V/m, η ~ 7×10⁻³ cm⁻²/s
+ * - Hydride cells: E ~ 2Ã—10Â¹Â¹ V/m, Î© ~ 10Â¹â¶ rad/s, Î· ~ 10Â¹Â³ cmâ»Â²/s
+ * - Exploding wires: E ~ 28.8Ã—10Â¹Â¹ V/m, Î· ~ 10â¸ cmâ»Â²/s
+ * - Solar corona: E ~ 1.2Ã—10â»Â³ V/m, Î· ~ 7Ã—10â»Â³ cmâ»Â²/s
  * 
  * UQFF INTEGRATION:
- * - E = Um / ρ_vac,[UA] × 1/r (eq 6)
- * - k_η = γ × (ρ_A / ρ_SCm) × (G_F² s / π) ~ 10⁻¹¹³
+ * - E = Um / Ï_vac,[UA] Ã— 1/r (eq 6)
+ * - k_Î· = Î³ Ã— (Ï_A / Ï_SCm) Ã— (G_FÂ² s / Ï€) ~ 10â»Â¹Â¹Â³
  */
 class WidomLarsenLENRTerm : public PhysicsTerm_Batch23 {
 private:
     double E_threshold;      // Threshold electric field (V/m)
-    double eta_hydride;      // Neutron rate for hydride (cm⁻²/s)
+    double eta_hydride;      // Neutron rate for hydride (cmâ»Â²/s)
     double eta_wires;        // Neutron rate for exploding wires
     double eta_corona;       // Neutron rate for solar corona
     std::string system_type; // "hydride", "wires", "corona"
@@ -770,17 +770,17 @@ public:
         // Electric field from Um (eq 6)
         double E = Um / rho_vac_UA / r;
         
-        // Acceleration frequency Ω = E e / (m c) (eq 2)
+        // Acceleration frequency Î© = E e / (m c) (eq 2)
         double Omega = E * e_charge / (m_e * c);
         
-        // Neutron rate η with [SSq] suppression
+        // Neutron rate Î· with [SSq] suppression
         double suppression = std::exp(-SSq * n / 26.0);
         double temporal = std::exp(-(M_PI - t / year_to_sec));
         double eta = k_eta * suppression * temporal * Um / rho_vac_UA;
         
         if (enableLogging) {
-            std::cout << "[WidomLarsen] E=" << E << " V/m, Ω=" << Omega 
-                      << " rad/s, η=" << eta << " cm⁻²/s" << std::endl;
+            std::cout << "[WidomLarsen] E=" << E << " V/m, Î©=" << Omega 
+                      << " rad/s, Î·=" << eta << " cmâ»Â²/s" << std::endl;
         }
         
         return eta;
@@ -788,17 +788,17 @@ public:
     
     // System-specific predictions
     double predictHydrideRate() const {
-        // E ~ 2×10¹¹ V/m, η ~ 10¹³ cm⁻²/s
+        // E ~ 2Ã—10Â¹Â¹ V/m, Î· ~ 10Â¹Â³ cmâ»Â²/s
         return 1e13;
     }
     
     double predictWiresRate() const {
-        // E ~ 28.8×10¹¹ V/m, η ~ 10⁸ cm⁻²/s (magnetic pinch)
+        // E ~ 28.8Ã—10Â¹Â¹ V/m, Î· ~ 10â¸ cmâ»Â²/s (magnetic pinch)
         return 1e8;
     }
     
     double predictCoronaRate(double beta, double beta_0) const {
-        // E ~ 1.2×10⁻³ (β - β₀)² V/m, η ~ 7×10⁻³ (β - β₀)² cm⁻²/s
+        // E ~ 1.2Ã—10â»Â³ (Î² - Î²â‚€)Â² V/m, Î· ~ 7Ã—10â»Â³ (Î² - Î²â‚€)Â² cmâ»Â²/s
         double diff = beta - beta_0;
         return 7e-3 * diff * diff;
     }
@@ -807,14 +807,14 @@ public:
     
     std::string getDescription() const override {
         return "Widom-Larsen LENR via collective EM-to-weak transfer, "
-               "validates hydride η~10¹³, wires η~10⁸, corona η~7×10⁻³ cm⁻²/s";
+               "validates hydride Î·~10Â¹Â³, wires Î·~10â¸, corona Î·~7Ã—10â»Â³ cmâ»Â²/s";
     }
     
     std::string getEquation() const override {
-        return "E = Um / ρ_vac,[UA] × 1/r\n"
-               "Ω = E e / (m_e c) ~ 10¹⁶ rad/s\n"
-               "η = k_η × exp(-[SSq] n/26) × Um / ρ_vac,[UA]\n"
-               "k_η = γ × (ρ_A/ρ_SCm) × (G_F² s/π) ~ 10⁻¹¹³";
+        return "E = Um / Ï_vac,[UA] Ã— 1/r\n"
+               "Î© = E e / (m_e c) ~ 10Â¹â¶ rad/s\n"
+               "Î· = k_Î· Ã— exp(-[SSq] n/26) Ã— Um / Ï_vac,[UA]\n"
+               "k_Î· = Î³ Ã— (Ï_A/Ï_SCm) Ã— (G_FÂ² s/Ï€) ~ 10â»Â¹Â¹Â³";
     }
 };
 
@@ -826,12 +826,12 @@ public:
  * BECIntegrationTerm - Bose Occupancy for Alpha Clustering in Collisions
  * 
  * THEORETICAL BASIS:
- * - N_B = 1 / (exp(ΔE/kT) - 1) Bose-Einstein distribution
- * - At T = 5 MeV: N_B ~ 1.46 for ΔE ~ 5 MeV threshold
- * - Predicts N ~ 10 alpha multiplicity from ΔE_pred = T × ln(1 + 1/N)
+ * - N_B = 1 / (exp(Î”E/kT) - 1) Bose-Einstein distribution
+ * - At T = 5 MeV: N_B ~ 1.46 for Î”E ~ 5 MeV threshold
+ * - Predicts N ~ 10 alpha multiplicity from Î”E_pred = T Ã— ln(1 + 1/N)
  * 
- * INTEGRATION INTO η:
- * - η_BEC = η_base × N_B / (1 + N_B)
+ * INTEGRATION INTO Î·:
+ * - Î·_BEC = Î·_base Ã— N_B / (1 + N_B)
  * - Enhances neutron rate at condensate temperatures
  * - Matches AMD simulations with 95% accuracy
  */
@@ -850,7 +850,7 @@ public:
     }
     
     static double computeN_B(double dE, double T) {
-        // N_B = 1 / (exp(ΔE/kT) - 1)
+        // N_B = 1 / (exp(Î”E/kT) - 1)
         double exponent = dE / T;
         if (exponent > 700) return 0.0;  // Prevent overflow
         return 1.0 / (std::exp(exponent) - 1.0);
@@ -867,24 +867,24 @@ public:
         // Bose occupancy
         double N_B = computeN_B(dE, T);
         
-        // Enhanced η with BEC factor
+        // Enhanced Î· with BEC factor
         double eta_BEC = eta_base * N_B / (1.0 + N_B);
         
         if (enableLogging) {
-            std::cout << "[BEC] T=" << T << " MeV, ΔE=" << dE << " MeV, N_B=" << N_B 
-                      << ", η_BEC=" << eta_BEC << std::endl;
+            std::cout << "[BEC] T=" << T << " MeV, Î”E=" << dE << " MeV, N_B=" << N_B 
+                      << ", Î·_BEC=" << eta_BEC << std::endl;
         }
         
         return eta_BEC;
     }
     
-    // Predict ΔE for target N multiplicity
+    // Predict Î”E for target N multiplicity
     double predictDeltaE(double N, double T) const {
-        // ΔE = T × ln(1 + 1/N)
+        // Î”E = T Ã— ln(1 + 1/N)
         return T * std::log(1.0 + 1.0 / N);
     }
     
-    // Predict N for given ΔE
+    // Predict N for given Î”E
     double predictMultiplicity(double dE, double T) const {
         double N_B = computeN_B(dE, T);
         return N_B;  // Direct mapping
@@ -893,14 +893,14 @@ public:
     std::string getName() const override { return "BECIntegrationTerm"; }
     
     std::string getDescription() const override {
-        return "Bose-Einstein condensate integration for α clustering, "
+        return "Bose-Einstein condensate integration for Î± clustering, "
                "N_B ~ 1.46 at T=5 MeV, predicts N~10 multiplicity with 95% AMD match";
     }
     
     std::string getEquation() const override {
-        return "N_B = 1 / (exp(ΔE/kT) - 1)\n"
-               "η_BEC = η_base × N_B / (1 + N_B)\n"
-               "ΔE_pred = T × ln(1 + 1/N) for target multiplicity N";
+        return "N_B = 1 / (exp(Î”E/kT) - 1)\n"
+               "Î·_BEC = Î·_base Ã— N_B / (1 + N_B)\n"
+               "Î”E_pred = T Ã— ln(1 + 1/N) for target multiplicity N";
     }
     
     double getN_B() const { return N_B_predicted; }
@@ -914,11 +914,11 @@ public:
  * F_U_Bi_i_IntegralTerm - Complete 10+ Term Unified Field Integral
  * 
  * FULL INTEGRAND:
- * F_U_Bi_i = ∫[-F₀ + (m_e c²/r²)DPM_mom cos(θ) + (GM/r²)DPM_grav + ρ_vac,UA × DPM_stab
- *            + k_LENR(ω_LENR/ω₀)² + k_act cos(ω_act t) + k_DE × L_X
- *            + 2qB₀V sin(θ)(gμ_B B₀/ℏω₀) + k_neutron σ_n + k_rel(E_cm,astro/E_cm)²] dx
+ * F_U_Bi_i = âˆ«[-Fâ‚€ + (m_e cÂ²/rÂ²)DPM_mom cos(Î¸) + (GM/rÂ²)DPM_grav + Ï_vac,UA Ã— DPM_stab
+ *            + k_LENR(Ï‰_LENR/Ï‰â‚€)Â² + k_act cos(Ï‰_act t) + k_DE Ã— L_X
+ *            + 2qBâ‚€V sin(Î¸)(gÎ¼_B Bâ‚€/â„Ï‰â‚€) + k_neutron Ïƒ_n + k_rel(E_cm,astro/E_cm)Â²] dx
  * 
- * LIMITS: x from 0 to x₂ where x₂ = quadratic root (-b ± √(b²-4ac)) / 2a
+ * LIMITS: x from 0 to xâ‚‚ where xâ‚‚ = quadratic root (-b Â± âˆš(bÂ²-4ac)) / 2a
  * 
  * DPM FACTORS:
  * - DPM_momentum = 0.93 (from thread calibration)
@@ -969,7 +969,9 @@ public:
         // Compute integrand at point t
         double integrand = -F_0;
         integrand += (m_e * c * c / (r * r)) * DPM_momentum * std::cos(theta);
-        integrand += (G * M / (r * r)) * DPM_gravity;
+        double B_int = params.count("B_0") ? params.at("B_0") : 1e-4;
+        double mu_s_int = B_int * r * r * r;
+        integrand += mu_s_int * (G * M / (r * r)) * DPM_gravity;  // DPM-emergent
         integrand += rho_vac_UA * DPM_stability;
         integrand += k_LENR * std::pow(omega_LENR / omega_0, 2);
         integrand += k_act * std::cos(omega_act * t);
@@ -978,18 +980,18 @@ public:
         integrand += k_neutron * sigma_n;
         integrand += k_rel * std::pow(E_cm_astro / E_cm, 2);
         
-        // Integration limit x₂ from quadratic (a x² + b x + c = 0)
+        // Integration limit xâ‚‚ from quadratic (a xÂ² + b x + c = 0)
         double a = 1.24e-22;
         double b = 4.72e-3;
         double c_coef = -3.06e175;
         double discriminant = b * b - 4.0 * a * c_coef;
         double x2 = (discriminant > 0) ? (-b - std::sqrt(discriminant)) / (2.0 * a) : -1.35e172;
         
-        // Approximate integral F_U_Bi_i = integrand × x₂
+        // Approximate integral F_U_Bi_i = integrand Ã— xâ‚‚
         double F_U_Bi_i = integrand * x2;
         
         if (enableLogging) {
-            std::cout << "[F_U_Bi_i] integrand=" << integrand << ", x₂=" << x2 
+            std::cout << "[F_U_Bi_i] integrand=" << integrand << ", xâ‚‚=" << x2 
                       << ", F_U_Bi_i=" << F_U_Bi_i << std::endl;
         }
         
@@ -1026,11 +1028,11 @@ public:
     }
     
     std::string getEquation() const override {
-        return "F_U_Bi_i = ∫[-F₀ + (m_e c²/r²)DPM_mom cos(θ) + (GM/r²)DPM_grav\n"
-               "          + ρ_vac,UA × DPM_stab + k_LENR(ω_LENR/ω₀)²\n"
-               "          + k_act cos(ω_act t) + k_DE × L_X\n"
-               "          + 2qB₀V sin(θ)(gμ_B B₀/ℏω₀)\n"
-               "          + k_neutron σ_n + k_rel(E_cm,astro/E_cm)²] dx";
+        return "F_U_Bi_i = âˆ«[-Fâ‚€ + (m_e cÂ²/rÂ²)DPM_mom cos(Î¸) + (GM/rÂ²)DPM_grav\n"
+               "          + Ï_vac,UA Ã— DPM_stab + k_LENR(Ï‰_LENR/Ï‰â‚€)Â²\n"
+               "          + k_act cos(Ï‰_act t) + k_DE Ã— L_X\n"
+               "          + 2qBâ‚€V sin(Î¸)(gÎ¼_B Bâ‚€/â„Ï‰â‚€)\n"
+               "          + k_neutron Ïƒ_n + k_rel(E_cm,astro/E_cm)Â²] dx";
     }
 };
 
@@ -1048,7 +1050,7 @@ class UQFFCompressedTerm : public PhysicsTerm_Batch23 {
 public:
     UQFFCompressedTerm() {
         setMetadata("mode", "UQFF Compressed");
-        setMetadata("basis", "MUGE Newtonian + 9 correction terms");
+        setMetadata("basis", "DPM-emergent + 9 correction terms");
     }
     
     double compute(double t, const std::map<std::string, double>& params) const override {
@@ -1057,26 +1059,28 @@ public:
         double M = params.count("M") ? params.at("M") : M_sun;
         double r = params.count("r") ? params.at("r") : 1e11;
         
-        // Base Newtonian
-        double g_newton = G * M / (r * r);
+        // DPM-emergent base (not Newtonian)
+        double B_field = params.count("B") ? params.at("B") : 1e-4;
+        double mu_s = B_field * r * r * r;
+        double g_dpm = mu_s * G * M / (r * r);  // DPM: mu_s * grad(M_s/r)
         
         // Corrections (simplified)
-        double H_0 = 2.2e-18;  // Hubble constant (s⁻¹)
+        double H_0 = 2.2e-18;  // Hubble constant (sâ»Â¹)
         double g_expansion = H_0 * H_0 * r;  // Hubble expansion
-        double g_super = -1e-15 * g_newton;  // Magnetic suppression
-        double g_envelope = 1e-10 * g_newton;  // Envelope contribution
-        double Ug_sum = 0.01 * g_newton;  // Ug1-4 sum
-        double Lambda = 1.1e-52;  // Cosmological constant (m⁻²)
+        double g_super = -1e-15 * g_dpm;  // Magnetic suppression
+        double g_envelope = 1e-10 * g_dpm;  // Envelope contribution
+        double Ug_sum = 0.01 * g_dpm;  // Ug1-4 sum
+        double Lambda = 1.1e-52;  // Cosmological constant (mâ»Â²)
         double g_cosm = Lambda * c * c * r / 3.0;
         double g_quantum = hbar / (m_p * r * r * r);  // Quantum correction
-        double g_fluid = 1e-20 * g_newton;  // Navier-Stokes
-        double g_perturbation = 0.27 * g_newton;  // Dark matter halo
+        double g_fluid = 1e-20 * g_dpm;  // Navier-Stokes
+        double g_perturbation = 0.27 * g_dpm;  // Dark matter halo
         
-        double g_total = g_newton + g_expansion + g_super + g_envelope + Ug_sum
+        double g_total = g_dpm + g_expansion + g_super + g_envelope + Ug_sum
                        + g_cosm + g_quantum + g_fluid + g_perturbation;
         
         if (enableLogging) {
-            std::cout << "[Compressed] g_newton=" << g_newton << ", g_total=" << g_total << std::endl;
+            std::cout << "[Compressed] g_dpm=" << g_dpm << ", g_total=" << g_total << std::endl;
         }
         
         return g_total;
@@ -1088,7 +1092,7 @@ public:
                "envelope, Ug, cosmological, quantum, fluid, dark matter)";
     }
     std::string getEquation() const override {
-        return "g = g_N + g_exp + g_sup + g_env + ΣUg + g_Λ + g_ℏ + g_fluid + g_DM";
+        return "g = g_N + g_exp + g_sup + g_env + Î£Ug + g_Î› + g_â„ + g_fluid + g_DM";
     }
 };
 
@@ -1137,7 +1141,7 @@ public:
                "(SuperFreq, QuantumFreq, AetherFreq, FluidFreq, ExpFreq)";
     }
     std::string getEquation() const override {
-        return "g = aDPM + Σ[a_i cos(ω_i t)] for i ∈ {Super, Quantum, Aether, Fluid, Exp}";
+        return "g = aDPM + Î£[a_i cos(Ï‰_i t)] for i âˆˆ {Super, Quantum, Aether, Fluid, Exp}";
     }
 };
 
@@ -1179,11 +1183,11 @@ public:
     
     std::string getName() const override { return "UQFFBuoyantTerm"; }
     std::string getDescription() const override {
-        return "UQFF Buoyant mode: Ub_i = -β_i × Ug × Ω_g × M_bh/d_g × (1+ε_sw ρ_sw) × U_UA × cos(πt_n) × f_Ub";
+        return "UQFF Buoyant mode: Ub_i = -Î²_i Ã— Ug Ã— Î©_g Ã— M_bh/d_g Ã— (1+Îµ_sw Ï_sw) Ã— U_UA Ã— cos(Ï€t_n) Ã— f_Ub";
     }
     std::string getEquation() const override {
-        return "Ub_i = -β_i × Ug_i × Ω_g × M_bh/d_g × (1 + ε_sw ρ_sw) × U_UA × cos(πt_n) × f_Ub\n"
-               "f_Ub = β_i × cos(i - 90°), β_i = 0.603, U_UA = 0.0001";
+        return "Ub_i = -Î²_i Ã— Ug_i Ã— Î©_g Ã— M_bh/d_g Ã— (1 + Îµ_sw Ï_sw) Ã— U_UA Ã— cos(Ï€t_n) Ã— f_Ub\n"
+               "f_Ub = Î²_i Ã— cos(i - 90Â°), Î²_i = 0.603, U_UA = 0.0001";
     }
 };
 
@@ -1229,8 +1233,8 @@ public:
     }
     std::string getEquation() const override {
         return "P_SCm = 1 - exp(-E_react/kT)\n"
-               "H_SCm = θ(B < B_crit) × 0.99\n"
-               "Um_SCm = ρ_vac,[SCm] × P_SCm × H_SCm × (1 - e^{-γt} cos(πt_n))";
+               "H_SCm = Î¸(B < B_crit) Ã— 0.99\n"
+               "Um_SCm = Ï_vac,[SCm] Ã— P_SCm Ã— H_SCm Ã— (1 - e^{-Î³t} cos(Ï€t_n))";
     }
 };
 
@@ -1281,7 +1285,7 @@ public:
         double R_star = R_sun;
         double r_t = R_star * std::pow(M * M_sun / (M_star * M_sun), 1.0/3.0);
         
-        // Fallback rate: Ṁ ∝ (t/t_fb)^{-5/3}
+        // Fallback rate: á¹€ âˆ (t/t_fb)^{-5/3}
         double t_fb = 40.0;  // Fallback timescale (days)
         double M_dot = (t_days > 0) ? std::pow(t_days / t_fb, -5.0/3.0) : 1.0;
         
@@ -1314,13 +1318,13 @@ public:
     
     std::string getDescription() const override {
         return "AT2019qiz TDE at 66 Mpc, closest optical TDE, "
-               "fallback Ṁ ∝ t^{-5/3}, QPEs from disk precession, SCm-modulated emission";
+               "fallback á¹€ âˆ t^{-5/3}, QPEs from disk precession, SCm-modulated emission";
     }
     
     std::string getEquation() const override {
-        return "r_t = R_* × (M_BH/M_*)^{1/3}\n"
-               "Ṁ ∝ (t/t_fb)^{-5/3}, t_fb ~ 40 days\n"
-               "L = L_peak × Ṁ × SCm";
+        return "r_t = R_* Ã— (M_BH/M_*)^{1/3}\n"
+               "á¹€ âˆ (t/t_fb)^{-5/3}, t_fb ~ 40 days\n"
+               "L = L_peak Ã— á¹€ Ã— SCm";
     }
 };
 
@@ -1437,26 +1441,26 @@ public:
         std::map<std::string, double> test_params;
         double t_test = 1e6;  // 1 million seconds (~11.6 days)
         
-        std::cout << "\n--- 1. κ Decay Rate (JWST Quasar) ---" << std::endl;
+        std::cout << "\n--- 1. Îº Decay Rate (JWST Quasar) ---" << std::endl;
         test_params.clear();
         double E_react = kappa_term->compute(t_test, test_params);
-        std::cout << "  E_react(t=11.6 days) = " << E_react << " W/m³" << std::endl;
-        std::cout << "  τ_burst = " << kappa_term->getTau() << " days" << std::endl;
-        std::cout << "  χ² = " << kappa_term->getChiSquared() << std::endl;
+        std::cout << "  E_react(t=11.6 days) = " << E_react << " W/mÂ³" << std::endl;
+        std::cout << "  Ï„_burst = " << kappa_term->getTau() << " days" << std::endl;
+        std::cout << "  Ï‡Â² = " << kappa_term->getChiSquared() << std::endl;
         
         std::cout << "\n--- 2. [SSq] Shell Quotient (Nebula Ye) ---" << std::endl;
         test_params.clear();
         test_params["n"] = 13;
         double suppression = ssq_term->compute(t_test, test_params);
-        std::cout << "  exp(-[SSq]×13/26) = " << suppression << std::endl;
+        std::cout << "  exp(-[SSq]Ã—13/26) = " << suppression << std::endl;
         std::cout << "  Ye prediction = " << suppression << " (target: 0.1)" << std::endl;
         std::cout << "  [SSq] derived = " << SSqShellQuotientTerm::deriveSSqFromYe(0.1, 13) << std::endl;
         
-        std::cout << "\n--- 3. Gaia DR4 Binary (i~90° Damping) ---" << std::endl;
+        std::cout << "\n--- 3. Gaia DR4 Binary (i~90Â° Damping) ---" << std::endl;
         test_params.clear();
         test_params["inclination"] = 89.9;
         double Ub_i = gaia_term->compute(t_test, test_params);
-        std::cout << "  Ub_i(i=89.9°) = " << Ub_i << std::endl;
+        std::cout << "  Ub_i(i=89.9Â°) = " << Ub_i << std::endl;
         std::cout << "  ADQL: " << gaia_term->generateADQLQuery(85, 95, 10) << std::endl;
         
         std::cout << "\n--- 4. LIGO GWTC-4.0 (GW Events) ---" << std::endl;
@@ -1466,9 +1470,9 @@ public:
         double Ug4 = ligo_term->compute(t_test, test_params);
         std::cout << "  Ug4(GW150914) = " << Ug4 << std::endl;
         std::cout << "  Total events = " << ligo_term->getTotalEvents() << std::endl;
-        std::cout << "  τ_BBH = " << ligo_term->predictTorque(36, 29, 1e7) << " N·m" << std::endl;
+        std::cout << "  Ï„_BBH = " << ligo_term->predictTorque(36, 29, 1e7) << " NÂ·m" << std::endl;
         
-        std::cout << "\n--- 5. Neutrino SED (RIAF pp/pγ) ---" << std::endl;
+        std::cout << "\n--- 5. Neutrino SED (RIAF pp/pÎ³) ---" << std::endl;
         test_params.clear();
         test_params["M_BH"] = 1e7;
         test_params["n"] = 13;
@@ -1476,7 +1480,7 @@ public:
         double nu_flux = neutrino_term->compute(t_test, test_params);
         std::cout << "  Neutrino flux = " << nu_flux << std::endl;
         std::cout << "  p_max = " << neutrino_term->getPMax() << " eV" << std::endl;
-        std::cout << "  Spectral index α = " << neutrino_term->getSpectralIndex() << std::endl;
+        std::cout << "  Spectral index Î± = " << neutrino_term->getSpectralIndex() << std::endl;
         
         std::cout << "\n--- 6. AT2019qiz TDE ---" << std::endl;
         test_params.clear();
@@ -1493,10 +1497,10 @@ public:
         test_params["n"] = 13;
         double eta_lenr = lenr_term->compute(t_test, test_params);
         double k_eta_val = 1e-113;  // SM cross-section scaling
-        std::cout << "  η(hydride) = " << eta_lenr << " cm⁻²/s" << std::endl;
+        std::cout << "  Î·(hydride) = " << eta_lenr << " cmâ»Â²/s" << std::endl;
         std::cout << "  Predicted hydride rate = " << lenr_term->predictHydrideRate() << std::endl;
         std::cout << "  Predicted wires rate = " << lenr_term->predictWiresRate() << std::endl;
-        std::cout << "  k_η = " << k_eta_val << " (SM cross-section)" << std::endl;
+        std::cout << "  k_Î· = " << k_eta_val << " (SM cross-section)" << std::endl;
         
         std::cout << "\n--- 8. BEC Integration ---" << std::endl;
         test_params.clear();
@@ -1505,8 +1509,8 @@ public:
         test_params["eta_base"] = 1e8;
         double eta_bec = bec_term->compute(t_test, test_params);
         std::cout << "  N_B(T=5 MeV) = " << bec_term->getN_B() << std::endl;
-        std::cout << "  η_BEC = " << eta_bec << " cm⁻²/s" << std::endl;
-        std::cout << "  ΔE for N=10: " << bec_term->predictDeltaE(10.0, 5.0) << " MeV" << std::endl;
+        std::cout << "  Î·_BEC = " << eta_bec << " cmâ»Â²/s" << std::endl;
+        std::cout << "  Î”E for N=10: " << bec_term->predictDeltaE(10.0, 5.0) << " MeV" << std::endl;
         
         std::cout << "\n--- 9. F_U_Bi_i Integral (10+ DPM Terms) ---" << std::endl;
         test_params.clear();
@@ -1516,14 +1520,14 @@ public:
         double F_U_Bi_i = integral_term->compute(t_test, test_params);
         std::cout << "  F_U_Bi_i = " << F_U_Bi_i << std::endl;
         auto [mean, std_dev] = integral_term->stabilityTest(100, 0.1);
-        std::cout << "  Stability: mean=" << mean << ", σ=" << std_dev << std::endl;
+        std::cout << "  Stability: mean=" << mean << ", Ïƒ=" << std_dev << std::endl;
         
         std::cout << "\n--- 10. UQFF Compressed Mode ---" << std::endl;
         test_params.clear();
         test_params["M"] = ::M_sun;
         test_params["r"] = 1e11;
         double g_compressed = compressed_term->compute(t_test, test_params);
-        std::cout << "  g_compressed = " << g_compressed << " m/s²" << std::endl;
+        std::cout << "  g_compressed = " << g_compressed << " m/sÂ²" << std::endl;
         
         std::cout << "\n--- 11. UQFF Resonant Mode ---" << std::endl;
         test_params.clear();
@@ -1547,7 +1551,7 @@ public:
         
         std::cout << "\n" << std::string(70, '=') << std::endl;
         std::cout << "BATCH 23 VALIDATION COMPLETE: 13 PhysicsTerm classes integrated" << std::endl;
-        std::cout << "  - Core Calibrations: 6 (κ, [SSq], Gaia, LIGO, Neutrino, TDE)" << std::endl;
+        std::cout << "  - Core Calibrations: 6 (Îº, [SSq], Gaia, LIGO, Neutrino, TDE)" << std::endl;
         std::cout << "  - Extended Terms: 7 (LENR, BEC, Integral, Compressed, Resonant, Buoyant, SCm)" << std::endl;
         std::cout << "Total PhysicsTerm classes: 6,688 (Batch 22: 6,675 + Batch 23: 13)" << std::endl;
         std::cout << "UQFF Framework: " << solvability << "% SOLVABLE" << std::endl;
@@ -1564,59 +1568,59 @@ public:
         std::cout << R"(
 1. Fu (UNIFIED FIELD EQUATION)
 ==============================
-Fu = Σᵢ [kᵢ × Ugᵢ(r,t,Mₛ,ωₛ,Tₛ,Bₛ,SCm,UA,tₙ) - βᵢ × Ugᵢ × Ωg × Mbh/dg × E_react]
-     + Um + A_μν + Ug4
+Fu = Î£áµ¢ [káµ¢ Ã— Ugáµ¢(r,t,Mâ‚›,Ï‰â‚›,Tâ‚›,Bâ‚›,SCm,UA,tâ‚™) - Î²áµ¢ Ã— Ugáµ¢ Ã— Î©g Ã— Mbh/dg Ã— E_react]
+     + Um + A_Î¼Î½ + Ug4
 
 Proof:
-- Step 1: Gravity unification from ∂ρ_vac/∂r = -GM/r³ × (1 + δ_def)
-- Step 2: Opposition via Ub_i = -βᵢ × Ugᵢ × Ωg × Mbh/dg × U_UA × cos(π tₙ) × f_Ub
-- Step 3: Magnetism Um = Σⱼ[μⱼ/rⱼ × (1 - e^{-γt}cos(πtₙ)) × φʲ] × P_SCm × E_react
-- Step 4: Aether A_μν = g_μν + η × T_s^μν(UA,SCm,ρ_A,tₙ) × cos(π tₙ)
-- Step 5: Ug4 BH = k4 × ρ_vac,[SCm] × M_BH/dg × e^{-κt} × cos(πtₙ) × (1 + f_fb)
+- Step 1: Gravity unification from âˆ‚Ï_vac/âˆ‚r = -GM/rÂ³ Ã— (1 + Î´_def)
+- Step 2: Opposition via Ub_i = -Î²áµ¢ Ã— Ugáµ¢ Ã— Î©g Ã— Mbh/dg Ã— U_UA Ã— cos(Ï€ tâ‚™) Ã— f_Ub
+- Step 3: Magnetism Um = Î£â±¼[Î¼â±¼/râ±¼ Ã— (1 - e^{-Î³t}cos(Ï€tâ‚™)) Ã— Ï†Ê²] Ã— P_SCm Ã— E_react
+- Step 4: Aether A_Î¼Î½ = g_Î¼Î½ + Î· Ã— T_s^Î¼Î½(UA,SCm,Ï_A,tâ‚™) Ã— cos(Ï€ tâ‚™)
+- Step 5: Ug4 BH = k4 Ã— Ï_vac,[SCm] Ã— M_BH/dg Ã— e^{-Îºt} Ã— cos(Ï€tâ‚™) Ã— (1 + f_fb)
 
 2. Um (UNIVERSAL MAGNETISM)
 ===========================
-Um = Σⱼ [μⱼ(t,SCm)/rⱼ × (1 - e^{-γt}cos(πtₙ)) × φʲ] × P_SCm × E_react × (1 + 10¹³ f_H) × (1 + f_quasi)
+Um = Î£â±¼ [Î¼â±¼(t,SCm)/râ±¼ Ã— (1 - e^{-Î³t}cos(Ï€tâ‚™)) Ã— Ï†Ê²] Ã— P_SCm Ã— E_react Ã— (1 + 10Â¹Â³ f_H) Ã— (1 + f_quasi)
 
 Proof:
-- Dipole basis: μⱼ = (10³ + 0.4sin(ωc t)) × 3.38×10²⁰ T·pm³
-- Decay/periodicity: (1 - e^{-γt}cos(πtₙ)) from near-lossless decay
-- Helical φʲ = (cos θⱼ, sin θⱼ, 0) × exp(iωₛt) from VLA/EHT helicity
+- Dipole basis: Î¼â±¼ = (10Â³ + 0.4sin(Ï‰c t)) Ã— 3.38Ã—10Â²â° TÂ·pmÂ³
+- Decay/periodicity: (1 - e^{-Î³t}cos(Ï€tâ‚™)) from near-lossless decay
+- Helical Ï†Ê² = (cos Î¸â±¼, sin Î¸â±¼, 0) Ã— exp(iÏ‰â‚›t) from VLA/EHT helicity
 - P_SCm = 1 - e^{-E_react/kT} (Bose occupancy)
 
 3. Ug1-Ug4 (GRAVITY RANGES)
 ===========================
-Ug1 = k1 × μₛ(t,SCm) × ∇(Mₛ/r) × e^{-αt} × cos(πtₙ) × (1 + δ_def)     [Internal dipole]
-Ug2 = k2 × (Q_A + Q_UA) × Mₛ/r² × S(r-R_b) × H_SCm × E_react             [Bubble]
-Ug3 = k3 × Σⱼ Bⱼ(r,θ,t,SCm) × cos(ωₛt π) × P_core × E_react             [Disk]
-Ug4 = k4 × ρ_vac,[SCm] × M_BH/dg × e^{-κt} × cos(πtₙ) × (1 + f_fb)       [BH]
+Ug1 = k1 Ã— Î¼â‚›(t,SCm) Ã— âˆ‡(Mâ‚›/r) Ã— e^{-Î±t} Ã— cos(Ï€tâ‚™) Ã— (1 + Î´_def)     [Internal dipole]
+Ug2 = k2 Ã— (Q_A + Q_UA) Ã— Mâ‚›/rÂ² Ã— S(r-R_b) Ã— H_SCm Ã— E_react             [Bubble]
+Ug3 = k3 Ã— Î£â±¼ Bâ±¼(r,Î¸,t,SCm) Ã— cos(Ï‰â‚›t Ï€) Ã— P_core Ã— E_react             [Disk]
+Ug4 = k4 Ã— Ï_vac,[SCm] Ã— M_BH/dg Ã— e^{-Îºt} Ã— cos(Ï€tâ‚™) Ã— (1 + f_fb)       [BH]
 
 4. Ub_i (AETHER BUOYANCY)
 =========================
-Ub_i = -βᵢ × Ugᵢ × Ωg × Mbh/dg × (1 + εsw × ρsw) × U_UA × cos(πtₙ) × f_Ub
+Ub_i = -Î²áµ¢ Ã— Ugáµ¢ Ã— Î©g Ã— Mbh/dg Ã— (1 + Îµsw Ã— Ïsw) Ã— U_UA Ã— cos(Ï€tâ‚™) Ã— f_Ub
 
 Proof:
-- Opposition to Ugᵢ: βᵢ = 0.603 from Gaia i~90° damping
-- f_Ub = βᵢ × cos(i - 90°) ~ 10⁻³ for i = 89.9°
-- U_UA = 0.0001 from Q_UA/Q_A × f_Ub
+- Opposition to Ugáµ¢: Î²áµ¢ = 0.603 from Gaia i~90Â° damping
+- f_Ub = Î²áµ¢ Ã— cos(i - 90Â°) ~ 10â»Â³ for i = 89.9Â°
+- U_UA = 0.0001 from Q_UA/Q_A Ã— f_Ub
 
 5. E_react (REACTIVITY)
 =======================
-E_react = (ρ_SCm × v_SCm² / ρ_A) × e^{-κt}
+E_react = (Ï_SCm Ã— v_SCmÂ² / Ï_A) Ã— e^{-Îºt}
 
 Proof:
-- SCm kinetic energy: v_SCm = 10⁸ m/s, ρ_SCm = 10¹⁵ kg/m³
-- Buoyancy division: ρ_A = 10⁻²³ kg/m³
-- Decay: κ = 0.0005 day⁻¹ from JWST MCMC
+- SCm kinetic energy: v_SCm = 10â¸ m/s, Ï_SCm = 10Â¹âµ kg/mÂ³
+- Buoyancy division: Ï_A = 10â»Â²Â³ kg/mÂ³
+- Decay: Îº = 0.0005 dayâ»Â¹ from JWST MCMC
 
-6. η (LENR NEUTRON RATE)
+6. Î· (LENR NEUTRON RATE)
 ========================
-η = k_η × exp(-[SSq] n/26) × exp(-(π - t)) × Um / ρ_vac,[UA]
+Î· = k_Î· Ã— exp(-[SSq] n/26) Ã— exp(-(Ï€ - t)) Ã— Um / Ï_vac,[UA]
 
 Proof:
-- SM cross-section: σ ~ G_F² s / π
-- k_η = γ × (ρ_A/ρ_SCm) × (G_F² s / π) ≈ 10⁻¹¹³
-- [SSq] = 0.57 from Ye ~ 0.1 nebula mapping: exp(-0.57 × 13/26) ~ 0.1
+- SM cross-section: Ïƒ ~ G_FÂ² s / Ï€
+- k_Î· = Î³ Ã— (Ï_A/Ï_SCm) Ã— (G_FÂ² s / Ï€) â‰ˆ 10â»Â¹Â¹Â³
+- [SSq] = 0.57 from Ye ~ 0.1 nebula mapping: exp(-0.57 Ã— 13/26) ~ 0.1
 )";
         
         std::cout << std::string(70, '=') << std::endl;
@@ -1645,7 +1649,7 @@ Proof:
         out << "Gaia_DR4 = March 2025, 5-10M binaries" << std::endl;
         out << "LIGO_GWTC4 = August 26, 2025, 218 events" << std::endl;
         out << "JWST = arXiv 2509.05417, 2508.14350" << std::endl;
-        out << "IceCube = NGC 1068 hotspot 4.2σ" << std::endl;
+        out << "IceCube = NGC 1068 hotspot 4.2Ïƒ" << std::endl;
         out << "AT2019qiz = ZTF September 19, 2019, 66 Mpc" << std::endl;
         
         out << std::endl << "[PhysicsTerm Classes]" << std::endl;

@@ -18,6 +18,8 @@ Residual target: |R_c| < 1% for all 99 systems.
 """
 
 import math
+from dpm_helpers import dpm_emergent_ug1, dpm_emergent_ug2
+
 from typing import Dict, List, Optional
 
 # ── §0  Constants ──────────────────────────────────────────────────────────
@@ -73,7 +75,7 @@ def _build_99_systems() -> List[Dict]:
             r = 12e3  # 12 km
         else:
             M = (3.0 + (i - 8) * 14.0) * M_SUN
-            r = 2 * G * M / C ** 2 * 3  # 3 Schwarzschild radii
+            r = 2 * dpm_emergent_ug1(M, C) * 3  # 3 Schwarzschild radii
         systems.append({"id": 55 + i + 1, "name": f"Compact_{i+1}", "M_kg": M, "r_m": r,
                         "category": "compact"})
     # Clusters (15 systems)
@@ -95,22 +97,22 @@ def _build_99_systems() -> List[Dict]:
 
 def Ug_26layer(M: float, r: float) -> float:
     """26-layer compressed gravity: g(r) = Σ_{i=1}^{26} G·M/r² · [SSq]·i/26."""
-    return sum(G * M / r**2 * SSQ * i / 26.0 for i in range(1, 27))
+    return sum(dpm_emergent_ug1(M, r) * SSQ * i / 26.0 for i in range(1, 27))
 
 
 def F_UBi(M: float, r: float) -> float:
     """Buoyancy force: F_{UBi} = Σ β_i · U_{g,i}."""
-    return sum(G * M / r**2 * math.exp(-SSQ * i / 26.0) * BETA_I for i in range(1, 27))
+    return sum(dpm_emergent_ug1(M, r) * math.exp(-SSQ * i / 26.0) * BETA_I for i in range(1, 27))
 
 
 def Um_magnetic(M: float, r: float) -> float:
     """Magnetic component U_m."""
-    return G * M / r**2 * SSQ * 0.1
+    return dpm_emergent_ug1(M, r) * SSQ * 0.1
 
 
 def UA_aether(M: float, r: float) -> float:
     """Aether resistance U_A."""
-    return G * M / r**2 * 1e-10
+    return dpm_emergent_ug1(M, r) * 1e-10
 
 
 def Phi_phonon(omega: float = OMEGA_SCM, gamma: float = GAMMA_0) -> float:

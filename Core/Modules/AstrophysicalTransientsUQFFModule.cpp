@@ -268,7 +268,9 @@ public:
         // === UQFF BUOYANCY ===
         // Radio emission driven by buoyancy instabilities
         double delta_rho = rho_vac_UA - rho_vac_SCm;
-        double Ub_i = beta_i * std::abs(delta_rho) * G * M / (r * r);
+        double B_sys = (B > 0) ? B : 1e-5;
+        double mu_s_b = B_sys * r * r * r;
+        double Ub_i = beta_i * std::abs(delta_rho) * mu_s_b * G * M / (r * r);  // DPM-emergent buoyancy
         
         // === TOTAL UNIFIED FIELD ===
         // Time modulation at 44-min period
@@ -386,8 +388,9 @@ public:
         
         // === UQFF GRAVITY COMPONENTS ===
         // Ug1: WD gravitational potential
-        // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
-        double Ug1 = G * M / (r * c * c);
+        double B_WD = 1e-2;  // White dwarf B-field [T]
+        double mu_s_wd = B_WD * r * r * r;
+        double Ug1 = mu_s_wd * G * M / (r * r * c * c);  // DPM-emergent potential
         
         // Ug2: Degenerate electron pressure contribution
         double rho_WD = M / (4.0/3.0 * M_PI * R * R * R);
@@ -541,8 +544,9 @@ public:
         
         // === UQFF GRAVITY COMPONENTS ===
         // Ug1: Binary gravitational potential
-        // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
-        double Ug1 = G * M_total / (a * c * c);
+        double B_bin = 1e-3;  // Binary system B-field [T]
+        double mu_s_bin = B_bin * a * a * a;
+        double Ug1 = mu_s_bin * G * M_total / (a * a * c * c);  // DPM-emergent
         
         // Ug2: Mass transfer rate contribution
         double R_WD = 1e7;  // White dwarf radius ~ 10^7 m
@@ -711,8 +715,9 @@ public:
         
         // === UQFF GRAVITY COMPONENTS ===
         // Ug1: Central star gravity
-        // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
-        double Ug1 = G * M / (R_t * c * c);
+        double B_pn = 1e-4;  // PN central star B-field [T]
+        double mu_s_pn = B_pn * R_t * R_t * R_t;
+        double Ug1 = mu_s_pn * G * M / (R_t * R_t * c * c);  // DPM-emergent
         
         // Ug2: Radiation pressure
         double P_rad = L / (4.0 * M_PI * R_t * R_t * c);
@@ -862,8 +867,8 @@ public:
         
         // === UQFF GRAVITY COMPONENTS ===
         // Ug1: Stellar gravity (loop footpoint anchoring)
-        // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
-        double Ug1 = G * M / (R * c * c);
+        double mu_s_star = B * R * R * R;  // Use system B-field
+        double Ug1 = mu_s_star * G * M / (R * R * c * c);  // DPM-emergent
         
         // Ug2: Magnetic pressure
         double P_mag = (B * B) / (2.0 * mu_0);

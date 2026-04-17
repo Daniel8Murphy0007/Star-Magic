@@ -6,6 +6,8 @@ to CondensedPhysics4.py.
 Session 178 — v5.35
 """
 import math
+from dpm_helpers import dpm_emergent_ug1, dpm_emergent_ug2
+
 
 NEW_CLASSES = '''
 
@@ -61,7 +63,7 @@ class TenAstroSystemsMUGECalculator(object):
 
     def g_muge(self, system_tuple, t=3.156e14):
         name, M, r, z, SFR, B, v_w, tau, E_0 = system_tuple
-        g_grav = self.G * M / r**2
+        g_grav = self.dpm_emergent_ug1(M, r)
         hub    = 1.0 + self.H_z(z) * t
         m_fac  = 1.0 + self.M_evo(t, SFR, M)
         e_fac  = 1.0 - self.E_rad(t, E_0, tau)
@@ -71,7 +73,7 @@ class TenAstroSystemsMUGECalculator(object):
 
     def R_resonance(self, system_tuple, t=3.156e14):
         name, M, r, z, SFR, B, v_w, tau, E_0 = system_tuple
-        g_grav  = self.G * M / r**2
+        g_grav  = self.dpm_emergent_ug1(M, r)
         m_fac   = 1.0 + self.M_evo(t, SFR, M)
         R_grav  = g_grav * m_fac
         R_mag   = self.q_e * v_w * B / self.m_p * self.em_scale
@@ -190,7 +192,7 @@ class EighteenAstroSystemsMUGECalculator(object):
 
     def g_muge(self, system_tuple, t=3.156e14):
         name, M, r, z, SFR, B, v_w, tau, E_0 = system_tuple
-        g_grav = self.G * M / r**2
+        g_grav = self.dpm_emergent_ug1(M, r)
         hub    = 1.0 + self.H_z(z) * t
         m_fac  = 1.0 + self.M_evo(t, SFR, M)
         e_fac  = 1.0 - self.E_rad(t, E_0, tau)
@@ -201,7 +203,7 @@ class EighteenAstroSystemsMUGECalculator(object):
 
     def R_resonance(self, system_tuple, t=3.156e14):
         name, M, r, z, SFR, B, v_w, tau, E_0 = system_tuple
-        g_grav  = self.G * M / r**2
+        g_grav  = self.dpm_emergent_ug1(M, r)
         m_fac   = 1.0 + self.M_evo(t, SFR, M)
         R_grav  = g_grav * m_fac
         R_mag   = self.q_e * v_w * B / self.m_p * self.em_scale

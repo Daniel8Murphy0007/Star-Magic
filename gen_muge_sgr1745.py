@@ -122,7 +122,7 @@ public:
     }
 
     void updateCache() {
-        ug1_base = (G * M) / (r * r);
+        ug1_base = B_field * r * G * M;
         g_BH = (G * M_BH) / (r_BH * r_BH);
     }
 

@@ -116,7 +116,7 @@ public:
     }
 
     void updateCache() {
-        ug1_base_initial = (G * M_initial) / (r * r);
+        ug1_base_initial = B_field * r * G * M_initial;
     }
 
     bool setVariable(const std::string& varName, double newValue) {
@@ -162,7 +162,7 @@ public:
 
     // Ug terms using M(t)
     double compute_Ug(double Mt) const {
-        // DPM-emergent: mu_s x grad(M_s/r) (not Newtonian GM/r^2)\ndouble ug1 = (G * Mt) / (r * r);
+        // DPM-emergent: mu_s x grad(M_s/r) (not Newtonian GM/r^2)\ndouble ug1 = B_field * r * G * Mt;
         double corr_B = 1.0 - B_T() / B_crit;
         double Ug4 = ug1 * corr_B;
         return (ug1 + Ug4) * (1.0 + f_TRZ);
@@ -175,7 +175,7 @@ public:
 
         double Mt = M_t(t);
         double Bt = B_T();
-        double ug1_t = (G * Mt) / (r * r);
+        double ug1_t = B_field * r * G * Mt;
 
         // Spin-modified Omega (spin_factor reduces effective Omega)
         double Omega_t = (2.0 * M_PI / 0.1) * spin_factor;  // ~0.1 s period, spin_factor=0.3

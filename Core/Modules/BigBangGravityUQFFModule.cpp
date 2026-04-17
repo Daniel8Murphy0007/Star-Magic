@@ -329,9 +329,9 @@ double BigBangGravityUQFFModule::computeUgSum(double r_t)
 {
     double M_t = computeM_t(variables["t"]); // Use current t
     double G = variables["G"];
-    // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
-    // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
-    double Ug1 = (G * M_t) / (r_t * r_t);
+    double B_field = variables.count("B") ? variables["B"] : 1e-10;  // primordial
+    double mu_s = B_field * r_t * r_t * r_t;
+    double Ug1 = mu_s * G * M_t / (r_t * r_t);  // DPM-emergent: mu_s * grad(M_s/r)
     variables["Ug1"] = Ug1;
     variables["Ug2"] = 0.0;
     variables["Ug3"] = 0.0;

@@ -1,3 +1,4 @@
+from dpm_helpers import dpm_emergent_ug1, dpm_emergent_ug2
 #!/usr/bin/env python3
 """Add 8 UQFF Master Equation methods to all Model classes using line-based insertion."""
 
@@ -10,7 +11,7 @@ UQFF_BLOCK = '''
         G = 6.674e-11
         M = getattr(self, 'M', getattr(self, 'mass', 1e30))
         if r is None: r = getattr(self, 'r', getattr(self, 'radius', 1e8))
-        Ug = G * M / r**2
+        Ug = dpm_emergent_ug1(M, r)
         return {'Ug': Ug, 'F_U': Ug, 'equation': f"F_U = G*M/r^2 = {Ug:.3e} m/s^2"}
     
     def compute_compressed_equation(self, r=None):
@@ -19,7 +20,7 @@ UQFF_BLOCK = '''
         G, H_0 = 6.674e-11, 2.268e-18
         M = getattr(self, 'M', getattr(self, 'mass', 1e30))
         if r is None: r = getattr(self, 'r', getattr(self, 'radius', 1e8))
-        g_N = G * M / r**2
+        g_N = dpm_emergent_ug1(M, r)
         g_H = H_0**2 * r
         g = g_N - g_H
         return {'g_compressed': g, 'g_N': g_N, 'g_Hubble': g_H}
@@ -30,7 +31,7 @@ UQFF_BLOCK = '''
         G, H_0, c = 6.674e-11, 2.268e-18, 2.998e8
         M = getattr(self, 'M', getattr(self, 'mass', 1e30))
         if r is None: r = getattr(self, 'r', getattr(self, 'radius', 1e8))
-        aDPM = G * M / r**2
+        aDPM = dpm_emergent_ug1(M, r)
         aExpFreq = H_0 * c * np.sin(H_0 * t)
         return {'g_resonance': aDPM + aExpFreq, 'aDPM': aDPM, 'aExpFreq': aExpFreq}
     
@@ -48,7 +49,7 @@ UQFF_BLOCK = '''
         M = getattr(self, 'M', getattr(self, 'mass', 1e30))
         if r is None: r = getattr(self, 'r', getattr(self, 'radius', 1e8))
         if V is None: V = (4/3) * np.pi * r**3
-        g = G * M / r**2
+        g = dpm_emergent_ug1(M, r)
         Ub = (rho_vac * V * g) / M
         return {'Ub': Ub, 'g': g, 'V': V}
     
@@ -59,7 +60,7 @@ UQFF_BLOCK = '''
         M = getattr(self, 'M', getattr(self, 'mass', 1e30))
         if r is None: r = getattr(self, 'r', getattr(self, 'radius', 1e8))
         V = (4/3) * np.pi * r**3
-        Ug = G * M / r**2
+        Ug = dpm_emergent_ug1(M, r)
         Ub = (rho_vac * V * Ug) / M
         Ui = -k_eta * rho_vac * V * (v / c)**2
         a_net = Ug - Ub + Ui
@@ -71,7 +72,7 @@ UQFF_BLOCK = '''
         G = 6.674e-11
         M = getattr(self, 'M', getattr(self, 'mass', 1e30))
         if r is None: r = getattr(self, 'r', getattr(self, 'radius', 1e8))
-        g_matter = G * M / r**2
+        g_matter = dpm_emergent_ug1(M, r)
         g_field, g_vacuum = 1e-15, 1e-20
         return {'g_triadic': g_matter + g_field + g_vacuum, 'g_matter': g_matter}
     
@@ -81,7 +82,7 @@ UQFF_BLOCK = '''
         G = 6.674e-11
         M = getattr(self, 'M', getattr(self, 'mass', 1e30))
         if r is None: r = getattr(self, 'r', getattr(self, 'radius', 1e8))
-        g_base = G * M / r**2
+        g_base = dpm_emergent_ug1(M, r)
         a, b, c = -1e-30, 1e-20, g_base
         return {'g_quad': a * r**2 + b * r + c, 'a': a, 'b': b, 'c': c}
 '''
