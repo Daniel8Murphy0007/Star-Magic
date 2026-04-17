@@ -52,43 +52,44 @@ struct CelestialBody_S4 {
 };
 
 // MUGE system parameters (compressed + resonance)
+// ALL terms frequency/resonance-driven from DPM foundation, NOT Newtonian
 struct MUGESystem_S4 {
-    double M;            // Mass (kg)
-    double r;            // Distance (m)
-    double t;            // Time (s)
-    double B;            // Magnetic field (T)
-    double rho_fluid;    // Fluid density (kg/m^3)
-    double V_sys;        // System velocity (m/s)
-    double g_local;      // Local gravity estimate (m/s^2)
+    double M;            // Total mass (kg) — used for frequency derivation only
+    double r;            // Characteristic radius (m)
+    double t;            // System age/time (s)
+    double B;            // Resonance field strength (T)
+    double Bcrit;        // Critical field (T)
+    double Vsys;         // System volume (m^3)
     double H_z;          // Hubble parameter at redshift z
-    double M_DM;         // Dark matter mass (kg)
-    double delta_rho;    // Density perturbation ratio
-    double envelope;     // Envelope factor
+    // DPM parameters
+    double I_current;    // Vortical current (A)
+    double A_area;       // Vortical area (m^2)
+    double omega1;       // Primary vortex frequency (rad/s)
+    double omega2;       // Secondary vortex frequency (rad/s)
+    double vexp;         // Expansion/orbital velocity (m/s)
+    double ffluid;       // Fluid frequency (Hz)
+    // Vacuum energy
+    double Evac_neb;     // Nebular vacuum energy density (J/m^3)
+    double Evac_ISM;     // ISM vacuum energy density (J/m^3)
+    double Delta_Evac;   // Vacuum energy differential (J/m^3)
+    // Wormhole
+    double b_throat;     // Wormhole throat radius (m)
+    double f_worm;       // Wormhole modulation factor
 };
 
-// Resonance parameters
+// Resonance parameters (frequency constants, NOT system-specific DPM params)
 struct ResonanceParams_S4 {
-    double I_dipole;     // Current (A)
-    double A_loop;       // Loop area (m^2)
-    double omega1;       // Frequency 1 (rad/s)
-    double omega2;       // Frequency 2 (rad/s)
-    double fTHz;         // THz frequency
-    double vexp;         // Expansion velocity (m/s)
-    double Evac;         // Vacuum energy density
-    double Evac_bar;     // Mean vacuum energy density
-    double delta_Evac;   // Vacuum energy difference
-    double Fsuper;       // Superconductive force
-    double UA;           // Aether coupling
-    double omega_i;      // Intermediate frequency
-    double k4;           // Ug4 coupling
-    double freact;       // Reactor frequency
-    double fquantum;     // Quantum frequency
-    double fAether;      // Aether frequency
-    double ffluid;       // Fluid frequency
-    double fTRZ;         // TRZ frequency
-    double fexp_factor;  // Expansion factor
-    double f_worm;       // Wormhole coupling
-    double b_throat;     // Wormhole throat radius (m)
+    double fDPM = 1e12;      // DPM intrinsic frequency (Hz)
+    double fTHz = 1e12;      // THz pipeline frequency
+    double Fsuper = 6.287e-19;    // Superconductive field factor
+    double UA_SCM = 10.0;    // Aether coupling [UA']:[SCm]
+    double omega_i = 1e-8;   // Intermediate frequency
+    double k4 = 1.0;         // Ug4 coupling
+    double freact = 1e10;    // Reactor frequency
+    double fquantum = 1.445e-17;  // Quantum frequency
+    double fAether = 1.576e-35;   // Aether frequency
+    double fosc = 4.57e14;   // Oscillatory (H-alpha) frequency
+    double fTRZ = 0.1;       // Time-reversal correction
 };
 
 // ============================================================================
@@ -150,41 +151,76 @@ static double compute_FU(const CelestialBody_S4& body, double r, double t) {
 }
 
 // ============================================================================
-// MUGE COMPRESSED COMPUTATION (9-term formula)
+// MUGE COMPRESSED COMPUTATION (DPM-driven, per canonical MUGE derivation)
+// Foundation: DPM (di-pseudo-monopole), NOT Newtonian GM/r²
+// Per 3b_MUGE_SMBH Sagittarius A Evolution.txt (May 11, 2025)
 // ============================================================================
 
+static double compute_compressed_base(const MUGESystem_S4& sys) {
+    // a_DPM = F_DPM * f_DPM * E_vac,neb / (c * V_sys)
+    // F_DPM = I * A * (omega1 - omega2)
+    if (sys.Vsys == 0.0) return 0.0;
+    double F_DPM = sys.I_current * sys.A_area * (sys.omega1 - sys.omega2);
+    double f_DPM = 1e12;  // DPM intrinsic frequency (THz)
+    return F_DPM * f_DPM * sys.Evac_neb / (c_S4 * sys.Vsys);
+}
+
 static double compute_compressed_MUGE(const MUGESystem_S4& sys) {
-    // Base: Newtonian gravity
-    double base = G_S4 * sys.M / (sys.r * sys.r);
+    // Base: DPM resonance (NOT Newtonian)
+    double aDPM = compute_compressed_base(sys);
 
-    // Expansion: Hubble factor
-    double expansion = 1.0 + H0_S4 * sys.t;
+    // Expansion modulation
+    double f_exp_mod = H0_S4 * sys.t / (2.0 * PI_S4);
+    double expansion = 1.0 + 2.0 * PI_S4 * f_exp_mod;
 
-    // Superconductive adjustment
-    double super_adj = 1.0 - sys.B / B_CRIT_S4;
+    // Superconductive frequency interaction
+    double F_super = 6.287e-19;
+    double f_super = F_super / (2.0 * PI_S4 * sys.Evac_neb);
+    double super_adj = 1.0 + f_super * sys.Evac_neb / (c_S4 * (1.0 + sys.B / sys.Bcrit));
 
-    // Envelope factor (neutral)
-    double env = sys.envelope;
+    // Adjusted base
+    double adjusted_base = aDPM * expansion * super_adj;
 
-    // Core product
-    double core = base * expansion * super_adj * env;
+    // THz pipeline cascade
+    double aTHz = 0.0;
+    if (sys.Evac_ISM != 0.0)
+        aTHz = 1e12 * sys.Evac_neb * sys.vexp * aDPM / (sys.Evac_ISM * c_S4);
 
-    // Ug sum (simplified: sum of Ug1-4 magnitudes)
-    double ug_sum = base * 0.01;  // ~1% correction from Ug terms
+    // Vacuum differential
+    double avac_diff = 0.0;
+    if (sys.Evac_neb != 0.0)
+        avac_diff = sys.Delta_Evac * sys.vexp * sys.vexp * aDPM / (sys.Evac_neb * c_S4 * c_S4);
 
-    // Cosmological constant term
-    double cosm = LAMBDA_COSM_S4 * c_S4 * c_S4 / 3.0;
+    // Aether resonance
+    double aaether = 10.0 * 1e-8 * 1e12 * aDPM * 1.1;
 
-    // Quantum uncertainty
-    double quantum = hbar_S4 / (sys.M * sys.r);
+    // Aether frequency (replaces cosmological constant)
+    double f_Aether = LAMBDA_COSM_S4 * c_S4 * c_S4 / (2.0 * PI_S4);
+    double cosm = 0.0;
+    if (sys.Evac_ISM != 0.0)
+        cosm = f_Aether * sys.Evac_neb / (sys.Evac_ISM * c_S4);
 
-    // Fluid coupling
-    double fluid = sys.rho_fluid * sys.V_sys * sys.g_local;
+    // Quantum wave frequency
+    double f_quantum = 1.445e-17;
+    double quantum = 0.0;
+    if (sys.Evac_ISM != 0.0)
+        quantum = f_quantum * sys.Evac_neb * aDPM / (sys.Evac_ISM * c_S4);
 
-    // Dark matter perturbation
-    double perturbation = G_S4 * sys.M_DM / (sys.r * sys.r) + sys.delta_rho * base;
+    // Fluid frequency interaction
+    double fluid = 0.0;
+    if (sys.Evac_ISM != 0.0)
+        fluid = sys.ffluid * sys.Evac_neb * sys.Vsys / (sys.Evac_ISM * c_S4);
 
-    return core + ug_sum + cosm + quantum + fluid + perturbation;
+    // Reactive dynamics (U_g4i) + expansion frequency
+    double Ereact = 1046.0 * std::exp(-0.0005 * sys.t);
+    double Ug4i = 0.0;
+    if (sys.Evac_neb != 0.0)
+        Ug4i = Ereact * 1e10 * aDPM / (sys.Evac_neb * c_S4);
+    double a_exp = 0.0;
+    if (sys.Evac_ISM != 0.0)
+        a_exp = 2.0 * PI_S4 * f_exp_mod * sys.Evac_neb * aDPM / (sys.Evac_ISM * c_S4);
+
+    return adjusted_base + aTHz + avac_diff + aaether + cosm + quantum + fluid + Ug4i + a_exp;
 }
 
 // ============================================================================
@@ -192,25 +228,25 @@ static double compute_compressed_MUGE(const MUGESystem_S4& sys) {
 // ============================================================================
 
 static double compute_resonance_MUGE(const MUGESystem_S4& sys, const ResonanceParams_S4& p) {
-    // Root: aDPM = FDPM * fDPM * Evac * c * V
-    double FDPM = p.I_dipole * p.A_loop;
-    double fDPM = p.omega1 * p.omega2 / (4.0 * PI_S4 * PI_S4);
-    double aDPM = FDPM * fDPM * p.Evac * c_S4 * sys.V_sys;
+    // Root: aDPM = F_DPM * f_DPM * E_vac,neb / (c * V_sys)
+    // F_DPM = I * A * (omega1 - omega2)  — uses system DPM params
+    double F_DPM = sys.I_current * sys.A_area * (sys.omega1 - sys.omega2);
+    double aDPM = F_DPM * p.fDPM * sys.Evac_neb / (c_S4 * sys.Vsys + 1e-300);
 
     // Cascade from aDPM
-    double aTHz = p.fTHz * p.Evac * p.vexp * aDPM / (p.Evac_bar * c_S4 + 1e-300);
-    double avac_diff = p.delta_Evac * p.vexp * p.vexp * aDPM / (p.Evac * c_S4 * c_S4 + 1e-300);
-    double asuper_freq = p.Fsuper * p.fTHz * aDPM / (p.Evac * c_S4 + 1e-300);
-    double aaether_res = p.UA * p.omega_i * p.fTHz * aDPM * (1.0 + p.fTRZ);
-    double Ug4i = p.k4 * p.Evac * p.freact * aDPM / (p.Evac * c_S4 + 1e-300);
-    double aquantum_freq = p.fquantum * p.Evac * aDPM / (p.Evac_bar * c_S4 + 1e-300);
-    double aAether_freq = p.fAether * p.Evac * aDPM / (p.Evac_bar * c_S4 + 1e-300);
-    double afluid_freq = p.ffluid * p.Evac * sys.V_sys / (p.Evac_bar * c_S4 + 1e-300);
-    double osc_term = 0.0;  // Simplified
+    double aTHz = p.fTHz * sys.Evac_neb * sys.vexp * aDPM / (sys.Evac_ISM * c_S4 + 1e-300);
+    double avac_diff = sys.Delta_Evac * sys.vexp * sys.vexp * aDPM / (sys.Evac_neb * c_S4 * c_S4 + 1e-300);
+    double asuper_freq = p.Fsuper * p.fTHz * aDPM / (sys.Evac_neb * c_S4 + 1e-300);
+    double aaether_res = p.UA_SCM * p.omega_i * p.fTHz * aDPM * (1.0 + p.fTRZ);
+    double Ug4i = p.k4 * sys.Evac_neb * p.freact * aDPM / (sys.Evac_neb * c_S4 + 1e-300);
+    double aquantum_freq = p.fquantum * sys.Evac_neb * aDPM / (sys.Evac_ISM * c_S4 + 1e-300);
+    double aAether_freq = p.fAether * sys.Evac_neb * aDPM / (sys.Evac_ISM * c_S4 + 1e-300);
+    double afluid_freq = sys.ffluid * sys.Evac_neb * sys.Vsys / (sys.Evac_ISM * c_S4 + 1e-300);
+    double osc_term = 0.0;
     double aexp_freq_val = 2.0 * PI_S4 * sys.H_z * sys.t;
-    double aexp_freq = aexp_freq_val * p.Evac * aDPM / (p.Evac_bar * c_S4 + 1e-300);
+    double aexp_freq = aexp_freq_val * sys.Evac_neb * aDPM / (sys.Evac_ISM * c_S4 + 1e-300);
     double fTRZ_pass = p.fTRZ;
-    double a_wormhole = p.f_worm * p.Evac / (p.b_throat * p.b_throat + sys.r * sys.r + 1e-300);
+    double a_wormhole = sys.f_worm * sys.Evac_neb / (sys.b_throat * sys.b_throat + sys.r * sys.r + 1e-300);
 
     return aDPM + aTHz + avac_diff + asuper_freq + aaether_res + Ug4i
          + aquantum_freq + aAether_freq + afluid_freq + osc_term
@@ -244,36 +280,47 @@ static const CelestialBody_S4 student_guide_body = {
     "StudentGuide", 1e53, 4.4e26, 1e-20, 2.725, 1e-20, 1e5, 1e-11, 1e-3, 1.0, 1e-18
 };
 
-// MUGE systems
+// MUGE systems — DPM-driven parameters matching MAIN_1_CoAnQi.cpp SOURCE4 system definitions
+// {M, r, t, B, Bcrit, Vsys, H_z, I_current, A_area, omega1, omega2, vexp, ffluid,
+//  Evac_neb, Evac_ISM, Delta_Evac, b_throat, f_worm}
 static const MUGESystem_S4 sgr1745_muge = {
-    2.78e30, 1e4, 0.0, 1e11, 1e10, 1e4, 1e12, H0_S4, 0.0, 0.0, 1.0
+    2.984e30, 1e4, 3.799e10, 1e10, 1e11, 4.189e12, H0_S4,
+    1e45, 7e22, 1e-8, 5e-9, 1e6, 1e12,
+    7.09e-36, 7.09e-37, 6.381e-36, 1.0, 1.0
 };
 static const MUGESystem_S4 sagA_muge = {
-    7.956e36, 1.18e10, 0.0, 1e-2, 1e5, 1e6, 1e10, H0_S4, 1e36, 0.01, 1.0
+    8.155e36, 1.2e11, 1.2e14, 1e8, 1e10, 3.552e45, H0_S4,
+    1e50, 1e25, 1e-6, 5e-7, 1e5, 1e11,
+    7.09e-36, 7.09e-37, 6.381e-36, 1e10, 0.5
 };
 static const MUGESystem_S4 tapestry_muge = {
-    1e34, 3.086e18, 0.0, 1e-5, 1e-20, 1e3, 1e-5, H0_S4, 1e33, 0.001, 1.0
+    1.989e35, 9.46e18, 3.156e13, 1e-8, 1e-6, 1e53, H0_S4,
+    1e42, 1e20, 1e-9, 5e-10, 1e5, 1e10,
+    7.09e-36, 7.09e-37, 6.381e-36, 1e15, 1.0
 };
 static const MUGESystem_S4 westerlund2_muge = {
-    5e34, 6.172e18, 0.0, 1e-4, 1e-19, 1e4, 1e-4, H0_S4, 1e34, 0.005, 1.0
+    1e37, 1.5e20, 1e13, 1e-6, 1e-5, 1e56, H0_S4,
+    1e44, 1e22, 1e-7, 5e-8, 1e6, 1e11,
+    7.09e-36, 7.09e-37, 6.381e-36, 1e16, 1.0
 };
 static const MUGESystem_S4 pillars_muge = {
-    1e35, 2.778e19, 0.0, 1e-6, 1e-21, 1e2, 1e-6, H0_S4, 1e34, 0.001, 1.0
+    1.989e32, 9.46e15, 1e12, 1e-9, 1e-8, 1e47, H0_S4,
+    1e40, 1e18, 1e-10, 5e-11, 1e4, 1e9,
+    7.09e-36, 7.09e-37, 6.381e-36, 1e13, 1.0
 };
 static const MUGESystem_S4 rings_muge = {
-    1e41, 1e22, 0.0, 1e-3, 1e3, 1e5, 1e8, H0_S4, 1e40, 0.01, 1.0
+    1.989e36, 1e22, 3.156e14, 1e-5, 1e-4, 1e60, H0_S4,
+    1e48, 1e24, 1e-5, 5e-6, 1e7, 1e12,
+    7.09e-36, 7.09e-37, 6.381e-36, 1e18, 0.8
 };
 static const MUGESystem_S4 student_guide_muge = {
-    1e53, 4.4e26, 0.0, 1e-20, 1e-27, 1e2, 1e-18, H0_S4, 1e52, 0.001, 1.0
+    1e53, 1e26, 4.35e17, 1e-12, 1e-10, 1e78, H0_S4,
+    1e60, 1e30, 1e-18, 5e-19, 3e5, 1e6,
+    7.09e-36, 7.09e-37, 6.381e-36, 1e25, 1.0
 };
 
-// Default resonance parameters
-static const ResonanceParams_S4 default_res_params = {
-    1.0, 1e-4, 2*PI_S4*1e3, 2*PI_S4*1e6, 1e12, 1e4,
-    1e-10, 1e-10, 1e-15, 1e-6, 1e-11, 2*PI_S4*1e9,
-    1e-20, 1e6, 2*PI_S4*1e15, 2*PI_S4*1e12, 2*PI_S4*1e8,
-    1e-3, 2*PI_S4*H0_S4, 1e-30, 1e3
-};
+// Default resonance parameters (frequency constants only)
+static const ResonanceParams_S4 default_res_params;
 
 // ============================================================================
 // VALIDATION FRAMEWORK
@@ -426,18 +473,18 @@ int main() {
     }
 
     // ---- Test 2: MUGE compressed component sanity ----
-    std::cout << "\n--- Test 2: MUGE Compressed Sanity ---" << std::endl;
+    std::cout << "\n--- Test 2: MUGE Compressed Sanity (DPM-based) ---" << std::endl;
     {
         double g_c = compute_compressed_MUGE(sgr1745_muge);
         report("Compressed(SGR1745) finite", std::isfinite(g_c));
-        report("Compressed(SGR1745) > 0", g_c > 0.0,
+        report("Compressed(SGR1745) nonzero", g_c != 0.0,
                "g=" + std::to_string(g_c));
 
-        // Newtonian baseline
-        double g_newton = G_S4 * sgr1745_muge.M / (sgr1745_muge.r * sgr1745_muge.r);
-        report("Compressed ~ Newtonian order",
-               std::abs(g_c) > g_newton * 0.01 && std::abs(g_c) < g_newton * 100.0,
-               "g_N=" + std::to_string(g_newton));
+        // DPM base should be the foundation
+        double aDPM = compute_compressed_base(sgr1745_muge);
+        report("DPM base(SGR1745) finite", std::isfinite(aDPM));
+        report("DPM base(SGR1745) nonzero", aDPM != 0.0,
+               "aDPM=" + std::to_string(aDPM));
     }
 
     // ---- Test 3: MUGE resonance sanity ----
@@ -509,41 +556,37 @@ int main() {
         double fu_far  = compute_FU(sgr1745_body, 1e6, 0.0);
         report("FU(r_near) > FU(r_far) for SGR1745", std::abs(fu_near) > std::abs(fu_far));
 
-        // MUGE compressed must give Newtonian at large r, weak B
-        MUGESystem_S4 weak = sagA_muge;
-        weak.B = 0.0;
-        weak.rho_fluid = 0.0;
-        weak.M_DM = 0.0;
-        weak.delta_rho = 0.0;
-        weak.t = 0.0;
-        double g_weak = compute_compressed_MUGE(weak);
-        double g_newton = G_S4 * weak.M / (weak.r * weak.r);
-        double pct_diff = std::abs((g_weak - g_newton) / g_newton * 100.0);
-        report("MUGE → Newtonian when corrections=0", pct_diff < 5.0,
-               "diff=" + std::to_string(pct_diff) + "%");
+        // MUGE compressed and resonance should share DPM foundation
+        // Both methods derive from F_DPM = I * A * (omega1 - omega2)
+        // They should produce same-sign results for same system
+        double g_comp = compute_compressed_MUGE(sagA_muge);
+        double g_res = compute_resonance_MUGE(sagA_muge, default_res_params);
+        bool same_sign = (g_comp > 0 && g_res > 0) || (g_comp < 0 && g_res < 0) || (g_comp == 0 && g_res == 0);
+        report("Compressed & Resonance same sign (DPM coherence)", same_sign,
+               "comp=" + std::to_string(g_comp) + " res=" + std::to_string(g_res));
     }
 
-    // ---- Test 6: Symmetry and scaling ----
-    std::cout << "\n--- Test 6: Symmetry and Scaling ---" << std::endl;
+    // ---- Test 6: DPM Scaling (frequency-driven, NOT Newtonian) ----
+    std::cout << "\n--- Test 6: DPM Scaling ---" << std::endl;
     {
-        // Doubling mass should roughly double Newtonian gravity
+        // Doubling vortical current (I) should scale DPM base proportionally
+        // F_DPM = I * A * (omega1 - omega2), so 2x I => 2x a_DPM
         MUGESystem_S4 sys1 = sagA_muge;
         MUGESystem_S4 sys2 = sagA_muge;
-        sys2.M *= 2.0;
-        sys2.M_DM *= 2.0;
-        double g1 = compute_compressed_MUGE(sys1);
-        double g2 = compute_compressed_MUGE(sys2);
-        double ratio = g2 / g1;
-        report("2x mass ≈ 2x gravity", ratio > 1.5 && ratio < 2.5,
+        sys2.I_current *= 2.0;
+        double base1 = compute_compressed_base(sys1);
+        double base2 = compute_compressed_base(sys2);
+        double ratio = (base1 != 0.0) ? base2 / base1 : 0.0;
+        report("2x vortical current => 2x DPM base", std::abs(ratio - 2.0) < 0.01,
                "ratio=" + std::to_string(ratio));
 
-        // Inverse square: 2x distance ≈ 1/4 gravity
+        // Doubling volume should halve DPM base (a_DPM ~ 1/V_sys)
         MUGESystem_S4 sys3 = sagA_muge;
-        sys3.r *= 2.0;
-        double g3 = compute_compressed_MUGE(sys3);
-        double isq_ratio = g1 / g3;
-        report("2x distance ≈ 4x weaker", isq_ratio > 2.0 && isq_ratio < 8.0,
-               "ratio=" + std::to_string(isq_ratio));
+        sys3.Vsys *= 2.0;
+        double base3 = compute_compressed_base(sys3);
+        double vol_ratio = (base3 != 0.0) ? base1 / base3 : 0.0;
+        report("2x volume => 0.5x DPM base", std::abs(vol_ratio - 2.0) < 0.01,
+               "ratio=" + std::to_string(vol_ratio));
     }
 
     // ---- Test 7: Edge cases ----
