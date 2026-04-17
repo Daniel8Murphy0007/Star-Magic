@@ -1039,6 +1039,13 @@ add_executable(source4_simulator
     source4.cpp
 )
 
+# Source4 Dual-Method Validation Test (standalone, no Wolfram/Qt dependency)
+# Tests UQFF vs MUGE cross-validation for all 7 astrophysical systems
+add_executable(test_source4_validation test_source4_validation.cpp)
+set_target_properties(test_source4_validation PROPERTIES AUTOMOC OFF AUTOUIC OFF AUTORCC OFF)
+enable_testing()
+add_test(NAME SOURCE4_DualMethodValidation COMMAND test_source4_validation)
+
 # Source5: UQFF Enhanced (45 PhysicsTerm classes across 4 files)
 # - source5_wolfram.cpp: 21 core classes (Ug1-3, Um, helpers, wrappers)
 # - source5_wolfram_compressed.cpp: 10 compressed components + wrapper

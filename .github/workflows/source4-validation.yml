@@ -1,0 +1,49 @@
+name: SOURCE4 Dual-Method Validation
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - 'MAIN_1_CoAnQi.cpp'
+      - 'source4*.cpp'
+      - 'test_source4_validation.cpp'
+      - 'CMakeLists.txt'
+  pull_request:
+    branches: [master]
+    paths:
+      - 'MAIN_1_CoAnQi.cpp'
+      - 'source4*.cpp'
+      - 'test_source4_validation.cpp'
+
+jobs:
+  validate:
+    runs-on: windows-latest
+    
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v4
+      with:
+        lfs: true
+
+    - name: Setup MSVC
+      uses: ilammy/msvc-dev-cmd@v1
+      with:
+        arch: x64
+
+    - name: Build Validation Test
+      run: |
+        cl /std:c++20 /EHsc /O2 /W3 test_source4_validation.cpp /Fe:test_source4_validation.exe
+      shell: cmd
+
+    - name: Run SOURCE4 Dual-Method Validation
+      run: |
+        .\test_source4_validation.exe
+      shell: pwsh
+
+    - name: Upload Validation Log
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: source4-validation-log
+        path: validation_log.txt
+        retention-days: 30
