@@ -340,7 +340,7 @@ Phys. Rev. Lett. 127, 255101.
 4. Lazarus A.J. et al. (2003). *Voyager 2 Solar Wind Termination Shock Crossing*. (Reference for
 termination shock context).
 5. Murphy D.T. (2026). *MUGE Resonance: 14-Mode Framework*. PAPER_091.
-6. Murphy D.T. (2026). *MUGE Compressed Gravity: Newtonian Base + 9 Corrections*. PAPER_090.
+6. Murphy D.T. (2026). *MUGE Compressed Gravity: DPM-emergent Base + 9 Corrections*. PAPER_090.
 7. `SolarWindHeliosheathCalculator`, `atomic_uqff_framework.py`  Star-Magic codebase.
 .Groups[1].Value   Empirical Proof EP-07: Parker Solar Probe Heliosheath – UQFF Ug2 Testbed
 

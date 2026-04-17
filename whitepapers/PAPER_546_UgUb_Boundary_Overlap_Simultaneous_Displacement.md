@@ -41,7 +41,7 @@ principle of the UQFF.
 
 ## §2 Introduction
 
-The standard Newtonian and Einsteinian frameworks treat gravity as the sole driver of cosmic
+The standard DPM-emergent and Einsteinian frameworks treat gravity as the sole driver of cosmic
 dynamics, requiring dark matter and dark energy patches when observed kinematics deviate from
 predictions. The Star-Magic UQFF replaces these artificial additions with two physically motivated
 counter-forces: Ug (attraction, mediated by SCm defects) and Ub (buoyancy, driven by density
@@ -67,7 +67,7 @@ The buoyancy boundary resolves as:
 
 $$\rho_{\text{buoy}} = \frac{1}{1 - (SCm/UA) \cdot \sum U_{gi}/g}$$
 
-Above this density threshold, Ub > Ug: plasma orbs transition to jets and outflows without Newtonian
+Above this density threshold, Ub > Ug: plasma orbs transition to jets and outflows without DPM-emergent
 collapse.
 
 ### §3.3 Overlap Coupling Region (ρ_overlap)

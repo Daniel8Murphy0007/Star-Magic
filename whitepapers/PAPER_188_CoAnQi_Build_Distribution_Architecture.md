@@ -272,7 +272,7 @@ set(CPACK_DEBIAN_PACKAGE_PRIORITY "optional")
 Reproducibility of UQFF numerical results requires bit-exact binary preservation
 across platforms. The compressed MUGE gravity formula executed at installation time:
 
-$$g_\text{MUGE}(r) = \frac{GM}{r^2}\left(1 + \sum_{k=1}^{9} \delta_kright), \quad \delta_text{Quantum} = \frac{\hbar \omega_g}{k_B T_\text{CMB}} \approx \frac{1.055\times10^{-34}\times7.3\times10^{-16}}{1.38\times10^{-23}\times2.725} \approx 2.05\times10^{-27}$$
+$$g_\text{MUGE}(r) = \underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)}\left(1 + \sum_{k=1}^{9} \delta_kright), \quad \delta_text{Quantum} = \frac{\hbar \omega_g}{k_B T_\text{CMB}} \approx \frac{1.055\times10^{-34}\times7.3\times10^{-16}}{1.38\times10^{-23}\times2.725} \approx 2.05\times10^{-27}$$
 
 **Numerical Fidelity Check:** The UPX-decompressed binary must reproduce MUGE
 gravity for Sagittarius A* within the double-precision limit. Verified on both

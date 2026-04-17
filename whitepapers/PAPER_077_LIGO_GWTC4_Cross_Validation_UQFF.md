@@ -59,7 +59,8 @@ Where M_f = final BH mass, a_f = dimensionless spin.
 
 ### UQFF Resonant Mode Enhancement
 
-$$f_{\rm UQFF} = f_{\rm QNM} \times (1 + g_R / g_{\rm Newton}) = f_{\rm QNM} \times (1 + 10^{-5} \times \frac{r^2}{GM})$$
+$$f_{\rm UQFF} = f_{\rm QNM} \times (1 + g_R / g_{
+m DPM}) = f_{\rm QNM} \times (1 + 10^{-5} \times \frac{r^2}{GM})$$
 
 For GW150914 (M_f = 65.3 M?, a_f = 0.69):
 - f_QNM = 251 Hz
@@ -234,7 +235,7 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 
 | Mode | Dominant Term | Primary Use Case |
 |------|--------------|-----------------|
-| **Compressed** | Ug_sum + Newtonian base | Isolated stellar/BH systems |
+| **Compressed** | Ug_sum + DPM-emergent base | Isolated stellar/BH systems |
 | **Resonant** | 5 resonance frequencies (aDPM, aTHz, …) | Multi-scale field interactions |
 | **Buoyant** | β_i × Ubi | Expanding nebulae, stellar winds |
 | **Superconductive** | Um × (1+1013·f_H) | Magnetars, SCm critical-density regime |

@@ -30,7 +30,7 @@ recession velocity exceeds the speed of light: `v_exp = H₀ × r_obs = 9.984×1
 dimensionless Superluminal Expansion Ratio `η_exp = v_exp/c = 3.328 > 1` is a new UQFF parameter
 encoding the cosmological property that the observable universe spans **3.328 Hubble lengths**
 (`r_obs = 3.328 × r_H`). The Hubble-expansion coupling factor at t_Hubble is `(1 + H₀ × t_H) =
-1.988` — a near-doubling of the Newtonian base over cosmic time. All 25 prior UQFF modules had
+1.988` — a near-doubling of the DPM-emergent base over cosmic time. All 25 prior UQFF modules had
 `η_exp << 1` (sub-luminal expansion).
 
 ---
@@ -90,7 +90,7 @@ Numerically:
 $$a_{EM} = \frac{1.602 \times 10^{-19} \times 9.984 \times 10^8 \times 10^{-15}}{1.673 \times 10^{-27}} \times 4.328 \times 10^{-12}$$
 $$= 95.59 \times 4.328 \times 10^{-12} = 4.136 \times 10^{-10} \text{ m/s}^2$$
 
-The EM term (4.136×10-10 m/s2) is **comparable to the Newtonian base** (3.447×10-10 m/s2) — another
+The EM term (4.136×10-10 m/s2) is **comparable to the DPM-emergent base** (3.447×10-10 m/s2) — another
 first for UQFF modules.
 
 ---
@@ -172,7 +172,7 @@ $$
 *Copyright Daniel T. Murphy — UQFF Whitepaper PAPER_297 — Session 84, March 17, 2026*
 
 
-**UQFF computed:** Canonical UQFF buoyancy parameter U_bi = ?[SSq]GM/rκ = 5.0e-4§0.57§6.67e-11M/r;
+**UQFF computed:** Canonical UQFF buoyancy parameter U_bi = ?[SSq]μ_s∇(M_s/r)κ = 5.0e-4§0.57§6.67e-11M/r;
 for solar parameters: U_bi,Sun = 5.7e-4§6.67e-11§1.99e30/(6.96e8) = 1.47e+2 m/s.
 
 

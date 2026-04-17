@@ -76,7 +76,7 @@ $$
 For the Compressed UQFF master equation, the gravitational coupling becomes:
 
 $$
-g_{\mathrm{UQFF}} = \frac{GM}{r^2} \cdot [1 + H_0 t] \cdot e^{-B/B_{\mathrm{crit}}} \cdot [1 +
+g_{\mathrm{UQFF}} = \underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)} \cdot [1 + H_0 t] \cdot e^{-B/B_{\mathrm{crit}}} \cdot [1 +
 F_{\mathrm{env}}] + \ldots
 $$
 
@@ -140,11 +140,11 @@ observational error bars.
 Combining all prior papers (PAPER_371–375):
 
 $$
-g(r,t) = \underbrace{\left[\frac{GM}{r^2}(1+H_0 t)\, e^{-B/B_{\mathrm{crit}}}(1+F_{\mathrm{env}})
+g(r,t) = \underbrace{\left[\underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)}(1+H_0 t)\, e^{-B/B_{\mathrm{crit}}}(1+F_{\mathrm{env}})
 + \sum U_{gi} + \frac{\Lambda c^2}{3} + \frac{\hbar}{\Delta x \Delta
 p}\intpsi^*\hat{H}\psi,dV\cdot\frac{2\pi}{t_H}
 + \rho_f V g +
-(M_{\mathrm{vis}}+M_{\mathrm{DM}})\left(\frac{\deltarho}{\rho}+\frac{3GM}{r^3}\right)\right]}_{\text{Compressed
+(M_{\mathrm{vis}}+M_{\mathrm{DM}})\left(\frac{\deltarho}{\rho}+\underbrace{\underbrace{\frac{3GM}{r^3}}_{\text{DPM tidal gradient}}\right)\right]}_{\text{Compressed
 UQFF (PAPER 372, Meissner exp)}}
 $$
 $$

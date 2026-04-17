@@ -155,8 +155,8 @@ Plain e-notation: tau = 1.20e-3 s, UQFF buoyancy correction: delta_P = 2.85e-4 �
 
 **Standard Model Comparison:** The Navier-Stokes fluid coupling follows the same
 continuum mechanics approach used in SPH codes (e.g., Gadget-4, AREPO) for
-galaxy formation simulations; the UQFF $F_U$ term replaces the standard Newtonian
-$-GM/r^2$ gravity with the full 26-layer UQFF expansion, providing $\sim 3\%$
+galaxy formation simulations; the UQFF $F_U$ term replaces the standard DPM-emergent
+$-μ_s∇(M_s/r)$ gravity with the full 26-layer UQFF expansion, providing $\sim 3\%$
 correction to bulk flow velocities at galactic-centre distances ($r < 10\,\text{pc}$).
 
 **Testable Prediction:** GPU-accelerated UQFF evaluation on RTX-class hardware

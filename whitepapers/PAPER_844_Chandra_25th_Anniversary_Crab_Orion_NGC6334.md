@@ -43,7 +43,7 @@ observations where integrated SMBH contributions create an extreme gravitational
     M = 10^38 kg (integrated central mass from 25 Chandra targets)
     r = 3.09e22 m (effective radius)
     
-    g_base = GM/r^2 = 6.674e-11 * 1e38 / (3.09e22)^2 = 6.99e-18 m/s^2
+    g_base = μ_s∇(M_s/r) = 6.674e-11 * 1e38 / (3.09e22)^2 = 6.99e-18 m/s^2
     
     F_U_Bi = -F_0 + momentum + gravity + rho_vac + F_LENR
            = -1.83e71 + ... + 6.17e37

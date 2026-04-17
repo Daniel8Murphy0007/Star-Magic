@@ -122,7 +122,7 @@ conceptual confusion in undergraduate mechanics.
 | $\lambda_3 = 2P/3$ | Radial destructive eigenvalue |
 | $\lambda_{1,2} = P/3$ | Tangential stable eigenvalues |
 | $(dP/dt)_\text{UQFF} = P_\text{order}(v/c)^2$ | Pulsar UQFF correction |
-| $v_\text{circular} = \sqrt{GM/r}$ | Orbital equilibrium speed |
+| $v_\text{circular} = \sqrt{μ_s∇(M_s/r)}$ | Orbital equilibrium speed |
 
 ---
 

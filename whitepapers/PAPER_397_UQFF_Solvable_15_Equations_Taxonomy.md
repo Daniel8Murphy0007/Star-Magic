@@ -61,7 +61,7 @@ enumerated in the Grok thread KB section and cross-validated against CERN/arXiv 
 | 8 | Heisenberg Uncertainty Principle ($\Delta x\Delta p \geq \hbar/2$) | $a_{\text{quantum,cosm}} = (\hbar/\Delta x\Delta p)\cdotpsi^2\cdot(2\pi/t_H)$ | compressed MUGE quantum term |
 | 9 | Hubble Law ($v = H_0 d$) | $a_{\text{exp,freq}} \propto H(z)\cdot a_{\text{DPM}}\cdot e^{H_0 t_{\text{sys}}}$ | Hubble expansion resonance |
 | 10 | Fluid Dynamics continuity ($\partial\rho/\partial t + \nabla\cdot(\rhovec{v})=0$) | $g_{\text{fluid}} = \rho_{\text{fluid}}\cdot V_{\text{sys}}\cdot g_{\text{local}}$ | compressed MUGE fluid term |
-| 11 | Density Perturbations ($\deltarho/\rho$) | $g_{\text{pert}} = M\cdot(\deltarho/\rho + 3GM/r^3)$ | compressed MUGE perturbation |
+| 11 | Density Perturbations ($\deltarho/\rho$) | $g_{\text{pert}} = M\cdot(\deltarho/\rho + 3μ_s∇(M_s/r)/r)$ | compressed MUGE perturbation |
 | 12 | Riemann Zeta / Oscillatory ($\zeta(s)$) | $a_{\text{osc}} = A_{\text{osc}}\cos(\omega_{\text{osc}}t)$ | $a_{\text{osc}}$ term ($f_{\text{osc}} = 4.57\times10^{14}$ Hz) |
 | 13 | P vs NP Complexity ($P=?NP$) | UQFF simulation algorithm uses 26D polynomial ($\phicdot(2\pi)^{n/6}$) | PImath key (PAPER_398) |
 | 14 | Lorentz Force ($\vec{F}=q(\vec{E}+\vec{v}\timesvec{B})$) | $U_m$ magnetic string tension: $\mu_j B_j^2 R_s^3/r_j$ | $U_m$ magnetic coupling |
@@ -73,14 +73,14 @@ enumerated in the Grok thread KB section and cross-validated against CERN/arXiv 
 
 ### 3.1 Newton → Ug1 (UQFF Magnetic Dipole Gravity)
 
-Classical: $\vec{g} = -GM/r^2$
+Classical: $\vec{g} = -μ_s∇(M_s/r)$
 
 UQFF: $U_{g1} = k_1\mu_s(t)\cdot\nabla M_s/r\cdot e^{-\alpha t}\cos(\pi t_n)\cdotdelta_{\text{def}}$
 
 Connection: At $t=0$, $r=R_b$, $\delta_{\text{def}}=1$, $\cos(0)=1$:
 $$U_{g1} \rightarrow k_1\cdot B_s R_s^3 \cdot GM_s/R_s^2 = k_1 B_s R_s GM_s$$
 This is Newton's gravity multiplied by the magnetic dipole amplitude — UQFF adds
-a magnetic correction to Newtonian gravity.
+a magnetic correction to DPM-emergent gravity.
 
 ### 3.2 Navier-Stokes → Fluid MUGE (FluidSolver)
 

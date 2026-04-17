@@ -71,7 +71,7 @@ This is the UQFF SN Ia additive pipeline term (WOLFRAM_TERM: SPIRAL_SN_TENSION).
 
 Compared to the bare gravitational acceleration at 30 kpc:
 
-$$g_{\rm base} = \frac{GM}{r^2} = \frac{6.6743\times10^{-11} \times 1.989\times10^{41}}{(9.258\times10^{20})^2} = 1.549\times10^{-11}\,\text{m/s}^2$$
+$$g_{\rm base} = \underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)} = \frac{6.6743\times10^{-11} \times 1.989\times10^{41}}{(9.258\times10^{20})^2} = 1.549\times10^{-11}\,\text{m/s}^2$$
 
 $$\eta_{\rm SN} = \frac{a_{\rm SN}}{g_{\rm base}} = \frac{3.096\times10^5}{1.549\times10^{-11}} = \boxed{2.0\times10^{16}}$$
 

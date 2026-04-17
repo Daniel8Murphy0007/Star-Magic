@@ -161,7 +161,7 @@ $$
 \begin{aligned}
   & F_UBii,jetvel = F_rel × (v_j ˜ v_K·(r_A/r_0)^{1/2} / E_LEP) \\
   & × Q_wave × (B/v(4p?)) × (1+t/t_A) \\
-  & v_K = v(GM/r_0)  (Keplerian velocity at footpoint, r_0 = 1–10 AU) \\
+  & v_K = v(μ_s∇(M_s/r))  (Keplerian velocity at footpoint, r_0 = 1–10 AU) \\
   & r_A = Alfvén radius (10–50 AU, from POETS protostellar data) \\
   & Source: \text{BB\_C\_Equations} item 1096, 1272
 \end{aligned}

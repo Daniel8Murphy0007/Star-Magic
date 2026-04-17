@@ -41,7 +41,7 @@ wavefunction terms, and UQFF vacuum oscillations.
 
 ## 2. Master Universal Gravity Equation
 
-$$g_{NGC1316}(r,t) = \frac{G M(t)}{r(t)^2}\left[1+H(z)\right]\left[1-\frac{B}{B_{crit}}\right]\left[1+F_{env}\right] + \sum_j U_{g\_j} + U_i + \frac{\Lambda c^2}{3} + \mathcal{H}\Psi + \rho_{dust}Vg_0 + (M_{vis}+M_{DM})\left(\frac{\deltarho}{\rho}+\frac{3GM}{r^3}\right)$$
+$$g_{NGC1316}(r,t) = \frac{G M(t)}{r(t)^2}\left[1+H(z)\right]\left[1-\frac{B}{B_{crit}}\right]\left[1+F_{env}\right] + \sum_j U_{g\_j} + U_i + \frac{\Lambda c^2}{3} + \mathcal{H}\Psi + \rho_{dust}Vg_0 + (M_{vis}+M_{DM})\left(\frac{\deltarho}{\rho}+\underbrace{\underbrace{\frac{3GM}{r^3}}_{\text{DPM tidal gradient}}\right)$$
 
 ### 2.1 Dynamic Mass
 $$M(t) = M_{vis} + M_{DM} + M_{spiral}\,e^{-t/\tau},\quad \tau = 10^9\,\text{yr}$$

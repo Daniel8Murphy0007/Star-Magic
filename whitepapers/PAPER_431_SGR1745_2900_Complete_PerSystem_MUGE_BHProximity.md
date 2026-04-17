@@ -73,11 +73,11 @@ $$g_\text{cum}(t) = \frac{M_\text{mag}(t)}{M \cdot r^2} = \frac{L_0 \tau_text{de
 
 $$\boxed{g_\text{SGR1745}(r,t) = T_1 + T_2 + T_3 + T_4 + T_5 + T_6 + T_7 + T_8 + T_9 + T_{10}}$$
 
-**Term 1 — Newtonian base + H(z) + SC correction:**
+**Term 1 — DPM-emergent base + H(z) + SC correction:**
 $$T_1 = \frac{G M}{r^2} (1 + H_z t)\left(1 - \frac{B(t)}{B_\text{crit}}\right)$$
 
 **Term 2 — UQFF Ug1 + Ug4 co-sum with f_sc:**
-$$T_2 = \left(\frac{GM}{r^2} + \frac{GM}{r^2}\left(1 - \frac{B(t)}{B_\text{crit}}\right)\right)(1 + f_\text{TRZ})$$
+$$T_2 = \left(\underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)} + \underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)}\left(1 - \frac{B(t)}{B_\text{crit}}\right)\right)(1 + f_\text{TRZ})$$
 
 **Term 3 — Sgr A* BH proximity gravity:**
 $$T_3 = \frac{G M_\text{BH}}{r_\text{BH}^2} = \frac{6.674 \times 10^{-11} \times 8.553 \times 10^{36}}{(3.086 \times 10^{15})^2} \approx 5.984 \times 10^{-5} \text{ m/s}^2$$
@@ -95,7 +95,7 @@ $$T_6 = \frac{q (v \times B(t))}{m_p} \cdot \left(1 + \frac{\rho_text{UA}}{\rho_
 $$T_7 \approx 0 \quad [\text{internal; negligible}]$$
 
 **Term 8 — Dark matter density perturbation:**
-$$T_8 = (M + M_\text{DM}) \frac{\deltarho/\rho + 3GM/r^3}{r^2} \quad [\text{mass-scale term}]$$
+$$T_8 = (M + M_\text{DM}) \frac{\deltarho/\rho + 3μ_s∇(M_s/r)/r}{r^2} \quad [\text{mass-scale term}]$$
 
 **Term 9 — Magnetic energy (effective gravity from outburst):**
 $$T_9 = g_\text{cum}(t) = \frac{L_0 \tau_text{dec}(1 - e^{-t/\tau_text{dec}})}{M^2 \cdot r^2}$$

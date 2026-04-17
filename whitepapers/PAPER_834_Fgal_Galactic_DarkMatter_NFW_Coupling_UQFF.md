@@ -162,7 +162,7 @@ The galaxy rotation curve problem: observed v(r) = constant instead of Keplerian
 
 UQFF addresses this through the D_term:
 $$
-D_term = (M_vis + M_DM) * (δρ/ρ + 3GM/r3)
+D_term = (M_vis + M_DM) * (δρ/ρ + 3μ_s∇(M_s/r)/r)
 $$
 
 Combined with F_gal explicitly encoding the NFW dark matter contribution, UQFF provides two

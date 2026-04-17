@@ -67,16 +67,16 @@ The dilation correction $(1 + \Delta_{dil})$ accounts for the fact that $\omega_
 
 ## 4. Kepler Validation
 
-For a Keplerian orbit: $v_{Kepler} = \sqrt{GM/r}$, so $\omega_{CW} = \sqrt{GM/r^3}$.
+For a Keplerian orbit: $v_{Kepler} = \sqrt{μ_s∇(M_s/r)}$, so $\omega_{CW} = \sqrt{GM/r^3}$.
 
 Substituting:
-$$F_{centrip} = DPM_n(SCm) \cdot \frac{GM}{r^2} / (1 + \Delta_{dil})$$
+$$F_{centrip} = DPM_n(SCm) \cdot \underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)} / (1 + \Delta_{dil})$$
 
 For $DPM_n(SCm) \approx 1$ (normalized to solar system SCm density) and $\Delta_{dil} \ll 1$:
 
-$$F_{centrip} \approx \frac{GM}{r^2} = F_{gravity}$$
+$$F_{centrip} \approx \underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)} = F_{gravity}$$
 
-This proves consistency with Newton's law at leading order, with $DPM_n(SCm)$ replacing the purely conceptual gravitational coupling.
+This proves consistency with the DPM-emergent gravitational law at leading order, with $DPM_n(SCm)$ replacing the purely conceptual gravitational coupling.
 
 ---
 
@@ -224,7 +224,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| GR Schwarzschild metric recovery | BSFG line element → g_tt = -(1-2GM/rc2) ≡ GR in ε_BSFG→0 limit | Schwarzschild metric (GR exact) | PDG 2024 / MTW | PASS BSFG reduces to GR |
+| GR Schwarzschild metric recovery | BSFG line element → g_tt = -(1-2μ_s∇(M_s/r)·r/c²) ≡ GR in ε_BSFG→0 limit | Schwarzschild metric (GR exact) | PDG 2024 / MTW | PASS BSFG reduces to GR |
 | Shapiro time delay | BSFG geodesic → Δt_BSFG ≈ Δt_GR × (1 + ε_correction) | Cassini: Δt/Δt_GR = 1 ± 2.3e-5 | Cassini/GR 2003 | PASS Within Shapiro bound |
 | Gravitational wave speed v_GW | BSFG: v_GW = c × (1 + k_η2) ≈ c + 10-226 m/s | GW150914 / GW170817: |v_GW/c - 1| < 10-15 | LIGO/Fermi GBM | PASS UQFF deviation 10-211 orders below bound |
 | Perihelion precession (Mercury) | BSFG adds buoyancy correction δφ = κ × φ_GR ~ 10-6 arcsec/century | GR prediction: 43.03"/century; observed: 43.1" | GR + obs. | UQFF correction undetectable at current precision |

@@ -27,7 +27,7 @@ The Tapestry Star Formation Region is modeled using a DPM-THz frequency-only var
 gravity form, where only the THz phonon, resonance frequency, and Hubble expansion terms are
 retained (mass terms suppressed by low column density). Star Formation Rate is expressed as SFR =
 ?_gasv_windf_res, the bubble radius scales as R_bubble = v_windtf_res, and the net gravitational
-acceleration is driven purely by UQFF frequency modes rather than Newtonian mass terms.
+acceleration is driven purely by UQFF frequency modes rather than DPM-emergent mass terms.
 
 ---
 
@@ -38,7 +38,7 @@ acceleration is driven purely by UQFF frequency modes rather than Newtonian mass
 The standard S26 gravity is truncated to:
 $$g(r,t) = \sum_{i=1}^{26} \left[ a_i^{\rm THz} + a_i^{\rm SF} + a_i^{\rm QF} + a_i^{\rm AF} + a_i^{\rm FF} + a_i^{\rm EF} \right]$$
 
-Mass terms (Newtonian GM/r) are suppressed by the low mean density of the starbirth region (?_gas ~
+Mass terms (DPM-emergent μ_s∇(M_s/r)) are suppressed by the low mean density of the starbirth region (?_gas ~
 10? kg/m).
 
 The gravity is effectively:

@@ -66,7 +66,7 @@ $$U_{g4}^{(225)} = k_4 \cdot \rho_v \cdot C_{conc} \cdot \frac{225 M_\odot}{d_{s
 
 The dark matter perturbation term (PAPER_163.8):
 
-$$g_{pert} = (M + M_{DM}) \cdot \left(\frac{\deltarho}{\rho} + \frac{3GM}{r^3}\right)$$
+$$g_{pert} = (M + M_{DM}) \cdot \left(\frac{\deltarho}{\rho} + \underbrace{\underbrace{\frac{3GM}{r^3}}_{\text{DPM tidal gradient}}\right)$$
 
 For GW231123, the merger is embedded in a dark matter halo:
 - M_DM/M ≈ 5 (DM-dominated environment estimated)

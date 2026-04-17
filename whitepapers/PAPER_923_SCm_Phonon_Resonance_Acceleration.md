@@ -51,7 +51,7 @@ $$
 $$
 \begin{aligned}
   & VDS: rho_vac(omega) = rho_0 * Phi_{1.25THz}(omega) / Phi_0 \\
-  & DVP: p_n = Product_{k=1}^{n} (1 + \text{a\_res\_k} / g_Newton)  (n = 1..26) \\
+  & DVP: p_n = Product_{k=1}^{n} (1 + \text{a\_res\_k} / g_DPM)  (n = 1..26) \\
   & BH: h_B = sum_{n=1}^{26} cos(2*pi*n*omega/omega_SCm) * Phi_n
 \end{aligned}
 $$

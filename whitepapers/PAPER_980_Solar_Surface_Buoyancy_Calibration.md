@@ -16,9 +16,9 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 ## Abstract
 
-The UQFF master buoyancy equation $F_{U,\text{Bi}_i}$ must reproduce known observational benchmarks before deployment. We present the solar surface calibration test: at $r = R_\odot = 6.96 \times 10^8$ m, Newtonian gravity yields $g_N = 274.03$ m/s2 consistent with the IAU standard. The 6-layer buoyancy architecture modifies this by $\lesssim 1\%$, confirming the "gravity-first" regime at short range. At $r = 1$ AU, the buoyancy term dominates ($F_{U,\text{Bi}_i} < 0$), consistent with solar wind acceleration and heliospheric expansion.
+The UQFF master buoyancy equation $F_{U,\text{Bi}_i}$ must reproduce known observational benchmarks before deployment. We present the solar surface calibration test: at $r = R_\odot = 6.96 \times 10^8$ m, DPM-emergent gravity yields $g_N = 274.03$ m/s2 consistent with the IAU standard. The 6-layer buoyancy architecture modifies this by $\lesssim 1\%$, confirming the "gravity-first" regime at short range. At $r = 1$ AU, the buoyancy term dominates ($F_{U,\text{Bi}_i} < 0$), consistent with solar wind acceleration and heliospheric expansion.
 
-## 1. Newtonian Benchmark
+## 1. DPM-emergent Benchmark
 
 $$g_N = \frac{GM_\odot}{R_\odot^2} = \frac{6.674 \times 10^{-11} \times 1.989 \times 10^{30}}{(6.96 \times 10^8)^2} = 274.03 \text{ m/s}^2$$
 
@@ -87,7 +87,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 
 ## §A. Cosmogenesis-Linked Lagrangian
 
-At the solar surface, the Lagrangian reduces to the Newtonian limit:
+At the solar surface, the Lagrangian reduces to the DPM-emergent limit:
 $$\mathcal{L} \to \frac{1}{2}m\dot{r}^2 + \frac{GMm}{r}$$
 with buoyancy perturbation $\deltamathcal{L}_b = -U_b \cdot m \cdot r$.
 

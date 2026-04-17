@@ -130,7 +130,7 @@ $$\boxed{P \neq NP \text{ under UQFF computational irreducibility}}$$
 | #121 | ThreeDIPONonLinearProgressionCalculator | 526 | Non-repeating 3-helix braid |
 | #122 | PymanderSphereOrderFromChaosCalculator | 527 | $P_\text{order} = e^{-E/F}/Z$ |
 | #123 | UQFFCompSpectralMatrixEigenvalueCalculator | 528 | $\lambda_text{stable}=P/3, \lambda_text{destruct}=2P/3$ |
-| #124 | NavierStokesUQFFEncompassmentCalculator | 529 | NS regularity: $u \leq \sqrt{GM/r}$ |
+| #124 | NavierStokesUQFFEncompassmentCalculator | 529 | NS regularity: $u \leq \sqrt{μ_s∇(M_s/r)}$ |
 | #125 | Session142MillenniumEquationsHubCalculator | 530 | YM $\Delta>0$; Riemann; P≠NP |
 
 ---

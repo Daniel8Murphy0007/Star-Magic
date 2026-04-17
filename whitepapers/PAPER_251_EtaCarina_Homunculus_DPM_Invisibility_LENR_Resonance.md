@@ -45,7 +45,7 @@ the final buoyancy result.
 
 This DPM invisibility occurs because F_LENR = k_LENR·(?_LENR/?0)2 is independent of B0. At ?0 =
 10?12, F_LENR ˜ 6.17 × 103? N overwhelms F_res by ~3 orders regardless of B0. The force hierarchy is
-LENR > neutron > Newtonian » DPM_resonance in this frequency regime — a fundamental discovery about
+LENR > neutron > DPM-emergent » DPM_resonance in this frequency regime — a fundamental discovery about
 the structure of UQFF physics.
 
 ---
@@ -112,9 +112,9 @@ physically reasonable B0.**
 $$
 \begin{aligned}
   & Force hierarchy at ?0 = 10?12: \\
-  & F_LENR   ˜ 6.17 × 103? N   [dominant — 10^45 × Newtonian] \\
+  & F_LENR   ˜ 6.17 × 103? N   [dominant — 10^45 × DPM-emergent] \\
   & F_neutron ˜ 106 N           [knot/coherence stabilisation] \\
-  & F_Newt   ˜ GM/r2·|x2| ˜ O(few) N \\
+  & F_Newt   ˜ μ_s∇(M_s/r)·|x2| ˜ O(few) N \\
   & F_res    «  F_LENR           [DPM invisible regardless of B0] \\
   & F_rel    «  F_LENR           [relativistic sub-dominant]
 \end{aligned}
@@ -143,7 +143,7 @@ for all physically observed magnetic fields B0 = 102 T. The ratio `F_res/F_LENR 
 / (k_LENR · (?_LENR/?0)2)` is bounded above by ~10?28 for B0 = 10-4 T, ?0 = 10?12, confirming that
 **magnetic field strength is invisible to UQFF buoyancy** in this frequency regime.
 
-Corollary: In this regime the UQFF force hierarchy is LENR > neutron > Newtonian » DPM > DE >
+Corollary: In this regime the UQFF force hierarchy is LENR > neutron > DPM-emergent » DPM > DE >
 relativistic. Only LENR and neutron physics materially determine F_U_Bi.
 
 ---

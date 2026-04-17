@@ -93,14 +93,14 @@ $$\boxed{g_\text{N1275}(r,t) = T_1 + T_2(1+F) + T_3 + T_4 + T_5 + T_6 + T_7 + T_
 
 where $T_2$ includes the filament coupling, $T_5$ includes $g_\text{BH}$, and $T_7$ includes $T_\text{cool}$, with $B(t)$ entering $T_1$ and $T_2$ via the $(1 - B(t)/B_\text{crit})$ factor.
 
-**T1 — Newtonian + H(z)t + B(t):**
-$$T_1 = \frac{GM}{r^2}(1+H(z)t)\left(1 - \frac{B(t)}{B_\text{crit}}\right)$$
-$$\frac{GM}{r^2} = \frac{6.674\times10^{-11}\times1.989\times10^{41}}{(1.892\times10^{21})^2} = \frac{1.327\times10^{31}}{3.580\times10^{42}} \approx 3.71\times10^{-12} \, \text{m/s}^2$$
+**T1 — DPM-emergent + H(z)t + B(t):**
+$$T_1 = \underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)}(1+H(z)t)\left(1 - \frac{B(t)}{B_\text{crit}}\right)$$
+$$\underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)} = \frac{6.674\times10^{-11}\times1.989\times10^{41}}{(1.892\times10^{21})^2} = \frac{1.327\times10^{31}}{3.580\times10^{42}} \approx 3.71\times10^{-12} \, \text{m/s}^2$$
 At $t=0$: $B(0)/B_\text{crit} = 5\times10^{-9}/4.4\times10^{13} = 1.14\times10^{-22} \approx 0$  
 $T_1(t=0) \approx 3.71\times10^{-12} \times 1.0 \approx 3.71\times10^{-12} \, \text{m/s}^2$
 
 **T2 — UQFF Ug with filament coupling:**
-$$T_2 = 2\times\frac{GM}{r^2}\times f_\text{TRZ}\times(1+F(t)) \approx 2\times3.71\times10^{-12}\times1.1\times1.1 = 8.97\times10^{-12} \, \text{m/s}^2 \text{ at } t=0$$
+$$T_2 = 2\times\underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)}\times f_\text{TRZ}\times(1+F(t)) \approx 2\times3.71\times10^{-12}\times1.1\times1.1 = 8.97\times10^{-12} \, \text{m/s}^2 \text{ at } t=0$$
 
 **T5 — SMBH proximity:**
 $$T_5 \supset g_\text{BH} = 1.062\times10^{-7} \, \text{m/s}^2$$
@@ -122,7 +122,7 @@ At $t = 0$ (AGN active, filaments entrained):
 | $T_5$ SMBH proximity | $1.062 \times 10^{-7}$ | **91.8%** |
 | $T_9$ AGN wind | $2.11 \times 10^{-9}$ | 1.8% |
 | $T_2$ UQFF ×(1+F) | $8.97 \times 10^{-12}$ | 0.008% |
-| $T_1$ Newtonian | $3.71 \times 10^{-12}$ | 0.003% |
+| $T_1$ DPM-emergent | $3.71 \times 10^{-12}$ | 0.003% |
 | $T_7$ Cooling flow | $4.76 \times 10^{-14}$ | $<$0.001% |
 
 $$\boxed{g_\text{N1275}(t=0) \approx 1.062\times10^{-7} \, \text{m/s}^2} \quad [\text{SMBH proximity dominant}]$$

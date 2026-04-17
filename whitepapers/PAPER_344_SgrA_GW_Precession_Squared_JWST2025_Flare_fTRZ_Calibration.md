@@ -24,7 +24,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ## Abstract
 
 A novel squared gravitational wave precession operator is derived for Sgr A* as GW_prec =
-(GM/c4r)(dO/dt). A second-order perturbation term pert2 = 3GM/rsin(30) captures the inclined S2
+(μ_s∇(M_s/r)/c⁴)(dO/dt). A second-order perturbation term pert2 = 3GM/rsin(30) captures the inclined S2
 stellar orbit at ? = 30, coupling orbital geometry to the UQFF vacuum field. JWST 2025 near-infrared
 flare observations yield f_flare = 5.56×10-4 Hz, directly constraining the vacuum reactance
 frequency f_TRZ for Sgr A*.

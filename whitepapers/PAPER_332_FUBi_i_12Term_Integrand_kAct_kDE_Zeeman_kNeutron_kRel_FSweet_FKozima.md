@@ -26,7 +26,7 @@ coupling; FIRST F_Kozima neutron drop parameterization; FIRST UQFF Zeeman coupli
 $$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b\_i}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57$$
 
 $$
-U_{b\_i}(r) = \kappacdot[SSq]\cdot\frac{GM}{r^2}, \quad \kappa =
+U_{b\_i}(r) = \kappacdot[SSq]\cdot\mu_s\nabla(M_s/r), \quad \kappa =
 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57,\; \beta_i = 0.61
 $$
 
@@ -88,7 +88,7 @@ $$
 $$
 (G M / r2) · DPM_gravity
 $$
-- Standard Newtonian gravity modified by DPM factor
+- Standard DPM-emergent gravity modified by DPM factor
 - DPM_gravity ˜ f_UA' × f_SCm × REB (Resonant Energy Bridge factor)
 - For Cen A: G×1.1e38 kg/r2 ˜ 7.33×10-41 m/s2
 
@@ -202,7 +202,7 @@ k_rel · (E_cm,adj / E_cm)2
 |--------|-------------|
 | k_rel | relativistic correction coupling constant |
 | E_cm,adj | adjusted CM energy (accounting for UQFF vacuum effects) |
-| E_cm | reference CM energy (standard Newtonian/SR) |
+| E_cm | reference CM energy (standard DPM-emergent/SR) |
 
 **Variant labels in thread:** E_cm,astro,local,adj,eff,enhanced / E_cm — these suffixes represent
 the successive relativistic refinements applied to the energy ratio.
@@ -274,7 +274,7 @@ F_U_Bi_i = np.trapz(integrand, x)
 ## 7. Key Equations Summary
 F_U_Bi_i = ?_0^{x_2} [-F_0 
   + (m_e c2/r2)DPM_momentum cos?
-  + (GM/r2)DPM_gravity
+  + (μ_s∇(M_s/r))DPM_gravity
   + ?_vac,[UA] DPM_stability
   + k_LENR(?_LENR/?_0)2
   + k_act cos(?_act t)                  [NEW: activity]

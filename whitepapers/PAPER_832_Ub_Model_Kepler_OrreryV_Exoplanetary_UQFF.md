@@ -46,7 +46,7 @@ $$
   & + (Lambdac^2/3) \\
   & + (hbar/sqrt(DeltaxDeltap)) * integral(psi_total H psi_total dV) * (2pi/t_Hubble) \\
   & + rho_fluid*V*g \\
-  & + (M_vis + M_DM) * (deltarho/rho + 3GM/r^3)
+  & + (M_vis + M_DM) * (deltarho/rho + 3μ_s∇(M_s/r)/r)
 \end{aligned}
 $$
 
@@ -73,7 +73,7 @@ $$
   & + (Lambdac^2/3) \\
   & + (hbar/sqrt(DeltaxDeltap)) * integral(psi_total H psi_total dV) * (2pi/t_Hubble) \\
   & + rho_fluid*V*g \\
-  & + (M_vis + M_DM) * (deltarho/rho + 3GM/r^3)
+  & + (M_vis + M_DM) * (deltarho/rho + 3μ_s∇(M_s/r)/r)
 \end{aligned}
 $$
 

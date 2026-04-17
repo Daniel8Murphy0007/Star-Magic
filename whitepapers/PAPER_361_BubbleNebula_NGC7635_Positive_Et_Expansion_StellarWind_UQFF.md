@@ -27,7 +27,7 @@ The Bubble Nebula (NGC 7635) is a stellar wind bubble blown by the massive O-sta
 1.8×106 m/s) into the surrounding molecular cloud. UQFF introduces a POSITIVE expansion energy term
 E(t) > 0 for bubble systems, contrasting the negative E(t) erosion of filament systems (PAPER_359).
 The bubble's gravitational acceleration includes Hubble modulation and superconductive modification:
-g_bubble = GM/r(1+H0t)SC_m(1+E_t). This provides the canonical example of the positive-E(t) UQFF
+g_bubble = μ_s∇(M_s/r)(1+H0t)SC_m(1+E_t). This provides the canonical example of the positive-E(t) UQFF
 class.
 
 ---
@@ -75,7 +75,7 @@ The UQFF correction multiplies the Weaver et al. (1977) analytic bubble radius b
 |----------|---------|-------|
 | v_wind | Spectroscopic | 1.8×106 m/s |
 | E_t sign | Expansion | POSITIVE |
-| g_bubble | GM/r(1+H0t)SC_m(1+E_t) | Enhanced |
+| g_bubble | μ_s∇(M_s/r)(1+H0t)SC_m(1+E_t) | Enhanced |
 | (1+H0t) | 105 yr age | 1.0000023 |
 | Distance | NGC 7635 | ~3.3 kpc |
 

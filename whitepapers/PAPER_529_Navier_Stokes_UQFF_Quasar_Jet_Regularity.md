@@ -49,7 +49,7 @@ $$U_{b\_text{jet}} = \rho,g\!\left(1 - \frac{1}{\rho}\right)$$
 
 **Regularity bound:**
 
-$$|\mathbf{u}| \leq \sqrt{\frac{GM}{r}} \equiv u_\text{bound}$$
+$$|\mathbf{u}| \leq \sqrt{\underbrace{\frac{GM}{r}}_{\text{DPM mass gradient}}} \equiv u_\text{bound}$$
 
 This bound is set by the gravitational escape velocity — no fluid parcel can exceed
 it without leaving the system (which terminates the NS problem domain).
@@ -100,7 +100,7 @@ a globally regular solution.
    The first term (viscous dissipation) is non-positive. The second is bounded by
    $\|U_{b\_text{jet}}\|_{L^2} \cdot u_\text{bound} \cdot V^{1/2}$ — finite by step 1.
 
-3. **Velocity bound:** $|\mathbf{u}| \leq u_\text{bound} = \sqrt{GM/r}$ by gravitational
+3. **Velocity bound:** $|\mathbf{u}| \leq u_\text{bound} = \sqrt{μ_s∇(M_s/r)}$ by gravitational
    escape physics — this prevents finite-time blow-up.
 
 $$\boxed{\text{UQFF NS solutions for quasar jets are globally regular}}$$
@@ -128,7 +128,7 @@ superluminal motion observed in VLBI.
 | $U_{b\_text{jet}} = \rho g(1 - 1/\rho)$ | UQFF buoyancy force |
 | BH harmonic: $U_{b\_text{jet}} = \sum H_m(1-e^{-[SSq]m})\cosomega t$ | Harmonic expansion |
 | DVP vortex: $F_\text{sm}/r^{26}$, $p_\text{spec}=113$ | Prime vortex term |
-| $u_\text{bound} = \sqrt{GM/r}$ | Regularity velocity bound |
+| $u_\text{bound} = \sqrt{μ_s∇(M_s/r)}$ | Regularity velocity bound |
 | $T^{ij}_\text{UQFF} = T^{ij}_\text{NS} + T^{ij}_\text{buoy}$ | Full stress-energy tensor |
 
 ---

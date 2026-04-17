@@ -31,7 +31,7 @@ M87* ($6.5\times10^9\,M_\odot$), imaged by the Event Horizon Telescope in 2019, 
 ## Primary UQFF Equation
 
 $$
-r_{\text{sh,UQFF}} = 3\sqrt{3}\frac{GM}{c^2}\sqrt{1 +
+r_{\text{sh,UQFF}} = 3\sqrt{3}\underbrace{\frac{GM}{c^2}}_{\text{DPM mass gradient}}\sqrt{1 +
 f_{\text{TRZ}}\frac{\rho_{\text{UA}}}{\rho_{\text{SCm}}}}
 $$
 

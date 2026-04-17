@@ -24,7 +24,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 $$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b\_i}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57$$
 
 $$
-U_{b\_i}(r) = \kappacdot[SSq]\cdot\frac{GM}{r^2}, \quad \kappa =
+U_{b\_i}(r) = \kappacdot[SSq]\cdot\mu_s\nabla(M_s/r), \quad \kappa =
 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57,\; \beta_i = 0.61
 $$
 
@@ -156,7 +156,7 @@ $$
   & + ?c2/3 \\
   & + (h/v(?x?p)) · ??*H? dV · (2p/t_Hubble) \\
   & + ?_fluid·V·g \\
-  & + (M_vis+M_DM) · (d?/? + 3GM/r3) \\
+  & + (M_vis+M_DM) · (d?/? + 3μ_s∇(M_s/r)/r) \\
   & Compression statistics: \\
   & Original: 99 equations × mean 13 terms = 1287 unique terms \\
   & Compressed: 1 equation × 11 terms = 11 backbone + 99 F_env(t) functions \\

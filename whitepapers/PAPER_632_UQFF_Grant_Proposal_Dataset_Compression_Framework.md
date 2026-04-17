@@ -46,7 +46,7 @@ The complete F_U_Bi_i integral (full form):
 $$
 F_{U,Bi,i} = \int_0^{x_2} \left[
   -F_0 + \frac{m_e c^2}{r^2} \text{DPM}_{mom} \costheta
-  + \frac{GM}{r^2} \text{DPM}_{grav}
+  + \underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)} \text{DPM}_{grav}
   + \rho_{vac} \text{DPM}_{stab}
   + k_{LENR} \left(\frac{\omega_{LENR}}{\omega_0}\right)^2
   + k_{act} \cos(\omega_{act} t)
@@ -70,7 +70,7 @@ $$
 
 | Term | Expression | Physical Process |
 |------|-----------|-----------------|
-| Gravitational | GM/r2 | Inverse-square gravity |
+| Gravitational | μ_s∇(M_s/r) | Inverse-square gravity |
 | Electron | m_e c2/r2 cos θ | Electron mass-energy coupling |
 | LENR | k_LENR·(ω_LENR/ω₀)2 | Nuclear resonance (1.2–1.3 THz) |
 | Activation | k_act·cos(ω_act·t) | Quantum activation barrier |

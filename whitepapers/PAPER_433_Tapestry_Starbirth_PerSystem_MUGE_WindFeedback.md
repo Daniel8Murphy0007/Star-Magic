@@ -69,7 +69,7 @@ This models the LMC cluster evolution: initial burst of star formation multiplie
 
 $$\boxed{g_\text{Tap}(r,t) = \frac{G M(t)}{r^2}(1 + H_0 t)\left(1 - \frac{B}{B_\text{crit}}\right)(1 + f_\text{TRZ}) + \sum_text{Ug} + T_\Lambda + T_Q + T_\text{EM} + T_\text{fluid} + T_\text{osc} + T_\text{DM} + T_\text{wind}}$$
 
-**Term 1 — Newtonian with M(t) and ISM B-field correction:**
+**Term 1 — DPM-emergent with M(t) and ISM B-field correction:**
 $$T_1 = \frac{G M(t)}{r^2} (1 + H_0 t)\left(1 - \frac{B}{B_\text{crit}}\right)$$
 
 At $t = 0$: $T_1 = G \times 10{,}000 M_\odot / r^2 \approx 7.45 \times 10^{-26}$ m/s2 (low density, large r)

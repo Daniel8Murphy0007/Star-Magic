@@ -114,7 +114,7 @@ $$
 Numerically: `g_Q_min ˜ v(2 × 1.0546×10?34) × 1.0 × (2p / 4.354×1017) ˜ 2.1×10?17 × 1.44×10?17 ˜
 3.0×10?34 m/s2`
 
-This is vastly smaller than Newtonian gravity but non-zero; it is the irreducible quantum
+This is vastly smaller than DPM-emergent gravity but non-zero; it is the irreducible quantum
 gravitational background within MUGE.
 
 ### 2.3 Hubble-Time Normalisation
@@ -135,7 +135,7 @@ The calculator also provides:
 
 - **Time-decayed form:** `g_Q(t) = g_Q · ?0 · exp(-t/t_Q)` — decoherence envelope for finite quantum coherence time t_Q.
 - **Thermal comparison:** ratio `g_Q / (k_B T / m L)` — comparison to thermal acceleration at temperature T over scale L.
-- **Quantum/Newtonian fraction:** `g_Q / g_Newt` ˜ 10?34 for stellar systems — confirms the term is a perturbative correction.
+- **Quantum/DPM-emergent fraction:** `g_Q / g_Newt` ˜ 10?34 for stellar systems — confirms the term is a perturbative correction.
 
 ---
 

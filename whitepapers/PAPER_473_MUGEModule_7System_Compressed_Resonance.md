@@ -28,7 +28,7 @@ $F_U = \sum_{i=1}^{4}(Ug_i + Ub_i) + Um + \text{Tr}(A_{\mu\nu})$ — four
 independent gravitational force channels (internal dipole, outer field bubble,
 magnetic strings, star–BH vacuum), each with buoyancy opposition, unified by
 magnetism and the Aether metric tensor.  The compressed MUGE packages $F_U$ into
-a 9-term multiplicative-additive structure where $GM/r^2$ appears only as the
+a 9-term multiplicative-additive structure where DPM mass gradient $μ_s∇(M_s/r)$ appears only as the
 **zero-vacuum limiting case of the Ug2 channel**.  The resonance MUGE decomposes
 $F_U$ into 13 frequency modes cascading from the aDPM inertia-flux-vacuum
 coupling.  Both are calibrated against observations and cross-validated via the
@@ -38,7 +38,7 @@ UQFF dual-method pipeline.
 
 ## 1. The F_U Unified Field and Its MUGE Re-Expression
 
-Gravity in the UQFF framework originates from the unified field $F_U$, not from Newton's law:
+Gravity in the UQFF framework originates from the unified field $F_U$, not from the DPM-emergent gravitational law:
 
 $$\boxed{F_U = \sum_{i=1}^{4}\bigl(Ug_i + Ub_i\bigr) + Um + \text{Tr}(A_{\mu\nu})}$$
 
@@ -54,7 +54,7 @@ The MUGE formulations **re-express** $F_U$ for practical multi-system
 computation.  The MUGE compressed master equation in full long-form:
 
 $$\boxed{\begin{aligned}
-g_{\text{MUGE}}(r,t) &= \frac{GM}{r^2}(1 + H_0 t)
+g_{\text{MUGE}}(r,t) &= \underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)}(1 + H_0 t)
   \!\left(1 - \frac{B}{B_{\text{crit}}}\right)
   \!F_{\text{env}} \\
 &\quad + \sum_{i=1}^{4} U_{g,i}
@@ -64,7 +64,7 @@ g_{\text{MUGE}}(r,t) &= \frac{GM}{r^2}(1 + H_0 t)
   \cdot\frac{2\pi}{t_H} \\
 &\quad + \rho_f V_{\text{sys}} g_{\text{local}}
   + (M + M_{\text{DM}})\!\left(\frac{\delta\rho}{\rho}
-  + \frac{3GM}{r^3}\right)
+  + \underbrace{\underbrace{\frac{3GM}{r^3}}_{\text{DPM tidal gradient}}\right)
 \end{aligned}}$$
 
 The first four factors form a multiplicative core; the remaining five terms are additive.
@@ -90,7 +90,7 @@ The first four factors form a multiplicative core; the remaining five terms are 
 ### 3.1 Full Equation
 
 $$\begin{aligned}
-g_{comp}(r,t) &= \frac{GM}{r^2}(1 + H(z)t)\left(1 - \frac{B}{B_{crit}}\right)(1 + F_{env}) \\
+g_{comp}(r,t) &= \underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)}(1 + H(z)t)\left(1 - \frac{B}{B_{crit}}\right)(1 + F_{env}) \\
 &\quad + \sum_{i=1}^{4} U_{g,i} \\
 &\quad + \frac{\Lambda c^2}{3} \cdot r \\
 &\quad + \frac{\hbar \omega_q}{Mc^2} \\

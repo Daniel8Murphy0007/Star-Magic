@@ -150,7 +150,7 @@ $$
 \end{aligned}
 $$
 
-This is the dominant non-Newtonian term for the Crab, controlling the synchrotron brightness
+This is the dominant non-DPM-emergent term for the Crab, controlling the synchrotron brightness
 evolution.
 
 ---
@@ -192,7 +192,7 @@ The magnetic term M_mag remains important relative to g_grav throughout nebula e
 
 The Crab Nebula MUGE demonstrates that time-dependent radius r(t) is essential for accurately
 modeling supernova remnant gravity. The F_wind pulsar injection and M_mag magnetic energy terms
-together dominate over classical Newtonian gravity within the nebula. The UQFF successfully models
+together dominate over classical DPM-emergent gravity within the nebula. The UQFF successfully models
 the transition from SN ejecta to mature PWN through its modular environmental forcing framework.
 
 ---

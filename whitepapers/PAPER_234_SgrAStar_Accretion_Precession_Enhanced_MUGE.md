@@ -24,7 +24,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 ## Abstract
 
-Sagittarius A* (Sgr A*), the $4.297 \times 10^6 M_\odot$ supermassive black hole at the Galactic Centre, receives three new MUGE terms compared to the Session 53 implementation (`SgrAStarSpinDragUQFFCalculator`): (1) secular accretion mass growth $M(t) = M_{init}(1 + \dot{M}_0 e^{-t/\tau_{acc}})$ with $\tau_{acc} = 9$ Gyr, modelling the long-term mass evolution consistent with VLBI and S-star orbit data; (2) Gauss-to-Tesla unit conversion for the accretion disc magnetic field $B_T(t) = B_G(t) \times 10^{-4}$, correcting a unit inconsistency present in earlier implementations; and (3) a Kerr precession dark matter perturbation $pert_2 = 3GM/r^3 \cdot \sin(\theta_{prec} = 30°)$ representing frame-dragging projected onto the DM density gradient.
+Sagittarius A* (Sgr A*), the $4.297 \times 10^6 M_\odot$ supermassive black hole at the Galactic Centre, receives three new MUGE terms compared to the Session 53 implementation (`SgrAStarSpinDragUQFFCalculator`): (1) secular accretion mass growth $M(t) = M_{init}(1 + \dot{M}_0 e^{-t/\tau_{acc}})$ with $\tau_{acc} = 9$ Gyr, modelling the long-term mass evolution consistent with VLBI and S-star orbit data; (2) Gauss-to-Tesla unit conversion for the accretion disc magnetic field $B_T(t) = B_G(t) \times 10^{-4}$, correcting a unit inconsistency present in earlier implementations; and (3) a Kerr precession dark matter perturbation $pert_2 = 3μ_s∇(M_s/r)/r \cdot \sin(\theta_{prec} = 30°)$ representing frame-dragging projected onto the DM density gradient.
 
 ---
 
@@ -89,7 +89,7 @@ matter density perturbation gradient around Sgr A*.
 |---------|-----------|-----------|
 | Mass | Static $M_{init}$ | $M(t) = M_{init}(1+\dot{M}_0 e^{-t/\tau})$ |
 | B field | Direct Tesla value | Gauss → Tesla conversion |
-| DM perturbation | Standard $pert_1$ only | + $pert_2 = 1.5GM/r^3$ |
+| DM perturbation | Standard $pert_1$ only | + $pert_2 = 1.5μ_s∇(M_s/r)/r$ |
 | Spin drag | Full Kerr frame-drag | + precession projection |
 | $r$ reference | Variable | $r_s = 1.27 \times 10^{10}$ m |
 

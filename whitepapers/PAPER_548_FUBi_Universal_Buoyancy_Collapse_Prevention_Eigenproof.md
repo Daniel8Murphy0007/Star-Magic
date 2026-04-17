@@ -27,7 +27,7 @@ equations and observational predictions within the Star-Magic/UQFF framework.
 
 ## §1 Abstract
 
-The Universal Gaussian Buoyancy modulator $F_{U,Bi,i}$ — a Gaussian-weighted projection of the Universal Field Equation — prevents gravitational collapse in all astronomical systems by maintaining strictly positive eigenvalues in the UQFF compressed tensor and a bounded integral over all frequencies. This paper presents the complete three-part proof: (I) the eigenvalue positivity condition, (II) the anti-collapse gradient theorem, and (III) the bounded integral theorem. Together these prove that neither Newtonian point-mass collapse nor Einsteinian spacetime singularities are allowed within the UQFF framework. The Buoyancy Harmonics (BH26) number system manifests through the Gaussian frequency bins at VLA/ALMA emission frequencies.
+The Universal Gaussian Buoyancy modulator $F_{U,Bi,i}$ — a Gaussian-weighted projection of the Universal Field Equation — prevents gravitational collapse in all astronomical systems by maintaining strictly positive eigenvalues in the UQFF compressed tensor and a bounded integral over all frequencies. This paper presents the complete three-part proof: (I) the eigenvalue positivity condition, (II) the anti-collapse gradient theorem, and (III) the bounded integral theorem. Together these prove that neither DPM-emergent point-mass collapse nor Einsteinian spacetime singularities are allowed within the UQFF framework. The Buoyancy Harmonics (BH26) number system manifests through the Gaussian frequency bins at VLA/ALMA emission frequencies.
 
 ---
 
@@ -100,7 +100,7 @@ The error function $\text{erf}(\cdot) \in (-1, 1)$, so:
 $$\left|\int F_{U,Bi,i}\, dx\right| \leq \sqrt{\frac{\pi}{2}} \cdot \sigma \cdot |F_U| < \infty$$
 
 This proves that the total buoyancy energy in any frequency-resolved observational window is always
-finite. Unlike Newtonian or Einsteinian frameworks where energy can diverge at point singularities,
+finite. Unlike DPM-emergent or Einsteinian frameworks where energy can diverge at point singularities,
 UQFF guarantees finite energy integrals at all scales.
 
 ---
@@ -124,7 +124,7 @@ Each bin weight is $\mathcal{G}(\nu) = \exp(-(\nu-\mu)^2/(2\sigma^2))$. The rati
 
 | Framework | Singularity allowed | Collapse prevention | Energy boundedness |
 |---|---|---|---|
-| Newtonian gravity | Yes ($r \to 0$, $F \to \infty$) | No | No |
+| DPM-emergent gravity | Yes ($r \to 0$, $F \to \infty$) | No | No |
 | General Relativity | Yes (Schwarzschild, Kerr) | No | No |
 | UQFF `F_U_Bi_i` | **No** ($\lambda > 0$, Gaussian bounded) | **Yes** | **Yes** |
 

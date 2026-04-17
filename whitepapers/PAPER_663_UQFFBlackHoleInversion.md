@@ -36,7 +36,7 @@ $$E_{inv,UQFF} = \frac{G M^2}{r_{s,UQFF}}$$
 ## 3. Inversion Probability Components
 $$P_{inv} = f_{TRZ} \cdot \exp!\left(-\frac{E_{inv}}{k_B T_H}\right)$$
 
-$$\Phi_{inv} = \frac{1}{\deltarho} \cdot \frac{GM}{c} \cdot (1 + f_{TRZ})$$
+$$\Phi_{inv} = \frac{1}{\deltarho} \cdot \underbrace{\frac{GM}{c}}_{\text{DPM mass gradient}} \cdot (1 + f_{TRZ})$$
 
 $$S_{U\_m} = \exp!\left(\frac{U_m}{k_B T_H}\right)$$
 

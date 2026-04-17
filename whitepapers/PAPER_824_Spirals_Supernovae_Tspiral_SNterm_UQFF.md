@@ -86,7 +86,7 @@ $$
 ### 2.2 UQFF Integration as Multiplicative Modifier
 
 T_spiral modifies the gravitational effective potential, acting as a multiplicative correction to
-the base Newtonian term:
+the base DPM-emergent term:
 $$
 g_spiral = (G*M(t)) / r^2 * (1 + H_0*t) * (1 + T_spiral) + Ug1+Ug2+Ug3+Ug4
 $$
@@ -195,7 +195,7 @@ $$
 
 | Term | Layer |
 |------|-------|
-| (G*M(t))/r^2 * (1+H_0*t) | Layer 1 — Newtonian + Expansion |
+| (G*M(t))/r^2 * (1+H_0*t) | Layer 1 — DPM-emergent + Expansion |
 | (1-B/B_crit) * (1+T_spiral) | Layer 2 — Superconductive + Spiral Torque |
 | Ug1+Ug2+Ug3+Ug4 | Layer 3 — UQFF Gravity Modes |
 | hbar/sqrt(Dx*Dp) * psi_total | Layer 4 — Quantum Coherence |

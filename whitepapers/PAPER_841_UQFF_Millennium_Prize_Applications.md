@@ -231,7 +231,7 @@ $$
   & L_EH = c^4R / (16piG) \\
   & Field: g_munu \\
   & EL:    deltaS/deltag^munu = 0 -> G_munu = 8piG T_munu / c^4 \\
-  & Yields: \text{F\_gravity\_baseline} (Newtonian GM/r^2 + GR corrections)
+  & Yields: \text{F\_gravity\_baseline} (DPM-emergent μ_s∇(M_s/r) + GR corrections)
 \end{aligned}
 $$
 

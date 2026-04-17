@@ -52,7 +52,7 @@ UQFF computation of an HII region ram pressure dominance ratio.
 ## Key Equations
 
 ### Base Gravity
-$$g_{\rm base} = \frac{GM}{r^2} = \frac{6.6743\times10^{-11} \times 3.978\times10^{33}}{(1.18\times10^{17})^2} = 1.907\times10^{-11}\ \text{m/s}^2$$
+$$g_{\rm base} = \underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)} = \frac{6.6743\times10^{-11} \times 3.978\times10^{33}}{(1.18\times10^{17})^2} = 1.907\times10^{-11}\ \text{m/s}^2$$
 
 ### Ram Pressure Acceleration (t = 0)
 $$a_{\rm wind}(t=0) = \frac{v_{\rm wind}^2}{r} = \frac{(8\times10^3)^2}{1.18\times10^{17}} = 5.424\times10^{-10}\ \text{m/s}^2$$
@@ -81,7 +81,7 @@ $$\frac{W_{\rm KE}}{W_{\rm grav}} \approx \frac{a_{\rm wind}}{g_{\rm base}} = 28
 
 | Quantity | Value | Significance |
 |----------|-------|--------------|
-| g_base | 1.907×10-11 m/s2 | Newtonian self-gravity |
+| g_base | 1.907×10-11 m/s2 | DPM-emergent self-gravity |
 | a_wind(t=0) | 5.424×10-10 m/s2 | Initial ram pressure |
 | η_wind(t=0) | **28.47** | Wind >> gravity at birth |
 | a_wind(t_age) | 1.085×10-9 m/s2 | Ram pressure at 300 kyr |

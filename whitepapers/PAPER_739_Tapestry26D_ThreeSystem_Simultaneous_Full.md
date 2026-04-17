@@ -33,7 +33,7 @@ is solved simultaneously using all three UQFF Master Equation Systems:
 3. **UQFF Buoyancy** (F_U_Bi) — quantum buoyancy maintaining stability
 
 The computation spans 26 quantum states and yields a complete 4-dimensional force diagram for this
-cosmic tapestry system. The E_DPM field is used in place of Newtonian G throughout, confirming UQFF
+cosmic tapestry system. The E_DPM field is used in place of DPM-emergent G throughout, confirming UQFF
 replaces classical gravitational constants with quantum vacuum density operators.
 
 ---

@@ -23,7 +23,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 $$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b\_i}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57$$
 
 $$
-U_{b\_i}(r) = \kappacdot[SSq]\cdot\frac{GM}{r^2}, \quad \kappa =
+U_{b\_i}(r) = \kappacdot[SSq]\cdot\mu_s\nabla(M_s/r), \quad \kappa =
 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57,\; \beta_i = 0.61
 $$
 <!— κ = 5.0e-4 day-1, [SSq] = 0.57, ß_i = 6.1e-1 —>
@@ -44,7 +44,7 @@ forces from UV through millimeter radiation fields.
 The standard buoyancy integral form:
 
 $$
-\text{F\_U\_Bi} = -F0 + (m_e c2/r2)·DPM_momentum·cos? + (GM/r2)·DPM_gravity + \text{F\_U\_Bi\_i}
+\text{F\_U\_Bi} = -F0 + (m_e c2/r2)·DPM_momentum·cos? + (μ_s∇(M_s/r))·DPM_gravity + \text{F\_U\_Bi\_i}
 $$
 
 ---
@@ -58,7 +58,7 @@ $$
   & \text{F\_U\_Bi\_i} = ?0^{x2} [ \\
   & -F0 \\
   & + (m_e c2/r2) · DPM_mom · cos? \\
-  & + (GM/r2) · DPM_grav \\
+  & + (μ_s∇(M_s/r)) · DPM_grav \\
   & + ?_vac,[UA] · DPM_stab \\
   & + k_LENR · (?_LENR/?0)2 \\
   & + k_act · cos(?_act · t) \\
@@ -132,7 +132,7 @@ $$
 |------|--------|----------------|
 | Base restoring force | -F0 | Vacuum restoring force |
 | DPM momentum | (m_e c2/r2)·DPM_mom·cos? | Dipole-plasma momentum scattering |
-| DPM gravity | (GM/r2)·DPM_grav | Dipole-plasma gravitational coupling |
+| DPM gravity | (μ_s∇(M_s/r))·DPM_grav | Dipole-plasma gravitational coupling |
 | DPM stability | ?_vac,[UA]·DPM_stab | Vacuum aether stability term |
 | LENR coupling | k_LENR·(?_LENR/?0)2 | Low-energy nuclear resonance |
 | Activation term | k_act·cos(?_act·t) | Activation oscillation |

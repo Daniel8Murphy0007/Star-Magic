@@ -114,7 +114,7 @@ dominance.
 ### 2.4 Verification
 
 At r' = r_SOI:
-$$g_{\text{BH}}(r_{\text{SOI}}) = \frac{G M_{\text{BH}}}{r_{\text{SOI}}^2} = \frac{G \cdot 0.01 M}{(0.1 r)^2} = \frac{0.01 \cdot GM}{0.01 \cdot r^2} = \frac{GM}{r^2} = g_{\text{base}}\ PASS$$
+$$g_{\text{BH}}(r_{\text{SOI}}) = \frac{G M_{\text{BH}}}{r_{\text{SOI}}^2} = \frac{G \cdot 0.01 M}{(0.1 r)^2} = \frac{0.01 \cdot GM}{0.01 \cdot r^2} = \underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)} = g_{\text{base}}\ PASS$$
 
 ---
 

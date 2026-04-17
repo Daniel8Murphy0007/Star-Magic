@@ -35,7 +35,7 @@ particle dynamics to solar orbital mechanics.
 
 Saturn is the only major solar system body with a prominent ring system whose tidal effects rival
 atmospheric dynamics. The Cassini mission revealed ring-moonlet interactions, density waves, and
-gap-clearing resonances that require gravitational modeling beyond simple Newtonian mechanics. The
+gap-clearing resonances that require gravitational modeling beyond simple DPM-emergent mechanics. The
 UQFF provides three new terms beyond classical gravity:
 1. **T_ring**: tidal forcing from ring mass distribution
 2. **F_wind**: atmospheric jet stream coupling

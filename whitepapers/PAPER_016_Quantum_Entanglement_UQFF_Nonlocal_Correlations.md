@@ -609,7 +609,7 @@ bridge.*
 ---
 
 **Validator:** `validate_uqff_calculators.py` — PASSED (8/8)  
-*All 8 UQFF master equation calculators validated: Base (F_U = Ug − Ub + Um), Compressed (Newtonian
+*All 8 UQFF master equation calculators validated: Base (F_U = Ug − Ub + Um), Compressed (DPM-emergent
 + 9 corrections), Superconductive (H_SCm modulation), Triadic (26-layer gravitational scaling),
 Buoyant (F_U_Bi atomic scale), MasterBuoyant (F_U_Bi_i cosmic scale), Resonant (aDPM + 13 frequency
 modes), Quadratic (dual-solution roots); κ = 0.0005/day, [SSq] = 0.57*
@@ -669,7 +669,7 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 
 | Mode | Dominant Term | Primary Use Case |
 |------|--------------|-----------------|
-| **Compressed** | Ug_sum + Newtonian base | Isolated stellar/BH systems |
+| **Compressed** | Ug_sum + DPM-emergent base | Isolated stellar/BH systems |
 | **Resonant** | 5 resonance frequencies (aDPM, aTHz, …) | Multi-scale field interactions |
 | **Buoyant** | β_i × Ubi | Expanding nebulae, stellar winds |
 | **Superconductive** | Um × (1+1013·f_H) | Magnetars, SCm critical-density regime |

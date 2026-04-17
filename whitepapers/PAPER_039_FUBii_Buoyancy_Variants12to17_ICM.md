@@ -194,7 +194,7 @@ Compare to the gravitational tidal force at L1:
 $$F_{\rm tidal}^{L1} \sim \frac{G M_{\rm NS} \cdot M_{\rm donor}}{a^2} \sim \frac{6.674\times10^{-11} \times 3.58\times10^{30} \times 1.193\times10^{30}}{(3\times10^9)^2} \sim 3.2\times10^{31} \text{ N}$$
 
 Ratio: 1.964×1055 / 3.2×10 = 6.1×10  the UQFF Roche overflow force is orders of magnitude larger
-than the Newtonian tidal force, reflecting the dM/dt mass-flux amplification built into the UQFF
+than the DPM-emergent tidal force, reflecting the dM/dt mass-flux amplification built into the UQFF
 formulation.
 
 ---
@@ -481,7 +481,7 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 
 | Mode | Dominant Term | Primary Use Case |
 |------|--------------|-----------------|
-| **Compressed** | Ug_sum + Newtonian base | Isolated stellar/BH systems |
+| **Compressed** | Ug_sum + DPM-emergent base | Isolated stellar/BH systems |
 | **Resonant** | 5 resonance frequencies (aDPM, aTHz, …) | Multi-scale field interactions |
 | **Buoyant** | β_i × Ubi | Expanding nebulae, stellar winds |
 | **Superconductive** | Um × (1+1013·f_H) | Magnetars, SCm critical-density regime |

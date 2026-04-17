@@ -126,7 +126,7 @@ At r → 0 in the UQFF embedding of EFE:
 $$U_g(r \to 0) + U_m(r \to 0) + U_b(r \to 0) + \frac{d^{26}}{dr^{26}}\left(\frac{SCm \cdot g \cdot \nabla UA}{UA}\right) = 0$$
 
 As r → 0:
-- U_g diverges (Newtonian analog: G M/r2→ ∞) — **attractive**
+- U_g diverges (DPM-emergent analog: G M/r2→ ∞) — **attractive**
 - U_b = g(1 - 1/∇UA) → −∞ as ∇UA → 0 at ultra-high density — **divergently repulsive**
 - 26th derivative → +∞ acting as additional repulsive barrier
 
@@ -187,7 +187,7 @@ $$F_{neutron} \approx 10^{49} \text{ N} = \int \nabla UA \, dt$$
 **External (event horizon):** 26D projection reflects via lensing, with Ub providing
 repulsion that creates the photon sphere at r = 3GM/c2:
 
-$$r_{photon} = \frac{3GM}{c^2} \sim r_s \cdot \frac{3}{2}$$
+$$r_{photon} = \underbrace{\frac{3GM}{c^2} \sim r_s \cdot \frac{3}{2}$$
 
 This ratio 3/2 emerges naturally from the triad weighting (1/3 + 1/3 + 2/3 = 1 → 2/3
 Ub dominates at r ~ r_s giving 3GM/2c2) — a non-trivial prediction of triad symmetry.

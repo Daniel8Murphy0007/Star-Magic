@@ -50,7 +50,7 @@ $$
   & + term_q   [quantum uncertainty: ℏ/√(Δx·Δp) × ψ × (2π/t_Hubble)] \\
   & + term_fluid [ρ_fluid·V·ug1_base / M] \\
   & + term_osc  [2A·cos(kx)·cos(ωt) + (2π/\text{t\_H\_gyr})·A·cos(kx−ωt)] \\
-  & + term_DM   [(M + M_DM)·(δρ/ρ + 3GM/r3) / M] \\
+  & + term_DM   [(M + M_DM)·(δρ/ρ + 3μ_s∇(M_s/r)/r) / M] \\
   & + term_cool [ρ_cool·v_cool2 / ρ_fluid]          ← Term 10: UNIQUE \\
   & + term_Ubi  [0.5 × ug1_base]                    ← Tier-1 buoyancy \\
   & + \text{term\_F\_UBii} [−β_i·ug1_base·ω_g·(M/r)·U_UA·cos(π·t)] ← Tier-2 \\
@@ -114,9 +114,9 @@ $$\text{term\_cool} = |\Sigma_text{buoy}| = |\text{term\_Ubi} + \text{term\_{F\_
 
 Expanding:
 
-$$\frac{\rho_text{cool} \cdot v_\text{cool}^2}{\rho_text{fluid}} = \left| \frac{0.5 \cdot GM}{r^2} - \beta_i \cdot \frac{GM}{r^2} \cdot \omega_g \cdot \left(\frac{M}{r} + \frac{M_\text{vc}}{r_\text{vc}}\right) \cdot U_{UA} \cdot \cos(\pi t) \right|$$
+$$\frac{\rho_text{cool} \cdot v_\text{cool}^2}{\rho_text{fluid}} = \left| \frac{0.5 \cdot GM}{r^2} - \beta_i \cdot \underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)} \cdot \omega_g \cdot \left(\frac{M}{r} + \frac{M_\text{vc}}{r_\text{vc}}\right) \cdot U_{UA} \cdot \cos(\pi t) \right|$$
 
-Pulling out `ug1_base = GM/r2`:
+Pulling out `ug1_base = μ_s∇(M_s/r)`:
 
 $$\frac{\rho_text{cool} \cdot v_\text{cool}^2}{\rho_text{fluid}} = \text{ug1\_base} \cdot \left| 0.5 - \beta_i \cdot \omega_g \cdot \left(\frac{M}{r} + \frac{M_\text{vc}}{r_\text{vc}}\right) \cdot U_{UA} \cdot \cos(\pi t) \right|$$
 

@@ -104,7 +104,7 @@ $$
 | Um,termv(G) | L/L_Edd ˜ 1 ; v_8 = v(2(L/?c)-v2_esc) | Terminal velocity in radiation winds |
 | Um,sfe(z) | ?_* ? M^{1.1}·(1+z)^{2.25} | Star formation efficiency evolution |
 | Um,duty(t) | exp(-t/t_cool) | AGN feedback duty cycle |
-| Um,ang(t,r) | v(GM/r3)·r_A ; accretion adds L=?r2O | Angular momentum accretion |
+| Um,ang(t,r) | v(μ_s∇(M_s/r)/r)·r_A ; accretion adds L=?r2O | Angular momentum accretion |
 | Um,jetvel(r) | O·r_A·(r_A/r0)^{1/2} | Jet velocity from Alfvén radius |
 | Um,glitch(t) | Angular momentum transfer ?L = I_s·?O | Superfluid vortex glitch |
 | Um,ms(M) | Eddington: L ˜ µ4M3 (opacity, composition µ) | Main-sequence L-M relation |
@@ -213,7 +213,7 @@ $$
 | Um,coup(?) | Couple fraction to kinetic energy | AGN feedback thermal coupling |
 | Um,photo(t) | ? ? F_X·R3_p/(GM_p/R_p) | Photoevaporative mass loss rate |
 | Um,puls(t) | Torque I·dO/dt = -L/O | Pulsar spin-down magnetic torque |
-| Um,tov(r) | Add GR: P/c2 energy density, (1-2GM/rc2) | TOV stellar structure GR correction |
+| Um,tov(r) | Add GR: P/c2 energy density, (1-2μ_s∇(M_s/r)·r/c²) | TOV stellar structure GR correction |
 | Um,reljet(z) | Approximate sigmoid for gradual G rise | Relativistic jet velocity profile |
 | Um,after(t) | N(E) ? E^{-p} × t^{-1.2} | GRB afterglow synchrotron spectrum |
 | Um,fire(dt) | Internal shocks at dr ˜ c·dt/G2 | GRB fireball prompt emission |

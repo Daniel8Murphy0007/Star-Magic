@@ -36,7 +36,7 @@ of all 8 terms side-by-side. This paper fills that gap with the first complete *
 decomposition** showing the relative magnitude of each compressed MUGE contribution.
 
 The key discovery: the **perturbation term dominates by 27 orders of magnitude** over the
-Newtonian base, revealing why the compressed model is **unphysical at magnetar scale**.
+DPM-emergent base, revealing why the compressed model is **unphysical at magnetar scale**.
 
 ---
 
@@ -58,8 +58,8 @@ Newtonian base, revealing why the compressed model is **unphysical at magnetar s
 
 ## 3. Complete 8-Term Spectral Decomposition
 
-### Term 1: Newtonian Base
-$$g_\text{base} = \frac{GM}{r^2} = \frac{6.674\times10^{-11} \times 2.984\times10^{30}}{(10^4)^2}$$
+### Term 1: DPM-emergent Base
+$$g_\text{base} = \underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)} = \frac{6.674\times10^{-11} \times 2.984\times10^{30}}{(10^4)^2}$$
 
 $$\boxed{g_\text{base} = 1.991\times10^{12} \ \text{m/s}^2}$$
 
@@ -101,10 +101,10 @@ $$g_\text{fluid} = \rho_text{fluid} \cdot V_\text{sys} \cdot g_\text{local}$$
 $$\boxed{g_\text{fluid} = 4.189\times10^{-2} \ \text{m/s}^2}$$
 
 ### Term 8: Dark Matter Perturbation (DOMINANT TERM)
-$$g_\text{pert} = (M + M_\text{DM})\left(\frac{\deltarho}{\rho} + \frac{3GM}{r^3}\right)$$
+$$g_\text{pert} = (M + M_\text{DM})\left(\frac{\deltarho}{\rho} + \underbrace{\underbrace{\frac{3GM}{r^3}}_{\text{DPM tidal gradient}}\right)$$
 
 At $r = 10^4$ m:
-$$\frac{3GM}{r^3} = \frac{3 \times 6.674\times10^{-11} \times 2.984\times10^{30}}{(10^4)^3} = 6.0\times10^{10}$$
+$$\underbrace{\underbrace{\frac{3GM}{r^3}}_{\text{DPM tidal gradient}} = \frac{3 \times 6.674\times10^{-11} \times 2.984\times10^{30}}{(10^4)^3} = 6.0\times10^{10}$$
 
 $$(M + M_\text{DM}) \approx (2.984\times10^{30} + 10^{28}) \approx 3.0\times10^{30} \ \text{kg}$$
 
@@ -116,33 +116,33 @@ $$\boxed{g_\text{pert} = 1.782\times10^{39} \ \text{m/s}^2 \quad (\textbf{DOMINA
 
 | Term | Formula | Value (m/s2) | Orders above base |
 |------|---------|:------------:|:-----------------:|
-| Base (Newtonian) | GM/r2 | 1.991e12 | — |
+| Base (DPM-emergent) | μ_s∇(M_s/r) | 1.991e12 | — |
 | SC adj (×0.9) | ×(1−B/B_crit) | 1.792e12 | 0 |
 | Ug3′ (ext. BH) | GM_BH/r_BH2 | 6.746e-5 | −17 |
 | Cosmological floor | Λc2/3 | 3.3e-36 | −48 |
 | Quantum coherence | ℏ⟨Ĥ⟩·2π/t_H | 3.316e-35 | −47 |
 | Fluid coupling | ρ_f·V·g_loc | 4.189e-2 | −14 |
-| **Perturbation (DM)** | **(M+M_DM)(δρ/ρ+3GM/r3)** | **1.782e39** | **+27** |
+| **Perturbation (DM)** | **(M+M_DM)(δρ/ρ+3μ_s∇(M_s/r)/r)** | **1.782e39** | **+27** |
 
 ---
 
 ## 5. Perturbation Dominance Law
 
 **Statement:** For compact objects at $r \sim 10^4$ m (magnetar scale), the dark matter perturbation
-term in the Compressed MUGE dominates by **≥ 27 orders of magnitude** over the Newtonian base.
+term in the Compressed MUGE dominates by **≥ 27 orders of magnitude** over the DPM-emergent base.
 
-**Physical origin:** The $3GM/r^3$ factor scales as $r^{-3}$ — making it catastrophically large
+**Physical origin:** The $3μ_s∇(M_s/r)/r$ factor scales as $r^{-3}$ — making it catastrophically large
 at magnetar radii:
 
-$$\frac{3GM}{r^3}\bigg|_{r=10^4} = 6.0\times10^{10} \gg \frac{3GM}{r^3}\bigg|_{r=1 \text{ AU}} \approx 1.7\times10^{-23}$$
+$$\underbrace{\underbrace{\frac{3GM}{r^3}}_{\text{DPM tidal gradient}}\bigg|_{r=10^4} = 6.0\times10^{10} \gg \underbrace{\underbrace{\frac{3GM}{r^3}}_{\text{DPM tidal gradient}}\bigg|_{r=1 \text{ AU}} \approx 1.7\times10^{-23}$$
 
 **Implication:** The Compressed MUGE formulation is **unphysical** for compact objects. At
-magnetar scale, $r = 10^4$ m violates the assumption that $(M+M_{DM})\cdot\frac{3GM}{r^3}$
+magnetar scale, $r = 10^4$ m violates the assumption that $(M+M_{DM})\cdot\underbrace{\underbrace{\frac{3GM}{r^3}}_{\text{DPM tidal gradient}}$
 remains a small correction. The **Resonance MUGE model** (PAPER_371) with fluid-dominant term
 $a_{fluid\_freq} = 1.773\times10^{-9}$ m/s2 is the physically appropriate description.
 
 **Validity domain criterion:**
-$$\text{Compressed MUGE valid when: } \frac{3GM}{r^3} \ll \frac{\deltarho}{\rho} \quad \Rightarrow \quad r \gg \left(\frac{3GM}{\deltarho/\rho}\right)^{1/3}$$
+$$\text{Compressed MUGE valid when: } \underbrace{\underbrace{\frac{3GM}{r^3}}_{\text{DPM tidal gradient}} \ll \frac{\deltarho}{\rho} \quad \Rightarrow \quad r \gg \left(\underbrace{\frac{3GM}{\deltarho/\rho}\right)^{1/3}$$
 
 For SGR1745 with $\deltarho/\rho = 0.1$:
 $$r_\text{min\_compressed} = \left(\frac{3 \times 6.674\times10^{-11} \times 2.984\times10^{30}}{0.1}\right)^{1/3} \approx 1.3\times10^7 \ \text{m}$$

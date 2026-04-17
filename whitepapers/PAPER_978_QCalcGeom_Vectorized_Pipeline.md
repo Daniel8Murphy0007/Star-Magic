@@ -30,10 +30,10 @@ We document the fully vectorized QCalcGeom pipeline combining 26-layer gravity, 
 ## 1. Pipeline Components
 
 ### 1.1 26-Layer Gravity
-$$g_{26} = \sum_{i=1}^{26} \frac{GM}{r^2} \cdot \frac{[SSq] \cdot i}{26}$$
+$$g_{26} = \sum_{i=1}^{26} \underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)} \cdot \frac{[SSq] \cdot i}{26}$$
 
 ### 1.2 Buoyancy Force
-$$F_{UBi} = \sum_{i=1}^{26} \frac{GM}{r^2} \cdot e^{-[SSq] \cdot i/26} \cdot \beta_i$$
+$$F_{UBi} = \sum_{i=1}^{26} \underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)} \cdot e^{-[SSq] \cdot i/26} \cdot \beta_i$$
 
 ### 1.3 Phonon Resonance
 $$\Phi = \exp!\left(-\frac{(\omega - \omega_text{SCm})^2}{2\Gamma^2}\right) \cdot S_{26}$$

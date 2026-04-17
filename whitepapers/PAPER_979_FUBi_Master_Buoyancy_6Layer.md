@@ -37,10 +37,10 @@ $$F_{U,\text{Bi}_i}(r,t,\Gamma) = \sum_{i=1}^{99} U_{g,i} + U_m + U_A - U_{b,i} 
 ## 2. Component Functions
 
 ### 2.1 Compressed Gravity
-$$U_{g}(M,r) = \sum_{i=1}^{26} \frac{GM}{r^2} \cdot [\text{SSq}] \cdot \frac{i}{26}$$
+$$U_{g}(M,r) = \sum_{i=1}^{26} \underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)} \cdot [\text{SSq}] \cdot \frac{i}{26}$$
 
 ### 2.2 Buoyancy
-$$U_{b}(M,r) = \sum_{i=1}^{26} \frac{GM}{r^2} \cdot e^{-[\text{SSq}]\cdot i/26} \cdot \beta_i$$
+$$U_{b}(M,r) = \sum_{i=1}^{26} \underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)} \cdot e^{-[\text{SSq}]\cdot i/26} \cdot \beta_i$$
 
 ### 2.3 Phonon Resonance
 $$\Phi_{1.25\text{THz}}(\omega,\Gamma) = \exp\left(-\frac{(\omega - \omega_{\text{SCm}})^2}{2\Gamma^2}\right) \cdot S_{26}$$
@@ -54,7 +54,7 @@ At $r = 1\text{ AU}$, $M = M_\odot$, $t = 1\text{ day}$, $\Gamma = 0.1\text{ THz
 - $F_{U,\text{Bi}_i} \approx -2.4 \times 10^{-2}$ m/s2 (buoyancy-dominant at heliospheric distance)
 
 At $r = R_\odot$:
-- $g_N = 274.03$ m/s2 (Newtonian surface gravity, verified)
+- $g_N = 274.03$ m/s2 (DPM-emergent surface gravity, verified)
 
 ## 4. Implementation
 

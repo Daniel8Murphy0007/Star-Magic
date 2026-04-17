@@ -29,7 +29,7 @@ Systems_22Sept2025.docx" (393 pages)
 $$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b\_i}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57$$
 
 $$
-U_{b\_i}(r) = \kappacdot[SSq]\cdot\frac{GM}{r^2}, \quad \kappa =
+U_{b\_i}(r) = \kappacdot[SSq]\cdot\mu_s\nabla(M_s/r), \quad \kappa =
 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57,\; \beta_i = 0.61
 $$
 
@@ -361,7 +361,7 @@ present in Standard Model treatments.
 | Mass $M_{ns}$ | $\approx 1.4$ M? | Standard NS |
 | Galactic center distance | $\sim 0.1$ pc from Sgr A* | VLBI |
 
-**UQFF equations:** $g_{\text{Magnetar}}(r,t) = (GM/r^2)(1+H(z)\cdot t)(1-B/B_{crit}) + (GM_{BH}/r_{BH}^2) + U_{g1}+U_{g2}+U_{g3}+U_{g4} + \Lambda c^2/3$  
+**UQFF equations:** $g_{\text{Magnetar}}(r,t) = (μ_s∇(M_s/r))(1+H(z)\cdot t)(1-B/B_{crit}) + (GM_{BH}/r_{BH}^2) + U_{g1}+U_{g2}+U_{g3}+U_{g4} + \Lambda c^2/3$  
 **Verification:** Chandra/Swift 2025, PAPER_013 (spin-down), PAPER_121 (full equation)  
 **See:** PAPER_121 for the complete 50+ term expansion
 

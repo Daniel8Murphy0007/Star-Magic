@@ -119,9 +119,9 @@ The unique feature of Sgr A*'s negative F_U_Bi_i (-8.31×$10^{211}$ N) in the co
 ### Mathematical Connection:
 
     For Sgr A*, the gravitational term in F_U_Bi_i:
-    (GM/r2) * DPM_gravity → sign flip possible when extra-dimensional correction dominates
+    (μ_s∇(M_s/r)) * DPM_gravity → sign flip possible when extra-dimensional correction dominates
     
-    Modified: (GM/r2)_eff = (GM/r2) * (1 - (M_*/M_Pl)2 * f(r/R))
+    Modified: (μ_s∇(M_s/r))_eff = (μ_s∇(M_s/r)) * (1 - (M_*/M_Pl)2 * f(r/R))
     
     where f(r/R) → large for r/R < 1 (below ADD extra dimension radius)
 

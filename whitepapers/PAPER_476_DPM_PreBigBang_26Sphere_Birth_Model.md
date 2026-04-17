@@ -151,7 +151,7 @@ The DPM initial conditions propagate to present physics as:
 
 $$g_{DPM}(r,t) = R_{DPM} \times [SCm]^{26} \times e^{-\gamma t} = \frac{G M q_H H_s}{r^2} [SSq]^{26} e^{-\gamma t}$$
 
-At t=0 (Big Bang): $g_{DPM} \approx G M q_H H_s / r^2 \approx g_{Newton}$ (DPM reduces to Newtonian at birth)
+At t=0 (Big Bang): $g_{DPM} \approx G M q_H H_s / r^2 \approx g_{Newton}$ (DPM reduces to DPM-emergent at birth)
 
 At t = 13.8 Gyr: $g_{DPM} \approx g_{Newton} \times (0.57)^{26} \times e^{-small} \approx 10^{-7} g_{Newton}$
 

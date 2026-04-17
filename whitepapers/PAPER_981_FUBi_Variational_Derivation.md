@@ -23,8 +23,8 @@ We derive the master buoyancy force $F_{U,\text{Bi}_i}$ from first principles vi
 $$\mathcal{L}_{\text{SCm}} = \frac{1}{2}\dot{\phi}^2 - V_g(\phi, r) + V_b(\phi, r) + \mathcal{L}_{\text{phon}}(\Gamma) + \mathcal{L}_n$$
 
 where:
-- $V_g = \sum_{i=1}^{26} \frac{GM}{r^2} \cdot [\text{SSq}] \cdot \frac{i}{26} \cdot \phi$ — gravitational potential
-- $V_b = \sum_{i=1}^{26} \frac{GM}{r^2} \cdot e^{-[\text{SSq}]\cdot i/26} \cdot \beta_i \cdot \phi$ — buoyancy potential
+- $V_g = \sum_{i=1}^{26} \underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)} \cdot [\text{SSq}] \cdot \frac{i}{26} \cdot \phi$ — gravitational potential
+- $V_b = \sum_{i=1}^{26} \underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)} \cdot e^{-[\text{SSq}]\cdot i/26} \cdot \beta_i \cdot \phi$ — buoyancy potential
 - $\mathcal{L}_{\text{phon}} = \Phi(\omega, \Gamma) \cdot S_{26} \cdot \phi$ — phonon coupling
 - $\mathcal{L}_n = F_n \cdot E_{\text{net}}(t) \cdot \phi$ — neutron-drop sector
 

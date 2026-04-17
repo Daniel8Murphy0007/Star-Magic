@@ -30,11 +30,12 @@ $$
 
 | Term | Expression | Origin |
 |------|-----------|--------|
-| $g_N$ | $GM/r^2$ | Newtonian |
+| $g_{
+m DPM}$ | $μ_s∇(M_s/r)$ | DPM-emergent |
 | $g_{\text{exp}}$ | $-H_0^2 r$ | Hubble expansion |
 | $g_{\text{super}}$ | $-B^2/(2\mu_0\rho r)$ | Magnetic suppression |
 | $g_{\text{env}}$ | $\Omega^2 r$ | Rotation envelope |
-| $g_{U_g}$ | $\sum_{i=1}^{26} (GM/r^2)(\text{SSq}\cdot i/26)\beta_i$ | 26-layer buoyancy |
+| $g_{U_g}$ | $\sum_{i=1}^{26} (μ_s∇(M_s/r))(\text{SSq}\cdot i/26)\beta_i$ | 26-layer buoyancy |
 | $g_{\text{cosm}}$ | $-\Lambda c^2 r/3$ | Cosmological constant |
 | $g_{\text{quant}}$ | $\hbar/(Mr^2)$ | Quantum correction |
 | $g_{\text{fluid}}$ | $-\nu v_b/r^2$ | Navier-Stokes viscous |

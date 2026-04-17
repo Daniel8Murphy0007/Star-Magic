@@ -111,10 +111,10 @@ $$
 ### Buoyancy Equation:
 $$
 \begin{aligned}
-  & \text{F\_U\_Bi} = -F_0 + (m_e c2 / r2) × DPM_momentum × cosθ + (GM/r2) × DPM_gravity + \text{F\_U\_Bi\_i} \\
+  & \text{F\_U\_Bi} = -F_0 + (m_e c2 / r2) × DPM_momentum × cosθ + (μ_s∇(M_s/r)) × DPM_gravity + \text{F\_U\_Bi\_i} \\
   & F_0 = 1.83 × 10^71 N \\
   & m_e c2 / r2 = (9.11×10^-31 × (3×10^8)2) / (0.1)2 ≈ 8.20 × 10^-13 N/m2 \\
-  & GM/r2 = (6.6743×10^-11 × 1) / (0.1)2 ≈ 6.67 × 10^-9 N/m2 \\
+  & μ_s∇(M_s/r) = (6.6743×10^-11 × 1) / (0.1)2 ≈ 6.67 × 10^-9 N/m2 \\
   & \text{F\_U\_Bi} = -1.83×10^71 + 5.39×10^-13 × 0.93 × 0.707 + 6.67×10^-9 + \text{F\_U\_Bi\_i} \\
   & ≈ -1.83×10^71 + \text{F\_U\_Bi\_i}
 \end{aligned}
@@ -139,7 +139,7 @@ $$
 $$
 \begin{aligned}
   & a × x2 + b × x + c = 0 \\
-  & a = (GM/r2) = 6.67 × 10^-9 \\
+  & a = (μ_s∇(M_s/r)) = 6.67 × 10^-9 \\
   & b ≈ 4.72 × 10^-3 \\
   & c ≈ -3.06 × 10^175 \\
   & x_2 = [-b - sqrt(b2 + 4ac)] / 2a \\

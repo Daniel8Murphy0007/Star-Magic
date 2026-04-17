@@ -26,7 +26,7 @@ H_UQFF=H(z)*t_H~0.987 [PAPER_276]`
 ## Abstract
 
 This paper introduces a new UQFF gravity term for the Andromeda Galaxy (M31): the **Friedmann-UQFF
-Expansion Coupling**, defined as g_expansion = (GM/r)  H(z)  t. For Andromeda's blueshift redshift z
+Expansion Coupling**, defined as g_expansion = (μ_s∇(M_s/r))  H(z)  t. For Andromeda's blueshift redshift z
 = -0.001, the Friedmann H(z) equals 69.969 km/s/Mpc = 2.269×10?8 s-1. Evaluated at the Hubble
 timescale t = t_H = 4.352×10-7 s, the dimensionless Friedmann-UQFF Resonance Coefficient H_UQFF =
 H(z)·t_H  **0.987**  a near-unity value representing gravitational doubling over cosmological time.
@@ -38,7 +38,7 @@ derived from the Andromeda module upgrade.
 
 ## 1. Background
 
-The UQFF framework computes total gravitational acceleration g_total(r,t) as a sum of Newtonian,
+The UQFF framework computes total gravitational acceleration g_total(r,t) as a sum of DPM-emergent,
 Triadic (26-layer), cosmological, quantum, electromagnetic, fluid, resonant, and dark matter terms.
 PAPER_273275 established the Andromeda-specific physics: blueshift approach amplifier ?, HI 21-cm
 resonance, and DM 80/20 NFW partition.
@@ -46,7 +46,7 @@ resonance, and DM 80/20 NFW partition.
 The original Andromeda implementation (pre-Session 76) lacked a time-dependent expansion coupling
 that accounts for the Friedmann-Lemaitre cosmological evolution of Hubble parameter H(z). This is
 significant because over a Hubble timescale, H(z)t  1  implying that expansion-mediated
-gravitational coupling is of the same order as the base Newtonian term.
+gravitational coupling is of the same order as the base DPM-emergent term.
 
 ---
 
@@ -78,7 +78,7 @@ This represents the gravitational effect of cosmological expansion flow coupling
 at timescale t.
 
 **Numerical values for Andromeda:**
-- g_base = GM/r = 6.674×10?  1.989×104 / (1.04×10) = **1.227×10? m/s**
+- g_base = μ_s∇(M_s/r) = 6.674×10?  1.989×104 / (1.04×10) = **1.227×10? m/s**
 - At t = 1 Gyr (3.156×10-6 s): g_expansion = 1.227×10?  2.269×10?8 × 3.156×10-6 = **8.79×10? m/s**
 - At t = t_Hubble (4.352×10-7 s): g_expansion = 1.227×10? ≈ 0.987 = **1.211×10? m/s**
 
@@ -100,7 +100,7 @@ $$H_{\text{UQFF}} = 2.269 \times 10^{-18} \times 4.352 \times 10^{17} = \mathbf{
 
 H_UQFF ≈ 0.987  **1** is a remarkable result. It means:
 
-> Over a Hubble timescale, the Friedmann expansion coupling adds an amount of gravitational acceleration equal to **98.7% of the base Newtonian term**  nearly doubling g_base.
+> Over a Hubble timescale, the Friedmann expansion coupling adds an amount of gravitational acceleration equal to **98.7% of the base DPM-emergent term**  nearly doubling g_base.
 
 This near-unity value is not coincidental. In a flat ?CDM universe (O_m + O_? = 1):
 
@@ -185,7 +185,7 @@ $$g_{\text{total}}(r, t) = \left[ g_{\text{grav}} + U_{g,\text{sum}}^{(26)} + \L
 
 | Term | Value (m/s) | Paper |
 |---|---|---|
-| g_grav = GM/r | 1.227×10? | baseline |
+| g_grav = μ_s∇(M_s/r) | 1.227×10? | baseline |
 | Ug_sum (26 layers) | 6.380×10?? | 26-layer Triadic |
 | ?-term | 2.998×10?6 | cosmological |
 | g_quantum | ~2×10?6 | HUP |
@@ -236,7 +236,7 @@ dust ram-pressure (a_dust  4×10?? m/s).
 ## Abstract
 
 This paper introduces a new UQFF gravity term for the Andromeda Galaxy (M31): the **Friedmann-UQFF
-Expansion Coupling**, defined as g_expansion = (GM/r)  H(z)  t. For Andromeda's blueshift redshift z
+Expansion Coupling**, defined as g_expansion = (μ_s∇(M_s/r))  H(z)  t. For Andromeda's blueshift redshift z
 = -0.001, the Friedmann H(z) equals 69.969 km/s/Mpc = 2.269×10?8 s-1. Evaluated at the Hubble
 timescale t = t_H = 4.352×10-7 s, the dimensionless Friedmann-UQFF Resonance Coefficient H_UQFF =
 H(z)·t_H  **0.987**  a near-unity value representing gravitational doubling over cosmological time.
@@ -248,7 +248,7 @@ derived from the Andromeda module upgrade.
 
 ## 1. Background
 
-The UQFF framework computes total gravitational acceleration g_total(r,t) as a sum of Newtonian,
+The UQFF framework computes total gravitational acceleration g_total(r,t) as a sum of DPM-emergent,
 Triadic (26-layer), cosmological, quantum, electromagnetic, fluid, resonant, and dark matter terms.
 PAPER_273275 established the Andromeda-specific physics: blueshift approach amplifier ?, HI 21-cm
 resonance, and DM 80/20 NFW partition.
@@ -256,7 +256,7 @@ resonance, and DM 80/20 NFW partition.
 The original Andromeda implementation (pre-Session 76) lacked a time-dependent expansion coupling
 that accounts for the Friedmann-Lemaitre cosmological evolution of Hubble parameter H(z). This is
 significant because over a Hubble timescale, H(z)t  1  implying that expansion-mediated
-gravitational coupling is of the same order as the base Newtonian term.
+gravitational coupling is of the same order as the base DPM-emergent term.
 
 ---
 
@@ -288,7 +288,7 @@ This represents the gravitational effect of cosmological expansion flow coupling
 at timescale t.
 
 **Numerical values for Andromeda:**
-- g_base = GM/r = 6.674×10?  1.989×104 / (1.04×10) = **1.227×10? m/s**
+- g_base = μ_s∇(M_s/r) = 6.674×10?  1.989×104 / (1.04×10) = **1.227×10? m/s**
 - At t = 1 Gyr (3.156×10-6 s): g_expansion = 1.227×10?  2.269×10?8 × 3.156×10-6 = **8.79×10? m/s**
 - At t = t_Hubble (4.352×10-7 s): g_expansion = 1.227×10? ≈ 0.987 = **1.211×10? m/s**
 
@@ -310,7 +310,7 @@ $$H_{\text{UQFF}} = 2.269 \times 10^{-18} \times 4.352 \times 10^{17} = \mathbf{
 
 H_UQFF ≈ 0.987  **1** is a remarkable result. It means:
 
-> Over a Hubble timescale, the Friedmann expansion coupling adds an amount of gravitational acceleration equal to **98.7% of the base Newtonian term**  nearly doubling g_base.
+> Over a Hubble timescale, the Friedmann expansion coupling adds an amount of gravitational acceleration equal to **98.7% of the base DPM-emergent term**  nearly doubling g_base.
 
 This near-unity value is not coincidental. In a flat ?CDM universe (O_m + O_? = 1):
 
@@ -395,7 +395,7 @@ $$g_{\text{total}}(r, t) = \left[ g_{\text{grav}} + U_{g,\text{sum}}^{(26)} + \L
 
 | Term | Value (m/s) | Paper |
 |---|---|---|
-| g_grav = GM/r | 1.227×10? | baseline |
+| g_grav = μ_s∇(M_s/r) | 1.227×10? | baseline |
 | Ug_sum (26 layers) | 6.380×10?? | 26-layer Triadic |
 | ?-term | 2.998×10?6 | cosmological |
 | g_quantum | ~2×10?6 | HUP |
@@ -449,7 +449,7 @@ H_UQFF=H(z)*t_H~0.987 [PAPER_276]`
 ## Abstract
 
 This paper introduces a new UQFF gravity term for the Andromeda Galaxy (M31): the **Friedmann-UQFF
-Expansion Coupling**, defined as g_expansion = (GM/r)  H(z)  t. For Andromeda's blueshift redshift z
+Expansion Coupling**, defined as g_expansion = (μ_s∇(M_s/r))  H(z)  t. For Andromeda's blueshift redshift z
 = -0.001, the Friedmann H(z) equals 69.969 km/s/Mpc = 2.269×10?8 s-1. Evaluated at the Hubble
 timescale t = t_H = 4.352×10-7 s, the dimensionless Friedmann-UQFF Resonance Coefficient H_UQFF =
 H(z)·t_H  **0.987**  a near-unity value representing gravitational doubling over cosmological time.
@@ -461,7 +461,7 @@ derived from the Andromeda module upgrade.
 
 ## 1. Background
 
-The UQFF framework computes total gravitational acceleration g_total(r,t) as a sum of Newtonian,
+The UQFF framework computes total gravitational acceleration g_total(r,t) as a sum of DPM-emergent,
 Triadic (26-layer), cosmological, quantum, electromagnetic, fluid, resonant, and dark matter terms.
 PAPER_273275 established the Andromeda-specific physics: blueshift approach amplifier ?, HI 21-cm
 resonance, and DM 80/20 NFW partition.
@@ -469,7 +469,7 @@ resonance, and DM 80/20 NFW partition.
 The original Andromeda implementation (pre-Session 76) lacked a time-dependent expansion coupling
 that accounts for the Friedmann-Lemaitre cosmological evolution of Hubble parameter H(z). This is
 significant because over a Hubble timescale, H(z)t  1  implying that expansion-mediated
-gravitational coupling is of the same order as the base Newtonian term.
+gravitational coupling is of the same order as the base DPM-emergent term.
 
 ---
 
@@ -501,7 +501,7 @@ This represents the gravitational effect of cosmological expansion flow coupling
 at timescale t.
 
 **Numerical values for Andromeda:**
-- g_base = GM/r = 6.674×10?  1.989×104 / (1.04×10) = **1.227×10? m/s**
+- g_base = μ_s∇(M_s/r) = 6.674×10?  1.989×104 / (1.04×10) = **1.227×10? m/s**
 - At t = 1 Gyr (3.156×10-6 s): g_expansion = 1.227×10?  2.269×10?8 × 3.156×10-6 = **8.79×10? m/s**
 - At t = t_Hubble (4.352×10-7 s): g_expansion = 1.227×10? ≈ 0.987 = **1.211×10? m/s**
 
@@ -523,7 +523,7 @@ $$H_{\text{UQFF}} = 2.269 \times 10^{-18} \times 4.352 \times 10^{17} = \mathbf{
 
 H_UQFF ≈ 0.987  **1** is a remarkable result. It means:
 
-> Over a Hubble timescale, the Friedmann expansion coupling adds an amount of gravitational acceleration equal to **98.7% of the base Newtonian term**  nearly doubling g_base.
+> Over a Hubble timescale, the Friedmann expansion coupling adds an amount of gravitational acceleration equal to **98.7% of the base DPM-emergent term**  nearly doubling g_base.
 
 This near-unity value is not coincidental. In a flat ?CDM universe (O_m + O_? = 1):
 
@@ -608,7 +608,7 @@ $$g_{\text{total}}(r, t) = \left[ g_{\text{grav}} + U_{g,\text{sum}}^{(26)} + \L
 
 | Term | Value (m/s) | Paper |
 |---|---|---|
-| g_grav = GM/r | 1.227×10? | baseline |
+| g_grav = μ_s∇(M_s/r) | 1.227×10? | baseline |
 | Ug_sum (26 layers) | 6.380×10?? | 26-layer Triadic |
 | ?-term | 2.998×10?6 | cosmological |
 | g_quantum | ~2×10?6 | HUP |
@@ -663,7 +663,7 @@ H_UQFF=H(z)*t_H~0.987 [PAPER_276]`
 ## Abstract
 
 This paper introduces a new UQFF gravity term for the Andromeda Galaxy (M31): the **Friedmann-UQFF
-Expansion Coupling**, defined as g_expansion = (GM/r)  H(z)  t. For Andromeda's blueshift redshift z
+Expansion Coupling**, defined as g_expansion = (μ_s∇(M_s/r))  H(z)  t. For Andromeda's blueshift redshift z
 = -0.001, the Friedmann H(z) equals 69.969 km/s/Mpc = 2.269×10?8 s-1. Evaluated at the Hubble
 timescale t = t_H = 4.352×10-7 s, the dimensionless Friedmann-UQFF Resonance Coefficient H_UQFF =
 H(z)·t_H  **0.987**  a near-unity value representing gravitational doubling over cosmological time.
@@ -675,7 +675,7 @@ derived from the Andromeda module upgrade.
 
 ## 1. Background
 
-The UQFF framework computes total gravitational acceleration g_total(r,t) as a sum of Newtonian,
+The UQFF framework computes total gravitational acceleration g_total(r,t) as a sum of DPM-emergent,
 Triadic (26-layer), cosmological, quantum, electromagnetic, fluid, resonant, and dark matter terms.
 PAPER_273275 established the Andromeda-specific physics: blueshift approach amplifier ?, HI 21-cm
 resonance, and DM 80/20 NFW partition.
@@ -683,7 +683,7 @@ resonance, and DM 80/20 NFW partition.
 The original Andromeda implementation (pre-Session 76) lacked a time-dependent expansion coupling
 that accounts for the Friedmann-Lemaitre cosmological evolution of Hubble parameter H(z). This is
 significant because over a Hubble timescale, H(z)t  1  implying that expansion-mediated
-gravitational coupling is of the same order as the base Newtonian term.
+gravitational coupling is of the same order as the base DPM-emergent term.
 
 ---
 
@@ -715,7 +715,7 @@ This represents the gravitational effect of cosmological expansion flow coupling
 at timescale t.
 
 **Numerical values for Andromeda:**
-- g_base = GM/r = 6.674×10?  1.989×104 / (1.04×10) = **1.227×10? m/s**
+- g_base = μ_s∇(M_s/r) = 6.674×10?  1.989×104 / (1.04×10) = **1.227×10? m/s**
 - At t = 1 Gyr (3.156×10-6 s): g_expansion = 1.227×10?  2.269×10?8 × 3.156×10-6 = **8.79×10? m/s**
 - At t = t_Hubble (4.352×10-7 s): g_expansion = 1.227×10? ≈ 0.987 = **1.211×10? m/s**
 
@@ -737,7 +737,7 @@ $$H_{\text{UQFF}} = 2.269 \times 10^{-18} \times 4.352 \times 10^{17} = \mathbf{
 
 H_UQFF ≈ 0.987  **1** is a remarkable result. It means:
 
-> Over a Hubble timescale, the Friedmann expansion coupling adds an amount of gravitational acceleration equal to **98.7% of the base Newtonian term**  nearly doubling g_base.
+> Over a Hubble timescale, the Friedmann expansion coupling adds an amount of gravitational acceleration equal to **98.7% of the base DPM-emergent term**  nearly doubling g_base.
 
 This near-unity value is not coincidental. In a flat ?CDM universe (O_m + O_? = 1):
 
@@ -822,7 +822,7 @@ $$g_{\text{total}}(r, t) = \left[ g_{\text{grav}} + U_{g,\text{sum}}^{(26)} + \L
 
 | Term | Value (m/s) | Paper |
 |---|---|---|
-| g_grav = GM/r | 1.227×10? | baseline |
+| g_grav = μ_s∇(M_s/r) | 1.227×10? | baseline |
 | Ug_sum (26 layers) | 6.380×10?? | 26-layer Triadic |
 | ?-term | 2.998×10?6 | cosmological |
 | g_quantum | ~2×10?6 | HUP |

@@ -48,13 +48,13 @@ e^{-\alpha t}
 $$
 
 **Where:**
-- $g_{\mathrm{compressed}}$ — Full 6-term Compressed MUGE (PAPER_372): Newtonian base ×
+- $g_{\mathrm{compressed}}$ — Full 6-term Compressed MUGE (PAPER_372): DPM-emergent base ×
   expansion × superconductivity + Ug-sum + cosmological + quantum coherence + fluid + perturbation
 - $\sum_{i} a_{\mathrm{resonance},i}$ — Sum of all 12 Resonance MUGE terms (PAPER_371):
   $a_{DPM} + a_{THz} + a_{vac\_diff} + a_{super\_freq} + a_{aether\_res} + U_{g4i}
   + a_{quantum\_freq} + a_{Aether\_freq} + a_{fluid\_freq} + Osc_{term} + a_{exp\_freq} + f_{TRZ}$
 - $\alpha$ — Resonance damping factor (s-1); governs the timescale over which resonance
-  corrections decay toward the Newtonian baseline.  
+  corrections decay toward the DPM-emergent baseline.  
   *Physical meaning:* In weak-field or late-epoch regimes, resonance terms average out and
   $g_{\mathrm{cohesive}} \to g_{\mathrm{compressed}}$.
 
@@ -75,7 +75,7 @@ Resonance UQFF — not a separate theory but a special case of it.
 
 ## 4. SM Gravity Emergence Condition
 
-Standard Model gravity $g_{SM} = GM/r^2$ is **recovered** from the cohesive framework when two
+Standard Model gravity $g_{SM} = μ_s∇(M_s/r)$ is **recovered** from the cohesive framework when two
 conditions are simultaneously satisfied:
 
 1. **Resonance phase equilibrium:** $f_{TRZ} = 0$  

@@ -145,7 +145,7 @@ are accessible as a unified block.
 
 | Feature | SM | CC2-29 System |
 |---------|-----|---------------|
-| Atomic scale gravity | Neglected (QM dominant) | H_res + g_Newton at r_Bohr |
+| Atomic scale gravity | Neglected (QM dominant) | H_res + g_DPM at r_Bohr |
 | Ring system gravity | Gravitational perturbation theory | F_ring(φ, r) unified term |
 | UV resonance in gravity | Not coupled | H_res = A sin(2πf_res t) |
 | System registry scale | Object-by-object | Universal 29-system registry |

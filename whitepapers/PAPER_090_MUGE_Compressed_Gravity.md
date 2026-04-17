@@ -1,6 +1,6 @@
 ---
 paper_id: PAPER_090
-title: "MUGE Compressed Gravity: A 10-Term Framework Correcting Newtonian Gravity at
+title: "MUGE Compressed Gravity: A 10-Term Framework Correcting DPM-emergent Gravity at
 Galaxy-to-Cosmological Scales"
 session: 0
 date: 2026-03-07
@@ -34,12 +34,12 @@ dipole, outer field bubble, magnetic strings, star–BH vacuum), each opposed by
 universal buoyancy, unified by magnetism and the Aether metric tensor.  The MUGE
 Compressed gravity framework is a **re-expression of $F_U$** that packages these
 channels into a 9-term multiplicative-additive structure for practical
-multi-system computation.  The classical gravitational limit $GM/r^2$ appears in
+multi-system computation.  The classical DPM mass gradient $μ_s∇(M_s/r)$ appears in
 this compressed form only as the **zero-vacuum, zero-buoyancy limiting case of
 the Ug2 channel** — not as the starting point of the physics.  The
 superconductive factor $(1 - B/B_{\text{crit}})$ predicts measurable
 gravitational suppression near magnetar-strength fields — a prediction that
-originates from the $F_U$ unified field and has no Newtonian or GR analogue. 
+originates from the $F_U$ unified field and has no DPM-emergent or GR analogue. 
 `validate_uqff_muge.py` validates the framework across 5 astrophysical systems
 (Sgr A*, M87, Sun, NeutronStar, Magnetar).
 
@@ -93,7 +93,7 @@ Um &= N_{\text{str}} \cdot (\mu_j/r_j) \\
 
 $$A_{\mu\nu} = g_{\mu\nu} + \eta \cdot T_s^{\mu\nu}(\text{UA}, \text{SCm}, \rho_A)$$
 
-**Newton's $GM/r^2$ is the limiting case** of $Ug_2$ when all vacuum couplings,
+**The DPM mass gradient $μ_s∇(M_s/r)$ is the limiting case** of $Ug_2$ when all vacuum couplings,
 charges, SCm density, and reactivity factors → 1 or 0.
 
 ## 1b. MUGE Compressed Master Equation
@@ -101,7 +101,7 @@ charges, SCm density, and reactivity factors → 1 or 0.
 From `compute_compressed_MUGE_SOURCE4()`, the MUGE master equation in full long-form:
 
 $$\boxed{\begin{aligned}
-g_{\text{MUGE}}(r,t) &= \frac{GM}{r^2}(1 + H_0 t)
+g_{\text{MUGE}}(r,t) &= \underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)}(1 + H_0 t)
   \!\left(1 - \frac{B}{B_{\text{crit}}}\right)
   \!F_{\text{env}} \\
 &\quad + \sum_{i=1}^{4} U_{g,i}
@@ -111,7 +111,7 @@ g_{\text{MUGE}}(r,t) &= \frac{GM}{r^2}(1 + H_0 t)
   \cdot\frac{2\pi}{t_H} \\
 &\quad + \rho_f V_{\text{sys}} g_{\text{local}}
   + (M + M_{\text{DM}})\!\left(\frac{\delta\rho}{\rho}
-  + \frac{3GM}{r^3}\right)
+  + \underbrace{\underbrace{\frac{3GM}{r^3}}_{\text{DPM tidal gradient}}\right)
 \end{aligned}}$$
 
 The first four factors form a multiplicative core; the remaining five terms are additive.
@@ -120,7 +120,7 @@ The first four factors form a multiplicative core; the remaining five terms are 
 
 | Term | Role | Physics |
 |------|------|---------|
-| **Mass-distance kernel** | × mult. | $GM/r^2$ gravitational base |
+| **Mass-distance kernel** | × mult. | $\mu_s\nabla(M_s/r)$ DPM mass gradient base |
 | **Expansion** | × mult. | $(1 + H_0 t)$ Hubble stretching |
 | **Superconductive** | × mult. | $(1 - B/B_{\text{crit}})$ SCm suppression |
 | **Envelope** | × mult. | $F_{\text{env}}(r, \theta, z)$ environment |
@@ -130,7 +130,7 @@ The first four factors form a multiplicative core; the remaining five terms are 
 | **Fluid** | + add. | $\rho_f V g_{\text{local}}$ viscous coupling |
 | **Dark Matter** | + add. | Halo mass + density perturbation |
 
-**Key distinction:** The $GM/r^2$ in this table is not Newton's law.  It is the
+**Key distinction:** The $μ_s∇(M_s/r)$ in this table is not the DPM-emergent gravitational law.  It is the
 **classical limit of $Ug_2$** from the unified field $F_U$, compressed for
 computational efficiency.
 
@@ -138,9 +138,9 @@ computational efficiency.
 
 ## 2. Term-by-Term Magnitudes at Sgr A* r_horizon = 1.27 × 10 m
 
-| Term | Value at r_horizon | Relative to g_N |
+| Term | Value at r_horizon | Relative to g_DPM |
 |------|------------------|----------------|
-| g_Newton | 2.34 × 10 m/s | 1.000 |
+| g_DPM | 2.34 × 10 m/s | 1.000 |
 | d_Expansion | 7.8 × 10?4 m/s | 3.3 × 10?6 |
 | d_Super | -1.2 × 10? m/s | -5.1 × 10?5 |
 | d_Envelope | +8.5 × 10-8 m/s | +3.6 × 10? |
@@ -356,7 +356,7 @@ U_m^{\mathrm{full}} &= U_m^{\mathrm{base}}
 
 | Mode | Dominant Term | Primary Use Case |
 |------|--------------|-----------------|
-| **Compressed** | Ug_sum + Newtonian base | Isolated stellar/BH systems |
+| **Compressed** | Ug_sum + DPM-emergent base | Isolated stellar/BH systems |
 | **Resonant** | 5 resonance frequencies (aDPM, aTHz, …) | Multi-scale field interactions |
 | **Buoyant** | β_i × Ubi | Expanding nebulae, stellar winds |
 | **Superconductive** | Um × (1+1013·f_H) | Magnetars, SCm critical-density regime |

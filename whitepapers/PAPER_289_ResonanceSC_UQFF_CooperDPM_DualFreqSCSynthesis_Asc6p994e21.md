@@ -115,7 +115,7 @@ The UQFF Resonance-Channel Meissner Quench differs from PAPER_266 (HUDF galactic
 
 The RSC module demonstrates that the Meissner quench acts *selectively* on resonance channels —
 a clear prediction: in magnetar environments where B ≈ B_crit, the resonance-SC gravity contribution
-is completely suppressed while non-resonant gravitational terms (Newtonian, Λ) remain unaffected.
+is completely suppressed while non-resonant gravitational terms (DPM-emergent, Λ) remain unaffected.
 
 ---
 

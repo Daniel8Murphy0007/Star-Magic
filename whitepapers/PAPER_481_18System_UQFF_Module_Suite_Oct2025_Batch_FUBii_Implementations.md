@@ -33,7 +33,7 @@ $$F_{U\_{Bi\_i}} \approx \left(\int_0^{x_2} \mathcal{I}(r,t)\, dx\right) \approx
 
 where the integrand $\mathcal{I}$ sums all force contributions:
 
-$$\mathcal{I} = -F_0 + \frac{m_e c^2}{r^2} \mathrm{DPM}_{mom} \costheta + \frac{GM}{r^2} \mathrm{DPM}_{grav} + \rho_{vac,UA} \mathrm{DPM}_{stab} + k_{LENR}\left(\frac{\omega_{LENR}}{\omega_0}\right)^2 + k_{act}\cos(\omega_{act}t + \phi) + k_{DE}L_X + 2qB_0 V\sintheta \cdot \mathrm{DPM}_{res} + k_n\sigma_n + k_{rel}\left(\frac{E_{cm,astro}}{E_{cm}}\right)^2 + F_\nu$$
+$$\mathcal{I} = -F_0 + \frac{m_e c^2}{r^2} \mathrm{DPM}_{mom} \costheta + \underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)} \mathrm{DPM}_{grav} + \rho_{vac,UA} \mathrm{DPM}_{stab} + k_{LENR}\left(\frac{\omega_{LENR}}{\omega_0}\right)^2 + k_{act}\cos(\omega_{act}t + \phi) + k_{DE}L_X + 2qB_0 V\sintheta \cdot \mathrm{DPM}_{res} + k_n\sigma_n + k_{rel}\left(\frac{E_{cm,astro}}{E_{cm}}\right)^2 + F_\nu$$
 
 with quadratic root approximation $x_2 \approx -1.35\times10^{172}$ (universal constant).
 

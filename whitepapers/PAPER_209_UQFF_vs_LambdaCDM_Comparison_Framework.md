@@ -59,9 +59,9 @@ $$
   & + (Ug1+Ug2+Ug3'+Ug4) + ?c2/3 \\
   & + (h/v(?x?p))·??*·H·? dV·(2p/t_Hubble) \\
   & + ?_fluid·V·g \\
-  & + (M_vis+M_DM)·(d?/? + 3GM/r3) \\
+  & + (M_vis+M_DM)·(d?/? + 3μ_s∇(M_s/r)/r) \\
   & Lambda-CDM limit of UQFF: set Ug1=Ug2=Ug3'=Ug4=0, B=0, F_env=0, quantum term=0, fluid=0 \\
-  & ? g_LCDM = G·M/r2 · (1+H(t,z)) + ?c2/3 = Newtonian + H(z) + ? ?
+  & ? g_LCDM = G·M/r2 · (1+H(t,z)) + ?c2/3 = DPM-emergent + H(z) + ? ?
 \end{aligned}
 $$
 
@@ -79,7 +79,7 @@ $$
 | Quantum gravity | None | h·??*H? term | UQFF new |
 | Buoyancy | None | ?_fluid·V·g | UQFF new |
 | Resonance | None | Ug1+Ug2+Ug3'+Ug4 | UQFF new |
-| Perturbations | d only | d?/? + 3GM/r3 | UQFF GR corrected |
+| Perturbations | d only | d?/? + 3μ_s∇(M_s/r)/r | UQFF GR corrected |
 
 ---
 

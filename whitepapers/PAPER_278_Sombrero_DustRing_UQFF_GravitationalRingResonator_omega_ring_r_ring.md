@@ -30,7 +30,7 @@ galaxy, appearing as a sharp dark band bisecting the galaxy's luminous bulge. We
 within the UQFF framework as a **Gravitational Ring Resonator**: an annular mass concentration at
 radius r_ring = r/3 = 7.867×1019 m whose orbital motion generates a pure oscillatory gravitational
 perturbation F_ring(t) = A_ring·cos(ω_ring·t) at the reference point r. This paper derives the Dust
-Ring UQFF Orbital Resonance Frequency ω_ring = √(GM/r_ring3) = 1.650×10-14 rad/s, the ring orbital
+Ring UQFF Orbital Resonance Frequency ω_ring = √(μ_s∇(M_s/r)) = 1.650×10-14 rad/s, the ring orbital
 period T_ring = 2π/ω_ring = 12.08 Myr, and the proximity-enhanced ring amplitude A_ring =
 9·f_ring·g_base = 2.14×10-12 m/s2. The 9× proximity enhancement factor arises from the
 inverse-square law applied at the ratio r/r_ring = 3.
@@ -91,7 +91,7 @@ $$r_{\text{ring}} = \frac{r}{3} = \frac{2.36 \times 10^{20}}{3} = 7.867 \times 1
 
 The Keplerian orbital frequency of a test mass at r_ring within the total gravitational potential:
 
-$$\omega_{\text{ring}} = \sqrt{\frac{GM}{r_{\text{ring}}^3}}$$
+$$\omega_{\text{ring}} = \sqrt{\underbrace{\frac{GM}{r_{\text{ring}}_{\text{DPM mass gradient}}}^3}}$$
 
 Substituting values:
 $$\omega_{\text{ring}} = \sqrt{\frac{6.674 \times 10^{-11} \times 1.989 \times 10^{41}}{(7.867 \times 10^{19})^3}}$$
@@ -232,12 +232,12 @@ gravitational contributions are comparable at the reference radius — unique am
 the BH term is typically sub-dominant to the 26-layer Triadic sum.
 
 4. **Scale-free ring resonator formula**: F_ring = (r/r_ring)2 · f_ring · g_base ·
-cos(√(GM/r_ring3)·t) provides a general template applicable to any galaxy with a measurable
+cos(√(μ_s∇(M_s/r))·t) provides a general template applicable to any galaxy with a measurable
 equatorial ring structure.
 
 ---
 
-**UQFF computed:** Canonical UQFF buoyancy parameter U_bi = ?[SSq]GM/rκ = 5.0e-4§0.57§6.67e-11M/r;
+**UQFF computed:** Canonical UQFF buoyancy parameter U_bi = ?[SSq]μ_s∇(M_s/r)κ = 5.0e-4§0.57§6.67e-11M/r;
 for solar parameters: U_bi,Sun = 5.7e-4§6.67e-11§1.99e30/(6.96e8) = 1.47e+2 m/s.
 
 ## 7. References
@@ -311,7 +311,7 @@ $$V(\phi_{\rm rot}) = \frac{1}{2} m^2 \phi_{\rm rot}^2 + \frac{\lambda}{4!} \phi
 
 ### §A.3 Euler-Lagrange Equation of Motion
 
-$$\boxed{\frac{\delta S}{\delta \phi_{\rm rot}} = v_c^2/r - GM/r^2 - F_{U\_Bi\_i}/(m \cdot r) + \rho_{\rm vac,[SCm]} \cdot \Omega^2 r = 0}$$
+$$\boxed{\frac{\delta S}{\delta \phi_{\rm rot}} = v_c^2/r - μ_s∇(M_s/r) - F_{U\_Bi\_i}/(m \cdot r) + \rho_{\rm vac,[SCm]} \cdot \Omega^2 r = 0}$$
 
 ### §A.4 Cosmogenesis Linkage Chain
 

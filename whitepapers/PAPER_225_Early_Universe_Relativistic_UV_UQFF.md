@@ -248,7 +248,7 @@ The class automatically classifies the velocity regime:
 
 | $v/c$ | Regime |
 |-------|--------|
-| $< 0.01$ | Newtonian (non-relativistic) |
+| $< 0.01$ | DPM-emergent (non-relativistic) |
 | $0.01$–$0.10$ | Mildly relativistic (proto-galactic infall) |
 | $0.10$–$0.50$ | Moderately relativistic (AGN wind / radio jet) |
 | $> 0.50$ | Highly relativistic (blazar / GRB jet) |
@@ -301,7 +301,7 @@ calculator classes across CP3 from this single source document.
 
 ---
 
-**UQFF computed:** Canonical UQFF buoyancy parameter U_bi = ?[SSq]GM/rκ = 5.0e-4§0.57§6.67e-11M/r;
+**UQFF computed:** Canonical UQFF buoyancy parameter U_bi = ?[SSq]μ_s∇(M_s/r)κ = 5.0e-4§0.57§6.67e-11M/r;
 for solar parameters: U_bi,Sun = 5.7e-4§6.67e-11§1.99e30/(6.96e8) = 1.47e+2 m/s.
 
 

@@ -107,7 +107,7 @@ $$\boxed{g_{\rm UQFF}(r,t) = \frac{\lambda_P}{2\pi}\!\left[f_{\rm super}(t) + f_
 
 ## 4. Physical Interpretation
 
-- **No SM gravity illusions**: The standard Newtonian/GR treatment of SMBH binaries ($g = GM_{\rm chirp}/r^2$) is replaced entirely by frequency-derived Planck-scale terms — demonstrating that UQFF can recover GW physics from first principles via $g = f \lambda_P / (2\pi)$.
+- **No SM gravity illusions**: The standard DPM-emergent/GR treatment of SMBH binaries ($g = GM_{\rm chirp}/r^2$) is replaced entirely by frequency-derived Planck-scale terms — demonstrating that UQFF can recover GW physics from first principles via $g = f \lambda_P / (2\pi)$.
 - **Aether dominant**: The extremely small result (1.65×10-122 m/s2) reflects the Planck-length scaling, where the observable is the frequency rather than the spatial acceleration — consistent with LIGO SNR~475 GW detection.
 - **THz hole pipeline advance**: The 1012 Hz THz term represents a new UQFF prediction — near-field energy transport through structured spacetime cavities.
 

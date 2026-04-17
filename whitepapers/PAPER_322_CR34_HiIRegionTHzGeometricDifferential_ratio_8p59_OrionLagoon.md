@@ -133,7 +133,7 @@ $$
 catalogs, and standard GR calculations provide the quantitative baseline; UQFF deviations are within
 current observational uncertainty and predict measurable signatures at future facilities.
 
-**UQFF computed:** Galactic scale UQFF gravity correction g_UQFF/g_Newton = 1 + [SSq]?(r/kpc) = 1 +
+**UQFF computed:** Galactic scale UQFF gravity correction g_UQFF/g_DPM = 1 + [SSq]?(r/kpc) = 1 +
 2.85e-4(8.5) = 1.0206e+0; 2.06% deviation at Galactic Center.
 
 ---

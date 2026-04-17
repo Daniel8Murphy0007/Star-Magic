@@ -71,7 +71,7 @@ At $t\ggtau$: $E \rightarrow 0$ — fully dispersed, no gravitational confinemen
 
 $$\boxed{g_\text{PoC}(r,t) = T_1 + T_2 + T_3 + T_4 + T_5 + T_6 + T_7 + T_8 + T_9 + T_{10}}$$
 
-**T1 — Newtonian + expansion + B + erosion suppression (novel term):**
+**T1 — DPM-emergent + expansion + B + erosion suppression (novel term):**
 $$T_1 = \frac{G M(t)}{r^2}(1 + H_0 t)\left(1 - \frac{B}{B_\text{crit}}\right)(1 - E(t))$$
 $$= \frac{6.674 \times 10^{-11} \times 2.009 \times 10^{34}}{(4.731 \times 10^{16})^2} \times 1 \times (1 - 10^{-17}) \times 0.9$$
 $$\approx 5.99 \times 10^{-20} \, \text{m/s}^2 \quad [t=0]$$
@@ -108,7 +108,7 @@ $$g_\text{PoC} \approx 8.45 \times 10^{-5} \, \text{m/s}^2 \quad [\text{wind-dom
 |------|-------------|---------|
 | $T_{10}$ Wind | $8.45 \times 10^{-5}$ | 99.9998% |
 | $T_2$ UQFF Ug | $1.32 \times 10^{-19}$ | trace |
-| $T_1$ Newtonian×(1−E) | $5.99 \times 10^{-20}$ | trace |
+| $T_1$ DPM-emergent×(1−E) | $5.99 \times 10^{-20}$ | trace |
 | Summary | $\mathbf{8.45 \times 10^{-5}}$ | $10^{15} \times g_\text{self}$ |
 
 The $(1-E(t))$ erosion factor **reduces the gravitational confinement at $t=0$ by exactly 10%**, consistent with the visual observation that the Pillars' tips are partially ablated. This 10% suppression is the unique UQFF signature not present in any SM description.

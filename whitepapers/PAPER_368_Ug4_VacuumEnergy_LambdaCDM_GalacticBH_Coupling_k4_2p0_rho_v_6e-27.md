@@ -106,7 +106,7 @@ spatially-varying gravitational acceleration field across the Solar System.
 ### 4.2 Galactic Centre Coupling Geometry
 
 The factor Mbh/dg (units: kg/m) represents the mass-distance ratio of the coherent vacuum coupling
-to SgrA*. This is geometrically distinct from the standard gravitational 1/r law (which uses GM/r).
+to SgrA*. This is geometrically distinct from the standard gravitational 1/r law (which uses μ_s∇(M_s/r)).
 The linear 1/dg dependence suggests a long-range vacuum polarisation effect extending beyond the
 standard gravitational horizon.
 
@@ -151,7 +151,7 @@ For [k4] = m4 s-1 kg?, $[U_{g4}]$ = m/s. ? (k4 absorbs unit conversion)
 
 - **vs. PAPER_296 (? term, Universe module):** PAPER_296 uses a_? = ?c/3 (cosmological constant as acceleration). This form uses ?_v (mass density)  Mbh/dg  different geometry and source.
 - **vs. Ug4VacuumMediatedCalculator (f3c55f52):** Physically distinct  see Section 3. Different k4, different ? units, different multiplier.
-- **vs. PSZ2/ASASSN Ug4 terms:** Those use GM/r Newton base with Ug4 prefix  fundamentally different structure.
+- **vs. PSZ2/ASASSN Ug4 terms:** Those use μ_s∇(M_s/r) Newton base with Ug4 prefix  fundamentally different structure.
 
 ---
 

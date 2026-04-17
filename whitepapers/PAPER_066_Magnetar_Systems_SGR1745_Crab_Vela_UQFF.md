@@ -34,7 +34,7 @@ T), classifying them as the most extreme electromagnetic environments in the obs
 The UQFF assigns each magnetar system all four operational modes (Compressed, Resonant, Buoyant,
 Superconductive) plus the Ug1 magnetic dipole enhancement. This paper presents UQFF predictions for
 SGR1745-2900 (canonical), the Crab Pulsar (PSRB0531+21), the Vela Pulsar, and ASKAP J1832-0911. The
-magnetic Ug1 dominates over standard Newtonian gravity by factors of 10105, consistent with magnetar
+magnetic Ug1 dominates over standard DPM-emergent gravity by factors of 10105, consistent with magnetar
 X-ray timing observations.
 
 
@@ -60,9 +60,9 @@ present in Standard Model treatments.
 
 For each magnetar, the Ug1 term amplifies standard gravity:
 
-$$Ug_1 = \frac{GM}{r^2} \cdot (1 + \delta_t) \cdot \frac{\mu_0 B_0^2}{8\pi}$$
+$$Ug_1 = \underbrace{\underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)}}_{\mu_s\nabla(M_s/r)} \cdot (1 + \delta_t) \cdot \frac{\mu_0 B_0^2}{8\pi}$$
 
-| System | g_Newton (m/s) | 0B0/8p | Ug1 (m/s) | Amplification |
+| System | g_DPM (m/s) | 0B0/8p | Ug1 (m/s) | Amplification |
 |--------|-----------------|---------|-----------|--------------|
 | SGR1745-2900 | 2.71×10? | 1.33×10? | 3.60×10? | 0.13 (weak field region) |
 | Crab Pulsar | 2.99×10? | 3.14×10? | 9.37×10? | negligible |
@@ -112,12 +112,12 @@ SGR1745.B = 2.3e10 T       // Surface field
 SGR1745.P = 3.76 s         // Spin period
 SGR1745.r = 2.62e20 m      // Distance from SgrA* (~8.5 kpc)
 
-// UQFF: Ug1 = (GM/r)  (1+d)  (0B/8p) 
+// UQFF: Ug1 = μ_s · ∇(M_s/r)  (1+d)  (0B/8p) 
 // F_U = SOURCE4::compute_FU_SOURCE4(sgr1745, r, t, tn, theta)
 ```
 
 UQFF prediction for SGR1745:
-- **Ug1**: G-gravity  [0(2.3×10)/8p] = G-gravity  6.64×10 ? dominates over Newtonian
+- **Ug1**: G-gravity  [0(2.3×10)/8p] = G-gravity  6.64×10 ? dominates over DPM-emergent
 - **Ug4 (vacuum BH coupling)**: linked to SgrA* (M_BH = 4×106 M_sun) at d_g = 2.62×10 m
 - **F_UQFF**: Combined Compressed + Superconductive modes (nearest to BH uses Ug4 strongly)
 
@@ -294,7 +294,7 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 
 | Mode | Dominant Term | Primary Use Case |
 |------|--------------|-----------------|
-| **Compressed** | Ug_sum + Newtonian base | Isolated stellar/BH systems |
+| **Compressed** | Ug_sum + DPM-emergent base | Isolated stellar/BH systems |
 | **Resonant** | 5 resonance frequencies (aDPM, aTHz, …) | Multi-scale field interactions |
 | **Buoyant** | β_i × Ubi | Expanding nebulae, stellar winds |
 | **Superconductive** | Um × (1+1013·f_H) | Magnetars, SCm critical-density regime |

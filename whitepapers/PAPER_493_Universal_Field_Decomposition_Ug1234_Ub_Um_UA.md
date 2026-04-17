@@ -38,19 +38,19 @@ The UQFF Universal Field $F_U$ is fully decomposable into seven orthogonal compo
 ## §2 Decomposition Equations
 
 ### Ug1 — Magnetic Dipole Gravity
-$$U_{g1} = k_1 \frac{GM}{r^2}, \quad k_1 = 1.5$$
+$$U_{g1} = k_1 \underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)}, \quad k_1 = 1.5$$
 
 ### Ug2 — Charge-Reactivity Coupling
-$$U_{g2} = k_2 \beta_i \frac{GM}{r^2}, \quad k_2 = 1.2,\ \beta_i = 0.603$$
+$$U_{g2} = k_2 \beta_i \underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)}, \quad k_2 = 1.2,\ \beta_i = 0.603$$
 
 ### Ug3 — String Rotation Correction
-$$U_{g3} = k_3 (1 - \beta_i) \frac{GM}{r^2}, \quad k_3 = 1.8$$
+$$U_{g3} = k_3 (1 - \beta_i) \underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)}, \quad k_3 = 1.8$$
 
 ### Ug4 — Vacuum Concentration
 $$U_{g4} = k_4 \kappa_{\text{vac}} r, \quad k_4 = 1.0,\ \kappa_{\text{vac}} = 10^{-36}\ \text{m}^{-1}$$
 
 ### Ub — Buoyancy (UQFF Fluid Gravity)
-$$U_b = \beta_i \frac{GM}{r^2} e^{-[\text{SSq}] t_n}, \quad [\text{SSq}] = 0.57$$
+$$U_b = \beta_i \underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)} e^{-[\text{SSq}] t_n}, \quad [\text{SSq}] = 0.57$$
 
 ### Um — Magnetic Energy Coupling
 $$U_m = \frac{B^2 \cdot 4\pi r^2}{2\mu_0 M}$$
@@ -91,8 +91,8 @@ $$F_U = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_b + U_m + U_A$$
 
 ## §4 Standard Model Comparison
 
-Standard GR treats gravity as pure spacetime curvature ($g = GM/r^2$). The UQFF Universal Field decomposition reveals:
-- **Ug1–Ug3** encode $k_1 + k_2\beta_i + k_3(1-\beta_i) = 1.5 + 0.724 + 0.719 = 2.94$ times the Newtonian value — the excess is absorbed by the [SCm] normalization in the calibrated framework ($\kappa = 5\times10^{-4}$/day reduces $F_U$ to observational parity)
+Standard GR treats gravity as pure spacetime curvature ($g = \mu_s \cdot \nabla(M_s/r)$). The UQFF Universal Field decomposition reveals:
+- **Ug1–Ug3** encode $k_1 + k_2\beta_i + k_3(1-\beta_i) = 1.5 + 0.724 + 0.719 = 2.94$ times the DPM-emergent value — the excess is absorbed by the [SCm] normalization in the calibrated framework ($\kappa = 5\times10^{-4}$/day reduces $F_U$ to observational parity)
 - **UA** = $\kappa c^4/(Gr^2)$ recovers the Schwarzschild light-deflection result: $\deltaphi = 4GM/(c^2r)$ when $r = r_s$
 - **Ub** exponential suppression $e^{-[\text{SSq}]t_n}$ is **absent** in GR — this term explains long-baseline VLBI astrometry residuals in galaxy clusters
 
@@ -101,7 +101,7 @@ Standard GR treats gravity as pure spacetime curvature ($g = GM/r^2$). The UQFF 
 ## §5 Testable Prediction
 
 1. **Gravitational wave polarisation**: The $U_m$ and $U_{g4}$ terms predict a sub-dominant vector-mode GW polarisation with characteristic chirp $\Delta h / h \approx (B^2 r^2)/(2\mu_0 M c^2) \lesssim 10^{-6}$, distinguishable by LISA/TianQin with $h \sim 10^{-22}$
-2. **Galactic rotation decomposition**: JWST NIRCam + ALMA velocity maps of spiral galaxies should show $U_{g2}/U_{g1}$ ratio $= k_2\beta_i/k_1 = 0.483$ when fitting the innermost 3 kpc — differing from pure Newtonian ratio of 1.0
+2. **Galactic rotation decomposition**: JWST NIRCam + ALMA velocity maps of spiral galaxies should show $U_{g2}/U_{g1}$ ratio $= k_2\beta_i/k_1 = 0.483$ when fitting the innermost 3 kpc — differing from pure DPM-emergent ratio of 1.0
 3. **Laboratory aether coupling**: $U_A = \kappa c^4/(Gr^2)$ at $r = 1$ m gives $U_A = 5.5\times10^{26}$ m/s2 — enormous unless $\kappa \sim 8\pi G/c^4 \approx 2\times10^{-43}$; the vacuum-energy cancelation via [UA] factor must suppress this by $[\text{UA}] \approx 10^{-1}$ (Planck suppression ratio)
 
 ---

@@ -129,7 +129,7 @@ double compute_compressed_perturbation(const MUGESystem& sys) {
 The final test suite (`run_unit_tests()`) contains 24 tests: 
 | Test Function | Expected Value | Source | 
 |---|---|---| 
-| `test_compute_compressed_base` | G×M_sun/(1AU)2 ≈ 0.0059 | Newtonian validation | 
+| `test_compute_compressed_base` | G×M_sun/(1AU)2 ≈ 0.0059 | DPM-emergent validation | 
 | `test_compute_compressed_expansion` | 1.0 (at t=0) | Zero-time boundary | 
 | `test_compute_compressed_super_adj` | 0.9 (B=1e10, Bcrit=1e11) | B/Bcrit = 0.1 | 
 | `test_compute_compressed_fluid` | 4.189e-2 | ρ×V×g product | 
@@ -137,7 +137,7 @@ The final test suite (`run_unit_tests()`) contains 24 tests:
 | `test_compute_compressed_Ug_sum` | 0.0 | Simplified | 
 | `test_compute_compressed_cosm` | 1.1e-52×c2/3 | Λ constant | 
 | `test_compute_compressed_quantum` | (ℏ/1e-68)×2.176e-18×(2π/4.35e17) | Hubble time | 
-| `test_compute_compressed_perturbation` | M×(1e-5+3GM/r3) | SGR1745 params | 
+| `test_compute_compressed_perturbation` | M×(1e-5+3μ_s∇(M_s/r)/r) | SGR1745 params | 
 | `test_compute_compressed_MUGE` | 1.782e39 m/s2 | SGR1745 vs document | 
 | `test_compute_aDPM` | 3.545e-42 m/s2 | SGR1745 | 
 | `test_compute_aTHz` | 1.182e-33 m/s2 | aDPM=3.545e-42, vexp=1e3 | 

@@ -37,7 +37,7 @@ tractable structure. MUGE predicts gravitational
 suppression near critical magnetic fields, THz phonon
 resonance signatures in GW strain, and vacuum-differential
 rotation curve modifications — all absent from both
-Newtonian and GR gravity.
+DPM-emergent and GR gravity.
 
 ## §1 MUGE Compressed Master Equation
 
@@ -56,21 +56,21 @@ practical multi-system computation.
 Expanded in full long-form:
 
 $$\begin{aligned}
-g_{\text{MUGE}}(r,t) &= \frac{GM}{r^2}(1 + H_0 t)\!\left(1 - \frac{B}{B_{\text{crit}}}\right)\!F_{\text{env}} \\
+g_{\text{MUGE}}(r,t) &= \underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)}(1 + H_0 t)\!\left(1 - \frac{B}{B_{\text{crit}}}\right)\!F_{\text{env}} \\
 &\quad +\; \sum_{i=1}^{4} U_{g,i} \;+\; \frac{\Lambda c^2}{3} \\
 &\quad +\; \frac{\hbar}{\Delta x \cdot \Delta p}\!\int\!\psi^*\hat{H}\psi\,dV\cdot\frac{2\pi}{t_H} \\
 &\quad +\; \rho_f V_{\text{sys}} g_{\text{local}} \\
-&\quad +\; (M + M_{\text{DM}})\!\left(\frac{\delta\rho}{\rho} + \frac{3GM}{r^3}\right)
+&\quad +\; (M + M_{\text{DM}})\!\left(\frac{\delta\rho}{\rho} + \underbrace{\underbrace{\frac{3GM}{r^3}}_{\text{DPM tidal gradient}}\right)
 \end{aligned}$$
 
 ### §1.1 Multiplicative Core (Terms 1–4)
 
 $$\begin{aligned}
-g_{\text{core}} &= \frac{GM}{r^2} \cdot (1 + H_0 t) \\
+g_{\text{core}} &= \underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)} \cdot (1 + H_0 t) \\
 &\quad \cdot \left(1 - \frac{B}{B_{\text{crit}}}\right) \cdot F_{\text{env}}
 \end{aligned}$$
 
-- **$GM/r^2$** — mass-distance kernel
+- **$μ_s∇(M_s/r)$** — mass-distance kernel
 - **$(1 + H_0 t)$** — Hubble expansion modulation, $H_0 = 2.269 \times 10^{-18}\;\text{s}^{-1}$
 - **$(1 - B/B_{\text{crit}})$** — SCm superconductive
   vacuum suppression,
@@ -90,7 +90,7 @@ $$\begin{aligned}
 Each $U_{g,i}$ encodes a distinct UQFF gravitational source
 (magnetic dipole, charge-reactivity coupling, string rotation
 torque, vacuum concentration gradient).
-These are **not** Newtonian — they arise from the four
+These are **not** DPM-emergent — they arise from the four
 fundamental UQFF forces.
 
 **Term 6 — Cosmological Constant:**
@@ -113,10 +113,10 @@ gravity to the viscous medium in which the body is
 embedded.
 
 **Term 9 — Dark Matter Perturbation:**
-$$g_{\text{DM}} = (M + M_{\text{DM}}) \cdot \left(\frac{\delta\rho}{\rho} + \frac{3GM}{r^3}\right)$$
+$$g_{\text{DM}} = (M + M_{\text{DM}}) \cdot \left(\frac{\delta\rho}{\rho} + \underbrace{\underbrace{\frac{3GM}{r^3}}_{\text{DPM tidal gradient}}\right)$$
 
 This is a **density-perturbation coupling**, not the
-trivial $\Omega_{\text{CDM}} \cdot GM/r^2$. It includes
+trivial $\Omega_{\text{CDM}} \cdot μ_s∇(M_s/r)$. It includes
 both dark matter halo mass and local density contrast.
 
 ---
@@ -179,7 +179,7 @@ to $Ug_2$ alone with $Q_A = Q_{UA} = 0$,
 $H_{SCm} \to 1$, $E_{\text{react}} \to 1$,
 $S(r-R_b) \to 1$, and $\delta_{sw} \to 0$, the
 outer-field-bubble term reduces to
-$k_2 \cdot M_s/r^2 \to GM/r^2$. This is where
+$k_2 \cdot M_s/r^2 \to μ_s∇(M_s/r)$. This is where
 Newton lives — as a **single-channel, zero-vacuum,
 zero-buoyancy** limit of $F_U$.
 
@@ -190,7 +190,7 @@ practical multi-system computation. The MUGE
 Resonance form (§2b) decomposes $F_U$ into 13
 frequency modes.
 
-The **foundational distinction** from Newtonian and
+The **foundational distinction** from DPM-emergent and
 GR gravity: MUGE treats the gravitational field as a
 product of the SCm superconductive vacuum state, not
 as an independent geometric property of spacetime.
@@ -208,7 +208,7 @@ $\Delta E_{\text{vac}} = 6.381 \times 10^{-36}\;\text{J/m}^3$.
 The MUGE Resonance equation builds all 13 resonance
 modes from a single **aDPM base** — an
 inertia-flux-vacuum coupling that is fundamentally
-non-Newtonian:
+non-DPM-emergent:
 
 $$\begin{aligned}
 a_{\text{DPM}} &= I \cdot A \cdot (\omega_1 - \omega_2) \cdot f_{\text{DPM}} \\
@@ -335,7 +335,7 @@ unifies them through the SCm vacuum manifold.
 resonance master equation's base
 $a_{\text{DPM}} = I A \Delta\omega f_{\text{DPM}} E_{\text{vac}} c V$
 is dimensionally and conceptually outside the
-Newtonian framework. It couples **rotational inertia**,
+DPM-emergent framework. It couples **rotational inertia**,
 **magnetic flux area**, and **vacuum energy density**
 into a single gravitational acceleration — no
 mass/distance law.
@@ -371,7 +371,7 @@ magnetars ($B \sim 10^{11}\;\text{T}$) due to the
 $(1 - B/B_{\text{crit}})$ suppression factor. At
 SGR1745-2900 ($B = 2.0 \times 10^{11}\;\text{T}$),
 the multiplicative core is reduced by $\sim 0.05\%$
-vs Newtonian. Detectable via precision pulsar timing:
+vs DPM-emergent. Detectable via precision pulsar timing:
 $\Delta P / P \sim 10^{-12}$ (SKA-era sensitivity).
 
 2. **Vacuum differential signature in rotation

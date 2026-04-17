@@ -53,7 +53,7 @@ $$
 \end{aligned}
 $$
 
-**Critical structure:** `(1+M_sf(t))` acts AS A MULTIPLIER on the Newtonian term, while `-E_rad` is
+**Critical structure:** `(1+M_sf(t))` acts AS A MULTIPLIER on the DPM-emergent term, while `-E_rad` is
 an ADDITIVE SUBTRACTION from the total sum.
 
 ---
@@ -160,7 +160,7 @@ $$
 
 For M16: r_photev ˜ any r > 10-5 m (radiation always dominates at nebular scales). This is ALREADY
 implied in the UQFF framework: the `-E_rad` term drives net negative gravity throughout M16, except
-in the dense pillar cores where self-gravity (`(M_vis+M_DM)·(d?/? + 3GM/r3)`) provides resistance.
+in the dense pillar cores where self-gravity (`(M_vis+M_DM)·(d?/? + 3μ_s∇(M_s/r)/r)`) provides resistance.
 
 ---
 

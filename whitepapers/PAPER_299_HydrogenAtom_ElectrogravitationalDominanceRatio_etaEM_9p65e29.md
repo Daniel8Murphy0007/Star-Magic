@@ -26,7 +26,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ## Abstract
 
 At the atomic scale, the UQFF framework reveals a fundamental asymmetry between gravitational and
-electromagnetic forces. The Newtonian gravitational acceleration at the Bohr radius (g_base =
+electromagnetic forces. The DPM-emergent gravitational acceleration at the Bohr radius (g_base =
 3.99×10-17 m/s2) is the smallest base-gravity value across all 27 UQFF modules — five orders of
 magnitude below the previous minimum (M16 Eagle Nebula, 1.454×10-12 m/s2). The electron Lorentz
 acceleration in the atomic magnetic field (a_Lorentz = q×v_orb×B/m_e = 3.85×1013 m/s2) completely
@@ -54,7 +54,7 @@ framework:
 
 ## 2. Core Equations
 
-### 2.1 Newtonian Base Gravity
+### 2.1 DPM-emergent Base Gravity
 
 $$g_{\text{base}} = \frac{G \cdot M_p}{r_{\text{Bohr}}^2} = \frac{6.6743 \times 10^{-11} \times 1.6726 \times 10^{-27}}{(5.2918 \times 10^{-11})^2}$$
 
@@ -73,7 +73,7 @@ $$a_{\text{Lorentz}} = \frac{3.504 \times 10^{-17}}{9.109 \times 10^{-31}} = 3.8
 
 $$\eta_{\text{EM}} = \frac{a_{\text{Lorentz}}}{g_{\text{base}}} = \frac{3.848 \times 10^{13}}{3.986 \times 10^{-17}} = \mathbf{9.65 \times 10^{29}}$$
 
-The electromagnetic Lorentz force exceeds Newtonian gravity by **30 orders of magnitude** at the
+The electromagnetic Lorentz force exceeds DPM-emergent gravity by **30 orders of magnitude** at the
 hydrogen Bohr radius.
 
 ---
@@ -82,7 +82,7 @@ hydrogen Bohr radius.
 
 | Quantity | Value | Units | Notes |
 |----------|-------|-------|-------|
-| g_base | 3.986×10-17 | m/s2 | Newtonian at r_Bohr |
+| g_base | 3.986×10-17 | m/s2 | DPM-emergent at r_Bohr |
 | a_Lorentz | 3.848×1013 | m/s2 | DOMINANT EM term |
 | η_EM | **9.65×1029** | — | **[PAPER_299]** |
 | a_Ug (Ug1+Ug4) | 7.972×10-17 | m/s2 | 2×g_base |
@@ -119,7 +119,7 @@ The η_EM ratio of 9.65×1029 quantifies the well-known dominance of electromagn
 atomic scales. Within the UQFF framework, this is the first direct computation of this asymmetry as
 a UQFF term ratio. The result is consistent with the known force ratio
 (electromagnetic/gravitational ≈ 1036 for electron-proton, with η_EM here representing the
-Lorentz/Newtonian ratio specifically at v_orb and B_atom=10-4 T).
+Lorentz/DPM-emergent ratio specifically at v_orb and B_atom=10-4 T).
 
 The EM term a_Lorentz represents the centripetal Lorentz force maintaining the electron in its Bohr
 orbit, expressed as acceleration per unit mass of the system (proton reference frame). This bridges
@@ -131,7 +131,7 @@ classical orbital mechanics to the UQFF gravitational framework.
 
 ```cpp
 // [PAPER_299] in HYDROGEN_ATOM_UQFF_MODULE.cpp updateCache():
-g_base_cache    = G_NEWTON * M_proton / (r_Bohr * r_Bohr);    // 3.99e-17 m/s^2
+g_base_cache    = G_CONST * M_proton / (r_Bohr * r_Bohr);    // 3.99e-17 m/s^2
 a_Lorentz_cache = Q_ELEM * v_orb * B_atom / m_elec;           // 3.85e13  m/s^2
 eta_EM_cache    = a_Lorentz_cache / g_base_cache;              // 9.65e29 [PAPER_299]
 ```
@@ -168,7 +168,7 @@ Universe-scale PAPER_296–298)
 $$\boxed{\eta_{\text{EM}} = \frac{a_{\text{Lorentz}}}{g_{\text{base}}} = \frac{q \cdot v_{\text{orb}} \cdot B / m_e}{G \cdot M_p / r_{\text{Bohr}}^2} = 9.65 \times 10^{29}}$$
 
 The hydrogen atom UQFF module establishes the electrogravitational boundary: at the Bohr radius, the
-Lorentz electromagnetic force exceeds Newtonian gravity by 30 orders of magnitude. This defines the
+Lorentz electromagnetic force exceeds DPM-emergent gravity by 30 orders of magnitude. This defines the
 **EM-dominated regime** of the UQFF framework — the atomic-scale complement to the gravity-dominated
 and GR-dominated regimes of larger UQFF modules.
 

@@ -242,8 +242,8 @@ UQFF universality.
 In ?CDM, the effective gravitational acceleration at the Hubble scale is set by:
 $$g_{?CDM} = \frac{GM_{universe}}{R_H^2} \approx \frac{6.67 \times 10^{-11} \times 10^{53}}{(4.4 \times 10^{26})^2} \approx 3.4 \times 10^{-12} \text{ m/s}^2$$
 
-This is the Newtonian/GR result at the Hubble radius. The UQFF MUGE result (3.958×10^14) is
-dramatically larger  but this comparison is inappropriate. The UQFF g_MUGE is not a Newtonian
+This is the DPM-emergent/GR result at the Hubble radius. The UQFF MUGE result (3.958×10^14) is
+dramatically larger  but this comparison is inappropriate. The UQFF g_MUGE is not a DPM-emergent
 surface gravity; it is the total resonance amplitude of the MUGE field integrated over the vacuum
 energy structure of the cosmos. It encodes:
 1. The SCm aether resonance at cosmic scales
@@ -251,7 +251,7 @@ energy structure of the cosmos. It encodes:
 3. The residual superconductive frequency baseline
 
 The 3.958×10^14 value is thus the UQFF "cosmological resonance floor"  comparable to a
-cosmological-scale Ug field integral, not to a point-mass Newtonian calculation.
+cosmological-scale Ug field integral, not to a point-mass DPM-emergent calculation.
 
 ### 4.2 Connection to CMB and Baryon Acoustic Oscillations
 
@@ -276,9 +276,9 @@ Hubble expansion contribution to local g. In this sense, f_TRZ is the UQFF analo
 
 ---
 
-## 5. Comparison: Newtonian Gravity as MUGE Limit
+## 5. Comparison: DPM-emergent Gravity as MUGE Limit
 
-The Standard Model relationship $g_{SM} = GM/r^2$ is recovered from MUGE in the limit where all resonance terms are suppressed except Ug4i (vacuum concentration):
+The Standard Model relationship $g_{SM} = μ_s∇(M_s/r)$ is recovered from MUGE in the limit where all resonance terms are suppressed except Ug4i (vacuum concentration):
 
 $$\lim_{B \to 0, f\_{TRZ} \to 0} g_{MUGE} \approx U_{g4i} = \frac{G M_{sys}}{r^2} \cdot e^{-\kappa t}$$
 
@@ -315,7 +315,7 @@ structure distribution.
 | Cascade ratio: Sgr A* / Student | ~10^15 | – |
 | Full suite dynamic range | 38 decades | – |
 | UQFF O_m analogue | e^{-?t} ≈ 0.08 (at t_U) | – |
-| MUGE vs ?CDM Newtonian at R_H | 3.958×10^14 vs 3.4×10^-12 | m/s^2 |
+| MUGE vs ?CDM DPM-emergent at R_H | 3.958×10^14 vs 3.4×10^-12 | m/s^2 |
 
 ---
 

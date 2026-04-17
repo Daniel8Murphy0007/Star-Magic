@@ -73,7 +73,7 @@ The Lagoon Nebula operates with two independent non-gravitational barriers, both
 |---------|-------------|---------------------|-----------------|
 | EM turbulence | a_EM = 9.59×107 m/s | ?_EM = 1.96×10? | Lorentz force on turbulent ions |
 | Radiation pressure | a_rad = 7.51×106 m/s | ?_rad = 1.53×10-8 | Herschel 36 O7V photon pressure |
-| **Self-gravity** | g_base = 4.91×10? m/s | 1.0 (reference) | GM/r |
+| **Self-gravity** | g_base = 4.91×10? m/s | 1.0 (reference) | μ_s∇(M_s/r) |
 
 Both barriers independently exceed g_base. EM leads radiation by 12.77.
 

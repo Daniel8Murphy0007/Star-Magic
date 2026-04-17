@@ -79,7 +79,7 @@ LIMIT 500
 
 The UQFF-modified virial theorem:
 
-$$\sigma_{\rm UQFF}^2 = \sigma_{\rm Newton}^2 \times \left(1 + \frac{F_{U,Bi,i}}{F_{\rm Newton}}\right) = \frac{GM}{r_{\rm eff}} \times \left(1 + \frac{\Omega_g \cdot \sum Ug_j}{GM/r^2}\right)$$
+$$\sigma_{\rm UQFF}^2 = \sigma_{\rm DPM}^2 \times \left(1 + \frac{F_{U,Bi,i}}{F_{\rm DPM}}\right) = \underbrace{\frac{GM}{r_{\rm eff}}}_{\mu_s\nabla(M_s/r_{\rm eff})} \times \left(1 + \frac{\Omega_g \cdot \sum Ug_j}{μ_s∇(M_s/r)}\right)$$
 
 ### Validation Results by Galaxy Type
 
@@ -250,7 +250,7 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 
 | Mode | Dominant Term | Primary Use Case |
 |------|--------------|-----------------|
-| **Compressed** | Ug_sum + Newtonian base | Isolated stellar/BH systems |
+| **Compressed** | Ug_sum + DPM-emergent base | Isolated stellar/BH systems |
 | **Resonant** | 5 resonance frequencies (aDPM, aTHz, …) | Multi-scale field interactions |
 | **Buoyant** | β_i × Ubi | Expanding nebulae, stellar winds |
 | **Superconductive** | Um × (1+1013·f_H) | Magnetars, SCm critical-density regime |

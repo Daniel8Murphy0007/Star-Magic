@@ -142,7 +142,7 @@ result = calc.compute({"t": 3.156e14})
 
 The MUGE Compressed UQFF framework unifies 10 astrophysical systems across six orders of
 magnitude in mass and spatial scale. The electromagnetic–aether term $F_{em}$ dominates in
-young star-forming nebulae and planetary nebulae, while classical Newtonian gravity reemerges
+young star-forming nebulae and planetary nebulae, while classical DPM-emergent gravity reemerges
 for massive evolved galaxies. The resonance equation $R(t)$ provides a complementary
 oscillatory signature for each system on characteristic star-formation and wind timescales.
 

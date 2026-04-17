@@ -229,7 +229,7 @@ g_MUGE_freq = ?_{i=1}^{26} [a_DPM,i + a_THz,i + a_super,i + a_fluid,i
              · f_TRZ · (?_vac,[UA]/?_vac,[SCm]) · exp(-[SSq]n/26)
 
 ?? = -f_react/(2pP)          [magnetar spin-down; f_react=1e10 Hz]
-v_orb = v(GM/r) · f_res      [orbital velocity proof]
+v_orb = v(μ_s∇(M_s/r)) · f_res      [orbital velocity proof]
 R_bubble = v_wind t f_res     [bubble radius proof]
 SFR = ?_gas v_wind f_res      [star formation rate proof]
 L_SN(t) = L_peak e^{-t/t} f_res   [supernova light curve proof]

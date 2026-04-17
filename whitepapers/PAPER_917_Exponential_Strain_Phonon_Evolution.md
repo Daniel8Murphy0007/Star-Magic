@@ -297,7 +297,7 @@ bridge.*
 3. PAPER_915 — GW170817 Phonon Strain Damping
 4. PAPER_915 — GW170817 Phonon Strain Damping (constant D model)
 5. PAPER_921 — Cumulative Inspiral Phase Lag Integral
-6. Blanchet, L. (2014) LRR 17, 2 — Post-Newtonian chirp evolution
+6. Blanchet, L. (2014) LRR 17, 2 — Post-DPM-emergent chirp evolution
 4. Murphy, D.T. — Star Magic UQFF Framework (2024-2026)
 
 ---

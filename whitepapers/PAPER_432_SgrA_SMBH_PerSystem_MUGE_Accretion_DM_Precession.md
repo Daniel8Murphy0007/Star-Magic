@@ -73,7 +73,7 @@ $$\Omega(t) = a \cdot \frac{c}{r} \cdot e^{-t/\tau_Omega}$$
 
 $$\boxed{g_\text{SgrA}(r,t) = \frac{G M(t)}{r^2}(1 + H_0 t)\left(1 - \frac{B(t)}{B_\text{crit}}\right) + T_\text{UQFF} + T_\Lambda + T_Q + T_\text{EM} + T_\text{fluid} + T_\text{osc} + T_\text{DM} + T_\text{GW}}$$
 
-**Term 1 — Newtonian base with accreting M(t):**
+**Term 1 — DPM-emergent base with accreting M(t):**
 $$T_1 = \frac{G M(t)}{r^2} (1 + H_0 t)\left(1 - \frac{B(t)}{B_\text{crit}}\right)$$
 
 At $t = 5 \times 10^9$ yr: $T_1 \approx 2.98 \times 10^3$ m/s2
@@ -135,7 +135,7 @@ The DM precession factor $\sin(30°)$ reduces the DM perturbation contribution b
 
 ## 7. Comparison to Standard Model
 
-Standard Newtonian: $g_\text{SM} = G M_0/r^2 \approx 2.97 \times 10^3$ m/s2
+Standard DPM-emergent: $g_\text{SM} = G M_0/r^2 \approx 2.97 \times 10^3$ m/s2
 
 UQFF enhancement includes accreting mass term and EM channel but the SMBH regime is dominated by relativistic effects. The novel $\sin(30°)$ DM precession coupling predicts a **2.5% anomalous gravitational effect** on infalling stellar orbits with DM-halo inclination.
 

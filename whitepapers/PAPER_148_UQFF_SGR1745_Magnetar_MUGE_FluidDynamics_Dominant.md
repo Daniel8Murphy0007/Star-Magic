@@ -42,10 +42,10 @@ surface magnetic field of B ~ 3×10^11 T — among the strongest known magnetic 
 Under the UQFF MUGE 12-Term Resonance framework, the dominant gravitational term for SGR1745-2900 is
 afluid_freq (Navier-Stokes SCm fluid coupling), yielding a MUGE gravitational acceleration of g =
 1.773×10^-9 m/s^2 at the magnetar's magnetospheric scale. This result is physically distinct from
-the surface Newtonian gravity (G*M/R^2 ~ 1.4×10^13 m/s^2) because MUGE at this scale probes the
+the surface DPM-emergent gravity (G*M/R^2 ~ 1.4×10^13 m/s^2) because MUGE at this scale probes the
 magnetospheric driven SCm fluid dynamics — not the compact object's bulk gravity. The fluid
 dominance at SGR1745 validates the UQFF principle that extreme magnetic fields (B >> B_crit =
-4.4×10^13 T × f_correction) produce extreme SCm fluid accelerations that drive non-Newtonian
+4.4×10^13 T × f_correction) produce extreme SCm fluid accelerations that drive non-DPM-emergent
 gravitational dynamics observable through X-ray pulse timing and radio emission.
 
 ---
@@ -133,7 +133,7 @@ $$
 
 The MUGE g = 1.773e-9 m/s^2 is NOT the surface gravity (which is G*M/R^2 ~ 1.4e13 m/s^2). Instead,
 it characterizes the gravitational acceleration at the magnetospheric scale — the scale at which
-trapped charged particles and X-ray burst ejecta experience the MUGE correction to Newtonian
+trapped charged particles and X-ray burst ejecta experience the MUGE correction to DPM-emergent
 dynamics.
 
 At the light cylinder radius (where the co-rotation velocity = c):
@@ -146,13 +146,13 @@ $$
 \end{aligned}
 $$
 
-At this scale, the Newtonian gravity is:
+At this scale, the DPM-emergent gravity is:
 
 $$
 g_Newt(r_lc) = G*M/r_lc^2 ~ 6.67e-11 * 2.8e30 / (1.8e8)^2 ~ 5.8e4 m/s^2
 $$
 
-The MUGE correction (1.773e-9 vs 5.8e4 Newtonian) shows the fluid resonance term is ~15 orders of
+The MUGE correction (1.773e-9 vs 5.8e4 DPM-emergent) shows the fluid resonance term is ~15 orders of
 magnitude weaker than bulk gravity at this scale — but still physically significant for
 ultra-sensitive measurements of pulse arrival times and X-ray spectral signatures.
 

@@ -259,9 +259,9 @@ LIGO detection threshold: SNR > 8
 
 ## 6. Analytical Phase Lag Expression
 
-### 6.1 Newtonian Approximation
+### 6.1 DPM-Emergent Approximation
 
-For Newtonian inspiral, phase evolves as:
+For DPM-emergent inspiral, phase evolves as:
 
 **f_N(f) = 2pft - p/4 + (3/128)(pMf)^(-5/3) / (pMf)**
 
@@ -272,7 +272,7 @@ UQFF introduces damping factor D:
 For D = 0.333:
 **f_UQFF = f_GR  [1 + 8] = 9  f_GR**
 
-### 6.2 Post-Newtonian Corrections
+### 6.2 Post-DPM-emergent Corrections
 
 Full 3.5PN phase includes spin, tidal, and higher-order terms:
 
@@ -704,7 +704,7 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 
 | Mode | Dominant Term | Primary Use Case |
 |------|--------------|-----------------|
-| **Compressed** | Ug_sum + Newtonian base | Isolated stellar/BH systems |
+| **Compressed** | Ug_sum + DPM-emergent base | Isolated stellar/BH systems |
 | **Resonant** | 5 resonance frequencies (aDPM, aTHz, …) | Multi-scale field interactions |
 | **Buoyant** | β_i × Ubi | Expanding nebulae, stellar winds |
 | **Superconductive** | Um × (1+1013·f_H) | Magnetars, SCm critical-density regime |

@@ -34,7 +34,7 @@ The WolframFieldUnityEngine implements a discrete spacetime model grounded in th
 Project hypergraph formalism. A multiway graph `G ⊂ {(node₁, node₂, node₃)}` evolves via the
 `sacredMagneticOrbitRule`, which introduces new nodes stochastically at each step. Dimensionality is
 inferred via BFS visit-count power law. Buoyant gravity emerges from edge-flux density relative to
-total node count — no Newtonian constant `G` required.
+total node count — no DPM-emergent constant `G` required.
 
 ---
 
@@ -134,7 +134,7 @@ $$
 \end{aligned}
 $$
 
-No Newtonian `G` appears — gravity is purely topological.
+No DPM-emergent `G` appears — gravity is purely topological.
 
 ---
 

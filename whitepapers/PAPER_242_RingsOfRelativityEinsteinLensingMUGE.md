@@ -59,7 +59,7 @@ paper captures the static, geometry-driven Einstein ring correction.
 The static gravitational lensing amplification of the measured gravitational field along the
 line of sight through the Einstein ring geometry:
 
-$$L_t = \frac{GM}{c^2 r} \cdot L_{\rm factor}, \quad L_{\rm factor} = \frac{D_{LS}}{D_S} = 0.67$$
+$$L_t = \underbrace{\frac{GM}{c^2 r}}_{\text{DPM mass gradient}} \cdot L_{\rm factor}, \quad L_{\rm factor} = \frac{D_{LS}}{D_S} = 0.67$$
 
 $${\rm corr}_L = 1 + L_t$$
 
@@ -83,7 +83,7 @@ This mid-redshift Friedmann correction is distinct from $z=0$ (local), $z=3.5$ (
 $$g_{\rm Rings}(r,t) = \underbrace{T_1}_{\rm base+H+B+L} + \underbrace{T_2}_{\rm UQFF} + \underbrace{T_3}_{\Lambda} + \underbrace{T_4}_{\rm EM} + \underbrace{T_q}_{\rm QM} + \underbrace{T_{\rm fl}}_{\rm fluid} + \underbrace{T_{\rm osc}}_{\rm 2\text{-}mode} + \underbrace{T_{\rm DM}}_{\rm DM+pert2} + \underbrace{T_{\rm wind}}_{\rm stellar\,wind}$$
 
 **Term 1 — Base gravity with H(z), magnetic, Einstein lensing:**
-$$T_1 = \frac{GM}{r^2}(1 + H(z)\,t)(1 - B/B_{\rm crit})(1 + L_t)$$
+$$T_1 = \underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)}(1 + H(z)\,t)(1 - B/B_{\rm crit})(1 + L_t)$$
 
 **Term 2 — UQFF unified field with time-reversal:**
 $$T_2 = (U_{g1} + U_{g4})(1 + f_{TRZ})$$
@@ -106,10 +106,10 @@ $$T_{\rm osc} = 2A\cos(kx)\cos(\omega t) + \frac{2\pi}{t_{\rm Gyr}}A\cos(kx - \o
 The first mode is a **standing wave decomposition** ($2\coscos$); the second mode is a
 **Gyr-scaled traveling wave**. Together they form a beating-mode pair unique to this system.
 
-**Term 8 — Dark matter with $\delta_2 = 3GM/r^3$ perturbation:**
-$$T_{\rm DM} = \frac{(M + M_{\rm DM})(\deltarho/\rho + 3GM/r^3)}{M}$$
+**Term 8 — Dark matter with $\delta_2 = 3μ_s∇(M_s/r)/r$ perturbation:**
+$$T_{\rm DM} = \frac{(M + M_{\rm DM})(\deltarho/\rho + 3μ_s∇(M_s/r)/r)}{M}$$
 
-The second-order perturbation $3GM/r^3$ is a tidal-force density correction distinct from
+The second-order perturbation $3μ_s∇(M_s/r)/r$ is a tidal-force density correction distinct from
 density-contrast $\deltarho/\rho$.
 
 **Term 9 — Stellar wind feedback:**
@@ -126,7 +126,7 @@ $$T_{\rm wind} = \frac{\rho_{\rm wind}\,v_{\rm wind}^2}{\rho_{\rm fluid}}$$
 | Time dependence | Yes (decaying oscillation) | No (geometric constant) |
 | Parameter | $L_0=0.15$, $\tau_{\rm lens}$, $\omega_{\rm lens}$ | $L_{\rm factor}=0.67$ (distance ratio) |
 | Oscillation | None | Two-mode standing + traveling wave |
-| DM pert2 | Not present | $3GM/r^3$ tidal correction |
+| DM pert2 | Not present | $3μ_s∇(M_s/r)/r$ tidal correction |
 | Wind term | Not present | $\rho_w v_w^2/\rho_{\rm fl}$ |
 
 ---

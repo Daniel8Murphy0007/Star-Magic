@@ -78,9 +78,9 @@ At $t = 5{,}000$ yr $= 1.578 \times 10^{11}$ s:
 
 $$\boxed{g_\text{Magnetar}(r,t) = \sum_{k=1}^{10} T_k}$$
 
-### Term 1 — Base Newtonian gravity with cosmic expansion and magnetic SC correction
+### Term 1 — Base DPM-emergent gravity with cosmic expansion and magnetic SC correction
 
-$$T_1 = \frac{GM}{r^2} \cdot (1 + H_0 t) \cdot \left(1 - \frac{B(t)}{B_\text{crit}}\right)$$
+$$T_1 = \underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)} \cdot (1 + H_0 t) \cdot \left(1 - \frac{B(t)}{B_\text{crit}}\right)$$
 
 At $t = 5000$ yr:
 $$T_1 = \frac{6.674 \times 10^{-11} \times 2.785 \times 10^{30}}{(2 \times 10^4)^2} \times 1.0000003 \times 0.9917 \approx 4.607 \times 10^{11} \text{ m/s}^2$$
@@ -121,7 +121,7 @@ $$T_7 \approx 0 \quad [\text{subdominant at stellar radius}]$$
 
 ### Term 8 — Dark matter perturbation
 
-$$T_8 = (M + M_\text{DM}) \cdot \frac{\deltarho/\rho + 3GM/r^3}{r^2}$$
+$$T_8 = (M + M_\text{DM}) \cdot \frac{\deltarho/\rho + 3μ_s∇(M_s/r)/r}{r^2}$$
 
 $$T_8 \approx 2.135 \times 10^{41} \text{ kg m}^{-1} \quad [\text{mass-scale quantity; not additive to acceleration}]$$
 
@@ -156,7 +156,7 @@ $$\boxed{g_\text{Magnetar}(r = 20\,\text{km},\; t = 5000\,\text{yr}) \approx 4.4
 ## 6. Comparison to Standard Model
 
 The standard model for magnetar surface gravity is:
-$$g_\text{SM} = \frac{GM}{r^2} \approx 4.645 \times 10^{11} \text{ m/s}^2$$
+$$g_\text{SM} = \underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)} \approx 4.645 \times 10^{11} \text{ m/s}^2$$
 
 **UQFF enhancement factor:** $g_\text{UQFF}/g_\text{SM} \approx 9.63 \times$ — the EM term with UA/SCm ratio provides the dominant amplification. The standard model omits:
 - UA/SCm vacuum density ratio coupling ($\rho_text{UA}/\rho_text{SCm} = 10$)

@@ -69,7 +69,7 @@ $$= 10^{-10} \times (4.501 \times 10^{15})^2 = 10^{-10} \times 2.026 \times 10^{
 
 ### 2.2 Gravity Component
 
-$$g = \frac{GM}{r^2} = \frac{6.674 \times 10^{-11} \times 1.989 \times 10^{30}}{(6.96 \times 10^8)^2} = \frac{1.327 \times 10^{20}}{4.844 \times 10^{17}} = 274.0 \text{ m/s}^2$$
+$$g = \underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)} = \frac{6.674 \times 10^{-11} \times 1.989 \times 10^{30}}{(6.96 \times 10^8)^2} = \frac{1.327 \times 10^{20}}{4.844 \times 10^{17}} = 274.0 \text{ m/s}^2$$
 
 (Standard solar surface gravity: 274 m/s ? self-consistent)
 
@@ -371,7 +371,7 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 
 | Mode | Dominant Term | Primary Use Case |
 |------|--------------|-----------------|
-| **Compressed** | Ug_sum + Newtonian base | Isolated stellar/BH systems |
+| **Compressed** | Ug_sum + DPM-emergent base | Isolated stellar/BH systems |
 | **Resonant** | 5 resonance frequencies (aDPM, aTHz, …) | Multi-scale field interactions |
 | **Buoyant** | β_i × Ubi | Expanding nebulae, stellar winds |
 | **Superconductive** | Um × (1+1013·f_H) | Magnetars, SCm critical-density regime |

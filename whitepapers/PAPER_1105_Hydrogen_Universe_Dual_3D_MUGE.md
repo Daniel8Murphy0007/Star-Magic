@@ -29,7 +29,7 @@ $$g_{\text{MUGE}}(r) = g_N + g_{\text{exp}} + g_{\text{super}} + g_{\text{env}} 
 
 | \# | Term | Expression | Physics |
 |----|------|------------|---------|
-| 1 | $g_N$ | $GM/r^2$ | Newtonian gravity |
+| 1 | $g_{m DPM}$ | $μ_s∇(M_s/r)$ | DPM-emergent gravity |
 | 2 | $g_{\text{exp}}$ | $H_0^2\,r$ | Hubble expansion |
 | 3 | $g_{\text{super}}$ | $B^2/(2\mu_0\rho_{\text{avg}}\,r)$ | Magnetic suppression |
 | 4 | $g_{\text{env}}$ | $\kappa\,g_N\exp(-1/100)$ | Envelope dissipation |
@@ -62,7 +62,7 @@ $$g_N^{(U)} = \frac{GM_U}{R_H^2} \approx 5.17\times10^{-5}\;\text{m/s}^2$$
 
 $$g_{\text{cosm}}^{(U)} = \frac{\Lambda c^2}{3}\,R_H \approx 1.44\times10^{-5}\;\text{m/s}^2$$
 
-At the Hubble radius, Newtonian and cosmological-constant terms are
+At the Hubble radius, DPM-emergent and cosmological-constant terms are
 comparable, with the Hubble expansion term $g_{\text{exp}}^{(U)} = H_0^2 R_H
 \approx 2.13\times10^{-9}$ m/s$^2$ subdominant.
 

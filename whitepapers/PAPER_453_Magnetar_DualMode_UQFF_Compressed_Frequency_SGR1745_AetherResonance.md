@@ -46,9 +46,10 @@ SGR 1745-2900 is the magnetar closest to Sagittarius A*, orbiting at ~0.3 pc wit
 | τ_decay | 3.156×108 s (10 yr) | Characteristic spin-down timescale |
 | B/B_crit | 1×1011/4.4×1013 ≈ 2.27×10-3 | Magnetic suppression factor |
 
-### 2.2 Surface Gravity (Newtonian Base)
+### 2.2 Surface Gravity (DPM-emergent Base)
 
-$$g_{\rm Newton} = \frac{GM}{r^2} = \frac{6.674\times10^{-11}\times5.574\times10^{30}}{(10^4)^2} = \frac{3.72\times10^{20}}{10^8} = 3.72\times10^{12}\ \rm m/s^2$$
+$$g_{
+m DPM} = \underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)} = \frac{6.674\times10^{-11}\times5.574\times10^{30}}{(10^4)^2} = \frac{3.72\times10^{20}}{10^8} = 3.72\times10^{12}\ \rm m/s^2$$
 
 Note: The full MUGE equation uses additional UQFF terms that partially cancel this enormous surface
 gravity via the B-field and frequency modes.
@@ -59,11 +60,11 @@ gravity via the B-field and frequency modes.
 
 ### 3.1 Full Compressed Expression
 
-$$g_{\rm comp}(t) = \frac{GM}{r^2}(1 + H_z t)(1 - B/B_{\rm crit}) + \sum U_{gi} + \frac{\Lambda c^2}{3} + g_{\rm quantum} + g_{\rm fluid} + D(t) \cdot F_{\rm env,mag}$$
+$$g_{\rm comp}(t) = \underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)}(1 + H_z t)(1 - B/B_{\rm crit}) + \sum U_{gi} + \frac{\Lambda c^2}{3} + g_{\rm quantum} + g_{\rm fluid} + D(t) \cdot F_{\rm env,mag}$$
 
 ### 3.2 Magnetic Suppression
 
-$$g_{\rm B\text{-}supp} = \frac{GM}{r^2}(1 - B/B_{\rm crit}) = 3.72\times10^{12}\times(1 - 2.27\times10^{-3}) \approx 3.712\times10^{12}\ \rm m/s^2$$
+$$g_{\rm B\text{-}supp} = \underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)}(1 - B/B_{\rm crit}) = 3.72\times10^{12}\times(1 - 2.27\times10^{-3}) \approx 3.712\times10^{12}\ \rm m/s^2$$
 
 The B/B_crit suppression reduces gravity by 0.23% — modest at B = 1011 T.
 
@@ -130,7 +131,8 @@ With f₁=0.266 Hz (spin period), f₂=0.5 kHz (QPO), f₃=2.09 kHz (crust), f�
 
 ### 4.3 Mode 2 Final Result
 
-$$g_{\rm freq}(t) = g_{\rm Newton}(1 + H_z t)(1 - B/B_{\rm crit}) + a_{\rm DPM} + a_{\rm THz} + a_{\rm aether} + a_{\rm superfreq} + D(t)\cdot F_{\rm env}$$
+$$g_{\rm freq}(t) = g_{
+m DPM}(1 + H_z t)(1 - B/B_{\rm crit}) + a_{\rm DPM} + a_{\rm THz} + a_{\rm aether} + a_{\rm superfreq} + D(t)\cdot F_{\rm env}$$
 
 At t=0, the dominant contributions are a_THz and a_DPM. After normalisation through UQFF coupling
 factors:

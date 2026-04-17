@@ -102,7 +102,7 @@ where $E_k$ = kinetic energy of rotational charge distribution.
 The Bi-Field theory separates the gravitational field into two independent components:
 
 **G-Field (gravitational proper):**
-$$\vec{G} = -\nabla\phi_G = -\frac{GM}{r^2}\hat{r}$$
+$$\vec{G} = -\nabla\phi_G = -\underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)}\hat{r}$$
 
 **R-Field (rotational, reaction field):**
 $$\vec{R} = \nabla \times \vec{A}_g$$

@@ -105,7 +105,7 @@ $$g_\text{feedback}^\text{RPDP} = v_\text{wind}^2 = (2 \times 10^6)^2 = \mathbf{
 
 ### 3.2 Comparison with Base Gravitational Term
 
-The base Newtonian term in MUGE for NGC 1792:
+The base DPM-emergent term in MUGE for NGC 1792:
 
 $$\text{term1} = \frac{G M_0}{r^2} = \frac{6.674 \times 10^{-11} \times 1.989 \times 10^{40}}{(7.569 \times 10^{20})^2}$$
 
@@ -117,14 +117,14 @@ where M₀ = 1×1010 MM_sun = 1.989×1040 kg, r = 7.569×1020 m.
 
 $$\mathcal{R}_\text{RPDP} = \frac{g_\text{feedback}^\text{RPDP}}{\text{term1}} = \frac{4 \times 10^{12}}{7.35 \times 10^{-11}} \approx 5.4 \times 10^{22}$$
 
-The RPDP kinematic invariant exceeds the standard Newtonian gravitational acceleration by **22
+The RPDP kinematic invariant exceeds the standard DPM-emergent gravitational acceleration by **22
 orders of magnitude**.
 
 ### 3.4 Comparison Table
 
 | Term | Formula | Value (m/s2) | Order |
 |------|---------|--------------|-------|
-| Newtonian base (term1) | GM₀/r2 | 7.35×10-11 | 10-11 |
+| DPM-emergent base (term1) | GM₀/r2 | 7.35×10-11 | 10-11 |
 | Hubble expansion (term2) | H2 r / 2 | ~10-37 | 10-37 |
 | Magnetic (term3) | B2/(8π ρ r) | ~10-23 | 10-23 |
 | Cosmological (term4) | Λr/3 | ~10-28 | 10-28 |
@@ -208,7 +208,7 @@ The RPDP defines a **kinematic critical surface** in UQFF galaxy parameter space
 
 At the RPDP, the dominant gravitational term is g_feedback = v2 = 4×1012 m/s2 (for v = 2×106 m/s).
 This is:
-- Much larger than the Newtonian galactic gravity (~10-11 m/s2)
+- Much larger than the DPM-emergent galactic gravity (~10-11 m/s2)
 - Detectable as anomalous acceleration in SN ejecta kinematics
 - Potentially observable in starburst galaxy velocity dispersion measurements
 
@@ -256,7 +256,7 @@ Point (RPDP)** condition.
 (density-independent).
 
 3. For NGC 1792: `g_feedback = (2×106)2 = 4×1012 m/s2`, the dominant MUGE term by 22 orders over
-standard Newtonian gravity.
+standard DPM-emergent gravity.
 
 4. At RPDP, SN ejecta is **buoyancy-neutral** (zero Archimedes force) and driven solely by kinematic
 momentum transfer.

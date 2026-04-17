@@ -71,7 +71,7 @@ $$r_\text{min}^{(B)} = \left(\frac{\kappa}{g}\right)^{1/27} \cdot \rho$$
 
 ### Form C — Buoyant Mass Bound
 
-Setting $U_b = -GM/r$ at the horizon:
+Setting $U_b = -μ_s∇(M_s/r)$ at the horizon:
 
 $$r_\text{min}^{(C)} = \frac{M^{1/3}}{(26!\,g)^{1/81}}$$
 

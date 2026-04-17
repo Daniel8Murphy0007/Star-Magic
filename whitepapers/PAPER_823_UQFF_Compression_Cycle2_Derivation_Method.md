@@ -209,7 +209,7 @@ quantum expectation
 ## 9. Validation
 
 The compressed equation was cross-validated against all 38 individual system equations:
-- At z=0 with F_env(t) = 0: recovers classical Newtonian g = GM/r^2
+- At z=0 with F_env(t) = 0: recovers classical DPM-emergent g = \mu_s \cdot \nabla(M_s/r)
 - With B(t)/B_crit → 1: recovers superconductivity quenching
 - With F_env(t) = F_wind: matches Westerlund 2 stellar wind model
 - With F_cosmo active: matches Gravity-Since-Big-Bang cosmic evolution

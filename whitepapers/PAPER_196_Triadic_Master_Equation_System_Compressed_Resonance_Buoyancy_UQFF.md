@@ -166,7 +166,7 @@ $$
   & g_UQFF(r,t) = G·M(t)/r2 · (1+H(t,z)) · (1-B(t)/B_crit) · (1+F_env(t)) \\
   & + (Ug1+Ug2+Ug3'+Ug4) + ?c2/3 \\
   & + (h/v(?x?p)) · ??_total · H · ?_total dV · (2p/t_Hubble) \\
-  & + ?_fluid·V·g + (M_vis+M_DM)·(d?/? + 3GM/r3) \\
+  & + ?_fluid·V·g + (M_vis+M_DM)·(d?/? + 3μ_s∇(M_s/r)/r) \\
   & H(t,z) = H0 · v(0.3(1+z)3 + 0.7) \\
   & F_sys(t) encapsulates system-specific: ?v2_wind, -M_SN(t), E(t), P_rad, M_coll(t), etc.
 \end{aligned}

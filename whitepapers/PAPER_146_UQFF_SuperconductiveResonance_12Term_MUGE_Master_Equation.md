@@ -47,7 +47,7 @@ hierarchy of term dominance shifts with physical regime: aDPM (FDPM vortical dri
 extreme-mass systems like Sgr A*, while afluid_freq (Navier-Stokes jet coupling) dominates for
 compact stellar objects, stellar nurseries, and molecular clouds. The constant fTRZ=0.1 serves as
 the topological resonance zone boundary condition, with the critical limit lim(fTRZ->0) recovering
-Newtonian G*M/r^2.
+DPM-emergent G*M/r^2.
 
 **UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not
@@ -264,7 +264,7 @@ $$
 lim(fTRZ -> 0) [g_MUGE] = G*M/r^2
 $$
 
-proves that Standard Model Newtonian gravity is the zero-resonance limiting case of MUGE
+proves that Standard Model DPM-emergent gravity is the zero-resonance limiting case of MUGE
 (PAPER_155). When fTRZ=0.1 (physical), the MUGE correction adds ~10% deviation from GR predictions —
 consistent with the 40%/60% quantum-gravity bridge observation (PAPER_143) at the relevant coupling
 scales.
@@ -290,7 +290,7 @@ scales.
 |--------|---------------|----------|----------------|-------|
 | SGR1745-2900 | 1.773e-9 | afluid_freq | ~1.4e13 (surface) | MUGE captures magnetosphere |
 | Sgr A* | 4.105e29 | aDPM | ~3.6e10 (1 AU) | MUGE 10^19x amplification |
-| Tapestry | 1.001e27 | afluid_freq | ~1e-10 | Non-Newtonian SFR regime |
+| Tapestry | 1.001e27 | afluid_freq | ~1e-10 | Non-DPM-emergent SFR regime |
 | Westerlund 2 | 1.001e27 | afluid_freq | ~1e-10 | Cluster formation |
 | Pillars | 2.001e26 | afluid_freq | ~1e-11 | Molecular pillar dynamics |
 | Rings | 5.005e25 | afluid_freq | ~1e-12 | Lensing geometry |

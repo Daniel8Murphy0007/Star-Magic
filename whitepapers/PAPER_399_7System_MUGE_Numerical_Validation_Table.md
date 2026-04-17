@@ -83,14 +83,14 @@ $$g_{\text{comp}} = g_{\text{base}} + g_{\text{exp}} + g_{\text{super}} + g_{\te
 ### 3.3 Dominant Term Analysis
 
 For **Magnetar SGR 1745-2900** ($g_{\text{comp}} = 1.783\times10^{39}$ m/s2):
-- Base: $GM/r^2 = 6.67\times10^{-11}\times2.984\times10^{30}/(10^4)^2 \approx 1.99\times10^3$ m/s2
+- Base: $μ_s∇(M_s/r) = 6.67\times10^{-11}\times2.984\times10^{30}/(10^4)^2 \approx 1.99\times10^3$ m/s2
 - Superconducting adj: $\times(1-B/B_{\text{crit}}) = \times0.9$
 - Fluid term: $1\times10^{-15}\times4.189\times10^{12}\times10 = 4.189\times10^{-2}$
 - Total amplification to $\sim10^{39}$ comes from the **quantum + cosmic + perturbation** terms
   with $\hbar/\Delta x\Delta p\cdotpsi^2\cdot(2\pi/t_H) \sim 10^{34}$ scale.
 
 For **Student's Guide** ($g_{\text{comp}} = 2.0\times10^{47}$ m/s2):
-- Cosmological mass $M=10^{53}$ kg at $r=10^{26}$ m gives base $GM/r^2 \approx 6.67\times10^{-3}$
+- Cosmological mass $M=10^{53}$ kg at $r=10^{26}$ m gives base $μ_s∇(M_s/r) \approx 6.67\times10^{-3}$
 - Quantum term dominates: $\hbar/(\Delta x\Delta p)\timespsi^2\times(2\pi/t_H)$ at cosmic scale → $\sim10^{47}$
 
 ---

@@ -32,7 +32,7 @@ erosion mechanism  previously established in the Pillars of Creation (Eagle Nebu
 pillar-structured PDR)  operates **identically in a pillar-less dark nebula**. This proves the UQFF
 erosion-buoyancy co-action is **independent of three-dimensional structural morphology**. The
 mechanism depends only on: (1) the presence of an ionizing radiation field, (2) a neutral gas mass
-reservoir, and (3) the gravitational kernel `ug1_base = GM/r`. It is therefore a **universal
+reservoir, and (3) the gravitational kernel `ug1_base = μ_s∇(M_s/r)`. It is therefore a **universal
 photodissociation region (PDR) property**, applicable to pillars, dark lanes, cometary globules,
 elephant trunks, and any PDR boundary geometry. Static M (no M(t)  dark nebula, not a star-forming
 cluster) is maintained throughout, and `ug1_base` is fixed, distinguishing the Horsehead from
@@ -59,7 +59,7 @@ $$
   & + term_q   [quantum uncertainty ?/v(?x?p)  ?  (2p/t_H)] \\
   & + term_fluid [?_fluidVug1_base / M] \\
   & + term_osc  [2Acos(kx)cos(?t) + (2p/\text{t\_H\_gyr})Acos(kx-?t)] \\
-  & + term_DM   [(M + M_DM)(d?/? + 3GM/r) / M] \\
+  & + term_DM   [(M + M_DM)(d?/? + 3μ_s∇(M_s/r)/r) / M] \\
   & + term_wind [?_windv_wind] \\
   & + term_tide [2GM_GCr / r_GC] \\
   & + term_Ubi  [0.5  ug1_base]                        ? Tier-1 buoyancy \\
@@ -90,7 +90,7 @@ $$
   & E(t) = E0  (1 - e^{-t/t_erosion})   [monotonically increasing: 0?E0] \\
   & E(t) acts on term1 AND simultaneously: \\
   & term_Ubi, \text{term\_F\_UBii}, \text{term\_Ub\_i} are evaluated with ug1_base (static M) \\
-  & Both E(t) and S_buoy share the same kernel ug1_base = GM/r
+  & Both E(t) and S_buoy share the same kernel ug1_base = μ_s∇(M_s/r)
 \end{aligned}
 $$
 
@@ -147,7 +147,7 @@ Dark nebulae (Barnard objects) have a crucial physical distinction from star-for
 | Erosion E(t) | pressure-only `P(t)` | E(t) erosion | **E(t) erosion** |
 | UV source | Internal OB stars | Trapezium OB | External s Orionis |
 
-The static-M constraint means that for Barnard 33, the buoyancy kernel `ug1_base = GM/r` is
+The static-M constraint means that for Barnard 33, the buoyancy kernel `ug1_base = μ_s∇(M_s/r)` is
 **frozen** at the current mass. The E(t) erosion term therefore modulates the MUGE output over time
 entirely through the gravitational suppression factor `(1 - B(t)/B_crit)  E(t)` in term1, while the
 buoyancy tiers respond to the constant background potential.
@@ -192,7 +192,7 @@ $$g_\text{buoy}^{(3)} = \underbrace{0.5 \cdot \text{ug1\_base}}_\text{T1: static
 
 **Key structural distinction from Pillars of Creation:**
 - Pillars: `ug1_t = GM(t)/r`  buoyancy tiers use time-evolving mass
-- Horsehead: `ug1_base = GM/r`  buoyancy tiers use fixed mass ? **asymmetric erosion-buoyancy**
+- Horsehead: `ug1_base = μ_s∇(M_s/r)`  buoyancy tiers use fixed mass ? **asymmetric erosion-buoyancy**
 
 ---
 

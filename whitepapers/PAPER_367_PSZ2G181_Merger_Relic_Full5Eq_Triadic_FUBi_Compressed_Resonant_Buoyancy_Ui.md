@@ -52,7 +52,7 @@ $$F_{\rm compressed} = G_{\rm eff}(r) \cdot M / r^2 \bigg|_{\rm MUGE}^{\rm compr
 
 $$F_{\rm compressed} \approx +4.12 \times 10^{-41}\ \mathrm{N}$$
 
-This positive compressed mode represents the Newtonian + correction gravity in the MUGE model.
+This positive compressed mode represents the DPM-emergent + correction gravity in the MUGE model.
 
 ### 2.3 Resonant MUGE Mode
 

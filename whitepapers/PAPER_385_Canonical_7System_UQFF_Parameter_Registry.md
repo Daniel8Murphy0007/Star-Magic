@@ -299,11 +299,11 @@ For reference — results from PAPER_379 (full comparison) and PAPER_382/384 (pe
 |--------|:---------------------:|:--------------------:|:-----:|
 | SGR1745 | 1.782×1039 | 1.773×10-9 | 1048 |
 | Sag A* | 2.966×1034 | 4.105×1029 | ~105 |
-| Tapestry | ~GM/r2 | fluid-dominated | converge |
-| Westerlund 2 | ~GM/r2 | fluid-dominated | converge |
-| Pillars | ~GM/r2 | fluid-dominated | converge |
-| Rings | ~GM/r2 | fluid-dominated | converge |
-| Student's Guide | ~GM/r2 | fluid-dominated | converge |
+| Tapestry | ~μ_s∇(M_s/r) | fluid-dominated | converge |
+| Westerlund 2 | ~μ_s∇(M_s/r) | fluid-dominated | converge |
+| Pillars | ~μ_s∇(M_s/r) | fluid-dominated | converge |
+| Rings | ~μ_s∇(M_s/r) | fluid-dominated | converge |
+| Student's Guide | ~μ_s∇(M_s/r) | fluid-dominated | converge |
 
 ---
 

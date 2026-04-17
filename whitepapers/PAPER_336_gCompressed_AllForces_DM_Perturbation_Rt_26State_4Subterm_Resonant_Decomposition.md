@@ -34,7 +34,7 @@ $$
 
 This paper presents two companion equations from the nine-system September 2025 document
 assimilation: (1) g_Compressed in its complete all-forces form including the (M_vis+M_DM)(d?/? +
-3GM/r3) dark matter perturbation term, the ?_fluid·V·g fluid buoyancy term, and the quantum
+3μ_s∇(M_s/r)/r) dark matter perturbation term, the ?_fluid·V·g fluid buoyancy term, and the quantum
 Hamiltonian term; and (2) R(t) in its explicit 4-subterm per state decomposition showing all four
 resonance components: R_U_g1, R_U_g2, R_U_g3, and R_U_g4i per each of the 26 states.
 
@@ -67,7 +67,7 @@ $$
 $$
 (G M(t) / r2) · (1 + H(t,z)) · (1 - B(t)/B_crit) · (1 + F_env(t))
 $$
-- G M(t)/r2: time-evolving Newtonian gravity (M(t) for accreting/star-forming systems)
+- G M(t)/r2: time-evolving DPM-emergent gravity (M(t) for accreting/star-forming systems)
 - (1+H(t,z)): Hubble expansion correction at redshift z
 - (1-B/B_crit): Meissner-type magnetic suppression [from B=0: full gravity; B=B_crit: zero gravity]
 - (1+F_env(t)): envelope feedback correction
@@ -111,9 +111,9 @@ $$
 | M_vis | M × f_vis | Visible mass fraction (f_vis=0.15 spiral; 0.05 cluster) |
 | M_DM | M × f_DM | Dark matter mass fraction (f_DM=0.85 spiral; 0.95 cluster) |
 | d?/? | ~10?5 | Density perturbation parameter |
-| 3GM/r3 | tidal gravity | 3× tidal component |
+| 3μ_s∇(M_s/r)/r | tidal gravity | 3× tidal component |
 
-**Physical significance:** The (M_vis + M_DM)(d?/? + 3GM/r3) term couples the total mass (visible +
+**Physical significance:** The (M_vis + M_DM)(d?/? + 3μ_s∇(M_s/r)/r) term couples the total mass (visible +
 dark) to both the density fluctuation field AND the tidal gravity — simultaneously handling dark
 matter dynamics AND structure formation in one term. This is the UQFF generalization of the Jeans
 instability criterion and the dark matter halo perturbation.
@@ -209,7 +209,7 @@ $$
 
 ## 5. FIRST Declarations
 
-1. **FIRST g_Compressed complete all-forces form** — includes Term 6: (M_vis+M_DM)(d?/? + 3GM/r3)
+1. **FIRST g_Compressed complete all-forces form** — includes Term 6: (M_vis+M_DM)(d?/? + 3μ_s∇(M_s/r)/r)
 dark matter perturbation
 2. **FIRST fluid buoyancy term** (?_fluid·V·g) in g_Compressed reference
 3. **FIRST R(t) 4-subterm per state explicit decomposition** — R_Ug1/Ug2/Ug3/Ug4i per each of 26
@@ -225,7 +225,7 @@ $$
   & + ?U_g,i' + ?c2/3 \\
   & + ?/v(?x?p)·??†H_op ? dV·(2p/t_Hubble) \\
   & + ?_fluid·V·g \\
-  & + (M_vis+M_DM)·(d?/? + 3GM/r3)     [NEW DM perturbation] \\
+  & + (M_vis+M_DM)·(d?/? + 3μ_s∇(M_s/r)/r)     [NEW DM perturbation] \\
   & R(t) = ?_{i=1}^{26} [R_Ug1,i cos(?_Ug1,i t)       [magnetic dipole] \\
   & + R_Ug2,i cos(?_Ug2,i t)       [charge-reactivity] \\
   & + R_Ug3,i cos(?_Ug3,i t)       [string rotation ? THz] \\

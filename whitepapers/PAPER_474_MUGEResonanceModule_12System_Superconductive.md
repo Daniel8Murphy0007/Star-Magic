@@ -126,14 +126,14 @@ Merging pair with SFR ~ 20 MM_sun/yr each:
 Dense molecular cloud pillar illuminated by σ Ori:
 - M = 5 MM_sun, r = 9.46e15 m
 - v_sw = 2 × 103 m/s (UV-driven photoevaporation flow)
-- [SCm] aether coupling suppresses gravity relative to Newtonian: effective g reduced 15%
+- [SCm] aether coupling suppresses gravity relative to DPM-emergent: effective g reduced 15%
 - g_res ≈ 2 × 10-12 m/s2
 
 ---
 
 ## 5. Comparative Results Table
 
-| System | g_Newtonian (m/s2) | g_comp (m/s2) | g_res (m/s2) |
+| System | g_DPMian (m/s2) | g_comp (m/s2) | g_res (m/s2) |
 |--------|------------------|--------------|-------------|
 | SGR 1745 | 1.83e12 | 1.79e12 | 1.1e-10 |
 | Sag A* | 4.64e8 | 4.62e8 | 9.8e-11 |

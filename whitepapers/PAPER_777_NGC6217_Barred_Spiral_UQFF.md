@@ -139,7 +139,7 @@ $$
 
 The classical gravitational term (2.197×10-10 m/s2) is 7 orders of magnitude smaller than the Aether
 EM result (1.053×10-3 m/s2). The UQFF result thus captures disk rotation dynamics through the
-electromagnetic Aether coupling, not Newtonian gravity. The bar structure in NGC 6217 channels gas
+electromagnetic Aether coupling, not DPM-emergent gravity. The bar structure in NGC 6217 channels gas
 inward, sustaining the moderate SFR = 1 MM_sun/yr and bar-enhanced M_sf = 0.045, slightly higher than a
 purely symmetric flocculent spiral of similar mass. As with NGC 2841, the dominant physics is
 electromagnetic at these rotation velocities.

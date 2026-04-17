@@ -136,9 +136,10 @@ The resonant mode cos(?_maser  t)  10-5 at ?_22GHz = 2p  22.235×10? = 1.397×10
 $$g_{\rm Resonant,maser} = \cos(\omega_{\rm maser} \times t) \times 10^{-5} = 10^{-5} \text{ (maximum)}$$
 
 Background gravity at r = 0.1 pc = 3.086×10-5 m:
-$$g_{\rm Newton} = \frac{GM}{r^2} = \frac{6.674e-11 \times 2e7 \times 1.989e30}{(3.086e15)^2} = 2.79 \times 10^{-4} \text{ m/s}^2$$
+$$g_{
+m DPM} = \underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)} = \frac{6.674e-11 \times 2e7 \times 1.989e30}{(3.086e15)^2} = 2.79 \times 10^{-4} \text{ m/s}^2$$
 
-Ratio: g_Resonant/g_Newton = 10?5/2.79×10-4 × 0.036 (3.6% maser enhancement above Newtonian)  
+Ratio: g_Resonant/g_DPM = 10?5/2.79×10-4 × 0.036 (3.6% maser enhancement above DPM-emergent)  
 ? Consistent with the 3.6% maser flux enhancement observed in Chandra observations of NGC 1365
 
 ---
@@ -306,7 +307,7 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 
 | Mode | Dominant Term | Primary Use Case |
 |------|--------------|-----------------|
-| **Compressed** | Ug_sum + Newtonian base | Isolated stellar/BH systems |
+| **Compressed** | Ug_sum + DPM-emergent base | Isolated stellar/BH systems |
 | **Resonant** | 5 resonance frequencies (aDPM, aTHz, …) | Multi-scale field interactions |
 | **Buoyant** | β_i × Ubi | Expanding nebulae, stellar winds |
 | **Superconductive** | Um × (1+1013·f_H) | Magnetars, SCm critical-density regime |

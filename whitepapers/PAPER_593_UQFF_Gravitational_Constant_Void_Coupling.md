@@ -42,7 +42,7 @@ At triad equilibrium $U_g + U_m + U_b = 0$:
 
 $$U_g = g \cdot \frac{SCm}{UA}$$
 
-The Newtonian potential $\Phi = -GM/r$ corresponds to $U_g$:
+The DPM-emergent potential $\Phi = -μ_s∇(M_s/r)$ corresponds to $U_g$:
 
 $$G = g \cdot \frac{SCm}{UA}$$
 

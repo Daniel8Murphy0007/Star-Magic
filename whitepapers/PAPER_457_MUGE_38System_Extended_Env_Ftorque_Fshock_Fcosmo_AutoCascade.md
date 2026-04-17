@@ -66,7 +66,7 @@ $$F_{\rm torque} = 1\times10^{-11}\ \rm m/s^2 \quad [\text{canonical value for W
 
 The torque term represents tidal dissipation rate — the transfer of orbital angular momentum of the
 binary into the envelope's gravitational field. This is a **new gravitational coupling** that does
-not appear in any standard Newtonian or GR treatment.
+not appear in any standard DPM-emergent or GR treatment.
 
 **Physical origin:** In NGC 6302, the white dwarf binary separated at distance d ≈ few AU exerts
 differential tidal force on the bipolar lobes. The torque term captures the aspherical
@@ -95,7 +95,7 @@ For systems flagged TYPE_UNIVERSE or TYPE_COSMOLOGICAL, the code auto-assembles 
 ```
 if (system.type == UNIVERSE || system.type == COSMOLOGICAL):
     F_env += QG_term(t)    // ħ/l_p2 × t/t_p × 1/(Mc2)
-    F_env += DM_term       // 0.268 × g_Newton
+    F_env += DM_term       // 0.268 × g_DPM
     F_env += GW_term(t)    // h_strain × c2/λ_gw × sin(2πct/λ_gw)
     // This cascade is F_cosmo
 ```
@@ -121,11 +121,11 @@ WR 151 (WN4 star) has documented terminal wind velocity v_wind = 2000 km/s = 2×
 
 $$F_{\rm wind,WR} = \rho_{\rm ISM} v_{\rm wind}^2 = 10^{-21} \times (2\times10^6)^2 = 4\times10^{-9}\ \rm m/s^2$$
 
-This exceeds the Newtonian gravity of the WR star at OB-association separation (~1 pc ≈ 3×1016 m):
+This exceeds the DPM-emergent gravity of the WR star at OB-association separation (~1 pc ≈ 3×1016 m):
 
 $$g_{\rm WR,Newton} = \frac{GM_{\rm WR}}{r^2} = \frac{6.674\times10^{-11}\times 2times10^{31}}{(3\times10^{16})^2} = 1.48\times10^{-12}\ \rm m/s^2$$
 
-The WR wind term exceeds Newtonian gravity by **2700×** — confirming that stellar wind dynamics
+The WR wind term exceeds DPM-emergent gravity by **2700×** — confirming that stellar wind dynamics
 govern WR system gravitational environments.
 
 ---
@@ -140,7 +140,8 @@ govern WR system gravitational environments.
 | O-star (9 Sgr) luminosity | ~2×1032 W |
 | SFR | ~0.05 MM_sun/yr |
 
-$$g_{\rm Lagoon,UQFF} \approx g_{\rm Newton} + P_{\rm rad,Lagoon} = 3.33\times10^{-12} + \frac{2\times10^{32}}{4\pi(10^{17})^2\times 3times10^8} \approx 3.33\times10^{-12} + 1.77\times10^{-12} \approx 5.1\times10^{-12}\ \rm m/s^2$$
+$$g_{\rm Lagoon,UQFF} \approx g_{
+m DPM} + P_{\rm rad,Lagoon} = 3.33\times10^{-12} + \frac{2\times10^{32}}{4\pi(10^{17})^2\times 3times10^8} \approx 3.33\times10^{-12} + 1.77\times10^{-12} \approx 5.1\times10^{-12}\ \rm m/s^2$$
 
 ---
 
@@ -159,10 +160,10 @@ $$g_{\rm Lagoon,UQFF} \approx g_{\rm Newton} + P_{\rm rad,Lagoon} = 3.33\times10
 
 1. **NGC 6302 tidal torque:** F_torque ≈ 10-11 m/s2 — should produce a specific bipolar-lobe
 acceleration asymmetry detectable in proper-motion measurements of the nebular lobes.
-2. **WR 151 wind dominance:** F_wind/g_Newton ≈ 2700× — implies the WR bubble expands at ~v_wind
+2. **WR 151 wind dominance:** F_wind/g_DPM ≈ 2700× — implies the WR bubble expands at ~v_wind
 rate, consistent with observed WR bubble diameters of ~10 pc over ~0.1 Myr.
 3. **Auto-cascade for cosmological systems:** Verified by running all 3 TYPE_UNIVERSE systems in the
-registry and confirming QG_term is always <10-120 × g_Newton — negligible but correctly non-zero.
+registry and confirming QG_term is always <10-120 × g_DPM — negligible but correctly non-zero.
 
 ---
 

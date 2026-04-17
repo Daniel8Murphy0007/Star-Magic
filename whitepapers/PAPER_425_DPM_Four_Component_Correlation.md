@@ -39,7 +39,7 @@ integral.
 
 ## 2. The F_U_Bi_i Master Integral
 
-$$\boxed{F_{U,\text{Bi},i} = \int_0^{x_2} \left[\begin{aligned} &-F_0 + \frac{m_e c^2}{r^2}\,\text{DPM}_{\text{mom}}\costheta + \frac{GM}{r^2}\,\text{DPM}_{\text{grav}} \\[4pt] &+\,\rho_{\text{vac,UA}}\,\text{DPM}_{\text{stab}} + k_{\text{LENR}}\!\left(\frac{\omega_{\text{LENR}}}{\omega_0}\right)^{\!2} + k_{\text{act}}\cos(\omega_{\text{act}}t) \\[4pt] &+\,k_{\text{DE}}\,L_X + 2qB_0 V\sintheta\,\text{DPM}_{\text{res}}\,P_{\text{pol}} \\[4pt] &+\,k_n\sigma_n + k_{\text{rel}}\!\left(\frac{E_{\text{cm}}}{E_{\text{cm,0}}}\right)^{\!2} + F_{\text{UV}} + F_{\text{mm}} \end{aligned}\right] dx}$$
+$$\boxed{F_{U,\text{Bi},i} = \int_0^{x_2} \left[\begin{aligned} &-F_0 + \frac{m_e c^2}{r^2}\,\text{DPM}_{\text{mom}}\costheta + \underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)}\,\text{DPM}_{\text{grav}} \\[4pt] &+\,\rho_{\text{vac,UA}}\,\text{DPM}_{\text{stab}} + k_{\text{LENR}}\!\left(\frac{\omega_{\text{LENR}}}{\omega_0}\right)^{\!2} + k_{\text{act}}\cos(\omega_{\text{act}}t) \\[4pt] &+\,k_{\text{DE}}\,L_X + 2qB_0 V\sintheta\,\text{DPM}_{\text{res}}\,P_{\text{pol}} \\[4pt] &+\,k_n\sigma_n + k_{\text{rel}}\!\left(\frac{E_{\text{cm}}}{E_{\text{cm,0}}}\right)^{\!2} + F_{\text{UV}} + F_{\text{mm}} \end{aligned}\right] dx}$$
 
 with $x_2 \approx -1.35 \times 10^{172}\ \text{m}$ and $F_{U,\text{Bi},i}(\text{Westerlund2}) \approx 2.11 \times 10^{208}\ \text{N}$.
 
@@ -54,9 +54,9 @@ the DPM dipole.
 $$\text{DPM}_{\text{mom}} = \frac{m_e c^2 \costheta}{r^2}$$
 
 ### 3.2 DPM_gravity  
-**Physical role:** Newtonian gravitational coupling of the DPM mass within the buoyancy field.
+**Physical role:** DPM-emergent gravitational coupling of the DPM mass within the buoyancy field.
 
-$$\text{DPM}_{\text{grav}} = \frac{GM}{r^2}$$
+$$\text{DPM}_{\text{grav}} = \underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)}$$
 
 ### 3.3 DPM_stability  
 **Physical role:** Vacuum energy density stability condition — the UA vacuum density provides the

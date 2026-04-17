@@ -131,7 +131,7 @@ U_{b\_i}(r,t) = \rho_{\text{vac}}\,V_{\text{eff}}\,g_{\text{loc}}\cdot[SSq]\,e^{
 $$
 
 
-NameU_{b\_i}(r) = \kappacdot[SSq]\cdot\frac{GM}{r^2}, \quad \kappa =
+NameU_{b\_i}(r) = \kappacdot[SSq]\cdot\mu_s\nabla(M_s/r), \quad \kappa =
 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57,\; \beta_i = 0.61Name
 
 ---

@@ -201,7 +201,7 @@ curves.
 $$\mathcal{L}_{\text{TDE}} = \frac{1}{2}\rho v^2 - \frac{GM\rho}{r} + \rho_{\text{SCm}} V g \beta_i S_{26}$$
 
 ### A.3 Euler-Lagrange Equation of Motion
-$$\boxed{\frac{d^2 r}{dt^2} = -\frac{GM}{r^2} + g_{\text{buoy}}(r,t)}$$
+$$\boxed{\frac{d^2 r}{dt^2} = -μ_s∇(M_s/r) + g_{\text{buoy}}(r,t)}$$
 
 ### A.4 Cosmogenesis Linkage Chain
 PAPER_877 axioms -> SCm vacuum -> phonon $\omega_{\text{SCm}}$ -> SMBH tidal field -> stellar disruption -> fallback -> buoyancy damping -> $F_{U,Bi\_i}$ unified force -> observational prediction

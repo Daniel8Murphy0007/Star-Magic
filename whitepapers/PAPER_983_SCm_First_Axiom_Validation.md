@@ -27,9 +27,9 @@ self-consistency requirement for any medium that claims to support buoyancy forc
 
 ## 2. Ratio Computation
 
-$$\frac{|U_b|}{|U_g|} = \frac{\sum_{i=1}^{26} \frac{GM}{r^2} e^{-[\text{SSq}]\cdot i/26} \cdot \beta_i}{\sum_{i=1}^{26} \frac{GM}{r^2} \cdot [\text{SSq}] \cdot i/26}$$
+$$\frac{|U_b|}{|U_g|} = \frac{\sum_{i=1}^{26} \underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)} e^{-[\text{SSq}]\cdot i/26} \cdot \beta_i}{\sum_{i=1}^{26} \underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)} \cdot [\text{SSq}] \cdot i/26}$$
 
-The $GM/r^2$ factors cancel:
+The $μ_s∇(M_s/r)$ factors cancel:
 
 $$= \frac{\beta_i \sum_{i=1}^{26} e^{-[\text{SSq}]\cdot i/26}}{[\text{SSq}] \sum_{i=1}^{26} i/26} = \frac{\beta_i \cdot S_{26,\text{exp}}}{[\text{SSq}] \cdot 13.5}$$
 

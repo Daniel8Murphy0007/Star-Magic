@@ -59,7 +59,7 @@ $$
 \end{aligned}
 $$
 
-**Key distinguishing feature:** `(1+E(t))` with positive sign, multiplied onto the Newtonian base
+**Key distinguishing feature:** `(1+E(t))` with positive sign, multiplied onto the DPM-emergent base
 gravity.
 
 ---
@@ -125,7 +125,7 @@ $$
   & ˜ 6.674e-11 · 1.5e31 / (2.84e16)2 · 1.000 · 0.9999 \\
   & ˜ 1.23×10-52 m/s2 \\
   & g_shell = g_base · (1+0.05) = g_base · 1.05 \\
-  & ? 5% enhancement over purely Newtonian value
+  & ? 5% enhancement over purely DPM-emergent value
 \end{aligned}
 $$
 

@@ -24,17 +24,17 @@ UQFF+Equations+Across+Astrophysical+Systems_22Sept2025.pdf)
 $$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b\_i}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57$$
 
 $$
-U_{b\_i}(r) = \kappacdot[SSq]\cdot\frac{GM}{r^2}, \quad \kappa =
+U_{b\_i}(r) = \kappacdot[SSq]\cdot\mu_s\nabla(M_s/r), \quad \kappa =
 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57,\; \beta_i = 0.61
 $$
 
 ## Abstract
 
-Modified Newtonian Dynamics (MOND) and UQFF are compared across rotation curve fitting, galaxy
+Modified DPM-emergent Dynamics (MOND) and UQFF are compared across rotation curve fitting, galaxy
 cluster mass discrepancy, gravitational lensing, and large-scale structure. MOND's interpolation
 parameter a0 ˜ 1.2×10?1° m/s2 is shown to emerge naturally from UQFF's vacuum buoyancy coupling k_UA
 when evaluated at galactic acceleration scales. However, MOND fails in galaxy clusters by a factor
-of ~3 in mass, requires ad hoc interpolation between Newtonian and deep-MOND regimes, cannot explain
+of ~3 in mass, requires ad hoc interpolation between DPM-emergent and deep-MOND regimes, cannot explain
 CMB lensing, and produces incorrect peculiar velocity statistics. UQFF handles all of these via its
 F_UBii decomposition, 26-layer resonance, and cluster-specific F_env(t) terms.
 
@@ -51,7 +51,7 @@ $$
   & Standard: µ(x) = x/v(1+x2) \\
   & Simple:   µ(x) = x/(1+x) \\
   & Deep-MOND regime (g << a0, µ?g/a0): \\
-  & g_MOND = v(g_Newton · a0) \\
+  & g_MOND = v(g_DPM · a0) \\
   & a0 = 1.2×10?1° m/s2   (calibrated to flat rotation curves) \\
   & Relativistic extension: TeVeS (Tensor-Vector-Scalar, Bekenstein 2004)
 \end{aligned}
@@ -65,7 +65,7 @@ $$
 $$
 \begin{aligned}
   & For typical spiral galaxy (M_baryon = 5×101° M_?, v_flat = 200 km/s): \\
-  & Newtonian: g_N = GM/r2  decreases as 1/r2 \\
+  & DPM-emergent: g_N = μ_s∇(M_s/r)  decreases as 1/r2 \\
   & Deep-MOND: g = v(g_N·a0) ? v = (G·M·a0)^{1/4} = constant \\
   & MOND flat rotation: v_flat = (G·M_b·a0)^{1/4} \\
   & ? Baryonic Tully-Fisher Relation (BTFR): M_b ? v_flat4 \\
@@ -145,7 +145,7 @@ $$
   & In deep galactic field: Ug1 ˜ k_UA·?_vac,[UA]·r/r_galaxy \\
   & This contributes: ?g ˜ k_UA·?_vac,[UA]/M_galaxy × r \\
   & Flat curve condition: ?g = g_N at some radius r_trans \\
-  & k_UA·?_vac,[UA]/M × r_trans = GM/r_trans2 \\
+  & k_UA·?_vac,[UA]/M × r_trans = μ_s∇(M_s/r) \\
   & ? a0_eff = v(k_UA·?_vac,[UA]·G)   (UQFF prediction) \\
   & Numerically: \\
   & k_UA = [UA] = 0.0001    (UQFF calibrated coupling) \\
@@ -232,14 +232,14 @@ $$
 \begin{aligned}
   & MOND standard µ(x) = x/v(1+x2): \\
   & Deep-MOND: x<<1 ? µ˜x ? g_MOND ˜ v(g_N·a0) \\
-  & Newtonian:  x>>1 ? µ˜1 ? g_MOND ˜ g_N (recovers Newton) \\
+  & DPM-emergent:  x>>1 ? µ˜1 ? g_MOND ˜ g_N (recovers Newton) \\
   & Discontinuous derivatives at x=1 (scale-dependent kink) \\
   & UQFF effective µ(r): \\
   & µ_UQFF(r) = (1 + Ug1(r)/g_N(r))^{-1/2} \\
-  & ? Smooth transition from MOND-like to Newtonian \\
+  & ? Smooth transition from MOND-like to DPM-emergent \\
   & ? No free parameter analogous to transition position \\
   & The transition radius emerges from: r_trans = v(k_UA·?_vac,[UA]/?_baryon) \\
-  & At r < r_trans: Ug1 << g_N ? µ_UQFF ˜ 1 (Newtonian) \\
+  & At r < r_trans: Ug1 << g_N ? µ_UQFF ˜ 1 (DPM-emergent) \\
   & At r > r_trans: Ug1 ~ g_N ? µ_UQFF ˜ 1/v2 (deep-MOND-like)
 \end{aligned}
 $$

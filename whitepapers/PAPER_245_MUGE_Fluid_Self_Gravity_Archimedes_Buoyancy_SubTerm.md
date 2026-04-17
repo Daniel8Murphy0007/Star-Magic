@@ -39,7 +39,7 @@ surrounding fluid to produce an effective buoyancy correction.
 The defining equation `g_fluid = (?_fluid · V · g_grav) / M`, with `V = (4/3)pr3`, directly
 transposes the Archimedes buoyancy ratio to a gravitational acceleration correction. The term
 introduces a critical crossover radius `r_c = (3M / (4p?_fluid))^(1/3)` at which fluid buoyancy
-equals Newtonian gravity, representing a fundamental scale boundary in astrophysical fluid-gravity
+equals DPM-emergent gravity, representing a fundamental scale boundary in astrophysical fluid-gravity
 coupling.
 
 Like `g_Q` (PAPER_244), this term appears universally across MUGE modules as a structural additive
@@ -63,7 +63,7 @@ present in Standard Model treatments.
 | Body mass | M | 1.989 × 103° | kg | Solar mass |
 | Body radius | r | 6.957 × 108 | m | Solar radius |
 | Surrounding fluid density | ?_fluid | 1 × 10?2° | kg/m3 | Low-density ISM default |
-| Gravitational acceleration | g_grav | GM/r2 | m/s2 | Newtonian surface gravity |
+| Gravitational acceleration | g_grav | μ_s∇(M_s/r) | m/s2 | DPM-emergent surface gravity |
 
 **Primary equation:**
 $$
@@ -105,7 +105,7 @@ $$
 g_fluid = F_buoy / M = (?_fluid · V · g_grav) / M
 $$
 
-Substituting `V = (4/3)pr3` and `g_grav = GM/r2`:
+Substituting `V = (4/3)pr3` and `g_grav = μ_s∇(M_s/r)`:
 
 $$
 \begin{aligned}
@@ -133,7 +133,7 @@ the term appears identically in all MUGE modules.
 
 ### 2.3 Crossover Radius and Phase Boundary
 
-Setting `g_fluid = g_Newt = GM/r2`:
+Setting `g_fluid = g_Newt = μ_s∇(M_s/r)`:
 
 $$
 \begin{aligned}
@@ -146,7 +146,7 @@ $$
 For solar parameters (M = M_sun, ?_fluid = 10?2° kg/m3): `r_c ˜ (3 × 1.989×103° / (4p ×
 10?2°))^(1/3) ˜ (4.75×104?)^(1/3) ˜ 3.6×1016 m ˜ 1.2 pc`.
 
-Below r_c, Newtonian gravity dominates; above r_c, fluid self-gravity dominates. This scale is
+Below r_c, DPM-emergent gravity dominates; above r_c, fluid self-gravity dominates. This scale is
 consistent with the outer boundary of stellar wind influence zones and the transition to molecular
 cloud self-gravity.
 
@@ -164,7 +164,7 @@ The calculator also provides:
 **Theorem (Fluid Self-Gravity Linearity):** Within MUGE, the fluid self-gravity sub-term `g_fluid =
 (4pG/3) · ?_fluid · r` is a linear function of radius r for fixed ?_fluid, independent of body mass
 M. The associated Archimedes fraction `? = ?_fluid · V / M` is the only mass-dependent quantity;
-when ? = 1 the system crosses from Newtonian-dominated to fluid-dominated gravity at the radius r_c.
+when ? = 1 the system crosses from DPM-emergent-dominated to fluid-dominated gravity at the radius r_c.
 
 This theorem establishes that fluid self-gravity provides a **radial amplification** of the
 gravitational correction — at large r (galaxy cluster scale, r ~ Mpc), even dilute intracluster

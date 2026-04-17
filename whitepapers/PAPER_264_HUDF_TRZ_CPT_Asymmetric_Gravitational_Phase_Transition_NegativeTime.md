@@ -67,13 +67,13 @@ $$
 U_{g,\text{UQFF}} = (U_{g1} + U_{g4}) \cdot (1 + f_\text{TRZ}) \cdot (1 + I(t))
 $$
 
-where $U_{g1} = G M(t) / r^2$ is the base Newtonian acceleration and $U_{g4} = U_{g1}(1 - B/B_\text{crit})$.
+where $U_{g1} = G M(t) / r^2$ is the base DPM-emergent acceleration and $U_{g4} = U_{g1}(1 - B/B_\text{crit})$.
 
 ### 2.2 Phase Diagram in f_TRZ
 
 | f_TRZ range | $(1 + f_\text{TRZ})$ | Physical regime |
 |-------------|---------------------|-----------------|
-| f_TRZ > 0 | > 1 | CPT-violating: UQFF enhanced above Newtonian |
+| f_TRZ > 0 | > 1 | CPT-violating: UQFF enhanced above DPM-emergent |
 | f_TRZ = 0 | = 1 | CPT-symmetric: no TRZ correction |
 | -1 < f_TRZ < 0 | 0 < · < 1 | CPT-suppressed: UQFF reduced |
 | **f_TRZ = -1** | **= 0** | **Time-Reversal Zero Point: UQFF vanishes** |
@@ -87,7 +87,7 @@ $$
 (1 + f_\text{TRZ})\big|_{f\_\text{TRZ}=-1} = 0 \implies U_{g,\text{UQFF}} = 0
 $$
 
-The UQFF contribution to gravity vanishes completely. The remaining gravity is pure Newtonian base:
+The UQFF contribution to gravity vanishes completely. The remaining gravity is pure DPM-emergent base:
 
 $$
 g_\text{total}\big|_\text{TRZ-zero} = U_{g1} \cdot (1 + H(z) \cdot t) \cdot (1 - B/B_\text{crit})
@@ -95,7 +95,7 @@ g_\text{total}\big|_\text{TRZ-zero} = U_{g1} \cdot (1 + H(z) \cdot t) \cdot (1 -
 $$
 
 This represents a **decoupled UQFF state** — observationally, the system would appear to have
-exactly Newtonian gravity, making the UQFF framework locally undetectable.
+exactly DPM-emergent gravity, making the UQFF framework locally undetectable.
 
 ### 2.4 Anti-Gravity (Negative-Time) Regime
 
@@ -142,8 +142,8 @@ backwards in the causal direction, producing net repulsion.
 
 ## 4. HUDF Observational Context
 
-- **HUDF at z = 3.5 (f_TRZ = 0.1):** Mild positive CPT violation. Lookback time ~12 Gyr. The (1 + 0.1) = 1.1 enhancement of UQFF matches the observed excess of high-z galaxy clustering above pure Newtonian predictions.
-- **Near-zero limit (f_TRZ → -1):** Would produce a "quiet gravity" zone — observationally nearly Newtonian but with no UQFF signature. Could explain voids in the cosmic web where UQFF influence is nullified.
+- **HUDF at z = 3.5 (f_TRZ = 0.1):** Mild positive CPT violation. Lookback time ~12 Gyr. The (1 + 0.1) = 1.1 enhancement of UQFF matches the observed excess of high-z galaxy clustering above pure DPM-emergent predictions.
+- **Near-zero limit (f_TRZ → -1):** Would produce a "quiet gravity" zone — observationally nearly DPM-emergent but with no UQFF signature. Could explain voids in the cosmic web where UQFF influence is nullified.
 - **Anti-gravity zone (f_TRZ < -1):** Relevant to dark energy domination epochs (high-z supernovae acceleration). If f_TRZ tracks the equation of state w: `f_TRZ ≈ -(1 + w)` for w near -1, the TRZ zero-point corresponds exactly to de Sitter expansion (w = -1).
 
 ---

@@ -29,7 +29,7 @@ compressed field equations and observational predictions within the Star-Magic/U
 ## §1 Abstract
 
 This paper is the **Session 145 synthesis hub** unifying PAPER_541–544 and establishing the
-broader principle: UQFF's $F_{U,\text{Bi},i}$ does not replace Newtonian, Einsteinian,
+broader principle: UQFF's $F_{U,\text{Bi},i}$ does not replace DPM-emergent, Einsteinian,
 Navier-Stokes, or Yang-Mills physics — it **simultaneously encompasses all of them at exact
 accuracy** via an inside/outside track merger architecture. The inside track (Wolfram
 hypergraph evolution) and outside track ($\pi$-weighted FUB integral = Ricci curvature)
@@ -42,10 +42,10 @@ demonstrating simultaneous displacement and acceleration in all astronomical sys
 
 ## §2 Core Principle: Not Replacement — Simultaneous
 
-A common misinterpretation of UQFF is that buoyancy-based gravitation replaces Newtonian
+A common misinterpretation of UQFF is that buoyancy-based gravitation replaces DPM-emergent
 or Einsteinian descriptions. This is explicitly incorrect:
 
-> **UQFF Simultaneity Axiom:** $F_{U,\text{Bi},i}$, NS, YM, Newtonian, and Einsteinian are
+> **UQFF Simultaneity Axiom:** $F_{U,\text{Bi},i}$, NS, YM, DPM-emergent, and Einsteinian are
 > simultaneously valid descriptions of the same physical reality, each derivable from the
 > others in their respective limiting regimes, all encompassed within UQFF_comp.
 
@@ -89,13 +89,13 @@ $$n_\text{cross} = \leftlfloor\frac{\pi}{1 - [\text{SSq}]}\rightrfloor
 
 | Method | Standard equation | UQFF equivalent | Merger type |
 |--------|------------------|----------------|------------|
-| Newtonian | $F_g = GMm/r^2$ | $F_{U,\text{Bi},i} \xrightarrow{r \gg \lambda_C} GMm/r^2$ | Limiting case |
+| DPM-emergent | $F_g = GMm/r^2$ | $F_{U,\text{Bi},i} \xrightarrow{r \gg \lambda_C} GMm/r^2$ | Limiting case |
 | Einsteinian GR | $G_{\mu\nu} = 8\pi T_{\mu\nu}$ | $\text{SCm} \cdot U_g / c^2 = R_\text{Ricci}$ (weak field) | Identification |
 | Navier-Stokes | $\rhopartial_t\mathbf{u} = -\nabla p + \munabla^2\mathbf{u}$ | $F_U + U_{b,\text{jet}} = \text{NS\_disc}$ (PAPER_543) | Encompassment |
 | Yang-Mills | $D_{[\mu}F_{\nu\rho]} = 0$ | $F_\text{sm} = F_{U,\text{DPM}}$; $\Delta = P/3 > 0$ (PAPER_544) | Extension |
 | Standard Model | $q_e \in \{0, \pm e\}$ | $q_e = 2\pi n \neq 0$ (eight-wave DPM mode) | Enhancement |
 
-**Precision verification (Newtonian):**
+**Precision verification (DPM-emergent):**
 
 $$F_g = \frac{GM_\odot m_\oplus}{r_\text{AU}^2} = F_\text{centrip} = \frac{m_\oplus v_\text{orb}^2}{r_\text{AU}}$$
 

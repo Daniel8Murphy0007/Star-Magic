@@ -249,9 +249,9 @@ scale.
 
 For each object, the compressed MUGE base gravity $g_{\text{MUGE}}(r)$:
 
-$$g_{\text{MUGE}} = \frac{GM}{r^2} + \delta_{\text{Hubble}} + \delta_{\text{Super}} + \delta_{\text{Env}} + \delta_{U\_g} + \delta_{\text{Cosm}} + \delta_{\text{Quantum}} + \delta_{\text{Fluid}} + \delta_{\text{Pert}} + \delta_{\text{DM}}$$
+$$g_{\text{MUGE}} = \underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)} + \delta_{\text{Hubble}} + \delta_{\text{Super}} + \delta_{\text{Env}} + \delta_{U\_g} + \delta_{\text{Cosm}} + \delta_{\text{Quantum}} + \delta_{\text{Fluid}} + \delta_{\text{Pert}} + \delta_{\text{DM}}$$
 
-| Object | $GM/r^2$ | $\delta_{\text{DM}}$ | $g_{\text{MUGE}}$ total |
+| Object | $μ_s∇(M_s/r)$ | $\delta_{\text{DM}}$ | $g_{\text{MUGE}}$ total |
 |--------|---------|---------------------|------------------------|
 | SGR 1745-2900 | $\approx 2.0 \times 10^{18}$ m/s2 | 0 | $\approx 2.0 \times 10^{18}$ m/s2 |
 | SgrA* | $\approx 5.4 \times 10^{-7}$ m/s2 | $\approx 8.2 \times 10^{-7}$ | $\approx 1.4 \times 10^{-6}$ m/s2 |
@@ -271,7 +271,7 @@ $$F_U^{(k)} = g_{\text{MUGE}}^{(k)} + \sum_{i=1}^{4} U_{gi}^{(k)} + U_m^{(k)} + 
 For SGR 1745-2900 with $M = 2.984\times10^{30}\,\text{kg}$, $r = 10^4\,\text{m}$,
 $B = 10^{10}\,\text{T}$, $\kappa = 5.0\times10^{-4}\,\text{day}^{-1}$:
 
-$$U_{b\_i}(\text{SGR}) = \kappa \cdot [SSq] \cdot \frac{GM}{r^2} \approx 2.85\times10^{-4} \times 2.0\times10^{18} \approx 5.7\times10^{14}\,\text{m/s}^2$$
+$$U_{b\_i}(\text{SGR}) = \kappa \cdot [SSq] \cdot \underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)} \approx 2.85\times10^{-4} \times 2.0\times10^{18} \approx 5.7\times10^{14}\,\text{m/s}^2$$
 
 **Computed UQFF F_U SGR 1745-2900:**
 

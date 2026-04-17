@@ -73,14 +73,14 @@ At $t \rightarrow \infty$: $E \rightarrow 0.1$
 
 $$\boxed{g_\text{HH}(r,t) = T_1(1+E) + T_2(1+E) + T_3 + T_4 + T_5 + T_6 + T_7 + T_8 + T_9 + T_{10}}$$
 
-**T1 — Newtonian + H₀t + B + erosion:**
-$$T_1 = \frac{GM}{r^2}(1+H_0 t)(1 - B/B_\text{crit})(1+E(t))$$
-$$\frac{GM}{r^2} = \frac{6.674\times10^{-11}\times1.989\times10^{33}}{(2.365\times10^{16})^2} = \frac{1.327\times10^{23}}{5.593\times10^{32}} \approx 2.37\times10^{-10} \, \text{m/s}^2$$
+**T1 — DPM-emergent + H₀t + B + erosion:**
+$$T_1 = \underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)}(1+H_0 t)(1 - B/B_\text{crit})(1+E(t))$$
+$$\underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)} = \frac{6.674\times10^{-11}\times1.989\times10^{33}}{(2.365\times10^{16})^2} = \frac{1.327\times10^{23}}{5.593\times10^{32}} \approx 2.37\times10^{-10} \, \text{m/s}^2$$
 $$T_1(t=0) = 2.37\times10^{-10} \times 1.0 \times (1-2.27\times10^{-20}) \times 1.0 \approx 2.37\times10^{-10} \, \text{m/s}^2$$
 $$T_1(t=5\,\text{Myr}) = 2.37\times10^{-10} \times 1.063 \approx 2.52\times10^{-10} \, \text{m/s}^2$$
 
 **T2 — UQFF Ug channels:**
-$$T_2 = 2\times\frac{GM}{r^2}\times f_\text{TRZ}\times(1+E(t)) \approx 2\times2.37\times10^{-10}\times1.1\times1.063 \approx 5.53\times10^{-10} \, \text{m/s}^2 \text{ at }t=5\,\text{Myr}$$
+$$T_2 = 2\times\underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)}\times f_\text{TRZ}\times(1+E(t)) \approx 2\times2.37\times10^{-10}\times1.1\times1.063 \approx 5.53\times10^{-10} \, \text{m/s}^2 \text{ at }t=5\,\text{Myr}$$
 
 **T3 — Λ dark energy:**
 $$T_3 = \frac{\Lambda c^2}{3} r = \frac{1.11\times10^{-52}\times 9times10^{16}}{3}\times2.365\times10^{16} \approx 7.9\times10^{-17} \, \text{m/s}^2 \quad [\text{negligible}]$$
@@ -98,7 +98,7 @@ At $t = 5$ Myr (one erosion timescale):
 |------|-------------|---------|
 | $T_9$ Wind/Radiation | $1.69 \times 10^{-4}$ | **99.99%** |
 | $T_2$ UQFF Ug×(1+E) | $5.53 \times 10^{-10}$ | 0.003% |
-| $T_1$ Newtonian×(1+E) | $2.52 \times 10^{-10}$ | 0.001% |
+| $T_1$ DPM-emergent×(1+E) | $2.52 \times 10^{-10}$ | 0.001% |
 | $T_3$ Λ | $\lesssim 10^{-16}$ | negligible |
 
 $$\boxed{g_\text{HH}(t=5\,\text{Myr}) \approx 1.69\times10^{-4} \, \text{m/s}^2} \quad [\text{wind/radiation erosion fully dominant}]$$
@@ -257,7 +257,7 @@ future JWST / ALMA monitoring observations.
 
 **Q5 Prediction 1:** $\tau_text{erosion} = 5$ Myr predicts that the ionization front of IC 434 is currently at $\sim 40\%$ of its maximum advance speed toward Barnard 33 (given estimated cloud age of $\sim 2$ Myr $\ll \tau$). UQFF predicts an observed C$^{18}$O $J=1\rightarrow0$ line width increase of $\sim 6\%$ from the base of the pillar to the head — testable with IRAM-30m spectral mapping.
 
-**Q5 Prediction 2:** At $t = \tau_text{erosion} = 5$ Myr from formation, $E = 0.063 \Rightarrow B$ field-corrected gravity is 6.3% stronger than standard Newtonian. This 6.3% self-gravity enhancement maintains the pillar top against faster photoevaporation — predicting the Horsehead survives $\sim 5\%$ longer than SM PDR models estimate (i.e., $1.05 \times$ SM lifetime).
+**Q5 Prediction 2:** At $t = \tau_text{erosion} = 5$ Myr from formation, $E = 0.063 \Rightarrow B$ field-corrected gravity is 6.3% stronger than standard DPM-emergent. This 6.3% self-gravity enhancement maintains the pillar top against faster photoevaporation — predicting the Horsehead survives $\sim 5\%$ longer than SM PDR models estimate (i.e., $1.05 \times$ SM lifetime).
 
 **Q5 Prediction 3:** $B = 10^{-6}$ T (weaker than most molecular clouds in the per-system series) predicts that the Horsehead Nebula has a mass-to-magnetic flux ratio $M/\Phi_B = M/(B r^2) = 1.989\times10^{33}/(10^{-6}\times5.59\times10^{32}) \approx 3.56$ (supercritical) — meaning magnetic support is insufficient to prevent collapse and the pillar is gravitationally unstable on $\sim 1$ Myr timescales at its tip. Testable via JCMT SCUBA-2 polarimetric maps of dust emission polarization.
 

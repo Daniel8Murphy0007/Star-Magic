@@ -146,7 +146,7 @@ The standalone module `scm_superconductivity_axiom.py` encodes this in:
 
 - **Engine 2 (26-State Progression):** Computes v(n) = c^{26-n+1} at each state, confirming v(26) = c
 - **Engine 3 (Cosmogenesis):** ACP Stage 2 creates U_i at the proto-photon birth speed
-- **Engine 4 (Lagrangian):** Sector 9 (Kaluza-Klein-26D) contains the 26-dimensional tower L_KK = Σᵢ (GM/rᵢ2)·(r/R_compact)^{nᵢ}
+- **Engine 4 (Lagrangian):** Sector 9 (Kaluza-Klein-26D) contains the 26-dimensional tower L_KK = Σᵢ (μ_s∇(M_s/r))·(r/R_compact)^{nᵢ}
 
 ### Standalone Calculator
 

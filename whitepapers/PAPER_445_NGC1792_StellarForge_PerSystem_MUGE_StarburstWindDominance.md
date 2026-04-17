@@ -67,7 +67,7 @@ Note: Unlike massive merger systems (PAPER_441) or SF regions (PAPER_433), NGC 1
 
 $$\boxed{g_\text{N1792}(r,t) = T_1 + T_2 + T_3 + T_4 + T_5 + T_6 + T_7 + T_8 + T_9 + T_{10}}$$
 
-**T1 — Newtonian + H(z)t + B:**
+**T1 — DPM-emergent + H(z)t + B:**
 $$T_1 = \frac{GM_0}{r^2}(1+H(z)t)(1-B/B_\text{crit})$$
 $$\frac{GM_0}{r^2} = \frac{6.674\times10^{-11}\times1.989\times10^{40}}{(7.569\times10^{20})^2} = \frac{1.327\times10^{30}}{5.729\times10^{41}} \approx 2.32\times10^{-12} \, \text{m/s}^2$$
 $$T_1(t=0) \approx 2.32\times10^{-12} \times 1.0 \approx 2.32\times10^{-12} \, \text{m/s}^2$$
@@ -103,7 +103,7 @@ At $t = 0$ (peak starburst):
 |------|-------------|---------|
 | $T_9$ Starburst wind | $5.28 \times 10^{-9}$ | **99.86%** |
 | $T_2$ UQFF Ug | $5.10 \times 10^{-12}$ | 0.10% |
-| $T_1$ Newtonian | $2.32 \times 10^{-12}$ | 0.04% |
+| $T_1$ DPM-emergent | $2.32 \times 10^{-12}$ | 0.04% |
 | $T_8$ DM | $6.96 \times 10^{-13}$ | 0.01% |
 | $T_3$ Λ | $8.4 \times 10^{-16}$ | $\ll 0.001\%$ |
 

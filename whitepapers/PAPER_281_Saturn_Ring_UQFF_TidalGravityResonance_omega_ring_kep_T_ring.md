@@ -154,7 +154,7 @@ $$
 
 $$
 \begin{aligned}
-  & \text{WOLFRAM\_TERM\_SATURN\_RING}: "SaturnUQFF:\text{omega\_ring\_kep}=Sqrt[GM/r_ring^3]=1.481e-4 rad/s; \\
+  & \text{WOLFRAM\_TERM\_SATURN\_RING}: "SaturnUQFF:\text{omega\_ring\_kep}=Sqrt[μ_s∇(M_s/r)]=1.481e-4 rad/s; \\
   & g_ring=G*M_ring*r/r_ring^3=3.49e-8 m/s^2 [PAPER_281]"
 \end{aligned}
 $$

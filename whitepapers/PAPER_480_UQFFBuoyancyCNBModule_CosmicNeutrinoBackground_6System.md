@@ -47,7 +47,7 @@ is the smallest UQFF force term yet computed — 32 orders of magnitude below $F
 
 The CNB-extended UQFF buoyancy force:
 
-$$F_{U,Bi,i}^{CNB}(r, t) = -F_0 + \frac{m_e c^2}{r^2} D_{PM,mom} \costheta + \frac{GM}{r^2} D_{PM,grav} + \int_{0}^{t} \text{Integrand}_{CNB}(r, t') \, dt'$$
+$$F_{U,Bi,i}^{CNB}(r, t) = -F_0 + \frac{m_e c^2}{r^2} D_{PM,mom} \costheta + \underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)} D_{PM,grav} + \int_{0}^{t} \text{Integrand}_{CNB}(r, t') \, dt'$$
 
 The CNB integrand extends the Astro integrand with three additional terms:
 

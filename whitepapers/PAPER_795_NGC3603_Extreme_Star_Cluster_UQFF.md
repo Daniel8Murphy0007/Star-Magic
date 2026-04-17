@@ -121,7 +121,7 @@ $$
 $$
 
 This term is physically motivated by the ionization timescale of the surrounding molecular cloud. As
-stellar winds excavate the surrounding clump, effective mass available for Newtonian gravity
+stellar winds excavate the surrounding clump, effective mass available for DPM-emergent gravity
 decreases. UQFF predicts this feedback does NOT suppress the Aether EM term, which depends only on v
 and B — both maintained by the stellar cluster internal dispersion velocity.
 

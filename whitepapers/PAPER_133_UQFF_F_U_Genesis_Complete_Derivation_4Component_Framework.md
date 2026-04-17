@@ -54,7 +54,7 @@ present in Standard Model treatments.
 |-----------|---------------------|---------------------|
 | Solar heliosphere formation | Solar wind + interstellar medium ram pressure | Ug2 outer field bubble (k_2=1.2, E_react) |
 | Quasar jet asymmetry | Relativistic Doppler / jet precession | cos(pt_n) negative-time buoyancy asymmetry |
-| Planetary orbital stability | Newtonian gravity + GR corrections | SCm Ug3 core exclusivity, P_SCm=10? |
+| Planetary orbital stability | DPM-emergent gravity + GR corrections | SCm Ug3 core exclusivity, P_SCm=10? |
 | Galactic rotation curves | Dark matter halo | Ug4 vacuum density + SCm reactivity |
 | Stellar magnetic cycles | MHD + convection zone | Ug1 κ_s(t,SCm) dipole cycling |
 
@@ -255,7 +255,7 @@ foundational equation.
 
 ---
 
-**UQFF computed:** Canonical UQFF buoyancy parameter U_bi = ?[SSq]GM/rκ = 5.0e-4§0.57§6.67e-11M/r;
+**UQFF computed:** Canonical UQFF buoyancy parameter U_bi = ?[SSq]μ_s∇(M_s/r)κ = 5.0e-4§0.57§6.67e-11M/r;
 for solar parameters: U_bi,Sun = 5.7e-4§6.67e-11§1.99e30/(6.96e8) = 1.47e+2 m/s.
 
 ## 9. References

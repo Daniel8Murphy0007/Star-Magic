@@ -17,12 +17,12 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 ## Abstract
 
 The standard Eddington luminosity L_Edd = 4πGMm_p c/σ_T is modified by SCm buoyancy. The correction
-factor (1 + F_{U,Bi}/(GM/r2)) accounts for vacuum buoyancy opposing gravitational collapse, raising
+factor (1 + F_{U,Bi}/(μ_s∇(M_s/r))) accounts for vacuum buoyancy opposing gravitational collapse, raising
 the effective Eddington limit.
 
 ## 1. Corrected Eddington Luminosity
 
-L_Edd^{UQFF} = L_Edd · (1 + ρ_SCm · V · S₂₆⁽3⁾2 / (GM/r_H2))
+L_Edd^{UQFF} = L_Edd · (1 + ρ_SCm · V · S₂₆⁽3⁾2 / (μ_s∇(M_s/r)))
 
 For M = 108 MM_sun: L_Edd = 1.26×1039 W.
 

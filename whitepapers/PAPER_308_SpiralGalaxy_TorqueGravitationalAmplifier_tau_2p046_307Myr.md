@@ -65,7 +65,7 @@ $$\tau_{\rm spiral}(10\,{\rm Gyr}) = 0.01 \times 6.483\times10^{-16} \times 3.15
 
 The UQFF 2.0 pipeline applies τ as a multiplicative stage:
 
-$$g_{\rm pipeline}(t) = \frac{GM}{r^2} \cdot \underbrace{(1 + H_z\,t)}_{\text{Hubble}} \cdot \underbrace{(1 + \tau_{\rm spiral})}_{\text{torque}} \cdot \underbrace{(1 - B/B_{\rm crit})}_{\text{SC}} \cdot \underbrace{(1 + f_{\rm TRZ})}_{\rm TRZ}$$
+$$g_{\rm pipeline}(t) = \underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)} \cdot \underbrace{(1 + H_z\,t)}_{\text{Hubble}} \cdot \underbrace{(1 + \tau_{\rm spiral})}_{\text{torque}} \cdot \underbrace{(1 - B/B_{\rm crit})}_{\text{SC}} \cdot \underbrace{(1 + f_{\rm TRZ})}_{\rm TRZ}$$
 
 At t = 10 Gyr, z = 0:
 
@@ -111,7 +111,7 @@ written as a dimensionless running factor on the total gravity pipeline. The key
 
 | Term | Value | Notes |
 |------|-------|-------|
-| g_base = GM/r2 | 1.549 × 10-11 m/s2 | Reference gravity at 30 kpc |
+| g_base = μ_s∇(M_s/r) | 1.549 × 10-11 m/s2 | Reference gravity at 30 kpc |
 | Hubble factor (1 + Hz·t) | system-z dependent | Expansion correction |
 | Torque factor (1 + τ) | **3.046** | PAPER_308 key result at 10 Gyr |
 | SC factor (1 − B/B_crit) | ≈ 1.0 | Galactic B << B_crit |

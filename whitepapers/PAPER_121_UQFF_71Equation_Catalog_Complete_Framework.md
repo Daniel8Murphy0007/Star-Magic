@@ -268,7 +268,7 @@ production across magnetars, quasars, and NS mergers to the universal buoyancy o
 
 ---
 
-**UQFF computed:** Canonical UQFF buoyancy parameter U_bi = κ*[SSq]*GM/r^2 =
+**UQFF computed:** Canonical UQFF buoyancy parameter U_bi = κ*[SSq]*μ_s∇(M_s/r) =
 5.0e-4*0.57*6.67e-11*M/r^2; for solar parameters: U_bi,Sun = 5.7e-4*6.67e-11*1.99e30/(6.96e8)^2 =
 1.47e+2 m/s^2.
 

@@ -95,7 +95,7 @@ $$P_{\rm trans} = f_{\rm TRZ} \cdot P_{\rm flip}$$
 
 The [UA] vacuum buoyancy pressure creates an outward potential that opposes gravitational collapse:
 
-$$\Phi_{\rm trans} = \frac{\rho_{\rm UA}}{\rho_{\rm SCm}} \cdot \frac{GM}{c} \cdot (1 + f_{\rm TRZ})$$
+$$\Phi_{\rm trans} = \frac{\rho_{\rm UA}}{\rho_{\rm SCm}} \cdot \underbrace{\frac{GM}{c}}_{\text{DPM mass gradient}} \cdot (1 + f_{\rm TRZ})$$
 
 Numerically for Sgr A*:
 

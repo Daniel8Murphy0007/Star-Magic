@@ -67,9 +67,11 @@ These three coupled equations form the **cosmic state vector** $(M, r, z)$ as a 
 $$g_{\rm MUGE}(t) = \frac{GM(t)}{r(t)^2}\left(1 + H_z(t) \cdot t\right)\left(1 - \frac{B}{B_{\rm crit}}\right) + F_{\rm cosmo}(t)$$
 
 With r(t) = ct:
-$$g_{\rm Newton}(t) = \frac{G M_{\rm total}}{c^2 t^2} \cdot \frac{t}{t_H} = \frac{G M_{\rm total}}{c^2 t_H \cdot t}$$
+$$g_{
+m DPM}(t) = \frac{G M_{\rm total}}{c^2 t^2} \cdot \frac{t}{t_H} = \frac{G M_{\rm total}}{c^2 t_H \cdot t}$$
 
-At $t = t_H$: $g_{\rm Newton}(t_H) = \frac{6.674\times10^{-11}\times10^{53}}{(3\times10^8)^2\times(4.35\times10^{17})^2} \approx 5.88\times10^{-10}$ m/s2
+At $t = t_H$: $g_{
+m DPM}(t_H) = \frac{6.674\times10^{-11}\times10^{53}}{(3\times10^8)^2\times(4.35\times10^{17})^2} \approx 5.88\times10^{-10}$ m/s2
 
 ---
 
@@ -84,20 +86,25 @@ At late times (t = t_H): QG_term = $\frac{1.055\times10^{-34}\times 3times10^8}{
 
 $$= \frac{3.165\times10^{-26}}{2.611\times10^{-70}} \times 8.07\times10^{60} \times 1.11\times10^{-70} \approx 1.21\times10^{44} \times 8.96\times10^{-10} \approx 1.08\times10^{35}\ [\text{dimensionless correction}]$$
 
-The QG term is large but dimensionally carries $\hbar/M l_p^2$ units, which must be normalised by the gravitational coupling constant. In UQFF this is treated as a fractional correction $\delta g_{\rm QG} \sim (l_p/r)^2 g_{\rm Newton}$, giving:
+The QG term is large but dimensionally carries $\hbar/M l_p^2$ units, which must be normalised by the gravitational coupling constant. In UQFF this is treated as a fractional correction $\delta g_{\rm QG} \sim (l_p/r)^2 g_{
+m DPM}$, giving:
 
-$$g_{\rm QG} \approx \left(\frac{1.616\times10^{-35}}{4.4\times10^{26}}\right)^2 g_{\rm Newton} \approx 1.34\times10^{-122} \times g_{\rm Newton}$$
+$$g_{\rm QG} \approx \left(\frac{1.616\times10^{-35}}{4.4\times10^{26}}\right)^2 g_{
+m DPM} \approx 1.34\times10^{-122} \times g_{
+m DPM}$$
 
 This is the famous **cosmological constant problem** magnitude — UQFF registers it explicitly as a
 QG correction.
 
 ### 3.2 Dark Matter Gravity Enhancement
 
-$${\rm DM\_term} = \Omega_{\rm DM} \cdot g_{\rm Newton}(t) = 0.268 \times \frac{GM(t)}{r(t)^2}$$
+$${\rm DM\_term} = \Omega_{\rm DM} \cdot g_{
+m DPM}(t) = 0.268 \times \frac{GM(t)}{r(t)^2}$$
 
 $$g_{\rm DM}(t) = 0.268 \cdot \frac{G M_{\rm total} t}{c^2 t_H \cdot t^2} = \frac{0.268 G M_{\rm total}}{c^2 t_H \cdot t}$$
 
-The DM enhancement grows relative to Newtonian as: $g_{\rm Total, matter} = 1.268 \cdot g_{\rm Newton}$
+The DM enhancement grows relative to DPM-emergent as: $g_{\rm Total, matter} = 1.268 \cdot g_{
+m DPM}$
 
 This 26.8% enhancement is **constant across cosmic time** in this model — DM tracks matter
 symmetrically.
@@ -118,15 +125,15 @@ The GW background oscillation period: $T_{\rm GW} = \lambda_{\rm gw}/c = 10^{26}
 
 $$F_{\rm cosmo}(t_H) = g_{\rm QG}(t_H) + g_{\rm DM}(t_H) + g_{\rm GW}(t_H)$$
 
-| Component | Value at t_H | Relative to g_Newton |
+| Component | Value at t_H | Relative to g_DPM |
 |-----------|-------------|---------------------|
-| g_Newton | 5.88×10-10 m/s2 | 1.0 (reference) |
+| g_DPM | 5.88×10-10 m/s2 | 1.0 (reference) |
 | g_QG | ~10-132 m/s2 | ~10-122 (negligible) |
 | g_DM | 1.58×10-10 m/s2 | 0.268 |
 | g_GW | 8.3×10-36 × 0.92 m/s2 | ~10-27 (negligible) |
 | **g_total** | **7.46×10-10 m/s2** | **1.268** |
 
-**The universe today is 26.8% more gravitationally active than Newtonian gravity predicts**, with
+**The universe today is 26.8% more gravitationally active than DPM-emergent gravity predicts**, with
 dark matter driving the entire correction. QG and GW terms are negligible at present epoch but are
 encoded for full-timeline simulation.
 
@@ -136,7 +143,8 @@ encoded for full-timeline simulation.
 
 At t = 3 minutes (BBN, t_BBN ≈ 1.8×102 s):
 
-$$g_{\rm Newton}(t_{\rm BBN}) = \frac{GM_{\rm total}}{c^2 t_H t_{\rm BBN}} \approx \frac{6.674\times10^{-11}\times10^{53}}{9\times10^{16}\times4.35\times10^{17}\times180} \approx 1.06\times10^{8}\ \rm m/s^2$$
+$$g_{
+m DPM}(t_{\rm BBN}) = \frac{GM_{\rm total}}{c^2 t_H t_{\rm BBN}} \approx \frac{6.674\times10^{-11}\times10^{53}}{9\times10^{16}\times4.35\times10^{17}\times180} \approx 1.06\times10^{8}\ \rm m/s^2$$
 
 **Gravitational acceleration at BBN was ~108 m/s2** — 1018× the present value, confirming the
 extreme compression of the early universe.
@@ -157,9 +165,9 @@ extreme compression of the early universe.
 
 ## 7. Testable Predictions
 
-1. **CMB power spectrum:** g_DM/g_Newton = 0.268 should match the Ω_c h2 parameter from Planck 2018
+1. **CMB power spectrum:** g_DM/g_DPM = 0.268 should match the Ω_c h2 parameter from Planck 2018
 to within 1%.
-2. **BBN constraints:** g_Newton at BBN must not exceed values that would disrupt proton:neutron
+2. **BBN constraints:** g_DPM at BBN must not exceed values that would disrupt proton:neutron
 ratio; ~108 m/s2 at t=180 s is consistent with standard BBN.
 3. **GW background oscillation period:** T_GW ≈ 10.6 Gyr — testable via pulsar timing arrays
 (NANOGrav) looking for ~10 Gyr periodicity in the stochastic GW background.

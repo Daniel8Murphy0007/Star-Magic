@@ -66,7 +66,7 @@ LIMIT 1000
 
 $$g_{\rm UQFF}^{(C)} = \frac{M_\star}{R_\star} \times 10^{-10}$$
 
-| Star Type | M/M? | R/R? | g_Newton (m/s) | `g_UQFF_C` (m/s) | UQFF/Newton |
+| Star Type | M/M? | R/R? | g_DPM (m/s) | `g_UQFF_C` (m/s) | UQFF/Newton |
 |-----------|------|------|-----------------|------------------|-------------|
 | Sun (G2V) | 1.00 | 1.00 | 274 | 281 × 10? | calibration |
 | Sirius A (A1V) | 2.06 | 1.71 | 367 | 373 × 10? | 1.016 |
@@ -240,7 +240,7 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 
 | Mode | Dominant Term | Primary Use Case |
 |------|--------------|-----------------|
-| **Compressed** | Ug_sum + Newtonian base | Isolated stellar/BH systems |
+| **Compressed** | Ug_sum + DPM-emergent base | Isolated stellar/BH systems |
 | **Resonant** | 5 resonance frequencies (aDPM, aTHz, …) | Multi-scale field interactions |
 | **Buoyant** | β_i × Ubi | Expanding nebulae, stellar winds |
 | **Superconductive** | Um × (1+1013·f_H) | Magnetars, SCm critical-density regime |

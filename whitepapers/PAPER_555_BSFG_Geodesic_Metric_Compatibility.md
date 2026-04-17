@@ -32,7 +32,8 @@ A geometric system is not complete without proving that its connection is compat
 
 $$\Delta g_r = \frac{\varepsilon'(r)}{2} = -\frac{3\etacos(\pi t_n)\,C_{\rm num}}{2r^4}$$
 
-with orbital velocity correction $v^2_{\rm orbit} = GM/r + r\,c^2\,\varepsilon'(r)/2$. At $r = R_\odot$: $|\Delta g_r| \approx 2.73 \times 10^{-11}\ {\rm m/s}^2 \approx 10^{-13}\,g_{\rm Newton}$ — ultra-weak and consistent with non-detection in current experiments.
+with orbital velocity correction $v^2_{\rm orbit} = μ_s∇(M_s/r) + r\,c^2\,\varepsilon'(r)/2$. At $r = R_\odot$: $|\Delta g_r| \approx 2.73 \times 10^{-11}\ {\rm m/s}^2 \approx 10^{-13}\,g_{
+m DPM}$ — ultra-weak and consistent with non-detection in current experiments.
 
 ---
 
@@ -90,7 +91,7 @@ At leading order ($\varepsilon \ll 1$, slow orbit $|dr/d\lambda| \ll |dt/d\lambd
 
 $$\boxed{\frac{d^2 r}{d\lambda^2} \approx -\frac{GM_\odot}{r^2} + \frac{\varepsilon'}{2}}$$
 
-where the first term is the Newtonian limit recovered from the Minkowski background, and the second
+where the first term is the DPM-emergent limit recovered from the Minkowski background, and the second
 is the **Aether fifth force**:
 
 $$\Delta g_r^{(\rm Aether)} = \frac{\varepsilon'(r)}{2} = -\frac{3\etacos(\pi t_n)\,C_{\rm num}}{2r^4}$$
@@ -101,11 +102,11 @@ $$\Delta g_r^{(\rm Aether)} = \frac{\varepsilon'(r)}{2} = -\frac{3\etacos(\pi t_
 
 For a circular orbit ($d^2r/d\lambda^2 = 0$):
 
-$$\frac{v^2_{\rm orbit}}{r} = \frac{GM}{r^2} - \frac{\varepsilon'(r)}{2}$$
+$$\frac{v^2_{\rm orbit}}{r} = \underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)} - \frac{\varepsilon'(r)}{2}$$
 
-$$v^2_{\rm orbit} = \frac{GM}{r} + \frac{r\,c^2\,|\varepsilon'(r)|}{2}$$
+$$v^2_{\rm orbit} = \underbrace{\frac{GM}{r}}_{\text{DPM mass gradient}} + \frac{r\,c^2\,|\varepsilon'(r)|}{2}$$
 
-(Note: $\varepsilon' < 0$ so $-\varepsilon'/2 > 0$, meaning the Aether field slightly *increases* the required orbital velocity compared to pure Newtonian.)
+(Note: $\varepsilon' < 0$ so $-\varepsilon'/2 > 0$, meaning the Aether field slightly *increases* the required orbital velocity compared to pure DPM-emergent.)
 
 **Numerical values at $r = R_\odot$, $t_n = 0$:**
 
@@ -113,7 +114,8 @@ $$v^2_{\rm orbit} = \frac{GM}{r} + \frac{r\,c^2\,|\varepsilon'(r)|}{2}$$
 |----------|-------|
 | $\varepsilon'(R_\odot)$ | $-5.47 \times 10^{-11}\ {\rm m}^{-1}$ |
 | $\Delta g_r^{(\rm Aether)}$ | $-2.73 \times 10^{-11}\ {\rm m/s}^2$ |
-| $g_{\rm Newton}(R_\odot)$ | $+274\ {\rm m/s}^2$ |
+| $g_{
+m DPM}(R_\odot)$ | $+274\ {\rm m/s}^2$ |
 | Ratio | $\approx 10^{-13}$ |
 | $\delta v_{\rm orbit} = v_{\rm orbit} - v_{\rm Newton}$ | $\approx 2.1 \times 10^{-2}\ {\rm m/s}$ at $r = R_\odot$ |
 
@@ -269,7 +271,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| GR Schwarzschild metric recovery | BSFG line element → g_tt = -(1-2GM/rc2) ≡ GR in ε_BSFG→0 limit | Schwarzschild metric (GR exact) | PDG 2024 / MTW | PASS BSFG reduces to GR |
+| GR Schwarzschild metric recovery | BSFG line element → g_tt = -(1-2μ_s∇(M_s/r)·r/c²) ≡ GR in ε_BSFG→0 limit | Schwarzschild metric (GR exact) | PDG 2024 / MTW | PASS BSFG reduces to GR |
 | Shapiro time delay | BSFG geodesic → Δt_BSFG ≈ Δt_GR × (1 + ε_correction) | Cassini: Δt/Δt_GR = 1 ± 2.3e-5 | Cassini/GR 2003 | PASS Within Shapiro bound |
 | Gravitational wave speed v_GW | BSFG: v_GW = c × (1 + k_η2) ≈ c + 10-226 m/s | GW150914 / GW170817: |v_GW/c - 1| < 10-15 | LIGO/Fermi GBM | PASS UQFF deviation 10-211 orders below bound |
 | Perihelion precession (Mercury) | BSFG adds buoyancy correction δφ = κ × φ_GR ~ 10-6 arcsec/century | GR prediction: 43.03"/century; observed: 43.1" | GR + obs. | UQFF correction undetectable at current precision |
@@ -285,7 +287,7 @@ LISA or BepiColombo precision gravitational measurements.
 
 ## §6 Physical Interpretation: The Aether Fifth Force
 
-The geodesic correction $\Delta g_r^{(\rm Aether)} \propto r^{-4}$ falls off faster than the $r^{-2}$ Newtonian force, ensuring it is negligible at astronomical distances. However, it becomes meaningful in the near-stellar regime, providing:
+The geodesic correction $\Delta g_r^{(\rm Aether)} \propto r^{-4}$ falls off faster than the $r^{-2}$ DPM-emergent force, ensuring it is negligible at astronomical distances. However, it becomes meaningful in the near-stellar regime, providing:
 
 1. **A UQFF orbital precession correction** — the $r^{-4}$ force produces a perihelion advance with a distinct signature from GR's $r^{-5}$ correction (from the Schwarzschild metric).
 2. **A temporal modulation** via $\cos(\pi t_n)$ — the fifth force reverses sign at each half-cycle of $t_n$, consistent with PAPER_417's pi-cycle temporal reversal.

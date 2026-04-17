@@ -62,7 +62,7 @@ The magnetar case shows the **largest discrepancy** between the two models:
 $$
 \begin{aligned}
   & Compressed MUGE: g ≈ 1.782e39 m/s2 (dominated by perturbation term) \\
-  & Perturbation = (M + M_DM) · (δρ/ρ + 3GM/r3) \\
+  & Perturbation = (M + M_DM) · (δρ/ρ + 3μ_s∇(M_s/r)/r) \\
   & = (2.984e30 + 0) · (10-5 + 5.973e8) \\
   & ≈ 1.782e39 m/s2 \\
   & Resonance MUGE: g ≈ 1.773e-9 m/s2 (dominated by fluid term) \\

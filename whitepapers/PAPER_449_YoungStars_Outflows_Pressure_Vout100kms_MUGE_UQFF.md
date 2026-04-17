@@ -31,8 +31,8 @@ bipolar jet feedback, using the UQFF/MUGE framework with an explicit outflow pre
 module models a 1000 MM_sun protostellar cluster at r=2.365×1017 m (25 ly) over t_evolve=5×106 yr with
 bipolar jet outflows at v_out=105 m/s (100 km/s). The outflow pressure term P_outflow = ρ v_out2 (1
 + t/t_evolve) is the **first such term in the UQFF framework**, establishing that momentum-driven
-jet feedback adds a time-growing gravitational modifier that eventually dominates over the Newtonian
-base gravity. At t = t_evolve, P_outflow ≈ 2ρ v_out2 ≈ 2×10-10 m/s2, which exceeds the Newtonian g
+jet feedback adds a time-growing gravitational modifier that eventually dominates over the DPM-emergent
+base gravity. At t = t_evolve, P_outflow ≈ 2ρ v_out2 ≈ 2×10-10 m/s2, which exceeds the DPM-emergent g
 by ~20×.
 
 ---
@@ -54,13 +54,17 @@ by ~20×.
 
 ### 2.2 UQFF Total Gravitational Equation
 
-$$g_{\rm UQFF}(r,t) = g_{\rm Newton} + g_{\rm Hubble} + \sum U_{gi} + g_{\rm quantum} + g_{\rm fluid} + P_{\rm outflow}(t) + g_{\rm DM}$$
+$$g_{\rm UQFF}(r,t) = g_{
+m DPM} + g_{\rm Hubble} + \sum U_{gi} + g_{\rm quantum} + g_{\rm fluid} + P_{\rm outflow}(t) + g_{\rm DM}$$
 
 Where:
 
-$$g_{\rm Newton} = \frac{GM}{r^2} = \frac{6.674 \times 10^{-11} \times 1.989 \times 10^{33}}{(2.365 \times 10^{17})^2} \approx 2.37 \times 10^{-12}\ \rm m/s^2$$
+$$g_{
+m DPM} = \underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)} = \frac{6.674 \times 10^{-11} \times 1.989 \times 10^{33}}{(2.365 \times 10^{17})^2} \approx 2.37 \times 10^{-12}\ \rm m/s^2$$
 
-$$g_{\rm Hubble} = g_{\rm Newton} \cdot H_z t = g_{\rm Newton} \times (1 + H_z t)$$
+$$g_{\rm Hubble} = g_{
+m DPM} \cdot H_z t = g_{
+m DPM} \times (1 + H_z t)$$
 
 ### 2.3 Bipolar Outflow Pressure Term (FIRST in UQFF)
 
@@ -76,14 +80,14 @@ $$P_{\rm outflow}(t) = 10^{-10}\left(1 + \frac{t}{t_{\rm evolve}}\right)\ \rm m/
 
 ### 2.4 Term Evolution Over 5 Myr
 
-| t (Myr) | P_outflow (m/s2) | g_Newton | Ratio P/g_N |
+| t (Myr) | P_outflow (m/s2) | g_DPM | Ratio P/g_N |
 |---------|-----------------|----------|-------------|
 | 0 | 1.0×10-10 | 2.37×10-12 | 42× |
 | 1 | 1.2×10-10 | 2.37×10-12 | 51× |
 | 2.5 | 1.5×10-10 | 2.37×10-12 | 63× |
 | 5.0 | 2.0×10-10 | 2.37×10-12 | 84× |
 
-At all epochs, outflow pressure **completely dominates** the Newtonian base — demonstrating that jet
+At all epochs, outflow pressure **completely dominates** the DPM-emergent base — demonstrating that jet
 feedback in YSO clusters fundamentally alters the gravitational landscape.
 
 ---
@@ -98,9 +102,10 @@ Negligible compared to P_outflow.
 
 ### 3.2 Dark Matter Enhancement
 
-$$g_{\rm DM} = 0.268 \times g_{\rm Newton} \approx 6.35 \times 10^{-13}\ \rm m/s^2$$
+$$g_{\rm DM} = 0.268 \times g_{
+m DPM} \approx 6.35 \times 10^{-13}\ \rm m/s^2$$
 
-At 26.8% DM fraction (cosmic average). Contributes ~30% of Newtonian base.
+At 26.8% DM fraction (cosmic average). Contributes ~30% of DPM-emergent base.
 
 ### 3.3 Hubble Factor at z=0.05
 
@@ -140,7 +145,8 @@ simulation.
 ## 6. Testable Predictions
 
 1. **Momentum budget:** The total outflow momentum after t_evolve is dominated by ram pressure: $J_{\rm tot} = P_{\rm outflow} \times t_{\rm evolve} \times M \approx 10^{-10} \times 1.577\times10^{14} \times 1.989\times10^{33} \approx 3.1\times10^{37}$ kg m/s. Consistent with outflow momentum budgets measured in Class 0 sources.
-2. **Dispersal by jets:** UQFF predicts cloud disruption when $P_{\rm outflow}(t) > g_{\rm Newton} + \text{self-gravity}$; for this system this occurs at t ≈ 0 (immediately). Observer confirmation: ~50% of YSO clusters show disrupted molecular envelopes within 1 Myr of outflow initiation.
+2. **Dispersal by jets:** UQFF predicts cloud disruption when $P_{\rm outflow}(t) > g_{
+m DPM} + \text{self-gravity}$; for this system this occurs at t ≈ 0 (immediately). Observer confirmation: ~50% of YSO clusters show disrupted molecular envelopes within 1 Myr of outflow initiation.
 3. **Scalability:** P_outflow ∝ ρ·v2, so denser clouds (ρ→10-18 kg/m3) or faster jets (v→106 m/s)
 increase feedback by 100×, matching observed extreme outflow sources.
 

@@ -49,7 +49,7 @@ $$g_{\rm UQFF}^{(j)}(t) = \frac{GM_j(t)}{r_j^2}(1 + H_z t)(1 - B_j/B_{\rm crit})
 
 The **compressed form** replaces the explicit Ug sum with a pre-tabulated module value:
 
-$$g_{\rm UQFF}^{(j),\rm comp}(t) = g_{\rm Newton}^{(j)}(1 + H_z t) + F_{\rm env}^{(j)}$$
+$$g_{\rm UQFF}^{(j),\rm comp}(t) = g_{m DPM}^{(j)}(1 + H_z t) + F_{\rm env}^{(j)}$$
 
 ### 2.2 7-System Registry
 

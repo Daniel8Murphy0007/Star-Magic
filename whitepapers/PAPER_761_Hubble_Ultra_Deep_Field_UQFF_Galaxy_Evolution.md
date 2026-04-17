@@ -136,7 +136,7 @@ $$
 
 The HUDF represents cosmic evolution across 13 billion years. The dominant term is the
 electromagnetic Aether correction via [UA]/[SCm] coupling, reflecting how non-standard vacuum energy
-drives large-scale structure formation beyond classical Newtonian gravity. The significant H(z)·t
+drives large-scale structure formation beyond classical DPM-emergent gravity. The significant H(z)·t
 factor (5.148) demonstrates substantial cosmic expansion modulation over the observed redshift range
 z = 0.1–7.
 

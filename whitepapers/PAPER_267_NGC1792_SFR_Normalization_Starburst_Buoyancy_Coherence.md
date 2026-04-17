@@ -129,7 +129,7 @@ where the superscript ∞ denotes the static (non-sSFR) component amplitudes.
 
 **Starburst-buoyancy coherence:** The peak buoyancy enhancement Δg_buoy_total(t=0) occurs
 simultaneously with peak sSFR. Both decay with the **same timescale τ_SF = 100 Myr** = 3.15576×1015
-s. This is a unique prediction: in standard Newtonian gravity, buoyancy has no dependence on star
+s. This is a unique prediction: in standard DPM-emergent gravity, buoyancy has no dependence on star
 formation rate.
 
 ### 3.3 Numerical Values for NGC 1792

@@ -86,7 +86,7 @@ Session 53 used a decaying $B(t)$; this implementation uses a **static** $B$ fie
 
 $$f_{sc} = 1 - \frac{B}{B_{crit}} = 1 - \frac{2 \times 10^{10}}{4.4 \times 10^{13}} = 1 - 4.55 \times 10^{-4} \approx 0.99955$$
 
-Applied to the base gravity: $a_{base} = GM/r^2 \cdot (1 + H_0 t) \cdot f_{sc}$ — a ~0.05% suppression from near-critical field.
+Applied to the base gravity: $a_{base} = μ_s∇(M_s/r) \cdot (1 + H_0 t) \cdot f_{sc}$ — a ~0.05% suppression from near-critical field.
 
 ---
 

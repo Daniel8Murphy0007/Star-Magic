@@ -26,7 +26,7 @@ A comprehensive UQFF Master F_U_Bi_i Buoyancy analysis of 35+ astrophysical syst
 
 ### 1.1 UQFF Framework Applied
 
-    F_U_Bi = -F_0 + (m_e c2/r2)*DPM_momentum*costheta + (GM/r2)*DPM_gravity + F_U_Bi_i
+    F_U_Bi = -F_0 + (m_e c2/r2)*DPM_momentum*costheta + (μ_s∇(M_s/r))*DPM_gravity + F_U_Bi_i
     
     F_U_Bi_i = Integral0^{x2} [-F_0 + gravity + momentum + rho_vac*DPM_stab
                 + F_LENR + F_act + F_torque + F_DE + F_res] dx
@@ -112,7 +112,7 @@ All four negative cases share: M_BH ~ $10^{36}$–$10^{44}$ kg, r ~ $10^{18}$–
 ### Mathematical Condition:
 
     F_U_Bi_i < 0 when:
-      GM/r2 > F_0 scale reversal threshold
+      μ_s∇(M_s/r) > F_0 scale reversal threshold
       i.e., when the gravitational term dominates over the vacuum energy driving term
       Numerically: M > ~10^36 kg at r > ~10^18 m (SMBH regime)
 

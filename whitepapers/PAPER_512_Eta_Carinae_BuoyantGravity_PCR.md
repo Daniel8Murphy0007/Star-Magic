@@ -29,7 +29,7 @@ luminosity and X-ray periastron brightening.
 ## 1. Buoyant Gravity with PCR Envelope
 
 $$
-g_\text{eff}(r, t) = \frac{GM}{r^2}\bigl[1 + k_\text{PCR}\cdot\text{PCR}(3, t)\bigr]
+g_\text{eff}(r, t) = \underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)}\bigl[1 + k_\text{PCR}\cdot\text{PCR}(3, t)\bigr]
 $$
 
 The PCR quantum number q=3 reflects the triadic structure of the 26-layer compressed gravity

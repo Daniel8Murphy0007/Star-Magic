@@ -38,7 +38,7 @@ $$g_{UQFF}(r,t) = \sum_{i=1}^{26}\left[U_{g1,i}+U_{g2,i}+U_{g3,i}+U_{g4,i}\right
 | $U_{g4,i}$ | $k_4 E_0 e^{-\kappa t}/26$ | Reactive energy decay |
 
 ## 3. UQFF Potential from QFT
-$$V_{UQFF}(r) = -\frac{GM}{r}\left(1+\frac{\rho_{SCm}}{\rho_{UA}}\right)(1-f_{TRZ})$$
+$$V_{UQFF}(r) = -\underbrace{\frac{GM}{r}}_{\text{DPM mass gradient}}\left(1+\frac{\rho_{SCm}}{\rho_{UA}}\right)(1-f_{TRZ})$$
 Derived as the static limit of the UQFF Hamiltonian: $\hat{H}_{UQFF} = -\frac{\hbar^2}{2m}\nabla^2 + V_{UQFF}$.
 
 ## 4. Quantum Gravity Wave

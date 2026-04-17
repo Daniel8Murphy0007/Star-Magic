@@ -33,7 +33,7 @@ Extended dimensional analysis companion to PAPER_376. This paper focuses on veri
 dimensional consistency of each individual Ug_k component of the Compressed UQFF Equation
 across all 26 layers of the BSFG metric, and on the Master UQFF Resonance Equation's
 12-term resonance decomposition. While PAPER_376 presents the five formal proof categories
-(Newtonian baseline, boundary conditions, resonance frequency, Meissner forms, empirical
+(DPM-emergent baseline, boundary conditions, resonance frequency, Meissner forms, empirical
 validation), this companion provides the detailed per-component dimensional breakdown that
 underpins those proofs.
 
@@ -170,8 +170,8 @@ model (SuperFreq, QuantumFreq, AetherFreq, FluidFreq, ExpFreq).
 
 | Proof | PAPER_376 Statement | This Paper's Verification |
 |-------|--------------------|----|
-| 1 (Newtonian) | g_N = 5.93e-3 m/s2 at 1 AU | All Ug terms sum to g_N when t=0, B=0 PASS |
-| 2 (Boundaries) | r→∞: Λc2/3; t→0: GM/r2 | Ug4 → 0 (r→∞), Ug2 → max (t→0) PASS |
+| 1 (DPM-emergent) | g_N = 5.93e-3 m/s2 at 1 AU | All Ug terms sum to g_N when t=0, B=0 PASS |
+| 2 (Boundaries) | r→∞: Λc2/3; t→0: μ_s∇(M_s/r) | Ug4 → 0 (r→∞), Ug2 → max (t→0) PASS |
 | 3 (Resonance) | ω_res = 1.445e-17 rad/s | R(t) peaks at t_Hubble harmonics PASS |
 | 4 (Meissner) | (1-B/B_crit) and exp(-B/B_crit) | Both forms verified dimensionless PASS |
 | 5 (Empirical) | Chandra magnetar, EHT Sgr A* | κ decay in Ug2 matches flare window PASS |

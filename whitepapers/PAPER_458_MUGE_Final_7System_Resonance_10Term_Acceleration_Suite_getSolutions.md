@@ -78,7 +78,7 @@ Period: $T_{\rm ExpFreq} = 1/H_0 = 4.41\times10^{17}$ s = 13.97 Gyr (Hubble time
 
 ## 3. Full Resonance Equation
 
-$$g_{\rm res}^{(j)}(r,t) = g_{\rm Newton}^{(j)}(1 + H_z t)(1 - B/B_{\rm crit}) + \sum_{i=1}^{10} a_i^{(j)}(r,t)$$
+$$g_{\rm res}^{(j)}(r,t) = g_{m DPM}^{(j)}(1 + H_z t)(1 - B/B_{\rm crit}) + \sum_{i=1}^{10} a_i^{(j)}(r,t)$$
 
 ---
 
@@ -90,7 +90,7 @@ At t = 1 Gyr = 3.156×1016 s:
 
 | Term | Value (m/s2) |
 |------|-------------|
-| g_Newton | 3.716×1012 |
+| g_DPM | 3.716×1012 |
 | a_THz | ~7.26×1024 |
 | a_AetherRes | ~4.9×106 |
 | Osc_term | ~1×10-3 (oscillatory) |
@@ -101,7 +101,7 @@ At t = 1 Gyr = 3.156×1016 s:
 
 | Term | Value (m/s2) |
 |------|-------------|
-| g_Newton | ~6.25×101 |
+| g_DPM | ~6.25×101 |
 | a_AetherFreq | ~1×10-2 |
 | a_FluidFreq | ~10-15 |
 | a_ExpFreq | ~4.1×10-10 |
@@ -111,7 +111,7 @@ At t = 1 Gyr = 3.156×1016 s:
 
 | Term | Value (m/s2) |
 |------|-------------|
-| g_Newton | ~2.65×10-12 |
+| g_DPM | ~2.65×10-12 |
 | P_outflow | ~10-10 |
 | Osc_term | ~10-13 |
 | **g_res total** | **~1.02×10-10** |
@@ -120,7 +120,7 @@ At t = 1 Gyr = 3.156×1016 s:
 
 | Term | Value (m/s2) |
 |------|-------------|
-| g_Newton | ~5.88×10-10 |
+| g_DPM | ~5.88×10-10 |
 | g_DM | ~1.58×10-10 |
 | a_ExpFreq | ~4.1×10-10 |
 | **g_res total** | **~1.14×10-9** |
@@ -161,7 +161,7 @@ T_ExpFreq = 1/H₀.
 2. **Osc_term cavity resonance:** For the magnetar (r = 10 km cavity), Osc_term at f_char = c/(2r) =
 1.5×1010 Hz. Detectable as sub-millisecond periodic gravity wave from neutron star surface modes.
 3. **a_THz universality:** For all compact objects, a_THz ∝ c3/(GMr) × f_THz2 — implies
-a_THz/g_Newton = (c/v_escape)2 × (f_THz r/c)2, a universal ratio testable via GW observations.
+a_THz/g_DPM = (c/v_escape)2 × (f_THz r/c)2, a universal ratio testable via GW observations.
 
 ---
 

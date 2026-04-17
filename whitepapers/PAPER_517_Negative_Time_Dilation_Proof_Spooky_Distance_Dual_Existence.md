@@ -64,7 +64,7 @@ $$t_{\text{adj}}^{\text{old}} = \frac{t_{\text{obs}}}{1 + \Delta_{\text{rel}}}$$
 $$\boxed{t_{\text{adj}} = \frac{t_{\text{obs}}}{1 + \Delta_{\text{dil}}} + t_{\text{neg}}}$$
 
 where $t_{\text{neg}} < 0$. Setting $\Delta_{\text{dil}} = 0$ and
-$t_{\text{neg}} = 0$ recovers Newtonian time (backward compatibility).
+$t_{\text{neg}} = 0$ recovers DPM-emergent time (backward compatibility).
 
 ---
 

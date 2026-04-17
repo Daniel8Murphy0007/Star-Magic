@@ -25,7 +25,7 @@ aggregates per-line fit quality across multi-system targets.
 At frequency ν near a molecular transition ν₀:
 
 $$
-F_{U,Bi}(\nu) = \sum_{i=1}^{26} c_i \cdot \exp\left(-\frac{(\nu - \nu_0)^2}{2\sigma_{\text{th}}^2}\right) \cdot \beta_i \cdot \frac{GM}{r^2}
+F_{U,Bi}(\nu) = \sum_{i=1}^{26} c_i \cdot \exp\left(-\frac{(\nu - \nu_0)^2}{2\sigma_{\text{th}}^2}\right) \cdot \beta_i \cdot \underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)}
 $$
 
 where $c_i = [\text{SSq}]^i / i^{26} \cdot R_n(i, 3)$ are the S₂₆⁽³⁾ layer coefficients

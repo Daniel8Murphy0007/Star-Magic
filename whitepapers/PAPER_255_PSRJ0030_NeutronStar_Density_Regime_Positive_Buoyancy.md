@@ -86,7 +86,7 @@ $$
   & Force hierarchy at ?0=10?12, s_n=103?: \\
   & F_neutron ˜ 104? N   [dominant — 9 orders above F_LENR] \\
   & F_LENR   ˜ 6×103? N   [second] \\
-  & F_Newt   ˜ GM/r2·|x2| [negligible] \\
+  & F_Newt   ˜ μ_s∇(M_s/r)·|x2| [negligible] \\
   & F_res    « F_LENR      [DPM invisible — same conclusion as PAPER_251]
 \end{aligned}
 $$
@@ -94,7 +94,7 @@ $$
 ### 2.2 Compact Geometry and P Positive Buoyancy Preservation
 
 Despite the 9-order dominance of F_neutron over F_LENR, the sign of F_U_Bi remains positive. This is
-because the compact geometry (r = 104 m) affects the term_gravity = GM/r2 and the integration limit
+because the compact geometry (r = 104 m) affects the term_gravity = μ_s∇(M_s/r) and the integration limit
 x2 in a way that preserves the positive root:
 
 $$

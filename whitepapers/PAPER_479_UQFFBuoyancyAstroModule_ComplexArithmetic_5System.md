@@ -50,7 +50,7 @@ $$F_{LENR}(J1610) = k_{LENR} \cdot \left(\frac{\omega_0 (LENR)}{1 \times 10^{-12
 
 The UQFF buoyancy integral force:
 
-$$F_{U,Bi,i}(r, t) = -F_0 + \frac{m_e c^2}{r^2} D_{PM,mom} \costheta + \frac{GM}{r^2} D_{PM,grav} + \int_{0}^{t} \text{Integrand}(r, t') \, dt'$$
+$$F_{U,Bi,i}(r, t) = -F_0 + \frac{m_e c^2}{r^2} D_{PM,mom} \costheta + \underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)} D_{PM,grav} + \int_{0}^{t} \text{Integrand}(r, t') \, dt'$$
 
 **Constants:**
 - $F_0 = 1.83 \times 10^{71}$ N (base force normalization)
@@ -125,7 +125,7 @@ All variables stored in `std::map<std::string, std::complex<double>>`. Key desig
 | C | 1.2 (concentration) |
 | t_obs | 1.42 × 1017 s (~4.5 Gyr = ~age at z=0.383) |
 
-**Physics context:** PLCK G287.0+32.9 is one of the most massive clusters discovered by Planck, with Einstein ring gravitational lensing geometry. The cluster's merger dynamics (Mach 1.5) drive enhanced magnetic resonance ($B_0 = 10^{-4}$ T relic radio field). UQFF buoyancy at cluster scale tests the $GM/r^2$ gravity term at 1044 kg scale — the ICM DPM gravity coupling: $(6.6743 \times 10^{-11} \times 1.989 \times 10^{44}) / (3.09 \times 10^{22})^2 \approx 1.39 \times 10^{-10}$ m/s2 (cluster acceleration).
+**Physics context:** PLCK G287.0+32.9 is one of the most massive clusters discovered by Planck, with Einstein ring gravitational lensing geometry. The cluster's merger dynamics (Mach 1.5) drive enhanced magnetic resonance ($B_0 = 10^{-4}$ T relic radio field). UQFF buoyancy at cluster scale tests the $μ_s∇(M_s/r)$ gravity term at 1044 kg scale — the ICM DPM gravity coupling: $(6.6743 \times 10^{-11} \times 1.989 \times 10^{44}) / (3.09 \times 10^{22})^2 \approx 1.39 \times 10^{-10}$ m/s2 (cluster acceleration).
 
 ### 3.3 PSZ2 G181.06+48.47 (Merging Cluster with Radio Relics, z = 0.234)
 

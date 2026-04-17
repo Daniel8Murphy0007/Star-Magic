@@ -88,7 +88,7 @@ $$\boxed{d_{\text{stop}} = \frac{\frac{1}{2}mv^2}{F_{\text{object}} - F_{\text{A
 
 The master UQFF integral is extended with $-F_{\text{Aether}}$ as a drag term:
 
-$$F_{U,Bi\_i} = \int_0^{x_2} \Bigg[ -F_0 + \frac{m_e c^2}{r^2}\text{DPM}_{\text{momentum}}\costheta + \frac{GM}{r^2}\text{DPM}_{\text{gravity}} + \rho_{\text{vac}}\text{DPM}_{\text{stability}} + k_{\text{LENR}}\left(\frac{\omega_{\text{LENR}}}{\omega_0}\right)^2 + k_{\text{act}}\cos(\omega_{\text{act}}t) + k_{\text{DE}}L_X + 2qB_0V\sintheta\,\text{DPM}_{\text{resonance}} + k_{\text{neutron}}\sigma_n + k_{\text{rel}}\left(\frac{E_{\text{cm,astro}}}{E_{\text{cm}}}\right)^2 + F_{\text{neutrino}} - F_{\text{Aether}} \Bigg]\,dx$$
+$$F_{U,Bi\_i} = \int_0^{x_2} \Bigg[ -F_0 + \frac{m_e c^2}{r^2}\text{DPM}_{\text{momentum}}\costheta + \underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)}\text{DPM}_{\text{gravity}} + \rho_{\text{vac}}\text{DPM}_{\text{stability}} + k_{\text{LENR}}\left(\frac{\omega_{\text{LENR}}}{\omega_0}\right)^2 + k_{\text{act}}\cos(\omega_{\text{act}}t) + k_{\text{DE}}L_X + 2qB_0V\sintheta\,\text{DPM}_{\text{resonance}} + k_{\text{neutron}}\sigma_n + k_{\text{rel}}\left(\frac{E_{\text{cm,astro}}}{E_{\text{cm}}}\right)^2 + F_{\text{neutrino}} - F_{\text{Aether}} \Bigg]\,dx$$
 
 The $-F_{\text{Aether}}$ term acts as a dissipative drag, reducing net buoyancy where Aether resistance is significant (e.g., near black hole jets, stellar termination regions).
 

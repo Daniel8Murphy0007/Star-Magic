@@ -39,7 +39,7 @@ $$
 **Orbital field magnitude:**
 
 $$
-\mathcal{F}_\text{orbit} = r_\text{orbit}(n, t)\cdot \frac{GM}{r_0}\times 10^{-10}
+\mathcal{F}_\text{orbit} = r_\text{orbit}(n, t)\cdot \underbrace{\frac{GM}{r_0}}_{\text{DPM mass gradient}}\times 10^{-10}
 $$
 
 ---

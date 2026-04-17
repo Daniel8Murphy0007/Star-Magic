@@ -81,7 +81,7 @@ correction set.
 
 ## 3. Universal g_UQFF Equation
 
-$$g_{\rm UQFF}(r,t) = \frac{GM}{r^2}(1+H_z t)(1-B/B_{\rm crit}) + \sum_{i=1}^{4} U_{gi} + \frac{\Lambda c^2}{3} + g_{\rm QG} + g_{\rm fluid} + g_{\rm DM} + F_{\rm env}(t)$$
+$$g_{\rm UQFF}(r,t) = \underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)}(1+H_z t)(1-B/B_{\rm crit}) + \sum_{i=1}^{4} U_{gi} + \frac{\Lambda c^2}{3} + g_{\rm QG} + g_{\rm fluid} + g_{\rm DM} + F_{\rm env}(t)$$
 
 ### 3.1 H_res Resonance (Cycle 2 Continued)
 
@@ -97,7 +97,7 @@ The 13 F_env components for the 29-system registry:
 
 | # | Component | Formula | Systems |
 |---|----------|---------|---------|
-| 1 | F_Newtonian | GM_ext/r_ext2 | All |
+| 1 | F_DPM-emergent | GM_ext/r_ext2 | All |
 | 2 | F_Hubble | g_N×H_z×t | All |
 | 3 | F_B | g_N×(1-B/B_crit) | Magnetar, SgrA |
 | 4 | F_wind | ρ_fluid×v_wind2 | OB star systems |

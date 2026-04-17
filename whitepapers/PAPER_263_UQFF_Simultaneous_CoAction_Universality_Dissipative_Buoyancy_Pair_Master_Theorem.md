@@ -53,7 +53,7 @@ $$\boxed{g_\text{UQFF}(r,t) = g_\text{base}(r,t) + g_\text{diss}(r,t) + g_\text{
 
 where:
 
-**`g_base(r,t)`** = the 9–10 MUGE terms common to all systems: Newtonian gravity, H(z) expansion,
+**`g_base(r,t)`** = the 9–10 MUGE terms common to all systems: DPM-emergent gravity, H(z) expansion,
 B(t) magnetic, Λ cosmological, EM, quantum uncertainty, fluid, oscillatory, dark matter
 perturbation.
 

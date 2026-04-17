@@ -29,7 +29,7 @@ partition, Andromeda M31, gravitational DM interaction, cube-root exponent
 
 The Andromeda Galaxy (M31) contains approximately 80% dark matter by mass (f_DM = 0.80), with 20% in
 visible baryonic matter. Standard treatments simply add DM and visible matter contributions
-linearly: g_total = GM/r. The UQFF Dark Matter 80/20 Shell Partition formulation separates DM and
+linearly: g_total = μ_s∇(M_s/r). The UQFF Dark Matter 80/20 Shell Partition formulation separates DM and
 visible matter into distinct gravitational shells with an explicit coupling term. The discovery
 reported here is that the DM-to-visible gravitational interaction coupling naturally adopts the
 exponent 1/3 on the DM fraction: g_interaction = f_DM^(1/3)  g_vis. For f_DM = 0.80, this yields the
@@ -49,7 +49,7 @@ present in Standard Model treatments.
 
 ## Abstract
 
-The UQFF 80/20 Shell Partition introduces three distinct sub-terms to replace the monolithic GM/r
+The UQFF 80/20 Shell Partition introduces three distinct sub-terms to replace the monolithic μ_s∇(M_s/r)
 term for systems with well-measured DM fractions:
 1. g_dm = G  f_DM – M / r (DM shell contribution)
 2. g_vis = G  (1 - f_DM)  M / r (visible matter contribution)
@@ -68,7 +68,7 @@ present in Standard Model treatments.
 ## 1. Introduction
 
 For most astrophysical systems in UQFF, the mass term M appears as a single quantity in g_grav =
-GM/r. This treatment is appropriate when the spatial distribution of DM and visible matter are
+μ_s∇(M_s/r). This treatment is appropriate when the spatial distribution of DM and visible matter are
 similar. However, for galaxies with well-measured DM profiles (from velocity dispersion,
 gravitational lensing, and X-ray emission), the DM and visible matter occupy distinct structural
 regions with different density profiles:
@@ -106,7 +106,7 @@ $$\boxed{g_\text{DM,total} = g_\text{dm} + g_\text{int} = \frac{G f_\text{DM} M}
 
 With f_DM = 0.80, G = 6.674×10?, M = 1.989×104 kg, r = 1.04×10 m:
 
-$$g_\text{base} = \frac{GM}{r^2} = \frac{6.674 \times 10^{-11} \times 1.989 \times 10^{42}}{(1.04 \times 10^{21})^2} = 1.227 \times 10^{-10}\ \text{m/s}^2$$
+$$g_\text{base} = \underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)} = \frac{6.674 \times 10^{-11} \times 1.989 \times 10^{42}}{(1.04 \times 10^{21})^2} = 1.227 \times 10^{-10}\ \text{m/s}^2$$
 
 $$g_\text{vis} = (1 - 0.80) \times 1.227 \times 10^{-10} = 2.454 \times 10^{-11}\ \text{m/s}^2$$
 
@@ -175,7 +175,7 @@ only the global DM fraction f_DM is needed.
 
 ### 4.1 Linear Superposition (standard)
 
-$$g_\text{linear} = \frac{GM}{r^2} = \frac{G(M_\text{DM} + M_\text{vis})}{r^2} = 1.227 \times 10^{-10}\ \text{m/s}^2$$
+$$g_\text{linear} = \underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)} = \frac{G(M_\text{DM} + M_\text{vis})}{r^2} = 1.227 \times 10^{-10}\ \text{m/s}^2$$
 
 ### 4.2 UQFF 80/20 Shell Partition (this paper)
 

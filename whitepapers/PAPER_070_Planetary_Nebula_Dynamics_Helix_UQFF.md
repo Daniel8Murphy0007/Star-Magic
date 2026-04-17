@@ -70,7 +70,7 @@ $$\text{LENR}_{\rm Helix} = 10^{-10} \times \left(\frac{7.854 \times 10^{12}}{6.
 | -F0 | -1.83×107 |
 | Momentum | ~10?48 |
 | Gravity | ~3.48×10?5 |
-| Ug1 (WD, B0=10 T) | (GM/r)  (0×106/8p) = ~3.48e-15 × 5×10? = 1.74×10?6 |
+| Ug1 (WD, B0=10 T) | (μ_s∇(M_s/r))(0×106/8p) = ~3.48e-15 × 5×10? = 1.74×10?6 |
 | Um | (3.38×10/6.15×10-8)  5×10-5 × 1046 = 2.75×104 |
 | **Integral** | 1.70×10  (-1.35×10-7) = **-2.30×10?4** |
 | **`F_U_Bi_i`** | ** -2.30×10?4** |
@@ -105,7 +105,7 @@ oscillation:
 $$g_{\rm Resonant}(t) = \cos(\omega_0 t) \times 10^{-5}$$
 
 At angular frequency matching a planetary orbital period around the WD:
-$$r_{\rm orb} = \left(\frac{GM}{(2\pi/P)^2}\right)^{1/3} = \left(\frac{6.674e-11 \times 1.27e30}{(6.02e-4)^2}\right)^{1/3}$$
+$$r_{\rm orb} = \left(\underbrace{\frac{GM}{(2\pi/P)^2}}_{\text{DPM mass gradient}}\right)^{1/3} = \left(\frac{6.674e-11 \times 1.27e30}{(6.02e-4)^2}\right)^{1/3}$$
 $$= \left(\frac{8.474 \times 10^{19}}{3.62 \times 10^{-7}}\right)^{1/3} = (2.34 \times 10^{26})^{1/3} = 6.16 \times 10^8 \text{ m} \approx 0.004 \text{ AU}$$
 
 At r ~ 0.004 AU, the UQFF Compressed gravity is:
@@ -245,7 +245,7 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 
 | Mode | Dominant Term | Primary Use Case |
 |------|--------------|-----------------|
-| **Compressed** | Ug_sum + Newtonian base | Isolated stellar/BH systems |
+| **Compressed** | Ug_sum + DPM-emergent base | Isolated stellar/BH systems |
 | **Resonant** | 5 resonance frequencies (aDPM, aTHz, …) | Multi-scale field interactions |
 | **Buoyant** | β_i × Ubi | Expanding nebulae, stellar winds |
 | **Superconductive** | Um × (1+1013·f_H) | Magnetars, SCm critical-density regime |

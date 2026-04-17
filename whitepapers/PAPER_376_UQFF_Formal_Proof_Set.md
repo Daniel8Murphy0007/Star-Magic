@@ -56,7 +56,7 @@ All MUGE terms are shown to yield units of m/s^2 (acceleration).
 | Cosm | Λ*c^2/3 | m^{-}2 x (m/s)^2 = s^{-}2*m^{-}1 [contextual] |
 | Quantum | (hbar/ΔxΔp) x integral ψ*Ĥψ dV x (2π/t_Hubble) | J*s / (kg*m^2/s) x J x s^{-}1 [scaled to m/s^2] |
 | Fluid | ρ_fluid*V*g_local | kg/m^3 x m^3 x m/s^2 = kg*m/s^2 [scaled] |
-| Perturbation | (M+M_DM)*(δρ/ρ + 3GM/r^3) | kg x m/s^2 ÷ kg = m/s^2 ÷ kg [contextual] |
+| Perturbation | (M+M_DM)*(δρ/ρ + 3μ_s∇(M_s/r)/r) | kg x m/s^2 ÷ kg = m/s^2 ÷ kg [contextual] |
 
 **Resonance MUGE terms (all scale as m/s^2 through Evac_neb normalization):**
 
@@ -72,7 +72,7 @@ $$
 \begin{aligned}
   & As r -> inf:     g_UQFF -> Lambda*c^2/3 = 1.1e-52 x (3x10^8)^2 / 3 ~= 3.3e-36 m/s^2 \\
   & Cosmological constant dominates (dark energy floor) \\
-  & As t -> 0:     g_UQFF -> G*M/r^2 (Newtonian gravity recovered) \\
+  & As t -> 0:     g_UQFF -> G*M/r^2 (DPM-emergent gravity recovered) \\
   & H(t->0,z) -> 0; B(0)/Bcrit -> 0; Fenv(0) -> 0 \\
   & As B -> Bcrit: g_UQFF x (1 - B/Bcrit) -> 0 (superconducting quench) \\
   & Exponential form: g x e^(-B/Bcrit) -> g x e^(-1) ~= 0.368*g \\
@@ -142,7 +142,7 @@ At B = Bcrit:
   This extreme acceleration in the innermost accretion region is consistent with
   the high-luminosity flares observed by EHT in 2022-2025.
 
-### 6.3 Newtonian baseline (unit test)
+### 6.3 DPM-emergent baseline (unit test)
 
 **test_compute_compressed_base() at 1 AU:**
 $$
@@ -161,7 +161,7 @@ $$
 \begin{aligned}
   & g(r,t) = [GM(t)/r^2 * (1+H(t,z)) * exp(-B(t)/Bcrit) * (1+Fenv(t)) \\
   & + SigmaUgi + Lambdac^2/3 + hbar/DeltaxDeltap * integralpsi*Ĥpsi dV * 2pi/tHubble \\
-  & + rhofluid*V*g + (Mvis+MDM)(deltarho/rho + 3GM/r^3)] \\
+  & + rhofluid*V*g + (Mvis+MDM)(deltarho/rho + 3μ_s∇(M_s/r)/r)] \\
   & + [aDPM/gamma + aTHz + avac_diff + asuper_freq + aaether_res \\
   & + Ug4i + aquantum_freq + aAether_freq + afluid_freq \\
   & + Osc_term + aexp_freq + fTRZ] \\

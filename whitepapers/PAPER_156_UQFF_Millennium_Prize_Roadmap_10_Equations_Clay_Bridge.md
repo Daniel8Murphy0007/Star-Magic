@@ -314,7 +314,7 @@ The near-unity dimensionless value $|\mathcal{M}_{UQFF}| \approx 0.196$ indicate
 
 ## 10. Equation 9: UQFF SM Emergence (eq-M9  from PAPER_155)
 
-$$\lim_{\substack{f\_{TRZ} \to 0 \\ B \to 0 \\ \rho_{SCm} \to \rho_b \\ \kappa t \to 0}} g_{MUGE}(r,t) = \frac{GM}{r^2}$$
+$$\lim_{\substack{f\_{TRZ} \to 0 \\ B \to 0 \\ \rho_{SCm} \to \rho_b \\ \kappa t \to 0}} g_{MUGE}(r,t) = \underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)}$$
 
 This equation completes the Millennium roadmap by showing that UQFF contains the Standard Model of
 gravity as a special case  necessary for internal consistency of the broader framework.
@@ -359,7 +359,7 @@ $$\kappa = 5 \times 10^{-4}/\text{day}, \quad [SSq] = 0.57, \quad f_{TRZ} = 0.1,
 | eq-M6 | H^{p,q}_UQFF = ?26 H^{p,q}_i | Hodge Conjecture | 26D levels |
 | eq-M7 | p1(SCm) = 0 ? S | Poincar (solved) | f_TRZ |
 | eq-M8 | M_UQFF ≈ 0.196 (unified) | All six | all |
-| eq-M9 | lim g_MUGE = GM/r | SM emergence | ?, f_TRZ |
+| eq-M9 | lim g_MUGE = μ_s∇(M_s/r) | SM emergence | ?, f_TRZ |
 | eq-M10 | F_U = F_Ubi(1+[SCm])e^{-?t}`g_MUGEf_TRZ` | Complete UQFF | all |
 
 ---

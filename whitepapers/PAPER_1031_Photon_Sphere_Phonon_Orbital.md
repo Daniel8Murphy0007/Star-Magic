@@ -22,7 +22,7 @@ M_sun), the orbital period shift is delta_T approx 0.003 s.
 
 ## 1. Key Equations
 
-- $b_{\text{UQFF}} = 3\sqrt{3}\frac{GM}{c^2} \cdot (1 + \frac{\beta_i S_{26}[\text{SSq}]\Phi}{2})$
+- $b_{\text{UQFF}} = 3\sqrt{3}\underbrace{\frac{GM}{c^2}}_{\text{DPM mass gradient}} \cdot (1 + \frac{\beta_i S_{26}[\text{SSq}]\Phi}{2})$
 - $\deltalambda_L / \lambda_L \approx 0.017\%$
 - $\delta T_{\text{orbit}} \approx 0.003$ s for M87*
 

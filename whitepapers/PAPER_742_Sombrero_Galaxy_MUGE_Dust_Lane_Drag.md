@@ -125,8 +125,8 @@ $$
 $$
 \begin{aligned}
   & F_env(t) = F_dust + F_BH + F_cosmo \\
-  & F_dust = D_dust / g_Newtonian     (dust drag fraction) \\
-  & F_BH   = G*M_BH / (r^2*g_Newtonian)  (BH contribution fraction) \\
+  & F_dust = D_dust / g_DPMian     (dust drag fraction) \\
+  & F_BH   = G*M_BH / (r^2*g_DPMian)  (BH contribution fraction) \\
   & F_cosmo ~= H(z)*t                  (cosmological expansion)
 \end{aligned}
 $$
@@ -136,7 +136,7 @@ $$
 ## 7. Full Equation Solutions
 
 For standard bulge parameters (r = 5 kpc, t = 0):
-- g_Newton ≈ 4.5x10^{-}1^0 m/s^2
+- g_DPM ≈ 4.5x10^{-}1^0 m/s^2
 - H(z)*t correction ≈ +0.35%
 - (1-B/B_crit) ≈ 1 (negligible for B << B_crit)
 - D_dust ≈ -5x10^{-}1^2 m/s^2 (-1.1% correction)

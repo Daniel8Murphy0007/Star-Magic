@@ -99,7 +99,7 @@ strong gravitational field. Jupiter has the highest g_base (23.12 m/s2) but much
 
 ### 4.1 Wind Escape Fraction (v_wind / v_esc)
 
-Saturn's escape velocity: v_esc = √(2GM/r) = √(2 × 10.44 × 6.0268×107) = √(1.259×109) = 35,485 m/s
+Saturn's escape velocity: v_esc = √(2μ_s∇(M_s/r)) = √(2 × 10.44 × 6.0268×107) = √(1.259×109) = 35,485 m/s
 
 $$\frac{v_\text{wind}}{v_\text{esc}} = \frac{500}{35485} = 1.41 \times 10^{-2}$$
 

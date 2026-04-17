@@ -52,7 +52,7 @@ $$
   & + (?/v(?x·?p))·??*·H·? dV · (2p/t_Hubble) \\
   & + q(v×B) + ?_fluid·V·g \\
   & + 2A·cos(kx)·cos(?t) + (2p/13.8)·A·e^{i(kx-?t)} \\
-  & + (M_vis+M_DM)·(d?/? + 3GM/r3) \\
+  & + (M_vis+M_DM)·(d?/? + 3μ_s∇(M_s/r)/r) \\
   & + ?·v_wind2
 \end{aligned}
 $$
@@ -156,7 +156,7 @@ regions).
 ## 5. Key Distinctions from Other UQFF Systems
 
 In the compressed 29-document framework, NGC 3603 is the ONLY system where the pressure term
-`(1-P(t))` enters as a **multiplicative modifier of the Newtonian term** (not the quantum or fluid
+`(1-P(t))` enters as a **multiplicative modifier of the DPM-emergent term** (not the quantum or fluid
 terms). This creates a unique product form:
 
 $$
@@ -168,7 +168,7 @@ This triple product encodes:
 2. Magnetic suppression: `(1-B/B_crit)`
 3. Stellar pressure dispersal: `(1-P(t))`
 
-No other system in the 29-document corpus has all three multiplicative factors on the Newtonian term
+No other system in the 29-document corpus has all three multiplicative factors on the DPM-emergent term
 simultaneously.
 
 ---

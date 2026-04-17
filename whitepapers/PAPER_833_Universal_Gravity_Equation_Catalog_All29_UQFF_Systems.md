@@ -46,14 +46,14 @@ $$
   & + (Lambdac^2/3) \\
   & + (hbar/sqrt(DeltaxDeltap)) * integral(psi_total H psi_total dV) * (2pi/t_Hubble) \\
   & + rho_fluid*V*g \\
-  & + (M_vis + M_DM) * (deltarho/rho + 3GM/r^3)
+  & + (M_vis + M_DM) * (deltarho/rho + 3μ_s∇(M_s/r)/r)
 \end{aligned}
 $$
 
 **Gravity mode definitions:**
 $$
 \begin{aligned}
-  & Ug1 = (G*M)/r^2                           Standard Newtonian gravity \\
+  & Ug1 = (G*M)/r^2                           Standard DPM-emergent gravity \\
   & Ug2 = potential energy change term        DeltaPhi/r \\
   & Ug3'= (G*M_ext)/r_ext^2                   External gravity field \\
   & Ug4 = superconductive gravity term        B^2-dependent
@@ -86,7 +86,7 @@ $$
   & + (hbar/sqrt(DeltaxDeltap)) * integral(psi* H psi dV) * (2pi/t_Hubble) \\
   & + q*(vxB) + rho_fluid*V*g \\
   & + 2A*cos(k*x)*cos(ω*t) + (2pi/13.8)*A*exp(i*(k*x-ω*t)) \\
-  & + (M_vis+M_DM) * (deltarho/rho + 3GM/r^3)
+  & + (M_vis+M_DM) * (deltarho/rho + 3μ_s∇(M_s/r)/r)
 \end{aligned}
 $$
 *Foundation equation; no system-specific terms.*
@@ -103,7 +103,7 @@ $$
   & + (hbar/sqrt(DeltaxDeltap)) * integral(psi* H psi dV) * (2pi/t_Hubble) \\
   & + q*(vxB) + rho_fluid*V*g \\
   & + 2A*cos(k*x)*cos(ω*t) + (2pi/13.8)*A*exp(i*(k*x-ω*t)) \\
-  & + (M_vis+M_DM) * (deltarho/rho + 3GM/r^3) \\
+  & + (M_vis+M_DM) * (deltarho/rho + 3μ_s∇(M_s/r)/r) \\
   & + M_mag + D(t)
 \end{aligned}
 $$
@@ -120,7 +120,7 @@ $$
   & + (hbar/sqrt(DeltaxDeltap)) * integral(psi* H psi dV) * (2pi/t_Hubble) \\
   & + q*(vxB(t)) + rho_fluid*V*g \\
   & + 2A*cos(k*x)*cos(ω*t) + (2pi/13.8)*A*exp(i*(k*x-ω*t)) \\
-  & + (M_vis+M_DM) * (deltarho/rho + (3GM/r^3)*sin(30 deg)) \\
+  & + (M_vis+M_DM) * (deltarho/rho + (3μ_s∇(M_s/r)/r)*sin(30 deg)) \\
   & + (G*M(t)^2)/(c4*r) * (dOmega(t)/dt)^2
 \end{aligned}
 $$
@@ -468,7 +468,7 @@ $$
   & + (Lambdac^2/3) \\
   & + (hbar/sqrt(DeltaxDeltap)) * integral(psi_total H psi_total dV) * (2pi/t_Hubble) \\
   & + rho_fluid*V*g \\
-  & + (M_vis + M_DM) * (deltarho/rho + 3GM/r^3)
+  & + (M_vis + M_DM) * (deltarho/rho + 3μ_s∇(M_s/r)/r)
 \end{aligned}
 $$
 

@@ -47,7 +47,7 @@ first-principles derivation of the galactic rotation curve problem within the 9-
 | M_DM = f_DM × M | 1.690 × 1041 kg | 8.5 × 1010 M_sun |
 | r | 9.258 × 1020 m | ~30 kpc |
 | v_rot | 2.0 × 105 m/s | Observed flat rotation velocity |
-| G_Newton | 6.6743 × 10-11 m3/(kg·s2) | |
+| G_const | 6.6743 × 10-11 m3/(kg·s2) | |
 
 ---
 
@@ -79,7 +79,7 @@ Total base gravity: g_base = g_vis + g_DM = 2.324e-12 + 1.316e-11 = 1.549 × 10-
 
 Expected Keplerian circular velocity if all mass were in a point at the center:
 
-$$v_{\rm circ} = \sqrt{\frac{GM}{r}} = \sqrt{\frac{6.6743\times10^{-11} \times 1.989\times10^{41}}{9.258\times10^{20}}}$$
+$$v_{\rm circ} = \sqrt{\underbrace{\frac{GM}{r}}_{\text{DPM mass gradient}}} = \sqrt{\frac{6.6743\times10^{-11} \times 1.989\times10^{41}}{9.258\times10^{20}}}$$
 
 $$= \sqrt{\frac{1.3275\times10^{31}}{9.258\times10^{20}}} = \sqrt{1.434\times10^{10}} = \boxed{1.197\times10^5\,\text{m/s}}$$
 

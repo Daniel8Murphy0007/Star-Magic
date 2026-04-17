@@ -37,9 +37,9 @@ canonical astrophysical systems through the full UQFF pipeline
 
 ### §2.1 Gravity Kernel
 
-$$g_{\text{base}} = \frac{GM}{r^2}$$
+$$g_{\text{base}} = \underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)}$$
 
-Single-evaluation of Newtonian gravity. Minimum-cost baseline.
+Single-evaluation of DPM-emergent gravity. Minimum-cost baseline.
 
 ### §2.2 Phonon Kernel
 
@@ -76,7 +76,7 @@ $$\text{total\_rate} = \frac{\sum_k n_{\text{iter}}}{\sum_k t_{\text{elapsed},k}
 
 | Kernel | Operations | Expected Rate (calc/s) | Status |
 |--------|-----------|----------------------|--------|
-| Gravity | $GM/r^2$ | $> 10^7$ | PASS |
+| Gravity | $μ_s∇(M_s/r)$ | $> 10^7$ | PASS |
 | Phonon | Gaussian + $S_{26}$ | $> 5 \times 10^6$ | PASS |
 | Buoyancy | $\beta_i g M [\text{UA}]$ | $> 5 \times 10^6$ | PASS |
 | 99-System | $\sum_{k=1}^{99} g_k$ | $> 10^5$ | Must verify |

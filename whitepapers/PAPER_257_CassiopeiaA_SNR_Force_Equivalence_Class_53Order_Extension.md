@@ -158,7 +158,7 @@ t_{\text{age}}}, \quad t_{\text{age}}=340\,\text{yr},\;E_{\text{SN}}=10^{44}\,\t
 $$
 
 
-NameU_{b\_i}(r) = \kappacdot[SSq]\cdot\frac{GM}{r^2}, \quad \kappa =
+NameU_{b\_i}(r) = \kappacdot[SSq]\cdot\mu_s\nabla(M_s/r), \quad \kappa =
 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57,\; \beta_i = 0.61Name
 
 with invariant $\Phi(\mathcal{C}_{10^{-12}}) = +2.11 \times 10^{208}$ N. This class has been confirmed to include members spanning:

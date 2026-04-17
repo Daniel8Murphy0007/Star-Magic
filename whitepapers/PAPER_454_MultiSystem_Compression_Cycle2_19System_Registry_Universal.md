@@ -30,7 +30,7 @@ Compression Cycle 2 expands the 7-system canonical registry (PAPER_452) to a 19-
 catalogue incorporating objects from neutron star surfaces (r~104 m) to cosmological filaments
 (r~1026 m). The 12 newly added systems span HII regions, galaxy mergers, galaxy clusters, and the
 Hubble Ultra-Deep Field, each contributing system-specific F_env terms. The single compressed
-equation g_UQFF = g_Newton × (1 + H_z t) + F_env(t) applies uniformly across 22 orders of magnitude
+equation g_UQFF = g_DPM × (1 + H_z t) + F_env(t) applies uniformly across 22 orders of magnitude
 in spatial scale — demonstrating the universality of the MUGE compression framework for all observed
 astrophysical environments.
 
@@ -135,8 +135,8 @@ For normalised comparison (setting g_Magnetar = 1 reference):
 
 ## 6. Testable Predictions
 
-1. **Scale-free universality:** g_UQFF ∝ GM/r2 for all 19 systems to leading order, with
-F_env/g_Newton < 102 for all systems — testable by comparing UQFF output at each system's
+1. **Scale-free universality:** g_UQFF ∝ μ_s∇(M_s/r) for all 19 systems to leading order, with
+F_env/g_DPM < 102 for all systems — testable by comparing UQFF output at each system's
 characteristic radius.
 2. **ICM temperature coupling:** F_env,ICM ∝ T_ICM — doubling Perseus cluster temperature to 108 K
 should double the F_env contribution. Testable via Chandra X-ray spectra.

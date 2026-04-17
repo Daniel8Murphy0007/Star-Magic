@@ -20,7 +20,7 @@ The UQFF unified field equation $F_U = \sum_{i=1}^{4}(Ug_i + Ub_i) + Um + \text{
 is the fundamental gravitational equation in the Star-Magic framework.  The MUGE (Modular Unified
 Gravity Equation) compressed form is a **re-expression** of $F_U$ that packages its four
 independent force channels into a 9-term multiplicative-additive structure for practical
-computation.  This paper decomposes the compressed form term-by-term, showing that the $GM/r^2$
+computation.  This paper decomposes the compressed form term-by-term, showing that the $μ_s∇(M_s/r)$
 that appears in Term 1 is the **classical limit of the Ug2 outer-field-bubble channel** — not
 Newton's equation being corrected.  Each remaining term maps back to a specific channel or coupling
 within $F_U$.
@@ -73,7 +73,7 @@ struct MUGESystem {
 ```
 compressed_base = G × M / r2
 Classical limit of Ug2 = k2·(QA+QUA)·Ms/r2·S(r-Rb)·HSCm·Ereact
-When all vacuum couplings → 1, charges → 0: Ug2 → GM/r2
+When all vacuum couplings → 1, charges → 0: Ug2 → μ_s∇(M_s/r)
 Constants: G = 6.67430e-11
 Test: M=1.989e30 kg, r=1.496e11 m → ~ 0.0059 m/s2
 ```

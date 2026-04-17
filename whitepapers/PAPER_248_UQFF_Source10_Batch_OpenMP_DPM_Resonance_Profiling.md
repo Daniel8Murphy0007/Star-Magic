@@ -46,7 +46,7 @@ resonance calculations in the framework.
 
 The F_U_Bi_i integrand combines LENR, dark energy, neutron, relativistic, activation, and
 vacuum-field forces in a single quadrature, producing the buoyancy force integral that distinguishes
-UQFF from purely Newtonian or GR-based frameworks.
+UQFF from purely DPM-emergent or GR-based frameworks.
 
 
 
@@ -81,7 +81,7 @@ $$
 \begin{aligned}
   & \text{F\_U\_Bi\_i} = ?0^{x2} [-F0 \\
   & + (m_e c2/r2)·DPM_momentum·cos?         [momentum term] \\
-  & + (GM/r2)·DPM_gravity                    [gravity term] \\
+  & + (μ_s∇(M_s/r))·DPM_gravity                    [gravity term] \\
   & + ?_vac·DPM_stability                    [vacuum field] \\
   & + k_LENR·(?_LENR/?0)2 · activation·e^{-t/1e6}  [LENR+decay] \\
   & + k_DE·L_X                               [dark energy] \\
@@ -134,7 +134,7 @@ The upper integration limit x2 is the physical root of the stability condition:
 $$
 \begin{aligned}
   & a·x2 + b·x + c = 0 \\
-  & a = GM/r2 · DPM_gravity \\
+  & a = μ_s∇(M_s/r) · DPM_gravity \\
   & b = 4.72 × 10?3   (canonical, r = 6.17×1016 m systems) \\
   & c = -F0 + ?_vac·DPM_stability
 \end{aligned}

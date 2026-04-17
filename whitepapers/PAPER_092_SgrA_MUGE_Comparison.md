@@ -13,7 +13,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 **Session:** 0
 
-# PAPER #92 — Sgr A* SMBH: MUGE vs Newtonian Gravity Comparison
+# PAPER #92 — Sgr A* SMBH: MUGE vs DPM-emergent Gravity Comparison
 
 **Title:** Sagittarius A* SMBH Gravitational Field: 8-Term MUGE Decomposition and Quantum Coherence
 Peak at Horizon
@@ -114,7 +114,7 @@ From validator: `assert coh_at_horizon > coh_far * 1e6` — **PASS**.
 
 ## 4. MUGE vs Newton: Field Profile r = r_horizon ? 10 kpc
 
-| r (m) | g_Newton (m/s2) | g_MUGE (m/s2) | ? (%) |
+| r (m) | g_DPM (m/s2) | g_MUGE (m/s2) | ? (%) |
 |-------|----------------|--------------|------|
 | 1.27×101° | 234.1 | 234.5 | +0.17 |
 | 1×1012 | 2.18×10?2 | 2.19×10?2 | +0.13 |
@@ -265,7 +265,7 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 
 | Mode | Dominant Term | Primary Use Case |
 |------|--------------|-----------------|
-| **Compressed** | Ug_sum + Newtonian base | Isolated stellar/BH systems |
+| **Compressed** | Ug_sum + DPM-emergent base | Isolated stellar/BH systems |
 | **Resonant** | 5 resonance frequencies (aDPM, aTHz, …) | Multi-scale field interactions |
 | **Buoyant** | β_i × Ubi | Expanding nebulae, stellar winds |
 | **Superconductive** | Um × (1+1013·f_H) | Magnetars, SCm critical-density regime |

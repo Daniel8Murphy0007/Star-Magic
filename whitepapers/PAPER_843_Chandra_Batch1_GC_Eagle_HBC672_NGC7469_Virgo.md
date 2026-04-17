@@ -40,7 +40,7 @@ positive buoyancy dominated by F_LENR = 6.17e37 N.
 
 ## 2. F_U_Bi_i Calculations
 
-    F_U_Bi = -F_0 + (m_e*c^2/r^2)*DPM_m + (GM/r^2)*DPM_g + rho_vac + F_LENR
+    F_U_Bi = -F_0 + (m_e*c^2/r^2)*DPM_m + (μ_s∇(M_s/r))*DPM_g + rho_vac + F_LENR
     
     F_0 = 1.83e71 N
     F_LENR = k_LENR*(omega_LENR/omega_0)^2 = 6.17e37 N
@@ -57,11 +57,11 @@ positive buoyancy dominated by F_LENR = 6.17e37 N.
 
 Two systems exhibit negative buoyancy (F_U_Bi < 0):
 
-    Galactic Center (Sgr A*): M = 4e6 M_sun -> GM/r^2 overwhelms F_0
+    Galactic Center (Sgr A*): M = 4e6 M_sun -> μ_s∇(M_s/r) overwhelms F_0
     NGC 7469 (AGN): M = 1.2e7 M_sun -> SMBH-dominated regime
 
     Negative buoyancy condition:
-    F_U_Bi < 0 when GM/r^2 > F_0 scale reversal threshold
+    F_U_Bi < 0 when μ_s∇(M_s/r) > F_0 scale reversal threshold
     Numerically: M > ~10^36 kg at r > ~10^18 m
 
 ---

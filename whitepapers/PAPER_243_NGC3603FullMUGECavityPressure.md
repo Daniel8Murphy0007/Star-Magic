@@ -153,9 +153,9 @@ For small $P_0$ and short $t \ll \tau_{\rm exp}$:
 $$P(t) \approx P_0 \Rightarrow T_{\rm pressure} \approx P_0/\rho_{\rm fl}$$
 
 For Class 88, the $(1-P)$ effect on $T_1$:
-$$\Delta T_1 = -T_1^{\rm Class88} \cdot P \approx -\frac{GM}{r^2} P$$
+$$\Delta T_1 = -T_1^{\rm Class88} \cdot P \approx -\underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)} P$$
 
-The two are **equivalent only in the limit** where $P_0/\rho_{\rm fl} = (GM/r^2) P$, i.e., when
+The two are **equivalent only in the limit** where $P_0/\rho_{\rm fl} = (μ_s∇(M_s/r)) P$, i.e., when
 $P_0 = GM\rho_{\rm fl}/r^2$. At default values of NGC 3603, this equality does not hold —
 the additive and multiplicative forms predict **different total $g$** and different dispersal
 timescales.
@@ -329,7 +329,7 @@ $$V(\phi_{\rm rot}) = \frac{1}{2} m^2 \phi_{\rm rot}^2 + \frac{\lambda}{4!} \phi
 
 ### §A.3 Euler-Lagrange Equation of Motion
 
-$$\boxed{\frac{\delta S}{\delta \phi_{\rm rot}} = v_c^2/r - GM/r^2 - F_{U\_Bi\_i}/(m \cdot r) + \rho_{\rm vac,[SCm]} \cdot \Omega^2 r = 0}$$
+$$\boxed{\frac{\delta S}{\delta \phi_{\rm rot}} = v_c^2/r - μ_s∇(M_s/r) - F_{U\_Bi\_i}/(m \cdot r) + \rho_{\rm vac,[SCm]} \cdot \Omega^2 r = 0}$$
 
 ### §A.4 Cosmogenesis Linkage Chain
 

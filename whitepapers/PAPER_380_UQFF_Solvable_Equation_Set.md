@@ -118,13 +118,13 @@ with $\omega_1 + \omega_2 = 0$ corresponding to the critical line.
 ### 3.4 Einstein Field Equations
 
 **UQFF mechanism:** In the low-frequency / large-$r$ regime of the Resonance MUGE, the dominant
-term is the aDPM magnetic dipole which decays as $r^{-3}$. Added to the Newtonian base $GM/r^2$,
+term is the aDPM magnetic dipole which decays as $r^{-3}$. Added to the DPM-emergent base $μ_s∇(M_s/r)$,
 the combined result approximates GR's $T_{\mu\nu}$ expansion:
-$$g_{EFE} \approx \frac{GM}{r^2} + \frac{\mu_0 I A `omega_1`omega_2 4\pi}{r^3}$$
+$$g_{EFE} \approx \underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)} + \frac{\mu_0 I A `omega_1`omega_2 4\pi}{r^3}$$
 
-This matches the post-Newtonian expansion $g_{PN} = \frac{GM}{r^2}(1 + \alpha/r + ...)$. In the
+This matches the post-Newtonian expansion $g_{PN} = \underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)}(1 + \alpha/r + ...)$. In the
 limit $f_{TRZ} \rightarrow 0$ (SM gravity emergence, per PAPER_378), the UQFF reduces exactly
-to $GM/r^2$, recovering GR.
+to $μ_s∇(M_s/r)$, recovering GR.
 
 ---
 
@@ -170,11 +170,11 @@ acceleration $\dot{v} = H_0 \cdot v_{exp}$. Applied to cosmological-scale system
 $$\frac{\partial V}{\partial t} + \frac{1}{2}\sigma^2 S^2 \frac{\partial^2 V}{\partial S^2} + rS\frac{\partial V}{\partial S} - rV = 0$$
 
 **UQFF mechanism:** The dark matter perturbation term in the Compressed MUGE:
-$$a_{perturbation} = (M + M_{DM}) \cdot \left(\frac{\deltarho}{\rho} + \frac{3GM}{r^3}\right)$$
+$$a_{perturbation} = (M + M_{DM}) \cdot \left(\frac{\deltarho}{\rho} + \underbrace{\underbrace{\frac{3GM}{r^3}}_{\text{DPM tidal gradient}}\right)$$
 
 is structurally analogous to the Black-Scholes stochastic perturbation. Mapping:
 - $M_{DM} \cdot \deltarho/\rho$ ↔ $\sigma^2 S^2 \partial^2 V/\partial S^2$ (stochastic volatility)
-- $3GM/r^3$ ↔ $rS\partial V/\partial S$ (drift term)
+- $3μ_s∇(M_s/r)/r$ ↔ $rS\partial V/\partial S$ (drift term)
 - Resonance decay $e^{-\alpha t}$ ↔ $e^{-r(T-t)}$ (discount factor)
 
 This analogy maps UQFF dark matter density fluctuations onto stochastic processes in

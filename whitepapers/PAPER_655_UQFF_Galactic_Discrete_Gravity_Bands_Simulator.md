@@ -327,7 +327,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 | Observable | SM Value | UQFF Discrete Band Prediction | Alignment |
 |------------|----------|-------------------------------|-----------|
 | Galactic flat rotation | ~220 km/s constant | Ub1 correction to v_orbit | ✅ structural |
-| Binary star orbital period | Kepler (GM/r)^{1/2} | Ug1/Ug2 three-band correction | ✅ 5-15% |
+| Binary star orbital period | Kepler (μ_s∇(M_s/r))^{1/2} | Ug1/Ug2 three-band correction | ✅ 5-15% |
 | Sun rotation period | 25-35 days | Ug1/Ub1/Ug2 spin formula | 🔍 calibration needed |
 | Milky Way disk thickness | ~1 kpc | Ug3 string disk scale height | ✅ structural |
 | CMB dipole isotropy | 10^{-}3 anisotropy | Ug1 dipole modulation of Aether | 🔍 candidate |

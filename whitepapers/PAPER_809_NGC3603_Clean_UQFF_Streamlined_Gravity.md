@@ -215,7 +215,7 @@ the same timescale τ = 1 Myr provides a self-consistent picture of cluster evol
 ## 7. Conclusion
 
 The clean UQFF master equation for NGC 3603 gives g ≈ 1.053×10-3 m/s2, dominated by the Aether EM
-correction term rather than classical Newtonian gravity. This is the streamlined "clean" derivation
+correction term rather than classical DPM-emergent gravity. This is the streamlined "clean" derivation
 from the May 09, 2025 DeepSearch session, complementing the full first-pass derivation in PAPER_795.
 The result demonstrates UQFF's versatility in modeling extreme star-forming environments with
 minimal parametrization while retaining all physically motivated correction terms.

@@ -17,7 +17,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 **CP4 Class:** `BSFGBohrSommerfeldAetherQuantizationCalculator` (#157)  
 **Date:** 2026-03-27  
 
-> **Context note:** CP4 #150 (PAPER_555) derived the BSFG geodesic equation $v^2_{\rm orbit} = GM/r + r c^2 \varepsilon'/2$, showing the Aether contributes a velocity correction to circular orbits. This paper applies the Bohr-Sommerfeld quantization condition $J = n\hbar$ to compute the fractional action correction $\delta J/J$, the quantum of Aether action $h_\eta$, and the BSFG crossover radius $r_{\rm cross}$ where Aether and Newtonian orbital effects are equal.
+> **Context note:** CP4 #150 (PAPER_555) derived the BSFG geodesic equation $v^2_{\rm orbit} = μ_s∇(M_s/r) + r c^2 \varepsilon'/2$, showing the Aether contributes a velocity correction to circular orbits. This paper applies the Bohr-Sommerfeld quantization condition $J = n\hbar$ to compute the fractional action correction $\delta J/J$, the quantum of Aether action $h_\eta$, and the BSFG crossover radius $r_{\rm cross}$ where Aether and DPM-emergent orbital effects are equal.
 
 ---
 
@@ -32,7 +32,7 @@ Star-Magic/UQFF framework.
 
 Applying Bohr-Sommerfeld quantization to the BSFG effective potential:
 
-$$U_{\rm BSFG}(r) = -\frac{GM}{r} + \frac{\eta c^2 C_{\rm num}\cos(\pi t_n)}{2r^3}$$
+$$U_{\rm BSFG}(r) = -\underbrace{\frac{GM}{r}}_{\text{DPM mass gradient}} + \frac{\eta c^2 C_{\rm num}\cos(\pi t_n)}{2r^3}$$
 
 we derive the fractional orbital action correction:
 
@@ -55,15 +55,15 @@ provides the coupling between the BSFG metric perturbation and quantum orbital a
 
 From the geodesic equation (CP4 #150):
 
-$$\frac{d^2r}{d\lambda^2} = -\Gamma^r_{00}\left(\frac{dt}{d\lambda}\right)^2 = \frac{GM}{r^2} + \frac{c^2\varepsilon'}{2}$$
+$$\frac{d^2r}{d\lambda^2} = -\Gamma^r_{00}\left(\frac{dt}{d\lambda}\right)^2 = \underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)} + \frac{c^2\varepsilon'}{2}$$
 
-The total (Newtonian + Aether) orbital effective potential per unit mass:
+The total (DPM-emergent + Aether) orbital effective potential per unit mass:
 
-$$U_{\rm BSFG}(r) = -\frac{GM}{r} + \frac{\eta c^2 C_{\rm num}\cos(\pi t_n)}{2r^3}$$
+$$U_{\rm BSFG}(r) = -\underbrace{\frac{GM}{r}}_{\text{DPM mass gradient}} + \frac{\eta c^2 C_{\rm num}\cos(\pi t_n)}{2r^3}$$
 
 For circular orbits, setting $dU/dr = 0$ (neglecting centrifugal for the action correction):
 
-$$v^2_{\rm orbit} = \frac{GM}{r} + \frac{r c^2\varepsilon'(r)}{2}$$
+$$v^2_{\rm orbit} = \underbrace{\frac{GM}{r}}_{\text{DPM mass gradient}} + \frac{r c^2\varepsilon'(r)}{2}$$
 
 where $\varepsilon'(r) = -3\etacos(\pi t_n)C_{\rm num}/r^4$ from CP4 #149.
 
@@ -75,9 +75,9 @@ where $\varepsilon'(r) = -3\etacos(\pi t_n)C_{\rm num}/r^4$ from CP4 #149.
 
 $$J = m v_{\rm orbit} r = m\sqrt{GM r + r^2 c^2\varepsilon'/2}\cdot r^{1/2}/\sqrt{r} \approx m\sqrt{GMr}\left(1 + \frac{r c^2 \varepsilon'}{4GM}\right)$$
 
-**Step 2.** The Newtonian Bohr-Sommerfeld action $J_0 = m\sqrt{GMr}$; the BSFG correction:
+**Step 2.** The DPM-emergent Bohr-Sommerfeld action $J_0 = m\sqrt{GMr}$; the BSFG correction:
 
-$$\frac{\delta J}{J} \approx \frac{v^2_{\rm aether}}{2v^2_{\rm newton}} = \frac{r c^2\varepsilon'/2}{2(GM/r)} = \frac{r^2 c^2\varepsilon'}{4GM}$$
+$$\frac{\delta J}{J} \approx \frac{v^2_{\rm aether}}{2v^2_{\rm newton}} = \frac{r c^2\varepsilon'/2}{2(μ_s∇(M_s/r))} = \frac{r^2 c^2\varepsilon'}{4GM}$$
 
 **Step 3.** Substituting $\varepsilon' = -3\etacos(\pi t_n)C_{\rm num}/r^4$:
 
@@ -107,7 +107,7 @@ At $t_n = 0$:
 
 $$r_{\rm cross} = \sqrt{\frac{10^{-22} \times 9 \times 10^{16} \times 4.27 \times 10^{46}}{6.674 \times 10^{-11} \times 1.989 \times 10^{30}}} = \sqrt{\frac{3.843 \times 10^{41}}{1.327 \times 10^{20}}} \approx 5.38 \times 10^{10}\ {\rm m} \approx 0.360\ {\rm AU}$$
 
-The Solar System planets Mercury (0.39 AU) and beyond lie in the Newtonian-dominant regime. Venus
+The Solar System planets Mercury (0.39 AU) and beyond lie in the DPM-emergent-dominant regime. Venus
 and Mercury's perihelion corrections require the full BSFG geodesic numerics.
 
 ---
@@ -136,7 +136,7 @@ The BSFG Bohr-Sommerfeld analysis reveals three distinct orbital regimes:
 |---|---|---|
 | $r < r_{\rm cross} \approx 0.36$ AU | Aether | Non-Keplerian: proplyd confinement, DVP resonances |
 | $r \approx r_{\rm cross}$ | Both equal | BSFG transition zone — orbit switching |
-| $r > r_{\rm cross}$ | Newtonian | Classical Keplerian + small BSFG correction $\sim r^{-2}$ |
+| $r > r_{\rm cross}$ | DPM-emergent | Classical Keplerian + small BSFG correction $\sim r^{-2}$ |
 
 The BSFG crossover radius $r_{\rm cross} \approx 0.36$ AU is located between Mercury and Venus — consistent with the known anomalous perihelion precession corrections needed in the inner Solar System.
 
@@ -259,7 +259,7 @@ connecting to the PAPER_877 Stage 5 buoyancy seed $U_{b,\rm seed} = 0.1 \cdot (\
 
 | Observable | UQFF Prediction | SM / Experiment | Source | Alignment |
 |------------|-----------------|-----------------|--------|-----------|
-| GR Schwarzschild metric recovery | BSFG line element → g_tt = -(1-2GM/rc2) ≡ GR in ε_BSFG→0 limit | Schwarzschild metric (GR exact) | PDG 2024 / MTW | PASS BSFG reduces to GR |
+| GR Schwarzschild metric recovery | BSFG line element → g_tt = -(1-2μ_s∇(M_s/r)·r/c²) ≡ GR in ε_BSFG→0 limit | Schwarzschild metric (GR exact) | PDG 2024 / MTW | PASS BSFG reduces to GR |
 | Shapiro time delay | BSFG geodesic → Δt_BSFG ≈ Δt_GR × (1 + ε_correction) | Cassini: Δt/Δt_GR = 1 ± 2.3e-5 | Cassini/GR 2003 | PASS Within Shapiro bound |
 | Gravitational wave speed v_GW | BSFG: v_GW = c × (1 + k_η2) ≈ c + 10-226 m/s | GW150914 / GW170817: |v_GW/c - 1| < 10-15 | LIGO/Fermi GBM | PASS UQFF deviation 10-211 orders below bound |
 | Perihelion precession (Mercury) | BSFG adds buoyancy correction δφ = κ × φ_GR ~ 10-6 arcsec/century | GR prediction: 43.03"/century; observed: 43.1" | GR + obs. | UQFF correction undetectable at current precision |
@@ -275,7 +275,7 @@ LISA or BepiColombo precision gravitational measurements.
 
 ## §7 References
 
-- CP4 #150 — `BSFGGeodesicMetricCompatibilityCalculator` — PAPER_555 ($v^2_{\rm orbit} = GM/r + rc^2\varepsilon'/2$)
+- CP4 #150 — `BSFGGeodesicMetricCompatibilityCalculator` — PAPER_555 ($v^2_{\rm orbit} = μ_s∇(M_s/r) + rc^2\varepsilon'/2$)
 - CP4 #43 — Aether coupling $\eta = 10^{-22}$, PAPER_392
 - CP4 #149 — `BSFGRiemannCurvatureAetherMetricCalculator` — PAPER_554 ($\varepsilon'(r)$)
 - CP4 #147 — `Um26DPolyQuantizationDPMConfinementCalculator` — PAPER_550 (proplyd $r_q$ in BSFG strong-field zone)

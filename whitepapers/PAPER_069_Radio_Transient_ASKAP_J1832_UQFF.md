@@ -64,9 +64,9 @@ $$F_{U,Bi,i} = -F_0 + p + g + Ug_1 + Ug_2 + Ug_3 + Ug_4 + U_m + \int \mathcal{I}
 |-----------|---------|---------|
 | Base force constant | - F0 = -1.83×107 | -1.83×107 |
 | Momentum | (m_e c/r) ≈ 0.93  cos(p/4) | 2.52×10-47 |
-| Gravity | GM/r | 8.67×10?4 |
-| Ug1 (dipole) | (GM/r)(1+d)(0B0/8p) | **4.34×10** |
-| Ug2 (bubble) | (GM/r)(Q_A+Q_UA)H_SCm | 9.64×10?5 |
+| Gravity (DPM Ug1) | μ_s∇(M_s/r) | 8.67×10?4 |
+| Ug1 (dipole) | (μ_s∇(M_s/r))(1+d)(0B0/8p) | **4.34×10** |
+| Ug2 (bubble) | (μ_s∇(M_s/r))(Q_A+Q_UA)H_SCm | 9.64×10?5 |
 | Ug3 (string) | (c/r)?_ssin(?)B0 | ~10? |
 | Ug4 (vacuum BH) | k4?_SCm(M_BH/d_g)e^{-?} | ~10?5 |
 | Um (magnetism) | (κ_j/r)(1-e^{-?t})E_react | 3.65×1045 |
@@ -281,7 +281,7 @@ $$U_m^{\mathrm{full}} = U_m^{\mathrm{base}} \times \bigl(1 + 10^{13}\,\Theta(\rh
 
 | Mode | Dominant Term | Primary Use Case |
 |------|--------------|-----------------|
-| **Compressed** | Ug_sum + Newtonian base | Isolated stellar/BH systems |
+| **Compressed** | Ug_sum + DPM-emergent base | Isolated stellar/BH systems |
 | **Resonant** | 5 resonance frequencies (aDPM, aTHz, …) | Multi-scale field interactions |
 | **Buoyant** | β_i × Ubi | Expanding nebulae, stellar winds |
 | **Superconductive** | Um × (1+1013·f_H) | Magnetars, SCm critical-density regime |
