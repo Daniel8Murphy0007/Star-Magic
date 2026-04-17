@@ -415,7 +415,140 @@ class ALMATargetProfileGenerator:
 
 
 # ══════════════════════════════════════════════════════════════════════════════
-# §6  SELF-TESTS
+# §6  TRIADIC MASTER GPU KERNEL
+# ══════════════════════════════════════════════════════════════════════════════
+
+class TriadicMasterGPU:
+    """Triadic Master gravity function with explicit CUDA batch support.
+
+    Computes g(r) = Σ_{i=1}^{26} [Ug1+Ug2+Ug3+Ug4]_i across a batch of
+    radial points using torch tensors on GPU (if available).
+
+    Ug1(r) = μ/(4π·r³) · S₂₆⁽³⁾           [DPM magnetic dipole]
+    Ug2(r) = (Z·α/r²) · [SSq]·β_i          [charge-reactivity]
+    Ug3(r,t) = (ℏω/r)·cos(ωt)·S₂₆⁽³⁾      [string rotation]
+    Ug4(r) = (κ·ρ_vac/r)·[SSq]             [vacuum concentration]
+
+    Variables (from dataset):
+        r_min:       minimum radius (m, default 1e8)
+        r_max:       maximum radius (m, default 1e16)
+        batch_size:  number of radial points (default 2048)
+        mu:          magnetic moment (A·m², default 1e15)
+        Z:           charge number (default 26)
+        rho_vac:     vacuum density (default 1e-10)
+        t:           time (s, default 0)
+    """
+
+    def compute(self, dataset: dict) -> dict:
+        backend = _detect_backend()
+        device = _get_device()
+
+        r_min = dataset.get('r_min', 1e8)
+        r_max = dataset.get('r_max', 1e16)
+        batch_size = dataset.get('batch_size', 2048)
+        mu = dataset.get('mu', 1e15)
+        Z = dataset.get('Z', 26.0)
+        rho_vac = dataset.get('rho_vac', 1e-10)
+        t_val = dataset.get('t', 0.0)
+
+        t_start = time.perf_counter()
+
+        if backend == 'torch':
+            result = self._compute_torch(
+                r_min, r_max, batch_size, mu, Z, rho_vac, t_val, device
+            )
+        elif backend == 'numpy':
+            result = self._compute_numpy(
+                r_min, r_max, batch_size, mu, Z, rho_vac, t_val
+            )
+        else:
+            result = self._compute_pure(
+                r_min, r_max, batch_size, mu, Z, rho_vac, t_val
+            )
+
+        elapsed_ms = (time.perf_counter() - t_start) * 1000
+
+        g_vals = result['g_values']
+        r_vals = result['r_grid']
+        peak_idx = max(range(len(g_vals)), key=lambda i: abs(g_vals[i]))
+
+        return {
+            'primary_equations': [
+                "g(r) = Σ_{i=1}^{26} c_i·[Ug1+Ug2+Ug3+Ug4]_i(r)",
+                f"Batch: {batch_size} radial points on {device}",
+                f"|g|_max = {abs(g_vals[peak_idx]):.6e} at r = {r_vals[peak_idx]:.3e} m",
+            ],
+            'g_values': g_vals,
+            'r_grid_m': r_vals,
+            'peak_g': abs(g_vals[peak_idx]),
+            'peak_r_m': r_vals[peak_idx],
+            'batch_size': batch_size,
+            'backend': backend,
+            'device': device,
+            'elapsed_ms': elapsed_ms,
+        }
+
+    def _compute_torch(self, r_min, r_max, n, mu, Z, rho_vac, t_val, device):
+        torch = _torch
+        r = torch.logspace(
+            math.log10(r_min), math.log10(r_max), n,
+            device=device, dtype=torch.float64
+        )
+        coeffs = torch.tensor(_LAYER_COEFFS, device=device, dtype=torch.float64)
+
+        g_total = torch.zeros(n, device=device, dtype=torch.float64)
+        for i in range(N_LAYERS):
+            ri = r * (1 + 0.01 * (i + 1))
+            omega_i = OMEGA_SCM * (1 + 0.01 * i)
+            ug1 = mu / (4 * PI * ri ** 3) * S26_3RD
+            ug2 = (Z * 1.0 / ri ** 2) * SSQ * BETA_I
+            ug3 = (HBAR * omega_i / ri) * math.cos(omega_i * t_val) * S26_3RD
+            ug4 = (KAPPA * rho_vac / ri) * SSQ
+            g_total += coeffs[i] * (ug1 + ug2 + ug3 + ug4)
+
+        return {
+            'r_grid': r.cpu().tolist(),
+            'g_values': g_total.cpu().tolist(),
+        }
+
+    def _compute_numpy(self, r_min, r_max, n, mu, Z, rho_vac, t_val):
+        np = _np
+        r = np.logspace(math.log10(r_min), math.log10(r_max), n)
+        coeffs = np.array(_LAYER_COEFFS)
+
+        g_total = np.zeros(n)
+        for i in range(N_LAYERS):
+            ri = r * (1 + 0.01 * (i + 1))
+            omega_i = OMEGA_SCM * (1 + 0.01 * i)
+            ug1 = mu / (4 * PI * ri ** 3) * S26_3RD
+            ug2 = (Z * 1.0 / ri ** 2) * SSQ * BETA_I
+            ug3 = (HBAR * omega_i / ri) * math.cos(omega_i * t_val) * S26_3RD
+            ug4 = (KAPPA * rho_vac / ri) * SSQ
+            g_total += coeffs[i] * (ug1 + ug2 + ug3 + ug4)
+
+        return {'r_grid': r.tolist(), 'g_values': g_total.tolist()}
+
+    def _compute_pure(self, r_min, r_max, n, mu, Z, rho_vac, t_val):
+        r_vals = [
+            r_min * (r_max / r_min) ** (j / max(n - 1, 1)) for j in range(n)
+        ]
+        g_vals = [0.0] * n
+        for j in range(n):
+            total = 0.0
+            for i in range(N_LAYERS):
+                ri = r_vals[j] * (1 + 0.01 * (i + 1))
+                omega_i = OMEGA_SCM * (1 + 0.01 * i)
+                ug1 = mu / (4 * PI * ri ** 3) * S26_3RD
+                ug2 = (Z * 1.0 / ri ** 2) * SSQ * BETA_I
+                ug3 = (HBAR * omega_i / ri) * math.cos(omega_i * t_val) * S26_3RD
+                ug4 = (KAPPA * rho_vac / ri) * SSQ
+                total += _LAYER_COEFFS[i] * (ug1 + ug2 + ug3 + ug4)
+            g_vals[j] = total
+        return {'r_grid': r_vals, 'g_values': g_vals}
+
+
+# ══════════════════════════════════════════════════════════════════════════════
+# §7  SELF-TESTS
 # ══════════════════════════════════════════════════════════════════════════════
 
 def _run_tests():

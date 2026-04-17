@@ -392,7 +392,92 @@ class GeodesicTracer:
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
-# §5  CLI
+# §5  THROUGHPUT BENCHMARK
+# ═══════════════════════════════════════════════════════════════════════════════
+
+class GeodesicThroughputBenchmark:
+    """Benchmark throughput for BSFG geodesic tracing.
+
+    Measures how many geodesic steps per second the tracer can achieve,
+    for both null and timelike geodesics.
+    """
+
+    def __init__(self, metric: BSFGMetric = None):
+        self.metric = metric or BSFGMetric()
+        self.tracer = GeodesicTracer(self.metric)
+
+    def benchmark_null(self, n_steps: int = 1000, n_runs: int = 5) -> dict:
+        """Benchmark null geodesic tracing."""
+        import time
+        total_steps = 0
+        t_start = time.perf_counter()
+        for _ in range(n_runs):
+            traj = self.tracer.trace_null(
+                r_start=self.metric.r0_m * 5,
+                dr_dlambda_0=-1e3,
+                L=1e10,
+                n_steps=n_steps,
+            )
+            total_steps += len(traj)
+        elapsed = time.perf_counter() - t_start
+        steps_per_sec = total_steps / elapsed if elapsed > 0 else 0
+
+        return {
+            "type": "null",
+            "n_runs": n_runs,
+            "n_steps_per_run": n_steps,
+            "total_steps": total_steps,
+            "elapsed_s": elapsed,
+            "steps_per_sec": steps_per_sec,
+        }
+
+    def benchmark_timelike(self, n_steps: int = 1000, n_runs: int = 5) -> dict:
+        """Benchmark timelike geodesic tracing."""
+        import time
+        total_steps = 0
+        t_start = time.perf_counter()
+        for _ in range(n_runs):
+            traj = self.tracer.trace_timelike(
+                r_start=self.metric.r0_m * 5,
+                v_initial=1e5,
+                L=1e10,
+                n_steps=n_steps,
+            )
+            total_steps += len(traj)
+        elapsed = time.perf_counter() - t_start
+        steps_per_sec = total_steps / elapsed if elapsed > 0 else 0
+
+        return {
+            "type": "timelike",
+            "n_runs": n_runs,
+            "n_steps_per_run": n_steps,
+            "total_steps": total_steps,
+            "elapsed_s": elapsed,
+            "steps_per_sec": steps_per_sec,
+        }
+
+    def compute(self, dataset: dict) -> dict:
+        """Full throughput benchmark."""
+        n_steps = int(dataset.get("n_steps", 500))
+        n_runs = int(dataset.get("n_runs", 3))
+
+        null_bench = self.benchmark_null(n_steps, n_runs)
+        timelike_bench = self.benchmark_timelike(n_steps, n_runs)
+
+        return {
+            "null": null_bench,
+            "timelike": timelike_bench,
+            "primary_equations": [
+                f"Null geodesic: {null_bench['steps_per_sec']:.0f} steps/s",
+                f"Timelike geodesic: {timelike_bench['steps_per_sec']:.0f} steps/s",
+                f"Config: {n_steps} steps × {n_runs} runs",
+                f"Metric: M={self.metric.M_kg:.2e} kg, r₀={self.metric.r0_m:.2e} m",
+            ],
+        }
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# §6  CLI
 # ═══════════════════════════════════════════════════════════════════════════════
 
 def main():

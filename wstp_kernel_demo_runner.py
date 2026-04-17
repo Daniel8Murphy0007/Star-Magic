@@ -691,6 +691,51 @@ def build_demo_expressions(wl_path: str) -> List[Dict[str, str]]:
                  '{r, {1, 5, 10, 20, 50, 100}}]'),
     })
 
+    # ── F_gate, T₂, K_PImath Symbolic Exports (Session 226-B) ──
+
+    # F_gate: Exponential gate fidelity
+    exprs.append({
+        "label": "F_gate = exp(-Γ·t_gate/T₂)·S₂₆⁽³⁾·(1-F_UBi/F_U) symbolic",
+        "code": ('hbar = 1.055*^-34; kB = 1.381*^-23; '
+                 'omSCm = 2 Pi * 1.25*^12; deltaSCm = hbar * omSCm; '
+                 'SSq = 0.57; betaI = 0.603; FUBiRatio = 0.6; '
+                 'Rn3[n_] := Sum[(-1)^j Binomial[2,j]/(n+j)!, {j,0,2}]; '
+                 'S263 = Sum[(SSq^n)/n^26 Rn3[n], {n,1,26}]; '
+                 'T2[T_] := (hbar/deltaSCm) Exp[deltaSCm/(kB T)] S263 FUBiRatio; '
+                 'Fgate[T_, tg_, Gamma_] := Exp[-Gamma tg / T2[T]] S263 (1 - FUBiRatio); '
+                 'Fgate[0.015, 10^-9, 2 Pi * 0.1*^12] // N'),
+    })
+
+    # T₂ coherence time (symbolic)
+    exprs.append({
+        "label": "T₂(T) = (ℏ/Δ_SCm)·exp(Δ_SCm/k_BT)·S₂₆⁽³⁾·(F_UBi/F_U) symbolic",
+        "code": ('Table[{"T_K", T, "T2_s", T2[T]}, '
+                 '{T, {0.010, 0.015, 0.020, 0.050, 0.100, 1.0, 4.2}}] // N'),
+    })
+
+    # Γ-sweep for gate fidelity
+    exprs.append({
+        "label": "F_gate Γ-sweep: Γ=0.05..0.30 THz at T=15mK, t_gate=1ns",
+        "code": ('Table[{"Gamma_THz", g, "F_gate", '
+                 'Fgate[0.015, 10^-9, 2 Pi g * 10^12]}, '
+                 '{g, {0.05, 0.10, 0.15, 0.20, 0.25, 0.30}}] // N'),
+    })
+
+    # K_PImath: cryptographic key generation
+    exprs.append({
+        "label": "K_PImath(n) = Floor[S₂₆⁽³⁾·π^(n/26)·10¹²] mod 113",
+        "code": ('KPImath[n_] := Mod[Floor[S263 * Pi^(n/26) * 10^12], 113]; '
+                 'Table[{"n", n, "K", KPImath[n]}, {n, 1, 26}]'),
+    })
+
+    # K_PImath digit root map
+    exprs.append({
+        "label": "K_PImath digit root map (π-cycle)",
+        "code": ('DigitRoot[x_] := FixedPoint[Total @ IntegerDigits[#] &, x]; '
+                 'DRMap[n_] := DigitRoot[Mod[Floor[Pi^(n/26) * 10^6], 10000]]; '
+                 'Table[{"n", n, "DR", DRMap[n]}, {n, 1, 26}]'),
+    })
+
     return exprs
 
 

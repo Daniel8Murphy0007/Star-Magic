@@ -19,7 +19,8 @@ Physics:
 
   T_2 = (ℏ/Δ_SCm) · exp(Δ_SCm / k_BT) · S₂₆^(3)([SSq]) · (F_{U,Bi}/F_U)
 
-  Gate fidelity: F = 1 - (t_gate/T_2)·(1 - H_SCm·β_i·[SSq])
+  Gate fidelity: F = exp(-Γ·t_gate/T₂)·S₂₆⁽³⁾·(1 - F_{UBi}/F_U)
+    where Γ is the SCm linewidth (0.05–0.3 THz range)
 
 ARCHITECTURE: Pure calculator. No hardcoded systems. Tier 2 compute.
 ────────────────────────────────────────────────────────────────────────────────
@@ -248,14 +249,34 @@ class SCmQubitCoherence:
         ratio = min(ratio, 700)  # clamp to avoid overflow
         return (HBAR / self.delta_scm) * math.exp(ratio) * S26_3RD * self.fubi_ratio
 
-    def gate_fidelity(self, T: float, t_gate: float) -> float:
-        """Gate fidelity F = 1 - (t_gate/T_2)·(1 - H_SCm·β_i·[SSq])."""
+    def gate_fidelity(self, T: float, t_gate: float,
+                      gamma: float = GAMMA_0) -> float:
+        """Gate fidelity F = exp(-Γ·t_gate/T₂)·S₂₆⁽³⁾·(1 - F_{UBi}/F_U).
+
+        Uses exponential decoherence with linewidth Γ.
+        """
         t2 = self.T2(T)
         if t2 == float('inf'):
-            return 1.0
-        scm_suppression = 1.0 - H_SCM * BETA_I * SSQ
-        eps = (t_gate / t2) * scm_suppression
-        return max(0.0, 1.0 - eps)
+            return S26_3RD * (1.0 - self.fubi_ratio)
+        exponent = -gamma * t_gate / t2
+        exponent = max(exponent, -700)  # clamp to avoid underflow
+        return math.exp(exponent) * S26_3RD * (1.0 - self.fubi_ratio)
+
+    def gamma_sweep(self, T: float, t_gate: float,
+                    gamma_min_THz: float = 0.05, gamma_max_THz: float = 0.30,
+                    n_points: int = 20) -> list:
+        """Sweep linewidth Γ and compute gate fidelity at each point."""
+        results = []
+        for i in range(n_points + 1):
+            g_THz = gamma_min_THz + (gamma_max_THz - gamma_min_THz) * i / n_points
+            gamma = 2 * PI * g_THz * 1e12
+            f = self.gate_fidelity(T, t_gate, gamma)
+            results.append({
+                "gamma_THz": g_THz,
+                "gamma_rad_s": gamma,
+                "fidelity": f,
+            })
+        return results
 
     def topological_protection_factor(self, T: float) -> float:
         """Topological protection from phonon gap: exp(Δ_SCm/k_BT).
@@ -273,8 +294,9 @@ class SCmQubitCoherence:
         T = float(dataset.get("T_K", 0.015))          # default 15 mK
         t_gate = float(dataset.get("t_gate_s", 1e-9))  # default 1 ns
 
+        gamma = float(dataset.get("gamma_rad_s", GAMMA_0))
         t2 = self.T2(T)
-        fidelity = self.gate_fidelity(T, t_gate)
+        fidelity = self.gate_fidelity(T, t_gate, gamma)
         topo = self.topological_protection_factor(T)
 
         # Temperature sweep for coherence landscape
@@ -282,8 +304,11 @@ class SCmQubitCoherence:
         sweep = []
         for t_k in temps:
             t2_k = self.T2(t_k)
-            f_k = self.gate_fidelity(t_k, t_gate)
+            f_k = self.gate_fidelity(t_k, t_gate, gamma)
             sweep.append({"T_K": t_k, "T2_s": t2_k, "fidelity": f_k})
+
+        # Linewidth sweep
+        gamma_sweep = self.gamma_sweep(T, t_gate)
 
         return {
             "T_K": T,
@@ -294,12 +319,14 @@ class SCmQubitCoherence:
             "topological_protection": topo,
             "FUBi_ratio": self.fubi_ratio,
             "temperature_sweep": sweep,
+            "gamma_sweep": gamma_sweep,
+            "gamma_rad_s": gamma,
             "primary_equations": [
                 "T₂ = (ℏ/Δ_SCm)·exp(Δ_SCm/k_BT)·S₂₆⁽³⁾·(F_{UBi}/F_U)",
                 f"Δ_SCm = {self.delta_scm:.6e} J = {self.delta_scm / 1.602e-19:.6e} eV",
                 f"T₂(T={T:.3f}K) = {t2:.6e} s",
-                f"F(t_gate={t_gate:.1e}s) = {fidelity:.10f}",
-                "F = 1 - (t_gate/T₂)·(1 - H_SCm·β_i·[SSq])",
+                f"F(t_gate={t_gate:.1e}s, Γ={gamma:.3e}) = {fidelity:.10f}",
+                "F = exp(-Γ·t_gate/T₂)·S₂₆⁽³⁾·(1 - F_{UBi}/F_U)",
             ],
         }
 
@@ -309,9 +336,10 @@ class SCmQubitCoherence:
 class QubitBuoyancyLagrangian:
     """Qubit buoyancy sector Lagrangian variation.
 
-    δS/δφ_qubit = ∂/∂Δ(-β_i Σ U_{g,i} Ω_g M/d_g [UA] + F_n·Φ_{1.25THz}) = 0
+    δS/δφ_qubit = ∂/∂F_gate(-β_i Σ U_{g,i} Ω_g M/d_g [UA] + F_n·Φ_{1.25THz}) = 0
 
     Evaluates stationarity condition for phonon-qubit coupling.
+    Includes φ_qubit Lagrangian sector with gate fidelity dependence.
     """
 
     def compute(self, dataset: dict) -> dict:
@@ -340,21 +368,40 @@ class QubitBuoyancyLagrangian:
         # Lagrangian density
         L_qubit = buoyancy_term + phonon_term
 
-        # Stationarity: ∂L/∂Δ evaluated numerically
+        # Gate fidelity sector: F_gate dependence
+        T_K = float(dataset.get("T_K", 0.015))
+        t_gate = float(dataset.get("t_gate_s", 1e-9))
+        coherence = SCmQubitCoherence(omega_scm=omega, fubi_ratio=F_UBI_RATIO)
+        F_gate = coherence.gate_fidelity(T_K, t_gate, gamma)
+
+        # φ_qubit sector: ∂L/∂F_gate
+        # L_phi = -β_i·Ug1·(M/r)·U_UA·F_gate + F_n·Φ·F_gate
+        L_phi_qubit = (-BETA_I * Ug1 * (M / r) * U_UA + F_neutron * phi_val) * F_gate
+
+        # Stationarity: ∂L/∂F_gate evaluated
+        dL_dFgate = -BETA_I * Ug1 * (M / r) * U_UA + F_neutron * phi_val
+
+        # Original ∂L/∂Δ
         delta_scm = HBAR * omega
         dL_dDelta = -BETA_I * Ug1 * (M / r) * U_UA / delta_scm + F_neutron * phi_val / delta_scm
 
         return {
             "L_qubit": L_qubit,
+            "L_phi_qubit": L_phi_qubit,
             "buoyancy_term": buoyancy_term,
             "phonon_term": phonon_term,
+            "F_gate": F_gate,
+            "dL_dFgate": dL_dFgate,
             "dL_dDelta": dL_dDelta,
             "Ug1": Ug1,
             "Phi_1.25THz": phi_val,
-            "is_stationary": abs(dL_dDelta) < abs(L_qubit) * 1e-6 if L_qubit != 0 else True,
+            "is_stationary": abs(dL_dFgate) < abs(L_qubit) * 1e-6 if L_qubit != 0 else True,
             "primary_equations": [
-                "δS/δφ_qubit = ∂/∂Δ(-β_i Σ U_{g,i} Ω_g M/d_g [UA] + F_n·Φ) = 0",
+                "δS/δφ_qubit = ∂/∂F_gate(-β_i Σ U_{g,i} Ω_g M/d_g [UA] + F_n·Φ) = 0",
                 f"L_qubit = {L_qubit:.6e} J·m⁻³",
+                f"L_φ_qubit = {L_phi_qubit:.6e} J·m⁻³  (F_gate-weighted)",
+                f"F_gate = {F_gate:.10f}",
+                f"∂L/∂F_gate = {dL_dFgate:.6e}",
                 f"∂L/∂Δ = {dL_dDelta:.6e}",
             ],
         }

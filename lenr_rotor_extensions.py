@@ -85,6 +85,27 @@ class LENRPhononCrossSection:
         gaussian = math.exp(-dw ** 2 / (2 * self.gamma ** 2))
         return self.sigma_0 * gaussian * S26_3RD
 
+    def cross_section_density(self, omega: float, rho: float) -> float:
+        """Compute σ_n(ω, ρ) — cross section with explicit frequency AND density.
+
+        σ_n(ω, ρ) = σ₀ · exp(-(ω-ω_SCm)²/(2Γ²)) · S₂₆⁽³⁾ · (1 + [SSq]·ρ/(ρ+ρ_ref))
+
+        The density factor provides a monotonic enhancement: at high ρ the
+        cross section approaches σ_rotor·(1+[SSq]), while at ρ→0 it
+        reduces to the frequency-only form.
+
+        Args:
+            omega: angular frequency (rad/s)
+            rho: local lattice/material density (kg/m³)
+
+        Returns:
+            σ_n in m²
+        """
+        rho_ref = 1e6  # reference density scale (kg/m³)
+        base = self.cross_section(omega)
+        density_factor = 1.0 + SSQ * rho / (rho + rho_ref)
+        return base * density_factor
+
     def enhancement_factor(self, omega: float) -> float:
         """Enhancement over bare σ₀."""
         return self.cross_section(omega) / self.sigma_0 if self.sigma_0 > 0 else 0.0
@@ -108,20 +129,26 @@ class LENRPhononCrossSection:
     def compute(self, dataset: dict) -> dict:
         """Full cross section calculation."""
         omega = float(dataset.get("omega", self.omega_scm))
+        rho = float(dataset.get("rho_kg_m3", 0.0))
         sigma = self.cross_section(omega)
+        sigma_rho = self.cross_section_density(omega, rho)
         sigma_res = self.cross_section(self.omega_scm)
         sweep = self.frequency_sweep()
         return {
             "sigma_rotor_m2": sigma,
+            "sigma_n_density_m2": sigma_rho,
             "sigma_resonance_m2": sigma_res,
             "sigma_0_m2": self.sigma_0,
+            "rho_kg_m3": rho,
+            "density_enhancement": sigma_rho / sigma if sigma > 0 else 1.0,
             "enhancement_at_resonance": sigma_res / self.sigma_0,
             "sweep_len": len(sweep),
             "primary_equations": [
-                f"σ_rotor = σ₀·exp(-(ω-ω_SCm)²/(2Γ²))·S₂₆⁽³⁾ = {sigma:.6e} m²",
+                f"σ_rotor(ω) = σ₀·exp(-(ω-ω_SCm)²/(2Γ²))·S₂₆⁽³⁾ = {sigma:.6e} m²",
+                f"σ_n(ω,ρ) = σ_rotor·(1+[SSq]·ρ/(ρ+ρ_ref)) = {sigma_rho:.6e} m²",
                 f"σ₀ = {self.sigma_0:.6e} m²",
                 f"S₂₆⁽³⁾ = {S26_3RD:.6e}",
-                f"Enhancement at resonance = {sigma_res / self.sigma_0:.6e}",
+                f"ρ = {rho:.2e} kg/m³, density factor = {sigma_rho/sigma if sigma>0 else 1:.6f}",
             ],
         }
 
