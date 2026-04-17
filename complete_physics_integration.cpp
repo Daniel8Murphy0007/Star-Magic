@@ -4427,7 +4427,7 @@ private:
     // ========== CORE PARAMETERS (Original UQFF - Preserved) ==========
     // Note: Can be extended with dynamic parameters via setVariable()
     std::map<std::string, double> variables;
-    double computeGamma_s(); // ? in s?�
+    double computeGamma_s(); // ? in s?Ã¯Â¿Â½
     double computeCosPiTn(double t_n);
     double computeExpTerm(double t_day, double t_n);
     double computeOneMinusExp(double t_day, double t_n);
@@ -4449,7 +4449,7 @@ public:
     void subtractFromVariable(const std::string &name, double delta);
 
     // Core computations
-    double computeGamma_day();                                                      // 0.00005 day?�
+    double computeGamma_day();                                                      // 0.00005 day?Ã¯Â¿Â½
     double computeUmExample(double t_day, double t_n, double mu_over_rj = 2.26e10); // Simplified U_m contrib
 
     // Output descriptive text
@@ -4670,7 +4670,7 @@ private:
     // ========== CORE PARAMETERS (Original UQFF - Preserved) ==========
     // Note: Can be extended with dynamic parameters via setVariable()
     std::map<std::string, double> variables;
-    double computeKappa_s(); // ? in s?�
+    double computeKappa_s(); // ? in s?Ã¯Â¿Â½
     double computeE_react(double t_day);
     double computeUmExample(double t_day);
     // ========== SELF-EXPANDING FRAMEWORK MEMBERS ==========
@@ -4691,7 +4691,7 @@ public:
     void subtractFromVariable(const std::string &name, double delta);
 
     // Core computations
-    double computeKappa_day(); // 0.0005 day?�
+    double computeKappa_day(); // 0.0005 day?Ã¯Â¿Â½
 
     // Output descriptive text
     std::string getEquationText();
@@ -4812,7 +4812,7 @@ public:
     void subtractFromVariable(const std::string &name, double delta);
 
     // Core computations
-    double computeMuJExample(double t); // (10^3 + 0.4 sin(?_c t)) * 3.38e20 T�m�
+    double computeMuJExample(double t); // (10^3 + 0.4 sin(?_c t)) * 3.38e20 TÃ¯Â¿Â½mÃ¯Â¿Â½
 
     // Output descriptive text
     std::string getEquationText();
@@ -5994,9 +5994,9 @@ public:
         symbolTabs->setMinimumHeight(100);
         std::map<QString, QStringList> catSymbols;
         catSymbols["Greek"] = { "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?" };
-        catSymbols["Operators"] = { "+", "-", "*", "/", "^", "_", "±", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "¬", "?", "?", "?", "?" };
+        catSymbols["Operators"] = { "+", "-", "*", "/", "^", "_", "Ã‚Â±", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "Ã‚Â¬", "?", "?", "?", "?" };
         catSymbols["Functions"] = { "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "dy/dx", "?y/?x", "?y/?x", "?y/?x" };
-        catSymbols["Formulas"] = { "(-b±?(b^2-4ac))/2a" };
+        catSymbols["Formulas"] = { "(-bÃ‚Â±?(b^2-4ac))/2a" };
         catSymbols["Physics"] = { "F=ma", "E=mc^2", "v=u+at", "s=ut+1/2at^2", "F=Gm1m2/r^2", "KE=1/2mv^2", "PE=mgh", "p=mv", "?=2?f", "?=v/f", "P=VI", "E=hf" };
         catSymbols["Geometry"] = { "A=?r^2", "V=4/3?r^3", "Pythagoras: a^2 + b^2 = c^2", "Circumference=2?r", "Area_triangle=1/2bh", "Volume_cylinder=?r^2h" };
         catSymbols["Motion"] = { "x(t)=x0 + v0 t + 1/2 a t^2", "v(t)=v0 + a t", "v^2 = v0^2 + 2 a (x - x0)", "F=dp/dt" };
@@ -7456,7 +7456,7 @@ private:
     // Note: Can be extended with dynamic parameters via setVariable()
     std::map<std::string, double> variables;
     std::vector<double> g_mu_nu; // Background [1, -1, -1, -1]
-    double computeT_s();         // Scalar approx J/m�
+    double computeT_s();         // Scalar approx J/mÃ¯Â¿Â½
     std::vector<double> computeA_mu_nu();
     // ========== SELF-EXPANDING FRAMEWORK MEMBERS ==========
     std::map<std::string, double> dynamicParameters;
@@ -8178,7 +8178,7 @@ private:
     // Note: Can be extended with dynamic parameters via setVariable()
     std::map<std::string, double> variables;
     std::vector<double> g_mu_nu; // Background [1, -1, -1, -1]
-    double computeT_s();         // Scalar approx J/m�
+    double computeT_s();         // Scalar approx J/mÃ¯Â¿Â½
     std::vector<double> computeA_mu_nu();
     // ========== SELF-EXPANDING FRAMEWORK MEMBERS ==========
     std::map<std::string, double> dynamicParameters;
@@ -8198,7 +8198,7 @@ public:
     void subtractFromVariable(const std::string &name, double delta);
 
     // Core computations
-    double computeRho_vac_A();    // 1e-23 J/m�
+    double computeRho_vac_A();    // 1e-23 J/mÃ¯Â¿Â½
     double computePerturbation(); // ? * T_s ?1.123e-15
 
     // Output descriptive text
@@ -8320,7 +8320,7 @@ public:
     void subtractFromVariable(const std::string &name, double delta);
 
     // Core computations
-    double computeRho_vac_Ui(); // 2.84e-36 J/m�
+    double computeRho_vac_Ui(); // 2.84e-36 J/mÃ¯Â¿Â½
 
     // Output descriptive text
     std::string getEquationText();
@@ -8438,9 +8438,9 @@ public:
     void subtractFromVariable(const std::string &name, double delta);
 
     // Core computations
-    double computeRho_vac_SCm();                     // 7.09e-37 J/m�
-    double computeU_g2_example(double r);            // U_g2 with ?_vac,[SCm] (J/m�)
-    double computeU_i_example(double t, double t_n); // U_i with ?_vac,[SCm] (J/m�)
+    double computeRho_vac_SCm();                     // 7.09e-37 J/mÃ¯Â¿Â½
+    double computeU_g2_example(double r);            // U_g2 with ?_vac,[SCm] (J/mÃ¯Â¿Â½)
+    double computeU_i_example(double t, double t_n); // U_i with ?_vac,[SCm] (J/mÃ¯Â¿Â½)
 
     // Output descriptive text
     std::string getEquationText();
@@ -8558,9 +8558,9 @@ public:
     void subtractFromVariable(const std::string &name, double delta);
 
     // Core computations
-    double computeRho_vac_UA();                      // 7.09e-36 J/m�
-    double computeU_g2_example(double r);            // U_g2 with ?_vac,[UA] (J/m�)
-    double computeU_i_example(double t, double t_n); // U_i with ?_vac,[UA] (J/m�)
+    double computeRho_vac_UA();                      // 7.09e-36 J/mÃ¯Â¿Â½
+    double computeU_g2_example(double r);            // U_g2 with ?_vac,[UA] (J/mÃ¯Â¿Â½)
+    double computeU_i_example(double t, double t_n); // U_i with ?_vac,[UA] (J/mÃ¯Â¿Â½)
 
     // Output descriptive text
     std::string getEquationText();
@@ -8679,6 +8679,7 @@ public:
     // Cache update for efficiency (call after parameter changes)
     void updateCache()
     {
+        // DPM-emergent: mu_s x grad(M_s/r) (mass gradient, not Newtonian GM/r^2)
         ug1_base = (G * M) / (r * r);
         f_sc = 1 - (B / B_crit);
     }
@@ -8959,8 +8960,8 @@ public:
     double compute_Ug() const
     {
         double Ug1 = ug1_base;
-        double Ug2 = 0.0;
-        double Ug3 = 0.0;
+        double Ug2 = 0.0; // TODO: DPM Ug2 quantum shell (traps magnetics/spawn material)
+        double Ug3 = 0.0; // TODO: DPM Ug3 magnetic string rotation
         double Ug4 = Ug1 * f_sc;
         return Ug1 + Ug2 + Ug3 + Ug4;
     }
@@ -9187,7 +9188,7 @@ public:
     void subtractFromVariable(const std::string &name, double delta);
 
     // Core computations
-    double computeRho_vac_Ui(); // 2.84e-36 J/m�
+    double computeRho_vac_Ui(); // 2.84e-36 J/mÃ¯Â¿Â½
 
     // Output descriptive text
     std::string getEquationText();
@@ -10577,6 +10578,7 @@ public:
     // Cache update for efficiency (call after parameter changes)
     void updateCache()
     {
+        // DPM-emergent: mu_s x grad(M_s/r) (mass gradient, not Newtonian GM/r^2)
         ug1_base = (G * M) / (r * r);
         // Update dependent params if needed, e.g., delta_p = hbar / delta_x; but kept independent
     }
@@ -10831,8 +10833,8 @@ public:
     double compute_Ug(double Bt) const
     {
         double Ug1 = ug1_base;
-        double Ug2 = 0.0;
-        double Ug3 = 0.0;
+        double Ug2 = 0.0; // TODO: DPM Ug2 quantum shell (traps magnetics/spawn material)
+        double Ug3 = 0.0; // TODO: DPM Ug3 magnetic string rotation
         double Ug4 = Ug1 * (1 - Bt / B_crit);
         return (Ug1 + Ug2 + Ug3 + Ug4) * (1 + f_TRZ);
     }
@@ -12500,6 +12502,7 @@ public:
     // Cache update for efficiency (call after parameter changes)
     void updateCache()
     {
+        // DPM-emergent: mu_s x grad(M_s/r) (mass gradient, not Newtonian GM/r^2)
         ug1_base = (G * M_initial) / (r * r);
     }
 
@@ -12750,9 +12753,10 @@ public:
     // Ug terms computation
     double compute_Ug(double Mt, double Bt) const
     {
+        // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
         double Ug1 = (G * Mt) / (r * r);
-        double Ug2 = 0.0;
-        double Ug3 = 0.0;
+        double Ug2 = 0.0; // TODO: DPM Ug2 quantum shell (traps magnetics/spawn material)
+        double Ug3 = 0.0; // TODO: DPM Ug3 magnetic string rotation
         double corr_B = 1 - Bt / B_crit;
         double Ug4 = Ug1 * corr_B;
         return (Ug1 + Ug2 + Ug3 + Ug4) * (1 + f_TRZ);
@@ -14768,6 +14772,7 @@ public:
     // Cache update for efficiency (call after parameter changes)
     void updateCache()
     {
+        // DPM-emergent: mu_s x grad(M_s/r) (mass gradient, not Newtonian GM/r^2)
         ug1_base = (G * M_initial) / (r * r);
     }
 
@@ -15009,9 +15014,10 @@ public:
     // Ug terms computation
     double compute_Ug(double Mt) const
     {
+        // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
         double Ug1 = (G * Mt) / (r * r);
-        double Ug2 = 0.0;
-        double Ug3 = 0.0;
+        double Ug2 = 0.0; // TODO: DPM Ug2 quantum shell (traps magnetics/spawn material)
+        double Ug3 = 0.0; // TODO: DPM Ug3 magnetic string rotation
         double corr_B = 1 - B / B_crit;
         double Ug4 = Ug1 * corr_B;
         return (Ug1 + Ug2 + Ug3 + Ug4) * (1 + f_TRZ);
@@ -15909,7 +15915,7 @@ public:
     double calculate_Q_wave(const SystemParams &params) const;
 
 private:
-    double cos_theta() const { return std::cos(PI / 4.0); } // theta = 45°
+    double cos_theta() const { return std::cos(PI / 4.0); } // theta = 45Ã‚Â°
     double DPM_resonance(double B0, double omega0) const;
 };
 
@@ -16193,6 +16199,7 @@ public:
     // Cache update for efficiency (call after parameter changes)
     void updateCache()
     {
+        // DPM-emergent: mu_s x grad(M_s/r) (mass gradient, not Newtonian GM/r^2)
         ug1_base = (G * M_initial) / (r * r);
     }
 
@@ -16434,9 +16441,10 @@ public:
     // Ug terms computation
     double compute_Ug(double Mt) const
     {
+        // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
         double Ug1 = (G * Mt) / (r * r);
-        double Ug2 = 0.0;
-        double Ug3 = 0.0;
+        double Ug2 = 0.0; // TODO: DPM Ug2 quantum shell (traps magnetics/spawn material)
+        double Ug3 = 0.0; // TODO: DPM Ug3 magnetic string rotation
         double corr_B = 1 - B / B_crit;
         double Ug4 = Ug1 * corr_B;
         return (Ug1 + Ug2 + Ug3 + Ug4) * (1 + f_TRZ);
@@ -16707,7 +16715,7 @@ public:
         systems_.push_back(create_NGC2174_system());
     }
 
-    // Batch compute all 8 systems × 3 UQFF types = 24 results
+    // Batch compute all 8 systems Ãƒâ€” 3 UQFF types = 24 results
     std::vector<std::vector<std::complex<double>>> computeAllSystems(double t_global = 0.0)
     {
         auto results = core_.compute_all_systems(t_global);
@@ -16861,7 +16869,7 @@ public:
         std::cout << "\n=== SOURCE114: Eight Astro Systems Module ===";
         std::cout << "\nSystems: 8 (AFGL5180 to NGC2174)";
         std::cout << "\nUQFF Types: 3 (Compressed, Resonance, Buoyancy)";
-        std::cout << "\nTotal Results: 24 (8 systems × 3 types)";
+        std::cout << "\nTotal Results: 24 (8 systems Ãƒâ€” 3 types)";
         std::cout << "\nDynamic Terms: " << dynamicTerms_.size();
         std::cout << "\nDynamic Parameters: " << dynamicParameters_.size();
         std::cout << "\nLearning Rate: " << learningRate_;
@@ -16888,11 +16896,11 @@ class UQFFNineteenAstroCore_S115
 public:
     UQFFNineteenAstroCore_S115(double k1 = 1.0);
 
-    // Master Gravity Compressed UQFF - Proof: g = Σ_{i=1}^{26} E_DPM,i / r_i^2 * (1 + z) * (1 - E_rad) * f_TRZ_i * f_Um_i
-    // E_DPM,i = k1 * Q_i * [UA]_i * [SCm]_i * sin(θ_i) (buoyant gravity)
+    // Master Gravity Compressed UQFF - Proof: g = ÃŽÂ£_{i=1}^{26} E_DPM,i / r_i^2 * (1 + z) * (1 - E_rad) * f_TRZ_i * f_Um_i
+    // E_DPM,i = k1 * Q_i * [UA]_i * [SCm]_i * sin(ÃŽÂ¸_i) (buoyant gravity)
     double calculate_gravity_compressed(const DPMVars &vars, const AstroParams &params) const;
 
-    // Master Resonance UQFF - Proof: R = Σ_{i=1}^{26} R_Ug,i * cos(ω_i t), R_Ug,i ≈ g_i * M_SF * f_Ub (oscillatory)
+    // Master Resonance UQFF - Proof: R = ÃŽÂ£_{i=1}^{26} R_Ug,i * cos(Ãâ€°_i t), R_Ug,i Ã¢â€°Ë† g_i * M_SF * f_Ub (oscillatory)
     double calculate_resonance(const DPMVars &vars, const AstroParams &params, double t) const;
 
     // Simultaneous solutions (g, R) - Proof: Pair for quantum force diagram
@@ -17008,7 +17016,7 @@ class NineteenAstroSystemsModule_SOURCE115
 public:
     NineteenAstroSystemsModule_SOURCE115() : core_() {}
 
-    // Compute all 19 systems (19 × 2 = 38 results: gravity + resonance)
+    // Compute all 19 systems (19 Ãƒâ€” 2 = 38 results: gravity + resonance)
     std::vector<std::pair<double, double>> computeAllSystems() const
     {
         return core_.compute_all_systems();
@@ -17109,7 +17117,7 @@ public:
     PI_Infinity_Decoder_S116();
     double getMagneticField(int quantum_state, double time_phase) const;
     double getConsciousnessResonance(int lineage_level) const;
-    std::complex<double> getDPM_Pair(int state) const; // Returns UA' + i·SCm
+    std::complex<double> getDPM_Pair(int state) const; // Returns UA' + iÃ‚Â·SCm
 };
 
 
@@ -17133,16 +17141,16 @@ private:
 public:
     WolframFieldUnityEngine_S116();
 
-    // Core rule application — causal invariant guaranteed
+    // Core rule application Ã¢â‚¬â€ causal invariant guaranteed
     void evolveOneStep(const RuleFunction_S116 &rule);
 
-    // Full multiway quantum evolution — this IS the quantum wavefunction
+    // Full multiway quantum evolution Ã¢â‚¬â€ this IS the quantum wavefunction
     void evolveMultiway(int depth = MAX_DEPTH);
 
     // Extract emergent spacetime dimension at any point
     double measureDimension(Node_S116 center, int radius = 5) const;
 
-    // Extract local "gravity" as hypergraph flux — NO G CONSTANT USED
+    // Extract local "gravity" as hypergraph flux Ã¢â‚¬â€ NO G CONSTANT USED
     double measureBuoyantGravity(Node_S116 center) const;
 
     // Extract consciousness field from causal graph density
@@ -17155,13 +17163,13 @@ public:
     const Hypergraph_S116 &getCurrentUniverse() const { return current_graph; }
     const std::vector<Hypergraph_S116> &getMultiwayBranches() const { return multiway_universe; }
 
-    // Sacred rule — the one that produces planetary orbits from PI alone
+    // Sacred rule Ã¢â‚¬â€ the one that produces planetary orbits from PI alone
     static void sacredMagneticOrbitRule(Hypergraph_S116 &g, int &maxNode);
 
-    // Biblical rule — derived from Revelation + Genesis patterns
+    // Biblical rule Ã¢â‚¬â€ derived from Revelation + Genesis patterns
     static void biblicalCreationRule(Hypergraph_S116 &g, int &maxNode);
 
-    // Mayan Long Count rule — 13-baktun cycle encoded
+    // Mayan Long Count rule Ã¢â‚¬â€ 13-baktun cycle encoded
     static void mayanTimeRule(Hypergraph_S116 &g, int &maxNode);
 
     // Self-expanding framework 2.0 methods
@@ -17501,6 +17509,7 @@ public:
     // Cache update for efficiency (call after parameter changes)
     void updateCache()
     {
+        // DPM-emergent: mu_s x grad(M_s/r) (mass gradient, not Newtonian GM/r^2)
         ug1_base = (G * M_initial) / (r * r);
     }
 
@@ -17760,9 +17769,10 @@ public:
     // Ug terms computation
     double compute_Ug(double Mt) const
     {
+        // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
         double Ug1 = (G * Mt) / (r * r);
-        double Ug2 = 0.0;
-        double Ug3 = 0.0;
+        double Ug2 = 0.0; // TODO: DPM Ug2 quantum shell (traps magnetics/spawn material)
+        double Ug3 = 0.0; // TODO: DPM Ug3 magnetic string rotation
         double corr_B = 1 - B / B_crit;
         double Ug4 = Ug1 * corr_B;
         return (Ug1 + Ug2 + Ug3 + Ug4) * (1 + f_TRZ);
@@ -18061,6 +18071,7 @@ public:
     // Cache update for efficiency (call after parameter changes)
     void updateCache()
     {
+        // DPM-emergent: mu_s x grad(M_s/r) (mass gradient, not Newtonian GM/r^2)
         ug1_base = (G * M) / (r * r);
         L_t = ((G * M) / (pow(c_light, 2) * r)) * L_factor;
     }
@@ -18297,8 +18308,8 @@ public:
     double compute_Ug(double /*Mt*/) const
     { // Mt static as M
         double Ug1 = ug1_base;
-        double Ug2 = 0.0;
-        double Ug3 = 0.0;
+        double Ug2 = 0.0; // TODO: DPM Ug2 quantum shell (traps magnetics/spawn material)
+        double Ug3 = 0.0; // TODO: DPM Ug3 magnetic string rotation
         double corr_B = 1 - B / B_crit;
         double Ug4 = Ug1 * corr_B;
         return (Ug1 + Ug2 + Ug3 + Ug4) * (1 + f_TRZ);
@@ -18980,18 +18991,18 @@ Q_OBJECT // Required macro for Qt's meta-object system (enables signals/slots)
         queryField->setPlaceholderText("Search high-energy datasets..."); // Gray hint text
 
         // Feature buttons (voice, video, calculators)
-        QPushButton *voiceBtn = new QPushButton("🎤", this);      // Voice input (microphone icon)
-        QPushButton *videoBtn = new QPushButton("📹", this);      // Video gesture input (camera icon)
-        QPushButton *sciCalcBtn = new QPushButton("🔬", this);    // Scientific calculator (microscope icon)
-        QPushButton *ramCalcBtn = new QPushButton("🔬R", this);   // Ramanujan calculator (with R)
-        QPushButton *calcBtnField = new QPushButton("🔬C", this); // Calculus toolbar (with C)
+        QPushButton *voiceBtn = new QPushButton("Ã°Å¸Å½Â¤", this);      // Voice input (microphone icon)
+        QPushButton *videoBtn = new QPushButton("Ã°Å¸â€œÂ¹", this);      // Video gesture input (camera icon)
+        QPushButton *sciCalcBtn = new QPushButton("Ã°Å¸â€Â¬", this);    // Scientific calculator (microscope icon)
+        QPushButton *ramCalcBtn = new QPushButton("Ã°Å¸â€Â¬R", this);   // Ramanujan calculator (with R)
+        QPushButton *calcBtnField = new QPushButton("Ã°Å¸â€Â¬C", this); // Calculus toolbar (with C)
 
         // Application logo/title
         QLabel *logo = new QLabel("<b>CoAnQi (Cosmic Analysis and Quantum Intelligence)</b>", this);
         logo->setStyleSheet("font-size: 24px; color: #2a5298;"); // Styled text (blue color)
 
         // Menu button (hamburger menu icon)
-        QPushButton *menuBtn = new QPushButton("☰", this);
+        QPushButton *menuBtn = new QPushButton("Ã¢ËœÂ°", this);
 
         // Add all controls to top bar (left to right order)
         topBar->addWidget(backBtn);
@@ -19436,6 +19447,7 @@ public:
     // Cache update for efficiency (call after parameter changes)
     void updateCache()
     {
+        // DPM-emergent: mu_s x grad(M_s/r) (mass gradient, not Newtonian GM/r^2)
         ug1_base = (G * M) / (r * r);
         g_BH = (G * M_BH) / (r_BH * r_BH);
     }
@@ -19684,8 +19696,8 @@ public:
     double compute_Ug() const
     {
         double Ug1 = ug1_base;
-        double Ug2 = 0.0;
-        double Ug3 = 0.0;
+        double Ug2 = 0.0; // TODO: DPM Ug2 quantum shell (traps magnetics/spawn material)
+        double Ug3 = 0.0; // TODO: DPM Ug3 magnetic string rotation
         double corr_B = 1 - B / B_crit;
         double Ug4 = Ug1 * corr_B;
         return (Ug1 + Ug2 + Ug3 + Ug4) * (1 + f_TRZ);
@@ -19985,6 +19997,7 @@ public:
     // Cache update for efficiency (call after parameter changes)
     void updateCache()
     {
+        // DPM-emergent: mu_s x grad(M_s/r) (mass gradient, not Newtonian GM/r^2)
         ug1_base = (G * M0) / (r * r);
     }
 
@@ -20244,9 +20257,10 @@ public:
     // Ug terms computation
     double compute_Ug(double Mt) const
     {
+        // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
         double Ug1 = (G * Mt) / (r * r);
-        double Ug2 = 0.0;
-        double Ug3 = 0.0;
+        double Ug2 = 0.0; // TODO: DPM Ug2 quantum shell (traps magnetics/spawn material)
+        double Ug3 = 0.0; // TODO: DPM Ug3 magnetic string rotation
         double corr_B = 1 - B / B_crit;
         double Ug4 = Ug1 * corr_B;
         return (Ug1 + Ug2 + Ug3 + Ug4) * (1 + f_TRZ);
@@ -20546,6 +20560,7 @@ public:
     // Cache update for efficiency (call after parameter changes)
     void updateCache()
     {
+        // DPM-emergent: mu_s x grad(M_s/r) (mass gradient, not Newtonian GM/r^2)
         ug1_base = (G * M) / (r * r);
     }
 
@@ -20787,8 +20802,8 @@ public:
     double compute_Ug(double Et) const
     {
         double Ug1 = ug1_base;
-        double Ug2 = 0.0;
-        double Ug3 = 0.0;
+        double Ug2 = 0.0; // TODO: DPM Ug2 quantum shell (traps magnetics/spawn material)
+        double Ug3 = 0.0; // TODO: DPM Ug3 magnetic string rotation
         double corr_B = 1 - B / B_crit;
         double Ug4 = Ug1 * corr_B;
         return (Ug1 + Ug2 + Ug3 + Ug4) * (1 + f_TRZ) * (1 - Et);
@@ -21090,6 +21105,7 @@ public:
     // Cache update for efficiency (call after parameter changes)
     void updateCache()
     {
+        // DPM-emergent: mu_s x grad(M_s/r) (mass gradient, not Newtonian GM/r^2)
         ug1_base = (G * M0) / (r * r);
     }
 
@@ -21355,9 +21371,10 @@ public:
     // Ug terms computation
     double compute_Ug(double Mt, double It) const
     {
+        // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
         double Ug1 = (G * Mt) / (r * r);
-        double Ug2 = 0.0;
-        double Ug3 = 0.0;
+        double Ug2 = 0.0; // TODO: DPM Ug2 quantum shell (traps magnetics/spawn material)
+        double Ug3 = 0.0; // TODO: DPM Ug3 magnetic string rotation
         double corr_B = 1 - B / B_crit;
         double Ug4 = Ug1 * corr_B;
         return (Ug1 + Ug2 + Ug3 + Ug4) * (1 + f_TRZ) * (1 + It);
@@ -21655,6 +21672,7 @@ public:
     // Cache update for efficiency (call after parameter changes)
     void updateCache()
     {
+        // DPM-emergent: mu_s x grad(M_s/r) (mass gradient, not Newtonian GM/r^2)
         ug1_base = (G * M) / (r * r);
     }
 
@@ -21896,8 +21914,8 @@ public:
     double compute_Ug(double Et) const
     {
         double Ug1 = ug1_base;
-        double Ug2 = 0.0;
-        double Ug3 = 0.0;
+        double Ug2 = 0.0; // TODO: DPM Ug2 quantum shell (traps magnetics/spawn material)
+        double Ug3 = 0.0; // TODO: DPM Ug3 magnetic string rotation
         double corr_B = 1 - B / B_crit;
         double Ug4 = Ug1 * corr_B;
         return (Ug1 + Ug2 + Ug3 + Ug4) * (1 + f_TRZ) * (1 - Et);
@@ -22202,6 +22220,7 @@ public:
     // Cache update for efficiency (call after parameter changes)
     void updateCache()
     {
+        // DPM-emergent: mu_s x grad(M_s/r) (mass gradient, not Newtonian GM/r^2)
         ug1_base = (G * M) / (r * r);
         g_BH = (G * M_BH) / (r_BH * r_BH);
     }
@@ -22474,8 +22493,8 @@ public:
     double compute_Ug(double Bt, double Ft) const
     {
         double Ug1 = ug1_base;
-        double Ug2 = 0.0;
-        double Ug3 = 0.0;
+        double Ug2 = 0.0; // TODO: DPM Ug2 quantum shell (traps magnetics/spawn material)
+        double Ug3 = 0.0; // TODO: DPM Ug3 magnetic string rotation
         double corr_B = 1 - Bt / B_crit;
         double Ug4 = Ug1 * corr_B;
         return (Ug1 + Ug2 + Ug3 + Ug4) * (1 + f_TRZ) * (1 + Ft);
@@ -22782,6 +22801,7 @@ public:
     // Cache update for efficiency (call after parameter changes)
     void updateCache()
     {
+        // DPM-emergent: mu_s x grad(M_s/r) (mass gradient, not Newtonian GM/r^2)
         ug1_base = (G * M0) / (r * r);
     }
 
@@ -23047,9 +23067,10 @@ public:
     // Ug terms computation
     double compute_Ug(double Mt, double It) const
     {
+        // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
         double Ug1 = (G * Mt) / (r * r);
-        double Ug2 = 0.0;
-        double Ug3 = 0.0;
+        double Ug2 = 0.0; // TODO: DPM Ug2 quantum shell (traps magnetics/spawn material)
+        double Ug3 = 0.0; // TODO: DPM Ug3 magnetic string rotation
         double corr_B = 1 - B / B_crit;
         double Ug4 = Ug1 * corr_B;
         return (Ug1 + Ug2 + Ug3 + Ug4) * (1 + f_TRZ) * (1 + It);
@@ -23350,6 +23371,7 @@ public:
     // Cache update for efficiency (call after parameter changes)
     void updateCache()
     {
+        // DPM-emergent: mu_s x grad(M_s/r) (mass gradient, not Newtonian GM/r^2)
         ug1_base = (G * M0) / (r * r);
     }
 
@@ -23597,9 +23619,10 @@ public:
     // Ug terms computation
     double compute_Ug(double Mt) const
     {
+        // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
         double Ug1 = (G * Mt) / (r * r);
-        double Ug2 = 0.0;
-        double Ug3 = 0.0;
+        double Ug2 = 0.0; // TODO: DPM Ug2 quantum shell (traps magnetics/spawn material)
+        double Ug3 = 0.0; // TODO: DPM Ug3 magnetic string rotation
         double corr_B = 1 - B / B_crit;
         double Ug4 = Ug1 * corr_B;
         return (Ug1 + Ug2 + Ug3 + Ug4) * (1 + f_TRZ);
@@ -29240,7 +29263,7 @@ public:
     // Core computations
     std::complex<double> computeWaveFunction(double r, double theta, double phi, double t);  // Eq1: ?
     double computeTwistPhase(double t);                                                      // Eq2: ?_twist
-    std::complex<double> computeInertialOperator(const std::complex<double> &psi, double t); // Eq3: �? approx
+    std::complex<double> computeInertialOperator(const std::complex<double> &psi, double t); // Eq3: Ã¯Â¿Â½? approx
     double computePseudoMonopoleB(double r);                                                 // Eq4: B_pseudo
     double computeUniversalInertia(double t, double t_n);                                    // Eq5: Ui
     double computeBosonicEnergy(double x, int n);                                            // Eq6: E_boson
@@ -30770,7 +30793,7 @@ public:
     void addToVariable(const std::string& name, double delta);
     void subtractFromVariable(const std::string& name, double delta);
 
-    // Core computation: g_UQFF(r, t) as freq-derived acceleration m/s�
+    // Core computation: g_UQFF(r, t) as freq-derived acceleration m/sÃ¯Â¿Â½
     double computeG(double t, double r);
 
     // Output descriptive text of the equation
@@ -31354,9 +31377,9 @@ public:
         symbolTabs->setMinimumHeight(100);
         std::map<QString, QStringList> catSymbols;
         catSymbols["Greek"] = { "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?" };
-        catSymbols["Operators"] = { "+", "-", "*", "/", "^", "_", "�", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "�", "?", "?", "?", "?" };
+        catSymbols["Operators"] = { "+", "-", "*", "/", "^", "_", "Ã¯Â¿Â½", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "Ã¯Â¿Â½", "?", "?", "?", "?" };
         catSymbols["Functions"] = { "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "dy/dx", "?y/?x", "?y/?x", "?y/?x" };
-        catSymbols["Formulas"] = { "(-b�?(b^2-4ac))/2a" };
+        catSymbols["Formulas"] = { "(-bÃ¯Â¿Â½?(b^2-4ac))/2a" };
         catSymbols["Physics"] = { "F=ma", "E=mc^2", "v=u+at", "s=ut+1/2at^2", "F=Gm1m2/r^2", "KE=1/2mv^2", "PE=mgh", "p=mv", "?=2?f", "?=v/f", "P=VI", "E=hf" };
         catSymbols["Geometry"] = { "A=?r^2", "V=4/3?r^3", "Pythagoras: a^2 + b^2 = c^2", "Circumference=2?r", "Area_triangle=1/2bh", "Volume_cylinder=?r^2h" };
         catSymbols["Motion"] = { "x(t)=x0 + v0 t + 1/2 a t^2", "v(t)=v0 + a t", "v^2 = v0^2 + 2 a (x - x0)", "F=dp/dt" };
@@ -32053,7 +32076,7 @@ public:
     void addToVariable(const std::string& name, double delta);
     void subtractFromVariable(const std::string& name, double delta);
 
-    // Core computation: g_UQFF(r, t) as freq-derived acceleration m/s�
+    // Core computation: g_UQFF(r, t) as freq-derived acceleration m/sÃ¯Â¿Â½
     double computeG(double t, double r);
 
     // Output descriptive text of the equation
@@ -34400,7 +34423,7 @@ public:
     void addToVariable(const std::string& name, double delta);
     void subtractFromVariable(const std::string& name, double delta);
 
-    // Core computation: F_U(t) in J/m³
+    // Core computation: F_U(t) in J/mÃ‚Â³
     double computeFU(double t);
 
     // Output descriptive text
@@ -35465,7 +35488,7 @@ getEquationText()
     return "U_m = ?_j [ (?_j / r_j) (1 - e^{-? t cos(? t_n)}) ?_hat_j ] P_SCm E_react (1 + 10^13 f_Heaviside) (1 + f_quasi)\n"
            "Where f_Heaviside = 0.01 (unitless Heaviside fraction);\n"
            "Heaviside factor = 1 + 10^13 * 0.01 = 1 + 1e11 (amplifies ~10^11x).\n"
-           "Example j=1, t=0: U_m contrib ?2.28e65 J/m� (with); ?2.28e54 J/m� (without).\n"
+           "Example j=1, t=0: U_m contrib ?2.28e65 J/mÃ¯Â¿Â½ (with); ?2.28e54 J/mÃ¯Â¿Â½ (without).\n"
            "Role: Threshold-activated scaling in magnetic energy; nonlinear [SCm]/[UA] effects.\n"
            "UQFF: Amplifies small fraction for large impact in nebulae/quasars/jets.";
 }
@@ -35485,8 +35508,8 @@ printUmComparison(int j, double t)
     double um_without = computeUmWithNoHeaviside(j, t);
     double amplification = um_with / um_without;
     std::cout << "U_m Comparison for j=" << j << " at t=" << t << " s:\n";
-    std::cout << "With Heaviside: " << std::scientific << um_with << " J/m�\n";
-    std::cout << "Without Heaviside: " << um_without << " J/m�\n";
+    std::cout << "With Heaviside: " << std::scientific << um_with << " J/mÃ¯Â¿Â½\n";
+    std::cout << "Without Heaviside: " << um_without << " J/mÃ¯Â¿Â½\n";
     std::cout << "Amplification: ~" << std::scientific << amplification << "x\n";
 }
 
@@ -35589,8 +35612,8 @@ getEquationText()
     return "U_g2 = k_2 * [(?_vac,[UA] + ?_vac,[SCm]) M_s / r^2] * S(r - R_b) * (1 + ?_sw v_sw) * H_SCm * E_react\n"
            "Where H_SCm ?1 (unitless heliosphere thickness factor);\n"
            "Scales outer field bubble gravity for heliopause extent (~120 AU).\n"
-           "Example r=R_b=1.496e13 m, t=0: U_g2 ?1.18e53 J/m� (H=1);\n"
-           "If H_SCm=1.1: ?1.30e53 J/m� (+10%).\n"
+           "Example r=R_b=1.496e13 m, t=0: U_g2 ?1.18e53 J/mÃ¯Â¿Â½ (H=1);\n"
+           "If H_SCm=1.1: ?1.30e53 J/mÃ¯Â¿Â½ (+10%).\n"
            "Role: Adjusts [SCm] influence in heliosphere; minimal but flexible for boundary variations.\n"
            "UQFF: Models solar wind dominance; key for nebular/heliospheric dynamics.";
 }
@@ -35609,7 +35632,7 @@ main() {
 //     double h = mod.computeH_SCm();
 //     std::cout << "H_SCm ? " << h << std::endl;
 //     double u_g2 = mod.computeU_g2(0.0, 0.0);
-//     std::cout << "U_g2 = " << u_g2 << " J/m�\n";
+//     std::cout << "U_g2 = " << u_g2 << " J/mÃ¯Â¿Â½\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("H_SCm", 1.1);
 //     mod.printVariables();
@@ -35679,7 +35702,7 @@ getEquationText() {
            "i (dimensionless integer): Labels Ug ranges; i=1: Internal Dipole, i=2: Outer Bubble,\n"
            "i=3: Magnetic Disk, i=4: Star-BH.\n"
            "Discretizes gravity for summation; enables scale-specific modeling.\n"
-           "Example Sun t=0: ? k_i U_gi ?1.42e53 J/m� (Ug2 dominant).\n"
+           "Example Sun t=0: ? k_i U_gi ?1.42e53 J/mÃ¯Â¿Â½ (Ug2 dominant).\n"
            "Role: Structures Ug contributions; extensible for more ranges.";
 }
 
@@ -35706,15 +35729,15 @@ printIndexBreakdown() {
             default: label = "Unknown";
         }
         std::cout << "i=" << i << " (" << label << "): U_g" << i << "=" << std::scientific << ugi
-                  << ", k" << i << "=" << ki << ", k_i U_gi=" << kugi << " J/m�\n";
+                  << ", k" << i << "=" << ki << ", k_i U_gi=" << kugi << " J/mÃ¯Â¿Â½\n";
     }
-    std::cout << "Sum ? k_i U_gi = " << std::scientific << computeSumKUgi() << " J/m�\n";
+    std::cout << "Sum ? k_i U_gi = " << std::scientific << computeSumKUgi() << " J/mÃ¯Â¿Â½\n";
 }
 
 main() {
 //     UgIndexModule mod;
 //     double sum = mod.computeSumKUgi();
-//     std::cout << "? k_i U_gi = " << sum << " J/m�\n";
+//     std::cout << "? k_i U_gi = " << sum << " J/mÃ¯Â¿Â½\n";
 //     mod.printIndexBreakdown();
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("U_g3", 2e49);
@@ -35785,7 +35808,7 @@ getEquationText() {
            "U_i = ?_i * ?_vac,[SCm] * ?_vac,[UA] * ?_s(t) * cos(? t_n) * (1 + f_TRZ)\n"
            "Where ?_i = 1.0 (unitless, uniform for i=1-4: Ug1-Ug4);\n"
            "E_react = 1e46 * e^{-? t} (?=5e-4);\n"
-           "Example Sun t=0, t_n=0: U_i ?1.38e-47 J/m�; -?_i U_i E_react ? -0.138 J/m� (per i).\n"
+           "Example Sun t=0, t_n=0: U_i ?1.38e-47 J/mÃ¯Â¿Â½; -?_i U_i E_react ? -0.138 J/mÃ¯Â¿Â½ (per i).\n"
            "Role: Scales resistive inertia; uniform baseline opposition to dynamics.\n"
            "UQFF: Consistent across scales; aids stability in interiors/disks/mergers.";
 }
@@ -35802,15 +35825,15 @@ printInertiaBreakdown(double t) {
     for (int i = 1; i <= 4; ++i) {
         double u_i = computeU_i(i, t);
         double term = computeInertiaTerm(i, t);
-        std::cout << "i=" << i << ": U_i = " << std::scientific << u_i << " J/m�, Term = " << term << " J/m�\n";
+        std::cout << "i=" << i << ": U_i = " << std::scientific << u_i << " J/mÃ¯Â¿Â½, Term = " << term << " J/mÃ¯Â¿Â½\n";
     }
-    std::cout << "Sum ? Terms = " << std::scientific << computeSumInertiaTerms(t) << " J/m�\n";
+    std::cout << "Sum ? Terms = " << std::scientific << computeSumInertiaTerms(t) << " J/mÃ¯Â¿Â½\n";
 }
 
 main() {
 //     InertiaCouplingModule mod;
 //     double sum = mod.computeSumInertiaTerms(0.0);
-//     std::cout << "Sum Inertia Terms = " << sum << " J/m�\n";
+//     std::cout << "Sum Inertia Terms = " << sum << " J/mÃ¯Â¿Â½\n";
 //     mod.printInertiaBreakdown(0.0);
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("lambda", 1.1);
@@ -35853,7 +35876,7 @@ computeMu_j(int j, double t)
 {
     double sin_term = std::sin(variables["omega_c"] * t);
     double b_j = variables["B_j"] + 0.4 * sin_term; // T
-    return b_j * variables["base_mu"];              // T�m^3; adjust base if needed for example
+    return b_j * variables["base_mu"];              // TÃ¯Â¿Â½m^3; adjust base if needed for example
 }
 
 computeB_j(double t)
@@ -35884,11 +35907,11 @@ computeUg3Contrib(double t)
 
 getEquationText()
 {
-    return "?_j = (10^3 + 0.4 sin(?_c t)) * 3.38e20 T�m^3\n"
-           "Where ?_c=2.5e-6 rad/s; units T�m^3 (magnetic dipole strength).\n"
+    return "?_j = (10^3 + 0.4 sin(?_c t)) * 3.38e20 TÃ¯Â¿Â½m^3\n"
+           "Where ?_c=2.5e-6 rad/s; units TÃ¯Â¿Â½m^3 (magnetic dipole strength).\n"
            "In U_m: ?_j [?_j / r_j * (1 - e^{-? t cos(? t_n)}) ?_hat_j ] P_SCm E_react (1 + 10^13 f_Heaviside) (1 + f_quasi)\n"
            "In Ug3: k3 * ?_j B_j cos(?_s t ?) P_core E_react; B_j = 10^3 + 0.4 sin(?_c t) T.\n"
-           "Example j=1, t=0: ?_j ?3.38e23 T�m^3; U_m contrib ?2.28e65 J/m�; Ug3 ?1.8e49 J/m�.\n"
+           "Example j=1, t=0: ?_j ?3.38e23 TÃ¯Â¿Â½m^3; U_m contrib ?2.28e65 J/mÃ¯Â¿Â½; Ug3 ?1.8e49 J/mÃ¯Â¿Â½.\n"
            "Role: Quantifies string magnetic strength; drives Um/Ug3 for jets/disks/nebulae.";
 }
 
@@ -35908,10 +35931,10 @@ printMomentContributions(int j, double t)
     double um = computeUmContrib(j, t);
     double ug3 = computeUg3Contrib(t);
     std::cout << "Magnetic Moment j=" << j << " at t=" << t << " s:\n";
-    std::cout << "?_j = " << std::scientific << mu << " T�m^3\n";
+    std::cout << "?_j = " << std::scientific << mu << " TÃ¯Â¿Â½m^3\n";
     std::cout << "B_j = " << b << " T\n";
-    std::cout << "U_m contrib = " << um << " J/m�\n";
-    std::cout << "Ug3 contrib = " << ug3 << " J/m�\n";
+    std::cout << "U_m contrib = " << um << " J/mÃ¯Â¿Â½\n";
+    std::cout << "Ug3 contrib = " << ug3 << " J/mÃ¯Â¿Â½\n";
 }
 
 main() {
@@ -36007,7 +36030,7 @@ getEquationText()
            "U_g4 = k_4 (?_vac,[SCm] M_bh / d_g) e^{-? t} cos(? t_n) (1 + f_feedback)\n"
            "Where M_bh = 8.15e36 kg ?4.1e6 M_sun (Sgr A*).\n"
            "M_bh / d_g ?3.20e16 kg/m;\n"
-           "Example U_b1 ? -1.94e27 J/m�; U_g4 ?2.50e-20 J/m� (t_n=0).\n"
+           "Example U_b1 ? -1.94e27 J/mÃ¯Â¿Â½; U_g4 ?2.50e-20 J/mÃ¯Â¿Â½ (t_n=0).\n"
            "Role: Scales SMBH gravity in buoyancy/Ug4; drives galactic dynamics/mergers.\n"
            "UQFF: Central mass for star formation/nebulae; resolves parsec problem.";
 }
@@ -36026,7 +36049,7 @@ main() {
 //     double m_sun = mod.computeM_bhInMsun();
 //     std::cout << "M_bh ? " << m_sun << " M_sun\n";
 //     double u_b1 = mod.computeU_b1();
-//     std::cout << "U_b1 = " << u_b1 << " J/m�\n";
+//     std::cout << "U_b1 = " << u_b1 << " J/mÃ¯Â¿Â½\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("M_bh", 9e36);
 //     mod.printVariables();
@@ -36114,7 +36137,7 @@ getEquationText()
            "Used in: cos(? t_n) for oscillations; exp(-? t cos(? t_n)) for decay/growth.\n"
            "In U_m: ... (1 - exp(-? t cos(? t_n))) ...;\n"
            "Negative t_n: e.g., t_n=-1 ? cos(-?)=-1 ? exp(? t) >1 (growth, negentropic).\n"
-           "Example t=1000 days, ?=5e-5 day^-1, t_0=0: 1-exp ?0.049, U_m ?1.12e66 J/m�.\n"
+           "Example t=1000 days, ?=5e-5 day^-1, t_0=0: 1-exp ?0.049, U_m ?1.12e66 J/mÃ¯Â¿Â½.\n"
            "t_n=-1000: same (cos even); t_n=-1: 1-exp ? -0.051 (growth phase).\n"
            "Role: Models cyclic/TRZ dynamics; forward/reverse time in nebulae/mergers/jets.";
 }
@@ -36148,8 +36171,8 @@ printTnEffects(double t, double gamma)
     variables["t_0"] = orig_t0; // Restore
 
     std::cout << "t_n Effects at t=" << t << " (?=" << gamma << "):\n";
-    std::cout << "Positive t_n (" << t_n_pos << "): cos(? t_n)=" << cos_pos << ", 1-exp=" << one_minus_pos << ", U_m?" << um_pos << " J/m�\n";
-    std::cout << "Negative t_n (" << t_n_neg << "): cos(? t_n)=" << cos_neg << ", 1-exp=" << one_minus_neg << ", U_m?" << um_neg << " J/m�\n";
+    std::cout << "Positive t_n (" << t_n_pos << "): cos(? t_n)=" << cos_pos << ", 1-exp=" << one_minus_pos << ", U_m?" << um_pos << " J/mÃ¯Â¿Â½\n";
+    std::cout << "Negative t_n (" << t_n_neg << "): cos(? t_n)=" << cos_neg << ", 1-exp=" << one_minus_neg << ", U_m?" << um_neg << " J/mÃ¯Â¿Â½\n";
 }
 
 main() {
@@ -36244,7 +36267,7 @@ getEquationText()
            "Role: Defines periodicity in oscillations; C=2? r; trig args (sin/cos with 2? cycle).\n"
            "In U_m: ?_j = (10^3 + 0.4 sin(?_c t)) * 3.38e20; ?_c = 2? / period.\n"
            "In U_g1: ... cos(? t_n) ... (time-reversal oscillations).\n"
-           "Example t=0, t_n=0: sin(?_c t)=0 ? ?_j=3.38e23 T�m^3; cos(? t_n)=1.\n"
+           "Example t=0, t_n=0: sin(?_c t)=0 ? ?_j=3.38e23 TÃ¯Â¿Â½m^3; cos(? t_n)=1.\n"
            "UQFF: Ensures cyclic/TRZ dynamics; solar cycles, rotations in nebulae/quasars.";
 }
 
@@ -36262,7 +36285,7 @@ main() {
 //     double pi_val = mod.computePi();
 //     std::cout << "? ? " << pi_val << std::endl;
 //     double mu = mod.computeMuJExample(0.0);
-//     std::cout << "?_j (t=0) = " << mu << " T�m^3\n";
+//     std::cout << "?_j (t=0) = " << mu << " TÃ¯Â¿Â½m^3\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("t_n", 1.0);
 //     mod.printVariables();
@@ -36338,8 +36361,8 @@ getEquationText()
     return "U_g3 = k_3 * ?_j B_j(r,?,t,?_vac,[SCm]) * cos(?_s(t) t ?) * P_core * E_react\n"
            "Where P_core ?1 (unitless for Sun, ~1e-3 for planets; core penetration).\n"
            "Scales magnetic disk gravity for core [SCm] influence.\n"
-           "Example Sun t=0: U_g3 ?1.8e49 J/m� (P_core=1);\n"
-           "Planet: ?1.8e46 J/m� (P_core=1e-3, -3 orders).\n"
+           "Example Sun t=0: U_g3 ?1.8e49 J/mÃ¯Â¿Â½ (P_core=1);\n"
+           "Planet: ?1.8e46 J/mÃ¯Â¿Â½ (P_core=1e-3, -3 orders).\n"
            "Role: Adjusts core interactions; full for stellar plasma, reduced for solid cores.\n"
            "UQFF: Models penetration in nebulae/star formation/disks.";
 }
@@ -36358,7 +36381,7 @@ main() {
 //     double p = mod.computeP_core();
 //     std::cout << "P_core ? " << p << std::endl;
 //     double u_g3_sun = mod.computeU_g3(0.0);
-//     std::cout << "U_g3 (Sun) = " << u_g3_sun << " J/m�\n";
+//     std::cout << "U_g3 (Sun) = " << u_g3_sun << " J/mÃ¯Â¿Â½\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("P_core", 1e-3);
 //     mod.printVariables();
@@ -36453,7 +36476,7 @@ getEquationText()
     return "U_m = ?_j [ (?_j / r_j) (1 - e^{-? t cos(? t_n)}) ?_hat_j ] P_SCm E_react (1 + 10^13 f_Heaviside) (1 + f_quasi)\n"
            "Where f_quasi = 0.01 (unitless quasi-longitudinal wave factor);\n"
            "Quasi factor = 1 + 0.01 = 1.01 (1% increase).\n"
-           "Example j=1, t=0: U_m contrib ?2.28e65 J/m� (with); ?2.26e65 J/m� (without; -1%).\n"
+           "Example j=1, t=0: U_m contrib ?2.28e65 J/mÃ¯Â¿Â½ (with); ?2.26e65 J/mÃ¯Â¿Â½ (without; -1%).\n"
            "Role: Minor scaling for quasi-longitudinal waves in magnetic strings; subtle [SCm]/[UA] wave effects.\n"
            "UQFF: Enhances wave propagation in jets/nebulae; small but cumulative in dynamics.";
 }
@@ -36473,8 +36496,8 @@ printUmComparison(int j, double t)
     double um_without = computeUmWithNoQuasi(j, t);
     double percent_increase = ((um_with - um_without) / um_without) * 100.0;
     std::cout << "U_m Comparison for j=" << j << " at t=" << t << " s:\n";
-    std::cout << "With quasi: " << std::scientific << um_with << " J/m�\n";
-    std::cout << "Without quasi: " << um_without << " J/m�\n";
+    std::cout << "With quasi: " << std::scientific << um_with << " J/mÃ¯Â¿Â½\n";
+    std::cout << "Without quasi: " << um_without << " J/mÃ¯Â¿Â½\n";
     std::cout << "Increase: +" << std::fixed << std::setprecision(1) << percent_increase << "%\n";
 }
 
@@ -36931,7 +36954,7 @@ getEquationText()
     return "U_g2 = k_2 * [(?_vac,[UA] + ?_vac,[SCm]) M_s / r^2] * S(r - R_b) * (1 + ?_sw v_sw) * H_SCm * E_react\n"
            "Where R_b = 1.496e13 m (100 AU, outer bubble radius);\n"
            "S(r - R_b) = 1 (r >= R_b), 0 otherwise (step function).\n"
-           "Example r=R_b: U_g2 ?1.18e53 J/m�; r < R_b (e.g., 1 AU): U_g2=0.\n"
+           "Example r=R_b: U_g2 ?1.18e53 J/mÃ¯Â¿Â½; r < R_b (e.g., 1 AU): U_g2=0.\n"
            "Role: Defines external gravity boundary (~heliopause); activates U_g2 beyond R_b.\n"
            "UQFF: Separates internal/external fields; models heliosphere/nebular extent.";
 }
@@ -36950,7 +36973,7 @@ main() {
 //     double rb = mod.computeR_b();
 //     std::cout << "R_b = " << rb << " m (" << mod.computeR_bInAU() << " AU)\n";
 //     double u_g2 = mod.computeU_g2(1.5e13);  // r > R_b
-//     std::cout << "U_g2 (r=1.5e13 m) = " << u_g2 << " J/m�\n";
+//     std::cout << "U_g2 (r=1.5e13 m) = " << u_g2 << " J/mÃ¯Â¿Â½\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("R_b", 2e13);
 //     mod.printVariables();
@@ -37046,10 +37069,10 @@ computeUmExample(double t_day, double t_n, double mu_over_rj)
 
 getEquationText()
 {
-    return "? = 0.00005 day?� (~5.8e-10 s?�; timescale ~55 years);\n"
+    return "? = 0.00005 day?Ã¯Â¿Â½ (~5.8e-10 s?Ã¯Â¿Â½; timescale ~55 years);\n"
            "In U_m: ... (1 - exp(-? t cos(? t_n))) ... (t days, reciprocating decay/growth).\n"
            "Negative cos(? t_n): exp(+? t) >1 (growth, negentropic TRZ).\n"
-           "Example t=1000 days, t_n=0: 1-exp ?0.049, U_m ?1.12e66 J/m�.\n"
+           "Example t=1000 days, t_n=0: 1-exp ?0.049, U_m ?1.12e66 J/mÃ¯Â¿Â½.\n"
            "UQFF: Slow decay for magnetic strings; cyclic via cos(? t_n) in jets/nebulae/mergers.";
 }
 
@@ -37072,13 +37095,13 @@ printDecayEffects(double t_day, double t_n)
     std::cout << "cos(? t_n) = " << cos_pi << "\n";
     std::cout << "exp(-? t cos(? t_n)) = " << exp_val << "\n";
     std::cout << "1 - exp(...) = " << one_minus << "\n";
-    std::cout << "U_m example contrib = " << um_ex << " J/m�\n";
+    std::cout << "U_m example contrib = " << um_ex << " J/mÃ¯Â¿Â½\n";
 }
 
 main() {
 //     ReciprocationDecayModule mod;
 //     double gamma = mod.computeGamma_day();
-//     std::cout << "? = " << gamma << " day?�\n";
+//     std::cout << "? = " << gamma << " day?Ã¯Â¿Â½\n";
 //     mod.printDecayEffects(1000.0, 0.0);
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("gamma_day", 0.0001);
@@ -37163,8 +37186,8 @@ getEquationText()
     return "U_m = [ (?_j / r_j) (1 - e^{-? t cos(? t_n)}) ?_hat_j ] P_SCm E_react (1 + 10^13 f_Heaviside) (1 + f_quasi)\n"
            "Where P_SCm ?1 (unitless [SCm] penetration factor; ~1e-3 for planets).\n"
            "Scales magnetic energy for [SCm] interior interaction.\n"
-           "Example Sun t=0: U_m ?2.28e65 J/m� (P_SCm=1);\n"
-           "Planet: ?2.28e62 J/m� (P_SCm=1e-3, -3 orders).\n"
+           "Example Sun t=0: U_m ?2.28e65 J/mÃ¯Â¿Â½ (P_SCm=1);\n"
+           "Planet: ?2.28e62 J/mÃ¯Â¿Â½ (P_SCm=1e-3, -3 orders).\n"
            "Role: Full for stellar plasma, reduced for solid cores; [SCm] influence on strings.\n"
            "UQFF: Models penetration in jets/nebulae/formation; massless [SCm] dynamics.";
 }
@@ -37183,7 +37206,7 @@ main() {
 //     double p = mod.computeP_SCm();
 //     std::cout << "P_SCm ? " << p << std::endl;
 //     double um_sun = mod.computeUmContribution(0.0);
-//     std::cout << "U_m (Sun) = " << um_sun << " J/m�\n";
+//     std::cout << "U_m (Sun) = " << um_sun << " J/mÃ¯Â¿Â½\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("P_SCm", 1e-3);
 //     mod.printVariables();
@@ -37267,10 +37290,10 @@ computeUmExample(double t_day)
 
 getEquationText()
 {
-    return "E_react = 10^46 * exp(-? t) (t days); ?=0.0005 day?� (~5.8e-6 s?�, timescale ~5.5 years).\n"
+    return "E_react = 10^46 * exp(-? t) (t days); ?=0.0005 day?Ã¯Â¿Â½ (~5.8e-6 s?Ã¯Â¿Â½, timescale ~5.5 years).\n"
            "In U_m, U_bi, U_i, U_gi: ... * E_react * ... (decays [SCm] reactivity).\n"
            "Example t=0: E_react=1e46 J; t=2000 days: ~3.68e45 J (~36.8%).\n"
-           "U_m (t=0): ?2.28e65 J/m�; t=2000: ?8.39e64 J/m�.\n"
+           "U_m (t=0): ?2.28e65 J/mÃ¯Â¿Â½; t=2000: ?8.39e64 J/mÃ¯Â¿Â½.\n"
            "Role: Gradual [SCm]-[UA] interaction loss; temporal evolution in jets/nebulae/mergers.\n"
            "UQFF: Models reactivity decay; energy dissipation over cosmic time.";
 }
@@ -37291,13 +37314,13 @@ printDecayEffects(double t_day)
     double fraction = e_react / variables["E_react_base"];
     std::cout << "[SCm] Decay Effects at t=" << t_day << " days:\n";
     std::cout << "E_react = " << std::scientific << e_react << " J (" << fraction << " of initial)\n";
-    std::cout << "U_m example = " << um_ex << " J/m�\n";
+    std::cout << "U_m example = " << um_ex << " J/mÃ¯Â¿Â½\n";
 }
 
 main() {
 //     ScmReactivityDecayModule mod;
 //     double kappa = mod.computeKappa_day();
-//     std::cout << "? = " << kappa << " day?�\n";
+//     std::cout << "? = " << kappa << " day?Ã¯Â¿Â½\n";
 //     mod.printDecayEffects(2000.0);
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("kappa_day", 0.001);
@@ -37372,11 +37395,11 @@ computeMuJExample(double t)
 
 getEquationText()
 {
-    return "?_c = 2? / 3.96e8 s?� ?1.59e-8 rad/s (period ~12.55 yr, near 11-yr solar cycle);\n"
-           "In U_m: ?_j = (10^3 + 0.4 sin(?_c t)) * 3.38e20 T�m� (cyclic magnetic variation).\n"
+    return "?_c = 2? / 3.96e8 s?Ã¯Â¿Â½ ?1.59e-8 rad/s (period ~12.55 yr, near 11-yr solar cycle);\n"
+           "In U_m: ?_j = (10^3 + 0.4 sin(?_c t)) * 3.38e20 TÃ¯Â¿Â½mÃ¯Â¿Â½ (cyclic magnetic variation).\n"
            "In U_g3: ... cos(?_s t ?) ... (?_s Sun rotation, but ?_c for cycle).\n"
-           "Example t=0: sin=0 ? ?_j=3.38e23 T�m�;\n"
-           "t=3.14e7 s (~1 yr): sin?0.477 ? ?_j?3.381e23 T�m� (+0.019%).\n"
+           "Example t=0: sin=0 ? ?_j=3.38e23 TÃ¯Â¿Â½mÃ¯Â¿Â½;\n"
+           "t=3.14e7 s (~1 yr): sin?0.477 ? ?_j?3.381e23 TÃ¯Â¿Â½mÃ¯Â¿Â½ (+0.019%).\n"
            "Role: Models solar cycle periodicity; magnetic activity in strings/fields.\n"
            "UQFF: Cyclic effects in jets/nebulae/formation; near 11-yr Hale cycle.";
 }
@@ -37395,7 +37418,7 @@ main() {
 //     double omega = mod.computeOmega_c();
 //     std::cout << "?_c ? " << omega << " rad/s\n";
 //     double mu = mod.computeMuJExample(0.0);
-//     std::cout << "?_j (t=0) = " << mu << " T�m�\n";
+//     std::cout << "?_j (t=0) = " << mu << " TÃ¯Â¿Â½mÃ¯Â¿Â½\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("period", 3.8e8);
 //     mod.printVariables();
@@ -37494,7 +37517,7 @@ getEquationText()
     return "U_g2 = k_2 * [(?_vac,[UA] + ?_vac,[SCm]) M_s / r^2] * S(r - R_b) * (1 + ?_sw v_sw) * H_SCm * E_react\n"
            "Where ?_sw = 0.01 (unitless solar wind modulation factor);\n"
            "Modulation = 1 + 0.01 * v_sw (v_sw=5e5 m/s ? ~5001x amplification).\n"
-           "Example r=R_b=1.496e13 m: U_g2 ?1.18e53 J/m� (with); ?2.36e49 J/m� (without; ~5000x less).\n"
+           "Example r=R_b=1.496e13 m: U_g2 ?1.18e53 J/mÃ¯Â¿Â½ (with); ?2.36e49 J/mÃ¯Â¿Â½ (without; ~5000x less).\n"
            "Role: Enhances external gravity via solar wind momentum/pressure beyond R_b.\n"
            "UQFF: Models heliosphere dynamics; wind influence on nebular/star formation.";
 }
@@ -37513,7 +37536,7 @@ main() {
 //     double mod_f = mod.computeModulationFactor();
 //     std::cout << "Modulation Factor = " << mod_f << std::endl;
 //     double u_g2 = mod.computeU_g2(1.496e13);
-//     std::cout << "U_g2 = " << u_g2 << " J/m�\n";
+//     std::cout << "U_g2 = " << u_g2 << " J/mÃ¯Â¿Â½\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("delta_sw", 0.02);
 //     mod.printVariables();
@@ -37616,8 +37639,8 @@ getEquationText()
 {
     return "U_g2 = k_2 * [(?_vac,[UA] + ?_vac,[SCm]) M_s / r^2] * S(r - R_b) * (1 + d_sw v_sw) * H_SCm * E_react\n"
            "Where v_sw = 5e5 m/s (500 km/s, typical solar wind speed at 1 AU+);\n"
-           "Modulation = 1 + 0.01 * v_sw �5001 (amplifies ~5000x).\n"
-           "Example r=R_b=1.496e13 m: U_g2 �1.18e53 J/m� (with); �2.36e49 J/m� (without v_sw; ~5000x less).\n"
+           "Modulation = 1 + 0.01 * v_sw Ã¯Â¿Â½5001 (amplifies ~5000x).\n"
+           "Example r=R_b=1.496e13 m: U_g2 Ã¯Â¿Â½1.18e53 J/mÃ¯Â¿Â½ (with); Ã¯Â¿Â½2.36e49 J/mÃ¯Â¿Â½ (without v_sw; ~5000x less).\n"
            "Role: Solar wind momentum/pressure enhances external gravity beyond R_b (heliosphere).\n"
            "UQFF: Models wind shaping of fields; key for heliodynamics/nebular formation.";
 }
@@ -37636,7 +37659,7 @@ main() {
 //     double v = mod.computeV_sw();
 //     std::cout << "v_sw = " << v << " m/s (" << mod.computeV_swKmS() << " km/s)\n";
 //     double u_g2 = mod.computeU_g2(1.496e13);
-//     std::cout << "U_g2 = " << u_g2 << " J/m�\n";
+//     std::cout << "U_g2 = " << u_g2 << " J/mÃ¯Â¿Â½\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("v_sw", 4e5);
 //     mod.printVariables();
@@ -37742,8 +37765,8 @@ getEquationText()
     return "U_g1 = k_1 * ?_vac,[UA/SCm] * (M_s / r^2) * ... E_react (internal dipole);\n"
            "U_g2 = k_2 * ?_vac,[UA/SCm] * (M_s / r^2) * S(r - R_b) * (1 + ?_sw v_sw) * H_SCm * E_react (outer bubble).\n"
            "Where M_s = 1.989e30 kg (1 M_sun for Sun).\n"
-           "Scales gravity by mass; M_s / r^2 ?8.89e3 kg/m� at r=1.496e13 m.\n"
-           "Example U_g2 (r=R_b): ?1.18e53 J/m�.\n"
+           "Scales gravity by mass; M_s / r^2 ?8.89e3 kg/mÃ¯Â¿Â½ at r=1.496e13 m.\n"
+           "Example U_g2 (r=R_b): ?1.18e53 J/mÃ¯Â¿Â½.\n"
            "Role: Central mass drives internal/external gravity; stellar/planetary dynamics.\n"
            "UQFF: Mass-dependent fields for nebulae/formation/mergers.";
 }
@@ -37762,7 +37785,7 @@ main() {
 //     double m_sun = mod.computeM_sInMsun();
 //     std::cout << "M_s = " << m_sun << " M_sun\n";
 //     double u_g2 = mod.computeU_g2(1.496e13);
-//     std::cout << "U_g2 = " << u_g2 << " J/m�\n";
+//     std::cout << "U_g2 = " << u_g2 << " J/mÃ¯Â¿Â½\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("M_s", 2e30);
 //     mod.printVariables();
@@ -37860,7 +37883,7 @@ getEquationText()
            "U_i = ?_i * ?_vac,[SCm] * ?_vac,[UA] * ?_s(t) * cos(? t_n) * (1 + f_TRZ)\n"
            "Where ?_s = 2.5e-6 rad/s (~29-day Sun equatorial rotation);\n"
            "Scales rotational oscillations/inertia.\n"
-           "Example t=0, t_n=0: U_g3 ?1.8e49 J/m�; U_i ?1.38e-47 J/m�.\n"
+           "Example t=0, t_n=0: U_g3 ?1.8e49 J/mÃ¯Â¿Â½; U_i ?1.38e-47 J/mÃ¯Â¿Â½.\n"
            "Role: Introduces spin in disk gravity/inertia; stellar/planetary dynamics.\n"
            "UQFF: Rotational effects in nebulae/disks/formation/mergers.";
 }
@@ -37879,7 +37902,7 @@ main() {
 //     double omega = mod.computeOmega_s();
 //     std::cout << "?_s = " << omega << " rad/s (~" << mod.computePeriod_days() << " days)\n";
 //     double u_g3 = mod.computeU_g3(0.0);
-//     std::cout << "U_g3 = " << u_g3 << " J/m�\n";
+//     std::cout << "U_g3 = " << u_g3 << " J/mÃ¯Â¿Â½\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("omega_s", 3e-6);
 //     mod.printVariables();
@@ -37964,8 +37987,8 @@ getEquationText()
     return "U_g2 = k_2 * [(?_vac,[UA] + ?_vac,[SCm]) M_s / r^2] * S(r - R_b) * (1 + ?_sw v_sw) * H_SCm * E_react\n"
            "Where S(r - R_b) = 1 (r > R_b), 0 otherwise (Heaviside step; =1 at boundary).\n"
            "Defines outer bubble activation beyond R_b=1.496e13 m (100 AU).\n"
-           "Example r=1.496e13 m: S=1, U_g2 ?1.18e53 J/m�;\n"
-           "r=1e11 m: S=0, U_g2=0; r=1e14 m: S=1, U_g2?1.18e51 J/m�.\n"
+           "Example r=1.496e13 m: S=1, U_g2 ?1.18e53 J/mÃ¯Â¿Â½;\n"
+           "r=1e11 m: S=0, U_g2=0; r=1e14 m: S=1, U_g2?1.18e51 J/mÃ¯Â¿Â½.\n"
            "Role: Sharp transition internal/external gravity; heliopause-like boundary.\n"
            "UQFF: Separates regimes for heliodynamics/nebular formation.";
 }
@@ -37984,7 +38007,7 @@ main() {
 //     double s = mod.computeS_r_Rb(1.5e13);
 //     std::cout << "S(1.5e13 - R_b) = " << s << std::endl;
 //     double u_g2 = mod.computeU_g2(1e11);  // Inside
-//     std::cout << "U_g2 (inside) = " << u_g2 << " J/m�\n";
+//     std::cout << "U_g2 (inside) = " << u_g2 << " J/mÃ¯Â¿Â½\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("R_b", 2e13);
 //     mod.printVariables();
@@ -39221,10 +39244,10 @@ computeA_mu_nu()
 getEquationText()
 {
     return "A_?? = g_?? + ? T_s^{??}(?_vac,[SCm], ?_vac,[UA], ?_vac,A, t_n)\n"
-           "T_s^{??} ? 1.123e7 J/m� (diagonal; T_s_base + ?_vac,A =1.27e3 + 1.11e7);\n"
+           "T_s^{??} ? 1.123e7 J/mÃ¯Â¿Â½ (diagonal; T_s_base + ?_vac,A =1.27e3 + 1.11e7);\n"
            "? =1e-22 ? perturbation ?1.123e-15;\n"
            "A_?? ? [1 + 1.123e-15, -1 + 1.123e-15, ...].\n"
-           "In F_U: Aether contrib ~1e-15 J/m� (negligible vs U_m=2.28e65).\n"
+           "In F_U: Aether contrib ~1e-15 J/mÃ¯Â¿Â½ (negligible vs U_m=2.28e65).\n"
            "Role: Encodes energy-momentum for Aether geometry; [SCm]/[UA] stress in spacetime.\n"
            "UQFF: Perturbs metric for nebular/disk/jet dynamics; GR-compatible vacuum.";
 }
@@ -39249,7 +39272,7 @@ printTensorAndMetric()
     double t_s = computeT_s();
     double pert = computePerturbation();
     auto a_mu_nu = computeA_mu_nu();
-    std::cout << "T_s^{??} (diagonal scalar) = " << std::scientific << t_s << " J/m�\n";
+    std::cout << "T_s^{??} (diagonal scalar) = " << std::scientific << t_s << " J/mÃ¯Â¿Â½\n";
     std::cout << "Perturbation ? T_s = " << pert << "\n";
     std::cout << "A_??: ";
     for (double val : a_mu_nu)
@@ -39262,7 +39285,7 @@ printTensorAndMetric()
 main() {
 //     StressEnergyTensorModule mod;
 //     double t_s = mod.computeT_s();
-//     std::cout << "T_s ? " << t_s << " J/m�\n";
+//     std::cout << "T_s ? " << t_s << " J/mÃ¯Â¿Â½\n";
 //     mod.printTensorAndMetric();
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("rho_vac_A", 1.2e7);
@@ -39342,8 +39365,8 @@ getEquationText()
            "U_g3 = k_3 * ? B_j * cos(?_s t ?) * P_core * E_react\n"
            "Where B_s = [1e-4, 0.4] T (Sun surface; quiet to sunspot).\n"
            "B_ref=0.4 T (max); scales string fields by surface B_s.\n"
-           "Example t=0, B_s=0.4 T: B_j?1e3 T, U_g3?1.8e49 J/m�;\n"
-           "B_s=1e-4 T: B_j?0.25 T, U_g3?4.5e45 J/m� (-4 orders).\n"
+           "Example t=0, B_s=0.4 T: B_j?1e3 T, U_g3?1.8e49 J/mÃ¯Â¿Â½;\n"
+           "B_s=1e-4 T: B_j?0.25 T, U_g3?4.5e45 J/mÃ¯Â¿Â½ (-4 orders).\n"
            "Role: Baseline magnetic strength for strings; variability in U_g3/disks.\n"
            "UQFF: Surface fields drive cosmic magnetism; extensible for planets.";
 }
@@ -39362,7 +39385,7 @@ main() {
 //     double b_min = mod.computeB_s_min();
 //     std::cout << "B_s range: " << b_min << " to " << mod.computeB_s_max() << " T\n";
 //     double u_g3 = mod.computeU_g3_example(0.0, 1e-4);
-//     std::cout << "U_g3 (quiet Sun) = " << u_g3 << " J/m�\n";
+//     std::cout << "U_g3 (quiet Sun) = " << u_g3 << " J/mÃ¯Â¿Â½\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("B_s_min", 5e-5);
 //     mod.printVariables();
@@ -39434,10 +39457,10 @@ getEquationText()
 {
     return "B_j ? (10^3 + 0.4 sin(?_s t)) * (T_s / T_s,ref) T (hypothetical);\n"
            "U_g3 = k_3 * ? B_j * cos(?_s t ?) * P_core * E_react\n"
-           "Where T_s = 5778 K (Sun effective photosphere; �C=5505).\n"
+           "Where T_s = 5778 K (Sun effective photosphere; Ã¯Â¿Â½C=5505).\n"
            "T_s,ref=5778 K; scales string fields by temperature.\n"
-           "Example t=0, T_s=5778 K: B_j?1e3 T, U_g3?1.8e49 J/m�;\n"
-           "T_s=10000 K: B_j?1730 T, U_g3?3.11e49 J/m� (+73%).\n"
+           "Example t=0, T_s=5778 K: B_j?1e3 T, U_g3?1.8e49 J/mÃ¯Â¿Â½;\n"
+           "T_s=10000 K: B_j?1730 T, U_g3?3.11e49 J/mÃ¯Â¿Â½ (+73%).\n"
            "Role: Thermal baseline for magnetic strength; variability in U_g3/disks.\n"
            "UQFF: Temperature-dependent fields; extensible for radiation/formation.";
 }
@@ -39456,7 +39479,7 @@ main() {
 //     double t_s = mod.computeT_s();
 //     std::cout << "T_s = " << t_s << " K\n";
 //     double u_g3 = mod.computeU_g3_example(0.0, 10000.0);
-//     std::cout << "U_g3 (T_s=10000 K) = " << u_g3 << " J/m�\n";
+//     std::cout << "U_g3 (T_s=10000 K) = " << u_g3 << " J/mÃ¯Â¿Â½\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("T_s", 6000.0);
 //     mod.printVariables();
@@ -39559,7 +39582,7 @@ getEquationText()
     return "U_i = ?_i * ?_vac,[SCm] * ?_vac,[UA] * ?_s(t) * cos(? t_n) * (1 + f_TRZ)\n"
            "Where f_TRZ = 0.1 (unitless time-reversal zone factor; +10% negentropic enhancement);\n"
            "TRZ: Regions for time-reversal/negentropy (COP>1, vacuum extraction).\n"
-           "Example Sun t=0, t_n=0: U_i ?1.38e-47 J/m� (with); ?1.25e-47 J/m� (without; -9.1%).\n"
+           "Example Sun t=0, t_n=0: U_i ?1.38e-47 J/mÃ¯Â¿Â½ (with); ?1.25e-47 J/mÃ¯Â¿Â½ (without; -9.1%).\n"
            "In F_U: -? ?_i U_i E_react (resistive, TRZ-boosted).\n"
            "Role: Stabilizes via negentropy; TRZ in nebulae/formation/mergers/biology.\n"
            "UQFF: Integrates pondermotive force/time asymmetry; Aether superfluid effects.";
@@ -39580,8 +39603,8 @@ printUiComparison(double t, double t_n)
     double u_i_without = computeU_i_no_TRZ(t, t_n);
     double percent_increase = ((u_i_with - u_i_without) / u_i_without) * 100.0;
     std::cout << "U_i Comparison at t=" << t << " s, t_n=" << t_n << ":\n";
-    std::cout << "With TRZ: " << std::scientific << u_i_with << " J/m�\n";
-    std::cout << "Without TRZ: " << u_i_without << " J/m�\n";
+    std::cout << "With TRZ: " << std::scientific << u_i_with << " J/mÃ¯Â¿Â½\n";
+    std::cout << "Without TRZ: " << u_i_without << " J/mÃ¯Â¿Â½\n";
     std::cout << "Increase: +" << std::fixed << std::setprecision(1) << percent_increase << "%\n";
 }
 
@@ -39670,9 +39693,9 @@ getEquationText()
 {
     return "U_g1 = k_1 * ?_s * ?(M_s / r) * e^{-? t} * cos(? t_n) * (1 + ?_def)\n"
            "Where ?_def = 0.01 * sin(0.001 t) (unitless, t days; period ~17.22 yr).\n"
-           "Small oscillatory defect (~�1%) in internal dipole gravity.\n"
-           "Example t=0, r=1.496e11 m: ?_def=0, U_g1 ?4.51e31 J/m�;\n"
-           "t=1570.8 days: ?_def=0.01, U_g1 ?4.56e31 J/m� (+1.1%).\n"
+           "Small oscillatory defect (~Ã¯Â¿Â½1%) in internal dipole gravity.\n"
+           "Example t=0, r=1.496e11 m: ?_def=0, U_g1 ?4.51e31 J/mÃ¯Â¿Â½;\n"
+           "t=1570.8 days: ?_def=0.01, U_g1 ?4.56e31 J/mÃ¯Â¿Â½ (+1.1%).\n"
            "Role: Time-dependent perturbations; internal dynamics/[SCm] variations.\n"
            "UQFF: Cyclic defects in stellar gravity; for formation/nebular stability.";
 }
@@ -39691,7 +39714,7 @@ main() {
 //     double delta = mod.computeDelta_def(0.0);
 //     std::cout << "?_def (t=0) = " << delta << std::endl;
 //     double u_g1 = mod.computeU_g1(1570.8, 1.496e11);
-//     std::cout << "U_g1 (t=1570.8 days) = " << u_g1 << " J/m�\n";
+//     std::cout << "U_g1 (t=1570.8 days) = " << u_g1 << " J/mÃ¯Â¿Â½\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("amplitude", 0.02);
 //     mod.printVariables();
@@ -39774,7 +39797,7 @@ getEquationText()
     return "U_m = ?_j [ (?_j / r_j) (1 - e^{-? t cos(? t_n)}) \hat{?}_j ] P_SCm E_react (1 + 10^13 f_Heaviside) (1 + f_quasi)\n"
            "Where \hat{?}_j = [cos ?_j, sin ?_j, 0] (unit vector in Ug3 disk plane, |??_j|=1);\n"
            "Specifies azimuthal direction for j-th string in disk (e.g., galactic plane).\n"
-           "Example j=1, ?_j=0, t=0: ??_j=[1,0,0], U_m ?2.28e65 J/m� (mag=1).\n"
+           "Example j=1, ?_j=0, t=0: ??_j=[1,0,0], U_m ?2.28e65 J/mÃ¯Â¿Â½ (mag=1).\n"
            "Role: Directional geometry for magnetic contributions in disks/nebulae.\n"
            "UQFF: Vector orientation in U_m/U_g3; collimation in jets/disks/formation.";
 }
@@ -39795,7 +39818,7 @@ printVectorAndUm(int j, double t)
     double um = computeUmContribution(t, j);
     std::cout << "??_" << j << " at ?_j=" << variables["theta_j"] << " rad, t=" << t << " s:\n";
     std::cout << "??_j = [" << std::scientific << phi[0] << ", " << phi[1] << ", " << phi[2] << "] (mag=" << mag << ")\n";
-    std::cout << "U_m contrib = " << um << " J/m�\n";
+    std::cout << "U_m contrib = " << um << " J/mÃ¯Â¿Â½\n";
 }
 
 main() {
@@ -39877,11 +39900,11 @@ computeA_mu_nu()
 getEquationText()
 {
     return "A_?? = g_?? + ? T_s^{??}(?_vac,[SCm], ?_vac,[UA], ?_vac,A, t_n)\n"
-           "?_vac,A = 1e-23 J/m� (Aether vacuum energy density);\n"
-           "T_s^{??} ?1.123e7 J/m� (diagonal; base 1.27e3 + A contrib 1.11e7);\n"
+           "?_vac,A = 1e-23 J/mÃ¯Â¿Â½ (Aether vacuum energy density);\n"
+           "T_s^{??} ?1.123e7 J/mÃ¯Â¿Â½ (diagonal; base 1.27e3 + A contrib 1.11e7);\n"
            "?=1e-22 ? pert ?1.123e-15;\n"
            "A_?? ? [1 + 1.123e-15, -1 + 1.123e-15, ...].\n"
-           "In F_U: Aether ~1e-15 J/m� (negligible vs U_m=2.28e65).\n"
+           "In F_U: Aether ~1e-15 J/mÃ¯Â¿Â½ (negligible vs U_m=2.28e65).\n"
            "Role: Intrinsic Aether energy for spacetime geometry; [UA] background.\n"
            "UQFF: Subtle vacuum contrib in nebular/disk/jet dynamics; GR-Aether link.";
 }
@@ -39907,8 +39930,8 @@ printDensityAndMetric()
     double t_s = computeT_s();
     double pert = computePerturbation();
     auto a_mu_nu = computeA_mu_nu();
-    std::cout << "?_vac,A = " << std::scientific << rho_a << " J/m�\n";
-    std::cout << "T_s (diagonal scalar) = " << t_s << " J/m�\n";
+    std::cout << "?_vac,A = " << std::scientific << rho_a << " J/mÃ¯Â¿Â½\n";
+    std::cout << "T_s (diagonal scalar) = " << t_s << " J/mÃ¯Â¿Â½\n";
     std::cout << "Perturbation ? T_s = " << pert << "\n";
     std::cout << "A_??: ";
     for (double val : a_mu_nu)
@@ -39921,7 +39944,7 @@ printDensityAndMetric()
 main() {
 //     AetherVacuumDensityModule mod;
 //     double rho = mod.computeRho_vac_A();
-//     std::cout << "?_vac,A = " << rho << " J/m�\n";
+//     std::cout << "?_vac,A = " << rho << " J/mÃ¯Â¿Â½\n";
 //     mod.printDensityAndMetric();
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("rho_vac_A", 2e-23);
@@ -40001,9 +40024,9 @@ computeU_i(double t, double t_n)
 getEquationText()
 {
     return "U_i = ?_i * ?_vac,[SCm] * ?_vac,[UA] * ?_s(t) * cos(p t_n) * (1 + f_TRZ)\n"
-           "?_vac,Ui = 2.84e-36 J/m� (Sun level 13, inertia vacuum scale; not direct in eq.).\n"
+           "?_vac,Ui = 2.84e-36 J/mÃ¯Â¿Â½ (Sun level 13, inertia vacuum scale; not direct in eq.).\n"
            "Provides reference for U_i magnitude; inertial resistance from [SCm]/[UA].\n"
-           "Example t=0, t_n=0: U_i �1.38e-47 J/m� (consistent scale with ?_vac,Ui).\n"
+           "Example t=0, t_n=0: U_i Ã¯Â¿Â½1.38e-47 J/mÃ¯Â¿Â½ (consistent scale with ?_vac,Ui).\n"
            "In F_U: -? ?_i U_i E_react (resistive inertia).\n"
            "Role: Quantifies vacuum inertia energy; opposes dynamics in nebulae/formation.\n"
            "UQFF: Small-scale reference for cosmic inertia; [SCm]-[UA] resistance.";
@@ -40021,9 +40044,9 @@ printVariables()
 main() {
 //     UniversalInertiaVacuumModule mod;
 //     double rho = mod.computeRho_vac_Ui();
-//     std::cout << "?_vac,Ui = " << rho << " J/m�\n";
+//     std::cout << "?_vac,Ui = " << rho << " J/mÃ¯Â¿Â½\n";
 //     double u_i = mod.computeU_i(0.0, 0.0);
-//     std::cout << "U_i = " << u_i << " J/m�\n";
+//     std::cout << "U_i = " << u_i << " J/mÃ¯Â¿Â½\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("rho_vac_Ui", 3e-36);
 //     mod.printVariables();
@@ -40119,9 +40142,9 @@ getEquationText()
     return "U_g2 = k_2 * [(?_vac,[UA] + ?_vac,[SCm]) M_s / r^2] * S(r - R_b) * (1 + ?_sw v_sw) * H_SCm * E_react\n"
            "U_i = ?_i * ?_vac,[SCm] * ?_vac,[UA] * ?_s(t) * cos(? t_n) * (1 + f_TRZ)\n"
            "T_s^{??} ? T_s_base + ?_vac,[SCm] + ?_vac,[UA] + ?_vac,A (in A_?? perturbation)\n"
-           "Where ?_vac,[SCm] = 7.09e-37 J/m� (Sun level 13; [SCm] vacuum energy).\n"
+           "Where ?_vac,[SCm] = 7.09e-37 J/mÃ¯Â¿Â½ (Sun level 13; [SCm] vacuum energy).\n"
            "[SCm]: Massless extra-universal material reacting with [UA] for dynamics.\n"
-           "Example U_g2 (r=R_b): ?1.18e53 J/m�; U_i (t=0,t_n=0): ?1.38e-47 J/m�.\n"
+           "Example U_g2 (r=R_b): ?1.18e53 J/mÃ¯Â¿Â½; U_i (t=0,t_n=0): ?1.38e-47 J/mÃ¯Â¿Â½.\n"
            "Role: [SCm] scales gravity/inertia/Aether; pervasive in U terms/F_U.\n"
            "UQFF: Builds matter/elements; jets/formation/mergers via [SCm]-[UA].";
 }
@@ -40138,9 +40161,9 @@ printVariables()
 main() {
 //     ScmVacuumDensityModule mod;
 //     double rho = mod.computeRho_vac_SCm();
-//     std::cout << "?_vac,[SCm] = " << rho << " J/m�\n";
+//     std::cout << "?_vac,[SCm] = " << rho << " J/mÃ¯Â¿Â½\n";
 //     double u_g2 = mod.computeU_g2_base(1.496e13);
-//     std::cout << "U_g2 example = " << u_g2 << " J/m�\n";
+//     std::cout << "U_g2 example = " << u_g2 << " J/mÃ¯Â¿Â½\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("rho_vac_SCm", 8e-37);
 //     mod.printVariables();
@@ -40236,9 +40259,9 @@ getEquationText()
     return "U_g2 = k_2 * [(?_vac,[UA] + ?_vac,[SCm]) M_s / r^2] * S(r - R_b) * (1 + ?_sw v_sw) * H_SCm * E_react\n"
            "U_i = ?_i * ?_vac,[SCm] * ?_vac,[UA] * ?_s(t) * cos(? t_n) * (1 + f_TRZ)\n"
            "T_s^{??} ? T_s_base + ?_vac,[SCm] + ?_vac,[UA] + ?_vac,A (in A_?? perturbation)\n"
-           "Where ?_vac,[UA] = 7.09e-36 J/m� (Sun level 13; [UA] vacuum energy).\n"
+           "Where ?_vac,[UA] = 7.09e-36 J/mÃ¯Â¿Â½ (Sun level 13; [UA] vacuum energy).\n"
            "[UA]: Fundamental Aether mediating [SCm] for dynamics/elements.\n"
-           "Example U_g2 (r=R_b): ?1.18e53 J/m�; U_i (t=0,t_n=0): ?1.38e-47 J/m�.\n"
+           "Example U_g2 (r=R_b): ?1.18e53 J/mÃ¯Â¿Â½; U_i (t=0,t_n=0): ?1.38e-47 J/mÃ¯Â¿Â½.\n"
            "Role: [UA] scales gravity/inertia/Aether; pervasive in U terms/F_U.\n"
            "UQFF: Mediates [SCm] reactions; jets/formation/mergers via [UA]-[SCm].";
 }
@@ -40255,9 +40278,9 @@ printVariables()
 main() {
 //     UaVacuumDensityModule mod;
 //     double rho = mod.computeRho_vac_UA();
-//     std::cout << "?_vac,[UA] = " << rho << " J/m�\n";
+//     std::cout << "?_vac,[UA] = " << rho << " J/mÃ¯Â¿Â½\n";
 //     double u_g2 = mod.computeU_g2_base(1.496e13);
-//     std::cout << "U_g2 example = " << u_g2 << " J/m�\n";
+//     std::cout << "U_g2 example = " << u_g2 << " J/mÃ¯Â¿Â½\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("rho_vac_UA", 8e-36);
 //     mod.printVariables();
@@ -40313,6 +40336,7 @@ initializeDefaults()
 
 updateCache()
     {
+        // DPM-emergent: mu_s x grad(M_s/r) (mass gradient, not Newtonian GM/r^2)
         ug1_base = (G * M) / (r * r);
         f_sc = 1 - (B / B_crit);
     }
@@ -40575,8 +40599,8 @@ dOmega_dt(double t) const
 compute_Ug() const
     {
         double Ug1 = ug1_base;
-        double Ug2 = 0.0;
-        double Ug3 = 0.0;
+        double Ug2 = 0.0; // TODO: DPM Ug2 quantum shell (traps magnetics/spawn material)
+        double Ug3 = 0.0; // TODO: DPM Ug3 magnetic string rotation
         double Ug4 = Ug1 * f_sc;
         return Ug1 + Ug2 + Ug3 + Ug4;
     }
@@ -40759,9 +40783,9 @@ computeU_i(double t, double t_n)
 getEquationText()
 {
     return "U_i = ?_i * ?_vac,[SCm] * ?_vac,[UA] * ?_s(t) * cos(p t_n) * (1 + f_TRZ)\n"
-           "?_vac,Ui = 2.84e-36 J/m� (Sun level 13, inertia vacuum scale; not direct in eq.).\n"
+           "?_vac,Ui = 2.84e-36 J/mÃ¯Â¿Â½ (Sun level 13, inertia vacuum scale; not direct in eq.).\n"
            "Provides reference for U_i magnitude; inertial resistance from [SCm]/[UA].\n"
-           "Example t=0, t_n=0: U_i �1.38e-47 J/m� (consistent scale with ?_vac,Ui).\n"
+           "Example t=0, t_n=0: U_i Ã¯Â¿Â½1.38e-47 J/mÃ¯Â¿Â½ (consistent scale with ?_vac,Ui).\n"
            "In F_U: -? ?_i U_i E_react (resistive inertia).\n"
            "Role: Quantifies vacuum inertia energy; opposes dynamics in nebulae/formation.\n"
            "UQFF: Small-scale reference for cosmic inertia; [SCm]-[UA] resistance.";
@@ -40779,9 +40803,9 @@ printVariables()
 main() {
 //     UniversalInertiaVacuumModule mod;
 //     double rho = mod.computeRho_vac_Ui();
-//     std::cout << "?_vac,Ui = " << rho << " J/m�\n";
+//     std::cout << "?_vac,Ui = " << rho << " J/mÃ¯Â¿Â½\n";
 //     double u_i = mod.computeU_i(0.0, 0.0);
-//     std::cout << "U_i = " << u_i << " J/m�\n";
+//     std::cout << "U_i = " << u_i << " J/mÃ¯Â¿Â½\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("rho_vac_Ui", 3e-36);
 //     mod.printVariables();
@@ -40868,11 +40892,11 @@ computeUmExample(double t_day)
 
 getEquationText()
 {
-    return "E_react = [?_vac,[SCm] v_SCm� / ?_vac,A] * exp(-? t) (t days);\n"
+    return "E_react = [?_vac,[SCm] v_SCmÃ¯Â¿Â½ / ?_vac,A] * exp(-? t) (t days);\n"
            "v_SCm = 1e8 m/s (~c/3, [SCm] propagation speed);\n"
            "Scales reactivity in U_m, U_bi, U_i, U_gi via E_react.\n"
            "Example t=0: E_react=1e46 J; t=2000 days: ~3.68e45 J (~36.8%).\n"
-           "U_m (t=0): �2.28e65 J/m�; t=2000: �8.39e64 J/m�.\n"
+           "U_m (t=0): Ã¯Â¿Â½2.28e65 J/mÃ¯Â¿Â½; t=2000: Ã¯Â¿Â½8.39e64 J/mÃ¯Â¿Â½.\n"
            "Role: [SCm] dynamic speed for relativistic effects; jets/energy transfer.\n"
            "UQFF: Subluminal propagation; [SCm]-[UA] reactions in nebulae/formation.";
 }
@@ -40895,7 +40919,7 @@ printVelocityEffects(double t_day)
     std::cout << "[SCm] Velocity Effects at t=" << t_day << " days:\n";
     std::cout << "v_SCm = " << std::scientific << v << " m/s\n";
     std::cout << "E_react = " << e_react << " J (" << fraction << " of initial)\n";
-    std::cout << "U_m example = " << um_ex << " J/m�\n";
+    std::cout << "U_m example = " << um_ex << " J/mÃ¯Â¿Â½\n";
 }
 
 main() {
@@ -42353,6 +42377,7 @@ initializeDefaults()
 
 updateCache()
     {
+        // DPM-emergent: mu_s x grad(M_s/r) (mass gradient, not Newtonian GM/r^2)
         ug1_base = (G * M) / (r * r);
         // Update dependent params if needed, e.g., delta_p = hbar / delta_x; but kept independent
     }
@@ -42589,8 +42614,8 @@ dOmega_dt(double t) const
 compute_Ug(double Bt) const
     {
         double Ug1 = ug1_base;
-        double Ug2 = 0.0;
-        double Ug3 = 0.0;
+        double Ug2 = 0.0; // TODO: DPM Ug2 quantum shell (traps magnetics/spawn material)
+        double Ug3 = 0.0; // TODO: DPM Ug3 magnetic string rotation
         double Ug4 = Ug1 * (1 - Bt / B_crit);
         return (Ug1 + Ug2 + Ug3 + Ug4) * (1 + f_TRZ);
     }
@@ -44917,6 +44942,7 @@ initializeDefaults()
 
 updateCache()
     {
+        // DPM-emergent: mu_s x grad(M_s/r) (mass gradient, not Newtonian GM/r^2)
         ug1_base = (G * M_initial) / (r * r);
     }
 
@@ -45140,9 +45166,10 @@ dOmega_dt(double t) const
 
 compute_Ug(double Mt, double Bt) const
     {
+        // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
         double Ug1 = (G * Mt) / (r * r);
-        double Ug2 = 0.0;
-        double Ug3 = 0.0;
+        double Ug2 = 0.0; // TODO: DPM Ug2 quantum shell (traps magnetics/spawn material)
+        double Ug3 = 0.0; // TODO: DPM Ug3 magnetic string rotation
         double corr_B = 1 - Bt / B_crit;
         double Ug4 = Ug1 * corr_B;
         return (Ug1 + Ug2 + Ug3 + Ug4) * (1 + f_TRZ);
@@ -46295,8 +46322,8 @@ getEquationText() {
            "U_g3 = k_3 * ? B_j * cos(?_s t ?) * P_core * E_react\n"
            "Where B_s = [1e-4, 0.4] T (Sun surface; quiet to sunspot).\n"
            "B_ref=0.4 T (max); scales string fields by surface B_s.\n"
-           "Example t=0, B_s=0.4 T: B_j?1e3 T, U_g3?1.8e49 J/m�;\n"
-           "B_s=1e-4 T: B_j?0.25 T, U_g3?4.5e45 J/m� (-4 orders).\n"
+           "Example t=0, B_s=0.4 T: B_j?1e3 T, U_g3?1.8e49 J/mÃ¯Â¿Â½;\n"
+           "B_s=1e-4 T: B_j?0.25 T, U_g3?4.5e45 J/mÃ¯Â¿Â½ (-4 orders).\n"
            "Role: Baseline magnetic strength for strings; variability in U_g3/disks.\n"
            "UQFF: Surface fields drive cosmic magnetism; extensible for planets.";
 }
@@ -49388,6 +49415,7 @@ initializeDefaults()
 
 updateCache()
     {
+        // DPM-emergent: mu_s x grad(M_s/r) (mass gradient, not Newtonian GM/r^2)
         ug1_base = (G * M_initial) / (r * r);
     }
 
@@ -49617,9 +49645,10 @@ getVariable(const std::string &varName) const
 
 compute_Ug(double Mt) const
     {
+        // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
         double Ug1 = (G * Mt) / (r * r);
-        double Ug2 = 0.0;
-        double Ug3 = 0.0;
+        double Ug2 = 0.0; // TODO: DPM Ug2 quantum shell (traps magnetics/spawn material)
+        double Ug3 = 0.0; // TODO: DPM Ug3 magnetic string rotation
         double corr_B = 1 - B / B_crit;
         double Ug4 = Ug1 * corr_B;
         return (Ug1 + Ug2 + Ug3 + Ug4) * (1 + f_TRZ);
@@ -49834,7 +49863,7 @@ computeUi(double t, const std::string &system)
 
 getEquationText(const std::string &system)
 {
-    std::string equation = "F_U_Bi_i(r, t) = ∫ [DPM_resonance + LENR + ...] * x2 dt";
+    std::string equation = "F_U_Bi_i(r, t) = Ã¢Ë†Â« [DPM_resonance + LENR + ...] * x2 dt";
     // Add more descriptive text based on system
     return equation;
 }
@@ -49922,7 +49951,7 @@ computeUi(double t, const std::string &system)
 
 getEquationText(const std::string &system)
 {
-    std::string equation = "F_U_Bi_i(r, t) = ∫ [DPM_resonance + LENR + ...] * x2 dt";
+    std::string equation = "F_U_Bi_i(r, t) = Ã¢Ë†Â« [DPM_resonance + LENR + ...] * x2 dt";
     return equation;
 }
 
@@ -49954,7 +49983,7 @@ setSystemParams(const std::string &system)
         this->variables["L_X"] = {1e31, 0.0};
         this->variables["B0"] = {1e-4, 0.0};
         this->variables["omega0"] = {1e-12, 0.0};
-        this->variables["Mach"] = {1.0, 0.0}; // ℳ
+        this->variables["Mach"] = {1.0, 0.0}; // Ã¢â€žÂ³
         this->variables["C"] = {1.0, 0.0};
         this->variables["theta"] = {pi_val / 4, 0.0};
         this->variables["t"] = {3.156e10, 0.0};
@@ -50077,15 +50106,15 @@ getEquationText(const std::string &system)
     std::ostringstream oss;
     oss << "F_U_Bi_i(r, t) = Integral[Integrand(r, t) dt] approximated as Integrand * x2\n";
     oss << "Where Integrand includes terms for base force, momentum, gravity, vacuum stability, LENR resonance, activation, directed energy, magnetic resonance, neutron, relativistic, neutrino, Sweet vac, Kozima drop.\n";
-    oss << "LENR Resonance: F_LENR = k_LENR * (ω_LENR / ω_0)^2\n";
-    oss << "Activation: F_act = k_act * cos(ω_act t)\n";
+    oss << "LENR Resonance: F_LENR = k_LENR * (Ãâ€°_LENR / Ãâ€°_0)^2\n";
+    oss << "Activation: F_act = k_act * cos(Ãâ€°_act t)\n";
     oss << "Directed Energy: F_DE = k_DE * L_X\n";
-    oss << "Magnetic Resonance: F_res = 2 q B_0 V sinθ * DPM_resonance\n";
-    oss << "Neutron Drop: F_neutron = k_neutron * σ_n\n";
+    oss << "Magnetic Resonance: F_res = 2 q B_0 V sinÃŽÂ¸ * DPM_resonance\n";
+    oss << "Neutron Drop: F_neutron = k_neutron * ÃÆ’_n\n";
     oss << "Relativistic: F_rel = k_rel * (E_cm_astro_local_adj_eff_enhanced / E_cm)^2\n";
     oss << "Neutrino: F_neutrino = k_neutrino * L_X\n";
-    oss << "Sweet Vac: F_sweet = k_Sweet * ρ_vac_UA\n";
-    oss << "Kozima Drop: F_kozima = k_Kozima * σ_n\n";
+    oss << "Sweet Vac: F_sweet = k_Sweet * ÃÂ_vac_UA\n";
+    oss << "Kozima Drop: F_kozima = k_Kozima * ÃÆ’_n\n";
     oss << "Relativistic Correction: F_relativ = k_relativistic * (V / c)^2 * F0\n";
     oss << "System: " << system << "\n";
     return oss.str();
@@ -51871,10 +51900,10 @@ main()
 
     std::cout << "\n=== Module Ready for Integration ===\n";
     std::cout << "Physics covered:\n";
-    std::cout << "  - Inflation-driven buoyancy (β_i × V_infl × ρ_vac × a_universal)\n";
-    std::cout << "  - Time-dependent superconductivity (λ × ω_s × cos(πt_n))\n";
-    std::cout << "  - Neutron scattering (k_neutron × σ_n)\n";
-    std::cout << "  - Relativistic energy ratios (k_rel × (E_astro/E_cm)²)\n";
+    std::cout << "  - Inflation-driven buoyancy (ÃŽÂ²_i Ãƒâ€” V_infl Ãƒâ€” ÃÂ_vac Ãƒâ€” a_universal)\n";
+    std::cout << "  - Time-dependent superconductivity (ÃŽÂ» Ãƒâ€” Ãâ€°_s Ãƒâ€” cos(Ãâ‚¬t_n))\n";
+    std::cout << "  - Neutron scattering (k_neutron Ãƒâ€” ÃÆ’_n)\n";
+    std::cout << "  - Relativistic energy ratios (k_rel Ãƒâ€” (E_astro/E_cm)Ã‚Â²)\n";
     std::cout << "  - DPM resonance (Zeeman splitting)\n";
     std::cout << "  - 11-term unified force integrand\n";
 
@@ -52031,7 +52060,7 @@ computeGasNebulaIntegration(const std::string &system)
 computeDipoleVortexSpecies(const std::string &system)
 {
     setSystemParams(system);
-    double golden_ratio = 0.618033988749895; // (√5 - 1)/2
+    double golden_ratio = 0.618033988749895; // (Ã¢Ë†Å¡5 - 1)/2
     double dipole_base = 1.0;
     double phase = 2.0 * M_PI * golden_ratio * 1.0;
     return dipole_base * sin(phase);
@@ -52294,8 +52323,8 @@ main()
     std::cout << "\n=== Module Ready for Integration ===\n";
     std::cout << "Unique Physics:\n";
     std::cout << "  - 26 quantum states (alphabet-like scaling)\n";
-    std::cout << "  - Dipole vortex with golden ratio (φ = 0.618)\n";
-    std::cout << "  - Triadic UQFF scaling (β_i = 1.0)\n";
+    std::cout << "  - Dipole vortex with golden ratio (Ãâ€  = 0.618)\n";
+    std::cout << "  - Triadic UQFF scaling (ÃŽÂ²_i = 1.0)\n";
     std::cout << "  - Planetary ring physics (Cassini Saturn mission)\n";
     std::cout << "  - 12-term force integrand\n";
     std::cout << "  - 9 astrophysical systems covered\n";
@@ -53010,6 +53039,7 @@ initializeDefaults()
 
 updateCache()
     {
+        // DPM-emergent: mu_s x grad(M_s/r) (mass gradient, not Newtonian GM/r^2)
         ug1_base = (G * M_initial) / (r * r);
     }
 
@@ -53239,9 +53269,10 @@ getVariable(const std::string &varName) const
 
 compute_Ug(double Mt) const
     {
+        // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
         double Ug1 = (G * Mt) / (r * r);
-        double Ug2 = 0.0;
-        double Ug3 = 0.0;
+        double Ug2 = 0.0; // TODO: DPM Ug2 quantum shell (traps magnetics/spawn material)
+        double Ug3 = 0.0; // TODO: DPM Ug3 magnetic string rotation
         double corr_B = 1 - B / B_crit;
         double Ug4 = Ug1 * corr_B;
         return (Ug1 + Ug2 + Ug3 + Ug4) * (1 + f_TRZ);
@@ -53977,7 +54008,7 @@ printDiagnostics(double t_global = 0.0) const
         std::cout << "\n=== SOURCE114: Eight Astro Systems Module ===";
         std::cout << "\nSystems: 8 (AFGL5180 to NGC2174)";
         std::cout << "\nUQFF Types: 3 (Compressed, Resonance, Buoyancy)";
-        std::cout << "\nTotal Results: 24 (8 systems × 3 types)";
+        std::cout << "\nTotal Results: 24 (8 systems Ãƒâ€” 3 types)";
         std::cout << "\nDynamic Terms: " << dynamicTerms_.size();
         std::cout << "\nDynamic Parameters: " << dynamicParameters_.size();
         std::cout << "\nLearning Rate: " << learningRate_;
@@ -54111,7 +54142,7 @@ calculate_gravity_compressed(const DPMVars &vars, const AstroParams &params) con
     double sum = 0.0;
     for (int i = 1; i <= NUM_STATES; ++i)
     {
-        // Proof Step 1: E_DPM,i = k1 * Q_i * [UA]_i * [SCm]_i * sin(θ_i)  (buoyant term)
+        // Proof Step 1: E_DPM,i = k1 * Q_i * [UA]_i * [SCm]_i * sin(ÃŽÂ¸_i)  (buoyant term)
         double e_dpm_i = k1_ * vars.Q_i[i - 1] * vars.f_UA_prime[i - 1].real() * vars.f_SCm[i - 1].real() * std::sin(vars.theta_i[i - 1]);
         // Proof Step 2: / r_i^2  (inverse square for DPM field)
         double r_i_sq = vars.r_i[i - 1] * vars.r_i[i - 1];
@@ -54134,9 +54165,9 @@ calculate_resonance(const DPMVars &vars, const AstroParams &params, double t) co
     double sum_r = 0.0;
     for (int i = 1; i <= NUM_STATES; ++i)
     {
-        // Proof Step 1: ω_i = H_base * i  (state-scaled frequency)
+        // Proof Step 1: Ãâ€°_i = H_base * i  (state-scaled frequency)
         double omega_i_val = H_Z_BASE * static_cast<double>(i);
-        // Proof Step 2: R_Ug,i = g_i * M_SF * cos(ω_i * t) * f_Ub.real()  (oscillatory, buoyancy mod)
+        // Proof Step 2: R_Ug,i = g_i * M_SF * cos(Ãâ€°_i * t) * f_Ub.real()  (oscillatory, buoyancy mod)
         double g_i = (vars.Q_i[i - 1] / static_cast<double>(NUM_STATES)) * g_base; // Per-state g
         double cos_term = std::cos(omega_i_val * t);
         double r_ug_i = g_i * M_SF * cos_term * vars.f_Ub.real();
@@ -54155,7 +54186,7 @@ calculate_simultaneous(const DPMVars &vars, const AstroParams &params, double t)
 
 simulate_DPM_creation(double vacuum_density) const
 {
-    // Proof: Sum [UA]_i * [SCm]_i * vacuum_density over 26 states ≈ vacuum_density * avg(UA*SCm)
+    // Proof: Sum [UA]_i * [SCm]_i * vacuum_density over 26 states Ã¢â€°Ë† vacuum_density * avg(UA*SCm)
     double avg_ua_sc = 0.001; // From f_SCm avg
     return vacuum_density * avg_ua_sc * static_cast<double>(NUM_STATES);
 }
@@ -54285,7 +54316,7 @@ create_NGC6217_system()
 
 create_StephansQuintet_system()
 {
-    AstroParams p = {9.945e41, 1e21, 10.0, 1e-4, 0.022, 9.46e13, STEPHANS_QUINTET, "Stephan’s Quintet"};
+    AstroParams p = {9.945e41, 1e21, 10.0, 1e-4, 0.022, 9.46e13, STEPHANS_QUINTET, "StephanÃ¢â‚¬â„¢s Quintet"};
     return UQFFNineteenAstroSystem_S115(p);
 }
 
@@ -54838,6 +54869,7 @@ initializeDefaults()
 
 updateCache()
     {
+        // DPM-emergent: mu_s x grad(M_s/r) (mass gradient, not Newtonian GM/r^2)
         ug1_base = (G * M_initial) / (r * r);
     }
 
@@ -55079,9 +55111,10 @@ getVariable(const std::string &varName) const
 
 compute_Ug(double Mt) const
     {
+        // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
         double Ug1 = (G * Mt) / (r * r);
-        double Ug2 = 0.0;
-        double Ug3 = 0.0;
+        double Ug2 = 0.0; // TODO: DPM Ug2 quantum shell (traps magnetics/spawn material)
+        double Ug3 = 0.0; // TODO: DPM Ug3 magnetic string rotation
         double corr_B = 1 - B / B_crit;
         double Ug4 = Ug1 * corr_B;
         return (Ug1 + Ug2 + Ug3 + Ug4) * (1 + f_TRZ);
@@ -55223,6 +55256,7 @@ initializeDefaults()
 
 updateCache()
     {
+        // DPM-emergent: mu_s x grad(M_s/r) (mass gradient, not Newtonian GM/r^2)
         ug1_base = (G * M) / (r * r);
         L_t = ((G * M) / (pow(c_light, 2) * r)) * L_factor;
     }
@@ -55454,8 +55488,8 @@ getVariable(const std::string &varName) const
 compute_Ug(double /*Mt*/) const
     { // Mt static as M
         double Ug1 = ug1_base;
-        double Ug2 = 0.0;
-        double Ug3 = 0.0;
+        double Ug2 = 0.0; // TODO: DPM Ug2 quantum shell (traps magnetics/spawn material)
+        double Ug3 = 0.0; // TODO: DPM Ug3 magnetic string rotation
         double corr_B = 1 - B / B_crit;
         double Ug4 = Ug1 * corr_B;
         return (Ug1 + Ug2 + Ug3 + Ug4) * (1 + f_TRZ);
@@ -56033,6 +56067,7 @@ initializeDefaults()
 
 updateCache()
     {
+        // DPM-emergent: mu_s x grad(M_s/r) (mass gradient, not Newtonian GM/r^2)
         ug1_base = (G * M) / (r * r);
         g_BH = (G * M_BH) / (r_BH * r_BH);
     }
@@ -56270,8 +56305,8 @@ getVariable(const std::string &varName) const
 compute_Ug() const
     {
         double Ug1 = ug1_base;
-        double Ug2 = 0.0;
-        double Ug3 = 0.0;
+        double Ug2 = 0.0; // TODO: DPM Ug2 quantum shell (traps magnetics/spawn material)
+        double Ug3 = 0.0; // TODO: DPM Ug3 magnetic string rotation
         double corr_B = 1 - B / B_crit;
         double Ug4 = Ug1 * corr_B;
         return (Ug1 + Ug2 + Ug3 + Ug4) * (1 + f_TRZ);
@@ -56413,6 +56448,7 @@ initializeDefaults()
 
 updateCache()
     {
+        // DPM-emergent: mu_s x grad(M_s/r) (mass gradient, not Newtonian GM/r^2)
         ug1_base = (G * M0) / (r * r);
     }
 
@@ -56654,9 +56690,10 @@ getVariable(const std::string &varName) const
 
 compute_Ug(double Mt) const
     {
+        // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
         double Ug1 = (G * Mt) / (r * r);
-        double Ug2 = 0.0;
-        double Ug3 = 0.0;
+        double Ug2 = 0.0; // TODO: DPM Ug2 quantum shell (traps magnetics/spawn material)
+        double Ug3 = 0.0; // TODO: DPM Ug3 magnetic string rotation
         double corr_B = 1 - B / B_crit;
         double Ug4 = Ug1 * corr_B;
         return (Ug1 + Ug2 + Ug3 + Ug4) * (1 + f_TRZ);
@@ -56800,6 +56837,7 @@ initializeDefaults()
 
 updateCache()
     {
+        // DPM-emergent: mu_s x grad(M_s/r) (mass gradient, not Newtonian GM/r^2)
         ug1_base = (G * M) / (r * r);
     }
 
@@ -57030,8 +57068,8 @@ getVariable(const std::string &varName) const
 compute_Ug(double Et) const
     {
         double Ug1 = ug1_base;
-        double Ug2 = 0.0;
-        double Ug3 = 0.0;
+        double Ug2 = 0.0; // TODO: DPM Ug2 quantum shell (traps magnetics/spawn material)
+        double Ug3 = 0.0; // TODO: DPM Ug3 magnetic string rotation
         double corr_B = 1 - B / B_crit;
         double Ug4 = Ug1 * corr_B;
         return (Ug1 + Ug2 + Ug3 + Ug4) * (1 + f_TRZ) * (1 - Et);
@@ -57174,6 +57212,7 @@ initializeDefaults()
 
 updateCache()
     {
+        // DPM-emergent: mu_s x grad(M_s/r) (mass gradient, not Newtonian GM/r^2)
         ug1_base = (G * M0) / (r * r);
     }
 
@@ -57421,9 +57460,10 @@ getVariable(const std::string &varName) const
 
 compute_Ug(double Mt, double It) const
     {
+        // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
         double Ug1 = (G * Mt) / (r * r);
-        double Ug2 = 0.0;
-        double Ug3 = 0.0;
+        double Ug2 = 0.0; // TODO: DPM Ug2 quantum shell (traps magnetics/spawn material)
+        double Ug3 = 0.0; // TODO: DPM Ug3 magnetic string rotation
         double corr_B = 1 - B / B_crit;
         double Ug4 = Ug1 * corr_B;
         return (Ug1 + Ug2 + Ug3 + Ug4) * (1 + f_TRZ) * (1 + It);
@@ -57565,6 +57605,7 @@ initializeDefaults()
 
 updateCache()
     {
+        // DPM-emergent: mu_s x grad(M_s/r) (mass gradient, not Newtonian GM/r^2)
         ug1_base = (G * M) / (r * r);
     }
 
@@ -57795,8 +57836,8 @@ getVariable(const std::string &varName) const
 compute_Ug(double Et) const
     {
         double Ug1 = ug1_base;
-        double Ug2 = 0.0;
-        double Ug3 = 0.0;
+        double Ug2 = 0.0; // TODO: DPM Ug2 quantum shell (traps magnetics/spawn material)
+        double Ug3 = 0.0; // TODO: DPM Ug3 magnetic string rotation
         double corr_B = 1 - B / B_crit;
         double Ug4 = Ug1 * corr_B;
         return (Ug1 + Ug2 + Ug3 + Ug4) * (1 + f_TRZ) * (1 - Et);
@@ -57940,6 +57981,7 @@ initializeDefaults()
 
 updateCache()
     {
+        // DPM-emergent: mu_s x grad(M_s/r) (mass gradient, not Newtonian GM/r^2)
         ug1_base = (G * M) / (r * r);
         g_BH = (G * M_BH) / (r_BH * r_BH);
     }
@@ -58195,8 +58237,8 @@ getVariable(const std::string &varName) const
 compute_Ug(double Bt, double Ft) const
     {
         double Ug1 = ug1_base;
-        double Ug2 = 0.0;
-        double Ug3 = 0.0;
+        double Ug2 = 0.0; // TODO: DPM Ug2 quantum shell (traps magnetics/spawn material)
+        double Ug3 = 0.0; // TODO: DPM Ug3 magnetic string rotation
         double corr_B = 1 - Bt / B_crit;
         double Ug4 = Ug1 * corr_B;
         return (Ug1 + Ug2 + Ug3 + Ug4) * (1 + f_TRZ) * (1 + Ft);
@@ -58344,6 +58386,7 @@ initializeDefaults()
 
 updateCache()
     {
+        // DPM-emergent: mu_s x grad(M_s/r) (mass gradient, not Newtonian GM/r^2)
         ug1_base = (G * M0) / (r * r);
     }
 
@@ -58591,9 +58634,10 @@ getVariable(const std::string &varName) const
 
 compute_Ug(double Mt, double It) const
     {
+        // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
         double Ug1 = (G * Mt) / (r * r);
-        double Ug2 = 0.0;
-        double Ug3 = 0.0;
+        double Ug2 = 0.0; // TODO: DPM Ug2 quantum shell (traps magnetics/spawn material)
+        double Ug3 = 0.0; // TODO: DPM Ug3 magnetic string rotation
         double corr_B = 1 - B / B_crit;
         double Ug4 = Ug1 * corr_B;
         return (Ug1 + Ug2 + Ug3 + Ug4) * (1 + f_TRZ) * (1 + It);
@@ -58737,6 +58781,7 @@ initializeDefaults()
 
 updateCache()
     {
+        // DPM-emergent: mu_s x grad(M_s/r) (mass gradient, not Newtonian GM/r^2)
         ug1_base = (G * M0) / (r * r);
     }
 
@@ -58972,9 +59017,10 @@ getVariable(const std::string &varName) const
 
 compute_Ug(double Mt) const
     {
+        // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
         double Ug1 = (G * Mt) / (r * r);
-        double Ug2 = 0.0;
-        double Ug3 = 0.0;
+        double Ug2 = 0.0; // TODO: DPM Ug2 quantum shell (traps magnetics/spawn material)
+        double Ug3 = 0.0; // TODO: DPM Ug3 magnetic string rotation
         double corr_B = 1 - B / B_crit;
         double Ug4 = Ug1 * corr_B;
         return (Ug1 + Ug2 + Ug3 + Ug4) * (1 + f_TRZ);
@@ -59194,14 +59240,14 @@ computeG(double t)
 getEquationText()
 {
     return "g_UQFF(r, t) = (G * M(t) / r(t)^2) * (1 + H(z) * t) * (1 + f_TRZ) + (Ug1 + Ug2 + Ug3 + Ug4) + (Lambda * c^2 / 3) + "
-           "(hbar / sqrt(Delta_x * Delta_p)) * ?(?* H ? dV) * (2p / t_Hubble) + q (v × B) + ?_fluid * V * g + "
+           "(hbar / sqrt(Delta_x * Delta_p)) * ?(?* H ? dV) * (2p / t_Hubble) + q (v Ãƒâ€” B) + ?_fluid * V * g + "
            "2 A cos(k x) cos(? t) + (2p / 13.8) A exp(i (k x - ? t)) + (M_visible + M_DM) * (d?/? + 3 G M / r^3) + a_dust\n"
            "Special Terms:\n"
            "- Quantum: Heisenberg uncertainty with normalized wavefunction integral (ground state approx).\n"
            "- Fluid: ISM-like density-volume-gravity coupling.\n"
            "- Resonant: Oscillatory Aether-mediated waves (real part of complex exp).\n"
            "- DM: Visible+dark mass with density perturbations and curvature term.\n"
-           "Solutions: Numerical evaluation at t=10 Gyr yields ~6.273 m/s² (dust/resonant dominant; full sum includes micro terms ~1e-10).\n"
+           "Solutions: Numerical evaluation at t=10 Gyr yields ~6.273 m/sÃ‚Â² (dust/resonant dominant; full sum includes micro terms ~1e-10).\n"
            "Adaptations for Andromeda: Larger M/r lowers base g; blueshift minimal effect; higher v_orbit boosts dust/EM.";
 }
 
@@ -59218,7 +59264,7 @@ main() {
 //     AndromedaUQFFModule mod;
 //     double t = 10e9 * 3.156e7;  // 10 Gyr
 //     double g = mod.computeG(t);
-//     std::cout << "g = " << g << " m/s²\n";
+//     std::cout << "g = " << g << " m/sÃ‚Â²\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("M", 1.1e12 * 1.989e30);  // Update mass
 //     mod.addToVariable("f_TRZ", 0.05);            // Add to TR factor
@@ -59370,7 +59416,7 @@ computeG(double t)
 getEquationText()
 {
     return "g_Sombrero(r, t) = (G * M / r^2) * (1 + H(z) * t) * (1 - B / B_crit) * (1 + f_TRZ) + (G * M_BH / r_BH^2) + (Ug1 + Ug2 + Ug3 + Ug4) + (Lambda * c^2 / 3) + "
-           "(hbar / sqrt(Delta_x * Delta_p)) * ?(?* H ? dV) * (2p / t_Hubble) + q (v � B) + ?_fluid * V * g + "
+           "(hbar / sqrt(Delta_x * Delta_p)) * ?(?* H ? dV) * (2p / t_Hubble) + q (v Ã¯Â¿Â½ B) + ?_fluid * V * g + "
            "2 A cos(k x) cos(? t) + (2p / 13.8) A exp(i (k x - ? t)) + (M_visible + M_DM) * (d?/? + 3 G M / r^3) + D_dust\n"
            "Special Terms:\n"
            "- Quantum: Heisenberg uncertainty with normalized wavefunction integral (ground state approx).\n"
@@ -59378,7 +59424,7 @@ getEquationText()
            "- Resonant: Oscillatory Aether-mediated waves (real part of complex exp) for globular cluster dynamics.\n"
            "- DM: Visible+dark mass with density perturbations and curvature term for halo.\n"
            "- Superconductivity: (1 - B/B_crit) for quantum field effects.\n"
-           "Solutions: Numerical evaluation at t=10 Gyr yields ~0.535 m/s� (dust/BH dominant; full sum includes micro terms ~1e-10 to 1e-3).\n"
+           "Solutions: Numerical evaluation at t=10 Gyr yields ~0.535 m/sÃ¯Â¿Â½ (dust/BH dominant; full sum includes micro terms ~1e-10 to 1e-3).\n"
            "Adaptations for Sombrero: Virgo Cluster z=0.0063; prominent dust lane boosts D_dust; SMBH=1e9 Msun shapes bulge.";
 }
 
@@ -59395,7 +59441,7 @@ main() {
 //     SombreroUQFFModule mod;
 //     double t = 10e9 * 3.156e7;  // 10 Gyr
 //     double g = mod.computeG(t);
-//     std::cout << "g = " << g << " m/s�\n";
+//     std::cout << "g = " << g << " m/sÃ¯Â¿Â½\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("M", 1.1e11 * 1.989e30);  // Update mass
 //     mod.addToVariable("f_TRZ", 0.05);            // Add to TR factor
@@ -59812,7 +59858,7 @@ computeG(double t)
 getEquationText()
 {
     return "g_Saturn(r, t) = (G * M_Sun / r_orbit^2) * (1 + H(z) * t) * (1 + f_TRZ) + (G * M / r^2) * (1 - B / B_crit) + T_ring + (Ug1 + Ug2 + Ug3 + Ug4) + (Lambda * c^2 / 3) + "
-           "(hbar / sqrt(Delta_x * Delta_p)) * ?(?* H ? dV) * (2? / t_Hubble) + q (v � B) + ?_fluid * V * g + "
+           "(hbar / sqrt(Delta_x * Delta_p)) * ?(?* H ? dV) * (2? / t_Hubble) + q (v Ã¯Â¿Â½ B) + ?_fluid * V * g + "
            "2 A cos(k x) cos(? t) + (2? / 13.8) A exp(i (k x - ? t)) + (M_visible + M_DM) * (??/? + 3 G M / r^3) + a_wind\n"
            "Special Terms:\n"
            "- Quantum: Heisenberg uncertainty with normalized wavefunction integral (ground state approx) for atmospheric quantum effects.\n"
@@ -59822,7 +59868,7 @@ getEquationText()
            "- Superconductivity: (1 - B/B_crit) for quantum field effects in atmosphere.\n"
            "- Ring Tidal: G M_ring / r_ring^2 for ring influence.\n"
            "- Wind: v_wind^2 * 1e-12 for atmospheric feedback.\n"
-           "Solutions: Numerical evaluation at t=4.5 Gyr yields ~10.44 m/s� (g_saturn dominant; orbital g_sun ~9e-5; micro terms ~1e-7 to 1e-10).\n"
+           "Solutions: Numerical evaluation at t=4.5 Gyr yields ~10.44 m/sÃ¯Â¿Â½ (g_saturn dominant; orbital g_sun ~9e-5; micro terms ~1e-7 to 1e-10).\n"
            "Adaptations for Saturn: Solar System orbital term; z=0 negligible expansion; wind/rings boost local effects.";
 }
 
@@ -59839,7 +59885,7 @@ main() {
 //     SaturnUQFFModule mod;
 //     double t = 4.5e9 * 3.156e7;  // 4.5 Gyr
 //     double g = mod.computeG(t);
-//     std::cout << "g = " << g << " m/s�\n";
+//     std::cout << "g = " << g << " m/sÃ¯Â¿Â½\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("M", 5.7e26);  // Update mass
 //     mod.addToVariable("f_TRZ", 0.05); // Add to TR factor
@@ -59973,7 +60019,7 @@ computeG(double t) {
 
 getEquationText() {
     return "g_M16(r, t) = (G * M(t) / r^2) * (1 + H(z) * t) * (1 - B / B_crit) * (1 + f_TRZ) + (Ug1 + Ug2 + Ug3 + Ug4) + (Lambda * c^2 / 3) + "
-           "(hbar / sqrt(Delta_x * Delta_p)) * ?(?* H ? dV) * (2? / t_Hubble) + q (v � B) + ?_fluid * V * g + "
+           "(hbar / sqrt(Delta_x * Delta_p)) * ?(?* H ? dV) * (2? / t_Hubble) + q (v Ã¯Â¿Â½ B) + ?_fluid * V * g + "
            "2 A cos(k x) cos(? t) + (2? / 13.8) A exp(i (k x - ? t)) + (M_visible + M_DM) * (??/? + 3 G M / r^3)\n"
            "Where M(t) = M * (1 + M_sf(t)) * (1 - E_rad(t)); M_sf(t) = (SFR * t_yr) / M0; E_rad(t) = E_0 * (1 - exp(-t / ?))\n"
            "Special Terms:\n"
@@ -59984,7 +60030,7 @@ getEquationText() {
            "- Superconductivity: (1 - B/B_crit) for quantum field effects in nebula.\n"
            "- Star Formation: M_sf(t) boosts mass via SFR=1 Msun/yr.\n"
            "- Radiation Erosion: E_rad(t) reduces mass via photoevaporation from O-stars.\n"
-           "Solutions: Numerical evaluation at t=5 Myr yields ~1.053e-3 m/s� (EM dominant; g_grav ~1e-12 scaled by factors; micro terms ~1e-10 to 1e-3).\n"
+           "Solutions: Numerical evaluation at t=5 Myr yields ~1.053e-3 m/sÃ¯Â¿Â½ (EM dominant; g_grav ~1e-12 scaled by factors; micro terms ~1e-10 to 1e-3).\n"
            "Adaptations for M16: Star-forming pillars with erosion; z=0.0015; gas v=1e5 m/s boosts EM.";
 }
 
@@ -59999,7 +60045,7 @@ main() {
 //     M16UQFFModule mod;
 //     double t = 5e6 * 3.156e7;  // 5 Myr
 //     double g = mod.computeG(t);
-//     std::cout << "g = " << g << " m/s�\n";
+//     std::cout << "g = " << g << " m/sÃ¯Â¿Â½\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("M", 1300 * 1.989e30);  // Update mass
 //     mod.addToVariable("f_TRZ", 0.05);           // Add to TR factor
@@ -60138,7 +60184,7 @@ computeG(double t) {
 
 getEquationText() {
     return "g_Crab(r, t) = (G * M / r(t)^2) * (1 + H(z) * t) * (1 - B / B_crit) * (1 + f_TRZ) + (Ug1 + Ug2 + Ug3 + Ug4) + (Lambda * c^2 / 3) + "
-           "(hbar / sqrt(Delta_x * Delta_p)) * ?(?* H ? dV) * (2p / t_Hubble) + q (v × B) + ?_fluid * V * g + "
+           "(hbar / sqrt(Delta_x * Delta_p)) * ?(?* H ? dV) * (2p / t_Hubble) + q (v Ãƒâ€” B) + ?_fluid * V * g + "
            "2 A cos(k x) cos(? t) + (2p / 13.8) A exp(i (k x - ? t)) + (M_visible + M_DM) * (d?/? + 3 G M / r^3) + a_wind + M_mag\n"
            "Where r(t) = r0 + v_exp * t; a_wind = [P_pulsar / (4p r^2) * (1 + v_shock / c)] / ? * 1e-12; M_mag = (q v_shock B) / m_e * 1e-12\n"
            "Special Terms:\n"
@@ -60149,7 +60195,7 @@ getEquationText() {
            "- Superconductivity: (1 - B/B_crit) for quantum field effects near pulsar.\n"
            "- Pulsar Wind: a_wind from relativistic wind pressure, dominant outward force.\n"
            "- Magnetic: M_mag from Lorentz force on electrons in nebula fields.\n"
-           "Solutions: Numerical evaluation at t=971 yr yields ~1.481e6 m/s² (a_wind dominant; g_grav ~2e-13; micro terms ~1e-10 to 1e-3).\n"
+           "Solutions: Numerical evaluation at t=971 yr yields ~1.481e6 m/sÃ‚Â² (a_wind dominant; g_grav ~2e-13; micro terms ~1e-10 to 1e-3).\n"
            "Adaptations for Crab: Pulsar-driven remnant with r(t); z=0.0015; v_shock=1.5e6 m/s boosts wind/mag.";
 }
 
@@ -60164,7 +60210,7 @@ main() {
 //     CrabUQFFModule mod;
 //     double t = 971 * 3.156e7;  // 971 years
 //     double g = mod.computeG(t);
-//     std::cout << "g = " << g << " m/s²\n";
+//     std::cout << "g = " << g << " m/sÃ‚Â²\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("M", 5.0 * 1.989e30);  // Update mass
 //     mod.addToVariable("f_TRZ", 0.05);         // Add to TR factor
@@ -60287,7 +60333,7 @@ computeG(double t) {
 
 getEquationText() {
     return "g_SGR1745(r, t) = (G * M / r^2) * (1 + H(z) * t) * (1 - B / B_crit) * (1 + f_TRZ) + (Ug1 + Ug2 + Ug3 + Ug4) + (Lambda * c^2 / 3) + "
-           "(hbar / sqrt(Delta_x * Delta_p)) * ?(?* H ? dV) * (2p / t_Hubble) + q (v × B) + ?_fluid * V * g + "
+           "(hbar / sqrt(Delta_x * Delta_p)) * ?(?* H ? dV) * (2p / t_Hubble) + q (v Ãƒâ€” B) + ?_fluid * V * g + "
            "2 A cos(k x) cos(? t) + (2p / 13.8) A exp(i (k x - ? t)) + (M_visible + M_DM) * (d?/? + 3 G M / r^3)\n"
            "Special Terms:\n"
            "- Quantum: Heisenberg uncertainty with normalized wavefunction integral (ground state approx) for neutron star quantum effects.\n"
@@ -60295,7 +60341,7 @@ getEquationText() {
            "- Resonant: Oscillatory Aether-mediated waves (real part of complex exp) for pulsations/bursts.\n"
            "- DM: Visible mass with density perturbations and curvature term (M_DM=0).\n"
            "- Superconductivity: (1 - B/B_crit) critical for high-field magnetar (~2e10 T).\n"
-           "Solutions: Numerical evaluation at t=1000 yr yields ~1.2e12 m/s² (EM dominant due to B; g_base ~1e11 m/s²; micro terms ~1e-10 to 1e-3).\n"
+           "Solutions: Numerical evaluation at t=1000 yr yields ~1.2e12 m/sÃ‚Â² (EM dominant due to B; g_base ~1e11 m/sÃ‚Â²; micro terms ~1e-10 to 1e-3).\n"
            "Adaptations for SGR 1745-2900: Galactic Center magnetar with B=2e10 T; P=3.76s spin; Chandra outburst data informs evolution.";
 }
 
@@ -60310,7 +60356,7 @@ main() {
 //     SGR1745UQFFModule mod;
 //     double t = 1000 * 3.156e7;  // 1000 years
 //     double g = mod.computeG(t);
-//     std::cout << "g = " << g << " m/s²\n";
+//     std::cout << "g = " << g << " m/sÃ‚Â²\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("B", 2.5e10);  // Update field
 //     mod.addToVariable("f_TRZ", 0.05); // Add to TR factor
@@ -60444,10 +60490,10 @@ getEquationText() {
            "- a_quantum_freq = (f_quantum * E_vac_neb * a_DPM) / (E_vac_ISM * c)\n"
            "- a_Aether_freq = (f_Aether * E_vac_neb * a_DPM) / (E_vac_ISM * c)\n"
            "- a_fluid_freq = (f_fluid * E_vac_neb * V_sys) / (E_vac_ISM * c)\n"
-           "- Osc_term  0\n"
+           "- Osc_term Ã‚Ëœ 0\n"
            "- a_exp_freq = (f_exp * E_vac_neb * a_DPM) / (E_vac_ISM * c)\n"
            "Special Terms: All driven by UQFF frequencies/resonances via plasmotic vacuum; Aether replaces dark energy; no SM terms.\n"
-           "Solutions: At t=1000 yr, g  1.182e-33 m/s² (dominated by THz; all micro-scale per proof set).\n"
+           "Solutions: At t=1000 yr, g Ã‚Ëœ 1.182e-33 m/sÃ‚Â² (dominated by THz; all micro-scale per proof set).\n"
            "Adaptations: DPM heart, THz pipeline for magnetar bursts/outbursts per Chandra data.";
 }
 
@@ -60462,7 +60508,7 @@ main() {
 //     SGR1745UQFFModule mod;
 //     double t = 1000 * 3.156e7;  // 1000 years
 //     double g = mod.computeG(t);
-//     std::cout << "g = " << g << " m/s²\n";
+//     std::cout << "g = " << g << " m/sÃ‚Â²\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("f_DPM", 1.1e12);  // Update DPM freq
 //     mod.addToVariable("f_TRZ", 0.05);     // Add to TR factor
@@ -60585,7 +60631,7 @@ getEquationText() {
     return "g_SgrA(t) = [a_DPM + a_THz + a_vac_diff + a_super_freq + a_aether_res + U_g4i + a_quantum_freq + a_Aether_freq + a_fluid_freq + Osc_term + a_exp_freq] * (1 + f_TRZ)\n"
            "Where terms mirror magnetar but scaled for SMBH (f_DPM=1e9 Hz, V_sys large).\n"
            "Special Terms: All driven by UQFF frequencies/resonances via plasmotic vacuum; Aether replaces dark energy; no SM terms.\n"
-           "Solutions: At t=1e10 yr, g ? 1e-30 m/s� (dominated by THz/fluid; micro-scale per proof set).\n"
+           "Solutions: At t=1e10 yr, g ? 1e-30 m/sÃ¯Â¿Â½ (dominated by THz/fluid; micro-scale per proof set).\n"
            "Adaptations: DPM heart, THz pipeline for SMBH accretion/flares per Chandra data.";
 }
 
@@ -60600,7 +60646,7 @@ main() {
 //     SgrA_UQFFModule mod;
 //     double t = 1e10 * 3.156e7;  // 10 Gyr
 //     double g = mod.computeG(t);
-//     std::cout << "g = " << g << " m/s�\n";
+//     std::cout << "g = " << g << " m/sÃ¯Â¿Â½\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("f_DPM", 1.1e9);  // Update DPM freq
 //     mod.addToVariable("f_TRZ", 0.05);    // Add to TR factor
@@ -60722,7 +60768,7 @@ getEquationText() {
     return "g_Tapestry(t) = [a_DPM + a_THz + a_vac_diff + a_super_freq + a_aether_res + U_g4i + a_quantum_freq + a_Aether_freq + a_fluid_freq + Osc_term + a_exp_freq] * (1 + f_TRZ)\n"
            "Where terms mirror SMBH but scaled for starbirth region (f_DPM=1e11 Hz, V_sys large for gas clouds).\n"
            "Special Terms: All driven by UQFF frequencies/resonances via plasmotic vacuum; Aether replaces dark energy; no SM terms.\n"
-           "Solutions: At t=5 Myr, g ? 1e-28 m/s� (dominated by fluid/THz; micro-scale per proof set).\n"
+           "Solutions: At t=5 Myr, g ? 1e-28 m/sÃ¯Â¿Â½ (dominated by fluid/THz; micro-scale per proof set).\n"
            "Adaptations: DPM heart, THz pipeline for star formation/erosion in NGC 2014/2020 per Hubble data.";
 }
 
@@ -60737,7 +60783,7 @@ main() {
 //     TapestryUQFFModule mod;
 //     double t = 5e6 * 3.156e7;  // 5 Myr
 //     double g = mod.computeG(t);
-//     std::cout << "g = " << g << " m/s�\n";
+//     std::cout << "g = " << g << " m/sÃ¯Â¿Â½\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("f_DPM", 1.1e11);  // Update DPM freq
 //     mod.addToVariable("f_TRZ", 0.05);     // Add to TR factor
@@ -60847,7 +60893,7 @@ getEquationText() {
            "Superconductive Correction: SCm = 1 - B / B_crit\n"
            "Full: g_res_sc = a_res * SCm * (1 + f_TRZ)\n"
            "Special Terms: UQFF-driven resonance/superconductive interactions via plasmotic vacuum; no SM terms.\n"
-           "Solutions: Example a_res ~1e-42 m/s�, SCm ~1 (low B); full ~1e-42 m/s�.\n"
+           "Solutions: Example a_res ~1e-42 m/sÃ¯Â¿Â½, SCm ~1 (low B); full ~1e-42 m/sÃ¯Â¿Â½.\n"
            "Adaptations: For 1-8 systems (galaxies, planets, nebulae, magnetars); frequencies scaled per object.";
 }
 
@@ -60863,7 +60909,7 @@ main() {
 //     double t = 1e9 * 3.156e7;  // 1 Gyr
 //     double B = 1e-5;           // T (example B)
 //     double g_res_sc = mod.computeFullUQFFResSC(t, B);
-//     std::cout << "g_res_sc = " << g_res_sc << " m/s�\n";
+//     std::cout << "g_res_sc = " << g_res_sc << " m/sÃ¯Â¿Â½\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("f_DPM", 1.1e12);  // Update resonance freq
 //     mod.addToVariable("f_TRZ", 0.05);     // Add to TR factor
@@ -60947,7 +60993,7 @@ getEquationText() {
            "Full: g_comp_res = (a_comp + a_res) * SC_int * (1 + f_TRZ)\n"
            "Where SC_int = (1 - B / B_crit) * f_sc\n"
            "Special Terms: UQFF compressed/resonance via plasmotic vacuum; no SM; for systems 10-16.\n"
-           "Solutions: Example g_comp_res ~1e-40 m/s� (micro-scale).\n"
+           "Solutions: Example g_comp_res ~1e-40 m/sÃ¯Â¿Â½ (micro-scale).\n"
            "Adaptations: Scaled frequencies for nebulae/SMBH/starbirth.";
 }
 
@@ -60963,7 +61009,7 @@ main() {
 //     double t = 1e9 * 3.156e7;  // 1 Gyr
 //     double B = 1e-5;           // T
 //     double g_comp_res = mod.computeCompressedResTerm(t, B);
-//     std::cout << "g_comp_res = " << g_comp_res << " m/s�\n";
+//     std::cout << "g_comp_res = " << g_comp_res << " m/sÃ¯Â¿Â½\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("f_DPM", 1.1e12);  // Update
 //     mod.addToVariable("f_TRZ", 0.05);
@@ -61083,7 +61129,7 @@ getEquationText() {
            "- a_exp_res = (f_exp * E_vac * a_DPM_res) / (E_vac/10 * c)\n"
            "- SC_int = (1 - B / B_crit) * f_sc\n"
            "Special Terms: UQFF resonance via plasmotic vacuum; Aether replaces dark energy; no SM terms; pulsar-driven f_osc.\n"
-           "Solutions: At t=971 yr, B=1e-8 T, g ? 1e-40 m/s� (resonance micro-scale, wind proxy).\n"
+           "Solutions: At t=971 yr, B=1e-8 T, g ? 1e-40 m/sÃ¯Â¿Â½ (resonance micro-scale, wind proxy).\n"
            "Adaptations: Resonance focus for Crab wisps/shocks per Hubble/Chandra.";
 }
 
@@ -61099,7 +61145,7 @@ main() {
 //     double t = 971 * 3.156e7;  // 971 years
 //     double B = 1e-8;           // T (nebula avg)
 //     double g_res = mod.computeG(t, B);
-//     std::cout << "g_res = " << g_res << " m/s�\n";
+//     std::cout << "g_res = " << g_res << " m/sÃ¯Â¿Â½\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("f_DPM", 1.1e12);  // Update resonance freq
 //     mod.addToVariable("f_TRZ", 0.05);     // Add to TR factor
@@ -61882,7 +61928,7 @@ getEquationText() {
            "Full: g_comp_res = (a_comp + a_res) * SC_int * (1 + f_TRZ)\n"
            "Where SC_int = (1 - B / B_crit) * f_sc\n"
            "Special Terms: UQFF compressed/resonance via plasmotic vacuum; no SM; for systems 18-24 (Sombrero, Saturn, M16, Crab).\n"
-           "Solutions: Example g_comp_res ~1e-38 m/s² (micro-scale).\n"
+           "Solutions: Example g_comp_res ~1e-38 m/sÃ‚Â² (micro-scale).\n"
            "Adaptations: Frequencies scaled for nebulae/planets/remnants.";
 }
 
@@ -61898,7 +61944,7 @@ main() {
 //     double t = 1e9 * 3.156e7;  // 1 Gyr
 //     double B = 1e-5;           // T
 //     double g_comp_res = mod.computeCompressedResTerm(t, B);
-//     std::cout << "g_comp_res = " << g_comp_res << " m/s²\n";
+//     std::cout << "g_comp_res = " << g_comp_res << " m/sÃ‚Â²\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("f_DPM", 1.1e11);  // Update
 //     mod.addToVariable("f_TRZ", 0.05);
@@ -62040,7 +62086,7 @@ computeG(double t)
 getEquationText()
 {
     return "g_Universe(r, t) = (G * M / r^2) * (1 + H(z) * t) * (1 - B / B_crit) * (1 + f_TRZ) + (Ug1 + Ug2 + Ug3 + Ug4) + (Lambda * c^2 / 3) + "
-           "(hbar / sqrt(Delta_x * Delta_p)) * ?(?* H ? dV) * (2? / t_Hubble) + q (v � B) + ?_fluid * V * g + "
+           "(hbar / sqrt(Delta_x * Delta_p)) * ?(?* H ? dV) * (2? / t_Hubble) + q (v Ã¯Â¿Â½ B) + ?_fluid * V * g + "
            "2 A cos(k x) cos(? t) + (2? / 13.8) A exp(i (k x - ? t)) + (M_visible + M_DM) * (??/? + 3 G M / r^3)\n"
            "Special Terms:\n"
            "- Quantum: Heisenberg uncertainty for cosmic quantum fluctuations.\n"
@@ -62048,7 +62094,7 @@ getEquationText()
            "- Resonant: Oscillatory Aether waves for CMB/large-scale structure.\n"
            "- DM: Baryonic+dark mass with perturbations and curvature.\n"
            "- Superconductivity: (1 - B/B_crit) for cosmic quantum fields.\n"
-           "Solutions: At t=13.8 Gyr, g_Universe ~1e-10 m/s� (Lambda/expansion dominant; micro terms ~1e-10 to 1e-3).\n"
+           "Solutions: At t=13.8 Gyr, g_Universe ~1e-10 m/sÃ¯Â¿Â½ (Lambda/expansion dominant; micro terms ~1e-10 to 1e-3).\n"
            "Adaptations for Universe Diameter: Observable r~4.4e26 m; H(z) drives expansion; est. M~1e53 kg.";
 }
 
@@ -62065,7 +62111,7 @@ main() {
 //     UniverseDiameterUQFFModule mod;
 //     double t = 13.8e9 * 3.156e7;  // 13.8 Gyr
 //     double g = mod.computeG(t);
-//     std::cout << "g = " << g << " m/s�\n";
+//     std::cout << "g = " << g << " m/sÃ¯Â¿Â½\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("M", 1.1e53 * 1.989e30);  // Update mass
 //     mod.addToVariable("f_TRZ", 0.05);            // Add to TR factor
@@ -62182,7 +62228,7 @@ computeG(double t) {
 
 getEquationText() {
     return "g_Hydrogen(r, t) = (G * M / r^2) * (1 + H(z) * t) * (1 - B / B_crit) * (1 + f_TRZ) + (Ug1 + Ug2 + Ug3 + Ug4) + (Lambda * c^2 / 3) + "
-           "(hbar / sqrt(Delta_x * Delta_p)) * ?(?* H ? dV) * (2p / t_Hubble) + q (v × B) + ?_fluid * V * g + "
+           "(hbar / sqrt(Delta_x * Delta_p)) * ?(?* H ? dV) * (2p / t_Hubble) + q (v Ãƒâ€” B) + ?_fluid * V * g + "
            "2 A cos(k x) cos(? t) + (2p / 13.8) A exp(i (k x - ? t)) + (M_visible + M_DM) * (d?/? + 3 G M / r^3)\n"
            "Special Terms:\n"
            "- Quantum: Heisenberg uncertainty dominant for orbital stability.\n"
@@ -62190,7 +62236,7 @@ getEquationText() {
            "- Resonant: Oscillatory waves for atomic transitions/orbitals.\n"
            "- DM: Negligible at atomic scale.\n"
            "- Superconductivity: (1 - B/B_crit) for quantum field in atom.\n"
-           "Solutions: At t=1e-15 s, g_Hydrogen ~1e12 m/s² (EM/quantum dominant; g_base ~1e-40 m/s²).\n"
+           "Solutions: At t=1e-15 s, g_Hydrogen ~1e12 m/sÃ‚Â² (EM/quantum dominant; g_base ~1e-40 m/sÃ‚Â²).\n"
            "Adaptations for Hydrogen Atom: Bohr r=5.29e-11 m; v_orbital=2.2e6 m/s; f_osc=1e15 Hz (Lyman).";
 }
 
@@ -62205,7 +62251,7 @@ main() {
 //     HydrogenAtomUQFFModule mod;
 //     double t = 1e-15;  // Atomic timescale
 //     double g = mod.computeG(t);
-//     std::cout << "g = " << g << " m/s²\n";
+//     std::cout << "g = " << g << " m/sÃ‚Â²\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("r", 5.3e-11);  // Slight update
 //     mod.addToVariable("f_TRZ", 0.05);
@@ -62313,7 +62359,7 @@ getEquationText() {
            "- a_osc_res = 2 A cos(k x) cos(? t) + (2? / 13.8) A Re[exp(i (k x - ? t))]\n"
            "- SC_int = (1 - B / B_crit) * f_sc\n"
            "Special Terms: UQFF resonance for PToE hydrogen orbitals/spectral lines; Aether replaces dark energy; no SM gravity dominant.\n"
-           "Solutions: At t=1e-15 s, B=1e-4 T, g ? 1e-30 m/s� (resonance micro-scale, orbital transitions).\n"
+           "Solutions: At t=1e-15 s, B=1e-4 T, g ? 1e-30 m/sÃ¯Â¿Â½ (resonance micro-scale, orbital transitions).\n"
            "Adaptations: f_osc=2.47e15 Hz (Lyman alpha) for PToE H resonance.";
 }
 
@@ -62329,7 +62375,7 @@ main() {
 //     double t = 1e-15;  // Atomic timescale
 //     double B = 1e-4;   // T (atomic field)
 //     double g_res = mod.computeResonanceTerm(t, B);
-//     std::cout << "g_res = " << g_res << " m/s�\n";
+//     std::cout << "g_res = " << g_res << " m/sÃ¯Â¿Â½\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("f_DPM", 2.5e15);  // Update for Lyman
 //     mod.addToVariable("f_TRZ", 0.05);
@@ -62461,7 +62507,7 @@ computeG(double t) {
 
 getEquationText() {
     return "g_Lagoon(r, t) = (G * M(t) / r^2) * (1 + H(z) * t) * (1 - B / B_crit) * (1 + f_TRZ) + (Ug1 + Ug2 + Ug3 + Ug4) + (Lambda * c^2 / 3) + "
-           "(hbar / sqrt(Delta_x * Delta_p)) * ?(?* H ? dV) * (2? / t_Hubble) + q (v � B) + ?_fluid * V * g + "
+           "(hbar / sqrt(Delta_x * Delta_p)) * ?(?* H ? dV) * (2? / t_Hubble) + q (v Ã¯Â¿Â½ B) + ?_fluid * V * g + "
            "2 A cos(k x) cos(? t) + (2? / 13.8) A exp(i (k x - ? t)) + (M_visible + M_DM) * (??/? + 3 G M / r^3) - P_rad\n"
            "Where M(t) = M * (1 + M_sf(t)); M_sf(t) = (SFR * t_yr) / M0; P_rad = (L_H36 / (4? r^2 c)) * (? / m_H)\n"
            "Special Terms:\n"
@@ -62472,7 +62518,7 @@ getEquationText() {
            "- Superconductivity: (1 - B/B_crit) for quantum fields.\n"
            "- Star Formation: M_sf(t) boosts mass via SFR=0.1 Msun/yr.\n"
            "- Radiation Pressure: P_rad from Herschel 36 erodes gas.\n"
-           "Solutions: At t=1 Myr, g_Lagoon ~1e-12 m/s� (EM/fluid dominant; g_base ~1e-13; P_rad ~1e-14).\n"
+           "Solutions: At t=1 Myr, g_Lagoon ~1e-12 m/sÃ¯Â¿Â½ (EM/fluid dominant; g_base ~1e-13; P_rad ~1e-14).\n"
            "Adaptations for Lagoon Nebula: H II region with Herschel 36 radiation; z=0.0013; SFR for starbirth.";
 }
 
@@ -62487,7 +62533,7 @@ main() {
 //     LagoonUQFFModule mod;
 //     double t = 1e6 * 3.156e7;  // 1 Myr
 //     double g = mod.computeG(t);
-//     std::cout << "g = " << g << " m/s�\n";
+//     std::cout << "g = " << g << " m/sÃ¯Â¿Â½\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("M", 1.1e4 * 1.989e30);  // Update mass
 //     mod.addToVariable("f_TRZ", 0.05);           // Add to TR factor
@@ -62620,7 +62666,7 @@ computeG(double t, double z) {
 
 getEquationText() {
     return "g_Spiral_SN(r, t) = (G * M / r^2) * (1 + H(z) * t) * (1 + T_spiral) * (1 - B / B_crit) * (1 + f_TRZ) + (Ug1 + Ug2 + Ug3 + Ug4) + (Lambda * c^2 * ?_? / 3) + "
-           "(hbar / sqrt(Delta_x * Delta_p)) * ?(?* H ? dV) * (2? / t_Hubble) + q (v � B) + ?_fluid * V * g + "
+           "(hbar / sqrt(Delta_x * Delta_p)) * ?(?* H ? dV) * (2? / t_Hubble) + q (v Ã¯Â¿Â½ B) + ?_fluid * V * g + "
            "2 A cos(k x) cos(? t) + (2? / 13.8) A exp(i (k x - ? t)) + (M_visible + M_DM) * (??/? + 3 G M / r^3) + SN_term\n"
            "Where T_spiral = G * M_gas * M / r^2 * (1 + ?_p * t); SN_term = (L_SN / (4? r^2 c)) * (1 + H(z) * t)\n"
            "Special Terms:\n"
@@ -62631,7 +62677,7 @@ getEquationText() {
            "- Superconductivity: (1 - B/B_crit) for galactic fields.\n"
            "- Spiral Torque: T_spiral for arm evolution.\n"
            "- Supernova: SN_term for expansion probe.\n"
-           "Solutions: At t=5 Gyr, z=0.5, g_Spiral_SN ~1e-10 m/s� (Lambda/SN dominant; g_base ~1e-10).\n"
+           "Solutions: At t=5 Gyr, z=0.5, g_Spiral_SN ~1e-10 m/sÃ¯Â¿Â½ (Lambda/SN dominant; g_base ~1e-10).\n"
            "Adaptations for Spirals and Supernovae: SH0ES H0=73; ?_p=20 km/s/kpc; L_SN=1e36 W for Ia SN.";
 }
 
@@ -62647,7 +62693,7 @@ main() {
 //     double t = 5e9 * 3.156e7;  // 5 Gyr
 //     double z = 0.5;            // Typical SN z
 //     double g = mod.computeG(t, z);
-//     std::cout << "g = " << g << " m/s�\n";
+//     std::cout << "g = " << g << " m/sÃ¯Â¿Â½\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("H0", 74.0);  // Update H0
 //     mod.addToVariable("f_TRZ", 0.05);
@@ -62770,7 +62816,7 @@ computeG(double t) {
 
 getEquationText() {
     return "g_NGC6302(r, t) = (G * M / r^2) * (1 + H(z) * t) * (1 - B / B_crit) * (1 + f_TRZ) + (Ug1 + Ug2 + Ug3 + Ug4) + (Lambda * c^2 / 3) + "
-           "(hbar / sqrt(Delta_x * Delta_p)) * ?(?* H ? dV) * (2? / t_Hubble) + q (v � B) + ?_fluid * V * g + "
+           "(hbar / sqrt(Delta_x * Delta_p)) * ?(?* H ? dV) * (2? / t_Hubble) + q (v Ã¯Â¿Â½ B) + ?_fluid * V * g + "
            "2 A cos(k x) cos(? t) + (2? / 13.8) A exp(i (k x - ? t)) + (M_visible + M_DM) * (??/? + 3 G M / r^3) + W_shock\n"
            "Where W_shock = ? * v_wind^2 * (1 + t / t_eject)\n"
            "Special Terms:\n"
@@ -62780,7 +62826,7 @@ getEquationText() {
            "- DM: Visible+dark mass with perturbations (negligible).\n"
            "- Superconductivity: (1 - B/B_crit) for nebular fields.\n"
            "- Wind Shock: W_shock from central star winds eroding lobes.\n"
-           "Solutions: At t=2000 yr, g_NGC6302 ~1e-10 m/s� (W_shock/EM dominant; g_base ~1e-12).\n"
+           "Solutions: At t=2000 yr, g_NGC6302 ~1e-10 m/sÃ¯Â¿Â½ (W_shock/EM dominant; g_base ~1e-12).\n"
            "Adaptations for NGC 6302: Bipolar PN with v_wind=100 km/s; z=0.00095; t_eject=2000 yr for ejections.";
 }
 
@@ -62795,7 +62841,7 @@ main() {
 //     NGC6302UQFFModule mod;
 //     double t = 2000 * 3.156e7;  // 2000 years
 //     double g = mod.computeG(t);
-//     std::cout << "g = " << g << " m/s�\n";
+//     std::cout << "g = " << g << " m/sÃ¯Â¿Â½\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("M", 4e30);  // Update mass
 //     mod.addToVariable("f_TRZ", 0.05);  // Add to TR factor
@@ -62933,7 +62979,7 @@ getEquationText() {
            "- Osc_term = 2 A cos(k x) cos(? t) + (2p / 13.8) A Re[exp(i (k x - ? t))]\n"
            "- a_exp_freq = (f_exp * E_vac_neb * a_DPM) / (E_vac_ISM * c)\n"
            "Special Terms: All driven by UQFF frequencies/resonances via plasmotic vacuum; Aether replaces dark energy; no SM terms.\n"
-           "Solutions: At t=2000 yr, g  1.182e-33 m/s² (dominated by THz; all micro-scale per proof set).\n"
+           "Solutions: At t=2000 yr, g Ã‚Ëœ 1.182e-33 m/sÃ‚Â² (dominated by THz; all micro-scale per proof set).\n"
            "Adaptations: DPM heart, THz pipeline for bipolar lobe expansion per Hubble data.";
 }
 
@@ -62948,7 +62994,7 @@ main() {
 //     NGC6302ResonanceUQFFModule mod;
 //     double t = 2000 * 3.156e7;  // 2000 years
 //     double g = mod.computeG(t);
-//     std::cout << "g = " << g << " m/s²\n";
+//     std::cout << "g = " << g << " m/sÃ‚Â²\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("f_DPM", 1.1e12);  // Update DPM freq
 //     mod.addToVariable("f_TRZ", 0.05);     // Add to TR factor
@@ -63126,7 +63172,7 @@ computeG(double t)
 getEquationText()
 {
     return "g_Orion(r, t) = (G * M(t)) / (r^2) * (1 + H(z) * t) * (1 - B / B_crit) * (1 + f_TRZ) + (Ug1 + Ug2 + Ug3 + Ug4) + (Lambda * c^2 / 3) + "
-           "(hbar / sqrt(Delta_x * Delta_p)) * ?(?* H ? dV) * (2p / t_Hubble) + q * (v_exp � B) * (1 + ?_vac,UA / ?_vac,SCm) + ?_fluid * V * g + "
+           "(hbar / sqrt(Delta_x * Delta_p)) * ?(?* H ? dV) * (2p / t_Hubble) + q * (v_exp Ã¯Â¿Â½ B) * (1 + ?_vac,UA / ?_vac,SCm) + ?_fluid * V * g + "
            "2 A cos(k x) cos(? t) + (2p / 13.8) A Re[exp(i (k x - ? t))] + G * (M_visible + M_DM) * (d?/?) / r^2 + W_stellar - P_rad\n"
            "Where M(t) = M * (1 + M_sf(t)); M_sf(t) = (SFR * t_yr) / M0; W_stellar = v_wind^2 * (1 + t / t_age); P_rad = L_Trap / (4 p r^2 c m_H)\n"
            "Ug1 = G M / r^2; Ug2 = v_exp^2 / r; Ug3 = 0; Ug4 = Ug1 * f_sc\n"
@@ -63141,7 +63187,7 @@ getEquationText()
            "- Star Formation: M_sf(t) with SFR=0.1 Msun/yr.\n"
            "- Stellar Wind: Acceleration from Trapezium erodes pillars.\n"
            "- Radiation Pressure: Repulsive from Trapezium luminosity.\n"
-           "Solutions: At t=300k yr, g_Orion ~1e-11 m/s� (base/ug dominant; adjustments for units ensure consistency; P_rad ~1e15 but balanced in context).\n"
+           "Solutions: At t=300k yr, g_Orion ~1e-11 m/sÃ¯Â¿Â½ (base/ug dominant; adjustments for units ensure consistency; P_rad ~1e15 but balanced in context).\n"
            "Adaptations for Orion Nebula: Trapezium radiation/winds; z=0.0004; SFR=0.1 Msun/yr for starbirth; informed by Hubble/ALMA.";
 }
 
@@ -63158,7 +63204,7 @@ main() {
 //     OrionUQFFModule mod;
 //     double t = 3e5 * 3.156e7;  // 300k yr
 //     double g = mod.computeG(t);
-//     std::cout << "g = " << g << " m/s�\n";
+//     std::cout << "g = " << g << " m/sÃ¯Â¿Â½\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("M", 2200 * 1.989e30);  // Update mass
 //     mod.addToVariable("f_TRZ", 0.05);          // Add to TR factor
@@ -63501,7 +63547,7 @@ getEquationText(int system_id)
                                                                                                        "Where SC_int = (1 - B / B_crit) * f_sc\n"
                                                                                                        "Special Terms: UQFF compressed/resonance via plasmotic vacuum; no SM; for system " +
            std::to_string(system_id) + " (" + sys_name + ").\n"
-                                                         "Solutions: See doc for system-specific g ~1e-33 to 1e35 m/s� (micro to macro scale).\n"
+                                                         "Solutions: See doc for system-specific g ~1e-33 to 1e35 m/sÃ¯Â¿Â½ (micro to macro scale).\n"
                                                          "Adaptations: Frequencies scaled per system (e.g., f_DPM=1e9 for Universe, 1e15 for Hydrogen).";
 }
 
@@ -63520,7 +63566,7 @@ main() {
 //     double t = 13.8e9 * 3.156e7;  // 13.8 Gyr
 //     double B = 1e-15;  // T
 //     double g_comp_res = mod.computeFullUQFF34(system_id, t, B);
-//     std::cout << "g_comp_res for system " << system_id << " = " << g_comp_res << " m/s�\n";
+//     std::cout << "g_comp_res for system " << system_id << " = " << g_comp_res << " m/sÃ¯Â¿Â½\n";
 //     std::cout << mod.getEquationText(system_id) << std::endl;
 //     mod.updateVariable("f_DPM", 1.1 * mod.variables["f_DPM"]);  // Update
 //     mod.addToVariable("f_TRZ", 0.05);
@@ -64017,8 +64063,8 @@ install_uqff_module()
 
     // Student's Guide to the Universe
     double V_guide = compute_volume(1.496e11);
-    systems["Student�s Guide to the Universe"] = new SystemData(
-        "Student�s Guide to the Universe", "General framework using solar mass and AU-scale.",
+    systems["StudentÃ¯Â¿Â½s Guide to the Universe"] = new SystemData(
+        "StudentÃ¯Â¿Â½s Guide to the Universe", "General framework using solar mass and AU-scale.",
         1.989e30, 1.496e11, 0.0, 4.35e17, V_guide, 0.0, 3e4, 1e20, 7.032e22, 1e-4, -1e-4);
 
     // Additional systems from document (Lagoon Nebula, etc.)
@@ -64494,11 +64540,11 @@ main() {
 //     MultiUQFFModule mod("OrionNebula", "compressed");
 //     double t = mod.variables["t_default"];
 //     double g = mod.computeG(t);
-//     std::cout << "g = " << g << " m/s²\n";
+//     std::cout << "g = " << g << " m/sÃ‚Â²\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.setMode("resonance");
 //     g = mod.computeG(t);
-//     std::cout << "Resonance g = " << g << " m/s²\n";
+//     std::cout << "Resonance g = " << g << " m/sÃ‚Â²\n";
 //     mod.setSystem("UniverseDiameter");
 //     mod.printVariables();
 //     return 0;
@@ -64667,7 +64713,7 @@ computeG(double t)
 getEquationText()
 {
     return "g_Outflow(r, t) = (G * M(t)) / (r^2) * (1 + H(z) * t) * (1 - B / B_crit) * (1 + f_TRZ) + (Ug1 + Ug2 + Ug3 + Ug4) + (Lambda * c^2 / 3) + "
-           "(hbar / sqrt(Delta_x * Delta_p)) * ?(?* H ? dV) * (2? / t_Hubble) + q * (v_out � B) * (1 + ?_vac,UA / ?_vac,SCm) + ?_fluid * V * g + "
+           "(hbar / sqrt(Delta_x * Delta_p)) * ?(?* H ? dV) * (2? / t_Hubble) + q * (v_out Ã¯Â¿Â½ B) * (1 + ?_vac,UA / ?_vac,SCm) + ?_fluid * V * g + "
            "2 A cos(k x) cos(? t) + (2? / 13.8) A Re[exp(i (k x - ? t))] + G * (M_visible + M_DM) * (??/?) / r^2 + P_outflow\n"
            "Where M(t) = M * (1 + M_sf(t)); M_sf(t) = (SFR * t_yr) / M0; P_outflow = ? * v_out^2 * (1 + t / t_evolve)\n"
            "Ug1 = G M / r^2; Ug2 = v_out^2 / r; Ug3 = 0; Ug4 = Ug1 * f_sc\n"
@@ -64681,7 +64727,7 @@ getEquationText()
            "- Time-Reversal: (1 + f_TRZ) non-standard correction.\n"
            "- Star Formation: M_sf(t) with SFR=0.1 Msun/yr.\n"
            "- Outflow Pressure: From young stars erodes/sculpts gas pillars.\n"
-           "Solutions: At t=5 Myr, g_Outflow ~1e-12 m/s� (base/ug dominant; adjustments for units ensure consistency; P_outflow ~2e10 but balanced in context).\n"
+           "Solutions: At t=5 Myr, g_Outflow ~1e-12 m/sÃ¯Â¿Â½ (base/ug dominant; adjustments for units ensure consistency; P_outflow ~2e10 but balanced in context).\n"
            "Adaptations for Young Stars Outflows: NGC 346 radiation/winds; z=0.05; SFR=0.1 Msun/yr for starbirth; informed by Hubble/ALMA.";
 }
 
@@ -64698,7 +64744,7 @@ main() {
 //     YoungStarsOutflowsUQFFModule mod;
 //     double t = 5e6 * 3.156e7;  // 5 Myr
 //     double g = mod.computeG(t);
-//     std::cout << "g = " << g << " m/s�\n";
+//     std::cout << "g = " << g << " m/sÃ¯Â¿Â½\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("M", 1200 * 1.989e30);  // Update mass
 //     mod.addToVariable("f_TRZ", 0.05);          // Add to TR factor
@@ -64879,7 +64925,7 @@ computeG(double t)
 getEquationText()
 {
     return "g_Gravity(t) = (G * M(t) / r(t)^2) * (1 + H(z) * t) * (1 - B / B_crit) + (Ug1 + Ug2 + Ug3 + Ug4) + (Lambda * c^2 / 3) + "
-           "(hbar / sqrt(Delta_x * Delta_p)) * ?(?* H ? dV) * (2? / t_Hubble) + q (v � B) + ?_fluid * V * g + "
+           "(hbar / sqrt(Delta_x * Delta_p)) * ?(?* H ? dV) * (2? / t_Hubble) + q (v Ã¯Â¿Â½ B) + ?_fluid * V * g + "
            "2 A cos(k x) cos(? t) + (2? / 13.8) A Re[exp(i (k x - ? t))] + (M_visible + M_DM) * (??/? + 3 G M / r^3) + QG_term + DM_term + GW_term\n"
            "Where M(t) = M_total * (t / t_Hubble); r(t) = c t; z(t) = t_Hubble / t - 1;\n"
            "QG_term = (hbar c / l_p^2) * (t / t_p); DM_term = 0.268 * (G M(t) / r(t)^2); GW_term = h_strain * c^2 / ?_gw * sin(2?/?_gw r - 2?/yr t)\n"
@@ -64890,7 +64936,7 @@ getEquationText()
            "- GW: Sinusoidal gravitational waves (NANOGrav/LIGO).\n"
            "- Evolution: From t_p (z~10^32) quantum-dominated to t_Hubble (z=0) Lambda-dominated.\n"
            "- Synthesis: Integrates 6 prior MUGEs (universe, H atom, Lagoon, spirals/SN, NGC6302, Orion) patterns.\n"
-           "Solutions: At t=t_Hubble, g_Gravity ~1e-10 m/s� (balanced; early t dominated by QG ~1e100).\n"
+           "Solutions: At t=t_Hubble, g_Gravity ~1e-10 m/sÃ¯Â¿Â½ (balanced; early t dominated by QG ~1e100).\n"
            "Adaptations: Cosmic evolution from Big Bang; informed by DESI/LIGO/NANOGrav.";
 }
 
@@ -64907,11 +64953,11 @@ main() {
 //     BigBangGravityUQFFModule mod;
 //     double t = mod.variables["t_Hubble"];  // Present
 //     double g = mod.computeG(t);
-//     std::cout << "g = " << g << " m/s�\n";
+//     std::cout << "g = " << g << " m/sÃ¯Â¿Â½\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     double t_early = 1e-43;  // Near Planck
 //     g = mod.computeG(t_early);
-//     std::cout << "Early g = " << g << " m/s�\n";
+//     std::cout << "Early g = " << g << " m/sÃ¯Â¿Â½\n";
 //     mod.updateVariable("M_total", 1.1e53);  // Update mass
 //     mod.printVariables();
 //     return 0;
@@ -65189,7 +65235,7 @@ getEquationText()
            "Special Terms:\n"
            "- Compression: Unified H(t,z), F_env(t) modular, Ug3' generalized, ?_total consolidated.\n"
            "- Adaptations: Magnetar (M_BH, decay); SgrA* (GW spin); Starbirth/Westerlund2 (winds); Pillars (erosion); Rings (lensing); UniverseGuide (solar).\n"
-           "Solutions: Varies by system/t; e.g., Magnetar t=1kyr ~1e12 m/s² (B_crit dominant).\n"
+           "Solutions: Varies by system/t; e.g., Magnetar t=1kyr ~1e12 m/sÃ‚Â² (B_crit dominant).\n"
            "From UQFF Cycle 2: Streamlines 7 systems, reduces redundancy.";
 }
 
@@ -65206,11 +65252,11 @@ main() {
 //     MultiCompressedUQFFModule mod("PillarsCreation");
 //     double t = mod.variables["t_default"];
 //     double g = mod.computeG(t);
-//     std::cout << "g = " << g << " m/s²\n";
+//     std::cout << "g = " << g << " m/sÃ‚Â²\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.setSystem("SagittariusA");
 //     g = mod.computeG(t);
-//     std::cout << "SgrA* g = " << g << " m/s²\n";
+//     std::cout << "SgrA* g = " << g << " m/sÃ‚Â²\n";
 //     mod.printVariables();
 //     return 0;
 // }
@@ -65583,7 +65629,7 @@ main(int argc, char **argv)
             westerlund.name = "Westerlund 2";
             MUGESystem pillars = {"Pillars of Creation", 1e21, 2.813e32, 1e-3, -1e-3, 3.552e48, 2e3, 3.156e13, 0.0, 8.457e-14, 1.989e32, 9.46e15, 1e-4, 1e-3, 1e-21, 1e-8, 0.0, 1e-5};
             MUGESystem rings = {"Rings of Relativity", 1e22, 1e35, 1e-4, -1e-4, 1e54, 1e5, 3.156e14, 0.01, 1e-9, 1.989e36, 3.086e17, 1e-5, 1e-4, 1e-20, 1e-5, 1e36, 1e-3};
-            MUGESystem student_guide = {"Student�s Guide to the Universe", 1e24, 1e52, 1e-6, -1e-6, 1e80, 3e8, 4.35e17, 0.0, 1e-18, 1e53, 1e26, 1e-10, 1e-9, 1e-30, 1e-10, 1e53, 1e-6};
+            MUGESystem student_guide = {"StudentÃ¯Â¿Â½s Guide to the Universe", 1e24, 1e52, 1e-6, -1e-6, 1e80, 3e8, 4.35e17, 0.0, 1e-18, 1e53, 1e26, 1e-10, 1e-9, 1e-30, 1e-10, 1e53, 1e-6};
             muge_systems = {sgr1745, sagA, tapestry, westerlund, pillars, rings, student_guide};
         }
 
@@ -66619,7 +66665,7 @@ getEquationText()
            "Special Terms:\n"
            "- Compression: Unified H(t,z), modular F_env(t) for 19 systems (1-19 docs), generalized Ug3', ?_total consolidated.\n"
            "- Adaptations: NGC2525 (SN loss); NGC3603 (cavity P(t)); Bubble (expansion E(t)); Antennae (merger); Horsehead (sculpting); NGC1275 (filaments/BH); NGC1792 (starburst SN); HUDF (gal evo).\n"
-           "Solutions: Varies by system/t; e.g., NGC2525 t=1 Gyr ~1e-10 m/s² (SN/F_env bal).\n"
+           "Solutions: Varies by system/t; e.g., NGC2525 t=1 Gyr ~1e-10 m/sÃ‚Â² (SN/F_env bal).\n"
            "From UQFF Cycle 2: Unifies 19 docs; extensible to 20-38.";
 }
 
@@ -66636,11 +66682,11 @@ main() {
 //     MultiUQFFCompressionModule mod("NGC2525");
 //     double t = mod.variables["t_default"];
 //     double g = mod.computeG(t);
-//     std::cout << "g = " << g << " m/s²\n";
+//     std::cout << "g = " << g << " m/sÃ‚Â²\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.setSystem("HubbleUltraDeepField");
 //     g = mod.computeG(t);
-//     std::cout << "HUDF g = " << g << " m/s²\n";
+//     std::cout << "HUDF g = " << g << " m/sÃ‚Â²\n";
 //     mod.printVariables();
 //     return 0;
 // }
@@ -66666,11 +66712,11 @@ current_batch(batch)
     variables["cylinder_h"] = 0.254;  // m (10")
 
     // SCm & UA
-    variables["SCm"] = 1e15;       // kg/m�
+    variables["SCm"] = 1e15;       // kg/mÃ¯Â¿Â½
     variables["SCm_prime"] = 1e15; // m^{-3}
     variables["UA"] = 1e-11;       // C
 
-    // Vacuum energies (J/m�, scale-dependent)
+    // Vacuum energies (J/mÃ¯Â¿Â½, scale-dependent)
     variables["rho_vac_SCm_atomic"] = 1.60e19;
     variables["rho_vac_UA_atomic"] = 1.60e20;
     variables["E_vac_neb"] = 7.09e-36;
@@ -66843,8 +66889,8 @@ getEquationText()
     return "UP(t) = ?_i [k_i Ug_i(r, t^-, ?_s, T_s, B_s, SCm, SCm', UA, t_n, RM, SM)] + ?_j [?_j / r_j (1 - e^{-? t^-} cos(? t_n)) ?^j Um_j] + (g_?? + ? T_s ??) + Ub(t^-) + [SCm-UA terms]\n"
            "Where t^- = -t_n exp(? - t_n); Ug_i ~ G M_bh / r^2 exp(-? t^-) cos(? t_n)\n"
            "FU = ? [k_i Ug_i - ?_i Ug_i ?_g M_bh / d_g E_react] + ? [?_j / r_j (1 - e^{-? t} cos(? t_n)) ?^j] + (g_?? + ? T_s ??) - ? [?_i Ui E_react]\n"
-           "Vac Energies: ?_vac,[SCm] = 1.60e19 J/m� (atomic), E_vac,neb = 7.09e-36 J/m�\n"
-           "Red Dwarf: SCm=1e15 kg/m�, UA=1e-11 C, plasmoids ~40-50/frame at 33.3 fps.";
+           "Vac Energies: ?_vac,[SCm] = 1.60e19 J/mÃ¯Â¿Â½ (atomic), E_vac,neb = 7.09e-36 J/mÃ¯Â¿Â½\n"
+           "Red Dwarf: SCm=1e15 kg/mÃ¯Â¿Â½, UA=1e-11 C, plasmoids ~40-50/frame at 33.3 fps.";
 }
 
 getSolutions(double t)
@@ -66865,12 +66911,12 @@ getSolutions(double t)
     std::stringstream ss;
     ss << std::scientific << "Solutions for t=" << t << " s (Batch " << static_cast<int>(current_batch) << "):\n";
     ss << "t_n = " << t_n << ", t^- = " << t_minus << "\n";
-    ss << "Ug_sum = " << ug << " J/m�\n";
-    ss << "Um_sum = " << um << " J/m�\n";
-    ss << "Metric = " << metric << " J/m�\n";
-    ss << "Ub(t^-) = " << ub << " J/m�\n";
-    ss << "UP(t) = " << up_total << " J/m�\n";
-    ss << "FU(t) = " << fu_total << " J/m�\n";
+    ss << "Ug_sum = " << ug << " J/mÃ¯Â¿Â½\n";
+    ss << "Um_sum = " << um << " J/mÃ¯Â¿Â½\n";
+    ss << "Metric = " << metric << " J/mÃ¯Â¿Â½\n";
+    ss << "Ub(t^-) = " << ub << " J/mÃ¯Â¿Â½\n";
+    ss << "UP(t) = " << up_total << " J/mÃ¯Â¿Â½\n";
+    ss << "FU(t) = " << fu_total << " J/mÃ¯Â¿Â½\n";
     ss << "Plasmoid Count ~ " << plasmoids << "\n";
     ss << "Energy/Frame ~ " << energy_frame << " J\n";
     return ss.str();
@@ -66890,8 +66936,8 @@ main() {
 //     double t = 9.03;  // Frame 301
 //     double up = mod.computeUP(t);
 //     double fu = mod.computeFU(t);
-//     std::cout << "UP = " << up << " J/m�\n";
-//     std::cout << "FU = " << fu << " J/m�\n";
+//     std::cout << "UP = " << up << " J/mÃ¯Â¿Â½\n";
+//     std::cout << "FU = " << fu << " J/mÃ¯Â¿Â½\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     std::cout << mod.getSolutions(t) << std::endl;
 //     mod.setBatch(BatchType::BATCH_39);
@@ -66929,7 +66975,7 @@ current_system(sys)
     variables["n26"] = 26.0;             // Quantum levels
     variables["SSq"] = 1.0;              // Superconductive square?
     variables["gamma_decay"] = 0.1;      // For eq31
-    variables["rho_vac_SCm"] = 2.39e-22; // Nebula J/m³
+    variables["rho_vac_SCm"] = 2.39e-22; // Nebula J/mÃ‚Â³
     variables["rho_vac_UA"] = 7.09e-36;
     variables["rho_vac_Ug4"] = 1.19e-24;
     variables["E_vac_UA_prime_SCm"] = 1e-20; // Eq30
@@ -67128,15 +67174,15 @@ computeAccuracy(const std::string &scenario)
 
 getEquationText()
 {
-    return "UQFF Nebular (Drawing 32): Ug3(t,r,?,n)  1.0 M_stars 3.38e20 / r^3 cos(?) 1.0 10^46 1.01e39 J/m³; T ? Ug3 / 7.09e-36 1.424e74 K (scaled 1e6 K)\n"
-           "Blueshift: v_radial = c ??/?  -3.33e-5 c\n"
+    return "UQFF Nebular (Drawing 32): Ug3(t,r,?,n) Ã‚Ëœ 1.0 M_stars 3.38e20 / r^3 cos(?) 1.0 10^46 Ã‚Ëœ1.01e39 J/mÃ‚Â³; T ? Ug3 / 7.09e-36 Ã‚Ëœ1.424e74 K (scaled 1e6 K)\n"
+           "Blueshift: v_radial = c ??/? Ã‚Ëœ -3.33e-5 c\n"
            "Neutrino: E_neutrino ? ?_vac,[UA':SCm] e^{-[SSq]^{26} e^{-(p + t)}} Um / ?_vac,[UA]\n"
-           "Decay: Rate ? ?_vac,[SCm]/?_vac,[UA] e^{-[SSq]^{26} e^{-(p + t)}} 0.0963\n"
+           "Decay: Rate ? ?_vac,[SCm]/?_vac,[UA] e^{-[SSq]^{26} e^{-(p + t)}} Ã‚Ëœ0.0963\n"
            "DNA: E_DNA ? Um cos(?_c t)\n"
-           "Buoyancy: ? ?_vac,[UA]/?_vac,[SCm] V_little / V_big 1/33\n"
-           "Higgs: m_H  k_Higgs 125 µ ?_F (GeV); LENR: E  k_? e O / m_e sqrt(n_e s v) (V/m)\n"
+           "Buoyancy: ? ?_vac,[UA]/?_vac,[SCm] V_little / V_big Ã‚Ëœ1/33\n"
+           "Higgs: m_H Ã‚Ëœ k_Higgs 125 Ã‚Âµ ?_F (GeV); LENR: E Ã‚Ëœ k_? e O / m_e sqrt(n_e s v) (V/m)\n"
            "Accuracy: 100% post-calib; Geometric: Avg angle = ? atan2(dy,dx) / pairs\n"
-           "Nebula: [UA]:[SCm] pseudo-monopoles; dust trails Ug4=1.19e-24 J/m³.";
+           "Nebula: [UA]:[SCm] pseudo-monopoles; dust trails Ug4=1.19e-24 J/mÃ‚Â³.";
 }
 
 getSolutions(double t)
@@ -67155,7 +67201,7 @@ getSolutions(double t)
 
     std::stringstream ss;
     ss << std::scientific << "UQFF Solutions t=" << t << " s (" << static_cast<int>(current_system) << "):\n";
-    ss << "Ug3 = " << ug3 << " J/m³\nT_star = " << T << " K\nv_rad = " << v_rad << " m/s\n";
+    ss << "Ug3 = " << ug3 << " J/mÃ‚Â³\nT_star = " << T << " K\nv_rad = " << v_rad << " m/s\n";
     ss << "E_neut = " << E_neut << " J\nDecay Rate = " << decay << "\nE_DNA = " << E_DNA << " J\nBuoyancy Ratio = " << buoy << "\n";
     ss << "LENR Acc% = " << acc_lenr << "; Higgs Acc% = " << acc_higgs << "\nGeo Avg Angle = " << geo_angle << " rad\n";
     ss << "Overall UQFF = " << computeUQFF(t) << "\nSM Contrast: Local vs. Non-local [UA]/[SCm] drives.";
@@ -67294,7 +67340,7 @@ computePiSeries(int s, int terms)
         sum += 1.0 / std::pow(n, s);
     }
     if (s == 2)
-        return sum; // Approx ?�/6
+        return sum; // Approx ?Ã¯Â¿Â½/6
     return sum;
 }
 
@@ -67409,14 +67455,14 @@ getEquationText()
 {
     return "UQFF Red Dwarf C (43.c): W_mag ?15 GeV B_kG R_km (v/c) (eq4)\n"
            "Um(t) ? (1.885e-7 / 3.38e23) * 5e-5 * E_react(t) * factor * exp_cos / non_local (eq5)\n"
-           "UH(t,n)=?_H ?_vac,[UA�:SCm](n,t) ?_H(t) e^{-[SSq]^{26} e^{-(?+t)}} (1+f_quasi) (eq6)\n"
+           "UH(t,n)=?_H ?_vac,[UAÃ¯Â¿Â½:SCm](n,t) ?_H(t) e^{-[SSq]^{26} e^{-(?+t)}} (1+f_quasi) (eq6)\n"
            "Ug3(t,r,?,n)=k3 ? B_j cos(?_s t ?) P_core E_react(t) (eq7)\n"
            "E = Um / ?_vac,[UA] / 1.885e-7 V/m (eq8)\n"
            "?(t) = k_? e^{-non_local} Um / ?_vac,[UA] cm^{-2}/s (eq9)\n"
            "?n = (2?)^{n}/6 (eq10)\n"
-           "S(s)=? 1/n^s ; S(2)=?�/6 ?1.64493 (eq15)\n"
+           "S(s)=? 1/n^s ; S(2)=?Ã¯Â¿Â½/6 ?1.64493 (eq15)\n"
            "Buoyancy sum_{n odd} 1 / x^{(?+1)^n} ? -0.8887 (eq20)\n"
-           "Q=(M_n - M_p - m_e)c� ?0.78 MeV (eq2)\n"
+           "Q=(M_n - M_p - m_e)cÃ¯Â¿Â½ ?0.78 MeV (eq2)\n"
            "Higgs: m_H ?125 ? GeV; BR_WW?0.215\n"
            "UQFF solves LENR/Higgs/Pi with 100% acc post-calib; Non-local needs def.";
 }
@@ -67439,8 +67485,8 @@ getSolutions(double t)
 
     std::stringstream ss;
     ss << std::scientific << "UQFF Solutions t=" << t << " s (" << static_cast<int>(current_system) << "):\n";
-    ss << "W_mag = " << w_mag << " eV\nUm = " << um << " J/m�\nUH = " << uh << " J/m�\n";
-    ss << "Ug3 = " << ug3 << " J/m�\nE = " << E << " V/m\n? = " << eta << " cm^{-2}/s\n";
+    ss << "W_mag = " << w_mag << " eV\nUm = " << um << " J/mÃ¯Â¿Â½\nUH = " << uh << " J/mÃ¯Â¿Â½\n";
+    ss << "Ug3 = " << ug3 << " J/mÃ¯Â¿Â½\nE = " << E << " V/m\n? = " << eta << " cm^{-2}/s\n";
     ss << "?n(1) = " << delta_n << "\nS(2) = " << S2 << "\nBuoyancy Sum = " << buoy_sum << "\n";
     ss << "Q = " << Q << " MeV\nm_H = " << m_H << " GeV\nBR_WW = " << br_ww << "\n";
     ss << "UQFF Total = " << uqff_total << "\nSM/UQFF Match: 100% (calib); e.g., E=2e11 V/m, ?=1e13.\n"
@@ -67492,7 +67538,7 @@ current_system(sys)
     variables["lambda_I"] = 1.0;         // Coupling
     variables["omega_m"] = 1e15;         // Magnetic freq rad/s
     variables["qm"] = 1e-10;             // Magnetic charge C
-    variables["rho_vac_SCm"] = 7.09e-37; // J/m�
+    variables["rho_vac_SCm"] = 7.09e-37; // J/mÃ¯Â¿Â½
     variables["rho_vac_UA"] = 7.09e-36;
     variables["omega_i"] = 1e3; // rad/s
     variables["t_n"] = 0.0;
@@ -67501,8 +67547,8 @@ current_system(sys)
     variables["omega_r"] = 1e15;                         // Resonant rad/s
     variables["mu_mag"] = 9.27e-24;                      // Bohr magneton J/T
     variables["B"] = 1e-5;                               // T
-    variables["E_aether"] = 1.683e-10;                   // J/m�
-    variables["V"] = 1e-27;                              // m�
+    variables["E_aether"] = 1.683e-10;                   // J/mÃ¯Â¿Â½
+    variables["V"] = 1e-27;                              // mÃ¯Â¿Â½
     variables["higgs_freq"] = 1.25e34;                   // Hz
     variables["precession_s"] = 1.617e11;                // s
     variables["quantum_state_factor"] = 4.0;             // n=1-4
@@ -67602,7 +67648,7 @@ computeTwistPhase(double t)
 computeInertialOperator(const std::complex<double> &psi, double t)
 {
     double partial_t = -variables["omega"] * std::imag(psi);                   // Approx d?/dt ~ i ? ?
-    double grad_term = variables["omega_m"] * variables["r"] * std::real(psi); // \vec{r} � ? ? ~ r ??/?r approx
+    double grad_term = variables["omega_m"] * variables["r"] * std::real(psi); // \vec{r} Ã¯Â¿Â½ ? ? ~ r ??/?r approx
     return variables["lambda_I"] * std::complex<double>(partial_t + grad_term, 0.0);
 }
 
@@ -67676,12 +67722,12 @@ getEquationText()
 {
     return "UQFF Inertia Papers (43.d): ?(r,?,?,t)=A Y_lm(?,?) sin(kr-?t)/r exp(-?|r-r0|) (eq1)\n"
            "?_twist=? sin(? t) (eq2)\n"
-           "� ? = ?_I (?/?t + i ?_m \vec{r} � ?) ? (eq3)\n"
+           "Ã¯Â¿Â½ ? = ?_I (?/?t + i ?_m \vec{r} Ã¯Â¿Â½ ?) ? (eq3)\n"
            "B_pseudo = ?0/(4?) q_m / r^2 (eq4)\n"
            "Ui=?_I (?_vac,[SCm]/?_vac,[UA]) ?_i(t) cos(? t_n) (1+F_RZ) (eq5)\n"
            "E_boson=1/2 m ?_r^2 x^2 + ? ?_r (n+1/2) (eq6)\n"
-           "H_mag = -? � B (eq7)\n"
-           "E_wave = E0 � QSF � RDF � WTFF � HFF � PTF � QSF (hydrogen scaled; ~1.17e-105 J for n=1-4)\n"
+           "H_mag = -? Ã¯Â¿Â½ B (eq7)\n"
+           "E_wave = E0 Ã¯Â¿Â½ QSF Ã¯Â¿Â½ RDF Ã¯Â¿Â½ WTFF Ã¯Â¿Â½ HFF Ã¯Â¿Â½ PTF Ã¯Â¿Â½ QSF (hydrogen scaled; ~1.17e-105 J for n=1-4)\n"
            "Three-Leg: Cons(E_in=E_out), Vac Ratio~1.683e-97, Q Scale~3.333e-23\n"
            "Integrates Um/Ug3; Solves wave/inertia with low-energy UQFF vs. SM high-energy.";
 }
@@ -67713,11 +67759,11 @@ getSolutions(double t, int n_levels)
     std::stringstream ss;
     ss << std::scientific << "UQFF Solutions t=" << t << " s, n_levels=" << n_levels << " (" << static_cast<int>(current_system) << "):\n";
     ss << "|?|^2 = " << std::norm(psi) << "\n?_twist = " << phi_tw << " rad\n";
-    ss << "|�?| ? " << std::norm(I_psi) << "\nB_pseudo = " << B_p << " T\n";
-    ss << "Ui = " << Ui << " (units J/m� approx)\nE_boson = " << E_b << " J\nH_mag = " << H_m << " J\n";
+    ss << "|Ã¯Â¿Â½?| ? " << std::norm(I_psi) << "\nB_pseudo = " << B_p << " T\n";
+    ss << "Ui = " << Ui << " (units J/mÃ¯Â¿Â½ approx)\nE_boson = " << E_b << " J\nH_mag = " << H_m << " J\n";
     ss << "E0 = " << E0 << " J\nE_wave = " << E_w << " J (~1.17e-105 for n=1-4)\n";
     ss << "Three-Leg Proofset = " << proofset << "\nVac Ratio = " << vac_r << "\nQ Scale = " << q_s << "\n";
-    ss << "Um = " << Um_v << " J/m�\nUg3 = " << Ug3_v << " J/m�\nUQFF Total = " << uqff_total << "\n";
+    ss << "Um = " << Um_v << " J/mÃ¯Â¿Â½\nUg3 = " << Ug3_v << " J/mÃ¯Â¿Â½\nUQFF Total = " << uqff_total << "\n";
     ss << "SM Contrast: High-energy nuclear vs. UQFF low-energy ~1e-105 J (ACE/DCE cons).\nPi Integration: From prior, S(2)?1.64493 for wave harmonics.";
     return ss.str();
 }
@@ -67751,8 +67797,8 @@ coupling_strength(strength) {}
 current_system(sys)
 {
     // Constants
-    variables["E_aether"] = 1.683e-10;          // J/m�
-    variables["V"] = 1e-27;                     // m�
+    variables["E_aether"] = 1.683e-10;          // J/mÃ¯Â¿Â½
+    variables["V"] = 1e-27;                     // mÃ¯Â¿Â½
     variables["higgs_freq"] = 1.25e34;          // Hz
     variables["precession_s"] = 1.617e11;       // s
     variables["spatial_config"] = 2.0;          // Spherical/toroidal
@@ -67887,7 +67933,7 @@ computeUQFF(double t)
 
 getEquationText()
 {
-    return "UQFF Hydrogen E (43.e): E_space = E0 � SCF � CF � LF � HFF � PTF � QSF (eq)\n"
+    return "UQFF Hydrogen E (43.e): E_space = E0 Ã¯Â¿Â½ SCF Ã¯Â¿Â½ CF Ã¯Â¿Â½ LF Ã¯Â¿Â½ HFF Ã¯Â¿Â½ PTF Ã¯Â¿Â½ QSF (eq)\n"
            "E0 = 1.683e-10 * 1e-27 ?1.683e-37 J\nSCF=2 (spherical/toroidal), CF=1, LF=5 (layers)\n"
            "HFF?8e-34, PTF?6.183e-13, QSF?3.333e-23; E_space?5.52e-104 J (page85)\n"
            "Three-Leg: Cons(E_in=E_out)~1, Vac Ratio?1.683e-97, Q Energy?4.136e-14 eV\n"
@@ -67919,7 +67965,7 @@ getSolutions(double t, int layers)
     ss << "E0 = " << E0_val << " J\nSCF=" << spatial_f << ", CF=" << comp_f << ", LF=" << layer_f << "\n";
     ss << "HFF=" << higgs_f << ", PTF=" << prec_f << ", QSF=" << q_scale << "\nE_space = " << E_sp << " J (~5.52e-104 page85)\n";
     ss << "Cons Leg ~" << cons_leg << "\nVac Leg=" << vac_leg << "\nQ Leg=" << q_leg << " eV\n";
-    ss << "Proofset = " << proofset << "\nUm = " << Um_v << " J/m�\nUg3 = " << Ug3_v << " J/m�\n";
+    ss << "Proofset = " << proofset << "\nUm = " << Um_v << " J/mÃ¯Â¿Â½\nUg3 = " << Ug3_v << " J/mÃ¯Â¿Â½\n";
     ss << "UQFF Total = " << uqff_total << "\nSM ESM = " << ESM << " J (high vs. UQFF low-energy).\n";
     return ss.str();
 }
@@ -68214,9 +68260,9 @@ getEquationText()
            "(M_visible + M_DM) * (??/? + 3 G M / r^3)\n"
            "Where: H(t, z) = H0 * sqrt(?m (1+z)^3 + ??); M(t) = M * (1 + M_sf(t)); M_sf(t) = (SFR * t_yr) / M0;\n"
            "F_env(t) = ? F_i(t) [winds, erosion, lensing, mag, decay, coll, evo, merge, sf, SN, rad, BH];\n"
-           "Ug3' = G M_ext / r_ext^2; psi_total = q(v � B) + 2A cos(kx) cos(?t) + (2?/13.8) A Re[exp(i(kx - ?t))];\n"
+           "Ug3' = G M_ext / r_ext^2; psi_total = q(v Ã¯Â¿Â½ B) + 2A cos(kx) cos(?t) + (2?/13.8) A Re[exp(i(kx - ?t))];\n"
            "Compression Advancements: Unified expansion, modular env effects, consolidated waves/gravity terms for 19+ systems.\n"
-           "Adaptations: setSystem('Magnetar') for SGR 1745-2900; etc. Solutions: g ~1e-10 to 1e-12 m/s� typical.";
+           "Adaptations: setSystem('Magnetar') for SGR 1745-2900; etc. Solutions: g ~1e-10 to 1e-12 m/sÃ¯Â¿Â½ typical.";
 }
 
 printVariables()
@@ -68233,7 +68279,7 @@ main() {
 //     mod.setSystem("Pillars");
 //     double t = 1e6 * 3.156e7;  // 1 Myr
 //     double g = mod.computeG(t);
-//     std::cout << "g_UQFF = " << g << " m/s�\n";
+//     std::cout << "g_UQFF = " << g << " m/sÃ¯Â¿Â½\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("F_erode", 0.05);
 //     mod.printVariables();
@@ -68631,7 +68677,7 @@ main(int argc, char **argv)
             westerlund.name = "Westerlund 2";
             MUGESystem pillars = {"Pillars of Creation", 1e21, 2.813e32, 1e-3, -1e-3, 3.552e48, 2e3, 3.156e13, 0.0, 8.457e-14, 1.989e32, 9.46e15, 1e-4, 1e-3, 1e-21, 1e-8, 0.0, 1e-5};
             MUGESystem rings = {"Rings of Relativity", 1e22, 1e35, 1e-4, -1e-4, 1e54, 1e5, 3.156e14, 0.01, 1e-9, 1.989e36, 3.086e17, 1e-5, 1e-4, 1e-20, 1e-5, 1e36, 1e-3};
-            MUGESystem student_guide = {"Student�s Guide to the Universe", 1e24, 1e52, 1e-6, -1e-6, 1e80, 3e8, 4.35e17, 0.0, 1e-18, 1e53, 1e26, 1e-10, 1e-9, 1e-30, 1e-10, 1e53, 1e-6};
+            MUGESystem student_guide = {"StudentÃ¯Â¿Â½s Guide to the Universe", 1e24, 1e52, 1e-6, -1e-6, 1e80, 3e8, 4.35e17, 0.0, 1e-18, 1e53, 1e26, 1e-10, 1e-9, 1e-30, 1e-10, 1e53, 1e-6};
             muge_systems = {sgr1745, sagA, tapestry, westerlund, pillars, rings, student_guide};
         }
 
@@ -69222,7 +69268,7 @@ getEquationText()
            "F_tidal = G M_NGC5195 / d^2; U_g1 = ?_dipole * B; U_g2 = B_super^2 / (2 ?0);\n"
            "U_g3' = G M_NGC5195 / d^2; U_g4 = k4 * E_react(t); U_i = ?_I * (?_SCm/?_UA) * ?_i * cos(? t_n) * (1 + F_RZ);\n"
            "?_total = A exp(-r^2/(2?^2)) exp(i(m? - ? t)) + BH terms; Insights: Attractive (g_base, Ug1, Ug3') vs. Repulsive (U_g1, U_g2, ?) components advance UQFF.\n"
-           "Adaptations: Hubble ACS/WFPC2 data; SFR=1 Msun/yr; M=1.6e11 Msun. Solutions: g ~3e36 m/s� at t=500 Myr (DM dominant).";
+           "Adaptations: Hubble ACS/WFPC2 data; SFR=1 Msun/yr; M=1.6e11 Msun. Solutions: g ~3e36 m/sÃ¯Â¿Â½ at t=500 Myr (DM dominant).";
 }
 
 printVariables()
@@ -69239,7 +69285,7 @@ main() {
 //     double t = 5e8 * 3.156e7;  // 500 Myr
 //     double r = 10e3 * 3.086e19;  // 10 kpc
 //     double g = mod.computeG(t, r);
-//     std::cout << "g_M51 = " << g << " m/s�\n";
+//     std::cout << "g_M51 = " << g << " m/sÃ¯Â¿Â½\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("SFR", 2 * mod.variables["SFR"]);
 //     mod.printVariables();
@@ -69431,7 +69477,7 @@ getEquationText()
            "F_tidal = G M_spiral / d^2; F_cluster = k_cluster * M_cluster; U_g1 = ?_dipole * B; U_g2 = B_super^2 / (2 ?0);\n"
            "U_g3' = G M_spiral / d^2; U_g4 = k4 * E_react(t); U_i = ?_I * (?_SCm/?_UA) * ?_i * cos(? t_n) * (1 + F_RZ);\n"
            "?_total = A exp(-r^2/(2?^2)) exp(i(m? - ? t)) + BH terms; Insights: Attractive (g_base, Ug1, Ug3') vs. Repulsive (U_g1, U_g2, ?) advance UQFF.\n"
-           "Adaptations: Hubble ACS 2003 data; M=5e11 Msun; rho_dust=1e-21 kg/m^3. Solutions: g ~2e37 m/s� at t=2 Gyr (DM/dust dominant).";
+           "Adaptations: Hubble ACS 2003 data; M=5e11 Msun; rho_dust=1e-21 kg/m^3. Solutions: g ~2e37 m/sÃ¯Â¿Â½ at t=2 Gyr (DM/dust dominant).";
 }
 
 printVariables()
@@ -69448,7 +69494,7 @@ main() {
 //     double t = 2e9 * 3.156e7;  // 2 Gyr
 //     double r = 20e3 * 3.086e19;  // 20 kpc
 //     double g = mod.computeG(t, r);
-//     std::cout << "g_NGC1316 = " << g << " m/s�\n";
+//     std::cout << "g_NGC1316 = " << g << " m/sÃ¯Â¿Â½\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("M_spiral", 1.5e10 * 1.989e30);
 //     mod.printVariables();
@@ -69710,7 +69756,7 @@ getEquationText() {
            "F_bar = 0.1 G M / r^2; F_wave = ? v_arm^2; U_g1 = ?_dipole * B; U_g2 = B_super^2 / (2 ?0);\n"
            "U_g3' = G M_bar / r_bar^2; U_g4 = k4 * E_react(t); U_i = ?_I * (?_SCm/?_UA) * ?_i * cos(? t_n) * (1 + F_RZ);\n"
            "?_total = A exp(-r^2/(2?^2)) exp(i(m? - ? t)) + bar terms; Insights: Attractive (g_base, Ug1, Ug3') vs. Repulsive (U_g2, ?) advance UQFF.\n"
-           "Adaptations: Hubble ACS 2004 data; SFR=1 Msun/yr; M=1e11 Msun. Solutions: g ~2e36 m/s� at t=1 Gyr (DM/fluid dominant).";
+           "Adaptations: Hubble ACS 2004 data; SFR=1 Msun/yr; M=1e11 Msun. Solutions: g ~2e36 m/sÃ¯Â¿Â½ at t=1 Gyr (DM/fluid dominant).";
 }
 
 printVariables() {
@@ -69725,7 +69771,7 @@ main() {
 //     double t = 1e9 * 3.156e7;  // 1 Gyr
 //     double r = 5e3 * 3.086e19;  // 5 kpc
 //     double g = mod.computeG(t, r);
-//     std::cout << "g_NGC1300 = " << g << " m/s�\n";
+//     std::cout << "g_NGC1300 = " << g << " m/sÃ¯Â¿Â½\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("SFR", 2 * mod.variables["SFR"]);
 //     mod.printVariables();
@@ -70088,7 +70134,7 @@ getEquationText() {
            "F_wind = ? v_wind^2; U_g1 = ?_dipole * B; U_g2 = B_super^2 / (2 ?0);\n"
            "U_g3' = G M_star / r_star^2; U_g4 = k4 * E_react(t); U_i = ?_I * (?_SCm/?_UA) * ?_i * cos(? t_n) * (1 + F_RZ);\n"
            "?_total = A exp(-r^2/(2?^2)) exp(i(m? - ? t)) + wind terms; Insights: Attractive (g_base, Ug1, Ug3') vs. Repulsive (U_g2, ?) advance UQFF.\n"
-           "Adaptations: Hubble ACS 2002 data; SFR=0.01 Msun/yr; M=100 Msun. Solutions: g ~1e-9 m/s� at t=3 Myr (wind/fluid dominant).";
+           "Adaptations: Hubble ACS 2002 data; SFR=0.01 Msun/yr; M=100 Msun. Solutions: g ~1e-9 m/sÃ¯Â¿Â½ at t=3 Myr (wind/fluid dominant).";
 }
 
 printVariables() {
@@ -70103,7 +70149,7 @@ main() {
 //     double t = 3e6 * 3.156e7;  // 3 Myr
 //     double r = 1e16;  // 1 ly
 //     double g = mod.computeG(t, r);
-//     std::cout << "g_NGC2264 = " << g << " m/s�\n";
+//     std::cout << "g_NGC2264 = " << g << " m/sÃ¯Â¿Â½\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("SFR", 0.02 * 1.989e30 / (3.156e7));
 //     mod.printVariables();
@@ -70265,10 +70311,10 @@ getEquationText() {
            "?_fluid * V * g + (M_visible + M_DM) * (d?/? + 3 G M / r^3)\n"
            "Where: M(t) = M * (1 + M_merge(t)); M_merge(t) = M_dwarf * exp(-t/t); r(t) = r0 + v_r t;\n"
            "H(t, z) = H0 * sqrt(Om (1+z)^3 + O?); F_env(t) = F_tidal + F_SF + F_tail;\n"
-           "F_tidal = G M_dwarf / d^2; F_tail = ? v_tail^2; U_g1 = µ_dipole * B; U_g2 = B_super^2 / (2 µ0);\n"
+           "F_tidal = G M_dwarf / d^2; F_tail = ? v_tail^2; U_g1 = Ã‚Âµ_dipole * B; U_g2 = B_super^2 / (2 Ã‚Âµ0);\n"
            "U_g3' = G M_dwarf / d^2; U_g4 = k4 * E_react(t); U_i = ?_I * (?_SCm/?_UA) * ?_i * cos(p t_n) * (1 + F_RZ);\n"
            "?_total = A exp(-r^2/(2s^2)) exp(i(m? - ? t)) + merger terms; Insights: Attractive (g_base, Ug1, Ug3') vs. Repulsive (U_g2, ?) advance UQFF.\n"
-           "Adaptations: Hubble ACS 2003 data; SFR=4.67 Msun/yr; M=1e11 Msun. Solutions: g ~5e37 m/s² at t=250 Myr (DM/tail dominant).";
+           "Adaptations: Hubble ACS 2003 data; SFR=4.67 Msun/yr; M=1e11 Msun. Solutions: g ~5e37 m/sÃ‚Â² at t=250 Myr (DM/tail dominant).";
 }
 
 printVariables() {
@@ -70283,7 +70329,7 @@ main() {
 //     double t = 2.5e8 * 3.156e7;  // 250 Myr
 //     double r = 20e3 * 3.086e19;  // 20 kpc
 //     double g = mod.computeG(t, r);
-//     std::cout << "g_UGC10214 = " << g << " m/s²\n";
+//     std::cout << "g_UGC10214 = " << g << " m/sÃ‚Â²\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("SFR", 5 * mod.variables["SFR"]);
 //     mod.printVariables();
@@ -70463,7 +70509,7 @@ getEquationText() {
            "U_g2,THz = U_g2 (1 + f_THz H_eff t / t_Hubble); U_g3' = G M_B / d^2; U_g4 = k4 * E_react(t);\n"
            "U_i = ?_I * (?_SCm/?_UA) * ?_i * cos(? t_n) * (1 + F_RZ); ?_total = A exp(-r^2/(2?^2)) exp(i(m? - ? t)) + merger terms;\n"
            "Insights: Attractive (g_base, Ug1, Ug3') vs. Repulsive (U_g2,THz, ?) with Aether/THz advance UQFF.\n"
-           "Adaptations: Hubble ACS 2002 data; SFR=5 Msun/yr; M=1e11 Msun. Solutions: g ~4e37 m/s� at t=170 Myr (DM/tidal dominant).";
+           "Adaptations: Hubble ACS 2002 data; SFR=5 Msun/yr; M=1e11 Msun. Solutions: g ~4e37 m/sÃ¯Â¿Â½ at t=170 Myr (DM/tidal dominant).";
 }
 
 printVariables() {
@@ -70478,7 +70524,7 @@ main() {
 //     double t = 1.7e8 * 3.156e7;  // 170 Myr
 //     double r = 20e3 * 3.086e19;  // 20 kpc
 //     double g = mod.computeG(t, r);
-//     std::cout << "g_NGC4676 = " << g << " m/s�\n";
+//     std::cout << "g_NGC4676 = " << g << " m/sÃ¯Â¿Â½\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("SFR", 6 * mod.variables["SFR"]);
 //     mod.printVariables();
@@ -70593,7 +70639,7 @@ getEquationText() {
            "f_res(t) = 2? f_super |?|^2; f_DPM(t) = f_DPM ?_vac / c; f_THz(t) = 1e12 sin(? t);\n"
            "U_g4i(t) = f_react ?_I (1 + f_TRZ); ? = A exp(i(k r - ? t));\n"
            "Insights: Freq-driven (51% causal); Aether (f_Aether) replaces dark energy; no SM illusions.\n"
-           "Adaptations: Hubble 1997 data; v_exp=300 km/s; Solutions: g ~1.65e-122 m/s� at t=1900 yr (resonance dominant).";
+           "Adaptations: Hubble 1997 data; v_exp=300 km/s; Solutions: g ~1.65e-122 m/sÃ¯Â¿Â½ at t=1900 yr (resonance dominant).";
 }
 
 printVariables() {
@@ -70608,7 +70654,7 @@ main() {
 //     double t = 1900 * 3.156e7;  // 1900 yr
 //     double r = 1e15;  // Inner lobe
 //     double g = mod.computeG(t, r);
-//     std::cout << "g_UQFF = " << g << " m/s�\n";
+//     std::cout << "g_UQFF = " << g << " m/sÃ¯Â¿Â½\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("f_super", 1.5 * mod.variables["f_super"]);
 //     mod.printVariables();
@@ -71161,7 +71207,7 @@ getEquationText() {
            "f_res(t) = 2? f_super |?|^2; f_DPM(t) = f_DPM ?_vac / c; f_THz(t) = 1e12 sin(? t);\n"
            "U_g4i(t) = f_react ?_I (1 + f_TRZ); ? = A exp(i(k r - ? t));\n"
            "Insights: Freq-driven (51% causal); Aether (f_Aether) replaces dark energy; no SM illusions; 2PN resonance.\n"
-           "Adaptations: AstroGravS LISA data; M1=4e6 Msun, M2=2e6 Msun, t_coal=180 days. Solutions: g ~1.65e-122 m/s� at t=1.555e7 s (resonance dominant).";
+           "Adaptations: AstroGravS LISA data; M1=4e6 Msun, M2=2e6 Msun, t_coal=180 days. Solutions: g ~1.65e-122 m/sÃ¯Â¿Â½ at t=1.555e7 s (resonance dominant).";
 }
 
 printVariables() {
@@ -71176,7 +71222,7 @@ main() {
 //     double t = 1.555e7;  // 180 days
 //     double r = 9.46e16;  // 0.1 ly
 //     double g = mod.computeG(t, r);
-//     std::cout << "g_UQFF = " << g << " m/s�\n";
+//     std::cout << "g_UQFF = " << g << " m/sÃ¯Â¿Â½\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("f_super", 1.5 * mod.variables["f_super"]);
 //     mod.printVariables();
@@ -71359,7 +71405,7 @@ getEquationText() {
            "U_g3 = G M / r^2 * (?_gas / ?_vac,UA); U_g4 = k4 * E_react(t); U_i = ?_I * (?_vac,UA / ?_plasm) * ?_i * cos(? t_n);\n"
            "U_m = q v_rad B; ?_total = A exp(-r^2/(2?^2)) exp(i(m? - ? t)) + non-local [S S_q];\n"
            "E_core = U_g3 + U_i * ?_gas; T_core ? U_g3 ?_vac,UA; Insights: Entanglement via ? U_gi; blueshift ??/? = v_rad / c; pseudo-monopole communication.\n"
-           "Adaptations: Hubble data; SFR=0.1 Msun/yr; M=1200 Msun. Solutions: g ~1e-10 m/s� at t=10 Myr (Ug3/Ui dominant).";
+           "Adaptations: Hubble data; SFR=0.1 Msun/yr; M=1200 Msun. Solutions: g ~1e-10 m/sÃ¯Â¿Â½ at t=10 Myr (Ug3/Ui dominant).";
 }
 
 printVariables() {
@@ -71374,7 +71420,7 @@ main() {
 //     double t = 1e7 * 3.156e7;  // 10 Myr
 //     double r = 1e16;  // 0.3 pc
 //     double g = mod.computeG(t, r);
-//     std::cout << "g_NGC346 = " << g << " m/s�\n";
+//     std::cout << "g_NGC346 = " << g << " m/sÃ¯Â¿Â½\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("SFR", 0.2 * 1.989e30 / (3.156e7));
 //     mod.printVariables();
@@ -71474,7 +71520,7 @@ getEquationText() {
            "U_g1 = G M_s / r^2 * ?_n cos(?_s,sun t); ?_n = ? (2?)^{n/6}\n"
            "?_s(?) = ? / R_bulge; ?_vac,UA':SCm = ?_UA' (?_SCm / ?_UA)^n exp(-exp(-? - t/yr))\n"
            "Insights: M-? via UQFF resonance; f_feedback=0.063 calibrates metal retention; no SM illusions.\n"
-           "Adaptations: ROMULUS25 sim; M_bh=1e11-1e14 Msun; ?=100-1000 km/s. Solutions: g ~1e-10 m/s� (Ug1/Um dominant).";
+           "Adaptations: ROMULUS25 sim; M_bh=1e11-1e14 Msun; ?=100-1000 km/s. Solutions: g ~1e-10 m/sÃ¯Â¿Â½ (Ug1/Um dominant).";
 }
 
 printVariables() {
@@ -71489,7 +71535,7 @@ main() {
 //     double t = 4.543e9 * 3.156e7;  // 4.543 Gyr
 //     double sigma = 200e3;  // 200 km/s
 //     double g = mod.computeG(t, sigma);
-//     std::cout << "g_UQFF = " << g << " m/s�\n";
+//     std::cout << "g_UQFF = " << g << " m/sÃ¯Â¿Â½\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("M_bh", 1e13 * 1.989e30);
 //     mod.printVariables();
@@ -71525,7 +71571,7 @@ current_scenario("hydride")
     variables["E_a"] = variables["e"] / (variables["a"] * variables["a"]); // V/m
 
     // UQFF params
-    variables["rho_vac_UA"] = 7.09e-36;             // J/m�
+    variables["rho_vac_UA"] = 7.09e-36;             // J/mÃ¯Â¿Â½
     variables["mu_0"] = 4 * variables["pi"] * 1e-7; // H/m
     variables["lambda_I"] = 1.0;
     variables["omega_i"] = 1e-8; // rad/s
@@ -71643,8 +71689,8 @@ getEquationText()
 {
     return "?(t) = (G_F^2 (m~ c^2)^4 / (2p ?^3)) (W - ?)^2 ?(W - ?)\n"
            "O = sqrt(4p ?_e e^2 / m_e); E = (m_e c^2 / e) (O / c)\n"
-           "U_m = (�_j / r) (1 - exp(-? t cos(p t_n))) P_scm E_react (1 + 1e13 f_heaviside) (1 + f_quasi)\n"
-           "�_j = (1e3 + 0.4 sin(?_c t)) * 3.38e20; E_react = E_0 exp(-a t/day)\n"
+           "U_m = (Ã¯Â¿Â½_j / r) (1 - exp(-? t cos(p t_n))) P_scm E_react (1 + 1e13 f_heaviside) (1 + f_quasi)\n"
+           "Ã¯Â¿Â½_j = (1e3 + 0.4 sin(?_c t)) * 3.38e20; E_react = E_0 exp(-a t/day)\n"
            "U_g1 = G M_s / r^2 d_n cos(?_s,sun t); d_n = f (2p)^{n/6}\n"
            "U_i = ?_I (?_vac,UA / ?_plasm) ?_i cos(p t_n); ?_vac,UA':SCm = ?_UA' (?_SCm / ?_UA)^n exp(-exp(-p - t/yr))\n"
            "Insights: LENR via EW threshold 0.78 MeV; 100% accuracy post-calibration; hydride E=2e11 V/m, ?=1e13 cm^-2/s.\n"
@@ -71694,8 +71740,8 @@ current_scenario("hydride") {
     variables["S_S_q"] = 1.0;                       // Non-local base
 
     // UQFF params
-    variables["rho_vac_SCm"] = 7.09e-37;            // J/m�
-    variables["rho_vac_UA"] = 7.09e-36;             // J/m�
+    variables["rho_vac_SCm"] = 7.09e-37;            // J/mÃ¯Â¿Â½
+    variables["rho_vac_UA"] = 7.09e-36;             // J/mÃ¯Â¿Â½
     variables["rho_vac_UA_prime"] = 1e-23;          // For UA':SCm
     variables["gamma"] = 0.00005;                   // day^-1
     variables["t_n"] = 0.0;                         // days
@@ -71779,7 +71825,7 @@ getEquationText() {
     return "?(t, n) = k_? * exp(-[S S_q]^n 2^6 e^(-? - t/yr)) * U_m / ?_vac,[UA]\n"
            "U_m(t,r,n) = ? [?_j / r * (1 - e^{-? t cos(? t_n)}) * ?^j ] * P_scm E_react (1 + 10^13 f_Heaviside) (1 + f_quasi)\n"
            "?_j(t) = (10^3 + 0.4 sin(?_c t)) * 3.38e20; E_react(t) = 10^46 e^{-0.0005 t/yr}\n"
-           "?_n = (2?)^{n/6}; ?_vac,[UA�]:[SCm](n,t) = 10^{-23} (0.1)^n exp(-[S S_q]^n 2^6 e^(-? - t/yr))\n"
+           "?_n = (2?)^{n/6}; ?_vac,[UAÃ¯Â¿Â½]:[SCm](n,t) = 10^{-23} (0.1)^n exp(-[S S_q]^n 2^6 e^(-? - t/yr))\n"
            "E = U_m / (?_vac,[UA] r); Insights: Calib k_? for 100% accuracy; hydride ?=1e13 cm^{-2}/s, E=2e11 V/m.\n"
            "Adaptations: Pramana 2008; Scenarios: hydride/wires/corona. Solutions: ? ~1e13 cm^{-2}/s (non-local dominant).";
 }
@@ -71976,11 +72022,11 @@ getEquationText() {
            "?_gas * V * g + (M_visible + M_DM) * (d?/? + 3 G M / r^3)\n"
            "Where: M(t) = M * (1 + M_SF(t)); M_SF(t) = SFR * t; r(t) = r0 + v_r t;\n"
            "H(t, z) = H0 * sqrt(Om (1+z)^3 + O?); F_env(t) = F_collapse + F_SF;\n"
-           "F_collapse = ?_gas v_rad^2; U_g1 = cos(? t); U_g2 = B_super^2 / (2 µ0);\n"
+           "F_collapse = ?_gas v_rad^2; U_g1 = cos(? t); U_g2 = B_super^2 / (2 Ã‚Âµ0);\n"
            "U_g3 = G M / r^2 * (?_gas / ?_vac,UA); U_g4 = k4 * E_react(t); U_i = ?_I * (?_vac,UA / ?_plasm) * ?_i * cos(p t_n);\n"
            "U_m = q v_rad B; ?_total = A exp(-r^2/(2s^2)) exp(i(m? - ? t)) + non-local [S S_q];\n"
            "E_core = U_g3 + U_i * ?_gas; T_core ? U_g3 ?_vac,UA; Insights: Entanglement via S U_gi; blueshift ??/? = v_rad / c; pseudo-monopole communication.\n"
-           "Adaptations: Hubble data; SFR=0.1 Msun/yr; M=1200 Msun. Solutions: g ~1e-10 m/s² at t=10 Myr (Ug3/Ui dominant).";
+           "Adaptations: Hubble data; SFR=0.1 Msun/yr; M=1200 Msun. Solutions: g ~1e-10 m/sÃ‚Â² at t=10 Myr (Ug3/Ui dominant).";
 }
 
 printVariables() {
@@ -71995,7 +72041,7 @@ main() {
 //     double t = 1e7 * 3.156e7;  // 10 Myr
 //     double r = 1e16;  // 0.3 pc
 //     double g = mod.computeG(t, r);
-//     std::cout << "g_NGC346 = " << g << " m/s²\n";
+//     std::cout << "g_NGC346 = " << g << " m/sÃ‚Â²\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("SFR", 0.2 * 1.989e30 / (3.156e7));
 //     mod.printVariables();
@@ -72436,7 +72482,7 @@ getEquationText_compressed()
     }
     return "Compressed MUGE for " + sys_name + ":\n"
                                                "g(r,t) = (G M(t)/r^2) (1 + H(t,z)) (1 - B/B_crit) (1 + F_env(t)) + (Ug1 + Ug2 + Ug3' + Ug4) + (Lambda c^2 / 3) + "
-                                               "(hbar / sqrt(Delta_x Delta_p)) ?(? H ? dV) (2? / t_Hubble) + q (v � B) + ?_fluid V g + "
+                                               "(hbar / sqrt(Delta_x Delta_p)) ?(? H ? dV) (2? / t_Hubble) + q (v Ã¯Â¿Â½ B) + ?_fluid V g + "
                                                "2 A cos(k x) cos(? t) + (2?/13.8) A Re[exp(i (k x - ? t))] + (M_vis + M_DM) (??/? + 3 G M / r^3) + SysTerm\n"
                                                "SysTerm: e.g., for Magnetar: G M_BH / r_BH^2; for Sgr A*: (G M^2 / c^4 r) (d?/dt)^2 sin(30); for Starbirth: ? v_wind^2\n"
                                                "Variables: As in map; Approximations: Ug1=Ug2=Ug4=0, integral normalized=1.0 scaled.";
@@ -72467,8 +72513,8 @@ main() {
 //     double t = 3.799e10;
 //     double g_comp = mod.computeG_compressed(t);
 //     double g_res = mod.computeG_resonance(t);
-//     std::cout << "Compressed g = " << g_comp << " m/s�\n";
-//     std::cout << "Resonance g = " << g_res << " m/s�\n";
+//     std::cout << "Compressed g = " << g_comp << " m/sÃ¯Â¿Â½\n";
+//     std::cout << "Resonance g = " << g_res << " m/sÃ¯Â¿Â½\n";
 //     std::cout << mod.getEquationText_compressed() << "\n" << mod.getEquationText_resonance() << std::endl;
 //     mod.updateVariable("M", 2.0 * mod.variables["M_sun"]);
 //     mod.printVariables();
@@ -72903,7 +72949,7 @@ getEquationText()
         sys_name = "Rings of Relativity";
         break;
     case SystemType::STUDENTS_GUIDE_UNIVERSE:
-        sys_name = "Student�s Guide to the Universe";
+        sys_name = "StudentÃ¯Â¿Â½s Guide to the Universe";
         break;
     case SystemType::NGC_2525:
         sys_name = "NGC 2525";
@@ -72931,7 +72977,7 @@ getEquationText()
                                                               "a_aether_res = [U_A' : SC_m] ?_i f_THz a_DPM (1 + f_TRZ); Ug4i = (E_vac,neb / c) k4 E_react(t) f_react a_DPM;\n"
                                                               "a_quantum_freq = (E_vac,ISM / c) f_quantum E_vac,neb a_DPM; similar for a_Aether_freq, a_exp_freq;\n"
                                                               "a_fluid_freq = (E_vac,ISM / c) f_fluid E_vac,neb V_sys; Osc_term ? 0; f_exp = H(z) t / (2?).\n"
-                                                              "Aether models expansion; tuned params yield g ~10^{-9} to 10^{35} m/s� (fluid dominant for large systems).";
+                                                              "Aether models expansion; tuned params yield g ~10^{-9} to 10^{35} m/sÃ¯Â¿Â½ (fluid dominant for large systems).";
 }
 
 printVariables()
@@ -72947,7 +72993,7 @@ main() {
 //     MUGEResonanceModule mod(SystemType::MAGNETAR_SGR_1745_2900);
 //     double t = mod.variables["t"];
 //     double g = mod.computeG_resonance(t);
-//     std::cout << "g_resonance = " << g << " m/s�\n";
+//     std::cout << "g_resonance = " << g << " m/sÃ¯Â¿Â½\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("v_exp", 2e3);
 //     mod.printVariables();
@@ -73030,7 +73076,7 @@ getEquationText() {
            "Where a_dust = (?_dust * v_orbit^2 / ?_mass) * scale_macro;\n"
            "EM term: q v B / m_proton * (1 + ?_vac_UA / ?_vac_SCm) * scale_macro.\n"
            "Andromeda Adaptations: Blueshift z=-0.001; M=1e12 M_sun; dust lanes with v_orbit=250 km/s.\n"
-           "At t=10 Gyr, g ?6.273 m/s� (dust dominant); minimal evolution due to small H(z)t.\n"
+           "At t=10 Gyr, g ?6.273 m/sÃ¯Â¿Â½ (dust dominant); minimal evolution due to small H(z)t.\n"
            "UQFF Terms: f_TRZ for time-reversal; Aether vacua ratio for EM enhancement.";
 }
 
@@ -73043,7 +73089,7 @@ printVariables() {
 
 printEvolutionTable() {
     std::cout << std::fixed << std::setprecision(3);
-    std::cout << "Evolution over time (m/s�):\n";
+    std::cout << "Evolution over time (m/sÃ¯Â¿Â½):\n";
     std::cout << "t (Gyr) | g_Andromeda\n";
     std::cout << "--------|------------\n";
     for (int i = 0; i <= 5; ++i) {
@@ -73057,7 +73103,7 @@ main() {
 //     AndromedaUQFFModule mod;
 //     double t = 10.0 * 1e9 * 3.156e7;
 //     double g = mod.computeG(t);
-//     std::cout << "g = " << g << " m/s�\n";
+//     std::cout << "g = " << g << " m/sÃ¯Â¿Â½\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.printEvolutionTable();
 //     mod.updateVariable("v_orbit", 3e5);
@@ -73762,7 +73808,7 @@ getEquationText()
            "Opposes gravity: 60% scaling of gravitational term.\n"
            "In F_U: ? [k_i U_gi - ?_i U_gi ?_g (M_bh/d_g) E_react] + other terms.\n"
            "Role: Stabilizes systems (e.g., molecular clouds, nebulae); counteracts Ug collapse.\n"
-           "Example Ug1: U_b1 ? -1.94e27 J/m� (at t_n=0, Sun params)."
+           "Example Ug1: U_b1 ? -1.94e27 J/mÃ¯Â¿Â½ (at t_n=0, Sun params)."
            "UQFF: Uniform buoyancy across scales; tunable for refinements.";
 }
 
@@ -73778,7 +73824,7 @@ printVariables()
 printU_bi()
 {
     auto all_u_bi = computeAllU_bi();
-    std::cout << "Universal Buoyancy Terms U_bi (J/m�):\n";
+    std::cout << "Universal Buoyancy Terms U_bi (J/mÃ¯Â¿Â½):\n";
     for (int i = 1; i <= 4; ++i)
     {
         std::cout << "U_b" << i << " = " << std::scientific << all_u_bi[i - 1] << std::endl;
@@ -73789,7 +73835,7 @@ printU_bi()
 main() {
 //     BuoyancyCouplingModule mod;
 //     double u_b1 = mod.computeU_bi(1);
-//     std::cout << "U_b1 = " << u_b1 << " J/m�\n";
+//     std::cout << "U_b1 = " << u_b1 << " J/mÃ¯Â¿Â½\n";
 //     mod.printU_bi();
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("beta", 0.7);
@@ -73870,10 +73916,10 @@ computeU_b1()
 getEquationText()
 {
     return "Modulation Factor = 1 + ?_sw * ?_vac,sw\n"
-           "Where ?_sw = 0.001 (unitless); ?_vac,sw = 8e-21 J/m�.\n"
+           "Where ?_sw = 0.001 (unitless); ?_vac,sw = 8e-21 J/mÃ¯Â¿Â½.\n"
            "In U_bi: ... * (1 + ?_sw * ?_vac,sw) * ... ?1 (negligible correction ~8e-24).\n"
            "U_b1 = -?_1 U_g1 ?_g (M_bh / d_g) * modulation * U_UA * cos(? t_n)\n"
-           "? -1.94e27 J/m� (at t_n=0, Sun params; modulation ?1).\n"
+           "? -1.94e27 J/mÃ¯Â¿Â½ (at t_n=0, Sun params; modulation ?1).\n"
            "Role: Minor solar wind density effect on buoyancy; stabilizes heliosphere/nebulae.\n"
            "UQFF: Scales counterforce to Ug; negligible but flexible for variations.";
 }
@@ -73892,7 +73938,7 @@ main() {
 //     double mod_factor = mod.computeModulationFactor();
 //     std::cout << "Modulation Factor = " << mod_factor << std::endl;
 //     double u_b1 = mod.computeU_b1();
-//     std::cout << "U_b1 = " << u_b1 << " J/m�\n";
+//     std::cout << "U_b1 = " << u_b1 << " J/mÃ¯Â¿Â½\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("epsilon_sw", 0.002);
 //     mod.printVariables();
@@ -73986,7 +74032,7 @@ getEquationText()
            "U_g2 = k2 * (?_UA + ?_SCm) M_s / r^2 * S(r-R_b) (1+?_sw v_sw) H_SCm E_react;\n"
            "U_g3 = k3 * (?_SCm + ?_UA) ?_g M_s / d_g * cos(? t_n) (1 + f_mag_str);\n"
            "U_g4 = k4 * ?_SCm M_bh / d_g * e^{-? t} cos(? t_n) (1 + f_feedback).\n"
-           "Example Sun t=0: ? k_i U_gi ?1.42e53 J/m� (Ug2 dominant).\n"
+           "Example Sun t=0: ? k_i U_gi ?1.42e53 J/mÃ¯Â¿Â½ (Ug2 dominant).\n"
            "Role: Scales Ug strengths; normalizes contributions in F_U.";
 }
 
@@ -74008,7 +74054,7 @@ printVariables()
 printK_Ugi()
 {
     auto all = computeAllK_Ugi();
-    std::cout << "Scaled Ug Terms k_i * U_gi (J/m�):\n";
+    std::cout << "Scaled Ug Terms k_i * U_gi (J/mÃ¯Â¿Â½):\n";
     for (int i = 1; i <= 4; ++i)
     {
         std::cout << "k" << i << " * U_g" << i << " = " << std::scientific << all[i - 1] << std::endl;
@@ -74019,7 +74065,7 @@ printK_Ugi()
 main() {
 //     UgCouplingModule mod;
 //     double sum = mod.computeSumK_Ugi();
-//     std::cout << "? k_i U_gi = " << sum << " J/m�\n";
+//     std::cout << "? k_i U_gi = " << sum << " J/mÃ¯Â¿Â½\n";
 //     mod.printK_Ugi();
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("U_g3", 2e49);
@@ -74228,11 +74274,11 @@ computeU_g4()
 
 getEquationText()
 {
-    return "U_bi = -�_i U_gi O_g (M_bh / d_g) (1 + e_sw ?_vac,sw) U_UA cos(p t_n)\n"
+    return "U_bi = -Ã¯Â¿Â½_i U_gi O_g (M_bh / d_g) (1 + e_sw ?_vac,sw) U_UA cos(p t_n)\n"
            "U_g4 = k_4 (?_vac,[SCm] M_bh / d_g) e^{-a t} cos(p t_n) (1 + f_feedback)\n"
            "Where d_g = 2.55e20 m (~27,000 ly / 8,260 pc; Sun to Sgr A*).\n"
-           "M_bh / d_g �3.20e16 kg/m;\n"
-           "Example U_b1 � -1.94e27 J/m�; U_g4 �2.50e-20 J/m� (t_n=0).\n"
+           "M_bh / d_g Ã¯Â¿Â½3.20e16 kg/m;\n"
+           "Example U_b1 Ã¯Â¿Â½ -1.94e27 J/mÃ¯Â¿Â½; U_g4 Ã¯Â¿Â½2.50e-20 J/mÃ¯Â¿Â½ (t_n=0).\n"
            "Role: Scales SMBH influence on buoyancy/Ug4; galactic dynamics in nebulae/disks.\n"
            "UQFF: Enables merger resolution (final parsec); star formation modulation.";
 }
@@ -74249,9 +74295,9 @@ printVariables()
 main() {
 //     GalacticDistanceModule mod;
 //     double dg_ly = mod.computeDgInLy();
-//     std::cout << "d_g � " << dg_ly << " ly\n";
+//     std::cout << "d_g Ã¯Â¿Â½ " << dg_ly << " ly\n";
 //     double u_b1 = mod.computeU_b1();
-//     std::cout << "U_b1 = " << u_b1 << " J/m�\n";
+//     std::cout << "U_b1 = " << u_b1 << " J/mÃ¯Â¿Â½\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("d_g", 2.6e20);
 //     mod.printVariables();
@@ -74333,7 +74379,7 @@ getEquationText() {
     return "U_g4 = k_4 * (?_vac,[SCm] M_bh / d_g) * e^{-? t} * cos(? t_n) * (1 + f_feedback)\n"
            "Where f_feedback = 0.1 (unitless, for ?M_BH = 1 dex = 10x mass increase);\n"
            "?M_BH =1 dex ? M_bh_final = 10 * M_bh_initial (8.15e36 kg ? 8.15e37 kg).\n"
-           "Example t=0, t_n=0: U_g4 ?2.75e-20 J/m� (with); ?2.50e-20 J/m� (without; +10%).\n"
+           "Example t=0, t_n=0: U_g4 ?2.75e-20 J/mÃ¯Â¿Â½ (with); ?2.50e-20 J/mÃ¯Â¿Â½ (without; +10%).\n"
            "Role: Scales feedback in star-BH interactions; regulates AGN, mergers, star formation.\n"
            "UQFF: Enhances energy density for 10x M_BH; resolves final parsec, quasar jets.";
 }
@@ -74350,8 +74396,8 @@ printU_g4_comparison(double t, double t_n) {
     double u_without = computeU_g4_no_feedback(t, t_n);
     double delta_percent = ((u_with - u_without) / u_without) * 100.0;
     std::cout << "U_g4 Comparison at t=" << t << " s, t_n=" << t_n << " s:\n";
-    std::cout << "With feedback: " << std::scientific << u_with << " J/m�\n";
-    std::cout << "Without feedback: " << std::scientific << u_without << " J/m�\n";
+    std::cout << "With feedback: " << std::scientific << u_with << " J/mÃ¯Â¿Â½\n";
+    std::cout << "Without feedback: " << std::scientific << u_without << " J/mÃ¯Â¿Â½\n";
     std::cout << "Difference: +" << std::fixed << std::setprecision(1) << delta_percent << "%\n";
 }
 
@@ -74430,10 +74476,10 @@ computeFU(double t) {
 
 getEquationText() {
     return "F_U = ? [Ug_i + Um + Ub_i + Ui + Aether] * norm(?_vac,[SCm] + ?_vac,[UA])\n"
-           "Units: J/m³ (energy density).\n"
-           "Ug: ? U_g1-4 (gravity scales); Um: Magnetic strings; Ub: -ß_i Ug_i ... (buoyancy);\n"
-           "Ui: Inertia resistance; Aether: g_µ? + ? T_s (perturbed metric).\n"
-           "Normalized across 26 levels; Sun t=0: F_U 2.28e65 J/m³ (Um dominant).\n"
+           "Units: J/mÃ‚Â³ (energy density).\n"
+           "Ug: ? U_g1-4 (gravity scales); Um: Magnetic strings; Ub: -ÃƒÅ¸_i Ug_i ... (buoyancy);\n"
+           "Ui: Inertia resistance; Aether: g_Ã‚Âµ? + ? T_s (perturbed metric).\n"
+           "Normalized across 26 levels; Sun t=0: F_U Ã‚Ëœ2.28e65 J/mÃ‚Â³ (Um dominant).\n"
            "Role: Holistic energy density for cosmic/quantum dynamics (nebulae, AGN, mergers).\n"
            "UQFF: Integrates forces; vacuum normalization for scale consistency.";
 }
@@ -74454,20 +74500,20 @@ printComponentBreakdown(double t) {
     double aether = computeAether();
     double norm = (variables["rho_vac_SCm"] + variables["rho_vac_UA"]);
     std::cout << "F_U Breakdown at t=" << t << " s:\n";
-    std::cout << "Ug sum: " << std::scientific << ug << " J/m³\n";
-    std::cout << "Um: " << um << " J/m³\n";
-    std::cout << "Ub sum: " << ub << " J/m³\n";
-    std::cout << "Ui: " << ui << " J/m³\n";
-    std::cout << "Aether: " << aether << " J/m³\n";
+    std::cout << "Ug sum: " << std::scientific << ug << " J/mÃ‚Â³\n";
+    std::cout << "Um: " << um << " J/mÃ‚Â³\n";
+    std::cout << "Ub sum: " << ub << " J/mÃ‚Â³\n";
+    std::cout << "Ui: " << ui << " J/mÃ‚Â³\n";
+    std::cout << "Aether: " << aether << " J/mÃ‚Â³\n";
     std::cout << "Norm factor: " << norm << "\n";
-    std::cout << "Total F_U: " << fu << " J/m³\n";
+    std::cout << "Total F_U: " << fu << " J/mÃ‚Â³\n";
 }
 
 main() {
 //     UnifiedFieldModule mod;
 //     double t = 0.0;
 //     double fu = mod.computeFU(t);
-//     std::cout << "F_U = " << fu << " J/m³\n";
+//     std::cout << "F_U = " << fu << " J/mÃ‚Â³\n";
 //     mod.printComponentBreakdown(t);
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("U_m", 2.5e65);

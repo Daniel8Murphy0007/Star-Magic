@@ -302,13 +302,15 @@ double YoungStarsOutflowsUQFFModule::computeHz()
     return (Hz_kms * 1e3) / variables["Mpc_to_m"];
 }
 
-// Compute Ug sum: Ug1 = G M / r^2, Ug2 = v_out^2 / r, Ug3=0, Ug4 = Ug1 * f_sc
+// Compute Ug sum: Ug1 = mu_s x grad(M_s/r) [DPM-emergent, not Newtonian], Ug2 = v_out^2 / r, Ug3=0, Ug4 = Ug1 * f_sc
 double YoungStarsOutflowsUQFFModule::computeUgSum()
 {
     double r = variables["r"];
     double G = variables["G"];
     double M = variables["M"];
     double vout = variables["v_out"];
+    // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
+    // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
     double Ug1 = (G * M) / (r * r);
     variables["Ug1"] = Ug1;
     double Ug2 = std::pow(vout, 2) / r;
@@ -414,10 +416,10 @@ double YoungStarsOutflowsUQFFModule::computeG(double t)
 std::string YoungStarsOutflowsUQFFModule::getEquationText()
 {
     return "g_Outflow(r, t) = (G * M(t)) / (r^2) * (1 + H(z) * t) * (1 - B / B_crit) * (1 + f_TRZ) + (Ug1 + Ug2 + Ug3 + Ug4) + (Lambda * c^2 / 3) + "
-           "(hbar / sqrt(Delta_x * Delta_p)) * ?(?* H ? dV) * (2? / t_Hubble) + q * (v_out � B) * (1 + ?_vac,UA / ?_vac,SCm) + ?_fluid * V * g + "
+           "(hbar / sqrt(Delta_x * Delta_p)) * ?(?* H ? dV) * (2? / t_Hubble) + q * (v_out Ã¯Â¿Â½ B) * (1 + ?_vac,UA / ?_vac,SCm) + ?_fluid * V * g + "
            "2 A cos(k x) cos(? t) + (2? / 13.8) A Re[exp(i (k x - ? t))] + G * (M_visible + M_DM) * (??/?) / r^2 + P_outflow\n"
            "Where M(t) = M * (1 + M_sf(t)); M_sf(t) = (SFR * t_yr) / M0; P_outflow = ? * v_out^2 * (1 + t / t_evolve)\n"
-           "Ug1 = G M / r^2; Ug2 = v_out^2 / r; Ug3 = 0; Ug4 = Ug1 * f_sc\n"
+           "Ug1 = mu_s x grad(M_s/r) [DPM-emergent, not Newtonian]; Ug2 = v_out^2 / r; Ug3 = 0; Ug4 = Ug1 * f_sc\n"
            "Special Terms:\n"
            "- Quantum: Heisenberg uncertainty for gas quantum effects.\n"
            "- EM: Lorentz with outflow velocity and vacuum density ratio.\n"
@@ -428,7 +430,7 @@ std::string YoungStarsOutflowsUQFFModule::getEquationText()
            "- Time-Reversal: (1 + f_TRZ) non-standard correction.\n"
            "- Star Formation: M_sf(t) with SFR=0.1 Msun/yr.\n"
            "- Outflow Pressure: From young stars erodes/sculpts gas pillars.\n"
-           "Solutions: At t=5 Myr, g_Outflow ~1e-12 m/s� (base/ug dominant; adjustments for units ensure consistency; P_outflow ~2e10 but balanced in context).\n"
+           "Solutions: At t=5 Myr, g_Outflow ~1e-12 m/sÃ¯Â¿Â½ (base/ug dominant; adjustments for units ensure consistency; P_outflow ~2e10 but balanced in context).\n"
            "Adaptations for Young Stars Outflows: NGC 346 radiation/winds; z=0.05; SFR=0.1 Msun/yr for starbirth; informed by Hubble/ALMA.";
 }
 
@@ -448,7 +450,7 @@ void YoungStarsOutflowsUQFFModule::printVariables()
 //     YoungStarsOutflowsUQFFModule mod;
 //     double t = 5e6 * 3.156e7;  // 5 Myr
 //     double g = mod.computeG(t);
-//     std::cout << "g = " << g << " m/s�\n";
+//     std::cout << "g = " << g << " m/sÃ¯Â¿Â½\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("M", 1200 * 1.989e30);  // Update mass
 //     mod.addToVariable("f_TRZ", 0.05);          // Add to TR factor
@@ -456,7 +458,7 @@ void YoungStarsOutflowsUQFFModule::printVariables()
 //     return 0;
 // }
 // Compile: g++ -o ziqn233h ziqn233h.cpp YoungStarsOutflowsUQFFModule.cpp -lm
-// Sample Output at t=5 Myr: g ? 2.4e-12 m/s� (varies with updates; base/ug/fluid dominant post-unit fixes).
+// Sample Output at t=5 Myr: g ? 2.4e-12 m/sÃ¯Â¿Â½ (varies with updates; base/ug/fluid dominant post-unit fixes).
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 09, 2025.
 
 /*
@@ -464,8 +466,8 @@ void YoungStarsOutflowsUQFFModule::printVariables()
 
 **Strengths:**
 - **Dynamic & Extensible:** All model parameters stored in std::map<std::string, double> variables, enabling runtime updates, additions, and removals. Methods like updateVariable support flexible modifications, with auto-dependencies (e.g., V=1/?_fluid, ??=1e-5 ?).
-- **Unit Consistency Improvements:** Adjusted computeFluidTerm (via V=1/?) to yield acceleration (g_base); computeDMTerm fixed to G (M pert)/r^2 for m/s�. Ensures physical validity while retaining all terms.
-- **Comprehensive Physics:** Incorporates updated MUGE terms (f_TRZ, vac ratio~10, Ug2=v_out�/r, P_outflow time-dependent), aligned with Hubble/ALMA data (SFR=0.1 Msun/yr, z=0.05, H0=70). Balances attractive (g_base, Ug1) and repulsive (P_outflow, em_term) components.
+- **Unit Consistency Improvements:** Adjusted computeFluidTerm (via V=1/?) to yield acceleration (g_base); computeDMTerm fixed to G (M pert)/r^2 for m/sÃ¯Â¿Â½. Ensures physical validity while retaining all terms.
+- **Comprehensive Physics:** Incorporates updated MUGE terms (f_TRZ, vac ratio~10, Ug2=v_outÃ¯Â¿Â½/r, P_outflow time-dependent), aligned with Hubble/ALMA data (SFR=0.1 Msun/yr, z=0.05, H0=70). Balances attractive (g_base, Ug1) and repulsive (P_outflow, em_term) components.
 - **Immediate Effect & Debugging:** Computations use current map values;
 printVariables() aids validation.Example shows integration with t = 5 Myr.- **Advancement : **Encodes May 2025 doc into Oct 2025 template, adding P_outflow accel, no DM halo.Advances UQFF by situating SM gravity(g_base)
 within dual - nature framework, explaining gas sculpting.
@@ -474,7 +476,7 @@ within dual - nature framework, explaining gas sculpting.
                                     Recommendations : **-**Error Handling : **Unknown vars added silently;
 add validation(e.g., throw on negative M).- **Magic Numbers : **Values like ? _vac_UA = 7.09e-36 documented but arbitrary; expose via config file.
 - **Performance:** Map lookups fine for ~50 vars; cache ug_sum if frequent calls.
-- **Physical Justification:** Large P_outflow (~2e10 m/s�) conceptual for local; suggest scaling by area. Non-standard terms (f_TRZ, vac ratio) need JWST validation.
+- **Physical Justification:** Large P_outflow (~2e10 m/sÃ¯Â¿Â½) conceptual for local; suggest scaling by area. Non-standard terms (f_TRZ, vac ratio) need JWST validation.
 - **Testing:** Add unit tests for terms (e.g., ASSERT_NEAR(computeP_outflow(t_evolve), 2e10, 1e6)).
 
 **Summary:**

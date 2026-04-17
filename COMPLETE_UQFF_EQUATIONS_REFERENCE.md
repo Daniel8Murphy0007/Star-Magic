@@ -368,7 +368,7 @@ Layer i    E_i = 100 · e^(-0.57i)    Physical Domain
 
 ### Three Calculation Methods
 1. **UQFF (Buoyancy-Based):** 8 functions
-2. **MUGE Compressed (Newtonian+Corrections):** 10 functions
+2. **MUGE Compressed (DPM-Driven, Compact Representation):** 10 functions
 3. **MUGE Resonance (Frequency-Domain):** 14 functions
 
 ### UQFF Method (lines 28211-28275)
@@ -532,8 +532,9 @@ inline double compute_FU_SOURCE4(const CelestialBody_SOURCE4& body, double r, do
 
 ### MUGE Compressed Method (10 Functions, lines 28292-28309)
 ```cpp
-// Base: Newtonian gravity
-// +9 Corrections:
+// Base: DPM (di-pseudo-monopole) — a_DPM = F_DPM * f_DPM * E_vac,neb / (c * V_sys)
+// Newtonian gravity is EMERGENT from this substrate, not foundational.
+// +9 Correction/Enhancement Terms:
 // 1. Expansion: Hubble flow
 // 2. Super: Magnetic suppression
 // 3. Envelope: External field
@@ -545,11 +546,14 @@ inline double compute_FU_SOURCE4(const CelestialBody_SOURCE4& body, double r, do
 // 9. (Reserved)
 
 inline double compute_compressed_MUGE_SOURCE4(const MUGESystem_SOURCE4& sys) {
-    double G = 6.674e-11;
-    double base = G * sys.M / (sys.r * sys.r);
+    // DPM foundation: F_DPM = I * A * (omega1 - omega2)
+    double F_DPM = sys.I * sys.A * (sys.omega1 - sys.omega2);
+    double f_DPM = 1.0;  // DPM frequency modulation
+    double c = 2.998e8;
+    double base = F_DPM * f_DPM * sys.Evac_neb / (c * sys.Vsys);
     
-    // Apply 9 corrections...
-    return base * (1 + sum_of_corrections);
+    // Apply 9 correction terms...
+    return base + sum_of_corrections;
 }
 ```
 

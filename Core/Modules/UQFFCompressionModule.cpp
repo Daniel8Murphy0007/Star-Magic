@@ -1,6 +1,6 @@
 // UQFFCompressionModule.h
 // Modular C++ implementation of the Compressed Universal Quantum Field Superconductive Framework (UQFF) for Multi-System Astrophysical Evolution.
-// This module implements the streamlined UQFF equation from Compression Cycle 2, adaptable for systems like Magnetar SGR 1745-2900, Sagittarius A*, Tapestry of Blazing Starbirth, Westerlund 2, Pillars of Creation, Rings of Relativity, NGC 2525, NGC 3603, Bubble Nebula, Antennae Galaxies, Horsehead Nebula, NGC 1275, Hubble Ultra Deep Field, NGC 1792, and the Student�s Guide to the Universe.
+// This module implements the streamlined UQFF equation from Compression Cycle 2, adaptable for systems like Magnetar SGR 1745-2900, Sagittarius A*, Tapestry of Blazing Starbirth, Westerlund 2, Pillars of Creation, Rings of Relativity, NGC 2525, NGC 3603, Bubble Nebula, Antennae Galaxies, Horsehead Nebula, NGC 1275, Hubble Ultra Deep Field, NGC 1792, and the Studentï¿½s Guide to the Universe.
 // Usage: // // // #define _USE_MATH_DEFINES
 #include <cmath>
 #ifndef M_PI
@@ -397,6 +397,8 @@ double UQFFCompressionModule::computeDMTerm()
 // Ug sum with Ug3'
 double UQFFCompressionModule::computeUgSum()
 {
+    // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
+    // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
     double Ug1 = (variables["G"] * variables["M"]) / (variables["r"] * variables["r"]);
     variables["Ug1"] = Ug1;
     variables["Ug3"] = computeUg3prime();
@@ -452,9 +454,9 @@ std::string UQFFCompressionModule::getEquationText()
            "(M_visible + M_DM) * (??/? + 3 G M / r^3)\n"
            "Where: H(t, z) = H0 * sqrt(?m (1+z)^3 + ??); M(t) = M * (1 + M_sf(t)); M_sf(t) = (SFR * t_yr) / M0;\n"
            "F_env(t) = ? F_i(t) [winds, erosion, lensing, mag, decay, coll, evo, merge, sf, SN, rad, BH];\n"
-           "Ug3' = G M_ext / r_ext^2; psi_total = q(v � B) + 2A cos(kx) cos(?t) + (2?/13.8) A Re[exp(i(kx - ?t))];\n"
+           "Ug3' = G M_ext / r_ext^2; psi_total = q(v ï¿½ B) + 2A cos(kx) cos(?t) + (2?/13.8) A Re[exp(i(kx - ?t))];\n"
            "Compression Advancements: Unified expansion, modular env effects, consolidated waves/gravity terms for 19+ systems.\n"
-           "Adaptations: setSystem('Magnetar') for SGR 1745-2900; etc. Solutions: g ~1e-10 to 1e-12 m/s� typical.";
+           "Adaptations: setSystem('Magnetar') for SGR 1745-2900; etc. Solutions: g ~1e-10 to 1e-12 m/sï¿½ typical.";
 }
 
 // Print variables
@@ -474,14 +476,14 @@ void UQFFCompressionModule::printVariables()
 //     mod.setSystem("Pillars");
 //     double t = 1e6 * 3.156e7;  // 1 Myr
 //     double g = mod.computeG(t);
-//     std::cout << "g_UQFF = " << g << " m/s�\n";
+//     std::cout << "g_UQFF = " << g << " m/sï¿½\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("F_erode", 0.05);
 //     mod.printVariables();
 //     return 0;
 // }
 // Compile: g++ -o uqff_comp base.cpp UQFFCompressionModule.cpp -lm
-// Sample Output: g_UQFF ? 1e-11 m/s� (env/fluid dominant for nebulae).
+// Sample Output: g_UQFF ? 1e-11 m/sï¿½ (env/fluid dominant for nebulae).
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 10, 2025.
 
 // UQFFCompressionModule Evaluation(Encoded)

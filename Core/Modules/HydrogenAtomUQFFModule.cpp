@@ -274,8 +274,10 @@ double HydrogenAtomUQFFModule::computeHz() {
     return (Hz_kms * 1e3) / variables["Mpc_to_m"];
 }
 
-// Compute Ug sum: Ug1 = G M / r^2, Ug4 = Ug1 * f_sc, others 0 (weak)
+// Compute Ug sum: Ug1 = mu_s x grad(M_s/r) [DPM-emergent, not Newtonian], Ug4 = Ug1 * f_sc, others 0 (weak)
 double HydrogenAtomUQFFModule::computeUgSum() {
+    // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
+    // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
     double Ug1 = (variables["G"] * variables["M"]) / (variables["r"] * variables["r"]);
     variables["Ug1"] = Ug1;
     variables["Ug4"] = Ug1 * variables["f_sc"];
@@ -350,7 +352,7 @@ double HydrogenAtomUQFFModule::computeG(double t) {
 // Get equation text (descriptive)
 std::string HydrogenAtomUQFFModule::getEquationText() {
     return "g_Hydrogen(r, t) = (G * M / r^2) * (1 + H(z) * t) * (1 - B / B_crit) * (1 + f_TRZ) + (Ug1 + Ug2 + Ug3 + Ug4) + (Lambda * c^2 / 3) + "
-           "(hbar / sqrt(Delta_x * Delta_p)) * ?(?* H ? dV) * (2p / t_Hubble) + q (v × B) + ?_fluid * V * g + "
+           "(hbar / sqrt(Delta_x * Delta_p)) * ?(?* H ? dV) * (2p / t_Hubble) + q (v Ã— B) + ?_fluid * V * g + "
            "2 A cos(k x) cos(? t) + (2p / 13.8) A exp(i (k x - ? t)) + (M_visible + M_DM) * (d?/? + 3 G M / r^3)\n"
            "Special Terms:\n"
            "- Quantum: Heisenberg uncertainty dominant for orbital stability.\n"
@@ -358,7 +360,7 @@ std::string HydrogenAtomUQFFModule::getEquationText() {
            "- Resonant: Oscillatory waves for atomic transitions/orbitals.\n"
            "- DM: Negligible at atomic scale.\n"
            "- Superconductivity: (1 - B/B_crit) for quantum field in atom.\n"
-           "Solutions: At t=1e-15 s, g_Hydrogen ~1e12 m/s² (EM/quantum dominant; g_base ~1e-40 m/s²).\n"
+           "Solutions: At t=1e-15 s, g_Hydrogen ~1e12 m/sÂ² (EM/quantum dominant; g_base ~1e-40 m/sÂ²).\n"
            "Adaptations for Hydrogen Atom: Bohr r=5.29e-11 m; v_orbital=2.2e6 m/s; f_osc=1e15 Hz (Lyman).";
 }
 
@@ -376,7 +378,7 @@ void HydrogenAtomUQFFModule::printVariables() {
 //     HydrogenAtomUQFFModule mod;
 //     double t = 1e-15;  // Atomic timescale
 //     double g = mod.computeG(t);
-//     std::cout << "g = " << g << " m/s²\n";
+//     std::cout << "g = " << g << " m/sÂ²\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("r", 5.3e-11);  // Slight update
 //     mod.addToVariable("f_TRZ", 0.05);
@@ -384,7 +386,7 @@ void HydrogenAtomUQFFModule::printVariables() {
 //     return 0;
 // }
 // Compile: g++ -o ziqn233h ziqn233h.cpp HydrogenAtomUQFFModule.cpp -lm
-// Sample Output at t=1e-15 s: g ˜ 1e12 m/s² (varies; quantum/EM dominant).
+// Sample Output at t=1e-15 s: g Ëœ 1e12 m/sÂ² (varies; quantum/EM dominant).
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 09, 2025.
 
 /*

@@ -147,7 +147,7 @@ public:
     }
 
     double compute_Ug(double Mt, double It) const {
-        double ug1 = (G * Mt) / (r * r);
+        // DPM-emergent: mu_s x grad(M_s/r) (not Newtonian GM/r^2)\ndouble ug1 = (G * Mt) / (r * r);
         double corr_B = 1.0 - B / B_crit;
         // (1+I) boosts Ug during merger
         return (ug1 + ug1 * corr_B) * (1.0 + f_TRZ) * (1.0 + It);

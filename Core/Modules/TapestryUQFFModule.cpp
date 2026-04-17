@@ -302,6 +302,7 @@ double TapestryUQFFModule::computeAetherResTerm() {
 
 // Compute U_g4i term: U_g4i = f_sc * (G M / r^2) * f_react * a_DPM / (E_vac_ISM * c)
 double TapestryUQFFModule::computeU_g4iTerm() {
+    // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
     double Ug1 = (6.6743e-11 * variables["M"]) / (variables["r"] * variables["r"]);  // Proxy G
     double a_DPM = computeDPMTerm();
     return variables["f_sc"] * Ug1 * variables["f_react"] * a_DPM / (variables["E_vac_ISM"] * variables["c"]);
@@ -360,7 +361,7 @@ std::string TapestryUQFFModule::getEquationText() {
     return "g_Tapestry(t) = [a_DPM + a_THz + a_vac_diff + a_super_freq + a_aether_res + U_g4i + a_quantum_freq + a_Aether_freq + a_fluid_freq + Osc_term + a_exp_freq] * (1 + f_TRZ)\n"
            "Where terms mirror SMBH but scaled for starbirth region (f_DPM=1e11 Hz, V_sys large for gas clouds).\n"
            "Special Terms: All driven by UQFF frequencies/resonances via plasmotic vacuum; Aether replaces dark energy; no SM terms.\n"
-           "Solutions: At t=5 Myr, g ? 1e-28 m/s� (dominated by fluid/THz; micro-scale per proof set).\n"
+           "Solutions: At t=5 Myr, g ? 1e-28 m/sï¿½ (dominated by fluid/THz; micro-scale per proof set).\n"
            "Adaptations: DPM heart, THz pipeline for star formation/erosion in NGC 2014/2020 per Hubble data.";
 }
 
@@ -378,7 +379,7 @@ void TapestryUQFFModule::printVariables() {
 //     TapestryUQFFModule mod;
 //     double t = 5e6 * 3.156e7;  // 5 Myr
 //     double g = mod.computeG(t);
-//     std::cout << "g = " << g << " m/s�\n";
+//     std::cout << "g = " << g << " m/sï¿½\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("f_DPM", 1.1e11);  // Update DPM freq
 //     mod.addToVariable("f_TRZ", 0.05);     // Add to TR factor
@@ -386,7 +387,7 @@ void TapestryUQFFModule::printVariables() {
 //     return 0;
 // }
 // Compile: g++ -o ziqn233h ziqn233h.cpp TapestryUQFFModule.cpp -lm
-// Sample Output at t=5 Myr: g ? 1e-28 m/s� (varies with updates; all terms micro-scale per UQFF frequencies).
+// Sample Output at t=5 Myr: g ? 1e-28 m/sï¿½ (varies with updates; all terms micro-scale per UQFF frequencies).
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 09, 2025.
 
 /*

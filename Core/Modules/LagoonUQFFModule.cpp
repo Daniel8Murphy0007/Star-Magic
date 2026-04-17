@@ -287,8 +287,10 @@ double LagoonUQFFModule::computeHz() {
     return (Hz_kms * 1e3) / variables["Mpc_to_m"];
 }
 
-// Compute Ug sum: Ug1 = G M / r^2, Ug4 = Ug1 * f_sc, others 0
+// Compute Ug sum: Ug1 = mu_s x grad(M_s/r) [DPM-emergent, not Newtonian], Ug4 = Ug1 * f_sc, others 0
 double LagoonUQFFModule::computeUgSum() {
+    // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
+    // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
     double Ug1 = (variables["G"] * variables["M"]) / (variables["r"] * variables["r"]);
     variables["Ug1"] = Ug1;
     variables["Ug4"] = Ug1 * variables["f_sc"];
@@ -378,7 +380,7 @@ double LagoonUQFFModule::computeG(double t) {
 // Get equation text (descriptive)
 std::string LagoonUQFFModule::getEquationText() {
     return "g_Lagoon(r, t) = (G * M(t) / r^2) * (1 + H(z) * t) * (1 - B / B_crit) * (1 + f_TRZ) + (Ug1 + Ug2 + Ug3 + Ug4) + (Lambda * c^2 / 3) + "
-           "(hbar / sqrt(Delta_x * Delta_p)) * ?(?* H ? dV) * (2? / t_Hubble) + q (v � B) + ?_fluid * V * g + "
+           "(hbar / sqrt(Delta_x * Delta_p)) * ?(?* H ? dV) * (2? / t_Hubble) + q (v ï¿½ B) + ?_fluid * V * g + "
            "2 A cos(k x) cos(? t) + (2? / 13.8) A exp(i (k x - ? t)) + (M_visible + M_DM) * (??/? + 3 G M / r^3) - P_rad\n"
            "Where M(t) = M * (1 + M_sf(t)); M_sf(t) = (SFR * t_yr) / M0; P_rad = (L_H36 / (4? r^2 c)) * (? / m_H)\n"
            "Special Terms:\n"
@@ -389,7 +391,7 @@ std::string LagoonUQFFModule::getEquationText() {
            "- Superconductivity: (1 - B/B_crit) for quantum fields.\n"
            "- Star Formation: M_sf(t) boosts mass via SFR=0.1 Msun/yr.\n"
            "- Radiation Pressure: P_rad from Herschel 36 erodes gas.\n"
-           "Solutions: At t=1 Myr, g_Lagoon ~1e-12 m/s� (EM/fluid dominant; g_base ~1e-13; P_rad ~1e-14).\n"
+           "Solutions: At t=1 Myr, g_Lagoon ~1e-12 m/sï¿½ (EM/fluid dominant; g_base ~1e-13; P_rad ~1e-14).\n"
            "Adaptations for Lagoon Nebula: H II region with Herschel 36 radiation; z=0.0013; SFR for starbirth.";
 }
 
@@ -407,7 +409,7 @@ void LagoonUQFFModule::printVariables() {
 //     LagoonUQFFModule mod;
 //     double t = 1e6 * 3.156e7;  // 1 Myr
 //     double g = mod.computeG(t);
-//     std::cout << "g = " << g << " m/s�\n";
+//     std::cout << "g = " << g << " m/sï¿½\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("M", 1.1e4 * 1.989e30);  // Update mass
 //     mod.addToVariable("f_TRZ", 0.05);           // Add to TR factor
@@ -415,7 +417,7 @@ void LagoonUQFFModule::printVariables() {
 //     return 0;
 // }
 // Compile: g++ -o ziqn233h ziqn233h.cpp LagoonUQFFModule.cpp -lm
-// Sample Output at t=1 Myr: g ? 1e-12 m/s� (varies with updates; fluid/EM dominant).
+// Sample Output at t=1 Myr: g ? 1e-12 m/sï¿½ (varies with updates; fluid/EM dominant).
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 09, 2025.
 
 /*

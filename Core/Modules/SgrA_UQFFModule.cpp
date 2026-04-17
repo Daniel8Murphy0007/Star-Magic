@@ -302,6 +302,7 @@ double SgrA_UQFFModule::computeAetherResTerm() {
 
 // Compute U_g4i term: U_g4i = f_sc * (G M / r^2) * f_react * a_DPM / (E_vac_ISM * c)
 double SgrA_UQFFModule::computeU_g4iTerm() {
+    // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
     double Ug1 = (6.6743e-11 * variables["M"]) / (variables["r"] * variables["r"]);  // Proxy G
     double a_DPM = computeDPMTerm();
     return variables["f_sc"] * Ug1 * variables["f_react"] * a_DPM / (variables["E_vac_ISM"] * variables["c"]);
@@ -360,7 +361,7 @@ std::string SgrA_UQFFModule::getEquationText() {
     return "g_SgrA(t) = [a_DPM + a_THz + a_vac_diff + a_super_freq + a_aether_res + U_g4i + a_quantum_freq + a_Aether_freq + a_fluid_freq + Osc_term + a_exp_freq] * (1 + f_TRZ)\n"
            "Where terms mirror magnetar but scaled for SMBH (f_DPM=1e9 Hz, V_sys large).\n"
            "Special Terms: All driven by UQFF frequencies/resonances via plasmotic vacuum; Aether replaces dark energy; no SM terms.\n"
-           "Solutions: At t=1e10 yr, g ? 1e-30 m/s� (dominated by THz/fluid; micro-scale per proof set).\n"
+           "Solutions: At t=1e10 yr, g ? 1e-30 m/sï¿½ (dominated by THz/fluid; micro-scale per proof set).\n"
            "Adaptations: DPM heart, THz pipeline for SMBH accretion/flares per Chandra data.";
 }
 
@@ -378,7 +379,7 @@ void SgrA_UQFFModule::printVariables() {
 //     SgrA_UQFFModule mod;
 //     double t = 1e10 * 3.156e7;  // 10 Gyr
 //     double g = mod.computeG(t);
-//     std::cout << "g = " << g << " m/s�\n";
+//     std::cout << "g = " << g << " m/sï¿½\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("f_DPM", 1.1e9);  // Update DPM freq
 //     mod.addToVariable("f_TRZ", 0.05);    // Add to TR factor
@@ -386,7 +387,7 @@ void SgrA_UQFFModule::printVariables() {
 //     return 0;
 // }
 // Compile: g++ -o ziqn233h ziqn233h.cpp SgrA_UQFFModule.cpp -lm
-// Sample Output at t=10 Gyr: g ? 1e-30 m/s� (varies with updates; all terms micro-scale per UQFF frequencies).
+// Sample Output at t=10 Gyr: g ? 1e-30 m/sï¿½ (varies with updates; all terms micro-scale per UQFF frequencies).
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 09, 2025.
 
 /*

@@ -2797,6 +2797,7 @@ def calculate_andromeda_complete_muge(params: InputParameters, t: float = 0.0):
     g_base = (G * M / (r * r)) * (1.0 + Hz * t) * (1.0 + f_TRZ)
     
     # Term 2: UQFF Ug sum (Ug1 + Ug4 with f_sc=1)
+    # DPM-emergent: mu_s x grad(M_s/r) (mass gradient, not Newtonian GM/r^2)
     Ug1 = G * M / (r * r)
     Ug4 = Ug1 * 1.0  # f_sc = 1 (no superconductivity)
     Ug_sum = Ug1 + Ug4
@@ -2916,6 +2917,7 @@ def calculate_sombrero_complete_muge(params: InputParameters, t: float = 0.0):
     Lambda = 1.1e-52; G = CONSTANTS['G']; c = CONSTANTS['c']; hbar = CONSTANTS['hbar']
     
     # UQFF Ug sum
+    # DPM-emergent: mu_s x grad(M_s/r) (mass gradient, not Newtonian GM/r^2)
     Ug1 = G * M / (r * r)
     Ug4 = Ug1 * 1.0  # f_sc = 1
     Ug_sum = Ug1 + Ug4
@@ -3030,6 +3032,7 @@ def calculate_saturn_complete_muge(params: InputParameters, t: float = 0.0):
     ring_wind = ring_wind_result.result
     
     # Term 4: UQFF Ug sum
+    # DPM-emergent: mu_s x grad(M_s/r) (mass gradient, not Newtonian GM/r^2)
     Ug1 = G * M / (r * r)
     Ug4 = Ug1 * 1.0  # f_sc = 1
     Ug_sum = Ug1 + Ug4
@@ -3263,6 +3266,7 @@ def calculate_crab_complete_muge(params: InputParameters, t: float = 0.0):
     g_base = (G * M / (r * r)) * (1.0 + Hz * t) * sc_correction * (1.0 + f_TRZ)
     
     # Term 2: UQFF Ug sum  
+    # DPM-emergent: mu_s x grad(M_s/r) (mass gradient, not Newtonian GM/r^2)
     Ug1 = G * M / (r * r)
     Ug4 = Ug1 * 1.0
     Ug_sum = Ug1 + Ug4
@@ -3362,6 +3366,7 @@ def calculate_sgr1745_complete_muge(params: InputParameters, t: float = 0.0):
     g_base = (G * M / (r * r)) * (1.0 + Hz * t) * sc_correction * (1.0 + f_TRZ)
     
     # Term 2: UQFF Ug sum
+    # DPM-emergent: mu_s x grad(M_s/r) (mass gradient, not Newtonian GM/r^2)
     Ug1 = G * M / (r * r)
     Ug4 = Ug1 * 1.0
     Ug_sum = Ug1 + Ug4

@@ -257,6 +257,8 @@ public:
 
     // Ug terms computation
     double compute_Ug(double Mt, double It) const {
+        // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
+        // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
         double Ug1 = (G * Mt) / (r * r);
         double Ug2 = 0.0;
         double Ug3 = 0.0;

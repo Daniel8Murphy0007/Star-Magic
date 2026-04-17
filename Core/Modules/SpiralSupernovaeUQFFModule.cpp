@@ -286,8 +286,10 @@ double SpiralSupernovaeUQFFModule::computeHz(double z) {
     return (Hz_kms * 1e3) / variables["Mpc_to_m"];
 }
 
-// Compute Ug sum: Ug1 = G M / r^2, Ug4 = Ug1 * f_sc, others 0
+// Compute Ug sum: Ug1 = mu_s x grad(M_s/r) [DPM-emergent, not Newtonian], Ug4 = Ug1 * f_sc, others 0
 double SpiralSupernovaeUQFFModule::computeUgSum() {
+    // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
+    // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
     double Ug1 = (variables["G"] * variables["M"]) / (variables["r"] * variables["r"]);
     variables["Ug1"] = Ug1;
     variables["Ug4"] = Ug1 * variables["f_sc"];
@@ -377,7 +379,7 @@ double SpiralSupernovaeUQFFModule::computeG(double t, double z) {
 // Get equation text (descriptive)
 std::string SpiralSupernovaeUQFFModule::getEquationText() {
     return "g_Spiral_SN(r, t) = (G * M / r^2) * (1 + H(z) * t) * (1 + T_spiral) * (1 - B / B_crit) * (1 + f_TRZ) + (Ug1 + Ug2 + Ug3 + Ug4) + (Lambda * c^2 * ?_? / 3) + "
-           "(hbar / sqrt(Delta_x * Delta_p)) * ?(?* H ? dV) * (2? / t_Hubble) + q (v � B) + ?_fluid * V * g + "
+           "(hbar / sqrt(Delta_x * Delta_p)) * ?(?* H ? dV) * (2? / t_Hubble) + q (v ï¿½ B) + ?_fluid * V * g + "
            "2 A cos(k x) cos(? t) + (2? / 13.8) A exp(i (k x - ? t)) + (M_visible + M_DM) * (??/? + 3 G M / r^3) + SN_term\n"
            "Where T_spiral = G * M_gas * M / r^2 * (1 + ?_p * t); SN_term = (L_SN / (4? r^2 c)) * (1 + H(z) * t)\n"
            "Special Terms:\n"
@@ -388,7 +390,7 @@ std::string SpiralSupernovaeUQFFModule::getEquationText() {
            "- Superconductivity: (1 - B/B_crit) for galactic fields.\n"
            "- Spiral Torque: T_spiral for arm evolution.\n"
            "- Supernova: SN_term for expansion probe.\n"
-           "Solutions: At t=5 Gyr, z=0.5, g_Spiral_SN ~1e-10 m/s� (Lambda/SN dominant; g_base ~1e-10).\n"
+           "Solutions: At t=5 Gyr, z=0.5, g_Spiral_SN ~1e-10 m/sï¿½ (Lambda/SN dominant; g_base ~1e-10).\n"
            "Adaptations for Spirals and Supernovae: SH0ES H0=73; ?_p=20 km/s/kpc; L_SN=1e36 W for Ia SN.";
 }
 
@@ -407,7 +409,7 @@ void SpiralSupernovaeUQFFModule::printVariables() {
 //     double t = 5e9 * 3.156e7;  // 5 Gyr
 //     double z = 0.5;            // Typical SN z
 //     double g = mod.computeG(t, z);
-//     std::cout << "g = " << g << " m/s�\n";
+//     std::cout << "g = " << g << " m/sï¿½\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("H0", 74.0);  // Update H0
 //     mod.addToVariable("f_TRZ", 0.05);
@@ -415,7 +417,7 @@ void SpiralSupernovaeUQFFModule::printVariables() {
 //     return 0;
 // }
 // Compile: g++ -o ziqn233h ziqn233h.cpp SpiralSupernovaeUQFFModule.cpp -lm
-// Sample Output at t=5 Gyr, z=0.5: g ? 1e-10 m/s� (varies; Lambda/SN dominant).
+// Sample Output at t=5 Gyr, z=0.5: g ? 1e-10 m/sï¿½ (varies; Lambda/SN dominant).
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 09, 2025.
 
 /*

@@ -280,8 +280,10 @@ double NGC6302UQFFModule::computeHz() {
     return (Hz_kms * 1e3) / variables["Mpc_to_m"];
 }
 
-// Compute Ug sum: Ug1 = G M / r^2, Ug4 = Ug1 * f_sc, others 0
+// Compute Ug sum: Ug1 = mu_s x grad(M_s/r) [DPM-emergent, not Newtonian], Ug4 = Ug1 * f_sc, others 0
 double NGC6302UQFFModule::computeUgSum() {
+    // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
+    // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
     double Ug1 = (variables["G"] * variables["M"]) / (variables["r"] * variables["r"]);
     variables["Ug1"] = Ug1;
     variables["Ug4"] = Ug1 * variables["f_sc"];
@@ -362,7 +364,7 @@ double NGC6302UQFFModule::computeG(double t) {
 // Get equation text (descriptive)
 std::string NGC6302UQFFModule::getEquationText() {
     return "g_NGC6302(r, t) = (G * M / r^2) * (1 + H(z) * t) * (1 - B / B_crit) * (1 + f_TRZ) + (Ug1 + Ug2 + Ug3 + Ug4) + (Lambda * c^2 / 3) + "
-           "(hbar / sqrt(Delta_x * Delta_p)) * ?(?* H ? dV) * (2? / t_Hubble) + q (v � B) + ?_fluid * V * g + "
+           "(hbar / sqrt(Delta_x * Delta_p)) * ?(?* H ? dV) * (2? / t_Hubble) + q (v ï¿½ B) + ?_fluid * V * g + "
            "2 A cos(k x) cos(? t) + (2? / 13.8) A exp(i (k x - ? t)) + (M_visible + M_DM) * (??/? + 3 G M / r^3) + W_shock\n"
            "Where W_shock = ? * v_wind^2 * (1 + t / t_eject)\n"
            "Special Terms:\n"
@@ -372,7 +374,7 @@ std::string NGC6302UQFFModule::getEquationText() {
            "- DM: Visible+dark mass with perturbations (negligible).\n"
            "- Superconductivity: (1 - B/B_crit) for nebular fields.\n"
            "- Wind Shock: W_shock from central star winds eroding lobes.\n"
-           "Solutions: At t=2000 yr, g_NGC6302 ~1e-10 m/s� (W_shock/EM dominant; g_base ~1e-12).\n"
+           "Solutions: At t=2000 yr, g_NGC6302 ~1e-10 m/sï¿½ (W_shock/EM dominant; g_base ~1e-12).\n"
            "Adaptations for NGC 6302: Bipolar PN with v_wind=100 km/s; z=0.00095; t_eject=2000 yr for ejections.";
 }
 
@@ -390,7 +392,7 @@ void NGC6302UQFFModule::printVariables() {
 //     NGC6302UQFFModule mod;
 //     double t = 2000 * 3.156e7;  // 2000 years
 //     double g = mod.computeG(t);
-//     std::cout << "g = " << g << " m/s�\n";
+//     std::cout << "g = " << g << " m/sï¿½\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("M", 4e30);  // Update mass
 //     mod.addToVariable("f_TRZ", 0.05);  // Add to TR factor
@@ -398,7 +400,7 @@ void NGC6302UQFFModule::printVariables() {
 //     return 0;
 // }
 // Compile: g++ -o ziqn233h ziqn233h.cpp NGC6302UQFFModule.cpp -lm
-// Sample Output at t=2000 yr: g ? 1e-10 m/s� (varies with updates; W_shock/EM dominant).
+// Sample Output at t=2000 yr: g ? 1e-10 m/sï¿½ (varies with updates; W_shock/EM dominant).
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 09, 2025.
 
 /*

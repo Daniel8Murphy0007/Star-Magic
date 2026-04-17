@@ -164,7 +164,7 @@ public:
     }
 
     double compute_Ug(double Bt, double Ft) const {
-        double ug1 = (G * M0) / (r * r);
+        // DPM-emergent: mu_s x grad(M_s/r) (not Newtonian GM/r^2)\ndouble ug1 = (G * M0) / (r * r);
         double corr_B = 1.0 - Bt / B_crit;
         // (1+F) filament enhancement
         return (ug1 + ug1 * corr_B) * (1.0 + f_TRZ) * (1.0 + Ft);

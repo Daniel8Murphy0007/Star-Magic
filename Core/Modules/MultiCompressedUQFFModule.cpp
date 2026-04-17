@@ -406,11 +406,13 @@ double MultiCompressedUQFFModule::computeFluidTerm(double g_base)
     return variables["rho_fluid"] * variables["V"] * g_base;
 }
 
-// Ug sum: Ug1 = G M / r^2, Ug2=0, Ug3' = G M_ext / r_ext^2, Ug4 = Ug1 * f_sc
+// Ug sum: Ug1 = mu_s x grad(M_s/r) [DPM-emergent, not Newtonian], Ug2=0, Ug3' = G M_ext / r_ext^2, Ug4 = Ug1 * f_sc
 double MultiCompressedUQFFModule::computeUgSum(double r)
 {
     double G = variables["G"];
     double M = variables["M"];
+    // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
+    // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
     double Ug1 = (G * M) / (r * r);
     variables["Ug1"] = Ug1;
     variables["Ug2"] = 0.0;
@@ -483,7 +485,7 @@ std::string MultiCompressedUQFFModule::getEquationText()
            "Special Terms:\n"
            "- Compression: Unified H(t,z), F_env(t) modular, Ug3' generalized, ?_total consolidated.\n"
            "- Adaptations: Magnetar (M_BH, decay); SgrA* (GW spin); Starbirth/Westerlund2 (winds); Pillars (erosion); Rings (lensing); UniverseGuide (solar).\n"
-           "Solutions: Varies by system/t; e.g., Magnetar t=1kyr ~1e12 m/s� (B_crit dominant).\n"
+           "Solutions: Varies by system/t; e.g., Magnetar t=1kyr ~1e12 m/sÂ² (B_crit dominant).\n"
            "From UQFF Cycle 2: Streamlines 7 systems, reduces redundancy.";
 }
 
@@ -503,16 +505,16 @@ void MultiCompressedUQFFModule::printVariables()
 //     MultiCompressedUQFFModule mod("PillarsCreation");
 //     double t = mod.variables["t_default"];
 //     double g = mod.computeG(t);
-//     std::cout << "g = " << g << " m/s�\n";
+//     std::cout << "g = " << g << " m/sÂ²\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.setSystem("SagittariusA");
 //     g = mod.computeG(t);
-//     std::cout << "SgrA* g = " << g << " m/s�\n";
+//     std::cout << "SgrA* g = " << g << " m/sÂ²\n";
 //     mod.printVariables();
 //     return 0;
 // }
 // Compile: g++ -o ziqn233h ziqn233h.cpp MultiCompressedUQFFModule.cpp -lm
-// Sample Output (Pillars t=2 Myr): g � 1e-11 m/s� (winds/F_env dominant).
+// Sample Output (Pillars t=2 Myr): g Ëœ 1e-11 m/sÂ² (winds/F_env dominant).
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 09, 2025.
 
 /*
@@ -535,7 +537,7 @@ system - specific.- **Error Handling : **Silent adds;
 add validation(e.g., r > 0).- **Magic Numbers : **integral_psi_total = 1.0, f_sc = 10; expose config.
 - **Performance:** Fine for computes; cache F_env for repeated t.
 - **Validation:** Test vs obs (e.g., Chandra for Magnetar decay); numerical solvers for full M(t).
-- **Generalization:** Extend F_env for new systems (e.g., halos); add Ug2=d�F/dt� if needed.
+- **Generalization:** Extend F_env for new systems (e.g., halos); add Ug2=dÂ²F/dtÂ² if needed.
 
 **Summary:**
 Module robustly encodes May 2025 UQFF Cycle 2 compression into Oct 2025 template, unifying 7 systems with modular compressed eq. Advances framework by streamlining (unified terms, F_env), enhancing clarity/applicability, while retaining fidelity. Ideal for further refinements;

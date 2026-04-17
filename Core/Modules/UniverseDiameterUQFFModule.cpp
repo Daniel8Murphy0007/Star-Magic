@@ -292,9 +292,11 @@ double UniverseDiameterUQFFModule::computeHz()
     return (Hz_kms * 1e3) / variables["Mpc_to_m"];
 }
 
-// Compute Ug sum: Ug1 = G M / r^2, Ug4 = Ug1 * f_sc, others 0
+// Compute Ug sum: Ug1 = mu_s x grad(M_s/r) [DPM-emergent, not Newtonian], Ug4 = Ug1 * f_sc, others 0
 double UniverseDiameterUQFFModule::computeUgSum()
 {
+    // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
+    // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
     double Ug1 = (variables["G"] * variables["M"]) / (variables["r"] * variables["r"]);
     variables["Ug1"] = Ug1;
     variables["Ug4"] = Ug1 * variables["f_sc"];
@@ -375,7 +377,7 @@ double UniverseDiameterUQFFModule::computeG(double t)
 std::string UniverseDiameterUQFFModule::getEquationText()
 {
     return "g_Universe(r, t) = (G * M / r^2) * (1 + H(z) * t) * (1 - B / B_crit) * (1 + f_TRZ) + (Ug1 + Ug2 + Ug3 + Ug4) + (Lambda * c^2 / 3) + "
-           "(hbar / sqrt(Delta_x * Delta_p)) * ?(?* H ? dV) * (2? / t_Hubble) + q (v � B) + ?_fluid * V * g + "
+           "(hbar / sqrt(Delta_x * Delta_p)) * ?(?* H ? dV) * (2? / t_Hubble) + q (v ï¿½ B) + ?_fluid * V * g + "
            "2 A cos(k x) cos(? t) + (2? / 13.8) A exp(i (k x - ? t)) + (M_visible + M_DM) * (??/? + 3 G M / r^3)\n"
            "Special Terms:\n"
            "- Quantum: Heisenberg uncertainty for cosmic quantum fluctuations.\n"
@@ -383,7 +385,7 @@ std::string UniverseDiameterUQFFModule::getEquationText()
            "- Resonant: Oscillatory Aether waves for CMB/large-scale structure.\n"
            "- DM: Baryonic+dark mass with perturbations and curvature.\n"
            "- Superconductivity: (1 - B/B_crit) for cosmic quantum fields.\n"
-           "Solutions: At t=13.8 Gyr, g_Universe ~1e-10 m/s� (Lambda/expansion dominant; micro terms ~1e-10 to 1e-3).\n"
+           "Solutions: At t=13.8 Gyr, g_Universe ~1e-10 m/sï¿½ (Lambda/expansion dominant; micro terms ~1e-10 to 1e-3).\n"
            "Adaptations for Universe Diameter: Observable r~4.4e26 m; H(z) drives expansion; est. M~1e53 kg.";
 }
 
@@ -403,7 +405,7 @@ void UniverseDiameterUQFFModule::printVariables()
 //     UniverseDiameterUQFFModule mod;
 //     double t = 13.8e9 * 3.156e7;  // 13.8 Gyr
 //     double g = mod.computeG(t);
-//     std::cout << "g = " << g << " m/s�\n";
+//     std::cout << "g = " << g << " m/sï¿½\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("M", 1.1e53 * 1.989e30);  // Update mass
 //     mod.addToVariable("f_TRZ", 0.05);            // Add to TR factor
@@ -411,7 +413,7 @@ void UniverseDiameterUQFFModule::printVariables()
 //     return 0;
 // }
 // Compile: g++ -o ziqn233h ziqn233h.cpp UniverseDiameterUQFFModule.cpp -lm
-// Sample Output at t=13.8 Gyr: g ? 1e-10 m/s� (varies with updates; expansion/Lambda dominant).
+// Sample Output at t=13.8 Gyr: g ? 1e-10 m/sï¿½ (varies with updates; expansion/Lambda dominant).
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 09, 2025.
 
 /*

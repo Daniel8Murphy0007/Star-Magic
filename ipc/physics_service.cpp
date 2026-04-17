@@ -426,33 +426,68 @@ FieldResponse PhysicsService::calculate_uqff(const FieldRequest& request) {
         }
     }
     
-    // Fallback: C++ simplified calculation
+    // Fallback: C++ simplified UQFF calculation (DPM-based, matches source4.cpp canonical)
+    // IMPORTANT: Newtonian gravity is EMERGENT from DPM substrate, not foundational.
+    // Order: DPM → Ug2 (quantum shell traps magnetics) → mass emerges → Ug1 (emergent)
     response.success = true;
     
-    const double G = 6.67430e-11;
-    const double M_sun = 1.989e30;
+    const double PI = 3.14159265358979323846;
+    const double rho_A = 7.09e-37;   // [SCm] vacuum density [J/m³]
+    const double rho_UA = 7.09e-36;  // [UA] vacuum density [J/m³]
     
-    double M = request.mass > 0 ? request.mass : M_sun;
+    double R = request.radius > 0 ? request.radius : 6.96e8;  // Body radius [m]
     double r = request.r > 0 ? request.r : 1e6;
+    double t = request.t;
+    double B = request.magnetic_field > 0 ? request.magnetic_field : 1e-4;  // [T]
     
     // Get calibrated parameters (v3.1 - runtime tunable)
     CalibratedParameters params = getParameters();
     
-    // Simplified Ug components (placeholder - real calc from MAIN_1_CoAnQi)
-    response.Ug1 = (G * M) / (r * r);                    // Newtonian base
-    response.Ug2 = response.Ug1 * params.U_UA;           // Charge-reactivity
-    response.Ug3 = response.Ug1 * std::sin(request.theta) * params.SSq;  // Angular + [SSq]
-    response.Ug4 = response.Ug1 * params.k_eta;          // Vacuum (Planck area ratio)
+    // ===== DPM-based Ug components (canonical source4.cpp form) =====
     
-    // Buoyancy opposition (β_i from calibrated params)
-    response.Ubi = -params.beta_i * (response.Ug1 + response.Ug2 + response.Ug3 + response.Ug4);
+    // Ug1: Magnetic dipole rotation (emergent gravity from magnetic moment)
+    // μ_s = ρ_A × V_body (magnetic moment from [SCm] vacuum density)
+    // Ug1 = k1 × μ_s × ∇(M_s/r) × decay × oscillation × deformation
+    double V_body = (4.0 / 3.0) * PI * R * R * R;
+    double mu_s = rho_A * V_body;               // Magnetic moment [J/T]
+    double M = request.mass > 0 ? request.mass : 1.989e30;
+    double grad_M = M / (r * r);                // Gradient of M_s/r [kg/m²]
+    double alpha = params.kappa > 0 ? params.kappa : 0.0005;
+    double exp_decay = std::exp(-alpha * t);
+    double tn = std::fmod(t, 1.0);              // Normalized cycle time
+    double cos_ptn = std::cos(PI * tn);
+    response.Ug1 = mu_s * grad_M * exp_decay * cos_ptn * 1.1;  // 1.1 = deformation factor
     
-    // Magnetism with H_SCm superconducting factor
-    response.Um = request.magnetic_field * params.H_SCm;
+    // Ug2: Charge-reactivity coupling (quantum shell trapping magnetics)
+    // Dual charges Q_SCm and Q_UA from vacuum densities
+    double Q_SCm = rho_A * V_body;
+    double Q_UA = rho_UA * V_body;
+    double v_sw = 4e5;                           // Solar wind velocity [m/s]
+    double E_react = rho_A * v_sw * v_sw / rho_UA * std::exp(-alpha * t);
+    double R_b = R * 100.0;                      // Bubble radius
+    double S_rb = (r > R_b) ? 1.0 : 0.0;        // Heliosphere step function
+    double sw_factor = 1.0 + 0.01 * v_sw;       // Solar wind enhancement
+    response.Ug2 = (Q_SCm + Q_UA) * M / (r * r) * S_rb * sw_factor * params.H_SCm * E_react;
+    
+    // Ug3: Magnetic string rotation (B_disk × cos(ω_s t π) × P_core × E_react)
+    double omega_s = 2.0 * PI / (25.0 * 86400.0);  // Solar rotation rate
+    response.Ug3 = B * std::cos(omega_s * t * PI) * E_react * params.SSq;
+    
+    // Ug4: Vacuum concentration (ρ_vac × C_concentration × decay × oscillation)
+    double rho_v = 7.09e-37;                     // [SCm] vacuum density
+    double C_concentration = 1e30;               // Concentration factor
+    response.Ug4 = rho_v * C_concentration * exp_decay * cos_ptn * params.k_eta;
+    
+    // Buoyancy opposition (β_i × Σ Ug × galactic factors)
+    double sum_Ug = response.Ug1 + response.Ug2 + response.Ug3 + response.Ug4;
+    response.Ubi = -params.beta_i * sum_Ug * rho_A * cos_ptn;
+    
+    // Magnetism: μ_j/r³ dipole field with H_SCm superconducting factor
+    double mu_j = B * R * R * R;
+    response.Um = mu_j / (r * r * r) * params.H_SCm;
     
     // Total unified field
-    response.F_U = response.Ug1 + response.Ug2 + response.Ug3 + response.Ug4 + 
-                   response.Um + response.Ubi;
+    response.F_U = sum_Ug + response.Ubi + response.Um;
     
     // Apply time decay factor κ
     if (request.t > 0 && params.kappa > 0) {
@@ -460,9 +495,13 @@ FieldResponse PhysicsService::calculate_uqff(const FieldRequest& request) {
         response.F_U *= decay;
     }
     
-    // MUGE compressed gravity with cosmological correction
-    double Omega_m = 1.0 - params.Omega_Lambda;
-    response.g_compressed = response.Ug1 * (1.0 + params.alpha_DPM * Omega_m);
+    // MUGE compressed gravity: DPM foundation (a_DPM = F_DPM × f_DPM × E_vac,neb / (c × V_sys))
+    double c_light = 2.998e8;
+    double V_sys = V_body * 1e6;                 // System volume estimate
+    double F_DPM = B * V_body * omega_s;         // DPM force proxy
+    double f_DPM = 1.0;                          // DPM frequency modulation
+    double E_vac_neb = rho_A * V_sys;            // Vacuum energy in nebula
+    response.g_compressed = F_DPM * f_DPM * E_vac_neb / (c_light * V_sys);
     
     // Validation
     response.residual = 0.0;  // Unknown without observation

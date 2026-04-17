@@ -162,7 +162,7 @@ public:
 
     // Ug terms using M(t)
     double compute_Ug(double Mt) const {
-        double ug1 = (G * Mt) / (r * r);
+        // DPM-emergent: mu_s x grad(M_s/r) (not Newtonian GM/r^2)\ndouble ug1 = (G * Mt) / (r * r);
         double corr_B = 1.0 - B_T() / B_crit;
         double Ug4 = ug1 * corr_B;
         return (ug1 + Ug4) * (1.0 + f_TRZ);

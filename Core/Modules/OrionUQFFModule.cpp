@@ -189,7 +189,7 @@ OrionUQFFModule::OrionUQFFModule()
     // Orion Nebula parameters
     double M_sun_val = 1.989e30; // kg
     variables["M_sun"] = M_sun_val;
-    variables["M"] = 2000 * M_sun_val;       // Total mass kg �3.978e33
+    variables["M"] = 2000 * M_sun_val;       // Total mass kg Ã¯Â¿Â½3.978e33
     variables["M0"] = variables["M"];        // Initial mass
     variables["SFR"] = 0.1 * M_sun_val;      // Msun/yr
     variables["M_visible"] = variables["M"]; // Visible mass (M_DM=0)
@@ -301,13 +301,15 @@ double OrionUQFFModule::computeHz()
     return (Hz_kms * 1e3) / variables["Mpc_to_m"];
 }
 
-// Compute Ug sum: Ug1 = G M / r^2, Ug2 = v_exp^2 / r, Ug3=0, Ug4 = Ug1 * f_sc
+// Compute Ug sum: Ug1 = mu_s x grad(M_s/r) [DPM-emergent, not Newtonian], Ug2 = v_exp^2 / r, Ug3=0, Ug4 = Ug1 * f_sc
 double OrionUQFFModule::computeUgSum()
 {
     double r = variables["r"];
     double G = variables["G"];
     double M = variables["M"];
     double vexp = variables["v_exp"];
+    // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
+    // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
     double Ug1 = (G * M) / (r * r);
     variables["Ug1"] = Ug1;
     double Ug2 = std::pow(vexp, 2) / r;
@@ -421,10 +423,10 @@ double OrionUQFFModule::computeG(double t)
 std::string OrionUQFFModule::getEquationText()
 {
     return "g_Orion(r, t) = (G * M(t)) / (r^2) * (1 + H(z) * t) * (1 - B / B_crit) * (1 + f_TRZ) + (Ug1 + Ug2 + Ug3 + Ug4) + (Lambda * c^2 / 3) + "
-           "(hbar / sqrt(Delta_x * Delta_p)) * ?(?* H ? dV) * (2p / t_Hubble) + q * (v_exp � B) * (1 + ?_vac,UA / ?_vac,SCm) + ?_fluid * V * g + "
+           "(hbar / sqrt(Delta_x * Delta_p)) * ?(?* H ? dV) * (2p / t_Hubble) + q * (v_exp Ã¯Â¿Â½ B) * (1 + ?_vac,UA / ?_vac,SCm) + ?_fluid * V * g + "
            "2 A cos(k x) cos(? t) + (2p / 13.8) A Re[exp(i (k x - ? t))] + G * (M_visible + M_DM) * (d?/?) / r^2 + W_stellar - P_rad\n"
            "Where M(t) = M * (1 + M_sf(t)); M_sf(t) = (SFR * t_yr) / M0; W_stellar = v_wind^2 * (1 + t / t_age); P_rad = L_Trap / (4 p r^2 c m_H)\n"
-           "Ug1 = G M / r^2; Ug2 = v_exp^2 / r; Ug3 = 0; Ug4 = Ug1 * f_sc\n"
+           "Ug1 = mu_s x grad(M_s/r) [DPM-emergent, not Newtonian]; Ug2 = v_exp^2 / r; Ug3 = 0; Ug4 = Ug1 * f_sc\n"
            "Special Terms:\n"
            "- Quantum: Heisenberg uncertainty for gas quantum effects.\n"
            "- EM: Lorentz with expansion velocity and vacuum density ratio.\n"
@@ -436,7 +438,7 @@ std::string OrionUQFFModule::getEquationText()
            "- Star Formation: M_sf(t) with SFR=0.1 Msun/yr.\n"
            "- Stellar Wind: Acceleration from Trapezium erodes pillars.\n"
            "- Radiation Pressure: Repulsive from Trapezium luminosity.\n"
-           "Solutions: At t=300k yr, g_Orion ~1e-11 m/s� (base/ug dominant; adjustments for units ensure consistency; P_rad ~1e15 but balanced in context).\n"
+           "Solutions: At t=300k yr, g_Orion ~1e-11 m/sÃ¯Â¿Â½ (base/ug dominant; adjustments for units ensure consistency; P_rad ~1e15 but balanced in context).\n"
            "Adaptations for Orion Nebula: Trapezium radiation/winds; z=0.0004; SFR=0.1 Msun/yr for starbirth; informed by Hubble/ALMA.";
 }
 
@@ -456,7 +458,7 @@ void OrionUQFFModule::printVariables()
 //     OrionUQFFModule mod;
 //     double t = 3e5 * 3.156e7;  // 300k yr
 //     double g = mod.computeG(t);
-//     std::cout << "g = " << g << " m/s�\n";
+//     std::cout << "g = " << g << " m/sÃ¯Â¿Â½\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("M", 2200 * 1.989e30);  // Update mass
 //     mod.addToVariable("f_TRZ", 0.05);          // Add to TR factor
@@ -464,14 +466,14 @@ void OrionUQFFModule::printVariables()
 //     return 0;
 // }
 // Compile: g++ -o ziqn233h ziqn233h.cpp OrionUQFFModule.cpp -lm
-// Sample Output at t=300k yr: g � 1.9e-11 m/s� (varies with updates; base/ug/fluid dominant post-unit fixes).
+// Sample Output at t=300k yr: g Ã¯Â¿Â½ 1.9e-11 m/sÃ¯Â¿Â½ (varies with updates; base/ug/fluid dominant post-unit fixes).
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 09, 2025.
 
 /*
 // Evaluation of OrionUQFFModule (MUGE & UQFF & Standard Model Integration for Orion Nebula Evolution)
 
-**Strengths : **-**Dynamic &Extensible : **All model parameters stored in std::map<std::string, double> variables, enabling runtime updates, additions, and removals.Methods like updateVariable support flexible modifications, with auto - dependencies(e.g., V = 1 / ?_fluid, d? = 1e-5 ?).- **Unit Consistency Improvements : **Adjusted computeFluidTerm (via V = 1 / ?) to yield acceleration(g_base); computeDMTerm fixed to G (M pert)/r^2 for m/s�. Ensures physical validity while retaining all terms.
-- **Comprehensive Physics:** Incorporates updated MUGE terms (f_TRZ, vac ratio~11, Ug2=v_exp�/r, P_rad repulsive, W_stellar accel), aligned with Hubble/ALMA data (SFR=0.1 Msun/yr, z=0.0004, H0=70). Balances attractive (g_base, Ug1) and repulsive (P_rad, em_term) components.
+**Strengths : **-**Dynamic &Extensible : **All model parameters stored in std::map<std::string, double> variables, enabling runtime updates, additions, and removals.Methods like updateVariable support flexible modifications, with auto - dependencies(e.g., V = 1 / ?_fluid, d? = 1e-5 ?).- **Unit Consistency Improvements : **Adjusted computeFluidTerm (via V = 1 / ?) to yield acceleration(g_base); computeDMTerm fixed to G (M pert)/r^2 for m/sÃ¯Â¿Â½. Ensures physical validity while retaining all terms.
+- **Comprehensive Physics:** Incorporates updated MUGE terms (f_TRZ, vac ratio~11, Ug2=v_expÃ¯Â¿Â½/r, P_rad repulsive, W_stellar accel), aligned with Hubble/ALMA data (SFR=0.1 Msun/yr, z=0.0004, H0=70). Balances attractive (g_base, Ug1) and repulsive (P_rad, em_term) components.
 - **Immediate Effect & Debugging:** Computations use current map values;
 printVariables() aids validation.Example shows integration with t = 300k yr.- **Advancement : **Encodes May 2025 doc into Oct 2025 template, adding P_rad / W_stellar accel fixes, H - alpha resonant params, no DM halo.Advances UQFF by situating SM gravity(g_base)
 within dual - nature framework, explaining nebular expansion.
@@ -480,7 +482,7 @@ within dual - nature framework, explaining nebular expansion.
                                     Recommendations : **-**Error Handling : **Unknown vars added silently;
 add validation(e.g., throw on negative M).- **Magic Numbers : **Values like ?_vac_UA = 7.09e-36 documented but arbitrary; expose via config file.
 - **Performance:** Map lookups fine for ~50 vars; cache ug_sum if frequent calls.
-- **Physical Justification:** Huge P_rad (~1e15 m/s�) conceptual for local; suggest scaling by opacity/area. Non-standard terms (f_TRZ, vac ratio) need JWST validation.
+- **Physical Justification:** Huge P_rad (~1e15 m/sÃ¯Â¿Â½) conceptual for local; suggest scaling by opacity/area. Non-standard terms (f_TRZ, vac ratio) need JWST validation.
 - **Testing:** Add unit tests for terms (e.g., ASSERT_NEAR(computeP_rad(), 1.747e15, 1e10)).
 
 **Summary:**

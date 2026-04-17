@@ -4593,6 +4593,8 @@ class NGC3603StellarPressureModulationCalculator(_CP3Calculator):
         hubble_f = 1.0 + H0 * t
         pressure_f = 1.0 - P_t             # unique suppression by stellar pressure
 
+        # DPM-emergent: mu_s x grad(M_s/r) base (Newtonian form is emergent, not foundational)
+
         g_base = G * M / r**2 * hubble_f * mag_f * pressure_f
         F_wind_ram = rho * v_wind**2        # ram pressure (Pa = N/m²)
 
@@ -4655,6 +4657,7 @@ class M16EagleNebulaRadiationSFRCalculator(_CP3Calculator):
 
         mag_f = 1.0 - B / B_crit
         sf_f  = 1.0 + M_sf
+        # DPM-emergent: mu_s x grad(M_s/r) base (Newtonian form is emergent, not foundational)
         g_base = G * M / r**2 * (1.0 + Hz * t) * mag_f * sf_f
 
         # Radiation energy density (pressure-like subtraction)
@@ -4730,6 +4733,7 @@ class CrabPWNUQFFCalculator(_CP3Calculator):
         mag_f = 1.0 - B_neb / B_crit
 
         # Base UQFF gravity
+        # DPM-emergent: mu_s x grad(M_s/r) base (Newtonian form is emergent, not foundational)
         g_base = G * M / r**2 * (1.0 + Hz * t) * mag_f
 
         # Pulsar wind ram pressure: F_wind = Ė_sd / (c · 4π r²)
@@ -5296,6 +5300,7 @@ class MagnetarSGR0501MUGEFullCalculator(_CP3Calculator):
         term1 = (G * M / r**2) * (1 + H0 * t) * (1 - Bt / B_crit)
 
         # Term2: UQFF Ug1 + Ug4 with f_TRZ buoyancy correction
+        # DPM-emergent: mu_s x grad(M_s/r) (mass gradient, not Newtonian GM/r^2)
         Ug1 = G * M / r**2
         Ug4 = Ug1 * (1 - Bt / B_crit)
         term2 = (Ug1 + Ug4) * (1 + f_TRZ)
@@ -6029,6 +6034,8 @@ class SGR1745BHProximityMagEnergyCalculator(_CP3Calculator):
 
         Omega_init = 2 * pi / P_init
         v_surf = Omega_init * r
+
+        # DPM-emergent: mu_s x grad(M_s/r) (mass gradient, not Newtonian GM/r^2)
 
         Ug1 = G * M / r**2
         Ug4 = Ug1 * f_sc
@@ -6868,6 +6875,8 @@ class RingsOfRelativityEinsteinLensingMUGECalculator(_CP3Calculator):
 
         corr_H = 1.0 + Hz * t
         corr_B = 1.0 - B / B_crit
+
+        # DPM-emergent: mu_s x grad(M_s/r) base (Newtonian form is emergent, not foundational)
 
         g_base = G * M / r**2
         ug1 = g_base
@@ -8976,6 +8985,8 @@ class HUDFInteractionCascadeBuoyancyCalculator(_CP3Calculator):
         t         = dataset.get('t_years', 0.0) * 3.15576e7
         f_TRZ     = dataset.get('f_TRZ', 0.1)
 
+        # DPM-emergent: mu_s x grad(M_s/r) (mass gradient, not Newtonian GM/r^2)
+
         Ug1 = G * M / r**2
         I_t = I0 * math.exp(-t / tau_inter)
 
@@ -9477,6 +9488,7 @@ class AndromedaDMShellPartitionCalculator(_CP3Calculator):
         M     = dataset.get('M', 1.989e42)               # kg (1e12 Msun default)
         r     = dataset.get('r', 1.04e21)                 # m
         f_DM  = dataset.get('f_DM', 0.80)                # DM mass fraction
+        # DPM-emergent: mu_s x grad(M_s/r) base (Newtonian form is emergent, not foundational)
         g_base = G * M / (r * r)
         g_vis  = G * (1.0 - f_DM) * M / (r * r)         # visible matter
         g_dm   = G * f_DM         * M / (r * r)         # dark matter

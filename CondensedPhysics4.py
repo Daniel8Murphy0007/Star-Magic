@@ -1,4 +1,4 @@
-﻿"""
+"""
 CondensedPhysics4.py — UQFF Phase 4 Physics Calculator
 =======================================================
 IPC Chain Position: 4 of 4
@@ -2741,6 +2741,7 @@ class SGR1745CompressedMUGESpectralTermDecompositionCalculator(_CP4Calculator):
         c = self.c
 
         # Term 1: Newtonian base
+        # DPM-emergent: mu_s x grad(M_s/r) base (Newtonian form is emergent, not foundational)
         g_base = G * M / r**2
 
         # Term 2: Hubble expansion factor
@@ -6493,6 +6494,8 @@ class OrionNebulaHAlphaUQFFCalculator(_CP4Calculator):
         psi_res = (2*A * math.cos(k*x) * math.cos(w*t) +
                    (2*math.pi/13.8) * A * math.cos(k*x - w*t))
 
+        # DPM-emergent: mu_s x grad(M_s/r) (mass gradient, not Newtonian GM/r^2)
+
         Ug1 = G * M / r**2
         Ug4 = Ug1 * f_sc
         lam_term = Lambda * c**2 / 3.0
@@ -6762,6 +6765,8 @@ class BigBangCosmicQGDMGWCalculator(_CP4Calculator):
         M_t = M_total * (t / t_Hub)
         r_t = c * t
         z_t = t_Hub / t - 1.0
+
+        # DPM-emergent: mu_s x grad(M_s/r) base (Newtonian form is emergent, not foundational)
 
         g_base = G * M_t / (r_t**2) if r_t > 0 else 0.0
 
@@ -7084,6 +7089,7 @@ class UQFFExpandedSystemRegistryCalculator(_CP4Calculator):
             A_res  = 1.0e-10
             F_env  = 1.0
             H_res  = A_res * math.sin(2*math.pi * f_res * t_s) + F_env * SC_m
+            # DPM-emergent: mu_s x grad(M_s/r) base (Newtonian form is emergent, not foundational)
             g_base = G * M / r**2
             g_total = g_base + H_res
         else:

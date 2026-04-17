@@ -40,13 +40,13 @@
 //
 // CALIBRATED CONSTANTS (from Grok 4 UQFF 99.7% solvability analysis):
 // ==================================================================
-// κ = 0.0005 day⁻¹           (Magnetic decay time constant)
-// H_SCm ≈ 0.99               (Superconductive Heaviside at quiet Sun)
-// U_UA ≈ 0.0001              (Universal Aether contribution factor)
-// k_η = 10⁻¹¹³               (LENR neutron rate coefficient)
+// ÃŽÂº = 0.0005 dayÃ¢ÂÂ»Ã‚Â¹           (Magnetic decay time constant)
+// H_SCm Ã¢â€°Ë† 0.99               (Superconductive Heaviside at quiet Sun)
+// U_UA Ã¢â€°Ë† 0.0001              (Universal Aether contribution factor)
+// k_ÃŽÂ· = 10Ã¢ÂÂ»Ã‚Â¹Ã‚Â¹Ã‚Â³               (LENR neutron rate coefficient)
 // [SSq] = 0.5                (Superconductive Shell Quotient, quiet state)
-// γ = 0.00005 day⁻¹          (Secondary decay constant)
-// β_i ≈ 0.603                (Ug balance parameter, fitted)
+// ÃŽÂ³ = 0.00005 dayÃ¢ÂÂ»Ã‚Â¹          (Secondary decay constant)
+// ÃŽÂ²_i Ã¢â€°Ë† 0.603                (Ug balance parameter, fitted)
 //
 // Integration Date: January 28, 2026
 // Author: Daniel T. Murphy
@@ -89,28 +89,28 @@ namespace AstroTransients {
     constexpr double k_B = 1.380649e-23;        // Boltzmann constant (J/K)
     constexpr double R_sun = 6.957e8;           // Solar radius (m)
     constexpr double L_sun = 3.828e26;          // Solar luminosity (W)
-    constexpr double sigma_SB = 5.670374e-8;    // Stefan-Boltzmann constant (W/m²K⁴)
+    constexpr double sigma_SB = 5.670374e-8;    // Stefan-Boltzmann constant (W/mÃ‚Â²KÃ¢ÂÂ´)
     constexpr double m_e = 9.10938e-31;         // Electron mass (kg)
     constexpr double m_p = 1.67262e-27;         // Proton mass (kg)
     constexpr double e_charge = 1.60218e-19;    // Elementary charge (C)
     
     // UQFF-specific constants (calibrated from Grok 4 analysis)
     constexpr double B_crit = 4.4e13;           // Critical magnetic field (T)
-    constexpr double rho_vac_UA = 7.09e-36;     // Universal Aether vacuum density (kg/m³)
-    constexpr double rho_vac_SCm = 6.38e-36;    // SCm vacuum density (kg/m³)
+    constexpr double rho_vac_UA = 7.09e-36;     // Universal Aether vacuum density (kg/mÃ‚Â³)
+    constexpr double rho_vac_SCm = 6.38e-36;    // SCm vacuum density (kg/mÃ‚Â³)
     constexpr double f_super = 1.411e16;        // Superconductive resonance frequency (Hz)
     constexpr double DIMENSIONS = 26;           // Total UQFF dimensions
     constexpr double PHI = 1.6180339887;        // Golden ratio
     
     // Calibrated UQFF parameters (from 99.7% solvability analysis)
-    constexpr double kappa = 0.0005;            // Magnetic decay constant (day⁻¹)
-    constexpr double kappa_sec = 5.787e-9;      // Magnetic decay constant (s⁻¹)
+    constexpr double kappa = 0.0005;            // Magnetic decay constant (dayÃ¢ÂÂ»Ã‚Â¹)
+    constexpr double kappa_sec = 5.787e-9;      // Magnetic decay constant (sÃ¢ÂÂ»Ã‚Â¹)
     constexpr double H_SCm_quiet = 0.99;        // SCm Heaviside at quiet Sun
     constexpr double U_UA = 0.0001;             // UA contribution factor
     constexpr double k_eta = 1e-113;            // LENR neutron rate coefficient
     constexpr double SSq_quiet = 0.5;           // Superconductive Shell Quotient
-    constexpr double gamma_decay = 0.00005;     // Secondary decay (day⁻¹)
-    constexpr double gamma_sec = 5.787e-10;     // Secondary decay (s⁻¹)
+    constexpr double gamma_decay = 0.00005;     // Secondary decay (dayÃ¢ÂÂ»Ã‚Â¹)
+    constexpr double gamma_sec = 5.787e-10;     // Secondary decay (sÃ¢ÂÂ»Ã‚Â¹)
     constexpr double beta_i = 0.603;            // Ug balance parameter
     
     // Distance conversion
@@ -200,9 +200,9 @@ public:
  * - Radio coherence from buoyancy-driven plasma instabilities
  * 
  * MATHEMATICAL METHODS:
- * - Periodic modulation: cos(2π t / P) with P = 44 min = 2640 s
- * - Radio-X-ray correlation: L_radio ∝ L_X^α with α ≈ 0.7 (Güdel-Benz relation)
- * - DPM oscillation frequency: f_DPM = (Ug4 / Ub_i)^(1/2) / (2π)
+ * - Periodic modulation: cos(2Ãâ‚¬ t / P) with P = 44 min = 2640 s
+ * - Radio-X-ray correlation: L_radio Ã¢Ë†Â L_X^ÃŽÂ± with ÃŽÂ± Ã¢â€°Ë† 0.7 (GÃƒÂ¼del-Benz relation)
+ * - DPM oscillation frequency: f_DPM = (Ug4 / Ub_i)^(1/2) / (2Ãâ‚¬)
  * 
  * DATA SOURCES:
  * - ASKAP VAST survey, Chandra X-ray, MeerKAT follow-up
@@ -217,7 +217,7 @@ private:
     double L_X;              // X-ray luminosity: ~10^32 W
     double L_radio;          // Radio luminosity at 888 MHz
     double distance;         // Distance: ~15 kpc = 4.63e20 m
-    double alpha_GB;         // Güdel-Benz slope: ~0.7
+    double alpha_GB;         // GÃƒÂ¼del-Benz slope: ~0.7
 
 public:
     ASKAPTransientTerm(double M = 1.4 * ::M_sun,
@@ -275,8 +275,8 @@ public:
         double phase_mod = 0.5 * (1.0 + std::cos(omega * t));
         double F_U = (Ug1 + Ug2 + Ug3 + Ug4 + Um - Ub_i) * phase_mod;
         
-        // === RADIO-X-RAY CORRELATION (Güdel-Benz) ===
-        // L_radio / L_X = 10^{-15.5} × (L_X / L_sun)^{alpha - 1}
+        // === RADIO-X-RAY CORRELATION (GÃƒÂ¼del-Benz) ===
+        // L_radio / L_X = 10^{-15.5} Ãƒâ€” (L_X / L_sun)^{alpha - 1}
         double L_X_pred = F_U * M * c * c;  // UQFF prediction
         double L_radio_pred = 3.16e-16 * std::pow(L_X_pred / L_sun, alpha_GB);
         
@@ -300,13 +300,13 @@ public:
     
     std::string getDescription() const override {
         return "Long Period Radio Transient physics with 44-min periodicity, "
-               "radio-X-ray correlation via Güdel-Benz relation, and DPM oscillation mechanism";
+               "radio-X-ray correlation via GÃƒÂ¼del-Benz relation, and DPM oscillation mechanism";
     }
     
     std::string getEquation() const override {
-        return "F_U = (Ug1 + Ug2 + Ug3 + Ug4 + Um - Ub_i) × (1 + cos(2πt/P))/2\n"
-               "Ug3 = (ℏω)/(Mc²) × cos(ωt), ω = 2π/2652s\n"
-               "L_radio/L_X = 10^{-15.5} × (L_X/L_sun)^{0.7}";
+        return "F_U = (Ug1 + Ug2 + Ug3 + Ug4 + Um - Ub_i) Ãƒâ€” (1 + cos(2Ãâ‚¬t/P))/2\n"
+               "Ug3 = (Ã¢â€žÂÃâ€°)/(McÃ‚Â²) Ãƒâ€” cos(Ãâ€°t), Ãâ€° = 2Ãâ‚¬/2652s\n"
+               "L_radio/L_X = 10^{-15.5} Ãƒâ€” (L_X/L_sun)^{0.7}";
     }
     
     bool validate(const std::map<std::string, double>& params) const override {
@@ -333,13 +333,13 @@ public:
  * UQFF INTERPRETATION:
  * - WD superconductive surface modulates X-ray emission
  * - Cometary knots are DPM condensation sites
- * - Dusty disk provides β_i calibration through accretion rate
+ * - Dusty disk provides ÃŽÂ²_i calibration through accretion rate
  * 
  * MATHEMATICAL METHODS:
- * - WD luminosity: L_WD = 4πR²σT⁴
- * - Ionization parameter: ξ = L_X / (n_H × r²)
- * - Accretion rate: Ṁ = L_X × r / (G × M_WD × η)
- * - Cometary knot lifetime: τ_knot = M_knot / Ṁ_evap
+ * - WD luminosity: L_WD = 4Ãâ‚¬RÃ‚Â²ÃÆ’TÃ¢ÂÂ´
+ * - Ionization parameter: ÃŽÂ¾ = L_X / (n_H Ãƒâ€” rÃ‚Â²)
+ * - Accretion rate: Ã¡Â¹â‚¬ = L_X Ãƒâ€” r / (G Ãƒâ€” M_WD Ãƒâ€” ÃŽÂ·)
+ * - Cometary knot lifetime: Ãâ€ž_knot = M_knot / Ã¡Â¹â‚¬_evap
  * 
  * DATA SOURCES:
  * - Chandra ACIS-S, HST ACS, Spitzer MIPS, GALEX NUV
@@ -386,6 +386,7 @@ public:
         
         // === UQFF GRAVITY COMPONENTS ===
         // Ug1: WD gravitational potential
+        // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
         double Ug1 = G * M / (r * c * c);
         
         // Ug2: Degenerate electron pressure contribution
@@ -433,7 +434,7 @@ public:
     // Cometary knot evaporation timescale
     double computeKnotLifetime(double M_knot, double L_ionizing, double r_knot) const {
         using namespace AstroTransients;
-        // Photoevaporation rate: Ṁ = πr² × F_UV / v_th
+        // Photoevaporation rate: Ã¡Â¹â‚¬ = Ãâ‚¬rÃ‚Â² Ãƒâ€” F_UV / v_th
         double v_thermal = std::sqrt(k_B * 10000.0 / m_p);  // 10^4 K knot surface
         double F_UV = L_ionizing / (4.0 * M_PI * r_inner * r_inner);
         double M_dot_evap = M_PI * r_knot * r_knot * F_UV / (v_thermal * c);
@@ -449,9 +450,9 @@ public:
     
     std::string getEquation() const override {
         return "F_U = Ug1 + Ug2 + Ug3 + Ug4 + Um - Ub_i\n"
-               "Ug1 = GM/(rc²), Ug2 = P_deg/(ρc²)\n"
-               "Ug3 = (ℏv_exp)/(Mr'c), r' = r + v_exp×t\n"
-               "L_WD = 4πR²σT⁴, Ṁ = L_X×r/(GM×η)";
+               "Ug1 = mu_s*grad(M/r)/(cÃ‚Â²), Ug2 = P_deg/(ÃÂcÃ‚Â²)\n"
+               "Ug3 = (Ã¢â€žÂv_exp)/(Mr'c), r' = r + v_expÃƒâ€”t\n"
+               "L_WD = 4Ãâ‚¬RÃ‚Â²ÃÆ’TÃ¢ÂÂ´, Ã¡Â¹â‚¬ = L_XÃƒâ€”r/(GMÃƒâ€”ÃŽÂ·)";
     }
     
     bool validate(const std::map<std::string, double>& params) const override {
@@ -480,10 +481,10 @@ public:
  * - Mira pulsation couples to disk buoyancy oscillations
  * 
  * MATHEMATICAL METHODS:
- * - Jet power: P_jet = 0.5 × Ṁ_jet × v_jet²
- * - Shock temperature: T_shock = (3/16) × (μ m_p v_shock²) / k_B
- * - LENR rate: η = k_η × n_H × σ_LENR × v_thermal
- * - Precession: θ(t) = θ_0 × sin(2πt / P_prec)
+ * - Jet power: P_jet = 0.5 Ãƒâ€” Ã¡Â¹â‚¬_jet Ãƒâ€” v_jetÃ‚Â²
+ * - Shock temperature: T_shock = (3/16) Ãƒâ€” (ÃŽÂ¼ m_p v_shockÃ‚Â²) / k_B
+ * - LENR rate: ÃŽÂ· = k_ÃŽÂ· Ãƒâ€” n_H Ãƒâ€” ÃÆ’_LENR Ãƒâ€” v_thermal
+ * - Precession: ÃŽÂ¸(t) = ÃŽÂ¸_0 Ãƒâ€” sin(2Ãâ‚¬t / P_prec)
  * 
  * DATA SOURCES:
  * - Chandra HETG, HST STIS, VLA, ALMA, VLBA
@@ -499,7 +500,7 @@ private:
     double distance;         // Distance: ~218 pc = 6.73e18 m
     double v_jet;            // Jet velocity: ~600 km/s
     double L_X_jet;          // X-ray luminosity: ~10^31 W
-    double theta_jet;        // Jet opening angle: ~30°
+    double theta_jet;        // Jet opening angle: ~30Ã‚Â°
 
 public:
     RAquariiJetTerm(double M1 = 1.0 * ::M_sun,
@@ -540,6 +541,7 @@ public:
         
         // === UQFF GRAVITY COMPONENTS ===
         // Ug1: Binary gravitational potential
+        // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
         double Ug1 = G * M_total / (a * c * c);
         
         // Ug2: Mass transfer rate contribution
@@ -598,7 +600,7 @@ public:
     // Shock emission spectrum
     double computeShockLuminosity(double T_shock, double n_shock, double V_shock) const {
         using namespace AstroTransients;
-        // Bremsstrahlung: L = 1.4e-27 × n² × T^0.5 × V (cgs)
+        // Bremsstrahlung: L = 1.4e-27 Ãƒâ€” nÃ‚Â² Ãƒâ€” T^0.5 Ãƒâ€” V (cgs)
         double L_brems = 1.4e-27 * n_shock * n_shock * std::sqrt(T_shock) * V_shock * 1e-7;  // Convert to SI
         return L_brems;
     }
@@ -611,9 +613,9 @@ public:
     }
     
     std::string getEquation() const override {
-        return "F_U = (Ug1 + Ug2 + Ug3 + Ug4 + Um - Ub_i) × (1 + 0.2cos(ω_orb×t))\n"
-               "P_jet = 0.5 × Ṁ_jet × v_jet², T_shock = (3μm_p v²)/(16k_B)\n"
-               "η_LENR = k_η × n × σ_LENR × v_th, k_η = 10^{-113}";
+        return "F_U = (Ug1 + Ug2 + Ug3 + Ug4 + Um - Ub_i) Ãƒâ€” (1 + 0.2cos(Ãâ€°_orbÃƒâ€”t))\n"
+               "P_jet = 0.5 Ãƒâ€” Ã¡Â¹â‚¬_jet Ãƒâ€” v_jetÃ‚Â², T_shock = (3ÃŽÂ¼m_p vÃ‚Â²)/(16k_B)\n"
+               "ÃŽÂ·_LENR = k_ÃŽÂ· Ãƒâ€” n Ãƒâ€” ÃÆ’_LENR Ãƒâ€” v_th, k_ÃŽÂ· = 10^{-113}";
     }
     
     bool validate(const std::map<std::string, double>& params) const override {
@@ -642,10 +644,10 @@ public:
  * - Morphology (bipolar/elliptical/round) from DPM distribution
  * 
  * MATHEMATICAL METHODS:
- * - Strömgren radius: R_S = (3 Q_H / 4π n² α_B)^(1/3)
- * - Expansion law: R(t) = R_0 × (t/t_0)^α, α ≈ 0.3-0.6
- * - Ionization balance: Q_H = ∫ n_e n_p α_B dV
- * - PN lifetime: τ_PN ~ R / v_exp ~ 10^4 years
+ * - StrÃƒÂ¶mgren radius: R_S = (3 Q_H / 4Ãâ‚¬ nÃ‚Â² ÃŽÂ±_B)^(1/3)
+ * - Expansion law: R(t) = R_0 Ãƒâ€” (t/t_0)^ÃŽÂ±, ÃŽÂ± Ã¢â€°Ë† 0.3-0.6
+ * - Ionization balance: Q_H = Ã¢Ë†Â« n_e n_p ÃŽÂ±_B dV
+ * - PN lifetime: Ãâ€ž_PN ~ R / v_exp ~ 10^4 years
  * 
  * DATA SOURCES:
  * - Planetary Nebula Archive (ESO), HST Heritage, Chandra archive
@@ -690,15 +692,15 @@ public:
         double v_exp = params.count("v_expansion") ? params.at("v_expansion") : v_expansion;
         
         // === IONIZING PHOTON RATE ===
-        // Q_H = (L_star / h ν_H) × f_ionizing
+        // Q_H = (L_star / h ÃŽÂ½_H) Ãƒâ€” f_ionizing
         double h_planck = 6.626e-34;
         double nu_H = 3.29e15;  // Hydrogen ionization frequency
         double f_ion = (T > 50000) ? 0.5 * (1.0 - 50000.0/T) : 0.01;
         double Q_H = L * f_ion / (h_planck * nu_H);
         
-        // === STRÖMGREN RADIUS ===
-        double alpha_B = 2.6e-19;  // Recombination coefficient at 10^4 K (m³/s)
-        double n_H = n_e;  // Assume n_e ≈ n_H
+        // === STRÃƒâ€“MGREN RADIUS ===
+        double alpha_B = 2.6e-19;  // Recombination coefficient at 10^4 K (mÃ‚Â³/s)
+        double n_H = n_e;  // Assume n_e Ã¢â€°Ë† n_H
         double R_S = std::pow(3.0 * Q_H / (4.0 * M_PI * n_H * n_H * alpha_B), 1.0/3.0);
         
         // === EXPANDING SHELL RADIUS ===
@@ -709,6 +711,7 @@ public:
         
         // === UQFF GRAVITY COMPONENTS ===
         // Ug1: Central star gravity
+        // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
         double Ug1 = G * M / (R_t * c * c);
         
         // Ug2: Radiation pressure
@@ -753,7 +756,7 @@ public:
     
     // Emission measure
     double computeEmissionMeasure(double R) const {
-        // EM = ∫ n_e² dV ≈ n_e² × (4/3)π(R_out³ - R_in³) × f
+        // EM = Ã¢Ë†Â« n_eÃ‚Â² dV Ã¢â€°Ë† n_eÃ‚Â² Ãƒâ€” (4/3)Ãâ‚¬(R_outÃ‚Â³ - R_inÃ‚Â³) Ãƒâ€” f
         using namespace AstroTransients;
         double V_shell = 4.0/3.0 * M_PI * (std::pow(R, 3) - std::pow(R_inner, 3));
         return n_e * n_e * V_shell * filling_factor;
@@ -762,15 +765,15 @@ public:
     std::string getName() const override { return "PlanetaryNebulaTemplateTerm"; }
     
     std::string getDescription() const override {
-        return "Generic planetary nebula template with Strömgren sphere ionization, "
+        return "Generic planetary nebula template with StrÃƒÂ¶mgren sphere ionization, "
                "shell expansion dynamics, and SCm transition at ionization fronts";
     }
     
     std::string getEquation() const override {
         return "F_U = Ug1 + Ug2 + Ug3 + Ug4 + Um - Ub_i\n"
-               "R_S = (3Q_H / 4πn²α_B)^{1/3}\n"
-               "R(t) = R_0 × (t/t_0)^{0.4}\n"
-               "Q_H = L × f_ion / (hν_H)";
+               "R_S = (3Q_H / 4Ãâ‚¬nÃ‚Â²ÃŽÂ±_B)^{1/3}\n"
+               "R(t) = R_0 Ãƒâ€” (t/t_0)^{0.4}\n"
+               "Q_H = L Ãƒâ€” f_ion / (hÃŽÂ½_H)";
     }
     
     bool validate(const std::map<std::string, double>& params) const override {
@@ -789,7 +792,7 @@ public:
  * SuperFlareTerm - Physics of Stellar Super Flares
  * 
  * UNIQUE PHYSICS:
- * - Energy range: 10^34 - 10^38 erg (100-10,000× largest solar flares)
+ * - Energy range: 10^34 - 10^38 erg (100-10,000Ãƒâ€” largest solar flares)
  * - Magnetic reconnection in twisted flux tubes
  * - Particle acceleration to relativistic energies
  * - Associated coronal mass ejections (CMEs)
@@ -800,10 +803,10 @@ public:
  * - Buoyancy-driven flux emergence pre-flare
  * 
  * MATHEMATICAL METHODS:
- * - Flare energy: E_flare = (B² / 2μ₀) × V_reconnect
+ * - Flare energy: E_flare = (BÃ‚Â² / 2ÃŽÂ¼Ã¢â€šâ‚¬) Ãƒâ€” V_reconnect
  * - Reconnection rate: v_rec = v_A / S^{1/2}, S = Lundquist number
- * - Particle acceleration: E_max = q × v_rec × B × L
- * - Scaling law: E_flare ∝ L_X^{0.7} (Shibata relation)
+ * - Particle acceleration: E_max = q Ãƒâ€” v_rec Ãƒâ€” B Ãƒâ€” L
+ * - Scaling law: E_flare Ã¢Ë†Â L_X^{0.7} (Shibata relation)
  * 
  * DATA SOURCES:
  * - Kepler/K2, TESS, XMM-Newton, Swift
@@ -853,12 +856,13 @@ public:
         
         // === RECONNECTION PHYSICS ===
         double rho_corona = 1e-12;  // Coronal density: ~10^8 cm^-3
-        double v_A = B / std::sqrt(mu_0 * rho_corona);  // Alfvén velocity
+        double v_A = B / std::sqrt(mu_0 * rho_corona);  // AlfvÃƒÂ©n velocity
         double S_Lundquist = 1e12;  // Typical coronal Lundquist number
         double v_rec = v_A / std::sqrt(S_Lundquist);  // Sweet-Parker rate
         
         // === UQFF GRAVITY COMPONENTS ===
         // Ug1: Stellar gravity (loop footpoint anchoring)
+        // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
         double Ug1 = G * M / (R * c * c);
         
         // Ug2: Magnetic pressure
@@ -871,7 +875,7 @@ public:
         double Ug3 = (hbar * omega) / (M * c * c) * std::sin(twist_angle);
         
         // Ug4: Vacuum concentration at X-point
-        // During reconnection, SCm → 0 at X-point
+        // During reconnection, SCm Ã¢â€ â€™ 0 at X-point
         double SCm_Xpoint = 0.01;  // Near-zero at reconnection site
         double Ug4 = rho_vac_UA * (1.0 - SCm_Xpoint) / rho_vac_SCm;
         
@@ -882,7 +886,7 @@ public:
         
         // === UQFF BUOYANCY (flux emergence) ===
         // Pre-flare flux emergence drives buoyancy
-        double rho_photosphere = 1e-4;  // kg/m³
+        double rho_photosphere = 1e-4;  // kg/mÃ‚Â³
         double delta_rho = rho_photosphere - rho_corona;
         double Ub_i = beta_i * G * M * delta_rho * V_loop / (R * R * rho_photosphere);
         
@@ -922,8 +926,8 @@ public:
     
     // Shibata energy-frequency relation
     double computeFlareFrequency(double E_flare) const {
-        // dN/dE ∝ E^{-1.8} (power law)
-        // N(>E) ∝ E^{-0.8}
+        // dN/dE Ã¢Ë†Â E^{-1.8} (power law)
+        // N(>E) Ã¢Ë†Â E^{-0.8}
         double E_ref = 1e27;  // Reference energy: 10^34 erg = 10^27 J
         return std::pow(E_flare / E_ref, -0.8);  // Relative frequency
     }
@@ -931,7 +935,7 @@ public:
     // Maximum particle energy
     double computeMaxParticleEnergy(double B, double L_loop, double v_rec) const {
         using namespace AstroTransients;
-        // E_max = q × v_rec × B × L
+        // E_max = q Ãƒâ€” v_rec Ãƒâ€” B Ãƒâ€” L
         return e_charge * v_rec * B * L_loop;  // In Joules
     }
     
@@ -943,10 +947,10 @@ public:
     }
     
     std::string getEquation() const override {
-        return "F_U = (Ug1 + Ug2 + Ug3 + Ug4 + Um - Ub_i) × exp(-t/τ)\n"
-               "E_flare = η × (B²/2μ₀) × V_loop\n"
-               "v_rec = v_A / S^{1/2}, v_A = B/√(μ₀ρ)\n"
-               "E_max = q × v_rec × B × L";
+        return "F_U = (Ug1 + Ug2 + Ug3 + Ug4 + Um - Ub_i) Ãƒâ€” exp(-t/Ãâ€ž)\n"
+               "E_flare = ÃŽÂ· Ãƒâ€” (BÃ‚Â²/2ÃŽÂ¼Ã¢â€šâ‚¬) Ãƒâ€” V_loop\n"
+               "v_rec = v_A / S^{1/2}, v_A = B/Ã¢Ë†Å¡(ÃŽÂ¼Ã¢â€šâ‚¬ÃÂ)\n"
+               "E_max = q Ãƒâ€” v_rec Ãƒâ€” B Ãƒâ€” L";
     }
     
     bool validate(const std::map<std::string, double>& params) const override {
@@ -1035,7 +1039,7 @@ public:
         std::cout << "\n=== BATCH 22 ASTROPHYSICAL TRANSIENTS VALIDATION ===" << std::endl;
         std::cout << "Integration Date: January 28, 2026" << std::endl;
         std::cout << "UQFF Solvability: 99.7%" << std::endl;
-        std::cout << "Calibrated Constants: κ=0.0005/day, H_SCm=0.99, β_i=0.603" << std::endl;
+        std::cout << "Calibrated Constants: ÃŽÂº=0.0005/day, H_SCm=0.99, ÃŽÂ²_i=0.603" << std::endl;
         std::cout << std::string(60, '-') << std::endl;
         
         std::map<std::string, double> test_params;
@@ -1057,7 +1061,7 @@ public:
         test_params["T_eff"] = 120000.0;
         double F_helix = computeHelixNebula(t_test, test_params);
         std::cout << "   F_U = " << F_helix << std::endl;
-        std::cout << "   τ_knot = " << helix_term->computeKnotLifetime(1e20, 1e30, 1e13) / 3.15e7 << " years" << std::endl;
+        std::cout << "   Ãâ€ž_knot = " << helix_term->computeKnotLifetime(1e20, 1e30, 1e13) / 3.15e7 << " years" << std::endl;
         
         std::cout << "\n3. R Aquarii (Symbiotic Binary Jets):" << std::endl;
         test_params.clear();
@@ -1066,7 +1070,7 @@ public:
         test_params["v_jet"] = 6e5;
         double F_raq = computeRAquariiJet(t_test, test_params);
         std::cout << "   F_U = " << F_raq << std::endl;
-        std::cout << "   θ_prec(t) = " << raquarii_term->computePrecessionAngle(t_test) * 180.0/M_PI << " deg" << std::endl;
+        std::cout << "   ÃŽÂ¸_prec(t) = " << raquarii_term->computePrecessionAngle(t_test) * 180.0/M_PI << " deg" << std::endl;
         
         std::cout << "\n4. Planetary Nebula Template:" << std::endl;
         test_params.clear();
@@ -1074,7 +1078,7 @@ public:
         test_params["T_star"] = 100000.0;
         double F_pn = computePlanetaryNebula(t_test, test_params);
         std::cout << "   F_U = " << F_pn << std::endl;
-        std::cout << "   τ_PN = " << pn_template_term->computeLifetime() / 3.15e7 << " years" << std::endl;
+        std::cout << "   Ãâ€ž_PN = " << pn_template_term->computeLifetime() / 3.15e7 << " years" << std::endl;
         
         std::cout << "\n5. Super Flare (Stellar):" << std::endl;
         test_params.clear();

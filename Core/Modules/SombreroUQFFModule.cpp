@@ -220,12 +220,12 @@ SombreroUQFFModule::SombreroUQFFModule()
 
     // EM/magnetic/superconductivity
     variables["B"] = 1e-5;             // T (galactic field)
-    variables["B_crit"] = 1e15 * 1e-4; // T (10^15 G = 1e11 T, but doc 10^15 G �1e11 T)
+    variables["B_crit"] = 1e15 * 1e-4; // T (10^15 G = 1e11 T, but doc 10^15 G ï¿½1e11 T)
 
     // Quantum terms
     variables["Delta_x"] = 1e-10;                                    // m (position uncertainty, atomic scale)
     variables["Delta_p"] = variables["hbar"] / variables["Delta_x"]; // Momentum uncertainty (Heisenberg)
-    variables["integral_psi"] = 1.0;                                 // Normalized <psi|H|psi> dV � E_ground (simplified to 1 for unitless)
+    variables["integral_psi"] = 1.0;                                 // Normalized <psi|H|psi> dV ï¿½ E_ground (simplified to 1 for unitless)
 
     // Resonant/oscillatory terms
     variables["A"] = 1e-10;    // Amplitude (arbitrary small)
@@ -239,8 +239,8 @@ SombreroUQFFModule::SombreroUQFFModule()
 
     // Ug subterms (computed dynamically, but init placeholders)
     variables["Ug1"] = 0.0; // Will be G M / r^2
-    variables["Ug2"] = 0.0; // d^2 Phi / dt^2 � 0 (negligible)
-    variables["Ug3"] = 0.0; // G M_moon / r_moon^2 � 0 (no moon)
+    variables["Ug2"] = 0.0; // d^2 Phi / dt^2 ï¿½ 0 (negligible)
+    variables["Ug3"] = 0.0; // G M_moon / r_moon^2 ï¿½ 0 (no moon)
     variables["Ug4"] = 0.0; // Ug1 * f_sc, f_sc=1
 
     // Scale factors (from streamlining)
@@ -300,9 +300,11 @@ double SombreroUQFFModule::computeHz()
     return (Hz_kms * 1e3) / variables["Mpc_to_m"];
 }
 
-// Compute Ug sum: Ug1 = G M / r^2, Ug4 = Ug1 * f_sc, others 0
+// Compute Ug sum: Ug1 = mu_s x grad(M_s/r) [DPM-emergent, not Newtonian], Ug4 = Ug1 * f_sc, others 0
 double SombreroUQFFModule::computeUgSum()
 {
+    // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
+    // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
     double Ug1 = (variables["G"] * variables["M"]) / (variables["r"] * variables["r"]);
     variables["Ug1"] = Ug1; // Update map
     variables["Ug4"] = Ug1 * variables["f_sc"];
@@ -396,7 +398,7 @@ double SombreroUQFFModule::computeG(double t)
 std::string SombreroUQFFModule::getEquationText()
 {
     return "g_Sombrero(r, t) = (G * M / r^2) * (1 + H(z) * t) * (1 - B / B_crit) * (1 + f_TRZ) + (G * M_BH / r_BH^2) + (Ug1 + Ug2 + Ug3 + Ug4) + (Lambda * c^2 / 3) + "
-           "(hbar / sqrt(Delta_x * Delta_p)) * ?(?* H ? dV) * (2p / t_Hubble) + q (v � B) + ?_fluid * V * g + "
+           "(hbar / sqrt(Delta_x * Delta_p)) * ?(?* H ? dV) * (2p / t_Hubble) + q (v ï¿½ B) + ?_fluid * V * g + "
            "2 A cos(k x) cos(? t) + (2p / 13.8) A exp(i (k x - ? t)) + (M_visible + M_DM) * (d?/? + 3 G M / r^3) + D_dust\n"
            "Special Terms:\n"
            "- Quantum: Heisenberg uncertainty with normalized wavefunction integral (ground state approx).\n"
@@ -404,7 +406,7 @@ std::string SombreroUQFFModule::getEquationText()
            "- Resonant: Oscillatory Aether-mediated waves (real part of complex exp) for globular cluster dynamics.\n"
            "- DM: Visible+dark mass with density perturbations and curvature term for halo.\n"
            "- Superconductivity: (1 - B/B_crit) for quantum field effects.\n"
-           "Solutions: Numerical evaluation at t=10 Gyr yields ~0.535 m/s� (dust/BH dominant; full sum includes micro terms ~1e-10 to 1e-3).\n"
+           "Solutions: Numerical evaluation at t=10 Gyr yields ~0.535 m/sï¿½ (dust/BH dominant; full sum includes micro terms ~1e-10 to 1e-3).\n"
            "Adaptations for Sombrero: Virgo Cluster z=0.0063; prominent dust lane boosts D_dust; SMBH=1e9 Msun shapes bulge.";
 }
 
@@ -424,7 +426,7 @@ void SombreroUQFFModule::printVariables()
 //     SombreroUQFFModule mod;
 //     double t = 10e9 * 3.156e7;  // 10 Gyr
 //     double g = mod.computeG(t);
-//     std::cout << "g = " << g << " m/s�\n";
+//     std::cout << "g = " << g << " m/sï¿½\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("M", 1.1e11 * 1.989e30);  // Update mass
 //     mod.addToVariable("f_TRZ", 0.05);            // Add to TR factor
@@ -433,7 +435,7 @@ void SombreroUQFFModule::printVariables()
 //     return 0;
 // }
 // Compile: g++ -o ziqn233h ziqn233h.cpp SombreroUQFFModule.cpp -lm
-// Sample Output at t=10 Gyr: g � 0.535 m/s� (varies with updates; quantum/fluid/resonant ~1e-10 to 1e-3, DM ~1e41 * 1e-41 ~1e0 negligible in sum).
+// Sample Output at t=10 Gyr: g ï¿½ 0.535 m/sï¿½ (varies with updates; quantum/fluid/resonant ~1e-10 to 1e-3, DM ~1e41 * 1e-41 ~1e0 negligible in sum).
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 08, 2025.
 
 /*

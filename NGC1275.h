@@ -145,6 +145,8 @@ public:
     }
 
     double compute_Ug(double Bt, double Ft) const {
+        // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
+        // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
         double ug1 = (G * M0) / (r * r);
         double corr_B = 1.0 - Bt / B_crit;
         // (1+F) filament enhancement

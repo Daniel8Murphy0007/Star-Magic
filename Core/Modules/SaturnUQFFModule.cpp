@@ -299,9 +299,11 @@ double SaturnUQFFModule::computeHz()
     return (Hz_kms * 1e3) / variables["Mpc_to_m"];
 }
 
-// Compute Ug sum: Ug1 = G M / r^2, Ug4 = Ug1 * f_sc, others 0
+// Compute Ug sum: Ug1 = mu_s x grad(M_s/r) [DPM-emergent, not Newtonian], Ug4 = Ug1 * f_sc, others 0
 double SaturnUQFFModule::computeUgSum()
 {
+    // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
+    // DPM-emergent: gravity from magnetic moment x mass gradient (not Newtonian GM/r^2)
     double Ug1 = (variables["G"] * variables["M"]) / (variables["r"] * variables["r"]);
     variables["Ug1"] = Ug1; // Update map
     variables["Ug4"] = Ug1 * variables["f_sc"];
@@ -398,7 +400,7 @@ double SaturnUQFFModule::computeG(double t)
 std::string SaturnUQFFModule::getEquationText()
 {
     return "g_Saturn(r, t) = (G * M_Sun / r_orbit^2) * (1 + H(z) * t) * (1 + f_TRZ) + (G * M / r^2) * (1 - B / B_crit) + T_ring + (Ug1 + Ug2 + Ug3 + Ug4) + (Lambda * c^2 / 3) + "
-           "(hbar / sqrt(Delta_x * Delta_p)) * ?(?* H ? dV) * (2? / t_Hubble) + q (v � B) + ?_fluid * V * g + "
+           "(hbar / sqrt(Delta_x * Delta_p)) * ?(?* H ? dV) * (2? / t_Hubble) + q (v ï¿½ B) + ?_fluid * V * g + "
            "2 A cos(k x) cos(? t) + (2? / 13.8) A exp(i (k x - ? t)) + (M_visible + M_DM) * (??/? + 3 G M / r^3) + a_wind\n"
            "Special Terms:\n"
            "- Quantum: Heisenberg uncertainty with normalized wavefunction integral (ground state approx) for atmospheric quantum effects.\n"
@@ -408,7 +410,7 @@ std::string SaturnUQFFModule::getEquationText()
            "- Superconductivity: (1 - B/B_crit) for quantum field effects in atmosphere.\n"
            "- Ring Tidal: G M_ring / r_ring^2 for ring influence.\n"
            "- Wind: v_wind^2 * 1e-12 for atmospheric feedback.\n"
-           "Solutions: Numerical evaluation at t=4.5 Gyr yields ~10.44 m/s� (g_saturn dominant; orbital g_sun ~9e-5; micro terms ~1e-7 to 1e-10).\n"
+           "Solutions: Numerical evaluation at t=4.5 Gyr yields ~10.44 m/sï¿½ (g_saturn dominant; orbital g_sun ~9e-5; micro terms ~1e-7 to 1e-10).\n"
            "Adaptations for Saturn: Solar System orbital term; z=0 negligible expansion; wind/rings boost local effects.";
 }
 
@@ -428,7 +430,7 @@ void SaturnUQFFModule::printVariables()
 //     SaturnUQFFModule mod;
 //     double t = 4.5e9 * 3.156e7;  // 4.5 Gyr
 //     double g = mod.computeG(t);
-//     std::cout << "g = " << g << " m/s�\n";
+//     std::cout << "g = " << g << " m/sï¿½\n";
 //     std::cout << mod.getEquationText() << std::endl;
 //     mod.updateVariable("M", 5.7e26);  // Update mass
 //     mod.addToVariable("f_TRZ", 0.05); // Add to TR factor
@@ -437,7 +439,7 @@ void SaturnUQFFModule::printVariables()
 //     return 0;
 // }
 // Compile: g++ -o ziqn233h ziqn233h.cpp SaturnUQFFModule.cpp -lm
-// Sample Output at t=4.5 Gyr: g ? 10.44 m/s� (varies with updates; quantum/fluid/resonant ~1e-10 to 1e-3, DM ~1e26 * 1e-26 ~1e0 but curv small).
+// Sample Output at t=4.5 Gyr: g ? 10.44 m/sï¿½ (varies with updates; quantum/fluid/resonant ~1e-10 to 1e-3, DM ~1e26 * 1e-26 ~1e0 but curv small).
 // Watermark: Copyright - Daniel T. Murphy, analyzed Oct 08, 2025.
 
 /*

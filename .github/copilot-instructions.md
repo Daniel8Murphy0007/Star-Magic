@@ -67,7 +67,7 @@ CoAnQi.cpp  (9K)      ics.py (81K)    (46K, 600 classes)    (index.js LIB)
 - **UQFF Solvability:** 99.9% (Grok 4 analysis Sept 14-21, 2025), calibrated constants: κ=0.0005/day, [SSq]=0.57, H_SCm≈0.99, U_UA≈0.0001, k_η=10⁻¹¹³, β_i≈0.603
 - **Self-Expanding Framework 2.0:** Dynamic term registration, runtime parameters, state export/import, auto-optimization, metadata tracking
 - **Build System:** CMake + Visual Studio 2022 (MSVC 14.44.35219), C++20 standard, Windows threading compatibility, UPX 5.0.2 compression (1.43 MB, 15.51% ratio)
-- **Dual-Method Validation:** UQFF (buoyancy-based) vs MUGE (Newtonian+corrections) cross-validation framework for physics discovery verification
+- **Dual-Method Validation:** UQFF (buoyancy-based) vs MUGE (DPM-driven, frequency/resonance) cross-validation framework for physics discovery verification
 
 
 ## Developer Workflows
@@ -155,10 +155,11 @@ double Ug4 = SOURCE4::compute_Ug4_SOURCE4(body, r);              // Vacuum conce
 double Ubi = SOURCE4::compute_Ubi_SOURCE4(body, r);              // Buoyancy force
 double Um = SOURCE4::compute_Um_SOURCE4(body, r);                // Magnetism
 
-// MUGE Compressed - 10 functions (base gravity + 9 correction terms)
+// MUGE Compressed - 10 functions (DPM base + 9 resonance correction terms)
 double g = SOURCE4::compute_compressed_MUGE_SOURCE4(system);     // Complete MUGE
-// Base: Newtonian, Expansion: Hubble, Super: Magnetic suppression, Envelope, Ug_sum, 
-// Cosm: Λ, Quantum: ℏ, Fluid: Navier-Stokes, Perturbation: Dark matter
+// Base: DPM (a_DPM = F_DPM * f_DPM * E_vac,neb / (c * V_sys)), Expansion: Hubble,
+// Super: Magnetic suppression, Envelope, Ug_sum, Cosm: Λ, Quantum: ℏ,
+// Fluid: Navier-Stokes, Perturbation: Dark matter
 
 // MUGE Resonance - 14 functions (aDPM base + 13 resonance modes)
 double g = SOURCE4::compute_resonance_MUGE_SOURCE4(system, params);  // Complete resonance MUGE
