@@ -195,7 +195,7 @@ class MorrisThorneWormhole:
             
             return True
             
-        except:
+        except Exception:
             return False
 
 
@@ -709,7 +709,7 @@ class CosmologicalEvolution:
         
         # Trapezoidal integration
         integrand = 1.0 / H_arr
-        d_c = self.c * np.trapezoid(integrand, z_arr)
+        d_c = self.c * np.trapz(integrand, z_arr)
         
         return d_c
 

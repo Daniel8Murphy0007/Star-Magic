@@ -25,7 +25,7 @@ from typing import Dict, List, Any, Callable, Tuple
 import time
 import hashlib
 import json
-from collections import defaultdict
+from collections import defaultdict, OrderedDict
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # PERFORMANCE MONITORING
@@ -108,7 +108,7 @@ class ResultCache:
     def __init__(self, max_size: int = 1000, ttl_seconds: float = 3600):
         self.max_size = max_size
         self.ttl = ttl_seconds
-        self.cache: Dict[str, Tuple[Any, float]] = {}
+        self.cache: OrderedDict[str, Tuple[Any, float]] = OrderedDict()
         self.hits = 0
         self.misses = 0
         
@@ -149,6 +149,8 @@ class ResultCache:
             
             if age < self.ttl:
                 self.hits += 1
+                # LRU: move accessed key to end (most recently used)
+                self.cache.move_to_end(key)
                 return True, result
             else:
                 # Expired - remove from cache
@@ -158,14 +160,18 @@ class ResultCache:
         return False, None
     
     def set(self, func_name: str, args: tuple, kwargs: dict, result: Any):
-        """Store result in cache."""
+        """Store result in cache with LRU eviction."""
         key = self._make_key(func_name, args, kwargs)
         
-        # Check size limit
+        # If key already exists, update and move to end
+        if key in self.cache:
+            self.cache[key] = (result, time.time())
+            self.cache.move_to_end(key)
+            return
+        
+        # Check size limit — evict least recently used (first item)
         if len(self.cache) >= self.max_size:
-            # Remove oldest entry (simple FIFO, could be improved to LRU)
-            oldest_key = next(iter(self.cache))
-            del self.cache[oldest_key]
+            self.cache.popitem(last=False)
         
         self.cache[key] = (result, time.time())
     

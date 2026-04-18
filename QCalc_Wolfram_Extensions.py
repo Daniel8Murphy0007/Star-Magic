@@ -1,4 +1,3 @@
-from dpm_helpers import dpm_emergent_ug1, dpm_emergent_ug2
 #!/usr/bin/env python3
 """
 QCalc_Wolfram_Extensions.py - Extracted C++ Wolfram Physics Terms
@@ -58,6 +57,7 @@ import numpy as np
 from typing import Dict, List, Optional, Tuple
 from IPData import InputParameters
 from QCalc import CONSTANTS, EquationResult
+from dpm_helpers import dpm_emergent_ug1, dpm_emergent_ug2
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # SOURCE14 EXTRACTED CONSTANTS (SGR 0501+4516 Magnetar)

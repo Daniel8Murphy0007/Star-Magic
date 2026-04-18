@@ -79,14 +79,10 @@ def validate_params(data: Dict[str, Any]) -> tuple[bool, str, ComputeParams]:
             z=float(data.get('z', 0.0)),
             t=float(data.get('t', 0.0)),
             t_n=float(data.get('t_n', -1000.0)),
-            theta=float(data.get('theta', 0.01)),
-            v_rot=float(data.get('v_rot', 1e5)),
-            B_mag=float(data.get('B_mag', 1e-8)),
+            B=float(data.get('B_mag', data.get('B', 1e-8))),
             SFR=float(data.get('SFR', 10.0)),
             M_bh=float(data.get('M_bh', 4.15e6 * CONSTANTS['M_sun'])),
-            d_g=float(data.get('d_g', 8000 * CONSTANTS['pc'])),
-            M_gal=float(data.get('M_gal', 1e12 * CONSTANTS['M_sun'])),
-            r_gal=float(data.get('r_gal', 15000 * CONSTANTS['pc']))
+            d_g=float(data.get('d_g', 8000 * CONSTANTS['pc']))
         )
         
         # Sanity checks
@@ -143,20 +139,21 @@ def list_equations():
     test_params = ComputeParams(M=1.989e30, r=1.496e11)
     results = solver.solve(test_params)
     
+    # results['long_form_equations'] contains dicts from EquationResult.to_dict()
     equation_list = [
         {
-            'name': eq.name,
-            'category': eq.category,
-            'description': eq.description,
-            'requires': eq.dependencies
+            'name': eq.get('name', ''),
+            'latex': eq.get('latex', ''),
+            'unit': eq.get('unit', ''),
+            'notes': eq.get('notes', '')
         }
-        for eq in results['equations']
+        for eq in results['long_form_equations']
     ]
     
     return jsonify({
         'equations': equation_list,
         'total_count': len(equation_list),
-        'categories': list(set(eq['category'] for eq in equation_list))
+        'available_equations': results.get('available_equations', [])
     }), 200
 
 
@@ -210,13 +207,14 @@ def calculate_single():
         
         # Store in output database
         query_id = f"api_{int(time.time() * 1000)}"
-        output_store.store_results(
-            query_id=query_id,
-            query_name=system_name,
-            input_params=vars(params),
-            equations=results['equations'],
-            solutions=results['solutions']
-        )
+        store_dict = {
+            'query_id': query_id,
+            'input_params': vars(params),
+            'long_form_equations': results['long_form_equations'],
+            'solutions': results['solutions'],
+            'available_equations': results.get('available_equations', [])
+        }
+        output_store.store(store_dict)
         
         # Format response
         response = {
@@ -227,16 +225,16 @@ def calculate_single():
             'solutions': results['solutions'],
             'equations': [
                 {
-                    'name': eq.name,
-                    'result': eq.result,
-                    'units': eq.units,
-                    'description': eq.description
+                    'name': eq.get('name', ''),
+                    'result': eq.get('result', 0.0),
+                    'unit': eq.get('unit', ''),
+                    'notes': eq.get('notes', '')
                 }
-                for eq in results['equations']
+                for eq in results['long_form_equations']
             ],
-            'available_equations': results['available_equations'],
+            'available_equations': results.get('available_equations', []),
             'computation_time': computation_time,
-            'equation_count': len(results['equations'])
+            'equation_count': len(results['long_form_equations'])
         }
         
         return jsonify(response), 200
@@ -306,7 +304,7 @@ def calculate_batch():
                     'index': idx,
                     'name': system_name,
                     'solutions': result['solutions'],
-                    'equation_count': len(result['equations'])
+                    'equation_count': len(result['long_form_equations'])
                 })
             except Exception as e:
                 errors.append({
@@ -523,7 +521,7 @@ if __name__ == '__main__':
     # Run development server
     app.run(
         host='0.0.0.0',
-        port=5000,
-        debug=True,
+        port=8443,
+        debug=False,
         threaded=True
     )
