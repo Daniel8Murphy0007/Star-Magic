@@ -801,9 +801,9 @@ def compute_aDPM_SOURCE4(p: dict) -> float:
     A = p.get("A", 1.0)              # Area
     omega1 = p.get("omega1", 1e-5)   # Frequency 1
     omega2 = p.get("omega2", 0.9e-5) # Frequency 2
-    fDPM = p.get("fDPM", 1.0)        # DPM factor
+    fDPM = p.get("fDPM", 1e12)       # DPM frequency (PAPER_371 §3)
     Evac_neb = p.get("Evac_neb", 7.09e-36)  # Vacuum energy (nebula)
-    c_res = p.get("c_res", 1.0)      # Resonance coupling
+    c_res = p.get("c_res", 3e8)      # Speed of light (PAPER_371 §3)
     Vsys = p.get("Vsys", 1e30)       # System volume
     
     FDPM = I * A * (omega1 - omega2)
@@ -824,7 +824,7 @@ def compute_aTHz_SOURCE4(p: dict) -> float:
     Evac_neb = p.get("Evac_neb", 7.09e-36)
     vexp = p.get("vexp", 1e5)        # Expansion velocity
     Evac_ISM = p.get("Evac_ISM", 7.09e-37)  # Vacuum energy (ISM)
-    c_res = p.get("c_res", 1.0)
+    c_res = p.get("c_res", 3e8)      # Speed of light (PAPER_371 §3)
     
     if Evac_ISM == 0 or c_res == 0:
         return 0.0
@@ -845,7 +845,7 @@ def compute_avac_diff_SOURCE4(p: dict) -> float:
     Delta_Evac = p.get("Delta_Evac", 6.381e-36)  # Vacuum energy difference
     vexp = p.get("vexp", 1e5)
     Evac_neb = p.get("Evac_neb", 7.09e-36)
-    c_res = p.get("c_res", 1.0)
+    c_res = p.get("c_res", 3e8)      # Speed of light (PAPER_371 §3)
     
     if Evac_neb == 0 or c_res == 0:
         return 0.0
@@ -865,10 +865,10 @@ def compute_asuper_freq_SOURCE4(p: dict) -> float:
     if aDPM == 0:
         aDPM = compute_aDPM_SOURCE4(p)
     
-    Fsuper = p.get("Fsuper", 1.0)    # Superconductive factor
+    Fsuper = p.get("Fsuper", 6.287e-19)  # Superconductive force (PAPER_371 §3)
     fTHz = p.get("fTHz", 1e12)
     Evac_neb = p.get("Evac_neb", 7.09e-36)
-    c_res = p.get("c_res", 1.0)
+    c_res = p.get("c_res", 3e8)      # Speed of light (PAPER_371 §3)
     
     if Evac_neb == 0 or c_res == 0:
         return 0.0
@@ -888,8 +888,8 @@ def compute_aaether_res_SOURCE4(p: dict) -> float:
     if aDPM == 0:
         aDPM = compute_aDPM_SOURCE4(p)
     
-    UA_SCM = p.get("UA_SCM", 0.0001)  # Universal attraction SCM
-    omega_i = p.get("omega_i", 1e-7)  # Internal frequency
+    UA_SCM = p.get("UA_SCM", 10.0)    # Aether SCm coupling (PAPER_371 §3)
+    omega_i = p.get("omega_i", 1e-8)  # Intrinsic angular frequency (PAPER_371 §3)
     fTHz = p.get("fTHz", 1e12)
     fTRZ = p.get("fTRZ", 0.1)         # TRZ factor
     
@@ -901,7 +901,7 @@ def compute_Ug4i_resonance_SOURCE4(p: dict) -> float:
     MUGE Resonance: Ug4 resonance term
     
     Formula: Ug4i = k4_res * E_react * f_react * aDPM / E_vac_neb * c_res
-    Where E_react = 1046 * exp(-0.0005 * t)
+    Where E_react = 1e46 * exp(-kappa/86400 * t), kappa = 0.0005/day
     """
     aDPM = p.get("aDPM", 0.0)
     if aDPM == 0:
@@ -909,14 +909,15 @@ def compute_Ug4i_resonance_SOURCE4(p: dict) -> float:
     
     t = p.get("t", 0.0)
     k4_res = p.get("k4_res", 1.0)
-    freact = p.get("freact", 1.0)
+    freact = p.get("freact", 1e10)    # Reactive frequency (PAPER_371 §3)
     Evac_neb = p.get("Evac_neb", 7.09e-36)
-    c_res = p.get("c_res", 1.0)
+    c_res = p.get("c_res", 3e8)      # Speed of light (PAPER_371 §3)
     
     if Evac_neb == 0:
         return 0.0
     
-    Ereact = 1046 * math.exp(-0.0005 * t)
+    # kappa = 0.0005/day, convert to per-second
+    Ereact = 1e46 * math.exp(-0.0005 / 86400.0 * t)
     return k4_res * Ereact * freact * aDPM / Evac_neb * c_res
 
 
@@ -930,10 +931,10 @@ def compute_aquantum_freq_SOURCE4(p: dict) -> float:
     if aDPM == 0:
         aDPM = compute_aDPM_SOURCE4(p)
     
-    fquantum = p.get("fquantum", 1e15)  # Quantum frequency
+    fquantum = p.get("fquantum", 1.445e-17)  # Quantum frequency (PAPER_371 §3)
     Evac_neb = p.get("Evac_neb", 7.09e-36)
     Evac_ISM = p.get("Evac_ISM", 7.09e-37)
-    c_res = p.get("c_res", 1.0)
+    c_res = p.get("c_res", 3e8)      # Speed of light (PAPER_371 §3)
     
     if Evac_ISM == 0 or c_res == 0:
         return 0.0
@@ -951,10 +952,10 @@ def compute_aAether_freq_SOURCE4(p: dict) -> float:
     if aDPM == 0:
         aDPM = compute_aDPM_SOURCE4(p)
     
-    fAether = p.get("fAether", 1e10)  # Aether frequency
+    fAether = p.get("fAether", 1.576e-35)  # Aether frequency (PAPER_371 §3)
     Evac_neb = p.get("Evac_neb", 7.09e-36)
     Evac_ISM = p.get("Evac_ISM", 7.09e-37)
-    c_res = p.get("c_res", 1.0)
+    c_res = p.get("c_res", 3e8)      # Speed of light (PAPER_371 §3)
     
     if Evac_ISM == 0 or c_res == 0:
         return 0.0
@@ -968,11 +969,11 @@ def compute_afluid_freq_SOURCE4(p: dict) -> float:
     
     Formula: a_fluid_freq = f_fluid * E_vac_neb * V_sys / (E_vac_ISM * c_res)
     """
-    ffluid = p.get("ffluid", 1e-4)    # Fluid frequency
+    ffluid = p.get("ffluid", 1.269e-14)  # Fluid frequency (PAPER_371 SGR1745 default)
     Evac_neb = p.get("Evac_neb", 7.09e-36)
     Vsys = p.get("Vsys", 1e30)
     Evac_ISM = p.get("Evac_ISM", 7.09e-37)
-    c_res = p.get("c_res", 1.0)
+    c_res = p.get("c_res", 3e8)      # Speed of light (PAPER_371 §3)
     
     if Evac_ISM == 0 or c_res == 0:
         return 0.0
@@ -982,20 +983,14 @@ def compute_afluid_freq_SOURCE4(p: dict) -> float:
 
 def compute_Osc_term_SOURCE4(p: dict) -> float:
     """
-    MUGE Resonance: Oscillation term
+    MUGE Resonance: Oscillation term (PAPER_371 §2.10)
     
-    Formula: Osc = A_osc * sin(ω_osc * t + φ) * E_vac_neb
-    
-    Models periodic oscillations in the vacuum energy field.
-    If no oscillation parameters provided, uses default harmonic oscillator.
+    Formula: Osc = f_osc * cos(2π * f_osc * t)
     """
     t = p.get("t", 0.0)
-    A_osc = p.get("A_osc", 1e-10)      # Oscillation amplitude
-    omega_osc = p.get("omega_osc", 1e-15)  # Oscillation frequency
-    phi_osc = p.get("phi_osc", 0.0)    # Phase
-    Evac_neb = p.get("Evac_neb", 7.09e-36)
+    fosc = p.get("fosc", 4.57e14)     # Oscillation frequency (PAPER_371 §3)
     
-    return A_osc * math.sin(omega_osc * t + phi_osc) * Evac_neb
+    return fosc * math.cos(2.0 * math.pi * fosc * t)
 
 
 def compute_aexp_freq_SOURCE4(p: dict) -> float:
@@ -1013,7 +1008,7 @@ def compute_aexp_freq_SOURCE4(p: dict) -> float:
     H_z = p.get("H_z", 2.270e-18)     # Hubble parameter
     Evac_neb = p.get("Evac_neb", 7.09e-36)
     Evac_ISM = p.get("Evac_ISM", 7.09e-37)
-    c_res = p.get("c_res", 1.0)
+    c_res = p.get("c_res", 3e8)      # Speed of light (PAPER_371 §3)
     
     if Evac_ISM == 0 or c_res == 0:
         return 0.0
