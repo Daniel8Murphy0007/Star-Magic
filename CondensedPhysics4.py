@@ -17923,6 +17923,16 @@ __all__ = [
     "UQFFObservableUniverseDiameterCalculator",                       # PAPER_654 (#238)
     "UQFFGalacticDiscreteBandSimulatorCalculator",                    # PAPER_655 (#239)
 
+    # --- Session 221: MUGE Compression Cycle 3 gap fill — PAPER_1019–1026 ---
+    "TechnologicalFieldFenvCalculator",                               # PAPER_1019 (#603)
+    "AtomicScalePressureTermCalculator",                              # PAPER_1020 (#604)
+    "GravitationalWaveRadiationTermCalculator",                       # PAPER_1021 (#605)
+    "Ug3PrimeExternalGravityCalculator",                              # PAPER_1022 (#606)
+    "OscilloscopeEnergyDensityCalculator",                            # PAPER_1023 (#607)
+    "MagneticChordResonanceModelCalculator",                          # PAPER_1024 (#608)
+    "ConsolidatedFcosmoEnvelopeCalculator",                           # PAPER_1025 (#609)
+    "ShellCorrectionFenvCalculator",                                  # PAPER_1026 (#610)
+
 ]
 
 # =============================================================================
@@ -40540,6 +40550,599 @@ class RESTFUBiEndpointCalc(_CP4Calculator):  # PAPER_988 #572
 
     def simulate(self, sweep=None, **kw):
         return [self.compute({})]
+    def self_update(self): pass
+    def self_expand(self): pass
+
+
+# =============================================================================
+# SESSION 221 — MUGE Compression Cycle 3 Gap Fill (8 calculators)
+# Source: 100_MUGE Compression cycle 3.txt + 200_MUGE Compression cycle 3_Superconductive Resonance.txt
+# Gaps identified: F_tech, P_term, GW_term, Ug3Prime, OscilloscopeEnergyDensity,
+#                  MagneticChordResonance, F_cosmo, F_shell
+# =============================================================================
+
+
+class TechnologicalFieldFenvCalculator(object):
+    """PAPER_1019: F_tech — Technological field environmental sub-component.
+
+    From 200_MUGE Compression cycle 3 § F_env(t) modular term, sub-component 15.
+    Models artificially generated field contributions to the F_env framework,
+    representing technological/engineered electromagnetic or gravitational
+    perturbations within the UQFF environment factor.
+
+    F_tech(t) = P_tech / (4π r² c) × η_coupling × (1 + modulation)
+
+    where:
+        P_tech     = technological power output (W)
+        r          = distance from source (m)
+        η_coupling = coupling efficiency to UQFF vacuum (dimensionless)
+        modulation = sin(2π f_mod t) for AC-driven systems
+
+    Completes the 15/15 F_env sub-component set.
+    CP4 class #603. Session 221."""
+
+    G       = 6.6743e-11
+    c       = 3.0e8
+    hbar    = 1.0546e-34
+    mu_0    = 1.2566e-6
+    rho_UA  = 7.09e-36
+    rho_SCm = 7.09e-37
+
+    def __init__(self, dataset=None):
+        self.dataset = dataset or {}
+        self.version = "Session221"
+
+    def compute(self, dataset: dict = None) -> dict:
+        import math
+        d = dataset or self.dataset
+        P_tech     = float(d.get('P_tech', 1.0))
+        r          = float(d.get('r', 1.0))
+        eta        = float(d.get('eta_coupling', 1e-6))
+        f_mod      = float(d.get('f_mod', 60.0))
+        t          = float(d.get('t', 0.0))
+
+        if r <= 0:
+            r = 1.0
+
+        modulation = math.sin(2 * math.pi * f_mod * t) if f_mod > 0 else 0.0
+        F_tech = P_tech / (4 * math.pi * r**2 * self.c) * eta * (1 + modulation)
+
+        return {
+            'paper':     'PAPER_1019',
+            'cp4_entry': 603,
+            'class':     'TechnologicalFieldFenvCalculator',
+            'domain':    'F_tech environmental sub-component for F_env modular framework',
+            'primary_equations': [
+                f"F_tech = P_tech/(4π r² c) × η × (1+mod) = {F_tech:.6e}",
+                f"P_tech = {P_tech:.4e} W, r = {r:.4e} m, η = {eta:.4e}",
+                f"modulation = sin(2π·{f_mod}·{t}) = {modulation:.6f}",
+            ],
+            'available_equations': [
+                "F_tech_DC = P_tech / (4π r² c) × η  [DC/static mode]",
+                "F_tech_pulse = P_tech × δ(t-t0) / (4π r² c) × η  [impulse mode]",
+            ],
+            'simulation_set': {
+                'r_sweep': 'r from 0.1 to 100 m, trace F_tech decay',
+                'f_sweep': 'f_mod from 1 to 1e6 Hz, trace modulation coupling',
+            },
+            'F_tech':     F_tech,
+        }
+
+    def self_update(self): pass
+    def self_expand(self): pass
+
+
+class AtomicScalePressureTermCalculator(object):
+    """PAPER_1020: P_term — Atomic-scale pressure environmental term.
+
+    From 200_MUGE Compression cycle 3 § E.14 (Hydrogen atom scale).
+    Models quantum degeneracy pressure and radiation pressure at atomic
+    and sub-atomic scales, particularly relevant for hydrogen resonance
+    and nuclear binding calculations.
+
+    P_term = n k_B T + (2/3) × (ℏ²/(2m_e)) × (3π² n)^(2/3) × n + (σ T⁴)/(3c)
+
+    Three contributions:
+        1. Thermal:    P_thermal = n k_B T
+        2. Degeneracy: P_deg = (2/3)(ℏ²/2m_e)(3π²n)^(2/3) × n  [Fermi gas]
+        3. Radiation:  P_rad = σ T⁴ / (3c)  [photon gas]
+
+    CP4 class #604. Session 221."""
+
+    G       = 6.6743e-11
+    c       = 3.0e8
+    hbar    = 1.0546e-34
+    k_B     = 1.3806e-23
+    m_e     = 9.1094e-31
+    sigma   = 5.6704e-8
+
+    def __init__(self, dataset=None):
+        self.dataset = dataset or {}
+        self.version = "Session221"
+
+    def compute(self, dataset: dict = None) -> dict:
+        import math
+        d = dataset or self.dataset
+        n     = float(d.get('n', 1e30))
+        T     = float(d.get('T', 1e4))
+        m_ion = float(d.get('m_ion', self.m_e))
+
+        P_thermal = n * self.k_B * T
+        fermi_factor = (3 * math.pi**2 * n) ** (2.0 / 3.0)
+        P_deg = (2.0 / 3.0) * (self.hbar**2 / (2.0 * m_ion)) * fermi_factor * n
+        P_rad = self.sigma * T**4 / (3.0 * self.c)
+        P_total = P_thermal + P_deg + P_rad
+
+        return {
+            'paper':     'PAPER_1020',
+            'cp4_entry': 604,
+            'class':     'AtomicScalePressureTermCalculator',
+            'domain':    'P_term atomic-scale pressure for F_env and hydrogen resonance',
+            'primary_equations': [
+                f"P_total = P_thermal + P_deg + P_rad = {P_total:.6e} Pa",
+                f"P_thermal = n·k_B·T = {P_thermal:.6e} Pa",
+                f"P_deg = (2/3)(ℏ²/2m)(3π²n)^(2/3)·n = {P_deg:.6e} Pa",
+                f"P_rad = σT⁴/(3c) = {P_rad:.6e} Pa",
+            ],
+            'available_equations': [
+                "P_Coulomb = e²n^(4/3) / (4πε₀)  [Coulomb pressure]",
+                "P_exchange = -(3/4)(3/π)^(1/3) e² n^(4/3) / (4πε₀)  [exchange correction]",
+            ],
+            'simulation_set': {
+                'T_sweep': 'T from 100 to 1e8 K, trace P_thermal vs P_rad crossover',
+                'n_sweep': 'n from 1e28 to 1e35 m⁻³, trace degeneracy onset',
+            },
+            'P_total':   P_total,
+            'P_thermal': P_thermal,
+            'P_deg':     P_deg,
+            'P_rad':     P_rad,
+        }
+
+    def self_update(self): pass
+    def self_expand(self): pass
+
+
+class GravitationalWaveRadiationTermCalculator(object):
+    """PAPER_1021: GW_term — Gravitational wave radiation term calculator.
+
+    From 200_MUGE Compression cycle 3 § E.18.
+    Standalone calculator for gravitational wave energy loss and
+    radiation-reaction force on compact binary systems.
+
+    GW_term = -(32/5) × G⁴/(c⁵) × (m₁ m₂ (m₁+m₂)) / r⁵
+
+    Peters (1964) inspiral formula — energy radiated as gravitational waves.
+    Also computes strain h and frequency f_GW for LIGO/Virgo comparison.
+
+    h = (4G/c⁴) × (M_chirp)^(5/3) × (π f_GW)^(2/3) / D_L
+    f_GW = (1/π) × (G(m₁+m₂)/r³)^(1/2)
+
+    CP4 class #605. Session 221."""
+
+    G    = 6.6743e-11
+    c    = 3.0e8
+    M_sun = 1.989e30
+
+    def __init__(self, dataset=None):
+        self.dataset = dataset or {}
+        self.version = "Session221"
+
+    def compute(self, dataset: dict = None) -> dict:
+        import math
+        d = dataset or self.dataset
+        m1   = float(d.get('m1', 30 * self.M_sun))
+        m2   = float(d.get('m2', 30 * self.M_sun))
+        r    = float(d.get('r', 1e7))
+        D_L  = float(d.get('D_L', 4.1e25))
+
+        if r <= 0:
+            r = 1.0
+
+        M_total = m1 + m2
+        mu = m1 * m2 / M_total
+        M_chirp = mu ** (3.0 / 5.0) * M_total ** (2.0 / 5.0)
+
+        # Peters formula: orbital energy loss rate
+        GW_power = (32.0 / 5.0) * self.G**4 / self.c**5 * (m1 * m2 * M_total) / r**5
+
+        # GW frequency
+        f_GW = (1.0 / math.pi) * math.sqrt(self.G * M_total / r**3)
+
+        # Strain at distance D_L
+        h = 0.0
+        if D_L > 0 and f_GW > 0:
+            h = (4 * self.G / self.c**4) * M_chirp**(5.0/3.0) * (math.pi * f_GW)**(2.0/3.0) / D_L
+
+        return {
+            'paper':     'PAPER_1021',
+            'cp4_entry': 605,
+            'class':     'GravitationalWaveRadiationTermCalculator',
+            'domain':    'GW_term gravitational wave radiation for F_env and binary inspiral',
+            'primary_equations': [
+                f"dE/dt = -(32/5)·G⁴·m₁m₂(m₁+m₂)/(c⁵r⁵) = {GW_power:.6e} W",
+                f"f_GW = (1/π)·√(G·M_total/r³) = {f_GW:.6e} Hz",
+                f"h = (4G/c⁴)·M_chirp^(5/3)·(πf)^(2/3)/D_L = {h:.6e}",
+                f"M_chirp = {M_chirp:.4e} kg, M_total = {M_total:.4e} kg",
+            ],
+            'available_equations': [
+                "t_merge = (5/256) × c⁵r⁴ / (G³ m₁ m₂ M_total)  [inspiral time]",
+                "a_GW = GW_power / (m₁ × v)  [radiation reaction acceleration]",
+            ],
+            'simulation_set': {
+                'r_sweep':  'r from r_ISCO to 1e10 m, trace inspiral',
+                'mass_sweep': 'm1,m2 from 1 to 100 M_sun, trace chirp mass',
+            },
+            'GW_power': GW_power,
+            'f_GW':     f_GW,
+            'h_strain': h,
+            'M_chirp':  M_chirp,
+        }
+
+    def self_update(self): pass
+    def self_expand(self): pass
+
+
+class Ug3PrimeExternalGravityCalculator(object):
+    """PAPER_1022: Ug3' — Generalized external gravity calculator.
+
+    From 200_MUGE Compression cycle 3 § C.
+    Exists in C++ (complete_physics_integration.cpp L65173) and JS (index.js L10167)
+    but was missing as a standalone Python calculator.
+
+    Ug3' = G × M_ext / r_ext²
+
+    Generalized form of Ug3 for computing gravitational influence
+    from external massive bodies on a target system (e.g., Sgr A*
+    influence on magnetar, companion star tidal forcing).
+
+    CP4 class #606. Session 221."""
+
+    G     = 6.6743e-11
+    M_sun = 1.989e30
+
+    def __init__(self, dataset=None):
+        self.dataset = dataset or {}
+        self.version = "Session221"
+
+    def compute(self, dataset: dict = None) -> dict:
+        d = dataset or self.dataset
+        M_ext  = float(d.get('M_ext', 4e6 * self.M_sun))
+        r_ext  = float(d.get('r_ext', 8e9))
+
+        if r_ext <= 0:
+            r_ext = 1.0
+
+        Ug3_prime = self.G * M_ext / r_ext**2
+
+        return {
+            'paper':     'PAPER_1022',
+            'cp4_entry': 606,
+            'class':     'Ug3PrimeExternalGravityCalculator',
+            'domain':    'Ug3-prime generalized external gravity (Python standalone)',
+            'primary_equations': [
+                f"Ug3' = G·M_ext / r_ext² = {Ug3_prime:.6e} m/s²",
+                f"M_ext = {M_ext:.4e} kg, r_ext = {r_ext:.4e} m",
+            ],
+            'available_equations': [
+                "Ug3'_tidal = G·M_ext·Δr / r_ext³  [tidal gradient]",
+                "Ug3'_Roche = M_ext / (3·M_target) × (R_target/r_ext)³  [Roche lobe]",
+                "Ug3'_multi = Σ_i G·M_i / r_i²  [N-body external sum]",
+            ],
+            'simulation_set': {
+                'r_sweep': 'r_ext from 1e6 to 1e15 m, trace inverse-square falloff',
+                'M_sweep': 'M_ext from 1 M_sun to 1e10 M_sun, trace field strength',
+            },
+            'Ug3_prime': Ug3_prime,
+        }
+
+    def self_update(self): pass
+    def self_expand(self): pass
+
+
+class OscilloscopeEnergyDensityCalculator(object):
+    """PAPER_1023: Oscilloscope signal energy density calculator.
+
+    From 100_MUGE Compression cycle 3 § Analysis.
+    Converts oscilloscope voltage measurements to energy density
+    using P = V²/Z with impedance calibration for q-scope THz signals.
+
+    P = V_peak² / Z
+    E_density = P / (c × A_eff)  [energy density per unit volume]
+    S = V_peak² / (2Z)  [time-averaged Poynting flux for sinusoidal]
+
+    Calibrated for the q-scope instrument:
+        Z = 50 Ω (standard oscilloscope impedance)
+        f = 1.246 THz (THz hole center frequency)
+        ω = 7.83×10¹² rad/s
+
+    CP4 class #607. Session 221."""
+
+    c         = 3.0e8
+    Z_scope   = 50.0
+    f_THz     = 1.246e12
+    omega_THz = 7.83e12
+
+    def __init__(self, dataset=None):
+        self.dataset = dataset or {}
+        self.version = "Session221"
+
+    def compute(self, dataset: dict = None) -> dict:
+        import math
+        d = dataset or self.dataset
+        V_peak = float(d.get('V_peak', 0.8))
+        Z      = float(d.get('Z', self.Z_scope))
+        A_eff  = float(d.get('A_eff', 1e-4))
+        f      = float(d.get('f', self.f_THz))
+
+        if Z <= 0:
+            Z = 50.0
+
+        P_peak = V_peak**2 / Z
+        P_avg  = V_peak**2 / (2.0 * Z)
+        E_density = P_avg / (self.c * A_eff) if A_eff > 0 else 0.0
+        omega = 2 * math.pi * f
+
+        return {
+            'paper':     'PAPER_1023',
+            'cp4_entry': 607,
+            'class':     'OscilloscopeEnergyDensityCalculator',
+            'domain':    'Q-scope oscilloscope signal energy density with impedance calibration',
+            'primary_equations': [
+                f"P_peak = V²/Z = {V_peak}²/{Z} = {P_peak:.6e} W",
+                f"P_avg = V²/(2Z) = {P_avg:.6e} W  [sinusoidal time-average]",
+                f"E_density = P_avg/(c·A_eff) = {E_density:.6e} J/m³",
+                f"ω = 2π·f = 2π·{f:.4e} = {omega:.4e} rad/s",
+            ],
+            'available_equations': [
+                "E_photon = ℏω = 8.26×10⁻²² J  [single THz photon]",
+                "n_photon = P_avg / (ℏω·Δf)  [photon flux estimate]",
+                "B_field = V_peak / (Z·c·A_eff)^(1/2)  [associated B-field]",
+            ],
+            'simulation_set': {
+                'V_sweep': 'V_peak from 0.1 to 2.0 V, trace quadratic power scaling',
+                'Z_sweep': 'Z from 10 to 1000 Ω, trace impedance matching',
+            },
+            'P_peak':    P_peak,
+            'P_avg':     P_avg,
+            'E_density': E_density,
+            'omega':     omega,
+        }
+
+    def self_update(self): pass
+    def self_expand(self): pass
+
+
+class MagneticChordResonanceModelCalculator(object):
+    """PAPER_1024: Magnetic chord resonance model — structured chord pattern analysis.
+
+    From 100_MUGE Compression cycle 3 § q-scope description.
+    Models the structured magnetic "chord" patterns observed in the q-scope
+    THz hole measurements. The q-scope pings magnetic chords at the Earth's
+    core, and the inductive circuit captures the waveless U_m array signature.
+
+    Chord model:
+        B_chord(n) = B_0 × sin(n × π/N_chords) × exp(-α n)
+        U_m_chord  = Σ_n B_chord(n)² / (2μ₀)
+        f_bundle   = f_center ± Δf × (n/N_chords)
+
+    The total signal bundle energy:
+        E_bundle = Σ_n (B_chord(n)² / (2μ₀)) × V_eff × τ_n
+
+    where N_chords is the number of discrete resonance modes in a single bundle,
+    B_0 is the fundamental chord amplitude, and α is the chord decay constant.
+
+    CP4 class #608. Session 221."""
+
+    c     = 3.0e8
+    mu_0  = 1.2566e-6
+    f_THz = 1.246e12
+
+    def __init__(self, dataset=None):
+        self.dataset = dataset or {}
+        self.version = "Session221"
+
+    def compute(self, dataset: dict = None) -> dict:
+        import math
+        d = dataset or self.dataset
+        B_0      = float(d.get('B_0', 1e-6))
+        N_chords = int(d.get('N_chords', 10))
+        alpha    = float(d.get('alpha', 0.1))
+        V_eff    = float(d.get('V_eff', 1e-6))
+        tau_avg  = float(d.get('tau_avg', 1e-9))
+        f_center = float(d.get('f_center', self.f_THz))
+        delta_f  = float(d.get('delta_f', 0.05e12))
+
+        E_bundle = 0.0
+        chords = []
+        for n in range(1, N_chords + 1):
+            B_n = B_0 * math.sin(n * math.pi / N_chords) * math.exp(-alpha * n)
+            U_n = B_n**2 / (2 * self.mu_0)
+            f_n = f_center + delta_f * (n / N_chords - 0.5)
+            E_n = U_n * V_eff * tau_avg
+            E_bundle += E_n
+            chords.append({'n': n, 'B_n': B_n, 'U_n': U_n, 'f_n': f_n, 'E_n': E_n})
+
+        U_m_chord = sum(ch['U_n'] for ch in chords)
+
+        return {
+            'paper':     'PAPER_1024',
+            'cp4_entry': 608,
+            'class':     'MagneticChordResonanceModelCalculator',
+            'domain':    'Magnetic chord resonance model for q-scope THz signal bundles',
+            'primary_equations': [
+                f"B_chord(n) = B₀·sin(nπ/N)·exp(-αn), N={N_chords}",
+                f"U_m_chord = Σ B_n²/(2μ₀) = {U_m_chord:.6e} J/m³",
+                f"E_bundle = Σ U_n·V_eff·τ = {E_bundle:.6e} J",
+                f"f_range = {f_center-delta_f/2:.4e} to {f_center+delta_f/2:.4e} Hz",
+            ],
+            'available_equations': [
+                "Chord Q-factor: Q_n = f_n / Δf_n  [quality factor per chord]",
+                "Inter-chord coupling: κ_nm = ∫ B_n·B_m dV / (μ₀ V)",
+                "Bundle completeness: N_total = (f_max-f_min) / Δf_chord",
+            ],
+            'simulation_set': {
+                'N_sweep': 'N_chords from 1 to 100, trace bundle energy convergence',
+                'alpha_sweep': 'α from 0.01 to 1.0, trace chord decay profile',
+            },
+            'E_bundle':   E_bundle,
+            'U_m_chord':  U_m_chord,
+            'N_chords':   N_chords,
+            'chord_data': chords[:5],
+        }
+
+    def self_update(self): pass
+    def self_expand(self): pass
+
+
+class ConsolidatedFcosmoEnvelopeCalculator(object):
+    """PAPER_1025: F_cosmo — Consolidated cosmological envelope term.
+
+    From 200_MUGE Compression cycle 3 § F_env(t) sub-component.
+    Unifies three existing but scattered cosmological terms (QG_term,
+    DM_term, GW_term) into a single consolidated F_cosmo envelope
+    under the F_env modular framework.
+
+    F_cosmo(t,z) = QG_term + DM_term + GW_term + Λc²/3
+
+    where:
+        QG_term = (ℏc/l_p²) × (t/t_p)              [quantum gravity correction]
+        DM_term = Ω_DM × g_base                     [dark matter halo fraction]
+        GW_term = h × c²/λ_GW × sin(2πt/t_GW)      [gravitational wave radiation]
+        Λc²/3   = cosmological constant acceleration
+
+    CP4 class #609. Session 221."""
+
+    G       = 6.6743e-11
+    c       = 3.0e8
+    hbar    = 1.0546e-34
+    M_sun   = 1.989e30
+    Lambda  = 1.089e-52
+    l_p     = 1.616e-35
+    t_p     = 5.391e-44
+    Omega_DM = 0.268
+
+    def __init__(self, dataset=None):
+        self.dataset = dataset or {}
+        self.version = "Session221"
+
+    def compute(self, dataset: dict = None) -> dict:
+        import math
+        d = dataset or self.dataset
+        t       = float(d.get('t', 4.35e17))
+        g_base  = float(d.get('g_base', 9.81))
+        h_strain = float(d.get('h_strain', 1e-21))
+        lam_gw  = float(d.get('lambda_GW', 1e9))
+        t_gw    = float(d.get('t_GW', 3.156e7))
+        z       = float(d.get('z', 0.0))
+
+        QG_term = (self.hbar * self.c / self.l_p**2) * (t / self.t_p)
+        DM_term = self.Omega_DM * g_base
+        GW_term = h_strain * self.c**2 / lam_gw * math.sin(2 * math.pi * t / t_gw) if lam_gw > 0 else 0.0
+        Lambda_acc = self.Lambda * self.c**2 / 3.0
+
+        F_cosmo = QG_term + DM_term + GW_term + Lambda_acc
+
+        return {
+            'paper':     'PAPER_1025',
+            'cp4_entry': 609,
+            'class':     'ConsolidatedFcosmoEnvelopeCalculator',
+            'domain':    'F_cosmo consolidated cosmological envelope for F_env modular framework',
+            'primary_equations': [
+                f"F_cosmo = QG + DM + GW + Λc²/3 = {F_cosmo:.6e}",
+                f"QG_term = (ℏc/l_p²)·(t/t_p) = {QG_term:.6e}",
+                f"DM_term = Ω_DM·g_base = {DM_term:.6e}",
+                f"GW_term = h·c²/λ·sin(2πt/t_GW) = {GW_term:.6e}",
+                f"Λc²/3 = {Lambda_acc:.6e}",
+            ],
+            'available_equations': [
+                "F_cosmo(z) = F_cosmo × (1+z)^n  [redshift scaling]",
+                "H(t,z) = H₀·√(0.3(1+z)³+0.7)  [Friedmann context]",
+            ],
+            'simulation_set': {
+                't_sweep': 't from t_Planck to t_Hubble, trace QG dominance transition',
+                'z_sweep': 'z from 0 to 10, trace cosmological evolution',
+            },
+            'F_cosmo':    F_cosmo,
+            'QG_term':    QG_term,
+            'DM_term':    DM_term,
+            'GW_term':    GW_term,
+            'Lambda_acc': Lambda_acc,
+        }
+
+    def self_update(self): pass
+    def self_expand(self): pass
+
+
+class ShellCorrectionFenvCalculator(object):
+    """PAPER_1026: F_shell — Standalone shell correction environmental term.
+
+    From 200_MUGE Compression cycle 3 § F_env sub-component.
+    Extracts the nuclear shell correction (previously embedded inside
+    HydrogenNuclearShellResonanceCalculator in CP3) as a standalone
+    F_env sub-component for the modular framework.
+
+    F_shell(Z, N) = α_shell × S_shell × (1 + δ_pair)
+
+    where:
+        S_shell = 0.1 × (Z_magic + N_magic)
+        δ_pair  = +0.5 (even-even), -0.5 (odd-odd), 0 (mixed)
+        α_shell = shell correction scaling constant
+        Z_magic, N_magic ∈ {2, 8, 20, 28, 50, 82, 126}
+
+    CP4 class #610. Session 221."""
+
+    MAGIC_NUMBERS = {2, 8, 20, 28, 50, 82, 126}
+
+    def __init__(self, dataset=None):
+        self.dataset = dataset or {}
+        self.version = "Session221"
+
+    def compute(self, dataset: dict = None) -> dict:
+        d = dataset or self.dataset
+        Z       = int(d.get('Z', 1))
+        A       = int(d.get('A', 1))
+        alpha_s = float(d.get('alpha_shell', 1.0))
+        N = A - Z
+
+        # Pairing correction
+        if N % 2 == 0 and Z % 2 == 0:
+            delta_pair = 0.5
+        elif N % 2 == 1 and Z % 2 == 1:
+            delta_pair = -0.5
+        else:
+            delta_pair = 0.0
+
+        Z_magic = 1 if Z in self.MAGIC_NUMBERS else 0
+        N_magic = 1 if N in self.MAGIC_NUMBERS else 0
+        S_shell = 0.1 * (Z_magic + N_magic)
+
+        F_shell = alpha_s * S_shell * (1 + delta_pair)
+
+        return {
+            'paper':     'PAPER_1026',
+            'cp4_entry': 610,
+            'class':     'ShellCorrectionFenvCalculator',
+            'domain':    'F_shell standalone nuclear shell correction for F_env modular framework',
+            'primary_equations': [
+                f"F_shell = α·S_shell·(1+δ_pair) = {F_shell:.6f}",
+                f"S_shell = 0.1·(Z_magic+N_magic) = {S_shell:.2f}",
+                f"δ_pair = {delta_pair:.1f}  (Z={Z}, N={N}, A={A})",
+                f"Z_magic={Z_magic}, N_magic={N_magic}",
+            ],
+            'available_equations': [
+                "S_shell_continuous = 0.1·exp(-(Z-Z_magic_nearest)²/σ²)  [smoothed]",
+                "BW_shell = (12/√A) × (-1)^A δ_pair  [Bethe-Weizsäcker pairing]",
+                "Semi-empirical mass: B/A = a_V - a_S/A^(1/3) - a_C Z²/A^(4/3) - a_A(N-Z)²/(4A) + δ/A",
+            ],
+            'simulation_set': {
+                'Z_sweep': 'Z from 1 to 118, trace magic number S_shell jumps',
+                'isotope_chain': 'A from Z to Z+20 for fixed Z, trace N_magic crossings',
+            },
+            'F_shell':    F_shell,
+            'S_shell':    S_shell,
+            'delta_pair': delta_pair,
+        }
+
     def self_update(self): pass
     def self_expand(self): pass
 

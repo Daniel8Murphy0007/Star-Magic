@@ -329,6 +329,7 @@ def compute_Um_SOURCE4(p: dict) -> float:
     Um: Magnetism term (string ensemble contribution)
     
     Formula: Um = μ_j/r_j * (1 - exp(-γ*t*cos(π*tn))) * φ̂ * N_strings * P_SCm * E_react
+                  * (1 + 10¹³·f_Heaviside) * (1 + f_quasi)
     
     Parameters:
         t: time (s)
@@ -340,6 +341,8 @@ def compute_Um_SOURCE4(p: dict) -> float:
         num_strings: number of strings
         PSCm: SCm power
         SCm_density: SCm density
+        f_quasi: quasi-particle coupling fraction (default 0.01)
+        f_Heaviside: Heaviside gate activation (0 = off, default 0.0)
     """
     t = p.get("t", 0.0)
     tn = p.get("tn", 0.0)
@@ -353,6 +356,8 @@ def compute_Um_SOURCE4(p: dict) -> float:
     SCm_density = p.get("SCm_density", 1e-10)
     rho_A = p.get("rho_A", UQFF_CONSTANTS["rho_A_SOURCE4"])
     kappa = p.get("kappa", UQFF_CONSTANTS["kappa_SOURCE4"])
+    f_quasi = p.get("f_quasi", 0.01)
+    f_Heaviside = p.get("f_Heaviside", 0.0)
     
     if rj == 0:
         return 0.0
@@ -363,8 +368,8 @@ def compute_Um_SOURCE4(p: dict) -> float:
     decay = 1.0 - math.exp(-gamma * t * math.cos(UQFF_CONSTANTS["PI"] * tn))
     single = mu_j / rj * decay * phi_hat
     
-    # Um = single * N_strings * P_SCm * E_react
-    result = single * num_strings * PSCm * E_react
+    # Um = single * N_strings * P_SCm * E_react * (1+10^13*f_Heaviside) * (1+f_quasi)
+    result = single * num_strings * PSCm * E_react * (1.0 + 1e13 * f_Heaviside) * (1.0 + f_quasi)
     
     return result
 
