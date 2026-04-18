@@ -2157,77 +2157,71 @@ class CoAnQiModularCompressedMUGECalculator(_CP3Calculator):
     category = "Black Hole"
 
     def compute(self, dataset: dict) -> dict:
-        M     = dataset.get('M', M_BH_SGR)
-        r     = dataset.get('r', D_G_SGR)
-        H0    = dataset.get('H0', 2.27e-18)    # s^{-1} (70 km/s/Mpc)
-        B     = dataset.get('B', 1.0)          # T
-        B_crit = dataset.get('B_crit', 4.4e13)
-        z     = dataset.get('z', 0.0)
-        G = 6.674e-11; c = 3e8; hbar = 1.055e-34
-        g_N = dpm_emergent_ug1(M, r)  # DPM: mu_s * grad(M_s/r)
-        corr_hubble = H0 ** 2 * r / g_N if g_N != 0 else 0.0
-        corr_mag    = -B ** 2 / (8.0 * math.pi * 1.0e-7 * M / r ** 3) if M > 0 else 0.0
-        corr_lambda = 1e-35 / g_N if g_N != 0 else 0.0
-        corr_quantum = hbar ** 2 / (M * (r * 1.055e-34) ** 2) if M > 0 else 0.0
-        g_comp = g_N * (1.0 + corr_hubble + corr_mag + corr_lambda + corr_quantum)
+        # System parameters
+        I       = dataset.get('I', 1e21)
+        A_area  = dataset.get('A', 3.142e8)
+        w1      = dataset.get('omega1', 1e-3)
+        w2      = dataset.get('omega2', 0.0)
+        Vsys    = dataset.get('Vsys', 4.189e12)
+        vexp    = dataset.get('vexp', 1e3)
+        t       = dataset.get('t', 3.799e10)
+        ffluid  = dataset.get('ffluid', 1.269e-14)
+        kappa   = dataset.get('kappa', 0.0005 / 86400)
+        r       = dataset.get('r', 1e4)
+        f_worm  = dataset.get('f_worm', 1e-10)
+        b_worm  = dataset.get('b_worm', 1e6)
+        t_n     = dataset.get('t_n', 0.0)
+
+        # Resonance constants (PAPER_371 section 3)
+        fDPM    = 1e12;  fTHz    = 1e12
+        Evac_nb = 7.09e-36;  Evac_ISM = 7.09e-37;  Delta_E = 6.381e-36
+        Fsuper  = 6.287e-19; UA_SCM  = 10.0
+        omega_i = 1e-8;  k4r     = 1.0;  freact  = 1e10
+        fq      = 1.445e-17;  fAe     = 1.576e-35
+        fosc    = 4.57e14
+        fTRZ    = 0.1;  H_z     = 2.270e-18;  c_res   = 3e8
+
+        # All 12 terms per PAPER_371 section 2.1-2.12
+        FDPM    = I * A_area * (w1 - w2)
+        aDPM    = FDPM * fDPM * Evac_nb * c_res * Vsys
+        aTHz    = fTHz * Evac_nb * vexp * aDPM / Evac_ISM / c_res
+        avd     = Delta_E * vexp**2 * aDPM / Evac_nb / c_res**2
+        asf     = Fsuper * fTHz * aDPM / Evac_nb / c_res
+        aar     = UA_SCM * omega_i * fTHz * aDPM * (1.0 + fTRZ)
+        Ereact  = 1e46 * math.exp(-kappa * t)
+        Ug4i    = k4r * Ereact * freact * aDPM / Evac_nb * c_res
+        aqf     = fq * Evac_nb * aDPM / Evac_ISM / c_res
+        aAf     = fAe * Evac_nb * aDPM / Evac_ISM / c_res
+        afl     = ffluid * Evac_nb * Vsys / Evac_ISM / c_res
+        Osc     = fosc * math.cos(2.0 * math.pi * fosc * t)
+        aexp    = 2.0 * math.pi * H_z * t * Evac_nb * aDPM / Evac_ISM / c_res
+        a_worm  = f_worm * Evac_nb / (b_worm**2 + r**2) if r > 0 else f_worm * Evac_nb
+
+        g_res = (aDPM + aTHz + avd + asf + aar + Ug4i + aqf + aAf
+                 + afl + Osc + aexp + fTRZ + a_worm)
         eqs = {
-            'g_Newton': f'{g_N:.4e} m/s^2',
-            'g_compressed': f'{g_comp:.4e} m/s^2',
-            'corr_hubble': f'{corr_hubble:.4e}',
-            'corr_magnetic': f'{corr_mag:.4e}',
-            'corr_lambda': f'{corr_lambda:.4e}',
-            'CoAnQi_plugin': 'CompressedMUGEPlugin (10-term)',
-        }
-        return {
-            'primary_equations': eqs,
-            'available_equations': [
-                'g_comp = g_N * (1 + delta_Hubble + delta_mag + delta_Lambda + delta_quantum)',
-                'CoAnQi namespace: CoAnQi::CompressedMUGEPlugin::compute()',
-            ],
-            'simulation_set': {'g_comp_vs_r': 'r=1e10 to 1e26 m'},
-        }
-
-
-class CoAnQiModularResonanceMUGECalculator(_CP3Calculator):
-    """PAPER_171: CoAnQi modular resonance MUGE 13-term plugin.
-
-    g_resonance = aDPM + Î£_13 resonance terms
-    CoAnQi::ResonanceMUGEPlugin â€” 13-term including wormhole metric (term 13).
-    aDPM: Di-Pseudo-Monopole base gravity; aAetherRes, aQuantumFreq, aTHz, etc.
-    """
-    category = "Black Hole"
-
-    def compute(self, dataset: dict) -> dict:
-        M      = dataset.get('M', M_BH_SGR)
-        r      = dataset.get('r', D_G_SGR)
-        B      = dataset.get('B', 1.0)
-        t      = dataset.get('t', 0.0)
-        t_n    = dataset.get('t_n', 0.0)
-        omega  = dataset.get('omega', 1e-3)   # rad/s resonance frequency
-        f_worm = dataset.get('f_worm', 1e-10)
-        b_worm = dataset.get('b_worm', 1e6)   # m â€” wormhole throat
-        G = 6.674e-11; c = 3e8
-        g_N = dpm_emergent_ug1(M, r)  # DPM: mu_s * grad(M_s/r)
-        # Representative 4 terms (full 13 in CoAnQi plugin)
-        aDPM         = g_N
-        aAetherRes   = 1e-12 * math.cos(omega * t) * self._cos_tn(t_n)
-        aQuantumFreq = 1.055e-34 * omega / (M * r) if M > 0 else 0
-        a_worm       = f_worm * 1e-9 / (b_worm ** 2 + r ** 2)  # wormhole 13th term
-        g_res = aDPM + aAetherRes + aQuantumFreq + a_worm
-        eqs = {
-            'g_resonance_approx': f'{g_res:.4e} m/s^2',
-            'aDPM': f'{aDPM:.4e}',
-            'aAetherRes': f'{aAetherRes:.4e}',
+            'g_resonance_MUGE': f'{g_res:.4e} m/s^2',
+            'aDPM': f'{aDPM:.4e}', 'aTHz': f'{aTHz:.4e}',
+            'avac_diff': f'{avd:.4e}', 'asuper_freq': f'{asf:.4e}',
+            'aaether_res': f'{aar:.4e}', 'Ug4i': f'{Ug4i:.4e}',
+            'aquantum_freq': f'{aqf:.4e}', 'aAether_freq': f'{aAf:.4e}',
+            'afluid_freq': f'{afl:.4e}', 'Osc_term': f'{Osc:.4e}',
+            'aexp_freq': f'{aexp:.4e}', 'fTRZ': f'{fTRZ}',
             'a_wormhole_13th': f'{a_worm:.4e}',
             'CoAnQi_plugin': 'ResonanceMUGEPlugin (13-term)',
         }
         return {
             'primary_equations': eqs,
             'available_equations': [
-                'g_res = aDPM + aTHz + aAetherRes + aQuantumFreq + ... + a_worm (13 terms)',
-                'a_worm = f_worm * E_vac / (b^2 + r^2)  (Morris-Thorne wormhole)',
+                'g_res = aDPM + aTHz + avac_diff + asuper_freq + aaether_res + Ug4i'
+                ' + aquantum_freq + aAether_freq + afluid_freq + Osc + aexp + fTRZ + a_worm',
+                'All 12 core terms per PAPER_371 + Morris-Thorne wormhole (13th)',
             ],
-            'simulation_set': {'g_res_vs_omega': 'omega from 1e-6 to 1e3 rad/s'},
+            'simulation_set': {
+                'SGR1745': {'I': 1e21, 'A': 3.142e8, 'omega1': 1e-3, 'Vsys': 4.189e12},
+                'SagA':    {'I': 1e23, 'A': 2.813e30, 'omega1': 1e-5, 'Vsys': 3.552e45},
+                'Pillars': {'I': 1e21, 'A': 2.813e32, 'omega1': 1e-3, 'Vsys': 3.552e48},
+            },
         }
 
 
