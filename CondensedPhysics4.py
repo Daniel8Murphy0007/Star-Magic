@@ -17933,6 +17933,11 @@ __all__ = [
     "ConsolidatedFcosmoEnvelopeCalculator",                           # PAPER_1025 (#609)
     "ShellCorrectionFenvCalculator",                                  # PAPER_1026 (#610)
 
+    # --- Session 222: MUGE Compression Cycle 3 second-pass gap fill — PAPER_1027–1029 ---
+    "QuantumVariableSets5to9Calculator",                              # PAPER_1027 (#611)
+    "PiPhiConvergenceSeriesCalculator",                               # PAPER_1028 (#612)
+    "THzHoleResonanceFormulaCalculator",                              # PAPER_1029 (#613)
+
 ]
 
 # =============================================================================
@@ -41248,4 +41253,383 @@ _SESSION_220_CLASSES = [
     'TXS0506ThreeGammaProfileCalc',                                  # PAPER_1016 #600
     'NinetyNineSystemGammaSweepV1Calc',                              # PAPER_1017 #601
     'ProductionScalingV15BenchmarkCalc',                              # PAPER_1018 #602
+]
+
+
+# ══════════════════════════════════════════════════════════════════════════════
+# SESSION 222 — MUGE Compression Cycle 3 second-pass gap fill — PAPER_1027–1029
+# Source: 200_MUGE Compression cycle 3_Superconductive Resonance.txt
+# Gaps: Quantum variable Sets 5-9, Pi/Phi convergence series (Eqs 34-57),
+#        THz hole resonance formula
+# ══════════════════════════════════════════════════════════════════════════════
+
+
+class QuantumVariableSets5to9Calculator(object):
+    """PAPER_1027: Quantum Variable Sets 5-9 — extends FiveQuantumVariableSetsCalculator.
+
+    From 200_MUGE Compression cycle 3 § Sets 5-9 quantum variable definitions.
+    FiveQuantumVariableSetsCalculator (PAPER_749, CP4 #333) covers Sets A-D
+    with 15 canonical variables.  This calculator adds Sets 5-9 with ~20
+    additional variables governing solar wind modulation, step functions,
+    deformation, TRZ corrections, and multi-tier vacuum energy densities.
+
+    Set 5: δ_sw (solar wind modulation), κ=0.0005 day⁻¹, P_SCm≈1,
+           v_sw=5×10⁵ m/s, ω_c (12.55yr solar cycle period)
+    Set 7: S(r-R_b) step function, T_sμν=1.123×10⁷ J/m³, M_s=1.989×10³⁰ kg,
+           ω_s=2.5×10⁻⁶ rad/s, B_s (10⁻⁴ to 0.4 T)
+    Set 8: δ_def=0.01·sin(0.001t), f_TRZ=0.1, T_s=5778K, φ̂_j≈1
+    Set 9: ρ_vac,[UA]=7.09×10⁻³⁶, ρ_vac,Ui=2.84×10⁻³⁶, v_SCm=10⁸,
+           ρ_vac,A=10⁻²³, ρ_vac,[SCm]=7.09×10⁻³⁷
+
+    CP4 class #611. Session 222."""
+
+    def __init__(self, dataset=None):
+        self.dataset = dataset or {}
+        self.version = "Session222"
+
+    def compute(self, dataset: dict = None) -> dict:
+        d = dataset or self.dataset
+        t     = float(d.get('t', 0.0))
+        t_n   = float(d.get('t_n', 0.0))
+        r     = float(d.get('r', 1.496e11))
+        R_b   = float(d.get('R_b', 6.96e8))
+
+        # ── Set 5: Solar wind modulation ────────────────────────────
+        kappa   = 0.0005                      # day⁻¹
+        P_SCm   = float(d.get('P_SCm', 1.0))
+        v_sw    = float(d.get('v_sw', 5.0e5)) # m/s
+        T_cycle = 3.96e8                       # s  (~12.55 yr solar cycle)
+        omega_c = 2.0 * math.pi / T_cycle      # ~1.585e-8 rad/s
+        delta_sw = 0.001 * v_sw / 5.0e5 * math.sin(omega_c * t)
+
+        # ── Set 7: Boundary step, stress tensor, stellar params ─────
+        S_step = 1.0 if r >= R_b else 0.0     # Heaviside S(r - R_b)
+        T_s_mu_nu = float(d.get('T_s_mu_nu', 1.123e7))  # J/m³
+        M_s       = float(d.get('M_s', M_SUN))
+        omega_s   = float(d.get('omega_s', 2.5e-6))      # rad/s
+        B_s       = float(d.get('B_s', 1.0e-4))           # T
+
+        # ── Set 8: Deformation, TRZ, surface temperature ────────────
+        delta_def = 0.01 * math.sin(0.001 * t)
+        f_TRZ     = float(d.get('f_TRZ', 0.1))
+        T_s_surf  = float(d.get('T_s', 5778.0))           # K
+        phi_hat_j = float(d.get('phi_hat_j', 1.0))
+
+        # ── Set 9: Multi-tier vacuum densities ──────────────────────
+        rho_UA   = RHO_VAC_UA                              # 7.09e-36
+        rho_Ui   = float(d.get('rho_vac_Ui', 2.84e-36))
+        v_SCm    = float(d.get('v_SCm', 1.0e8))           # m/s
+        rho_A    = RHO_VAC_A                               # 1.0e-23
+        rho_SCm  = RHO_VAC_SCM                             # 7.09e-37
+
+        # ── Composite calculations ──────────────────────────────────
+        E_react   = E_REACT_BASE * math.exp(-kappa * t)
+        cos_tn    = math.cos(math.pi * t_n)
+
+        # Ug2 sample using Set 5/7/8 variables
+        Ug2_sample = 1.2 * (rho_UA + rho_SCm) * M_s / (r ** 2) \
+                     * S_step * (1 + delta_sw * v_sw) * P_SCm * E_react
+
+        # Um sample with deformation + TRZ
+        mu_j = (1.0e3 + 0.4 * math.sin(omega_c * t)) * 3.38e20
+        Um_sample = mu_j / r * (1 - math.exp(-GAMMA_DECAY * t * cos_tn)) \
+                    * phi_hat_j * P_SCm * E_react * (1 + delta_def) * (1 + f_TRZ)
+
+        # Vacuum ratio (Set 9 diagnostic)
+        vac_ratio = rho_UA / rho_SCm if rho_SCm != 0 else float('inf')
+
+        return {
+            'paper':     'PAPER_1027',
+            'cp4_entry': 611,
+            'class':     'QuantumVariableSets5to9Calculator',
+            'domain':    'Quantum variable Sets 5-9: solar wind, boundary, deformation, vacuum tiers',
+            'primary_equations': [
+                f"δ_sw = 0.001·(v_sw/5e5)·sin(ω_c·t) = {delta_sw:.6e}",
+                f"S(r-R_b) = {S_step:.0f}  (r={r:.3e}, R_b={R_b:.3e})",
+                f"δ_def = 0.01·sin(0.001·t) = {delta_def:.6e}",
+                f"Ug2_sample = k₂·(ρ_UA+ρ_SCm)·M_s/r²·S·(1+δ_sw·v_sw)·P_SCm·E_react = {Ug2_sample:.6e}",
+                f"Um_sample = (μ_j/r_j)·(1-e^(−γt·cos(πt_n)))·φ̂·P_SCm·E_react·(1+δ_def)·(1+f_TRZ) = {Um_sample:.6e}",
+                f"ρ_vac,[UA]/ρ_vac,[SCm] = {vac_ratio:.2f}",
+            ],
+            'available_equations': [
+                "Ui = λ_I·(ρ_SCm/ρ_UA)·ω_i·cos(πt_n)·(1+F_RZ)  [Universal Inertia]",
+                "A_μν = g_μν + η·T_sμν  [Aether metric perturbation]",
+                "E_react(t) = 10⁴⁶·e^(−κt)  [reaction energy decay]",
+                "v_SCm sweep: v from 10⁷ to 3×10⁸ m/s  [superconductive velocity]",
+            ],
+            'simulation_set': {
+                't_sweep': 't from 0 to 10⁴ days, trace δ_sw, δ_def oscillations',
+                'r_sweep': 'r from R_b to 100 AU, trace S(r-R_b) transition',
+                'vac_tier': 'compare ρ_UA, ρ_Ui, ρ_A, ρ_SCm hierarchy',
+            },
+            'delta_sw':    delta_sw,
+            'S_step':      S_step,
+            'delta_def':   delta_def,
+            'Ug2_sample':  Ug2_sample,
+            'Um_sample':   Um_sample,
+            'vac_ratio':   vac_ratio,
+            'E_react':     E_react,
+        }
+
+    def self_update(self): pass
+    def self_expand(self): pass
+
+
+class PiPhiConvergenceSeriesCalculator(object):
+    """PAPER_1028: Pi/Phi Convergence Series — Equations 34-57 from MUGE Cycle 3.
+
+    From 200_MUGE Compression cycle 3 § Pi Calculation Notes.
+    24 equations relating π and φ (golden ratio) in UQFF context, connecting
+    Pi's computational complexity, organic life encoding, fine structure
+    constant, and buoyancy-gravity influences to Um and Ug3.
+
+    Key equations (proportional forms from source):
+        Eq 34: Computational Effort ∝ (ρ_UA/ρ_SCm)·N_digits
+        Eq 35: Pi Influence ∝ Um·π·ρ_UA
+        Eq 39: Phi Influence ∝ Um·φ·ρ_UA
+        Eq 45: FSC Influence ∝ α·Um  (α = 1/137)
+        Eq 48: φ/π contribution ratio
+
+    CP4 class #612. Session 222."""
+
+    PHI = (1.0 + math.sqrt(5.0)) / 2.0   # golden ratio ≈ 1.618033988749895
+    ALPHA_FSC = 1.0 / 137.036             # fine structure constant
+
+    def __init__(self, dataset=None):
+        self.dataset = dataset or {}
+        self.version = "Session222"
+
+    def compute(self, dataset: dict = None) -> dict:
+        d = dataset or self.dataset
+        t       = float(d.get('t', 0.0))
+        t_n     = float(d.get('t_n', 0.0))
+        r_j     = float(d.get('r_j', 1.496e13))
+        N_digits = float(d.get('N_digits', 2.0e15))
+        n_series = int(d.get('n_series', 9))
+
+        phi = self.PHI
+        alpha = self.ALPHA_FSC
+        T_cycle = 3.96e8
+        omega_c = 2.0 * math.pi / T_cycle
+
+        # Base Um for scaling (simplified)
+        mu_j = (1.0e3 + 0.4 * math.sin(omega_c * t)) * 3.38e20
+        cos_tn = math.cos(math.pi * t_n)
+        E_react = E_REACT_BASE * math.exp(-KAPPA * t)
+        Um_base = mu_j / r_j * E_react
+
+        rho_UA  = RHO_VAC_UA
+        rho_SCm = RHO_VAC_SCM
+        vac_ratio = rho_UA / rho_SCm
+
+        # ── Eq 34: Computational effort ─────────────────────────────
+        comp_effort = vac_ratio * N_digits
+
+        # ── Eq 35: Pi influence ─────────────────────────────────────
+        pi_influence = Um_base * math.pi * rho_UA
+
+        # ── Eq 36: Complex dynamics ─────────────────────────────────
+        # Um * e^(iπ) = -Um (Euler identity)
+        complex_dynamics = -Um_base
+
+        # ── Eq 37: Organic life energy ──────────────────────────────
+        organic_energy = Um_base * math.pi * math.cos(omega_c * t)
+
+        # ── Eq 39: Phi influence ────────────────────────────────────
+        phi_influence = Um_base * phi * rho_UA
+
+        # ── Eq 40: Ratio influence ──────────────────────────────────
+        ratio_influence = (phi / math.pi) * vac_ratio
+
+        # ── Eq 45: Fine structure constant influence ────────────────
+        fsc_influence = alpha * Um_base
+
+        # ── Eq 48: Phi/Pi contributions ─────────────────────────────
+        # Series Influence base (Eq 47 proxy)
+        series_sum = 0.0
+        for k in range(1, n_series + 1):
+            series_sum += 1.0 / (15.0 ** k)
+        series_influence = Um_base * series_sum
+        phi_contribution = phi * series_influence
+        pi_contribution  = math.pi * series_influence
+
+        # ── Eq 43: Buoyancy-gravity influence ───────────────────────
+        # Product ratio using convergent truncation
+        prod_plus = 1.0
+        prod_minus = 1.0
+        for k in range(1, min(n_series + 1, 20)):
+            denom_p = k + 1.0
+            denom_m = max(k - 1.0, 0.5)
+            prod_plus  *= k / denom_p
+            prod_minus *= k / denom_m
+        Ug3_base = 1.8 * 1.0e3 * E_react   # k3·B·E_react proxy
+        buoyancy_gravity = Ug3_base * (prod_plus - prod_minus)
+
+        return {
+            'paper':     'PAPER_1028',
+            'cp4_entry': 612,
+            'class':     'PiPhiConvergenceSeriesCalculator',
+            'domain':    'Pi/Phi convergence series Eqs 34-57: universal encoding, FSC, buoyancy',
+            'primary_equations': [
+                f"Eq34: Comp_Effort = (ρ_UA/ρ_SCm)·N_digits = {comp_effort:.6e}",
+                f"Eq35: π_Influence = Um·π·ρ_UA = {pi_influence:.6e}",
+                f"Eq36: Complex_Dynamics = Um·e^(iπ) = {complex_dynamics:.6e}",
+                f"Eq37: E_Organic = Um·π·cos(ω_c·t) = {organic_energy:.6e}",
+                f"Eq39: φ_Influence = Um·φ·ρ_UA = {phi_influence:.6e}",
+                f"Eq40: Ratio = (φ/π)·(ρ_UA/ρ_SCm) = {ratio_influence:.6e}",
+                f"Eq45: FSC_Influence = α·Um = {fsc_influence:.6e}  (α=1/137.036)",
+                f"Eq48: φ_Contrib = {phi_contribution:.6e}, π_Contrib = {pi_contribution:.6e}",
+                f"Eq43: Buoyancy-Gravity = Ug3·(Π_plus−Π_minus) = {buoyancy_gravity:.6e}",
+            ],
+            'available_equations': [
+                "Eq38: E_Elements ∝ ρ_UA·π·e^(−[SSq]^n26·e^(−π−t))  [periodic table]",
+                "Eq41: Twinning ∝ (Count_twins/Count_total)·Um  [prime twin density]",
+                "Eq42: Non-Linear ∝ Um·Σ(1/(k-(π+1)^n) - 1/(k-(π-1)^n))  [divergent series]",
+                "Eq44: Current ∝ Um·(2n·tanh(πk) + 2n·sin(πk))  [current influence]",
+                "Eq46-47: Buoyancy-Gravity Sum ∝ Ug3·Σ 1/(3-(π+1)^n)  [odd-n sum]",
+                "Eq49-57: Series Sum evaluations at n=0.5, 0, -0.5, -1  [convergence tests]",
+            ],
+            'simulation_set': {
+                'n_sweep': 'n_series from 1 to 100, trace series convergence',
+                't_sweep': 't from 0 to 10⁴ days, trace organic energy oscillation',
+                'phi_pi_ratio': 'compare φ-weighted vs π-weighted contributions',
+            },
+            'comp_effort':     comp_effort,
+            'pi_influence':    pi_influence,
+            'phi_influence':   phi_influence,
+            'complex_dynamics': complex_dynamics,
+            'organic_energy':  organic_energy,
+            'ratio_influence': ratio_influence,
+            'fsc_influence':   fsc_influence,
+            'phi_contribution': phi_contribution,
+            'pi_contribution': pi_contribution,
+            'buoyancy_gravity': buoyancy_gravity,
+        }
+
+    def self_update(self): pass
+    def self_expand(self): pass
+
+
+class THzHoleResonanceFormulaCalculator(object):
+    """PAPER_1029: THz Hole Resonance Formula.
+
+    From 200_MUGE Compression cycle 3 § THz hole resonance coupling.
+    Models THz resonance coupling between magnetic strings (Um) and gravity
+    (Ug1) at Earth's core through superconductive medium (SCm):
+
+        [{U_m : SM_m} / [Ug1 = UQFF_g + SM_g]^{SCm}]
+
+    This is the spectral-gap formula for THz "holes" observed in
+    oscilloscope data from the Red Dwarf Reactor plasmoid experiments.
+    It captures the resonance absorption where superconductive magnetic
+    field coupling suppresses gravity at specific THz frequencies.
+
+    Distinct from OscilloscopeEnergyDensityCalculator (PAPER_1023) which
+    models oscilloscope E-field energy density patterns.
+
+    CP4 class #613. Session 222."""
+
+    def __init__(self, dataset=None):
+        self.dataset = dataset or {}
+        self.version = "Session222"
+
+    def compute(self, dataset: dict = None) -> dict:
+        d = dataset or self.dataset
+        t     = float(d.get('t', 0.0))
+        t_n   = float(d.get('t_n', 0.0))
+        r     = float(d.get('r', 6.371e6))       # Earth core radius default
+        M     = float(d.get('M', 5.972e24))        # Earth mass
+        B     = float(d.get('B', 2.5e-5))          # Earth surface B-field (T)
+        B_crit = float(d.get('B_crit', 1.0e11))   # T (Gauss converted)
+        f_THz = float(d.get('f_THz', 1.0e12))     # Hz — THz probe frequency
+        r_j   = float(d.get('r_j', 1.496e13))     # m — magnetic string distance
+
+        T_cycle = 3.96e8
+        omega_c = 2.0 * math.pi / T_cycle
+        cos_tn  = math.cos(math.pi * t_n)
+        E_react = E_REACT_BASE * math.exp(-KAPPA * t)
+
+        # ── Um: SM_m component (Standard Model magnetic) ────────────
+        mu_j = (1.0e3 + 0.4 * math.sin(omega_c * t)) * 3.38e20
+        Um_UQFF = mu_j / r_j * (1 - math.exp(-GAMMA_DECAY * t * cos_tn)) * E_react
+        SM_m = B ** 2 / (2.0 * MU_0)  # magnetic energy density (SM)
+        Um_total = Um_UQFF + SM_m
+
+        # ── Ug1: UQFF_g + SM_g ─────────────────────────────────────
+        UQFF_g = 1.5 * mu_j / r_j * G_NEWTON * M / (r ** 2)  # k1·mu·grad(M/r)
+        SM_g = G_NEWTON * M / (r ** 2)                         # Newtonian
+        Ug1_total = UQFF_g + SM_g
+
+        # ── SCm exponent: superconductive suppression ───────────────
+        H_SCm = float(d.get('H_SCm', 0.99))
+        SCm_exponent = H_SCm * (1.0 - B / B_crit)
+
+        # ── THz Hole Resonance Formula ──────────────────────────────
+        # [{U_m : SM_m} / [Ug1]^{SCm}]
+        if Ug1_total > 0 and SCm_exponent > 0:
+            Ug1_SCm = Ug1_total ** SCm_exponent
+            THz_ratio = Um_total / Ug1_SCm
+        else:
+            Ug1_SCm = 0.0
+            THz_ratio = float('inf')
+
+        # Frequency-dependent resonance absorption depth
+        omega_THz = 2.0 * math.pi * f_THz
+        omega_res = 2.0 * math.pi * 1.0e12   # 1 THz reference
+        Q_factor = float(d.get('Q_factor', 100.0))
+        lorentzian = 1.0 / (1.0 + Q_factor ** 2 * ((omega_THz / omega_res) - (omega_res / omega_THz)) ** 2)
+        absorption_depth = THz_ratio * lorentzian
+
+        return {
+            'paper':     'PAPER_1029',
+            'cp4_entry': 613,
+            'class':     'THzHoleResonanceFormulaCalculator',
+            'domain':    'THz hole resonance: Um/Ug1^SCm spectral gap formula',
+            'primary_equations': [
+                f"Um_total = Um_UQFF + SM_m = {Um_total:.6e}",
+                f"  Um_UQFF = (μ_j/r_j)·(1-e^(−γt·cos(πt_n)))·E_react = {Um_UQFF:.6e}",
+                f"  SM_m = B²/(2μ₀) = {SM_m:.6e}",
+                f"Ug1_total = UQFF_g + SM_g = {Ug1_total:.6e}",
+                f"  UQFF_g = k₁·μ·∇(M/r) = {UQFF_g:.6e}",
+                f"  SM_g = GM/r² = {SM_g:.6e}",
+                f"SCm_exp = H_SCm·(1-B/B_crit) = {SCm_exponent:.6f}",
+                f"Ug1^SCm = {Ug1_SCm:.6e}",
+                f"THz_ratio = Um_total / Ug1^SCm = {THz_ratio:.6e}",
+                f"Lorentzian(f={f_THz:.2e} Hz, Q={Q_factor:.0f}) = {lorentzian:.6f}",
+                f"Absorption_depth = THz_ratio × Lorentzian = {absorption_depth:.6e}",
+            ],
+            'available_equations': [
+                "THz_sweep: f from 0.1 THz to 10 THz, trace absorption spectrum",
+                "B_sweep: B from 10⁻⁵ to 0.4 T, trace SCm suppression",
+                "Q_sweep: Q from 10 to 10⁴, trace resonance sharpness",
+                "Multi-body: sum over j magnetic strings for composite spectrum",
+            ],
+            'simulation_set': {
+                'f_sweep': 'f_THz from 0.1e12 to 10e12, trace absorption_depth spectrum',
+                'B_sweep': 'B from 1e-5 to 0.4, trace SCm_exponent and THz_ratio',
+                'r_sweep': 'r from R_core to R_surface, trace radial resonance profile',
+            },
+            'Um_total':        Um_total,
+            'Um_UQFF':         Um_UQFF,
+            'SM_m':            SM_m,
+            'Ug1_total':       Ug1_total,
+            'UQFF_g':          UQFF_g,
+            'SM_g':            SM_g,
+            'SCm_exponent':    SCm_exponent,
+            'Ug1_SCm':         Ug1_SCm,
+            'THz_ratio':       THz_ratio,
+            'lorentzian':      lorentzian,
+            'absorption_depth': absorption_depth,
+        }
+
+    def self_update(self): pass
+    def self_expand(self): pass
+
+
+# ── Session 222 class list ────────────────────────────────────────────────
+
+_SESSION_222_CLASSES = [
+    'QuantumVariableSets5to9Calculator',                             # PAPER_1027 #611
+    'PiPhiConvergenceSeriesCalculator',                              # PAPER_1028 #612
+    'THzHoleResonanceFormulaCalculator',                             # PAPER_1029 #613
 ]
