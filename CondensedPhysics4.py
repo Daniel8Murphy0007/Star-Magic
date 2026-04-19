@@ -41633,3 +41633,553 @@ _SESSION_222_CLASSES = [
     'PiPhiConvergenceSeriesCalculator',                              # PAPER_1028 #612
     'THzHoleResonanceFormulaCalculator',                             # PAPER_1029 #613
 ]
+
+
+# ══════════════════════════════════════════════════════════════════════════
+# Session 222-BB: BB_grok_conversation_C gap integration
+# 7 calculator classes — arXiv validation + physics gaps
+# CP4 #614–#620, PAPER_1030–PAPER_1036
+# ══════════════════════════════════════════════════════════════════════════
+
+
+class CMSDifferentialHiggsKappaCalculator(_CP4Calculator):  # PAPER_1030 #614
+    """PAPER_1030 — CMS Differential Higgs Coupling Ratios κ_V/κ_f.
+    arXiv:2504.13081 (CMS, 2025).
+    Differential Higgs cross-sections at 13 TeV; coupling ratios κ_V/κ_f ≈ 1
+    within 10-20%. Models Higgs as [UA] fluctuation at level 18.
+    U_H(t) = λ_H · ρ_vac,[UA] · ω_H(t) · exp(-[SSq]·n/26) · (1 + f_quasi)
+    κ_V/κ_f = U_H / U_H,SM → deviation from SM via [SCm] proton stability.
+    CP4 class #614. Session 222-BB."""
+
+    M_H = 125.35          # GeV
+    GAMMA_H_SM = 4.2e-3   # GeV
+    GAMMA_H_OBS = 3.4e-3  # GeV upper bound
+    LAMBDA_H = 1.79e18
+    RHO_UA = 7.09e-36     # J/m³
+    SSQ = 0.57
+    LEVEL = 18
+    F_QUASI = 0.01
+
+    PARAMETERS = [
+        ("kappa_V", "float", 1.0, "Vector boson coupling modifier"),
+        ("kappa_f", "float", 1.0, "Fermion coupling modifier"),
+        ("sigma_ggH_pb", "float", 22.0, "ggH production cross-section (pb)"),
+        ("m_H_GeV", "float", 125.35, "Higgs mass (GeV)"),
+    ]
+
+    def compute(self, dataset: dict) -> dict:
+        kV = float(dataset.get("kappa_V", 1.0))
+        kf = float(dataset.get("kappa_f", 1.0))
+        sigma = float(dataset.get("sigma_ggH_pb", 22.0))
+        m_H = float(dataset.get("m_H_GeV", self.M_H))
+        ssq_exp = math.exp(-self.SSQ * self.LEVEL / 26.0)
+        U_H = self.LAMBDA_H * self.RHO_UA * ssq_exp * (1.0 + self.F_QUASI)
+        ratio = kV / kf if kf != 0 else float('inf')
+        deviation_pct = abs(ratio - 1.0) * 100.0
+        mu = sigma / 22.0  # signal strength relative to SM
+        alignment = 100.0 - deviation_pct if deviation_pct < 100 else 0.0
+        return {
+            "paper": "PAPER_1030",
+            "cp4_entry": 614,
+            "class": "CMSDifferentialHiggsKappaCalculator",
+            "arxiv": "2504.13081",
+            "domain": "CMS differential Higgs couplings κ_V/κ_f at level 18",
+            "U_H": U_H,
+            "kappa_ratio": ratio,
+            "deviation_pct": deviation_pct,
+            "signal_strength_mu": mu,
+            "alignment_pct": alignment,
+            "m_H_GeV": m_H,
+            "primary_equations": [
+                f"U_H = λ_H·ρ_UA·exp(-[SSq]·18/26)·(1+f_quasi) = {U_H:.6e}",
+                f"κ_V/κ_f = {ratio:.4f} (SM=1.0, deviation={deviation_pct:.2f}%)",
+                f"σ(ggH) = {sigma:.1f} pb → μ = {mu:.4f}",
+                f"Γ_H < 3.4 MeV (off-shell bound, arXiv:2504.07710)",
+                "Higgs at level 18: exotic [UA] fluctuation enhancing proton stability",
+            ],
+            "available_equations": [
+                "κ_V sweep: trace coupling ratio vs [SCm] modulation",
+                "σ(ggH) sweep: production cross-section vs energy",
+                "Level sweep: U_H at different quantum levels n=1..26",
+            ],
+            "note": "PAPER_1030 CP4 #614. Session 222-BB. arXiv:2504.13081.",
+        }
+
+    def simulate(self, sweep=None, **kw):
+        results = []
+        for kV in (sweep or [0.8, 0.9, 1.0, 1.1, 1.2]):
+            r = self.compute({"kappa_V": kV}); r["sweep_val"] = kV; results.append(r)
+        return results
+
+    def self_update(self): pass
+    def self_expand(self): pass
+
+
+class ATLASOffShellHiggsWidthCalculator(_CP4Calculator):  # PAPER_1031 #615
+    """PAPER_1031 — ATLAS Off-Shell H→WW/ZZ Width Bound Γ_H.
+    arXiv:2504.07710 (ATLAS, 2025).
+    Off-shell Higgs production bounding Γ_H < 3.4 MeV.
+    Γ_H(t) = Γ_H,SM · (1 + [SCm]_correction)
+    [SCm]_correction = k_SCm · V_infl,[SCm] · V_infl,[UA] / Γ_SM
+    Non-local [SCm] terms explain off-shell anomalies.
+    CP4 class #615. Session 222-BB."""
+
+    GAMMA_SM = 4.2e-3     # GeV
+    GAMMA_BOUND = 3.4e-3  # GeV
+    K_SCM = 1e-40
+    V_INFL_SCM = 7.09e-37
+    V_INFL_UA = 7.09e-36
+    M_H = 125.35          # GeV
+    SSQ = 0.57
+    LEVEL = 18
+
+    PARAMETERS = [
+        ("Gamma_SM_GeV", "float", 4.2e-3, "SM Higgs width (GeV)"),
+        ("Gamma_bound_GeV", "float", 3.4e-3, "Off-shell upper bound (GeV)"),
+        ("m_H_GeV", "float", 125.35, "Higgs mass (GeV)"),
+        ("k_SCm", "float", 1e-40, "SCm reaction coupling"),
+    ]
+
+    def compute(self, dataset: dict) -> dict:
+        G_sm = float(dataset.get("Gamma_SM_GeV", self.GAMMA_SM))
+        G_bound = float(dataset.get("Gamma_bound_GeV", self.GAMMA_BOUND))
+        m_H = float(dataset.get("m_H_GeV", self.M_H))
+        k = float(dataset.get("k_SCm", self.K_SCM))
+        R_SCm = k * self.V_INFL_SCM * self.V_INFL_UA
+        SCm_corr = R_SCm / G_sm if G_sm != 0 else 0.0
+        G_UQFF = G_sm * (1.0 + SCm_corr)
+        within_bound = G_UQFF <= G_bound
+        ssq_exp = math.exp(-self.SSQ * self.LEVEL / 26.0)
+        suppression = G_bound / G_sm
+        return {
+            "paper": "PAPER_1031",
+            "cp4_entry": 615,
+            "class": "ATLASOffShellHiggsWidthCalculator",
+            "arxiv": "2504.07710",
+            "domain": "ATLAS off-shell Higgs width Γ_H bound",
+            "Gamma_SM_GeV": G_sm,
+            "Gamma_bound_GeV": G_bound,
+            "Gamma_UQFF_GeV": G_UQFF,
+            "R_SCm": R_SCm,
+            "SCm_correction": SCm_corr,
+            "within_bound": within_bound,
+            "suppression_ratio": suppression,
+            "SSq_level18": ssq_exp,
+            "primary_equations": [
+                f"Γ_H,SM = {G_sm:.4e} GeV",
+                f"Γ_H,bound = {G_bound:.4e} GeV (ATLAS off-shell)",
+                f"R_[SCm] = k_SCm·V_infl,[SCm]·V_infl,[UA] = {R_SCm:.6e}",
+                f"[SCm]_correction = R_[SCm]/Γ_SM = {SCm_corr:.6e}",
+                f"Γ_H,UQFF = Γ_SM·(1+[SCm]_corr) = {G_UQFF:.6e} GeV",
+                f"Within bound: {within_bound}",
+                f"Suppression Γ_bound/Γ_SM = {suppression:.4f}",
+            ],
+            "note": "PAPER_1031 CP4 #615. Session 222-BB. arXiv:2504.07710.",
+        }
+
+    def simulate(self, sweep=None, **kw):
+        results = []
+        for k in (sweep or [1e-42, 1e-41, 1e-40, 1e-39, 1e-38]):
+            r = self.compute({"k_SCm": k}); r["sweep_val"] = k; results.append(r)
+        return results
+
+    def self_update(self): pass
+    def self_expand(self): pass
+
+
+class SCSConstraints21cmDarkAgesCalculator(_CP4Calculator):  # PAPER_1032 #616
+    """PAPER_1032 — Superconducting Cosmic String Constraints from 21-cm.
+    arXiv:2504.02947 (2024).
+    Constraints on SCS from Dark Ages 21-cm signal. SCS decay
+    injects energy into IGM, affecting brightness temperature T_21.
+    T_21(z) = T_S(z)·(1 - T_CMB(z)/T_S(z))·(1 + δ_SCS)
+    δ_SCS = (G·μ_string·c²)/(k_B·T_S) · [SCm]_stability
+    [SCm] cosmic stability determines string tension μ_string.
+    CP4 class #616. Session 222-BB."""
+
+    G_MU_UPPER = 1e-7     # G·μ/c² upper bound (dimensionless)
+    T_CMB_Z20 = 57.2      # K at z=20
+    T_S_Z20 = 10.0        # K spin temperature
+    Z_DARK = 20.0
+    RHO_SCM = 7.09e-37    # J/m³
+    K_B = 1.381e-23        # J/K
+    SSQ = 0.57
+
+    PARAMETERS = [
+        ("G_mu", "float", 1e-7, "String tension G·μ/c² (dimensionless)"),
+        ("z", "float", 20.0, "Redshift"),
+        ("T_S_K", "float", 10.0, "Spin temperature (K)"),
+        ("T_CMB_K", "float", 57.2, "CMB temperature at z (K)"),
+    ]
+
+    def compute(self, dataset: dict) -> dict:
+        Gmu = float(dataset.get("G_mu", self.G_MU_UPPER))
+        z = float(dataset.get("z", self.Z_DARK))
+        T_S = float(dataset.get("T_S_K", self.T_S_Z20))
+        T_CMB = float(dataset.get("T_CMB_K", self.T_CMB_Z20))
+        SCm_stab = math.exp(-self.SSQ * 13 / 26.0)  # cosmic string at level 13
+        delta_SCS = (Gmu * 3e8**2) / (self.K_B * T_S) * SCm_stab * self.RHO_SCM
+        T_21_base = T_S * (1.0 - T_CMB / T_S) if T_S != 0 else 0.0
+        T_21_SCS = T_21_base * (1.0 + delta_SCS)
+        delta_T = T_21_SCS - T_21_base
+        within_constraint = Gmu <= self.G_MU_UPPER
+        return {
+            "paper": "PAPER_1032",
+            "cp4_entry": 616,
+            "class": "SCSConstraints21cmDarkAgesCalculator",
+            "arxiv": "2504.02947",
+            "domain": "SCS constraints from 21-cm Dark Ages signal",
+            "G_mu": Gmu,
+            "T_21_base_mK": T_21_base * 1e3,
+            "T_21_SCS_mK": T_21_SCS * 1e3,
+            "delta_SCS": delta_SCS,
+            "delta_T_mK": delta_T * 1e3,
+            "SCm_stability_L13": SCm_stab,
+            "within_constraint": within_constraint,
+            "primary_equations": [
+                f"T_21(z) = T_S·(1 - T_CMB/T_S)·(1 + δ_SCS)",
+                f"T_21,base = {T_21_base * 1e3:.2f} mK",
+                f"δ_SCS = (G·μ·c²)/(k_B·T_S)·[SCm]_stab·ρ_SCm = {delta_SCS:.6e}",
+                f"T_21,SCS = {T_21_SCS * 1e3:.2f} mK",
+                f"ΔT = {delta_T * 1e3:.4e} mK",
+                f"G·μ/c² = {Gmu:.2e} (bound ≤ 10⁻⁷): {within_constraint}",
+                f"[SCm] stability at level 13 = {SCm_stab:.6f}",
+            ],
+            "available_equations": [
+                "z sweep: T_21 vs redshift z=15..30",
+                "G·μ sweep: δ_SCS vs string tension",
+                "Level sweep: SCm stability at levels 10..18",
+            ],
+            "note": "PAPER_1032 CP4 #616. Session 222-BB. arXiv:2504.02947.",
+        }
+
+    def simulate(self, sweep=None, **kw):
+        results = []
+        for gmu in (sweep or [1e-10, 1e-9, 1e-8, 1e-7, 1e-6]):
+            r = self.compute({"G_mu": gmu}); r["sweep_val"] = gmu; results.append(r)
+        return results
+
+    def self_update(self): pass
+    def self_expand(self): pass
+
+
+class ElectroweakAxionStringSCSCalculator(_CP4Calculator):  # PAPER_1033 #617
+    """PAPER_1033 — Electroweak Axion Strings and Superconductivity.
+    arXiv:2010.02834 (2020, updated 2024).
+    Lightest electroweak axion strings lead to stable superconducting
+    cosmic strings (SCS). [SCm] stabilizes strings, explaining
+    galactic shielding (globular clusters as super-heavy BH shields).
+    μ_string = η² · ln(L/δ) where η = EW symmetry breaking scale.
+    I_max = e·η·v_string (maximum supercurrent).
+    CP4 class #617. Session 222-BB."""
+
+    ETA_EW = 246.0         # GeV, EW symmetry breaking scale
+    EV_TO_J = 1.602e-10    # GeV to J
+    C = 3e8                # m/s
+    E_CHARGE = 1.602e-19   # C
+    RHO_SCM = 7.09e-37     # J/m³
+    SSQ = 0.57
+
+    PARAMETERS = [
+        ("eta_GeV", "float", 246.0, "Symmetry breaking scale (GeV)"),
+        ("L_over_delta", "float", 1e10, "String length/width ratio"),
+        ("v_string", "float", 0.5, "String velocity (fraction of c)"),
+    ]
+
+    def compute(self, dataset: dict) -> dict:
+        eta = float(dataset.get("eta_GeV", self.ETA_EW))
+        L_d = float(dataset.get("L_over_delta", 1e10))
+        v_s = float(dataset.get("v_string", 0.5))
+        eta_J = eta * self.EV_TO_J  # GeV → J
+        mu_string = eta_J**2 * math.log(L_d)
+        I_max = self.E_CHARGE * eta * self.EV_TO_J * v_s * self.C
+        SCm_stab = math.exp(-self.SSQ * 13 / 26.0)
+        mu_SCm = mu_string * SCm_stab
+        G_mu = 6.6743e-11 * mu_string / self.C**4
+        is_stable = G_mu < 1e-6
+        return {
+            "paper": "PAPER_1033",
+            "cp4_entry": 617,
+            "class": "ElectroweakAxionStringSCSCalculator",
+            "arxiv": "2010.02834",
+            "domain": "Electroweak axion strings → stable SCS via [SCm]",
+            "eta_GeV": eta,
+            "mu_string_Jm": mu_string,
+            "mu_SCm_Jm": mu_SCm,
+            "G_mu_c4": G_mu,
+            "I_max_A": I_max,
+            "SCm_stability_L13": SCm_stab,
+            "is_stable": is_stable,
+            "primary_equations": [
+                f"μ_string = η²·ln(L/δ) = {mu_string:.6e} J/m",
+                f"η = {eta:.1f} GeV (EW scale)",
+                f"ln(L/δ) = {math.log(L_d):.4f}",
+                f"I_max = e·η·v_string·c = {I_max:.6e} A",
+                f"[SCm] stability (level 13) = {SCm_stab:.6f}",
+                f"μ_SCm = μ_string·[SCm]_stab = {mu_SCm:.6e} J/m",
+                f"G·μ/c⁴ = {G_mu:.6e} (stable if < 10⁻⁶: {is_stable})",
+                "Lightest strings → stable SCS; [SCm] stabilizes for galactic shielding",
+            ],
+            "available_equations": [
+                "η sweep: μ_string vs symmetry breaking scale",
+                "v_string sweep: I_max vs string velocity",
+                "L/δ sweep: tension vs string aspect ratio",
+            ],
+            "note": "PAPER_1033 CP4 #617. Session 222-BB. arXiv:2010.02834.",
+        }
+
+    def simulate(self, sweep=None, **kw):
+        results = []
+        for eta in (sweep or [100.0, 200.0, 246.0, 500.0, 1000.0]):
+            r = self.compute({"eta_GeV": eta}); r["sweep_val"] = eta; results.append(r)
+        return results
+
+    def self_update(self): pass
+    def self_expand(self): pass
+
+
+class SCSSpectralSignaturesRadioCalculator(_CP4Calculator):  # PAPER_1034 #618
+    """PAPER_1034 — Spectral Signatures of SCS from Radio Observations.
+    arXiv:2305.09816 (2023).
+    Constraints on superconducting cosmic strings from radio observations.
+    [SCm] emissions produce FRB-like bursts. Power spectral density:
+    P(f) = (G·μ·c²)·I²·f / (4π·d²) · [SCm]_emission
+    where I = supercurrent, d = distance, f = radio frequency.
+    CP4 class #618. Session 222-BB."""
+
+    G = 6.6743e-11
+    C = 3e8
+    RHO_SCM = 7.09e-37
+    SSQ = 0.57
+
+    PARAMETERS = [
+        ("G_mu", "float", 1e-8, "String tension G·μ/c² (dimensionless)"),
+        ("I_A", "float", 1e10, "Supercurrent (A)"),
+        ("f_Hz", "float", 1.4e9, "Radio frequency (Hz)"),
+        ("d_m", "float", 3.086e25, "Distance (m, ~1 Gpc)"),
+    ]
+
+    def compute(self, dataset: dict) -> dict:
+        Gmu = float(dataset.get("G_mu", 1e-8))
+        I = float(dataset.get("I_A", 1e10))
+        f = float(dataset.get("f_Hz", 1.4e9))
+        d = float(dataset.get("d_m", 3.086e25))
+        SCm_emit = math.exp(-self.SSQ * 13 / 26.0)  # level 13
+        mu = Gmu * self.C**4 / self.G
+        P_f = mu * I**2 * f / (4.0 * math.pi * d**2) * SCm_emit
+        S_Jy = P_f / 1e-26 if P_f > 0 else 0.0  # flux density in Jy
+        E_burst = P_f * 1e-3  # 1 ms burst energy
+        is_FRB_like = S_Jy > 0.01  # detectable above ~10 mJy
+        return {
+            "paper": "PAPER_1034",
+            "cp4_entry": 618,
+            "class": "SCSSpectralSignaturesRadioCalculator",
+            "arxiv": "2305.09816",
+            "domain": "SCS spectral signatures in radio → FRB production",
+            "G_mu": Gmu,
+            "mu_string_Jm": mu,
+            "supercurrent_A": I,
+            "frequency_Hz": f,
+            "distance_m": d,
+            "P_f_W_Hz": P_f,
+            "flux_Jy": S_Jy,
+            "SCm_emission_L13": SCm_emit,
+            "E_burst_1ms_J": E_burst,
+            "is_FRB_like": is_FRB_like,
+            "primary_equations": [
+                f"P(f) = (G·μ·c²)·I²·f / (4π·d²)·[SCm]_emit",
+                f"μ_string = G·μ·c⁴/G = {mu:.6e} J/m",
+                f"P({f:.2e} Hz) = {P_f:.6e} W/Hz",
+                f"S = P/10⁻²⁶ = {S_Jy:.6e} Jy",
+                f"[SCm] emission (level 13) = {SCm_emit:.6f}",
+                f"E_burst(1ms) = {E_burst:.6e} J",
+                f"FRB-like detectable (>10 mJy): {is_FRB_like}",
+            ],
+            "available_equations": [
+                "f sweep: P(f) spectrum from 100 MHz to 10 GHz",
+                "I sweep: power vs supercurrent magnitude",
+                "d sweep: flux vs distance for detectability",
+                "G·μ sweep: string tension vs spectral power",
+            ],
+            "note": "PAPER_1034 CP4 #618. Session 222-BB. arXiv:2305.09816.",
+        }
+
+    def simulate(self, sweep=None, **kw):
+        results = []
+        for f in (sweep or [4e8, 1e9, 1.4e9, 5e9, 10e9]):
+            r = self.compute({"f_Hz": f}); r["sweep_val"] = f; results.append(r)
+        return results
+
+    def self_update(self): pass
+    def self_expand(self): pass
+
+
+class ChiralSCmGraphenePairingCalculator(_CP4Calculator):  # PAPER_1035 #619
+    """PAPER_1035 — Chiral Superconductivity in Rhombohedral Graphene.
+    arXiv:2408.15233 (2024).
+    Chiral superconductivity in rhombohedral graphene provides exotic
+    pairing for masses/states. Modeled as [SCm] pairing at level 10.
+    Δ_chiral(k) = Δ₀·(k_x ± i·k_y)^d · exp(-[SSq]·10/26)
+    T_c = (ℏ·ω_D)/(k_B)·exp(-1/(N(0)·V_SCm))
+    where V_SCm = [SCm] pairing potential, d = chiral winding number.
+    CP4 class #619. Session 222-BB."""
+
+    HBAR = 1.0546e-34     # J·s
+    K_B = 1.381e-23        # J/K
+    OMEGA_D = 2e13         # Debye frequency (rad/s) for graphene phonons
+    DELTA_0 = 1e-4         # eV pairing gap
+    EV_TO_J = 1.602e-19
+    SSQ = 0.57
+    LEVEL = 10
+    RHO_SCM = 7.09e-37
+
+    PARAMETERS = [
+        ("Delta_0_eV", "float", 1e-4, "Superconducting gap Δ₀ (eV)"),
+        ("N0_V_SCm", "float", 0.3, "N(0)·V_SCm coupling product"),
+        ("d_winding", "int", 2, "Chiral winding number"),
+        ("k_norm", "float", 1e8, "Wavevector magnitude (m⁻¹)"),
+    ]
+
+    def compute(self, dataset: dict) -> dict:
+        D0 = float(dataset.get("Delta_0_eV", self.DELTA_0))
+        NV = float(dataset.get("N0_V_SCm", 0.3))
+        d = int(dataset.get("d_winding", 2))
+        k = float(dataset.get("k_norm", 1e8))
+        ssq_exp = math.exp(-self.SSQ * self.LEVEL / 26.0)
+        D0_J = D0 * self.EV_TO_J
+        Delta_chiral = D0_J * (k**d) * ssq_exp
+        T_c = (self.HBAR * self.OMEGA_D / self.K_B) * math.exp(-1.0 / NV) if NV > 0 else 0.0
+        E_condensation = 0.5 * D0_J**2 * ssq_exp
+        return {
+            "paper": "PAPER_1035",
+            "cp4_entry": 619,
+            "class": "ChiralSCmGraphenePairingCalculator",
+            "arxiv": "2408.15233",
+            "domain": "Chiral superconductivity [SCm] pairing at level 10",
+            "Delta_0_eV": D0,
+            "Delta_chiral_J": Delta_chiral,
+            "T_c_K": T_c,
+            "d_winding": d,
+            "SSq_level10": ssq_exp,
+            "E_condensation_J": E_condensation,
+            "N0_V_SCm": NV,
+            "primary_equations": [
+                f"Δ_chiral(k) = Δ₀·k^d·exp(-[SSq]·10/26)",
+                f"Δ₀ = {D0:.2e} eV = {D0_J:.6e} J",
+                f"Δ_chiral = {Delta_chiral:.6e} J (d={d})",
+                f"T_c = (ℏ·ω_D/k_B)·exp(-1/(N(0)·V_SCm))",
+                f"T_c = {T_c:.4f} K",
+                f"[SCm] pairing at level 10: exp(-[SSq]·10/26) = {ssq_exp:.6f}",
+                f"E_condensation = ½·Δ₀²·[SSq]_10 = {E_condensation:.6e} J",
+                "Rhombohedral graphene: exotic pairing mimics cosmic [SCm]",
+            ],
+            "available_equations": [
+                "Δ₀ sweep: gap magnitude vs pairing strength",
+                "d sweep: chiral winding number 1..4",
+                "T_c sweep: critical temperature vs N(0)·V_SCm",
+                "Level sweep: [SSq] suppression across quantum levels",
+            ],
+            "note": "PAPER_1035 CP4 #619. Session 222-BB. arXiv:2408.15233.",
+        }
+
+    def simulate(self, sweep=None, **kw):
+        results = []
+        for nv in (sweep or [0.1, 0.2, 0.3, 0.5, 0.8]):
+            r = self.compute({"N0_V_SCm": nv}); r["sweep_val"] = nv; results.append(r)
+        return results
+
+    def self_update(self): pass
+    def self_expand(self): pass
+
+
+class LorentzRegaugingVacuumEnergyCalculator(_CP4Calculator):  # PAPER_1036 #620
+    """PAPER_1036 — Lorentz Regauging and Vacuum Energy Extraction.
+    Bearden (2000) formalism integrated into UQFF.
+    Lorentz symmetric regauging breaks 3-symmetry → 4-symmetry flow,
+    enabling COP > 1.0 via Heaviside component (10¹³ × Poynting).
+    S_total = S_Poynting + S_Heaviside
+    S_Heaviside = f_Heaviside · (E × B) · (ρ_UA/ρ_SCm)
+    P_extracted = ∫ S_Heaviside · dA · η_TRZ
+    Quasi-longitudinal waves in Um enable negentropy.
+    CP4 class #620. Session 222-BB."""
+
+    F_HEAVISIDE = 0.01
+    HEAVISIDE_RATIO = 1e13    # Heaviside/Poynting ratio
+    RHO_UA = 7.09e-36         # J/m³
+    RHO_SCM = 7.09e-37        # J/m³
+    F_QUASI = 0.01
+    SSQ = 0.57
+    MU_0 = 1.2566e-6          # H/m
+
+    PARAMETERS = [
+        ("E_field", "float", 1e6, "Electric field (V/m)"),
+        ("B_field", "float", 1.0, "Magnetic field (T)"),
+        ("area_m2", "float", 1e-4, "Collection area (m²)"),
+        ("eta_TRZ", "float", 0.1, "TRZ extraction efficiency"),
+    ]
+
+    def compute(self, dataset: dict) -> dict:
+        E = float(dataset.get("E_field", 1e6))
+        B = float(dataset.get("B_field", 1.0))
+        A = float(dataset.get("area_m2", 1e-4))
+        eta = float(dataset.get("eta_TRZ", 0.1))
+        S_Poynting = E * B / self.MU_0
+        rho_ratio = self.RHO_UA / self.RHO_SCM  # = 10
+        S_Heaviside = self.F_HEAVISIDE * self.HEAVISIDE_RATIO * S_Poynting * rho_ratio
+        S_total = S_Poynting + S_Heaviside
+        P_extracted = S_Heaviside * A * eta
+        COP = (S_Poynting + P_extracted / A) / S_Poynting if S_Poynting > 0 else 0.0
+        ssq_exp = math.exp(-self.SSQ * 18 / 26.0)
+        P_quasi = P_extracted * self.F_QUASI * ssq_exp
+        return {
+            "paper": "PAPER_1036",
+            "cp4_entry": 620,
+            "class": "LorentzRegaugingVacuumEnergyCalculator",
+            "domain": "Lorentz regauging: Heaviside vacuum energy extraction",
+            "S_Poynting_Wm2": S_Poynting,
+            "S_Heaviside_Wm2": S_Heaviside,
+            "S_total_Wm2": S_total,
+            "P_extracted_W": P_extracted,
+            "COP": COP,
+            "rho_UA_over_SCm": rho_ratio,
+            "P_quasi_longitudinal_W": P_quasi,
+            "primary_equations": [
+                f"S_Poynting = E×B/μ₀ = {S_Poynting:.6e} W/m²",
+                f"S_Heaviside = f_H·10¹³·S_P·(ρ_UA/ρ_SCm) = {S_Heaviside:.6e} W/m²",
+                f"Heaviside/Poynting = 10¹³ (Bearden 2000)",
+                f"ρ_UA/ρ_SCm = {rho_ratio:.1f}",
+                f"P_extracted = S_H·A·η_TRZ = {P_extracted:.6e} W",
+                f"COP = (S_P + P/A)/S_P = {COP:.4e} (>1.0 = negentropy)",
+                f"Quasi-longitudinal: P_quasi = {P_quasi:.6e} W",
+                "Lorentz regauging: 3-sym → 4-sym flow enables COP > 1.0",
+            ],
+            "available_equations": [
+                "E sweep: extraction power vs electric field",
+                "B sweep: extraction power vs magnetic field",
+                "η_TRZ sweep: efficiency vs TRZ coupling",
+                "Area sweep: total power vs collection area",
+            ],
+            "note": "PAPER_1036 CP4 #620. Session 222-BB. Bearden 2000.",
+        }
+
+    def simulate(self, sweep=None, **kw):
+        results = []
+        for E in (sweep or [1e4, 1e5, 1e6, 1e7, 1e8]):
+            r = self.compute({"E_field": E}); r["sweep_val"] = E; results.append(r)
+        return results
+
+    def self_update(self): pass
+    def self_expand(self): pass
+
+
+# ── Session 222-BB class list ─────────────────────────────────────────────
+
+_SESSION_222BB_CLASSES = [
+    'CMSDifferentialHiggsKappaCalculator',                           # PAPER_1030 #614
+    'ATLASOffShellHiggsWidthCalculator',                             # PAPER_1031 #615
+    'SCSConstraints21cmDarkAgesCalculator',                          # PAPER_1032 #616
+    'ElectroweakAxionStringSCSCalculator',                           # PAPER_1033 #617
+    'SCSSpectralSignaturesRadioCalculator',                          # PAPER_1034 #618
+    'ChiralSCmGraphenePairingCalculator',                            # PAPER_1035 #619
+    'LorentzRegaugingVacuumEnergyCalculator',                        # PAPER_1036 #620
+]

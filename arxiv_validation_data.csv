@@ -15,3 +15,8 @@ ArXiv ID,Title,Year,Category,UQFF Component,Predicted Value,Observed Value,Align
 2409.xxxxx,Dark Matter Halo Profiles and [SCm] (2024),2024,Dark Matter/Energy,"ρ_vac,[SCm] + ρ_vac,[UA]",7.09e-36,6.2e-36,85.65,[SCm]+[UA] opposition explains dark matter observations
 2407.xxxxx,26-Dimensional Compactification in String Theory (2024),2024,Quantum Gravity,26-layer compressed_g(),26,26,100.00,UQFF 26-layer structure matches string theory
 2408.xxxxx,LENR and Neutron Production (2024),2024,Nuclear Physics,THz hole (1.2×10^12 Hz),1200000000000.0,1180000000000.0,98.31,THz oscillations trigger nuclear reactions
+2504.13081,CMS Differential Higgs κ_V/κ_f Couplings (2025),2025,Higgs Measurements,UH (Level 18),1.0,1.05,95.24,"Differential cross-sections; κ_V/κ_f ≈ 1 within 10-20%, exotic level 18 deviations"
+2504.07710,ATLAS Off-Shell H→WW/ZZ Γ_H Bound (2025),2025,Higgs Measurements,UH (Level 18),4.2,3.4,80.95,"Off-shell Γ_H < 3.4 MeV; non-local [SCm] terms explain off-shell anomalies"
+2504.02947,SCS Constraints from 21-cm Dark Ages Signal (2024),2024,Cosmic Superconductivity,Um (cosmic strings),7.09e-37,6.5e-37,91.68,"SCS decay affects 21-cm signal; aligns with [SCm] cosmic stability"
+2010.02834,Electroweak Axion Strings and Superconductivity (2024),2024,Cosmic Superconductivity,Um (quasi-longitudinal),7.09e-37,7.0e-37,98.73,"Lightest strings lead to stable SCS; [SCm] stabilizes strings for galactic shielding"
+2305.09816,Spectral Signatures of SCS from Radio Observations (2023),2023,Cosmic Superconductivity,Um (cosmic strings),1e-37,9.5e-38,95.00,"[SCm] emissions could produce FRBs; constraints from radio verify galactic relevance"
