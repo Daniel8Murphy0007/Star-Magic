@@ -41638,18 +41638,18 @@ _SESSION_222_CLASSES = [
 # ══════════════════════════════════════════════════════════════════════════
 # Session 222-BB: BB_grok_conversation_C gap integration
 # 7 calculator classes — arXiv validation + physics gaps
-# CP4 #614–#620, PAPER_1030–PAPER_1036
+# CP4 #614–#620, PAPER_1113–PAPER_1119
 # ══════════════════════════════════════════════════════════════════════════
 
 
-class CMSDifferentialHiggsKappaCalculator(_CP4Calculator):  # PAPER_1030 #614
-    """PAPER_1030 — CMS Differential Higgs Coupling Ratios κ_V/κ_f.
+class CMSDifferentialHiggsKappaCalculator(_CP4Calculator):  # PAPER_1113 #614
+    """PAPER_1113 — CMS Differential Higgs Coupling Ratios κ_V/κ_f.
     arXiv:2504.13081 (CMS, 2025).
     Differential Higgs cross-sections at 13 TeV; coupling ratios κ_V/κ_f ≈ 1
     within 10-20%. Models Higgs as [UA] fluctuation at level 18.
     U_H(t) = λ_H · ρ_vac,[UA] · ω_H(t) · exp(-[SSq]·n/26) · (1 + f_quasi)
     κ_V/κ_f = U_H / U_H,SM → deviation from SM via [SCm] proton stability.
-    CP4 class #614. Session 222-BB."""
+    CP4 class #614. Session 222-BB-A."""
 
     M_H = 125.35          # GeV
     GAMMA_H_SM = 4.2e-3   # GeV
@@ -41679,7 +41679,7 @@ class CMSDifferentialHiggsKappaCalculator(_CP4Calculator):  # PAPER_1030 #614
         mu = sigma / 22.0  # signal strength relative to SM
         alignment = 100.0 - deviation_pct if deviation_pct < 100 else 0.0
         return {
-            "paper": "PAPER_1030",
+            "paper": "PAPER_1113",
             "cp4_entry": 614,
             "class": "CMSDifferentialHiggsKappaCalculator",
             "arxiv": "2504.13081",
@@ -41694,7 +41694,7 @@ class CMSDifferentialHiggsKappaCalculator(_CP4Calculator):  # PAPER_1030 #614
                 f"U_H = λ_H·ρ_UA·exp(-[SSq]·18/26)·(1+f_quasi) = {U_H:.6e}",
                 f"κ_V/κ_f = {ratio:.4f} (SM=1.0, deviation={deviation_pct:.2f}%)",
                 f"σ(ggH) = {sigma:.1f} pb → μ = {mu:.4f}",
-                f"Γ_H < 3.4 MeV (off-shell bound, arXiv:2504.07710)",
+                f"Γ_H < 3.4 MeV (off-shell bound, PAPER_1114 arXiv:2504.07710)",
                 "Higgs at level 18: exotic [UA] fluctuation enhancing proton stability",
             ],
             "available_equations": [
@@ -41702,7 +41702,7 @@ class CMSDifferentialHiggsKappaCalculator(_CP4Calculator):  # PAPER_1030 #614
                 "σ(ggH) sweep: production cross-section vs energy",
                 "Level sweep: U_H at different quantum levels n=1..26",
             ],
-            "note": "PAPER_1030 CP4 #614. Session 222-BB. arXiv:2504.13081.",
+            "note": "PAPER_1113 CP4 #614. Session 222-BB-A. arXiv:2504.13081.",
         }
 
     def simulate(self, sweep=None, **kw):
@@ -41715,14 +41715,14 @@ class CMSDifferentialHiggsKappaCalculator(_CP4Calculator):  # PAPER_1030 #614
     def self_expand(self): pass
 
 
-class ATLASOffShellHiggsWidthCalculator(_CP4Calculator):  # PAPER_1031 #615
-    """PAPER_1031 — ATLAS Off-Shell H→WW/ZZ Width Bound Γ_H.
+class ATLASOffShellHiggsWidthCalculator(_CP4Calculator):  # PAPER_1114 #615
+    """PAPER_1114 — ATLAS Off-Shell H→WW/ZZ Width Bound Γ_H.
     arXiv:2504.07710 (ATLAS, 2025).
     Off-shell Higgs production bounding Γ_H < 3.4 MeV.
     Γ_H(t) = Γ_H,SM · (1 + [SCm]_correction)
     [SCm]_correction = k_SCm · V_infl,[SCm] · V_infl,[UA] / Γ_SM
     Non-local [SCm] terms explain off-shell anomalies.
-    CP4 class #615. Session 222-BB."""
+    CP4 class #615. Session 222-BB-A."""
 
     GAMMA_SM = 4.2e-3     # GeV
     GAMMA_BOUND = 3.4e-3  # GeV
@@ -41752,7 +41752,7 @@ class ATLASOffShellHiggsWidthCalculator(_CP4Calculator):  # PAPER_1031 #615
         ssq_exp = math.exp(-self.SSQ * self.LEVEL / 26.0)
         suppression = G_bound / G_sm
         return {
-            "paper": "PAPER_1031",
+            "paper": "PAPER_1114",
             "cp4_entry": 615,
             "class": "ATLASOffShellHiggsWidthCalculator",
             "arxiv": "2504.07710",
@@ -41774,7 +41774,7 @@ class ATLASOffShellHiggsWidthCalculator(_CP4Calculator):  # PAPER_1031 #615
                 f"Within bound: {within_bound}",
                 f"Suppression Γ_bound/Γ_SM = {suppression:.4f}",
             ],
-            "note": "PAPER_1031 CP4 #615. Session 222-BB. arXiv:2504.07710.",
+            "note": "PAPER_1114 CP4 #615. Session 222-BB-A. arXiv:2504.07710.",
         }
 
     def simulate(self, sweep=None, **kw):
@@ -41787,15 +41787,15 @@ class ATLASOffShellHiggsWidthCalculator(_CP4Calculator):  # PAPER_1031 #615
     def self_expand(self): pass
 
 
-class SCSConstraints21cmDarkAgesCalculator(_CP4Calculator):  # PAPER_1032 #616
-    """PAPER_1032 — Superconducting Cosmic String Constraints from 21-cm.
+class SCSConstraints21cmDarkAgesCalculator(_CP4Calculator):  # PAPER_1115 #616
+    """PAPER_1115 — Superconducting Cosmic String Constraints from 21-cm.
     arXiv:2504.02947 (2024).
     Constraints on SCS from Dark Ages 21-cm signal. SCS decay
     injects energy into IGM, affecting brightness temperature T_21.
     T_21(z) = T_S(z)·(1 - T_CMB(z)/T_S(z))·(1 + δ_SCS)
     δ_SCS = (G·μ_string·c²)/(k_B·T_S) · [SCm]_stability
     [SCm] cosmic stability determines string tension μ_string.
-    CP4 class #616. Session 222-BB."""
+    CP4 class #616. Session 222-BB-A."""
 
     G_MU_UPPER = 1e-7     # G·μ/c² upper bound (dimensionless)
     T_CMB_Z20 = 57.2      # K at z=20
@@ -41824,7 +41824,7 @@ class SCSConstraints21cmDarkAgesCalculator(_CP4Calculator):  # PAPER_1032 #616
         delta_T = T_21_SCS - T_21_base
         within_constraint = Gmu <= self.G_MU_UPPER
         return {
-            "paper": "PAPER_1032",
+            "paper": "PAPER_1115",
             "cp4_entry": 616,
             "class": "SCSConstraints21cmDarkAgesCalculator",
             "arxiv": "2504.02947",
@@ -41850,7 +41850,7 @@ class SCSConstraints21cmDarkAgesCalculator(_CP4Calculator):  # PAPER_1032 #616
                 "G·μ sweep: δ_SCS vs string tension",
                 "Level sweep: SCm stability at levels 10..18",
             ],
-            "note": "PAPER_1032 CP4 #616. Session 222-BB. arXiv:2504.02947.",
+            "note": "PAPER_1115 CP4 #616. Session 222-BB-A. arXiv:2504.02947.",
         }
 
     def simulate(self, sweep=None, **kw):
@@ -41863,15 +41863,15 @@ class SCSConstraints21cmDarkAgesCalculator(_CP4Calculator):  # PAPER_1032 #616
     def self_expand(self): pass
 
 
-class ElectroweakAxionStringSCSCalculator(_CP4Calculator):  # PAPER_1033 #617
-    """PAPER_1033 — Electroweak Axion Strings and Superconductivity.
+class ElectroweakAxionStringSCSCalculator(_CP4Calculator):  # PAPER_1116 #617
+    """PAPER_1116 — Electroweak Axion Strings and Superconductivity.
     arXiv:2010.02834 (2020, updated 2024).
     Lightest electroweak axion strings lead to stable superconducting
     cosmic strings (SCS). [SCm] stabilizes strings, explaining
     galactic shielding (globular clusters as super-heavy BH shields).
     μ_string = η² · ln(L/δ) where η = EW symmetry breaking scale.
     I_max = e·η·v_string (maximum supercurrent).
-    CP4 class #617. Session 222-BB."""
+    CP4 class #617. Session 222-BB-A."""
 
     ETA_EW = 246.0         # GeV, EW symmetry breaking scale
     EV_TO_J = 1.602e-10    # GeV to J
@@ -41898,7 +41898,7 @@ class ElectroweakAxionStringSCSCalculator(_CP4Calculator):  # PAPER_1033 #617
         G_mu = 6.6743e-11 * mu_string / self.C**4
         is_stable = G_mu < 1e-6
         return {
-            "paper": "PAPER_1033",
+            "paper": "PAPER_1116",
             "cp4_entry": 617,
             "class": "ElectroweakAxionStringSCSCalculator",
             "arxiv": "2010.02834",
@@ -41925,7 +41925,7 @@ class ElectroweakAxionStringSCSCalculator(_CP4Calculator):  # PAPER_1033 #617
                 "v_string sweep: I_max vs string velocity",
                 "L/δ sweep: tension vs string aspect ratio",
             ],
-            "note": "PAPER_1033 CP4 #617. Session 222-BB. arXiv:2010.02834.",
+            "note": "PAPER_1116 CP4 #617. Session 222-BB-A. arXiv:2010.02834.",
         }
 
     def simulate(self, sweep=None, **kw):
@@ -41938,14 +41938,14 @@ class ElectroweakAxionStringSCSCalculator(_CP4Calculator):  # PAPER_1033 #617
     def self_expand(self): pass
 
 
-class SCSSpectralSignaturesRadioCalculator(_CP4Calculator):  # PAPER_1034 #618
-    """PAPER_1034 — Spectral Signatures of SCS from Radio Observations.
+class SCSSpectralSignaturesRadioCalculator(_CP4Calculator):  # PAPER_1117 #618
+    """PAPER_1117 — Spectral Signatures of SCS from Radio Observations.
     arXiv:2305.09816 (2023).
     Constraints on superconducting cosmic strings from radio observations.
     [SCm] emissions produce FRB-like bursts. Power spectral density:
     P(f) = (G·μ·c²)·I²·f / (4π·d²) · [SCm]_emission
     where I = supercurrent, d = distance, f = radio frequency.
-    CP4 class #618. Session 222-BB."""
+    CP4 class #618. Session 222-BB-A."""
 
     G = 6.6743e-11
     C = 3e8
@@ -41971,7 +41971,7 @@ class SCSSpectralSignaturesRadioCalculator(_CP4Calculator):  # PAPER_1034 #618
         E_burst = P_f * 1e-3  # 1 ms burst energy
         is_FRB_like = S_Jy > 0.01  # detectable above ~10 mJy
         return {
-            "paper": "PAPER_1034",
+            "paper": "PAPER_1117",
             "cp4_entry": 618,
             "class": "SCSSpectralSignaturesRadioCalculator",
             "arxiv": "2305.09816",
@@ -42001,7 +42001,7 @@ class SCSSpectralSignaturesRadioCalculator(_CP4Calculator):  # PAPER_1034 #618
                 "d sweep: flux vs distance for detectability",
                 "G·μ sweep: string tension vs spectral power",
             ],
-            "note": "PAPER_1034 CP4 #618. Session 222-BB. arXiv:2305.09816.",
+            "note": "PAPER_1117 CP4 #618. Session 222-BB-A. arXiv:2305.09816.",
         }
 
     def simulate(self, sweep=None, **kw):
@@ -42014,15 +42014,15 @@ class SCSSpectralSignaturesRadioCalculator(_CP4Calculator):  # PAPER_1034 #618
     def self_expand(self): pass
 
 
-class ChiralSCmGraphenePairingCalculator(_CP4Calculator):  # PAPER_1035 #619
-    """PAPER_1035 — Chiral Superconductivity in Rhombohedral Graphene.
+class ChiralSCmGraphenePairingCalculator(_CP4Calculator):  # PAPER_1118 #619
+    """PAPER_1118 — Chiral Superconductivity in Rhombohedral Graphene.
     arXiv:2408.15233 (2024).
     Chiral superconductivity in rhombohedral graphene provides exotic
     pairing for masses/states. Modeled as [SCm] pairing at level 10.
     Δ_chiral(k) = Δ₀·(k_x ± i·k_y)^d · exp(-[SSq]·10/26)
     T_c = (ℏ·ω_D)/(k_B)·exp(-1/(N(0)·V_SCm))
     where V_SCm = [SCm] pairing potential, d = chiral winding number.
-    CP4 class #619. Session 222-BB."""
+    CP4 class #619. Session 222-BB-A."""
 
     HBAR = 1.0546e-34     # J·s
     K_B = 1.381e-23        # J/K
@@ -42051,7 +42051,7 @@ class ChiralSCmGraphenePairingCalculator(_CP4Calculator):  # PAPER_1035 #619
         T_c = (self.HBAR * self.OMEGA_D / self.K_B) * math.exp(-1.0 / NV) if NV > 0 else 0.0
         E_condensation = 0.5 * D0_J**2 * ssq_exp
         return {
-            "paper": "PAPER_1035",
+            "paper": "PAPER_1118",
             "cp4_entry": 619,
             "class": "ChiralSCmGraphenePairingCalculator",
             "arxiv": "2408.15233",
@@ -42079,7 +42079,7 @@ class ChiralSCmGraphenePairingCalculator(_CP4Calculator):  # PAPER_1035 #619
                 "T_c sweep: critical temperature vs N(0)·V_SCm",
                 "Level sweep: [SSq] suppression across quantum levels",
             ],
-            "note": "PAPER_1035 CP4 #619. Session 222-BB. arXiv:2408.15233.",
+            "note": "PAPER_1118 CP4 #619. Session 222-BB-A. arXiv:2408.15233.",
         }
 
     def simulate(self, sweep=None, **kw):
@@ -42092,8 +42092,8 @@ class ChiralSCmGraphenePairingCalculator(_CP4Calculator):  # PAPER_1035 #619
     def self_expand(self): pass
 
 
-class LorentzRegaugingVacuumEnergyCalculator(_CP4Calculator):  # PAPER_1036 #620
-    """PAPER_1036 — Lorentz Regauging and Vacuum Energy Extraction.
+class LorentzRegaugingVacuumEnergyCalculator(_CP4Calculator):  # PAPER_1119 #620
+    """PAPER_1119 — Lorentz Regauging and Vacuum Energy Extraction.
     Bearden (2000) formalism integrated into UQFF.
     Lorentz symmetric regauging breaks 3-symmetry → 4-symmetry flow,
     enabling COP > 1.0 via Heaviside component (10¹³ × Poynting).
@@ -42101,7 +42101,7 @@ class LorentzRegaugingVacuumEnergyCalculator(_CP4Calculator):  # PAPER_1036 #620
     S_Heaviside = f_Heaviside · (E × B) · (ρ_UA/ρ_SCm)
     P_extracted = ∫ S_Heaviside · dA · η_TRZ
     Quasi-longitudinal waves in Um enable negentropy.
-    CP4 class #620. Session 222-BB."""
+    CP4 class #620. Session 222-BB-A."""
 
     F_HEAVISIDE = 0.01
     HEAVISIDE_RATIO = 1e13    # Heaviside/Poynting ratio
@@ -42132,7 +42132,7 @@ class LorentzRegaugingVacuumEnergyCalculator(_CP4Calculator):  # PAPER_1036 #620
         ssq_exp = math.exp(-self.SSQ * 18 / 26.0)
         P_quasi = P_extracted * self.F_QUASI * ssq_exp
         return {
-            "paper": "PAPER_1036",
+            "paper": "PAPER_1119",
             "cp4_entry": 620,
             "class": "LorentzRegaugingVacuumEnergyCalculator",
             "domain": "Lorentz regauging: Heaviside vacuum energy extraction",
@@ -42159,7 +42159,7 @@ class LorentzRegaugingVacuumEnergyCalculator(_CP4Calculator):  # PAPER_1036 #620
                 "η_TRZ sweep: efficiency vs TRZ coupling",
                 "Area sweep: total power vs collection area",
             ],
-            "note": "PAPER_1036 CP4 #620. Session 222-BB. Bearden 2000.",
+            "note": "PAPER_1119 CP4 #620. Session 222-BB-A. Bearden 2000.",
         }
 
     def simulate(self, sweep=None, **kw):
@@ -42172,14 +42172,14 @@ class LorentzRegaugingVacuumEnergyCalculator(_CP4Calculator):  # PAPER_1036 #620
     def self_expand(self): pass
 
 
-# ── Session 222-BB class list ─────────────────────────────────────────────
+# ── Session 222-BB-A class list ───────────────────────────────────────────
 
 _SESSION_222BB_CLASSES = [
-    'CMSDifferentialHiggsKappaCalculator',                           # PAPER_1030 #614
-    'ATLASOffShellHiggsWidthCalculator',                             # PAPER_1031 #615
-    'SCSConstraints21cmDarkAgesCalculator',                          # PAPER_1032 #616
-    'ElectroweakAxionStringSCSCalculator',                           # PAPER_1033 #617
-    'SCSSpectralSignaturesRadioCalculator',                          # PAPER_1034 #618
-    'ChiralSCmGraphenePairingCalculator',                            # PAPER_1035 #619
-    'LorentzRegaugingVacuumEnergyCalculator',                        # PAPER_1036 #620
+    'CMSDifferentialHiggsKappaCalculator',                           # PAPER_1113 #614
+    'ATLASOffShellHiggsWidthCalculator',                             # PAPER_1114 #615
+    'SCSConstraints21cmDarkAgesCalculator',                          # PAPER_1115 #616
+    'ElectroweakAxionStringSCSCalculator',                           # PAPER_1116 #617
+    'SCSSpectralSignaturesRadioCalculator',                          # PAPER_1117 #618
+    'ChiralSCmGraphenePairingCalculator',                            # PAPER_1118 #619
+    'LorentzRegaugingVacuumEnergyCalculator',                        # PAPER_1119 #620
 ]
