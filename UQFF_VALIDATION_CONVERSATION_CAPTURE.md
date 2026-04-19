@@ -64,11 +64,13 @@
 - **Validation Type:** GEOMETRIC verification (not conventional numerical computation)
 
 ### Computational Infrastructure
-- **C++ Platform:** MAIN_1_CoAnQi.cpp (102,672 lines, 446 modules, SOURCE1-116)
-- **JavaScript Engine:** index.js (23,790 lines, 106 astrophysical systems)
+- **C++ Platform:** MAIN_1_CoAnQi.cpp (97,119 lines, 446 modules, SOURCE1-116 + SOURCE4)
+- **JavaScript Engine:** index.js (21,269 lines, 106 astrophysical systems)
+- **Python Calculators:** 2,748 classes (CP1=1,299 + CP2=680 + CP3=218 + CP4=551)
 - **Wolfram Integration:** 71 companion files (source4-81_wolfram.cpp, classes 1-769)
 - **Threading Model:** Windows threads (<windows.h>, SimpleMutex), designed for massive parallelization
-- **Build System:** MSVC 14.44.35207 (Visual Studio 2022), C++20 standard, Wolfram WSTP integration
+- **Build System:** MSVC 14.44.35219 (Visual Studio 2022), C++20 standard, Wolfram WSTP integration
+- **DPM-Emergent Paradigm:** Core/dpm_emergent.h — Newtonian gravity emergent from DPM foundation
 
 ### 26-Layer Compressed Gravity Framework
 **Core Equation:**
@@ -186,8 +188,10 @@ g(r,t) = Σ(i=1 to 26) [Ug1_i + Ug2_i + Ug3_i + Ug4_i]
 ## Key Technical Files
 
 ### Core Executables
-- `MAIN_1_CoAnQi.cpp` - Primary C++ platform (102,672 lines, 446 modules, SOURCE1-116)
-- `index.js` - JavaScript computational engine (23,790 lines, 106 systems)
+- `MAIN_1_CoAnQi.cpp` - Primary C++ platform (97,119 lines, 446 modules, SOURCE1-116 + SOURCE4)
+- `index.js` - JavaScript LIBRARY (21,269 lines, 106 systems)
+- `CondensedPhysics.py` - Primary calculator (168,852 lines, 1,299 classes)
+- `QCalc.py` - Python unified field solver (10,076 lines)
 
 ### Wolfram Integration (71 files)
 - `source4_wolfram.cpp` through `source81_wolfram.cpp` (classes 1-769)
