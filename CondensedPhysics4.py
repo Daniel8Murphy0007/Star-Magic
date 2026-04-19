@@ -42183,3 +42183,630 @@ _SESSION_222BB_CLASSES = [
     'ChiralSCmGraphenePairingCalculator',                            # PAPER_1118 #619
     'LorentzRegaugingVacuumEnergyCalculator',                        # PAPER_1119 #620
 ]
+
+
+# ═════════════════════════════════════════════════════════════════════════════
+# SESSION  222-BB-B  ·  BB_grok_conversation_B  Gap Implementation
+# Papers PAPER_1120 – PAPER_1125  ·  CP4 entries #621 – #626
+# ═════════════════════════════════════════════════════════════════════════════
+
+
+# ── CP4 #621 ── PAPER_1120 ────────────────────────────────────────────────
+class HiggsProductionDecayModeCalculator(_CP4Calculator):
+    """
+    Higgs boson production & decay mode breakdown (Nicolaidou & Sirois 2015).
+
+    Models:
+      - Production cross-sections: ggH (~87%), VBF (~7%), VH (~5%), ttH (~1%)
+      - Decay branching ratios: H→bb̄ (~58%), H→WW* (~21%), H→ττ (~6.3%),
+        H→ZZ* (~2.6%), H→γγ (~0.23%)
+      - Signal strength μ = σ·BR / (σ·BR)_SM
+      - UQFF alignment: Higgs as [UA] fluctuation at level 18, J^P = 0^+
+    """
+
+    # SM production fractions at √s = 13 TeV  (Nicolaidou & Sirois 2015 + LHC Run-2)
+    F_GGH  = 0.872    # gluon-gluon fusion
+    F_VBF  = 0.068    # vector-boson fusion
+    F_VH   = 0.046    # associated VH production
+    F_TTH  = 0.011    # ttH production
+    F_OTHER = 0.003   # tH + bbH
+
+    # SM decay branching ratios
+    BR_BB   = 0.5824
+    BR_WW   = 0.2137
+    BR_TAU  = 0.0632
+    BR_ZZ   = 0.0264
+    BR_GAM  = 0.00228
+    BR_MU   = 0.000218
+    BR_ZG   = 0.00154
+
+    M_H     = 125.09   # GeV UQFF Higgs mass
+    GAMMA_H = 4.2e-3   # GeV SM width
+
+    def compute(self, dataset):
+        import math
+        m_H   = dataset.get("m_H_GeV", self.M_H)
+        sqrt_s = dataset.get("sqrt_s_TeV", 13.0)
+
+        # Total inclusive cross-section (pb) — approximate parametric
+        sigma_total = 48.6 * (sqrt_s / 13.0)**1.7  # pb at 13 TeV
+
+        # Production cross-sections
+        sigma_ggH = sigma_total * self.F_GGH
+        sigma_VBF = sigma_total * self.F_VBF
+        sigma_VH  = sigma_total * self.F_VH
+        sigma_ttH = sigma_total * self.F_TTH
+
+        # Signal strengths (μ ≈ 1.0 for SM)
+        kappa_V = dataset.get("kappa_V", 1.0)
+        kappa_f = dataset.get("kappa_f", 1.0)
+        mu_ggH = kappa_f**2 * self.BR_BB  # simplified
+        mu_VBF = kappa_V**2 * self.BR_WW
+
+        # UQFF level-18 exotic contribution
+        rho_vac_UA = dataset.get("rho_vac_UA", 7.09e-37)
+        omega_H    = dataset.get("omega_H", 1.9e25)  # Higgs angular freq
+        SSq_18     = dataset.get("SSq_18", 0.57)
+        f_quasi    = dataset.get("f_quasi", 0.001)
+        U_H = rho_vac_UA * omega_H * math.exp(-SSq_18 * 18) * (1 + f_quasi)
+
+        return {
+            "class": "HiggsProductionDecayModeCalculator",
+            "paper": "PAPER_1120",
+            "cp4_entry": 621,
+            "session": "222-BB-B",
+            "m_H_GeV": m_H,
+            "sqrt_s_TeV": sqrt_s,
+            "sigma_total_pb": sigma_total,
+            "sigma_ggH_pb": sigma_ggH,
+            "sigma_VBF_pb": sigma_VBF,
+            "sigma_VH_pb": sigma_VH,
+            "sigma_ttH_pb": sigma_ttH,
+            "BR_bb": self.BR_BB,
+            "BR_WW": self.BR_WW,
+            "BR_tautau": self.BR_TAU,
+            "BR_ZZ": self.BR_ZZ,
+            "BR_gamgam": self.BR_GAM,
+            "kappa_V": kappa_V,
+            "kappa_f": kappa_f,
+            "U_H_level18": U_H,
+            "alignment_pct": 90.0,
+            "primary_equations": [
+                f"σ_total(√s={sqrt_s}) = {sigma_total:.2f} pb",
+                f"σ_ggH = {self.F_GGH*100:.1f}% × σ_total = {sigma_ggH:.2f} pb",
+                f"σ_VBF = {self.F_VBF*100:.1f}% × σ_total = {sigma_VBF:.2f} pb",
+                f"BR(H→bb̄) = {self.BR_BB:.4f}  (58.24%)",
+                f"BR(H→WW*) = {self.BR_WW:.4f}  (21.37%)",
+                f"BR(H→γγ) = {self.BR_GAM:.5f}  (0.228%)",
+                f"Γ_H = {self.GAMMA_H*1e3:.1f} MeV (SM width)",
+                f"U_H = ρ_vac·ω_H·exp(-[SSq]·18)·(1+f_quasi) = {U_H:.6e}",
+                f"J^P = 0^+ confirmed (spin-parity)",
+            ],
+            "available_equations": [
+                "√s sweep: production cross-section vs centre-of-mass energy",
+                "κ_V/κ_f scan: signal strength vs coupling modifiers",
+                "BR pie chart: branching ratio breakdown at any m_H",
+            ],
+            "note": "PAPER_1120 CP4 #621. Session 222-BB-B. Nicolaidou & Sirois 2015.",
+        }
+
+    def simulate(self, sweep=None, **kw):
+        results = []
+        for s in (sweep or [7.0, 8.0, 13.0, 13.6, 14.0]):
+            r = self.compute({"sqrt_s_TeV": s}); r["sweep_val"] = s; results.append(r)
+        return results
+
+    def self_update(self): pass
+    def self_expand(self): pass
+
+
+# ── CP4 #622 ── PAPER_1121 ────────────────────────────────────────────────
+class InterstellarShockPrestellarCollapseCalculator(_CP4Calculator):
+    """
+    Interstellar shock-driven prestellar core collapse and molecule release
+    (Ceccarelli & Codella 2024).
+
+    Models:
+      - J-type shocks: abrupt compression, S(t) density jump
+      - C-type shocks: continuous, molecule release C(t) for SiO, H₂O, formamide
+      - Prestellar core conditions: T ~ 10-20 K, n ~ 10⁵-10⁶ cm⁻³
+      - Ice mantle sputtering efficiency η_sput
+      - UQFF: g_Shock = GM/r² · S(t) + C(t), [SCm]-[UA] interactions
+    """
+
+    K_B = 1.381e-23   # J/K
+    M_SUN = 1.989e30  # kg
+    G = 6.674e-11     # m³/kg/s²
+
+    def compute(self, dataset):
+        import math
+        # Prestellar core parameters
+        T_core    = dataset.get("T_core_K", 15.0)            # K
+        n_H2      = dataset.get("n_H2_cm3", 3e5)             # cm⁻³
+        M_core    = dataset.get("M_core_Msun", 1.0) * self.M_SUN
+        r_core    = dataset.get("r_core_AU", 5000) * 1.496e11  # m
+
+        # Shock parameters
+        v_shock   = dataset.get("v_shock_kms", 40.0) * 1e3   # m/s
+        shock_type = dataset.get("shock_type", "C")           # J or C
+
+        # Compression factor S(t) — density enhancement
+        if shock_type == "J":
+            mach = v_shock / (0.2e3)  # sound speed ~0.2 km/s at 15 K
+            S_t = min(4.0 * mach**2, 1e4)  # strong J-shock limit
+        else:
+            S_t = dataset.get("S_t", 10.0)  # gradual C-type compression
+
+        # Molecule release C(t) - sputtering from grain mantles
+        eta_sput  = dataset.get("eta_sputtering", 0.1 if shock_type == "C" else 0.9)
+        X_SiO_0   = dataset.get("X_SiO_initial", 1e-12)  # pre-shock SiO abundance
+        X_H2O_0   = dataset.get("X_H2O_initial", 1e-4)   # ice mantle H₂O
+        X_form_0  = dataset.get("X_formamide_0", 1e-9)    # formamide
+
+        X_SiO_post  = X_SiO_0 + eta_sput * 1e-8   # post-shock SiO
+        X_H2O_post  = X_H2O_0 * (1.0 + eta_sput * S_t * 0.01)
+        X_form_post = X_form_0 * (1.0 + eta_sput * S_t * 0.5)
+
+        # UQFF g_Shock
+        g_grav = self.G * M_core / r_core**2
+        g_Shock = g_grav * S_t + X_SiO_post  # GM/r²·S(t) + C(t)
+
+        # Jeans mass at post-shock conditions
+        n_post = n_H2 * S_t
+        T_post = T_core * (S_t**0.1 if shock_type == "C" else S_t**0.4)
+        c_s = math.sqrt(self.K_B * T_post / (2.34 * 1.67e-27))  # sound speed
+        rho_post = n_post * 1e6 * 2.34 * 1.67e-27  # kg/m³
+        M_Jeans = (math.pi * c_s**2 / self.G)**1.5 / (rho_post**0.5) / self.M_SUN
+
+        return {
+            "class": "InterstellarShockPrestellarCollapseCalculator",
+            "paper": "PAPER_1121",
+            "cp4_entry": 622,
+            "session": "222-BB-B",
+            "T_core_K": T_core,
+            "n_H2_cm3": n_H2,
+            "shock_type": shock_type,
+            "v_shock_kms": v_shock / 1e3,
+            "S_t_compression": S_t,
+            "eta_sputtering": eta_sput,
+            "X_SiO_post": X_SiO_post,
+            "X_H2O_post": X_H2O_post,
+            "X_formamide_post": X_form_post,
+            "g_Shock": g_Shock,
+            "T_post_K": T_post,
+            "n_post_cm3": n_post,
+            "M_Jeans_Msun": M_Jeans,
+            "alignment_pct": 80.0,
+            "primary_equations": [
+                f"g_Shock = GM/r²·S(t) + C(t) = {g_Shock:.6e}",
+                f"S(t) = {S_t:.2f} ({shock_type}-type compression)",
+                f"C(t): X(SiO) {X_SiO_0:.1e} → {X_SiO_post:.1e}",
+                f"C(t): X(H₂O) {X_H2O_0:.1e} → {X_H2O_post:.1e}",
+                f"C(t): X(formamide) {X_form_0:.1e} → {X_form_post:.1e}",
+                f"M_Jeans(post-shock) = {M_Jeans:.4f} M☉",
+                f"η_sput = {eta_sput:.2f} (ice mantle sputtering)",
+                f"Prestellar: T={T_core}K, n={n_H2:.0e} cm⁻³ → T={T_post:.1f}K, n={n_post:.0e} cm⁻³",
+            ],
+            "available_equations": [
+                "v_shock sweep: molecule release vs shock velocity",
+                "T_core sweep: Jeans mass vs core temperature",
+                "J vs C comparison: sputtering efficiency profiles",
+            ],
+            "note": "PAPER_1121 CP4 #622. Session 222-BB-B. Ceccarelli & Codella 2024.",
+        }
+
+    def simulate(self, sweep=None, **kw):
+        results = []
+        for v in (sweep or [10.0, 20.0, 40.0, 80.0, 150.0]):
+            r = self.compute({"v_shock_kms": v}); r["sweep_val"] = v; results.append(r)
+        return results
+
+    def self_update(self): pass
+    def self_expand(self): pass
+
+
+# ── CP4 #623 ── PAPER_1122 ────────────────────────────────────────────────
+class BowShockISMChemistryCalculator(_CP4Calculator):
+    """
+    Bow-shock chemistry in the ISM (arXiv:1808.01439, 2018).
+
+    Models:
+      - Bow-shock standoff distance: R_bs = √(Ṁ·v_w / (4π·ρ_ISM·v_*²))
+      - Post-shock temperature: T_ps = (3/16)·μ·v_s² / k_B
+      - Chemical enrichment: endothermic reactions activated at T > T_crit
+      - Molecule formation: OH, H₂O, SiO from grain sputtering
+      - UQFF: C(t) molecule release, [SCm]-[UA] prebiotic enrichment
+    """
+
+    K_B    = 1.381e-23
+    M_P    = 1.67e-27   # proton mass kg
+    MU_ISM = 1.27       # mean molecular weight (neutral ISM)
+
+    def compute(self, dataset):
+        import math
+        # Stellar wind and ISM parameters
+        Mdot_w   = dataset.get("Mdot_Msun_yr", 1e-6) * 1.989e30 / 3.156e7  # kg/s
+        v_w      = dataset.get("v_wind_kms", 2000.0) * 1e3                  # m/s
+        v_star   = dataset.get("v_star_kms", 30.0) * 1e3                    # m/s
+        n_ISM    = dataset.get("n_ISM_cm3", 1.0)                            # cm⁻³
+        rho_ISM  = n_ISM * 1e6 * self.MU_ISM * self.M_P                    # kg/m³
+
+        # Bow-shock standoff distance
+        R_bs = math.sqrt(Mdot_w * v_w / (4 * math.pi * rho_ISM * v_star**2))
+        R_bs_AU = R_bs / 1.496e11
+
+        # Post-shock temperature (Rankine-Hugoniot strong shock)
+        v_shock = v_star  # shock velocity ≈ stellar velocity in ISM frame
+        T_ps = 3.0 * self.MU_ISM * self.M_P * v_shock**2 / (16.0 * self.K_B)
+
+        # Chemical activation — endothermic barriers
+        T_crit_OH  = 2000.0   # K for OH formation
+        T_crit_H2O = 1500.0   # K for H₂O (grain surface)
+        T_crit_SiO = 3500.0   # K for SiO sputtering
+
+        eta_OH  = 1.0 / (1.0 + math.exp(-(T_ps - T_crit_OH) / 500))
+        eta_H2O = 1.0 / (1.0 + math.exp(-(T_ps - T_crit_H2O) / 400))
+        eta_SiO = 1.0 / (1.0 + math.exp(-(T_ps - T_crit_SiO) / 600))
+
+        # Abundances
+        X_OH  = eta_OH  * 3e-7
+        X_H2O = eta_H2O * 1e-4
+        X_SiO = eta_SiO * 1e-8
+
+        # Cooling timescale
+        Lambda_cool = 1e-22 * (T_ps / 1e4)**(-0.7)  # erg/cm³/s
+        n_post = 4.0 * n_ISM  # strong shock compression
+        t_cool = 1.5 * self.K_B * T_ps / (n_post * 1e6 * Lambda_cool * 1e-7)  # seconds
+        t_cool_yr = t_cool / 3.156e7
+
+        return {
+            "class": "BowShockISMChemistryCalculator",
+            "paper": "PAPER_1122",
+            "cp4_entry": 623,
+            "session": "222-BB-B",
+            "Mdot_Msun_yr": Mdot_w * 3.156e7 / 1.989e30,
+            "v_wind_kms": v_w / 1e3,
+            "v_star_kms": v_star / 1e3,
+            "n_ISM_cm3": n_ISM,
+            "R_bs_AU": R_bs_AU,
+            "T_post_shock_K": T_ps,
+            "eta_OH": eta_OH,
+            "eta_H2O": eta_H2O,
+            "eta_SiO": eta_SiO,
+            "X_OH": X_OH,
+            "X_H2O": X_H2O,
+            "X_SiO": X_SiO,
+            "t_cool_yr": t_cool_yr,
+            "alignment_pct": 80.0,
+            "primary_equations": [
+                f"R_bs = √(Ṁ·v_w / 4π·ρ_ISM·v_*²) = {R_bs_AU:.1f} AU",
+                f"T_ps = 3μm_p·v_s² / 16k_B = {T_ps:.0f} K",
+                f"η_OH  = σ(T_ps - {T_crit_OH}) = {eta_OH:.4f}",
+                f"η_H₂O = σ(T_ps - {T_crit_H2O}) = {eta_H2O:.4f}",
+                f"η_SiO = σ(T_ps - {T_crit_SiO}) = {eta_SiO:.4f}",
+                f"X(OH) = {X_OH:.2e}, X(H₂O) = {X_H2O:.2e}, X(SiO) = {X_SiO:.2e}",
+                f"t_cool = {t_cool_yr:.2e} yr",
+                "C(t) enrichment: [SCm]-[UA] prebiotic pathway activated by bow shock",
+            ],
+            "available_equations": [
+                "v_star sweep: bow-shock radius vs stellar velocity",
+                "n_ISM sweep: post-shock temperature vs ambient density",
+                "Chemical yield map: molecule abundance vs shock velocity",
+            ],
+            "note": "PAPER_1122 CP4 #623. Session 222-BB-B. arXiv:1808.01439.",
+        }
+
+    def simulate(self, sweep=None, **kw):
+        results = []
+        for v in (sweep or [10.0, 20.0, 40.0, 80.0, 150.0]):
+            r = self.compute({"v_star_kms": v}); r["sweep_val"] = v; results.append(r)
+        return results
+
+    def self_update(self): pass
+    def self_expand(self): pass
+
+
+# ── CP4 #624 ── PAPER_1123 ────────────────────────────────────────────────
+class H2OMaserJShockEmissionCalculator(_CP4Calculator):
+    """
+    H₂O maser emission from J-type shocks (arXiv:1306.5276, 2013).
+
+    Models:
+      - Water maser pumping: collisional inversion at T ~ 300-1000 K
+      - J-shock velocity regime: v_s ~ 20-80 km/s for 22 GHz masers
+      - Maser luminosity: L_maser ∝ n_H₂² · X(H₂O) · ΔΩ · l_gain
+      - Compression S(t): abrupt Ug1 jumps, n_post = 4·n_pre (strong shock)
+      - UQFF: S(t) compression verifies J-shock as abrupt Ug1 jumps
+    """
+
+    H_PLANCK = 6.626e-34
+    K_B      = 1.381e-23
+    NU_22GHZ = 22.235e9   # Hz — 22 GHz H₂O maser line
+
+    def compute(self, dataset):
+        import math
+        # Shock parameters
+        v_s     = dataset.get("v_shock_kms", 40.0) * 1e3    # m/s
+        n_pre   = dataset.get("n_pre_cm3", 1e5)             # cm⁻³ pre-shock
+        T_pre   = dataset.get("T_pre_K", 50.0)              # K pre-shock
+
+        # Post-shock conditions (J-type: abrupt jump)
+        n_post  = 4.0 * n_pre  # strong shock limit
+        T_post  = 3.0 * 2.34 * 1.67e-27 * v_s**2 / (16.0 * self.K_B)
+
+        # Maser activation window: 300 < T < 1000 K for collisional pumping
+        T_pump_min = 300.0
+        T_pump_max = 1000.0
+        pump_active = T_pump_min <= T_post <= T_pump_max
+
+        # Water abundance in maser zone
+        X_H2O = dataset.get("X_H2O", 1e-4) if pump_active else 1e-8
+
+        # Maser optical depth (simplified two-level)
+        delta_v    = dataset.get("delta_v_kms", 1.0) * 1e3   # line width m/s
+        l_gain     = dataset.get("l_gain_AU", 10.0) * 1.496e11  # gain path m
+        tau_maser  = (n_post * 1e6 * X_H2O * self.H_PLANCK * self.NU_22GHZ
+                      * l_gain / (4 * math.pi * delta_v * self.K_B * T_post))
+
+        # Maser luminosity (L_sun units)
+        L_SOLAR = 3.828e26  # W
+        if pump_active and tau_maser > 0:
+            L_maser = (n_post * 1e6)**2 * X_H2O * l_gain**3 * 1e-55  # parametric W
+        else:
+            L_maser = 0.0
+        L_maser_Lsun = L_maser / L_SOLAR
+
+        # Isotropic maser luminosity (typical: 10⁻⁵ to 10⁻¹ L☉)
+        log_L = math.log10(L_maser_Lsun) if L_maser_Lsun > 0 else -99
+
+        return {
+            "class": "H2OMaserJShockEmissionCalculator",
+            "paper": "PAPER_1123",
+            "cp4_entry": 624,
+            "session": "222-BB-B",
+            "v_shock_kms": v_s / 1e3,
+            "n_pre_cm3": n_pre,
+            "n_post_cm3": n_post,
+            "T_post_K": T_post,
+            "pump_active": pump_active,
+            "X_H2O": X_H2O,
+            "tau_maser_22GHz": tau_maser,
+            "L_maser_W": L_maser,
+            "L_maser_Lsun": L_maser_Lsun,
+            "log_L_maser": log_L,
+            "alignment_pct": 80.0,
+            "primary_equations": [
+                f"v_s = {v_s/1e3:.1f} km/s → T_post = {T_post:.0f} K",
+                f"n_post = 4·n_pre = {n_post:.0e} cm⁻³ (strong J-shock)",
+                f"Pump window: {T_pump_min}-{T_pump_max} K → active={pump_active}",
+                f"X(H₂O) = {X_H2O:.1e} (ice mantle release)",
+                f"τ_maser(22 GHz) = {tau_maser:.4e}",
+                f"L_maser = {L_maser:.4e} W = {L_maser_Lsun:.4e} L☉",
+                f"S(t) compression: abrupt Ug1 jump (J-type)",
+                "ν = 22.235 GHz (6₁₆ → 5₂₃ rotational transition)",
+            ],
+            "available_equations": [
+                "v_shock sweep: maser luminosity vs shock velocity",
+                "n_pre sweep: optical depth vs pre-shock density",
+                "T_post window: maser activation vs post-shock temperature",
+            ],
+            "note": "PAPER_1123 CP4 #624. Session 222-BB-B. arXiv:1306.5276.",
+        }
+
+    def simulate(self, sweep=None, **kw):
+        results = []
+        for v in (sweep or [10.0, 20.0, 30.0, 40.0, 60.0, 80.0]):
+            r = self.compute({"v_shock_kms": v}); r["sweep_val"] = v; results.append(r)
+        return results
+
+    def self_update(self): pass
+    def self_expand(self): pass
+
+
+# ── CP4 #625 ── PAPER_1124 ────────────────────────────────────────────────
+class CGMDwarfGalaxyMetalRetentionCalculator(_CP4Calculator):
+    """
+    CGM metal retention in dwarf galaxies (arXiv:2505.08861, 2025).
+
+    Models:
+      - Weak M*-σ correlation in dwarfs: σ ∝ M_*^α with α ≈ 0.2
+      - Metal retention fraction f_Z as function of M_BH/M_*
+      - Over-massive SMBHs: ΔM_BH > 0 → lower f_Z (~0.89) via [SCm] expulsion
+      - Under-massive SMBHs: ΔM_BH < 0 → higher f_Z (~0.85) retained in stars
+      - UQFF: Ug4 interaction — [SCm] expulsion drives metal ejection
+    """
+
+    def compute(self, dataset):
+        import math
+        # Galaxy parameters
+        M_star     = dataset.get("M_star_Msun", 1e9)
+        M_BH       = dataset.get("M_BH_Msun", 1e5)
+        sigma_star = dataset.get("sigma_kms", 30.0)       # stellar velocity dispersion km/s
+        Z_CGM      = dataset.get("Z_CGM_Zsun", 0.1)       # CGM metallicity in solar
+        R_vir      = dataset.get("R_vir_kpc", 100.0)       # virial radius kpc
+
+        # M-σ relation for dwarfs: weak correlation
+        alpha_Msig  = dataset.get("alpha_Msigma", 0.20)    # slope (dwarfs ≈ 0.2 vs 4.38 classical)
+        sigma_pred  = 30.0 * (M_star / 1e9)**alpha_Msig
+
+        # BH mass offset from M-σ expectation
+        M_BH_exp = 1e5 * (sigma_star / 30.0)**4.38
+        Delta_M_BH = math.log10(M_BH / max(M_BH_exp, 1.0))
+
+        # Metal retention fraction
+        f_Z_base = 0.87
+        f_feedback = dataset.get("f_feedback", 0.10)
+        if Delta_M_BH > 0:
+            # Over-massive: AGN drives metals out
+            f_Z = f_Z_base + 0.02 - f_feedback * Delta_M_BH
+        else:
+            # Under-massive: metals retained in stars/ISM
+            f_Z = f_Z_base - 0.02 - f_feedback * Delta_M_BH
+
+        f_Z = max(0.0, min(1.0, f_Z))
+
+        # CGM mass estimate
+        M_CGM = 0.1 * M_star  # CGM ~ 10% of stellar mass for dwarfs
+        M_metals_CGM = M_CGM * Z_CGM * 0.0134  # solar Z = 0.0134
+
+        # UQFF Ug4 contribution
+        rho_SCm = dataset.get("rho_SCm", 7.09e-37)
+        Ug4_expulsion = rho_SCm * abs(Delta_M_BH) * f_feedback
+
+        return {
+            "class": "CGMDwarfGalaxyMetalRetentionCalculator",
+            "paper": "PAPER_1124",
+            "cp4_entry": 625,
+            "session": "222-BB-B",
+            "M_star_Msun": M_star,
+            "M_BH_Msun": M_BH,
+            "sigma_pred_kms": sigma_pred,
+            "sigma_obs_kms": sigma_star,
+            "M_BH_expected_Msun": M_BH_exp,
+            "Delta_M_BH_dex": Delta_M_BH,
+            "f_Z": f_Z,
+            "f_feedback": f_feedback,
+            "M_CGM_Msun": M_CGM,
+            "M_metals_CGM_Msun": M_metals_CGM,
+            "Ug4_expulsion": Ug4_expulsion,
+            "alignment_pct": 80.0,
+            "primary_equations": [
+                f"σ_pred = 30·(M_*/10⁹)^{alpha_Msig:.2f} = {sigma_pred:.1f} km/s",
+                f"M_BH,exp = 10⁵·(σ/30)^4.38 = {M_BH_exp:.2e} M☉",
+                f"ΔM_BH = log₁₀(M_BH/M_BH,exp) = {Delta_M_BH:.3f} dex",
+                f"f_Z = {f_Z:.4f} (metal retention fraction)",
+                f"Over-massive (ΔM>0): low f_Z ≈ 0.89 — [SCm] expulsion",
+                f"Under-massive (ΔM<0): high f_Z ≈ 0.85 — stellar retention",
+                f"M_metals,CGM = {M_metals_CGM:.2e} M☉",
+                f"Ug4_expulsion = ρ_SCm·|ΔM|·f_fb = {Ug4_expulsion:.4e}",
+            ],
+            "available_equations": [
+                "M_star sweep: f_Z vs stellar mass",
+                "M_BH sweep: metal retention vs SMBH mass",
+                "σ sweep: f_Z vs velocity dispersion",
+            ],
+            "note": "PAPER_1124 CP4 #625. Session 222-BB-B. arXiv:2505.08861.",
+        }
+
+    def simulate(self, sweep=None, **kw):
+        results = []
+        for m in (sweep or [1e7, 1e8, 1e9, 1e10]):
+            r = self.compute({"M_star_Msun": m}); r["sweep_val"] = m; results.append(r)
+        return results
+
+    def self_update(self): pass
+    def self_expand(self): pass
+
+
+# ── CP4 #626 ── PAPER_1125 ────────────────────────────────────────────────
+class AGNFeedbackMSigmaScalingCalculator(_CP4Calculator):
+    """
+    AGN feedback and M-σ scaling in galaxy evolution (arXiv:2506.09123, 2025).
+
+    Models:
+      - Classical M-σ: M_BH ∝ σ^β with β ≈ 4.38 (Kormendy & Ho 2013)
+      - AGN feedback energy: E_AGN = ε_f · M_acc · c²
+      - Feedback-regulated σ: σ_eq ~ (f_gas · M_BH · c²·ε / M_gas)^{1/4}
+      - CGM metallicity gradient flattening by AGN-driven outflows
+      - UQFF: [SCm] expulsion in Ug4 — ΔM_BH proportional to f_feedback
+    """
+
+    C  = 2.998e8    # m/s
+    M_SUN = 1.989e30
+    SIGMA_0 = 200.0   # km/s normalization
+
+    def compute(self, dataset):
+        import math
+        # Galaxy / AGN parameters
+        M_BH       = dataset.get("M_BH_Msun", 1e8) * self.M_SUN
+        sigma_obs  = dataset.get("sigma_kms", 200.0)
+        M_bulge    = dataset.get("M_bulge_Msun", 1e11) * self.M_SUN
+        f_gas      = dataset.get("f_gas", 0.1)
+        epsilon_f  = dataset.get("epsilon_feedback", 0.05)
+        Z_grad     = dataset.get("Z_gradient_dex_kpc", -0.02)  # dex/kpc
+
+        # M-σ prediction
+        beta = dataset.get("beta_Msigma", 4.38)
+        M_BH_pred = 3.09e8 * self.M_SUN * (sigma_obs / self.SIGMA_0)**beta
+        Delta_M = math.log10((M_BH) / max(M_BH_pred, 1.0))
+
+        # AGN feedback energy
+        Mdot_acc = dataset.get("Mdot_acc_Msun_yr", 0.1) * self.M_SUN / 3.156e7
+        E_AGN = epsilon_f * Mdot_acc * self.C**2  # W (instantaneous)
+        L_Edd = 1.26e38 * (M_BH / self.M_SUN)  # W (Eddington)
+
+        # Eddington ratio
+        lambda_Edd = E_AGN / max(L_Edd, 1e20)
+
+        # Feedback-regulated equilibrium σ
+        M_gas = f_gas * M_bulge
+        sigma_eq = (f_gas * (M_BH / self.M_SUN) * self.C**2 * epsilon_f
+                    / max(M_gas, 1e20))**0.25  # m/s
+        sigma_eq_kms = sigma_eq / 1e3
+
+        # Metallicity gradient flattening
+        f_flatten = 1.0 / (1.0 + lambda_Edd * 10.0)
+        Z_grad_flat = Z_grad * f_flatten
+
+        # UQFF f_feedback and Ug4
+        f_fb = epsilon_f * lambda_Edd
+        rho_SCm = dataset.get("rho_SCm", 7.09e-37)
+        Ug4 = rho_SCm * abs(Delta_M) * f_fb
+
+        return {
+            "class": "AGNFeedbackMSigmaScalingCalculator",
+            "paper": "PAPER_1125",
+            "cp4_entry": 626,
+            "session": "222-BB-B",
+            "M_BH_Msun": M_BH / self.M_SUN,
+            "sigma_obs_kms": sigma_obs,
+            "beta_Msigma": beta,
+            "M_BH_pred_Msun": M_BH_pred / self.M_SUN,
+            "Delta_M_dex": Delta_M,
+            "E_AGN_W": E_AGN,
+            "L_Edd_W": L_Edd,
+            "lambda_Edd": lambda_Edd,
+            "sigma_eq_kms": sigma_eq_kms,
+            "Z_gradient_dex_kpc": Z_grad,
+            "Z_gradient_flattened": Z_grad_flat,
+            "f_feedback": f_fb,
+            "Ug4_SCm_expulsion": Ug4,
+            "alignment_pct": 85.0,
+            "primary_equations": [
+                f"M_BH = {M_BH/self.M_SUN:.2e} M☉ → M_BH,pred(σ={sigma_obs}) = {M_BH_pred/self.M_SUN:.2e} M☉",
+                f"ΔM = log₁₀(M_BH/M_pred) = {Delta_M:.3f} dex",
+                f"E_AGN = ε_f·Ṁ·c² = {E_AGN:.4e} W",
+                f"λ_Edd = E_AGN/L_Edd = {lambda_Edd:.4e}",
+                f"σ_eq = (f_gas·M_BH·c²·ε/M_gas)^¼ = {sigma_eq_kms:.1f} km/s",
+                f"∇Z = {Z_grad:.3f} → {Z_grad_flat:.3f} dex/kpc (AGN flattening)",
+                f"f_feedback = ε_f·λ_Edd = {f_fb:.6e}",
+                f"Ug4 = ρ_SCm·|ΔM|·f_fb = {Ug4:.6e} ([SCm] expulsion)",
+            ],
+            "available_equations": [
+                "σ sweep: M_BH-σ relation across 50-350 km/s",
+                "ε_f sweep: feedback energy vs efficiency",
+                "λ_Edd sweep: metallicity gradient flattening vs Eddington ratio",
+            ],
+            "note": "PAPER_1125 CP4 #626. Session 222-BB-B. arXiv:2506.09123.",
+        }
+
+    def simulate(self, sweep=None, **kw):
+        results = []
+        for s in (sweep or [50.0, 100.0, 150.0, 200.0, 300.0]):
+            r = self.compute({"sigma_kms": s}); r["sweep_val"] = s; results.append(r)
+        return results
+
+    def self_update(self): pass
+    def self_expand(self): pass
+
+
+# ── Session 222-BB-B class list ───────────────────────────────────────────
+
+_SESSION_222BB_B_CLASSES = [
+    'HiggsProductionDecayModeCalculator',                            # PAPER_1120 #621
+    'InterstellarShockPrestellarCollapseCalculator',                  # PAPER_1121 #622
+    'BowShockISMChemistryCalculator',                                # PAPER_1122 #623
+    'H2OMaserJShockEmissionCalculator',                              # PAPER_1123 #624
+    'CGMDwarfGalaxyMetalRetentionCalculator',                        # PAPER_1124 #625
+    'AGNFeedbackMSigmaScalingCalculator',                            # PAPER_1125 #626
+]
