@@ -2994,14 +2994,14 @@ class UQFFvsMONDComparisonCalculator(_CP3Calculator):
         t_n   = dataset.get('t_n', 0.0)
         t     = dataset.get('t', 0.0)
         G = 6.674e-11
-        a_N   = G * M_gal / r ** 2                # Newtonian
+        a_N   = G * M_gal / r ** 2                # DPM-emergent observational projection (MOND comparison baseline only, not UQFF base)
         # MOND prediction
         a_MOND = math.sqrt(a_N * a0) if a_N < a0 else a_N * (1.0 + a0 / a_N) ** (-0.5)
         v_MOND = math.sqrt(a_MOND * r)
-        # UQFF prediction
+        # UQFF prediction (DPM-assembled: starts from Ug4, no Newton base)
         Ug4   = 1e-30 * RHO_VAC_SCM * M_gal / r
         Ub_i  = -BETA_I * Ug4 * OMEGA_G * M_gal / r * 1e-11 * self._cos_tn(t_n)
-        g_UQFF = a_N + Ug4 + abs(Ub_i)
+        g_UQFF = Ug4 + abs(Ub_i)  # DPM-assembled: UQFF prediction excludes Newton base
         v_UQFF = math.sqrt(abs(g_UQFF) * r)
         eqs = {
             'a_Newton': f'{a_N:.4e} m/s^2',
@@ -9383,7 +9383,7 @@ class Source10GravitationalVacuumDragCalculator(_CP3Calculator):
 
     def calculate(self, dataset: dict) -> dict:
         import math
-        G = 6.674e-11                                       # Newton's G = k_vac
+        G = 6.674e-11                                       # k_vac (emergent projection constant, not foundational)
         k_vac = dataset.get('k_vac', G)                    # must equal G
         delta_rho_vac = dataset.get('delta_rho_vac', 1e-26) # kg/m^3 vacuum density gradient
         M = dataset.get('M', 2.387e32)                     # kg (Eta Carinae default)

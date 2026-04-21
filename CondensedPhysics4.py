@@ -10992,7 +10992,7 @@ class BSFGGeodesicMetricCompatibilityCalculator(_CP4Calculator):
         dt_dlam = E_geo / A00
         aether_accel = -G_r00 * dt_dlam ** 2
 
-        # Newtonian comparison
+        # DPM-emergent comparison (g_dpm via dpm_emergent_ug1; Newton is downstream observational projection)
         g_dpm = dpm_emergent_ug1(Ms, r)
 
         # UQFF fifth-force: extra radial acceleration from Aether geodesic correction
@@ -41574,7 +41574,7 @@ class THzHoleResonanceFormulaCalculator(object):
 
         # ── Ug1: UQFF_g + SM_g ─────────────────────────────────────
         UQFF_g = 1.5 * mu_j / r_j * G_NEWTON * M / (r ** 2)  # k1·mu·grad(M/r)
-        SM_g = G_NEWTON * M / (r ** 2)                         # Newtonian
+        SM_g = G_NEWTON * M / (r ** 2)                         # DPM-emergent observational projection (SM reference form)
         Ug1_total = UQFF_g + SM_g
 
         # ── SCm exponent: superconductive suppression ───────────────
