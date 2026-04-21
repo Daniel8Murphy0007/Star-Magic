@@ -7253,6 +7253,150 @@ private slots:
             plot->replot();
         }
     }
+    void fitDataFromCSV() {
+        // Load CSV file and fit polynomial model using least-squares (Eigen ColPivHouseholderQR)
+        QString fileName = QFileDialog::getOpenFileName(this, "Load CSV Data", "", "CSV Files (*.csv);;All Files (*)");
+        if (fileName.isEmpty()) return;
+
+        QFile file(fileName);
+        if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+            QMessageBox::warning(this, "File Error", "Could not open file: " + fileName);
+            return;
+        }
+
+        // Parse CSV — expect two columns: x, y
+        QVector<double> xData, yData;
+        QTextStream in(&file);
+        int lineNum = 0;
+        while (!in.atEnd()) {
+            QString line = in.readLine().trimmed();
+            lineNum++;
+            if (line.isEmpty() || line.startsWith("#") || line.startsWith("//")) continue;
+            // Skip header if first line contains non-numeric data
+            if (lineNum == 1 && !line[0].isDigit() && line[0] != '-' && line[0] != '+') continue;
+            QStringList parts = line.split(QRegularExpression("[,\\t;\\s]+"));
+            if (parts.size() >= 2) {
+                bool okX, okY;
+                double x = parts[0].toDouble(&okX);
+                double y = parts[1].toDouble(&okY);
+                if (okX && okY && std::isfinite(x) && std::isfinite(y)) {
+                    xData.append(x);
+                    yData.append(y);
+                }
+            }
+        }
+        file.close();
+
+        if (xData.size() < 2) {
+            QMessageBox::warning(this, "Data Error", "Need at least 2 valid data points. Found: " + QString::number(xData.size()));
+            return;
+        }
+
+        // Ask user for polynomial degree
+        bool ok;
+        int degree = QInputDialog::getInt(this, "Fit Degree", "Polynomial degree (1=linear, 2=quadratic, ...):", 
+                                           1, 1, std::min(10, (int)xData.size() - 1), 1, &ok);
+        if (!ok) return;
+
+        int n = xData.size();
+        int cols = degree + 1;
+
+        // Build Vandermonde matrix A and vector b using Eigen
+        Eigen::MatrixXd A(n, cols);
+        Eigen::VectorXd b(n);
+        for (int i = 0; i < n; ++i) {
+            b(i) = yData[i];
+            double xp = 1.0;
+            for (int j = 0; j < cols; ++j) {
+                A(i, j) = xp;
+                xp *= xData[i];
+            }
+        }
+
+        // Solve using ColPivHouseholderQR for numerical stability
+        Eigen::VectorXd coeffs = A.colPivHouseholderQr().solve(b);
+
+        // Compute residuals and R-squared
+        Eigen::VectorXd fitted = A * coeffs;
+        Eigen::VectorXd residuals = b - fitted;
+        double ss_res = residuals.squaredNorm();
+        double y_mean = b.mean();
+        double ss_tot = (b.array() - y_mean).matrix().squaredNorm();
+        double r_squared = (ss_tot > 1e-15) ? (1.0 - ss_res / ss_tot) : 0.0;
+
+        // Build equation string
+        QString eqStr = "y = ";
+        for (int j = 0; j < cols; ++j) {
+            if (j > 0 && coeffs(j) >= 0) eqStr += "+ ";
+            eqStr += QString::number(coeffs(j), 'g', 6);
+            if (j == 1) eqStr += "x ";
+            else if (j > 1) eqStr += "x^" + QString::number(j) + " ";
+            else eqStr += " ";
+        }
+
+        // Build LaTeX equation
+        QString latexEq = "y = ";
+        for (int j = 0; j < cols; ++j) {
+            if (j > 0 && coeffs(j) >= 0) latexEq += "+ ";
+            latexEq += QString::number(coeffs(j), 'g', 6);
+            if (j == 1) latexEq += "x ";
+            else if (j > 1) latexEq += "x^{" + QString::number(j) + "} ";
+            else latexEq += " ";
+        }
+
+        QString html = "<h3>CSV Data Fit Results</h3>";
+        html += "<p>Data points: " + QString::number(n) + "</p>";
+        html += "<p>Polynomial degree: " + QString::number(degree) + "</p>";
+        html += "<p>$$ " + latexEq + "$$</p>";
+        html += "<p>R² = " + QString::number(r_squared, 'f', 6) + "</p>";
+        html += "<p>RMS residual: " + QString::number(std::sqrt(ss_res / n), 'g', 6) + "</p>";
+        html += "<h4>Coefficients:</h4><ul>";
+        for (int j = 0; j < cols; ++j) {
+            html += "<li>a<sub>" + QString::number(j) + "</sub> = " + QString::number(coeffs(j), 'g', 10) + "</li>";
+        }
+        html += "</ul>";
+
+        lastHtml = html;
+        output->setHtml(getMathJaxHtml(html));
+        lastSpoken = "Fit complete. " + eqStr + " with R squared " + QString::number(r_squared, 'f', 4);
+
+        // Plot data points and fit curve
+        plot->clearGraphs();
+
+        // Scatter plot of raw data
+        plot->addGraph();
+        plot->graph(0)->setData(xData, yData);
+        plot->graph(0)->setLineStyle(QCPGraph::lsNone);
+        plot->graph(0)->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssCircle, Qt::blue, 6));
+        plot->graph(0)->setName("Data");
+
+        // Fit curve (smooth)
+        double xMin = *std::min_element(xData.begin(), xData.end());
+        double xMax = *std::max_element(xData.begin(), xData.end());
+        double margin = (xMax - xMin) * 0.05;
+        QVector<double> xFit, yFit;
+        int fitPoints = 200;
+        for (int i = 0; i < fitPoints; ++i) {
+            double x = (xMin - margin) + i * (xMax - xMin + 2 * margin) / (fitPoints - 1);
+            double y = 0.0;
+            double xp = 1.0;
+            for (int j = 0; j < cols; ++j) {
+                y += coeffs(j) * xp;
+                xp *= x;
+            }
+            xFit.append(x);
+            yFit.append(y);
+        }
+        plot->addGraph();
+        plot->graph(1)->setData(xFit, yFit);
+        plot->graph(1)->setPen(QPen(Qt::red, 2));
+        plot->graph(1)->setName("Fit");
+
+        plot->xAxis->setLabel("x");
+        plot->yAxis->setLabel("y");
+        plot->rescaleAxes();
+        plot->replot();
+    }
     void forecastSimulation() {
         // Assume time-series from simulation data
         // Use Torch LSTM for forecast
@@ -73270,11 +73414,14 @@ compute_Ug4(double t, double tn, double rho_v, double C_concentration, double Mb
 
 compute_Um(const CelestialBody& body, double t, double tn, double rj, double gamma, double rho_A, double kappa, double num_strings, double phi_hat) {
 			if (rj <= 0.0) throw std::runtime_error("Invalid rj value");
+            constexpr double f_Heaviside = 0.01;
+            constexpr double f_quasi = 0.01;
 			double Ereact = compute_Ereact(t, body.SCm_density, v_SCm, rho_A, kappa);
 			double mu_j = compute_mu_j(t, body.omega_c, body.Rs);
 			double decay = 1.0 - std::exp(-gamma * t * std::cos(PI * tn));
 			double single = mu_j / rj * decay * phi_hat;
-			return single * num_strings * body.PSCm * Ereact;
+            return single * num_strings * body.PSCm * Ereact *
+                   (1.0 + 1.0e13 * f_Heaviside) * (1.0 + f_quasi);
 		}
 
 compute_Ubi(double Ugi, double beta_i, double Omega_g, double Mbh, double dg, double epsilon_sw, double rho_sw, double UUA, double tn) {

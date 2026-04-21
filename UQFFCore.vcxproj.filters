@@ -1,6 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="18.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\UQFFCore_autogen\mocs_compilation_Debug.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\SystemCatalogue.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -23,6 +26,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\AstroSystemsUQFFModule.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\AstrophysicalTransientsUQFFModule.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\BSMPhysicsUQFFModule.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\BackgroundAetherModule.cpp">
@@ -104,6 +113,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\InertiaUQFFModule.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\InformationParadoxUQFFModule.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\J1610UQFFModule.cpp">
@@ -316,6 +328,15 @@
     <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\UQFFBuoyancyModule157.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\UQFFBuoyancySNRModule.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\UQFFCalculationsModule.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\UQFFCassiniBuoyancyModule.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\UQFFCompressedResonanceModule.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -325,10 +346,22 @@
     <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\UQFFCoreModule.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\UQFFEightAstroSystemsModule.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\UQFFModule5.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\UQFFMultiAstroSystemsModule.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\UQFFNebulaTriadicModule.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\UQFFNineteenAstroSystemsModule.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\UQFFValidationBatch23Module.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\UaVacuumDensityModule.cpp">
@@ -361,7 +394,19 @@
     <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\VelaPulsarUQFFModule.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\WolframFieldUnityModule.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\Core\Modules\YoungStarsOutflowsUQFFModule.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\UQFFCore_autogen\mocs_compilation_Release.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\UQFFCore_autogen\mocs_compilation_MinSizeRel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\UQFFCore_autogen\mocs_compilation_RelWithDebInfo.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -372,6 +417,9 @@
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="C:\Users\tmsjd\source\repos\Daniel8Murphy0007\Star-Magic\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Natvis Include="C:\vcpkg\installed\x64-windows\share\nlohmann_json\nlohmann_json.natvis" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">

@@ -1,0 +1,2021 @@
+/****************************************************************************
+** Meta object code from reading C++ file 'source2.cpp'
+**
+** Created by: The Qt Meta Object Compiler version 69 (Qt 6.10.0)
+**
+** WARNING! All changes made in this file will be lost!
+*****************************************************************************/
+
+#include <QtCore/qmetatype.h>
+
+#include <QtCore/qtmochelpers.h>
+
+#include <memory>
+
+
+#include <QtCore/qxptype_traits.h>
+#if !defined(Q_MOC_OUTPUT_REVISION)
+#error "The header file 'source2.cpp' doesn't include <QObject>."
+#elif Q_MOC_OUTPUT_REVISION != 69
+#error "This file was generated using the moc from 6.10.0. It"
+#error "cannot be used with the include files from this version of Qt."
+#error "(The moc has changed too much.)"
+#endif
+
+#ifndef Q_CONSTINIT
+#define Q_CONSTINIT
+#endif
+
+QT_WARNING_PUSH
+QT_WARNING_DISABLE_DEPRECATED
+QT_WARNING_DISABLE_GCC("-Wuseless-cast")
+namespace {
+struct qt_meta_tag_ZN15AutoLinkUpdaterE_t {};
+} // unnamed namespace
+
+template <> constexpr inline auto AutoLinkUpdater::qt_create_metaobjectdata<qt_meta_tag_ZN15AutoLinkUpdaterE_t>()
+{
+    namespace QMC = QtMocConstants;
+    QtMocHelpers::StringRefStorage qt_stringData {
+        "AutoLinkUpdater",
+        "statusChanged",
+        "",
+        "LinkStatus",
+        "newStatus",
+        "linkRestored",
+        "url",
+        "linkFailed",
+        "status",
+        "checkLink",
+        "handleResponse",
+        "QNetworkReply*",
+        "reply",
+        "handleRetry",
+        "isTimeout",
+        "attemptRetry"
+    };
+
+    QtMocHelpers::UintData qt_methods {
+        // Signal 'statusChanged'
+        QtMocHelpers::SignalData<void(LinkStatus)>(1, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { 0x80000000 | 3, 4 },
+        }}),
+        // Signal 'linkRestored'
+        QtMocHelpers::SignalData<void(const QString &)>(5, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { QMetaType::QString, 6 },
+        }}),
+        // Signal 'linkFailed'
+        QtMocHelpers::SignalData<void(const QString &, LinkStatus)>(7, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { QMetaType::QString, 6 }, { 0x80000000 | 3, 8 },
+        }}),
+        // Slot 'checkLink'
+        QtMocHelpers::SlotData<void()>(9, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'handleResponse'
+        QtMocHelpers::SlotData<void(QNetworkReply *)>(10, 2, QMC::AccessPrivate, QMetaType::Void, {{
+            { 0x80000000 | 11, 12 },
+        }}),
+        // Slot 'handleRetry'
+        QtMocHelpers::SlotData<void(bool)>(13, 2, QMC::AccessPrivate, QMetaType::Void, {{
+            { QMetaType::Bool, 14 },
+        }}),
+        // Slot 'attemptRetry'
+        QtMocHelpers::SlotData<void()>(15, 2, QMC::AccessPrivate, QMetaType::Void),
+    };
+    QtMocHelpers::UintData qt_properties {
+    };
+    QtMocHelpers::UintData qt_enums {
+    };
+    return QtMocHelpers::metaObjectData<AutoLinkUpdater, qt_meta_tag_ZN15AutoLinkUpdaterE_t>(QMC::MetaObjectFlag{}, qt_stringData,
+            qt_methods, qt_properties, qt_enums);
+}
+Q_CONSTINIT const QMetaObject AutoLinkUpdater::staticMetaObject = { {
+    QMetaObject::SuperData::link<QObject::staticMetaObject>(),
+    qt_staticMetaObjectStaticContent<qt_meta_tag_ZN15AutoLinkUpdaterE_t>.stringdata,
+    qt_staticMetaObjectStaticContent<qt_meta_tag_ZN15AutoLinkUpdaterE_t>.data,
+    qt_static_metacall,
+    nullptr,
+    qt_staticMetaObjectRelocatingContent<qt_meta_tag_ZN15AutoLinkUpdaterE_t>.metaTypes,
+    nullptr
+} };
+
+void AutoLinkUpdater::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+{
+    auto *_t = static_cast<AutoLinkUpdater *>(_o);
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        switch (_id) {
+        case 0: _t->statusChanged((*reinterpret_cast<std::add_pointer_t<LinkStatus>>(_a[1]))); break;
+        case 1: _t->linkRestored((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1]))); break;
+        case 2: _t->linkFailed((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<LinkStatus>>(_a[2]))); break;
+        case 3: _t->checkLink(); break;
+        case 4: _t->handleResponse((*reinterpret_cast<std::add_pointer_t<QNetworkReply*>>(_a[1]))); break;
+        case 5: _t->handleRetry((*reinterpret_cast<std::add_pointer_t<bool>>(_a[1]))); break;
+        case 6: _t->attemptRetry(); break;
+        default: ;
+        }
+    }
+    if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
+        switch (_id) {
+        default: *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType(); break;
+        case 4:
+            switch (*reinterpret_cast<int*>(_a[1])) {
+            default: *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType(); break;
+            case 0:
+                *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType::fromType< QNetworkReply* >(); break;
+            }
+            break;
+        }
+    }
+    if (_c == QMetaObject::IndexOfMethod) {
+        if (QtMocHelpers::indexOfMethod<void (AutoLinkUpdater::*)(LinkStatus )>(_a, &AutoLinkUpdater::statusChanged, 0))
+            return;
+        if (QtMocHelpers::indexOfMethod<void (AutoLinkUpdater::*)(const QString & )>(_a, &AutoLinkUpdater::linkRestored, 1))
+            return;
+        if (QtMocHelpers::indexOfMethod<void (AutoLinkUpdater::*)(const QString & , LinkStatus )>(_a, &AutoLinkUpdater::linkFailed, 2))
+            return;
+    }
+}
+
+const QMetaObject *AutoLinkUpdater::metaObject() const
+{
+    return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
+}
+
+void *AutoLinkUpdater::qt_metacast(const char *_clname)
+{
+    if (!_clname) return nullptr;
+    if (!strcmp(_clname, qt_staticMetaObjectStaticContent<qt_meta_tag_ZN15AutoLinkUpdaterE_t>.strings))
+        return static_cast<void*>(this);
+    return QObject::qt_metacast(_clname);
+}
+
+int AutoLinkUpdater::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+{
+    _id = QObject::qt_metacall(_c, _id, _a);
+    if (_id < 0)
+        return _id;
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        if (_id < 7)
+            qt_static_metacall(this, _c, _id, _a);
+        _id -= 7;
+    }
+    if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
+        if (_id < 7)
+            qt_static_metacall(this, _c, _id, _a);
+        _id -= 7;
+    }
+    return _id;
+}
+
+// SIGNAL 0
+void AutoLinkUpdater::statusChanged(LinkStatus _t1)
+{
+    QMetaObject::activate<void>(this, &staticMetaObject, 0, nullptr, _t1);
+}
+
+// SIGNAL 1
+void AutoLinkUpdater::linkRestored(const QString & _t1)
+{
+    QMetaObject::activate<void>(this, &staticMetaObject, 1, nullptr, _t1);
+}
+
+// SIGNAL 2
+void AutoLinkUpdater::linkFailed(const QString & _t1, LinkStatus _t2)
+{
+    QMetaObject::activate<void>(this, &staticMetaObject, 2, nullptr, _t1, _t2);
+}
+namespace {
+struct qt_meta_tag_ZN12CalculatorUI15MathHighlighterE_t {};
+} // unnamed namespace
+
+template <> constexpr inline auto CalculatorUI::MathHighlighter::qt_create_metaobjectdata<qt_meta_tag_ZN12CalculatorUI15MathHighlighterE_t>()
+{
+    namespace QMC = QtMocConstants;
+    QtMocHelpers::StringRefStorage qt_stringData {
+        "CalculatorUI::MathHighlighter"
+    };
+
+    QtMocHelpers::UintData qt_methods {
+    };
+    QtMocHelpers::UintData qt_properties {
+    };
+    QtMocHelpers::UintData qt_enums {
+    };
+    return QtMocHelpers::metaObjectData<MathHighlighter, qt_meta_tag_ZN12CalculatorUI15MathHighlighterE_t>(QMC::MetaObjectFlag{}, qt_stringData,
+            qt_methods, qt_properties, qt_enums);
+}
+Q_CONSTINIT const QMetaObject CalculatorUI::MathHighlighter::staticMetaObject = { {
+    QMetaObject::SuperData::link<QSyntaxHighlighter::staticMetaObject>(),
+    qt_staticMetaObjectStaticContent<qt_meta_tag_ZN12CalculatorUI15MathHighlighterE_t>.stringdata,
+    qt_staticMetaObjectStaticContent<qt_meta_tag_ZN12CalculatorUI15MathHighlighterE_t>.data,
+    qt_static_metacall,
+    nullptr,
+    qt_staticMetaObjectRelocatingContent<qt_meta_tag_ZN12CalculatorUI15MathHighlighterE_t>.metaTypes,
+    nullptr
+} };
+
+void CalculatorUI::MathHighlighter::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+{
+    auto *_t = static_cast<MathHighlighter *>(_o);
+    (void)_t;
+    (void)_c;
+    (void)_id;
+    (void)_a;
+}
+
+const QMetaObject *CalculatorUI::MathHighlighter::metaObject() const
+{
+    return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
+}
+
+void *CalculatorUI::MathHighlighter::qt_metacast(const char *_clname)
+{
+    if (!_clname) return nullptr;
+    if (!strcmp(_clname, qt_staticMetaObjectStaticContent<qt_meta_tag_ZN12CalculatorUI15MathHighlighterE_t>.strings))
+        return static_cast<void*>(this);
+    return QSyntaxHighlighter::qt_metacast(_clname);
+}
+
+int CalculatorUI::MathHighlighter::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+{
+    _id = QSyntaxHighlighter::qt_metacall(_c, _id, _a);
+    return _id;
+}
+namespace {
+struct qt_meta_tag_ZN12CalculatorUI15DraggableButtonE_t {};
+} // unnamed namespace
+
+template <> constexpr inline auto CalculatorUI::DraggableButton::qt_create_metaobjectdata<qt_meta_tag_ZN12CalculatorUI15DraggableButtonE_t>()
+{
+    namespace QMC = QtMocConstants;
+    QtMocHelpers::StringRefStorage qt_stringData {
+        "CalculatorUI::DraggableButton"
+    };
+
+    QtMocHelpers::UintData qt_methods {
+    };
+    QtMocHelpers::UintData qt_properties {
+    };
+    QtMocHelpers::UintData qt_enums {
+    };
+    return QtMocHelpers::metaObjectData<DraggableButton, qt_meta_tag_ZN12CalculatorUI15DraggableButtonE_t>(QMC::MetaObjectFlag{}, qt_stringData,
+            qt_methods, qt_properties, qt_enums);
+}
+Q_CONSTINIT const QMetaObject CalculatorUI::DraggableButton::staticMetaObject = { {
+    QMetaObject::SuperData::link<QPushButton::staticMetaObject>(),
+    qt_staticMetaObjectStaticContent<qt_meta_tag_ZN12CalculatorUI15DraggableButtonE_t>.stringdata,
+    qt_staticMetaObjectStaticContent<qt_meta_tag_ZN12CalculatorUI15DraggableButtonE_t>.data,
+    qt_static_metacall,
+    nullptr,
+    qt_staticMetaObjectRelocatingContent<qt_meta_tag_ZN12CalculatorUI15DraggableButtonE_t>.metaTypes,
+    nullptr
+} };
+
+void CalculatorUI::DraggableButton::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+{
+    auto *_t = static_cast<DraggableButton *>(_o);
+    (void)_t;
+    (void)_c;
+    (void)_id;
+    (void)_a;
+}
+
+const QMetaObject *CalculatorUI::DraggableButton::metaObject() const
+{
+    return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
+}
+
+void *CalculatorUI::DraggableButton::qt_metacast(const char *_clname)
+{
+    if (!_clname) return nullptr;
+    if (!strcmp(_clname, qt_staticMetaObjectStaticContent<qt_meta_tag_ZN12CalculatorUI15DraggableButtonE_t>.strings))
+        return static_cast<void*>(this);
+    return QPushButton::qt_metacast(_clname);
+}
+
+int CalculatorUI::DraggableButton::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+{
+    _id = QPushButton::qt_metacall(_c, _id, _a);
+    return _id;
+}
+namespace {
+struct qt_meta_tag_ZN12CalculatorUI20EquationSuggestModelE_t {};
+} // unnamed namespace
+
+template <> constexpr inline auto CalculatorUI::EquationSuggestModel::qt_create_metaobjectdata<qt_meta_tag_ZN12CalculatorUI20EquationSuggestModelE_t>()
+{
+    namespace QMC = QtMocConstants;
+    QtMocHelpers::StringRefStorage qt_stringData {
+        "CalculatorUI::EquationSuggestModel"
+    };
+
+    QtMocHelpers::UintData qt_methods {
+    };
+    QtMocHelpers::UintData qt_properties {
+    };
+    QtMocHelpers::UintData qt_enums {
+    };
+    return QtMocHelpers::metaObjectData<EquationSuggestModel, qt_meta_tag_ZN12CalculatorUI20EquationSuggestModelE_t>(QMC::MetaObjectFlag{}, qt_stringData,
+            qt_methods, qt_properties, qt_enums);
+}
+Q_CONSTINIT const QMetaObject CalculatorUI::EquationSuggestModel::staticMetaObject = { {
+    QMetaObject::SuperData::link<QAbstractListModel::staticMetaObject>(),
+    qt_staticMetaObjectStaticContent<qt_meta_tag_ZN12CalculatorUI20EquationSuggestModelE_t>.stringdata,
+    qt_staticMetaObjectStaticContent<qt_meta_tag_ZN12CalculatorUI20EquationSuggestModelE_t>.data,
+    qt_static_metacall,
+    nullptr,
+    qt_staticMetaObjectRelocatingContent<qt_meta_tag_ZN12CalculatorUI20EquationSuggestModelE_t>.metaTypes,
+    nullptr
+} };
+
+void CalculatorUI::EquationSuggestModel::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+{
+    auto *_t = static_cast<EquationSuggestModel *>(_o);
+    (void)_t;
+    (void)_c;
+    (void)_id;
+    (void)_a;
+}
+
+const QMetaObject *CalculatorUI::EquationSuggestModel::metaObject() const
+{
+    return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
+}
+
+void *CalculatorUI::EquationSuggestModel::qt_metacast(const char *_clname)
+{
+    if (!_clname) return nullptr;
+    if (!strcmp(_clname, qt_staticMetaObjectStaticContent<qt_meta_tag_ZN12CalculatorUI20EquationSuggestModelE_t>.strings))
+        return static_cast<void*>(this);
+    return QAbstractListModel::qt_metacast(_clname);
+}
+
+int CalculatorUI::EquationSuggestModel::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+{
+    _id = QAbstractListModel::qt_metacall(_c, _id, _a);
+    return _id;
+}
+namespace {
+struct qt_meta_tag_ZN15UserLoginDialogE_t {};
+} // unnamed namespace
+
+template <> constexpr inline auto UserLoginDialog::qt_create_metaobjectdata<qt_meta_tag_ZN15UserLoginDialogE_t>()
+{
+    namespace QMC = QtMocConstants;
+    QtMocHelpers::StringRefStorage qt_stringData {
+        "UserLoginDialog",
+        "loginSuccessful",
+        "",
+        "username",
+        "loginFailed",
+        "reason",
+        "attemptLogin",
+        "createAccount",
+        "forgotPassword"
+    };
+
+    QtMocHelpers::UintData qt_methods {
+        // Signal 'loginSuccessful'
+        QtMocHelpers::SignalData<void(const QString &)>(1, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { QMetaType::QString, 3 },
+        }}),
+        // Signal 'loginFailed'
+        QtMocHelpers::SignalData<void(const QString &)>(4, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { QMetaType::QString, 5 },
+        }}),
+        // Slot 'attemptLogin'
+        QtMocHelpers::SlotData<void()>(6, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'createAccount'
+        QtMocHelpers::SlotData<void()>(7, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'forgotPassword'
+        QtMocHelpers::SlotData<void()>(8, 2, QMC::AccessPrivate, QMetaType::Void),
+    };
+    QtMocHelpers::UintData qt_properties {
+    };
+    QtMocHelpers::UintData qt_enums {
+    };
+    return QtMocHelpers::metaObjectData<UserLoginDialog, qt_meta_tag_ZN15UserLoginDialogE_t>(QMC::MetaObjectFlag{}, qt_stringData,
+            qt_methods, qt_properties, qt_enums);
+}
+Q_CONSTINIT const QMetaObject UserLoginDialog::staticMetaObject = { {
+    QMetaObject::SuperData::link<QDialog::staticMetaObject>(),
+    qt_staticMetaObjectStaticContent<qt_meta_tag_ZN15UserLoginDialogE_t>.stringdata,
+    qt_staticMetaObjectStaticContent<qt_meta_tag_ZN15UserLoginDialogE_t>.data,
+    qt_static_metacall,
+    nullptr,
+    qt_staticMetaObjectRelocatingContent<qt_meta_tag_ZN15UserLoginDialogE_t>.metaTypes,
+    nullptr
+} };
+
+void UserLoginDialog::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+{
+    auto *_t = static_cast<UserLoginDialog *>(_o);
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        switch (_id) {
+        case 0: _t->loginSuccessful((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1]))); break;
+        case 1: _t->loginFailed((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1]))); break;
+        case 2: _t->attemptLogin(); break;
+        case 3: _t->createAccount(); break;
+        case 4: _t->forgotPassword(); break;
+        default: ;
+        }
+    }
+    if (_c == QMetaObject::IndexOfMethod) {
+        if (QtMocHelpers::indexOfMethod<void (UserLoginDialog::*)(const QString & )>(_a, &UserLoginDialog::loginSuccessful, 0))
+            return;
+        if (QtMocHelpers::indexOfMethod<void (UserLoginDialog::*)(const QString & )>(_a, &UserLoginDialog::loginFailed, 1))
+            return;
+    }
+}
+
+const QMetaObject *UserLoginDialog::metaObject() const
+{
+    return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
+}
+
+void *UserLoginDialog::qt_metacast(const char *_clname)
+{
+    if (!_clname) return nullptr;
+    if (!strcmp(_clname, qt_staticMetaObjectStaticContent<qt_meta_tag_ZN15UserLoginDialogE_t>.strings))
+        return static_cast<void*>(this);
+    return QDialog::qt_metacast(_clname);
+}
+
+int UserLoginDialog::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+{
+    _id = QDialog::qt_metacall(_c, _id, _a);
+    if (_id < 0)
+        return _id;
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        if (_id < 5)
+            qt_static_metacall(this, _c, _id, _a);
+        _id -= 5;
+    }
+    if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
+        if (_id < 5)
+            *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
+        _id -= 5;
+    }
+    return _id;
+}
+
+// SIGNAL 0
+void UserLoginDialog::loginSuccessful(const QString & _t1)
+{
+    QMetaObject::activate<void>(this, &staticMetaObject, 0, nullptr, _t1);
+}
+
+// SIGNAL 1
+void UserLoginDialog::loginFailed(const QString & _t1)
+{
+    QMetaObject::activate<void>(this, &staticMetaObject, 1, nullptr, _t1);
+}
+namespace {
+struct qt_meta_tag_ZN21MultiSummarizerToggleE_t {};
+} // unnamed namespace
+
+template <> constexpr inline auto MultiSummarizerToggle::qt_create_metaobjectdata<qt_meta_tag_ZN21MultiSummarizerToggleE_t>()
+{
+    namespace QMC = QtMocConstants;
+    QtMocHelpers::StringRefStorage qt_stringData {
+        "MultiSummarizerToggle",
+        "configChanged",
+        "",
+        "updateSideBySide"
+    };
+
+    QtMocHelpers::UintData qt_methods {
+        // Signal 'configChanged'
+        QtMocHelpers::SignalData<void()>(1, 2, QMC::AccessPublic, QMetaType::Void),
+        // Slot 'updateSideBySide'
+        QtMocHelpers::SlotData<void()>(3, 2, QMC::AccessPrivate, QMetaType::Void),
+    };
+    QtMocHelpers::UintData qt_properties {
+    };
+    QtMocHelpers::UintData qt_enums {
+    };
+    return QtMocHelpers::metaObjectData<MultiSummarizerToggle, qt_meta_tag_ZN21MultiSummarizerToggleE_t>(QMC::MetaObjectFlag{}, qt_stringData,
+            qt_methods, qt_properties, qt_enums);
+}
+Q_CONSTINIT const QMetaObject MultiSummarizerToggle::staticMetaObject = { {
+    QMetaObject::SuperData::link<QWidget::staticMetaObject>(),
+    qt_staticMetaObjectStaticContent<qt_meta_tag_ZN21MultiSummarizerToggleE_t>.stringdata,
+    qt_staticMetaObjectStaticContent<qt_meta_tag_ZN21MultiSummarizerToggleE_t>.data,
+    qt_static_metacall,
+    nullptr,
+    qt_staticMetaObjectRelocatingContent<qt_meta_tag_ZN21MultiSummarizerToggleE_t>.metaTypes,
+    nullptr
+} };
+
+void MultiSummarizerToggle::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+{
+    auto *_t = static_cast<MultiSummarizerToggle *>(_o);
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        switch (_id) {
+        case 0: _t->configChanged(); break;
+        case 1: _t->updateSideBySide(); break;
+        default: ;
+        }
+    }
+    if (_c == QMetaObject::IndexOfMethod) {
+        if (QtMocHelpers::indexOfMethod<void (MultiSummarizerToggle::*)()>(_a, &MultiSummarizerToggle::configChanged, 0))
+            return;
+    }
+}
+
+const QMetaObject *MultiSummarizerToggle::metaObject() const
+{
+    return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
+}
+
+void *MultiSummarizerToggle::qt_metacast(const char *_clname)
+{
+    if (!_clname) return nullptr;
+    if (!strcmp(_clname, qt_staticMetaObjectStaticContent<qt_meta_tag_ZN21MultiSummarizerToggleE_t>.strings))
+        return static_cast<void*>(this);
+    return QWidget::qt_metacast(_clname);
+}
+
+int MultiSummarizerToggle::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+{
+    _id = QWidget::qt_metacall(_c, _id, _a);
+    if (_id < 0)
+        return _id;
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        if (_id < 2)
+            qt_static_metacall(this, _c, _id, _a);
+        _id -= 2;
+    }
+    if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
+        if (_id < 2)
+            *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
+        _id -= 2;
+    }
+    return _id;
+}
+
+// SIGNAL 0
+void MultiSummarizerToggle::configChanged()
+{
+    QMetaObject::activate(this, &staticMetaObject, 0, nullptr);
+}
+namespace {
+struct qt_meta_tag_ZN15FontSizeControlE_t {};
+} // unnamed namespace
+
+template <> constexpr inline auto FontSizeControl::qt_create_metaobjectdata<qt_meta_tag_ZN15FontSizeControlE_t>()
+{
+    namespace QMC = QtMocConstants;
+    QtMocHelpers::StringRefStorage qt_stringData {
+        "FontSizeControl",
+        "fontSizeChanged",
+        "",
+        "size",
+        "applyFontSize"
+    };
+
+    QtMocHelpers::UintData qt_methods {
+        // Signal 'fontSizeChanged'
+        QtMocHelpers::SignalData<void(int)>(1, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { QMetaType::Int, 3 },
+        }}),
+        // Slot 'applyFontSize'
+        QtMocHelpers::SlotData<void()>(4, 2, QMC::AccessPrivate, QMetaType::Void),
+    };
+    QtMocHelpers::UintData qt_properties {
+    };
+    QtMocHelpers::UintData qt_enums {
+    };
+    return QtMocHelpers::metaObjectData<FontSizeControl, qt_meta_tag_ZN15FontSizeControlE_t>(QMC::MetaObjectFlag{}, qt_stringData,
+            qt_methods, qt_properties, qt_enums);
+}
+Q_CONSTINIT const QMetaObject FontSizeControl::staticMetaObject = { {
+    QMetaObject::SuperData::link<QWidget::staticMetaObject>(),
+    qt_staticMetaObjectStaticContent<qt_meta_tag_ZN15FontSizeControlE_t>.stringdata,
+    qt_staticMetaObjectStaticContent<qt_meta_tag_ZN15FontSizeControlE_t>.data,
+    qt_static_metacall,
+    nullptr,
+    qt_staticMetaObjectRelocatingContent<qt_meta_tag_ZN15FontSizeControlE_t>.metaTypes,
+    nullptr
+} };
+
+void FontSizeControl::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+{
+    auto *_t = static_cast<FontSizeControl *>(_o);
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        switch (_id) {
+        case 0: _t->fontSizeChanged((*reinterpret_cast<std::add_pointer_t<int>>(_a[1]))); break;
+        case 1: _t->applyFontSize(); break;
+        default: ;
+        }
+    }
+    if (_c == QMetaObject::IndexOfMethod) {
+        if (QtMocHelpers::indexOfMethod<void (FontSizeControl::*)(int )>(_a, &FontSizeControl::fontSizeChanged, 0))
+            return;
+    }
+}
+
+const QMetaObject *FontSizeControl::metaObject() const
+{
+    return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
+}
+
+void *FontSizeControl::qt_metacast(const char *_clname)
+{
+    if (!_clname) return nullptr;
+    if (!strcmp(_clname, qt_staticMetaObjectStaticContent<qt_meta_tag_ZN15FontSizeControlE_t>.strings))
+        return static_cast<void*>(this);
+    return QWidget::qt_metacast(_clname);
+}
+
+int FontSizeControl::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+{
+    _id = QWidget::qt_metacall(_c, _id, _a);
+    if (_id < 0)
+        return _id;
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        if (_id < 2)
+            qt_static_metacall(this, _c, _id, _a);
+        _id -= 2;
+    }
+    if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
+        if (_id < 2)
+            *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
+        _id -= 2;
+    }
+    return _id;
+}
+
+// SIGNAL 0
+void FontSizeControl::fontSizeChanged(int _t1)
+{
+    QMetaObject::activate<void>(this, &staticMetaObject, 0, nullptr, _t1);
+}
+namespace {
+struct qt_meta_tag_ZN14MathButtonMenuE_t {};
+} // unnamed namespace
+
+template <> constexpr inline auto MathButtonMenu::qt_create_metaobjectdata<qt_meta_tag_ZN14MathButtonMenuE_t>()
+{
+    namespace QMC = QtMocConstants;
+    QtMocHelpers::StringRefStorage qt_stringData {
+        "MathButtonMenu",
+        "calculatorSelected",
+        "",
+        "type"
+    };
+
+    QtMocHelpers::UintData qt_methods {
+        // Signal 'calculatorSelected'
+        QtMocHelpers::SignalData<void(int)>(1, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { QMetaType::Int, 3 },
+        }}),
+    };
+    QtMocHelpers::UintData qt_properties {
+    };
+    QtMocHelpers::UintData qt_enums {
+    };
+    return QtMocHelpers::metaObjectData<MathButtonMenu, qt_meta_tag_ZN14MathButtonMenuE_t>(QMC::MetaObjectFlag{}, qt_stringData,
+            qt_methods, qt_properties, qt_enums);
+}
+Q_CONSTINIT const QMetaObject MathButtonMenu::staticMetaObject = { {
+    QMetaObject::SuperData::link<QToolButton::staticMetaObject>(),
+    qt_staticMetaObjectStaticContent<qt_meta_tag_ZN14MathButtonMenuE_t>.stringdata,
+    qt_staticMetaObjectStaticContent<qt_meta_tag_ZN14MathButtonMenuE_t>.data,
+    qt_static_metacall,
+    nullptr,
+    qt_staticMetaObjectRelocatingContent<qt_meta_tag_ZN14MathButtonMenuE_t>.metaTypes,
+    nullptr
+} };
+
+void MathButtonMenu::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+{
+    auto *_t = static_cast<MathButtonMenu *>(_o);
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        switch (_id) {
+        case 0: _t->calculatorSelected((*reinterpret_cast<std::add_pointer_t<int>>(_a[1]))); break;
+        default: ;
+        }
+    }
+    if (_c == QMetaObject::IndexOfMethod) {
+        if (QtMocHelpers::indexOfMethod<void (MathButtonMenu::*)(int )>(_a, &MathButtonMenu::calculatorSelected, 0))
+            return;
+    }
+}
+
+const QMetaObject *MathButtonMenu::metaObject() const
+{
+    return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
+}
+
+void *MathButtonMenu::qt_metacast(const char *_clname)
+{
+    if (!_clname) return nullptr;
+    if (!strcmp(_clname, qt_staticMetaObjectStaticContent<qt_meta_tag_ZN14MathButtonMenuE_t>.strings))
+        return static_cast<void*>(this);
+    return QToolButton::qt_metacast(_clname);
+}
+
+int MathButtonMenu::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+{
+    _id = QToolButton::qt_metacall(_c, _id, _a);
+    if (_id < 0)
+        return _id;
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        if (_id < 1)
+            qt_static_metacall(this, _c, _id, _a);
+        _id -= 1;
+    }
+    if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
+        if (_id < 1)
+            *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
+        _id -= 1;
+    }
+    return _id;
+}
+
+// SIGNAL 0
+void MathButtonMenu::calculatorSelected(int _t1)
+{
+    QMetaObject::activate<void>(this, &staticMetaObject, 0, nullptr, _t1);
+}
+namespace {
+struct qt_meta_tag_ZN16RetryLogicButtonE_t {};
+} // unnamed namespace
+
+template <> constexpr inline auto RetryLogicButton::qt_create_metaobjectdata<qt_meta_tag_ZN16RetryLogicButtonE_t>()
+{
+    namespace QMC = QtMocConstants;
+    QtMocHelpers::StringRefStorage qt_stringData {
+        "RetryLogicButton",
+        "refreshRequested",
+        "",
+        "statusRequested",
+        "refreshAllLinks",
+        "showLinkStatus",
+        "exportErrorLog"
+    };
+
+    QtMocHelpers::UintData qt_methods {
+        // Signal 'refreshRequested'
+        QtMocHelpers::SignalData<void()>(1, 2, QMC::AccessPublic, QMetaType::Void),
+        // Signal 'statusRequested'
+        QtMocHelpers::SignalData<void()>(3, 2, QMC::AccessPublic, QMetaType::Void),
+        // Slot 'refreshAllLinks'
+        QtMocHelpers::SlotData<void()>(4, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'showLinkStatus'
+        QtMocHelpers::SlotData<void()>(5, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'exportErrorLog'
+        QtMocHelpers::SlotData<void()>(6, 2, QMC::AccessPrivate, QMetaType::Void),
+    };
+    QtMocHelpers::UintData qt_properties {
+    };
+    QtMocHelpers::UintData qt_enums {
+    };
+    return QtMocHelpers::metaObjectData<RetryLogicButton, qt_meta_tag_ZN16RetryLogicButtonE_t>(QMC::MetaObjectFlag{}, qt_stringData,
+            qt_methods, qt_properties, qt_enums);
+}
+Q_CONSTINIT const QMetaObject RetryLogicButton::staticMetaObject = { {
+    QMetaObject::SuperData::link<QToolButton::staticMetaObject>(),
+    qt_staticMetaObjectStaticContent<qt_meta_tag_ZN16RetryLogicButtonE_t>.stringdata,
+    qt_staticMetaObjectStaticContent<qt_meta_tag_ZN16RetryLogicButtonE_t>.data,
+    qt_static_metacall,
+    nullptr,
+    qt_staticMetaObjectRelocatingContent<qt_meta_tag_ZN16RetryLogicButtonE_t>.metaTypes,
+    nullptr
+} };
+
+void RetryLogicButton::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+{
+    auto *_t = static_cast<RetryLogicButton *>(_o);
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        switch (_id) {
+        case 0: _t->refreshRequested(); break;
+        case 1: _t->statusRequested(); break;
+        case 2: _t->refreshAllLinks(); break;
+        case 3: _t->showLinkStatus(); break;
+        case 4: _t->exportErrorLog(); break;
+        default: ;
+        }
+    }
+    if (_c == QMetaObject::IndexOfMethod) {
+        if (QtMocHelpers::indexOfMethod<void (RetryLogicButton::*)()>(_a, &RetryLogicButton::refreshRequested, 0))
+            return;
+        if (QtMocHelpers::indexOfMethod<void (RetryLogicButton::*)()>(_a, &RetryLogicButton::statusRequested, 1))
+            return;
+    }
+}
+
+const QMetaObject *RetryLogicButton::metaObject() const
+{
+    return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
+}
+
+void *RetryLogicButton::qt_metacast(const char *_clname)
+{
+    if (!_clname) return nullptr;
+    if (!strcmp(_clname, qt_staticMetaObjectStaticContent<qt_meta_tag_ZN16RetryLogicButtonE_t>.strings))
+        return static_cast<void*>(this);
+    return QToolButton::qt_metacast(_clname);
+}
+
+int RetryLogicButton::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+{
+    _id = QToolButton::qt_metacall(_c, _id, _a);
+    if (_id < 0)
+        return _id;
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        if (_id < 5)
+            qt_static_metacall(this, _c, _id, _a);
+        _id -= 5;
+    }
+    if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
+        if (_id < 5)
+            *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
+        _id -= 5;
+    }
+    return _id;
+}
+
+// SIGNAL 0
+void RetryLogicButton::refreshRequested()
+{
+    QMetaObject::activate(this, &staticMetaObject, 0, nullptr);
+}
+
+// SIGNAL 1
+void RetryLogicButton::statusRequested()
+{
+    QMetaObject::activate(this, &staticMetaObject, 1, nullptr);
+}
+namespace {
+struct qt_meta_tag_ZN22CoAnQiVisualCalculatorE_t {};
+} // unnamed namespace
+
+template <> constexpr inline auto CoAnQiVisualCalculator::qt_create_metaobjectdata<qt_meta_tag_ZN22CoAnQiVisualCalculatorE_t>()
+{
+    namespace QMC = QtMocConstants;
+    QtMocHelpers::StringRefStorage qt_stringData {
+        "CoAnQiVisualCalculator",
+        "trackPointAdded",
+        "",
+        "x",
+        "y",
+        "z",
+        "videoLoaded",
+        "path",
+        "loadVideo",
+        "addTrackPoint",
+        "toggleOverlay",
+        "exportToPImath"
+    };
+
+    QtMocHelpers::UintData qt_methods {
+        // Signal 'trackPointAdded'
+        QtMocHelpers::SignalData<void(double, double, double)>(1, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { QMetaType::Double, 3 }, { QMetaType::Double, 4 }, { QMetaType::Double, 5 },
+        }}),
+        // Signal 'videoLoaded'
+        QtMocHelpers::SignalData<void(const QString &)>(6, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { QMetaType::QString, 7 },
+        }}),
+        // Slot 'loadVideo'
+        QtMocHelpers::SlotData<void()>(8, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'addTrackPoint'
+        QtMocHelpers::SlotData<void()>(9, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'toggleOverlay'
+        QtMocHelpers::SlotData<void()>(10, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'exportToPImath'
+        QtMocHelpers::SlotData<void()>(11, 2, QMC::AccessPrivate, QMetaType::Void),
+    };
+    QtMocHelpers::UintData qt_properties {
+    };
+    QtMocHelpers::UintData qt_enums {
+    };
+    return QtMocHelpers::metaObjectData<CoAnQiVisualCalculator, qt_meta_tag_ZN22CoAnQiVisualCalculatorE_t>(QMC::MetaObjectFlag{}, qt_stringData,
+            qt_methods, qt_properties, qt_enums);
+}
+Q_CONSTINIT const QMetaObject CoAnQiVisualCalculator::staticMetaObject = { {
+    QMetaObject::SuperData::link<QDockWidget::staticMetaObject>(),
+    qt_staticMetaObjectStaticContent<qt_meta_tag_ZN22CoAnQiVisualCalculatorE_t>.stringdata,
+    qt_staticMetaObjectStaticContent<qt_meta_tag_ZN22CoAnQiVisualCalculatorE_t>.data,
+    qt_static_metacall,
+    nullptr,
+    qt_staticMetaObjectRelocatingContent<qt_meta_tag_ZN22CoAnQiVisualCalculatorE_t>.metaTypes,
+    nullptr
+} };
+
+void CoAnQiVisualCalculator::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+{
+    auto *_t = static_cast<CoAnQiVisualCalculator *>(_o);
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        switch (_id) {
+        case 0: _t->trackPointAdded((*reinterpret_cast<std::add_pointer_t<double>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<double>>(_a[2])),(*reinterpret_cast<std::add_pointer_t<double>>(_a[3]))); break;
+        case 1: _t->videoLoaded((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1]))); break;
+        case 2: _t->loadVideo(); break;
+        case 3: _t->addTrackPoint(); break;
+        case 4: _t->toggleOverlay(); break;
+        case 5: _t->exportToPImath(); break;
+        default: ;
+        }
+    }
+    if (_c == QMetaObject::IndexOfMethod) {
+        if (QtMocHelpers::indexOfMethod<void (CoAnQiVisualCalculator::*)(double , double , double )>(_a, &CoAnQiVisualCalculator::trackPointAdded, 0))
+            return;
+        if (QtMocHelpers::indexOfMethod<void (CoAnQiVisualCalculator::*)(const QString & )>(_a, &CoAnQiVisualCalculator::videoLoaded, 1))
+            return;
+    }
+}
+
+const QMetaObject *CoAnQiVisualCalculator::metaObject() const
+{
+    return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
+}
+
+void *CoAnQiVisualCalculator::qt_metacast(const char *_clname)
+{
+    if (!_clname) return nullptr;
+    if (!strcmp(_clname, qt_staticMetaObjectStaticContent<qt_meta_tag_ZN22CoAnQiVisualCalculatorE_t>.strings))
+        return static_cast<void*>(this);
+    return QDockWidget::qt_metacast(_clname);
+}
+
+int CoAnQiVisualCalculator::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+{
+    _id = QDockWidget::qt_metacall(_c, _id, _a);
+    if (_id < 0)
+        return _id;
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        if (_id < 6)
+            qt_static_metacall(this, _c, _id, _a);
+        _id -= 6;
+    }
+    if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
+        if (_id < 6)
+            *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
+        _id -= 6;
+    }
+    return _id;
+}
+
+// SIGNAL 0
+void CoAnQiVisualCalculator::trackPointAdded(double _t1, double _t2, double _t3)
+{
+    QMetaObject::activate<void>(this, &staticMetaObject, 0, nullptr, _t1, _t2, _t3);
+}
+
+// SIGNAL 1
+void CoAnQiVisualCalculator::videoLoaded(const QString & _t1)
+{
+    QMetaObject::activate<void>(this, &staticMetaObject, 1, nullptr, _t1);
+}
+namespace {
+struct qt_meta_tag_ZN24PowerShellTerminalWidgetE_t {};
+} // unnamed namespace
+
+template <> constexpr inline auto PowerShellTerminalWidget::qt_create_metaobjectdata<qt_meta_tag_ZN24PowerShellTerminalWidgetE_t>()
+{
+    namespace QMC = QtMocConstants;
+    QtMocHelpers::StringRefStorage qt_stringData {
+        "PowerShellTerminalWidget",
+        "startCalculator",
+        "",
+        "handleStdout",
+        "handleStderr",
+        "handleProcessFinished",
+        "exitCode",
+        "QProcess::ExitStatus",
+        "exitStatus",
+        "sendCommand"
+    };
+
+    QtMocHelpers::UintData qt_methods {
+        // Slot 'startCalculator'
+        QtMocHelpers::SlotData<void()>(1, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'handleStdout'
+        QtMocHelpers::SlotData<void()>(3, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'handleStderr'
+        QtMocHelpers::SlotData<void()>(4, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'handleProcessFinished'
+        QtMocHelpers::SlotData<void(int, QProcess::ExitStatus)>(5, 2, QMC::AccessPrivate, QMetaType::Void, {{
+            { QMetaType::Int, 6 }, { 0x80000000 | 7, 8 },
+        }}),
+        // Slot 'sendCommand'
+        QtMocHelpers::SlotData<void()>(9, 2, QMC::AccessPrivate, QMetaType::Void),
+    };
+    QtMocHelpers::UintData qt_properties {
+    };
+    QtMocHelpers::UintData qt_enums {
+    };
+    return QtMocHelpers::metaObjectData<PowerShellTerminalWidget, qt_meta_tag_ZN24PowerShellTerminalWidgetE_t>(QMC::MetaObjectFlag{}, qt_stringData,
+            qt_methods, qt_properties, qt_enums);
+}
+Q_CONSTINIT const QMetaObject PowerShellTerminalWidget::staticMetaObject = { {
+    QMetaObject::SuperData::link<QWidget::staticMetaObject>(),
+    qt_staticMetaObjectStaticContent<qt_meta_tag_ZN24PowerShellTerminalWidgetE_t>.stringdata,
+    qt_staticMetaObjectStaticContent<qt_meta_tag_ZN24PowerShellTerminalWidgetE_t>.data,
+    qt_static_metacall,
+    nullptr,
+    qt_staticMetaObjectRelocatingContent<qt_meta_tag_ZN24PowerShellTerminalWidgetE_t>.metaTypes,
+    nullptr
+} };
+
+void PowerShellTerminalWidget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+{
+    auto *_t = static_cast<PowerShellTerminalWidget *>(_o);
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        switch (_id) {
+        case 0: _t->startCalculator(); break;
+        case 1: _t->handleStdout(); break;
+        case 2: _t->handleStderr(); break;
+        case 3: _t->handleProcessFinished((*reinterpret_cast<std::add_pointer_t<int>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<QProcess::ExitStatus>>(_a[2]))); break;
+        case 4: _t->sendCommand(); break;
+        default: ;
+        }
+    }
+}
+
+const QMetaObject *PowerShellTerminalWidget::metaObject() const
+{
+    return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
+}
+
+void *PowerShellTerminalWidget::qt_metacast(const char *_clname)
+{
+    if (!_clname) return nullptr;
+    if (!strcmp(_clname, qt_staticMetaObjectStaticContent<qt_meta_tag_ZN24PowerShellTerminalWidgetE_t>.strings))
+        return static_cast<void*>(this);
+    return QWidget::qt_metacast(_clname);
+}
+
+int PowerShellTerminalWidget::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+{
+    _id = QWidget::qt_metacall(_c, _id, _a);
+    if (_id < 0)
+        return _id;
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        if (_id < 5)
+            qt_static_metacall(this, _c, _id, _a);
+        _id -= 5;
+    }
+    if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
+        if (_id < 5)
+            *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
+        _id -= 5;
+    }
+    return _id;
+}
+namespace {
+struct qt_meta_tag_ZN20PythonTerminalWidgetE_t {};
+} // unnamed namespace
+
+template <> constexpr inline auto PythonTerminalWidget::qt_create_metaobjectdata<qt_meta_tag_ZN20PythonTerminalWidgetE_t>()
+{
+    namespace QMC = QtMocConstants;
+    QtMocHelpers::StringRefStorage qt_stringData {
+        "PythonTerminalWidget",
+        "startPython",
+        "",
+        "handleStdout",
+        "handleStderr",
+        "handleProcessFinished",
+        "exitCode",
+        "QProcess::ExitStatus",
+        "exitStatus",
+        "sendCommand"
+    };
+
+    QtMocHelpers::UintData qt_methods {
+        // Slot 'startPython'
+        QtMocHelpers::SlotData<void()>(1, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'handleStdout'
+        QtMocHelpers::SlotData<void()>(3, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'handleStderr'
+        QtMocHelpers::SlotData<void()>(4, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'handleProcessFinished'
+        QtMocHelpers::SlotData<void(int, QProcess::ExitStatus)>(5, 2, QMC::AccessPrivate, QMetaType::Void, {{
+            { QMetaType::Int, 6 }, { 0x80000000 | 7, 8 },
+        }}),
+        // Slot 'sendCommand'
+        QtMocHelpers::SlotData<void()>(9, 2, QMC::AccessPrivate, QMetaType::Void),
+    };
+    QtMocHelpers::UintData qt_properties {
+    };
+    QtMocHelpers::UintData qt_enums {
+    };
+    return QtMocHelpers::metaObjectData<PythonTerminalWidget, qt_meta_tag_ZN20PythonTerminalWidgetE_t>(QMC::MetaObjectFlag{}, qt_stringData,
+            qt_methods, qt_properties, qt_enums);
+}
+Q_CONSTINIT const QMetaObject PythonTerminalWidget::staticMetaObject = { {
+    QMetaObject::SuperData::link<QWidget::staticMetaObject>(),
+    qt_staticMetaObjectStaticContent<qt_meta_tag_ZN20PythonTerminalWidgetE_t>.stringdata,
+    qt_staticMetaObjectStaticContent<qt_meta_tag_ZN20PythonTerminalWidgetE_t>.data,
+    qt_static_metacall,
+    nullptr,
+    qt_staticMetaObjectRelocatingContent<qt_meta_tag_ZN20PythonTerminalWidgetE_t>.metaTypes,
+    nullptr
+} };
+
+void PythonTerminalWidget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+{
+    auto *_t = static_cast<PythonTerminalWidget *>(_o);
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        switch (_id) {
+        case 0: _t->startPython(); break;
+        case 1: _t->handleStdout(); break;
+        case 2: _t->handleStderr(); break;
+        case 3: _t->handleProcessFinished((*reinterpret_cast<std::add_pointer_t<int>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<QProcess::ExitStatus>>(_a[2]))); break;
+        case 4: _t->sendCommand(); break;
+        default: ;
+        }
+    }
+}
+
+const QMetaObject *PythonTerminalWidget::metaObject() const
+{
+    return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
+}
+
+void *PythonTerminalWidget::qt_metacast(const char *_clname)
+{
+    if (!_clname) return nullptr;
+    if (!strcmp(_clname, qt_staticMetaObjectStaticContent<qt_meta_tag_ZN20PythonTerminalWidgetE_t>.strings))
+        return static_cast<void*>(this);
+    return QWidget::qt_metacast(_clname);
+}
+
+int PythonTerminalWidget::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+{
+    _id = QWidget::qt_metacall(_c, _id, _a);
+    if (_id < 0)
+        return _id;
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        if (_id < 5)
+            qt_static_metacall(this, _c, _id, _a);
+        _id -= 5;
+    }
+    if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
+        if (_id < 5)
+            *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
+        _id -= 5;
+    }
+    return _id;
+}
+namespace {
+struct qt_meta_tag_ZN26ScientificCalculatorWidgetE_t {};
+} // unnamed namespace
+
+template <> constexpr inline auto ScientificCalculatorWidget::qt_create_metaobjectdata<qt_meta_tag_ZN26ScientificCalculatorWidgetE_t>()
+{
+    namespace QMC = QtMocConstants;
+    QtMocHelpers::StringRefStorage qt_stringData {
+        "ScientificCalculatorWidget",
+        "onEngineChanged",
+        "",
+        "index",
+        "showAPIInfo",
+        "computeExpression",
+        "displayWelcome"
+    };
+
+    QtMocHelpers::UintData qt_methods {
+        // Slot 'onEngineChanged'
+        QtMocHelpers::SlotData<void(int)>(1, 2, QMC::AccessPrivate, QMetaType::Void, {{
+            { QMetaType::Int, 3 },
+        }}),
+        // Slot 'showAPIInfo'
+        QtMocHelpers::SlotData<void()>(4, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'computeExpression'
+        QtMocHelpers::SlotData<void()>(5, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'displayWelcome'
+        QtMocHelpers::SlotData<void()>(6, 2, QMC::AccessPrivate, QMetaType::Void),
+    };
+    QtMocHelpers::UintData qt_properties {
+    };
+    QtMocHelpers::UintData qt_enums {
+    };
+    return QtMocHelpers::metaObjectData<ScientificCalculatorWidget, qt_meta_tag_ZN26ScientificCalculatorWidgetE_t>(QMC::MetaObjectFlag{}, qt_stringData,
+            qt_methods, qt_properties, qt_enums);
+}
+Q_CONSTINIT const QMetaObject ScientificCalculatorWidget::staticMetaObject = { {
+    QMetaObject::SuperData::link<QWidget::staticMetaObject>(),
+    qt_staticMetaObjectStaticContent<qt_meta_tag_ZN26ScientificCalculatorWidgetE_t>.stringdata,
+    qt_staticMetaObjectStaticContent<qt_meta_tag_ZN26ScientificCalculatorWidgetE_t>.data,
+    qt_static_metacall,
+    nullptr,
+    qt_staticMetaObjectRelocatingContent<qt_meta_tag_ZN26ScientificCalculatorWidgetE_t>.metaTypes,
+    nullptr
+} };
+
+void ScientificCalculatorWidget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+{
+    auto *_t = static_cast<ScientificCalculatorWidget *>(_o);
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        switch (_id) {
+        case 0: _t->onEngineChanged((*reinterpret_cast<std::add_pointer_t<int>>(_a[1]))); break;
+        case 1: _t->showAPIInfo(); break;
+        case 2: _t->computeExpression(); break;
+        case 3: _t->displayWelcome(); break;
+        default: ;
+        }
+    }
+}
+
+const QMetaObject *ScientificCalculatorWidget::metaObject() const
+{
+    return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
+}
+
+void *ScientificCalculatorWidget::qt_metacast(const char *_clname)
+{
+    if (!_clname) return nullptr;
+    if (!strcmp(_clname, qt_staticMetaObjectStaticContent<qt_meta_tag_ZN26ScientificCalculatorWidgetE_t>.strings))
+        return static_cast<void*>(this);
+    return QWidget::qt_metacast(_clname);
+}
+
+int ScientificCalculatorWidget::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+{
+    _id = QWidget::qt_metacall(_c, _id, _a);
+    if (_id < 0)
+        return _id;
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        if (_id < 4)
+            qt_static_metacall(this, _c, _id, _a);
+        _id -= 4;
+    }
+    if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
+        if (_id < 4)
+            *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
+        _id -= 4;
+    }
+    return _id;
+}
+namespace {
+struct qt_meta_tag_ZN20NotebookEditorWidgetE_t {};
+} // unnamed namespace
+
+template <> constexpr inline auto NotebookEditorWidget::qt_create_metaobjectdata<qt_meta_tag_ZN20NotebookEditorWidgetE_t>()
+{
+    namespace QMC = QtMocConstants;
+    QtMocHelpers::StringRefStorage qt_stringData {
+        "NotebookEditorWidget",
+        "addCodeCell",
+        "",
+        "addMarkdownCell",
+        "runCell",
+        "QTextEdit*",
+        "codeInput",
+        "QGroupBox*",
+        "cellBox",
+        "runAllCells",
+        "clearAllOutputs",
+        "addWelcomeCell"
+    };
+
+    QtMocHelpers::UintData qt_methods {
+        // Slot 'addCodeCell'
+        QtMocHelpers::SlotData<void()>(1, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'addMarkdownCell'
+        QtMocHelpers::SlotData<void()>(3, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'runCell'
+        QtMocHelpers::SlotData<void(QTextEdit *, QGroupBox *)>(4, 2, QMC::AccessPrivate, QMetaType::Void, {{
+            { 0x80000000 | 5, 6 }, { 0x80000000 | 7, 8 },
+        }}),
+        // Slot 'runAllCells'
+        QtMocHelpers::SlotData<void()>(9, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'clearAllOutputs'
+        QtMocHelpers::SlotData<void()>(10, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'addWelcomeCell'
+        QtMocHelpers::SlotData<void()>(11, 2, QMC::AccessPrivate, QMetaType::Void),
+    };
+    QtMocHelpers::UintData qt_properties {
+    };
+    QtMocHelpers::UintData qt_enums {
+    };
+    return QtMocHelpers::metaObjectData<NotebookEditorWidget, qt_meta_tag_ZN20NotebookEditorWidgetE_t>(QMC::MetaObjectFlag{}, qt_stringData,
+            qt_methods, qt_properties, qt_enums);
+}
+Q_CONSTINIT const QMetaObject NotebookEditorWidget::staticMetaObject = { {
+    QMetaObject::SuperData::link<QWidget::staticMetaObject>(),
+    qt_staticMetaObjectStaticContent<qt_meta_tag_ZN20NotebookEditorWidgetE_t>.stringdata,
+    qt_staticMetaObjectStaticContent<qt_meta_tag_ZN20NotebookEditorWidgetE_t>.data,
+    qt_static_metacall,
+    nullptr,
+    qt_staticMetaObjectRelocatingContent<qt_meta_tag_ZN20NotebookEditorWidgetE_t>.metaTypes,
+    nullptr
+} };
+
+void NotebookEditorWidget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+{
+    auto *_t = static_cast<NotebookEditorWidget *>(_o);
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        switch (_id) {
+        case 0: _t->addCodeCell(); break;
+        case 1: _t->addMarkdownCell(); break;
+        case 2: _t->runCell((*reinterpret_cast<std::add_pointer_t<QTextEdit*>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<QGroupBox*>>(_a[2]))); break;
+        case 3: _t->runAllCells(); break;
+        case 4: _t->clearAllOutputs(); break;
+        case 5: _t->addWelcomeCell(); break;
+        default: ;
+        }
+    }
+    if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
+        switch (_id) {
+        default: *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType(); break;
+        case 2:
+            switch (*reinterpret_cast<int*>(_a[1])) {
+            default: *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType(); break;
+            case 1:
+                *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType::fromType< QGroupBox* >(); break;
+            case 0:
+                *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType::fromType< QTextEdit* >(); break;
+            }
+            break;
+        }
+    }
+}
+
+const QMetaObject *NotebookEditorWidget::metaObject() const
+{
+    return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
+}
+
+void *NotebookEditorWidget::qt_metacast(const char *_clname)
+{
+    if (!_clname) return nullptr;
+    if (!strcmp(_clname, qt_staticMetaObjectStaticContent<qt_meta_tag_ZN20NotebookEditorWidgetE_t>.strings))
+        return static_cast<void*>(this);
+    return QWidget::qt_metacast(_clname);
+}
+
+int NotebookEditorWidget::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+{
+    _id = QWidget::qt_metacall(_c, _id, _a);
+    if (_id < 0)
+        return _id;
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        if (_id < 6)
+            qt_static_metacall(this, _c, _id, _a);
+        _id -= 6;
+    }
+    if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
+        if (_id < 6)
+            qt_static_metacall(this, _c, _id, _a);
+        _id -= 6;
+    }
+    return _id;
+}
+namespace {
+struct qt_meta_tag_ZN30CondensedPhysicsTerminalWidgetE_t {};
+} // unnamed namespace
+
+template <> constexpr inline auto CondensedPhysicsTerminalWidget::qt_create_metaobjectdata<qt_meta_tag_ZN30CondensedPhysicsTerminalWidgetE_t>()
+{
+    namespace QMC = QtMocConstants;
+    QtMocHelpers::StringRefStorage qt_stringData {
+        "CondensedPhysicsTerminalWidget",
+        "startCondensedPhysics",
+        "",
+        "handleStdout",
+        "handleStderr",
+        "sendCommand"
+    };
+
+    QtMocHelpers::UintData qt_methods {
+        // Slot 'startCondensedPhysics'
+        QtMocHelpers::SlotData<void()>(1, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'handleStdout'
+        QtMocHelpers::SlotData<void()>(3, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'handleStderr'
+        QtMocHelpers::SlotData<void()>(4, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'sendCommand'
+        QtMocHelpers::SlotData<void()>(5, 2, QMC::AccessPrivate, QMetaType::Void),
+    };
+    QtMocHelpers::UintData qt_properties {
+    };
+    QtMocHelpers::UintData qt_enums {
+    };
+    return QtMocHelpers::metaObjectData<CondensedPhysicsTerminalWidget, qt_meta_tag_ZN30CondensedPhysicsTerminalWidgetE_t>(QMC::MetaObjectFlag{}, qt_stringData,
+            qt_methods, qt_properties, qt_enums);
+}
+Q_CONSTINIT const QMetaObject CondensedPhysicsTerminalWidget::staticMetaObject = { {
+    QMetaObject::SuperData::link<QWidget::staticMetaObject>(),
+    qt_staticMetaObjectStaticContent<qt_meta_tag_ZN30CondensedPhysicsTerminalWidgetE_t>.stringdata,
+    qt_staticMetaObjectStaticContent<qt_meta_tag_ZN30CondensedPhysicsTerminalWidgetE_t>.data,
+    qt_static_metacall,
+    nullptr,
+    qt_staticMetaObjectRelocatingContent<qt_meta_tag_ZN30CondensedPhysicsTerminalWidgetE_t>.metaTypes,
+    nullptr
+} };
+
+void CondensedPhysicsTerminalWidget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+{
+    auto *_t = static_cast<CondensedPhysicsTerminalWidget *>(_o);
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        switch (_id) {
+        case 0: _t->startCondensedPhysics(); break;
+        case 1: _t->handleStdout(); break;
+        case 2: _t->handleStderr(); break;
+        case 3: _t->sendCommand(); break;
+        default: ;
+        }
+    }
+    (void)_a;
+}
+
+const QMetaObject *CondensedPhysicsTerminalWidget::metaObject() const
+{
+    return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
+}
+
+void *CondensedPhysicsTerminalWidget::qt_metacast(const char *_clname)
+{
+    if (!_clname) return nullptr;
+    if (!strcmp(_clname, qt_staticMetaObjectStaticContent<qt_meta_tag_ZN30CondensedPhysicsTerminalWidgetE_t>.strings))
+        return static_cast<void*>(this);
+    return QWidget::qt_metacast(_clname);
+}
+
+int CondensedPhysicsTerminalWidget::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+{
+    _id = QWidget::qt_metacall(_c, _id, _a);
+    if (_id < 0)
+        return _id;
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        if (_id < 4)
+            qt_static_metacall(this, _c, _id, _a);
+        _id -= 4;
+    }
+    if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
+        if (_id < 4)
+            *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
+        _id -= 4;
+    }
+    return _id;
+}
+namespace {
+struct qt_meta_tag_ZN19OllamaCodeBotWidgetE_t {};
+} // unnamed namespace
+
+template <> constexpr inline auto OllamaCodeBotWidget::qt_create_metaobjectdata<qt_meta_tag_ZN19OllamaCodeBotWidgetE_t>()
+{
+    namespace QMC = QtMocConstants;
+    QtMocHelpers::StringRefStorage qt_stringData {
+        "OllamaCodeBotWidget",
+        "sendMessage",
+        "",
+        "showInstallationGuide",
+        "displayWelcomeMessage"
+    };
+
+    QtMocHelpers::UintData qt_methods {
+        // Slot 'sendMessage'
+        QtMocHelpers::SlotData<void()>(1, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'showInstallationGuide'
+        QtMocHelpers::SlotData<void()>(3, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'displayWelcomeMessage'
+        QtMocHelpers::SlotData<void()>(4, 2, QMC::AccessPrivate, QMetaType::Void),
+    };
+    QtMocHelpers::UintData qt_properties {
+    };
+    QtMocHelpers::UintData qt_enums {
+    };
+    return QtMocHelpers::metaObjectData<OllamaCodeBotWidget, qt_meta_tag_ZN19OllamaCodeBotWidgetE_t>(QMC::MetaObjectFlag{}, qt_stringData,
+            qt_methods, qt_properties, qt_enums);
+}
+Q_CONSTINIT const QMetaObject OllamaCodeBotWidget::staticMetaObject = { {
+    QMetaObject::SuperData::link<QWidget::staticMetaObject>(),
+    qt_staticMetaObjectStaticContent<qt_meta_tag_ZN19OllamaCodeBotWidgetE_t>.stringdata,
+    qt_staticMetaObjectStaticContent<qt_meta_tag_ZN19OllamaCodeBotWidgetE_t>.data,
+    qt_static_metacall,
+    nullptr,
+    qt_staticMetaObjectRelocatingContent<qt_meta_tag_ZN19OllamaCodeBotWidgetE_t>.metaTypes,
+    nullptr
+} };
+
+void OllamaCodeBotWidget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+{
+    auto *_t = static_cast<OllamaCodeBotWidget *>(_o);
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        switch (_id) {
+        case 0: _t->sendMessage(); break;
+        case 1: _t->showInstallationGuide(); break;
+        case 2: _t->displayWelcomeMessage(); break;
+        default: ;
+        }
+    }
+    (void)_a;
+}
+
+const QMetaObject *OllamaCodeBotWidget::metaObject() const
+{
+    return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
+}
+
+void *OllamaCodeBotWidget::qt_metacast(const char *_clname)
+{
+    if (!_clname) return nullptr;
+    if (!strcmp(_clname, qt_staticMetaObjectStaticContent<qt_meta_tag_ZN19OllamaCodeBotWidgetE_t>.strings))
+        return static_cast<void*>(this);
+    return QWidget::qt_metacast(_clname);
+}
+
+int OllamaCodeBotWidget::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+{
+    _id = QWidget::qt_metacall(_c, _id, _a);
+    if (_id < 0)
+        return _id;
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        if (_id < 3)
+            qt_static_metacall(this, _c, _id, _a);
+        _id -= 3;
+    }
+    if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
+        if (_id < 3)
+            *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
+        _id -= 3;
+    }
+    return _id;
+}
+namespace {
+struct qt_meta_tag_ZN16SuperGrok4WidgetE_t {};
+} // unnamed namespace
+
+template <> constexpr inline auto SuperGrok4Widget::qt_create_metaobjectdata<qt_meta_tag_ZN16SuperGrok4WidgetE_t>()
+{
+    namespace QMC = QtMocConstants;
+    QtMocHelpers::StringRefStorage qt_stringData {
+        "SuperGrok4Widget",
+        "sendMessage",
+        "",
+        "showApiKeyConfig",
+        "displayWelcomeMessage"
+    };
+
+    QtMocHelpers::UintData qt_methods {
+        // Slot 'sendMessage'
+        QtMocHelpers::SlotData<void()>(1, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'showApiKeyConfig'
+        QtMocHelpers::SlotData<void()>(3, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'displayWelcomeMessage'
+        QtMocHelpers::SlotData<void()>(4, 2, QMC::AccessPrivate, QMetaType::Void),
+    };
+    QtMocHelpers::UintData qt_properties {
+    };
+    QtMocHelpers::UintData qt_enums {
+    };
+    return QtMocHelpers::metaObjectData<SuperGrok4Widget, qt_meta_tag_ZN16SuperGrok4WidgetE_t>(QMC::MetaObjectFlag{}, qt_stringData,
+            qt_methods, qt_properties, qt_enums);
+}
+Q_CONSTINIT const QMetaObject SuperGrok4Widget::staticMetaObject = { {
+    QMetaObject::SuperData::link<QWidget::staticMetaObject>(),
+    qt_staticMetaObjectStaticContent<qt_meta_tag_ZN16SuperGrok4WidgetE_t>.stringdata,
+    qt_staticMetaObjectStaticContent<qt_meta_tag_ZN16SuperGrok4WidgetE_t>.data,
+    qt_static_metacall,
+    nullptr,
+    qt_staticMetaObjectRelocatingContent<qt_meta_tag_ZN16SuperGrok4WidgetE_t>.metaTypes,
+    nullptr
+} };
+
+void SuperGrok4Widget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+{
+    auto *_t = static_cast<SuperGrok4Widget *>(_o);
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        switch (_id) {
+        case 0: _t->sendMessage(); break;
+        case 1: _t->showApiKeyConfig(); break;
+        case 2: _t->displayWelcomeMessage(); break;
+        default: ;
+        }
+    }
+    (void)_a;
+}
+
+const QMetaObject *SuperGrok4Widget::metaObject() const
+{
+    return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
+}
+
+void *SuperGrok4Widget::qt_metacast(const char *_clname)
+{
+    if (!_clname) return nullptr;
+    if (!strcmp(_clname, qt_staticMetaObjectStaticContent<qt_meta_tag_ZN16SuperGrok4WidgetE_t>.strings))
+        return static_cast<void*>(this);
+    return QWidget::qt_metacast(_clname);
+}
+
+int SuperGrok4Widget::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+{
+    _id = QWidget::qt_metacall(_c, _id, _a);
+    if (_id < 0)
+        return _id;
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        if (_id < 3)
+            qt_static_metacall(this, _c, _id, _a);
+        _id -= 3;
+    }
+    if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
+        if (_id < 3)
+            *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
+        _id -= 3;
+    }
+    return _id;
+}
+namespace {
+struct qt_meta_tag_ZN19UQFFSimulatorWidgetE_t {};
+} // unnamed namespace
+
+template <> constexpr inline auto UQFFSimulatorWidget::qt_create_metaobjectdata<qt_meta_tag_ZN19UQFFSimulatorWidgetE_t>()
+{
+    namespace QMC = QtMocConstants;
+    QtMocHelpers::StringRefStorage qt_stringData {
+        "UQFFSimulatorWidget",
+        "onParameterChanged",
+        "",
+        "updateSliderLabels",
+        "updateCalculations",
+        "toggleAnimation",
+        "animationStep",
+        "resetParameters",
+        "loadPreset",
+        "index"
+    };
+
+    QtMocHelpers::UintData qt_methods {
+        // Slot 'onParameterChanged'
+        QtMocHelpers::SlotData<void()>(1, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'updateSliderLabels'
+        QtMocHelpers::SlotData<void()>(3, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'updateCalculations'
+        QtMocHelpers::SlotData<void()>(4, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'toggleAnimation'
+        QtMocHelpers::SlotData<void()>(5, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'animationStep'
+        QtMocHelpers::SlotData<void()>(6, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'resetParameters'
+        QtMocHelpers::SlotData<void()>(7, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'loadPreset'
+        QtMocHelpers::SlotData<void(int)>(8, 2, QMC::AccessPrivate, QMetaType::Void, {{
+            { QMetaType::Int, 9 },
+        }}),
+    };
+    QtMocHelpers::UintData qt_properties {
+    };
+    QtMocHelpers::UintData qt_enums {
+    };
+    return QtMocHelpers::metaObjectData<UQFFSimulatorWidget, qt_meta_tag_ZN19UQFFSimulatorWidgetE_t>(QMC::MetaObjectFlag{}, qt_stringData,
+            qt_methods, qt_properties, qt_enums);
+}
+Q_CONSTINIT const QMetaObject UQFFSimulatorWidget::staticMetaObject = { {
+    QMetaObject::SuperData::link<QWidget::staticMetaObject>(),
+    qt_staticMetaObjectStaticContent<qt_meta_tag_ZN19UQFFSimulatorWidgetE_t>.stringdata,
+    qt_staticMetaObjectStaticContent<qt_meta_tag_ZN19UQFFSimulatorWidgetE_t>.data,
+    qt_static_metacall,
+    nullptr,
+    qt_staticMetaObjectRelocatingContent<qt_meta_tag_ZN19UQFFSimulatorWidgetE_t>.metaTypes,
+    nullptr
+} };
+
+void UQFFSimulatorWidget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+{
+    auto *_t = static_cast<UQFFSimulatorWidget *>(_o);
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        switch (_id) {
+        case 0: _t->onParameterChanged(); break;
+        case 1: _t->updateSliderLabels(); break;
+        case 2: _t->updateCalculations(); break;
+        case 3: _t->toggleAnimation(); break;
+        case 4: _t->animationStep(); break;
+        case 5: _t->resetParameters(); break;
+        case 6: _t->loadPreset((*reinterpret_cast<std::add_pointer_t<int>>(_a[1]))); break;
+        default: ;
+        }
+    }
+}
+
+const QMetaObject *UQFFSimulatorWidget::metaObject() const
+{
+    return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
+}
+
+void *UQFFSimulatorWidget::qt_metacast(const char *_clname)
+{
+    if (!_clname) return nullptr;
+    if (!strcmp(_clname, qt_staticMetaObjectStaticContent<qt_meta_tag_ZN19UQFFSimulatorWidgetE_t>.strings))
+        return static_cast<void*>(this);
+    return QWidget::qt_metacast(_clname);
+}
+
+int UQFFSimulatorWidget::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+{
+    _id = QWidget::qt_metacall(_c, _id, _a);
+    if (_id < 0)
+        return _id;
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        if (_id < 7)
+            qt_static_metacall(this, _c, _id, _a);
+        _id -= 7;
+    }
+    if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
+        if (_id < 7)
+            *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
+        _id -= 7;
+    }
+    return _id;
+}
+namespace {
+struct qt_meta_tag_ZN18QueryHistoryWidgetE_t {};
+} // unnamed namespace
+
+template <> constexpr inline auto QueryHistoryWidget::qt_create_metaobjectdata<qt_meta_tag_ZN18QueryHistoryWidgetE_t>()
+{
+    namespace QMC = QtMocConstants;
+    QtMocHelpers::StringRefStorage qt_stringData {
+        "QueryHistoryWidget",
+        "refreshQueryHistory",
+        "",
+        "onQuerySelected",
+        "QListWidgetItem*",
+        "item",
+        "filterByObject",
+        "exportHistory"
+    };
+
+    QtMocHelpers::UintData qt_methods {
+        // Slot 'refreshQueryHistory'
+        QtMocHelpers::SlotData<void()>(1, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'onQuerySelected'
+        QtMocHelpers::SlotData<void(QListWidgetItem *)>(3, 2, QMC::AccessPrivate, QMetaType::Void, {{
+            { 0x80000000 | 4, 5 },
+        }}),
+        // Slot 'filterByObject'
+        QtMocHelpers::SlotData<void()>(6, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'exportHistory'
+        QtMocHelpers::SlotData<void()>(7, 2, QMC::AccessPrivate, QMetaType::Void),
+    };
+    QtMocHelpers::UintData qt_properties {
+    };
+    QtMocHelpers::UintData qt_enums {
+    };
+    return QtMocHelpers::metaObjectData<QueryHistoryWidget, qt_meta_tag_ZN18QueryHistoryWidgetE_t>(QMC::MetaObjectFlag{}, qt_stringData,
+            qt_methods, qt_properties, qt_enums);
+}
+Q_CONSTINIT const QMetaObject QueryHistoryWidget::staticMetaObject = { {
+    QMetaObject::SuperData::link<QWidget::staticMetaObject>(),
+    qt_staticMetaObjectStaticContent<qt_meta_tag_ZN18QueryHistoryWidgetE_t>.stringdata,
+    qt_staticMetaObjectStaticContent<qt_meta_tag_ZN18QueryHistoryWidgetE_t>.data,
+    qt_static_metacall,
+    nullptr,
+    qt_staticMetaObjectRelocatingContent<qt_meta_tag_ZN18QueryHistoryWidgetE_t>.metaTypes,
+    nullptr
+} };
+
+void QueryHistoryWidget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+{
+    auto *_t = static_cast<QueryHistoryWidget *>(_o);
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        switch (_id) {
+        case 0: _t->refreshQueryHistory(); break;
+        case 1: _t->onQuerySelected((*reinterpret_cast<std::add_pointer_t<QListWidgetItem*>>(_a[1]))); break;
+        case 2: _t->filterByObject(); break;
+        case 3: _t->exportHistory(); break;
+        default: ;
+        }
+    }
+}
+
+const QMetaObject *QueryHistoryWidget::metaObject() const
+{
+    return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
+}
+
+void *QueryHistoryWidget::qt_metacast(const char *_clname)
+{
+    if (!_clname) return nullptr;
+    if (!strcmp(_clname, qt_staticMetaObjectStaticContent<qt_meta_tag_ZN18QueryHistoryWidgetE_t>.strings))
+        return static_cast<void*>(this);
+    return QWidget::qt_metacast(_clname);
+}
+
+int QueryHistoryWidget::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+{
+    _id = QWidget::qt_metacall(_c, _id, _a);
+    if (_id < 0)
+        return _id;
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        if (_id < 4)
+            qt_static_metacall(this, _c, _id, _a);
+        _id -= 4;
+    }
+    if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
+        if (_id < 4)
+            *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
+        _id -= 4;
+    }
+    return _id;
+}
+namespace {
+struct qt_meta_tag_ZN26IndependentExpandableFieldE_t {};
+} // unnamed namespace
+
+template <> constexpr inline auto IndependentExpandableField::qt_create_metaobjectdata<qt_meta_tag_ZN26IndependentExpandableFieldE_t>()
+{
+    namespace QMC = QtMocConstants;
+    QtMocHelpers::StringRefStorage qt_stringData {
+        "IndependentExpandableField",
+        "symbolClicked",
+        "",
+        "symbol"
+    };
+
+    QtMocHelpers::UintData qt_methods {
+        // Signal 'symbolClicked'
+        QtMocHelpers::SignalData<void(const QString &)>(1, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { QMetaType::QString, 3 },
+        }}),
+    };
+    QtMocHelpers::UintData qt_properties {
+    };
+    QtMocHelpers::UintData qt_enums {
+    };
+    return QtMocHelpers::metaObjectData<IndependentExpandableField, qt_meta_tag_ZN26IndependentExpandableFieldE_t>(QMC::MetaObjectFlag{}, qt_stringData,
+            qt_methods, qt_properties, qt_enums);
+}
+Q_CONSTINIT const QMetaObject IndependentExpandableField::staticMetaObject = { {
+    QMetaObject::SuperData::link<QDockWidget::staticMetaObject>(),
+    qt_staticMetaObjectStaticContent<qt_meta_tag_ZN26IndependentExpandableFieldE_t>.stringdata,
+    qt_staticMetaObjectStaticContent<qt_meta_tag_ZN26IndependentExpandableFieldE_t>.data,
+    qt_static_metacall,
+    nullptr,
+    qt_staticMetaObjectRelocatingContent<qt_meta_tag_ZN26IndependentExpandableFieldE_t>.metaTypes,
+    nullptr
+} };
+
+void IndependentExpandableField::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+{
+    auto *_t = static_cast<IndependentExpandableField *>(_o);
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        switch (_id) {
+        case 0: _t->symbolClicked((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1]))); break;
+        default: ;
+        }
+    }
+    if (_c == QMetaObject::IndexOfMethod) {
+        if (QtMocHelpers::indexOfMethod<void (IndependentExpandableField::*)(const QString & )>(_a, &IndependentExpandableField::symbolClicked, 0))
+            return;
+    }
+}
+
+const QMetaObject *IndependentExpandableField::metaObject() const
+{
+    return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
+}
+
+void *IndependentExpandableField::qt_metacast(const char *_clname)
+{
+    if (!_clname) return nullptr;
+    if (!strcmp(_clname, qt_staticMetaObjectStaticContent<qt_meta_tag_ZN26IndependentExpandableFieldE_t>.strings))
+        return static_cast<void*>(this);
+    return QDockWidget::qt_metacast(_clname);
+}
+
+int IndependentExpandableField::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+{
+    _id = QDockWidget::qt_metacall(_c, _id, _a);
+    if (_id < 0)
+        return _id;
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        if (_id < 1)
+            qt_static_metacall(this, _c, _id, _a);
+        _id -= 1;
+    }
+    if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
+        if (_id < 1)
+            *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
+        _id -= 1;
+    }
+    return _id;
+}
+
+// SIGNAL 0
+void IndependentExpandableField::symbolClicked(const QString & _t1)
+{
+    QMetaObject::activate<void>(this, &staticMetaObject, 0, nullptr, _t1);
+}
+namespace {
+struct qt_meta_tag_ZN29QuantumDesignCalculatorWidgetE_t {};
+} // unnamed namespace
+
+template <> constexpr inline auto QuantumDesignCalculatorWidget::qt_create_metaobjectdata<qt_meta_tag_ZN29QuantumDesignCalculatorWidgetE_t>()
+{
+    namespace QMC = QtMocConstants;
+    QtMocHelpers::StringRefStorage qt_stringData {
+        "QuantumDesignCalculatorWidget",
+        "computationCompleted",
+        "",
+        "source",
+        "system",
+        "result",
+        "fetchMissingInputsFromArchive",
+        "computeMUGE",
+        "applyFunction",
+        "func",
+        "insertConstant",
+        "value",
+        "checkMissingInputs"
+    };
+
+    QtMocHelpers::UintData qt_methods {
+        // Signal 'computationCompleted'
+        QtMocHelpers::SignalData<void(const QString &, const QString &, double)>(1, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { QMetaType::QString, 3 }, { QMetaType::QString, 4 }, { QMetaType::Double, 5 },
+        }}),
+        // Slot 'fetchMissingInputsFromArchive'
+        QtMocHelpers::SlotData<void()>(6, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'computeMUGE'
+        QtMocHelpers::SlotData<void()>(7, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'applyFunction'
+        QtMocHelpers::SlotData<void(const QString &)>(8, 2, QMC::AccessPrivate, QMetaType::Void, {{
+            { QMetaType::QString, 9 },
+        }}),
+        // Slot 'insertConstant'
+        QtMocHelpers::SlotData<void(double)>(10, 2, QMC::AccessPrivate, QMetaType::Void, {{
+            { QMetaType::Double, 11 },
+        }}),
+        // Slot 'checkMissingInputs'
+        QtMocHelpers::SlotData<void()>(12, 2, QMC::AccessPrivate, QMetaType::Void),
+    };
+    QtMocHelpers::UintData qt_properties {
+    };
+    QtMocHelpers::UintData qt_enums {
+    };
+    return QtMocHelpers::metaObjectData<QuantumDesignCalculatorWidget, qt_meta_tag_ZN29QuantumDesignCalculatorWidgetE_t>(QMC::MetaObjectFlag{}, qt_stringData,
+            qt_methods, qt_properties, qt_enums);
+}
+Q_CONSTINIT const QMetaObject QuantumDesignCalculatorWidget::staticMetaObject = { {
+    QMetaObject::SuperData::link<QWidget::staticMetaObject>(),
+    qt_staticMetaObjectStaticContent<qt_meta_tag_ZN29QuantumDesignCalculatorWidgetE_t>.stringdata,
+    qt_staticMetaObjectStaticContent<qt_meta_tag_ZN29QuantumDesignCalculatorWidgetE_t>.data,
+    qt_static_metacall,
+    nullptr,
+    qt_staticMetaObjectRelocatingContent<qt_meta_tag_ZN29QuantumDesignCalculatorWidgetE_t>.metaTypes,
+    nullptr
+} };
+
+void QuantumDesignCalculatorWidget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+{
+    auto *_t = static_cast<QuantumDesignCalculatorWidget *>(_o);
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        switch (_id) {
+        case 0: _t->computationCompleted((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<QString>>(_a[2])),(*reinterpret_cast<std::add_pointer_t<double>>(_a[3]))); break;
+        case 1: _t->fetchMissingInputsFromArchive(); break;
+        case 2: _t->computeMUGE(); break;
+        case 3: _t->applyFunction((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1]))); break;
+        case 4: _t->insertConstant((*reinterpret_cast<std::add_pointer_t<double>>(_a[1]))); break;
+        case 5: _t->checkMissingInputs(); break;
+        default: ;
+        }
+    }
+    if (_c == QMetaObject::IndexOfMethod) {
+        if (QtMocHelpers::indexOfMethod<void (QuantumDesignCalculatorWidget::*)(const QString & , const QString & , double )>(_a, &QuantumDesignCalculatorWidget::computationCompleted, 0))
+            return;
+    }
+}
+
+const QMetaObject *QuantumDesignCalculatorWidget::metaObject() const
+{
+    return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
+}
+
+void *QuantumDesignCalculatorWidget::qt_metacast(const char *_clname)
+{
+    if (!_clname) return nullptr;
+    if (!strcmp(_clname, qt_staticMetaObjectStaticContent<qt_meta_tag_ZN29QuantumDesignCalculatorWidgetE_t>.strings))
+        return static_cast<void*>(this);
+    return QWidget::qt_metacast(_clname);
+}
+
+int QuantumDesignCalculatorWidget::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+{
+    _id = QWidget::qt_metacall(_c, _id, _a);
+    if (_id < 0)
+        return _id;
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        if (_id < 6)
+            qt_static_metacall(this, _c, _id, _a);
+        _id -= 6;
+    }
+    if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
+        if (_id < 6)
+            *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
+        _id -= 6;
+    }
+    return _id;
+}
+
+// SIGNAL 0
+void QuantumDesignCalculatorWidget::computationCompleted(const QString & _t1, const QString & _t2, double _t3)
+{
+    QMetaObject::activate<void>(this, &staticMetaObject, 0, nullptr, _t1, _t2, _t3);
+}
+QT_WARNING_POP

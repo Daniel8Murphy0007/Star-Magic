@@ -449,14 +449,15 @@ double UQFFCompressionModule::computeG(double t)
 // Equation text
 std::string UQFFCompressionModule::getEquationText()
 {
-    return "g_UQFF(r, t) = (G * M(t) / r^2) * (1 + H(t, z)) * (1 - B(t) / B_crit) * (1 + F_env(t)) + (Ug1 + Ug2 + Ug3' + Ug4) + (Lambda * c^2 / 3) + "
-           "(hbar / sqrt(Delta_x * Delta_p)) * ?(psi_total * H * psi_total dV) * (2? / t_Hubble) + ?_fluid * V * g + "
-           "(M_visible + M_DM) * (??/? + 3 G M / r^3)\n"
-           "Where: H(t, z) = H0 * sqrt(?m (1+z)^3 + ??); M(t) = M * (1 + M_sf(t)); M_sf(t) = (SFR * t_yr) / M0;\n"
-           "F_env(t) = ? F_i(t) [winds, erosion, lensing, mag, decay, coll, evo, merge, sf, SN, rad, BH];\n"
-           "Ug3' = G M_ext / r_ext^2; psi_total = q(v ï¿½ B) + 2A cos(kx) cos(?t) + (2?/13.8) A Re[exp(i(kx - ?t))];\n"
-           "Compression Advancements: Unified expansion, modular env effects, consolidated waves/gravity terms for 19+ systems.\n"
-           "Adaptations: setSystem('Magnetar') for SGR 1745-2900; etc. Solutions: g ~1e-10 to 1e-12 m/sï¿½ typical.";
+    return "g_UQFF(r,t) = (G * M(t) / r^2) * (1 + H(t,z)) * (1 - B/B_crit) * (1 + F_env(t)) + "
+           "(Ug1 + Ug2 + Ug3' + Ug4) + (Lambda * c^2 / 3) + "
+           "(hbar / sqrt(Delta_x * Delta_p)) * integral(psi_total * H_op * psi_total dV) * (2*pi / t_Hubble) + "
+           "rho_fluid * V * g + (M_visible + M_DM) * (delta_rho/rho + 3*G*M/r^3)\n"
+           "Where H(t,z) = H0 * sqrt(Omega_m * (1+z)^3 + Omega_Lambda); M(t) = M * (1 + M_sf(t)); "
+           "M_sf(t) = (SFR * t_yr) / M0.\n"
+           "F_env(t) = sum_i F_i(t) across wind, erosion, lensing, magnetic, decay, collision, evolution, merge, star-formation, supernova, radiation, and black-hole terms.\n"
+           "Ug3' = G * M_ext / r_ext^2; psi_total = q*(v*B) + 2*A*cos(k*x)*cos(omega*t) + (2*pi/13.8)*A*Re[exp(i*(k*x - omega*t))].\n"
+           "Compression advancements: unified expansion, modular environmental effects, and consolidated wave/gravity terms for multi-system validation.";
 }
 
 // Print variables

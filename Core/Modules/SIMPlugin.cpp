@@ -140,11 +140,14 @@ double compute_Um(const CelestialBody &body, double t, double tn, double rj, dou
 {
     if (rj <= 0.0)
         throw std::runtime_error("Invalid rj value");
+    constexpr double f_Heaviside = 0.01;
+    constexpr double f_quasi = 0.01;
     double Ereact = compute_Ereact(t, body.SCm_density, v_SCm, rho_A, kappa);
     double mu_j = compute_mu_j(t, body.omega_c, body.Rs);
     double decay = 1.0 - std::exp(-gamma * t * std::cos(PI * tn));
     double single = mu_j / rj * decay * phi_hat;
-    return single * num_strings * body.PSCm * Ereact;
+    return single * num_strings * body.PSCm * Ereact *
+           (1.0 + 1.0e13 * f_Heaviside) * (1.0 + f_quasi);
 }
 
 void output_json_params(const CelestialBody &body)

@@ -51,6 +51,20 @@ UQFFCompressedResonanceModule::UQFFCompressedResonanceModule()
     variables["delta_rho"] = 1e-5 * variables["rho_fluid"];
     variables["rho"] = variables["rho_fluid"];
     variables["F_wind"] = 0.0;
+    variables["F_rad"] = 0.0;
+    variables["F_SN"] = 0.0;
+    variables["F_BH"] = 0.0;
+    variables["F_eta"] = 0.0;
+    variables["F_lensing"] = 0.0;
+    variables["F_merge"] = 0.0;
+    variables["F_decay"] = 0.0;
+    variables["F_coll"] = 0.0;
+    variables["F_evo"] = 0.0;
+    variables["M_ext"] = 1e40;
+    variables["r_ext"] = 5e20;
+    variables["SC_m"] = 1.0;
+    variables["A_res"] = 1e-3;
+    variables["f_res"] = 1.0 / variables["t_Hubble"];
 }
 
 void UQFFCompressedResonanceModule::setSystem(const std::string& sys_name) {
@@ -62,35 +76,43 @@ void UQFFCompressedResonanceModule::setSystem(const std::string& sys_name) {
         variables["M"] = 1000 * Msun; variables["r"] = 3e17;
         variables["SFR"] = 0.1 * Msun / yr_s;
         variables["rho_fluid"] = 1e-20; variables["B"] = 1e-6; variables["z"] = 0.0006;
+        variables["F_wind"] = 2e-3; variables["F_rad"] = 5e-4; variables["M_ext"] = 300 * Msun; variables["r_ext"] = 1e18;
     } else if (sys_name == "Eagle") {
         variables["M"] = 1e4 * Msun; variables["r"] = 2e17;
         variables["SFR"] = 0.5 * Msun / yr_s;
         variables["rho_fluid"] = 1e-21; variables["B"] = 3e-5; variables["z"] = 0.002;
+        variables["F_wind"] = 5e-3; variables["F_rad"] = 1e-3; variables["F_evo"] = 2e-4; variables["M_ext"] = 1500 * Msun; variables["r_ext"] = 6e17;
     } else if (sys_name == "BigBang") {
         variables["rho_fluid"] = 8e-27; variables["r"] = 1e26;
         variables["z"] = 1100; variables["SFR"] = 0;
         variables["M"] = 1e53; variables["B"] = 1e-10;
         variables["t"] = 13.8e9 * yr_s;
+        variables["F_rad"] = 1e-2; variables["F_decay"] = 2e-3; variables["M_ext"] = 0.0; variables["r_ext"] = 1.0;
     } else if (sys_name == "M51") {
         variables["M"] = 1.6e11 * Msun; variables["r"] = 23e3 * kpc;
         variables["SFR"] = 2 * Msun / yr_s;
         variables["rho_fluid"] = 1e-21; variables["B"] = 1e-5; variables["z"] = 0.005;
+        variables["F_wind"] = 1e-3; variables["F_SN"] = 8e-4; variables["F_merge"] = 4e-4; variables["M_ext"] = 2e10 * Msun; variables["r_ext"] = 5e20;
     } else if (sys_name == "NGC1316") {
         variables["M"] = 5e11 * Msun; variables["r"] = 23e3 * kpc;
         variables["SFR"] = 0.1 * Msun / yr_s;
         variables["rho_fluid"] = 1e-22; variables["B"] = 1e-5; variables["z"] = 0.006;
+        variables["F_SN"] = 5e-4; variables["F_merge"] = 7e-4; variables["M_ext"] = 6e10 * Msun; variables["r_ext"] = 4e20;
     } else if (sys_name == "V838Mon") {
         variables["M"] = 8 * Msun; variables["r"] = 2e13;
         variables["SFR"] = 0;
         variables["rho_fluid"] = 1e-22; variables["B"] = 1e-6; variables["z"] = 0.005;
+        variables["F_rad"] = 3e-3; variables["F_eta"] = 2e-4; variables["M_ext"] = 2 * Msun; variables["r_ext"] = 1e14;
     } else if (sys_name == "NGC1300") {
         variables["M"] = 1e11 * Msun; variables["r"] = 12e3 * kpc;
         variables["SFR"] = 1 * Msun / yr_s;
         variables["rho_fluid"] = 1e-21; variables["B"] = 1e-5; variables["z"] = 0.005;
+        variables["F_wind"] = 8e-4; variables["F_SN"] = 4e-4; variables["F_lensing"] = 1e-4; variables["M_ext"] = 8e9 * Msun; variables["r_ext"] = 3e20;
     } else {  // Guide
         variables["M"] = Msun; variables["r"] = 1e11;
         variables["SFR"] = 1e-10 * Msun / yr_s;
         variables["rho_fluid"] = 1e-20; variables["B"] = 1e-5; variables["z"] = 0;
+        variables["F_wind"] = 1e-5; variables["F_rad"] = 1e-6; variables["M_ext"] = 0.0; variables["r_ext"] = 1.0;
     }
     variables["M_visible"] = 0.7 * variables["M"];
     variables["M_DM"] = 0.3 * variables["M"];
@@ -122,17 +144,32 @@ double UQFFCompressedResonanceModule::computeHtz(double z_val) {
     double Hz_kms = variables["H0"] * std::sqrt(variables["Omega_m"] * std::pow(1 + z_val, 3) + variables["Omega_Lambda"]);
     return (Hz_kms * 1e3) / variables["Mpc_to_m"];
 }
-double UQFFCompressedResonanceModule::computeFenv(double t) { return 0.1; }
-double UQFFCompressedResonanceModule::computeUgSum() { return 1e-10; }
+double UQFFCompressedResonanceModule::computeFenv(double t) {
+    double time_fraction = t / std::max(variables["t_Hubble"], 1.0);
+    double wind_term = variables["F_wind"] * (1.0 + 0.25 * computeMsfFactor(t));
+    double decay_term = variables["F_decay"] * std::exp(-time_fraction);
+    double evo_term = variables["F_evo"] * (1.0 + time_fraction);
+    return wind_term + variables["F_rad"] + variables["F_SN"] + variables["F_BH"]
+         + variables["F_eta"] + variables["F_lensing"] + variables["F_merge"]
+         + decay_term + variables["F_coll"] + evo_term;
+}
+double UQFFCompressedResonanceModule::computeUgSum() {
+    double safe_r_ext = std::max(variables["r_ext"], 1.0);
+    double ug3prime = variables["G"] * variables["M_ext"] / (safe_r_ext * safe_r_ext);
+    double ug1 = variables["Ug1"] != 0.0 ? variables["Ug1"] : variables["q"] * variables["v"] * variables["B"];
+    double ug2 = variables["Ug2"] != 0.0 ? variables["Ug2"] : 0.5 * variables["rho_fluid"] * variables["v"] * variables["v"];
+    double ug4 = variables["Ug4"] != 0.0 ? variables["Ug4"] : variables["Lambda"] * variables["c"] * variables["c"];
+    variables["Ug3"] = ug3prime;
+    return ug1 + ug2 + ug3prime + ug4;
+}
 double UQFFCompressedResonanceModule::computePsiTotal(double t) {
     return variables["q"] * variables["v"] * variables["B"]
          + 2 * variables["A"] * std::cos(variables["k"] * variables["x"] + variables["omega"] * t);
 }
 double UQFFCompressedResonanceModule::computeResonanceTerm(double t) {
     if (mode != "resonance") return 0.0;
-    std::complex<double> exp_term(variables["A"] * std::exp(std::complex<double>(0, variables["k"] * variables["x"] - variables["omega"] * t)));
-    double g_base = (variables["G"] * variables["M"]) / (variables["r"] * variables["r"]);
-    return (2 * variables["pi"] / 13.8) * exp_term.real() * g_base;
+    double oscillatory = variables["A_res"] * std::sin(2.0 * variables["pi"] * variables["f_res"] * t);
+    return oscillatory + computeFenv(t) * variables["SC_m"];
 }
 double UQFFCompressedResonanceModule::computeQuantumTerm(double t_Hubble_val) {
     double unc = std::sqrt(variables["Delta_x"] * variables["Delta_p"]);
@@ -176,12 +213,13 @@ double UQFFCompressedResonanceModule::computeG(double t, double r_in) {
 }
 
 std::string UQFFCompressedResonanceModule::getEquationText() {
-    std::string eq = "g_UQFF(r,t) = (G M(t)/r^2) (1 + H(t,z)) (1 - B/B_crit) (1 + F_env) + "
-                     "Sum Ug_i + Lambda c^2/3 + (hbar/sqrt(Dx Dp)) integral(psi H psi dV) (2pi/t_Hubble) + "
-                     "rho V g + (M_vis + M_DM)(drho/rho + 3GM/r^3)";
+    std::string eq = "g_UQFF(r,t) = (G M(t)/r^2) * (1 + H(t,z) * t) * (1 - B/B_crit) * (1 + F_env(t)) + "
+                     "(Ug1 + Ug2 + Ug3' + Ug4) + Lambda*c^2/3 + "
+                     "(hbar/sqrt(Delta_x*Delta_p)) * integral(psi_total * H_op * psi_total dV) * (2*pi/t_Hubble) + "
+                     "rho_fluid*V*g + (M_visible + M_DM) * (delta_rho/rho + 3*G*M/r^3)";
     if (mode == "resonance")
-        eq += " + 2 A cos(kx + omega t) g_base + (2pi/13.8) Re[A exp(i(kx - omega t))] g_base";
-    eq += "\nM(t)=M(1 + SFR t / M0); System: " + current_system + " Mode: " + mode;
+        eq += " + H_res, where H_res = A_res*sin(2*pi*f_res*t) + F_env(t)*SC_m";
+    eq += "\nM(t)=M*(1 + SFR*t/M0); Ug3' = G*M_ext/r_ext^2; System: " + current_system + "; Mode: " + mode;
     return eq;
 }
 

@@ -42800,6 +42800,235 @@ class AGNFeedbackMSigmaScalingCalculator(_CP4Calculator):
     def self_expand(self): pass
 
 
+# ── CP4 #627 ── PAPER_1126 ────────────────────────────────────────────────
+# PSR J0030+0451 Neutron Star LENR Buoyancy (FUBII benchmark gap fill)
+# ───────────────────────────────────────────────────────────────────────────
+
+class PSRJ0030NeutronStarBuoyancyCalculator(_CP4Calculator):
+    """PAPER_1126 | PSR J0030+0451 — Isolated Millisecond Pulsar LENR Buoyancy.
+
+    PSR J0030+0451: well-studied isolated millisecond pulsar, ~1,100 ly away.
+    NICER 2019: M ≈ 1.4 M☉ = 2.786×10³⁰ kg, R ≈ 10⁴ m (neutron star radius).
+    Chandra: L_X ~ 10²⁹ W (0.5–8 keV), T ~ 10⁶ K surface temperature.
+    ρ ≈ 10¹⁷ kg/m³ (nuclear density interior).
+
+    *** KOZIMA NEUTRON DROP at NUCLEAR DENSITY — EXTREME F_neutron ***
+    Density-scaled σ_n(ρ) = σ₀·(ρ/ρ₀) with ρ ~ 10¹⁷ kg/m³ yields
+    σ_n ≈ 10³⁵ m² → F_neutron = k_neutron·σ_n ≈ 10⁴⁵ N.
+    (σ₀ = 10⁻⁴ m², ρ/ρ₀ = 10¹⁷/10⁻²² = 10³⁹, consistent with PAPER_840.)
+    This is the LARGEST F_neutron of any system — 39 orders above the
+    general SNR value (10⁶ N), matching Sgr A* density regime.
+
+    F_LENR = k_LENR·(ω_LENR/ω₀)² ≈ 6.17×10³⁹ N at ω₀ = 10⁻¹² rad/s.
+    F_neutron dominates the integrand: F_neutron/F_LENR ≈ 1.6×10⁵.
+
+    a = GM/r² ≈ 1.86×10¹² m/s² (extreme neutron star surface gravity).
+    x₂ displacement amplifies to F_U_Bi ≈ 10²⁰⁸ N order (positive buoyancy).
+
+    Physical interpretation: neutron drop coherence at nuclear density
+    drives the largest per-body F_neutron in the UQFF library, with
+    X-ray pulsations reflecting neutron drop dynamics.  Extends Kozima's
+    hypothesis from laboratory Pd-D/Ni-H to cosmic neutron star scales.
+
+    Paper benchmark:
+      σ_n(ρ) ≈ 10³⁵ m² (PAPER_840 convention: σ₀·ρ/ρ₀)
+      F_neutron ≈ 10⁴⁵ N (density-scaled Kozima)
+      F_U_Bi ≈ 10²⁰⁸ N order (positive buoyancy — same equivalence class as SNRs)
+
+    Source: FUBII benchmark.txt Step 4 (astrophysical analogues).
+    """
+
+    category = "Neutron Star"
+
+    # Physical constants
+    G       = 6.6743e-11
+    C       = 2.998e8
+    M_E     = 9.109e-31
+    E_CHG   = 1.602e-19
+    HBAR    = 1.0546e-34
+    MU_B    = 9.274e-24
+    M_SUN   = 1.989e30
+
+    # Kozima neutron drop parameters
+    K_NEUTRON   = 1.0e10
+    SIGMA_0     = 1.0e-4          # m² (general cross-section)
+    OMEGA_LENR  = 2.0 * math.pi * 1.25e12
+    DELTA_OMEGA = 2.0 * math.pi * 0.05e12
+    OMEGA_ACT   = 2.0 * math.pi * 300.0
+    ALPHA_MOD   = 0.1
+    RHO_0       = 1.0e-22         # kg/m³ reference density
+    K_LENR      = 1.0e-10
+
+    def compute_sigma_n_density(self, rho: float) -> float:
+        """σ_n(ρ) = σ₀·(ρ/ρ₀) — density-scaled neutron cross-section."""
+        return self.SIGMA_0 * (rho / self.RHO_0)
+
+    def compute_sigma_n_freq(self, omega: float) -> float:
+        """σ_n(ω) = σ₀·(ω/ω_LENR)²·exp(−(ω−ω_LENR)²/(2Δω²))."""
+        ratio = (omega / self.OMEGA_LENR) ** 2
+        gauss = math.exp(-((omega - self.OMEGA_LENR) ** 2)
+                         / (2.0 * self.DELTA_OMEGA ** 2))
+        return self.SIGMA_0 * ratio * gauss
+
+    def compute_F_neutron_dynamic(self, omega_eff: float, t: float) -> float:
+        """F_neutron(t) = k_neutron·σ_n(ω_eff)·(1 + α·cos(ω_act·t))."""
+        sigma = self.compute_sigma_n_freq(omega_eff)
+        return self.K_NEUTRON * sigma * (1.0 + self.ALPHA_MOD * math.cos(self.OMEGA_ACT * t))
+
+    def compute(self, dataset: dict) -> dict:
+        # PSR J0030+0451 system parameters (FUBII benchmark values)
+        M       = dataset.get('M',       1.4 * self.M_SUN)   # 2.786e30 kg
+        r       = dataset.get('r',       1.0e4)              # 10 km neutron star radius
+        T       = dataset.get('T',       1.0e6)              # K surface temperature
+        L_X     = dataset.get('L_X',     1.0e29)             # W X-ray luminosity
+        B_0     = dataset.get('B_0',     1.0e-4)             # T surface magnetic field
+        omega_0 = dataset.get('omega_0', 1.0e-12)            # rad/s
+        t       = dataset.get('t',       3.156e15)            # s (~100 Myr spin-down age)
+        rho     = dataset.get('rho',     1.0e17)             # kg/m³ nuclear density
+        theta   = dataset.get('theta',   math.pi / 4)
+
+        F_0         = dataset.get('F_0',        1.83e71)
+        rho_vac_UA  = dataset.get('rho_vac_UA', 7.09e-36)
+        DPM_stability = 0.01
+        DPM_momentum  = 0.93
+        DPM_gravity   = 1.0
+
+        # DPM resonance
+        DPM_resonance = (2.0 * self.MU_B * B_0) / (self.HBAR * omega_0)
+
+        # LENR resonance — standard ω₀ = 10⁻¹² gives F_LENR = 1.56e36 N
+        F_LENR = self.K_LENR * (self.OMEGA_LENR / omega_0) ** 2
+
+        # Actuation term
+        k_act  = 1.0e-6
+        F_act  = k_act * math.cos(self.OMEGA_ACT * t)
+
+        # Dark energy term
+        k_DE = 1.0e-30
+        F_DE = k_DE * L_X
+
+        # Lorentz resonance
+        V_test = 1.0e-3
+        F_res  = 2 * self.E_CHG * B_0 * V_test * math.sin(theta) * DPM_resonance
+
+        # *** DENSITY-SCALED NEUTRON DROP — the key PSR J0030 result ***
+        sigma_n_dens = self.compute_sigma_n_density(rho)       # ≈ 10³⁹ m²
+        F_neutron    = self.K_NEUTRON * sigma_n_dens           # ≈ 10⁴⁹ N
+
+        # Frequency-dependent σ_n for comparison
+        n_mix     = 4.17e9
+        omega_eff = self.OMEGA_ACT + n_mix * self.OMEGA_LENR
+        sigma_n_freq = self.compute_sigma_n_freq(omega_eff)
+        F_neutron_freq = self.K_NEUTRON * sigma_n_freq
+
+        # Dynamic F_neutron(t)
+        F_neutron_dyn = self.compute_F_neutron_dynamic(omega_eff, t)
+
+        # Relativistic coherence
+        k_rel          = 1.0e-10
+        E_cm_astro_eff = 1.24e24
+        E_cm_LEP       = 189.0e9
+        F_rel = k_rel * (E_cm_astro_eff / E_cm_LEP) ** 2
+
+        # Gravity and force assembly
+        term_gravity  = dpm_emergent_ug1(M, r, B_0) * DPM_gravity
+        term_momentum = (self.M_E * self.C ** 2 / r ** 2) * DPM_momentum * math.cos(theta)
+        term_vac      = rho_vac_UA * DPM_stability
+
+        # Surface gravity (extreme for NS)
+        a_surface = self.G * M / r ** 2    # ≈ 1.86e15 m/s²
+
+        # Quadratic for x₂ — buoyancy displacement
+        a_coef       = term_gravity
+        b_coef       = 4.72e-3
+        c_coef       = -F_0 + term_vac
+        discriminant = b_coef ** 2 - 4 * a_coef * c_coef
+        x_2 = ((-b_coef - math.sqrt(abs(discriminant))) / (2 * a_coef)
+               if discriminant >= 0 else
+               (-b_coef - math.sqrt(-discriminant)) / (2 * a_coef))
+
+        # Total integrand — F_neutron dominates at nuclear density
+        integrand_total = (-F_0 + term_momentum + term_gravity + term_vac
+                           + F_LENR + F_act + F_DE + F_res + F_neutron + F_rel)
+
+        F_U_Bi_i = integrand_total * abs(x_2)
+        F_U_Bi   = -F_0 + term_momentum + term_gravity + F_U_Bi_i
+
+        # F_neutron dominance ratio
+        F_neutron_over_LENR = F_neutron / F_LENR if F_LENR != 0 else float('inf')
+
+        return {
+            "class": "PSRJ0030NeutronStarBuoyancyCalculator",
+            "paper": "PAPER_1126",
+            "cp4_entry": 627,
+            "session": "FUBII-benchmark",
+            "system": "PSR J0030+0451",
+            "distance_ly": 1100,
+            "M_kg": M,
+            "r_m": r,
+            "T_K": T,
+            "rho_kg_m3": rho,
+            "a_surface_m_s2": a_surface,
+            "sigma_n_density_m2": sigma_n_dens,
+            "F_neutron_density_N": F_neutron,
+            "sigma_n_freq_m2": sigma_n_freq,
+            "F_neutron_freq_N": F_neutron_freq,
+            "F_neutron_dynamic_N": F_neutron_dyn,
+            "F_LENR_N": F_LENR,
+            "F_neutron_over_LENR": F_neutron_over_LENR,
+            "F_rel_N": F_rel,
+            "DPM_resonance": DPM_resonance,
+            "x_2_m": x_2,
+            "F_U_Bi_i_N": F_U_Bi_i,
+            "F_U_Bi_N": F_U_Bi,
+            "primary_equations": [
+                "*** PSR J0030+0451 — Isolated Millisecond Pulsar LENR Buoyancy ***",
+                f"M = {M:.4e} kg  (1.4 M☉, NICER 2019 constraint)",
+                f"r = {r:.1e} m  (neutron star radius)",
+                f"ρ = {rho:.1e} kg/m³  (nuclear density interior)",
+                f"a_surface = GM/r² = {a_surface:.4e} m/s²",
+                f"σ_n(ρ) = σ₀·(ρ/ρ₀) = {sigma_n_dens:.4e} m²  [density-scaled Kozima]",
+                f"F_neutron = k_neutron·σ_n(ρ) = {F_neutron:.4e} N  [density-scaled Kozima]",
+                f"F_LENR = k_LENR·(ω_LENR/ω₀)² = {F_LENR:.4e} N",
+                f"F_neutron/F_LENR = {F_neutron_over_LENR:.4e}  [neutron drop dominates]",
+                f"DPM_resonance = 2μ_B·B₀/(ℏ·ω₀) = {DPM_resonance:.4e}",
+                f"x₂ = {x_2:.4e} m",
+                f"F_U_Bi_i = {F_U_Bi_i:.4e} N",
+                f"F_U_Bi = {F_U_Bi:.4e} N  [benchmark: 2.53e208 N]",
+            ],
+            "available_equations": [
+                "σ_n(ρ) = σ₀·(ρ/ρ₀) — density-scaled neutron absorption (Kozima)",
+                "σ_n(ω) = σ₀·(ω/ω_LENR)²·exp(−(ω−ω_LENR)²/(2Δω²)) — frequency-dependent",
+                "F_neutron(t) = k_neutron·σ_n(ω_eff)·(1+α·cos(ω_act·t)) — dynamic oscillation",
+                "ω_eff = ω_act + n·ω_LENR (n ≈ 4.17×10⁹) — nonlinear frequency mixing",
+                "F_LENR = k_LENR·(ω_LENR/ω₀)² — LENR resonance amplification",
+                "F_U_Bi_i = integrand·|x₂| — buoyancy displacement product",
+                "Isotopic anomalies: ²H/¹H > 10⁻⁵, ¹³C/¹²C > 0.01 (ALMA prediction)",
+                "X-ray pulsation correlation: flare freq 10⁻³–10⁻¹ Hz ↔ neutron dynamics",
+            ],
+            "simulation_set": {
+                "rho_sweep": "ρ from 10¹⁴ to 10¹⁸ kg/m³ — map F_neutron scaling at NS density",
+                "omega_0_sweep": "ω₀ from 10⁻¹⁵ to 10⁻⁹ — F_LENR vs F_neutron dominance",
+                "M_NS_sweep": "M from 1.0 to 2.5 M☉ — TOV mass dependence on F_U_Bi",
+                "r_NS_sweep": "r from 8e3 to 15e3 m — EOS-dependent radius effect",
+                "t_age_sweep": "t from 10⁸ to 10¹⁶ s — spin-down epoch effect on F_act",
+                "paper_benchmark": "expect F_U_Bi ≈ 2.53e208 N, F_neutron ≈ 10⁴⁹ N (PAPER_1126)",
+            },
+            "note": "PAPER_1126 CP4 #627. FUBII benchmark Step 4. Gap fill: PSR J0030+0451.",
+        }
+
+    def simulate(self, sweep=None, **kw):
+        results = []
+        for rho_val in (sweep or [1e14, 1e15, 1e16, 1e17, 1e18]):
+            r = self.compute({"rho": rho_val})
+            r["sweep_val"] = rho_val
+            results.append(r)
+        return results
+
+    def self_update(self): pass
+    def self_expand(self): pass
+
+
 # ── Session 222-BB-B class list ───────────────────────────────────────────
 
 _SESSION_222BB_B_CLASSES = [
@@ -42809,4 +43038,10 @@ _SESSION_222BB_B_CLASSES = [
     'H2OMaserJShockEmissionCalculator',                              # PAPER_1123 #624
     'CGMDwarfGalaxyMetalRetentionCalculator',                        # PAPER_1124 #625
     'AGNFeedbackMSigmaScalingCalculator',                            # PAPER_1125 #626
+]
+
+# ── FUBII benchmark gap-fill class list ───────────────────────────────────
+
+_SESSION_FUBII_BENCHMARK_CLASSES = [
+    'PSRJ0030NeutronStarBuoyancyCalculator',                         # PAPER_1126 #627
 ]
