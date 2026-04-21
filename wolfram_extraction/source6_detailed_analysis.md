@@ -44,9 +44,9 @@
 
 **API Integrations:**
 1. **NASA APIs:**
-   - APOD (Astronomy Picture of the Day) - KEY: PNJaNeFWqMb2g0CEQGqJePkndqYfKvBzq6XJqAwg
-   - EPIC (Earth Polychromatic Imaging Camera) - KEY: FJnBo64nLFqExHwDchrcaf101D8wmGSm0cF27clz
-2. **MAST (Mikulski Archive):** KEY: emXvt90Htf0U4RogKTB5lqSxClUeg2pvMQxvZciM
+   - APOD (Astronomy Picture of the Day) - KEY: [PROMPT_FOR_NASA_API_KEY_1]
+   - EPIC (Earth Polychromatic Imaging Camera) - KEY: [PROMPT_FOR_NASA_API_KEY_2]
+2. **MAST (Mikulski Archive):** KEY: [PROMPT_FOR_MAST_API_KEY]
 3. **WebSocket:** Live data (LIGO/EHT gravitational waves)
 
 **Cloud Services:**

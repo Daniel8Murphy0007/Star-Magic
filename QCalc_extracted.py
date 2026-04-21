@@ -150,9 +150,9 @@ EXTRACTED_CONSTANTS = {
     'MAX_NODES_HYPERGRAPH_INTEGRATED': 1000000,  # Max hypergraph nodes
     'MAX_QUERY_LENGTH': 6000,
     'MAX_WINDOWS': 21,  # Increased for ALMA Cycle 12
-    'NASA_API_KEY_1': "PNJaNeFWqMb2g0CEQGqJePkndqYfKvBzq6XJqAwg",
-    'NASA_API_KEY_2': "FJnBo64nLFqExHwDchrcaf101D8wmGSm0cF27clz",
-    'MAST_API_KEY': "emXvt90Htf0U4RogKTB5lqSxClUeg2pvMQxvZciM",
+    'NASA_API_KEY_1': "[PROMPT_FOR_NASA_API_KEY_1]",
+    'NASA_API_KEY_2': "[PROMPT_FOR_NASA_API_KEY_2]",
+    'MAST_API_KEY': "[PROMPT_FOR_MAST_API_KEY]",
     'OPENAI_API_KEY': "your_openai_api_key_here",
     'COGNITO_CLIENT_ID': "your_cognito_client_id",
     'COGNITO_REGION': "us-east-1",

@@ -1,4 +1,4 @@
-﻿User: git commit, git push/sync remote and repo
+User: git commit, git push/sync remote and repo
 
 GitHub Copilot: I'll help you commit and push your changes to the remote repository. Let me first check what changes need to be committed. 
 
@@ -963,9 +963,9 @@ Looking at **APIFetch.py**, I can see the file has **50 APIs** organized into 10
 
 **Please provide additional APIs you'd like me to add to expand this registry beyond 50!**
 
-User: Here's an API update:#define NASA_API_KEY_1 "PNJaNeFWqMb2g0CEQGqJePkndqYfKvBzq6XJqAwg"
-#define NASA_API_KEY_2 "FJnBo64nLFqExHwDchrcaf101D8wmGSm0cF27clz"
-#define MAST_API_KEY "emXvt90Htf0U4RogKTB5lqSxClUeg2pvMQxvZciM"
+User: Here's an API update:#define NASA_API_KEY_1 "[PROMPT_FOR_NASA_API_KEY_1]"
+#define NASA_API_KEY_2 "[PROMPT_FOR_NASA_API_KEY_2]"
+#define MAST_API_KEY "[PROMPT_FOR_MAST_API_KEY]"
 void SearchNASA(const std::string& query, std::vector& nasaResults) {
 CURL* curl = curl_easy_init();
 std::vectorstd::string endpoints = {
@@ -1041,9 +1041,9 @@ Ran terminal command: git push origin master
 ### **New NASA Services Added (With API Keys):**
 
 **API Keys Configured:**
-- `NASA_API_KEY_1`: `PNJaNeFWqMb2g0CEQGqJePkndqYfKvBzq6XJqAwg`
-- `NASA_API_KEY_2`: `FJnBo64nLFqExHwDchrcaf101D8wmGSm0cF27clz`
-- `MAST_API_KEY`: `emXvt90Htf0U4RogKTB5lqSxClUeg2pvMQxvZciM`
+- `NASA_API_KEY_1`: `[PROMPT_FOR_NASA_API_KEY_1]`
+- `NASA_API_KEY_2`: `[PROMPT_FOR_NASA_API_KEY_2]`
+- `MAST_API_KEY`: `[PROMPT_FOR_MAST_API_KEY]`
 
 **New NASA APIs Implemented:**
 

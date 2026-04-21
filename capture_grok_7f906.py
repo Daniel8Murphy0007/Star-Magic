@@ -88,7 +88,7 @@ try:
     script = f"""
         const response = await fetch('{grok_api_url}', {{
             headers: {{
-                'Authorization': 'Bearer AAAAAAAAAAAAAAAAAAAAANRILgAAAAAAnNwIzUejRCOuH5E6I%2BxMen7Lm0E%3D',
+                'Authorization': 'Bearer [PROMPT_FOR_GROK_WEB_BEARER_TOKEN]',
                 'x-csrf-token': document.cookie.match(/ct0=([^;]+)/)?.[1] || '',
                 'Content-Type': 'application/json',
             }},

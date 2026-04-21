@@ -339,8 +339,8 @@ if (mimeData->hasUrls()) {
 
 ```cpp
 // NASA API Keys
-#define NASA_API_KEY_1 "PNJaNeFWqMb2g0CEQGqJePkndqYfKvBzq6XJqAwg"  // APOD/imagery
-#define NASA_API_KEY_2 "FJnBo64nLFqExHwDchrcaf101D8wmGSm0cF27clz"  // DONKI space weather
+#define NASA_API_KEY_1 "[PROMPT_FOR_NASA_API_KEY_1]"  // APOD/imagery
+#define NASA_API_KEY_2 "[PROMPT_FOR_NASA_API_KEY_2]"  // DONKI space weather
 
 // API Functions
 std::string FetchDONKI(const std::string &startDate, const std::string &endDate);

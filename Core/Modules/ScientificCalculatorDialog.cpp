@@ -55,9 +55,9 @@
 
 #define MAX_QUERY_LENGTH 6000
 #define MAX_WINDOWS 21 // Increased for ALMA Cycle 12
-#define NASA_API_KEY_1 "PNJaNeFWqMb2g0CEQGqJePkndqYfKvBzq6XJqAwg"
-#define NASA_API_KEY_2 "FJnBo64nLFqExHwDchrcaf101D8wmGSm0cF27clz"
-#define MAST_API_KEY "emXvt90Htf0U4RogKTB5lqSxClUeg2pvMQxvZciM"
+#define NASA_API_KEY_1 "[PROMPT_FOR_NASA_API_KEY_1]"
+#define NASA_API_KEY_2 "[PROMPT_FOR_NASA_API_KEY_2]"
+#define MAST_API_KEY "[PROMPT_FOR_MAST_API_KEY]"
 #define OPENAI_API_KEY "your_openai_api_key_here"
 #define COGNITO_CLIENT_ID "your_cognito_client_id"
 #define COGNITO_REGION "us-east-1"

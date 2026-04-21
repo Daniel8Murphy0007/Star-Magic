@@ -1,4 +1,4 @@
-﻿// ==========================================================================================
+// ==========================================================================================
 // COMPLETE PHYSICS INTEGRATION - ALL 4,890+ PATTERNS
 // Integration Date: November 22, 2025
 // Source: 172 source files (source1.cpp - source173.cpp)
@@ -13,9 +13,9 @@
 #define WOLFRAM_TERM "(* Auto-contribution from source1.cpp *) + source1_unification_sector"
 #define MAX_QUERY_LENGTH 6000
 #define MAX_WINDOWS 21 // Increased for ALMA Cycle 12
-#define NASA_API_KEY_1 "PNJaNeFWqMb2g0CEQGqJePkndqYfKvBzq6XJqAwg"
-#define NASA_API_KEY_2 "FJnBo64nLFqExHwDchrcaf101D8wmGSm0cF27clz"
-#define MAST_API_KEY "emXvt90Htf0U4RogKTB5lqSxClUeg2pvMQxvZciM"
+#define NASA_API_KEY_1 "[PROMPT_FOR_NASA_API_KEY_1]"
+#define NASA_API_KEY_2 "[PROMPT_FOR_NASA_API_KEY_2]"
+#define MAST_API_KEY "[PROMPT_FOR_MAST_API_KEY]"
 #define OPENAI_API_KEY "your_openai_api_key_here"
 #define COGNITO_CLIENT_ID "your_cognito_client_id"
 #define COGNITO_REGION "us-east-1"
@@ -621,9 +621,9 @@ const double PI_MATH = 3.14159265358979323846;
 #define WOLFRAM_TERM "(* Auto-contribution from source2.cpp *) + source2_unification_sector"
 #define MAX_QUERY_LENGTH 6000 // Maximum characters allowed in search query (prevents buffer overflow)
 #define MAX_WINDOWS 21        // Increased for ALMA Cycle 12 - 21 parallel browser windows
-#define NASA_API_KEY_1 "PNJaNeFWqMb2g0CEQGqJePkndqYfKvBzq6XJqAwg" // NASA APOD/imagery API
-#define NASA_API_KEY_2 "FJnBo64nLFqExHwDchrcaf101D8wmGSm0cF27clz" // NASA DONKI space weather API
-#define MAST_API_KEY "emXvt90Htf0U4RogKTB5lqSxClUeg2pvMQxvZciM"
+#define NASA_API_KEY_1 "[PROMPT_FOR_NASA_API_KEY_1]" // NASA APOD/imagery API
+#define NASA_API_KEY_2 "[PROMPT_FOR_NASA_API_KEY_2]" // NASA DONKI space weather API
+#define MAST_API_KEY "[PROMPT_FOR_MAST_API_KEY]"
 #define OPENAI_API_KEY "your_openai_api_key_here"
 #define COGNITO_CLIENT_ID "your_cognito_client_id" // Your Cognito app client ID
 #define COGNITO_REGION "us-east-1"                 // AWS region where Cognito is hosted
@@ -700,9 +700,9 @@ const double PI_MATH = 3.14159265358979323846;
 #define WOLFRAM_TERM "(* Auto-contribution from source3.cpp *) + source3_unification_sector"
 #define MAX_QUERY_LENGTH 6000
 #define MAX_WINDOWS 21 // Increased for ALMA Cycle 12
-#define NASA_API_KEY_1 "PNJaNeFWqMb2g0CEQGqJePkndqYfKvBzq6XJqAwg"
-#define NASA_API_KEY_2 "FJnBo64nLFqExHwDchrcaf101D8wmGSm0cF27clz"
-#define MAST_API_KEY "emXvt90Htf0U4RogKTB5lqSxClUeg2pvMQxvZciM"
+#define NASA_API_KEY_1 "[PROMPT_FOR_NASA_API_KEY_1]"
+#define NASA_API_KEY_2 "[PROMPT_FOR_NASA_API_KEY_2]"
+#define MAST_API_KEY "[PROMPT_FOR_MAST_API_KEY]"
 #define OPENAI_API_KEY "your_openai_api_key_here"
 #define COGNITO_CLIENT_ID "your_cognito_client_id"
 #define COGNITO_REGION "us-east-1"

@@ -1817,12 +1817,12 @@ VR::VRRuntime& getVRRuntime() { return VR::VRRuntime::instance(); }
 
 // NASA API Keys - Used to access NASA's public data services
 // Get your own keys at: https://api.nasa.gov/
-#define NASA_API_KEY_1 "PNJaNeFWqMb2g0CEQGqJePkndqYfKvBzq6XJqAwg" // NASA APOD/imagery API
-#define NASA_API_KEY_2 "FJnBo64nLFqExHwDchrcaf101D8wmGSm0cF27clz" // NASA DONKI space weather API
+#define NASA_API_KEY_1 "[PROMPT_FOR_NASA_API_KEY_1]" // NASA APOD/imagery API
+#define NASA_API_KEY_2 "[PROMPT_FOR_NASA_API_KEY_2]" // NASA DONKI space weather API
 
 // MAST API Key - Access to astronomical data archives (Hubble, JWST, Chandra, etc.)
 // Get your own key at: https://auth.mast.stsci.edu/
-#define MAST_API_KEY "emXvt90Htf0U4RogKTB5lqSxClUeg2pvMQxvZciM"
+#define MAST_API_KEY "[PROMPT_FOR_MAST_API_KEY]"
 
 // OpenAI API Key - Used for GPT-4 summarization of search results
 // Replace with your key from: https://platform.openai.com/api-keys

@@ -23853,44 +23853,44 @@ int main(int argc, char *argv[])
             double g_c_sgr = SOURCE4::compute_compressed_MUGE_SOURCE4(SOURCE4::sgr1745_SOURCE4);
             double g_r_sgr = SOURCE4::compute_resonance_MUGE_SOURCE4(SOURCE4::sgr1745_SOURCE4, SOURCE4::res_params_default_SOURCE4);
             cout << "  SGR1745 (Magnetar):" << endl;
-            cout << "    Compressed MUGE: " << scientific << g_c_sgr << " m/s²" << endl;
-            cout << "    Resonance MUGE:  " << scientific << g_r_sgr << " m/s²" << endl;
+            cout << "    Compressed MUGE: " << scientific << g_c_sgr << " m/sï¿½" << endl;
+            cout << "    Resonance MUGE:  " << scientific << g_r_sgr << " m/sï¿½" << endl;
             
             double g_c_saga = SOURCE4::compute_compressed_MUGE_SOURCE4(SOURCE4::sagA_SOURCE4);
             double g_r_saga = SOURCE4::compute_resonance_MUGE_SOURCE4(SOURCE4::sagA_SOURCE4, SOURCE4::res_params_default_SOURCE4);
             cout << "  SagA* (SMBH):" << endl;
-            cout << "    Compressed MUGE: " << scientific << g_c_saga << " m/s²" << endl;
-            cout << "    Resonance MUGE:  " << scientific << g_r_saga << " m/s²" << endl;
+            cout << "    Compressed MUGE: " << scientific << g_c_saga << " m/sï¿½" << endl;
+            cout << "    Resonance MUGE:  " << scientific << g_r_saga << " m/sï¿½" << endl;
             
             double g_c_tap = SOURCE4::compute_compressed_MUGE_SOURCE4(SOURCE4::tapestry_SOURCE4);
             double g_r_tap = SOURCE4::compute_resonance_MUGE_SOURCE4(SOURCE4::tapestry_SOURCE4, SOURCE4::res_params_default_SOURCE4);
             cout << "  Tapestry (Star Formation):" << endl;
-            cout << "    Compressed MUGE: " << scientific << g_c_tap << " m/s²" << endl;
-            cout << "    Resonance MUGE:  " << scientific << g_r_tap << " m/s²" << endl;
+            cout << "    Compressed MUGE: " << scientific << g_c_tap << " m/sï¿½" << endl;
+            cout << "    Resonance MUGE:  " << scientific << g_r_tap << " m/sï¿½" << endl;
             
             double g_c_west = SOURCE4::compute_compressed_MUGE_SOURCE4(SOURCE4::westerlund_SOURCE4);
             double g_r_west = SOURCE4::compute_resonance_MUGE_SOURCE4(SOURCE4::westerlund_SOURCE4, SOURCE4::res_params_default_SOURCE4);
             cout << "  Westerlund2 (Cluster):" << endl;
-            cout << "    Compressed MUGE: " << scientific << g_c_west << " m/s²" << endl;
-            cout << "    Resonance MUGE:  " << scientific << g_r_west << " m/s²" << endl;
+            cout << "    Compressed MUGE: " << scientific << g_c_west << " m/sï¿½" << endl;
+            cout << "    Resonance MUGE:  " << scientific << g_r_west << " m/sï¿½" << endl;
             
             double g_c_pil = SOURCE4::compute_compressed_MUGE_SOURCE4(SOURCE4::pillars_SOURCE4);
             double g_r_pil = SOURCE4::compute_resonance_MUGE_SOURCE4(SOURCE4::pillars_SOURCE4, SOURCE4::res_params_default_SOURCE4);
             cout << "  Pillars of Creation:" << endl;
-            cout << "    Compressed MUGE: " << scientific << g_c_pil << " m/s²" << endl;
-            cout << "    Resonance MUGE:  " << scientific << g_r_pil << " m/s²" << endl;
+            cout << "    Compressed MUGE: " << scientific << g_c_pil << " m/sï¿½" << endl;
+            cout << "    Resonance MUGE:  " << scientific << g_r_pil << " m/sï¿½" << endl;
             
             double g_c_ring = SOURCE4::compute_compressed_MUGE_SOURCE4(SOURCE4::rings_SOURCE4);
             double g_r_ring = SOURCE4::compute_resonance_MUGE_SOURCE4(SOURCE4::rings_SOURCE4, SOURCE4::res_params_default_SOURCE4);
             cout << "  Rings of Relativity (Lens):" << endl;
-            cout << "    Compressed MUGE: " << scientific << g_c_ring << " m/s²" << endl;
-            cout << "    Resonance MUGE:  " << scientific << g_r_ring << " m/s²" << endl;
+            cout << "    Compressed MUGE: " << scientific << g_c_ring << " m/sï¿½" << endl;
+            cout << "    Resonance MUGE:  " << scientific << g_r_ring << " m/sï¿½" << endl;
             
             double g_c_guide = SOURCE4::compute_compressed_MUGE_SOURCE4(SOURCE4::student_guide_SOURCE4);
             double g_r_guide = SOURCE4::compute_resonance_MUGE_SOURCE4(SOURCE4::student_guide_SOURCE4, SOURCE4::res_params_default_SOURCE4);
             cout << "  Student Guide Universe:" << endl;
-            cout << "    Compressed MUGE: " << scientific << g_c_guide << " m/s²" << endl;
-            cout << "    Resonance MUGE:  " << scientific << g_r_guide << " m/s²" << endl;
+            cout << "    Compressed MUGE: " << scientific << g_c_guide << " m/sï¿½" << endl;
+            cout << "    Resonance MUGE:  " << scientific << g_r_guide << " m/sï¿½" << endl;
             
             cout << "\n--- SOURCE4 Validation Complete ---" << endl;
             cout << "All 37 physics functions operational (8 UQFF + 10 Compressed + 14 Resonance + 6 Helpers)" << endl;
@@ -23961,44 +23961,44 @@ int main(int argc, char *argv[])
             double g_c_sgr = SOURCE4::compute_compressed_MUGE_SOURCE4(SOURCE4::sgr1745_SOURCE4);
             double g_r_sgr = SOURCE4::compute_resonance_MUGE_SOURCE4(SOURCE4::sgr1745_SOURCE4, SOURCE4::res_params_default_SOURCE4);
             cout << "  SGR1745 (Magnetar):" << endl;
-            cout << "    Compressed MUGE: " << scientific << g_c_sgr << " m/s²" << endl;
-            cout << "    Resonance MUGE:  " << scientific << g_r_sgr << " m/s²" << endl;
+            cout << "    Compressed MUGE: " << scientific << g_c_sgr << " m/sï¿½" << endl;
+            cout << "    Resonance MUGE:  " << scientific << g_r_sgr << " m/sï¿½" << endl;
             
             double g_c_saga = SOURCE4::compute_compressed_MUGE_SOURCE4(SOURCE4::sagA_SOURCE4);
             double g_r_saga = SOURCE4::compute_resonance_MUGE_SOURCE4(SOURCE4::sagA_SOURCE4, SOURCE4::res_params_default_SOURCE4);
             cout << "  SagA* (SMBH):" << endl;
-            cout << "    Compressed MUGE: " << scientific << g_c_saga << " m/s²" << endl;
-            cout << "    Resonance MUGE:  " << scientific << g_r_saga << " m/s²" << endl;
+            cout << "    Compressed MUGE: " << scientific << g_c_saga << " m/sï¿½" << endl;
+            cout << "    Resonance MUGE:  " << scientific << g_r_saga << " m/sï¿½" << endl;
             
             double g_c_tap = SOURCE4::compute_compressed_MUGE_SOURCE4(SOURCE4::tapestry_SOURCE4);
             double g_r_tap = SOURCE4::compute_resonance_MUGE_SOURCE4(SOURCE4::tapestry_SOURCE4, SOURCE4::res_params_default_SOURCE4);
             cout << "  Tapestry (Star Formation):" << endl;
-            cout << "    Compressed MUGE: " << scientific << g_c_tap << " m/s²" << endl;
-            cout << "    Resonance MUGE:  " << scientific << g_r_tap << " m/s²" << endl;
+            cout << "    Compressed MUGE: " << scientific << g_c_tap << " m/sï¿½" << endl;
+            cout << "    Resonance MUGE:  " << scientific << g_r_tap << " m/sï¿½" << endl;
             
             double g_c_west = SOURCE4::compute_compressed_MUGE_SOURCE4(SOURCE4::westerlund_SOURCE4);
             double g_r_west = SOURCE4::compute_resonance_MUGE_SOURCE4(SOURCE4::westerlund_SOURCE4, SOURCE4::res_params_default_SOURCE4);
             cout << "  Westerlund2 (Cluster):" << endl;
-            cout << "    Compressed MUGE: " << scientific << g_c_west << " m/s²" << endl;
-            cout << "    Resonance MUGE:  " << scientific << g_r_west << " m/s²" << endl;
+            cout << "    Compressed MUGE: " << scientific << g_c_west << " m/sï¿½" << endl;
+            cout << "    Resonance MUGE:  " << scientific << g_r_west << " m/sï¿½" << endl;
             
             double g_c_pil = SOURCE4::compute_compressed_MUGE_SOURCE4(SOURCE4::pillars_SOURCE4);
             double g_r_pil = SOURCE4::compute_resonance_MUGE_SOURCE4(SOURCE4::pillars_SOURCE4, SOURCE4::res_params_default_SOURCE4);
             cout << "  Pillars of Creation:" << endl;
-            cout << "    Compressed MUGE: " << scientific << g_c_pil << " m/s²" << endl;
-            cout << "    Resonance MUGE:  " << scientific << g_r_pil << " m/s²" << endl;
+            cout << "    Compressed MUGE: " << scientific << g_c_pil << " m/sï¿½" << endl;
+            cout << "    Resonance MUGE:  " << scientific << g_r_pil << " m/sï¿½" << endl;
             
             double g_c_ring = SOURCE4::compute_compressed_MUGE_SOURCE4(SOURCE4::rings_SOURCE4);
             double g_r_ring = SOURCE4::compute_resonance_MUGE_SOURCE4(SOURCE4::rings_SOURCE4, SOURCE4::res_params_default_SOURCE4);
             cout << "  Rings of Relativity (Lens):" << endl;
-            cout << "    Compressed MUGE: " << scientific << g_c_ring << " m/s²" << endl;
-            cout << "    Resonance MUGE:  " << scientific << g_r_ring << " m/s²" << endl;
+            cout << "    Compressed MUGE: " << scientific << g_c_ring << " m/sï¿½" << endl;
+            cout << "    Resonance MUGE:  " << scientific << g_r_ring << " m/sï¿½" << endl;
             
             double g_c_guide = SOURCE4::compute_compressed_MUGE_SOURCE4(SOURCE4::student_guide_SOURCE4);
             double g_r_guide = SOURCE4::compute_resonance_MUGE_SOURCE4(SOURCE4::student_guide_SOURCE4, SOURCE4::res_params_default_SOURCE4);
             cout << "  Student Guide Universe:" << endl;
-            cout << "    Compressed MUGE: " << scientific << g_c_guide << " m/s²" << endl;
-            cout << "    Resonance MUGE:  " << scientific << g_r_guide << " m/s²" << endl;
+            cout << "    Compressed MUGE: " << scientific << g_c_guide << " m/sï¿½" << endl;
+            cout << "    Resonance MUGE:  " << scientific << g_r_guide << " m/sï¿½" << endl;
             
             cout << "\n--- SOURCE4 Validation Complete ---" << endl;
             cout << "All 37 physics functions operational (8 UQFF + 10 Compressed + 14 Resonance + 6 Helpers)" << endl;
@@ -24029,44 +24029,44 @@ int main(int argc, char *argv[])
             double g_c_sgr = SOURCE4::compute_compressed_MUGE_SOURCE4(SOURCE4::sgr1745_SOURCE4);
             double g_r_sgr = SOURCE4::compute_resonance_MUGE_SOURCE4(SOURCE4::sgr1745_SOURCE4, SOURCE4::res_params_default_SOURCE4);
             cout << "  SGR1745 (Magnetar):" << endl;
-            cout << "    Compressed MUGE: " << scientific << g_c_sgr << " m/s²" << endl;
-            cout << "    Resonance MUGE:  " << scientific << g_r_sgr << " m/s²" << endl;
+            cout << "    Compressed MUGE: " << scientific << g_c_sgr << " m/sï¿½" << endl;
+            cout << "    Resonance MUGE:  " << scientific << g_r_sgr << " m/sï¿½" << endl;
             
             double g_c_saga = SOURCE4::compute_compressed_MUGE_SOURCE4(SOURCE4::sagA_SOURCE4);
             double g_r_saga = SOURCE4::compute_resonance_MUGE_SOURCE4(SOURCE4::sagA_SOURCE4, SOURCE4::res_params_default_SOURCE4);
             cout << "  SagA* (SMBH):" << endl;
-            cout << "    Compressed MUGE: " << scientific << g_c_saga << " m/s²" << endl;
-            cout << "    Resonance MUGE:  " << scientific << g_r_saga << " m/s²" << endl;
+            cout << "    Compressed MUGE: " << scientific << g_c_saga << " m/sï¿½" << endl;
+            cout << "    Resonance MUGE:  " << scientific << g_r_saga << " m/sï¿½" << endl;
             
             double g_c_tap = SOURCE4::compute_compressed_MUGE_SOURCE4(SOURCE4::tapestry_SOURCE4);
             double g_r_tap = SOURCE4::compute_resonance_MUGE_SOURCE4(SOURCE4::tapestry_SOURCE4, SOURCE4::res_params_default_SOURCE4);
             cout << "  Tapestry (Star Formation):" << endl;
-            cout << "    Compressed MUGE: " << scientific << g_c_tap << " m/s²" << endl;
-            cout << "    Resonance MUGE:  " << scientific << g_r_tap << " m/s²" << endl;
+            cout << "    Compressed MUGE: " << scientific << g_c_tap << " m/sï¿½" << endl;
+            cout << "    Resonance MUGE:  " << scientific << g_r_tap << " m/sï¿½" << endl;
             
             double g_c_west = SOURCE4::compute_compressed_MUGE_SOURCE4(SOURCE4::westerlund_SOURCE4);
             double g_r_west = SOURCE4::compute_resonance_MUGE_SOURCE4(SOURCE4::westerlund_SOURCE4, SOURCE4::res_params_default_SOURCE4);
             cout << "  Westerlund2 (Cluster):" << endl;
-            cout << "    Compressed MUGE: " << scientific << g_c_west << " m/s²" << endl;
-            cout << "    Resonance MUGE:  " << scientific << g_r_west << " m/s²" << endl;
+            cout << "    Compressed MUGE: " << scientific << g_c_west << " m/sï¿½" << endl;
+            cout << "    Resonance MUGE:  " << scientific << g_r_west << " m/sï¿½" << endl;
             
             double g_c_pil = SOURCE4::compute_compressed_MUGE_SOURCE4(SOURCE4::pillars_SOURCE4);
             double g_r_pil = SOURCE4::compute_resonance_MUGE_SOURCE4(SOURCE4::pillars_SOURCE4, SOURCE4::res_params_default_SOURCE4);
             cout << "  Pillars of Creation:" << endl;
-            cout << "    Compressed MUGE: " << scientific << g_c_pil << " m/s²" << endl;
-            cout << "    Resonance MUGE:  " << scientific << g_r_pil << " m/s²" << endl;
+            cout << "    Compressed MUGE: " << scientific << g_c_pil << " m/sï¿½" << endl;
+            cout << "    Resonance MUGE:  " << scientific << g_r_pil << " m/sï¿½" << endl;
             
             double g_c_ring = SOURCE4::compute_compressed_MUGE_SOURCE4(SOURCE4::rings_SOURCE4);
             double g_r_ring = SOURCE4::compute_resonance_MUGE_SOURCE4(SOURCE4::rings_SOURCE4, SOURCE4::res_params_default_SOURCE4);
             cout << "  Rings of Relativity (Lens):" << endl;
-            cout << "    Compressed MUGE: " << scientific << g_c_ring << " m/s²" << endl;
-            cout << "    Resonance MUGE:  " << scientific << g_r_ring << " m/s²" << endl;
+            cout << "    Compressed MUGE: " << scientific << g_c_ring << " m/sï¿½" << endl;
+            cout << "    Resonance MUGE:  " << scientific << g_r_ring << " m/sï¿½" << endl;
             
             double g_c_guide = SOURCE4::compute_compressed_MUGE_SOURCE4(SOURCE4::student_guide_SOURCE4);
             double g_r_guide = SOURCE4::compute_resonance_MUGE_SOURCE4(SOURCE4::student_guide_SOURCE4, SOURCE4::res_params_default_SOURCE4);
             cout << "  Student Guide Universe:" << endl;
-            cout << "    Compressed MUGE: " << scientific << g_c_guide << " m/s²" << endl;
-            cout << "    Resonance MUGE:  " << scientific << g_r_guide << " m/s²" << endl;
+            cout << "    Compressed MUGE: " << scientific << g_c_guide << " m/sï¿½" << endl;
+            cout << "    Resonance MUGE:  " << scientific << g_r_guide << " m/sï¿½" << endl;
             
             cout << "\n--- SOURCE4 Validation Complete ---" << endl;
             cout << "All 37 physics functions operational (8 UQFF + 10 Compressed + 14 Resonance + 6 Helpers)" << endl;
@@ -25847,7 +25847,7 @@ const double c_SOURCE4 = 3.0e8;              // Speed of light (m/s)
 const double G_SOURCE4 = 6.67430e-11;        // Gravitational constant (m^3 kg^-1 s^-2)
 const double H0_SOURCE4 = 2.269e-18;         // Hubble constant (s^-1)
 const double Lambda_SOURCE4 = 1.1e-52;       // Cosmological constant (m^-2)
-const double hbar_SOURCE4 = 1.0546e-34;      // Reduced Planck constant (J·s)
+const double hbar_SOURCE4 = 1.0546e-34;      // Reduced Planck constant (Jï¿½s)
 
 // Galactic parameters
 double Omega_g_SOURCE4 = 7.3e-16;  // Galactic spin rate (rad/s)
@@ -25913,7 +25913,7 @@ struct MUGESystem_SOURCE4 {
     double M_DM;           // Dark matter mass (kg)
     double delta_rho_rho;  // Density perturbation
     // Resonance-specific
-    double I;              // Moment of inertia (kg·m^2)
+    double I;              // Moment of inertia (kgï¿½m^2)
     double A;              // Magnetic flux area (m^2)
     double omega1;         // Primary frequency (rad/s)
     double omega2;         // Secondary frequency (rad/s)
@@ -27467,9 +27467,9 @@ public:
         if (!log_file.is_open()) return;
         
         log_file << "=== " << system_name << " Validation ===" << std::endl;
-        log_file << "UQFF:               " << std::scientific << result.uqff_value << " m/s²" << std::endl;
-        log_file << "MUGE Compressed:    " << result.muge_compressed_value << " m/s²" << std::endl;
-        log_file << "MUGE Resonance:     " << result.muge_resonance_value << " m/s²" << std::endl;
+        log_file << "UQFF:               " << std::scientific << result.uqff_value << " m/sï¿½" << std::endl;
+        log_file << "MUGE Compressed:    " << result.muge_compressed_value << " m/sï¿½" << std::endl;
+        log_file << "MUGE Resonance:     " << result.muge_resonance_value << " m/sï¿½" << std::endl;
         log_file << "UQFF-MUGE Diff:     " << std::fixed << std::setprecision(2) 
                  << result.uqff_muge_diff << "%" << std::endl;
         log_file << "Compressed-Res Diff:" << result.compressed_resonance_diff << "%" << std::endl;
@@ -27506,7 +27506,7 @@ public:
 #endif
 
 #ifndef G_CONST
-#define G_CONST 6.6743e-11  // Gravitational constant m³/kg/s²
+#define G_CONST 6.6743e-11  // Gravitational constant mï¿½/kg/sï¿½
 #endif
 
 #ifndef K_BOLTZ
@@ -27866,7 +27866,7 @@ public:
         return (G * M_enclosed) / (r * r);
     }
     std::string getName() const { return "VirgoClusterMass"; }
-    std::string getDescription() const { return "Virgo Cluster total mass gravitational acceleration: a = G·M(<r)/r² with M_cluster~1.2e15 M_sun"; }
+    std::string getDescription() const { return "Virgo Cluster total mass gravitational acceleration: a = Gï¿½M(<r)/rï¿½ with M_cluster~1.2e15 M_sun"; }
 };
 
 class VirgoClusterIntraclusterMediumTerm_SOURCE82
@@ -27884,7 +27884,7 @@ public:
         return P_ICM;
     }
     std::string getName() const { return "VirgoClusterICM"; }
-    std::string getDescription() const { return "ICM beta-model pressure: P = n_e(r)·k_B·T with T~2.3 keV, ß~0.5"; }
+    std::string getDescription() const { return "ICM beta-model pressure: P = n_e(r)ï¿½k_Bï¿½T with T~2.3 keV, ï¿½~0.5"; }
 };
 
 class VirgoClusterGravitationalPotentialTerm_SOURCE82
@@ -27903,7 +27903,7 @@ public:
         return Phi;
     }
     std::string getName() const { return "VirgoClusterPotential"; }
-    std::string getDescription() const { return "NFW gravitational potential: F(r) = -G·M·ln(1+c·x)/(x·f(c)·R_vir) with c~4"; }
+    std::string getDescription() const { return "NFW gravitational potential: F(r) = -Gï¿½Mï¿½ln(1+cï¿½x)/(xï¿½f(c)ï¿½R_vir) with c~4"; }
 };
 
 class VirgoClusterDarkMatterTerm_SOURCE82
@@ -27921,7 +27921,7 @@ public:
         return rho_DM;
     }
     std::string getName() const { return "VirgoClusterDarkMatter"; }
-    std::string getDescription() const { return "NFW dark matter profile: ?(r) = ?_s/((r/r_s)·(1+r/r_s)²) with r_s~550 kpc"; }
+    std::string getDescription() const { return "NFW dark matter profile: ?(r) = ?_s/((r/r_s)ï¿½(1+r/r_s)ï¿½) with r_s~550 kpc"; }
 };
 
 class VirgoClusterM87JetTerm_SOURCE82
@@ -27939,7 +27939,7 @@ public:
         return u_jet * gamma;
     }
     std::string getName() const { return "VirgoM87Jet"; }
-    std::string getDescription() const { return "M87 AGN jet energy density: u_jet = L_jet·?/(4p·r²·v_jet·O) with L~10³7 W"; }
+    std::string getDescription() const { return "M87 AGN jet energy density: u_jet = L_jetï¿½?/(4pï¿½rï¿½ï¿½v_jetï¿½O) with L~10ï¿½7 W"; }
 };
 
 class VirgoClusterTidalStrippingTerm_SOURCE82
@@ -27959,7 +27959,7 @@ public:
         return a_tidal;
     }
     std::string getName() const { return "VirgoTidalStripping"; }
-    std::string getDescription() const { return "Tidal stripping acceleration: a_tidal = 2·G·M(<r)·r_t/r³ with r_t from Jacobi radius"; }
+    std::string getDescription() const { return "Tidal stripping acceleration: a_tidal = 2ï¿½Gï¿½M(<r)ï¿½r_t/rï¿½ with r_t from Jacobi radius"; }
 };
 
 class VirgoClusterVirialTerm_SOURCE82
@@ -27977,7 +27977,7 @@ public:
         return virial_ratio;
     }
     std::string getName() const { return "VirgoClusterVirial"; }
-    std::string getDescription() const { return "Virial equilibrium ratio: s_obs/s_vir where s_vir² = G·M/(3·R), s~700 km/s"; }
+    std::string getDescription() const { return "Virial equilibrium ratio: s_obs/s_vir where s_virï¿½ = Gï¿½M/(3ï¿½R), s~700 km/s"; }
 };
 
 class VirgoClusterXRayLuminosityTerm_SOURCE82
@@ -27995,7 +27995,7 @@ public:
         return epsilon_X;
     }
     std::string getName() const { return "VirgoXRay"; }
-    std::string getDescription() const { return "X-ray emissivity: e_X = n_e²·?(T) with ?(T)~3e-23·vT W·m³"; }
+    std::string getDescription() const { return "X-ray emissivity: e_X = n_eï¿½ï¿½?(T) with ?(T)~3e-23ï¿½vT Wï¿½mï¿½"; }
 };
 
 class VirgoClusterVelocityDispersionTerm_SOURCE82
@@ -28011,7 +28011,7 @@ public:
         return sigma_r;
     }
     std::string getName() const { return "VirgoVelocityDispersion"; }
-    std::string getDescription() const { return "Velocity dispersion profile: s(r) = s_0/v(1+(r/r_s)²) with s_0~700 km/s"; }
+    std::string getDescription() const { return "Velocity dispersion profile: s(r) = s_0/v(1+(r/r_s)ï¿½) with s_0~700 km/s"; }
 };
 
 // End SOURCE82 Wolfram physics integration
@@ -31653,9 +31653,9 @@ class UQFFNebulaTriadicModule; // Source164.cpp
 #define WOLFRAM_TERM "(* Auto-contribution from source1.cpp *) + source1_unification_sector"
 #define MAX_QUERY_LENGTH 6000
 #define MAX_WINDOWS 21 // Increased for ALMA Cycle 12
-#define NASA_API_KEY_1 "PNJaNeFWqMb2g0CEQGqJePkndqYfKvBzq6XJqAwg"
-#define NASA_API_KEY_2 "FJnBo64nLFqExHwDchrcaf101D8wmGSm0cF27clz"
-#define MAST_API_KEY "emXvt90Htf0U4RogKTB5lqSxClUeg2pvMQxvZciM"
+#define NASA_API_KEY_1 "[PROMPT_FOR_NASA_API_KEY_1]"
+#define NASA_API_KEY_2 "[PROMPT_FOR_NASA_API_KEY_2]"
+#define MAST_API_KEY "[PROMPT_FOR_MAST_API_KEY]"
 #define OPENAI_API_KEY "your_openai_api_key_here"
 #define COGNITO_CLIENT_ID "your_cognito_client_id"
 #define COGNITO_REGION "us-east-1"
@@ -32261,9 +32261,9 @@ const double PI_VAL = 3.141592653589793;
 // [Duplicate] #define WOLFRAM_TERM "(* Auto-contribution from source2.cpp *) + source2_unification_sector"
 // [Duplicate] #define MAX_QUERY_LENGTH 6000 // Maximum characters allowed in search query (prevents buffer overflow)
 // [Duplicate] #define MAX_WINDOWS 21        // Increased for ALMA Cycle 12 - 21 parallel browser windows
-// [Duplicate] #define NASA_API_KEY_1 "PNJaNeFWqMb2g0CEQGqJePkndqYfKvBzq6XJqAwg" // NASA APOD/imagery API
-// [Duplicate] #define NASA_API_KEY_2 "FJnBo64nLFqExHwDchrcaf101D8wmGSm0cF27clz" // NASA DONKI space weather API
-// [Duplicate] #define MAST_API_KEY "emXvt90Htf0U4RogKTB5lqSxClUeg2pvMQxvZciM"
+// [Duplicate] #define NASA_API_KEY_1 "[PROMPT_FOR_NASA_API_KEY_1]" // NASA APOD/imagery API
+// [Duplicate] #define NASA_API_KEY_2 "[PROMPT_FOR_NASA_API_KEY_2]" // NASA DONKI space weather API
+// [Duplicate] #define MAST_API_KEY "[PROMPT_FOR_MAST_API_KEY]"
 // [Duplicate] #define OPENAI_API_KEY "your_openai_api_key_here"
 // [Duplicate] #define COGNITO_CLIENT_ID "your_cognito_client_id" // Your Cognito app client ID
 // [Duplicate] #define COGNITO_REGION "us-east-1"                 // AWS region where Cognito is hosted
@@ -32340,9 +32340,9 @@ const double PI_VAL = 3.141592653589793;
 // [Duplicate] #define WOLFRAM_TERM "(* Auto-contribution from source3.cpp *) + source3_unification_sector"
 // [Duplicate] #define MAX_QUERY_LENGTH 6000
 // [Duplicate] #define MAX_WINDOWS 21 // Increased for ALMA Cycle 12
-// [Duplicate] #define NASA_API_KEY_1 "PNJaNeFWqMb2g0CEQGqJePkndqYfKvBzq6XJqAwg"
-// [Duplicate] #define NASA_API_KEY_2 "FJnBo64nLFqExHwDchrcaf101D8wmGSm0cF27clz"
-// [Duplicate] #define MAST_API_KEY "emXvt90Htf0U4RogKTB5lqSxClUeg2pvMQxvZciM"
+// [Duplicate] #define NASA_API_KEY_1 "[PROMPT_FOR_NASA_API_KEY_1]"
+// [Duplicate] #define NASA_API_KEY_2 "[PROMPT_FOR_NASA_API_KEY_2]"
+// [Duplicate] #define MAST_API_KEY "[PROMPT_FOR_MAST_API_KEY]"
 // [Duplicate] #define OPENAI_API_KEY "your_openai_api_key_here"
 // [Duplicate] #define COGNITO_CLIENT_ID "your_cognito_client_id"
 // [Duplicate] #define COGNITO_REGION "us-east-1"

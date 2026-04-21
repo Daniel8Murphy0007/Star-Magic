@@ -273,9 +273,9 @@ assert len(results) == 8
 # Line 150-160: HARDCODED API KEYS!
 
 API_KEYS = {
-    'NASA_API_KEY_1': 'PNJaNeFWqMb2g0CEQGqJePkndqYfKvBzq6XJqAwg',  # ← EXPOSED
-    'NASA_API_KEY_2': 'FJnBo64nLFqExHwDchrcaf101D8wmGSm0cF27clz',  # ← EXPOSED
-    'MAST_API_KEY': 'emXvt90Htf0U4RogKTB5lqSxClUeg2pvMQxvZciM',    # ← EXPOSED
+    'NASA_API_KEY_1': '[PROMPT_FOR_NASA_API_KEY_1]',  # ← EXPOSED
+    'NASA_API_KEY_2': '[PROMPT_FOR_NASA_API_KEY_2]',  # ← EXPOSED
+    'MAST_API_KEY': '[PROMPT_FOR_MAST_API_KEY]',    # ← EXPOSED
 }
 ```
 

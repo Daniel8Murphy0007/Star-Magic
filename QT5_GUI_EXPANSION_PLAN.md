@@ -164,9 +164,9 @@ Replace placeholder API keys in source2.cpp:
 
 ```cpp
 // Line 96-104 (approximately)
-#define NASA_API_KEY_1 "PNJaNeFWqMb2g0CEQGqJePkndqYfKvBzq6XJqAwg" // Keep existing
-#define NASA_API_KEY_2 "FJnBo64nLFqExHwDchrcaf101D8wmGSm0cF27clz" // Keep existing
-#define MAST_API_KEY "emXvt90Htf0U4RogKTB5lqSxClUeg2pvMQxvZciM"   // Keep existing
+#define NASA_API_KEY_1 "[PROMPT_FOR_NASA_API_KEY_1]" // Keep existing
+#define NASA_API_KEY_2 "[PROMPT_FOR_NASA_API_KEY_2]" // Keep existing
+#define MAST_API_KEY "[PROMPT_FOR_MAST_API_KEY]"   // Keep existing
 #define OPENAI_API_KEY "your_openai_api_key_here"               // UPDATE THIS
 #define COGNITO_CLIENT_ID "your_cognito_client_id"              // UPDATE THIS
 ```

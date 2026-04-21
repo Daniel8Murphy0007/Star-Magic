@@ -266,7 +266,7 @@ for key, value in params.items():
 
 ```bash
 # Set in environment or .env file
-export NASA_API_KEY_1="PNJaNeFWqMb2g0CEQGqJePkndqYfKvBzq6XJqAwg"
+export NASA_API_KEY_1="[PROMPT_FOR_NASA_API_KEY_1]"
 ```
 
 **Active NASA APIs:**

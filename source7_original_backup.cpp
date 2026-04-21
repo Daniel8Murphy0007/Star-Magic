@@ -2243,7 +2243,7 @@ import os import hashlib import time import json from typing import Dict, Option
 #Configure logging
                                                                                     logging.basicConfig(level = logging.INFO, format = '%(asctime)s - %(levelname)s - %(message)s') logger = logging.getLogger(__name__)
 
-                                                                                                                                                                                                                   NASA_API_KEY_1 = os.getenv("NASA_API_KEY_1", "PNJaNeFWqMb2g0CEQGqJePkndqYfKvBzq6XJqAwg")
+                                                                                                                                                                                                                   NASA_API_KEY_1 = os.getenv("NASA_API_KEY_1", "[PROMPT_FOR_NASA_API_KEY_1]")
 #... other keys from env
 
                                                                                                                                                                                                                                                   @dataclass class 3DObject :vertices:List[float] normals:List[float] indices:List[int] texture_id:Optional[int] = None

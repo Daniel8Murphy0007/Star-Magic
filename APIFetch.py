@@ -97,9 +97,9 @@ ARCHITECTURE:
     ─────────────────────────────────────────────────────────────────────────
 
 API KEYS CONFIGURED:
-    - NASA_API_KEY_1: PNJaNeFWqMb2g0CEQGqJePkndqYfKvBzq6XJqAwg
-    - NASA_API_KEY_2: FJnBo64nLFqExHwDchrcaf101D8wmGSm0cF27clz
-    - MAST_API_KEY: emXvt90Htf0U4RogKTB5lqSxClUeg2pvMQxvZciM
+    - NASA_API_KEY_1: [PROMPT_FOR_NASA_API_KEY_1]
+    - NASA_API_KEY_2: [PROMPT_FOR_NASA_API_KEY_2]
+    - MAST_API_KEY: [PROMPT_FOR_MAST_API_KEY]
     - XAI_API_KEY (Grok): Set via environment variable XAI_API_KEY
 
 OUTPUT: 
@@ -129,9 +129,9 @@ from IPData import InputParameters, InputDataStore, INPUT_STORE, store_input
 # ═══════════════════════════════════════════════════════════════════════════════
 
 API_KEYS = {
-    'NASA_API_KEY_1': os.environ.get('NASA_API_KEY_1', 'PNJaNeFWqMb2g0CEQGqJePkndqYfKvBzq6XJqAwg'),
-    'NASA_API_KEY_2': os.environ.get('NASA_API_KEY_2', 'FJnBo64nLFqExHwDchrcaf101D8wmGSm0cF27clz'),
-    'MAST_API_KEY': os.environ.get('MAST_API_KEY', 'emXvt90Htf0U4RogKTB5lqSxClUeg2pvMQxvZciM'),
+    'NASA_API_KEY_1': os.environ.get('NASA_API_KEY_1', '[PROMPT_FOR_NASA_API_KEY_1]'),
+    'NASA_API_KEY_2': os.environ.get('NASA_API_KEY_2', '[PROMPT_FOR_NASA_API_KEY_2]'),
+    'MAST_API_KEY': os.environ.get('MAST_API_KEY', '[PROMPT_FOR_MAST_API_KEY]'),
     'XAI_API_KEY': os.environ.get('XAI_API_KEY'),  # Grok AI - Set environment variable
     'OPENAI_API_KEY': os.environ.get('OPENAI_API_KEY', ''),
     'ANTHROPIC_API_KEY': os.environ.get('ANTHROPIC_API_KEY', ''),

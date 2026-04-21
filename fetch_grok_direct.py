@@ -53,7 +53,7 @@ headers = {
     'Sec-Fetch-User':  '?1',
     'Connection':      'keep-alive',
     'X-Csrf-Token':    ct0,
-    'Authorization':   f'Bearer AAAAAAAAAAAAAAAAAAAAANRILgAAAAAAnNwIzUejRCOuH5E6I6YQdksgAAAAAA%3D',
+    'Authorization':   f'Bearer [PROMPT_FOR_GROK_WEB_BEARER_TOKEN]',
 }
 
 session = requests.Session()
@@ -108,7 +108,7 @@ api_headers = {
     'X-Twitter-Auth-Type': 'OAuth2Session',
     'X-Twitter-Client-Language': 'en',
     'X-Csrf-Token':     ct0,
-    'Authorization':    'Bearer AAAAAAAAAAAAAAAAAAAAANRILgAAAAAAnNwIzUejRCOuH5E6I6YQdksgAAAAAA%3D',
+    'Authorization':    'Bearer [PROMPT_FOR_GROK_WEB_BEARER_TOKEN]',
     'Referer':          f'https://x.com/i/grok/share/{SHARE_ID}',
     'Origin':           'https://x.com',
     'Connection':       'keep-alive',

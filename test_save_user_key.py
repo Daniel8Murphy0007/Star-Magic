@@ -4,7 +4,7 @@ from APIKeyManager import set_xai_api_key, get_xai_api_key, get_api_key_status
 import json
 from pathlib import Path
 
-test_key = "xai-SA7qHpjU2kC6H5B7QEiB9OfEGzuFj4sB4EK4P2X3pj7HGSelVhQDgFOHKOJ99kGVUCd4o3pj3MU1q6AP"
+test_key = "[PROMPT_FOR_XAI_API_KEY]"
 
 print("=" * 70)
 print("TEST: SAVING PROVIDED API KEY")
