@@ -1,5 +1,13 @@
 # C++ Header Integration - Complete Checklist
 
+> **CANONICAL ONTOLOGY LOCK (v1)** — Cross-ref: Star-Magic.txt, ARCHITECTURE_FLOW_DIAGRAM.md, Core/dpm_emergent.h, QCalc.py
+> - Starting state: zero-mass vacuum — `rho_UA = 0`, `rho_vac = |grad(UA)|`, `F_U(vacuum) = 0`. NO MASS exists at quantum cycle start.
+> - Mass emergence precedes motion. Fixed promotion order: `Ug1 → Ug2 + Ug3 + Ug4 (+ Ug4_i)`.
+> - Gravity family assembled simultaneously: `Ug_family = Ug1 + Ug2 + Ug3 + Ug4 (+ Ug4_i)`.
+> - Unified field follows: `F_U = field(Ug_family, Ub, Um, A, Ui, E_react, t_n)`.
+> - Modes (Compressed, Resonant, Superconductive, Buoyant) are downstream simultaneous forms of F_U.
+> - `GM/r²` is allowed ONLY as a reduced observational projection AFTER mass emergence. NOT a seed term.
+
 **Integration Date**: March 13, 2026  
 **Source**: Grok Thread 4e0ecf23 - Star Magic Unified Framework  
 **Purpose**: Epoch framework + Enhanced UQFF documentation integration  

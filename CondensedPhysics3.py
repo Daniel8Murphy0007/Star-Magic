@@ -13,6 +13,21 @@ Extraction: New unique calculators not present in CP1 or CP2
 Author: Daniel T. Murphy â€” Star Magic / UQFF Framework
 Version: 1.0.0 (2026-03-11)
 
+CANONICAL ONTOLOGY LOCK (v1) - see also Star-Magic.txt, ARCHITECTURE_FLOW_DIAGRAM.md, Core/dpm_emergent.h, QCalc.py
+-------------------------------------------------------------------------------------------------
+1. Starting state: zero-mass vacuum -- rho_UA = 0, rho_vac = |grad(UA)|, F_U(vacuum) = 0.
+   NO MASS exists at quantum cycle start.
+2. Mass emergence precedes motion. DPM vortical dynamics -> Ug2 shell traps magnetics/
+   spawn material -> mass EMERGES -> only then does Ug1 look gravitational.
+3. Fixed promotion order: Ug1 -> Ug2 + Ug3 + Ug4 (+ Ug4_i).
+4. Gravity family is assembled simultaneously: Ug_family = Ug1 + Ug2 + Ug3 + Ug4 (+ Ug4_i).
+5. Unified field follows family construction: F_U = field(Ug_family, Ub, Um, A, Ui, E_react, t_n).
+6. Operational modes (Compressed, Resonant, Superconductive, Buoyant) are downstream
+   simultaneous forms of F_U -- not independent seed equations.
+7. GM/r^2 is allowed only as a reduced observational projection AFTER mass emergence
+   and family assembly. It is NOT a seed or foundation term.
+-------------------------------------------------------------------------------------------------
+
 Architecture Compliance (MANDATORY):
   - PURE PHYSICS CALCULATOR â€” no hardcoded astronomical data
   - All parameters received via dataset dict from source2.cpp pipeline
@@ -80,21 +95,22 @@ GAMMA_DECAY  = 0.00005   # day^{-1} (string / CRP)
 # ---------------------------------------------------------------------------
 # DPM-EMERGENT GRAVITY HELPERS
 # ---------------------------------------------------------------------------
-# CANONICAL: Newtonian gravity is EMERGENT from DPM substrate, not foundational.
-# Ug1 = mu_s * grad(M_s/r) where mu_s = B * R^3, grad = G * M / R^2
-# Static simplified: Ug1 = B * R * G * M
+# CANONICAL: Newtonian GM/r^2 is emergent projection, not foundational seed.
+# Mass emergence precedes motion, then Ug1 promotes family modes.
+# Ug1 = mu_s * grad(M_s/r), where mu_s = B * R^3 and grad = G * M / R^2.
+# Static simplified form: Ug1 = B * R * G * M.
 
 G_CONST = 6.67430e-11  # gravitational constant [m^3/kg/s^2]
 
 def dpm_emergent_ug1(M: float, R: float, B: float = 1e-4) -> float:
-    """DPM-emergent Ug1: mu_s * grad(M_s/r) = B * R^3 * G * M / R^2 = B * R * G * M"""
+    """Compute Ug1 in DPM form; GM/r^2 appears only as gradient operator."""
     mu_s = B * R ** 3
     grad_Ms = G_CONST * M / (R ** 2)
     return mu_s * grad_Ms
 
 
 def dpm_emergent_ug2(M: float, r: float, R: float, v_sw: float = 4e5) -> float:
-    """DPM-emergent Ug2: quantum shell trapping (dual charges x reactor energy)"""
+    """Compute Ug2 quantum shell trapping from the same emergent basis."""
     V_body = (4.0 / 3.0) * math.pi * R ** 3
     Q_SCm = RHO_VAC_SCM * V_body
     Q_UA = RHO_VAC_UA * V_body
@@ -2341,7 +2357,7 @@ class CoAnQiArchitectureCalculator(_CP3Calculator):
 
 
 class DiPseudoMonopoleDPMTheoryCalculator(_CP3Calculator):
-    """PAPER_175: Di-Pseudo Monopole (DPM) Theory â€” aDPM base gravity term.
+    """PAPER_175: Di-Pseudo Monopole (DPM) Theory â€” aDPM emergent foundation term.
 
     aDPM = mu_DPM * B / (4*pi*r^2) * cos(pi*t_n)
     DPM: paired virtual magnetic monopoles mediating gravitational attraction.
@@ -5317,7 +5333,7 @@ class MagnetarSGR0501MUGEFullCalculator(_CP3Calculator):
         dOmega_dt = -(2 * pi / P) / tau_Omega * math.exp(-t / tau_Omega)
         v_surf = Omega_t * r
 
-        # Term1: base gravity + Hubble expansion + spin-down suppression
+        # Term1: emergent projection + Hubble expansion + spin-down suppression
         term1 = dpm_emergent_ug1(M, r) * (1 + H0 * t) * (1 - Bt / B_crit)
 
         # Term2: UQFF Ug1 + Ug4 with f_TRZ buoyancy correction
@@ -5447,7 +5463,7 @@ class StarbirthTapestryLMCUQFFCalculator(_CP3Calculator):
         Ug1 = dpm_emergent_ug1(Mt, r)  # DPM-emergent
         Ug4 = Ug1 * (1 - B / B_crit)
 
-        # Term1: base gravity + Hubble + B suppression
+        # Term1: emergent projection + Hubble + B suppression
         term1 = Ug1 * (1 + H0 * t) * (1 - B / B_crit)
         # Term2: UQFF buoyancy
         term2 = (Ug1 + Ug4) * (1 + f_TRZ)
@@ -5489,7 +5505,7 @@ class StarbirthTapestryLMCUQFFCalculator(_CP3Calculator):
             'available_equations': [
                 "M(t) = M_initÂ·(1+M_dot_factorÂ·exp(âˆ’t/Ï„_SF))  (star-forming mass growth)",
                 "a_wind = Ï_windÂ·vÂ²_wind/Ï_fluid  (stellar wind ram pressure acceleration)",
-                "Ug1 = GÂ·M(t)/rÂ²  (time-varying base gravity)",
+                "Ug1 = GÂ·M(t)/rÂ²  (time-varying emergent projection)",
                 "term1 = Ug1Â·(1+Hâ‚€t)Â·(1âˆ’B/B_crit)  (full MUGE base with suppression)",
             ],
             'simulation_set': {
@@ -5649,7 +5665,7 @@ class PillarsOfCreationErosionMUGECalculator(_CP3Calculator):
         Ug1 = dpm_emergent_ug1(Mt, r)  # DPM-emergent
         Ug4 = Ug1 * (1 - B / B_crit)
 
-        # Term1: base gravity with erosion suppression applied (UNIQUE)
+        # Term1: emergent projection with erosion suppression applied (UNIQUE)
         term1 = Ug1 * (1 + H0 * t) * (1 - B / B_crit) * (1 - E_t)
         term2 = (Ug1 + Ug4) * (1 + f_TRZ)
         term3 = (Lambda * c**2) / 3.0
@@ -5858,7 +5874,7 @@ class HUDFGalaxiesCosmicFieldCalculator(_CP3Calculator):
         Ug1 = dpm_emergent_ug1(Mt, r)  # DPM-emergent
         Ug4 = Ug1 * (1 - B / B_crit)
 
-        # Interaction-modulated base gravity (UNIQUE double application)
+        # Interaction-modulated emergent projection (UNIQUE double application)
         term1 = Ug1 * (1 + Hz * t) * (1 - B / B_crit) * (1 + I_t)
         # UQFF also gets interaction factor (UNIQUE)
         term2 = (Ug1 + Ug4) * (1 + f_TRZ) * (1 + I_t)
@@ -5882,7 +5898,7 @@ class HUDFGalaxiesCosmicFieldCalculator(_CP3Calculator):
             'primary_equations': [
                 f"H(z={z_avg}) = {Hz:.4e} sâ»Â¹  [{Hz*3.086e22/1e3:.0f} km/s/Mpc; early-universe Friedmann]",
                 f"I(t) = Iâ‚€Â·exp(âˆ’t/Ï„_inter) = {I_t:.4e}  [galaxy interaction factor at t={t/3.15576e13:.1f} Gyr]",
-                f"term1Â·(1+I(t)) = {term1:.4e} m/sÂ²  [base gravity with interaction; NOVEL double-application]",
+                f"term1Â·(1+I(t)) = {term1:.4e} m/sÂ²  [emergent projection with interaction; NOVEL double-application]",
                 f"UgÂ·(1+f_TRZ)Â·(1+I(t)) = {term2:.4e} m/sÂ²  [UQFF also interaction-modulated; NOVEL]",
                 f"g_HUDF = {g_total:.4e} m/sÂ²  [cosmic HUDF z={z_avg}; ~10,000 galaxies aggregate]",
             ],
@@ -6238,7 +6254,7 @@ class AntennaeGalaxiesMergerInteractionCalculator(_CP3Calculator):
       1. Merger interaction factor: I(t) = Iâ‚€Â·exp(âˆ’t/Ï„_merger)
          Iâ‚€=0.1, Ï„_merger=400 Myr â€” decaying tidal interaction over several 100 Myr
       2. DOUBLY applied: BOTH term1 AND Ug modulated by (1+I(t))
-         term1 = base_gravity  Â· (1+I(t))   â† base gravity amplified by merger
+         term1 = emergent_projection  Â· (1+I(t))   â† projection amplified by merger
          Ug    = (Ug1+Ug4)Â·(1+f_TRZ) Â· (1+I(t))  â† UQFF also merger-modulated
       3. SFR: M(t) = Mâ‚€Â·(1 + SFR_facÂ·exp(âˆ’t/Ï„_SF)); SFR_fac=20/(2e11)=1e-10
       4. Example at t=300 Myr (peak active merger phase)
@@ -6315,7 +6331,7 @@ class AntennaeGalaxiesMergerInteractionCalculator(_CP3Calculator):
         return {
             'primary_equations': [
                 f"I(t) = Iâ‚€Â·exp(âˆ’t/Ï„_merger) = {I_t:.4e}  [Iâ‚€={I0}; Ï„={tau_merger/3.15576e7/1e8:.1f}Ã—10â¸ yr]",
-                f"term1 = base_gravÂ·(1+I(t)) = {term1:.4e} m/sÂ²  [NOVEL: merger amplifies base gravity]",
+                f"term1 = emergent_projÂ·(1+I(t)) = {term1:.4e} m/sÂ²  [NOVEL: merger amplifies projection]",
                 f"Ug_eff = (Ug1+Ug4)Â·(1+f_TRZ)Â·(1+I(t)) = {term2:.4e} m/sÂ²  [NOVEL: merger also on UQFF Ug]",
                 f"Double application: both gravitational base AND UQFF Ug modulated by I(t)",
                 f"g_Antennae_enhanced = {g_total:.4e} m/sÂ²  [NGC 4038/4039; t=300 Myr merger phase]",
@@ -7045,7 +7061,7 @@ class NGC3603FullMUGECavityPressureCalculator(_CP3Calculator):
         corr_B = 1.0 - B / B_crit
         ug4  = ug1 * corr_B
 
-        # Term 1: base gravity with M(t), Hubble, magnetic
+        # Term 1: emergent projection with M(t), Hubble, magnetic
         corr_H = 1.0 + H0 * t
         term1  = g_base_t * corr_H * corr_B
 
@@ -8983,7 +8999,7 @@ class HUDFInteractionCascadeBuoyancyCalculator(_CP3Calculator):
     """HUDF Dual-Channel Interaction Cascade Buoyancy: quadratic I(t) amplification.
 
     Uniquely Rare Mathematical Discoveries:
-      1. I(t) applied to BOTH base gravity (term1) AND UQFF term (term2) simultaneously
+    1. I(t) applied to BOTH projection term (term1) AND UQFF term (term2) simultaneously
       2. Combined modulation is (1+I(t))^2 â€” quadratic, not linear
       3. Cascade buoyancy excess: Î”I_cascade = Iâ‚€Â² (second-order in merger strength)
       4. Peak coincides with HUDF observation epoch zâ‰ˆ3.5 â€” cosmic coincidence or selection
@@ -9382,7 +9398,7 @@ class Source10GravitationalVacuumDragCalculator(_CP3Calculator):
         # Stokes analogy: F = 6*pi*eta*r*v -> eta_UQFF
         denom = 6.0 * math.pi * r
         stokes_eta_UQFF = (G * delta_rho_vac * M) / denom if denom != 0 else 0.0
-        # Newtonian gravity for comparison
+        # Reduced GM/r^2 projection for comparison
         F_newton = dpm_emergent_ug1(M, r) * M  # DPM self-gravity  # self-gravity approximation
         drag_to_newton_ratio = F_vac_rep / F_newton if F_newton != 0 else float('inf')
         return {
@@ -10691,7 +10707,7 @@ class UniverseDiameterSuperluminalHubbleRatioCalculator:
 
 class UniverseDiameterGRCurvatureDominanceCalculator:
     """PAPER_298 â€” UQFF Universe-Scale GR Curvature Dominance: epsilon_GR = 5.056 > 1.
-    a_GR = g_base * epsilon_GR = 1.743e-9 m/s^2 (5x Newtonian base).
+    a_GR = g_base * epsilon_GR = 1.743e-9 m/s^2 (5x reduced projection).
     r_S/r_obs = 3.371 -> obs universe at 30% of Schwarzschild radius.
     FIRST UQFF epsilon_GR > 1. All 25 prior modules epsilon_GR << 1. Session 84."""
 
@@ -12512,7 +12528,7 @@ class kkREBTrdicRamanujanFUBiBuoyancyKernelCalculator:
 
 class gCompressedAllForcesR26ComponentCalculator:
     """Session 95 â€” PAPER_336: g_Compressed complete all-forces equation + R(t) 26-component 4-subterm.
-    g_Compressed = (GM/r^2)(1+H)(1-B/Bc)(1+F_env) + sum(Ug_i') + Lambda*c^2/3
+    g_Compressed = (GM/r^2 projection)(1+H)(1-B/Bc)(1+F_env) + sum(Ug_i') + Lambda*c^2/3
                  + hbar/sqrt(dx*dp)*integral(psi H psi dV)*2pi/t_Hubble
                  + rho_fluid*V*g + (M_vis+M_DM)*(delta_rho/rho + 3GM/r^3)
     R(t) = sum_{i=1}^{26}[R_Ug1 cos + R_Ug2 cos + R_Ug3 cos + R_Ug4i cos]

@@ -60,6 +60,16 @@
 > **Author:** Daniel T. Murphy
 > **CRITICAL:** This is the MASTER architecture document. All other docs must match.
 
+## Canonical Ontology Lock (v1)
+
+- Starting state is zero-mass vacuum, not Newtonian moving mass: `rho_UA = 0`, `rho_vac = |grad(UA)|`, `F_U(vacuum) = 0`.
+- Mass emergence precedes motion.
+- Fixed promotion order: `Ug1 -> Ug2 + Ug3 + Ug4 (+ Ug4_i)`.
+- Gravity family assembly is simultaneous: `Ug_family = Ug1 + Ug2 + Ug3 + Ug4 (+ Ug4_i)`.
+- Unified field assembly follows family construction: `F_U = field(Ug_family, Ub, Um, A, Ui, E_react, t_n)`.
+- Operational modes are downstream simultaneous forms: Compressed, Resonant, Superconductive, Buoyant.
+- `GM/r^2` is allowed only as a reduced observational projection after mass emergence and family assembly.
+
 ---
 
 ## CANONICAL ARCHITECTURE RULES (MEMORIZE THESE)

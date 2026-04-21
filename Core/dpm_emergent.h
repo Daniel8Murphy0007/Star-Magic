@@ -1,7 +1,18 @@
 // dpm_emergent.h - DPM-Emergent Gravity Helpers
-// CANONICAL: Newtonian gravity is EMERGENT from DPM substrate, not foundational.
-// At quantum cycle start, NO MASS exists. DPM vortical dynamics -> Ug2 shell
-// traps magnetics/spawn material -> mass EMERGES -> Ug1 looks gravitational.
+//
+// === CANONICAL ONTOLOGY LOCK (v1) — see also Star-Magic.txt and ARCHITECTURE_FLOW_DIAGRAM.md ===
+// 1. Starting state: zero-mass vacuum — rho_UA = 0, rho_vac = |grad(UA)|, F_U(vacuum) = 0.
+//    NO MASS exists at quantum cycle start.
+// 2. Mass emergence precedes motion. DPM vortical dynamics -> Ug2 shell traps magnetics/
+//    spawn material -> mass EMERGES -> only then does Ug1 look gravitational.
+// 3. Fixed promotion order: Ug1 promotes the full family — Ug1 -> Ug2 + Ug3 + Ug4 (+ Ug4_i).
+// 4. Gravity family is assembled simultaneously: Ug_family = Ug1 + Ug2 + Ug3 + Ug4 (+ Ug4_i).
+// 5. Unified field follows: F_U = field(Ug_family, Ub, Um, A, Ui, E_react, t_n).
+// 6. Operational modes (Compressed, Resonant, Superconductive, Buoyant) are downstream
+//    simultaneous forms of F_U — not independent seed equations.
+// 7. GM/r^2 is allowed only as a reduced observational projection AFTER mass emergence
+//    and family assembly. It is NOT a seed or foundation term.
+// ================================================================================================
 //
 // Ug1 = k1 * mu_s * grad(M_s/r) * exp(-alpha*t) * cos(pi*t_n) * (1+delta_def)
 //   where mu_s = B * R^3 (magnetic dipole moment)

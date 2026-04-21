@@ -13,6 +13,21 @@ Source: gok_share_31b5c807a4.txt — Supplemental gap analysis
 Extraction: 17 unique calculators (PAPER_355–370) not present in CP1, CP2, or CP3
 Author: Daniel T. Murphy — Star Magic / UQFF Framework
 Version: 5.72 (2026-04-12)
+
+CANONICAL ONTOLOGY LOCK (v1) — see also Star-Magic.txt, ARCHITECTURE_FLOW_DIAGRAM.md, Core/dpm_emergent.h, QCalc.py
+─────────────────────────────────────────────────────────────────────────────────
+1. Starting state: zero-mass vacuum — rho_UA = 0, rho_vac = |grad(UA)|, F_U(vacuum) = 0.
+   NO MASS exists at quantum cycle start.
+2. Mass emergence precedes motion. DPM vortical dynamics → Ug2 shell traps magnetics/
+   spawn material → mass EMERGES → only then does Ug1 look gravitational.
+3. Fixed promotion order: Ug1 → Ug2 + Ug3 + Ug4 (+ Ug4_i).
+4. Gravity family is assembled simultaneously: Ug_family = Ug1 + Ug2 + Ug3 + Ug4 (+ Ug4_i).
+5. Unified field follows family construction: F_U = field(Ug_family, Ub, Um, A, Ui, E_react, t_n).
+6. Operational modes (Compressed, Resonant, Superconductive, Buoyant) are downstream
+   simultaneous forms of F_U — not independent seed equations.
+7. GM/r^2 is allowed only as a reduced observational projection AFTER mass emergence
+   and family assembly. It is NOT a seed or foundation term.
+─────────────────────────────────────────────────────────────────────────────────
 Updated: Session 115 — v4.72 QS=5 content quality enrichment; no new CP4 classes; CP4=73 classes
 Updated: Session 116 — v4.77 CP4 73→75 (#74 UQFF29SystemCrossValidationMatrixCalculator + #75 Session112GrokC020496d9ExhaustiveAuditHubCalculator)
 Updated: Session 117 — v4.79 CP4 75→77 (#76 UmCompleteSSqVacuumThermalDampingCalculator + #77 Session113GrokC020496d9ReAnalysisHubCalculator)
@@ -160,18 +175,18 @@ F_AETHER      = 1.576e-35   # Hz
 
 
 # ---------------------------------------------------------------------------
-# DPM-Emergent helpers  (Newtonian GM/r² is NOT fundamental — DPM vortical
-# dynamics produce mass as emergent; the "mass gradient" G*M/r² is the grad
-# operator on the DPM dipole field.)
+# DPM-emergent helpers.
+# CANONICAL: GM/r^2 is a reduced observational projection term, not a seed.
+# In Ug1, G*M/r^2 is used as the mass-gradient operator within dipole form.
 # ---------------------------------------------------------------------------
 def dpm_emergent_ug1(M, r, B=1e-4):
-    """DPM-emergent Ug1: mu_s * grad(M_s/r) where mu_s = B*r^3."""
+    """Compute Ug1 in DPM form; GM/r^2 is treated as gradient, not foundation."""
     mu_s = B * r ** 3
     return mu_s * G_NEWTON * M / (r ** 2)   # = B * r * G * M
 
 
 def dpm_emergent_ug2(M, r, B=1e-4, k2=1.2):
-    """DPM-emergent Ug2 charge-reactivity shell."""
+    """Compute Ug2 charge-reactivity shell from the same emergent basis."""
     mu_s = B * r ** 3
     return k2 * mu_s * G_NEWTON * M / (r ** 2)
 
@@ -1352,12 +1367,12 @@ class PSZ2G181MergerRelicTriadicFUBiCalculator:
         fres = dataset.get("f_res_Hz",   self.F_RES)
 
         # ── 1. FU_Bi_i ──────────────────────────────────────────────────────
-        #  ∫₀^{x₂} [-F₀ + GM/r² + ρ_vac + k_LENR (ω_LENR/ω₀)² + ...] dx
+        #  ∫₀^{x₂} [-F₀ + GM/r² (reduced projection) + ρ_vac + k_LENR (ω_LENR/ω₀)² + ...] dx
         #  Canonical: -8.32×10^{217} N for galactic-cluster scale (x₂~2.8 Gly)
         FUBi_i = self.FUBI_I_CANONICAL
 
         # ── 2. Compressed MUGE ──────────────────────────────────────────────
-        #  g = (GM/r²)*(1+H(z)t)*(1-B/B_crit)*(1+F_env)
+        #  g = (GM/r² projection)*(1+H(z)t)*(1-B/B_crit)*(1+F_env)
         #    + Ug_i' + Λc²/3 + ℏ-term + ρ_fluid*V*g + (M_vis+M_DM)*(...) 
         H0_si       = 70.0 * 1e3 / 3.086e22     # s^-1
         Hz_factor   = H0_si * math.sqrt(0.3 * (1.0 + z)**3 + 0.7)
@@ -1785,7 +1800,7 @@ class CompressedUQFFBcritSuperconductivityCalculator(_CP4Calculator):
     (grok_share_11254865.txt, lines 2700–3400)
 
     Master equation:
-    g_UQFF = (GM/r²)·(1+H₀t)·(1−B/Bcrit)·(1+Fenv)
+    g_UQFF = (GM/r² projection)·(1+H₀t)·(1−B/Bcrit)·(1+Fenv)
            + Ug_sum + Λc²/3 + (ℏ/ΔxΔp)·∫ψ*Ĥψ dV·(2π/tH) + ρf·V·g + (M+MDM)·(δρ/ρ+3GM/r³)
 
     7 systems: SGR1745, SagA*, Tapestry, Westerlund2, Pillars, Rings, StudentGuide
@@ -1838,7 +1853,7 @@ class CompressedUQFFBcritSuperconductivityCalculator(_CP4Calculator):
         return {
             'primary_equations': {
                 'g_compressed_UQFF': {
-                    'formula': ('g = (GM/r²)·(1+H₀t)·(1-B/Bcrit) + Λc²/3'
+                    'formula': ('g = (GM/r² projection)·(1+H₀t)·(1-B/Bcrit) + Λc²/3'
                                 ' + ℏ-quantum + ρ_f·V·g + (M+M_DM)·(δρ/ρ+3GM/r³)'),
                     'value_ms2': g_compressed,
                 },
@@ -2235,7 +2250,7 @@ class UQFFResonanceFormalProofSetCalculator(_CP4Calculator):
 
     def compute(self, dataset: dict = None) -> dict:
         import math
-        # Proof 1: Newtonian baseline at 1 AU
+        # Proof 1: reduced projection baseline at 1 AU
         G = 6.6743e-11
         M_sun = 1.989e30
         AU = 1.496e11
@@ -2416,7 +2431,8 @@ class CohesiveUQFFIntegrationCalculator(_CP4Calculator):
     """PAPER_378 — Cohesive UQFF Integration Formula.
     Source: grok_share_11254865.txt lines ~3100-3200 (Grok response to '100.' doc)
     Formula: g_cohesive(r,t) = g_compressed + sum_i(a_resonance_i * exp(-alpha*t))
-    SM gravity emergence: GM/r^2 recovered when fTRZ=0 (phase equilibrium) + alpha*t>>1
+    SM gravity emergence: reduced GM/r^2 projection recovered when fTRZ=0
+    (phase equilibrium) + alpha*t>>1
     Unifies Compressed MUGE (PAPER_372) and Resonance MUGE (PAPER_371) in one formula.
     CP4 class #28
     """
@@ -2481,7 +2497,7 @@ class CohesiveUQFFIntegrationCalculator(_CP4Calculator):
                     'value_ms2': g_cohesive,
                 },
                 'g_compressed': {
-                    'formula': 'g_comp = (GM/r²)(1+H0·t)exp(-B/Bcrit) + Λc²/3 + ħ²/(m_e·c·r²)',
+                    'formula': 'g_comp = (GM/r² projection)(1+H0·t)exp(-B/Bcrit) + Λc²/3 + ħ²/(m_e·c·r²)',
                     'value_ms2': g_compressed,
                 },
                 'alpha_damping': {
@@ -2494,7 +2510,7 @@ class CohesiveUQFFIntegrationCalculator(_CP4Calculator):
                 'fTRZ':         fTRZ,
                 'alpha_t':      alpha * t,
                 'sm_limit_approached': sm_limit_approached,
-                'limit_result': 'g → GM/r² (standard gravity)',
+                'limit_result': 'g → reduced GM/r² projection (standard-gravity limit)',
             },
             'resonance_terms': {
                 'aDPM_ms2':    aDPM,
@@ -2503,8 +2519,8 @@ class CohesiveUQFFIntegrationCalculator(_CP4Calculator):
             },
             'available_equations': [
                 'g_cohesive = g_compressed + Σ a_res · exp(-αt)',
-                'g_compressed = (GM/r²)(1+H0t)exp(-B/Bcrit) + Λc²/3 + ħ²/(m_e·c·r²)',
-                'SM limit: g → GM/r² when fTRZ=0, αt→∞',
+                'g_compressed = (GM/r² projection)(1+H0t)exp(-B/Bcrit) + Λc²/3 + ħ²/(m_e·c·r²)',
+                'SM limit: g → reduced GM/r² projection when fTRZ=0, αt→∞',
                 'Low-freq limit: compressed MUGE',
                 'High-freq/compact limit: resonance MUGE dominates',
             ],
@@ -2630,7 +2646,7 @@ class UQFFSolvableEquationSetCalculator(_CP4Calculator):
         },
         'Einstein_Field_Equations': {
             'millennium_prize': False,
-            'uqff_term':        'g_cohesive → GM/r² when fTRZ=0, αt→∞',
+            'uqff_term':        'g_cohesive → reduced GM/r² projection when fTRZ=0, αt→∞',
             'mechanism':        'Resonance UQFF approximates GR post-Newtonian expansion at low frequency',
             'paper_ref':        'PAPER_378',
         },
@@ -2736,7 +2752,7 @@ class SGR1745CompressedMUGESpectralTermDecompositionCalculator(_CP4Calculator):
     Source: grok_share_11254865.txt lines ~2900-2904
     First per-term breakdown of all 8 compressed MUGE terms for SGR1745.
     Key finding: perturbation term (1.782e39 m/s²) dominates by 27 orders over
-    Newtonian base (1.991e12 m/s²) — compressed MUGE unphysical at r=1e4 m.
+    Reduced projection baseline (1.991e12 m/s²) — compressed MUGE unphysical at r=1e4 m.
     Establishes model validity criterion: compressed MUGE valid only r > 1.3e7 m.
     CP4 class #32
     """
@@ -2784,7 +2800,7 @@ class SGR1745CompressedMUGESpectralTermDecompositionCalculator(_CP4Calculator):
         G = self.G
         c = self.c
 
-        # Term 1: Newtonian base
+        # Term 1: reduced projection baseline
         # DPM-emergent: mu_s x grad(M_s/r) base (Newtonian form is emergent, not foundational)
         g_base = dpm_emergent_ug1(M, r)
 
@@ -3325,7 +3341,7 @@ class Canonical7SystemUQFFParameterRegistryCalculator(_CP4Calculator):
             'system_outputs': system_outputs,
             'available_equations': {
                 'afluid = ffluid * Evac_neb * Vsys / (Evac_ISM * c)': 'dominant resonance term per system',
-                'g_newton = G * M / r^2': 'Newtonian baseline',
+                'g_newton = G * M / r^2': 'reduced projection baseline',
                 'CSV_header': 'name,I,A,omega1,omega2,Vsys,vexp,t,z,ffluid,M,r,B,Bcrit,rho_fluid,g_local,M_DM,delta_rho_rho',
             },
             'simulation_set': {
@@ -5986,7 +6002,7 @@ class DPMFourComponentCorrelationCalculator(_CP4Calculator):
         F_U_Bi_i = ∫₀^{x₂} [
             −F_0
             + (m_e c²/r²) DPM_momentum cosθ              # electron momentum coupling
-            + (GM/r²) DPM_gravity                         # gravity coupling
+            + (GM/r² projection) DPM_gravity              # gravity coupling
             + ρ_vac,[UA] DPM_stability                    # vacuum stability
             + k_LENR (ω_LENR/ω_0)²                        # nuclear resonance
             + k_act cos(ω_act t)                           # activation oscillation
@@ -6002,7 +6018,7 @@ class DPMFourComponentCorrelationCalculator(_CP4Calculator):
         Role              | Equation                          | Value
         ─────────────────────────────────────────────────────────────────
         DPM_momentum      | (m_e c²/r²) cosθ                  | ~10^{-48} N/m²·r⁻²
-        DPM_gravity       | GM/r²                             | Newtonian gravity
+        DPM_gravity       | GM/r² projection                  | reduced observational gravity
         DPM_stability     | ρ_vac,[UA] = 7.09×10^{-36} J/m³   | vacuum energy density
         DPM_resonance     | 2μ_B B₀/(ℏ ω₀) · P_pol           | ~10^3–10^7 (system-dep.)
 
@@ -6023,7 +6039,7 @@ class DPMFourComponentCorrelationCalculator(_CP4Calculator):
     PAPER = 425
     DPM_ROLES = {
         'DPM_momentum':  '(m_e c²/r²) cosθ — electron rest-energy angular coupling',
-        'DPM_gravity':   'GM/r² — classic gravitational DPM component',
+        'DPM_gravity':   'GM/r² projection — reduced observational DPM component',
         'DPM_stability': 'ρ_vac,[UA] — vacuum energy density stabiliser',
         'DPM_resonance': '2qB₀V sinθ P_pol / (ℏ ω₀) — EM magnetic resonance',
     }
@@ -6087,7 +6103,7 @@ class UAScmJWSTALMACERNValidationTableCalculator(_CP4Calculator):
     Validation Table:
         UQFF Component  | UQFF Description                | 2025 Data Source  | Alignment
         ───────────────────────────────────────────────────────────────────────────────────
-        Shocks g_Shock  | GM/r²·S(t)+C(t); [SCm]-[UA]    | JWST/ALMA v_s~100 | 85%
+        Shocks g_Shock  | (GM/r² projection)·S(t)+C(t); [SCm]-[UA] | JWST/ALMA v_s~100 | 85%
                         | triggers compression S(t) and   | km/s; HH154 shocks|
                         | molecule release C(t) (SiO, H2O)| PN/PO chemistry   |
         Metals Ug4      | [SCm] expulsion; f_Z~0.89 over- | JWST z=11-14;     | 80%
@@ -6100,7 +6116,7 @@ class UAScmJWSTALMACERNValidationTableCalculator(_CP4Calculator):
                         | f_topo ≈ 0.1–0.3                | high-field stab.  |
 
     Key equations:
-        g_Shock = GM/r² · S(t) + C(t)
+        g_Shock = (GM/r² projection) · S(t) + C(t)
         F_UBii,anyons = −F_rel × (E_anyons/E_LEP) × Q_wave × g(r,t)
                          × exp(−δ_c² / (2σ²))
           → F ≈ −1.038 × 10^32 N  (refined: σ=1, g=10^{-10} m/s²)
@@ -6487,7 +6503,7 @@ class OrionNebulaHAlphaUQFFCalculator(_CP4Calculator):
         where k = 2π/λ_Hα,  λ_Hα = 656.3 nm,  ω = ck
 
     Full system equation:
-        g_total = [GM/r²](1+H(t,z))(1-B/B_crit)(1+F_env)
+        g_total = [GM/r² projection](1+H(t,z))(1-B/B_crit)(1+F_env)
                 + (Ug1+Ug3+Ug4) + Λc²/3 + ψ_resonant + ρ_fluid V g_base
     """
     PAPER = 447
@@ -6923,7 +6939,7 @@ class MagnetarDualModeUQFFCalculator(_CP4Calculator):
 
     COMPRESSED MODE — expected g ≈ 1.782×10³⁹ m/s²:
         F_env(t) = 1 + M_mag/(Mc²) + exp(−t/τ_decay) + G M_BH/r_BH²
-        g_compressed = [GM/r²](1+H)(1−B/B_crit)×F_env
+        g_compressed = [GM/r² projection](1+H)(1−B/B_crit)×F_env
 
     FREQUENCY MODE — expected g ≈ 1.773×10⁻⁹ m/s²:
         g_freq = Σ(a_DPM + a_THz + a_vac_diff + a_super_freq + a_aether_res
@@ -7186,7 +7202,7 @@ class Session115GrokShare5fa36e4eHubCalculator(_CP4Calculator):
 
     6. PAPER_452 — CompressedUQFFEnvModularCalculator (#90)
        Modular F_env = 1+ΣF_i(t) architecture (7 Cycle 2 core systems);
-       ψ_total = GM/r² × SC_m × H_res + F_env(t) × g_base.
+    ψ_total = (GM/r² projection) × SC_m × H_res + F_env(t) × g_base.
 
     7. PAPER_453 — MagnetarDualModeUQFFCalculator (#91)
        Dual mode SGR1745: compressed (~1.782×10³⁹) + frequency (~1.773×10⁻⁹).
@@ -7258,7 +7274,7 @@ class MUGECompressed29SystemUnifiedGravityCalculator(_CP4Calculator):
     From grok_share_e70525fa.txt Doc 41.  8 canonical system types covering
     astrophysical to atomic scales.  Implements the compressed UQFF gravity:
 
-        g_UQFF = GM/r² * (1+Hz*t) * (1-B/B_crit) + Ug_sum + Λc²/3
+        g_UQFF = (GM/r² projection) * (1+Hz*t) * (1-B/B_crit) + Ug_sum + Λc²/3
                  + ħ/(sqrt(Δx·Δp)·G·M) + F_fluid + DM_pert
 
     Universe diameter 4-factor correction:
@@ -15154,7 +15170,8 @@ class UQFFNASAATPGrantFrameworkValidationCalculator:
         UQFF residual < 10%  AND  MUGE residual < 10%  → independent convergence
 
     UQFF method: field summation (U_g + U_m + U_b triad)
-    MUGE method: Newtonian corrections (g = GM/r² × corrections + Ug_sum + Λc²/3 + ...)
+    MUGE method: reduced-projection corrections
+    (g = GM/r² projection × corrections + Ug_sum + Λc²/3 + ...)
     When both methods independently fit the same observational data with <10% residual,
     this proves the physics reality of the underlying equations.
     All three UQFF number systems (VDS, DVP, BH26) cross-validate here.
@@ -16689,7 +16706,7 @@ class UQFFGrantProposalDatasetCompressionFrameworkCalculator:
     Core buoyancy equation:
         F_U_Bi_i = integral_0^x2 [
             -F_0 + (m_e c^2/r^2) DPM_momentum cos(theta)
-            + (GM/r^2) DPM_gravity + rho_vac DPM_stability
+            + (GM/r^2 projection) DPM_gravity + rho_vac DPM_stability
             + k_LENR (omega_LENR/omega_0)^2 + k_act cos(omega_act t)
             + k_DE L_X + 2qB_0 V sin(theta) DPM_resonance
             + k_neutron sigma_n
@@ -16812,7 +16829,7 @@ class UQFFGrantProposalDatasetCompressionFrameworkCalculator:
             ],
             "equation_F_U_Bi_i": (
                 "F_U_Bi_i = integral_0^x2 [-F0 + (m_e c^2/r^2) DPM cos(theta) "
-                "+ (GM/r^2) DPM_grav + rho_vac DPM_stab "
+                "+ (GM/r^2 projection) DPM_grav + rho_vac DPM_stab "
                 "+ k_LENR(omega_LENR/omega_0)^2 + k_act cos(omega_act t) "
                 "+ k_DE L_X + 2qB0 V sin(theta) DPM_res + k_n sigma_n] dx"
             ),
@@ -31587,7 +31604,7 @@ class ColmanGillespieFieldGeneratorLENRUQFFCalculator(_CP4Calculator):  # PAPER_
             f'F_U_Bi   = -F_0 + momentum + gravity + rho_vac + F_U_Bi_i',
             f'  omega_LENR = 2*pi*1.25 THz = {self.OMEGA_LENR:.6e} rad/s',
             f'  omega_0 = {w0:.3e} s^-1',
-            f'  g_base = GM/r^2 = {g_base:.6e} m/s^2',
+            f'  g_base = GM/r^2 projection = {g_base:.6e} m/s^2',
         ]
         available_equations = [
             'F_LENR = k_LENR*(omega_LENR/omega_0)^2',
@@ -31620,7 +31637,7 @@ class MultiSystemChandraSurvey35NegativeBuoyancyCalc(_CP4Calculator):  # PAPER_8
     SMBH-dominated environments.
 
     Negative buoyancy condition:
-      F_U_Bi_i < 0 when GM/r^2 > F_0 scale reversal threshold
+    F_U_Bi_i < 0 when GM/r^2 projection > F_0 scale reversal threshold
       Numerically: M > ~10^36 kg at r > ~10^18 m (SMBH regime)
 
     F_LENR dominates: 10^36-10^39 N across ALL scales.
@@ -31694,7 +31711,7 @@ class MultiSystemChandraSurvey35NegativeBuoyancyCalc(_CP4Calculator):  # PAPER_8
         primary_equations = [
             f'F_U_Bi = -F_0 + momentum + gravity + rho_vac + F_LENR = {result["F_U_Bi_N"]:.6e} N',
             f'  F_0 = {self.F_0:.3e} N',
-            f'  g_base = GM/r^2 = {result["g_base_m_s2"]:.6e} m/s^2',
+            f'  g_base = GM/r^2 projection = {result["g_base_m_s2"]:.6e} m/s^2',
             f'  F_LENR = {result["F_LENR_N"]:.6e} N',
             f'  Negative buoyancy: {result["is_negative_buoyancy"]}',
         ]
@@ -31702,8 +31719,8 @@ class MultiSystemChandraSurvey35NegativeBuoyancyCalc(_CP4Calculator):  # PAPER_8
             primary_equations.append(f'  Batch: {len(batch_results)} systems, {neg_count} negative buoyancy')
 
         available_equations = [
-            'F_U_Bi = -F_0 + (m_e*c^2/r^2)*DPM_m*cos(theta) + (GM/r^2)*DPM_g + rho_vac + F_LENR',
-            'Negative buoyancy: F_U_Bi < 0 when GM/r^2 exceeds F_0 reversal threshold',
+            'F_U_Bi = -F_0 + (m_e*c^2/r^2)*DPM_m*cos(theta) + (GM/r^2 projection)*DPM_g + rho_vac + F_LENR',
+            'Negative buoyancy: F_U_Bi < 0 when GM/r^2 projection exceeds F_0 reversal threshold',
             'F_LENR = k_LENR*(omega_LENR/omega_0)^2  (dominates all scales)',
         ]
         return {
@@ -31866,13 +31883,13 @@ class ChandraSNRNebulaeUQFFBatch2Calculator(_CP4Calculator):  # PAPER_838 #422
         primary_equations = [
             f'F_U_Bi = -F_0 + momentum + gravity + rho_vac + F_LENR = {F_UBi:.6e} N',
             f'  F_LENR = k_LENR*(omega_LENR/omega_0)^2 = {F_LENR:.6e} N',
-            f'  g_base = GM/r^2 = {g_base:.6e} m/s^2',
+            f'  g_base = GM/r^2 projection = {g_base:.6e} m/s^2',
             f'  F_neutrino = {F_neutrino:.2e} N (supplementary arXiv term)',
             f'  F_quark = {F_quark:.2e} N (supplementary arXiv term)',
             f'  Batch 2 systems: Helix/SNR1181/CatsEye/IC443/MSH15-52/Sonif/Vela',
         ]
         available_equations = [
-            'F_U_Bi = -F_0 + (m_e*c^2/r^2)*DPM_m + (GM/r^2)*DPM_g + rho_vac + F_LENR + F_neutrino',
+            'F_U_Bi = -F_0 + (m_e*c^2/r^2)*DPM_m + (GM/r^2 projection)*DPM_g + rho_vac + F_LENR + F_neutrino',
             'F_LENR = k_LENR*(omega_LENR/omega_0)^2',
             'Vela Wide-Field: r=6.17e17 m -> largest r in batch -> F_U_Bi=2.11e210 N',
             'SNR 1181 Pa 30: Type Iax remnant, F_U_Bi=2.65e208 N',
@@ -31957,7 +31974,7 @@ class ADDLargeExtraDimensionsFLEDUQFFCalculator(_CP4Calculator):  # PAPER_839 #4
             f'  n = {n} extra dimensions (ADD model)',
             f'  R_n ~ {R_n:.3e} m (extra-dimension compactification radius)',
             f'F_LENR = {F_LENR:.6e} N (dominant)',
-            f'g_base = GM/r^2 = {g_base:.6e} m/s^2',
+            f'g_base = GM/r^2 projection = {g_base:.6e} m/s^2',
             f'NOTE: F_LED is negligible ({F_LED:.2e} N) vs F_LENR ({F_LENR:.2e} N)',
             f'  but connects UQFF to ADD graviton leakage in SMBH regimes',
         ]
@@ -32091,7 +32108,7 @@ class KozimaLENRNeutronDropFneutronCalculator(_CP4Calculator):  # PAPER_840 #424
             )
         primary_equations.extend([
             f'F_LENR = {F_LENR:.6e} N (for comparison)',
-            f'g_base = GM/r^2 = {g_base:.6e} m/s^2',
+            f'g_base = GM/r^2 projection = {g_base:.6e} m/s^2',
             f'Kozima source: PMC8141838 (2021)',
         ])
 
@@ -32405,13 +32422,13 @@ class ChandraXRayBatch1GCEagleHBC672NGC7469VirgoCalc(_CP4Calculator):  # PAPER_8
         primary_equations = [
             f'F_U_Bi = -F_0 + momentum + gravity + rho_vac + F_LENR = {F_UBi:.6e} N',
             f'  F_LENR = {F_LENR:.6e} N (dominant)',
-            f'  g_base = GM/r^2 = {g_base:.6e} m/s^2',
+            f'  g_base = GM/r^2 projection = {g_base:.6e} m/s^2',
             f'Batch 1: GC/EagleM16/HBC672/NGC7469/Virgo',
             f'  GC: M=7.956e36, r=6.17e18 -> negative buoyancy',
             f'  NGC7469: M=2.387e37, r=1.39e22 -> negative buoyancy',
         ]
         available_equations = [
-            'F_U_Bi = -F_0 + (m_e*c^2/r^2) + (GM/r^2) + rho_vac + F_LENR',
+            'F_U_Bi = -F_0 + (m_e*c^2/r^2) + (GM/r^2 projection) + rho_vac + F_LENR',
             'F_LENR = k_LENR*(omega_LENR/omega_0)^2',
             'Negative buoyancy: F_U_Bi < 0 in SMBH/AGN systems',
         ]
@@ -32483,7 +32500,7 @@ class Chandra25thAnniversaryCrabOrionNGC6334Calc(_CP4Calculator):  # PAPER_844 #
             f'  NGC 6334: M=2e35, r=1.05e20 -> positive',
         ]
         available_equations = [
-            'F_U_Bi = -F_0 + (m_e*c^2/r^2) + (GM/r^2) + rho_vac + F_LENR',
+            'F_U_Bi = -F_0 + (m_e*c^2/r^2) + (GM/r^2 projection) + rho_vac + F_LENR',
             'Chandra 25th: 25 composite images -> strongest negative buoyancy',
         ]
         return {
@@ -32565,7 +32582,7 @@ class ChandraSurveyMACSJ0416LensExoSMBHCalc(_CP4Calculator):  # PAPER_845 #429
             f'  3C 58: young PWN from 1181 AD supernova',
         ]
         available_equations = [
-            'F_U_Bi = -F_0 + (m_e*c^2/r^2) + (GM/r^2) + rho_vac + F_LENR',
+            'F_U_Bi = -F_0 + (m_e*c^2/r^2) + (GM/r^2 projection) + rho_vac + F_LENR',
             'mu = theta_E / theta_S  (strong lensing magnification)',
             'Lensing does not alter intrinsic F_U_Bi_i',
         ]
@@ -32646,7 +32663,7 @@ class ChandraDeathStar16SMBHGCVentTimelapseCalc(_CP4Calculator):  # PAPER_846 #4
             f'Cas A + Crab: timelapse temporal evolution',
         ]
         available_equations = [
-            'F_U_Bi = -F_0 + (m_e*c^2/r^2) + (GM/r^2) + rho_vac + F_LENR',
+            'F_U_Bi = -F_0 + (m_e*c^2/r^2) + (GM/r^2 projection) + rho_vac + F_LENR',
             'P_jet = 0.5*M_dot*(v_jet*c)^2  (SMBH jet kinetic power)',
             'GC Vent: same params as Sgr A* -> same negative buoyancy',
         ]
@@ -32728,7 +32745,7 @@ class SNRNebulaVelaTychoHelixSNR1181NGC6543Calc(_CP4Calculator):  # PAPER_847 #4
             f'  SNR 1181 Pa 30: Type Iax remnant (1181 AD historical supernova)',
         ]
         available_equations = [
-            'F_U_Bi = -F_0 + (m_e*c^2/r^2) + (GM/r^2) + rho_vac + F_LENR',
+            'F_U_Bi = -F_0 + (m_e*c^2/r^2) + (GM/r^2 projection) + rho_vac + F_LENR',
             'SNR age = R_pc * 3.086e16 / (v_exp_km_s * 1000) / (365.25*86400)',
             'Type Iax: deflagration supernova, incomplete carbon burning',
         ]
@@ -32818,7 +32835,7 @@ class SonificationCompositeH1821IC443M74MSH1552Calc(_CP4Calculator):  # PAPER_84
             f'  Sgr A*: negative buoyancy in sonification context',
         ]
         available_equations = [
-            'F_U_Bi = -F_0 + (m_e*c^2/r^2) + (GM/r^2) + rho_vac + F_LENR',
+            'F_U_Bi = -F_0 + (m_e*c^2/r^2) + (GM/r^2 projection) + rho_vac + F_LENR',
             'f_audio = f_min*(f_max/f_min)^((E-E_min)/(E_max-E_min))  (sonification)',
             'X-ray -> audio mapping: 0.5-7.0 keV -> 60-2000 Hz',
         ]
@@ -33288,7 +33305,7 @@ class LENRNextStepsExperimentalDesignPSRJ0030Calc(_CP4Calculator):  # PAPER_852 
             f'Track 4 PSR J0030+0451 Astrophysical Analogue:',
             f'  M = {M_psr:.3e} kg ({M_psr/self.M_SUN:.2f} M_sun)',
             f'  R = {R_psr:.0f} m, rho = {rho:.2e} kg/m^3',
-            f'  g_surface = GM/R^2 = {g_psr:.6e} m/s^2',
+            f'  g_surface = GM/R^2 projection = {g_psr:.6e} m/s^2',
             f'  F_neutron(density) = {F_neutron_psr:.6e} N',
             f'  F_LENR = {F_LENR:.6e} N',
         ]
@@ -41591,7 +41608,7 @@ class THzHoleResonanceFormulaCalculator(object):
                 f"  SM_m = B²/(2μ₀) = {SM_m:.6e}",
                 f"Ug1_total = UQFF_g + SM_g = {Ug1_total:.6e}",
                 f"  UQFF_g = k₁·μ·∇(M/r) = {UQFF_g:.6e}",
-                f"  SM_g = GM/r² = {SM_g:.6e}",
+                f"  SM_g = GM/r² projection = {SM_g:.6e}",
                 f"SCm_exp = H_SCm·(1-B/B_crit) = {SCm_exponent:.6f}",
                 f"Ug1^SCm = {Ug1_SCm:.6e}",
                 f"THz_ratio = Um_total / Ug1^SCm = {THz_ratio:.6e}",
@@ -42311,7 +42328,7 @@ class InterstellarShockPrestellarCollapseCalculator(_CP4Calculator):
       - C-type shocks: continuous, molecule release C(t) for SiO, H₂O, formamide
       - Prestellar core conditions: T ~ 10-20 K, n ~ 10⁵-10⁶ cm⁻³
       - Ice mantle sputtering efficiency η_sput
-      - UQFF: g_Shock = GM/r² · S(t) + C(t), [SCm]-[UA] interactions
+    - UQFF: g_Shock = (GM/r² projection) · S(t) + C(t), [SCm]-[UA] interactions
     """
 
     K_B = 1.381e-23   # J/K
@@ -42349,7 +42366,7 @@ class InterstellarShockPrestellarCollapseCalculator(_CP4Calculator):
 
         # UQFF g_Shock
         g_grav = self.G * M_core / r_core**2
-        g_Shock = g_grav * S_t + X_SiO_post  # GM/r²·S(t) + C(t)
+        g_Shock = g_grav * S_t + X_SiO_post  # (GM/r² projection)·S(t) + C(t)
 
         # Jeans mass at post-shock conditions
         n_post = n_H2 * S_t
@@ -42378,7 +42395,7 @@ class InterstellarShockPrestellarCollapseCalculator(_CP4Calculator):
             "M_Jeans_Msun": M_Jeans,
             "alignment_pct": 80.0,
             "primary_equations": [
-                f"g_Shock = GM/r²·S(t) + C(t) = {g_Shock:.6e}",
+                f"g_Shock = (GM/r² projection)·S(t) + C(t) = {g_Shock:.6e}",
                 f"S(t) = {S_t:.2f} ({shock_type}-type compression)",
                 f"C(t): X(SiO) {X_SiO_0:.1e} → {X_SiO_post:.1e}",
                 f"C(t): X(H₂O) {X_H2O_0:.1e} → {X_H2O_post:.1e}",
@@ -42822,7 +42839,7 @@ class PSRJ0030NeutronStarBuoyancyCalculator(_CP4Calculator):
     F_LENR = k_LENR·(ω_LENR/ω₀)² ≈ 6.17×10³⁹ N at ω₀ = 10⁻¹² rad/s.
     F_neutron dominates the integrand: F_neutron/F_LENR ≈ 1.6×10⁵.
 
-    a = GM/r² ≈ 1.86×10¹² m/s² (extreme neutron star surface gravity).
+    a = GM/r² projection ≈ 1.86×10¹² m/s² (extreme neutron star surface gravity).
     x₂ displacement amplifies to F_U_Bi ≈ 10²⁰⁸ N order (positive buoyancy).
 
     Physical interpretation: neutron drop coherence at nuclear density
@@ -42986,7 +43003,7 @@ class PSRJ0030NeutronStarBuoyancyCalculator(_CP4Calculator):
                 f"M = {M:.4e} kg  (1.4 M☉, NICER 2019 constraint)",
                 f"r = {r:.1e} m  (neutron star radius)",
                 f"ρ = {rho:.1e} kg/m³  (nuclear density interior)",
-                f"a_surface = GM/r² = {a_surface:.4e} m/s²",
+                f"a_surface = GM/r² projection = {a_surface:.4e} m/s²",
                 f"σ_n(ρ) = σ₀·(ρ/ρ₀) = {sigma_n_dens:.4e} m²  [density-scaled Kozima]",
                 f"F_neutron = k_neutron·σ_n(ρ) = {F_neutron:.4e} N  [density-scaled Kozima]",
                 f"F_LENR = k_LENR·(ω_LENR/ω₀)² = {F_LENR:.4e} N",

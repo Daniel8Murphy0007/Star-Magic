@@ -6,6 +6,24 @@ The Quest for Unity
 	To define Universal Aether and it’s non-linear negative time derivations [UA; UA’, UA’’, UA’’’, UA’’’’].
 	A new superconductive fundamental [(SCm, SCm’, SCm’’, SCm’’’], related to Einstein-Boson, bound in every atom and star, lacking a detectable quantum signature (Qs), however quantifiable by actions and distance measurements between our Sun and Sagitarius *A at the heart of our Milky Way Gallaxy.
 
+CANONICAL ONTOLOGY LOCK (v1)
+	This section is the authoritative ordering for all downstream equations, code, and tests.
+	Starting state is zero-mass vacuum, not Newtonian moving mass:
+		rho_UA = 0
+		rho_vac = |grad(UA)|
+		F_U(vacuum) = 0
+	Mass emergence precedes motion. Newtonian gravity is a downstream projection only.
+	Promotion order is fixed:
+		Ug1 -> Ug2 + Ug3 + Ug4 (+ Ug4_i)
+	Gravity family is assembled simultaneously:
+		Ug_family = Ug1 + Ug2 + Ug3 + Ug4 (+ Ug4_i)
+	Unified field assembly follows:
+		F_U = field(Ug_family, Ub, Um, A, Ui, E_react, t_n)
+	Operational modes occur simultaneously as downstream forms:
+		Compressed, Resonant, Superconductive, Buoyant (inside-out and outside-in)
+	Newtonian form GM/r^2 is permitted only as reduced observational projection after mass emergence and family assembly.
+	If any downstream equation conflicts with this order, the downstream equation must be corrected.
+
 Chapter 1: The Magic of Universal Gravity
 	Defining Universal Gravity (Ug):
 	Ug1: Internal dipole strength, driving stellar irregularities.
