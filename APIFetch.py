@@ -111,12 +111,15 @@ Copyright: © 2025-2026 Daniel T. Murphy - All Rights Reserved
 """
 
 import requests
+import argparse
 import json
 import os
 import csv
-from datetime import datetime
+import sys
+from datetime import datetime, timedelta
 from typing import Dict, List, Any, Optional, Tuple
 import re
+import xml.etree.ElementTree as ET
 
 # Import IPData for storing results
 from IPData import InputParameters, InputDataStore, INPUT_STORE, store_input
@@ -332,7 +335,7 @@ class SIMBADFetcher:
             return None
             
         except Exception as e:
-            print(f"SIMBAD fetch error: {e}")
+            print(f"SIMBAD fetch error: {e}", file=sys.stderr)
             return None
     
     def _parse_response(self, row: List, object_name: str) -> Dict[str, Any]:
@@ -437,7 +440,7 @@ class NEDFetcher:
             return None
             
         except Exception as e:
-            print(f"NED fetch error: {e}")
+            print(f"NED fetch error: {e}", file=sys.stderr)
             return None
     
     def _parse_response(self, row: List, object_name: str) -> Dict[str, Any]:
@@ -485,7 +488,7 @@ class GrokFetcher:
             Dictionary with estimated parameters or None if failed
         """
         if not self.api_key:
-            print("Warning: XAI_API_KEY not set, Grok fallback unavailable")
+            print("Warning: XAI_API_KEY not set, Grok fallback unavailable", file=sys.stderr)
             return None
         
         if missing_params is None:
@@ -541,7 +544,7 @@ class GrokFetcher:
             return None
             
         except Exception as e:
-            print(f"Grok fetch error: {e}")
+            print(f"Grok fetch error: {e}", file=sys.stderr)
             return None
 
 
@@ -606,7 +609,7 @@ class NASAAPODFetcher:
             return None
             
         except Exception as e:
-            print(f"NASA APOD fetch error: {e}")
+            print(f"NASA APOD fetch error: {e}", file=sys.stderr)
             return None
 
 
@@ -673,7 +676,7 @@ class NASANeoWsFetcher:
             return None
             
         except Exception as e:
-            print(f"NASA NeoWs fetch error: {e}")
+            print(f"NASA NeoWs fetch error: {e}", file=sys.stderr)
             return None
 
 
@@ -702,7 +705,7 @@ class NASADONKIFetcher:
             Dictionary with space weather event data
         """
         if not start_date:
-            start_date = (datetime.now() - datetime.timedelta(days=30)).strftime('%Y-%m-%d')
+            start_date = (datetime.now() - timedelta(days=30)).strftime('%Y-%m-%d')
         if not end_date:
             end_date = datetime.now().strftime('%Y-%m-%d')
         
@@ -731,7 +734,7 @@ class NASADONKIFetcher:
             return None
             
         except Exception as e:
-            print(f"NASA DONKI fetch error: {e}")
+            print(f"NASA DONKI fetch error: {e}", file=sys.stderr)
             return None
 
 
@@ -753,10 +756,117 @@ class BaseFetcher:
     def fetch(self, object_name: str) -> Optional[Dict[str, Any]]:
         """Override in subclass."""
         raise NotImplementedError(f"{self.api_name} fetcher not yet implemented")
+
+    def _log_success(self):
+        API_STATUS[self.api_name]['last_call'] = datetime.now().isoformat()
+
+    def _safe_float(self, value: Any) -> Optional[float]:
+        try:
+            if value is None or value == '':
+                return None
+            return float(value)
+        except (TypeError, ValueError):
+            return None
+
+    def _null_sentinel(self, value: Any, sentinels: Optional[List[float]] = None) -> Optional[float]:
+        numeric = self._safe_float(value)
+        if numeric is None:
+            return None
+        for sentinel in sentinels or [-999.0, -9999.0]:
+            if abs(numeric - sentinel) < 1e-9:
+                return None
+        return numeric
+
+    def _parse_votable_first_row(self, xml_text: str) -> Optional[Dict[str, Any]]:
+        try:
+            root = ET.fromstring(xml_text)
+        except ET.ParseError:
+            return None
+
+        namespace = {'v': 'http://www.ivoa.net/xml/VOTable/v1.3'}
+        fields = [field.attrib.get('name') for field in root.findall('.//v:FIELD', namespace)]
+        row = root.find('.//v:TR', namespace)
+        if not fields or row is None:
+            return None
+
+        values = [cell.text for cell in row.findall('v:TD', namespace)]
+        if not values:
+            return None
+
+        return {
+            key: values[index] if index < len(values) else None
+            for index, key in enumerate(fields)
+            if key
+        }
+
+    def _extract_match_count(self, payload: Any) -> int:
+        if isinstance(payload, list):
+            return len(payload)
+        if isinstance(payload, dict):
+            for key in ('totalRows', 'count', 'total', 'recordsTotal'):
+                value = payload.get(key)
+                numeric = self._safe_float(value)
+                if numeric is not None:
+                    return int(numeric)
+            data = payload.get('data') or payload.get('results') or payload.get('observations')
+            if isinstance(data, list):
+                return len(data)
+        if isinstance(payload, str):
+            count_match = re.search(r'([0-9]+)\s+(?:results|observations|matches|rows)', payload, re.IGNORECASE)
+            if count_match:
+                return int(count_match.group(1))
+        return 0
+
+    def _build_archive_result(
+        self,
+        object_name: str,
+        source: str,
+        archive_url: str,
+        description: str,
+        payload: Any,
+        extra: Optional[Dict[str, Any]] = None,
+    ) -> Dict[str, Any]:
+        result = {
+            'name': object_name,
+            'source': source,
+            'archive_url': archive_url,
+            'description': description,
+            'match_count': self._extract_match_count(payload),
+        }
+        if extra:
+            result.update({key: value for key, value in extra.items() if value is not None})
+        return result
     
     def _log_error(self, e: Exception):
         API_STATUS[self.api_name]['errors'] += 1
-        print(f"{self.api_name} fetch error: {e}")
+        print(f"{self.api_name} fetch error: {e}", file=sys.stderr)
+
+    def _tap_sync_query(self, query: str, endpoint: Optional[str] = None) -> Optional[List[Any]]:
+        response = requests.post(
+            endpoint or self.endpoint,
+            data={
+                'REQUEST': 'doQuery',
+                'LANG': 'ADQL',
+                'FORMAT': 'json',
+                'QUERY': query,
+            },
+            timeout=self.timeout,
+        )
+        response.raise_for_status()
+        payload = response.json()
+        rows = payload.get('data') if isinstance(payload, dict) else None
+        return rows if isinstance(rows, list) else None
+
+    def _resolve_object_coordinates(self, object_name: str) -> Optional[Tuple[float, float]]:
+        simbad_data = SIMBADFetcher().fetch(object_name)
+        if simbad_data and simbad_data.get('ra') is not None and simbad_data.get('dec') is not None:
+            return float(simbad_data['ra']), float(simbad_data['dec'])
+
+        ned_data = NEDFetcher().fetch(object_name)
+        if ned_data and ned_data.get('ra') is not None and ned_data.get('dec') is not None:
+            return float(ned_data['ra']), float(ned_data['dec'])
+
+        return None
 
 
 # ─── API 3: VizieR ──────────────────────────────────────────────────────────────
@@ -768,9 +878,48 @@ class VizieRFetcher(BaseFetcher):
         super().__init__('vizier')
     
     def fetch(self, object_name: str, catalog: str = None) -> Optional[Dict[str, Any]]:
-        """Fetch from VizieR catalogs. TODO: Implement."""
-        # PLACEHOLDER: Implement VizieR TAP query
-        return None
+        """Fetch Pan-STARRS DR1 mean magnitudes from VizieR for the resolved target."""
+        coords = self._resolve_object_coordinates(object_name)
+        if not coords:
+            return None
+
+        ra, dec = coords
+        params = {
+            '-source': catalog or 'II/349/ps1',
+            '-c': f'{ra} {dec}',
+            '-c.rs': 0.02,
+            '-out.max': 1,
+        }
+
+        try:
+            response = requests.get(self.endpoint, params=params, timeout=self.timeout)
+            response.raise_for_status()
+            row = self._parse_votable_first_row(response.text)
+            if not row:
+                return None
+
+            result = self._build_archive_result(
+                object_name,
+                'VizieR',
+                response.url,
+                'VizieR catalog summary using the Pan-STARRS DR1 reference table.',
+                response.text,
+                {
+                    'catalog_id': row.get('objID'),
+                    'ra': self._safe_float(row.get('RAJ2000')),
+                    'dec': self._safe_float(row.get('DEJ2000')),
+                    'g_mag': self._null_sentinel(row.get('gmag')),
+                    'r_mag': self._null_sentinel(row.get('rmag')),
+                    'i_mag': self._null_sentinel(row.get('imag')),
+                    'z_mag': self._null_sentinel(row.get('zmag')),
+                    'y_mag': self._null_sentinel(row.get('ymag')),
+                },
+            )
+            self._log_success()
+            return result
+        except Exception as e:
+            self._log_error(e)
+            return None
 
 
 # ─── API 4: Gaia ────────────────────────────────────────────────────────────────
@@ -782,10 +931,58 @@ class GaiaFetcher(BaseFetcher):
         super().__init__('gaia')
     
     def fetch(self, object_name: str) -> Optional[Dict[str, Any]]:
-        """Fetch from Gaia DR3. TODO: Implement."""
-        # PLACEHOLDER: Implement Gaia TAP query
-        # Returns: parallax, proper motion, radial velocity, photometry
-        return None
+        """Fetch Gaia DR3 astrometry around a resolved target position."""
+        coords = self._resolve_object_coordinates(object_name)
+        if not coords:
+            return None
+
+        ra, dec = coords
+        query = f"""
+        SELECT TOP 1
+            source_id, ra, dec, parallax, pmra, pmdec, radial_velocity,
+            teff_gspphot, luminosity_gspphot
+        FROM gaiadr3.gaia_source
+        WHERE 1 = CONTAINS(
+            POINT('ICRS', ra, dec),
+            CIRCLE('ICRS', {ra}, {dec}, 0.01)
+        )
+        ORDER BY parallax DESC
+        """
+
+        try:
+            rows = self._tap_sync_query(query)
+            if not rows:
+                return None
+
+            row = rows[0]
+            parallax = self._safe_float(row[3]) if len(row) > 3 else None
+            radial_velocity = self._safe_float(row[6]) if len(row) > 6 else None
+            luminosity = self._safe_float(row[8]) if len(row) > 8 else None
+            result = self._build_archive_result(
+                object_name,
+                'Gaia',
+                self.endpoint,
+                'Gaia DR3 astrometric and stellar-parameter match.',
+                rows,
+                {
+                    'source_id': row[0] if len(row) > 0 else None,
+                    'ra': row[1] if len(row) > 1 else None,
+                    'dec': row[2] if len(row) > 2 else None,
+                    'parallax': parallax,
+                    'proper_motion_ra': row[4] if len(row) > 4 else None,
+                    'proper_motion_dec': row[5] if len(row) > 5 else None,
+                    'radial_velocity': radial_velocity * 1000 if radial_velocity is not None else None,
+                    'temperature': row[7] if len(row) > 7 else None,
+                    'luminosity': luminosity * UNITS['L_sun'] if luminosity is not None else None,
+                },
+            )
+            if parallax and parallax > 0:
+                result['distance'] = (1000.0 / parallax) * UNITS['pc']
+            self._log_success()
+            return result
+        except Exception as e:
+            self._log_error(e)
+            return None
 
 
 # ─── API 5: MAST ────────────────────────────────────────────────────────────────
@@ -795,11 +992,52 @@ class MASTFetcher(BaseFetcher):
     
     def __init__(self):
         super().__init__('mast')
+        self.api_key = API_KEYS['MAST_API_KEY']
     
     def fetch(self, object_name: str) -> Optional[Dict[str, Any]]:
-        """Fetch from MAST. TODO: Implement."""
-        # PLACEHOLDER: Implement MAST API query
-        return None
+        """Resolve a target in MAST and return archive-routing metadata."""
+        request_payload = {
+            'service': 'Mast.Name.Lookup',
+            'params': {
+                'input': object_name,
+                'format': 'json',
+            },
+        }
+        headers = {'Content-Type': 'application/x-www-form-urlencoded'}
+        if self.api_key:
+            headers['Authorization'] = f'token {self.api_key}'
+
+        try:
+            response = requests.post(
+                self.endpoint,
+                data={'request': json.dumps(request_payload)},
+                headers=headers,
+                timeout=self.timeout,
+            )
+            response.raise_for_status()
+            payload = response.json()
+            rows = payload.get('resolvedCoordinate') or payload.get('data') or payload.get('resolved') or []
+            if not rows:
+                return None
+
+            row = rows[0]
+            result = self._build_archive_result(
+                object_name,
+                'MAST',
+                response.url,
+                'MAST name resolver result for HST/JWST/TESS/Kepler archive routing.',
+                rows,
+                {
+                    'target_name': row.get('canonicalName') or row.get('objectname') or object_name,
+                    'ra': self._safe_float(row.get('ra')),
+                    'dec': self._safe_float(row.get('decl') if 'decl' in row else row.get('dec')),
+                },
+            )
+            self._log_success()
+            return result
+        except Exception as e:
+            self._log_error(e)
+            return None
 
 
 # ─── API 6: NASA Exoplanet Archive ──────────────────────────────────────────────
@@ -811,10 +1049,43 @@ class ExoplanetFetcher(BaseFetcher):
         super().__init__('nasa_exoplanet')
     
     def fetch(self, object_name: str) -> Optional[Dict[str, Any]]:
-        """Fetch exoplanet data. TODO: Implement."""
-        # PLACEHOLDER: Implement Exoplanet Archive TAP query
-        # Returns: planet mass, radius, orbital period, host star properties
-        return None
+        """Fetch confirmed exoplanet or host-star properties from pscomppars."""
+        safe_name = object_name.replace("'", "''")
+        query = f"""
+        SELECT TOP 1
+            pl_name, hostname, pl_bmasse, pl_rade, pl_orbper,
+            st_mass, st_rad, st_teff, sy_dist
+        FROM pscomppars
+        WHERE lower(pl_name) = lower('{safe_name}') OR lower(hostname) = lower('{safe_name}')
+        """
+
+        try:
+            rows = self._tap_sync_query(query)
+            if not rows:
+                return None
+
+            row = rows[0]
+            star_mass = self._safe_float(row[5]) if len(row) > 5 else None
+            star_radius = self._safe_float(row[6]) if len(row) > 6 else None
+            distance_pc = self._safe_float(row[8]) if len(row) > 8 else None
+            result = {
+                'name': object_name,
+                'source': 'NASA_Exoplanet',
+                'planet_name': row[0] if len(row) > 0 else None,
+                'host_name': row[1] if len(row) > 1 else None,
+                'planet_mass': self._safe_float(row[2]) * UNITS['M_earth'] if len(row) > 2 and self._safe_float(row[2]) is not None else None,
+                'planet_radius': self._safe_float(row[3]) * UNITS['R_earth'] if len(row) > 3 and self._safe_float(row[3]) is not None else None,
+                'orbital_period_days': row[4] if len(row) > 4 else None,
+                'mass': star_mass * UNITS['M_sun'] if star_mass is not None else None,
+                'radius': star_radius * UNITS['R_sun'] if star_radius is not None else None,
+                'temperature': row[7] if len(row) > 7 else None,
+                'distance': distance_pc * UNITS['pc'] if distance_pc is not None else None,
+            }
+            self._log_success()
+            return result
+        except Exception as e:
+            self._log_error(e)
+            return None
 
 
 # ─── API 7: HEASARC ─────────────────────────────────────────────────────────────
@@ -826,9 +1097,46 @@ class HEASARCFetcher(BaseFetcher):
         super().__init__('heasarc')
     
     def fetch(self, object_name: str) -> Optional[Dict[str, Any]]:
-        """Fetch high-energy data. TODO: Implement."""
-        # PLACEHOLDER: X-ray flux, spectrum, variability
-        return None
+        """Fetch HEASARC master-catalog summary around the resolved source position."""
+        coords = self._resolve_object_coordinates(object_name)
+        if not coords:
+            return None
+
+        ra, dec = coords
+        query = f"""
+        SELECT TOP 1
+            name, ra, dec, flux, class
+        FROM heasarc_master
+        WHERE 1 = CONTAINS(
+            POINT('ICRS', ra, dec),
+            CIRCLE('ICRS', {ra}, {dec}, 0.05)
+        )
+        """
+
+        try:
+            rows = self._tap_sync_query(query)
+            if not rows:
+                return None
+            row = rows[0]
+            result = self._build_archive_result(
+                object_name,
+                'HEASARC',
+                self.endpoint,
+                'HEASARC high-energy archive summary near the resolved target.',
+                rows,
+                {
+                    'target_name': row[0] if len(row) > 0 else object_name,
+                    'ra': row[1] if len(row) > 1 else None,
+                    'dec': row[2] if len(row) > 2 else None,
+                    'xray_flux': row[3] if len(row) > 3 else None,
+                    'high_energy_class': row[4] if len(row) > 4 else None,
+                },
+            )
+            self._log_success()
+            return result
+        except Exception as e:
+            self._log_error(e)
+            return None
 
 
 # ─── API 8: NASA ADS ────────────────────────────────────────────────────────────
@@ -869,9 +1177,43 @@ class ESOFetcher(BaseFetcher):
         super().__init__('eso')
     
     def fetch(self, object_name: str) -> Optional[Dict[str, Any]]:
-        """Fetch from ESO archive. TODO: Implement."""
-        # PLACEHOLDER: Spectroscopy, imaging from VLT, ALMA
-        return None
+        """Fetch recent ESO archive metadata for a target name."""
+        safe_name = object_name.replace("'", "''")
+        query = f"""
+        SELECT TOP 1
+            target_name, dp_id, instrument_name, s_ra, s_dec, t_min, em_min, em_max
+        FROM ivoa.ObsCore
+        WHERE lower(target_name) LIKE lower('%{safe_name}%')
+        ORDER BY t_min DESC
+        """
+
+        try:
+            rows = self._tap_sync_query(query)
+            if not rows:
+                return None
+            row = rows[0]
+            result = self._build_archive_result(
+                object_name,
+                'ESO',
+                self.endpoint,
+                'ESO archive observation summary for spectroscopy/imaging follow-up.',
+                rows,
+                {
+                    'target_name': row[0] if len(row) > 0 else object_name,
+                    'dataset_id': row[1] if len(row) > 1 else None,
+                    'instrument': row[2] if len(row) > 2 else None,
+                    'ra': row[3] if len(row) > 3 else None,
+                    'dec': row[4] if len(row) > 4 else None,
+                    'observation_mjd': row[5] if len(row) > 5 else None,
+                    'wavelength_min_m': row[6] if len(row) > 6 else None,
+                    'wavelength_max_m': row[7] if len(row) > 7 else None,
+                },
+            )
+            self._log_success()
+            return result
+        except Exception as e:
+            self._log_error(e)
+            return None
 
 
 # ─── API 11: SDSS ───────────────────────────────────────────────────────────────
@@ -883,9 +1225,65 @@ class SDSSFetcher(BaseFetcher):
         super().__init__('sdss')
     
     def fetch(self, object_name: str) -> Optional[Dict[str, Any]]:
-        """Fetch from SDSS. TODO: Implement."""
-        # PLACEHOLDER: ugriz photometry, spectroscopic redshift
-        return None
+        """Fetch SDSS photometry and spectroscopic redshift near the resolved target position."""
+        coords = self._resolve_object_coordinates(object_name)
+        if not coords:
+            return None
+
+        ra, dec = coords
+        query = f"""
+        SELECT TOP 1
+            p.objid, p.ra, p.dec, p.u, p.g, p.r, p.i, p.z,
+            s.z AS specz
+        FROM PhotoObjAll AS p
+        LEFT JOIN SpecObjAll AS s ON p.objID = s.bestObjID
+        WHERE p.ra BETWEEN {ra - 0.02} AND {ra + 0.02}
+          AND p.dec BETWEEN {dec - 0.02} AND {dec + 0.02}
+        ORDER BY ABS(p.ra - {ra}) + ABS(p.dec - {dec})
+        """
+
+        try:
+            response = requests.get(
+                self.endpoint,
+                params={
+                    'cmd': query,
+                    'format': 'json',
+                },
+                timeout=self.timeout,
+            )
+            response.raise_for_status()
+            payload = response.json()
+            rows = []
+            if isinstance(payload, list):
+                for table in payload:
+                    table_rows = table.get('Rows') if isinstance(table, dict) else None
+                    if table_rows:
+                        rows = table_rows
+                        break
+            elif isinstance(payload, dict):
+                rows = payload.get('Rows', [])
+            if not rows:
+                return None
+
+            row = rows[0]
+            result = {
+                'name': object_name,
+                'source': 'SDSS',
+                'catalog_id': row.get('objid') or row.get('objID'),
+                'ra': self._safe_float(row.get('ra')),
+                'dec': self._safe_float(row.get('dec')),
+                'u_mag': self._null_sentinel(row.get('u')),
+                'g_mag': self._null_sentinel(row.get('g')),
+                'r_mag': self._null_sentinel(row.get('r')),
+                'i_mag': self._null_sentinel(row.get('i')),
+                'z_mag': self._null_sentinel(row.get('z')),
+                'redshift': self._safe_float(row.get('specz')),
+            }
+            self._log_success()
+            return result
+        except Exception as e:
+            self._log_error(e)
+            return None
 
 
 # ─── API 12: 2MASS ──────────────────────────────────────────────────────────────
@@ -897,9 +1295,41 @@ class TwoMASSFetcher(BaseFetcher):
         super().__init__('2mass')
     
     def fetch(self, object_name: str) -> Optional[Dict[str, Any]]:
-        """Fetch from 2MASS. TODO: Implement."""
-        # PLACEHOLDER: JHK magnitudes
-        return None
+        """Fetch near-infrared photometry from 2MASS around the target position."""
+        coords = self._resolve_object_coordinates(object_name)
+        if not coords:
+            return None
+
+        ra, dec = coords
+        query = f"""
+        SELECT TOP 1 designation, ra, dec, j_m, h_m, k_m
+        FROM fp_psc
+        WHERE 1 = CONTAINS(
+            POINT('ICRS', ra, dec),
+            CIRCLE('ICRS', {ra}, {dec}, 0.02)
+        )
+        """
+
+        try:
+            rows = self._tap_sync_query(query)
+            if not rows:
+                return None
+            row = rows[0]
+            result = {
+                'name': object_name,
+                'source': '2MASS',
+                'catalog_id': row[0] if len(row) > 0 else None,
+                'ra': row[1] if len(row) > 1 else None,
+                'dec': row[2] if len(row) > 2 else None,
+                'j_mag': row[3] if len(row) > 3 else None,
+                'h_mag': row[4] if len(row) > 4 else None,
+                'k_mag': row[5] if len(row) > 5 else None,
+            }
+            self._log_success()
+            return result
+        except Exception as e:
+            self._log_error(e)
+            return None
 
 
 # ─── API 13: WISE ───────────────────────────────────────────────────────────────
@@ -911,9 +1341,42 @@ class WISEFetcher(BaseFetcher):
         super().__init__('wise')
     
     def fetch(self, object_name: str) -> Optional[Dict[str, Any]]:
-        """Fetch from WISE. TODO: Implement."""
-        # PLACEHOLDER: W1-W4 magnitudes
-        return None
+        """Fetch mid-infrared photometry from AllWISE around the target position."""
+        coords = self._resolve_object_coordinates(object_name)
+        if not coords:
+            return None
+
+        ra, dec = coords
+        query = f"""
+        SELECT TOP 1 designation, ra, dec, w1mpro, w2mpro, w3mpro, w4mpro
+        FROM allwise_p3as_psd
+        WHERE 1 = CONTAINS(
+            POINT('ICRS', ra, dec),
+            CIRCLE('ICRS', {ra}, {dec}, 0.02)
+        )
+        """
+
+        try:
+            rows = self._tap_sync_query(query)
+            if not rows:
+                return None
+            row = rows[0]
+            result = {
+                'name': object_name,
+                'source': 'WISE',
+                'catalog_id': row[0] if len(row) > 0 else None,
+                'ra': row[1] if len(row) > 1 else None,
+                'dec': row[2] if len(row) > 2 else None,
+                'w1_mag': row[3] if len(row) > 3 else None,
+                'w2_mag': row[4] if len(row) > 4 else None,
+                'w3_mag': row[5] if len(row) > 5 else None,
+                'w4_mag': row[6] if len(row) > 6 else None,
+            }
+            self._log_success()
+            return result
+        except Exception as e:
+            self._log_error(e)
+            return None
 
 
 # ─── API 14: Pan-STARRS ─────────────────────────────────────────────────────────
@@ -925,9 +1388,50 @@ class PanSTARRSFetcher(BaseFetcher):
         super().__init__('panstarrs')
     
     def fetch(self, object_name: str) -> Optional[Dict[str, Any]]:
-        """Fetch from Pan-STARRS. TODO: Implement."""
-        # PLACEHOLDER: grizy photometry
-        return None
+        """Fetch Pan-STARRS DR2 mean photometry around the resolved target position."""
+        coords = self._resolve_object_coordinates(object_name)
+        if not coords:
+            return None
+
+        ra, dec = coords
+        endpoint = f"{self.endpoint}/dr2/mean.csv"
+        params = {
+            'ra': ra,
+            'dec': dec,
+            'radius': 0.02,
+            'nDetections.gte': 1,
+            'pagesize': 1,
+        }
+
+        try:
+            response = requests.get(endpoint, params=params, timeout=self.timeout)
+            response.raise_for_status()
+            lines = [line for line in response.text.splitlines() if line.strip()]
+            if len(lines) < 2:
+                return None
+            reader = csv.DictReader(lines)
+            row = next(reader, None)
+            if not row:
+                return None
+
+            result = {
+                'name': object_name,
+                'source': 'PanSTARRS',
+                'catalog_id': row.get('objID') or row.get('objid'),
+                'ra': self._safe_float(row.get('raMean') or row.get('ra')),
+                'dec': self._safe_float(row.get('decMean') or row.get('dec')),
+                'g_mag': self._null_sentinel(row.get('gMeanPSFMag') or row.get('gMeanKronMag')),
+                'r_mag': self._null_sentinel(row.get('rMeanPSFMag') or row.get('rMeanKronMag')),
+                'i_mag': self._null_sentinel(row.get('iMeanPSFMag') or row.get('iMeanKronMag')),
+                'z_mag': self._null_sentinel(row.get('zMeanPSFMag') or row.get('zMeanKronMag')),
+                'y_mag': self._null_sentinel(row.get('yMeanPSFMag') or row.get('yMeanKronMag')),
+                'detection_count': self._safe_float(row.get('nDetections')),
+            }
+            self._log_success()
+            return result
+        except Exception as e:
+            self._log_error(e)
+            return None
 
 
 # ─── API 15: ZTF ────────────────────────────────────────────────────────────────
@@ -939,9 +1443,50 @@ class ZTFFetcher(BaseFetcher):
         super().__init__('ztf')
     
     def fetch(self, object_name: str) -> Optional[Dict[str, Any]]:
-        """Fetch light curves from ZTF. TODO: Implement."""
-        # PLACEHOLDER: Light curves, variability
-        return None
+        """Fetch a compact ZTF light-curve summary around the resolved target."""
+        coords = self._resolve_object_coordinates(object_name)
+        if not coords:
+            return None
+
+        ra, dec = coords
+        params = {
+            'POS': f'CIRCLE {ra} {dec} 0.001',
+            'FORMAT': 'CSV',
+        }
+
+        try:
+            response = requests.get(self.endpoint, params=params, timeout=self.timeout)
+            response.raise_for_status()
+            lines = [line for line in response.text.splitlines() if line.strip()]
+            if len(lines) < 2:
+                return None
+
+            reader = csv.DictReader(lines)
+            rows = list(reader)
+            if not rows:
+                return None
+
+            mags = [self._safe_float(row.get('mag')) for row in rows if self._safe_float(row.get('mag')) is not None]
+            filters = sorted({row.get('filtercode') for row in rows if row.get('filtercode')})
+            latest = rows[-1]
+            result = {
+                'name': object_name,
+                'source': 'ZTF',
+                'light_curve_points': len(rows),
+                'latest_mjd': self._safe_float(latest.get('mjd')),
+                'latest_mag': self._safe_float(latest.get('mag')),
+                'min_mag': min(mags) if mags else None,
+                'max_mag': max(mags) if mags else None,
+                'mean_mag': (sum(mags) / len(mags)) if mags else None,
+                'filter_bands': ','.join(filters) if filters else None,
+                'ra': self._safe_float(latest.get('ra')),
+                'dec': self._safe_float(latest.get('dec')),
+            }
+            self._log_success()
+            return result
+        except Exception as e:
+            self._log_error(e)
+            return None
 
 
 # ─── API 16: ATNF Pulsar Catalog ────────────────────────────────────────────────
@@ -1123,9 +1668,42 @@ class ALMAFetcher(BaseFetcher):
         super().__init__('alma')
     
     def fetch(self, object_name: str) -> Optional[Dict[str, Any]]:
-        """Fetch ALMA observations. TODO: Implement."""
-        # PLACEHOLDER: Molecular line data, continuum
-        return None
+        """Fetch ALMA observation summary for a target name."""
+        params = {
+            'source_name_resolver': object_name,
+            'result_view': 'observation',
+            'format': 'JSON',
+        }
+
+        try:
+            response = requests.get(self.endpoint, params=params, timeout=self.timeout)
+            response.raise_for_status()
+
+            payload = response.json() if 'json' in response.headers.get('Content-Type', '').lower() else response.text
+            observations = []
+            if isinstance(payload, dict):
+                observations = payload.get('data') or payload.get('results') or payload.get('observations') or []
+            elif isinstance(payload, list):
+                observations = payload
+
+            first = observations[0] if observations else {}
+            self._log_success()
+            return self._build_archive_result(
+                object_name,
+                'ALMA',
+                response.url,
+                'ALMA archive observation summary for millimeter/submillimeter validation.',
+                payload,
+                {
+                    'project_code': first.get('proposal_id') or first.get('project_code'),
+                    'frequency_band': first.get('band_list') or first.get('frequency_band'),
+                    'target_name': first.get('target_name') or object_name,
+                    'observation_date': first.get('obs_release_date') or first.get('obs_date'),
+                },
+            )
+        except Exception as e:
+            self._log_error(e)
+            return None
 
 
 class ASKAPFetcher(BaseFetcher):
@@ -1149,9 +1727,40 @@ class ChandraFetcher(BaseFetcher):
         super().__init__('chandra')
     
     def fetch(self, object_name: str) -> Optional[Dict[str, Any]]:
-        """Fetch Chandra X-ray data. TODO: Implement."""
-        # PLACEHOLDER: X-ray flux, spectrum, imaging
-        return None
+        """Fetch Chandra archive search summary for a target name."""
+        params = {
+            'entry': object_name,
+            'fields': 'all',
+            'format': 'text',
+        }
+
+        try:
+            response = requests.get(self.endpoint, params=params, timeout=self.timeout)
+            response.raise_for_status()
+            text = response.text
+
+            observation_ids = sorted(set(re.findall(r'\b(?:obsid|ObsId)\s*[:=]?\s*([0-9]{3,6})\b', text, re.IGNORECASE)))
+            energy_band_match = re.search(r'([0-9]+\.?[0-9]*)\s*[-–]\s*([0-9]+\.?[0-9]*)\s*keV', text, re.IGNORECASE)
+            self._log_success()
+            return self._build_archive_result(
+                object_name,
+                'Chandra',
+                response.url,
+                'Chandra archive search summary for X-ray imaging and spectroscopy.',
+                text,
+                {
+                    'observation_ids': observation_ids[:10],
+                    'energy_band_keV': energy_band_match.group(0) if energy_band_match else None,
+                },
+            )
+        except requests.HTTPError as e:
+            if getattr(e.response, 'status_code', None) == 404:
+                return None
+            self._log_error(e)
+            return None
+        except Exception as e:
+            self._log_error(e)
+            return None
 
 
 class XMMFetcher(BaseFetcher):
@@ -1223,9 +1832,51 @@ class JWSTFetcher(BaseFetcher):
         super().__init__('jwst')
     
     def fetch(self, object_name: str) -> Optional[Dict[str, Any]]:
-        """Fetch JWST data. TODO: Implement."""
-        # PLACEHOLDER: Infrared imaging and spectroscopy
-        return None
+        """Fetch JWST observation summary from MAST."""
+        request_payload = {
+            'service': 'Mast.Caom.Filtered',
+            'params': {
+                'obs_collection': ['JWST'],
+                'target_name': object_name,
+            },
+            'format': 'json',
+            'pagesize': 20,
+            'page': 1,
+        }
+        headers = {'Accept': 'application/json'}
+        if API_KEYS['MAST_API_KEY']:
+            headers['Authorization'] = f"token {API_KEYS['MAST_API_KEY']}"
+
+        try:
+            response = requests.post(
+                ENDPOINTS['mast'],
+                data={'request': json.dumps(request_payload)},
+                headers=headers,
+                timeout=self.timeout,
+            )
+            response.raise_for_status()
+            payload = response.json()
+            observations = payload.get('data', []) if isinstance(payload, dict) else []
+            first = observations[0] if observations else {}
+
+            self._log_success()
+            return self._build_archive_result(
+                object_name,
+                'JWST',
+                response.url,
+                'JWST MAST observation summary for infrared imaging and spectroscopy.',
+                payload,
+                {
+                    'instrument_name': first.get('instrument_name'),
+                    'filters': first.get('filters'),
+                    'proposal_id': first.get('proposal_id'),
+                    'target_name': first.get('target_name') or object_name,
+                    'wavelength_region': first.get('wavelength_region'),
+                },
+            )
+        except Exception as e:
+            self._log_error(e)
+            return None
 
 
 class SpitzerFetcher(BaseFetcher):
@@ -1416,38 +2067,59 @@ class UnifiedFetcher:
         # Primary databases (always try first)
         self.simbad = SIMBADFetcher()
         self.ned = NEDFetcher()
+        self.gaia = GaiaFetcher()
+        self.mast = MASTFetcher()
+        self.exoplanet = ExoplanetFetcher()
+        self.heasarc = HEASARCFetcher()
+        self.eso = ESOFetcher()
+        self.vizier = VizieRFetcher()
+        self.sdss = SDSSFetcher()
+        self.twomass = TwoMASSFetcher()
+        self.wise = WISEFetcher()
+        self.panstarrs = PanSTARRSFetcher()
+        self.ztf = ZTFFetcher()
         self.grok = GrokFetcher()
         
         # NASA Services
         self.nasa_apod = NASAAPODFetcher()
         self.nasa_neows = NASANeoWsFetcher()
         self.nasa_donki = NASADONKIFetcher()
+        self.alma = ALMAFetcher()
+        self.chandra = ChandraFetcher()
+        self.jwst = JWSTFetcher()
+        self._archive_fetchers = {
+            'gaia': self.gaia,
+            'mast': self.mast,
+            'alma': self.alma,
+            'chandra': self.chandra,
+            'jwst': self.jwst,
+        }
         
         # All 55 fetchers (expanded from 50 with new NASA services)
         self._fetchers = {
             # Group A: Astronomical Databases (1-5)
             'simbad': self.simbad,
             'ned': self.ned,
-            'vizier': None,
-            'gaia': None,
-            'mast': None,
+            'vizier': self.vizier,
+            'gaia': self.gaia,
+            'mast': self.mast,
             # Group B: NASA/Space Agencies (6-15, expanded with new APIs)
             'nasa_apod': self.nasa_apod,           # NEW: Astronomy Picture of the Day
             'nasa_neows': self.nasa_neows,         # NEW: Near Earth Object Web Service
             'nasa_mars_weather': None,             # NEW: Mars Weather
             'nasa_epic': None,                     # NEW: Earth Polychromatic Imaging Camera
             'nasa_donki': self.nasa_donki,         # NEW: Space Weather Events
-            'nasa_exoplanet': None,
-            'heasarc': None,
+            'nasa_exoplanet': self.exoplanet,
+            'heasarc': self.heasarc,
             'ads': None,
             'jpl_horizons': None,
-            'eso': None,
+            'eso': self.eso,
             # Group C: Sky Surveys (11-15)
-            'sdss': None,
-            '2mass': None,
-            'wise': None,
-            'panstarrs': None,
-            'ztf': None,
+            'sdss': self.sdss,
+            '2mass': self.twomass,
+            'wise': self.wise,
+            'panstarrs': self.panstarrs,
+            'ztf': self.ztf,
             # Group D: Specialized (16-20)
             'atnf_pulsar': None,
             'mcgill_magnetar': None,
@@ -1464,17 +2136,17 @@ class UnifiedFetcher:
             'nvss': None,
             'first': None,
             'vlass': None,
-            'alma': None,
+            'alma': self.alma,
             'askap': None,
             # Group G: X-ray/Gamma-ray (31-35)
-            'chandra': None,
+            'chandra': self.chandra,
             'xmm': None,
             'swift': None,
             'fermi': None,
             'integral': None,
             # Group H: Space Telescopes (36-40)
             'hst': None,
-            'jwst': None,
+            'jwst': self.jwst,
             'spitzer': None,
             'kepler': None,
             'tess': None,
@@ -1491,6 +2163,20 @@ class UnifiedFetcher:
             'rave': None,
             'desi_spectra': None,
         }
+
+    def _merge_result_fields(self, target: Dict[str, Any], incoming: Optional[Dict[str, Any]]) -> None:
+        if not incoming:
+            return
+
+        for key, value in incoming.items():
+            if key in {'name', 'source', 'sources'}:
+                continue
+            if key not in target and value is not None and not isinstance(value, (dict, list)):
+                target[key] = value
+
+        source_name = incoming.get('source')
+        if source_name and source_name not in target['sources']:
+            target['sources'].append(source_name)
     
     def fetch(self, object_name: str, required_params: List[str] = None) -> Dict[str, Any]:
         """
@@ -1511,16 +2197,35 @@ class UnifiedFetcher:
         # Try SIMBAD first
         simbad_data = self.simbad.fetch(object_name)
         if simbad_data:
-            result.update({k: v for k, v in simbad_data.items() if k != 'source'})
-            result['sources'].append('SIMBAD')
+            self._merge_result_fields(result, simbad_data)
         
         # Try NED for extragalactic objects
         ned_data = self.ned.fetch(object_name)
         if ned_data:
-            for key, value in ned_data.items():
-                if key not in result and key != 'source':
-                    result[key] = value
-            result['sources'].append('NED')
+            self._merge_result_fields(result, ned_data)
+
+        archive_hits = self.fetch_archive_context(object_name)
+        if archive_hits:
+            result['archive_hits'] = archive_hits
+            for hit in archive_hits:
+                self._merge_result_fields(result, hit)
+
+        supplemental_fetchers = [
+            self.vizier,
+            self.gaia,
+            self.exoplanet,
+            self.sdss,
+            self.twomass,
+            self.wise,
+            self.panstarrs,
+            self.ztf,
+            self.mast,
+        ]
+        for fetcher in supplemental_fetchers:
+            missing = [p for p in required_params if p not in result]
+            if not missing:
+                break
+            self._merge_result_fields(result, fetcher.fetch(object_name))
         
         # Check for missing required parameters
         missing = [p for p in required_params if p not in result]
@@ -1529,12 +2234,32 @@ class UnifiedFetcher:
         if missing:
             grok_data = self.grok.fetch(object_name, missing)
             if grok_data:
-                for key, value in grok_data.items():
-                    if key not in result and key != 'source':
-                        result[key] = value
-                result['sources'].append('Grok')
+                self._merge_result_fields(result, grok_data)
         
         return result
+
+    def fetch_archive_context(
+        self,
+        object_name: str,
+        archive_names: Optional[List[str]] = None,
+    ) -> List[Dict[str, Any]]:
+        """Fetch archive summaries from the implemented archive bridges."""
+        requested = {
+            name.strip().lower()
+            for name in (archive_names or list(self._archive_fetchers.keys()))
+            if name and name.strip()
+        }
+
+        archive_hits: List[Dict[str, Any]] = []
+        for name, fetcher in self._archive_fetchers.items():
+            if name not in requested or fetcher is None:
+                continue
+
+            archive_result = fetcher.fetch(object_name)
+            if archive_result:
+                archive_hits.append(archive_result)
+
+        return archive_hits
     
     def fetch_to_ipdata(self, object_name: str, required_params: List[str] = None) -> Tuple[InputParameters, str]:
         """
@@ -1575,7 +2300,12 @@ class UnifiedFetcher:
         
         return params, query_id
     
-    def fetch_and_save(self, object_name: str, output_dir: str = ".") -> Tuple[Dict[str, Any], str]:
+    def fetch_and_save(
+        self,
+        object_name: str,
+        output_dir: str = ".",
+        required_params: List[str] = None,
+    ) -> Tuple[Dict[str, Any], str]:
         """
         Fetch parameters and save to timestamped CSV file.
         Also stores in IPData.py.
@@ -1587,7 +2317,7 @@ class UnifiedFetcher:
         Returns:
             Tuple of (result_dict, csv_filepath)
         """
-        result = self.fetch(object_name)
+        result = self.fetch(object_name, required_params)
         
         # Also store in IPData
         self.fetch_to_ipdata(object_name)
@@ -1703,9 +2433,71 @@ def fetch(object_name: str) -> Dict[str, Any]:
     return FETCHER.fetch(object_name)
 
 
-def fetch_and_save(object_name: str, output_dir: str = ".") -> Tuple[Dict[str, Any], str]:
+def fetch_and_save(
+    object_name: str,
+    output_dir: str = ".",
+    required_params: List[str] = None,
+) -> Tuple[Dict[str, Any], str]:
     """Fetch parameters and save to CSV."""
-    return FETCHER.fetch_and_save(object_name, output_dir)
+    return FETCHER.fetch_and_save(object_name, output_dir, required_params)
+
+
+def _parse_csv_list(raw_value: str) -> List[str]:
+    return [item.strip() for item in (raw_value or '').split(',') if item.strip()]
+
+
+def run_cli(argv: Optional[List[str]] = None) -> int:
+    """Command-line entry point for GUI/archive bridge execution."""
+    parser = argparse.ArgumentParser(description="Fetch astronomical data and archive summaries for Star-Magic.")
+    parser.add_argument('--object', dest='object_name', help='Astronomical object name to query.')
+    parser.add_argument('--output-dir', default='.', help='Directory for generated CSV output when --save is used.')
+    parser.add_argument('--required-params', default='', help='Comma-separated parameter names to prioritise.')
+    parser.add_argument('--archives', default='gaia,mast,alma,chandra,jwst', help='Comma-separated archive bridges to query.')
+    parser.add_argument('--save', action='store_true', help='Write a bodies_*.csv file in addition to JSON output.')
+    parser.add_argument('--pretty', action='store_true', help='Pretty-print JSON output.')
+    parser.add_argument('--manual', action='store_true', help='Use interactive manual input instead of API fetch.')
+    args = parser.parse_args(argv)
+
+    required_params = _parse_csv_list(args.required_params)
+    archive_names = _parse_csv_list(args.archives)
+
+    try:
+        if args.manual:
+            result = manual_input()
+            csv_path = None
+        else:
+            object_name = (args.object_name or '').strip()
+            if not object_name:
+                parser.error('--object is required unless --manual is used')
+
+            if args.save:
+                result, csv_path = FETCHER.fetch_and_save(object_name, args.output_dir, required_params)
+            else:
+                result = FETCHER.fetch(object_name, required_params)
+                csv_path = None
+
+            if archive_names:
+                result['archive_hits'] = FETCHER.fetch_archive_context(object_name, archive_names)
+                source_names = {source for source in result.get('sources', []) if source}
+                for hit in result['archive_hits']:
+                    source = hit.get('source')
+                    if source:
+                        source_names.add(source)
+                result['sources'] = sorted(source_names)
+
+        payload = {
+            'success': True,
+            'result': result,
+            'csv_path': csv_path,
+        }
+    except Exception as e:
+        payload = {
+            'success': False,
+            'error': str(e),
+        }
+
+    print(json.dumps(payload, indent=2 if args.pretty else None))
+    return 0 if payload.get('success') else 1
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -1713,23 +2505,4 @@ def fetch_and_save(object_name: str, output_dir: str = ".") -> Tuple[Dict[str, A
 # ═══════════════════════════════════════════════════════════════════════════════
 
 if __name__ == "__main__":
-    print("=" * 80)
-    print("APIFetch.py - API Data Fetching Layer Test")
-    print("=" * 80)
-    
-    # Test with a known object
-    test_object = "Betelgeuse"
-    print(f"\nFetching data for: {test_object}")
-    print("-" * 40)
-    
-    result = fetch(test_object)
-    
-    print("Results:")
-    for key, value in result.items():
-        if isinstance(value, float) and abs(value) > 1e6:
-            print(f"  {key}: {value:.4e}")
-        else:
-            print(f"  {key}: {value}")
-    
-    print("\n" + "-" * 40)
-    print("Sources used:", result.get('sources', []))
+    sys.exit(run_cli())

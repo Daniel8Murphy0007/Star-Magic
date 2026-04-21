@@ -55,6 +55,7 @@ private:
     std::vector<UQFF::CelestialBodyCSV> loadedBodies;  // Cached bodies from CSV
     QSystemTrayIcon* trayIcon;  // System tray icon
     QMenu* trayMenu;            // Tray icon context menu
+    bool ensureBodiesDataAvailable(const QString& systemName, const QStringList& requiredParams = QStringList());
     
     void setupSystemTrayIcon();  // Initialize tray icon
 };

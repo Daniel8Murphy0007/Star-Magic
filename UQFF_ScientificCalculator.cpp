@@ -28,6 +28,19 @@
 #include <memory>
 #include <set>
 #include <sstream>
+
+// SymEngine for DimensionalAnalyzer expression tree traversal
+#ifdef USE_SYMENGINE
+#include <symengine/basic.h>
+#include <symengine/symbol.h>
+#include <symengine/add.h>
+#include <symengine/mul.h>
+#include <symengine/pow.h>
+#include <symengine/integer.h>
+#include <symengine/real_double.h>
+#include <symengine/rational.h>
+#include <symengine/functions.h>
+#endif
 #include <algorithm>
 
 // ============================================================================
@@ -95,45 +108,65 @@ namespace UQFFDimensional {
         int time;    // T dimension
         int charge;  // Q dimension (extended SI)
         int temp;    // Θ dimension (temperature)
+        int amount;  // N dimension (mole)
+        int luminous; // J dimension (candela)
         
-        Unit(double v = 0.0, int l = 0, int m = 0, int t = 0, int q = 0, int th = 0)
-            : value(v), length(l), mass(m), time(t), charge(q), temp(th) {}
+        Unit(double v = 0.0, int l = 0, int m = 0, int t = 0, int q = 0, int th = 0, int n = 0, int j = 0)
+            : value(v), length(l), mass(m), time(t), charge(q), temp(th), amount(n), luminous(j) {}
         
         // Dimensional compatibility check
         bool compatible(const Unit& other) const {
             return length == other.length && mass == other.mass && 
-                   time == other.time && charge == other.charge && temp == other.temp;
+                   time == other.time && charge == other.charge && temp == other.temp &&
+                   amount == other.amount && luminous == other.luminous;
         }
         
         // Operators with dimensional analysis
+        bool operator==(const Unit& other) const {
+            return compatible(other);
+        }
+        bool operator!=(const Unit& other) const {
+            return !compatible(other);
+        }
+
         Unit operator+(const Unit& o) const {
             if (!compatible(o)) throw std::runtime_error("Incompatible dimensions for addition");
-            return Unit(value + o.value, length, mass, time, charge, temp);
+            return Unit(value + o.value, length, mass, time, charge, temp, amount, luminous);
         }
         
         Unit operator-(const Unit& o) const {
             if (!compatible(o)) throw std::runtime_error("Incompatible dimensions for subtraction");
-            return Unit(value - o.value, length, mass, time, charge, temp);
+            return Unit(value - o.value, length, mass, time, charge, temp, amount, luminous);
         }
         
         Unit operator*(const Unit& o) const {
             return Unit(value * o.value, length + o.length, mass + o.mass, 
-                       time + o.time, charge + o.charge, temp + o.temp);
+                       time + o.time, charge + o.charge, temp + o.temp,
+                       amount + o.amount, luminous + o.luminous);
         }
         
         Unit operator/(const Unit& o) const {
             return Unit(value / o.value, length - o.length, mass - o.mass,
-                       time - o.time, charge - o.charge, temp - o.temp);
+                       time - o.time, charge - o.charge, temp - o.temp,
+                       amount - o.amount, luminous - o.luminous);
         }
         
         Unit pow(int n) const {
-            return Unit(std::pow(value, n), length * n, mass * n, time * n, charge * n, temp * n);
+            return Unit(std::pow(value, n), length * n, mass * n, time * n, 
+                       charge * n, temp * n, amount * n, luminous * n);
         }
         
         Unit sqrt() const {
-            if (length % 2 != 0 || mass % 2 != 0 || time % 2 != 0)
+            if (length % 2 != 0 || mass % 2 != 0 || time % 2 != 0 ||
+                amount % 2 != 0 || luminous % 2 != 0)
                 throw std::runtime_error("Cannot take sqrt of odd-dimensional unit");
-            return Unit(std::sqrt(value), length/2, mass/2, time/2, charge/2, temp/2);
+            return Unit(std::sqrt(value), length/2, mass/2, time/2, charge/2, temp/2,
+                       amount/2, luminous/2);
+        }
+
+        bool isDimensionless() const {
+            return length == 0 && mass == 0 && time == 0 && charge == 0 &&
+                   temp == 0 && amount == 0 && luminous == 0;
         }
         
         // Dimension string representation
@@ -143,8 +176,12 @@ namespace UQFFDimensional {
             if (mass) oss << "M^" << mass << " ";
             if (time) oss << "T^" << time << " ";
             if (charge) oss << "Q^" << charge << " ";
-            if (temp) oss << "Θ^" << temp;
-            return oss.str().empty() ? "dimensionless" : oss.str();
+            if (temp) oss << "Θ^" << temp << " ";
+            if (amount) oss << "N^" << amount << " ";
+            if (luminous) oss << "J^" << luminous;
+            std::string result = oss.str();
+            while (!result.empty() && result.back() == ' ') result.pop_back();
+            return result.empty() ? "dimensionless" : result;
         }
         
         // Static factory methods for common units
@@ -156,6 +193,10 @@ namespace UQFFDimensional {
         static Unit tesla(double v = 1.0) { return Unit(v, 0, 1, -2, -1); } // kg/(A·s²)
         static Unit velocity(double v = 1.0) { return Unit(v, 1, 0, -1); }  // m/s
         static Unit acceleration(double v = 1.0) { return Unit(v, 1, 0, -2); } // m/s²
+        static Unit mole(double v = 1.0) { return Unit(v, 0, 0, 0, 0, 0, 1, 0); }     // amount of substance
+        static Unit candela(double v = 1.0) { return Unit(v, 0, 0, 0, 0, 0, 0, 1); }   // luminous intensity
+        static Unit ampere(double v = 1.0) { return Unit(v, 0, 0, 0, 1, 0, 0, 0); }    // electric current
+        static Unit kelvin(double v = 1.0) { return Unit(v, 0, 0, 0, 0, 1, 0, 0); }    // temperature
     };
     
     // Unit conversion factors database
@@ -888,6 +929,154 @@ namespace UQFFSymbols {
         };
     }
 }
+
+// ============================================================================
+// DIMENSIONAL ANALYZER - Recursive expression unit validation
+// Uses SymEngine expression tree to verify dimensional consistency
+// ============================================================================
+#ifdef USE_SYMENGINE
+namespace UQFFDimensional {
+
+    class DimensionalAnalyzer {
+    public:
+        std::map<std::string, Unit> varUnits;   // Variable → Unit mapping
+        std::map<std::string, Unit> funcUnits;   // Function → return Unit mapping
+
+        DimensionalAnalyzer() {
+            // Pre-register common physics variables with their units
+            // Users can override or extend via setVariableUnit()
+        }
+
+        void setVariableUnit(const std::string& name, const Unit& u) {
+            varUnits[name] = u;
+        }
+
+        void setFunctionUnit(const std::string& name, const Unit& u) {
+            funcUnits[name] = u;
+        }
+
+        // Recursive unit extraction from SymEngine expression tree
+        // Returns the dimensional signature of the expression
+        Unit getUnit(const SymEngine::RCP<const SymEngine::Basic>& expr) const {
+            using namespace SymEngine;
+
+            // Symbol: look up in variable map
+            if (is_a<Symbol>(*expr)) {
+                const auto& sym = down_cast<const Symbol&>(*expr);
+                auto it = varUnits.find(sym.get_name());
+                return it != varUnits.end() ? it->second : Unit{}; // Unknown → dimensionless
+            }
+
+            // Number: dimensionless
+            if (is_a<Integer>(*expr) || is_a<RealDouble>(*expr) || is_a<Rational>(*expr)) {
+                return Unit{};
+            }
+
+            // Addition/Subtraction: all terms must have same dimensions
+            if (is_a<Add>(*expr)) {
+                const auto& add = down_cast<const Add&>(*expr);
+                auto args = add.get_args();
+                if (args.empty()) return Unit{};
+                Unit u = getUnit(args[0]);
+                for (size_t i = 1; i < args.size(); ++i) {
+                    Unit ui = getUnit(args[i]);
+                    if (u != ui) {
+                        throw std::runtime_error(
+                            "Dimensional mismatch in addition: " + u.dimString() + 
+                            " vs " + ui.dimString());
+                    }
+                }
+                return u;
+            }
+
+            // Multiplication: dimensions add
+            if (is_a<Mul>(*expr)) {
+                const auto& mul = down_cast<const Mul&>(*expr);
+                auto args = mul.get_args();
+                Unit u(1.0);
+                for (const auto& arg : args) {
+                    u = u * getUnit(arg);
+                }
+                return u;
+            }
+
+            // Power: base dimensions scale by exponent
+            if (is_a<Pow>(*expr)) {
+                const auto& pw = down_cast<const Pow&>(*expr);
+                Unit baseU = getUnit(pw.get_base());
+                // Exponent must be a numeric constant for dimensional analysis
+                auto expVal = pw.get_exp();
+                if (is_a<Integer>(*expVal)) {
+                    int exp = static_cast<int>(down_cast<const Integer&>(*expVal).as_int());
+                    return baseU.pow(exp);
+                }
+                // Non-integer exponent: only valid if base is dimensionless
+                if (!baseU.isDimensionless()) {
+                    throw std::runtime_error(
+                        "Non-integer exponent on dimensioned quantity: " + baseU.dimString());
+                }
+                return Unit{}; // dimensionless^anything = dimensionless
+            }
+
+            // Functions (sin, cos, exp, log): argument must be dimensionless, result is dimensionless
+            // Unless overridden in funcUnits map
+            if (is_a<FunctionSymbol>(*expr)) {
+                const auto& func = down_cast<const FunctionSymbol&>(*expr);
+                std::string fname = func.get_name();
+                
+                // Check if function has custom return unit
+                auto it = funcUnits.find(fname);
+                if (it != funcUnits.end()) {
+                    return it->second;
+                }
+
+                // Standard math functions: argument must be dimensionless
+                auto args = func.get_args();
+                for (const auto& arg : args) {
+                    Unit argU = getUnit(arg);
+                    if (!argU.isDimensionless()) {
+                        throw std::runtime_error(
+                            "Function " + fname + " requires dimensionless argument, got: " + 
+                            argU.dimString());
+                    }
+                }
+                return Unit{}; // dimensionless
+            }
+
+            // Default: treat as dimensionless
+            return Unit{};
+        }
+
+        // Validate that LHS and RHS of an equation have matching dimensions
+        bool validateEquation(const SymEngine::RCP<const SymEngine::Basic>& lhs,
+                              const SymEngine::RCP<const SymEngine::Basic>& rhs) const {
+            try {
+                Unit lhsU = getUnit(lhs);
+                Unit rhsU = getUnit(rhs);
+                return lhsU == rhsU;
+            } catch (const std::runtime_error&) {
+                return false; // Dimensional inconsistency detected
+            }
+        }
+
+        // Validate and return detailed error message
+        std::string validateEquationDetailed(const SymEngine::RCP<const SymEngine::Basic>& lhs,
+                                              const SymEngine::RCP<const SymEngine::Basic>& rhs) const {
+            try {
+                Unit lhsU = getUnit(lhs);
+                Unit rhsU = getUnit(rhs);
+                if (lhsU == rhsU) {
+                    return "OK: Both sides have dimensions [" + lhsU.dimString() + "]";
+                }
+                return "MISMATCH: LHS=[" + lhsU.dimString() + "] vs RHS=[" + rhsU.dimString() + "]";
+            } catch (const std::runtime_error& e) {
+                return std::string("ERROR: ") + e.what();
+            }
+        }
+    };
+
+} // namespace UQFFDimensional
+#endif // USE_SYMENGINE
 
 // ============================================================================
 // MAIN ENTRY POINT FOR TESTING
