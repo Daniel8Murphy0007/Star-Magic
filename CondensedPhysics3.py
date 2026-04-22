@@ -1,4 +1,4 @@
-﻿"""
+"""
 CondensedPhysics3.py â€” UQFF Phase 3 Physics Calculator
 =======================================================
 IPC Chain Position: 3 of 4
@@ -2144,7 +2144,7 @@ class CoAnQiCelestialBodyFUCalculator(_CP3Calculator):
         Ug3 = math.sin(omega_c * t + t_n) * SSQ
         Ug4 = k4 * rho_v * M_body / r
         Ub_i = -BETA_I * Ug4 * omega_c * M_body / r * math.cos(math.pi * t_n)
-        g_surface = G * M_body / r ** 2
+        g_surface = dpm_emergent_ug1(M_body, r)  # DPM-emergent projection
         FU = -(Ug1 + Ug2 + Ug3 + Ug4 + Ub_i) * g_surface
         return {
             'primary_equations': {
@@ -4846,7 +4846,7 @@ class UQFFSombreroDustIntegratedCalculator(_CP3Calculator):
 
         mag_f   = 1.0 - B / B_crit
         g_base = dpm_emergent_ug1(M, r)  # DPM: mu_s * grad(M_s/r)
-        g_BH    = G * M_BH / r_BH**2        # SMBH contribution
+        g_BH    = dpm_emergent_ug1(M_BH, r_BH)  # DPM-emergent BH projection        # SMBH contribution
 
         # Dust lane term: D_dust = Ï_dust Â· v_dustÂ² / r
         D_dust  = rho_dust * v_dust**2 / r
@@ -5776,7 +5776,7 @@ class GalaxyNGC2525SNMassLossCalculator(_CP3Calculator):
         # SN negative mass-loss term (UNIQUE: ONLY negative MUGE term)
         term_SN = -dpm_emergent_ug1(M_SN_t, r)
         # Central BH contribution
-        term_BH = G * M_BH / r_BH**2
+        term_BH = dpm_emergent_ug1(M_BH, r_BH)  # DPM-emergent BH projection
         delta_x = 1e-15
         delta_p = hbar / delta_x
         t_Hub = 1.0 / H0
@@ -6083,7 +6083,7 @@ class SGR1745BHProximityMagEnergyCalculator(_CP3Calculator):
         term4 = (q * v_surf * B / m_p) * (1 + rho_UA / rho_SCm) * scale_EM
 
         # BH proximity term (NOVEL: SMBH tidal coupling at r_BH=0.92 pc)
-        term_BH = G * M_BH / r_BH**2
+        term_BH = dpm_emergent_ug1(M_BH, r_BH)  # DPM-emergent BH projection
 
         # Magnetic stored energy (NOVEL: static field energy density)
         V = (4.0 / 3.0) * pi * r**3
@@ -9198,6 +9198,68 @@ class NGC1792StarburstBuoyancyCoherenceCalculator(_CP3Calculator):
             'paper': 'PAPER_267',
         }
 
+    def compute(self, dataset: dict) -> dict:
+        """Canonical UQFF compute. DPM-emergent: GM/r^2 is projection, not seed.
+        Chain: 0 -> grad(UA) -> DPM -> Ug1 -> Ug_family -> F_U -> M -> GM/r^2 (last).
+        """
+        import math
+        M   = dataset.get('M_kg',   1.989e30)
+        r   = dataset.get('r_m',    1.496e11)
+        B   = dataset.get('B_T',    1e-4)
+        t   = dataset.get('t_s',    0.0)
+        t_n = dataset.get('t_n',    0.0)
+        kappa   = dataset.get('kappa',   0.0005)
+        E_react = dataset.get('E_react', 1.0e46)
+        beta_i  = dataset.get('beta_i',  0.603)
+        SSq     = dataset.get('SSq',     0.57)
+        Omega_g = dataset.get('Omega_g', 7.3e-16)
+        M_bh    = dataset.get('M_bh',    8.15e36)
+        d_g     = dataset.get('d_g',     2.55e20)
+        # --- DPM-emergent gravity family (NOT Newton-first) ---
+        g_b = dpm_emergent_ug1(M, r, B)  # Ug1: DPM seed
+        Ug1 = g_b
+        Ug2 = 1.2  * g_b  # charge-reactivity shell
+        Ug3 = 0.8  * g_b * math.cos(math.pi * t_n)  # magnetic string rotation
+        Ug4 = 0.5  * g_b  # BH vacuum concentration
+        # Buoyancy (inside-out counter-force)
+        Ub = -beta_i * Ug1 * Omega_g * (M_bh / max(d_g, 1.0)) * (
+            1.0 + 0.1 * math.cos(math.pi * t_n)
+        )
+        # Unified field
+        F_U = Ug1 + Ug2 + Ug3 + Ug4 + Ub
+        # GM/r^2 appears LAST as a derived observational projection only
+        _G = 6.6743e-11
+        g_projection = _G * M / (r ** 2) if r > 0 else 0.0
+        return {
+            'primary_equations': [
+                f'Ug1(DPM-seed) = dpm_emergent_ug1(M,r,B) = {Ug1:.6e}',
+                f'Ug2(shell)    = 1.2*Ug1                 = {Ug2:.6e}',
+                f'Ug3(string)   = 0.8*Ug1*cos(pi*t_n)    = {Ug3:.6e}',
+                f'Ug4(BH-vac)   = 0.5*Ug1                 = {Ug4:.6e}',
+                f'Ub (buoyancy) = {Ub:.6e}',
+                f'F_U(unified)  = {F_U:.6e}',
+                f'GM/r^2(projection, LAST) = {g_projection:.6e} m/s^2',
+            ],
+            'available_equations': [
+                'g_base = dpm_emergent_ug1(M, r, B)  # DPM-emergent, not Newton',
+                'Ug1 = g_base  # seed from DPM vortex',
+                'Ug2 = 1.2 * Ug1  # charge-reactivity',
+                'Ug3 = 0.8 * Ug1 * cos(pi*t_n)  # magnetic string 90deg',
+                'Ug4 = 0.5 * Ug1  # BH vacuum concentration',
+                'Ub = -beta_i * Ug1 * Omega_g * M_bh/d_g  # buoyancy counter',
+                'F_U = Ug1 + Ug2 + Ug3 + Ug4 + Ub  # unified field',
+                'GM/r^2 = projection of F_U (EMERGENT, appears last)',
+            ],
+            'simulation_set': [
+                {'equation': 'F_U_vs_r',  'M_kg': M, 'r_m': r, 'result': F_U},
+                {'equation': 'Ug1_vs_B',  'B_T':  B, 'r_m': r, 'result': Ug1},
+            ],
+            'Ug1': Ug1, 'Ug2': Ug2, 'Ug3': Ug3, 'Ug4': Ug4,
+            'Ub': Ub, 'F_U': F_U, 'g_base': g_b,
+            'g_projection_GM_r2': g_projection,
+        }
+
+
 
 class NGC1792HubbleSlowModeOscillatorCalculator(_CP3Calculator):
     """PAPER_268: Two-mode GW superposition producing Hubble-timescale amplitude modulation.
@@ -9238,6 +9300,68 @@ class NGC1792HubbleSlowModeOscillatorCalculator(_CP3Calculator):
             'gw_band_hz': omega_hubble / (2 * math.pi),
             'paper': 'PAPER_268',
         }
+
+    def compute(self, dataset: dict) -> dict:
+        """Canonical UQFF compute. DPM-emergent: GM/r^2 is projection, not seed.
+        Chain: 0 -> grad(UA) -> DPM -> Ug1 -> Ug_family -> F_U -> M -> GM/r^2 (last).
+        """
+        import math
+        M   = dataset.get('M_kg',   1.989e30)
+        r   = dataset.get('r_m',    1.496e11)
+        B   = dataset.get('B_T',    1e-4)
+        t   = dataset.get('t_s',    0.0)
+        t_n = dataset.get('t_n',    0.0)
+        kappa   = dataset.get('kappa',   0.0005)
+        E_react = dataset.get('E_react', 1.0e46)
+        beta_i  = dataset.get('beta_i',  0.603)
+        SSq     = dataset.get('SSq',     0.57)
+        Omega_g = dataset.get('Omega_g', 7.3e-16)
+        M_bh    = dataset.get('M_bh',    8.15e36)
+        d_g     = dataset.get('d_g',     2.55e20)
+        # --- DPM-emergent gravity family (NOT Newton-first) ---
+        g_b = dpm_emergent_ug1(M, r, B)  # Ug1: DPM seed
+        Ug1 = g_b
+        Ug2 = 1.2  * g_b  # charge-reactivity shell
+        Ug3 = 0.8  * g_b * math.cos(math.pi * t_n)  # magnetic string rotation
+        Ug4 = 0.5  * g_b  # BH vacuum concentration
+        # Buoyancy (inside-out counter-force)
+        Ub = -beta_i * Ug1 * Omega_g * (M_bh / max(d_g, 1.0)) * (
+            1.0 + 0.1 * math.cos(math.pi * t_n)
+        )
+        # Unified field
+        F_U = Ug1 + Ug2 + Ug3 + Ug4 + Ub
+        # GM/r^2 appears LAST as a derived observational projection only
+        _G = 6.6743e-11
+        g_projection = _G * M / (r ** 2) if r > 0 else 0.0
+        return {
+            'primary_equations': [
+                f'Ug1(DPM-seed) = dpm_emergent_ug1(M,r,B) = {Ug1:.6e}',
+                f'Ug2(shell)    = 1.2*Ug1                 = {Ug2:.6e}',
+                f'Ug3(string)   = 0.8*Ug1*cos(pi*t_n)    = {Ug3:.6e}',
+                f'Ug4(BH-vac)   = 0.5*Ug1                 = {Ug4:.6e}',
+                f'Ub (buoyancy) = {Ub:.6e}',
+                f'F_U(unified)  = {F_U:.6e}',
+                f'GM/r^2(projection, LAST) = {g_projection:.6e} m/s^2',
+            ],
+            'available_equations': [
+                'g_base = dpm_emergent_ug1(M, r, B)  # DPM-emergent, not Newton',
+                'Ug1 = g_base  # seed from DPM vortex',
+                'Ug2 = 1.2 * Ug1  # charge-reactivity',
+                'Ug3 = 0.8 * Ug1 * cos(pi*t_n)  # magnetic string 90deg',
+                'Ug4 = 0.5 * Ug1  # BH vacuum concentration',
+                'Ub = -beta_i * Ug1 * Omega_g * M_bh/d_g  # buoyancy counter',
+                'F_U = Ug1 + Ug2 + Ug3 + Ug4 + Ub  # unified field',
+                'GM/r^2 = projection of F_U (EMERGENT, appears last)',
+            ],
+            'simulation_set': [
+                {'equation': 'F_U_vs_r',  'M_kg': M, 'r_m': r, 'result': F_U},
+                {'equation': 'Ug1_vs_B',  'B_T':  B, 'r_m': r, 'result': Ug1},
+            ],
+            'Ug1': Ug1, 'Ug2': Ug2, 'Ug3': Ug3, 'Ug4': Ug4,
+            'Ub': Ub, 'F_U': F_U, 'g_base': g_b,
+            'g_projection_GM_r2': g_projection,
+        }
+
 
 
 class NGC1792RamPressureDegeneracyCalculator(_CP3Calculator):
@@ -9280,6 +9404,68 @@ class NGC1792RamPressureDegeneracyCalculator(_CP3Calculator):
             'paper': 'PAPER_269',
         }
 
+    def compute(self, dataset: dict) -> dict:
+        """Canonical UQFF compute. DPM-emergent: GM/r^2 is projection, not seed.
+        Chain: 0 -> grad(UA) -> DPM -> Ug1 -> Ug_family -> F_U -> M -> GM/r^2 (last).
+        """
+        import math
+        M   = dataset.get('M_kg',   1.989e30)
+        r   = dataset.get('r_m',    1.496e11)
+        B   = dataset.get('B_T',    1e-4)
+        t   = dataset.get('t_s',    0.0)
+        t_n = dataset.get('t_n',    0.0)
+        kappa   = dataset.get('kappa',   0.0005)
+        E_react = dataset.get('E_react', 1.0e46)
+        beta_i  = dataset.get('beta_i',  0.603)
+        SSq     = dataset.get('SSq',     0.57)
+        Omega_g = dataset.get('Omega_g', 7.3e-16)
+        M_bh    = dataset.get('M_bh',    8.15e36)
+        d_g     = dataset.get('d_g',     2.55e20)
+        # --- DPM-emergent gravity family (NOT Newton-first) ---
+        g_b = dpm_emergent_ug1(M, r, B)  # Ug1: DPM seed
+        Ug1 = g_b
+        Ug2 = 1.2  * g_b  # charge-reactivity shell
+        Ug3 = 0.8  * g_b * math.cos(math.pi * t_n)  # magnetic string rotation
+        Ug4 = 0.5  * g_b  # BH vacuum concentration
+        # Buoyancy (inside-out counter-force)
+        Ub = -beta_i * Ug1 * Omega_g * (M_bh / max(d_g, 1.0)) * (
+            1.0 + 0.1 * math.cos(math.pi * t_n)
+        )
+        # Unified field
+        F_U = Ug1 + Ug2 + Ug3 + Ug4 + Ub
+        # GM/r^2 appears LAST as a derived observational projection only
+        _G = 6.6743e-11
+        g_projection = _G * M / (r ** 2) if r > 0 else 0.0
+        return {
+            'primary_equations': [
+                f'Ug1(DPM-seed) = dpm_emergent_ug1(M,r,B) = {Ug1:.6e}',
+                f'Ug2(shell)    = 1.2*Ug1                 = {Ug2:.6e}',
+                f'Ug3(string)   = 0.8*Ug1*cos(pi*t_n)    = {Ug3:.6e}',
+                f'Ug4(BH-vac)   = 0.5*Ug1                 = {Ug4:.6e}',
+                f'Ub (buoyancy) = {Ub:.6e}',
+                f'F_U(unified)  = {F_U:.6e}',
+                f'GM/r^2(projection, LAST) = {g_projection:.6e} m/s^2',
+            ],
+            'available_equations': [
+                'g_base = dpm_emergent_ug1(M, r, B)  # DPM-emergent, not Newton',
+                'Ug1 = g_base  # seed from DPM vortex',
+                'Ug2 = 1.2 * Ug1  # charge-reactivity',
+                'Ug3 = 0.8 * Ug1 * cos(pi*t_n)  # magnetic string 90deg',
+                'Ug4 = 0.5 * Ug1  # BH vacuum concentration',
+                'Ub = -beta_i * Ug1 * Omega_g * M_bh/d_g  # buoyancy counter',
+                'F_U = Ug1 + Ug2 + Ug3 + Ug4 + Ub  # unified field',
+                'GM/r^2 = projection of F_U (EMERGENT, appears last)',
+            ],
+            'simulation_set': [
+                {'equation': 'F_U_vs_r',  'M_kg': M, 'r_m': r, 'result': F_U},
+                {'equation': 'Ug1_vs_B',  'B_T':  B, 'r_m': r, 'result': Ug1},
+            ],
+            'Ug1': Ug1, 'Ug2': Ug2, 'Ug3': Ug3, 'Ug4': Ug4,
+            'Ub': Ub, 'F_U': F_U, 'g_base': g_b,
+            'g_projection_GM_r2': g_projection,
+        }
+
+
 
 # ---------------------------------------------------------------------------
 # Session 74 â€” PAPER_270â€“272 (UQFF Source10 Catalogue Unique Physics)
@@ -9320,6 +9506,68 @@ class Source10DPMResonanceAmplificationCalculator(_CP3Calculator):
             'B0_T': B0,
             'paper': 'PAPER_270',
         }
+
+    def compute(self, dataset: dict) -> dict:
+        """Canonical UQFF compute. DPM-emergent: GM/r^2 is projection, not seed.
+        Chain: 0 -> grad(UA) -> DPM -> Ug1 -> Ug_family -> F_U -> M -> GM/r^2 (last).
+        """
+        import math
+        M   = dataset.get('M_kg',   1.989e30)
+        r   = dataset.get('r_m',    1.496e11)
+        B   = dataset.get('B_T',    1e-4)
+        t   = dataset.get('t_s',    0.0)
+        t_n = dataset.get('t_n',    0.0)
+        kappa   = dataset.get('kappa',   0.0005)
+        E_react = dataset.get('E_react', 1.0e46)
+        beta_i  = dataset.get('beta_i',  0.603)
+        SSq     = dataset.get('SSq',     0.57)
+        Omega_g = dataset.get('Omega_g', 7.3e-16)
+        M_bh    = dataset.get('M_bh',    8.15e36)
+        d_g     = dataset.get('d_g',     2.55e20)
+        # --- DPM-emergent gravity family (NOT Newton-first) ---
+        g_b = dpm_emergent_ug1(M, r, B)  # Ug1: DPM seed
+        Ug1 = g_b
+        Ug2 = 1.2  * g_b  # charge-reactivity shell
+        Ug3 = 0.8  * g_b * math.cos(math.pi * t_n)  # magnetic string rotation
+        Ug4 = 0.5  * g_b  # BH vacuum concentration
+        # Buoyancy (inside-out counter-force)
+        Ub = -beta_i * Ug1 * Omega_g * (M_bh / max(d_g, 1.0)) * (
+            1.0 + 0.1 * math.cos(math.pi * t_n)
+        )
+        # Unified field
+        F_U = Ug1 + Ug2 + Ug3 + Ug4 + Ub
+        # GM/r^2 appears LAST as a derived observational projection only
+        _G = 6.6743e-11
+        g_projection = _G * M / (r ** 2) if r > 0 else 0.0
+        return {
+            'primary_equations': [
+                f'Ug1(DPM-seed) = dpm_emergent_ug1(M,r,B) = {Ug1:.6e}',
+                f'Ug2(shell)    = 1.2*Ug1                 = {Ug2:.6e}',
+                f'Ug3(string)   = 0.8*Ug1*cos(pi*t_n)    = {Ug3:.6e}',
+                f'Ug4(BH-vac)   = 0.5*Ug1                 = {Ug4:.6e}',
+                f'Ub (buoyancy) = {Ub:.6e}',
+                f'F_U(unified)  = {F_U:.6e}',
+                f'GM/r^2(projection, LAST) = {g_projection:.6e} m/s^2',
+            ],
+            'available_equations': [
+                'g_base = dpm_emergent_ug1(M, r, B)  # DPM-emergent, not Newton',
+                'Ug1 = g_base  # seed from DPM vortex',
+                'Ug2 = 1.2 * Ug1  # charge-reactivity',
+                'Ug3 = 0.8 * Ug1 * cos(pi*t_n)  # magnetic string 90deg',
+                'Ug4 = 0.5 * Ug1  # BH vacuum concentration',
+                'Ub = -beta_i * Ug1 * Omega_g * M_bh/d_g  # buoyancy counter',
+                'F_U = Ug1 + Ug2 + Ug3 + Ug4 + Ub  # unified field',
+                'GM/r^2 = projection of F_U (EMERGENT, appears last)',
+            ],
+            'simulation_set': [
+                {'equation': 'F_U_vs_r',  'M_kg': M, 'r_m': r, 'result': F_U},
+                {'equation': 'Ug1_vs_B',  'B_T':  B, 'r_m': r, 'result': Ug1},
+            ],
+            'Ug1': Ug1, 'Ug2': Ug2, 'Ug3': Ug3, 'Ug4': Ug4,
+            'Ub': Ub, 'F_U': F_U, 'g_base': g_b,
+            'g_projection_GM_r2': g_projection,
+        }
+
 
 
 class Source10THzDoubleGateConduitCalculator(_CP3Calculator):
@@ -9365,6 +9613,68 @@ class Source10THzDoubleGateConduitCalculator(_CP3Calculator):
             'H_abundance': H_abundance,
             'paper': 'PAPER_271',
         }
+
+    def compute(self, dataset: dict) -> dict:
+        """Canonical UQFF compute. DPM-emergent: GM/r^2 is projection, not seed.
+        Chain: 0 -> grad(UA) -> DPM -> Ug1 -> Ug_family -> F_U -> M -> GM/r^2 (last).
+        """
+        import math
+        M   = dataset.get('M_kg',   1.989e30)
+        r   = dataset.get('r_m',    1.496e11)
+        B   = dataset.get('B_T',    1e-4)
+        t   = dataset.get('t_s',    0.0)
+        t_n = dataset.get('t_n',    0.0)
+        kappa   = dataset.get('kappa',   0.0005)
+        E_react = dataset.get('E_react', 1.0e46)
+        beta_i  = dataset.get('beta_i',  0.603)
+        SSq     = dataset.get('SSq',     0.57)
+        Omega_g = dataset.get('Omega_g', 7.3e-16)
+        M_bh    = dataset.get('M_bh',    8.15e36)
+        d_g     = dataset.get('d_g',     2.55e20)
+        # --- DPM-emergent gravity family (NOT Newton-first) ---
+        g_b = dpm_emergent_ug1(M, r, B)  # Ug1: DPM seed
+        Ug1 = g_b
+        Ug2 = 1.2  * g_b  # charge-reactivity shell
+        Ug3 = 0.8  * g_b * math.cos(math.pi * t_n)  # magnetic string rotation
+        Ug4 = 0.5  * g_b  # BH vacuum concentration
+        # Buoyancy (inside-out counter-force)
+        Ub = -beta_i * Ug1 * Omega_g * (M_bh / max(d_g, 1.0)) * (
+            1.0 + 0.1 * math.cos(math.pi * t_n)
+        )
+        # Unified field
+        F_U = Ug1 + Ug2 + Ug3 + Ug4 + Ub
+        # GM/r^2 appears LAST as a derived observational projection only
+        _G = 6.6743e-11
+        g_projection = _G * M / (r ** 2) if r > 0 else 0.0
+        return {
+            'primary_equations': [
+                f'Ug1(DPM-seed) = dpm_emergent_ug1(M,r,B) = {Ug1:.6e}',
+                f'Ug2(shell)    = 1.2*Ug1                 = {Ug2:.6e}',
+                f'Ug3(string)   = 0.8*Ug1*cos(pi*t_n)    = {Ug3:.6e}',
+                f'Ug4(BH-vac)   = 0.5*Ug1                 = {Ug4:.6e}',
+                f'Ub (buoyancy) = {Ub:.6e}',
+                f'F_U(unified)  = {F_U:.6e}',
+                f'GM/r^2(projection, LAST) = {g_projection:.6e} m/s^2',
+            ],
+            'available_equations': [
+                'g_base = dpm_emergent_ug1(M, r, B)  # DPM-emergent, not Newton',
+                'Ug1 = g_base  # seed from DPM vortex',
+                'Ug2 = 1.2 * Ug1  # charge-reactivity',
+                'Ug3 = 0.8 * Ug1 * cos(pi*t_n)  # magnetic string 90deg',
+                'Ug4 = 0.5 * Ug1  # BH vacuum concentration',
+                'Ub = -beta_i * Ug1 * Omega_g * M_bh/d_g  # buoyancy counter',
+                'F_U = Ug1 + Ug2 + Ug3 + Ug4 + Ub  # unified field',
+                'GM/r^2 = projection of F_U (EMERGENT, appears last)',
+            ],
+            'simulation_set': [
+                {'equation': 'F_U_vs_r',  'M_kg': M, 'r_m': r, 'result': F_U},
+                {'equation': 'Ug1_vs_B',  'B_T':  B, 'r_m': r, 'result': Ug1},
+            ],
+            'Ug1': Ug1, 'Ug2': Ug2, 'Ug3': Ug3, 'Ug4': Ug4,
+            'Ub': Ub, 'F_U': F_U, 'g_base': g_b,
+            'g_projection_GM_r2': g_projection,
+        }
+
 
 
 class Source10GravitationalVacuumDragCalculator(_CP3Calculator):
@@ -9416,6 +9726,68 @@ class Source10GravitationalVacuumDragCalculator(_CP3Calculator):
             'paper': 'PAPER_272',
         }
 
+    def compute(self, dataset: dict) -> dict:
+        """Canonical UQFF compute. DPM-emergent: GM/r^2 is projection, not seed.
+        Chain: 0 -> grad(UA) -> DPM -> Ug1 -> Ug_family -> F_U -> M -> GM/r^2 (last).
+        """
+        import math
+        M   = dataset.get('M_kg',   1.989e30)
+        r   = dataset.get('r_m',    1.496e11)
+        B   = dataset.get('B_T',    1e-4)
+        t   = dataset.get('t_s',    0.0)
+        t_n = dataset.get('t_n',    0.0)
+        kappa   = dataset.get('kappa',   0.0005)
+        E_react = dataset.get('E_react', 1.0e46)
+        beta_i  = dataset.get('beta_i',  0.603)
+        SSq     = dataset.get('SSq',     0.57)
+        Omega_g = dataset.get('Omega_g', 7.3e-16)
+        M_bh    = dataset.get('M_bh',    8.15e36)
+        d_g     = dataset.get('d_g',     2.55e20)
+        # --- DPM-emergent gravity family (NOT Newton-first) ---
+        g_b = dpm_emergent_ug1(M, r, B)  # Ug1: DPM seed
+        Ug1 = g_b
+        Ug2 = 1.2  * g_b  # charge-reactivity shell
+        Ug3 = 0.8  * g_b * math.cos(math.pi * t_n)  # magnetic string rotation
+        Ug4 = 0.5  * g_b  # BH vacuum concentration
+        # Buoyancy (inside-out counter-force)
+        Ub = -beta_i * Ug1 * Omega_g * (M_bh / max(d_g, 1.0)) * (
+            1.0 + 0.1 * math.cos(math.pi * t_n)
+        )
+        # Unified field
+        F_U = Ug1 + Ug2 + Ug3 + Ug4 + Ub
+        # GM/r^2 appears LAST as a derived observational projection only
+        _G = 6.6743e-11
+        g_projection = _G * M / (r ** 2) if r > 0 else 0.0
+        return {
+            'primary_equations': [
+                f'Ug1(DPM-seed) = dpm_emergent_ug1(M,r,B) = {Ug1:.6e}',
+                f'Ug2(shell)    = 1.2*Ug1                 = {Ug2:.6e}',
+                f'Ug3(string)   = 0.8*Ug1*cos(pi*t_n)    = {Ug3:.6e}',
+                f'Ug4(BH-vac)   = 0.5*Ug1                 = {Ug4:.6e}',
+                f'Ub (buoyancy) = {Ub:.6e}',
+                f'F_U(unified)  = {F_U:.6e}',
+                f'GM/r^2(projection, LAST) = {g_projection:.6e} m/s^2',
+            ],
+            'available_equations': [
+                'g_base = dpm_emergent_ug1(M, r, B)  # DPM-emergent, not Newton',
+                'Ug1 = g_base  # seed from DPM vortex',
+                'Ug2 = 1.2 * Ug1  # charge-reactivity',
+                'Ug3 = 0.8 * Ug1 * cos(pi*t_n)  # magnetic string 90deg',
+                'Ug4 = 0.5 * Ug1  # BH vacuum concentration',
+                'Ub = -beta_i * Ug1 * Omega_g * M_bh/d_g  # buoyancy counter',
+                'F_U = Ug1 + Ug2 + Ug3 + Ug4 + Ub  # unified field',
+                'GM/r^2 = projection of F_U (EMERGENT, appears last)',
+            ],
+            'simulation_set': [
+                {'equation': 'F_U_vs_r',  'M_kg': M, 'r_m': r, 'result': F_U},
+                {'equation': 'Ug1_vs_B',  'B_T':  B, 'r_m': r, 'result': Ug1},
+            ],
+            'Ug1': Ug1, 'Ug2': Ug2, 'Ug3': Ug3, 'Ug4': Ug4,
+            'Ub': Ub, 'F_U': F_U, 'g_base': g_b,
+            'g_projection_GM_r2': g_projection,
+        }
+
+
 
 class AndromedaBlueshiftApproachAmplifierCalculator(_CP3Calculator):
     """PAPER_273: kappa_approach = 1/(1+z) for z<0 (blueshift/approaching systems).
@@ -9457,6 +9829,68 @@ class AndromedaBlueshiftApproachAmplifierCalculator(_CP3Calculator):
             'cascade_table_kappa_vs_z': cascade_table,
             'paper': 'PAPER_273',
         }
+
+    def compute(self, dataset: dict) -> dict:
+        """Canonical UQFF compute. DPM-emergent: GM/r^2 is projection, not seed.
+        Chain: 0 -> grad(UA) -> DPM -> Ug1 -> Ug_family -> F_U -> M -> GM/r^2 (last).
+        """
+        import math
+        M   = dataset.get('M_kg',   1.989e30)
+        r   = dataset.get('r_m',    1.496e11)
+        B   = dataset.get('B_T',    1e-4)
+        t   = dataset.get('t_s',    0.0)
+        t_n = dataset.get('t_n',    0.0)
+        kappa   = dataset.get('kappa',   0.0005)
+        E_react = dataset.get('E_react', 1.0e46)
+        beta_i  = dataset.get('beta_i',  0.603)
+        SSq     = dataset.get('SSq',     0.57)
+        Omega_g = dataset.get('Omega_g', 7.3e-16)
+        M_bh    = dataset.get('M_bh',    8.15e36)
+        d_g     = dataset.get('d_g',     2.55e20)
+        # --- DPM-emergent gravity family (NOT Newton-first) ---
+        g_b = dpm_emergent_ug1(M, r, B)  # Ug1: DPM seed
+        Ug1 = g_b
+        Ug2 = 1.2  * g_b  # charge-reactivity shell
+        Ug3 = 0.8  * g_b * math.cos(math.pi * t_n)  # magnetic string rotation
+        Ug4 = 0.5  * g_b  # BH vacuum concentration
+        # Buoyancy (inside-out counter-force)
+        Ub = -beta_i * Ug1 * Omega_g * (M_bh / max(d_g, 1.0)) * (
+            1.0 + 0.1 * math.cos(math.pi * t_n)
+        )
+        # Unified field
+        F_U = Ug1 + Ug2 + Ug3 + Ug4 + Ub
+        # GM/r^2 appears LAST as a derived observational projection only
+        _G = 6.6743e-11
+        g_projection = _G * M / (r ** 2) if r > 0 else 0.0
+        return {
+            'primary_equations': [
+                f'Ug1(DPM-seed) = dpm_emergent_ug1(M,r,B) = {Ug1:.6e}',
+                f'Ug2(shell)    = 1.2*Ug1                 = {Ug2:.6e}',
+                f'Ug3(string)   = 0.8*Ug1*cos(pi*t_n)    = {Ug3:.6e}',
+                f'Ug4(BH-vac)   = 0.5*Ug1                 = {Ug4:.6e}',
+                f'Ub (buoyancy) = {Ub:.6e}',
+                f'F_U(unified)  = {F_U:.6e}',
+                f'GM/r^2(projection, LAST) = {g_projection:.6e} m/s^2',
+            ],
+            'available_equations': [
+                'g_base = dpm_emergent_ug1(M, r, B)  # DPM-emergent, not Newton',
+                'Ug1 = g_base  # seed from DPM vortex',
+                'Ug2 = 1.2 * Ug1  # charge-reactivity',
+                'Ug3 = 0.8 * Ug1 * cos(pi*t_n)  # magnetic string 90deg',
+                'Ug4 = 0.5 * Ug1  # BH vacuum concentration',
+                'Ub = -beta_i * Ug1 * Omega_g * M_bh/d_g  # buoyancy counter',
+                'F_U = Ug1 + Ug2 + Ug3 + Ug4 + Ub  # unified field',
+                'GM/r^2 = projection of F_U (EMERGENT, appears last)',
+            ],
+            'simulation_set': [
+                {'equation': 'F_U_vs_r',  'M_kg': M, 'r_m': r, 'result': F_U},
+                {'equation': 'Ug1_vs_B',  'B_T':  B, 'r_m': r, 'result': Ug1},
+            ],
+            'Ug1': Ug1, 'Ug2': Ug2, 'Ug3': Ug3, 'Ug4': Ug4,
+            'Ub': Ub, 'F_U': F_U, 'g_base': g_b,
+            'g_projection_GM_r2': g_projection,
+        }
+
 
 
 class AndromedaHI21cmUQFFResonanceCalculator(_CP3Calculator):
@@ -9503,6 +9937,68 @@ class AndromedaHI21cmUQFFResonanceCalculator(_CP3Calculator):
             'tau_gal_s': tau_gal,
             'paper': 'PAPER_274',
         }
+
+    def compute(self, dataset: dict) -> dict:
+        """Canonical UQFF compute. DPM-emergent: GM/r^2 is projection, not seed.
+        Chain: 0 -> grad(UA) -> DPM -> Ug1 -> Ug_family -> F_U -> M -> GM/r^2 (last).
+        """
+        import math
+        M   = dataset.get('M_kg',   1.989e30)
+        r   = dataset.get('r_m',    1.496e11)
+        B   = dataset.get('B_T',    1e-4)
+        t   = dataset.get('t_s',    0.0)
+        t_n = dataset.get('t_n',    0.0)
+        kappa   = dataset.get('kappa',   0.0005)
+        E_react = dataset.get('E_react', 1.0e46)
+        beta_i  = dataset.get('beta_i',  0.603)
+        SSq     = dataset.get('SSq',     0.57)
+        Omega_g = dataset.get('Omega_g', 7.3e-16)
+        M_bh    = dataset.get('M_bh',    8.15e36)
+        d_g     = dataset.get('d_g',     2.55e20)
+        # --- DPM-emergent gravity family (NOT Newton-first) ---
+        g_b = dpm_emergent_ug1(M, r, B)  # Ug1: DPM seed
+        Ug1 = g_b
+        Ug2 = 1.2  * g_b  # charge-reactivity shell
+        Ug3 = 0.8  * g_b * math.cos(math.pi * t_n)  # magnetic string rotation
+        Ug4 = 0.5  * g_b  # BH vacuum concentration
+        # Buoyancy (inside-out counter-force)
+        Ub = -beta_i * Ug1 * Omega_g * (M_bh / max(d_g, 1.0)) * (
+            1.0 + 0.1 * math.cos(math.pi * t_n)
+        )
+        # Unified field
+        F_U = Ug1 + Ug2 + Ug3 + Ug4 + Ub
+        # GM/r^2 appears LAST as a derived observational projection only
+        _G = 6.6743e-11
+        g_projection = _G * M / (r ** 2) if r > 0 else 0.0
+        return {
+            'primary_equations': [
+                f'Ug1(DPM-seed) = dpm_emergent_ug1(M,r,B) = {Ug1:.6e}',
+                f'Ug2(shell)    = 1.2*Ug1                 = {Ug2:.6e}',
+                f'Ug3(string)   = 0.8*Ug1*cos(pi*t_n)    = {Ug3:.6e}',
+                f'Ug4(BH-vac)   = 0.5*Ug1                 = {Ug4:.6e}',
+                f'Ub (buoyancy) = {Ub:.6e}',
+                f'F_U(unified)  = {F_U:.6e}',
+                f'GM/r^2(projection, LAST) = {g_projection:.6e} m/s^2',
+            ],
+            'available_equations': [
+                'g_base = dpm_emergent_ug1(M, r, B)  # DPM-emergent, not Newton',
+                'Ug1 = g_base  # seed from DPM vortex',
+                'Ug2 = 1.2 * Ug1  # charge-reactivity',
+                'Ug3 = 0.8 * Ug1 * cos(pi*t_n)  # magnetic string 90deg',
+                'Ug4 = 0.5 * Ug1  # BH vacuum concentration',
+                'Ub = -beta_i * Ug1 * Omega_g * M_bh/d_g  # buoyancy counter',
+                'F_U = Ug1 + Ug2 + Ug3 + Ug4 + Ub  # unified field',
+                'GM/r^2 = projection of F_U (EMERGENT, appears last)',
+            ],
+            'simulation_set': [
+                {'equation': 'F_U_vs_r',  'M_kg': M, 'r_m': r, 'result': F_U},
+                {'equation': 'Ug1_vs_B',  'B_T':  B, 'r_m': r, 'result': Ug1},
+            ],
+            'Ug1': Ug1, 'Ug2': Ug2, 'Ug3': Ug3, 'Ug4': Ug4,
+            'Ub': Ub, 'F_U': F_U, 'g_base': g_b,
+            'g_projection_GM_r2': g_projection,
+        }
+
 
 
 class AndromedaDMShellPartitionCalculator(_CP3Calculator):
@@ -9554,6 +10050,68 @@ class AndromedaDMShellPartitionCalculator(_CP3Calculator):
             'partition_table': partition_table,
             'paper': 'PAPER_275',
         }
+
+    def compute(self, dataset: dict) -> dict:
+        """Canonical UQFF compute. DPM-emergent: GM/r^2 is projection, not seed.
+        Chain: 0 -> grad(UA) -> DPM -> Ug1 -> Ug_family -> F_U -> M -> GM/r^2 (last).
+        """
+        import math
+        M   = dataset.get('M_kg',   1.989e30)
+        r   = dataset.get('r_m',    1.496e11)
+        B   = dataset.get('B_T',    1e-4)
+        t   = dataset.get('t_s',    0.0)
+        t_n = dataset.get('t_n',    0.0)
+        kappa   = dataset.get('kappa',   0.0005)
+        E_react = dataset.get('E_react', 1.0e46)
+        beta_i  = dataset.get('beta_i',  0.603)
+        SSq     = dataset.get('SSq',     0.57)
+        Omega_g = dataset.get('Omega_g', 7.3e-16)
+        M_bh    = dataset.get('M_bh',    8.15e36)
+        d_g     = dataset.get('d_g',     2.55e20)
+        # --- DPM-emergent gravity family (NOT Newton-first) ---
+        g_b = dpm_emergent_ug1(M, r, B)  # Ug1: DPM seed
+        Ug1 = g_b
+        Ug2 = 1.2  * g_b  # charge-reactivity shell
+        Ug3 = 0.8  * g_b * math.cos(math.pi * t_n)  # magnetic string rotation
+        Ug4 = 0.5  * g_b  # BH vacuum concentration
+        # Buoyancy (inside-out counter-force)
+        Ub = -beta_i * Ug1 * Omega_g * (M_bh / max(d_g, 1.0)) * (
+            1.0 + 0.1 * math.cos(math.pi * t_n)
+        )
+        # Unified field
+        F_U = Ug1 + Ug2 + Ug3 + Ug4 + Ub
+        # GM/r^2 appears LAST as a derived observational projection only
+        _G = 6.6743e-11
+        g_projection = _G * M / (r ** 2) if r > 0 else 0.0
+        return {
+            'primary_equations': [
+                f'Ug1(DPM-seed) = dpm_emergent_ug1(M,r,B) = {Ug1:.6e}',
+                f'Ug2(shell)    = 1.2*Ug1                 = {Ug2:.6e}',
+                f'Ug3(string)   = 0.8*Ug1*cos(pi*t_n)    = {Ug3:.6e}',
+                f'Ug4(BH-vac)   = 0.5*Ug1                 = {Ug4:.6e}',
+                f'Ub (buoyancy) = {Ub:.6e}',
+                f'F_U(unified)  = {F_U:.6e}',
+                f'GM/r^2(projection, LAST) = {g_projection:.6e} m/s^2',
+            ],
+            'available_equations': [
+                'g_base = dpm_emergent_ug1(M, r, B)  # DPM-emergent, not Newton',
+                'Ug1 = g_base  # seed from DPM vortex',
+                'Ug2 = 1.2 * Ug1  # charge-reactivity',
+                'Ug3 = 0.8 * Ug1 * cos(pi*t_n)  # magnetic string 90deg',
+                'Ug4 = 0.5 * Ug1  # BH vacuum concentration',
+                'Ub = -beta_i * Ug1 * Omega_g * M_bh/d_g  # buoyancy counter',
+                'F_U = Ug1 + Ug2 + Ug3 + Ug4 + Ub  # unified field',
+                'GM/r^2 = projection of F_U (EMERGENT, appears last)',
+            ],
+            'simulation_set': [
+                {'equation': 'F_U_vs_r',  'M_kg': M, 'r_m': r, 'result': F_U},
+                {'equation': 'Ug1_vs_B',  'B_T':  B, 'r_m': r, 'result': Ug1},
+            ],
+            'Ug1': Ug1, 'Ug2': Ug2, 'Ug3': Ug3, 'Ug4': Ug4,
+            'Ub': Ub, 'F_U': F_U, 'g_base': g_b,
+            'g_projection_GM_r2': g_projection,
+        }
+
 
 
 class AndromedaFriedmannHzExpansionCalculator(_CP3Calculator):
@@ -9616,6 +10174,68 @@ class AndromedaFriedmannHzExpansionCalculator(_CP3Calculator):
             'g_base_m_s2':                    g_base,
             'paper': 'PAPER_276',
         }
+
+    def compute(self, dataset: dict) -> dict:
+        """Canonical UQFF compute. DPM-emergent: GM/r^2 is projection, not seed.
+        Chain: 0 -> grad(UA) -> DPM -> Ug1 -> Ug_family -> F_U -> M -> GM/r^2 (last).
+        """
+        import math
+        M   = dataset.get('M_kg',   1.989e30)
+        r   = dataset.get('r_m',    1.496e11)
+        B   = dataset.get('B_T',    1e-4)
+        t   = dataset.get('t_s',    0.0)
+        t_n = dataset.get('t_n',    0.0)
+        kappa   = dataset.get('kappa',   0.0005)
+        E_react = dataset.get('E_react', 1.0e46)
+        beta_i  = dataset.get('beta_i',  0.603)
+        SSq     = dataset.get('SSq',     0.57)
+        Omega_g = dataset.get('Omega_g', 7.3e-16)
+        M_bh    = dataset.get('M_bh',    8.15e36)
+        d_g     = dataset.get('d_g',     2.55e20)
+        # --- DPM-emergent gravity family (NOT Newton-first) ---
+        g_b = dpm_emergent_ug1(M, r, B)  # Ug1: DPM seed
+        Ug1 = g_b
+        Ug2 = 1.2  * g_b  # charge-reactivity shell
+        Ug3 = 0.8  * g_b * math.cos(math.pi * t_n)  # magnetic string rotation
+        Ug4 = 0.5  * g_b  # BH vacuum concentration
+        # Buoyancy (inside-out counter-force)
+        Ub = -beta_i * Ug1 * Omega_g * (M_bh / max(d_g, 1.0)) * (
+            1.0 + 0.1 * math.cos(math.pi * t_n)
+        )
+        # Unified field
+        F_U = Ug1 + Ug2 + Ug3 + Ug4 + Ub
+        # GM/r^2 appears LAST as a derived observational projection only
+        _G = 6.6743e-11
+        g_projection = _G * M / (r ** 2) if r > 0 else 0.0
+        return {
+            'primary_equations': [
+                f'Ug1(DPM-seed) = dpm_emergent_ug1(M,r,B) = {Ug1:.6e}',
+                f'Ug2(shell)    = 1.2*Ug1                 = {Ug2:.6e}',
+                f'Ug3(string)   = 0.8*Ug1*cos(pi*t_n)    = {Ug3:.6e}',
+                f'Ug4(BH-vac)   = 0.5*Ug1                 = {Ug4:.6e}',
+                f'Ub (buoyancy) = {Ub:.6e}',
+                f'F_U(unified)  = {F_U:.6e}',
+                f'GM/r^2(projection, LAST) = {g_projection:.6e} m/s^2',
+            ],
+            'available_equations': [
+                'g_base = dpm_emergent_ug1(M, r, B)  # DPM-emergent, not Newton',
+                'Ug1 = g_base  # seed from DPM vortex',
+                'Ug2 = 1.2 * Ug1  # charge-reactivity',
+                'Ug3 = 0.8 * Ug1 * cos(pi*t_n)  # magnetic string 90deg',
+                'Ug4 = 0.5 * Ug1  # BH vacuum concentration',
+                'Ub = -beta_i * Ug1 * Omega_g * M_bh/d_g  # buoyancy counter',
+                'F_U = Ug1 + Ug2 + Ug3 + Ug4 + Ub  # unified field',
+                'GM/r^2 = projection of F_U (EMERGENT, appears last)',
+            ],
+            'simulation_set': [
+                {'equation': 'F_U_vs_r',  'M_kg': M, 'r_m': r, 'result': F_U},
+                {'equation': 'Ug1_vs_B',  'B_T':  B, 'r_m': r, 'result': Ug1},
+            ],
+            'Ug1': Ug1, 'Ug2': Ug2, 'Ug3': Ug3, 'Ug4': Ug4,
+            'Ub': Ub, 'F_U': F_U, 'g_base': g_b,
+            'g_projection_GM_r2': g_projection,
+        }
+
 
 
 # ---------------------------------------------------------------------------
@@ -9759,7 +10379,7 @@ class SaturnSolarTidalPerturbationCalculator:
         r_orbit  = float(dataset.get('r_orbit', 1.43e12))   # Saturn orbital radius (m)
 
         g_base = dpm_emergent_ug1(M, r)  # DPM: mu_s * grad(M_s/r)
-        g_Sun_tidal  = G * M_Sun / (r_orbit * r_orbit)
+        g_Sun_tidal  = dpm_emergent_ug1(M_Sun, r_orbit)  # DPM-emergent solar tidal projection
         tau_Sun      = (M_Sun / M) * (r / r_orbit) ** 2
 
         # Solar System planetary comparison table
