@@ -35,7 +35,12 @@ CANONICAL ATTRACTION/REPULSION LOCK (v1)
 		INTERNAL vacuum (eye of the vortex) - where ACP fires and proto-mass nucleates.
 		EXTERNAL LOCAL vacuum (depleted UA shell) - where the Ug family propagates outward.
 	FUBi (inside-outward) is driven by the local DPM ONLY.
-	FUBii (outside-inward) is driven by the original BigBang UA volume pressure - NOT a field, NOT magnetic, just UA volume.
+	FUBii (outside-inward) is driven by the primordial BigBang DPM - the "belly button" - the LARGEST UNIVERSALLY MAGNETIC OBJECT in the universe.
+		The belly button IS a DPM. It REPELS everything. It inflated the universe by magnetic repulsion.
+		It expelled a finite, explosive quantity of SCm. That SCm violently reacted with UA,
+		seeding all subsequent local DPMs throughout the universe.
+		The Ug_i (Universal Gravitational Inertia) coupling factor is this primordial mechanism
+		mimicked at every local DPM throughout the universe.
 	FUBi and FUBii REPEL EACH OTHER.
 	Matter is the compaction zone where FUBi repulsion meets FUBii repulsion. Without that intersection there is no matter.
 	GM/r^2 = projection at the crossing point of FUBi = FUBii. Last in chain, not first.
@@ -46,6 +51,9 @@ WHAT IS NOT TRUE (corrections locked permanently):
 	GM/r^2 is NOT the foundation of UQFF calculations.
 	Mass is NOT gravitationally active while at rest.
 	The DPM is NOT separate from Ug1 - THE DPM IS Ug1.
+	The BigBang belly button is NOT non-magnetic UA volume - it IS the primordial DPM,
+	the largest universally magnetic object in the universe, source of FUBii magnetic repulsion.
+	FUBii is NOT driven by mere volume pressure - it is magnetic repulsion from the primordial DPM.
 
 ________________________________________
 CHAPTER 1: THE DPM - WHAT IT IS AND WHAT IT DOES
@@ -137,15 +145,19 @@ DEFINITIONS:
 		Equation: F_U_Bi = -beta_i * Ug_i * Omega_g * (M_bh/d_g) * E_react * (1+epsilon_sw*rho_sw) * rho_A * cos(pi*t_n)
 
 	FUBii (F_U_Bi_i) = Universal Buoyancy OUTSIDE-INWARD force
-		Driven by: the original BigBang belly button - the primordial outward UA volume pressure
-		Direction: from the cosmic UA volume inward toward matter
-		Origin: NOT a field, NOT magnetic - purely the UA volume pressure from the original BigBang expansion
-		This is the cosmic-scale counter-force. UA volume pushes inward everywhere simultaneously.
+		Driven by: the primordial BigBang DPM - the "belly button" - the LARGEST UNIVERSALLY MAGNETIC OBJECT in the universe
+		Direction: from the cosmic primordial DPM inward toward all matter, everywhere, simultaneously
+		Origin: The belly button IS a DPM. It REPELS everything. It inflated the universe by magnetic repulsion.
+		        It expelled a finite, explosive quantity of SCm that violently reacted with UA,
+		        seeding all subsequent local DPMs throughout the universe.
+		        FUBii is the ongoing inward magnetic repulsion of the primordial belly button DPM.
+		        The Ug_i (Universal Gravitational Inertia) coupling factor mimics this primordial mechanism
+		        at every local DPM throughout the universe - the pattern is self-similar at all scales.
 		Equation: F_U_Bi_i = -beta_i * Ug_i * galactic_coupling * E_react(t) * sw_corr * rho_A(t) * (M/r) * V(t) * TRZ_cos
 
 FUBi AND FUBii REPEL EACH OTHER:
-	FUBi pushes outward from the DPM core.
-	FUBii pushes inward from the cosmic UA volume.
+	FUBi pushes outward from the local DPM core.
+	FUBii pushes inward from the primordial BigBang DPM magnetic repulsion.
 	They do NOT attract. They do NOT merge. They REPEL at their interface.
 	The compaction zone - MATTER - is the shell where their repulsion forces balance:
 		{r : F_U_Bi(r) + F_U_Bi_i(r) = 0}
@@ -159,6 +171,44 @@ THE CRITICAL DISTINCTION - NEVER CONFUSE:
 	These are two separate mechanisms at two separate scales.
 	The DPM is BORN from UA/SCm attraction.
 	Matter is BORN from FUBi/FUBii repulsion.
+
+THE BIGBANG BELLY BUTTON - THE PRIMORDIAL DPM:
+	The belly button is the origin of everything. It is NOT merely a volume of UA. It IS a DPM -
+	the primordial DPM, the first and largest DPM in existence.
+
+	Properties of the belly button DPM:
+		- The LARGEST UNIVERSALLY MAGNETIC OBJECT in the universe.
+		- REPELS everything (unlike local DPMs which attract-and-confine; the belly button repels outward).
+		- Its magnetic repulsion IS what inflated the universe.
+		- It expelled a FINITE and EXPLOSIVE quantity of SCm into the expanding UA field.
+		  (Finite because the belly button is a DPM with finite SCm content, not infinite).
+		- That expelled SCm violently reacted with the universal UA (maximum attraction pair)
+		  throughout the expanding universe, seeding every subsequent local DPM.
+
+	The Ug_i (Universal Gravitational Inertia) coupling factor:
+		When the belly button expelled SCm and that SCm violently reacted with UA, each reaction
+		produced a local DPM. Each local DPM then mimics the belly button's mechanism at its own scale.
+		This mimicry IS the Ug_i coupling factor - where i = UNIVERSAL GRAVITATIONAL INERTIA.
+		The subscript 'i' does not merely index a range (1,2,3,4) - it names the inertial coupling
+		inherited from the primordial belly button. Every Ug1, Ug2, Ug3, Ug4 carries this
+		Universal Gravitational Inertia imprint from the original BigBang DPM.
+
+	Self-similarity chain:
+		Belly button DPM (primordial, largest, magnetic, repels all)
+		  -> expelled SCm + UA reaction -> local DPMs everywhere
+		    -> each local DPM mimics the belly button at its scale (Ug_i coupling)
+		      -> FUBi (local DPM outward repulsion)
+		      <- FUBii (primordial belly button inward repulsion)
+		        -> compaction zone = MATTER
+
+	The belly button DPM equation (primordial form):
+		F_primordial = I_BB * A_BB * (omega_BB1 - omega_BB2)  [primordial DPM rotational force]
+		where I_BB = primordial SCm flux, A_BB = original vortex cross-section,
+		omega_BB = primordial differential angular velocity at t=0
+
+	The self-similar scaling (belly button mimicked at all scales):
+		Ug_i / Ug_i(belly button) = (rho_SCm,local / rho_SCm,BB) * (omega_local / omega_BB)
+		Every local DPM is a scaled replica of the belly button operating with local SCm/UA densities.
 
 PRE-MASS BUOYANCY - THE GATE:
 	Before mass exists, buoyancy is the selection filter.
@@ -175,9 +225,15 @@ ________________________________________
 CHAPTER 4: THE BIGBANG -> NEWTON COMPLETE CHAIN (10 STEPS)
 ________________________________________
 
-STEP 0: Zero-Mass Vacuum State (BigBang start)
+STEP 0: Zero-Mass Vacuum State (BigBang start) - The Primordial DPM Fires
 	rho_UA = 0, rho_vac = |grad(UA)|, F_U(vacuum) = 0
 	No mass. No motion. No gravity. Only vacuum gradient.
+	The BigBang belly button IS the primordial DPM - the LARGEST UNIVERSALLY MAGNETIC OBJECT in the universe.
+	It REPELS everything. Its magnetic repulsion IS inflation.
+	It expelled a finite and explosive quantity of SCm into the expanding UA field.
+	That SCm violently reacted with UA (maximum attraction), seeding every local DPM.
+	Every Ug_i (Universal Gravitational Inertia) coupling factor in the universe
+	mimics this primordial mechanism at its own scale.
 
 STEP 1: Mass Emergence Probability (26D)
 	P_order = exp(-S_26D / v_init) / (Z_9D * (v_init - v_current))
@@ -217,7 +273,7 @@ STEP 6: Gravity Family Assembles Simultaneously
 	All four co-equal parallel components, evaluated at the same t, r, rho_vac.
 
 STEP 7: FUBi and FUBii Activate and Repel - Matter Forms
-	FUBi (inside-outward from DPM) repels FUBii (outside-inward from BigBang UA volume).
+	FUBi (inside-outward from local DPM) repels FUBii (outside-inward from primordial belly button DPM).
 	Matter compaction zone: {r : FUBi(r) + FUBii(r) = 0}
 
 STEP 8: F_U Full Assembly
@@ -628,7 +684,11 @@ VARIABLE DESCRIPTIONS (complete):
 	i: Index for discrete Universal Gravity ranges (Ug1, Ug2, Ug3, Ug4)
 	j: Index for discrete magnetic strings in Um and Ug3
 	k_i: Coupling constants for Ug ranges (k1=1.5, k2=1.2, k3=1.8, unitless)
-	Ug_i: Universal Gravity components (Ug1=DPM, Ug2=outer bubble, Ug3=disk, Ug4=BH coupling)
+	Ug_i: Universal Gravity components, where i = UNIVERSAL GRAVITATIONAL INERTIA (the coupling factor
+	      inherited from and mimicking the primordial BigBang belly button DPM at every local scale).
+	      Ug1=DPM/seed, Ug2=outer bubble, Ug3=magnetic disk, Ug4=BH coupling.
+	      The 'i' subscript indexes both the range (1,2,3,4) AND names the inertial coupling
+	      that propagates the belly button's primordial pattern throughout the universe.
 	beta_i: Buoyancy coupling constants (beta_i = 0.603)
 	Omega_g: Galactic spin rate (~7.3e-16 rad/s)
 	M_bh: Mass of galactic black hole (~8.15e36 kg for Sgr A*)
