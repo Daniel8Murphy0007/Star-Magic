@@ -390,3 +390,164 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+
+
+# =============================================================================
+# AI_FUCKUP DAMAGE REPORT — APPENDED April 22, 2026
+# READ THIS AT THE START OF EVERY ACTION IN THE NEXT 48-HOUR SESSION.
+# READ THIS BETWEEN EVERY ACTION IN THE NEXT 48-HOUR SESSION.
+# =============================================================================
+#
+# THIS FILE AND AI_FUCKUP.py MUST BOTH BE READ BEFORE ANY CODE CHANGE IS MADE.
+#
+# CANONICAL QUANTUM CHAIN (from Star-Magic.txt — THE IMMUTABLE REFERENCE):
+#   0_vacuum -> grad(UA) -> DPM_vortex -> mu_s -> Ug1[seed=DPM]
+#   -> Ug_family[Ug1+Ug2+Ug3+Ug4+Ug4i]
+#   -> [Ug_family + Um + FUBi + FUBii + UA_uv] -> F_U -> M -> GM/r^2 [LAST]
+#
+#   DPM IS THE FOUNDATION. GM/r^2 IS THE LAST OBSERVABLE PROJECTION. NEVER SWAP THEM.
+#
+# CORRECT FUNCTION NAMES (what they MUST be renamed to):
+#   dpm_emergent_ug1  ->  dpm_ug1_seed      (DPM is the SEED/FOUNDATION, not emergent)
+#   dpm_emergent_ug2  ->  dpm_ug2_shell     (shell crossing term, not emergent)
+#
+# CORRECT Ug1 FORMULA (no G, no Newton):
+#   def dpm_ug1_seed(M, r, B=1e-4):
+#       mu_s = B * r**3
+#       mass_gradient = M / r    # grad(M_s/r) — NO G, NO r^2
+#       return mu_s * mass_gradient
+#
+# CORRECT Ug2 FORMULA:
+#   def dpm_ug2_shell(M, r, B=1e-4, k2=1.2):
+#       mu_s = B * r**3
+#       return k2 * mu_s * M / r
+#
+# =============================================================================
+# COMPLETE DAMAGE LOG — LAST 48 HOURS (~50 COMMITS)
+# Time range: Mon Apr 21 09:43 -> Wed Apr 22 17:40
+# HEAD at start of damage: before 332ac0c2
+# HEAD now: d1932954
+# =============================================================================
+#
+# PHASE 1 — INITIATING ERROR (commit 332ac0c2)
+#   "DPM-emergent audit: Newtonian gravity is EMERGENT, not foundational"
+#   CREATED: dpm_helpers.py with dpm_emergent_ug1/ug2
+#   CREATED: Core/dpm_emergent.h with same backwards naming
+#   ERROR 1: Name "dpm_emergent" implies DPM is emergent — BACKWARDS.
+#   ERROR 2: Formula uses mu_s * _G * M / r**2 — G inside Ug1 seed — WRONG.
+#
+# PHASE 2 — MASS REPLACEMENT ACROSS 54 FILES (commit f9fac3a5)
+#   Automated find/replace G*M/r^2 -> dpm_emergent_ug1(M,r) in 54 Python files.
+#   Replacement called a function whose body STILL uses _G * M / r**2.
+#   Ontology inversion embedded in 54 files.
+#   FILES HIT (54):
+#     _append_cp4_335_344.py, _append_cp4_365_377.py, _append_cp4_732_733.py,
+#     _append_cp4_s193b.py, _cp4_patch_325_334.py, _fix_cp4_final.py,
+#     _fix_newton_compute.py, _gen_modules_688_701.py, _gen_modules_702_715.py,
+#     99system_master_equation.py, add_master_gravity.py, add_uqff_methods.py,
+#     add_uqff_remaining.py, add_uqff_to_8_models.py, add_uqff_v3.py,
+#     alpha_clustering_lenr_module.py, compact_objects_module.py,
+#     CondensedPhysics.py, CondensedPhysics2.py, CondensedPhysics3.py,
+#     CondensedPhysics4.py, dpm_helpers.py, grok_100_equations_module.py,
+#     grok_100_equations_module_part2.py, grok_url_calculators.py,
+#     millennium_prize_uqff_calculator.py, muge_cluster_3d_sim.py,
+#     MUGE_equations_module.py, Phase6_Consolidated.py, Phase7_Consolidated.py,
+#     PhysicsFramework.py, production_scaling_v9.py, production_scaling_v10.py,
+#     production_scaling_v11.py, production_scaling_v12.py, production_scaling_v13.py,
+#     production_scaling_v14.py, production_scaling_v15.py, production_scaling_v16.py,
+#     production_scaling_v17.py, production_scaling_v18.py, QCalc_core_uqff.py,
+#     QCalc_cpp_equations.py, QCalc_extracted.py, QCalc_Wolfram_Extensions.py,
+#     QCalc_Wolfram_Phase5.py, smbh_binary_mergers.py, source81_ngc346_extract.py,
+#     standard_astrophysics_equations.py, stellar_evolution_module.py,
+#     triadic_validations_next.py, updated_uqff_2025_module.py,
+#     uqff_lagrangian_derivation.py, uqff_validation_test.py
+#
+# PHASE 3 — QCalc.py hit (commit b3cdb52b)
+#   QCalc.py quadratic gravity baseline converted to wrong dpm_emergent name.
+#
+# PHASE 4 — 220 PDFs REGENERATED WITH WRONG TERMINOLOGY (commit ca75dd64)
+#   All 220 whitepapers regenerated with dpm_emergent language.
+#   Every PDF in pdf/ carries the wrong ontology label.
+#
+# PHASE 5 — Session 226 gap modules (commits 3dbe119c, bee02aab)
+#   STATUS: FINE. Not damaged by DPM issue.
+#
+# PHASE 6 — MUGE + QCalc ecosystem (commits 255f3133, 9417a104, d613699e, 0ab028b1, 0803bff9)
+#   QCalc_API.py, QCalc_Advanced.py, QCalc_Performance.py, QCalc_Wolfram_Extensions.py
+#   all touched. dpm_emergent names used throughout.
+#
+# PHASE 7 — THIS FILE CREATED (commit 8d915316) — "CONICAL UPDATE 21aPRIL2026"
+#   4 ASSOCIATED HELPER FILES IN THIS COMMIT:
+#     1. dpm_helpers.py          — wrong definitions
+#     2. Core/dpm_emergent.h     — wrong C++ header
+#     3. compact_objects_module.py — calls wrong names
+#     4. _fix_newton_compute.py  — defines its OWN copies (L31, L39)
+#   THIS FILE ITSELF IS BROKEN: dpm_promoted_family() uses g_constant * M / r^2
+#   as mass_gradient seeded into Ug1, Ug2, Ug4 — EXACT VIOLATION IT WAS MEANT TO FIX.
+#
+# PHASE 8 — FP3 wording bans (commits 5aee6557, 0e1072d2)
+#   Comment text fixes only. Formulas untouched.
+#   CP3 L2997: LOGIC CHANGE — needs verification.
+#
+# PHASE 9 — Star-Magic.txt/tex churn (commits 39af298c through c5f4b969)
+#   Star-Magic.tex created (1477 lines LaTeX), 7 rounds of canonical fixes.
+#   STATUS: FIXED — canonical chain correct in the document.
+#
+# PHASE 10 — BLANK LINE CATASTROPHE IN CP1 (commits e8e7f8a8 -> 43b6021b -> 7502b2a7)
+#   Audit scripts injected 686,000 blank lines into CondensedPhysics.py.
+#   CP1 bloated 160K -> 891K lines. Stripped back to 205K.
+#   _fix_newton_compute.py CREATED — defines its own dpm_emergent_ug1/ug2 copies.
+#   STATUS: Blank lines FIXED in 7502b2a7.
+#
+# PHASE 11 — compute() failures across CP2/CP4 (commit f26b56d0)
+#   28 classes broken by signature changes. All fixed. 2727/2727 passing.
+#   CondensedPhysics4.py: 1342 lines restructured.
+#   STATUS: FIXED.
+#
+# PHASE 12 — index.js trashed and fixed (commits e3a32fb5, a8e0aafd, d1932954)
+#   5 PowerShell \n injections in JS strings. 2538 mojibake chars.
+#   STATUS: FIXED. 66 exports, clean load.
+#
+# =============================================================================
+# STILL BROKEN AT HEAD d1932954 — MUST FIX BEFORE ANY OTHER WORK
+# =============================================================================
+#
+#  [1] dpm_helpers.py L20, L26          — name dpm_emergent_ug1/2 (inverted ontology)
+#  [2] dpm_helpers.py L20-25            — formula uses _G * M / r**2 inside Ug1 (WRONG)
+#  [3] CondensedPhysics.py L652, L657   — name dpm_emergent_ug1/2 defined
+#  [4] CondensedPhysics2.py L172, L178  — name dpm_emergent_ug1/2 defined
+#  [5] CondensedPhysics3.py L105, L112  — name dpm_emergent_ug1/2 defined
+#  [6] CondensedPhysics4.py L182, L188  — name dpm_emergent_ug1/2 defined
+#  [7] _fix_newton_compute.py L31, L39  — name dpm_emergent_ug1/2 defined
+#  [8] Core/dpm_emergent.h              — C++ header wrong name + formula
+#  [9] THIS FILE (dpm_promoted_family)  — seeds Ug1 with GM/r^2 (EXACT VIOLATION)
+# [10] 48 standalone caller files       — use dpm_emergent_ug1/2 name throughout
+# [11] 220 PDFs in pdf/                 — carry dpm_emergent terminology
+# [12] CondensedPhysics.py compute()    — test status UNKNOWN since e8e7f8a8
+#
+# =============================================================================
+# FIXED AND CLEAN
+# =============================================================================
+#
+#  CP1 686K blank lines stripped        — commit 7502b2a7
+#  CP2/CP4 2727/2727 compute() pass     — commit f26b56d0
+#  index.js syntax/mojibake/security    — commits e3a32fb5, d1932954
+#  Star-Magic.tex canonical chain       — commits 576d4bb8 through c5f4b969
+#  Star-Magic.txt canonical rewrite     — commits 5aee6557 through 63fbf334
+#  API key scrub 51 files               — commit a3e81d5b
+#
+# =============================================================================
+# MANDATORY CHECKLIST — RUN BEFORE EVERY ACTION THIS SESSION
+# =============================================================================
+#
+#  [ ] Have you read AI_FUCKUP.py?
+#  [ ] Have you read this file (STAR-MAGIC_NEWTON GRAVITY FIX.py)?
+#  [ ] Does your change use dpm_ug1_seed / dpm_ug2_shell (NOT dpm_emergent_*)?
+#  [ ] Does your Ug1 formula use M/r (mass gradient, NO G)?
+#  [ ] Does your Ug2 formula have rho terms + E_react?
+#  [ ] Does your Ug3 formula have omega_s, P_core, E_react?
+#  [ ] Does your Ug4 formula have M_bh/d_g, rho_SCm?
+#  [ ] Did you run python _test_calculators.py before committing?
+#  [ ] Did you verify CP1/CP2/CP3/CP4 still pass after your change?
+#
+# =============================================================================
