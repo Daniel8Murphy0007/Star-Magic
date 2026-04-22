@@ -560,8 +560,8 @@ def calculate_base_gravity_hubble_magnetic(
     B0 = _get_param_or_default(params, 'B', SOURCE14_REFERENCE['B0_magnetar_ref'])
     tau_B = _get_param_or_default(params, 'tau_B', SOURCE14_REFERENCE['tau_B_magnetar_ref'])
     
-    # Base Newtonian gravity
-    ug1_base = (G * M) / (r ** 2)
+    # DPM-emergent Ug1 gravitational projection (UQFF: GM/r² is emergent from Ug family, not foundational)
+    ug1_proj = (G * M) / (r ** 2)
     
     # Hubble expansion correction
     corr_H = 1.0 + H0 * t
@@ -928,10 +928,11 @@ def calculate_fluid_density_coupling(
     V = (4.0 / 3.0) * np.pi * (r ** 3)
     
     # Local gravitational acceleration
-    g_local = G * M / (r ** 2)
+    # DPM-emergent Ug1 projection (UQFF: GM/r² is the last emergent term, not the base; used here as Ug1 proxy)
+    g_proj = G * M / (r ** 2)
     
     # Fluid coupling
-    g_fluid = (rho_fluid * V * g_local) / M
+    g_fluid = (rho_fluid * V * g_proj) / M
     
     return EquationResult(
         name='Fluid Density Coupling',
@@ -1290,7 +1291,8 @@ def calculate_smbh_base_gravity_mass_evolution(
     tau_B = _get_param_or_default(params, 'tau_B', SOURCE15_REFERENCE['tau_B_sgra_ref'])
     
     # Base gravity with M(t)
-    ug1_base = (G * Mt) / (r ** 2)
+    # DPM-emergent Ug1 projection (UQFF: GM/r² emerges last from Ug1 family, not foundational)
+    ug1_proj = (G * Mt) / (r ** 2)
     
     # Hubble expansion
     corr_H = 1.0 + H0 * t
@@ -1591,10 +1593,11 @@ def calculate_smbh_fluid_density(
     V = (4.0 / 3.0) * np.pi * (r ** 3)
     
     # Local gravitational acceleration (with M(t))
-    g_local = G * Mt / (r ** 2)
+    # DPM-emergent Ug1 projection (UQFF: GM/r² is emergent from Ug family, not a seed equation)
+    g_proj = G * Mt / (r ** 2)
     
     # Fluid coupling with M(t) in denominator
-    g_fluid = (rho_fluid * V * g_local) / Mt
+    g_fluid = (rho_fluid * V * g_proj) / Mt
     
     return EquationResult(
         name='SMBH Fluid Density (M(t))',
@@ -2313,8 +2316,8 @@ def calculate_photoevaporation_erosion(params: InputParameters, t: float = 0.0):
     
     G = CONSTANTS['G']
     
-    # Compute base gravity
-    ug1 = (G * M) / (r * r)
+    # DPM-emergent Ug1 projection (UQFF canonical: GM/r² emerges last from Ug1 family, not foundational)
+    ug1_proj = (G * M) / (r * r)
     
     # Erosion factor (exponential decay)
     erosion_factor = E0 * np.exp(-t / tau_erosion)
@@ -3626,8 +3629,9 @@ def calculate_tapestry_complete_uqff(params: InputParameters, t: float = 0.0):
     a_aether_res = f_aether * 1e-8 * f_DPM * (1 + f_TRZ) * a_DPM
     
     f_sc = 1.0; f_react = 1e10; G = CONSTANTS['G']; M = params.M if params.M else SOURCE36_REFERENCE['M_ref']; r = params.r if params.r else SOURCE36_REFERENCE['r_ref']
-    Ug1 = (G * M) / (r * r)
-    a_u_g4i = f_sc * Ug1 * f_react * a_DPM / (E_vac_ISM * c)
+    # DPM-emergent Ug1 projection (UQFF: GM/r² is emergent from Ug1 family; used as scalar proxy in resonance coupling)
+    Ug1_proj = (G * M) / (r * r)
+    a_u_g4i = f_sc * Ug1_proj * f_react * a_DPM / (E_vac_ISM * c)
     
     a_quantum = (f_quantum * E_vac_neb * a_DPM) / (E_vac_ISM * c)
     a_Aether_freq = (f_Aether * E_vac_neb * a_DPM) / (E_vac_ISM * c)
@@ -4325,9 +4329,9 @@ def calculate_hydrogen_ptoe_resonance(params: InputParameters, t: float = 0.0):
     # 3. Aether resonance (replaces dark energy in atomic regime)
     a_aether_res = f_aether * 1e-8 * f_DPM * (1 + f_TRZ) * a_DPM_res
     
-    # 4. U_g4i reactive resonance
-    Ug1_proxy = (G * M) / (r * r)
-    a_u_g4i_res = f_sc * Ug1_proxy * f_react * a_DPM_res / (E_vac * c)
+    # 4. U_g4i reactive resonance (DPM-emergent Ug1 projection: GM/r² emerges last from Ug1 family per UQFF canonical order)
+    Ug1_proj = (G * M) / (r * r)
+    a_u_g4i_res = f_sc * Ug1_proj * f_react * a_DPM_res / (E_vac * c)
     
     # 5. Quantum orbital resonance
     a_quantum_orbital_res = (f_quantum * E_vac * a_DPM_res) / ((E_vac / 10) * c)

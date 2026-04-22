@@ -26,6 +26,17 @@ import time
 import hashlib
 import json
 from collections import defaultdict, OrderedDict
+from concurrent.futures import ThreadPoolExecutor, as_completed
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# CANONICAL UQFF CONSTANTS (for E_react vectorization)
+# ═══════════════════════════════════════════════════════════════════════════════
+# rho_vac_SCm × v_SCm² / rho_vac_UA = 7.09e-37 × (1e8)² / 7.09e-36 = 1e15 J-units
+RHO_VAC_SCM: float = 7.09e-37   # SCm vacuum density (J/m³)
+RHO_VAC_UA:  float = 7.09e-36   # UA vacuum density (J/m³)
+V_SCM:       float = 1e8         # v_SCm = c/3 (m/s)
+E_REACT_0:   float = RHO_VAC_SCM * V_SCM ** 2 / RHO_VAC_UA  # = 1e15 canonical base
+KAPPA_CANONICAL: float = 5e-4   # κ = 5×10⁻⁴ day⁻¹ (per second equivalent used in equations)
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # PERFORMANCE MONITORING
@@ -252,37 +263,43 @@ class VectorizedCalculations:
         E0: np.ndarray,
         t: np.ndarray,
         t_n: np.ndarray,
-        kappa: float = 0.0005,
-        omega: float = 1.16e-7,
-        S_k_B: float = 0.1,
-        SCm: float = 1e3
+        kappa: float = KAPPA_CANONICAL,
     ) -> np.ndarray:
         """
         Vectorized reactor efficiency for time series.
-        
+
+        Canonical UQFF formula (MUST NOT DEVIATE):
+            E_react = E0 × exp(-κ×t) × cos(π×t_n)
+
+        Where:
+            E0   — base energy; defaults to rho_vac_SCm×v_SCm²/rho_vac_UA = 1e15
+            κ    — canonical decay constant = 5e-4 (day⁻¹ per UQFF calibration)
+            t_n  — negative time coordinate (temporal reversal zone)
+
+        NOT used: omega×t oscillation (incorrect), SCm×1e3 scaling (non-canonical),
+                  entropy correction S_k_B (not part of E_react definition).
+
         Args:
-            E0: Base energies (shape: N,)
-            t: Time points (shape: M,)
-            t_n: Negative time points (shape: M,)
-            
+            E0:    Base energies array (shape: N,)
+            t:     Time points (shape: M,)
+            t_n:   Negative time points (shape: M,)
+            kappa: Decay constant (default: 5e-4 per UQFF canonical)
+
         Returns:
             E_react: shape (N, M)
         """
         E0_arr = np.atleast_2d(E0).T  # (N, 1)
-        t_arr = np.atleast_1d(t)      # (M,)
+        t_arr  = np.atleast_1d(t)     # (M,)
         t_n_arr = np.atleast_1d(t_n)  # (M,)
-        
-        # Time decay
+
+        # Canonical time decay: exp(-κ×t)
         decay = np.exp(-kappa * t_arr)
-        
-        # Negative time oscillation
-        oscillation = np.cos(omega * t_n_arr)
-        
-        # Entropy correction (simplified)
-        entropy_factor = 1.0 - S_k_B
-        
-        # Broadcasting: E0[i] × factors[j]
-        E_react = E0_arr * decay[np.newaxis, :] * oscillation[np.newaxis, :] * entropy_factor * SCm
+
+        # Canonical temporal reversal oscillation: cos(π×t_n)  [NOT cos(ω×t_n)]
+        oscillation = np.cos(np.pi * t_n_arr)
+
+        # Broadcasting: E0[i] × exp(-κ×t[j]) × cos(π×t_n[j])
+        E_react = E0_arr * decay[np.newaxis, :] * oscillation[np.newaxis, :]
         return E_react.squeeze()
     
     @staticmethod
@@ -352,25 +369,32 @@ def parallel_solve(
     n_workers: int = 4
 ) -> List[Dict[str, Any]]:
     """
-    Solve multiple systems in parallel (future: multiprocessing).
-    
-    Current: Sequential (multiprocessing requires careful state management)
-    Future: Use ProcessPoolExecutor with serializable solver state
-    
+    Solve multiple systems in parallel using ThreadPoolExecutor.
+
+    Uses threads (not processes) since the GIL is released during numpy math
+    operations and the solver is designed to be stateless per call.
+    Order of results is preserved (indexed by input position).
+
     Args:
-        solver: UnifiedFieldSolver instance
-        systems: List of system parameter dictionaries
-        n_workers: Number of parallel workers (not yet implemented)
-        
+        solver:    UnifiedFieldSolver instance (stateless per call)
+        systems:   List of system parameter dictionaries
+        n_workers: Number of thread workers (default: 4)
+
     Returns:
-        List of solution dictionaries
+        List of solution dictionaries in the same order as input
     """
-    # For now, sequential (multiprocessing requires state serialization)
-    results = []
-    for system in systems:
-        result = solver.solve(system)
-        results.append(result)
-    
+    n = len(systems)
+    results: List[Any] = [None] * n
+
+    with ThreadPoolExecutor(max_workers=min(n_workers, n)) as executor:
+        future_to_idx = {
+            executor.submit(solver.solve, system): idx
+            for idx, system in enumerate(systems)
+        }
+        for future in as_completed(future_to_idx):
+            idx = future_to_idx[future]
+            results[idx] = future.result()
+
     return results
 
 
@@ -434,17 +458,20 @@ if __name__ == "__main__":
     print(f"  E_15 = {E_n[15]:.4e} J (Human scale)")
     print(f"  E_25 = {E_n[25]:.4e} J (Cosmic scale)")
     
-    # Test 2: Vectorized reactor efficiency (time series)
-    print("\n[TEST 2] Vectorized reactor efficiency")
-    t_points = np.linspace(0, 86400, 100)  # 1 day
-    t_n_points = -t_points
+    # Test 2: Vectorized reactor efficiency (time series) — canonical E_react formula
+    print("\n[TEST 2] Vectorized reactor efficiency (canonical: E0 × exp(-κt) × cos(π×t_n))")
+    t_points = np.linspace(0, 86400, 100)  # 1 day in seconds
+    t_n_points = -t_points                 # negative time (TRZ)
+    # Use canonical E0 = rho_vac_SCm × v_SCm² / rho_vac_UA = 1e15
     E_react = VectorizedCalculations.vectorized_reactor_efficiency(
-        E0=np.array([1.0]),
+        E0=np.array([E_REACT_0]),          # canonical base = 1e15
         t=t_points,
         t_n=t_n_points
+        # kappa defaults to 5e-4 (canonical)
     )
-    print(f"  E_react(t=0)     = {E_react[0]:.4e} J")
-    print(f"  E_react(t=1day)  = {E_react[-1]:.4e} J")
+    print(f"  E_react_0 (canonical base) = {E_REACT_0:.4e}")
+    print(f"  E_react(t=0)     = {E_react[0]:.4e}")
+    print(f"  E_react(t=1day)  = {E_react[-1]:.4e}")
     print(f"  Decay over 1 day = {(E_react[0] - E_react[-1])/E_react[0] * 100:.2f}%")
     
     # Test 3: Stress-energy tensor (vectorized)

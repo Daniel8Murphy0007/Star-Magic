@@ -33,6 +33,8 @@ from flask_cors import CORS
 from typing import Dict, List, Any
 import sys
 import os
+import time
+import math
 
 # Import QCalc and performance layer
 sys.path.insert(0, os.path.dirname(__file__))
@@ -46,11 +48,12 @@ from OPData import OutputDataStore
 # ═══════════════════════════════════════════════════════════════════════════════
 
 app = Flask(__name__)
-CORS(app)  # Enable CORS for web frontends
+# Restrict CORS to known local origins; set QCALC_CORS_ORIGINS env var to override
+_allowed_origins = os.environ.get('QCALC_CORS_ORIGINS', 'http://localhost:*,http://127.0.0.1:*').split(',')
+CORS(app, origins=_allowed_origins)
 
-# Global instances
-solver = UnifiedFieldSolver()
-output_store = OutputDataStore()
+# API limits
+MAX_BATCH_SIZE: int = 100  # Maximum systems per batch request (DoS guard)
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -72,17 +75,24 @@ def validate_params(data: Dict[str, Any]) -> tuple[bool, str, ComputeParams]:
         if 'r' not in data:
             return False, "Missing required field: 'r' (distance in m)", None
         
+        # Convert to float and check for NaN/inf
+        def _safe_float(val, field_name):
+            v = float(val)
+            if not math.isfinite(v):
+                raise ValueError(f"Field '{field_name}' must be a finite number, got {v}")
+            return v
+
         # Convert to ComputeParams
         params = ComputeParams(
-            M=float(data['M']),
-            r=float(data['r']),
-            z=float(data.get('z', 0.0)),
-            t=float(data.get('t', 0.0)),
-            t_n=float(data.get('t_n', -1000.0)),
-            B=float(data.get('B_mag', data.get('B', 1e-8))),
-            SFR=float(data.get('SFR', 10.0)),
-            M_bh=float(data.get('M_bh', 4.15e6 * CONSTANTS['M_sun'])),
-            d_g=float(data.get('d_g', 8000 * CONSTANTS['pc']))
+            M=_safe_float(data['M'], 'M'),
+            r=_safe_float(data['r'], 'r'),
+            z=_safe_float(data.get('z', 0.0), 'z'),
+            t=_safe_float(data.get('t', 0.0), 't'),
+            t_n=_safe_float(data.get('t_n', -1000.0), 't_n'),
+            B=_safe_float(data.get('B_mag', data.get('B', 1e-8)), 'B'),
+            SFR=_safe_float(data.get('SFR', 10.0), 'SFR'),
+            M_bh=_safe_float(data.get('M_bh', 4.15e6 * CONSTANTS['M_sun']), 'M_bh'),
+            d_g=_safe_float(data.get('d_g', 8000 * CONSTANTS['pc']), 'd_g')
         )
         
         # Sanity checks
@@ -278,6 +288,12 @@ def calculate_batch():
         if not isinstance(systems, list) or len(systems) == 0:
             return jsonify({'error': '"systems" must be a non-empty array'}), 400
         
+        if len(systems) > MAX_BATCH_SIZE:
+            return jsonify({
+                'error': f'Batch size {len(systems)} exceeds maximum of {MAX_BATCH_SIZE}. '
+                         f'Split into smaller batches.'
+            }), 400
+        
         # Process each system
         import time
         start = time.perf_counter()
@@ -349,7 +365,13 @@ def cache_stats():
 
 @app.route('/api/v1/cache/clear', methods=['POST'])
 def clear_cache():
-    """Clear the result cache."""
+    """Clear the result cache (requires QCALC_ADMIN_TOKEN in Authorization header)."""
+    # Simple token guard — set QCALC_ADMIN_TOKEN env var to protect in production
+    admin_token = os.environ.get('QCALC_ADMIN_TOKEN', '')
+    if admin_token:
+        auth = request.headers.get('Authorization', '')
+        if not auth.startswith('Bearer ') or auth[7:] != admin_token:
+            return jsonify({'error': 'Unauthorized'}), 401
     CACHE.clear()
     return jsonify({
         'success': True,
@@ -361,7 +383,88 @@ def clear_cache():
 # ADVANCED ENDPOINTS (Phase 3-4 Specific)
 # ═══════════════════════════════════════════════════════════════════════════════
 
-@app.route('/api/v1/aether_metric', methods=['POST'])
+@app.route('/api/v1/phases', methods=['GET'])
+def get_phases():
+    """
+    Return UQFF phase documentation.
+
+    Phases represent progressive integration stages of physics modules
+    sourced from source14.cpp through source173.cpp.
+    """
+    phases = {
+        'framework': 'UQFF Star Magic v5.x (99.9% Solvability)',
+        'data_flow': 'APIFetch.py → IPData.py → QCalc.py (+ Wolfram Extensions) → OPData.py',
+        'phases': [
+            {
+                'phase': 1,
+                'description': 'Core UQFF equations (Ug1-Ug4, Ubi, Um, UA_uv)',
+                'sources': ['QCalc.py (UnifiedFieldSolver, 8 master equations)'],
+                'equations': ['F_U', 'Ug1 (DPM)', 'Ug2 (heliosphere)', 'Ug3 (magnetic disk)', 'Ug4 (galactic)'],
+                'modes': ['Compressed', 'Resonant', 'Superconductive', 'Buoyant']
+            },
+            {
+                'phase': 2,
+                'description': 'Magnetar + SMBH Wolfram terms (source14-15)',
+                'sources': ['QCalc_Wolfram_Extensions.py: calculate_base_gravity_hubble_magnetic, '
+                            'calculate_uqff_unification_time_reversal, calculate_smbh_*'],
+                'systems': ['SGR 0501+4516 Magnetar (12 terms)', 'Sagittarius A* SMBH (15 terms)']
+            },
+            {
+                'phase': 3,
+                'description': 'Star formation + cluster + nebulae Wolfram terms (source16-25)',
+                'sources': ['QCalc_Wolfram_Extensions.py: calculate_cluster_*, '
+                            'calculate_westerlund2_*, calculate_photoevaporation_*'],
+                'systems': ['Tapestry NGC 2014/2020', 'Westerlund 2', 'Pillars M16',
+                            'Rings of Relativity', 'NGC 2525/SN', 'NGC 3603',
+                            'Bubble Nebula', 'Antennae Galaxies', 'Horsehead', 'NGC 1275']
+            },
+            {
+                'phase': 4,
+                'description': 'Cosmological + galaxy + planetary + remnant terms (source26-40)',
+                'sources': ['QCalc_Wolfram_Extensions.py: calculate_hudf_*, calculate_ngc1792_*, '
+                            'calculate_andromeda_*, calculate_sombrero_*, calculate_saturn_*, '
+                            'calculate_m16_*, calculate_crab_*, calculate_sgr1745_*'],
+                'systems': ['HUDF z=3.5-12', 'NGC 1792', 'Andromeda M31', 'Sombrero M104',
+                            'Saturn', 'M16 Eagle Nebula', 'Crab Nebula', 'SGR 1745-2900']
+            },
+            {
+                'phase': 5,
+                'description': 'Frequency model + framework hybrid terms (source34-50)',
+                'sources': ['QCalc_Wolfram_Extensions.py: calculate_sgr1745_frequency_*, '
+                            'calculate_tapestry_*, calculate_compressed_*, '
+                            'calculate_ngc6302_*, calculate_orion_m42_*'],
+                'systems': ['SGR 1745 11-freq model', 'Sgr A* freq model', 'Tapestry framework',
+                            'NGC 6302 Butterfly', 'Orion M42', 'Generic compressed/resonance']
+            },
+            {
+                'phase': 6,
+                'description': 'Galaxy physics extensions (M51, NGC1316, SMBH binaries)',
+                'sources': ['QCalc.py Phase 6 auto-detection (parameters: z, M_bh, SFR)'],
+                'auto_trigger': 'Detected automatically when M > 1e10 M_sun or z > 0.01'
+            }
+        ],
+        'parallel_calculators': [
+            'MAIN_1_CoAnQi.cpp (107,019 lines, C++)',
+            'QCalc.py (this service)',
+            'CondensedPhysics.py (176 calculators)',
+            'CondensedPhysics2.py (680 classes)',
+            'uqff_server.js/index.js (106 systems)'
+        ],
+        'canonical_constants': {
+            'beta_i': 0.603,
+            'kappa': '5e-4 day^-1',
+            'gamma': '5e-5 day^-1 (near-lossless)',
+            'eta': '1e-22 (Aether coupling)',
+            'rho_vac_SCm': '7.09e-37 J/m^3',
+            'rho_vac_UA': '7.09e-36 J/m^3',
+            'v_SCm': '1e8 m/s (c/3)',
+            'H_SCm': 0.99,
+            'SSq': 0.57
+        }
+    }
+    return jsonify(phases), 200
+
+
 def calculate_aether_metric():
     """
     Calculate aether metric tensor (Phase 4).
