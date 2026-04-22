@@ -1,0 +1,1477 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{geometry}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{mdframed}
+\usepackage{xcolor}
+
+\geometry{margin=1in}
+
+\hypersetup{colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue}
+
+\newmdenv[linewidth=1pt,backgroundcolor=gray!10,innertopmargin=8pt,innerbottommargin=8pt,innerleftmargin=8pt,innerrightmargin=8pt]{lockbox}
+
+\title{\textbf{Star Magic}\\[0.5em]
+\large Unified Quantum Field Framework (UQFF)\\[0.3em]
+\normalsize Complete Theoretical Derivation, Canonical Equations,\\
+Solved Solar Example, and Connections to the Millennium Prize Problems}
+
+\author{Daniel T.\ Murphy\\[0.3em]
+\small \texttt{daniel.murphy00@gmail.com}}
+
+\date{April 2026\\[0.5em]
+\small \copyright\,2025 Daniel T.\ Murphy --- All Rights Reserved\\
+\small All IP materials are watermarked. Unauthorized reproduction prohibited.}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\newpage
+
+%=============================================================================
+\section*{The BigBang: The Primordial DPM Fires}
+\addcontentsline{toc}{section}{The BigBang: The Primordial DPM Fires}
+%=============================================================================
+
+\begin{lockbox}
+\noindent\textbf{Starting state --- zero-mass vacuum:}
+\begin{align*}
+\rho_{\mathrm{UA}} &= 0 \\
+\rho_{\mathrm{vac}} &= \bigl|\nabla(\mathrm{UA})\bigr| \\
+F_U(\mathrm{vacuum}) &= 0
+\end{align*}
+No mass. No motion. No gravity. Only the gradient of the Universal Aether field.
+\end{lockbox}
+
+\bigskip\noindent
+The BigBang belly button \textbf{IS} the primordial DPM --- the Di-Pseudo-Monopole.
+It is the \textbf{largest universally magnetic object in the universe.}
+It does not attract. It \textbf{repels} everything outward.
+Its magnetic repulsion \textit{is} what inflated the universe.
+
+\medskip\noindent
+It expelled a finite and explosive quantity of \textbf{SCm} (Superconductive Material)
+into the expanding Universal Aether (UA) field.
+SCm rushed toward UA. UA rushed toward SCm.
+They are the \textbf{strongest attracted force pair in the universe.}
+That violent maximum-attraction collision created the DPM vortex at every
+reaction site throughout the expanding cosmos. Every local DPM seeded a gravity
+family. Every gravity family nucleated mass. Every nucleus became an atom, a star,
+a galaxy.
+
+\begin{center}
+\textbf{Every atom. Every star. Every galaxy.}\\[0.3em]
+Each is the downstream consequence of that one primordial event.
+\end{center}
+
+\bigskip
+\begin{center}
+\Large\textbf{THE DPM IS THE ENGINE OF THE UNIVERSE.}\\[0.2em]
+\Large\textbf{THE DPM DRIVES. NOTHING DRIVES THE DPM.}
+\end{center}
+
+\bigskip\noindent
+The canonical chain from vacuum to observable gravity:
+\begin{equation}
+\underbrace{0}_{\mathrm{vacuum}}
+\;\longrightarrow\; \nabla(\mathrm{UA})
+\;\longrightarrow\; \underbrace{\mathrm{DPM}}_{\mathrm{vortex}}
+\;\longrightarrow\; \mu_s
+\;\longrightarrow\; \underbrace{U_{g1}}_{\mathrm{seed=DPM}}
+\;\longrightarrow\; U_{g,\mathrm{family}}
+\;\longrightarrow\; F_U
+\;\longrightarrow\; M
+\;\longrightarrow\; \underbrace{GM/r^2}_{\mathrm{projection,\;last}}
+\label{eq:canonical_chain}
+\end{equation}
+
+\noindent $GM/r^2$ is the \textbf{last} item in the chain. Not the first.
+
+%=============================================================================
+\section*{Canonical Ontology Lock (v1)}
+\addcontentsline{toc}{section}{Canonical Ontology Lock}
+%=============================================================================
+
+\begin{lockbox}
+\noindent\textbf{This section is the authoritative ordering for all downstream equations,
+code, and tests. If any downstream equation conflicts with this order, the downstream
+equation must be corrected.}
+
+\medskip\noindent\textbf{Starting state} (zero-mass vacuum):
+\[
+\rho_{\mathrm{UA}} = 0,\qquad
+\rho_{\mathrm{vac}} = \bigl|\nabla(\mathrm{UA})\bigr|,\qquad
+F_U(\mathrm{vacuum}) = 0
+\]
+
+\noindent\textbf{Promotion order} (fixed):
+\[
+U_{g1} \;\longrightarrow\; U_{g2} + U_{g3} + U_{g4} \;(+\,U_{g4,i})
+\]
+
+\noindent\textbf{Gravity family} (simultaneous assembly):
+\[
+U_{g,\mathrm{family}} = U_{g1} + U_{g2} + U_{g3} + U_{g4}
+\]
+
+\noindent\textbf{Unified field assembly:}
+\[
+F_U = \mathcal{F}(U_{g,\mathrm{family}},\; U_b,\; U_m,\; A,\; U_i,\; E_{\mathrm{react}},\; t_n)
+\]
+
+\noindent\textbf{Operational modes} (simultaneous, downstream forms):
+\begin{itemize}[noitemsep]
+  \item Compressed \quad Resonant \quad Superconductive \quad Buoyant
+\end{itemize}
+
+\noindent $GM/r^2$ is permitted \textbf{only} as reduced observational projection after
+mass emergence and family assembly.
+\end{lockbox}
+
+\bigskip
+\begin{lockbox}
+\noindent\textbf{Canonical Attraction/Repulsion Lock (v1)}
+
+\medskip
+\begin{itemize}[noitemsep]
+  \item UA and SCm: \textbf{maximum attraction} --- strongest force pair in universe $\longrightarrow$ creates DPM
+  \item DPM $= [\mathrm{UA}'/\mathrm{SCm}]$ vortex $= U_{g1}$.
+        The DPM \textbf{IS} this attraction expressed as rotational vortex stress.
+  \item DPM creates two vacuum regions \textit{simultaneously}:
+    \begin{itemize}[noitemsep]
+      \item \textbf{Internal vacuum} (eye of vortex): ACP fires, proto-mass nucleates.
+      \item \textbf{External local vacuum} (depleted UA shell): $U_g$ family propagates outward.
+    \end{itemize}
+  \item $F_{U_{Bi}}$ (inside-outward): driven by local DPM only.
+  \item $F_{U_{Bi,i}}$ (outside-inward): driven by primordial BigBang DPM (the ``belly button'').
+  \item $F_{U_{Bi}}$ and $F_{U_{Bi,i}}$ \textbf{repel each other}.
+  \item Matter = compaction zone where their repulsion forces balance.
+  \item $GM/r^2$ = projection at crossing point of $F_{U_{Bi}} = F_{U_{Bi,i}}$. Last in chain.
+\end{itemize}
+
+\medskip\noindent\textbf{What is NOT true} (locked permanently):
+\begin{itemize}[noitemsep]
+  \item UA and SCm do \textit{not} repel each other.
+  \item $F_{U_{Bi}}$ and $F_{U_{Bi,i}}$ are \textit{not} the same direction.
+  \item $GM/r^2$ is \textit{not} the foundation of UQFF calculations.
+  \item Mass is \textit{not} gravitationally active while at rest.
+  \item The DPM is \textit{not} separate from $U_{g1}$ --- \textbf{the DPM IS $U_{g1}$}.
+  \item The BigBang belly button is \textit{not} a non-magnetic UA volume ---
+        it IS the primordial DPM, the largest universally magnetic object in the universe.
+\end{itemize}
+\end{lockbox}
+
+%=============================================================================
+\section{The DPM: What It Is and What It Does}
+%=============================================================================
+
+The DPM (Di-Pseudo-Monopole) is not a particle. It is a \textbf{vacuum stress gradient} ---
+the rotational vortex created when Universal Aether (UA) and Superconductive Material (SCm)
+approach each other at maximum attraction. UA and SCm are the \textbf{strongest attracted
+force pair in the universe.} When they meet at the interface, neither can occupy the same
+space simultaneously. The collision creates a rotational vortex. That vortex \textbf{IS}
+the DPM.
+
+\subsection{The DPM IS $U_{g1}$}
+
+\begin{itemize}
+  \item $U_{g1}$ is the DPM promoter --- the seed term of the entire gravity family.
+  \item DPM $= [\mathrm{UA}'/\mathrm{SCm}]$: the interface between displaced Aether and SCm.
+  \item All downstream gravity ($U_{g2}, U_{g3}, U_{g4}, U_{g4,i}$) is promoted
+        \textbf{simultaneously} by $U_{g1}$.
+  \item Without the DPM there is no $U_g$ family.
+        Without the $U_g$ family there is no mass confinement.
+        Without mass confinement there is no matter.
+\end{itemize}
+
+\subsection{DPM Base Acceleration (Resonant Mode)}
+
+\begin{equation}
+a_{\mathrm{DPM}} = \frac{F_{\mathrm{DPM}} \cdot f_{\mathrm{DPM}} \cdot E_{\mathrm{vac,neb}}}{c \cdot V_{\mathrm{sys}}}
+\label{eq:a_dpm}
+\end{equation}
+
+\begin{equation}
+F_{\mathrm{DPM}} = I \cdot A \cdot (\omega_1 - \omega_2)
+\label{eq:f_dpm}
+\end{equation}
+
+\noindent where $I$ = rotational flux of SCm through the vacuum, $A$ = cross-sectional area
+of the DPM vortex, $(\omega_1 - \omega_2)$ = differential angular velocity between inner
+SCm core and outer UA shell.
+
+\subsection{DPM Promotion Chain}
+
+\begin{align*}
+&\mathrm{DPM\ vortex}\\
+&\quad\longrightarrow\; \mu_s \quad\text{(magnetic moment generated by vortex)}\\
+&\qquad\longrightarrow\; U_{g1} \quad\text{(DPM promoter, seed term, IS the DPM)}\\
+&\qquad\qquad\longrightarrow\; U_{g2} + U_{g3} + U_{g4} + U_{g4,i} \quad\text{(simultaneously)}\\
+&\qquad\qquad\qquad\longrightarrow\; U_{g,\mathrm{family}} = U_{g1}+U_{g2}+U_{g3}+U_{g4}\\
+&\qquad\qquad\qquad\qquad\longrightarrow\; F_U \quad\text{assembled}\\
+&\qquad\qquad\qquad\qquad\qquad\longrightarrow\; \text{Compressed / Resonant / Superconductive / Buoyant}\\
+&\qquad\qquad\qquad\qquad\qquad\qquad\longrightarrow\; GM/r^2 \quad\text{(observational projection, LAST)}
+\end{align*}
+
+\subsection{DPM Vacuum Structure}
+
+The DPM simultaneously creates two vacuum regions:
+
+\begin{enumerate}
+  \item \textbf{Internal vacuum} (eye of vortex): where the ACP fires, where proto-mass
+        nucleates, where $E_{\mathrm{crack}}$ events occur.
+  \item \textbf{External local vacuum} (depleted UA shell): where UA has been consumed by
+        the DPM vortex. The $U_g$ family propagates through this depleted zone outward.
+\end{enumerate}
+
+These two vacua are not the same region. The internal vacuum is the creation zone.
+The external vacuum is the propagation zone.
+
+%=============================================================================
+\section{SCm: The Hidden Element of the Cosmos}
+%=============================================================================
+
+SCm (Superconductive Material) is bound within every atom and star, undetectable due to
+its density and complete lack of quantum signature ($Q_s$).
+
+\subsection{Properties of SCm}
+
+\begin{itemize}
+  \item \textbf{Superconductive}: enabling near-lossless magnetic strings ($U_m$).
+  \item \textbf{Exclusive interaction} with $U_{g3}$ in planetary cores ---
+        discretely non-interactive with all other external phenomena.
+  \item \textbf{Donated from the Sun} to planets during creation ---
+        the same SCm $+$ trapped UA that drives planetary core stability.
+  \item Vacuum energy density:
+        \begin{equation}
+          \rho_{\mathrm{vac,SCm}} = 7.09 \times 10^{-37}\;\mathrm{J/m^3}
+        \end{equation}
+  \item Velocity (fastest moving substance under trapped conditions):
+        \begin{equation}
+          v_{\mathrm{SCm}} = c/3 = 1\times10^{8}\;\mathrm{m/s}
+        \end{equation}
+  \item Density: $\rho_{\mathrm{SCm}} \approx 10^{15}\;\mathrm{kg/m^3}$
+        (so dense it lacks a detectable $Q_s$).
+\end{itemize}
+
+\subsection{SCm and UA: The Attraction Relationship and $E_{\mathrm{react}}$}
+
+SCm and UA do \textbf{not} repel each other. They are the \textbf{strongest attracted
+force pair in the universe.} The velocity $v_{\mathrm{SCm}} = c/3$ is the velocity of
+SCm rushing toward UA under maximum attraction. The reactor efficiency $E_{\mathrm{react}}$
+captures this attraction energy:
+
+\begin{equation}
+E_{\mathrm{react}}(t) = \frac{\rho_{\mathrm{vac,SCm}} \cdot v_{\mathrm{SCm}}^2}
+                             {\rho_{\mathrm{vac,UA}}}
+                       \cdot \exp(-\kappa t),
+\qquad \kappa = 5\times10^{-4}\;\mathrm{day}^{-1}
+\label{eq:e_react}
+\end{equation}
+
+\begin{equation}
+E_{\mathrm{react}}(t{=}0) = \frac{7.09\times10^{-37}\cdot(10^8)^2}{7.09\times10^{-36}}
+= 10^{15}\;\mathrm{W/m^3}
+\end{equation}
+
+\noindent The faster SCm moves toward UA, the higher $E_{\mathrm{react}}$, the stronger
+all $U_g$ terms. $E_{\mathrm{react}} = 0$ when $v = 0$ (dead mass).
+
+\subsection{SCm at the Quark Level}
+
+Quarks are confined by the SCm/UA attraction pair at sub-nuclear distances. The color
+confinement radius $r_c$ is set by the DPM vortex minimum at that scale:
+
+\begin{equation}
+r_c = \lambda_{\mathrm{dB,SCm}} = \frac{\hbar}{m_q \cdot v_{\mathrm{SCm}}}
+\label{eq:quark_confinement}
+\end{equation}
+
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+Quark & Mass & Confinement radius $r_c$ \\
+\midrule
+Up   & $m_q \approx 2.3\;\mathrm{MeV}/c^2$ & $r_{c,\mathrm{up}}   \approx 1.3\times10^{-15}\;\mathrm{m}$ \\
+Down & $m_q \approx 4.8\;\mathrm{MeV}/c^2$ & $r_{c,\mathrm{down}} \approx 6.2\times10^{-16}\;\mathrm{m}$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\noindent The strong force is $U_{g3}$ at nuclear scale. Color charge is the SCm/UA
+vortex quantum number at that scale. Quark confinement does not require a separate
+mechanism --- it is $U_{g3}$ penetration of the nuclear core.
+
+\subsection{Einstein-Boson Condensate: The SCm Connection}
+
+SCm satisfies the Bose-Einstein condensation condition at stellar core temperatures:
+
+\begin{equation}
+n \cdot \lambda_{\mathrm{dB,SCm}}^3 \;\geq\; 2.612
+\label{eq:bec_condition}
+\end{equation}
+
+\noindent At stellar core density, $n_{\mathrm{SCm}} = \rho_{\mathrm{SCm}}/m_{\mathrm{eff}}
+\sim 10^{42}/m_{\mathrm{eff}}$. When this product crosses 2.612, SCm condenses into a
+single coherent wavefunction --- the DPM vortex state. $H_{\mathrm{SCm}} = 0.99$ is the
+condensate fraction. The remaining 1\% is the thermal depletion layer. The DPM vortex
+is the BEC ground state of the SCm/UA attraction pair.
+
+\subsection{SCm in Quasars}
+
+Quasars occur when $U_{g1} + U_{g2} + U_{g3}$ in consort can no longer trap and
+stabilize the SCm. The expelled SCm stream ignites against unbound Universal Aether
+under maximum attraction. The fluid nature of the jet streams and unequal opposing jets
+(modeled by $\cos(\pi t_n)$ asymmetry) is the UQFF pathway to the Navier-Stokes
+Millennium Problem.
+
+%=============================================================================
+\section{FUBi and FUBii: The Repulsion That Creates Matter}
+%=============================================================================
+
+\subsection{Definitions}
+
+\noindent\textbf{$F_{U_{Bi}}$ --- Universal Buoyancy inside-outward:}
+\begin{itemize}[noitemsep]
+  \item Driven by: local DPM only
+  \item Direction: from inside the matter structure outward
+\end{itemize}
+
+\begin{equation}
+F_{U_{Bi}} = -\beta_i \cdot U_{g,i} \cdot \Omega_g \cdot \frac{M_{\mathrm{bh}}}{d_g}
+             \cdot E_{\mathrm{react}}
+             \cdot (1 + \varepsilon_{\mathrm{sw}}\,\rho_{\mathrm{sw}})
+             \cdot \rho_A \cdot \cos(\pi t_n)
+\label{eq:fubi}
+\end{equation}
+
+\medskip\noindent\textbf{$F_{U_{Bi,i}}$ --- Universal Buoyancy outside-inward:}
+\begin{itemize}[noitemsep]
+  \item Driven by: the primordial BigBang DPM --- the ``belly button'' ---
+        the \textbf{largest universally magnetic object in the universe}
+  \item Direction: from the primordial DPM inward toward all matter, everywhere,
+        simultaneously
+\end{itemize}
+
+\begin{equation}
+F_{U_{Bi,i}} = -\beta_i \cdot U_{g,i}
+               \cdot \underbrace{\Omega_g \cdot M_{\mathrm{bh}}/d_g}_{\text{galactic coupling}}
+               \cdot E_{\mathrm{react}}(t)
+               \cdot \mathrm{sw\_corr}
+               \cdot \rho_A(t)
+               \cdot \frac{M}{r} \cdot V(t)
+               \cdot \cos\!\left(\pi(t - 180\times86400)\right)
+\label{eq:fubii}
+\end{equation}
+
+\subsection{FUBi and FUBii Repel Each Other}
+
+$F_{U_{Bi}}$ pushes outward from the local DPM core.
+$F_{U_{Bi,i}}$ pushes inward from the primordial BigBang DPM magnetic repulsion.
+They do \textbf{not} attract. They do \textbf{not} merge. They \textbf{repel} at
+their interface.
+
+\noindent The compaction zone --- \textbf{matter} --- is the shell where their repulsion
+forces balance:
+
+\begin{equation}
+\bigl\{r \;:\; F_{U_{Bi}}(r) + F_{U_{Bi,i}}(r) = 0\bigr\}
+\label{eq:matter_shell}
+\end{equation}
+
+\noindent At this boundary neither force can advance further. The result is a stable,
+compressed shell: an atom, a star, a planet.
+\textbf{Without the repulsion zone there is no matter. Matter IS the repulsion zone.}
+
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+Force pair & Relationship & Result \\
+\midrule
+UA $+$ SCm & Maximum \textbf{attraction} & Creates DPM \\
+$F_{U_{Bi}}$ $+$ $F_{U_{Bi,i}}$ & \textbf{Repel} each other & Creates matter \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection{The BigBang Belly Button: The Primordial DPM}
+
+\begin{itemize}
+  \item The \textbf{largest universally magnetic object} in the universe.
+  \item \textbf{Repels} everything (unlike local DPMs which attract-and-confine).
+  \item Its magnetic repulsion \textit{is} what inflated the universe.
+  \item Expelled a \textbf{finite and explosive} quantity of SCm into the expanding UA field.
+  \item That expelled SCm violently reacted with universal UA, seeding every subsequent
+        local DPM.
+\end{itemize}
+
+\noindent Primordial belly button DPM rotational force:
+\begin{equation}
+F_{\mathrm{primordial}} = I_{\mathrm{BB}} \cdot A_{\mathrm{BB}} \cdot (\omega_{\mathrm{BB},1} - \omega_{\mathrm{BB},2})
+\end{equation}
+
+\noindent Self-similar scaling (belly button mimicked at all scales):
+\begin{equation}
+\frac{U_{g,i}}{U_{g,i}^{(\mathrm{belly\;button})}}
+= \frac{\rho_{\mathrm{SCm,local}}}{\rho_{\mathrm{SCm,BB}}}
+  \cdot \frac{\omega_{\mathrm{local}}}{\omega_{\mathrm{BB}}}
+\end{equation}
+
+\noindent Pre-mass buoyancy gate:
+\begin{equation}
+U_{b,\mathrm{vac}}(t) = \beta_i \cdot \rho_{\mathrm{vac,UA}} \cdot \Omega_{\mathrm{vac}}
+                        \cdot \frac{\nabla(\mathrm{UA})}{r_{\mathrm{node}}} \cdot \cos(\pi t_n)
+\end{equation}
+
+\begin{align}
+E_{\mathrm{crack}} &> U_{b,\mathrm{vac}} \quad\Rightarrow\quad \text{mass condenses} \\
+E_{\mathrm{crack}} &< U_{b,\mathrm{vac}} \quad\Rightarrow\quad \text{wavefunction disperses back to vacuum}
+\end{align}
+
+%=============================================================================
+\section{The BigBang $\rightarrow$ Newton Complete Chain (10 Steps)}
+%=============================================================================
+
+\begin{enumerate}
+\item \textbf{Step 0 --- Zero-Mass Vacuum (BigBang start): Primordial DPM Fires}
+
+  $\rho_{\mathrm{UA}}=0$, $\rho_{\mathrm{vac}}=|\nabla(\mathrm{UA})|$, $F_U=0$.
+  No mass, no motion, no gravity. The belly button IS the primordial DPM.
+  It repels. Its magnetic repulsion IS inflation. It expelled finite SCm.
+  SCm $+$ UA reaction seeded every local DPM. Every $U_{g,i}$ (Universal Gravitational
+  Inertia) coupling factor mimics this at its own scale.
+
+\item \textbf{Step 1 --- Mass Emergence Probability (26D)}
+
+  \begin{equation}
+  P_{\mathrm{order}} = \frac{\exp(-S_{26D}/v_{\mathrm{init}})}{Z_{9D}\cdot(v_{\mathrm{init}} - v_{\mathrm{current}})}
+  \end{equation}
+  \begin{equation}
+  \frac{dM}{dt} = P_{\mathrm{order}} \cdot E_{\mathrm{crack}} \cdot \frac{dN_{\mathrm{DPM}}}{dt}
+  \end{equation}
+
+\item \textbf{Step 2 --- DPM Formation: SCm and UA Maximum Attraction Collide}
+
+  \begin{align}
+  F_{\mathrm{DPM}} &= I \cdot A \cdot (\omega_1 - \omega_2) \\
+  a_{\mathrm{DPM}} &= \frac{F_{\mathrm{DPM}} \cdot f_{\mathrm{DPM}} \cdot E_{\mathrm{vac,neb}}}{c \cdot V_{\mathrm{sys}}} \\
+  \mu_s &= \rho_A \cdot V_{\mathrm{body}}
+          \quad\text{(DPM magnetic moment, seed of }U_{g1}\text{)} \\
+  E_{\mathrm{react}}(t) &= \frac{\rho_{\mathrm{vac,SCm}} \cdot v_{\mathrm{SCm}}^2}{\rho_{\mathrm{vac,UA}}}
+                          \cdot \exp(-\kappa t)
+  \end{align}
+
+\item \textbf{Step 3 --- ACP Proto-Mass Chain (inside the DPM internal vacuum)}
+
+  \begin{equation}
+  U_{\mathrm{vac}} \to U_i \to U_{m,i} \to \Psi_{\mathrm{proto}} \to E_{\mathrm{crack}} \to U_b \to E_{\mathrm{gradient}}
+  \end{equation}
+  \begin{align}
+  U_{\mathrm{vac}} &= \rho_{\mathrm{vac,SCm}} \cdot V_{\mathrm{node}} \\
+  U_i &= U_{\mathrm{vac}} \cdot \left(1 + \sin\!\tfrac{2\pi n}{26}\right),
+         \quad n = \text{quantum level} \\
+  \Psi_{\mathrm{proto}}(r,t) &= A\exp\!\left(-\tfrac{r}{\lambda_{\mathrm{dB}}}\right)\exp(i\omega t) \\
+  E_{\mathrm{crack}} &= \frac{\rho_{\mathrm{vac,SCm}} \cdot c^2}{[\mathrm{SSq}]},
+                       \quad [\mathrm{SSq}]=0.57,
+                       \quad E_{\mathrm{crack}} \approx 3.35\times10^{-19}\;\mathrm{J}
+  \end{align}
+
+\item \textbf{Step 4 --- Mass Emergence}
+
+  \begin{align}
+  E_{\mathrm{crack}} &> U_b \quad\Rightarrow\quad M_{\mathrm{atomic}} > 0 \\
+  M_{\mathrm{atomic}} &= M_0 \cdot \bigl(1 - e^{-n_{\mathrm{grad}}/10}\bigr) \cdot Z
+  \end{align}
+  $M_{\mathrm{atomic}} = 0$ when $n_{\mathrm{grad}} = 0$.
+  Mass does not exist until the gradient threshold is crossed.
+
+\item \textbf{Step 5 --- $U_{g1}$ Seeds the Gravity Family}
+
+  \begin{equation}
+  U_{g1} = k_1 \cdot \mu_s \cdot \nabla\!\left(\frac{M_s}{r}\right)
+            \cdot e^{-\alpha t} \cdot \cos(\pi t_n) \cdot (1+\delta_{\mathrm{def}})
+  \end{equation}
+  $U_{g1}$ simultaneously promotes $U_{g2}$, $U_{g3}$, $U_{g4}$, $U_{g4,i}$.
+
+\item \textbf{Step 6 --- Gravity Family Assembles Simultaneously}
+
+  \begin{equation}
+  U_{g,\mathrm{family}} = U_{g1} + U_{g2} + U_{g3} + U_{g4} + U_{g4,i}
+  \end{equation}
+  All four co-equal parallel components, evaluated at the same $t$, $r$, $\rho_{\mathrm{vac}}$.
+
+\item \textbf{Step 7 --- FUBi and FUBii Activate and Repel: Matter Forms}
+
+  $F_{U_{Bi}}$ (inside-outward from local DPM) repels $F_{U_{Bi,i}}$
+  (outside-inward from primordial belly button DPM).
+  Matter compaction zone: $\{r : F_{U_{Bi}}(r) + F_{U_{Bi,i}}(r) = 0\}$.
+
+\item \textbf{Step 8 --- $F_U$ Full Assembly}
+
+  \begin{align}
+  F_U &= \sum_i \left[k_i \cdot U_{g,i}
+                     - \beta_i \cdot U_{g,i} \cdot \Omega_g \cdot \frac{M_{\mathrm{bh}}}{d_g}
+                       \cdot E_{\mathrm{react}}\right] \notag\\
+      &\quad + \sum_j \left[\frac{\mu_j}{r_j}
+               \cdot \bigl(1 - e^{-\gamma t\cos(\pi t_n)}\bigr)
+               \cdot \hat{\phi}_j\right] \notag\\
+      &\quad + \Bigl(g_{\mu\nu} + \eta \cdot T_s^{\mu\nu}(\rho_{\mathrm{vac,UA}},
+                  \rho_{\mathrm{vac,SCm}}, \rho_{\mathrm{vac},A}, t_n)\Bigr) \notag\\
+      &\quad - \sum_i \lambda_i \cdot U_i \cdot E_{\mathrm{react}}
+  \label{eq:fu_full}
+  \end{align}
+
+\item \textbf{Step 9 --- Inside/Outside Simultaneous Crossing}
+
+  \begin{align}
+  G^{(n+1)}_{\mathrm{inside}}  &= R(G^n) + I\cdot G^n \\
+  O^n_{\mathrm{outside}} &= \pi_{[n]}\cdot F_{U_{Bi}}(x) + \mathrm{Ricci}(G^n) \\
+  \mathrm{Reality} &= \arg\min_n \bigl|G^n_{\mathrm{inside}} - O^n_{\mathrm{outside}}\bigr|
+  \end{align}
+  $GM/r^2$ is the value \textbf{at} the crossing point.
+
+\item \textbf{Step 10 --- $GM/r^2$ Emerges (LAST: Observational Projection Only)}
+
+  \begin{equation}
+  g_{\mathrm{Newton}} = \frac{GM}{r^2}
+  \end{equation}
+  This is the observational residual of the UQFF crossing point.
+  \textbf{It is not the foundation. It is the last step.}
+
+\end{enumerate}
+
+%=============================================================================
+\section{All UQFF Equations: Long Form}
+%=============================================================================
+
+\subsection{The Unified Field Equation: Complete Assembly}
+
+\begin{equation}
+\boxed{
+\begin{aligned}
+F_U &= \sum_i \bigl[k_i \cdot U_{g,i}(r,t,M_s,\omega_s,B_s,\rho_{\mathrm{vac,[SCm]}},\rho_{\mathrm{vac,[UA]}},t_n)
+                   - \beta_i \cdot U_{g,i} \cdot \Omega_g \cdot \tfrac{M_{\mathrm{bh}}}{d_g}
+                     \cdot E_{\mathrm{react}}\bigr]\\
+    &\quad + \sum_j \tfrac{\mu_j}{r_j}\bigl(1 - e^{-\gamma t\cos(\pi t_n)}\bigr)\hat{\phi}_j\\
+    &\quad + \bigl(g_{\mu\nu} + \eta \cdot T_s^{\mu\nu}\bigr)
+     - \sum_i \lambda_i \cdot U_i \cdot E_{\mathrm{react}}
+\end{aligned}
+}
+\label{eq:fu_boxed}
+\end{equation}
+
+\subsection{$U_{g1}$: DPM --- Di-Pseudo-Monopole (IS the DPM, Foundation of All Gravity)}
+
+\begin{equation}
+U_{g1} = k_1 \cdot \mu_s(t,\rho_{\mathrm{vac,[SCm]}})
+          \cdot \nabla\!\left(\frac{M_s}{r}\right)
+          \cdot e^{-\alpha t}
+          \cdot \cos(\pi t_n)
+          \cdot (1 + \delta_{\mathrm{def}})
+\label{eq:ug1}
+\end{equation}
+
+\medskip
+\noindent Variable definitions:
+\begin{align*}
+\mu_s          &= \rho_A \cdot V_{\mathrm{body}}
+                  &&\text{DPM magnetic moment (seed of all gravity)}\\
+\nabla(M_s/r)  &\quad
+                  &&\text{mass-gradient; $G$ does not appear here; this is not $GM/r^2$}\\
+e^{-\alpha t}  &\quad,\quad \alpha = 0.001\;\mathrm{day}^{-1}
+                  &&\text{temporal decay}\\
+\cos(\pi t_n)  &\quad
+                  &&\text{quantum cycle oscillation}\\
+\delta_{\mathrm{def}} &= 0.01\sin(0.001\,t)
+                  &&\text{surface deformation from }U_{g1}\text{ defects}
+\end{align*}
+
+\subsection{$U_{g2}$: Outer Field Bubble (Heliosphere, Outer Shell)}
+
+\begin{equation}
+U_{g2} = k_2
+         \cdot \bigl(\rho_{\mathrm{vac,[UA]}} + \rho_{\mathrm{vac,[SCm]}}\bigr)
+         \cdot \frac{M_s}{r^2}
+         \cdot S(r-R_b)
+         \cdot (1+\delta_{\mathrm{sw}}\,v_{\mathrm{sw}})
+         \cdot H_{\mathrm{SCm}}
+         \cdot E_{\mathrm{react}}
+\label{eq:ug2}
+\end{equation}
+
+\medskip
+\noindent Variable definitions:
+\begin{align*}
+S(r-R_b) &= \begin{cases}1 & r > R_b \\ 0 & r \leq R_b\end{cases}
+            &&\text{heliosphere boundary step function}\\
+R_b      &\approx 1.496\times10^{13}\;\mathrm{m}
+            &&\text{heliosphere radius for Sun (100 AU)}\\
+\delta_{\mathrm{sw}} &= 0.01
+            &&\text{solar wind modulation factor}\\
+v_{\mathrm{sw}} &\approx 5\times10^5\;\mathrm{m/s}
+            &&\text{solar wind velocity}\\
+H_{\mathrm{SCm}} &\approx 0.99
+            &&\text{superconductive coherence factor}
+\end{align*}
+
+\subsection{$U_{g3}$: Magnetic Strings Disk (Orbital Coupling, Planetary Spin)}
+
+\begin{equation}
+U_{g3} = k_3
+         \cdot \sum_j B_j(r,\theta,t,\rho_{\mathrm{vac,[SCm]}})
+         \cdot \cos(\omega_s(t)\cdot t\cdot\pi)
+         \cdot P_{\mathrm{core}}
+         \cdot E_{\mathrm{react}}
+\label{eq:ug3}
+\end{equation}
+
+\medskip
+\noindent Variable definitions:
+\begin{align*}
+B_j(t)      &= \bigl[10^{-4} + 0.4\sin(\omega_c t)\bigr]\;\mathrm{T}
+               &&\text{solar-cycle-modulated field}\\
+\omega_s(t) &= 2.5\times10^{-6} - 0.4\times10^{-6}\sin(\omega_c t)\;\mathrm{rad/s}
+               &&\text{differential rotation}\\
+\cos(\omega_s t\pi) &&& \text{90-degree string rotation oscillation}\\
+P_{\mathrm{core}} &= 1\;\text{(Sun)},\quad 10^{-3}\;\text{(planets)}
+               &&\text{core penetration factor}
+\end{align*}
+
+\noindent $U_{g3}$ penetrates planetary cores; maintains orbits and spins through exclusive
+interaction with trapped UA. The Sun's equatorial CCW rotation against coronal CW rotation
+produces the $U_{g3}$ disk. $U_{g3}$ moves faster than any planet or all planets in consort.
+
+\subsection{$U_{g4}$: Star--Black Hole Interactions (Galactic Coupling)}
+
+\begin{equation}
+U_{g4} = k_4
+         \cdot \rho_{\mathrm{vac,[SCm]}}
+         \cdot \frac{M_{\mathrm{bh}}}{d_g}
+         \cdot e^{-\alpha t}
+         \cdot \cos(\pi t_n)
+         \cdot (1 + f_{\mathrm{feedback}})
+\label{eq:ug4}
+\end{equation}
+
+\medskip
+\noindent Variable definitions:
+\begin{align*}
+M_{\mathrm{bh}} &= 8.15\times10^{36}\;\mathrm{kg}
+                &&\text{Sgr A* mass}\\
+d_g             &= 2.55\times10^{20}\;\mathrm{m}
+                &&\text{Sun-to-galactic-centre distance}\\
+f_{\mathrm{feedback}} &
+                &&\text{nonlinear galactic feedback (quantum levels 20--26)}
+\end{align*}
+
+\subsection{Universal Buoyancy $U_{bi}$ (FUBi, Inside-Outward)}
+
+\begin{equation}
+U_{bi} = -\beta_i
+          \cdot U_{g,i}
+          \cdot \Omega_g \cdot \frac{M_{\mathrm{bh}}}{d_g}
+          \cdot (1+\varepsilon_{\mathrm{sw}}\,\rho_{\mathrm{vac,sw}})
+          \cdot [\mathrm{UA}]
+          \cdot \cos(\pi t_n)
+\label{eq:ubi}
+\end{equation}
+
+\noindent $\beta_i = 0.603$,\quad $\Omega_g = 7.3\times10^{-16}\;\mathrm{rad/s}$,\quad
+$\varepsilon_{\mathrm{sw}} = 0.001$.
+
+\subsection{Universal Magnetism $U_m$}
+
+\begin{equation}
+U_m = \sum_j
+      \frac{\mu_j(t,\rho_{\mathrm{vac,[SCm]}})}{r_j}
+      \cdot \bigl(1 - e^{-\gamma t\cos(\pi t_n)}\bigr)
+      \cdot \hat{\phi}_j
+      \cdot P_{\mathrm{SCm}}
+      \cdot E_{\mathrm{react}}
+      \cdot (1 + 10^{13} f_H)
+      \cdot (1+f_q)
+\label{eq:um}
+\end{equation}
+
+\medskip
+\noindent Variable definitions:
+\begin{align*}
+\mu_j     &= M\cdot R^2\cdot\omega_0
+             &&\text{magnetic moment of $j$-th string}\\
+\gamma    &= 5\times10^{-5}\;\mathrm{day}^{-1}
+             &&\text{near-lossless reciprocation decay}\\
+f_H       &
+             &&\text{phase-transition amplifier ($10^{13}\times$ during SCm transitions)}\\
+f_q       &
+             &&\text{quasi-periodic beating modifier}
+\end{align*}
+
+\subsection{Universal Cosmic Aether $\mathrm{UA}_{\mu\nu}$}
+
+\begin{equation}
+\mathrm{UA}_{\mu\nu} = g_{\mu\nu}
+                     + \eta \cdot T_s^{\mu\nu}(\rho_{\mathrm{vac,[UA]}},\,
+                                               \rho_{\mathrm{vac,[SCm]}},\,
+                                               \rho_{\mathrm{vac},A},\,t_n)
+\label{eq:ua_uv}
+\end{equation}
+
+\noindent $g_{\mu\nu}$ = background Aether metric (Minkowski: $[1,-1,-1,-1]$);\quad
+$\eta = 10^{-22}$ (Aether coupling constant).
+
+\subsection{Operational Modes (Simultaneous)}
+
+\noindent\textbf{Compressed Mode:}
+\begin{equation}
+g_{\mathrm{comp}} =
+  g_{\mathrm{base}}(1+H_0 t)(1-B/B_{\mathrm{crit}})H_{\mathrm{SCm}}
+  + g_{U_g\text{-sum}} + \frac{\Lambda c^2}{3}
+  + g_{\mathrm{quantum}} + g_{\mathrm{fluid}}
+  + g_{\mathrm{pert}}\cdot\mathrm{TRZ}
+\end{equation}
+
+\noindent\textbf{Resonant Mode (13 frequency terms):}
+\begin{equation}
+g_{\mathrm{res}} = a_{\mathrm{DPM}}
+                 + \sum_{i=1}^{13} a_i(\omega, E_{\mathrm{vac}}, t)
+\end{equation}
+
+\noindent Terms: $a_{\mathrm{THz}},\;a_{\mathrm{vac,diff}},\;a_{\mathrm{SuperFreq}},
+\;a_{\mathrm{AetherRes}},\;U_{g4,i},\;a_{\mathrm{QuantumFreq}},\;a_{\mathrm{AetherFreq}},
+\;a_{\mathrm{FluidFreq}},\;a_{\mathrm{Osc}},\;a_{\mathrm{ExpFreq}},\;f_{\mathrm{TRZ}},
+\;W_{\mathrm{metric}}$
+
+\medskip\noindent\textbf{Superconductive Mode:}
+\begin{equation}
+g_{\mathrm{SC}} = \sum_{j=1}^{4} k_j \cdot g_{\mathrm{base}} \cdot H_{\mathrm{SCm}}^{n_j}
+\end{equation}
+
+\noindent\textbf{26-Layer Triadic:}
+\begin{equation}
+g_{\mathrm{triadic}}(r,t) = \sum_{i=1}^{26} \bigl[U_{g1,i} + U_{g2,i} + U_{g3,i} + U_{g4,i}\bigr]_{\,r_i = r/i}
+\end{equation}
+\begin{equation}
+E_n = h f_n = E_0 \cdot 10^n,\quad n=1\ldots26,\quad E_0 = 10^{-20}\;\mathrm{J}
+\end{equation}
+
+\noindent Total 26-layer multiplier:
+$\displaystyle\sum_{i=1}^{26} i^2 = 6{,}279$
+
+%=============================================================================
+\section{The Simultaneous Nature}
+%=============================================================================
+
+\textbf{Core principle:} Nothing in UQFF is sequential. Everything is simultaneous. All
+modes, all layers, all field components exist at the same time because they all arise from
+the same single source: the DPM vacuum gradient.
+
+\begin{description}
+  \item[Layer 1 --- $U_g$ Family Assembles Simultaneously.]
+    $U_{g1}$ simultaneously promotes $U_{g2}$ (outer shell), $U_{g3}$ (magnetic disk),
+    $U_{g4}$ (BH coupling). All four co-equal parallel components at the same $t$, $r$,
+    $\rho_{\mathrm{vac}}$.
+
+  \item[Layer 2 --- 4 Operational Modes Are Simultaneous Expressions of $F_U$.]
+    Compressed, Resonant, Superconductive, and Buoyant are \textit{not} different theories.
+    They are four simultaneous views of the same $F_U$ in different basis domains.
+    They \textbf{must} converge to the same answer at every point: if Compressed gives
+    $g = 9.81\;\mathrm{m/s^2}$ at Earth's surface, all modes must give
+    $9.81\;\mathrm{m/s^2}$.
+
+  \item[Layer 3 --- 26-Layer Triadic Runs All Layers Simultaneously.]
+    All 26 layers computed simultaneously, not iteratively. Layer 26 alone:
+    $U_{g1,26} = k_1 \cdot \mu_s \cdot 676\,M_s/r^2$ ($676\times$ layer-1 strength).
+    Total multiplier: $g_1 \times 6{,}279$. Dead mass: zero layers active.
+    Moving mass: all 26 active simultaneously.
+
+  \item[Layer 4 --- Inside/Outside Simultaneous Solve.]
+    \begin{align}
+    G^{(n+1)}_{\mathrm{inside}}  &= R(G^n) + I\cdot G^n \\
+    O^n_{\mathrm{outside}} &= \pi_{[n]}\cdot F_{U_{Bi}}(x) + \mathrm{Ricci}(G^n) \\
+    \mathrm{Reality} &= \arg\min_n \bigl|G^n_{\mathrm{inside}} - O^n_{\mathrm{outside}}\bigr|
+    \end{align}
+    $GM/r^2$ is the value \textit{at} that crossing point.
+
+  \item[Layer 5 --- The 5 Calculators Run Simultaneously.]
+    \texttt{MAIN\_1\_CoAnQi.cpp} $\mid$ \texttt{QCalc.py} $\mid$ \texttt{CondensedPhysics.py}
+    $\mid$ \texttt{CondensedPhysics2.py} $\mid$ \texttt{uqff\_server.js}.
+    All five must converge on every query. Divergence = framework violation.
+\end{description}
+
+%=============================================================================
+\section{Quantum $\rightarrow$ Mass Equations: Long Form}
+%=============================================================================
+
+\textbf{Starting axiom:}
+\begin{equation}
+\rho_{\mathrm{UA}}(0) = 0,\quad
+\rho_{\mathrm{vac}}(0) = \bigl|\nabla(\mathrm{UA})\bigr|,\quad
+F_U(0) = 0,\quad
+M(0) = 0
+\end{equation}
+
+\begin{description}
+  \item[Stage 1 --- Vacuum Energy Quantization:]
+    \begin{equation}
+    E_n = h f_n = E_0 \cdot 10^n,\quad n=1\ldots26,\quad E_0=10^{-20}\;\mathrm{J}
+    \end{equation}
+    \begin{equation}
+    \rho_{\mathrm{vac},X} = \frac{f_{i,X}\cdot E_{i,X}}{V_{\mathrm{object}}}
+    \quad[\mathrm{J/m^3}]
+    \end{equation}
+
+  \item[Stage 2 --- SCm and UA Maximum Attraction Creates $E_{\mathrm{react}}$:]
+    \begin{equation}
+    E_{\mathrm{react}}(0) =
+    \frac{\rho_{\mathrm{vac,SCm}}\cdot v_{\mathrm{SCm}}^2}{\rho_{\mathrm{vac,UA}}}
+    = 10^{15}\;\mathrm{W/m^3}
+    \end{equation}
+
+  \item[Stage 3 --- DPM Formation:]
+    \begin{equation}
+    \mu_s = \rho_A \cdot V_{\mathrm{body}}
+    \qquad\text{($\mu_s$ IS the DPM as magnetic moment;\; $U_{g1}$ IS the DPM in field form)}
+    \end{equation}
+
+  \item[Stage 4 --- ACP Proto-Mass Chain:]
+    \begin{equation}
+    U_{\mathrm{vac}} \to U_i \to U_{m,i} \to \Psi_{\mathrm{proto}}
+    \to E_{\mathrm{crack}} \to U_b \to E_{\mathrm{gradient}} \to M_{\mathrm{atomic}}
+    \end{equation}
+
+  \item[Stage 5 --- Mass Emergence:]
+    \begin{equation}
+    E_{\mathrm{crack}}
+    = \frac{\rho_{\mathrm{vac,SCm}}\cdot c^2}{[\mathrm{SSq}]}
+    = \frac{7.09\times10^{-37}\cdot(3\times10^8)^2}{0.57}
+    \approx 3.35\times10^{-19}\;\mathrm{J}
+    \end{equation}
+    Gate: $E_{\mathrm{crack}} > U_{b,\mathrm{vac}} \Rightarrow$ condenses;\quad
+    $E_{\mathrm{crack}} < U_{b,\mathrm{vac}} \Rightarrow$ disperses.
+    \begin{equation}
+    M_{\mathrm{atomic}} = M_0\bigl(1 - e^{-n_{\mathrm{grad}}/10}\bigr)Z
+    \end{equation}
+
+  \item[Stage 6 --- Mass Emergence Probability (26D):]
+    \begin{equation}
+    P_{\mathrm{order}} = \frac{e^{-S_{26D}/v_{\mathrm{init}}}}{Z_{9D}(v_{\mathrm{init}}-v_{\mathrm{current}})}
+    \end{equation}
+
+  \item[Stage 7 --- From Mass to Gravity (The Crossing):]
+    Once mass exists, $U_{g1}$ has $\nabla(M_s/r)$ to act on. Family assembles.
+    Inside/outside simultaneous solve runs. At $n_{\mathrm{cross}}$,
+    $GM/r^2$ becomes valid as projection.
+\end{description}
+
+%=============================================================================
+\section{Mass Is Dead Until Motion}
+%=============================================================================
+
+\subsection{The Dead Mass Condition}
+
+When $M_{\mathrm{atomic}}$ first emerges from the ACP chain it is inert:
+\begin{equation}
+v=0,\quad\omega=0,\quad\nabla P=0
+\quad\Rightarrow\quad
+E_{\mathrm{react}}=0,\quad U_{g3}=0,\quad U_{g2}=0,\quad F_U(M_{\mathrm{dead}})=0
+\end{equation}
+
+\noindent\textbf{Dead mass produces zero unified field.} It is a potential, not an actuality.
+
+\subsection{Three Triggers That Set Mass Into Motion}
+
+\begin{enumerate}
+  \item $U_{g3}$ magnetic string coupling: passing string imparts first spin $\omega_0 > 0$
+  \item Buoyancy pressure differential: asymmetric UA gradient creates net force
+        vector $\to v > 0$
+  \item Resonance lock-in: quantum cycle $t_n$ advances to phase where energy
+        injects into mass
+\end{enumerate}
+
+\subsection{Six Multiplications When Motion Activates}
+
+\begin{description}
+  \item[Multiplication 1 --- $E_{\mathrm{react}}$ switches on:]
+    \begin{equation}
+    v > 0
+    \;\Rightarrow\;
+    E_{\mathrm{react}} = \frac{\rho_{\mathrm{vac,SCm}}\cdot v^2}{\rho_{\mathrm{vac,UA}}}
+                         e^{-\kappa t} > 0
+    \end{equation}
+    Instant full-field activation: $0 \to 10^{15} \times U_{g,\mathrm{family}}$.
+
+  \item[Multiplication 2 --- $U_{g2}$ shell expands:]
+    Factor $(1 + \delta_{\mathrm{sw}}\,v_{\mathrm{sw}})$.
+    A star at $400\;\mathrm{km/s}$ generates $U_{g2}$ approximately $400\times$ stronger
+    than an identical stationary star.
+
+  \item[Multiplication 3 --- $U_{g3}$ magnetic disk activates:]
+    $\cos(\omega_s t\pi)$ begins oscillating $\to$ orbital coupling signal propagates.
+    Planetary orbital periods are resonance locks of $U_{g3}$, not random.
+
+  \item[Multiplication 4 --- Buoyancy becomes directional (origin of inertia):]
+    \begin{equation}
+    F_{\mathrm{inertia}} = \nabla(F_{U_{Bi}}(v))
+    = -\beta_i \cdot \nabla\bigl(U_{g,i}\cdot E_{\mathrm{react}}(v)\bigr) \cdot \rho_A
+    \end{equation}
+    Inertia IS buoyancy asymmetry fighting $U_{g3}$ spin injection.
+
+  \item[Multiplication 5 --- 26-layer cascade activates:]
+    Layer 26 alone: $676\times$ layer-1 strength.
+    Total multiplier: $6{,}279\times$.
+    Dead mass: zero layers active. Moving mass: all 26 active simultaneously.
+
+  \item[Multiplication 6 --- Quantum cycle $t_n$ begins cycling (breathing origin):]
+    \begin{itemize}[noitemsep]
+      \item $U_{g3}$ breathing $=$ EM radiation
+      \item $U_{g1} + U_{g4}$ breathing $=$ gravitational waves
+      \item Long-period $U_{g4}$ breathing at $n=26$ $=$ dark energy
+    \end{itemize}
+\end{description}
+
+\subsection{The Canonical Statements}
+
+\begin{equation}
+M_{\mathrm{dead}} \times 0 = 0
+\qquad\text{(mass without motion is a phantom)}
+\end{equation}
+\begin{equation}
+M_{\mathrm{alive}}(v,\omega,t_n)
+= M \cdot E_{\mathrm{react}}(v) \cdot \sum_{i=1}^{26} U_{g,i} \cdot \cos(\pi t_n)
+\end{equation}
+
+\begin{center}
+\textit{Mass does not HAVE gravity. Motion through the DPM vacuum field GENERATES gravity.}\\[0.3em]
+\textit{Mass is the vessel. The DPM is the engine. UA/SCm attraction is the source.}
+\end{center}
+
+%=============================================================================
+\section{Pre-Mass Roles of Buoyancy, Resonance, and Superconductive}
+%=============================================================================
+
+\subsection{Buoyancy: The Gate That Structures the Universe}
+
+Before mass exists, buoyancy is the selection filter for DPM vortex nucleation:
+\begin{equation}
+U_{b,\mathrm{vac}}(t)
+= \beta_i \cdot \rho_{\mathrm{vac,UA}} \cdot \Omega_{\mathrm{vac}}
+  \cdot \frac{\nabla(\mathrm{UA})}{r_{\mathrm{node}}} \cdot \cos(\pi t_n)
+\end{equation}
+
+\noindent Buoyancy oscillates at quantum frequency --- the gate opens and closes rhythmically.
+This is what makes the universe \textbf{structured} rather than uniform mass soup.
+
+\subsection{Resonance: The Frequency Selector}
+
+DPM vortices at frequencies matching a vacuum resonance survive. Non-resonant vortices
+are destructively interfered back to vacuum. Resonance survival condition:
+\begin{equation}
+\omega_{\mathrm{DPM}} = n \cdot \omega_{\mathrm{vac},n}
+\qquad\text{(integer multiples only)}
+\end{equation}
+
+\noindent This is why atoms have \textbf{discrete mass values} --- resonance selection, not
+postulated. Time-Reversal Zone (TRZ):
+\begin{equation}
+f_{\mathrm{TRZ}}(t) = \cos\!\bigl(\pi(t - 180\times86400)\bigr)
+\end{equation}
+
+\noindent The pre-mass DPM vortex samples negative time --- checking future vacuum state
+consistency. UQFF mechanism behind quantum entanglement and wavefunction collapse.
+
+\subsection{Superconductive: Makes Mass Formation Thermodynamically Possible}
+
+SCm carries the DPM vortex current WITHOUT dissipation. The proto-mass nucleation process
+is lossless --- $E_{\mathrm{crack}}$ energy is preserved until mass condenses.
+
+\begin{equation}
+g_{\mathrm{SC,pre}} = \sum_{j=1}^{4} k_j \cdot \rho_{\mathrm{vac,SCm}}
+                      \cdot H_{\mathrm{SCm}}^{n_j} \cdot \Omega_{\mathrm{vac}}^j,
+\qquad H_{\mathrm{SCm}} = 0.99
+\end{equation}
+
+\begin{description}[noitemsep]
+  \item[Mode 1:] Lossless carrier (maintains DPM vortex current)
+  \item[Mode 2:] Phase coherence (keeps $U_{g1}$ and $U_{g2}$ in phase)
+  \item[Mode 3:] Vortex stability (prevents DPM collapse before $E_{\mathrm{crack}}$)
+  \item[Mode 4:] Entanglement carrier (links pre-mass vortex states across all 26 layers)
+\end{description}
+
+\subsection{Complete Pre-Mass Sequence}
+
+\begin{align*}
+&\rho_{\mathrm{UA}}=0\quad[\text{vacuum}]\\
+&\longrightarrow \text{SCm enters UA}
+ \longrightarrow \text{maximum attraction}
+ \longrightarrow \text{DPM vortex}\\
+&\longrightarrow \text{resonance selects }\omega_{\mathrm{DPM}}\\
+&\longrightarrow \text{SC locks vortex (lossless carrier)}\\
+&\longrightarrow \Psi_{\mathrm{proto}}\text{ forms (lossless nucleation)}\\
+&\longrightarrow E_{\mathrm{crack}}\text{ fires}\\
+&\longrightarrow \text{buoyancy gate:}
+  \begin{cases}
+    E_{\mathrm{crack}} > U_{b,\mathrm{vac}}
+    \;\Rightarrow\; M_{\mathrm{atomic}} > 0\quad[\text{MASS EXISTS}]\\
+    E_{\mathrm{crack}} < U_{b,\mathrm{vac}}
+    \;\Rightarrow\; \Psi_{\mathrm{proto}}\text{ disperses, retry next }t_n
+  \end{cases}
+\end{align*}
+
+%=============================================================================
+\section{The Sun: Canonical Solved Example}
+%=============================================================================
+
+\subsection{Solar Input Parameters}
+
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+Parameter & Symbol & Value \\
+\midrule
+Solar mass                     & $M_s$           & $1.989\times10^{30}$ kg \\
+Solar radius                   & $R_s$           & $6.96\times10^{8}$ m \\
+Surface temperature            & $T_s$           & $5{,}778$ K \\
+Corona temperature             & ---             & $1$--$2\times10^6$ K \\
+Surface field (cycle-modulated)& $B_s(t)$        & $[10^{-4}+0.4\sin(\omega_c t)]$ T \\
+Solar cycle frequency          & $\omega_c$      & $2\pi/(3.96\times10^8\;\text{s})$ \\
+Equatorial angular velocity    & $\omega_{s,\mathrm{eq}}$ & $2.9\times10^{-6}$ rad/s (CCW) \\
+Polar angular velocity         & $\omega_{s,\mathrm{pol}}$& $2.1\times10^{-6}$ rad/s (CW coronal) \\
+Average angular velocity       & $\omega_s$      & $2.5\times10^{-6}$ rad/s \\
+Solar wind velocity            & $v_{\mathrm{sw}}$ & $5\times10^5$ m/s \\
+Solar wind density at 1 AU     & $\rho_{\mathrm{sw}}$ & $8\times10^{-21}$ kg/m$^3$ \\
+Distance to Sgr A*             & $d_g$           & $2.55\times10^{20}$ m \\
+Galactic spin rate             & $\Omega_g$      & $7.3\times10^{-16}$ rad/s \\
+Sgr A* mass                    & $M_{\mathrm{bh}}$ & $8.15\times10^{36}$ kg \\
+Heliosphere radius             & $R_b$           & $1.496\times10^{13}$ m (100 AU) \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection{Solved Equations for the Sun}
+
+\noindent\textbf{$U_{g1}$ for the Sun:}
+\begin{equation}
+\mu_s(t) = B_s(t)\cdot R_s^3
+= \bigl(10^{-4}+0.4\sin(\omega_c t)\bigr)\times 3.38\times10^{20}\;\mathrm{T{\cdot}m^3}
+\end{equation}
+\begin{equation}
+U_{g1} \approx \bigl(3.38\times10^{16} + 1.35\times10^{19}\sin(\omega_c t)\bigr)
+               \cdot e^{-0.001t} \cdot \cos(\pi t)
+\end{equation}
+
+\noindent\textbf{$U_{g2}$ for the Sun:}
+\begin{equation}
+U_{g2} \approx 8.91\times10^6
+        \cdot (1+\delta_{\mathrm{sw}}v_{\mathrm{sw}}) \cdot H_{\mathrm{SCm}} \cdot E_{\mathrm{react}}
+\approx 6.32\times10^{-1}\cdot e^{-5\times10^{-4}t}
+\end{equation}
+
+\noindent\textbf{$U_{g3}$ for the Sun:}
+\begin{equation}
+U_{g3} \approx \bigl(10^{-3}+0.4\sin(\omega_c t)\bigr)
+               \cdot\cos\!\bigl(\omega_s(t)\cdot t\cdot\pi\bigr)
+               \cdot E_{\mathrm{react}}
+\end{equation}
+
+\noindent\textbf{$U_m$ for the Sun} ($j\approx10^9$ strings, $\gamma = 5\times10^{-5}\;\mathrm{day}^{-1}$):
+\begin{equation}
+U_m \approx \bigl(2.26\times10^7 + 9.04\times10^9\sin(\omega_c t)\bigr)
+     \cdot\bigl(1-e^{-5\times10^{-5}t\cos(\pi t)}\bigr)
+     \cdot10^9 \cdot E_{\mathrm{react}}
+\end{equation}
+
+\noindent\textbf{Buoyancy $U_{b1}$ for the Sun} ($\beta_i = 0.603$):
+\begin{equation}
+U_{b1} \approx -\bigl(1.94\times10^{27}+7.74\times10^{24}\sin(\omega_c t)\bigr)
+               \cdot e^{-0.001t} \cdot \cos(\pi t)
+\end{equation}
+
+\subsection{Counter-Rotation: The $U_{g3}$ Generator Mechanism}
+
+The equatorial layer rotates counterclockwise (CCW); the polar corona rotates clockwise
+(CW). The shear layer between these counter-rotating flows \textbf{IS} the $U_{g3}$
+generator. Without counter-rotation there is no $U_{g3}$ disk. Without the $U_{g3}$
+disk there is no orbital maintenance of planets.
+
+\begin{align}
+\omega_{s,\mathrm{equatorial}} &= 2.9\times10^{-6}\;\mathrm{rad/s}
+  \quad\text{(CCW, period }\approx25\text{ days)} \\
+\omega_{s,\mathrm{polar}} &= 2.1\times10^{-6}\;\mathrm{rad/s}
+  \quad\text{(CW coronal, period }\approx35\text{ days)}\\
+\omega_s(t) &= 2.5\times10^{-6} - 0.4\times10^{-6}\sin(\omega_c t)\;\mathrm{rad/s}
+  \quad\text{(solar-cycle modulated)}
+\end{align}
+
+\subsection{Assembled $F_U$ for the Sun (dominant terms)}
+
+\begin{align}
+F_{U,\odot} &=
+  \underbrace{\bigl(3.38\times10^{16}+1.35\times10^{19}\sin(\omega_c t)\bigr)
+              e^{-\alpha t}\cos(\pi t)}_{U_{g1}-U_{b1}} \notag\\
+&\quad +
+  \underbrace{8.91\times10^6 \cdot E_{\mathrm{react}}}_{U_{g2}-U_{b2}} \notag\\
+&\quad +
+  \underbrace{\bigl(10^{-3}+0.4\sin(\omega_c t)\bigr)
+              \cos(\omega_s(t)t\pi)\cdot E_{\mathrm{react}}}_{U_{g3}-U_{b3}} \notag\\
+&\quad +
+  \underbrace{\bigl(2.26\times10^7+9.04\times10^9\sin(\omega_c t)\bigr)
+              \bigl(1-e^{-5\times10^{-5}t\cos(\pi t)}\bigr)
+              10^9 E_{\mathrm{react}}}_{U_m} \notag\\
+&\quad +
+  \underbrace{[1,-1,-1,-1] + 1.27\times10^{-19}\cos(\pi t)}_{A_{\mu\nu}}
+\end{align}
+
+%=============================================================================
+\section{Calibrated Constants and Complete Variable Descriptions}
+%=============================================================================
+
+\subsection{Canonical Calibrated Constants}
+
+\begin{center}
+\begin{tabular}{llll}
+\toprule
+Symbol & Value & Units & Description \\
+\midrule
+$\kappa$                & $5\times10^{-4}$    & day$^{-1}$     & $E_{\mathrm{react}}$ decay rate \\
+$[\mathrm{SSq}]$        & $0.57$              & ---            & Self-similar quotient \\
+$\beta_i$               & $0.603$             & ---            & Buoyancy coupling constant \\
+$H_{\mathrm{SCm}}$      & $0.99$              & ---            & SCm condensate fraction \\
+$\rho_{\mathrm{vac,SCm}}$& $7.09\times10^{-37}$ & J/m$^3$     & SCm vacuum energy density \\
+$\rho_{\mathrm{vac,UA}}$ & $7.09\times10^{-36}$ & J/m$^3$     & UA vacuum energy density \\
+$v_{\mathrm{SCm}}$      & $c/3 = 10^8$        & m/s            & SCm velocity toward UA \\
+$E_{\mathrm{react},0}$  & $10^{46}$           & W/m$^3$        & Astrophysical base reactor efficiency \\
+$\alpha$                & $0.001$             & day$^{-1}$     & $U_{g1}$ temporal decay rate \\
+$\eta$                  & $10^{-22}$          & ---            & Aether coupling constant \\
+$E_0$                   & $10^{-20}$          & J              & Base quantum energy (26-level scale) \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection{Complete Variable Descriptions}
+
+\begin{description}
+  \item[$F_U$]
+    Unified field strength (N/m$^2$ or T, normalized)
+  \item[$i$]
+    Index for discrete Universal Gravity ranges ($U_{g1}$, $U_{g2}$, $U_{g3}$, $U_{g4}$).
+    The subscript $i$ also names the Universal Gravitational Inertia --- the coupling factor
+    inherited from and mimicking the primordial BigBang belly button DPM at every local scale.
+  \item[$j$]
+    Index for discrete magnetic strings in $U_m$ and $U_{g3}$
+  \item[$k_i$]
+    Coupling constants for $U_g$ ranges ($k_1=1.5$, $k_2=1.2$, $k_3=1.8$, unitless)
+  \item[$U_{g,i}$]
+    Universal Gravity components.
+    $U_{g1}$ = DPM/seed; $U_{g2}$ = outer bubble; $U_{g3}$ = magnetic disk;
+    $U_{g4}$ = BH coupling.
+  \item[$\beta_i$]
+    Buoyancy coupling constant ($\beta_i = 0.603$)
+  \item[$\Omega_g$]
+    Galactic spin rate ($7.3\times10^{-16}$ rad/s)
+  \item[$M_{\mathrm{bh}}$]
+    Mass of galactic black hole ($8.15\times10^{36}$ kg for Sgr A*)
+  \item[$d_g$]
+    Distance from galactic centre ($2.55\times10^{20}$ m for Sun)
+  \item[$E_{\mathrm{react}}$]
+    Reactor efficiency: UA/SCm attraction energy
+    (${\sim}10^{46}e^{-5\times10^{-4}t}$ W/m$^3$)
+  \item[$t_n$]
+    Negative time factor, $t_n = t - t_0$ (allows $t_n < 0$ for temporal reversal)
+  \item[$\mathrm{TRZ}$]
+    Time-Reversal Zone: $\cos(\pi(t-180\times86400))$
+  \item[$E_{\mathrm{crack}}$]
+    Symmetry breaking threshold:
+    $(\rho_{\mathrm{vac,SCm}}\cdot c^2)/[\mathrm{SSq}] \approx 3.35\times10^{-19}$ J
+  \item[$\mathrm{DPM}$]
+    Di-Pseudo-Monopole $= [\mathrm{UA}'/\mathrm{SCm}] = U_{g1}$ = rotational vortex of
+    UA/SCm maximum attraction
+  \item[$\mathrm{ACP}$]
+    Aether Condensate Pathway $=$ DPM (same entity, two names)
+  \item[$F_{U_{Bi}}$]
+    Universal Buoyancy inside-outward (driven by local DPM, repels $F_{U_{Bi,i}}$)
+  \item[$F_{U_{Bi,i}}$]
+    Universal Buoyancy outside-inward (driven by primordial BigBang DPM, repels $F_{U_{Bi}}$)
+  \item[{$[\mathrm{SSq}]$}]
+    Self-similar quotient $= 0.57$ (dimensionless calibration constant)
+  \item[$H_{\mathrm{SCm}}$]
+    SCm Bose-Einstein condensate fraction $= 0.99$; the remaining $1\%$ is thermal depletion
+  \item[$\lambda_{\mathrm{dB}}$]
+    de Broglie wavelength of DPM vortex
+  \item[$Z_{9D}$]
+    9-dimensional partition function (compactified dimensions)
+  \item[$S_{26D}$]
+    Entropy across all 26 quantum dimensions
+  \item[$n_{\mathrm{grad}}$]
+    Gradient threshold count (ACP cycles completed for mass to emerge)
+\end{description}
+
+%=============================================================================
+\section{Millennium Prize Connections}
+%=============================================================================
+
+\subsection{Navier-Stokes: Quasar Jet Fluid Dynamics}
+
+Quasar jet dynamics in a near-inviscid Aether medium
+($\rho_A = 10^{-23}\;\mathrm{kg/m^3}$, $\mu \approx 0$):
+
+\begin{equation}
+\rho\left(\frac{\partial v}{\partial t} + v\cdot\nabla v\right)
+= -\nabla p + \mu\,\nabla^2 v + F_{\mathrm{SCm}}
+\end{equation}
+\begin{equation}
+F_{\mathrm{SCm}} = \frac{\rho_{\mathrm{SCm}}\cdot v_{\mathrm{SCm}}^2}{r}\cdot e^{-\kappa t},
+\qquad \rho = \rho_A = 10^{-23}\;\mathrm{kg/m^3}
+\end{equation}
+
+\noindent The $\cos(\pi t_n)$ TRZ asymmetry drives unequal opposing jets. The jet luminosity
+ratio follows the square of the TRZ asymmetry factor at each observed time step. $\cos(\pi t_n)$
+prevents finite-time blowup by enforcing periodic reversal of jet flow direction.
+
+\noindent Planetary core Hamiltonian (SCm/UA quantum model):
+\begin{align}
+H      &= H_{U_{g3}} + H_{\mathrm{SCm}} + H_{\mathrm{UA}} \\
+H_{U_{g3}}    &= k_3 \sum_j \frac{B_j^2}{2\mu_0}\cos(\omega_s t\pi) \\
+H_{\mathrm{SCm}} &= \frac{\rho_{\mathrm{SCm}}\,v_{\mathrm{SCm}}^2}{2}\,e^{-\gamma t} \\
+H_{\mathrm{UA}}  &= \frac{\eta\,\rho_A\,v_{\mathrm{UA}}^2}{2}\cos(\pi t_n)
+\end{align}
+
+\subsection{Yang-Mills Mass Gap}
+
+\begin{equation}
+\Delta = \frac{P}{3Z} > 0
+\end{equation}
+\begin{equation}
+E_{\mathrm{gap}} = E_{\mathrm{crack}}
+= \frac{\rho_{\mathrm{vac,SCm}}\cdot c^2}{[\mathrm{SSq}]}
+\approx 3.35\times10^{-19}\;\mathrm{J}
+\end{equation}
+
+\noindent Below this threshold no mass eigenstate exists. The DPM vortex has a minimum
+energy --- the gap --- below which no mass can form. $U_{g3}$ magnetic strings form a
+discrete energy spectrum ($j\cdot\omega_s$) with SCm's lack of $Q_s$ providing the
+natural mass gap.
+
+\subsection{Riemann Hypothesis}
+
+The 26-layer triadic has a natural Riemann structure:
+\begin{equation}
+Z = \mathrm{Li}_{26}([\mathrm{SSq}]) \approx 0.507
+\end{equation}
+
+\subsection{P $\neq$ NP}
+
+The inside/outside simultaneous crossing requires solving two exponential-time graph
+problems. $\arg\min_n|G^n_{\mathrm{inside}} - O^n_{\mathrm{outside}}|$ cannot be
+compressed to polynomial time.
+
+%=============================================================================
+\section{Star Magic in Action: The Sun and Beyond}
+%=============================================================================
+
+\subsection{The Heliosphere: $U_{g2}$ as Active Synthesis Reactor}
+
+The heliosphere is not a passive boundary. $U_{g2}$ actively synthesizes solar wind,
+transmuting incoming charged particle streams into hydrogen complexes that magnetically
+adhere to the outer shell of the $U_{g2}$ field bubble at $\approx 100$ AU.
+
+\begin{enumerate}
+  \item Heliosphere thickness is a direct measure of the Sun's age. Older stars have
+        thicker heliospheres.
+  \item Volume of liquid water on each planet correlates with distance from the Sun
+        and duration of solar wind exposure. Earth's oceans are a product of this mechanism.
+  \item Solar wind absorbed by planetary magnetospheres contributes to planetary liquid volumes.
+  \item Excess solar wind penetrates planetary cores, maintaining each planet's $U_m$ and
+        core thermal energy.
+  \item Planets beyond the active $U_{g2}$ synthesis zone (frozen planets) are powered
+        directly by raw solar wind.
+\end{enumerate}
+
+\subsection{Quasar Failure Sequence}
+
+\begin{enumerate}
+  \item $U_{g1}$ dipole coherence degrades; $\delta_{\mathrm{def}}$ increases.
+  \item Surface irregularities become aperiodic; sunspot-equivalent pattern breaks down.
+  \item $U_{g2}$ outer bubble loses synthesis coherence.
+  \item $U_{g3}$ disk frequency destabilises; planets lose orbital resonance locks.
+  \item SCm is no longer contained by the $U_g$ family.
+  \item SCm is expelled in irregular, continual streams at $v_{\mathrm{SCm}} = 10^8$ m/s.
+  \item Expelled SCm ignites immediately against unbound UA. Quasar jets appear.
+  \item Unequal opposing jets $=$ $\cos(\pi t_n)$ TRZ temporal asymmetry.
+\end{enumerate}
+
+\subsection{Planetary SCm Inventory (Estimated)}
+
+\begin{center}
+\begin{tabular}{lp{9.5cm}}
+\toprule
+Planet & UQFF Mechanism \\
+\midrule
+Mercury & Dense SCm, small volume, strong $U_{g3}$ coupling; surface irregularities reflect internal $U_{g1}$ defects \\
+Venus   & Retrograde spin from TRZ condition at formation; dense atmosphere $=$ SCm-driven $U_{g2}$ analog at planetary scale \\
+Earth   & Optimal SCm for liquid water at 1 AU; $U_{g2}$ transmutation produces oceans; $U_{g3}$ maintains 26,000-year axial precession \\
+Mars    & Insufficient SCm; lost surface liquid as $U_{g2}$ synthesis decreased over geological time \\
+Jupiter & Largest SCm donation; dominant $U_{g3}$ coupling; orbital stabiliser for inner system; Great Red Spot $=$ persistent $U_{g3}$ disk anomaly \\
+Saturn  & Ring system $=$ $U_{g3}$ disk made visible by resonance-trapped ice particles \\
+Uranus  & Extreme axial tilt $=$ TRZ condition at formation; rolling orbit is the observable consequence \\
+Neptune & Minimal SCm; primarily solar-wind powered; Triton retrograde orbit $=$ late SCm capture event \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+%=============================================================================
+\section{Implications for Humanity and the Cosmos}
+%=============================================================================
+
+\subsection{The Hidden Element in Every Atom}
+
+SCm is bound within every atom in your body, every stone you have ever touched, every
+star you have ever observed. The Standard Model structurally cannot detect SCm because
+it searches for particles via quantum signatures: mass eigenvalues, charge, spin.
+SCm produces none of these because its density ($\rho_{\mathrm{SCm}} \approx 10^{15}\;\mathrm{kg/m^3}$)
+completely prevents quantum signature emission.
+
+\noindent The UQFF identifies SCm by what it \textit{does}:
+
+\begin{enumerate}
+  \item Drives $U_{g3}$ exclusively
+  \item Penetrates planetary cores exclusively
+  \item Moves at $c/3$ when expelled
+\end{enumerate}
+
+\noindent Each is measurably distinct from Standard Model predictions and constitutes an
+independent testable signature.
+
+\subsection{The Near-Lossless Reactor}
+
+The $U_m$ term describes SCm magnetic strings reciprocating between stars and planetary
+systems with near-zero energy loss:
+\begin{equation}
+\gamma = 5\times10^{-5}\;\mathrm{day}^{-1}
+\qquad\text{(near-lossless reciprocation decay)}
+\end{equation}
+
+\noindent A star is not burning fuel. It is a DPM reactor broadcasting its $U_g$ family
+simultaneously across billions of kilometres, every day, for billions of years, without
+fuel, without failure, and without any mechanism that Standard Model gravity alone can
+explain.
+
+\subsection{The Canonical Conclusion}
+
+\begin{center}
+\textbf{The Canonical Chain:}
+\[
+0\;[\mathrm{vacuum}]
+\to \nabla(\mathrm{UA})
+\to \mathrm{DPM}
+\to \mu_s
+\to U_{g1}
+\to U_{g,\mathrm{family}}
+\to F_U
+\to M
+\to GM/r^2\;[\mathrm{last}]
+\]
+
+\bigskip\textbf{The Canonical Force Relationships:}
+\[
+\mathrm{UA} + \mathrm{SCm}
+\;\longrightarrow\; \text{max attraction}
+\;\longrightarrow\; \mathrm{DPM}\,(U_{g1})
+\;\longrightarrow\; \text{gravity family}
+\]
+\[
+F_{U_{Bi}} \;\textbf{REPELS}\; F_{U_{Bi,i}}
+\;\longrightarrow\; \text{compaction zone}
+\;\longrightarrow\; \textbf{MATTER}
+\]
+
+\bigskip\textit{Mass is the vessel. The DPM is the engine. UA/SCm attraction is the source.}
+
+\bigskip\LARGE\textbf{That is Star Magic.}
+
+\bigskip\normalsize
+\[
+\mathrm{UA} + \mathrm{SCm}
+\;\to\; \text{MAX ATTRACTION}
+\;\to\; \mathrm{DPM}
+\;\to\; F_{U_{Bi}}\;\text{REPELS}\;F_{U_{Bi,i}}
+\;\to\; \text{MATTER}
+\]
+\end{center}
+
+%=============================================================================
+\appendix
+\section{The Quest for Unity: Historical Context}
+%=============================================================================
+
+Every major physics framework before UQFF began with the wrong foundation: mass and
+inverse-square gravity as primary. That assumption --- inherited from Newton and embedded
+in both General Relativity and the Standard Model --- is what UQFF corrects.
+
+\subsection{The Historical Search}
+
+\begin{description}
+  \item[Newton (1687):]
+    Defined gravity as $F = GM/r^2$. Useful observational approximation. Not the mechanism.
+    Not the foundation.
+
+  \item[Einstein (1915):]
+    General Relativity replaced Newtonian force with spacetime curvature. Improved
+    precision enormously. Still began with mass as primary. Einstein spent the last
+    30 years of his life searching for the unified field theory that would show gravity
+    emerging from something deeper. He was right to search.
+
+  \item[Quantum Mechanics (1920s--present):]
+    Produced the Standard Model (1970s): 17 particles, four forces,
+    $\mathrm{U}(1)\times\mathrm{SU}(2)\times\mathrm{SU}(3)$ gauge structure.
+    Structurally cannot include gravity. The hierarchy problem, dark matter, dark energy,
+    and quark confinement are symptoms of the missing mechanism --- the DPM.
+
+  \item[Superconductivity (BCS, 1957):]
+    Cooper pairs condense into a coherent quantum state below the critical temperature.
+    Einstein-Boson condensate (BEC) generalization: any bosonic system at sufficient
+    density forms a single coherent wavefunction. \textbf{SCm is this condensate at
+    stellar scale.} The DPM vortex is the BEC ground state of the SCm/UA attraction pair.
+    $H_{\mathrm{SCm}} = 0.99$ is the condensate fraction; the remaining 1\% is the
+    thermal depletion layer.
+\end{description}
+
+\subsection{What Einstein Was Looking For}
+
+Einstein sought a field that unified gravity and electromagnetism without postulating
+separate force laws. The DPM is that field:
+
+\begin{itemize}
+  \item $U_g$ family $=$ gravity (DPM vortex gradient)
+  \item $U_m$ $=$ magnetism (DPM string network)
+  \item Both arise from the same source: the SCm/UA maximum attraction at the DPM interface.
+\end{itemize}
+
+\noindent The unification Einstein sought is not a new postulate. It is the upstream
+mechanism behind what he already described.
+
+\subsection{SCm Superconductivity vs.\ BCS}
+
+Standard BCS: Cooper pairs at low temperature; phonon-mediated attraction overcomes
+Coulomb repulsion; coherence length $\xi_{\mathrm{BCS}} \sim 10^{-6}$ m.
+
+SCm: intrinsically superconductive at all temperatures because
+$\rho_{\mathrm{SCm}} \sim 10^{15}\;\mathrm{kg/m^3}$ suppresses all thermal decoherence.
+No cooling required. Coherence length $=$ DPM vortex radius (nuclear to stellar scale).
+$H_{\mathrm{SCm}} = 0.99$ persists at stellar core temperatures of $10^6$ K.
+
+\bigskip\noindent\rule{\linewidth}{0.4pt}
+\begin{center}
+\small\copyright\,2025 Daniel T.\ Murphy,\; \texttt{daniel.murphy00@gmail.com}
+\;---\; All Rights Reserved\\
+All IP materials are watermarked. Unauthorized reproduction prohibited.
+\end{center}
+
+\end{document}
