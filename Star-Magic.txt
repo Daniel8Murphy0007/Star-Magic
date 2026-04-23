@@ -1,6 +1,7 @@
 ﻿________________________________________
 STAR MAGIC - UNIFIED QUANTUM FIELD FRAMEWORK (UQFF)
-Daniel T. Murphy | (c)2025 daniel.murphy00@gmail.com | All Rights Reserved
+Version 5.26 | April 2026
+Daniel T. Murphy | (c)2025-2026 daniel.murphy00@gmail.com | All Rights Reserved
 All IP materials are watermarked. Unauthorized reproduction prohibited.
 ________________________________________
 
@@ -81,6 +82,20 @@ ________________________________________
 	Complete theoretical derivation, canonical equations, solved solar
 	example, and connections to the Millennium Prize Problems.
 
+	Extended case study (Chapter 13) demonstrating all four Ug components
+	operating simultaneously through the Sun: heliosphere synthesis, Ug3
+	counter-rotation mechanism, planetary SCm inventory, and quasar failure
+	sequence with quantitative precursor predictions.
+
+	Implications for human technology and the cosmos (Chapter 14): SCm
+	detection methods, near-lossless reactor energy, space travel via Ug3
+	coupling, the Yang-Mills mass gap as a physical measurement, and quasar
+	stellar failure precursor indicators.
+
+	Historical context (Appendix A): what Newton, Einstein, quantum mechanics,
+	and BCS superconductivity each contributed and where each framework stopped
+	short - and how the DPM is the mechanism Einstein was searching for.
+
 ________________________________________
 CANONICAL ONTOLOGY LOCK (v1)
 ________________________________________
@@ -91,9 +106,9 @@ ________________________________________
 		F_U(vacuum) = 0
 	Mass emergence precedes motion. Newtonian gravity is a downstream projection only.
 	Promotion order is fixed:
-		Ug1 -> Ug2 + Ug3 + Ug4 (+ Ug4_i)
+		Ug1 -> Ug2 + Ug3 + Ug4 + Ug4_i
 	Gravity family is assembled simultaneously:
-		Ug_family = Ug1 + Ug2 + Ug3 + Ug4 (+ Ug4_i)
+		Ug_family = Ug1 + Ug2 + Ug3 + Ug4 + Ug4_i
 	Unified field assembly follows:
 		F_U = field(Ug_family, Ub, Um, A, Ui, E_react, t_n)
 	Operational modes occur simultaneously as downstream forms:
@@ -358,7 +373,7 @@ STEP 5: Ug1 Seeds the Gravity Family (DPM IS Ug1)
 
 STEP 6: Gravity Family Assembles Simultaneously
 	Ug_family = Ug1 + Ug2 + Ug3 + Ug4 + Ug4_i
-	All four co-equal parallel components, evaluated at the same t, r, rho_vac.
+	All five co-equal parallel components, evaluated at the same t, r, rho_vac.
 
 STEP 7: FUBi and FUBii Activate and Repel - Matter Forms
 	FUBi (inside-outward from local DPM) repels FUBii (outside-inward from primordial belly button DPM).
@@ -392,8 +407,10 @@ means due to its lack of a quantum signature (Qs), has rewritten our understandi
 of the universe. Through the lens of Universal Gravity (Ug), the Unified Quantum
 Field Equation (F_U) weaves together the forces of gravity, magnetism, buoyancy,
 and the Universal Cosmic Aether into a single, elegant framework. The equation's
-five major components - Ug1 through Ug4 (the DPM gravity family), Universal
-Buoyancy (Ubi), Universal Magnetism (Um), and the Aether tensor (UA_uv) - each
+core components - the DPM gravity family [Ug1 (seed/DPM), Ug2 (outer bubble),
+Ug3 (magnetic disk), Ug4 (galactic BH coupling), and Ug4_i (resonant quantum
+extension at levels 20-26)], Universal Buoyancy (FUBi inside-outward and FUBii
+outside-inward), Universal Magnetism (Um), and the Aether tensor (UA_uv) - each
 arise from the same primordial source: the maximum attraction of UA and SCm at the
 DPM interface. The primordial BigBang belly button DPM set the pattern - the
 Ug_i (Universal Gravitational Inertia) coupling factor - that every local DPM
@@ -459,6 +476,21 @@ Ug4 - Star-Black Hole Interactions (galactic coupling):
 		d_g = distance from galactic center (2.55e20 m for Sun)
 		f_feedback = nonlinear feedback from galactic coupling
 	Operates at quantum levels 20-26, influencing galactic vacuum fluctuations.
+
+Ug4_i - Resonant Quantum Extension (DPM resonance modes, quantum levels 20-26):
+	Ug4_i = k4_res * a_DPM * E_react * f_react * (E_vac,neb / c)
+	Where:
+		k4_res = resonance coupling constant (~2.0, calibrated)
+		a_DPM = DPM base acceleration = (F_DPM * f_DPM * E_vac,neb) / (c * V_sys)
+		E_react = reactor efficiency (UA/SCm maximum attraction energy)
+		f_react = resonance reactivity factor (~1.0 baseline, varies with mode)
+		E_vac,neb = nebular vacuum energy density at the DPM vortex site
+		c = speed of light
+	Ug4_i IS the DPM resonance signature propagating through the highest quantum
+	levels of the 26-layer triadic. It is the term in the 13-term Resonant Mode
+	sum that bridges galactic-scale Ug4 coupling to the sub-quantum resonance
+	domain. Without Ug4_i the Resonant Mode is incomplete above level 19.
+	Promoted simultaneously with Ug2, Ug3, Ug4 by Ug1 (the DPM).
 
 Universal Buoyancy - Ubi (FUBi, inside-outward):
 	Ubi = -beta_i * Ug_i * Omega_g * (M_bh/d_g) * (1 + epsilon_sw*rho_vac,sw) * [UA] * cos(pi*t_n)
@@ -542,9 +574,9 @@ All modes, all layers, all field components exist at the same time because they 
 same single source: the DPM vacuum gradient.
 
 LAYER 1 - Ug Family Assembles Simultaneously:
-	Ug1 simultaneously promotes: Ug2 (outer shell) | Ug3 (magnetic disk) | Ug4 (BH coupling)
-	Ug_family(t) = Ug1(t) + Ug2(t) + Ug3(t) + Ug4(t)
-	All four co-equal parallel components at the same t, r, rho_vac.
+	Ug1 simultaneously promotes: Ug2 (outer shell) | Ug3 (magnetic disk) | Ug4 (BH coupling) | Ug4_i (resonant extension)
+	Ug_family(t) = Ug1(t) + Ug2(t) + Ug3(t) + Ug4(t) + Ug4_i(t)
+	All five co-equal parallel components at the same t, r, rho_vac.
 
 LAYER 2 - The 4 Operational Modes Are Simultaneous Expressions of F_U:
 	Compressed, Resonant, Superconductive, Buoyant are NOT different theories.
@@ -1488,6 +1520,6 @@ that precedes it — the DPM vacuum field that the Standard Model was
 built on top of without knowing it was there.
 
 ________________________________________
-(c)2025 Daniel T. Murphy, daniel.murphy00@gmail.com - All Rights Reserved
+(c)2025-2026 Daniel T. Murphy, daniel.murphy00@gmail.com - All Rights Reserved
 All IP materials are watermarked. Unauthorized reproduction prohibited.
 ________________________________________
