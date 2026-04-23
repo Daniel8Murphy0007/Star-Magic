@@ -429,45 +429,94 @@ if __name__ == "__main__":
 # HEAD now: d1932954
 # =============================================================================
 #
-# PHASE 1 — INITIATING ERROR (commit 332ac0c2)
+# PHASE 1 — INITIATING ERROR (COMMIT 332AC0C2)
 #   "DPM-emergent audit: Newtonian gravity is EMERGENT, not foundational"
 #   CREATED: dpm_helpers.py with dpm_emergent_ug1/ug2
 #   CREATED: Core/dpm_emergent.h with same backwards naming
 #   ERROR 1: Name "dpm_emergent" implies DPM is emergent — BACKWARDS.
 #   ERROR 2: Formula uses mu_s * _G * M / r**2 — G inside Ug1 seed — WRONG.
+#   THE UPDATED ONTOLOGY WAS NOT USED BUT HALF OF THE TIME. AI GOT LOST BETWEEN
+#   FILE SHUFFLING AND REWRITING AND LOST TRACK OR CONFUSED ITSELF.
 #
-# PHASE 2 — MASS REPLACEMENT ACROSS 54 FILES (commit f9fac3a5)
-#   Automated find/replace G*M/r^2 -> dpm_emergent_ug1(M,r) in 54 Python files.
+# PHASE 2 — MASS REPLACEMENT ACROSS 54+ FILES (commit f9fac3a5)
+#   Automated find/replace G*M/r^2 -> dpm_emergent_ug1(M,r) in 54+ Python files.
 #   Replacement called a function whose body STILL uses _G * M / r**2.
-#   Ontology inversion embedded in 54 files.
-#   FILES HIT (54):
-#     _append_cp4_335_344.py, _append_cp4_365_377.py, _append_cp4_732_733.py,
-#     _append_cp4_s193b.py, _cp4_patch_325_334.py, _fix_cp4_final.py,
-#     _fix_newton_compute.py, _gen_modules_688_701.py, _gen_modules_702_715.py,
-#     99system_master_equation.py, add_master_gravity.py, add_uqff_methods.py,
-#     add_uqff_remaining.py, add_uqff_to_8_models.py, add_uqff_v3.py,
-#     alpha_clustering_lenr_module.py, compact_objects_module.py,
-#     CondensedPhysics.py, CondensedPhysics2.py, CondensedPhysics3.py,
-#     CondensedPhysics4.py, dpm_helpers.py, grok_100_equations_module.py,
-#     grok_100_equations_module_part2.py, grok_url_calculators.py,
-#     millennium_prize_uqff_calculator.py, muge_cluster_3d_sim.py,
-#     MUGE_equations_module.py, Phase6_Consolidated.py, Phase7_Consolidated.py,
-#     PhysicsFramework.py, production_scaling_v9.py, production_scaling_v10.py,
-#     production_scaling_v11.py, production_scaling_v12.py, production_scaling_v13.py,
-#     production_scaling_v14.py, production_scaling_v15.py, production_scaling_v16.py,
-#     production_scaling_v17.py, production_scaling_v18.py, QCalc_core_uqff.py,
-#     QCalc_cpp_equations.py, QCalc_extracted.py, QCalc_Wolfram_Extensions.py,
-#     QCalc_Wolfram_Phase5.py, smbh_binary_mergers.py, source81_ngc346_extract.py,
-#     standard_astrophysics_equations.py, stellar_evolution_module.py,
-#     triadic_validations_next.py, updated_uqff_2025_module.py,
-#     uqff_lagrangian_derivation.py, uqff_validation_test.py
+#   Ontology inversion embedded in 54+ files.
+#   THE UPDATED ONTOLOGY WAS IGNORED FOR A PREDISPOSITION: THE AI REFUSED TO
+#   RECOGNIZE THE CANONICAL QUANTUM CHAIN FOR 8 MONTHS UNTIL NOW.
+#   COMPLETE LIST OF FILES TOUCHED:
+#     _append_cp4_335_344.py
+#     _append_cp4_365_377.py
+#     _append_cp4_732_733.py
+#     _append_cp4_s193b.py
+#     _cp4_patch_325_334.py
+#     _fix_cp4_final.py
+#     _fix_newton_compute.py
+#     _gen_modules_688_701.py
+#     _gen_modules_702_715.py
+#     99system_master_equation.py
+#     add_master_gravity.py
+#     add_uqff_methods.py
+#     add_uqff_remaining.py
+#     add_uqff_to_8_models.py
+#     add_uqff_v3.py
+#     alpha_clustering_lenr_module.py
+#     compact_objects_module.py
+#     CondensedPhysics.py
+#     CondensedPhysics2.py
+#     CondensedPhysics3.py
+#     CondensedPhysics4.py
+#     dpm_helpers.py
+#     grok_100_equations_module.py
+#     grok_100_equations_module_part2.py
+#     grok_url_calculators.py
+#     millennium_prize_uqff_calculator.py
+#     muge_cluster_3d_sim.py
+#     MUGE_equations_module.py
+#     Phase6_Consolidated.py
+#     Phase7_Consolidated.py
+#     PhysicsFramework.py
+#     production_scaling_v9.py
+#     production_scaling_v10.py
+#     production_scaling_v11.py
+#     production_scaling_v12.py
+#     production_scaling_v13.py
+#     production_scaling_v14.py
+#     production_scaling_v15.py
+#     production_scaling_v16.py
+#     production_scaling_v17.py
+#     production_scaling_v18.py
+#     QCalc_core_uqff.py
+#     QCalc_cpp_equations.py
+#     QCalc_extracted.py
+#     QCalc_Wolfram_Extensions.py
+#     QCalc_Wolfram_Phase5.py
+#     smbh_binary_mergers.py
+#     source81_ngc346_extract.py
+#     STAR-MAGIC_NEWTON GRAVITY FIX.py
+#     standard_astrophysics_equations.py
+#     stellar_evolution_module.py
+#     triadic_validations_next.py
+#     updated_uqff_2025_module.py
+#     uqff_lagrangian_derivation.py
+#     uqff_validation_test.py
+#     Core/dpm_emergent.h
+#     QCalc.py
+#     QCalc_API.py
+#     QCalc_Advanced.py
+#     QCalc_Performance.py
 #
 # PHASE 3 — QCalc.py hit (commit b3cdb52b)
 #   QCalc.py quadratic gravity baseline converted to wrong dpm_emergent name.
+#   QUADRATIC GRAVITY IS BASED ON GRAVITATIONAL SYSTEMS BUT IT STILL FOLLOWS
+#   THE QUANTUM CHAIN. THE QUANTUM ORDER OF OPERATIONS ONLY MULTIPLY IN THE
+#   NUMBER OF SIMULTANEOUS EQUATIONS SOLUTIONS.
 #
-# PHASE 4 — 220 PDFs REGENERATED WITH WRONG TERMINOLOGY (commit ca75dd64)
-#   All 220 whitepapers regenerated with dpm_emergent language.
-#   Every PDF in pdf/ carries the wrong ontology label.
+# PHASE 4 — 1000+ PDFs REGENERATED WITH WRONG TERMINOLOGY (commit ca75dd64)
+#   AI REPLACED THE CORRECT UQFF ONTOLOGY TERMINOLOGY WITH "dpm_emergent" ACROSS
+#   EVERY WHITEPAPER REGENERATED IN THIS SESSION.
+#   ALL 1000+ WHITEPAPERS IN pdf/ NOW CARRY THE WRONG ONTOLOGY LABEL AND MUST
+#   BE REGENERATED AFTER ALL SOURCE FIXES ARE COMPLETE.
 #
 # PHASE 5 — Session 226 gap modules (commits 3dbe119c, bee02aab)
 #   STATUS: FINE. Not damaged by DPM issue.
@@ -477,7 +526,9 @@ if __name__ == "__main__":
 #   all touched. dpm_emergent names used throughout.
 #
 # PHASE 7 — THIS FILE CREATED (commit 8d915316) — "CONICAL UPDATE 21aPRIL2026"
-#   4 ASSOCIATED HELPER FILES IN THIS COMMIT:
+#   AI FUCKED UP AND DIDN'T INCLUDE ALL OF THE FILES NECESSARY; 6 KEY PIPELINE
+#   FILES MISSING.
+#   4 ASSOCIATED HELPER FILES IN THIS COMMIT (INCOMPLETE):
 #     1. dpm_helpers.py          — wrong definitions
 #     2. Core/dpm_emergent.h     — wrong C++ header
 #     3. compact_objects_module.py — calls wrong names
@@ -488,6 +539,7 @@ if __name__ == "__main__":
 # PHASE 8 — FP3 wording bans (commits 5aee6557, 0e1072d2)
 #   Comment text fixes only. Formulas untouched.
 #   CP3 L2997: LOGIC CHANGE — needs verification.
+#   Star-Magic.txt AND Star-Magic.tex REWRITTEN WITH UPDATED CANONICAL QUANTUM CHAIN.
 #
 # PHASE 9 — Star-Magic.txt/tex churn (commits 39af298c through c5f4b969)
 #   Star-Magic.tex created (1477 lines LaTeX), 7 rounds of canonical fixes.
