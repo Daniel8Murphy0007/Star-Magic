@@ -1,4 +1,4 @@
-﻿"""
+"""
 CondensedPhysics3.py â€” UQFF Phase 3 Physics Calculator
 =======================================================
 IPC Chain Position: 3 of 4
@@ -11522,7 +11522,7 @@ class HydrogenPToEUg4iResonanceBridgeCalculator:
         f_res    = dataset.get('f_res',     1.0e15)       # Hz
         C_LIGHT  = dataset.get('C_LIGHT',   2.998e8)
 
-        g_base   = G * M_proton / r_Bohr**2               # 3.986e-17 m/s^2
+        g_base = dpm_ug1_seed(M_proton, r_Bohr)
         a_DPM    = E_vac * f_res * V_sys / HBAR           # seed ~6.71e-4 m/s^2
         a_u4i    = F_LENR * rho_U * V_sys * a_DPM / HBAR  # 3.155e33 m/s^2 [P302]
         Gamma_u4i = a_u4i / a_DPM if a_DPM != 0 else 0.0  # 4.704e36 [P302]

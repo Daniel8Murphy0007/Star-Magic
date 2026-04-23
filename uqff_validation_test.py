@@ -1,4 +1,4 @@
-﻿from dpm_helpers import dpm_ug1_seed, dpm_ug2_shell
+from dpm_helpers import dpm_ug1_seed, dpm_ug2_shell
 #!/usr/bin/env python3
 """
 UQFF Solvability Validation Test
@@ -125,14 +125,12 @@ def compute_Ug1(M, r, B0, delta_def=0.01, t=0):
     G = CONSTANTS['G']
     mu_0 = CONSTANTS['mu_0']
     delta = delta_def * np.sin(0.001 * t)  # Time-varying defect
-    return (G * M / (r**2)) * (1 + delta) * (mu_0 * B0**2 / (8 * np.pi))
-
+    return dpm_ug1_seed(M, r) * (1 + delta) * (mu_0 * B0**2 / (8 * np.pi))
 def compute_Ug2(M, r, Q_A=1e-10, Q_UA=1e-11, R_b=1.496e13, H_SCm=0.99):
     """Ug2: Charge-reactivity bubble (medium-range)"""
     G = CONSTANTS['G']
     S = 1.0 if r > R_b else 0.0  # Heaviside step function
-    return (G * M / (r**2)) * (Q_A + Q_UA) * S * H_SCm
-
+    return dpm_ug1_seed(M, r) * (Q_A + Q_UA) * S * H_SCm
 def compute_Ug3(r, omega_s=2.5e-6, B0=1e-4, t=0, theta=np.pi/4, phi=0):
     """Ug3: String rotation helicity (galactic-range)"""
     c = CONSTANTS['c']

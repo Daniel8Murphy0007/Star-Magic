@@ -1,4 +1,4 @@
-﻿# SOURCE81: NGC346 Nebula (Small Magellanic Cloud) - Temporary extraction file
+# SOURCE81: NGC346 Nebula (Small Magellanic Cloud) - Temporary extraction file
 # This will be merged into Phase7_Consolidated.py
 
 import math
@@ -336,8 +336,7 @@ class Source81_NGC346:
         tr_factor = 1 + f_TRZ
         
         # 7. Base gravity
-        g_base = (G * M_t / (r_t ** 2)) * expansion_factor * sc_correction * (1 + F_env) * tr_factor
-        
+        g_base = dpm_ug1_seed(M_t, r_t) * expansion_factor * sc_correction * (1 + F_env) * tr_factor
         # 8. Cluster entanglement (Ugi)
         ugi_result = Source81_NGC346.calculate_cluster_entanglement(t, r, **params)
         

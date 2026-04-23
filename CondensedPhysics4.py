@@ -1,4 +1,4 @@
-﻿"""
+"""
 CondensedPhysics4.py — UQFF Phase 4 Physics Calculator
 =======================================================
 IPC Chain Position: 4 of 4
@@ -5518,7 +5518,7 @@ class UQFF29SystemCrossValidationMatrixCalculator(_CP4Calculator):
             return g_base * params['L_t']       # Δ = g_base × L_t
 
         elif tail_type == 'BH_SN':
-            g_BH = G * params['M_BH'] / (params['r_BH'] ** 2)
+            g_BH = dpm_ug1_seed(params['M_BH'], params['r_BH'])
             return g_BH - params['M_SN']
 
         elif tail_type == 'pressure_wind':
@@ -25722,7 +25722,7 @@ class HubbleUltraDeepFieldUQFFCalculator:
         factor_evo = 1.0 + p["M_evo"]
         factor_merge = 1.0 - p["M_merge"]
         factor_TRZ = 1.0 + self.UQFF_CONSTANTS["F_TRZ"]
-        g_grav = G * p["M"] / p["r"]**2
+        g_grav = dpm_ug1_seed(p["M"], p["r"])
         a_EM = (q * p["v_EM"] * p["B_EM"] / m_p) * 11 * 1e-12
         g_HUDF = g_grav * factor_Hz * factor_evo * factor_merge * factor_TRZ + a_EM
         return {
@@ -25802,7 +25802,7 @@ class NGC1792StellarForgeUQFFCalculator:
         factor_sf = 1.0 + p["M_sf"]
         factor_sn = 1.0 - p["F_sn"]
         factor_TRZ = 1.0 + self.UQFF_CONSTANTS["F_TRZ"]
-        g_grav = G * p["M"] / p["r"]**2
+        g_grav = dpm_ug1_seed(p["M"], p["r"])
         a_EM = (q * p["v_EM"] * p["B_EM"] / m_p) * 11 * 1e-12
         g_NGC1792 = g_grav * factor_Hz * factor_sf * factor_sn * factor_TRZ + a_EM
         return {
@@ -25880,8 +25880,8 @@ class SombreroGalaxyM104UQFFCalculator:
         Hz = H0 * math.sqrt(Om * (1 + z)**3 + OL)
         factor_Hz = 1.0 + Hz * p["t"]
         factor_TRZ = 1.0 + self.UQFF_CONSTANTS["F_TRZ"]
-        g_grav = G * p["M"] / p["r"]**2
-        g_BH = G * p["M_BH"] / p["r_BH"]**2
+        g_grav = dpm_ug1_seed(p["M"], p["r"])
+        g_BH = dpm_ug1_seed(p["M_BH"], p["r_BH"])
         a_EM = (q * p["v_EM"] * p["B_EM"] / m_p) * 11 * 1e-12
         g_Sombrero = (g_grav * factor_Hz * factor_TRZ
                       + g_BH + p["a_dust"] + a_EM)
@@ -26043,7 +26043,7 @@ class M16EagleNebulaStarsUQFFCalculator:
         factor_sf = p["M_sf_factor"]
         factor_rad = 1.0 - p["E_rad"]
         factor_TRZ = 1.0 + self.UQFF_CONSTANTS["F_TRZ"]
-        g_grav = G * p["M"] / p["r"]**2
+        g_grav = dpm_ug1_seed(p["M"], p["r"])
         a_EM = (q * p["v_EM"] * p["B_EM"] / m_p) * 11 * 1e-12
         g_M16 = g_grav * factor_Hz * factor_sf * factor_rad * factor_TRZ + a_EM
         return {
@@ -26121,7 +26121,7 @@ class CrabNebulaPulsarWindUQFFCalculator:
         Hz = H0 * math.sqrt(Om * (1 + z)**3 + OL)
         factor_Hz = 1.0 + Hz * p["t"]
         factor_TRZ = 1.0 + self.UQFF_CONSTANTS["F_TRZ"]
-        g_grav = G * p["M"] / p["r"]**2
+        g_grav = dpm_ug1_seed(p["M"], p["r"])
         F_wind = (p["P_pulsar"] / (4 * math.pi * p["r"]**2)) * (1 + p["v_shock"] / c)
         a_wind = (F_wind / p["rho_fil"]) * 1e-12
         M_mag = (q * p["v_shock"] * p["B_mag"] / m_e) * 1e-12
@@ -26202,7 +26202,7 @@ class NGC2264ConeNebulaUQFFCalculator:
         factor_sf = 1.0 + p["M_sf"]
         factor_rad = 1.0 - p["E_rad"]
         factor_TRZ = 1.0 + self.UQFF_CONSTANTS["F_TRZ"]
-        g_grav = G * p["M"] / p["r"]**2
+        g_grav = dpm_ug1_seed(p["M"], p["r"])
         a_EM = (q * p["v_EM"] * p["B_EM"] / m_p) * 11 * 1e-12
         g_NGC2264 = g_grav * factor_Hz * factor_sf * factor_rad * factor_TRZ + a_EM
         return {
@@ -26284,7 +26284,7 @@ class UGC10214TadpoleGalaxyTidalCalculator:
         M_tidal = p["T0_tidal"] * (1.0 - math.exp(-p["t"] / p["tau_tidal"]))
         factor_tidal = 1.0 - M_tidal
         factor_TRZ = 1.0 + self.UQFF_CONSTANTS["F_TRZ"]
-        g_grav = G * p["M"] / p["r"]**2
+        g_grav = dpm_ug1_seed(p["M"], p["r"])
         a_EM = (q * p["v_tidal"] * p["B_EM"] / m_p) * 11 * 1e-12
         g_Tadpole = g_grav * factor_Hz * factor_sf * factor_tidal * factor_TRZ + a_EM
         return {
@@ -26363,7 +26363,7 @@ class NGC4676MiceGalaxiesDualMergerCalculator:
         M_merge = p["T0_merge"] * (1.0 - math.exp(-p["t"] / p["tau_merge"]))
         factor_merge = 1.0 - M_merge
         factor_TRZ = 1.0 + self.UQFF_CONSTANTS["F_TRZ"]
-        g_grav = G * p["M_total"] / p["r"]**2
+        g_grav = dpm_ug1_seed(p["M_total"], p["r"])
         a_EM = (q * p["v_EM"] * p["B_starburst"] / m_p) * 11 * 1e-12
         g_Mice = g_grav * factor_Hz * factor_merge * factor_TRZ + a_EM
         return {
@@ -26435,7 +26435,7 @@ class RedSpiderNebulaNG6537UQFFCalculator:
         q = 1.602e-19
         c = 3e8
         factor_TRZ = 1.0 + self.UQFF_CONSTANTS["F_TRZ"]
-        g_grav = G * p["M"] / p["r"]**2
+        g_grav = dpm_ug1_seed(p["M"], p["r"])
         F_rad = p["L_wd"] / (4 * math.pi * p["r"]**2)
         P_rad = F_rad / c
         P_rad_term = (P_rad / p["rho_gas"]) * 1e-6 * 1e-3
@@ -26517,7 +26517,7 @@ class NGC3372EtaCarinaeNebulaUQFFCalculator:
         factor_sf = 1.0 + p["M_sf"]
         factor_rad = 1.0 - p["E_rad"]
         factor_TRZ = 1.0 + self.UQFF_CONSTANTS["F_TRZ"]
-        g_grav = G * p["M"] / p["r"]**2
+        g_grav = dpm_ug1_seed(p["M"], p["r"])
         a_EM = (q * p["v_EM"] * p["B_EM"] / m_p) * 11 * 1e-12
         g_EtaCar = g_grav * factor_Hz * factor_sf * factor_rad * factor_TRZ + a_EM
         return {
@@ -26594,7 +26594,7 @@ class AGCarinaeNebulaUQFFCalculator:
         factor_Hz = 1.0 + Hz * p["t"]
         factor_rad = 1.0 - p["E_rad"]
         factor_TRZ = 1.0 + self.UQFF_CONSTANTS["F_TRZ"]
-        g_grav = G * p["M"] / p["r"]**2
+        g_grav = dpm_ug1_seed(p["M"], p["r"])
         a_EM = (q * p["v_EM"] * p["B_EM"] / m_p) * 11 * 1e-12
         g_AGCar = g_grav * factor_Hz * factor_rad * factor_TRZ + a_EM
         return {
@@ -26674,7 +26674,7 @@ class M42OrionNebulaUQFFCalculator:
         factor_sf = 1.0 + p["M_sf"]
         factor_rad = 1.0 - p["E_rad"]
         factor_TRZ = 1.0 + self.UQFF_CONSTANTS["F_TRZ"]
-        g_grav = G * p["M"] / p["r"]**2
+        g_grav = dpm_ug1_seed(p["M"], p["r"])
         a_EM = (q * p["v_EM"] * p["B_EM"] / m_p) * 11 * 1e-12
         g_M42 = g_grav * factor_Hz * factor_sf * factor_rad * factor_TRZ + a_EM
         return {
@@ -26754,7 +26754,7 @@ class TarantulaNebula30DorUQFFCalculator:
         factor_sf = 1.0 + p["M_sf"]
         factor_rad = 1.0 - p["E_rad"]
         factor_TRZ = 1.0 + self.UQFF_CONSTANTS["F_TRZ"]
-        g_grav = G * p["M"] / p["r"]**2
+        g_grav = dpm_ug1_seed(p["M"], p["r"])
         a_EM = (q * p["v_EM"] * p["B_EM"] / m_p) * 11 * 1e-12
         g_Tar = g_grav * factor_Hz * factor_sf * factor_rad * factor_TRZ + a_EM
         return {
@@ -26832,7 +26832,7 @@ class NGC2841QuietSpiralUQFFCalculator:
         factor_Hz = 1.0 + Hz * p["t"]
         factor_sf = 1.0 + p["M_sf"]
         factor_TRZ = 1.0 + self.UQFF_CONSTANTS["F_TRZ"]
-        g_grav = G * p["M"] / p["r"]**2
+        g_grav = dpm_ug1_seed(p["M"], p["r"])
         a_EM = (q * p["v_EM"] * p["B_EM"] / m_p) * 11 * 1e-12
         g_NGC2841 = g_grav * factor_Hz * factor_sf * factor_TRZ + a_EM
         return {
@@ -26912,7 +26912,7 @@ class MysticMountainCarinaUQFFCalculator:
         factor_sf = 1.0 + p["M_sf"]
         factor_rad = 1.0 - p["E_rad"]
         factor_TRZ = 1.0 + self.UQFF_CONSTANTS["F_TRZ"]
-        g_grav = G * p["M"] / p["r"]**2
+        g_grav = dpm_ug1_seed(p["M"], p["r"])
         a_EM = (q * p["v_EM"] * p["B_EM"] / m_p) * 11 * 1e-12
         g_MysticMtn = g_grav * factor_Hz * factor_sf * factor_rad * factor_TRZ + a_EM
         return {
@@ -26990,7 +26990,7 @@ class NGC6217BarredSpiralUQFFCalculator:
         factor_Hz = 1.0 + Hz * p["t"]
         factor_sf = 1.0 + p["M_sf"]
         factor_TRZ = 1.0 + self.UQFF_CONSTANTS["F_TRZ"]
-        g_grav = G * p["M"] / p["r"]**2
+        g_grav = dpm_ug1_seed(p["M"], p["r"])
         a_EM = (q * p["v_EM"] * p["B_EM"] / m_p) * 11 * 1e-12
         g_NGC6217 = g_grav * factor_Hz * factor_sf * factor_TRZ + a_EM
         return {
@@ -27069,7 +27069,7 @@ class StephansQuintetGalaxyGroupUQFFCalculator:
         factor_Hz = 1.0 + Hz * p["t"]
         factor_sf_merge = 1.0 + p["M_sf"] + p["M_merge"]
         factor_TRZ = 1.0 + self.UQFF_CONSTANTS["F_TRZ"]
-        g_grav = G * p["M"] / p["r"]**2
+        g_grav = dpm_ug1_seed(p["M"], p["r"])
         a_EM = (q * p["v_EM"] * p["B_EM"] / m_p) * 11 * 1e-12
         g_SQ = g_grav * factor_Hz * factor_sf_merge * factor_TRZ + a_EM
         return {
@@ -27147,7 +27147,7 @@ class NGC7049LenticularUQFFCalculator:
         factor_Hz = 1.0 + Hz * p["t"]
         factor_sf = 1.0 + p["M_sf"]
         factor_TRZ = 1.0 + self.UQFF_CONSTANTS["F_TRZ"]
-        g_grav = G * p["M"] / p["r"]**2
+        g_grav = dpm_ug1_seed(p["M"], p["r"])
         a_EM = (q * p["v_EM"] * p["B_EM"] / m_p) * 11 * 1e-12
         g_NGC7049 = g_grav * factor_Hz * factor_sf * factor_TRZ + a_EM
         return {
@@ -27227,7 +27227,7 @@ class CarinaNebulaNGC3324UQFFCalculator:
         factor_sf = 1.0 + p["M_sf"]
         factor_rad = 1.0 - p["E_rad"]
         factor_TRZ = 1.0 + self.UQFF_CONSTANTS["F_TRZ"]
-        g_grav = G * p["M"] / p["r"]**2
+        g_grav = dpm_ug1_seed(p["M"], p["r"])
         a_EM = (q * p["v_EM"] * p["B_EM"] / m_p) * 11 * 1e-12
         g_CosCliffs = g_grav * factor_Hz * factor_sf * factor_rad * factor_TRZ + a_EM
         return {
@@ -27306,7 +27306,7 @@ class M74PhantomGalaxyUQFFCalculator:
         factor_Hz = 1.0 + Hz * p["t"]
         factor_sf = 1.0 + p["M_sf"]
         factor_TRZ = 1.0 + self.UQFF_CONSTANTS["F_TRZ"]
-        g_grav = G * p["M"] / p["r"]**2
+        g_grav = dpm_ug1_seed(p["M"], p["r"])
         a_EM = (q * p["v_EM"] * p["B_EM"] / m_p) * 11 * 1e-12
         g_M74 = g_grav * factor_Hz * factor_sf * factor_TRZ + a_EM
         return {
@@ -27384,7 +27384,7 @@ class NGC1672BarredSpiralUQFFCalculator:
         factor_Hz = 1.0 + Hz * p["t"]
         factor_sf = 1.0 + p["M_sf"]
         factor_TRZ = 1.0 + self.UQFF_CONSTANTS["F_TRZ"]
-        g_grav = G * p["M"] / p["r"]**2
+        g_grav = dpm_ug1_seed(p["M"], p["r"])
         a_EM = (q * p["v_EM"] * p["B_EM"] / m_p) * 11 * 1e-12
         g_NGC1672 = g_grav * factor_Hz * factor_sf * factor_TRZ + a_EM
         return {
@@ -27462,7 +27462,7 @@ class NGC5866EdgeOnLenticularUQFFCalculator:
         factor_Hz = 1.0 + Hz * p["t"]
         factor_sf = 1.0 + p["M_sf"]
         factor_TRZ = 1.0 + self.UQFF_CONSTANTS["F_TRZ"]
-        g_grav = G * p["M"] / p["r"]**2
+        g_grav = dpm_ug1_seed(p["M"], p["r"])
         a_EM = (q * p["v_EM"] * p["B_EM"] / m_p) * 11 * 1e-12
         g_NGC5866 = g_grav * factor_Hz * factor_sf * factor_TRZ + a_EM
         return {
@@ -27540,7 +27540,7 @@ class M82CigarStarburstUQFFCalculator:
         factor_Hz = 1.0 + Hz * p["t"]
         factor_sf = 1.0 + p["M_sf"]
         factor_TRZ = 1.0 + self.UQFF_CONSTANTS["F_TRZ"]
-        g_grav = G * p["M"] / p["r"]**2
+        g_grav = dpm_ug1_seed(p["M"], p["r"])
         a_EM = (q * p["v_EM"] * p["B_EM"] / m_p) * 11 * 1e-12
         g_M82 = g_grav * factor_Hz * factor_sf * factor_TRZ + a_EM
         return {
@@ -27617,7 +27617,7 @@ class SpirographNebulaIC418UQFFCalculator:
         factor_Hz = 1.0 + Hz * p["t"]
         factor_rad = 1.0 - p["E_rad"]
         factor_TRZ = 1.0 + self.UQFF_CONSTANTS["F_TRZ"]
-        g_grav = G * p["M"] / p["r"]**2
+        g_grav = dpm_ug1_seed(p["M"], p["r"])
         a_EM = (q * p["v_EM"] * p["B_EM"] / m_p) * 11 * 1e-12
         g_IC418 = g_grav * factor_Hz * factor_rad * factor_TRZ + a_EM
         return {
@@ -27690,7 +27690,7 @@ class NGC4826BlackEyeGalaxyThreeUQFF:
         factor_Hz = 1.0 + Hz * p["t"]
         factor_sf = 1.0 + p["M_sf"]
         factor_TRZ = 1.0 + self.UQFF_CONSTANTS["F_TRZ"]
-        g_grav = G * p["M"] / p["r"]**2
+        g_grav = dpm_ug1_seed(p["M"], p["r"])
         a_EM = (q * p["v_EM"] * p["B_EM"] / m_p) * 11 * 1e-12
         return g_grav * factor_Hz * factor_sf * factor_TRZ + a_EM
 
@@ -27782,7 +27782,7 @@ class NGC1805LMCClusterThreeUQFF:
         factor_Hz = 1.0 + Hz * p["t"]
         factor_sf = 1.0 + p["M_sf"]
         factor_TRZ = 1.0 + self.UQFF_CONSTANTS["F_TRZ"]
-        g_grav = G * p["M"] / p["r"]**2
+        g_grav = dpm_ug1_seed(p["M"], p["r"])
         a_EM = (q * p["v_EM"] * p["B_EM"] / m_p) * 11 * 1e-12
         return g_grav * factor_Hz * factor_sf * factor_TRZ + a_EM
 
@@ -27874,7 +27874,7 @@ class NGC6307NGC7027PNPairThreeUQFF:
         factor_Hz = 1.0 + Hz * p["t"]
         factor_rad = 1.0 - p["E_rad"]
         factor_TRZ = 1.0 + self.UQFF_CONSTANTS["F_TRZ"]
-        g_grav = G * p["M"] / p["r"]**2
+        g_grav = dpm_ug1_seed(p["M"], p["r"])
         a_EM = (q * p["v_EM"] * p["B_EM"] / m_p) * 11 * 1e-12
         return g_grav * factor_Hz * factor_rad * factor_TRZ + a_EM
 
@@ -28057,7 +28057,7 @@ class ESO391_12LenticularThreeUQFF:
         factor_Hz = 1.0 + Hz * p["t"]
         factor_sf = 1.0 + p["M_sf"]
         factor_TRZ = 1.0 + self.UQFF_CONSTANTS["F_TRZ"]
-        g_grav = G * p["M"] / p["r"]**2
+        g_grav = dpm_ug1_seed(p["M"], p["r"])
         a_EM = (q * p["v_EM"] * p["B_EM"] / m_p) * 11 * 1e-12
         return g_grav * factor_Hz * factor_sf * factor_TRZ + a_EM
 
@@ -28146,7 +28146,7 @@ class M57RingNebulaThreeUQFF:
         factor_Hz = 1.0 + Hz * p["t"]
         factor_rad = 1.0 - p["E_rad"]
         factor_TRZ = 1.0 + self.UQFF_CONSTANTS["F_TRZ"]
-        g_grav = G * p["M"] / p["r"]**2
+        g_grav = dpm_ug1_seed(p["M"], p["r"])
         a_EM = (q * p["v_EM"] * p["B_EM"] / m_p) * 11 * 1e-12
         return g_grav * factor_Hz * factor_rad * factor_TRZ + a_EM
 
@@ -28236,7 +28236,7 @@ class LargeMagellanicCloudThreeUQFF:
         factor_Hz = 1.0 + Hz * p["t"]
         factor_sf = 1.0 + p["M_sf"]
         factor_TRZ = 1.0 + self.UQFF_CONSTANTS["F_TRZ"]
-        g_grav = G * p["M"] / p["r"]**2
+        g_grav = dpm_ug1_seed(p["M"], p["r"])
         a_EM = (q * p["v_EM"] * p["B_EM"] / m_p) * 11 * 1e-12
         return g_grav * factor_Hz * factor_sf * factor_TRZ + a_EM
 
@@ -28328,7 +28328,7 @@ class ESO510G13WarpedSpiralThreeUQFF:
         factor_Hz = 1.0 + Hz * p["t"]
         factor_sf = 1.0 + p["M_sf"]
         factor_warp = 1.0 + p["f_warp"]
-        g_grav = G * p["M"] / p["r"]**2
+        g_grav = dpm_ug1_seed(p["M"], p["r"])
         a_EM = (q * p["v_EM"] * p["B_EM"] / m_p) * 11 * 1e-12
         return g_grav * factor_Hz * factor_sf * factor_warp + a_EM
 
@@ -28419,8 +28419,8 @@ class NGC2525SN2018gvBarredSpiralUQFFCalculator:
             p.update(params)
         G = 6.6743e-11; m_p = 1.673e-27; q = 1.602e-19; H0 = 2.268e-18
         Hz = H0 * math.sqrt(0.3 * (1 + p["z"])**3 + 0.7)
-        g_grav = G * p["M"] / p["r"]**2 * (1 + Hz*p["t"]) * (1+p["M_sf"]) * (1+self.UQFF_CONSTANTS["F_TRZ"])
-        g_BH   = G * p["M_BH"] / p["r_BH"]**2
+        g_grav = dpm_ug1_seed(p["M"], p["r"]) * (1 + Hz*p["t"]) * (1+p["M_sf"]) * (1+self.UQFF_CONSTANTS["F_TRZ"])
+        g_BH = dpm_ug1_seed(p["M_BH"], p["r_BH"])
         a_EM   = (q * p["v_EM"] * p["B_EM"] / m_p) * 11 * 1e-12
         M_SN_t = p["M_SN"] * math.exp(-p["t"] / p["tau_SN"])
         g_SN   = dpm_ug1_seed(M_SN_t, p["r"])
@@ -28478,7 +28478,7 @@ class NGC3603ExtremeStarClusterUQFFCalculator:
         G = 6.6743e-11; m_p = 1.673e-27; q = 1.602e-19; H0 = 2.268e-18
         Hz = H0 * math.sqrt(0.3 * (1 + p["z"])**3 + 0.7)
         P_t = p["P0"] * math.exp(-p["t"] / p["tau_exp"])
-        g_grav = G * p["M"] / p["r"]**2 * (1 + Hz*p["t"]) * (1-P_t) * (1+p["M_sf"]) * (1+self.UQFF_CONSTANTS["F_TRZ"])
+        g_grav = dpm_ug1_seed(p["M"], p["r"]) * (1 + Hz*p["t"]) * (1-P_t) * (1+p["M_sf"]) * (1+self.UQFF_CONSTANTS["F_TRZ"])
         a_EM   = (q * p["v_EM"] * p["B_EM"] / m_p) * 11 * 1e-12
         return g_grav + a_EM
 
@@ -28537,7 +28537,7 @@ class NGC1275PerseusAGNFilamentaryUQFFCalculator:
         Hz = H0 * math.sqrt(0.3 * (1+p["z"])**3 + 0.7)
         F_BH = p["F_BH0"] * (1 - math.exp(-p["t"]/p["tau_BH"]))
         a_fil = p["B_fil"]**2 * p["L_fil"] / (mu0 * p["M_fil"])
-        g_grav = G * p["M"] / p["r"]**2 * (1+Hz*p["t"]) * (1-F_BH) * (1+self.UQFF_CONSTANTS["F_TRZ"])
+        g_grav = dpm_ug1_seed(p["M"], p["r"]) * (1+Hz*p["t"]) * (1-F_BH) * (1+self.UQFF_CONSTANTS["F_TRZ"])
         a_EM   = (q * p["v_EM"] * p["B_EM"] / m_p) * 11 * 1e-12
         return g_grav + a_fil + a_EM
 
@@ -28593,7 +28593,7 @@ class NGC1792StellarForgeStarburstUQFFCalculator:
         G = 6.6743e-11; m_p = 1.673e-27; q = 1.602e-19; H0 = 2.268e-18
         Hz = H0 * math.sqrt(0.3*(1+p["z"])**3+0.7)
         F_sn = p["F_sn0"] * (1 - math.exp(-p["t"]/p["tau_sn"]))
-        g_grav = G*p["M"]/p["r"]**2 * (1+Hz*p["t"]) * (1-F_sn) * (1+p["M_sf"]) * (1+self.UQFF_CONSTANTS["F_TRZ"])
+        g_grav = dpm_ug1_seed(p["M"], p["r"]) * (1+Hz*p["t"]) * (1-F_sn) * (1+p["M_sf"]) * (1+self.UQFF_CONSTANTS["F_TRZ"])
         a_EM   = (q*p["v_EM"]*p["B_EM"]/m_p) * 11 * 1e-12
         return g_grav + a_EM
 
@@ -28672,7 +28672,7 @@ class AFGL5180MassiveSFRThreeUQFFCalculator:
             p.update(params)
         G = 6.6743e-11
         f_ub = self._f_ub()
-        return G * p["M"] / p["r"]**2 * f_ub
+        return dpm_ug1_seed(p["M"], p["r"]) * f_ub
 
     def compute(self, params=None):
         F_c = self.compute_compressed(params)
@@ -28723,7 +28723,7 @@ class NGC2174MonkeyHeadNebulaThreeUQFFCalculator:
             p.update(params)
         G = 6.6743e-11; c = self.UQFF_CONSTANTS
         f_ub = c["K_UB"] * c["DELTA_K_ETA"] * (c["RHO_UA"]/c["RHO_SCM"]) * c["BOYLE"]
-        return G * p["M"] / p["r"]**2 * f_ub * p["H_k_pillar"]
+        return dpm_ug1_seed(p["M"], p["r"]) * f_ub * p["H_k_pillar"]
 
     def compute_compressed(self, params=None):
         import math
@@ -28731,7 +28731,7 @@ class NGC2174MonkeyHeadNebulaThreeUQFFCalculator:
         if params:
             p.update(params)
         G = 6.6743e-11
-        return G * p["M"] / p["r"]**2 * p["M_sf"] * math.exp(-p["t"]/p["tau_SF"]) * (p["f_UA"]*p["f_SCm"])**2
+        return dpm_ug1_seed(p["M"], p["r"]) * p["M_sf"] * math.exp(-p["t"]/p["tau_SF"]) * (p["f_UA"]*p["f_SCm"])**2
 
     def compute_resonant(self, params=None):
         return -self.compute_compressed(params) / 26.0
@@ -28784,7 +28784,7 @@ class NGC685BarredSpiralThreeUQFFCalculator:
             p.update(params)
         G = 6.6743e-11; m_p = 1.673e-27; q = 1.602e-19; H0 = 2.268e-18
         Hz = H0 * math.sqrt(0.3*(1+p["z"])**3+0.7)
-        g_grav = G*p["M"]/p["r"]**2 * (1+Hz*p["t"]) * (1+p["M_sf"]) * (1+self.UQFF_CONSTANTS["F_TRZ"])
+        g_grav = dpm_ug1_seed(p["M"], p["r"]) * (1+Hz*p["t"]) * (1+p["M_sf"]) * (1+self.UQFF_CONSTANTS["F_TRZ"])
         a_EM   = (q*p["v_EM"]*p["B_EM"]/m_p) * 11 * 1e-12
         return g_grav + a_EM
 
@@ -28863,7 +28863,7 @@ class NGC3507SpiralThreeUQFFCalculator:
             p.update(params)
         G = 6.6743e-11; m_p = 1.673e-27; q = 1.602e-19; H0 = 2.268e-18
         Hz = H0 * math.sqrt(0.3*(1+p["z"])**3+0.7)
-        g_grav = G*p["M"]/p["r"]**2*(1+Hz*p["t"])*(1+p["M_sf"])*(1+self.UQFF_CONSTANTS["F_TRZ"])
+        g_grav = dpm_ug1_seed(p["M"], p["r"]) *(1+Hz*p["t"])*(1+p["M_sf"])*(1+self.UQFF_CONSTANTS["F_TRZ"])
         a_EM   = (q*p["v_EM"]*p["B_EM"]/m_p)*11*1e-12
         return g_grav + a_EM
 
@@ -28918,7 +28918,7 @@ class NGC3511SpiralCraterThreeUQFFCalculator:
             p.update(params)
         G = 6.6743e-11; m_p = 1.673e-27; q = 1.602e-19; H0 = 2.268e-18
         Hz = H0 * math.sqrt(0.3*(1+p["z"])**3+0.7)
-        g_grav = G*p["M"]/p["r"]**2*(1+Hz*p["t"])*(1+p["M_sf"])*(1+self.UQFF_CONSTANTS["F_TRZ"])
+        g_grav = dpm_ug1_seed(p["M"], p["r"]) *(1+Hz*p["t"])*(1+p["M_sf"])*(1+self.UQFF_CONSTANTS["F_TRZ"])
         a_EM   = (q*p["v_EM"]*p["B_EM"]/m_p)*11*1e-12
         return g_grav + a_EM
 
@@ -28984,7 +28984,7 @@ class NGC3596GasSpiralThreeUQFFCalculator:
             p.update(params)
         G = 6.6743e-11; m_p = 1.673e-27; q = 1.602e-19; H0 = 2.268e-18
         Hz = H0 * math.sqrt(0.3*(1+p["z"])**3+0.7)
-        g_grav = G*p["M"]/p["r"]**2*(1+Hz*p["t"])*(1+p["M_sf"])*(1+self.UQFF_CONSTANTS["F_TRZ"])
+        g_grav = dpm_ug1_seed(p["M"], p["r"]) *(1+Hz*p["t"])*(1+p["M_sf"])*(1+self.UQFF_CONSTANTS["F_TRZ"])
         a_EM   = (q*p["v_EM"]*p["B_EM"]/m_p)*11*1e-12
         return g_grav + a_EM
 
@@ -29050,7 +29050,7 @@ class NGC1961SpiralThreeUQFFCalculator:
             p.update(params)
         G = 6.6743e-11; m_p = 1.673e-27; q = 1.602e-19; H0 = 2.268e-18
         Hz = H0 * math.sqrt(0.3*(1+p["z"])**3+0.7)
-        g_grav = G*p["M"]/p["r"]**2*(1+Hz*p["t"])*(1+p["M_sf"])*(1+self.UQFF_CONSTANTS["F_TRZ"])
+        g_grav = dpm_ug1_seed(p["M"], p["r"]) *(1+Hz*p["t"])*(1+p["M_sf"])*(1+self.UQFF_CONSTANTS["F_TRZ"])
         a_EM   = (q*p["v_EM"]*p["B_EM"]/m_p)*11*1e-12
         return g_grav + a_EM
 
@@ -29107,7 +29107,7 @@ class NGC5335SpiralThreeUQFFCalculator:
             p.update(params)
         G = 6.6743e-11; m_p = 1.673e-27; q = 1.602e-19; H0 = 2.268e-18
         Hz = H0 * math.sqrt(0.3*(1+p["z"])**3+0.7)
-        g_grav = G*p["M"]/p["r"]**2*(1+Hz*p["t"])*(1+p["M_sf"])*(1+self.UQFF_CONSTANTS["F_TRZ"])
+        g_grav = dpm_ug1_seed(p["M"], p["r"]) *(1+Hz*p["t"])*(1+p["M_sf"])*(1+self.UQFF_CONSTANTS["F_TRZ"])
         a_EM   = (q*p["v_EM"]*p["B_EM"]/m_p)*11*1e-12
         return g_grav + a_EM
 
@@ -43064,7 +43064,7 @@ class InterstellarShockPrestellarCollapseCalculator(_CP4Calculator):
         X_form_post = X_form_0 * (1.0 + eta_sput * S_t * 0.5)
 
         # UQFF g_Shock
-        g_grav = self.G * M_core / r_core**2
+        g_grav = dpm_ug1_seed(M_core, r_core)
         g_Shock = g_grav * S_t + X_SiO_post  # (GM/r² projection)·S(t) + C(t)
 
         # Jeans mass at post-shock conditions

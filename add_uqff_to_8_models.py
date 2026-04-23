@@ -1,4 +1,4 @@
-﻿from dpm_helpers import dpm_ug1_seed, dpm_ug2_shell
+from dpm_helpers import dpm_ug1_seed, dpm_ug2_shell
 import re
 
 # 8 UQFF Master Equation methods template (adapted for any model)
@@ -12,7 +12,7 @@ UQFF_METHODS = '''
         G = CONSTANTS.get('G', 6.6743e-11)
         M = getattr(self, 'M', getattr(params, 'M', 1.989e30)) if params else getattr(self, 'M', 1.989e30)
         r = getattr(self, 'r', getattr(params, 'r', 1e10)) if params else getattr(self, 'r', 1e10)
-        g_base = G * M / (r ** 2) if r > 0 else 0
+        g_base = dpm_ug1_seed(M, r)
         Ug1 = 1.5 * g_base; Ug2 = 1.2 * g_base; Ug3 = 0.8 * g_base * np.sin(np.pi/4); Ug4 = 0.5 * g_base
         beta = CONSTANTS.get('beta_i', 0.6)
         rho_vac = CONSTANTS.get('rho_vac_UA', 7.09e-36)
@@ -59,7 +59,7 @@ UQFF_METHODS = '''
         G = CONSTANTS.get('G', 6.6743e-11)
         M = getattr(self, 'M', getattr(params, 'M', 1.989e30)) if params else getattr(self, 'M', 1.989e30)
         r = getattr(self, 'r', getattr(params, 'r', 1e10)) if params else getattr(self, 'r', 1e10)
-        g_base = G * M / (r ** 2) if r > 0 else 0
+        g_base = dpm_ug1_seed(M, r)
         beta = CONSTANTS.get('beta_i', 0.6)
         rho_vac = CONSTANTS.get('rho_vac_UA', 7.09e-36)
         F_Bi = beta * (g_base - rho_vac * G)
@@ -78,7 +78,7 @@ UQFF_METHODS = '''
         G = CONSTANTS.get('G', 6.6743e-11)
         M = getattr(self, 'M', getattr(params, 'M', 1.989e30)) if params else getattr(self, 'M', 1.989e30)
         r = getattr(self, 'r', getattr(params, 'r', 1e10)) if params else getattr(self, 'r', 1e10)
-        g_base = G * M / (r ** 2) if r > 0 else 0
+        g_base = dpm_ug1_seed(M, r)
         k_values = [1.5, 1.2, 0.8, 0.5]
         g_layers = []; total = 0
         for i in range(1, n_layers + 1):

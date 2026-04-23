@@ -1,4 +1,4 @@
-﻿"""
+"""
 PHASE 7 EXTRACTION - CONSOLIDATED MODULE
 ================================================================================
 Extraction Date: February 14-15, 2026
@@ -479,11 +479,9 @@ class Source88_Andromeda:
         tr_factor = 1.0 + f_TRZ
         
         # 3. Base gravity with corrections
-        g_grav = (G * M / (r**2)) * expansion_factor * tr_factor
-        
+        g_grav = dpm_ug1_seed(M, r) * expansion_factor * tr_factor
         # 4. SMBH contribution
-        g_BH = G * M_BH / (r_BH**2)
-        
+        g_BH = dpm_ug1_seed(M_BH, r_BH)
         # 5. Dust acceleration
         a_dust = Source88_Andromeda.calculate_dust_acceleration(
             rho_dust, v_orbit, rho_mass, scale_macro
@@ -974,7 +972,7 @@ class Source82_SMBH:
         """
         G = CONSTANTS['G']
         delta_n = Source82_SMBH.calculate_delta_n(n, phi)
-        base_gravity = G * M_BH / (r**2)
+        base_gravity = dpm_ug1_seed(M_BH, r)
         oscillation = math.cos(omega_s_sun * t)
         return base_gravity * delta_n * oscillation
     
@@ -1862,8 +1860,7 @@ class Source81_NGC346:
         tr_factor = 1 + f_TRZ
         
         # 7. Base gravity
-        g_base = (G * M_t / (r_t ** 2)) * expansion_factor * sc_correction * (1 + F_env) * tr_factor
-        
+        g_base = dpm_ug1_seed(M_t, r_t) * expansion_factor * sc_correction * (1 + F_env) * tr_factor
         # 8. Cluster entanglement (Ugi)
         omega_param = params.get('omega', Source81_NGC346.DEFAULT_PARAMS['omega'])
         mu_0_param = params.get('mu_0', Source81_NGC346.DEFAULT_PARAMS['mu_0'])
@@ -2315,8 +2312,7 @@ class Source86_Extended:
         env_factor = 1.0 + F_env
         
         # 4. Base gravity
-        g_base = (G * M / (r ** 2)) * expansion * sc_correction * env_factor
-        
+        g_base = dpm_ug1_seed(M, r) * expansion * sc_correction * env_factor
         # 5. Ug sum
         ug_sum = Source86_Extended.calculate_ug_sum(**merged)
         
