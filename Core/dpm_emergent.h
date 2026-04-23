@@ -1,22 +1,15 @@
-// dpm_emergent.h - DPM-Emergent Gravity Helpers
+// dpm_seed.h - DPM Seed Gravity Helpers (canonical implementation)
 //
-// === CANONICAL ONTOLOGY LOCK (v1) — see also Star-Magic.txt and ARCHITECTURE_FLOW_DIAGRAM.md ===
-// 1. Starting state: zero-mass vacuum — rho_UA = 0, rho_vac = |grad(UA)|, F_U(vacuum) = 0.
-//    NO MASS exists at quantum cycle start.
-// 2. Mass emergence precedes motion. DPM vortical dynamics -> Ug2 shell traps magnetics/
-//    spawn material -> mass EMERGES -> only then does Ug1 look gravitational.
-// 3. Fixed promotion order: Ug1 promotes the full family — Ug1 -> Ug2 + Ug3 + Ug4 (+ Ug4_i).
-// 4. Gravity family is assembled simultaneously: Ug_family = Ug1 + Ug2 + Ug3 + Ug4 (+ Ug4_i).
-// 5. Unified field follows: F_U = field(Ug_family, Ub, Um, A, Ui, E_react, t_n).
-// 6. Operational modes (Compressed, Resonant, Superconductive, Buoyant) are downstream
-//    simultaneous forms of F_U — not independent seed equations.
-// 7. GM/r^2 is allowed only as a reduced observational projection AFTER mass emergence
-//    and family assembly. It is NOT a seed or foundation term.
-// ================================================================================================
+// === CANONICAL ONTOLOGY (immutable — Star-Magic.txt) ===
+// 0_vacuum -> grad(UA) -> DPM_vortex -> mu_s -> Ug1[seed=DPM]
+//   -> Ug_family[Ug1+Ug2+Ug3+Ug4+Ug4i]
+//   -> [Ug_family + Um + FUBi + FUBii + UA_uv] -> F_U -> M -> GM/r^2 [LAST]
 //
-// Ug1 = k1 * mu_s * grad(M_s/r) * exp(-alpha*t) * cos(pi*t_n) * (1+delta_def)
-//   where mu_s = B * R^3 (magnetic dipole moment)
-//         grad(M_s/r) = G * M_s / R^2 (mass gradient, NOT Newtonian force)
+// DPM IS THE FOUNDATION. GM/r^2 IS THE LAST OBSERVABLE PROJECTION.
+//
+// Canonical Ug1 formula: Ug1 = mu_s * (M/R)   — NO G
+//   where mu_s = B * R^3, grad(M_s/r) = M/R (mass gradient without Newton G)
+//   G appears only at the FINAL downstream GM/r^2 projection step.
 
 #ifndef DPM_EMERGENT_H
 #define DPM_EMERGENT_H
@@ -29,21 +22,26 @@
 
 namespace DPM {
 
-constexpr double G = 6.67430e-11;          // Gravitational constant [m^3/kg/s^2]
+constexpr double G = 6.67430e-11;          // Gravitational constant [m^3/kg/s^2] — DOWNSTREAM ONLY
 constexpr double rho_A = 7.09e-37;         // [SCm] vacuum density [J/m^3]
 constexpr double rho_UA = 7.09e-36;        // [UA] vacuum density [J/m^3]
 
-// DPM-emergent Ug1: magnetic moment x mass gradient
+// Canonical Ug1 seed: mu_s * grad(M_s/r) — NO G in the seed
 // B = magnetic field [T], R = body radius [m], M = mass [kg]
-// Default B=1e-4 T (typical stellar surface field; override per system)
-inline double emergent_Ug1(double M, double R, double B = 1e-4) {
+inline double seed_Ug1(double M, double R, double B = 1e-4) {
+    if (R <= 0.0) return 0.0;
     double mu_s = B * R * R * R;           // Magnetic moment mu_s = B * R^3
-    double grad_M = G * M / (R * R);      // Mass gradient grad(M_s/r)
-    return mu_s * grad_M;                 // DPM-emergent Ug1
+    return mu_s * M / R;                   // grad(M_s/r) = M/R — no Newton G
 }
 
-// DPM-emergent Ug2: quantum shell trapping (dual charges x reactor energy)
-inline double emergent_Ug2(double M, double r, double R, double v_sw = 4e5) {
+// Backward-compat alias (new code must use seed_Ug1)
+inline double emergent_Ug1(double M, double R, double B = 1e-4) {
+    return seed_Ug1(M, R, B);
+}
+
+// Canonical Ug2 shell: charge-reactivity bubble using vacuum densities — NO G
+inline double seed_Ug2(double M, double r, double R, double v_sw = 4e5) {
+    if (R <= 0.0 || r <= 0.0) return 0.0;
     double V_body = (4.0 / 3.0) * M_PI * R * R * R;
     double Q_SCm = rho_A * V_body;
     double Q_UA = rho_UA * V_body;
@@ -53,14 +51,26 @@ inline double emergent_Ug2(double M, double r, double R, double v_sw = 4e5) {
     return (Q_SCm + Q_UA) * M / (r * r) * S_rb * E_react;
 }
 
-// DPM-emergent Ug4: vacuum concentration
-inline double emergent_Ug4(double rho_v = 7.09e-37, double C_conc = 1e30, double corr_B = 1.0) {
+inline double emergent_Ug2(double M, double r, double R, double v_sw = 4e5) {
+    return seed_Ug2(M, r, R, v_sw);
+}
+
+// DPM Ug4: vacuum concentration
+inline double seed_Ug4(double rho_v = 7.09e-37, double C_conc = 1e30, double corr_B = 1.0) {
     return rho_v * C_conc * corr_B;
 }
 
+inline double emergent_Ug4(double rho_v = 7.09e-37, double C_conc = 1e30, double corr_B = 1.0) {
+    return seed_Ug4(rho_v, C_conc, corr_B);
+}
+
 // DPM tidal gradient: 3 * Ug1 / r
+inline double seed_tidal(double M, double R, double B = 1e-4) {
+    return 3.0 * seed_Ug1(M, R, B) / R;
+}
+
 inline double emergent_tidal(double M, double R, double B = 1e-4) {
-    return 3.0 * emergent_Ug1(M, R, B) / R;
+    return seed_tidal(M, R, B);
 }
 
 } // namespace DPM

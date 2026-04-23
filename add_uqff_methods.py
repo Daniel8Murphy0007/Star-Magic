@@ -1,4 +1,4 @@
-from dpm_helpers import dpm_emergent_ug1, dpm_emergent_ug2
+﻿from dpm_helpers import dpm_ug1_seed, dpm_ug2_shell
 #!/usr/bin/env python3
 """
 Add 6 missing UQFF Master Equation methods to all 10 May 2025 models.
@@ -53,8 +53,8 @@ METHODS_TEMPLATE = '''
         Ur = 0.01 * g_grav              # Radiation pressure
         Ut = 0.001 * g_grav             # Thermal contribution
         Ui = 0.0001 * g_grav            # Interstellar medium
-        UA = self.rho_vac_UA * dpm_emergent_ug1(self.M, r) if self.rho_vac_UA else 0
-        SCm = self.rho_vac_SCm * dpm_emergent_ug1(self.M, r) if self.rho_vac_SCm else 0
+        UA = self.rho_vac_UA * dpm_ug1_seed(self.M, r) if self.rho_vac_UA else 0
+        SCm = self.rho_vac_SCm * dpm_ug1_seed(self.M, r) if self.rho_vac_SCm else 0
         
         # Total unified field
         F_U = Ug1 + Ug2 + Ug3 + Ug4 + Ub + Um + Ur + Ut + Ui + UA + SCm

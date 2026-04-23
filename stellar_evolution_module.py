@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 """
 Stellar Evolution Module - Main Sequence to Compact Remnants
 
@@ -22,7 +22,7 @@ UQFF Integration:
 """
 
 import math
-from dpm_helpers import dpm_emergent_ug1, dpm_emergent_ug2
+from dpm_helpers import dpm_ug1_seed, dpm_ug2_shell
 
 from typing import Dict, Optional
 
@@ -214,7 +214,7 @@ class ConvectiveTurnoverCalculator:
             Dict with convection parameters
         """
         # Surface gravity
-        g = dpm_emergent_ug1(M, R)
+        g = dpm_ug1_seed(M, R)
         
         # Effective temperature
         T_eff = (L / (4 * math.pi * R**2 * sigma_SB))**0.25

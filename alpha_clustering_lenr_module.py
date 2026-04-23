@@ -1,4 +1,4 @@
-"""
+﻿"""
 Alpha Clustering and Widom-Larsen LENR Integration Module
 ==========================================================
 
@@ -21,7 +21,7 @@ Framework: Universal Quantum Field Superconductive Framework (UQFF)
 """
 
 import math
-from dpm_helpers import dpm_emergent_ug1, dpm_emergent_ug2
+from dpm_helpers import dpm_ug1_seed, dpm_ug2_shell
 
 from typing import Dict, Any, Optional, Tuple
 from dataclasses import dataclass
@@ -177,7 +177,7 @@ class AlphaClusteringCalculator:
         
         # Local gravity term
         M_cluster = self.system.projectile_A * u
-        g_local = dpm_emergent_ug1(M_cluster, r)
+        g_local = dpm_ug1_seed(M_cluster, r)
         
         # Negative for stabilization (prevents disassembly)
         F_UBii = -F_rel * E_ratio * Q_wave * g_local / 1e30  # Scaled

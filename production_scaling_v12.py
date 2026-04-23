@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 """
 production_scaling_v12.py — QGP + 99-System Scaling at 501k calc/s
 
@@ -14,7 +14,7 @@ History: v4 (100k) → v5 (150k) → v6 (200k) → v7 (300k) → v8 (350k)
 """
 
 import math
-from dpm_helpers import dpm_emergent_ug1, dpm_emergent_ug2
+from dpm_helpers import dpm_ug1_seed, dpm_ug2_shell
 
 import time
 from typing import Dict, List
@@ -42,10 +42,10 @@ TARGET_CALC_PER_SEC = 501_000
 # ── §1  Benchmark Kernels (v11 carry-forward: 16) ─────────────────────────
 
 def kernel_gravity_26layer(M_kg: float = 4e6 * M_SUN, r: float = 1e12) -> float:
-    return sum(dpm_emergent_ug1(M_kg, r) * SSQ * i / 26 for i in range(1, 27))
+    return sum(dpm_ug1_seed(M_kg, r) * SSQ * i / 26 for i in range(1, 27))
 
 def kernel_fu_bi_i(M_kg: float = 4e6 * M_SUN, r: float = 1e12) -> float:
-    return sum(dpm_emergent_ug1(M_kg, r) * math.exp(-SSQ * i / 26) * BETA_I for i in range(1, 27))
+    return sum(dpm_ug1_seed(M_kg, r) * math.exp(-SSQ * i / 26) * BETA_I for i in range(1, 27))
 
 def kernel_phonon_ares(omega: float = OMEGA_SCM, gamma: float = GAMMA_0) -> float:
     return math.exp(-(omega - OMEGA_SCM)**2 / (2 * gamma**2)) * S26
@@ -62,9 +62,9 @@ def kernel_gw170817_strain(d_Mpc: float = 40.0) -> float:
 
 def kernel_blazar_ergosphere(M_Msun: float = 6.5e9, a: float = 0.90) -> float:
     M = M_Msun * M_SUN
-    rS = 2 * dpm_emergent_ug1(M, C)
+    rS = 2 * dpm_ug1_seed(M, C)
     rH = rS / 2 * (1 + math.sqrt(max(1 - a**2, 0)))
-    return sum(dpm_emergent_ug1(M, rH) * math.exp(-SSQ * i / 26) for i in range(1, 27))
+    return sum(dpm_ug1_seed(M, rH) * math.exp(-SSQ * i / 26) for i in range(1, 27))
 
 def kernel_rest_phonon_jet(gamma_THz: float = 0.10, A_jet: float = 1.5) -> float:
     Gr = 2 * PI * gamma_THz * 1e12
@@ -79,13 +79,13 @@ def kernel_pipeline_full() -> float:
 
 def kernel_cena_jet(M_Msun: float = 5.5e7, a: float = 0.70, B: float = 3000) -> float:
     M = M_Msun * M_SUN
-    rS = 2 * dpm_emergent_ug1(M, C)
+    rS = 2 * dpm_ug1_seed(M, C)
     rH = rS / 2 * (1 + math.sqrt(max(1 - a**2, 0)))
     return (B**2 / (8 * PI)) * (rH / C)**2 * a**2 * C
 
 def kernel_txs0506_jet(M_Msun: float = 3e8, a: float = 0.95, B: float = 5000) -> float:
     M = M_Msun * M_SUN
-    rS = 2 * dpm_emergent_ug1(M, C)
+    rS = 2 * dpm_ug1_seed(M, C)
     rH = rS / 2 * (1 + math.sqrt(max(1 - a**2, 0)))
     return (B**2 / (8 * PI)) * (rH / C)**2 * a**2 * C
 
@@ -135,10 +135,10 @@ def kernel_99system_master(n_systems: int = 99) -> float:
     for i in range(1, n_systems + 1):
         M = (0.1 + i * 2) * M_SUN
         r = 1e9 * (1 + i * 0.3)
-        Ug = sum(dpm_emergent_ug1(M, r) * SSQ * j / 26 for j in range(1, 27))
-        Um = dpm_emergent_ug1(M, r) * SSQ * 0.1
-        UA = dpm_emergent_ug1(M, r) * 1e-10
-        Ub = sum(dpm_emergent_ug1(M, r) * math.exp(-SSQ * j / 26) * BETA_I for j in range(1, 27))
+        Ug = sum(dpm_ug1_seed(M, r) * SSQ * j / 26 for j in range(1, 27))
+        Um = dpm_ug1_seed(M, r) * SSQ * 0.1
+        UA = dpm_ug1_seed(M, r) * 1e-10
+        Ub = sum(dpm_ug1_seed(M, r) * math.exp(-SSQ * j / 26) * BETA_I for j in range(1, 27))
         Fn = 1e-10
         Phi = S26
         total += Ug + Um + UA - Ub + Fn * S26 * Phi

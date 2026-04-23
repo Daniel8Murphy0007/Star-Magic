@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 """
 _fix_newton_compute.py
 ======================
@@ -28,17 +28,21 @@ DPM_BLOCK = '''
 _G_DPM_EMERGENT = 6.6743e-11  # m^3 kg^-1 s^-2
 
 
-def dpm_emergent_ug1(M, r, B=1e-4):
-    """DPM-emergent Ug1: mu_s * grad(M_s/r). GM/r^2 is the gradient, not the base."""
+def dpm_ug1_seed(M, r, B=1e-4):
+    """DPM seed Ug1: mu_s * grad(M_s/r). NO G — G is downstream projection."""
     if r <= 0:
         return 0.0
     mu_s = B * r ** 3
-    return mu_s * _G_DPM_EMERGENT * M / (r ** 2)  # = B * r * G * M
+    return mu_s * M / r
 
 
-def dpm_emergent_ug2(M, r, B=1e-4, k2=1.2):
-    """DPM-emergent Ug2: charge-reactivity shell."""
-    return k2 * dpm_emergent_ug1(M, r, B)
+dpm_ug1_seed = dpm_ug1_seed  # backward-compat alias
+
+def dpm_ug2_shell(M, r, B=1e-4, k2=1.2):
+    """DPM shell Ug2: charge-reactivity bubble. NO G."""
+    return k2 * dpm_ug1_seed(M, r, B)
+
+dpm_ug2_shell = dpm_ug2_shell  # backward-compat alias
 
 '''
 
@@ -64,7 +68,7 @@ COMPUTE_METHOD = '''
         M_bh    = dataset.get('M_bh',    8.15e36)
         d_g     = dataset.get('d_g',     2.55e20)
         # --- DPM-emergent gravity family (NOT Newton-first) ---
-        g_b = dpm_emergent_ug1(M, r, B)  # Ug1: DPM seed
+        g_b = dpm_ug1_seed(M, r, B)  # Ug1: DPM seed
         Ug1 = g_b
         Ug2 = 1.2  * g_b  # charge-reactivity shell
         Ug3 = 0.8  * g_b * math.cos(math.pi * t_n)  # magnetic string rotation
@@ -80,7 +84,7 @@ COMPUTE_METHOD = '''
         g_projection = _G * M / (r ** 2) if r > 0 else 0.0
         return {
             'primary_equations': [
-                f'Ug1(DPM-seed) = dpm_emergent_ug1(M,r,B) = {Ug1:.6e}',
+                f'Ug1(DPM-seed) = dpm_ug1_seed(M,r,B) = {Ug1:.6e}',
                 f'Ug2(shell)    = 1.2*Ug1                 = {Ug2:.6e}',
                 f'Ug3(string)   = 0.8*Ug1*cos(pi*t_n)    = {Ug3:.6e}',
                 f'Ug4(BH-vac)   = 0.5*Ug1                 = {Ug4:.6e}',
@@ -89,7 +93,7 @@ COMPUTE_METHOD = '''
                 f'GM/r^2(projection, LAST) = {g_projection:.6e} m/s^2',
             ],
             'available_equations': [
-                'g_base = dpm_emergent_ug1(M, r, B)  # DPM-emergent, not Newton',
+                'g_base = dpm_ug1_seed(M, r, B)  # DPM-emergent, not Newton',
                 'Ug1 = g_base  # seed from DPM vortex',
                 'Ug2 = 1.2 * Ug1  # charge-reactivity',
                 'Ug3 = 0.8 * Ug1 * cos(pi*t_n)  # magnetic string 90deg',
@@ -116,90 +120,90 @@ NEWTON_PATTERNS = [
     # g_base = G * M / (r ** 2) if r > 0 else 0   [most common]
     (
         r'([ \t]+g_base\s*=\s*)G\s*\*\s*M\s*/\s*\(r\s*\*\*\s*2\)\s*if\s*r\s*>\s*0\s*else\s*0',
-        r'\1dpm_emergent_ug1(M, r)  # DPM-emergent projection, not Newton seed'
+        r'\1dpm_ug1_seed(M, r)  # DPM-emergent projection, not Newton seed'
     ),
     # g_N = G * M / (r ** 2) if r > 0 else 0
     (
         r'([ \t]+g_N\s*=\s*)G\s*\*\s*M\s*/\s*\(r\s*\*\*\s*2\)\s*if\s*r\s*>\s*0\s*else\s*0',
-        r'\1dpm_emergent_ug1(M, r)  # DPM-emergent projection'
+        r'\1dpm_ug1_seed(M, r)  # DPM-emergent projection'
     ),
     # g_surface = G * M_body / r ** 2
     (
         r'([ \t]+g_surface\s*=\s*)G\s*\*\s*M_body\s*/\s*r\s*\*\*\s*2\b',
-        r'\1dpm_emergent_ug1(M_body, r)  # DPM-emergent projection'
+        r'\1dpm_ug1_seed(M_body, r)  # DPM-emergent projection'
     ),
     # g_base = G * M_visible / (r**2)
     (
         r'([ \t]+g_base\s*=\s*)G\s*\*\s*M_visible\s*/\s*\(r\*\*2\)',
-        r'\1dpm_emergent_ug1(M_visible, r)  # DPM-emergent projection'
+        r'\1dpm_ug1_seed(M_visible, r)  # DPM-emergent projection'
     ),
     # g_DM = G * M_DM / (r**2)
     (
         r'([ \t]+g_DM\s*=\s*)G\s*\*\s*M_DM\s*/\s*\(r\*\*2\)',
-        r'\1dpm_emergent_ug1(M_DM, r)  # DPM-emergent dark matter projection'
+        r'\1dpm_ug1_seed(M_DM, r)  # DPM-emergent dark matter projection'
     ),
     # g_base = G * M / (r**2)  [no spaces variant]
     (
         r'([ \t]+g_base\s*=\s*)G\s*\*\s*M\s*/\s*\(r\*\*2\)',
-        r'\1dpm_emergent_ug1(M, r)  # DPM-emergent projection, not Newton seed'
+        r'\1dpm_ug1_seed(M, r)  # DPM-emergent projection, not Newton seed'
     ),
     # g_N = G * M / (r**2)  [no spaces variant]
     (
         r'([ \t]+g_N\s*=\s*)G\s*\*\s*M\s*/\s*\(r\*\*2\)',
-        r'\1dpm_emergent_ug1(M, r)  # DPM-emergent projection'
+        r'\1dpm_ug1_seed(M, r)  # DPM-emergent projection'
     ),
     # g_base = G * M / r**2  (no parens)
     (
         r'([ \t]+g_base\s*=\s*)G\s*\*\s*M\s*/\s*r\s*\*\*\s*2\b(?!\s*if)',
-        r'\1dpm_emergent_ug1(M, r)  # DPM-emergent projection, not Newton seed'
+        r'\1dpm_ug1_seed(M, r)  # DPM-emergent projection, not Newton seed'
     ),
     # CP3 pattern: g_BH = G * M_BH / r_BH**2  (SMBH contribution used as seed base)
     (
         r'([ \t]+g_BH\s*=\s*)G\s*\*\s*M_BH\s*/\s*r_BH\*\*2\b',
-        r'\1dpm_emergent_ug1(M_BH, r_BH)  # DPM-emergent BH projection'
+        r'\1dpm_ug1_seed(M_BH, r_BH)  # DPM-emergent BH projection'
     ),
     # term_BH = G * M_BH / r_BH**2  (used as Newton base in multi-system calc)
     (
         r'([ \t]+term_BH\s*=\s*)G\s*\*\s*M_BH\s*/\s*r_BH\*\*2\b',
-        r'\1dpm_emergent_ug1(M_BH, r_BH)  # DPM-emergent BH projection'
+        r'\1dpm_ug1_seed(M_BH, r_BH)  # DPM-emergent BH projection'
     ),
     # g_Sun_tidal  = G * M_Sun / (r_orbit * r_orbit)
     (
         r'([ \t]+g_Sun_tidal\s*=\s*)G\s*\*\s*M_Sun\s*/\s*\(r_orbit\s*\*\s*r_orbit\)',
-        r'\1dpm_emergent_ug1(M_Sun, r_orbit)  # DPM-emergent solar tidal projection'
+        r'\1dpm_ug1_seed(M_Sun, r_orbit)  # DPM-emergent solar tidal projection'
     ),
     # CP2 specific: Ug_per_plasmoid = G * m / r  [used as proxy in plasmoid]
     (
         r'([ \t]+Ug_per_plasmoid\s*=\s*)G\s*\*\s*m\s*/\s*r\b',
-        r'\1dpm_emergent_ug1(m, r)  # DPM-emergent plasmoid projection'
+        r'\1dpm_ug1_seed(m, r)  # DPM-emergent plasmoid projection'
     ),
     # CP2: Ug_proxy = G * M_total / d_m**2
     (
         r'([ \t]+Ug_proxy\s*=\s*)G\s*\*\s*M_total\s*/\s*d_m\*\*2\b',
-        r'\1dpm_emergent_ug1(M_total, d_m)  # DPM-emergent proxy projection'
+        r'\1dpm_ug1_seed(M_total, d_m)  # DPM-emergent proxy projection'
     ),
     # CP2: U_red_dwarf = G * M_red_dwarf / R_red_dwarf  (potential energy, not gravity seed)
     # NOTE: This is a potential energy term, so we leave it as a comment only
     (
         r'([ \t]+U_red_dwarf\s*=\s*)G\s*\*\s*M_red_dwarf\s*/\s*R_red_dwarf\b',
-        r'\1dpm_emergent_ug1(M_red_dwarf, R_red_dwarf)  # DPM-emergent red dwarf projection'
+        r'\1dpm_ug1_seed(M_red_dwarf, R_red_dwarf)  # DPM-emergent red dwarf projection'
     ),
     # CP4: Ug1 = G * M_star * mu_B * B_T / r_m**3 * (1 + H_SCm)  -- uses G*M directly as base
     (
         r'([ \t]+Ug1\s*=\s*)G\s*\*\s*M_star\s*\*\s*mu_B\s*\*\s*B_T\s*/\s*r_m\*\*3\s*\*\s*\(1\s*\+\s*H_SCm\)',
-        r'\1dpm_emergent_ug1(M_star, r_m) * mu_B * B_T / r_m**3 * (1 + H_SCm)  # DPM-emergent'
+        r'\1dpm_ug1_seed(M_star, r_m) * mu_B * B_T / r_m**3 * (1 + H_SCm)  # DPM-emergent'
     ),
     # CP4: Ug2 = G * M_star * eps0 * E_field**2 / (2 * r_m) * rho_sum * H_SCm
     (
         r'([ \t]+Ug2\s*=\s*)G\s*\*\s*M_star\s*\*\s*eps0\s*\*\s*E_field\*\*2\s*/\s*\(2\s*\*\s*r_m\)\s*\*\s*rho_sum\s*\*\s*H_SCm',
-        r'\1dpm_emergent_ug1(M_star, r_m) * eps0 * E_field**2 / (2 * r_m) * rho_sum * H_SCm  # DPM-emergent'
+        r'\1dpm_ug1_seed(M_star, r_m) * eps0 * E_field**2 / (2 * r_m) * rho_sum * H_SCm  # DPM-emergent'
     ),
 ]
 
 
 def ensure_dpm_function(content: str, filename: str) -> tuple[str, bool]:
-    """Ensure dpm_emergent_ug1 is defined in the file. Returns (content, was_added)."""
-    if 'def dpm_emergent_ug1(' in content:
+    """Ensure dpm_ug1_seed is defined in the file. Returns (content, was_added)."""
+    if 'def dpm_ug1_seed(' in content:
         return content, False
     # Find a good insertion point: after imports and constants, before first class
     # Look for the first 'class ' line
@@ -207,13 +211,13 @@ def ensure_dpm_function(content: str, filename: str) -> tuple[str, bool]:
     if first_class:
         insert_pos = first_class.start()
         content = content[:insert_pos] + DPM_BLOCK + '\n' + content[insert_pos:]
-        print(f'  [DPM] Injected dpm_emergent_ug1 into {filename}')
+        print(f'  [DPM] Injected dpm_ug1_seed into {filename}')
         return content, True
     return content, False
 
 
 def fix_newton_violations(content: str) -> tuple[str, int]:
-    """Replace Newton-as-base patterns with dpm_emergent_ug1(). Returns (content, count)."""
+    """Replace Newton-as-base patterns with dpm_ug1_seed(). Returns (content, count)."""
     total = 0
     for pattern, replacement in NEWTON_PATTERNS:
         new_content, n = re.subn(pattern, replacement, content)
@@ -305,7 +309,7 @@ def process_file(filepath: str) -> None:
 
     original_len = len(content)
 
-    # Step 1: Ensure dpm_emergent_ug1 is defined
+    # Step 1: Ensure dpm_ug1_seed is defined
     content, dpm_added = ensure_dpm_function(content, filename)
 
     # Step 1.5: Fix pre-existing backslash-continuation + blank-line syntax errors

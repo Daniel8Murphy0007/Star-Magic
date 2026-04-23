@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 """
 production_scaling_v14.py — AGN Merger + QGP Dynamics at 600k calc/s
 
@@ -15,7 +15,7 @@ History: v4 (100k) → v5 (150k) → v6 (200k) → v7 (300k) → v8 (350k)
 """
 
 import math
-from dpm_helpers import dpm_emergent_ug1, dpm_emergent_ug2
+from dpm_helpers import dpm_ug1_seed, dpm_ug2_shell
 
 import time
 from typing import Dict, List
@@ -66,10 +66,10 @@ S26_3RD = sum((SSQ ** n) / (n ** 26) * _ramanujan_Rn(n, 3) for n in range(1, 27)
 # ── §1  Carry-Forward Kernels (v11) ───────────────────────────────────────
 
 def kernel_gravity_26layer(M_kg: float = 4e6 * M_SUN, r: float = 1e12) -> float:
-    return sum(dpm_emergent_ug1(M_kg, r) * SSQ * i / 26 for i in range(1, 27))
+    return sum(dpm_ug1_seed(M_kg, r) * SSQ * i / 26 for i in range(1, 27))
 
 def kernel_fu_bi_i(M_kg: float = 4e6 * M_SUN, r: float = 1e12) -> float:
-    return sum(dpm_emergent_ug1(M_kg, r) * math.exp(-SSQ * i / 26) * BETA_I for i in range(1, 27))
+    return sum(dpm_ug1_seed(M_kg, r) * math.exp(-SSQ * i / 26) * BETA_I for i in range(1, 27))
 
 def kernel_phonon_ares(omega: float = OMEGA_SCM, gamma: float = GAMMA_0) -> float:
     return math.exp(-(omega - OMEGA_SCM)**2 / (2 * gamma**2)) * S26
@@ -86,9 +86,9 @@ def kernel_gw170817_strain(d_Mpc: float = 40.0) -> float:
 
 def kernel_blazar_ergosphere(M_Msun: float = 6.5e9, a: float = 0.90) -> float:
     M = M_Msun * M_SUN
-    rS = 2 * dpm_emergent_ug1(M, C)
+    rS = 2 * dpm_ug1_seed(M, C)
     rH = rS / 2 * (1 + math.sqrt(max(1 - a**2, 0)))
-    return sum(dpm_emergent_ug1(M, rH) * math.exp(-SSQ * i / 26) for i in range(1, 27))
+    return sum(dpm_ug1_seed(M, rH) * math.exp(-SSQ * i / 26) for i in range(1, 27))
 
 def kernel_rest_phonon_jet(gamma_THz: float = 0.10, A_jet: float = 1.5) -> float:
     Gr = 2 * PI * gamma_THz * 1e12
@@ -103,13 +103,13 @@ def kernel_pipeline_full() -> float:
 
 def kernel_cena_jet(M_Msun: float = 5.5e7, a: float = 0.70, B: float = 3000) -> float:
     M = M_Msun * M_SUN
-    rS = 2 * dpm_emergent_ug1(M, C)
+    rS = 2 * dpm_ug1_seed(M, C)
     rH = rS / 2 * (1 + math.sqrt(max(1 - a**2, 0)))
     return (B**2 / (8 * PI)) * (rH / C)**2 * a**2 * C
 
 def kernel_txs0506_jet(M_Msun: float = 3e8, a: float = 0.95, B: float = 5000) -> float:
     M = M_Msun * M_SUN
-    rS = 2 * dpm_emergent_ug1(M, C)
+    rS = 2 * dpm_ug1_seed(M, C)
     rH = rS / 2 * (1 + math.sqrt(max(1 - a**2, 0)))
     return (B**2 / (8 * PI)) * (rH / C)**2 * a**2 * C
 
@@ -163,7 +163,7 @@ def kernel_99sys_gamma_sweep(gamma_THz: float = 0.10) -> float:
         elif i < 70:
             j = i - 55
             if j < 8: M = (1.4 + j * 0.15) * M_SUN; r = 12e3
-            else: M = (3.0 + (j - 8) * 14.0) * M_SUN; r = max(2 * dpm_emergent_ug1(M, C) * 3, 1.0)
+            else: M = (3.0 + (j - 8) * 14.0) * M_SUN; r = max(2 * dpm_ug1_seed(M, C) * 3, 1.0)
         elif i < 85:
             j = i - 70; M = (1e13 + j * 5e13) * M_SUN; r = 1e22 * (1 + j * 0.2)
         else:
@@ -181,7 +181,7 @@ def kernel_99sys_gamma_sweep(gamma_THz: float = 0.10) -> float:
 
 def kernel_agn_cena_fubi(gamma_THz: float = 0.10) -> float:
     M = 5.5e7 * M_SUN; a = 0.70; B = 3000
-    rS = 2 * dpm_emergent_ug1(M, C)
+    rS = 2 * dpm_ug1_seed(M, C)
     rH = rS / 2 * (1 + math.sqrt(max(1 - a**2, 0)))
     r2 = rH ** 2
     Ug = sum(G * M / r2 * SSQ * i / 26 for i in range(1, 27))
@@ -202,7 +202,7 @@ def kernel_ns_merger_gw190425(d_Mpc: float = 159.0) -> float:
 def kernel_agn_merger_fubi(M_Msun: float = 5.5e7, a: float = 0.70) -> float:
     """AGN merger F_U_Bi with S₂₆⁽³⁾ (3rd-order Ramanujan)."""
     M = M_Msun * M_SUN
-    rS = 2 * dpm_emergent_ug1(M, C)
+    rS = 2 * dpm_ug1_seed(M, C)
     rH = rS / 2 * (1 + math.sqrt(max(1 - a**2, 0)))
     r2 = rH ** 2
     Ug = sum(G * M / r2 * SSQ * i / 26 for i in range(1, 27))

@@ -1,4 +1,4 @@
-"""
+﻿"""
 MUGE_equations_module.py
 Master Universal Gravity Equations (MUGE) Calculator Module
 
@@ -25,7 +25,7 @@ from typing import Dict, Any, Optional, Tuple, List
 from dataclasses import dataclass, field
 from enum import Enum
 import math
-from dpm_helpers import dpm_emergent_ug1, dpm_emergent_ug2
+from dpm_helpers import dpm_ug1_seed, dpm_ug2_shell
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -210,14 +210,14 @@ class HydrogenMUGECalculator(MUGECalculatorBase):
         c = self.constants['c']
         
         # Base electron-proton gravity
-        g_base = dpm_emergent_ug1(m_eff, r) * m_p
+        g_base = dpm_ug1_seed(m_eff, r) * m_p
         
         # Nuclear sum (simplified - equal spacing approximation)
         g_nuclear = 0.0
         for Z in range(1, Z_max + 1):
             M_Z = Z * m_p  # Approximate nuclear mass
             r_Z = r * (1 + 0.01 * Z)  # Radius scaling
-            g_nuclear += dpm_emergent_ug1(M_Z, r_Z)
+            g_nuclear += dpm_ug1_seed(M_Z, r_Z)
         
         # Superconductive and Hubble factors
         sc_factor = (1 + f_sc)
@@ -302,7 +302,7 @@ class RingsOfRelativityMUGECalculator(MUGECalculatorBase):
         B_crit = self.constants['B_crit_magnetar']
         
         # Base Newtonian gravity
-        g_newton = dpm_emergent_ug1(M, r)
+        g_newton = dpm_ug1_seed(M, r)
         
         # Cosmological factor H(z)t
         H_z = H_0 * np.sqrt(0.3 * (1 + z)**3 + 0.7)  # Flat ΛCDM
@@ -409,10 +409,10 @@ class MagnetarMUGECalculator(MUGECalculatorBase):
         B_crit = self.constants['B_crit_magnetar']
         
         # Surface gravity (Newtonian)
-        g_surface = dpm_emergent_ug1(M, R)
+        g_surface = dpm_ug1_seed(M, R)
         
         # Relativistic correction (Schwarzschild)
-        r_s = 2 * dpm_emergent_ug1(M, c)
+        r_s = 2 * dpm_ug1_seed(M, c)
         rel_factor = 1 / np.sqrt(1 - r_s / R)
         
         # Magnetic field evolution
@@ -519,7 +519,7 @@ class GlobularClusterMUGECalculator(MUGECalculatorBase):
         M_enclosed = M_total * (x**3 / (1 + x**2)**1.5) if x < 10 else M_total
         
         # Base gravity
-        g_base = dpm_emergent_ug1(M_enclosed, r)
+        g_base = dpm_ug1_seed(M_enclosed, r)
         
         # Core collapse factor
         alpha = 2.0  # Collapse exponent
@@ -626,13 +626,13 @@ class SgrAStarMUGECalculator(MUGECalculatorBase):
         M_t = M_0 * (1 + M_dot / M_0 * np.exp(-t / tau_growth) * t) if t > 0 else M_0
         
         # Schwarzschild radius
-        r_s = 2 * dpm_emergent_ug1(M_t, c)
+        r_s = 2 * dpm_ug1_seed(M_t, c)
         
         # Event horizon (Kerr)
         r_plus = r_s / 2 * (1 + np.sqrt(1 - a**2))
         
         # Base gravity
-        g_base = dpm_emergent_ug1(M_t, r)
+        g_base = dpm_ug1_seed(M_t, r)
         
         # Hubble factor
         hubble_factor = 1 + H_0 * t
@@ -763,7 +763,7 @@ class SolarSystemMUGECalculator(MUGECalculatorBase):
             P = P_yr * 365.25 * 86400
             
             # Base gravity at planet location
-            g_planet = dpm_emergent_ug1(M_sun, a)
+            g_planet = dpm_ug1_seed(M_sun, a)
             
             # Resonance term
             f_orbital = 1 / P

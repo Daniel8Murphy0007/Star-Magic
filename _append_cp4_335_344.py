@@ -1,4 +1,4 @@
-from dpm_helpers import dpm_emergent_ug1, dpm_emergent_ug2
+﻿from dpm_helpers import dpm_ug1_seed, dpm_ug2_shell
 """
 Append CP4 classes #335–#344 to CondensedPhysics4.py
 Session 181 | PAPER_751–760 | v5.39
@@ -129,7 +129,7 @@ class V838MonLightEchoUQFFCalculator:
         rho_SCm = self.UQFF_CONSTANTS["RHO_SCM"]
         t_s = t_yr * 3.156e7
         r_echo = c * t_s
-        Ug1 = dpm_emergent_ug1(M_star, r_echo)
+        Ug1 = dpm_ug1_seed(M_star, r_echo)
         rho_dust = r0 * math.exp(-beta * Ug1)
         vac_correction = 1 + rho_UA / rho_SCm
         I_echo = (L / (4 * math.pi * r_echo**2)) * sigma * rho_dust * (1 + f_TRZ) * vac_correction
@@ -210,7 +210,7 @@ class MagnetarEvolutionUQFFCalculator:
         t  = p.get("t_s", 1.578e11)
         B_t = B0 * math.exp(-t / tau_B)
         Omega_t = Omega0 * math.exp(-t / tau_spin)
-        g_grav = (dpm_emergent_ug1(M, r)) * (1 + H0 * t) * (1 - B_t / B_crit)
+        g_grav = (dpm_ug1_seed(M, r)) * (1 + H0 * t) * (1 - B_t / B_crit)
         # Ug1 + Ug4 floor
         Ug_floor = 1.007e12
         # GW quadrupole spin-down contribution
@@ -294,7 +294,7 @@ class SgrAStarEvolutionUQFFCalculator:
         Mdot_t = Mdot0 * math.exp(-t / tau_acc)
         # Ω(t) = (0.3c/r_s)*exp(-t/tau_sp)
         Omega_t = (0.3 * c / r_s) * math.exp(-t / tau_sp)
-        g_grav  = (dpm_emergent_ug1(M, r_s)) * (1 + H0 * t) * math.sin(theta)
+        g_grav  = (dpm_ug1_seed(M, r_s)) * (1 + H0 * t) * math.sin(theta)
         g_Ug    = (Lambda * c**2 / 3) + 1.0e3   # Ug1+Ug2 small floor
         g_total = g_grav + g_Ug
         return {
@@ -377,7 +377,7 @@ class TapestryBlazingStarbirthNGC2014Calculator:
         M_t  = M0 + M_SF
         H0 = 2.184e-18
         B_crit = 4.4e9
-        g_grav  = (dpm_emergent_ug1(M_t, r)) * (1 + H0 * t) * (1 - B / B_crit)
+        g_grav  = (dpm_ug1_seed(M_t, r)) * (1 + H0 * t) * (1 - B / B_crit)
         g_ram   = rho * v_w**2 / r
         # EM Aether term: q*(v*B)*11e-12
         g_EM    = 1.0 * (v_w * B) * 11 * 1e-12
@@ -461,7 +461,7 @@ class Westerlund2SuperClusterUQFFCalculator:
         M_t  = M0 + M_SF
         H0   = 2.184e-18
         B_crit = 4.4e9
-        g_grav  = (dpm_emergent_ug1(M_t, r)) * (1 + H0 * t) * (1 - B / B_crit)
+        g_grav  = (dpm_ug1_seed(M_t, r)) * (1 + H0 * t) * (1 - B / B_crit)
         g_ram   = rho * v_w**2 / r
         g_EM    = 1.0 * (v_w * B) * 11 * 1e-12
         g_total = g_grav + g_ram + g_EM
@@ -542,7 +542,7 @@ class PillarsOfCreationM16ErosionCalculator:
         B_crit = 4.4e9
         E_t = E0 * math.exp(-t / tau)
         surv = 1.0 - E_t
-        g_grav = (dpm_emergent_ug1(M, r)) * (1 + H0 * t) * (1 - B / B_crit) * surv
+        g_grav = (dpm_ug1_seed(M, r)) * (1 + H0 * t) * (1 - B / B_crit) * surv
         g_ram  = rho * v_w**2 / r
         g_EM   = 1.0 * (v_w * B) * 11 * 1e-12 * surv
         g_total = g_grav + g_ram + g_EM
@@ -626,7 +626,7 @@ class RingsOfRelativityEinsteinRingCalculator:
         H_z_si = H_z * 1e3 / 3.086e22  # s^-1
         # Lensing efficiency
         L_t = (G * M / (c**2 * r_E)) * DLS_DS
-        g_grav = (dpm_emergent_ug1(M, r_E)) * (1 + H_z_si * t_s) * (1 - B / B_crit) * (1 + L_t)
+        g_grav = (dpm_ug1_seed(M, r_E)) * (1 + H_z_si * t_s) * (1 - B / B_crit) * (1 + L_t)
         g_EM   = 1.0 * (v * B) * 11 * 1e-12
         g_total = g_grav + g_EM
         return {
@@ -713,7 +713,7 @@ class HorseheadNebulaBarnard33UQFFCalculator:
         # Radiation pressure acceleration
         P_rad = (L_s / (4 * math.pi * r**2 * c)) * (rho / m_H)
         # UQFF gravity
-        g_grav = (dpm_emergent_ug1(M_cloud, r)) * (1 + H0 * t) * (1 - B / B_crit) * surv
+        g_grav = (dpm_ug1_seed(M_cloud, r)) * (1 + H0 * t) * (1 - B / B_crit) * surv
         # EM Aether term
         g_EM   = 1.0 * (v * B) * 11 * 1e-12 * surv
         g_total = g_grav + P_rad + g_EM
@@ -804,7 +804,7 @@ class NGC1275MagneticMonsterPerseusACalculator:
         F_BH = F0 * (1 - math.exp(-t / tau_BH))
         H_z_km = H0_km * math.sqrt(Omega_m * (1 + z)**3 + Omega_L)
         H_z_si = H_z_km * 1e3 / 3.086e22
-        g_grav  = (dpm_emergent_ug1(M, r)) * (1 + H_z_si * t) * (1 - B_fil / B_crit) * (1 - F_BH)
+        g_grav  = (dpm_ug1_seed(M, r)) * (1 + H_z_si * t) * (1 - B_fil / B_crit) * (1 - F_BH)
         # Filament magnetic support
         a_fil = (B_fil**2 * V_fil) / (2 * mu0 * M_fil * r)
         # EM Aether merger term

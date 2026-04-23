@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 """
 production_scaling_v15.py — Production Scaling to 650k calc/s
 
@@ -18,7 +18,7 @@ Architecture: Standalone kernel functions, ALL_KERNELS list, benchmark class.
 """
 
 import math
-from dpm_helpers import dpm_emergent_ug1, dpm_emergent_ug2
+from dpm_helpers import dpm_ug1_seed, dpm_ug2_shell
 
 import time
 from typing import Dict, List, Callable
@@ -70,17 +70,17 @@ def Phi(gamma: float) -> float:
 # ── §2  Carry-Forward Kernels (v11: 16, v13: 4, v14: 4 = 24) ────────────
 
 def kernel_gravity_26layer(M=M_SUN, r=6.96e8):
-    return sum(dpm_emergent_ug1(M, r) * SSQ * i / 26 for i in range(1, 27))
+    return sum(dpm_ug1_seed(M, r) * SSQ * i / 26 for i in range(1, 27))
 
 
 def kernel_fu_bi_i(M=M_SUN, r=6.96e8, t=86400):
-    Ug = sum(dpm_emergent_ug1(M, r) * SSQ * i / 26 for i in range(1, 27))
-    Ub = sum(dpm_emergent_ug1(M, r) * math.exp(-SSQ * i / 26) * BETA_I for i in range(1, 27))
+    Ug = sum(dpm_ug1_seed(M, r) * SSQ * i / 26 for i in range(1, 27))
+    Ub = sum(dpm_ug1_seed(M, r) * math.exp(-SSQ * i / 26) * BETA_I for i in range(1, 27))
     return (Ug - Ub) + F_NEUTRON * S26_3RD * Phi(GAMMA_0) * math.exp(min(KAPPA * t, 500))
 
 
 def kernel_phonon_ares(M=M_SUN, r=6.96e8):
-    return sum(math.exp(-SSQ * i / 26) * BETA_I * dpm_emergent_ug1(M, r) for i in range(1, 27))
+    return sum(math.exp(-SSQ * i / 26) * BETA_I * dpm_ug1_seed(M, r) for i in range(1, 27))
 
 
 def kernel_jet_mjet(A=1.5, gamma_THz=0.1):
@@ -98,7 +98,7 @@ def kernel_gw170817_strain(M_chirp=1.186, d_Mpc=40):
 
 
 def kernel_blazar_ergosphere(M=3e8, a=0.95):
-    M_kg = M * M_SUN; rS = 2 * dpm_emergent_ug1(M_kg, C)
+    M_kg = M * M_SUN; rS = 2 * dpm_ug1_seed(M_kg, C)
     return rS / 2 * (1 + math.sqrt(max(1 - a**2, 0)))
 
 
@@ -140,14 +140,14 @@ def kernel_ramanujan_26d_sum():
 def kernel_triadic_solver(M=M_SUN, r=6.96e8):
     Ug = kernel_gravity_26layer(M, r)
     Ub = kernel_phonon_ares(M, r)
-    Um = dpm_emergent_ug1(M, r) * SSQ * 0.1
+    Um = dpm_ug1_seed(M, r) * SSQ * 0.1
     return Ug + Um - Ub
 
 
 # v13 carry-forward (4)
 def kernel_fubi_inside_out(M=5e7, r=None):
     M_kg = M * M_SUN
-    if r is None: r = 2 * dpm_emergent_ug1(M_kg, C)
+    if r is None: r = 2 * dpm_ug1_seed(M_kg, C)
     return kernel_fu_bi_i(M_kg, r, 86400)
 
 
@@ -159,7 +159,7 @@ def kernel_99sys_gamma_sweep():
 
 
 def kernel_agn_cena_fubi(M=5.5e7, a=0.70):
-    M_kg = M * M_SUN; rS = 2 * dpm_emergent_ug1(M_kg, C)
+    M_kg = M * M_SUN; rS = 2 * dpm_ug1_seed(M_kg, C)
     rH = rS / 2 * (1 + math.sqrt(max(1 - a**2, 0)))
     return kernel_fu_bi_i(M_kg, rH, 86400)
 
@@ -170,10 +170,10 @@ def kernel_ns_merger_gw190425(M_chirp=1.44, d_Mpc=159):
 
 # v14 carry-forward (4)
 def kernel_agn_merger_fubi(M1=5.5e7, M2=3e7, a=0.70):
-    M_kg = (M1 + M2) * M_SUN; rS = 2 * dpm_emergent_ug1(M_kg, C)
+    M_kg = (M1 + M2) * M_SUN; rS = 2 * dpm_ug1_seed(M_kg, C)
     rH = rS / 2 * (1 + math.sqrt(max(1 - a**2, 0)))
-    Ug = sum(dpm_emergent_ug1(M_kg, rH) * SSQ * i / 26 for i in range(1, 27))
-    Ub = sum(dpm_emergent_ug1(M_kg, rH) * math.exp(-SSQ * i / 26) * BETA_I for i in range(1, 27))
+    Ug = sum(dpm_ug1_seed(M_kg, rH) * SSQ * i / 26 for i in range(1, 27))
+    Ub = sum(dpm_ug1_seed(M_kg, rH) * math.exp(-SSQ * i / 26) * BETA_I for i in range(1, 27))
     return abs(Ub) / (abs(Ug) + 1e-300) * S26_3RD
 
 
@@ -196,10 +196,10 @@ def kernel_ym_mass_gap(T=2e12, Tc=1.5e12):
 def kernel_3c273_agn_fubi(M=8.86e8, a=0.90, A_jet=2.1):
     """3C273 AGN jet modulation: 3.1× at Γ₀."""
     M_kg = M * M_SUN
-    rS = 2 * dpm_emergent_ug1(M_kg, C)
+    rS = 2 * dpm_ug1_seed(M_kg, C)
     rH = rS / 2 * (1 + math.sqrt(max(1 - a**2, 0)))
-    Ug = sum(dpm_emergent_ug1(M_kg, rH) * SSQ * i / 26 for i in range(1, 27))
-    Ub = sum(dpm_emergent_ug1(M_kg, rH) * math.exp(-SSQ * i / 26) * BETA_I for i in range(1, 27))
+    Ug = sum(dpm_ug1_seed(M_kg, rH) * SSQ * i / 26 for i in range(1, 27))
+    Ub = sum(dpm_ug1_seed(M_kg, rH) * math.exp(-SSQ * i / 26) * BETA_I for i in range(1, 27))
     ratio = abs(Ub) / (abs(Ug) + abs(Ub) + 1e-300)
     M_jet = 1 + A_jet  # at resonance exp(0) = 1
     return ratio * M_jet * S26_3RD
@@ -208,10 +208,10 @@ def kernel_3c273_agn_fubi(M=8.86e8, a=0.90, A_jet=2.1):
 def kernel_ton618_agn_fubi(M=6.6e10, a=0.998, A_jet=2.8):
     """TON618 AGN jet modulation: 3.8× at Γ₀."""
     M_kg = M * M_SUN
-    rS = 2 * dpm_emergent_ug1(M_kg, C)
+    rS = 2 * dpm_ug1_seed(M_kg, C)
     rH = rS / 2 * (1 + math.sqrt(max(1 - a**2, 0)))
-    Ug = sum(dpm_emergent_ug1(M_kg, rH) * SSQ * i / 26 for i in range(1, 27))
-    Ub = sum(dpm_emergent_ug1(M_kg, rH) * math.exp(-SSQ * i / 26) * BETA_I for i in range(1, 27))
+    Ug = sum(dpm_ug1_seed(M_kg, rH) * SSQ * i / 26 for i in range(1, 27))
+    Ub = sum(dpm_ug1_seed(M_kg, rH) * math.exp(-SSQ * i / 26) * BETA_I for i in range(1, 27))
     ratio = abs(Ub) / (abs(Ug) + abs(Ub) + 1e-300)
     M_jet = 1 + A_jet
     return ratio * M_jet * S26_3RD
@@ -226,7 +226,7 @@ def kernel_gw170817_merger(M_chirp=1.186, d_Mpc=40, suppression=0.667):
 def kernel_smbh_merger_fubi(M1=5.5e7, M2=3e7, a1=0.70, a2=0.60):
     """SMBH merger F_U_Bi: inside-to-outside buoyancy."""
     M_total = (M1 + M2) * M_SUN
-    rS = 2 * dpm_emergent_ug1(M_total, C)
+    rS = 2 * dpm_ug1_seed(M_total, C)
     a_eff = (M1 * a1 + M2 * a2) / (M1 + M2)
     rH = rS / 2 * (1 + math.sqrt(max(1 - a_eff**2, 0)))
     rho = RHO_VAC * math.exp(min(KAPPA * 86400, 500))

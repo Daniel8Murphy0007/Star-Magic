@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+﻿# -*- coding: utf-8 -*-
 """
 ================================================================================
 COMPACT OBJECTS MODULE
@@ -23,7 +23,7 @@ References:
 from dataclasses import dataclass, field
 from typing import Dict, List, Optional, Tuple
 import math
-from dpm_helpers import dpm_emergent_ug1, dpm_emergent_ug2
+from dpm_helpers import dpm_ug1_seed, dpm_ug2_shell
 
 
 # ==============================================================================
@@ -112,7 +112,7 @@ class NeutronStarCalculator:
         Surface gravity as DPM-emergent Ug1.
 
         In reduced observational form this matches GM/R^2 scaling, but the
-        implementation intentionally routes through dpm_emergent_ug1().
+        implementation intentionally routes through dpm_ug1_seed().
         
         Args:
             M: Mass (kg)
@@ -121,7 +121,7 @@ class NeutronStarCalculator:
         Returns:
             g: Surface gravity (m/s²)
         """
-        return dpm_emergent_ug1(M, R)
+        return dpm_ug1_seed(M, R)
     
     @staticmethod
     def compactness(M: float, R: float) -> float:

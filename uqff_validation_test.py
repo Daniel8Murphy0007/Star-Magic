@@ -1,4 +1,4 @@
-from dpm_helpers import dpm_emergent_ug1, dpm_emergent_ug2
+﻿from dpm_helpers import dpm_ug1_seed, dpm_ug2_shell
 #!/usr/bin/env python3
 """
 UQFF Solvability Validation Test
@@ -185,7 +185,7 @@ def compute_integrand(system_params, t):
     
     # Core terms
     momentum = (m_e * c**2 / r**2) * DPM_momentum * np.cos(theta)
-    gravity = (dpm_emergent_ug1(M, r)) * DPM_gravity
+    gravity = (dpm_ug1_seed(M, r)) * DPM_gravity
     vacuum = rho_vac_UA * DPM_stability
     
     # LENR resonance
@@ -243,7 +243,7 @@ def compute_F_U_Bi_i(system_params, t=1.0):
     
     # Base terms
     momentum = (m_e * c**2 / r**2) * DPM_momentum * np.cos(theta)
-    gravity = (dpm_emergent_ug1(M, r)) * DPM_gravity
+    gravity = (dpm_ug1_seed(M, r)) * DPM_gravity
     
     # Unified gravity components
     Ug1 = compute_Ug1(M, r, B0, t=t)

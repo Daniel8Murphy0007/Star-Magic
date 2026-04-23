@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 """
 millennium_prize_uqff_calculator.py — UQFF Millennium Prize Applications Calculator
 ═════════════════════════════════════════════════════════════════════════════════════
@@ -27,7 +27,7 @@ SESSION: 204 | April 7, 2026
 """
 
 import math
-from dpm_helpers import dpm_emergent_ug1, dpm_emergent_ug2
+from dpm_helpers import dpm_ug1_seed, dpm_ug2_shell
 
 import json
 import sys
@@ -584,7 +584,7 @@ class UnifiedLagrangianForceCalculator:
         rho_sw = dataset.get("rho_sw", 5e-21)
 
         # SECTOR 1: Einstein-Hilbert → Newtonian baseline
-        F_grav = dpm_emergent_ug1(M, r)
+        F_grav = dpm_ug1_seed(M, r)
 
         # SECTOR 2: Yang-Mills → Ug3
         omega_s = dataset.get("omega_s", 1.0)
@@ -634,7 +634,7 @@ class UnifiedLagrangianForceCalculator:
         # SECTOR 9: KK → F_LED
         R_ED = dataset.get("R_ED_m", 1e-6)
         n_ED = 22
-        F_LED = dpm_emergent_ug1(M, r) * M * (r / R_ED)**n_ED if r < R_ED else 0
+        F_LED = dpm_ug1_seed(M, r) * M * (r / R_ED)**n_ED if r < R_ED else 0
 
         # Total F_U_Bi_i
         F_total = (Ug1 + Ug2 + Ug3 + Ug4

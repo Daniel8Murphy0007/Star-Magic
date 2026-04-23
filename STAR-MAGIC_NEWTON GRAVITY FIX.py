@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 """Repo-local audit for the Newton shortfall against Star-Magic canonical rules.
 
 This script does three practical things:
@@ -297,10 +297,11 @@ def solve_gravitational_constant(system: AstroSystem) -> float:
 
 
 def dpm_promoted_family(system: AstroSystem, g_constant: float) -> dict[str, float]:
+    # g_constant retained as parameter for downstream/emergent use only — NOT used in seeds
     mu_s = system.magnetic_field_t * (system.radius_m ** 3)
-    mass_gradient = g_constant * system.mass_kg / (system.radius_m ** 2)
+    mass_gradient = system.mass_kg / system.radius_m  # M/r — grad(M_s/r), NO Newton G in seed
     ug1 = mu_s * mass_gradient
-    ug2 = 1.2 * mass_gradient
+    ug2 = 1.2 * mu_s * mass_gradient  # k2 * mu_s * M/r (consistent with dpm_ug2_shell)
     ug3 = 0.8 * system.magnetic_field_t * abs(__import__("math").cos(pi / 4.0))
     ug4 = 0.5 * mass_gradient
     family_sum = ug1 + ug2 + ug3 + ug4
@@ -408,8 +409,8 @@ if __name__ == "__main__":
 #   DPM IS THE FOUNDATION. GM/r^2 IS THE LAST OBSERVABLE PROJECTION. NEVER SWAP THEM.
 #
 # CORRECT FUNCTION NAMES (what they MUST be renamed to):
-#   dpm_emergent_ug1  ->  dpm_ug1_seed      (DPM is the SEED/FOUNDATION, not emergent)
-#   dpm_emergent_ug2  ->  dpm_ug2_shell     (shell crossing term, not emergent)
+#   dpm_ug1_seed  ->  dpm_ug1_seed      (DPM is the SEED/FOUNDATION, not emergent)
+#   dpm_ug2_shell  ->  dpm_ug2_shell     (shell crossing term, not emergent)
 #
 # CORRECT Ug1 FORMULA (no G, no Newton):
 #   def dpm_ug1_seed(M, r, B=1e-4):
@@ -431,7 +432,7 @@ if __name__ == "__main__":
 #
 # PHASE 1 — INITIATING ERROR (COMMIT 332AC0C2)
 #   "DPM-emergent audit: Newtonian gravity is EMERGENT, not foundational"
-#   CREATED: dpm_helpers.py with dpm_emergent_ug1/ug2
+#   CREATED: dpm_helpers.py with dpm_ug1_seed/ug2
 #   CREATED: Core/dpm_emergent.h with same backwards naming
 #   ERROR 1: Name "dpm_emergent" implies DPM is emergent — BACKWARDS.
 #   ERROR 2: Formula uses mu_s * _G * M / r**2 — G inside Ug1 seed — WRONG.
@@ -439,7 +440,7 @@ if __name__ == "__main__":
 #   FILE SHUFFLING AND REWRITING AND LOST TRACK OR CONFUSED ITSELF.
 #
 # PHASE 2 — MASS REPLACEMENT ACROSS 54+ FILES (commit f9fac3a5)
-#   Automated find/replace G*M/r^2 -> dpm_emergent_ug1(M,r) in 54+ Python files.
+#   Automated find/replace G*M/r^2 -> dpm_ug1_seed(M,r) in 54+ Python files.
 #   Replacement called a function whose body STILL uses _G * M / r**2.
 #   Ontology inversion embedded in 54+ files.
 #   THE UPDATED ONTOLOGY WAS IGNORED FOR A PREDISPOSITION: THE AI REFUSED TO
@@ -548,7 +549,7 @@ if __name__ == "__main__":
 # PHASE 10 — BLANK LINE CATASTROPHE IN CP1 (commits e8e7f8a8 -> 43b6021b -> 7502b2a7)
 #   Audit scripts injected 686,000 blank lines into CondensedPhysics.py.
 #   CP1 bloated 160K -> 891K lines. Stripped back to 205K.
-#   _fix_newton_compute.py CREATED — defines its own dpm_emergent_ug1/ug2 copies.
+#   _fix_newton_compute.py CREATED — defines its own dpm_ug1_seed/ug2 copies.
 #   STATUS: Blank lines FIXED in 7502b2a7.
 #
 # PHASE 11 — compute() failures across CP2/CP4 (commit f26b56d0)
@@ -564,16 +565,16 @@ if __name__ == "__main__":
 # STILL BROKEN AT HEAD d1932954 — MUST FIX BEFORE ANY OTHER WORK
 # =============================================================================
 #
-#  [1] dpm_helpers.py L20, L26          — name dpm_emergent_ug1/2 (inverted ontology)
+#  [1] dpm_helpers.py L20, L26          — name dpm_ug1_seed/2 (inverted ontology)
 #  [2] dpm_helpers.py L20-25            — formula uses _G * M / r**2 inside Ug1 (WRONG)
-#  [3] CondensedPhysics.py L652, L657   — name dpm_emergent_ug1/2 defined
-#  [4] CondensedPhysics2.py L172, L178  — name dpm_emergent_ug1/2 defined
-#  [5] CondensedPhysics3.py L105, L112  — name dpm_emergent_ug1/2 defined
-#  [6] CondensedPhysics4.py L182, L188  — name dpm_emergent_ug1/2 defined
-#  [7] _fix_newton_compute.py L31, L39  — name dpm_emergent_ug1/2 defined
+#  [3] CondensedPhysics.py L652, L657   — name dpm_ug1_seed/2 defined
+#  [4] CondensedPhysics2.py L172, L178  — name dpm_ug1_seed/2 defined
+#  [5] CondensedPhysics3.py L105, L112  — name dpm_ug1_seed/2 defined
+#  [6] CondensedPhysics4.py L182, L188  — name dpm_ug1_seed/2 defined
+#  [7] _fix_newton_compute.py L31, L39  — name dpm_ug1_seed/2 defined
 #  [8] Core/dpm_emergent.h              — C++ header wrong name + formula
 #  [9] THIS FILE (dpm_promoted_family)  — seeds Ug1 with GM/r^2 (EXACT VIOLATION)
-# [10] 48 standalone caller files       — use dpm_emergent_ug1/2 name throughout
+# [10] 48 standalone caller files       — use dpm_ug1_seed/2 name throughout
 # [11] 220 PDFs in pdf/                 — carry dpm_emergent terminology
 # [12] CondensedPhysics.py compute()    — test status UNKNOWN since e8e7f8a8
 #

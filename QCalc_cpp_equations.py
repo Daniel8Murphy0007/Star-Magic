@@ -1,4 +1,4 @@
-"""
+﻿"""
 QCalc_cpp_equations.py - ALL equations extracted from MAIN_1_CoAnQi.cpp
 
 Auto-generated comprehensive extraction including:
@@ -16,7 +16,7 @@ Usage:
 """
 
 import math
-from dpm_helpers import dpm_emergent_ug1, dpm_emergent_ug2
+from dpm_helpers import dpm_ug1_seed, dpm_ug2_shell
 
 from typing import Dict, Any, Callable
 
@@ -2700,7 +2700,7 @@ def _compute_NGC1275BlackHoleTerm(p: dict) -> float:
     G = CONSTANTS.get("G", 6.6743e-11)
     c = CONSTANTS.get("c", 2.998e8)
     try:
-        result = dpm_emergent_ug1(M_BH, r_BH)
+        result = dpm_ug1_seed(M_BH, r_BH)
         return float(result) if result == result else 0.0
     except Exception:
         return 0.0
@@ -3120,7 +3120,7 @@ def _compute_AndromedaBlackHoleTerm(p: dict) -> float:
     G = CONSTANTS.get("G", 6.6743e-11)
     c = CONSTANTS.get("c", 2.998e8)
     try:
-        result = dpm_emergent_ug1(M_BH, r_BH)
+        result = dpm_ug1_seed(M_BH, r_BH)
         return float(result) if result == result else 0.0
     except Exception:
         return 0.0
@@ -3246,7 +3246,7 @@ def _compute_SombreroBlackHoleTerm(p: dict) -> float:
     G = CONSTANTS.get("G", 6.6743e-11)
     c = CONSTANTS.get("c", 2.998e8)
     try:
-        result = dpm_emergent_ug1(M_BH, r_BH)
+        result = dpm_ug1_seed(M_BH, r_BH)
         return float(result) if result == result else 0.0
     except Exception:
         return 0.0
@@ -3484,7 +3484,7 @@ def _compute_SaturnRingTidalTerm(p: dict) -> float:
     G = CONSTANTS.get("G", 6.6743e-11)
     c = CONSTANTS.get("c", 2.998e8)
     try:
-        result = dpm_emergent_ug1(M_ring, r_ring)
+        result = dpm_ug1_seed(M_ring, r_ring)
         return float(result) if result == result else 0.0
     except Exception:
         return 0.0
@@ -4184,7 +4184,7 @@ def _compute_YoungStarsCore(p: dict) -> float:
     G = CONSTANTS.get("G", 6.6743e-11)
     c = CONSTANTS.get("c", 2.998e8)
     try:
-        result = (dpm_emergent_ug1(M, r)) * (1.0 + M_SF) * expansion * sc_correction
+        result = (dpm_ug1_seed(M, r)) * (1.0 + M_SF) * expansion * sc_correction
         return float(result) if result == result else 0.0
     except Exception:
         return 0.0
@@ -4324,7 +4324,7 @@ def _compute_BigBangCore(p: dict) -> float:
     G = CONSTANTS.get("G", 6.6743e-11)
     c = CONSTANTS.get("c", 2.998e8)
     try:
-        result = (dpm_emergent_ug1(M_t, r_t)) * expansion * sc_correction
+        result = (dpm_ug1_seed(M_t, r_t)) * expansion * sc_correction
         return float(result) if result == result else 0.0
     except Exception:
         return 0.0
@@ -4478,7 +4478,7 @@ def _compute_M51Core(p: dict) -> float:
     G = CONSTANTS.get("G", 6.6743e-11)
     c = CONSTANTS.get("c", 2.998e8)
     try:
-        result = (dpm_emergent_ug1(M, r)) * (1.0 + M_SF) * expansion * sc_correction * (1.0 + F_env)
+        result = (dpm_ug1_seed(M, r)) * (1.0 + M_SF) * expansion * sc_correction * (1.0 + F_env)
         return float(result) if result == result else 0.0
     except Exception:
         return 0.0
@@ -4632,7 +4632,7 @@ def _compute_NGC1316Core(p: dict) -> float:
     G = CONSTANTS.get("G", 6.6743e-11)
     c = CONSTANTS.get("c", 2.998e8)
     try:
-        result = (dpm_emergent_ug1(M, r)) * m_factor * expansion * sc_correction
+        result = (dpm_ug1_seed(M, r)) * m_factor * expansion * sc_correction
         return float(result) if result == result else 0.0
     except Exception:
         return 0.0
@@ -4898,7 +4898,7 @@ def _compute_SMBHBinaryCoalescence(p: dict) -> float:
     G = CONSTANTS.get("G", 6.6743e-11)
     c = CONSTANTS.get("c", 2.998e8)
     try:
-        result = (dpm_emergent_ug1(M_chirp, c)) * tau_factor
+        result = (dpm_ug1_seed(M_chirp, c)) * tau_factor
         return float(result) if result == result else 0.0
     except Exception:
         return 0.0
@@ -7334,7 +7334,7 @@ def _compute_ButterflyNebula_DPM_gravityTerm(p: dict) -> float:
     G = CONSTANTS.get("G", 6.6743e-11)
     c = CONSTANTS.get("c", 2.998e8)
     try:
-        result = dpm_emergent_ug1(M, r)
+        result = dpm_ug1_seed(M, r)
         return float(result) if result == result else 0.0
     except Exception:
         return 0.0
@@ -7572,7 +7572,7 @@ def _compute_Abell2256_CompressedGTerm(p: dict) -> float:
     G = CONSTANTS.get("G", 6.6743e-11)
     c = CONSTANTS.get("c", 2.998e8)
     try:
-        result = dpm_emergent_ug1(M, r)
+        result = dpm_ug1_seed(M, r)
         return float(result) if result == result else 0.0
     except Exception:
         return 0.0
@@ -10988,7 +10988,7 @@ def _compute_ESO137_G_timeTerm(p: dict) -> float:
     G = CONSTANTS.get("G", 6.6743e-11)
     c = CONSTANTS.get("c", 2.998e8)
     try:
-        result = (dpm_emergent_ug1(M, r)) * (1 + 0.1 * math.math.sin(1e-15 * t))
+        result = (dpm_ug1_seed(M, r)) * (1 + 0.1 * math.math.sin(1e-15 * t))
         return float(result) if result == result else 0.0
     except Exception:
         return 0.0
@@ -16798,7 +16798,7 @@ def _compute_inline_term_grav(p: dict) -> float:
     G = CONSTANTS.get("G", 6.6743e-11)
     c = CONSTANTS.get("c", 2.998e8)
     try:
-        result = (dpm_emergent_ug1(system_M, system_r)) * DPM_gravity
+        result = (dpm_ug1_seed(system_M, system_r)) * DPM_gravity
         return float(result) if result == result else 0.0
     except Exception:
         return 0.0
@@ -16854,7 +16854,7 @@ def _compute_inline_gravity_compressed(p: dict) -> float:
     G = CONSTANTS.get("G", 6.6743e-11)
     c = CONSTANTS.get("c", 2.998e8)
     try:
-        result = dpm_emergent_ug1(system_M, system_r)
+        result = dpm_ug1_seed(system_M, system_r)
         return float(result) if result == result else 0.0
     except Exception:
         return 0.0
@@ -17148,7 +17148,7 @@ def _compute_inline_gravity(p: dict) -> float:
     G = CONSTANTS.get("G", 6.6743e-11)
     c = CONSTANTS.get("c", 2.998e8)
     try:
-        result = dpm_emergent_ug1(system_M, system_r)
+        result = dpm_ug1_seed(system_M, system_r)
         return float(result) if result == result else 0.0
     except Exception:
         return 0.0
@@ -17470,7 +17470,7 @@ def _compute_inline_term_grav_1(p: dict) -> float:
     G = CONSTANTS.get("G", 6.6743e-11)
     c = CONSTANTS.get("c", 2.998e8)
     try:
-        result = (dpm_emergent_ug1(system_M, system_r)) * 1.0
+        result = (dpm_ug1_seed(system_M, system_r)) * 1.0
         return float(result) if result == result else 0.0
     except Exception:
         return 0.0
@@ -18828,7 +18828,7 @@ def _compute_inline_base_gravity_1(p: dict) -> float:
     G = CONSTANTS.get("G", 6.6743e-11)
     c = CONSTANTS.get("c", 2.998e8)
     try:
-        result = dpm_emergent_ug1(system_intensity, r)
+        result = dpm_ug1_seed(system_intensity, r)
         return float(result) if result == result else 0.0
     except Exception:
         return 0.0
@@ -19556,7 +19556,7 @@ def _compute_inline_g_compressed(p: dict) -> float:
     G = CONSTANTS.get("G", 6.6743e-11)
     c = CONSTANTS.get("c", 2.998e8)
     try:
-        result = dpm_emergent_ug1(A, r_sys) * compression * fluid_mod
+        result = dpm_ug1_seed(A, r_sys) * compression * fluid_mod
         return float(result) if result == result else 0.0
     except Exception:
         return 0.0
@@ -23098,7 +23098,7 @@ def _compute_inline_g_sun(p: dict) -> float:
     G = CONSTANTS.get("G", 6.6743e-11)
     c = CONSTANTS.get("c", 2.998e8)
     try:
-        result = dpm_emergent_ug1(M_Sun, r_orbit)
+        result = dpm_ug1_seed(M_Sun, r_orbit)
         return float(result) if result == result else 0.0
     except Exception:
         return 0.0
@@ -23392,7 +23392,7 @@ def _compute_inline_g_base(p: dict) -> float:
     G = CONSTANTS.get("G", 6.6743e-11)
     c = CONSTANTS.get("c", 2.998e8)
     try:
-        result = dpm_emergent_ug1(M, r_t)
+        result = dpm_ug1_seed(M, r_t)
         return float(result) if result == result else 0.0
     except Exception:
         return 0.0
@@ -23420,7 +23420,7 @@ def _compute_inline_Ug1_2(p: dict) -> float:
     G = CONSTANTS.get("G", 6.6743e-11)
     c = CONSTANTS.get("c", 2.998e8)
     try:
-        result = dpm_emergent_ug1(M, r_t)
+        result = dpm_ug1_seed(M, r_t)
         return float(result) if result == result else 0.0
     except Exception:
         return 0.0
@@ -24274,7 +24274,7 @@ def _compute_inline_g_base_1(p: dict) -> float:
     G = CONSTANTS.get("G", 6.6743e-11)
     c = CONSTANTS.get("c", 2.998e8)
     try:
-        result = (dpm_emergent_ug1(M_t, r_t))
+        result = (dpm_ug1_seed(M_t, r_t))
         return float(result) if result == result else 0.0
     except Exception:
         return 0.0
@@ -26248,7 +26248,7 @@ def _compute_inline_Ug4_i(p: dict) -> float:
     G = CONSTANTS.get("G", 6.6743e-11)
     c = CONSTANTS.get("c", 2.998e8)
     try:
-        result = (dpm_emergent_ug1(M_i, r_i)) * (1 + alpha_i) * SCm_i
+        result = (dpm_ug1_seed(M_i, r_i)) * (1 + alpha_i) * SCm_i
         return float(result) if result == result else 0.0
     except Exception:
         return 0.0
@@ -35352,7 +35352,7 @@ def _compute_inline_Ug(p: dict) -> float:
     G = CONSTANTS.get("G", 6.6743e-11)
     c = CONSTANTS.get("c", 2.998e8)
     try:
-        result = dpm_emergent_ug1(M_s, r_max)
+        result = dpm_ug1_seed(M_s, r_max)
         return float(result) if result == result else 0.0
     except Exception:
         return 0.0
@@ -44662,7 +44662,7 @@ def _compute_inline_grav_base(p: dict) -> float:
     G = CONSTANTS.get("G", 6.6743e-11)
     c = CONSTANTS.get("c", 2.998e8)
     try:
-        result = (dpm_emergent_ug1(MM, rr)) * local_vars["one_plus_H_t"] * local_vars["B_adjust"] * local_vars["one_plus_F_env"]
+        result = (dpm_ug1_seed(MM, rr)) * local_vars["one_plus_H_t"] * local_vars["B_adjust"] * local_vars["one_plus_F_env"]
         return float(result) if result == result else 0.0
     except Exception:
         return 0.0

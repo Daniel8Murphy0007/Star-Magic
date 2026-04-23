@@ -1,0 +1,590 @@
+[
+  {
+    "class": "NumericalMethods",
+    "error": "no compute() method"
+  },
+  {
+    "class": "NavierStokesSolver",
+    "error": "no compute() method"
+  },
+  {
+    "class": "TensorAlgebra",
+    "error": "no compute() method"
+  },
+  {
+    "class": "SchrodingerSolver",
+    "error": "no compute() method"
+  },
+  {
+    "class": "SpectralDecomposition",
+    "error": "no compute() method"
+  },
+  {
+    "class": "ParallelComputation",
+    "error": "no compute() method"
+  },
+  {
+    "class": "UQFFLogger",
+    "error": "no compute() method"
+  },
+  {
+    "class": "SelfExpandingMixin",
+    "error": "no compute() method"
+  },
+  {
+    "class": "SelfSimulatingExpandingMixin",
+    "error": "no compute() method"
+  },
+  {
+    "class": "JSONRPCServer",
+    "error": "no compute() method"
+  },
+  {
+    "class": "EquationResult",
+    "error": "init: TypeError: EquationResult.__init__() missing 5 required positional arguments: 'latex', 'substituted', 'result', 'unit', and 'parameters_used'"
+  },
+  {
+    "class": "QuantumWaveMixin",
+    "error": "no compute() method"
+  },
+  {
+    "class": "UQFFScale",
+    "error": "init: ValueError: {'M': 1.989e+30, 'mass': 1.989e+30, 'r': 696000000.0, 'radius': 696000000.0, 'R': 696000000.0, 'distance': 149600000000.0, 'd': 149600000000.0, 'B0': "
+  },
+  {
+    "class": "MultiScaleParams",
+    "error": "init: TypeError: MultiScaleParams.__init__() missing 1 required positional argument: 'scale'"
+  },
+  {
+    "class": "SystemParams",
+    "error": "init: TypeError: SystemParams.__init__() missing 2 required positional arguments: 'M' and 'r'"
+  },
+  {
+    "class": "UQFFMasterEquation",
+    "error": "init: TypeError: UQFFMasterEquation.__init__() missing 2 required positional arguments: 'description' and 'scale'"
+  },
+  {
+    "class": "UQFF",
+    "error": "AttributeError: 'dict' object has no attribute 'M'"
+  },
+  {
+    "class": "UQFFCompressed",
+    "error": "AttributeError: 'dict' object has no attribute 'M'"
+  },
+  {
+    "class": "UQFFResonant",
+    "error": "AttributeError: 'dict' object has no attribute 'omega_s'"
+  },
+  {
+    "class": "UQFFSuperconductive",
+    "error": "AttributeError: 'dict' object has no attribute 'T'"
+  },
+  {
+    "class": "UQFFBuoyant",
+    "error": "AttributeError: 'dict' object has no attribute 'theta'"
+  },
+  {
+    "class": "UQFFMasterBuoyant",
+    "error": "AttributeError: 'dict' object has no attribute 'r'"
+  },
+  {
+    "class": "UQFFQuadratic",
+    "error": "AttributeError: 'dict' object has no attribute 'r'"
+  },
+  {
+    "class": "WhittakerDecompositionModel",
+    "error": "no compute() method"
+  },
+  {
+    "class": "ERBridgeStateTransitionModel",
+    "error": "no compute() method"
+  },
+  {
+    "class": "GradMsRTerm",
+    "error": "TypeError: GradMsRTerm.compute() missing 2 required positional arguments: 'M_s' and 'R'"
+  },
+  {
+    "class": "BjTerm",
+    "error": "TypeError: BjTerm.compute() missing 3 required positional arguments: 'B_0', 'r', and 'j'"
+  },
+  {
+    "class": "OmegaSTTerm",
+    "error": "TypeError: OmegaSTTerm.compute() missing 1 required positional argument: 'r'"
+  },
+  {
+    "class": "MuJTerm",
+    "error": "TypeError: MuJTerm.compute() missing 1 required positional argument: 'J'"
+  },
+  {
+    "class": "MUGECompressedBase",
+    "error": "TypeError: MUGECompressedBase.compute() missing 2 required positional arguments: 'M' and 'r'"
+  },
+  {
+    "class": "MUGECompressedExpansion",
+    "error": "TypeError: MUGECompressedExpansion.compute() missing 1 required positional argument: 'r'"
+  },
+  {
+    "class": "MUGECompressedSuper",
+    "error": "TypeError: MUGECompressedSuper.compute() missing 3 required positional arguments: 'B', 'rho', and 'r'"
+  },
+  {
+    "class": "MUGECompressedEnvelope",
+    "error": "TypeError: MUGECompressedEnvelope.compute() missing 2 required positional arguments: 'g_base' and 'r'"
+  },
+  {
+    "class": "MUGECompressedUgSum",
+    "error": "TypeError: MUGECompressedUgSum.compute() missing 4 required positional arguments: 'Ug1', 'Ug2', 'Ug3', and 'Ug4'"
+  },
+  {
+    "class": "MUGECompressedCosm",
+    "error": "TypeError: MUGECompressedCosm.compute() missing 1 required positional argument: 'r'"
+  },
+  {
+    "class": "MUGECompressedQuantum",
+    "error": "TypeError: MUGECompressedQuantum.compute() missing 2 required positional arguments: 'm' and 'r'"
+  },
+  {
+    "class": "MUGECompressedFluid",
+    "error": "TypeError: MUGECompressedFluid.compute() missing 4 required positional arguments: 'eta', 'v', 'rho', and 'L'"
+  },
+  {
+    "class": "MUGECompressedPerturbation",
+    "error": "TypeError: MUGECompressedPerturbation.compute() missing 2 required positional arguments: 'rho_DM' and 'r'"
+  },
+  {
+    "class": "YangMillsInstantonCalculator",
+    "error": "AttributeError: 'dict' object has no attribute 'tolist'"
+  },
+  {
+    "class": "UQFFInstantonExtension",
+    "error": "AttributeError: 'dict' object has no attribute 'tolist'"
+  },
+  {
+    "class": "GravitationalWaveUQFFCalculator",
+    "error": "ValueError: Unknown mode: {'M': 1.989e+30, 'mass': 1.989e+30, 'r': 696000000.0, 'radius': 696000000.0, 'R': 696000000.0, 'distance': 149600000000.0, 'd': 14960000"
+  },
+  {
+    "class": "DarkMatterHaloUQFFCalculator",
+    "error": "ValueError: Unknown mode: {'M': 1.989e+30, 'mass': 1.989e+30, 'r': 696000000.0, 'radius': 696000000.0, 'R': 696000000.0, 'distance': 149600000000.0, 'd': 14960000"
+  },
+  {
+    "class": "PlasmaInstabilityUQFFCalculator",
+    "error": "ValueError: Unknown mode: {'M': 1.989e+30, 'mass': 1.989e+30, 'r': 696000000.0, 'radius': 696000000.0, 'R': 696000000.0, 'distance': 149600000000.0, 'd': 14960000"
+  },
+  {
+    "class": "HawkingTemperatureUQFFCalculator",
+    "error": "ValueError: Mass M (kg) or M_solar required for 'hawking' mode"
+  },
+  {
+    "class": "PulsarTimingArrayUQFFCalculator",
+    "error": "ValueError: Unknown mode: {'M': 1.989e+30, 'mass': 1.989e+30, 'r': 696000000.0, 'radius': 696000000.0, 'R': 696000000.0, 'distance': 149600000000.0, 'd': 14960000"
+  },
+  {
+    "class": "NeutronStarEOSUQFFCalculator",
+    "error": "ValueError: Unknown mode: {'M': 1.989e+30, 'mass': 1.989e+30, 'r': 696000000.0, 'radius': 696000000.0, 'R': 696000000.0, 'distance': 149600000000.0, 'd': 14960000"
+  },
+  {
+    "class": "FastRadioBurstUQFFCalculator",
+    "error": "ValueError: Unknown mode: {'M': 1.989e+30, 'mass': 1.989e+30, 'r': 696000000.0, 'radius': 696000000.0, 'R': 696000000.0, 'distance': 149600000000.0, 'd': 14960000"
+  },
+  {
+    "class": "CMBAnomalyUQFFCalculator",
+    "error": "ValueError: Unknown mode: {'M': 1.989e+30, 'mass': 1.989e+30, 'r': 696000000.0, 'radius': 696000000.0, 'R': 696000000.0, 'distance': 149600000000.0, 'd': 14960000"
+  },
+  {
+    "class": "CalibrationConstantsRegistry",
+    "error": "no compute() method"
+  },
+  {
+    "class": "UniversalGravity1Calculator",
+    "error": "TypeError: UniversalGravity1Calculator.compute() missing 1 required positional argument: 't'"
+  },
+  {
+    "class": "UniversalGravity3Calculator",
+    "error": "TypeError: UniversalGravity3Calculator.compute() missing 1 required positional argument: 't'"
+  },
+  {
+    "class": "UniversalGravity4Calculator",
+    "error": "TypeError: UniversalGravity4Calculator.compute() missing 1 required positional argument: 't'"
+  },
+  {
+    "class": "UniversalBuoyancyDetailedCalculator",
+    "error": "TypeError: UniversalBuoyancyDetailedCalculator.compute() missing 1 required positional argument: 't'"
+  },
+  {
+    "class": "UniversalMagnetismDetailedCalculator",
+    "error": "TypeError: UniversalMagnetismDetailedCalculator.compute() missing 1 required positional argument: 't'"
+  },
+  {
+    "class": "UniversalAetherCalculator",
+    "error": "TypeError: UniversalAetherCalculator.compute() missing 1 required positional argument: 't'"
+  },
+  {
+    "class": "UnifiedFieldFullCalculator",
+    "error": "TypeError: UnifiedFieldFullCalculator.compute() missing 1 required positional argument: 't'"
+  },
+  {
+    "class": "ResonanceMUGEDetailedCalculator",
+    "error": "TypeError: ResonanceMUGEDetailedCalculator.compute() missing 1 required positional argument: 't'"
+  },
+  {
+    "class": "MuSTimeCalculator",
+    "error": "TypeError: MuSTimeCalculator.compute() missing 1 required positional argument: 't'"
+  },
+  {
+    "class": "BjTimeCalculator",
+    "error": "TypeError: BjTimeCalculator.compute() missing 1 required positional argument: 't'"
+  },
+  {
+    "class": "OmegaSTTimeCalculator",
+    "error": "TypeError: OmegaSTTimeCalculator.compute() missing 1 required positional argument: 't'"
+  },
+  {
+    "class": "MuJTimeCalculator",
+    "error": "TypeError: MuJTimeCalculator.compute() missing 1 required positional argument: 't'"
+  },
+  {
+    "class": "ReactorEfficiencyCalculator",
+    "error": "TypeError: ReactorEfficiencyCalculator.compute() missing 1 required positional argument: 't'"
+  },
+  {
+    "class": "ReactorEnergyCalculator",
+    "error": "TypeError: ReactorEnergyCalculator.compute() missing 1 required positional argument: 't'"
+  },
+  {
+    "class": "SpacetimeMetricCalculator",
+    "error": "TypeError: SpacetimeMetricCalculator.compute() missing 1 required positional argument: 't_n'"
+  },
+  {
+    "class": "DimensionalAnalysisCalculator",
+    "error": "TypeError: DimensionalAnalysisCalculator.compute() missing 6 required positional arguments: 'mass_exp1', 'mass_exp2', 'length_exp1', 'length_exp2', 'time_exp1', "
+  },
+  {
+    "class": "StarFormationGravityCalculator",
+    "error": "TypeError: StarFormationGravityCalculator.compute() missing 1 required positional argument: 't'"
+  },
+  {
+    "class": "StarburstBaseGravityCalculator",
+    "error": "TypeError: StarburstBaseGravityCalculator.compute() missing 1 required positional argument: 't'"
+  },
+  {
+    "class": "LymanSeriesCalculator",
+    "error": "TypeError: LymanSeriesCalculator.compute() missing 1 required positional argument: 't'"
+  },
+  {
+    "class": "BalmerSeriesCalculator",
+    "error": "TypeError: BalmerSeriesCalculator.compute() missing 1 required positional argument: 't'"
+  },
+  {
+    "class": "VirgoClusterMassCalculator",
+    "error": "TypeError: VirgoClusterMassCalculator.compute() missing 1 required positional argument: 'r'"
+  },
+  {
+    "class": "IntraclusterMediumCalculator",
+    "error": "TypeError: IntraclusterMediumCalculator.compute() missing 1 required positional argument: 'r'"
+  },
+  {
+    "class": "M87JetEnergyCalculator",
+    "error": "TypeError: M87JetEnergyCalculator.compute() missing 1 required positional argument: 'r'"
+  },
+  {
+    "class": "TidalStrippingCalculator",
+    "error": "TypeError: TidalStrippingCalculator.compute() missing 1 required positional argument: 'r'"
+  },
+  {
+    "class": "ClusterXRayEmissivityCalculator",
+    "error": "TypeError: ClusterXRayEmissivityCalculator.compute() missing 1 required positional argument: 'r'"
+  },
+  {
+    "class": "MSigmaRelationCalculator",
+    "error": "TypeError: MSigmaRelationCalculator.compute() missing 1 required positional argument: 'sigma'"
+  },
+  {
+    "class": "SpiralDensityWaveCalculator",
+    "error": "TypeError: SpiralDensityWaveCalculator.compute() missing 2 required positional arguments: 'r_kpc' and 'phi_rad'"
+  },
+  {
+    "class": "TidalInteractionCalculator",
+    "error": "TypeError: TidalInteractionCalculator.compute() missing 2 required positional arguments: 'r_kpc' and 'phi_rad'"
+  },
+  {
+    "class": "KennicuttSchmidtSFRCalculator",
+    "error": "TypeError: KennicuttSchmidtSFRCalculator.compute() missing 1 required positional argument: 'Sigma_gas'"
+  },
+  {
+    "class": "PillarErosionCalculator",
+    "error": "TypeError: PillarErosionCalculator.compute() missing 1 required positional argument: 't'"
+  },
+  {
+    "class": "PillarMassGrowthCalculator",
+    "error": "TypeError: PillarMassGrowthCalculator.compute() missing 1 required positional argument: 't'"
+  },
+  {
+    "class": "PillarGravityCalculator",
+    "error": "TypeError: PillarGravityCalculator.compute() missing 1 required positional argument: 't'"
+  },
+  {
+    "class": "M87RelativisticJetCalculator",
+    "error": "TypeError: M87RelativisticJetCalculator.compute() missing 1 required positional argument: 'z_kpc'"
+  },
+  {
+    "class": "VirgoICMCalculator",
+    "error": "TypeError: VirgoICMCalculator.compute() missing 1 required positional argument: 'r_kpc'"
+  },
+  {
+    "class": "M87StellarDynamicsCalculator",
+    "error": "TypeError: M87StellarDynamicsCalculator.compute() missing 1 required positional argument: 'r_kpc'"
+  },
+  {
+    "class": "M87DarkMatterHaloCalculator",
+    "error": "TypeError: M87DarkMatterHaloCalculator.compute() missing 1 required positional argument: 'r_kpc'"
+  },
+  {
+    "class": "M87GlobularClusterCalculator",
+    "error": "TypeError: M87GlobularClusterCalculator.compute() missing 1 required positional argument: 'r_kpc'"
+  },
+  {
+    "class": "M87UltradiffuseGalaxyCalculator",
+    "error": "TypeError: M87UltradiffuseGalaxyCalculator.compute() missing 1 required positional argument: 'r_cluster_kpc'"
+  },
+  {
+    "class": "M87MagneticFieldCalculator",
+    "error": "TypeError: M87MagneticFieldCalculator.compute() missing 1 required positional argument: 'r_kpc'"
+  },
+  {
+    "class": "SgrAStarBaseGravityCalculator",
+    "error": "TypeError: SgrAStarBaseGravityCalculator.compute() missing 1 required positional argument: 't'"
+  },
+  {
+    "class": "SgrAStarMassGrowthCalculator",
+    "error": "TypeError: SgrAStarMassGrowthCalculator.compute() missing 1 required positional argument: 't'"
+  },
+  {
+    "class": "SgrAStarUQFFUnificationCalculator",
+    "error": "TypeError: SgrAStarUQFFUnificationCalculator.compute() missing 1 required positional argument: 't'"
+  },
+  {
+    "class": "SgrAStarGravitationalWaveCalculator",
+    "error": "TypeError: SgrAStarGravitationalWaveCalculator.compute() missing 1 required positional argument: 't'"
+  },
+  {
+    "class": "SgrAStarSpinEvolutionCalculator",
+    "error": "TypeError: SgrAStarSpinEvolutionCalculator.compute() missing 1 required positional argument: 't'"
+  },
+  {
+    "class": "SgrAStarAccretionRateCalculator",
+    "error": "TypeError: SgrAStarAccretionRateCalculator.compute() missing 1 required positional argument: 't'"
+  },
+  {
+    "class": "SgrAStarMagneticDecayCalculator",
+    "error": "TypeError: SgrAStarMagneticDecayCalculator.compute() missing 1 required positional argument: 't'"
+  },
+  {
+    "class": "LENRCalibDynamicVacuumCalculator",
+    "error": "TypeError: LENRCalibDynamicVacuumCalculator.compute() missing 1 required positional argument: 't'"
+  },
+  {
+    "class": "LENRCalibQuantumCouplingCalculator",
+    "error": "TypeError: LENRCalibQuantumCouplingCalculator.compute() missing 1 required positional argument: 't'"
+  },
+  {
+    "class": "LENRCalibMuJCalculator",
+    "error": "TypeError: LENRCalibMuJCalculator.compute() missing 1 required positional argument: 't'"
+  },
+  {
+    "class": "LENRCalibEReactCalculator",
+    "error": "TypeError: LENRCalibEReactCalculator.compute() missing 1 required positional argument: 't'"
+  },
+  {
+    "class": "LENRCalibUmCalculator",
+    "error": "TypeError: LENRCalibUmCalculator.compute() missing 1 required positional argument: 't'"
+  },
+  {
+    "class": "LENRCalibElectricFieldCalculator",
+    "error": "TypeError: LENRCalibElectricFieldCalculator.compute() missing 1 required positional argument: 'Um'"
+  },
+  {
+    "class": "LENRCalibNonLocalExpCalculator",
+    "error": "TypeError: LENRCalibNonLocalExpCalculator.compute() missing 1 required positional argument: 't'"
+  },
+  {
+    "class": "LENRCalibRhoVacUAScmCalculator",
+    "error": "TypeError: LENRCalibRhoVacUAScmCalculator.compute() missing 1 required positional argument: 't'"
+  },
+  {
+    "class": "LENRCalibEtaNeutronRateCalculator",
+    "error": "TypeError: LENRCalibEtaNeutronRateCalculator.compute() missing 1 required positional argument: 't'"
+  },
+  {
+    "class": "NGC346DynamicVacuumCalculator",
+    "error": "TypeError: NGC346DynamicVacuumCalculator.compute() missing 1 required positional argument: 't'"
+  },
+  {
+    "class": "NGC346QuantumCouplingCalculator",
+    "error": "TypeError: NGC346QuantumCouplingCalculator.compute() missing 1 required positional argument: 't'"
+  },
+  {
+    "class": "NGC346HubbleExpansionCalculator",
+    "error": "TypeError: NGC346HubbleExpansionCalculator.compute() missing 1 required positional argument: 't'"
+  },
+  {
+    "class": "NGC346MassSFRCalculator",
+    "error": "TypeError: NGC346MassSFRCalculator.compute() missing 1 required positional argument: 't'"
+  },
+  {
+    "class": "NGC346Ug1DipoleCalculator",
+    "error": "TypeError: NGC346Ug1DipoleCalculator.compute() missing 1 required positional argument: 't'"
+  },
+  {
+    "class": "NGC346Ug4ReactionCalculator",
+    "error": "TypeError: NGC346Ug4ReactionCalculator.compute() missing 1 required positional argument: 't'"
+  },
+  {
+    "class": "VirgoExtClusterMassCalculator",
+    "error": "TypeError: VirgoExtClusterMassCalculator.compute() missing 1 required positional argument: 'r'"
+  },
+  {
+    "class": "VirgoExtICMCalculator",
+    "error": "TypeError: VirgoExtICMCalculator.compute() missing 1 required positional argument: 'r'"
+  },
+  {
+    "class": "VirgoExtPotentialCalculator",
+    "error": "TypeError: VirgoExtPotentialCalculator.compute() missing 1 required positional argument: 'r'"
+  },
+  {
+    "class": "VirgoExtDarkMatterCalculator",
+    "error": "TypeError: VirgoExtDarkMatterCalculator.compute() missing 1 required positional argument: 'r'"
+  },
+  {
+    "class": "VirgoExtM87JetCalculator",
+    "error": "TypeError: VirgoExtM87JetCalculator.compute() missing 1 required positional argument: 'r'"
+  },
+  {
+    "class": "VirgoExtTidalStrippingCalculator",
+    "error": "TypeError: VirgoExtTidalStrippingCalculator.compute() missing 1 required positional argument: 'r'"
+  },
+  {
+    "class": "VirgoExtXRayCalculator",
+    "error": "TypeError: VirgoExtXRayCalculator.compute() missing 1 required positional argument: 'r'"
+  },
+  {
+    "class": "VirgoExtVelocityDispersionCalculator",
+    "error": "TypeError: VirgoExtVelocityDispersionCalculator.compute() missing 1 required positional argument: 'r'"
+  },
+  {
+    "class": "VirgoExtMSigmaRelationCalculator",
+    "error": "TypeError: VirgoExtMSigmaRelationCalculator.compute() missing 1 required positional argument: 'sigma'"
+  },
+  {
+    "class": "CompressionExpansionFactorCalculator",
+    "error": "TypeError: CompressionExpansionFactorCalculator.compute() missing 2 required positional arguments: 't' and 'z'"
+  },
+  {
+    "class": "CompressionSuperconductiveCorrectionCalculator",
+    "error": "TypeError: CompressionSuperconductiveCorrectionCalculator.compute() missing 1 required positional argument: 'B'"
+  },
+  {
+    "class": "CompressionMassEvolutionCalculator",
+    "error": "TypeError: CompressionMassEvolutionCalculator.compute() missing 1 required positional argument: 't'"
+  },
+  {
+    "class": "CompressionUg1GravityCalculator",
+    "error": "TypeError: CompressionUg1GravityCalculator.compute() missing 2 required positional arguments: 'M' and 'r'"
+  },
+  {
+    "class": "CompressionUg3ExternalGravityCalculator",
+    "error": "TypeError: CompressionUg3ExternalGravityCalculator.compute() missing 2 required positional arguments: 'M_ext' and 'r_ext'"
+  },
+  {
+    "class": "CompressionUg4SuperconductiveCalculator",
+    "error": "TypeError: CompressionUg4SuperconductiveCalculator.compute() missing 1 required positional argument: 'Ug1'"
+  },
+  {
+    "class": "CompressionQuantumWaveCalculator",
+    "error": "TypeError: CompressionQuantumWaveCalculator.compute() missing 2 required positional arguments: 't' and 'x'"
+  },
+  {
+    "class": "CompressionDarkMatterPerturbationCalculator",
+    "error": "TypeError: CompressionDarkMatterPerturbationCalculator.compute() missing 5 required positional arguments: 'M_total', 'delta_rho', 'rho', 'M', and 'r'"
+  },
+  {
+    "class": "CompressionFluidDynamicsCalculator",
+    "error": "TypeError: CompressionFluidDynamicsCalculator.compute() missing 1 required positional argument: 'g_base'"
+  },
+  {
+    "class": "M51DipoleMagneticCalculator",
+    "error": "TypeError: M51DipoleMagneticCalculator.compute() missing 1 required positional argument: 'B'"
+  },
+  {
+    "class": "M51SuperconductorEnergyCalculator",
+    "error": "TypeError: M51SuperconductorEnergyCalculator.compute() missing 1 required positional argument: 'B_super'"
+  },
+  {
+    "class": "M51ReactionEnergyCalculator",
+    "error": "TypeError: M51ReactionEnergyCalculator.compute() missing 1 required positional argument: 't_days'"
+  },
+  {
+    "class": "M51InertialVacuumCalculator",
+    "error": "TypeError: M51InertialVacuumCalculator.compute() missing 1 required positional argument: 't_n'"
+  },
+  {
+    "class": "M51SpiralArmWaveCalculator",
+    "error": "TypeError: M51SpiralArmWaveCalculator.compute() missing 3 required positional arguments: 'r', 'phi', and 't'"
+  },
+  {
+    "class": "M51StarFormationForceCalculator",
+    "error": "TypeError: M51StarFormationForceCalculator.compute() missing 1 required positional argument: 'SFR'"
+  },
+  {
+    "class": "M51TidalForceCalculator",
+    "error": "TypeError: M51TidalForceCalculator.compute() missing 2 required positional arguments: 'M_companion' and 'd'"
+  },
+  {
+    "class": "M51DarkMatterCurvatureCalculator",
+    "error": "TypeError: M51DarkMatterCurvatureCalculator.compute() missing 3 required positional arguments: 'delta_rho_over_rho', 'M', and 'r'"
+  },
+  {
+    "class": "M51QuantumSpiralIntegralCalculator",
+    "error": "TypeError: M51QuantumSpiralIntegralCalculator.compute() missing 1 required positional argument: 'psi_squared_integral'"
+  },
+  {
+    "class": "M31StellarHaloDensityCalculator",
+    "error": "TypeError: M31StellarHaloDensityCalculator.compute() missing 1 required positional argument: 'r_kpc'"
+  },
+  {
+    "class": "M31DarkMatterNFWProfileCalculator",
+    "error": "TypeError: M31DarkMatterNFWProfileCalculator.compute() missing 1 required positional argument: 'r_kpc'"
+  },
+  {
+    "class": "M31RotationCurveCalculator",
+    "error": "TypeError: M31RotationCurveCalculator.compute() missing 1 required positional argument: 'r_kpc'"
+  },
+  {
+    "class": "M31CentralBlackHoleCalculator",
+    "error": "TypeError: M31CentralBlackHoleCalculator.compute() missing 1 required positional argument: 'r_pc'"
+  },
+  {
+    "class": "M31TidalStreamCalculator",
+    "error": "TypeError: M31TidalStreamCalculator.compute() missing 2 required positional arguments: 'r_kpc' and 'theta_rad'"
+  },
+  {
+    "class": "M31SatelliteInteractionCalculator",
+    "error": "TypeError: M31SatelliteInteractionCalculator.compute() missing 1 required positional argument: 'r_kpc'"
+  },
+  {
+    "class": "M31StarFormationRateCalculator",
+    "error": "TypeError: M31StarFormationRateCalculator.compute() missing 1 required positional argument: 'r_kpc'"
+  },
+  {
+    "class": "M31DiskWarpCalculator",
+    "error": "TypeError: M31DiskWarpCalculator.compute() missing 2 required positional arguments: 'r_kpc' and 'phi_rad'"
+  },
+  {
+    "class": "M31MagneticFieldCalculator",
+    "error": "TypeError: M31MagneticFieldCalculator.compute() missing 2 required positional arguments: 'r_kpc' and 'phi_rad'"
+  },
+  {
+    "class": "M31QuantumDarkMatterCalculator",
+    "error": "TypeError: M31QuantumDarkMatterCalculator.compute() missing 1 required positional argument: 'r_kpc'"
+  }
+]

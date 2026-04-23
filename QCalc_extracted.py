@@ -1,4 +1,4 @@
-from dpm_helpers import dpm_emergent_ug1, dpm_emergent_ug2
+﻿from dpm_helpers import dpm_ug1_seed, dpm_ug2_shell
 
 # ==============================================================================
 # AUTO-GENERATED PHYSICS CALCULATORS
@@ -1963,7 +1963,7 @@ class CompressedMUGEBaseTerm:
         
         # Computation (auto-converted from C++)
         if r == 0.0: return 0.0
-        return dpm_emergent_ug1(M, r)
+        return dpm_ug1_seed(M, r)
         
         return EquationResult(
             name=self.name,
@@ -9454,7 +9454,7 @@ class NGC1275BlackHoleTerm:
             params = {}
         
         # Computation (auto-converted from C++)
-        return dpm_emergent_ug1(M_BH, r_BH)
+        return dpm_ug1_seed(M_BH, r_BH)
         
         return EquationResult(
             name=self.name,
@@ -10832,7 +10832,7 @@ class AndromedaBlackHoleTerm:
             params = {}
         
         # Computation (auto-converted from C++)
-        return dpm_emergent_ug1(M_BH, r_BH)
+        return dpm_ug1_seed(M_BH, r_BH)
         
         return EquationResult(
             name=self.name,
@@ -11245,7 +11245,7 @@ class SombreroBlackHoleTerm:
             params = {}
         
         # Computation (auto-converted from C++)
-        return dpm_emergent_ug1(M_BH, r_BH)
+        return dpm_ug1_seed(M_BH, r_BH)
         
         return EquationResult(
             name=self.name,
@@ -12023,7 +12023,7 @@ class SaturnRingTidalTerm:
             params = {}
         
         # Computation (auto-converted from C++)
-        return dpm_emergent_ug1(M_ring, r_ring)
+        return dpm_ug1_seed(M_ring, r_ring)
         
         return EquationResult(
             name=self.name,
@@ -14310,7 +14310,7 @@ class YoungStarsCore:
         H0 = 2.3e-18
         z = 0.0
         B_crit = 1e-6
-        return (dpm_emergent_ug1(M, r)) * (1.0 + M_SF) * expansion * sc_correction
+        return (dpm_ug1_seed(M, r)) * (1.0 + M_SF) * expansion * sc_correction
         
         return EquationResult(
             name=self.name,
@@ -14809,7 +14809,7 @@ class BigBangCore:
         Omega_Lambda = 0.7
         expansion = 1.0 + Hz * t
         B_crit = 1e-6
-        return (dpm_emergent_ug1(M_t, r_t)) * expansion * sc_correction
+        return (dpm_ug1_seed(M_t, r_t)) * expansion * sc_correction
         
         return EquationResult(
             name=self.name,
@@ -15368,7 +15368,7 @@ class M51Core:
         B_crit = 1e-6
         # Environmental forces: tidal + star formation
         F_env = F_tidal + F_SF
-        return (dpm_emergent_ug1(M, r)) * (1.0 + M_SF) * expansion * sc_correction * (1.0 + F_env)
+        return (dpm_ug1_seed(M, r)) * (1.0 + M_SF) * expansion * sc_correction * (1.0 + F_env)
         
         return EquationResult(
             name=self.name,
@@ -15913,7 +15913,7 @@ class NGC1316Core:
         z = 0.0059
         H0 = 2.3e-18
         B_crit = 1e-6
-        return (dpm_emergent_ug1(M, r)) * m_factor * expansion * sc_correction
+        return (dpm_ug1_seed(M, r)) * m_factor * expansion * sc_correction
         
         return EquationResult(
             name=self.name,
@@ -16834,7 +16834,7 @@ class SMBHBinaryCoalescence:
         # Chirp mass influence: G*M_chirp/c^2 * (1 - t/t_coal) - Binary dynamics
         if tau_factor < 0.0:
         tau_factor = 0.0
-        return (dpm_emergent_ug1(M_chirp, c)) * tau_factor
+        return (dpm_ug1_seed(M_chirp, c)) * tau_factor
         
         return EquationResult(
             name=self.name,
@@ -25218,7 +25218,7 @@ class ButterflyNebula_DPM_gravityTerm:
         
         # Computation (auto-converted from C++)
         G = 6.674e-11
-        return dpm_emergent_ug1(M, r)
+        return dpm_ug1_seed(M, r)
         
         return EquationResult(
             name=self.name,
@@ -25985,7 +25985,7 @@ class Abell2256_CompressedGTerm:
         
         # Computation (auto-converted from C++)
         G = 6.674e-11
-        return dpm_emergent_ug1(M, r)
+        return dpm_ug1_seed(M, r)
         
         return EquationResult(
             name=self.name,
@@ -44895,7 +44895,7 @@ class SMBHUg1Term_SOURCE82:
         auto it_G = params.find("G")
         auto it_M_bh = params.find("M_bh")
         auto it_r = params.find("r")
-        return dpm_emergent_ug1(M_bh, r)
+        return dpm_ug1_seed(M_bh, r)
         
         return EquationResult(
             name=self.name,

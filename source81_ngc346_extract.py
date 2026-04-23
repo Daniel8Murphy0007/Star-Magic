@@ -1,8 +1,8 @@
-# SOURCE81: NGC346 Nebula (Small Magellanic Cloud) - Temporary extraction file
+﻿# SOURCE81: NGC346 Nebula (Small Magellanic Cloud) - Temporary extraction file
 # This will be merged into Phase7_Consolidated.py
 
 import math
-from dpm_helpers import dpm_emergent_ug1, dpm_emergent_ug2
+from dpm_helpers import dpm_ug1_seed, dpm_ug2_shell
 
 from typing import Dict, Any, Optional
 
@@ -150,7 +150,7 @@ class Source81_NGC346:
     ) -> float:
         """Calculate Ug3 magnetic strings disk (protostar collapse driver)."""
         M = M_visible + M_DM
-        Ug3 = dpm_emergent_ug1(M, r) * (rho_gas / rho_vac_UA)
+        Ug3 = dpm_ug1_seed(M, r) * (rho_gas / rho_vac_UA)
         return Ug3
     
     @staticmethod
@@ -181,7 +181,7 @@ class Source81_NGC346:
         Ug2 = (B_super ** 2) / (2 * mu_0)
         
         # Ug3: Protostar collapse
-        Ug3 = dpm_emergent_ug1(M, r) * (rho_gas / rho_vac_UA)
+        Ug3 = dpm_ug1_seed(M, r) * (rho_gas / rho_vac_UA)
         
         # Ug4: Reactor decay (τ=2000 yr = 6.312e10 s)
         tau_reactor = 2000 * 3.156e7  # Convert years to seconds

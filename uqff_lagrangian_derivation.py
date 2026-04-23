@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 """
 uqff_lagrangian_derivation.py — UQFF Unified Lagrangian → F_U_Bi_i Derivation Engine
 ═══════════════════════════════════════════════════════════════════════════════════════
@@ -36,7 +36,7 @@ SESSION: 202 | April 6, 2026
 """
 
 import math
-from dpm_helpers import dpm_emergent_ug1, dpm_emergent_ug2
+from dpm_helpers import dpm_ug1_seed, dpm_ug2_shell
 
 import json
 import sys
@@ -350,7 +350,7 @@ class EulerLagrangeDerivation:
     def _derive_einstein_hilbert(self, sector, p):
         M = p.get("M_kg", M_sun)
         r = p.get("r_m", 1e9)
-        F_grav = dpm_emergent_ug1(M, r)
+        F_grav = dpm_ug1_seed(M, r)
 
         chain = [
             "S_EH = ∫d⁴x √(-g) c⁴R/(16πG)",
@@ -699,9 +699,9 @@ class EulerLagrangeDerivation:
 
         # KK gravitational correction: F_LED = G_N M/r² × (r/R_ED)^n for r < R_ED
         if r < R_ED:
-            F_LED = dpm_emergent_ug1(M, r) * (r / R_ED)**n_ED
+            F_LED = dpm_ug1_seed(M, r) * (r / R_ED)**n_ED
         else:
-            F_LED = dpm_emergent_ug1(M, r)  # standard 4D at large r
+            F_LED = dpm_ug1_seed(M, r)  # standard 4D at large r
 
         # ALP photon coupling: F_ALP = g_aγγ² B² ω / m_a (Primakoff)
         B_ext = p.get("B_T", 1e-9)

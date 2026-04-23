@@ -1,4 +1,4 @@
-"""
+﻿"""
 AI_FUCKUP.py
 ============
 COMPLETE DAMAGE LOG — LAST 48 HOURS (~50 COMMITS)
@@ -17,7 +17,7 @@ Source data:
 # PHASE 0 — BEFORE THE DAMAGE (pre-332ac0c2)
 # ===========================================================================
 # State was stable. CP1/CP2/CP3/CP4 passing. index.js clean.
-# Star-Magic.txt existed. No dpm_emergent_ug1 anywhere.
+# Star-Magic.txt existed. No dpm_ug1_seed anywhere.
 # G*M/r^2 was the direct gravitational term in all calculators.
 
 # ===========================================================================
@@ -25,7 +25,7 @@ Source data:
 # "DPM-emergent audit: Newtonian gravity is EMERGENT, not foundational"
 # ===========================================================================
 # Files created:
-#   dpm_helpers.py          — introduced dpm_emergent_ug1(M, r) and dpm_emergent_ug2(M, r)
+#   dpm_helpers.py          — introduced dpm_ug1_seed(M, r) and dpm_ug2_shell(M, r)
 #   Core/dpm_emergent.h     — C++ header with same backwards naming
 #
 # ERROR 1 — NAME BACKWARDS:
@@ -49,9 +49,9 @@ Source data:
 
 # ===========================================================================
 # PHASE 2 — MASS REPLACEMENT ACROSS 54 FILES (commit f9fac3a5)
-# "DPM-emergent formula replacement: G*M/r^2 -> dpm_emergent_ug1(M,r)"
+# "DPM-emergent formula replacement: G*M/r^2 -> dpm_ug1_seed(M,r)"
 # ===========================================================================
-# Automated find/replace of G*M/r^2 -> dpm_emergent_ug1(M, r) in 54 Python files.
+# Automated find/replace of G*M/r^2 -> dpm_ug1_seed(M, r) in 54 Python files.
 # The replacement inserted a function call whose internal formula STILL used _G * M / r**2.
 # The ontology inversion was now embedded in 54 files.
 #
@@ -159,7 +159,7 @@ PHASE2_FILES_HIT = [
 #   1. dpm_helpers.py          — wrong definitions (dpm_emergent names + G in formula)
 #   2. Core/dpm_emergent.h     — wrong C++ header (same naming inversion)
 #   3. compact_objects_module.py — calls wrong names
-#   4. _fix_newton_compute.py  — defines its OWN copies of dpm_emergent_ug1/ug2 (L31, L39)
+#   4. _fix_newton_compute.py  — defines its OWN copies of dpm_ug1_seed/ug2 (L31, L39)
 #
 # Also touched in this commit:
 #   CondensedPhysics3.py           — 54 lines changed
@@ -212,9 +212,9 @@ PHASE2_FILES_HIT = [
 # e8e7f8a8: "Fix Newton violations + add missing compute(dataset) across CP1/CP2/CP3/CP4"
 #   CP1: 46 Newton fixes, 114 sig upgrades, 291 compute() added, 49 backslash bugs fixed
 #   CP2: 3 Newton fixes, 3 sig upgrades, 65 compute() added
-#   CP3: 5 Newton fixes, 10 compute() added, dpm_emergent_ug1 injected
+#   CP3: 5 Newton fixes, 10 compute() added, dpm_ug1_seed injected
 #   CP4: 2 Newton fixes, 11 sig upgrades, 10 compute() added
-#   _fix_newton_compute.py: CREATED (361 lines) — defines its own dpm_emergent_ug1/ug2 copies
+#   _fix_newton_compute.py: CREATED (361 lines) — defines its own dpm_ug1_seed/ug2 copies
 #   SIDE EFFECT: audit scripts injected 686,000 blank lines into CondensedPhysics.py
 #
 # 43b6021b: CondensedPhysicsAggregator updated — reported CP1 = 891,637 lines (bloated)
@@ -254,7 +254,7 @@ PHASE2_FILES_HIT = [
 # ===========================================================================
 STILL_BROKEN = {
     1: {
-        "what": "Name dpm_emergent_ug1 — ontologically inverted",
+        "what": "Name dpm_ug1_seed — ontologically inverted",
         "where": "dpm_helpers.py L20, L26",
         "status": "BROKEN",
     },
@@ -264,27 +264,27 @@ STILL_BROKEN = {
         "status": "BROKEN",
     },
     3: {
-        "what": "Name dpm_emergent_ug1/2 defined",
+        "what": "Name dpm_ug1_seed/2 defined",
         "where": "CondensedPhysics.py L652, L657",
         "status": "BROKEN",
     },
     4: {
-        "what": "Name dpm_emergent_ug1/2 defined",
+        "what": "Name dpm_ug1_seed/2 defined",
         "where": "CondensedPhysics2.py L172, L178",
         "status": "BROKEN",
     },
     5: {
-        "what": "Name dpm_emergent_ug1/2 defined",
+        "what": "Name dpm_ug1_seed/2 defined",
         "where": "CondensedPhysics3.py L105, L112",
         "status": "BROKEN",
     },
     6: {
-        "what": "Name dpm_emergent_ug1/2 defined",
+        "what": "Name dpm_ug1_seed/2 defined",
         "where": "CondensedPhysics4.py L182, L188",
         "status": "BROKEN",
     },
     7: {
-        "what": "Name dpm_emergent_ug1/2 defined",
+        "what": "Name dpm_ug1_seed/2 defined",
         "where": "_fix_newton_compute.py L31, L39",
         "status": "BROKEN",
     },
@@ -299,7 +299,7 @@ STILL_BROKEN = {
         "status": "BROKEN",
     },
     10: {
-        "what": "48 standalone caller files use dpm_emergent_ug1/2 name",
+        "what": "48 standalone caller files use dpm_ug1_seed/2 name",
         "where": "See PHASE2_FILES_HIT above (minus CP1-4 and dpm_helpers.py = 48 files)",
         "status": "BROKEN",
     },
@@ -356,8 +356,8 @@ FIXED = {
 # ===========================================================================
 FIX_PLAN = [
     # Step 1: Fix the 6 definition files
-    # Rename dpm_emergent_ug1 -> dpm_ug1_seed
-    # Rename dpm_emergent_ug2 -> dpm_ug2_shell
+    # Rename dpm_ug1_seed -> dpm_ug1_seed
+    # Rename dpm_ug2_shell -> dpm_ug2_shell
     # Fix Ug1 formula: remove _G, use M/r (mass gradient, NO G)
     # Files: dpm_helpers.py, CondensedPhysics.py, CondensedPhysics2.py,
     #        CondensedPhysics3.py, CondensedPhysics4.py, _fix_newton_compute.py
@@ -371,8 +371,8 @@ FIX_PLAN = [
     # Ug4 (add M_bh/d_g, rho_SCm)
 
     # Step 4: Bulk rename in 48 standalone caller files
-    # dpm_emergent_ug1 -> dpm_ug1_seed
-    # dpm_emergent_ug2 -> dpm_ug2_shell
+    # dpm_ug1_seed -> dpm_ug1_seed
+    # dpm_ug2_shell -> dpm_ug2_shell
     # (call sites only — formula fix not needed in callers)
 
     # Step 5: Run python _test_calculators.py — verify 2727/2727

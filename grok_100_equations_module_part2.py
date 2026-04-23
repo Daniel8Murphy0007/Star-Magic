@@ -1,4 +1,4 @@
-"""
+﻿"""
 Grok 100+ Physics Equations Module - Part 2
 ============================================
 Continuing equations 64-100 plus MUGE and Electric Universe extensions.
@@ -25,7 +25,7 @@ Date: March 2026
 """
 
 import math
-from dpm_helpers import dpm_emergent_ug1, dpm_emergent_ug2
+from dpm_helpers import dpm_ug1_seed, dpm_ug2_shell
 
 from typing import Dict, Any, Optional, List, Tuple
 
@@ -1329,7 +1329,7 @@ class MUGECalculator:
         
         # UQFF magnetic buoyancy
         Q_mag = 1e12  # 1 THz
-        g_surface = dpm_emergent_ug1(1.4 * self.C.M_sun, R)
+        g_surface = dpm_ug1_seed(1.4 * self.C.M_sun, R)
         F_UBii_mag = 4.3e33 * (B / 4.4e9) * Q_mag * g_surface
         
         return {
@@ -1388,7 +1388,7 @@ class MUGECalculator:
         
         # UQFF vacuum contribution
         rho_vac_UA = 7.09e-36  # J/m^3
-        g_ISCO = self.C.dpm_emergent_ug1(M, R_ISCO)
+        g_ISCO = self.C.dpm_ug1_seed(M, R_ISCO)
         
         # Accretion rate for flares
         M_dot_flare = 1e-9 * self.C.M_sun / self.C.yr
@@ -1478,7 +1478,7 @@ class ElectricUniverseValidator:
         
         Compare gravitational force to any plausible electric force
         """
-        F_grav = dpm_emergent_ug1(M * self.C.M_sun, r)
+        F_grav = dpm_ug1_seed(M * self.C.M_sun, r)
         
         # If Sun had net charge Q
         epsilon_0 = 8.854e-12

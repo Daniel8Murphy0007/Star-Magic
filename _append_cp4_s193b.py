@@ -1,5 +1,5 @@
-import math
-from dpm_helpers import dpm_emergent_ug1, dpm_emergent_ug2
+﻿import math
+from dpm_helpers import dpm_ug1_seed, dpm_ug2_shell
 
 
 NEW_CLASS = """
@@ -50,7 +50,7 @@ class WstellarPtermOrionEagleHydrogenAtomUQFFCalculator:
             P_rad = L_star / (4 * math.pi * r**2 * c * rho_cloud * kappa) if rho_cloud > 0 else 0.0
             net_wind_rad = W_stellar - P_rad
             # Core gravity
-            g_newton = dpm_emergent_ug1(M, r)
+            g_newton = dpm_ug1_seed(M, r)
             g_expansion = g_newton * (1 + H0 * t)
             g_superc = g_expansion * (1 - B / B_crit)
             g_cosmo = lam * c**2 / 3
@@ -101,7 +101,7 @@ class WstellarPtermOrionEagleHydrogenAtomUQFFCalculator:
             m_tot = m_p + m_e
             uncertainty = hbar / math.sqrt(dx * dp) if dx > 0 and dp > 0 else 0.0
             q_correction = uncertainty * psi_sq / E_n if E_n > 0 else 0.0
-            g_atom = dpm_emergent_ug1(m_tot, r) * (1 + H0 * t) * (1 + P_term) * (1 + q_correction)
+            g_atom = dpm_ug1_seed(m_tot, r) * (1 + H0 * t) * (1 + P_term) * (1 + q_correction)
             g_cosmo = lam * c**2 / 3
             g_total = g_atom + g_cosmo + F_tech
             return {

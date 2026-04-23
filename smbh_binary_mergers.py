@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 """
 smbh_binary_mergers.py — Supermassive Binary Merger Phonon Modulation Engine
 
@@ -19,7 +19,7 @@ Phase lag: 200-400 cycles (frequency-dependent)
 """
 
 import math
-from dpm_helpers import dpm_emergent_ug1, dpm_emergent_ug2
+from dpm_helpers import dpm_ug1_seed, dpm_ug2_shell
 
 from typing import Dict, List
 
@@ -195,7 +195,7 @@ class MergerLagrangianVariation:
         Ug_channels = {}
         for i in range(1, 27):
             factor = math.exp(-SSQ * i / 26.0)
-            Ug_i = dpm_emergent_ug1(M_total, r) * factor * BETA_I
+            Ug_i = dpm_ug1_seed(M_total, r) * factor * BETA_I
             Ug_channels[f"Ug_{i}"] = Ug_i
 
         Ug_sum = sum(Ug_channels.values())

@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 """
 grok_url_calculators.py - 121 Calculator Classes from Grok URL Equations
 =========================================================================
@@ -22,7 +22,7 @@ Created: March 1, 2026
 """
 
 import math
-from dpm_helpers import dpm_emergent_ug1, dpm_emergent_ug2
+from dpm_helpers import dpm_ug1_seed, dpm_ug2_shell
 
 import numpy as np
 from typing import Dict, Any, Optional
@@ -422,7 +422,7 @@ class BlandfordZnajekPowerCalculator:
         M = dataset.get('M', 1e9 * CONST['M_sun'])
         a = dataset.get('a_spin', 0.9)  # dimensionless spin
         B = dataset.get('B', 1e4 * 1e-4)  # G → T
-        R_H = dpm_emergent_ug1(M, c)  # horizon radius
+        R_H = dpm_ug1_seed(M, c)  # horizon radius
         Omega_H = a * c / (2 * R_H) if R_H > 0 else 0
         P_BZ = (1.0/32.0) * B**2 * R_H**4 * Omega_H**2 * c
         return {
@@ -463,7 +463,7 @@ class TOVEquationCalculator:
         factor1 = 1 + P / (rho * c**2) if rho > 0 else 1
         factor2 = 1 + 4 * CONST['pi'] * r**3 * P / (m_r * c**2) if m_r > 0 else 1
         factor3 = 1.0 / (1 - 2 * G * m_r / (r * c**2)) if r > 0 and (1 - 2*G*m_r/(r*c**2)) > 0 else 1
-        dPdr = -dpm_emergent_ug1(m_r, r) * rho * factor1 * factor2 * factor3 if r > 0 else 0
+        dPdr = -dpm_ug1_seed(m_r, r) * rho * factor1 * factor2 * factor3 if r > 0 else 0
         return {
             'dP_dr': dPdr, 'P': P, 'rho': rho, 'r': r,
             'GR_correction_1': factor1, 'GR_correction_2': factor2, 'GR_correction_3': factor3,
@@ -747,7 +747,7 @@ class StrongLensingMassCalculator:
         D_L = dataset.get('D_L', 1e9 * 3.086e16)  # pc → m
         D_S = dataset.get('D_S', 3e9 * 3.086e16)
         D_LS = dataset.get('D_LS', 2e9 * 3.086e16)
-        theta_E = math.sqrt(4 * dpm_emergent_ug1(M, c) * D_LS / (D_L * D_S)) if D_L > 0 and D_S > 0 else 0
+        theta_E = math.sqrt(4 * dpm_ug1_seed(M, c) * D_LS / (D_L * D_S)) if D_L > 0 and D_S > 0 else 0
         return {
             'theta_E_rad': theta_E, 'theta_E_arcsec': theta_E * 206265,
             'M': M, 'M_Msun': M / CONST['M_sun'],
@@ -1761,7 +1761,7 @@ class BekensteinHawkingEntropyCalculator:
     def compute(self, dataset: dict) -> dict:
         G = CONST['G']; c = CONST['c']; hbar = CONST['hbar']; k_B = CONST['k_B']
         M = dataset.get('M', CONST['M_sun'])
-        r_s = 2 * dpm_emergent_ug1(M, c)
+        r_s = 2 * dpm_ug1_seed(M, c)
         A = 4 * CONST['pi'] * r_s**2
         S = k_B * c**3 * A / (4 * G * hbar)
         return {
@@ -1988,8 +1988,8 @@ class MUGEHydrogenAtomCalculator:
         f_sc = dataset.get('f_sc', 0.2)
         H_0 = dataset.get('H_0', COSMO['H_0'] * 1e3 / 3.086e22)
         t = dataset.get('t', 4.35e17)  # s (age of universe)
-        g_Newton = dpm_emergent_ug1(m_eff, r) * m_p if r > 0 else 0
-        g_Z = dpm_emergent_ug1(M_Z, r_Z) * (1 + f_sc) if r_Z > 0 else 0
+        g_Newton = dpm_ug1_seed(m_eff, r) * m_p if r > 0 else 0
+        g_Z = dpm_ug1_seed(M_Z, r_Z) * (1 + f_sc) if r_Z > 0 else 0
         evolution = math.exp(H_0 * t / CONST['c']) if CONST['c'] > 0 else 1
         g_MUGE = g_Newton + g_Z * evolution
         return {
@@ -2011,7 +2011,7 @@ class MUGERingsOfRelativityCalculator:
         B_crit = dataset.get('B_crit', 4.4e13)  # T
         H_z = dataset.get('H_z', COSMO['H_0'] * 1e3 / 3.086e22)
         t = dataset.get('t', 4.35e17)
-        g_GR = dpm_emergent_ug1(M, r) if r > 0 else 0
+        g_GR = dpm_ug1_seed(M, r) if r > 0 else 0
         H_term = 1 + H_z * t
         B_term = 1 - B / B_crit
         L_t = dataset.get('L_t', 0.01)  # luminosity evolution
@@ -2020,7 +2020,7 @@ class MUGERingsOfRelativityCalculator:
         D_L = dataset.get('D_L', 1e25)
         D_S = dataset.get('D_S', 3e25)
         D_LS = dataset.get('D_LS', 2e25)
-        R_E = math.sqrt(4 * dpm_emergent_ug1(M, c) * D_LS * D_L / D_S) if D_S > 0 else 0
+        R_E = math.sqrt(4 * dpm_ug1_seed(M, c) * D_LS * D_L / D_S) if D_S > 0 else 0
         return {
             'g_Rings': g_Rings, 'g_GR': g_GR, 'R_Einstein': R_E,
             'UQFF_contribution_pct': 30.0,
@@ -2194,7 +2194,7 @@ class UQFFBlackHoleGrowthCalculator:
         E_acc = M_dot_BH * c**2  # GeV equivalent handled by ratio
         F_UBii_BH = -F_rel * (E_acc / (E_LEP * 1.602e-10)) * Q_wave * (4 * CONST['pi'] * G * M_BH / (c**2 * r))
         erfc_val = math.erfc(delta_c / (math.sqrt(2) * sigma))
-        R_H = dpm_emergent_ug1(M_BH, c)
+        R_H = dpm_ug1_seed(M_BH, c)
         B_sq_term = dataset.get('B', 1e-1)**2 * R_H**4 / (4 * CONST['pi'] * c)
         mu = UQFF_CONST['mu_base'] * rho_vac
         Um_BH = mu * (1 - math.exp(-gamma * t)) * (a * c**3 / (2 * G * M_BH)) * B_sq_term if M_BH > 0 else 0
@@ -2272,7 +2272,7 @@ class UQFFElectricUniverseRatioCalculator:
         M = dataset.get('M', CONST['m_p'])
         m = dataset.get('m', CONST['m_p'])
         F_EM = q * Um * rho_vac * v / r if r > 0 else 0
-        F_g = dpm_emergent_ug1(M, r) * m if r > 0 else 0
+        F_g = dpm_ug1_seed(M, r) * m if r > 0 else 0
         R = F_EM / F_g if F_g > 0 else float('inf')
         return {
             'R_ratio': R, 'log10_R': math.log10(R) if R > 0 else 0,

@@ -1,4 +1,4 @@
-from dpm_helpers import dpm_emergent_ug1, dpm_emergent_ug2
+﻿from dpm_helpers import dpm_ug1_seed, dpm_ug2_shell
 """
 _append_cp4_365_377.py
 Session 181 — Batch 4: PAPER_781–793
@@ -702,7 +702,7 @@ class CassiniRingGapsThreeUQFFCalculator:
     def _g_gap(self, M, r, B):
         import math
         G = 6.6743e-11; m_p = 1.673e-27; q = 1.602e-19
-        g_grav = dpm_emergent_ug1(M, r)
+        g_grav = dpm_ug1_seed(M, r)
         v_orb = math.sqrt(G * M / r)
         a_EM = (q * v_orb * B / m_p) * 11 * 1e-12
         return g_grav + a_EM

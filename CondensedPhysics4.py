@@ -1,4 +1,4 @@
-"""
+﻿"""
 CondensedPhysics4.py — UQFF Phase 4 Physics Calculator
 =======================================================
 IPC Chain Position: 4 of 4
@@ -179,16 +179,23 @@ F_AETHER      = 1.576e-35   # Hz
 # CANONICAL: GM/r^2 is a reduced observational projection term, not a seed.
 # In Ug1, G*M/r^2 is used as the mass-gradient operator within dipole form.
 # ---------------------------------------------------------------------------
-def dpm_emergent_ug1(M, r, B=1e-4):
-    """Compute Ug1 in DPM form; GM/r^2 is treated as gradient, not foundation."""
+def dpm_ug1_seed(M, r, B=1e-4):
+    """DPM seed Ug1: mu_s * grad(M_s/r). NO G — G is downstream projection."""
+    if r <= 0:
+        return 0.0
     mu_s = B * r ** 3
-    return mu_s * G_NEWTON * M / (r ** 2)   # = B * r * G * M
+    return mu_s * M / r
 
+dpm_ug1_seed = dpm_ug1_seed
 
-def dpm_emergent_ug2(M, r, B=1e-4, k2=1.2):
-    """Compute Ug2 charge-reactivity shell from the same emergent basis."""
+def dpm_ug2_shell(M, r, B=1e-4, k2=1.2):
+    """DPM shell Ug2: charge-reactivity bubble. NO G — downstream projection only."""
+    if r <= 0:
+        return 0.0
     mu_s = B * r ** 3
-    return k2 * mu_s * G_NEWTON * M / (r ** 2)
+    return k2 * mu_s * M / r
+
+dpm_ug2_shell = dpm_ug2_shell
 
 
 # ---------------------------------------------------------------------------
@@ -203,9 +210,13 @@ class _CP4Calculator:
     def compute(self, dataset: dict = None) -> dict:
         return {}
 
-    def dpm_emergent_ug1(self, M=1.989e30, r=6.96e8, B=1e-4):
-        """Delegate to module-level dpm_emergent_ug1 for backward compatibility."""
-        return dpm_emergent_ug1(M, r, B)
+    def dpm_ug1_seed(self, M=1.989e30, r=6.96e8, B=1e-4):
+        """Delegate to module-level dpm_ug1_seed."""
+        return dpm_ug1_seed(M, r, B)
+
+    def dpm_ug1_seed(self, M=1.989e30, r=6.96e8, B=1e-4):
+        """Backward-compat alias for dpm_ug1_seed."""
+        return dpm_ug1_seed(M, r, B)
 
     @classmethod
     def __init_subclass__(cls, **kwargs):
@@ -375,7 +386,7 @@ class ASKAPUltraLongPeriodTransientFUBiCalculator(_CP4Calculator):
 
         omega_period = 2.0 * math.pi / T_period
         SC_m = 1.0 - B / B_crit
-        g_base = dpm_emergent_ug1(M, r)
+        g_base = dpm_ug1_seed(M, r)
 
         # [SSq]-modulated burst intensity
         I_burst = I_0 * self._ssq_exp(n_burst) * math.cos(omega_period * t)
@@ -456,7 +467,7 @@ class TOI1227bYoungNeptuneExoplanetFUBiCalculator(_CP4Calculator):
         omega_LENR = dataset.get("omega_LENR", 7.85e12)
         omega_0   = dataset.get("omega_0", 1.0e-12)
 
-        g_tide = dpm_emergent_ug1(M_star, a_orb)
+        g_tide = dpm_ug1_seed(M_star, a_orb)
         v_orb  = math.sqrt(G_NEWTON * M_star / a_orb)
         SC_m   = 1.0 - B / B_crit
         H_z    = 2.268e-18  # s^-1 (H_0 at z=0)
@@ -631,7 +642,7 @@ class G359FilamentGalacticCenterFUBiCalculator(_CP4Calculator):
         # Negative erosion term
         t_s = t * 86400.0
         E_t = E_0 * (1.0 - math.exp(-t_s / tau_ero))
-        g_fil = dpm_emergent_ug1(M, r) * (1.0 - E_t)
+        g_fil = dpm_ug1_seed(M, r) * (1.0 - E_t)
 
         # R(t) 26-state resonance
         omega_res = 2.0 * math.pi * nu_THz
@@ -824,7 +835,7 @@ class BubbleNebulaPositiveExpansionFUBiCalculator(_CP4Calculator):
         E_t = E_0 * (1.0 - math.exp(-t_s / tau_exp))  # saturates at E_0
 
         # Main gravity term with positive expansion factor (1+E_t)
-        g_bubble = dpm_emergent_ug1(M, r) * (1.0 + H_0 * t_s) * SC_m * (1.0 + E_t)
+        g_bubble = dpm_ug1_seed(M, r) * (1.0 + H_0 * t_s) * SC_m * (1.0 + E_t)
 
         # Wind ram pressure
         F_wind = rho_ism * v_wind**2
@@ -1401,7 +1412,7 @@ class PSZ2G181MergerRelicTriadicFUBiCalculator:
         Hz_factor   = H0_si * math.sqrt(0.3 * (1.0 + z)**3 + 0.7)
         t_age       = 1.0e17                     # s (typical cluster lifetime proxy)
         B_mod       = 1.0 - B0 / self.B_CRIT    # ≈ 1 (B_relic << B_crit)
-        g_core      = dpm_emergent_ug1(M, r) * (1.0 + Hz_factor * t_age) * B_mod
+        g_core      = dpm_ug1_seed(M, r) * (1.0 + Hz_factor * t_age) * B_mod
         # SCm suppression: multiply by exp(-[SSq]*n/26) at n=18 (cluster scale)
         g_compressed = g_core * self._ssq_exp(18)
         # Calibrate to canonical via triadic ratio
@@ -1622,7 +1633,7 @@ class MultiBodySolarPcorePlanetaryScalingCalculator(_CP4Calculator):
     def compute(self, dataset: dict = None) -> dict:
         results = {}
         for name, b in self.BODIES.items():
-            g       = dpm_emergent_ug1(b['Ms'], b['Rs'])
+            g       = dpm_ug1_seed(b['Ms'], b['Rs'])
             omega_c = 2.0 * math.pi / (b['T_yrs'] * self.YEAR_S)
             results[name] = {
                 'Pcore':        b['Pcore'],
@@ -1861,7 +1872,7 @@ class CompressedUQFFBcritSuperconductivityCalculator(_CP4Calculator):
         hbar    = self._hbar
         tH      = self._tHubble
 
-        base       = dpm_emergent_ug1(M, r)
+        base       = dpm_ug1_seed(M, r)
         expansion  = 1.0 + H0 * t
         super_adj  = 1.0 - B / Bcrit
         cosm       = Lambda * c**2 / 3.0
@@ -2138,7 +2149,7 @@ class UQFFWormholeMeissnerRelativisticGammaCalculator(_CP4Calculator):
         G        = 6.674e-11
         t        = float(dataset.get('t',   0.0))
 
-        base     = dpm_emergent_ug1(M, r)
+        base     = dpm_ug1_seed(M, r)
         meissner = math.exp(-B / Bcrit)              # exponential form (improved)
         cosm     = Lambda * c**2 / 3.0
         quantum  = (hbar / 1e-68) * 2.176e-18 * (2.0 * math.pi / tH)
@@ -2277,7 +2288,7 @@ class UQFFResonanceFormalProofSetCalculator(_CP4Calculator):
         G = 6.6743e-11
         M_sun = 1.989e30
         AU = 1.496e11
-        g_dpm = dpm_emergent_ug1(M_sun, AU)
+        g_dpm = dpm_ug1_seed(M_sun, AU)
 
         # Proof 2: Boundary conditions
         g_cosm = self.Lambda * self.c**2 / 3.0
@@ -2483,7 +2494,7 @@ class CohesiveUQFFIntegrationCalculator(_CP4Calculator):
         tH      = 4.35e17
         k_q     = float(dataset.get('k_q', 1e-18))
 
-        g_dpm   = dpm_emergent_ug1(M, r)
+        g_dpm   = dpm_ug1_seed(M, r)
         g_exp_term = g_dpm * (1.0 + H0 * t) * math.exp(-B / Bcrit)
         g_cosm     = Lambda * c**2 / 3.0
         g_quantum  = (hbar**2) / (m_e * c * (r + k_q * t)**2)
@@ -2825,7 +2836,7 @@ class SGR1745CompressedMUGESpectralTermDecompositionCalculator(_CP4Calculator):
 
         # Term 1: reduced projection baseline
         # DPM-emergent: mu_s x grad(M_s/r) base (Newtonian form is emergent, not foundational)
-        g_base = dpm_emergent_ug1(M, r)
+        g_base = dpm_ug1_seed(M, r)
 
         # Term 2: Hubble expansion factor
         exp_factor = 1.0 + H0 * t
@@ -3177,7 +3188,7 @@ class SagAStarFullResonanceTermDecompositionCalculator(_CP4Calculator):
         g_resonance = aDPM + aTHz + afluid  # others negligible for Sag A*
 
         # --- Compressed MUGE terms ---
-        g_base    = dpm_emergent_ug1(M, r)
+        g_base    = dpm_ug1_seed(M, r)
         sc_factor = 1.0 - (B / Bcrit)
         g_SC_adj  = g_base * sc_factor
         g_fluid_c = rho_f * Vsys * g_loc
@@ -5472,7 +5483,7 @@ class UQFF29SystemCrossValidationMatrixCalculator(_CP4Calculator):
     def _g_base(self, r: float, M: float, t: float) -> float:
         """Compressed UQFF base: G·M/r² × (1+H_0·t) × (1 + ρ_SCm/ρ_UA · κ_η · r²)."""
         import math
-        g_n = dpm_emergent_ug1(M, r)
+        g_n = dpm_ug1_seed(M, r)
         h_factor = 1.0 + self.H_0 * t
         vac_corr = 1.0 + (self.RHO_SCM / self.RHO_UA) * self.K_ETA * (r ** 2)
         return g_n * h_factor * vac_corr
@@ -5549,7 +5560,7 @@ class UQFF29SystemCrossValidationMatrixCalculator(_CP4Calculator):
         elif tail_type == 'dual_gravity':
             # Full g_Sat replaces base; tail = full − base
             g_sun = G * params['M_Sun'] / (params['r_orbit'] ** 2) * (1.0 + self.H_0 * t)
-            g_sat = dpm_emergent_ug1(M, r) * (1.0 - params['B_field'] / self.B_CRIT)
+            g_sat = dpm_ug1_seed(M, r) * (1.0 - params['B_field'] / self.B_CRIT)
             T_ring = G * params['sigma_ring'] * params['C_ring'] / (params['r_ring'] ** 2)
             g_full = g_sun + g_sat + T_ring
             return g_full - g_base
@@ -5567,7 +5578,7 @@ class UQFF29SystemCrossValidationMatrixCalculator(_CP4Calculator):
             E_n  = -13.6 * 1.602e-19 / (n * n)   # hydrogen energy level (J)
             qm_integral = (HBAR / math.sqrt(HBAR * 1e-27)) * (2 * math.pi * abs(E_n) / HBAR)
             qm_factor = 1.0 + qm_integral / abs(E_n)
-            g_corrected = (dpm_emergent_ug1(M, r)) * (1.0 + self.H_0 * t) * (1.0 + params['P_term']) * qm_factor
+            g_corrected = (dpm_ug1_seed(M, r)) * (1.0 + self.H_0 * t) * (1.0 + params['P_term']) * qm_factor
             return g_corrected - g_base + params['F_tech']
 
         elif tail_type == 'AGN_SF':
@@ -6559,7 +6570,7 @@ class OrionNebulaHAlphaUQFFCalculator(_CP4Calculator):
         f_sc    = 10.0
 
         Hz      = H0 * math.sqrt(0.3 * (1+z)**3 + 0.7)
-        g_base  = dpm_emergent_ug1(M, r)
+        g_base  = dpm_ug1_seed(M, r)
 
         # W_stellar(t)
         W_stellar = v_wind**2 * (1.0 + t / t_age)
@@ -6579,7 +6590,7 @@ class OrionNebulaHAlphaUQFFCalculator(_CP4Calculator):
 
         # DPM-emergent: mu_s x grad(M_s/r) (mass gradient, not Newtonian GM/r^2)
 
-        Ug1 = dpm_emergent_ug1(M, r)
+        Ug1 = dpm_ug1_seed(M, r)
         Ug4 = Ug1 * f_sc
         lam_term = Lambda * c**2 / 3.0
         fluid    = rho_fl * (1.0/rho_fl) * g_base
@@ -6664,7 +6675,7 @@ class MultiSystemUQFFCoreCalculator(_CP4Calculator):
 
         H0  = 67.4e3 / 3.086e22
         Hz  = H0 * math.sqrt(0.3*(1+z)**3 + 0.7)
-        g   = dpm_emergent_ug1(M, r) * (1 + Hz * t)
+        g   = dpm_ug1_seed(M, r) * (1 + Hz * t)
 
         # H_res for atomic systems
         h_res = 0.0
@@ -6728,7 +6739,7 @@ class YoungStarsOutflowsPressureCalculator(_CP4Calculator):
         rho      = 1.0e-20
 
         Hz = H0 * math.sqrt(0.3*(1+z)**3 + 0.7)
-        g  = dpm_emergent_ug1(M, r)
+        g  = dpm_ug1_seed(M, r)
 
         P_outflow = rho * v_out**2 * (1.0 + t / t_evolve)
         F_env     = 1.0 + P_outflow
@@ -6781,7 +6792,7 @@ class EagleNebulaWindRadiationCalculator(_CP4Calculator):
         L_NGC6611 = 3.83e33
 
         Hz = H0 * math.sqrt(0.3*(1+z)**3 + 0.7)
-        g  = dpm_emergent_ug1(M, r)
+        g  = dpm_ug1_seed(M, r)
 
         W_stellar = rho * v_wind**2                     # no time growth
         P_rad     = L_NGC6611 * rho / (4*math.pi * r**2 * c * m_H)  # density-scaled
@@ -6851,7 +6862,7 @@ class BigBangCosmicQGDMGWCalculator(_CP4Calculator):
 
         # DPM-emergent: mu_s x grad(M_s/r) base (Newtonian form is emergent, not foundational)
 
-        g_base = dpm_emergent_ug1(M_t, r_t) if r_t > 0 else 0.0
+        g_base = dpm_ug1_seed(M_t, r_t) if r_t > 0 else 0.0
 
         QG_term = (hbar * c / l_p**2) * (t / t_p)
         DM_term = Omega_DM * g_base
@@ -6939,7 +6950,7 @@ class CompressedUQFFEnvModularCalculator(_CP4Calculator):
         if system not in ('TapestryStarbirth', 'Westerlund2', 'PillarsCreation'):
             pass  # M/r already set per branch
 
-        g_base  = dpm_emergent_ug1(M, r)
+        g_base  = dpm_ug1_seed(M, r)
         g_total = g_base * f_env
 
         return {
@@ -7001,9 +7012,9 @@ class MagnetarDualModeUQFFCalculator(_CP4Calculator):
 
         if mode == 'compressed':
             F_env   = (1.0 + M_mag/(M*c**2) + math.exp(-t/tau)
-                       + dpm_emergent_ug1(M_BH, r_BH))
+                       + dpm_ug1_seed(M_BH, r_BH))
             sc      = 1.0 - B / B_crit
-            g       = (dpm_emergent_ug1(M, r)) * (1 + Hz*t) * sc * F_env
+            g       = (dpm_ug1_seed(M, r)) * (1 + Hz*t) * sc * F_env
             g_total = g + Lambda*c**2/3.0
             return {
                 'paper':     453,
@@ -7015,7 +7026,7 @@ class MagnetarDualModeUQFFCalculator(_CP4Calculator):
                 'note':      'Magnetar compressed mode; expected ~1.782e39 m/s²',
             }
         else:  # frequency
-            a_DPM        = dpm_emergent_ug1(M, r)
+            a_DPM        = dpm_ug1_seed(M, r)
             a_THz        = hbar / (M * r**2)
             a_vac_diff   = 1.0e-10 * a_DPM
             a_super_freq = 0.1 * a_DPM
@@ -7026,7 +7037,7 @@ class MagnetarDualModeUQFFCalculator(_CP4Calculator):
             a_fluid_f    = 1.0e-6 * a_DPM
             Osc_term     = a_DPM * math.sin(2*math.pi * t / (1e9*year))
             a_exp_freq   = Lambda * c**2 / 3.0
-            f_TRZ        = dpm_emergent_ug1(M_BH, r_BH)
+            f_TRZ        = dpm_ug1_seed(M_BH, r_BH)
 
             g_freq = (a_DPM + a_THz + a_vac_diff + a_super_freq + a_aether_res
                       + Ug4i + a_q_freq + a_Aether_f + a_fluid_f
@@ -7107,7 +7118,7 @@ class MultiSystemCompressionCycle2Calculator(_CP4Calculator):
         else:
             M = 1e10*M_sun; r = 1e20
 
-        g_base  = dpm_emergent_ug1(M, r)
+        g_base  = dpm_ug1_seed(M, r)
         g_total = g_base * f_env
 
         return {
@@ -7173,7 +7184,7 @@ class UQFFExpandedSystemRegistryCalculator(_CP4Calculator):
             F_env  = 1.0
             H_res  = A_res * math.sin(2*math.pi * f_res * t_s) + F_env * SC_m
             # DPM-emergent: mu_s x grad(M_s/r) base (Newtonian form is emergent, not foundational)
-            g_base = dpm_emergent_ug1(M, r)
+            g_base = dpm_ug1_seed(M, r)
             g_total = g_base + H_res
         else:
             # Fall back to simple computation for non-quantum
@@ -7338,27 +7349,27 @@ class MUGECompressed29SystemUnifiedGravityCalculator(_CP4Calculator):
 
         if system == 'SOMBRERO_GALAXY':
             M = 1e11 * M_sun; r = 1.5e20; B = 1e-6
-            DM = 0.1 * dpm_emergent_ug1(M, r)
-            g  = dpm_emergent_ug1(M, r) * (1+Hz*t_s) * (1 - B/B_crit) + DM
+            DM = 0.1 * dpm_ug1_seed(M, r)
+            g  = dpm_ug1_seed(M, r) * (1+Hz*t_s) * (1 - B/B_crit) + DM
         elif system == 'SATURN':
             M = 5.68e26; r = 6e7; B = 2e-4
             F_ring = 1e-10
-            g  = dpm_emergent_ug1(M, r) * (1+Hz*t_s) * (1 - B/B_crit) + F_ring
+            g  = dpm_ug1_seed(M, r) * (1+Hz*t_s) * (1 - B/B_crit) + F_ring
         elif system == 'M16_EAGLE':
             M = 8e3*M_sun; r = 3.3e19; SFR = 1.0
             F_erode = -1e-12
-            g  = dpm_emergent_ug1(M, r) * (1+Hz*t_s) + F_erode
+            g  = dpm_ug1_seed(M, r) * (1+Hz*t_s) + F_erode
         elif system == 'CRAB_NEBULA':
             M = 1.4*M_sun; r = 2.1e19; F_wind = 1e-10; F_mag = 1e-9
-            g  = dpm_emergent_ug1(M, r) * (1+Hz*t_s) + F_wind + F_mag
+            g  = dpm_ug1_seed(M, r) * (1+Hz*t_s) + F_wind + F_mag
         elif system == 'HYDROGEN_ATOM':
             M = m_p; r = a0; f_res = c / (4*a0); A_res = 1e-10
             H_res = A_res * math.sin(2*math.pi * f_res * t_s)
-            g  = dpm_emergent_ug1(M, r) + H_res
+            g  = dpm_ug1_seed(M, r) + H_res
         elif system == 'HYDROGEN_RESONANCE':
             M = m_p; r = a0; f_res = c / (4*a0); A_res = 1e-10; SC_m = 1.0
             H_res = A_res * math.sin(2*math.pi * f_res * t_s) + 1.0 * SC_m
-            g  = dpm_emergent_ug1(M, r) + H_res
+            g  = dpm_ug1_seed(M, r) + H_res
         elif system == 'UNIVERSE_DIAMETER':
             M = 1e53; r = 1e27; z = 1100
             q_corr1 = 1 + Hz * t_s
@@ -7366,12 +7377,12 @@ class MUGECompressed29SystemUnifiedGravityCalculator(_CP4Calculator):
             q_corr3 = 1 + hbar / (math.sqrt(1e-35 * 1e-27) * G * M) if M > 0 else 1
             q_corr4 = 1 + k_rc * r**2
             D_univ  = 2 * D_p * q_corr1 * q_corr2 * q_corr3 * q_corr4
-            g  = dpm_emergent_ug1(M, r) * (1 + Hz*t_s) + Lam*c**2/3
+            g  = dpm_ug1_seed(M, r) * (1 + Hz*t_s) + Lam*c**2/3
             return {'paper': self.PAPER, 'system': system, 'g_uqff': g,
                     'D_univ_m': D_univ, 'note': 'Universe diameter 4-factor correction'}
         else:
             M = 1e10*M_sun; r = 1e20
-            g  = dpm_emergent_ug1(M, r) * (1+Hz*t_s)
+            g  = dpm_ug1_seed(M, r) * (1+Hz*t_s)
 
         return {
             'paper':   self.PAPER,
@@ -7424,38 +7435,38 @@ class MUGECompressed38SystemExtendedEnvCalculator(_CP4Calculator):
 
         if system == 'LAGOON_NEBULA':
             M = 1e4*M_sun; r = 6.6e19; F_env = -1e-12
-            g_base = dpm_emergent_ug1(M, r)
+            g_base = dpm_ug1_seed(M, r)
         elif system == 'SPIRALS_SN':
             M = 1e10*M_sun; r = 3e20; F_torque = 1e-11; F_SN = 1e-10
             F_env = F_torque + F_SN
-            g_base = dpm_emergent_ug1(M, r)
+            g_base = dpm_ug1_seed(M, r)
         elif system == 'NGC6302':
             M = 2e3*M_sun; r = 3.3e18; F_shock = 1e-11
             F_env = F_shock
-            g_base = dpm_emergent_ug1(M, r)
+            g_base = dpm_ug1_seed(M, r)
         elif system == 'ORION_NEBULA':
             M = 2000*M_sun; r = 1.18e17; F_wind = 1e-10; F_rad = -1e-11
             F_env = F_wind + F_rad
-            g_base = dpm_emergent_ug1(M, r)
+            g_base = dpm_ug1_seed(M, r)
         elif system == 'YOUNG_STARS_OUTFLOW':
             M = 5e3*M_sun; r = 2e19; F_wind = 1e-10
             F_env = F_wind
-            g_base = dpm_emergent_ug1(M, r)
+            g_base = dpm_ug1_seed(M, r)
         elif system == 'EAGLE_NEBULA':
             M = 8e3*M_sun; r = 3.3e19; F_wind = 1e-10; F_rad = -1e-11
             F_env = F_wind + F_rad
-            g_base = dpm_emergent_ug1(M, r)
+            g_base = dpm_ug1_seed(M, r)
         elif system == 'GRAVITY_BIGBANG':
             M = 1e53; r = 1e27; Hz = Hz0
             QG_term  = (hbar * c / l_p**2) * (t_s / t_p)
-            DM_term  = 0.268 * dpm_emergent_ug1(M, r)
+            DM_term  = 0.268 * dpm_ug1_seed(M, r)
             GW_term  = h_strain * c**2 / lam_gw * math.sin(2*math.pi * t_s / t_gw)
             F_cosmo  = QG_term + DM_term + GW_term
             F_env    = F_cosmo
-            g_base   = dpm_emergent_ug1(M, r) * (1 + Hz*t_s)
+            g_base   = dpm_ug1_seed(M, r) * (1 + Hz*t_s)
         else:
             M = 1e10*M_sun; r = 1e20
-            g_base = dpm_emergent_ug1(M, r)
+            g_base = dpm_ug1_seed(M, r)
 
         g_total = g_base + F_env
 
@@ -7553,7 +7564,7 @@ class MUGEFinal7SystemResonanceAccelerationsCalculator(_CP4Calculator):
         }.get(system, dict(M=1e10*M_sun, r=1e20, B=0))
 
         M = params['M']; r = params['r']
-        g_compressed = dpm_emergent_ug1(M, r)
+        g_compressed = dpm_ug1_seed(M, r)
         resonance    = self._compute_resonance(t_s)
 
         return {
@@ -11015,8 +11026,8 @@ class BSFGGeodesicMetricCompatibilityCalculator(_CP4Calculator):
         dt_dlam = E_geo / A00
         aether_accel = -G_r00 * dt_dlam ** 2
 
-        # DPM-emergent comparison (g_dpm via dpm_emergent_ug1; Newton is downstream observational projection)
-        g_dpm = dpm_emergent_ug1(Ms, r)
+        # DPM-emergent comparison (g_dpm via dpm_ug1_seed; Newton is downstream observational projection)
+        g_dpm = dpm_ug1_seed(Ms, r)
 
         # UQFF fifth-force: extra radial acceleration from Aether geodesic correction
         uqff_fifth = eps_p / 2.0   # m/s² (negative → adds to inward gravity)
@@ -16812,7 +16823,7 @@ class UQFFGrantProposalDatasetCompressionFrameworkCalculator:
         omega_0 = 1e-15  # reference frequency
 
         # Individual force terms (long-form)
-        F_gravity = dpm_emergent_ug1(M_kg, r_m)
+        F_gravity = dpm_ug1_seed(M_kg, r_m)
         F_electron = m_e * c ** 2 / (r_m ** 2) * math.cos(theta)
         F_LENR = k_LENR * (omega_LENR_hz / omega_0) ** 2
         F_resonance = 2 * q * B_0 * V * math.sin(theta)
@@ -18386,13 +18397,13 @@ class UQFFGalacticDiscreteBandSimulatorCalculator:
         # Ug1 � internal dipole (simplified)
         H_SCm  = 0.99
         B_T    = B_gauss * 1e-4   # Gauss ? Tesla
-        Ug1 = dpm_emergent_ug1(M_star, r_m) * mu_B * B_T / r_m**3 * (1 + H_SCm)  # DPM-emergent
+        Ug1 = dpm_ug1_seed(M_star, r_m) * mu_B * B_T / r_m**3 * (1 + H_SCm)  # DPM-emergent
         # Ug2 � field bubble
         rho_SCm = 7.09e-37
         rho_UA  = 7.09e-36
         rho_Ui  = 2.84e-36
         rho_sum = rho_SCm + rho_UA + rho_Ui
-        Ug2 = dpm_emergent_ug1(M_star, r_m) * eps0 * E_field**2 / (2 * r_m) * rho_sum * H_SCm  # DPM-emergent
+        Ug2 = dpm_ug1_seed(M_star, r_m) * eps0 * E_field**2 / (2 * r_m) * rho_sum * H_SCm  # DPM-emergent
         # Ug3 � string disk (single exemplar string)
         omega_s = 2.5e-6     # rad/s stellar spin
         t       = 0.0
@@ -22587,7 +22598,7 @@ class NGC1316MergerEvolutionCalculator(object):
         F_cluster = self.k_cluster * self.M_cluster * self.M_sun
         U_g4 = self.k_4 * 1.0e46 * math.exp(-self.kappa * t)
         U_i  = self.lambda_I * (self.rho_SCm / self.rho_UA) * self.omega_i * (1.0 + self.F_RZ)
-        g_core = self.dpm_emergent_ug1(M_total, r)
+        g_core = self.dpm_ug1_seed(M_total, r)
         return {
             "M_total_kg":  M_total,
             "r_eff_m":     r_eff,
@@ -22658,7 +22669,7 @@ class TenAstroSystemsMUGECalculator(object):
 
     def g_muge(self, system_tuple, t=3.156e14):
         name, M, r, z, SFR, B, v_w, tau, E_0 = system_tuple
-        g_grav = dpm_emergent_ug1(M, r)
+        g_grav = dpm_ug1_seed(M, r)
         hub    = 1.0 + self.H_z(z) * t
         m_fac  = 1.0 + self.M_evo(t, SFR, M)
         e_fac  = 1.0 - self.E_rad(t, E_0, tau)
@@ -22668,7 +22679,7 @@ class TenAstroSystemsMUGECalculator(object):
 
     def R_resonance(self, system_tuple, t=3.156e14):
         name, M, r, z, SFR, B, v_w, tau, E_0 = system_tuple
-        g_grav  = dpm_emergent_ug1(M, r)
+        g_grav  = dpm_ug1_seed(M, r)
         m_fac   = 1.0 + self.M_evo(t, SFR, M)
         R_grav  = g_grav * m_fac
         R_mag   = self.q_e * v_w * B / self.m_p * self.em_scale
@@ -22787,7 +22798,7 @@ class EighteenAstroSystemsMUGECalculator(object):
 
     def g_muge(self, system_tuple, t=3.156e14):
         name, M, r, z, SFR, B, v_w, tau, E_0 = system_tuple
-        g_grav = dpm_emergent_ug1(M, r)
+        g_grav = dpm_ug1_seed(M, r)
         hub    = 1.0 + self.H_z(z) * t
         m_fac  = 1.0 + self.M_evo(t, SFR, M)
         e_fac  = 1.0 - self.E_rad(t, E_0, tau)
@@ -22798,7 +22809,7 @@ class EighteenAstroSystemsMUGECalculator(object):
 
     def R_resonance(self, system_tuple, t=3.156e14):
         name, M, r, z, SFR, B, v_w, tau, E_0 = system_tuple
-        g_grav  = dpm_emergent_ug1(M, r)
+        g_grav  = dpm_ug1_seed(M, r)
         m_fac   = 1.0 + self.M_evo(t, SFR, M)
         R_grav  = g_grav * m_fac
         R_mag   = self.q_e * v_w * B / self.m_p * self.em_scale
@@ -23613,7 +23624,7 @@ class UQFF38SystemCompressedMasterCalculator:
         G, c, H_0 = self.G, self.c, self.H_0
         hbar, Lambda = self.hbar, self.Lambda
         H = H_0 * math.sqrt(0.3 * (1 + z)**3 + 0.7)
-        g_grav = (dpm_emergent_ug1(M, r)) * (1 + H) * (1 - B / self.B_crit)
+        g_grav = (dpm_ug1_seed(M, r)) * (1 + H) * (1 - B / self.B_crit)
         F_eta = self.k_eta * F_env_terms.get("eta", 1.0)
         rho_vac = self.rho_vac_SCm
         V = (4/3) * math.pi * r**3
@@ -23666,7 +23677,7 @@ class UQFF38SystemCompressedMasterCalculator:
         M_bh    = dataset.get('M_bh',    8.15e36)
         d_g     = dataset.get('d_g',     2.55e20)
         # --- DPM-emergent gravity family (NOT Newton-first) ---
-        g_b = dpm_emergent_ug1(M, r, B)  # Ug1: DPM seed
+        g_b = dpm_ug1_seed(M, r, B)  # Ug1: DPM seed
         Ug1 = g_b
         Ug2 = 1.2  * g_b  # charge-reactivity shell
         Ug3 = 0.8  * g_b * math.cos(math.pi * t_n)  # magnetic string rotation
@@ -23682,7 +23693,7 @@ class UQFF38SystemCompressedMasterCalculator:
         g_projection = _G * M / (r ** 2) if r > 0 else 0.0
         return {
             'primary_equations': [
-                f'Ug1(DPM-seed) = dpm_emergent_ug1(M,r,B) = {Ug1:.6e}',
+                f'Ug1(DPM-seed) = dpm_ug1_seed(M,r,B) = {Ug1:.6e}',
                 f'Ug2(shell)    = 1.2*Ug1                 = {Ug2:.6e}',
                 f'Ug3(string)   = 0.8*Ug1*cos(pi*t_n)    = {Ug3:.6e}',
                 f'Ug4(BH-vac)   = 0.5*Ug1                 = {Ug4:.6e}',
@@ -23691,7 +23702,7 @@ class UQFF38SystemCompressedMasterCalculator:
                 f'GM/r^2(projection, LAST) = {g_projection:.6e} m/s^2',
             ],
             'available_equations': [
-                'g_base = dpm_emergent_ug1(M, r, B)  # DPM-emergent, not Newton',
+                'g_base = dpm_ug1_seed(M, r, B)  # DPM-emergent, not Newton',
                 'Ug1 = g_base  # seed from DPM vortex',
                 'Ug2 = 1.2 * Ug1  # charge-reactivity',
                 'Ug3 = 0.8 * Ug1 * cos(pi*t_n)  # magnetic string 90deg',
@@ -23739,7 +23750,7 @@ class SombreroGalaxyDustMUGECalculator:
         G, c = self.G, self.c
         H = self.H_0 * math.sqrt(0.3 * (1 + self.z)**3 + 0.7)
         M_tot = self.M_vis + self.M_DM
-        g_grav = (dpm_emergent_ug1(M_tot, r)) * (1 + H) * (1 - self.B / self.B_crit)
+        g_grav = (dpm_ug1_seed(M_tot, r)) * (1 + H) * (1 - self.B / self.B_crit)
         g_BH = G * self.M_BH / max(r**2, self.r_BH**2)
         A_cross = self.A_cross_frac * r**2
         D_dust = -self.k_dust * self.rho_dust * v_orbit**2 * A_cross / r
@@ -23783,7 +23794,7 @@ class SombreroGalaxyDustMUGECalculator:
         M_bh    = dataset.get('M_bh',    8.15e36)
         d_g     = dataset.get('d_g',     2.55e20)
         # --- DPM-emergent gravity family (NOT Newton-first) ---
-        g_b = dpm_emergent_ug1(M, r, B)  # Ug1: DPM seed
+        g_b = dpm_ug1_seed(M, r, B)  # Ug1: DPM seed
         Ug1 = g_b
         Ug2 = 1.2  * g_b  # charge-reactivity shell
         Ug3 = 0.8  * g_b * math.cos(math.pi * t_n)  # magnetic string rotation
@@ -23799,7 +23810,7 @@ class SombreroGalaxyDustMUGECalculator:
         g_projection = _G * M / (r ** 2) if r > 0 else 0.0
         return {
             'primary_equations': [
-                f'Ug1(DPM-seed) = dpm_emergent_ug1(M,r,B) = {Ug1:.6e}',
+                f'Ug1(DPM-seed) = dpm_ug1_seed(M,r,B) = {Ug1:.6e}',
                 f'Ug2(shell)    = 1.2*Ug1                 = {Ug2:.6e}',
                 f'Ug3(string)   = 0.8*Ug1*cos(pi*t_n)    = {Ug3:.6e}',
                 f'Ug4(BH-vac)   = 0.5*Ug1                 = {Ug4:.6e}',
@@ -23808,7 +23819,7 @@ class SombreroGalaxyDustMUGECalculator:
                 f'GM/r^2(projection, LAST) = {g_projection:.6e} m/s^2',
             ],
             'available_equations': [
-                'g_base = dpm_emergent_ug1(M, r, B)  # DPM-emergent, not Newton',
+                'g_base = dpm_ug1_seed(M, r, B)  # DPM-emergent, not Newton',
                 'Ug1 = g_base  # seed from DPM vortex',
                 'Ug2 = 1.2 * Ug1  # charge-reactivity',
                 'Ug3 = 0.8 * Ug1 * cos(pi*t_n)  # magnetic string 90deg',
@@ -23857,7 +23868,7 @@ class SaturnRingTidalMUGECalculator:
         G, c = self.G, self.c
         H = self.H_0 * math.sqrt(0.7)
         g_solar_orbit = (G * self.M_sun / self.r_orbit**2) * (1 + H * 4.35e17)
-        g_saturn = (dpm_emergent_ug1(self.M_saturn, r)) * (1 - self.B_saturn / self.B_crit)
+        g_saturn = (dpm_ug1_seed(self.M_saturn, r)) * (1 - self.B_saturn / self.B_crit)
         T_ring = self.k_ring * G * self.M_rings * r / self.r_ring**3
         F_wind = 0.5 * self.rho_atm * self.v_wind**2 * self.C_D / self.r_atm
         cosmological = self.Lambda * c**2 / 3
@@ -23898,7 +23909,7 @@ class SaturnRingTidalMUGECalculator:
         M_bh    = dataset.get('M_bh',    8.15e36)
         d_g     = dataset.get('d_g',     2.55e20)
         # --- DPM-emergent gravity family (NOT Newton-first) ---
-        g_b = dpm_emergent_ug1(M, r, B)  # Ug1: DPM seed
+        g_b = dpm_ug1_seed(M, r, B)  # Ug1: DPM seed
         Ug1 = g_b
         Ug2 = 1.2  * g_b  # charge-reactivity shell
         Ug3 = 0.8  * g_b * math.cos(math.pi * t_n)  # magnetic string rotation
@@ -23914,7 +23925,7 @@ class SaturnRingTidalMUGECalculator:
         g_projection = _G * M / (r ** 2) if r > 0 else 0.0
         return {
             'primary_equations': [
-                f'Ug1(DPM-seed) = dpm_emergent_ug1(M,r,B) = {Ug1:.6e}',
+                f'Ug1(DPM-seed) = dpm_ug1_seed(M,r,B) = {Ug1:.6e}',
                 f'Ug2(shell)    = 1.2*Ug1                 = {Ug2:.6e}',
                 f'Ug3(string)   = 0.8*Ug1*cos(pi*t_n)    = {Ug3:.6e}',
                 f'Ug4(BH-vac)   = 0.5*Ug1                 = {Ug4:.6e}',
@@ -23923,7 +23934,7 @@ class SaturnRingTidalMUGECalculator:
                 f'GM/r^2(projection, LAST) = {g_projection:.6e} m/s^2',
             ],
             'available_equations': [
-                'g_base = dpm_emergent_ug1(M, r, B)  # DPM-emergent, not Newton',
+                'g_base = dpm_ug1_seed(M, r, B)  # DPM-emergent, not Newton',
                 'Ug1 = g_base  # seed from DPM vortex',
                 'Ug2 = 1.2 * Ug1  # charge-reactivity',
                 'Ug3 = 0.8 * Ug1 * cos(pi*t_n)  # magnetic string 90deg',
@@ -23971,7 +23982,7 @@ class M16EagleNebulaRadiationMUGECalculator:
         H = self.H_0 * math.sqrt(0.7)
         M_sf = self.SFR * t / self.M_cloud
         M_eff = self.M_cloud * (1 + M_sf)
-        g_grav = (dpm_emergent_ug1(M_eff, r)) * (1 + H * t) * (1 - self.B / self.B_crit) * (1 + M_sf)
+        g_grav = (dpm_ug1_seed(M_eff, r)) * (1 + H * t) * (1 - self.B / self.B_crit) * (1 + M_sf)
         E_rad = G * self.mdot_evap * t / (r**2 * self.M_cloud)
         cosmological = self.Lambda * c**2 / 3
         g_total = g_grav - E_rad + cosmological
@@ -24010,7 +24021,7 @@ class M16EagleNebulaRadiationMUGECalculator:
         M_bh    = dataset.get('M_bh',    8.15e36)
         d_g     = dataset.get('d_g',     2.55e20)
         # --- DPM-emergent gravity family (NOT Newton-first) ---
-        g_b = dpm_emergent_ug1(M, r, B)  # Ug1: DPM seed
+        g_b = dpm_ug1_seed(M, r, B)  # Ug1: DPM seed
         Ug1 = g_b
         Ug2 = 1.2  * g_b  # charge-reactivity shell
         Ug3 = 0.8  * g_b * math.cos(math.pi * t_n)  # magnetic string rotation
@@ -24026,7 +24037,7 @@ class M16EagleNebulaRadiationMUGECalculator:
         g_projection = _G * M / (r ** 2) if r > 0 else 0.0
         return {
             'primary_equations': [
-                f'Ug1(DPM-seed) = dpm_emergent_ug1(M,r,B) = {Ug1:.6e}',
+                f'Ug1(DPM-seed) = dpm_ug1_seed(M,r,B) = {Ug1:.6e}',
                 f'Ug2(shell)    = 1.2*Ug1                 = {Ug2:.6e}',
                 f'Ug3(string)   = 0.8*Ug1*cos(pi*t_n)    = {Ug3:.6e}',
                 f'Ug4(BH-vac)   = 0.5*Ug1                 = {Ug4:.6e}',
@@ -24035,7 +24046,7 @@ class M16EagleNebulaRadiationMUGECalculator:
                 f'GM/r^2(projection, LAST) = {g_projection:.6e} m/s^2',
             ],
             'available_equations': [
-                'g_base = dpm_emergent_ug1(M, r, B)  # DPM-emergent, not Newton',
+                'g_base = dpm_ug1_seed(M, r, B)  # DPM-emergent, not Newton',
                 'Ug1 = g_base  # seed from DPM vortex',
                 'Ug2 = 1.2 * Ug1  # charge-reactivity',
                 'Ug3 = 0.8 * Ug1 * cos(pi*t_n)  # magnetic string 90deg',
@@ -24084,7 +24095,7 @@ class CrabNebulaExpandingMUGECalculator:
         G, c = self.G, self.c
         H = self.H_0 * math.sqrt(0.7)
         r = self.r_0 + self.v_r * t
-        g_grav = (dpm_emergent_ug1(self.M_ejecta, r)) * (1 + H * t) * (1 - self.B_pulsar / self.B_crit)
+        g_grav = (dpm_ug1_seed(self.M_ejecta, r)) * (1 + H * t) * (1 - self.B_pulsar / self.B_crit)
         F_wind = self.L_pulsar / (4 * math.pi * r**2 * c * self.M_ejecta)
         M_mag = self.B_pulsar**2 / (2 * self.mu_0 * r * self.rho_ejecta)
         cosmological = self.Lambda * c**2 / 3
@@ -24125,7 +24136,7 @@ class CrabNebulaExpandingMUGECalculator:
         M_bh    = dataset.get('M_bh',    8.15e36)
         d_g     = dataset.get('d_g',     2.55e20)
         # --- DPM-emergent gravity family (NOT Newton-first) ---
-        g_b = dpm_emergent_ug1(M, r, B)  # Ug1: DPM seed
+        g_b = dpm_ug1_seed(M, r, B)  # Ug1: DPM seed
         Ug1 = g_b
         Ug2 = 1.2  * g_b  # charge-reactivity shell
         Ug3 = 0.8  * g_b * math.cos(math.pi * t_n)  # magnetic string rotation
@@ -24141,7 +24152,7 @@ class CrabNebulaExpandingMUGECalculator:
         g_projection = _G * M / (r ** 2) if r > 0 else 0.0
         return {
             'primary_equations': [
-                f'Ug1(DPM-seed) = dpm_emergent_ug1(M,r,B) = {Ug1:.6e}',
+                f'Ug1(DPM-seed) = dpm_ug1_seed(M,r,B) = {Ug1:.6e}',
                 f'Ug2(shell)    = 1.2*Ug1                 = {Ug2:.6e}',
                 f'Ug3(string)   = 0.8*Ug1*cos(pi*t_n)    = {Ug3:.6e}',
                 f'Ug4(BH-vac)   = 0.5*Ug1                 = {Ug4:.6e}',
@@ -24150,7 +24161,7 @@ class CrabNebulaExpandingMUGECalculator:
                 f'GM/r^2(projection, LAST) = {g_projection:.6e} m/s^2',
             ],
             'available_equations': [
-                'g_base = dpm_emergent_ug1(M, r, B)  # DPM-emergent, not Newton',
+                'g_base = dpm_ug1_seed(M, r, B)  # DPM-emergent, not Newton',
                 'Ug1 = g_base  # seed from DPM vortex',
                 'Ug2 = 1.2 * Ug1  # charge-reactivity',
                 'Ug3 = 0.8 * Ug1 * cos(pi*t_n)  # magnetic string 90deg',
@@ -24247,7 +24258,7 @@ class GeneralizedHydrogenResonanceAllElementsCalculator:
         M_bh    = dataset.get('M_bh',    8.15e36)
         d_g     = dataset.get('d_g',     2.55e20)
         # --- DPM-emergent gravity family (NOT Newton-first) ---
-        g_b = dpm_emergent_ug1(M, r, B)  # Ug1: DPM seed
+        g_b = dpm_ug1_seed(M, r, B)  # Ug1: DPM seed
         Ug1 = g_b
         Ug2 = 1.2  * g_b  # charge-reactivity shell
         Ug3 = 0.8  * g_b * math.cos(math.pi * t_n)  # magnetic string rotation
@@ -24263,7 +24274,7 @@ class GeneralizedHydrogenResonanceAllElementsCalculator:
         g_projection = _G * M / (r ** 2) if r > 0 else 0.0
         return {
             'primary_equations': [
-                f'Ug1(DPM-seed) = dpm_emergent_ug1(M,r,B) = {Ug1:.6e}',
+                f'Ug1(DPM-seed) = dpm_ug1_seed(M,r,B) = {Ug1:.6e}',
                 f'Ug2(shell)    = 1.2*Ug1                 = {Ug2:.6e}',
                 f'Ug3(string)   = 0.8*Ug1*cos(pi*t_n)    = {Ug3:.6e}',
                 f'Ug4(BH-vac)   = 0.5*Ug1                 = {Ug4:.6e}',
@@ -24272,7 +24283,7 @@ class GeneralizedHydrogenResonanceAllElementsCalculator:
                 f'GM/r^2(projection, LAST) = {g_projection:.6e} m/s^2',
             ],
             'available_equations': [
-                'g_base = dpm_emergent_ug1(M, r, B)  # DPM-emergent, not Newton',
+                'g_base = dpm_ug1_seed(M, r, B)  # DPM-emergent, not Newton',
                 'Ug1 = g_base  # seed from DPM vortex',
                 'Ug2 = 1.2 * Ug1  # charge-reactivity',
                 'Ug3 = 0.8 * Ug1 * cos(pi*t_n)  # magnetic string 90deg',
@@ -24358,7 +24369,7 @@ class UniverseDiameterUQFFCalculator:
         M_bh    = dataset.get('M_bh',    8.15e36)
         d_g     = dataset.get('d_g',     2.55e20)
         # --- DPM-emergent gravity family (NOT Newton-first) ---
-        g_b = dpm_emergent_ug1(M, r, B)  # Ug1: DPM seed
+        g_b = dpm_ug1_seed(M, r, B)  # Ug1: DPM seed
         Ug1 = g_b
         Ug2 = 1.2  * g_b  # charge-reactivity shell
         Ug3 = 0.8  * g_b * math.cos(math.pi * t_n)  # magnetic string rotation
@@ -24374,7 +24385,7 @@ class UniverseDiameterUQFFCalculator:
         g_projection = _G * M / (r ** 2) if r > 0 else 0.0
         return {
             'primary_equations': [
-                f'Ug1(DPM-seed) = dpm_emergent_ug1(M,r,B) = {Ug1:.6e}',
+                f'Ug1(DPM-seed) = dpm_ug1_seed(M,r,B) = {Ug1:.6e}',
                 f'Ug2(shell)    = 1.2*Ug1                 = {Ug2:.6e}',
                 f'Ug3(string)   = 0.8*Ug1*cos(pi*t_n)    = {Ug3:.6e}',
                 f'Ug4(BH-vac)   = 0.5*Ug1                 = {Ug4:.6e}',
@@ -24383,7 +24394,7 @@ class UniverseDiameterUQFFCalculator:
                 f'GM/r^2(projection, LAST) = {g_projection:.6e} m/s^2',
             ],
             'available_equations': [
-                'g_base = dpm_emergent_ug1(M, r, B)  # DPM-emergent, not Newton',
+                'g_base = dpm_ug1_seed(M, r, B)  # DPM-emergent, not Newton',
                 'Ug1 = g_base  # seed from DPM vortex',
                 'Ug2 = 1.2 * Ug1  # charge-reactivity',
                 'Ug3 = 0.8 * Ug1 * cos(pi*t_n)  # magnetic string 90deg',
@@ -24487,7 +24498,7 @@ class Doc43dInertiaAetherSuperconductiveCalculator:
         M_bh    = dataset.get('M_bh',    8.15e36)
         d_g     = dataset.get('d_g',     2.55e20)
         # --- DPM-emergent gravity family (NOT Newton-first) ---
-        g_b = dpm_emergent_ug1(M, r, B)  # Ug1: DPM seed
+        g_b = dpm_ug1_seed(M, r, B)  # Ug1: DPM seed
         Ug1 = g_b
         Ug2 = 1.2  * g_b  # charge-reactivity shell
         Ug3 = 0.8  * g_b * math.cos(math.pi * t_n)  # magnetic string rotation
@@ -24503,7 +24514,7 @@ class Doc43dInertiaAetherSuperconductiveCalculator:
         g_projection = _G * M / (r ** 2) if r > 0 else 0.0
         return {
             'primary_equations': [
-                f'Ug1(DPM-seed) = dpm_emergent_ug1(M,r,B) = {Ug1:.6e}',
+                f'Ug1(DPM-seed) = dpm_ug1_seed(M,r,B) = {Ug1:.6e}',
                 f'Ug2(shell)    = 1.2*Ug1                 = {Ug2:.6e}',
                 f'Ug3(string)   = 0.8*Ug1*cos(pi*t_n)    = {Ug3:.6e}',
                 f'Ug4(BH-vac)   = 0.5*Ug1                 = {Ug4:.6e}',
@@ -24512,7 +24523,7 @@ class Doc43dInertiaAetherSuperconductiveCalculator:
                 f'GM/r^2(projection, LAST) = {g_projection:.6e} m/s^2',
             ],
             'available_equations': [
-                'g_base = dpm_emergent_ug1(M, r, B)  # DPM-emergent, not Newton',
+                'g_base = dpm_ug1_seed(M, r, B)  # DPM-emergent, not Newton',
                 'Ug1 = g_base  # seed from DPM vortex',
                 'Ug2 = 1.2 * Ug1  # charge-reactivity',
                 'Ug3 = 0.8 * Ug1 * cos(pi*t_n)  # magnetic string 90deg',
@@ -24618,7 +24629,7 @@ class FiveQuantumVariableSetsCalculator:
         M_bh    = dataset.get('M_bh',    8.15e36)
         d_g     = dataset.get('d_g',     2.55e20)
         # --- DPM-emergent gravity family (NOT Newton-first) ---
-        g_b = dpm_emergent_ug1(M, r, B)  # Ug1: DPM seed
+        g_b = dpm_ug1_seed(M, r, B)  # Ug1: DPM seed
         Ug1 = g_b
         Ug2 = 1.2  * g_b  # charge-reactivity shell
         Ug3 = 0.8  * g_b * math.cos(math.pi * t_n)  # magnetic string rotation
@@ -24634,7 +24645,7 @@ class FiveQuantumVariableSetsCalculator:
         g_projection = _G * M / (r ** 2) if r > 0 else 0.0
         return {
             'primary_equations': [
-                f'Ug1(DPM-seed) = dpm_emergent_ug1(M,r,B) = {Ug1:.6e}',
+                f'Ug1(DPM-seed) = dpm_ug1_seed(M,r,B) = {Ug1:.6e}',
                 f'Ug2(shell)    = 1.2*Ug1                 = {Ug2:.6e}',
                 f'Ug3(string)   = 0.8*Ug1*cos(pi*t_n)    = {Ug3:.6e}',
                 f'Ug4(BH-vac)   = 0.5*Ug1                 = {Ug4:.6e}',
@@ -24643,7 +24654,7 @@ class FiveQuantumVariableSetsCalculator:
                 f'GM/r^2(projection, LAST) = {g_projection:.6e} m/s^2',
             ],
             'available_equations': [
-                'g_base = dpm_emergent_ug1(M, r, B)  # DPM-emergent, not Newton',
+                'g_base = dpm_ug1_seed(M, r, B)  # DPM-emergent, not Newton',
                 'Ug1 = g_base  # seed from DPM vortex',
                 'Ug2 = 1.2 * Ug1  # charge-reactivity',
                 'Ug3 = 0.8 * Ug1 * cos(pi*t_n)  # magnetic string 90deg',
@@ -24708,8 +24719,8 @@ class M51NGC1316MUGESimulationCalculator:
         H = self.H_0 * math.sqrt(0.3 * (1 + self.M51_z)**3 + 0.7)
         M_tot = self.M51_M_vis + self.M51_M_DM
         F_tidal = G * self.M51_M_NGC5195 / self.M51_d_inter**2
-        F_env = F_tidal / (dpm_emergent_ug1(M_tot, r))
-        g_grav = (dpm_emergent_ug1(M_tot, r)) * (1 + H) * (1 - self.M51_B / self.B_crit) * (1 + F_env)
+        F_env = F_tidal / (dpm_ug1_seed(M_tot, r))
+        g_grav = (dpm_ug1_seed(M_tot, r)) * (1 + H) * (1 - self.M51_B / self.B_crit) * (1 + F_env)
         psi_spiral = math.exp(-r**2 / (2 * self.M51_sigma_spiral**2))
         quantum = (self.hbar / math.sqrt(1e-10 * 1e-20)) * psi_spiral**2 * (2 * math.pi / self.t_Hubble)
         U_i = self.lambda_i_val() 
@@ -24722,9 +24733,9 @@ class M51NGC1316MUGESimulationCalculator:
         M_tot = self.N16_M_vis + self.N16_M_DM + self.N16_M_spiral * math.exp(-t / self.N16_tau)
         F_tidal = G * self.N16_M_spiral / self.N16_d_spiral**2
         F_cluster = self.N16_k_cluster * self.N16_M_cluster
-        F_env = (F_tidal + F_cluster) / (dpm_emergent_ug1(M_tot, r))
-        g_grav = (dpm_emergent_ug1(M_tot, r)) * (1 + H) * (1 - self.N16_B / self.B_crit) * (1 + F_env)
-        g_dust = self.N16_rho_dust * (4/3 * 3.14159 * r**3) * dpm_emergent_ug1(M_tot, r)
+        F_env = (F_tidal + F_cluster) / (dpm_ug1_seed(M_tot, r))
+        g_grav = (dpm_ug1_seed(M_tot, r)) * (1 + H) * (1 - self.N16_B / self.B_crit) * (1 + F_env)
+        g_dust = self.N16_rho_dust * (4/3 * 3.14159 * r**3) * dpm_ug1_seed(M_tot, r)
         U_i = self.lambda_i_val()
         return g_grav + U_i + self.Lambda * c**2 / 3 + g_dust
 
@@ -24782,7 +24793,7 @@ class M51NGC1316MUGESimulationCalculator:
         M_bh    = dataset.get('M_bh',    8.15e36)
         d_g     = dataset.get('d_g',     2.55e20)
         # --- DPM-emergent gravity family (NOT Newton-first) ---
-        g_b = dpm_emergent_ug1(M, r, B)  # Ug1: DPM seed
+        g_b = dpm_ug1_seed(M, r, B)  # Ug1: DPM seed
         Ug1 = g_b
         Ug2 = 1.2  * g_b  # charge-reactivity shell
         Ug3 = 0.8  * g_b * math.cos(math.pi * t_n)  # magnetic string rotation
@@ -24798,7 +24809,7 @@ class M51NGC1316MUGESimulationCalculator:
         g_projection = _G * M / (r ** 2) if r > 0 else 0.0
         return {
             'primary_equations': [
-                f'Ug1(DPM-seed) = dpm_emergent_ug1(M,r,B) = {Ug1:.6e}',
+                f'Ug1(DPM-seed) = dpm_ug1_seed(M,r,B) = {Ug1:.6e}',
                 f'Ug2(shell)    = 1.2*Ug1                 = {Ug2:.6e}',
                 f'Ug3(string)   = 0.8*Ug1*cos(pi*t_n)    = {Ug3:.6e}',
                 f'Ug4(BH-vac)   = 0.5*Ug1                 = {Ug4:.6e}',
@@ -24807,7 +24818,7 @@ class M51NGC1316MUGESimulationCalculator:
                 f'GM/r^2(projection, LAST) = {g_projection:.6e} m/s^2',
             ],
             'available_equations': [
-                'g_base = dpm_emergent_ug1(M, r, B)  # DPM-emergent, not Newton',
+                'g_base = dpm_ug1_seed(M, r, B)  # DPM-emergent, not Newton',
                 'Ug1 = g_base  # seed from DPM vortex',
                 'Ug2 = 1.2 * Ug1  # charge-reactivity',
                 'Ug3 = 0.8 * Ug1 * cos(pi*t_n)  # magnetic string 90deg',
@@ -24950,7 +24961,7 @@ class V838MonLightEchoUQFFCalculator:
         rho_SCm = self.UQFF_CONSTANTS["RHO_SCM"]
         t_s = t_yr * 3.156e7
         r_echo = c * t_s
-        Ug1 = dpm_emergent_ug1(M_star, r_echo)
+        Ug1 = dpm_ug1_seed(M_star, r_echo)
         rho_dust = r0 * math.exp(-beta * Ug1)
         vac_correction = 1 + rho_UA / rho_SCm
         I_echo = (L / (4 * math.pi * r_echo**2)) * sigma * rho_dust * (1 + f_TRZ) * vac_correction
@@ -25031,7 +25042,7 @@ class MagnetarEvolutionUQFFCalculator:
         t  = p.get("t_s", 1.578e11)
         B_t = B0 * math.exp(-t / tau_B)
         Omega_t = Omega0 * math.exp(-t / tau_spin)
-        g_grav = (dpm_emergent_ug1(M, r)) * (1 + H0 * t) * (1 - B_t / B_crit)
+        g_grav = (dpm_ug1_seed(M, r)) * (1 + H0 * t) * (1 - B_t / B_crit)
         # Ug1 + Ug4 floor
         Ug_floor = 1.007e12
         # GW quadrupole spin-down contribution
@@ -25115,7 +25126,7 @@ class SgrAStarEvolutionUQFFCalculator:
         Mdot_t = Mdot0 * math.exp(-t / tau_acc)
         # Ω(t) = (0.3c/r_s)*exp(-t/tau_sp)
         Omega_t = (0.3 * c / r_s) * math.exp(-t / tau_sp)
-        g_grav  = (dpm_emergent_ug1(M, r_s)) * (1 + H0 * t) * math.sin(theta)
+        g_grav  = (dpm_ug1_seed(M, r_s)) * (1 + H0 * t) * math.sin(theta)
         g_Ug    = (Lambda * c**2 / 3) + 1.0e3   # Ug1+Ug2 small floor
         g_total = g_grav + g_Ug
         return {
@@ -25198,7 +25209,7 @@ class TapestryBlazingStarbirthNGC2014Calculator:
         M_t  = M0 + M_SF
         H0 = 2.184e-18
         B_crit = 4.4e9
-        g_grav  = (dpm_emergent_ug1(M_t, r)) * (1 + H0 * t) * (1 - B / B_crit)
+        g_grav  = (dpm_ug1_seed(M_t, r)) * (1 + H0 * t) * (1 - B / B_crit)
         g_ram   = rho * v_w**2 / r
         # EM Aether term: q*(v*B)*11e-12
         g_EM    = 1.0 * (v_w * B) * 11 * 1e-12
@@ -25282,7 +25293,7 @@ class Westerlund2SuperClusterUQFFCalculator:
         M_t  = M0 + M_SF
         H0   = 2.184e-18
         B_crit = 4.4e9
-        g_grav  = (dpm_emergent_ug1(M_t, r)) * (1 + H0 * t) * (1 - B / B_crit)
+        g_grav  = (dpm_ug1_seed(M_t, r)) * (1 + H0 * t) * (1 - B / B_crit)
         g_ram   = rho * v_w**2 / r
         g_EM    = 1.0 * (v_w * B) * 11 * 1e-12
         g_total = g_grav + g_ram + g_EM
@@ -25363,7 +25374,7 @@ class PillarsOfCreationM16ErosionCalculator:
         B_crit = 4.4e9
         E_t = E0 * math.exp(-t / tau)
         surv = 1.0 - E_t
-        g_grav = (dpm_emergent_ug1(M, r)) * (1 + H0 * t) * (1 - B / B_crit) * surv
+        g_grav = (dpm_ug1_seed(M, r)) * (1 + H0 * t) * (1 - B / B_crit) * surv
         g_ram  = rho * v_w**2 / r
         g_EM   = 1.0 * (v_w * B) * 11 * 1e-12 * surv
         g_total = g_grav + g_ram + g_EM
@@ -25447,7 +25458,7 @@ class RingsOfRelativityEinsteinRingCalculator:
         H_z_si = H_z * 1e3 / 3.086e22  # s^-1
         # Lensing efficiency
         L_t = (G * M / (c**2 * r_E)) * DLS_DS
-        g_grav = (dpm_emergent_ug1(M, r_E)) * (1 + H_z_si * t_s) * (1 - B / B_crit) * (1 + L_t)
+        g_grav = (dpm_ug1_seed(M, r_E)) * (1 + H_z_si * t_s) * (1 - B / B_crit) * (1 + L_t)
         g_EM   = 1.0 * (v * B) * 11 * 1e-12
         g_total = g_grav + g_EM
         return {
@@ -25534,7 +25545,7 @@ class HorseheadNebulaBarnard33UQFFCalculator:
         # Radiation pressure acceleration
         P_rad = (L_s / (4 * math.pi * r**2 * c)) * (rho / m_H)
         # UQFF gravity
-        g_grav = (dpm_emergent_ug1(M_cloud, r)) * (1 + H0 * t) * (1 - B / B_crit) * surv
+        g_grav = (dpm_ug1_seed(M_cloud, r)) * (1 + H0 * t) * (1 - B / B_crit) * surv
         # EM Aether term
         g_EM   = 1.0 * (v * B) * 11 * 1e-12 * surv
         g_total = g_grav + P_rad + g_EM
@@ -25625,7 +25636,7 @@ class NGC1275MagneticMonsterPerseusACalculator:
         F_BH = F0 * (1 - math.exp(-t / tau_BH))
         H_z_km = H0_km * math.sqrt(Omega_m * (1 + z)**3 + Omega_L)
         H_z_si = H_z_km * 1e3 / 3.086e22
-        g_grav  = (dpm_emergent_ug1(M, r)) * (1 + H_z_si * t) * (1 - B_fil / B_crit) * (1 - F_BH)
+        g_grav  = (dpm_ug1_seed(M, r)) * (1 + H_z_si * t) * (1 - B_fil / B_crit) * (1 - F_BH)
         # Filament magnetic support
         a_fil = (B_fil**2 * V_fil) / (2 * mu0 * M_fil * r)
         # EM Aether merger term
@@ -27947,7 +27958,7 @@ class CassiniRingGapsThreeUQFFCalculator:
     def _g_gap(self, M, r, B):
         import math
         G = 6.6743e-11; m_p = 1.673e-27; q = 1.602e-19
-        g_grav = dpm_emergent_ug1(M, r)
+        g_grav = dpm_ug1_seed(M, r)
         v_orb = math.sqrt(G * M / r)
         a_EM = (q * v_orb * B / m_p) * 11 * 1e-12
         return g_grav + a_EM
@@ -28412,7 +28423,7 @@ class NGC2525SN2018gvBarredSpiralUQFFCalculator:
         g_BH   = G * p["M_BH"] / p["r_BH"]**2
         a_EM   = (q * p["v_EM"] * p["B_EM"] / m_p) * 11 * 1e-12
         M_SN_t = p["M_SN"] * math.exp(-p["t"] / p["tau_SN"])
-        g_SN   = dpm_emergent_ug1(M_SN_t, p["r"])
+        g_SN   = dpm_ug1_seed(M_SN_t, p["r"])
         return g_grav + g_BH + a_EM - g_SN
 
     def compute_resonant(self, params=None):
@@ -30877,11 +30888,11 @@ class UQFFCompressionCycle2DerivationMethodCalculator:
         r_ext = dataset.get('r_ext', 1e12)
         H_tz = H0 * math.sqrt(Omega_m * (1 + z) ** 3 + Omega_Lambda)
         t = dataset.get('t', t_Hubble)
-        g_dpm = dpm_emergent_ug1(M, r)
+        g_dpm = dpm_ug1_seed(M, r)
         g_expansion = g_dpm * (1 + H_tz * t)
         g_superc = g_expansion * (1 - B / B_crit)
         g_env = g_superc * (1 + F_env)
-        Ug3_prime = dpm_emergent_ug1(M_ext, r_ext) if r_ext > 0 else 0.0
+        Ug3_prime = dpm_ug1_seed(M_ext, r_ext) if r_ext > 0 else 0.0
         g_uqff_gravity = Ug3_prime
         g_cosmo = lam * c ** 2 / 3
         uncertainty = hbar / math.sqrt(dx * dp) if dx > 0 and dp > 0 else 0.0
@@ -30948,7 +30959,7 @@ class SpiralsAndSupernovaeTspiralSNTermUQFFCalculator:
         r_SN = dataset.get('r_SN', 3e16)
         M_shell = (4 / 3) * math.pi * r_SN ** 3 * rho_ISM
         SN_term = E_SN / (M_shell * r_SN ** 2) if M_shell > 0 else 0.0
-        g_dpm = dpm_emergent_ug1(M, r)
+        g_dpm = dpm_ug1_seed(M, r)
         g_expansion = g_dpm * (1 + H0 * t)
         g_superc = g_expansion * (1 - B / B_crit)
         g_spiral_mod = g_superc * (1 + T_spiral)
@@ -31015,7 +31026,7 @@ class NGC6302BipolarWshockYoungStarsPoutflowUQFFCalculator:
         v_jet = dataset.get('v_jet', 3e5)
         r_jet = dataset.get('r_jet', 7e9)
         P_outflow = rho_jet * v_jet ** 2 * (r_jet / r) ** 2 if r > 0 else 0.0
-        g_dpm = dpm_emergent_ug1(M, r)
+        g_dpm = dpm_ug1_seed(M, r)
         g_expansion = g_dpm * (1 + H0 * t)
         g_superc = g_expansion * (1 - B / B_crit)
         cosm = lam * c ** 2 / 3
@@ -31083,14 +31094,14 @@ class GravitySinceBigBangQGDMGWTermsUQFFCalculator:
         dp = dataset.get('delta_p', 1e-24)
         psi_sq = dataset.get('psi_sq', 1.0)
         QG_term = hbar * G / (c ** 3 * r ** 4) if r > 0 else 0.0
-        DM_term = dpm_emergent_ug1(M_DM, r) * (1 + delta_rho_rho) if r > 0 else 0.0
+        DM_term = dpm_ug1_seed(M_DM, r) * (1 + delta_rho_rho) if r > 0 else 0.0
         L_horizon = c / H0
         GW_term = Omega_GW * c ** 2 / L_horizon
         F_cosmo = QG_term + DM_term + GW_term
         H_z = H0 * math.sqrt(Omega_m * (1 + z) ** 3 + Omega_Lambda)
         t = dataset.get('t', t_Hubble)
         M_total = M_vis + M_DM
-        g_dpm = dpm_emergent_ug1(M_total, r) if r > 0 else 0.0
+        g_dpm = dpm_ug1_seed(M_total, r) if r > 0 else 0.0
         g_expansion = g_dpm * (1 + H_z * t)
         g_superc = g_expansion * (1 - B / B_crit)
         cosm = lam * c ** 2 / 3
@@ -31187,7 +31198,7 @@ class WstellarPtermOrionEagleHydrogenAtomUQFFCalculator:
             P_rad = L_star / (4 * math.pi * r**2 * c * rho_cloud * kappa) if rho_cloud > 0 else 0.0
             net_wind_rad = W_stellar - P_rad
             # Core gravity
-            g_dpm = dpm_emergent_ug1(M, r)
+            g_dpm = dpm_ug1_seed(M, r)
             g_expansion = g_dpm * (1 + H0 * t)
             g_superc = g_expansion * (1 - B / B_crit)
             g_cosmo = lam * c**2 / 3
@@ -31238,7 +31249,7 @@ class WstellarPtermOrionEagleHydrogenAtomUQFFCalculator:
             m_tot = m_p + m_e
             uncertainty = hbar / math.sqrt(dx * dp) if dx > 0 and dp > 0 else 0.0
             q_correction = uncertainty * psi_sq / E_n if E_n > 0 else 0.0
-            g_atom = dpm_emergent_ug1(m_tot, r) * (1 + H0 * t) * (1 + P_term) * (1 + q_correction)
+            g_atom = dpm_ug1_seed(m_tot, r) * (1 + H0 * t) * (1 + P_term) * (1 + q_correction)
             g_cosmo = lam * c**2 / 3
             g_total = g_atom + g_cosmo + F_tech
             return {
@@ -31764,7 +31775,7 @@ class KeplerOrreryV_Ub_UQFF_Calculator(_CP4Calculator):  # PAPER_832 #416
         """
         M_DM = self.RHO_DM * (4.0/3.0) * self.PI * (self.R_GAL ** 3)
         a_rot = (self.V_GAL ** 2) / self.R_GAL
-        a_dm  = dpm_emergent_ug1(M_DM, self.R_GAL)
+        a_dm  = dpm_ug1_seed(M_DM, self.R_GAL)
         return a_rot + a_dm
 
     def compute_H(self, z: float = 0.0) -> float:
@@ -31832,7 +31843,7 @@ class KeplerOrreryV_Ub_UQFF_Calculator(_CP4Calculator):  # PAPER_832 #416
         F_env  = env['F_env_m_s2']
 
         # Base UQFF term
-        g_base = dpm_emergent_ug1(M, r)
+        g_base = dpm_ug1_seed(M, r)
         g_Ub   = g_base * (1.0 + H_tz) * B_fac * (1.0 + F_env)
 
         # Cosmological constant term
@@ -32096,7 +32107,7 @@ class GalacticDarkMatterNFWCouplingCalculator(_CP4Calculator):  # PAPER_834 #418
 
         M_DM  = self.compute_M_DM_sphere(r, rho)
         a_rot = v_c**2 / r
-        a_dm  = self.dpm_emergent_ug1(M_DM, r)
+        a_dm  = self.dpm_ug1_seed(M_DM, r)
         F_gal = a_rot + a_dm
         return {
             'r_m': r,
@@ -32274,7 +32285,7 @@ class ColmanGillespieFieldGeneratorLENRUQFFCalculator(_CP4Calculator):  # PAPER_
         F_DE    = self.compute_F_DE(L_X)
         F_res   = self.compute_F_res(B, V, th)
 
-        g_base = dpm_emergent_ug1(M, r)
+        g_base = dpm_ug1_seed(M, r)
         DPM_m  = 1.0
         DPM_g  = 1.0
         F_UBi  = -self.F_0 + (self.M_E * self.C**2 / r**2) * DPM_m * math.cos(th)
@@ -32350,7 +32361,7 @@ class MultiSystemChandraSurvey35NegativeBuoyancyCalc(_CP4Calculator):  # PAPER_8
         Returns dict with F_U_Bi value and sign analysis.
         """
         import math
-        g_base = dpm_emergent_ug1(M, r)
+        g_base = dpm_ug1_seed(M, r)
         DPM_m = 1.0
         DPM_g = 1.0
         momentum = (self.M_E * self.C**2 / r**2) * DPM_m * math.cos(theta)
@@ -32543,7 +32554,7 @@ class ChandraSNRNebulaeUQFFBatch2Calculator(_CP4Calculator):  # PAPER_838 #422
 
     def compute_F_UBi(self, M: float, r: float, omega_0: float = 1.0e-12) -> float:
         import math
-        g_base = dpm_emergent_ug1(M, r)
+        g_base = dpm_ug1_seed(M, r)
         DPM_m = 1.0
         momentum = (self.M_E * self.C**2 / r**2) * DPM_m
         gravity = g_base
@@ -32566,7 +32577,7 @@ class ChandraSNRNebulaeUQFFBatch2Calculator(_CP4Calculator):  # PAPER_838 #422
 
         F_UBi = self.compute_F_UBi(M, r, w0)
         F_LENR = self.compute_F_LENR(w0)
-        g_base = dpm_emergent_ug1(M, r)
+        g_base = dpm_ug1_seed(M, r)
 
         primary_equations = [
             f'F_U_Bi = -F_0 + momentum + gravity + rho_vac + F_LENR = {F_UBi:.6e} N',
@@ -32654,7 +32665,7 @@ class ADDLargeExtraDimensionsFLEDUQFFCalculator(_CP4Calculator):  # PAPER_839 #4
         F_LED  = self.compute_F_LED(ms, mp)
         F_LENR = self.compute_F_LENR(w0)
         R_n    = self.compute_graviton_radius(n)
-        g_base = dpm_emergent_ug1(M, r)
+        g_base = dpm_ug1_seed(M, r)
 
         primary_equations = [
             f'F_LED = k_LED*(M_star/M_Pl)^2 = {F_LED:.6e} N',
@@ -32781,7 +32792,7 @@ class KozimaLENRNeutronDropFneutronCalculator(_CP4Calculator):  # PAPER_840 #424
             F_neutron_dens = self.K_NEUTRON * sigma_dens
 
         F_LENR = self.compute_F_LENR(w0)
-        g_base = dpm_emergent_ug1(M, r)
+        g_base = dpm_ug1_seed(M, r)
 
         primary_equations = [
             f'F_neutron(static) = k_neutron*sigma_0 = {F_neutron_gen:.6e} N',
@@ -33085,7 +33096,7 @@ class ChandraXRayBatch1GCEagleHBC672NGC7469VirgoCalc(_CP4Calculator):  # PAPER_8
 
     def compute_F_UBi(self, M: float, r: float, omega_0: float = 1.0e-12) -> float:
         import math
-        g_base = dpm_emergent_ug1(M, r)
+        g_base = dpm_ug1_seed(M, r)
         momentum = (self.M_E * self.C**2 / r**2)
         F_LENR = self.compute_F_LENR(omega_0)
         return -self.F_0 + momentum + g_base + self.RHO_VAC + F_LENR
@@ -33097,7 +33108,7 @@ class ChandraXRayBatch1GCEagleHBC672NGC7469VirgoCalc(_CP4Calculator):  # PAPER_8
 
         F_UBi  = self.compute_F_UBi(M, r, w0)
         F_LENR = self.compute_F_LENR(w0)
-        g_base = dpm_emergent_ug1(M, r)
+        g_base = dpm_ug1_seed(M, r)
 
         systems = dataset.get('systems', None)
         batch = []
@@ -33156,7 +33167,7 @@ class Chandra25thAnniversaryCrabOrionNGC6334Calc(_CP4Calculator):  # PAPER_844 #
 
     def compute_F_UBi(self, M: float, r: float, omega_0: float = 1.0e-12) -> float:
         import math
-        g_base = dpm_emergent_ug1(M, r)
+        g_base = dpm_ug1_seed(M, r)
         momentum = (self.M_E * self.C**2 / r**2)
         F_LENR = self.compute_F_LENR(omega_0)
         return -self.F_0 + momentum + g_base + self.RHO_VAC + F_LENR
@@ -33226,7 +33237,7 @@ class ChandraSurveyMACSJ0416LensExoSMBHCalc(_CP4Calculator):  # PAPER_845 #429
         return self.K_LENR * (self.OMEGA_LENR / omega_0) ** 2
 
     def compute_F_UBi(self, M: float, r: float, omega_0: float = 1.0e-12) -> float:
-        g_base = dpm_emergent_ug1(M, r)
+        g_base = dpm_ug1_seed(M, r)
         momentum = (self.M_E * self.C**2 / r**2)
         F_LENR = self.compute_F_LENR(omega_0)
         return -self.F_0 + momentum + g_base + self.RHO_VAC + F_LENR
@@ -33310,7 +33321,7 @@ class ChandraDeathStar16SMBHGCVentTimelapseCalc(_CP4Calculator):  # PAPER_846 #4
         return self.K_LENR * (self.OMEGA_LENR / omega_0) ** 2
 
     def compute_F_UBi(self, M: float, r: float, omega_0: float = 1.0e-12) -> float:
-        g_base = dpm_emergent_ug1(M, r)
+        g_base = dpm_ug1_seed(M, r)
         momentum = (self.M_E * self.C**2 / r**2)
         F_LENR = self.compute_F_LENR(omega_0)
         return -self.F_0 + momentum + g_base + self.RHO_VAC + F_LENR
@@ -33392,7 +33403,7 @@ class SNRNebulaVelaTychoHelixSNR1181NGC6543Calc(_CP4Calculator):  # PAPER_847 #4
         return self.K_LENR * (self.OMEGA_LENR / omega_0) ** 2
 
     def compute_F_UBi(self, M: float, r: float, omega_0: float = 1.0e-12) -> float:
-        g_base = dpm_emergent_ug1(M, r)
+        g_base = dpm_ug1_seed(M, r)
         momentum = (self.M_E * self.C**2 / r**2)
         F_LENR = self.compute_F_LENR(omega_0)
         return -self.F_0 + momentum + g_base + self.RHO_VAC + F_LENR
@@ -33476,7 +33487,7 @@ class SonificationCompositeH1821IC443M74MSH1552Calc(_CP4Calculator):  # PAPER_84
         return self.K_LENR * (self.OMEGA_LENR / omega_0) ** 2
 
     def compute_F_UBi(self, M: float, r: float, omega_0: float = 1.0e-12) -> float:
-        g_base = dpm_emergent_ug1(M, r)
+        g_base = dpm_ug1_seed(M, r)
         momentum = (self.M_E * self.C**2 / r**2)
         F_LENR = self.compute_F_LENR(omega_0)
         return -self.F_0 + momentum + g_base + self.RHO_VAC + F_LENR
@@ -33600,7 +33611,7 @@ class ArXiv24PaperBatch4FquarkFneutrinoFALPFdarkCalc(_CP4Calculator):  # PAPER_8
     def compute_F_UBi_integrated(self, M: float, r: float,
                                    omega_0: float = 1.0e-12) -> dict:
         """Full F_U_Bi with all 4 BSM terms integrated."""
-        g_base = dpm_emergent_ug1(M, r)
+        g_base = dpm_ug1_seed(M, r)
         momentum = (self.M_E * self.C**2 / r**2)
         F_LENR = self.compute_F_LENR(omega_0)
         F_q = self.compute_F_quark()
@@ -33707,7 +33718,7 @@ class ADDGravitonLeakageNegBuoyancySgrAExtCalc(_CP4Calculator):  # PAPER_850 #43
     def compute_F_UBi_with_LED(self, M: float, r: float,
                                  omega_0: float = 1.0e-12,
                                  n: int = 2) -> dict:
-        g_base = dpm_emergent_ug1(M, r)
+        g_base = dpm_ug1_seed(M, r)
         momentum = (self.M_E * self.C**2 / r**2)
         F_LENR = self.compute_F_LENR(omega_0)
         F_LED = self.compute_F_LED()
@@ -33822,7 +33833,7 @@ class KozimaNeutronDropDensityScaled8SystemCalc(_CP4Calculator):  # PAPER_851 #4
     def compute_F_UBi_with_neutron(self, M: float, r: float,
                                      rho: float = None,
                                      omega_0: float = 1.0e-12) -> dict:
-        g_base = dpm_emergent_ug1(M, r)
+        g_base = dpm_ug1_seed(M, r)
         momentum = (self.M_E * self.C**2 / r**2)
         F_LENR = self.compute_F_LENR(omega_0)
         F_neutron_gen = self.compute_F_neutron()
@@ -33976,7 +33987,7 @@ class LENRNextStepsExperimentalDesignPSRJ0030Calc(_CP4Calculator):  # PAPER_852 
         F_neutron_psr = self.compute_F_neutron_density(rho)
         F_LENR = self.compute_F_LENR(w0)
         COP = self.compute_LENR_gain(P_out, P_in)
-        g_psr = dpm_emergent_ug1(M_psr, R_psr)
+        g_psr = dpm_ug1_seed(M_psr, R_psr)
 
         alma = self.compute_ALMA_frequency_coverage(10)
 
@@ -34802,7 +34813,7 @@ class KeplerOrreryV35FrameIterativeUbCalc(_CP4Calculator):  # PAPER_861 #445
         F_orbit = G_NEWTON * M_p * M_s / a3
         F_tide = G_NEWTON * M_p * M_s * R_p / a6
         r_gal2 = r_gal ** 2 if r_gal > 0 else 1.0
-        F_gal = (v_gal ** 2) / r_gal + dpm_emergent_ug1(M_DM, r_gal) if r_gal > 0 else 0.0
+        F_gal = (v_gal ** 2) / r_gal + dpm_ug1_seed(M_DM, r_gal) if r_gal > 0 else 0.0
 
         # Frame iteration with slight perturbation per frame
         frames = []
@@ -37490,7 +37501,7 @@ class RosetteNebulaNGC2237UQFFCalc(_CP4Calculator):  # PAPER_903 #487
         v_wind = v0 * growth * s26 * Phi * ratio
         v_wind_km_s = v_wind / 1.0e3
 
-        g_dpm = dpm_emergent_ug1(M, r) if r > 0 else 0.0
+        g_dpm = dpm_ug1_seed(M, r) if r > 0 else 0.0
         beta_i = 0.61;  omega_g = 7.3e-16
         Ug1 = beta_i * M * omega_g / r if r > 0 else 0.0
         compressed_g = g_dpm * (1 + self.SSQ / 26.0) * s26
@@ -43636,7 +43647,7 @@ class PSRJ0030NeutronStarBuoyancyCalculator(_CP4Calculator):
         F_rel = k_rel * (E_cm_astro_eff / E_cm_LEP) ** 2
 
         # Gravity and force assembly
-        term_gravity  = dpm_emergent_ug1(M, r, B_0) * DPM_gravity
+        term_gravity  = dpm_ug1_seed(M, r, B_0) * DPM_gravity
         term_momentum = (self.M_E * self.C ** 2 / r ** 2) * DPM_momentum * math.cos(theta)
         term_vac      = rho_vac_UA * DPM_stability
 

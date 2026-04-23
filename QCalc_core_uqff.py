@@ -1,4 +1,4 @@
-"""
+﻿"""
 QCalc_core_uqff.py - Manually implemented core UQFF equations from MAIN_1_CoAnQi.cpp SOURCE4
 
 These are the core physics equations of the Unified Quantum Field Framework (UQFF):
@@ -20,7 +20,7 @@ Reference: MAIN_1_CoAnQi.cpp lines 26575-26730 (SOURCE4 namespace)
 """
 
 import math
-from dpm_helpers import dpm_emergent_ug1, dpm_emergent_ug2
+from dpm_helpers import dpm_ug1_seed, dpm_ug2_shell
 
 from typing import Dict, Any, Callable, Optional
 
@@ -429,7 +429,7 @@ def compute_compressed_base_SOURCE4(p: dict) -> float:
     if r == 0:
         return 0.0
     
-    return dpm_emergent_ug1(M, r)
+    return dpm_ug1_seed(M, r)
 
 
 def compute_compressed_expansion_SOURCE4(p: dict) -> float:
@@ -601,7 +601,7 @@ def compute_SMBHBulgeGravityTerm_SOURCE82(p: dict) -> float:
     if r == 0:
         return 0.0
     
-    return dpm_emergent_ug1(M_bulge, r) * (1.0 - math.exp(-r / r_eff))
+    return dpm_ug1_seed(M_bulge, r) * (1.0 - math.exp(-r / r_eff))
 
 
 def compute_SMBHUg1Term_SOURCE82(p: dict) -> float:
@@ -617,7 +617,7 @@ def compute_SMBHUg1Term_SOURCE82(p: dict) -> float:
     if r == 0:
         return 0.0
     
-    return dpm_emergent_ug1(M_bh, r)
+    return dpm_ug1_seed(M_bh, r)
 
 
 def compute_SMBHUg2Term_SOURCE82(p: dict) -> float:
@@ -634,7 +634,7 @@ def compute_SMBHUg2Term_SOURCE82(p: dict) -> float:
     if r == 0:
         return 0.0
     
-    Ug1 = dpm_emergent_ug1(M_bh, r)
+    Ug1 = dpm_ug1_seed(M_bh, r)
     
     return Ug1 * 3.0 * G * M_bh / (r * c * c)
 

@@ -1,4 +1,4 @@
-"""
+﻿"""
 updated_uqff_2025_module.py
 UQFF 2025 Extensions Module
 
@@ -22,7 +22,7 @@ from typing import Dict, Any, Optional, Tuple, List, Callable
 from dataclasses import dataclass, field
 from enum import Enum
 import math
-from dpm_helpers import dpm_emergent_ug1, dpm_emergent_ug2
+from dpm_helpers import dpm_ug1_seed, dpm_ug2_shell
 
 from abc import ABC, abstractmethod
 
@@ -755,13 +755,13 @@ class UQFF2025Calculator:
         # Base UQFF components
         Ug1 = G * mu / r**3  # Magnetic dipole
         Ug2 = G * Q**2 / r**4  # Charge-reactivity
-        Ug3 = 0.01 * dpm_emergent_ug1(M, r) * np.sin(2 * np.pi * t / 86400)  # String rotation
+        Ug3 = 0.01 * dpm_ug1_seed(M, r) * np.sin(2 * np.pi * t / 86400)  # String rotation
         Ug4 = c**2 * self.constants['rho_vac_UA'] / r  # Vacuum concentration
         
         # Base buoyancy
         delta_rho = 1e-10  # Density differential
         V = (4/3) * np.pi * r**3
-        g_local = dpm_emergent_ug1(M, r)
+        g_local = dpm_ug1_seed(M, r)
         F_UBii_base = -delta_rho * V * g_local
         
         # Base magnetism

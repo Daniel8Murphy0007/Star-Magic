@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 """
 muge_cluster_3d_sim.py — 3D MUGE Galaxy Cluster Simulation
 
@@ -18,7 +18,7 @@ Links: PAPER_976, PAPER_454-457.
 """
 
 import math
-from dpm_helpers import dpm_emergent_ug1, dpm_emergent_ug2
+from dpm_helpers import dpm_ug1_seed, dpm_ug2_shell
 
 import random
 from typing import Dict, List, Tuple
@@ -92,10 +92,10 @@ def g_muge_cluster(M_enc: float, r: float) -> float:
     """MUGE gravity: 26-layer compressed + phonon modulation + buoyancy."""
     if r < 1.0:
         r = 1.0
-    g_comp = sum(dpm_emergent_ug1(M_enc, r) * SSQ * i / 26.0 for i in range(1, 27))
+    g_comp = sum(dpm_ug1_seed(M_enc, r) * SSQ * i / 26.0 for i in range(1, 27))
     Phi = S26  # On-resonance at 1.25 THz
     g_res = g_comp * Phi
-    g_buoy = sum(dpm_emergent_ug1(M_enc, r) * math.exp(-SSQ * k / 26.0) * BETA_I for k in range(1, 27))
+    g_buoy = sum(dpm_ug1_seed(M_enc, r) * math.exp(-SSQ * k / 26.0) * BETA_I for k in range(1, 27))
     total = abs(g_comp) + abs(g_res) + abs(g_buoy) + 1e-300
     wC, wR, wB = abs(g_comp)/total, abs(g_res)/total, abs(g_buoy)/total
     return wC * g_comp + wR * g_res + wB * g_buoy

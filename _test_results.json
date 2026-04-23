@@ -1,0 +1,48 @@
+{
+  "timestamp": "2026-04-22T16:35:51.304956",
+  "elapsed_sec": 321.519793,
+  "grand_total": {
+    "pass": 2727,
+    "fail": 0,
+    "tested": 2727,
+    "pass_rate_pct": 100
+  },
+  "per_file": {
+    "CP1": {
+      "ast_count": 1299,
+      "resolved": 1275,
+      "skipped_from_namespace": [],
+      "pass": 1275,
+      "fail": 0,
+      "pass_rate_pct": 100,
+      "failures": []
+    },
+    "CP2": {
+      "ast_count": 680,
+      "resolved": 668,
+      "skipped_from_namespace": [],
+      "pass": 668,
+      "fail": 0,
+      "pass_rate_pct": 100,
+      "failures": []
+    },
+    "CP3": {
+      "ast_count": 219,
+      "resolved": 219,
+      "skipped_from_namespace": [],
+      "pass": 219,
+      "fail": 0,
+      "pass_rate_pct": 100,
+      "failures": []
+    },
+    "CP4": {
+      "ast_count": 565,
+      "resolved": 565,
+      "skipped_from_namespace": [],
+      "pass": 565,
+      "fail": 0,
+      "pass_rate_pct": 100,
+      "failures": []
+    }
+  }
+}
