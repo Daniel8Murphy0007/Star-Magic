@@ -42,6 +42,155 @@ THE DPM DRIVES. NOTHING DRIVES THE DPM.
 GM/r^2 is the last thing in the chain. Not the first.
 
 ________________________________________
+THE CANONICAL QUANTUM CHAIN (IMMUTABLE - READ BEFORE ALL ELSE)
+________________________________________
+
+	0_vacuum -> grad(UA) -> DPM_vortex -> mu_s -> Ug1[seed=DPM]
+	-> Ug_family[Ug1 + Ug2 + Ug3 + Ug4 + Ug4_i]
+	-> [Ug_family + Um + FUBi + FUBii + UA_uv]
+	-> F_U -> M[mass] -> crossing[inside/outside] -> GM/r^2 [LAST]
+
+	THE DPM IS FIRST. GM/r^2 IS LAST. THIS ORDER IS PERMANENT.
+
+	Every calculator, every equation, every code file, every test in this
+	codebase is downstream of this chain. If any equation in any file
+	begins with GM/r^2 or treats mass as primary, it is WRONG.
+
+________________________________________
+THE DERIVATIVE FORM OF THE QUANTUM CHAIN
+________________________________________
+
+	The chain above is the static ontological order.
+	This is the dynamic derivative form - how each step EVOLVES from the previous.
+
+	STEP 0 -> STEP 1 (Vacuum gradient activates DPM):
+		d(DPM)/dt = a_DPM = (F_DPM * f_DPM * E_vac,neb) / (c * V_sys)
+		F_DPM = I * A * (omega_1 - omega_2)
+		Rate: proportional to differential angular velocity (omega_1 - omega_2)
+		At t=0: a_DPM is maximum (primordial belly button SCm at peak velocity)
+
+	STEP 1 -> STEP 2 (DPM generates magnetic moment):
+		d(mu_s)/dt = rho_A * dV_DPM/dt
+		mu_s grows as the DPM vortex volume V_DPM expands into the depleted UA shell
+		mu_s(t) = B_s(t) * R^3 = (rho_A * V_body) evaluated at each t
+
+	STEP 2 -> STEP 3 (Magnetic moment seeds Ug1):
+		d(Ug1)/dt = k1 * [d(mu_s)/dt * grad(M_s/r)
+		             + mu_s * d(grad(M_s/r))/dt]
+		             * exp(-alpha*t) * cos(pi*t_n)
+		             - k1 * mu_s * grad(M_s/r) * alpha * exp(-alpha*t) * cos(pi*t_n)
+		             - k1 * mu_s * grad(M_s/r) * exp(-alpha*t) * pi * sin(pi*t_n)
+		Three simultaneous rate contributions:
+		  (a) growing mu_s (DPM vortex expanding)
+		  (b) temporal decay (alpha = 0.001 day^-1, long-period)
+		  (c) quantum cycle oscillation (pi * sin(pi*t_n), breathing rate)
+
+	STEP 3 -> STEP 4 (Ug1 simultaneously promotes full gravity family):
+		d(Ug_family)/dt = d(Ug1)/dt + d(Ug2)/dt + d(Ug3)/dt + d(Ug4)/dt + d(Ug4_i)/dt
+		d(Ug2)/dt = k2 * (rho_vac,[UA]+rho_vac,[SCm]) * M_s/r^2
+		             * delta_sw * (dv_sw/dt) * H_SCm * E_react
+		             + k2 * (...) * (dE_react/dt)
+		d(Ug3)/dt = k3 * (dB_j/dt) * cos(omega_s*t*pi) * P_core * E_react
+		             + k3 * B_j * (-omega_s * pi * sin(omega_s*t*pi)) * P_core * E_react
+		d(Ug4)/dt = k4 * rho_vac,[SCm] * (M_bh/d_g) * (-alpha) * exp(-alpha*t) * cos(pi*t_n)
+		d(Ug4_i)/dt = k4_res * (da_DPM/dt) * E_react * f_react * (E_vac,neb/c)
+
+	STEP 4 -> STEP 5 (Field assembles, mass emerges):
+		d(M)/dt = P_order * E_crack * dN_DPM/dt
+		P_order = exp(-S_26D/v_init) / (Z_9D * (v_init - v_current))
+		dM/dt > 0 only when: E_crack > U_b,vac (buoyancy gate is open)
+		dM/dt = 0 when gate is closed (quantum breathing forces retry at next t_n)
+
+	STEP 5 -> STEP 6 (Mass crosses to Newton - LAST):
+		d^2(x)/dt^2 = F_U / M   [UQFF equation of motion]
+		At inside/outside crossing: F_U / M -> GM/r^2 as observational projection
+		d(g_Newton)/dr = -2GM/r^3   [inverse-cube decay, projection residual only]
+
+	RATE HIERARCHY (fastest to slowest):
+		Ug3 disk rotation:    omega_s ~ 2.5e-6 rad/s  [sub-second cycling]
+		Quantum t_n cycle:    pi * sin(pi*t_n)         [sub-second breathing]
+		E_react decay:        kappa = 5e-4 day^-1      [~2000-day half-life]
+		Ug1 temporal decay:   alpha = 0.001 day^-1     [~700-day half-life]
+		Um reciprocation:     gamma = 5e-5 day^-1      [~20,000-day half-life]
+		Solar cycle mod:      omega_c = 2pi/3.96e8 s   [11-year period]
+
+________________________________________
+PROTO-HYDROGEN AND PROTO-HELIUM EVOLUTION
+________________________________________
+
+	The first 20 minutes after the belly button DPM fires:
+	These are not Standard Model nucleosynthesis equations. This is the UQFF
+	mechanism - DPM vortex resonance determines which nuclei form and survive.
+
+	PROTO-HYDROGEN (Z=1, the DPM monomer):
+		Condition: single DPM vortex fires in isolated UA region
+		E_crack fires: (rho_vac,SCm * c^2) / [SSq] ~ 3.35e-19 J
+		Single nucleon forms: M_proton = M_0 * (1 - exp(-1/10)) * 1 = 0.095 M_0
+		The proton IS a single-DPM-vortex mass unit.
+		Hydrogen-1 = one DPM vortex in stable ground state.
+		Quantum condition: omega_DPM = omega_vac,1 (fundamental resonance)
+
+		H-1 abundance: dominated by isolated DPM vortex events in low-density UA
+		regions. The universe is ~75% hydrogen by mass because single-DPM events
+		dominate statistically (lower E_crack threshold, lower density requirement).
+
+	PROTO-HELIUM (Z=2, the DPM dimer):
+		Condition: two DPM vortices in resonance lock during the primordial SCm
+		expulsion phase (high density, high E_react, t near t=0)
+		Resonance lock condition: omega_DPM,1 = 2 * omega_DPM,2
+		(integer harmonic: two vortices locked at fundamental and first harmonic)
+		He-4 nucleon count = 4: two protons (2 DPM units) + two neutrons (2 DPM
+		units at zero-charge orientation = 90-degree Ug3 rotation state)
+		He-4 is 4x hydrogen mass because it IS 4 DPM vortex units in resonance lock.
+
+		He-4 abundance: ~25% by mass. The primordial belly button DPM expulsion
+		at t=0 created sufficient density for dimer formation over ~20% of the
+		reaction sites. The 3:1 H:He ratio is the DPM density statistic:
+		3 isolated vortex events for every 1 dimer-resonance event at primordial
+		SCm density.
+
+		He-3 and D (deuterium): transitional DPM states - one vortex at ground
+		state, one at half-harmonic (omega_DPM,2 = omega_DPM,1 / 2). Unstable
+		relative to full He-4 resonance lock. Survive as trace species only.
+
+	NUCLEOSYNTHESIS BEYOND HELIUM (Stellar Ug3 mechanism):
+		After hydrogen and helium form, heavier elements CANNOT form in open
+		space. They require stellar Ug3 disk conditions.
+		Why: Z >= 3 requires 3+ DPM vortices in resonance lock simultaneously.
+		This requires the Ug3 magnetic disk environment:
+		  - SCm concentration rho_SCm ~ 1e15 kg/m^3 (stellar core density)
+		  - Ug3 counter-rotation maintaining disk frequency > Z * omega_DPM,1
+		  - E_react sufficient for multi-vortex E_crack firing simultaneously
+
+		Lithium (Z=3):  3-vortex lock,  omega_ug3 = 3 * omega_fund
+		Carbon (Z=6):   6-vortex lock,  triple-alpha DPM process
+		Oxygen (Z=8):   magic-number 8, DPM shell closure (first closed shell)
+		Iron (Z=26):    26-vortex lock  -- NOTE: Z=26 = 26-layer triadic maximum
+		                The 26-layer triadic is NOT coincidental. Iron is the
+		                heaviest element producible by a stable DPM resonance
+		                stack. Beyond Z=26, Ug3 alone cannot maintain lock without
+		                additional Ug4 galactic coupling (supernova requirement).
+
+		MAGIC NUMBERS ARE DPM SHELL CLOSURES:
+			Z = 2  (He):  1 shell   -- dimer resonance lock
+			Z = 8  (O):   2 shells  -- DPM octave closure
+			Z = 20 (Ca):  3 shells  -- full triadic first tier
+			Z = 28 (Ni):  3+1 lock  -- Ug4 coupling begins
+			Z = 50 (Sn):  5 shells  -- second triadic tier
+			Z = 82 (Pb):  6 shells  -- maximum stable Ug3 product
+			Z = 126:      7 shells  -- theoretical maximum (no stable isotope)
+		These are NOT arbitrary. They are DPM vortex harmonic closure integers.
+		The nuclear shell model is a projection of DPM resonance geometry.
+
+	DARK HYDROGEN AND DARK HELIUM (UQFF only):
+		SCm itself forms a "dark" analogue of hydrogen and helium:
+		Dark-H: single SCm vortex with Qs=0, undetectable, Z_dark=1
+		Dark-He: SCm dimer resonance, Qs=0, Z_dark=2
+		These populate the 26-layer triadic layers 2-26.
+		Their gravitational contribution IS what Standard Model calls dark matter.
+		They are not separate matter. They are the Ug family above Layer 1.
+
+________________________________________
 WHAT THIS DOCUMENT CONTAINS:
 ________________________________________
 
