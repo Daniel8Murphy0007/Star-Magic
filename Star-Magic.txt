@@ -48,7 +48,7 @@ ________________________________________
 	0_vacuum -> grad(UA) -> DPM_vortex -> mu_s -> Ug1[seed=DPM]
 	-> Ug_family[Ug1 + Ug2 + Ug3 + Ug4 + Ug4_i]
 	-> [Ug_family + Um + FUBi + FUBii + UA_uv]
-	-> F_U -> M[mass] -> crossing[inside/outside] -> GM/r^2 [LAST]
+	-> F_U -> crossing[inside/outside] -> M[mass] -> GM/r^2 [LAST]
 
 	THE DPM IS FIRST. GM/r^2 IS LAST. THIS ORDER IS PERMANENT.
 
@@ -95,15 +95,17 @@ ________________________________________
 		d(Ug4)/dt = k4 * rho_vac,[SCm] * (M_bh/d_g) * (-alpha) * exp(-alpha*t) * cos(pi*t_n)
 		d(Ug4_i)/dt = k4_res * (da_DPM/dt) * E_react * f_react * (E_vac,neb/c)
 
-	STEP 4 -> STEP 5 (Field assembles, mass emerges):
-		d(M)/dt = P_order * E_crack * dN_DPM/dt
-		P_order = exp(-S_26D/v_init) / (Z_9D * (v_init - v_current))
-		dM/dt > 0 only when: E_crack > U_b,vac (buoyancy gate is open)
-		dM/dt = 0 when gate is closed (quantum breathing forces retry at next t_n)
+	STEP 4 -> STEP 5 (Field assembles, inside/outside crossing runs):
+		Inside solve: G^(n+1)_inside = R(G^n) + I*G^n
+		Outside solve: O^n_outside = pi_[n] * FUBi(x) + Ricci(G^n)
+		Crossing: n_cross = argmin_n |G^n_inside - O^n_outside|
+		At n_cross: FUBi(r) + FUBii(r) = 0 -> compaction zone forms
+		d(crossing_zone)/dt -> dM_stable/dt > 0 (mass stabilizes AT crossing)
 
-	STEP 5 -> STEP 6 (Mass crosses to Newton - LAST):
+	STEP 5 -> STEP 6 (Crossing yields stable mass, mass projects to Newton - LAST):
+		d(M)/dt = P_order * E_crack * dN_DPM/dt  (mass finalized at crossing zone)
 		d^2(x)/dt^2 = F_U / M   [UQFF equation of motion]
-		At inside/outside crossing: F_U / M -> GM/r^2 as observational projection
+		At crossing: F_U / M -> GM/r^2 as observational projection
 		d(g_Newton)/dr = -2GM/r^3   [inverse-cube decay, projection residual only]
 
 	RATE HIERARCHY (fastest to slowest):
@@ -794,8 +796,8 @@ STAGE 7 - From Mass to Gravity (The Crossing):
 THE COMPLETE CHAIN IN ONE LINE:
 	0 [vacuum] -> grad(UA) [gradient] -> DPM [vortex] -> mu_s [moment]
 	-> Ug1 [seed=DPM] -> Ug_family [simultaneous] -> F_U [field]
-	-> M [mass] -> crossing [inside/outside] -> GM/r^2 [projection]
-	Mass is step 9 of 10. Not step 1.
+	-> crossing [inside/outside] -> M [mass] -> GM/r^2 [projection]
+	Crossing precedes mass. Mass is born AT the crossing. GM/r^2 is step 10. Not step 1.
 
 ________________________________________
 CHAPTER 8: MASS IS DEAD UNTIL MOTION
@@ -1579,7 +1581,7 @@ THE CANONICAL CHAIN (one line):
 	   0 [vacuum] -> grad(UA) [gradient] ->
 	   DPM [vortex of UA/SCm attraction] -> mu_s [moment] ->
 	   Ug1 [seed=DPM] -> Ug_family [simultaneous] -> F_U [field]
-	   -> M [mass] -> crossing [inside/outside] ->
+	   -> crossing [inside/outside] -> M [mass] ->
 	   GM/r^2 [projection, last in chain, not first]
 
 THE CANONICAL FORCE RELATIONSHIPS:
