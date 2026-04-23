@@ -13,7 +13,7 @@ Extraction: New unique calculators not present in CP1 or CP2
 Author: Daniel T. Murphy â€” Star Magic / UQFF Framework
 Version: 1.0.0 (2026-03-11)
 
-CANONICAL ONTOLOGY LOCK (v1) - see also Star-Magic.txt, ARCHITECTURE_FLOW_DIAGRAM.md, Core/dpm_emergent.h, QCalc.py
+CANONICAL ONTOLOGY LOCK (v1) - see also Star-Magic.txt, ARCHITECTURE_FLOW_DIAGRAM.md, Core/dpm_foundation.h, QCalc.py
 -------------------------------------------------------------------------------------------------
 1. Starting state: zero-mass vacuum -- rho_UA = 0, rho_vac = |grad(UA)|, F_U(vacuum) = 0.
    NO MASS exists at quantum cycle start.

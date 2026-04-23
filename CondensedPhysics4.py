@@ -1,4 +1,4 @@
-"""
+﻿"""
 CondensedPhysics4.py — UQFF Phase 4 Physics Calculator
 =======================================================
 IPC Chain Position: 4 of 4
@@ -14,7 +14,7 @@ Extraction: 17 unique calculators (PAPER_355–370) not present in CP1, CP2, or 
 Author: Daniel T. Murphy — Star Magic / UQFF Framework
 Version: 5.72 (2026-04-12)
 
-CANONICAL ONTOLOGY LOCK (v1) — see also Star-Magic.txt, ARCHITECTURE_FLOW_DIAGRAM.md, Core/dpm_emergent.h, QCalc.py
+CANONICAL ONTOLOGY LOCK (v1) — see also Star-Magic.txt, ARCHITECTURE_FLOW_DIAGRAM.md, Core/dpm_foundation.h, QCalc.py
 ─────────────────────────────────────────────────────────────────────────────────
 1. Starting state: zero-mass vacuum — rho_UA = 0, rho_vac = |grad(UA)|, F_U(vacuum) = 0.
    NO MASS exists at quantum cycle start.

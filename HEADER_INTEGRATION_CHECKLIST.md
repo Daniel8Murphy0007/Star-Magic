@@ -1,6 +1,6 @@
 # C++ Header Integration - Complete Checklist
 
-> **CANONICAL ONTOLOGY LOCK (v1)** — Cross-ref: Star-Magic.txt, ARCHITECTURE_FLOW_DIAGRAM.md, Core/dpm_emergent.h, QCalc.py
+> **CANONICAL ONTOLOGY LOCK (v1)** — Cross-ref: Star-Magic.txt, ARCHITECTURE_FLOW_DIAGRAM.md, Core/dpm_foundation.h, QCalc.py
 > - Starting state: zero-mass vacuum — `rho_UA = 0`, `rho_vac = |grad(UA)|`, `F_U(vacuum) = 0`. NO MASS exists at quantum cycle start.
 > - Mass emergence precedes motion. Fixed promotion order: `Ug1 → Ug2 + Ug3 + Ug4 (+ Ug4_i)`.
 > - Gravity family assembled simultaneously: `Ug_family = Ug1 + Ug2 + Ug3 + Ug4 (+ Ug4_i)`.

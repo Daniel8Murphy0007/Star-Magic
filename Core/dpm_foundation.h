@@ -1,4 +1,5 @@
-// dpm_seed.h - DPM Seed Gravity Helpers (canonical implementation)
+// dpm_foundation.h - DPM Foundation Gravity Helpers (canonical implementation)
+// DPM IS THE FOUNDATION. NEWTON (GM/r^2) IS THE EMERGENT OUTPUT. NEVER SWAP.
 //
 // === CANONICAL ONTOLOGY (immutable — Star-Magic.txt) ===
 // 0_vacuum -> grad(UA) -> DPM_vortex -> mu_s -> Ug1[seed=DPM]
@@ -11,8 +12,8 @@
 //   where mu_s = B * R^3, grad(M_s/r) = M/R (mass gradient without Newton G)
 //   G appears only at the FINAL downstream GM/r^2 projection step.
 
-#ifndef DPM_EMERGENT_H
-#define DPM_EMERGENT_H
+#ifndef DPM_FOUNDATION_H
+#define DPM_FOUNDATION_H
 
 #include <cmath>
 
@@ -75,4 +76,4 @@ inline double emergent_tidal(double M, double R, double B = 1e-4) {
 
 } // namespace DPM
 
-#endif // DPM_EMERGENT_H
+#endif // DPM_FOUNDATION_H

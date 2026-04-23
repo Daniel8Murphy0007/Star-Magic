@@ -42,7 +42,7 @@
 | Threading | Windows native (SimpleMutex, SimpleLockGuard) |
 | WSTP Version | 14.3 (Wolfram Symbolic Transfer Protocol) |
 | Grok AI | ✅ Integrated (source178_grok_api.cpp) |
-| DPM-Emergent | ✅ Core/dpm_emergent.h (Newtonian gravity emergent from DPM) |
+| DPM-Foundation | ✅ Core/dpm_foundation.h (DPM is the foundation; Newtonian gravity is emergent from DPM) |
 
 ---
 
@@ -122,7 +122,7 @@ cmake --build build --target MAIN_1_CoAnQi
 - `CondensedPhysics2.py` - UQFF extensions (48,093 lines, 680 classes)
 - `CondensedPhysics3.py` - Additional calculators (12,275 lines, 218 classes)
 - `CondensedPhysics4.py` - Latest calculators (36,200 lines, 551 classes)
-- `Core/dpm_emergent.h` - DPM-emergent gravity foundation
+- `Core/dpm_foundation.h` - DPM foundation gravity helpers (DPM is first; Newton is the emergent last output)
 - `observational_systems_config.h` - 35+ astrophysical systems parameters
 
 ### Physics Modules
@@ -163,7 +163,7 @@ cmake --build build --target MAIN_1_CoAnQi
 ✅ **Phase 10:** Principal GUI (source2.cpp, 15,762 lines, 21 tabs, Qt6)  
 ✅ **Phase 11:** 5-Calculator Parallel Architecture (MAIN_1 + QCalc + CP1 + CP2 + uqff_server)  
 ✅ **Phase 12:** Whitepaper pipeline (1,125 papers, 1,134 PDFs, CVW v2.0.0 compliant)  
-✅ **Phase 13:** DPM-Emergent paradigm shift (Core/dpm_emergent.h, 607+ files updated)  
+✅ **Phase 13:** DPM-Foundation paradigm (Core/dpm_foundation.h — DPM is first, Newton is last; 607+ files updated)  
 ✅ **Phase 14:** MUGE Compression Cycle 3 (PAPER_1019–1029)  
 
 ### In Progress
