@@ -47,7 +47,7 @@ source-frame quantity.
     This amplifies OBSERVED flux but NOT intrinsic F_U_Bi_i.
     
     F_U_Bi is computed from source-frame M, r parameters:
-    F_U_Bi(MACS) = -F_0 + momentum + G*M/r^2 + rho_vac + F_LENR
+    F_U_Bi(MACS) = -F_0 + momentum + g_Newton_proj(G*M/r^2, Step 10) + rho_vac + F_LENR
     
     F_LENR = 6.17e37 N dominates at all scales.
 

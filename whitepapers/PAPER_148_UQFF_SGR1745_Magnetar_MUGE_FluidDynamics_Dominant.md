@@ -42,10 +42,10 @@ surface magnetic field of B ~ 3×10^11 T — among the strongest known magnetic 
 Under the UQFF MUGE 12-Term Resonance framework, the dominant gravitational term for SGR1745-2900 is
 afluid_freq (Navier-Stokes SCm fluid coupling), yielding a MUGE gravitational acceleration of g =
 1.773×10^-9 m/s^2 at the magnetar's magnetospheric scale. This result is physically distinct from
-the surface DPM-emergent gravity (G*M/R^2 ~ 1.4×10^13 m/s^2) because MUGE at this scale probes the
+the Newton observational projection (G*M/R^2 ~ 1.4×10^13 m/s^2, Step 10) because MUGE at this scale probes the
 magnetospheric driven SCm fluid dynamics — not the compact object's bulk gravity. The fluid
 dominance at SGR1745 validates the UQFF principle that extreme magnetic fields (B >> B_crit =
-4.4×10^13 T × f_correction) produce extreme SCm fluid accelerations that drive non-DPM-emergent
+4.4×10^13 T × f_correction) produce extreme SCm fluid accelerations that drive non-Newton-projected
 gravitational dynamics observable through X-ray pulse timing and radio emission.
 
 ---

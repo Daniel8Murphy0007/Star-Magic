@@ -50,7 +50,7 @@ All MUGE terms are shown to yield units of m/s^2 (acceleration).
 
 | Term | Dimensional Form | Unit |
 |------|-----------------|------|
-| Base | G*M/r^2 | m^3/(kg*s^2) x kg / m^2 = m/s^2 PASS |
+| Step 10 (Newton projection) | G*M/r^2 | m^3/(kg*s^2) x kg / m^2 = m/s^2 PASS |
 | Expansion | (1 + H_0*t) [dimensionless] | multiplier PASS |
 | Super_adj | (1 - B/Bcrit) [dimensionless] | multiplier PASS |
 | Cosm | Λ*c^2/3 | m^{-}2 x (m/s)^2 = s^{-}2*m^{-}1 [contextual] |
@@ -72,7 +72,7 @@ $$
 \begin{aligned}
   & As r -> inf:     g_UQFF -> Lambda*c^2/3 = 1.1e-52 x (3x10^8)^2 / 3 ~= 3.3e-36 m/s^2 \\
   & Cosmological constant dominates (dark energy floor) \\
-  & As t -> 0:     g_UQFF -> G*M/r^2 (DPM-emergent gravity recovered) \\
+  & As t -> 0:     g_UQFF -> G*M/r^2 (Step 10 Newton projection recovered — observational limit only) \\
   & H(t->0,z) -> 0; B(0)/Bcrit -> 0; Fenv(0) -> 0 \\
   & As B -> Bcrit: g_UQFF x (1 - B/Bcrit) -> 0 (superconducting quench) \\
   & Exponential form: g x e^(-B/Bcrit) -> g x e^(-1) ~= 0.368*g \\
@@ -142,7 +142,7 @@ At B = Bcrit:
   This extreme acceleration in the innermost accretion region is consistent with
   the high-luminosity flares observed by EHT in 2022-2025.
 
-### 6.3 DPM-emergent baseline (unit test)
+### 6.3 Step 10 Newton projection baseline (unit test)
 
 **test_compute_compressed_base() at 1 AU:**
 $$

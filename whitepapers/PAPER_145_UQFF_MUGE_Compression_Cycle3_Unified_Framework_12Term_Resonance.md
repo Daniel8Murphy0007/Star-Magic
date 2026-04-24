@@ -31,7 +31,7 @@ Equation + 12-Term Superconductive Resonance Sub-System with Calibrated Constant
 $$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b\_i}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57$$
 
 $$
-g_\text{UQFF}(r) = g_\text{MUGE}(r)\cdotBigl(1 - [SSq]\cdot U_{b\_i}\,/\,F_U(r,t)\Bigr), \quad [SSq]
+g_\text{UQFF}(r) = g_\text{MUGE}(r) \cdot \Bigl(1 - [SSq]\cdot U_{b\_i}\,/\,F_U(r,t)\Bigr), \quad [SSq]
 = 0.57
 $$
 
@@ -40,7 +40,7 @@ $$
 MUGE Compression Cycle 3 represents the third evolutionary stage of the Modified Unified Gravity
 Equation under the UQFF Star-Magic framework, completing the integration of the 12-term
 Superconductive Resonance sub-system into the master F_U architecture. Building on Compression
-Cycles 1 and 2 (which established the base MUGE DPM-emergent corrections and the initial resonance
+Cycles 1 and 2 (which established the base MUGE DPM-seed corrections and the initial resonance
 terms), Cycle 3 introduces the complete FDPM-driven vortical cascade: aDPM, aTHz, avac_diff,
 asuper_freq, aaether_res, Ug4i, aquantum_freq, aAether_freq, afluid_freq, Osc_term, aexp_freq, and
 the fTRZ boundary condition. Validation against 7 astrophysical systems (SGR1745-2900 through the
@@ -49,7 +49,7 @@ Student's Guide Universe cosmological scale) yields results spanning 23 orders o
 surfaces to SMBH horizons. The key architectural discovery: the 12-term resonance system is
 naturally hierarchical — dominated by fluid dynamics at compact stellar objects (SGR1745, magnetars)
 and by the FDPM vortical term at extreme mass concentrations (Sgr A*), with the limiting case
-lim(fTRZ->0)[g_MUGE] = G*M/r^2 recovering Standard Model DPM-emergent gravity from first principles.
+lim(fTRZ->0)[g_MUGE] = G*M/r^2 recovering the Standard Model Newton observational limit (Step 10 — observational projection of DPM, not its foundation).
 
 ---
 
@@ -57,7 +57,7 @@ lim(fTRZ->0)[g_MUGE] = G*M/r^2 recovering Standard Model DPM-emergent gravity fr
 
 | Cycle | Version | Key Advancement | Papers |
 |-------|---------|----------------|--------|
-| Cycle 1 | MUGE v1.0 | Base MUGE: DPM-emergent + Hubble + magnetic corrections (6 terms) | PAPER_089-092 |
+| Cycle 1 | MUGE v1.0 | MUGE v1.0: DPM-seed + Hubble + magnetic corrections (6 terms) | PAPER_089-092 |
 | Cycle 2 | MUGE v2.0 | Resonance modes: aDPM, aTHz, Ug4i, fTRZ (8 terms) | PAPER_093-095 |
 | Cycle 3 | MUGE v3.0 | Complete 12-term resonance: full DPM cascade + wormhole metric | PAPER_145-156 |
 

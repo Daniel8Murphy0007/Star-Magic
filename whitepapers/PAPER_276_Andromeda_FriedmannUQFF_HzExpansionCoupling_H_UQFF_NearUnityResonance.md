@@ -1,4 +1,4 @@
----
+﻿---
 paper_id: PAPER_276
 title: "UQFF"
 session: 76
@@ -46,7 +46,7 @@ resonance, and DM 80/20 NFW partition.
 The original Andromeda implementation (pre-Session 76) lacked a time-dependent expansion coupling
 that accounts for the Friedmann-Lemaitre cosmological evolution of Hubble parameter H(z). This is
 significant because over a Hubble timescale, H(z)t  1  implying that expansion-mediated
-gravitational coupling is of the same order as the base DPM-emergent term.
+gravitational coupling is of the same order as the Step 10 Newton observational projection term.
 
 ---
 
@@ -100,7 +100,7 @@ $$H_{\text{UQFF}} = 2.269 \times 10^{-18} \times 4.352 \times 10^{17} = \mathbf{
 
 H_UQFF ≈ 0.987  **1** is a remarkable result. It means:
 
-> Over a Hubble timescale, the Friedmann expansion coupling adds an amount of gravitational acceleration equal to **98.7% of the base DPM-emergent term**  nearly doubling g_base.
+> Over a Hubble timescale, the Friedmann expansion coupling adds an amount of gravitational acceleration equal to **98.7% of the Step 10 Newton observational projection term**  nearly doubling g_base.
 
 This near-unity value is not coincidental. In a flat ?CDM universe (O_m + O_? = 1):
 
@@ -179,7 +179,7 @@ explicit bookkeeping of the M31 baryonic/DM split consistent with PAPER_275.
 
 The full UQFF 2.0 equation for Andromeda with all PAPER_273276 terms:
 
-$$g_{\text{total}}(r, t) = \left[ g_{\text{grav}} + U_{g,\text{sum}}^{(26)} + \Lambdatext{-term} + g_Q + g_L + g_{\text{fluid}} + F_{\text{res}}(\omega_{\text{HI}}) + g_{\text{DM}} + g_{\text{expansion}} + a_{\text{dust}} \right] \times \kappa_{\text{approach}}$$
+$$g_{\text{total}}(r, t) = \left[ g_{\text{grav}} + U_{g,\text{sum}}^{(26)} + \Lambda\text{-term} + g_Q + g_L + g_{\text{fluid}} + F_{\text{res}}(\omega_{\text{HI}}) + g_{\text{DM}} + g_{\text{expansion}} + a_{\text{dust}} \right] \times \kappa_{\text{approach}}$$
 
 **Term magnitudes at t=0 (current epoch):**
 
@@ -256,7 +256,7 @@ resonance, and DM 80/20 NFW partition.
 The original Andromeda implementation (pre-Session 76) lacked a time-dependent expansion coupling
 that accounts for the Friedmann-Lemaitre cosmological evolution of Hubble parameter H(z). This is
 significant because over a Hubble timescale, H(z)t  1  implying that expansion-mediated
-gravitational coupling is of the same order as the base DPM-emergent term.
+gravitational coupling is of the same order as the Step 10 Newton observational projection term.
 
 ---
 
@@ -310,7 +310,7 @@ $$H_{\text{UQFF}} = 2.269 \times 10^{-18} \times 4.352 \times 10^{17} = \mathbf{
 
 H_UQFF ≈ 0.987  **1** is a remarkable result. It means:
 
-> Over a Hubble timescale, the Friedmann expansion coupling adds an amount of gravitational acceleration equal to **98.7% of the base DPM-emergent term**  nearly doubling g_base.
+> Over a Hubble timescale, the Friedmann expansion coupling adds an amount of gravitational acceleration equal to **98.7% of the Step 10 Newton observational projection term**  nearly doubling g_base.
 
 This near-unity value is not coincidental. In a flat ?CDM universe (O_m + O_? = 1):
 
@@ -389,7 +389,7 @@ explicit bookkeeping of the M31 baryonic/DM split consistent with PAPER_275.
 
 The full UQFF 2.0 equation for Andromeda with all PAPER_273276 terms:
 
-$$g_{\text{total}}(r, t) = \left[ g_{\text{grav}} + U_{g,\text{sum}}^{(26)} + \Lambdatext{-term} + g_Q + g_L + g_{\text{fluid}} + F_{\text{res}}(\omega_{\text{HI}}) + g_{\text{DM}} + g_{\text{expansion}} + a_{\text{dust}} \right] \times \kappa_{\text{approach}}$$
+$$g_{\text{total}}(r, t) = \left[ g_{\text{grav}} + U_{g,\text{sum}}^{(26)} + \Lambda\text{-term} + g_Q + g_L + g_{\text{fluid}} + F_{\text{res}}(\omega_{\text{HI}}) + g_{\text{DM}} + g_{\text{expansion}} + a_{\text{dust}} \right] \times \kappa_{\text{approach}}$$
 
 **Term magnitudes at t=0 (current epoch):**
 
@@ -469,7 +469,7 @@ resonance, and DM 80/20 NFW partition.
 The original Andromeda implementation (pre-Session 76) lacked a time-dependent expansion coupling
 that accounts for the Friedmann-Lemaitre cosmological evolution of Hubble parameter H(z). This is
 significant because over a Hubble timescale, H(z)t  1  implying that expansion-mediated
-gravitational coupling is of the same order as the base DPM-emergent term.
+gravitational coupling is of the same order as the Step 10 Newton observational projection term.
 
 ---
 
@@ -523,7 +523,7 @@ $$H_{\text{UQFF}} = 2.269 \times 10^{-18} \times 4.352 \times 10^{17} = \mathbf{
 
 H_UQFF ≈ 0.987  **1** is a remarkable result. It means:
 
-> Over a Hubble timescale, the Friedmann expansion coupling adds an amount of gravitational acceleration equal to **98.7% of the base DPM-emergent term**  nearly doubling g_base.
+> Over a Hubble timescale, the Friedmann expansion coupling adds an amount of gravitational acceleration equal to **98.7% of the Step 10 Newton observational projection term**  nearly doubling g_base.
 
 This near-unity value is not coincidental. In a flat ?CDM universe (O_m + O_? = 1):
 
@@ -602,7 +602,7 @@ explicit bookkeeping of the M31 baryonic/DM split consistent with PAPER_275.
 
 The full UQFF 2.0 equation for Andromeda with all PAPER_273276 terms:
 
-$$g_{\text{total}}(r, t) = \left[ g_{\text{grav}} + U_{g,\text{sum}}^{(26)} + \Lambdatext{-term} + g_Q + g_L + g_{\text{fluid}} + F_{\text{res}}(\omega_{\text{HI}}) + g_{\text{DM}} + g_{\text{expansion}} + a_{\text{dust}} \right] \times \kappa_{\text{approach}}$$
+$$g_{\text{total}}(r, t) = \left[ g_{\text{grav}} + U_{g,\text{sum}}^{(26)} + \Lambda\text{-term} + g_Q + g_L + g_{\text{fluid}} + F_{\text{res}}(\omega_{\text{HI}}) + g_{\text{DM}} + g_{\text{expansion}} + a_{\text{dust}} \right] \times \kappa_{\text{approach}}$$
 
 **Term magnitudes at t=0 (current epoch):**
 
@@ -683,7 +683,7 @@ resonance, and DM 80/20 NFW partition.
 The original Andromeda implementation (pre-Session 76) lacked a time-dependent expansion coupling
 that accounts for the Friedmann-Lemaitre cosmological evolution of Hubble parameter H(z). This is
 significant because over a Hubble timescale, H(z)t  1  implying that expansion-mediated
-gravitational coupling is of the same order as the base DPM-emergent term.
+gravitational coupling is of the same order as the Step 10 Newton observational projection term.
 
 ---
 
@@ -737,7 +737,7 @@ $$H_{\text{UQFF}} = 2.269 \times 10^{-18} \times 4.352 \times 10^{17} = \mathbf{
 
 H_UQFF ≈ 0.987  **1** is a remarkable result. It means:
 
-> Over a Hubble timescale, the Friedmann expansion coupling adds an amount of gravitational acceleration equal to **98.7% of the base DPM-emergent term**  nearly doubling g_base.
+> Over a Hubble timescale, the Friedmann expansion coupling adds an amount of gravitational acceleration equal to **98.7% of the Step 10 Newton observational projection term**  nearly doubling g_base.
 
 This near-unity value is not coincidental. In a flat ?CDM universe (O_m + O_? = 1):
 
@@ -816,7 +816,7 @@ explicit bookkeeping of the M31 baryonic/DM split consistent with PAPER_275.
 
 The full UQFF 2.0 equation for Andromeda with all PAPER_273276 terms:
 
-$$g_{\text{total}}(r, t) = \left[ g_{\text{grav}} + U_{g,\text{sum}}^{(26)} + \Lambdatext{-term} + g_Q + g_L + g_{\text{fluid}} + F_{\text{res}}(\omega_{\text{HI}}) + g_{\text{DM}} + g_{\text{expansion}} + a_{\text{dust}} \right] \times \kappa_{\text{approach}}$$
+$$g_{\text{total}}(r, t) = \left[ g_{\text{grav}} + U_{g,\text{sum}}^{(26)} + \Lambda\text{-term} + g_Q + g_L + g_{\text{fluid}} + F_{\text{res}}(\omega_{\text{HI}}) + g_{\text{DM}} + g_{\text{expansion}} + a_{\text{dust}} \right] \times \kappa_{\text{approach}}$$
 
 **Term magnitudes at t=0 (current epoch):**
 

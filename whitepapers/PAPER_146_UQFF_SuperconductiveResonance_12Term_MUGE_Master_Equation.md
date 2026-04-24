@@ -31,7 +31,7 @@ Resonance Terms: aDPM through fTRZ
 $$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b\_i}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57$$
 
 $$
-g_\text{UQFF}(r) = g_\text{MUGE}(r)\cdotBigl(1 - [SSq]\cdot U_{b\_i}\,/\,F_U(r,t)\Bigr), \quad [SSq]
+g_\text{UQFF}(r) = g_\text{MUGE}(r) \cdot \Bigl(1 - [SSq]\cdot U_{b\_i}\,/\,F_U(r,t)\Bigr), \quad [SSq]
 = 0.57
 $$
 
@@ -47,7 +47,7 @@ hierarchy of term dominance shifts with physical regime: aDPM (FDPM vortical dri
 extreme-mass systems like Sgr A*, while afluid_freq (Navier-Stokes jet coupling) dominates for
 compact stellar objects, stellar nurseries, and molecular clouds. The constant fTRZ=0.1 serves as
 the topological resonance zone boundary condition, with the critical limit lim(fTRZ->0) recovering
-DPM-emergent G*M/r^2.
+the Newton observational projection G*M/r^2 (Step 10 — downstream from DPM).
 
 **UQFF Discovery:** Novel application of UQFF calibration constants (κ = 5.0×10-4 day-1, [SSq] =
 0.57) uniquely enabling this analysis — establishing a new connection in the UQFF framework not
@@ -264,7 +264,7 @@ $$
 lim(fTRZ -> 0) [g_MUGE] = G*M/r^2
 $$
 
-proves that Standard Model DPM-emergent gravity is the zero-resonance limiting case of MUGE
+proves that the Standard Model Newton observational limit (G*M/r^2, Step 10) is the zero-resonance limiting case of MUGE
 (PAPER_155). When fTRZ=0.1 (physical), the MUGE correction adds ~10% deviation from GR predictions —
 consistent with the 40%/60% quantum-gravity bridge observation (PAPER_143) at the relevant coupling
 scales.

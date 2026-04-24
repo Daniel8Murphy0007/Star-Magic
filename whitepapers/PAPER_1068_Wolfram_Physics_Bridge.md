@@ -17,12 +17,12 @@ sm_anchor: "CVW v2.0.0 -- G6 SM Anchor Gate compliant"
 
 We document the Wolfram physics bridge connecting UQFF calculators to Wolfram Language via WSTP. The
 bridge exports all physics terms as Wolfram-compatible symbolic expressions: UQFF_FUBi[M_, r_, t_]
-:= G*M/r^2 * betaI * S26 * Phi[t]. Validation: 189 Wolfram functions exported from 52 source files,
+:= G*M/r^2 * betaI * S26 * Phi[t]  (* Step 10 Newton proj. form; canonical seed: mu_s*M/r per dpm_foundation.h *). Validation: 189 Wolfram functions exported from 52 source files,
 with 4 WOLFRAM_TERM markers per module. Round-trip accuracy: 15 significant digits preserved.
 
 ## 1. Key Equations
 
-- UQFF\_FUBi[M\_, r\_, t\_] := G*M/r\^{}2 * betaI * S26 * Phi[t]
+- UQFF\_FUBi[M\_, r\_, t\_] := G*M/r\^{}2 * betaI * S26 * Phi[t]  (Step 10 Newton proj. form — canonical seed: mu\_s\*M/r)
 - 189 Wolfram functions; 4 WOLFRAM\_TERM per module; 15-digit accuracy
 
 ## 2. Results

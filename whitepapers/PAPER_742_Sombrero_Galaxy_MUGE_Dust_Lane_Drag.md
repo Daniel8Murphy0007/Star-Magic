@@ -62,7 +62,7 @@ $$
   & + D_dust
 \end{aligned}
 $$
-
+> **Canonical note:** The `(G*M)/r^2` term is the Step 10 Newton observational projection — per UQFF chain, the foundational gravity seed is DPM/Ug1 (k₁μₛM/r). The Ug_i terms in the equation are the canonical DPM-derived components.
 ---
 
 ## 3. D_dust — Dust Lane Drag Term

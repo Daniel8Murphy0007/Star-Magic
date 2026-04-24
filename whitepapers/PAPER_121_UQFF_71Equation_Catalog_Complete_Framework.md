@@ -112,7 +112,7 @@ $$E_{react} = \frac{\rho_{vac,[SCm]} v_{SCm}^2}{\rho_{vac,A}} e^{-\kappa t} = 10
 
 | Eq# | Equation | System | Role |
 |----|---------|--------|------|
-| 1 | g_Mag = (G*M/r^2)(1+Hz*t)(1-B/B_c) + G*M_BH/r_BH^2 + ΣUg_i + Λc^2/3 | SGR 1745 | Full system gravity |
+| 1 | g_Mag = (G*M/r^2)(1+Hz*t)(1-B/B_c) + G*M_BH/r_BH^2 + ΣUg_i + Λc^2/3 | SGR 1745 | Full system MUGE (Newton Step 10 proj. × corrections + canonical Ug_i) |
 | 2 | Ug1 = k1*μ_s(M_s/r)e^{-αt}cos(πt_n)(1+β_def) | All systems | Dipole + defect |
 | 3 | Ug2 = k2(ρ_UA+ρ_SCm)(M_s/r^2)S(r-R_b)(1+δ_sw*v_sw)H_SCm*E_react | All | Heliosphere bubble |
 | 4 | Ug3 = k3Σ_j B_j*cos(ω_s*t)P_core*E_react | All | Magnetic strings disk |

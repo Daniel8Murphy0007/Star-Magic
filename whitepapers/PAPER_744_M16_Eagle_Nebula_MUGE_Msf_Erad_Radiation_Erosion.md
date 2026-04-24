@@ -65,6 +65,8 @@ $$
 \end{aligned}
 $$
 
+> **Canonical note:** The `(G*M(t))/r^2` term is the Step 10 Newton observational projection — per UQFF chain, the foundational gravity seed is DPM/Ug1 (k₁μₛM/r). The Ug_i terms in the equation are the canonical DPM-derived components.
+
 ---
 
 ## 3. M_sf(t) — Time-Dependent Star Formation Rate Modulator
@@ -136,8 +138,8 @@ U_g2: aether-superconductive field in ionized HII region
       B_super = mu_0 * H_aether_HII ~= 5 T (elevated near ionization front)
       U_g2 ~= 10^7 J/m^3
 
-U_g3: external gravity from cluster mass distribution
-      U_g3 = G * M_NGC6611 / r_cluster^2
+U_g3: external gravity from cluster mass distribution (Newton projection, Step 10)
+      U_g3 = G * M_NGC6611 / r_cluster^2  # Step 10 Newton projection form (simplified estimate; canonical Ug3 = magnetic strings disk)
 
 U_g4: galactic tidal field at 2 kpc from center
       U_g4 ~= 2.5x10^{-}2^0 J/m^3

@@ -25,6 +25,7 @@ Module[{G, Msun, Rsun, AU, SSq, betai, kappa, omegaSCm, ...},
   (* Constants *)
   G = 6.674*^-11; Msun = 1.989*^30; ...
   
+  (* NOTE: G*M/r^2 in layer functions = Step 10 Newton observational projection form; canonical DPM seed = mu_s*M/r per Core/dpm_foundation.h *)
   (* Layer functions *)
   Ug26[M_, r_] := Sum[G*M/r^2 * SSq * i/26, {i, 1, 26}];
   Ub26[M_, r_] := Sum[G*M/r^2 * Exp[-SSq*i/26] * betai, {i, 1, 26}];
@@ -138,7 +139,7 @@ for this system.
 
 ## §A. Cosmogenesis-Linked Lagrangian
 
-The Wolfram export allows symbolic computation of $\delta S / \deltaphi$ directly in Mathematica, cross-validating the numerical Euler-Lagrange result from PAPER_981.
+The Wolfram export allows symbolic computation of $\delta S / \delta\phi$ directly in Mathematica, cross-validating the numerical Euler-Lagrange result from PAPER_981.
 
 ## §B. VDS/DVP/BSH Deep Synthesis
 

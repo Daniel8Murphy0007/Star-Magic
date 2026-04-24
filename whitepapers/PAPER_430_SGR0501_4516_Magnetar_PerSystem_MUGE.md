@@ -78,7 +78,7 @@ At $t = 5{,}000$ yr $= 1.578 \times 10^{11}$ s:
 
 $$\boxed{g_\text{Magnetar}(r,t) = \sum_{k=1}^{10} T_k}$$
 
-### Term 1 — Base DPM-emergent gravity with cosmic expansion and magnetic SC correction
+### Term 1 — Step 10 Newton projection with cosmic expansion and magnetic SC correction
 
 $$T_1 = \underbrace{\frac{GM}{r^2}}_{\mu_s\nabla(M_s/r)} \cdot (1 + H_0 t) \cdot \left(1 - \frac{B(t)}{B_\text{crit}}\right)$$
 
@@ -121,7 +121,7 @@ $$T_7 \approx 0 \quad [\text{subdominant at stellar radius}]$$
 
 ### Term 8 — Dark matter perturbation
 
-$$T_8 = (M + M_\text{DM}) \cdot \frac{\deltarho/\rho + 3μ_s∇(M_s/r)/r}{r^2}$$
+$$T_8 = (M + M_\text{DM}) \cdot \frac{\delta\rho/\rho + 3\mu_s\nabla(M_s/r)/r}{r^2}$$
 
 $$T_8 \approx 2.135 \times 10^{41} \text{ kg m}^{-1} \quad [\text{mass-scale quantity; not additive to acceleration}]$$
 
@@ -319,10 +319,10 @@ class SGR0501_4516_MagnetarPerSystemMUGECalculator:
         t_s = t_yr * 3.156e7
         Bt = B0 * math.exp(-t_s / tau_B_s)
         dOmdt = -(2 * math.pi / P0 / tau_Om_s) * math.exp(-t_s / tau_Om_s)
-        g_base = G * M / r**2
-        T1 = g_base * (1 + H0 * t_s) * (1 - Bt / B_crit)
-        Ug1 = g_base; Ug4 = Ug1 * (1 - Bt / B_crit)
-        T2 = (Ug1 + Ug4) * (1 + f_TRZ)
+        g_Newton_proj = G * M / r**2  # Step 10 observational projection — NOT Ug1 DPM seed
+        T1 = g_Newton_proj * (1 + H0 * t_s) * (1 - Bt / B_crit)
+        Ug1_proj = g_Newton_proj; Ug4_proj = Ug1_proj * (1 - Bt / B_crit)
+        T2 = (Ug1_proj + Ug4_proj) * (1 + f_TRZ)
         T3 = Lambda * c**2 / 3
         T5 = (q * v * Bt / m_p) * (1 + rho_ratio) * s_EM
         T9 = (G * M**2 / (c**4 * r)) * dOmdt**2
