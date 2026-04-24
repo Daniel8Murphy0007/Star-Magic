@@ -36,7 +36,7 @@ expansion and synchrotron emission are derived.
 | Age | 971 yr |
 
 ## 2. Spin-Down Luminosity
-$$L_{sd} = I|\Omegadot\Omega|,\quad \dotOmega = -\frac{B^2 R_{ns}^6 \Omega^3}{6Ic^3}$$
+$$L_{sd} = I|\Omega\dot\Omega|,\quad \dot\Omega = -\frac{B^2 R_{ns}^6 \Omega^3}{6Ic^3}$$
 $L_{sd}(Crab) \approx 5 \times 10^{31}$ W.
 
 ## 3. UQFF SNR Expansion

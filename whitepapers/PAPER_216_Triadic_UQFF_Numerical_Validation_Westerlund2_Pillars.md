@@ -23,7 +23,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 $$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b\_i}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57$$
 
 $$
-M_J^\text{UQFF} = M_J^\text{Jeans}\cdotBigl(1 - [SSq]\cdot\frac{B^2}{8\pirho c_s^2}\Bigr), \quad
+M_J^\text{UQFF} = M_J^\text{Jeans}\cdotBigl(1 - [SSq]\cdot\frac{B^2}{8\pi\rho c_s^2}\Bigr), \quad
 [SSq] = 0.57
 $$
 <!— κ = 5.0e-4 day-1, [SSq] = 0.57, ß_i = 6.1e-1 —>

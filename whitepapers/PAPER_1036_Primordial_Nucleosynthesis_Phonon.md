@@ -142,7 +142,7 @@ cosmological lithium problem.
 **Sector:** cosmological (BBN epoch)
 
 ### A.2 Lagrangian Density
-$$\mathcal{L}_{\text{BBN}} = \bar{\psi}_n (i\gamma^\mupartial_\mu - m_n)\psi_n + G_F \bar{\psi}_p \psi_n + \Phi_{\text{SCm}} S_{26}$$
+$$\mathcal{L}_{\text{BBN}} = \bar{\psi}_n (i\gamma^\mu\partial_\mu - m_n)\psi_n + G_F \bar{\psi}_p \psi_n + \Phi_{\text{SCm}} S_{26}$$
 
 ### A.3 Euler-Lagrange Equation of Motion
 $$\boxed{\frac{dX_n}{dt} = -\Gamma_{\text{UQFF}} X_n + \Gamma_{\text{UQFF}} X_p e^{-Q/T}}$$

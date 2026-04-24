@@ -87,7 +87,7 @@ $$F_{cluster} = k_{cluster}\cdot M_{cluster}\,M_\odot \approx 1.99\times10^{18}\
 
 ## 5. UQFF Potential Terms
 
-$$U_{g1} = I\cdot A\cdotomega_{spin}\cdot B_{AGN}, \quad I=10^{22}\;\text{A},\; A=10^{16}\;\text{m}^2$$
+$$U_{g1} = I\cdot A\cdot\omega_{spin}\cdot B_{AGN}, \quad I=10^{22}\;\text{A},\; A=10^{16}\;\text{m}^2$$
 
 $$U_{g2} = \frac{(\mu_0 H_{aether})^2}{2\mu_0} \approx 6.28\times10^{-17}\;\text{J/m}^3$$
 

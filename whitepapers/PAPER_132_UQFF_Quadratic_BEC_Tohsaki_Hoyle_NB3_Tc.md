@@ -112,7 +112,7 @@ the [SCm] resonance loop.
 
 Standard BEC critical temperature for N bosons in a 3D harmonic trap:
 
-$$k_B T_c^{std} = \hbar \baromega \left(\frac{N}{\zeta(3)}\right)^{1/3}$$
+$$k_B T_c^{std} = \hbar \bar\omega \left(\frac{N}{\zeta(3)}\right)^{1/3}$$
 
 UQFF [SCm] enhancement  the condensate forms at higher T due to [SCm] vacuum stabilization:
 

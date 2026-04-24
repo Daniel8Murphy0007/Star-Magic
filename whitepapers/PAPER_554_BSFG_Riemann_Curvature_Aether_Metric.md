@@ -64,9 +64,9 @@ $$\varepsilon'(r) = \frac{d\varepsilon}{dr} = -\frac{3\etacos(\pi t_n)\,C_{\rm n
 
 **Step 2.** For a diagonal metric $A_{\mumu}(r)$ depending only on $r = x^1$, the non-zero Christoffel symbols of the Levi-Civita connection are:
 
-$$\Gamma^r_{\mumu} = -\frac{\partial_r A_{\mumu}}{2\,A_{rr}} = -\frac{\varepsilon'}{2(-1+\varepsilon)} \qquad \text{(no sum on }\mutext{)}$$
+$$\Gamma^r_{\mumu} = -\frac{\partial_r A_{\mumu}}{2\,A_{rr}} = -\frac{\varepsilon'}{2(-1+\varepsilon)} \qquad \text{(no sum on }\mu\text{)}$$
 
-$$\Gamma^\alpha_{\alpha r} = \Gamma^\alpha_{r\alpha} = \frac{\partial_r A_{\alphaalpha}}{2\,A_{\alphaalpha}} \qquad \text{(no sum on }\alphatext{)}$$
+$$\Gamma^\alpha_{\alpha r} = \Gamma^\alpha_{r\alpha} = \frac{\partial_r A_{\alphaalpha}}{2\,A_{\alphaalpha}} \qquad \text{(no sum on }\alpha\text{)}$$
 
 Explicitly at leading order in $\varepsilon$:
 
@@ -84,7 +84,7 @@ Explicitly at leading order in $\varepsilon$:
 
 **Step 3.** Apply the Riemann tensor formula:
 
-$$R^\rho{}_{\sigmamu\nu} = \partial_mu\Gamma^\rho_{\nusigma} - \partial_nu\Gamma^\rho_{\mu\sigma} + \Gamma^\rho_{\mu\lambda}\Gamma^\lambda_{\nusigma} - \Gamma^\rho_{\nu\lambda}\Gamma^\lambda_{\mu\sigma}$$
+$$R^\rho{}_{\sigma\mu\nu} = \partial_mu\Gamma^\rho_{\nu\sigma} - \partial_nu\Gamma^\rho_{\mu\sigma} + \Gamma^\rho_{\mu\lambda}\Gamma^\lambda_{\nu\sigma} - \Gamma^\rho_{\nu\lambda}\Gamma^\lambda_{\mu\sigma}$$
 
 The dominant component (tidal force in the radial-temporal plane):
 
@@ -114,7 +114,7 @@ $$R = A^{\mu\nu}R_{\mu\nu} = \frac{R_{00}}{A_{00}} + \frac{R_{rr}}{A_{rr}} + \fr
 
 **Kretschner scalar** (leading order):
 
-$$K = R_{\mu\nu\rhosigma}R^{\mu\nu\rhosigma} \approx 12\,(R^r{}_{0r0})^2$$
+$$K = R_{\mu\nu\rho\sigma}R^{\mu\nu\rho\sigma} \approx 12\,(R^r{}_{0r0})^2$$
 
 ---
 

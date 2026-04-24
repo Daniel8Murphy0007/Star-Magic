@@ -134,7 +134,7 @@ $M_{\text{BH}} \propto \sigma^{4+\delta}$ where $\delta = \beta_i \cdot S_{26}^{
 $$\mathcal{L}_{E(t)} = \frac{1}{2}S_{26}^2\left[\dot{\phi}^2 - \omega_text{SCm}^2\phi^2\right] - \Gamma S_{26}\dot{\phi}\phi$$
 
 ### §A.3 Euler-Lagrange Equation of Motion
-$$\boxed{\ddot{\phi} + 2\Gammadot{\phi} + \omega_text{SCm}^2\phi = 0 \implies E(t,\Gamma) = S_{26}\cos(\omega_text{SCm}t)e^{-\Gamma t}}$$
+$$\boxed{\ddot{\phi} + 2\Gamma\dot{\phi} + \omega_text{SCm}^2\phi = 0 \implies E(t,\Gamma) = S_{26}\cos(\omega_text{SCm}t)e^{-\Gamma t}}$$
 
 ### §A.4 Cosmogenesis Linkage Chain
 PAPER_877 → SCm vacuum → phonon $\omega_text{SCm}$ → damped oscillation $E(t,\Gamma)$ → jet sign-flip → collimation/diffusion

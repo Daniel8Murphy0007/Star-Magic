@@ -76,7 +76,7 @@ Numerically: U_g4,QCD  10 J/m (nuclear energy density scale, QCD vacuum  10-5 J/
 
 $$\Delta_{\rm UQFF} = 0.01 \times \sqrt{\frac{10^{32}}{10^{35}}} \times \frac{1.055 \times 10^{-34} \times 3 \times 10^8}{10^{-15}} = 0.01 \times 0.032 \times 31.65 \text{ GeV}$$
 
-$$\approx 0.01 \times 1 \text{ GeV} = \textbf{10 MeV}$$
+$$\approx 0.01 \times 1 \text{ GeV} = \text\bf{10 MeV}$$
 
 The familiar QCD confinement mass gap is ~ 300 MeV (pion mass). UQFF gives 10 MeV (light quark
 scale). **Consistent in order-of-magnitude** with the lightest QCD excitations.

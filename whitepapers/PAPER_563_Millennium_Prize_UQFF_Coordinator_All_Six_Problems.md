@@ -126,12 +126,12 @@ which maps directly to:
 
 **Clay Statement:** Given smooth, compactly supported initial data $\mathbf{u}_0$,
 prove that a smooth global solution to the 3D incompressible Navier-Stokes equations:
-$$\partial_t \mathbf{u} + (\mathbf{u}\cdot\nabla)\mathbf{u} = -\nabla p + \munabla^2\mathbf{u},
+$$\partial_t \mathbf{u} + (\mathbf{u}\cdot\nabla)\mathbf{u} = -\nabla p + \mu\nabla^2\mathbf{u},
 \quad \nabla\cdot\mathbf{u} = 0$$
 exists for all time $t > 0$ with bounded energy.
 
 **UQFF Approach:** Replace $\partial/\partial t$ with Wolfram hypergraph rule $R(n)$:
-$$\mathrm{NS}_\text{disc} = \rho R(\mathbf{u}) + \rhomathbf{u}\,R(\mathbf{u})
+$$\mathrm{NS}_\text{disc} = \rho R(\mathbf{u}) + \rho\mathbf{u}\,R(\mathbf{u})
   + R(p) - \mu R^2(\mathbf{u}) - U_{b,\text{jet}} = 0$$
 
 **Key UQFF result** (calculator: `NSHypergraphDiscreteRegularityCalculator`):

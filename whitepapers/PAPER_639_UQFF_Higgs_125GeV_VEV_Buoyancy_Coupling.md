@@ -81,7 +81,7 @@ $$m_{H,UQFF} = \sqrt{2 \times 0.1294} \times 246.22 = 0.5084 \times 246.22 = 125
 
 UQFF predicts a Higgs self-coupling deviation at HL-LHC from vacuum buoyancy fluctuations:
 
-$$\deltalambda_{UQFF} = \lambda \times \frac{\kappa}{H_{SCm}} = 0.1294 \times \frac{0.0005}{0.99} \approx 6.5 \times 10^{-5}$$
+$$\delta\lambda_{UQFF} = \lambda \times \frac{\kappa}{H_{SCm}} = 0.1294 \times \frac{0.0005}{0.99} \approx 6.5 \times 10^{-5}$$
 
 HL-LHC targets δλ/λ ~ 50% at 3/ab, but this shift is undetectable. The UQFF sign of δλ
 (positive) is a testable direction for future δλ measurements.

@@ -227,7 +227,7 @@ that EP-12 identifies as a fundamental UQFF calibration point.
 |---|----------|-------|----------------|
 | 1 | $N_B = 1/(\exp(\Delta E/kT)-1)$ | 1.46 at T=5 MeV | Core BE distribution |
 | 2 | $\Delta E_{BEC} = kT \ln(1+1/N_B)$ | 0.477 MeV | Threshold calibration |
-| 3 | $T_c^{UQFF} = T_c + [\text{SSq}]\cdotDelta E$ | 5.272 MeV | [SSq] condensation shift |
+| 3 | $T_c^{UQFF} = T_c + [\text{SSq}]\cdot\Delta E$ | 5.272 MeV | [SSq] condensation shift |
 | 4 | $\chi^2/dof = \sum(N_{data}-N_B)^2/(N_{data}\cdot dof)$ | 0.051 | Fit quality metric |
 | 5 | $\Phi_{BEC} = [\text{SSq}] = 0.57$ | 0.57 | UQFF suppression constant |
 | 6 | 10a Ikeda boundary | N_B = 0.57 = [SSq] | Cluster condensation link |

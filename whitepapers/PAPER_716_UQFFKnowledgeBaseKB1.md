@@ -65,7 +65,7 @@ Plasma wave angular frequency:
 $$\omega_{plasma} = \sqrt{\omega_0^2 + \gamma^2} \approx 1.005\times10^{16}\,\text{rad/s}$$
 
 Jeans mass:
-$$M_J = \left(\frac{5k_BT}{G\mu m_H}\right)^{3/2} \cdot \left(\frac{3}{4\pirho}\right)^{1/2} \approx 5.13\times10^{31}\,\text{kg}$$
+$$M_J = \left(\frac{5k_BT}{G\mu m_H}\right)^{3/2} \cdot \left(\frac{3}{4\pi\rho}\right)^{1/2} \approx 5.13\times10^{31}\,\text{kg}$$
 
 ## 4. Hydrogen Papers (pp 74-84)
 

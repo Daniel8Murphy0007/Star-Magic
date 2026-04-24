@@ -101,7 +101,7 @@ $\Delta x \cdot \Delta p \geq h/4\pi$ becomes $\Delta r^2 \cdot \rho \cdot \text
 With $h$ derived, all other quantum constants follow:
 
 $$\hbar = h/2\pi \approx 1.055\times10^{-34}\ \text{J·s}$$
-$$\alpha = e^2/(4\pivarepsilon_0\hbar c) = \frac{2\kapparho\,\text{Grind}^2 r^{24}\text{Partition}}{3\sqrt{g\cdot SCm/UA}}$$
+$$\alpha = e^2/(4\pi\varepsilon_0\hbar c) = \frac{2\kappa\rho\,\text{Grind}^2 r^{24}\text{Partition}}{3\sqrt{g\cdot SCm/UA}}$$
   (see PAPER_591)
 
 ---

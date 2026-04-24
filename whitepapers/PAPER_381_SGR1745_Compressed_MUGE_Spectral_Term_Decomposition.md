@@ -108,7 +108,7 @@ $$\underbrace{\underbrace{\frac{3GM}{r^3}}_{\text{DPM tidal gradient}} = \frac{3
 
 $$(M + M_\text{DM}) \approx (2.984\times10^{30} + 10^{28}) \approx 3.0\times10^{30} \ \text{kg}$$
 
-$$\boxed{g_\text{pert} = 1.782\times10^{39} \ \text{m/s}^2 \quad (\textbf{DOMINANT — 27 orders above base})}$$
+$$\boxed{g_\text{pert} = 1.782\times10^{39} \ \text{m/s}^2 \quad (\text\bf{DOMINANT — 27 orders above base})}$$
 
 ---
 

@@ -79,7 +79,7 @@ $$f_{TRZ} = 0.1 \quadRightarrow\quad (1 + f_{TRZ}) = 1.1$$
 
 ### 2.5 Electromagnetic–Aether Term
 
-$$F_{em} = \frac{q_e\,v_{wind}\,B}{m_p}\left(1 + \frac{\rho_{UA}}{\rho_{SCm}}\right)\cdoteta_{scale}$$
+$$F_{em} = \frac{q_e\,v_{wind}\,B}{m_p}\left(1 + \frac{\rho_{UA}}{\rho_{SCm}}\right)\cdot\eta_{scale}$$
 
 where $\rho_{UA}/\rho_{SCm} = 7.09\times10^{-36} / 7.09\times10^{-37} = 10$, $\eta_{scale}=10^{-12}$.
 
@@ -90,7 +90,7 @@ $$R(t) = R_{grav}\cos(\omega_{grav}\,t) + R_{mag}\cos(\omega_{mag}\,t)\cdot\frac
 
 $$\omega_{grav} = \frac{2\pi}{\tau_{erode}}, \quad \omega_{mag} = 100\,\omega_{grav}$$
 
-$$R_{grav} = \frac{G\,M}{r^2}(1+M_{evo}), \quad R_{mag} = \frac{q_e\,v_{wind}\,B}{m_p}\cdoteta_{scale}$$
+$$R_{grav} = \frac{G\,M}{r^2}(1+M_{evo}), \quad R_{mag} = \frac{q_e\,v_{wind}\,B}{m_p}\cdot\eta_{scale}$$
 
 
 ## 4. Solved Results at $t = 10$ Myr

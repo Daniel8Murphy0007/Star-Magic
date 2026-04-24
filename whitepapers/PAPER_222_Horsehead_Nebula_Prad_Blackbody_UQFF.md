@@ -67,19 +67,19 @@ $$P_{\text{rad}} = \frac{u_{\text{rad}}}{3} = \frac{4\sigma T^4}{3c}$$
 
 
 $$
-M_J^{\text{UQFF}} = M_J^{\text{Jeans}}\!\left(1 - [SSq]\frac{B^2}{8\pirho c_s^2}\right), \quad
+M_J^{\text{UQFF}} = M_J^{\text{Jeans}}\!\left(1 - [SSq]\frac{B^2}{8\pi\rho c_s^2}\right), \quad
 [SSq]=0.57
 $$
 
 
 
 $$
-M_J^{\text{UQFF}} = M_J^{\text{Jeans}}\!\left(1 - [SSq]\frac{B^2}{8\pirho c_s^2}\right), \quad
+M_J^{\text{UQFF}} = M_J^{\text{Jeans}}\!\left(1 - [SSq]\frac{B^2}{8\pi\rho c_s^2}\right), \quad
 [SSq]=0.57
 $$
 
 
-NameM_J^\text{UQFF} = M_J^\text{Jeans}\cdotBigl(1 - [SSq]\cdot\frac{B^2}{8\pirho c_s^2}\Bigr),
+NameM_J^\text{UQFF} = M_J^\text{Jeans}\cdotBigl(1 - [SSq]\cdot\frac{B^2}{8\pi\rho c_s^2}\Bigr),
 \quad [SSq] = 0.57Name
 
 where:

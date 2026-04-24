@@ -99,7 +99,7 @@ $$c = \sqrt{26} \times 2.18\times10^6 \times \frac{\text{Partition}^{1/26}}{\kap
 |--------|-------------|--------|
 | Triad Equilibrium | $c = \sqrt{g \cdot SCm/UA}$ | $3\times10^8$ m/s PASS |
 | BH26 Gaussian Anchor | $c = \sqrt{g\sigma/\mu}$ (calibrated) | $3\times10^8$ m/s PASS |
-| Resonant $\omega$-scale | $c = r\omegasqrt{26}/\kappa$ | $3\times10^8$ m/s PASS |
+| Resonant $\omega$-scale | $c = r\omega\sqrt{26}/\kappa$ | $3\times10^8$ m/s PASS |
 
 All three methods converge, confirming $c$ as the universal equilibrium propagation velocity
 of the pre-mass UQFF vacuum.

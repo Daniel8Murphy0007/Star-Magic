@@ -25,7 +25,7 @@ PAPER_642 (SM Bridge)
 
 ## Abstract
 
-$$E_{\text{wave}} \approx 1.17\times10^{-105}\ \text{J}; \qquad \pitext{-position}("117"): 1529,\ 2570,\ 5046,\ 10258,\ 15133,\ 23377,\ 27157\ldots$$
+$$E_{\text{wave}} \approx 1.17\times10^{-105}\ \text{J}; \qquad \pi\text{-position}("117"): 1529,\ 2570,\ 5046,\ 10258,\ 15133,\ 23377,\ 27157\ldots$$
 
 The decimal expansion of π contains the digit-triad "117" (and its related UQFF
 constant sequence) at statistically regular positions throughout its infinite decimal

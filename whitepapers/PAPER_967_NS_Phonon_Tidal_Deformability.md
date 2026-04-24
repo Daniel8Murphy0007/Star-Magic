@@ -23,15 +23,15 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 ## Abstract
 
-The SCm phonon correction to neutron star tidal deformability $\Lambda$ bridges the gap between GR-only predictions and LIGO/Virgo observations for GW190425. The correction $\deltaLambda = F_{UBi}/F_U \cdot \Phi_{1.25\text{THz}} \cdot 0.1$ yields a 10% maximal shift in $\Lambda$, consistent with the mass-gap nature of the lighter component.
+The SCm phonon correction to neutron star tidal deformability $\Lambda$ bridges the gap between GR-only predictions and LIGO/Virgo observations for GW190425. The correction $\delta\Lambda = F_{UBi}/F_U \cdot \Phi_{1.25\text{THz}} \cdot 0.1$ yields a 10% maximal shift in $\Lambda$, consistent with the mass-gap nature of the lighter component.
 
 ---
 
 ## 1. Tidal Deformability Correction
 
-$$\Lambda_text{UQFF} = \Lambda_text{GR} \cdot (1 + \deltaLambda_\text{phonon})$$
+$$\Lambda_text{UQFF} = \Lambda_text{GR} \cdot (1 + \delta\Lambda_\text{phonon})$$
 
-$$\deltaLambda_\text{phonon} = \frac{F_{UBi}}{F_U} \cdot \Phi_{1.25\text{THz}}(\omega_text{SCm}, \Gamma) \cdot 0.1$$
+$$\delta\Lambda_\text{phonon} = \frac{F_{UBi}}{F_U} \cdot \Phi_{1.25\text{THz}}(\omega_text{SCm}, \Gamma) \cdot 0.1$$
 
 ## 2. Phonon Occupation
 
@@ -204,7 +204,7 @@ deconfinement phase transition observed at ALICE/LHC.
 
 | Observable | UQFF Prediction | Status |
 |------------|----------------|--------|
-| $\Lambda_text{UQFF}$ | $\Lambda_text{GR}(1 + \deltaLambda_\text{phonon})$ | Derived |
+| $\Lambda_text{UQFF}$ | $\Lambda_text{GR}(1 + \delta\Lambda_\text{phonon})$ | Derived |
 | Mass gap probability | $P_\text{NS}$ enhanced by phonon EOS stiffening | Novel |
 | $k_2$ correction | SCm pairing modifies Love number | Predicted |
 

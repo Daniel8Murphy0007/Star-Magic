@@ -67,14 +67,14 @@ $$M(t) = M_{init}\left(1 + \frac{M_{gas}}{M_{init}} e^{-t/\tau_{SF}}\right)$$
 
 
 $$
-\dot{M}_{\text{UQFF}} = \dot{M}_0\!\left(1 - [SSq]\,e^{-\kappaDelta t}\right), \quad \kappa =
+\dot{M}_{\text{UQFF}} = \dot{M}_0\!\left(1 - [SSq]\,e^{-\kappa\Delta t}\right), \quad \kappa =
 5.0\times10^{-4}\,\text{day}^{-1},\;[SSq]=0.57
 $$
 
 
 
 $$
-\dot{M}_{\text{UQFF}} = \dot{M}_0\!\left(1 - [SSq]\,e^{-\kappaDelta t}\right), \quad \kappa =
+\dot{M}_{\text{UQFF}} = \dot{M}_0\!\left(1 - [SSq]\,e^{-\kappa\Delta t}\right), \quad \kappa =
 5.0\times10^{-4}\,\text{day}^{-1},\;[SSq]=0.57
 $$
 

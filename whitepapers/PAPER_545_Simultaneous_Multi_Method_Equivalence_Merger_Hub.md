@@ -91,7 +91,7 @@ $$n_\text{cross} = \leftlfloor\frac{\pi}{1 - [\text{SSq}]}\rightrfloor
 |--------|------------------|----------------|------------|
 | DPM-seeded | $F_g = GMm/r^2$ | $F_{U,\text{Bi},i} \xrightarrow{r \gg \lambda_C} GMm/r^2$ | Limiting case |
 | Einsteinian GR | $G_{\mu\nu} = 8\pi T_{\mu\nu}$ | $\text{SCm} \cdot U_g / c^2 = R_\text{Ricci}$ (weak field) | Identification |
-| Navier-Stokes | $\rhopartial_t\mathbf{u} = -\nabla p + \munabla^2\mathbf{u}$ | $F_U + U_{b,\text{jet}} = \text{NS\_disc}$ (PAPER_543) | Encompassment |
+| Navier-Stokes | $\rho\partial_t\mathbf{u} = -\nabla p + \mu\nabla^2\mathbf{u}$ | $F_U + U_{b,\text{jet}} = \text{NS\_disc}$ (PAPER_543) | Encompassment |
 | Yang-Mills | $D_{[\mu}F_{\nu\rho]} = 0$ | $F_\text{sm} = F_{U,\text{DPM}}$; $\Delta = P/3 > 0$ (PAPER_544) | Extension |
 | Standard Model | $q_e \in \{0, \pm e\}$ | $q_e = 2\pi n \neq 0$ (eight-wave DPM mode) | Enhancement |
 

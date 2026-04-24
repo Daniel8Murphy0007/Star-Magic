@@ -123,7 +123,7 @@ $$a_{fluid\_freq} = f_{fluid} \cdot \frac{E_{vac,neb} \cdot V_{sys}}{E_{vac,ISM}
 
 With $f_{fluid} = 1.269\times10^{-14}$ Hz for SGR1745:
 
-$$\boxed{a_{fluid\_freq} = 1.773\times10^{-9} \ \text{m/s}^2 \quad \textbf{(DOMINANT)}}$$
+$$\boxed{a_{fluid\_freq} = 1.773\times10^{-9} \ \text{m/s}^2 \quad \text\bf{(DOMINANT)}}$$
 
 ### Term 10: Oscillatory Term (Osc_term)
 

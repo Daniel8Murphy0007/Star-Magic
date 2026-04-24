@@ -64,7 +64,7 @@ $$c = \sqrt{g \cdot SCm/UA}$$
 
 ## §3 Fine-Structure Constant Assembly
 
-$$\alpha = \frac{e^2}{4\pivarepsilon_0 \hbar c}$$
+$$\alpha = \frac{e^2}{4\pi\varepsilon_0 \hbar c}$$
 
 Substituting:
 
@@ -72,7 +72,7 @@ $$\alpha = \frac{4\pi \cdot \text{Grind} \cdot r^{26}}{4\pi \cdot \frac{1}{4\pi 
 
 Simplifying (for $\exp(-\mathcal{H}/v_i) \approx 1$ at atomic scales):
 
-$$\alpha = \frac{2\kapparho\,\text{Grind}^2 r^{24} \cdot \text{Partition}_{9D}}{3\sqrt{g \cdot SCm/UA}}$$
+$$\alpha = \frac{2\kappa\rho\,\text{Grind}^2 r^{24} \cdot \text{Partition}_{9D}}{3\sqrt{g \cdot SCm/UA}}$$
 
 where $\text{Partition}_{9D}$ is the 9-dimensional phase-space partition function,
 numerically $\sim 10^5$ in Orion units.
@@ -118,7 +118,7 @@ at atomic scales gives an extremely small numerator.
 
 In UQFF, $\alpha$ depends on $r$:
 
-$$\alpha(r) = \frac{2\kapparho\,\text{Grind}^2 r^{24} \cdot \text{Partition}}{3\sqrt{g}}$$
+$$\alpha(r) = \frac{2\kappa\rho\,\text{Grind}^2 r^{24} \cdot \text{Partition}}{3\sqrt{g}}$$
 
 At $r$ decreasing toward nuclear scale ($r \sim 10^{-15}$ m): $r^{24} \to 0$ faster,
 but $\rho$ and Grind increase, giving running behavior qualitatively matching QED

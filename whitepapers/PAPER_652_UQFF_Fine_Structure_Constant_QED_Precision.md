@@ -25,7 +25,7 @@ Bridge)
 
 ## Abstract
 
-$$\alpha = \frac{e^2}{4\pivarepsilon_0 \hbar c} = \frac{1}{137.035999084}; \qquad a_e = \frac{\alpha}{2\pi} - 0.328\frac{\alpha^2}{\pi^2} + \ldots = 0.001159652$$
+$$\alpha = \frac{e^2}{4\pi\varepsilon_0 \hbar c} = \frac{1}{137.035999084}; \qquad a_e = \frac{\alpha}{2\pi} - 0.328\frac{\alpha^2}{\pi^2} + \ldots = 0.001159652$$
 
 The fine structure constant α = 1/137 is the most precisely measured dimensionless constant
 in physics, with fractional uncertainty 0.37 ppb (via electron g-2). This paper develops
@@ -43,7 +43,7 @@ truncated n-wave mixing series (PAPER_649), linking DVP to QED precision.
 
 ### 1.1 Charge Coupling (Standard)
 
-$$\alpha = \frac{e^2}{4\pivarepsilon_0 \hbar c} = \frac{e^2 \mu_0 c}{2h} = \frac{1}{137.035999084}$$
+$$\alpha = \frac{e^2}{4\pi\varepsilon_0 \hbar c} = \frac{e^2 \mu_0 c}{2h} = \frac{1}{137.035999084}$$
 
 | Quantity | Value |
 |---------|-------|

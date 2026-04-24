@@ -34,12 +34,12 @@ where $H_{rev}$ reverses sign at the UA→SCm vacuum phase boundary ($f_{UA}^\pr
 
 ### 1.2 Universal Inertia (Gyroscopic Mimic)
 
-$$U_{Ii} = U_{Mi} \cdot e^{i\omegapi}$$
+$$U_{Ii} = U_{Mi} \cdot e^{i\omega\pi}$$
 
 This gyroscopic transform maps magnetic oscillation into angular momentum space, modeling Saturn's
 ring-shepherd moon interactions as quantum inertial coupling:
 
-$$U_{Ii} = U_{Mi}(\cos(\omegapi) + i\sin(\omegapi))$$
+$$U_{Ii} = U_{Mi}(\cos(\omega\pi) + i\sin(\omega\pi))$$
 
 ### 1.3 Universal Buoyancy
 
@@ -49,7 +49,7 @@ where $\delta_k = \rho_{vac,UA} - \rho_{vac,SCm} = 7.09 \times 10^{-36} - 7.09 \
 
 ### 1.4 THz Hole — Einstein Boson Bridge
 
-$$T_{THz} = \frac{e^{i \cdot 2\pinu d/c}}{1 + \nu_0 \cdot \kappa}$$
+$$T_{THz} = \frac{e^{i \cdot 2\pi\nu d/c}}{1 + \nu_0 \cdot \kappa}$$
 
 This represents quantum tunneling through ring gaps via the Einstein Boson Bridge effect — a phased
 vacuum excitation that crosses physical ring boundaries at THz resonance.

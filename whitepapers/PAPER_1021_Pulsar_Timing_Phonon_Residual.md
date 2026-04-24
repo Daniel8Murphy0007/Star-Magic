@@ -23,7 +23,7 @@ thresholds. This provides a UQFF-testable prediction distinct from gravitational
 ## 1. Key Equations
 
 - $\delta t_{\text{phonon}} = \frac{\beta_i \cdot S_{26} \cdot \Phi \cdot P_{\text{spin}}}{2\pi c}$
-- $\deltadot{P}/\dot{P} = \beta_i \cdot S_{26} \cdot [\text{SSq}] \cdot (\omega_{\text{SCm}} / \omega_{\text{spin}})$
+- $\delta\dot{P}/\dot{P} = \beta_i \cdot S_{26} \cdot [\text{SSq}] \cdot (\omega_{\text{SCm}} / \omega_{\text{spin}})$
 - $\delta t \approx 0.1$ ns for MSPs ($P \approx 5$ ms)
 
 ## 2. Results

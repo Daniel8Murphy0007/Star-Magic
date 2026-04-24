@@ -53,7 +53,7 @@ $$\frac{\partial^{13} U_g}{\partial U_m^{13}} = 13! \cdot \left(\frac{SCm}{UA}\r
 
 **Buoyancy diagonal extension:**
 
-$$\frac{\partial^{26} U_b}{\partial \rho^{26}} \approx \frac{26!}{\rho^{26}} \quad \text{(leading term at small } \rhotext{)}$$
+$$\frac{\partial^{26} U_b}{\partial \rho^{26}} \approx \frac{26!}{\rho^{26}} \quad \text{(leading term at small } \rho\text{)}$$
 
 At $\rho = 1\ \text{kg/m}^3$: $\partial^{26}U_b/\partial\rho^{26} = 4.033 \times 10^{26}$ — a large but finite positive correction to the $2P/3$ baseline, ensuring the $(3,3)$ element dominates all coupling at high buoyancy.
 
@@ -82,7 +82,7 @@ Third eigenvalue: $\lambda_3 = 2P/3 + 26!/\rho^{26} \gg 0$ (buoyancy-dominated).
 
 Adapting NS to 26D:
 
-$$\rholeft(\frac{\partial^{26} U_g}{\partial t^{26}} + U_g \cdot \frac{\partial^{26} U_g}{\partial r^{26}}\right) = -\frac{\partial^{26} p}{\partial r^{26}} + \kappafrac{\partial^{26} U_m}{\partial r^{26}} + U_b$$
+$$\rho\left(\frac{\partial^{26} U_g}{\partial t^{26}} + U_g \cdot \frac{\partial^{26} U_g}{\partial r^{26}}\right) = -\frac{\partial^{26} p}{\partial r^{26}} + \kappa\frac{\partial^{26} U_m}{\partial r^{26}} + U_b$$
 
 **Smoothness proof:** For any term $c/r^k$ in $U_g$, its 26th derivative is:
 

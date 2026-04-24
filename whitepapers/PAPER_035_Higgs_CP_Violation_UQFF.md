@@ -77,7 +77,7 @@ where κ_H^odd is the coupling to the CP-odd component. The SM prediction: ψ_CP
 ### 1.2 Angular Distribution Observables
 
 The H→ZZ*→4ℓ decay provides the richest angular information. The complete angular distribution:
-$$P(\vecOmega | \psi_{\rm CP}) = P_{\rm SM}(\vecOmega) + \cos(2\psi_{\rm CP}) \cdot P_{\rm mix}(\vecOmega) + \sin(2\psi_{\rm CP}) \cdot P_{\rm odd}(\vecOmega)$$
+$$P(\vec\Omega | \psi_{\rm CP}) = P_{\rm SM}(\vec\Omega) + \cos(2\psi_{\rm CP}) \cdot P_{\rm mix}(\vec\Omega) + \sin(2\psi_{\rm CP}) \cdot P_{\rm odd}(\vec\Omega)$$
 
 The CP asymmetry observable:
 $$A_{\rm CP} = \frac{N_+ - N_-}{N_+ + N_-}$$

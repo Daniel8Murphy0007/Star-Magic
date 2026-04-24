@@ -16,7 +16,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 ## Abstract
 
-The SCm First Axiom states that at the characteristic wavelength $\lambda_{\text{SCm}} = 25.4\;\mutext{m}$ (corresponding to $\omega_{\text{SCm}} = 2\pi \times 1.25$ THz), the buoyancy-to-gravity ratio must exceed 0.5, i.e., $|U_b / U_g| > 0.5$. This paper validates the axiom numerically for the Solar System ($M_\odot$, $r = 1$ AU) and demonstrates that the measured ratio $|U_b/U_g| \approx 1.536$ satisfies the threshold with margin, confirming the SCm vacuum is buoyancy-active at its fundamental resonance.
+The SCm First Axiom states that at the characteristic wavelength $\lambda_{\text{SCm}} = 25.4\;\mu\text{m}$ (corresponding to $\omega_{\text{SCm}} = 2\pi \times 1.25$ THz), the buoyancy-to-gravity ratio must exceed 0.5, i.e., $|U_b / U_g| > 0.5$. This paper validates the axiom numerically for the Solar System ($M_\odot$, $r = 1$ AU) and demonstrates that the measured ratio $|U_b/U_g| \approx 1.536$ satisfies the threshold with margin, confirming the SCm vacuum is buoyancy-active at its fundamental resonance.
 
 ## 1. First Axiom Statement
 
@@ -49,7 +49,7 @@ The ratio exceeds the threshold by a factor of $\sim 3$, indicating strong buoya
 
 ## 5. Implementation
 
-Class `SCmFirstAxiomValidator` in `f`ubi_master_calculator`.py`: computes $|U_b/U_g|$ at $\lambda = 25.4\;\mutext{m}$, asserts ratio $> 0.5$.
+Class `SCmFirstAxiomValidator` in `f`ubi_master_calculator`.py`: computes $|U_b/U_g|$ at $\lambda = 25.4\;\mu\text{m}$, asserts ratio $> 0.5$.
 
 ## References
 - PAPER_979: Complete 6-Layer F_U_Bi_i

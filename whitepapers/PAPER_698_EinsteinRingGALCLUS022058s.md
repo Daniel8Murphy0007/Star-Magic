@@ -42,7 +42,7 @@ $$R_E = D_L\sqrt{\frac{4G M_L D_{LS}}{c^2 D_L D_S}}$$
 $$\mu = \frac{u^2+2}{u\sqrt{u^2+4}},\quad u = \frac{\theta}{\theta_E}$$
 
 ## 4. UQFF Deflection Angle
-$$\hatalpha_{UQFF}(r) = \frac{4GM_L}{c^2 r}\left(1+\frac{\rho_{SCm}}{\rho_{UA}}\right)$$
+$$\hat\alpha_{UQFF}(r) = \frac{4GM_L}{c^2 r}\left(1+\frac{\rho_{SCm}}{\rho_{UA}}\right)$$
 The aether correction increases deflection by factor $(1+0.1) = 1.1$ at UQFF scale.
 
 ## 5. Convergence

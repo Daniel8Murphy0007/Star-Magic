@@ -79,13 +79,13 @@ For the localised spherical wave:
 
 $$\langle E_{\rm wave}\rangle = \frac{A^2 k^2}{2} \cdot \frac{\pi}{2\alpha} = \frac{A^2 \omega^2}{2c^2\alpha}$$
 
-Setting $A=1$, $\omega=2\pitimes1$ Hz, $c=3\times10^8$ m/s, $\alpha=1$ m-1:
+Setting $A=1$, $\omega=2\pi\times1$ Hz, $c=3\times10^8$ m/s, $\alpha=1$ m-1:
 
 $$E_{\rm SM} = \frac{(2\pi)^2}{2\times 9times10^{16}\times1} = \frac{39.48}{1.8\times10^{17}} = 2.19\times10^{-16}\ \rm J$$
 
 For $\omega = c \cdot k$ with k=2π/m (1 m wavelength):
 
-$$E_{\rm SM} = \frac{\hbar\omega \cdot N_{\rm photons}}{V} \cdot V = \hbar\omega = 1.055\times10^{-34}`times2\pitimes3`times10^8 = 1.99\times10^{-25}\ \rm J$$
+$$E_{\rm SM} = \frac{\hbar\omega \cdot N_{\rm photons}}{V} \cdot V = \hbar\omega = 1.055\times10^{-34}`times2\pi\times3`times10^8 = 1.99\times10^{-25}\ \rm J$$
 
 The SM energy of 12.94 J quoted in the source corresponds to a **coherent gravitational wave** with $N_{\rm modes} \approx 6.5\times10^{25}$ quanta. The three-leg Leg 1 confirms this is self-consistent with $E = \hbar\omega N$. PASS
 
@@ -123,7 +123,7 @@ confirming the quantum gravity correction at solar scales. PASS
 
 $$U_i = \lambda_I \cdot (1.683\times10^{-97}) \cdot \omega_i(t) \cdot \cos(\pi t_n) \cdot (1 + F_{\rm RZ})$$
 
-With $\lambda_I = 1$, $\omega_i = 2\pitimes1$ Hz, $t_n = 0$ (max of cosine), $F_{\rm RZ} = 0.658$:
+With $\lambda_I = 1$, $\omega_i = 2\pi\times1$ Hz, $t_n = 0$ (max of cosine), $F_{\rm RZ} = 0.658$:
 
 $$U_i = 1.683\times10^{-97} \times 6.28 \times 1.0 \times 1.658 = 1.75\times10^{-96}\ \rm J$$
 

@@ -103,7 +103,7 @@ $$A_{\mu\nu} \approx \underbrace{[1, -1, -1, -1]}_{\text{Minkowski}} + \underbra
 
 $$\boxed{F_U \approx (1.17 \times 10^{27} + 4.68 \times 10^{24} \sin(\omega_c t)) \cdot e^{-0.001t} \cdot \cos(\pi t) \cdot (1 + 0.01\sin(0.001t))}$$
 $$\quad + \; 1.18 \times 10^{53} \cdot e^{-0.0005t}$$
-$$\quad + \; (1.005 \times 10^3 + 2.405\sin(\omega_c t)) \cdot \cos!\left((2.5\times10^{-6} - 0.4\times10^{-6}\sin(\omega_c t)) \cdot t\piright) \cdot e^{-0.0005t}$$
+$$\quad + \; (1.005 \times 10^3 + 2.405\sin(\omega_c t)) \cdot \cos!\left((2.5\times10^{-6} - 0.4\times10^{-6}\sin(\omega_c t)) \cdot t\pi\right) \cdot e^{-0.0005t}$$
 $$\quad + \; (2.26\times10^{19} + 9.04\times10^{16}\sin(\omega_c t)) \cdot (1 - e^{-0.0001t})$$
 $$\quad + \; [1,-1,-1,-1] + 1.27\times10^{-20} + 1.11\times10^{-16}$$
 

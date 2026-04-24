@@ -76,7 +76,7 @@ complexity.
 - P vs NP proof: $n_\text{cross} =\text{argmin}$ yields unique prime index 113
 - RH proof: $s = 1/2 + it$ zeros at $t = 5th-prime-grid$ spacings
 - Collatz: odd branch $3n+1$ terminates asymptotically at $p=113$ step
-- Fine-structure $\alpha$: $\kapparho\text{Grind}^2 r^{24} \cdot \text{Partition}/(3\sqrt{g})$
+- Fine-structure $\alpha$: $\kappa\rho\text{Grind}^2 r^{24} \cdot \text{Partition}/(3\sqrt{g})$
   — the denominator 3! is the first prime triple from DVP
 
 ### BH26 — Buoyancy Harmonics 26
@@ -131,7 +131,7 @@ $$
 ## §4 Combined Equation: Spine Identity
 
 $$\underbrace{P/3}_{\text{VDS}} + \underbrace{\kappa,p_{DVP}/r^{26}}_{\text{DVP}} +
-  \underbrace{\frac{1}{\sqrt{2\pisigma^2}}e^{-(x-\mu_{BH26})^2/2\sigma^2}}_{\text{BH26}}
+  \underbrace{\frac{1}{\sqrt{2\pi\sigma^2}}e^{-(x-\mu_{BH26})^2/2\sigma^2}}_{\text{BH26}}
   = \lambda_text{min}[\text{UQFF}]$$
 
 This spine identity verifies that any UQFF calculation with all three systems is
@@ -146,7 +146,7 @@ self-consistent: VDS sets the floor, DVP sets the phase, BH26 sets the spectral 
 | $h$ | $\Delta = P/3$ | $1/p_{DVP}$ phase | — |
 | $\alpha$ | $P/3$ denominator | $p_{DVP} = 113$ fraction | — |
 | $c$ | $\sqrt{g\cdot SCm/UA}$ | — | $\sqrt{g\sigma/\mu}$ PASS |
-| $G$ | $g/P$ ratio | — | $g\mu/(\rhosigma)$ PASS |
+| $G$ | $g/P$ ratio | — | $g\mu/(\rho\sigma)$ PASS |
 | $r_\text{min}$ | $(26!\,g/P)^{1/27}$ | — | $c/\mu_{BH26}$ |
 
 ---

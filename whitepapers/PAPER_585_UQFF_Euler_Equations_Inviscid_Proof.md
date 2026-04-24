@@ -51,7 +51,7 @@ $$\rho!\left(\frac{\partial \mathbf{u}}{\partial t} + \mathbf{u} \cdot \nabla \m
 
 UQFF 26D generalization ($\mu = 0$):
 
-$$\rholeft(\partial^{26}_t \mathbf{u} + \mathbf{u} \cdot \nabla^{26} \mathbf{u}\right)
+$$\rho\left(\partial^{26}_t \mathbf{u} + \mathbf{u} \cdot \nabla^{26} \mathbf{u}\right)
   = -\nabla^{26} p + \partial^{26} U_b$$
 
 The buoyant repulsion term $U_b$ replaces viscosity as the smoothing mechanism at small scales.
@@ -114,7 +114,7 @@ $$U_b = \rho g\!\left(1 - \frac{1}{\rho}\right) + \frac{26!\,g}{\rho^{27}}$$
 As $\rho \to 0$ (low density): $U_b \to \infty$ (repulsion prevents density collapse).
 As $\rho \to \infty$ (high density): $U_b \to \rho g$ (linear, bounded).
 
-This replaces the viscous dissipation $\muDelta\mathbf{u}$ of Navier-Stokes.
+This replaces the viscous dissipation $\mu\Delta\mathbf{u}$ of Navier-Stokes.
 
 ---
 

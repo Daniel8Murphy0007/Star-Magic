@@ -54,7 +54,7 @@ $u = t - z$ (lightcone coordinate), $H = A_{ij}\,x^i x^j$ (GW polarization tenso
 String worldsheet equations (conformal gauge):
 
 $$\partial_tau^2 X^\mu - \partial_sigma^2 X^\mu + \Gamma^\mu_{\nu\lambda}\,
-\partial_alpha X^\nupartial^\alpha X^\lambda = 0$$
+\partial_alpha X^\nu\partial^\alpha X^\lambda = 0$$
 
 Transverse modes $X^i$ freely propagate as harmonic oscillators:
 
@@ -72,11 +72,11 @@ Project to lower-dimensional boundary via AdS/CFT holographic duality:
 
 **Holographic amplitude:**
 
-$$h_{holo} = \int_{\partial M} T_{\mu\nu}\,d\Sigma \approx h_{base}\,e^{-|\deltatheta|^2/2}$$
+$$h_{holo} = \int_{\partial M} T_{\mu\nu}\,d\Sigma \approx h_{base}\,e^{-|\delta\theta|^2/2}$$
 
 where $T_{\mu\nu}$ is the boundary stress-energy tensor.
 
-The Gaussian factor $e^{-|\deltatheta|^2/2}$ attenuates the amplitude by the squared
+The Gaussian factor $e^{-|\delta\theta|^2/2}$ attenuates the amplitude by the squared
 rebound angle — encoding GW information on the holographic screen.
 
 ---
@@ -85,17 +85,17 @@ rebound angle — encoding GW information on the holographic screen.
 
 **Core mechanism:** String mode $f$ scatters off holographic boundary screen; rebound angle:
 
-$$\boxed{\deltatheta = \alpha,(l_s\,k), \quad \alpha \approx l_s^2 \approx l_{Pl}^2 \approx 2.6\times10^{-70}\,\text{m}^2}$$
+$$\boxed{\delta\theta = \alpha,(l_s\,k), \quad \alpha \approx l_s^2 \approx l_{Pl}^2 \approx 2.6\times10^{-70}\,\text{m}^2}$$
 
-**Rebound transformation:** $f' = f\,(1 + \deltatheta)$ — frequency of rebound mode.
+**Rebound transformation:** $f' = f\,(1 + \delta\theta)$ — frequency of rebound mode.
 
 **Rebound frequency scale (scales as $f^3$):**
 
-$$f_{rebound} = \alphaleft(\frac{f}{c}\right)^2 f$$
+$$f_{rebound} = \alpha\left(\frac{f}{c}\right)^2 f$$
 
 **Rebound torque (angular momentum supply):**
 
-$$J = \int f\,\deltatheta\,dA$$
+$$J = \int f\,\delta\theta\,dA$$
 
 This torque aligns angular momentum **perpendicular** to the propagation plane,
 driving disk formation.
@@ -129,11 +129,11 @@ $$n = \frac{f\,L}{c} \quad (L = \text{plane size})$$
 
 **Angular differential accumulation:**
 
-$$\deltatheta \approx \alpha,\frac{k}{f}$$
+$$\delta\theta \approx \alpha,\frac{k}{f}$$
 
 Over cosmic time $\tau$:
 
-$$\Theta_{cumulative} = |\deltatheta|\cdot f\cdottau$$
+$$\Theta_{cumulative} = |\delta\theta|\cdot f\cdot\tau$$
 
 This accumulates to a disk perpendicular to the propagation direction — explaining
 why **all** rotating astronomical systems form disks.
@@ -147,7 +147,7 @@ why **all** rotating astronomical systems form disks.
 Parameters: $f = 10^{-15}$ Hz (orbital), $k = 10^{-21}$ m$^{-1}$,
 $\alpha = 2.6\times10^{-70}$ m$^2$:
 
-$$\deltatheta \approx \frac{2.6\times10^{-70}\cdot10^{-21}}{10^{-15}} = 2.6\times10^{-76}\,\text{rad}$$
+$$\delta\theta \approx \frac{2.6\times10^{-70}\cdot10^{-21}}{10^{-15}} = 2.6\times10^{-76}\,\text{rad}$$
 
 Over 10 Gyr ($\tau = 3.16\times10^{17}$ s):
 
@@ -158,7 +158,7 @@ $$\Theta_{10Gyr} \approx 2.6\times10^{-76}\cdot3.16\times10^{17} \approx 8\times
 ### Protoplanetary Disk
 
 $f = 10^{-7}$ Hz (protosolar orbital), same $k$:
-$\deltatheta \approx 2.6\times10^{-84}$ rad/orbit — planar alignment in $\sim10^6$ yr.
+$\delta\theta \approx 2.6\times10^{-84}$ rad/orbit — planar alignment in $\sim10^6$ yr.
 
 ### Saturn's Rings
 
@@ -174,16 +174,16 @@ For SNR G272.2-03.2 shell ($L_{shell} = 5.4\times10^{16}$ m, $f=10^{18}$ Hz X-ra
 
 $$k_{SNR} = \frac{2\pi}{L_{shell}} \approx 1.2\times10^{-16}\,\text{m}^{-1}$$
 
-$$\deltatheta_{SNR} \approx \frac{2.6\times10^{-70}\cdot1.2\times10^{-16}}{10^{18}}
+$$\delta\theta_{SNR} \approx \frac{2.6\times10^{-70}\cdot1.2\times10^{-16}}{10^{18}}
 \approx 3\times10^{-104}\,\text{rad}$$
 
 Photon/GW time delay:
 
-$$\Delta t_{CTAO} = \frac{|\deltatheta_{SNR}|\cdot L_{shell}}{c}
+$$\Delta t_{CTAO} = \frac{|\delta\theta_{SNR}|\cdot L_{shell}}{c}
 \approx \frac{3\times10^{-104}\cdot5.4\times10^{16}}{3\times10^8} \approx 5\times10^{-96}\,\text{s}$$
 
 (Below current CTAO sensitivity — but at radio frequencies $f=10^{9}$ Hz:
-$\deltatheta_{radio} \approx 3\times10^{-79}$ rad, $\Delta t \approx 5\times10^{-71}$ s.
+$\delta\theta_{radio} \approx 3\times10^{-79}$ rad, $\Delta t \approx 5\times10^{-71}$ s.
 Future precision timing may reach this regime.)
 
 ---
@@ -202,7 +202,7 @@ Future precision timing may reach this regime.)
 
 ## §10 Angular Differential Table (Astronomical Systems)
 
-| System | $f_{orb}$ (Hz) | $k$ (m$^{-1}$) | $\deltatheta$ (rad) | Disk alignment |
+| System | $f_{orb}$ (Hz) | $k$ (m$^{-1}$) | $\delta\theta$ (rad) | Disk alignment |
 |--------|--------------|----------------|----------------------|----------------|
 | Galactic disk | $10^{-15}$ | $10^{-21}$ | $2.6\times10^{-76}$ | <10° over Hubble time |
 | Protoplanetary | $10^{-7}$ | $10^{-21}$ | $2.6\times10^{-84}$ | $<5°$ in $10^6$ yr |
@@ -407,7 +407,7 @@ in future binary merger observations.
 ## §11 Conclusion
 
 The Universal Frequency Rebound model expands standard string GW theory to a planar model
-with holographic boundary projection. The rebound angular differential $\deltatheta = \alpha(l_s k)$
+with holographic boundary projection. The rebound angular differential $\delta\theta = \alpha(l_s k)$
 quantizes worldsheet modes ($n = fL/c$), generating a rebound torque that aligns all rotating
 astronomical systems into disk configurations. This explains without additional assumptions
 why galaxies, protoplanetary systems, ring systems, and accretion disks universally adopt

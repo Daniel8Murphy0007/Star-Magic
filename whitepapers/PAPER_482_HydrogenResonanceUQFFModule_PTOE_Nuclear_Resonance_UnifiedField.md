@@ -103,7 +103,7 @@ $$g_{nuc}(r, t) \approx -\frac{G \cdot M_{nuc} \cdot \rho_{nuc}}{r_{nuc}} - \fra
 |-----------|-------|-------------|
 | $M_{nuc}$ | $A \times 1.67\times10^{-27}$ kg | Nuclear mass |
 | $\rho_{nuc}$ | $10^{17}$ kg/m3 | Nuclear matter density |
-| $r_{nuc}$ | $(3M_{nuc}/4\pirho_{nuc})^{1/3}$ | Nuclear radius |
+| $r_{nuc}$ | $(3M_{nuc}/4\pi\rho_{nuc})^{1/3}$ | Nuclear radius |
 | $\kappa_{DPM}$ | $10^{-22}$ | DPM curvature factor |
 | $T$ | $10^7$ K | Nuclear temperature placeholder |
 

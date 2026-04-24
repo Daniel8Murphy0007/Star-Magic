@@ -35,7 +35,7 @@ The Universal Gaussian Buoyancy modulator $F_{U,Bi,i}$ — a Gaussian-weighted p
 
 The Universal Gaussian Buoyancy modulator is defined as:
 
-$$F_{U,Bi,i} = \frac{1}{\sqrt{2\pisigma^2}} \exp!\left(-\frac{(x-\mu)^2}{2\sigma^2}\right) \cdot F_U$$
+$$F_{U,Bi,i} = \frac{1}{\sqrt{2\pi\sigma^2}} \exp!\left(-\frac{(x-\mu)^2}{2\sigma^2}\right) \cdot F_U$$
 
 where:
 - $\sigma$ = frequency variance of the observational dataset (default: $10^{16}$ Hz from ALMA ensemble)
@@ -56,7 +56,7 @@ $$\text{UQFF}_{\text{comp}} = \text{diag}\!\left(\frac{P_{\text{order}}}{3},\ \f
 
 The eigenvalue equation $\det(\text{UQFF}_{\text{comp}} - \lambda I) = 0$ for the diagonal matrix factors as:
 
-$$\left(\frac{P}{3} - \lambdaright)^2 \left(\frac{2P}{3} - \lambdaright) = 0$$
+$$\left(\frac{P}{3} - \lambda\right)^2 \left(\frac{2P}{3} - \lambda\right) = 0$$
 
 yielding eigenvalues:
 

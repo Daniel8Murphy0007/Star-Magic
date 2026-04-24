@@ -47,7 +47,7 @@ effective UQFF vacuum buoyancy over the filament lifetime.
 $$F_{\rm mag} = \frac{B_0^2}{2\mu_0} \cdot V_{\rm filament}$$
 
 For B_0 = 10-5 T:
-$$\frac{B_0^2}{2\mu_0} = \frac{(10^{-5})^2}{2 \times 4\pitimes 10^{-7}} = \frac{10^{-10}}{8\pitimes 10^{-7}} \approx 3.98 \times 10^{-5}\ \mathrm{J/m}^3 = 3.98 \times 10^{-5}\ \mathrm{Pa}$$
+$$\frac{B_0^2}{2\mu_0} = \frac{(10^{-5})^2}{2 \times 4\pi\times 10^{-7}} = \frac{10^{-10}}{8\pi\times 10^{-7}} \approx 3.98 \times 10^{-5}\ \mathrm{J/m}^3 = 3.98 \times 10^{-5}\ \mathrm{Pa}$$
 
 For filament volume V ~ 1048 m (100 pc  1 pc  1 pc):
 $$F_{\rm mag} \approx 3.98 \times 10^{-5} \times 10^{48} = 3.98 \times 10^{43}\ \mathrm{N}$$

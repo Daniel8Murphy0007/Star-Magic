@@ -137,7 +137,7 @@ Dependencies: Qt6, OpenGL, GLFW, GLM, stb_image, MicroTeX, Wolfram WSTP
 The FluidSolver receives the UQFF gravity field as an external body force,
 coupling Navier-Stokes dynamics to the UQFF master equation:
 
-$$\frac{\partial \mathbf{v}}{\partial t} + (\mathbf{v}\cdot\nabla)\mathbf{v} = -\frac{\nabla P}{\rho} + \nunabla^2\mathbf{v} + \frac{F_U(r,t)}{\rho}$$
+$$\frac{\partial \mathbf{v}}{\partial t} + (\mathbf{v}\cdot\nabla)\mathbf{v} = -\frac{\nabla P}{\rho} + \nu\nabla^2\mathbf{v} + \frac{F_U(r,t)}{\rho}$$
 
 where $F_U(r,t)$ is evaluated per MUGE system at each time step $\Delta t = 0.1\,\text{s}$
 (N = 32 grid). The UQFF coupling constant $\kappa = 5.0\times10^{-4}\,\text{day}^{-1}$

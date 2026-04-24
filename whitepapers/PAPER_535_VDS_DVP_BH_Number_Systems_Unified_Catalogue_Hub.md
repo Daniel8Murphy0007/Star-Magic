@@ -53,7 +53,7 @@ quantization** independent of any single data set.
 $$SCm(t) = \lambda_{ua} \cdot UA \cdot \left(1 - \frac{1}{t}\right), \quad Z = \sum_{k=1}^{26}\frac{0.57^k}{k^{26}}$$
 
 **Quantum Plasma Orb (PAPER_532):**
-$$US_\text{orb} = \sum_{m=1}^{26} H_m \!\left(1-e^{-[SSq]\cdot m}\right) \omega_0 \left(1 + m\deltaright)$$
+$$US_\text{orb} = \sum_{m=1}^{26} H_m \!\left(1-e^{-[SSq]\cdot m}\right) \omega_0 \left(1 + m\delta\right)$$
 
 **Solar Proplyd DVP (PAPER_533):**
 $$r_n = r_0 \cdot p_n^{\,1/3}, \quad p_n \in \{29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, \ldots}$$

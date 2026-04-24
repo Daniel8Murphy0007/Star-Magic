@@ -65,7 +65,7 @@ where $\Delta_{26D}$ is the 26D shell harmonic asymmetry (BH26-derived).
 **UQFF prediction**: $r_{shadow,UQFF} = 3R_{Sch}(1 + \eta_{BH26})$  
 **MUGE prediction**: GR-based Schwarzschild + dark matter compression  
 
-$$r_{shadow,UQFF} = 3 \times \frac{2GM_{SgrA*}}{c^2} \times (1 + 0.018) = 52.1 \mutext{as}$$
+$$r_{shadow,UQFF} = 3 \times \frac{2GM_{SgrA*}}{c^2} \times (1 + 0.018) = 52.1 \mu\text{as}$$
 
 EHT observed: $52 \pm 2\ \mu$as. UQFF residual = 0.2%, MUGE residual = 1.1%.
 

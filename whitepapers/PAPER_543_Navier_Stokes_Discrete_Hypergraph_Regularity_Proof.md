@@ -46,7 +46,7 @@ The Clay Mathematics Institute (2000) Millennium Problem for NS regularity asks:
 
 > Given smooth initial data $\mathbf{u}_0 \in C^\infty(\mathbb{R}^3)$, does a smooth
 > solution $(\mathbf{u}, p)$ to:
-> $$\partial_t \mathbf{u} + (\mathbf{u}\cdot\nabla)\mathbf{u} = -\nabla p + \munabla^2\mathbf{u},
+> $$\partial_t \mathbf{u} + (\mathbf{u}\cdot\nabla)\mathbf{u} = -\nabla p + \mu\nabla^2\mathbf{u},
 >   \quad \nabla\cdot\mathbf{u} = 0$$
 > exist for all $t > 0$ with bounded energy?
 
@@ -58,7 +58,7 @@ UQFF provides a physically grounded route to an affirmative answer via discrete 
 
 Replace $\partial/\partial t \mapsto R(n)$ (Wolfram hypergraph rule application):
 
-$$\text{NS}_\text{disc} = \rho R(\mathbf{u}) + \rhomathbf{u}\,R(\mathbf{u})
+$$\text{NS}_\text{disc} = \rho R(\mathbf{u}) + \rho\mathbf{u}\,R(\mathbf{u})
   + R(p) - \mu R^2(\mathbf{u}) - U_{b,\text{jet}} = 0$$
 
 where:
@@ -76,7 +76,7 @@ $$U_{b,\text{jet}} = \rho g \left(1 - \frac{1}{\rho}\right)$$
 
 For astrophysical jets ($\rho \ll 1\,\text{kg/m}^3$):
 
-$$U_{b,\text{jet}} \approx -g \left(1 - \rhoright) \approx -g \quad (\rho \to 0)$$
+$$U_{b,\text{jet}} \approx -g \left(1 - \rho\right) \approx -g \quad (\rho \to 0)$$
 
 This is **repulsive** (outward), matching ALMA observations of Orion quasar-like jet mass-loss
 rates $\dot{M} \approx 1 \times 10^{-6}\,M_\odot,\text{yr}^{-1}$ (Zapata et al. 2004).

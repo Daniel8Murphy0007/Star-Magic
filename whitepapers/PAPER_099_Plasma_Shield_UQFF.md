@@ -54,15 +54,15 @@ Drawing 21 shows three distinct zones:
 
 The charge-reactivity term:
 
-$$U_{g2}(r) = \frac{q_{\rm eff}^2}{4\piepsilon_0 r} \cdot [{\rm SSq}]^{1/2}$$
+$$U_{g2}(r) = \frac{q_{\rm eff}^2}{4\pi\epsilon_0 r} \cdot [{\rm SSq}]^{1/2}$$
 
 Where q_eff = effective plasma charge per unit volume at radius r.
 
 The trapping potential well depth:
 
-$$\Delta U_{g2} = U_{g2}(r_{\rm ISCO}) - U_{g2}(r_{\rm shield}) = \frac{q_{\rm eff}^2}{4\piepsilon_0} \cdot [{\rm SSq}]^{1/2} \cdot \left(\frac{1}{r_{\rm ISCO}} - \frac{1}{2 r_{\rm ISCO}}\right)$$
+$$\Delta U_{g2} = U_{g2}(r_{\rm ISCO}) - U_{g2}(r_{\rm shield}) = \frac{q_{\rm eff}^2}{4\pi\epsilon_0} \cdot [{\rm SSq}]^{1/2} \cdot \left(\frac{1}{r_{\rm ISCO}} - \frac{1}{2 r_{\rm ISCO}}\right)$$
 
-$$= \frac{q_{\rm eff}^2 [{\rm SSq}]^{1/2}}{8\piepsilon_0 r_{\rm ISCO}}$$
+$$= \frac{q_{\rm eff}^2 [{\rm SSq}]^{1/2}}{8\pi\epsilon_0 r_{\rm ISCO}}$$
 
 For r_ISCO = 6 GM/c = 7.14 × 10 m (for Sgr A* spin a=0):
 

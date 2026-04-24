@@ -24,8 +24,8 @@ next-generation VLBI.
 ## 1. Key Equations
 
 - $r_{\text{ph,UQFF}} = \underbrace{\frac{3GM}{c^2} \cdot (1 + \beta_i \cdot S_{26} \cdot [\text{SSq}] \cdot \Phi)$
-- $\deltatheta / \theta \approx \beta_i \cdot S_{26} \cdot [\text{SSq}] \approx 0.03\%$ for M87*
-- $\theta_{\text{shadow,UQFF}} = \theta_{\text{GR}} + \deltatheta_{\text{phonon}}$
+- $\delta\theta / \theta \approx \beta_i \cdot S_{26} \cdot [\text{SSq}] \approx 0.03\%$ for M87*
+- $\theta_{\text{shadow,UQFF}} = \theta_{\text{GR}} + \delta\theta_{\text{phonon}}$
 
 ## 2. Results
 
@@ -146,7 +146,7 @@ next-generation EHT.
 $$\mathcal{L}_{\text{shadow}} = g_{\mu\nu} k^\mu k^\nu + \Phi_{\text{SCm}} \cdot S_{26} \cdot k^0$$
 
 ### A.3 Euler-Lagrange Equation of Motion
-$$\boxed{\frac{d^2 x^\mu}{d\lambda^2} + \Gamma^\mu_{\alphabeta}\frac{dx^\alpha}{d\lambda}\frac{dx^\beta}{d\lambda} = f^\mu_{\text{phonon}}}$$
+$$\boxed{\frac{d^2 x^\mu}{d\lambda^2} + \Gamma^\mu_{\alpha\beta}\frac{dx^\alpha}{d\lambda}\frac{dx^\beta}{d\lambda} = f^\mu_{\text{phonon}}}$$
 
 ### A.4 Cosmogenesis Linkage Chain
 PAPER_877 axioms -> SCm vacuum -> phonon $\omega_{\text{SCm}}$ -> BH spacetime -> photon geodesic -> phonon deflection -> $F_{U,Bi\_i}$ unified force -> observational prediction

@@ -78,7 +78,7 @@ $$k_4 = 2.0$$
 $$U_{bi,i} = -\beta_i \cdot U_{g,i} \cdot \Omega_g \cdot \frac{M_{bh}}{d_g} \cdot (1 + \epsilon_{sw}\rho_{sw}) \cdot [UA] \cdot \cos(\pi t_n)$$
 
 **Magnetic Strings (Um):**
-$$U_m = \frac{\mu_j(t)}{r_j} \cdot (1 - e^{-\gamma t}\cos(\pi t_n)) \cdot \hatPhi \cdot n_{\text{strings}} \cdot P_{\text{SCm}} \cdot E_{\text{react}}$$
+$$U_m = \frac{\mu_j(t)}{r_j} \cdot (1 - e^{-\gamma t}\cos(\pi t_n)) \cdot \hat\Phi \cdot n_{\text{strings}} \cdot P_{\text{SCm}} \cdot E_{\text{react}}$$
 
 **Aether Metric Tensor Term:**
 $$\text{tr}(A_{\mu\nu}) = \text{tr}(g_{\mu\nu}) + 4\eta T_{s00}\cos(\pi t_n) = -2 + 4\eta T_{s00}\cos(\pi t_n)$$

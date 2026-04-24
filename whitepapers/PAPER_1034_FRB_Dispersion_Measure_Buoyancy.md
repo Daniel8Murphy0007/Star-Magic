@@ -23,8 +23,8 @@ cosmological probe of the SCm vacuum density.
 ## 1. Key Equations
 
 - $\text{DM}_{\text{UQFF}} = \text{DM}_{\text{cosmic}} \cdot (1 + \beta_i \cdot S_{26} \cdot \Phi \cdot f_{\text{IGM}})$
-- $\deltatext{DM} / \text{DM} \approx 0.8\%$ at $z = 0.5$
-- $\deltatext{DM} \approx 4$ pc cm$^{-3}$ per unit redshift
+- $\delta\text{DM} / \text{DM} \approx 0.8\%$ at $z = 0.5$
+- $\delta\text{DM} \approx 4$ pc cm$^{-3}$ per unit redshift
 
 ## 2. Results
 

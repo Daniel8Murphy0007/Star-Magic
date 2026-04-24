@@ -172,7 +172,7 @@ finite initial velocity field ||u_0|| < v_SCm.*
 
 **Proof sketch:**
 1. The energy balance with SCm: $E(t) = \frac{1}{2}\|\mathbf{u}\|^2 \leq E_0 e^{f_{jet} t} < \infty$
-2. The vorticity equation with SCm force: $\frac{D\boldsymbol{\omega}}{Dt} = \boldsymbol{\omega} \cdot \nabla\mathbf{u} + \nunabla^2\boldsymbol{\omega} + \nabla \times \mathbf{f}_{SCm}$
+2. The vorticity equation with SCm force: $\frac{D\boldsymbol{\omega}}{Dt} = \boldsymbol{\omega} \cdot \nabla\mathbf{u} + \nu\nabla^2\boldsymbol{\omega} + \nabla \times \mathbf{f}_{SCm}$
 3. Since $\mathbf{f}_{SCm} = (v_{SCm}/10)\hat{z}$ = constant along jet, $\nabla \times \mathbf{f}_{SCm} = 0$
 4. Therefore the SCm force adds no vorticity generation  it only drives translation
 5. The no-vorticity-generation condition, combined with the energy bound, prevents the vortex

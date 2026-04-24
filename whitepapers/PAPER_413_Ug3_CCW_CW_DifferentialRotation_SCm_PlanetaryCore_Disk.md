@@ -71,7 +71,7 @@ This tilt determines the spatial extent of Ug3's penetration reach in the planet
 
 ## 3. Ug3 Equation — Full Derivation
 
-$$Ug_3 = k_3 \cdot \sum_j B_j(r, \theta, t, [\text{SCm}]) \cdot \cos!\left(\omega_s(t) \cdot t \cdot \piright) \cdot P_{\text{core}} \cdot E_{\text{react}}$$
+$$Ug_3 = k_3 \cdot \sum_j B_j(r, \theta, t, [\text{SCm}]) \cdot \cos!\left(\omega_s(t) \cdot t \cdot \pi\right) \cdot P_{\text{core}} \cdot E_{\text{react}}$$
 
 Component breakdown:
 
@@ -91,7 +91,7 @@ $$Ug_3(t=0) \approx 1.8 \cdot 10^3 \cdot 1 \cdot 10^{-3} \cdot 10^{46} \approx 1
 
 With solar cycle variation:
 
-$$Ug_3(t) \approx \left[10^3 + 0.4 \cdot \sin(\omega_c t)\right] \cdot \cos!\left(\omega_s(t) \cdot t \cdot \piright) \cdot e^{-0.0005t}$$
+$$Ug_3(t) \approx \left[10^3 + 0.4 \cdot \sin(\omega_c t)\right] \cdot \cos!\left(\omega_s(t) \cdot t \cdot \pi\right) \cdot e^{-0.0005t}$$
 
 ---
 

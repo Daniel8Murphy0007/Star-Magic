@@ -23,7 +23,7 @@ M_sun), the orbital period shift is delta_T approx 0.003 s.
 ## 1. Key Equations
 
 - $b_{\text{UQFF}} = 3\sqrt{3}\underbrace{\frac{GM}{c^2}}_{\text{DPM mass gradient}} \cdot (1 + \frac{\beta_i S_{26}[\text{SSq}]\Phi}{2})$
-- $\deltalambda_L / \lambda_L \approx 0.017\%$
+- $\delta\lambda_L / \lambda_L \approx 0.017\%$
 - $\delta T_{\text{orbit}} \approx 0.003$ s for M87*
 
 ## 2. Results
@@ -141,7 +141,7 @@ observable by next-gen EHT.
 **Sector:** BH-photonsphere (null geodesic)
 
 ### A.2 Lagrangian Density
-$$\mathcal{L}_{\text{ph}} = g_{\mu\nu}\dot{x}^\mudot{x}^\nu + \Phi_{\text{SCm}} S_{26} b^{-1}$$
+$$\mathcal{L}_{\text{ph}} = g_{\mu\nu}\dot{x}^\mu\dot{x}^\nu + \Phi_{\text{SCm}} S_{26} b^{-1}$$
 
 ### A.3 Euler-Lagrange Equation of Motion
 $$\boxed{\frac{d^2 u}{d\phi^2} + u = 3GMu^2/c^2 + f_{\text{phonon}}(u)}$$

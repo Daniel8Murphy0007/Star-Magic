@@ -57,7 +57,7 @@ The characteristic THz hole frequency from Drawing 24:
 
 $$\nu_{\rm THz,hole} = \frac{[{\rm SSq}]^{1/2} c}{2\pi r_{\rm vac,0}} = \frac{0.755 \times 3 \times 10^8}{2\pi \times 5.77 \times 10^{-3}}$$
 
-$$= \frac{2.265 \times 10^8}{3.626 \times 10^{-2}} \approx 6.24 \times 10^9 \text{ Hz} \times 10^3 = \textbf{6.24 THz}$$
+$$= \frac{2.265 \times 10^8}{3.626 \times 10^{-2}} \approx 6.24 \times 10^9 \text{ Hz} \times 10^3 = \text\bf{6.24 THz}$$
 
 Where r_vac,0 = 5.77 × 10? m is the UQFF vacuum coherence length at [SCm] = 0.99.
 
@@ -67,7 +67,7 @@ Where r_vac,0 = 5.77 × 10? m is the UQFF vacuum coherence length at [SCm] = 0.9
 
 The THz hole extends over:
 
-$$\Delta r_{\rm THz} = \frac{\lambda_{\rm THz}}{2} \cdot [{\rm SCm}] = \frac{c/\nu_{\rm THz}}{2} \times 0.99 = 23.9 \, \mutext{m}$$
+$$\Delta r_{\rm THz} = \frac{\lambda_{\rm THz}}{2} \cdot [{\rm SCm}] = \frac{c/\nu_{\rm THz}}{2} \times 0.99 = 23.9 \, \mu\text{m}$$
 
 Energy density deficit:
 

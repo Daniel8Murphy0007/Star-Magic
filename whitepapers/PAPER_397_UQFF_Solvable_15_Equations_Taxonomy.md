@@ -55,17 +55,17 @@ enumerated in the Grok thread KB section and cross-validated against CERN/arXiv 
 | 2 | Friedmann Equations ($\dot{a}^2/a^2$) | $a_{\text{exp,freq}} = H(z)\cdot a_{\text{DPM}}$ | $a_{\text{exp,freq}}$ in resonance MUGE |
 | 3 | Time-Independent Schr�dinger ($\hat{H}\psi=E\psi$) | $a_{\text{quantum,freq}} = a_{\text{DPM}}\cdot f_{\text{quantum}}$ | $a_{\text{quantum,freq}}$ (?-quantized) |
 | 4 | Maxwell's Magnetism ($\nabla\times\vec{B}=`mu_0`vec{J}$) | $U_m = \mu_j/r_j\cdot(1-e^{-\gamma t}\cospi t_n)\cdot n_{\text{strings}}$ | $U_m$ (magnetic strings) |
-| 5 | Navier-Stokes ($\rhopartial_t\vec{v}+...$) | $a_{\text{fluid,freq}} = f_{\text{fluid}}\cdot E_{\text{vac,neb}}\cdot V_{\text{sys}}$ | $a_{\text{fluid,freq}}$ (fluid dynamics) |
+| 5 | Navier-Stokes ($\rho\partial_t\vec{v}+...$) | $a_{\text{fluid,freq}} = f_{\text{fluid}}\cdot E_{\text{vac,neb}}\cdot V_{\text{sys}}$ | $a_{\text{fluid,freq}}$ (fluid dynamics) |
 | 6 | Yang-Mills Mass Gap ($\Delta m$) | $\Delta m = \sqrt{d\rho_{\text{vac,UA}}/dt\cdot(\rho_{\text{SCm}}/\rho_{UA})^n e^{-G(t)}}$ | PAPER_388 formula |
 | 7 | Einstein Field Equations ($G_{\mu\nu}+\Lambda g_{\mu\nu}=8\pi G T_{\mu\nu}/c^4$) | $A_{\mu\nu} = g_{\mu\nu}+\eta T_{s00}\cos(\pi t_n)$ | PAPER_392 metric perturbation |
-| 8 | Heisenberg Uncertainty Principle ($\Delta x\Delta p \geq \hbar/2$) | $a_{\text{quantum,cosm}} = (\hbar/\Delta x\Delta p)\cdotpsi^2\cdot(2\pi/t_H)$ | compressed MUGE quantum term |
+| 8 | Heisenberg Uncertainty Principle ($\Delta x\Delta p \geq \hbar/2$) | $a_{\text{quantum,cosm}} = (\hbar/\Delta x\Delta p)\cdot\psi^2\cdot(2\pi/t_H)$ | compressed MUGE quantum term |
 | 9 | Hubble Law ($v = H_0 d$) | $a_{\text{exp,freq}} \propto H(z)\cdot a_{\text{DPM}}\cdot e^{H_0 t_{\text{sys}}}$ | Hubble expansion resonance |
-| 10 | Fluid Dynamics continuity ($\partial\rho/\partial t + \nabla\cdot(\rhovec{v})=0$) | $g_{\text{fluid}} = \rho_{\text{fluid}}\cdot V_{\text{sys}}\cdot g_{\text{local}}$ | compressed MUGE fluid term |
+| 10 | Fluid Dynamics continuity ($\partial\rho/\partial t + \nabla\cdot(\rho\vec{v})=0$) | $g_{\text{fluid}} = \rho_{\text{fluid}}\cdot V_{\text{sys}}\cdot g_{\text{local}}$ | compressed MUGE fluid term |
 | 11 | Density Perturbations ($\delta\rho/\rho$) | $g_{\text{pert}} = M\cdot(\delta\rho/\rho + 3�_s?(M_s/r)/r)$ | compressed MUGE perturbation |
 | 12 | Riemann Zeta / Oscillatory ($\zeta(s)$) | $a_{\text{osc}} = A_{\text{osc}}\cos(\omega_{\text{osc}}t)$ | $a_{\text{osc}}$ term ($f_{\text{osc}} = 4.57\times10^{14}$ Hz) |
 | 13 | P vs NP Complexity ($P=?NP$) | UQFF simulation algorithm uses 26D polynomial ($\phi\cdot(2\pi)^{n/6}$) | PImath key (PAPER_398) |
-| 14 | Lorentz Force ($\vec{F}=q(\vec{E}+\vec{v}\timesvec{B})$) | $U_m$ magnetic string tension: $\mu_j B_j^2 R_s^3/r_j$ | $U_m$ magnetic coupling |
-| 15 | Higgs Mechanism ($V(\phi)=-\mu^2\phi^2+\lambdaphi^4$) | $U_H = \lambda_Hrho_{\text{vac},[UA]}\omega_H e^{-[SSq]\cdot18}$ | PAPER_396 level-18 emergence |
+| 14 | Lorentz Force ($\vec{F}=q(\vec{E}+\vec{v}\times\vec{B})$) | $U_m$ magnetic string tension: $\mu_j B_j^2 R_s^3/r_j$ | $U_m$ magnetic coupling |
+| 15 | Higgs Mechanism ($V(\phi)=-\mu^2\phi^2+\lambda\phi^4$) | $U_H = \lambda_Hrho_{\text{vac},[UA]}\omega_H e^{-[SSq]\cdot18}$ | PAPER_396 level-18 emergence |
 
 ---
 
@@ -75,7 +75,7 @@ enumerated in the Grok thread KB section and cross-validated against CERN/arXiv 
 
 Classical: $\vec{g} = -�_s?(M_s/r)$
 
-UQFF: $U_{g1} = k_1\mu_s(t)\cdot\nabla M_s/r\cdot e^{-\alpha t}\cos(\pi t_n)\cdotdelta_{\text{def}}$
+UQFF: $U_{g1} = k_1\mu_s(t)\cdot\nabla M_s/r\cdot e^{-\alpha t}\cos(\pi t_n)\cdot\delta_{\text{def}}$
 
 Connection: At $t=0$, $r=R_b$, $\delta_{\text{def}}=1$, $\cos(0)=1$:
 $$U_{g1} \rightarrow k_1\cdot B_s R_s^3 \cdot GM_s/R_s^2 = k_1 B_s R_s GM_s$$
@@ -84,7 +84,7 @@ a magnetic correction to DPM-seeded gravity.
 
 ### 3.2 Navier-Stokes ? Fluid MUGE (FluidSolver)
 
-Classical: $\rholeft(\partial_t \vec{v} + \vec{v}\cdot\nabla\vec{v}\right) = -\nabla p + \munabla^2\vec{v}$
+Classical: $\rho\left(\partial_t \vec{v} + \vec{v}\cdot\nabla\vec{v}\right) = -\nabla p + \mu\nabla^2\vec{v}$
 
 UQFF: The FluidSolver (32�32 Stable Fluid) is driven by UQFF gravitational force:
 ```cpp

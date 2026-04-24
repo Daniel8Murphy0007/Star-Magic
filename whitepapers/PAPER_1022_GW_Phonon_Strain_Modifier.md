@@ -170,7 +170,7 @@ prediction for next-generation GW detectors.
 **Sector:** GW-emission (compact binary)
 
 ### A.2 Lagrangian Density
-$$\mathcal{L}_{\text{GW}} = \frac{c^4}{32\pi G}(\partial_mu h_{\alphabeta})^2 + \mathcal{L}_{\text{phonon-GW}}$$
+$$\mathcal{L}_{\text{GW}} = \frac{c^4}{32\pi G}(\partial_mu h_{\alpha\beta})^2 + \mathcal{L}_{\text{phonon-GW}}$$
 
 ### A.3 Euler-Lagrange Equation of Motion
 $$\boxed{\Box h_{\mu\nu} = -16\pi G T_{\mu\nu} + \Phi_{\text{SCm}} \cdot S_{26}}$$

@@ -90,7 +90,7 @@ Dark energy appears in all 6 UQFF forms:
 | Resonant | $a_{Cosm} = db/v_i^2 \cdot UA$ term |
 | Buoyant | $U_b \to +\infty$ as $\rho \to 0$ |
 | Triadic | $F_U = 0$: $U_b$ balances $-U_g$ |
-| F_U base | Reactor = $\text{SCm}\cdot UA\cdotomega^{26}$ (void shells) |
+| F_U base | Reactor = $\text{SCm}\cdot UA\cdot\omega^{26}$ (void shells) |
 | `F_U_Bi_i` | Gaussian tail at $x \ll \mu$ (sub-BH26-frequency dark energy) |
 
 ---

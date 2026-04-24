@@ -63,7 +63,7 @@ $$= \frac{6.674\times10^{-11}\times2.79\times10^{-54}}{5.29\times10^{-11}} = \fr
 This is the gravitational Bohr ground state — note the source quotes E₀ = 1.683×10-37 J which uses
 the electromagnetic energy:
 
-$$E_0^{\rm EM} = \frac{e^2}{4\piepsilon_0 r_{\rm Bohr}} = \frac{(1.602\times10^{-19})^2}{4\pitimes8.854\times10^{-12}\times5.29\times10^{-11}} = \frac{2.566\times10^{-38}}{5.91\times10^{-21}} = 4.34\times10^{-18}\ \rm J$$
+$$E_0^{\rm EM} = \frac{e^2}{4\pi\epsilon_0 r_{\rm Bohr}} = \frac{(1.602\times10^{-19})^2}{4\pi\times8.854\times10^{-12}\times5.29\times10^{-11}} = \frac{2.566\times10^{-38}}{5.91\times10^{-21}} = 4.34\times10^{-18}\ \rm J$$
 
 The UQFF E₀ = 1.683×10-37 J is an intermediate scale between gravitational and electromagnetic Bohr energies — defined in UQFF as $E_0 = G m_p^2 [SCm] / (r_{\rm Bohr} [UA])$, incorporating the vacuum coupling ratio.
 

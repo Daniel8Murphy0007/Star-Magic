@@ -64,7 +64,7 @@ in any of PAPER_368–379.
 ### 3.1 Navier-Stokes (Millennium Prize Problem #1)
 
 **The equation:**
-$$\frac{\partial \mathbf{u}}{\partial t} + (\mathbf{u} \cdot \nabla)\mathbf{u} = -\frac{\nabla p}{\rho} + \nunabla^2\mathbf{u} + \mathbf{f}$$
+$$\frac{\partial \mathbf{u}}{\partial t} + (\mathbf{u} \cdot \nabla)\mathbf{u} = -\frac{\nabla p}{\rho} + \nu\nabla^2\mathbf{u} + \mathbf{f}$$
 
 **UQFF mechanism:** The MUGE Resonance fluid term $a_{fluid\_freq}$ represents the vacuum energy
 density coupling that stabilizes turbulent fluid dynamics:

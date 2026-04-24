@@ -96,9 +96,9 @@ $$\Pi(x^0, x^1, x^2, x^3, \theta_4, \ldots, \theta_{25}) = (x^1, x^2, x^3)$$
 
 The projected BSFG distance function (spatial metric on $\mathcal{M}^3$):
 
-$$d_\Pi(P, Q) = \sqrt{A_{ij}\,\Delta x^i\,\Delta x^j} = \sqrt{(-1+\varepsilon)\,|\Deltamathbf{x}|^2}$$
+$$d_\Pi(P, Q) = \sqrt{A_{ij}\,\Delta x^i\,\Delta x^j} = \sqrt{(-1+\varepsilon)\,|\Delta\mathbf{x}|^2}$$
 
-For $\varepsilon \ll 1$: $d_\Pi \approx |\Deltamathbf{x}|\,(1 + \varepsilon/2)$. The Aether perturbation slightly contracts the BSFG spatial distance relative to flat space.
+For $\varepsilon \ll 1$: $d_\Pi \approx |\Delta\mathbf{x}|\,(1 + \varepsilon/2)$. The Aether perturbation slightly contracts the BSFG spatial distance relative to flat space.
 
 **Volume form in 26D:**
 

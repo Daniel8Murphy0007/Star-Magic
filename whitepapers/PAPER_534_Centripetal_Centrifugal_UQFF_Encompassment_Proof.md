@@ -45,7 +45,7 @@ construction — confirming the UQFF no-causation principle.
 $$F_U = U_g + U_m + U_b = 0 \quad \text{(orbital equilibrium)}$$
 
 **Step 2.** Radial UQFF decomposition:
-$$\partial_r(U_g + U_b) = -\partial p/\partial r + \munabla^2 u \quad \text{(evaluated radially)}$$
+$$\partial_r(U_g + U_b) = -\partial p/\partial r + \mu\nabla^2 u \quad \text{(evaluated radially)}$$
 
 **Step 3.** $\text{UQFF}_\text{comp}$ spectral form (PAPER_528):
 $$\text{UQFF}_\text{comp} = \text{diag}\!\left(\frac{P}{3},\, \frac{P}{3},\, \frac{2P}{3}\right)$$

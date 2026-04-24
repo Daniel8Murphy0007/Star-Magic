@@ -24,7 +24,7 @@ SCm buoyancy modifies grain settling timescales in protoplanetary disks by appro
 
 - $F_{\text{buoy,grain}} = \rho_{\text{ISM}} \cdot V_{\text{grain}} \cdot g_{\text{local}} \cdot \beta_i \cdot S_{26} \cdot \Phi$
 - $F_{\text{buoy}} \approx 1.2 \times 10^{-30}$ N (0.1 um silicate)
-- $\deltatau_{\text{settle}} / \tau \approx 8\%$ in protoplanetary disks
+- $\delta\tau_{\text{settle}} / \tau \approx 8\%$ in protoplanetary disks
 
 ## 2. Results
 

@@ -87,11 +87,11 @@ For **Magnetar SGR 1745-2900** ($g_{\text{comp}} = 1.783\times10^{39}$ m/s2):
 - Superconducting adj: $\times(1-B/B_{\text{crit}}) = \times0.9$
 - Fluid term: $1\times10^{-15}\times4.189\times10^{12}\times10 = 4.189\times10^{-2}$
 - Total amplification to $\sim10^{39}$ comes from the **quantum + cosmic + perturbation** terms
-  with $\hbar/\Delta x\Delta p\cdotpsi^2\cdot(2\pi/t_H) \sim 10^{34}$ scale.
+  with $\hbar/\Delta x\Delta p\cdot\psi^2\cdot(2\pi/t_H) \sim 10^{34}$ scale.
 
 For **Student's Guide** ($g_{\text{comp}} = 2.0\times10^{47}$ m/s2):
 - Cosmological mass $M=10^{53}$ kg at $r=10^{26}$ m gives base $μ_s∇(M_s/r) \approx 6.67\times10^{-3}$
-- Quantum term dominates: $\hbar/(\Delta x\Delta p)\timespsi^2\times(2\pi/t_H)$ at cosmic scale → $\sim10^{47}$
+- Quantum term dominates: $\hbar/(\Delta x\Delta p)\times\psi^2\times(2\pi/t_H)$ at cosmic scale → $\sim10^{47}$
 
 ---
 
@@ -125,7 +125,7 @@ $$= 3.465\times3.552\times7.09\times10^{-8-36+45} = 87.3\times10^{1} \approx 873
 
 This is far smaller than the output — the exponential amplification occurs through the
 $a_{\text{DPM}}$ cascade: $a_{\text{DPM}} = FDPM\cdot f_{\text{DPM}}\cdot E_{\text{vac}}\cdot c\cdot V_{\text{sys}}$
-where FDPM contains Products of $I\times A\timesomega \sim 10^{23}\times10^{30}\times10^{-5} = 10^{48}$
+where FDPM contains Products of $I\times A\times\omega \sim 10^{23}\times10^{30}\times10^{-5} = 10^{48}$
 and the chain multiplications reach $\sim 10^{100}$.
 
 ---

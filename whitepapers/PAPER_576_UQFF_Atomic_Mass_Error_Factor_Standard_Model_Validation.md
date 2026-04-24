@@ -77,7 +77,7 @@ $$\varepsilon(Z) = \frac{|A_{\text{standard}}(Z) - A_{\text{pred,UQFF}}(Z)|}{A_{
 
 ## §4 Buoyancy Harmonic Correction
 
-$$\Delta A_{BH}(Z) = \sum_{k=1}^{26} \frac{f_{U\_b}}{k}, \quad f_{U\_b} = P_{\text{order}}(Z)\cdotrho_{\text{nuc}}$$
+$$\Delta A_{BH}(Z) = \sum_{k=1}^{26} \frac{f_{U\_b}}{k}, \quad f_{U\_b} = P_{\text{order}}(Z)\cdot\rho_{\text{nuc}}$$
 
 $$A_{\text{corr}}(Z) = A_{\text{pred}}(Z) + \Delta A_{BH}(Z) \times C_{\text{scale}}$$
 
@@ -242,7 +242,7 @@ universal parameter set constitutes a parameter-free nuclear mass prediction.
 
 
 *Source:* `grok_share_efc8a971378f.txt` — Session 154  
-*See also:* PAPER_573 (hub), PAPER_575 (DPM binding), PAPER_553 (26th polynomial)
+> See also:* PAPER_573 (hub), PAPER_575 (DPM binding), PAPER_553 (26th polynomial)
 
 
 

@@ -32,7 +32,7 @@ We introduce the THz Hole analogy, the Red Dwarf Reactor UQFF model, the Framewo
 Superconductors at T_c ~ 100 K exhibit quasi-particle "holes" traversing the condensate, analogous
 to the Hawking pair mechanism.
 
-$$f_{THz} = \frac{k_B T_c}{2\pihbar} \approx 2\,\text{THz at } T_c = 100\,\text{K}$$
+$$f_{THz} = \frac{k_B T_c}{2\pi\hbar} \approx 2\,\text{THz at } T_c = 100\,\text{K}$$
 
 UQFF maps: ρ_SCm / (m_e c2) ↔ Cooper pair density at horizon analogue.
 

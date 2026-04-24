@@ -169,7 +169,7 @@ The $v_{SCm}$ dispersal wave integral provides an additional non-perturbative co
 | UQFF (pre-CQE) | $\Omega_Lambda + \Omega_{SCm}$ | 
 | UQFF + CQE (this paper) | $\Omega_Lambda + \Omega_{SCm} + \Omega_{egg} + \int v_{SCm}\,dV$ | 
 **Numerical evaluation** — For $\Omega_{egg} = 0.1$ and $\Omega_{SCm} = 0.01$: 
-$$\deltadot{a} = H_0 \cdot \left[\sqrt{\Omega_Lambda + \Omega_{SCm} + \Omega_{egg}} - \sqrt{\Omega_Lambda}\right] \approx H_0 \cdot 0.071 \approx 1.5 \times 10^{-19} \text{ s}^{-1}$$ 
+$$\delta\dot{a} = H_0 \cdot \left[\sqrt{\Omega_Lambda + \Omega_{SCm} + \Omega_{egg}} - \sqrt{\Omega_Lambda}\right] \approx H_0 \cdot 0.071 \approx 1.5 \times 10^{-19} \text{ s}^{-1}$$ 
 This $\sim$7.1% increase in expansion rate is consistent with the Hubble tension (observed discrepancy of $\sim$4–9% between early- and late-universe $H_0$ measurements). 
 **C++ Implementation** (MAIN`_1`_CoAnQi.cpp, line 30118, \HubbleEggModifiedTerm_CE):cpp
 double sum_omega = Omega_L + Omega_SCm + Omega_egg;
@@ -360,7 +360,7 @@ equations for the interactive calculator:
 | `g_`ce_F_wolfra`m` | `WolframFoldingFactorTerm_CE` | $F_{Wolfram} = \sum_k e^{-E_{UQFF,k}/kT}$ |
 | `g_`ce_omega_eg`g` | `OmegaEggParameterTerm_CE` | $\Omega_{egg} = \rho_{egg}/\rho_{crit}$ (capped 0.2) |
 | `g_`ce_v_sc`m` | `SCmEggDispersalWaveTerm_CE` | $v_{SCm}$ with egg boost |
-| `g_ce_hubble` | `HubbleEggModifiedTerm_CE` | $\dot{a} = H_0\sqrt{\SigmaOmega} + \int v_{SCm}\,dV$ |
+| `g_ce_hubble` | `HubbleEggModifiedTerm_CE` | $\dot{a} = H_0\sqrt{\Sigma\Omega} + \int v_{SCm}\,dV$ |
 
 Convenience function `runCosmicEggPhysicsTerms(params, t)` executes all 5 terms and prints results.
 
@@ -412,7 +412,7 @@ $$g_{CQE}(r,t) = \sum_{i=1}^{26}\left[U_{g1,i} + U_{g2,i} + U_{g3,i} + U_{g4,i}\
 | Cosmological constant $\Lambda$ | $1.1 \times 10^{-52}$ m-2 | $1.114 \times 10^{-52}$ m-2 (Planck 2018) | 1.3% |
 | Vacuum energy density $\rho_{vac}$ | $5.96 \times 10^{-27}$ kg/m3 | $5.96 \times 10^{-27}$ kg/m3 (ΛCDM) | exact |
 | Hubble parameter $H_0$ | 67.4 km/s/Mpc | 67.4 ± 0.5 km/s/Mpc (Planck 2018) | within $1\sigma$ |
-| Expansion rate excess $\deltadot{a}/\dot{a}$ | $\sim$7.1% | $\sim$4–9% (Hubble tension) | consistent |
+| Expansion rate excess $\delta\dot{a}/\dot{a}$ | $\sim$7.1% | $\sim$4–9% (Hubble tension) | consistent |
 | κ calibration | $5.0 \times 10^{-4}$ /day | — | UQFF canonical |
 | $[SSq]$ | 0.57 | CMB dark energy fraction: $\sim$5% baryonic | consistent |
 

@@ -179,7 +179,7 @@ The Hubble tension ($H_0 = 67.4$ from CMB vs $73.0$ from local measurements)
 reflects different measurements of $v_{current}/v_{init}$ at different scales:
 
 $$
-H_0^{local} - H_0^{CMB} = \Deltaleft(\frac{dv_{current}}{dt}\right) \cdot \frac{BBDT}{UA \cdot d^2}
+H_0^{local} - H_0^{CMB} = \Delta\left(\frac{dv_{current}}{dt}\right) \cdot \frac{BBDT}{UA \cdot d^2}
 $$
 
 This is a natural consequence of BBDT: local measurements sample regions with

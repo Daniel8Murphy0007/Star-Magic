@@ -112,7 +112,7 @@ where $\mathcal{N}$ is the non-local operator from the K_n equation form.
 
 The pseudo-monopole states modulate all kη corrections:
 
-$$\delta_n = \left(2\piright)^{n/6}$$
+$$\delta_n = \left(2\pi\right)^{n/6}$$
 
 $$\rho_{\mathrm{vac,[\mathrm{UA'}:SCm]}}(n,t) = 10^{-23} \cdot (0.1)^n \cdot \exp!\left(-[\mathrm{SSq}] \cdot \frac{n}{26}\right) \cdot \exp(-(\pi-t))$$
 

@@ -83,7 +83,7 @@ $$a_{fluid\_freq} = f_{fluid} \cdot \frac{E_{vac,neb} \cdot V_{sys}}{E_{vac,ISM}
 
 With Sag A*: $f_{fluid} = 3.465\times10^{-8}$ Hz, $V_{sys} = 3.552\times10^{45}$ m3:
 
-$$\boxed{a_{fluid\_freq}^{\text{SgrA}*} = 4.105\times10^{29} \ \text{m/s}^2 \quad \textbf{(DOMINANT)}}$$
+$$\boxed{a_{fluid\_freq}^{\text{SgrA}*} = 4.105\times10^{29} \ \text{m/s}^2 \quad \text\bf{(DOMINANT)}}$$
 
 ### Remaining resonance terms for Sag A*
 

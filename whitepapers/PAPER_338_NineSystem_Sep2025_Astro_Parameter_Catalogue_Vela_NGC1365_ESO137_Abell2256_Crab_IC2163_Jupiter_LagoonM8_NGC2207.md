@@ -27,7 +27,7 @@ all 5 UQFF equation types; FIRST 2025 observational source assignment per system
 $$F_U(r,t) = \sum_{i=1}^{4} U_{gi} + U_m + U_A - U_{b\_i}, \quad \kappa = 5.0\times10^{-4}\,\text{day}^{-1},\; [SSq] = 0.57$$
 
 $$
-M_J^\text{UQFF} = M_J^\text{Jeans}\cdotBigl(1 - [SSq]\cdot\frac{B^2}{8\pirho c_s^2}\Bigr), \quad
+M_J^\text{UQFF} = M_J^\text{Jeans}\cdotBigl(1 - [SSq]\cdot\frac{B^2}{8\pi\rho c_s^2}\Bigr), \quad
 [SSq] = 0.57
 $$
 

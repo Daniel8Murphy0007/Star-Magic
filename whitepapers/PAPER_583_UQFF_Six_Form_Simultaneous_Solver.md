@@ -64,7 +64,7 @@ $c$ = off-diagonal coupling.
 
 **Eigenvalues (characteristic polynomial):**
 
-$$\det(\mathbf{UQFF} - \lambdamathbf{I}) = -\lambda^3 + \lambda^2(P+dg+dm+db)
+$$\det(\mathbf{UQFF} - \lambda\mathbf{I}) = -\lambda^3 + \lambda^2(P+dg+dm+db)
   - \lambda(2P^2/3+P(dg+dm+db)-c^2+dgdm+dgdb+dmdb) + \cdots = 0$$
 
 Explicit eigenvalues:
@@ -122,10 +122,10 @@ reactive shell energies.
 
 ## §8 Form 6 — F_U_Bi_i (Gaussian, BH26-Anchored)
 
-$$F_{U,Bi,i}(x) = \frac{1}{\sqrt{2\pisigma^2}}\exp!\left[-\frac{(x-\mu)^2}{2\sigma^2}\right] \cdot F_U$$
+$$F_{U,Bi,i}(x) = \frac{1}{\sqrt{2\pi\sigma^2}}\exp!\left[-\frac{(x-\mu)^2}{2\sigma^2}\right] \cdot F_U$$
 
 BH26 parameters: $\mu = 92\text{ GHz}$ (bin 1 buoyancy harmonic), $\sigma = 10^{16}\text{ Hz}$
-(26-shell spectral width). At the centroid $x = \mu$: $F_{U,Bi,i} = F_U / \sqrt{2\pisigma^2}$.
+(26-shell spectral width). At the centroid $x = \mu$: $F_{U,Bi,i} = F_U / \sqrt{2\pi\sigma^2}$.
 
 This form anchors UQFF to observable 92 GHz radio flux (Sgr A\*, magnetar torques).
 

@@ -23,7 +23,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 ## Abstract
 
-We derive the Cooper-pair sector of the UQFF Lagrangian and impose the stationarity condition $\delta S / \deltavarphi_\text{pair} = 0$. The gap Lagrangian density $\mathcal{L}_\text{gap} = -N(0)|\Delta|^2/V_\text{SCm} + N(0) \hbar\omega_\text{SCm} \ln(2\cosh(\Delta/2k_BT))$ yields the self-consistent BCS gap equation when varied. Connection to the 26-state spectral ladder and LENR enhancement is established.
+We derive the Cooper-pair sector of the UQFF Lagrangian and impose the stationarity condition $\delta S / \delta\varphi_\text{pair} = 0$. The gap Lagrangian density $\mathcal{L}_\text{gap} = -N(0)|\Delta|^2/V_\text{SCm} + N(0) \hbar\omega_\text{SCm} \ln(2\cosh(\Delta/2k_BT))$ yields the self-consistent BCS gap equation when varied. Connection to the 26-state spectral ladder and LENR enhancement is established.
 
 ---
 
@@ -33,7 +33,7 @@ $$\mathcal{L}_\text{gap} = -\frac{N(0)|\Delta|^2}{V_\text{SCm}} + N(0)\hbar\omeg
 
 ## 2. Stationarity Condition
 
-$$\frac{\delta S}{\deltavarphi_\text{pair}} = \frac{\partial}{\partial\Delta}\left(-\beta_i \sum U_{g,i}\,\frac{\Omega_g M}{d_g\,[UA]} + F_n \cdot \Phi_{1.25\text{THz}}\right) = 0$$
+$$\frac{\delta S}{\delta\varphi_\text{pair}} = \frac{\partial}{\partial\Delta}\left(-\beta_i \sum U_{g,i}\,\frac{\Omega_g M}{d_g\,[UA]} + F_n \cdot \Phi_{1.25\text{THz}}\right) = 0$$
 
 This yields the self-consistent gap equation:
 $$1 = \frac{V_\text{SCm}}{2} \cdot \frac{\tanh(\Delta/2k_BT)}{\Delta} \cdot S_{26}$$
@@ -173,7 +173,7 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 
 | Observable | UQFF Prediction | Status |
 |------------|----------------|--------|
-| Stationarity | $\delta S/\deltavarphi_\text{pair} = 0$ yields BCS gap | Derived |
+| Stationarity | $\delta S/\delta\varphi_\text{pair} = 0$ yields BCS gap | Derived |
 | LENR connection | $\Gamma_text{LENR} \propto \Delta^2 e^{-E_C/\text{k\_BT\_c}}\Phi$ | Novel |
 | Spectral ladder link | $E_n$ phonon channels in Lagrangian | Validated |
 
@@ -188,10 +188,10 @@ $$\mathcal{L}_{9} = \mathcal{L}_{\text{EH}} + \mathcal{L}_{\text{YM}} + \mathcal
 $$\mathcal{L}_\text{gap} = -\frac{N(0)|\Delta|^2}{V_\text{SCm}} + N(0)\hbar\omega_\text{SCm}\ln!\left(2\coshfrac{\Delta}{2k_BT}\right)$$
 
 ### §A.3 Euler-Lagrange Equation of Motion
-$$\boxed{\frac{\delta S}{\deltavarphi_\text{pair}} = \frac{\partial}{\partial\Delta}\left(-\beta_isum U_{g,i}\frac{\Omega_g M}{d_g[UA]} + F_n \Phi_{1.25\text{THz}}\right) = 0}$$
+$$\boxed{\frac{\delta S}{\delta\varphi_\text{pair}} = \frac{\partial}{\partial\Delta}\left(-\beta_isum U_{g,i}\frac{\Omega_g M}{d_g[UA]} + F_n \Phi_{1.25\text{THz}}\right) = 0}$$
 
 ### §A.4 Cosmogenesis Linkage Chain
-PAPER_877 → 9-sector Lagrangian → Cooper pair sector → $\delta S/\deltaDelta = 0$ → BCS gap + spectral ladder + LENR
+PAPER_877 → 9-sector Lagrangian → Cooper pair sector → $\delta S/\delta\Delta = 0$ → BCS gap + spectral ladder + LENR
 
 ---
 

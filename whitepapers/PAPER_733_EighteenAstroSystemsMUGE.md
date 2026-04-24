@@ -59,7 +59,7 @@ $r_i = r/i$ and THz-scale inner boundaries $r_{THz,i} = r_i/1000$.
 
 ## 2. MUGE Compressed Master Equation with 26D Extension
 
-$$\boxed{g(r,t) = \frac{G\,M}{r^2}(1+H(z)\,t)(1+M_{evo})(1-E_{rad})(1+f_{TRZ}) + F_{em} + \sum_{i=1}^{26}(U_{g1,i}+U_{g2,i}+U_{g3,i}+U_{g4i,i})\cdoteta_{26D}}$$
+$$\boxed{g(r,t) = \frac{G\,M}{r^2}(1+H(z)\,t)(1+M_{evo})(1-E_{rad})(1+f_{TRZ}) + F_{em} + \sum_{i=1}^{26}(U_{g1,i}+U_{g2,i}+U_{g3,i}+U_{g4i,i})\cdot\eta_{26D}}$$
 
 where $\eta_{26D} = 10^{-40}$ ensures dimensional consistency (quantum energy terms in joules, expressed as equivalent acceleration via the system length scale).
 

@@ -34,7 +34,7 @@ Star-Magic/UQFF framework.
 
 This paper derives the gravitational wave (GW) amplitude equation within the Star-Magic 
 Unified Quantum Field Framework (UQFF), using the frequency-modulated Form 4 tensor.
-The resulting amplitude $h = 26!\,\kappaddot{Q}/(f^{27}\,r) + \Lambda\delta t/3$ bounds
+The resulting amplitude $h = 26!\,\kappa\ddot{Q}/(f^{27}\,r) + \Lambda\delta t/3$ bounds
 GW emission factorially, preventing UV divergences absent in classical GR. A key result
 is the dynamical emergence of the cosmological constant $\Lambda$ from the UQFF buoyancy
 term (3,3), yielding $\Lambda_{pred} \approx 10^{-52}\,\text{m}^{-2}$ — an exact match to
@@ -58,7 +58,7 @@ $$\delta U_m = \kappa,\frac{\delta(\text{DPM}_n - \text{DPM}_s)}{f^{26}}$$
 **Step 2 — UQFF trace propagation:**
 
 $$h \propto \frac{\text{Tr}(\delta,\text{UQFF}_{comp})}{3\,r}
-= \frac{\delta P_{order}/3 + 26!\,\kappa,\deltatext{DPM}/f^{27}}{r}$$
+= \frac{\delta P_{order}/3 + 26!\,\kappa,\delta\text{DPM}/f^{27}}{r}$$
 
 **Step 3 — Include $\Lambda$ via $U_b$ expansion:**
 
@@ -150,7 +150,7 @@ $\mathcal{R}^{(n+1)} = \mathcal{G}^{(n)} \oplus H(\sigma(n))$, $\sigma(n) = |t(n
 
 Add $\delta$ edges for GW; converges to $h$ as branch amplitude (unique, bounded by $26!/f^{27}$).
 
-At 26 steps: $h_{hyp} = 26!\,\kappa/f^{27}\cdotddot{Q}/r$ — exact match to symbolic result.
+At 26 steps: $h_{hyp} = 26!\,\kappa/f^{27}\cdot\ddot{Q}/r$ — exact match to symbolic result.
 
 ---
 
@@ -359,7 +359,7 @@ in future binary merger observations.
 
 ## §7 Conclusion
 
-The UQFF GW amplitude formula $h = 26!\,\kappaddot{Q}/(f^{27}\,r) + \Lambda\delta t/3$ provides
+The UQFF GW amplitude formula $h = 26!\,\kappa\ddot{Q}/(f^{27}\,r) + \Lambda\delta t/3$ provides
 a complete frequency-bound derivation of gravitational wave emission from DPM failures.
 The Λ_CDM cosmological constant emerges dynamically from the buoyancy term at Planck frequency,
 reproducing $\Lambda_{obs} = 10^{-52}\,\text{m}^{-2}$ with no free parameters. This resolves

@@ -22,7 +22,7 @@ We compute numerical $F_{U,\text{Bi}_i}$ curves for Centaurus A ($M_{\text{BH}} 
 
 $$M_{\text{jet}}(\Gamma) = 1 + A_{\text{jet}} \cdot \exp!\left(-\frac{(\Gamma - \Gamma_0)^2}{2\sigma_Gamma^2}\right)$$
 
-with $A_{\text{jet}} = 1.5$, $\Gamma_0 = 2\pi \times 0.1\text{ THz}$, $\sigma_Gamma = 0.08 \times 2\pitext{ THz}$.
+with $A_{\text{jet}} = 1.5$, $\Gamma_0 = 2\pi \times 0.1\text{ THz}$, $\sigma_Gamma = 0.08 \times 2\pi\text{ THz}$.
 
 ## 2. Jet Power
 

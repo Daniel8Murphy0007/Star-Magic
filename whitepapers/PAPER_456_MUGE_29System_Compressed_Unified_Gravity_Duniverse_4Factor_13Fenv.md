@@ -39,7 +39,7 @@ $$D_{\rm std} = \frac{c}{H_0} = \frac{3\times10^8}{2.27\times10^{-18}} = 1.32\ti
 
 UQFF introduces 4 multiplicative factors:
 
-$$D_{\rm universe} = 2 D_p \cdot \underbrace{(1 + H_z t)}_{\rm I: Hubble\,expansion} \cdot \underbrace{\left(1 + \frac{\Lambda c^2}{3H_0^2}\right)}_{\rm II: \Lambdatext{-correction}} \cdot \underbrace{\left(1 + \frac{\hbar}{\sqrt{\Delta x \cdot \Delta p}\; G M}\right)}_{\rm III: QG\,correction} \cdot \underbrace{(1 + k r_c^2)}_{\rm IV: curvature}$$
+$$D_{\rm universe} = 2 D_p \cdot \underbrace{(1 + H_z t)}_{\rm I: Hubble\,expansion} \cdot \underbrace{\left(1 + \frac{\Lambda c^2}{3H_0^2}\right)}_{\rm II: \Lambda\text{-correction}} \cdot \underbrace{\left(1 + \frac{\hbar}{\sqrt{\Delta x \cdot \Delta p}\; G M}\right)}_{\rm III: QG\,correction} \cdot \underbrace{(1 + k r_c^2)}_{\rm IV: curvature}$$
 
 Where $D_p = c/H_0 = 1.32\times10^{26}$ m, so $2D_p = 2.64\times10^{26}$ m.
 

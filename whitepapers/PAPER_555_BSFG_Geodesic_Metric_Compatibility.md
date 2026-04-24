@@ -43,7 +43,7 @@ m DPM}$ — ultra-weak and consistent with non-detection in current experiments.
 
 **Proof:** The metric $A_{\mu\nu} = \mathrm{diag}(1+\varepsilon,\,-1+\varepsilon,\,-1+\varepsilon,\,-1+\varepsilon)$ is diagonal and depends only on $r = x^1$. The Christoffel symbols from PAPER_554 are:
 
-$$\Gamma^\rho_{\mu\nu} = \frac{1}{2}A^{\rhosigma}\left(\partial_mu A_{\nusigma} + \partial_nu A_{\mu\sigma} - \partial_sigma A_{\mu\nu}\right)$$
+$$\Gamma^\rho_{\mu\nu} = \frac{1}{2}A^{\rho\sigma}\left(\partial_mu A_{\nu\sigma} + \partial_nu A_{\mu\sigma} - \partial_sigma A_{\mu\nu}\right)$$
 
 Since the right-hand side is manifestly symmetric in $(\mu,\nu)$, we have $\Gamma^\rho_{\mu\nu} = \Gamma^\rho_{\nu\mu}$, hence $T^\rho{}_{\mu\nu} = 0$. $\square$
 

@@ -53,7 +53,7 @@ The electromagnetic Poynting jet luminosity:
 
 $$L_{Poynt} \propto \frac{B^2}{4\pi} \cdot v_A^2$$
 
-where $v_A = B/\sqrt{4\pirho}$ is the Alfvén velocity. For magnetically arrested disk (MAD) conditions:
+where $v_A = B/\sqrt{4\pi\rho}$ is the Alfvén velocity. For magnetically arrested disk (MAD) conditions:
 
 $$L_{Poynt,MAD} \approx \eta_{EM} \cdot \dot{M} \cdot c^2, \quad \eta_{EM} \approx 0.01$$
 

@@ -117,7 +117,7 @@ $$\text{Weighted average} = \sum_{k} w_k \cdot v_k \approx 963{,}078\ \text{calc
 
 ### 3.3 Target Assessment
 
-$$\frac{\text{Weighted avg}}{\text{Target}} = \frac{963{,}078}{950{,}000} = 1.0138 \quad \checkmark\ \textbf{MET}$$
+$$\frac{\text{Weighted avg}}{\text{Target}} = \frac{963{,}078}{950{,}000} = 1.0138 \quad \checkmark\ \text\bf{MET}$$
 
 $$\text{Speedup vs v24} = \frac{963{,}078}{900{,}000} = 1.0701\times$$
 

@@ -77,19 +77,19 @@ $$-\omega^2 + c^2k^2 + \alpha,l_{Pl}^2\!\left(\omega^4 - 2\omega^2c^2k^2 + c^4k^
 
 **Step 4:** Leading-order dispersion relation:
 
-$$\boxed{\omega^2 = c^2k^2\!\left(1 + \eta,(l_{Pl}\,k)^\gammaright)}$$
+$$\boxed{\omega^2 = c^2k^2\!\left(1 + \eta,(l_{Pl}\,k)^\gamma\right)}$$
 
 $\eta = \pmalpha$ (sign ambiguity), $\gamma = 1$ (linear holonomy) or $2$ (quadratic inverse volume).
 
 ### §2.3 Group Velocity and Time Delay
 
 Phase velocity:
-$$v_{ph} = \frac{\omega}{k} \approx c\!\left[1 + \frac{\eta}{2}(l_{Pl}k)^\gammaright]$$
+$$v_{ph} = \frac{\omega}{k} \approx c\!\left[1 + \frac{\eta}{2}(l_{Pl}k)^\gamma\right]$$
 
 Group velocity:
-$$v_g = \frac{d\omega}{dk} \approx c\!\left[1 + \frac{\etagamma}{2}(l_{Pl}k)^\gammaright]$$
+$$v_g = \frac{d\omega}{dk} \approx c\!\left[1 + \frac{\eta\gamma}{2}(l_{Pl}k)^\gamma\right]$$
 
-Deviation: $\delta v_g/c \approx (\etagamma/2)(l_{Pl}k)^\gamma$
+Deviation: $\delta v_g/c \approx (\eta\gamma/2)(l_{Pl}k)^\gamma$
 
 Time delay over distance $r$:
 $$\Delta t_{LQG} = \frac{|\delta v_g|}{c}\cdot\frac{r}{c}$$
@@ -140,7 +140,7 @@ $\eta=1$, $\gamma=1$.
 
 | System | Formula | $h$ | Dispersion |
 |--------|---------|-----|-----------|
-| **UQFF** | $26!\,\kappaddot{Q}/(f^{27}r) + \Lambda\delta t/3$ | $\sim10^{-20}$ | $26!/f^{27}$ bound |
+| **UQFF** | $26!\,\kappa\ddot{Q}/(f^{27}r) + \Lambda\delta t/3$ | $\sim10^{-20}$ | $26!/f^{27}$ bound |
 | **GR/Λ_CDM** | $G\ddot{Q}/(c^4\,r)$ | $\sim10^{-21}$ | $\omega^2=c^2k^2$ (no mod) |
 | **LQG** | $h_{GR}\cdot(1+\delta v_g/c)$ | $\sim10^{-21}$$^*$ | $\omega^2=c^2k^2(1+\eta(l_{Pl}k)^\gamma)$ |
 

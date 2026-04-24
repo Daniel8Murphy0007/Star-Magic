@@ -47,7 +47,7 @@ UQFF predictions match EHT shadow observations.
 | GR $R_s = 2GM/c^2$ | $1.27\times10^{10}$ m | Computed |
 | Distance | 8.2 kpc | $\approx 2.53\times10^{20}$ m |
 
-EHT angular shadow: $\theta = 51.8 \pm 2.3\ \mutext{as}$ → physical shadow radius $\approx 5.4\ R_s$.
+EHT angular shadow: $\theta = 51.8 \pm 2.3\ \mu\text{as}$ → physical shadow radius $\approx 5.4\ R_s$.
 
 ---
 

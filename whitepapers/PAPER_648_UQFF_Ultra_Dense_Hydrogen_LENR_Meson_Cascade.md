@@ -89,7 +89,7 @@ temperatures — this is the LENR mechanism.
 
 ### 2.2 Muon-Catalyzed Fusion
 
-$$W = \frac{e^2}{4\piepsilon_0 \cdot d} = \frac{(1.602 \times 10^{-19})^2}{4\pi \times 8.85 \times 10^{-12} \times 2.3 \times 10^{-12}} \approx 1.00 \times 10^{-16}\ \text{J}\ (= 630\ \text{eV})$$
+$$W = \frac{e^2}{4\pi\epsilon_0 \cdot d} = \frac{(1.602 \times 10^{-19})^2}{4\pi \times 8.85 \times 10^{-12} \times 2.3 \times 10^{-12}} \approx 1.00 \times 10^{-16}\ \text{J}\ (= 630\ \text{eV})$$
 
 The KER (kinetic energy release) of 630 eV matches the Coulomb energy at d = 2.3 pm,
 confirming that muon-catalyzed fusion operates exactly at the D(-1) equilibrium distance.

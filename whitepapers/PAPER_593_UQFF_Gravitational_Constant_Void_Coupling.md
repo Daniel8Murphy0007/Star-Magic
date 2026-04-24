@@ -66,7 +66,7 @@ Note: UQFF units require rescaling by $l_P^3 m_P^{-1} t_P^{-2}$ to SI units.
 
 ## §4 Method 3 — Full Void Coupling (Grind-Corrected)
 
-$$G = \frac{g \cdot \exp(-\text{Grind})}{4\pirho}$$
+$$G = \frac{g \cdot \exp(-\text{Grind})}{4\pi\rho}$$
 
 The Grind suppression $\exp(-\text{Grind}) \sim e^{-1}$ reduces the naive buoyant estimate.
 For $\text{Grind} \sim \ln(c^2/G \cdot \rho \cdot 4\pi)$: recursively solved.
@@ -105,9 +105,9 @@ mass concentrations directly.
 
 ## §7 Implications
 
-$$\frac{G}{c^2} = \frac{g/(4\pirho)}{g \cdot SCm/UA} = \frac{1}{4\pirho \cdot SCm/UA}$$
+$$\frac{G}{c^2} = \frac{g/(4\pi\rho)}{g \cdot SCm/UA} = \frac{1}{4\pi\rho \cdot SCm/UA}$$
 
-This ratio sets the Schwarzschild radius: $r_s = 2GM/c^2 = M/(2\pirho \cdot SCm/UA)$
+This ratio sets the Schwarzschild radius: $r_s = 2GM/c^2 = M/(2\pi\rho \cdot SCm/UA)$
 — the size of a black hole is directly tied to void density.
 
 ---

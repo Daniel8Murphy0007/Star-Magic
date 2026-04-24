@@ -278,7 +278,7 @@ universal parameter set constitutes a parameter-free nuclear mass prediction.
 
 
 *Source:* `grok_share_efc8a971378f.txt` — Session 154  
-*See also:* PAPER_573 (3D-IPO hub), PAPER_550 (DPM quantisation), PAPER_577 (island of stability)
+> See also:* PAPER_573 (3D-IPO hub), PAPER_550 (DPM quantisation), PAPER_577 (island of stability)
 
 
 

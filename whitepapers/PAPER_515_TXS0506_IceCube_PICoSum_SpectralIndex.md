@@ -29,7 +29,7 @@ decimal π digits, which we apply as a correction to the blazar's multi-TeV spec
 ## 1. PI Co-Sum Resonance
 
 $$
-\kappa(a, b) = \frac{\sum_{i=0}^{N} \pi_{i+a}\cdotpi_{i+b}}{\sum_{i=0}^{N} \pi_i^2}
+\kappa(a, b) = \frac{\sum_{i=0}^{N} \pi_{i+a}\cdot\pi_{i+b}}{\sum_{i=0}^{N} \pi_i^2}
 $$
 
 For the canonical offsets (a=0, b=7) chosen to reflect the 7 sacred harmonics of UQFF:
@@ -45,7 +45,7 @@ $$
 The unmodified blazar spectral index is $\alpha_0 \approx -1.0$ (flat specturm blazar). The UQFF PI coupling shifts this:
 
 $$
-\Delta\alpha = -\kappa(0,7)\cdotkappa_\text{PCR} = -0.944\times0.314 \approx -0.296
+\Delta\alpha = -\kappa(0,7)\cdot\kappa_\text{PCR} = -0.944\times0.314 \approx -0.296
 $$
 
 $$

@@ -159,7 +159,7 @@ systems, including:
 $$E_{\rm total} = \sum_{i=1}^{26} E_{{\rm center},i} = \sum_{i=1}^{26} \rho_{\rm SCm} \cdot i^2 \cdot \frac{4}{3}\pi \left(10^{-35+i/3}\right)^3$$
 
 The sum is dominated by the highest-level center (i=26):
-$$E_{26} = 6.76\times10^{-6} \times \frac{4}{3}\pileft(4.64\times10^{-27}\right)^3 = 6.76\times10^{-6} \times 4.18\times10^{-79} = 2.83\times10^{-84} \text{ J}$$
+$$E_{26} = 6.76\times10^{-6} \times \frac{4}{3}\pi\left(4.64\times10^{-27}\right)^3 = 6.76\times10^{-6} \times 4.18\times10^{-79} = 2.83\times10^{-84} \text{ J}$$
 
 The total pre-inflationary energy is ~few  10-84 J  enormously smaller than the observable universe
 energy content (~106? J). The inflation mechanism amplifies this by the factor (k_? 

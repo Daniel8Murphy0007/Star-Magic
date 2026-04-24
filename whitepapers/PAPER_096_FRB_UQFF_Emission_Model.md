@@ -65,7 +65,7 @@ The FRB pulse width is set by the TRZ collapse timescale:
 
 $$\Delta t_{\rm FRB} = \frac{r_{\rm TRZ}}{c} \cdot [{\rm SCm}]^{-1}$$
 
-$$= \frac{1.5 \times 1.2 \times 10^4}{3 \times 10^8 \times 0.99} \approx 6 \times 10^{-5} \text{ s} = 60 \, \mutext{s}$$
+$$= \frac{1.5 \times 1.2 \times 10^4}{3 \times 10^8 \times 0.99} \approx 6 \times 10^{-5} \text{ s} = 60 \, \mu\text{s}$$
 
 Observed: 1×100 ms. Factor ~10×1000 discrepancy ? TRZ collapse may span multiple NS radii (r_TRZ up
 to 10 R_NS for the most energetic FRBs). Scaling: ?t ? r_TRZ/c ? **3-order-of-magnitude range

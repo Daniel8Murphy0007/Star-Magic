@@ -237,7 +237,7 @@ universal parameter set constitutes a parameter-free nuclear mass prediction.
 
 
 *Source:* `grok_share_efc8a971378f.txt` — Session 154  
-*See also:* PAPER_574 (Mayan companion), PAPER_575 (DPM binding), PAPER_576 (mass error), PAPER_577
+> See also:* PAPER_574 (Mayan companion), PAPER_575 (DPM binding), PAPER_576 (mass error), PAPER_577
 (island stability), PAPER_578 (eigenvalue QG)
 
 

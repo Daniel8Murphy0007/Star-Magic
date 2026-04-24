@@ -255,7 +255,7 @@ $$\text{Algebraic cycle} \left\rightarrow \text{Resonant UQFF energy state (inte
 
 **Supporting equation (eq-M6b):**
 
-$$\int_{X\_n} \omega^p \wedge \baromega^q = E_n \cdot [SCm]_n \quad \rightarrow \quad \text{Hodge class} = [E_n / E_0] \in \mathbb{Q}$$
+$$\int_{X\_n} \omega^p \wedge \bar\omega^q = E_n \cdot [SCm]_n \quad \rightarrow \quad \text{Hodge class} = [E_n / E_0] \in \mathbb{Q}$$
 
 where $E_0 = E_1 = 10^{-19}$ J (ground state). The rational quotient $E_n/E_0 = 10^{n-1} \in \mathbb{Q}$ for all $n$  confirming the UQFF realisation of all 26 Hodge classes as rational multiples of the ground-state cycle.
 

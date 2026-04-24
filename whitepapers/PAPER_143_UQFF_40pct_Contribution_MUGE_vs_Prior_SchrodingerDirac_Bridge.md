@@ -57,7 +57,7 @@ plus UQFF extension terms: $Ug_1 + Ug_2 + Ug_3 + Ug_4 + Ug_{4i} + Ub + Um + U_{A
 
 The Schrdinger kinetic energy and Coulomb potential together:
 
-$$E_{QM} = \leftlangle -\frac{\hbar^2}{2m}\nabla^2 \rightrangle + \leftlangle -\frac{Ze^2}{4\piepsilon_0 r} \rightrangle = -\frac{m_e e^4 Z^2}{2\hbar^2 (4\piepsilon_0)^2 n^2}$$
+$$E_{QM} = \leftlangle -\frac{\hbar^2}{2m}\nabla^2 \rightrangle + \leftlangle -\frac{Ze^2}{4\pi\epsilon_0 r} \rightrangle = -\frac{m_e e^4 Z^2}{2\hbar^2 (4\pi\epsilon_0)^2 n^2}$$
 
 For H (Z=1, n=1): $E_{QM} = -13.6$ eV
 

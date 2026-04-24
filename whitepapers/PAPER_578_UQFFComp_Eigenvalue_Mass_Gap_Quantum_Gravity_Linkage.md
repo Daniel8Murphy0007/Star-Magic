@@ -251,7 +251,7 @@ while remaining consistent with all collider and nuclear precision measurements.
 
 
 *Source:* `grok_share_efc8a971378f.txt` — Session 154  
-*See also:* PAPER_544 (Yang-Mills), PAPER_543 (Navier-Stokes), PAPER_552 (UQFF_comp hub)
+> See also:* PAPER_544 (Yang-Mills), PAPER_543 (Navier-Stokes), PAPER_552 (UQFF_comp hub)
 
 
 

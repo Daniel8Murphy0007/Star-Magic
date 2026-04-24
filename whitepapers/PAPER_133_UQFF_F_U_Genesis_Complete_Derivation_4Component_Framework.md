@@ -90,7 +90,7 @@ $$[(UA')]:[SCm] = \frac{\rho_{vac,[UA]}}{\rho_{vac,[SCm]}} \approx 10 \quad \tex
 
 $$F_U = \sum_{i=1}^{4} \left[ k_i \,\Delta Ug_i(r,t,M_s,\omega_s,T_s,B_s,SCm,UA,t_n) - \beta_i \,Ug_i \,\Omega_g \,\frac{M_{bh}}{d_g} E_{react} \right]$$
 
-$$+ \sum_j \left[ \frac{\mu_j}{r_j} \left(1 - e^{-\gamma t \cos(\pi t_n)}\right) \hatphi_j \right]$$
+$$+ \sum_j \left[ \frac{\mu_j}{r_j} \left(1 - e^{-\gamma t \cos(\pi t_n)}\right) \hat\phi_j \right]$$
 
 $$+ \left( g_{\mu\nu} + \eta \, T_s^{\mu\nu}(UA, SCm, \rho_A, t_n) \right)$$
 
@@ -116,7 +116,7 @@ $$k_2 = 1.2, \quad R_b = 1.496 \times 10^{13} \text{ m}, \quad \varepsilon_{sw} 
 
 ### 3.5 Sub-Equation 3  ?Ug3: Magnetic String Disk
 
-$$\Delta Ug_3 = k_3 \sum_j B_j(r, \theta, t, SCm) \cos!\left(\omega_s(t)\, t\, \piright) P_{core} \, E_{react}$$
+$$\Delta Ug_3 = k_3 \sum_j B_j(r, \theta, t, SCm) \cos!\left(\omega_s(t)\, t\, \pi\right) P_{core} \, E_{react}$$
 
 $$k_3 = 1.8, \quad B_j(t, SCm) = 10^3 + 0.4 \sin(\omega_c t) \text{ T}, \quad P_{core} = 1 \text{ (Sun)}, \; 10^{-3} \text{ (planets)}$$
 
@@ -136,7 +136,7 @@ $$\Omega_g \frac{M_{bh}}{d_g} = 7.3 \times 10^{-16} \times \frac{8.15 \times 10^
 
 ### 3.8 Sub-Equation 6  Um: Universal Magnetism
 
-$$Um = \sum_j \left[ \frac{\mu_j(t, SCm)}{r_j} \left(1 - e^{-\gamma t \cos(\pi t_n)}\right) \hatphi_j \right] P_{SCm} \, E_{react}$$
+$$Um = \sum_j \left[ \frac{\mu_j(t, SCm)}{r_j} \left(1 - e^{-\gamma t \cos(\pi t_n)}\right) \hat\phi_j \right] P_{SCm} \, E_{react}$$
 
 $$\gamma = 0.00005 \text{ day}^{-1}, \quad P_{SCm} = 10^{-3} \text{ (planets, non-interactive)}$$
 

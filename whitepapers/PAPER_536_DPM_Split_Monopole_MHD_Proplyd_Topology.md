@@ -84,8 +84,8 @@ is a piecewise solution: $B_z > 0$ above the midplane, $B_z < 0$ below, with
 a current sheet at $z = 0$. Within UQFF, the buoyancy term $U_b$ localises to
 this current sheet:
 
-$$U_b\!\big|_{z=0^+} = +k_b \cdot B_\text{pol}^2 / (8\pirho)$$
-$$U_b\!\big|_{z=0^-} = -k_b \cdot B_\text{pol}^2 / (8\pirho)$$
+$$U_b\!\big|_{z=0^+} = +k_b \cdot B_\text{pol}^2 / (8\pi\rho)$$
+$$U_b\!\big|_{z=0^-} = -k_b \cdot B_\text{pol}^2 / (8\pi\rho)$$
 
 The UQFF equilibrium $F_U = 0$ then requires pressure balance across the sheet:
 $\Delta p = B_\text{pol}^2 / (4\pi)$ — the standard MHD pressure jump, recovered

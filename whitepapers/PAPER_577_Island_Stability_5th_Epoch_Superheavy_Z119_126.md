@@ -242,7 +242,7 @@ universal parameter set constitutes a parameter-free nuclear mass prediction.
 
 
 *Source:* `grok_share_efc8a971378f.txt` — Session 154  
-*See also:* PAPER_573 (hub), PAPER_548 (FUBi collapse prevention), PAPER_578 (eigenvalue proof)
+> See also:* PAPER_573 (hub), PAPER_548 (FUBi collapse prevention), PAPER_578 (eigenvalue proof)
 
 
 

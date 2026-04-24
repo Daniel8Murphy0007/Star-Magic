@@ -167,7 +167,7 @@ $$a_{Aether\_freq} = 1.2 \times 5 \times 10^{-4} \times 3 \times 10^8 \times 10^
 
 **Term 9: afluid_freq (Fluid Frequency – Cosmological B-field)**
 
-$$a_{fluid\_freq} = k_3 \cdot \frac{B^2}{4\pirho_{SCm}} \cdot \frac{1}{r}$$
+$$a_{fluid\_freq} = k_3 \cdot \frac{B^2}{4\pi\rho_{SCm}} \cdot \frac{1}{r}$$
 
 At B = 1 nG = 10^-9 T, r = 4.4 Gpc = 1.36×10^26 m:
 

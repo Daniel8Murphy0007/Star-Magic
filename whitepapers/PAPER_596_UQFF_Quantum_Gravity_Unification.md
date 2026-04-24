@@ -90,7 +90,7 @@ $\kappa(DPM)/r^{26} \to 0$:
 
 $$\Lambda_text{eff} g_{\mu\nu} = \frac{8\pi g}{v_i^4} T_{\mu\nu}$$
 
-With $G = g/(4\pirho)$ and $c = v_i$: this is exactly the Einstein equation with $\Lambda$.
+With $G = g/(4\pi\rho)$ and $c = v_i$: this is exactly the Einstein equation with $\Lambda$.
 
 ---
 

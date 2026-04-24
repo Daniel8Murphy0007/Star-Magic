@@ -221,7 +221,7 @@ $$U_{b,\text{Master}} = -\beta_i U_{g,i} \frac{\omega_g M_{bh}}{d_g}(1+\delta_{s
 | $U_{b,\text{Master}}$ | Full expression above | J/m | Master buoyancy  extended form |
 | Standard $U_{b,i}$ | System 3 above | J/m | Base buoyancy term |
 | $\exp(-(\pi - t))$ | For $t < \pi$ days, decays toward Euler | – | Mayan/Master time alignment factor |
-| $U_m$ | $\sum_j[\mu_j/r_j(1-e^{-\gamma t\cos(\pi t_n)})\hatphi_j] P_{SCm} E_{react}$ | J/m | Universal magnetism (lossless strings) |
+| $U_m$ | $\sum_j[\mu_j/r_j(1-e^{-\gamma t\cos(\pi t_n)})\hat\phi_j] P_{SCm} E_{react}$ | J/m | Universal magnetism (lossless strings) |
 | $\rho_{vac,[UA]}$ | $7.09\times10^{-36}$ J/m | J/m | UA vacuum energy density |
 | $P_{SCm}$ | $\approx 1$ (Sun) | – | SCm core penetration factor |
 | $E_{react}$ | $10^{46} e^{-\kappa t}$ | W/m | Reactor efficiency |

@@ -48,7 +48,7 @@ $$U_{g3} = k_3 \sum_j B_j(r,\theta,t,\rho_{SCm}) \cdot \cos(\omega_s t \pi) \cdo
 
 ## 4. Pi as Quantum Encoder
 
-$$[SSq]^{n_{26}} \cdot e^{-\pi - t} \quadtext{encodes 26 quantum states via } \pitext{-barrier}$$
+$$[SSq]^{n_{26}} \cdot e^{-\pi - t} \quadtext{encodes 26 quantum states via } \pi\text{-barrier}$$
 
 
 ---

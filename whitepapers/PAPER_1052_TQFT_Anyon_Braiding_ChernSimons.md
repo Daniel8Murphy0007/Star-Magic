@@ -23,7 +23,7 @@ delta_theta / theta approx 0.34%, modifying topological qubit error rates by 0.2
 ## 1. Key Equations
 
 - $S_{\text{CS,UQFF}} = \frac{k_{\text{UQFF}}}{4\pi} \int (A \wedge dA + \frac{2}{3} A^3)$
-- $k_{\text{UQFF}} = k(1 + \beta_i S_{26} [\text{SSq}])$, $\deltatheta / \theta \approx 0.34\%$
+- $k_{\text{UQFF}} = k(1 + \beta_i S_{26} [\text{SSq}])$, $\delta\theta / \theta \approx 0.34\%$
 
 ## 2. Results
 

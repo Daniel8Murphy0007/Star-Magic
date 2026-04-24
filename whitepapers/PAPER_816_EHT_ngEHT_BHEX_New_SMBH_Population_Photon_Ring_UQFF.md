@@ -60,7 +60,7 @@ $$\theta_{ring} = 2\sqrt{27} \cdot \frac{G M_\bullet}{c^2 D}$$
 
 For IC 1459 ($M_\bullet = 2.8 \times 10^9 M_\odot$, $D = 29$ Mpc):
 
-$$\theta_{ring} = 2\sqrt{27} \cdot \frac{(6.67\times10^{-11})(5.6\times10^{39})}{(9\times10^{16})^2 \cdot (8.96\times10^{23})} \approx 8.9 \; \mutext{as}$$
+$$\theta_{ring} = 2\sqrt{27} \cdot \frac{(6.67\times10^{-11})(5.6\times10^{39})}{(9\times10^{16})^2 \cdot (8.96\times10^{23})} \approx 8.9 \; \mu\text{as}$$
 
 This enters UQFF Layer 1 as:
 

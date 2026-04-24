@@ -93,7 +93,7 @@ with quadratic root approximation $x_2 \approx -1.35\times10^{172}$ (universal c
 **Notes:**
 - All modules share universal DPM parameters: $\rho_{vac,UA}=(7.09\times10^{-36} + 10^{-37}i)$ kg/m3, $\mathrm{DPM}_{mom}=0.93+0.05i$, $\mathrm{DPM}_{grav}=1.0+0.1i$
 - $E_{cm}=3.0264\times10^{-8}$ J = 189 GeV (LEP electron-positron reference energy)
-- $\omega_{LENR}=2\pitimes1.25\times10^{12}$ rad/s (LENR THz resonance, universal)
+- $\omega_{LENR}=2\pi\times1.25\times10^{12}$ rad/s (LENR THz resonance, universal)
 
 ---
 
@@ -112,7 +112,7 @@ For $B_0 = 10^{-5}$ T (TDE field), $\omega_0 = 10^{-12}$ rad/s: $\mathrm{DPM}_{r
 
 ### 3.4 LENR Dominance Signature
 At low $\omega_0$ (cluster scale, $10^{-15}$ rad/s):
-$$k_{LENR}\left(\frac{\omega_{LENR}}{\omega_0}\right)^2 = 10^{-10} \times (2\pitimes1.25\times10^{12}/10^{-15})^2 \approx 10^{-10} \times 6.2\times10^{54} \approx 6.2\times10^{44}$$
+$$k_{LENR}\left(\frac{\omega_{LENR}}{\omega_0}\right)^2 = 10^{-10} \times (2\pi\times1.25\times10^{12}/10^{-15})^2 \approx 10^{-10} \times 6.2\times10^{54} \approx 6.2\times10^{44}$$
 This LENR term dominates all other integrand contributions for cluster-scale systems.
 
 ---

@@ -121,7 +121,7 @@ $$\Delta\text{term\_Ub_i}|_{t=0} = -\beta_i \cdot \text{ug1\_base} \cdot \text{s
 
 The total coherent buoyancy boost is:
 
-$$\boxed{\Delta g_\text{buoy\_total} = \text{sSFR} \cdot \left(\text{term\_Ubi}^\infty + \text{term\_F_UBii}^\infty + \text{term\_Ub_i}^\inftyright) \cdot e^{-t/\tau_text{SF}}}$$
+$$\boxed{\Delta g_\text{buoy\_total} = \text{sSFR} \cdot \left(\text{term\_Ubi}^\infty + \text{term\_F_UBii}^\infty + \text{term\_Ub_i}^\infty\right) \cdot e^{-t/\tau_text{SF}}}$$
 
 where the superscript ∞ denotes the static (non-sSFR) component amplitudes.
 

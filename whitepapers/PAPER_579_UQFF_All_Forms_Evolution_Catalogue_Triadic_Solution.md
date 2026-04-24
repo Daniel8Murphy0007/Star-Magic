@@ -67,7 +67,7 @@ $$\text{UQFF}_{base} = \begin{pmatrix} \frac{P}{3} & 0 & 0 \\ 0 & \frac{P}{3} & 
 
 **Eigenvalue Stability Proof:**
 
-$$\det!\left(\text{UQFF}_{base} - \lambda I\right) = \left(\frac{P}{3} - \lambdaright)^{\!2}\left(\frac{2P}{3} - \lambdaright) = 0$$
+$$\det!\left(\text{UQFF}_{base} - \lambda I\right) = \left(\frac{P}{3} - \lambda\right)^{\!2}\left(\frac{2P}{3} - \lambda\right) = 0$$
 
 **Step 1:** Factor characteristic polynomial.
 
@@ -158,7 +158,7 @@ $f_{max}$ bounding chaos).
 $$\frac{d^{26}F_U}{df^{26}} = 0 \;\Rightarrow; 26!\,\kappa/f^{27} = 26!\,g/(\rho f)^{27}$$
 
 **Step 3:** Resonant frequency:
-$$\boxed{f_{eq} = \left(\frac{\kapparho}{g}\right)^{1/27}}$$
+$$\boxed{f_{eq} = \left(\frac{\kappa\rho}{g}\right)^{1/27}}$$
 
 **Numerical ($f_{max}=10^{21}$ Hz, $\kappa=1$, $\rho=10^{-10}$, $g=10^{-3}$):**
 $f_{eq} \approx (10^{-7})^{0.037} \approx 0.79$ Hz (scaled, fits SNR vibrations).

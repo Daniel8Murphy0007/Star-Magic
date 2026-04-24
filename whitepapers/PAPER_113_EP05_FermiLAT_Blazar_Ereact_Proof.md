@@ -199,7 +199,7 @@ $$\bar{\kappa}_{AGN} = 0.000497 \text{ day}^{-1} \approx 0.0005 \text{ day}^{-1}
 | 2 | $L_\gamma(t) = \eta_gamma \kappa \times 10^{46} e^{-\kappa t}$ | Observed ?-ray power | Luminosity from E_react |
 | 3 | $e^{-\kappa \times 2000} = 0.368$ | 36.8% after 2000 days | Flare decay fraction |
 | 4 | 4LAC total: 3,743 vs UQFF 3,704 | 1.0% population error | Full catalog coverage |
-| 5 | $\barkappa_{AGN} = 0.000497$ day-1 | 0.5% from 0.0005 | ? independently confirmed |
+| 5 | $\bar\kappa_{AGN} = 0.000497$ day-1 | 0.5% from 0.0005 | ? independently confirmed |
 | 6 | FSRQ evolution $(1+z)^{3.5}$ via N_cycles | 2.42 cycles/e-fold | z-evolution reproduced |
 
 ---

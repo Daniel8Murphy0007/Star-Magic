@@ -42,7 +42,7 @@ A remarkable structural coincidence: 26 generators $=$ 13 stable $+$ 13 destruct
 
 A vector field $\xi^\mu$ is a Killing vector of $A_{\mu\nu}$ iff:
 
-$$\nabla_{(\mu}\xi_{\nu)} = \frac{1}{2}\left(`partial_\muxi_`nu + `partial_\nuxi_`mu\right) - \Gamma^\alpha_{\mu\nu}\xi_alpha = 0$$
+$$\nabla_{(\mu}\xi_{\nu)} = \frac{1}{2}\left(`partial_\mu\xi_`nu + `partial_\nu\xi_`mu\right) - \Gamma^\alpha_{\mu\nu}\xi_alpha = 0$$
 
 On the diagonal metric $A_{\mu\nu}(r)$, this reduces to:
 

@@ -41,7 +41,7 @@ The optical extragalactic background light (integrated number counts):
 
 $$B_\text{EBL,opt} = 3.1 \times 10^{-6} \, \text{W/m}^2/\text{sr} \quad \text{(Driver et al. 2016)}$$
 
-Wavelength range: $0.1$–$5 \, \mutext{m}$ (optical to near-IR).
+Wavelength range: $0.1$–$5 \, \mu\text{m}$ (optical to near-IR).
 
 ### §2.2 CMB Cross-Check
 

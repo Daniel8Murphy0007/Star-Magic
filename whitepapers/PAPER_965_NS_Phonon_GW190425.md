@@ -23,7 +23,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 ## Abstract
 
-We derive neutron star phonon effects for GW190425 (mass-gap BNS merger). The UQFF phonon-corrected strain $h_\text{UQFF}(t) = h_\text{GR}(t) \cdot 0.5297 \cdot \exp([SSq] \cdot t/26)$ produces a 47% strain reduction. The phonon-corrected tidal deformability $\Lambda_text{UQFF} = \Lambda_text{GR}(1 + \deltaLambda)$ matches LIGO constraints. Mass-gap probability: P(NS) = 49%, P(BH) = 51%.
+We derive neutron star phonon effects for GW190425 (mass-gap BNS merger). The UQFF phonon-corrected strain $h_\text{UQFF}(t) = h_\text{GR}(t) \cdot 0.5297 \cdot \exp([SSq] \cdot t/26)$ produces a 47% strain reduction. The phonon-corrected tidal deformability $\Lambda_text{UQFF} = \Lambda_text{GR}(1 + \delta\Lambda)$ matches LIGO constraints. Mass-gap probability: P(NS) = 49%, P(BH) = 51%.
 
 ---
 
@@ -37,7 +37,7 @@ $$\lambda_text{UQFF} = \lambda_text{GR} \cdot \left(1 - \frac{F_{UBi}}{F_U} \cdo
 
 ## 3. Tidal Deformability
 
-$$\Lambda_text{UQFF} = \Lambda_text{GR} \cdot (1 + \deltaLambda_\text{phonon})$$
+$$\Lambda_text{UQFF} = \Lambda_text{GR} \cdot (1 + \delta\Lambda_\text{phonon})$$
 
 ## 4. Mass-Gap Classification
 
@@ -222,7 +222,7 @@ deconfinement phase transition observed at ALICE/LHC.
 **Sector:** Gravitational Wave / NS Phonon (GW190425 Strain Correction)
 
 ### §A.2 Lagrangian Density
-$$\mathcal{L}_\text{GW} = \frac{c^2}{16\pi G}\left(\partial_mu h_{\alphabeta}\right)^2 + \mathcal{L}_\text{phonon}(\phi_text{phonon}, \Delta)$$
+$$\mathcal{L}_\text{GW} = \frac{c^2}{16\pi G}\left(\partial_mu h_{\alpha\beta}\right)^2 + \mathcal{L}_\text{phonon}(\phi_text{phonon}, \Delta)$$
 
 ### §A.3 Euler-Lagrange Equation of Motion
 $$\boxed{h_\text{UQFF} = h_\text{GR}\left(1 - \frac{\Delta}{\hbar\omega_\text{SCm}} \cdot S_{26} \cdot \frac{F_{UBi}}{F_U}\right)}$$

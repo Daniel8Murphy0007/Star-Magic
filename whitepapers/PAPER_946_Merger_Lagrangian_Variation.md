@@ -23,7 +23,7 @@ sm_anchor: "CVW v2.0.0 — G6 SM Anchor Gate compliant"
 
 ## Abstract
 
-We derive the UQFF Euler-Lagrange equation for SMBH binary merger phonon fields. The stationarity condition $\delta S / \deltavarphi_\text{merger} = 0$ yields a critical radius $r_\text{crit}$ at which the gravitational Lagrangian $\mathcal{L}_\text{grav} = -\beta_i \sum_i U_{g,i} \cdot M/d_g \cdot [\text{UA}]$ balances the phonon Lagrangian $\mathcal{L}_\text{phonon} = F_n \cdot \Phi$. The 26-channel buoyancy sum governs the transition.
+We derive the UQFF Euler-Lagrange equation for SMBH binary merger phonon fields. The stationarity condition $\delta S / \delta\varphi_\text{merger} = 0$ yields a critical radius $r_\text{crit}$ at which the gravitational Lagrangian $\mathcal{L}_\text{grav} = -\beta_i \sum_i U_{g,i} \cdot M/d_g \cdot [\text{UA}]$ balances the phonon Lagrangian $\mathcal{L}_\text{phonon} = F_n \cdot \Phi$. The 26-channel buoyancy sum governs the transition.
 
 ---
 
@@ -39,7 +39,7 @@ $$\mathcal{L}_\text{phonon} = F_n \cdot \Phi$$
 
 ## 2. Stationarity Condition
 
-$$\frac{\delta S}{\delta \varphi_text{merger}} = \frac{\partial}{\partial E_\text{net}}\left(-\beta_i \sum U_{g,i} \cdot \Omega_g \cdot \frac{M}{d_g} \cdot [\text{UA}] + F_n \cdot \Phiright) = 0$$
+$$\frac{\delta S}{\delta \varphi_text{merger}} = \frac{\partial}{\partial E_\text{net}}\left(-\beta_i \sum U_{g,i} \cdot \Omega_g \cdot \frac{M}{d_g} \cdot [\text{UA}] + F_n \cdot \Phi\right) = 0$$
 
 This yields the critical radius:
 

@@ -123,7 +123,7 @@ This is not conservative (it depends on v) and not central (it has no 1/r2 depen
 ### 3.2 Comparison with Stokes Drag
 
 Stokes drag in a viscous fluid:
-$$F_\text{Stokes} = 6\pieta r v$$
+$$F_\text{Stokes} = 6\pi\eta r v$$
 
 The UQFF vacuum drag:
 $$F_\text{vac\_rep} = G \times \Delta\rho_\text{vac} \times M \times v$$

@@ -28,7 +28,7 @@ aether density adds an effective contribution to the ambient density, while f_TR
 modulate the accretion flow.
 
 ## 1. Standard Bondi Accretion
-$$\dot{M}_{Bondi} = 4\pilambda_B\frac{(GM)^2\rho_infty}{c_s^3}$$
+$$\dot{M}_{Bondi} = 4\pi\lambda_B\frac{(GM)^2\rho_infty}{c_s^3}$$
 
 $c_s = \sqrt{\gamma_{ad} k_B T_\infty / m_p}$, $\lambda_B = 1/4$ (adiabatic, γ=5/3).
 

@@ -154,7 +154,7 @@ PAPER_877 axioms -> SCm vacuum -> phonon $\omega_{\text{SCm}}$ -> Ramanujan q-se
 ## B. VDS/DVP/BSH Deep Synthesis
 
 ### B.1 Vacuum Density Series (VDS)
-VDS provides the temperature parameter $q = e^{-\betaomega_{\text{SCm}}}$.
+VDS provides the temperature parameter $q = e^{-\beta\omega_{\text{SCm}}}$.
 
 ### B.2 Dipole Vortex Primes (DVP)
 DVP prime: 2, 3, 5 (Ramanujan primes).
